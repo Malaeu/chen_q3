@@ -99,3 +99,29 @@ The parallel G1 stop is
 `LITERAL_CCM_QUANTITATIVE_SIMPLE_EVEN_GROUND_AND_TRACKING_MISSING`.  The full
 input/output contract is preserved in
 `GOAL058_G1_G3_CURRENT_PROBLEM_IO_LEDGER_2026-08-14.md`.
+
+## 2026-08-14 mode-four Ferrers constructor progress
+
+The narrower coefficient route is no longer stopped at convergence or the
+interior differential equation.  Four kernel-checked files now prove:
+
+- the exact ordinary-Legendre ODE, the sharp unit-interval bound, and interior
+  first/second derivative majorants;
+- absolute and polynomially weighted summability of the matched coefficient
+  row, uniform convergence, and closed-window continuity;
+- legal twice-termwise differentiation and interior `C2` regularity;
+- absolutely summable three-band reindexing from the source recurrence to the
+  exact prolate ODE, including the exceptional zero row.
+
+The public constructor
+`exists_mode4MatchedNormalizedProlateFerrersRow_of_root` now turns an exact
+matching root into a nonzero normalized mode-four Ferrers function satisfying
+that ODE.  Direct Lean, target build, and full build pass; its public axiom
+audit is exactly `[propext, Classical.choice, Quot.sound]`.
+
+This is a real source supplier, not G3 closure.  It remains conditional on a
+matching root, and it does not yet prove endpoint realization, scaling to the
+physical window, third-even/degree-four zero-count selection, the mode-zero
+companion, the restricted finite-Fourier eigenrelations, CCM Lemma 7.2, or the
+denominator floor.  The narrowed stop is
+`MODE4_FERRERS_ODE_PROVED_MODE0_SELECTION_FOURIER_AND_LEMMA72_MISSING`.

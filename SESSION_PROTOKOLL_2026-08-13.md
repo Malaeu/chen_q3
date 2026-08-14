@@ -598,3 +598,31 @@ The Bun retry commit was rebased over concurrent Mac Goal 058 commits through
   in `GOAL058_G1_G3_CURRENT_PROBLEM_IO_LEDGER_2026-08-14.md`.
 - Classification: `G1_OPEN / G3_OPEN / TWO_FALSE_SHORTCUTS_KILLED`; no Route B
   promotion and no RH claim.
+
+## Goal 058 source progress — mode-four Ferrers series now satisfies the exact prolate ODE
+
+- The coefficient route discharged the former analytic seam without adding a
+  source axiom.  `D0Mode4OrdinaryLegendreIntervalBound.lean` proves the exact
+  ordinary-Legendre ODE, the sharp `|P_n(x)| <= 1` bound on `[-1,1]`, and
+  first/second derivative bounds on every strict interior window.
+- The exact geometric tail splice now yields absolute and every polynomially
+  weighted coefficient summability.  The even Ferrers series converges
+  uniformly on the closed source interval and is `ContDiffOn R 2` on its
+  interior by two legal termwise differentiations.
+- `D0Mode4FerrersProlateDifferentialEquation.lean` keeps the zero row explicit,
+  proves all three outgoing Legendre bands summable, performs only legal
+  one-step `tsum` shifts, and converts the source three-term recurrence into
+  the exact prolate ODE.
+- `exists_mode4MatchedNormalizedProlateFerrersRow_of_root` constructs a
+  positive-leading, normalized, nonzero mode-four Ferrers eigenfunction from
+  an exact matching root.  Direct Lean, the target build (`7768` jobs), and
+  the full build (`7817` jobs) passed.  Public axioms are exactly
+  `[propext, Classical.choice, Quot.sound]`.
+- Boundary: this proves `recurrence -> convergent C2 function -> interior ODE`
+  for mode four.  It does not yet prove an unconditional root bracket,
+  endpoint flux, physical-window scaling, third-even zero-count selection,
+  the mode-zero companion, a restricted finite-Fourier eigenrelation, CCM
+  Lemma 7.2, or the projected denominator floor.
+- Classification:
+  `MODE4_FERRERS_ODE_PROVED_MODE0_SELECTION_FOURIER_AND_LEMMA72_MISSING`.
+  G1, G3, Route B promotion, and RH remain open.

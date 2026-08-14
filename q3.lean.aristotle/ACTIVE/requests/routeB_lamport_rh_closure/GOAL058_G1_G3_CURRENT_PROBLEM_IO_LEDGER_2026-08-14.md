@@ -4,7 +4,7 @@ Date: 2026-08-14
 
 Lane: `CHALLENGER / NOT_RH`
 
-Verdict: `G1_OPEN / G3_OPEN / TWO_FALSE_SHORTCUTS_KILLED`
+Verdict: `MODE4_FERRERS_ODE_PASS / G1_OPEN / G3_OPEN`
 
 ## Owner-language summary
 
@@ -12,8 +12,9 @@ The route now has the exact finite CCM matrix, the exact prolate trial, the
 parity split, the P59 entire-function bridge, and a positive limiting prolate
 anchor. It still lacks two load-bearing theorems:
 
-1. **G3:** construct the actual source prolate modes, then prove the paper's
-   quantitative rate and a denominator floor for their trial family;
+1. **G3:** finish the actual source prolate modes around the now-constructed
+   mode-four Ferrers ODE supplier, then prove the paper's quantitative rate
+   and a denominator floor for their trial family;
 2. **G1:** prove that the literal finite CCM ground is simple/even with a
    quantitative gap, and that the same source trial approaches it on one
    cofinal schedule.
@@ -74,10 +75,21 @@ by themselves prove G1, Route B, or RH.
   supplied nontrivial interior mode is nonzero somewhere;
 - `D0Mode4JacobiMatchedNormalizedCoefficientRow.lean`: a normalized exact
   mode-four recurrence row from a certified root;
-- the ordinary-Legendre recurrence and `x`, `x^2` action files.
+- `D0Mode4OrdinaryLegendreIntervalBound.lean`: the exact Legendre ODE,
+  `|P_n| <= 1` on `[-1,1]`, and interior first/second derivative bounds;
+- `D0Mode4FerrersCoefficientAbsoluteSummability.lean`: absolute and every
+  polynomially weighted coefficient summability, uniform convergence, and
+  closed-window continuity of the even Ferrers series;
+- `D0Mode4FerrersInteriorRegularity.lean`: legal twice-termwise
+  differentiation and `ContDiffOn R 2` on `(-1,1)`;
+- `D0Mode4FerrersProlateDifferentialEquation.lean`: legal reindexing of the
+  three absolutely summable Legendre bands, the exact prolate ODE, and a
+  root-conditioned normalized mode-four Ferrers constructor.
 
-These are real ingredients, but every one stops before constructing a regular
-PSWF and selecting the ordered degree-0/degree-4 source modes.
+This closes the former `recurrence row -> convergent C2 Ferrers function ->
+exact prolate ODE` gap for mode four.  It does not identify that function as
+the third even/degree-four PSWF, and it does not construct the mode-zero
+companion or a production `ProlatePair`.
 
 ### Exact missing library layer
 
@@ -88,11 +100,21 @@ ready infinite-dimensional compact-self-adjoint eigenbasis constructor was
 found. The project likewise has no formal singular Sturm--Liouville
 self-adjoint realization or oscillation/index-selection theorem.
 
-The existing coefficient backend gives a narrower alternative, but it still
-needs a Ferrers/Legendre series with proved convergence through two
-derivatives, the prolate ODE, endpoint regularity/flux, nontriviality, and
-ordered zero-count selection. A mode-zero construction is also required;
-the current deep recurrence backend is mode-four-specific.
+The narrower coefficient route has now discharged Ferrers/Legendre
+convergence through two derivatives, the interior prolate ODE, and
+nontriviality of the normalized row conditional on an exact matching root.
+The remaining source layer is: unconditional certified root brackets on the
+required family; endpoint realization/flux; exact scaling to
+`[-lambda,lambda]`; zero-count/order selection showing the third even mode;
+the corresponding mode-zero construction; and the restricted plus-phase
+finite-Fourier eigenrelations.  Only after those can the unchanged
+`ProlatePair` be constructed and CCM Lemma 7.2 consumed.
+
+Narrowed source stop:
+
+```text
+MODE4_FERRERS_ODE_PROVED_MODE0_SELECTION_FOURIER_AND_LEMMA72_MISSING
+```
 
 Stop code:
 
@@ -160,10 +182,10 @@ Both living reviewers reached the same boundary:
   `ActualCCMProlatePairConstructor` for G3 and
   `LiteralCCMQuantitativeComplementFloor` for G1.
 
-Therefore no Aristotle request is dispatched now. A request becomes sound
-only after a bounded theorem is expressible using actual definitions and
-proved source prerequisites, rather than asking the cloud prover to invent
-the missing spectral theory or CCM asymptotics.
+No Aristotle request was needed for the new mode-four step: the bounded
+Ferrers convergence, differentiation, legal band reindexing, and ODE theorem
+were proved locally and kernel checked.  The next remaining selection and
+Fourier/source-rate wall is still not a bounded cloud-prover leaf.
 
 ## Nonclaims
 

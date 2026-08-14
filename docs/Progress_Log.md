@@ -1810,6 +1810,46 @@ gap/sector-order и same-trial cofinal tracking.
 **Граница:** `G1_OPEN / G3_OPEN / TWO_FALSE_SHORTCUTS_KILLED`; Route B остаётся
 `CHALLENGER / NOT_RH`.
 
+## 2026-08-14 — Goal 058: recurrence row стал настоящей mode-four ODE-функцией
+
+**Развилка:** оставить coefficient backend как формальную рекурсию либо
+доказать, что её бесконечный Ferrers-ряд реально сходится, дважды
+дифференцируется и удовлетворяет source prolate ODE.
+
+**Выбрали:** точный путь через geometric tail splice, sharp Legendre bound,
+две законные termwise differentiation и отдельные absolutely summable
+three-band shifts с явной обработкой нулевой строки.
+
+**Почему:** это минимальный локально доказуемый source theorem за стеной
+actual-mode constructor. Он превращает существующий matching root в реальную
+нормированную `C2`-внутри функцию, не требуя изобретать compact spectral
+theorem и не подменяя existence новым binder.
+
+**Что отвергли и почему:** формальную перестановку несуммируемых рядов,
+`l2 -> l1` shortcut и пропуск `q=0` отвергли как ложные; объявить полученную
+функцию degree-four PSWF нельзя без endpoint/zero-count/order selection и
+finite-Fourier eigenrelation.
+
+**Техника:** coefficientwise shifted-Legendre ODE; energy monotonicity;
+geometric polynomial moments; uniform derivative majorants; legal `tsum`
+one-step shifts; exact three-band recurrence cancellation; direct/target/full
+Lean and public axiom audit.
+
+**Следующий ход:** физическое scaling/endpoint realization и точная
+third-even selection для mode four, затем mode zero и restricted Fourier
+relations; только после этого CCM Lemma 7.2 и denominator floor.
+
+**Адреса:**
+`Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreIntervalBound.lean` ·
+`Q3/Proofs/RouteB/D0Mode4FerrersCoefficientAbsoluteSummability.lean` ·
+`Q3/Proofs/RouteB/D0Mode4FerrersInteriorRegularity.lean` ·
+`Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean` ·
+`GOAL058_MODE4_FERRERS_PROLATE_ODE_CLOSEOUT_2026-08-14.md`.
+
+**Граница:**
+`MODE4_FERRERS_ODE_PROVED_MODE0_SELECTION_FOURIER_AND_LEMMA72_MISSING`;
+G1, G3, Route B promotion и RH остаются открыты.
+
 ### Счёт раскопок
 
 | четверть | строки | развилок найдено | причина записана | причина отсутствует |
