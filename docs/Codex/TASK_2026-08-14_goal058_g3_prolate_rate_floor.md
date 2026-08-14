@@ -259,8 +259,11 @@ the data boundary:
 - `0 < P.normalizingDenominator` from the positive source integrals;
 - `prolateCombination P != 0` from the exact Sturm selectors: the degree-four
   mode has an interior zero while the degree-zero mode has none.
+- `∫ x, ‖prolateCombination P x‖^2 = 1` from the stored unit mode
+  normalizations and the source orthogonality, with all integral operations
+  justified by the derived measurability and `MemLp` facts.
 
-Direct Lean, target build, and `q3_check` pass; all four public theorem heads
+Direct Lean, target build, full build, and `q3_check` pass; all five public theorem heads
 have axiom surface exactly `[propext, Classical.choice, Quot.sound]`.  This
 does not construct `P`, prove the Lemma 7.2 rate, establish `E_star` `MemLp`,
 prove the selected projection nonzero or its quantitative denominator floor,

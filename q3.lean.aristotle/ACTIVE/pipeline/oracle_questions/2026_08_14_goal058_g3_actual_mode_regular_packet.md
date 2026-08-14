@@ -13,7 +13,7 @@ collections: ["q3_docs", "math_papers"]
 tags: ["Goal058", "G3", "PSWF", "actual-mode"]
 insight_links: []
 request_nodes: ["docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md"]
-strong_terms: ["finiteFourierAction_lipschitzWith", "IsActualProlateModePair", "zero count 0 4", "prolateCombination_ne_zero_of_actualModes"]
+strong_terms: ["finiteFourierAction_lipschitzWith", "IsActualProlateModePair", "zero count 0 4", "prolateCombination_ne_zero_of_actualModes", "integral_sqNorm_prolateCombination_eq_one_of_actualModes"]
 empty_terms: ["compact self adjoint PSWF constructor", "ready Sturm Liouville index selector", "ready finite Fourier simple spectrum"]
 false_friend_terms: ["finite dimensional self adjoint diagonalization", "truncated Hermite surrogate"]
 opens_new_branch_terms: []
@@ -84,8 +84,9 @@ regularity assumptions.
 
 The reusable conclusion is materialized directly in
 `ProlateActualModeMuntzRegularity.lean`: exact restricted Fourier
-eigenrelations supply the regularity, while the source zero-count mismatch
-supplies nonvanishing.
+eigenrelations supply the regularity, the source zero-count mismatch supplies
+nonvanishing, and the source orthogonality plus unit mode normalizations supply
+exact unit `L²` mass for the canonical packet.
 
 ## Следующий адресный шаг
 

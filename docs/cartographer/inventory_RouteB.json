@@ -2,8 +2,8 @@
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
   "files_scanned": 231,
-  "declarations": 2124,
-  "in_docs": 941,
+  "declarations": 2125,
+  "in_docs": 942,
   "in_lemma_db": 2120,
   "orphans": 3,
   "uncatalogued": 3,
@@ -19040,6 +19040,16 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/ProlateActualModeMuntzRegularity.lean",
       "line": 122,
       "signature": "theorem prolateCombination_ne_zero_of_actualModes (P : ProlatePair) (hP : IsActualProlateModePair P) : prolateCombination P ≠ 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "integral_sqNorm_prolateCombination_eq_one_of_actualModes",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/ProlateActualModeMuntzRegularity.lean",
+      "line": 159,
+      "signature": "theorem integral_sqNorm_prolateCombination_eq_one_of_actualModes (P : ProlatePair) (hP : IsActualProlateModePair P) : (∫ x : ℝ, ‖prolateCombination P x‖ ^ 2) = 1",
       "in_docs": true,
       "in_lemma_db": false,
       "orphan": false

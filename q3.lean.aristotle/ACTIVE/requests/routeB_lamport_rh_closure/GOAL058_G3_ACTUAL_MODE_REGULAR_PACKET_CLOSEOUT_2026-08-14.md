@@ -22,13 +22,17 @@ PX_RH_CLAIM: NOT_MADE
 2. `IsActualProlateModePair P` supplies the full existing Muntz regularity
    contract for `prolateCombination P`;
 3. the source denominator `sqrt(I0^2+I4^2)` is strictly positive;
-4. the canonical degree-zero/degree-four packet is not identically zero.
+4. the canonical degree-zero/degree-four packet is not identically zero;
+5. the canonical packet has exact unit `L²` mass.
 
 The nonvanishing proof uses the exact index selectors rather than a new
 nonzero binder: the degree-four mode has four interior zeros, while the
 degree-zero mode has none.  At a degree-four zero, an identically vanishing
 canonical packet would force a degree-zero zero because `I4` and the
 normalizing denominator are positive, contradicting the zero-count lock.
+The unit-mass proof separately derives legal `L²` representatives for both
+modes, integrates the exact norm-square expansion, cancels the source cross
+term by orthogonality, and uses the literal denominator definition.
 
 ## Knowledge preflight
 

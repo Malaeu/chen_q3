@@ -153,9 +153,117 @@ theorem prolateCombination_ne_zero_of_actualModes
   rw [hz0empty] at hx0mem
   exact hx0mem
 
+/-- The source-normalized degree-zero/degree-four packet has exact unit
+`L²` mass.  Orthogonality and the two stored unit normalizations are consumed
+only after actual-mode measurability makes every integral manipulation legal. -/
+theorem integral_sqNorm_prolateCombination_eq_one_of_actualModes
+    (P : ProlatePair)
+    (hP : IsActualProlateModePair P) :
+    (∫ x : ℝ, ‖prolateCombination P x‖ ^ 2) = 1 := by
+  have hdenpos : 0 < P.normalizingDenominator :=
+    P.normalizingDenominator_pos_of_actualModes hP
+  rcases hP with
+    ⟨hlambda, _hI0, _hI4, hchi2, hchi20,
+      hreal0, hreal4, _hC20, _hC24, horth,
+      _hode, heigen0, heigen4, _hz0finite, _hz0card,
+      _hz4finite, _hz4card⟩
+  have hchi0pos : 0 < P.chi0 := hchi2.trans hchi20
+  have hchi0ne : (P.chi0 : ℂ) ≠ 0 := by
+    exact_mod_cast hchi0pos.ne'
+  have hchi2ne : (P.chi2 : ℂ) ≠ 0 := by
+    exact_mod_cast hchi2.ne'
+  have h0meas : Measurable P.h0 :=
+    measurable_of_finiteFourier_eigenrelation
+      P.pw.lambda hlambda.le P.h0 (P.chi0 : ℂ) hchi0ne
+      P.h0_support P.h0_integrable heigen0
+  have h4meas : Measurable P.h4 :=
+    measurable_of_finiteFourier_eigenrelation
+      P.pw.lambda hlambda.le P.h4 (P.chi2 : ℂ) hchi2ne
+      P.h4_support P.h4_integrable heigen4
+  have h0Lp : MemLp P.h0 2 volume :=
+    (memLp_two_iff_integrable_sq_norm h0meas.aestronglyMeasurable).2
+      P.h0_sqNorm_integrable
+  have h4Lp : MemLp P.h4 2 volume :=
+    (memLp_two_iff_integrable_sq_norm h4meas.aestronglyMeasurable).2
+      P.h4_sqNorm_integrable
+  have hcross :
+      Integrable (fun x : ℝ => starRingEnd ℂ (P.h0 x) * P.h4 x) := by
+    simpa only [Pi.star_apply] using h0Lp.star.integrable_mul h4Lp
+  have hcrossRe :
+      (∫ x : ℝ, (starRingEnd ℂ (P.h0 x) * P.h4 x).re) = 0 := by
+    calc
+      (∫ x : ℝ, (starRingEnd ℂ (P.h0 x) * P.h4 x).re) =
+          (∫ x : ℝ, starRingEnd ℂ (P.h0 x) * P.h4 x).re := by
+            simpa using integral_re hcross
+      _ = 0 := by rw [horth]; rfl
+  have hpoint : ∀ x : ℝ,
+      ‖prolateCombination P x‖ ^ 2 =
+        (P.I4 ^ 2 * ‖P.h0 x‖ ^ 2 + P.I0 ^ 2 * ‖P.h4 x‖ ^ 2 -
+          2 * P.I4 * P.I0 *
+            (starRingEnd ℂ (P.h0 x) * P.h4 x).re) /
+          P.normalizingDenominator ^ 2 := by
+    intro x
+    have hc0 : starRingEnd ℂ (P.h0 x) = P.h0 x :=
+      (Complex.conj_eq_iff_im).2 (hreal0 x)
+    have hc4 : starRingEnd ℂ (P.h4 x) = P.h4 x :=
+      (Complex.conj_eq_iff_im).2 (hreal4 x)
+    rw [Complex.sq_norm, prolateCombination_apply,
+      Complex.normSq_div, Complex.normSq_sub,
+      Complex.normSq_mul, Complex.normSq_mul]
+    simp only [Complex.normSq_ofReal, Complex.sq_norm]
+    simp only [map_mul, Complex.conj_ofReal, hc0, hc4]
+    simp only [Complex.mul_re, Complex.mul_im, Complex.ofReal_re,
+      Complex.ofReal_im, hreal0 x, hreal4 x, mul_zero, sub_zero]
+    ring
+  rw [integral_congr_ae (Filter.Eventually.of_forall hpoint)]
+  rw [integral_div]
+  have h0term :
+      Integrable (fun x : ℝ => P.I4 ^ 2 * ‖P.h0 x‖ ^ 2) :=
+    P.h0_sqNorm_integrable.const_mul _
+  have h4term :
+      Integrable (fun x : ℝ => P.I0 ^ 2 * ‖P.h4 x‖ ^ 2) :=
+    P.h4_sqNorm_integrable.const_mul _
+  have hcrossTerm : Integrable (fun x : ℝ =>
+      2 * P.I4 * P.I0 *
+        (starRingEnd ℂ (P.h0 x) * P.h4 x).re) :=
+    hcross.re.const_mul _
+  have hnum :
+      (∫ x : ℝ,
+        P.I4 ^ 2 * ‖P.h0 x‖ ^ 2 + P.I0 ^ 2 * ‖P.h4 x‖ ^ 2 -
+          2 * P.I4 * P.I0 *
+            (starRingEnd ℂ (P.h0 x) * P.h4 x).re) =
+        P.I4 ^ 2 + P.I0 ^ 2 := by
+    calc
+      _ = (∫ x : ℝ,
+            P.I4 ^ 2 * ‖P.h0 x‖ ^ 2 + P.I0 ^ 2 * ‖P.h4 x‖ ^ 2) -
+          (∫ x : ℝ, 2 * P.I4 * P.I0 *
+            (starRingEnd ℂ (P.h0 x) * P.h4 x).re) := by
+              simpa only [Pi.add_apply, Pi.sub_apply] using
+                integral_sub (h0term.add h4term) hcrossTerm
+      _ = (∫ x : ℝ, P.I4 ^ 2 * ‖P.h0 x‖ ^ 2) +
+          (∫ x : ℝ, P.I0 ^ 2 * ‖P.h4 x‖ ^ 2) -
+          (∫ x : ℝ, 2 * P.I4 * P.I0 *
+            (starRingEnd ℂ (P.h0 x) * P.h4 x).re) := by
+              rw [integral_add h0term h4term]
+      _ = P.I4 ^ 2 + P.I0 ^ 2 := by
+        rw [integral_const_mul, integral_const_mul, integral_const_mul,
+          P.h0_normalized, P.h4_normalized, hcrossRe]
+        ring
+  rw [hnum]
+  have hdenSq : P.normalizingDenominator ^ 2 =
+      P.I0 ^ 2 + P.I4 ^ 2 := by
+    rw [ProlatePair.normalizingDenominator_eq]
+    exact Real.sq_sqrt (by positivity)
+  rw [hdenSq]
+  have hsumne : P.I0 ^ 2 + P.I4 ^ 2 ≠ 0 := by
+    nlinarith [sq_pos_of_pos hdenpos]
+  field_simp
+  ring
+
 #print axioms measurable_of_finiteFourier_eigenrelation
 #print axioms prolateCombination_muntzRegularity_of_actualModes
 #print axioms ProlatePair.normalizingDenominator_pos_of_actualModes
 #print axioms prolateCombination_ne_zero_of_actualModes
+#print axioms integral_sqNorm_prolateCombination_eq_one_of_actualModes
 
 end Q3.RouteB.D0Pstar
