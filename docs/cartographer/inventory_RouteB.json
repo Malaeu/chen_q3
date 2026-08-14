@@ -1,16 +1,20 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 211,
-  "declarations": 1928,
-  "in_docs": 872,
+  "files_scanned": 212,
+  "declarations": 1939,
+  "in_docs": 875,
   "in_lemma_db": 1869,
-  "orphans": 11,
-  "uncatalogued": 11,
+  "orphans": 19,
+  "uncatalogued": 19,
   "orphan_files_top": [
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceCCMOddMassReflectionDefect.lean",
       9
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/ProlateActualModeSourceLock.lean",
+      8
     ],
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
@@ -17196,6 +17200,116 @@
       "signature": "theorem zerosRealOn_of_realPosDefWeightedSymmetric_charpoly_mul {n : Type*} [Fintype n] [DecidableEq n] (Q D : Matrix n n ℝ) (hQ : Q.PosDef) (hSA : Q * D = D.transpose * Q) (F unit realFactor : ℂ → ℂ) (hunit : ∀ z, unit z ≠ 0) (hrealFactor : ZerosRealOn Set.univ realFactor) (hfactor : ∀ z, F z = unit z * (((D.map (algebraMap ℝ ℂ)).charpoly.eval z) * realFactor z)) : ZerosRealOn Set.univ F",
       "in_docs": false,
       "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "prolateInteriorZeros",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/ProlateActualModeSourceLock.lean",
+      "line": 23,
+      "signature": "def prolateInteriorZeros (lambda : ℝ) (h : ℝ → ℂ) : Set ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "IsActualProlateModePair",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/ProlateActualModeSourceLock.lean",
+      "line": 41,
+      "signature": "def IsActualProlateModePair (P : ProlatePair) : Prop",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "looseProlateIndicator",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/ProlateActualModeSourceLock.lean",
+      "line": 67,
+      "signature": "def looseProlateIndicator (x : ℝ) : ℂ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "looseProlateIndicator_even",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/ProlateActualModeSourceLock.lean",
+      "line": 70,
+      "signature": "private theorem looseProlateIndicator_even : Function.Even looseProlateIndicator",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "looseProlateIndicator_support",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/ProlateActualModeSourceLock.lean",
+      "line": 84,
+      "signature": "private theorem looseProlateIndicator_support : Function.support looseProlateIndicator ⊆ Icc (-1 : ℝ) 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "looseProlateIndicator_integrable",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/ProlateActualModeSourceLock.lean",
+      "line": 94,
+      "signature": "private theorem looseProlateIndicator_integrable : Integrable looseProlateIndicator",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "looseProlateIndicator_sqNorm_integrable",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/ProlateActualModeSourceLock.lean",
+      "line": 99,
+      "signature": "private theorem looseProlateIndicator_sqNorm_integrable : Integrable (fun x : ℝ => ‖looseProlateIndicator x‖ ^ 2)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "integral_looseProlateIndicator",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/ProlateActualModeSourceLock.lean",
+      "line": 117,
+      "signature": "private theorem integral_looseProlateIndicator : (∫ x : ℝ, looseProlateIndicator x) = 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "integral_sqNorm_looseProlateIndicator",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/ProlateActualModeSourceLock.lean",
+      "line": 123,
+      "signature": "private theorem integral_sqNorm_looseProlateIndicator : (∫ x : ℝ, ‖looseProlateIndicator x‖ ^ 2) = 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "looseProlatePairPlant",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/ProlateActualModeSourceLock.lean",
+      "line": 140,
+      "signature": "def looseProlatePairPlant : ProlatePair where",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "looseProlatePairPlant_not_actual",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/ProlateActualModeSourceLock.lean",
+      "line": 172,
+      "signature": "theorem looseProlatePairPlant_not_actual : ¬ IsActualProlateModePair looseProlatePairPlant",
+      "in_docs": true,
+      "in_lemma_db": false,
       "orphan": false
     },
     {
