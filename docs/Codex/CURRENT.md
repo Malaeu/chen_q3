@@ -4,7 +4,7 @@
 schema: q3_codex_current_task.v1
 status: ACTIVE
 task_file: docs/Codex/TASK_2026-08-14_goal058_g3_prolate_rate_floor.md
-source_commit: 3d9fcfea88c53fe6ef96c408bd49c9daf8602bda
+source_commit: 54421e9d26a522a4125c5e4542b4130a7d0c720b
 updated_at: 2026-08-14T18:54:26+02:00
 updated_by: CODEX
 ```
