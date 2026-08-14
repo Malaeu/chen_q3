@@ -157,6 +157,67 @@ private noncomputable def ccmFiniteShiftedFormDomainIsometry
     simpa [PiLp.inner_apply, mul_comm] using
       horth.inner_sum c d Finset.univ)
 
+/-- The normalized odd coefficient synthesis on an arbitrary production
+`PairIndex`.  Unlike the historical `m = 13` wrapper below, this definition
+keeps both coordinates of the current source schedule. -/
+noncomputable def sourceWeilOddSynthesis
+    (i : PairIndex) :
+    EuclideanSpace ℂ (Fin i.N) →ₗᵢ[ℂ]
+      sourceArchimedeanShiftedFormDomain i :=
+  (ccmFiniteShiftedFormDomainIsometry i).comp
+    (ccmOddCoefficientIsometry i.N)
+
+private theorem sourceWeilOddSynthesis_apply
+    (i : PairIndex) (a : EuclideanSpace ℂ (Fin i.N)) :
+    sourceWeilOddSynthesis i a =
+      ccmFiniteShiftedFormDomainSynthesis i
+        (ccmOddCoefficientIsometry i.N a) :=
+  rfl
+
+/-- The arbitrary-cell normalized odd synthesis is the literal sum of
+antisymmetric source-mode pairs. -/
+theorem sourceWeilOddSynthesis_eq_normalized_mode_sum
+    (i : PairIndex) (a : EuclideanSpace ℂ (Fin i.N)) :
+    sourceWeilOddSynthesis i a =
+      ∑ r : Fin i.N, a r •
+        ((((Real.sqrt 2 : ℝ) : ℂ)⁻¹) •
+          (sourceArchimedeanModeInShiftedFormDomain i (r.1 + 1 : ℕ) -
+            sourceArchimedeanModeInShiftedFormDomain i
+              (-((r.1 + 1 : ℕ) : ℤ)))) := by
+  classical
+  rw [sourceWeilOddSynthesis_apply]
+  rw [ccmFiniteShiftedFormDomainSynthesis_eq_sum]
+  change
+    (∑ j : CCMModeFinite i.N,
+      (∑ r : Fin i.N, ccmOddBasisVector i.N r j * a r) •
+        sourceArchimedeanModeInShiftedFormDomain i
+          (ccmModeFinite i.N j)) = _
+  simp_rw [Finset.sum_smul]
+  rw [Finset.sum_comm]
+  apply Finset.sum_congr rfl
+  intro r _hr
+  simp [ccmOddBasisVector]
+  simp_rw [sub_mul, sub_smul]
+  rw [Finset.sum_sub_distrib]
+  simp [ccmOddPositiveFinite, ccmNegFinite, ccmModeFinite,
+    smul_sub, smul_smul, mul_comm]
+  congr 2 <;> congr 1 <;> omega
+
+/-- The exact source-Weil form pulled back to normalized odd coefficients on
+an arbitrary production cell. -/
+theorem sourceWeilOddFormPullback
+    (i : PairIndex)
+    (a b : EuclideanSpace ℂ (Fin i.N)) :
+    sourceWeilSesquilinearForm i
+        (sourceWeilOddSynthesis i a)
+        (sourceWeilOddSynthesis i b) =
+      ∑ j, ∑ k,
+        star ((ccmOddCoefficientIsometry i.N a) j) *
+          (Q3.RouteB.ccmWeilMatFinite i.m i.N j k : ℂ) *
+          (ccmOddCoefficientIsometry i.N b) k := by
+  rw [sourceWeilOddSynthesis_apply, sourceWeilOddSynthesis_apply]
+  rw [sourceWeilSesquilinearForm_apply_ccmFiniteSynthesis]
+
 /-- The normalized odd coefficients synthesized in the exact `m = 13`
 shifted source-Weil form domain. -/
 noncomputable def sourceWeilOddSynthesis13
@@ -225,6 +286,9 @@ theorem sourceWeilOddFormPullback13
   rw [sourceWeilSesquilinearForm_apply_ccmFiniteSynthesis]
 
 #print axioms ccmOddCoefficientIsometry
+#print axioms sourceWeilOddSynthesis
+#print axioms sourceWeilOddSynthesis_eq_normalized_mode_sum
+#print axioms sourceWeilOddFormPullback
 #print axioms sourceWeilOddSynthesis13
 #print axioms sourceWeilOddFormPullback13
 

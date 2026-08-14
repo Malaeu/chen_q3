@@ -560,3 +560,25 @@ connector, and full complex trial-complement floor remain missing.  The
 narrowed G1 stop is
 `G1_ODD_TAIL_CORRECTION_BOUND_PROVED_CORRECTED_EVEN_HEAD_ROW_EVENNESS_AND_COFINAL_FULL_COMPLEMENT_FLOOR_MISSING`.
 No G1, G3, Route B, or RH promotion follows.
+
+## 2026-08-14 production-schedule odd-head crosswalk
+
+The historical `m = 13` restriction on the exact corrected odd-head matrix
+receiver is now removed. `sourceWeilOddSynthesis` and
+`sourceWeilOddFormPullback` are kernel checked for an arbitrary production
+`PairIndex`, and
+`sourceWeilOddTargetFloorSchurComplement_isPositive_iff_ccm_corrected_energy`
+identifies the actual odd Schur sign on every cell with the literal corrected
+CCM quadratic energy at the analytic tail cutoff.
+
+This closes only the fixed-cell adapter seam. It does not prove that the
+corrected energy is nonnegative or uniformly positive. The even leg, exact
+source-row reflection evenness or an explicit odd-contamination rate, and the
+fixed-shift/cofinal connector remain missing. The narrowed G1 stop is
+
+```text
+G1_ODD_HEAD_CROSSWALK_GENERIC_CORRECTED_SIGN_EVEN_LEG_ROW_REFLECTION_DEFECT_AND_COFINAL_SHIFT_MISSING
+```
+
+The G3 DLMF same-index analytic-limit wall is unchanged. No G1, G3, Route B,
+or RH promotion follows.
