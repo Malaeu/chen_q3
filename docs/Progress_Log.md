@@ -1945,6 +1945,48 @@ floor. Параллельный G1 blocker не изменился.
 `psi4`, matching root existence, mode zero, Fourier, Lemma 7.2, denominator
 floor, G1, G3, Route B promotion и RH остаются открыты.
 
+## 2026-08-14 — Goal 058: mode-four Ferrers physical scaling
+
+**Развилка:** ждать полного source `psi4` crosswalk либо отдельно закрыть уже
+source-locked алгебраический транспорт dimensionless Ferrers solution на
+физическое окно.
+
+**Выбрали:** bounded leaf `x=u/sqrt(mProject)` с actual first/second derivative
+interfaces, physical `C2` и буквальным `PW_lambda` ODE.
+
+**Почему:** этот транспорт не зависит от пока отсутствующего ordered-mode
+selection и не требует нового hypothesis. Он одновременно проверяет scale
+`lambda=sqrt(mProject)`, potential `(2*pi*lambda*u)^2` и eigenvalue
+`Lambda+mode4JacobiG mProject`.
+
+**Что отвергли и почему:** не объявляли root-conditioned physical row готовым
+`h4`: matching-root existence, index 4 и finite-Fourier phase по-прежнему не
+доказаны. Внешний review не отправлялся, потому что весь leaf скомпилировался
+локально после последовательного knowledge preflight.
+
+**Техника:** `ContDiffOn.comp`, два exact `HasDerivAt.comp` chain rules,
+`sqrt(m)^2=m`, field normalization и повторное использование принятого
+dimensionless ODE.
+
+**Следующий ход:** exact Route-C bridge `classical regular psi4 Legendre row ->
+current minimal right tail -> mode4RootFunction = 0`, затем normalization
+uniqueness; независимо нужен mode-zero companion.
+
+**Адреса:**
+`Q3/Proofs/RouteB/D0Mode4FerrersPhysicalProlateScaling.lean` ·
+`ACTIVE/pipeline/oracle_questions/2026_08_14_goal058_g3_mode4physicalscale_mode_four_ferrers_sqrt_m_sqrt_m_pw_lambda_ode.md` ·
+`GOAL058_G3_MODE4_PHYSICAL_SCALE_CLOSEOUT_2026-08-14.md`.
+
+**Чей вердикт и его аргумент:** локальный Codex/Lean verdict. Параметрическая
+формула была заранее source-pinned в принятом architecture memorandum; direct
+Lean проверил, что обе derivative scale factors и potential transport
+совпадают буквально, а не только размерностно.
+
+**Граница:**
+`G3_MODE4_PHYSICAL_SCALE_PROVED`; source `psi4` crosswalk, ordered index 4,
+matching-root existence, mode zero, finite Fourier, Lemma 7.2, denominator
+floor, G1, G3, Route B promotion и RH остаются открыты.
+
 ### Счёт раскопок
 
 | четверть | строки | развилок найдено | причина записана | причина отсутствует |

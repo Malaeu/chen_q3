@@ -165,3 +165,25 @@ and consecutive-pair layer only.  It does not count all zeros, identify the
 ordered degree-four mode, prove matching-root existence, construct mode zero,
 or supply the physical/Fourier/Lemma 7.2 chain.  The narrowed stop is
 `MODE4_UNRESTRICTED_STURM_COMPARISON_PROVED_INDEX4_MODE0_FOURIER_AND_LEMMA72_MISSING`.
+
+## 2026-08-14 mode-four physical scaling
+
+The source-pinned rescaling `x = u / sqrt(mProject)` is now kernel checked in
+`D0Mode4FerrersPhysicalProlateScaling.lean`.  The scaled Ferrers series is
+`C2` on `(-sqrt(mProject),sqrt(mProject))`; its declared scaled first and
+second series are proved to be the actual derivatives.  The exact physical
+equation is
+
+```text
+-(m-u^2) h''(u) + 2u h'(u) + (2*pi*sqrt(m)*u)^2 h(u)
+  = (Lambda + mode4JacobiG m) h(u).
+```
+
+The root-conditioned wrapper
+`exists_mode4MatchedNormalizedPhysicalProlateRow_of_root` preserves the
+existing normalized coefficient row and exposes the physical ODE.  This is a
+real scale bridge, not root existence or mode selection.  The remaining
+mode-four wall is the classical regular `psi4` coefficient/minimal-tail
+crosswalk and ordered index identification; mode zero, finite Fourier, Lemma
+7.2 and the denominator floor remain open.  The narrowed stop is
+`MODE4_PHYSICAL_SCALE_PROVED_SOURCE_PSI4_CROSSWALK_MODE0_FOURIER_AND_LEMMA72_MISSING`.
