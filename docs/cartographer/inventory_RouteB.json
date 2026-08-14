@@ -3,10 +3,10 @@
   "museum_excluded": "PrimeCert",
   "files_scanned": 219,
   "declarations": 2039,
-  "in_docs": 901,
+  "in_docs": 903,
   "in_lemma_db": 1869,
-  "orphans": 97,
-  "uncatalogued": 97,
+  "orphans": 95,
+  "uncatalogued": 95,
   "orphan_files_top": [
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean",
@@ -14,7 +14,7 @@
     ],
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersInteriorRegularity.lean",
-      18
+      16
     ],
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreIntervalBound.lean",
@@ -6088,9 +6088,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersInteriorRegularity.lean",
       "line": 266,
       "signature": "theorem mode4FerrersSeries_hasDerivAt_of_mem_Ioo (a : ℕ → ℝ) (r : ℝ) (hr0 : 0 < r) (hr1 : r < 1) (haAbs : Summable (fun q : ℕ => |a q|)) (ha2 : Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ) ^ 2) * |a q|)) (x : ℝ) (hx : x ∈ Set.Ioo (-r) r) : HasDerivAt (mode4FerrersSeries a) (mode4FerrersFirstDerivativeSeries a x) x",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6098,9 +6098,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersInteriorRegularity.lean",
       "line": 293,
       "signature": "theorem mode4FerrersFirstDerivativeSeries_hasDerivAt_of_mem_Ioo (a : ℕ → ℝ) (r : ℝ) (hr0 : 0 < r) (hr1 : r < 1) (ha2 : Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ) ^ 2) * |a q|)) (x : ℝ) (hx : x ∈ Set.Ioo (-r) r) : HasDerivAt (mode4FerrersFirstDerivativeSeries a) (mode4FerrersSecondDerivativeSeries a x) x",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6436,7 +6436,7 @@
       "kind": "theorem",
       "name": "exists_mode4FerrersRegularEvenProlateSolution_of_root",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersRegularEvenProlateSolution.lean",
-      "line": 84,
+      "line": 96,
       "signature": "theorem exists_mode4FerrersRegularEvenProlateSolution_of_root (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (hroot : mode4RootFunction mProject K Λ = 0) : Nonempty (Mode4FerrersRegularEvenProlateSolution mProject K Λ)",
       "in_docs": true,
       "in_lemma_db": false,
