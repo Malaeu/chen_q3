@@ -1,0 +1,146 @@
+GOAL 058 G3 — POST-INERTIA SOURCE CROSSWALK JOINT REQUEST
+Date: 2026-08-14
+Repository: Malaeu/chen_q3
+Branch: rh_clean
+Authoritative pin: 496c907c25db7e853f2178026a688c831fcbe18a
+Phase: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+Route boundary: CHALLENGER_NOT_RH
+
+PURPOSE
+
+Choose the smallest honest source-producing next step after the exact interior
+Sturm and Schur-inertia mechanisms have both been kernel checked.  This is an
+architecture/judge request, not permission to execute, close G3/G1, promote
+Route B, or claim RH.
+
+NEW EXACT DELTA SINCE THE PRIOR STURM VERDICTS
+
+1. The bounded nodal-interval Sturm comparison requested by Mythos and repaired
+   by Proshka is already proved:
+   q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersSturmComparison.lean
+
+2. Compact zero selection and the regular even Ferrers source chain are proved:
+   q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersCompactZeroSelection.lean
+   q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersRegularEvenProlateSolution.lean
+
+3. A supplied classical degree-four DLMF coefficient row now forces the literal
+   current infinite-tail matching root:
+   q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4PSWFClassicalCoefficientRootCrosswalk.lean
+   This is still conditional on supplying the actual indexed row.
+
+4. The exact Schur family is strictly ordered in Lambda, every supplied root has
+   one-dimensional kernel, and crossing a root raises the negative index by at
+   least one:
+   q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4SchurSpectralParameterOrder.lean
+   q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4SchurSimpleKernel.lean
+   q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4SchurRootQuadraticCrossing.lean
+
+5. The new exact label theorem proves, for any two supplied roots in the
+   source domain,
+
+       Lambda_1 < Lambda_2
+       iff negativeCount(A(Lambda_1)) < negativeCount(A(Lambda_2)),
+
+   and equal negative counts iff the roots are equal:
+   q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4SchurRootInertiaLabel.lean
+
+6. Direct Lean, target build, full 7817-job build, q3_check, catalog backfill,
+   Route status, and strict startup all pass.  New public axiom surface is only
+   [propext, Classical.choice, Quot.sound].
+
+PINNED PRIMARY-SOURCE FACTS ALREADY AUDITED
+
+A. Bonami--Karoui, repo PDF
+   docs/routeB_bus/litreview/pdfs/1405.3676.pdf
+   physical page 5, equation (8):
+     n(n+1) <= chi_n(c) <= n(n+1)+c^2.
+   The same page states that psi_n has exactly n zeros in (-1,1).
+   At n=4 and Lambda=chi-c^2, this justifies Lambda <= 20.
+
+B. Osipov, repo PDF
+   docs/routeB_bus/litreview/pdfs/TR1450.pdf
+   physical pages 4--5, Theorems 1 and 3:
+   real complete orthonormal psi_n; parity by n; exactly n simple roots;
+   nonzero simple finite-Fourier eigenvalues with phase i^n; strictly ordered
+   unbounded chi_0<chi_1<...; uniqueness up to scale at each chi_n.
+
+C. Slepian--Pollak, repo PDF
+   docs/routeB_bus/litreview/pdfs/bstj40-1-43_text.pdf
+   printed pages 57--62 / PDF pages 15--20:
+   indexed parity/zero convention and the restricted finite-Fourier
+   eigenrelation for the normalized prolate modes.
+
+The detailed source pins and mapping risks are recorded in:
+q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_PSWF_INDEX_SOURCE_PIN_PACKET_2026-08-14.md
+
+CURRENT EXACT WALL
+
+No Lean theorem constructs or extracts the indexed classical psi_0, psi_2,
+psi_4 objects from the pinned source theorems.  The current
+IsActualProlateModePair predicate is a contract, not existence.  The current
+degree-four DLMF crosswalk consumes a supplied row.  The new inertia label
+orders supplied Schur roots but does not create endpoint counts or roots.
+
+Therefore the stop is:
+
+SCHUR_ROOT_INERTIA_LABEL_INJECTIVE_SOURCE_ROOT_EXISTENCE_ENDPOINT_COUNTS_AND_INDEX4_IDENTIFICATION_MISSING
+
+MYTHOS — REQUIRED OUTPUT
+
+Return one PRIMARY architecture and one smallest executable next action.
+
+1. Decide whether the next source-producing object should be:
+   A. an actual indexed Sturm--Liouville constructor for psi_0, psi_2, psi_4;
+   B. an ordered-spectrum-to-Schur-root/inertia crosswalk;
+   C. a concrete source endpoint-count theorem for the current Schur matrix;
+   D. another precisely named mechanism.
+
+2. Give the exact theorem head and exact binders.  It may not add existence,
+   zero count, ordered index, endpoint count, or the finite-Fourier relation as
+   a new structure field or hypothesis if that item is what the theorem claims
+   to supply.
+
+3. Explain how the new root-inertia label is consumed.  In particular, say
+   whether a source construction of three ordered even roots is sufficient to
+   identify the third with negative-count label 2, or whether an independent
+   starting endpoint count remains load-bearing.
+
+4. Separate the ODE/index theorem from the restricted finite-Fourier
+   eigenrelation.  State exactly which one the proposed action supplies.
+
+5. Decide whether Aristotle is appropriate now.  If YES, return one tight
+   exact task with owned file, allowed imports, literal theorem head, success
+   code, typed stops, and falsifiers.  If NO, name the prerequisite source
+   packet or Codex-local proof leaf.
+
+6. Attack your own proposal with at least two circularity/object-mismatch
+   objections.  Preserve all nonclaims below.
+
+PROSHKA — REQUIRED OUTPUT AFTER MYTHOS IS PERSISTED
+
+Judge the same physical pin plus the persisted Mythos response.  Return exactly
+one PRIMARY and one bounded directive.  Reject any receiver, renamed premise,
+free indexed row, finite-only surrogate, or source theorem whose endpoint and
+phase conventions do not map to the current objects.  If an Aristotle task is
+authorized, write ARISTOTLE_SUBMISSION_AUTHORIZED explicitly.
+
+NONCLAIMS
+
+NO_ACTUAL_INDEXED_PSI_CONSTRUCTOR_YET
+NO_SOURCE_ENDPOINT_COUNTS_YET
+NO_INDEX4_IDENTIFICATION_YET
+NO_MODE0_CONSTRUCTION_YET
+NO_RESTRICTED_FINITE_FOURIER_PAIR_YET
+NO_CCM_LEMMA_7_2_RATE_YET
+NO_COFINAL_DENOMINATOR_FLOOR_YET
+G1_OPEN
+G3_OPEN
+ROUTE_B_CHALLENGER_NOT_RH
+NO_ROUTE_PROMOTION
+NO_PX_RH_CLAIM
+
+TRANSPORT
+
+Return the verdict in ordinary chat text with address markers [→PROSHKA] or
+[→CODEX].  Do not return a download-only artifact and do not create a fresh
+chat.
