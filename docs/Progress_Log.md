@@ -2313,6 +2313,50 @@ identification стену не сокращает. Codex локально зак
 `G3_L2_CHARACTERISTIC_CROSSWALK_PROVED_FINITE_LIMIT_SPECTRUM_SOURCE_THEOREM_MISSING`;
 G1, G3, Route B promotion и RH остаются открыты.
 
+## 2026-08-15 — Goal 058 G3: полный spectral iff сужен до честного направления
+
+**Развилка:** принять Mythos production-domain iff и отправить отдельный
+`GrowthDichotomy` в Aristotle либо проверить, действительно ли count ladder
+пересекает singular carrier endpoint в обе стороны.
+
+**Выбрали:** после byte-locked Proshka judge оставить только направление
+`normalized l2 row → literal root → finite-limit carrier`. Оно использует
+локальный Schur count jump и convergence одного фиксированного finite
+eigenvalue index, поэтому не требует глобального carrier tail.
+
+**Почему:** полный iff скрывал пять проблем: несуществующий threshold,
+вакуумный separation binder, дублирующий growth leaf, отсутствие carrier
+growth и круг на `det = 0` ровно в carrier endpoint. Односторонний proof эти
+проблемы не переименовывает.
+
+**Что отвергли и почему:** Mythos `GrowthDichotomy` отвергнут как duplicate:
+новый l2 crosswalk уже доказывает recessive-tail summability, исключает
+nonmatching dominant branch и даёт square-summable uniqueness. Aristotle
+`NOT_READY`.
+
+**Техника:** l2/characteristic biconditional, exact split root adapter,
+one-dimensional literal Schur kernel, quadratic crossing, два nonsingular
+endpoint count transports, full finite DLMF spectrum crosswalk и pinching
+fixed-index limit.
+
+**Следующий ход:** Codex-local assembly
+`mode4DLMF3035EvenLeftCoefficient_sqSummable_imp_exists_finiteLimitSpectrum`
+с `Λ < 20`. После него отдельная reverse wall:
+`mode4ClassicalEvenEigenvalue_eq_imp_literalSchur_det_eq_zero_of_lt_twenty`.
+
+**Адреса:**
+`q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_PRODUCTION_SPECTRAL_IFF_PROSHKA_JUDGE_REQUEST_2026-08-15.txt` ·
+`q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/PROSHKA_VERDICT_GOAL058_G3_PRODUCTION_SPECTRAL_IFF_2026-08-15.md`.
+
+**Чей вердикт и его аргумент:** Proshka выбрала
+`B — PRODUCTION_ROOT_TO_CARRIER_ONE_DIRECTION_FIRST`: локальный count jump
+фиксирует один finite eigenvalue index и пропускается к его пределу; обратное
+направление всё ещё требует singular-endpoint local-count contradiction.
+
+**Граница:**
+`G3_ROOT_TO_FINITE_LIMIT_CARRIER_DIRECTION_READY_CARRIER_TO_LITERAL_ROOT_SINGULAR_ENDPOINT_BRIDGE_MISSING`;
+G1, G3, Route B promotion и RH остаются открыты.
+
 ### Счёт раскопок
 
 | четверть | строки | развилок найдено | причина записана | причина отсутствует |

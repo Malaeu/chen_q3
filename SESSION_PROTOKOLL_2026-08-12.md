@@ -286,3 +286,38 @@ named build, `q3_check` и full build прошли; axioms только `propext
 set с indexed even finite-limit/differential spectrum. G1 отдельно остаётся
 открытым на actual degree-0/4 pair, CCM Lemma 7.2 и cofinal full-complement
 floor. Route B остаётся `CHALLENGER / NOT_RH`; RH claim не сделан.
+
+---
+
+## Fortsetzung 2026-08-15 — Goal 058 G3 spectral-iff judge
+
+После доказанного DLMF-characteristic/l2 листа Mythos предложил полный
+production-domain iff с `mode4ClassicalEvenEigenvalue` и отдельный Aristotle
+`GrowthDichotomy`. Локальный kill-check нашёл в этом предложении
+несуществующий `mode4TailSeparationThreshold`, вакуумный binder
+`carrier ≠ Λ → True`, дублирование уже доказанной l2-уникальности, отсутствие
+carrier tail и неразрешённый singular endpoint.
+
+Собран byte-verified UTF-8 Proshka request: 7,279 bytes, SHA-256
+`f8b095440ae647a9d3ab56bd095bfe60f0d3829e23a035c1a77a6afc95e56419`,
+commit `7e04518b`. GitHub blob/raw дали `CACHE_MISS`; Прошка остановилась
+fail-closed. Тот же пакет затем был передан exact inline в той же транзакции.
+`Answer now` показывалась и не нажималась.
+
+Финальный выбор Прошки:
+`B — PRODUCTION_ROOT_TO_CARRIER_ONE_DIRECTION_FIRST`. Честный следующий лист
+имеет направление normalized l2 row → DLMF characteristic → literal root →
+локальный negative-count jump → один фиксированный finite eigenvalue index →
+`mode4ClassicalEvenEigenvalue = Λ`. Он требует `Λ < 20`, но не требует
+глобального carrier-growth/tail binder.
+
+Обратное направление `carrier j = Λ → det literalSchur(Λ) = 0` осталось
+точной стеной singular endpoint. Нужен contradiction через локальную
+стабильность literal negative count при `det ≠ 0`, два соседних конечных
+счёта и convergence `j`-го finite eigenvalue. Mythos `GrowthDichotomy`
+отвергнут как duplicate. Aristotle `NOT_READY`; сначала Codex-local assembly
+одностороннего production theorem против точных текущих деклараций.
+
+Статус: G1 OPEN; G3 OPEN; Route B `CHALLENGER_NOT_RH`; RH claim отсутствует.
+Стоп-код:
+`G3_ROOT_TO_FINITE_LIMIT_CARRIER_DIRECTION_READY_CARRIER_TO_LITERAL_ROOT_SINGULAR_ENDPOINT_BRIDGE_MISSING`.

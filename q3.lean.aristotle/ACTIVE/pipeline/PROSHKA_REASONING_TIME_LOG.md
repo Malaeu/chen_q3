@@ -31,6 +31,40 @@ does not change Lean, route, or roof status.
 
 ## Runs
 
+### 2026-08-15 — Goal 058 G3 production spectral-iff judgment
+
+```yaml
+proof_address: RouteB.Goal058.G3.ProductionSpectralIff
+front: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
+transaction: GOAL058_G3_PRODUCTION_SPECTRAL_IFF_JUDGE
+conversation_id: 6a7afc0e-2aec-83eb-a9ca-469b44c84f83
+request_message_id: NOT_CAPTURED
+response_message_id: NOT_CAPTURED
+sent_at: NOT_CAPTURED
+completed_at: NOT_CAPTURED
+wall_seconds: 741
+wall_human: "UI reported 4m04s source-lock stop plus 8m17s substantive natural reasoning"
+answer_now_shown: true
+answer_now_clicked: false
+primary: PRODUCTION_ROOT_TO_CARRIER_ONE_DIRECTION_FIRST
+status: OPEN_ONE_DIRECTION_CODEX_LOCAL_REVERSE_SINGULAR_ENDPOINT_MISSING
+result_pointer: >-
+  q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/
+  PROSHKA_VERDICT_GOAL058_G3_PRODUCTION_SPECTRAL_IFF_2026-08-15.md
+request_sha256: f8b095440ae647a9d3ab56bd095bfe60f0d3829e23a035c1a77a6afc95e56419
+notes: >-
+  Seventh call in the unchanged living Goal 058 phase. The immutable GitHub
+  blob and raw endpoints cache-missed, so Proshka first stopped fail-closed
+  without adjudication. The exact 7,279-byte UTF-8 request was then pasted
+  inline in the same transaction. Proshka rejected Mythos's invented
+  threshold, vacuous binder, and duplicate GrowthDichotomy leaf. It selected
+  only the production l2-row/root to one finite-limit carrier direction for
+  Codex-local assembly. The reverse carrier-to-root implication remains open
+  at the singular endpoint. Aristotle is not authorized. G1/G3 remain open;
+  no Route promotion or RH claim occurred. Answer now was shown and never
+  clicked.
+```
+
 ### 2026-08-14 — Goal 058 post-DLMF characteristic route and G1 producer adjudication
 
 ```yaml
