@@ -2183,6 +2183,46 @@ simple-root corollary с public axioms только
 matching-root/indexed-`psi_4` existence, mode zero, restricted finite Fourier,
 Lemma 7.2, denominator floor, G1, G3, Route B promotion и RH остаются открыты.
 
+## 2026-08-14 — Goal 058 G3: точные корни получили инъективную инерционную метку
+
+**Развилка:** после одностороннего скачка сразу вводить номер литературного
+`psi_4` как внешний binder либо сначала доказать всё, что уже следует для
+любых двух буквальных корней Schur family.
+
+**Выбрали:** доказать строгую эквивалентность порядка корней и порядка
+`negativeCount`, а затем равенство корней из равенства их инерционных меток.
+
+**Почему:** simple root даёт скачок минимум на единицу, а тот же аргумент в
+обратном порядке исключает несовпадение параметров при равных counts. Теперь
+каждый построенный source root можно честно маркировать инерцией без
+continuous eigenvalue indexing.
+
+**Что отвергли и почему:** не объявляли существование трёх even roots,
+endpoint counts или соответствие count-two корня с `psi_4`. Pinned
+Bonami--Karoui/Osipov источники дают ordered differential spectrum, но Lean
+crosswalk от него к существованию Schur roots всё ещё не построен.
+
+**Техника:** exact simple-root negative-index jump, линейный порядок
+спектрального параметра и натуральная арифметика. Никакой новой спектральной
+гипотезы, численного endpoint или конечной аппроксимации.
+
+**Следующий ход:** source-producing construction/extraction of the ordered
+even roots (or an exact ordered-spectrum-to-Schur-root crosswalk), then prove
+that the count-two root is the pinned degree-four coefficient row. Separately,
+G1 still needs the literal cofinal complement floor.
+
+**Адрес:**
+`Q3/Proofs/RouteB/D0Mode4SchurRootInertiaLabel.lean`.
+
+**Чей вердикт и его аргумент:** локальный Codex/Lean verdict. Три exact shelf
+query не нашли готового root-label theorem; Lean kernel принял обе public
+теоремы с axioms только `[propext, Classical.choice, Quot.sound]`.
+
+**Граница:**
+`SCHUR_ROOT_INERTIA_LABEL_INJECTIVE_SOURCE_ROOT_EXISTENCE_ENDPOINT_COUNTS_AND_INDEX4_IDENTIFICATION_MISSING`;
+indexed-`psi_4`, mode zero, restricted finite Fourier, Lemma 7.2, denominator
+floor, G1, G3, Route B promotion и RH остаются открыты.
+
 ### Счёт раскопок
 
 | четверть | строки | развилок найдено | причина записана | причина отсутствует |

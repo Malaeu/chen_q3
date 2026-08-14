@@ -375,3 +375,25 @@ with indexed `psi_4`.  Mode zero, restricted finite Fourier, CCM Lemma 7.2,
 the denominator floor, G1, G3, Route B promotion, and RH remain open.  The
 narrowed stop is
 `ROOT_QUADRATIC_AND_ONE_DIRECTION_INERTIA_JUMP_PROVED_SOURCE_ENDPOINT_COUNTS_AND_INDEX4_SELECTION_MISSING`.
+
+## 2026-08-14 exact Schur-root inertia labels
+
+The one-direction jump now composes into a strict root-label theorem.  For any
+two supplied exact matching roots in the pole-free source domain,
+
+```text
+Lambda_1 < Lambda_2
+  <-> negativeCount(A(Lambda_1)) < negativeCount(A(Lambda_2)).
+```
+
+Therefore two exact roots have the same Hermitian negative-eigenvalue count if
+and only if they are equal.  The Schur negative count is now an injective,
+order-preserving label on the exact roots; no continuous eigenvalue numbering
+or new source binder is used.
+
+This still does not construct a root, provide an endpoint count, prove that
+three even crossings exist, or identify the count-two root with the classical
+indexed `psi_4`.  The remaining source wall is
+`SCHUR_ROOT_INERTIA_LABEL_INJECTIVE_SOURCE_ROOT_EXISTENCE_ENDPOINT_COUNTS_AND_INDEX4_IDENTIFICATION_MISSING`.
+Mode zero, restricted finite Fourier, CCM Lemma 7.2, the denominator floor,
+G1, G3, Route B promotion, and RH remain open.
