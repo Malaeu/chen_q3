@@ -1,9 +1,9 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 239,
-  "declarations": 2221,
-  "in_docs": 954,
+  "files_scanned": 240,
+  "declarations": 2224,
+  "in_docs": 959,
   "in_lemma_db": 2172,
   "orphans": 47,
   "uncatalogued": 47,
@@ -6195,6 +6195,36 @@
       "orphan": false
     },
     {
+      "kind": "def",
+      "name": "mode4BackwardTailSchurApprox",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4BackwardTailSchurConvergence.lean",
+      "line": 25,
+      "signature": "noncomputable def mode4BackwardTailSchurApprox (mProject : ℕ) (Λ : ℝ) : (K d : ℕ) → Matrix (Fin K) (Fin K) ℝ | 0, _ => fun i => Fin.elim0 i | n + 1, d => fun i j => let G",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4BackwardTailSchurApprox_isHermitian",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4BackwardTailSchurConvergence.lean",
+      "line": 48,
+      "signature": "theorem mode4BackwardTailSchurApprox_isHermitian (mProject K d : ℕ) (Λ : ℝ) : (mode4BackwardTailSchurApprox mProject Λ K d).IsHermitian",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4BackwardTailSchurApprox_tendsto_literal",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4BackwardTailSchurConvergence.lean",
+      "line": 71,
+      "signature": "theorem mode4BackwardTailSchurApprox_tendsto_literal (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) : Tendsto (fun d => mode4BackwardTailSchurApprox mProject Λ K d) atTop (𝓝 (mode4HermitianSchurMatrix mProject Λ K))",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
       "kind": "theorem",
       "name": "Mode4FerrersRegularEvenProlateSolution.center_value_ne_zero",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersCenterValueNonzero.lean",
@@ -9790,7 +9820,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4SchurHermitianSymmetrization.lean",
       "line": 40,
       "signature": "noncomputable def mode4HermitianLeftContinuantMatrix (G Λ : ℝ) : (K : ℕ) → Matrix (Fin K) (Fin K) ℝ | 0 => fun i => Fin.elim0 i | n + 1 => fun i j => Fin.cases (Fin.cases (mode4JacobiCenter G Λ n) (fun j' => if j'.val = 0 then -mode4JacobiSymmetricOff G (n - 1) else 0) j) (fun i' => Fin.cases (if i'.val = 0 then -mode4JacobiSymmetricOff G (n - 1) else 0) (fun j' => mode4HermitianLeftContinuantMatrix G Λ n i' j') j) i  theorem mode4HermitianLeftContinuantMatrix_isHermitian (G Λ : ℝ) (K : ℕ) : (mode4HermitianLeftContinuantMatrix G Λ K).IsHermitian",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -9800,7 +9830,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4SchurHermitianSymmetrization.lean",
       "line": 56,
       "signature": "theorem mode4HermitianLeftContinuantMatrix_isHermitian (G Λ : ℝ) (K : ℕ) : (mode4HermitianLeftContinuantMatrix G Λ K).IsHermitian",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
