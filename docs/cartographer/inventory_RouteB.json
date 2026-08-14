@@ -1,30 +1,13 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 244,
-  "declarations": 2265,
-  "in_docs": 974,
-  "in_lemma_db": 2172,
-  "orphans": 77,
-  "uncatalogued": 77,
-  "orphan_files_top": [
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4HermitianNegativeCountStability.lean",
-      47
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteBlockInertiaAdditivity.lean",
-      13
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4BackwardTailFiniteSchurCrosswalk.lean",
-      9
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4BackwardTailFiniteTailPosDef.lean",
-      8
-    ]
-  ],
+  "files_scanned": 245,
+  "declarations": 2283,
+  "in_docs": 978,
+  "in_lemma_db": 2283,
+  "orphans": 0,
+  "uncatalogued": 0,
+  "orphan_files_top": [],
   "items": [
     {
       "kind": "def",
@@ -6213,8 +6196,8 @@
       "line": 21,
       "signature": "private noncomputable def mode4ForwardFiniteTailMatrix (G Λ : ℝ) (K : ℕ) : (d : ℕ) → Matrix (Fin d) (Fin d) ℝ | 0 => fun i => Fin.elim0 i | n + 1 => fun i j => Fin.cases (Fin.cases (mode4JacobiCenter G Λ K) (fun j' => if j'.val = 0 then -mode4JacobiSymmetricOff G K else 0) j) (fun i' => Fin.cases (if i'.val = 0 then -mode4JacobiSymmetricOff G K else 0) (fun j' => mode4ForwardFiniteTailMatrix G Λ (K + 1) n i' j') j) i  private noncomputable def mode4RetainedTailCoupling (G : ℝ) (K d : ℕ) : Matrix (Fin K) (Fin d) ℝ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -6223,7 +6206,7 @@
       "line": 37,
       "signature": "private noncomputable def mode4RetainedTailCoupling (G : ℝ) (K d : ℕ) : Matrix (Fin K) (Fin d) ℝ",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6233,8 +6216,8 @@
       "line": 42,
       "signature": "private theorem mode4RetainedTailCoupling_eq_single (G : ℝ) (n e : ℕ) : mode4RetainedTailCoupling G (n + 1) (e + 1) = Matrix.single (0 : Fin (n + 1)) (0 : Fin (e + 1)) (-mode4JacobiSymmetricOff G n)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -6243,7 +6226,7 @@
       "line": 53,
       "signature": "noncomputable def mode4ActualFiniteJacobiTruncation (mProject : ℕ) (Λ : ℝ) (K d : ℕ) : Matrix (Fin K ⊕ Fin d) (Fin K ⊕ Fin d) ℝ",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6253,8 +6236,8 @@
       "line": 63,
       "signature": "private theorem mode4ForwardFiniteTailMatrix_isHermitian (G Λ : ℝ) (K d : ℕ) : (mode4ForwardFiniteTailMatrix G Λ K d).IsHermitian",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6263,7 +6246,7 @@
       "line": 82,
       "signature": "theorem mode4ActualFiniteJacobiTruncation_isHermitian (mProject : ℕ) (Λ : ℝ) (K d : ℕ) : (mode4ActualFiniteJacobiTruncation mProject Λ K d).IsHermitian",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6273,8 +6256,8 @@
       "line": 93,
       "signature": "private theorem mode4ForwardFiniteTailMatrix_minor_zero (G Λ : ℝ) (K n : ℕ) : Matrix.submatrix (mode4ForwardFiniteTailMatrix G Λ K (n + 1)) Fin.succ (Fin.succAbove 0) = mode4ForwardFiniteTailMatrix G Λ (K + 1) n",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6283,8 +6266,8 @@
       "line": 101,
       "signature": "private theorem mode4ForwardFiniteTailMatrix_minor_one_det (G Λ : ℝ) (K n : ℕ) : (Matrix.submatrix (mode4ForwardFiniteTailMatrix G Λ K (n + 2)) Fin.succ (Fin.succ 0).succAbove).det = -mode4JacobiSymmetricOff G K * (mode4ForwardFiniteTailMatrix G Λ (K + 2) n).det",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6293,8 +6276,8 @@
       "line": 137,
       "signature": "private theorem mode4ForwardFiniteTailMatrix_det_succ_succ (G Λ : ℝ) (K n : ℕ) (hG : 0 < G) : (mode4ForwardFiniteTailMatrix G Λ K (n + 2)).det = mode4JacobiCenter G Λ K * (mode4ForwardFiniteTailMatrix G Λ (K + 1) (n + 1)).det - mode4JacobiLower G (K + 1) * mode4JacobiUpper G K * (mode4ForwardFiniteTailMatrix G Λ (K + 2) n).det",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -6303,7 +6286,7 @@
       "line": 190,
       "signature": "private def mode4FiniteTailPivotsNonzero (mProject : ℕ) (Λ : ℝ) : (K d : ℕ) → Prop | _, 0 => True | K, n + 1 => mode4JacobiCenter (mode4JacobiG mProject) Λ K - mode4JacobiUpper (mode4JacobiG mProject) K * mode4BackwardTail mProject Λ (K + 1) n 0 ≠ 0 ∧ mode4FiniteTailPivotsNonzero mProject Λ (K + 1) n  private theorem mode4ForwardFiniteTailMatrix_det_ne_zero_and_backwardTail_eq (mProject K d : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hpiv : mode4FiniteTailPivotsNonzero mProject Λ K (d + 1)) : (mode4ForwardFiniteTailMatrix (mode4JacobiG mProject) Λ K (d + 1)).det ≠ 0 ∧ mode4BackwardTail mProject Λ K (d + 1) 0 = mode4JacobiLower (mode4JacobiG mProject) K * (mode4ForwardFiniteTailMatrix (mode4JacobiG mProject) Λ (K + 1) d).det / (mode4ForwardFiniteTailMatrix (mode4JacobiG mProject) Λ K (d + 1)).det",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6313,8 +6296,8 @@
       "line": 199,
       "signature": "private theorem mode4ForwardFiniteTailMatrix_det_ne_zero_and_backwardTail_eq (mProject K d : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hpiv : mode4FiniteTailPivotsNonzero mProject Λ K (d + 1)) : (mode4ForwardFiniteTailMatrix (mode4JacobiG mProject) Λ K (d + 1)).det ≠ 0 ∧ mode4BackwardTail mProject Λ K (d + 1) 0 = mode4JacobiLower (mode4JacobiG mProject) K * (mode4ForwardFiniteTailMatrix (mode4JacobiG mProject) Λ (K + 1) d).det / (mode4ForwardFiniteTailMatrix (mode4JacobiG mProject) Λ K (d + 1)).det",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6323,8 +6306,8 @@
       "line": 246,
       "signature": "private theorem mode4BackwardTail_eq_lower_mul_det_div_det (mProject K d : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hpiv : mode4FiniteTailPivotsNonzero mProject Λ K (d + 1)) : mode4BackwardTail mProject Λ K (d + 1) 0 = mode4JacobiLower (mode4JacobiG mProject) K * (mode4ForwardFiniteTailMatrix (mode4JacobiG mProject) Λ (K + 1) d).det / (mode4ForwardFiniteTailMatrix (mode4JacobiG mProject) Λ K (d + 1)).det",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6333,8 +6316,8 @@
       "line": 259,
       "signature": "private theorem mode4ForwardFiniteTailMatrix_inv_zero_zero (mProject K d : ℕ) (Λ : ℝ) : (mode4ForwardFiniteTailMatrix (mode4JacobiG mProject) Λ K (d + 1))⁻¹ 0 0 = (mode4ForwardFiniteTailMatrix (mode4JacobiG mProject) Λ (K + 1) d).det / (mode4ForwardFiniteTailMatrix (mode4JacobiG mProject) Λ K (d + 1)).det",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6343,7 +6326,7 @@
       "line": 296,
       "signature": "theorem mode4ActualFiniteJacobiTruncation_schurComplement_eq_approx (mProject K d : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hpiv : mode4FiniteTailPivotsNonzero mProject Λ K d) : let M",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6353,8 +6336,8 @@
       "line": 26,
       "signature": "private noncomputable def mode4ForwardFiniteTailMatrixPD (G Λ : ℝ) (K : ℕ) : (d : ℕ) → Matrix (Fin d) (Fin d) ℝ | 0 => fun i => Fin.elim0 i | n + 1 => fun i j => Fin.cases (Fin.cases (mode4JacobiCenter G Λ K) (fun j' => if j'.val = 0 then -mode4JacobiSymmetricOff G K else 0) j) (fun i' => Fin.cases (if i'.val = 0 then -mode4JacobiSymmetricOff G K else 0) (fun j' => mode4ForwardFiniteTailMatrixPD G Λ (K + 1) n i' j') j) i  private theorem mode4ActualFiniteJacobiTruncation_tailBlock_eq_forwardPD (mProject K d : ℕ) (Λ : ℝ) : (mode4ActualFiniteJacobiTruncation mProject Λ K d).toBlocks₂₂ = mode4ForwardFiniteTailMatrixPD (mode4JacobiG mProject) Λ K d",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6363,8 +6346,8 @@
       "line": 42,
       "signature": "private theorem mode4ActualFiniteJacobiTruncation_tailBlock_eq_forwardPD (mProject K d : ℕ) (Λ : ℝ) : (mode4ActualFiniteJacobiTruncation mProject Λ K d).toBlocks₂₂ = mode4ForwardFiniteTailMatrixPD (mode4JacobiG mProject) Λ K d",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6373,8 +6356,8 @@
       "line": 62,
       "signature": "private theorem mode4ForwardFiniteTailMatrixPD_quadratic_succ_succ (G Λ : ℝ) (K n : ℕ) (x : Fin (n + 2) → ℝ) : star x ⬝ᵥ (mode4ForwardFiniteTailMatrixPD G Λ K (n + 2) *ᵥ x) = mode4JacobiCenter G Λ K * x 0 ^ 2 - 2 * mode4JacobiSymmetricOff G K * x 0 * x 1 + star (fun i : Fin (n + 1) => x i.succ) ⬝ᵥ (mode4ForwardFiniteTailMatrixPD G Λ (K + 1) (n + 1) *ᵥ (fun i : Fin (n + 1) => x i.succ))",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6383,8 +6366,8 @@
       "line": 75,
       "signature": "private theorem mode4JacobiSymmetricOff_young (G : ℝ) (q : ℕ) (hG : 0 < G) (x y : ℝ) : 2 * mode4JacobiSymmetricOff G q * x * y ≤ mode4JacobiUpper G q * x ^ 2 + mode4JacobiLower G (q + 1) * y ^ 2",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6393,8 +6376,8 @@
       "line": 109,
       "signature": "private theorem mode4ForwardFiniteTailMatrixPD_quadratic_lower (mProject K n : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (x : Fin (n + 1) → ℝ) : mode4JacobiLower (mode4JacobiG mProject) K * x 0 ^ 2 + (1 / 12 : ℝ) * mode4JacobiG mProject * ∑ i, x i ^ 2 ≤ star x ⬝ᵥ (mode4ForwardFiniteTailMatrixPD (mode4JacobiG mProject) Λ K (n + 1) *ᵥ x)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6403,8 +6386,8 @@
       "line": 179,
       "signature": "private theorem mode4ForwardFiniteTailMatrixPD_isHermitian (G Λ : ℝ) (K d : ℕ) : (mode4ForwardFiniteTailMatrixPD G Λ K d).IsHermitian",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6413,8 +6396,8 @@
       "line": 198,
       "signature": "private theorem mode4ForwardFiniteTailMatrixPD_posDef (mProject K d : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) : (mode4ForwardFiniteTailMatrixPD (mode4JacobiG mProject) Λ K d).PosDef",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6423,7 +6406,7 @@
       "line": 247,
       "signature": "theorem mode4ActualFiniteJacobiTruncation_tailBlock_posDef (mProject K d : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) : (mode4ActualFiniteJacobiTruncation mProject Λ K d).toBlocks₂₂.PosDef",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6433,8 +6416,8 @@
       "line": 261,
       "signature": "private theorem mode4BackwardTail_zero_mem_Icc (mProject K d : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) : mode4BackwardTail mProject Λ K d 0 ∈ Set.Icc 0 (1 / 2)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6443,7 +6426,7 @@
       "line": 276,
       "signature": "theorem mode4ActualFiniteJacobiTruncation_schurComplement_eq_approx_of_separation (mProject K d : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) : let M",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6453,7 +6436,7 @@
       "line": 25,
       "signature": "noncomputable def mode4BackwardTailSchurApprox (mProject : ℕ) (Λ : ℝ) : (K d : ℕ) → Matrix (Fin K) (Fin K) ℝ | 0, _ => fun i => Fin.elim0 i | n + 1, d => fun i j => let G",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6463,7 +6446,7 @@
       "line": 48,
       "signature": "theorem mode4BackwardTailSchurApprox_isHermitian (mProject K d : ℕ) (Λ : ℝ) : (mode4BackwardTailSchurApprox mProject Λ K d).IsHermitian",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6473,7 +6456,187 @@
       "line": 71,
       "signature": "theorem mode4BackwardTailSchurApprox_tendsto_literal (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) : Tendsto (fun d => mode4BackwardTailSchurApprox mProject Λ K d) atTop (𝓝 (mode4HermitianSchurMatrix mProject Λ K))",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "mode4DLMFEvenDiagonal",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMFEvenFiniteMatrix.lean",
+      "line": 21,
+      "signature": "noncomputable def mode4DLMFEvenDiagonal (G Λ : ℝ) (q : ℕ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "mode4DLMFEvenUpper",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMFEvenFiniteMatrix.lean",
+      "line": 30,
+      "signature": "noncomputable def mode4DLMFEvenUpper (G : ℝ) (q : ℕ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "mode4DLMFEvenLower",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMFEvenFiniteMatrix.lean",
+      "line": 38,
+      "signature": "noncomputable def mode4DLMFEvenLower (G : ℝ) (q : ℕ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4DLMFEvenDiagonal_eq_jacobiCenter",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMFEvenFiniteMatrix.lean",
+      "line": 43,
+      "signature": "theorem mode4DLMFEvenDiagonal_eq_jacobiCenter (G Λ : ℝ) (q : ℕ) : mode4DLMFEvenDiagonal G Λ q = mode4JacobiCenter G Λ q",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4DLMFEvenUpper_eq_neg_jacobiUpper",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMFEvenFiniteMatrix.lean",
+      "line": 48,
+      "signature": "theorem mode4DLMFEvenUpper_eq_neg_jacobiUpper (G : ℝ) (q : ℕ) : mode4DLMFEvenUpper G q = -mode4JacobiUpper G q",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4DLMFEvenLower_eq_neg_jacobiLower",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMFEvenFiniteMatrix.lean",
+      "line": 55,
+      "signature": "theorem mode4DLMFEvenLower_eq_neg_jacobiLower (G : ℝ) (q : ℕ) : mode4DLMFEvenLower G q = -mode4JacobiLower G q",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "mode4DLMFEvenFiniteMatrix",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMFEvenFiniteMatrix.lean",
+      "line": 64,
+      "signature": "noncomputable def mode4DLMFEvenFiniteMatrix (G Λ : ℝ) (d : ℕ) : Matrix (Fin d) (Fin d) ℝ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "mode4ForwardHermitianFiniteMatrix",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMFEvenFiniteMatrix.lean",
+      "line": 73,
+      "signature": "noncomputable def mode4ForwardHermitianFiniteMatrix (G Λ : ℝ) (d : ℕ) : Matrix (Fin d) (Fin d) ℝ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "mode4DLMFEvenSimilarityScale",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMFEvenFiniteMatrix.lean",
+      "line": 85,
+      "signature": "noncomputable def mode4DLMFEvenSimilarityScale (G : ℝ) : ℕ → ℝ | 0 => 1 | q + 1 => mode4DLMFEvenSimilarityScale G q * mode4JacobiSymmetricOff G q / mode4JacobiUpper G q  private theorem mode4JacobiLower_succ_pos (G : ℝ) (q : ℕ) (hG : 0 < G) : 0 < mode4JacobiLower G (q + 1)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4JacobiLower_succ_pos",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMFEvenFiniteMatrix.lean",
+      "line": 92,
+      "signature": "private theorem mode4JacobiLower_succ_pos (G : ℝ) (q : ℕ) (hG : 0 < G) : 0 < mode4JacobiLower G (q + 1)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4JacobiSymmetricOff_pos",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMFEvenFiniteMatrix.lean",
+      "line": 101,
+      "signature": "private theorem mode4JacobiSymmetricOff_pos (G : ℝ) (q : ℕ) (hG : 0 < G) : 0 < mode4JacobiSymmetricOff G q",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4DLMFEvenSimilarityScale_pos",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMFEvenFiniteMatrix.lean",
+      "line": 109,
+      "signature": "theorem mode4DLMFEvenSimilarityScale_pos (G : ℝ) (q : ℕ) (hG : 0 < G) : 0 < mode4DLMFEvenSimilarityScale G q",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4DLMFEvenSimilarityScale_upper_balance",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMFEvenFiniteMatrix.lean",
+      "line": 120,
+      "signature": "private theorem mode4DLMFEvenSimilarityScale_upper_balance (G : ℝ) (q : ℕ) (hG : 0 < G) : mode4JacobiUpper G q * mode4DLMFEvenSimilarityScale G (q + 1) = mode4DLMFEvenSimilarityScale G q * mode4JacobiSymmetricOff G q",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4DLMFEvenSimilarityScale_lower_balance",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMFEvenFiniteMatrix.lean",
+      "line": 127,
+      "signature": "private theorem mode4DLMFEvenSimilarityScale_lower_balance (G : ℝ) (q : ℕ) (hG : 0 < G) : mode4JacobiLower G (q + 1) * mode4DLMFEvenSimilarityScale G q = mode4DLMFEvenSimilarityScale G (q + 1) * mode4JacobiSymmetricOff G q",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4DLMFEvenFiniteMatrix_mul_scale_eq_scale_mul_forwardHermitian",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMFEvenFiniteMatrix.lean",
+      "line": 139,
+      "signature": "theorem mode4DLMFEvenFiniteMatrix_mul_scale_eq_scale_mul_forwardHermitian (G Λ : ℝ) (d : ℕ) (hG : 0 < G) (i j : Fin d) : mode4DLMFEvenFiniteMatrix G Λ d i j * mode4DLMFEvenSimilarityScale G j.val = mode4DLMFEvenSimilarityScale G i.val * mode4ForwardHermitianFiniteMatrix G Λ d i j",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4DLMFEvenFiniteMatrix_mul_diagonal_eq_diagonal_mul_forwardHermitian",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMFEvenFiniteMatrix.lean",
+      "line": 185,
+      "signature": "theorem mode4DLMFEvenFiniteMatrix_mul_diagonal_eq_diagonal_mul_forwardHermitian (G Λ : ℝ) (d : ℕ) (hG : 0 < G) : mode4DLMFEvenFiniteMatrix G Λ d * Matrix.diagonal (fun i : Fin d => mode4DLMFEvenSimilarityScale G i.val) = Matrix.diagonal (fun i : Fin d => mode4DLMFEvenSimilarityScale G i.val) * mode4ForwardHermitianFiniteMatrix G Λ d",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ForwardHermitianFiniteMatrix_submatrix_rev_eq_leftContinuant",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMFEvenFiniteMatrix.lean",
+      "line": 201,
+      "signature": "theorem mode4ForwardHermitianFiniteMatrix_submatrix_rev_eq_leftContinuant (G Λ : ℝ) (d : ℕ) : Matrix.submatrix (mode4ForwardHermitianFiniteMatrix G Λ d) Fin.rev Fin.rev = mode4HermitianLeftContinuantMatrix G Λ d",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4DLMFEvenFiniteMatrix_similar_hermitianLeftContinuantMatrix",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMFEvenFiniteMatrix.lean",
+      "line": 259,
+      "signature": "theorem mode4DLMFEvenFiniteMatrix_similar_hermitianLeftContinuantMatrix (G Λ : ℝ) (d : ℕ) (hG : 0 < G) : (mode4DLMFEvenFiniteMatrix G Λ d * Matrix.diagonal (fun i : Fin d => mode4DLMFEvenSimilarityScale G i.val) = Matrix.diagonal (fun i : Fin d => mode4DLMFEvenSimilarityScale G i.val) * mode4ForwardHermitianFiniteMatrix G Λ d) ∧ (Matrix.submatrix (mode4ForwardHermitianFiniteMatrix G Λ d) Fin.rev Fin.rev = mode4HermitianLeftContinuantMatrix G Λ d) ∧ (∀ i : Fin d, 0 < mode4DLMFEvenSimilarityScale G i.val)",
+      "in_docs": true,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -7653,7 +7816,7 @@
       "line": 22,
       "signature": "private theorem mode4NegativeCount_eq_of_matrix_eq {n : Type*} [Fintype n] [DecidableEq n] {A B : Matrix n n ℝ} (hA : A.IsHermitian) (hB : B.IsHermitian) (h : A = B) : mode4HermitianNegativeEigenvalueCount A hA = mode4HermitianNegativeEigenvalueCount B hB",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -7663,8 +7826,8 @@
       "line": 31,
       "signature": "private theorem mode4Block_form_conj {m n : Type*} [Fintype m] [Fintype n] (Q : Matrix m m ℝ) (B : Matrix m n ℝ) (x : n → ℝ) : star x ⬝ᵥ ((Bᴴ * Q * B) *ᵥ x) = star (B *ᵥ x) ⬝ᵥ (Q *ᵥ (B *ᵥ x))",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7673,8 +7836,8 @@
       "line": 39,
       "signature": "private theorem mode4HermitianNegativeEigenvalueCount_conj_le {m n : Type*} [Fintype m] [DecidableEq m] [Fintype n] [DecidableEq n] {Q : Matrix m m ℝ} (hQ : Q.IsHermitian) (B : Matrix m n ℝ) : mode4HermitianNegativeEigenvalueCount (Bᴴ * Q * B) (isHermitian_conjTranspose_mul_mul B hQ) ≤ mode4HermitianNegativeEigenvalueCount Q hQ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7683,8 +7846,8 @@
       "line": 83,
       "signature": "private theorem mode4HermitianNegativeEigenvalueCount_congr_eq {n : Type*} [Fintype n] [DecidableEq n] {Q : Matrix n n ℝ} (hQ : Q.IsHermitian) (B : Matrix n n ℝ) [Invertible B] : mode4HermitianNegativeEigenvalueCount (Bᴴ * Q * B) (isHermitian_conjTranspose_mul_mul B hQ) = mode4HermitianNegativeEigenvalueCount Q hQ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -7693,8 +7856,8 @@
       "line": 110,
       "signature": "private def mode4SumFst {m n : Type*} : ((m ⊕ n) → ℝ) →ₗ[ℝ] (m → ℝ) where",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -7703,8 +7866,8 @@
       "line": 116,
       "signature": "private def mode4SumSnd {m n : Type*} : ((m ⊕ n) → ℝ) →ₗ[ℝ] (n → ℝ) where",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -7713,8 +7876,8 @@
       "line": 122,
       "signature": "private def mode4SumInl {m n : Type*} : (m → ℝ) →ₗ[ℝ] ((m ⊕ n) → ℝ) where",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7723,8 +7886,8 @@
       "line": 132,
       "signature": "@[simp] private theorem mode4SumFst_apply {m n : Type*} (x : (m ⊕ n) → ℝ) : mode4SumFst x = x ∘ Sum.inl",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7733,8 +7896,8 @@
       "line": 136,
       "signature": "@[simp] private theorem mode4SumSnd_apply {m n : Type*} (x : (m ⊕ n) → ℝ) : mode4SumSnd x = x ∘ Sum.inr",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7743,8 +7906,8 @@
       "line": 140,
       "signature": "@[simp] private theorem mode4SumInl_inl {m n : Type*} (x : m → ℝ) (i : m) : mode4SumInl (n",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7753,8 +7916,8 @@
       "line": 144,
       "signature": "@[simp] private theorem mode4SumInl_inr {m n : Type*} (x : m → ℝ) (j : n) : mode4SumInl (n",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7763,8 +7926,8 @@
       "line": 148,
       "signature": "private theorem mode4BlockDiagonal_form {m n : Type*} [Fintype m] [Fintype n] (A : Matrix m m ℝ) (D : Matrix n n ℝ) (x : (m ⊕ n) → ℝ) : star x ⬝ᵥ ((Matrix.fromBlocks A 0 0 D) *ᵥ x) = star (mode4SumFst x) ⬝ᵥ (A *ᵥ mode4SumFst x) + star (mode4SumSnd x) ⬝ᵥ (D *ᵥ mode4SumSnd x)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7773,8 +7936,8 @@
       "line": 159,
       "signature": "private theorem mode4HermitianNegativeEigenvalueCount_fromBlocks_posDef₂₂ {m n : Type*} [Fintype m] [DecidableEq m] [Fintype n] [DecidableEq n] {A : Matrix m m ℝ} (hA : A.IsHermitian) {D : Matrix n n ℝ} (hD : D.PosDef) : mode4HermitianNegativeEigenvalueCount (Matrix.fromBlocks A 0 0 D) (Matrix.IsHermitian.fromBlocks hA rfl hD.isHermitian) = mode4HermitianNegativeEigenvalueCount A hA",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7783,8 +7946,8 @@
       "line": 248,
       "signature": "private theorem mode4HermitianBlock_negativeCount_eq_schur_of_posDef₂₂ {m n : Type*} [Fintype m] [DecidableEq m] [Fintype n] [DecidableEq n] (A : Matrix m m ℝ) (B : Matrix m n ℝ) (D : Matrix n n ℝ) (hA : A.IsHermitian) (hD : D.PosDef) : let M",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7793,7 +7956,7 @@
       "line": 313,
       "signature": "theorem mode4ActualFiniteJacobiTruncation_negativeCount_eq_schurApprox (mProject K d : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) : mode4HermitianNegativeEigenvalueCount (mode4ActualFiniteJacobiTruncation mProject Λ K d) (mode4ActualFiniteJacobiTruncation_isHermitian mProject Λ K d) = mode4HermitianNegativeEigenvalueCount (mode4BackwardTailSchurApprox mProject Λ K d) (mode4BackwardTailSchurApprox_isHermitian mProject K d Λ)",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -7803,8 +7966,8 @@
       "line": 22,
       "signature": "private def mode4StabilitySpecMap {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) (f : ℝ → ℝ) : Matrix n n ℝ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7813,8 +7976,8 @@
       "line": 28,
       "signature": "private theorem mode4StabilitySpecMap_mul {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) (f g : ℝ → ℝ) : mode4StabilitySpecMap hA (f * g) = mode4StabilitySpecMap hA f * mode4StabilitySpecMap hA g",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7823,8 +7986,8 @@
       "line": 37,
       "signature": "private theorem mode4StabilitySpecMap_sub {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) (f g : ℝ → ℝ) : mode4StabilitySpecMap hA (f - g) = mode4StabilitySpecMap hA f - mode4StabilitySpecMap hA g",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7833,8 +7996,8 @@
       "line": 47,
       "signature": "private theorem mode4StabilitySpecMap_id {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) : mode4StabilitySpecMap hA id = A",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7843,8 +8006,8 @@
       "line": 54,
       "signature": "private theorem mode4StabilitySpecMap_isHermitian {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) (f : ℝ → ℝ) : (mode4StabilitySpecMap hA f).IsHermitian",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7853,8 +8016,8 @@
       "line": 63,
       "signature": "private theorem mode4StabilitySpecMap_rank {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) (f : ℝ → ℝ) : (mode4StabilitySpecMap hA f).rank = (univ.filter fun i => f (hA.eigenvalues i) ≠ 0).card",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7863,8 +8026,8 @@
       "line": 82,
       "signature": "private theorem mode4StabilitySpecMap_form {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) (f : ℝ → ℝ) (x : n → ℝ) : star x ⬝ᵥ (mode4StabilitySpecMap hA f *ᵥ x) = ∑ i, f (hA.eigenvalues i) * ‖(star (hA.eigenvectorUnitary : Matrix n n ℝ) *ᵥ x) i‖ ^ 2",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7873,8 +8036,8 @@
       "line": 103,
       "signature": "private theorem mode4Stability_form_conj {m n : Type*} [Fintype m] [Fintype n] (Q : Matrix m m ℝ) (B : Matrix m n ℝ) (x : n → ℝ) : star x ⬝ᵥ ((Bᴴ * Q * B) *ᵥ x) = star (B *ᵥ x) ⬝ᵥ (Q *ᵥ (B *ᵥ x))",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -7883,8 +8046,8 @@
       "line": 111,
       "signature": "private def mode4StabilityNegPart {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) : Matrix n n ℝ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7893,8 +8056,8 @@
       "line": 116,
       "signature": "private theorem mode4StabilityNegPart_rank {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) : (mode4StabilityNegPart hA).rank = mode4HermitianNegativeEigenvalueCount A hA",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -7903,8 +8066,8 @@
       "line": 127,
       "signature": "private def mode4StabilityPositiveEigenvalueCount {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) : ℕ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7913,8 +8076,8 @@
       "line": 132,
       "signature": "private theorem mode4StabilityPosPart_rank {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) : (mode4StabilitySpecMap hA (·⁺)).rank = mode4StabilityPositiveEigenvalueCount hA",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7923,8 +8086,8 @@
       "line": 143,
       "signature": "private theorem mode4StabilityPosPart_posSemidef {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) : (mode4StabilitySpecMap hA (·⁺)).PosSemidef",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7933,8 +8096,8 @@
       "line": 152,
       "signature": "private theorem mode4StabilityNegPart_posSemidef {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) : (mode4StabilityNegPart hA).PosSemidef",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7943,8 +8106,8 @@
       "line": 161,
       "signature": "private theorem mode4StabilityPos_sub_neg {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) : mode4StabilitySpecMap hA (·⁺) - mode4StabilityNegPart hA = A",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7953,8 +8116,8 @@
       "line": 171,
       "signature": "private theorem mode4Stability_finrank_le_negativeCount {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) {W : Submodule ℝ (n → ℝ)} (hW : ∀ x ∈ W, x ≠ 0 → star x ⬝ᵥ (A *ᵥ x) < 0) : Module.finrank ℝ W ≤ mode4HermitianNegativeEigenvalueCount A hA",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7963,8 +8126,8 @@
       "line": 203,
       "signature": "private theorem mode4Stability_finrank_le_positiveCount {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) {W : Submodule ℝ (n → ℝ)} (hW : ∀ x ∈ W, x ≠ 0 → 0 < star x ⬝ᵥ (A *ᵥ x)) : Module.finrank ℝ W ≤ mode4StabilityPositiveEigenvalueCount hA",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -7973,8 +8136,8 @@
       "line": 237,
       "signature": "private def mode4StabilityNegativeProjector {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) : Matrix n n ℝ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7983,8 +8146,8 @@
       "line": 242,
       "signature": "private theorem mode4StabilityNegativeProjector_finrank {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) : Module.finrank ℝ (LinearMap.range (mode4StabilityNegativeProjector hA).mulVecLin) = mode4HermitianNegativeEigenvalueCount A hA",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7993,8 +8156,8 @@
       "line": 256,
       "signature": "private theorem mode4StabilityNegativeProjector_form_gap {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) {gap : ℝ} (hgap : ∀ i, hA.eigenvalues i < 0 → gap ≤ -hA.eigenvalues i) {x : n → ℝ} (hx : x ∈ LinearMap.range (mode4StabilityNegativeProjector hA).mulVecLin) : star x ⬝ᵥ (A *ᵥ x) + gap * (star x ⬝ᵥ x) ≤ 0",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -8003,8 +8166,8 @@
       "line": 329,
       "signature": "private def mode4StabilityPositiveProjector {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) : Matrix n n ℝ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8013,8 +8176,8 @@
       "line": 334,
       "signature": "private theorem mode4StabilityPositiveProjector_finrank {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) : Module.finrank ℝ (LinearMap.range (mode4StabilityPositiveProjector hA).mulVecLin) = mode4StabilityPositiveEigenvalueCount hA",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8023,8 +8186,8 @@
       "line": 348,
       "signature": "private theorem mode4StabilityPositiveProjector_form_gap {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) {gap : ℝ} (hgap : ∀ i, 0 < hA.eigenvalues i → gap ≤ hA.eigenvalues i) {x : n → ℝ} (hx : x ∈ LinearMap.range (mode4StabilityPositiveProjector hA).mulVecLin) : gap * (star x ⬝ᵥ x) ≤ star x ⬝ᵥ (A *ᵥ x)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8033,8 +8196,8 @@
       "line": 420,
       "signature": "private theorem mode4Stability_abs_form_sub_le {n : Type*} [Fintype n] [DecidableEq n] (E : Matrix n n ℝ) (x : n → ℝ) : |star x ⬝ᵥ (E *ᵥ x)| ≤ (Fintype.card n : ℝ) * ‖E‖ * (star x ⬝ᵥ x)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8043,8 +8206,8 @@
       "line": 471,
       "signature": "private theorem mode4Stability_negativeCount_le_negativeCount_of_close {n : Type*} [Fintype n] [DecidableEq n] [Nonempty n] {L A : Matrix n n ℝ} (hL : L.IsHermitian) (hA : A.IsHermitian) {gap : ℝ} (hgapL : ∀ i, hL.eigenvalues i < 0 → gap ≤ -hL.eigenvalues i) (hclose : (Fintype.card n : ℝ) * ‖A - L‖ < gap) : mode4HermitianNegativeEigenvalueCount L hL ≤ mode4HermitianNegativeEigenvalueCount A hA",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8053,8 +8216,8 @@
       "line": 499,
       "signature": "private theorem mode4Stability_positiveCount_le_positiveCount_of_close {n : Type*} [Fintype n] [DecidableEq n] [Nonempty n] {L A : Matrix n n ℝ} (hL : L.IsHermitian) (hA : A.IsHermitian) {gap : ℝ} (hgapL : ∀ i, 0 < hL.eigenvalues i → gap ≤ hL.eigenvalues i) (hclose : (Fintype.card n : ℝ) * ‖A - L‖ < gap) : mode4StabilityPositiveEigenvalueCount hL ≤ mode4StabilityPositiveEigenvalueCount hA",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -8063,8 +8226,8 @@
       "line": 533,
       "signature": "private def mode4StabilityGap {n : Type*} [Fintype n] [DecidableEq n] [Nonempty n] {L : Matrix n n ℝ} (hL : L.IsHermitian) : ℝ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8073,8 +8236,8 @@
       "line": 540,
       "signature": "private theorem mode4StabilityGap_pos {n : Type*} [Fintype n] [DecidableEq n] [Nonempty n] {L : Matrix n n ℝ} (hL : L.IsHermitian) (hdet : L.det ≠ 0) : 0 < mode4StabilityGap hL",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8083,8 +8246,8 @@
       "line": 553,
       "signature": "private theorem mode4StabilityGap_le_abs {n : Type*} [Fintype n] [DecidableEq n] [Nonempty n] {L : Matrix n n ℝ} (hL : L.IsHermitian) (i : n) : mode4StabilityGap hL ≤ |hL.eigenvalues i|",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8093,8 +8256,8 @@
       "line": 560,
       "signature": "private theorem mode4Stability_neg_add_pos_eq_card {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) (hdet : A.det ≠ 0) : mode4HermitianNegativeEigenvalueCount A hA + mode4StabilityPositiveEigenvalueCount hA = Fintype.card n",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8103,7 +8266,7 @@
       "line": 636,
       "signature": "theorem mode4HermitianNegativeEigenvalueCount_eventually_eq_of_tendsto_of_det_ne_zero {K : ℕ} (A : ℕ → Matrix (Fin K) (Fin K) ℝ) (hA : ∀ d, (A d).IsHermitian) (L : Matrix (Fin K) (Fin K) ℝ) (hL : L.IsHermitian) (hlim : Tendsto A atTop (𝓝 L)) (hdet : L.det ≠ 0) : ∀ᶠ d in atTop, mode4HermitianNegativeEigenvalueCount (A d) (hA d) = mode4HermitianNegativeEigenvalueCount L hL",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -8113,7 +8276,7 @@
       "line": 664,
       "signature": "theorem mode4Finrank_le_hermitianNegativeEigenvalueCount_of_negDefOn {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) {W : Submodule ℝ (n → ℝ)} (hW : ∀ x ∈ W, x ≠ 0 → star x ⬝ᵥ (A *ᵥ x) < 0) : Module.finrank ℝ W ≤ mode4HermitianNegativeEigenvalueCount A hA",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -8123,7 +8286,7 @@
       "line": 674,
       "signature": "theorem mode4Exists_negDefSubspace_finrank_eq_hermitianNegativeEigenvalueCount {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) : ∃ W : Submodule ℝ (n → ℝ), (∀ x ∈ W, x ≠ 0 → star x ⬝ᵥ (A *ᵥ x) < 0) ∧ Module.finrank ℝ W = mode4HermitianNegativeEigenvalueCount A hA",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -8133,8 +8296,8 @@
       "line": 724,
       "signature": "private def mode4StabilitySingularPlant (d : ℕ) : Matrix (Fin 1) (Fin 1) ℝ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8143,8 +8306,8 @@
       "line": 728,
       "signature": "private theorem mode4StabilitySingularPlant_isHermitian (d : ℕ) : (mode4StabilitySingularPlant d).IsHermitian",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8153,8 +8316,8 @@
       "line": 733,
       "signature": "private theorem mode4StabilitySingularPlant_count (d : ℕ) : mode4HermitianNegativeEigenvalueCount (mode4StabilitySingularPlant d) (mode4StabilitySingularPlant_isHermitian d) = 1",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8163,8 +8326,8 @@
       "line": 770,
       "signature": "private theorem mode4StabilityZero_count : mode4HermitianNegativeEigenvalueCount (0 : Matrix (Fin 1) (Fin 1) ℝ) isHermitian_zero = 0",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8173,7 +8336,7 @@
       "line": 782,
       "signature": "private theorem singular_limit_counterexample_must_fail_the_nonsingular_contract : Tendsto mode4StabilitySingularPlant atTop (𝓝 (0 : Matrix (Fin 1) (Fin 1) ℝ)) ∧ (∀ d, mode4HermitianNegativeEigenvalueCount (mode4StabilitySingularPlant d) (mode4StabilitySingularPlant_isHermitian d) = 1) ∧ mode4HermitianNegativeEigenvalueCount (0 : Matrix (Fin 1) (Fin 1) ℝ) isHermitian_zero = 0",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -8183,8 +8346,8 @@
       "line": 800,
       "signature": "private theorem mode4StabilityNegOne_count {K : ℕ} : mode4HermitianNegativeEigenvalueCount (-1 : Matrix (Fin K) (Fin K) ℝ) isHermitian_one.neg = K",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8193,8 +8356,8 @@
       "line": 827,
       "signature": "private theorem mode4StabilityOne_count {K : ℕ} : mode4HermitianNegativeEigenvalueCount (1 : Matrix (Fin K) (Fin K) ℝ) isHermitian_one = 0",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -8203,8 +8366,8 @@
       "line": 847,
       "signature": "private def mode4StabilityDetOnlyPlant (d : ℕ) : Matrix (Fin 2) (Fin 2) ℝ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8213,8 +8376,8 @@
       "line": 851,
       "signature": "private theorem mode4StabilityDetOnlyPlant_isHermitian (d : ℕ) : (mode4StabilityDetOnlyPlant d).IsHermitian",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8223,8 +8386,8 @@
       "line": 858,
       "signature": "private theorem determinant_tendsto_does_not_replace_matrix_tendsto : (∀ d, (mode4StabilityDetOnlyPlant d).det = 1) ∧ mode4HermitianNegativeEigenvalueCount (mode4StabilityDetOnlyPlant 0) (mode4StabilityDetOnlyPlant_isHermitian 0) = 2 ∧ mode4HermitianNegativeEigenvalueCount (mode4StabilityDetOnlyPlant 1) (mode4StabilityDetOnlyPlant_isHermitian 1) = 0",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -8233,8 +8396,8 @@
       "line": 876,
       "signature": "private def mode4StabilityTwoNegOnePos : Matrix (Fin 3) (Fin 3) ℝ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8243,8 +8406,8 @@
       "line": 879,
       "signature": "private theorem mode4StabilityTwoNegOnePos_isHermitian : mode4StabilityTwoNegOnePos.IsHermitian",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8253,8 +8416,8 @@
       "line": 884,
       "signature": "private theorem mode4StabilityTwoNegOnePos_det : mode4StabilityTwoNegOnePos.det = 1",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8263,8 +8426,8 @@
       "line": 888,
       "signature": "private theorem mode4StabilityTwoNegOnePos_count : mode4HermitianNegativeEigenvalueCount mode4StabilityTwoNegOnePos mode4StabilityTwoNegOnePos_isHermitian = 2",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8273,8 +8436,8 @@
       "line": 970,
       "signature": "private theorem determinant_sign_does_not_determine_negative_count : mode4StabilityTwoNegOnePos.det = (1 : Matrix (Fin 3) (Fin 3) ℝ).det ∧ mode4HermitianNegativeEigenvalueCount mode4StabilityTwoNegOnePos mode4StabilityTwoNegOnePos_isHermitian = 2 ∧ mode4HermitianNegativeEigenvalueCount (1 : Matrix (Fin 3) (Fin 3) ℝ) isHermitian_one = 0",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -8283,8 +8446,8 @@
       "line": 980,
       "signature": "private def mode4StabilityNonHermitianRotation : Matrix (Fin 2) (Fin 2) ℝ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8293,8 +8456,8 @@
       "line": 989,
       "signature": "private theorem nonHermitian_rotation_cannot_supply_the_production_guard : ¬ mode4StabilityNonHermitianRotation.IsHermitian",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8303,8 +8466,8 @@
       "line": 999,
       "signature": "private theorem varying_fin_carriers_cannot_be_one_fixed_carrier : ¬ ∃ K : ℕ, ∀ d : ℕ, Nonempty (Fin (d + 1) ≃ Fin K)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -12472,7 +12635,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarOddTailInverseWeightedCorrection.lean",
       "line": 81,
       "signature": "noncomputable def oddTailInverseWeightedCorrection (D : OddTailInverseWeightedData Head Tail) : Head →L[ℂ] Head",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -16722,7 +16885,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurMatrixReceiver.lean",
       "line": 221,
       "signature": "theorem sourceWeilOddTargetFloorSchurPositive13_iff_ccm_corrected_energy : SourceWeilOddTargetFloorSchurPositive13 ↔ ∀ (N : ℕ) (q : SourceWeilOddHeadCoefficients (PairIndex.mk 13 N (by norm_num))), 0 ≤ ((∑ j, ∑ k, star ((ccmOddCoefficientIsometry (sourceWeilOddTailCutoff (PairIndex.mk 13 N (by norm_num))) q) j) * (Q3.RouteB.ccmWeilMatFinite 13 (sourceWeilOddTailCutoff (PairIndex.mk 13 N (by norm_num))) j k : ℂ) * (ccmOddCoefficientIsometry (sourceWeilOddTailCutoff (PairIndex.mk 13 N (by norm_num))) q) k) - (sourceWeilOddTargetFloor : ℂ) * inner ℂ q q - inner ℂ (oddTailInverseWeightedCorrection (sourceWeilOddTargetFloorInverseWeightedData (PairIndex.mk 13 N (by norm_num))) q) q).re",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },

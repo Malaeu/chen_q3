@@ -217,6 +217,23 @@ or RH claim occurred.
 - The machine-local `env_index.jsonl` and semantic receipt are derived and not
   committed. `knowledge.db` remains tracked canonical project memory.
 
+## Mac addendum — literal DLMF even finite source object
+
+The first exact G3 leaf after the accepted DLMF 30.16 verdict is now proved in
+`D0Mode4DLMFEvenFiniteMatrix.lean`.  It materializes the literal even `m = 0`
+30.16.1 finite matrix, proves the positive diagonal similarity to the forward
+Hermitian Jacobi matrix, and proves the exact `Fin.rev` orientation crosswalk
+to the existing left-continuant matrix.  Direct Lean, target build, full build,
+`q3_check`, forbidden-token, axiom, and inventory gates pass.
+
+This converts the previous `NOT_READY` theorem name into a real kernel-checked
+supplier.  It does not supply the classical ordered eigenvalue limit, endpoint
+counts `2/3`, or indexed degree-four identification.  G3 therefore remains
+open at
+`DLMF_EVEN_FINITE_MATRIX_AND_EXACT_SIMILARITY_PROVED_ORDERED_EIGENVALUE_LIMIT_ENDPOINT_COUNTS_2_3_AND_INDEX4_IDENTIFICATION_MISSING`.
+G1 remains open independently at the even-head/shift/cofinal full-complement
+floor.  Route B remains `CHALLENGER / NOT_RH`.
+
 ## Dateien
 
 - `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/ask.sh`

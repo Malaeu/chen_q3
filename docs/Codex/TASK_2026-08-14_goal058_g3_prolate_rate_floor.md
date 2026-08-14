@@ -460,3 +460,40 @@ identity for the same block orientation using the new `PosDef` tail and exact
 Schur crosswalk.  The classical-spectrum-to-literal-Schur count crosswalk,
 indexed mode selection, mode zero, restricted finite Fourier, CCM Lemma 7.2,
 denominator floor, G1, G3, Route B promotion, and RH all remain open.
+
+## 2026-08-14 literal DLMF even finite matrix and exact similarity
+
+The finite source object previously marked `NOT_READY` is now kernel checked
+in `D0Mode4DLMFEvenFiniteMatrix.lean`.  The file defines the literal even
+`m = 0` DLMF 30.16.1 matrix in source order and project units
+`G = gamma^2`, `Lambda = lambda`, with the shift already equal to
+`-Lambda I`.
+
+The positive recursive diagonal scale proves the exact similarity equation
+
+```text
+A_DLMF * D = D * H_forward,
+```
+
+and an explicit `Fin.rev` submatrix identity proves that `H_forward` is exactly
+the existing `mode4HermitianLeftContinuantMatrix` in its reversed orientation.
+The public package
+`mode4DLMFEvenFiniteMatrix_similar_hermitianLeftContinuantMatrix` exposes both
+identities and strict positivity of every scale entry. Direct Lean, target
+build, full build, `q3_check`, forbidden-token scan, and the public axiom audit
+all pass; the public axiom surface is exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+This closes the literal matrix/permutation/positive-diagonal-conjugator leaf,
+not the source count.  The bounded finite-tail PosDef, Schur identity,
+block-inertia additivity, stability, and finite-to-literal count transport are
+already present.  The next source object must now materialize the classical
+even spheroidal spectral carrier and prove ordered finite-eigenvalue
+convergence strongly enough to supply the exact endpoint negative counts
+`2/3` and the index-four identification.  Those values may not be inserted as
+binders.
+
+The narrowed G3 stop is
+`DLMF_EVEN_FINITE_MATRIX_AND_EXACT_SIMILARITY_PROVED_ORDERED_EIGENVALUE_LIMIT_ENDPOINT_COUNTS_2_3_AND_INDEX4_IDENTIFICATION_MISSING`.
+G1 remains independently open at the even-head/shift/cofinal full-complement
+floor.  No G1, G3, Route B, or RH promotion follows from this node.
