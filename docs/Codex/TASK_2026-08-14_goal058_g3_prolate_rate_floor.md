@@ -699,3 +699,33 @@ The active G3 stop is
 authorized until the source theorem exists; only then is the local
 root-function-to-Schur-determinant adapter a bounded Aristotle candidate.
 G1 remains independently open. No Route B or RH promotion follows.
+
+## 2026-08-14 DLMF 30.3.5 local characteristic object
+
+The Proshka-accepted noncircular right-branch crosswalk is now kernel checked
+in `D0Mode4DLMF3035EvenRightBranchCrosswalk.lean`.  Literal order-zero DLMF
+30.3.7 coefficients define an independent right map, finite terminal-zero
+fractions, and their own `limUnder`; coefficient identities and contraction
+prove that this limit is exactly `mode4RightTailLimit` in the production
+domain.  The split is locked to `2 * (K - 1)`.
+
+The adjacent local source object is also kernel checked in
+`D0Mode4DLMF3035EvenCharacteristicSource.lean`.  It defines the literal
+finite-left recurrence and a pole-safe even characteristic predicate without
+mentioning `mode4RootFunction`, then proves the finite-left and project-root
+adapters at the exact source split.
+
+These two files remove the local representation mismatch.  They do not prove
+the full DLMF solution-set theorem.  The tree still lacks an independent
+indexed differential-even spectrum and the formal pair of source seams:
+
+```text
+DLMF 30.3.5 characteristic solutions = differential even spectrum
+DLMF 30.16.3 differential even spectrum = internal finite-limit carrier
+```
+
+The G3 stop therefore remains
+`G3_DLMF3035_SOURCE_THEOREM_NOT_LEAN_MATERIALIZED`.  The parallel G1 audit
+also confirms that exact row evenness is the wrong target: the honest next
+quantity is the odd-contamination mass controlled by actual-mode existence
+and the CCM Lemma 7.2 approximation rate.  Neither G1 nor G3 is closed.
