@@ -1,12 +1,12 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 219,
-  "declarations": 2039,
-  "in_docs": 903,
+  "files_scanned": 220,
+  "declarations": 2043,
+  "in_docs": 904,
   "in_lemma_db": 1869,
-  "orphans": 95,
-  "uncatalogued": 95,
+  "orphans": 98,
+  "uncatalogued": 98,
   "orphan_files_top": [
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean",
@@ -35,6 +35,10 @@
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/ProlateActualModeSourceLock.lean",
       8
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersInteriorZeroSimplicity.lean",
+      3
     ],
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
@@ -6128,6 +6132,46 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersInteriorRegularity.lean",
       "line": 399,
       "signature": "theorem mode4FerrersSeries_contDiffOn_two_of_tail_splice (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (a : ℕ → ℝ) (hsplice : ∀ n : ℕ, a (K - 1 + n) = a (K - 1) * mode4TailCoefficientRow mProject Λ K n) : ContDiffOn ℝ 2 (mode4FerrersSeries a) (Set.Ioo (-1 : ℝ) 1)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "mode4ProlateFirstOrderCLM",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersInteriorZeroSimplicity.lean",
+      "line": 21,
+      "signature": "private noncomputable def mode4ProlateFirstOrderCLM (mProject : ℕ) (Λ x : ℝ) : (ℝ × ℝ) →L[ℝ] (ℝ × ℝ)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ProlateFirstOrderCLM_apply",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersInteriorZeroSimplicity.lean",
+      "line": 33,
+      "signature": "private theorem mode4ProlateFirstOrderCLM_apply (mProject : ℕ) (Λ x : ℝ) (p : ℝ × ℝ) : mode4ProlateFirstOrderCLM mProject Λ x p = (p.2, ((mode4JacobiG mProject * x ^ 2 - (Λ + mode4JacobiG mProject)) * p.1 + 2 * x * p.2) / (1 - x ^ 2))",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ProlateFirstOrderCLM_continuousAt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersInteriorZeroSimplicity.lean",
+      "line": 43,
+      "signature": "private theorem mode4ProlateFirstOrderCLM_continuousAt (mProject : ℕ) (Λ x : ℝ) (hx : x ∈ Set.Ioo (-1 : ℝ) 1) : ContinuousAt (mode4ProlateFirstOrderCLM mProject Λ) x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "Mode4FerrersRegularEvenProlateSolution.interior_zero_simple",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersInteriorZeroSimplicity.lean",
+      "line": 100,
+      "signature": "theorem Mode4FerrersRegularEvenProlateSolution.interior_zero_simple {mProject K : ℕ} {Λ x : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (hx : x ∈ Set.Ioo (-1 : ℝ) 1) (hz : mode4FerrersSeries S.coefficients x = 0) : deriv (mode4FerrersSeries S.coefficients) x ≠ 0",
       "in_docs": true,
       "in_lemma_db": false,
       "orphan": false
