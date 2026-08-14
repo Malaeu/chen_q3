@@ -1,13 +1,26 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 248,
-  "declarations": 2309,
-  "in_docs": 1002,
-  "in_lemma_db": 2309,
-  "orphans": 0,
-  "uncatalogued": 0,
-  "orphan_files_top": [],
+  "files_scanned": 251,
+  "declarations": 2350,
+  "in_docs": 1004,
+  "in_lemma_db": 2310,
+  "orphans": 38,
+  "uncatalogued": 38,
+  "orphan_files_top": [
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+      28
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierSchurCount.lean",
+      6
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierHeadUpper.lean",
+      4
+    ]
+  ],
   "items": [
     {
       "kind": "def",
@@ -6458,6 +6471,416 @@
       "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4Roots_sub_scalar",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+      "line": 25,
+      "signature": "private theorem mode4Roots_sub_scalar {n : Type*} [Fintype n] [DecidableEq n] (A : Matrix n n ℝ) (hA : A.IsHermitian) (t : ℝ) : (A - Matrix.scalar n t).charpoly.roots = Multiset.map (fun i => (hA.eigenvalues i - t : ℝ)) Finset.univ.val",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4Roots_sub_scalar_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+      "line": 46,
+      "signature": "private theorem mode4Roots_sub_scalar_zero {n : Type*} [Fintype n] [DecidableEq n] (A : Matrix n n ℝ) (hA : A.IsHermitian) (t : ℝ) : (A - Matrix.scalar n t).charpoly.roots = Multiset.map (fun i => hA.eigenvalues₀ i - t) Finset.univ.val",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4NegativeCount_sub_scalar_eq_filter_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+      "line": 66,
+      "signature": "private theorem mode4NegativeCount_sub_scalar_eq_filter_zero {n : Type*} [Fintype n] [DecidableEq n] (A : Matrix n n ℝ) (hA : A.IsHermitian) (t : ℝ) : let hB : (A - Matrix.scalar n t).IsHermitian",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4Card_filter_lt_ge_succ_of_antitone",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+      "line": 91,
+      "signature": "private theorem mode4Card_filter_lt_ge_succ_of_antitone {d : ℕ} (f : Fin d → ℝ) (hf : Antitone f) (p : Fin d) (t : ℝ) (hpt : f p.rev < t) : p.val + 1 ≤ (Finset.univ.filter fun i => f i < t).card",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4Card_filter_lt_le_of_antitone",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+      "line": 106,
+      "signature": "private theorem mode4Card_filter_lt_le_of_antitone {d : ℕ} (f : Fin d → ℝ) (hf : Antitone f) (p : Fin d) (t : ℝ) (htp : t < f p.rev) : (Finset.univ.filter fun i => f i < t).card ≤ p.val",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4Block_form_conj_local",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+      "line": 126,
+      "signature": "private theorem mode4Block_form_conj_local {m n : Type*} [Fintype m] [Fintype n] (Q : Matrix m m ℝ) (B : Matrix m n ℝ) (x : n → ℝ) : star x ⬝ᵥ ((Bᴴ * Q * B) *ᵥ x) = star (B *ᵥ x) ⬝ᵥ (Q *ᵥ (B *ᵥ x))",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4NegativeCount_conj_le_local",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+      "line": 134,
+      "signature": "private theorem mode4NegativeCount_conj_le_local {m n : Type*} [Fintype m] [DecidableEq m] [Fintype n] [DecidableEq n] {Q : Matrix m m ℝ} (hQ : Q.IsHermitian) (B : Matrix m n ℝ) : mode4HermitianNegativeEigenvalueCount (Bᴴ * Q * B) (isHermitian_conjTranspose_mul_mul B hQ) ≤ mode4HermitianNegativeEigenvalueCount Q hQ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4NegativeCount_eq_of_matrix_eq_local",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+      "line": 178,
+      "signature": "private theorem mode4NegativeCount_eq_of_matrix_eq_local {n : Type*} [Fintype n] [DecidableEq n] {A B : Matrix n n ℝ} (hA : A.IsHermitian) (hB : B.IsHermitian) (h : A = B) : mode4HermitianNegativeEigenvalueCount A hA = mode4HermitianNegativeEigenvalueCount B hB",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4NegativeCount_eq_of_charpoly_eq_local",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+      "line": 187,
+      "signature": "private theorem mode4NegativeCount_eq_of_charpoly_eq_local {m n : Type*} [Fintype m] [DecidableEq m] [Fintype n] [DecidableEq n] {A : Matrix m m ℝ} {B : Matrix n n ℝ} (hA : A.IsHermitian) (hB : B.IsHermitian) (hpoly : A.charpoly = B.charpoly) : mode4HermitianNegativeEigenvalueCount A hA = mode4HermitianNegativeEigenvalueCount B hB",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "mode4CastSuccEmbedding",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+      "line": 210,
+      "signature": "private def mode4CastSuccEmbedding (d : ℕ) : Matrix (Fin (d + 1)) (Fin d) ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4CastSuccEmbedding_conj_apply",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+      "line": 213,
+      "signature": "private theorem mode4CastSuccEmbedding_conj_apply {d : ℕ} (Q : Matrix (Fin (d + 1)) (Fin (d + 1)) ℝ) (i j : Fin d) : ((mode4CastSuccEmbedding d)ᴴ * Q * mode4CastSuccEmbedding d) i j = Q i.castSucc j.castSucc",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ForwardHermitian_sub_scalar_conj_castSucc",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+      "line": 220,
+      "signature": "private theorem mode4ForwardHermitian_sub_scalar_conj_castSucc (G t : ℝ) (d : ℕ) : (mode4CastSuccEmbedding d)ᴴ * (mode4ForwardHermitianFiniteMatrix G 0 (d + 1) - Matrix.scalar (Fin (d + 1)) t) * mode4CastSuccEmbedding d = mode4ForwardHermitianFiniteMatrix G 0 d - Matrix.scalar (Fin d) t",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4JacobiCenter_zero_ge_neg_G",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+      "line": 236,
+      "signature": "private theorem mode4JacobiCenter_zero_ge_neg_G (G : ℝ) (q : ℕ) (hG : 0 < G) : -G ≤ mode4JacobiCenter G 0 q",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4JacobiLower_succ_pos_all",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+      "line": 277,
+      "signature": "private theorem mode4JacobiLower_succ_pos_all (G : ℝ) (q : ℕ) (hG : 0 < G) : 0 < mode4JacobiLower G (q + 1)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4JacobiLower_succ_le_G",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+      "line": 286,
+      "signature": "private theorem mode4JacobiLower_succ_le_G (G : ℝ) (q : ℕ) (hG : 0 < G) : mode4JacobiLower G (q + 1) ≤ G",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4JacobiSymmetricOff_le_G",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+      "line": 308,
+      "signature": "private theorem mode4JacobiSymmetricOff_le_G (G : ℝ) (q : ℕ) (hG : 0 < G) : mode4JacobiSymmetricOff G q ≤ G",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ForwardHermitianFiniteMatrix_row_radius_le_two_mul_G",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+      "line": 327,
+      "signature": "private theorem mode4ForwardHermitianFiniteMatrix_row_radius_le_two_mul_G (G : ℝ) (d : ℕ) (i : Fin d) (hG : 0 < G) : (∑ j ∈ Finset.univ.erase i, ‖mode4ForwardHermitianFiniteMatrix G 0 d i j‖) ≤ 2 * G",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4DLMFEvenFiniteEigenvalue_ge_neg_three_mul_G",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+      "line": 413,
+      "signature": "theorem mode4DLMFEvenFiniteEigenvalue_ge_neg_three_mul_G (G : ℝ) (d : ℕ) (p : Fin d) (hG : 0 < G) : -3 * G ≤ mode4DLMFEvenFiniteEigenvalue G d p",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4DLMFEvenFiniteEigenvalue_succ_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+      "line": 466,
+      "signature": "theorem mode4DLMFEvenFiniteEigenvalue_succ_le (G : ℝ) (d : ℕ) (p : Fin d) : mode4DLMFEvenFiniteEigenvalue G (d + 1) p.castSucc ≤ mode4DLMFEvenFiniteEigenvalue G d p",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4DLMFEvenFiniteEigenvalue_antitone_in_depth",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+      "line": 549,
+      "signature": "theorem mode4DLMFEvenFiniteEigenvalue_antitone_in_depth (G : ℝ) (p : ℕ) : Antitone (fun d : {d : ℕ // p < d} => mode4DLMFEvenFiniteEigenvalue G d.1 ⟨p, d.2⟩)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "mode4ClassicalEvenEigenvalue",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+      "line": 571,
+      "signature": "noncomputable def mode4ClassicalEvenEigenvalue (G : ℝ) (p : ℕ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4DLMFEvenFiniteEigenvalue_bddBelow",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+      "line": 577,
+      "signature": "theorem mode4DLMFEvenFiniteEigenvalue_bddBelow (G : ℝ) (p : ℕ) (hG : 0 < G) : BddBelow (Set.range fun d : {d : ℕ // p < d} => mode4DLMFEvenFiniteEigenvalue G d.1 ⟨p, d.2⟩)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ClassicalEvenEigenvalue_ge_neg_three_mul_G",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+      "line": 587,
+      "signature": "theorem mode4ClassicalEvenEigenvalue_ge_neg_three_mul_G (G : ℝ) (p : ℕ) (hG : 0 < G) : -3 * G ≤ mode4ClassicalEvenEigenvalue G p",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ClassicalEvenEigenvalue_tendsto_of_antitone",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+      "line": 598,
+      "signature": "theorem mode4ClassicalEvenEigenvalue_tendsto_of_antitone (G : ℝ) (p : ℕ) (hG : 0 < G) (hanti : Antitone fun d : {d : ℕ // p < d} => mode4DLMFEvenFiniteEigenvalue G d.1 ⟨p, d.2⟩) : Filter.Tendsto (fun d : {d : ℕ // p < d} => mode4DLMFEvenFiniteEigenvalue G d.1 ⟨p, d.2⟩) Filter.atTop (nhds (mode4ClassicalEvenEigenvalue G p))",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ClassicalEvenEigenvalue_tendsto",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+      "line": 612,
+      "signature": "theorem mode4ClassicalEvenEigenvalue_tendsto (G : ℝ) (p : ℕ) (hG : 0 < G) : Filter.Tendsto (fun d : {d : ℕ // p < d} => mode4DLMFEvenFiniteEigenvalue G d.1 ⟨p, d.2⟩) Filter.atTop (nhds (mode4ClassicalEvenEigenvalue G p))",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ForwardHermitianFiniteMatrix_negativeCount_eq_finiteCount",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+      "line": 624,
+      "signature": "theorem mode4ForwardHermitianFiniteMatrix_negativeCount_eq_finiteCount (G Λ : ℝ) (d : ℕ) : let hAΛ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ActualFiniteJacobiTruncation_negativeCount_eq_finiteCount",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+      "line": 670,
+      "signature": "theorem mode4ActualFiniteJacobiTruncation_negativeCount_eq_finiteCount (mProject K d : ℕ) (Λ : ℝ) : mode4HermitianNegativeEigenvalueCount (mode4ActualFiniteJacobiTruncation mProject Λ K d) (mode4ActualFiniteJacobiTruncation_isHermitian mProject Λ K d) = (Finset.univ.filter fun p : Fin (K + d) => mode4DLMFEvenFiniteEigenvalue (mode4JacobiG mProject) (K + d) p < Λ).card",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "mode4DepthLift",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+      "line": 697,
+      "signature": "private def mode4DepthLift (p N : ℕ) (hp : p ≤ N) : {d : ℕ // N < d} → {d : ℕ // p < d}",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4DepthLift_tendsto",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+      "line": 701,
+      "signature": "private theorem mode4DepthLift_tendsto (p N : ℕ) (hp : p ≤ N) : Filter.Tendsto (mode4DepthLift p N hp) Filter.atTop Filter.atTop",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4DLMFEvenFiniteCount_eventually_eq_classicalHeadCount",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+      "line": 719,
+      "signature": "theorem mode4DLMFEvenFiniteCount_eventually_eq_classicalHeadCount (G Λ : ℝ) (N : ℕ) (hG : 0 < G) (hsep : ∀ p < N, mode4ClassicalEvenEigenvalue G p ≠ Λ) (htail : Λ < mode4ClassicalEvenEigenvalue G N) : ∀ᶠ d : {d : ℕ // N < d} in Filter.atTop, (Finset.univ.filter fun p : Fin d.1 => mode4DLMFEvenFiniteEigenvalue G d.1 p < Λ).card = ((Finset.range N).filter fun p => mode4ClassicalEvenEigenvalue G p < Λ).card",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ClassicalEvenEigenvalue_monotone",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+      "line": 795,
+      "signature": "theorem mode4ClassicalEvenEigenvalue_monotone (G : ℝ) (hG : 0 < G) : Monotone (mode4ClassicalEvenEigenvalue G)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4HeadThree_twenty_sub_posDef",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierHeadUpper.lean",
+      "line": 17,
+      "signature": "private theorem mode4HeadThree_twenty_sub_posDef (G : ℝ) (hG : 0 < G) : (Matrix.scalar (Fin 3) 20 - mode4ForwardHermitianFiniteMatrix G 0 3).PosDef",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4DLMFEvenFiniteEigenvalue_two_three_lt_twenty",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierHeadUpper.lean",
+      "line": 85,
+      "signature": "private theorem mode4DLMFEvenFiniteEigenvalue_two_three_lt_twenty (G : ℝ) (hG : 0 < G) : mode4DLMFEvenFiniteEigenvalue G 3 ⟨2, by omega⟩ < 20",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ClassicalEvenEigenvalue_two_lt_twenty",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierHeadUpper.lean",
+      "line": 135,
+      "signature": "theorem mode4ClassicalEvenEigenvalue_two_lt_twenty (G : ℝ) (hG : 0 < G) : mode4ClassicalEvenEigenvalue G 2 < 20",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ClassicalEvenEigenvalue_lt_twenty_of_lt_three",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierHeadUpper.lean",
+      "line": 151,
+      "signature": "theorem mode4ClassicalEvenEigenvalue_lt_twenty_of_lt_three (G : ℝ) (hG : 0 < G) (p : ℕ) (hp : p < 3) : mode4ClassicalEvenEigenvalue G p < 20",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "abbrev",
+      "name": "mode4SchurDepth",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierSchurCount.lean",
+      "line": 18,
+      "signature": "private abbrev mode4SchurDepth (K N : ℕ)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4SchurDepth_val_tendsto",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierSchurCount.lean",
+      "line": 23,
+      "signature": "private theorem mode4SchurDepth_val_tendsto (K N : ℕ) : Filter.Tendsto (fun d : mode4SchurDepth K N => d.1) Filter.atTop Filter.atTop",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "mode4SchurTotalDepth",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierSchurCount.lean",
+      "line": 36,
+      "signature": "private def mode4SchurTotalDepth (K N : ℕ) : mode4SchurDepth K N → {D : ℕ // N < D}",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4SchurTotalDepth_tendsto",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierSchurCount.lean",
+      "line": 40,
+      "signature": "private theorem mode4SchurTotalDepth_tendsto (K N : ℕ) : Filter.Tendsto (mode4SchurTotalDepth K N) Filter.atTop Filter.atTop",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4HermitianSchurMatrix_negativeCount_eq_classicalHeadCount",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierSchurCount.lean",
+      "line": 57,
+      "signature": "theorem mode4HermitianSchurMatrix_negativeCount_eq_classicalHeadCount (mProject K N : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hfiniteTail : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (hdet : (mode4HermitianSchurMatrix mProject Λ K).det ≠ 0) (hG : 0 < mode4JacobiG mProject) (hcarrierSep : ∀ p < N, mode4ClassicalEvenEigenvalue (mode4JacobiG mProject) p ≠ Λ) (hcarrierTail : Λ < mode4ClassicalEvenEigenvalue (mode4JacobiG mProject) N) : mode4HermitianNegativeEigenvalueCount (mode4HermitianSchurMatrix mProject Λ K) (mode4HermitianSchurMatrix_isHermitian mProject K Λ) = ((Finset.range N).filter fun p => mode4ClassicalEvenEigenvalue (mode4JacobiG mProject) p < Λ).card",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4HermitianSchurMatrix_negativeCount_eq_of_classicalWindow",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierSchurCount.lean",
+      "line": 126,
+      "signature": "theorem mode4HermitianSchurMatrix_negativeCount_eq_of_classicalWindow (mProject K N : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hfiniteTail : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (hdet : (mode4HermitianSchurMatrix mProject Λ K).det ≠ 0) (hG : 0 < mode4JacobiG mProject) (hhead : ∀ p < N, mode4ClassicalEvenEigenvalue (mode4JacobiG mProject) p < Λ) (htail : Λ < mode4ClassicalEvenEigenvalue (mode4JacobiG mProject) N) : mode4HermitianNegativeEigenvalueCount (mode4HermitianSchurMatrix mProject Λ K) (mode4HermitianSchurMatrix_isHermitian mProject K Λ) = N",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
     },
     {
       "kind": "def",
