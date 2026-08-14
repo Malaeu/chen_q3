@@ -4,7 +4,7 @@
 `python3 docs/cartographer/map_coverage.py`. Рукописная карта — `MAP.md`, она
 описывает узлы маршрута; это приложение описывает **файлы**, и оно полное.
 
-Всего файлов: **237** · упомянуто в `MAP.md`: **21** · вне карты: **216** · без описания в шапке: **0**
+Всего файлов: **238** · упомянуто в `MAP.md`: **21** · вне карты: **217** · без описания в шапке: **0**
 
 «вне карты» не значит «лишний»: значит, что обходом карты файл не находится.
 Именно так 2026-08-11 был построен заново мост `ker ↔ eigenspace`, стоявший в
@@ -95,6 +95,7 @@
 | `D0Mode4PSWFTailCoefficientSquareSummable` | — | The canonical square-summable mode-four tail coefficient row | 0 |
 | `D0Mode4SchurHermitianSymmetrization` | — | Hermitian symmetrization of the mode-four Schur matrix | 0 |
 | `D0Mode4SchurInertiaOrientation` | — | Hermitian inertia orientation for the mode-four Schur residual | 0 |
+| `D0Mode4SchurRootInertiaLabel` | — | Inertia labels strictly order the exact mode-four Schur roots | 0 |
 | `D0Mode4SchurRootQuadraticCrossing` | — | Quantitative quadratic crossing at an exact mode-four Schur root | 0 |
 | `D0Mode4SchurSimpleKernel` | — | Simple kernel at an exact mode-four Schur root | 0 |
 | `D0Mode4SchurSpectralParameterOrder` | — | Spectral-parameter order of the exact mode-four Schur matrix | 0 |

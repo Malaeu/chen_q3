@@ -1,10 +1,10 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 237,
-  "declarations": 2170,
+  "files_scanned": 238,
+  "declarations": 2172,
   "in_docs": 948,
-  "in_lemma_db": 2170,
+  "in_lemma_db": 2172,
   "orphans": 0,
   "uncatalogued": 0,
   "orphan_files_top": [],
@@ -9625,6 +9625,26 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4SchurInertiaOrientation.lean",
       "line": 167,
       "signature": "theorem exists_mode4RootFunction_eq_zero_of_hermitian_counts_two_three {nLower nUpper : Type*} [Fintype nLower] [DecidableEq nLower] [Fintype nUpper] [DecidableEq nUpper] (ALower : Matrix nLower nLower ℝ) (hALower : ALower.IsHermitian) (AUpper : Matrix nUpper nUpper ℝ) (hAUpper : AUpper.IsHermitian) (mProject K : ℕ) (ΛLower ΛUpper : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hLowerUpper : ΛLower ≤ ΛUpper) (hUpper20 : ΛUpper ≤ 20) (hdetLower : ALower.det = (mode4SchurMatrix mProject ΛLower K).det) (hdetUpper : AUpper.det = (mode4SchurMatrix mProject ΛUpper K).det) (hLower_ne : ALower.det ≠ 0) (hUpper_ne : AUpper.det ≠ 0) (hcountLower : mode4HermitianNegativeEigenvalueCount ALower hALower = 2) (hcountUpper : mode4HermitianNegativeEigenvalueCount AUpper hAUpper = 3) : ∃ Λ ∈ Set.Icc ΛLower ΛUpper, mode4RootFunction mProject K Λ = 0",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4RootFunction_roots_lt_iff_negativeCount_lt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4SchurRootInertiaLabel.lean",
+      "line": 28,
+      "signature": "theorem mode4RootFunction_roots_lt_iff_negativeCount_lt (mProject K : ℕ) (Λ₁ Λ₂ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ₁20 : Λ₁ ≤ 20) (hΛ₂20 : Λ₂ ≤ 20) (hroot₁ : mode4RootFunction mProject K Λ₁ = 0) (hroot₂ : mode4RootFunction mProject K Λ₂ = 0) : Λ₁ < Λ₂ ↔ mode4HermitianNegativeEigenvalueCount (mode4HermitianSchurMatrix mProject Λ₁ K) (mode4HermitianSchurMatrix_isHermitian mProject K Λ₁) < mode4HermitianNegativeEigenvalueCount (mode4HermitianSchurMatrix mProject Λ₂ K) (mode4HermitianSchurMatrix_isHermitian mProject K Λ₂)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4RootFunction_roots_eq_iff_negativeCount_eq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4SchurRootInertiaLabel.lean",
+      "line": 67,
+      "signature": "theorem mode4RootFunction_roots_eq_iff_negativeCount_eq (mProject K : ℕ) (Λ₁ Λ₂ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ₁20 : Λ₁ ≤ 20) (hΛ₂20 : Λ₂ ≤ 20) (hroot₁ : mode4RootFunction mProject K Λ₁ = 0) (hroot₂ : mode4RootFunction mProject K Λ₂ = 0) : Λ₁ = Λ₂ ↔ mode4HermitianNegativeEigenvalueCount (mode4HermitianSchurMatrix mProject Λ₁ K) (mode4HermitianSchurMatrix_isHermitian mProject K Λ₁) = mode4HermitianNegativeEigenvalueCount (mode4HermitianSchurMatrix mProject Λ₂ K) (mode4HermitianSchurMatrix_isHermitian mProject K Λ₂)",
       "in_docs": false,
       "in_lemma_db": true,
       "orphan": false
