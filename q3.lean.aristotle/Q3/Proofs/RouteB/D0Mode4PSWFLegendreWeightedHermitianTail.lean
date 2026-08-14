@@ -3,16 +3,44 @@ import Q3.Proofs.RouteB.D0Mode4JacobiHermitianTailRow
 /-!
 # DLMF 30.8.5 weight transfer to the shifted Hermitian tail
 
-The `m = n = 0` specialization of the DLMF 30.8.5 normalization has
-coefficient weight `1 / (4 * k + 1)`.  After the source shift
-`k = K - 1 + n`, that weight is exactly the square of the committed
-Hermitian tail scale, up to the fixed positive factor `4 * K - 3`.
+After reindexing the degree-four, order-zero DLMF row by `q = k + 2`,
+the DLMF 30.8.5 coefficient weight is `1 / (4 * q + 1)` and its raw
+normalizing sum is `1 / 9`.  Multiplying the row by `3` gives the unit
+normalization consumed by the committed canonical-tail receiver.  After the
+source shift `q = K - 1 + n`, the same weight is exactly the square of the
+committed Hermitian tail scale, up to the fixed positive factor
+`4 * K - 3`.
 
 This file is a conditional receiver.  Its sequence parameter is anonymous:
 the theorems neither construct nor identify a regular PSWF coefficient row.
 -/
 
 noncomputable section
+
+/-- The raw DLMF 30.8.5 normalization for degree four and order zero becomes
+the project's unit weighted normalization after multiplying every reindexed
+coefficient by `3`.
+
+Indeed, DLMF uses `n = 4`, `m = 0`, and `k = q - 2`, so its denominator
+`2*n + 4*k + 1` is `4*q + 1` and its right-hand side `1 / (2*n + 1)` is
+`1 / 9`.  This theorem records only the exact rescaling; it does not construct
+or identify the classical `psi_4` coefficient row. -/
+theorem mode4DLMF3085_degreeFour_rescale_three
+    (a : ℕ → ℝ)
+    (h3085 :
+      HasSum
+        (fun q : ℕ =>
+          (a q) ^ 2 / (4 * (q : ℝ) + 1))
+        (1 / 9 : ℝ)) :
+    HasSum
+      (fun q : ℕ =>
+        (3 * a q) ^ 2 / (4 * (q : ℝ) + 1))
+      1 := by
+  have hscaled := h3085.mul_left (9 : ℝ)
+  convert hscaled using 1
+  · funext q
+    ring
+  · norm_num
 
 /-- Exact match between the committed Hermitian scale and the
 `m = n = 0` DLMF 30.8.5 coefficient weight.  No source interpretation of
@@ -87,4 +115,5 @@ theorem mode4DLMF3085_nonzero_and_shiftedHermitian_sqSummable
     (mode4TailHermitianScale_sourceWeight_identity a K n hK).symm
 
 #print axioms mode4TailHermitianScale_sourceWeight_identity
+#print axioms mode4DLMF3085_degreeFour_rescale_three
 #print axioms mode4DLMF3085_nonzero_and_shiftedHermitian_sqSummable

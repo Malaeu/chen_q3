@@ -1,74 +1,13 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 229,
-  "declarations": 2113,
-  "in_docs": 934,
-  "in_lemma_db": 1869,
-  "orphans": 138,
-  "uncatalogued": 138,
-  "orphan_files_top": [
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean",
-      26
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementFloor.lean",
-      16
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersInteriorRegularity.lean",
-      16
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreIntervalBound.lean",
-      14
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersCoefficientAbsoluteSummability.lean",
-      10
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersEndpointFlux.lean",
-      10
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceCCMOddMassReflectionDefect.lean",
-      9
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/ProlateActualModeSourceLock.lean",
-      8
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersSturmComparison.lean",
-      7
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementSpectral.lean",
-      6
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementRayleigh.lean",
-      5
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersCompactZeroSelection.lean",
-      3
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersInteriorZeroSimplicity.lean",
-      3
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialResidualTracking.lean",
-      2
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
-      2
-    ]
-  ],
+  "files_scanned": 230,
+  "declarations": 2120,
+  "in_docs": 940,
+  "in_lemma_db": 2120,
+  "orphans": 0,
+  "uncatalogued": 0,
+  "orphan_files_top": [],
   "items": [
     {
       "kind": "def",
@@ -3217,7 +3156,7 @@
       "line": 29,
       "signature": "def complexTrialComplementFloor {ι : Type*} [Fintype ι] [DecidableEq ι] (K : Matrix ι ι ℂ) (q : ι → ℂ) (a : ℂ) (beta : ℝ) : Prop",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -3227,7 +3166,7 @@
       "line": 42,
       "signature": "def sourceCCMComplexTrialComplementFloor (S : D0Pstar.ProlateCanonicalSourceData) (i : D0Pstar.PairIndex) (beta : ℝ) : Prop",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -3237,8 +3176,8 @@
       "line": 52,
       "signature": "private theorem complexTrialLineComplement_isHermitian_local {ι : Type*} [Fintype ι] [DecidableEq ι] (q : ι → ℂ) : (complexTrialLineComplement q).IsHermitian",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -3247,8 +3186,8 @@
       "line": 60,
       "signature": "private theorem complexTrialLineComplement_sq_of_unit_local {ι : Type*} [Fintype ι] [DecidableEq ι] (q : ι → ℂ) (hq : star q ⬝ᵥ q = 1) : complexTrialLineComplement q * complexTrialLineComplement q = complexTrialLineComplement q",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -3257,8 +3196,8 @@
       "line": 70,
       "signature": "private theorem complexTrialLineProjection_mulVec_local {ι : Type*} [Fintype ι] (q v : ι → ℂ) : complexTrialLineProjection q *ᵥ v = (star q ⬝ᵥ v) • q",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -3267,8 +3206,8 @@
       "line": 78,
       "signature": "private theorem complexTrialLineComplement_mul_block_local {ι : Type*} [Fintype ι] [DecidableEq ι] (K : Matrix ι ι ℂ) (q : ι → ℂ) (a : ℂ) (hq : star q ⬝ᵥ q = 1) : let Q",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -3277,7 +3216,7 @@
       "line": 103,
       "signature": "theorem complexTrialComplementFloor_of_gramCertificate {ι : Type*} [Fintype ι] [DecidableEq ι] (K : Matrix ι ι ℂ) (q : ι → ℂ) (a : ℂ) (beta : ℝ) (R : Matrix ι ι ℂ) (hq : star q ⬝ᵥ q = 1) (hbeta : 0 < beta) (hgram : let Q",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -3287,7 +3226,7 @@
       "line": 157,
       "signature": "theorem sourceCCMComplexTrialComplementFloor_of_gramCertificate (S : D0Pstar.ProlateCanonicalSourceData) (i : D0Pstar.PairIndex) (beta : ℝ) (R : Matrix (CCMModeFinite i.N) (CCMModeFinite i.N) ℂ) (hbeta : 0 < beta) (hgram : sourceCCMComplexTrialComplementBlock S i - (beta : ℂ) • complexTrialLineComplement (D0Pstar.sourceCCMComplexRow S i) = Rᴴ * R) : sourceCCMComplexTrialComplementFloor S i beta",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -3297,8 +3236,8 @@
       "line": 182,
       "signature": "def goal058ComplementFloorCollapseD : Matrix (Fin 3) (Fin 3) ℂ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -3307,8 +3246,8 @@
       "line": 186,
       "signature": "def goal058ComplementFloorCollapseK : Matrix (Fin 3) (Fin 3) ℂ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -3317,8 +3256,8 @@
       "line": 189,
       "signature": "def goal058ComplementFloorCollapseEta : Fin 3 → ℂ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -3327,8 +3266,8 @@
       "line": 190,
       "signature": "def goal058ComplementFloorCollapseBeta : Fin 3 → ℂ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -3337,8 +3276,8 @@
       "line": 194,
       "signature": "theorem goal058ComplementFloorCollapse_exact_rankTwo_commutator : goal058ComplementFloorCollapseD * goal058ComplementFloorCollapseK - goal058ComplementFloorCollapseK * goal058ComplementFloorCollapseD = Matrix.vecMulVec goal058ComplementFloorCollapseBeta goal058ComplementFloorCollapseEta - Matrix.vecMulVec goal058ComplementFloorCollapseEta goal058ComplementFloorCollapseBeta",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -3347,8 +3286,8 @@
       "line": 209,
       "signature": "def goal058ComplementFloorCollapseQ : Fin 3 → ℂ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -3357,8 +3296,8 @@
       "line": 214,
       "signature": "def goal058ComplementFloorCollapseY : Fin 3 → ℂ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -3367,8 +3306,8 @@
       "line": 217,
       "signature": "theorem goal058ComplementFloorCollapseQ_unit : star goal058ComplementFloorCollapseQ ⬝ᵥ goal058ComplementFloorCollapseQ = 1",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -3377,8 +3316,8 @@
       "line": 224,
       "signature": "theorem goal058ComplementFloorCollapseQ_orthogonal_Y : star goal058ComplementFloorCollapseQ ⬝ᵥ goal058ComplementFloorCollapseY = 0",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -3387,8 +3326,8 @@
       "line": 231,
       "signature": "theorem goal058ComplementFloorCollapseK_kills_Y : goal058ComplementFloorCollapseK *ᵥ goal058ComplementFloorCollapseY = 0",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -3397,8 +3336,8 @@
       "line": 240,
       "signature": "theorem goal058ComplementFloorCollapseQComplement_fixes_Y : complexTrialLineComplement goal058ComplementFloorCollapseQ *ᵥ goal058ComplementFloorCollapseY = goal058ComplementFloorCollapseY",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -3407,8 +3346,8 @@
       "line": 248,
       "signature": "theorem goal058ComplementFloorCollapseY_normSq_re : (star goal058ComplementFloorCollapseY ⬝ᵥ goal058ComplementFloorCollapseY).re = 12",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -3417,7 +3356,7 @@
       "line": 257,
       "signature": "theorem goal058ComplementFloorCollapse_no_positive_floor (beta : ℝ) (hbeta : 0 < beta) : ¬ complexTrialComplementFloor goal058ComplementFloorCollapseK goal058ComplementFloorCollapseQ 0 beta",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -3427,7 +3366,7 @@
       "line": 289,
       "signature": "theorem goal058ComplementFloorCollapse_no_gramCertificate (beta : ℝ) (hbeta : 0 < beta) (R : Matrix (Fin 3) (Fin 3) ℂ) : ¬ (let Q",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -3437,8 +3376,8 @@
       "line": 22,
       "signature": "private theorem complexTrialLineProjection_mulVec_rayleigh {ι : Type*} [Fintype ι] (q v : ι → ℂ) : complexTrialLineProjection q *ᵥ v = (star q ⬝ᵥ v) • q",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -3447,8 +3386,8 @@
       "line": 30,
       "signature": "private theorem complexTrialLineComplement_mulVec_of_orthogonal_rayleigh {ι : Type*} [Fintype ι] [DecidableEq ι] (q v : ι → ℂ) (hv : star q ⬝ᵥ v = 0) : complexTrialLineComplement q *ᵥ v = v",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -3457,8 +3396,8 @@
       "line": 38,
       "signature": "private theorem star_dotProduct_complexTrialLineComplement_mulVec_of_orthogonal_rayleigh {ι : Type*} [Fintype ι] [DecidableEq ι] (q v w : ι → ℂ) (hv : star q ⬝ᵥ v = 0) : star v ⬝ᵥ (complexTrialLineComplement q *ᵥ w) = star v ⬝ᵥ w",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -3467,8 +3406,8 @@
       "line": 52,
       "signature": "private theorem complexTrialComplementFloor_quadratic_of_orthogonal_rayleigh {ι : Type*} [Fintype ι] [DecidableEq ι] (K : Matrix ι ι ℂ) (q : ι → ℂ) (a beta : ℝ) (hfloor : complexTrialComplementFloor K q (a : ℂ) beta) (v : ι → ℂ) (hv : star q ⬝ᵥ v = 0) : beta * (star v ⬝ᵥ v).re ≤ (star v ⬝ᵥ ((K - (a : ℂ) • (1 : Matrix ι ι ℂ)) *ᵥ v)).re",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -3477,8 +3416,8 @@
       "line": 80,
       "signature": "private theorem hermitian_star_dotProduct_mulVec {ι : Type*} [Fintype ι] (K : Matrix ι ι ℂ) (hK : K.IsHermitian) (u v : ι → ℂ) : star u ⬝ᵥ (K *ᵥ v) = star (K *ᵥ u) ⬝ᵥ v",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -3487,7 +3426,7 @@
       "line": 101,
       "signature": "theorem hermitian_unit_trialLine_complementFloor_gives_orthogonalRayleigh {ι : Type*} [Fintype ι] [DecidableEq ι] (K : Matrix ι ι ℂ) (q : ι → ℂ) (a beta epsilon : ℝ) (xi : ι → ℂ) (hK : K.IsHermitian) (hq : star q ⬝ᵥ q = 1) (hbeta : 0 < beta) (hfloor : complexTrialComplementFloor K q (a : ℂ) beta) (hxi : H2aPenalty.GEig K 1 epsilon xi) (hepsilon : epsilon ≤ a) (hbottom : ∀ v : ι → ℂ, epsilon * (star v ⬝ᵥ v).re ≤ (star v ⬝ᵥ (K *ᵥ v)).re) : ∀ x : ι → ℂ, star xi ⬝ᵥ x = 0 → (a + beta) * (star x ⬝ᵥ x).re ≤ (star x ⬝ᵥ (K *ᵥ x)).re",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -3497,8 +3436,8 @@
       "line": 27,
       "signature": "def complexHermitianGroundGapAtLeast {ι : Type*} [Fintype ι] [DecidableEq ι] (K : Matrix ι ι ℂ) (epsilon beta : ℝ) (xi : ι → ℂ) : Prop",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -3507,8 +3446,8 @@
       "line": 40,
       "signature": "private theorem complexTrialLineProjection_mulVec_local {ι : Type*} [Fintype ι] (q v : ι → ℂ) : complexTrialLineProjection q *ᵥ v = (star q ⬝ᵥ v) • q",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -3517,8 +3456,8 @@
       "line": 48,
       "signature": "private theorem complexTrialLineComplement_mulVec_of_orthogonal {ι : Type*} [Fintype ι] [DecidableEq ι] (q v : ι → ℂ) (hv : star q ⬝ᵥ v = 0) : complexTrialLineComplement q *ᵥ v = v",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -3527,8 +3466,8 @@
       "line": 56,
       "signature": "private theorem star_dotProduct_complexTrialLineComplement_mulVec_of_orthogonal {ι : Type*} [Fintype ι] [DecidableEq ι] (q v w : ι → ℂ) (hv : star q ⬝ᵥ v = 0) : star v ⬝ᵥ (complexTrialLineComplement q *ᵥ w) = star v ⬝ᵥ w",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -3537,8 +3476,8 @@
       "line": 70,
       "signature": "private theorem complexTrialComplementFloor_quadratic_of_orthogonal {ι : Type*} [Fintype ι] [DecidableEq ι] (K : Matrix ι ι ℂ) (q : ι → ℂ) (a : ℝ) (beta : ℝ) (hfloor : complexTrialComplementFloor K q (a : ℂ) beta) (v : ι → ℂ) (hv : star q ⬝ᵥ v = 0) : beta * (star v ⬝ᵥ v).re ≤ (star v ⬝ᵥ ((K - (a : ℂ) • (1 : Matrix ι ι ℂ)) *ᵥ v)).re",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -3547,8 +3486,8 @@
       "line": 97,
       "signature": "private theorem hermitian_unit_trialLine_floor_separates_orthogonal_eigenvectors {ι : Type*} [Fintype ι] [DecidableEq ι] (K : Matrix ι ι ℂ) (q : ι → ℂ) (a beta epsilon : ℝ) (xi : ι → ℂ) (hbeta : 0 < beta) (hfloor : complexTrialComplementFloor K q (a : ℂ) beta) (hxi : H2aPenalty.GEig K 1 epsilon xi) (hepsilon : epsilon ≤ a) (mu : ℝ) (y : ι → ℂ) (hy : H2aPenalty.GEig K 1 mu y) (hxy : star xi ⬝ᵥ y = 0) (hyx : star y ⬝ᵥ xi = 0) : a + beta ≤ mu",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -3557,7 +3496,7 @@
       "line": 194,
       "signature": "theorem hermitian_unit_trialLine_floor_separates_eigenvalues {ι : Type*} [Fintype ι] [DecidableEq ι] (K : Matrix ι ι ℂ) (q : ι → ℂ) (a beta epsilon : ℝ) (xi : ι → ℂ) (hK : K.IsHermitian) (hq : star q ⬝ᵥ q = 1) (hbeta : 0 < beta) (hfloor : complexTrialComplementFloor K q (a : ℂ) beta) (hxi : H2aPenalty.GEig K 1 epsilon xi) (hepsilon : epsilon ≤ a) : ∀ mu y, H2aPenalty.GEig K 1 mu y → mu ≠ epsilon → a + beta ≤ mu",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -3567,7 +3506,7 @@
       "line": 226,
       "signature": "theorem hermitian_unit_trialLine_complementFloor_gives_ground_gap_tracking {ι : Type*} [Fintype ι] [DecidableEq ι] [Nonempty ι] (K : Matrix ι ι ℂ) (q r : ι → ℂ) (a beta : ℝ) (hK : K.IsHermitian) (hq : star q ⬝ᵥ q = 1) (ha : (a : ℂ) = star q ⬝ᵥ (K *ᵥ q)) (hr : r = K *ᵥ q - (a : ℂ) • q) (hfloor : complexTrialComplementFloor K q (a : ℂ) beta) : ∃ (epsilon : ℝ) (xi0 : ι → ℂ), complexHermitianGroundGapAtLeast K epsilon beta xi0 ∧ 1 - Complex.normSq (star xi0 ⬝ᵥ q) ≤ (star r ⬝ᵥ r).re / beta ^ 2",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -3577,7 +3516,7 @@
       "line": 285,
       "signature": "theorem sourceCCMFinite_simpleGround_gap_tracking_of_complementFloor (S : D0Pstar.ProlateCanonicalSourceData) (i : D0Pstar.PairIndex) (beta : ℝ) (hfloor : sourceCCMComplexTrialComplementFloor S i beta) : ∃ (epsilon : ℝ) (xi0 : CCMModeFinite i.N → ℂ), complexHermitianGroundGapAtLeast (D0Pstar.sourceCCMFiniteMatrix i) epsilon beta xi0 ∧ 1 - Complex.normSq (star xi0 ⬝ᵥ D0Pstar.sourceCCMComplexRow S i) ≤ (star (D0Pstar.sourceCCMFiniteResidual S i) ⬝ᵥ D0Pstar.sourceCCMFiniteResidual S i).re / beta ^ 2",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -3937,8 +3876,8 @@
       "line": 21,
       "signature": "private theorem euclidean_inner_toLp_eq_star_dotProduct {ι : Type*} [Fintype ι] (u v : ι → ℂ) : inner ℂ (WithLp.toLp 2 u) (WithLp.toLp 2 v) = star u ⬝ᵥ v",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -3947,8 +3886,8 @@
       "line": 27,
       "signature": "private theorem euclidean_norm_sq_toLp_eq_star_dotProduct_re {ι : Type*} [Fintype ι] (u : ι → ℂ) : ‖WithLp.toLp 2 u‖ ^ 2 = (star u ⬝ᵥ u).re",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -3957,7 +3896,7 @@
       "line": 42,
       "signature": "theorem hermitian_unit_eigen_projective_defect_le_residual_sq_div_beta_sq_of_orthogonal_floor {ι : Type*} [Fintype ι] [DecidableEq ι] (K : Matrix ι ι ℂ) (xi q r : ι → ℂ) (epsilon a beta : ℝ) (hK : K.IsHermitian) (hxi_unit : star xi ⬝ᵥ xi = 1) (hxi_eig : K *ᵥ xi = (epsilon : ℂ) • xi) (hq_unit : star q ⬝ᵥ q = 1) (hr : r = K *ᵥ q - (a : ℂ) • q) (hbeta : 0 < beta) (hfloor : ∀ x : ι → ℂ, star xi ⬝ᵥ x = 0 → (a + beta) * (star x ⬝ᵥ x).re ≤ (star x ⬝ᵥ (K *ᵥ x)).re) : 1 - Complex.normSq (star xi ⬝ᵥ q) ≤ (star r ⬝ᵥ r).re / beta ^ 2",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6037,7 +5976,7 @@
       "line": 18,
       "signature": "theorem Mode4FerrersRegularEvenProlateSolution.center_value_ne_zero {mProject K : ℕ} {Λ : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) : mode4FerrersSeries S.coefficients 0 ≠ 0",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6047,7 +5986,7 @@
       "line": 29,
       "signature": "theorem mode4RecurrenceRow_abs_summable_of_tail_splice (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (a : ℕ → ℝ) (hsplice : ∀ n : ℕ, a (K - 1 + n) = a (K - 1) * mode4TailCoefficientRow mProject Λ K n) : Summable (fun q : ℕ => |a q|)",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6057,7 +5996,7 @@
       "line": 65,
       "signature": "theorem mode4RecurrenceRow_polynomiallyWeighted_abs_summable_of_tail_splice (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (a : ℕ → ℝ) (hsplice : ∀ n : ℕ, a (K - 1 + n) = a (K - 1) * mode4TailCoefficientRow mProject Λ K n) (r : ℕ) : Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ) ^ r) * |a q|)",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6067,8 +6006,8 @@
       "line": 150,
       "signature": "noncomputable def mode4FerrersTerm (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : ℝ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -6077,7 +6016,7 @@
       "line": 156,
       "signature": "noncomputable def mode4FerrersSeries (a : ℕ → ℝ) (x : ℝ) : ℝ",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6087,8 +6026,8 @@
       "line": 161,
       "signature": "theorem mode4FerrersSeries_even (a : ℕ → ℝ) : Function.Even (mode4FerrersSeries a)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6097,8 +6036,8 @@
       "line": 170,
       "signature": "theorem mode4FerrersSeries_at_one (a : ℕ → ℝ) : mode4FerrersSeries a 1 = ∑' q : ℕ, (-1 : ℝ) ^ q * a q",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6107,8 +6046,8 @@
       "line": 179,
       "signature": "theorem mode4FerrersSeries_at_neg_one (a : ℕ → ℝ) : mode4FerrersSeries a (-1) = ∑' q : ℕ, (-1 : ℝ) ^ q * a q",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6117,8 +6056,8 @@
       "line": 190,
       "signature": "theorem mode4FerrersTerm_norm_le_coefficientAbs (a : ℕ → ℝ) (q : ℕ) (x : ℝ) (hx : x ∈ Set.Icc (-1 : ℝ) 1) : ‖mode4FerrersTerm a q x‖ ≤ |a q|",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6127,8 +6066,8 @@
       "line": 203,
       "signature": "theorem mode4FerrersTerm_summable (a : ℕ → ℝ) (ha : Summable (fun q : ℕ => |a q|)) (x : ℝ) (hx : x ∈ Set.Icc (-1 : ℝ) 1) : Summable (fun q : ℕ => mode4FerrersTerm a q x)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6137,8 +6076,8 @@
       "line": 216,
       "signature": "theorem mode4FerrersSeries_hasSumUniformlyOn (a : ℕ → ℝ) (ha : Summable (fun q : ℕ => |a q|)) : HasSumUniformlyOn (mode4FerrersTerm a) (mode4FerrersSeries a) (Set.Icc (-1 : ℝ) 1)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6147,8 +6086,8 @@
       "line": 229,
       "signature": "theorem mode4FerrersSeries_continuousOn (a : ℕ → ℝ) (ha : Summable (fun q : ℕ => |a q|)) : ContinuousOn (mode4FerrersSeries a) (Set.Icc (-1 : ℝ) 1)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6157,8 +6096,8 @@
       "line": 248,
       "signature": "theorem exists_mode4MatchedNormalizedAbsSummableRecurrenceRow_of_root (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (hroot : mode4RootFunction mProject K Λ = 0) : ∃ a : ℕ → ℝ, 0 < a 0 ∧ Summable (fun q : ℕ => |a q|) ∧ Summable (fun q : ℕ => (a q) ^ 2) ∧ HasSum (fun q : ℕ => (a q) ^ 2 / (4 * (q : ℝ) + 1)) 1 ∧ (∀ q : ℕ, mode4PSWFLegendreSubdiagonal (mode4JacobiG mProject) q * a (q - 1) + (mode4PSWFLegendreDiagonal (mode4JacobiG mProject) q - (Λ + mode4JacobiG mProject)) * a q + mode4PSWFLegendreSuperdiagonal (mode4JacobiG mProject) q * a (q + 1) = 0) ∧ a (K - 1) ≠ 0 ∧ ∀ n : ℕ, a (K - 1 + n) = a (K - 1) * mode4TailCoefficientRow mProject Λ K n",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6167,8 +6106,8 @@
       "line": 291,
       "signature": "theorem exists_mode4MatchedNormalizedContinuousFerrersRow_of_root (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (hroot : mode4RootFunction mProject K Λ = 0) : ∃ a : ℕ → ℝ, 0 < a 0 ∧ Summable (fun q : ℕ => |a q|) ∧ Summable (fun q : ℕ => (a q) ^ 2) ∧ HasSum (fun q : ℕ => (a q) ^ 2 / (4 * (q : ℝ) + 1)) 1 ∧ (∀ q : ℕ, mode4PSWFLegendreSubdiagonal (mode4JacobiG mProject) q * a (q - 1) + (mode4PSWFLegendreDiagonal (mode4JacobiG mProject) q - (Λ + mode4JacobiG mProject)) * a q + mode4PSWFLegendreSuperdiagonal (mode4JacobiG mProject) q * a (q + 1) = 0) ∧ a (K - 1) ≠ 0 ∧ (∀ n : ℕ, a (K - 1 + n) = a (K - 1) * mode4TailCoefficientRow mProject Λ K n) ∧ ContinuousOn (mode4FerrersSeries a) (Set.Icc (-1 : ℝ) 1)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6177,7 +6116,7 @@
       "line": 20,
       "signature": "theorem mode4OrdinaryLegendre_intervalIntegral_eq_zero_of_pos (n : ℕ) (hn : 0 < n) : (∫ x in (-1 : ℝ)..1, mode4OrdinaryLegendre n x) = 0",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6187,7 +6126,7 @@
       "line": 77,
       "signature": "theorem mode4FerrersSeries_intervalIntegral_eq_two_mul_coefficient_zero (a : ℕ → ℝ) (ha : Summable (fun q : ℕ => |a q|)) : (∫ x in (-1 : ℝ)..1, mode4FerrersSeries a x) = 2 * a 0",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6197,7 +6136,7 @@
       "line": 147,
       "signature": "theorem mode4FerrersSeries_ne_zero_of_coefficient_zero_ne_zero (a : ℕ → ℝ) (ha : Summable (fun q : ℕ => |a q|)) (ha0 : a 0 ≠ 0) : mode4FerrersSeries a ≠ 0",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6207,7 +6146,7 @@
       "line": 162,
       "signature": "theorem Mode4FerrersRegularEvenProlateSolution.ferrersSeries_ne_zero {mProject K : ℕ} {Λ : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) : mode4FerrersSeries S.coefficients ≠ 0",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6217,8 +6156,8 @@
       "line": 22,
       "signature": "private theorem finite_zeros_on_Icc_of_simple {f f' : ℝ → ℝ} {a b : ℝ} (hcont : ContinuousOn f (Icc a b)) (hderiv : ∀ x ∈ Icc a b, f x = 0 → HasDerivAt f (f' x) x) (hne : ∀ x ∈ Icc a b, f x = 0 → f' x ≠ 0) : ({x : Set.Icc a b | f x = 0} : Set (Set.Icc a b)).Finite",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6227,8 +6166,8 @@
       "line": 67,
       "signature": "private theorem finite_zeros_on_Icc_of_simple_real {f f' : ℝ → ℝ} {a b : ℝ} (hcont : ContinuousOn f (Icc a b)) (hderiv : ∀ x ∈ Icc a b, f x = 0 → HasDerivAt f (f' x) x) (hne : ∀ x ∈ Icc a b, f x = 0 → f' x ≠ 0) : {x : ℝ | x ∈ Icc a b ∧ f x = 0}.Finite",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6237,7 +6176,7 @@
       "line": 91,
       "signature": "theorem Mode4FerrersRegularEvenProlateSolution.interior_zeros_on_Icc_finite {mProject K : ℕ} {Λ a b : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (ha : a ∈ Ioo (-1 : ℝ) 1) (hb : b ∈ Ioo (-1 : ℝ) 1) : {x : ℝ | x ∈ Icc a b ∧ mode4FerrersSeries S.coefficients x = 0}.Finite",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6247,8 +6186,8 @@
       "line": 115,
       "signature": "private theorem exists_consecutive_zero_right_of_finite {f : ℝ → ℝ} {x1 x2 : ℝ} (hfinite : {x : ℝ | x ∈ Icc x1 x2 ∧ f x = 0}.Finite) (hxx : x1 < x2) (hz2 : f x2 = 0) : ∃ y ∈ Ioc x1 x2, f y = 0 ∧ ∀ z ∈ Ioo x1 y, f z ≠ 0",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6257,7 +6196,7 @@
       "line": 142,
       "signature": "theorem exists_mode4Ferrers_zero_between_of_lt_Lambda_between_lower_zeros {mProject K : ℕ} {ΛLo ΛHi x1 x2 : ℝ} (SLo : Mode4FerrersRegularEvenProlateSolution mProject K ΛLo) (SHi : Mode4FerrersRegularEvenProlateSolution mProject K ΛHi) (hΛ : ΛLo < ΛHi) (hx1 : x1 ∈ Ioo (-1 : ℝ) 1) (hx2 : x2 ∈ Ioo (-1 : ℝ) 1) (hxx : x1 < x2) (hz1 : mode4FerrersSeries SLo.coefficients x1 = 0) (hz2 : mode4FerrersSeries SLo.coefficients x2 = 0) : ∃ x ∈ Ioo x1 x2, mode4FerrersSeries SHi.coefficients x = 0",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6267,7 +6206,7 @@
       "line": 28,
       "signature": "theorem mode4Ferrers_fluxTerm_abs_le (a : ℕ → ℝ) (q : ℕ) (x : ℝ) (hx : x ∈ Set.Icc (-1 : ℝ) 1) : |(1 - x ^ 2) * mode4FerrersFirstDerivativeTerm a q x| ≤ 4 * (((q + 1 : ℕ) : ℝ) * |a q|)",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6277,7 +6216,7 @@
       "line": 90,
       "signature": "theorem mode4Ferrers_fluxSeries_tendsto_zero_at_one (a : ℕ → ℝ) (ha1 : Summable (fun q : ℕ ↦ (((q + 1 : ℕ) : ℝ) * |a q|))) : Filter.Tendsto (fun x : ℝ ↦ (1 - x ^ 2) * mode4FerrersFirstDerivativeSeries a x) (nhdsWithin (1 : ℝ) (Set.Iio 1)) (𝓝 0)",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6287,7 +6226,7 @@
       "line": 136,
       "signature": "theorem mode4Ferrers_fluxSeries_tendsto_zero_at_neg_one (a : ℕ → ℝ) (ha1 : Summable (fun q : ℕ ↦ (((q + 1 : ℕ) : ℝ) * |a q|))) : Filter.Tendsto (fun x : ℝ ↦ (1 - x ^ 2) * mode4FerrersFirstDerivativeSeries a x) (nhdsWithin (-1 : ℝ) (Set.Ioi (-1))) (𝓝 0)",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6297,7 +6236,7 @@
       "line": 183,
       "signature": "theorem mode4Ferrers_zeroFlux_at_endpoints_of_tail_splice (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (a : ℕ → ℝ) (hsplice : ∀ n : ℕ, a (K - 1 + n) = a (K - 1) * mode4TailCoefficientRow mProject Λ K n) : Filter.Tendsto (fun x : ℝ ↦ (1 - x ^ 2) * mode4FerrersFirstDerivativeSeries a x) (nhdsWithin (1 : ℝ) (Set.Iio 1)) (𝓝 0) ∧ Filter.Tendsto (fun x : ℝ ↦ (1 - x ^ 2) * mode4FerrersFirstDerivativeSeries a x) (nhdsWithin (-1 : ℝ) (Set.Ioi (-1))) (𝓝 0)",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6307,8 +6246,8 @@
       "line": 225,
       "signature": "private theorem mode4OrdinaryLegendrePolynomial_two_derivative_at_one : (mode4OrdinaryLegendrePolynomial 2).derivative.eval 1 = 3",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -6317,8 +6256,8 @@
       "line": 234,
       "signature": "private def g3Mode4EndpointFactorPlantRow (q : ℕ) : ℝ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6327,8 +6266,8 @@
       "line": 239,
       "signature": "private theorem g3Mode4EndpointFactorMutation_survived : (1 + (1 : ℝ) ^ 2) * mode4FerrersFirstDerivativeTerm g3Mode4EndpointFactorPlantRow 1 1 ≠ 0",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -6337,8 +6276,8 @@
       "line": 246,
       "signature": "private def g3InteriorC2PlantDerivative (x : ℝ) : ℝ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6347,8 +6286,8 @@
       "line": 250,
       "signature": "private theorem g3InteriorC2PlantDerivative_contDiffOn : ContDiffOn ℝ 2 g3InteriorC2PlantDerivative (Set.Ioo (-1 : ℝ) 1)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6357,8 +6296,8 @@
       "line": 261,
       "signature": "private theorem g3InteriorC2PlantDerivative_flux_eq_one (x : ℝ) (hx : x ∈ Set.Ioo (-1 : ℝ) 1) : (1 - x ^ 2) * g3InteriorC2PlantDerivative x = 1",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6367,8 +6306,8 @@
       "line": 271,
       "signature": "private theorem g3InteriorC2PlantDerivative_not_zeroFlux : ¬ Tendsto (fun x : ℝ ↦ (1 - x ^ 2) * g3InteriorC2PlantDerivative x) (nhdsWithin (1 : ℝ) (Set.Iio 1)) (𝓝 0)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -6377,8 +6316,8 @@
       "line": 289,
       "signature": "private def g3L2PlantRow (q : ℕ) : ℝ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6387,8 +6326,8 @@
       "line": 294,
       "signature": "private theorem g3L2PlantRow_squareSummable_not_weightedL1 : Summable (fun q : ℕ ↦ (g3L2PlantRow q) ^ 2) ∧ ¬ Summable (fun q : ℕ ↦ (((q + 1 : ℕ) : ℝ) * |g3L2PlantRow q|))",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6397,8 +6336,8 @@
       "line": 325,
       "signature": "private theorem g3Mode4SourceRowPlant_exact_tail_splice_required (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (a : ℕ → ℝ) (hsplice : ∀ n : ℕ, a (K - 1 + n) = a (K - 1) * mode4TailCoefficientRow mProject Λ K n) : Summable (fun q : ℕ ↦ (((q + 1 : ℕ) : ℝ) * |a q|))",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -6407,7 +6346,7 @@
       "line": 20,
       "signature": "noncomputable def mode4FerrersFirstDerivativeTerm (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : ℝ",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6417,8 +6356,8 @@
       "line": 25,
       "signature": "noncomputable def mode4FerrersSecondDerivativeTerm (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : ℝ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6427,8 +6366,8 @@
       "line": 30,
       "signature": "theorem mode4FerrersTerm_hasDerivAt (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : HasDerivAt (mode4FerrersTerm a q) (mode4FerrersFirstDerivativeTerm a q x) x",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6437,8 +6376,8 @@
       "line": 39,
       "signature": "theorem mode4FerrersFirstDerivativeTerm_hasDerivAt (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : HasDerivAt (mode4FerrersFirstDerivativeTerm a q) (mode4FerrersSecondDerivativeTerm a q x) x",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -6447,8 +6386,8 @@
       "line": 48,
       "signature": "noncomputable def mode4FerrersFirstDerivativeMajorant (a : ℕ → ℝ) (r : ℝ) (q : ℕ) : ℝ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -6457,8 +6396,8 @@
       "line": 53,
       "signature": "noncomputable def mode4FerrersSecondDerivativeMajorant (a : ℕ → ℝ) (r : ℝ) (q : ℕ) : ℝ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6467,8 +6406,8 @@
       "line": 58,
       "signature": "private theorem mode4EvenDegree_spectralFactor_le (q : ℕ) : ((2 * q : ℕ) : ℝ) * ((2 * q : ℕ) + 1) ≤ 4 * (((q + 1 : ℕ) : ℝ) ^ 2)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6477,8 +6416,8 @@
       "line": 65,
       "signature": "theorem mode4FerrersFirstDerivativeTerm_norm_le (a : ℕ → ℝ) (r : ℝ) (hr0 : 0 ≤ r) (hr1 : r < 1) (q : ℕ) (x : ℝ) (hx : x ∈ Set.Icc (-r) r) : ‖mode4FerrersFirstDerivativeTerm a q x‖ ≤ mode4FerrersFirstDerivativeMajorant a r q",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6487,8 +6426,8 @@
       "line": 111,
       "signature": "theorem mode4FerrersSecondDerivativeTerm_norm_le (a : ℕ → ℝ) (r : ℝ) (hr0 : 0 ≤ r) (hr1 : r < 1) (q : ℕ) (x : ℝ) (hx : x ∈ Set.Icc (-r) r) : ‖mode4FerrersSecondDerivativeTerm a q x‖ ≤ mode4FerrersSecondDerivativeMajorant a r q",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -6497,7 +6436,7 @@
       "line": 170,
       "signature": "noncomputable def mode4FerrersFirstDerivativeSeries (a : ℕ → ℝ) (x : ℝ) : ℝ",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6507,7 +6446,7 @@
       "line": 174,
       "signature": "noncomputable def mode4FerrersSecondDerivativeSeries (a : ℕ → ℝ) (x : ℝ) : ℝ",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6517,8 +6456,8 @@
       "line": 178,
       "signature": "theorem mode4FerrersFirstDerivativeMajorant_summable (a : ℕ → ℝ) (r : ℝ) (ha2 : Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ) ^ 2) * |a q|)) : Summable (mode4FerrersFirstDerivativeMajorant a r)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6527,8 +6466,8 @@
       "line": 188,
       "signature": "theorem mode4FerrersSecondDerivativeMajorant_summable (a : ℕ → ℝ) (r : ℝ) (ha2 : Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ) ^ 2) * |a q|)) : Summable (mode4FerrersSecondDerivativeMajorant a r)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6537,8 +6476,8 @@
       "line": 199,
       "signature": "theorem mode4FerrersFirstDerivativeTerm_summable (a : ℕ → ℝ) (r : ℝ) (hr0 : 0 ≤ r) (hr1 : r < 1) (ha2 : Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ) ^ 2) * |a q|)) (x : ℝ) (hx : x ∈ Set.Icc (-r) r) : Summable (fun q : ℕ => mode4FerrersFirstDerivativeTerm a q x)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6547,8 +6486,8 @@
       "line": 215,
       "signature": "theorem mode4FerrersSecondDerivativeTerm_summable (a : ℕ → ℝ) (r : ℝ) (hr0 : 0 ≤ r) (hr1 : r < 1) (ha2 : Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ) ^ 2) * |a q|)) (x : ℝ) (hx : x ∈ Set.Icc (-r) r) : Summable (fun q : ℕ => mode4FerrersSecondDerivativeTerm a q x)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6557,8 +6496,8 @@
       "line": 231,
       "signature": "theorem mode4FerrersFirstDerivativeSeries_continuousOn (a : ℕ → ℝ) (r : ℝ) (hr0 : 0 ≤ r) (hr1 : r < 1) (ha2 : Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ) ^ 2) * |a q|)) : ContinuousOn (mode4FerrersFirstDerivativeSeries a) (Set.Icc (-r) r)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6567,8 +6506,8 @@
       "line": 248,
       "signature": "theorem mode4FerrersSecondDerivativeSeries_continuousOn (a : ℕ → ℝ) (r : ℝ) (hr0 : 0 ≤ r) (hr1 : r < 1) (ha2 : Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ) ^ 2) * |a q|)) : ContinuousOn (mode4FerrersSecondDerivativeSeries a) (Set.Icc (-r) r)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6577,7 +6516,7 @@
       "line": 266,
       "signature": "theorem mode4FerrersSeries_hasDerivAt_of_mem_Ioo (a : ℕ → ℝ) (r : ℝ) (hr0 : 0 < r) (hr1 : r < 1) (haAbs : Summable (fun q : ℕ => |a q|)) (ha2 : Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ) ^ 2) * |a q|)) (x : ℝ) (hx : x ∈ Set.Ioo (-r) r) : HasDerivAt (mode4FerrersSeries a) (mode4FerrersFirstDerivativeSeries a x) x",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6587,7 +6526,7 @@
       "line": 293,
       "signature": "theorem mode4FerrersFirstDerivativeSeries_hasDerivAt_of_mem_Ioo (a : ℕ → ℝ) (r : ℝ) (hr0 : 0 < r) (hr1 : r < 1) (ha2 : Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ) ^ 2) * |a q|)) (x : ℝ) (hx : x ∈ Set.Ioo (-r) r) : HasDerivAt (mode4FerrersFirstDerivativeSeries a) (mode4FerrersSecondDerivativeSeries a x) x",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6597,8 +6536,8 @@
       "line": 321,
       "signature": "theorem mode4FerrersSeries_contDiffOn_two_Ioo (a : ℕ → ℝ) (r : ℝ) (hr0 : 0 < r) (hr1 : r < 1) (haAbs : Summable (fun q : ℕ => |a q|)) (ha2 : Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ) ^ 2) * |a q|)) : ContDiffOn ℝ 2 (mode4FerrersSeries a) (Set.Ioo (-r) r)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6607,8 +6546,8 @@
       "line": 371,
       "signature": "theorem mode4FerrersSeries_contDiffOn_two_Ioo_unit (a : ℕ → ℝ) (haAbs : Summable (fun q : ℕ => |a q|)) (ha2 : Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ) ^ 2) * |a q|)) : ContDiffOn ℝ 2 (mode4FerrersSeries a) (Set.Ioo (-1 : ℝ) 1)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6617,7 +6556,7 @@
       "line": 399,
       "signature": "theorem mode4FerrersSeries_contDiffOn_two_of_tail_splice (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (a : ℕ → ℝ) (hsplice : ∀ n : ℕ, a (K - 1 + n) = a (K - 1) * mode4TailCoefficientRow mProject Λ K n) : ContDiffOn ℝ 2 (mode4FerrersSeries a) (Set.Ioo (-1 : ℝ) 1)",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6627,8 +6566,8 @@
       "line": 21,
       "signature": "private noncomputable def mode4ProlateFirstOrderCLM (mProject : ℕ) (Λ x : ℝ) : (ℝ × ℝ) →L[ℝ] (ℝ × ℝ)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6637,8 +6576,8 @@
       "line": 33,
       "signature": "private theorem mode4ProlateFirstOrderCLM_apply (mProject : ℕ) (Λ x : ℝ) (p : ℝ × ℝ) : mode4ProlateFirstOrderCLM mProject Λ x p = (p.2, ((mode4JacobiG mProject * x ^ 2 - (Λ + mode4JacobiG mProject)) * p.1 + 2 * x * p.2) / (1 - x ^ 2))",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6647,8 +6586,8 @@
       "line": 43,
       "signature": "private theorem mode4ProlateFirstOrderCLM_continuousAt (mProject : ℕ) (Λ x : ℝ) (hx : x ∈ Set.Ioo (-1 : ℝ) 1) : ContinuousAt (mode4ProlateFirstOrderCLM mProject Λ) x",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6657,7 +6596,7 @@
       "line": 100,
       "signature": "theorem Mode4FerrersRegularEvenProlateSolution.interior_zero_simple {mProject K : ℕ} {Λ x : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (hx : x ∈ Set.Ioo (-1 : ℝ) 1) (hz : mode4FerrersSeries S.coefficients x = 0) : deriv (mode4FerrersSeries S.coefficients) x ≠ 0",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6667,7 +6606,7 @@
       "line": 21,
       "signature": "noncomputable def mode4PhysicalFerrersSeries (mProject : ℕ) (a : ℕ → ℝ) (u : ℝ) : ℝ",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6677,7 +6616,7 @@
       "line": 25,
       "signature": "noncomputable def mode4PhysicalFerrersFirstDerivativeSeries (mProject : ℕ) (a : ℕ → ℝ) (u : ℝ) : ℝ",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6687,7 +6626,7 @@
       "line": 30,
       "signature": "noncomputable def mode4PhysicalFerrersSecondDerivativeSeries (mProject : ℕ) (a : ℕ → ℝ) (u : ℝ) : ℝ",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6697,8 +6636,8 @@
       "line": 35,
       "signature": "private theorem mode4Physical_scale_mem_Ioo {mProject : ℕ} (hm : 2 ≤ mProject) {u : ℝ} (hu : u ∈ Set.Ioo (-Real.sqrt mProject) (Real.sqrt mProject)) : u / Real.sqrt mProject ∈ Set.Ioo (-1 : ℝ) 1",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6707,7 +6646,7 @@
       "line": 48,
       "signature": "theorem Mode4FerrersRegularEvenProlateSolution.physical_contDiffOn_two_open {mProject K : ℕ} {Λ : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (hm : 2 ≤ mProject) : ContDiffOn ℝ 2 (mode4PhysicalFerrersSeries mProject S.coefficients) (Set.Ioo (-Real.sqrt mProject) (Real.sqrt mProject))",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6717,7 +6656,7 @@
       "line": 66,
       "signature": "theorem Mode4FerrersRegularEvenProlateSolution.physicalFerrersSeries_hasDerivAt_firstDerivativeSeries {mProject K : ℕ} {Λ u : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (hm : 2 ≤ mProject) (hu : u ∈ Set.Ioo (-Real.sqrt mProject) (Real.sqrt mProject)) : HasDerivAt (mode4PhysicalFerrersSeries mProject S.coefficients) (mode4PhysicalFerrersFirstDerivativeSeries mProject S.coefficients u) u",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6727,7 +6666,7 @@
       "line": 89,
       "signature": "theorem Mode4FerrersRegularEvenProlateSolution.physicalFirstDerivativeSeries_hasDerivAt_secondDerivativeSeries {mProject K : ℕ} {Λ u : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (hm : 2 ≤ mProject) (hu : u ∈ Set.Ioo (-Real.sqrt mProject) (Real.sqrt mProject)) : HasDerivAt (mode4PhysicalFerrersFirstDerivativeSeries mProject S.coefficients) (mode4PhysicalFerrersSecondDerivativeSeries mProject S.coefficients u) u",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6737,7 +6676,7 @@
       "line": 137,
       "signature": "theorem Mode4FerrersRegularEvenProlateSolution.physicalProlateDifferentialEquation {mProject K : ℕ} {Λ u : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (hm : 2 ≤ mProject) (hu : u ∈ Set.Ioo (-Real.sqrt mProject) (Real.sqrt mProject)) : -((mProject : ℝ) - u ^ 2) * mode4PhysicalFerrersSecondDerivativeSeries mProject S.coefficients u + 2 * u * mode4PhysicalFerrersFirstDerivativeSeries mProject S.coefficients u + (2 * Real.pi * Real.sqrt mProject * u) ^ 2 * mode4PhysicalFerrersSeries mProject S.coefficients u = (Λ + mode4JacobiG mProject) * mode4PhysicalFerrersSeries mProject S.coefficients u",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6747,7 +6686,7 @@
       "line": 189,
       "signature": "theorem exists_mode4MatchedNormalizedPhysicalProlateRow_of_root (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (hroot : mode4RootFunction mProject K Λ = 0) : ∃ a : ℕ → ℝ, 0 < a 0 ∧ Summable (fun q => |a q|) ∧ Summable (fun q => (a q) ^ 2) ∧ HasSum (fun q => (a q) ^ 2 / (4 * (q : ℝ) + 1)) 1 ∧ ContDiffOn ℝ 2 (mode4PhysicalFerrersSeries mProject a) (Set.Ioo (-Real.sqrt mProject) (Real.sqrt mProject)) ∧ ∀ u ∈ Set.Ioo (-Real.sqrt mProject) (Real.sqrt mProject), -((mProject : ℝ) - u ^ 2) * mode4PhysicalFerrersSecondDerivativeSeries mProject a u + 2 * u * mode4PhysicalFerrersFirstDerivativeSeries mProject a u + (2 * Real.pi * Real.sqrt mProject * u) ^ 2 * mode4PhysicalFerrersSeries mProject a u = (Λ + mode4JacobiG mProject) * mode4PhysicalFerrersSeries mProject a u",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6757,8 +6696,8 @@
       "line": 21,
       "signature": "theorem mode4FerrersLegendre_Xsq_zero (G x : ℝ) : G * x ^ 2 * mode4OrdinaryLegendre 0 x = -mode4PSWFLegendreSubdiagonal G 1 * mode4OrdinaryLegendre 2 x + (mode4PSWFLegendreDiagonal G 0 - ((0 : ℝ) * (0 + 1))) * mode4OrdinaryLegendre 0 x",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6767,8 +6706,8 @@
       "line": 44,
       "signature": "theorem mode4FerrersLegendre_Xsq_succ (G x : ℝ) (q : ℕ) : G * x ^ 2 * mode4OrdinaryLegendre (2 * (q + 1)) x = -mode4PSWFLegendreSubdiagonal G (q + 2) * mode4OrdinaryLegendre (2 * (q + 2)) x + (mode4PSWFLegendreDiagonal G (q + 1) - (((2 * (q + 1) : ℕ) : ℝ) * (((2 * (q + 1) : ℕ) : ℝ) + 1))) * mode4OrdinaryLegendre (2 * (q + 1)) x - mode4PSWFLegendreSuperdiagonal G q * mode4OrdinaryLegendre (2 * q) x",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -6777,8 +6716,8 @@
       "line": 152,
       "signature": "noncomputable def mode4FerrersPhase (a : ℕ → ℝ) (q : ℕ) : ℝ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6787,8 +6726,8 @@
       "line": 155,
       "signature": "theorem mode4FerrersPhase_recurrence (G E : ℝ) (a : ℕ → ℝ) (ha : ∀ q : ℕ, mode4PSWFLegendreSubdiagonal G q * a (q - 1) + (mode4PSWFLegendreDiagonal G q - E) * a q + mode4PSWFLegendreSuperdiagonal G q * a (q + 1) = 0) : ∀ q : ℕ, -mode4PSWFLegendreSubdiagonal G q * mode4FerrersPhase a (q - 1) + (mode4PSWFLegendreDiagonal G q - E) * mode4FerrersPhase a q - mode4PSWFLegendreSuperdiagonal G q * mode4FerrersPhase a (q + 1) = 0",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -6797,8 +6736,8 @@
       "line": 179,
       "signature": "noncomputable def mode4FerrersUpperBand (G : ℝ) (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : ℝ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -6807,8 +6746,8 @@
       "line": 184,
       "signature": "noncomputable def mode4FerrersDiagonalBand (G : ℝ) (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : ℝ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -6817,8 +6756,8 @@
       "line": 191,
       "signature": "noncomputable def mode4FerrersLowerBand (G : ℝ) (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : ℝ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6827,8 +6766,8 @@
       "line": 197,
       "signature": "theorem mode4FerrersTerm_prolateBand_action (G : ℝ) (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : G * x ^ 2 * mode4FerrersTerm a q x = mode4FerrersUpperBand G a q x + mode4FerrersDiagonalBand G a q x + mode4FerrersLowerBand G a q x",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6837,8 +6776,8 @@
       "line": 214,
       "signature": "theorem mode4FerrersUpperBand_summable (G : ℝ) (a : ℕ → ℝ) (x : ℝ) (hG : 0 < G) (haAbs : Summable (fun q : ℕ => |a q|)) (hx : x ∈ Set.Icc (-1 : ℝ) 1) : Summable (fun q : ℕ => mode4FerrersUpperBand G a q x)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6847,8 +6786,8 @@
       "line": 243,
       "signature": "theorem mode4FerrersLowerBand_summable (G : ℝ) (a : ℕ → ℝ) (x : ℝ) (hG : 0 < G) (haAbs : Summable (fun q : ℕ => |a q|)) (hx : x ∈ Set.Icc (-1 : ℝ) 1) : Summable (fun q : ℕ => mode4FerrersLowerBand G a q x)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6857,8 +6796,8 @@
       "line": 277,
       "signature": "theorem mode4FerrersDiagonalBand_summable (G : ℝ) (a : ℕ → ℝ) (x : ℝ) (hG : 0 < G) (haAbs : Summable (fun q : ℕ => |a q|)) (hx : x ∈ Set.Icc (-1 : ℝ) 1) : Summable (fun q : ℕ => mode4FerrersDiagonalBand G a q x)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -6867,8 +6806,8 @@
       "line": 293,
       "signature": "noncomputable def mode4FerrersIncomingLowerBand (G : ℝ) (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : ℝ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -6877,8 +6816,8 @@
       "line": 298,
       "signature": "noncomputable def mode4FerrersIncomingUpperBand (G : ℝ) (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : ℝ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6887,8 +6826,8 @@
       "line": 303,
       "signature": "theorem mode4FerrersIncomingLowerBand_zero (G : ℝ) (a : ℕ → ℝ) (x : ℝ) : mode4FerrersIncomingLowerBand G a 0 x = 0",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6897,8 +6836,8 @@
       "line": 309,
       "signature": "theorem mode4FerrersIncomingLowerBand_succ (G : ℝ) (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : mode4FerrersIncomingLowerBand G a (q + 1) x = mode4FerrersUpperBand G a q x",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6907,8 +6846,8 @@
       "line": 314,
       "signature": "theorem mode4FerrersLowerBand_succ (G : ℝ) (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : mode4FerrersLowerBand G a (q + 1) x = mode4FerrersIncomingUpperBand G a q x",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6917,8 +6856,8 @@
       "line": 319,
       "signature": "theorem mode4FerrersIncomingLowerBand_summable (G : ℝ) (a : ℕ → ℝ) (x : ℝ) (hupper : Summable (fun q : ℕ => mode4FerrersUpperBand G a q x)) : Summable (fun q : ℕ => mode4FerrersIncomingLowerBand G a q x)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6927,8 +6866,8 @@
       "line": 326,
       "signature": "theorem mode4FerrersIncomingUpperBand_summable (G : ℝ) (a : ℕ → ℝ) (x : ℝ) (hlower : Summable (fun q : ℕ => mode4FerrersLowerBand G a q x)) : Summable (fun q : ℕ => mode4FerrersIncomingUpperBand G a q x)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6937,8 +6876,8 @@
       "line": 333,
       "signature": "theorem mode4Ferrers_tsum_upper_eq_incomingLower (G : ℝ) (a : ℕ → ℝ) (x : ℝ) (hupper : Summable (fun q : ℕ => mode4FerrersUpperBand G a q x)) : ∑' q : ℕ, mode4FerrersUpperBand G a q x = ∑' q : ℕ, mode4FerrersIncomingLowerBand G a q x",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6947,8 +6886,8 @@
       "line": 349,
       "signature": "theorem mode4Ferrers_tsum_lower_eq_incomingUpper (G : ℝ) (a : ℕ → ℝ) (x : ℝ) (hlower : Summable (fun q : ℕ => mode4FerrersLowerBand G a q x)) : ∑' q : ℕ, mode4FerrersLowerBand G a q x = ∑' q : ℕ, mode4FerrersIncomingUpperBand G a q x",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -6957,8 +6896,8 @@
       "line": 364,
       "signature": "noncomputable def mode4FerrersSpectralTerm (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : ℝ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6967,8 +6906,8 @@
       "line": 370,
       "signature": "theorem mode4FerrersSpectralTerm_summable (a : ℕ → ℝ) (x : ℝ) (ha2 : Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ) ^ 2) * |a q|)) (hx : x ∈ Set.Icc (-1 : ℝ) 1) : Summable (fun q : ℕ => mode4FerrersSpectralTerm a q x)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -6977,8 +6916,8 @@
       "line": 411,
       "signature": "noncomputable def mode4FerrersRowResidual (G E : ℝ) (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : ℝ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6987,8 +6926,8 @@
       "line": 417,
       "signature": "theorem mode4FerrersRowResidual_eq_zero (G E : ℝ) (a : ℕ → ℝ) (ha : ∀ q : ℕ, mode4PSWFLegendreSubdiagonal G q * a (q - 1) + (mode4PSWFLegendreDiagonal G q - E) * a q + mode4PSWFLegendreSuperdiagonal G q * a (q + 1) = 0) (q : ℕ) (x : ℝ) : mode4FerrersRowResidual G E a q x = 0",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6997,8 +6936,8 @@
       "line": 431,
       "signature": "theorem mode4FerrersSeries_spectralIdentity (G E : ℝ) (a : ℕ → ℝ) (x : ℝ) (hG : 0 < G) (haAbs : Summable (fun q : ℕ => |a q|)) (ha2 : Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ) ^ 2) * |a q|)) (hx : x ∈ Set.Icc (-1 : ℝ) 1) (haRec : ∀ q : ℕ, mode4PSWFLegendreSubdiagonal G q * a (q - 1) + (mode4PSWFLegendreDiagonal G q - E) * a q + mode4PSWFLegendreSuperdiagonal G q * a (q + 1) = 0) : (∑' q : ℕ, G * x ^ 2 * mode4FerrersTerm a q x) + ∑' q : ℕ, mode4FerrersSpectralTerm a q x = E * (∑' q : ℕ, mode4FerrersTerm a q x)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7007,8 +6946,8 @@
       "line": 498,
       "signature": "theorem mode4FerrersSpectralTsum_eq_derivatives (a : ℕ → ℝ) (x : ℝ) (ha2 : Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ) ^ 2) * |a q|)) (hx : x ∈ Set.Ioo (-1 : ℝ) 1) : (∑' q : ℕ, mode4FerrersSpectralTerm a q x) = -(1 - x ^ 2) * mode4FerrersSecondDerivativeSeries a x + 2 * x * mode4FerrersFirstDerivativeSeries a x",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7017,7 +6956,7 @@
       "line": 548,
       "signature": "theorem mode4FerrersSeries_prolateDifferentialEquation (G E : ℝ) (a : ℕ → ℝ) (hG : 0 < G) (haAbs : Summable (fun q : ℕ => |a q|)) (ha2 : Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ) ^ 2) * |a q|)) (haRec : ∀ q : ℕ, mode4PSWFLegendreSubdiagonal G q * a (q - 1) + (mode4PSWFLegendreDiagonal G q - E) * a q + mode4PSWFLegendreSuperdiagonal G q * a (q + 1) = 0) (x : ℝ) (hx : x ∈ Set.Ioo (-1 : ℝ) 1) : -(1 - x ^ 2) * mode4FerrersSecondDerivativeSeries a x + 2 * x * mode4FerrersFirstDerivativeSeries a x + G * x ^ 2 * mode4FerrersSeries a x = E * mode4FerrersSeries a x",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -7027,7 +6966,7 @@
       "line": 575,
       "signature": "theorem mode4FerrersSeries_prolateDifferentialEquation_of_tail_splice (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (a : ℕ → ℝ) (hsplice : ∀ n : ℕ, a (K - 1 + n) = a (K - 1) * mode4TailCoefficientRow mProject Λ K n) (haRec : ∀ q : ℕ, mode4PSWFLegendreSubdiagonal (mode4JacobiG mProject) q * a (q - 1) + (mode4PSWFLegendreDiagonal (mode4JacobiG mProject) q - (Λ + mode4JacobiG mProject)) * a q + mode4PSWFLegendreSuperdiagonal (mode4JacobiG mProject) q * a (q + 1) = 0) (x : ℝ) (hx : x ∈ Set.Ioo (-1 : ℝ) 1) : -(1 - x ^ 2) * mode4FerrersSecondDerivativeSeries a x + 2 * x * mode4FerrersFirstDerivativeSeries a x + mode4JacobiG mProject * x ^ 2 * mode4FerrersSeries a x = (Λ + mode4JacobiG mProject) * mode4FerrersSeries a x",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -7037,7 +6976,7 @@
       "line": 622,
       "signature": "theorem exists_mode4MatchedNormalizedProlateFerrersRow_of_root (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (hroot : mode4RootFunction mProject K Λ = 0) : ∃ a : ℕ → ℝ, 0 < a 0 ∧ Summable (fun q : ℕ => |a q|) ∧ Summable (fun q : ℕ => (a q) ^ 2) ∧ HasSum (fun q : ℕ => (a q) ^ 2 / (4 * (q : ℝ) + 1)) 1 ∧ (∀ q : ℕ, mode4PSWFLegendreSubdiagonal (mode4JacobiG mProject) q * a (q - 1) + (mode4PSWFLegendreDiagonal (mode4JacobiG mProject) q - (Λ + mode4JacobiG mProject)) * a q + mode4PSWFLegendreSuperdiagonal (mode4JacobiG mProject) q * a (q + 1) = 0) ∧ a (K - 1) ≠ 0 ∧ (∀ n : ℕ, a (K - 1 + n) = a (K - 1) * mode4TailCoefficientRow mProject Λ K n) ∧ ContDiffOn ℝ 2 (mode4FerrersSeries a) (Set.Ioo (-1 : ℝ) 1) ∧ ∀ x ∈ Set.Ioo (-1 : ℝ) 1, -(1 - x ^ 2) * mode4FerrersSecondDerivativeSeries a x + 2 * x * mode4FerrersFirstDerivativeSeries a x + mode4JacobiG mProject * x ^ 2 * mode4FerrersSeries a x = (Λ + mode4JacobiG mProject) * mode4FerrersSeries a x",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -7047,7 +6986,7 @@
       "line": 18,
       "signature": "structure Mode4FerrersRegularEvenProlateSolution (mProject K : ℕ) (Λ : ℝ) where",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -7057,7 +6996,7 @@
       "line": 96,
       "signature": "theorem exists_mode4FerrersRegularEvenProlateSolution_of_root (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (hroot : mode4RootFunction mProject K Λ = 0) : Nonempty (Mode4FerrersRegularEvenProlateSolution mProject K Λ)",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -7067,8 +7006,8 @@
       "line": 23,
       "signature": "private theorem sturmParameterDirectionPlant : Real.sin 0 = 0 ∧ Real.sin Real.pi = 0 ∧ (Real.pi / 2 ∈ Set.Ioo (0 : ℝ) Real.pi ∧ Real.sin (2 * (Real.pi / 2)) = 0)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7077,8 +7016,8 @@
       "line": 32,
       "signature": "private theorem sturmCounterDirectionPlant : ∀ x ∈ Set.Ioo (0 : ℝ) (Real.pi / 2), Real.sin x ≠ 0",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7087,8 +7026,8 @@
       "line": 37,
       "signature": "private theorem sturmNodalIntervalGuardPlant : ∃ x ∈ Set.Ioo (0 : ℝ) Real.pi, Real.sin (2 * x) = 0",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7097,8 +7036,8 @@
       "line": 42,
       "signature": "private theorem sturmPotentialMismatchPlant (GLo GHi ΛLo ΛHi x u v : ℝ) : u * ((GHi * x ^ 2 - (ΛHi + GHi)) * v) - ((GLo * x ^ 2 - (ΛLo + GLo)) * u) * v = ((ΛLo - ΛHi) + (GHi - GLo) * (x ^ 2 - 1)) * u * v",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7107,8 +7046,8 @@
       "line": 49,
       "signature": "private theorem sturmSingularEndpointGuardPlant : (-1 : ℝ) ∉ Set.Ioo (-1 : ℝ) 1 ∧ (1 : ℝ) ∉ Set.Ioo (-1 : ℝ) 1",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -7117,7 +7056,7 @@
       "line": 54,
       "signature": "private noncomputable def mode4FerrersSturmWronskian {mProject K : ℕ} {ΛLo ΛHi : ℝ} (SLo : Mode4FerrersRegularEvenProlateSolution mProject K ΛLo) (SHi : Mode4FerrersRegularEvenProlateSolution mProject K ΛHi) (x : ℝ) : ℝ",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -7127,7 +7066,7 @@
       "line": 65,
       "signature": "private theorem mode4FerrersSturmWronskian_hasDerivAt {mProject K : ℕ} {ΛLo ΛHi x : ℝ} (SLo : Mode4FerrersRegularEvenProlateSolution mProject K ΛLo) (SHi : Mode4FerrersRegularEvenProlateSolution mProject K ΛHi) (hx : x ∈ Set.Ioo (-1 : ℝ) 1) : HasDerivAt (mode4FerrersSturmWronskian SLo SHi) ((ΛLo - ΛHi) * mode4FerrersSeries SLo.coefficients x * mode4FerrersSeries SHi.coefficients x) x",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -7137,7 +7076,7 @@
       "line": 116,
       "signature": "private theorem continuous_nonzero_on_interval_has_constant_sign {f : ℝ → ℝ} {a b : ℝ} (hab : a < b) (hcont : ContinuousOn f (Set.Icc a b)) (hnz : ∀ x ∈ Set.Ioo a b, f x ≠ 0) : (∀ x ∈ Set.Ioo a b, 0 < f x) ∨ (∀ x ∈ Set.Ioo a b, f x < 0)",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -7147,7 +7086,7 @@
       "line": 162,
       "signature": "private theorem derivative_pos_at_left_zero_of_pos_right {f : ℝ → ℝ} {f' a b : ℝ} (hab : a < b) (hf : HasDerivAt f f' a) (hfa : f a = 0) (hpos : ∀ x ∈ Set.Ioo a b, 0 < f x) (hf'Ne : f' ≠ 0) : 0 < f'",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -7157,7 +7096,7 @@
       "line": 185,
       "signature": "private theorem derivative_neg_at_right_zero_of_pos_left {f : ℝ → ℝ} {f' a b : ℝ} (hab : a < b) (hf : HasDerivAt f f' b) (hfb : f b = 0) (hpos : ∀ x ∈ Set.Ioo a b, 0 < f x) (hf'Ne : f' ≠ 0) : f' < 0",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -7167,8 +7106,8 @@
       "line": 209,
       "signature": "private theorem value_nonneg_at_left_of_pos_right {f : ℝ → ℝ} {a b : ℝ} (hab : a < b) (hf : ContinuousAt f a) (hpos : ∀ x ∈ Set.Ioo a b, 0 < f x) : 0 ≤ f a",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7177,8 +7116,8 @@
       "line": 223,
       "signature": "private theorem value_nonneg_at_right_of_pos_left {f : ℝ → ℝ} {a b : ℝ} (hab : a < b) (hf : ContinuousAt f b) (hpos : ∀ x ∈ Set.Ioo a b, 0 < f x) : 0 ≤ f b",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7187,7 +7126,7 @@
       "line": 237,
       "signature": "private theorem wronskian_strictAnti_on_nodal_interval {mProject K : ℕ} {ΛLo ΛHi x1 x2 su sv : ℝ} (SLo : Mode4FerrersRegularEvenProlateSolution mProject K ΛLo) (SHi : Mode4FerrersRegularEvenProlateSolution mProject K ΛHi) (hΛ : ΛLo < ΛHi) (hx1 : x1 ∈ Set.Ioo (-1 : ℝ) 1) (hx2 : x2 ∈ Set.Ioo (-1 : ℝ) 1) (hxx : x1 < x2) (hz1 : mode4FerrersSeries SLo.coefficients x1 = 0) (hz2 : mode4FerrersSeries SLo.coefficients x2 = 0) (hsu : su ≠ 0) (huPos : ∀ x ∈ Set.Ioo x1 x2, 0 < su * mode4FerrersSeries SLo.coefficients x) (hvPos : ∀ x ∈ Set.Ioo x1 x2, 0 < sv * mode4FerrersSeries SHi.coefficients x) : False",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -7197,7 +7136,7 @@
       "line": 379,
       "signature": "theorem exists_mode4Ferrers_zero_between_of_lt_Lambda_on_nodal_interval {mProject K : ℕ} {ΛLo ΛHi x1 x2 : ℝ} (SLo : Mode4FerrersRegularEvenProlateSolution mProject K ΛLo) (SHi : Mode4FerrersRegularEvenProlateSolution mProject K ΛHi) (hΛ : ΛLo < ΛHi) (hx1 : x1 ∈ Set.Ioo (-1 : ℝ) 1) (hx2 : x2 ∈ Set.Ioo (-1 : ℝ) 1) (hxx : x1 < x2) (hz1 : mode4FerrersSeries SLo.coefficients x1 = 0) (hz2 : mode4FerrersSeries SLo.coefficients x2 = 0) (hNodal : ∀ x ∈ Set.Ioo x1 x2, mode4FerrersSeries SLo.coefficients x ≠ 0) : ∃ x ∈ Set.Ioo x1 x2, mode4FerrersSeries SHi.coefficients x = 0",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -7312,9 +7251,19 @@
     },
     {
       "kind": "theorem",
+      "name": "mode4TailHermitianScale_zero_eq_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4JacobiHermitianTailRow.lean",
+      "line": 71,
+      "signature": "theorem mode4TailHermitianScale_zero_eq_one (K : ℕ) (hK : 3 ≤ K) : mode4TailHermitianScale K 0 = 1",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
       "name": "mode4TailHermitianScale_lower_balance",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4JacobiHermitianTailRow.lean",
-      "line": 70,
+      "line": 76,
       "signature": "private theorem mode4TailHermitianScale_lower_balance (G : ℝ) (K n : ℕ) (hG : 0 < G) (hK : 3 ≤ K) : mode4JacobiLower G (K + n) * mode4TailHermitianScale K (n + 1) = mode4JacobiSymmetricOff G (K - 1 + n) * mode4TailHermitianScale K n",
       "in_docs": false,
       "in_lemma_db": true,
@@ -7324,7 +7273,7 @@
       "kind": "theorem",
       "name": "mode4TailHermitianScale_upper_balance",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4JacobiHermitianTailRow.lean",
-      "line": 95,
+      "line": 101,
       "signature": "private theorem mode4TailHermitianScale_upper_balance (G : ℝ) (K n : ℕ) (hG : 0 < G) (hK : 3 ≤ K) : mode4JacobiUpper G (K + n) * mode4TailHermitianScale K (n + 1) = mode4JacobiSymmetricOff G (K + n) * mode4TailHermitianScale K (n + 2)",
       "in_docs": false,
       "in_lemma_db": true,
@@ -7334,8 +7283,18 @@
       "kind": "theorem",
       "name": "mode4TailHermitianScale_boundary_balance",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4JacobiHermitianTailRow.lean",
-      "line": 125,
+      "line": 131,
       "signature": "private theorem mode4TailHermitianScale_boundary_balance (G : ℝ) (K : ℕ) (hG : 0 < G) (hK : 3 ≤ K) : mode4JacobiSymmetricOff G (K - 1) * mode4TailHermitianScale K 1 = mode4JacobiUpper G (K - 1) * mode4TailHermitianScale K 0",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4TailHermitianScale_boundary_balance_eq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4JacobiHermitianTailRow.lean",
+      "line": 156,
+      "signature": "theorem mode4TailHermitianScale_boundary_balance_eq (G : ℝ) (K : ℕ) (hG : 0 < G) (hK : 3 ≤ K) : mode4JacobiSymmetricOff G (K - 1) * mode4TailHermitianScale K 1 = mode4JacobiUpper G (K - 1) * mode4TailHermitianScale K 0",
       "in_docs": false,
       "in_lemma_db": true,
       "orphan": false
@@ -7344,7 +7303,7 @@
       "kind": "theorem",
       "name": "mode4HermitianTailCoefficientRow_zero",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4JacobiHermitianTailRow.lean",
-      "line": 147,
+      "line": 162,
       "signature": "theorem mode4HermitianTailCoefficientRow_zero (mProject K : ℕ) (Λ : ℝ) (hK : 3 ≤ K) : mode4HermitianTailCoefficientRow mProject Λ K 0 = 1",
       "in_docs": false,
       "in_lemma_db": true,
@@ -7354,7 +7313,7 @@
       "kind": "theorem",
       "name": "mode4HermitianTailCoefficientRow_pos",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4JacobiHermitianTailRow.lean",
-      "line": 155,
+      "line": 170,
       "signature": "theorem mode4HermitianTailCoefficientRow_pos (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) : ∀ n, 0 < mode4HermitianTailCoefficientRow mProject Λ K n",
       "in_docs": false,
       "in_lemma_db": true,
@@ -7364,7 +7323,7 @@
       "kind": "theorem",
       "name": "mode4HermitianTailCoefficientRow_sq_summable",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4JacobiHermitianTailRow.lean",
-      "line": 170,
+      "line": 185,
       "signature": "theorem mode4HermitianTailCoefficientRow_sq_summable (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) : Summable (fun n => (mode4HermitianTailCoefficientRow mProject Λ K n) ^ 2)",
       "in_docs": false,
       "in_lemma_db": true,
@@ -7374,7 +7333,7 @@
       "kind": "theorem",
       "name": "mode4HermitianTailCoefficientRow_recurrence",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4JacobiHermitianTailRow.lean",
-      "line": 192,
+      "line": 207,
       "signature": "theorem mode4HermitianTailCoefficientRow_recurrence (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) : ∀ n, mode4JacobiSymmetricOff (mode4JacobiG mProject) (K - 1 + n) * mode4HermitianTailCoefficientRow mProject Λ K n - mode4JacobiCenter (mode4JacobiG mProject) Λ (K + n) * mode4HermitianTailCoefficientRow mProject Λ K (n + 1) + mode4JacobiSymmetricOff (mode4JacobiG mProject) (K + n) * mode4HermitianTailCoefficientRow mProject Λ K (n + 2) = 0",
       "in_docs": false,
       "in_lemma_db": true,
@@ -7384,7 +7343,7 @@
       "kind": "theorem",
       "name": "mode4HermitianTail_boundaryFlux_eq_schurCorrection",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4JacobiHermitianTailRow.lean",
-      "line": 246,
+      "line": 261,
       "signature": "theorem mode4HermitianTail_boundaryFlux_eq_schurCorrection (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) : mode4JacobiSymmetricOff (mode4JacobiG mProject) (K - 1) * (mode4HermitianTailCoefficientRow mProject Λ K 1 / mode4HermitianTailCoefficientRow mProject Λ K 0) = mode4JacobiUpper (mode4JacobiG mProject) (K - 1) * mode4RightTailLimit mProject Λ K",
       "in_docs": false,
       "in_lemma_db": true,
@@ -7656,7 +7615,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4JacobiRootFunction.lean",
       "line": 17,
       "signature": "noncomputable def mode4LeftPair (G Λ : ℝ) : ℕ → ℝ × ℝ | 0 => (0, 1) | q + 1 => let y",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -8317,8 +8276,8 @@
       "line": 24,
       "signature": "private theorem shifted_coeff_ode (n k : ℕ) : ((k + 1 : ℕ) : ℤ) ^ 2 * (shiftedLegendre n).coeff (k + 1) + (((n : ℤ) * (n + 1) - (k : ℤ) * (k + 1)) * (shiftedLegendre n).coeff k) = 0",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8327,8 +8286,8 @@
       "line": 84,
       "signature": "private theorem shifted_polynomial_ode (n : ℕ) : X * (1 - X) * (shiftedLegendre n).derivative.derivative + (1 - 2 * X) * (shiftedLegendre n).derivative + C ((n : ℤ) * (n + 1)) * shiftedLegendre n = 0",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8337,8 +8296,8 @@
       "line": 114,
       "signature": "private theorem shifted_polynomial_real_ode (n : ℕ) : let p",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8347,8 +8306,8 @@
       "line": 126,
       "signature": "theorem mode4OrdinaryLegendrePolynomial_differentialEquation (n : ℕ) : (1 - X ^ 2) * (mode4OrdinaryLegendrePolynomial n).derivative.derivative - 2 * X * (mode4OrdinaryLegendrePolynomial n).derivative + C ((n : ℝ) * (n + 1)) * mode4OrdinaryLegendrePolynomial n = 0",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8357,7 +8316,7 @@
       "line": 226,
       "signature": "theorem mode4OrdinaryLegendre_differentialEquation (n : ℕ) (x : ℝ) : (1 - x ^ 2) * (mode4OrdinaryLegendrePolynomial n).derivative.derivative.eval x - 2 * x * (mode4OrdinaryLegendrePolynomial n).derivative.eval x + ((n : ℝ) * (n + 1)) * mode4OrdinaryLegendre n x = 0",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -8367,8 +8326,8 @@
       "line": 238,
       "signature": "noncomputable def mode4OrdinaryLegendreEnergyPolynomial (n : ℕ) : ℝ[X]",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8377,8 +8336,8 @@
       "line": 243,
       "signature": "theorem mode4OrdinaryLegendreEnergyPolynomial_derivative (n : ℕ) : (mode4OrdinaryLegendreEnergyPolynomial n).derivative = 2 * X * (mode4OrdinaryLegendrePolynomial n).derivative ^ 2",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8387,8 +8346,8 @@
       "line": 274,
       "signature": "theorem mode4OrdinaryLegendreEnergyPolynomial_at_one (n : ℕ) : (mode4OrdinaryLegendreEnergyPolynomial n).eval 1 = (n : ℝ) * (n + 1)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8397,8 +8356,8 @@
       "line": 281,
       "signature": "theorem mode4OrdinaryLegendreEnergyPolynomial_monotoneOn_Icc (n : ℕ) : MonotoneOn (fun x : ℝ => (mode4OrdinaryLegendreEnergyPolynomial n).eval x) (Set.Icc 0 1)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8407,8 +8366,8 @@
       "line": 299,
       "signature": "theorem mode4OrdinaryLegendre_abs_le_one_of_nonneg (n : ℕ) (x : ℝ) (hx0 : 0 ≤ x) (hx1 : x ≤ 1) : |mode4OrdinaryLegendre n x| ≤ 1",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8417,7 +8376,7 @@
       "line": 349,
       "signature": "theorem mode4OrdinaryLegendre_abs_le_one (n : ℕ) (x : ℝ) (hx : x ∈ Set.Icc (-1 : ℝ) 1) : |mode4OrdinaryLegendre n x| ≤ 1",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -8427,8 +8386,8 @@
       "line": 368,
       "signature": "theorem mode4OrdinaryLegendrePolynomial_derivative_eval_neg (n : ℕ) (x : ℝ) : (mode4OrdinaryLegendrePolynomial n).derivative.eval (-x) = (-1 : ℝ) ^ (n + 1) * (mode4OrdinaryLegendrePolynomial n).derivative.eval x",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8437,8 +8396,8 @@
       "line": 397,
       "signature": "theorem mode4OrdinaryLegendreEnergyPolynomial_eval_neg (n : ℕ) (x : ℝ) : (mode4OrdinaryLegendreEnergyPolynomial n).eval (-x) = (mode4OrdinaryLegendreEnergyPolynomial n).eval x",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8447,8 +8406,8 @@
       "line": 423,
       "signature": "theorem mode4OrdinaryLegendreEnergyPolynomial_eval_le_endpoint (n : ℕ) (x : ℝ) (hx : x ∈ Set.Icc (-1 : ℝ) 1) : (mode4OrdinaryLegendreEnergyPolynomial n).eval x ≤ (n : ℝ) * (n + 1)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8457,8 +8416,8 @@
       "line": 452,
       "signature": "theorem mode4OrdinaryLegendrePolynomial_derivative_abs_le (n : ℕ) (r x : ℝ) (hr0 : 0 ≤ r) (hr1 : r < 1) (hx : x ∈ Set.Icc (-r) r) : |(mode4OrdinaryLegendrePolynomial n).derivative.eval x| ≤ ((n : ℝ) * (n + 1)) / (1 - r ^ 2) + 1",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8467,8 +8426,8 @@
       "line": 510,
       "signature": "theorem mode4OrdinaryLegendrePolynomial_secondDerivative_abs_le (n : ℕ) (r x : ℝ) (hr0 : 0 ≤ r) (hr1 : r < 1) (hx : x ∈ Set.Icc (-r) r) : |(mode4OrdinaryLegendrePolynomial n).derivative.derivative.eval x| ≤ (2 * r * (((n : ℝ) * (n + 1)) / (1 - r ^ 2) + 1) + (n : ℝ) * (n + 1)) / (1 - r ^ 2)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8702,6 +8661,16 @@
     },
     {
       "kind": "theorem",
+      "name": "mode4DLMF3084_3085_degreeFour_coefficients_force_root",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4PSWFClassicalCoefficientRootCrosswalk.lean",
+      "line": 24,
+      "signature": "theorem mode4DLMF3084_3085_degreeFour_coefficients_force_root (mProject K : ℕ) (Λ : ℝ) (a : ℕ → ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (h3084 : ∀ q : ℕ, mode4PSWFLegendreSubdiagonal (mode4JacobiG mProject) q * a (q - 1) + (mode4PSWFLegendreDiagonal (mode4JacobiG mProject) q - (Λ + mode4JacobiG mProject)) * a q + mode4PSWFLegendreSuperdiagonal (mode4JacobiG mProject) q * a (q + 1) = 0) (h3085 : HasSum (fun q : ℕ => (a q) ^ 2 / (4 * (q : ℝ) + 1)) (1 / 9 : ℝ)) : mode4RootFunction mProject K Λ = 0",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
       "name": "mode4DLMF3084_3085_shiftedBoundaryRatio_eq_canonical",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4PSWFLegendreBoundaryFluxIdentification.lean",
       "line": 19,
@@ -8717,6 +8686,26 @@
       "line": 61,
       "signature": "theorem mode4DLMF3084_3085_sourceBoundaryFlux_eq_schurCorrection (mProject K : ℕ) (Λ : ℝ) (a : ℕ → ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (h3084 : ∀ q : ℕ, mode4PSWFLegendreSubdiagonal (mode4JacobiG mProject) q * a (q - 1) + (mode4PSWFLegendreDiagonal (mode4JacobiG mProject) q - (Λ + mode4JacobiG mProject)) * a q + mode4PSWFLegendreSuperdiagonal (mode4JacobiG mProject) q * a (q + 1) = 0) (h3085 : HasSum (fun k : ℕ => (a k) ^ 2 / (4 * (k : ℝ) + 1)) 1) : mode4JacobiSymmetricOff (mode4JacobiG mProject) (K - 1) * ((mode4TailHermitianScale K 1 * a K) / (mode4TailHermitianScale K 0 * a (K - 1))) = mode4JacobiUpper (mode4JacobiG mProject) (K - 1) * mode4RightTailLimit mProject Λ K",
       "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4DLMF3084_3085_degreeFour_shiftedBoundaryRatio_eq_canonical",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4PSWFLegendreBoundaryFluxIdentification.lean",
+      "line": 97,
+      "signature": "theorem mode4DLMF3084_3085_degreeFour_shiftedBoundaryRatio_eq_canonical (mProject K : ℕ) (Λ : ℝ) (a : ℕ → ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (h3084 : ∀ q : ℕ, mode4PSWFLegendreSubdiagonal (mode4JacobiG mProject) q * a (q - 1) + (mode4PSWFLegendreDiagonal (mode4JacobiG mProject) q - (Λ + mode4JacobiG mProject)) * a q + mode4PSWFLegendreSuperdiagonal (mode4JacobiG mProject) q * a (q + 1) = 0) (h3085 : HasSum (fun q : ℕ => (a q) ^ 2 / (4 * (q : ℝ) + 1)) (1 / 9 : ℝ)) : (mode4TailHermitianScale K 1 * a K) / (mode4TailHermitianScale K 0 * a (K - 1)) = mode4HermitianTailCoefficientRow mProject Λ K 1 / mode4HermitianTailCoefficientRow mProject Λ K 0",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4DLMF3084_3085_degreeFour_sourceBoundaryFlux_eq_schurCorrection",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4PSWFLegendreBoundaryFluxIdentification.lean",
+      "line": 154,
+      "signature": "theorem mode4DLMF3084_3085_degreeFour_sourceBoundaryFlux_eq_schurCorrection (mProject K : ℕ) (Λ : ℝ) (a : ℕ → ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (h3084 : ∀ q : ℕ, mode4PSWFLegendreSubdiagonal (mode4JacobiG mProject) q * a (q - 1) + (mode4PSWFLegendreDiagonal (mode4JacobiG mProject) q - (Λ + mode4JacobiG mProject)) * a q + mode4PSWFLegendreSuperdiagonal (mode4JacobiG mProject) q * a (q + 1) = 0) (h3085 : HasSum (fun q : ℕ => (a q) ^ 2 / (4 * (q : ℝ) + 1)) (1 / 9 : ℝ)) : mode4JacobiSymmetricOff (mode4JacobiG mProject) (K - 1) * ((mode4TailHermitianScale K 1 * a K) / (mode4TailHermitianScale K 0 * a (K - 1))) = mode4JacobiUpper (mode4JacobiG mProject) (K - 1) * mode4RightTailLimit mProject Λ K",
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -8776,6 +8765,16 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4PSWFLegendreCanonicalIdentification.lean",
       "line": 177,
       "signature": "theorem mode4DLMF3084_3085_shiftedHermitianTail_eq_c_mul_canonical (mProject K : ℕ) (Λ : ℝ) (a : ℕ → ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (h3084 : ∀ q : ℕ, mode4PSWFLegendreSubdiagonal (mode4JacobiG mProject) q * a (q - 1) + (mode4PSWFLegendreDiagonal (mode4JacobiG mProject) q - (Λ + mode4JacobiG mProject)) * a q + mode4PSWFLegendreSuperdiagonal (mode4JacobiG mProject) q * a (q + 1) = 0) (h3085 : HasSum (fun k : ℕ => (a k) ^ 2 / (4 * (k : ℝ) + 1)) 1) : ∃ c : ℝ, c ≠ 0 ∧ ∀ n : ℕ, mode4TailHermitianScale K n * a (K - 1 + n) = c * mode4HermitianTailCoefficientRow mProject Λ K n",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4DLMF3084_3085_degreeFour_rescaledTail_eq_c_mul_canonical",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4PSWFLegendreCanonicalIdentification.lean",
+      "line": 290,
+      "signature": "theorem mode4DLMF3084_3085_degreeFour_rescaledTail_eq_c_mul_canonical (mProject K : ℕ) (Λ : ℝ) (a : ℕ → ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (h3084 : ∀ q : ℕ, mode4PSWFLegendreSubdiagonal (mode4JacobiG mProject) q * a (q - 1) + (mode4PSWFLegendreDiagonal (mode4JacobiG mProject) q - (Λ + mode4JacobiG mProject)) * a q + mode4PSWFLegendreSuperdiagonal (mode4JacobiG mProject) q * a (q + 1) = 0) (h3085 : HasSum (fun q : ℕ => (a q) ^ 2 / (4 * (q : ℝ) + 1)) (1 / 9 : ℝ)) : ∃ c : ℝ, c ≠ 0 ∧ ∀ n : ℕ, mode4TailHermitianScale K n * (3 * a (K - 1 + n)) = c * mode4HermitianTailCoefficientRow mProject Λ K n",
       "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
@@ -8852,9 +8851,19 @@
     },
     {
       "kind": "theorem",
+      "name": "mode4DLMF3085_degreeFour_rescale_three",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4PSWFLegendreWeightedHermitianTail.lean",
+      "line": 28,
+      "signature": "theorem mode4DLMF3085_degreeFour_rescale_three (a : ℕ → ℝ) (h3085 : HasSum (fun q : ℕ => (a q) ^ 2 / (4 * (q : ℝ) + 1)) (1 / 9 : ℝ)) : HasSum (fun q : ℕ => (3 * a q) ^ 2 / (4 * (q : ℝ) + 1)) 1",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
       "name": "mode4TailHermitianScale_sourceWeight_identity",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4PSWFLegendreWeightedHermitianTail.lean",
-      "line": 20,
+      "line": 48,
       "signature": "theorem mode4TailHermitianScale_sourceWeight_identity (a : ℕ → ℝ) (K n : ℕ) (hK : 3 ≤ K) : (mode4TailHermitianScale K n * a (K - 1 + n)) ^ 2 = (4 * (K : ℝ) - 3) * ((a (K - 1 + n)) ^ 2 / (4 * ((K - 1 + n : ℕ) : ℝ) + 1))",
       "in_docs": false,
       "in_lemma_db": true,
@@ -8864,7 +8873,7 @@
       "kind": "theorem",
       "name": "mode4DLMF3085_nonzero_and_shiftedHermitian_sqSummable",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4PSWFLegendreWeightedHermitianTail.lean",
-      "line": 45,
+      "line": 73,
       "signature": "theorem mode4DLMF3085_nonzero_and_shiftedHermitian_sqSummable (a : ℕ → ℝ) (K : ℕ) (hK : 3 ≤ K) (h3085 : HasSum (fun k : ℕ => (a k) ^ 2 / (4 * (k : ℝ) + 1)) 1) : (∃ k : ℕ, a k ≠ 0) ∧ Summable (fun n : ℕ => (mode4TailHermitianScale K n * a (K - 1 + n)) ^ 2)",
       "in_docs": false,
       "in_lemma_db": true,
@@ -10137,7 +10146,7 @@
       "line": 29,
       "signature": "noncomputable def explicitCCMLimitH (x : ℝ) : ℂ",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10147,7 +10156,7 @@
       "line": 33,
       "signature": "private noncomputable def gaussianPi (x : ℝ) : ℂ",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10157,7 +10166,7 @@
       "line": 36,
       "signature": "private lemma integrable_moment_gaussianPi (n : ℕ) : Integrable (fun x : ℝ => x ^ n • gaussianPi x)",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10167,7 +10176,7 @@
       "line": 57,
       "signature": "private lemma hasDerivAt_gaussianPi (x : ℝ) : HasDerivAt gaussianPi ((-2 * Real.pi * x : ℂ) * gaussianPi x) x",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10177,7 +10186,7 @@
       "line": 64,
       "signature": "private lemma deriv_gaussianPi : deriv gaussianPi = fun x : ℝ => (-2 * Real.pi * x : ℂ) * gaussianPi x",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10187,7 +10196,7 @@
       "line": 69,
       "signature": "private noncomputable def gaussianP2 (x : ℝ) : ℂ",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10197,7 +10206,7 @@
       "line": 72,
       "signature": "private noncomputable def gaussianP3 (x : ℝ) : ℂ",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10207,7 +10216,7 @@
       "line": 75,
       "signature": "private noncomputable def gaussianP4 (x : ℝ) : ℂ",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10217,7 +10226,7 @@
       "line": 79,
       "signature": "private lemma hasDerivAt_gaussianP2 (x : ℝ) : HasDerivAt gaussianP2 (8 * (Real.pi : ℂ) ^ 2 * x) x",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10227,7 +10236,7 @@
       "line": 89,
       "signature": "private lemma hasDerivAt_gaussianP3 (x : ℝ) : HasDerivAt gaussianP3 (-24 * (Real.pi : ℂ) ^ 3 * (x : ℂ) ^ 2 + 12 * Real.pi ^ 2) x",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10237,7 +10246,7 @@
       "line": 101,
       "signature": "private lemma deriv_gaussianP2_mul_gaussianPi : deriv (fun x => gaussianP2 x * gaussianPi x) = fun x => gaussianP3 x * gaussianPi x",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10247,7 +10256,7 @@
       "line": 112,
       "signature": "private lemma deriv_gaussianP3_mul_gaussianPi : deriv (fun x => gaussianP3 x * gaussianPi x) = fun x => gaussianP4 x * gaussianPi x",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10257,7 +10266,7 @@
       "line": 123,
       "signature": "private lemma iteratedDeriv_two_gaussianPi : iteratedDeriv 2 gaussianPi = fun x => gaussianP2 x * gaussianPi x",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10267,7 +10276,7 @@
       "line": 140,
       "signature": "private lemma iteratedDeriv_four_gaussianPi : iteratedDeriv 4 gaussianPi = fun x => gaussianP4 x * gaussianPi x",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10277,7 +10286,7 @@
       "line": 147,
       "signature": "private noncomputable def fourierMoment2 (x : ℝ) : ℂ",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10287,7 +10296,7 @@
       "line": 150,
       "signature": "private noncomputable def fourierMoment4 (x : ℝ) : ℂ",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10297,7 +10306,7 @@
       "line": 153,
       "signature": "private lemma integrable_fourierMoment2 : Integrable fourierMoment2",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10307,7 +10316,7 @@
       "line": 164,
       "signature": "private lemma integrable_fourierMoment4 : Integrable fourierMoment4",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10317,7 +10326,7 @@
       "line": 175,
       "signature": "private lemma fourier_add_integrable {f k : ℝ → ℂ} (hf : Integrable f) (hk : Integrable k) : 𝓕 (f + k) = 𝓕 f + 𝓕 k",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10327,7 +10336,7 @@
       "line": 181,
       "signature": "private lemma fourier_const_smul (c : ℂ) (f : ℝ → ℂ) : 𝓕 (c • f) = c • 𝓕 f",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10337,7 +10346,7 @@
       "line": 185,
       "signature": "private lemma fourier_gaussianPi : 𝓕 gaussianPi = gaussianPi",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10347,7 +10356,7 @@
       "line": 189,
       "signature": "private lemma fourier_fourierMoment2 : 𝓕 fourierMoment2 = fun x => gaussianP2 x * gaussianPi x",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10357,7 +10366,7 @@
       "line": 196,
       "signature": "private lemma fourier_fourierMoment4 : 𝓕 fourierMoment4 = fun x => gaussianP4 x * gaussianPi x",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10367,7 +10376,7 @@
       "line": 203,
       "signature": "private noncomputable def spectralCCMLimitH : ℝ → ℂ",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10377,7 +10386,7 @@
       "line": 207,
       "signature": "private lemma spectralCCMLimitH_eq_explicitCCMLimitH : spectralCCMLimitH = explicitCCMLimitH",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10387,7 +10396,7 @@
       "line": 220,
       "signature": "private lemma fourier_spectralCCMLimitH : 𝓕 spectralCCMLimitH = spectralCCMLimitH",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10397,7 +10406,7 @@
       "line": 253,
       "signature": "theorem fourier_explicitCCMLimitH : 𝓕 explicitCCMLimitH = explicitCCMLimitH",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10407,7 +10416,7 @@
       "line": 258,
       "signature": "private lemma explicitCCMLimitH_apply (x : ℝ) : explicitCCMLimitH x = ((Real.pi ^ 2 * x ^ 4 - (3 * Real.pi / 2) * x ^ 2 : ℝ) : ℂ) * gaussianPi x",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10417,7 +10426,7 @@
       "line": 266,
       "signature": "private lemma fourier_scale_pos (f : ℝ → ℂ) {u : ℝ} (hu : 0 < u) (y : ℝ) : 𝓕 (fun x => f (u * x)) y = (u⁻¹ : ℝ) • 𝓕 f (y / u)",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10427,7 +10436,7 @@
       "line": 295,
       "signature": "private lemma explicitCCMLimitH_decay : explicitCCMLimitH =O[cocompact ℝ] (fun x : ℝ => |x| ^ (-2 : ℝ))",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10437,7 +10446,7 @@
       "line": 357,
       "signature": "private lemma rpow_decay_comp_mul_pos {f : ℝ → ℂ} {u : ℝ} (hu : 0 < u) (hf : f =O[cocompact ℝ] (fun x : ℝ => |x| ^ (-2 : ℝ))) : (fun x => f (u * x)) =O[cocompact ℝ] (fun x : ℝ => |x| ^ (-2 : ℝ))",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10447,7 +10456,7 @@
       "line": 374,
       "signature": "private lemma poisson_scaled_sum (u : ℝ) (hu : 0 < u) : (∑' n : ℤ, explicitCCMLimitH (u * n)) = ∑' n : ℤ, (u⁻¹ : ℝ) • explicitCCMLimitH ((n : ℝ) / u)",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10457,7 +10466,7 @@
       "line": 417,
       "signature": "private lemma explicitCCMLimitH_even (x : ℝ) : explicitCCMLimitH (-x) = explicitCCMLimitH x",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10467,7 +10476,7 @@
       "line": 424,
       "signature": "private lemma explicitCCMLimitH_zero : explicitCCMLimitH 0 = 0",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10477,8 +10486,8 @@
       "line": 428,
       "signature": "private lemma explicitCCMLimitH_pos_of_three_lt_sq (x : ℝ) (hx : 3 < 2 * Real.pi * x ^ 2) : 0 < (explicitCCMLimitH x).re",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "lemma",
@@ -10487,7 +10496,7 @@
       "line": 455,
       "signature": "private lemma summable_explicitCCMLimitH_int_mul (u : ℝ) (hu : 0 < u) : Summable (fun n : ℤ => explicitCCMLimitH (u * n))",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10497,8 +10506,8 @@
       "line": 461,
       "signature": "private lemma summable_explicitCCMLimitH_pnat_mul (u : ℝ) (hu : 0 < u) : Summable (fun n : ℕ+ => explicitCCMLimitH ((n : ℕ) * u))",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -10507,7 +10516,7 @@
       "line": 474,
       "signature": "theorem E_star_explicitCCMLimitH_pos (u : ℝ) (hu : 1 ≤ u) : 0 < (E_star explicitCCMLimitH u).re",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10517,7 +10526,7 @@
       "line": 508,
       "signature": "private lemma int_sum_eq_two_pnat_sum (u : ℝ) (hu : 0 < u) : (∑' n : ℤ, explicitCCMLimitH (u * n)) = 2 * ∑' n : ℕ+, explicitCCMLimitH ((n : ℕ) * u)",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10527,7 +10536,7 @@
       "line": 535,
       "signature": "private lemma positive_sum_scaling (u : ℝ) (hu : 0 < u) : (∑' n : ℕ+, explicitCCMLimitH ((n : ℕ) * u)) = (u⁻¹ : ℝ) • ∑' n : ℕ+, explicitCCMLimitH ((n : ℕ) * u⁻¹)",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10537,7 +10546,7 @@
       "line": 561,
       "signature": "theorem E_star_explicitCCMLimitH_inv (u : ℝ) (hu : 0 < u) : E_star explicitCCMLimitH u⁻¹ = E_star explicitCCMLimitH u",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10617,7 +10626,7 @@
       "line": 27,
       "signature": "private theorem lambda_m_pos_local (i : PairIndex) : 0 < lambda_m i",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10627,7 +10636,7 @@
       "line": 33,
       "signature": "private theorem lambda_m_sq_local (i : PairIndex) : lambda_m i * lambda_m i = (i.m : ℝ)",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10637,7 +10646,7 @@
       "line": 38,
       "signature": "private theorem exp_logWindow_reflection_div_lambda (i : PairIndex) (x : ℝ) : Real.exp (L_m i - x) / lambda_m i = (Real.exp x / lambda_m i)⁻¹",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10647,7 +10656,7 @@
       "line": 49,
       "signature": "private theorem reflected_mode_inner (i : PairIndex) (n : ℤ) (g : ℝ → ℂ) (x : ℝ) (heven : g ((Real.exp x / lambda_m i)⁻¹) = g (Real.exp x / lambda_m i)) : inner ℂ (((Real.sqrt (L_m i))⁻¹ : ℂ) * Complex.exp (2 * Real.pi * Complex.I * (-n) * ((L_m i - x) / L_m i))) (g (Real.exp (L_m i - x) / lambda_m i)) = inner ℂ (((Real.sqrt (L_m i))⁻¹ : ℂ) * Complex.exp (2 * Real.pi * Complex.I * n * (x / L_m i))) (g (Real.exp x / lambda_m i))",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10657,7 +10666,7 @@
       "line": 95,
       "signature": "theorem inner_V_neg_eq_inner_V_of_inversion_even (i : PairIndex) (n : ℤ) (g : ℝ → ℂ) (hg : MemLp g 2 (dStar.restrict (I_m i))) (heven : ∀ u ∈ I_m i, g u⁻¹ = g u) : inner ℂ (V_n_m i (-n)) (MemLp.toLp g hg) = inner ℂ (V_n_m i n) (MemLp.toLp g hg)",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10667,7 +10676,7 @@
       "line": 210,
       "signature": "theorem sourceCCMComplexOddMass_le_norm_sub_sq_of_inversion_even (S : ProlateCanonicalSourceData) (i : PairIndex) (g : ℝ → ℂ) (hg : MemLp g 2 (dStar.restrict (I_m i))) (heven : ∀ u ∈ I_m i, g u⁻¹ = g u) : sourceCCMComplexOddMass S i ≤ ‖(kTrial_m_N i (prolateCombination (S.source.pair i)) (S.source.eStar_memLp i) (S.source.trialNonzero i) : H_m i) - MemLp.toLp g hg‖ ^ 2",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -10677,7 +10686,7 @@
       "line": 232,
       "signature": "theorem norm_inner_V0_sub_approximation_error_le_projected_trial_norm (i : PairIndex) (hTrial_m : ℝ → ℂ) (hE_star : MemLp (E_star hTrial_m) 2 (dStar.restrict (I_m i))) (f : H_m i) : ‖inner ℂ (V_n_m i 0) f‖ - ‖gTrial_m i hTrial_m hE_star - f‖ ≤ ‖gTrial_m_N i hTrial_m hE_star‖",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -12997,8 +13006,8 @@
       "line": 28,
       "signature": "noncomputable def sourceCCMComplexOddPart (S : ProlateCanonicalSourceData) (i : PairIndex) : CCMModeFinite i.N → ℂ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -13007,7 +13016,7 @@
       "line": 37,
       "signature": "noncomputable def sourceCCMComplexOddMass (S : ProlateCanonicalSourceData) (i : PairIndex) : ℝ",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -13017,8 +13026,8 @@
       "line": 43,
       "signature": "noncomputable def sourceCCMReflectedFiniteTrial (S : ProlateCanonicalSourceData) (i : PairIndex) : H_m i",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -13027,8 +13036,8 @@
       "line": 51,
       "signature": "noncomputable def sourceCCMFiniteReflectionDefect (S : ProlateCanonicalSourceData) (i : PairIndex) : H_m i",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -13037,8 +13046,8 @@
       "line": 61,
       "signature": "private theorem ccmModeFinite_injective_local (N : ℕ) : Function.Injective (ccmModeFinite N)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -13047,8 +13056,8 @@
       "line": 67,
       "signature": "private theorem norm_ccmFiniteSynthesis_sq (i : PairIndex) (c : CCMModeFinite i.N → ℂ) : ‖ccmFiniteSynthesis i c‖ ^ 2 = ∑ j, Complex.normSq (c j)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -13057,8 +13066,8 @@
       "line": 91,
       "signature": "theorem sourceCCMFiniteReflectionDefect_eq_synthesis_sub_reflection (S : ProlateCanonicalSourceData) (i : PairIndex) : sourceCCMFiniteReflectionDefect S i = ccmFiniteSynthesis i (fun j => sourceCCMComplexRow S i j - sourceCCMComplexRow S i (ccmNegFinite i.N j))",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -13067,8 +13076,8 @@
       "line": 112,
       "signature": "theorem sourceCCMComplexOddMass_eq_quarter_norm_reflectionDefect_sq (S : ProlateCanonicalSourceData) (i : PairIndex) : sourceCCMComplexOddMass S i = (1 / 4 : ℝ) * ‖sourceCCMFiniteReflectionDefect S i‖ ^ 2",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -13077,8 +13086,8 @@
       "line": 127,
       "signature": "theorem sourceCCMComplexOddMass_nonneg (S : ProlateCanonicalSourceData) (i : PairIndex) : 0 ≤ sourceCCMComplexOddMass S i",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -13087,8 +13096,8 @@
       "line": 138,
       "signature": "theorem sourceCCMComplexOddMass_le_quarter_norm_sub_sq_of_reflected_coefficients (S : ProlateCanonicalSourceData) (i : PairIndex) (f : H_m i) (hreflect : ∀ j : CCMModeFinite i.N, inner ℂ (V_n_m i (ccmModeFinite i.N j)) f = sourceCCMComplexRow S i (ccmNegFinite i.N j)) : sourceCCMComplexOddMass S i ≤ (1 / 4 : ℝ) * ‖(kTrial_m_N i (prolateCombination (S.source.pair i)) (S.source.eStar_memLp i) (S.source.trialNonzero i) : H_m i) - f‖ ^ 2",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -13097,7 +13106,7 @@
       "line": 205,
       "signature": "theorem sourceCCMComplexOddMass_le_norm_sub_sq_of_even_coefficients (S : ProlateCanonicalSourceData) (i : PairIndex) (f : H_m i) (heven : ∀ j : CCMModeFinite i.N, inner ℂ (V_n_m i (ccmModeFinite i.N (ccmNegFinite i.N j))) f = inner ℂ (V_n_m i (ccmModeFinite i.N j)) f) : sourceCCMComplexOddMass S i ≤ ‖(kTrial_m_N i (prolateCombination (S.source.pair i)) (S.source.eStar_memLp i) (S.source.trialNonzero i) : H_m i) - f‖ ^ 2",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -17637,7 +17646,7 @@
       "line": 23,
       "signature": "theorem hermitian_exists_unit_minimum_eigenpair {ι : Type*} [Fintype ι] [DecidableEq ι] [Nonempty ι] (K : Matrix ι ι ℂ) (hK : K.IsHermitian) : ∃ (epsilon : ℝ) (xi : ι → ℂ), star xi ⬝ᵥ xi = 1 ∧ K *ᵥ xi = (epsilon : ℂ) • xi ∧ ∀ x : ι → ℂ, epsilon * (star x ⬝ᵥ x).re ≤ (star x ⬝ᵥ (K *ᵥ x)).re",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -18997,8 +19006,8 @@
       "line": 24,
       "signature": "def prolateInteriorZeros (lambda : ℝ) (h : ℝ → ℂ) : Set ℝ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -19007,7 +19016,7 @@
       "line": 42,
       "signature": "def IsActualProlateModePair (P : ProlatePair) : Prop",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -19017,8 +19026,8 @@
       "line": 72,
       "signature": "def looseProlateIndicator (x : ℝ) : ℂ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -19027,8 +19036,8 @@
       "line": 75,
       "signature": "private theorem looseProlateIndicator_even : Function.Even looseProlateIndicator",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -19037,8 +19046,8 @@
       "line": 89,
       "signature": "private theorem looseProlateIndicator_support : Function.support looseProlateIndicator ⊆ Icc (-1 : ℝ) 1",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -19047,8 +19056,8 @@
       "line": 99,
       "signature": "private theorem looseProlateIndicator_integrable : Integrable looseProlateIndicator",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -19057,8 +19066,8 @@
       "line": 104,
       "signature": "private theorem looseProlateIndicator_sqNorm_integrable : Integrable (fun x : ℝ => ‖looseProlateIndicator x‖ ^ 2)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -19067,8 +19076,8 @@
       "line": 122,
       "signature": "private theorem integral_looseProlateIndicator : (∫ x : ℝ, looseProlateIndicator x) = 1",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -19077,8 +19086,8 @@
       "line": 128,
       "signature": "private theorem integral_sqNorm_looseProlateIndicator : (∫ x : ℝ, ‖looseProlateIndicator x‖ ^ 2) = 1",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -19087,7 +19096,7 @@
       "line": 145,
       "signature": "def looseProlatePairPlant : ProlatePair where",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -19097,7 +19106,7 @@
       "line": 177,
       "signature": "theorem looseProlatePairPlant_not_actual : ¬ IsActualProlateModePair looseProlatePairPlant",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {

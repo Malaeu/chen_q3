@@ -276,4 +276,67 @@ theorem mode4DLMF3084_3085_shiftedHermitianTail_eq_c_mul_canonical
   rcases hglobal with ⟨j, hj⟩
   exact hj (hall j)
 
+/-- Degree-four specialization of the canonical-tail identification with the
+raw DLMF 30.8.5 normalization.
+
+For `n = 4`, `m = 0`, and the reindexing `q = k + 2`, the raw DLMF weighted
+sum is `1 / 9`.  The source-shaped project row is therefore `q ↦ 3 * a q`.
+The recurrence is homogeneous, so this exact rescaling makes the existing
+unit-normalized canonical-tail theorem directly reusable.
+
+The theorem still consumes an already supplied reindexed classical
+coefficient row.  It does not construct `psi_4`, prove the ordered index, or
+manufacture the desired matching root. -/
+theorem mode4DLMF3084_3085_degreeFour_rescaledTail_eq_c_mul_canonical
+    (mProject K : ℕ) (Λ : ℝ) (a : ℕ → ℝ)
+    (hm : 2 ≤ mProject)
+    (hK : 3 ≤ K)
+    (hsep :
+      ∀ q ≥ K,
+        (31 / 24 : ℝ) * mode4JacobiG mProject ≤
+          mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20)
+    (hΛ : Λ ≤ 20)
+    (h3084 :
+      ∀ q : ℕ,
+        mode4PSWFLegendreSubdiagonal
+              (mode4JacobiG mProject) q * a (q - 1) +
+          (mode4PSWFLegendreDiagonal
+                (mode4JacobiG mProject) q -
+              (Λ + mode4JacobiG mProject)) * a q +
+          mode4PSWFLegendreSuperdiagonal
+              (mode4JacobiG mProject) q * a (q + 1) = 0)
+    (h3085 :
+      HasSum
+        (fun q : ℕ =>
+          (a q) ^ 2 / (4 * (q : ℝ) + 1))
+        (1 / 9 : ℝ)) :
+    ∃ c : ℝ,
+      c ≠ 0 ∧
+      ∀ n : ℕ,
+        mode4TailHermitianScale K n * (3 * a (K - 1 + n)) =
+          c * mode4HermitianTailCoefficientRow mProject Λ K n := by
+  let b : ℕ → ℝ := fun q => 3 * a q
+  have hb3084 :
+      ∀ q : ℕ,
+        mode4PSWFLegendreSubdiagonal
+              (mode4JacobiG mProject) q * b (q - 1) +
+          (mode4PSWFLegendreDiagonal
+                (mode4JacobiG mProject) q -
+              (Λ + mode4JacobiG mProject)) * b q +
+          mode4PSWFLegendreSuperdiagonal
+              (mode4JacobiG mProject) q * b (q + 1) = 0 := by
+    intro q
+    dsimp [b]
+    linear_combination 3 * h3084 q
+  have hb3085 :
+      HasSum
+        (fun q : ℕ =>
+          (b q) ^ 2 / (4 * (q : ℝ) + 1))
+        1 := by
+    simpa [b] using mode4DLMF3085_degreeFour_rescale_three a h3085
+  simpa [b] using
+    mode4DLMF3084_3085_shiftedHermitianTail_eq_c_mul_canonical
+      mProject K Λ b hm hK hsep hΛ hb3084 hb3085
+
 #print axioms mode4DLMF3084_3085_shiftedHermitianTail_eq_c_mul_canonical
+#print axioms mode4DLMF3084_3085_degreeFour_rescaledTail_eq_c_mul_canonical

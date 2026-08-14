@@ -67,6 +67,12 @@ private theorem mode4TailHermitianScale_zero
   unfold mode4TailHermitianScale
   norm_num [hne]
 
+/-- Public source-crosswalk spelling of the zeroth Hermitian tail scale. -/
+theorem mode4TailHermitianScale_zero_eq_one
+    (K : ℕ) (hK : 3 ≤ K) :
+    mode4TailHermitianScale K 0 = 1 :=
+  mode4TailHermitianScale_zero K hK
+
 private theorem mode4TailHermitianScale_lower_balance
     (G : ℝ) (K n : ℕ) (hG : 0 < G) (hK : 3 ≤ K) :
     mode4JacobiLower G (K + n) * mode4TailHermitianScale K (n + 1) =
@@ -143,6 +149,15 @@ private theorem mode4TailHermitianScale_boundary_balance
   unfold mode4JacobiLower mode4JacobiUpper mode4JacobiIndex
   push_cast [Nat.cast_sub (by omega : 1 ≤ K)]
   field_simp <;> ring
+
+/-- Public boundary-balance spelling used to cancel the Hermitian coordinate
+scale when a source Legendre row is transported back to the nonsymmetric
+Jacobi recurrence. -/
+theorem mode4TailHermitianScale_boundary_balance_eq
+    (G : ℝ) (K : ℕ) (hG : 0 < G) (hK : 3 ≤ K) :
+    mode4JacobiSymmetricOff G (K - 1) * mode4TailHermitianScale K 1 =
+      mode4JacobiUpper G (K - 1) * mode4TailHermitianScale K 0 :=
+  mode4TailHermitianScale_boundary_balance G K hG hK
 
 theorem mode4HermitianTailCoefficientRow_zero
     (mProject K : ℕ) (Λ : ℝ)
@@ -272,6 +287,8 @@ theorem mode4HermitianTail_boundaryFlux_eq_schurCorrection
     _ = _ := by ring
 
 #print axioms mode4HermitianTailCoefficientRow_zero
+#print axioms mode4TailHermitianScale_zero_eq_one
+#print axioms mode4TailHermitianScale_boundary_balance_eq
 #print axioms mode4HermitianTailCoefficientRow_pos
 #print axioms mode4HermitianTailCoefficientRow_sq_summable
 #print axioms mode4HermitianTailCoefficientRow_recurrence

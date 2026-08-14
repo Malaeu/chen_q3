@@ -207,3 +207,38 @@ This closes only the checker and permanently kills the commutator/beta-only
 shortcut.  It does not construct `R`, `beta`, a finite-head certificate, a
 uniform tail reduction, or a cofinal schedule.  The narrowed G1 stop is
 `G1_LITERAL_COMPLEMENT_FLOOR_GRAM_CHECKER_PROVED_COFINAL_LITERAL_CCM_ARITHMETIC_AND_UNIFORM_TAIL_FLOOR_MISSING`.
+
+## 2026-08-14 degree-four DLMF coefficient/root crosswalk
+
+The normalization mismatch in the coefficient route is now resolved and
+kernel checked.  For DLMF degree `n = 4`, order `m = 0`, reindexing by
+`q = k + 2` gives weight `1/(4q+1)` but raw total `1/9`, not `1`.
+Multiplication of the row by `3` preserves the homogeneous recurrence and
+produces the exact unit normalization consumed by the current canonical-tail
+theorem.
+
+The new public theorem
+
+```text
+mode4DLMF3084_3085_degreeFour_coefficients_force_root
+```
+
+proves that a supplied literal reindexed 30.8.4 row with raw 30.8.5 sum
+`1/9` forces the exact current
+`mode4RootFunction mProject K Lambda = 0`.  It proves nonzero coefficient
+zero, finite-left `mode4LeftPair` identification, canonical minimal-tail
+transport, and the boundary matching equation; the root is not a binder.
+Direct Lean passes and the public axiom surface is exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The remaining source wall is consequently smaller:
+
+```text
+CLASSICAL_INDEXED_PSI4_SUPPLIES_REINDEXED_DLMF_3084_3085_ROW_AND_FUNCTION_IDENTITY
+```
+
+That theorem must construct or extract the actual indexed classical `psi_4`
+coefficient row and its Ferrers-series identity.  It must not merely place
+the recurrence, index, root, or function identity into a new structure.  Mode
+zero, the restricted finite-Fourier pair, CCM Lemma 7.2, the denominator
+floor, and the coupled schedule remain open; G1 is unchanged.

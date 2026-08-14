@@ -9,8 +9,8 @@ CANONICAL PIN
 
 REPOSITORY: Malaeu/chen_q3
 BRANCH: rh_clean
-BASE_HEAD: bf77c6e21e732804bcf56adc3e0ee6e4a50c874d
-ORIGIN_HEAD_EQUALS_BASE_HEAD: true
+BASE_HEAD_BEFORE_LOCAL_CROSSWALK: 2214e5a78e4b6549b514f68e3e7aa205ee9c3222
+ORIGIN_HEAD_EQUALS_BASE_HEAD_AT_PREPARATION: true
 
 PHASE KEY
 
@@ -20,6 +20,35 @@ source_object_family_id: PROPOSITION59_CCM_FINITE_BOTTOM_GROUND_FAMILY
 terminal_consumer_id: Q3.RouteB.CanonicalRHRoute.rh_of_canonical_strip_slots
 honesty_state: CHALLENGER_NOT_RH
 convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+
+LOCAL KERNEL UPDATE BEFORE DISPATCH
+
+The normalization and finite-left parts of the proposed coefficient route are
+now closed locally.
+
+Official DLMF section 30.8(i), equations 30.8.1--30.8.5, fixes the exact
+degree-four/order-zero row.  With n=4, m=0 and q=k+2, equation 30.8.5 is
+
+  sum_q a_q^2 / (4*q+1) = 1/9,
+
+not 1.  Multiplication by 3 gives the current unit-normalized row while
+preserving the homogeneous recurrence.  The following declarations are now
+kernel checked with axioms exactly [propext, Classical.choice, Quot.sound]:
+
+1. mode4DLMF3085_degreeFour_rescale_three;
+2. mode4DLMF3084_3085_degreeFour_rescaledTail_eq_c_mul_canonical;
+3. mode4DLMF3084_3085_degreeFour_shiftedBoundaryRatio_eq_canonical;
+4. mode4DLMF3084_3085_degreeFour_sourceBoundaryFlux_eq_schurCorrection;
+5. mode4DLMF3084_3085_degreeFour_coefficients_force_root.
+
+The last theorem consumes the literal reindexed 30.8.4 recurrence and raw
+30.8.5 sum 1/9 and concludes the current mode4RootFunction equality.  It
+proves coefficient row -> current root; it does not construct the classical
+indexed coefficient row.
+
+The active smallest source wall is therefore now:
+
+  CLASSICAL_INDEXED_PSI4_SUPPLIES_REINDEXED_DLMF_3084_3085_ROW_AND_FUNCTION_IDENTITY.
 
 PURPOSE
 
@@ -47,19 +76,15 @@ zero count, ordered mode selection, or a finite-Fourier eigenrelation.
 
 CURRENT EXACT SOURCE WALL
 
-The current accepted object is still conditional on
+The project now proves that any literal reindexed degree-four DLMF coefficient
+row forces the exact current root and hence starts the current normalized
+Ferrers constructor.  It still does not construct that row from the
+classical indexed psi_4 or prove the resulting normalized Ferrers function is
+the same source function.
 
-  mode4RootFunction mProject K Lambda = 0.
+The load-bearing missing statement is now named
 
-The project can construct a normalized regular even Ferrers solution from that
-root and now knows its actual derivatives, ODE, endpoint flux, nontriviality,
-simple interior zeros, compact zero-set behavior, Sturm comparison, and exact
-physical scale.  It does not know that the solution is the classical indexed
-psi_4, nor that a classical psi_4 coefficient row forces this exact root.
-
-The load-bearing missing statement is named
-
-  CLASSICAL_PSWF4_REGULAR_SOLUTION_MATCHES_CURRENT_MINIMAL_LEGENDRE_TAIL_AND_PLUS_PHASE.
+  CLASSICAL_INDEXED_PSI4_SUPPLIES_REINDEXED_DLMF_3084_3085_ROW_AND_FUNCTION_IDENTITY.
 
 PRIMARY SOURCE LOCKS ALREADY ON DISK
 
@@ -74,6 +99,13 @@ PRIMARY SOURCE LOCKS ALREADY ON DISK
      independent positive-phase, ODE, parity, and zero-count cross-check.
    - D0_3F_EXTERNAL_SOURCE_LOCK.json:
      Katsnelson singular-endpoint self-adjoint realization lock.
+
+1b. Official NIST DLMF section 30.8(i):
+   - https://dlmf.nist.gov/30.8.E1: first-kind Ferrers expansion;
+   - https://dlmf.nist.gov/30.8.E2: coefficient integral;
+   - https://dlmf.nist.gov/30.8.E3 and 30.8.E4: exact recurrence;
+   - https://dlmf.nist.gov/30.8.E5: exact normalization;
+   - at n=4,m=0,q=k+2 the raw weighted sum is 1/9, and project scaling is 3.
 
 2. D0Mode4PSWFLegendreRecurrenceCrosswalk.lean
    - exact DLMF 30.8.3--30.8.4 three-coefficient algebraic crosswalk;
@@ -99,15 +131,20 @@ PRIMARY SOURCE LOCKS ALREADY ON DISK
    - exact current dimensionless-to-physical ODE scale;
    - no source-index identification and no finite-Fourier supplier.
 
-PROPOSED CENTRAL THEOREM HEAD
+PROPOSED NEXT SOURCE-PRODUCING HEAD
 
-  theorem classicalPSWF4_coefficients_force_mode4Root
+  theorem classicalPSWF4_has_reindexedDLMFCoefficients
       (mProject : Nat) (hm : 2 <= mProject)
       (psi4 : Real -> Real) (chi4 : Real)
       (hpsi4 : classicalDegreeFourPSWF
         (2 * Real.pi * (mProject : Real)) psi4 chi4) :
-      let Lambda := chi4 - mode4JacobiG mProject
-      mode4RootFunction mProject (4 * mProject) Lambda = 0
+      exists a : Nat -> Real,
+        reindexedDegreeFourDLMF3084
+          (mode4JacobiG mProject)
+          (chi4 - mode4JacobiG mProject) a /\
+        HasSum (fun q => (a q)^2 / (4*(q:Real)+1)) (1/9) /\
+        psi4 = fun x => tsum (fun q => (-1)^q * a q *
+          mode4OrdinaryLegendre (2*q) x)
 
 The names classicalDegreeFourPSWF and its source package are statement-level
 architecture only; they are not current Lean declarations.  Do not count this
