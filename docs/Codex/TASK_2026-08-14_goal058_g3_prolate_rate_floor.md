@@ -346,3 +346,32 @@ formalize the monotone inertia jump, identify the third even root with indexed
 `psi_4`, construct mode zero, or supply the finite-Fourier/Lemma 7.2/floor
 chain.  The narrowed root-selection wall is
 `SCHUR_PARAMETER_DROP_AND_SIMPLE_ROOT_PROVED_ENDPOINT_INERTIA_LADDER_AND_INDEX4_SELECTION_MISSING`.
+
+## 2026-08-14 exact one-direction inertia jump
+
+The missing internal inertia-ladder mechanism is now kernel checked.  The
+general real-Hermitian theorem
+`hermitian_negativeCount_add_nullity_le_of_strict_drop` proves
+
+```text
+A - B - delta I >= 0, delta > 0
+  -> negativeCount(A) + nullity(A) <= negativeCount(B).
+```
+
+Its proof uses the spectral subspace of `A` with eigenvalues at most zero and
+the Sylvester subspace argument; the proof architecture is explicitly
+attributed to the registered Apache-2.0 `zeta23` base at pin `3635e74`.
+The literal mode-four specialization proves that every strict increase of
+`Lambda` grows the negative index by at least the starting nullity.  Combining
+this with the already proved one-dimensional root kernel gives
+`negativeCount(A(Lambda)) + 1 <= negativeCount(A(LambdaHi))` after every exact
+matching root.
+
+Direct Lean passes and the public axiom surface is exactly
+`[propext, Classical.choice, Quot.sound]`.  This closes the crossing direction
+and one-step inertia jump, not the source endpoint counts, existence and
+ordering of three even crossings, or the identification of the third crossing
+with indexed `psi_4`.  Mode zero, restricted finite Fourier, CCM Lemma 7.2,
+the denominator floor, G1, G3, Route B promotion, and RH remain open.  The
+narrowed stop is
+`ROOT_QUADRATIC_AND_ONE_DIRECTION_INERTIA_JUMP_PROVED_SOURCE_ENDPOINT_COUNTS_AND_INDEX4_SELECTION_MISSING`.

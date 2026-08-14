@@ -2128,6 +2128,61 @@ monotonicity lemma, но его exact matrix rank и PSD primitives принял
 matching-root existence, indexed `psi4`, mode zero, finite Fourier, Lemma 7.2,
 denominator floor, G1, G3, Route B promotion и RH остаются открыты.
 
+## 2026-08-14 — Goal 058 G3: строгий Schur drop даёт скачок отрицательного индекса
+
+**Развилка:** переносить полный внешний слой `posIndex`/Sylvester, принимать
+монотонность занумерованных eigenvalues как binder либо доказать ровно тот
+subspace theorem, который потребляет уже готовый буквальный Loewner drop.
+
+**Выбрали:** узкий kernel-checked theorem
+`hermitian_negativeCount_add_nullity_le_of_strict_drop`, затем его
+специализацию к exact mode-four Schur family и corollary в simple root:
+`n_-(A(Lambda)) + 1 <= n_-(A(LambdaHi))` при `Lambda < LambdaHi`.
+
+**Почему:** strict drop делает всё спектральное подпространство исходной
+матрицы с eigenvalue `<= 0` отрицательно определённым для новой матрицы. Его
+размерность буквально равна `negativeCount + nullity`, поэтому Sylvester
+даёт скачок без выбора или непрерывного отслеживания eigenvalue labels.
+
+**Что отвергли и почему:** полный перенос семи файлов `RHLinalg` отвергнут как
+лишняя поверхность; numbered-eigenvalue monotonicity отвергнута, потому что её
+нет в текущем Mathlib; endpoint counts `2/3` и index-4 identification не были
+введены hypotheses под видом source proof. Внешний запрос не отправлялся:
+локальная точная ветка ещё давала проверяемую дельту.
+
+**Техника:** spectral functional calculus через явную Hermitian
+diagonalization, rank spectral projector, positive/negative parts,
+negative-definite subspace injection, rank-nullity, literal Schur PSD drop и
+ранее доказанная nullity-one root theorem. Архитектура subspace-index proof
+атрибутирована `zeta-23-lean` commit `3635e74`, Apache-2.0; реализация узкая и
+переписана под текущий real-Hermitian contract.
+
+**Следующий ход:** получить source-producing начальный endpoint count и
+достаточную ordered crossing/existence ladder, чтобы третий even crossing был
+не просто корнем, а pinned `psi_4`; затем замкнуть DLMF row/function identity.
+Mode zero, finite Fourier, Lemma 7.2 и denominator floor остаются отдельными
+узлами; G1 требует literal cofinal complement floor.
+
+**Адреса:**
+`Q3/Proofs/RouteB/D0HermitianNegativeIndexDrop.lean` ·
+`Q3/Proofs/RouteB/D0Mode4SchurRootQuadraticCrossing.lean` ·
+`Q3/Proofs/RouteB/D0Mode4SchurSpectralParameterOrder.lean` ·
+`Q3/Proofs/RouteB/D0Mode4SchurSimpleKernel.lean` ·
+`docs/cartographer/lean_bases.yaml` ·
+`docs/Codex/TASK_2026-08-14_goal058_g3_prolate_rate_floor.md`.
+
+**Чей вердикт и его аргумент:** локальный Codex/Lean verdict. Четыре exact
+shelf query и три semantic query не нашли endpoint-count supplier; audit
+зарегистрированной базы нашёл корректный Sylvester subspace mechanism.
+Текущий Lean kernel принял general jump, literal family specialization и
+simple-root corollary с public axioms только
+`[propext, Classical.choice, Quot.sound]`.
+
+**Граница:**
+`ROOT_QUADRATIC_AND_ONE_DIRECTION_INERTIA_JUMP_PROVED_SOURCE_ENDPOINT_COUNTS_AND_INDEX4_SELECTION_MISSING`;
+matching-root/indexed-`psi_4` existence, mode zero, restricted finite Fourier,
+Lemma 7.2, denominator floor, G1, G3, Route B promotion и RH остаются открыты.
+
 ### Счёт раскопок
 
 | четверть | строки | развилок найдено | причина записана | причина отсутствует |
