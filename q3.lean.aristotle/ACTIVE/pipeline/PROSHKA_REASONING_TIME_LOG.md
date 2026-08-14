@@ -31,6 +31,41 @@ does not change Lean, route, or roof status.
 
 ## Runs
 
+### 2026-08-14 — Goal 058 post-DLMF characteristic route and G1 producer adjudication
+
+```yaml
+proof_address: RouteB.Goal058.G1G3.PostDLMFCharacteristic
+front: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
+transaction: GOAL058_G1_G3_POST_DLMF_CHARACTERISTIC_ADJUDICATION
+conversation_id: 6a7afc0e-2aec-83eb-a9ca-469b44c84f83
+request_message_id: NOT_CAPTURED
+response_message_id: NOT_CAPTURED
+sent_at: NOT_CAPTURED
+completed_at: NOT_CAPTURED
+wall_seconds: 663
+wall_human: "UI reported 3m59s transport stop plus 7m04s substantive natural reasoning"
+answer_now_shown: true
+answer_now_clicked: false
+primary: JACOBI_INERTIA_L2_CROSSWALK_FIRST_ACTUAL_PROLATE_PAIR_FIRST_ON_G1
+status: OPEN_ONE_BOUNDED_G3_LEAF_AUTHORIZED
+result_pointer: >-
+  q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/
+  GOAL058_G1_G3_POST_DLMF_CHARACTERISTIC_PROSHKA_VERDICT_2026-08-14.md
+request_sha256: 09fc6bcf6900069c61ee98d830a976b46f4f2acb16e2aa3dd45002c323aae992
+notes: >-
+  Sixth call in the unchanged living Goal 058 phase. The immutable GitHub
+  blob and raw URLs initially returned CACHE_MISS, so Proshka correctly
+  stopped without adjudicating. The exact 5,748-character UTF-8 packet was
+  then pasted inline with its local SHA-256. Proshka selected the normalized
+  l2 Jacobi-solution crosswalk as a bounded next G3 leaf and explicitly ruled
+  that finite inertia/count jumps alone do not identify the infinite
+  spectrum. It kept the subsequent Jacobi-spectrum/finite-iInf theorem open.
+  On G1 it selected actual degree-0/4 ProlatePair existence and selection
+  before CCM Lemma 7.2. Aristotle was authorized only for the bounded G3 l2
+  crosswalk. G1/G3 remain open; no Route promotion or RH claim occurred.
+  Answer now was shown and never clicked.
+```
+
 ### 2026-08-14 — Goal 058 DLMF 30.3.5 source-contract adjudication
 
 ```yaml

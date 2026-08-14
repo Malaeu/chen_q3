@@ -234,6 +234,32 @@ open at
 G1 remains open independently at the even-head/shift/cofinal full-complement
 floor.  Route B remains `CHALLENGER / NOT_RH`.
 
+## Mac addendum — post-DLMF characteristic adjudication
+
+The new source-characteristic adapter was carried through the existing living
+Goal 058 review phase. Mythos completed two natural reasoning passes but
+emitted no final answer in either message; this is recorded as a transport
+incident and supplies no mathematical verdict. Proshka's first immutable-link
+attempt also failed closed on `CACHE_MISS`. The exact 5,748-character UTF-8
+request was then transported inline with SHA-256
+`09fc6bcf6900069c61ee98d830a976b46f4f2acb16e2aa3dd45002c323aae992`.
+`Answer now` was visible throughout and was never clicked.
+
+Proshka selected a normalized ℓ² Jacobi-solution crosswalk as the next bounded
+G3 leaf. It explicitly rejected treating finite inertia/count stability as an
+infinite-spectrum theorem; the later Jacobi-spectrum/finite-`iInf`
+identification remains a source theorem. For G1 it retained actual
+degree-0/4 `ProlatePair` existence and selection as the first producer, before
+CCM Lemma 7.2. Only the bounded G3 ℓ² crosswalk is Aristotle-authorized. G1,
+G3, Route B promotion, and RH remain open/nonclaims.
+
+The transport failures are another intended fail-closed behavior: neither
+reviewer silence nor an unavailable source packet was silently converted into
+a mathematical judgment.
+
+- `/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G1_G3_POST_DLMF_CHARACTERISTIC_MYTHOS_TRANSPORT_INCIDENT_2026-08-14.md`
+- `/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G1_G3_POST_DLMF_CHARACTERISTIC_PROSHKA_VERDICT_2026-08-14.md`
+
 ## Dateien
 
 - `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/ask.sh`
