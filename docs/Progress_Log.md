@@ -2589,6 +2589,35 @@ source-locked sign/order и production `ProlatePair` assembly.
 `G3_SELECTED_PHYSICAL_FERRERS_RESTRICTED_FOURIER_REAL_SCALAR_PROVED_NONZERO_SIGN_ORDER_AND_PROLATEPAIR_NEXT`;
 G1, G3, Route B promotion и RH остаются открыты.
 
+## 2026-08-15 — physical Ferrers Fourier scalar is nonzero
+
+**Развилка:** добавить nonzero scalar как source field либо вывести его из
+compact-window analyticity и Fourier inversion.
+
+**Выбрали:** generic entire-extension/injectivity bridge без нового binder.
+
+**Почему:** restricted equality `Fh=chi*h` сама по себе не исключает `chi=0`;
+нужно перенести ноль с window на всю frequency line.
+
+**Техника:** complex-frequency integral, dominated differentiation,
+`Differentiable -> AnalyticOnNhd`, identity theorem from real accumulating
+zeros, exact real-axis bridge, existing Fourier-inversion nonvanishing theorem.
+
+**Результат:** для accepted physical Ferrers witness существует
+`chi : Real`, `chi != 0`, с exact restricted relation на closed physical
+window. Direct Lean, 7782-job named build, `q3_check` and standard-only axiom
+audit PASS.
+
+**Следующий ход:** source-locked sign/order identification, затем zero
+extension, normalization, orthogonality and production `ProlatePair` assembly.
+
+**Адрес:**
+`q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_PHYSICAL_FERRERS_FOURIER_NONZERO_SCALAR_CLOSEOUT_2026-08-15.md`.
+
+**Граница:**
+`G3_SELECTED_PHYSICAL_FERRERS_RESTRICTED_FOURIER_REAL_NONZERO_SCALAR_PROVED_SIGN_ORDER_AND_PROLATEPAIR_NEXT`;
+G1, G3, Route B promotion и RH остаются открыты.
+
 ### Счёт раскопок
 
 | четверть | строки | развилок найдено | причина записана | причина отсутствует |

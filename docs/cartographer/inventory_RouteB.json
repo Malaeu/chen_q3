@@ -1,10 +1,10 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 260,
-  "declarations": 2444,
-  "in_docs": 1032,
-  "in_lemma_db": 2444,
+  "files_scanned": 261,
+  "declarations": 2449,
+  "in_docs": 1034,
+  "in_lemma_db": 2449,
   "orphans": 0,
   "uncatalogued": 0,
   "orphan_files_top": [],
@@ -8555,6 +8555,56 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersPhysicalFourierEigenTransport.lean",
       "line": 230,
       "signature": "theorem Mode4FerrersRegularEvenProlateSolution.physicalFiniteFourierAction_preservesProlateWaveEigenrelation {mProject K : ℕ} {Λ : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (hm : 2 ≤ mProject) : ∀ x : ℝ, D0Pstar.prolateWaveExpression (Real.sqrt mProject) (D0Pstar.finiteFourierAction (Real.sqrt mProject) (mode4PhysicalFerrersSeriesComplex mProject S.coefficients)) x = ((Λ + mode4JacobiG mProject : ℝ) : ℂ) * D0Pstar.finiteFourierAction (Real.sqrt mProject) (mode4PhysicalFerrersSeriesComplex mProject S.coefficients) x",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "finiteFourierEntire",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersPhysicalFourierNonzeroScalar.lean",
+      "line": 37,
+      "signature": "noncomputable def finiteFourierEntire (lambda : ℝ) (phi : ℝ → ℂ) (z : ℂ) : ℂ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "finiteFourierEntire_differentiable",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersPhysicalFourierNonzeroScalar.lean",
+      "line": 44,
+      "signature": "theorem finiteFourierEntire_differentiable (lambda : ℝ) (phi : ℝ → ℂ) (hphi : ContinuousOn phi (Icc (-lambda) lambda)) : Differentiable ℂ (finiteFourierEntire lambda phi)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "finiteFourierEntire_ofReal",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersPhysicalFourierNonzeroScalar.lean",
+      "line": 133,
+      "signature": "theorem finiteFourierEntire_ofReal (lambda x : ℝ) (phi : ℝ → ℂ) : finiteFourierEntire lambda phi (x : ℂ) = finiteFourierAction lambda phi x",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "exists_finiteFourierAction_ne_zero_on_Ioo",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersPhysicalFourierNonzeroScalar.lean",
+      "line": 147,
+      "signature": "theorem exists_finiteFourierAction_ne_zero_on_Ioo (lambda : ℝ) (phi : ℝ → ℂ) (x0 : ℝ) (hlambda : 0 < lambda) (hphi : ContinuousOn phi (Icc (-lambda) lambda)) (hx0 : x0 ∈ Ioo (-lambda) lambda) (hne : phi x0 ≠ 0) : ∃ x ∈ Ioo (-lambda) lambda, finiteFourierAction lambda phi x ≠ 0",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "Mode4FerrersRegularEvenProlateSolution.exists_physicalFiniteFourierAction_eq_real_nonzero_scalar_mul",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersPhysicalFourierNonzeroScalar.lean",
+      "line": 206,
+      "signature": "theorem Mode4FerrersRegularEvenProlateSolution.exists_physicalFiniteFourierAction_eq_real_nonzero_scalar_mul {mProject K : ℕ} {Λ : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (hm : 2 ≤ mProject) : ∃ chi : ℝ, chi ≠ 0 ∧ ∀ x ∈ Icc (-Real.sqrt mProject) (Real.sqrt mProject), D0Pstar.finiteFourierAction (Real.sqrt mProject) (mode4PhysicalFerrersSeriesComplex mProject S.coefficients) x = (chi : ℂ) * mode4PhysicalFerrersSeriesComplex mProject S.coefficients x",
       "in_docs": true,
       "in_lemma_db": true,
       "orphan": false

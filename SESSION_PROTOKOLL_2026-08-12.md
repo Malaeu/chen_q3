@@ -513,3 +513,23 @@ Exact fresh KB query вернул `no hits`. Direct Lean, named build (7780 jobs
 
 Стоп-код:
 `G3_SELECTED_PHYSICAL_FERRERS_RESTRICTED_FOURIER_REAL_SCALAR_PROVED_NONZERO_SIGN_ORDER_AND_PROLATEPAIR_NEXT`.
+
+### Goal 058 G3 — physical Ferrers Fourier scalar is nonzero
+
+Real scalar усилен до `chi != 0` без source assumption. Материализован entire
+complex-frequency extension compact-window Fourier integral и exact real-axis
+bridge. Ноль на open source window по analytic identity theorem дал бы ноль
+всюду, что противоречит уже существующей Fourier-inversion nonvanishing lemma
+для source с nonzero center.
+
+Declared full EnvDump перед write: `260/260` current modules, `2354`
+declarations, stale/uncovered `0`, holes/extra dependencies `0`, шесть orphan
+oleans исключены. Exact supplier preflight: `CANDIDATE_ONLY`. Direct Lean,
+named build (7782 jobs), `q3_check`, diff/forbidden scan и axiom audit прошли.
+
+Граница: знак и mode-0/mode-4 order не следуют из injectivity и остаются
+source-locked spectral seam. `ProlatePair`, orthogonality, Lemma 7.2, floor,
+schedule, G1/G3 открыты; Route B `CHALLENGER / NOT_RH`.
+
+Стоп-код:
+`G3_SELECTED_PHYSICAL_FERRERS_RESTRICTED_FOURIER_REAL_NONZERO_SCALAR_PROVED_SIGN_ORDER_AND_PROLATEPAIR_NEXT`.
