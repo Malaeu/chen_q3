@@ -2438,6 +2438,37 @@ even prolate solution и physical scaling, не предполагая function 
 `G3_DEGREE_FOUR_DLMF_ROW_SELECTED_PHYSICAL_PSWF_IDENTITY_AND_FINITE_FOURIER_NEXT`;
 G1, G3, Route B promotion и RH остаются открыты.
 
+## 2026-08-15 — selected mode-zero/mode-four regular physical solutions
+
+**Развилка:** отдельно оставить root-conditioned Ferrers constructor либо
+скомпоновать его с новым strict carrier index selection сразу для modes `0/4`.
+
+**Выбрали:** один парный theorem на zero-based even indices `0` и `2`, без
+нового data wrapper и без изменения production `ProlatePair`.
+
+**Почему:** тот же source-locked recurrence/Ferrers constructor параметризован
+spectral carrier и честно строит обе необходимые моды; повторять две отдельные
+цепочки или вводить parallel pair не нужно.
+
+**Техника:** carrier-to-literal-Schur singularity, positive determinant/root
+factor, two root-conditioned normalized Ferrers constructors, strict carrier
+order below `20`, existing physical scaling.
+
+**Результат:** существуют regular normalized solutions at carrier indices
+`0` and `2`, and `Lambda_0 < Lambda_2 < 20`. Direct Lean, 7794-job named build,
+`q3_check` and axiom audit pass; axioms standard only.
+
+**Следующий ход:** prove Green/intertwining on the actual interior-`C2` plus
+zero-flux endpoint domain, then derive restricted finite-Fourier proportionality
+without assuming global `C2`; zero counts and Lemma 7.2 remain separate.
+
+**Адрес:**
+`q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_MODE_ZERO_FOUR_SELECTED_FERRERS_PHYSICAL_CLOSEOUT_2026-08-15.md`.
+
+**Граница:**
+`G3_SELECTED_MODE_ZERO_FOUR_REGULAR_PHYSICAL_SOLUTIONS_PROVED_ENDPOINT_GREEN_FOURIER_ZERO_COUNTS_AND_LEMMA72_NEXT`;
+G1, G3, Route B promotion и RH остаются открыты.
+
 ### Счёт раскопок
 
 | четверть | строки | развилок найдено | причина записана | причина отсутствует |

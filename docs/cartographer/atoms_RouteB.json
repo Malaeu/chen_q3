@@ -336,7 +336,7 @@
  },
  {
   "atom": "ne_of_gt",
-  "n_files": 35,
+  "n_files": 36,
   "files": [
    "CCMFiniteWeilCell13N2NonintegralConstantNormalForm.lean",
    "CCMFiniteWeilCell13N2PrimeKernelNormalForm.lean",
@@ -359,6 +359,7 @@
    "D0Mode4PSWFLegendreCanonicalIdentification.lean",
    "D0Mode4PSWFTailCoefficientSquareSummable.lean",
    "D0Mode4SchurRootInertiaLabel.lean",
+   "D0ModeZeroFourSelectedFerrersPhysicalProlate.lean",
    "D0PstarActualProlateEStarMemLp.lean",
    "D0PstarExactArchSymbolLogDomination.lean",
    "D0PstarExplicitCCMLimitFourier.lean",
@@ -1365,7 +1366,7 @@
  },
  {
   "atom": "mul_eq_zero.mp",
-  "n_files": 18,
+  "n_files": 19,
   "files": [
    "CCMFiniteWeilEtaNonzero.lean",
    "CCMProposition59ComplexTrialComplementSpectral.lean",
@@ -1376,6 +1377,7 @@
    "D0Mode4PSWFClassicalCoefficientRootCrosswalk.lean",
    "D0Mode4PSWFLegendreCanonicalIdentification.lean",
    "D0Mode4SchurSimpleKernel.lean",
+   "D0ModeZeroFourSelectedFerrersPhysicalProlate.lean",
    "D0PstarSourceArchDiagonalCCMWRCrosswalk.lean",
    "D0PstarSourceArchOffDiagonalCCMWRCrosswalk.lean",
    "EvenRealAutocorrelationRigidity.lean",
@@ -1744,6 +1746,26 @@
   ]
  },
  {
+  "atom": "resolve_left",
+  "n_files": 14,
+  "files": [
+   "CCMFiniteWeilEtaNonzero.lean",
+   "D0Mode4ClassicalCarrierToDLMF3035EvenL2.lean",
+   "D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean",
+   "D0Mode4JacobiHermitianTailUniqueness.lean",
+   "D0Mode4JacobiMatchedNormalizedCoefficientRow.lean",
+   "D0Mode4PSWFClassicalCoefficientRootCrosswalk.lean",
+   "D0Mode4PSWFLegendreCanonicalIdentification.lean",
+   "D0ModeZeroFourSelectedFerrersPhysicalProlate.lean",
+   "D0PstarSourceArchDiagonalCCMWRCrosswalk.lean",
+   "D0PstarSourceArchOffDiagonalCCMWRCrosswalk.lean",
+   "HermitianDeterminantRealZeros.lean",
+   "ProlateActualModeMuntzRegularity.lean",
+   "ProlateCombinationMuntzRegularity.lean",
+   "Proposition59GroundLagrangeZeroSetBridge.lean"
+  ]
+ },
+ {
   "atom": "map_sub",
   "n_files": 14,
   "files": [
@@ -1879,25 +1901,6 @@
    "QuotientByRadicalSelfAdjoint.lean",
    "RankOneCorrectionQuotientIntertwining.lean",
    "SimpleRadicalSpan.lean"
-  ]
- },
- {
-  "atom": "resolve_left",
-  "n_files": 13,
-  "files": [
-   "CCMFiniteWeilEtaNonzero.lean",
-   "D0Mode4ClassicalCarrierToDLMF3035EvenL2.lean",
-   "D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean",
-   "D0Mode4JacobiHermitianTailUniqueness.lean",
-   "D0Mode4JacobiMatchedNormalizedCoefficientRow.lean",
-   "D0Mode4PSWFClassicalCoefficientRootCrosswalk.lean",
-   "D0Mode4PSWFLegendreCanonicalIdentification.lean",
-   "D0PstarSourceArchDiagonalCCMWRCrosswalk.lean",
-   "D0PstarSourceArchOffDiagonalCCMWRCrosswalk.lean",
-   "HermitianDeterminantRealZeros.lean",
-   "ProlateActualModeMuntzRegularity.lean",
-   "ProlateCombinationMuntzRegularity.lean",
-   "Proposition59GroundLagrangeZeroSetBridge.lean"
   ]
  },
  {
@@ -9126,6 +9129,14 @@
   ]
  },
  {
+  "atom": "mode4ClassicalEvenEigenvalue_eq_imp_literalSchur_det_eq_zero_of_lt_twenty",
+  "n_files": 2,
+  "files": [
+   "D0Mode4ClassicalCarrierToDLMF3035EvenL2.lean",
+   "D0ModeZeroFourSelectedFerrersPhysicalProlate.lean"
+  ]
+ },
+ {
   "atom": "mode4DLMF3035EvenCharacteristicEquation_iff_leftCoefficient_sqSummable",
   "n_files": 2,
   "files": [
@@ -13918,13 +13929,6 @@
   ]
  },
  {
-  "atom": "mode4ClassicalEvenEigenvalue_eq_imp_literalSchur_det_eq_zero_of_lt_twenty",
-  "n_files": 1,
-  "files": [
-   "D0Mode4ClassicalCarrierToDLMF3035EvenL2.lean"
-  ]
- },
- {
   "atom": "mode4DLMF3035EvenLeftCoefficient_sqSummable_imp_exists_finiteLimitSpectrum",
   "n_files": 1,
   "files": [
@@ -16911,6 +16915,27 @@
   "n_files": 1,
   "files": [
    "D0Mode4SchurSpectralParameterOrder.lean"
+  ]
+ },
+ {
+  "atom": "mode4ClassicalEvenEigenvalue_rootFunction_eq_zero_of_lt_three",
+  "n_files": 1,
+  "files": [
+   "D0ModeZeroFourSelectedFerrersPhysicalProlate.lean"
+  ]
+ },
+ {
+  "atom": "h0lt.le",
+  "n_files": 1,
+  "files": [
+   "D0ModeZeroFourSelectedFerrersPhysicalProlate.lean"
+  ]
+ },
+ {
+  "atom": "h4lt.le",
+  "n_files": 1,
+  "files": [
+   "D0ModeZeroFourSelectedFerrersPhysicalProlate.lean"
   ]
  },
  {

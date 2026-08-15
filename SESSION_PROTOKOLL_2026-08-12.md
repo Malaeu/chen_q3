@@ -396,3 +396,30 @@ Direct Lean, named build (7774 jobs) и `q3_check` по трём изменён�
 
 Стоп-код:
 `G3_DEGREE_FOUR_DLMF_ROW_SELECTED_PHYSICAL_PSWF_IDENTITY_AND_FINITE_FOURIER_NEXT`.
+
+### Goal 058 G3 — selected mode zero/four Ferrers and physical solutions
+
+Связка carrier → regular solution теперь выполнена сразу для двух production
+индексов. Теорема
+`exists_modeZero_modeFour_selectedFerrersRegularEvenProlateSolutions`
+строит существующие `Mode4FerrersRegularEvenProlateSolution` при zero-based
+even indices `0` и `2` и одновременно доказывает `Lambda_0 < Lambda_2 < 20`.
+Оба witness несут normalized DLMF row, exact recurrence, closed-window
+continuity, interior `C2`, prolate ODE, zero-flux и уже доказанный physical
+scaling. Нового source binder нет, production `ProlatePair` не менялся.
+
+Свежий EnvDump: 256/256 current modules, 2334 declarations, stale/uncovered
+`0`, proof holes/nonstandard axioms `0`; exact supplier preflight вернул
+`CANDIDATE_ONLY`. Direct Lean, named build (7794 jobs), `q3_check` и
+`diff --check` прошли; public axioms только `propext`, `Classical.choice`,
+`Quot.sound`. Первый `q3_check` сам поймал запрещённое marker-слово внутри
+нашего search-receipt docstring; формулировка исправлена, повторный check зелёный.
+
+Это всё ещё не G3. Не доказаны exact zero counts `0/4`, restricted finite
+Fourier, Fourier eigenvalue signs/order, orthogonality, CCM Lemma 7.2,
+denominator floor и schedule. Следующий честный seam — endpoint Green/
+intertwining для реального интерфейса interior `C2` + zero-flux; старый theorem
+требует global `C2` и не может применяться через фиктивное усиление.
+
+Стоп-код:
+`G3_SELECTED_MODE_ZERO_FOUR_REGULAR_PHYSICAL_SOLUTIONS_PROVED_ENDPOINT_GREEN_FOURIER_ZERO_COUNTS_AND_LEMMA72_NEXT`.
