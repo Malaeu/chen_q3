@@ -2469,6 +2469,36 @@ without assuming global `C2`; zero counts and Lemma 7.2 remain separate.
 `G3_SELECTED_MODE_ZERO_FOUR_REGULAR_PHYSICAL_SOLUTIONS_PROVED_ENDPOINT_GREEN_FOURIER_ZERO_COUNTS_AND_LEMMA72_NEXT`;
 G1, G3, Route B promotion и RH остаются открыты.
 
+## 2026-08-15 — endpoint-flux Fourier eigen-transport
+
+**Развилка:** усиливать selected Ferrers source до global `C2` либо доказать
+Green/FTC transport на его реальном singular endpoint domain.
+
+**Выбрали:** отдельный theorem с closed-window continuity, interior derivative,
+divergence-form ODE и двумя zero-flux limits.
+
+**Почему:** global `C2` не следует из текущего source object и был бы ложным
+interface strengthening. FTC на произведениях требует интегрируемость уже
+взвешенной производной, а не самой потенциально плохой endpoint derivative.
+
+**Техника:** два FTC product identities, exact endpoint cancellation, Tietze
+extension только для reuse differentiation-under-integral, kernel prolate swap.
+
+**Результат:** finite Fourier action сохраняет тот же prolate ODE eigenspace.
+Direct Lean, 7745-job named build, `q3_check` и axiom audit PASS; axioms
+standard only.
+
+**Следующий ход:** source-specific physical Ferrers wrapper, затем
+scalar proportionality/uniqueness. Zero counts, scalar sign/order and Lemma 7.2
+remain separate.
+
+**Адрес:**
+`q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_ENDPOINT_FLUX_FOURIER_EIGEN_TRANSPORT_CLOSEOUT_2026-08-15.md`.
+
+**Граница:**
+`G3_ENDPOINT_FLUX_FOURIER_EIGEN_TRANSPORT_PROVED_SELECTED_FERRERS_PHYSICAL_WRAPPER_AND_SCALAR_PROPORTIONALITY_NEXT`;
+G1, G3, Route B promotion и RH остаются открыты.
+
 ### Счёт раскопок
 
 | четверть | строки | развилок найдено | причина записана | причина отсутствует |

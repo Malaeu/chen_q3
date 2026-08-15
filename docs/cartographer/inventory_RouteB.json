@@ -2,8 +2,8 @@
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
   "files_scanned": 257,
-  "declarations": 2418,
-  "in_docs": 1028,
+  "declarations": 2419,
+  "in_docs": 1029,
   "in_lemma_db": 2418,
   "orphans": 0,
   "uncatalogued": 0,
@@ -22417,6 +22417,16 @@
       "signature": "theorem finiteFourierAction_intertwines_prolateWaveExpression (lambda : ℝ) (hlambda : 0 < lambda) (φ : ℝ → ℂ) (hφ : ContDiff ℝ 2 φ) : ∀ x : ℝ, prolateWaveExpression lambda (finiteFourierAction lambda φ) x = finiteFourierAction lambda (prolateWaveExpression lambda φ) x",
       "in_docs": true,
       "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "finiteFourierAction_preserves_prolateWaveEigenrelation_of_endpointFlux",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/ProlateSourceCommutation.lean",
+      "line": 559,
+      "signature": "theorem finiteFourierAction_preserves_prolateWaveEigenrelation_of_endpointFlux (lambda theta : ℝ) (hlambda : 0 < lambda) (φ dφ : ℝ → ℂ) (hφ : ContinuousOn φ (Icc (-lambda) lambda)) (hφ' : ∀ y ∈ Ioo (-lambda) lambda, HasDerivAt φ (dφ y) y) (hflux' : ∀ y ∈ Ioo (-lambda) lambda, HasDerivAt (fun z : ℝ ↦ (((lambda ^ 2 - z ^ 2 : ℝ) : ℂ) * dφ z)) (((((2 * Real.pi * lambda * y) ^ 2 : ℝ) : ℂ) - (theta : ℂ)) * φ y) y) (hfluxPlus : Tendsto (fun y : ℝ ↦ (((lambda ^ 2 - y ^ 2 : ℝ) : ℂ) * dφ y)) (nhdsWithin lambda (Iio lambda)) (nhds 0)) (hfluxMinus : Tendsto (fun y : ℝ ↦ (((lambda ^ 2 - y ^ 2 : ℝ) : ℂ) * dφ y)) (nhdsWithin (-lambda) (Ioi (-lambda))) (nhds 0)) : ∀ x : ℝ, prolateWaveExpression lambda (finiteFourierAction lambda φ) x = (theta : ℂ) * finiteFourierAction lambda φ x",
+      "in_docs": true,
+      "in_lemma_db": false,
       "orphan": false
     },
     {

@@ -543,7 +543,291 @@ theorem finiteFourierAction_intertwines_prolateWaveExpression
     _ = finiteFourierAction lambda
         (prolateWaveExpression lambda φ) x := rfl
 
+/-- The finite-Fourier action preserves a prolate eigenrelation on the natural
+singular endpoint domain.  Unlike
+`finiteFourierAction_intertwines_prolateWaveExpression`, this theorem does not
+assume that the source is globally `C²`.  It asks only for continuity on the
+closed source window, a first derivative in the interior, the divergence-form
+ODE for the weighted derivative, and the two natural zero-flux limits.
+
+The proof uses FTC on the products `p * k' * φ` and `k * p * φ'`, where
+`p y = lambda^2 - y^2`.  A Tietze extension is used only to reuse the already
+proved differentiation-under-the-integral identity; the extension disappears
+from the public interface and from the final integral.  This theorem still
+proves only preservation of the differential eigenspace.  It does not prove
+that the Fourier image is a scalar multiple of the source mode. -/
+theorem finiteFourierAction_preserves_prolateWaveEigenrelation_of_endpointFlux
+    (lambda theta : ℝ) (hlambda : 0 < lambda)
+    (φ dφ : ℝ → ℂ)
+    (hφ : ContinuousOn φ (Icc (-lambda) lambda))
+    (hφ' : ∀ y ∈ Ioo (-lambda) lambda, HasDerivAt φ (dφ y) y)
+    (hflux' : ∀ y ∈ Ioo (-lambda) lambda,
+      HasDerivAt
+        (fun z : ℝ ↦ (((lambda ^ 2 - z ^ 2 : ℝ) : ℂ) * dφ z))
+        (((((2 * Real.pi * lambda * y) ^ 2 : ℝ) : ℂ) - (theta : ℂ)) *
+          φ y) y)
+    (hfluxPlus :
+      Tendsto
+        (fun y : ℝ ↦ (((lambda ^ 2 - y ^ 2 : ℝ) : ℂ) * dφ y))
+        (nhdsWithin lambda (Iio lambda)) (nhds 0))
+    (hfluxMinus :
+      Tendsto
+        (fun y : ℝ ↦ (((lambda ^ 2 - y ^ 2 : ℝ) : ℂ) * dφ y))
+        (nhdsWithin (-lambda) (Ioi (-lambda))) (nhds 0)) :
+    ∀ x : ℝ,
+      prolateWaveExpression lambda (finiteFourierAction lambda φ) x =
+        (theta : ℂ) * finiteFourierAction lambda φ x := by
+  have hspan : -lambda < lambda := by linarith
+  have hle : -lambda ≤ lambda := hspan.le
+  let s : Set ℝ := Icc (-lambda) lambda
+  let φs : C(s, ℂ) :=
+    ⟨fun y ↦ φ y, continuousOn_iff_continuous_restrict.mp hφ⟩
+  obtain ⟨g, hg⟩ := ContinuousMap.exists_restrict_eq isClosed_Icc φs
+  have hgφ : Set.EqOn (g : ℝ → ℂ) φ s := by
+    intro y hy
+    have h := DFunLike.congr_fun hg ⟨y, hy⟩
+    exact h
+  have haction :
+      finiteFourierAction lambda (g : ℝ → ℂ) =
+        finiteFourierAction lambda φ := by
+    funext x
+    unfold finiteFourierAction
+    apply integral_congr_ae
+    filter_upwards [ae_restrict_mem measurableSet_Icc] with y hy
+    rw [hgφ hy]
+  intro x
+  let p : ℝ → ℂ := fun y ↦ (((lambda ^ 2 - y ^ 2 : ℝ) : ℂ))
+  let k : ℝ → ℂ := fun y ↦ finiteFourierKernel x y
+  let q : ℝ → ℂ :=
+    fun y ↦ ((((2 * Real.pi * lambda * y) ^ 2 : ℝ) : ℂ))
+  let uk : ℝ → ℂ := fun y ↦ p y * deriv k y
+  let uφ : ℝ → ℂ := fun y ↦ p y * dφ y
+  let fluxDeriv : ℝ → ℂ := fun y ↦ (q y - (theta : ℂ)) * φ y
+  have hp : ContDiff ℝ ∞ p := by
+    dsimp only [p]
+    exact ofRealCLM.contDiff.comp
+      (contDiff_const.sub (contDiff_id.pow 2))
+  have hk : ContDiff ℝ ∞ k := by
+    dsimp only [k]
+    unfold finiteFourierKernel
+    apply ContDiff.cexp
+    apply ContDiff.mul contDiff_const
+    exact ofRealCLM.contDiff.comp
+      (contDiff_const.mul contDiff_id)
+  have hq : ContDiff ℝ ∞ q := by
+    dsimp only [q]
+    exact ofRealCLM.contDiff.comp
+      ((contDiff_const.mul contDiff_id).pow 2)
+  have hdk : ContDiff ℝ ∞ (deriv k) :=
+    (contDiff_infty_iff_deriv.mp hk).2
+  have hk1 : ContDiff ℝ 1 k := hk.of_le (by simp)
+  have huk : ContDiff ℝ 1 uk :=
+    (hp.mul hdk).of_le (by simp)
+  have huφPlusValue : uφ lambda = 0 := by
+    simp [uφ, p]
+  have huφMinusValue : uφ (-lambda) = 0 := by
+    simp [uφ, p]
+  have huφPlus : ContinuousWithinAt uφ (Icc (-lambda) lambda) lambda := by
+    rw [continuousWithinAt_Icc_iff_Iic hspan]
+    rw [← continuousWithinAt_Iio_iff_Iic]
+    change Tendsto uφ (nhdsWithin lambda (Iio lambda)) (nhds (uφ lambda))
+    rw [huφPlusValue]
+    exact hfluxPlus
+  have huφMinus : ContinuousWithinAt uφ (Icc (-lambda) lambda) (-lambda) := by
+    rw [continuousWithinAt_Icc_iff_Ici hspan]
+    rw [← continuousWithinAt_Ioi_iff_Ici]
+    change Tendsto uφ (nhdsWithin (-lambda) (Ioi (-lambda))) (nhds (uφ (-lambda)))
+    rw [huφMinusValue]
+    exact hfluxMinus
+  have huφ : ContinuousOn uφ (Icc (-lambda) lambda) := by
+    intro y hy
+    by_cases hyMinus : y = -lambda
+    · simpa [hyMinus] using huφMinus
+    by_cases hyPlus : y = lambda
+    · simpa [hyPlus] using huφPlus
+    have hyOpen : y ∈ Ioo (-lambda) lambda :=
+      ⟨lt_of_le_of_ne hy.1 (Ne.symm hyMinus), lt_of_le_of_ne hy.2 hyPlus⟩
+    exact (hflux' y hyOpen).continuousAt.continuousWithinAt
+  have hfluxDeriv : ∀ y ∈ Ioo (-lambda) lambda,
+      HasDerivAt uφ (fluxDeriv y) y := by
+    intro y hy
+    simpa only [uφ, p, fluxDeriv, q] using hflux' y hy
+  have hfluxDerivCont : ContinuousOn fluxDeriv (Icc (-lambda) lambda) := by
+    dsimp only [fluxDeriv]
+    exact (hq.continuous.continuousOn.sub continuousOn_const).mul hφ
+  let firstProductDeriv : ℝ → ℂ := fun y ↦
+    deriv uk y * φ y + deriv k y * uφ y
+  have hfirstProductCont :
+      ContinuousOn (fun y ↦ uk y * φ y) (Icc (-lambda) lambda) :=
+    huk.continuous.continuousOn.mul hφ
+  have hfirstProductDeriv : ∀ y ∈ Ioo (-lambda) lambda,
+      HasDerivAt (fun z ↦ uk z * φ z) (firstProductDeriv y) y := by
+    intro y hy
+    have hprod := (huk.differentiable_one y).hasDerivAt.mul (hφ' y hy)
+    convert hprod using 1
+    dsimp only [firstProductDeriv, uk, uφ]
+    ring
+  have hfirstProductDerivCont :
+      ContinuousOn firstProductDeriv (Icc (-lambda) lambda) := by
+    dsimp only [firstProductDeriv]
+    exact
+      (huk.continuous_deriv_one.continuousOn.mul hφ).add
+        (hdk.continuous.continuousOn.mul huφ)
+  have hfirstFTC := intervalIntegral.integral_eq_sub_of_hasDerivAt_of_le
+    hle hfirstProductCont hfirstProductDeriv
+      (hfirstProductDerivCont.intervalIntegrable_of_Icc hle)
+  have hukPlusValue : uk lambda = 0 := by
+    simp [uk, p]
+  have hukMinusValue : uk (-lambda) = 0 := by
+    simp [uk, p]
+  have hfirstFTCZero :
+      (∫ y in (-lambda)..lambda, firstProductDeriv y) = 0 := by
+    simpa only [hukPlusValue, hukMinusValue, zero_mul, sub_self] using hfirstFTC
+  have hA1 : IntervalIntegrable (fun y ↦ deriv uk y * φ y)
+      volume (-lambda) lambda :=
+    (huk.continuous_deriv_one.continuousOn.mul hφ).intervalIntegrable_of_Icc hle
+  have hB1 : IntervalIntegrable (fun y ↦ deriv k y * uφ y)
+      volume (-lambda) lambda :=
+    (hdk.continuous.continuousOn.mul huφ).intervalIntegrable_of_Icc hle
+  have hfirstSplit :
+      (∫ y in (-lambda)..lambda, deriv uk y * φ y) +
+          (∫ y in (-lambda)..lambda, deriv k y * uφ y) = 0 := by
+    rw [← intervalIntegral.integral_add hA1 hB1]
+    exact hfirstFTCZero
+  have hfirstStep :
+      (∫ y in (-lambda)..lambda, (-deriv uk y) * φ y) =
+        ∫ y in (-lambda)..lambda, deriv k y * uφ y := by
+    rw [show (fun y ↦ (-deriv uk y) * φ y) =
+        fun y ↦ -(deriv uk y * φ y) by funext y; ring,
+      intervalIntegral.integral_neg]
+    linear_combination -hfirstSplit
+  let secondProductDeriv : ℝ → ℂ := fun y ↦
+    deriv k y * uφ y + k y * fluxDeriv y
+  have hsecondProductCont :
+      ContinuousOn (fun y ↦ k y * uφ y) (Icc (-lambda) lambda) :=
+    hk.continuous.continuousOn.mul huφ
+  have hsecondProductDeriv : ∀ y ∈ Ioo (-lambda) lambda,
+      HasDerivAt (fun z ↦ k z * uφ z) (secondProductDeriv y) y := by
+    intro y hy
+    have hprod := (hk1.differentiable_one y).hasDerivAt.mul (hfluxDeriv y hy)
+    simpa only [secondProductDeriv] using hprod
+  have hsecondProductDerivCont :
+      ContinuousOn secondProductDeriv (Icc (-lambda) lambda) := by
+    dsimp only [secondProductDeriv]
+    exact
+      (hdk.continuous.continuousOn.mul huφ).add
+        (hk.continuous.continuousOn.mul hfluxDerivCont)
+  have hsecondFTC := intervalIntegral.integral_eq_sub_of_hasDerivAt_of_le
+    hle hsecondProductCont hsecondProductDeriv
+      (hsecondProductDerivCont.intervalIntegrable_of_Icc hle)
+  have hsecondFTCZero :
+      (∫ y in (-lambda)..lambda, secondProductDeriv y) = 0 := by
+    simpa only [huφPlusValue, huφMinusValue, mul_zero, sub_self] using hsecondFTC
+  have hA2 : IntervalIntegrable (fun y ↦ deriv k y * uφ y)
+      volume (-lambda) lambda := hB1
+  have hB2 : IntervalIntegrable (fun y ↦ k y * fluxDeriv y)
+      volume (-lambda) lambda :=
+    (hk.continuous.continuousOn.mul hfluxDerivCont).intervalIntegrable_of_Icc hle
+  have hsecondSplit :
+      (∫ y in (-lambda)..lambda, deriv k y * uφ y) +
+          (∫ y in (-lambda)..lambda, k y * fluxDeriv y) = 0 := by
+    rw [← intervalIntegral.integral_add hA2 hB2]
+    exact hsecondFTCZero
+  have hsecondStep :
+      (∫ y in (-lambda)..lambda, deriv k y * uφ y) =
+        ∫ y in (-lambda)..lambda, k y * (-fluxDeriv y) := by
+    rw [show (fun y ↦ k y * (-fluxDeriv y)) =
+        fun y ↦ -(k y * fluxDeriv y) by funext y; ring,
+      intervalIntegral.integral_neg]
+    linear_combination hsecondSplit
+  have hleftFormula :
+      prolateWaveExpression lambda (finiteFourierAction lambda φ) x =
+        ∫ y in Icc (-lambda) lambda,
+          prolateWaveExpression lambda
+            (fun z : ℝ ↦ finiteFourierKernel z y) x * φ y := by
+    rw [← haction]
+    calc
+      prolateWaveExpression lambda
+          (finiteFourierAction lambda (g : ℝ → ℂ)) x =
+          ∫ y in Icc (-lambda) lambda,
+            prolateWaveExpression lambda
+              (fun z : ℝ ↦ finiteFourierKernel z y) x * g y :=
+        prolateWaveExpression_finiteFourierAction_eq_kernel
+          lambda (g : ℝ → ℂ) g.continuous x
+      _ = ∫ y in Icc (-lambda) lambda,
+            prolateWaveExpression lambda
+              (fun z : ℝ ↦ finiteFourierKernel z y) x * φ y := by
+        apply integral_congr_ae
+        filter_upwards [ae_restrict_mem measurableSet_Icc] with y hy
+        rw [hgφ hy]
+  rw [hleftFormula]
+  have hgreenInterval :
+      (∫ y in (-lambda)..lambda,
+          prolateWaveExpression lambda (fun z : ℝ ↦ finiteFourierKernel x z) y * φ y) =
+        (theta : ℂ) *
+          ∫ y in (-lambda)..lambda, finiteFourierKernel x y * φ y := by
+    have hQ : IntervalIntegrable (fun y ↦ q y * k y * φ y)
+        volume (-lambda) lambda :=
+      ContinuousOn.intervalIntegrable_of_Icc hle
+        ((hq.continuous.continuousOn.mul hk.continuous.continuousOn).mul hφ)
+    calc
+      (∫ y in (-lambda)..lambda,
+          prolateWaveExpression lambda (fun z : ℝ ↦ finiteFourierKernel x z) y * φ y) =
+          ∫ y in (-lambda)..lambda,
+            ((-deriv uk y) * φ y + q y * k y * φ y) := by
+        apply intervalIntegral.integral_congr
+        intro y _
+        simp only [prolateWaveExpression, fderiv_deriv, uk, p, q, k]
+        ring
+      _ = (∫ y in (-lambda)..lambda, (-deriv uk y) * φ y) +
+          ∫ y in (-lambda)..lambda, q y * k y * φ y := by
+        exact intervalIntegral.integral_add
+          (hA1.neg.congr (fun y _ ↦ by simp)) hQ
+      _ = (∫ y in (-lambda)..lambda, deriv k y * uφ y) +
+          ∫ y in (-lambda)..lambda, q y * k y * φ y := by
+        rw [hfirstStep]
+      _ = (∫ y in (-lambda)..lambda, k y * (-fluxDeriv y)) +
+          ∫ y in (-lambda)..lambda, q y * k y * φ y := by
+        rw [hsecondStep]
+      _ = ∫ y in (-lambda)..lambda,
+          (theta : ℂ) * (k y * φ y) := by
+        rw [← intervalIntegral.integral_add
+          (hB2.neg.congr (fun y _ ↦ by simp)) hQ]
+        apply intervalIntegral.integral_congr
+        intro y _
+        dsimp only [fluxDeriv]
+        ring
+      _ = (theta : ℂ) *
+          ∫ y in (-lambda)..lambda, finiteFourierKernel x y * φ y := by
+        rw [intervalIntegral.integral_const_mul]
+  rw [integral_Icc_eq_integral_Ioc,
+    ← intervalIntegral.integral_of_le hle]
+  calc
+    (∫ y in (-lambda)..lambda,
+        prolateWaveExpression lambda
+          (fun z : ℝ ↦ finiteFourierKernel z y) x * φ y) =
+        ∫ y in (-lambda)..lambda,
+          prolateWaveExpression lambda
+            (fun z : ℝ ↦ finiteFourierKernel x z) y * φ y := by
+      apply intervalIntegral.integral_congr
+      intro y _
+      change
+        prolateWaveExpression lambda
+              (fun z : ℝ ↦ finiteFourierKernel z y) x * φ y =
+          prolateWaveExpression lambda
+              (fun z : ℝ ↦ finiteFourierKernel x z) y * φ y
+      rw [prolateWaveExpression_finiteFourierKernel_swap]
+    _ = (theta : ℂ) *
+        ∫ y in (-lambda)..lambda, finiteFourierKernel x y * φ y :=
+      hgreenInterval
+    _ = (theta : ℂ) * finiteFourierAction lambda φ x := by
+      unfold finiteFourierAction
+      rw [integral_Icc_eq_integral_Ioc,
+        ← intervalIntegral.integral_of_le hle]
+
 #print axioms prolateWaveExpression_finiteFourierKernel_swap
 #print axioms finiteFourierAction_intertwines_prolateWaveExpression
+#print axioms
+  finiteFourierAction_preserves_prolateWaveEigenrelation_of_endpointFlux
 
 end Q3.RouteB.D0Pstar

@@ -423,3 +423,28 @@ intertwining для реального интерфейса interior `C2` + zero
 
 Стоп-код:
 `G3_SELECTED_MODE_ZERO_FOUR_REGULAR_PHYSICAL_SOLUTIONS_PROVED_ENDPOINT_GREEN_FOURIER_ZERO_COUNTS_AND_LEMMA72_NEXT`.
+
+### Goal 058 G3 — endpoint-flux Fourier eigen-transport
+
+Старый commutation theorem требовал global `C2`, которого выбранный Ferrers
+source честно не имеет в текущем интерфейсе. Новый theorem
+`finiteFourierAction_preserves_prolateWaveEigenrelation_of_endpointFlux`
+работает на настоящем singular domain: closed-window continuity, первая
+производная внутри, divergence-form ODE для weighted derivative и два
+zero-flux endpoint limits.
+
+Доказательство — две точные FTC-формулы для `p*k'*phi` и `k*p*phi'`. В первом
+boundary обнуляет `p=lambda^2-y^2`, во втором — доказанный zero flux. Tietze
+extension используется только локально для существующей формулы
+дифференцирования Fourier-integral и исчезает по equality on `Icc`.
+
+Fresh EnvDump видел `257/257` modules и `2335` declarations, holes/extra
+axioms `0`; supplier preflight вернул `CANDIDATE_ONLY`. Direct Lean, named
+build (7745 jobs), `q3_check` и diff check прошли; axioms standard only.
+
+Это ещё не Fourier eigenfunction relation: сохранён только ODE eigenspace.
+Нужны physical Ferrers wrapper, proportionality/uniqueness, scalar sign/order,
+zero counts и Lemma 7.2. G1/G3 OPEN, Route B `CHALLENGER / NOT_RH`.
+
+Стоп-код:
+`G3_ENDPOINT_FLUX_FOURIER_EIGEN_TRANSPORT_PROVED_SELECTED_FERRERS_PHYSICAL_WRAPPER_AND_SCALAR_PROPORTIONALITY_NEXT`.
