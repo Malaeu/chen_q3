@@ -369,3 +369,30 @@ timeout=1800)` с передачей настоящего exit-кода; GNU `ti
 для `Q3.Main.RH_of_Weil_and_Q3` (`propext`, `Classical.choice`,
 `Q3.Weil_criterion`, `Q3.prime_term_le_at_t_critical_axiom`, `Quot.sound`), а
 plant с заведомо отсутствующим именем завершился кодом 1. Fail-open закрыт.
+
+### Goal 058 G3 — strict carrier order и degree-four index `2` закрыты
+
+На полном source-backed Lean denominator (`256/256`, 2328 declarations,
+stale/uncovered `0`, `sorryAx=0`, other axioms `0`) exact supplier preflight
+вернул `CANDIDATE_ONLY`: Ferrers и finite-spectrum совпадения оказались
+соседними объектами, а не поставщиком нужного типа.
+
+Доказан общий singular inertia bound
+`mode4HermitianNegativeEigenvalueCount_eventually_between_of_tendsto`: при
+сходимости Hermitian matrices nearby negative count лежит между limiting
+negative count и этим count плюс limiting nullity. Для simple carrier root
+две выбранные nonsingular последовательности и convergence одного и того же
+finite `j`-го eigenvalue дают exact equality `negativeCount(root)=j`.
+
+Отсюда carrier строго упорядочен ниже `20`; значение carrier с index `2`
+уникально, а normalized DLMF 30.3.5 row при этом значении square-summable.
+Direct Lean, named build (7774 jobs) и `q3_check` по трём изменённым файлам
+прошли; public axioms только `propext`, `Classical.choice`, `Quot.sound`.
+
+Это не закрывает G3. Следующий seam: row-to-Ferrers/physical PSWF identity,
+затем restricted finite Fourier; mode zero, actual degree-0/4 pair, CCM Lemma
+7.2, denominator floor, schedule и G1 остаются отдельно открыты. Route B —
+`CHALLENGER / NOT_RH`; RH claim отсутствует.
+
+Стоп-код:
+`G3_DEGREE_FOUR_DLMF_ROW_SELECTED_PHYSICAL_PSWF_IDENTITY_AND_FINITE_FOURIER_NEXT`.

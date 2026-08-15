@@ -651,6 +651,147 @@ theorem mode4HermitianNegativeEigenvalueCount_eventually_eq_of_tendsto_of_det_ne
       mode4HermitianNegativeEigenvalueCount_eventually_eq_of_tendsto_of_det_ne_zero_of_pos
         (Nat.one_le_iff_ne_zero.mpr hK0) A hA L hL hlim hdet
 
+private theorem mode4Stability_neg_add_nullity_add_pos_eq_card
+    {n : Type*} [Fintype n] [DecidableEq n]
+    {A : Matrix n n ℝ} (hA : A.IsHermitian) :
+    mode4HermitianNegativeEigenvalueCount A hA +
+        Module.finrank ℝ (LinearMap.ker A.mulVecLin) +
+        mode4StabilityPositiveEigenvalueCount hA = Fintype.card n := by
+  classical
+  have hrankNullity := A.mulVecLin.finrank_range_add_finrank_ker
+  have hrankA :
+      A.rank = (univ.filter fun i => hA.eigenvalues i ≠ 0).card := by
+    rw [hA.rank_eq_card_non_zero_eigs, Fintype.card_subtype]
+  have hnonzero :
+      (univ.filter fun i => hA.eigenvalues i < 0).card +
+          (univ.filter fun i => 0 < hA.eigenvalues i).card =
+        (univ.filter fun i => hA.eigenvalues i ≠ 0).card := by
+    rw [← card_union_of_disjoint]
+    · congr 1
+      ext i
+      simp only [mem_union, mem_filter, mem_univ, true_and]
+      constructor
+      · rintro (hneg | hpos)
+        · exact hneg.ne
+        · exact hpos.ne'
+      · exact lt_or_gt_of_ne
+    · rw [Finset.disjoint_left]
+      intro i hneg hpos
+      simp only [mem_filter, mem_univ, true_and] at hneg hpos
+      linarith
+  have hrankNullity' :
+      A.rank + Module.finrank ℝ (LinearMap.ker A.mulVecLin) =
+        Fintype.card n := by
+    simpa [Matrix.rank] using hrankNullity
+  unfold mode4HermitianNegativeEigenvalueCount
+  unfold mode4StabilityPositiveEigenvalueCount
+  omega
+
+/-- For a convergent sequence of finite real Hermitian matrices, the negative
+index is lower semicontinuous, while its possible upward jump is bounded by
+the nullity of the limiting matrix.  At a simple singular limit this leaves
+exactly the two adjacent inertia values. -/
+theorem mode4HermitianNegativeEigenvalueCount_eventually_between_of_tendsto
+    {K : ℕ}
+    (A : ℕ → Matrix (Fin K) (Fin K) ℝ)
+    (hA : ∀ d, (A d).IsHermitian)
+    (L : Matrix (Fin K) (Fin K) ℝ)
+    (hL : L.IsHermitian)
+    (hlim : Tendsto A atTop (𝓝 L)) :
+    ∀ᶠ d in atTop,
+      mode4HermitianNegativeEigenvalueCount L hL ≤
+          mode4HermitianNegativeEigenvalueCount (A d) (hA d) ∧
+        mode4HermitianNegativeEigenvalueCount (A d) (hA d) ≤
+          mode4HermitianNegativeEigenvalueCount L hL +
+            Module.finrank ℝ (LinearMap.ker L.mulVecLin) := by
+  classical
+  by_cases hK0 : K = 0
+  · subst K
+    simp [mode4HermitianNegativeEigenvalueCount]
+  letI : Nonempty (Fin K) :=
+    ⟨⟨0, Nat.pos_of_ne_zero hK0⟩⟩
+  by_cases hnonzero : ∃ i, hL.eigenvalues i ≠ 0
+  · let S : Finset ℝ :=
+      (univ.filter fun i => hL.eigenvalues i ≠ 0).image
+        (fun i => |hL.eigenvalues i|)
+    have hS : S.Nonempty := by
+      obtain ⟨i, hi⟩ := hnonzero
+      refine ⟨|hL.eigenvalues i|, ?_⟩
+      exact mem_image.mpr ⟨i, mem_filter.mpr ⟨mem_univ _, hi⟩, rfl⟩
+    let gap := S.min' hS
+    have hgap_mem : gap ∈ S := by
+      exact S.min'_mem hS
+    have hgap_pos : 0 < gap := by
+      obtain ⟨i, hi, heq⟩ := mem_image.mp hgap_mem
+      have hine : hL.eigenvalues i ≠ 0 := (mem_filter.mp hi).2
+      rw [← heq]
+      exact abs_pos.mpr hine
+    have hgap_le_abs (i : Fin K) (hi : hL.eigenvalues i ≠ 0) :
+        gap ≤ |hL.eigenvalues i| := by
+      exact S.min'_le _
+        (mem_image.mpr ⟨i, mem_filter.mpr ⟨mem_univ _, hi⟩, rfl⟩)
+    have hnegGap :
+        ∀ i, hL.eigenvalues i < 0 → gap ≤ -hL.eigenvalues i := by
+      intro i hi
+      simpa [abs_of_neg hi] using hgap_le_abs i hi.ne
+    have hposGap :
+        ∀ i, 0 < hL.eigenvalues i → gap ≤ hL.eigenvalues i := by
+      intro i hi
+      simpa [abs_of_pos hi] using hgap_le_abs i hi.ne'
+    have hdiff : Tendsto (fun d => A d - L) atTop (𝓝 0) := by
+      simpa using hlim.sub
+        (tendsto_const_nhds : Tendsto (fun _ : ℕ => L) atTop (𝓝 L))
+    have hscaled :
+        Tendsto (fun d => (K : ℝ) * ‖A d - L‖) atTop (𝓝 0) := by
+      simpa using tendsto_const_nhds.mul hdiff.norm
+    have hclose : ∀ᶠ d in atTop, (K : ℝ) * ‖A d - L‖ < gap :=
+      (tendsto_order.1 hscaled).2 gap hgap_pos
+    filter_upwards [hclose] with d hdclose
+    have hnegLe :
+        mode4HermitianNegativeEigenvalueCount L hL ≤
+          mode4HermitianNegativeEigenvalueCount (A d) (hA d) :=
+      mode4Stability_negativeCount_le_negativeCount_of_close
+        hL (hA d) hnegGap (by simpa using hdclose)
+    have hposLe :
+        mode4StabilityPositiveEigenvalueCount hL ≤
+          mode4StabilityPositiveEigenvalueCount (hA d) :=
+      mode4Stability_positiveCount_le_positiveCount_of_close
+        hL (hA d) hposGap (by simpa using hdclose)
+    have hpartitionL := mode4Stability_neg_add_nullity_add_pos_eq_card hL
+    have hpartitionA :=
+      mode4Stability_neg_add_nullity_add_pos_eq_card (hA d)
+    constructor
+    · exact hnegLe
+    · omega
+  · have hzero : ∀ i, hL.eigenvalues i = 0 := by
+      intro i
+      exact not_ne_iff.mp (not_exists.mp hnonzero i)
+    have hnegZero :
+        mode4HermitianNegativeEigenvalueCount L hL = 0 := by
+      unfold mode4HermitianNegativeEigenvalueCount
+      simp [hzero]
+    have hposZero : mode4StabilityPositiveEigenvalueCount hL = 0 := by
+      unfold mode4StabilityPositiveEigenvalueCount
+      simp [hzero]
+    have hpartitionL := mode4Stability_neg_add_nullity_add_pos_eq_card hL
+    have hpartitionL' :
+        mode4HermitianNegativeEigenvalueCount L hL +
+            Module.finrank ℝ (LinearMap.ker L.mulVecLin) +
+            mode4StabilityPositiveEigenvalueCount hL = K := by
+      simpa using hpartitionL
+    filter_upwards [] with d
+    have hcountLe :
+        mode4HermitianNegativeEigenvalueCount (A d) (hA d) ≤ K := by
+      unfold mode4HermitianNegativeEigenvalueCount
+      calc
+        (univ.filter fun i => (hA d).eigenvalues i < 0).card ≤ univ.card :=
+          Finset.card_le_card (Finset.filter_subset _ _)
+        _ = K := Fintype.card_fin K
+    constructor <;> omega
+
+#print axioms
+  mode4HermitianNegativeEigenvalueCount_eventually_between_of_tendsto
+
 /-!
 The following two public interfaces are an independent Mathlib realization of
 the subspace form of Sylvester inertia.  The proof architecture was

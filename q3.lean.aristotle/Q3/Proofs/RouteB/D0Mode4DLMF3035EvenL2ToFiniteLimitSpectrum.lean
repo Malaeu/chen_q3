@@ -72,7 +72,7 @@ private theorem mode4RootSet_finite
         hΛ₁.1 hΛ₂.1 hΛ₁.2 hΛ₂.2).2 heq
   · exact Set.finite_Iic K
 
-private theorem exists_mode4HermitianSchurMatrix_det_ne_zero_between
+theorem exists_mode4HermitianSchurMatrix_det_ne_zero_between
     (mProject K : ℕ) (a b : ℝ)
     (hm : 2 ≤ mProject)
     (hK : 3 ≤ K)

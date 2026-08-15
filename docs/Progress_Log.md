@@ -2401,6 +2401,43 @@ convergence of the `j`-th finite eigenvalue through that interval». Codex/Lean
 `G3_DLMF3035_FINITE_LIMIT_SPECTRAL_IFF_PROVED_STRICT_ORDER_AND_P2_MODE_SELECTION_NEXT`;
 G1, G3, Route B promotion и RH остаются открыты.
 
+## 2026-08-15 — Goal 058 G3: strict order и degree-four selection
+
+**Развилка:** считать monotone finite-limit carrier уже source-ordered либо
+доказать отсутствие collisions через literal singular Schur root.
+
+**Выбрали:** доказать singular Hermitian semicontinuity, затем pin
+`negativeCount(root)=j` двумя nonsingular последовательностями и convergence
+фиксированного finite eigenvalue index.
+
+**Почему:** monotone limits могут совпадать; simple kernel сам по себе не
+запрещает collapse нескольких finite indices. Нижняя/верхняя semicontinuity
+оставляет у simple root ровно adjacent inertia values и закрывает этот зазор
+без нового source binder.
+
+**Что отвергли и почему:** monotonicity alone отвергнута как недостаточная:
+пределы строго упорядоченных finite spectra могут collide. Simple kernel без
+semicontinuity также не фиксирует, какой finite index пришёл в этот root.
+
+**Техника:** negative/positive spectral subspaces, exact nullity partition,
+two-sided nonsingular selection, finite-to-literal count transport,
+fixed-index convergence, finite-head bound `carrier 2 < 20`.
+
+**Результат:** `negativeCount(root)=j`; carrier строго упорядочен ниже `20`;
+index `2` уникален для третьего even value; normalized degree-four DLMF row
+square-summable. Axioms standard only.
+
+**Следующий ход:** соединить выбранную DLMF row с существующей Ferrers regular
+even prolate solution и physical scaling, не предполагая function identity;
+затем отдельно finite Fourier и Lemma 7.2/floor chain.
+
+**Адреса:**
+`q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_DLMF_STRICT_ORDER_DEGREE_FOUR_SELECTION_CLOSEOUT_2026-08-15.md`.
+
+**Граница:**
+`G3_DEGREE_FOUR_DLMF_ROW_SELECTED_PHYSICAL_PSWF_IDENTITY_AND_FINITE_FOURIER_NEXT`;
+G1, G3, Route B promotion и RH остаются открыты.
+
 ### Счёт раскопок
 
 | четверть | строки | развилок найдено | причина записана | причина отсутствует |
