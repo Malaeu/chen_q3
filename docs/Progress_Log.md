@@ -2715,6 +2715,37 @@ positive-phase/order source contract для уже selected Ferrers witnesses,
 `G3_NORMALIZED_ZERO_COUNT_TRANSPORT_PROVED_DIMENSIONLESS_COUNTS_AND_POSITIVE_PHASE_FOURIER_ORDER_SOURCE_LOCKS_MISSING`;
 G1, G3, Route B promotion и RH остаются открыты.
 
+## 2026-08-15 — normalized actual-mode local fields
+
+**Развилка:** довериться prose-утверждению, что analytic fields уже доступны,
+либо kernel-check'ом собрать их для точного normalized zero extension до
+source verdict.
+
+**Выбрали:** source-free local proof of real-valuedness, interior `C²`, and
+the literal normalized `prolateWaveExpression` eigenrelation.
+
+**Почему:** после импорта классических zero-count/phase-order facts record
+assembly не должен обнаружить ещё один формальный разрыв.
+
+**Техника:** exact indicator reduction on the open window, complex-linear
+coercion of real `ContDiffOn`, accepted raw first derivative and weighted-flux
+derivative, local `EventuallyEq.fderiv_eq`, constant normalization algebra.
+
+**Результат:** все non-source analytic fields точного normalized production
+witness kernel-check'нуты. Direct Lean, 7786-job named build, `q3_check`,
+cartography/catalog sync и standard-only axiom audit PASS.
+
+**Следующий ход:** получить judge-approved source lock только для selected
+degree `0/4` nodal counts and positive plus-phase Fourier order, затем
+локально собрать `IsActualProlateModePair`.
+
+**Адрес:**
+`q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_NORMALIZED_ACTUAL_MODE_LOCAL_FIELDS_CLOSEOUT_2026-08-15.md`.
+
+**Граница:**
+`G3_NORMALIZED_ACTUAL_MODE_LOCAL_FIELDS_PROVED_ONLY_CLASSICAL_NODAL_AND_FOURIER_ORDER_SOURCE_LOCKS_MISSING`;
+G1, G3, Route B promotion и RH остаются открыты.
+
 ### Счёт раскопок
 
 | четверть | строки | развилок найдено | причина записана | причина отсутствует |

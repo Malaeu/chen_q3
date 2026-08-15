@@ -607,3 +607,26 @@ source lock к тем же selected Ferrers witnesses. G1 отдельно от�
 
 Стоп-код:
 `G3_NORMALIZED_ZERO_COUNT_TRANSPORT_PROVED_DIMENSIONLESS_COUNTS_AND_POSITIVE_PHASE_FOURIER_ORDER_SOURCE_LOCKS_MISSING`.
+
+### Goal 058 G3 — normalized actual-mode local fields
+
+Второй source-free audit закрыл скрытую analytic plumbing часть
+`IsActualProlateModePair`. Для canonical normalized zero extension доказаны
+whole-line real-valuedness, interior `C²`, exact interior derivative и literal
+`prolateWaveExpression` eigenrelation. Raw physical complex Ferrers witness
+тоже получил прямую literal differential-expression theorem.
+
+Доказательство использует уже accepted derivative/weighted-flux package и
+local `EventuallyEq` внутри open physical window; nodal count или Fourier
+sign/order не предполагаются. Exact KB query вернул `no hits`. Direct Lean,
+named build (`7786` jobs), `q3_check`, diff/forbidden scan и standard-only
+axiom audit прошли. Cartographer: `266` files, `2479` declarations, `0`
+missing declaration rows, `2865` external atoms.
+
+Граница теперь чистая: до local actual-mode assembly остаются только exact
+classical source facts — dimensionless counts `0/4` и positive plus-phase
+order `0 < chi2 < chi0` для тех же selected Ferrers witnesses. G1 отдельно
+открыт; Route B остаётся `CHALLENGER / NOT_RH`.
+
+Стоп-код:
+`G3_NORMALIZED_ACTUAL_MODE_LOCAL_FIELDS_PROVED_ONLY_CLASSICAL_NODAL_AND_FOURIER_ORDER_SOURCE_LOCKS_MISSING`.

@@ -4,7 +4,7 @@
 `python3 docs/cartographer/map_coverage.py`. Рукописная карта — `MAP.md`, она
 описывает узлы маршрута; это приложение описывает **файлы**, и оно полное.
 
-Всего файлов: **265** · упомянуто в `MAP.md`: **21** · вне карты: **244** · без описания в шапке: **0**
+Всего файлов: **266** · упомянуто в `MAP.md`: **21** · вне карты: **245** · без описания в шапке: **0**
 
 «вне карты» не значит «лишний»: значит, что обходом карты файл не находится.
 Именно так 2026-08-11 был построен заново мост `ker ↔ eigenspace`, стоявший в
@@ -80,6 +80,7 @@
 | `D0Mode4FerrersEndpointFlux` | — | Endpoint flux of the mode-four Ferrers source row | 0 |
 | `D0Mode4FerrersInteriorRegularity` | — | Interior regularity of the mode-four Ferrers series | 0 |
 | `D0Mode4FerrersInteriorZeroSimplicity` | — | Goal 058 G3: simplicity of interior mode-four Ferrers zeros | 0 |
+| `D0Mode4FerrersNormalizedActualModeLocalFields` | — | Normalized Ferrers actual-mode local fields | 0 |
 | `D0Mode4FerrersNormalizedZeroCountTransport` | — | Normalized Ferrers zero-count transport | 0 |
 | `D0Mode4FerrersPhysicalFourierEigenTransport` | — | Goal 058 G3: physical Ferrers endpoint-domain Fourier transport | 0 |
 | `D0Mode4FerrersPhysicalFourierNonzeroScalar` | — | Goal 058 G3: the physical Ferrers Fourier scalar is nonzero | 0 |
