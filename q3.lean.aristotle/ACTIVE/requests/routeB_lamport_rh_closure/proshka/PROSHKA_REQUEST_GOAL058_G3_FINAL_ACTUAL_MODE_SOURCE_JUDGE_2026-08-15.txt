@@ -1,0 +1,202 @@
+PROSHKA JUDGE REQUEST — GOAL 058 G3 FINAL ACTUAL-MODE SOURCE WALL
+
+Date: 2026-08-15
+Phase key: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+Living chat: 6a7afc0e-2aec-83eb-a9ca-469b44c84f83
+Repo: https://github.com/Malaeu/chen_q3
+Branch: rh_clean
+Evidence HEAD: 1a9864080206b91c217d0d3dd83d98076fbbe255
+Boundary: G1 OPEN; G3 OPEN; CHALLENGER_NOT_RH; NO_RH.
+
+ROLE
+
+Act as Proshka, final mathematical/source judge.  Return ACCEPT, REPAIR, KILL,
+or HOLD separately for each proposed source carrier and for the local assembly
+route.  Do not treat a paper citation as a Lean proof.  Do not authorize a
+custom axiom, `sorry`, `opaque` theorem without a body, assumption binder
+carrying the requested conclusion, new parallel PSWF family, Route B
+promotion, or RH claim.
+
+AUTHORITATIVE MYTHOS VERDICT
+
+Raw immutable link:
+
+https://raw.githubusercontent.com/Malaeu/chen_q3/1a9864080206b91c217d0d3dd83d98076fbbe255/q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_ACTUAL_MODE_FINAL_SOURCE_MYTHOS_VERDICT_2026-08-15.md
+
+File SHA-256:
+
+5bcd57461c31b0db0b99cd3fc51141ba93866f88336c7dde3a23e2e7aafafbaa
+
+Mythos chose:
+
+TWO_MINIMAL_SOURCE_CARRIERS_THEN_LOCAL_ASSEMBLY
+
+and proposed these exact declarations:
+
+1. `selectedFerrersDLMFZeroCountSource`: for the already selected regular
+   Ferrers solution at zero-based even carrier `j = 0` or `j = 2`, the
+   dimensionless interior zero set is finite and has `ncard = 2*j`.
+
+2. `selectedFerrersSlepianPhaseOrderSource`: for the same selected `S0/S4`,
+   the dimensionless plus-phase finite-Fourier identities use ordered positive
+   concentration eigenvalues `0 < kappa4 < kappa0`, with `I^0` and `I^4`
+   phase factors and `c = 2*pi*mProject`.
+
+Mythos explicitly says both mathematical source declarations are absent from
+Lean, Aristotle is NOT_READY, and no repository write was authorized.
+
+NEW KERNEL-CHECKED LOCAL DELTA AFTER THE MYTHOS REQUEST
+
+A. Commit c4e37dcedc2713c42c8e85a50b6cb27d041f99ea
+
+`D0Mode4FerrersNormalizedZeroCountTransport.lean`
+SHA-256:
+721bbf3ebe92bf0fed7afdd42a06f229cc001d5506d87b313dafe85fd788a8ba
+
+Proves, source-free and standard-axiom-only:
+
+- exact physical interior zero set = injective scaled image of the
+  dimensionless Ferrers zero set;
+- exact `ncard` preservation;
+- normalized physical center is nonzero;
+- two real restricted-Fourier scalars for the same nonzero mode are equal.
+
+B. Commit baf5150795ccb865da81b0dac519be1241becb9b
+
+`D0Mode4FerrersNormalizedActualModeLocalFields.lean`
+SHA-256:
+fe4aab59c205a5d09a0c1f8ee08d40e473abac8408c5c2bd1b1ab4bfb91384e9
+
+Proves, source-free and standard-axiom-only:
+
+- normalized whole-line mode is real-valued;
+- normalized mode is interior `C²`;
+- raw and normalized modes satisfy the literal production
+  `prolateWaveExpression` eigenrelation on the open physical window;
+- exact normalized first derivative.
+
+Direct Lean, named builds (7785 and 7786 jobs), both `q3_check`, cartography,
+diff scans, and `#print axioms` passed.  Every public theorem has exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The existing production pair and orthogonality chain is at commits
+`6fb660f6` and `efbf5498`.  Exact selected carrier identification, strict
+differential spectral order, endpoint flux, normalization, support,
+restricted Fourier relations, nonzero real scalars, and orthogonality are on
+disk.
+
+THE HARD JUDGE QUESTION
+
+The repo contains no custom `axiom`, `sorry`, or bodyless `opaque` declaration
+in RouteB, and the accepted public surfaces have standard axioms only.
+Therefore the two proposed source theorem heads cannot be materialized merely
+because DLMF and Slepian–Pollak state the mathematics.
+
+Judge exactly which implementation boundary is legitimate:
+
+A. FORMAL_PROOF_FROM_EXISTING_ON_DISK_OBJECTS
+   Name a kernel-checkable proof route for each carrier and the first exact
+   theorem/file.  If a new generic oscillation or compact-operator theorem is
+   required, state its exact input/output and whether Aristotle may own it.
+
+B. REVIEWED_SOURCE_IMPORT_INTERFACE
+   Only if repo policy permits it, state the exact mechanism, file, authority,
+   and resulting `#print axioms` surface.  Explain why this is not a forbidden
+   closure binder or custom axiom.  If standard-only axioms are required,
+   reject this option.
+
+C. SOURCE_CHAIN_INCOMPLETE_FOR_LEAN
+   The papers are sufficient mathematics but not yet a kernel-checkable Lean
+   supplier.  Name the smallest missing formal theorem(s), ownership, and
+   exact stop code.
+
+D. KILL_OR_REPAIR_MYTHOS_CONTRACT
+   Identify any sign, scale, order, index, quantifier, or same-witness defect
+   in the proposed carrier heads and provide corrected exact heads.
+
+SOURCE AND CONVENTION CHECKS TO JUDGE
+
+1. DLMF 30.4(ii) and 30.4.3: at spheroidal `m=0`, the selected full degrees
+   `n=0,4` have exactly `0,4` zeros in `(-1,1)`.
+
+2. Existing selector crosswalk: DLMF `p=1,3` <-> project zero-based even
+   carrier `j=0,2` <-> full degrees `n=0,4`.  Kill the mutation “second even
+   mode = degree 4”; degree 4 is the third even mode.
+
+3. Physical scale:
+
+   project `lambda = sqrt(mProject)`;
+   dimensionless `c = 2*pi*lambda^2 = 2*pi*mProject`;
+   project `G = c^2`;
+   project plus kernel is `exp(+2*pi*i*x*y)`;
+   physical Fourier scalar = `lambda` times the dimensionless source scalar.
+
+4. Slepian–Pollak equations (25)–(28) and Section VI: confirm the exact
+   positive radial/source normalization that fixes
+
+   `mu_n = i^n * sqrt(2*pi/c) * sqrt(kappa_n)`
+
+   for the PLUS kernel, not just `|mu_n|`.  Reject `R -> -R`, plus/minus kernel
+   swaps, `c = 2*pi*lambda`, and any inference of strict order from positivity
+   alone.
+
+5. Notation firewall: project `P.chi2` is the Fourier scalar of full degree
+   `n=4`; it is not degree 2 and is not named `chi4` in the production record.
+
+6. Same-witness guard: both source facts must attach to the exact selected
+   `S0/S4` that build `P`; unrelated existential PSWF witnesses cannot be
+   composed.
+
+PROPOSED FIRST LOCAL HEAD AFTER LEGITIMATE SOURCE SUPPLIERS
+
+Judge the Mythos head
+`selectedFerrersProduction_remainingActualFields`, whose inputs are only
+the exact `P` witness identities, `P.pw.lambda = sqrt mProject`, and the two
+already proved production Fourier relations, and whose output is exactly:
+
+`0 < P.chi2 ∧ P.chi2 < P.chi0`
+plus finiteness/counts `0` and `4` for the two project interior zero sets.
+
+Our two new local commits already discharge zero-set scaling, nonzero scalar
+identification, real-valuedness, interior `C²`, and the normalized literal ODE.
+Judge whether any other formal field is genuinely missing before the final
+same-witness `IsActualProlateModePair` assembly.
+
+PLANTED FALSIFIERS
+
+P1: `j=1` passed to the zero-count carrier.
+P2: `j=2` interpreted as full degree 2 rather than degree 4.
+P3: dimensionless count applied directly to whole-line zero extension.
+P4: `Icc` endpoint zeros counted instead of `Ioo` interior zeros.
+P5: minus Fourier kernel substituted for the project plus kernel.
+P6: `c=2*pi*lambda` or `c=mode4JacobiG` substituted for `2*pi*lambda^2`.
+P7: nonzero or positive magnitudes used as strict scalar order.
+P8: `R_{0n}^{(1)}(c,1)` sign dropped or silently flipped.
+P9: source `S0/S4` replaced by unrelated existential PSWF witnesses.
+P10: paper citation compiled into a custom axiom or requested conclusion
+     binder while claiming a standard-only axiom surface.
+
+REQUIRED FINAL FIELDS
+
+ZERO_COUNT_CARRIER_JUDGMENT: ACCEPT / REPAIR / KILL / HOLD
+PHASE_ORDER_CARRIER_JUDGMENT: ACCEPT / REPAIR / KILL / HOLD
+LOCAL_TRANSPORT_DELTA_JUDGMENT: ACCEPT / REPAIR / KILL
+LEAN_IMPORT_BOUNDARY: A / B / C / D above, with explanation
+EXACT_RATIFIED_SOURCE_HEADS: exact Lean, or NONE
+EXACT_FIRST_KERNEL_PROOF_HEAD: exact Lean and imports, or NONE
+SOURCE_PINS_AND_SIGN_LINE: exact pages/equations/convention
+AXIOM_POLICY: exact permitted surface; custom axiom yes/no
+ARISTOTLE_READY: READY / NOT_READY
+ARISTOTLE_OWNED_FILE_AND_TARGETS: exact, or NONE
+CODEX_NEXT_ACTION: exact bounded step, or NONE
+PLANTS_P1_P10: PASS/FAIL per plant
+G1_STATUS: OPEN
+G3_STATUS: OPEN or CLOSED, with proof basis
+ROUTE_STATE: CHALLENGER_NOT_RH
+RH_CLAIM: NOT_MADE
+STOP_CODE: one exact typed code
+
+Do not close G3 merely because the source contracts are mathematically true.
+Close it only if the exact production `IsActualProlateModePair` is already
+kernel-checked on disk at the evidence HEAD.  Otherwise return the executable
+next boundary.
