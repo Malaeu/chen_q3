@@ -2777,6 +2777,40 @@ carriers, then execute only the ratified kernel/source boundary.
 `G3_DIMENSIONLESS_TO_PHYSICAL_FOURIER_SCALING_PROVED_CLASSICAL_ZEROCOUNT_AND_PHASE_ORDER_SOURCE_CARRIERS_PENDING`;
 G1, G3, Route B promotion и RH остаются открыты.
 
+## 2026-08-15 — regular Ferrers coefficient uniqueness
+
+**Развилка:** считать два current regular witness одним source object по
+совпадению ODE/параметров либо сначала закрыть их равенство внутри текущего
+package без внешнего zero-count.
+
+**Выбрали:** точную uniqueness coefficient row при фиксированных
+`mProject`, `K`, `Λ`.
+
+**Почему:** source citation не может доказывать same-witness identity.  Но
+current recurrence, positive zeroth phase and weighted normalization уже
+достаточны, чтобы снять внутреннюю неоднозначность kernel-путём.
+
+**Техника:** recurrence propagation from coordinates `0/1`, nonzero
+superdiagonal, positive scalar ratio, uniqueness of the stored weighted
+`HasSum` normalization.
+
+**Результат:**
+`mode4FerrersRegularEvenProlateSolution_coefficients_eq` kernel-check'нут.
+Direct Lean, 7771-job named build, `q3_check`, strict refresh and standard-only
+axiom audit PASS. Scoped commit: `3ba54773`.
+
+**Следующий ход:** получить exact global nodal-index supplier: formal singular
+Sturm oscillation for the current class либо nonzero-scalar identity with a
+formal DLMF `Ps^0_{2p}` carrier owning the `2p` count.  Citation alone and
+zero-count binder запрещены.
+
+**Адрес:**
+`q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_REGULAR_FERRERS_COEFFICIENT_UNIQUENESS_CLOSEOUT_2026-08-15.md`.
+
+**Граница:**
+`G3_UNIQUE_CURRENT_REGULAR_SOLUTION_TO_CLASSICAL_PSF_ZEROCOUNT_SOURCE_GAP`;
+G1, G3, Route B promotion и RH остаются открыты.
+
 ### Счёт раскопок
 
 | четверть | строки | развилок найдено | причина записана | причина отсутствует |
