@@ -1,0 +1,155 @@
+GOAL 058 G3 — FINAL ACTUAL-MODE SOURCE ARCHITECTURE REQUEST
+Date: 2026-08-15
+Repo: https://github.com/Malaeu/chen_q3
+Branch: rh_clean
+Authoritative evidence HEAD: efbf549894a825404911995b45003d3c65e8840a
+Boundary: G1 OPEN; G3 OPEN; CHALLENGER_NOT_RH; NO_RH.
+
+ROLE
+
+Act as Mythos: source architect and hostile critic, not judge and not repo
+writer.  The local Lean loop has reached a genuine classical-source boundary.
+Return the smallest noncircular source contract and proof architecture that
+turns the exact production witnesses already on disk into an
+IsActualProlateModePair.  Do not invent an assumption binder carrying the
+desired result.  Do not ask for numerics.  Do not promote G1, G3, Route B, or
+RH.
+
+NEW KERNEL-CHECKED PRODUCTION STATE
+
+Commit efbf5498 is pushed and strict startup is green.
+
+1. D0ModeZeroFourSelectedFerrersPhysicalProlate.lean selects exact zero-based
+even finite-limit carrier indices 0 and 2, constructs accepted regular Ferrers
+solutions S0 and S4, and proves the strict differential spectral order
+Lambda_0 < Lambda_2 < 20.
+
+2. D0Mode4FerrersPhysicalNormalizedZeroExtension.lean canonically zero-extends
+each physical Ferrers solution to the whole line, proves positive L2 mass,
+unit normalization, compact support, positive whole-line integral, and a real
+nonzero restricted finite-Fourier scalar/eigenrelation.
+
+3. D0ModeZeroFourFerrersProductionProlatePair.lean assembles the unchanged
+production D0Pstar.ProlatePair with exact witness identities, positive I0/I4,
+nonzero real chi0/chi2, and both restricted Fourier eigenrelations.
+
+4. D0ModeZeroFourFerrersProductionOrthogonality.lean proves, without a source
+binder, the exact whole-line identity integral(star h0 * h4)=0 from the
+distinct differential eigenvalues and the accepted endpoint zero-flux facts.
+
+All public axiom surfaces are exactly
+[propext, Classical.choice, Quot.sound].
+
+EXACT REMAINING FIELDS
+
+ProlateActualModeSourceLock.lean defines IsActualProlateModePair.  Every field
+for the production witnesses is now locally available except exactly:
+
+  (prolateInteriorZeros lambda h0).ncard = 0
+  (prolateInteriorZeros lambda h4).ncard = 4
+  0 < chi2
+  chi2 < chi0
+
+Finiteness of each compact interior zero set, real-valuedness, interior C2,
+ODE relations, spectral order, endpoint flux, orthogonality, support, norms,
+integrals, and restricted Fourier eigenrelations are already proved.
+
+SOURCE PINS ALREADY ON DISK
+
+A. PSWF_STURM_LIOUVILLE_SOURCE_DOSSIER.md records the constructive source
+chain.  Bonami–Karoui arXiv:1405.3676 states that psi_n has exactly n zeros in
+(-1,1), the eigenvalues are strictly increasing, parity matches n, and PSWFs
+are common finite-Fourier/Sturm–Liouville eigenfunctions.
+
+B. DLMF section 30.4(ii) gives the exact zero count for Ps_n^m; at m=0 and
+n=0,4 this is 0 and 4.  The existing DLMF 30.3.5 carrier chain already proves
+that the selected project indices 0 and 2 are the degree n=0 and n=4 even
+solutions below 20.  The strict internal theorem
+mode4ClassicalEvenEigenvalue_eq_two_iff_index_eq_two is available.
+
+C. Slepian–Pollak (1961), pinned scan
+docs/routeB_bus/litreview/pdfs/bstj40-1-43_text.pdf, equations (23)-(28): the
+finite-Fourier eigenvalue has phase i^n (modulo the exact plus-phase/scale
+normalization), while the positive integral-operator eigenvalues are strictly
+positive.  For n=0 and n=4 the plus-phase scalar is real positive.  The source
+dictionary records h0 <-> chi0 and h4 <-> chi2, with chi0 > chi2 > 0.
+
+D. GOAL058_G3_DLMF_3016_EVEN_COUNT_CROSSWALK_MYTHOS_VERDICT_2026-08-14.md
+already preferred the source-faithful ordering identification over re-proving
+the index through zero counts.  That index/carrier work has since been
+materialized in Lean.  Do not reopen the finished finite-limit spectral iff.
+
+HOSTILE QUESTIONS
+
+K1. What is the smallest honest source object?  Choose whether one combined
+source predicate over the exact selected Ferrers witnesses is acceptable, or
+whether the zero-count theorem and finite-Fourier phase/order theorem must be
+separate source carriers.  The object must be tied to the existing selected
+S0/S4; no parallel family and no bare existential PSWF family.
+
+K2. Give the exact crosswalk from project parameters and conventions:
+
+  project physical window [-sqrt(mProject), sqrt(mProject)]
+  normalized coordinate t = x / sqrt(mProject)
+  project G = mode4JacobiG mProject
+  project finite-Fourier kernel exp(+2*pi*i*x*y)
+  DLMF/PSWF parameter c or gamma
+  DLMF even index p=1,3 / project zero-based even carrier j=0,2 /
+  physical degrees n=0,4
+
+Kill every phase, sign, 2*pi, lambda, G, and off-by-one ambiguity explicitly.
+
+K3. Can the exact zero-count conclusion be transported from the unnormalized
+Ferrers series to normalizedPhysicalMode purely locally once the source
+theorem is attached?  State the zero-set equality needed and whether current
+positive normalization/indicator definitions already suffice.
+
+K4. Can chi positivity/order be proved locally from an exact Slepian source
+identity such as chi_n = i^n * positive_magnitude and strict decrease of the
+positive concentration eigenvalues?  Name the minimal imported scalar facts;
+do not import the final inequalities if a smaller exact identity suffices.
+
+K5. Distinguish mathematical source import from Aristotle-eligible Lean
+plumbing.  If the source propositions are accepted, give the first exact
+bounded Aristotle/Codex theorem head that transports them into the existing
+production P.  If no task is ready, say so.
+
+K6. Plant falsifiers for: n=4 mistaken as the second even mode; plus/minus
+Fourier phase swap; c versus 2*pi*lambda^2; chi2/chi4 name swap; normalized
+zero-extension gaining endpoint or exterior zeros; nonzero mistaken for
+positive; positive magnitudes mistaken for strict order.
+
+REQUIRED DECISION
+
+Choose exactly one:
+
+A. LOCAL_PROOF_FROM_EXISTING_SOURCE_OBJECTS
+   Name the exact existing declarations and a compilable next theorem head.
+
+B. TWO_MINIMAL_SOURCE_CARRIERS_THEN_LOCAL_ASSEMBLY
+   Specify exact zero-count and phase/order source contracts, exact pins,
+   crosswalk, and first local assembly theorem head.
+
+C. ONE_COMBINED_SELECTED_MODE_SOURCE_CARRIER
+   Explain why splitting is artificial, state the exact carrier and exact
+   local assembly theorem head.
+
+D. SOURCE_CHAIN_STILL_INCOMPLETE
+   Name the missing primary statement/page/equation and why the current pins
+   do not authorize a Lean source object.
+
+REQUIRED FINAL FIELDS
+
+DECISION:
+SMALLEST_SOURCE_OBJECTS:
+EXACT_SOURCE_PINS:
+PROJECT_DLMF_SLEPIAN_CROSSWALK:
+EXACT_FIRST_LEAN_HEAD:
+LOCAL_PROOF_CHAIN:
+K1_K6_DISPOSITIONS:
+PLANTED_FALSIFIERS:
+ARISTOTLE_READY: READY or NOT_READY
+ARISTOTLE_OWNED_FILE_AND_TARGETS: exact, or NONE
+PROSHKA_JUDGE_PACKET_DELTA: what the judge must receive after your verdict
+NEW_STOP_CODE:
+STATUS: G1 OPEN; G3 OPEN; CHALLENGER_NOT_RH; NO_RH
