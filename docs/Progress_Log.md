@@ -2529,6 +2529,38 @@ exact nodal/index identification remains a separate possible prerequisite.
 `G3_SELECTED_PHYSICAL_FERRERS_FOURIER_ODE_TRANSPORT_PROVED_SCALAR_PROPORTIONALITY_AND_NODAL_SELECTION_NEXT`;
 G1, G3, Route B promotion и RH остаются открыты.
 
+## 2026-08-15 — physical Ferrers Fourier scalar proportionality
+
+**Развилка:** требовать nodal count/ordered eigenspace simplicity либо
+использовать center Cauchy data для regular-even ODE solutions.
+
+**Выбрали:** exact complex divergence-form IVP uniqueness at the center.
+
+**Почему:** accepted source уже even и имеет nonzero center; finite-Fourier
+image solves the same ODE and is even. Поэтому значения и derivatives в нуле
+определяют proportionality без дополнительной zero-count гипотезы.
+
+**Техника:** complex flux-state ODE, local Gronwall uniqueness plus connected
+propagation, compact-window differentiation under the Fourier integral, two
+literal derivative integrals, evenness under symmetric integration,
+`chi=Fh(0)/h(0)`, closure `Ioo -> Icc`.
+
+**Результат:** для любого accepted physical Ferrers witness существует
+`chi : Complex` с exact restricted relation `Fh=chi*h` на closed physical
+window. Direct Lean, 7779-job named build, `q3_check` and standard-only axiom
+audit PASS.
+
+**Следующий ход:** prove the scalar real and nonzero, then source-locked
+sign/order and production `ProlatePair` assembly. Zero-count selection is not
+needed for this proportionality theorem.
+
+**Адрес:**
+`q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_PHYSICAL_FERRERS_FOURIER_SCALAR_PROPORTIONALITY_CLOSEOUT_2026-08-15.md`.
+
+**Граница:**
+`G3_SELECTED_PHYSICAL_FERRERS_RESTRICTED_FOURIER_PROPORTIONALITY_PROVED_SCALAR_REAL_NONZERO_SIGN_ORDER_AND_PROLATEPAIR_NEXT`;
+G1, G3, Route B promotion и RH остаются открыты.
+
 ### Счёт раскопок
 
 | четверть | строки | развилок найдено | причина записана | причина отсутствует |

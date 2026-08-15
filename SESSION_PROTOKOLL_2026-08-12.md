@@ -471,3 +471,28 @@ ProlatePair, Lemma 7.2, floor, schedule, G1/G3 открыты.
 
 Стоп-код:
 `G3_SELECTED_PHYSICAL_FERRERS_FOURIER_ODE_TRANSPORT_PROVED_SCALAR_PROPORTIONALITY_AND_NODAL_SELECTION_NEXT`.
+
+### Goal 058 G3 — physical Ferrers Fourier scalar proportionality
+
+Шов `same prolate ODE eigenspace -> Fh=chi*h` закрыт kernel-checked. Новый
+generic receiver доказывает uniqueness двух complex divergence-form решений
+по center value и first derivative. Для physical Ferrers source обе center
+derivatives равны нулю по evenness, source center ненулевой, поэтому
+`chi := Fh(0)/h(0)` и uniqueness дают exact equality сначала на open window,
+затем по continuity на closed physical window.
+
+Новая public theorem принимает только accepted witness `S` и
+`2 <= mProject`; Fourier scalar/relation, zero count, global smoothness и новый
+source binder отсутствуют. Nodal count для proportionality не понадобился.
+
+Fresh EnvDump: `258/258` current modules, `2345` declarations, stale/uncovered
+`0`, holes/extra axioms `0`; шесть source-less orphan oleans исключены.
+Exact supplier query вернул `CANDIDATE_ONLY`. Direct Lean, named build
+(`7779` jobs), `q3_check`, diff/forbidden scan и axiom audit прошли.
+
+Граница: `chi` пока complex. Его real/nonzero/positive/order свойства,
+orthogonality, production `ProlatePair`, Lemma 7.2, denominator floor,
+schedule, G1/G3 остаются открыты. Route B — `CHALLENGER / NOT_RH`.
+
+Стоп-код:
+`G3_SELECTED_PHYSICAL_FERRERS_RESTRICTED_FOURIER_PROPORTIONALITY_PROVED_SCALAR_REAL_NONZERO_SIGN_ORDER_AND_PROLATEPAIR_NEXT`.

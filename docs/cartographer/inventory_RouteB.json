@@ -1,10 +1,10 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 258,
-  "declarations": 2429,
-  "in_docs": 1030,
-  "in_lemma_db": 2429,
+  "files_scanned": 259,
+  "declarations": 2443,
+  "in_docs": 1031,
+  "in_lemma_db": 2443,
   "orphans": 0,
   "uncatalogued": 0,
   "orphan_files_top": [],
@@ -8555,6 +8555,146 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersPhysicalFourierEigenTransport.lean",
       "line": 230,
       "signature": "theorem Mode4FerrersRegularEvenProlateSolution.physicalFiniteFourierAction_preservesProlateWaveEigenrelation {mProject K : ℕ} {Λ : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (hm : 2 ≤ mProject) : ∀ x : ℝ, D0Pstar.prolateWaveExpression (Real.sqrt mProject) (D0Pstar.finiteFourierAction (Real.sqrt mProject) (mode4PhysicalFerrersSeriesComplex mProject S.coefficients)) x = ((Λ + mode4JacobiG mProject : ℝ) : ℂ) * D0Pstar.finiteFourierAction (Real.sqrt mProject) (mode4PhysicalFerrersSeriesComplex mProject S.coefficients) x",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "complexProlateFluxFirstOrderCLM",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersPhysicalFourierScalarProportionality.lean",
+      "line": 30,
+      "signature": "private noncomputable def complexProlateFluxFirstOrderCLM (lambda theta x : ℝ) : (ℂ × ℂ) →L[ℝ] (ℂ × ℂ)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "complexProlateFluxFirstOrderCLM_apply",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersPhysicalFourierScalarProportionality.lean",
+      "line": 39,
+      "signature": "private theorem complexProlateFluxFirstOrderCLM_apply (lambda theta x : ℝ) (p : ℂ × ℂ) : complexProlateFluxFirstOrderCLM lambda theta x p = (((lambda ^ 2 - x ^ 2)⁻¹ : ℝ) • p.2, (((2 * Real.pi * lambda * x) ^ 2 - theta : ℝ) • p.1))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "complexProlateFluxFirstOrderCLM_continuousAt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersPhysicalFourierScalarProportionality.lean",
+      "line": 46,
+      "signature": "private theorem complexProlateFluxFirstOrderCLM_continuousAt (lambda theta x : ℝ) (hx : x ∈ Ioo (-lambda) lambda) : ContinuousAt (complexProlateFluxFirstOrderCLM lambda theta) x",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "complex_prolate_divergence_solution_unique_of_center",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersPhysicalFourierScalarProportionality.lean",
+      "line": 76,
+      "signature": "theorem complex_prolate_divergence_solution_unique_of_center (lambda theta : ℝ) (hlambda : 0 < lambda) (f df g dg : ℝ → ℂ) (hf : ∀ x ∈ Ioo (-lambda) lambda, HasDerivAt f (df x) x) (hg : ∀ x ∈ Ioo (-lambda) lambda, HasDerivAt g (dg x) x) (hfluxf : ∀ x ∈ Ioo (-lambda) lambda, HasDerivAt (fun y : ℝ ↦ (((lambda ^ 2 - y ^ 2 : ℝ) : ℂ) * df y)) (((((2 * Real.pi * lambda * x) ^ 2 : ℝ) : ℂ) - (theta : ℂ)) * f x) x) (hfluxg : ∀ x ∈ Ioo (-lambda) lambda, HasDerivAt (fun y : ℝ ↦ (((lambda ^ 2 - y ^ 2 : ℝ) : ℂ) * dg y)) (((((2 * Real.pi * lambda * x) ^ 2 : ℝ) : ℂ) - (theta : ℂ)) * g x) x) (hzero : f 0 = g 0) (hderivZero : df 0 = dg 0) : Set.EqOn f g (Ioo (-lambda) lambda)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "hasDerivAt_finiteFourierKernel_left_for_scalar_proportionality",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersPhysicalFourierScalarProportionality.lean",
+      "line": 189,
+      "signature": "private theorem hasDerivAt_finiteFourierKernel_left_for_scalar_proportionality (x y : ℝ) : HasDerivAt (fun z : ℝ ↦ D0Pstar.finiteFourierKernel z y) (D0Pstar.finiteFourierKernel x y * (Complex.I * ((2 * Real.pi * y : ℝ) : ℂ))) x",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "D0Pstar.finiteFourierAction_hasDerivAt_of_continuousOn",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersPhysicalFourierScalarProportionality.lean",
+      "line": 212,
+      "signature": "theorem D0Pstar.finiteFourierAction_hasDerivAt_of_continuousOn (lambda : ℝ) (phi : ℝ → ℂ) (hphi : ContinuousOn phi (Icc (-lambda) lambda)) (x : ℝ) : HasDerivAt (D0Pstar.finiteFourierAction lambda phi) (∫ y in Icc (-lambda) lambda, (D0Pstar.finiteFourierKernel x y * (Complex.I * ((2 * Real.pi * y : ℝ) : ℂ))) * phi y) x",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "D0Pstar.finiteFourierFirstDerivative",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersPhysicalFourierScalarProportionality.lean",
+      "line": 285,
+      "signature": "noncomputable def D0Pstar.finiteFourierFirstDerivative (lambda : ℝ) (phi : ℝ → ℂ) (x : ℝ) : ℂ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "D0Pstar.finiteFourierSecondDerivative",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersPhysicalFourierScalarProportionality.lean",
+      "line": 292,
+      "signature": "noncomputable def D0Pstar.finiteFourierSecondDerivative (lambda : ℝ) (phi : ℝ → ℂ) (x : ℝ) : ℂ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "D0Pstar.finiteFourierAction_hasDerivAt_firstDerivative",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersPhysicalFourierScalarProportionality.lean",
+      "line": 299,
+      "signature": "theorem D0Pstar.finiteFourierAction_hasDerivAt_firstDerivative (lambda : ℝ) (phi : ℝ → ℂ) (hphi : ContinuousOn phi (Icc (-lambda) lambda)) (x : ℝ) : HasDerivAt (D0Pstar.finiteFourierAction lambda phi) (D0Pstar.finiteFourierFirstDerivative lambda phi x) x",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "D0Pstar.finiteFourierFirstDerivative_hasDerivAt_secondDerivative",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersPhysicalFourierScalarProportionality.lean",
+      "line": 307,
+      "signature": "theorem D0Pstar.finiteFourierFirstDerivative_hasDerivAt_secondDerivative (lambda : ℝ) (phi : ℝ → ℂ) (hphi : ContinuousOn phi (Icc (-lambda) lambda)) (x : ℝ) : HasDerivAt (D0Pstar.finiteFourierFirstDerivative lambda phi) (D0Pstar.finiteFourierSecondDerivative lambda phi x) x",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "D0Pstar.finiteFourierAction_even",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersPhysicalFourierScalarProportionality.lean",
+      "line": 340,
+      "signature": "theorem D0Pstar.finiteFourierAction_even (lambda : ℝ) (hlambda : 0 ≤ lambda) (phi : ℝ → ℂ) (hphi : Function.Even phi) : Function.Even (D0Pstar.finiteFourierAction lambda phi)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "derivative_value_zero_of_even",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersPhysicalFourierScalarProportionality.lean",
+      "line": 371,
+      "signature": "private theorem derivative_value_zero_of_even (f : ℝ → ℂ) (d : ℂ) (heven : Function.Even f) (hderiv : HasDerivAt f d 0) : d = 0",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "Mode4FerrersRegularEvenProlateSolution.physicalComplex_even",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersPhysicalFourierScalarProportionality.lean",
+      "line": 385,
+      "signature": "private theorem Mode4FerrersRegularEvenProlateSolution.physicalComplex_even {mProject K : ℕ} {Λ : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) : Function.Even (mode4PhysicalFerrersSeriesComplex mProject S.coefficients)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "Mode4FerrersRegularEvenProlateSolution.exists_physicalFiniteFourierAction_eq_scalar_mul",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersPhysicalFourierScalarProportionality.lean",
+      "line": 402,
+      "signature": "theorem Mode4FerrersRegularEvenProlateSolution.exists_physicalFiniteFourierAction_eq_scalar_mul {mProject K : ℕ} {Λ : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (hm : 2 ≤ mProject) : ∃ chi : ℂ, ∀ x ∈ Icc (-Real.sqrt mProject) (Real.sqrt mProject), D0Pstar.finiteFourierAction (Real.sqrt mProject) (mode4PhysicalFerrersSeriesComplex mProject S.coefficients) x = chi * mode4PhysicalFerrersSeriesComplex mProject S.coefficients x",
       "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
