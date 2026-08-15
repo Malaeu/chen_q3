@@ -4,7 +4,7 @@
 `python3 docs/cartographer/map_coverage.py`. Рукописная карта — `MAP.md`, она
 описывает узлы маршрута; это приложение описывает **файлы**, и оно полное.
 
-Всего файлов: **254** · упомянуто в `MAP.md`: **21** · вне карты: **233** · без описания в шапке: **0**
+Всего файлов: **265** · упомянуто в `MAP.md`: **21** · вне карты: **244** · без описания в шапке: **0**
 
 «вне карты» не значит «лишний»: значит, что обходом карты файл не находится.
 Именно так 2026-08-11 был построен заново мост `ker ↔ eigenspace`, стоявший в
@@ -66,8 +66,10 @@
 | `D0Mode4ClassicalCarrierFromFiniteLimit` | — | Classical even carrier from the finite DLMF family | 0 |
 | `D0Mode4ClassicalCarrierHeadUpper` | — | Finite head upper bounds for the classical carrier | 0 |
 | `D0Mode4ClassicalCarrierSchurCount` | — | Classical-carrier count transported to the literal Schur matrix | 0 |
+| `D0Mode4ClassicalCarrierToDLMF3035EvenL2` | — | Finite-limit carrier values below twenty give the DLMF l2 row | 0 |
 | `D0Mode4DLMF3035EvenCharacteristicSource` | — | Pole-safe DLMF 30.3.5 even characteristic source object | 0 |
 | `D0Mode4DLMF3035EvenL2SolutionCrosswalk` | — | DLMF 30.3.5 characteristic equation and the normalized square-summable row | 0 |
+| `D0Mode4DLMF3035EvenL2ToFiniteLimitSpectrum` | — | A square-summable DLMF row lies on the finite-limit even spectrum | 0 |
 | `D0Mode4DLMF3035EvenRightBranchCrosswalk` | — | DLMF 30.3.5 even right-branch crosswalk | 0 |
 | `D0Mode4DLMFEvenFiniteMatrix` | — | Literal DLMF 30.16.1 even finite matrix | 0 |
 | `D0Mode4DLMFFullFiniteSpectrumCrosswalk` | — | Full finite DLMF spectrum crosswalk | 0 |
@@ -78,6 +80,12 @@
 | `D0Mode4FerrersEndpointFlux` | — | Endpoint flux of the mode-four Ferrers source row | 0 |
 | `D0Mode4FerrersInteriorRegularity` | — | Interior regularity of the mode-four Ferrers series | 0 |
 | `D0Mode4FerrersInteriorZeroSimplicity` | — | Goal 058 G3: simplicity of interior mode-four Ferrers zeros | 0 |
+| `D0Mode4FerrersNormalizedZeroCountTransport` | — | Normalized Ferrers zero-count transport | 0 |
+| `D0Mode4FerrersPhysicalFourierEigenTransport` | — | Goal 058 G3: physical Ferrers endpoint-domain Fourier transport | 0 |
+| `D0Mode4FerrersPhysicalFourierNonzeroScalar` | — | Goal 058 G3: the physical Ferrers Fourier scalar is nonzero | 0 |
+| `D0Mode4FerrersPhysicalFourierRealScalar` | — | Goal 058 G3: the physical Ferrers Fourier scalar is real | 0 |
+| `D0Mode4FerrersPhysicalFourierScalarProportionality` | — | Goal 058 G3: physical Ferrers finite-Fourier scalar proportionality | 0 |
+| `D0Mode4FerrersPhysicalNormalizedZeroExtension` | — | Goal 058 G3: normalized physical Ferrers zero extension | 0 |
 | `D0Mode4FerrersPhysicalProlateScaling` | — | Goal 058 G3: physical scaling of the accepted mode-four Ferrers solution | 0 |
 | `D0Mode4FerrersProlateDifferentialEquation` | — | Exact prolate ODE for the matched mode-four Ferrers series | 0 |
 | `D0Mode4FerrersRegularEvenProlateSolution` | — | Goal 058 G3: regular even mode-four Ferrers solution assembly | 0 |
@@ -113,6 +121,9 @@
 | `D0Mode4SchurRootQuadraticCrossing` | — | Quantitative quadratic crossing at an exact mode-four Schur root | 0 |
 | `D0Mode4SchurSimpleKernel` | — | Simple kernel at an exact mode-four Schur root | 0 |
 | `D0Mode4SchurSpectralParameterOrder` | — | Spectral-parameter order of the exact mode-four Schur matrix | 0 |
+| `D0ModeZeroFourFerrersProductionOrthogonality` | — | Goal 058 G3: selected Ferrers production orthogonality | 0 |
+| `D0ModeZeroFourFerrersProductionProlatePair` | — | Goal 058 G3: selected Ferrers modes in the production ProlatePair | 0 |
+| `D0ModeZeroFourSelectedFerrersPhysicalProlate` | — | Goal 058 G3: selected mode-zero/mode-four Ferrers solutions | 0 |
 | `D0PostAnchorMontel` | — | Exact post-anchor Montel gate for the centered D0 family | 0 |
 | `D0ProlateKTrialSource` | — | Source-faithful prolate-to-kTrial contract | 0 |
 | `D0PstarActualProlateEStarMemLp` | — | Actual prolate packets supply the D0 `E_star` carrier certificate | 0 |

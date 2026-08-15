@@ -584,3 +584,26 @@ G1 отдельно открыт. Route B — `CHALLENGER / NOT_RH`.
 
 Стоп-код:
 `G3_PRODUCTION_PROLATEPAIR_ORTHOGONAL_ZERO_COUNTS_AND_FOURIER_SIGN_ORDER_MISSING`.
+
+### Goal 058 G3 — normalized Ferrers zero-count transport
+
+Source-free transport K3 закрыт kernel-check'ом. Exact interior zero set
+нормированного physical zero extension равен injective image безразмерного
+Ferrers zero set под масштабом `t ↦ sqrt(mProject) * t`; поэтому `ncard`
+сохраняется точно, а endpoints/exterior не добавляются. Отдельно доказаны
+nonzero center нормированного режима и uniqueness real restricted-Fourier
+scalar по одной ненулевой точке.
+
+Strict startup перед write прошёл `P9_STRICT_PASS`; exact KB query вернул
+`no hits`. Direct Lean, named build (`7785` jobs), `q3_check`, diff/forbidden
+scan и standard-only axiom audit прошли. Cartographer после новой RouteB
+единицы: `265` files, `2474` declarations, `0` missing declaration rows,
+`2858` external atoms.
+
+Граница: source-free transport завершён, но сами dimensionless nodal counts
+degree `0/4` и positive-phase order `0 < chi2 < chi0` всё ещё требуют exact
+source lock к тем же selected Ferrers witnesses. G1 отдельно открыт; Route B
+остаётся `CHALLENGER / NOT_RH`.
+
+Стоп-код:
+`G3_NORMALIZED_ZERO_COUNT_TRANSPORT_PROVED_DIMENSIONLESS_COUNTS_AND_POSITIVE_PHASE_FOURIER_ORDER_SOURCE_LOCKS_MISSING`.

@@ -1,13 +1,18 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 264,
-  "declarations": 2470,
+  "files_scanned": 265,
+  "declarations": 2474,
   "in_docs": 1034,
   "in_lemma_db": 2470,
-  "orphans": 0,
-  "uncatalogued": 0,
-  "orphan_files_top": [],
+  "orphans": 4,
+  "uncatalogued": 4,
+  "orphan_files_top": [
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersNormalizedZeroCountTransport.lean",
+      4
+    ]
+  ],
   "items": [
     {
       "kind": "def",
@@ -8458,6 +8463,46 @@
       "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "normalizedPhysicalMode_interiorZeros_eq_image",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersNormalizedZeroCountTransport.lean",
+      "line": 24,
+      "signature": "theorem normalizedPhysicalMode_interiorZeros_eq_image {mProject K : ℕ} {Λ : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (hm : 2 ≤ mProject) : D0Pstar.prolateInteriorZeros (Real.sqrt mProject) S.normalizedPhysicalMode = (fun t : ℝ ↦ Real.sqrt mProject * t) '' {t : ℝ | t ∈ Ioo (-1 : ℝ) 1 ∧ mode4FerrersSeries S.coefficients t = 0}",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "normalizedPhysicalMode_interiorZeros_ncard_eq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersNormalizedZeroCountTransport.lean",
+      "line": 79,
+      "signature": "theorem normalizedPhysicalMode_interiorZeros_ncard_eq {mProject K : ℕ} {Λ : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (hm : 2 ≤ mProject) : (D0Pstar.prolateInteriorZeros (Real.sqrt mProject) S.normalizedPhysicalMode).ncard = {t : ℝ | t ∈ Ioo (-1 : ℝ) 1 ∧ mode4FerrersSeries S.coefficients t = 0}.ncard",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "normalizedPhysicalMode_zero_ne",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersNormalizedZeroCountTransport.lean",
+      "line": 92,
+      "signature": "theorem normalizedPhysicalMode_zero_ne {mProject K : ℕ} {Λ : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (hm : 2 ≤ mProject) : S.normalizedPhysicalMode 0 ≠ 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "finiteFourier_real_scalar_unique_at",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersNormalizedZeroCountTransport.lean",
+      "line": 112,
+      "signature": "theorem finiteFourier_real_scalar_unique_at {lambda chi psi : ℝ} {f : ℝ → ℂ} {x : ℝ} (hfx : f x ≠ 0) (hchi : D0Pstar.finiteFourierAction lambda f x = (chi : ℂ) * f x) (hpsi : D0Pstar.finiteFourierAction lambda f x = (psi : ℂ) * f x) : chi = psi",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
     },
     {
       "kind": "def",

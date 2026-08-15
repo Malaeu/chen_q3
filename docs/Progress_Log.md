@@ -2683,6 +2683,38 @@ invoke the existing Lemma 7.2 chain.
 `G3_PRODUCTION_PROLATEPAIR_ORTHOGONAL_ZERO_COUNTS_AND_FOURIER_SIGN_ORDER_MISSING`;
 G1, G3, Route B promotion и RH остаются открыты.
 
+## 2026-08-15 — normalized Ferrers zero-count transport
+
+**Развилка:** ждать внешнего combined source carrier либо сначала закрыть
+локально вопрос, сохраняют ли normalization и zero extension точное число
+внутренних нулей.
+
+**Выбрали:** exact set-level transport через положительное масштабирование,
+плюс uniqueness real Fourier scalar на nonzero center.
+
+**Почему:** внешний источник должен поставлять только математические факты о
+безразмерных selected modes; он не должен повторять уже формализуемую
+механику project normalization и не должен создавать параллельную family.
+
+**Техника:** раскрытие indicator внутри open physical window, деление на
+positive `L2` normalization, injectivity `t ↦ sqrt(mProject)*t`, exact
+`Set.ncard_image_of_injective`, cancellation общей ненулевой функции в двух
+restricted finite-Fourier eigenrelations.
+
+**Результат:** source-free K3 transport доказан. Direct Lean, 7785-job named
+build, `q3_check`, cartography/catalog sync и standard-only axiom audit PASS.
+
+**Следующий ход:** принять только exact dimensionless zero-count and
+positive-phase/order source contract для уже selected Ferrers witnesses,
+затем локально собрать `IsActualProlateModePair`.
+
+**Адрес:**
+`q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_NORMALIZED_ZERO_COUNT_TRANSPORT_CLOSEOUT_2026-08-15.md`.
+
+**Граница:**
+`G3_NORMALIZED_ZERO_COUNT_TRANSPORT_PROVED_DIMENSIONLESS_COUNTS_AND_POSITIVE_PHASE_FOURIER_ORDER_SOURCE_LOCKS_MISSING`;
+G1, G3, Route B promotion и RH остаются открыты.
+
 ### Счёт раскопок
 
 | четверть | строки | развилок найдено | причина записана | причина отсутствует |
