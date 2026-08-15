@@ -496,3 +496,20 @@ schedule, G1/G3 остаются открыты. Route B — `CHALLENGER / NOT_R
 
 Стоп-код:
 `G3_SELECTED_PHYSICAL_FERRERS_RESTRICTED_FOURIER_PROPORTIONALITY_PROVED_SCALAR_REAL_NONZERO_SIGN_ORDER_AND_PROLATEPAIR_NEXT`.
+
+### Goal 058 G3 — physical Ferrers Fourier scalar is real
+
+Complex proportionality scalar усилен до `chi : Real` без нового source
+binder. В центре positive-phase kernel буквально равен единице, physical
+Ferrers source real-valued, а его center value ненулевой. Поэтому imaginary
+part center relation даёт `chi.im=0`.
+
+Exact fresh KB query вернул `no hits`. Direct Lean, named build (7780 jobs),
+`q3_check`, diff/forbidden scan и axiom audit прошли; axioms standard only.
+
+Граница: ненулевость, знак и mode-0/mode-4 order ещё не доказаны. Production
+`ProlatePair`, Lemma 7.2, floor, schedule, G1/G3 открыты; Route B остаётся
+`CHALLENGER / NOT_RH`.
+
+Стоп-код:
+`G3_SELECTED_PHYSICAL_FERRERS_RESTRICTED_FOURIER_REAL_SCALAR_PROVED_NONZERO_SIGN_ORDER_AND_PROLATEPAIR_NEXT`.

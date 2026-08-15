@@ -2561,6 +2561,34 @@ needed for this proportionality theorem.
 `G3_SELECTED_PHYSICAL_FERRERS_RESTRICTED_FOURIER_PROPORTIONALITY_PROVED_SCALAR_REAL_NONZERO_SIGN_ORDER_AND_PROLATEPAIR_NEXT`;
 G1, G3, Route B promotion и RH остаются открыты.
 
+## 2026-08-15 — physical Ferrers Fourier scalar is real
+
+**Развилка:** считать scalar real по classical PSWF convention либо вывести
+это из уже доказанной restricted complex proportionality.
+
+**Выбрали:** exact center calculation, без нового source field.
+
+**Почему:** при `x=0` positive-phase kernel равен `1`; physical source —
+complexification real function и имеет nonzero center value.
+
+**Техника:** взять imaginary parts exact center equality, переписать integral
+через `integral_complex_ofReal`, исключить source-center zero и заменить
+complex scalar его real part.
+
+**Результат:** существует `chi : Real` с exact `Fh=(chi:Complex)h` на closed
+physical window. Direct Lean, 7780-job named build, `q3_check` and
+standard-only axiom audit PASS.
+
+**Следующий ход:** analytic continuation/injectivity для `chi != 0`, затем
+source-locked sign/order и production `ProlatePair` assembly.
+
+**Адрес:**
+`q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_PHYSICAL_FERRERS_FOURIER_REAL_SCALAR_CLOSEOUT_2026-08-15.md`.
+
+**Граница:**
+`G3_SELECTED_PHYSICAL_FERRERS_RESTRICTED_FOURIER_REAL_SCALAR_PROVED_NONZERO_SIGN_ORDER_AND_PROLATEPAIR_NEXT`;
+G1, G3, Route B promotion и RH остаются открыты.
+
 ### Счёт раскопок
 
 | четверть | строки | развилок найдено | причина записана | причина отсутствует |
