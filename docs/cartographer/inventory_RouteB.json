@@ -1,10 +1,10 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 263,
-  "declarations": 2468,
+  "files_scanned": 264,
+  "declarations": 2470,
   "in_docs": 1034,
-  "in_lemma_db": 2468,
+  "in_lemma_db": 2470,
   "orphans": 0,
   "uncatalogued": 0,
   "orphan_files_top": [],
@@ -12585,6 +12585,26 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4SchurSpectralParameterOrder.lean",
       "line": 83,
       "signature": "theorem mode4HermitianSchurMatrix_spectralParameter_drop_posSemidef (mProject K : ℕ) (Λ₁ Λ₂ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ₁ : Λ₁ ≤ 20) (hΛ₂ : Λ₂ ≤ 20) (hΛ : Λ₁ ≤ Λ₂) : (mode4HermitianSchurMatrix mProject Λ₁ K - mode4HermitianSchurMatrix mProject Λ₂ K - (Λ₂ - Λ₁) • (1 : Matrix (Fin K) (Fin K) ℝ)).PosSemidef",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "integral_mul_eq_zero_of_prolate_endpointFlux_eigenrelations",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0ModeZeroFourFerrersProductionOrthogonality.lean",
+      "line": 36,
+      "signature": "theorem integral_mul_eq_zero_of_prolate_endpointFlux_eigenrelations (lambda theta0 theta4 : ℝ) (hlambda : 0 < lambda) (htheta : theta0 ≠ theta4) (phi0 dphi0 phi4 dphi4 : ℝ → ℂ) (hphi0 : ContinuousOn phi0 (Icc (-lambda) lambda)) (hphi4 : ContinuousOn phi4 (Icc (-lambda) lambda)) (hphi0' : ∀ y ∈ Ioo (-lambda) lambda, HasDerivAt phi0 (dphi0 y) y) (hphi4' : ∀ y ∈ Ioo (-lambda) lambda, HasDerivAt phi4 (dphi4 y) y) (hflux0' : ∀ y ∈ Ioo (-lambda) lambda, HasDerivAt (fun z : ℝ ↦ (((lambda ^ 2 - z ^ 2 : ℝ) : ℂ) * dphi0 z)) (((((2 * Real.pi * lambda * y) ^ 2 : ℝ) : ℂ) - (theta0 : ℂ)) * phi0 y) y) (hflux4' : ∀ y ∈ Ioo (-lambda) lambda, HasDerivAt (fun z : ℝ ↦ (((lambda ^ 2 - z ^ 2 : ℝ) : ℂ) * dphi4 z)) (((((2 * Real.pi * lambda * y) ^ 2 : ℝ) : ℂ) - (theta4 : ℂ)) * phi4 y) y) (hflux0Plus : Tendsto (fun y : ℝ ↦ (((lambda ^ 2 - y ^ 2 : ℝ) : ℂ) * dphi0 y)) (nhdsWithin lambda (Iio lambda)) (nhds 0)) (hflux0Minus : Tendsto (fun y : ℝ ↦ (((lambda ^ 2 - y ^ 2 : ℝ) : ℂ) * dphi0 y)) (nhdsWithin (-lambda) (Ioi (-lambda))) (nhds 0)) (hflux4Plus : Tendsto (fun y : ℝ ↦ (((lambda ^ 2 - y ^ 2 : ℝ) : ℂ) * dphi4 y)) (nhdsWithin lambda (Iio lambda)) (nhds 0)) (hflux4Minus : Tendsto (fun y : ℝ ↦ (((lambda ^ 2 - y ^ 2 : ℝ) : ℂ) * dphi4 y)) (nhdsWithin (-lambda) (Ioi (-lambda))) (nhds 0)) : (∫ y in Icc (-lambda) lambda, phi0 y * phi4 y) = 0",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "exists_modeZero_modeFour_selectedFerrersProductionProlatePair_orthogonal",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0ModeZeroFourFerrersProductionOrthogonality.lean",
+      "line": 190,
+      "signature": "theorem exists_modeZero_modeFour_selectedFerrersProductionProlatePair_orthogonal (mProject K : ℕ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) : ∃ (S0 : Mode4FerrersRegularEvenProlateSolution mProject K (mode4ClassicalEvenEigenvalue (mode4JacobiG mProject) 0)) (S4 : Mode4FerrersRegularEvenProlateSolution mProject K (mode4ClassicalEvenEigenvalue (mode4JacobiG mProject) 2)) (P : D0Pstar.ProlatePair), P.h0 = S0.normalizedPhysicalMode ∧ P.h4 = S4.normalizedPhysicalMode ∧ (∫ x : ℝ, starRingEnd ℂ (P.h0 x) * P.h4 x) = 0 ∧ 0 < P.I0 ∧ 0 < P.I4 ∧ P.chi0 ≠ 0 ∧ P.chi2 ≠ 0 ∧ (∀ x ∈ Icc (-P.pw.lambda) P.pw.lambda, D0Pstar.finiteFourierAction P.pw.lambda P.h0 x = (P.chi0 : ℂ) * P.h0 x) ∧ (∀ x ∈ Icc (-P.pw.lambda) P.pw.lambda, D0Pstar.finiteFourierAction P.pw.lambda P.h4 x = (P.chi2 : ℂ) * P.h4 x)",
       "in_docs": false,
       "in_lemma_db": true,
       "orphan": false

@@ -560,3 +560,27 @@ Lemma 7.2, floor, schedule; G1 отдельно открыт. Route B —
 
 Стоп-код:
 `G3_PRODUCTION_PROLATEPAIR_CONSTRUCTED_ACTUAL_MODE_ZERO_COUNTS_ORTHOGONALITY_AND_FOURIER_SIGN_ORDER_MISSING`.
+
+### Goal 058 G3 — Ferrers production orthogonality
+
+Ортогональность selected production pair закрыта без нового source binder.
+Для двух endpoint-domain prolate eigenfunctions с разными differential
+eigenvalues доказана точная Lagrange identity: zero-flux one-sided limits
+дают continuous endpoint extension потока, Wronskian derivative равна
+разности eigenvalues, а FTC обнуляет product integral.
+
+Generic theorem инстанцирован точными Ferrers indices `0/2`; strict spectral
+order и endpoint zero-flux уже были в accepted chain. Затем равенство
+перенесено через canonical whole-line zero extension и positive real `L2`
+normalization. Новой family, numerical assumption или orthogonality field нет.
+
+Exact preflight query вернул `no hits`. Direct Lean, named build (7808 jobs),
+`q3_check`, diff/forbidden scan и standard-only axiom audit прошли.
+
+Граница: production pair теперь ортогональна, но до
+`IsActualProlateModePair` остаются exact zero counts `0/4` и positive-phase
+Fourier order `0 < chi2 < chi0`. Затем идут CCM Lemma 7.2, floor, schedule;
+G1 отдельно открыт. Route B — `CHALLENGER / NOT_RH`.
+
+Стоп-код:
+`G3_PRODUCTION_PROLATEPAIR_ORTHOGONAL_ZERO_COUNTS_AND_FOURIER_SIGN_ORDER_MISSING`.

@@ -2651,6 +2651,38 @@ audit PASS.
 `G3_PRODUCTION_PROLATEPAIR_CONSTRUCTED_ACTUAL_MODE_ZERO_COUNTS_ORTHOGONALITY_AND_FOURIER_SIGN_ORDER_MISSING`;
 G1, G3, Route B promotion и RH остаются открыты.
 
+## 2026-08-15 — Ferrers production orthogonality
+
+**Развилка:** считать ортогональность ещё одним внешним source field либо
+вывести её из уже принятого differential endpoint package.
+
+**Выбрали:** direct Lagrange identity for distinct prolate eigenvalues with
+zero endpoint flux, then exact transport through zero extension and
+normalization.
+
+**Почему:** strict spectral order and both endpoint flux limits already exist
+for the selected Ferrers witnesses.  They are precisely the hypotheses of the
+self-adjoint Sturm–Liouville orthogonality argument.
+
+**Техника:** continuous endpoint extension of each flux, Wronskian derivative
+on the open window, interval FTC, indicator reduction and real-normalization
+algebra.
+
+**Результат:** exact whole-line production identity
+`integral (star h0 * h4) = 0`. Direct Lean, 7808-job named build, `q3_check`
+and standard-only axiom audit PASS.
+
+**Следующий ход:** source-lock exact zero counts `0/4` and positive-phase
+Fourier order `0 < chi2 < chi0`; then construct `IsActualProlateModePair` and
+invoke the existing Lemma 7.2 chain.
+
+**Адрес:**
+`q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_FERRERS_PRODUCTION_ORTHOGONALITY_CLOSEOUT_2026-08-15.md`.
+
+**Граница:**
+`G3_PRODUCTION_PROLATEPAIR_ORTHOGONAL_ZERO_COUNTS_AND_FOURIER_SIGN_ORDER_MISSING`;
+G1, G3, Route B promotion и RH остаются открыты.
+
 ### Счёт раскопок
 
 | четверть | строки | развилок найдено | причина записана | причина отсутствует |
