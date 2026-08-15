@@ -1,18 +1,13 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 266,
-  "declarations": 2479,
-  "in_docs": 1039,
-  "in_lemma_db": 2474,
-  "orphans": 5,
-  "uncatalogued": 5,
-  "orphan_files_top": [
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersNormalizedActualModeLocalFields.lean",
-      5
-    ]
-  ],
+  "files_scanned": 267,
+  "declarations": 2484,
+  "in_docs": 1048,
+  "in_lemma_db": 2484,
+  "orphans": 0,
+  "uncatalogued": 0,
+  "orphan_files_top": [],
   "items": [
     {
       "kind": "def",
@@ -8065,6 +8060,56 @@
       "orphan": false
     },
     {
+      "kind": "def",
+      "name": "mode4SlepianC",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersDimensionlessFourierScaling.lean",
+      "line": 24,
+      "signature": "noncomputable def mode4SlepianC (mProject : ℕ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "selectedFerrersDimensionlessFourierAction",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersDimensionlessFourierScaling.lean",
+      "line": 29,
+      "signature": "noncomputable def selectedFerrersDimensionlessFourierAction (c : ℝ) (a : ℕ → ℝ) (t : ℝ) : ℂ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "physicalFerrers_finiteFourierAction_eq_scale_dimensionless",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersDimensionlessFourierScaling.lean",
+      "line": 37,
+      "signature": "theorem physicalFerrers_finiteFourierAction_eq_scale_dimensionless {mProject K : ℕ} {Λ t : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (hm : 2 ≤ mProject) : D0Pstar.finiteFourierAction (Real.sqrt mProject) (mode4PhysicalFerrersSeriesComplex mProject S.coefficients) (Real.sqrt mProject * t) = (Real.sqrt mProject : ℂ) * selectedFerrersDimensionlessFourierAction (mode4SlepianC mProject) S.coefficients t",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "normalizedPhysicalMode_finiteFourierAction_eq_scale_dimensionless",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersDimensionlessFourierScaling.lean",
+      "line": 99,
+      "signature": "theorem normalizedPhysicalMode_finiteFourierAction_eq_scale_dimensionless {mProject K : ℕ} {Λ t : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (hm : 2 ≤ mProject) : D0Pstar.finiteFourierAction (Real.sqrt mProject) S.normalizedPhysicalMode (Real.sqrt mProject * t) = (Real.sqrt mProject : ℂ) * selectedFerrersDimensionlessFourierAction (mode4SlepianC mProject) S.coefficients t / (S.physicalL2Normalization : ℂ)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "normalizedPhysicalMode_finiteFourier_eq_lambda_mul_of_dimensionless",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersDimensionlessFourierScaling.lean",
+      "line": 153,
+      "signature": "theorem normalizedPhysicalMode_finiteFourier_eq_lambda_mul_of_dimensionless {mProject K : ℕ} {Λ t : ℝ} {mu : ℂ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (hm : 2 ≤ mProject) (ht : t ∈ Icc (-1 : ℝ) 1) (hsource : selectedFerrersDimensionlessFourierAction (mode4SlepianC mProject) S.coefficients t = mu * (mode4FerrersSeries S.coefficients t : ℂ)) : D0Pstar.finiteFourierAction (Real.sqrt mProject) S.normalizedPhysicalMode (Real.sqrt mProject * t) = ((Real.sqrt mProject : ℂ) * mu) * S.normalizedPhysicalMode (Real.sqrt mProject * t)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
       "kind": "theorem",
       "name": "mode4Ferrers_fluxTerm_abs_le",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersEndpointFlux.lean",
@@ -8470,9 +8515,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersNormalizedActualModeLocalFields.lean",
       "line": 22,
       "signature": "theorem normalizedPhysicalMode_im_eq_zero {mProject K : ℕ} {Λ : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (x : ℝ) : (S.normalizedPhysicalMode x).im = 0",
-      "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8480,9 +8525,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersNormalizedActualModeLocalFields.lean",
       "line": 35,
       "signature": "theorem normalizedPhysicalMode_contDiffOn_two_open {mProject K : ℕ} {Λ : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (hm : 2 ≤ mProject) : ContDiffOn ℝ 2 S.normalizedPhysicalMode (Ioo (-Real.sqrt mProject) (Real.sqrt mProject))",
-      "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8490,9 +8535,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersNormalizedActualModeLocalFields.lean",
       "line": 56,
       "signature": "theorem physicalComplex_prolateWaveExpression_eigenrelation {mProject K : ℕ} {Λ x : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (hm : 2 ≤ mProject) (hx : x ∈ Ioo (-Real.sqrt mProject) (Real.sqrt mProject)) : D0Pstar.prolateWaveExpression (Real.sqrt mProject) (mode4PhysicalFerrersSeriesComplex mProject S.coefficients) x = ((Λ + mode4JacobiG mProject : ℝ) : ℂ) * mode4PhysicalFerrersSeriesComplex mProject S.coefficients x",
-      "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8500,9 +8545,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersNormalizedActualModeLocalFields.lean",
       "line": 100,
       "signature": "theorem normalizedPhysicalMode_hasDerivAt {mProject K : ℕ} {Λ x : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (hm : 2 ≤ mProject) (hx : x ∈ Ioo (-Real.sqrt mProject) (Real.sqrt mProject)) : HasDerivAt S.normalizedPhysicalMode (mode4PhysicalFerrersFirstDerivativeSeriesComplex mProject S.coefficients x / (S.physicalL2Normalization : ℂ)) x",
-      "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8510,9 +8555,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersNormalizedActualModeLocalFields.lean",
       "line": 122,
       "signature": "theorem normalizedPhysicalMode_prolateWaveExpression_eigenrelation {mProject K : ℕ} {Λ x : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (hm : 2 ≤ mProject) (hx : x ∈ Ioo (-Real.sqrt mProject) (Real.sqrt mProject)) : D0Pstar.prolateWaveExpression (Real.sqrt mProject) S.normalizedPhysicalMode x = ((Λ + mode4JacobiG mProject : ℝ) : ℂ) * S.normalizedPhysicalMode x",
-      "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -12700,7 +12745,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0ModeZeroFourFerrersProductionOrthogonality.lean",
       "line": 190,
       "signature": "theorem exists_modeZero_modeFour_selectedFerrersProductionProlatePair_orthogonal (mProject K : ℕ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) : ∃ (S0 : Mode4FerrersRegularEvenProlateSolution mProject K (mode4ClassicalEvenEigenvalue (mode4JacobiG mProject) 0)) (S4 : Mode4FerrersRegularEvenProlateSolution mProject K (mode4ClassicalEvenEigenvalue (mode4JacobiG mProject) 2)) (P : D0Pstar.ProlatePair), P.h0 = S0.normalizedPhysicalMode ∧ P.h4 = S4.normalizedPhysicalMode ∧ (∫ x : ℝ, starRingEnd ℂ (P.h0 x) * P.h4 x) = 0 ∧ 0 < P.I0 ∧ 0 < P.I4 ∧ P.chi0 ≠ 0 ∧ P.chi2 ≠ 0 ∧ (∀ x ∈ Icc (-P.pw.lambda) P.pw.lambda, D0Pstar.finiteFourierAction P.pw.lambda P.h0 x = (P.chi0 : ℂ) * P.h0 x) ∧ (∀ x ∈ Icc (-P.pw.lambda) P.pw.lambda, D0Pstar.finiteFourierAction P.pw.lambda P.h4 x = (P.chi2 : ℂ) * P.h4 x)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -12710,7 +12755,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0ModeZeroFourFerrersProductionProlatePair.lean",
       "line": 30,
       "signature": "theorem exists_modeZero_modeFour_selectedFerrersProductionProlatePair (mProject K : ℕ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) : ∃ (S0 : Mode4FerrersRegularEvenProlateSolution mProject K (mode4ClassicalEvenEigenvalue (mode4JacobiG mProject) 0)) (S4 : Mode4FerrersRegularEvenProlateSolution mProject K (mode4ClassicalEvenEigenvalue (mode4JacobiG mProject) 2)) (P : D0Pstar.ProlatePair), P.pw.lambda = Real.sqrt mProject ∧ P.h0 = S0.normalizedPhysicalMode ∧ P.h4 = S4.normalizedPhysicalMode ∧ 0 < P.I0 ∧ 0 < P.I4 ∧ P.chi0 ≠ 0 ∧ P.chi2 ≠ 0 ∧ (∀ x ∈ Icc (-P.pw.lambda) P.pw.lambda, D0Pstar.finiteFourierAction P.pw.lambda P.h0 x = (P.chi0 : ℂ) * P.h0 x) ∧ (∀ x ∈ Icc (-P.pw.lambda) P.pw.lambda, D0Pstar.finiteFourierAction P.pw.lambda P.h4 x = (P.chi2 : ℂ) * P.h4 x) ∧ mode4ClassicalEvenEigenvalue (mode4JacobiG mProject) 0 < mode4ClassicalEvenEigenvalue (mode4JacobiG mProject) 2",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },

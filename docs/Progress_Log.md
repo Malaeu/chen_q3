@@ -2746,6 +2746,37 @@ degree `0/4` nodal counts and positive plus-phase Fourier order, затем
 `G3_NORMALIZED_ACTUAL_MODE_LOCAL_FIELDS_PROVED_ONLY_CLASSICAL_NODAL_AND_FOURIER_ORDER_SOURCE_LOCKS_MISSING`;
 G1, G3, Route B promotion и RH остаются открыты.
 
+## 2026-08-15 — dimensionless finite-Fourier scaling
+
+**Развилка:** оставить scale/sign convention внутри будущего внешнего
+source-carrier либо сначала доказать project transport локально.
+
+**Выбрали:** source-free exact change of variables from dimensionless
+plus-phase Slepian action to the existing normalized physical Ferrers mode.
+
+**Почему:** внешний supplier должен утверждать только classical mathematics
+для тех же selected witnesses, а не повторять проверяемую integral scaling и
+positive normalization algebra.
+
+**Техника:** `intervalIntegral.integral_comp_div`, exact identity
+`c=2*pi*(sqrt mProject)^2`, set-integral/interval-integral conversion,
+indicator reduction inside the physical window, factoring the positive
+normalization constant.
+
+**Результат:** physical scalar is kernel-checked as
+`sqrt mProject * dimensionless scalar`. Direct Lean, 7787-job named build,
+`q3_check`, cartography/catalog sync и standard-only axiom audit PASS.
+
+**Следующий ход:** дождаться exact Proshka judgment on the two source
+carriers, then execute only the ratified kernel/source boundary.
+
+**Адрес:**
+`q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_DIMENSIONLESS_FOURIER_SCALING_CLOSEOUT_2026-08-15.md`.
+
+**Граница:**
+`G3_DIMENSIONLESS_TO_PHYSICAL_FOURIER_SCALING_PROVED_CLASSICAL_ZEROCOUNT_AND_PHASE_ORDER_SOURCE_CARRIERS_PENDING`;
+G1, G3, Route B promotion и RH остаются открыты.
+
 ### Счёт раскопок
 
 | четверть | строки | развилок найдено | причина записана | причина отсутствует |

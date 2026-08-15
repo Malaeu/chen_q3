@@ -4,7 +4,7 @@
 `python3 docs/cartographer/map_coverage.py`. Рукописная карта — `MAP.md`, она
 описывает узлы маршрута; это приложение описывает **файлы**, и оно полное.
 
-Всего файлов: **266** · упомянуто в `MAP.md`: **21** · вне карты: **245** · без описания в шапке: **0**
+Всего файлов: **267** · упомянуто в `MAP.md`: **21** · вне карты: **246** · без описания в шапке: **0**
 
 «вне карты» не значит «лишний»: значит, что обходом карты файл не находится.
 Именно так 2026-08-11 был построен заново мост `ker ↔ eigenspace`, стоявший в
@@ -77,6 +77,7 @@
 | `D0Mode4FerrersCoefficientAbsoluteSummability` | — | Absolute summability at the mode-four Ferrers boundary | 0 |
 | `D0Mode4FerrersCoefficientExtraction` | — | Goal 058 G3: mode-four Ferrers coefficient extraction | 0 |
 | `D0Mode4FerrersCompactZeroSelection` | — | Goal 058 G3: compact zero selection for the mode-four Ferrers source | 0 |
+| `D0Mode4FerrersDimensionlessFourierScaling` | — | Goal 058 G3: dimensionless-to-physical finite-Fourier scaling | 0 |
 | `D0Mode4FerrersEndpointFlux` | — | Endpoint flux of the mode-four Ferrers source row | 0 |
 | `D0Mode4FerrersInteriorRegularity` | — | Interior regularity of the mode-four Ferrers series | 0 |
 | `D0Mode4FerrersInteriorZeroSimplicity` | — | Goal 058 G3: simplicity of interior mode-four Ferrers zeros | 0 |

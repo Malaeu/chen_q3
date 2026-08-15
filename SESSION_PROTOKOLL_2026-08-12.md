@@ -630,3 +630,25 @@ order `0 < chi2 < chi0` для тех же selected Ferrers witnesses. G1 отд
 
 Стоп-код:
 `G3_NORMALIZED_ACTUAL_MODE_LOCAL_FIELDS_PROVED_ONLY_CLASSICAL_NODAL_AND_FOURIER_ORDER_SOURCE_LOCKS_MISSING`.
+
+### Goal 058 G3 — dimensionless finite-Fourier scaling
+
+Пока Proshka естественно судит final source packet, закрыт ещё один
+source-free transport. Доказана точная замена переменной от dimensionless
+plus-phase Slepian action на `[-1,1]` к physical production window:
+`c = 2*pi*mProject`, `lambda = sqrt(mProject)`, а физический Fourier scalar
+равен `lambda * mu` для dimensionless scalar `mu`.
+
+Ни source eigenrelation, ни positivity/order, ни nodal count не
+предполагаются. Strict startup прошёл `P9_STRICT_PASS`; exact KB query вернул
+`no hits`. Direct Lean, named build (`7787` jobs), `q3_check`, diff scan,
+catalog sync и standard-only axiom audit прошли. Cartographer: `267` files,
+`2484` declarations, `0` missing declaration rows, `2865` external atoms.
+
+Граница стала уже: scale, plus-kernel convention и physical normalization
+теперь локальны; внешними остаются только exact dimensionless zero counts
+`0/4` и Slepian phase/strict scalar order для тех же selected `S0/S4`.
+G1 отдельно открыт; Route B остаётся `CHALLENGER / NOT_RH`.
+
+Стоп-код:
+`G3_DIMENSIONLESS_TO_PHYSICAL_FOURIER_SCALING_PROVED_CLASSICAL_ZEROCOUNT_AND_PHASE_ORDER_SOURCE_CARRIERS_PENDING`.
