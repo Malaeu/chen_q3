@@ -448,3 +448,26 @@ zero counts и Lemma 7.2. G1/G3 OPEN, Route B `CHALLENGER / NOT_RH`.
 
 Стоп-код:
 `G3_ENDPOINT_FLUX_FOURIER_EIGEN_TRANSPORT_PROVED_SELECTED_FERRERS_PHYSICAL_WRAPPER_AND_SCALAR_PROPORTIONALITY_NEXT`.
+
+### Goal 058 G3 — physical Ferrers Fourier ODE transport
+
+Generic endpoint theorem теперь применён к настоящему physical Ferrers
+source. Новый module комплексирует physical series, переносит closed-window
+continuity, actual first derivative, divergence-form ODE и оба zero-flux
+limits через `u/sqrt(mProject)`, затем получает тот же prolate ODE для
+finite-Fourier image при `lambda=sqrt(mProject)` и
+`theta=Lambda+mode4JacobiG mProject`.
+
+Public theorem принимает только witness `S` и `2 <= mProject`; Fourier
+eigenrelation, `chi`, zero count, global `C2` и новый source binder на входе
+отсутствуют. Fresh EnvDump: `257/257`, 2336 declarations, holes/extra axioms
+`0`; exact query `CANDIDATE_ONLY`. Direct Lean, named build (7775 jobs),
+`q3_check` и axiom audit прошли.
+
+Это всё ещё не `Fh=chi*h`: доказано только пребывание Fourier image в том же
+ODE eigenspace. Следующий seam — regular-even uniqueness/proportionality и,
+вероятно, точная nodal/index identification. Scalar sign/order, zero counts,
+ProlatePair, Lemma 7.2, floor, schedule, G1/G3 открыты.
+
+Стоп-код:
+`G3_SELECTED_PHYSICAL_FERRERS_FOURIER_ODE_TRANSPORT_PROVED_SCALAR_PROPORTIONALITY_AND_NODAL_SELECTION_NEXT`.

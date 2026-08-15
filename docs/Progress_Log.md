@@ -2499,6 +2499,36 @@ remain separate.
 `G3_ENDPOINT_FLUX_FOURIER_EIGEN_TRANSPORT_PROVED_SELECTED_FERRERS_PHYSICAL_WRAPPER_AND_SCALAR_PROPORTIONALITY_NEXT`;
 G1, G3, Route B promotion и RH остаются открыты.
 
+## 2026-08-15 — physical Ferrers Fourier ODE transport
+
+**Развилка:** оставить endpoint theorem generic либо сразу проверить, что
+accepted physical Ferrers object действительно удовлетворяет его exact
+domain contract.
+
+**Выбрали:** отдельный source-specific module без изменения production types.
+
+**Почему:** real-to-complex lift, square-root scale и one-sided endpoint
+filters являются load-bearing стыками; их нельзя считать автоматическими.
+
+**Техника:** closed-window scale map, actual derivative lifts, complexified
+physical ODE algebra, exact identity
+`(m-u^2)h_phys' = sqrt(m)(1-(u/sqrt(m))^2)h'`, endpoint-filter composition,
+generic endpoint Fourier theorem.
+
+**Результат:** finite Fourier image of any accepted physical Ferrers witness
+solves the same prolate ODE with eigenvalue `Lambda+G`. Direct Lean,
+7775-job named build, `q3_check` and standard-only axiom audit PASS.
+
+**Следующий ход:** regular-even eigenspace uniqueness/scalar proportionality;
+exact nodal/index identification remains a separate possible prerequisite.
+
+**Адрес:**
+`q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_PHYSICAL_FERRERS_FOURIER_EIGEN_TRANSPORT_CLOSEOUT_2026-08-15.md`.
+
+**Граница:**
+`G3_SELECTED_PHYSICAL_FERRERS_FOURIER_ODE_TRANSPORT_PROVED_SCALAR_PROPORTIONALITY_AND_NODAL_SELECTION_NEXT`;
+G1, G3, Route B promotion и RH остаются открыты.
+
 ### Счёт раскопок
 
 | четверть | строки | развилок найдено | причина записана | причина отсутствует |
