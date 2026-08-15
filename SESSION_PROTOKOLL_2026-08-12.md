@@ -533,3 +533,30 @@ schedule, G1/G3 открыты; Route B `CHALLENGER / NOT_RH`.
 
 Стоп-код:
 `G3_SELECTED_PHYSICAL_FERRERS_RESTRICTED_FOURIER_REAL_NONZERO_SCALAR_PROVED_SIGN_ORDER_AND_PROLATEPAIR_NEXT`.
+
+### Goal 058 G3 — normalized Ferrers production ProlatePair
+
+Selected Ferrers witnesses теперь канонически продолжены нулём на всю real
+line и честно нормированы в `L2`. Положительность mass доказана из
+closed-window continuity и nonzero center; whole-line integral вычислен
+точной заменой масштаба и равен положительной нормированной величине из
+positive coefficient zero. Restricted Fourier relation и real nonzero scalar
+перенесены через normalization.
+
+Второй новый module собирает неизменённый production `D0Pstar.ProlatePair` из
+точных selected even indices `0` и `2`. В record уже есть actual normalized
+zero-extended Ferrers functions, positive `I0/I4`, nonzero real `chi0/chi2`,
+unit norms, support и две exact restricted Fourier relations. Новой family или
+source assumption нет.
+
+Direct Lean для двух файлов, named builds (`7783`, `7807` jobs), оба
+`q3_check`, diff check и standard-only axiom audit прошли.
+
+Граница теперь точная: production pair существует, но
+`IsActualProlateModePair` ещё не доказан. Остались exact zero counts `0/4`,
+orthogonality и source positive-phase order `0 < chi2 < chi0`. Затем идут CCM
+Lemma 7.2, floor, schedule; G1 отдельно открыт. Route B —
+`CHALLENGER / NOT_RH`.
+
+Стоп-код:
+`G3_PRODUCTION_PROLATEPAIR_CONSTRUCTED_ACTUAL_MODE_ZERO_COUNTS_ORTHOGONALITY_AND_FOURIER_SIGN_ORDER_MISSING`.

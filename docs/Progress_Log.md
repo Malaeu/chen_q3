@@ -2618,6 +2618,39 @@ extension, normalization, orthogonality and production `ProlatePair` assembly.
 `G3_SELECTED_PHYSICAL_FERRERS_RESTRICTED_FOURIER_REAL_NONZERO_SCALAR_PROVED_SIGN_ORDER_AND_PROLATEPAIR_NEXT`;
 G1, G3, Route B promotion и RH остаются открыты.
 
+## 2026-08-15 — normalized Ferrers production ProlatePair
+
+**Развилка:** ждать полного source sign/order theorem до production assembly
+либо сначала доказать все независимые normalization/record fields.
+
+**Выбрали:** canonical zero extension and `L2` normalization of the already
+selected Ferrers witnesses, then direct construction of the unchanged
+production `ProlatePair`.
+
+**Почему:** support, unit norm, positive integrals and restricted Fourier
+relations do not depend on the missing oscillation/sign theorem. Their early
+materialization narrows the source wall without weakening its statement.
+
+**Техника:** indicator zero extension, continuous positive interval mass,
+exact scale substitution for the integral, normalization transport through
+the finite Fourier action, production record assembly at selected indices
+`0/2`.
+
+**Результат:** production pair exists with positive `I0/I4`, nonzero real
+`chi0/chi2`, exact restricted eigenrelations, unit norms and compact support.
+Direct Lean, 7783/7807-job named builds, `q3_check` and standard-only axiom
+audit PASS.
+
+**Следующий ход:** source-lock exact zero counts `0/4`, orthogonality and
+`0 < chi2 < chi0`; then apply the existing actual-mode and Lemma 7.2 chain.
+
+**Адрес:**
+`q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_FERRERS_PRODUCTION_PROLATEPAIR_CLOSEOUT_2026-08-15.md`.
+
+**Граница:**
+`G3_PRODUCTION_PROLATEPAIR_CONSTRUCTED_ACTUAL_MODE_ZERO_COUNTS_ORTHOGONALITY_AND_FOURIER_SIGN_ORDER_MISSING`;
+G1, G3, Route B promotion и RH остаются открыты.
+
 ### Счёт раскопок
 
 | четверть | строки | развилок найдено | причина записана | причина отсутствует |
