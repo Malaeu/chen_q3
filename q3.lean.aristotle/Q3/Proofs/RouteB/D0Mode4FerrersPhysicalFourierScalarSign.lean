@@ -48,14 +48,13 @@ private theorem Mode4FerrersRegularEvenProlateSolution.physicalFiniteFourierActi
         s * (2 * S.coefficients 0)
     exact hscale
   unfold D0Pstar.finiteFourierAction D0Pstar.finiteFourierKernel
-  simp only [Complex.ofReal_zero, zero_mul, Complex.exp_zero, one_mul]
+  simp only [mul_zero, zero_mul, Complex.ofReal_zero, Complex.exp_zero, one_mul]
   rw [integral_Icc_eq_integral_Ioc,
     ← intervalIntegral.integral_of_le (by linarith : -s ≤ s)]
   change
     (∫ u in (-s)..s,
       (mode4PhysicalFerrersSeries mProject S.coefficients u : ℂ)) = _
   rw [intervalIntegral.integral_ofReal, hphysical]
-  rfl
 
 /-- Every accepted physical Ferrers solution admits its already-proved real
 nonzero finite-Fourier scalar with the additional exact sign information that
