@@ -4,16 +4,26 @@ PRIMARY: G3_CENTER_POS_OF_NO_INTERIOR_ZERO
 PRIMARY_COUNT: 1
 
 UPSTREAM:
-  FERRERS_FOURIER_SCALAR_SIGN_GATE: GREEN_BY_OWNER_KERNEL_RELAY
+  FERRERS_FOURIER_SCALAR_SIGN_GATE: GREEN_SOURCE_LOCKED
+  GREEN_COMMIT: a0af2a1d30842a9d38c2786dfe70f83967d0d87e
   PUBLIC_THEOREMS_WITHOUT_SORRYAX: 2
   GREEN_VERDICT_PATH: q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_FERRERS_FOURIER_SCALAR_SIGN_KERNEL_GREEN_2026-08-17.md
-  CONNECTOR_FETCH_AT_WRITE_TIME: STALE_404
+  GREEN_REPORT_BLOB_SHA: 0849dcd534f269a1dc813d22525b84adb679e679
+  GREEN_LEAN_BLOB_SHA: 789aaf3a70ac9db7689cae4588e0c0d596058eec
+  EXACT_GREEN_FILE_FETCHED_BY_CONNECTOR: true
+  CONNECTOR_FETCH_AT_WRITE_TIME: PASS_SOURCE_LOCKED
 
 ROOT_CAUSE_CORRECTION:
   NOT_IN: hphysical
   ACTUAL_LOCATION: simp_only_after_unfold_finiteFourierAction_and_kernel
   MISSING_SIMPLIFIER: mul_zero
+  SECOND_DORMANT_DEFECT: trailing_rfl_after_goal_closed
   PRIOR_DIAGNOSIS_SUPERSEDED: true
+
+IVT_BRACKET:
+  ENDPOINT_LEAKAGE_SUBGATE_REQUIRED: false
+  REASON: strict_opposite_endpoint_values_force_the_zero_strictly_between_x_and_zero
+  INTERIOR_MEMBERSHIP: strict_betweenness_plus_x_mem_Icc_implies_zero_mem_Ioo
 
 TARGET:
   THEOREM: Mode4FerrersRegularEvenProlateSolution.center_pos_of_no_interior_zero
@@ -62,7 +72,7 @@ The exact mean identity and `S.coefficient_zero_pos` give
 integral_{-1}^{1} f > 0.
 ```
 
-Therefore `f` is positive at some point of the closed interval. If `f(0) < 0`, continuity and the intermediate value theorem give a zero between that positive point and `0`. The zero is strictly inside `(-1,1)`, contradicting the no-interior-zero premise. The existing `center_value_ne_zero` then upgrades `0 ≤ f(0)` to `0 < f(0)`.
+Therefore `f` is positive at some point `x ∈ Icc (-1) 1`. If `f(0) < 0`, continuity and the intermediate value theorem give a zero strictly between `x` and `0`, because both bracket values are nonzero and have opposite signs. Since `x ∈ Icc (-1) 1`, every point strictly between `x` and `0` already lies in `Ioo (-1) 1`. Thus no separate endpoint-leakage sublemma is required. The interior zero contradicts the zero-free premise. The existing `center_value_ne_zero` then upgrades `0 ≤ f(0)` to `0 < f(0)`.
 
 This is a function-space sign argument. It does not infer pointwise positivity from `coefficient_zero_pos`; the coefficient is used only through the exact positive integral identity. `[ABSTRACT][CONDITIONAL]`
 
@@ -78,6 +88,7 @@ cost: 2/10
 positive exact mean
 → exists positive point
 → IVT against a hypothetical negative center
+→ strict bracket gives an automatic interior zero
 → forbidden interior zero
 → nonzero center selects strict positivity.
 ```
@@ -90,7 +101,7 @@ kill-power: 8/10
 cost: 4/10
 
 continuous zero-free map on connected interval
-→ image lies in one component of ℝ \ {0}
+→ image lies in one component of ℝ \\ {0}
 → positive mean selects the positive component.
 ```
 
@@ -101,7 +112,7 @@ Registered prediction:
 ```text
 P058-CENTER-POS:
   the theorem is mathematically elementary;
-  the likely failures are only exact Mathlib API shape for interval positivity or IVT image extraction.
+  the likely failures are only exact Mathlib API shape for interval positivity or strict IVT bracketing.
 ```
 
 ## STRONGEST ATTACK
@@ -114,7 +125,7 @@ coefficient_zero_pos → center value positive.
 
 Legendre basis functions change sign, so this would instantiate C10 FUNCTIONAL-NOT-SURROGATE. The repaired proof must use the exact scalar functional the consumer needs: the interval mean of the same Ferrers function, plus continuity and zero-freeness.
 
-A second attack is endpoint leakage: the positive point supplied by the integral may be an endpoint. The IVT proof must show the resulting zero lies strictly between the endpoint and zero, hence in `Ioo (-1) 1`; it may not silently apply the interior hypothesis to an endpoint.
+The former endpoint-leakage objection is discharged by the strict bracket itself. The positive point and the center are both provably nonzero with opposite signs, so the IVT witness cannot equal either endpoint. Strict betweenness and `x ∈ Icc (-1) 1` place it in `Ioo (-1) 1` in the same proof step.
 
 ## LEAN DIRECTIVE
 
@@ -139,13 +150,12 @@ PROOF:
 1. Obtain strict positivity of the interval integral from
    mode4FerrersSeries_intervalIntegral_eq_two_mul_coefficient_zero
    and coefficient_zero_pos.
-2. Derive a point x ∈ Icc (-1) 1 with 0 < f x; otherwise integrate -f.
+2. Derive a point x ∈ Icc (-1) 1 with 0 < f x; otherwise the integral cannot be positive.
 3. Assume f 0 < 0.
 4. Restrict continuousOn_closed to uIcc 0 x.
-5. Apply intermediate_value_uIcc at value 0.
-6. Prove the produced zero belongs to Ioo (-1) 1 using strict endpoint signs.
-7. Contradict hzero.
-8. Combine center nonnegativity with center_value_ne_zero.
+5. Apply the strict-sign IVT to obtain z strictly between x and 0 with f z = 0; strict betweenness and x ∈ Icc (-1) 1 give z ∈ Ioo (-1) 1 in the same step.
+6. Contradict hzero.
+7. Combine center nonnegativity with center_value_ne_zero.
 
 FORBIDDEN:
 - no coefficient-sign shortcut;
@@ -154,6 +164,7 @@ FORBIDDEN:
 - no `sorry` or `admit`;
 - no positive Fourier phase premise;
 - no P0 zero-free claim inside this theorem;
+- no separate endpoint-leakage gate;
 - no G3 or RH promotion.
 
 VALIDATE:
@@ -166,15 +177,15 @@ lake build Q3.Proofs.RouteB.D0Mode4FerrersCenterPositiveOfNoInteriorZero
 
 **What became smaller?**
 
-The positive-phase supplier is no longer an opaque sign problem. After the upstream green gate, the `p=0` phase reduces to one exact function-space theorem following from zero-freeness and positive mean.
+The positive-phase supplier is source-locked green at commit `a0af2a1d30842a9d38c2786dfe70f83967d0d87e`. The `p=0` phase reduces to one exact function-space theorem following from zero-freeness and positive mean.
 
 **What was killed?**
 
-The earlier diagnosis that the kernel failure occurred in `hphysical`. The owner kernel report identifies the actual omission as `mul_zero` in the `simp only` after `unfold`.
+The earlier diagnosis that the kernel failure occurred in `hphysical`, the stale connector `404`, and the separate endpoint-leakage subgate.
 
 **What must not be tried again?**
 
-Do not infer theorem health from absence of literal `sorry`; inspect `#print axioms`. Do not infer center sign from coefficient sign.
+Do not infer theorem health from absence of literal `sorry`; inspect `#print axioms`. Do not infer center sign from coefficient sign. Do not split strict-IVT interior membership into a fake independent blocker.
 
 **Current smallest named gap:**
 
@@ -194,8 +205,8 @@ iteration:
   cognitive_operator_used: MINIMAL_LEMMA
   new_gap_name: G3_CENTER_POS_OF_NO_INTERIOR_ZERO
   invariant_learned: positive mean and pointwise center sign must belong to the same Ferrers function
-  forbidden_future_move: use coefficient positivity as a pointwise surrogate
-  next_decisive_test: direct_IVT_kernel_build
+  forbidden_future_move: use coefficient positivity as a pointwise surrogate or reopen endpoint leakage
+  next_decisive_test: direct_strict_IVT_kernel_build
   progress_class: REPRESENTATION_PROGRESS
   route_score: 5
 ```
