@@ -42,7 +42,11 @@ private theorem Mode4FerrersRegularEvenProlateSolution.physicalFiniteFourierActi
         s * (2 * S.coefficients 0) := by
     rw [show (-s) / s = (-1 : ℝ) by field_simp [hs.ne'],
       show s / s = (1 : ℝ) by field_simp [hs.ne'], hsource] at hscale
-    simpa only [mode4PhysicalFerrersSeries, s, smul_eq_mul] using hscale
+    change
+      (∫ u in (-s)..s,
+        mode4FerrersSeries S.coefficients (u / s)) =
+        s * (2 * S.coefficients 0)
+    exact hscale
   unfold D0Pstar.finiteFourierAction D0Pstar.finiteFourierKernel
   simp only [Complex.ofReal_zero, zero_mul, Complex.exp_zero, one_mul]
   rw [integral_Icc_eq_integral_Ioc,
