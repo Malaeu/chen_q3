@@ -111,6 +111,62 @@ LEAN_DECL  H2a_SimpleEvenGround_FromPenaltyCoercivity  H2aPenaltyCoercivity.lean
 два условия размерности `N` (`probes/Probe_Parity_KernelSplit.lean`). Ни одно из двух не
 доказано.
 
+### Дно дополнения раскалывается по чётности — вердикт Мифоса 2026-08-14
+
+Источник: `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/`
+`GOAL058_G1_COFINAL_COMPLEMENT_FLOOR_MYTHOS_VERDICT_2026-08-14.md`,
+`STOP_CODE: ODD_TAIL_AND_M13_RECEIVER_DO_NOT_SPECIALIZE_TO_COMPLEMENT_FLOOR_…`
+
+Оператор коммутирует с чётностью, поэтому `q⊥` распадается `J`-инвариантно, а форма
+`B = Q(K − aI)Q` блочно-диагональна по чётности. Отсюда точное разложение:
+
+```
+β на q⊥  =  min( чётная нога , нечётная нога )
+```
+
+Заполнены они несимметрично:
+
+```
+НЕЧЁТНАЯ  поставщик  sourceWeilOddTailAmbientCoercive_explicit   ∀i, настоящий
+          приёмник   привязан к m=13, модальность iff — знака нет
+ЧЁТНАЯ    ПУСТО      ни поставщика, ни приёмника
+```
+
+**Два убийства, проверять перед любой попыткой обойти.**
+
+```
+F1  «коммутирует + простой ⇒ чётное основное состояние»   ЛОЖНО
+    Fin 2, J = swap, K = [[0,1],[1,0]]: основное состояние нечётно и просто.
+F2  «нечётный tail floor ⇒ complement floor»              УБИТО
+    Fin 3 collapse plant ⊕ I_n: хвост коэрцитивен, а в q⊥ остаётся
+    второй нулевой уровень — любое β > 0 отвергается.
+F3  подмена сдвига между ногами                           УБИТО
+    курс обмена 1:1 против β — единица расхождения сдвига съедает единицу дна.
+```
+
+**Ход, снимающий страх за знаменатель** (`C3` у Мифоса). Дно не доказывается вдоль всей
+последовательности: оно берётся **один раз** при фиксированном сдвиге `a*` как константа
+`β* > 0`, затем переносится по близости Рэлея `|a_j − a*| ≤ β*/2` через точное тождество
+`B(a_j) = B(a*) − (a_j − a*)Q`, давая `β_j ≥ β*/2`. После этого `невязка_j/β_j → 0`
+следует из `невязка_j → 0` при фиксированном знаменателе. Замер обязан быть получен
+**независимо** от утверждения о сходимости к `Ξ`, иначе доказательство закольцовывается.
+
+**Очередь Мифоса и её состояние на 2026-08-17.**
+
+```
+1  sourceWeilOddTailInverseWeightedCorrection_quadraticForm_le   ЗАКРЫТА
+   D0PstarSourceWeilOddTailCorrectionBound.lean:35
+2  sourceWeilEvenTailAmbientCoercive_explicit                     ОТКРЫТА ← фронт
+3  even-head Gram-certificate schedule family                     ОТКРЫТА
+```
+
+**Цена чётного близнеца, снята с диска 2026-08-17.**
+`D0PstarSourceLowBandModeDecay.lean` содержит двенадцать теорем, из них две не знают о
+чётности вовсе — `norm_fourier_logWindowZeroExtendedMode_le_lowBand_inv` (:132) и
+`sum_support_inv_nat_shift_sq_le` (:368). Ядро переиспользуется как есть; десять
+остальных суть обёртки над `Odd`-модами и требуют механического близнеца. Новая
+математика остаётся ровно в одном месте: дно чётной головы при фиксированном сдвиге.
+
 ---
 
 ## G2 · вещественность нулей лагранжева многочлена `READY` условно на G1
@@ -281,6 +337,7 @@ LEAN_DECL  Q3.RH                        Basic/Defs.lean:177
 |---|---|---|---|
 | G0 | `GAP` частично | координаты | `CCMFiniteWeilSourceMatrix.lean:23` · `Proposition59EntireTransform.lean:13` |
 | G1 | `GAP` главный | пакет из шести гипотез | движок `H2aPenaltyCoercivity.lean:395` |
+| G1-дно | `GAP` **чётная нога пуста** | `β = min(чётная, нечётная)` | нечётная `D0PstarSourceWeilOddTailExplicitCoercivity.lean`; чётной нет |
 | G2 | `READY` | потребитель вещественности | `CCMFiniteWeilParity.lean:161` |
 | G2b | `GAP` дешёвый | `Proposition59GroundLagrangeZeroSetBridge` | писать; объекты `Proposition59EntireTransform.lean:33,84` |
 | G3 | `GAP` **стена** | `FiniteGroundTransformToCCMTrialLocallyUniform` | писать |
