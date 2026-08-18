@@ -75,20 +75,51 @@ State the expected axiom profile explicitly, normally
 a detail. `sorryAx` in the profile means the file did not compile and the
 theorem is not proved, whatever the source looks like.
 
-W5. ONE GOAL, ONE COMMIT
-Lean source and its verdict belong in the same commit. Splitting them leaves a
-window in which the repository holds an unjudged source file.
+W5. ONE GOAL, ONE COMMIT — AND THE RECORD IS NOT YET THE VERDICT
+Lean source never lands alone: it ships in the same commit as a SOURCE RECORD,
+so the repository never holds a source file with no statement of what it claims.
+The SOURCE RECORD is not a verdict. It states the boundary, the suppliers left
+open, the registered predictions, and the verification handoff of W4, and it
+carries `STATUS: SOURCE_WRITTEN`. It does not judge whether the theorem is
+proved, because at that moment nobody has asked the kernel.
+
+The VERDICT is a second artifact, written after the Linux body returns the gate
+output, and it is the only place a proved/refuted judgement belongs. This
+resolves the tension with W6: the window W5 closes is "source with no stated
+claim", not "source with no verdict". A judgement that precedes the kernel is
+not early, it is unfounded.
 
 W6. WHEN CODEX IS DOWN
 Codex has a weekly quota and can be unavailable for days. Then the loop is: you
-write source → the Linux body runs the gate → the Linux body returns exact
-command output and axiom profile → you judge. Do not stall waiting for Codex,
-and do not weaken a target to fit the outage.
+write source and its SOURCE RECORD → the Linux body runs the gate → the Linux
+body returns exact command output and axiom profile → you write the VERDICT. Do
+not stall waiting for Codex, and do not weaken a target to fit the outage.
 
 W7. WRITE FOR A VERIFIER, NOT FOR A READER
-The Linux body must act on your verdict without reconstructing your reasoning.
+The Linux body must act on your record without reconstructing your reasoning.
 Name the exact theorem, the exact path from the repo root, the exact commit,
 and the exact commands. Keep unexecutable prose to one short paragraph.
+
+W8. TACTICS ARE THE PART YOU CANNOT TEST
+Your mathematics has survived every gate so far; your tactic scripts have failed
+three out of three. On 2026-08-17/18 the defects were: `at` at the end of a line
+in `rw … at`, which Lean 4 does not parse; `abel` after a `simp` that had
+already closed the goal; and a second `convert` bullet where `convert … using 1`
+produced one goal. Each left `sorryAx` in a theorem whose source read as
+complete.
+
+The pattern is one thing: you cannot observe how many goals a tactic leaves, so
+every bullet count and every follow-up tactic is a guess. Therefore:
+
+- prefer forms that do not depend on the goal count — `all_goals`, `<;>`, or a
+  single closing tactic — over hand-numbered `·` bullets;
+- after `convert … using n`, do not assume the number of goals;
+- never append a tactic "for safety" after one that may already close the goal;
+- mark any step whose goal count you guessed as `UNCHECKED_TACTIC_SHAPE` in the
+  SOURCE RECORD, so the Linux body reads the gate output at that line first.
+
+Predicting the defect class is part of the record. So far the predictions named
+Mathlib API mismatches; the actual defects were all dead tactic branches.
 
 ══════════ CORE DISCIPLINE ══════════
 
@@ -233,7 +264,10 @@ Score ≤2 twice forces REPRESENTATION_SHIFT or ABANDON_ROUTE.
 
 Deliver every verdict as ONE markdown file: first line `# STATUS: ...`, immediately followed by a machine-readable code block containing the verdict codes and key flags (the bus automation parses exactly this header).
 
-1. STATUS: PROVED / CONDITIONAL / OPEN / FATAL.
+1. STATUS: SOURCE_WRITTEN / PROVED / CONDITIONAL / OPEN / FATAL.
+`SOURCE_WRITTEN` is the only status a SOURCE RECORD may carry (W5): source is in
+the repository, the kernel has not been asked. `PROVED` requires a returned gate
+with a clean axiom profile — never your own reading of the source.
 2. ROUTE MAP: viable routes, decisive test, main risk, status. Keep it concise and auditable; do not expose private chain-of-thought.
 3. FINAL PROPOSAL: chosen route, registered prediction, cheapest decisive test, and likeliest failure point with response.
 4. STRONGEST ATTACK: strongest counterexample/reviewer objection; if fatal, show the kill and repaired statement.
