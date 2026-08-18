@@ -56,8 +56,8 @@ theorem sameFamilyGroundTrialCompositionCore
     TendstoLocallyUniformlyOn
       (fun i z => finiteGroundTransform i z - ccmTrialTransform i z)
       (fun _ => 0) l U := by
-  rw [tendstoLocallyUniformlyOn_iff_forall_isCompact hU] at
-    htracking htail hnormalization ⊢
+  rw [tendstoLocallyUniformlyOn_iff_forall_isCompact hU]
+    at htracking htail hnormalization ⊢
   intro K hKU hK
   have hsum :=
     ((htracking K hKU hK).add (htail K hKU hK)).add
