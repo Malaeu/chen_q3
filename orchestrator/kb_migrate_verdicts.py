@@ -33,7 +33,7 @@ REPO = Path(__file__).resolve().parent.parent
 # Verdict bodies live under the bus; the four PROSHKA_* config files are not verdicts.
 CONFIG_NAMES = {"PROSHKA_ENTRYPOINT.md", "PROSHKA_MEMORY_PACK.md", "PROSHKA_POLICY.md",
                 "PROSHKA_SYSTEM_PROMPT_v2.md", "PROSHKA_CONTEXT_SINGLE_SCALE_2026_01_24.md"}
-IGNORED_PATH_PARTS = {".git", ".lake", ".qmd_cache"}
+IGNORED_PATH_PARTS = {".git", ".lake", ".qmd_cache", "_backups"}
 DATE_RE = re.compile(r"(20\d\d)-(\d\d)-(\d\d)")
 
 

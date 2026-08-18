@@ -231,23 +231,18 @@ def declaration_properties(name: str, row: dict[str, Any]) -> dict[str, Any]:
 def _harness_source(
     candidate_name: str,
     candidate: dict[str, Any],
+    target_name: str,
     target: dict[str, Any],
 ) -> str:
     imports = sorted({str(candidate["file"]), str(target["file"])})
-    levels = sorted(
-        {
-            str(level)
-            for level in [*candidate.get("levelParams", []), *target.get("levelParams", [])]
-            if isinstance(level, str) and re.fullmatch(r"[A-Za-z_][A-Za-z0-9_']*", level)
-        }
-    )
     parts = [*(f"import {module}" for module in imports), ""]
-    if levels:
-        parts.extend((f"universe {' '.join(levels)}", ""))
     parts.extend(
         (
-            f"example : {target['type']} := by",
-            f"  exact {candidate_name}",
+            "private def q3ComparatorExpectedType.{u} "
+            "(α : Sort u) (_ : α) : Sort u := α",
+            "",
+            f"example : q3ComparatorExpectedType _ (@{target_name}) := by",
+            f"  exact (@{candidate_name})",
             "",
         )
     )
@@ -300,7 +295,7 @@ def direct_type_fit(
             "diagnostic": "; ".join(disqualifiers),
         }
 
-    source = _harness_source(candidate_name, candidate, target)
+    source = _harness_source(candidate_name, candidate, target_name, target)
     with tempfile.TemporaryDirectory(prefix="q3-direct-type-fit-") as temp_dir:
         harness = Path(temp_dir) / "DirectTypeFit.lean"
         harness.write_text(source, encoding="utf-8")

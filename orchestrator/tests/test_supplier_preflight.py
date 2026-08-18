@@ -42,15 +42,18 @@ def test_resolve_declaration_rejects_ambiguous_basename() -> None:
         fit.resolve_declaration("same", index)
 
 
-def test_harness_uses_exact_target_type_and_both_modules() -> None:
+def test_harness_uses_target_term_type_and_both_modules() -> None:
     candidate = record("Q3.RouteB.supplier", "Q3.Proofs.RouteB.Supplier")
     target = record("Q3.RouteB.target", "Q3.Proofs.RouteB.Target")
     target["type"] = "∀ n : Nat, n = n"
-    source = fit._harness_source("Q3.RouteB.supplier", candidate, target)
+    source = fit._harness_source(
+        "Q3.RouteB.supplier", candidate, "Q3.RouteB.target", target
+    )
     assert "import Q3.Proofs.RouteB.Supplier" in source
     assert "import Q3.Proofs.RouteB.Target" in source
-    assert "example : ∀ n : Nat, n = n := by" in source
-    assert "exact Q3.RouteB.supplier" in source
+    assert "q3ComparatorExpectedType _ (@Q3.RouteB.target)" in source
+    assert "exact (@Q3.RouteB.supplier)" in source
+    assert str(target["type"]) not in source
 
 
 def fake_external(matches: list[dict[str, object]] | None = None) -> SimpleNamespace:

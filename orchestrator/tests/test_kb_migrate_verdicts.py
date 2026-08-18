@@ -24,6 +24,27 @@ class VerdictIdTests(unittest.TestCase):
 
         self.assertEqual(found[name], [canonical / name])
 
+    def test_collect_files_excludes_machine_local_backup_prompt(self) -> None:
+        with TemporaryDirectory() as td:
+            repo = Path(td)
+            canonical = repo / "docs" / "routeB_bus" / "proshka"
+            backup = canonical / "_backups"
+            canonical.mkdir(parents=True)
+            backup.mkdir(parents=True)
+            verdict_name = "PROSHKA_VERDICT_EXAMPLE_2026-08-15.md"
+            prompt_name = "PROSHKA_SYSTEM_PROMPT_v2_working_2026-08-04_pre-arsenal.md"
+            (canonical / verdict_name).write_text(
+                "PRIMARY: KILL_EXAMPLE\n", encoding="utf-8"
+            )
+            (backup / prompt_name).write_text(
+                "PRIMARY: KILL_FALSE_POSITIVE\n", encoding="utf-8"
+            )
+
+            with patch.object(kb_migrate_verdicts, "REPO", repo):
+                found = kb_migrate_verdicts.collect_files()
+
+        self.assertEqual(found, {verdict_name: [canonical / verdict_name]})
+
     def test_reconcile_projection_removes_cache_evidence_and_source_orphan(self) -> None:
         with TemporaryDirectory() as td:
             repo = Path(td)
