@@ -207,10 +207,21 @@ private theorem complex_unit_projection_error_eq_sum_normSq
       simpa [c] using hdefect
     _ = (star x ⬝ᵥ x).re := by
       simpa [x₂] using euclidean_norm_sq_toLp_eq_star_dotProduct_re x
+    _ = ∑ j, Complex.normSq (x j) := by
+      have hxsum :
+          star x ⬝ᵥ x =
+            ((∑ j, Complex.normSq (x j) : ℝ) : ℂ) := by
+        unfold dotProduct
+        rw [Complex.ofReal_sum]
+        apply Finset.sum_congr rfl
+        intro j _
+        simpa [Complex.normSq_eq_conj_mul_self]
+      rw [hxsum]
+      simp
     _ = ∑ j,
           Complex.normSq
             (q j - (star xi ⬝ᵥ q) * xi j) := by
-      simp [x, c, dotProduct, Complex.normSq]
+      simp [x, c]
 
 /-- The source-oriented P59 transform converts exact projective coefficient
 error into a pointwise analytic error with no realification and no surrogate
@@ -284,9 +295,20 @@ theorem sourceOrderedCCMRawTransform_sourceRow_eq_rawFplus
     simpa [D0Pstar.modeSet] using hn
   rw [sourceOrderedCCMCoefficient, dif_pos hnicc]
   unfold D0Pstar.sourceCCMComplexRow
-  have hmode := congrArg Subtype.val
-    ((ccmModeFiniteEquivIcc i.N).apply_symm_apply
-      (⟨n, hnicc⟩ : {a : ℤ // a ∈ Finset.Icc (-(i.N : ℤ)) i.N}))
+  have hmode :
+      ccmModeFinite i.N
+          ((ccmModeFiniteEquivIcc i.N).symm
+            (⟨n, hnicc⟩ :
+              {a : ℤ // a ∈ Finset.Icc (-(i.N : ℤ)) i.N})) = n := by
+    have h := congrArg Subtype.val
+      ((ccmModeFiniteEquivIcc i.N).apply_symm_apply
+        (⟨n, hnicc⟩ :
+          {a : ℤ // a ∈ Finset.Icc (-(i.N : ℤ)) i.N}))
+    change ccmModeFinite i.N
+        ((ccmModeFiniteEquivIcc i.N).symm
+          (⟨n, hnicc⟩ :
+            {a : ℤ // a ∈ Finset.Icc (-(i.N : ℤ)) i.N})) = n at h
+    exact h
   rw [hmode]
 
 /-- Exact production-family crosswalk at the selected D0/CCM index. -/
@@ -585,7 +607,23 @@ theorem literalCCMCofinalResidualFloorEnvelopeAndTransformTail
         mul_le_mul_of_nonneg_right (hCk z hz) (Real.sqrt_nonneg _)
       simpa [dist_eq_norm, norm_sub_rev] using (hpoint.trans hscale).trans_lt hk
     have hsum := htracking.add (htail K hKU hK)
-    simpa [sub_eq_add_neg, add_assoc, Pi.add_apply, add_zero] using hsum
+    have hsum0 :
+        TendstoUniformlyOn
+          ((fun k z =>
+              selectedCCMGroundTransform S beta hfloor k z -
+                CanonicalRHRoute.selectedFamily
+                  (D0Pstar.canonicalApproximation S.canonical) k z) +
+            fun k z =>
+              CanonicalRHRoute.selectedFamily
+                  (D0Pstar.canonicalApproximation S.canonical) k z -
+                D0Pstar.selectedMuntzApproximation S k z)
+          (fun _ => 0) atTop K := by
+      exact hsum.congr_right (by
+        intro _ _
+        simp)
+    refine hsum0.congr
+      (Filter.Eventually.of_forall fun k z _ => ?_)
+    abel
   · filter_upwards [hratioStrict] with k hk
     exact selectedCCMGroundScale_ne_zero_of_ratio_lt_one
       S beta hfloor k hk
