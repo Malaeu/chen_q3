@@ -169,15 +169,12 @@ theorem cofinalSourceResidualGapTransformTailBudget
             evaluation i z (normalizer i • q i))
         (fun _ => 0) l K := by
     convert htrackingRaw using 1
-    · ext i z
-      simp [e, smul_sub]
-    · ext z
-      rfl
+    ext i z
+    simp [e, smul_sub]
   have hsum := htracking.add (htail K hKU hK)
   convert hsum using 1
   · ext i z
     simp [q]
-    abel
   · ext z
     simp
 
