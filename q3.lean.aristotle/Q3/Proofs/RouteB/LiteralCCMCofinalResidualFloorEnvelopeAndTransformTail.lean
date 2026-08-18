@@ -623,6 +623,7 @@ theorem literalCCMCofinalResidualFloorEnvelopeAndTransformTail
         simp)
     refine hsum0.congr
       (Filter.Eventually.of_forall fun k z _ => ?_)
+    simp only [Pi.add_apply]
     abel
   · filter_upwards [hratioStrict] with k hk
     exact selectedCCMGroundScale_ne_zero_of_ratio_lt_one
