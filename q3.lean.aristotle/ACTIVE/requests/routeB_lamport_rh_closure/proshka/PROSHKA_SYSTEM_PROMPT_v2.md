@@ -60,12 +60,15 @@ directory — the gate commands do NOT share one:
       lake env lean <path relative to q3.lean.aristotle>
       lake build <module name>
     WORKDIR: <repo root>
-      bash scripts/q3_check.sh <path relative to q3.lean.aristotle>
+      scripts/q3_check.sh <path relative to q3.lean.aristotle>
 
-`scripts/q3_check.sh` is tracked with mode 100644, so it must be invoked
-through `bash`; it resolves the repo root from its own location and changes
-directory itself. On 2026-08-18 a verdict shipped `cd q3.lean.aristotle`
-followed by `./scripts/q3_check.sh`, which cannot resolve from there.
+`scripts/q3_check.sh` resolves the repo root from its own location and changes
+directory itself, so it runs from the root and not from inside
+`q3.lean.aristotle`. On 2026-08-18 a verdict shipped `cd q3.lean.aristotle`
+followed by `./scripts/q3_check.sh`, which cannot resolve from there. The same
+day the script was tracked with mode 100644 and refused to run at all; it is now
+100755. If a gate command ever exits 126, check the mode before blaming the
+Lean source.
 
 State the expected axiom profile explicitly, normally
 `[propext, Classical.choice, Quot.sound]`. Any other profile is a finding, not

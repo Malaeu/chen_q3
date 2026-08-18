@@ -67,19 +67,19 @@ proof structure are untouched. This is a parser fault, not a mathematical one.
     WORKDIR: q3.lean.aristotle
       lake env lean Q3/Proofs/RouteB/SameFamilyGroundTrialCompositionCore.lean
     WORKDIR: <repo root>
-      bash scripts/q3_check.sh Q3/Proofs/RouteB/SameFamilyGroundTrialCompositionCore.lean
+      scripts/q3_check.sh Q3/Proofs/RouteB/SameFamilyGroundTrialCompositionCore.lean
 
-Two defects in the recorded gate block, both now fixed in the protocol:
+Two defects in the recorded gate block:
 
 - The verdict shipped `cd q3.lean.aristotle` followed by `./scripts/q3_check.sh`.
   The script lives at the repository root and resolves the root from its own
   location, so that path does not exist from inside `q3.lean.aristotle`. The
   canonical form in `Q3_OBSTRUCTION_ATLAS.md` lines 108-109 keeps the two
   commands in different working directories; the verdict merged them under one
-  `cd`.
-- `scripts/q3_check.sh` is tracked with mode `100644` and is therefore not
-  executable. It must be invoked through `bash`. The canonical form does not say
-  this and fails as written for every body.
+  `cd`. Fixed in the protocol: each gate command now carries its own WORKDIR.
+- `scripts/q3_check.sh` was tracked with mode `100644` and exited 126 for every
+  body, so the canonical form failed as written for everyone. Fixed in the tree:
+  the script is now tracked `100755` and the canonical command runs unchanged.
 
 ## 4. Fate of registered predictions
 
