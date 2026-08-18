@@ -4,7 +4,7 @@
 Последняя картография: 2026-08-07 (4 агента-картографа прошли роф / Мюнц / спектр / шину
 по диску; сведено развилкой `maps/ROUTEB_FORK_2026-08-07_THE_GAP.md`, пин `7dbfb431`).
 Предыдущая: 2026-08-03 — она устарела системно, см. §6 и §7.
-Частичная сверка §9 с диском: 2026-08-18 на `fd153dd5` (фронты и `file:line`;
+Частичная сверка §9 с диском: 2026-08-19 на `93c44d5a`+ (фронты и `file:line`;
 §§3–7 с 7 августа не пересобирались).
 Route B = **CHALLENGER / NOT_RH**, `BUS_010: VOID`, `GOAL_055: HOLD`,
 `PX_RH_CLAIM: NOT_MADE`. RH официально НЕ заявлена.
@@ -487,7 +487,7 @@ G0 объект/координата/нормировка  →  G1 ground-пак
 
 ## 9. Куда смотреть дальше (5 открытых фронтов)
 
-*Сверено с диском 2026-08-18 на `fd153dd5`: все `file:line` ниже проверены чтением,
+*Сверено с диском 2026-08-19: все `file:line` ниже проверены чтением,
 «ноль поставщиков» — проверено отсутствием упоминаний вне собственного файла.
 Живое состояние цепей — `brief.py` и `cheap.py`, здесь только фронты.*
 
@@ -497,16 +497,19 @@ G0 объект/координата/нормировка  →  G1 ground-пак
 | **G3 / concrete H2b supplier** | M0 + M2 + M3 и при необходимости M4 → `Theorem510RealZeroBridge` | 🔓 `selectedFamily_realZeros` уже ✅ conditional; **M1 закрыт в Lean** (гол 051); у `Theorem510RealZeroBridge` на диске **ноль поставщиков** |
 | **G5 / concrete S1/Montel supply** | Один вход: `CenteredTrialCriticalMomentRatio` | 🔓 из него **одного** уже выведены и Montel-gate (`D0CriticalMomentMontelGate.lean:15`), и ненулевой cluster (`D0CriticalMomentCanonicalCluster.lean:9`). Самый узкий фронт |
 | **G6 / полная S2-стена Мюнц→S2** | Идентификация `D.limit = c·Ξ·γ` + связка цепочки `D0Pstar*` со `SlotS2` | 🔓 gauge ✅ и ненулевая константа ✅ (`S2GaugeNonvanishing.lean:34,101`), K8-контракт разряжен ✅; открыты `SelectedTrialNormalizerBounded` (поставщиков ноль), физический хвост/полоса и существование `ProlateCanonicalSourceData`; ребра к `SlotS2` нет |
-| **058 / шаг 4 — трекинг projected trial** | «та же `F_j` отслеживает projected prolate trial локально равномерно» → `G3c` | 🔓 поставщик по маршруту: невязка на истинный зазор (A). Два generic-узла закрыты ядром 2026-08-18: `SameFamilyGroundTrialCompositionCore` и `CofinalSourceResidualGapTransformTailBudget`, профиль `[propext, Classical.choice, Quot.sound]`. **Оба висят в воздухе** — ни одного потребителя в дереве, в `knowledge.db` не занесены, к шагу 4 не подключены |
+| **058 / шаг 4 — трекинг projected trial** | «та же `F_j` отслеживает projected prolate trial локально равномерно» → `G3c` | ⏳ мост собран на **литеральных** объектах: `LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail` закрыт ядром 2026-08-19, все 4 теоремы `[propext, Classical.choice, Quot.sound]`. Оператор `sourceCCMFiniteMatrix`, trial `sourceCCMComplexRow`, невязка `sourceCCMFiniteResidual`, `beta` связана с тем же оператором через `sourceCCMComplexTrialComplementFloor`, расписание production `parent (extract k)`, хвост литеральный. Свободного `gap` больше нет. **Поставщиков четыре и все отсутствуют:** построение complement-floor, компактный kernel-rate, затухание Мюнц-хвоста, crosswalk к `Theorem510RealZeroBridge`. Два generic-предшественника (`SameFamilyGroundTrialCompositionCore`, `CofinalSourceResidualGapTransformTailBudget`) закрыты 2026-08-18 |
 
-**Что мешает узлам 058/шаг 4 стать поставщиками (сверено 2026-08-18).** Оба доказаны
-ядром и оба остаются generic: объекты `sourceOperator`, `finiteProjection`, `evaluation`,
-`trialTarget` абстрактны, и никто не показал, что это production-объекты CCM, а не соседние
-суррогаты. Плюс три границы, записанные в гейт-артефактах: `gap : ι → ℝ` — свободный
-параметр, не вычисляемый из спектра оператора; вырожденная подстановка
-`sourceTrial := ground`, `finiteProjection := id` типизируется и делает теорему пустой;
-`hnormalizerNonzero` не используется вовсе, так что нормировочная невырожденность нагрузки
-не несёт. Пока это открыто, «шаг 4 закрыт» писать нельзя.
+**Состояние 058/шаг 4 на 2026-08-19.** Три границы, записанные 18 августа против
+generic-слоя, закрыты конструкцией литерального моста: свободный `gap` устранён —
+`beta` привязана к оператору через предикат complement-floor; расписание production,
+не выбранное независимо; неиспользуемых гипотез нет, строгость `< 1` несущая, и это
+показывает plant `goal058NormalizerCollapse_overlap_zero_and_defect_one` — при дефекте
+единица перекрытие обращается в ноль.
+
+Чего зелёная компиляция **не** даёт: сам complement-floor не построен, компактный
+kernel-rate не доказан, литеральное затухание Мюнц-хвоста не доказано, crosswalk к
+`Theorem510RealZeroBridge` не сделан. Мост связывает поставщиков, поставщиков нет.
+Писать «шаг 4 закрыт» по-прежнему нельзя — закрыта композиция, а не аналитика.
 
 **Чего НЕ делать (из §6):** не пытаться доказывать `∀S`-форму `SelectedProjectionTailDecay`
 — убита дважды, с контрпримером; не выводить полосу из `PairCofinal`; не гонять численные
