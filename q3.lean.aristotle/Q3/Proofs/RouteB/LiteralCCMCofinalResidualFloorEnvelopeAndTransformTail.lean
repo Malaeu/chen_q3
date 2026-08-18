@@ -504,8 +504,7 @@ theorem selectedCCMGroundTransform_sub_selectedFamily_le
     rw [norm_sub_rev]
     exact hraw.trans
       (mul_le_mul_of_nonneg_left hsqrt
-        (by exact sourceOrderedCCMKernelL2_nonneg
-          (D0Pstar.logLength i) i.N z))
+        (sourceOrderedCCMKernelL2_nonneg _ _ _))
   rw [selectedCCMGroundTransform, selectedCCMGroundScale,
     selectedCCMGroundOverlap]
   rw [selectedFamily_eq_centered_sourceOrderedCCMRawTransform]
@@ -584,9 +583,9 @@ theorem literalCCMCofinalResidualFloorEnvelopeAndTransformTail
               Real.sqrt (selectedCCMResidualFloorRatio S beta k) ≤
             C k * Real.sqrt (selectedCCMResidualFloorRatio S beta k) :=
         mul_le_mul_of_nonneg_right (hCk z hz) (Real.sqrt_nonneg _)
-      simpa [dist_zero_left] using (hpoint.trans hscale).trans_lt hk
+      simpa [dist_eq_norm, norm_sub_rev] using (hpoint.trans hscale).trans_lt hk
     have hsum := htracking.add (htail K hKU hK)
-    simpa [sub_eq_add_neg, add_assoc] using hsum
+    simpa [sub_eq_add_neg, add_assoc, Pi.add_apply, add_zero] using hsum
   · filter_upwards [hratioStrict] with k hk
     exact selectedCCMGroundScale_ne_zero_of_ratio_lt_one
       S beta hfloor k hk
