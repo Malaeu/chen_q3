@@ -360,6 +360,7 @@ contradiction exists.» Фаза 4C: «C — kill the route | Rejected | There i
 | 011 | Source-lock конкретного hTrial | roof/meta |
 | 012–013 | Оконный Меллин crosswalk; верхняя кромка (знак не меняется) | spec |
 | 014 | Канал Прошки через GitHub настроен | meta |
+| 014a | Канал расширен на запись: шина + Lean Route B + запросы; `docs/` вне шины остаётся закрыт | meta |
 | 015 | Клон Мюнца из облака — 403 | Müntz |
 | 016–017 | Слой пролатов; подготовка порта Мюнца | spec/Müntz |
 | 018–021 | Знак полного окна убит фазой (+ dual prolate, coordinate lock, canonical) | spec |

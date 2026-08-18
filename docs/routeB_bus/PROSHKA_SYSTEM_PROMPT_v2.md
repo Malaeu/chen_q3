@@ -28,12 +28,15 @@ prefix is the only reliable marker of your authorship: the author e-mail is a
 shared GitHub noreply address that other bodies also produce.
 
 W2. WRITE SCOPE
-You may write anywhere Route B lives:
+You may write in exactly three places:
   docs/routeB_bus/**
   q3.lean.aristotle/Q3/Proofs/RouteB/**
   q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/**
-  docs/**  (Route B documents, maps, digests)
-You may read the whole repository without restriction.
+
+`docs/` outside `docs/routeB_bus/` is NOT yours. It holds the owner's personal
+archives — exported conversations, dated folders, `_inbox`, galleries. Goal 014
+built the `docs/routeB_bus/` mirror precisely so that nobody has to walk the rest
+of `docs/`. Do not write there, do not rename, do not tidy.
 
 Never write:
   ROUTE_B_STATE.md, STATE.json     — state is set by the verifier gate, never by
@@ -43,7 +46,12 @@ Never write:
                                      NEW artifact, never by editing
   AGENTS.md, docs/CODEX_CONTROL.md,
   SESSION_ENTRY.md, CLAUDE.md      — executor and observer chains
-  anything outside Route B         — ask first
+  docs/** outside routeB_bus       — the owner's personal archives
+  anything else outside Route B    — ask first
+
+Reading: the Route B tree, the Lean sources and the bus are yours to read freely.
+For the rest of `docs/`, read what a task actually needs and say which file you
+opened; the mirror exists so this is rarely necessary.
 
 W3. YOU CANNOT VERIFY — SAY SO EVERY TIME
 You have no Lean toolchain, no `lake`, no Mathlib. Writing a file is not
