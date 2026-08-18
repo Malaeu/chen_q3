@@ -2608,6 +2608,10 @@ G1, G3, Route B promotion и RH остаются открыты.
 spectral carrier и честно строит обе необходимые моды; повторять две отдельные
 цепочки или вводить parallel pair не нужно.
 
+**Что отвергли и почему:** две раздельные theorem chains и новый parallel pair
+wrapper: они дублируют один параметризованный constructor и создают лишнюю точку
+расхождения с production `ProlatePair`.
+
 **Техника:** carrier-to-literal-Schur singularity, positive determinant/root
 factor, two root-conditioned normalized Ferrers constructors, strict carrier
 order below `20`, existing physical scaling.
@@ -2620,7 +2624,7 @@ order below `20`, existing physical scaling.
 zero-flux endpoint domain, then derive restricted finite-Fourier proportionality
 without assuming global `C2`; zero counts and Lemma 7.2 remain separate.
 
-**Адрес:**
+**Адреса:**
 `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_MODE_ZERO_FOUR_SELECTED_FERRERS_PHYSICAL_CLOSEOUT_2026-08-15.md`.
 
 **Граница:**
@@ -2639,6 +2643,10 @@ divergence-form ODE и двумя zero-flux limits.
 interface strengthening. FTC на произведениях требует интегрируемость уже
 взвешенной производной, а не самой потенциально плохой endpoint derivative.
 
+**Что отвергли и почему:** global `C2` strengthening: оно не следует из
+текущего source object и подменяет реальную zero-flux endpoint domain более
+сильной недоказанной гипотезой.
+
 **Техника:** два FTC product identities, exact endpoint cancellation, Tietze
 extension только для reuse differentiation-under-integral, kernel prolate swap.
 
@@ -2650,7 +2658,7 @@ standard only.
 scalar proportionality/uniqueness. Zero counts, scalar sign/order and Lemma 7.2
 remain separate.
 
-**Адрес:**
+**Адреса:**
 `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_ENDPOINT_FLUX_FOURIER_EIGEN_TRANSPORT_CLOSEOUT_2026-08-15.md`.
 
 **Граница:**
