@@ -344,8 +344,9 @@ for chain, k, n in rows:
     total += k
     print(f"  {gate:14s} канатов {k}  ({n-k}/{n} закреплено)  {chain}")
 print(f"  {'':14s} измерено канатов всего: {total}")
-print("  НЕСОСЧИТАНО: опора G5 (вход CenteredTrialCriticalMomentRatio без дороги)"
-      " · крепление G6->SlotS2 (ребра нет)")
+print("  G5: 2 каната, подтверждено ядром 19.08 — равномерный моментный бюджет"
+      " + PairCofinal (ОБЩИЙ канат с G6: поле CanonicalData)")
+print("  НЕСОСЧИТАНО: крепление G6->SlotS2 (ребра нет; вопрос В3 у судьи)")
 con.close()
 PYEOF
 
