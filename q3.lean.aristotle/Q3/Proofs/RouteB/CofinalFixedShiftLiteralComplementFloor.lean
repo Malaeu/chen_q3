@@ -202,7 +202,11 @@ theorem sourceCCMFixedShiftFloorMatrix_isHermitian
             (1 : Matrix (CCMModeFinite i.N) (CCMModeFinite i.N) ℂ)) *
         Q -
       (beta : ℂ) • Q).IsHermitian
-  exact hblock.sub (hQ.smul (by simp))
+  have hsmulQ : ((beta : ℂ) • Q).IsHermitian := by
+    show ((beta : ℂ) • Q)ᴴ = (beta : ℂ) • Q
+    rw [Matrix.conjTranspose_smul, hQ.eq]
+    simp
+  exact hblock.sub hsmulQ
 
 /-- Canonical Schur/Feshbach certificate for one literal fixed-shift cell.
 
@@ -247,7 +251,7 @@ theorem sourceCCMComplexTrialFixedShiftFloor_of_schurBlocks
   have hFrom :
       (Matrix.fromBlocks R.toBlocks₁₁ R.toBlocks₁₂
         R.toBlocks₁₂ᴴ R.toBlocks₂₂).PosSemidef :=
-    (Matrix.PosSemidef.fromBlocks₂₂
+    (Matrix.PosDef.fromBlocks₂₂
       R.toBlocks₁₁ R.toBlocks₁₂ hTail').2 hSchur'
   have hR : R.PosSemidef := by
     simpa only [hCross, Matrix.fromBlocks_toBlocks] using hFrom
@@ -298,8 +302,12 @@ def goal058SchurHeadCollapseD : Matrix (Fin 1) (Fin 1) ℝ := !![1]
 /-- The model tail block is strictly positive. -/
 theorem goal058SchurHeadCollapse_tail_posDef :
     goal058SchurHeadCollapseD.PosDef := by
-  simpa [goal058SchurHeadCollapseD] using
-    (Matrix.PosDef.one : (1 : Matrix (Fin 1) (Fin 1) ℝ).PosDef)
+  have hone : goal058SchurHeadCollapseD = (1 : Matrix (Fin 1) (Fin 1) ℝ) := by
+    ext i j
+    fin_cases i <;> fin_cases j <;>
+      simp [goal058SchurHeadCollapseD, Matrix.one_apply]
+  rw [hone]
+  exact Matrix.PosDef.one
 
 /-- A positive tail alone does not certify the full block: a negative head
 direction survives.  Therefore the corrected-head Schur sign in the cofinal
