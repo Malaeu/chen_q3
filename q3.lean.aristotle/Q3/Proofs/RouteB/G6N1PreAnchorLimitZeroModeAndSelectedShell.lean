@@ -341,79 +341,209 @@ structure SelectedProlateCofinalSourceData where
             (index k) (prolateCombination (pair k)) z)
       centeredXi atTop centeredCriticalStrip
 
-/-- Tail shift tends to infinity. -/
-private theorem tendsto_nat_add_atTop (start : ℕ) :
-    Tendsto (fun k : ℕ => start + k) atTop atTop := by
+/-- First index of a tail on which the pre-anchor central value is nonzero. -/
+private noncomputable def preAnchorTailStart
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D) : ℕ :=
+  Classical.choose
+    (eventually_atTop.1 (eventually_preAnchorGwin_zero_ne D P))
+
+/-- Every index at or beyond the selected start has nonzero pre-anchor center. -/
+private theorem preAnchorTailStart_spec
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D) :
+    ∀ k ≥ preAnchorTailStart D P,
+      preAnchorGwinTransformCoordinate
+        (D.index k) (prolateCombination (D.pair k)) 0 ≠ 0 := by
+  simpa [preAnchorTailStart] using
+    (Classical.choose_spec
+      (eventually_atTop.1 (eventually_preAnchorGwin_zero_ne D P)))
+
+/-- The precommitted finite-prefix deletion. -/
+private noncomputable def preAnchorTailShift
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D) : ℕ → ℕ :=
+  fun k => preAnchorTailStart D P + k
+
+/-- Arithmetic floor 1: the selected start is below every shifted index. -/
+private theorem preAnchorTailStart_le_shift
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D)
+    (k : ℕ) :
+    preAnchorTailStart D P ≤ preAnchorTailShift D P k := by
+  unfold preAnchorTailShift
+  omega
+
+/-- Arithmetic floor 2: the shifted path dominates the original index. -/
+private theorem preAnchorTailIndex_le_shift
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D)
+    (k : ℕ) :
+    k ≤ preAnchorTailShift D P k := by
+  unfold preAnchorTailShift
+  omega
+
+/-- The precommitted finite-prefix deletion remains cofinal. -/
+private theorem preAnchorTailShift_tendsto
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D) :
+    Tendsto (preAnchorTailShift D P) atTop atTop := by
   refine tendsto_atTop.2 ?_
   intro b
   filter_upwards [eventually_ge_atTop b] with k hk
-  omega
+  exact hk.trans (preAnchorTailIndex_le_shift D P k)
+
+/-- Exact selected tail index. -/
+private noncomputable def preAnchorTailIndex
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D)
+    (k : ℕ) : PairIndex :=
+  D.index (preAnchorTailShift D P k)
+
+/-- Exact selected tail prolate pair. -/
+private noncomputable def preAnchorTailPair
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D)
+    (k : ℕ) : ProlatePair :=
+  D.pair (preAnchorTailShift D P k)
+
+/-- The `m` coordinate remains cofinal after deleting the finite prefix. -/
+private theorem preAnchorTail_mCofinal
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D) :
+    Tendsto (fun k => (preAnchorTailIndex D P k).m) atTop atTop := by
+  exact D.mCofinal.comp (preAnchorTailShift_tendsto D P)
+
+/-- The `N` coordinate remains cofinal after deleting the finite prefix. -/
+private theorem preAnchorTail_nCofinal
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D) :
+    Tendsto (fun k => (preAnchorTailIndex D P k).N) atTop atTop := by
+  exact D.nCofinal.comp (preAnchorTailShift_tendsto D P)
+
+/-- The source bandwidth identity survives the finite-prefix deletion. -/
+private theorem preAnchorTail_lambda_eq
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D)
+    (k : ℕ) :
+    (preAnchorTailPair D P k).pw.lambda =
+      lambda_m (preAnchorTailIndex D P k) := by
+  simpa only [preAnchorTailPair, preAnchorTailIndex] using
+    D.lambda_eq (preAnchorTailShift D P k)
+
+/-- The exact `E_star` membership survives the finite-prefix deletion. -/
+private theorem preAnchorTail_eStar_memLp
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D)
+    (k : ℕ) :
+    MemLp (E_star (prolateCombination (preAnchorTailPair D P k))) 2
+      (dStar.restrict (I_m (preAnchorTailIndex D P k))) := by
+  simpa only [preAnchorTailPair, preAnchorTailIndex] using
+    D.eStar_memLp (preAnchorTailShift D P k)
+
+/-- The selected tail has a nonzero pre-anchor central value at every index. -/
+private theorem preAnchorTail_gwin_zero_ne
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D)
+    (k : ℕ) :
+    preAnchorGwinTransformCoordinate
+      (preAnchorTailIndex D P k)
+      (prolateCombination (preAnchorTailPair D P k)) 0 ≠ 0 := by
+  have hsource :=
+    preAnchorTailStart_spec D P
+      (preAnchorTailShift D P k)
+      (preAnchorTailStart_le_shift D P k)
+  simpa only [preAnchorTailIndex, preAnchorTailPair] using hsource
+
+/-- Zero-mode preservation turns the selected pre-anchor center into
+`TrialNonzero`. -/
+private theorem preAnchorTail_trialNonzero
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D)
+    (k : ℕ) :
+    TrialNonzero
+      (preAnchorTailIndex D P k)
+      (prolateCombination (preAnchorTailPair D P k))
+      (preAnchorTail_eStar_memLp D P k) :=
+  trialNonzero_of_preAnchorGwin_zero_ne
+    (preAnchorTailIndex D P k)
+    (prolateCombination (preAnchorTailPair D P k))
+    (preAnchorTail_eStar_memLp D P k)
+    (preAnchorTail_gwin_zero_ne D P k)
+
+/-- The exact normalized finite raw transform is nonzero at the selected center. -/
+private theorem preAnchorTail_rawZeroNonzero
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D)
+    (k : ℕ) :
+    preAnchorRawTransformCoordinate
+      (preAnchorTailIndex D P k)
+      (prolateCombination (preAnchorTailPair D P k))
+      (preAnchorTail_eStar_memLp D P k)
+      (preAnchorTail_trialNonzero D P k) 0 ≠ 0 :=
+  preAnchorRawTransformCoordinate_zero_ne
+    (preAnchorTailIndex D P k)
+    (prolateCombination (preAnchorTailPair D P k))
+    (preAnchorTail_eStar_memLp D P k)
+    (preAnchorTail_trialNonzero D P k)
+    (preAnchorTail_gwin_zero_ne D P k)
+
+/-- The source scale restricted to the selected tail. -/
+private noncomputable def preAnchorTailSourceScale
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D)
+    (k : ℕ) : ℂ :=
+  P.sourceScale (preAnchorTailShift D P k)
+
+/-- The selected tail source scale remains nonzero. -/
+private theorem preAnchorTailSourceScale_ne
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D)
+    (k : ℕ) :
+    preAnchorTailSourceScale D P k ≠ 0 := by
+  simpa only [preAnchorTailSourceScale] using
+    P.sourceScale_ne (preAnchorTailShift D P k)
+
+/-- Local uniform convergence survives the precommitted finite-prefix deletion. -/
+private theorem preAnchorTail_muntzLimit
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D) :
+    TendstoLocallyUniformlyOn
+      (fun k z =>
+        preAnchorTailSourceScale D P k *
+          preAnchorGwinTransformCoordinate
+            (preAnchorTailIndex D P k)
+            (prolateCombination (preAnchorTailPair D P k)) z)
+      centeredXi atTop centeredCriticalStrip := by
+  rw [tendstoLocallyUniformlyOn_iff_forall_isCompact
+    isOpen_centeredCriticalStrip]
+  intro K hKU hK
+  have hbase :=
+    (tendstoLocallyUniformlyOn_iff_forall_isCompact
+      isOpen_centeredCriticalStrip).mp P.convergence K hKU hK
+  intro u hu
+  have htail := (preAnchorTailShift_tendsto D P) (hbase u hu)
+  simpa only [preAnchorTailSourceScale, preAnchorTailIndex,
+    preAnchorTailPair] using htail
 
 /-- Discarding the finite prefix selected by eventual central nonvanishing
-constructs the full source-locked selected shell. -/
+constructs the full source-locked selected shell.  Every dependent field is
+supplied by a separately kernel-checked theorem floor. -/
 noncomputable def selectedProlateCofinalSourceDataOfPreAnchorPort
     (D : SelectedProlatePreAnchorData)
     (P : CCMLemma73PreAnchorPort D) :
-    SelectedProlateCofinalSourceData := by
-  let hEventually :
-      ∃ start : ℕ, ∀ k ≥ start,
-        preAnchorGwinTransformCoordinate
-          (D.index k) (prolateCombination (D.pair k)) 0 ≠ 0 :=
-    eventually_atTop.1 (eventually_preAnchorGwin_zero_ne D P)
-  let start : ℕ := Classical.choose hEventually
-  have hstart : ∀ k ≥ start,
-      preAnchorGwinTransformCoordinate
-        (D.index k) (prolateCombination (D.pair k)) 0 ≠ 0 := by
-    simpa [start] using Classical.choose_spec hEventually
-  let shift : ℕ → ℕ := fun k => start + k
-  have hshift : Tendsto shift atTop atTop := by
-    simpa [shift] using tendsto_nat_add_atTop start
-  have htrial : ∀ k,
-      TrialNonzero (D.index (shift k))
-        (prolateCombination (D.pair (shift k)))
-        (D.eStar_memLp (shift k)) := fun k =>
-    trialNonzero_of_preAnchorGwin_zero_ne
-      (D.index (shift k))
-      (prolateCombination (D.pair (shift k)))
-      (D.eStar_memLp (shift k))
-      (hstart (shift k) (by omega))
-  have hraw : ∀ k,
-      preAnchorRawTransformCoordinate
-        (D.index (shift k)) (prolateCombination (D.pair (shift k)))
-        (D.eStar_memLp (shift k)) (htrial k) 0 ≠ 0 := fun k =>
-    preAnchorRawTransformCoordinate_zero_ne
-      (D.index (shift k))
-      (prolateCombination (D.pair (shift k)))
-      (D.eStar_memLp (shift k))
-      (htrial k)
-      (hstart (shift k) (by omega))
-  have hlimit :
-      TendstoLocallyUniformlyOn
-        (fun k z =>
-          P.sourceScale (shift k) *
-            preAnchorGwinTransformCoordinate
-              (D.index (shift k)) (prolateCombination (D.pair (shift k))) z)
-        centeredXi atTop centeredCriticalStrip := by
-    rw [tendstoLocallyUniformlyOn_iff_forall_isCompact
-      isOpen_centeredCriticalStrip]
-    intro K hKU hK
-    have hbase :=
-      (tendstoLocallyUniformlyOn_iff_forall_isCompact
-        isOpen_centeredCriticalStrip).mp P.convergence K hKU hK
-    intro u hu
-    exact hshift (hbase u hu)
-  exact {
-    index := fun k => D.index (shift k)
-    pair := fun k => D.pair (shift k)
-    mCofinal := D.mCofinal.comp hshift
-    nCofinal := D.nCofinal.comp hshift
-    lambda_eq := fun k => D.lambda_eq (shift k)
-    eStar_memLp := fun k => D.eStar_memLp (shift k)
-    trialNonzero := htrial
-    rawZeroNonzero := hraw
-    sourceScale := fun k => P.sourceScale (shift k)
-    sourceScale_ne := fun k => P.sourceScale_ne (shift k)
-    muntzLimit := hlimit }
+    SelectedProlateCofinalSourceData where
+  index := preAnchorTailIndex D P
+  pair := preAnchorTailPair D P
+  mCofinal := preAnchorTail_mCofinal D P
+  nCofinal := preAnchorTail_nCofinal D P
+  lambda_eq := preAnchorTail_lambda_eq D P
+  eStar_memLp := preAnchorTail_eStar_memLp D P
+  trialNonzero := preAnchorTail_trialNonzero D P
+  rawZeroNonzero := preAnchorTail_rawZeroNonzero D P
+  sourceScale := preAnchorTailSourceScale D P
+  sourceScale_ne := preAnchorTailSourceScale_ne D P
+  muntzLimit := preAnchorTail_muntzLimit D P
 
 namespace SelectedProlateCofinalSourceData
 
@@ -440,7 +570,7 @@ noncomputable def centeredPstar
     (D : SelectedProlateCofinalSourceData) (k : ℕ) :
     D.centeredPstar k 0 = centeredXi 0 := by
   unfold centeredPstar
-  field_simp [D.rawZeroNonzero k]
+  exact div_mul_cancel₀ (centeredXi 0) (D.rawZeroNonzero k)
 
 /-- The new terminal selected view.  The generic cofinal proposition records
 both literal source coordinates and `parent = extract = id`. -/
