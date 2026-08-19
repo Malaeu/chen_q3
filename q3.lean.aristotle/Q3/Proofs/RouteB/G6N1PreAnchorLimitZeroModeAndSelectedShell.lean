@@ -504,7 +504,55 @@ private theorem preAnchorTailSourceScale_ne
   simpa only [preAnchorTailSourceScale] using
     P.sourceScale_ne (preAnchorTailShift D P k)
 
-/-- Local uniform convergence survives the precommitted finite-prefix deletion. -/
+/-- Pulling a locally uniform sequence back along a cofinal map on
+`ℕ` preserves the same locally uniform limit.  This proof stays at the
+defining filter level and does not expand compact-local equivalences. -/
+private theorem tendstoLocallyUniformlyOn_atTop_precomp
+    {F : ℕ → ℂ → ℂ}
+    {f : ℂ → ℂ}
+    {s : Set ℂ}
+    (hF : TendstoLocallyUniformlyOn F f atTop s)
+    {shift : ℕ → ℕ}
+    (hshift : Tendsto shift atTop atTop) :
+    TendstoLocallyUniformlyOn
+      (fun k z => F (shift k) z) f atTop s := by
+  intro u hu x hx
+  obtain ⟨t, ht, hEventually⟩ := hF u hu x hx
+  exact ⟨t, ht, hshift hEventually⟩
+
+/-- First kernel floor: apply the generic precomposition theorem to the
+literal pre-anchor paper family and the precommitted tail shift. -/
+private theorem preAnchorTail_muntzLimit_shifted
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D) :
+    TendstoLocallyUniformlyOn
+      (fun k z =>
+        P.sourceScale (preAnchorTailShift D P k) *
+          preAnchorGwinTransformCoordinate
+            (D.index (preAnchorTailShift D P k))
+            (prolateCombination
+              (D.pair (preAnchorTailShift D P k))) z)
+      centeredXi atTop centeredCriticalStrip := by
+  exact tendstoLocallyUniformlyOn_atTop_precomp
+    P.convergence (preAnchorTailShift_tendsto D P)
+
+/-- Second kernel floor: replace the raw shifted index and pair by the named
+tail objects. -/
+private theorem preAnchorTail_muntzLimit_indexed
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D) :
+    TendstoLocallyUniformlyOn
+      (fun k z =>
+        P.sourceScale (preAnchorTailShift D P k) *
+          preAnchorGwinTransformCoordinate
+            (preAnchorTailIndex D P k)
+            (prolateCombination (preAnchorTailPair D P k)) z)
+      centeredXi atTop centeredCriticalStrip := by
+  simpa only [preAnchorTailIndex, preAnchorTailPair] using
+    preAnchorTail_muntzLimit_shifted D P
+
+/-- Final kernel floor: expose the selected tail scale required by the record
+field while reusing the already-certified indexed convergence theorem. -/
 private theorem preAnchorTail_muntzLimit
     (D : SelectedProlatePreAnchorData)
     (P : CCMLemma73PreAnchorPort D) :
@@ -515,16 +563,8 @@ private theorem preAnchorTail_muntzLimit
             (preAnchorTailIndex D P k)
             (prolateCombination (preAnchorTailPair D P k)) z)
       centeredXi atTop centeredCriticalStrip := by
-  rw [tendstoLocallyUniformlyOn_iff_forall_isCompact
-    isOpen_centeredCriticalStrip]
-  intro K hKU hK
-  have hbase :=
-    (tendstoLocallyUniformlyOn_iff_forall_isCompact
-      isOpen_centeredCriticalStrip).mp P.convergence K hKU hK
-  intro u hu
-  have htail := (preAnchorTailShift_tendsto D P) (hbase u hu)
-  simpa only [preAnchorTailSourceScale, preAnchorTailIndex,
-    preAnchorTailPair] using htail
+  simpa only [preAnchorTailSourceScale] using
+    preAnchorTail_muntzLimit_indexed D P
 
 /-- Discarding the finite prefix selected by eventual central nonvanishing
 constructs the full source-locked selected shell.  Every dependent field is
