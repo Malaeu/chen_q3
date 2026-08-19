@@ -171,7 +171,8 @@ theorem goal058FixedShiftMutationQComplement_fixes_Y :
     norm_num [complexTrialLineComplement, complexTrialLineProjection,
       goal058FixedShiftMutationQ, goal058FixedShiftMutationY,
       Matrix.sub_mulVec, Matrix.one_mulVec, Matrix.mulVec,
-      Matrix.vecMulVec_apply, dotProduct, Fin.sum_univ_succ]
+      Matrix.vecMulVec_apply, dotProduct, Fin.sum_univ_succ,
+      Matrix.one_apply, Fin.succ_zero_eq_one]
 
 theorem goal058FixedShiftMutation_shiftedBlock_kills_Y :
     let Q := complexTrialLineComplement goal058FixedShiftMutationQ
