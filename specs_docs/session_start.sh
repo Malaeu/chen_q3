@@ -370,6 +370,19 @@ print("    флаг: SIMPLE_EVEN:15 ~ N1 может дать 17->16 (решит�
 con.close()
 PYEOF
 
+# ── 10a2. Непрожатые вердикты: мигратор отстал от шины? ────────────────────────
+# Дыра найдена 2026-08-20: шаг «прогнать мигратор» вшит в петлю кондуктора
+# (когда шину коммитим МЫ), но Прошка пушит вердикты сам — на pull-стороне
+# триггера не было, и два вердикта пролежали непрожатыми. Детектор read-only:
+# кричит, боевой прогон — с per-action OK (knowledge.db бинарник в git).
+hr
+echo "МИГРАТОР ПРОТИВ ШИНЫ"
+MIG_OUT="$(.venv/bin/python orchestrator/kb_migrate_verdicts.py --dry-run 2>/dev/null | rg 'new strategy rows|supplier-ledger rows|new verdict-kill' )"
+printf '%s\n' "$MIG_OUT" | sed 's/^/  /'
+if printf '%s' "$MIG_OUT" | rg -q ': *[1-9]'; then
+  note "мигратор отстал от шины — есть непрожатые вердикты: .venv/bin/python orchestrator/kb_migrate_verdicts.py (боевой, с OK владельца)"
+fi
+
 # ── 10b. Записи журнала: обязательные графы заполнены? ─────────────────────────
 # Валидатор существовал с самого начала (kb_migrate_progress_log.parse_entries
 # требует все 8 граф), но жил только внутри pytest, который никто не гоняет на
