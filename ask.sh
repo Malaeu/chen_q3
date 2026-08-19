@@ -62,6 +62,65 @@ if [ -f "$KB" ]; then
   fi
 fi
 
+# ── 2b. Каталог стыковок: кто ПОСТАВЛЯЕТ и кто ТРЕБУЕТ этот вход ─────────────
+# capability.provides/requires — 1157 теорем с входами и выходами. До 2026-08-19
+# таблицу не опрашивал ни один инструмент, и мост строился вокруг готового
+# поставщика (sourceWeilOddTailAmbientCoercive_explicit, доказан 10.08).
+SEARCHED+=("capability (provides/requires — каталог стыковок)")
+if [ -f "$KB" ]; then
+  OUT="$(python3 - "$KB" "$Q" <<'PY'
+import sqlite3, sys
+
+db, query = sys.argv[1:]
+terms = [t for t in query.split() if t]
+if not terms:
+    raise SystemExit(0)
+conn = sqlite3.connect(f"file:{db}?mode=ro", uri=True)
+like = lambda col: " OR ".join(f"lower({col}) LIKE ?" for _ in terms)
+params = [f"%{t.lower()}%" for t in terms]
+
+sup = conn.execute(
+    f"select theorem, file, line, provides from capability "
+    f"where {like('provides')} OR {like('theorem')} limit 5",
+    params + params).fetchall()
+dem = conn.execute(
+    f"select theorem, requires from capability "
+    f"where {like('requires')} AND requires <> '' limit 5",
+    params).fetchall()
+asm = conn.execute(
+    f"select chain, step, requirement, status from assembly where {like('requirement')} limit 4",
+    params).fetchall()
+cex = conn.execute(
+    f"select name, protects, breaks_how from counterexample where {like('protects')} limit 3",
+    params).fetchall()
+
+if sup:
+    print("ПОСТАВЛЯЮТ (provides):")
+    for t, f, l, p in sup:
+        print(f"  {t}  {f}:{l}")
+        print(f"    -> {p[:110]}")
+if dem:
+    print("ТРЕБУЮТ (requires):")
+    for t, r in dem:
+        print(f"  {t}  <-  {r[:100]}")
+if asm:
+    print("ШАГИ СБОРКИ (assembly):")
+    for c, s, r, st in asm:
+        print(f"  [{st}] {c} шаг {s}: {r[:90]}")
+if cex:
+    print("КОНТРПРИМЕРЫ (что охраняют):")
+    for n, p, b in cex:
+        print(f"  {n}: охраняет {p[:70]} · ломает {b[:60]}")
+conn.close()
+PY
+)"
+  if [ -n "$OUT" ]; then
+    hdr "СТЫКОВКИ — входы и выходы"
+    printf '%s\n' "$OUT"
+    HITS=$((HITS + 1))
+  fi
+fi
+
 # ── 3. Литобзор: ссылки, карточки, PDF ───────────────────────────────────────
 SEARCHED+=("litreview (REFERENCES.md · *_CARDS.md · references.bib · pdfs/)")
 LIT="docs/routeB_bus/litreview"
