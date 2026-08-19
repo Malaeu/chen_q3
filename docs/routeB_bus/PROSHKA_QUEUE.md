@@ -1007,4 +1007,17 @@ preAnchorFullMellinCoordinate_eq_preAnchorGwinTransformCoordinate.
 
 ---
 
+## ЗАПРОС REQ-2026-08-20-D — этажи обитателя порта Lemma 7.3
+
+`REQ-2026-08-20-D` · `STATUS: OPEN`
+
+Разложить CCM_LEMMA_7_3_PREANCHOR_PORT_INHABITANT на этажи (как N2 и
+kernel-floors): бумага 2511.22755 на полке, поле P.convergence должно стать
+теоремой. На этаж: character, CLOSES/OPENS, зависимость от пакета Codex
+(SELECTED_PROLATE_PREANCHOR_DATA_INHABITANT, TASK у Codex). Честный OPEN
+этажа, не выводимого из бумаги без новой посылки, — результат. Передано в
+чат 20.08 утром.
+
+---
+
 *Пусто ниже — новые вопросы дописывать в хвост.*
