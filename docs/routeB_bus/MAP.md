@@ -501,7 +501,7 @@ G0 объект/координата/нормировка  →  G1 ground-пак
 | **G3 / concrete H2b supplier** | M0 + M2 + M3 и при необходимости M4 → `Theorem510RealZeroBridge` | 🔓 `selectedFamily_realZeros` уже ✅ conditional; **M1 закрыт в Lean** (гол 051); у `Theorem510RealZeroBridge` на диске **ноль поставщиков** |
 | **G5 / concrete S1/Montel supply** | Один вход: `CenteredTrialCriticalMomentRatio` | 🔓 из него **одного** уже выведены и Montel-gate (`D0CriticalMomentMontelGate.lean:15`), и ненулевой cluster (`D0CriticalMomentCanonicalCluster.lean:9`). Самый узкий фронт |
 | **G6 / полная S2-стена Мюнц→S2** | Идентификация `D.limit = c·Ξ·γ` + связка цепочки `D0Pstar*` со `SlotS2` | 🔓 gauge ✅ и ненулевая константа ✅ (`S2GaugeNonvanishing.lean:34,101`), K8-контракт разряжен ✅; открыты `SelectedTrialNormalizerBounded` (поставщиков ноль), физический хвост/полоса и существование `ProlateCanonicalSourceData`; ребра к `SlotS2` нет |
-| **058 / шаг 4 — трекинг projected trial** | «та же `F_j` отслеживает projected prolate trial локально равномерно» → `G3c` | ⏳ мост собран на **литеральных** объектах: `LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail` закрыт ядром 2026-08-19, все 4 теоремы `[propext, Classical.choice, Quot.sound]`. Оператор `sourceCCMFiniteMatrix`, trial `sourceCCMComplexRow`, невязка `sourceCCMFiniteResidual`, `beta` связана с тем же оператором через `sourceCCMComplexTrialComplementFloor`, расписание production `parent (extract k)`, хвост литеральный. Свободного `gap` больше нет. **Поставщиков четыре и все отсутствуют:** построение complement-floor, компактный kernel-rate, затухание Мюнц-хвоста, crosswalk к `Theorem510RealZeroBridge`. Два generic-предшественника (`SameFamilyGroundTrialCompositionCore`, `CofinalSourceResidualGapTransformTailBudget`) закрыты 2026-08-18 |
+| **058 / шаг 4 — трекинг projected trial** | «та же `F_j` отслеживает projected prolate trial локально равномерно» → `G3c` | ⏳ мост собран на **литеральных** объектах: `LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail` закрыт ядром 2026-08-19, все 4 теоремы `[propext, Classical.choice, Quot.sound]`. Оператор `sourceCCMFiniteMatrix`, trial `sourceCCMComplexRow`, невязка `sourceCCMFiniteResidual`, `beta` связана с тем же оператором через `sourceCCMComplexTrialComplementFloor`, расписание production `parent (extract k)`, хвост литеральный. Свободного `gap` больше нет. **Поставщиков четыре:** complement-floor — построен *конструктор* 2026-08-19, оба его входа открыты; компактный kernel-rate, затухание Мюнц-хвоста и crosswalk к `Theorem510RealZeroBridge` — не начаты. Два generic-предшественника (`SameFamilyGroundTrialCompositionCore`, `CofinalSourceResidualGapTransformTailBudget`) закрыты 2026-08-18 |
 
 **Состояние 058/шаг 4 на 2026-08-19.** Три границы, записанные 18 августа против
 generic-слоя, закрыты конструкцией литерального моста: свободный `gap` устранён —
@@ -510,10 +510,26 @@ generic-слоя, закрыты конструкцией литеральног
 показывает plant `goal058NormalizerCollapse_overlap_zero_and_defect_one` — при дефекте
 единица перекрытие обращается в ноль.
 
-Чего зелёная компиляция **не** даёт: сам complement-floor не построен, компактный
-kernel-rate не доказан, литеральное затухание Мюнц-хвоста не доказано, crosswalk к
-`Theorem510RealZeroBridge` не сделан. Мост связывает поставщиков, поставщиков нет.
-Писать «шаг 4 закрыт» по-прежнему нельзя — закрыта композиция, а не аналитика.
+Чего зелёная компиляция **не** даёт: компактный kernel-rate не доказан, литеральное
+затухание Мюнц-хвоста не доказано, crosswalk к `Theorem510RealZeroBridge` не сделан.
+Мост связывает поставщиков, поставщиков нет. Писать «шаг 4 закрыт» по-прежнему
+нельзя — закрыта композиция, а не аналитика.
+
+**Первый поставщик, 2026-08-19: построен конструктор, не сам поставщик.**
+`LiteralCCMComplementFloorConstruction` закрыт ядром, все 4 теоремы чистые. Точное
+тождество `B(a) = B(a*) + (a* − a)·Q` даёт обменный курс: единица ошибки сдвига
+стоит единицы floor. Отсюда равномерный floor при фиксированном сдвиге плюс
+близость `|a_k − a*| ≤ β*/2` дают `B(a_k) ≥ (β*/2)·Q` на production-расписании.
+Plant `goal058FixedShiftMutation_no_positive_floor` опровергает перенос floor без
+оплаты сдвига: при `K = diag(0,1)`, `q = e₀` дополнение несёт энергию 1 при сдвиге 0
+и обнуляет `y` при сдвиге 1. **Оба входа конструктора открыты** —
+`COFINAL_FIXED_SHIFT_LITERAL_COMPLEMENT_FLOOR` (та самая спектральная стена) и
+`SOURCE_RAYLEIGH_PROXIMITY_TO_FIXED_SHIFT`.
+
+*Наблюдение гейта, стоит помнить.* На первом прогоне три конструкционные теоремы
+были уже чистыми, а `sorryAx` нёс **только plant**. Заголовок читался бы как
+доказанный при отсутствующей защите. Читать профиль аксиом каждой печатаемой
+теоремы, а не только главной.
 
 **Чего НЕ делать (из §6):** не пытаться доказывать `∀S`-форму `SelectedProjectionTailDecay`
 — убита дважды, с контрпримером; не выводить полосу из `PairCofinal`; не гонять численные
