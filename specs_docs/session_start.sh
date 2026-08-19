@@ -338,12 +338,27 @@ GATE = {"PSD_CERTIFICATE_FOR_CCM_CELL": "G2",
 rows = con.execute("""select chain,
     sum(case when status!='READY' then 1 else 0 end), count(*)
     from assembly group by chain order by 2""").fetchall()
+def origin(chain):
+    # происхождение ЗАКРЕПЛЁННЫХ канатов: кто доказал (вопрос владельца 19.08)
+    ours = ml = data = 0
+    for (sf,) in con.execute(
+            "select coalesce(supplier_file,'') from assembly "
+            "where chain=? and status='READY'", (chain,)):
+        if sf.startswith("q3.lean.aristotle"): ours += 1
+        elif ".lake/packages/mathlib" in sf:   ml += 1
+        else:                                   data += 1
+    parts = [f"наш Lean {ours}"]
+    if ml:   parts.append(f"Mathlib {ml}")
+    if data: parts.append(f"данные {data}")
+    return " · ".join(parts)
 total = 0
 for chain, k, n in rows:
     gate = GATE.get(chain, "?")
     total += k
-    print(f"  {gate:14s} канатов {k}  ({n-k}/{n} закреплено)  {chain}")
-print(f"  {'':14s} измерено канатов всего: {total}")
+    print(f"  {gate:14s} всего канатов {n} · закреплено {n-k} ({origin(chain)}) · ОСТАЛОСЬ НАТЯНУТЬ {k}")
+    print(f"  {'':14s}   [{chain}]")
+print(f"  {'':14s} осталось натянуть по всем дорогам: {total}")
+print("  бумажные движки (Connes и др.) канатами НЕ считаются, пока не формализованы")
 print("  G5: 2 каната, подтверждено ядром 19.08 — равномерный моментный бюджет"
       " + PairCofinal (ОБЩИЙ канат с G6: поле CanonicalData)")
 print("  НЕСОСЧИТАНО: крепление G6->SlotS2 (ребра нет; вопрос В3 у судьи)")

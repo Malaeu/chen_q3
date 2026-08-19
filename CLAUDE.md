@@ -41,7 +41,12 @@ docs/cartographer/TOOLS.yaml     реестр инструментов: вклю
 docs/RECORDING_RULES.md          как писать: 4 правила, 8 граф записи
 docs/GLOSSARY.md                 словарь обозначений для не-математика
 docs/cartographer/brief.py       состояние графа из базы   (python3)
-docs/cartographer/cheap.py       очередь незакрытых шагов по цене
+docs/cartographer/cheap.py       очередь незакрытых шагов по цене + k-отчёт опор
+docs/cartographer/CHAIN_GAP_DESIGN.md  микроскоп разрывов: 7 стадий, измерения опор.
+                                 Язык владельца: КРЫША (доказана, бетон) стоит на
+                                 ОПОРАХ G1-G6; опоры держатся КАНАТАМИ (шаги дорог);
+                                 состояние объяснять только так, с числами
+                                 «всего · закреплено · осталось натянуть»
 docs/routeB_bus/MAP.md           карта Route B
 docs/CHAT_DIGESTS.md             откуда взялись идеи, включая снятые
 docs/routeB_bus/PROSHKA_QUEUE.md накопительная очередь к судье
