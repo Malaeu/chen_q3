@@ -993,7 +993,7 @@ Lean не писать — измерительный вопрос.
 
 ## ЗАПРОС REQ-2026-08-20-C — почини G6N1-источник: 36 ошибок, гейт красный
 
-`REQ-2026-08-20-C` · `STATUS: OPEN`
+`REQ-2026-08-20-C` · `STATUS: ANSWERED` → четыре круга починки, зелёный гейт `LINUX_GATE_G6N1_PREANCHOR_GREEN_2026-08-20.md`
 
 Твой G6N1PreAnchorLimitZeroModeAndSelectedShell.lean (ccb664b6) не компилируется:
 36 ошибок, sorryAx в шести теоремах из семи, включая главную
