@@ -1009,7 +1009,7 @@ preAnchorFullMellinCoordinate_eq_preAnchorGwinTransformCoordinate.
 
 ## ЗАПРОС REQ-2026-08-20-D — этажи обитателя порта Lemma 7.3
 
-`REQ-2026-08-20-D` · `STATUS: OPEN`
+`REQ-2026-08-20-D` · `STATUS: ANSWERED` — вердикт PROSHKA_VERDICT_CCM_LEMMA_7_3_PREANCHOR_PORT_FLOORS_2026-08-20.md (26881a42): 9 этажей L73.0-L73.8, стена L73.2, параллельный фронт L73.5
 
 Разложить CCM_LEMMA_7_3_PREANCHOR_PORT_INHABITANT на этажи (как N2 и
 kernel-floors): бумага 2511.22755 на полке, поле P.convergence должно стать
