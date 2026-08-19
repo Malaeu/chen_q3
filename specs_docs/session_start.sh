@@ -320,6 +320,35 @@ else
   [ "$dirty" -gt 0 ] && echo "  плюс незакоммиченных .lean в дереве: $dirty"
 fi
 
+# ── 10a. Опоры и канаты: сколько шагов до жёсткости каждой опоры крыши ─────────
+# Язык владельца (2026-08-19): крыша rh_of_canonical_strip_slots стоит на шести
+# опорах G1-G6 (через И); канаты = незакрытые шаги дорог снабжения (assembly).
+# Дороги к одной опоре — ИЛИ: платим за одну. Несосчитанные места называются
+# вслух: опора без измеренных канатов хуже опоры с большим k.
+hr
+echo "ОПОРЫ И КАНАТЫ (крыша ждёт: G2 G3 G5 G6 · стоят: G1 G4 · бетон: G7+Гурвиц)"
+.venv/bin/python - 2>/dev/null <<'PYEOF' || echo "  (assembly недоступна)"
+import sqlite3
+con = sqlite3.connect("file:q3.lean.aristotle/aristotle_db/knowledge.db?mode=ro", uri=True)
+# дорога -> опора (сверено по required_by финальных шагов, 2026-08-19)
+GATE = {"PSD_CERTIFICATE_FOR_CCM_CELL": "G2",
+        "SIMPLE_EVEN_GROUND_TO_REAL_ZEROS": "G3",
+        "REALZERO_GROUND_DIAGONAL_TO_XI": "G2+G3 (ИЛИ-дорога, прямо в RH)",
+        "GOAL057_CONTINUUM_NUMERATOR_BRIDGE": "G6"}
+rows = con.execute("""select chain,
+    sum(case when status!='READY' then 1 else 0 end), count(*)
+    from assembly group by chain order by 2""").fetchall()
+total = 0
+for chain, k, n in rows:
+    gate = GATE.get(chain, "?")
+    total += k
+    print(f"  {gate:14s} канатов {k}  ({n-k}/{n} закреплено)  {chain}")
+print(f"  {'':14s} измерено канатов всего: {total}")
+print("  НЕСОСЧИТАНО: опора G5 (вход CenteredTrialCriticalMomentRatio без дороги)"
+      " · крепление G6->SlotS2 (ребра нет)")
+con.close()
+PYEOF
+
 # ── 10b. Записи журнала: обязательные графы заполнены? ─────────────────────────
 # Валидатор существовал с самого начала (kb_migrate_progress_log.parse_entries
 # требует все 8 граф), но жил только внутри pytest, который никто не гоняет на
