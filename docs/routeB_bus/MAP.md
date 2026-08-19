@@ -501,7 +501,21 @@ G0 объект/координата/нормировка  →  G1 ground-пак
 | **G3 / concrete H2b supplier** | M0 + M2 + M3 и при необходимости M4 → `Theorem510RealZeroBridge` | 🔓 `selectedFamily_realZeros` уже ✅ conditional; **M1 закрыт в Lean** (гол 051); у `Theorem510RealZeroBridge` на диске **ноль поставщиков** |
 | **G5 / concrete S1/Montel supply** | Один вход: `CenteredTrialCriticalMomentRatio` | 🔓 из него **одного** уже выведены и Montel-gate (`D0CriticalMomentMontelGate.lean:15`), и ненулевой cluster (`D0CriticalMomentCanonicalCluster.lean:9`). Самый узкий фронт |
 | **G6 / полная S2-стена Мюнц→S2** | Идентификация `D.limit = c·Ξ·γ` + связка цепочки `D0Pstar*` со `SlotS2` | 🔓 gauge ✅ и ненулевая константа ✅ (`S2GaugeNonvanishing.lean:34,101`), K8-контракт разряжен ✅; открыты `SelectedTrialNormalizerBounded` (поставщиков ноль), физический хвост/полоса и существование `ProlateCanonicalSourceData`; ребра к `SlotS2` нет |
-| **058 / шаг 4 — трекинг projected trial** | «та же `F_j` отслеживает projected prolate trial локально равномерно» → `G3c` | ⏳ мост собран на **литеральных** объектах: `LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail` закрыт ядром 2026-08-19, все 4 теоремы `[propext, Classical.choice, Quot.sound]`. Оператор `sourceCCMFiniteMatrix`, trial `sourceCCMComplexRow`, невязка `sourceCCMFiniteResidual`, `beta` связана с тем же оператором через `sourceCCMComplexTrialComplementFloor`, расписание production `parent (extract k)`, хвост литеральный. Свободного `gap` больше нет. **Поставщиков четыре:** complement-floor — построен *конструктор* 2026-08-19, оба его входа открыты; компактный kernel-rate, затухание Мюнц-хвоста и crosswalk к `Theorem510RealZeroBridge` — не начаты. Два generic-предшественника (`SameFamilyGroundTrialCompositionCore`, `CofinalSourceResidualGapTransformTailBudget`) закрыты 2026-08-18 |
+| **058 / шаг 4 — трекинг projected trial** | «та же `F_j` отслеживает projected prolate trial локально равномерно» → `G3c` | ⏳ мост собран на **литеральных** объектах: `LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail` закрыт ядром 2026-08-19, все 4 теоремы `[propext, Classical.choice, Quot.sound]`. Оператор `sourceCCMFiniteMatrix`, trial `sourceCCMComplexRow`, невязка `sourceCCMFiniteResidual`, `beta` связана с тем же оператором через `sourceCCMComplexTrialComplementFloor`, расписание production `parent (extract k)`, хвост литеральный. Свободного `gap` больше нет. **Поставщиков теперь шесть, стена расщепилась, а не пала:** complement-floor — построен *конструктор* и *Schur-мост* 2026-08-19; вместо одной стены встали два сертификата, `CANONICAL_FIXED_SHIFT_TAIL_POSDEF_FAMILY` и `CANONICAL_FIXED_SHIFT_CORRECTED_HEAD_PSD_FAMILY`, оба открыты; плюс `SOURCE_RAYLEIGH_PROXIMITY_TO_FIXED_SHIFT`, компактный kernel-rate, затухание Мюнц-хвоста и crosswalk к `Theorem510RealZeroBridge` — не начаты.
+
+**Schur-мост 2026-08-19.** `CofinalFixedShiftLiteralComplementFloor` закрыт ядром,
+все 6 теорем чистые. Точная матрица `M = Q(K − a*I)Q − βQ` переиндексируется одним
+заранее выбранным split, а голова, связь и хвост — канонические `toBlocks`-проекции
+**той же** матрицы, не сторонние сертификаты. PosDef-хвост плюс PosSemidef-дополнение
+Шура `A − BD⁻¹Bᴴ` дают `M ≥ 0`. Plant `A = [-1]`, `B = [0]`, `D = [1]` подтверждён
+ядром: хвост строго положителен, полный блок — нет. Останавливаться после хвостовой
+коэрцитивности **запрещено доказательством**, а не прозой.
+
+*Новый класс дефекта, впервые за шесть узлов.* Сломалось имя внешней леммы, а не
+своя тактика: заявленный движок `Matrix.PosSemidef.fromBlocks₂₂` не существует —
+лемма живёт в `namespace PosDef`, `Mathlib/LinearAlgebra/Matrix/PosDef.lean:549`,
+с ровно той сигнатурой, что предполагалась. Полка проекта такое не ловит; ловит
+`rg` по исходникам Mathlib. Два generic-предшественника (`SameFamilyGroundTrialCompositionCore`, `CofinalSourceResidualGapTransformTailBudget`) закрыты 2026-08-18 |
 
 **Состояние 058/шаг 4 на 2026-08-19.** Три границы, записанные 18 августа против
 generic-слоя, закрыты конструкцией литерального моста: свободный `gap` устранён —
