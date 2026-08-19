@@ -1,4 +1,4 @@
-# STATUS: CONDITIONAL — CVS FITS THE H2B TYPE BUT NOT THE CURRENT TRIAL VALUE; G5 PREDICTS TWO ROPES; G6 NEEDS A PAPER LIMIT PORT AND A NEW COMPACT-DECAY INPUT
+# STATUS: CONDITIONAL — G3 ENGINE FITS THE TYPE BUT NOT THE CURRENT TRIAL VALUE; G5 COUNT TWO CONFIRMED WITH ROPE CHARACTER CORRECTED; G6 NEEDS ONE PAPER PORT AND ONE NEW COMPACT-DECAY INPUT
 
 ```yaml
 PRIMARY: ADJUDICATE_G3_G5_G6_PILLAR_ROPE_BATCH
@@ -7,11 +7,18 @@ PRIMARY_COUNT: 3
 SOURCE_LOCK:
   REPO: Malaeu/chen_q3
   BRANCH: rh_clean
-  PIN: c91f3a4aa765b80693456b0f01c86ee1888dde3e
+  INPUT_PIN: c91f3a4aa765b80693456b0f01c86ee1888dde3e
   QUEUE_PATH: docs/routeB_bus/PROSHKA_QUEUE.md
   BATCH: 2026-08-19_EVENING
-  CHAIN_GAP_DESIGN_READ: false
-  HEAD_MESSAGE_EXPOSED_PRELIMINARY_G5_COUNT: true
+  CHAIN_GAP_DESIGN_READ_BEFORE_PREDICTION: false
+  INPUT_HEAD_MESSAGE_EXPOSED_PRELIMINARY_G5_COUNT: true
+
+CONCURRENT_RESULT:
+  G5_KERNEL_COMMIT: 73fc75d9ba9cecec00097ea7d526fad1641da141
+  G5_KERNEL_RESULT: TWO_ROPES
+  LANDED_BEFORE_DURABLE_PROSHKA_COMMIT: true
+  PROSHKA_CONVERSATION_PREDICTION_PRECEDED_OBSERVATION_OF_RESULT: true
+  PROSHKA_GIT_PREDICTION_PRECEDED_RESULT: false
 
 DELIVERY:
   DOC_ONLY: true
@@ -35,15 +42,12 @@ V1_G3:
     - G3_CONCRETE_THEOREM510_REAL_ZERO_BRIDGE_SUPPLIER
 
 V2_G5:
-  PREDICTED_MINIMAL_ROPES: 2
-  PREDICTION_PROBABILITY: 0.72
-  ALTERNATIVE_THREE_ROPES_PROBABILITY: 0.24
-  OTHER_COUNT_PROBABILITY: 0.04
+  MEASURED_ROPES: 2
+  ROPE_1: PairCofinal
+  ROPE_1_COST: FREE_WITH_CANONICAL_DATA_WITNESS
+  ROPE_1_SHARED_WITH_G6: true
+  ROPE_2: UNIFORM_CENTERED_CRITICAL_MOMENT_RATIO
   NUMERICAL_FACTS_REQUIRED: 0
-  BLINDNESS_CLASS: THEOREM_SHAPE_INDEPENDENT_COUNT_METADATA_CONTAMINATED
-  ROPES:
-    - CENTERED_WINDOW_WEIGHTED_MOMENT_BUDGET
-    - COFINAL_SOURCE_MASS_TO_CENTER_RATIO
 
 V3_G6:
   VERDICT: EDGE_NOT_BUILDABLE_FROM_CURRENT_REPRESENTATION_LEMMAS_ALONE
@@ -53,24 +57,24 @@ V3_G6:
   FIRST_DEPENDENCY: PROLATE_CANONICAL_SOURCE_DATA_SUPPLY
   FIRST_BY_PRICE_AFTER_OBJECT_LOCK: CCM_LEMMA_7_3_SELECTED_MUNTZ_LIMIT
   FIRST_GENUINELY_NEW_ANALYTIC_WALL: SELECTED_NORMALIZED_GALERKIN_MELLIN_COMPACT_DECAY
-  REMAINS_OPEN:
-    - PROLATE_CANONICAL_SOURCE_DATA_EXISTENCE
-    - SelectedTrialNormalizerBounded
-    - SelectedPhysicalFourierEnergyControl
-    - SelectedPhysicalBandwidthCofinal
-    - G6_S2_D0_SELECTED_FAMILY_MUNTZ_SAME_FAMILY_CROSSWALK
-    - SlotS2
 
-REGISTERED_PREDICTIONS:
+REGISTERED_PREDICTIONS_AND_FATE:
   P_BATCH_G3:
-    statement: no production type declaration must change, but the current trial-valued C cannot be certified by the CvS ground theorem without a new exact value crosswalk
+    statement: no production type declaration must change, but the current trial-valued C cannot be certified by the CvS ground theorem without an exact value crosswalk
     probability: 0.93
-  P_BATCH_G5:
-    statement: the minimal independent decomposition has exactly two ropes and no numerical theorem
+    fate: PENDING
+  P_BATCH_G5_COUNT:
+    statement: the decomposition has exactly two ropes and no numerical theorem
     probability: 0.72
+    fate: COUNT_CONFIRMED_NUMERICS_CONFIRMED_ZERO
+  P_BATCH_G5_CHARACTER:
+    statement: the two ropes are a separate window-scale lemma and a cofinal source mass-to-center estimate
+    fate: REFUTED
+    actual: PairCofinal_plus_one_uniform_moment_bound
   P_BATCH_G6:
     statement: after existing representation crosswalks, the strict edge reduces to one paper trial-limit port, one compact-open finite-error wall, and two cheap assemblies
     probability: 0.68
+    fate: PENDING
 
 ARSENAL_MANDATE: ACCEPTED
 CARDS_APPLIED:
@@ -92,17 +96,17 @@ COGNITIVE_OPERATOR: UNIT_AUDIT
 ROUTE_SCORE: 5
 ```
 
-## 1. Source and blindness audit
+## 1. Chronology and blindness audit
 
-The pinned branch already states that the roof waits on four pillars `G2`, `G3`, `G5`, and `G6`, and that the two unmeasured locations are the `G5` pillar and the `G6 → SlotS2` fastening. `[COFINAL_FAMILY][PAPER]`
+The mathematical audit was source-locked to `c91f3a4a`. I did not open `docs/cartographer/CHAIN_GAP_DESIGN.md` before making the G5 prediction. However, the input commit message already exposed the preliminary phrase “about two ropes”, so the numerical count was never perfectly blind. `[ABSTRACT][PAPER]`
 
-I did not open `docs/cartographer/CHAIN_GAP_DESIGN.md`. However, the pinned commit message itself exposes the preliminary owner estimate “about two ropes” for `G5`. Therefore the decomposition below is independent at the theorem-shape level, but the numerical count is not a genuinely blind prediction. This contamination is recorded rather than hidden. `[ABSTRACT][PAPER]`
+While this verdict was being delivered, Linux committed `73fc75d9…`, which contains the first kernel split of `CenteredTrialCriticalMomentRatio`. My prediction existed in the live conversation before I observed that commit, but the durable Git artifact landed afterwards. Therefore it is scored as a conversation precommit, not as a pre-test Git registration. `[ABSTRACT][PAPER]`
 
-The Arsenal mandate is accepted. The decisive object-mismatch kill below instantiates **C04** and **C10**; the schedule guards instantiate **C09**; any bound used to exclude collapse must be independent of the selected cluster, per **C12**. `[ABSTRACT][PAPER]`
+The result confirms the count `2` and refutes my initial characterization of the two ropes. No retroactive repair is applied. `[ABSTRACT][PAPER]`
 
 ---
 
-## 2. V1 — CVS-QFRZ-2025 as the `G3` fastening
+## 2. V1 — CVS-QFRZ-2025 as the G3 fastening
 
 ### Decision
 
@@ -110,11 +114,11 @@ The Arsenal mandate is accepted. The decisive object-mismatch kill below instant
 TYPE LEVEL:
   YES.
 
-CURRENT PRODUCTION VALUE:
+DROP-IN FOR THE CURRENT PRODUCTION VALUE:
   NO.
 ```
 
-No declaration in `CanonicalRHRouteSkeleton.lean` must change. The existing interface
+The existing production interface is already sufficient:
 
 ```lean
 Theorem510RealZeroBridge C H2aAt :=
@@ -122,47 +126,39 @@ Theorem510RealZeroBridge C H2aAt :=
     ZerosRealOn Set.univ (C.Pstar.family i)
 ```
 
-is already broad enough to host the Connes–van Suijlekom conclusion. `[ABSTRACT][LEAN]`
+No production type declaration must change. `[ABSTRACT][LEAN]`
 
-But the theorem is not a drop-in supplier for the current value
-
-```lean
-canonicalApproximation D
-```
-
-because that value fixes
+The mismatch is the value inhabiting that type. `canonicalApproximation D` fixes
 
 ```lean
 C.Pstar.family i = centeredPstarFamily D.kTrial i
 ```
 
-and `D.kTrial` is the normalized projected prolate **trial** row. CvS proves real zeros for the Fourier transform of the actual simple, isolated, even **ground eigenfunction**. Existence of a separate ground vector says nothing about the zeros of the preselected trial transform. Applying the paper theorem directly to the current value would be a **C04 same-interface/different-object error** and a **C10 functional-surrogate error**. `[COFINAL_FAMILY][LEAN] [C04] [C10]`
-
-Thus the exact mismatch is not the Lean type. It is the value inhabiting the type.
+and `D.kTrial` is the normalized projected prolate trial row. CvS proves real zeros for the Fourier transform of the actual simple, isolated, even ground eigenfunction. A theorem about a separate ground vector cannot certify the zero set of the preselected trial transform. That substitution is rejected by **C04** and **C10**. `[COFINAL_FAMILY][LEAN] [C04] [C10]`
 
 ### Exact interface mismatch
 
-| Layer | CvS input/output | Current Q3 consumer | Mismatch | Tags |
+| Layer | CvS | Current Q3 production value | Required fastening | Tags |
 |---|---|---|---|---|
-| Spectral object | Lower-bounded essentially selfadjoint form; simple isolated minimum; even ground `xi` | Arbitrary proposition `H2aAt i`; no vector or operator appears in the interface | A local adapter must extract or store the literal CCM ground package | `[ABSTRACT][PAPER]` |
-| Function | Ordinary Fourier transform of that same ground eigenfunction | The already-fixed `C.Pstar.family i` | Current production value is trial-derived, not definitionally the ground transform | `[COFINAL_FAMILY][LEAN]` |
-| Finite coordinate | CvS §5 uses the ground coefficient row and its Lagrange polynomial | Q3 uses the exact P59 carrier, pole orientation and coordinate `-L*z/(2*pi)` | Exact carrier, sign and P59 factor crosswalk is required | `[FINITE_CELL][LEAN]` |
-| Normalization | Ground eigenfunction is normalized in the paper’s form/anchor convention | `centeredPstarFamily` uses `centeredXi 0 / rawFplus 0` | The scalar must be proved nonzero and zero-preserving; “up to scalar” is insufficient | `[COFINAL_FAMILY][CONDITIONAL]` |
-| Quantifier | One ground object, then finite/infinite approximation in the paper | Every selected index of one precommitted `CanonicalApproximation` | The same `C`, parent and extraction must be retained | `[COFINAL_FAMILY][LEAN] [C09]` |
+| Spectral object | Actual simple isolated even ground eigenfunction | `H2aAt i` is abstract; `C.Pstar.family i` is already selected | Store/extract the literal CCM ground package | `[ABSTRACT][PAPER]` |
+| Function | Ordinary Fourier transform of the same ground object | Center-normalized P59 transform of `D.kTrial` | Exact equality to the ground P59 transform up to a nonzero zero-free factor | `[COFINAL_FAMILY][CONDITIONAL]` |
+| Coordinate | Paper interval/Fourier convention | Exact carrier `[-N,N]`, pole label `-n`, coordinate `-L*z/(2*pi)` | Carrier, sign and scale crosswalk | `[FINITE_CELL][LEAN]` |
+| Normalization | Ground normalization in the paper | `centeredXi 0 / rawFplus 0` | Prove denominator nonzero and zero-set preservation | `[COFINAL_FAMILY][CONDITIONAL]` |
+| Quantifier | One ground object and its approximation | Every index of one fixed `C`, one parent and one extraction | Same-family precommit | `[COFINAL_FAMILY][LEAN] [C09]` |
 
-### What of the CvS proof is already on the shelf
+### Which five CvS proof modules are already present
 
-The shortest applicable route is the finite real-spectral route of CvS §5, not the C*-algebraic Carathéodory–Fejér route. The latter is historically important but unnecessary for this production interface. `[ABSTRACT][PAPER]`
+The relevant route is CvS §5, not the C*-algebraic Carathéodory–Fejér proof.
 
-| CvS proof module | Current repository status | Existing machinery | Tags |
+| Module | Status in Q3 | Machinery | Tags |
 |---|---|---|---|
 | 1. Parity and source commutator | **HAVE** | `CCMFiniteWeilParity`, `CCMFiniteWeilShiftedRankOne` | `[FINITE_CELL][LEAN]` |
-| 2. Rank-one correction kills the calibration vector and is self-adjoint for the form | **HAVE** | `RankOneCorrectionWeightedSymmetry` | `[ABSTRACT][LEAN]` |
-| 3. Quotient by the radical, induced PosDef metric, real spectrum | **HAVE** | quotient-by-radical files, `MatrixBilinFormRadical`, `PosDefSelfAdjointRealSpectrum` | `[ABSTRACT][LEAN]` |
-| 4. Determinant/charpoly to Lagrange real-root transfer | **HAVE by an equivalent shorter route** | quotient/radical charpoly and `RankOneCorrectionLagrangeRealZeros` | `[FINITE_CELL][LEAN]` |
-| 5. Fourier/P59 pole and lattice zero transfer | **HAVE for the finite production transform** | `Proposition59GroundLagrangeZeroSetBridge` | `[FINITE_CELL][LEAN]` |
+| 2. Rank-one correction and weighted self-adjointness | **HAVE** | `RankOneCorrectionWeightedSymmetry` | `[ABSTRACT][LEAN]` |
+| 3. Radical quotient, PosDef metric and real spectrum | **HAVE** | quotient-by-radical layer, `MatrixBilinFormRadical`, `PosDefSelfAdjointRealSpectrum` | `[ABSTRACT][LEAN]` |
+| 4. Determinant/charpoly to Lagrange real roots | **HAVE by equivalent shorter route** | quotient/radical charpoly and `RankOneCorrectionLagrangeRealZeros` | `[FINITE_CELL][LEAN]` |
+| 5. Fourier/P59 pole and lattice transfer | **HAVE for the finite production transform** | `Proposition59GroundLagrangeZeroSetBridge` | `[FINITE_CELL][LEAN]` |
 
-The paper’s infinite-dimensional Hurwitz passage is not needed to inhabit `Theorem510RealZeroBridge`: the roof asks for real zeros of each finite selected function and performs its own cluster/zero-escape step later. `[ABSTRACT][LEAN]`
+The paper’s infinite-dimensional Hurwitz passage is not required here. The roof asks for real zeros of every finite selected function and performs its own cluster/zero-escape transfer later. `[ABSTRACT][LEAN]`
 
 ### Minimal port list
 
@@ -175,7 +171,7 @@ CLOSES:
 OPENS: []
 ```
 
-Define `H2aAt` so that it carries the exact `m`, `N`, `epsilon`, ground row `xi`, eigen-equation, bottom Rayleigh inequality, one-dimensional eigenspace and legal normalization consumed by the existing finite bridge. This can be a structure/definition rather than a new theorem. `[FINITE_CELL][LEAN]`
+Choose `H2aAt` so that it carries the literal `m`, `N`, `epsilon`, ground row `xi`, eigen-equation, bottom Rayleigh inequality, one-dimensional eigenspace and legal normalization. This may be a definition/structure rather than a theorem. `[FINITE_CELL][LEAN]`
 
 #### G3-P1 — `GroundCanonicalPstarValueCrosswalk`
 
@@ -186,7 +182,7 @@ CLOSES:
 OPENS: []
 ```
 
-Construct a ground-valued `CanonicalApproximation` using the existing production types, or prove an exact equality between the selected production function and a nonzero zero-free factor times the literal `proposition59CCMTransform` of the same ground row. For the current trial-valued `canonicalApproximation D`, this equality is not available and must not be postulated. `[COFINAL_FAMILY][CONDITIONAL] [C04] [C10]`
+Construct a ground-valued `CanonicalApproximation` using the existing production types, or prove that the exact selected function equals a nonzero zero-free factor times `proposition59CCMTransform` of the same ground row. This is the only load-bearing missing fastening. It is not available for the current trial-valued `canonicalApproximation D`. `[COFINAL_FAMILY][CONDITIONAL] [C04] [C10]`
 
 #### G3-P2 — `Theorem510RealZeroBridge_of_groundP59`
 
@@ -197,123 +193,106 @@ CLOSES:
 OPENS: []
 ```
 
-Invoke `Proposition59GroundLagrangeZeroSetBridge`, then transport zeros through the proved nonzero normalization factor. No new CvS mathematics is required here. `[COFINAL_FAMILY][CONDITIONAL]`
+Invoke `Proposition59GroundLagrangeZeroSetBridge` and transport zeros through the proved nonzero factor. No re-formalization of the CvS proof is needed. `[COFINAL_FAMILY][CONDITIONAL]`
 
 ### V1 closeout
 
-`CVS-QFRZ-2025` is therefore a **ready theorem engine**, not a ready fastening for the current trial-valued `C`. The production type is correct; the ground-family value crosswalk is the only load-bearing fastening still missing. `[COFINAL_FAMILY][CONDITIONAL]`
+CVS-QFRZ-2025 is a ready theorem engine. It is not a ready fastening for the current trial-valued canonical approximation. The production type is correct; the ground-family value crosswalk remains open. `[COFINAL_FAMILY][CONDITIONAL]`
 
 ---
 
-## 3. V2 — independent decomposition of `CenteredTrialCriticalMomentRatio`
+## 3. V2 — G5 rope count and corrected decomposition
 
-### Prediction
+### Measured result
 
 \[
-\boxed{\text{two independent ropes}}
+\boxed{k(G5)=2}
 \]
 
-Prediction distribution, registered before reading `CHAIN_GAP_DESIGN.md`:
+The kernel split at `73fc75d9…` gives the two conjuncts of `CenteredTrialCriticalMomentRatio`:
 
 ```text
-2 ropes: 0.72
-3 ropes: 0.24
-other:   0.04
+rope 1:
+  PairCofinal p
+
+rope 2:
+  for every strict sigma,
+  exists C_sigma >= 0,
+  forall k,
+    centeredCriticalMoment <= C_sigma * ||rawFplus 0||
 ```
 
-The count is metadata-contaminated by the pinned commit message, but the following decomposition was derived directly from the Lean statement. `[ABSTRACT][PAPER]`
+`[COFINAL_FAMILY][LEAN]`
 
-`PairCofinal` is already a field of the contract and of `CanonicalData`; it is not a new analytic rope. The finite initial prefix also does not require a numerical theorem: once an eventual bound exists, finitely many early indices can be absorbed into `C_sigma`. `[COFINAL_FAMILY][LEAN]`
-
-### Rope G5-A — centered-window weighted moment budget
+### Rope G5-1 — `PairCofinal`
 
 ```yaml
-CHARACTER: SCALE_LEMMA
+CHARACTER: STRUCTURAL_SCHEDULE_ROPE
 CLOSES:
-  - CENTERED_WINDOW_WEIGHTED_MOMENT_BUDGET
+  - PairCofinal
 OPENS: []
-NUMERICAL_FACT: false
+NEW_PROOF_WORK: false
+SHARED_WITH_G6: true
 ```
 
-Produce a bound for
+`PairCofinal` is a field of `CanonicalData`. It arrives with the still-open concrete `ProlateCanonicalSourceData` witness. Thus it is a structural rope in the pillar count but not a separate new analytic theorem. The same witness fastens both G5 and G6. `[COFINAL_FAMILY][LEAN] [C09]`
 
-\[
-\int_{-L_m/2}^{L_m/2}
-  |q_{m,N}(t)| e^{\sigma |t|}\,dt
-\]
-
-in terms of one source-controlled norm or mass, with the complete dependence on `L_m`, `N` and `sigma` explicit. This is the deterministic window/weight bookkeeping. The existing `rawFplus_norm_le_centeredCriticalMoment` then turns it into the exact strip bound consumed by Montel. `[ABSTRACT][CONDITIONAL]`
-
-### Rope G5-B — cofinal source mass-to-center ratio
+### Rope G5-2 — uniform critical-moment ratio
 
 ```yaml
 CHARACTER: COFINAL_SOURCE_ESTIMATE
 CLOSES:
-  - COFINAL_SOURCE_MASS_TO_CENTER_RATIO
+  - UNIFORM_CENTERED_CRITICAL_MOMENT_RATIO
 OPENS: []
+NEW_PROOF_WORK: true
 NUMERICAL_FACT: false
 ```
 
-Prove that the same source norm or mass is uniformly dominated, along the precommitted parent path, by
+The window weight, source scaling and central-coefficient comparison are internal proof content of this one quantified assertion. They are not independent consumer ropes. The substantive statement is uniform boundedness of the exact ratio along the frozen path. `[COFINAL_FAMILY][CONDITIONAL] [C12]`
 
-\[
-|rawFplus(0)| = \sqrt{L_m}\,|c_0|.
-\]
-
-This is the substantive source estimate. Unit norm of the projected vector does not lower-bound one Fourier coefficient, so this rope cannot be obtained from normalization alone. `[COFINAL_FAMILY][CONDITIONAL] [C12]`
-
-### Why no numerical rope
-
-A finite computation may falsify a proposed uniform constant or calibrate its scale. It cannot occupy the quantifier
+### Prediction score
 
 ```text
-forall k
+count = 2:
+  CONFIRMED.
+
+zero numerical theorem:
+  CONFIRMED.
+
+character = scale lemma + separate source ratio:
+  REFUTED.
+
+actual character:
+  PairCofinal + one uniform source moment ratio.
 ```
 
-inside `CenteredTrialCriticalMomentRatio`. Therefore the minimal proof ledger contains **zero numerical facts**. `[COFINAL_FAMILY][PAPER]`
-
-### Three-rope contingency and discriminator
-
-A third rope is needed only if the usable source estimate is proved for the unprojected continuum trial while the contract is about the finite projected density. Then one must separately prove:
-
-```text
-FINITE_PROJECTION_PRESERVES_MOMENT_AND_CENTRAL_COEFFICIENT_RATIO.
-```
-
-The discriminator is exact: derive the proposed source norm and inspect whether both the numerator and `c_0` already refer to `kTrial_(m,N)`. If yes, the count is two. If they refer to the continuum trial and require an independent Galerkin transport, the count is three. `[COFINAL_FAMILY][CONDITIONAL]`
+The earlier two-rope analytic decomposition remains a possible proof decomposition inside rope 2, but it is not the pillar’s minimal interface decomposition. `[ABSTRACT][PAPER]`
 
 ### V2 closeout
 
-The predicted minimal character is:
-
-```text
-1 scale lemma
-+ 1 cofinal source estimate
-+ 0 numerical theorems.
-```
-
-The three existing consumers do not create additional ropes; they are downstream assemblies already proved. `[COFINAL_FAMILY][LEAN]`
+G5 has two ropes, but only one new analytic job. The other is shared object/schedule infrastructure with G6. `[COFINAL_FAMILY][LEAN]`
 
 ---
 
 ## 4. V3 — minimal edge from `D0Pstar*` to literal `SlotS2`
 
-### Current endpoint
+### What is already closed
 
-The representation layer is much further advanced than the old Phase-0 map:
+The current production tree already has:
 
-- the production source row is tied to the prolate trial by `ProlateCanonicalSourceData`;
-- the centered coordinate and sign are locked;
-- `selectedFamily` is exactly `selectedMuntzApproximation + finite Galerkin defect`;
-- the scalar defect is identified with the Mellin coordinate of the literal normalized object residual;
-- the full Mellin coordinate is identified with `Gwin`;
-- the zeta-to-Xi gauge and its nonvanishing are proved.
+- exact prolate-to-`kTrial` provenance once `ProlateCanonicalSourceData` is supplied;
+- centered coordinate and sign lock;
+- exact identity
+  `selectedFamily = selectedMuntzApproximation + centeredFactor * GalerkinDefect`;
+- unconditional identification of the scalar defect with the Mellin coordinate of the literal normalized object residual;
+- exact full Mellin-to-`Gwin` crosswalk;
+- zero-free zeta-to-Xi gauge and anchored nonzero limit.
 
 `[ABSTRACT][LEAN]`
 
-But none of these representation theorems proves a compact-open limit. `SelectedProjectionTailDecay` is only an `H_m` norm statement, and even that still depends on explicit suppliers. Analyticity of `Rminus` and `Rplus` is not tail smallness. The literal `SlotS2` quantifies over **every** `ClusterData C`, not one chosen cluster. `[COFINAL_FAMILY][LEAN] [C10]`
+These results stop before any compact-open limit. Analyticity of `Rminus` and `Rplus` is not tail smallness. `SelectedProjectionTailDecay` is only Hilbert-norm decay and still depends on named suppliers. `SlotS2` quantifies over every `ClusterData C`. `[COFINAL_FAMILY][LEAN] [C10]`
 
-Therefore the edge is not buildable from current representation lemmas alone.
+Therefore no direct edge currently exists.
 
 ### Minimal top-level sequence
 
@@ -323,12 +302,13 @@ Therefore the edge is not buildable from current representation lemmas alone.
 CHARACTER: OBJECT_CONSTRUCTION_WALL
 CLOSES:
   - PROLATE_CANONICAL_SOURCE_DATA_EXISTENCE
+  - PairCofinal
 OPENS: []
 DEPENDENCY_ORDER: 1
 COST: 6/10
 ```
 
-Construct an actual term of `ProlateCanonicalSourceData` on the production schedule: source modes/pairs, exact `lambda_m`, `MemLp`, `TrialNonzero`, coefficient-family equality, parent and extraction. The existing structure proves provenance only after such data are supplied. `[COFINAL_FAMILY][CONDITIONAL]`
+Construct the actual source pairs/modes, exact `lambda_m`, `MemLp`, `TrialNonzero`, coefficient-family equality, parent and extraction. This one witness also closes G5 rope 1. `[COFINAL_FAMILY][CONDITIONAL]`
 
 #### G6-N1 — `CCMLemma73SelectedMuntzLimit`
 
@@ -341,7 +321,7 @@ DEPENDENCY_ORDER: 2
 COST: 4/10
 ```
 
-Port CCM Lemma 7.3 to the exact `selectedMuntzApproximation` object, including the one-dimensional source-line scalar, centered sign, anchor normalization and the same `parent (extract k)` schedule. This is the first node by cost after the object lock because the analytic convergence is already paper-proved. `[COFINAL_FAMILY][PAPER] [C04] [C09]`
+Port CCM Lemma 7.3 to the exact `selectedMuntzApproximation`, including the source-line scalar, centered sign, anchor normalization and the same `parent (extract k)` schedule. This is first by cost after the object lock because the analytic convergence is already paper-proved. `[COFINAL_FAMILY][PAPER] [C04] [C09]`
 
 #### G6-N2 — `SelectedNormalizedGalerkinMellinCompactDecay`
 
@@ -354,7 +334,7 @@ DEPENDENCY_ORDER: 3
 COST: 8/10
 ```
 
-Prove, for every compact `K` in the centered strip,
+Prove for every compact `K` in the centered strip:
 
 \[
 \sup_{z\in K}
@@ -362,7 +342,7 @@ Prove, for every compact `K` in the centered strip,
 \longrightarrow 0.
 \]
 
-The theorem must close its own compact-evaluation rate. It may consume the existing exact residual crosswalk and may internally use:
+The theorem must close the compact-evaluation rate in the same transaction. It may internally use the existing contracts
 
 ```text
 SelectedTrialNormalizerBounded
@@ -370,9 +350,9 @@ SelectedPhysicalFourierEnergyControl
 SelectedPhysicalBandwidthCofinal
 ```
 
-but it must not export a new free `COMPACT_MELLIN_EVALUATION_RATE` and call that progress. If the compact rate cannot be proved in the same transaction, W9 rejects the source. `[COFINAL_FAMILY][CONDITIONAL]`
+but it must not export a new free compact-rate premise and call that progress. If it cannot close an existing input without opening a new one, W9 rejects the source. `[COFINAL_FAMILY][CONDITIONAL]`
 
-This is the first genuinely new analytic input. The current theorem `selectedProjectionTailDecay_of_physicalFourierEnergyControl` reaches only Hilbert-norm projection decay; it does not by itself control Mellin evaluation uniformly on compacta. `[COFINAL_FAMILY][LEAN]`
+This is the first genuinely new analytic input. The existing physical-energy receiver reaches only Hilbert-norm projection decay; it does not control Mellin evaluation uniformly on compacta. `[COFINAL_FAMILY][LEAN]`
 
 #### G6-N3 — `D0PstarToMuntzSameFamilyLocallyUniformCrosswalk`
 
@@ -385,15 +365,7 @@ DEPENDENCY_ORDER: 4
 COST: 2/10
 ```
 
-Combine the exact decomposition
-
-```text
-selectedFamily
-  = selectedMuntzApproximation
-  + centeredFactor * literalResidualCoordinate
-```
-
-with G6-N1 and G6-N2. The output is one fixed locally uniform limit for the literal selected production family on the same schedule. `[COFINAL_FAMILY][CONDITIONAL]`
+Combine the exact decomposition with G6-N1 and G6-N2. The output is one fixed locally uniform limit for the literal selected production family on the same schedule. `[COFINAL_FAMILY][CONDITIONAL]`
 
 #### G6-N4 — `SlotS2_of_fixed_selected_limit`
 
@@ -407,21 +379,21 @@ DEPENDENCY_ORDER: 5
 COST: 2/10
 ```
 
-For an arbitrary `D : ClusterData C`, compare `D.convergence` with the fixed limit from G6-N3. Uniqueness of locally uniform limits gives equality of `D.limit` with the fixed `c * centeredXi * gamma`; `S2GaugeNonvanishing` supplies the zero-free gauge and the anchor supplies `c != 0`. This preserves the every-`ClusterData` quantifier. `[COFINAL_FAMILY][CONDITIONAL]`
+For arbitrary `D : ClusterData C`, compare `D.convergence` with the fixed limit. Uniqueness gives `D.limit = c * centeredXi * gamma`; `S2GaugeNonvanishing` supplies the zero-free gauge and the anchor supplies `c != 0`. The every-cluster quantifier is preserved. `[COFINAL_FAMILY][CONDITIONAL]`
 
-### Price order versus dependency order
+### Price order
 
-The cheap generic assemblies G6-N3 and G6-N4 must **not** be written first. They would merely assume the two missing limits and would repeat the bridge-splitting failure prohibited by W9.
+The cheap assemblies G6-N3 and G6-N4 must not be written first. They would only rename missing limits and repeat the bridge-splitting failure.
 
 ```text
 First dependency:
-  G6-N0 — actual source data.
+  G6-N0.
 
-First by proof cost after object lock:
-  G6-N1 — the CCM Lemma 7.3 port.
+First by price after object lock:
+  G6-N1.
 
 First genuinely new analytic wall:
-  G6-N2 — compact-open decay of the normalized Galerkin residual.
+  G6-N2.
 ```
 
 `[COFINAL_FAMILY][PAPER]`
@@ -435,7 +407,7 @@ KILL_POWER: 10/10
 COST: 6/10
 ```
 
-Port Lemma 7.3 for the exact main term, prove compact residual decay, then obtain a unique fixed limit for the whole selected family. This is primary. `[COFINAL_FAMILY][CONDITIONAL]`
+Port Lemma 7.3 for the exact main term, prove compact residual decay, then obtain a unique fixed limit for the whole selected family. Primary route. `[COFINAL_FAMILY][CONDITIONAL]`
 
 #### R2 — cluster-wise Müntz identification
 
@@ -444,13 +416,13 @@ KILL_POWER: 8/10
 COST: 7/10
 ```
 
-For each supplied `ClusterData`, compare its convergent subsequence directly with the exact Müntz decomposition and identify that cluster. This avoids stating whole-family convergence, but it must repeat the every-cluster and same-subsequence bookkeeping. It is a runner-up, not a license to select one convenient cluster. `[COFINAL_FAMILY][CONDITIONAL] [C09]`
+For each `ClusterData`, compare its convergent subsequence directly with the exact Müntz decomposition. This avoids a whole-family statement but must preserve the every-cluster and same-subsequence quantifiers. `[COFINAL_FAMILY][CONDITIONAL] [C09]`
 
-**Discriminator:** whether CCM Lemma 7.3 ports to the complete production sequence with exact normalization. If yes, R1 dominates. If only subsequential convergence is available, R2 becomes necessary. A zero-consistent or merely bounded tail result is inconclusive; the discriminator is strict compact-open convergence to zero. `[COFINAL_FAMILY][PAPER]`
+**Discriminator:** whether CCM Lemma 7.3 ports to the complete production sequence with exact normalization. Full-sequence convergence selects R1. Only subsequential convergence forces R2. A bounded or zero-consistent tail is inconclusive; the decisive result is strict compact-open convergence to zero. `[COFINAL_FAMILY][PAPER]`
 
 ### V3 closeout
 
-The missing edge is not one absent wrapper. It consists of:
+The edge requires:
 
 ```text
 one paper-proved main-term limit port
@@ -458,7 +430,7 @@ one paper-proved main-term limit port
 + two cheap assemblies.
 ```
 
-The object construction is a prior dependency. No further representation bridge should be written until one of the two limit suppliers is actually closed. `[COFINAL_FAMILY][CONDITIONAL]`
+The concrete source-data witness is a prior dependency shared with G5. No further representation bridge should be written before one of the two limit suppliers is closed. `[COFINAL_FAMILY][CONDITIONAL]`
 
 ---
 
@@ -466,15 +438,15 @@ The object construction is a prior dependency. No further representation bridge 
 
 ### G3
 
-Do not port the CvS C*-algebraic proof. Reuse the existing finite §5 machinery and build the exact ground-valued `Pstar` value crosswalk. No production type declaration changes. `[COFINAL_FAMILY][CONDITIONAL]`
+Do not port the CvS C*-algebraic proof. Reuse the existing finite §5 machinery and build the exact ground-valued `Pstar` value crosswalk. No production type changes. `[COFINAL_FAMILY][CONDITIONAL]`
 
 ### G5
 
-Plan for two ropes. Attack the source mass-to-center ratio first; it is the substantive rope and can kill the route cheaply if the central coefficient collapses. The scale lemma is downstream bookkeeping once the correct source norm is selected. `[COFINAL_FAMILY][CONDITIONAL]`
+Treat `PairCofinal` as a shared structural rope supplied by the concrete `ProlateCanonicalSourceData` witness. The only new analytic rope is the uniform critical-moment ratio. `[COFINAL_FAMILY][CONDITIONAL]`
 
 ### G6
 
-After object lock, port CCM Lemma 7.3 before touching another tail proof. Then attack the normalized Galerkin residual directly in compact-open topology. Do not write the final `SlotS2` assembly until both limits exist. `[COFINAL_FAMILY][CONDITIONAL]`
+After object lock, port CCM Lemma 7.3 before starting another direct tail proof. Then attack the normalized Galerkin residual directly in compact-open topology. Do not write the final `SlotS2` assembly until both limits exist. `[COFINAL_FAMILY][CONDITIONAL]`
 
 ---
 
@@ -482,15 +454,15 @@ After object lock, port CCM Lemma 7.3 before touching another tail proof. Then a
 
 ### Against V1
 
-A theorem about the ground eigenfunction cannot certify the zeros of a nearby or similarly normalized trial function. The current `canonicalApproximation D` value is the wrong object for a direct CvS application. `[COFINAL_FAMILY][LEAN] [C04] [C10]`
+A real-zero theorem for the actual ground eigenfunction cannot certify a nearby trial function. Same interface does not mean same source object. `[COFINAL_FAMILY][LEAN] [C04] [C10]`
 
 ### Against V2
 
-The two-rope split is not logically unique. A direct source theorem may prove the ratio in one shot, while a continuum-to-finite proof may require a third Galerkin transfer. The exact projected-versus-continuum carrier is the discriminator. `[COFINAL_FAMILY][CONDITIONAL]`
+Kernel decomposition counts logical conjuncts, not proof difficulty. Rope 2 may still split internally into scale, source and projection estimates, but those are one consumer obligation. `[ABSTRACT][PAPER]`
 
 ### Against V3
 
-Hilbert-norm residual decay need not imply compact-open Mellin decay when the evaluation norm grows with the window. The product “evaluation amplification × residual” must tend to zero. Boundedness alone is not convergence. `[COFINAL_FAMILY][CONDITIONAL] [C12]`
+Hilbert-norm residual decay need not imply compact-open Mellin decay when evaluation amplification grows with the window. The product “evaluation amplification × residual” must tend to zero. `[COFINAL_FAMILY][CONDITIONAL] [C12]`
 
 ---
 
@@ -498,29 +470,30 @@ Hilbert-norm residual decay need not imply compact-open Mellin decay when the ev
 
 **What became smaller?**
 
-- `G3` is no longer “formalize CvS”; it is one value-level ground-family crosswalk plus assembly.
-- `G5` is measured as two substantive ropes, with a precise three-rope discriminator.
-- `G6` is reduced to two actual limit suppliers and two assemblies; representation crosswalks are already present.
+- G3 is one value-level ground-family fastening, not a new CvS formalization project.
+- G5 is exactly two ropes; only one requires new analysis.
+- G6 is two real limit suppliers plus two assemblies, with one shared object dependency.
 
 **What was killed?**
 
-- Drop-in use of CvS on the current trial-valued `Pstar`.
-- Counting finite numerics as a `G5` rope.
-- Writing another generic `SlotS2` wrapper before the limits exist.
-- Treating tail analyticity or Hilbert-norm decay as compact-open tail smallness.
+- Drop-in CvS use on the current trial-valued `Pstar`.
+- The initial G5 characterization “scale rope + source rope”.
+- Numerical facts as G5 suppliers.
+- Another generic `SlotS2` wrapper before limits exist.
+- Tail analyticity or Hilbert-norm decay relabeled as compact-open smallness.
 
 **What must not be tried again?**
 
 - Do not change production types to fit the paper.
 - Do not substitute the trial row for the actual ground row.
 - Do not select a post-hoc cluster or subsequence.
-- Do not split G6-N2 into new free supplier names unless an existing input is closed in the same transaction.
+- Do not split G6-N2 into new free premises without closing an existing input.
 
 **Current smallest named gaps:**
 
 ```text
 G3: GROUND_CANONICAL_PSTAR_VALUE_CROSSWALK
-G5: COFINAL_SOURCE_MASS_TO_CENTER_RATIO
+G5: UNIFORM_CENTERED_CRITICAL_MOMENT_RATIO
 G6: SELECTED_NORMALIZED_GALERKIN_MELLIN_COMPACT_DECAY
 ```
 
@@ -528,16 +501,14 @@ G6: SELECTED_NORMALIZED_GALERKIN_MELLIN_COMPACT_DECAY
 
 ```text
 G3:
-  typecheck one ground-valued CanonicalApproximation value and the exact P59 normalization equality.
+  typecheck one ground-valued CanonicalApproximation and the exact P59 normalization equality.
 
 G5:
-  derive the central coefficient of the selected source trial and test whether a cofinal lower envelope is even structurally possible.
+  attack the single uniform ratio directly; PairCofinal arrives with the shared source-data witness.
 
 G6:
-  source-lock the exact CCM Lemma 7.3 normalization against selectedMuntzApproximation.
+  source-lock CCM Lemma 7.3 normalization against selectedMuntzApproximation.
 ```
-
-**Fate of prior predictions:** none were registered for this batch before the present source audit. No retroactive scoring is performed.
 
 ```yaml
 iteration:
@@ -545,8 +516,8 @@ iteration:
   status: PROGRESS
   failed_strategy: bridge_first_without_value_or_limit_suppliers
   cognitive_operator_used: UNIT_AUDIT
-  new_gap_name: GROUND_PSTAR_CROSSWALK__G5_MASS_TO_CENTER__G6_COMPACT_RESIDUAL_DECAY
-  invariant_learned: the exact function value, normalization and cofinal sequence are cargo
+  new_gap_name: GROUND_PSTAR_CROSSWALK__G5_UNIFORM_RATIO__G6_COMPACT_RESIDUAL_DECAY
+  invariant_learned: exact function value, normalization and cofinal sequence are cargo
   forbidden_future_move: write a wrapper whose only effect is to rename an existing open input
   next_decisive_test: exact_ground_Pstar_value_typecheck_then_CCM_L73_normalization_lock
 ```
