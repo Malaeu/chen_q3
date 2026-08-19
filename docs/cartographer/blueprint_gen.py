@@ -16,10 +16,12 @@ KB   = f"file:{ROOT}/q3.lean.aristotle/aristotle_db/knowledge.db?mode=ro"
 PDB  = f"file:{ROOT}/q3.lean.aristotle/aristotle_db/aristotle_proofs.db?mode=ro"
 OUT  = ROOT / "full" / "blueprint" / "blueprint.md"
 
-GATE = {  # дорога -> опора (сверено 2026-08-19/20)
+GATE = {  # дорога -> опора (сверено 2026-08-19/20; узлы вердиктов заведены строками 20.08)
     "PSD_CERTIFICATE_FOR_CCM_CELL": ("G2", "Pillar G2 — simple even ground (validation cell)"),
     "SIMPLE_EVEN_GROUND_TO_REAL_ZEROS": ("G3", "Pillar G3 — real zeros bridge (Theorem 5.10)"),
-    "GOAL057_CONTINUUM_NUMERATOR_BRIDGE": ("G6", "Pillar G6 — S2 wall: continuum numerator"),
+    "G3_CVS_PORT": ("G3p", "Pillar G3 — CvS engine port (value crosswalk + assembly)"),
+    "G5_CRITICAL_MOMENT": ("G5", "Pillar G5 — uniform critical moment budget"),
+    "GOAL057_CONTINUUM_NUMERATOR_BRIDGE": ("G6", "Pillar G6 — S2 wall: continuum numerator + edge"),
     "REALZERO_GROUND_DIAGONAL_TO_XI": ("058", "Route 058 — ground diagonal to Xi (replaces G2+G3)"),
 }
 
@@ -42,6 +44,15 @@ def main():
         "",
         "- `Q3.RH` := ∀ s, riemannZeta s = 0 → 0 < re s < 1 → re s = 1/2  (`Q3/Basic/Defs.lean:177`, Mathlib zeta)",
         "- Bridge: `rh_iff_centeredXi_zeros_real` (`ClassicalXiInterface.lean:108`) ✅",
+        "",
+        "## Правило замыкания (владельцу): закрой все 🔴 — и крыша встанет",
+        "",
+        "- обязательны в ЛЮБОМ случае: G5 (1) + G6 (8);",
+        "- дальше ОДНО из двух: G3+G3p (5) ЛИБО дорога 058 (5);",
+        "- сумма = 14; каждый закрытый 🔴 = перегенерация = позеленел;",
+        "- все 🔴 закрыты => входы rh_of_canonical_strip_slots поданы => Q3.RH",
+        "  через доказанный iff. Оговорка K6: 🔴 может оказаться стеной — kill",
+        "  тоже результат.",
         "",
         "## §1 Roof  ✅",
         "",

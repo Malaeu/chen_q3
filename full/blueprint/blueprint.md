@@ -9,6 +9,15 @@
 - `Q3.RH` := ∀ s, riemannZeta s = 0 → 0 < re s < 1 → re s = 1/2  (`Q3/Basic/Defs.lean:177`, Mathlib zeta)
 - Bridge: `rh_iff_centeredXi_zeros_real` (`ClassicalXiInterface.lean:108`) ✅
 
+## Правило замыкания (владельцу): закрой все 🔴 — и крыша встанет
+
+- обязательны в ЛЮБОМ случае: G5 (1) + G6 (8);
+- дальше ОДНО из двух: G3+G3p (5) ЛИБО дорога 058 (5);
+- сумма = 14; каждый закрытый 🔴 = перегенерация = позеленел;
+- все 🔴 закрыты => входы rh_of_canonical_strip_slots поданы => Q3.RH
+  через доказанный iff. Оговорка K6: 🔴 может оказаться стеной — kill
+  тоже результат.
+
 ## §1 Roof  ✅
 
 - `rh_of_canonical_strip_slots` (`CanonicalRHRouteSkeleton.lean:145`) — conditional, hole-free ✅
@@ -131,7 +140,19 @@
 - 🔴 **15.** нормирующий множитель c_N и сходимость F_N -> centeredXi  *[GAP]*
   - hole: sourceLagrangePolynomial = sum_k xi(k) * prod_{j!=k}(lam j - X): при 2N+1 модах произведение из 2N сомножителей порядка N, рост ~N^(2N). centeredXi конечна. Без нормировки c_N сходимость невозможна в 
 
-## §G6 Pillar G6 — S2 wall: continuum numerator  — 20/25 ropes fastened
+## §G3p Pillar G3 — CvS engine port (value crosswalk + assembly)  — 0/2 ropes fastened
+
+- 🔴 **1.** P1: GROUND_CANONICAL_PSTAR_VALUE_CROSSWALK — ground-значная CanonicalApproximation ЛИБО точное равенство selected-функции и (ненулевой множитель)×proposition59CCMTransform ground-строки  *[GAP]*
+  - hole: вердикт батча 19.08: CvS подходит ПО ТИПУ, не по значению (trial против ground); постулировать запрещено
+- 🔴 **2.** P2: Theorem510RealZeroBridge_of_groundP59 — сборка моста из CvS-движка  *[GAP]*
+  - hole: сборка после P1; CvS-доказательство НЕ реформализуется
+
+## §G5 Pillar G5 — uniform critical moment budget  — 0/1 ropes fastened
+
+- 🔴 **1.** равномерный по k моментный бюджет: ∃C ∀k centeredCriticalMoment ≤ C·|rawFplus 0|  *[GAP]*
+  - hole: мера ядром 19.08 (apply?): единственный аналитический канат G5; PairCofinal приезжает полем пакета D (шаг 25 GOAL057)
+
+## §G6 Pillar G6 — S2 wall: continuum numerator + edge  — 20/28 ropes fastened
 
 - ✅ **0.** СТАРТ: проба не является источниковым объектом — `\lean{аудит GOAL057_ACTUAL_NUMERATOR_SOURCE_TARGET_AUDIT_2026-08-07}` `docs/routeB_bus/GOAL057_ACTUAL_NUMERATOR_SOURCE_TARGET_AUDIT_2026-08-07.md`
 - ✅ **1.** B1: привязка источникового ряда коэффициентов — `\lean{D0PstarCCMFiniteSourceResidual}` `q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarCCMFiniteSourceResidual.lean`
@@ -148,12 +169,12 @@
   - `theorem sourceW02ModePairing_eq_ccmW02Entry (i : PairIndex) (n r : ℤ) :
     sourceW02ModePairing i n r =
       (Q3.RouteB.ccmW02Entry (L_m i) n r : ℂ)`
-- 🔴 **12.** ЦЕЛЬ: CONTINUUM_NUMERATOR_BRIDGE  *[GAP]*
-  - hole: мост конечная CCM-матрица -> непрерывный оператор Вейля. Статус в аудите 07.08: OPEN. Сопутствующие незакрытые: compressed continuum Weil operator, projection-leakage rate, H4a1b, Dom(A_m), ambient co
+- 🔴 **12.** обитатель CCMLemma73PreAnchorPort: P.convergence ТЕОРЕМОЙ (бумага 2511.22755)  *[GAP]*
+  - hole: правопреемник по вердиктам N0-repair и RECOUNT 20.08; этажи раскладывает судья (REQ-D)
 - 🔴 **13.** равномерная нижняя оценка нормы пробной функции (даёт SelectedTrialNormalizerBounded)  *[OWNER_DATA]*
   - hole: ТОЧНАЯ ФОРМУЛИРОВКА, установлено чтением 2026-08-08. sTrial_m_N = ||gTrial_m_N||^{-1} (D0KTrialStage3.lean:39). TrialNonzero даёт ПОТОЧЕЧНО: forall k, 0 < ||gTrial_m_N(k)||. Для SelectedTrialNormalize
-- 🔴 **14.** SelectedProjectionTailDecay — убывание хвоста проекции  *[GAP]*
-  - hole: Предикат: Tendsto (selectedUnnormalizedGalerkinResidualNorm S) atTop (nhds 0), объявлен q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarGalerkinResidualDecay.lean:33. ПОСТАВЩИК СУЩЕСТВУЕТ (PFE:179), но это 
+- 🔴 **14.** N2: SelectedNormalizedGalerkinMellinCompactDecay (compact-open, НЕ Hilbert-norm)  *[GAP]*
+  - hole: разложена на этажи N2_0..N2_5 вердиктом 20.08; MINIMAL_MISSING_IDENTITY = source-scaled Mellin projection tail rate; исполнение ДО обитателей D и порта запрещено
 - 🔴 **15.** SelectedPhysicalFourierEnergyControl — суммируемость и ограниченность энергий  *[OWNER_DATA]*
   - hole: Предикат-конъюнкция, объявлен PFE:66. (а) для каждого k ряд sum_n physicalFourierWeight i n * ||physicalFourierCoefficient i (gTrial_m ...) n||^2 суммируем; (б) IsBoundedUnder (<=) atTop (norm . selec
 - 🔴 **16.** SelectedPhysicalBandwidthCofinal — полоса уходит в бесконечность  *[OWNER_DATA]*
@@ -176,6 +197,12 @@
     0 ≤ sourceArchimedeanMultiplier t +
       (|Real.log Real.pi| + Real.log 4 + 6)`
 - ✅ **24.** B3.0O: сдвинутый арх. sqrt-вес — `\lean{D0PstarShiftedArchSqrtWeight}` `q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchSqrtWeight.lean`
+- 🔴 **25.** обитатель SelectedProlatePreAnchorData (пакет: index,pair,кофинальности,lambda_eq,MemLp)  *[GAP]*
+  - hole: у Codex: TASK_2026-08-20_return_briefing_and_preanchor_inhabitant.md; сырьё — Ferrers-свидетели 18.08; даёт и PairCofinal для G5
+- 🔴 **26.** N3: same-family locally-uniform crosswalk D0Pstar->Muntz  *[GAP]*
+  - hole: сборка (вердикт G6-узлов 19.08); комбинирует N1-композер с N2
+- 🔴 **27.** N4: SlotS2 из фиксированного selected-предела  *[GAP]*
+  - hole: строгая потребительская сборка; квантификация по всем ClusterData
 
 ## §058 Route 058 — ground diagonal to Xi (replaces G2+G3)  — 3/8 ropes fastened
 

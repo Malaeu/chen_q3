@@ -333,6 +333,8 @@ con = sqlite3.connect("file:q3.lean.aristotle/aristotle_db/knowledge.db?mode=ro"
 # дорога -> опора (сверено по required_by финальных шагов, 2026-08-19)
 GATE = {"PSD_CERTIFICATE_FOR_CCM_CELL": "G2",
         "SIMPLE_EVEN_GROUND_TO_REAL_ZEROS": "G3",
+        "G3_CVS_PORT": "G3-порт CvS",
+        "G5_CRITICAL_MOMENT": "G5",
         "REALZERO_GROUND_DIAGONAL_TO_XI": "гол 058 ЗАМЕНА G2+G3",
         "GOAL057_CONTINUUM_NUMERATOR_BRIDGE": "G6"}
 rows = con.execute("""select chain,
