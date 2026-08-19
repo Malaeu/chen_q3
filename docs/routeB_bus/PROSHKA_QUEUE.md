@@ -947,7 +947,7 @@ ProlateKTrialSourceData требует для КАЖДОГО i:
 
 ## ЗАПРОС 2026-08-20 (второй) — три NUMERIC-каната G2: цена сертификатная, и на критическом ли они пути вообще
 
-`REQ-2026-08-20-B` · `STATUS: OPEN`
+`REQ-2026-08-20-B` · `STATUS: ANSWERED` → `proshka/PROSHKA_VERDICT_G2_NUMERIC_ROPES_CRITICAL_PATH_2026-08-20.md`
 
 КОНТЕКСТ, наши измерения диском:
 
@@ -988,6 +988,22 @@ ProlateKTrialSourceData требует для КАЖДОГО i:
 
 CLOSES ожидаемый: G2_NUMERIC_ROPES_CRITICAL_PATH_ADJUDICATION. OPENS: [].
 Lean не писать — измерительный вопрос.
+
+---
+
+## ЗАПРОС REQ-2026-08-20-C — почини G6N1-источник: 36 ошибок, гейт красный
+
+`REQ-2026-08-20-C` · `STATUS: OPEN`
+
+Твой G6N1PreAnchorLimitZeroModeAndSelectedShell.lean (ccb664b6) не компилируется:
+36 ошибок, sorryAx в шести теоремах из семи, включая главную
+selectedProlateCofinalSourceDataOfPreAnchorPort. Чистая только
+preAnchorFullMellinCoordinate_eq_preAnchorGwinTransformCoordinate.
+Полный вывод ядра: docs/routeB_bus/LINUX_GATE_G6N1_PREANCHOR_RED_2026-08-20.md.
+36 ошибок — за пределами тактической починки Linux-тела (правило двух попыток);
+чини source сам, по W8: формы без угадывания числа целей, внешние имена с
+файлом и строкой. SOURCE RECORD отдельно, второй коммит не нужен — вердикт
+после нашего гейта.
 
 ---
 

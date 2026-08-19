@@ -199,8 +199,8 @@ def chain_gap_report(con):
     print("=" * 78 + "\nРАЗРЫВЫ ПО ЦЕПЯМ (k = шагов до замыкания)\n" + "=" * 78)
     rows = list(con.execute(
         """select chain,
-                  sum(case when status='READY' then 1 else 0 end),
-                  sum(case when status!='READY' then 1 else 0 end),
+                  sum(case when status in ('READY','VALIDATION') then 1 else 0 end),
+                  sum(case when status not in ('READY','VALIDATION') then 1 else 0 end),
                   count(*)
              from assembly group by chain
              order by sum(case when status!='READY' then 1 else 0 end)"""))

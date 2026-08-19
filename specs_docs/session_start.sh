@@ -336,7 +336,7 @@ GATE = {"PSD_CERTIFICATE_FOR_CCM_CELL": "G2",
         "REALZERO_GROUND_DIAGONAL_TO_XI": "гол 058 ЗАМЕНА G2+G3",
         "GOAL057_CONTINUUM_NUMERATOR_BRIDGE": "G6"}
 rows = con.execute("""select chain,
-    sum(case when status!='READY' then 1 else 0 end), count(*)
+    sum(case when status not in ('READY','VALIDATION') then 1 else 0 end), count(*)
     from assembly group by chain order by 2""").fetchall()
 def origin(chain):
     # происхождение ЗАКРЕПЛЁННЫХ канатов: кто доказал (вопрос владельца 19.08)
@@ -371,9 +371,10 @@ print("    требует ProlateCanonicalSourceData)")
 print("  G3-порт CvS: 2 узла (value-crosswalk ground/trial + сборка); типы не менять")
 print("  ═══ ОСТАЛОСЬ НАТЯНУТЬ ДО RH — ВЫБОР МАРШРУТА (дедуп 19.08) ═══")
 print("    G5 (1) + G6 (8) нужны в ЛЮБОМ случае, и дальше ОДНО из двух:")
-print("      + G2 (3) + G3 (5)  =  17  классическая дорога")
-print("      + гол 058 (5)      =  14  дешевле; 058 = REALZERO_GROUND_DIAGONAL_TO_XI,")
-print("                               заменяет связку G2+G3 разом (ground -> Xi напрямую)")
+print("      + G2 (0!) + G3 (5) =  14  классика; G2-ЧИСЛА СНЯТЫ С ПУТИ 20.08")
+print("        (REQ-2026-08-20-B: клетка m13 = валидация/falsifier, не поставщик")
+print("         SlotH2a; настоящий G2-поставщик = SIEG_of_penalty на семье — в G3/058)")
+print("      + гол 058 (5)      =  14  равные дороги; 058 = ground -> Xi напрямую")
 print("    платим за ОДНУ дорогу, не за обе")
 print("    характер 17: 3 числа · 3 owner-data · 4-5 сборок · 2 порта · 4-5 стен")
 print("    флаг: SIMPLE_EVEN:15 ~ N1 может дать 17->16 (решится при постройке N1)")
