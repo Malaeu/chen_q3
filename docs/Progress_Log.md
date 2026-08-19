@@ -2676,6 +2676,12 @@ domain contract.
 **Почему:** real-to-complex lift, square-root scale и one-sided endpoint
 filters являются load-bearing стыками; их нельзя считать автоматическими.
 
+**Что отвергли и почему:** оставить endpoint theorem generic, полагая, что
+physical Ferrers object удовлетворяет его exact domain contract автоматически:
+три стыка (real-to-complex lift, square-root scale, one-sided endpoint filters)
+несут нагрузку, и непроверенное «подходит по типу» здесь означало бы
+незамеченную подмену domain contract.
+
 **Техника:** closed-window scale map, actual derivative lifts, complexified
 physical ODE algebra, exact identity
 `(m-u^2)h_phys' = sqrt(m)(1-(u/sqrt(m))^2)h'`, endpoint-filter composition,
@@ -2688,7 +2694,7 @@ solves the same prolate ODE with eigenvalue `Lambda+G`. Direct Lean,
 **Следующий ход:** regular-even eigenspace uniqueness/scalar proportionality;
 exact nodal/index identification remains a separate possible prerequisite.
 
-**Адрес:**
+**Адреса:**
 `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_PHYSICAL_FERRERS_FOURIER_EIGEN_TRANSPORT_CLOSEOUT_2026-08-15.md`.
 
 **Граница:**
@@ -2706,6 +2712,8 @@ G1, G3, Route B promotion и RH остаются открыты.
 image solves the same ODE and is even. Поэтому значения и derivatives в нуле
 определяют proportionality без дополнительной zero-count гипотезы.
 
+**Что отвергли и почему:** требовать nodal count/ordered eigenspace simplicity: center Cauchy data решает proportionality без zero-count гипотезы, а nodal selection — отдельная предпосылка; тянуть её сюда значило бы удорожать теорему лишней недоказанной гипотезой.
+
 **Техника:** complex flux-state ODE, local Gronwall uniqueness plus connected
 propagation, compact-window differentiation under the Fourier integral, two
 literal derivative integrals, evenness under symmetric integration,
@@ -2720,7 +2728,7 @@ audit PASS.
 sign/order and production `ProlatePair` assembly. Zero-count selection is not
 needed for this proportionality theorem.
 
-**Адрес:**
+**Адреса:**
 `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_PHYSICAL_FERRERS_FOURIER_SCALAR_PROPORTIONALITY_CLOSEOUT_2026-08-15.md`.
 
 **Граница:**
@@ -2737,6 +2745,8 @@ G1, G3, Route B promotion и RH остаются открыты.
 **Почему:** при `x=0` positive-phase kernel равен `1`; physical source —
 complexification real function и имеет nonzero center value.
 
+**Что отвергли и почему:** считать scalar real по classical PSWF convention: конвенция — не доказательство; точное вычисление в центре выводит real-ность вместо того, чтобы её постулировать.
+
 **Техника:** взять imaginary parts exact center equality, переписать integral
 через `integral_complex_ofReal`, исключить source-center zero и заменить
 complex scalar его real part.
@@ -2748,7 +2758,7 @@ standard-only axiom audit PASS.
 **Следующий ход:** analytic continuation/injectivity для `chi != 0`, затем
 source-locked sign/order и production `ProlatePair` assembly.
 
-**Адрес:**
+**Адреса:**
 `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_PHYSICAL_FERRERS_FOURIER_REAL_SCALAR_CLOSEOUT_2026-08-15.md`.
 
 **Граница:**
@@ -2765,6 +2775,8 @@ compact-window analyticity и Fourier inversion.
 **Почему:** restricted equality `Fh=chi*h` сама по себе не исключает `chi=0`;
 нужно перенести ноль с window на всю frequency line.
 
+**Что отвергли и почему:** добавить nonzero scalar как новый source field: новый binder повторял бы выводимое; ноль исключается entire-extension и identity theorem, а не постулатом.
+
 **Техника:** complex-frequency integral, dominated differentiation,
 `Differentiable -> AnalyticOnNhd`, identity theorem from real accumulating
 zeros, exact real-axis bridge, existing Fourier-inversion nonvanishing theorem.
@@ -2777,7 +2789,7 @@ audit PASS.
 **Следующий ход:** source-locked sign/order identification, затем zero
 extension, normalization, orthogonality and production `ProlatePair` assembly.
 
-**Адрес:**
+**Адреса:**
 `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_PHYSICAL_FERRERS_FOURIER_NONZERO_SCALAR_CLOSEOUT_2026-08-15.md`.
 
 **Граница:**
@@ -2797,6 +2809,8 @@ production `ProlatePair`.
 relations do not depend on the missing oscillation/sign theorem. Their early
 materialization narrows the source wall without weakening its statement.
 
+**Что отвергли и почему:** ждать полного source sign/order theorem до production assembly: support, unit norm и positive integrals от sign/order не зависят и доказуемы уже сейчас — ожидание сериализовало бы работу без нужды.
+
 **Техника:** indicator zero extension, continuous positive interval mass,
 exact scale substitution for the integral, normalization transport through
 the finite Fourier action, production record assembly at selected indices
@@ -2810,7 +2824,7 @@ audit PASS.
 **Следующий ход:** source-lock exact zero counts `0/4`, orthogonality and
 `0 < chi2 < chi0`; then apply the existing actual-mode and Lemma 7.2 chain.
 
-**Адрес:**
+**Адреса:**
 `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_FERRERS_PRODUCTION_PROLATEPAIR_CLOSEOUT_2026-08-15.md`.
 
 **Граница:**
@@ -2830,6 +2844,8 @@ normalization.
 for the selected Ferrers witnesses.  They are precisely the hypotheses of the
 self-adjoint Sturm–Liouville orthogonality argument.
 
+**Что отвергли и почему:** ортогональность как ещё один внешний source field: она выводима из уже принятого differential endpoint package (Lagrange identity при zero endpoint flux); внешний field дублировал бы формализуемое.
+
 **Техника:** continuous endpoint extension of each flux, Wronskian derivative
 on the open window, interval FTC, indicator reduction and real-normalization
 algebra.
@@ -2842,7 +2858,7 @@ and standard-only axiom audit PASS.
 Fourier order `0 < chi2 < chi0`; then construct `IsActualProlateModePair` and
 invoke the existing Lemma 7.2 chain.
 
-**Адрес:**
+**Адреса:**
 `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_FERRERS_PRODUCTION_ORTHOGONALITY_CLOSEOUT_2026-08-15.md`.
 
 **Граница:**
@@ -2862,6 +2878,8 @@ G1, G3, Route B promotion и RH остаются открыты.
 безразмерных selected modes; он не должен повторять уже формализуемую
 механику project normalization и не должен создавать параллельную family.
 
+**Что отвергли и почему:** ждать внешнего combined source carrier: внешний источник должен поставлять только математические факты о безразмерных selected modes, а не повторять формализуемый здесь transport числа нулей.
+
 **Техника:** раскрытие indicator внутри open physical window, деление на
 positive `L2` normalization, injectivity `t ↦ sqrt(mProject)*t`, exact
 `Set.ncard_image_of_injective`, cancellation общей ненулевой функции в двух
@@ -2874,7 +2892,7 @@ build, `q3_check`, cartography/catalog sync и standard-only axiom audit PASS.
 positive-phase/order source contract для уже selected Ferrers witnesses,
 затем локально собрать `IsActualProlateModePair`.
 
-**Адрес:**
+**Адреса:**
 `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_NORMALIZED_ZERO_COUNT_TRANSPORT_CLOSEOUT_2026-08-15.md`.
 
 **Граница:**
@@ -2893,6 +2911,8 @@ the literal normalized `prolateWaveExpression` eigenrelation.
 **Почему:** после импорта классических zero-count/phase-order facts record
 assembly не должен обнаружить ещё один формальный разрыв.
 
+**Что отвергли и почему:** довериться prose-утверждению, что analytic fields уже доступны: record assembly не должен обнаруживать формальный разрыв после импорта классических фактов — поля собираются kernel-check'ом до source verdict.
+
 **Техника:** exact indicator reduction on the open window, complex-linear
 coercion of real `ContDiffOn`, accepted raw first derivative and weighted-flux
 derivative, local `EventuallyEq.fderiv_eq`, constant normalization algebra.
@@ -2905,7 +2925,7 @@ cartography/catalog sync и standard-only axiom audit PASS.
 degree `0/4` nodal counts and positive plus-phase Fourier order, затем
 локально собрать `IsActualProlateModePair`.
 
-**Адрес:**
+**Адреса:**
 `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_NORMALIZED_ACTUAL_MODE_LOCAL_FIELDS_CLOSEOUT_2026-08-15.md`.
 
 **Граница:**
@@ -2924,6 +2944,8 @@ plus-phase Slepian action to the existing normalized physical Ferrers mode.
 для тех же selected witnesses, а не повторять проверяемую integral scaling и
 positive normalization algebra.
 
+**Что отвергли и почему:** оставить scale/sign convention внутри будущего внешнего source-carrier: supplier должен утверждать classical mathematics для тех же witnesses, а не повторять проверяемую локально integral scaling.
+
 **Техника:** `intervalIntegral.integral_comp_div`, exact identity
 `c=2*pi*(sqrt mProject)^2`, set-integral/interval-integral conversion,
 indicator reduction inside the physical window, factoring the positive
@@ -2936,7 +2958,7 @@ normalization constant.
 **Следующий ход:** дождаться exact Proshka judgment on the two source
 carriers, then execute only the ratified kernel/source boundary.
 
-**Адрес:**
+**Адреса:**
 `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_DIMENSIONLESS_FOURIER_SCALING_CLOSEOUT_2026-08-15.md`.
 
 **Граница:**
@@ -2956,6 +2978,8 @@ package без внешнего zero-count.
 current recurrence, positive zeroth phase and weighted normalization уже
 достаточны, чтобы снять внутреннюю неоднозначность kernel-путём.
 
+**Что отвергли и почему:** считать два current regular witness одним source object по совпадению ODE/параметров: source citation не доказывает same-witness identity — неоднозначность снимается kernel-путём через recurrence и weighted normalization.
+
 **Техника:** recurrence propagation from coordinates `0/1`, nonzero
 superdiagonal, positive scalar ratio, uniqueness of the stored weighted
 `HasSum` normalization.
@@ -2970,7 +2994,7 @@ Sturm oscillation for the current class либо nonzero-scalar identity with a
 formal DLMF `Ps^0_{2p}` carrier owning the `2p` count.  Citation alone and
 zero-count binder запрещены.
 
-**Адрес:**
+**Адреса:**
 `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_REGULAR_FERRERS_COEFFICIENT_UNIQUENESS_CLOSEOUT_2026-08-15.md`.
 
 **Граница:**
