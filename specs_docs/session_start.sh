@@ -333,7 +333,7 @@ con = sqlite3.connect("file:q3.lean.aristotle/aristotle_db/knowledge.db?mode=ro"
 # дорога -> опора (сверено по required_by финальных шагов, 2026-08-19)
 GATE = {"PSD_CERTIFICATE_FOR_CCM_CELL": "G2",
         "SIMPLE_EVEN_GROUND_TO_REAL_ZEROS": "G3",
-        "REALZERO_GROUND_DIAGONAL_TO_XI": "G2+G3 (ИЛИ-дорога, прямо в RH)",
+        "REALZERO_GROUND_DIAGONAL_TO_XI": "гол 058 ЗАМЕНА G2+G3",
         "GOAL057_CONTINUUM_NUMERATOR_BRIDGE": "G6"}
 rows = con.execute("""select chain,
     sum(case when status!='READY' then 1 else 0 end), count(*)
@@ -357,15 +357,22 @@ for chain, k, n in rows:
     total += k
     print(f"  {gate:14s} всего канатов {n} · закреплено {n-k} ({origin(chain)}) · ОСТАЛОСЬ НАТЯНУТЬ {k}")
     print(f"  {'':14s}   [{chain}]")
-print(f"  {'':14s} осталось натянуть по всем дорогам: {total}")
+done = sum(n - k for _, k, n in rows)
+alln = sum(n for _, _, n in rows)
+print(f"  {'':14s} ВСЕГО в базе {alln} канатов · ЗАКРЕПЛЕНО {done} · висит {total}")
 print("  бумажные движки (Connes и др.) канатами НЕ считаются, пока не формализованы")
 print("  G5: 2 каната, подтверждено ядром 19.08 — равномерный моментный бюджет"
       " + PairCofinal (ОБЩИЙ канат с G6: поле CanonicalData)")
 print("  крепление G6->SlotS2: ИЗМЕРЕНО 19.08 — 5 узлов (объект-стена N0 общая с G5,")
 print("    бумажный порт Lemma 7.3, новая стена Mellin-compact-decay, 2 сборки)")
 print("  G3-порт CvS: 2 узла (value-crosswalk ground/trial + сборка); типы не менять")
-print("  ═══ ПОЛНОЕ ЧИСЛО ДО RH (дедуп 19.08): классика 17 · через 058: 14 ═══")
-print("    из них: 3 числа · 3 owner-data · 4-5 сборок · 2 порта · 4-5 стен")
+print("  ═══ ОСТАЛОСЬ НАТЯНУТЬ ДО RH — ВЫБОР МАРШРУТА (дедуп 19.08) ═══")
+print("    G5 (1) + G6 (8) нужны в ЛЮБОМ случае, и дальше ОДНО из двух:")
+print("      + G2 (3) + G3 (5)  =  17  классическая дорога")
+print("      + гол 058 (5)      =  14  дешевле; 058 = REALZERO_GROUND_DIAGONAL_TO_XI,")
+print("                               заменяет связку G2+G3 разом (ground -> Xi напрямую)")
+print("    платим за ОДНУ дорогу, не за обе")
+print("    характер 17: 3 числа · 3 owner-data · 4-5 сборок · 2 порта · 4-5 стен")
 print("    флаг: SIMPLE_EVEN:15 ~ N1 может дать 17->16 (решится при постройке N1)")
 con.close()
 PYEOF
