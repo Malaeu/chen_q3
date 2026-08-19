@@ -1,13 +1,30 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 268,
-  "declarations": 2485,
-  "in_docs": 1052,
-  "in_lemma_db": 2484,
-  "orphans": 0,
-  "uncatalogued": 0,
-  "orphan_files_top": [],
+  "files_scanned": 274,
+  "declarations": 2548,
+  "in_docs": 1094,
+  "in_lemma_db": 2486,
+  "orphans": 25,
+  "uncatalogued": 25,
+  "orphan_files_top": [
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
+      13
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/CofinalFixedShiftLiteralComplementFloor.lean",
+      6
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMComplementFloorConstruction.lean",
+      5
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersPhysicalFourierScalarSign.lean",
+      1
+    ]
+  ],
   "items": [
     {
       "kind": "def",
@@ -4910,6 +4927,166 @@
       "orphan": false
     },
     {
+      "kind": "def",
+      "name": "sourceCCMFixedShiftFloorMatrix",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CofinalFixedShiftLiteralComplementFloor.lean",
+      "line": 38,
+      "signature": "noncomputable def sourceCCMFixedShiftFloorMatrix (S : D0Pstar.ProlateCanonicalSourceData) (i : D0Pstar.PairIndex) (aStar beta : ℝ) : Matrix (CCMModeFinite i.N) (CCMModeFinite i.N) ℂ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceCCMComplexTrialFixedShiftFloor",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CofinalFixedShiftLiteralComplementFloor.lean",
+      "line": 53,
+      "signature": "def sourceCCMComplexTrialFixedShiftFloor (S : D0Pstar.ProlateCanonicalSourceData) (i : D0Pstar.PairIndex) (aStar beta : ℝ) : Prop",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "complexTrialLineComplement_isHermitian_fixedFloor",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CofinalFixedShiftLiteralComplementFloor.lean",
+      "line": 63,
+      "signature": "private theorem complexTrialLineComplement_isHermitian_fixedFloor {ι : Type*} [Fintype ι] [DecidableEq ι] (q : ι → ℂ) : (complexTrialLineComplement q).IsHermitian",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "complexTrialLineComplement_sq_of_unit_fixedFloor",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CofinalFixedShiftLiteralComplementFloor.lean",
+      "line": 71,
+      "signature": "private theorem complexTrialLineComplement_sq_of_unit_fixedFloor {ι : Type*} [Fintype ι] [DecidableEq ι] (q : ι → ℂ) (hq : star q ⬝ᵥ q = 1) : complexTrialLineComplement q * complexTrialLineComplement q = complexTrialLineComplement q",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "complexTrialLineComplement_mul_block_fixedFloor",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CofinalFixedShiftLiteralComplementFloor.lean",
+      "line": 81,
+      "signature": "private theorem complexTrialLineComplement_mul_block_fixedFloor {ι : Type*} [Fintype ι] [DecidableEq ι] (K : Matrix ι ι ℂ) (q : ι → ℂ) (a : ℂ) (hq : star q ⬝ᵥ q = 1) : let Q",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "complexTrialComplementFloor_of_shiftedBlockSubFloor_posSemidef",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CofinalFixedShiftLiteralComplementFloor.lean",
+      "line": 102,
+      "signature": "theorem complexTrialComplementFloor_of_shiftedBlockSubFloor_posSemidef {ι : Type*} [Fintype ι] [DecidableEq ι] (K : Matrix ι ι ℂ) (q : ι → ℂ) (a : ℂ) (beta : ℝ) (hq : star q ⬝ᵥ q = 1) (hbeta : 0 < beta) (hpsd : let Q",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceCCMFixedShiftFloorMatrix_isHermitian",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CofinalFixedShiftLiteralComplementFloor.lean",
+      "line": 152,
+      "signature": "theorem sourceCCMFixedShiftFloorMatrix_isHermitian (S : D0Pstar.ProlateCanonicalSourceData) (i : D0Pstar.PairIndex) (aStar beta : ℝ) : (sourceCCMFixedShiftFloorMatrix S i aStar beta).IsHermitian",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceCCMComplexTrialFixedShiftFloor_of_schurBlocks",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CofinalFixedShiftLiteralComplementFloor.lean",
+      "line": 216,
+      "signature": "theorem sourceCCMComplexTrialFixedShiftFloor_of_schurBlocks (S : D0Pstar.ProlateCanonicalSourceData) (i : D0Pstar.PairIndex) (aStar beta : ℝ) {head tail : Type*} [Fintype head] [DecidableEq head] [Fintype tail] [DecidableEq tail] (split : (head ⊕ tail) ≃ CCMModeFinite i.N) (hbeta : 0 < beta) (hTail : let M",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "cofinalFixedShiftLiteralComplementFloor_of_schurBlocks",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CofinalFixedShiftLiteralComplementFloor.lean",
+      "line": 270,
+      "signature": "theorem cofinalFixedShiftLiteralComplementFloor_of_schurBlocks (S : D0Pstar.ProlateCanonicalSourceData) (aStar beta : ℝ) (headSize tailSize : ℕ → ℕ) (split : ∀ k, (Fin (headSize k) ⊕ Fin (tailSize k)) ≃ CCMModeFinite (D0Pstar.selectedPairIndex S k).N) (hbeta : 0 < beta) (hTail : ∀ k, let i",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "goal058SchurHeadCollapseA",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CofinalFixedShiftLiteralComplementFloor.lean",
+      "line": 298,
+      "signature": "def goal058SchurHeadCollapseA : Matrix (Fin 1) (Fin 1) ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "goal058SchurHeadCollapseC",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CofinalFixedShiftLiteralComplementFloor.lean",
+      "line": 299,
+      "signature": "def goal058SchurHeadCollapseC : Matrix (Fin 1) (Fin 1) ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "goal058SchurHeadCollapseD",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CofinalFixedShiftLiteralComplementFloor.lean",
+      "line": 300,
+      "signature": "def goal058SchurHeadCollapseD : Matrix (Fin 1) (Fin 1) ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "goal058SchurHeadCollapse_tail_posDef",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CofinalFixedShiftLiteralComplementFloor.lean",
+      "line": 303,
+      "signature": "theorem goal058SchurHeadCollapse_tail_posDef : goal058SchurHeadCollapseD.PosDef",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "goal058SchurHeadCollapse_full_not_posSemidef",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CofinalFixedShiftLiteralComplementFloor.lean",
+      "line": 315,
+      "signature": "theorem goal058SchurHeadCollapse_full_not_posSemidef : ¬ (Matrix.fromBlocks goal058SchurHeadCollapseA goal058SchurHeadCollapseC goal058SchurHeadCollapseCᵀ goal058SchurHeadCollapseD).PosSemidef",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceUnitRayleighResidual",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CofinalSourceResidualGapTransformTailBudget.lean",
+      "line": 35,
+      "signature": "def sourceUnitRayleighResidual {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℂ H] (A : H →ₗ[ℂ] H) (q : H) : H",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "cofinalSourceResidualGapTransformTailBudget",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CofinalSourceResidualGapTransformTailBudget.lean",
+      "line": 49,
+      "signature": "theorem cofinalSourceResidualGapTransformTailBudget {ι α E H : Type*} [TopologicalSpace α] [LocallyCompactSpace α] [NormedAddCommGroup E] [NormedSpace ℂ E] [NormedAddCommGroup H] [InnerProductSpace ℂ H] {l : Filter ι} [NeBot l] (sourceOperator finiteProjection : ι → H →ₗ[ℂ] H) (ground sourceTrial : ι → H) (gap : ι → ℝ) (normalizer : ι → ℂ) (hnormalizerNonzero : ∀ i, normalizer i ≠ 0) (evaluation : ι → α → H →L[ℂ] E) (trialTarget : ι → α → E) (U : Set α) (hU : IsOpen U) (hgroundUnit : ∀ᶠ i in l, ‖ground i‖ = 1) (hprojectedUnit : ∀ᶠ i in l, ‖finiteProjection i (sourceTrial i)‖ = 1) (hgapPositive : ∀ᶠ i in l, 0 < gap i) (hprojectiveResidualGap : ∀ᶠ i in l, 1 - ‖inner ℂ (ground i) (finiteProjection i (sourceTrial i))‖ ^ 2 ≤ ‖sourceUnitRayleighResidual (sourceOperator i) (finiteProjection i (sourceTrial i))‖ ^ 2 / gap i ^ 2) (hcompactBudget : ∀ K ⊆ U, IsCompact K → ∃ C : ι → ℝ, Tendsto (fun i => C i * √(2 * (‖sourceUnitRayleighResidual (sourceOperator i) (finiteProjection i (sourceTrial i))‖ ^ 2 / gap i ^ 2))) l (𝓝 0) ∧ ∀ᶠ i in l, 0 ≤ C i ∧ ∀ z ∈ K, ∀ x : H,",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
       "kind": "theorem",
       "name": "tendstoUniformlyOn_zero_of_evaluation_rate",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CompactEvaluationRateTransfer.lean",
@@ -8605,7 +8782,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersPhysicalFourierEigenTransport.lean",
       "line": 30,
       "signature": "noncomputable def mode4PhysicalFerrersSeriesComplex (mProject : ℕ) (a : ℕ → ℝ) (u : ℝ) : ℂ",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -8897,6 +9074,36 @@
       "signature": "theorem Mode4FerrersRegularEvenProlateSolution.exists_physicalFiniteFourierAction_eq_scalar_mul {mProject K : ℕ} {Λ : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (hm : 2 ≤ mProject) : ∃ chi : ℂ, ∀ x ∈ Icc (-Real.sqrt mProject) (Real.sqrt mProject), D0Pstar.finiteFourierAction (Real.sqrt mProject) (mode4PhysicalFerrersSeriesComplex mProject S.coefficients) x = chi * mode4PhysicalFerrersSeriesComplex mProject S.coefficients x",
       "in_docs": true,
       "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "Mode4FerrersRegularEvenProlateSolution.physicalFiniteFourierAction_zero_eq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersPhysicalFourierScalarSign.lean",
+      "line": 24,
+      "signature": "private theorem Mode4FerrersRegularEvenProlateSolution.physicalFiniteFourierAction_zero_eq {mProject K : ℕ} {Λ : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (hm : 2 ≤ mProject) : D0Pstar.finiteFourierAction (Real.sqrt mProject) (mode4PhysicalFerrersSeriesComplex mProject S.coefficients) 0 = (((Real.sqrt mProject) * (2 * S.coefficients 0) : ℝ) : ℂ)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "Mode4FerrersRegularEvenProlateSolution.exists_physicalFiniteFourierAction_eq_real_nonzero_scalar_mul_and_mul_center_pos",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersPhysicalFourierScalarSign.lean",
+      "line": 63,
+      "signature": "theorem Mode4FerrersRegularEvenProlateSolution.exists_physicalFiniteFourierAction_eq_real_nonzero_scalar_mul_and_mul_center_pos {mProject K : ℕ} {Λ : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (hm : 2 ≤ mProject) : ∃ chi : ℝ, chi ≠ 0 ∧ (∀ x ∈ Icc (-Real.sqrt mProject) (Real.sqrt mProject), D0Pstar.finiteFourierAction (Real.sqrt mProject) (mode4PhysicalFerrersSeriesComplex mProject S.coefficients) x = (chi : ℂ) * mode4PhysicalFerrersSeriesComplex mProject S.coefficients x) ∧ 0 < chi * mode4FerrersSeries S.coefficients 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "Mode4FerrersRegularEvenProlateSolution.physicalFiniteFourier_scalar_pos_iff_center_pos",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersPhysicalFourierScalarSign.lean",
+      "line": 101,
+      "signature": "theorem Mode4FerrersRegularEvenProlateSolution.physicalFiniteFourier_scalar_pos_iff_center_pos {mProject K : ℕ} {Λ chi : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (hm : 2 ≤ mProject) (hrelation : ∀ x ∈ Icc (-Real.sqrt mProject) (Real.sqrt mProject), D0Pstar.finiteFourierAction (Real.sqrt mProject) (mode4PhysicalFerrersSeriesComplex mProject S.coefficients) x = (chi : ℂ) * mode4PhysicalFerrersSeriesComplex mProject S.coefficients x) : 0 < chi ↔ 0 < mode4FerrersSeries S.coefficients 0",
+      "in_docs": true,
+      "in_lemma_db": false,
       "orphan": false
     },
     {
@@ -16485,7 +16692,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceCCMOddMassReflectionDefect.lean",
       "line": 51,
       "signature": "noncomputable def sourceCCMFiniteReflectionDefect (S : ProlateCanonicalSourceData) (i : PairIndex) : H_m i",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -16525,7 +16732,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceCCMOddMassReflectionDefect.lean",
       "line": 112,
       "signature": "theorem sourceCCMComplexOddMass_eq_quarter_norm_reflectionDefect_sq (S : ProlateCanonicalSourceData) (i : PairIndex) : sourceCCMComplexOddMass S i = (1 / 4 : ℝ) * ‖sourceCCMFiniteReflectionDefect S i‖ ^ 2",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -16545,7 +16752,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceCCMOddMassReflectionDefect.lean",
       "line": 138,
       "signature": "theorem sourceCCMComplexOddMass_le_quarter_norm_sub_sq_of_reflected_coefficients (S : ProlateCanonicalSourceData) (i : PairIndex) (f : H_m i) (hreflect : ∀ j : CCMModeFinite i.N, inner ℂ (V_n_m i (ccmModeFinite i.N j)) f = sourceCCMComplexRow S i (ccmNegFinite i.N j)) : sourceCCMComplexOddMass S i ≤ (1 / 4 : ℝ) * ‖(kTrial_m_N i (prolateCombination (S.source.pair i)) (S.source.eStar_memLp i) (S.source.trialNonzero i) : H_m i) - f‖ ^ 2",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -16675,7 +16882,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceLowBandModeDecay.lean",
       "line": 132,
       "signature": "theorem norm_fourier_logWindowZeroExtendedMode_le_lowBand_inv (i : PairIndex) (n : ℤ) (T t : ℝ) (hT : 0 ≤ T) (hn : 2 * L_m i * (T + 1) ≤ |(n : ℝ)|) (ht : |t| ≤ T) : ‖𝓕 (logWindowZeroExtendedMode i n) t‖ ≤ 2 * Real.sqrt (L_m i) / (Real.pi * |(n : ℝ)|)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -16755,7 +16962,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceLowBandModeDecay.lean",
       "line": 368,
       "signature": "theorem sum_support_inv_nat_shift_sq_le (R : ℕ) (hR : 0 < R) (s : Finset ℕ) : (∑ k ∈ s, 1 / ((R : ℝ) + (k : ℝ) + 1) ^ 2) ≤ 1 / (R : ℝ)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -21240,6 +21447,436 @@
       "orphan": false
     },
     {
+      "kind": "def",
+      "name": "sourceOrderedCCMCoefficient",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
+      "line": 41,
+      "signature": "noncomputable def sourceOrderedCCMCoefficient (N : ℕ) (q : CCMModeFinite N → ℂ) (n : ℤ) : ℂ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceOrderedCCMCoefficient_mode",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
+      "line": 47,
+      "signature": "@[simp] theorem sourceOrderedCCMCoefficient_mode (N : ℕ) (q : CCMModeFinite N → ℂ) (j : CCMModeFinite N) : sourceOrderedCCMCoefficient N q (ccmModeFinite N j) = q j",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "sourceOrderedCCMRawTransform",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
+      "line": 64,
+      "signature": "noncomputable def sourceOrderedCCMRawTransform (L : ℝ) (N : ℕ) (q : CCMModeFinite N → ℂ) (z : ℂ) : ℂ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceOrderedCCMKernelL2",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
+      "line": 70,
+      "signature": "noncomputable def sourceOrderedCCMKernelL2 (L : ℝ) (N : ℕ) (z : ℂ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceOrderedCCMKernelL2_nonneg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
+      "line": 79,
+      "signature": "theorem sourceOrderedCCMKernelL2_nonneg (L : ℝ) (N : ℕ) (z : ℂ) : 0 ≤ sourceOrderedCCMKernelL2 L N z",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceOrderedCCMRawTransform_eq_mode_sum",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
+      "line": 85,
+      "signature": "theorem sourceOrderedCCMRawTransform_eq_mode_sum (L : ℝ) (N : ℕ) (q : CCMModeFinite N → ℂ) (z : ℂ) : sourceOrderedCCMRawTransform L N q z = ((Real.sqrt L : ℂ)⁻¹) * ∑ j, q j * proposition59PoleKernel L (ccmModeFinite N j) (-z)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceOrderedCCM_mode_sum_cauchy_schwarz",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
+      "line": 118,
+      "signature": "private theorem sourceOrderedCCM_mode_sum_cauchy_schwarz (L : ℝ) (N : ℕ) (w : CCMModeFinite N → ℂ) (z : ℂ) : ‖∑ j, w j * proposition59PoleKernel L (ccmModeFinite N j) (-z)‖ ≤ Real.sqrt (∑ j, Complex.normSq (w j)) * Real.sqrt (∑ j, Complex.normSq (proposition59PoleKernel L (ccmModeFinite N j) (-z)))",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "euclidean_inner_toLp_eq_star_dotProduct",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
+      "line": 145,
+      "signature": "private theorem euclidean_inner_toLp_eq_star_dotProduct {ι : Type*} [Fintype ι] (u v : ι → ℂ) : inner ℂ (WithLp.toLp 2 u) (WithLp.toLp 2 v) = star u ⬝ᵥ v",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "euclidean_norm_sq_toLp_eq_star_dotProduct_re",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
+      "line": 151,
+      "signature": "private theorem euclidean_norm_sq_toLp_eq_star_dotProduct_re {ι : Type*} [Fintype ι] (u : ι → ℂ) : ‖WithLp.toLp 2 u‖ ^ 2 = (star u ⬝ᵥ u).re",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "complex_unit_projection_error_eq_sum_normSq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
+      "line": 160,
+      "signature": "private theorem complex_unit_projection_error_eq_sum_normSq {ι : Type*} [Fintype ι] (xi q : ι → ℂ) (hxi : star xi ⬝ᵥ xi = 1) (hq : star q ⬝ᵥ q = 1) : 1 - Complex.normSq (star xi ⬝ᵥ q) = ∑ j, Complex.normSq (q j - (star xi ⬝ᵥ q) * xi j)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceOrderedCCMRawTransform_sub_projection_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
+      "line": 229,
+      "signature": "theorem sourceOrderedCCMRawTransform_sub_projection_le (L : ℝ) (N : ℕ) (xi q : CCMModeFinite N → ℂ) (hxi : star xi ⬝ᵥ xi = 1) (hq : star q ⬝ᵥ q = 1) (z : ℂ) : ‖sourceOrderedCCMRawTransform L N q z - (star xi ⬝ᵥ q) * sourceOrderedCCMRawTransform L N xi z‖ ≤ sourceOrderedCCMKernelL2 L N z * Real.sqrt (1 - Complex.normSq (star xi ⬝ᵥ q))",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceOrderedCCMRawTransform_sourceRow_eq_rawFplus",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
+      "line": 282,
+      "signature": "theorem sourceOrderedCCMRawTransform_sourceRow_eq_rawFplus (S : D0Pstar.ProlateCanonicalSourceData) (i : D0Pstar.PairIndex) (z : ℂ) : sourceOrderedCCMRawTransform (D0Pstar.logLength i) i.N (D0Pstar.sourceCCMComplexRow S i) z = D0Pstar.rawFplus S.canonical.kTrial i z",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFamily_eq_centered_sourceOrderedCCMRawTransform",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
+      "line": 315,
+      "signature": "theorem selectedFamily_eq_centered_sourceOrderedCCMRawTransform (S : D0Pstar.ProlateCanonicalSourceData) (k : ℕ) (z : ℂ) : CanonicalRHRoute.selectedFamily (D0Pstar.canonicalApproximation S.canonical) k z = D0Pstar.selectedCenteringFactor S k * sourceOrderedCCMRawTransform (D0Pstar.logLength (D0Pstar.selectedPairIndex S k)) (D0Pstar.selectedPairIndex S k).N (D0Pstar.sourceCCMComplexRow S (D0Pstar.selectedPairIndex S k)) z",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "selectedCCMGroundEigenvalue",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
+      "line": 345,
+      "signature": "noncomputable def selectedCCMGroundEigenvalue (S : D0Pstar.ProlateCanonicalSourceData) (beta : ℕ → ℝ) (hfloor : ∀ k, sourceCCMComplexTrialComplementFloor S (D0Pstar.selectedPairIndex S k) (beta k)) (k : ℕ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "selectedCCMGroundVector",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
+      "line": 357,
+      "signature": "noncomputable def selectedCCMGroundVector (S : D0Pstar.ProlateCanonicalSourceData) (beta : ℕ → ℝ) (hfloor : ∀ k, sourceCCMComplexTrialComplementFloor S (D0Pstar.selectedPairIndex S k) (beta k)) (k : ℕ) : CCMModeFinite (D0Pstar.selectedPairIndex S k).N → ℂ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedCCMGroundVector_spec",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
+      "line": 372,
+      "signature": "theorem selectedCCMGroundVector_spec (S : D0Pstar.ProlateCanonicalSourceData) (beta : ℕ → ℝ) (hfloor : ∀ k, sourceCCMComplexTrialComplementFloor S (D0Pstar.selectedPairIndex S k) (beta k)) (k : ℕ) : complexHermitianGroundGapAtLeast (D0Pstar.sourceCCMFiniteMatrix (D0Pstar.selectedPairIndex S k)) (selectedCCMGroundEigenvalue S beta hfloor k) (beta k) (selectedCCMGroundVector S beta hfloor k) ∧ 1 - Complex.normSq (star (selectedCCMGroundVector S beta hfloor k) ⬝ᵥ D0Pstar.sourceCCMComplexRow S (D0Pstar.selectedPairIndex S k)) ≤ (star (D0Pstar.sourceCCMFiniteResidual S (D0Pstar.selectedPairIndex S k)) ⬝ᵥ D0Pstar.sourceCCMFiniteResidual S (D0Pstar.selectedPairIndex S k)).re / beta k ^ 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "selectedCCMGroundOverlap",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
+      "line": 399,
+      "signature": "noncomputable def selectedCCMGroundOverlap (S : D0Pstar.ProlateCanonicalSourceData) (beta : ℕ → ℝ) (hfloor : ∀ k, sourceCCMComplexTrialComplementFloor S (D0Pstar.selectedPairIndex S k) (beta k)) (k : ℕ) : ℂ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "selectedCCMResidualFloorRatio",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
+      "line": 410,
+      "signature": "noncomputable def selectedCCMResidualFloorRatio (S : D0Pstar.ProlateCanonicalSourceData) (beta : ℕ → ℝ) (k : ℕ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "selectedCCMGroundScale",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
+      "line": 421,
+      "signature": "noncomputable def selectedCCMGroundScale (S : D0Pstar.ProlateCanonicalSourceData) (beta : ℕ → ℝ) (hfloor : ∀ k, sourceCCMComplexTrialComplementFloor S (D0Pstar.selectedPairIndex S k) (beta k)) (k : ℕ) : ℂ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "selectedCCMGroundTransform",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
+      "line": 432,
+      "signature": "noncomputable def selectedCCMGroundTransform (S : D0Pstar.ProlateCanonicalSourceData) (beta : ℕ → ℝ) (hfloor : ∀ k, sourceCCMComplexTrialComplementFloor S (D0Pstar.selectedPairIndex S k) (beta k)) (k : ℕ) (z : ℂ) : ℂ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedCenteringFactor_ne_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
+      "line": 445,
+      "signature": "private theorem selectedCenteringFactor_ne_zero (S : D0Pstar.ProlateCanonicalSourceData) (k : ℕ) : D0Pstar.selectedCenteringFactor S k ≠ 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedCCMGroundOverlap_ne_zero_of_ratio_lt_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
+      "line": 456,
+      "signature": "theorem selectedCCMGroundOverlap_ne_zero_of_ratio_lt_one (S : D0Pstar.ProlateCanonicalSourceData) (beta : ℕ → ℝ) (hfloor : ∀ k, sourceCCMComplexTrialComplementFloor S (D0Pstar.selectedPairIndex S k) (beta k)) (k : ℕ) (hratio : selectedCCMResidualFloorRatio S beta k < 1) : selectedCCMGroundOverlap S beta hfloor k ≠ 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedCCMGroundScale_ne_zero_of_ratio_lt_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
+      "line": 474,
+      "signature": "theorem selectedCCMGroundScale_ne_zero_of_ratio_lt_one (S : D0Pstar.ProlateCanonicalSourceData) (beta : ℕ → ℝ) (hfloor : ∀ k, sourceCCMComplexTrialComplementFloor S (D0Pstar.selectedPairIndex S k) (beta k)) (k : ℕ) (hratio : selectedCCMResidualFloorRatio S beta k < 1) : selectedCCMGroundScale S beta hfloor k ≠ 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedCCMGroundTransform_sub_selectedFamily_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
+      "line": 490,
+      "signature": "theorem selectedCCMGroundTransform_sub_selectedFamily_le (S : D0Pstar.ProlateCanonicalSourceData) (beta : ℕ → ℝ) (hfloor : ∀ k, sourceCCMComplexTrialComplementFloor S (D0Pstar.selectedPairIndex S k) (beta k)) (k : ℕ) (z : ℂ) : ‖selectedCCMGroundTransform S beta hfloor k z - CanonicalRHRoute.selectedFamily (D0Pstar.canonicalApproximation S.canonical) k z‖ ≤ ‖D0Pstar.selectedCenteringFactor S k‖ * sourceOrderedCCMKernelL2 (D0Pstar.logLength (D0Pstar.selectedPairIndex S k)) (D0Pstar.selectedPairIndex S k).N z * Real.sqrt (selectedCCMResidualFloorRatio S beta k)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "literalCCMCofinalResidualFloorEnvelopeAndTransformTail",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
+      "line": 541,
+      "signature": "theorem literalCCMCofinalResidualFloorEnvelopeAndTransformTail (S : D0Pstar.ProlateCanonicalSourceData) (beta : ℕ → ℝ) (hfloor : ∀ k, sourceCCMComplexTrialComplementFloor S (D0Pstar.selectedPairIndex S k) (beta k)) (U : Set ℂ) (hU : IsOpen U) (hratioStrict : ∀ᶠ k in atTop, selectedCCMResidualFloorRatio S beta k < 1) (hcompactBudget : ∀ K ⊆ U, IsCompact K → ∃ C : ℕ → ℝ, Tendsto (fun k => C k * Real.sqrt (selectedCCMResidualFloorRatio S beta k)) atTop (𝓝 0) ∧ ∀ᶠ k in atTop, ∀ z ∈ K, ‖D0Pstar.selectedCenteringFactor S k‖ * sourceOrderedCCMKernelL2 (D0Pstar.logLength (D0Pstar.selectedPairIndex S k)) (D0Pstar.selectedPairIndex S k).N z ≤ C k) (htail : TendstoLocallyUniformlyOn (fun k z => CanonicalRHRoute.selectedFamily (D0Pstar.canonicalApproximation S.canonical) k z - D0Pstar.selectedMuntzApproximation S k z) (fun _ => 0) atTop U) : TendstoLocallyUniformlyOn (fun k z => selectedCCMGroundTransform S beta hfloor k z - D0Pstar.selectedMuntzApproximation S k z) (fun _ => 0) atTop U ∧ ∀ᶠ k in atTop, selectedCCMGroundScale S beta hfloor k ≠ 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "goal058NormalizerCollapseXi",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
+      "line": 634,
+      "signature": "def goal058NormalizerCollapseXi : Fin 2 → ℂ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "goal058NormalizerCollapseQ",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
+      "line": 635,
+      "signature": "def goal058NormalizerCollapseQ : Fin 2 → ℂ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "goal058NormalizerCollapseXi_unit",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
+      "line": 637,
+      "signature": "theorem goal058NormalizerCollapseXi_unit : star goal058NormalizerCollapseXi ⬝ᵥ goal058NormalizerCollapseXi = 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "goal058NormalizerCollapseQ_unit",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
+      "line": 641,
+      "signature": "theorem goal058NormalizerCollapseQ_unit : star goal058NormalizerCollapseQ ⬝ᵥ goal058NormalizerCollapseQ = 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "goal058NormalizerCollapse_overlap_zero_and_defect_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
+      "line": 647,
+      "signature": "theorem goal058NormalizerCollapse_overlap_zero_and_defect_one : star goal058NormalizerCollapseXi ⬝ᵥ goal058NormalizerCollapseQ = 0 ∧ 1 - Complex.normSq (star goal058NormalizerCollapseXi ⬝ᵥ goal058NormalizerCollapseQ) = 1",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "complexTrialLineComplement_sq_of_unit_fixedShift",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMComplementFloorConstruction.lean",
+      "line": 26,
+      "signature": "private theorem complexTrialLineComplement_sq_of_unit_fixedShift {ι : Type*} [Fintype ι] [DecidableEq ι] (q : ι → ℂ) (hq : star q ⬝ᵥ q = 1) : complexTrialLineComplement q * complexTrialLineComplement q = complexTrialLineComplement q",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "complexTrialComplementBlock_fixedShift_identity",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMComplementFloorConstruction.lean",
+      "line": 36,
+      "signature": "private theorem complexTrialComplementBlock_fixedShift_identity {ι : Type*} [Fintype ι] [DecidableEq ι] (K : Matrix ι ι ℂ) (q : ι → ℂ) (aStar a : ℝ) (hq : star q ⬝ᵥ q = 1) : let Q",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "complexTrialComplementFloor_of_fixedShiftFloor",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMComplementFloorConstruction.lean",
+      "line": 60,
+      "signature": "theorem complexTrialComplementFloor_of_fixedShiftFloor {ι : Type*} [Fintype ι] [DecidableEq ι] (K : Matrix ι ι ℂ) (q : ι → ℂ) (aStar a betaStar beta : ℝ) (hq : star q ⬝ᵥ q = 1) (hfixed : complexTrialComplementFloor K q (aStar : ℂ) betaStar) (hbeta : 0 < beta) (hshift : beta ≤ betaStar + aStar - a) : complexTrialComplementFloor K q (a : ℂ) beta",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceCCMComplexTrialComplementFloor_of_fixedShiftFloor",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMComplementFloorConstruction.lean",
+      "line": 101,
+      "signature": "theorem sourceCCMComplexTrialComplementFloor_of_fixedShiftFloor (S : D0Pstar.ProlateCanonicalSourceData) (i : D0Pstar.PairIndex) (aStar betaStar beta : ℝ) (hfixed : complexTrialComplementFloor (D0Pstar.sourceCCMFiniteMatrix i) (D0Pstar.sourceCCMComplexRow S i) (aStar : ℂ) betaStar) (hbeta : 0 < beta) (hshift : beta ≤ betaStar + aStar - D0Pstar.sourceCCMFiniteRayleigh S i) : sourceCCMComplexTrialComplementFloor S i beta",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "literalCCMComplementFloorConstruction",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMComplementFloorConstruction.lean",
+      "line": 126,
+      "signature": "theorem literalCCMComplementFloorConstruction (S : D0Pstar.ProlateCanonicalSourceData) (aStar betaStar : ℝ) (hbetaStar : 0 < betaStar) (hfixed : ∀ k, complexTrialComplementFloor (D0Pstar.sourceCCMFiniteMatrix (D0Pstar.selectedPairIndex S k)) (D0Pstar.sourceCCMComplexRow S (D0Pstar.selectedPairIndex S k)) (aStar : ℂ) betaStar) (hrayleigh : ∀ k, |D0Pstar.sourceCCMFiniteRayleigh S (D0Pstar.selectedPairIndex S k) - aStar| ≤ betaStar / 2) : ∀ k, sourceCCMComplexTrialComplementFloor S (D0Pstar.selectedPairIndex S k) (betaStar / 2)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "goal058FixedShiftMutationK",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMComplementFloorConstruction.lean",
+      "line": 156,
+      "signature": "def goal058FixedShiftMutationK : Matrix (Fin 2) (Fin 2) ℂ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "goal058FixedShiftMutationQ",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMComplementFloorConstruction.lean",
+      "line": 159,
+      "signature": "def goal058FixedShiftMutationQ : Fin 2 → ℂ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "goal058FixedShiftMutationY",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMComplementFloorConstruction.lean",
+      "line": 160,
+      "signature": "def goal058FixedShiftMutationY : Fin 2 → ℂ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "goal058FixedShiftMutationQ_unit",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMComplementFloorConstruction.lean",
+      "line": 162,
+      "signature": "theorem goal058FixedShiftMutationQ_unit : star goal058FixedShiftMutationQ ⬝ᵥ goal058FixedShiftMutationQ = 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "goal058FixedShiftMutationQComplement_fixes_Y",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMComplementFloorConstruction.lean",
+      "line": 166,
+      "signature": "theorem goal058FixedShiftMutationQComplement_fixes_Y : complexTrialLineComplement goal058FixedShiftMutationQ *ᵥ goal058FixedShiftMutationY = goal058FixedShiftMutationY",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "goal058FixedShiftMutation_shiftedBlock_kills_Y",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMComplementFloorConstruction.lean",
+      "line": 177,
+      "signature": "theorem goal058FixedShiftMutation_shiftedBlock_kills_Y : let Q",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "goal058FixedShiftMutationY_normSq_re",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMComplementFloorConstruction.lean",
+      "line": 191,
+      "signature": "theorem goal058FixedShiftMutationY_normSq_re : (star goal058FixedShiftMutationY ⬝ᵥ goal058FixedShiftMutationY).re = 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "goal058FixedShiftMutation_no_positive_floor",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMComplementFloorConstruction.lean",
+      "line": 197,
+      "signature": "theorem goal058FixedShiftMutation_no_positive_floor (beta : ℝ) (hbeta : 0 < beta) : ¬ complexTrialComplementFloor goal058FixedShiftMutationK goal058FixedShiftMutationQ 1 beta",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
       "kind": "theorem",
       "name": "matrixToBilin_ker_eq_transposeMulVec_ker",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MatrixBilinFormRadical.lean",
@@ -24227,6 +24864,16 @@
       "signature": "theorem safe_rate_generic_package {ι : Type*} {l : Filter ι} [NeBot l] (scale W : ι → ℝ) (C q_b r_alpha r_Delta : ℝ) (hscale : Tendsto scale l atTop) (hC : 0 ≤ C) (hmargin : r_Delta - r_alpha > 2 * q_b + 1) (hW0 : ∀ᶠ i in l, 0 ≤ W i) (hWsq : ∀ᶠ i in l, (W i) ^ 2 ≤ (C * (scale i) ^ (q_b + (1 + r_alpha - r_Delta) / 2)) ^ 2) : q_b + (1 + r_alpha - r_Delta) / 2 < 0 ∧ Tendsto W l (𝓝 0)",
       "in_docs": false,
       "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sameFamilyGroundTrialCompositionCore",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SameFamilyGroundTrialCompositionCore.lean",
+      "line": 39,
+      "signature": "theorem sameFamilyGroundTrialCompositionCore {ι α E : Type*} [TopologicalSpace α] [LocallyCompactSpace α] [NormedAddCommGroup E] {l : Filter ι} [NeBot l] (finiteGroundTransform ccmTrialTransform : ι → α → E) (trackingError projectionTail normalizationError : ι → α → E) (U : Set α) (hU : IsOpen U) (hdecomp : ∀ i z, finiteGroundTransform i z - ccmTrialTransform i z = trackingError i z + projectionTail i z + normalizationError i z) (htracking : TendstoLocallyUniformlyOn trackingError (fun _ => 0) l U) (htail : TendstoLocallyUniformlyOn projectionTail (fun _ => 0) l U) (hnormalization : TendstoLocallyUniformlyOn normalizationError (fun _ => 0) l U) : TendstoLocallyUniformlyOn (fun i z => finiteGroundTransform i z - ccmTrialTransform i z) (fun _ => 0) l U",
+      "in_docs": true,
+      "in_lemma_db": false,
       "orphan": false
     },
     {
