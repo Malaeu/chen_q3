@@ -126,3 +126,31 @@ class VerdictIdTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+class ClosesOpensTests(unittest.TestCase):
+    def test_parse_closes_opens_maps_to_provides_requires(self) -> None:
+        text = (
+            "# STATUS: SOURCE_WRITTEN\n"
+            "```yaml\n"
+            "CLOSES: SOURCE_RAYLEIGH_PROXIMITY_TO_FIXED_SHIFT\n"
+            "OPENS: none\n"
+            "LEAN_PATH:\n"
+            "  q3.lean.aristotle/Q3/Proofs/RouteB/Example.lean\n"
+            "THEOREMS:\n"
+            "  - Q3.RouteB.exampleTheorem\n"
+            "```\n"
+        )
+        closes, opens_, lean, thm = kb_migrate_verdicts.parse_closes_opens(text)
+        self.assertEqual(closes, ["SOURCE_RAYLEIGH_PROXIMITY_TO_FIXED_SHIFT"])
+        self.assertEqual(opens_, [])
+        self.assertEqual(lean, "q3.lean.aristotle/Q3/Proofs/RouteB/Example.lean")
+        self.assertEqual(thm, "Q3.RouteB.exampleTheorem")
+
+    def test_parse_closes_opens_absent_returns_none(self) -> None:
+        self.assertIsNone(kb_migrate_verdicts.parse_closes_opens("# STATUS: OPEN\nno ledger here\n"))
+
+    def test_parse_closes_opens_multiple_and_semicolons(self) -> None:
+        text = "CLOSES: A_ONE, B_TWO\nOPENS: C_THREE; D_FOUR\n"
+        closes, opens_, lean, thm = kb_migrate_verdicts.parse_closes_opens(text)
+        self.assertEqual(closes, ["A_ONE", "B_TWO"])
+        self.assertEqual(opens_, ["C_THREE", "D_FOUR"])

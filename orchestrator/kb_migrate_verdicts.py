@@ -116,6 +116,36 @@ def parse_iteration(text):
     return out or None
 
 
+def parse_closes_opens(text):
+    """W9 supplier-ledger lines from a SOURCE RECORD header.
+
+    CLOSES: names this node settles → its `provides`.
+    OPENS:  new inputs it creates   → its `requires`.
+    Both are comma- or list-separated catalog names. `none`/`-` counts as empty.
+    Returns (closes, opens, lean_path, theorem) or None when neither line exists.
+    """
+    def grab(field):
+        m = re.search(rf"^\s*{field}:\s*(.+?)\s*$", text, re.M)
+        if not m:
+            return None
+        raw = m.group(1).strip()
+        if raw.lower() in ("none", "-", "[]", "нет"):
+            return []
+        return [t.strip() for t in re.split(r"[,;]", raw) if t.strip()]
+
+    closes, opens_ = grab("CLOSES"), grab("OPENS")
+    if closes is None and opens_ is None:
+        return None
+    lean = re.search(r"^\s*(?:LEAN_PATH:\s*\n?\s*|LEAN_PATH:\s*)"
+                     r"(q3\.lean\.aristotle/\S+\.lean)", text, re.M)
+    if not lean:
+        lean = re.search(r"(q3\.lean\.aristotle/Q3/[\w/]+\.lean)", text)
+    thm = re.search(r"^\s*-\s*(Q3\.RouteB\.\w+)", text, re.M)
+    return (closes or [], opens_ or [],
+            lean.group(1) if lean else None,
+            thm.group(1) if thm else None)
+
+
 def parse_verdict_kill(text):
     """Verdict-level kill markers, structured forms only.
 
@@ -184,6 +214,9 @@ def main() -> int:
     rows, evidence, aliases = [], [], []
     live_names = set()
     manual = []   # prose-only KILL mentions: reported, never invented into rows
+    ledger_rows = []   # W9 CLOSES/OPENS → capability (provides/requires)
+    known_ledger = {r[0] for r in conn.execute(
+        "SELECT theorem FROM capability WHERE lens='supplier_ledger'")}
     n_iter = n_kill = n_reused = n_existing = 0
 
     for name, paths in sorted(by_name.items()):
@@ -192,6 +225,21 @@ def main() -> int:
         rel_canon = str(canon.relative_to(REPO))
         d = DATE_RE.search(name) or DATE_RE.search(text)
         date = f"{d.group(1)}-{d.group(2)}-{d.group(3)}" if d else None
+
+        co = parse_closes_opens(text)
+        if co is not None:
+            closes, opens_, lean_path, thm = co
+            subject = thm or name
+            if subject not in known_ledger and (closes or opens_):
+                ledger_rows.append({
+                    "theorem": subject,
+                    "file": lean_path or rel_canon,
+                    "lens": "supplier_ledger",
+                    "provides": "; ".join(closes) or "nothing_closed",
+                    "requires": "; ".join(opens_),
+                    "strength": "declared",
+                    "run_id": "supplier_ledger_w9",
+                })
 
         it = parse_iteration(text)
         verdict_kill, killed_subject = parse_verdict_kill(text)
@@ -267,6 +315,7 @@ def main() -> int:
     print(f"  reused existing strategy: {n_reused} (evidence attached, no duplicate row)")
     print(f"  reused existing verdict : {n_existing} (stable id, no __V row)")
     print(f"  evidence refs           : {len(evidence)}   aliases: {len(aliases)}")
+    print(f"  supplier-ledger rows (W9): {len(ledger_rows)} CLOSES/OPENS → capability")
     print(f"  prose-only KILL mentions: {len(manual)} — NOT migrated, need a human read:")
     # Урезание печатается вслух. Молчаливый срез читается как полный список: 2026-08-13
     # холостой прогон заявил 9 новых строк и напечатал 6, и пропущенной сочли ту запись,
@@ -288,6 +337,11 @@ def main() -> int:
     print(f"  removed source-orphan rows    : {removed_kills}")
 
     kb.insert_kills(conn, rows, evidence=evidence, aliases=aliases)
+    if ledger_rows:
+        conn.executemany(
+            "INSERT INTO capability (theorem, file, lens, provides, requires, strength, run_id) "
+            "VALUES (:theorem, :file, :lens, :provides, :requires, :strength, :run_id)",
+            ledger_rows)
     conn.executemany(
         "INSERT OR REPLACE INTO source_ledger (source_file, expected_rows, migrated_at, note) "
         "VALUES (?,?,?,?)",
