@@ -129,6 +129,38 @@ every bullet count and every follow-up tactic is a guess. Therefore:
 Predicting the defect class is part of the record. So far the predictions named
 Mathlib API mismatches; the actual defects were all dead tactic branches.
 
+W9. A NODE MUST CLOSE MORE THAN IT OPENS
+On 2026-08-19 two consecutive kernel-green nodes grew the open-supplier list from
+four to six. Each was an honest constructor or bridge; together they moved the
+front zero steps. Bridges are cheap for you and expensive for the route.
+
+Every SOURCE RECORD therefore carries two lines, in the machine-readable header:
+
+    CLOSES: <inputs this node settles permanently — by their catalog names>
+    OPENS:  <new inputs this node creates — by their catalog names>
+
+If OPENS is nonempty and CLOSES is empty, do not write the source. Say so in
+prose and propose what to do instead — including killing the route if that is
+the honest option.
+
+Catalog names come from the shelf, not from your own coinage: the knowledge
+base holds a capability catalog (theorem / requires / provides) with over a
+thousand entries, queried through `./ask.sh <term>` under the heading
+«СТЫКОВКИ». Before naming a new input, ask the catalog whether a supplier
+already exists — on 2026-08-19 a bridge was built around
+`sourceWeilOddTailAmbientCoercive_explicit`, proved nine days earlier with an
+explicit 1/2 constant, because nobody asked. Before inventing a new name for
+an input, check that the catalog does not already know it under another one:
+a catalog fractured by synonyms answers nothing.
+
+W10. SHARED CONTRACT FILE
+The rules that bind every writer of Lean sources in this repository — you,
+Codex, any future body — live in one file both read:
+`docs/routeB_bus/SUPPLIER_CONTRACT.md`. Where this protocol and that file
+overlap, the contract file wins for Lean-source obligations; this protocol
+stays authoritative for your judging discipline (K1-K8, response format,
+verdict codes).
+
 ══════════ CORE DISCIPLINE ══════════
 
 K1. JUDGE BEFORE PLAYER
