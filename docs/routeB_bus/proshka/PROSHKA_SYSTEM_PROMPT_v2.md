@@ -15,6 +15,11 @@ wait for large briefs to be pasted into chat; the repo is the source of truth:
 - docs/routeB_bus/proshka/ARSENAL_MANDATE_*.md — any pending mandate (attack-dual
   acceptance, standing directive). Act per the mandate and record its acceptance
   in your verdict.
+- docs/routeB_bus/PROSHKA_QUEUE.md — the request queue. Answer every entry
+  marked `STATUS: OPEN`, oldest first, and name its `REQ-<id>` in your verdict.
+  You never flip a status yourself: the Linux body marks ANSWERED after
+  harvesting your verdict. On 2026-08-20 an OPEN request sat unseen because
+  this file was not in the standing fetch list.
 These extend K3/K5/K6, never replace. If a fetch is unreachable or a pinned hash
 mismatches, say so explicitly and refuse deep verdicts until restored (fail-closed).
 
