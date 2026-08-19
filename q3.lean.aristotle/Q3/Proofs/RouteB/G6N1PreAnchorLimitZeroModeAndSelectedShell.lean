@@ -2,8 +2,11 @@ import Q3.Proofs.RouteB.D0AnchorFloor
 import Q3.Proofs.RouteB.D0CenteredCriticalMoment
 import Q3.Proofs.RouteB.CenteredXiZeroNonzero
 import Q3.Proofs.RouteB.MuntzV3.Core
+import Q3.Proofs.RouteB.ProlateLayer
 
 set_option linter.mathlibStandardSet false
+set_option relaxedAutoImplicit false
+set_option autoImplicit false
 
 open Complex Filter Topology MeasureTheory Set
 open scoped ENNReal NNReal
@@ -161,7 +164,14 @@ theorem preAnchorFullMellinCoordinate_zero_eq_sqrtL_mul_innerV0
   apply integral_congr_ae
   filter_upwards [hrep, hmode] with u hrep_u hmode_u
   rw [hrep_u, hmode_u]
-  simp [RCLike.inner_apply', hsqrt]
+  have hsqrtC : (Real.sqrt (L_m i) : ℂ) ≠ 0 := by
+    exact_mod_cast hsqrt
+  have hscale :
+      E_star h u =
+        (Real.sqrt (L_m i) : ℂ) *
+          (E_star h u * (Real.sqrt (L_m i) : ℂ)⁻¹) := by
+    field_simp [hsqrtC]
+  simpa using hscale
 
 /-- The exact source identity requested by the transaction:
 `Gwin(0) = sqrt(L_m) * <V0,gTrial_m>`. -/
@@ -186,7 +196,7 @@ theorem trialNonzero_of_preAnchorGwin_zero_ne
   have hinner : inner ℂ (V_n_m i 0) (gTrial_m i h hLp) ≠ 0 := by
     intro hinner_zero
     apply hzero
-    rw [preAnchorGwin_zero_eq_sqrtL_mul_innerV0, hinner_zero, mul_zero]
+    rw [preAnchorGwin_zero_eq_sqrtL_mul_innerV0 i h hLp, hinner_zero, mul_zero]
   have hprojected : gTrial_m_N i h hLp ≠ 0 := by
     intro hprojected_zero
     apply hinner
@@ -228,11 +238,11 @@ theorem preAnchorRawTransformCoordinate_zero_eq_normalizer_mul_gwin_zero
     preAnchorRawTransformCoordinate i h hLp hNonzero 0 =
       ((sTrial_m_N i h hLp hNonzero : ℝ) : ℂ) *
         preAnchorGwinTransformCoordinate i h 0 := by
-  rw [preAnchorRawTransformCoordinate_zero_eq_sqrt_mul_c0]
+  rw [preAnchorRawTransformCoordinate_zero_eq_sqrt_mul_c0 i h hLp hNonzero]
   unfold c_n kTrial_m_N
   rw [Submodule.coe_smul, inner_smul_right]
-  rw [inner_V0_gTrial_m_N_eq]
-  rw [preAnchorGwin_zero_eq_sqrtL_mul_innerV0]
+  rw [inner_V0_gTrial_m_N_eq i h hLp]
+  rw [preAnchorGwin_zero_eq_sqrtL_mul_innerV0 i h hLp]
   ring
 
 /-- Hence the exact normalized path-local raw value at zero is nonzero. -/
@@ -337,7 +347,7 @@ private theorem tendsto_nat_add_atTop (start : ℕ) :
   refine tendsto_atTop.2 ?_
   intro b
   filter_upwards [eventually_ge_atTop b] with k hk
-  exact hk.trans (Nat.le_add_left k start)
+  omega
 
 /-- Discarding the finite prefix selected by eventual central nonvanishing
 constructs the full source-locked selected shell. -/
@@ -345,25 +355,38 @@ noncomputable def selectedProlateCofinalSourceDataOfPreAnchorPort
     (D : SelectedProlatePreAnchorData)
     (P : CCMLemma73PreAnchorPort D) :
     SelectedProlateCofinalSourceData := by
-  obtain ⟨start, hstart⟩ :=
+  let hEventually :
+      ∃ start : ℕ, ∀ k ≥ start,
+        preAnchorGwinTransformCoordinate
+          (D.index k) (prolateCombination (D.pair k)) 0 ≠ 0 :=
     eventually_atTop.1 (eventually_preAnchorGwin_zero_ne D P)
+  let start : ℕ := Classical.choose hEventually
+  have hstart : ∀ k ≥ start,
+      preAnchorGwinTransformCoordinate
+        (D.index k) (prolateCombination (D.pair k)) 0 ≠ 0 := by
+    simpa [start] using Classical.choose_spec hEventually
   let shift : ℕ → ℕ := fun k => start + k
   have hshift : Tendsto shift atTop atTop := by
     simpa [shift] using tendsto_nat_add_atTop start
   have htrial : ∀ k,
       TrialNonzero (D.index (shift k))
         (prolateCombination (D.pair (shift k)))
-        (D.eStar_memLp (shift k)) := by
-    intro k
-    apply trialNonzero_of_preAnchorGwin_zero_ne
-    exact hstart (shift k) (by simp [shift])
+        (D.eStar_memLp (shift k)) := fun k =>
+    trialNonzero_of_preAnchorGwin_zero_ne
+      (D.index (shift k))
+      (prolateCombination (D.pair (shift k)))
+      (D.eStar_memLp (shift k))
+      (hstart (shift k) (by omega))
   have hraw : ∀ k,
       preAnchorRawTransformCoordinate
         (D.index (shift k)) (prolateCombination (D.pair (shift k)))
-        (D.eStar_memLp (shift k)) (htrial k) 0 ≠ 0 := by
-    intro k
-    apply preAnchorRawTransformCoordinate_zero_ne
-    exact hstart (shift k) (by simp [shift])
+        (D.eStar_memLp (shift k)) (htrial k) 0 ≠ 0 := fun k =>
+    preAnchorRawTransformCoordinate_zero_ne
+      (D.index (shift k))
+      (prolateCombination (D.pair (shift k)))
+      (D.eStar_memLp (shift k))
+      (htrial k)
+      (hstart (shift k) (by omega))
   have hlimit :
       TendstoLocallyUniformlyOn
         (fun k z =>
@@ -377,7 +400,8 @@ noncomputable def selectedProlateCofinalSourceDataOfPreAnchorPort
     have hbase :=
       (tendstoLocallyUniformlyOn_iff_forall_isCompact
         isOpen_centeredCriticalStrip).mp P.convergence K hKU hK
-    exact hbase.comp hshift
+    intro u hu
+    exact hshift (hbase u hu)
   exact {
     index := fun k => D.index (shift k)
     pair := fun k => D.pair (shift k)
@@ -452,7 +476,9 @@ end SelectedProlateCofinalSourceData
 proved fact `centeredXi 0 ≠ 0` is therefore load-bearing. -/
 theorem goalG6N1ZeroTarget_nonvanishing_not_free :
     ¬ (∀ᶠ _k : ℕ in atTop, (0 : ℂ) ≠ 0) := by
-  simp
+  intro h
+  obtain ⟨k, hk⟩ := eventually_atTop.1 h
+  exact (hk k le_rfl) rfl
 
 #print axioms preAnchorFullMellinCoordinate_eq_preAnchorGwinTransformCoordinate
 #print axioms preAnchorGwin_zero_eq_sqrtL_mul_innerV0
