@@ -154,3 +154,9 @@ class ClosesOpensTests(unittest.TestCase):
         closes, opens_, lean, thm = kb_migrate_verdicts.parse_closes_opens(text)
         self.assertEqual(closes, ["A_ONE", "B_TWO"])
         self.assertEqual(opens_, ["C_THREE", "D_FOUR"])
+
+    def test_parse_closes_opens_block_list_form(self) -> None:
+        text = "CLOSES: []\nOPENS:\n  - FIRST_INPUT\n  - SECOND_INPUT\n"
+        closes, opens_, lean, thm = kb_migrate_verdicts.parse_closes_opens(text)
+        self.assertEqual(closes, [])
+        self.assertEqual(opens_, ["FIRST_INPUT", "SECOND_INPUT"])

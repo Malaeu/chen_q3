@@ -13,7 +13,14 @@
 Инструмент НЕ закрывает шаги. Кандидат становится закрытием только после
 прогона Lean — иначе это суррогат по форме.
 """
-import json, re, sqlite3, pathlib, collections, subprocess, functools, difflib
+import collections
+import difflib
+import functools
+import json
+import pathlib
+import re
+import sqlite3
+import subprocess
 
 ROOT = pathlib.Path(__file__).resolve().parents[2] / "q3.lean.aristotle"
 DB   = f"file:{ROOT}/aristotle_db/knowledge.db?mode=ro"
@@ -182,17 +189,67 @@ def declarations(relpath, limit=40):
     return out[:limit] or [f"(объявлений нет в {relpath})"]
 
 
+def chain_gap_report(con):
+    """Фаза 0 леджера разрывов: k-метрика по цепям.
+
+    k = число шагов цепи без подтверждённого поставщика. Цепь с k=1 — золото:
+    один шаг до замыкания. Сортировка по k восходяще — это и есть жёсткий срез
+    вариантов: сперва туда, где замыкание ближе всего.
+    """
+    print("=" * 78 + "\nРАЗРЫВЫ ПО ЦЕПЯМ (k = шагов до замыкания)\n" + "=" * 78)
+    rows = list(con.execute(
+        """select chain,
+                  sum(case when status='READY' then 1 else 0 end),
+                  sum(case when status!='READY' then 1 else 0 end),
+                  count(*)
+             from assembly group by chain
+             order by sum(case when status!='READY' then 1 else 0 end)"""))
+    for chain, ready, k, total in rows:
+        marker = "◉ ЗОЛОТО" if k == 1 else ("◎" if k <= 3 else " ")
+        print(f"  {marker:9s} k={k:<3d} {chain}  ({ready}/{total} готово)")
+    print()
+
+
+def gap_candidates(con, requirement, objects, limit=4):
+    """Фаза 1: слабые рёбра-кандидаты для одного разрыва.
+
+    Текстовое совпадение capability.provides с требованием шага. СЛАБОЕ ребро:
+    только кандидат, НЕ замыкание. Сильным ребро делает supplier_preflight /
+    fit.py (типовая стыковка в Lean) — совпадение по слову не есть совпадение
+    по смыслу, и scope-теги обязаны сходиться (ABSTRACT не закрывает
+    COFINAL_FAMILY). Контрпримеры имеют вето.
+    """
+    words = [w for w in re.findall(r"[A-Za-zА-Яа-я_]{5,}", f"{requirement} {objects or ''}")
+             if w.lower() not in ("требуется", "конкретный", "существует")][:6]
+    if not words:
+        return []
+    cond = " OR ".join("lower(provides) LIKE ?" for _ in words)
+    params = [f"%{w.lower()}%" for w in words]
+    seen, out = set(), []
+    for thm, f, prov in con.execute(
+            f"select theorem, file, provides from capability where {cond} limit 12", params):
+        if thm in seen or thm.endswith(".md"):
+            continue
+        seen.add(thm)
+        score = sum(1 for w in words if w.lower() in (prov or "").lower())
+        out.append((score, thm, f, prov))
+    out.sort(reverse=True)
+    return out[:limit]
+
+
 def main():
     ours, mathlib, closed = load_context()
     print(f"[контекст] наших объектов {len(ours)} · атомов Mathlib {len(mathlib)} · "
           f"имён в закрытых шагах {len(closed)}\n", flush=True)
 
     con = sqlite3.connect(DB, uri=True)
+    chain_gap_report(con)
     rows = list(con.execute("""select chain, step, requirement, supplied_by,
                                supplier_file, note, status, objects
                                from assembly where status != 'READY' order by chain, step"""))
     tot, marked = con.execute(
         "select count(*), count(objects) from assembly").fetchone()
+    candidates = {(r[0], r[1]): gap_candidates(con, r[2], r[7]) for r in rows}
     con.close()
     pct = marked * 100 // tot if tot else 0
     print(f"[покрытие] objects заполнены у {marked}/{tot} шагов ({pct}%)", flush=True)
@@ -216,6 +273,12 @@ def main():
         print(f"\n{'─'*78}\n[{b}]  {chain}:{step}   ({status})\n  {req}")
         for w in why:
             print(f"  ▸ {w}")
+        cands = candidates.get((chain, step)) or []
+        if cands:
+            print("  слабые рёбра-кандидаты (текст, НЕ замыкание — сильным делает fit.py):")
+            for score, thm, f, prov in cands:
+                print(f"    [{score}] {thm}  {f}")
+                print(f"        -> {(prov or '')[:100]}")
         if b == "ПОТЕРЯННОЕ ИМЯ":
             for k in [k for k in AREAS if k.lower() in (req or "").lower()][:2]:
                 print(f"\n  ── ВСЕ объявления {AREAS[k]} ──")

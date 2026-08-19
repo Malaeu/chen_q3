@@ -125,13 +125,22 @@ def parse_closes_opens(text):
     Returns (closes, opens, lean_path, theorem) or None when neither line exists.
     """
     def grab(field):
-        m = re.search(rf"^\s*{field}:\s*(.+?)\s*$", text, re.M)
-        if not m:
-            return None
-        raw = m.group(1).strip()
-        if raw.lower() in ("none", "-", "[]", "нет"):
-            return []
-        return [t.strip() for t in re.split(r"[,;]", raw) if t.strip()]
+        # Inline form: `CLOSES: A, B` / `CLOSES: []` / `CLOSES: none`.
+        # `[ \t]*`, not `\s*`: `\s` swallows the newline and captures the first
+        # item of a block list as if it were an inline value.
+        m = re.search(rf"^\s*{field}:[ \t]*(\S.*?)\s*$", text, re.M)
+        if m:
+            raw = m.group(1).strip()
+            if raw.lower() in ("none", "-", "[]", "нет"):
+                return []
+            return [t.strip().lstrip("- ").strip()
+                    for t in re.split(r"[,;]", raw) if t.strip()]
+        # Block-list form: `OPENS:` followed by `  - NAME` lines.
+        m = re.search(rf"^\s*{field}:\s*\n((?:\s+-\s+\S.*\n?)+)", text, re.M)
+        if m:
+            return [ln.strip().lstrip("- ").strip()
+                    for ln in m.group(1).splitlines() if ln.strip()]
+        return None
 
     closes, opens_ = grab("CLOSES"), grab("OPENS")
     if closes is None and opens_ is None:
