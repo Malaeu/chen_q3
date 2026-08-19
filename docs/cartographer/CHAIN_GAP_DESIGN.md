@@ -366,3 +366,25 @@ Lemma 7.3, который уже стоит в плане как узел G6-N1.
 
 Класс наблюдения: цена узла = математика + дерево. Судья видит первое,
 греп — второе; расхождение оценок здесь и есть польза разделения труда.
+
+## Вердикт по N0-ремонту — 2026-08-20, транзакция два-в-одном
+
+`PROSHKA_VERDICT_N0_REPAIR_TOTAL_COST_2026-08-20.md`. Наше измерение принято
+(`MEASUREMENT_ACCEPTED: true`), цена A пересмотрена 5/10 → 8/10 — инженерная
+поправка «цена узла = математика + дерево» сработала в первый же обмен.
+
+Находка судьи, которую проглядели оба: наивный B-в-лоб — ЦИКЛ
+(`selectedMuntzApproximation` сам требует `ProlateCanonicalSourceData`).
+Выбрано: pre-anchor Lemma 7.3 (ненормированный trial, цикла нет) + zero-mode
+следствие (Gwin(0) = √L_m · V0-overlap; Галёркин сохраняет V0-overlap точно)
++ additive shell 2/10 без касания зелёного слоя.
+
+Транзакция `G6_N1_PREANCHOR_LIMIT_ZERO_MODE_AND_SELECTED_SHELL`:
+CLOSES = [CCM_LEMMA_7_3_SELECTED_MUNTZ_LIMIT,
+SELECTED_FINITE_PROLATE_CENTRAL_NONVANISHING], OPENS = []. Из стен G6
+остаётся только N2. Маргинальная цена N0-ремонта поверх N1: 1/10.
+
+MINIMAL_MISSING_IDENTITY (его формулировка): для pre-anchor source trial
+Gwin-значение в z=0 равно √L_m × V0-overlap; из точного сохранения V0-overlap
+проекцией Галёркина вывести selected TrialNonzero и ненулевой нормированный
+rawFplus(0) из pre-anchor CCM Lemma-7.3 предела.
