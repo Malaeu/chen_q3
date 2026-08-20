@@ -1024,7 +1024,7 @@ kernel-floors): бумага 2511.22755 на полке, поле P.convergence 
 
 ## ЗАПРОС REQ-2026-08-20-E — этаж L73.5: Mellin(E*(explicit h)) = centeredXi
 
-`REQ-2026-08-20-E` · `STATUS: OPEN`
+`REQ-2026-08-20-E` · `STATUS: ANSWERED` — KILL (dfe6be5c): цель без скаляра ЛОЖНА, точная формула = (1/4)·centeredXi; ремонт = четверть-тождество + скаляр 4 в sourceScale; дыра переименована EXPLICIT_CCM_LIMIT_MELLIN_TO_QUARTER_CENTERED_XI_LEAN
 
 Твой же вердикт FLOORS (26881a42) назвал L73.5 единственным этажом порта,
 независимым от Codex-пакета (`DEPENDS_ON_CODEX: NONE`, `PARTIAL_OPEN`),
@@ -1049,3 +1049,27 @@ W9: CLOSES=[EXPLICIT_CCM_LIMIT_MELLIN_TO_CENTERED_XI] OPENS=[] обязател�
 (SelectedProlatePreAnchorData) закрыт Linux-телом за спящего Codex,
 kernel-green, ждёт пуша после OK владельца. На L73.5 это не влияет —
 он ни от чего не зависит.
+
+
+## ЗАПРОС REQ-2026-08-20-F — разложить стену L73.2 на этажи
+
+`REQ-2026-08-20-F` · `STATUS: OPEN`
+
+Твой вердикт FLOORS назвал L73.2 (SELECTED_FERRERS_LEMMA72_RATE, цена 9/10,
+Meixner-Schäfke Satz 9) единственной настоящей стеной порта. По образцу
+твоих же разложений N2 и порта: разложи СТЕНУ на kernel-этажи с ценами,
+зависимостями и MINIMAL_MISSING_IDENTITY. Lean НЕ писать.
+
+Контекст:
+- обитатель D готов kernel-green локально (ждёт пуша после OK владельца);
+  pair_spec экспонирует точные моды: h0/h4 = normalizedPhysicalMode
+  селектированных Ferrers-решений, λ_k = √(k+2), расписание k↦(k+2,k+2,5(k+2));
+- полка стены: Ferrers-серии 15.08 (коэффициенты, суммируемость, ДУ,
+  interior regularity, endpoint flux), спектральный порядок DLMF,
+  предельные спектры; чего НЕТ — равномерной large-λ асимптотики
+  спектральной моды к эрмитовой;
+- после kill REQ-E учти: скаляр 4 живёт в sourceScale; рейт L73.2 пишется
+  для sourceScale-нормированной комбинации (твоя же форма из FLOORS).
+
+W9-леджер обязателен. Вопрос один: этажи, порядок, где настоящая
+аналитическая сердцевина (Satz 9?) и что из неё уже есть в Mathlib/полке.
