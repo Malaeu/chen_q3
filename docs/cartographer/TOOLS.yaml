@@ -746,6 +746,35 @@ tool_families:
         records_to: stdout
         last_verified: 2026-08-10
 
+      - id: depgraph-roof-cone
+        status: ENABLED
+        audience: [CODEX, CLAUDE_CODE, HUMAN]
+        mode: READ_ONLY
+        path: docs/cartographer/depgraph.py
+        invoke: python3 docs/cartographer/depgraph.py [--target NAME] [--min-name N] [--json OUT]
+        cwd: repository root
+        trigger: >-
+          What does the roof actually stand on; which nodes are cut vertices of
+          its cone; what is proven but unused. Re-run after Route B source
+          changes.
+        writes: false
+        approval: NONE
+        authority: >-
+          LEXICAL_SOURCE_GRAPH_NOT_KERNEL_TRUTH. Edges are name occurrences in
+          declaration bodies after comment stripping, not Lean environment
+          dependencies. False edges are possible; short names are the known
+          failure mode and are filtered by --min-name (default 4). The first
+          run on 2026-08-20 without that filter reported depth 13 and ten cut
+          vertices, all artifacts of a one-letter declaration `C`; with the
+          filter the same tree gives depth 6 and three cut vertices. Treat any
+          single number from this tool as a measurement to be re-derived, never
+          as a supplier premise.
+        scope_negation: >-
+          Does NOT plan forward to unproven goals and cannot: there is no action
+          model. It answers what the built structure is, not which path to take.
+        records_to: stdout, optional JSON via --json
+        last_verified: 2026-08-20
+
       - id: cartographer-brief
         status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]
