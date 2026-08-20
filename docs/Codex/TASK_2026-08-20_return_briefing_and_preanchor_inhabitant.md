@@ -96,3 +96,22 @@ PROSHKA_KILL_N0...md); правки глобальных правил.
 - менять precommitted-расписание.
 
 Полный контекст: docs/routeB_bus/proshka/PROSHKA_VERDICT_CCM_LEMMA_7_3_PREANCHOR_PORT_FLOORS_2026-08-20.md
+
+## 5. СТАТУС 20.08 (до твоего резета): раздел 2 ВЫПОЛНЕН Linux-телом
+
+Владелец поручил Linux-телу сделать обитателя, не дожидаясь 05:39. Готово:
+
+```
+файл:    Q3/Proofs/RouteB/G6N1SelectedFerrersPreAnchorDataInhabitant.lean
+обитатель: selectedFerrersPreAnchorData (+ pair_spec, + reducible-экспорты)
+гейт:    3 раунда, q3_check ok, 9/9 деклараций стандартная тройка
+запись:  docs/routeB_bus/LINUX_SOURCE_RECORD_SELECTED_FERRERS_PREANCHOR_DATA_2026-08-20.md
+```
+
+ТВОЯ ЗАДАЧА ПОСЛЕ РЕЗЕТА (пересмотр):
+1. Исполнить TASK_2026-08-19_supplier_contract_link.md (раздел 1) — в силе.
+2. Раздел 2 НЕ повторять. Вместо него: независимая сверка готового файла
+   (lake env lean + q3_check + профили) и доклад расхождений, если есть.
+3. Раздел 3 в силе: Lemma 7.3 НЕ начинать. Судья разложил её на 9 этажей
+   (PROSHKA_VERDICT_CCM_LEMMA_7_3_PREANCHOR_PORT_FLOORS_2026-08-20.md);
+   следующий твой фронт назначит владелец после сверки.

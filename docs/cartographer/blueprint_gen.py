@@ -31,8 +31,20 @@ def statement_of(name, pconn):
         "select statement from lemmas where name=? limit 1", (name.strip(),)).fetchone()
     return row[0] if row else None
 
+def open_count(kb, chain):
+    return kb.execute(
+        "select count(*) from assembly where chain=? "
+        "and status not in ('READY','VALIDATION')", (chain,)).fetchone()[0]
+
 def main():
     kb = sqlite3.connect(KB, uri=True); pdb = sqlite3.connect(PDB, uri=True)
+    n_g5  = open_count(kb, "G5_CRITICAL_MOMENT")
+    n_g6  = open_count(kb, "GOAL057_CONTINUUM_NUMERATOR_BRIDGE")
+    n_g3  = open_count(kb, "SIMPLE_EVEN_GROUND_TO_REAL_ZEROS")
+    n_g3p = open_count(kb, "G3_CVS_PORT")
+    n_058 = open_count(kb, "REALZERO_GROUND_DIAGONAL_TO_XI")
+    n_cls = n_g5 + n_g6 + n_g3 + n_g3p
+    n_alt = n_g5 + n_g6 + n_058
     lines = [
         "# Blueprint — Operator Methods for RH (skeleton, generated from assembly)",
         "",
@@ -47,9 +59,9 @@ def main():
         "",
         "## Правило замыкания (владельцу): закрой все 🔴 — и крыша встанет",
         "",
-        "- обязательны в ЛЮБОМ случае: G5 (1) + G6 (8);",
-        "- дальше ОДНО из двух: G3+G3p (5) ЛИБО дорога 058 (5);",
-        "- сумма = 14; каждый закрытый 🔴 = перегенерация = позеленел;",
+        f"- обязательны в ЛЮБОМ случае: G5 ({n_g5}) + G6 ({n_g6});",
+        f"- дальше ОДНО из двух: G3+G3p ({n_g3 + n_g3p}) ЛИБО дорога 058 ({n_058});",
+        f"- сумма = {n_cls} классикой / {n_alt} через 058; каждый закрытый 🔴 = перегенерация = позеленел;",
         "- все 🔴 закрыты => входы rh_of_canonical_strip_slots поданы => Q3.RH",
         "  через доказанный iff. Оговорка K6: 🔴 может оказаться стеной — kill",
         "  тоже результат.",

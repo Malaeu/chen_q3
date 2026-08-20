@@ -11,9 +11,9 @@
 
 ## Правило замыкания (владельцу): закрой все 🔴 — и крыша встанет
 
-- обязательны в ЛЮБОМ случае: G5 (1) + G6 (8);
+- обязательны в ЛЮБОМ случае: G5 (1) + G6 (7);
 - дальше ОДНО из двух: G3+G3p (5) ЛИБО дорога 058 (5);
-- сумма = 14; каждый закрытый 🔴 = перегенерация = позеленел;
+- сумма = 13 классикой / 13 через 058; каждый закрытый 🔴 = перегенерация = позеленел;
 - все 🔴 закрыты => входы rh_of_canonical_strip_slots поданы => Q3.RH
   через доказанный iff. Оговорка K6: 🔴 может оказаться стеной — kill
   тоже результат.
@@ -152,7 +152,7 @@
 - 🔴 **1.** равномерный по k моментный бюджет: ∃C ∀k centeredCriticalMoment ≤ C·|rawFplus 0|  *[GAP]*
   - hole: мера ядром 19.08 (apply?): единственный аналитический канат G5; PairCofinal приезжает полем пакета D (шаг 25 GOAL057)
 
-## §G6 Pillar G6 — S2 wall: continuum numerator + edge  — 20/28 ropes fastened
+## §G6 Pillar G6 — S2 wall: continuum numerator + edge  — 21/28 ropes fastened
 
 - ✅ **0.** СТАРТ: проба не является источниковым объектом — `\lean{аудит GOAL057_ACTUAL_NUMERATOR_SOURCE_TARGET_AUDIT_2026-08-07}` `docs/routeB_bus/GOAL057_ACTUAL_NUMERATOR_SOURCE_TARGET_AUDIT_2026-08-07.md`
 - ✅ **1.** B1: привязка источникового ряда коэффициентов — `\lean{D0PstarCCMFiniteSourceResidual}` `q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarCCMFiniteSourceResidual.lean`
@@ -169,8 +169,8 @@
   - `theorem sourceW02ModePairing_eq_ccmW02Entry (i : PairIndex) (n r : ℤ) :
     sourceW02ModePairing i n r =
       (Q3.RouteB.ccmW02Entry (L_m i) n r : ℂ)`
-- 🔴 **12.** обитатель CCMLemma73PreAnchorPort: P.convergence ТЕОРЕМОЙ (бумага 2511.22755)  *[GAP]*
-  - hole: правопреемник по вердиктам N0-repair и RECOUNT 20.08; этажи раскладывает судья (REQ-D)
+- 🔴 **12.** обитатель CCMLemma73PreAnchorPort selectedFerrersPreAnchorData (НЕ forall D — C04/C10-kill): P.convergence ТЕОРЕМОЙ (бумага 2511.22755)  *[GAP]*
+  - hole: РАЗЛОЖЕН НА 9 ЭТАЖЕЙ (вердикт FLOORS 20.08, REQ-D): L73.0 provenance (ждёт Codex, 1/10) → L73.1 sourceScale из нормировки I4h0-I0h4, НЕ из вывода (3/10) → L73.2 Lemma-7.2 rate O(λ^-2) — ГЛАВНАЯ СТЕНА 
 - 🔴 **13.** равномерная нижняя оценка нормы пробной функции (даёт SelectedTrialNormalizerBounded)  *[OWNER_DATA]*
   - hole: ТОЧНАЯ ФОРМУЛИРОВКА, установлено чтением 2026-08-08. sTrial_m_N = ||gTrial_m_N||^{-1} (D0KTrialStage3.lean:39). TrialNonzero даёт ПОТОЧЕЧНО: forall k, 0 < ||gTrial_m_N(k)||. Для SelectedTrialNormalize
 - 🔴 **14.** N2: SelectedNormalizedGalerkinMellinCompactDecay (compact-open, НЕ Hilbert-norm)  *[GAP]*
@@ -197,8 +197,7 @@
     0 ≤ sourceArchimedeanMultiplier t +
       (|Real.log Real.pi| + Real.log 4 + 6)`
 - ✅ **24.** B3.0O: сдвинутый арх. sqrt-вес — `\lean{D0PstarShiftedArchSqrtWeight}` `q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchSqrtWeight.lean`
-- 🔴 **25.** обитатель SelectedProlatePreAnchorData (пакет: index,pair,кофинальности,lambda_eq,MemLp)  *[GAP]*
-  - hole: у Codex: TASK_2026-08-20_return_briefing_and_preanchor_inhabitant.md; сырьё — Ferrers-свидетели 18.08; даёт и PairCofinal для G5
+- ✅ **25.** обитатель SelectedProlatePreAnchorData (пакет: index,pair,кофинальности,lambda_eq,MemLp) — `\lean{selectedFerrersPreAnchorData (def, kernel-green 20.08, Linux-тело за Codex)}` `q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPreAnchorDataInhabitant.lean`
 - 🔴 **26.** N3: same-family locally-uniform crosswalk D0Pstar->Muntz  *[GAP]*
   - hole: сборка (вердикт G6-узлов 19.08); комбинирует N1-композер с N2
 - 🔴 **27.** N4: SlotS2 из фиксированного selected-предела  *[GAP]*

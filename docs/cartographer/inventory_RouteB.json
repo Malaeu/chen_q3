@@ -1,12 +1,12 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 274,
-  "declarations": 2548,
-  "in_docs": 1094,
-  "in_lemma_db": 2486,
-  "orphans": 25,
-  "uncatalogued": 25,
+  "files_scanned": 276,
+  "declarations": 2610,
+  "in_docs": 1151,
+  "in_lemma_db": 2489,
+  "orphans": 31,
+  "uncatalogued": 31,
   "orphan_files_top": [
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
@@ -14,6 +14,10 @@
     ],
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/CofinalFixedShiftLiteralComplementFloor.lean",
+      6
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPreAnchorDataInhabitant.lean",
       6
     ],
     [
@@ -5532,7 +5536,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0CenteredCriticalMoment.lean",
       "line": 72,
       "signature": "theorem centeredCriticalMoment_eq_leakage_mul_denominator (D : CoefficientFamily) (i : CentralIndex D) (σ : ℝ) : centeredCriticalMoment D i.1 σ = centeredMomentLeakage D i σ * ‖rawFplus D i.1 0‖",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -21074,6 +21078,626 @@
       "signature": "theorem Fplus_zero_eq_sqrt_mul_c0 (L : ℝ) (S : Finset ℤ) (c : ℤ → ℂ) (hL : 0 < L) (h0 : 0 ∈ S) : (∫ x : ℝ in 0..L, finiteLogFourierTrial L S c x) = (Real.sqrt L : ℂ) * c 0",
       "in_docs": true,
       "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "preAnchorGwinTransformCoordinate",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 35,
+      "signature": "noncomputable def preAnchorGwinTransformCoordinate (i : PairIndex) (h : ℝ → ℂ) (z : ℂ) : ℂ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "preAnchorFullMellinCoordinate",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 41,
+      "signature": "noncomputable def preAnchorFullMellinCoordinate (i : PairIndex) (h : ℝ → ℂ) (hLp : MemLp (E_star h) 2 (dStar.restrict (I_m i))) (z : ℂ) : ℂ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "preAnchorFullMellinCoordinate_eq_preAnchorGwinTransformCoordinate",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 54,
+      "signature": "theorem preAnchorFullMellinCoordinate_eq_preAnchorGwinTransformCoordinate (i : PairIndex) (h : ℝ → ℂ) (hLp : MemLp (E_star h) 2 (dStar.restrict (I_m i))) (z : ℂ) : preAnchorFullMellinCoordinate i h hLp z = preAnchorGwinTransformCoordinate i h z",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "preAnchorFullMellinCoordinate_zero_eq_sqrtL_mul_innerV0",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 137,
+      "signature": "theorem preAnchorFullMellinCoordinate_zero_eq_sqrtL_mul_innerV0 (i : PairIndex) (h : ℝ → ℂ) (hLp : MemLp (E_star h) 2 (dStar.restrict (I_m i))) : preAnchorFullMellinCoordinate i h hLp 0 = (Real.sqrt (L_m i) : ℂ) * inner ℂ (V_n_m i 0) (gTrial_m i h hLp)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "preAnchorGwin_zero_eq_sqrtL_mul_innerV0",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 178,
+      "signature": "theorem preAnchorGwin_zero_eq_sqrtL_mul_innerV0 (i : PairIndex) (h : ℝ → ℂ) (hLp : MemLp (E_star h) 2 (dStar.restrict (I_m i))) : preAnchorGwinTransformCoordinate i h 0 = (Real.sqrt (L_m i) : ℂ) * inner ℂ (V_n_m i 0) (gTrial_m i h hLp)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "trialNonzero_of_preAnchorGwin_zero_ne",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 190,
+      "signature": "theorem trialNonzero_of_preAnchorGwin_zero_ne (i : PairIndex) (h : ℝ → ℂ) (hLp : MemLp (E_star h) 2 (dStar.restrict (I_m i))) (hzero : preAnchorGwinTransformCoordinate i h 0 ≠ 0) : TrialNonzero i h hLp",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "preAnchorRawTransformCoordinate",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 209,
+      "signature": "noncomputable def preAnchorRawTransformCoordinate (i : PairIndex) (h : ℝ → ℂ) (hLp : MemLp (E_star h) 2 (dStar.restrict (I_m i))) (hNonzero : TrialNonzero i h hLp) (z : ℂ) : ℂ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "preAnchorRawTransformCoordinate_zero_eq_sqrt_mul_c0",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 219,
+      "signature": "theorem preAnchorRawTransformCoordinate_zero_eq_sqrt_mul_c0 (i : PairIndex) (h : ℝ → ℂ) (hLp : MemLp (E_star h) 2 (dStar.restrict (I_m i))) (hNonzero : TrialNonzero i h hLp) : preAnchorRawTransformCoordinate i h hLp hNonzero 0 = (Real.sqrt (L_m i) : ℂ) * c_n i h hLp hNonzero 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "preAnchorRawTransformCoordinate_zero_eq_normalizer_mul_gwin_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 233,
+      "signature": "theorem preAnchorRawTransformCoordinate_zero_eq_normalizer_mul_gwin_zero (i : PairIndex) (h : ℝ → ℂ) (hLp : MemLp (E_star h) 2 (dStar.restrict (I_m i))) (hNonzero : TrialNonzero i h hLp) : preAnchorRawTransformCoordinate i h hLp hNonzero 0 = ((sTrial_m_N i h hLp hNonzero : ℝ) : ℂ) * preAnchorGwinTransformCoordinate i h 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "preAnchorRawTransformCoordinate_zero_ne",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 249,
+      "signature": "theorem preAnchorRawTransformCoordinate_zero_ne (i : PairIndex) (h : ℝ → ℂ) (hLp : MemLp (E_star h) 2 (dStar.restrict (I_m i))) (hNonzero : TrialNonzero i h hLp) (hGwin : preAnchorGwinTransformCoordinate i h 0 ≠ 0) : preAnchorRawTransformCoordinate i h hLp hNonzero 0 ≠ 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "structure",
+      "name": "SelectedProlatePreAnchorData",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 262,
+      "signature": "structure SelectedProlatePreAnchorData where",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "structure",
+      "name": "CCMLemma73PreAnchorPort",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 275,
+      "signature": "structure CCMLemma73PreAnchorPort (D : SelectedProlatePreAnchorData) where",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "eventually_preAnchorGwin_zero_ne",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 289,
+      "signature": "theorem eventually_preAnchorGwin_zero_ne (D : SelectedProlatePreAnchorData) (P : CCMLemma73PreAnchorPort D) : ∀ᶠ k in atTop, preAnchorGwinTransformCoordinate (D.index k) (prolateCombination (D.pair k)) 0 ≠ 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "structure",
+      "name": "SelectedProlateCofinalSourceData",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 319,
+      "signature": "structure SelectedProlateCofinalSourceData where",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "preAnchorTailStart",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 345,
+      "signature": "private noncomputable def preAnchorTailStart (D : SelectedProlatePreAnchorData) (P : CCMLemma73PreAnchorPort D) : ℕ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "preAnchorTailStart_spec",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 352,
+      "signature": "private theorem preAnchorTailStart_spec (D : SelectedProlatePreAnchorData) (P : CCMLemma73PreAnchorPort D) : ∀ k ≥ preAnchorTailStart D P, preAnchorGwinTransformCoordinate (D.index k) (prolateCombination (D.pair k)) 0 ≠ 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "preAnchorTailShift",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 363,
+      "signature": "private noncomputable def preAnchorTailShift (D : SelectedProlatePreAnchorData) (P : CCMLemma73PreAnchorPort D) : ℕ → ℕ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "preAnchorTailStart_le_shift",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 369,
+      "signature": "private theorem preAnchorTailStart_le_shift (D : SelectedProlatePreAnchorData) (P : CCMLemma73PreAnchorPort D) (k : ℕ) : preAnchorTailStart D P ≤ preAnchorTailShift D P k",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "preAnchorTailIndex_le_shift",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 378,
+      "signature": "private theorem preAnchorTailIndex_le_shift (D : SelectedProlatePreAnchorData) (P : CCMLemma73PreAnchorPort D) (k : ℕ) : k ≤ preAnchorTailShift D P k",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "preAnchorTailShift_tendsto",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 387,
+      "signature": "private theorem preAnchorTailShift_tendsto (D : SelectedProlatePreAnchorData) (P : CCMLemma73PreAnchorPort D) : Tendsto (preAnchorTailShift D P) atTop atTop",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "preAnchorTailIndex",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 397,
+      "signature": "private noncomputable def preAnchorTailIndex (D : SelectedProlatePreAnchorData) (P : CCMLemma73PreAnchorPort D) (k : ℕ) : PairIndex",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "preAnchorTailPair",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 404,
+      "signature": "private noncomputable def preAnchorTailPair (D : SelectedProlatePreAnchorData) (P : CCMLemma73PreAnchorPort D) (k : ℕ) : ProlatePair",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "preAnchorTail_mCofinal",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 411,
+      "signature": "private theorem preAnchorTail_mCofinal (D : SelectedProlatePreAnchorData) (P : CCMLemma73PreAnchorPort D) : Tendsto (fun k => (preAnchorTailIndex D P k).m) atTop atTop",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "preAnchorTail_nCofinal",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 418,
+      "signature": "private theorem preAnchorTail_nCofinal (D : SelectedProlatePreAnchorData) (P : CCMLemma73PreAnchorPort D) : Tendsto (fun k => (preAnchorTailIndex D P k).N) atTop atTop",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "preAnchorTail_lambda_eq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 425,
+      "signature": "private theorem preAnchorTail_lambda_eq (D : SelectedProlatePreAnchorData) (P : CCMLemma73PreAnchorPort D) (k : ℕ) : (preAnchorTailPair D P k).pw.lambda = lambda_m (preAnchorTailIndex D P k)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "preAnchorTail_eStar_memLp",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 435,
+      "signature": "private theorem preAnchorTail_eStar_memLp (D : SelectedProlatePreAnchorData) (P : CCMLemma73PreAnchorPort D) (k : ℕ) : MemLp (E_star (prolateCombination (preAnchorTailPair D P k))) 2 (dStar.restrict (I_m (preAnchorTailIndex D P k)))",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "preAnchorTail_gwin_zero_ne",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 445,
+      "signature": "private theorem preAnchorTail_gwin_zero_ne (D : SelectedProlatePreAnchorData) (P : CCMLemma73PreAnchorPort D) (k : ℕ) : preAnchorGwinTransformCoordinate (preAnchorTailIndex D P k) (prolateCombination (preAnchorTailPair D P k)) 0 ≠ 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "preAnchorTail_trialNonzero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 460,
+      "signature": "private theorem preAnchorTail_trialNonzero (D : SelectedProlatePreAnchorData) (P : CCMLemma73PreAnchorPort D) (k : ℕ) : TrialNonzero (preAnchorTailIndex D P k) (prolateCombination (preAnchorTailPair D P k)) (preAnchorTail_eStar_memLp D P k)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "preAnchorTail_rawZeroNonzero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 475,
+      "signature": "private theorem preAnchorTail_rawZeroNonzero (D : SelectedProlatePreAnchorData) (P : CCMLemma73PreAnchorPort D) (k : ℕ) : preAnchorRawTransformCoordinate (preAnchorTailIndex D P k) (prolateCombination (preAnchorTailPair D P k)) (preAnchorTail_eStar_memLp D P k) (preAnchorTail_trialNonzero D P k) 0 ≠ 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "preAnchorTailSourceScale",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 492,
+      "signature": "private noncomputable def preAnchorTailSourceScale (D : SelectedProlatePreAnchorData) (P : CCMLemma73PreAnchorPort D) (k : ℕ) : ℂ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "preAnchorTailSourceScale_ne",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 499,
+      "signature": "private theorem preAnchorTailSourceScale_ne (D : SelectedProlatePreAnchorData) (P : CCMLemma73PreAnchorPort D) (k : ℕ) : preAnchorTailSourceScale D P k ≠ 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "tendstoLocallyUniformlyOn_atTop_precomp",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 510,
+      "signature": "private theorem tendstoLocallyUniformlyOn_atTop_precomp {F : ℕ → ℂ → ℂ} {f : ℂ → ℂ} {s : Set ℂ} (hF : TendstoLocallyUniformlyOn F f atTop s) {shift : ℕ → ℕ} (hshift : Tendsto shift atTop atTop) : TendstoLocallyUniformlyOn (fun k z => F (shift k) z) f atTop s",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "preAnchorTail_muntzLimit_shifted",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 525,
+      "signature": "private theorem preAnchorTail_muntzLimit_shifted (D : SelectedProlatePreAnchorData) (P : CCMLemma73PreAnchorPort D) : TendstoLocallyUniformlyOn (fun k z => P.sourceScale (preAnchorTailShift D P k) * preAnchorGwinTransformCoordinate (D.index (preAnchorTailShift D P k)) (prolateCombination (D.pair (preAnchorTailShift D P k))) z) centeredXi atTop centeredCriticalStrip",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "preAnchorTail_muntzLimit_indexed",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 541,
+      "signature": "private theorem preAnchorTail_muntzLimit_indexed (D : SelectedProlatePreAnchorData) (P : CCMLemma73PreAnchorPort D) : TendstoLocallyUniformlyOn (fun k z => P.sourceScale (preAnchorTailShift D P k) * preAnchorGwinTransformCoordinate (preAnchorTailIndex D P k) (prolateCombination (preAnchorTailPair D P k)) z) centeredXi atTop centeredCriticalStrip",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "preAnchorTail_muntzLimit",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 556,
+      "signature": "private theorem preAnchorTail_muntzLimit (D : SelectedProlatePreAnchorData) (P : CCMLemma73PreAnchorPort D) : TendstoLocallyUniformlyOn (fun k z => preAnchorTailSourceScale D P k * preAnchorGwinTransformCoordinate (preAnchorTailIndex D P k) (prolateCombination (preAnchorTailPair D P k)) z) centeredXi atTop centeredCriticalStrip",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "selectedProlateCofinalSourceDataOfPreAnchorPort",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 572,
+      "signature": "noncomputable def selectedProlateCofinalSourceDataOfPreAnchorPort (D : SelectedProlatePreAnchorData) (P : CCMLemma73PreAnchorPort D) : SelectedProlateCofinalSourceData where",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "rawFplus",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 591,
+      "signature": "noncomputable def rawFplus (D : SelectedProlateCofinalSourceData) (k : ℕ) (z : ℂ) : ℂ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "muntzApproximation",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 598,
+      "signature": "noncomputable def muntzApproximation (D : SelectedProlateCofinalSourceData) (k : ℕ) (z : ℂ) : ℂ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "centeredPstar",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 605,
+      "signature": "noncomputable def centeredPstar (D : SelectedProlateCofinalSourceData) (k : ℕ) (z : ℂ) : ℂ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "centeredPstar_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 609,
+      "signature": "@[simp] theorem centeredPstar_zero (D : SelectedProlateCofinalSourceData) (k : ℕ) : D.centeredPstar k 0 = centeredXi 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "canonicalApproximation",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 617,
+      "signature": "noncomputable def canonicalApproximation (D : SelectedProlateCofinalSourceData) : CanonicalApproximation ℕ where",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "muntzApproximation_tendsto_centeredXi",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 630,
+      "signature": "theorem muntzApproximation_tendsto_centeredXi (D : SelectedProlateCofinalSourceData) : TendstoLocallyUniformlyOn D.muntzApproximation centeredXi atTop centeredCriticalStrip",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "canonicalApproximation_slotAnchor",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 637,
+      "signature": "theorem canonicalApproximation_slotAnchor (D : SelectedProlateCofinalSourceData) : SlotAnchor D.canonicalApproximation 0",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "goalG6N1ZeroTarget_nonvanishing_not_free",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+      "line": 647,
+      "signature": "theorem goalG6N1ZeroTarget_nonvanishing_not_free : ¬ (∀ᶠ _k : ℕ in atTop, (0 : ℂ) ≠ 0)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "selectedFerrersPreAnchorIndex",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPreAnchorDataInhabitant.lean",
+      "line": 46,
+      "signature": "def selectedFerrersPreAnchorIndex (k : ℕ) : PairIndex",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersPreAnchorSeparation",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPreAnchorDataInhabitant.lean",
+      "line": 52,
+      "signature": "theorem selectedFerrersPreAnchorSeparation (k : ℕ) : ∀ q ≥ 5 * (k + 2), (31 / 24 : ℝ) * mode4JacobiG (k + 2) ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersPreAnchorWitness",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPreAnchorDataInhabitant.lean",
+      "line": 78,
+      "signature": "private theorem selectedFerrersPreAnchorWitness (k : ℕ) : ∃ (S0 : Mode4FerrersRegularEvenProlateSolution (k + 2) (5 * (k + 2)) (mode4ClassicalEvenEigenvalue (mode4JacobiG (k + 2)) 0)) (S4 : Mode4FerrersRegularEvenProlateSolution (k + 2) (5 * (k + 2)) (mode4ClassicalEvenEigenvalue (mode4JacobiG (k + 2)) 2)) (P : ProlatePair), P.pw.lambda = Real.sqrt ((k + 2 : ℕ) : ℝ) ∧ P.h0 = S0.normalizedPhysicalMode ∧ P.h4 = S4.normalizedPhysicalMode ∧ 0 < P.I0 ∧ 0 < P.I4 ∧ P.chi0 ≠ 0 ∧ P.chi2 ≠ 0 ∧ (∀ x ∈ Icc (-P.pw.lambda) P.pw.lambda, finiteFourierAction P.pw.lambda P.h0 x = (P.chi0 : ℂ) * P.h0 x) ∧ (∀ x ∈ Icc (-P.pw.lambda) P.pw.lambda, finiteFourierAction P.pw.lambda P.h4 x = (P.chi2 : ℂ) * P.h4 x) ∧ mode4ClassicalEvenEigenvalue (mode4JacobiG (k + 2)) 0 < mode4ClassicalEvenEigenvalue (mode4JacobiG (k + 2)) 2",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "selectedFerrersPreAnchorSolution0",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPreAnchorDataInhabitant.lean",
+      "line": 102,
+      "signature": "def selectedFerrersPreAnchorSolution0 (k : ℕ) : Mode4FerrersRegularEvenProlateSolution (k + 2) (5 * (k + 2)) (mode4ClassicalEvenEigenvalue (mode4JacobiG (k + 2)) 0)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "selectedFerrersPreAnchorSolution4",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPreAnchorDataInhabitant.lean",
+      "line": 108,
+      "signature": "def selectedFerrersPreAnchorSolution4 (k : ℕ) : Mode4FerrersRegularEvenProlateSolution (k + 2) (5 * (k + 2)) (mode4ClassicalEvenEigenvalue (mode4JacobiG (k + 2)) 2)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "selectedFerrersPreAnchorPair",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPreAnchorDataInhabitant.lean",
+      "line": 114,
+      "signature": "def selectedFerrersPreAnchorPair (k : ℕ) : ProlatePair",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersPreAnchorPair_spec",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPreAnchorDataInhabitant.lean",
+      "line": 123,
+      "signature": "theorem selectedFerrersPreAnchorPair_spec (k : ℕ) : (selectedFerrersPreAnchorPair k).pw.lambda = Real.sqrt ((k + 2 : ℕ) : ℝ) ∧ (selectedFerrersPreAnchorPair k).h0 = (selectedFerrersPreAnchorSolution0 k).normalizedPhysicalMode ∧ (selectedFerrersPreAnchorPair k).h4 = (selectedFerrersPreAnchorSolution4 k).normalizedPhysicalMode ∧ 0 < (selectedFerrersPreAnchorPair k).I0 ∧ 0 < (selectedFerrersPreAnchorPair k).I4 ∧ (selectedFerrersPreAnchorPair k).chi0 ≠ 0 ∧ (selectedFerrersPreAnchorPair k).chi2 ≠ 0 ∧ (∀ x ∈ Icc (-(selectedFerrersPreAnchorPair k).pw.lambda) (selectedFerrersPreAnchorPair k).pw.lambda, finiteFourierAction (selectedFerrersPreAnchorPair k).pw.lambda (selectedFerrersPreAnchorPair k).h0 x = ((selectedFerrersPreAnchorPair k).chi0 : ℂ) * (selectedFerrersPreAnchorPair k).h0 x) ∧ (∀ x ∈ Icc (-(selectedFerrersPreAnchorPair k).pw.lambda) (selectedFerrersPreAnchorPair k).pw.lambda, finiteFourierAction (selectedFerrersPreAnchorPair k).pw.lambda (selectedFerrersPreAnchorPair k).h4 x = ((selectedFerrersPreAnchorPair k).chi2 : ℂ) * (selectedFerrersPreAnchorPair k).h4 x) ∧ mode4ClassicalEvenEigenvalue (mode4JacobiG (k + 2)) 0 < mode4ClassicalEvenEigenvalue (mode4JacobiG (k + 2)) 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersPreAnchorPair_lambda_eq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPreAnchorDataInhabitant.lean",
+      "line": 150,
+      "signature": "theorem selectedFerrersPreAnchorPair_lambda_eq (k : ℕ) : (selectedFerrersPreAnchorPair k).pw.lambda = lambda_m (selectedFerrersPreAnchorIndex k)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "normalizedPhysicalMode_aestronglyMeasurable",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPreAnchorDataInhabitant.lean",
+      "line": 159,
+      "signature": "theorem normalizedPhysicalMode_aestronglyMeasurable {mProject K : ℕ} {Λ : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (hm : 2 ≤ mProject) : AEStronglyMeasurable S.normalizedPhysicalMode volume",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "normalizedPhysicalMode_norm_bound",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPreAnchorDataInhabitant.lean",
+      "line": 177,
+      "signature": "theorem normalizedPhysicalMode_norm_bound {mProject K : ℕ} {Λ : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (hm : 2 ≤ mProject) : ∃ C : ℝ, 0 ≤ C ∧ ∀ x : ℝ, ‖S.normalizedPhysicalMode x‖ ≤ C",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "prolateCombination_E_star_memLp_of_windowBound",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPreAnchorDataInhabitant.lean",
+      "line": 210,
+      "signature": "theorem prolateCombination_E_star_memLp_of_windowBound (i : PairIndex) (P : ProlatePair) (hlambda : P.pw.lambda = lambda_m i) (hmeas : AEStronglyMeasurable (prolateCombination P) volume) (C : ℝ) (_hC : 0 ≤ C) (hbound : ∀ x : ℝ, ‖prolateCombination P x‖ ≤ C) : MemLp (E_star (prolateCombination P)) 2 (dStar.restrict (I_m i))",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersPreAnchorPair_combination_aestronglyMeasurable",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPreAnchorDataInhabitant.lean",
+      "line": 303,
+      "signature": "theorem selectedFerrersPreAnchorPair_combination_aestronglyMeasurable (k : ℕ) : AEStronglyMeasurable (prolateCombination (selectedFerrersPreAnchorPair k)) volume",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersPreAnchorPair_combination_bound",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPreAnchorDataInhabitant.lean",
+      "line": 319,
+      "signature": "theorem selectedFerrersPreAnchorPair_combination_bound (k : ℕ) : ∃ C : ℝ, 0 ≤ C ∧ ∀ x : ℝ, ‖prolateCombination (selectedFerrersPreAnchorPair k) x‖ ≤ C",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersPreAnchorPair_eStar_memLp",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPreAnchorDataInhabitant.lean",
+      "line": 357,
+      "signature": "theorem selectedFerrersPreAnchorPair_eStar_memLp (k : ℕ) : MemLp (E_star (prolateCombination (selectedFerrersPreAnchorPair k))) 2 (dStar.restrict (I_m (selectedFerrersPreAnchorIndex k)))",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "selectedFerrersPreAnchorData",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPreAnchorDataInhabitant.lean",
+      "line": 369,
+      "signature": "def selectedFerrersPreAnchorData : SelectedProlatePreAnchorData where",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersPreAnchorData_index",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPreAnchorDataInhabitant.lean",
+      "line": 382,
+      "signature": "@[simp] theorem selectedFerrersPreAnchorData_index (k : ℕ) : selectedFerrersPreAnchorData.index k = selectedFerrersPreAnchorIndex k",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersPreAnchorData_pair",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPreAnchorDataInhabitant.lean",
+      "line": 387,
+      "signature": "@[simp] theorem selectedFerrersPreAnchorData_pair (k : ℕ) : selectedFerrersPreAnchorData.pair k = selectedFerrersPreAnchorPair k",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersPreAnchorData_pair_spec",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPreAnchorDataInhabitant.lean",
+      "line": 393,
+      "signature": "theorem selectedFerrersPreAnchorData_pair_spec (k : ℕ) : (selectedFerrersPreAnchorData.pair k).h0 = (selectedFerrersPreAnchorSolution0 k).normalizedPhysicalMode ∧ (selectedFerrersPreAnchorData.pair k).h4 = (selectedFerrersPreAnchorSolution4 k).normalizedPhysicalMode",
+      "in_docs": true,
+      "in_lemma_db": false,
       "orphan": false
     },
     {
