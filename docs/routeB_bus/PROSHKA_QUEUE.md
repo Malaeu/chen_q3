@@ -1076,7 +1076,7 @@ W9-леджер обязателен. Вопрос один: этажи, пор�
 
 ## ЗАПРОС REQ-2026-08-20-G — этаж F72.0: словарь объектов проект↔статья
 
-`REQ-2026-08-20-G` · `STATUS: OPEN`
+`REQ-2026-08-20-G` · `STATUS: ANSWERED` — вердикт DICTIONARY (bc65b407): пакет D РАТИФИЦИРОВАН, F72.0 -> 0A (Codex-директива) + 0B (source-bind к ps_n)
 
 Пакет D запушен владельцем: коммит c10c9b58,
 Q3/Proofs/RouteB/G6N1SelectedFerrersPreAnchorDataInhabitant.lean
