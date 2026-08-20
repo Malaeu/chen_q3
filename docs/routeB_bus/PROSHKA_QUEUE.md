@@ -1021,3 +1021,31 @@ kernel-floors): бумага 2511.22755 на полке, поле P.convergence 
 ---
 
 *Пусто ниже — новые вопросы дописывать в хвост.*
+
+## ЗАПРОС REQ-2026-08-20-E — этаж L73.5: Mellin(E*(explicit h)) = centeredXi
+
+`REQ-2026-08-20-E` · `STATUS: OPEN`
+
+Твой же вердикт FLOORS (26881a42) назвал L73.5 единственным этажом порта,
+независимым от Codex-пакета (`DEPENDS_ON_CODEX: NONE`, `PARTIAL_OPEN`),
+и предписал бить его параллельно (FINAL PROPOSAL п.5). Судья свободен —
+берёшь?
+
+ЦЕЛЬ (твоя формулировка из вердикта, source-locked):
+
+```text
+full Mellin transform of E_star explicitCCMLimitH at s = -I*z = centeredXi z
+```
+
+УЖЕ kernel-green на полке (твой же аудит): литеральный пакет (7.1),
+plus-phase Fourier-инвариантность, Poisson-инверсия E*h(u^-1)=E*h(u),
+строгая положительность starred-суммы на u≥1, определение centeredXi.
+НЕ хватает: финальная полная Mellin/Fourier-identity.
+
+W9: CLOSES=[EXPLICIT_CCM_LIMIT_MELLIN_TO_CENTERED_XI] OPENS=[] обязателен.
+Гейт как всегда: наше ядро, стандартная тройка, квитанции.
+
+Контекст, который ты мог не видеть: обитатель дыры №1
+(SelectedProlatePreAnchorData) закрыт Linux-телом за спящего Codex,
+kernel-green, ждёт пуша после OK владельца. На L73.5 это не влияет —
+он ни от чего не зависит.
