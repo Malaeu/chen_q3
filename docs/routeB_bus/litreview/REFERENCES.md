@@ -23,6 +23,7 @@ owner fetches and drops the PDF in `pdfs/`, then we flip it to HAVE; SCAN = imag
 | MS-MFSF-1954 | Meixner, Schäfke, "Mathieusche Funktionen und Sphäroidfunktionen", Springer 1954 (ISBN 978-3-662-00941-3) | — | `pdfs/978-3-662-00941-3.pdf` | HAVE ✓ (OCR, DE) | **§3.2 Satz 9** uniform eigenfunction estimate = dossier item 11 normalization + λ⁻² rate feeding C3 (exact Satz page-locate pending deep pass) |
 | FLAMMER-1957 | Flammer, "Spheroidal Wave Functions", Stanford UP 1957 | — | — | BOOK 🔴 | spheroidal ODE, eigenvalue indexing, parity (pointer) |
 | FUCHS-1964 | Fuchs, "On the eigenvalues of an integral equation arising in the theory of band-limited signals", J. Math. Anal. Appl. 9 (1964) 317–330 | doi:10.1016/0022-247X(64)90017-4 | `pdfs/fuchs_1964_bandlimited_eigenvalues.pdf` | **HAVE ✓** (владелец, Uni-доступ 20.08) | несущий для F72.3: Thm 1 даёт `1−λ_n ~ 4√π·8ⁿ(n!)⁻¹a^{2n+1}e^{−2a²}` — ЭКСПОНЕНЦИАЛЬНО, n=0 и n=4 покрыты; крosswalk к нашему χ ОТКРЫТ (ядро 2π). Карточка: `FUCHS_1964_USAGE_CARDS.md` |
+| MEIXNER-SCHAEFKE-1954 | Meixner & Schäfke, "Mathieusche Funktionen und Sphäroidfunktionen", Springer, Grundlehren LXXI, 1954 | doi:10.1007/978-3-662-00941-3 | `/mnt/hdd01/Paper_to_read/978-3-662-00941-3.pdf` (НЕ в репо: книга 31 МБ, копирайт) | **HAVE ✓** (владелец, Uni-доступ 20.08) | ИСТОЧНИК ГЛАВНОЙ СТЕНЫ F72.1. Satz 9, печатная стр. 243 = PDF 255: равномерно на [-1,1] `ps_n^m(z;γ²) = C(γ)·(…)·D_{n-m}((2γ)^{1/2}z) + O(γ⁻¹)`. Рейт СХОДИТСЯ с CCM Lemma 7.2 через γ_MS = 2πλ². Карточка: `MEIXNER_SCHAEFKE_1954_USAGE_CARDS.md` |
 | SIMON-MOMENT-1998 | Simon, "The classical moment problem as a self-adjoint finite difference operator", Adv. Math. 137 (1998) 82–203 | doi:10.1006/aima.1998.1728 | — | PAYWALL 🔴 | Jacobi-matrix self-adjointness (whole-line prolate realization) |
 | MATHLIB-2019 | The mathlib Community, "The Lean mathematical library", CPP 2020 | arXiv:1910.09336 | — | OA (cite-only) | Lean/Mathlib API for every formalized theorem (T4a, PL1/PL2, suppliers) |
 
@@ -72,7 +73,7 @@ owner fetches and drops the PDF in `pdfs/`, then we flip it to HAVE; SCAN = imag
 - ✅ ORX residual → covered by OSIPOV-TR1450-2012 (owner fetched Yale TR-1450).
 - ✅ MS-MFSF-1954 → owner fetched (pdfs/978-3-662-00941-3.pdf); Satz 9 page-locate = deep pass.
 - ✅ SP-PSWF-I-1961 → owner fetched OCR scan; item 10 already VERIFIED verbatim.
-- SIMON-1998 — secondary, low priority. FUCHS-1964 поднят в НЕСУЩИЕ 20.08 (этаж F72.3 стены L73.2).
+- SIMON-1998 — secondary, low priority. FUCHS-1964 и MEIXNER-SCHAEFKE-1954 подняты в НЕСУЩИЕ 20.08 (этажи F72.3 и F72.1 стены L73.2).
 
 All three PSWF-dossier residual pins are now CLOSED at the source level (files in `pdfs/`).
 
