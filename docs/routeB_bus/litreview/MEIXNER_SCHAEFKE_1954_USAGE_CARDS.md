@@ -201,3 +201,78 @@ Using `D_q` instead of `D_{n−m}` is recorded there as
 `FALSE_D_Q_TO_H_N_BRIDGE`. The `q` in Satz 9 is the linear slope of the
 eigenvalue expansion and the harmonic-oscillator energy label; it is not an
 index of the cylinder function.
+
+---
+
+## §3.22 Satz 1 (existence of the eigenvalues and of the regular solutions) — printed p. 235
+
+Read from the rendered page (PDF 247), not from OCR.
+
+VERBATIM (German, as printed):
+"Für jedes reelle γ² hat die Sphäroiddifferentialgleichung (2) abzählbar
+unendlich viele Eigenwerte λ, zu denen es eine Lösung gibt, die bei z = ±1
+stetig, also von der Form (1 − z²)^{m/2} g(z) mit einer ganzen Funktion g(z)
+ist. Diese Eigenwerte sind sämtlich reell und einfach. Die reellen
+Eigenwertpaare λ, γ² liegen in der (λ, γ²)-Ebene auf regulär analytischen
+charakteristischen Kurven λ(γ²), die wir mit λ = λ_n^m(γ²), λ_n^m(0) = n(n+1)
+(n = m, m+1, m+2, …) festlegen können. Die zum Eigenwertpaar λ_n^m(γ²), γ²
+gehörende Eigenlösung ist mit n − m gerade oder ungerade."
+
+K7-TAG: THEOREM (proved in the book, obtained in §3.22 from the §1.5 general
+theory whose hypotheses 1.–8. are verified on the preceding page).
+
+USED IN Q3 FOR: this is the **existence** statement floor F72.0B2B needs, after
+the REQ-2026-08-20-L verdict ratified that mathematical existence suffices and
+constructive implementation is not required. It is the judge's named
+`NEXT_CHEAPEST_DECISIVE_TEST: SATZ9_FIRST_KIND_EXISTENCE_PROVENANCE_CARD`.
+
+WHAT IT SUPPLIES, FIELD BY FIELD, against `Satz9SourceData`:
+
+```
+existence of the mode        "zu denen es eine Lösung gibt"           ✓
+regularity                   continuous at z = ±1, form (1−z²)^{m/2} g,
+                             g ENTIRE — so real-analytic inside and
+                             continuous up to the endpoints            ✓
+parity                       "mit n − m gerade oder ungerade";
+                             for m = 0 and n ∈ {0,4} both n−m are even,
+                             so BOTH selected modes are EVEN           ✓
+the eigenvalue itself        λ_n^m(γ²), real and simple                ✓
+branch identification        λ_n^m(0) = n(n+1), n = m, m+1, …
+                             so for m=0: λ_0^0(0) = 0, λ_4^0(0) = 20   ✓
+```
+
+SIMPLICITY IS THE LOAD-BEARING WORD. "sämtlich reell und einfach" means the
+eigenvalue determines its solution up to a scalar, which is exactly the
+hypothesis our center-normalized uniqueness receiver
+(`G6N1CenterNormalizedUniquenessReceiver.lean`) turns into an equality of
+normalized views. Without simplicity the receiver would still be true but the
+source side could be a different solution at the same eigenvalue.
+
+MONOTONICITY, recorded because it may matter for the crosswalk:
+`−1 < λ'(γ²) < 0` for all real `γ²`, and the curves do not intersect.
+
+### WHAT IT DOES NOT SUPPLY
+
+**Nonzero centre value.** The page says nothing about `ps_n^0(0; γ²) ≠ 0`.
+That field of `Satz9SourceData` is therefore still unsourced. At `γ = 0` the
+equation degenerates to Legendre and `P_0(0) = 1`, `P_4(0) = 3/8`, both nonzero,
+but that is the value at one parameter and not a theorem for all `γ²`. Do not
+assume it; it is a named gap.
+
+**The branch crosswalk W13.7.** The labelling `λ_n^m(0) = n(n+1)` pins which
+characteristic curve is meant, in the book's own normalization of the ODE. Our
+project carries `mode4ClassicalEvenEigenvalue`. Whether the two labellings name
+the same branch is exactly the open obligation, and the verdict is explicit
+that it does not follow from the shared parameter:
+`theta_equality_is_automatic_from_G: false`.
+
+**The physical lift.** Satz 1 is stated in the dimensionless `z ∈ [−1,1]`. The
+divergence-form equation our receiver consumes is in the physical variable on
+`[−λ, λ]`. That transport is W13.8/W13.9 and is not on this page.
+
+### NOT READ on this page
+- §1.5 and §1.6, whose hypotheses 1.–8. are checked on printed p. 235 just
+  above Satz 1, were not opened.
+- Satz 2 of the same section (analytic continuation of `λ_n^m` in the complex
+  `γ²`-plane) was read but is not needed here.
+- Figures 13–17 on printed pp. 236–237 were not examined.
