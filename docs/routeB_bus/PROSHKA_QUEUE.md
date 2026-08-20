@@ -1053,7 +1053,7 @@ kernel-green, ждёт пуша после OK владельца. На L73.5 э�
 
 ## ЗАПРОС REQ-2026-08-20-F — разложить стену L73.2 на этажи
 
-`REQ-2026-08-20-F` · `STATUS: OPEN`
+`REQ-2026-08-20-F` · `STATUS: ANSWERED` — вердикт LEMMA72_RATE_FLOORS (835d7e97): 7 этажей F72.0-F72.6, два ядра (Satz 9 + Fourier-defect), F72.0 ждёт пуша пакета D
 
 Твой вердикт FLOORS назвал L73.2 (SELECTED_FERRERS_LEMMA72_RATE, цена 9/10,
 Meixner-Schäfke Satz 9) единственной настоящей стеной порта. По образцу
