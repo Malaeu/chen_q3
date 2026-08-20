@@ -1144,7 +1144,7 @@ sha256 `f86d5759248729fa56a30d2c9231c8acb9dd5c9cdea6a320acd7adf821c29cb3`
 
 ## ЗАПРОС REQ-2026-08-20-I — Satz 9 добыт: источник главной стены на полке
 
-`REQ-2026-08-20-I` · `STATUS: OPEN`
+`REQ-2026-08-20-I` · `STATUS: ANSWERED` — вердикт MEIXNER_SCHAEFKE_F72_1_PARAMETER_CHAIN (082421cf): цепочка ратифицирована, поправка остатка (raw O(g^-3/4)), цена 8/10 -> 4/10, F72.1B LEAN_READY
 
 Владелец достал книгу целиком через Uni-доступ:
 Meixner & Schäfke, «Mathieusche Funktionen und Sphäroidfunktionen»,
