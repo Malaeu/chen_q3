@@ -22,7 +22,7 @@ owner fetches and drops the PDF in `pdfs/`, then we flip it to HAVE; SCAN = imag
 | ORX-PSWF0-2013 | Osipov, Rokhlin, Xiao, "Prolate Spheroidal Wave Functions of Order Zero", Springer AMS 187 (2013) | doi:10.1007/978-1-4614-8259-8 | — | BOOK (pointer) | canonical monograph; the statements are already covered by BK-PSWF-2016 + OSIPOV-TR1450-2012 |
 | MS-MFSF-1954 | Meixner, Schäfke, "Mathieusche Funktionen und Sphäroidfunktionen", Springer 1954 (ISBN 978-3-662-00941-3) | — | `pdfs/978-3-662-00941-3.pdf` | HAVE ✓ (OCR, DE) | **§3.2 Satz 9** uniform eigenfunction estimate = dossier item 11 normalization + λ⁻² rate feeding C3 (exact Satz page-locate pending deep pass) |
 | FLAMMER-1957 | Flammer, "Spheroidal Wave Functions", Stanford UP 1957 | — | — | BOOK 🔴 | spheroidal ODE, eigenvalue indexing, parity (pointer) |
-| FUCHS-1964 | Fuchs, "On the eigenvalues of an integral equation arising in the theory of band-limited signals", J. Math. Anal. Appl. 9 (1964) 317–330 | doi:10.1016/0022-247X(64)90017-4 | — | PAYWALL 🔴 NEEDS_OWNER (Uni-доступ; старый DOI ...90056-0 был битый, исправлен 20.08) | несущий для F72.3 (Fourier-eigenvalue defect rate, вердикт REQ-F): нужны точный текст Thm 1, convention eigenvalue, покрытие n=0/4 |
+| FUCHS-1964 | Fuchs, "On the eigenvalues of an integral equation arising in the theory of band-limited signals", J. Math. Anal. Appl. 9 (1964) 317–330 | doi:10.1016/0022-247X(64)90017-4 | `pdfs/fuchs_1964_bandlimited_eigenvalues.pdf` | **HAVE ✓** (владелец, Uni-доступ 20.08) | несущий для F72.3: Thm 1 даёт `1−λ_n ~ 4√π·8ⁿ(n!)⁻¹a^{2n+1}e^{−2a²}` — ЭКСПОНЕНЦИАЛЬНО, n=0 и n=4 покрыты; крosswalk к нашему χ ОТКРЫТ (ядро 2π). Карточка: `FUCHS_1964_USAGE_CARDS.md` |
 | SIMON-MOMENT-1998 | Simon, "The classical moment problem as a self-adjoint finite difference operator", Adv. Math. 137 (1998) 82–203 | doi:10.1006/aima.1998.1728 | — | PAYWALL 🔴 | Jacobi-matrix self-adjointness (whole-line prolate realization) |
 | MATHLIB-2019 | The mathlib Community, "The Lean mathematical library", CPP 2020 | arXiv:1910.09336 | — | OA (cite-only) | Lean/Mathlib API for every formalized theorem (T4a, PL1/PL2, suppliers) |
 
@@ -72,7 +72,7 @@ owner fetches and drops the PDF in `pdfs/`, then we flip it to HAVE; SCAN = imag
 - ✅ ORX residual → covered by OSIPOV-TR1450-2012 (owner fetched Yale TR-1450).
 - ✅ MS-MFSF-1954 → owner fetched (pdfs/978-3-662-00941-3.pdf); Satz 9 page-locate = deep pass.
 - ✅ SP-PSWF-I-1961 → owner fetched OCR scan; item 10 already VERIFIED verbatim.
-- FUCHS-1964, SIMON-1998 — secondary, low priority (statements already covered).
+- SIMON-1998 — secondary, low priority. FUCHS-1964 поднят в НЕСУЩИЕ 20.08 (этаж F72.3 стены L73.2).
 
 All three PSWF-dossier residual pins are now CLOSED at the source level (files in `pdfs/`).
 
