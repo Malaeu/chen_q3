@@ -1101,7 +1101,7 @@ Fuchs PDF пока за пейволлом (NEEDS_OWNER, реестр испра
 
 ## ЗАПРОС REQ-2026-08-20-H — Fuchs добыт: scope-lock этажа F72.3
 
-`REQ-2026-08-20-H` · `STATUS: OPEN`
+`REQ-2026-08-20-H` · `STATUS: ANSWERED` — scope-lock (3abb8613): crosswalk ДОКАЗАН на бумаге (a=√(2π)λ, Λ=chi²), проектные асимптотики выведены, цена F72.3 упала 7/10 -> 1+3+2, F72.3 теперь ПАРАЛЛЕЛЕН F72.1
 
 Владелец достал PDF через Uni-доступ. Полка:
 `docs/routeB_bus/litreview/pdfs/fuchs_1964_bandlimited_eigenvalues.pdf`
