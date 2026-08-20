@@ -26,7 +26,8 @@ This file therefore does exactly two things and claims exactly nothing more.
 
 1. It writes the required fields down as a structure, so that the remaining
    obligation stops being a sentence and becomes a type. Nothing here inhabits
-   it, and the floor `F72_0B2B` stays OPEN.
+   it, and the floor `F72_0B2B` stays OPEN. The structure is a *payload*, not a
+   firewall — see the corrected note on `Satz9SourceData` below.
 2. It proves the bind: **given** such a package and the matching project data,
    the two center-normalized views agree on the closed physical window. That
    composition is unconditional in the package; only the package is missing.
@@ -44,16 +45,34 @@ LEDGER:
                -- this file makes it typed, it does not create it
 -/
 
-/-- The independently defined Satz-9 source data on one physical window.
+/-- Receiver payload: the data on one physical window that the uniqueness
+receiver consumes.
 
-Every field is a property of the source function alone. There is deliberately
-no field mentioning any project object, so the structure cannot be inhabited by
-renaming one of ours: an inhabitant has to exhibit a function and prove these
-facts about it.
+⚠️ **CORRECTED 2026-08-21.** The first version of this docstring claimed that,
+because no field mentions a project object, the structure could not be
+inhabited by renaming one of ours. That is false, and the judge refuted it in
+the REQ-2026-08-20-L verdict (`e9c1e470`): our own selected mode is even,
+regular, has a nonzero centre and solves the same equation, so the term
+`{ p := (selectedFerrersPreAnchorPair k).h0, .. }` typechecks perfectly well.
 
-`theta` is carried explicitly rather than derived, because the verdict is
-explicit that equality of separation eigenvalues does **not** follow from
-equality of the parameter: `theta_equality_is_automatic_from_G: false`. -/
+His formulation, recorded verbatim because it is the general lesson:
+provenance is a **dependency and statement property**, not something inferred
+from field names. A structure cannot enforce where its inhabitant came from.
+
+What enforces it is the shape of the supplying theorem, per his repaired
+discriminator `INDEPENDENT_SOURCE_THEOREM_THEN_SEPARATE_EIGENVALUE_CROSSWALK`:
+a source-only theorem first supplies the Meixner–Schäfke mode and its own
+source eigenvalue at `gamma_k^2`, and only a later theorem proves
+`theta_source = theta_project` and feeds this receiver. An existential stated
+directly at the project eigenvalue, or one whose proof selects the project
+mode, is the kill.
+
+The mathematics below is unaffected — `source_interface_theorems_invalidated:
+false` — the bind is and always was conditional on whatever is supplied.
+
+`theta` is carried explicitly rather than derived, because equality of
+separation eigenvalues does **not** follow from equality of the parameter:
+`theta_equality_is_automatic_from_G: false`. -/
 structure Satz9SourceData (lambda theta : ℝ) where
   /-- The raw source function in the physical coordinate. -/
   p : ℝ → ℂ
