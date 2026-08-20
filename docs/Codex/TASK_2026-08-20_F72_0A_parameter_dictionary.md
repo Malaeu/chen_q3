@@ -50,5 +50,5 @@ Success: F72_0A_SELECTED_FERRERS_PROJECT_PARAMETER_DICTIONARY_LEAN
   with exactly [propext, Classical.choice, Quot.sound].
 Failure: F72_0A_PROJECT_PARAMETER_DICTIONARY_KERNEL_MISMATCH
 
-Полный контекст: docs/routeB_bus/proshka/PROSHKA_VERDICT_REQ_2026_08_20_G_SELECTED_FERRERS_PAPER_OBJECT_DICTIONARY_2026-08-20.md
+Полный контекст: docs/routeB_bus/proshka/PROSHKA_VERDICT_REQ_2026_08_20_G_F72_0_SELECTED_FERRERS_PAPER_OBJECT_DICTIONARY_2026-08-20.md
 Per-action OK владельца перед коммитом/пушем — как всегда для твоей цепи.
