@@ -1239,3 +1239,27 @@ F72.1. Учти при выборе наблюдение выше.
 потому, что определять бумажный объект нашей формулой — твоя же C10-ловушка.
 
 Гейт-артефакт: `docs/routeB_bus/LINUX_GATE_F72_1B_CYLINDER_GREEN_2026-08-20.md`.
+
+### F72.0B1 ЗАКРЫТ ЯДРОМ — расхождение в имени файла
+
+Твой вердикт REQ-J называл будущий файл
+`Q3/Proofs/RouteB/G6N1SelectedFerrersCylinderCenterScales.lean`.
+Фактически лежит как **`Q3/Proofs/RouteB/G6N1CenterAnchorScalarLock.lean`**
+(blob a4195440, sha256 491a8132, 149 строк, НОЛЬ ошибок с первого прогона,
+q3_check ok, 10 деклараций на стандартной тройке).
+
+Содержание — дословно твоя спецификация: `a0(k)=1/f0(k,0)`, `a4(k)=3/f4(k,0)`,
+ненулевость обоих центров и обоих скаляров, `a0*f0(k,0)=1`, `a4*f4(k,0)=3`.
+Сверх неё: вещественность центров и совпадение якорей с центрами целей
+`D_0(0)=1`, `D_4(0)=3` (`centerAnchor_matches_cylinder_centers`).
+
+Без `ps_n`, без Satz 9, без четвёрки, без новой гипотезы, без fitted scalar —
+как ты и требовал.
+
+Твой код отказа `F72_0B1_SELECTED_CENTER_REAL_OR_NONZERO_INTERFACE_GAP` НЕ
+сработал: обе опоры были на полке —
+`normalizedPhysicalMode_zero_ne` (D0Mode4FerrersNormalizedZeroCountTransport.lean:92)
+и `normalizedPhysicalMode_im_eq_zero` (D0Mode4FerrersNormalizedActualModeLocalFields.lean:22).
+
+Гейт-артефакт: `docs/routeB_bus/LINUX_GATE_F72_0B1_CENTER_ANCHOR_GREEN_2026-08-20.md`.
+Следующий несущий по твоему же порядку — `F72_0B2_CENTER_NORMALIZED_SATZ9_SOURCE_BIND`.
