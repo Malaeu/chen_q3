@@ -1,9 +1,9 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 289,
-  "declarations": 2696,
-  "in_docs": 1191,
+  "files_scanned": 290,
+  "declarations": 2699,
+  "in_docs": 1194,
   "in_lemma_db": 2489,
   "orphans": 82,
   "uncatalogued": 82,
@@ -33,10 +33,6 @@
       6
     ],
     [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1BookRegularSpectrumSourceInterface.lean",
-      5
-    ],
-    [
       "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1EvenCenterDerivative.lean",
       5
     ],
@@ -45,7 +41,7 @@
       5
     ],
     [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/D0DiagonalSelectionAndSubcriticalExtension.lean",
+      "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1BookRegularSpectrumSourceInterface.lean",
       4
     ],
     [
@@ -53,8 +49,16 @@
       4
     ],
     [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/D0FixedWindowWeightBoundedness.lean",
+      3
+    ],
+    [
       "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedThetaEqualityDegreeZeroFour.lean",
       3
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/D0DiagonalSelectionAndSubcriticalExtension.lean",
+      2
     ],
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1CenterAnchorScalarLock.lean",
@@ -62,10 +66,6 @@
     ],
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1EvenSolutionCenterNonvanishing.lean",
-      2
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1OrderedEnumerationLock.lean",
       2
     ]
   ],
@@ -5836,9 +5836,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0DiagonalSelectionAndSubcriticalExtension.lean",
       "line": 52,
       "signature": "theorem exists_strictMono_diagonal_of_eventually {req : ℕ → ℕ → Prop} (h : ∀ j : ℕ, ∃ N₀ : ℕ, ∀ N : ℕ, N₀ ≤ N → req j N) : ∃ N : ℕ → ℕ, StrictMono N ∧ ∀ k : ℕ, ∀ j : ℕ, j ≤ k → req j (N k)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -5856,9 +5856,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0DiagonalSelectionAndSubcriticalExtension.lean",
       "line": 87,
       "signature": "theorem forall_subcritical_of_forall_rat {Q : ℝ → Prop} (hmono : ∀ a b : ℝ, a ≤ b → Q b → Q a) (hrat : ∀ q : ℚ, 0 ≤ (q : ℝ) → (q : ℝ) < 1 / 2 → Q (q : ℝ)) : ∀ σ : ℝ, 0 ≤ σ → σ < 1 / 2 → Q σ",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -5879,6 +5879,36 @@
       "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "exp_weight_le_endpoint",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0FixedWindowWeightBoundedness.lean",
+      "line": 43,
+      "signature": "theorem exp_weight_le_endpoint {L σ t : ℝ} (hσ : 0 ≤ σ) (ht : t ∈ Icc (-(L / 2)) (L / 2)) : Real.exp (σ * |t|) ≤ Real.exp (σ * (L / 2))",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "weighted_window_integral_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0FixedWindowWeightBoundedness.lean",
+      "line": 55,
+      "signature": "theorem weighted_window_integral_le {L σ : ℝ} (hσ : 0 ≤ σ) (f : ℝ → ℝ) (hf : ∀ t, 0 ≤ f t) (hint : IntegrableOn f (Icc (-(L / 2)) (L / 2))) (hintw : IntegrableOn (fun t => f t * Real.exp (σ * |t|)) (Icc (-(L / 2)) (L / 2))) : (∫ t in Icc (-(L / 2)) (L / 2), f t * Real.exp (σ * |t|)) ≤ Real.exp (σ * (L / 2)) * ∫ t in Icc (-(L / 2)) (L / 2), f t",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "weighted_window_integral_le_of_unweighted_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0FixedWindowWeightBoundedness.lean",
+      "line": 78,
+      "signature": "theorem weighted_window_integral_le_of_unweighted_le {L σ : ℝ} (hσ : 0 ≤ σ) (f : ℝ → ℝ) (ε : ℝ) (hf : ∀ t, 0 ≤ f t) (hint : IntegrableOn f (Icc (-(L / 2)) (L / 2))) (hintw : IntegrableOn (fun t => f t * Real.exp (σ * |t|)) (Icc (-(L / 2)) (L / 2))) (hsmall : (∫ t in Icc (-(L / 2)) (L / 2), f t) ≤ ε) : (∫ t in Icc (-(L / 2)) (L / 2), f t * Real.exp (σ * |t|)) ≤ Real.exp (σ * (L / 2)) * ε",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
     },
     {
       "kind": "def",
@@ -21186,9 +21216,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1BookRegularSpectrumSourceInterface.lean",
       "line": 56,
       "signature": "structure BookRegularEvenSpectrum (G : ℝ) (splitDegree : ℕ) where",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "theorem",
