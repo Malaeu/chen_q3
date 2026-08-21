@@ -288,3 +288,70 @@ divergence-form equation our receiver consumes is in the physical variable on
 - Satz 2 of the same section (analytic continuation of `λ_n^m` in the complex
   `γ²`-plane) was read but is not needed here.
 - Figures 13–17 on printed pp. 236–237 were not examined.
+
+---
+
+## §3.22 Satz 1, read again for EXHAUSTIVENESS — printed p. 235
+
+The judge's REQ-2026-08-21-M verdict (`35edb61a`) names
+`VERIFY_EXHAUSTIVE_EVEN_SOLUTION_SET_WORDING_FOR_DLMF_30_3_5` the cheapest
+decisive test, with failure codes `W13_7_SOURCE_SOLUTION_SET_NOT_EXHAUSTIVE`
+and `W13_7_ONE_WAY_MEMBERSHIP_CAN_SKIP_INDICES`. Here is the wording check.
+
+### The book's enumeration is exhaustive, and the definite article is the reason
+
+The sentence that carries it, from the same Satz 1:
+
+"**Die** reellen Eigenwertpaare λ, γ² liegen in der (λ, γ²)-Ebene auf regulär
+analytischen charakteristischen Kurven λ(γ²), die wir mit λ = λ_n^m(γ²),
+λ_n^m(0) = n(n+1) (n = m, m+1, m+2, …) festlegen können."
+
+`Die reellen Eigenwertpaare` — the definite plural, all of them — lie on those
+curves. This is not a one-way membership statement about some eigenvalues; it
+says the family `{λ_n^m}` exhausts the real spectrum at every parameter. With
+the parity clause "mit n − m gerade oder ungerade", at order `m = 0` the even
+eigenvalues are exactly `{λ_{2j}^0(γ²) : j = 0, 1, 2, …}`, in that labelling.
+
+Together with "sämtlich reell und einfach", the spectrum at fixed `γ²` is a set
+of simple real values with a canonical enumeration, and the curves do not
+intersect, so the enumeration is order-preserving in the parameter. That is
+exactly what the selected representation `FIXED_G_STRICT_ORDER_ISOMORPHISM`
+needs.
+
+### The cutoff is admission only, and here is the arithmetic that proves it
+
+Our project's characteristic iff
+(`mode4DLMF3035EvenCharacteristicEquation_iff_rootFunction_eq_zero`,
+`D0Mode4DLMF3035EvenCharacteristicSource.lean:80`) carries the hypothesis
+`Λ ≤ 20`. It is tempting to read that cutoff as isolating our three selected
+even branches, since `λ_4^0(0) = 4·5 = 20`. **It does not, and the error would
+be silent.**
+
+Using the leading two terms of Satz 9, `λ_n^0(γ²) ≈ −γ² + γ(2n+1)`, at our own
+precommitted parameters `γ_k = 2π(k+2)`:
+
+```
+k = 0   γ ≈ 12.57     n=0: −145   n=2: −95   n=4: −45   n=6: +5    n=8: +56
+k = 1   γ ≈ 18.85     n=0: −337   n=2: −261  n=4: −186  n=6: −110  n=8: −35
+k = 5   γ ≈ 43.98     n=0: −1891  n=2: −1715 n=4: −1539 n=6: −1363 n=8: −1187
+```
+
+Already at `k = 0` the sixth-degree branch sits at about `+5`, below the
+cutoff; by `k = 5` the eighth-degree branch is a thousand below it. The number
+of even branches under `Λ ≤ 20` grows without bound as `k` grows.
+
+So the cutoff admits our branches but selects nothing. This is precisely why
+the verdict records `source_derivative_monotonicity_role: CUTOFF_ADMISSION_ONLY`
+and picks the fixed-parameter ordering rather than the cutoff as the anchor.
+Anyone later tempted to isolate by the cutoff has these numbers as the
+counterexample.
+
+⚠️ The table is a leading-order estimate from Satz 9, not a proof; it is a
+falsifier for the cutoff-isolation idea, not a supplier of anything.
+
+### Index firewall, restated from the verdict
+
+DLMF 30.3.5's split degree `s = 2(K−1)` is **not** the source degree `n`. The
+verdict lists `W13_7_SPLIT_DEGREE_CONFUSED_WITH_MODE_DEGREE` as a failure code.
+Our selected ordinals are `j ∈ {0,2}`, the source degrees are `n = 2j ∈ {0,4}`,
+and `K` is a truncation parameter belonging to neither.
