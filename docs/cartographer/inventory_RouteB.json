@@ -1,12 +1,12 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 287,
-  "declarations": 2690,
-  "in_docs": 1188,
+  "files_scanned": 288,
+  "declarations": 2692,
+  "in_docs": 1189,
   "in_lemma_db": 2489,
-  "orphans": 77,
-  "uncatalogued": 77,
+  "orphans": 78,
+  "uncatalogued": 78,
   "orphan_files_top": [
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
@@ -65,7 +65,7 @@
       2
     ],
     [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersPhysicalFourierScalarSign.lean",
+      "q3.lean.aristotle/Q3/Proofs/RouteB/D0CenteredMomentRatioLeakageEquivalence.lean",
       1
     ]
   ],
@@ -5688,6 +5688,26 @@
       "signature": "theorem centeredTrialDensity_positive_constant_counterexample : 0 < (centeredTrialDensity centeredDensityPositiveConstantRow centeredDensityNoGoIndex 0).re",
       "in_docs": true,
       "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "centeredCriticalMoment_le_iff_leakage_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0CenteredMomentRatioLeakageEquivalence.lean",
+      "line": 47,
+      "signature": "theorem centeredCriticalMoment_le_iff_leakage_le (D : CoefficientFamily) (i : CentralIndex D) (σ C : ℝ) : centeredCriticalMoment D i.1 σ ≤ C * ‖rawFplus D i.1 0‖ ↔ centeredMomentLeakage D i σ ≤ C",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "centeredTrialCriticalMomentRatio_iff_uniform_leakage",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0CenteredMomentRatioLeakageEquivalence.lean",
+      "line": 58,
+      "signature": "theorem centeredTrialCriticalMomentRatio_iff_uniform_leakage (D : CoefficientFamily) (p : ℕ → CentralIndex D) : CenteredTrialCriticalMomentRatio D p ↔ PairCofinal p ∧ ∀ σ : ℝ, 0 ≤ σ → σ < 1 / 2 → ∃ Cσ : ℝ, 0 ≤ Cσ ∧ ∀ k : ℕ, centeredMomentLeakage D (p k) σ ≤ Cσ",
+      "in_docs": true,
+      "in_lemma_db": false,
       "orphan": false
     },
     {
