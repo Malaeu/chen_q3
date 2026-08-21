@@ -253,11 +253,23 @@ MONOTONICITY, recorded because it may matter for the crosswalk:
 
 ### WHAT IT DOES NOT SUPPLY
 
-**Nonzero centre value.** The page says nothing about `ps_n^0(0; γ²) ≠ 0`.
-That field of `Satz9SourceData` is therefore still unsourced. At `γ = 0` the
-equation degenerates to Legendre and `P_0(0) = 1`, `P_4(0) = 3/8`, both nonzero,
-but that is the value at one parameter and not a theorem for all `γ²`. Do not
-assume it; it is a named gap.
+~~**Nonzero centre value.** The page says nothing about `ps_n^0(0; γ²) ≠ 0`.~~
+**RESOLVED 2026-08-21, and not by citation.** The book does not state it and
+does not need to: it follows from the other fields. An even solution has zero
+derivative at the centre; if its value there were zero too, its centre data
+would coincide with the zero function's, which solves the same homogeneous
+equation, and uniqueness would force it to vanish identically on the window.
+A nontrivial even solution therefore cannot vanish at the centre.
+
+Proved in `q3.lean.aristotle/Q3/Proofs/RouteB/G6N1EvenSolutionCenterNonvanishing.lean`
+(blob f353622e), `center_ne_zero_of_even_of_nontrivial`, zero errors on the
+first run. The hypotheses are parity, the equation and nontriviality — no paper
+input and no project object. So the `center_ne` field of `Satz9SourceData`
+does not have to be sourced; an inhabitant exhibiting a nontrivial even
+solution gets it for free.
+
+The `γ = 0` Legendre values `P_0(0) = 1`, `P_4(0) = 3/8` are consistent with
+this but were never the argument.
 
 **The branch crosswalk W13.7.** The labelling `λ_n^m(0) = n(n+1)` pins which
 characteristic curve is meant, in the book's own normalization of the ODE. Our
