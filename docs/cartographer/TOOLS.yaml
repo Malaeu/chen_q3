@@ -797,6 +797,34 @@ tool_families:
         records_to: stdout, optional JSON via --json
         last_verified: 2026-08-20
 
+      - id: blueprint-skeleton-generator
+        status: ENABLED
+        audience: [CODEX, CLAUDE_CODE, HUMAN]
+        mode: READ_ONLY_PLUS_ONE_GENERATED_FILE
+        path: docs/cartographer/blueprint_gen.py
+        invoke: python3 docs/cartographer/blueprint_gen.py
+        cwd: repository root
+        trigger: >-
+          Regenerate the paper skeleton after any assembly change. The article
+          is the second dashboard of the assembly table: a fastened rope turns
+          its entry green, a hanging one stays red with its measured hole.
+        writes: full/blueprint/blueprint.md
+        approval: NONE
+        authority: >-
+          MIRRORS_ASSEMBLY_NOT_THE_KERNEL. A rope greens because its assembly
+          row says READY, not because Lean accepted anything. Closing a Lean
+          node changes nothing here until the corresponding assembly row is
+          updated, so a regeneration whose only diff is the date means the
+          ledger has not been told. Measured 2026-08-21: three kernel-green
+          nodes landed that day and the regenerated file differed by one line,
+          the timestamp.
+        scope_negation: >-
+          Does NOT produce LaTeX and is not the manuscript. It emits the
+          skeleton in Markdown; the LaTeX frame, prose and final human pass are
+          separate work that has not started.
+        records_to: full/blueprint/blueprint.md
+        last_verified: 2026-08-21
+
       - id: cartographer-brief
         status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]

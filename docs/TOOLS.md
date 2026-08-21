@@ -2,7 +2,7 @@
 > **GENERATED FILE — do not edit by hand.** Regenerate with `./orchestrator/tools_census.py --markdown`.
 > Written because hand-maintained maps rot: MAP.md drifted two days, the frozen atlases two months, and `aristotle_proofs.db` covered 31% of RouteB.
 ## Summary
-- **Operational contours:** 7; registered tool contracts: 41 (AVAILABLE 6, DEGRADED 1, ENABLED 34)
+- **Operational contours:** 7; registered tool contracts: 42 (AVAILABLE 6, DEGRADED 1, ENABLED 35)
 - **Contour front doors:** `codex-session-start`, `supplier-preflight`, `property-descent`, `observability-summary`, `lean-validation`, `proshka-context-pack`, `task-specific-generators`
 - **Automatic startup front doors:** 1 (`codex-session-start`); Spine strict is its internal check
 - **Executable implementation files:** 400 (touched since 2026-07-01: 67)
@@ -27,8 +27,8 @@
 ### Alive
 | Ledger | Entries | Last commit | In rules |
 |---|---|---|---|
-| `q3.lean.aristotle/docs/INSIGHTS.md` | 1683 | 2026-08-14 | yes |
-| `q3.lean.aristotle/ACTIVE/insights.md` | 1683 | 2026-08-14 | **NO** |
+| `q3.lean.aristotle/docs/INSIGHTS.md` | 1684 | 2026-08-21 | yes |
+| `q3.lean.aristotle/ACTIVE/insights.md` | 1684 | 2026-08-21 | **NO** |
 | `q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md` | 817 | 2026-08-10 | yes |
 | `docs/routeB_bus/MANIFEST.md` | 406 | 2026-08-10 | **NO** |
 | `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL057_B3_0M_FINITE_SOURCE_WEIL_FOURIER_LEDGER_PREFLIGHT_RELEASE_2026-08-09.md` | 245 | 2026-08-09 | **NO** |
@@ -95,6 +95,7 @@
 | `SESSION_PROTOKOLL_2026-08-07.md` | 27 | 2026-08-07 | **NO** |
 | `docs/Codex/TASK_2026-08-14_goal058_g3_prolate_rate_floor.md` | 25 | 2026-08-14 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/trough_relabel_and_bus_sync_v1_actions_log.md` | 25 | 2026-07-10 | **NO** |
+| `SESSION_PROTOKOLL_2026-08-21.md` | 24 | 2026-08-21 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/phase_trace_and_ledger_filter_v1.md` | 24 | 2026-07-10 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/anchor_locked_k_channel_v1_actions_log.md` | 24 | 2026-07-10 | **NO** |
 | `orchestrator/BEHAVIOR_CONTROL_REGISTRY.json` | 24 | 2026-08-09 | **NO** |
@@ -115,7 +116,6 @@
 | `q3.lean.aristotle/docs/ERRORS_DESTROYER.md` | 13 | 2026-08-06 | yes |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7_EXACT_NORMALIZATION_REGISTRY.md` | 13 | 2026-07-12 | **NO** |
 | `orchestrator/WALL_REGISTRY.json` | 13 | 2026-08-06 | **NO** |
-| `SESSION_PROTOKOLL_2026-08-21.md` | 12 | 2026-08-21 | **NO** |
 | `docs/routeB_bus/P038_PLANT_LOG.md` | 12 | 2026-07-30 | **NO** |
 | `q3.lean.aristotle/PROJECT_ORCHESTRATOR.md` | 12 | 2026-08-10 | yes |
 | `q3.lean.aristotle/ACTIVE/orchestrator.md` | 12 | 2026-08-10 | yes |
@@ -193,9 +193,11 @@
 ## Permanent tools, most recently touched first
 | Tool | Last | Refs | In rules | Purpose |
 |---|---|---|---|---|
-| `orchestrator/three_body_loop.py` | untracked | 4 | yes | Control-v9 three-body runtime: quarantine, request CAS, and pinned launch. |
+| `orchestrator/goal_runtime.py` | 2026-08-21 | 17 | yes | Read-only GOAL_RUN contract validator and physical-goal selector. |
+| `orchestrator/spine.py` | 2026-08-21 | 162 | yes | Knowledge Spine aggregator and strict control-plane entrypoint. |
+| `orchestrator/three_body_loop.py` | 2026-08-21 | 7 | yes | Control-v9 three-body runtime: quarantine, request CAS, and pinned launch. |
 | `scripts/qmd_ops.py` | 2026-08-21 | 1 | **NO** | Accept a fully emitted JSON result when Bun crashes during finalization. |
-| `docs/cartographer/blueprint_gen.py` | 2026-08-20 | 1 | **NO** | blueprint_gen — скелет статьи ИЗ БАЗЫ (PUBLICATION_PLAN, механика). |
+| `docs/cartographer/blueprint_gen.py` | 2026-08-20 | 3 | yes | blueprint_gen — скелет статьи ИЗ БАЗЫ (PUBLICATION_PLAN, механика). |
 | `docs/cartographer/depgraph.py` | 2026-08-20 | 4 | yes | depgraph — настоящий граф зависимостей живого дерева, из исходников. |
 | `specs_docs/session_start.sh` | 2026-08-20 | 35 | yes | session_start.sh — один вход в сессию. |
 | `ask.sh` | 2026-08-19 | 85 | yes | ask.sh — ОДИН вход в накопленное знание. Спрашивать ДО внешнего поиска и ДО создания чего-либо. |
@@ -207,10 +209,8 @@
 | `docs/cartographer/lean_env/envdump.py` | 2026-08-14 | 14 | yes | Собрать индекс Lean environment: имя → ELABORATED тип, аксиомы, адрес. |
 | `orchestrator/goal_events.py` | 2026-08-14 | 21 | yes | Durable AUTOPILOT goal-attempt and reusable-insight writers. |
 | `orchestrator/migration_census.py` | 2026-08-14 | 7 | yes | Exact live-source versus knowledge.db migration census. |
-| `orchestrator/spine.py` | 2026-08-14 | 160 | yes | Knowledge Spine aggregator and strict control-plane entrypoint. |
 | `scripts/search_external_lean.py` | 2026-08-14 | 5 | yes | Read-only term search over the enabled external Lean registry. |
-| `scripts/supplier_preflight.py` | 2026-08-14 | 13 | yes | One fail-closed shelf -> properties -> direct Lean type-fit preflight. |
-| `orchestrator/goal_runtime.py` | 2026-08-13 | 16 | yes | Read-only GOAL_RUN contract validator and physical-goal selector. |
+| `scripts/supplier_preflight.py` | 2026-08-14 | 14 | yes | One fail-closed shelf -> properties -> direct Lean type-fit preflight. |
 | `orchestrator/packet.py` | 2026-08-13 | 19 | yes | Clipboard-native packet transport for the Route B orchestration bus. |
 | `orchestrator/routeb_goal_state.py` | 2026-08-13 | 0 | **NO** | Shared lifecycle parsing for physical Route B goal files. |
 | `q3.lean.aristotle/scripts/refresh_q3_docs.py` | 2026-08-13 | 33 | yes |  |
@@ -223,7 +223,7 @@
 | `orchestrator/kb.py` | 2026-08-11 | 162 | yes | kb — the single entry point to knowledge.db ("have we already tried / killed this?"). |
 | `docs/cartographer/atoms.py` | 2026-08-10 | 17 | yes | Property Descent: вытащить атомы (внешние Mathlib-леммы) из доказательств RouteB. |
 | `docs/cartographer/brief.py` | 2026-08-10 | 25 | yes | brief.py — собрать source-locked пакет из базы для Прошки/Codex. |
-| `docs/cartographer/inventory.py` | 2026-08-10 | 18 | yes | Картограф, фаза 1 — детерминированный инвентарь. |
+| `docs/cartographer/inventory.py` | 2026-08-10 | 19 | yes | Картограф, фаза 1 — детерминированный инвентарь. |
 | `orchestrator/backfill_db.py` | 2026-08-10 | 6 | yes | Synchronize the live Route B declaration inventory into aristotle_proofs.db. |
 | `orchestrator/tools_census.py` | 2026-08-10 | 15 | yes | Machine census of every tool, database and state file in the repo. |
 | `q3.lean.aristotle/scripts/refresh_erdos_overlap_kb.py` | 2026-08-10 | 4 | yes |  |

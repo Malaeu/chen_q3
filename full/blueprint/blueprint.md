@@ -1,6 +1,6 @@
 # Blueprint — Operator Methods for RH (skeleton, generated from assembly)
 
-*Generated 2026-08-20 by blueprint_gen.py — DO NOT edit by hand:*
+*Generated 2026-08-21 by blueprint_gen.py — DO NOT edit by hand:*
 *regenerate after any assembly change. Green = kernel-proved rope,*
 *red = hanging rope with its measured hole. Roof and Hurwitz transfer are concrete.*
 
