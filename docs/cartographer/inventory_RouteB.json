@@ -1,12 +1,12 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 288,
-  "declarations": 2692,
-  "in_docs": 1189,
+  "files_scanned": 289,
+  "declarations": 2696,
+  "in_docs": 1191,
   "in_lemma_db": 2489,
-  "orphans": 78,
-  "uncatalogued": 78,
+  "orphans": 82,
+  "uncatalogued": 82,
   "orphan_files_top": [
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
@@ -45,6 +45,10 @@
       5
     ],
     [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/D0DiagonalSelectionAndSubcriticalExtension.lean",
+      4
+    ],
+    [
       "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1FuchsProjectOperatorIntertwining.lean",
       4
     ],
@@ -63,10 +67,6 @@
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1OrderedEnumerationLock.lean",
       2
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/D0CenteredMomentRatioLeakageEquivalence.lean",
-      1
     ]
   ],
   "items": [
@@ -5806,7 +5806,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0CriticalStripCompactBound.lean",
       "line": 15,
       "signature": "def SelectedLocallyBoundedOnCenteredCriticalStrip (D : CanonicalData) : Prop",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -5829,6 +5829,46 @@
       "in_docs": false,
       "in_lemma_db": true,
       "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "exists_strictMono_diagonal_of_eventually",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0DiagonalSelectionAndSubcriticalExtension.lean",
+      "line": 52,
+      "signature": "theorem exists_strictMono_diagonal_of_eventually {req : ℕ → ℕ → Prop} (h : ∀ j : ℕ, ∃ N₀ : ℕ, ∀ N : ℕ, N₀ ≤ N → req j N) : ∃ N : ℕ → ℕ, StrictMono N ∧ ∀ k : ℕ, ∀ j : ℕ, j ≤ k → req j (N k)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "tendsto_atTop_of_strictMono_nat",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0DiagonalSelectionAndSubcriticalExtension.lean",
+      "line": 77,
+      "signature": "theorem tendsto_atTop_of_strictMono_nat {N : ℕ → ℕ} (hN : StrictMono N) : Tendsto N atTop atTop",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "forall_subcritical_of_forall_rat",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0DiagonalSelectionAndSubcriticalExtension.lean",
+      "line": 87,
+      "signature": "theorem forall_subcritical_of_forall_rat {Q : ℝ → Prop} (hmono : ∀ a b : ℝ, a ≤ b → Q b → Q a) (hrat : ∀ q : ℚ, 0 ≤ (q : ℝ) → (q : ℝ) < 1 / 2 → Q (q : ℝ)) : ∀ σ : ℝ, 0 ≤ σ → σ < 1 / 2 → Q σ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "exists_diagonal_and_subcritical_extension",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0DiagonalSelectionAndSubcriticalExtension.lean",
+      "line": 100,
+      "signature": "theorem exists_diagonal_and_subcritical_extension {req : ℕ → ℕ → Prop} {Q : ℝ → Prop} (hreq : ∀ j : ℕ, ∃ N₀ : ℕ, ∀ N : ℕ, N₀ ≤ N → req j N) (hmono : ∀ a b : ℝ, a ≤ b → Q b → Q a) (hrat : ∀ q : ℚ, 0 ≤ (q : ℝ) → (q : ℝ) < 1 / 2 → Q (q : ℝ)) : (∃ N : ℕ → ℕ, StrictMono N ∧ Tendsto N atTop atTop ∧ ∀ k : ℕ, ∀ j : ℕ, j ≤ k → req j (N k)) ∧ ∀ σ : ℝ, 0 ≤ σ → σ < 1 / 2 → Q σ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
     },
     {
       "kind": "theorem",
@@ -20466,7 +20506,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0StripMontelRefinement.lean",
       "line": 59,
       "signature": "theorem exists_refined_montelAnchorGate_of_strip_bounds (D : CanonicalData) (H2aAt S1At : CentralIndex D.kTrial → Prop) (hXi : centeredXi 0 ≠ 0) (hbdd : SelectedLocallyBoundedOnCenteredCriticalStrip D) : ∃ e : ℕ → ℕ, ∃ he : StrictMono e, MontelAnchorGate (canonicalApproximation (montelRefinement D e he)) H2aAt S1At 0",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
