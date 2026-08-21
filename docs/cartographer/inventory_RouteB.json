@@ -1,12 +1,12 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 285,
-  "declarations": 2682,
+  "files_scanned": 287,
+  "declarations": 2690,
   "in_docs": 1188,
   "in_lemma_db": 2489,
-  "orphans": 69,
-  "uncatalogued": 69,
+  "orphans": 77,
+  "uncatalogued": 77,
   "orphan_files_top": [
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
@@ -33,6 +33,10 @@
       6
     ],
     [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1BookRegularSpectrumSourceInterface.lean",
+      5
+    ],
+    [
       "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1EvenCenterDerivative.lean",
       5
     ],
@@ -43,6 +47,10 @@
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1FuchsProjectOperatorIntertwining.lean",
       4
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedThetaEqualityDegreeZeroFour.lean",
+      3
     ],
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1CenterAnchorScalarLock.lean",
@@ -21113,6 +21121,56 @@
       "orphan": false
     },
     {
+      "kind": "structure",
+      "name": "BookRegularEvenSpectrum",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1BookRegularSpectrumSourceInterface.lean",
+      "line": 56,
+      "signature": "structure BookRegularEvenSpectrum (G : ℝ) (splitDegree : ℕ) where",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "characteristic_setOf_eq_even_branch_setOf",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1BookRegularSpectrumSourceInterface.lean",
+      "line": 91,
+      "signature": "theorem characteristic_setOf_eq_even_branch_setOf (S : BookRegularEvenSpectrum G splitDegree) : {Λ : ℝ | Λ < 20 ∧ mode4DLMF3035EvenCharacteristicEquation G Λ splitDegree} = {Λ : ℝ | Λ < 20 ∧ ∃ r : ℕ, S.branch (2 * r) = Λ}",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "even_branch_subset_characteristic",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1BookRegularSpectrumSourceInterface.lean",
+      "line": 107,
+      "signature": "theorem even_branch_subset_characteristic (S : BookRegularEvenSpectrum G splitDegree) : {Λ : ℝ | Λ < 20 ∧ ∃ r : ℕ, S.branch (2 * r) = Λ} ⊆ {Λ : ℝ | Λ < 20 ∧ mode4DLMF3035EvenCharacteristicEquation G Λ splitDegree}",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "characteristic_subset_even_branch",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1BookRegularSpectrumSourceInterface.lean",
+      "line": 115,
+      "signature": "theorem characteristic_subset_even_branch (S : BookRegularEvenSpectrum G splitDegree) : {Λ : ℝ | Λ < 20 ∧ mode4DLMF3035EvenCharacteristicEquation G Λ splitDegree} ⊆ {Λ : ℝ | Λ < 20 ∧ ∃ r : ℕ, S.branch (2 * r) = Λ}",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "evenBranch_strictMono",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1BookRegularSpectrumSourceInterface.lean",
+      "line": 124,
+      "signature": "theorem evenBranch_strictMono (S : BookRegularEvenSpectrum G splitDegree) : StrictMono (fun r : ℕ => S.branch (2 * r))",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
       "kind": "def",
       "name": "selectedFerrersCenterZero",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1CenterAnchorScalarLock.lean",
@@ -22451,6 +22509,36 @@
       "in_docs": true,
       "in_lemma_db": false,
       "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "range_inter_Iio_eq_setOf",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedThetaEqualityDegreeZeroFour.lean",
+      "line": 49,
+      "signature": "theorem range_inter_Iio_eq_setOf (f : ℕ → ℝ) (C : ℝ) : range f ∩ Iio C = {Λ : ℝ | Λ < C ∧ ∃ r : ℕ, f r = Λ}",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "selected_theta_equality_rank_two",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedThetaEqualityDegreeZeroFour.lean",
+      "line": 58,
+      "signature": "theorem selected_theta_equality_rank_two (S : BookRegularEvenSpectrum G splitDegree) (projectBranch : ℕ → ℝ) (hproj : StrictMono projectBranch) (hprojRange : range projectBranch ∩ Iio 20 = {Λ : ℝ | Λ < 20 ∧ mode4DLMF3035EvenCharacteristicEquation G Λ splitDegree}) (hprojCut : ∀ j ≤ 2, projectBranch j < 20) (hsrcCut : ∀ j ≤ 2, S.branch (2 * j) < 20) : projectBranch 0 = S.branch 0 ∧ projectBranch 1 = S.branch 2 ∧ projectBranch 2 = S.branch 4",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "selected_theta_equality_degree_zero_four",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedThetaEqualityDegreeZeroFour.lean",
+      "line": 90,
+      "signature": "theorem selected_theta_equality_degree_zero_four (S : BookRegularEvenSpectrum G splitDegree) (projectBranch : ℕ → ℝ) (hproj : StrictMono projectBranch) (hprojRange : range projectBranch ∩ Iio 20 = {Λ : ℝ | Λ < 20 ∧ mode4DLMF3035EvenCharacteristicEquation G Λ splitDegree}) (hprojCut : ∀ j ≤ 2, projectBranch j < 20) (hsrcCut : ∀ j ≤ 2, S.branch (2 * j) < 20) : projectBranch 0 = S.branch 0 ∧ projectBranch 2 = S.branch 4",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
     },
     {
       "kind": "def",
