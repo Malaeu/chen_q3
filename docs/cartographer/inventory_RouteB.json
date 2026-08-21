@@ -1,12 +1,12 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 292,
-  "declarations": 2707,
+  "files_scanned": 293,
+  "declarations": 2710,
   "in_docs": 1195,
   "in_lemma_db": 2489,
-  "orphans": 89,
-  "uncatalogued": 89,
+  "orphans": 92,
+  "uncatalogued": 92,
   "orphan_files_top": [
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
@@ -57,15 +57,15 @@
       3
     ],
     [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/D0ZerosRealOnScalarTransfer.lean",
+      3
+    ],
+    [
       "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedThetaEqualityDegreeZeroFour.lean",
       3
     ],
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/D0DiagonalSelectionAndSubcriticalExtension.lean",
-      2
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/D0RawTransformRowScaling.lean",
       2
     ]
   ],
@@ -20616,6 +20616,36 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0SubcriticalWeightedRateIntegral.lean",
       "line": 153,
       "signature": "theorem inv_mul_integral_exp_half_weight_le (σ lam : ℝ) (hσ0 : 0 ≤ σ) (hσh : σ < 1 / 2) (hlam : 1 ≤ lam) : lam⁻¹ * ∫ t in (-(Real.log lam))..(Real.log lam), Real.exp (-t / 2) * Real.exp (σ * |t|) ≤ lam ^ (σ - 1 / 2) / (1 / 2 + σ) + lam⁻¹ / (1 / 2 - σ)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "zerosRealOn_congr",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0ZerosRealOnScalarTransfer.lean",
+      "line": 34,
+      "signature": "theorem zerosRealOn_congr {S : Set ℂ} {f g : ℂ → ℂ} (hfg : ∀ z ∈ S, f z = g z) (hf : ZerosRealOn S f) : ZerosRealOn S g",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "zerosRealOn_smul",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0ZerosRealOnScalarTransfer.lean",
+      "line": 42,
+      "signature": "theorem zerosRealOn_smul {S : Set ℂ} {f : ℂ → ℂ} {c : ℂ} (hc : c ≠ 0) (hf : ZerosRealOn S f) : ZerosRealOn S (fun z => c * f z)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "zerosRealOn_of_eq_smul",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0ZerosRealOnScalarTransfer.lean",
+      "line": 50,
+      "signature": "theorem zerosRealOn_of_eq_smul {S : Set ℂ} {f g : ℂ → ℂ} {c : ℂ} (hc : c ≠ 0) (hval : ∀ z ∈ S, g z = c * f z) (hf : ZerosRealOn S f) : ZerosRealOn S g",
       "in_docs": false,
       "in_lemma_db": false,
       "orphan": true
