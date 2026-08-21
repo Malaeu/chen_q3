@@ -3,9 +3,9 @@
 ```yaml
 schema: q3_codex_current_task.v1
 status: ACTIVE
-task_file: docs/Codex/TASK_2026-08-21_independent_audit_of_ten_linux_nodes.md
-source_commit: 3b0f26f06c8037d9effd07a3b0fa5ac8786b6193
-updated_at: 2026-08-21T00:00:00+02:00
+task_file: docs/Codex/TASK_2026-08-21_codex_control_v9_three_body_lease_and_semantic_quarantine.md
+source_commit: a5a65911ba6c681d4cd5d4da2d1bd3b34ca96820
+updated_at: 2026-08-21T21:00:00+02:00
 updated_by: CLAUDE_CODE_ON_OWNER_INSTRUCTION
 ```
 
