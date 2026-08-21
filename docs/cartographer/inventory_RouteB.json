@@ -1,12 +1,12 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 291,
-  "declarations": 2705,
+  "files_scanned": 292,
+  "declarations": 2707,
   "in_docs": 1195,
   "in_lemma_db": 2489,
-  "orphans": 87,
-  "uncatalogued": 87,
+  "orphans": 89,
+  "uncatalogued": 89,
   "orphan_files_top": [
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
@@ -65,7 +65,7 @@
       2
     ],
     [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1CenterAnchorScalarLock.lean",
+      "q3.lean.aristotle/Q3/Proofs/RouteB/D0RawTransformRowScaling.lean",
       2
     ]
   ],
@@ -20359,6 +20359,26 @@
       "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59RawTransform_row_smul",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0RawTransformRowScaling.lean",
+      "line": 38,
+      "signature": "theorem proposition59RawTransform_row_smul (L : ℝ) (S : Finset ℤ) (xi eta : ℤ → ℂ) (c : ℂ) (hrow : ∀ k ∈ S, xi k = c * eta k) (z : ℂ) : proposition59RawTransform L S xi z = c * proposition59RawTransform L S eta z",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "rawFplus_eq_smul_ccmTransform_of_row",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0RawTransformRowScaling.lean",
+      "line": 62,
+      "signature": "theorem rawFplus_eq_smul_ccmTransform_of_row (D : CoefficientFamily) (i : PairIndex) (N : ℕ) (xi : CCMModeFinite N → ℝ) (c : ℂ) (hset : modeSet i = Finset.Icc (-(N : ℤ)) (N : ℤ)) (hrow : ∀ k ∈ modeSet i, D.kTrial i k = c * proposition59CCMCoefficient N xi k) : ∀ z : ℂ, rawFplus D i z = c * proposition59CCMTransform (logLength i) N xi (-z)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
     },
     {
       "kind": "def",
