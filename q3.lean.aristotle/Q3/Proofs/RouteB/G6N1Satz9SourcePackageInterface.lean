@@ -43,6 +43,14 @@ LEDGER:
   OPENS:  []   -- the inhabitant is SATZ9_FIXED_MODE_SOURCE_DATA_INHABITANT,
                -- already named as the exact missing identity by the verdict;
                -- this file makes it typed, it does not create it
+
+CORRECTION 2026-08-21, from the Codex audit `CODEX_AUDIT_2026-08-21.md`:
+both packages demanded global `Continuous` of the normalized view, repeating a
+hidden strengthening introduced in the receiver. Since the production modes are
+`Icc.indicator` zero extensions that do not vanish at the endpoints, that field
+was not merely stronger than REQ-K asked — it was unsatisfiable by our own
+objects. Both packages now ask for `ContinuousOn` on the closed window, which is
+what the verdict specified and what the shelf supplies.
 -/
 
 /-- Receiver payload: the data on one physical window that the uniqueness
@@ -89,8 +97,12 @@ structure Satz9SourceData (lambda theta : ℝ) where
   even : Function.Even p
   /-- Nonzero centre, which is what makes the normalization legal. -/
   center_ne : p 0 ≠ 0
-  /-- Continuity of the normalized view, needed only to reach the endpoints. -/
-  normalized_continuous : Continuous (centerNormalized p)
+  /-- Continuity of the normalized view ON THE CLOSED WINDOW, needed only to
+  reach the endpoints.  Corrected 2026-08-21 from global `Continuous` after the
+  Codex audit: our production modes are `Icc.indicator` zero extensions and are
+  discontinuous at the endpoints, so the global form was unsatisfiable. -/
+  normalized_continuousOn :
+    ContinuousOn (centerNormalized p) (Icc (-lambda) lambda)
 
 /-- The matching project-side data on the same window and at the same
 separation value.  Stated symmetrically so that neither side is privileged. -/
@@ -104,7 +116,8 @@ structure ProjectModeData (lambda theta : ℝ) where
       (((((2 * Real.pi * lambda * x) ^ 2 : ℝ) : ℂ) - (theta : ℂ)) * f x) x
   even : Function.Even f
   center_ne : f 0 ≠ 0
-  normalized_continuous : Continuous (centerNormalized f)
+  normalized_continuousOn :
+    ContinuousOn (centerNormalized f) (Icc (-lambda) lambda)
 
 /-- **The source bind.**  On the open window the two center-normalized views
 coincide.  No identification of the two functions is assumed anywhere: they
@@ -127,7 +140,7 @@ theorem satz9_source_bind_closed
       (Icc (-lambda) lambda) :=
   centerNormalized_eqOn_closed_of_continuousOn lambda hlambda P.f S.p
     (satz9_source_bind_open hlambda S P)
-    P.normalized_continuous S.normalized_continuous
+    P.normalized_continuousOn S.normalized_continuousOn
 
 /-- The pointwise form: on the closed window the source determines the project
 mode up to its own centre value.  This is the shape the rate floors consume,

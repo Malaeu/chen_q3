@@ -21,7 +21,8 @@ the existence theorem supplies five of the six fields of `Satz9SourceData` and
 says nothing at all about the sixth, the nonzero centre value. That looked like
 an unsourced hypothesis.
 
-It is not a hypothesis. It is a consequence of the other fields:
+It is not a paper hypothesis. It is a consequence of parity, the equation and
+**nontriviality**:
 
 ```
 even                  ⟹  the derivative at the centre vanishes
@@ -34,9 +35,17 @@ so a solution that is not identically zero cannot vanish at the centre. The
 argument uses only parity, the equation, and nontriviality — never a paper
 statement, and never a project object.
 
-Consequence for the seam: the `center_ne` field of `Satz9SourceData` need not be
-sourced. An inhabitant that exhibits a nontrivial even solution gets it for
-free, which is one of the two gaps the card named.
+⚠️ **CORRECTED 2026-08-21 after the Codex audit** (finding
+`SATZ9_SOURCE_NONTRIVIALITY_TYPED_PORT_GAP`). The first version of this note
+said `center_ne` follows from *the other fields of `Satz9SourceData`*. It does
+not: that structure carries no nontriviality field, and the zero function
+satisfies every field it does carry. The word *eigenfunction* means nonzero on
+paper, but paper meaning is not a Lean hypothesis.
+
+So the correct statement of the consequence is narrower: an inhabitant that
+exhibits a **nontrivial** even solution gets `center_ne` for free, and the
+future source-only supplier must carry that nontriviality as a typed witness or
+prove `center_ne` directly.
 
 LEDGER:
   CLOSES: [EVEN_PROLATE_SOLUTION_CENTER_NONVANISHING,

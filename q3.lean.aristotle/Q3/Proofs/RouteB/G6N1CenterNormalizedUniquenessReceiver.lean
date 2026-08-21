@@ -126,21 +126,35 @@ theorem centerNormalized_eqOn_of_sameProlateODE
     (fun x hx => flux_centerNormalized (hfluxg x hx))
     hcenter hderivCenter
 
-/-- **Endpoint extension.**  Continuity on the closed window carries the
-equality from the open window to its endpoints. -/
+/-- **Endpoint extension.**  Continuity ON THE CLOSED WINDOW carries the
+equality from the open window to its endpoints.
+
+⚠️ **CORRECTED 2026-08-21 after the Codex audit** (`CODEX_AUDIT_2026-08-21.md`,
+finding `F72_0B2_GLOBAL_NORMALIZED_CONTINUITY_CONTRACT_GAP`). The first version
+demanded global `Continuous`, while REQ-K specified `ContinuousOn` on the closed
+window and the shelf supplies only that
+(`physicalComplex_continuousOn_closed`).
+
+The audit's point is sharper than a mismatch of strength, and this body
+confirmed it from the source: the production `normalizedPhysicalMode` is an
+`Icc.indicator` zero extension, and the mode does not vanish at the window
+endpoints. So global continuity is not merely a stronger hypothesis, it is
+**false for our own modes**, and the previous theorem — though correctly
+proved — was vacuous exactly where it was meant to be used. The kernel could
+not see this: the implication held, only its antecedent was unreachable. -/
 theorem centerNormalized_eqOn_closed_of_continuousOn
     (lambda : ℝ) (hlambda : 0 < lambda) (f g : ℝ → ℂ)
     (hopen : EqOn (centerNormalized f) (centerNormalized g)
       (Ioo (-lambda) lambda))
-    (hfc : Continuous (centerNormalized f))
-    (hgc : Continuous (centerNormalized g)) :
+    (hfc : ContinuousOn (centerNormalized f) (Icc (-lambda) lambda))
+    (hgc : ContinuousOn (centerNormalized g) (Icc (-lambda) lambda)) :
     EqOn (centerNormalized f) (centerNormalized g) (Icc (-lambda) lambda) := by
   have hne : (-lambda : ℝ) ≠ lambda := by
     intro h; linarith
   have hclosure : closure (Ioo (-lambda) lambda) = Icc (-lambda) lambda :=
     closure_Ioo hne
-  rw [← hclosure]
-  exact hopen.closure hfc hgc
+  exact hopen.of_subset_closure hfc hgc Ioo_subset_Icc_self
+    (by rw [hclosure])
 
 #print axioms centerNormalized
 #print axioms centerNormalized_even

@@ -22,8 +22,13 @@ which states the semantic content to implement:
 > `range a ∩ (−∞, C) = range b ∩ (−∞, C)` and `a j, b j < C` for every `j ≤ R`,
 > then `a j = b j` for every `j ≤ R`.
 
-This is the step that identifies our eigenvalue branch with the book's, and it
-is deliberately abstract: no spheroidal function, no eigenvalue, no parameter
+⚠️ **CORRECTED 2026-08-21 after the Codex audit.** The first version said this
+file identifies our eigenvalue branch with the book's. It does not: the theorem
+is abstract and *assumes* the equality of the low ranges, and supplying that
+equality is precisely what W13.7B and W13.7E still owe. What this file closes is
+the generic ordered-enumeration lock and nothing beyond it.
+
+It is deliberately abstract: no spheroidal function, no eigenvalue, no parameter
 appears. Two strictly increasing sequences whose low parts enumerate the same
 set of reals agree termwise as far as both stay low.
 
