@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import contextlib
 import fcntl
+import json
 import os
 import shutil
 import subprocess
@@ -32,6 +33,23 @@ def _transient_runtime_output(text: str) -> bool:
         all(marker in text for marker in marker_group)
         for marker_group in TRANSIENT_RUNTIME_MARKER_GROUPS
     )
+
+
+def _completed_vsearch_before_napi_finalizer_crash(
+    cmd: list[str], stdout: str, stderr: str
+) -> bool:
+    """Accept a fully emitted JSON result when Bun crashes during finalization."""
+    if "vsearch" not in cmd or not _transient_runtime_output(stderr):
+        return False
+    text = stdout.strip()
+    start, end = text.find("["), text.rfind("]")
+    if start < 0 or end < start:
+        return False
+    try:
+        payload = json.loads(text[start : end + 1])
+    except json.JSONDecodeError:
+        return False
+    return isinstance(payload, list)
 
 
 @contextlib.contextmanager
@@ -95,6 +113,10 @@ def run_qmd(
             continue
         output = (proc.stderr or "").strip() or (proc.stdout or "").strip()
         if proc.returncode == 0:
+            return proc.stdout
+        if _completed_vsearch_before_napi_finalizer_crash(
+            cmd, proc.stdout or "", proc.stderr or ""
+        ):
             return proc.stdout
         last_output = output
         if not (_busy_output(output) or _transient_runtime_output(output)) or attempt >= retries:

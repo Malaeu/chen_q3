@@ -392,6 +392,41 @@ def test_known_bun_napi_finalizer_crash_is_retried(
     assert sleeps == [0.5]
 
 
+def test_complete_vsearch_json_survives_post_output_bun_crash(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    response = SimpleNamespace(
+        returncode=132,
+        stdout=(
+            "Expanding query...\nSearching 3 vector queries...\n"
+            '[{"file":"qmd://q3_docs/live.md"}]\n'
+        ),
+        stderr=(
+            "Attempted to call a non-GC-safe function inside a NAPI finalizer\n"
+            "Bun has crashed"
+        ),
+    )
+    monkeypatch.setattr(qmd_ops.subprocess, "run", lambda *args, **kwargs: response)
+    assert qmd_ops.run_qmd(["qmd", "vsearch", "plant"]) == response.stdout
+
+
+def test_incomplete_vsearch_json_still_fails_closed_after_bun_crash(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    response = SimpleNamespace(
+        returncode=132,
+        stdout='[{"file":"qmd://q3_docs/live.md"}',
+        stderr=(
+            "Attempted to call a non-GC-safe function inside a NAPI finalizer\n"
+            "Bun has crashed"
+        ),
+    )
+    monkeypatch.setattr(qmd_ops.subprocess, "run", lambda *args, **kwargs: response)
+    monkeypatch.setattr(qmd_ops.time, "sleep", lambda _: None)
+    with pytest.raises(RuntimeError, match="Bun has crashed"):
+        qmd_ops.run_qmd(["qmd", "vsearch", "plant"], retries=1)
+
+
 def test_unknown_qmd_failure_remains_fail_closed(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
