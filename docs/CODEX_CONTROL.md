@@ -2,7 +2,7 @@
 
 ```yaml
 CONTROL_ID: Q3_EXECUTOR_CONTROL
-CONTROL_VERSION: 8
+CONTROL_VERSION: 9
 STATUS: ACTIVE
 ROLE: CODEX_EXECUTOR
 BODIES:
@@ -719,6 +719,31 @@ AUTOPILOT_RUNTIME_PHASE_PIN_INVALID
 AUTOPILOT_RUNTIME_SCHEMA_INVALID
 AUTOPILOT_RUNTIME_SOURCE_PIN_INVALID
 AUTOPILOT_UNKNOWN_GOAL_STATUS
+SEMANTIC_QUARANTINE_STATE_INVALID
+SEMANTIC_QUARANTINE_CAP_EXCEEDED
+SEMANTIC_QUARANTINE_ACTIVE
+SEMANTIC_ATTESTATION_INVALID
+HYPOTHESIS_PROVENANCE_INVALID
+CODEX_REQUEST_INVALID
+CODEX_REQUEST_STATE_INVALID
+CODEX_REQUEST_STATE_CAS_CONFLICT
+CODEX_REQUEST_STATE_TRANSITION_INVALID
+CODEX_ANSWER_BINDING_INVALID
+CODEX_REQUEST_FIFO_INVALID
+THREE_BODY_WAKE_EVENT_INVALID
+THREE_BODY_EVENT_LEDGER_INVALID
+DUPLICATE_TRIGGER_DRIFT
+WRITER_LOCK_COLLISION
+WRITER_LOCK_IDENTITY_INVALID
+WRITER_LOCK_STALE_RECOVERY_UNSAFE
+PINNED_SESSION_INVALID
+PINNED_SESSION_LAUNCH_FAILED
+LAUNCH_PIN_DRIFT
+CODEX_AUTONOMY_LEASE_INVALID
+TACTICAL_REPAIR_STATE_INVALID
+TACTICAL_REPAIR_BASELINE_DRIFT
+TACTICAL_REPAIR_BUDGET_EXHAUSTED
+TACTICAL_REPAIR_SURFACE_DRIFT
 ```
 
 Changing semantic behavior requires a control-version increment, strict
@@ -976,3 +1001,173 @@ regenerated file (`SPINE_STATE.json`, `SPINE_VIEW.md`, `META_CORPUS.json`, `TOOL
 
 Before any write, the holder still runs `git pull --rebase`; a clean tree is not proof that the
 other body has been idle.
+
+## 19. Control v9 — three-body lease and semantic quarantine
+
+Control v9 separates permission to write source, permission to push a
+kernel-green commit, and permission to consume its theorem downstream. The
+operative status chain is:
+
+```text
+SOURCE_WRITTEN -> KERNEL_GREEN -> SEMANTICALLY_ADMITTED(scope = ...)
+MAX_KERNEL_GREEN_AWAITING_SEMANTIC_REVIEW = 1
+```
+
+The tracked canonical state is
+`orchestrator/state/SEMANTIC_QUARANTINE.json`. Missing, duplicate-key,
+unknown-field, version-drifted, or noncanonical state fails closed. One
+`SOURCE_WRITTEN` or `KERNEL_GREEN` entry blocks the next mathematical dispatch,
+source-specific close, and status promotion. A `KERNEL_GREEN` theorem may be
+pushed in quarantine but cannot be used by a later theorem or goal until an
+independent Linux semantic receipt admits its exact scope.
+
+### 19.1 Independent semantic admission
+
+Every new or strengthened load-bearing input has a closed
+`HYPOTHESIS_PROVENANCE` tagged union. Its class is exactly one of:
+
+```text
+SOURCE_FIELD
+EXACT_FIT_SUPPLIER
+NEW_OPEN_OBLIGATION
+```
+
+Every variant binds an immutable hypothesis ID, `source_or_supplier`, exact
+type, consumer, and a closed `production_inhabitant_or_plant` object:
+
+```text
+kind = PRODUCTION_INHABITANT | REACHABILITY_PLANT
+path, blob, declaration, exact_type, verifier, scope
+```
+
+Free text is forbidden. The path is canonical repo-relative and its Git blob
+must match that path at the source commit. `EXACT_FIT_SUPPLIER` also binds the
+receipt of the existing `orchestrator/supplier_preflight.py`; no second supplier
+checker is allowed. `NEW_OPEN_OBLIGATION` must occur in the same source record's
+`OPENS`. The canonical provenance digest is SHA-256 over compact UTF-8 JSON with
+sorted object keys, no final newline, entries sorted by unique ASCII hypothesis
+ID, and all strings already in Unicode NFC. Duplicate IDs, unknown fields,
+non-NFC text, malformed inhabitant/plant objects, and path/blob drift fail
+closed.
+
+`KERNEL_GREEN -> SEMANTICALLY_ADMITTED` requires an externally resolved
+`q3_semantic_attestation.v1` receipt issued by the independent Linux semantic
+auditor. The receipt is bound to control version, task path/blob, source
+commit/blob, theorem IDs, admitted scope, terminal consumer, `CLOSES`, `OPENS`,
+normalization, domain, quantifiers, and the complete provenance digest. Codex
+cannot issue or self-resolve this receipt. Inhabitance or reachability is the
+independent auditor's semantic judgement, not a runtime proof: the receipt binds
+the auditor to the complete structured object and provenance digest. A receiver
+without an exact source, supplier, or production inhabitant/plant remains an
+abstract conditional and closes no source-specific node.
+
+### 19.2 Request body, lifecycle, and answer binding
+
+A new `CODEX_REQ` is eligible only for a fatal source/trust defect, six
+registered same-fingerprint no-delta cycles, or the operative review gate
+already authorized by this control. It reuses the existing phase key, blocker
+fingerprint, `PROGRESS_DELTA`, and stall budget. One `OPEN`/`IN_REVIEW` request
+per phase/blocker and one outstanding request per living Codex session are the
+maximum; a same-fingerprint repeat needs a new validated delta.
+
+The immutable request envelope contains the verdict-mandated fields plus one
+exact UTF-8 `REQUEST_PAYLOAD` byte block. `REQUEST_BLOB` is SHA-256 of only that
+payload block, including its final newline; it never hashes bytes containing
+itself. `SOURCE_COMMIT` is the pre-existing mathematical-source pin. The Git
+blob of the complete request and its first-introducing canonical-branch commit
+are derived after commit and live in the mutable state and bound answer.
+
+```text
+CODEX_REQ_<id>.md                 immutable body
+CODEX_REQ_STATE_<id>.yaml        mutable lifecycle CAS object
+CODEX_ANSWER_<id>.md              immutable answer
+
+OPEN -> IN_REVIEW -> ANSWERED
+  `---------------> DROPPED       only before claim
+```
+
+After claim, local resolution is recorded as `RESOLVED_LOCALLY_AFTER_CLAIM` on
+the `IN_REVIEW` state; it is never rewritten to `DROPPED`. Every transition is
+compare-and-swap against the previous state-byte digest under a stable
+`flock`, followed by atomic replacement. A conflict stops both bodies for pull
+and re-evaluation. `REQUEST_SOURCE_COMMIT` in the answer is exactly the state
+object's request-introducing commit, while payload `SOURCE_COMMIT` remains the
+separate mathematical-source pin. The answer also binds request ID, payload
+digest, complete-request Git blob, phase, blocker, verdict path/blob, decision,
+next node, forbiddens, and schema version.
+
+### 19.3 Origin-neutral queue
+
+Priority is safety stop, then an already `IN_REVIEW` transport, then all older
+`OPEN` judge requests, then newly eligible requests. Request origin gives no
+privilege. FIFO — First In, First Out — is the total order of first appearance
+in the canonical branch's first-parent history, followed by canonical path and
+immutable request ID for requests entering in the same commit. A request absent
+from that history fails closed. Linux alone owns batching and judge transport;
+direct Codex-to-Proshka transport remains forbidden.
+
+### 19.4 Pinned at-most-once launcher and writer lock
+
+Production automation uses an exact `CODEX_SESSION_ID`; `resume --last` and
+`pgrep` are forbidden as identity or locking mechanisms. Every wake event binds
+`RUN_ID`, `TRIGGER_NONCE`, `SOURCE_EVENT_COMMIT`, and `ANSWER_BLOB`. Before
+launch, worktree, branch, `HEAD`, task path/blob, phase hash, control version,
+and session ID must match. Drift is a stop, never continue-from-memory.
+
+The durable launch contract is `AT_MOST_ONCE_LAUNCH` under faults and exactly
+one successful run for duplicate fault-free delivery. Event states are
+`RESERVED`, `STARTED`, and `FAILED_BEFORE_LAUNCH`; unseen is absence from the
+ledger. A duplicate run/nonce never creates a second run. A crash before spawn
+records `FAILED_BEFORE_LAUNCH` and requires a new externally authorized nonce.
+
+One stable `flock` is acquired before fork and held for the complete child
+runtime. Its record binds worktree, branch, writer body, PID, Linux process
+start time, boot ID, exact session, task path/blob, phase hash, base head, run,
+and nonce. The child inherits the locked file descriptor, atomically writes a
+`CHILD_READY_TO_EXEC` marker, and completes an exec handoff before the parent
+may persist `STARTED`. Recovery may declare pre-launch failure only after it
+acquires the lock and proves that no matching marker or live PID/start-time/
+boot-ID identity exists. A matching child or inherited lock preserves the
+started run; PID alone never authorizes stale-lock recovery.
+
+### 19.5 Bounded autonomy lease and tactical repair
+
+`CODEX_AUTONOMY_LEASE_V1` is accepted only through an external authority
+resolver and is bound to control version, branch, worktree, writer-lock holder,
+phase hash, current task path/blob, allowed paths, activation commit, explicit
+UTC expiry, and a positive node budget. Phase/task/control/lock change, owner
+revocation, time expiry, or exhausted budget ends it. It cannot authorize
+`PX_RH_CLAIM`, route promotion, main merge, force push, policy/control edits,
+`docs/Codex/CURRENT.md`, paid/destructive/publication actions, or direct judge
+transport. The initial v9 transaction leaves `active_lease: null`.
+
+A tactical repair changes proof body or tactics only. Before attempt one, the
+runtime durably hashes statement, hypotheses, imports, definitions, public
+surface, source object, consumer, and the exact permitted proof-body byte
+ranges. The attempt counter is incremented under the same lock before action;
+post-attempt validation recomputes every protected surface. Attempt two failing
+is an immediate wall. A third attempt is forbidden.
+
+### 19.6 Mandatory plants and activation boundary
+
+The implementation must plant and then cut off all eight named violations.
+`MALFORMED_INHABITANT_OR_PLANT_REPLAY` supplies an otherwise field-bound
+semantic receipt and must still reject a free-text uninhabited antecedent claim
+as malformed provenance; a missing-receipt failure does not satisfy this plant:
+
+```text
+MALFORMED_INHABITANT_OR_PLANT_REPLAY
+KERNEL_GREEN_NOT_SEMANTICALLY_ADMITTED
+WRONG_LAST_SESSION
+DUPLICATE_TRIGGER
+DROP_CLAIM_RACE
+REQUEST_ID_BLOB_DRIFT
+WRITER_LOCK_COLLISION
+OLDER_REQUEST_PRIORITY
+```
+
+Crash-after-spawn, canonical-provenance permutation/duplicate, protected-
+surface mutation, control mutation, state mutation, and tool-manifest mutation
+are supporting fail-closed plants. No mathematical Lean node or active lease
+belongs to this transaction. Lease activation is forbidden until strict Spine,
+session start, the registered targeted suite, and every plant are green.

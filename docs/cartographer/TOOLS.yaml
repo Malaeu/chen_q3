@@ -72,6 +72,11 @@ memory_event_routes:
     run: [goal-run-selector]
     record: Read-only decision; no runtime or database write in AUTOPILOT_000.
 
+  THREE_BODY_CONTROL:
+    condition: Control-v9 quarantine validation, request lifecycle transition, or pinned Codex wake event.
+    run: [three-body-loop]
+    record: Canonical quarantine/event state or request-local CAS state; semantic admission and lease authority remain external.
+
   REGISTERED_CYCLE:
     condition: After one precommitted proof-cycle action has a result and before step-close.
     run: [goal-event-writer]
@@ -189,7 +194,7 @@ tool_families:
   startup_and_control:
     summary: Read-only orientation and physical-state selection.
     front_door: codex-session-start
-    coverage: [specs_docs/session_start.sh, orchestrator/spine.py, "**/routeb_status.py"]
+    coverage: [specs_docs/session_start.sh, orchestrator/spine.py, orchestrator/three_body_loop.py, "**/routeb_status.py"]
     tools:
       - id: codex-session-start
         status: ENABLED
@@ -291,6 +296,23 @@ tool_families:
         authority: PHYSICAL_GOAL_SELECTION_AND_GOAL_RUN_SCHEMA_NOT_PROOF_OR_DISPATCH
         records_to: stdout
         last_verified: 2026-08-13
+
+      - id: three-body-loop
+        status: ENABLED
+        audience: [CODEX, HUMAN]
+        mode: WRITES_CANONICAL
+        path: orchestrator/three_body_loop.py
+        invoke: python3 orchestrator/three_body_loop.py validate
+        alternatives:
+          - python3 orchestrator/three_body_loop.py request-validate <CODEX_REQ.md>
+          - python3 orchestrator/three_body_loop.py launch <pinned-v9-arguments>
+        trigger: Control-v9 validation, request CAS, or one exact pinned wake event.
+        writes: true
+        approval: ACTIVE_CONTROL_V9_TRANSACTION_OR_EXTERNALLY_RESOLVED_BOUNDED_LEASE
+        authority: QUARANTINE_REQUEST_LIFECYCLE_AND_PINNED_LAUNCH_NOT_SEMANTIC_ATTESTATION
+        records_to: [orchestrator/state/SEMANTIC_QUARANTINE.json, CODEX_REQ_STATE_*.yaml, pinned final reply]
+        validation: All eight mandatory control-v9 plants plus crash and mutation plants.
+        last_verified: 2026-08-21
 
   retrieval_and_memory:
     summary: Search accumulated knowledge before external search or object creation.

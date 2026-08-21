@@ -38,6 +38,23 @@ class GoalRuntimePlants(unittest.TestCase):
             + "}}\n",
             encoding="utf-8",
         )
+        quarantine = root / "orchestrator" / "state" / "SEMANTIC_QUARANTINE.json"
+        quarantine.write_text(
+            json.dumps(
+                {
+                    "active_lease": None,
+                    "control_version": 9,
+                    "entries": [],
+                    "event_ledger": [],
+                    "schema": "q3_semantic_quarantine.v1",
+                    "tactical_repairs": [],
+                },
+                indent=2,
+                sort_keys=True,
+            )
+            + "\n",
+            encoding="utf-8",
+        )
 
     @staticmethod
     def _grant(runtime: dict[str, object]) -> dict[str, object]:

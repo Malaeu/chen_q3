@@ -28,7 +28,7 @@ REPO_ROOT = SCRIPT_DIR.parent
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from orchestrator import spine  # noqa: E402
+from orchestrator import spine, three_body_loop  # noqa: E402
 from orchestrator.routeb_goal_state import (  # noqa: E402
     PAUSED_STATUSES,
     STATUS_RE,
@@ -200,6 +200,25 @@ class SelectionDecision:
 
 def _fail(code: str, detail: str = "") -> None:
     raise GoalRuntimeError(code, detail)
+
+
+def _validate_three_body_dispatch(
+    *,
+    repo_root: Path,
+    semantic_attestation_resolver: Callable[[str], dict[str, Any] | None] | None = None,
+    supplier_preflight_resolver: Callable[[str], str | None] | None = None,
+    autonomy_lease_resolver: Callable[[str], dict[str, Any] | None] | None = None,
+) -> None:
+    try:
+        three_body_loop.validate_repository_gate(
+            repo_root=repo_root,
+            require_dispatch_clear=True,
+            semantic_attestation_resolver=semantic_attestation_resolver,
+            supplier_preflight_resolver=supplier_preflight_resolver,
+            autonomy_lease_resolver=autonomy_lease_resolver,
+        )
+    except three_body_loop.ThreeBodyViolation as exc:
+        _fail(exc.code, exc.detail)
 
 
 def _load_mapping(path: Path) -> dict[str, Any]:
@@ -739,6 +758,9 @@ def select_action(
     current_phase_key: dict[str, str] | None = None,
     repo_root: Path = REPO_ROOT,
     proshka_receipt_validator: Callable[[dict[str, Any]], bool] | None = None,
+    semantic_attestation_resolver: Callable[[str], dict[str, Any] | None] | None = None,
+    supplier_preflight_resolver: Callable[[str], str | None] | None = None,
+    autonomy_lease_resolver: Callable[[str], dict[str, Any] | None] | None = None,
 ) -> SelectionDecision:
     expected_bus = repo_root.resolve() / "docs" / "routeB_bus"
     if bus.resolve() != expected_bus:
@@ -766,6 +788,12 @@ def select_action(
                 "AUTOPILOT_CURRENT_PHASE_KEY_DRIFT",
                 "physical goal phase disagrees with canonical CHANNEL_RUNTIME.json",
             )
+        _validate_three_body_dispatch(
+            repo_root=repo_root,
+            semantic_attestation_resolver=semantic_attestation_resolver,
+            supplier_preflight_resolver=supplier_preflight_resolver,
+            autonomy_lease_resolver=autonomy_lease_resolver,
+        )
         return SelectionDecision(
             action="SELECT_EXACT_GOAL",
             selected_goal_id=goal.goal_id,
@@ -803,6 +831,12 @@ def select_action(
             action="PHASE_TRANSITION_REQUIRED",
             mathematical_phase_key_sha256=phase_key_sha256(requested_phase),
         )
+    _validate_three_body_dispatch(
+        repo_root=repo_root,
+        semantic_attestation_resolver=semantic_attestation_resolver,
+        supplier_preflight_resolver=supplier_preflight_resolver,
+        autonomy_lease_resolver=autonomy_lease_resolver,
+    )
     return SelectionDecision(
         action="MINT_READY",
         mathematical_phase_key_sha256=phase_key_sha256(requested_phase),
@@ -920,6 +954,9 @@ def validate_runtime_state(
     *,
     repo_root: Path = REPO_ROOT,
     grant_resolver: Callable[[str], dict[str, Any] | None] | None = None,
+    semantic_attestation_resolver: Callable[[str], dict[str, Any] | None] | None = None,
+    supplier_preflight_resolver: Callable[[str], str | None] | None = None,
+    autonomy_lease_resolver: Callable[[str], dict[str, Any] | None] | None = None,
 ) -> dict[str, Any]:
     """Validate the closed q3_goal_run.v1 crash-recovery record schema."""
     if not isinstance(runtime, dict) or set(runtime) != set(RUNTIME_FIELDS):
@@ -1056,6 +1093,13 @@ def validate_runtime_state(
         validate_matching_answer(goal_path, answer_path, run_match.group("goal_id"))
     elif answer_exists:
         _fail("AUTOPILOT_RUNTIME_ANSWER_STATE_INVALID", f"{state} cannot have matching answer")
+    if action != "STOP":
+        _validate_three_body_dispatch(
+            repo_root=repo_root,
+            semantic_attestation_resolver=semantic_attestation_resolver,
+            supplier_preflight_resolver=supplier_preflight_resolver,
+            autonomy_lease_resolver=autonomy_lease_resolver,
+        )
     return runtime
 
 

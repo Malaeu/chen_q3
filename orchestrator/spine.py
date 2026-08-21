@@ -37,20 +37,31 @@ from pathlib import Path
 import yaml
 
 try:
-    from orchestrator import observability as _observability
     from orchestrator import kb as _kb
+    from orchestrator import observability as _observability
+    from orchestrator import three_body_loop as _three_body_loop
     from scripts.q3_docs_corpus import (
         corpus_snapshot as _q3_docs_corpus_snapshot,
+    )
+    from scripts.q3_docs_corpus import (
         qmd_index_probe as _qmd_index_probe,
+    )
+    from scripts.q3_docs_corpus import (
         semantic_machine_id,
     )
 except ModuleNotFoundError:  # direct `python3 orchestrator/spine.py`
-    import observability as _observability
     import kb as _kb
+    import observability as _observability
+    import three_body_loop as _three_body_loop
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
     from scripts.q3_docs_corpus import (
         corpus_snapshot as _q3_docs_corpus_snapshot,
+    )
+    from scripts.q3_docs_corpus import (
         qmd_index_probe as _qmd_index_probe,
+    )
+    from scripts.q3_docs_corpus import (
         semantic_machine_id,
     )
 
@@ -74,6 +85,7 @@ OBSERVABILITY_DB = (
 COGNITIVE_OPERATOR_REGISTRY = REPO / "q3.lean.aristotle" / "COGNITIVE_OPERATORS.md"
 TOOL_MANIFEST = REPO / "docs" / "cartographer" / "TOOLS.yaml"
 CURRENT_CODEX_TASK = REPO / "docs" / "Codex" / "CURRENT.md"
+SEMANTIC_QUARANTINE = REPO / "orchestrator" / "state" / "SEMANTIC_QUARANTINE.json"
 
 PHASE_KEY_FIELDS = (
     "route_id",
@@ -661,7 +673,7 @@ def _validate_active_control() -> None:
     text = CONTROL.read_text(encoding="utf-8")
     required = (
         "CONTROL_ID: Q3_EXECUTOR_CONTROL",
-        "CONTROL_VERSION: 8",
+        "CONTROL_VERSION: 9",
         "STATUS: ACTIVE",
         "ROLE: CODEX_EXECUTOR",
         "BODIES:\n  - CODEX_MAC\n  - CODEX_LINUX",
@@ -688,6 +700,12 @@ def _validate_active_control() -> None:
         "SEMANTIC_INDEX_LOCAL_RECEIPT_INVALID",
         "AUTOPSY: dropped=<AUTOPSY_TAG_V1>",
         "fresh_chats_opened <= phases_opened + forced_rollovers",
+        "SOURCE_WRITTEN -> KERNEL_GREEN -> SEMANTICALLY_ADMITTED",
+        "MAX_KERNEL_GREEN_AWAITING_SEMANTIC_REVIEW = 1",
+        "HYPOTHESIS_PROVENANCE",
+        "CODEX_AUTONOMY_LEASE_V1",
+        "AT_MOST_ONCE_LAUNCH",
+        "CHILD_READY_TO_EXEC",
     )
     missing = [token for token in required if token not in text]
     if missing:
@@ -950,6 +968,14 @@ def validate_p9a() -> dict[str, object]:
     cognitive_operators = validate_cognitive_operator_registry()
     tool_manifest = validate_tool_manifest()
     current_task = validate_current_codex_task()
+    try:
+        three_body = _three_body_loop.validate_repository_gate(
+            repo_root=REPO,
+            state_path=SEMANTIC_QUARANTINE,
+            require_dispatch_clear=True,
+        )
+    except _three_body_loop.ThreeBodyViolation as exc:
+        _fail(exc.code, exc.detail)
     return {
         "control": "ACTIVE",
         "authority": runtime["mathematical_authority_mode"],
@@ -958,6 +984,11 @@ def validate_p9a() -> dict[str, object]:
         "cognitive_operators": cognitive_operators,
         "tool_manifest": tool_manifest,
         "current_task": current_task,
+        "three_body": {
+            "schema": three_body["schema"],
+            "pending": len(three_body["entries"]),
+            "active_lease": three_body["active_lease"] is not None,
+        },
     }
 
 SOURCES = {
