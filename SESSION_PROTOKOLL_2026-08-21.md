@@ -148,3 +148,162 @@ k=5, γ≈43.98:  ветвь n=8 на −1187
 
 Вердикты дня — в `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/proshka/`,
 файлы `PROSHKA_VERDICT_REQ_2026_08_2*_{K,L,M,N}_*.md`.
+
+---
+
+# Вторая половина дня 21-го — три тела, контроль v9, и стена сведена к одному обитателю
+
+*Дописано вечером того же дня. Протокол выше описывал утро и остаётся верным;
+здесь продолжение, а не правка.*
+
+## Ausgangslage (что было к полудню)
+
+Аудит Codex нашёл пять семантических расхождений в узлах, написанных этим телом
+за двое суток. Одно несущее: приёмник требовал глобальную `Continuous`, а наши
+моды суть `Icc.indicator` нуль-продолжения с ненулевым значением на конце —
+значит гипотеза не сильнее, а **ложна**, и продление на концы было доказано
+верно и пусто. Ядро видеть не могло: импликация верна, посылка недостижима.
+Починено в `d5b28a09`.
+
+## Aufgabe
+
+Владелец: завести контур из трёх тел, чтобы Codex не приходилось погонять
+руками. Затем — вернуться к математике.
+
+## Erledigt
+
+### Контроль v9 — транзакция Codex, `d92960a0`
+
+3270 строк: `orchestrator/three_body_loop.py` (1966), восемь обязательных
+растений, `SEMANTIC_QUARANTINE.json`, проводка в `spine.py` и `goal_runtime.py`.
+`AGENTS.md` не тронут, Lean-файлов ноль, `CONTROL_VERSION: 8 -> 9`.
+
+Смысловое ядро одной фразой:
+
+```
+право запушить source и право считать утверждение закрытым — РАЗНЫЕ права
+```
+
+Три статуса `SOURCE_WRITTEN -> KERNEL_GREEN -> SEMANTICALLY_ADMITTED`, потолок
+карантина один ожидающий узел, приёмку выдаёт внешняя квитанция, которую
+исполнитель выписать не может.
+
+### Два математических узла, `41ddb5c0`
+
+Написаны этим телом по прямому поручению владельца, потому что Codex простаивал
+три часа без будильника.
+
+```
+W13.7B  G6N1BookRegularSpectrumSourceInterface.lean   blob a23e9e10
+W13.7E  G6N1SelectedThetaEqualityDegreeZeroFour.lean  blob 3cc25480
+```
+
+Ключевое в W13.7B: две стрелки равенства несут **разные поля структуры**, поэтому
+происхождение живёт в терме доказательства, а не в комментарии. Структура —
+типизированная дыра, не аксиома.
+
+Ключевое в W13.7E: проектная нумерация входит **гипотезой**. Построенной у нас
+нет, и совать непостроенный объект в узел, объявленный закрытым, нельзя.
+
+## Geprüft
+
+```
+lake env lean   0   оба файла
+lake build      0   7752 задачи
+q3_check        0
+sorryAx         0
+аксиомы         [propext, Classical.choice, Quot.sound]
+spine --strict  0
+session_start   0
+```
+
+Независимый аудит транзакции Codex прогнан этим телом с диска, не по его словам:
+границы чисты, версия 8->9, восемь растений на месте, 19 тестов контроля и 228
+полного набора — цифры совпали.
+
+## Найденное аудитом — CRITICAL, найдено ДО пуша
+
+Растение `UNINHABITED_ANTECEDENT_REPLAY` было **тавтологично**: падало на
+отсутствии квитанции, а не на необитаемой посылке. Проверено опытом — запись с
+полем `production_inhabitant_or_plant` равным строке
+`"UNINHABITED: Icc.indicator has nonzero endpoint value"` **принималась** в
+`admitted_scope: ["production"]` при корректной квитанции.
+
+Причина: обещанная в первом ревью структурная привязка обитателя не была
+реализована; поле осталось свободной строкой.
+
+Починено: поле стало закрытым объектом, путь и блоб проверяются в git, проза
+отвергается, растение переименовано в `MALFORMED_INHABITANT_OR_PLANT_REPLAY`, а
+запрет на прежнюю тавтологию записан **нормативно** в `CODEX_CONTROL.md:1154`.
+
+## Опровержение собственного прогноза
+
+Судья зарегистрировал `P_M_NEXT_1` при 0.86: точный интерфейс DLMF подтвердит
+**исчерпывающий** набор решений. Не подтвердил. Сбылся отдельно
+зарегистрированный запасной исход. Я записал это как «прогноз сбылся» — то есть
+починил журнал прогнозов задним числом, что запрещено явно.
+
+Исправлено в `edfedf0d`. Заголовок ложного запроса **оставлен как есть** с
+опровержением рядом: журнал прогнозов ценен ровно теми записями, где мы
+ошиблись.
+
+Codex ту же дисциплину удержал сам: записал `P_O_1: FALSIFIED in its original
+form` без напоминания.
+
+## Versendet
+
+Судье: `REQ-2026-08-21-O` (ревизия гранта). Ответ — `72db5052`.
+Припарковано и **не отправлено**: `REQ-2026-08-21-P`, два пункта —
+замена `exactly-once` на at-most-once и ратификация переименования растения.
+
+## Offen — nächste Schritte
+
+1. **Обитатель `BookRegularEvenSpectrum`** — единственное оставшееся несущее.
+   Четыре поля, записан в `OPENS` как `MEIXNER_SCHAEFKE_SATZ_1_TYPED_SUPPLIER`.
+2. **Приёмка двух узлов.** Оба стоят `KERNEL_GREEN`. Квитанцию себе не
+   выписывал: автор не может быть независимым аудитором.
+3. **Аренда `CODEX_AUTONOMY_LEASE_V1` неактивна.** Растения зелёные, значит
+   активация возможна — решение владельца.
+4. **Батч REQ-P** ждёт третьего вопроса или команды владельца.
+5. **77 объявлений вне каталога `capability`** — долг, не дефект.
+6. **Codex спит и удалённо не будится** (см. ниже).
+
+## Wichtige Fakten — что сломалось и как это чинить
+
+```
+pgrep -f "codex --yolo"      ЛОВИТ САМ СЕБЯ: своя же команда содержит строку.
+                             Врал весь день. Проверять по comm, не по args.
+codex exec без -o FILE       Вывод теряется при обрыве: интерфейс сворачивает
+                             его в "… +N lines", в pty-лог он НЕ попадает.
+codex exec --ephemeral       rollout не сохраняет; codex resume вернёт
+                             "no rollout found". Это НЕ поломка.
+codex queue                  Кладёт сообщение, но простаивающий интерактивный
+                             терминал очередь НЕ читает — её разбирает
+                             app-server-демон, которому нужна standalone-
+                             установка (curl chatgpt.com/codex/install.sh).
+codex remote-control         Есть в CLI 0.149.0 (start/stop/pair), ходит через
+                             unix-сокет. Официальная настройка идёт через
+                             десктопное приложение ChatGPT — под Linux его нет.
+после мигратора и .lean      ОБЯЗАТЕЛЬНО spine.py --refresh И
+                             docs/cartographer/inventory.py, иначе стартовый
+                             гейт красный у следующего тела.
+q3_check ловит "admit"       Слово admits в доккомменте роняет гейт: admit есть
+                             тактика, закрывающая цель как sorry.
+script -qf                   Пишет в /tmp/.ghostty_log_* ВСЁ, что прошло через
+                             pty. Так восстановлен потерянный план A-L.
+                             Свёрнутое интерфейсом туда не попадает.
+```
+
+## Dateien (абсолютные пути, добавленные вечером)
+
+```
+/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/q3.lean.aristotle/Q3/Proofs/RouteB/G6N1BookRegularSpectrumSourceInterface.lean
+/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedThetaEqualityDegreeZeroFour.lean
+/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/orchestrator/three_body_loop.py
+/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/orchestrator/tests/test_three_body_loop.py
+/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/orchestrator/state/SEMANTIC_QUARANTINE.json
+/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/Codex/TASK_2026-08-21_codex_control_v9_three_body_lease_and_semantic_quarantine.md
+/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/Codex/TASK_2026-08-21_w13_7b_source_interface_and_w13_7e_theta_equality.md
+/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/THREE_BODY_LOOP_DESIGN.md   (НЕ политика, см. шапку)
+/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/proshka/PROSHKA_VERDICT_REQ_2026_08_21_O_CODEX_GRANT_THREE_BODY_LOOP_2026-08-21.md
+```
