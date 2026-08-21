@@ -109,6 +109,33 @@ defining the book branch as our carrier   C10 surrogate kill
 one citation covering both inclusions     C04 same-coordinates-two-laws kill
 ```
 
+## Control v9 is now active — this changes what closing a node means
+
+Landed 2026-08-21 in `d92960a0`, after this task was written. Three consequences
+here, none optional:
+
+```
+SOURCE_WRITTEN -> KERNEL_GREEN -> SEMANTICALLY_ADMITTED
+MAX_KERNEL_GREEN_AWAITING_SEMANTIC_REVIEW = 1
+```
+
+A green kernel no longer closes a node. It reaches `KERNEL_GREEN` and stays
+quarantined until the independent Linux auditor issues a
+`q3_semantic_attestation.v1` receipt, which you cannot issue yourself. Until it
+lands: no second theorem on the first, no gap marked closed, no next node.
+
+So **W13.7B and W13.7E go one at a time**, not as a pair.
+
+Every new load-bearing hypothesis needs a `HYPOTHESIS_PROVENANCE` row, and
+`production_inhabitant_or_plant` is a closed object — `kind`, `path`, `blob`,
+`declaration`, `exact_type`, `verifier`, `scope`. Free text is refused. That
+rule is in your own transaction because the first plant accepted an entry whose
+provenance said the hypothesis was uninhabited.
+
+The book's exhaustiveness enters as `NEW_OPEN_OBLIGATION` and must appear
+verbatim in `OPENS`. `EXACT_FIT_SUPPLIER` rows go through the existing
+`scripts/supplier_preflight.py`.
+
 ## Gate
 
 Standard: `lake env lean` on the file, `lake build`, `scripts/q3_check.sh`,
