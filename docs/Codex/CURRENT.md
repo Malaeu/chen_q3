@@ -3,10 +3,10 @@
 ```yaml
 schema: q3_codex_current_task.v1
 status: ACTIVE
-task_file: docs/Codex/TASK_2026-08-14_goal058_g3_prolate_rate_floor.md
-source_commit: c30f21d6fa366f72ea086bb40e4b2a1d32ffebde
-updated_at: 2026-08-14T23:19:02+02:00
-updated_by: CODEX
+task_file: docs/Codex/TASK_2026-08-21_independent_audit_of_ten_linux_nodes.md
+source_commit: b30b67472f7ec8273471e74b33ce6286e99eaa02
+updated_at: 2026-08-21T00:00:00+02:00
+updated_by: CLAUDE_CODE_ON_OWNER_INSTRUCTION
 ```
 
 This is the single owner-controlled repository pointer for work that Codex must
