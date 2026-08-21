@@ -51768,3 +51768,46 @@ legacy_sha256: 629787f3cbbcba68b9dfecdf02262c04ac0e8b2ec7ddcf0b7c889f9caeb33cd9
 writer: python3 orchestrator/goal_events.py record-insight --payload <closed-json>
 manual_text_after_boundary: forbidden
 -->
+
+## Insight (2026-08-21, G5_CRITICAL_MOMENT) — the critical-moment ratio is exactly a uniform leakage bound
+
+- Insight ID: `INSIGHT_G5_CRITICAL_MOMENT_RATIO_IS_A_LEAKAGE_BOUND_2026_08_21`
+- Target: G5_CRITICAL_MOMENT:1 — uniform-in-k moment budget
+- Summary: The already proved factorization centeredCriticalMoment = centeredMomentLeakage * norm(rawFplus 0), together with the strictly positive denominator at every central index, makes the guarded contract CenteredTrialCriticalMomentRatio and a bare uniform bound on the leakage quotient the SAME statement. The denominator cancels in both directions. Consequence for the route: SelectedCentralFloor is NOT an input to this target, so the still-open hole SelectedAnchorRatioData that reduces to it is off this critical path. OBSERVED ON PAPER, NOT VERIFIED IN LEAN: the quotient is scale-free in the coefficient row, since numerator and denominator both carry one factor of the row, so only the c_0-normalized ratios c_n/c_0 matter; and the crude bound (sup norm of the trig sum times the maximal weight) fails because L_m = log m and the window is [-L/2, L/2], so the edge weight is exp(sigma * L/2) = m^(sigma/2), which grows. Closing the target therefore requires the normalized row to decay against m^(sigma/2); it does not require any lower floor on the anchor.
+- Validation: Kernel: lake env lean 0, lake build 0 (7757 jobs), q3_check 0, no sorryAx, axioms exactly [propext, Classical.choice, Quot.sound]. The equivalence is proved; the paper observation about the m^(sigma/2) edge weight is not.
+- Boundary: This is a restatement. It proves no estimate, removes no analytic difficulty, and must not be read as progress on the bound. It does not claim SelectedRawLocallyBounded, a nonzero cluster, SlotS1, G5 closure, route promotion, RH, or any Bus 010 goal. The strict boundary sigma < 1/2 is retained.
+- Next target: Decide whether the c_0-normalized coefficient row can be bounded against m^(sigma/2) on the cofinal path, or whether the window must be truncated before the edge weight is taken.
+- Provenance:
+  - `q3.lean.aristotle/Q3/Proofs/RouteB/D0CenteredMomentRatioLeakageEquivalence.lean` · `centeredTrialCriticalMomentRatio_iff_uniform_leakage` · role `new_source` · SHA-256 `f354a1c28f222889bd7b05e191381e502d06880f588c692143ca59eb1eb7b252`
+  - `q3.lean.aristotle/Q3/Proofs/RouteB/D0CenteredCriticalMoment.lean` · `centeredCriticalMoment_eq_leakage_mul_denominator` · role `consumed_source` · SHA-256 `9a7f29e4400e60891fa5d8d7d7657909275a6b4d4c17e277da615c785aa68d05`
+
+```json q3_goal_insight
+{
+  "boundary": "This is a restatement. It proves no estimate, removes no analytic difficulty, and must not be read as progress on the bound. It does not claim SelectedRawLocallyBounded, a nonzero cluster, SlotS1, G5 closure, route promotion, RH, or any Bus 010 goal. The strict boundary sigma < 1/2 is retained.",
+  "insight_id": "INSIGHT_G5_CRITICAL_MOMENT_RATIO_IS_A_LEAKAGE_BOUND_2026_08_21",
+  "next_target": "Decide whether the c_0-normalized coefficient row can be bounded against m^(sigma/2) on the cofinal path, or whether the window must be truncated before the edge weight is taken.",
+  "payload_sha256": "310bd3b82a94c7ff64346d1d436aa8f32d34713cdbc4fba9a7b8b302465bdc59",
+  "recorded_date": "2026-08-21",
+  "schema": "q3_goal_insight.v1",
+  "semantic_sha256": "bbe8016ccca491d6d96a649f368a40c7fa2777f8387415a57ff777c5711a6b1b",
+  "source_provenance": [
+    {
+      "locator": "centeredTrialCriticalMomentRatio_iff_uniform_leakage",
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0CenteredMomentRatioLeakageEquivalence.lean",
+      "role": "new_source",
+      "sha256": "f354a1c28f222889bd7b05e191381e502d06880f588c692143ca59eb1eb7b252"
+    },
+    {
+      "locator": "centeredCriticalMoment_eq_leakage_mul_denominator",
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0CenteredCriticalMoment.lean",
+      "role": "consumed_source",
+      "sha256": "9a7f29e4400e60891fa5d8d7d7657909275a6b4d4c17e277da615c785aa68d05"
+    }
+  ],
+  "summary": "The already proved factorization centeredCriticalMoment = centeredMomentLeakage * norm(rawFplus 0), together with the strictly positive denominator at every central index, makes the guarded contract CenteredTrialCriticalMomentRatio and a bare uniform bound on the leakage quotient the SAME statement. The denominator cancels in both directions. Consequence for the route: SelectedCentralFloor is NOT an input to this target, so the still-open hole SelectedAnchorRatioData that reduces to it is off this critical path. OBSERVED ON PAPER, NOT VERIFIED IN LEAN: the quotient is scale-free in the coefficient row, since numerator and denominator both carry one factor of the row, so only the c_0-normalized ratios c_n/c_0 matter; and the crude bound (sup norm of the trig sum times the maximal weight) fails because L_m = log m and the window is [-L/2, L/2], so the edge weight is exp(sigma * L/2) = m^(sigma/2), which grows. Closing the target therefore requires the normalized row to decay against m^(sigma/2); it does not require any lower floor on the anchor.",
+  "target": "G5_CRITICAL_MOMENT:1 — uniform-in-k moment budget",
+  "title": "the critical-moment ratio is exactly a uniform leakage bound",
+  "validation": "Kernel: lake env lean 0, lake build 0 (7757 jobs), q3_check 0, no sorryAx, axioms exactly [propext, Classical.choice, Quot.sound]. The equivalence is proved; the paper observation about the m^(sigma/2) edge weight is not.",
+  "workstream": "G5_CRITICAL_MOMENT"
+}
+```
