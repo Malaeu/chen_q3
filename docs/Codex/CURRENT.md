@@ -3,9 +3,9 @@
 ```yaml
 schema: q3_codex_current_task.v1
 status: ACTIVE
-task_file: docs/Codex/TASK_2026-08-21_codex_control_v9_three_body_lease_and_semantic_quarantine.md
-source_commit: a5a65911ba6c681d4cd5d4da2d1bd3b34ca96820
-updated_at: 2026-08-21T21:00:00+02:00
+task_file: docs/Codex/TASK_2026-08-21_w13_7b_source_interface_and_w13_7e_theta_equality.md
+source_commit: 694add07471abbe30fc9d997f412fd16745d79dc
+updated_at: 2026-08-21T16:40:00+02:00
 updated_by: CLAUDE_CODE_ON_OWNER_INSTRUCTION
 ```
 
