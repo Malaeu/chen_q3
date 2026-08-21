@@ -51811,3 +51811,39 @@ manual_text_after_boundary: forbidden
   "workstream": "G5_CRITICAL_MOMENT"
 }
 ```
+
+## Insight (2026-08-21, KNOWLEDGE_BASE) — the kill ledger has seven recurring defect classes and two of them are mechanically checkable
+
+- Insight ID: `INSIGHT_KILL_LEDGER_DEFECT_CLASSES_AND_THEIR_DISCRIMINATORS_2026_08_21`
+- Target: traverse the kill ledger for recurring defect classes rather than for individual proof ideas
+- Summary: 179 ledger rows, 145 carrying an explicit forbidden-future-move. Keyword classification over forbidden move plus reason places 67 of the 145 into seven classes; 78 remain unclassified and are not forced. Counts: 28 carrier-or-domain confusion (which structure is actually on the object: form domain versus operator domain versus carrier definition, and the plain product norm versus PiLp 2); 20 finite passed off as uniform or cofinal (one cell, one N, a numerical rank, a finite ladder used as a cofinal supplier); 11 renaming presented as proof (a wrapper whose only effect is to rename an open input, a tautological alias); 8 obligation hidden inside a premise, a structure field, or a definition; 5 a total or average quantity read as a local one; 5 a scalar or normalisation fitted rather than derived; 3 a gate declared passed before its receipt. The two largest classes have mechanical discriminators and therefore do not need judgement to catch. Class one is caught by requiring a production inhabitant or a reachability plant for every load-bearing hypothesis, which is exactly the production_inhabitant_or_plant field that control v9 introduced on 2026-08-21; the largest class in the ledger is the class that field checks. Class two is caught by reading quantifier order: a constant that must be uniform has to sit outside the quantifier over the cofinal index, and a statement where it sits inside is finite by construction. Class three is caught by comparing proof-term dependencies: a declaration that only renames depends on nothing the original did not.
+- Validation: Counts produced by keyword match over the forbidden_future_move and reason columns of the kill table; they are a measurement of the recorded text, not an adjudication of the underlying mathematics. Overlap between classes is possible and the union is reported as 67 distinct rows. Two of today's own defects land in classes one and five and were caught by reading, not by machinery.
+- Boundary: This is a classification of what we already wrote down. It proposes no proof, closes no node, and must not be read as evidence that the unclassified 78 contain nothing. It does not claim the discriminators would have caught the historical instances, only that they are checkable without judgement.
+- Next target: Decide whether the quantifier-order check for class two can be made a mechanical gate the way the inhabitant check already is, or whether it needs a reader.
+- Provenance:
+  - `q3.lean.aristotle/aristotle_db/knowledge.db` · `kill table, 179 rows` · role `consumed_source` · SHA-256 `b42aba8519f892f5e7762514ea8e52c742fc0b312306f900d6d3b6f3831792c5`
+
+```json q3_goal_insight
+{
+  "boundary": "This is a classification of what we already wrote down. It proposes no proof, closes no node, and must not be read as evidence that the unclassified 78 contain nothing. It does not claim the discriminators would have caught the historical instances, only that they are checkable without judgement.",
+  "insight_id": "INSIGHT_KILL_LEDGER_DEFECT_CLASSES_AND_THEIR_DISCRIMINATORS_2026_08_21",
+  "next_target": "Decide whether the quantifier-order check for class two can be made a mechanical gate the way the inhabitant check already is, or whether it needs a reader.",
+  "payload_sha256": "e9b35550e8c7dc2aff45b97b666a49ff63e889b3854426ec17427d27f20da159",
+  "recorded_date": "2026-08-21",
+  "schema": "q3_goal_insight.v1",
+  "semantic_sha256": "af398b5b0388cdb31b422cad71a0baf0bfd0e84c66b3d2ca887bfff665a3de83",
+  "source_provenance": [
+    {
+      "locator": "kill table, 179 rows",
+      "path": "q3.lean.aristotle/aristotle_db/knowledge.db",
+      "role": "consumed_source",
+      "sha256": "b42aba8519f892f5e7762514ea8e52c742fc0b312306f900d6d3b6f3831792c5"
+    }
+  ],
+  "summary": "179 ledger rows, 145 carrying an explicit forbidden-future-move. Keyword classification over forbidden move plus reason places 67 of the 145 into seven classes; 78 remain unclassified and are not forced. Counts: 28 carrier-or-domain confusion (which structure is actually on the object: form domain versus operator domain versus carrier definition, and the plain product norm versus PiLp 2); 20 finite passed off as uniform or cofinal (one cell, one N, a numerical rank, a finite ladder used as a cofinal supplier); 11 renaming presented as proof (a wrapper whose only effect is to rename an open input, a tautological alias); 8 obligation hidden inside a premise, a structure field, or a definition; 5 a total or average quantity read as a local one; 5 a scalar or normalisation fitted rather than derived; 3 a gate declared passed before its receipt. The two largest classes have mechanical discriminators and therefore do not need judgement to catch. Class one is caught by requiring a production inhabitant or a reachability plant for every load-bearing hypothesis, which is exactly the production_inhabitant_or_plant field that control v9 introduced on 2026-08-21; the largest class in the ledger is the class that field checks. Class two is caught by reading quantifier order: a constant that must be uniform has to sit outside the quantifier over the cofinal index, and a statement where it sits inside is finite by construction. Class three is caught by comparing proof-term dependencies: a declaration that only renames depends on nothing the original did not.",
+  "target": "traverse the kill ledger for recurring defect classes rather than for individual proof ideas",
+  "title": "the kill ledger has seven recurring defect classes and two of them are mechanically checkable",
+  "validation": "Counts produced by keyword match over the forbidden_future_move and reason columns of the kill table; they are a measurement of the recorded text, not an adjudication of the underlying mathematics. Overlap between classes is possible and the union is reported as 67 distinct rows. Two of today's own defects land in classes one and five and were caught by reading, not by machinery.",
+  "workstream": "KNOWLEDGE_BASE"
+}
+```
