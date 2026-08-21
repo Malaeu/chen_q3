@@ -755,9 +755,22 @@ git rev-parse --abbrev-ref HEAD
 
 Message format, mandatory:
 
-- Linux: `[Linux][<branch>] Message`
+- Linux, Codex body: `[Linux-Codex][<branch>] Message`
+- Linux, Claude body: `[Linux-Claude][<branch>] Message`
 - macOS: `[MacOS][<branch>] Message`
-- optional workflow tag after the OS+branch prefix: `[Linux][<branch>][Docs] …`
+- the judge signs `[Proshka][<branch>] Message`
+- optional workflow tag after the body+branch prefix: `[Linux-Codex][<branch>][Docs] …`
+
+The first tag names the **body**, not the model version. Models change and roles
+do not; a prefix carrying a version number starts lying the moment the version
+moves. Which model wrote a source belongs in its SOURCE RECORD and gate
+artifact, beside the receipts, where it is load-bearing.
+
+Reason for the split, recorded 2026-08-21 by owner decision: the previous
+scheme keyed on the operating system, from a time when one body sat on one
+machine. Two bodies now share the Linux box, and a commit of one became
+indistinguishable from a commit of the other. The git author field does not
+help — every body commits as the owner.
 
 The second tag is always the git branch, never a sandbox name. When the axiom count changes,
 state it: `(7->6 axioms)`. After committing: `git pull --rebase`, then `git push`.
