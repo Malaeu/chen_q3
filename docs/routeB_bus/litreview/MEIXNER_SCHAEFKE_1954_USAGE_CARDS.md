@@ -355,3 +355,72 @@ DLMF 30.3.5's split degree `s = 2(K−1)` is **not** the source degree `n`. The
 verdict lists `W13_7_SPLIT_DEGREE_CONFUSED_WITH_MODE_DEGREE` as a failure code.
 Our selected ordinals are `j ∈ {0,2}`, the source degrees are `n = 2j ∈ {0,4}`,
 and `K` is a truncation parameter belonging to neither.
+
+---
+
+## DLMF §30.3 checked against the book — the exhaustiveness contract comes from the BOOK, not from DLMF
+
+The judge's REQ-M verdict set the decisive test as the literal quantifiers of
+DLMF 30.3.5, and registered a prediction at probability 0.86 that the first
+failure would be "source theorem recorded only as one-way *these are
+solutions*". **That prediction is confirmed.**
+
+### What DLMF says (fetched from dlmf.nist.gov/30.3, 2026-08-21)
+
+```
+"has the solutions λ = λ_{m+2j}^m(γ²), j = 0,1,2,…"
+```
+
+`has the solutions` — one-way. No claim that these are the only solutions of
+the even characteristic equation. DLMF 30.3.7 is presented as an alternative
+coefficient form "we can also use", without a separate normalization contract.
+
+⚠️ CONFIDENCE: this reading came from a fetch of the page, not from this body
+reading the rendered page itself, and an absence-of-claim is weaker evidence
+than a quoted claim. Treat "DLMF states no exhaustiveness" as a strong
+indication, not as verified. Re-check against the rendered page before it
+becomes a premise.
+
+What DLMF does supply, and it is useful:
+
+```
+30.3.1   λ_m^m < λ_{m+1}^m < λ_{m+2}^m < ⋯          strict ordering
+         λ_n^m(0) = n(n+1)                          the same branch label
+         −1 < dλ_n^m/d(γ²) < 0                      the same monotonicity
+         eigenvalues are analytic functions
+```
+
+but **no explicit statement of simplicity or reality** beyond what the ordering
+implies.
+
+### What the book supplies that DLMF does not
+
+Meixner–Schäfke §3.22 Satz 1, printed p. 235, carded above, gives both of the
+missing pieces in one sentence each:
+
+```
+exhaustiveness   "DIE reellen Eigenwertpaare … liegen auf … Kurven λ_n^m(γ²)"
+simplicity+real  "Diese Eigenwerte sind sämtlich reell und einfach."
+```
+
+The definite plural is the exhaustiveness contract, and simplicity is what the
+center-normalized receiver consumes.
+
+### Consequence for W13.7B
+
+The decisive test **fails on DLMF and passes on the book**. The verdict's
+FAIL/AMBIGUOUS branch says to use the runner-up characterization from DLMF
+30.3(i) and 30.4.1–30.4.5 plus completeness theory, explicitly warning not to
+drift into project branch continuation. There may now be a cheaper third way:
+source the exhaustiveness contract from Meixner–Schäfke directly, since the
+book is what DLMF cites and it states plainly what DLMF only implies.
+
+That is an adjudication, not a decision this body takes. Filed to the judge as
+REQ-2026-08-21-N.
+
+### Note on the fetched page
+
+The fetched text carried invisible codepoints `U+2061` (function application)
+and `U+2062` (invisible times). These are ordinary MathML operators in DLMF's
+markup, not hidden instructions; recorded because a security guard flagged them
+and the next reader should not be alarmed by the same thing.
