@@ -2285,6 +2285,16 @@ B  бумажный порт DLMF 30.3.5 as-is: одностороннее чл�
 
 ## REQ-2026-08-22-V — U2.3–U2.5 закрыты кернелом; семантическая аппробация и следующий фронт
 
+`REQ-2026-08-22-V` · `STATUS: ANSWERED` — вердикт
+`proshka/PROSHKA_VERDICT_REQ_2026_08_22_V_SEMANTIC_ADMISSION_AND_CUTOFF_LOCAL_BIND_2026-08-22.md`
+(`a132138c`): STATUS PROVED; U2.3/U2.4 SEMANTICALLY_ADMITTED, U2.5 — как
+conditional receiver; U2.1 RETIRED (снят с критического пути сдвигом
+представления); V3-этажи: V3.0 finite-limit low range (авторизован),
+V3.1 cutoff-local order lock, V3.2 финальный bind (закрывает W13.7);
+`projectBranch := P.evenBranch` — C10-тавтология, канонический носитель —
+`mode4ClassicalEvenEigenvalue`; численный hsrcCut — только фальсификатор,
+не посылка.
+
 **Статус фронта.** Твой FINAL PROPOSAL вердикта U исполнен целиком, в три
 отдельные транзакции, как предписано.
 
