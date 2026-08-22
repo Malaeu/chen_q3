@@ -29,6 +29,7 @@ first exact missing lemma is stated at the bottom as the remaining obligation.
 -/
 
 open Set
+open scoped NNReal
 
 noncomputable section
 
@@ -458,6 +459,8 @@ theorem hmGap_pos {u : ℕ → ℝ} (hu : ∀ j, |u j| ≤ 1 / 2)
 /-- The weights cancel exactly. -/
 theorem hmWeight_cancel (d : ℕ) : specRho ^ d * (1 / specRho) ^ d = 1 := by
   rw [one_div, inv_pow, mul_inv_cancel₀ (pow_ne_zero _ specRho_pos.ne')]
+theorem hmWeight_cancel_comm (d : ℕ) : (1 / specRho) ^ d * specRho ^ d = 1 := by
+  rw [mul_comm]; exact hmWeight_cancel d
 
 /-- **Self-map.**  On the half-ball, under the threshold, the map lands in the
 quarter-ball. -/
@@ -594,6 +597,132 @@ theorem hmT_contraction {u v : ℕ → ℝ} {δ : ℝ}
           abs_add_le _ _
       _ ≤ 1 / 4 * δ + 1 / 4 * δ := add_le_add hterm1 hterm2
       _ = 1 / 2 * δ := by ring
+
+/-! ### The Banach assembly
+
+The half-ball of bounded deviations is a complete metric space, the map lands
+back in it and contracts with constant one half, so it has a fixed point. The
+fixed point realizes the row equations exactly. -/
+
+/-- The half-ball of deviations as a set of bounded functions. -/
+def hmBall : Set (BoundedContinuousFunction ℕ ℝ) :=
+  Metric.closedBall 0 (1 / 2)
+
+theorem hmBall_pointwise {w : BoundedContinuousFunction ℕ ℝ}
+    (hw : w ∈ hmBall) (j : ℕ) : |w j| ≤ 1 / 2 := by
+  have hnorm : ‖w‖ ≤ 1 / 2 := by
+    have := Metric.mem_closedBall.mp hw
+    rwa [dist_zero_right] at this
+  calc |w j| = ‖w j‖ := (Real.norm_eq_abs _).symm
+    _ ≤ ‖w‖ := BoundedContinuousFunction.norm_coe_le_norm w j
+    _ ≤ 1 / 2 := hnorm
+
+/-- The map, packaged on the half-ball. -/
+noncomputable def hmPhi (G : ℝ) (n : ℕ)
+    (hn : 8 * (|G| + 1) * specRho ≤ 4 * (n : ℝ) + 2 - 4 * |G|)
+    (w : hmBall) : hmBall := by
+  refine ⟨BoundedContinuousFunction.ofNormedAddCommGroupDiscrete
+    (fun k => hmT G n (⇑(w : BoundedContinuousFunction ℕ ℝ)) k) (1 / 4) ?_, ?_⟩
+  · intro k
+    rw [Real.norm_eq_abs]
+    exact hmT_selfmap G n (hmBall_pointwise w.2) hn k
+  · show _ ∈ Metric.closedBall (0 : BoundedContinuousFunction ℕ ℝ) (1 / 2)
+    rw [Metric.mem_closedBall, dist_zero_right]
+    refine le_trans ((BoundedContinuousFunction.norm_le (by norm_num)).mpr ?_)
+      (by norm_num : (1 / 4 : ℝ) ≤ 1 / 2)
+    intro k
+    rw [BoundedContinuousFunction.coe_ofNormedAddCommGroupDiscrete,
+      Real.norm_eq_abs]
+    exact hmT_selfmap G n (hmBall_pointwise w.2) hn k
+
+theorem hmPhi_apply (G : ℝ) (n : ℕ)
+    (hn : 8 * (|G| + 1) * specRho ≤ 4 * (n : ℝ) + 2 - 4 * |G|)
+    (w : hmBall) (k : ℕ) :
+    ((hmPhi G n hn w : BoundedContinuousFunction ℕ ℝ)) k =
+      hmT G n (⇑(w : BoundedContinuousFunction ℕ ℝ)) k := rfl
+
+/-- The packaged map contracts with constant one half. -/
+theorem hmPhi_contracting (G : ℝ) (n : ℕ)
+    (hn : 8 * (|G| + 1) * specRho ≤ 4 * (n : ℝ) + 2 - 4 * |G|) :
+    ContractingWith (1 / 2 : ℝ≥0) (hmPhi G n hn) := by
+  constructor
+  · rw [← NNReal.coe_lt_coe]; norm_num
+  · refine LipschitzWith.of_dist_le_mul ?_
+    intro u v
+    rw [Subtype.dist_eq]
+    have hδ : (0 : ℝ) ≤ dist (u : BoundedContinuousFunction ℕ ℝ) v := dist_nonneg
+    refine (BoundedContinuousFunction.dist_le (by positivity)).mpr ?_
+    intro k
+    rw [hmPhi_apply, hmPhi_apply, Real.dist_eq]
+    have hd : ∀ j,
+        |(u : BoundedContinuousFunction ℕ ℝ) j -
+          (v : BoundedContinuousFunction ℕ ℝ) j| ≤
+        dist (u : BoundedContinuousFunction ℕ ℝ) v := by
+      intro j
+      rw [← Real.dist_eq]
+      exact BoundedContinuousFunction.dist_coe_le_dist j
+    have hcontr := hmT_contraction G n (hmBall_pointwise u.2)
+      (hmBall_pointwise v.2) hd hn k
+    calc |hmT G n (⇑(u : BoundedContinuousFunction ℕ ℝ)) k -
+          hmT G n (⇑(v : BoundedContinuousFunction ℕ ℝ)) k|
+        ≤ 1 / 2 * dist (u : BoundedContinuousFunction ℕ ℝ) v := hcontr
+      _ = (1 / 2 : ℝ≥0) * dist (u : BoundedContinuousFunction ℕ ℝ) v := by
+          norm_num
+
+/-- **The row witness.**  Under the threshold, the fixed point of the map
+realizes a coefficient row with unit centre, moving-centre decay, the exact
+Jacobi row equations, and the eigenvalue pinned to the diagonal within
+`2 |G| / ρ`. -/
+theorem hm_exists_row (G : ℝ) (n : ℕ)
+    (hn : 8 * (|G| + 1) * specRho ≤ 4 * (n : ℝ) + 2 - 4 * |G|) :
+    ∃ (Λ : ℝ) (c : ℕ → ℝ),
+      c n = 1 ∧
+      (∀ k, |c k| ≤ (1 / specRho) ^ Nat.dist k n) ∧
+      (∀ k, (specD G k - Λ) * c k =
+        G * (specJL k * c (k - 1) + specJR k * c (k + 1))) ∧
+      |Λ - specD G n| ≤ 2 * |G| / specRho := by
+  haveI hcl : IsClosed hmBall := Metric.isClosed_closedBall
+  haveI : Nonempty hmBall := by
+    refine ⟨⟨0, ?_⟩⟩
+    show _ ∈ Metric.closedBall (0 : BoundedContinuousFunction ℕ ℝ) (1 / 2)
+    rw [Metric.mem_closedBall, dist_self]
+    norm_num
+  set y := ContractingWith.fixedPoint (hmPhi G n hn) (hmPhi_contracting G n hn)
+    with hy_def
+  have hy : hmPhi G n hn y = y :=
+    ContractingWith.fixedPoint_isFixedPt (hmPhi_contracting G n hn)
+  set w : ℕ → ℝ := ⇑(y : BoundedContinuousFunction ℕ ℝ) with hw
+  have hu : ∀ j, |w j| ≤ 1 / 2 := hmBall_pointwise y.2
+  have hfix : ∀ k, hmT G n w k = w k := by
+    intro k
+    have hcoe : (hmPhi G n hn y : BoundedContinuousFunction ℕ ℝ) =
+        (y : BoundedContinuousFunction ℕ ℝ) := congrArg Subtype.val hy
+    calc hmT G n w k =
+        (hmPhi G n hn y : BoundedContinuousFunction ℕ ℝ) k := rfl
+      _ = (y : BoundedContinuousFunction ℕ ℝ) k := DFunLike.congr_fun hcoe k
+  refine ⟨hmLam G n w, hmC n w, hmC_center n w, hmC_bound n hu, ?_,
+    hmLam_bound G n hu⟩
+  intro k
+  by_cases hk : k = n
+  · subst hk
+    rw [hmC_center]
+    unfold hmLam
+    ring
+  · have hden : specD G k - hmLam G n w ≠ 0 := by
+      have hpos := hmGap_pos G n hu hn hk
+      intro h
+      rw [h, abs_zero] at hpos
+      exact lt_irrefl 0 hpos
+    have hfk := hfix k
+    unfold hmT at hfk
+    rw [if_neg hk] at hfk
+    have hck : hmC n w k =
+        G * (specJL k * hmC n w (k - 1) + specJR k * hmC n w (k + 1)) /
+          (specD G k - hmLam G n w) := by
+      conv_lhs => unfold hmC
+      rw [if_neg hk, ← hfk, ← mul_assoc, hmWeight_cancel_comm, one_mul]
+    rw [hck]
+    field_simp
 
 end FixedPoint
 
