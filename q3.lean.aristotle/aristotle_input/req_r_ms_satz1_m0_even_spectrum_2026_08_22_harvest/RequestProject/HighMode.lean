@@ -423,6 +423,178 @@ theorem hmLam_lipschitz {u v : ℕ → ℝ} {δ : ℝ}
       ≤ |G| * (2 * δ) := mul_le_mul_of_nonneg_left hnum (abs_nonneg G)
     _ = 2 * |G| * δ := by ring
 
+/-! ### The contraction gates
+
+Everything below runs under the explicit threshold
+
+`hn : 8 * (|G| + 1) * specRho ≤ 4 * n + 2 - 4 * |G|`,
+
+a single real inequality in `G` and `n`. For each fixed `G` it holds for all
+large `n`, and no constant below is chosen after inspecting any finite list of
+modes. -/
+
+/-- Under the threshold, the shifted denominator keeps the full budget. -/
+theorem hmGap {u : ℕ → ℝ} (hu : ∀ j, |u j| ≤ 1 / 2)
+    (hn : 8 * (|G| + 1) * specRho ≤ 4 * (n : ℝ) + 2 - 4 * |G|)
+    {k : ℕ} (hk : k ≠ n) :
+    8 * (|G| + 1) * specRho ≤ |specD G k - hmLam G n u| := by
+  have hρ1 := specRho_one_le
+  have hpin : |hmLam G n u - specD G n| ≤ 2 * |G| := by
+    calc |hmLam G n u - specD G n| ≤ 2 * |G| / specRho := hmLam_bound G n hu
+      _ ≤ 2 * |G| := by
+          refine div_le_self (by positivity) hρ1
+  have hrow := specD_row_gap G (2 * |G|) hpin hk
+  linarith
+
+/-- The denominator is nonzero and positive in absolute value. -/
+theorem hmGap_pos {u : ℕ → ℝ} (hu : ∀ j, |u j| ≤ 1 / 2)
+    (hn : 8 * (|G| + 1) * specRho ≤ 4 * (n : ℝ) + 2 - 4 * |G|)
+    {k : ℕ} (hk : k ≠ n) :
+    0 < |specD G k - hmLam G n u| := by
+  have hρ0 := specRho_pos
+  have h := hmGap G n hu hn hk
+  nlinarith [abs_nonneg G]
+
+/-- The weights cancel exactly. -/
+theorem hmWeight_cancel (d : ℕ) : specRho ^ d * (1 / specRho) ^ d = 1 := by
+  rw [one_div, inv_pow, mul_inv_cancel₀ (pow_ne_zero _ specRho_pos.ne')]
+
+/-- **Self-map.**  On the half-ball, under the threshold, the map lands in the
+quarter-ball. -/
+theorem hmT_selfmap {u : ℕ → ℝ} (hu : ∀ j, |u j| ≤ 1 / 2)
+    (hn : 8 * (|G| + 1) * specRho ≤ 4 * (n : ℝ) + 2 - 4 * |G|) (k : ℕ) :
+    |hmT G n u k| ≤ 1 / 4 := by
+  by_cases hk : k = n
+  · subst hk; simp
+  · have hρ0 := specRho_pos
+    have hρ1 := specRho_one_le
+    set d := Nat.dist k n with hd
+    set den := specD G k - hmLam G n u with hden
+    set num := specJL k * hmC n u (k - 1) + specJR k * hmC n u (k + 1) with hnum
+    have hgap : 8 * (|G| + 1) * specRho ≤ |den| := hmGap G n hu hn hk
+    have hdenpos : 0 < |den| := hmGap_pos G n hu hn hk
+    have hnumb : |num| ≤ 2 * specRho * (1 / specRho) ^ d := hmNum_bound n hu k
+    have hT : hmT G n u k = specRho ^ d * (G * num / den) := by
+      unfold hmT; rw [if_neg hk]
+    rw [hT, abs_mul, abs_div, abs_mul,
+      abs_of_nonneg (by positivity : (0 : ℝ) ≤ specRho ^ d)]
+    rw [mul_div_assoc', div_le_iff₀ hdenpos]
+    have hlhs : specRho ^ d * (|G| * |num|) ≤ 2 * |G| * specRho := by
+      calc specRho ^ d * (|G| * |num|)
+          ≤ specRho ^ d * (|G| * (2 * specRho * (1 / specRho) ^ d)) := by
+            refine mul_le_mul_of_nonneg_left ?_ (by positivity)
+            exact mul_le_mul_of_nonneg_left hnumb (abs_nonneg G)
+        _ = (specRho ^ d * (1 / specRho) ^ d) * (2 * |G| * specRho) := by ring
+        _ = 2 * |G| * specRho := by rw [hmWeight_cancel]; ring
+    have hrhs : 2 * |G| * specRho ≤ 1 / 4 * |den| := by
+      calc 2 * |G| * specRho ≤ 1 / 4 * (8 * (|G| + 1) * specRho) := by nlinarith
+        _ ≤ 1 / 4 * |den| := by linarith
+    linarith
+
+/-- **Contraction.**  Two deviations in the half-ball map to points at most
+half their distance apart, under the threshold. -/
+theorem hmT_contraction {u v : ℕ → ℝ} {δ : ℝ}
+    (hu : ∀ j, |u j| ≤ 1 / 2) (hv : ∀ j, |v j| ≤ 1 / 2)
+    (hd : ∀ j, |u j - v j| ≤ δ)
+    (hn : 8 * (|G| + 1) * specRho ≤ 4 * (n : ℝ) + 2 - 4 * |G|) (k : ℕ) :
+    |hmT G n u k - hmT G n v k| ≤ 1 / 2 * δ := by
+  have hδ : 0 ≤ δ := le_trans (abs_nonneg _) (hd 0)
+  by_cases hk : k = n
+  · subst hk; simp; linarith
+  · have hρ0 := specRho_pos
+    have hρ1 := specRho_one_le
+    set d := Nat.dist k n with hdd
+    set du := specD G k - hmLam G n u with hdu
+    set dv := specD G k - hmLam G n v with hdv
+    set nu := specJL k * hmC n u (k - 1) + specJR k * hmC n u (k + 1) with hnu
+    set nv := specJL k * hmC n v (k - 1) + specJR k * hmC n v (k + 1) with hnv
+    have hgapu : 8 * (|G| + 1) * specRho ≤ |du| := hmGap G n hu hn hk
+    have hgapv : 8 * (|G| + 1) * specRho ≤ |dv| := hmGap G n hv hn hk
+    have hdupos : 0 < |du| := hmGap_pos G n hu hn hk
+    have hdvpos : 0 < |dv| := hmGap_pos G n hv hn hk
+    have hdune : du ≠ 0 := fun h => by simp [h] at hdupos
+    have hdvne : dv ≠ 0 := fun h => by simp [h] at hdvpos
+    have hnumd : |nu - nv| ≤ 2 * specRho * (1 / specRho) ^ d * δ :=
+      hmNum_lipschitz n hd k
+    have hnvb : |nv| ≤ 2 * specRho * (1 / specRho) ^ d := hmNum_bound n hv k
+    have hlam : |hmLam G n u - hmLam G n v| ≤ 2 * |G| * δ :=
+      hmLam_lipschitz G n hd
+    have hTu : hmT G n u k = specRho ^ d * (G * nu / du) := by
+      unfold hmT; rw [if_neg hk]
+    have hTv : hmT G n v k = specRho ^ d * (G * nv / dv) := by
+      unfold hmT; rw [if_neg hk]
+    -- the two-term split: numerator difference over du, plus the pin shift
+    have hsplit :
+        specRho ^ d * (G * nu / du) - specRho ^ d * (G * nv / dv) =
+          specRho ^ d * G * ((nu - nv) / du) +
+            specRho ^ d * G * (nv * (hmLam G n u - hmLam G n v) / (du * dv)) := by
+      have hswap : hmLam G n u - hmLam G n v = dv - du := by
+        rw [hdu, hdv]; ring
+      rw [hswap]
+      field_simp
+      ring
+    rw [hTu, hTv, hsplit]
+    have hterm1 : |specRho ^ d * G * ((nu - nv) / du)| ≤ 1 / 4 * δ := by
+      rw [abs_mul, abs_mul, abs_div,
+        abs_of_nonneg (by positivity : (0 : ℝ) ≤ specRho ^ d)]
+      rw [mul_div_assoc', div_le_iff₀ hdupos]
+      have hlhs : specRho ^ d * |G| * |nu - nv| ≤ 2 * |G| * specRho * δ := by
+        calc specRho ^ d * |G| * |nu - nv|
+            ≤ specRho ^ d * |G| * (2 * specRho * (1 / specRho) ^ d * δ) := by
+              refine mul_le_mul_of_nonneg_left hnumd (by positivity)
+          _ = (specRho ^ d * (1 / specRho) ^ d) * (2 * |G| * specRho * δ) := by
+              ring
+          _ = 2 * |G| * specRho * δ := by rw [hmWeight_cancel]; ring
+      have hrhs : 2 * |G| * specRho * δ ≤ 1 / 4 * δ * |du| := by
+        calc 2 * |G| * specRho * δ
+            ≤ 1 / 4 * δ * (8 * (|G| + 1) * specRho) := by nlinarith
+          _ ≤ 1 / 4 * δ * |du| := by nlinarith
+      linarith
+    have hterm2 :
+        |specRho ^ d * G * (nv * (hmLam G n u - hmLam G n v) / (du * dv))| ≤
+          1 / 4 * δ := by
+      rw [abs_mul, abs_mul, abs_div, abs_mul, abs_mul,
+        abs_of_nonneg (by positivity : (0 : ℝ) ≤ specRho ^ d)]
+      have hdupr : 0 < |du| * |dv| := mul_pos hdupos hdvpos
+      rw [mul_div_assoc', div_le_iff₀ hdupr]
+      have hlhs : specRho ^ d * |G| * (|nv| * |hmLam G n u - hmLam G n v|) ≤
+          4 * |G| ^ 2 * specRho * δ := by
+        calc specRho ^ d * |G| * (|nv| * |hmLam G n u - hmLam G n v|)
+            ≤ specRho ^ d * |G| *
+              ((2 * specRho * (1 / specRho) ^ d) * (2 * |G| * δ)) := by
+              refine mul_le_mul_of_nonneg_left ?_ (by positivity)
+              exact mul_le_mul hnvb hlam (abs_nonneg _) (by positivity)
+          _ = (specRho ^ d * (1 / specRho) ^ d) * (4 * |G| ^ 2 * specRho * δ) := by
+              ring
+          _ = 4 * |G| ^ 2 * specRho * δ := by rw [hmWeight_cancel]; ring
+      have hgap2 : (8 * (|G| + 1) * specRho) * (8 * (|G| + 1) * specRho) ≤
+          |du| * |dv| := by
+        have h8 : (0 : ℝ) ≤ 8 * (|G| + 1) * specRho := by positivity
+        exact mul_le_mul hgapu hgapv h8 (abs_nonneg _)
+      have hrhs : 4 * |G| ^ 2 * specRho * δ ≤ 1 / 4 * δ * (|du| * |dv|) := by
+        have hbig : 4 * |G| ^ 2 * specRho ≤
+            1 / 4 * ((8 * (|G| + 1) * specRho) * (8 * (|G| + 1) * specRho)) := by
+          have hg0 : (0 : ℝ) ≤ |G| := abs_nonneg G
+          have e1 : 4 * |G| ^ 2 * specRho ≤ 4 * (|G| + 1) ^ 2 * specRho := by
+            nlinarith [specRho_pos]
+          have e3 : 4 * (|G| + 1) ^ 2 * specRho ≤
+              16 * (|G| + 1) ^ 2 * specRho ^ 2 := by
+            nlinarith [specRho_one_le, specRho_pos, sq_nonneg (|G| + 1)]
+          have hexp : 1 / 4 * ((8 * (|G| + 1) * specRho) * (8 * (|G| + 1) * specRho)) =
+              16 * (|G| + 1) ^ 2 * specRho ^ 2 := by ring
+          linarith
+        have h1 := mul_le_mul_of_nonneg_right hbig hδ
+        have h2 := mul_le_mul_of_nonneg_right hgap2 hδ
+        linarith
+      linarith
+    calc |specRho ^ d * G * ((nu - nv) / du) +
+          specRho ^ d * G * (nv * (hmLam G n u - hmLam G n v) / (du * dv))|
+        ≤ |specRho ^ d * G * ((nu - nv) / du)| +
+          |specRho ^ d * G * (nv * (hmLam G n u - hmLam G n v) / (du * dv))| :=
+          abs_add_le _ _
+      _ ≤ 1 / 4 * δ + 1 / 4 * δ := add_le_add hterm1 hterm2
+      _ = 1 / 2 * δ := by ring
+
 end FixedPoint
 
 /-! ### The remaining obligation, named exactly
