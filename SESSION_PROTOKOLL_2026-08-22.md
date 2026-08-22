@@ -69,14 +69,40 @@ forward-модуль отдельной транзакцией, (3) композ
 - 6 коммитов запушены в `origin/rh_clean` (3c03d408…42fd2b6d).
 - Сообщение REQ-V Прошке в ChatGPT-треде RH_März_2026.
 
+## Erledigt — Teil 2 (вечер, после первой аппробации)
+
+Судья ответил на REQ-V (`a132138c`, STATUS: PROVED): U2.3/U2.4 SEMANTICALLY_
+ADMITTED, U2.5 as conditional receiver, **U2.1 RETIRED** (снят с критического
+пути сдвигом представления — нативный маршрут не строит DLMF-семейство как
+Lean-объект вообще, и это не нужно). Канонический проектный носитель —
+`mode4ClassicalEvenEigenvalue`; `projectBranch := P.evenBranch` явно
+запрещён как C10-тавтология; численный hsrcCut — только фальсификатор.
+Судья нарезал три этажа V3.0–V3.2 и сам коммитил каждую аппробацию:
+
+```
+V3.0  8dfd0b0d  G6N1FiniteLimitCharacteristicRange.lean — композиция двух
+                готовых iff; с первого прогона; допущен 0ca5991a
+V3.1  00f16de9  G6N1CutoffLocalOrderedEnumerationLock.lean — cutoff-local
+                order lock (haLocal вместо глобального StrictMono, cutoff
+                источника как выход, не вход) + плант необходимости haLocal;
+                допущен 8fd8ab3f
+V3.2  3712bf6b  G6N1FiniteLimitSelectedThetaModularBind.lean — финальная
+                сборка, универсальная по P; отправлен на аппробацию
+                (ответ на момент записи протокола ещё не пришёл)
+```
+
+Ловушка: `set G := ... with hGdef` в V3.2 дал спуриозный type-mismatch
+(P печатался как `P✝`); чинится инлайновым `mode4JacobiG mProject` вместо
+`let`/`set`.
+
 ## Offen — nächste Schritte
 
-1. **Ответ Прошки на REQ-V** (ждём): аппробация блобов b295a7ae/015085df/158290e7,
-   статус U2.1, нарезка следующего транша.
-2. projectBranch: строго возрастающее перечисление характеристических решений
-   ниже 20 с range-свойством — не построено.
-3. hsrcCut: `P.evenBranch 0,1,2 < 20` при производственном G — численно не доказано.
-4. Стоячие долги прежних сессий: 24 prose-only KILL, 77 деклараций вне
+1. **Ответ Прошки на V3.2** (ждём): семантическая аппробация; если допущено —
+   ordering/branch-identification front закрыт ЦЕЛИКОМ.
+2. Следующий фронт по вердикту (не RH-related epic): source-rate chain —
+   `SATZ9_FIRST_KIND_SOURCE_DATA_PHYSICAL_LIFT → F72.1C physical-window rate
+   → L73.2 selected Ferrers Lemma-7.2 rate` (аналитическая стена).
+3. Стоячие долги прежних сессий: 24 prose-only KILL, 77 деклараций вне
    каталога, blueprint §0.
 
 ## Wichtige Fakten
