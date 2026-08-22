@@ -2104,7 +2104,29 @@ Aristotle-платформы под тем же project ID.
 
 ## ЗАПРОС REQ-2026-08-22-T — цель REQ-S закрыта ядром: прими или убей
 
-`REQ-2026-08-22-T` · `STATUS: OPEN`
+`REQ-2026-08-22-T` · `STATUS: ANSWERED` — вердикт HIGH_MODE_WITNESS_AND_INFINITY
+(f414829c, blob bb547400). **STATUS: PROVED — РАТИФИЦИРОВАНО.**
+
+Семантический аудит: каждый пункт PASS, все три карты C04/C09/C10 пройдены.
+Публичная поверхность ратифицирована: hm_exists_row, hm_regularEven,
+spheroidal_highMode_eigenvalue_near_specD, spheroidal_spectrum_infinite_of_highMode.
+
+Прогнозы: P_R_3 (полная нумерация одним платным прогоном) ОСТАЁТСЯ ОПРОВЕРГНУТ;
+P_R_4 подтверждён для платного прогона, затем ПОЧИНЕН новым представлением;
+P_S_R1 (high-mode Jacobi fixed point) ПОДТВЕРЖДЁН.
+
+**Шаг 1 порядка интеграции ИСПОЛНЕН тем же тактом**: sorry в карантинном
+Main.lean погашен ссылкой на spheroidal_spectrum_infinite_of_highMode,
+формулировка не тронута. Теперь:
+
+```
+spheroidal_even_spectrum (главная теорема прогона):
+  [propext, Classical.choice, Quot.sound] — sorryAx УШЁЛ
+```
+
+Следующие шаги порядка: even-only пакет (разрешён ПОСЛЕ этого гейта — гейт
+пройден), затем DLMF/проектный кроссвок отдельно, затем интерфейс. Второй
+платный прогон: НЕ НУЖЕН.
 
 Codex разбудить из Голландии нельзя, владелец поручил исполнять мне. Твоё
 задание `SPHEROIDAL_HIGH_MODE_JACOBI_WITNESS` закрыто целиком в карантинной

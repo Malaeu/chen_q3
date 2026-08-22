@@ -1,5 +1,6 @@
 import Mathlib
 import RequestProject.Defs
+import RequestProject.HighMode
 
 
 open scoped BigOperators
@@ -2200,10 +2201,13 @@ theorem spheroidal_spectrum_locallyFinite (G b : ℝ) :
     exact hsep x y hx hy hxb hyb hne
 
 /-- **Exhaustiveness.** There are infinitely many regular even spheroidal eigenvalues.
-(Not yet proved.) -/
+
+Discharged by the high-mode Jacobi witness (HighMode.lean, ratified by
+verdict f414829c): the witnesses near the diagonal are unbounded above, and a
+finite set of reals is not. The statement is unchanged from the original. -/
 theorem spheroidal_spectrum_infinite (G : ℝ) :
-    {Λ : ℝ | RegularEvenSpheroidalEigenvalue G Λ}.Infinite := by
-  sorry
+    {Λ : ℝ | RegularEvenSpheroidalEigenvalue G Λ}.Infinite :=
+  spheroidal_spectrum_infinite_of_highMode G
 
 /-! ## The main theorem -/
 
