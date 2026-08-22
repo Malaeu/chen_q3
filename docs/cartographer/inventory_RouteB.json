@@ -1,13 +1,29 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 293,
-  "declarations": 2710,
-  "in_docs": 1195,
+  "files_scanned": 300,
+  "declarations": 2904,
+  "in_docs": 1221,
   "in_lemma_db": 2489,
-  "orphans": 92,
-  "uncatalogued": 92,
+  "orphans": 260,
+  "uncatalogued": 260,
   "orphan_files_top": [
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      55
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      55
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      37
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceSpectrum.lean",
+      19
+    ],
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
       13
@@ -45,28 +61,12 @@
       5
     ],
     [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1BookRegularSpectrumSourceInterface.lean",
-      4
-    ],
-    [
       "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1FuchsProjectOperatorIntertwining.lean",
       4
     ],
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/D0FixedWindowWeightBoundedness.lean",
       3
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/D0ZerosRealOnScalarTransfer.lean",
-      3
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedThetaEqualityDegreeZeroFour.lean",
-      3
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/D0DiagonalSelectionAndSubcriticalExtension.lean",
-      2
     ]
   ],
   "items": [
@@ -21366,9 +21366,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1BookRegularSpectrumSourceInterface.lean",
       "line": 124,
       "signature": "theorem evenBranch_strictMono (S : BookRegularEvenSpectrum G splitDegree) : StrictMono (fun r : ℕ => S.branch (2 * r))",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "def",
@@ -22736,6 +22736,26 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedThetaEqualityDegreeZeroFour.lean",
       "line": 90,
       "signature": "theorem selected_theta_equality_degree_zero_four (S : BookRegularEvenSpectrum G splitDegree) (projectBranch : ℕ → ℝ) (hproj : StrictMono projectBranch) (hprojRange : range projectBranch ∩ Iio 20 = {Λ : ℝ | Λ < 20 ∧ mode4DLMF3035EvenCharacteristicEquation G Λ splitDegree}) (hprojCut : ∀ j ≤ 2, projectBranch j < 20) (hsrcCut : ∀ j ≤ 2, S.branch (2 * j) < 20) : projectBranch 0 = S.branch 0 ∧ projectBranch 2 = S.branch 4",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "regularEvenSpheroidal_of_mode4Root",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SpheroidalCrosswalkReverse.lean",
+      "line": 46,
+      "signature": "theorem regularEvenSpheroidal_of_mode4Root (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (hroot : mode4RootFunction mProject K Λ = 0) : RegularEvenSpheroidalEigenvalue (mode4JacobiG mProject) Λ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4Root_mem_evenBranch",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SpheroidalCrosswalkReverse.lean",
+      "line": 74,
+      "signature": "theorem mode4Root_mem_evenBranch (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (hroot : mode4RootFunction mProject K Λ = 0) (P : BookRegularEvenSpectrumEven (mode4JacobiG mProject)) : ∃ r : ℕ, P.evenBranch r = Λ",
       "in_docs": false,
       "in_lemma_db": false,
       "orphan": true
@@ -26959,6 +26979,1926 @@
       "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "RegularEvenSpheroidalEigenvalue",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceDefs.lean",
+      "line": 40,
+      "signature": "def RegularEvenSpheroidalEigenvalue (G Λ : ℝ) : Prop",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "structure",
+      "name": "BookRegularEvenSpectrumEven",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceEvenPackage.lean",
+      "line": 29,
+      "signature": "structure BookRegularEvenSpectrumEven (G : ℝ) where",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "bookRegularEvenSpectrumEven_exists",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceEvenPackage.lean",
+      "line": 46,
+      "signature": "theorem bookRegularEvenSpectrumEven_exists (G : ℝ) : Nonempty (BookRegularEvenSpectrumEven G)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "one_le_abs_cast_sub",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 40,
+      "signature": "theorem one_le_abs_cast_sub {k n : ℕ} (h : k ≠ n) : (1 : ℝ) ≤ |(k : ℝ) - n|",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "specLam_sub",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 51,
+      "signature": "theorem specLam_sub (k n : ℕ) : specLam k - specLam n = ((k : ℝ) - n) * (4 * ((k : ℝ) + n) + 2)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "specLam_gap",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 57,
+      "signature": "theorem specLam_gap {k n : ℕ} (h : k ≠ n) : 4 * (n : ℝ) + 2 ≤ |specLam k - specLam n|",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "specD_gap",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 73,
+      "signature": "theorem specD_gap (G : ℝ) {k n : ℕ} (h : k ≠ n) : 4 * (n : ℝ) + 2 - 2 * |G| ≤ |specD G k - specD G n|",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "specD_row_gap",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 99,
+      "signature": "theorem specD_row_gap (G C : ℝ) {Λ : ℝ} {n : ℕ} (hΛ : |Λ - specD G n| ≤ C) {k : ℕ} (h : k ≠ n) : 4 * (n : ℝ) + 2 - 2 * |G| - C ≤ |specD G k - Λ|",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "decay_center_to_origin",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 118,
+      "signature": "theorem decay_center_to_origin {ρ : ℝ} (hρ : 1 ≤ ρ) (n : ℕ) {c : ℕ → ℝ} (h : ∀ k, |c k| ≤ (1 / ρ) ^ Nat.dist k n) : ∀ k, |c k| ≤ ρ ^ n * (1 / ρ) ^ k",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "hmC",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 158,
+      "signature": "noncomputable def hmC (u : ℕ → ℝ) (k : ℕ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "hmLam",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 162,
+      "signature": "noncomputable def hmLam (u : ℕ → ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "hmT",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 166,
+      "signature": "noncomputable def hmT (u : ℕ → ℝ) (k : ℕ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "hmC_center",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 172,
+      "signature": "@[simp] theorem hmC_center (u : ℕ → ℝ) : hmC n u n = 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hmT_center",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 174,
+      "signature": "@[simp] theorem hmT_center (u : ℕ → ℝ) : hmT G n u n = 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "specRho_one_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 176,
+      "signature": "theorem specRho_one_le : (1 : ℝ) ≤ specRho",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "specRho_pos",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 178,
+      "signature": "theorem specRho_pos : (0 : ℝ) < specRho",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hmWeight_nonneg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 180,
+      "signature": "theorem hmWeight_nonneg (d : ℕ) : (0 : ℝ) ≤ (1 / specRho) ^ d",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hmWeight_le_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 183,
+      "signature": "theorem hmWeight_le_one (d : ℕ) : (1 / specRho) ^ d ≤ 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hmTail_summable",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 187,
+      "signature": "theorem hmTail_summable : Summable (fun j : ℕ => (1 / specRho : ℝ) ^ (j + 1))",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hmTail_tsum",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 193,
+      "signature": "theorem hmTail_tsum : (∑' j : ℕ, (1 / specRho : ℝ) ^ (j + 1)) = 1 / 999",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "hmWeight_step",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 207,
+      "signature": "theorem hmWeight_step {j k : ℕ} (h : Nat.dist k n ≤ Nat.dist j n + 1) : (1 / specRho) ^ Nat.dist j n ≤ specRho * (1 / specRho) ^ Nat.dist k n",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hmWeight_pred",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 228,
+      "signature": "theorem hmWeight_pred (k : ℕ) : (1 / specRho) ^ Nat.dist (k - 1) n ≤ specRho * (1 / specRho) ^ Nat.dist k n",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hmWeight_succ",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 237,
+      "signature": "theorem hmWeight_succ (k : ℕ) : (1 / specRho) ^ Nat.dist (k + 1) n ≤ specRho * (1 / specRho) ^ Nat.dist k n",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "dist_succ_self",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 245,
+      "signature": "theorem dist_succ_self (m : ℕ) : Nat.dist (m + 1) m = 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "dist_pred_self",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 247,
+      "signature": "theorem dist_pred_self {m : ℕ} (hm : 1 ≤ m) : Nat.dist (m - 1) m = 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hmC_bound",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 253,
+      "signature": "theorem hmC_bound {u : ℕ → ℝ} (hu : ∀ j, |u j| ≤ 1 / 2) (k : ℕ) : |hmC n u k| ≤ (1 / specRho) ^ Nat.dist k n",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hmC_lipschitz",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 266,
+      "signature": "theorem hmC_lipschitz {u v : ℕ → ℝ} {δ : ℝ} (hd : ∀ j, |u j - v j| ≤ δ) (k : ℕ) : |hmC n u k - hmC n v k| ≤ (1 / specRho) ^ Nat.dist k n * δ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hmC_lipschitz'",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 280,
+      "signature": "theorem hmC_lipschitz' {u v : ℕ → ℝ} {δ : ℝ} (hd : ∀ j, |u j - v j| ≤ δ) (k : ℕ) : |hmC n u k - hmC n v k| ≤ δ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hmNum_bound",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 290,
+      "signature": "theorem hmNum_bound {u : ℕ → ℝ} (hu : ∀ j, |u j| ≤ 1 / 2) (k : ℕ) : |specJL k * hmC n u (k - 1) + specJR k * hmC n u (k + 1)| ≤ 2 * specRho * (1 / specRho) ^ Nat.dist k n",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hmNum_lipschitz",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 316,
+      "signature": "theorem hmNum_lipschitz {u v : ℕ → ℝ} {δ : ℝ} (hd : ∀ j, |u j - v j| ≤ δ) (k : ℕ) : |(specJL k * hmC n u (k - 1) + specJR k * hmC n u (k + 1)) - (specJL k * hmC n v (k - 1) + specJR k * hmC n v (k + 1))| ≤ 2 * specRho * (1 / specRho) ^ Nat.dist k n * δ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hmLam_bound",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 362,
+      "signature": "theorem hmLam_bound {u : ℕ → ℝ} (hu : ∀ j, |u j| ≤ 1 / 2) : |hmLam G n u - specD G n| ≤ 2 * |G| / specRho",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hmLam_lipschitz",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 402,
+      "signature": "theorem hmLam_lipschitz {u v : ℕ → ℝ} {δ : ℝ} (hd : ∀ j, |u j - v j| ≤ δ) : |hmLam G n u - hmLam G n v| ≤ 2 * |G| * δ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hmGap",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 456,
+      "signature": "theorem hmGap {u : ℕ → ℝ} (hu : ∀ j, |u j| ≤ 1 / 2) (hn : 8 * (|G| + 1) * specRho ≤ 4 * (n : ℝ) + 2 - 4 * |G|) {k : ℕ} (hk : k ≠ n) : 8 * (|G| + 1) * specRho ≤ |specD G k - hmLam G n u|",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hmGap_pos",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 469,
+      "signature": "theorem hmGap_pos {u : ℕ → ℝ} (hu : ∀ j, |u j| ≤ 1 / 2) (hn : 8 * (|G| + 1) * specRho ≤ 4 * (n : ℝ) + 2 - 4 * |G|) {k : ℕ} (hk : k ≠ n) : 0 < |specD G k - hmLam G n u|",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hmWeight_cancel",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 478,
+      "signature": "theorem hmWeight_cancel (d : ℕ) : specRho ^ d * (1 / specRho) ^ d = 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hmWeight_cancel_comm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 480,
+      "signature": "theorem hmWeight_cancel_comm (d : ℕ) : (1 / specRho) ^ d * specRho ^ d = 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hmT_selfmap",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 485,
+      "signature": "theorem hmT_selfmap {u : ℕ → ℝ} (hu : ∀ j, |u j| ≤ 1 / 2) (hn : 8 * (|G| + 1) * specRho ≤ 4 * (n : ℝ) + 2 - 4 * |G|) (k : ℕ) : |hmT G n u k| ≤ 1 / 4",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hmT_contraction",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 517,
+      "signature": "theorem hmT_contraction {u v : ℕ → ℝ} {δ : ℝ} (hu : ∀ j, |u j| ≤ 1 / 2) (hv : ∀ j, |v j| ≤ 1 / 2) (hd : ∀ j, |u j - v j| ≤ δ) (hn : 8 * (|G| + 1) * specRho ≤ 4 * (n : ℝ) + 2 - 4 * |G|) (k : ℕ) : |hmT G n u k - hmT G n v k| ≤ 1 / 2 * δ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "hmBall",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 626,
+      "signature": "def hmBall : Set (BoundedContinuousFunction ℕ ℝ)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hmBall_pointwise",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 629,
+      "signature": "theorem hmBall_pointwise {w : BoundedContinuousFunction ℕ ℝ} (hw : w ∈ hmBall) (j : ℕ) : |w j| ≤ 1 / 2",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "hmPhi",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 639,
+      "signature": "noncomputable def hmPhi (G : ℝ) (n : ℕ) (hn : 8 * (|G| + 1) * specRho ≤ 4 * (n : ℝ) + 2 - 4 * |G|) (w : hmBall) : hmBall",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hmPhi_apply",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 656,
+      "signature": "theorem hmPhi_apply (G : ℝ) (n : ℕ) (hn : 8 * (|G| + 1) * specRho ≤ 4 * (n : ℝ) + 2 - 4 * |G|) (w : hmBall) (k : ℕ) : ((hmPhi G n hn w : BoundedContinuousFunction ℕ ℝ)) k = hmT G n (⇑(w : BoundedContinuousFunction ℕ ℝ)) k",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hmPhi_contracting",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 663,
+      "signature": "theorem hmPhi_contracting (G : ℝ) (n : ℕ) (hn : 8 * (|G| + 1) * specRho ≤ 4 * (n : ℝ) + 2 - 4 * |G|) : ContractingWith (1 / 2 : ℝ≥0) (hmPhi G n hn)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hm_exists_row",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 694,
+      "signature": "theorem hm_exists_row (G : ℝ) (n : ℕ) (hn : 8 * (|G| + 1) * specRho ≤ 4 * (n : ℝ) + 2 - 4 * |G|) : ∃ (Λ : ℝ) (c : ℕ → ℝ), c n = 1 ∧ (∀ k, |c k| ≤ (1 / specRho) ^ Nat.dist k n) ∧ (∀ k, (specD G k - Λ) * c k = G * (specJL k * c (k - 1) + specJR k * c (k + 1))) ∧ |Λ - specD G n| ≤ 2 * |G| / specRho",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "spec_flux_right",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 755,
+      "signature": "theorem spec_flux_right {A : ℝ} (hdecay : ∀ k, |c k| ≤ A * (1 / specRho) ^ k) : Filter.Tendsto (fun x : ℝ => (1 - x ^ 2) * specF1 c x) (nhdsWithin 1 (Iio 1)) (nhds 0)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spec_flux_left",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 773,
+      "signature": "theorem spec_flux_left {A : ℝ} (hdecay : ∀ k, |c k| ≤ A * (1 / specRho) ^ k) : Filter.Tendsto (fun x : ℝ => (1 - x ^ 2) * specF1 c x) (nhdsWithin (-1) (Ioi (-1))) (nhds 0)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hm_specF_one_ne_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 794,
+      "signature": "theorem hm_specF_one_ne_zero (n : ℕ) {c : ℕ → ℝ} (hc1 : c n = 1) (hdec : ∀ k, |c k| ≤ (1 / specRho) ^ Nat.dist k n) : specF c 1 ≠ 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hm_regularEven",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 909,
+      "signature": "theorem hm_regularEven (G : ℝ) (n : ℕ) (hn : 8 * (|G| + 1) * specRho ≤ 4 * (n : ℝ) + 2 - 4 * |G|) : ∃ Λ : ℝ, RegularEvenSpheroidalEigenvalue G Λ ∧ |Λ - specD G n| ≤ 2 * |G| / specRho",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "spheroidal_highMode_eigenvalue_near_specD",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 929,
+      "signature": "theorem spheroidal_highMode_eigenvalue_near_specD (G : ℝ) : ∃ N : ℕ, ∃ C : ℝ, 0 ≤ C ∧ ∀ n : ℕ, N ≤ n → ∃ Λ : ℝ, RegularEvenSpheroidalEigenvalue G Λ ∧ |Λ - specD G n| ≤ C",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "spheroidal_spectrum_infinite_of_highMode",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean",
+      "line": 946,
+      "signature": "theorem spheroidal_spectrum_infinite_of_highMode (G : ℝ) : {Λ : ℝ | RegularEvenSpheroidalEigenvalue G Λ}.Infinite",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "legendreP",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 18,
+      "signature": "noncomputable def legendreP : ℕ → Polynomial ℝ | 0 => 1 | 1 => X | (n + 2) => C ((2 * (n : ℝ) + 3) / ((n : ℝ) + 2)) * X * legendreP (n + 1) - C (((n : ℝ) + 1) / ((n : ℝ) + 2)) * legendreP n  @[simp] theorem legendreP_zero : legendreP 0 = 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "legendreP_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 25,
+      "signature": "@[simp] theorem legendreP_zero : legendreP 0 = 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "legendreP_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 27,
+      "signature": "@[simp] theorem legendreP_one : legendreP 1 = X",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "legendreP_add_two",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 29,
+      "signature": "theorem legendreP_add_two (n : ℕ) : legendreP (n + 2) = C ((2 * (n : ℝ) + 3) / ((n : ℝ) + 2)) * X * legendreP (n + 1) - C (((n : ℝ) + 1) / ((n : ℝ) + 2)) * legendreP n",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "legendreP_rec",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 35,
+      "signature": "theorem legendreP_rec (n : ℕ) : C ((n : ℝ) + 2) * legendreP (n + 2) = C (2 * (n : ℝ) + 3) * (X * legendreP (n + 1)) - C ((n : ℝ) + 1) * legendreP n",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "lpv",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 50,
+      "signature": "noncomputable def lpv (n : ℕ) (x : ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "lpd",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 53,
+      "signature": "noncomputable def lpd (n : ℕ) (x : ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "lpdd",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 56,
+      "signature": "noncomputable def lpdd (n : ℕ) (x : ℝ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hasDerivAt_lpv",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 58,
+      "signature": "theorem hasDerivAt_lpv (n : ℕ) (x : ℝ) : HasDerivAt (lpv n) (lpd n x) x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hasDerivAt_lpd",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 61,
+      "signature": "theorem hasDerivAt_lpd (n : ℕ) (x : ℝ) : HasDerivAt (lpd n) (lpdd n x) x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "continuous_lpv",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 64,
+      "signature": "theorem continuous_lpv (n : ℕ) : Continuous (lpv n)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "continuous_lpd",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 66,
+      "signature": "theorem continuous_lpd (n : ℕ) : Continuous (lpd n)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "lpv_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 68,
+      "signature": "@[simp] theorem lpv_zero (x : ℝ) : lpv 0 x = 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "lpv_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 70,
+      "signature": "@[simp] theorem lpv_one (x : ℝ) : lpv 1 x = x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "lpd_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 72,
+      "signature": "@[simp] theorem lpd_zero (x : ℝ) : lpd 0 x = 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "lpd_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 74,
+      "signature": "@[simp] theorem lpd_one (x : ℝ) : lpd 1 x = 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "lpdd_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 76,
+      "signature": "@[simp] theorem lpdd_zero (x : ℝ) : lpdd 0 x = 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "lpdd_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 78,
+      "signature": "@[simp] theorem lpdd_one (x : ℝ) : lpdd 1 x = 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "lpv_rec",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 80,
+      "signature": "theorem lpv_rec (n : ℕ) (x : ℝ) : ((n : ℝ) + 2) * lpv (n + 2) x = (2 * (n : ℝ) + 3) * (x * lpv (n + 1) x) - ((n : ℝ) + 1) * lpv n x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "lpd_rec",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 86,
+      "signature": "theorem lpd_rec (n : ℕ) (x : ℝ) : ((n : ℝ) + 2) * lpd (n + 2) x = (2 * (n : ℝ) + 3) * (lpv (n + 1) x + x * lpd (n + 1) x) - ((n : ℝ) + 1) * lpd n x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "lpdd_rec",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 95,
+      "signature": "theorem lpdd_rec (n : ℕ) (x : ℝ) : ((n : ℝ) + 2) * lpdd (n + 2) x = (2 * (n : ℝ) + 3) * (2 * lpd (n + 1) x + x * lpdd (n + 1) x) - ((n : ℝ) + 1) * lpdd n x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "lp_deriv_pair",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 107,
+      "signature": "theorem lp_deriv_pair (n : ℕ) (x : ℝ) : lpd (n + 1) x = x * lpd n x + ((n : ℝ) + 1) * lpv n x ∧ x * lpd (n + 1) x = lpd n x + ((n : ℝ) + 1) * lpv (n + 1) x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "lpd_eq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 124,
+      "signature": "theorem lpd_eq (n : ℕ) (x : ℝ) : lpd (n + 1) x = x * lpd n x + ((n : ℝ) + 1) * lpv n x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "lpd_eq'",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 127,
+      "signature": "theorem lpd_eq' (n : ℕ) (x : ℝ) : x * lpd (n + 1) x = lpd n x + ((n : ℝ) + 1) * lpv (n + 1) x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "lpd_one_sub_sq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 131,
+      "signature": "theorem lpd_one_sub_sq (n : ℕ) (x : ℝ) : (1 - x ^ 2) * lpd (n + 1) x = ((n : ℝ) + 1) * (lpv n x - x * lpv (n + 1) x)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "legendre_ode",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 136,
+      "signature": "theorem legendre_ode (n : ℕ) (x : ℝ) : (1 - x ^ 2) * lpdd n x - 2 * x * lpd n x + (n : ℝ) * ((n : ℝ) + 1) * lpv n x = 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "lpdd_eq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 159,
+      "signature": "theorem lpdd_eq (n : ℕ) (x : ℝ) : lpdd (n + 1) x = ((n : ℝ) + 2) * lpd n x + x * lpdd n x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "lpv_neg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 173,
+      "signature": "theorem lpv_neg (n : ℕ) (x : ℝ) : lpv n (-x) = (-1 : ℝ) ^ n * lpv n x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "lpv_at_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 192,
+      "signature": "theorem lpv_at_one (n : ℕ) : lpv n 1 = 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "real_nat_add_two_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 207,
+      "signature": "theorem real_nat_add_two_le (n : ℕ) : ((n : ℝ) + 2) ≤ 2 * 3 ^ n",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "lpv_abs_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 218,
+      "signature": "theorem lpv_abs_le (n : ℕ) {x : ℝ} (hx : |x| ≤ 1) : |lpv n x| ≤ 3 ^ n",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "lpd_abs_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 251,
+      "signature": "theorem lpd_abs_le (n : ℕ) {x : ℝ} (hx : |x| ≤ 1) : |lpd n x| ≤ 9 ^ n",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "lpdd_abs_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 278,
+      "signature": "theorem lpdd_abs_le (n : ℕ) {x : ℝ} (hx : |x| ≤ 1) : |lpdd n x| ≤ 27 ^ n",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "lcU",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 306,
+      "signature": "noncomputable def lcU (k : ℕ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "lcV",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 309,
+      "signature": "noncomputable def lcV (k : ℕ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "lcS",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 312,
+      "signature": "noncomputable def lcS (k : ℕ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "lcT",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 315,
+      "signature": "noncomputable def lcT (k : ℕ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "lcU_nonneg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 317,
+      "signature": "theorem lcU_nonneg (k : ℕ) : 0 ≤ lcU k",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "lcV_nonneg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 319,
+      "signature": "theorem lcV_nonneg (k : ℕ) : 0 ≤ lcV k",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "lcS_nonneg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 321,
+      "signature": "theorem lcS_nonneg (k : ℕ) : 0 ≤ lcS k",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "lcT_nonneg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 323,
+      "signature": "theorem lcT_nonneg (k : ℕ) : 0 ≤ lcT k",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "lcU_add_lcV",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 325,
+      "signature": "theorem lcU_add_lcV (k : ℕ) : lcU k + lcV k = 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "lcS_add_lcT",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 331,
+      "signature": "theorem lcS_add_lcT (k : ℕ) : lcS k + lcT k = 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "lcU_le_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 337,
+      "signature": "theorem lcU_le_one (k : ℕ) : lcU k ≤ 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "lcV_le_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 340,
+      "signature": "theorem lcV_le_one (k : ℕ) : lcV k ≤ 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "lcS_le_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 343,
+      "signature": "theorem lcS_le_one (k : ℕ) : lcS k ≤ 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "lcT_le_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 346,
+      "signature": "theorem lcT_le_one (k : ℕ) : lcT k ≤ 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "lcV_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 349,
+      "signature": "@[simp] theorem lcV_zero : lcV 0 = 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "lcU_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 351,
+      "signature": "@[simp] theorem lcU_zero : lcU 0 = 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "lpv_x_even_succ",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 354,
+      "signature": "theorem lpv_x_even_succ (j : ℕ) (x : ℝ) : x * lpv (2 * j + 2) x = lcU (j + 1) * lpv (2 * j + 3) x + lcV (j + 1) * lpv (2 * j + 1) x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "lpv_x_odd",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 366,
+      "signature": "theorem lpv_x_odd (k : ℕ) (x : ℝ) : x * lpv (2 * k + 1) x = lcS k * lpv (2 * k + 2) x + lcT k * lpv (2 * k) x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "lpv_x_odd_succ",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 376,
+      "signature": "theorem lpv_x_odd_succ (j : ℕ) (x : ℝ) : x * lpv (2 * j + 3) x = lcS (j + 1) * lpv (2 * j + 4) x + lcT (j + 1) * lpv (2 * j + 2) x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "jacA",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 385,
+      "signature": "noncomputable def jacA (k : ℕ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "jacB",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 388,
+      "signature": "noncomputable def jacB (k : ℕ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "jacC",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 391,
+      "signature": "noncomputable def jacC (k : ℕ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "jacC_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 393,
+      "signature": "@[simp] theorem jacC_zero : jacC 0 = 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "legendre_even_expansion",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 397,
+      "signature": "theorem legendre_even_expansion (k : ℕ) (x : ℝ) : (1 - x ^ 2) * lpv (2 * k) x = jacA k * lpv (2 * k + 2) x + jacB k * lpv (2 * k) x + jacC k * lpv (2 * k - 2) x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "jacA_abs_le_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 417,
+      "signature": "theorem jacA_abs_le_one (k : ℕ) : |jacA k| ≤ 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "jacC_abs_le_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 423,
+      "signature": "theorem jacC_abs_le_one (k : ℕ) : |jacC k| ≤ 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "jacB_abs_le_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceLegendre.lean",
+      "line": 429,
+      "signature": "theorem jacB_abs_le_one (k : ℕ) : |jacB k| ≤ 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spheroidal_lagrange_identity",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 29,
+      "signature": "theorem spheroidal_lagrange_identity (G Lf Lg : ℝ) (f f1 f2 g g1 g2 : ℝ → ℝ) (hfd : ∀ x ∈ Ioo (-1 : ℝ) 1, HasDerivAt f (f1 x) x ∧ HasDerivAt f1 (f2 x) x) (hgd : ∀ x ∈ Ioo (-1 : ℝ) 1, HasDerivAt g (g1 x) x ∧ HasDerivAt g1 (g2 x) x) (hfe : ∀ x ∈ Ioo (-1 : ℝ) 1, -(1 - x ^ 2) * f2 x + 2 * x * f1 x + G * x ^ 2 * f x = (Lf + G) * f x) (hge : ∀ x ∈ Ioo (-1 : ℝ) 1, -(1 - x ^ 2) * g2 x + 2 * x * g1 x + G * x ^ 2 * g x = (Lg + G) * g x) {x : ℝ} (hx : x ∈ Ioo (-1 : ℝ) 1) : HasDerivAt (fun t : ℝ => (1 - t ^ 2) * (f1 t * g t - f t * g1 t)) ((Lg - Lf) * (f x * g x)) x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spheroidal_energy_identity",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 52,
+      "signature": "theorem spheroidal_energy_identity (G Λ : ℝ) (f f1 f2 : ℝ → ℝ) (hfd : ∀ x ∈ Ioo (-1 : ℝ) 1, HasDerivAt f (f1 x) x ∧ HasDerivAt f1 (f2 x) x) (hfe : ∀ x ∈ Ioo (-1 : ℝ) 1, -(1 - x ^ 2) * f2 x + 2 * x * f1 x + G * x ^ 2 * f x = (Λ + G) * f x) {x : ℝ} (hx : x ∈ Ioo (-1 : ℝ) 1) : HasDerivAt (fun t : ℝ => -((1 - t ^ 2) * (f1 t * f t))) ((Λ + G * (1 - x ^ 2)) * f x ^ 2 - (1 - x ^ 2) * f1 x ^ 2) x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "Ioo_mem_nhdsWithin_Iio_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 69,
+      "signature": "theorem Ioo_mem_nhdsWithin_Iio_one : Ioo (-1 : ℝ) 1 ∈ 𝓝[<] (1 : ℝ)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "Ioo_mem_nhdsWithin_Ioi_negOne",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 74,
+      "signature": "theorem Ioo_mem_nhdsWithin_Ioi_negOne : Ioo (-1 : ℝ) 1 ∈ 𝓝[>] (-1 : ℝ)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "nhdsWithin_Iio_one_le_Icc",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 78,
+      "signature": "theorem nhdsWithin_Iio_one_le_Icc : 𝓝[<] (1 : ℝ) ≤ 𝓝[Icc (-1 : ℝ) 1] 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "nhdsWithin_Ioi_negOne_le_Icc",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 82,
+      "signature": "theorem nhdsWithin_Ioi_negOne_le_Icc : 𝓝[>] (-1 : ℝ) ≤ 𝓝[Icc (-1 : ℝ) 1] (-1)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spheroidal_wronskian_tendsto_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 86,
+      "signature": "theorem spheroidal_wronskian_tendsto_one (f f1 g g1 : ℝ → ℝ) (hf : ContinuousOn f (Icc (-1 : ℝ) 1)) (hg : ContinuousOn g (Icc (-1 : ℝ) 1)) (hf1 : Tendsto (fun x : ℝ => (1 - x ^ 2) * f1 x) (𝓝[<] (1 : ℝ)) (𝓝 0)) (hg1 : Tendsto (fun x : ℝ => (1 - x ^ 2) * g1 x) (𝓝[<] (1 : ℝ)) (𝓝 0)) : Tendsto (fun x : ℝ => (1 - x ^ 2) * (f1 x * g x - f x * g1 x)) (𝓝[<] (1 : ℝ)) (𝓝 0)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spheroidal_wronskian_tendsto_neg_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 101,
+      "signature": "theorem spheroidal_wronskian_tendsto_neg_one (f f1 g g1 : ℝ → ℝ) (hf : ContinuousOn f (Icc (-1 : ℝ) 1)) (hg : ContinuousOn g (Icc (-1 : ℝ) 1)) (hf1 : Tendsto (fun x : ℝ => (1 - x ^ 2) * f1 x) (𝓝[>] (-1 : ℝ)) (𝓝 0)) (hg1 : Tendsto (fun x : ℝ => (1 - x ^ 2) * g1 x) (𝓝[>] (-1 : ℝ)) (𝓝 0)) : Tendsto (fun x : ℝ => (1 - x ^ 2) * (f1 x * g x - f x * g1 x)) (𝓝[>] (-1 : ℝ)) (𝓝 0)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spheroidal_field_lipschitzOnWith",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 119,
+      "signature": "theorem spheroidal_field_lipschitzOnWith (G Λ c : ℝ) (hc1 : c < 1) (hcsq : 0 < 1 - c ^ 2) (L : ℝ) (hLdef : L = (2 + |G| + |Λ + G|) / (1 - c ^ 2) + 1) (hL0 : 0 ≤ L) (t : ℝ) (ht : t ∈ Ioo (-c) c) : LipschitzOnWith ⟨L, hL0⟩ (fun p : ℝ × ℝ => (p.2, (2 * t * p.2 + (G * t ^ 2 - (Λ + G)) * p.1) / (1 - t ^ 2))) univ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spheroidal_ivp_unique_pair",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 186,
+      "signature": "theorem spheroidal_ivp_unique_pair (G Λ : ℝ) (f f1 f2 g g1 g2 : ℝ → ℝ) (hfd : ∀ x ∈ Ioo (-1 : ℝ) 1, HasDerivAt f (f1 x) x ∧ HasDerivAt f1 (f2 x) x) (hgd : ∀ x ∈ Ioo (-1 : ℝ) 1, HasDerivAt g (g1 x) x ∧ HasDerivAt g1 (g2 x) x) (hfe : ∀ x ∈ Ioo (-1 : ℝ) 1, -(1 - x ^ 2) * f2 x + 2 * x * f1 x + G * x ^ 2 * f x = (Λ + G) * f x) (hge : ∀ x ∈ Ioo (-1 : ℝ) 1, -(1 - x ^ 2) * g2 x + 2 * x * g1 x + G * x ^ 2 * g x = (Λ + G) * g x) (h0 : f 0 = g 0) (h1 : f1 0 = g1 0) : EqOn (fun t => (f t, f1 t)) (fun t => (g t, g1 t)) (Ioo (-1 : ℝ) 1)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spheroidal_ivp_unique",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 242,
+      "signature": "theorem spheroidal_ivp_unique (G Λ : ℝ) (f f1 f2 g g1 g2 : ℝ → ℝ) (hfd : ∀ x ∈ Ioo (-1 : ℝ) 1, HasDerivAt f (f1 x) x ∧ HasDerivAt f1 (f2 x) x) (hgd : ∀ x ∈ Ioo (-1 : ℝ) 1, HasDerivAt g (g1 x) x ∧ HasDerivAt g1 (g2 x) x) (hfe : ∀ x ∈ Ioo (-1 : ℝ) 1, -(1 - x ^ 2) * f2 x + 2 * x * f1 x + G * x ^ 2 * f x = (Λ + G) * f x) (hge : ∀ x ∈ Ioo (-1 : ℝ) 1, -(1 - x ^ 2) * g2 x + 2 * x * g1 x + G * x ^ 2 * g x = (Λ + G) * g x) (h0 : f 0 = g 0) (h1 : f1 0 = g1 0) : EqOn f g (Ioo (-1 : ℝ) 1)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "deriv_zero_of_even",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 254,
+      "signature": "theorem deriv_zero_of_even {f f1 : ℝ → ℝ} (hev : ∀ x : ℝ, f (-x) = f x) (hd : HasDerivAt f (f1 0) 0) : f1 0 = 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spheroidal_eq_zero_of_center_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 267,
+      "signature": "theorem spheroidal_eq_zero_of_center_zero (G Λ : ℝ) (f f1 f2 : ℝ → ℝ) (hfev : ∀ x : ℝ, f (-x) = f x) (hfd : ∀ x ∈ Ioo (-1 : ℝ) 1, HasDerivAt f (f1 x) x ∧ HasDerivAt f1 (f2 x) x) (hfe : ∀ x ∈ Ioo (-1 : ℝ) 1, -(1 - x ^ 2) * f2 x + 2 * x * f1 x + G * x ^ 2 * f x = (Λ + G) * f x) (h0 : f 0 = 0) : EqOn f 0 (Ioo (-1 : ℝ) 1)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spheroidal_center_ne_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 280,
+      "signature": "theorem spheroidal_center_ne_zero (G Λ : ℝ) (f f1 f2 : ℝ → ℝ) (hfne : ∃ x ∈ Icc (-1 : ℝ) 1, f x ≠ 0) (hfc : ContinuousOn f (Icc (-1 : ℝ) 1)) (hfev : ∀ x : ℝ, f (-x) = f x) (hfd : ∀ x ∈ Ioo (-1 : ℝ) 1, HasDerivAt f (f1 x) x ∧ HasDerivAt f1 (f2 x) x) (hfe : ∀ x ∈ Ioo (-1 : ℝ) 1, -(1 - x ^ 2) * f2 x + 2 * x * f1 x + G * x ^ 2 * f x = (Λ + G) * f x) : f 0 ≠ 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spheroidal_eigenspace_one_dim",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 309,
+      "signature": "theorem spheroidal_eigenspace_one_dim (G Λ : ℝ) (f f1 f2 g g1 g2 : ℝ → ℝ) (hfne : ∃ x ∈ Icc (-1 : ℝ) 1, f x ≠ 0) (hfc : ContinuousOn f (Icc (-1 : ℝ) 1)) (hfev : ∀ x : ℝ, f (-x) = f x) (hgev : ∀ x : ℝ, g (-x) = g x) (hfd : ∀ x ∈ Ioo (-1 : ℝ) 1, HasDerivAt f (f1 x) x ∧ HasDerivAt f1 (f2 x) x) (hgd : ∀ x ∈ Ioo (-1 : ℝ) 1, HasDerivAt g (g1 x) x ∧ HasDerivAt g1 (g2 x) x) (hfe : ∀ x ∈ Ioo (-1 : ℝ) 1, -(1 - x ^ 2) * f2 x + 2 * x * f1 x + G * x ^ 2 * f x = (Λ + G) * f x) (hge : ∀ x ∈ Ioo (-1 : ℝ) 1, -(1 - x ^ 2) * g2 x + 2 * x * g1 x + G * x ^ 2 * g x = (Λ + G) * g x) : ∃ c : ℝ, EqOn g (fun x => c * f x) (Ioo (-1 : ℝ) 1)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spheroidal_orthogonality",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 333,
+      "signature": "theorem spheroidal_orthogonality (G Lf Lg : ℝ) (f f1 f2 g g1 g2 : ℝ → ℝ) (hne : Lf ≠ Lg) (hfc : ContinuousOn f (Icc (-1 : ℝ) 1)) (hgc : ContinuousOn g (Icc (-1 : ℝ) 1)) (hfd : ∀ x ∈ Ioo (-1 : ℝ) 1, HasDerivAt f (f1 x) x ∧ HasDerivAt f1 (f2 x) x) (hgd : ∀ x ∈ Ioo (-1 : ℝ) 1, HasDerivAt g (g1 x) x ∧ HasDerivAt g1 (g2 x) x) (hfe : ∀ x ∈ Ioo (-1 : ℝ) 1, -(1 - x ^ 2) * f2 x + 2 * x * f1 x + G * x ^ 2 * f x = (Lf + G) * f x) (hge : ∀ x ∈ Ioo (-1 : ℝ) 1, -(1 - x ^ 2) * g2 x + 2 * x * g1 x + G * x ^ 2 * g x = (Lg + G) * g x) (hfr : Tendsto (fun x : ℝ => (1 - x ^ 2) * f1 x) (𝓝[<] (1 : ℝ)) (𝓝 0)) (hfl : Tendsto (fun x : ℝ => (1 - x ^ 2) * f1 x) (𝓝[>] (-1 : ℝ)) (𝓝 0)) (hgr : Tendsto (fun x : ℝ => (1 - x ^ 2) * g1 x) (𝓝[<] (1 : ℝ)) (𝓝 0)) (hgl : Tendsto (fun x : ℝ => (1 - x ^ 2) * g1 x) (𝓝[>] (-1 : ℝ)) (𝓝 0)) : ∫ x in (-1 : ℝ)..1, f x * g x = 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spheroidal_eigenvalue_lower_bound",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 468,
+      "signature": "theorem spheroidal_eigenvalue_lower_bound {G Λ : ℝ} (h : RegularEvenSpheroidalEigenvalue G Λ) : -max G 0 ≤ Λ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "qLeg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 628,
+      "signature": "noncomputable def qLeg (x : ℝ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "qLeg1",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 631,
+      "signature": "noncomputable def qLeg1 (x : ℝ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "qLeg2",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 635,
+      "signature": "noncomputable def qLeg2 (x : ℝ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "qLeg_hasDerivAt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 637,
+      "signature": "theorem qLeg_hasDerivAt {x : ℝ} (hx : x ∈ Ioo (-1 : ℝ) 1) : HasDerivAt qLeg (qLeg1 x) x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "qLeg1_hasDerivAt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 659,
+      "signature": "theorem qLeg1_hasDerivAt {x : ℝ} (hx : x ∈ Ioo (-1 : ℝ) 1) : HasDerivAt qLeg1 (qLeg2 x) x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "qLeg_ode",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 683,
+      "signature": "theorem qLeg_ode {x : ℝ} (hx : x ∈ Ioo (-1 : ℝ) 1) : -(1 - x ^ 2) * qLeg2 x + 2 * x * qLeg1 x + 0 * x ^ 2 * qLeg x = (2 + 0) * qLeg x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "qLeg_even",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 690,
+      "signature": "theorem qLeg_even (x : ℝ) : qLeg (-x) = qLeg x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "qLeg_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 694,
+      "signature": "theorem qLeg_zero : qLeg 0 = 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "qLeg1_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 696,
+      "signature": "theorem qLeg1_zero : qLeg1 0 = 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "tendsto_one_sub_mul_log",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 699,
+      "signature": "theorem tendsto_one_sub_mul_log : Tendsto (fun x : ℝ => (1 - x) * Real.log (1 - x)) (𝓝[<] (1 : ℝ)) (𝓝 0)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "qLeg1_flux_limit",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 716,
+      "signature": "theorem qLeg1_flux_limit : Tendsto (fun x : ℝ => (1 - x ^ 2) * qLeg1 x) (𝓝[<] (1 : ℝ)) (𝓝 (-1))",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "control_zero_mem",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 748,
+      "signature": "theorem control_zero_mem : RegularEvenSpheroidalEigenvalue 0 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "control_six_mem",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 754,
+      "signature": "theorem control_six_mem : RegularEvenSpheroidalEigenvalue 0 6",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "control_two_not_mem",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 773,
+      "signature": "theorem control_two_not_mem : ¬ RegularEvenSpheroidalEigenvalue 0 2",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "control_two_odd_witness",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 796,
+      "signature": "theorem control_two_odd_witness : (∀ x ∈ Ioo (-1 : ℝ) 1, HasDerivAt (fun t : ℝ => t) (1 : ℝ) x ∧ HasDerivAt (fun _ : ℝ => (1 : ℝ)) (0 : ℝ) x) ∧ (∀ x ∈ Ioo (-1 : ℝ) 1, -(1 - x ^ 2) * 0 + 2 * x * 1 + 0 * x ^ 2 * x = (2 + 0) * x) ∧ Tendsto (fun x : ℝ => (1 - x ^ 2) * 1) (𝓝[<] (1 : ℝ)) (𝓝 0) ∧ Tendsto (fun x : ℝ => (1 - x ^ 2) * 1) (𝓝[>] (-1 : ℝ)) (𝓝 0) ∧ ¬ (∀ x : ℝ, (fun t : ℝ => t) (-x) = (fun t : ℝ => t) x)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "exists_strictMono_range_eq_of_locallyFinite",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 818,
+      "signature": "theorem exists_strictMono_range_eq_of_locallyFinite {S : Set ℝ} (hinf : S.Infinite) (hlf : ∀ b : ℝ, (S ∩ Iic b).Finite) : ∃ μ : ℕ → ℝ, StrictMono μ ∧ range μ = S",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spheroidal_dirichlet_energy_bound",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 925,
+      "signature": "theorem spheroidal_dirichlet_energy_bound (G Λ : ℝ) (f f1 f2 : ℝ → ℝ) (hK : 0 ≤ Λ + |G|) (hc : ContinuousOn f (Icc (-1 : ℝ) 1)) (hd : ∀ x ∈ Ioo (-1 : ℝ) 1, HasDerivAt f (f1 x) x ∧ HasDerivAt f1 (f2 x) x) (hode : ∀ x ∈ Ioo (-1 : ℝ) 1, -(1 - x ^ 2) * f2 x + 2 * x * f1 x + G * x ^ 2 * f x = (Λ + G) * f x) (hlim1 : Tendsto (fun x : ℝ => (1 - x ^ 2) * f1 x) (𝓝[<] (1 : ℝ)) (𝓝 0)) (hlim2 : Tendsto (fun x : ℝ => (1 - x ^ 2) * f1 x) (𝓝[>] (-1 : ℝ)) (𝓝 0)) {a b : ℝ} (ha : a ∈ Ioo (-1 : ℝ) 1) (hb : b ∈ Ioo (-1 : ℝ) 1) (hab : a ≤ b) : (∫ x in a..b, (1 - x ^ 2) * f1 x ^ 2) ≤ (Λ + |G|) * ∫ x in (-1 : ℝ)..1, f x ^ 2",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "real_sq_le_mul_of_forall_amgm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 1062,
+      "signature": "theorem real_sq_le_mul_of_forall_amgm {u A B : ℝ} (hu : 0 ≤ u) (hA : 0 ≤ A) (hB : 0 ≤ B) (h : ∀ l : ℝ, 0 < l → u ≤ (l * A + B / l) / 2) : u ^ 2 ≤ A * B",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spheroidal_sq_sub_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 1104,
+      "signature": "theorem spheroidal_sq_sub_le (f f1 : ℝ → ℝ) (hd : ∀ x ∈ Ioo (-1 : ℝ) 1, HasDerivAt f (f1 x) x) (hf1c : ContinuousOn f1 (Ioo (-1 : ℝ) 1)) {y x : ℝ} (hy : y ∈ Ioo (-1 : ℝ) 1) (hx : x ∈ Ioo (-1 : ℝ) 1) (hyx : y ≤ x) : (f x - f y) ^ 2 ≤ (∫ t in y..x, (1 - t ^ 2) * f1 t ^ 2) * (∫ t in y..x, 1 / (1 - t ^ 2))",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spheroidal_integral_inv_one_sub_sq_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 1172,
+      "signature": "theorem spheroidal_integral_inv_one_sub_sq_le {y x : ℝ} (hy : 0 ≤ y) (hyx : y ≤ x) (hx : x < 1) : (∫ t in y..x, 1 / (1 - t ^ 2)) ≤ Real.log (1 - y) - Real.log (1 - x)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spheroidal_integral_inv_one_sub_sq_nonneg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 1212,
+      "signature": "theorem spheroidal_integral_inv_one_sub_sq_nonneg {y x : ℝ} (hy : -1 < y) (hyx : y ≤ x) (hx : x < 1) : 0 ≤ ∫ t in y..x, 1 / (1 - t ^ 2)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spheroidal_tail_bound",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 1223,
+      "signature": "theorem spheroidal_tail_bound (f f1 : ℝ → ℝ) (D τ : ℝ) (hτ0 : 0 < τ) (hτ1 : τ ≤ 1 / 2) (hcf : ContinuousOn f (Icc (-1 : ℝ) 1)) (hd : ∀ x ∈ Ioo (-1 : ℝ) 1, HasDerivAt f (f1 x) x) (hf1c : ContinuousOn f1 (Ioo (-1 : ℝ) 1)) (hD0 : 0 ≤ D) (hD : ∀ u v : ℝ, u ∈ Ioo (-1 : ℝ) 1 → v ∈ Ioo (-1 : ℝ) 1 → u ≤ v → (∫ t in u..v, (1 - t ^ 2) * f1 t ^ 2) ≤ D) : (∫ x in (1 - τ)..1, f x ^ 2) ≤ 2 * τ * f (1 - τ) ^ 2 + 2 * D * τ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "lipschitzOnWith_weaken",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 1359,
+      "signature": "theorem lipschitzOnWith_weaken {α β : Type*} [PseudoEMetricSpace α] [PseudoEMetricSpace β] {K K' : NNReal} {F : α → β} {s : Set α} (h : LipschitzOnWith K F s) (hKK : K ≤ K') : LipschitzOnWith K' F s",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spheroidal_apriori_bound",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 1366,
+      "signature": "theorem spheroidal_apriori_bound (G Λ c L : ℝ) (hc0 : 0 < c) (hc1 : c < 1) (hL : (2 + |G| + |Λ + G|) / (1 - c ^ 2) + 1 ≤ L) (f f1 f2 : ℝ → ℝ) (hfd : ∀ x ∈ Ioo (-1 : ℝ) 1, HasDerivAt f (f1 x) x ∧ HasDerivAt f1 (f2 x) x) (hfe : ∀ x ∈ Ioo (-1 : ℝ) 1, -(1 - x ^ 2) * f2 x + 2 * x * f1 x + G * x ^ 2 * f x = (Λ + G) * f x) {x : ℝ} (hx : x ∈ Icc 0 c) : max |f x| |f1 x| ≤ max |f 0| |f1 0| * Real.exp (L * x)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spheroidal_param_dependence",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 1429,
+      "signature": "theorem spheroidal_param_dependence (G Λ Λ' c L P : ℝ) (hc0 : 0 < c) (hc1 : c < 1) (hL : (2 + |G| + |Λ + G|) / (1 - c ^ 2) + 1 ≤ L) (hL1 : 1 ≤ L) (hP0 : 0 ≤ P) (f f1 f2 g g1 g2 : ℝ → ℝ) (hfd : ∀ x ∈ Ioo (-1 : ℝ) 1, HasDerivAt f (f1 x) x ∧ HasDerivAt f1 (f2 x) x) (hgd : ∀ x ∈ Ioo (-1 : ℝ) 1, HasDerivAt g (g1 x) x ∧ HasDerivAt g1 (g2 x) x) (hfe : ∀ x ∈ Ioo (-1 : ℝ) 1, -(1 - x ^ 2) * f2 x + 2 * x * f1 x + G * x ^ 2 * f x = (Λ + G) * f x) (hge : ∀ x ∈ Ioo (-1 : ℝ) 1, -(1 - x ^ 2) * g2 x + 2 * x * g1 x + G * x ^ 2 * g x = (Λ' + G) * g x) (hgP : ∀ t ∈ Icc (0 : ℝ) c, |g t| ≤ P) (h0 : f 0 = g 0) (h1 : f1 0 = g1 0) {x : ℝ} (hx : x ∈ Icc 0 c) : |f x - g x| ≤ |Λ - Λ'| * P / (1 - c ^ 2) * Real.exp (L * c)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "integral_sq_even_reflect",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 1562,
+      "signature": "theorem integral_sq_even_reflect (f : ℝ → ℝ) (hev : ∀ x : ℝ, f (-x) = f x) (a b : ℝ) : (∫ x in a..b, f x ^ 2) = ∫ x in (-b)..(-a), f x ^ 2",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "integral_sq_even_half",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 1568,
+      "signature": "theorem integral_sq_even_half (f : ℝ → ℝ) (hev : ∀ x : ℝ, f (-x) = f x) (hcf : ContinuousOn f (Icc (-1 : ℝ) 1)) : (∫ x in (-1 : ℝ)..1, f x ^ 2) = 2 * ∫ x in (0 : ℝ)..1, f x ^ 2",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spheroidal_val_sq_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 1587,
+      "signature": "theorem spheroidal_val_sq_le (f : ℝ → ℝ) (D W : ℝ) (hcf : ContinuousOn f (Icc (-1 : ℝ) 1)) (x : ℝ) (hbd : ∀ y ∈ Icc (0 : ℝ) (1 / 2), (f x - f y) ^ 2 ≤ D * W) : f x ^ 2 ≤ 4 * (∫ y in (0 : ℝ)..(1 / 2), f y ^ 2) + 2 * D * W",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spheroidal_tail_uniform",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 1611,
+      "signature": "theorem spheroidal_tail_uniform (G Λ K τ : ℝ) (f f1 f2 : ℝ → ℝ) (hK0 : 0 ≤ Λ + |G|) (hKle : Λ + |G| ≤ K) (hτ0 : 0 < τ) (hτ1 : τ ≤ 1 / 2) (hev : ∀ x : ℝ, f (-x) = f x) (hcf : ContinuousOn f (Icc (-1 : ℝ) 1)) (hfd : ∀ x ∈ Ioo (-1 : ℝ) 1, HasDerivAt f (f1 x) x ∧ HasDerivAt f1 (f2 x) x) (hode : ∀ x ∈ Ioo (-1 : ℝ) 1, -(1 - x ^ 2) * f2 x + 2 * x * f1 x + G * x ^ 2 * f x = (Λ + G) * f x) (hlim1 : Tendsto (fun x : ℝ => (1 - x ^ 2) * f1 x) (𝓝[<] (1 : ℝ)) (𝓝 0)) (hlim2 : Tendsto (fun x : ℝ => (1 - x ^ 2) * f1 x) (𝓝[>] (-1 : ℝ)) (𝓝 0)) : (∫ x in (1 - τ)..1, f x ^ 2) ≤ τ * (4 + 4 * K * (-Real.log τ) + 2 * K) * (∫ x in (-1 : ℝ)..1, f x ^ 2)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spheroidal_normalized_witness",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 1700,
+      "signature": "theorem spheroidal_normalized_witness {G Λ : ℝ} (h : RegularEvenSpheroidalEigenvalue G Λ) : ∃ f f1 f2 : ℝ → ℝ, f 0 = 1 ∧ f1 0 = 0 ∧ (∀ x : ℝ, f (-x) = f x) ∧ ContinuousOn f (Icc (-1 : ℝ) 1) ∧ (∀ x ∈ Ioo (-1 : ℝ) 1, HasDerivAt f (f1 x) x ∧ HasDerivAt f1 (f2 x) x) ∧ (∀ x ∈ Ioo (-1 : ℝ) 1, -(1 - x ^ 2) * f2 x + 2 * x * f1 x + G * x ^ 2 * f x = (Λ + G) * f x) ∧ Tendsto (fun x : ℝ => (1 - x ^ 2) * f1 x) (𝓝[<] (1 : ℝ)) (𝓝 0) ∧ Tendsto (fun x : ℝ => (1 - x ^ 2) * f1 x) (𝓝[>] (-1 : ℝ)) (𝓝 0)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "finite_of_separated",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 1738,
+      "signature": "theorem finite_of_separated {T : Set ℝ} {a b δ : ℝ} (hδ : 0 < δ) (hT : T ⊆ Icc a b) (hsep : ∀ x ∈ T, ∀ y ∈ T, x ≠ y → δ ≤ |x - y|) : T.Finite",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "exists_small_tail_factor",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 1756,
+      "signature": "theorem exists_small_tail_factor (K ε : ℝ) (hε : 0 < ε) : ∃ τ : ℝ, 0 < τ ∧ τ ≤ 1 / 2 ∧ τ * (4 + 4 * K * (-Real.log τ) + 2 * K) ≤ ε",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "integral_even_reflect",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 1785,
+      "signature": "theorem integral_even_reflect (h : ℝ → ℝ) (hev : ∀ x : ℝ, h (-x) = h x) (a b : ℝ) : (∫ x in a..b, h x) = ∫ x in (-b)..(-a), h x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spheroidal_mass_upper",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 1792,
+      "signature": "theorem spheroidal_mass_upper (f : ℝ → ℝ) (c P : ℝ) (hc0 : 0 < c) (hc1 : c ≤ 1) (hev : ∀ x : ℝ, f (-x) = f x) (hcf : ContinuousOn f (Icc (-1 : ℝ) 1)) (hP : ∀ x ∈ Icc (0 : ℝ) c, |f x| ≤ P) (htail : (∫ x in c..1, f x ^ 2) ≤ (1 / 4) * ∫ x in (-1 : ℝ)..1, f x ^ 2) : (∫ x in (-1 : ℝ)..1, f x ^ 2) ≤ 4 * P ^ 2",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spheroidal_mass_lower",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 1818,
+      "signature": "theorem spheroidal_mass_lower (f f1 : ℝ → ℝ) (c P : ℝ) (hc0 : 0 < c) (hc1 : c < 1) (hP0 : 0 < P) (hev : ∀ x : ℝ, f (-x) = f x) (hcf : ContinuousOn f (Icc (-1 : ℝ) 1)) (hf0 : f 0 = 1) (hd : ∀ x ∈ Ioo (-1 : ℝ) 1, HasDerivAt f (f1 x) x) (hf1c : ContinuousOn f1 (Ioo (-1 : ℝ) 1)) (hP : ∀ x ∈ Icc (0 : ℝ) c, |f1 x| ≤ P) : (min c (1 / (2 * P))) / 2 ≤ ∫ x in (-1 : ℝ)..1, f x ^ 2",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spheroidal_package",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 1884,
+      "signature": "theorem spheroidal_package (G b K Θ τ1 c1 L1 P Λ : ℝ) (hΛ : RegularEvenSpheroidalEigenvalue G Λ) (hΛb : Λ ≤ b) (hKb : b + |G| ≤ K) (hΘb : ∀ x : ℝ, -max G 0 ≤ x → x ≤ b → |x + G| ≤ Θ) (hτ10 : 0 < τ1) (hτ1h : τ1 ≤ 1 / 2) (hc1def : c1 = 1 - τ1) (hτ1s : τ1 * (4 + 4 * K * (-Real.log τ1) + 2 * K) ≤ 1 / 4) (hL1 : (2 + |G| + Θ) / (1 - c1 ^ 2) + 1 ≤ L1) (hPdef : P = Real.exp (L1 * c1)) : ∃ f f1 f2 : ℝ → ℝ, (∀ x : ℝ, f (-x) = f x) ∧ ContinuousOn f (Icc (-1 : ℝ) 1) ∧ (∀ x ∈ Ioo (-1 : ℝ) 1, HasDerivAt f (f1 x) x ∧ HasDerivAt f1 (f2 x) x) ∧ (∀ x ∈ Ioo (-1 : ℝ) 1, -(1 - x ^ 2) * f2 x + 2 * x * f1 x + G * x ^ 2 * f x = (Λ + G) * f x) ∧ Tendsto (fun x : ℝ => (1 - x ^ 2) * f1 x) (𝓝[<] (1 : ℝ)) (𝓝 0) ∧ Tendsto (fun x : ℝ => (1 - x ^ 2) * f1 x) (𝓝[>] (-1 : ℝ)) (𝓝 0) ∧ f 0 = 1 ∧ f1 0 = 0 ∧ (min c1 (1 / (2 * P))) / 2 ≤ (∫ x in (-1 : ℝ)..1, f x ^ 2) ∧ (∫ x in (-1 : ℝ)..1, f x ^ 2) ≤ 4 * P ^ 2 ∧ (∀ τ : ℝ, 0 < τ → τ ≤ 1 / 2 → (∫ x in (1 - τ)..1, f x ^ 2) ≤ τ * (4 + 4 * K * (-Real.log τ) + 2 * K) * (∫ x in (-1 : ℝ)..1, f x ^ 2)) ∧ (∀ c L : ℝ, 0 < c → c < 1 → (2 + |G| + Θ) / (1 - c ^ 2) + 1 ≤ L → ∀ x ∈ Icc (0 : ℝ) c, max |f x| |f1 x| ≤ Real.exp (L * c))",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spheroidal_spectrum_separated",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 1972,
+      "signature": "theorem spheroidal_spectrum_separated (G b : ℝ) : ∃ δ : ℝ, 0 < δ ∧ ∀ Λ Λ' : ℝ, RegularEvenSpheroidalEigenvalue G Λ → RegularEvenSpheroidalEigenvalue G Λ' → Λ ≤ b → Λ' ≤ b → Λ ≠ Λ' → δ ≤ |Λ - Λ'|",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spheroidal_spectrum_locallyFinite",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 2194,
+      "signature": "theorem spheroidal_spectrum_locallyFinite (G b : ℝ) : ({Λ : ℝ | RegularEvenSpheroidalEigenvalue G Λ} ∩ Iic b).Finite",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spheroidal_spectrum_infinite",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 2208,
+      "signature": "theorem spheroidal_spectrum_infinite (G : ℝ) : {Λ : ℝ | RegularEvenSpheroidalEigenvalue G Λ}.Infinite",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "spheroidal_even_spectrum",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceMain.lean",
+      "line": 2216,
+      "signature": "theorem spheroidal_even_spectrum (G : ℝ) : ∃ μ : ℕ → ℝ, StrictMono μ ∧ range μ = {Λ : ℝ | RegularEvenSpheroidalEigenvalue G Λ}",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "specRho",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceSpectrum.lean",
+      "line": 30,
+      "signature": "def specRho : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "specLam",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceSpectrum.lean",
+      "line": 33,
+      "signature": "noncomputable def specLam (k : ℕ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "specD",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceSpectrum.lean",
+      "line": 36,
+      "signature": "noncomputable def specD (G : ℝ) (k : ℕ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "specJL",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceSpectrum.lean",
+      "line": 39,
+      "signature": "noncomputable def specJL (k : ℕ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "specJR",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceSpectrum.lean",
+      "line": 42,
+      "signature": "noncomputable def specJR (k : ℕ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "specJL_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceSpectrum.lean",
+      "line": 44,
+      "signature": "@[simp] theorem specJL_zero : specJL 0 = 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "specJL_succ",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceSpectrum.lean",
+      "line": 46,
+      "signature": "@[simp] theorem specJL_succ (k : ℕ) : specJL (k + 1) = jacA k",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "specJL_abs_le_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceSpectrum.lean",
+      "line": 48,
+      "signature": "theorem specJL_abs_le_one (k : ℕ) : |specJL k| ≤ 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "specJR_abs_le_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceSpectrum.lean",
+      "line": 53,
+      "signature": "theorem specJR_abs_le_one (k : ℕ) : |specJR k| ≤ 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "specF",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceSpectrum.lean",
+      "line": 56,
+      "signature": "noncomputable def specF (c : ℕ → ℝ) (x : ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "specF1",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceSpectrum.lean",
+      "line": 59,
+      "signature": "noncomputable def specF1 (c : ℕ → ℝ) (x : ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "specF2",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceSpectrum.lean",
+      "line": 62,
+      "signature": "noncomputable def specF2 (c : ℕ → ℝ) (x : ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "spec_summable_of_bound",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceSpectrum.lean",
+      "line": 66,
+      "signature": "theorem spec_summable_of_bound {A B : ℝ} (hB0 : 0 ≤ B) (hB1 : B < 1) {v : ℕ → ℝ} (hv : ∀ k, |v k| ≤ A * B ^ k) : Summable v",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spec_A_nonneg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceSpectrum.lean",
+      "line": 75,
+      "signature": "theorem spec_A_nonneg (hdecay : ∀ k, |c k| ≤ A * (1 / specRho) ^ k) : 0 ≤ A",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spec_summable_v",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceSpectrum.lean",
+      "line": 80,
+      "signature": "theorem spec_summable_v (hdecay : ∀ k, |c k| ≤ A * (1 / specRho) ^ k) {x : ℝ} (hx : |x| ≤ 1) : Summable (fun k => c k * lpv (2 * k) x)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spec_summable_d",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceSpectrum.lean",
+      "line": 100,
+      "signature": "theorem spec_summable_d (hdecay : ∀ k, |c k| ≤ A * (1 / specRho) ^ k) {x : ℝ} (hx : |x| ≤ 1) : Summable (fun k => c k * lpd (2 * k) x)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spec_summable_dd",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceSpectrum.lean",
+      "line": 118,
+      "signature": "theorem spec_summable_dd (hdecay : ∀ k, |c k| ≤ A * (1 / specRho) ^ k) {x : ℝ} (hx : |x| ≤ 1) : Summable (fun k => c k * lpdd (2 * k) x)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spec_hasDerivAt_F",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceSpectrum.lean",
+      "line": 138,
+      "signature": "theorem spec_hasDerivAt_F (hdecay : ∀ k, |c k| ≤ A * (1 / specRho) ^ k) {x : ℝ} (hx : x ∈ Ioo (-1 : ℝ) 1) : HasDerivAt (specF c) (specF1 c x) x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spec_hasDerivAt_F1",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceSpectrum.lean",
+      "line": 165,
+      "signature": "theorem spec_hasDerivAt_F1 (hdecay : ∀ k, |c k| ≤ A * (1 / specRho) ^ k) {x : ℝ} (hx : x ∈ Ioo (-1 : ℝ) 1) : HasDerivAt (specF1 c) (specF2 c x) x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spec_continuousOn_F",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceSpectrum.lean",
+      "line": 192,
+      "signature": "theorem spec_continuousOn_F (hdecay : ∀ k, |c k| ≤ A * (1 / specRho) ^ k) : ContinuousOn (specF c) (Icc (-1 : ℝ) 1)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spec_continuousOn_F1",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceSpectrum.lean",
+      "line": 220,
+      "signature": "theorem spec_continuousOn_F1 (hdecay : ∀ k, |c k| ≤ A * (1 / specRho) ^ k) : ContinuousOn (specF1 c) (Icc (-1 : ℝ) 1)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spec_summable_shift",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceSpectrum.lean",
+      "line": 251,
+      "signature": "theorem spec_summable_shift {D : ℝ} {w : ℕ → ℝ} (hw : ∀ k, |w k| ≤ D * (1 / specRho) ^ k) {m : ℕ → ℕ} (hm : ∀ k, m k ≤ 2 * k + 4) {x : ℝ} (hx : |x| ≤ 1) : Summable (fun k => w k * lpv (m k) x)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spec_ode",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceSpectrum.lean",
+      "line": 278,
+      "signature": "theorem spec_ode {G Λ : ℝ} (hdecay : ∀ k, |c k| ≤ A * (1 / specRho) ^ k) (hrows : ∀ k, (specD G k - Λ) * c k = G * (specJL k * c (k - 1) + specJR k * c (k + 1))) {x : ℝ} (hx : x ∈ Ioo (-1 : ℝ) 1) : -(1 - x ^ 2) * specF2 c x + 2 * x * specF1 c x + G * x ^ 2 * specF c x = (Λ + G) * specF c x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spec_even",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceSpectrum.lean",
+      "line": 404,
+      "signature": "theorem spec_even (x : ℝ) : specF c (-x) = specF c x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "spec_at_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceSpectrum.lean",
+      "line": 412,
+      "signature": "theorem spec_at_one : specF c 1 = ∑' k, c k",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
     },
     {
       "kind": "theorem",
