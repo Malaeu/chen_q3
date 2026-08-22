@@ -1,7 +1,7 @@
 import Mathlib
-import RequestProject.Defs
-import RequestProject.Legendre
-import RequestProject.Spectrum
+import Q3.Proofs.RouteB.SpheroidalSourceDefs
+import Q3.Proofs.RouteB.SpheroidalSourceLegendre
+import Q3.Proofs.RouteB.SpheroidalSourceSpectrum
 
 /-!
 # High-mode preflight: uniform diagonal dominance and the decay crosswalk
@@ -30,6 +30,8 @@ first exact missing lemma is stated at the bottom as the remaining obligation.
 
 open Set
 open scoped NNReal
+
+set_option maxHeartbeats 2000000
 
 noncomputable section
 
