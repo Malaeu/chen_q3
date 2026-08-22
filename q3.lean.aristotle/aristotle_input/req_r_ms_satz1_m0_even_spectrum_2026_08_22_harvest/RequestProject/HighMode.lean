@@ -182,6 +182,22 @@ theorem hmWeight_le_one (d : ℕ) : (1 / specRho) ^ d ≤ 1 := by
   refine pow_le_one₀ (hmWeight_nonneg 1 |>.trans (by unfold specRho; norm_num)) ?_
   rw [div_le_one specRho_pos]; exact specRho_one_le
 
+theorem hmTail_summable : Summable (fun j : ℕ => (1 / specRho : ℝ) ^ (j + 1)) := by
+  have hB0 : (0 : ℝ) ≤ 1 / specRho := by unfold specRho; positivity
+  have hB1 : (1 / specRho : ℝ) < 1 := by unfold specRho; norm_num
+  exact ((summable_geometric_of_lt_one hB0 hB1).mul_left (1 / specRho)).congr
+    (fun j => by rw [pow_succ]; ring)
+
+theorem hmTail_tsum : (∑' j : ℕ, (1 / specRho : ℝ) ^ (j + 1)) = 1 / 999 := by
+  have hB0 : (0 : ℝ) ≤ 1 / specRho := by unfold specRho; positivity
+  have hB1 : (1 / specRho : ℝ) < 1 := by unfold specRho; norm_num
+  have hcongr : (∑' j : ℕ, (1 / specRho : ℝ) ^ (j + 1)) =
+      ∑' j : ℕ, (1 / specRho : ℝ) * (1 / specRho) ^ j :=
+    tsum_congr (fun j => by rw [pow_succ]; ring)
+  rw [hcongr, tsum_mul_left, tsum_geometric_of_lt_one hB0 hB1]
+  unfold specRho
+  norm_num
+
 /-! ### Weight geometry -/
 
 /-- Antitone weight step: if the distance can drop by at most one, the weight
@@ -726,25 +742,243 @@ theorem hm_exists_row (G : ℝ) (n : ℕ)
 
 end FixedPoint
 
-/-! ### The remaining obligation, named exactly
+/-! ### From the row to a regular even eigenvalue -/
 
-The Banach fixed-point step is the first exact missing lemma:
+section Pipeline
 
-```text
-FIRST_EXACT_MISSING_LEMMA (not proved here):
-  For fixed G there exist N C with 0 ≤ C such that for every n ≥ N there
-  exist Λ and c : ℕ → ℝ with
-    c n = 1,
-    ∀ k, |c k| ≤ (1/specRho) ^ Nat.dist k n,
-    ∀ k, (specD G k - Λ) * c k
-           = G * (specJL k * c (k - 1) + specJR k * c (k + 1)),
-    |Λ - specD G n| ≤ C.
-```
+variable {c : ℕ → ℝ}
 
-Given that lemma, `decay_center_to_origin` feeds the row into `spec_ode`,
-`spec_continuousOn_F`, `spec_even` and `spec_at_one` unchanged, the centre
-coefficient `c n = 1` gives nonvanishing, and `specD_row_gap` is what makes
-the fixed-point map a contraction in the first place.
+/-- Endpoint flux at the right end: the derivative series is continuous up to
+the closed endpoint, the degenerate factor vanishes there. -/
+theorem spec_flux_right {A : ℝ} (hdecay : ∀ k, |c k| ≤ A * (1 / specRho) ^ k) :
+    Filter.Tendsto (fun x : ℝ => (1 - x ^ 2) * specF1 c x)
+      (nhdsWithin 1 (Iio 1)) (nhds 0) := by
+  have hmem : (1 : ℝ) ∈ Icc (-1 : ℝ) 1 := by norm_num
+  have hF1 : Filter.Tendsto (specF1 c) (nhdsWithin 1 (Ioo (-1 : ℝ) 1))
+      (nhds (specF1 c 1)) :=
+    ((spec_continuousOn_F1 hdecay 1 hmem).mono Ioo_subset_Icc_self)
+  rw [nhdsWithin_Ioo_eq_nhdsLT (by norm_num : (-1 : ℝ) < 1)] at hF1
+  have hfac : Filter.Tendsto (fun x : ℝ => 1 - x ^ 2) (nhdsWithin 1 (Iio 1))
+      (nhds 0) := by
+    have hcont : Continuous fun x : ℝ => 1 - x ^ 2 := by fun_prop
+    have h0 : Filter.Tendsto (fun x : ℝ => 1 - x ^ 2) (nhds 1) (nhds 0) :=
+      hcont.tendsto' 1 0 (by norm_num)
+    exact h0.mono_left nhdsWithin_le_nhds
+  have := hfac.mul hF1
+  simpa using this
+
+/-- Endpoint flux at the left end. -/
+theorem spec_flux_left {A : ℝ} (hdecay : ∀ k, |c k| ≤ A * (1 / specRho) ^ k) :
+    Filter.Tendsto (fun x : ℝ => (1 - x ^ 2) * specF1 c x)
+      (nhdsWithin (-1) (Ioi (-1))) (nhds 0) := by
+  have hmem : (-1 : ℝ) ∈ Icc (-1 : ℝ) 1 := by norm_num
+  have hF1 : Filter.Tendsto (specF1 c) (nhdsWithin (-1) (Ioo (-1 : ℝ) 1))
+      (nhds (specF1 c (-1))) :=
+    ((spec_continuousOn_F1 hdecay (-1) hmem).mono Ioo_subset_Icc_self)
+  rw [nhdsWithin_Ioo_eq_nhdsGT (by norm_num : (-1 : ℝ) < 1)] at hF1
+  have hfac : Filter.Tendsto (fun x : ℝ => 1 - x ^ 2) (nhdsWithin (-1) (Ioi (-1)))
+      (nhds 0) := by
+    have hcont : Continuous fun x : ℝ => 1 - x ^ 2 := by fun_prop
+    have h0 : Filter.Tendsto (fun x : ℝ => 1 - x ^ 2) (nhds (-1)) (nhds 0) :=
+      hcont.tendsto' (-1) 0 (by norm_num)
+    exact h0.mono_left nhdsWithin_le_nhds
+  have := hfac.mul hF1
+  simpa using this
+
+end Pipeline
+
+/-- The centre value: a moving-centre row with unit centre sums to at least
+`1 − 2/999` at the right endpoint, hence is nonzero there. -/
+theorem hm_specF_one_ne_zero (n : ℕ) {c : ℕ → ℝ}
+    (hc1 : c n = 1)
+    (hdec : ∀ k, |c k| ≤ (1 / specRho) ^ Nat.dist k n) :
+    specF c 1 ≠ 0 := by
+  have hρ1 := specRho_one_le
+  have hρ0 := specRho_pos
+  have hdec0 : ∀ k, |c k| ≤ specRho ^ n * (1 / specRho) ^ k :=
+    decay_center_to_origin hρ1 n hdec
+  -- the deviation series and the majorant
+  set e : ℕ → ℝ := fun k => if k = n then 0 else c k with he
+  set w : ℕ → ℝ := fun k => if k = n then 0 else (1 / specRho) ^ Nat.dist k n
+    with hwdef
+  have hB0 : (0 : ℝ) ≤ 1 / specRho := by positivity
+  have hB1 : 1 / specRho < 1 := by unfold specRho; norm_num
+  have hebound : ∀ k, |e k| ≤ specRho ^ n * (1 / specRho) ^ k := by
+    intro k
+    by_cases hk : k = n
+    · simp only [he, hk, if_pos rfl, abs_zero]
+      positivity
+    · simp only [he, if_neg hk]
+      exact hdec0 k
+  have hwbound : ∀ k, |w k| ≤ specRho ^ n * (1 / specRho) ^ k := by
+    intro k
+    by_cases hk : k = n
+    · simp only [hwdef, hk, if_pos rfl, abs_zero]
+      positivity
+    · simp only [hwdef, if_neg hk, abs_of_nonneg (hmWeight_nonneg _)]
+      exact le_trans (le_abs_self _)
+        (decay_center_to_origin hρ1 n
+          (c := fun j => (1 / specRho) ^ Nat.dist j n)
+          (fun j => le_of_eq (abs_of_nonneg (hmWeight_nonneg _))) k)
+  have hesum : Summable e := spec_summable_of_bound hB0 hB1 hebound
+  have hwsum : Summable w := spec_summable_of_bound hB0 hB1 hwbound
+  have hcsum : Summable c := spec_summable_of_bound hB0 hB1 hdec0
+  -- split off the centre
+  have hsplitfun : c = fun k => (if k = n then (1 : ℝ) else 0) + e k := by
+    funext k
+    by_cases hk : k = n
+    · subst hk; simp [he, hc1]
+    · simp [he, hk]
+  have hsingle : Summable (fun k => if k = n then (1 : ℝ) else 0) :=
+    (hasSum_ite_eq n (1 : ℝ)).summable
+  have htsum_c : (∑' k, c k) = 1 + ∑' k, e k := by
+    conv_lhs => rw [hsplitfun]
+    rw [hsingle.tsum_add hesum, tsum_ite_eq]
+  -- the tail bound: |∑ e| ≤ ∑ w ≤ 2/999
+  have habs_le : |∑' k, e k| ≤ ∑' k, w k := by
+    have h1 : |∑' k, e k| ≤ ∑' k, |e k| := by
+      have := norm_tsum_le_tsum_norm (f := e) (by
+        simpa [Real.norm_eq_abs] using hesum.abs)
+      simpa [Real.norm_eq_abs] using this
+    refine le_trans h1 (hesum.abs.tsum_le_tsum ?_ hwsum)
+    intro k
+    by_cases hk : k = n
+    · simp [he, hwdef, hk]
+    · simp only [he, hwdef, if_neg hk]
+      exact hdec k
+  have hwtail : (∑' k, w k) ≤ 2 / 999 := by
+    -- split at n + 1
+    have hsplit := (hwsum.sum_add_tsum_nat_add (n + 1)).symm
+    have hfin : (∑ i ∈ Finset.range (n + 1), w i) ≤ 1 / 999 := by
+      rw [Finset.sum_range_succ]
+      have hwn : w n = 0 := by simp [hwdef]
+      rw [hwn, add_zero]
+      have hval : ∀ i ∈ Finset.range n, w i = (1 / specRho) ^ (n - i) := by
+        intro i hi
+        have hin : i ≠ n := by
+          have := Finset.mem_range.mp hi; omega
+        have hdist : Nat.dist i n = n - i := by
+          have := Finset.mem_range.mp hi
+          exact Nat.dist_eq_sub_of_le (by omega)
+        simp [hwdef, hin, hdist]
+      rw [Finset.sum_congr rfl hval]
+      have hreflect :
+          (∑ i ∈ Finset.range n, (1 / specRho) ^ (n - i)) =
+            ∑ j ∈ Finset.range n, (1 / specRho) ^ (j + 1) := by
+        have := Finset.sum_range_reflect
+          (fun j => (1 / specRho : ℝ) ^ (j + 1)) n
+        calc (∑ i ∈ Finset.range n, (1 / specRho) ^ (n - i))
+            = ∑ i ∈ Finset.range n, (1 / specRho) ^ (n - 1 - i + 1) := by
+              refine Finset.sum_congr rfl ?_
+              intro i hi
+              have := Finset.mem_range.mp hi
+              congr 1
+              omega
+          _ = ∑ j ∈ Finset.range n, (1 / specRho) ^ (j + 1) := this
+      rw [hreflect]
+      have hle := Summable.sum_le_tsum (Finset.range n)
+        (fun j _ => hmWeight_nonneg (j + 1)) hmTail_summable
+      rw [hmTail_tsum] at hle
+      exact hle
+    have htail : (∑' i : ℕ, w (i + (n + 1))) ≤ 1 / 999 := by
+      have hval : ∀ i : ℕ, w (i + (n + 1)) = (1 / specRho) ^ (i + 1) := by
+        intro i
+        have hin : i + (n + 1) ≠ n := by omega
+        have hdist : Nat.dist (i + (n + 1)) n = i + 1 := by
+          rw [Nat.dist_comm]
+          have : Nat.dist n (i + (n + 1)) = i + n + 1 - n := by
+            exact Nat.dist_eq_sub_of_le (by omega)
+          omega
+        simp [hwdef, hin, hdist]
+      rw [tsum_congr hval, hmTail_tsum]
+    linarith [hsplit, hfin, htail]
+  -- assemble
+  have hone : specF c 1 = 1 + ∑' k, e k := by
+    rw [spec_at_one, htsum_c]
+  intro hzero
+  rw [hone] at hzero
+  have : |∑' k, e k| ≥ 1 := by
+    have : (∑' k, e k) = -1 := by linarith
+    rw [this]; norm_num
+  linarith [habs_le, hwtail]
+
+/-- **The witness, membership form.**  Under the threshold, the pinned
+eigenvalue is a regular even spheroidal eigenvalue. -/
+theorem hm_regularEven (G : ℝ) (n : ℕ)
+    (hn : 8 * (|G| + 1) * specRho ≤ 4 * (n : ℝ) + 2 - 4 * |G|) :
+    ∃ Λ : ℝ, RegularEvenSpheroidalEigenvalue G Λ ∧
+      |Λ - specD G n| ≤ 2 * |G| / specRho := by
+  obtain ⟨Λ, c, hc1, hdec, hrows, hpin⟩ := hm_exists_row G n hn
+  have hdec0 : ∀ k, |c k| ≤ specRho ^ n * (1 / specRho) ^ k :=
+    decay_center_to_origin specRho_one_le n hdec
+  refine ⟨Λ, ⟨specF c, specF1 c, specF2 c, ?_, ?_, ?_, ?_, ?_, ?_, ?_⟩, hpin⟩
+  · exact ⟨1, by norm_num, hm_specF_one_ne_zero n hc1 hdec⟩
+  · exact fun x => spec_even x
+  · exact spec_continuousOn_F hdec0
+  · exact fun x hx => ⟨spec_hasDerivAt_F hdec0 hx, spec_hasDerivAt_F1 hdec0 hx⟩
+  · exact fun x hx => spec_ode hdec0 hrows hx
+  · exact spec_flux_right hdec0
+  · exact spec_flux_left hdec0
+
+/-- **The final theorem in the verdict's N-form.**  For every parameter there
+are a threshold and a constant, the constant outside the quantifier over the
+mode, such that every large mode carries a regular even eigenvalue within the
+constant of the Jacobi diagonal. -/
+theorem spheroidal_highMode_eigenvalue_near_specD (G : ℝ) :
+    ∃ N : ℕ, ∃ C : ℝ, 0 ≤ C ∧
+      ∀ n : ℕ, N ≤ n →
+        ∃ Λ : ℝ, RegularEvenSpheroidalEigenvalue G Λ ∧
+          |Λ - specD G n| ≤ C := by
+  obtain ⟨N, hN⟩ := exists_nat_ge ((8 * (|G| + 1) * specRho + 4 * |G| - 2) / 4)
+  refine ⟨N, 2 * |G| / specRho,
+    div_nonneg (by positivity) specRho_pos.le, ?_⟩
+  intro n hn
+  have hcast : (N : ℝ) ≤ n := Nat.cast_le.mpr hn
+  have hmul := (div_le_iff₀ (by norm_num : (0 : ℝ) < 4)).mp hN
+  have hthr : 8 * (|G| + 1) * specRho ≤ 4 * (n : ℝ) + 2 - 4 * |G| := by
+    linarith
+  exact hm_regularEven G n hthr
+
+/-- **Infinitude, closed.**  The regular even spectrum is infinite: the
+high-mode witnesses are unbounded above, and a finite set of reals is not. -/
+theorem spheroidal_spectrum_infinite_of_highMode (G : ℝ) :
+    {Λ : ℝ | RegularEvenSpheroidalEigenvalue G Λ}.Infinite := by
+  by_contra hfin
+  rw [Set.not_infinite] at hfin
+  obtain ⟨b, hb⟩ := hfin.bddAbove
+  obtain ⟨N, C, hC0, hwit⟩ := spheroidal_highMode_eigenvalue_near_specD G
+  obtain ⟨M, hM⟩ := exists_nat_ge (b + C + |G| + 1)
+  set n := max N M with hn_def
+  have hnN : N ≤ n := le_max_left _ _
+  have hnM : (M : ℝ) ≤ n := Nat.cast_le.mpr (le_max_right _ _)
+  obtain ⟨Λ, hmem, hclose⟩ := hwit n hnN
+  have hΛb : Λ ≤ b := hb hmem
+  have hlam_lb : (n : ℝ) ≤ specLam n := by
+    unfold specLam
+    nlinarith [(Nat.cast_nonneg n : (0 : ℝ) ≤ n)]
+  have hjac : G * jacB n ≤ |G| := by
+    calc G * jacB n ≤ |G * jacB n| := le_abs_self _
+      _ = |G| * |jacB n| := abs_mul _ _
+      _ ≤ |G| * 1 := mul_le_mul_of_nonneg_left (jacB_abs_le_one n) (abs_nonneg G)
+      _ = |G| := mul_one _
+  have hD_lb : (n : ℝ) - |G| ≤ specD G n := by
+    unfold specD
+    linarith
+  have hΛ_lb : specD G n - C ≤ Λ := by
+    have := abs_le.mp hclose
+    linarith [this.1]
+  linarith
+
+/-! ### What stands, and what was the missing lemma
+
+The obligation stated in earlier slices as the first exact missing lemma —
+the Banach fixed point producing the row — is discharged by `hm_exists_row`,
+and the full pipeline to `RegularEvenSpheroidalEigenvalue` is closed by
+`hm_regularEven`. The verdict's N-form target is
+`spheroidal_highMode_eigenvalue_near_specD`, and
+`spheroidal_spectrum_infinite_of_highMode` closes, in this quarantined module
+and without touching `Main.lean`, the statement whose `sorry` ended the paid
+run.
 -/
 
 end
