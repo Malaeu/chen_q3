@@ -18,7 +18,7 @@ Floor U2.4 of verdict `68e9cd78` — the composition module
 Both inclusions are separately named lemmas, exactly as the floor requires:
 
 * forward — `evenBranch_mode4DLMF3035EvenCharacteristic` (the U2.3 theorem):
-  every admitted branch value below the cutoff satisfies the pole-safe
+  every branch value below the cutoff satisfies the pole-safe
   characteristic predicate;
 * reverse — `mode4DLMF3035EvenCharacteristic_mem_evenBranch` (this file,
   wrapping the ratified reverse crosswalk): every characteristic solution
