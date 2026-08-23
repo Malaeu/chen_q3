@@ -172,9 +172,14 @@ GAP_LOCKED → CROSSWALK_TYPED → FALSIFIER_PASSED → KERNEL_VERIFIED
 не бывает (наш NEXT_AFTER_SEMANTIC_ADMISSION_ONLY — тот же механизм на
 уровне тактов).
 
-**6.3. Shadow-backtest [РЕМОНТ + ПЛАН R6].**
-Предложенные «Goal 044–046 / Step32» — несуществующие объекты (номера
-изобретены вне шины). Ремонт: живым бэктестом конвейера УЖЕ является
+**6.3. Shadow-backtest [ПЛАН R6; исправление 2026-08-23 поздний вечер].**
+ИСПРАВЛЕНИЕ: первая версия этого пункта называла «Goal 044–046 / Step32»
+выдумкой — это ошибка наблюдателя. Голы 044–046 (Müntz v3 supplier
+transition) и коридор Step32/Step33 (PSD_STEP33_MONITOR) — реальные объекты
+шины; судья независимо выбрала их же коридорами бэктеста в мандате
+`proshka/ARSENAL_MANDATE_2026-08-23_MODULAR_DISCOVERY_COMPILER_SHADOW.md`
+(TASK Q3_AMDL_V0_SHADOW_BACKTEST; исполнение требует goal-scoped гранта
+владельца). Дополнительным живым бэктестом является
 цепочка 3C.1.1–3C.1.9 (2026-08-23): девять тактов с полными prediction
 ledger'ами судьи, где каждый прогноз (P = 0.25…0.99) получил
 CONFIRMED / REFUTED / REPAIRED без ретроактивного ремонта. Дешёвый R6:
