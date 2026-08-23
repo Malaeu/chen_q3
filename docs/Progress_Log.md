@@ -40,6 +40,37 @@
 
 ---
 
+## 2026-08-23 — вся алгебраическая цепь F72 закрыта за ночь; paper-входы типизированы
+
+**Развилка:** формализовать ли бумажные асимптотики (Satz 9, Fuchs Th.1) или
+оставить их явными типизированными входами и закрыть кернелом всё остальное.
+**Выбрали:** второе — судья запретил и axiom, и передоказательство книги;
+каждый бумажный вход стал точно типизированной гипотезой об ИМЕННО ТОМ объекте,
+который потребляет бинд (никакой подмены свидетеля).
+**Почему:** «a citation does not produce a Lean proof term»; при этом
+оставшийся paper-вход имеет один точный тип и уже не может быть ослаблен
+(не Satz 8 L2, не сырой O(γ^{-3/4}), не другой свидетель).
+**Что отвергли и почему:** project axiom — запрещён категорически;
+интегрирование sup-ошибки по окну — теряет степень λ (O(λ^{-1}) вместо
+O(λ^{-2})); square-only Fuchs-порт — не различает χ и −χ (плант).
+**Техника:** цепочка за одну ночь, семь этажей, каждый отдельно допущен:
+physical lift (b1e3f177) → selected transport (d624c2e4) → F72.1A0
+rate-transfer с денominator-guard-плантом (b6e46975) → F72.1C композиция с
+ProjectModeData×2 и границами D0≤1/D4≤91 (ed3a4a12) → F72.3B Fuchs-кроссвок
+μ=√(2π)χ сокращением центра + positive branch (193e21c6) → F72.4
+center-integral rate из frequency-zero-тождеств (d4c6fafc) → F72.5 zero-mass
+пакет с отрицательным Lemma72-scale (61343c78) → F72.6 однократный factor 4
+(ffb615b3). Четыре предсказанных судьёй класса сбоя не выстрелили; три файла
+прошли с первого прогона.
+**Следующий ход:** после аппробации F72.6 — L73_3_SELECTED_FERRERS_ESTAR_
+WINDOW_MAIN_ERROR; по вердикту `L73_2_ALGEBRAIC_ASSEMBLY_CLOSED_AFTER_F72_6:
+true`, непокрытым остаётся unconditional paper supply.
+**Адреса:** вердикты `de86b9bc`→`f9623d8b` в docs/routeB_bus/proshka/;
+восемь source records в docs/routeB_bus/.
+**Чей вердикт и аргумент:** Прошка, серия REQ-V follow-up: «the raw rate is
+an explicit hypothesis about the same source family used by the uniqueness
+bind; no rate is generated from a renamed project function».
+
 ## 2026-08-22 — ordering front закрыт целиком; physical lift открыт следующим
 
 **Развилка:** после V3.2 куда бить дальше — сразу в F72.1C (композиция bind +
