@@ -193,6 +193,42 @@ DUAL: "is the potential's bound independent of the object being excluded?
   is the iterated quantity bounded?"
 STATUS: UNTESTED
 
-# END v1 — 12 cards. Update discipline: status changes ONLY with goal-NNN cite
+
+## C13 RESTORE-SYMMETRY-BY-EXPLICIT-SHADOW                       [src: Zwegers 2002 mock-theta; owner-ratified 2026-08-23]
+MECHANISM: when an object ALMOST satisfies a functional law (modular
+  transform, Poisson/inversion identity, functional equation) because it was
+  truncated, localized, or otherwise pushed out of the law's domain: do not
+  estimate the violation. COMPLETE the object — write the EXACT identity
+  "broken object = transformed object + explicit shadow terms", where every
+  shadow term is a closed-form object (Zwegers: the period-integral shadow
+  restoring SL2(Z) for Ramanujan's mock theta functions; here: point/boundary
+  defects restoring the summation-map symmetry). Estimation happens only
+  AFTER the exact completion, term by term.
+SIGNATURE: a symmetry/functional law holds on an ideal class (Schwartz,
+  modular, zero-mass); the production object misses the class by explicit
+  finite data (truncation jumps, nonzero point values, endpoint seams); the
+  gap between "near-symmetric" and "symmetric" blocks a rate or a radical
+  membership.
+ROUTE_B: BV Poisson defect identity of H2A_4_1B_3C_1_7 — the truncated
+  prolate trial breaks Connes (18); the exact completion
+  E(f)(u) = E(fhat)(1/u) + (1/2)fhat(0)u^(-1/2) - (1/2)f(0)u^(1/2)
+  carries both point defects explicitly (one survives for the selected
+  trial). Candidate next uses: near-radical budget for the truncated trial
+  (supplier S2/T3 chain); any window/inversion covariance statement.
+TRANSFER: the shadow must live in ONE declared category (L2/function, form,
+  distribution, operator graph) with any category change carried by a named
+  map — the 3C.1.6/3C.1.7 endpoint-atom repair is the standing counterexample.
+  The completed identity must be EXACT (no O-terms); a shadow that is itself
+  only estimated re-imports the original problem (K5 circularity).
+DUAL (Прошка): "is the defect being ESTIMATED where it could be written
+  EXACTLY — and does the completed object satisfy the exact law term by term,
+  in one category?"
+STATUS: USED(H2A_4_1B_3C_1_7)
+NOTE: the C13 slot mentioned in the 2026-08-05 unified-contour verdict
+  (source-faithful transport, C13_SHAPE_TEST) was NOT_MINTED and remains a
+  separate future card; per deck rule cards append sequentially and never
+  renumber, so that family will take the next free number when it splits.
+
+# END v1 — 13 cards (C13 minted 2026-08-23, owner-ratified). Update discipline: status changes ONLY with goal-NNN cite
 # (USED) or one-line autopsy (KILLED), per K6/K8. New cards append as C13+,
 # never renumber (CLOSED_GOAL_IMMUTABLE analogue for card identity).
