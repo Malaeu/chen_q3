@@ -1,0 +1,166 @@
+# TYPED_IO_SCHEMA_V1_2 — fail-closed schema for the Q3 typed I/O port matcher
+# Source of authority:
+#   PROSHKA_VERDICT_TYPED_IO_MEET_IN_THE_MIDDLE_GAP_ALGEBRA (commit 545cc3f9)
+#   + PROSHKA_ADDENDUM_SPEC_011_T2_V0_CONCURRENCY (commit a1ed346b)
+#   + PROSHKA_VERDICT_T2_1_DURABLE_PORT_MATCHER_FAIL_CLOSED_AUDIT (commit 7a92845e)
+#
+# Rule of law (unchanged): KERNEL.exact_type is pasted from `#check` output —
+#   never reconstructed; REFINEMENTS only RESTRICT composability; metadata never
+#   overrides the Lean type (no second kernel).
+#
+# Version 1.2 adds the fail-closed law that killed 1.1:
+#   ABSENCE OF METADATA OR EVIDENCE NEVER UPGRADES TO A PROOF EDGE.
+#
+# Namespace note: this schema serves the Q3_TDC (Q3 Typed Discovery Compiler)
+# layer of Q3_MathOS; the objects it types are Q3_MSL entries.
+
+FAIL_CLOSED_LAW:
+  statement: >
+    A missing required field, a missing trust declaration, a missing or
+    malformed adapter EVIDENCE record, or an undeclared representative
+    transition yields UNVERIFIED.  UNVERIFIED is never EXACT_MATCH and never
+    EXPLICIT_ADAPTER_MATCH.  There is no permissive default for trust.
+  killed_in_v1_1:
+    - 'provider.get("trust", "LEAN") treated silence as Lean evidence'
+    - 'adapter lookup matched two strings and ignored EVIDENCE entirely'
+    - 'ae-representative was ranked below Lp-class and silently weakened into it'
+    - 'receipt() omitted the mandatory toolchain and results fields'
+
+PORT_SPEC_V1_2:
+  PORT_ID: string
+  POLARITY: REQUIRE | PROVIDE
+  PORT_ROLE: DATA | PROP | WITNESS | MAP | BOUND | RATE | CERTIFICATE
+  KERNEL:
+    exact_type: string          # verbatim from `lake env lean` #check output
+    local_environment: string
+    source_decl: string
+    source_commit: string
+  REFINEMENTS:
+    carrier: string
+    source_family: string
+    domain: string
+    support: string
+    normalization: string
+    units: string
+    quantifier_spine: string
+    scope: ABSTRACT | FINITE_CELL | COFINAL_FAMILY
+    topology: string
+    representative: string
+    summation_method: string
+    symmetry: string
+    basis_or_Gram: string
+  CONTEXT:
+    vars: map
+  TRUST:
+    verifier: LEAN | ARB_INTERVAL | PAPER | CONDITIONAL
+    axiom_profile: string
+    provenance: string
+
+# Minimal decidability floor.  A port lacking any of these cannot be
+# classified at all, so it is UNVERIFIED rather than matched.  The floor is
+# deliberately minimal: a wider required set would reject the frozen P1-P6 /
+# NC / C2 corpus, and the verdict mandates false_rejection = 0 on it.
+REQUIRED_PORT_FIELDS:
+  provider: [kernel_type, source_family, trust]
+  consumer: [kernel_type, source_family, trust_floor]
+
+ADAPTER_SPEC_V1_2:                # EVERY field is validated before use
+  ADAPTER_ID: string
+  FROM_PORT: partial PORT_SPEC
+  TO_PORT: partial PORT_SPEC
+  EVIDENCE:
+    theorem_name: string
+    source_file: string
+    source_line: int
+    source_commit: string
+    source_blob: string
+    check_type: string            # verbatim #check output
+  DIRECTION: forward | both
+  PRESERVES: list
+  DROPS: list
+  LOSS_LEDGER: string
+  SCOPE: ABSTRACT | FINITE_CELL | COFINAL_FAMILY
+  VERIFIER: LEAN | ARB_INTERVAL | PAPER | CONDITIONAL
+  SHARED_PARAMETER_CONTEXT: map
+  COST: string
+  REQUIRED_INPUT: string          # NEW in 1.2 — the construction witness the
+                                  # adapter consumes (e.g. MemLp); a provider
+                                  # that does not carry it cannot use the
+                                  # adapter
+
+REQUIRED_ADAPTER_FIELDS:
+  [ADAPTER_ID, FROM_PORT, TO_PORT, EVIDENCE, DIRECTION, PRESERVES, DROPS,
+   LOSS_LEDGER, SCOPE, VERIFIER, SHARED_PARAMETER_CONTEXT, COST]
+REQUIRED_EVIDENCE_FIELDS:
+  [theorem_name, source_file, source_line, source_commit, source_blob,
+   check_type]
+
+ADAPTABLE_PAIRS:
+  - [synthesized-L2-isometry-image, ae-fourier-representative]
+  - [L2-restrict-window, L1-volume]
+  - [ae-equality-of-existing-Lp-pair, Lp-element-equality]
+
+# The v1.1 order [pointwise, ae-representative, Lp-class] was WRONG: it made
+# Lp-class the weakest level, so any a.e. function silently became an Lp
+# element.  In Lean an Lp element is not definitionally a function: it is
+# built by MemLp.toLp from a MemLp proof.  v1.2 therefore separates lawful
+# WEAKENING (data is forgotten) from CONSTRUCTION (a witness is required).
+REPRESENTATIVE_SEMANTICS:
+  weakening_order: [pointwise, ae-representative]   # left may feed right
+  transitions:
+    - from: pointwise
+      to: ae-representative
+      kind: WEAKENING
+    - from: ae-representative
+      to: pointwise
+      kind: FORBIDDEN               # C04/C10: a.e. never discharges pointwise
+      result: REFINEMENT_LOSS
+    - from: full-endpoint-production
+      to: midpoint-pointwise
+      kind: FORBIDDEN
+      result: REFINEMENT_LOSS
+    - from: ae-representative
+      to: Lp-class
+      kind: CONSTRUCTION
+      required_input: MemLp
+      result_without_adapter: ADAPTER_REQUIRED
+    - from: MemLp-witness
+      to: Lp-class
+      kind: CONSTRUCTION
+      required_input: MemLp
+      adapter: A_MEMLP_TO_LP
+    - from: Lp-class
+      to: ae-representative
+      kind: WEAKENING               # via the coeFn of the Lp element
+      adapter: A_LP_TO_AE_COEFN
+  law: >
+    An undeclared transition is UNVERIFIED, not a match.  A CONSTRUCTION
+    transition without a validated adapter carrying the declared
+    REQUIRED_INPUT is ADAPTER_REQUIRED.  A FORBIDDEN transition is
+    REFINEMENT_LOSS and no adapter can repair it without a new theorem.
+
+PORT_MATCH_RESULT_V1:               # closed enum, unchanged
+  - EXACT_MATCH
+  - DEFINITIONAL_MATCH
+  - EXPLICIT_ADAPTER_MATCH
+  - ADAPTER_REQUIRED
+  - REFINEMENT_LOSS
+  - HARD_MISMATCH
+  - UNVERIFIED
+
+HYPEREDGE_MATCH_RULE_V1_2:
+  law: >
+    A consumer AND-hyperedge is matched under ONE substitution environment;
+    any inconsistent binding across ports yields HARD_MISMATCH with reason
+    SHARED_CONTEXT_INCOHERENCE regardless of per-port surface matches
+    (mandatory plant C2).  Port validation runs before context unification,
+    so an unvalidatable port yields UNVERIFIED for the whole edge.
+
+RECEIPT_V1:                         # all fields mandatory (v1.1 shipped without
+  schema_sha256: string             # toolchain and results — that was FATAL 4)
+  matcher_sha256: string
+  tests_sha256: string
+  fixture_manifest: map
+  toolchain: map                    # lean_toolchain + mathlib_rev
+  results: map                      # plant -> {expected, got, status}
+  replay_command: string

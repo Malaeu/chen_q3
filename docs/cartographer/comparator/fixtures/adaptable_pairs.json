@@ -1,5 +1,18 @@
 [
-  ["synthesized-L2-isometry-image", "ae-fourier-representative"],
-  ["any-ae-representative", "Lp-class"],
-  ["L2-restrict-window", "L1-volume"]
+  [
+    "synthesized-L2-isometry-image",
+    "ae-fourier-representative"
+  ],
+  [
+    "L2-restrict-window",
+    "L1-volume"
+  ],
+  [
+    "ae-equality-of-existing-Lp-pair",
+    "Lp-element-equality"
+  ],
+  [
+    "ae-representative",
+    "Lp-class"
+  ]
 ]

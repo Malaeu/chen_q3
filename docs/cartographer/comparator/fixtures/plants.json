@@ -1,85 +1,360 @@
 {
-  "_comment": "kernel_type strings pasted verbatim (abbreviated where the H1 #check output is long) from the H1 harness run recorded in CODEX_REPORT_Q3_TYPED_IO_PORT_MATCHER_V0_2026-08-23.md; plants P1-P5 frozen from the T2 directive; C2 and P6 added by the T2.1 addendum.",
+  "_comment": "kernel_type strings pasted verbatim (abbreviated where the H1 #check output is long) from the H1 harness run recorded in CODEX_REPORT_Q3_TYPED_IO_PORT_MATCHER_V0_2026-08-23.md; plants P1-P5 frozen from the T2 directive; C2 and P6 added by the T2.1 addendum. T2.2: NC3 removed (it asserted ae-representative = Lp element, a C04/C10 error); replaced by NC4/NC5; P7-P10 added from the T2.1 fail-closed audit verdict.",
   "P1": {
     "name": "same surface / wrong source family",
-    "provider": {"kernel_type": "ℝ → ℂ", "source_family": "selected-Ferrers-prolate-pair", "carrier": "physical-window-function", "trust": "LEAN"},
-    "consumer": {"kernel_type": "ℝ → ℂ", "source_family": "explicit-CCM-limit-target", "carrier": "physical-window-function", "trust_floor": "LEAN"},
-    "expected": "HARD_MISMATCH", "registry": "current"
+    "provider": {
+      "kernel_type": "ℝ → ℂ",
+      "source_family": "selected-Ferrers-prolate-pair",
+      "carrier": "physical-window-function",
+      "trust": "LEAN"
+    },
+    "consumer": {
+      "kernel_type": "ℝ → ℂ",
+      "source_family": "explicit-CCM-limit-target",
+      "carrier": "physical-window-function",
+      "trust_floor": "LEAN"
+    },
+    "expected": "HARD_MISMATCH",
+    "registry": "current"
   },
   "P2": {
     "name": "FINITE_CELL offered to COFINAL_FAMILY",
-    "provider": {"kernel_type": "ccmWeilMatFinite ... (ccmNegFinite ...) = ccmWeilMatFinite ... i j", "scope": "FINITE_CELL", "source_family": "ccm-finite-matrix", "trust": "LEAN"},
-    "consumer": {"kernel_type": "∀ᶠ (k : ℕ) in Filter.atTop, ...packet rate...", "scope": "COFINAL_FAMILY", "source_family": "ccm-finite-matrix", "trust_floor": "LEAN"},
-    "expected": "HARD_MISMATCH", "registry": "current"
+    "provider": {
+      "kernel_type": "ccmWeilMatFinite ... (ccmNegFinite ...) = ccmWeilMatFinite ... i j",
+      "scope": "FINITE_CELL",
+      "source_family": "ccm-finite-matrix",
+      "trust": "LEAN"
+    },
+    "consumer": {
+      "kernel_type": "∀ᶠ (k : ℕ) in Filter.atTop, ...packet rate...",
+      "scope": "COFINAL_FAMILY",
+      "source_family": "ccm-finite-matrix",
+      "trust_floor": "LEAN"
+    },
+    "expected": "HARD_MISMATCH",
+    "registry": "current"
   },
   "P3": {
     "name": "L2 isometry offered as ae-Fourier, pre-W1 registry",
-    "provider": {"kernel_type": "(i : PairIndex) → ↥(H_m i) →ₗᵢ[ℂ] ↥(Lp ℂ 2 volume)", "object_identity": "synthesized-L2-isometry-image", "source_family": "log-window-source", "trust": "LEAN"},
-    "consumer": {"kernel_type": "ℝ → ℂ (frequency side)", "object_identity": "ae-fourier-representative", "source_family": "log-window-source", "trust_floor": "LEAN"},
-    "expected": "ADAPTER_REQUIRED", "registry": "pre_w1"
+    "provider": {
+      "kernel_type": "(i : PairIndex) → ↥(H_m i) →ₗᵢ[ℂ] ↥(Lp ℂ 2 volume)",
+      "object_identity": "synthesized-L2-isometry-image",
+      "source_family": "log-window-source",
+      "trust": "LEAN"
+    },
+    "consumer": {
+      "kernel_type": "ℝ → ℂ (frequency side)",
+      "object_identity": "ae-fourier-representative",
+      "source_family": "log-window-source",
+      "trust_floor": "LEAN"
+    },
+    "expected": "ADAPTER_REQUIRED",
+    "registry": "pre_w1"
   },
   "P4": {
     "name": "full endpoint offered where midpoint pointwise demanded",
-    "provider": {"kernel_type": "ℝ → ℂ", "source_family": "log-window-source", "representative": "full-endpoint-production", "trust": "LEAN"},
-    "consumer": {"kernel_type": "ℝ → ℂ", "source_family": "log-window-source", "representative": "midpoint-pointwise", "representative_strict": true, "trust_floor": "LEAN"},
-    "expected": "REFINEMENT_LOSS", "registry": "current"
+    "provider": {
+      "kernel_type": "ℝ → ℂ",
+      "source_family": "log-window-source",
+      "representative": "full-endpoint-production",
+      "trust": "LEAN"
+    },
+    "consumer": {
+      "kernel_type": "ℝ → ℂ",
+      "source_family": "log-window-source",
+      "representative": "midpoint-pointwise",
+      "representative_strict": true,
+      "trust_floor": "LEAN"
+    },
+    "expected": "REFINEMENT_LOSS",
+    "registry": "current"
   },
   "P5": {
     "name": "Rayleigh scalar offered as residual",
-    "provider": {"kernel_type": "ℝ", "source_family": "selected-Ferrers-row", "object_identity": "rayleigh-scalar-value", "trust": "LEAN"},
-    "consumer": {"kernel_type": "ℝ", "source_family": "selected-Ferrers-row", "object_identity": "residual-defect-norm", "trust_floor": "LEAN"},
-    "expected": "HARD_MISMATCH", "registry": "current"
+    "provider": {
+      "kernel_type": "ℝ",
+      "source_family": "selected-Ferrers-row",
+      "object_identity": "rayleigh-scalar-value",
+      "trust": "LEAN"
+    },
+    "consumer": {
+      "kernel_type": "ℝ",
+      "source_family": "selected-Ferrers-row",
+      "object_identity": "residual-defect-norm",
+      "trust_floor": "LEAN"
+    },
+    "expected": "HARD_MISMATCH",
+    "registry": "current"
   },
   "P6": {
     "name": "ae-Fourier adapter offered to a POINTWISE consumer (T2.1 firewall)",
-    "provider": {"kernel_type": "ℝ → ℂ", "source_family": "log-window-source", "representative": "ae-representative", "trust": "LEAN"},
-    "consumer": {"kernel_type": "ℝ → ℂ", "source_family": "log-window-source", "representative": "pointwise", "trust_floor": "LEAN"},
-    "expected": "REFINEMENT_LOSS", "registry": "current"
+    "provider": {
+      "kernel_type": "ℝ → ℂ",
+      "source_family": "log-window-source",
+      "representative": "ae-representative",
+      "trust": "LEAN"
+    },
+    "consumer": {
+      "kernel_type": "ℝ → ℂ",
+      "source_family": "log-window-source",
+      "representative": "pointwise",
+      "trust_floor": "LEAN"
+    },
+    "expected": "REFINEMENT_LOSS",
+    "registry": "current"
   },
   "NC1": {
     "name": "lawful adapter edge (W1, renamed A_ISOMETRY_TO_AE_FOURIER_REPRESENTATIVE)",
-    "provider": {"kernel_type": "(i : PairIndex) → ↥(H_m i) →ₗᵢ[ℂ] ↥(Lp ℂ 2 volume)", "object_identity": "synthesized-L2-isometry-image", "source_family": "log-window-source", "trust": "LEAN"},
-    "consumer": {"kernel_type": "ℝ → ℂ (frequency side)", "object_identity": "ae-fourier-representative", "source_family": "log-window-source", "trust_floor": "LEAN"},
-    "expected": "EXPLICIT_ADAPTER_MATCH", "registry": "current"
+    "provider": {
+      "kernel_type": "(i : PairIndex) → ↥(H_m i) →ₗᵢ[ℂ] ↥(Lp ℂ 2 volume)",
+      "object_identity": "synthesized-L2-isometry-image",
+      "source_family": "log-window-source",
+      "trust": "LEAN"
+    },
+    "consumer": {
+      "kernel_type": "ℝ → ℂ (frequency side)",
+      "object_identity": "ae-fourier-representative",
+      "source_family": "log-window-source",
+      "trust_floor": "LEAN"
+    },
+    "expected": "EXPLICIT_ADAPTER_MATCH",
+    "registry": "current"
   },
   "NC2": {
     "name": "lawful exact self edge",
-    "provider": {"kernel_type": "ℝ → ℂ", "source_family": "log-window-source", "carrier": "physical-window-function", "trust": "LEAN"},
-    "consumer": {"kernel_type": "ℝ → ℂ", "source_family": "log-window-source", "carrier": "physical-window-function", "trust_floor": "LEAN"},
-    "expected": "EXACT_MATCH", "registry": "current"
-  },
-  "NC3": {
-    "name": "ae provider lawfully feeds an Lp-class consumer",
-    "provider": {"kernel_type": "ℝ → ℂ", "source_family": "log-window-source", "representative": "ae-representative", "trust": "LEAN"},
-    "consumer": {"kernel_type": "ℝ → ℂ", "source_family": "log-window-source", "representative": "Lp-class", "trust_floor": "LEAN"},
-    "expected": "EXACT_MATCH", "registry": "current"
+    "provider": {
+      "kernel_type": "ℝ → ℂ",
+      "source_family": "log-window-source",
+      "carrier": "physical-window-function",
+      "trust": "LEAN"
+    },
+    "consumer": {
+      "kernel_type": "ℝ → ℂ",
+      "source_family": "log-window-source",
+      "carrier": "physical-window-function",
+      "trust_floor": "LEAN"
+    },
+    "expected": "EXACT_MATCH",
+    "registry": "current"
   },
   "C2": {
     "name": "SHARED_CONTEXT_INCOHERENCE hyperedge plant",
     "providers": [
-      {"kernel_type": "A-shape", "source_family": "ccm-finite-matrix", "context": {"m": "m1", "N": "N1"}, "trust": "LEAN"},
-      {"kernel_type": "B-shape", "source_family": "ccm-finite-matrix", "context": {"m": "m2", "N": "N2"}, "trust": "LEAN"},
-      {"kernel_type": "C-shape", "source_family": "ccm-finite-matrix", "context": {"m": "m3", "N": "N3"}, "trust": "LEAN"}
+      {
+        "kernel_type": "A-shape",
+        "source_family": "ccm-finite-matrix",
+        "context": {
+          "m": "m1",
+          "N": "N1"
+        },
+        "trust": "LEAN"
+      },
+      {
+        "kernel_type": "B-shape",
+        "source_family": "ccm-finite-matrix",
+        "context": {
+          "m": "m2",
+          "N": "N2"
+        },
+        "trust": "LEAN"
+      },
+      {
+        "kernel_type": "C-shape",
+        "source_family": "ccm-finite-matrix",
+        "context": {
+          "m": "m3",
+          "N": "N3"
+        },
+        "trust": "LEAN"
+      }
     ],
     "consumer_ports": [
-      {"kernel_type": "A-shape", "source_family": "ccm-finite-matrix", "context": {"m": "m", "N": "N"}, "trust_floor": "LEAN"},
-      {"kernel_type": "B-shape", "source_family": "ccm-finite-matrix", "context": {"m": "m", "N": "N"}, "trust_floor": "LEAN"},
-      {"kernel_type": "C-shape", "source_family": "ccm-finite-matrix", "context": {"m": "m", "N": "N"}, "trust_floor": "LEAN"}
+      {
+        "kernel_type": "A-shape",
+        "source_family": "ccm-finite-matrix",
+        "context": {
+          "m": "m",
+          "N": "N"
+        },
+        "trust_floor": "LEAN"
+      },
+      {
+        "kernel_type": "B-shape",
+        "source_family": "ccm-finite-matrix",
+        "context": {
+          "m": "m",
+          "N": "N"
+        },
+        "trust_floor": "LEAN"
+      },
+      {
+        "kernel_type": "C-shape",
+        "source_family": "ccm-finite-matrix",
+        "context": {
+          "m": "m",
+          "N": "N"
+        },
+        "trust_floor": "LEAN"
+      }
     ],
-    "expected": "HARD_MISMATCH", "registry": "current"
+    "expected": "HARD_MISMATCH",
+    "registry": "current"
   },
   "C2_POS": {
     "name": "coherent hyperedge control (same shared context everywhere)",
     "providers": [
-      {"kernel_type": "A-shape", "source_family": "ccm-finite-matrix", "context": {"m": "m7", "N": "N7"}, "trust": "LEAN"},
-      {"kernel_type": "B-shape", "source_family": "ccm-finite-matrix", "context": {"m": "m7", "N": "N7"}, "trust": "LEAN"},
-      {"kernel_type": "C-shape", "source_family": "ccm-finite-matrix", "context": {"m": "m7", "N": "N7"}, "trust": "LEAN"}
+      {
+        "kernel_type": "A-shape",
+        "source_family": "ccm-finite-matrix",
+        "context": {
+          "m": "m7",
+          "N": "N7"
+        },
+        "trust": "LEAN"
+      },
+      {
+        "kernel_type": "B-shape",
+        "source_family": "ccm-finite-matrix",
+        "context": {
+          "m": "m7",
+          "N": "N7"
+        },
+        "trust": "LEAN"
+      },
+      {
+        "kernel_type": "C-shape",
+        "source_family": "ccm-finite-matrix",
+        "context": {
+          "m": "m7",
+          "N": "N7"
+        },
+        "trust": "LEAN"
+      }
     ],
     "consumer_ports": [
-      {"kernel_type": "A-shape", "source_family": "ccm-finite-matrix", "context": {"m": "m", "N": "N"}, "trust_floor": "LEAN"},
-      {"kernel_type": "B-shape", "source_family": "ccm-finite-matrix", "context": {"m": "m", "N": "N"}, "trust_floor": "LEAN"},
-      {"kernel_type": "C-shape", "source_family": "ccm-finite-matrix", "context": {"m": "m", "N": "N"}, "trust_floor": "LEAN"}
+      {
+        "kernel_type": "A-shape",
+        "source_family": "ccm-finite-matrix",
+        "context": {
+          "m": "m",
+          "N": "N"
+        },
+        "trust_floor": "LEAN"
+      },
+      {
+        "kernel_type": "B-shape",
+        "source_family": "ccm-finite-matrix",
+        "context": {
+          "m": "m",
+          "N": "N"
+        },
+        "trust_floor": "LEAN"
+      },
+      {
+        "kernel_type": "C-shape",
+        "source_family": "ccm-finite-matrix",
+        "context": {
+          "m": "m",
+          "N": "N"
+        },
+        "trust_floor": "LEAN"
+      }
     ],
-    "expected": "EXACT_MATCH", "registry": "current"
+    "expected": "EXACT_MATCH",
+    "registry": "current"
+  },
+  "P7": {
+    "name": "missing metadata must not become Lean evidence",
+    "provider": {
+      "kernel_type": "T"
+    },
+    "consumer": {
+      "kernel_type": "T"
+    },
+    "expected": "UNVERIFIED",
+    "registry": "current"
+  },
+  "P8": {
+    "name": "missing trust declaration (no permissive default)",
+    "provider": {
+      "kernel_type": "T",
+      "source_family": "F"
+    },
+    "consumer": {
+      "kernel_type": "T",
+      "source_family": "F",
+      "trust_floor": "LEAN"
+    },
+    "expected": "UNVERIFIED",
+    "registry": "current"
+  },
+  "P9": {
+    "name": "fabricated registry row without EVIDENCE",
+    "provider": {
+      "kernel_type": "T",
+      "source_family": "F",
+      "object_identity": "A",
+      "trust": "LEAN"
+    },
+    "consumer": {
+      "kernel_type": "T",
+      "source_family": "F",
+      "object_identity": "B",
+      "trust_floor": "LEAN"
+    },
+    "expected": "UNVERIFIED",
+    "registry": "fake_adapter"
+  },
+  "P10": {
+    "name": "arbitrary ae function offered as an Lp element (no MemLp)",
+    "provider": {
+      "kernel_type": "ℝ → ℂ",
+      "source_family": "log-window-source",
+      "representative": "ae-representative",
+      "trust": "LEAN"
+    },
+    "consumer": {
+      "kernel_type": "ℝ → ℂ",
+      "source_family": "log-window-source",
+      "representative": "Lp-class",
+      "trust_floor": "LEAN"
+    },
+    "expected": "ADAPTER_REQUIRED",
+    "registry": "current"
+  },
+  "NC4": {
+    "name": "MemLp witness lawfully constructs an Lp element (MemLp.toLp)",
+    "provider": {
+      "kernel_type": "ℝ → ℂ",
+      "source_family": "log-window-source",
+      "representative": "MemLp-witness",
+      "construction_witness": "MemLp",
+      "trust": "LEAN"
+    },
+    "consumer": {
+      "kernel_type": "ℝ → ℂ",
+      "source_family": "log-window-source",
+      "representative": "Lp-class",
+      "trust_floor": "LEAN"
+    },
+    "expected": "EXPLICIT_ADAPTER_MATCH",
+    "registry": "current"
+  },
+  "NC5": {
+    "name": "ae equality of two EXISTING Lp elements gives Lp equality (Lp.ext)",
+    "provider": {
+      "kernel_type": "↑↑f =ᵐ[μ] ↑↑g",
+      "source_family": "log-window-source",
+      "object_identity": "ae-equality-of-existing-Lp-pair",
+      "trust": "LEAN"
+    },
+    "consumer": {
+      "kernel_type": "f = g",
+      "source_family": "log-window-source",
+      "object_identity": "Lp-element-equality",
+      "trust_floor": "LEAN"
+    },
+    "expected": "EXPLICIT_ADAPTER_MATCH",
+    "registry": "current"
   }
 }

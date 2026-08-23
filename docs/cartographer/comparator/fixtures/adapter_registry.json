@@ -43,21 +43,66 @@
     "COST": "none"
   },
   {
-    "ADAPTER_ID": "A_AE_TO_LP_CLASS",
-    "FROM_PORT": {"representative": "any-ae-representative"},
+    "_comment": "T2.2 repair of the killed A_AE_TO_LP_CLASS. An a.e. function is NOT an Lp element: the Lp element is CONSTRUCTED from a MemLp proof. REQUIRED_INPUT makes the witness mandatory, so an arbitrary a.e. provider cannot use this row.",
+    "ADAPTER_ID": "A_MEMLP_TO_LP",
+    "FROM_PORT": {"representative": "MemLp-witness"},
     "TO_PORT": {"representative": "Lp-class"},
+    "EVIDENCE": {
+      "theorem_name": "MeasureTheory.MemLp.toLp",
+      "source_file": ".lake/packages/mathlib/Mathlib/MeasureTheory/Function/LpSpace/Basic.lean",
+      "source_line": 143,
+      "source_commit": "mathlib rev 2df2f0150c275ad53cb3c90f7c98ec15a56a1a67 (lean4 v4.26.0)",
+      "source_blob": "pinned-mathlib",
+      "check_type": "@MeasureTheory.MemLp.toLp : {α : Type u_1} → {E : Type u_2} → {m : MeasurableSpace α} → {p : ENNReal} → {μ : MeasureTheory.Measure α} → [inst : NormedAddCommGroup E] → (f : α → E) → MeasureTheory.MemLp f p μ → ↥(MeasureTheory.Lp E p μ)  [pasted verbatim from lake env lean #check]"
+    },
+    "DIRECTION": "forward",
+    "PRESERVES": ["ae-equivalence-class", "source_family", "context"],
+    "DROPS": ["pointwise data at null sets"],
+    "LOSS_LEDGER": "the constructed Lp element agrees with f only a.e. (MeasureTheory.MemLp.coeFn_toLp)",
+    "SCOPE": "ABSTRACT",
+    "VERIFIER": "LEAN",
+    "SHARED_PARAMETER_CONTEXT": {},
+    "COST": "requires a MemLp proof for the exact p and measure",
+    "REQUIRED_INPUT": "MemLp"
+  },
+  {
+    "_comment": "Lp.ext proves EQUALITY OF TWO EXISTING Lp elements from an a.e. equality. It never turns a function into an Lp element; T2.1 used it in the wrong logical direction.",
+    "ADAPTER_ID": "A_LP_EXT_EQUALITY",
+    "FROM_PORT": {"object_identity": "ae-equality-of-existing-Lp-pair"},
+    "TO_PORT": {"object_identity": "Lp-element-equality"},
     "EVIDENCE": {
       "theorem_name": "MeasureTheory.Lp.ext",
       "source_file": ".lake/packages/mathlib/Mathlib/MeasureTheory/Function/LpSpace/Basic.lean",
       "source_line": 143,
-      "source_commit": "mathlib v4.26.0 rev 2df2f0150c275ad53cb3c90f7c98ec15a56a1a67",
+      "source_commit": "mathlib rev 2df2f0150c275ad53cb3c90f7c98ec15a56a1a67 (lean4 v4.26.0)",
       "source_blob": "pinned-mathlib",
-      "check_type": "theorem ext {f g : Lp E p mu} (h : f =m[mu] g) : f = g  [pasted from pinned source]"
+      "check_type": "@MeasureTheory.Lp.ext : ∀ {α : Type u_1} {E : Type u_2} {m : MeasurableSpace α} {p : ENNReal} {μ : MeasureTheory.Measure α} [inst : NormedAddCommGroup E] {f g : ↥(MeasureTheory.Lp E p μ)}, ↑↑f =ᵐ[μ] ↑↑g → f = g  [pasted verbatim from lake env lean #check]"
     },
     "DIRECTION": "forward",
-    "PRESERVES": ["everything-Lp-level"],
-    "DROPS": ["null-set pointwise data"],
-    "LOSS_LEDGER": "pointwise data at null sets",
+    "PRESERVES": ["Lp-membership-of-both-sides", "source_family", "context"],
+    "DROPS": [],
+    "LOSS_LEDGER": "none; both sides must already be Lp elements before this row applies",
+    "SCOPE": "ABSTRACT",
+    "VERIFIER": "LEAN",
+    "SHARED_PARAMETER_CONTEXT": {},
+    "COST": "none"
+  },
+  {
+    "ADAPTER_ID": "A_LP_TO_AE_COEFN",
+    "FROM_PORT": {"representative": "Lp-class"},
+    "TO_PORT": {"representative": "ae-representative"},
+    "EVIDENCE": {
+      "theorem_name": "MeasureTheory.MemLp.coeFn_toLp",
+      "source_file": ".lake/packages/mathlib/Mathlib/MeasureTheory/Function/LpSpace/Basic.lean",
+      "source_line": 143,
+      "source_commit": "mathlib rev 2df2f0150c275ad53cb3c90f7c98ec15a56a1a67 (lean4 v4.26.0)",
+      "source_blob": "pinned-mathlib",
+      "check_type": "@MeasureTheory.MemLp.coeFn_toLp : ∀ {α : Type u_1} {E : Type u_2} {m : MeasurableSpace α} {p : ENNReal} {μ : MeasureTheory.Measure α} [inst : NormedAddCommGroup E] {f : α → E} (hf : MeasureTheory.MemLp f p μ), ↑↑(MeasureTheory.MemLp.toLp f hf) =ᵐ[μ] f  [pasted verbatim from lake env lean #check]"
+    },
+    "DIRECTION": "forward",
+    "PRESERVES": ["ae-equivalence-class", "source_family", "context"],
+    "DROPS": ["Lp-element identity"],
+    "LOSS_LEDGER": "the recovered function is defined only up to a null set",
     "SCOPE": "ABSTRACT",
     "VERIFIER": "LEAN",
     "SHARED_PARAMETER_CONTEXT": {},
