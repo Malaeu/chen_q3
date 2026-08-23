@@ -40,6 +40,33 @@
 
 ---
 
+## 2026-08-22 — ordering front закрыт целиком; physical lift открыт следующим
+
+**Развилка:** после V3.2 куда бить дальше — сразу в F72.1C (композиция bind +
+rate) или сперва закрыть недостающий source-объект.
+**Выбрали:** судья вскрыл, что F72.1C — композиция ДВУХ поставок
+(source/project bind + F72.1A rate), а bind ещё не имеет физического
+source-объекта; сначала `REGULAR_EVEN_SPHEROIDAL_TO_SATZ9_SOURCE_DATA_
+PHYSICAL_LIFT` — единственно source-only шаг.
+**Почему:** «Starting F72.1C now would either accept the rate as a new
+hypothesis or build another receiver, neither of which closes more than it
+opens» — прямое применение правила W9 судьёй.
+**Что отвергли и почему:** принять Satz9-rate как гипотезу — превращает
+доказанное в допущение; строить ещё один типизированный receiver вместо
+инстанцирования — плодит входы, не закрывает.
+**Техника:** физический лифт — чистое масштабирование x↦x/λ применённое к
+`spheroidal_normalized_witness`; ключевая проверка — сдвиг θ=Λ+γ² (не Λ)
+следует из точного алгебраического тождества `γ²·(x/λ)² = (2πλx)²`, не из
+подгонки константы.
+**Следующий ход:** физический лифт исполнен (`b1e3f177`), на аппробации;
+после неё — `SELECTED_SATZ9_SOURCE_PACKAGE_TRANSPORT`, затем F72.1A rate,
+затем F72.1C композиция.
+**Адреса:** вердикт `5cb885c2`
+(`docs/routeB_bus/proshka/PROSHKA_VERDICT_REQ_2026_08_22_V_V3_2_...md`);
+`G6N1SpheroidalSourcePhysicalLift.lean`.
+**Чей вердикт и аргумент:** Прошка: «F72_1C_IS_COMPOSITION_AFTER_SOURCE_BIND_
+AND_F72_1A_RATE_NOT_A_REPLACEMENT_FOR_THEM».
+
 ## 2026-08-22 — U2.1 снят сдвигом представления; проектная ветвь — классический носитель
 
 **Развилка:** чем обитать projectBranch модульного потребителя и как закрывать
