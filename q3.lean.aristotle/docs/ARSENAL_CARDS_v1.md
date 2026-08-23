@@ -3,6 +3,13 @@
 # Scan rule (K4): match BY SIGNATURE, not by field. Every import passes the card's
 # TRANSFER invariants (K3) and K7 (unconditional input) before use.
 # Card status lifecycle: UNTESTED -> USED(goal-NNN) -> KILLED(autopsy line).
+# Format v1.1 (2026-08-23, verdict ebd1d70f): cards MAY carry BRIDGE_KIND
+#   (cross-domain transfer cards only), INSIGHT_STATE (closed enum of
+#   INSIGHT_STATE_V1), FALSIFIER (exact plant / instantiated DUAL),
+#   TOY_VALIDATION (NOT_RUN|PASS|FAIL - never proof authority),
+#   DEPENDENCY_FOOTPRINT (CLOSES/OPENS by catalog names). Legacy cards
+#   C01-C12 stay valid; fields are added on the next USED/KILLED touch;
+#   mass retrofit is forbidden (process bloat).
 # Aliases only; no new frozen-glossary terms (ROUTE_B_STATE glossary untouched).
 
 ## C01 SIGN-MASS-LOCALIZATION                                    [src: Ch1 sphere packing]
@@ -224,6 +231,18 @@ DUAL (Прошка): "is the defect being ESTIMATED where it could be written
   EXACTLY — and does the completed object satisfy the exact law term by term,
   in one category?"
 STATUS: USED(H2A_4_1B_3C_1_7)
+BRIDGE_KIND: ONE_WAY_TRANSFER  # mechanism transfer from mock-modular
+  completion; no inverse map claimed
+INSIGHT_STATE: FALSIFIER_PASSED  # exact identity derived and plants run
+  (3C.1.7-3C.1.9); not yet SOURCE_WRITTEN/KERNEL_GREEN
+FALSIFIER: transform-label plant (a Mellin label does not create
+  radicality: B(G,G)=1 for G=e_0 under the identity form) + seam plant
+  (full-endpoint vs midpoint E-star differ pointwise at u=lambda/n,
+  equal a.e.)
+TOY_VALIDATION: NOT_RUN  # identity derived symbolically; no numeric run
+DEPENDENCY_FOOTPRINT:
+  CLOSES: [BV_POISSON_POINT_DEFECT_ALGEBRA]
+  OPENS:  [SELECTED_ABEL_LIMIT_ACTUAL_FOURIER_CROSSWALK_AND_ROOT_ENERGY]
 NOTE: the C13 slot mentioned in the 2026-08-05 unified-contour verdict
   (source-faithful transport, C13_SHAPE_TEST) was NOT_MINTED and remains a
   separate future card; per deck rule cards append sequentially and never

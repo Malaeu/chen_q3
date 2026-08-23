@@ -192,6 +192,64 @@ CONFIRMED / REFUTED / REPAIRED без ретроактивного ремонт�
 новые файлы и не как новый процесс. Вес процесса не должен превысить вес
 математики — K2 действует и на мета-уровне.
 
+
+**6.5. Supersession 2026-08-23 (вердикт `ebd1d70f`, задача Q3_AGENT_OS_TYPED_DISCOVERY_INTEGRATION_DOCS_V1).**
+Эта подсекция уточняет и замещает формулировки 6.1–6.3 выше; история не
+переписывается, прежний текст остаётся как след.
+
+*(a) BRIDGE_KIND_V1 — канонический enum (ровно семь токенов):*
+
+```text
+EXACT_ISOMORPHISM      — прямая и обратная карты записаны, композиции = id,
+                         сохраняемая структура перечислена
+UNITARY_INTERTWINER    — unitary U с domain/codomain и точным UT = SU
+FORM_IDENTITY          — равенство форм/функционалов на одном именованном
+                         домене после точного crosswalk
+ONE_WAY_TRANSFER       — доказана одна импликация / односторонняя оценка
+ASYMPTOTIC_EQUIVALENCE — topology + normalization + cofinal schedule + ledger
+STRUCTURAL_ANALOGY     — source-backed совпадение сигнатур без теоремы
+HEURISTIC_ANALOGY      — поисковая гипотеза без source-locked переноса
+```
+
+Автопонижения: EXACT_ISOMORPHISM без обратной карты → STRUCTURAL_ANALOGY;
+UNITARY_INTERTWINER без unitary identity → ONE_WAY_TRANSFER/STRUCTURAL_ANALOGY;
+FORM_IDENTITY без домена/нормировки → QUARANTINED_ANALOGY;
+ASYMPTOTIC_EQUIVALENCE без topology/schedule → CONDITIONAL, несоставляем.
+Каждый мост несёт SOURCE_OBJECT / TARGET_OBJECT / SOURCE_MAP /
+INVERSE_OR_ADJOINT / PRESERVES / DROPS / SCOPE / VERIFIER (операционализация C04).
+
+*(b) INSIGHT_STATE_V1 — исправленная машина состояний (ядро ≠ семантика):*
+
+```text
+RAW_INSIGHT → GAP_LOCKED → SOURCE_LOCKED → CROSSWALK_TYPED
+  → FALSIFIER_PASSED → THEOREM_PACKET_READY → SOURCE_WRITTEN
+  → KERNEL_GREEN → SEMANTICALLY_ADMITTED → SHELF_REGISTERED
+side states: KILLED_WITH_AUTOPSY | QUARANTINED_ANALOGY |
+             BLOCKED_SOURCE_MISSING | ZERO_CONSISTENT_NEEDS_DISCRIMINATOR
+firewall:    KERNEL_GREEN != SEMANTICALLY_ADMITTED (никогда не сливать).
+```
+
+Переходы требуют минимального evidence (consumer+gap; source pin; bridge kind
++preserves/drops+units; падающий plant; один пакет-одна теорема-один гейт;
+source record; чистый axiom profile; аудит объекта/кванторов; catalog entry).
+
+*(c) Двухуровневый контракт:* ранний инсайт получает только лёгкий
+BRIDGE_STUB_V1 (BRIDGE_ID / TARGET_GAP / EXACT_CONSUMER / BRIDGE_KIND /
+SOURCE_LOCK / SOURCE_OBJECT / TARGET_OBJECT / PRESERVES / DROPS /
+CHEAPEST_FALSIFIER / INSIGHT_STATE) внутри существующего дигеста или леджера;
+полный ATOMIC_INVARIANT_CONTRACT_V1 — только после THEOREM_PACKET_READY.
+Идея, для которой stub незаполним, остаётся RAW_INSIGHT и не создаёт
+зависимостей.
+
+*(d) R6 расщеплён:* R6A THREE_C_LEDGER_CALIBRATION — read-only калибровка по
+цепочке 3C.1.1–3C.1.9 (Brier-подобный счёт, таксономия дефектов; БЕЗ клейма о
+предсказании next node — система сама участвовала в цепочке); R6B — слепой
+исторический бэктест по реальным коридорам (Goal 044–046; Step32→Step33 —
+отдельная PSD-история, не bus-последовательность Route B; Goal 058
+same-family) — только после приемлемого R6A, schema заморожена до reveal.
+Подтверждается: прежний false-claim о несуществовании Goal 044–046/Step32
+исправлен (см. правку §6.3 и addendum-receipt судьи).
+
 ---
 
 ## 7. Дополнение 2026-08-23 (ночь): почему type-directed search «не заработал сам» и лестница T1–T4
