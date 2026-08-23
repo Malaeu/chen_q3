@@ -1,0 +1,66 @@
+[
+  {
+    "ADAPTER_ID": "A_L2_TO_L1_FINITE_WINDOW",
+    "FROM_PORT": {"carrier": "L2-restrict-window"},
+    "TO_PORT": {"carrier": "L1-volume"},
+    "EVIDENCE": {
+      "theorem_name": "restrictL2_l1_le (private) over MeasureTheory.eLpNorm_le_eLpNorm_mul_rpow_measure_univ",
+      "source_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceLogWindowFourierIntegralCrosswalk.lean",
+      "source_line": 123,
+      "source_commit": "4984a107",
+      "source_blob": "21692df075aca7467503c5d49671691c1a1a1db7",
+      "check_type": "eLpNorm f p mu <= eLpNorm f q mu * mu Set.univ ^ (1/p.toReal - 1/q.toReal)  [pasted from H1 #check]"
+    },
+    "DIRECTION": "forward",
+    "PRESERVES": ["source_family", "scope", "context"],
+    "DROPS": [],
+    "LOSS_LEDGER": "constant sqrt(L_m)",
+    "SCOPE": "ABSTRACT",
+    "VERIFIER": "LEAN",
+    "SHARED_PARAMETER_CONTEXT": {"i": "preserved"},
+    "COST": "none"
+  },
+  {
+    "ADAPTER_ID": "A_ISOMETRY_TO_AE_FOURIER_REPRESENTATIVE",
+    "FROM_PORT": {"object_identity": "synthesized-L2-isometry-image"},
+    "TO_PORT": {"object_identity": "ae-fourier-representative"},
+    "EVIDENCE": {
+      "theorem_name": "Q3.RouteB.D0Pstar.coeFn_sourceLogWindowFourierL2Isometry_eq_fourier_sourceLogWindowZeroExtension",
+      "source_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceLogWindowFourierIntegralCrosswalk.lean",
+      "source_line": 585,
+      "source_commit": "4984a107",
+      "source_blob": "21692df075aca7467503c5d49671691c1a1a1db7",
+      "check_type": "forall (i : PairIndex) (x : H_m i), coeFn ((sourceLogWindowFourierL2Isometry i) x) =m[volume] fun t => FourierTransform.fourier (sourceLogWindowZeroExtension i x) t  [pasted from H1 #check; conclusion is A.E. EQUALITY, never pointwise]",
+      "axiom_profile": "[propext, Classical.choice, Quot.sound]"
+    },
+    "DIRECTION": "forward",
+    "PRESERVES": ["source_family", "context", "L2-class"],
+    "DROPS": ["pointwise evaluation at any selected frequency"],
+    "LOSS_LEDGER": "a.e. equality only; discharges ae/Lp consumers, NEVER a pointwise-evaluation consumer (T2.1 semantic repair)",
+    "SCOPE": "ABSTRACT",
+    "VERIFIER": "LEAN",
+    "SHARED_PARAMETER_CONTEXT": {"i": "preserved"},
+    "COST": "none"
+  },
+  {
+    "ADAPTER_ID": "A_AE_TO_LP_CLASS",
+    "FROM_PORT": {"representative": "any-ae-representative"},
+    "TO_PORT": {"representative": "Lp-class"},
+    "EVIDENCE": {
+      "theorem_name": "MeasureTheory.Lp.ext",
+      "source_file": ".lake/packages/mathlib/Mathlib/MeasureTheory/Function/LpSpace/Basic.lean",
+      "source_line": 143,
+      "source_commit": "mathlib v4.26.0 rev 2df2f0150c275ad53cb3c90f7c98ec15a56a1a67",
+      "source_blob": "pinned-mathlib",
+      "check_type": "theorem ext {f g : Lp E p mu} (h : f =m[mu] g) : f = g  [pasted from pinned source]"
+    },
+    "DIRECTION": "forward",
+    "PRESERVES": ["everything-Lp-level"],
+    "DROPS": ["null-set pointwise data"],
+    "LOSS_LEDGER": "pointwise data at null sets",
+    "SCOPE": "ABSTRACT",
+    "VERIFIER": "LEAN",
+    "SHARED_PARAMETER_CONTEXT": {},
+    "COST": "none"
+  }
+]

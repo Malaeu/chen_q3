@@ -1,0 +1,5 @@
+[
+  ["synthesized-L2-isometry-image", "ae-fourier-representative"],
+  ["any-ae-representative", "Lp-class"],
+  ["L2-restrict-window", "L1-volume"]
+]

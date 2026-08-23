@@ -1,0 +1,105 @@
+# TYPED_IO_SCHEMA_V1_1 — durable schema for the Q3 typed I/O port matcher
+# Source of authority: PROSHKA_VERDICT_TYPED_IO_MEET_IN_THE_MIDDLE_GAP_ALGEBRA
+#   (commit 545cc3f9, sections 3-8) + the T2.1 addendum repairs
+#   (PROSHKA_ADDENDUM_SPEC_011_T2_V0_CONCURRENCY, commit a1ed346b).
+# Rule of law: KERNEL.exact_type is pasted from `#check` output — never
+#   reconstructed; REFINEMENTS only RESTRICT composability; metadata never
+#   overrides the Lean type (no second kernel).
+# Version: 1.1 (adds SHARED_CONTEXT, evidence-bearing records, a.e./pointwise
+#   representative semantics).
+
+PORT_SPEC_V1_1:
+  PORT_ID: string
+  POLARITY: REQUIRE | PROVIDE
+  PORT_ROLE: DATA | PROP | WITNESS | MAP | BOUND | RATE | CERTIFICATE
+  KERNEL:
+    exact_type: string          # verbatim from `lake env lean` #check output
+    local_environment: string   # namespace / open / scoped notation
+    source_decl: string
+    source_commit: string
+  REFINEMENTS:
+    carrier: string
+    source_family: string
+    domain: string
+    support: string
+    normalization: string
+    units: string
+    quantifier_spine: string
+    scope: ABSTRACT | FINITE_CELL | COFINAL_FAMILY
+    topology: string
+    representative: string      # e.g. pointwise | ae-representative | Lp-class
+                                # | full-endpoint-production | midpoint-pointwise
+    summation_method: string    # e.g. tsum | symmetric-conditional | abel
+    symmetry: string
+    basis_or_Gram: string
+  CONTEXT:                      # NEW in 1.1 — shared dependent variables
+    vars: map                   # e.g. {m: "m1", N: "N1"}; the hyperedge matcher
+                                # unifies these into ONE substitution environment
+  TRUST:
+    verifier: LEAN | ARB_INTERVAL | PAPER | CONDITIONAL
+    axiom_profile: string
+    provenance: string
+
+ADAPTER_SPEC_V1_1:              # every field below is REQUIRED for a durable
+  ADAPTER_ID: string            # registry entry (T2.1 repair: name + sketch is
+  FROM_PORT: partial PORT_SPEC  # candidate metadata, not a verified entry)
+  TO_PORT: partial PORT_SPEC
+  EVIDENCE:
+    theorem_name: string        # exact declaration name
+    source_file: string
+    source_line: int
+    source_commit: string
+    source_blob: string
+    check_type: string          # verbatim #check output of the theorem
+  DIRECTION: forward | both
+  PRESERVES: list
+  DROPS: list
+  LOSS_LEDGER: string
+  SCOPE: string
+  VERIFIER: LEAN | ARB_INTERVAL | PAPER | CONDITIONAL
+  SHARED_PARAMETER_CONTEXT: map # which context vars the adapter preserves
+  COST: string
+
+ADAPTABLE_PAIRS:                # declared adapter TARGET classes: an edge inside
+                                # a declared pair without a registered adapter is
+                                # ADAPTER_REQUIRED; an undeclared identity pair
+                                # is HARD_MISMATCH (P3-vs-P5 distinction)
+  - [synthesized-L2-isometry-image, ae-fourier-representative]
+  - [any-ae-representative, Lp-class]
+  - [L2-restrict-window, L1-volume]
+
+REPRESENTATIVE_SEMANTICS:       # NEW in 1.1 — the a.e./pointwise firewall
+  order: [pointwise, ae-representative, Lp-class]
+  law: >
+    a stronger representative may feed a weaker consumer; an a.e. or Lp
+    representative NEVER discharges a pointwise-evaluation consumer without a
+    separately named pointwise theorem (C04/C10).  In particular
+    A_ISOMETRY_TO_AE_FOURIER_REPRESENTATIVE discharges ae/Lp consumers only;
+    for a pointwise consumer the result stays ADAPTER_REQUIRED (declared pair)
+    or REFINEMENT_LOSS (strict consumer).
+
+PORT_MATCH_RESULT_V1:           # closed enum, unchanged
+  - EXACT_MATCH
+  - DEFINITIONAL_MATCH
+  - EXPLICIT_ADAPTER_MATCH
+  - ADAPTER_REQUIRED
+  - REFINEMENT_LOSS
+  - HARD_MISMATCH
+  - UNVERIFIED
+
+HYPEREDGE_MATCH_RULE_V1_1:      # NEW in 1.1 — context coherence
+  law: >
+    A consumer AND-hyperedge with ports over shared context vars is matched by
+    building ONE substitution environment for the whole edge: every provider
+    port binds the consumer vars; any inconsistent binding across ports yields
+    HARD_MISMATCH with reason SHARED_CONTEXT_INCOHERENCE, regardless of
+    per-port surface matches (mandatory plant C2).
+
+RECEIPT_V1:                     # T2_PORT_MATCHER_RECEIPT_V1
+  schema_sha256: string
+  matcher_sha256: string
+  tests_sha256: string
+  fixture_manifest: map         # path -> sha256, every fixture file
+  toolchain: string             # lean-toolchain + mathlib rev for harness types
+  replay_command: string
+  results: map                  # plant -> expected/got/PASS
