@@ -52,6 +52,14 @@ Observations already on disk (verified, not recalled):
 4. Repairing one missing dependency by hand
    (`lake build Q3.Proofs.PSD_BSplineAnalyticModel`) moves the failure to the
    next missing dependency. It is a class of defect, not one file.
+4a. **However** — measured after the task was first written, so read this as
+   the newer fact: building a whole default target by module name works and is
+   not expensive. `lake build Q3.Proofs.PSD_CenteredCoeffCertifiedBlockImport`
+   completed in 7773 jobs, exit 0, roughly four minutes on a warm tree. That
+   makes option A cheaper than it looks; it does not decide the question, but
+   it removes the "too slow to be practical" objection. The first default
+   target then passes and the failure moves to the next unbuilt module
+   (`PSD_CenteredCoeffAnalyticP0Import`), confirming the class diagnosis.
 5. Passing an explicit target works today:
    `./scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPacketVariation.lean`
    → `q3_check ok`, exit 0.
@@ -66,7 +74,7 @@ what the gate is *for*.
 
 | Option | What it means | Cost |
 |---|---|---|
-| A. Default builds its targets first | script runs `lake build <module>` for each default target before `lake env lean` | slow default; honest |
+| A. Default builds its targets first | script runs `lake build <module>` for each default target before `lake env lean` | ~4 min per cold target, measured; honest |
 | B. Default list is stale, replace it | the three PSD files no longer represent what the gate must protect; name the current targets | needs a defensible choice of targets |
 | C. Bring the modules into the graph | add them to the root import graph so `lake build` maintains them | changes what the whole build carries |
 
