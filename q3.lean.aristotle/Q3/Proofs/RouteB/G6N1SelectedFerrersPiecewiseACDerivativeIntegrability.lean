@@ -1196,6 +1196,16 @@ private theorem selectedFerrersAbelLogSeam_exp
   rw [selectedFerrersAbelLogSeam, Real.exp_log]
   positivity
 
+private theorem selectedFerrersAbelLogSeam_last (k : ℕ) :
+    selectedFerrersAbelLogSeam k ⟨k + 2, by omega⟩ = 0 := by
+  simp [selectedFerrersAbelLogSeam]
+
+private theorem selectedFerrersAbelLogSeam_one (k : ℕ) :
+    selectedFerrersAbelLogSeam k (1 : ℕ+) =
+      L_m (selectedFerrersPreAnchorIndex k) := by
+  simp [selectedFerrersAbelLogSeam, L_m, logLength,
+    selectedFerrersPreAnchorIndex]
+
 private theorem selectedFerrersAbelLogArgument_at_seam
     (k : ℕ) (n : ℕ+) :
     selectedFerrersAbelLogArgument k n
@@ -1210,6 +1220,29 @@ private theorem selectedFerrersAbelLogArgument_at_seam
   rw [selectedFerrersAbelLogArgument,
     selectedFerrersAbelLogSeam_exp]
   have hn : (((n : ℕ) : ℝ)) ≠ 0 := by positivity
+  field_simp [hn, hlam.ne']
+  nlinarith
+
+private theorem selectedFerrersAbelLogProductionTerm_at_seam
+    (k : ℕ) (n : ℕ+) :
+    selectedFerrersAbelLogProductionTerm k n
+        (selectedFerrersAbelLogSeam k n) =
+      (((Real.sqrt
+          (lambda_m (selectedFerrersPreAnchorIndex k) / ((n : ℕ) : ℝ)) : ℝ) : ℂ) *
+        selectedFerrersLemma73SourcePacket k
+          (lambda_m (selectedFerrersPreAnchorIndex k))) := by
+  have hlam := selectedFerrersW4_lambda_pos k
+  have hsq := selectedFerrersW4_lambda_sq k
+  have hsq' :
+      lambda_m (selectedFerrersPreAnchorIndex k) *
+          lambda_m (selectedFerrersPreAnchorIndex k) = (k : ℝ) + 2 := by
+    exact_mod_cast hsq
+  have hn : (((n : ℕ) : ℝ)) ≠ 0 := by positivity
+  unfold selectedFerrersAbelLogProductionTerm
+  rw [selectedFerrersAbelLogArgument_at_seam,
+    selectedFerrersAbelLogSeam_exp]
+  congr 2
+  congr 1
   field_simp [hn, hlam.ne']
   nlinarith
 
@@ -1327,6 +1360,90 @@ private theorem selectedFerrersAbelLogCell_argument_mem_Ioo
         nlinarith
   rw [(selectedFerrersPreAnchorPair_spec k).1]
   exact ⟨(neg_nonpos.mpr hlam.le).trans_lt hargpos, harglt⟩
+
+private theorem selectedFerrersAbelLogCell_Ioo_subset_window
+    (k : ℕ) {j : ℕ+} (hj : (j : ℕ) ≤ k + 1) :
+    Set.Ioo
+        (selectedFerrersAbelLogSeam k ⟨(j : ℕ) + 1, by omega⟩)
+        (selectedFerrersAbelLogSeam k j) ⊆
+      Set.Icc 0 (L_m (selectedFerrersPreAnchorIndex k)) := by
+  have hjm : (⟨(j : ℕ) + 1, by omega⟩ : ℕ+) ≤
+      ⟨k + 2, by omega⟩ := by
+    change (j : ℕ) + 1 ≤ k + 2
+    omega
+  have hleft : 0 ≤
+      selectedFerrersAbelLogSeam k ⟨(j : ℕ) + 1, by omega⟩ := by
+    rw [← selectedFerrersAbelLogSeam_last k]
+    exact selectedFerrersAbelLogSeam_antitone k hjm
+  have hone : (1 : ℕ+) ≤ j := by exact (Finset.mem_Icc.mp (by simp : j ∈
+    Finset.Icc (1 : ℕ+) j)).1
+  have hright : selectedFerrersAbelLogSeam k j ≤
+      L_m (selectedFerrersPreAnchorIndex k) := by
+    rw [← selectedFerrersAbelLogSeam_one k]
+    exact selectedFerrersAbelLogSeam_antitone k hone
+  intro x hx
+  exact ⟨hleft.trans hx.1.le, hx.2.le.trans hright⟩
+
+private theorem selectedFerrersAbelLogCellRepresentative_eq_representative
+    (k : ℕ) {j : ℕ+} (hj : (j : ℕ) ≤ k + 1) {x : ℝ}
+    (hx : x ∈ Set.Ioo
+      (selectedFerrersAbelLogSeam k ⟨(j : ℕ) + 1, by omega⟩)
+      (selectedFerrersAbelLogSeam k j)) :
+    selectedFerrersAbelLogCellRepresentative k j x =
+      selectedFerrersAbelLogRepresentative k x := by
+  classical
+  have hxwin := selectedFerrersAbelLogCell_Ioo_subset_window k hj hx
+  rw [selectedFerrersAbelLogRepresentative_eq_productionSum k hxwin]
+  unfold selectedFerrersAbelLogCellRepresentative
+  congr 1
+  apply Finset.sum_subset
+  · intro n hn
+    simp only [sourcePositiveIndexFinset, Finset.mem_Icc] at hn ⊢
+    refine ⟨hn.1, ?_⟩
+    change (n : ℕ) ≤ k + 2
+    exact (show (n : ℕ) ≤ (j : ℕ) from hn.2).trans (by omega)
+  · intro n hnSource hnCell
+    have hnSource' := hnSource
+    simp only [sourcePositiveIndexFinset, Finset.mem_Icc] at hnSource'
+    have hnlt : (j : ℕ) < (n : ℕ) := by
+      have hnnot : ¬ ((1 : ℕ+) ≤ n ∧ n ≤ j) := by
+        simpa only [Finset.mem_Icc] using hnCell
+      exact lt_of_not_ge (fun hnj => hnnot ⟨hnSource'.1, hnj⟩)
+    have hsuccn : (⟨(j : ℕ) + 1, by omega⟩ : ℕ+) ≤ n := by
+      change (j : ℕ) + 1 ≤ (n : ℕ)
+      omega
+    have hseam : selectedFerrersAbelLogSeam k n < x :=
+      (selectedFerrersAbelLogSeam_antitone k hsuccn).trans_lt hx.1
+    have harg : lambda_m (selectedFerrersPreAnchorIndex k) <
+        selectedFerrersAbelLogArgument k n x := by
+      rw [← selectedFerrersAbelLogArgument_at_seam k n]
+      unfold selectedFerrersAbelLogArgument
+      have hexp := Real.exp_lt_exp.mpr hseam
+      gcongr
+      exact selectedFerrersW4_lambda_pos k
+    rw [selectedFerrersAbelLogProductionTerm,
+      selectedFerrersLemma73SourcePacket_eq_zero_of_lambda_lt k harg,
+      mul_zero]
+
+private theorem selectedFerrersAbelLogCellRepresentative_eventuallyEq_representative
+    (k : ℕ) {j : ℕ+} (hj : (j : ℕ) ≤ k + 1) {x : ℝ}
+    (hx : x ∈ Set.Ioo
+      (selectedFerrersAbelLogSeam k ⟨(j : ℕ) + 1, by omega⟩)
+      (selectedFerrersAbelLogSeam k j)) :
+    selectedFerrersAbelLogCellRepresentative k j =ᶠ[nhds x]
+      selectedFerrersAbelLogRepresentative k := by
+  filter_upwards [IsOpen.mem_nhds isOpen_Ioo hx] with y hy
+  exact selectedFerrersAbelLogCellRepresentative_eq_representative k hj hy
+
+private theorem selectedFerrersAbelLogCellRepresentative_deriv_eq_representative
+    (k : ℕ) {j : ℕ+} (hj : (j : ℕ) ≤ k + 1) {x : ℝ}
+    (hx : x ∈ Set.Ioo
+      (selectedFerrersAbelLogSeam k ⟨(j : ℕ) + 1, by omega⟩)
+      (selectedFerrersAbelLogSeam k j)) :
+    deriv (selectedFerrersAbelLogCellRepresentative k j) x =
+      deriv (selectedFerrersAbelLogRepresentative k) x :=
+  (selectedFerrersAbelLogCellRepresentative_eventuallyEq_representative
+    k hj hx).deriv_eq
 
 private theorem selectedFerrersAbelLogCellRepresentative_absolutelyContinuousOnInterval
     (k : ℕ) (j : ℕ+) :
