@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
   "sensor_kind": "SOURCE_HOLE_AND_IMPORT_BOUNDARY_PROPAGATION",
-  "generated_at": "2026-08-24 09:18 UTC",
+  "generated_at": "2026-08-24 20:29 UTC",
   "root": "Q3/",
   "semantics": {
     "numeric_checks": "EVIDENCE_ONLY_NOT_PROPAGATED",
@@ -9,7 +9,7 @@
     "doomed": "DISABLED"
   },
   "scope": {
-    "included_files": 3525,
+    "included_files": 3531,
     "excluded_directories": [
       "Q3/Clean",
       "Q3/Archive"
@@ -26,8 +26,8 @@
       "policy": "ROOT_CLOSURE_PLUS_LIVE_SUPPLIER_ALLOWLIST",
       "heavy_generated_family": "Q3/Proofs/PrimeCert",
       "heavy_threshold_bytes": 1000000,
-      "content_scanned_files": 2222,
-      "content_scanned_bytes": 96598586,
+      "content_scanned_files": 2228,
+      "content_scanned_bytes": 96794274,
       "skipped_generated_files": 1303,
       "skipped_generated_bytes": 4312275592,
       "skipped_file_ids": [
@@ -81915,6 +81915,30 @@
       "is_doomed": false
     },
     {
+      "id": "Q3/Proofs/RouteB/D0Mode4FerrersSingularEndpointRegularity.lean",
+      "module": "Q3.Proofs.RouteB.D0Mode4FerrersSingularEndpointRegularity",
+      "dependencies": [
+        "Q3/Proofs/RouteB/D0Mode4FerrersInteriorZeroSimplicity.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
       "id": "Q3/Proofs/RouteB/D0Mode4FerrersSturmComparison.lean",
       "module": "Q3.Proofs.RouteB.D0Mode4FerrersSturmComparison",
       "dependencies": [
@@ -81944,6 +81968,31 @@
       "dependencies": [
         "Q3/Proofs/RouteB/D0Mode4BackwardTailFiniteTailPosDef.lean",
         "Q3/Proofs/RouteB/D0Mode4HermitianNegativeCountStability.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "module": "Q3.Proofs.RouteB.D0Mode4FiniteEvenLegendreQuadraticForm",
+      "dependencies": [
+        "Q3/Proofs/RouteB/D0Mode4LegendreHermitianCoordinateScale.lean",
+        "Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreGram.lean"
       ],
       "sorries": [],
       "numeric_check": "NOT_CONFIGURED",
@@ -82254,9 +82303,58 @@
       "is_doomed": false
     },
     {
+      "id": "Q3/Proofs/RouteB/D0Mode4LegendreHermitianCoordinateScale.lean",
+      "module": "Q3.Proofs.RouteB.D0Mode4LegendreHermitianCoordinateScale",
+      "dependencies": [
+        "Q3/Proofs/RouteB/D0Mode4DLMFEvenFiniteMatrix.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
       "id": "Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreAffineKernel.lean",
       "module": "Q3.Proofs.RouteB.D0Mode4OrdinaryLegendreAffineKernel",
       "dependencies": [],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreGram.lean",
+      "module": "Q3.Proofs.RouteB.D0Mode4OrdinaryLegendreGram",
+      "dependencies": [
+        "Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreIntervalBound.lean",
+        "Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreXSquaredAction.lean"
+      ],
       "sorries": [],
       "numeric_check": "NOT_CONFIGURED",
       "content_scan_status": "SCANNED",
@@ -85564,6 +85662,33 @@
       "is_doomed": false
     },
     {
+      "id": "Q3/Proofs/RouteB/G6N1SelectedFerrersFixedKShiftedRootEnergy.lean",
+      "module": "Q3.Proofs.RouteB.G6N1SelectedFerrersFixedKShiftedRootEnergy",
+      "dependencies": [
+        "Q3/Proofs/RouteB/D0PstarShiftedArchFormDomain.lean",
+        "Q3/Proofs/RouteB/D0PstarSourceLogWindowFourierIntegralCrosswalk.lean",
+        "Q3/Proofs/RouteB/D0PstarVModeLogWeightedL2.lean",
+        "Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
       "id": "Q3/Proofs/RouteB/G6N1SelectedFerrersH2aSourceQuantities.lean",
       "module": "Q3.Proofs.RouteB.G6N1SelectedFerrersH2aSourceQuantities",
       "dependencies": [
@@ -85644,6 +85769,31 @@
       "dependencies": [
         "Q3/Proofs/RouteB/D0Mode4FerrersDimensionlessFourierScaling.lean",
         "Q3/Proofs/RouteB/G6N1SelectedFerrersPreAnchorDataInhabitant.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "module": "Q3.Proofs.RouteB.G6N1SelectedFerrersPiecewiseACDerivativeIntegrability",
+      "dependencies": [
+        "Q3/Proofs/RouteB/D0PstarActualProlateEStarMemLp.lean",
+        "Q3/Proofs/RouteB/G6N1SelectedFerrersAbelPoissonL2.lean"
       ],
       "sorries": [],
       "numeric_check": "NOT_CONFIGURED",

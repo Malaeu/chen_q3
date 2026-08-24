@@ -1,10 +1,10 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 333,
-  "declarations": 3425,
-  "in_docs": 1684,
-  "in_lemma_db": 3425,
+  "files_scanned": 339,
+  "declarations": 3590,
+  "in_docs": 1763,
+  "in_lemma_db": 3590,
   "orphans": 0,
   "uncatalogued": 0,
   "orphan_files_top": [],
@@ -6440,10 +6440,30 @@
       "orphan": false
     },
     {
+      "kind": "theorem",
+      "name": "sourceLogWindow_measurePreserving",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0LogWindowVNMCompletenessBridge.lean",
+      "line": 144,
+      "signature": "theorem sourceLogWindow_measurePreserving (i : PairIndex) : MeasurePreserving (fun u : ℝ => Real.log (lambda_m i * u)) (dStar.restrict (I_m i)) (volume.restrict (Set.Icc (0 : ℝ) (L_m i)))",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceExpWindow_measurePreserving",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0LogWindowVNMCompletenessBridge.lean",
+      "line": 154,
+      "signature": "theorem sourceExpWindow_measurePreserving (i : PairIndex) : MeasurePreserving (fun x : ℝ => Real.exp x / lambda_m i) (volume.restrict (Set.Icc (0 : ℝ) (L_m i))) (dStar.restrict (I_m i))",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
       "kind": "def",
       "name": "logWindowL2Equiv",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0LogWindowVNMCompletenessBridge.lean",
-      "line": 143,
+      "line": 163,
       "signature": "noncomputable def logWindowL2Equiv (i : PairIndex) : MeasureTheory.Lp ℂ 2 (volume.restrict (Set.Icc (0 : ℝ) (L_m i))) ≃ₗᵢ[ℂ] H_m i",
       "in_docs": true,
       "in_lemma_db": true,
@@ -6453,7 +6473,7 @@
       "kind": "theorem",
       "name": "coeFn_logWindowL2Equiv",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0LogWindowVNMCompletenessBridge.lean",
-      "line": 208,
+      "line": 228,
       "signature": "theorem coeFn_logWindowL2Equiv (i : PairIndex) (f : MeasureTheory.Lp ℂ 2 (volume.restrict (Set.Icc (0 : ℝ) (L_m i)))) : ((logWindowL2Equiv i f : H_m i) : ℝ → ℂ) =ᵐ[dStar.restrict (I_m i)] (fun u : ℝ => f (Real.log (lambda_m i * u)))",
       "in_docs": true,
       "in_lemma_db": true,
@@ -6463,7 +6483,7 @@
       "kind": "theorem",
       "name": "V_n_m_span_orthogonal_eq_bot",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0LogWindowVNMCompletenessBridge.lean",
-      "line": 218,
+      "line": 238,
       "signature": "private theorem V_n_m_span_orthogonal_eq_bot (i : PairIndex) : (Submodule.span ℂ (Set.range (V_n_m i)))ᗮ = ⊥",
       "in_docs": true,
       "in_lemma_db": true,
@@ -6473,7 +6493,7 @@
       "kind": "def",
       "name": "V_n_m_hilbertBasis",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0LogWindowVNMCompletenessBridge.lean",
-      "line": 483,
+      "line": 503,
       "signature": "noncomputable def V_n_m_hilbertBasis (i : PairIndex) : HilbertBasis ℤ ℂ (H_m i)",
       "in_docs": true,
       "in_lemma_db": true,
@@ -6483,7 +6503,7 @@
       "kind": "theorem",
       "name": "V_n_m_hilbertBasis_apply",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0LogWindowVNMCompletenessBridge.lean",
-      "line": 491,
+      "line": 511,
       "signature": "theorem V_n_m_hilbertBasis_apply (i : PairIndex) (n : ℤ) : V_n_m_hilbertBasis i n = V_n_m i n",
       "in_docs": true,
       "in_lemma_db": true,
@@ -6493,7 +6513,7 @@
       "kind": "theorem",
       "name": "norm_sub_coe_P_m_N_sq_eq_tsum_complement",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0LogWindowVNMCompletenessBridge.lean",
-      "line": 497,
+      "line": 517,
       "signature": "theorem norm_sub_coe_P_m_N_sq_eq_tsum_complement (i : PairIndex) (f : H_m i) : ‖f - (P_m_N i f : H_m i)‖ ^ 2 = ∑' n : ℤ, if n ∈ modeSet i then 0 else ‖inner ℂ (V_n_m i n) f‖ ^ 2",
       "in_docs": true,
       "in_lemma_db": true,
@@ -7925,7 +7945,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMFEvenFiniteMatrix.lean",
       "line": 85,
       "signature": "noncomputable def mode4DLMFEvenSimilarityScale (G : ℝ) : ℕ → ℝ | 0 => 1 | q + 1 => mode4DLMFEvenSimilarityScale G q * mode4JacobiSymmetricOff G q / mode4JacobiUpper G q  private theorem mode4JacobiLower_succ_pos (G : ℝ) (q : ℕ) (hG : 0 < G) : 0 < mode4JacobiLower G (q + 1)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -9830,6 +9850,46 @@
       "orphan": false
     },
     {
+      "kind": "def",
+      "name": "mode4FerrersFlux",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersSingularEndpointRegularity.lean",
+      "line": 26,
+      "signature": "private noncomputable def mode4FerrersFlux (a : ℕ → ℝ) (x : ℝ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "Mode4FerrersRegularEvenProlateSolution.flux_hasDerivAt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersSingularEndpointRegularity.lean",
+      "line": 30,
+      "signature": "private theorem Mode4FerrersRegularEvenProlateSolution.flux_hasDerivAt {mProject K : ℕ} {Λ x : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (hx : x ∈ Set.Ioo (-1 : ℝ) 1) : HasDerivAt (mode4FerrersFlux S.coefficients) (-(Λ + mode4JacobiG mProject * (1 - x ^ 2)) * mode4FerrersSeries S.coefficients x) x",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "endpoint_norm_sub_le_of_deriv_bound",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersSingularEndpointRegularity.lean",
+      "line": 51,
+      "signature": "private theorem endpoint_norm_sub_le_of_deriv_bound {F F' : ℝ → ℝ} {L C s : ℝ} (hs : s < 1) (hderiv : ∀ x ∈ Set.Ico s 1, HasDerivAt F (F' x) x) (hbound : ∀ x ∈ Set.Ico s 1, ‖F' x‖ ≤ C) (hlim : Filter.Tendsto F (nhdsWithin (1 : ℝ) (Set.Iio 1)) (nhds L)) : ‖L - F s‖ ≤ C * (1 - s)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "Mode4FerrersRegularEvenProlateSolution.endpoint_values_ne_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersSingularEndpointRegularity.lean",
+      "line": 91,
+      "signature": "theorem Mode4FerrersRegularEvenProlateSolution.endpoint_values_ne_zero {mProject K : ℕ} {Λ : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) : mode4FerrersSeries S.coefficients (-1) ≠ 0 ∧ mode4FerrersSeries S.coefficients 1 ≠ 0",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
       "kind": "theorem",
       "name": "sturmParameterDirectionPlant",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersSturmComparison.lean",
@@ -10115,6 +10175,196 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteBlockInertiaAdditivity.lean",
       "line": 313,
       "signature": "theorem mode4ActualFiniteJacobiTruncation_negativeCount_eq_schurApprox (mProject K d : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) : mode4HermitianNegativeEigenvalueCount (mode4ActualFiniteJacobiTruncation mProject Λ K d) (mode4ActualFiniteJacobiTruncation_isHermitian mProject Λ K d) = mode4HermitianNegativeEigenvalueCount (mode4BackwardTailSchurApprox mProject Λ K d) (mode4BackwardTailSchurApprox_isHermitian mProject K d Λ)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "mode4FiniteEvenLegendrePolynomial",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 34,
+      "signature": "noncomputable def mode4FiniteEvenLegendrePolynomial (G : ℝ) {d : ℕ} (b : Fin d → ℝ) : ℝ[X]",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FiniteEvenLegendrePolynomial_eval",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 41,
+      "signature": "private theorem mode4FiniteEvenLegendrePolynomial_eval (G : ℝ) {d : ℕ} (b : Fin d → ℝ) (x : ℝ) : (mode4FiniteEvenLegendrePolynomial G b).eval x = ∑ q : Fin d, ((-1 : ℝ) ^ q.val) * mode4DLMFEvenSimilarityScale G q.val * b q * mode4OrdinaryLegendre (2 * q.val) x",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FiniteEvenLegendrePolynomial_l2",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 57,
+      "signature": "theorem mode4FiniteEvenLegendrePolynomial_l2 (G : ℝ) {d : ℕ} (b : Fin d → ℝ) (hG : 0 < G) : (∫ x in (-1 : ℝ)..1, (mode4FiniteEvenLegendrePolynomial G b).eval x ^ 2) = 2 * (b ⬝ᵥ b)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FiniteEvenLegendre_Xsq_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 128,
+      "signature": "private theorem mode4FiniteEvenLegendre_Xsq_zero (G x : ℝ) : G * x ^ 2 * mode4OrdinaryLegendre 0 x = -mode4PSWFLegendreSubdiagonal G 1 * mode4OrdinaryLegendre 2 x + (mode4PSWFLegendreDiagonal G 0 - ((0 : ℝ) * (0 + 1))) * mode4OrdinaryLegendre 0 x",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FiniteEvenLegendre_Xsq_succ",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 151,
+      "signature": "private theorem mode4FiniteEvenLegendre_Xsq_succ (G x : ℝ) (q : ℕ) : G * x ^ 2 * mode4OrdinaryLegendre (2 * (q + 1)) x = -mode4PSWFLegendreSubdiagonal G (q + 2) * mode4OrdinaryLegendre (2 * (q + 2)) x + (mode4PSWFLegendreDiagonal G (q + 1) - (((2 * (q + 1) : ℕ) : ℝ) * (((2 * (q + 1) : ℕ) : ℝ) + 1))) * mode4OrdinaryLegendre (2 * (q + 1)) x - mode4PSWFLegendreSuperdiagonal G q * mode4OrdinaryLegendre (2 * q) x",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FiniteEvenLegendre_potential_pair_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 260,
+      "signature": "private theorem mode4FiniteEvenLegendre_potential_pair_zero (G : ℝ) (r : ℕ) : (∫ x in (-1 : ℝ)..1, G * x ^ 2 * mode4OrdinaryLegendre 0 x * mode4OrdinaryLegendre (2 * r) x) = (-mode4PSWFLegendreSubdiagonal G 1) * (if 1 = r then 2 / 5 else 0) + mode4PSWFLegendreDiagonal G 0 * (if 0 = r then 2 else 0)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FiniteEvenLegendre_potential_pair_succ",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 294,
+      "signature": "private theorem mode4FiniteEvenLegendre_potential_pair_succ (G : ℝ) (q r : ℕ) : (∫ x in (-1 : ℝ)..1, G * x ^ 2 * mode4OrdinaryLegendre (2 * (q + 1)) x * mode4OrdinaryLegendre (2 * r) x) = (-mode4PSWFLegendreSubdiagonal G (q + 2)) * (if q + 2 = r then 2 / (((4 * (q + 2) + 1 : ℕ) : ℝ)) else 0) + (mode4PSWFLegendreDiagonal G (q + 1) - (((2 * (q + 1) : ℕ) : ℝ) * (((2 * (q + 1) : ℕ) : ℝ) + 1))) * (if q + 1 = r then 2 / (((4 * (q + 1) + 1 : ℕ) : ℝ)) else 0) + (-mode4PSWFLegendreSuperdiagonal G q) * (if q = r then 2 / (((4 * q + 1 : ℕ) : ℝ)) else 0)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "mode4FiniteEvenLegendreEnergyPair",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 348,
+      "signature": "private noncomputable def mode4FiniteEvenLegendreEnergyPair (G Λ : ℝ) (q r : ℕ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FiniteEvenLegendreEnergyPair_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 360,
+      "signature": "private theorem mode4FiniteEvenLegendreEnergyPair_zero (G Λ : ℝ) (r : ℕ) : mode4FiniteEvenLegendreEnergyPair G Λ 0 r = (-mode4PSWFLegendreSubdiagonal G 1) * (if 1 = r then 2 / 5 else 0) + (mode4PSWFLegendreDiagonal G 0 - (Λ + G)) * (if 0 = r then 2 else 0)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FiniteEvenLegendreEnergyPair_succ",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 388,
+      "signature": "private theorem mode4FiniteEvenLegendreEnergyPair_succ (G Λ : ℝ) (q r : ℕ) : mode4FiniteEvenLegendreEnergyPair G Λ (q + 1) r = (-mode4PSWFLegendreSubdiagonal G (q + 2)) * (if q + 2 = r then 2 / (((4 * (q + 2) + 1 : ℕ) : ℝ)) else 0) + (mode4PSWFLegendreDiagonal G (q + 1) - (Λ + G)) * (if q + 1 = r then 2 / (((4 * (q + 1) + 1 : ℕ) : ℝ)) else 0) + (-mode4PSWFLegendreSuperdiagonal G q) * (if q = r then 2 / (((4 * q + 1 : ℕ) : ℝ)) else 0)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FiniteEvenLegendreEnergyPair_diag",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 421,
+      "signature": "private theorem mode4FiniteEvenLegendreEnergyPair_diag (G Λ : ℝ) (q : ℕ) : mode4FiniteEvenLegendreEnergyPair G Λ q q = mode4JacobiCenter G Λ q * (2 / (((4 * q + 1 : ℕ) : ℝ)))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FiniteEvenLegendreEnergyPair_upper",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 439,
+      "signature": "private theorem mode4FiniteEvenLegendreEnergyPair_upper (G Λ : ℝ) (q : ℕ) : mode4FiniteEvenLegendreEnergyPair G Λ q (q + 1) = mode4JacobiLower G (q + 1) * (2 / (((4 * (q + 1) + 1 : ℕ) : ℝ)))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FiniteEvenLegendreEnergyPair_symm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 458,
+      "signature": "private theorem mode4FiniteEvenLegendreEnergyPair_symm (G Λ : ℝ) (q r : ℕ) : mode4FiniteEvenLegendreEnergyPair G Λ q r = mode4FiniteEvenLegendreEnergyPair G Λ r q",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FiniteEvenLegendreEnergyPair_eq_zero_of_far",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 467,
+      "signature": "private theorem mode4FiniteEvenLegendreEnergyPair_eq_zero_of_far (G Λ : ℝ) (q r : ℕ) (hdiag : q ≠ r) (hupper : r ≠ q + 1) (hlower : q ≠ r + 1) : mode4FiniteEvenLegendreEnergyPair G Λ q r = 0",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FiniteEvenLegendre_scale_lower_balance_of_fin_succ",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 486,
+      "signature": "private theorem mode4FiniteEvenLegendre_scale_lower_balance_of_fin_succ (G Λ : ℝ) {d : ℕ} (hG : 0 < G) (q r : Fin d) (hsucc : r.val = q.val + 1) : mode4JacobiLower G r.val * mode4DLMFEvenSimilarityScale G q.val = mode4DLMFEvenSimilarityScale G r.val * mode4JacobiSymmetricOff G q.val",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FiniteEvenLegendre_scaledEnergyPair_eq_matrix",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 507,
+      "signature": "private theorem mode4FiniteEvenLegendre_scaledEnergyPair_eq_matrix (G Λ : ℝ) {d : ℕ} (hG : 0 < G) (q r : Fin d) : (((-1 : ℝ) ^ q.val) * mode4DLMFEvenSimilarityScale G q.val) * (((-1 : ℝ) ^ r.val) * mode4DLMFEvenSimilarityScale G r.val) * mode4FiniteEvenLegendreEnergyPair G Λ q.val r.val = 2 * mode4ForwardHermitianFiniteMatrix G Λ d q r",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FiniteEvenLegendrePolynomial_derivative_eval",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 651,
+      "signature": "private theorem mode4FiniteEvenLegendrePolynomial_derivative_eval (G : ℝ) {d : ℕ} (b : Fin d → ℝ) (x : ℝ) : (mode4FiniteEvenLegendrePolynomial G b).derivative.eval x = ∑ q : Fin d, ((-1 : ℝ) ^ q.val) * mode4DLMFEvenSimilarityScale G q.val * b q * (mode4OrdinaryLegendrePolynomial (2 * q.val)).derivative.eval x",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FiniteEvenLegendre_energy_pointwise",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 667,
+      "signature": "private theorem mode4FiniteEvenLegendre_energy_pointwise (G Λ : ℝ) {d : ℕ} (b : Fin d → ℝ) (x : ℝ) : (1 - x ^ 2) * ((mode4FiniteEvenLegendrePolynomial G b).derivative.eval x) ^ 2 + G * x ^ 2 * ((mode4FiniteEvenLegendrePolynomial G b).eval x) ^ 2 - (Λ + G) * ((mode4FiniteEvenLegendrePolynomial G b).eval x) ^ 2 = ∑ q : Fin d, ∑ r : Fin d, (((( -1 : ℝ) ^ q.val) * mode4DLMFEvenSimilarityScale G q.val * b q) * (((-1 : ℝ) ^ r.val) * mode4DLMFEvenSimilarityScale G r.val * b r)) * ((1 - x ^ 2) * (mode4OrdinaryLegendrePolynomial (2 * q.val)).derivative.eval x * (mode4OrdinaryLegendrePolynomial (2 * r.val)).derivative.eval x + G * x ^ 2 * mode4OrdinaryLegendre (2 * q.val) x * mode4OrdinaryLegendre (2 * r.val) x - (Λ + G) * (mode4OrdinaryLegendre (2 * q.val) x * mode4OrdinaryLegendre (2 * r.val) x))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FiniteEvenLegendrePolynomial_energy",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 703,
+      "signature": "theorem mode4FiniteEvenLegendrePolynomial_energy (G Λ : ℝ) {d : ℕ} (b : Fin d → ℝ) (hG : 0 < G) : (∫ x in (-1 : ℝ)..1, (1 - x ^ 2) * ((mode4FiniteEvenLegendrePolynomial G b).derivative.eval x) ^ 2 + G * x ^ 2 * ((mode4FiniteEvenLegendrePolynomial G b).eval x) ^ 2 - (Λ + G) * ((mode4FiniteEvenLegendrePolynomial G b).eval x) ^ 2) = 2 * (b ⬝ᵥ ((mode4ForwardHermitianFiniteMatrix G Λ d) *ᵥ b))",
       "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
@@ -11630,6 +11880,16 @@
       "orphan": false
     },
     {
+      "kind": "theorem",
+      "name": "mode4DLMFEvenSimilarityScale_sq_eq_legendreWeight",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4LegendreHermitianCoordinateScale.lean",
+      "line": 26,
+      "signature": "theorem mode4DLMFEvenSimilarityScale_sq_eq_legendreWeight (G : ℝ) (q : ℕ) (hG : 0 < G) : mode4DLMFEvenSimilarityScale G q ^ 2 = 4 * (q : ℝ) + 1",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
       "kind": "def",
       "name": "mode4OrdinaryLegendreAffine",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreAffineKernel.lean",
@@ -11745,7 +12005,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreAffineKernel.lean",
       "line": 113,
       "signature": "theorem mode4OrdinaryLegendre_even (q : ℕ) (x : ℝ) : mode4OrdinaryLegendre (2 * q) (-x) = mode4OrdinaryLegendre (2 * q) x",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -11816,6 +12076,106 @@
       "line": 171,
       "signature": "private theorem mode4OddIndex_changes_sign_at_endpoints : mode4OrdinaryLegendre 1 (-1) ≠ mode4OrdinaryLegendre 1 1",
       "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4OrdinaryLegendre_gram_offdiag",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreGram.lean",
+      "line": 20,
+      "signature": "private theorem mode4OrdinaryLegendre_gram_offdiag (n m : ℕ) (hnm : n ≠ m) : (∫ x in (-1 : ℝ)..1, mode4OrdinaryLegendre n x * mode4OrdinaryLegendre m x) = 0",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4OrdinaryLegendrePolynomial_X_mul_all",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreGram.lean",
+      "line": 83,
+      "signature": "private theorem mode4OrdinaryLegendrePolynomial_X_mul_all (n : ℕ) : X * mode4OrdinaryLegendrePolynomial n = C ((((n + 1 : ℕ) : ℝ) / ((2 * n + 1 : ℕ) : ℝ))) * mode4OrdinaryLegendrePolynomial (n + 1) + C (((n : ℝ) / ((2 * n + 1 : ℕ) : ℝ))) * mode4OrdinaryLegendrePolynomial (n - 1)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "mode4OrdinaryLegendreGram",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreGram.lean",
+      "line": 96,
+      "signature": "private noncomputable def mode4OrdinaryLegendreGram (n m : ℕ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4OrdinaryLegendre_X_mul_eval",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreGram.lean",
+      "line": 101,
+      "signature": "private theorem mode4OrdinaryLegendre_X_mul_eval (n : ℕ) (x : ℝ) : x * mode4OrdinaryLegendre n x = (((n + 1 : ℕ) : ℝ) / ((2 * n + 1 : ℕ) : ℝ)) * mode4OrdinaryLegendre (n + 1) x + ((n : ℝ) / ((2 * n + 1 : ℕ) : ℝ)) * mode4OrdinaryLegendre (n - 1) x",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4OrdinaryLegendreGram_X_left",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreGram.lean",
+      "line": 111,
+      "signature": "private theorem mode4OrdinaryLegendreGram_X_left (n m : ℕ) : (∫ x in (-1 : ℝ)..1, (x * mode4OrdinaryLegendre n x) * mode4OrdinaryLegendre m x) = (((n + 1 : ℕ) : ℝ) / ((2 * n + 1 : ℕ) : ℝ)) * mode4OrdinaryLegendreGram (n + 1) m + ((n : ℝ) / ((2 * n + 1 : ℕ) : ℝ)) * mode4OrdinaryLegendreGram (n - 1) m",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4OrdinaryLegendreGram_norm_succ_relation",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreGram.lean",
+      "line": 159,
+      "signature": "private theorem mode4OrdinaryLegendreGram_norm_succ_relation (n : ℕ) : (((n + 1 : ℕ) : ℝ) / ((2 * n + 1 : ℕ) : ℝ)) * mode4OrdinaryLegendreGram (n + 1) (n + 1) = (((n + 1 : ℕ) : ℝ) / ((2 * n + 3 : ℕ) : ℝ)) * mode4OrdinaryLegendreGram n n",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4OrdinaryLegendreGram_norm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreGram.lean",
+      "line": 200,
+      "signature": "private theorem mode4OrdinaryLegendreGram_norm (n : ℕ) : mode4OrdinaryLegendreGram n n = 2 / (((2 * n + 1 : ℕ) : ℝ))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4OrdinaryLegendre_even_gram",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreGram.lean",
+      "line": 218,
+      "signature": "theorem mode4OrdinaryLegendre_even_gram (q r : ℕ) : (∫ x in (-1 : ℝ)..1, mode4OrdinaryLegendre (2 * q) x * mode4OrdinaryLegendre (2 * r) x) = if q = r then 2 / (((4 * q + 1 : ℕ) : ℝ)) else 0",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4OrdinaryLegendre_derivative_gram_eq_eigen_mul_gram",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreGram.lean",
+      "line": 234,
+      "signature": "private theorem mode4OrdinaryLegendre_derivative_gram_eq_eigen_mul_gram (n m : ℕ) : (∫ x in (-1 : ℝ)..1, (1 - x ^ 2) * (mode4OrdinaryLegendrePolynomial n).derivative.eval x * (mode4OrdinaryLegendrePolynomial m).derivative.eval x) = ((n : ℝ) * (n + 1)) * mode4OrdinaryLegendreGram n m",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4OrdinaryLegendre_even_derivative_gram",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreGram.lean",
+      "line": 298,
+      "signature": "theorem mode4OrdinaryLegendre_even_derivative_gram (q r : ℕ) : (∫ x in (-1 : ℝ)..1, (1 - x ^ 2) * (mode4OrdinaryLegendrePolynomial (2 * q)).derivative.eval x * (mode4OrdinaryLegendrePolynomial (2 * r)).derivative.eval x) = if q = r then (((2 * q : ℕ) : ℝ) * (((2 * q + 1 : ℕ) : ℝ))) * (2 / (((4 * q + 1 : ℕ) : ℝ))) else 0",
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -13285,7 +13645,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarActualProlateEStarMemLp.lean",
       "line": 50,
       "signature": "theorem prolateCombination_windowFiniteSupport (i : PairIndex) (P : ProlatePair) (hlambda : P.pw.lambda = lambda_m i) : WindowFiniteSupport (lambda_m i) (sourcePositiveIndexFinset i) (prolateCombination P)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -20200,6 +20560,16 @@
       "orphan": false
     },
     {
+      "kind": "theorem",
+      "name": "vModeLogGrowthEnvelope_sq_div_one_add_abs_sq_integrable",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarVModeLogWeightedL2.lean",
+      "line": 287,
+      "signature": "theorem vModeLogGrowthEnvelope_sq_div_one_add_abs_sq_integrable : Integrable (fun t : ℝ => (vModeLogGrowthEnvelope t) ^ 2 / (1 + |t|) ^ 2)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
       "kind": "def",
       "name": "sourceW02EndpointPlusModeValue",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02AmbientContinuousForm.lean",
@@ -21005,7 +21375,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/EStarWindowedMellinCrosswalk.lean",
       "line": 32,
       "signature": "def finiteEStarCore (S : Finset ℕ+) (h : ℝ → ℂ) (u : ℝ) : ℂ",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -23675,7 +24045,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersAbelPoissonL2.lean",
       "line": 280,
       "signature": "private noncomputable def selectedPeriodization (k : ℕ) (u x : ℝ) : ℂ",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -24135,7 +24505,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersAbelPoissonL2.lean",
       "line": 1525,
       "signature": "private def selectedSeamIndices (k : ℕ) : Finset ℤ",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -24145,7 +24515,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersAbelPoissonL2.lean",
       "line": 1528,
       "signature": "private noncomputable def selectedSeamSet (k : ℕ) : Finset ℝ",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -24165,7 +24535,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersAbelPoissonL2.lean",
       "line": 1567,
       "signature": "private theorem selectedPeriodization_continuousAt_zero_off_seams (k : ℕ) {u : ℝ} (huseam : u ∉ (selectedSeamSet k : Set ℝ)) : ContinuousAt (selectedPeriodization k u) 0",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -24175,7 +24545,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersAbelPoissonL2.lean",
       "line": 1594,
       "signature": "private theorem selectedPeriodization_continuousAt_one_off_seams (k : ℕ) {u : ℝ} (huseam : u ∉ (selectedSeamSet k : Set ℝ)) : ContinuousAt (selectedPeriodization k u) 1",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -26221,6 +26591,66 @@
     },
     {
       "kind": "def",
+      "name": "selectedFerrersAbelLimitHm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFixedKShiftedRootEnergy.lean",
+      "line": 31,
+      "signature": "noncomputable def selectedFerrersAbelLimitHm (k : ℕ) : H_m (selectedFerrersPreAnchorIndex k)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceLogWindowZeroExtension_selectedFerrersAbelLimitHm_ae",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFixedKShiftedRootEnergy.lean",
+      "line": 39,
+      "signature": "theorem sourceLogWindowZeroExtension_selectedFerrersAbelLimitHm_ae (k : ℕ) : sourceLogWindowZeroExtension (selectedFerrersPreAnchorIndex k) (selectedFerrersAbelLimitHm k) =ᵐ[volume] selectedFerrersAbelLogZeroExtension k",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "fourier_congr_ae",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFixedKShiftedRootEnergy.lean",
+      "line": 91,
+      "signature": "private theorem fourier_congr_ae {f g : ℝ → ℂ} (hfg : f =ᵐ[volume] g) (t : ℝ) : 𝓕 f t = 𝓕 g t",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "shiftedSqrtWeight_sq_le_envelope",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFixedKShiftedRootEnergy.lean",
+      "line": 99,
+      "signature": "private theorem shiftedSqrtWeight_sq_le_envelope (t : ℝ) : sourceArchimedeanShiftedSqrtWeight t ^ 2 ≤ (2 * (|Real.log Real.pi| + Real.log 4 + 7)) * vModeLogGrowthEnvelope t",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersShiftedWeightedFourier_memLp",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFixedKShiftedRootEnergy.lean",
+      "line": 115,
+      "signature": "private theorem selectedFerrersShiftedWeightedFourier_memLp (k : ℕ) : MemLp (fun t : ℝ => (sourceArchimedeanShiftedSqrtWeight t : ℂ) * 𝓕 (sourceLogWindowZeroExtension (selectedFerrersPreAnchorIndex k) (selectedFerrersAbelLimitHm k)) t) 2 volume",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLimit_mem_sourceArchimedeanShiftedFormDomain",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFixedKShiftedRootEnergy.lean",
+      "line": 215,
+      "signature": "theorem selectedFerrersAbelLimit_mem_sourceArchimedeanShiftedFormDomain (k : ℕ) : selectedFerrersAbelLimitHm k ∈ sourceArchimedeanShiftedFormDomain (selectedFerrersPreAnchorIndex k)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
       "name": "ccmComplexReflectionMatrix",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersH2aSourceQuantities.lean",
       "line": 65,
@@ -27210,6 +27640,1226 @@
       "orphan": false
     },
     {
+      "kind": "theorem",
+      "name": "absolutelyContinuousOnInterval_congrOn",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 21,
+      "signature": "private theorem absolutelyContinuousOnInterval_congrOn {F : Type*} [SeminormedAddCommGroup F] {f g : ℝ → F} {a b : ℝ} (hfg : Set.EqOn f g (Set.uIcc a b)) (hg : AbsolutelyContinuousOnInterval g a b) : AbsolutelyContinuousOnInterval f a b",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "complex_re_absolutelyContinuousOnInterval",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 38,
+      "signature": "private theorem complex_re_absolutelyContinuousOnInterval {f : ℝ → ℂ} {a b : ℝ} (hf : AbsolutelyContinuousOnInterval f a b) : AbsolutelyContinuousOnInterval (fun x => (f x).re) a b",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "complex_im_absolutelyContinuousOnInterval",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 58,
+      "signature": "private theorem complex_im_absolutelyContinuousOnInterval {f : ℝ → ℂ} {a b : ℝ} (hf : AbsolutelyContinuousOnInterval f a b) : AbsolutelyContinuousOnInterval (fun x => (f x).im) a b",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "intervalIntegrable_continuousLinearMap_comp",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 78,
+      "signature": "private theorem intervalIntegrable_continuousLinearMap_comp {E F : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [NormedAddCommGroup F] [NormedSpace ℝ F] {f : ℝ → E} {a b : ℝ} (hf : IntervalIntegrable f volume a b) (L : E →L[ℝ] F) : IntervalIntegrable (fun x => L (f x)) volume a b",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "complex_deriv_intervalIntegrable_of_absolutelyContinuousOnInterval",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 86,
+      "signature": "private theorem complex_deriv_intervalIntegrable_of_absolutelyContinuousOnInterval {f : ℝ → ℂ} {a b : ℝ} (hf : AbsolutelyContinuousOnInterval f a b) : IntervalIntegrable (deriv f) volume a b",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "selectedFerrersAbelLogRepresentative",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 151,
+      "signature": "noncomputable def selectedFerrersAbelLogRepresentative (k : ℕ) : ℝ → ℂ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "selectedFerrersAbelLogZeroExtension",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 158,
+      "signature": "noncomputable def selectedFerrersAbelLogZeroExtension (k : ℕ) : ℝ → ℂ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "selectedFerrersAbelLogSeamFreeOn",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 166,
+      "signature": "def selectedFerrersAbelLogSeamFreeOn (k : ℕ) (a b : ℝ) : Prop",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "selectedFerrersAbelLogArgument",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 176,
+      "signature": "private noncomputable def selectedFerrersAbelLogArgument (k : ℕ) (n : ℕ+) (x : ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "selectedFerrersAbelLogProductionTerm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 181,
+      "signature": "private noncomputable def selectedFerrersAbelLogProductionTerm (k : ℕ) (n : ℕ+) (x : ℝ) : ℂ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "selectedFerrersAbelLogSeam",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 188,
+      "signature": "private noncomputable def selectedFerrersAbelLogSeam (k : ℕ) (n : ℕ+) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "selectedFerrersAbelLogSeamPoint",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 192,
+      "signature": "private noncomputable def selectedFerrersAbelLogSeamPoint (k n : ℕ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "selectedFerrersAbelLogPartitionPoint",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 196,
+      "signature": "private noncomputable def selectedFerrersAbelLogPartitionPoint (k j : ℕ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "selectedFerrersAbelLogCellRepresentative",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 200,
+      "signature": "private noncomputable def selectedFerrersAbelLogCellRepresentative (k : ℕ) (j : ℕ+) (x : ℝ) : ℂ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "selectedFerrersAbelLogCell",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 208,
+      "signature": "private noncomputable def selectedFerrersAbelLogCell (k n : ℕ) (x : ℝ) : ℂ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogCell_eq_cellRepresentative",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 218,
+      "signature": "private theorem selectedFerrersAbelLogCell_eq_cellRepresentative (k n : ℕ) (hn : 0 < n) (hnk : n ≤ k + 2) : selectedFerrersAbelLogCell k n = selectedFerrersAbelLogCellRepresentative k ⟨n, hn⟩",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogArgument_continuous",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 236,
+      "signature": "private theorem selectedFerrersAbelLogArgument_continuous (k : ℕ) (n : ℕ+) : Continuous (selectedFerrersAbelLogArgument k n)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogArgument_hasDerivAt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 242,
+      "signature": "private theorem selectedFerrersAbelLogArgument_hasDerivAt (k : ℕ) (n : ℕ+) (x : ℝ) : HasDerivAt (selectedFerrersAbelLogArgument k n) ((((n : ℕ) : ℝ) / lambda_m (selectedFerrersPreAnchorIndex k)) * Real.exp x) x",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogArgument_side_of_seamFree",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 255,
+      "signature": "private theorem selectedFerrersAbelLogArgument_side_of_seamFree (k : ℕ) {a b : ℝ} (hfree : selectedFerrersAbelLogSeamFreeOn k a b) (n : ℕ+) : (∀ x ∈ Set.uIcc a b, selectedFerrersAbelLogArgument k n x < lambda_m (selectedFerrersPreAnchorIndex k)) ∨ (∀ x ∈ Set.uIcc a b, lambda_m (selectedFerrersPreAnchorIndex k) < selectedFerrersAbelLogArgument k n x)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogArgument_lipschitzOn",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 289,
+      "signature": "private theorem selectedFerrersAbelLogArgument_lipschitzOn (k : ℕ) (n : ℕ+) (a b : ℝ) : ∃ C : ℝ, 0 ≤ C ∧ LipschitzOnWith (Real.toNNReal C) (selectedFerrersAbelLogArgument k n) (Set.uIcc a b)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersLemma73SourcePacket_eq_zero_of_lambda_lt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 328,
+      "signature": "private theorem selectedFerrersLemma73SourcePacket_eq_zero_of_lambda_lt (k : ℕ) {u : ℝ} (hu : lambda_m (selectedFerrersPreAnchorIndex k) < u) : selectedFerrersLemma73SourcePacket k u = 0",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "firstDerivativeTerm_abs_le_closed",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 339,
+      "signature": "private theorem firstDerivativeTerm_abs_le_closed (a : ℕ → ℝ) (q : ℕ) (x : ℝ) (hx : x ∈ Set.Icc (-1 : ℝ) 1) : |mode4FerrersFirstDerivativeTerm a q x| ≤ 4 * ((((q + 1 : ℕ) : ℝ)) ^ 2 * |a q|)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "firstDerivativeSeries_abs_le_closed",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 362,
+      "signature": "private theorem firstDerivativeSeries_abs_le_closed (a : ℕ → ℝ) (hW : Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ)) ^ 2 * |a q|)) (x : ℝ) (hx : x ∈ Set.Icc (-1 : ℝ) 1) : |mode4FerrersFirstDerivativeSeries a x| ≤ 4 * ∑' q : ℕ, (((q + 1 : ℕ) : ℝ)) ^ 2 * |a q|",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selected_weighted_summable",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 390,
+      "signature": "private theorem selected_weighted_summable {mProject K : ℕ} {Λ : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) : Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ)) ^ 2 * |S.coefficients q|)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "lipschitz_pairs_closed_of_open",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 413,
+      "signature": "private theorem lipschitz_pairs_closed_of_open {f : ℝ → ℝ} {C : ℝ} (hcont : ContinuousOn f (Set.Icc (-1 : ℝ) 1)) (hpair : ∀ x ∈ Set.Ioo (-1 : ℝ) 1, ∀ y ∈ Set.Ioo (-1 : ℝ) 1, |f y - f x| ≤ C * |y - x|) : ∀ x ∈ Set.Icc (-1 : ℝ) 1, ∀ y ∈ Set.Icc (-1 : ℝ) 1, |f y - f x| ≤ C * |y - x|",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ferrersSeries_lipschitz_closed",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 493,
+      "signature": "private theorem ferrersSeries_lipschitz_closed {mProject K : ℕ} {Λ : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (hW : Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ)) ^ 2 * |S.coefficients q|)) : ∀ x ∈ Set.Icc (-1 : ℝ) 1, ∀ y ∈ Set.Icc (-1 : ℝ) 1, |mode4FerrersSeries S.coefficients y - mode4FerrersSeries S.coefficients x| ≤ (4 * ∑' q : ℕ, (((q + 1 : ℕ) : ℝ)) ^ 2 * |S.coefficients q|) * |y - x|",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "normalizedPhysicalMode_lipschitz_on_window",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 533,
+      "signature": "private theorem normalizedPhysicalMode_lipschitz_on_window {mProject K : ℕ} {Λ : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (hm : 2 ≤ mProject) (hW : Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ)) ^ 2 * |S.coefficients q|)) : ∃ C : ℝ, 0 ≤ C ∧ ∀ u ∈ Set.Icc (-Real.sqrt mProject) (Real.sqrt mProject), ∀ v ∈ Set.Icc (-Real.sqrt mProject) (Real.sqrt mProject), ‖S.normalizedPhysicalMode u - S.normalizedPhysicalMode v‖ ≤ C * |u - v|",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedPacket_lipschitz_on_window",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 614,
+      "signature": "private theorem selectedPacket_lipschitz_on_window (k : ℕ) : ∃ C : ℝ, 0 ≤ C ∧ ∀ u ∈ Set.Icc (-(selectedFerrersPreAnchorPair k).pw.lambda) (selectedFerrersPreAnchorPair k).pw.lambda, ∀ v ∈ Set.Icc (-(selectedFerrersPreAnchorPair k).pw.lambda) (selectedFerrersPreAnchorPair k).pw.lambda, ‖selectedFerrersLemma73SourcePacket k u - selectedFerrersLemma73SourcePacket k v‖ ≤ C * |u - v|",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersLemma73SourcePacket_hasDerivAt_of_mem_Ioo",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 716,
+      "signature": "private theorem selectedFerrersLemma73SourcePacket_hasDerivAt_of_mem_Ioo (k : ℕ) {u : ℝ} (hu : u ∈ Set.Ioo (-(selectedFerrersPreAnchorPair k).pw.lambda) (selectedFerrersPreAnchorPair k).pw.lambda) : ∃ u' : ℂ, HasDerivAt (selectedFerrersLemma73SourcePacket k) u' u",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogPacketTerm_hasDerivAt_of_argument_mem_Ioo",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 758,
+      "signature": "private theorem selectedFerrersAbelLogPacketTerm_hasDerivAt_of_argument_mem_Ioo (k : ℕ) (n : ℕ+) {x : ℝ} (hx : selectedFerrersAbelLogArgument k n x ∈ Set.Ioo (-(selectedFerrersPreAnchorPair k).pw.lambda) (selectedFerrersPreAnchorPair k).pw.lambda) : ∃ d : ℂ, HasDerivAt (fun y => selectedFerrersLemma73SourcePacket k (selectedFerrersAbelLogArgument k n y)) d x",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogPacketTerm_lipschitzOn_of_seamFree",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 810,
+      "signature": "private theorem selectedFerrersAbelLogPacketTerm_lipschitzOn_of_seamFree (k : ℕ) {a b : ℝ} (hfree : selectedFerrersAbelLogSeamFreeOn k a b) (n : ℕ+) : ∃ C : ℝ, 0 ≤ C ∧ LipschitzOnWith (Real.toNNReal C) (fun x => selectedFerrersLemma73SourcePacket k (selectedFerrersAbelLogArgument k n x)) (Set.uIcc a b)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogFiniteCore_absolutelyContinuousOnInterval_of_seamFree",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 880,
+      "signature": "private theorem selectedFerrersAbelLogFiniteCore_absolutelyContinuousOnInterval_of_seamFree (k : ℕ) {a b : ℝ} (hfree : selectedFerrersAbelLogSeamFreeOn k a b) : AbsolutelyContinuousOnInterval (fun x => finiteEStarCore (sourcePositiveIndexFinset (selectedFerrersPreAnchorIndex k)) (selectedFerrersLemma73SourcePacket k) (Real.exp x / lambda_m (selectedFerrersPreAnchorIndex k))) a b",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogSqrtWeight_eq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 914,
+      "signature": "private theorem selectedFerrersAbelLogSqrtWeight_eq (k : ℕ) (x : ℝ) : Real.sqrt (Real.exp x / lambda_m (selectedFerrersPreAnchorIndex k)) = Real.sqrt (lambda_m (selectedFerrersPreAnchorIndex k))⁻¹ * Real.exp (x / 2)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogSqrtWeight_hasDerivAt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 923,
+      "signature": "private theorem selectedFerrersAbelLogSqrtWeight_hasDerivAt (k : ℕ) (x : ℝ) : ∃ d : ℂ, HasDerivAt (fun y => (Real.sqrt (Real.exp y / lambda_m (selectedFerrersPreAnchorIndex k)) : ℂ)) d x",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogProductionTerm_hasDerivAt_of_argument_mem_Ioo",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 951,
+      "signature": "private theorem selectedFerrersAbelLogProductionTerm_hasDerivAt_of_argument_mem_Ioo (k : ℕ) (n : ℕ+) {x : ℝ} (hx : selectedFerrersAbelLogArgument k n x ∈ Set.Ioo (-(selectedFerrersPreAnchorPair k).pw.lambda) (selectedFerrersPreAnchorPair k).pw.lambda) : ∃ d : ℂ, HasDerivAt (selectedFerrersAbelLogProductionTerm k n) d x",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogSqrtWeight_lipschitzOn",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 963,
+      "signature": "private theorem selectedFerrersAbelLogSqrtWeight_lipschitzOn (k : ℕ) (a b : ℝ) : ∃ C : ℝ, 0 ≤ C ∧ LipschitzOnWith (Real.toNNReal C) (fun x => Real.sqrt (Real.exp x / lambda_m (selectedFerrersPreAnchorIndex k))) (Set.uIcc a b)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogSqrtWeight_absolutelyContinuousOnInterval",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1006,
+      "signature": "private theorem selectedFerrersAbelLogSqrtWeight_absolutelyContinuousOnInterval (k : ℕ) (a b : ℝ) : AbsolutelyContinuousOnInterval (fun x => (Real.sqrt (Real.exp x / lambda_m (selectedFerrersPreAnchorIndex k)) : ℂ)) a b",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogScale_mem_window",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1040,
+      "signature": "private theorem selectedFerrersAbelLogScale_mem_window (k : ℕ) {x : ℝ} (hx : x ∈ Set.Icc 0 (L_m (selectedFerrersPreAnchorIndex k))) : Real.exp x / lambda_m (selectedFerrersPreAnchorIndex k) ∈ I_m (selectedFerrersPreAnchorIndex k)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersLemma73SourcePacket_windowFiniteSupport",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1068,
+      "signature": "private theorem selectedFerrersLemma73SourcePacket_windowFiniteSupport (k : ℕ) : WindowFiniteSupport (lambda_m (selectedFerrersPreAnchorIndex k)) (sourcePositiveIndexFinset (selectedFerrersPreAnchorIndex k)) (selectedFerrersLemma73SourcePacket k)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogRepresentative_eq_finite",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1081,
+      "signature": "private theorem selectedFerrersAbelLogRepresentative_eq_finite (k : ℕ) {x : ℝ} (hx : x ∈ Set.Icc 0 (L_m (selectedFerrersPreAnchorIndex k))) : selectedFerrersAbelLogRepresentative k x = finiteEStar (sourcePositiveIndexFinset (selectedFerrersPreAnchorIndex k)) (selectedFerrersLemma73SourcePacket k) (Real.exp x / lambda_m (selectedFerrersPreAnchorIndex k)) + (1 / 2 : ℂ) * selectedFerrersLemma73SourcePacket k 0 * (Real.sqrt (Real.exp x / lambda_m (selectedFerrersPreAnchorIndex k)) : ℂ)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogRepresentative_eq_productionSum",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1097,
+      "signature": "private theorem selectedFerrersAbelLogRepresentative_eq_productionSum (k : ℕ) {x : ℝ} (hx : x ∈ Set.Icc 0 (L_m (selectedFerrersPreAnchorIndex k))) : selectedFerrersAbelLogRepresentative k x = (∑ n ∈ sourcePositiveIndexFinset (selectedFerrersPreAnchorIndex k), selectedFerrersAbelLogProductionTerm k n x) + (1 / 2 : ℂ) * selectedFerrersLemma73SourcePacket k 0 * (Real.sqrt (Real.exp x / lambda_m (selectedFerrersPreAnchorIndex k)) : ℂ)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersLemma73SourcePacket_absolutelyContinuousOnInterval",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1111,
+      "signature": "theorem selectedFerrersLemma73SourcePacket_absolutelyContinuousOnInterval (k : ℕ) : AbsolutelyContinuousOnInterval (selectedFerrersLemma73SourcePacket k) (-(selectedFerrersPreAnchorPair k).pw.lambda) (selectedFerrersPreAnchorPair k).pw.lambda",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "selectedFerrersAbelLogDerivativeBudget",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1186,
+      "signature": "noncomputable def selectedFerrersAbelLogDerivativeBudget (k : ℕ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "selectedFerrersAbelLogJumpBudget",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1193,
+      "signature": "noncomputable def selectedFerrersAbelLogJumpBudget (k : ℕ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "selectedFerrersAbelLogLowerEndpointSeam",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1204,
+      "signature": "private noncomputable def selectedFerrersAbelLogLowerEndpointSeam (k : ℕ) : ℂ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "selectedFerrersAbelLogLowerRightValue",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1211,
+      "signature": "private noncomputable def selectedFerrersAbelLogLowerRightValue (k : ℕ) : ℂ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "selectedFerrersAbelLogSeamTerm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1216,
+      "signature": "private noncomputable def selectedFerrersAbelLogSeamTerm (k n : ℕ) : ℂ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "selectedFerrersAbelLogFourierPhase",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1223,
+      "signature": "private def selectedFerrersAbelLogFourierPhase (t x : ℝ) : ℂ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "selectedFerrersAbelLogFourierPrimitive",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1227,
+      "signature": "private noncomputable def selectedFerrersAbelLogFourierPrimitive (t x : ℝ) : ℂ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "selectedFerrersAbelLogCellBoundaryTerm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1232,
+      "signature": "private noncomputable def selectedFerrersAbelLogCellBoundaryTerm (k : ℕ) (t : ℝ) (j : ℕ) : ℂ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersW4_lambda_pos",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1243,
+      "signature": "private theorem selectedFerrersW4_lambda_pos (k : ℕ) : 0 < lambda_m (selectedFerrersPreAnchorIndex k)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersW4_lambda_sq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1248,
+      "signature": "private theorem selectedFerrersW4_lambda_sq (k : ℕ) : lambda_m (selectedFerrersPreAnchorIndex k) * lambda_m (selectedFerrersPreAnchorIndex k) = (k + 2 : ℕ)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogSeam_exp",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1256,
+      "signature": "private theorem selectedFerrersAbelLogSeam_exp (k : ℕ) (n : ℕ+) : Real.exp (selectedFerrersAbelLogSeam k n) = ((k + 2 : ℕ) : ℝ) / ((n : ℕ) : ℝ)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogSeam_last",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1263,
+      "signature": "private theorem selectedFerrersAbelLogSeam_last (k : ℕ) : selectedFerrersAbelLogSeam k ⟨k + 2, by omega⟩ = 0",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogSeam_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1267,
+      "signature": "private theorem selectedFerrersAbelLogSeam_one (k : ℕ) : selectedFerrersAbelLogSeam k (1 : ℕ+) = L_m (selectedFerrersPreAnchorIndex k)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogArgument_at_seam",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1273,
+      "signature": "private theorem selectedFerrersAbelLogArgument_at_seam (k : ℕ) (n : ℕ+) : selectedFerrersAbelLogArgument k n (selectedFerrersAbelLogSeam k n) = lambda_m (selectedFerrersPreAnchorIndex k)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogProductionTerm_at_seam",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1290,
+      "signature": "private theorem selectedFerrersAbelLogProductionTerm_at_seam (k : ℕ) (n : ℕ+) : selectedFerrersAbelLogProductionTerm k n (selectedFerrersAbelLogSeam k n) = (((Real.sqrt (lambda_m (selectedFerrersPreAnchorIndex k) / ((n : ℕ) : ℝ)) : ℝ) : ℂ) * selectedFerrersLemma73SourcePacket k (lambda_m (selectedFerrersPreAnchorIndex k)))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogSeam_antitone",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1313,
+      "signature": "private theorem selectedFerrersAbelLogSeam_antitone (k : ℕ) {n j : ℕ+} (hnj : n ≤ j) : selectedFerrersAbelLogSeam k j ≤ selectedFerrersAbelLogSeam k n",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogSeam_strictAnti",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1327,
+      "signature": "private theorem selectedFerrersAbelLogSeam_strictAnti (k : ℕ) {n j : ℕ+} (hnj : n < j) : selectedFerrersAbelLogSeam k j < selectedFerrersAbelLogSeam k n",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogSeamPoint_eq_seam",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1340,
+      "signature": "private theorem selectedFerrersAbelLogSeamPoint_eq_seam (k n : ℕ) (hn : 0 < n) : selectedFerrersAbelLogSeamPoint k n = selectedFerrersAbelLogSeam k ⟨n, hn⟩",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogPartitionPoint_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1345,
+      "signature": "private theorem selectedFerrersAbelLogPartitionPoint_zero (k : ℕ) : selectedFerrersAbelLogPartitionPoint k 0 = 0",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogPartitionPoint_last",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1351,
+      "signature": "private theorem selectedFerrersAbelLogPartitionPoint_last (k : ℕ) : selectedFerrersAbelLogPartitionPoint k (k + 1) = L_m (selectedFerrersPreAnchorIndex k)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogPartitionPoint_strict",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1359,
+      "signature": "private theorem selectedFerrersAbelLogPartitionPoint_strict (k j : ℕ) (hj : j < k + 1) : selectedFerrersAbelLogPartitionPoint k j < selectedFerrersAbelLogPartitionPoint k (j + 1)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogPartitionPoint_eq_cell_lower",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1374,
+      "signature": "private theorem selectedFerrersAbelLogPartitionPoint_eq_cell_lower (k j : ℕ) (hj : j < k + 1) : selectedFerrersAbelLogPartitionPoint k j = selectedFerrersAbelLogSeam k ⟨(k + 1 - j) + 1, by omega⟩",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogPartitionPoint_eq_cell_upper",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1385,
+      "signature": "private theorem selectedFerrersAbelLogPartitionPoint_eq_cell_upper (k j : ℕ) (hj : j < k + 1) : selectedFerrersAbelLogPartitionPoint k (j + 1) = selectedFerrersAbelLogSeam k ⟨k + 1 - j, by omega⟩",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogCell_argument_mapsToWindow",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1395,
+      "signature": "private theorem selectedFerrersAbelLogCell_argument_mapsToWindow (k : ℕ) {j n : ℕ+} (hn : n ∈ Finset.Icc (1 : ℕ+) j) : ∀ x ∈ Set.uIcc (selectedFerrersAbelLogSeam k ⟨(j : ℕ) + 1, by omega⟩) (selectedFerrersAbelLogSeam k j), selectedFerrersAbelLogArgument k n x ∈ Set.Icc (-(selectedFerrersPreAnchorPair k).pw.lambda) (selectedFerrersPreAnchorPair k).pw.lambda",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogCell_argument_mem_Ioo",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1449,
+      "signature": "private theorem selectedFerrersAbelLogCell_argument_mem_Ioo (k : ℕ) {j n : ℕ+} (hn : n ∈ Finset.Icc (1 : ℕ+) j) {x : ℝ} (hx : x ∈ Set.Ioo (selectedFerrersAbelLogSeam k ⟨(j : ℕ) + 1, by omega⟩) (selectedFerrersAbelLogSeam k j)) : selectedFerrersAbelLogArgument k n x ∈ Set.Ioo (-(selectedFerrersPreAnchorPair k).pw.lambda) (selectedFerrersPreAnchorPair k).pw.lambda",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogCell_Ioo_subset_window",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1496,
+      "signature": "private theorem selectedFerrersAbelLogCell_Ioo_subset_window (k : ℕ) {j : ℕ+} (hj : (j : ℕ) ≤ k + 1) : Set.Ioo (selectedFerrersAbelLogSeam k ⟨(j : ℕ) + 1, by omega⟩) (selectedFerrersAbelLogSeam k j) ⊆ Set.Icc 0 (L_m (selectedFerrersPreAnchorIndex k))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogCellRepresentative_eq_representative",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1519,
+      "signature": "private theorem selectedFerrersAbelLogCellRepresentative_eq_representative (k : ℕ) {j : ℕ+} (hj : (j : ℕ) ≤ k + 1) {x : ℝ} (hx : x ∈ Set.Ioo (selectedFerrersAbelLogSeam k ⟨(j : ℕ) + 1, by omega⟩) (selectedFerrersAbelLogSeam k j)) : selectedFerrersAbelLogCellRepresentative k j x = selectedFerrersAbelLogRepresentative k x",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogCellRepresentative_upper_value",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1560,
+      "signature": "private theorem selectedFerrersAbelLogCellRepresentative_upper_value (k : ℕ) {j : ℕ+} (hj : (j : ℕ) ≤ k + 2) : selectedFerrersAbelLogCellRepresentative k j (selectedFerrersAbelLogSeam k j) = selectedFerrersAbelLogRepresentative k (selectedFerrersAbelLogSeam k j)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogCellRepresentative_succ",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1609,
+      "signature": "private theorem selectedFerrersAbelLogCellRepresentative_succ (k : ℕ) (j : ℕ+) (x : ℝ) : selectedFerrersAbelLogCellRepresentative k ⟨(j : ℕ) + 1, by omega⟩ x = selectedFerrersAbelLogCellRepresentative k j x + selectedFerrersAbelLogProductionTerm k ⟨(j : ℕ) + 1, by omega⟩ x",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogCellRepresentative_lower_value",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1629,
+      "signature": "private theorem selectedFerrersAbelLogCellRepresentative_lower_value (k : ℕ) {j : ℕ+} (hj : (j : ℕ) ≤ k + 1) : selectedFerrersAbelLogCellRepresentative k j (selectedFerrersAbelLogSeam k ⟨(j : ℕ) + 1, by omega⟩) = selectedFerrersAbelLogRepresentative k (selectedFerrersAbelLogSeam k ⟨(j : ℕ) + 1, by omega⟩) - (((Real.sqrt (lambda_m (selectedFerrersPreAnchorIndex k) / (((j : ℕ) + 1 : ℕ) : ℝ)) : ℝ) : ℂ) * selectedFerrersLemma73SourcePacket k (lambda_m (selectedFerrersPreAnchorIndex k)))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogCell_upper_value",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1652,
+      "signature": "private theorem selectedFerrersAbelLogCell_upper_value (k n : ℕ) (hn : 0 < n) (hnk : n ≤ k + 1) : selectedFerrersAbelLogCell k n (selectedFerrersAbelLogSeamPoint k n) = selectedFerrersAbelLogRepresentative k (selectedFerrersAbelLogSeamPoint k n)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogCell_lower_value",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1667,
+      "signature": "private theorem selectedFerrersAbelLogCell_lower_value (k n : ℕ) (hn : 0 < n) (hnk : n ≤ k + 1) : selectedFerrersAbelLogCell k n (selectedFerrersAbelLogSeamPoint k (n + 1)) = selectedFerrersAbelLogRepresentative k (selectedFerrersAbelLogSeamPoint k (n + 1)) - selectedFerrersAbelLogSeamTerm k (n + 1)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogCellRepresentative_eventuallyEq_representative",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1682,
+      "signature": "private theorem selectedFerrersAbelLogCellRepresentative_eventuallyEq_representative (k : ℕ) {j : ℕ+} (hj : (j : ℕ) ≤ k + 1) {x : ℝ} (hx : x ∈ Set.Ioo (selectedFerrersAbelLogSeam k ⟨(j : ℕ) + 1, by omega⟩) (selectedFerrersAbelLogSeam k j)) : selectedFerrersAbelLogCellRepresentative k j =ᶠ[nhds x] selectedFerrersAbelLogRepresentative k",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogCellRepresentative_deriv_eq_representative",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1692,
+      "signature": "private theorem selectedFerrersAbelLogCellRepresentative_deriv_eq_representative (k : ℕ) {j : ℕ+} (hj : (j : ℕ) ≤ k + 1) {x : ℝ} (hx : x ∈ Set.Ioo (selectedFerrersAbelLogSeam k ⟨(j : ℕ) + 1, by omega⟩) (selectedFerrersAbelLogSeam k j)) : deriv (selectedFerrersAbelLogCellRepresentative k j) x = deriv (selectedFerrersAbelLogRepresentative k) x",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogCellRepresentative_ae_eq_representative",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1702,
+      "signature": "private theorem selectedFerrersAbelLogCellRepresentative_ae_eq_representative (k : ℕ) {j : ℕ+} (hj : (j : ℕ) ≤ k + 1) : selectedFerrersAbelLogCellRepresentative k j =ᵐ[ volume.restrict (Set.uIoc (selectedFerrersAbelLogSeam k ⟨(j : ℕ) + 1, by omega⟩) (selectedFerrersAbelLogSeam k j))] selectedFerrersAbelLogRepresentative k",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogCellRepresentative_deriv_ae_eq_representative",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1724,
+      "signature": "private theorem selectedFerrersAbelLogCellRepresentative_deriv_ae_eq_representative (k : ℕ) {j : ℕ+} (hj : (j : ℕ) ≤ k + 1) : deriv (selectedFerrersAbelLogCellRepresentative k j) =ᵐ[ volume.restrict (Set.uIoc (selectedFerrersAbelLogSeam k ⟨(j : ℕ) + 1, by omega⟩) (selectedFerrersAbelLogSeam k j))] deriv (selectedFerrersAbelLogRepresentative k)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogCellRepresentative_absolutelyContinuousOnInterval",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1746,
+      "signature": "private theorem selectedFerrersAbelLogCellRepresentative_absolutelyContinuousOnInterval (k : ℕ) (j : ℕ+) : AbsolutelyContinuousOnInterval (selectedFerrersAbelLogCellRepresentative k j) (selectedFerrersAbelLogSeam k ⟨(j : ℕ) + 1, by omega⟩) (selectedFerrersAbelLogSeam k j)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogCellRepresentative_differentiableAt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1799,
+      "signature": "private theorem selectedFerrersAbelLogCellRepresentative_differentiableAt (k : ℕ) (j : ℕ+) {x : ℝ} (hx : x ∈ Set.Ioo (selectedFerrersAbelLogSeam k ⟨(j : ℕ) + 1, by omega⟩) (selectedFerrersAbelLogSeam k j)) : DifferentiableAt ℝ (selectedFerrersAbelLogCellRepresentative k j) x",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogCellRepresentative_intervalIntegrable_deriv",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1829,
+      "signature": "private theorem selectedFerrersAbelLogCellRepresentative_intervalIntegrable_deriv (k : ℕ) (j : ℕ+) : IntervalIntegrable (deriv (selectedFerrersAbelLogCellRepresentative k j)) volume (selectedFerrersAbelLogSeam k ⟨(j : ℕ) + 1, by omega⟩) (selectedFerrersAbelLogSeam k j)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogFourierPhase_hasDerivAt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1838,
+      "signature": "private theorem selectedFerrersAbelLogFourierPhase_hasDerivAt (t x : ℝ) : HasDerivAt (selectedFerrersAbelLogFourierPhase t) ((((-2 * Real.pi * t : ℝ) : ℂ) * Complex.I) * selectedFerrersAbelLogFourierPhase t x) x",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogFourierPrimitive_hasDerivAt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1862,
+      "signature": "private theorem selectedFerrersAbelLogFourierPrimitive_hasDerivAt {t : ℝ} (ht : t ≠ 0) (x : ℝ) : HasDerivAt (selectedFerrersAbelLogFourierPrimitive t) (selectedFerrersAbelLogFourierPhase t x) x",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogFourierPrimitive_norm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1877,
+      "signature": "private theorem selectedFerrersAbelLogFourierPrimitive_norm {t : ℝ} (ht : t ≠ 0) (x : ℝ) : ‖selectedFerrersAbelLogFourierPrimitive t x‖ = 1 / (2 * Real.pi * |t|)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogCellRepresentative_fourier_IBP",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1892,
+      "signature": "private theorem selectedFerrersAbelLogCellRepresentative_fourier_IBP (k : ℕ) {j : ℕ+} (hj : (j : ℕ) ≤ k + 1) {t : ℝ} (ht : t ≠ 0) : (∫ x in selectedFerrersAbelLogSeam k ⟨(j : ℕ) + 1, by omega⟩.. selectedFerrersAbelLogSeam k j, selectedFerrersAbelLogCellRepresentative k j x * selectedFerrersAbelLogFourierPhase t x) = selectedFerrersAbelLogCellRepresentative k j (selectedFerrersAbelLogSeam k j) * selectedFerrersAbelLogFourierPrimitive t (selectedFerrersAbelLogSeam k j) - selectedFerrersAbelLogCellRepresentative k j (selectedFerrersAbelLogSeam k ⟨(j : ℕ) + 1, by omega⟩) * selectedFerrersAbelLogFourierPrimitive t (selectedFerrersAbelLogSeam k ⟨(j : ℕ) + 1, by omega⟩) - ∫ x in selectedFerrersAbelLogSeam k ⟨(j : ℕ) + 1, by omega⟩.. selectedFerrersAbelLogSeam k j, deriv (selectedFerrersAbelLogCellRepresentative k j) x * selectedFerrersAbelLogFourierPrimitive t x",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogZeroExtension_fourier_eq_intervalIntegral",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1956,
+      "signature": "private theorem selectedFerrersAbelLogZeroExtension_fourier_eq_intervalIntegral (k : ℕ) (t : ℝ) : 𝓕 (selectedFerrersAbelLogZeroExtension k) t = ∫ x in (0 : ℝ)..L_m (selectedFerrersPreAnchorIndex k), selectedFerrersAbelLogRepresentative k x * selectedFerrersAbelLogFourierPhase t x",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogRepresentativePhase_intervalIntegrable_seam",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 1993,
+      "signature": "private theorem selectedFerrersAbelLogRepresentativePhase_intervalIntegrable_seam (k : ℕ) {j : ℕ+} (hj : (j : ℕ) ≤ k + 1) (t : ℝ) : IntervalIntegrable (fun x => selectedFerrersAbelLogRepresentative k x * selectedFerrersAbelLogFourierPhase t x) volume (selectedFerrersAbelLogSeam k ⟨(j : ℕ) + 1, by omega⟩) (selectedFerrersAbelLogSeam k j)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogRepresentativePhase_intervalIntegrable_cell",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 2020,
+      "signature": "private theorem selectedFerrersAbelLogRepresentativePhase_intervalIntegrable_cell (k j : ℕ) (hj : j < k + 1) (t : ℝ) : IntervalIntegrable (fun x => selectedFerrersAbelLogRepresentative k x * selectedFerrersAbelLogFourierPhase t x) volume (selectedFerrersAbelLogPartitionPoint k j) (selectedFerrersAbelLogPartitionPoint k (j + 1))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogFourierIntegral_eq_partitionRepresentative",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 2035,
+      "signature": "private theorem selectedFerrersAbelLogFourierIntegral_eq_partitionRepresentative (k : ℕ) (t : ℝ) : (∫ x in (0 : ℝ)..L_m (selectedFerrersPreAnchorIndex k), selectedFerrersAbelLogRepresentative k x * selectedFerrersAbelLogFourierPhase t x) = ∑ j ∈ Finset.range (k + 1), ∫ x in selectedFerrersAbelLogPartitionPoint k j.. selectedFerrersAbelLogPartitionPoint k (j + 1), selectedFerrersAbelLogRepresentative k x * selectedFerrersAbelLogFourierPhase t x",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogRepresentativeIntegral_eq_cellIntegral_seam",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 2059,
+      "signature": "private theorem selectedFerrersAbelLogRepresentativeIntegral_eq_cellIntegral_seam (k : ℕ) {j : ℕ+} (hj : (j : ℕ) ≤ k + 1) (t : ℝ) : (∫ x in selectedFerrersAbelLogSeam k ⟨(j : ℕ) + 1, by omega⟩.. selectedFerrersAbelLogSeam k j, selectedFerrersAbelLogRepresentative k x * selectedFerrersAbelLogFourierPhase t x) = ∫ x in selectedFerrersAbelLogSeam k ⟨(j : ℕ) + 1, by omega⟩.. selectedFerrersAbelLogSeam k j, selectedFerrersAbelLogCell k (j : ℕ) x * selectedFerrersAbelLogFourierPhase t x",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogRepresentativeIntegral_eq_cellIntegral",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 2081,
+      "signature": "private theorem selectedFerrersAbelLogRepresentativeIntegral_eq_cellIntegral (k j : ℕ) (hj : j < k + 1) (t : ℝ) : (∫ x in selectedFerrersAbelLogPartitionPoint k j.. selectedFerrersAbelLogPartitionPoint k (j + 1), selectedFerrersAbelLogRepresentative k x * selectedFerrersAbelLogFourierPhase t x) = ∫ x in selectedFerrersAbelLogPartitionPoint k j.. selectedFerrersAbelLogPartitionPoint k (j + 1), selectedFerrersAbelLogCell k (k + 1 - j) x * selectedFerrersAbelLogFourierPhase t x",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogFourierIntegral_eq_cellPartition",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 2101,
+      "signature": "private theorem selectedFerrersAbelLogFourierIntegral_eq_cellPartition (k : ℕ) (t : ℝ) : (∫ x in (0 : ℝ)..L_m (selectedFerrersPreAnchorIndex k), selectedFerrersAbelLogRepresentative k x * selectedFerrersAbelLogFourierPhase t x) = ∑ j ∈ Finset.range (k + 1), ∫ x in selectedFerrersAbelLogPartitionPoint k j.. selectedFerrersAbelLogPartitionPoint k (j + 1), selectedFerrersAbelLogCell k (k + 1 - j) x * selectedFerrersAbelLogFourierPhase t x",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogLowerEndpointSeam_eq_lastSummand",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 2120,
+      "signature": "private theorem selectedFerrersAbelLogLowerEndpointSeam_eq_lastSummand (k : ℕ) : selectedFerrersAbelLogLowerEndpointSeam k = (((Real.sqrt (lambda_m (selectedFerrersPreAnchorIndex k) / (k + 2 : ℝ)) : ℝ) : ℂ) * selectedFerrersLemma73SourcePacket k (lambda_m (selectedFerrersPreAnchorIndex k)))",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogSeamTerm_last",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 2140,
+      "signature": "private theorem selectedFerrersAbelLogSeamTerm_last (k : ℕ) : selectedFerrersAbelLogSeamTerm k (k + 2) = selectedFerrersAbelLogLowerEndpointSeam k",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogCell_last_lower_value",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 2147,
+      "signature": "private theorem selectedFerrersAbelLogCell_last_lower_value (k : ℕ) : selectedFerrersAbelLogCell k (k + 1) 0 = selectedFerrersAbelLogLowerRightValue k",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogCellBoundaryTerm_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 2159,
+      "signature": "private theorem selectedFerrersAbelLogCellBoundaryTerm_zero (k : ℕ) (t : ℝ) : selectedFerrersAbelLogCellBoundaryTerm k t 0 = selectedFerrersAbelLogRepresentative k (selectedFerrersAbelLogPartitionPoint k 1) * selectedFerrersAbelLogFourierPrimitive t (selectedFerrersAbelLogPartitionPoint k 1) - selectedFerrersAbelLogLowerRightValue k * selectedFerrersAbelLogFourierPrimitive t 0",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogCellBoundaryTerm_succ",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 2178,
+      "signature": "private theorem selectedFerrersAbelLogCellBoundaryTerm_succ (k i : ℕ) (hi : i < k) (t : ℝ) : selectedFerrersAbelLogCellBoundaryTerm k t (i + 1) = selectedFerrersAbelLogRepresentative k (selectedFerrersAbelLogPartitionPoint k (i + 2)) * selectedFerrersAbelLogFourierPrimitive t (selectedFerrersAbelLogPartitionPoint k (i + 2)) - (selectedFerrersAbelLogRepresentative k (selectedFerrersAbelLogPartitionPoint k (i + 1)) - selectedFerrersAbelLogSeamTerm k (k + 1 - i)) * selectedFerrersAbelLogFourierPrimitive t (selectedFerrersAbelLogPartitionPoint k (i + 1))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogCellBoundary_telescope_range",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 2213,
+      "signature": "private theorem selectedFerrersAbelLogCellBoundary_telescope_range (k : ℕ) (t : ℝ) : (∑ j ∈ Finset.range (k + 1), selectedFerrersAbelLogCellBoundaryTerm k t j) = selectedFerrersAbelLogRepresentative k (L_m (selectedFerrersPreAnchorIndex k)) * selectedFerrersAbelLogFourierPrimitive t (L_m (selectedFerrersPreAnchorIndex k)) - selectedFerrersAbelLogLowerRightValue k * selectedFerrersAbelLogFourierPrimitive t 0 + ∑ i ∈ Finset.range k, selectedFerrersAbelLogSeamTerm k (k + 1 - i) * selectedFerrersAbelLogFourierPrimitive t (selectedFerrersAbelLogPartitionPoint k (i + 1))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogRepresentativeDerivNorm_intervalIntegrable_seam",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 2267,
+      "signature": "private theorem selectedFerrersAbelLogRepresentativeDerivNorm_intervalIntegrable_seam (k : ℕ) {j : ℕ+} (hj : (j : ℕ) ≤ k + 1) : IntervalIntegrable (fun x => ‖deriv (selectedFerrersAbelLogRepresentative k) x‖) volume (selectedFerrersAbelLogSeam k ⟨(j : ℕ) + 1, by omega⟩) (selectedFerrersAbelLogSeam k j)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogRepresentativeDerivNorm_intervalIntegrable_cell",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 2281,
+      "signature": "private theorem selectedFerrersAbelLogRepresentativeDerivNorm_intervalIntegrable_cell (k j : ℕ) (hj : j < k + 1) : IntervalIntegrable (fun x => ‖deriv (selectedFerrersAbelLogRepresentative k) x‖) volume (selectedFerrersAbelLogPartitionPoint k j) (selectedFerrersAbelLogPartitionPoint k (j + 1))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogRepresentativeDerivNormIntegral_eq_cell_seam",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 2296,
+      "signature": "private theorem selectedFerrersAbelLogRepresentativeDerivNormIntegral_eq_cell_seam (k : ℕ) {j : ℕ+} (hj : (j : ℕ) ≤ k + 1) : (∫ x in selectedFerrersAbelLogSeam k ⟨(j : ℕ) + 1, by omega⟩.. selectedFerrersAbelLogSeam k j, ‖deriv (selectedFerrersAbelLogRepresentative k) x‖) = ∫ x in selectedFerrersAbelLogSeam k ⟨(j : ℕ) + 1, by omega⟩.. selectedFerrersAbelLogSeam k j, ‖deriv (selectedFerrersAbelLogCell k (j : ℕ)) x‖",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogRepresentativeDerivNormIntegral_eq_cell",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 2319,
+      "signature": "private theorem selectedFerrersAbelLogRepresentativeDerivNormIntegral_eq_cell (k j : ℕ) (hj : j < k + 1) : (∫ x in selectedFerrersAbelLogPartitionPoint k j.. selectedFerrersAbelLogPartitionPoint k (j + 1), ‖deriv (selectedFerrersAbelLogRepresentative k) x‖) = ∫ x in selectedFerrersAbelLogPartitionPoint k j.. selectedFerrersAbelLogPartitionPoint k (j + 1), ‖deriv (selectedFerrersAbelLogCell k (k + 1 - j)) x‖",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogDerivativeBudget_eq_cellPartition",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 2337,
+      "signature": "private theorem selectedFerrersAbelLogDerivativeBudget_eq_cellPartition (k : ℕ) : selectedFerrersAbelLogDerivativeBudget k = ∑ j ∈ Finset.range (k + 1), ∫ x in selectedFerrersAbelLogPartitionPoint k j.. selectedFerrersAbelLogPartitionPoint k (j + 1), ‖deriv (selectedFerrersAbelLogCell k (k + 1 - j)) x‖",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogCell_fourier_IBP_partition",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 2362,
+      "signature": "private theorem selectedFerrersAbelLogCell_fourier_IBP_partition (k j : ℕ) (hj : j < k + 1) {t : ℝ} (ht : t ≠ 0) : (∫ x in selectedFerrersAbelLogPartitionPoint k j.. selectedFerrersAbelLogPartitionPoint k (j + 1), selectedFerrersAbelLogCell k (k + 1 - j) x * selectedFerrersAbelLogFourierPhase t x) = selectedFerrersAbelLogCellBoundaryTerm k t j - ∫ x in selectedFerrersAbelLogPartitionPoint k j.. selectedFerrersAbelLogPartitionPoint k (j + 1), deriv (selectedFerrersAbelLogCell k (k + 1 - j)) x * selectedFerrersAbelLogFourierPrimitive t x",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogFourierIntegral_eq_boundary_sub_deriv",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 2390,
+      "signature": "private theorem selectedFerrersAbelLogFourierIntegral_eq_boundary_sub_deriv (k : ℕ) {t : ℝ} (ht : t ≠ 0) : (∫ x in (0 : ℝ)..L_m (selectedFerrersPreAnchorIndex k), selectedFerrersAbelLogRepresentative k x * selectedFerrersAbelLogFourierPhase t x) = (∑ j ∈ Finset.range (k + 1), selectedFerrersAbelLogCellBoundaryTerm k t j) - ∑ j ∈ Finset.range (k + 1), ∫ x in selectedFerrersAbelLogPartitionPoint k j.. selectedFerrersAbelLogPartitionPoint k (j + 1), deriv (selectedFerrersAbelLogCell k (k + 1 - j)) x * selectedFerrersAbelLogFourierPrimitive t x",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogCellDerivativeIntegral_norm_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 2410,
+      "signature": "private theorem selectedFerrersAbelLogCellDerivativeIntegral_norm_le (k j : ℕ) (hj : j < k + 1) {t : ℝ} (ht : t ≠ 0) : ‖∫ x in selectedFerrersAbelLogPartitionPoint k j.. selectedFerrersAbelLogPartitionPoint k (j + 1), deriv (selectedFerrersAbelLogCell k (k + 1 - j)) x * selectedFerrersAbelLogFourierPrimitive t x‖ ≤ (1 / (2 * Real.pi * |t|)) * ∫ x in selectedFerrersAbelLogPartitionPoint k j.. selectedFerrersAbelLogPartitionPoint k (j + 1), ‖deriv (selectedFerrersAbelLogCell k (k + 1 - j)) x‖",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogDerivativeIntegralSum_norm_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 2450,
+      "signature": "private theorem selectedFerrersAbelLogDerivativeIntegralSum_norm_le (k : ℕ) {t : ℝ} (ht : t ≠ 0) : ‖∑ j ∈ Finset.range (k + 1), ∫ x in selectedFerrersAbelLogPartitionPoint k j.. selectedFerrersAbelLogPartitionPoint k (j + 1), deriv (selectedFerrersAbelLogCell k (k + 1 - j)) x * selectedFerrersAbelLogFourierPrimitive t x‖ ≤ (1 / (2 * Real.pi * |t|)) * selectedFerrersAbelLogDerivativeBudget k",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogCellBoundarySum_norm_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 2489,
+      "signature": "private theorem selectedFerrersAbelLogCellBoundarySum_norm_le (k : ℕ) {t : ℝ} (ht : t ≠ 0) : ‖∑ j ∈ Finset.range (k + 1), selectedFerrersAbelLogCellBoundaryTerm k t j‖ ≤ (1 / (2 * Real.pi * |t|)) * (‖selectedFerrersAbelLogRepresentative k (L_m (selectedFerrersPreAnchorIndex k))‖ + ‖selectedFerrersAbelLogLowerRightValue k‖ + ∑ i ∈ Finset.range k, ‖selectedFerrersAbelLogSeamTerm k (k + 1 - i)‖)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLog_sum_Icc_two_eq_sum_range",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 2584,
+      "signature": "private theorem selectedFerrersAbelLog_sum_Icc_two_eq_sum_range {E : Type*} [AddCommMonoid E] (f : ℕ → E) (k : ℕ) : ∑ n ∈ Finset.Icc 2 (k + 1), f n = ∑ i ∈ Finset.range k, f (i + 2)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogInternalSeamNormSum_range_eq_Icc",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 2594,
+      "signature": "private theorem selectedFerrersAbelLogInternalSeamNormSum_range_eq_Icc (k : ℕ) : (∑ i ∈ Finset.range k, ‖selectedFerrersAbelLogSeamTerm k (k + 1 - i)‖) = ∑ n ∈ Finset.Icc 2 (k + 1), ‖selectedFerrersAbelLogSeamTerm k n‖",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogJumpBudget_eq_internal_add_lower",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 2624,
+      "signature": "private theorem selectedFerrersAbelLogJumpBudget_eq_internal_add_lower (k : ℕ) : selectedFerrersAbelLogJumpBudget k = ‖selectedFerrersAbelLogRepresentative k 0‖ + ‖selectedFerrersAbelLogRepresentative k (L_m (selectedFerrersPreAnchorIndex k))‖ + (∑ n ∈ Finset.Icc 2 (k + 1), ‖selectedFerrersAbelLogSeamTerm k n‖) + ‖selectedFerrersAbelLogLowerEndpointSeam k‖",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogZeroExtension_fourier_decay_off_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 2644,
+      "signature": "theorem selectedFerrersAbelLogZeroExtension_fourier_decay_off_zero (k : ℕ) {t : ℝ} (ht : t ≠ 0) : ‖𝓕 (selectedFerrersAbelLogZeroExtension k) t‖ ≤ (selectedFerrersAbelLogDerivativeBudget k + selectedFerrersAbelLogJumpBudget k) / (2 * Real.pi * |t|)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogDerivativeBudget_nonneg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 2673,
+      "signature": "private theorem selectedFerrersAbelLogDerivativeBudget_nonneg (k : ℕ) : 0 ≤ selectedFerrersAbelLogDerivativeBudget k",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogJumpBudget_nonneg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 2680,
+      "signature": "private theorem selectedFerrersAbelLogJumpBudget_nonneg (k : ℕ) : 0 ≤ selectedFerrersAbelLogJumpBudget k",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogZeroExtension_fourier_norm_le_integral_norm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 2685,
+      "signature": "private theorem selectedFerrersAbelLogZeroExtension_fourier_norm_le_integral_norm (k : ℕ) (t : ℝ) : ‖𝓕 (selectedFerrersAbelLogZeroExtension k) t‖ ≤ ∫ x : ℝ, ‖selectedFerrersAbelLogZeroExtension k x‖",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogRepresentative_intervalIntegrable",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 2701,
+      "signature": "private theorem selectedFerrersAbelLogRepresentative_intervalIntegrable (k : ℕ) : IntervalIntegrable (selectedFerrersAbelLogRepresentative k) volume 0 (L_m (selectedFerrersPreAnchorIndex k))",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogZeroExtension_integrable",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 2721,
+      "signature": "private theorem selectedFerrersAbelLogZeroExtension_integrable (k : ℕ) : Integrable (selectedFerrersAbelLogZeroExtension k) volume",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogZeroExtension_fourier_decay",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 2732,
+      "signature": "theorem selectedFerrersAbelLogZeroExtension_fourier_decay (k : ℕ) : ∃ C : ℝ, 0 ≤ C ∧ ∀ t : ℝ, ‖𝓕 (selectedFerrersAbelLogZeroExtension k) t‖ ≤ C / (1 + |t|)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogClosedCell_not_seamFree_plant",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 2782,
+      "signature": "private theorem selectedFerrersAbelLogClosedCell_not_seamFree_plant (k : ℕ) : ¬ selectedFerrersAbelLogSeamFreeOn k 0 (selectedFerrersAbelLogSeamPoint k (k + 1))",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogLowerRight_norm_shortcut_false_plant",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 2796,
+      "signature": "private theorem selectedFerrersAbelLogLowerRight_norm_shortcut_false_plant : ¬ ∀ a b : ℂ, ‖a - b‖ ≤ ‖a‖",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogTwoCell_telescope_plant",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 2802,
+      "signature": "private theorem selectedFerrersAbelLogTwoCell_telescope_plant (g J p A B : ℂ) : (g * p - A) + (B - (g - J) * p) = B - A + J * p",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogLowerRightValue_norm_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+      "line": 2808,
+      "signature": "private theorem selectedFerrersAbelLogLowerRightValue_norm_le (k : ℕ) : ‖selectedFerrersAbelLogLowerRightValue k‖ ≤ ‖selectedFerrersAbelLogRepresentative k 0‖ + ‖selectedFerrersAbelLogLowerEndpointSeam k‖",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
       "kind": "def",
       "name": "selectedFerrersPreAnchorIndex",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPreAnchorDataInhabitant.lean",
@@ -27245,7 +28895,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPreAnchorDataInhabitant.lean",
       "line": 102,
       "signature": "def selectedFerrersPreAnchorSolution0 (k : ℕ) : Mode4FerrersRegularEvenProlateSolution (k + 2) (5 * (k + 2)) (mode4ClassicalEvenEigenvalue (mode4JacobiG (k + 2)) 0)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -27255,7 +28905,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPreAnchorDataInhabitant.lean",
       "line": 108,
       "signature": "def selectedFerrersPreAnchorSolution4 (k : ℕ) : Mode4FerrersRegularEvenProlateSolution (k + 2) (5 * (k + 2)) (mode4ClassicalEvenEigenvalue (mode4JacobiG (k + 2)) 2)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },

@@ -12,9 +12,9 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 
 ## Operational tool manifest
 - schema / authority: `q3_tool_manifest.v2` / `REPO_CANONICAL`
-- families / tools / writers: `7` / `42` / `23`
-- SHA-256: `c15d74b6beb0e5aaf676998c50903c417e982392d577f0a24546aa23b4c3ae77`
-- Codex current task: `ACTIVE` / `docs/Codex/TASK_2026-08-24_selected_ferrers_abel_poisson_l2.md`
+- families / tools / writers: `7` / `43` / `24`
+- SHA-256: `622607b9678977ccc10fdf77e178b9e194ff007a5beeb194025edaab946729fb`
+- Codex current task: `CLOSED`
 
 ## Phase chat and bounded exploration
 - validation: `VALID`
@@ -29,8 +29,8 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | `delegated_strategic_review_calls` | 44 |
 | `exploration_review_calls` | 0 |
 | `fanout_violations` | 0 |
-| `forced_rollovers` | 0 |
-| `fresh_chats_opened` | 1 |
+| `forced_rollovers` | 1 |
+| `fresh_chats_opened` | 2 |
 | `mathematical_owner_deferral_violations` | 0 |
 | `ordinary_goal_close_calls` | 0 |
 | `phases_opened` | 2 |
@@ -61,20 +61,20 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 - collection: `q3_docs`
 - mode / status: `search_plus_vsearch` / `PASS`
 - `POST_JUNE_IDENTIFICATION` query `IdentificationAt`: `PASS`, results `30`.
-- `POST_JUNE_EDGE_SLIVER` query `edge-sliver`: `PASS`, results `38`.
-- `PRE_SWITCH_STEP33` query `ActiveCenteredCoeffEntryHboxCert`: `PASS`, results `37`.
+- `POST_JUNE_EDGE_SLIVER` query `edge-sliver`: `PASS`, results `40`.
+- `PRE_SWITCH_STEP33` query `ActiveCenteredCoeffEntryHboxCert`: `PASS`, results `28`.
 
 ## Meta-corpus registry
 - derived surfaces: `9`; authority: `DERIVED_REGISTRY_NOT_NEW_TRUTH_SOURCE`.
 
 ## Observability snapshot (derived, non-authoritative)
 - authority: `DERIVED_NONCANONICAL_OBSERVABILITY`
-- snapshot: `OBS_074017fc3b7b9122dfc6` at `2026-08-24T09:19:00+00:00` from `636e075d9154`
+- snapshot: `OBS_7c66e51e3d26f0aa6c43` at `2026-08-24T20:29:26+00:00` from `928b08b9f8e4`
 - sources: `8`; stale: `0`; degraded: `1`
 - sorry sites/files: `0` / `0`
 - proof roots/root memberships: `2` / `131`
-- file states/import edges: `3525` / `5887`
-- taint status: `{"CONTENT_SCAN_SKIPPED_GENERATED_NONROOT": 1303, "IMPORT_BOUNDARY": 1, "NO_OBSERVED_ISSUE": 2221}`; doomed: `0`
+- file states/import edges: `3531` / `5899`
+- taint status: `{"CONTENT_SCAN_SKIPPED_GENERATED_NONROOT": 1303, "IMPORT_BOUNDARY": 1, "NO_OBSERVED_ISSUE": 2227}`; doomed: `0`
 - axiom dependencies / proof nodes: `10` / `10`
 - numeric checks: `0` `{}`
 - Proshka runs: `65`; observed seconds total/mean/median: `68876` / `1093.3` / `1044`; lower bounds: `1`
@@ -83,14 +83,14 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 
 | Source | Records | Generated | Stale | Parse | Health |
 |---|---:|---|---|---|---|
-| `autopsy_map` | 18 | 2026-08-24T09:08:53+00:00 | no | PARSED | READY |
-| `dependency_tree` | 10 | 2026-08-24 09:18 UTC | no | PARSED | READY |
-| `numeric_checks` | 0 | 2026-08-24 09:18 UTC | no | PARSED | ZERO_COVERAGE |
-| `proof_graph` | 10 | 2026-08-24 09:18 UTC | no | PARSED | READY |
+| `autopsy_map` | 18 | 2026-08-24T17:31:02+00:00 | no | PARSED | READY |
+| `dependency_tree` | 10 | 2026-08-24 20:29 UTC | no | PARSED | READY |
+| `numeric_checks` | 0 | 2026-08-24 20:29 UTC | no | PARSED | ZERO_COVERAGE |
+| `proof_graph` | 10 | 2026-08-24 20:29 UTC | no | PARSED | READY |
 | `proshka_timing` | 65 | NOT_CAPTURED | no | PARSED | READY |
-| `sorry_frontier` | 0 | 2026-08-24 09:18 UTC | no | PARSED | READY |
-| `taint_graph` | 3525 | 2026-08-24 09:18 UTC | no | PARSED | READY |
-| `taint_sources` | 3525 | 2026-08-24 09:18 UTC | no | PARSED | READY |
+| `sorry_frontier` | 0 | 2026-08-24 20:29 UTC | no | PARSED | READY |
+| `taint_graph` | 3531 | 2026-08-24 20:29 UTC | no | PARSED | READY |
+| `taint_sources` | 3531 | 2026-08-24 20:29 UTC | no | PARSED | READY |
 
 ### Slowest recorded Proshka runs
 
@@ -103,7 +103,6 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | `GOAL057_B3_0G_SOURCE_W02_MODE_PAIRING_SOURCE_AUDIT` | GOAL057/P057_B3_0G | 1662 | observed | OPEN_PREFLIGHT_AUTHORIZED_PRODUCTION_FORBIDDEN |
 
 ## Staleness warnings
-- CHANNEL_RUNTIME active phase record is 267 hours old (2026-08-13T07:25:47+02:00); revalidate the existing chat handle and six-field phase key. Age alone never authorizes a fresh chat.
 - observability source health degraded: numeric_checks:ZERO_COVERAGE — this is not a green sensor state.
 - COGNITIVE_GOVERNOR.md is 24 days old (2026-07-31) and references a possibly retired front — regenerate.
 - FAILED_STRATEGIES.yaml last updated 2026-07-31 (24 days) — bus iteration blocks after that date are NOT merged.
@@ -121,7 +120,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | `docs/Progress_Log.md` | 2026-08-23 |
 | `docs/GENEALOGY.md` | 2026-08-10 |
 | `docs/RECORDING_RULES.md` | 2026-08-09 |
-| `docs/cartographer/TOOLS.yaml` | 2026-08-21 |
+| `docs/cartographer/TOOLS.yaml` | 2026-08-24 |
 | `q3.lean.aristotle/ACTIVE/COGNITIVE_GOVERNOR.md` | 2026-07-31 |
 
 ## 1-2. Kills (knowledge.db: routes, objects, strategies, walls, criteria)
