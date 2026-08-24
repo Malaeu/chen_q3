@@ -1281,6 +1281,53 @@ private theorem selectedFerrersAbelLogCell_argument_mapsToWindow
   rw [(selectedFerrersPreAnchorPair_spec k).1]
   exact ⟨(neg_nonpos.mpr hlam.le).trans harg0, hargle⟩
 
+private theorem selectedFerrersAbelLogCell_argument_mem_Ioo
+    (k : ℕ) {j n : ℕ+}
+    (hn : n ∈ Finset.Icc (1 : ℕ+) j) {x : ℝ}
+    (hx : x ∈ Set.Ioo
+      (selectedFerrersAbelLogSeam k ⟨(j : ℕ) + 1, by omega⟩)
+      (selectedFerrersAbelLogSeam k j)) :
+    selectedFerrersAbelLogArgument k n x ∈
+      Set.Ioo (-(selectedFerrersPreAnchorPair k).pw.lambda)
+        (selectedFerrersPreAnchorPair k).pw.lambda := by
+  have hlam := selectedFerrersW4_lambda_pos k
+  have hsq := selectedFerrersW4_lambda_sq k
+  have hsq' :
+      lambda_m (selectedFerrersPreAnchorIndex k) *
+          lambda_m (selectedFerrersPreAnchorIndex k) = (k : ℝ) + 2 := by
+    exact_mod_cast hsq
+  have hexp : Real.exp x <
+      ((k + 2 : ℕ) : ℝ) / ((j : ℕ) : ℝ) := by
+    rw [← selectedFerrersAbelLogSeam_exp k j]
+    exact Real.exp_lt_exp.mpr hx.2
+  have hnj : ((n : ℕ) : ℝ) ≤ ((j : ℕ) : ℝ) := by
+    exact_mod_cast (Finset.mem_Icc.mp hn).2
+  have hnpos : (0 : ℝ) < ((n : ℕ) : ℝ) := by positivity
+  have hargpos : 0 < selectedFerrersAbelLogArgument k n x := by
+    unfold selectedFerrersAbelLogArgument
+    positivity
+  have harglt : selectedFerrersAbelLogArgument k n x <
+      lambda_m (selectedFerrersPreAnchorIndex k) := by
+    unfold selectedFerrersAbelLogArgument
+    calc
+      ((n : ℕ) : ℝ) *
+          (Real.exp x /
+            lambda_m (selectedFerrersPreAnchorIndex k)) <
+          ((n : ℕ) : ℝ) *
+            ((((k + 2 : ℕ) : ℝ) / ((j : ℕ) : ℝ)) /
+              lambda_m (selectedFerrersPreAnchorIndex k)) := by
+        gcongr
+      _ ≤ ((j : ℕ) : ℝ) *
+            ((((k + 2 : ℕ) : ℝ) / ((j : ℕ) : ℝ)) /
+              lambda_m (selectedFerrersPreAnchorIndex k)) := by
+        gcongr
+      _ = lambda_m (selectedFerrersPreAnchorIndex k) := by
+        have hj0 : (((j : ℕ) : ℝ)) ≠ 0 := by positivity
+        field_simp [hj0, hlam.ne']
+        nlinarith
+  rw [(selectedFerrersPreAnchorPair_spec k).1]
+  exact ⟨(neg_nonpos.mpr hlam.le).trans_lt hargpos, harglt⟩
+
 private theorem selectedFerrersAbelLogCellRepresentative_absolutelyContinuousOnInterval
     (k : ℕ) (j : ℕ+) :
     AbsolutelyContinuousOnInterval
@@ -1333,6 +1380,36 @@ private theorem selectedFerrersAbelLogCellRepresentative_absolutelyContinuousOnI
       hw.const_smul ((1 / 2 : ℂ) * selectedFerrersLemma73SourcePacket k 0)
   simpa only [selectedFerrersAbelLogCellRepresentative, a, b] using
     hsum.fun_add hshadow
+
+private theorem selectedFerrersAbelLogCellRepresentative_differentiableAt
+    (k : ℕ) (j : ℕ+) {x : ℝ}
+    (hx : x ∈ Set.Ioo
+      (selectedFerrersAbelLogSeam k ⟨(j : ℕ) + 1, by omega⟩)
+      (selectedFerrersAbelLogSeam k j)) :
+    DifferentiableAt ℝ (selectedFerrersAbelLogCellRepresentative k j) x := by
+  classical
+  have hterm : ∀ n ∈ Finset.Icc (1 : ℕ+) j,
+      DifferentiableAt ℝ (selectedFerrersAbelLogProductionTerm k n) x := by
+    intro n hn
+    obtain ⟨d, hd⟩ :=
+      selectedFerrersAbelLogProductionTerm_hasDerivAt_of_argument_mem_Ioo
+        k n (selectedFerrersAbelLogCell_argument_mem_Ioo k hn hx)
+    exact hd.differentiableAt
+  have hsum : DifferentiableAt ℝ
+      (fun y => ∑ n ∈ Finset.Icc (1 : ℕ+) j,
+        selectedFerrersAbelLogProductionTerm k n y) x :=
+    DifferentiableAt.fun_sum hterm
+  obtain ⟨dw, hw⟩ := selectedFerrersAbelLogSqrtWeight_hasDerivAt k x
+  have hshadow : DifferentiableAt ℝ
+      (fun y =>
+        (1 / 2 : ℂ) * selectedFerrersLemma73SourcePacket k 0 *
+          (Real.sqrt
+            (Real.exp y /
+              lambda_m (selectedFerrersPreAnchorIndex k)) : ℂ)) x := by
+    exact (hw.const_mul
+      ((1 / 2 : ℂ) * selectedFerrersLemma73SourcePacket k 0)).differentiableAt
+  simpa only [selectedFerrersAbelLogCellRepresentative] using
+    hsum.add hshadow
 
 /-- The final repaired ledger summand is exactly the lower one-sided seam. -/
 private theorem selectedFerrersAbelLogLowerEndpointSeam_eq_lastSummand
