@@ -139,6 +139,26 @@ private theorem expWindow_measurePreserving
       field_simp
     _ = dStar.restrict (I_m i) := Measure.map_id
 
+/-- Public transport certificate from the multiplicative source window to the
+additive logarithmic window. -/
+theorem sourceLogWindow_measurePreserving
+    (i : PairIndex) :
+    MeasurePreserving
+      (fun u : ℝ => Real.log (lambda_m i * u))
+      (dStar.restrict (I_m i))
+      (volume.restrict (Set.Icc (0 : ℝ) (L_m i))) :=
+  logWindow_measurePreserving i
+
+/-- Public inverse transport certificate from the additive logarithmic window
+to the multiplicative source window. -/
+theorem sourceExpWindow_measurePreserving
+    (i : PairIndex) :
+    MeasurePreserving
+      (fun x : ℝ => Real.exp x / lambda_m i)
+      (volume.restrict (Set.Icc (0 : ℝ) (L_m i)))
+      (dStar.restrict (I_m i)) :=
+  expWindow_measurePreserving i
+
 /-- The exact D0.1 unitary from the additive logarithmic window to `H_m`. -/
 noncomputable def logWindowL2Equiv (i : PairIndex) :
     MeasureTheory.Lp ℂ 2
@@ -508,6 +528,8 @@ theorem norm_sub_coe_P_m_N_sq_eq_tsum_complement
       f
 
 #print axioms coeFn_logWindowL2Equiv
+#print axioms sourceLogWindow_measurePreserving
+#print axioms sourceExpWindow_measurePreserving
 #print axioms V_n_m_hilbertBasis_apply
 #print axioms norm_sub_coe_P_m_N_sq_eq_tsum_complement
 

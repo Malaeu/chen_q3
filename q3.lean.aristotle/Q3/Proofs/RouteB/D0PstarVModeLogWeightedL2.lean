@@ -280,6 +280,16 @@ private theorem integrable_vModeLogGrowthEnvelope_sq_div_one_add_abs_sq :
       _ = 81 * (1 + |t|) ^ (-(3 / 2 : ℝ)) := by
         rw [mul_div_assoc, hpow_id]
 
+/-- The logarithmic growth envelope divided by the square of the standard
+Fourier-decay denominator is integrable.  This public wrapper lets downstream
+fixed-vector form-domain arguments reuse the analytic majorant without
+reconstructing the mode-specific proof. -/
+theorem vModeLogGrowthEnvelope_sq_div_one_add_abs_sq_integrable :
+    Integrable
+      (fun t : ℝ =>
+        (vModeLogGrowthEnvelope t) ^ 2 / (1 + |t|) ^ 2) :=
+  integrable_vModeLogGrowthEnvelope_sq_div_one_add_abs_sq
+
 theorem
     vModeLogGrowthEnvelope_mul_fourier_logWindowZeroExtendedMode_memLp
     (i : PairIndex) (n : ℤ) :
@@ -347,5 +357,6 @@ theorem
 #print axioms norm_fourier_logWindowZeroExtendedMode_le_resonanceSafe
 #print axioms norm_fourier_logWindowZeroExtendedMode_le_far
 #print axioms vModeLogGrowthEnvelope_mul_fourier_logWindowZeroExtendedMode_memLp
+#print axioms vModeLogGrowthEnvelope_sq_div_one_add_abs_sq_integrable
 
 end Q3.RouteB.D0Pstar
