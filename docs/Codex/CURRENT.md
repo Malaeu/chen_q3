@@ -3,10 +3,10 @@
 ```yaml
 schema: q3_codex_current_task.v1
 status: ACTIVE
-task_file: docs/Codex/TASK_2026-08-22_spheroidal_high_mode_jacobi_witness.md
-source_commit: 4eb76d0c48929b079694f7460c369e4f0697d4d7
-updated_at: 2026-08-22T09:00:00+02:00
-updated_by: CLAUDE_CODE_ON_OWNER_INSTRUCTION
+task_file: docs/Codex/TASK_2026-08-24_selected_ferrers_abel_poisson_l2.md
+source_commit: 1c31b8115aba2cb90c4cc5886a9621410b8dc12f
+updated_at: 2026-08-24T08:38:05+02:00
+updated_by: CODEX_ON_OWNER_INSTRUCTION
 ```
 
 This is the single owner-controlled repository pointer for work that Codex must
