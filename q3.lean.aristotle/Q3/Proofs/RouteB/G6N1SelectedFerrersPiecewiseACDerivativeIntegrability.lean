@@ -2264,6 +2264,412 @@ private theorem selectedFerrersAbelLogCellBoundary_telescope_range
   simp only [q]
   ring
 
+private theorem selectedFerrersAbelLogRepresentativeDerivNorm_intervalIntegrable_seam
+    (k : ℕ) {j : ℕ+} (hj : (j : ℕ) ≤ k + 1) :
+    IntervalIntegrable
+      (fun x => ‖deriv (selectedFerrersAbelLogRepresentative k) x‖)
+      volume
+      (selectedFerrersAbelLogSeam k ⟨(j : ℕ) + 1, by omega⟩)
+      (selectedFerrersAbelLogSeam k j) := by
+  have hcell :=
+    (selectedFerrersAbelLogCellRepresentative_intervalIntegrable_deriv k j).norm
+  apply hcell.congr_ae
+  filter_upwards [selectedFerrersAbelLogCellRepresentative_deriv_ae_eq_representative
+    k hj] with x hx
+  rw [hx]
+
+private theorem selectedFerrersAbelLogRepresentativeDerivNorm_intervalIntegrable_cell
+    (k j : ℕ) (hj : j < k + 1) :
+    IntervalIntegrable
+      (fun x => ‖deriv (selectedFerrersAbelLogRepresentative k) x‖)
+      volume
+      (selectedFerrersAbelLogPartitionPoint k j)
+      (selectedFerrersAbelLogPartitionPoint k (j + 1)) := by
+  let n := k + 1 - j
+  have hn : 0 < n := by dsimp [n]; omega
+  have hnk : n ≤ k + 1 := by dsimp [n]; omega
+  rw [selectedFerrersAbelLogPartitionPoint_eq_cell_lower k j hj,
+    selectedFerrersAbelLogPartitionPoint_eq_cell_upper k j hj]
+  exact selectedFerrersAbelLogRepresentativeDerivNorm_intervalIntegrable_seam
+    (j := ⟨n, hn⟩) k hnk
+
+private theorem selectedFerrersAbelLogRepresentativeDerivNormIntegral_eq_cell_seam
+    (k : ℕ) {j : ℕ+} (hj : (j : ℕ) ≤ k + 1) :
+    (∫ x in
+      selectedFerrersAbelLogSeam k ⟨(j : ℕ) + 1, by omega⟩..
+      selectedFerrersAbelLogSeam k j,
+      ‖deriv (selectedFerrersAbelLogRepresentative k) x‖) =
+      ∫ x in
+        selectedFerrersAbelLogSeam k ⟨(j : ℕ) + 1, by omega⟩..
+        selectedFerrersAbelLogSeam k j,
+        ‖deriv (selectedFerrersAbelLogCell k (j : ℕ)) x‖ := by
+  have hcell := selectedFerrersAbelLogCell_eq_cellRepresentative
+    k (j : ℕ) j.property (by omega)
+  have hcell' : selectedFerrersAbelLogCell k (j : ℕ) =
+      selectedFerrersAbelLogCellRepresentative k j := by
+    simpa using hcell
+  have hderiv : deriv (selectedFerrersAbelLogCell k (j : ℕ)) =
+      deriv (selectedFerrersAbelLogCellRepresentative k j) := by
+    rw [hcell']
+  apply intervalIntegral.integral_congr_ae_restrict
+  filter_upwards [selectedFerrersAbelLogCellRepresentative_deriv_ae_eq_representative
+    k hj] with x hx
+  rw [congrFun hderiv x, hx]
+
+private theorem selectedFerrersAbelLogRepresentativeDerivNormIntegral_eq_cell
+    (k j : ℕ) (hj : j < k + 1) :
+    (∫ x in
+      selectedFerrersAbelLogPartitionPoint k j..
+      selectedFerrersAbelLogPartitionPoint k (j + 1),
+      ‖deriv (selectedFerrersAbelLogRepresentative k) x‖) =
+      ∫ x in
+        selectedFerrersAbelLogPartitionPoint k j..
+        selectedFerrersAbelLogPartitionPoint k (j + 1),
+        ‖deriv (selectedFerrersAbelLogCell k (k + 1 - j)) x‖ := by
+  let n := k + 1 - j
+  have hn : 0 < n := by dsimp [n]; omega
+  have hnk : n ≤ k + 1 := by dsimp [n]; omega
+  rw [selectedFerrersAbelLogPartitionPoint_eq_cell_lower k j hj,
+    selectedFerrersAbelLogPartitionPoint_eq_cell_upper k j hj]
+  exact selectedFerrersAbelLogRepresentativeDerivNormIntegral_eq_cell_seam
+    (j := ⟨n, hn⟩) k hnk
+
+private theorem selectedFerrersAbelLogDerivativeBudget_eq_cellPartition
+    (k : ℕ) :
+    selectedFerrersAbelLogDerivativeBudget k =
+      ∑ j ∈ Finset.range (k + 1),
+        ∫ x in
+          selectedFerrersAbelLogPartitionPoint k j..
+          selectedFerrersAbelLogPartitionPoint k (j + 1),
+          ‖deriv (selectedFerrersAbelLogCell k (k + 1 - j)) x‖ := by
+  unfold selectedFerrersAbelLogDerivativeBudget
+  let f := fun x => ‖deriv (selectedFerrersAbelLogRepresentative k) x‖
+  have hint : ∀ j < k + 1, IntervalIntegrable f volume
+      (selectedFerrersAbelLogPartitionPoint k j)
+      (selectedFerrersAbelLogPartitionPoint k (j + 1)) := by
+    intro j hj
+    exact selectedFerrersAbelLogRepresentativeDerivNorm_intervalIntegrable_cell
+      k j hj
+  have hsum := intervalIntegral.sum_integral_adjacent_intervals hint
+  rw [selectedFerrersAbelLogPartitionPoint_zero,
+    selectedFerrersAbelLogPartitionPoint_last] at hsum
+  rw [← hsum]
+  apply Finset.sum_congr rfl
+  intro j hj
+  exact selectedFerrersAbelLogRepresentativeDerivNormIntegral_eq_cell
+    k j (Finset.mem_range.mp hj)
+
+private theorem selectedFerrersAbelLogCell_fourier_IBP_partition
+    (k j : ℕ) (hj : j < k + 1) {t : ℝ} (ht : t ≠ 0) :
+    (∫ x in
+      selectedFerrersAbelLogPartitionPoint k j..
+      selectedFerrersAbelLogPartitionPoint k (j + 1),
+      selectedFerrersAbelLogCell k (k + 1 - j) x *
+        selectedFerrersAbelLogFourierPhase t x) =
+      selectedFerrersAbelLogCellBoundaryTerm k t j -
+      ∫ x in
+        selectedFerrersAbelLogPartitionPoint k j..
+        selectedFerrersAbelLogPartitionPoint k (j + 1),
+        deriv (selectedFerrersAbelLogCell k (k + 1 - j)) x *
+          selectedFerrersAbelLogFourierPrimitive t x := by
+  let n := k + 1 - j
+  have hn : 0 < n := by dsimp [n]; omega
+  have hnk : n ≤ k + 1 := by dsimp [n]; omega
+  have hcell := selectedFerrersAbelLogCell_eq_cellRepresentative
+    k n hn (by omega)
+  rw [selectedFerrersAbelLogPartitionPoint_eq_cell_lower k j hj,
+    selectedFerrersAbelLogPartitionPoint_eq_cell_upper k j hj]
+  unfold selectedFerrersAbelLogCellBoundaryTerm
+  rw [selectedFerrersAbelLogPartitionPoint_eq_cell_lower k j hj,
+    selectedFerrersAbelLogPartitionPoint_eq_cell_upper k j hj]
+  change selectedFerrersAbelLogCell k n = _ at hcell
+  rw [hcell]
+  exact selectedFerrersAbelLogCellRepresentative_fourier_IBP
+    (j := ⟨n, hn⟩) k hnk ht
+
+private theorem selectedFerrersAbelLogFourierIntegral_eq_boundary_sub_deriv
+    (k : ℕ) {t : ℝ} (ht : t ≠ 0) :
+    (∫ x in (0 : ℝ)..L_m (selectedFerrersPreAnchorIndex k),
+      selectedFerrersAbelLogRepresentative k x *
+        selectedFerrersAbelLogFourierPhase t x) =
+      (∑ j ∈ Finset.range (k + 1),
+        selectedFerrersAbelLogCellBoundaryTerm k t j) -
+      ∑ j ∈ Finset.range (k + 1),
+        ∫ x in
+          selectedFerrersAbelLogPartitionPoint k j..
+          selectedFerrersAbelLogPartitionPoint k (j + 1),
+          deriv (selectedFerrersAbelLogCell k (k + 1 - j)) x *
+            selectedFerrersAbelLogFourierPrimitive t x := by
+  rw [selectedFerrersAbelLogFourierIntegral_eq_cellPartition]
+  rw [← Finset.sum_sub_distrib]
+  apply Finset.sum_congr rfl
+  intro j hj
+  exact selectedFerrersAbelLogCell_fourier_IBP_partition
+    k j (Finset.mem_range.mp hj) ht
+
+private theorem selectedFerrersAbelLogCellDerivativeIntegral_norm_le
+    (k j : ℕ) (hj : j < k + 1) {t : ℝ} (ht : t ≠ 0) :
+    ‖∫ x in
+      selectedFerrersAbelLogPartitionPoint k j..
+      selectedFerrersAbelLogPartitionPoint k (j + 1),
+      deriv (selectedFerrersAbelLogCell k (k + 1 - j)) x *
+        selectedFerrersAbelLogFourierPrimitive t x‖ ≤
+      (1 / (2 * Real.pi * |t|)) *
+        ∫ x in
+          selectedFerrersAbelLogPartitionPoint k j..
+          selectedFerrersAbelLogPartitionPoint k (j + 1),
+          ‖deriv (selectedFerrersAbelLogCell k (k + 1 - j)) x‖ := by
+  let a := selectedFerrersAbelLogPartitionPoint k j
+  let b := selectedFerrersAbelLogPartitionPoint k (j + 1)
+  let d := 1 / (2 * Real.pi * |t|)
+  have hab : a ≤ b := (selectedFerrersAbelLogPartitionPoint_strict k j hj).le
+  calc
+    ‖∫ x in a..b,
+        deriv (selectedFerrersAbelLogCell k (k + 1 - j)) x *
+          selectedFerrersAbelLogFourierPrimitive t x‖
+        ≤ ∫ x in a..b,
+            ‖deriv (selectedFerrersAbelLogCell k (k + 1 - j)) x *
+              selectedFerrersAbelLogFourierPrimitive t x‖ :=
+          intervalIntegral.norm_integral_le_integral_norm hab
+    _ = ∫ x in a..b,
+          d * ‖deriv (selectedFerrersAbelLogCell k (k + 1 - j)) x‖ := by
+      apply intervalIntegral.integral_congr
+      intro x hx
+      dsimp only
+      rw [norm_mul, selectedFerrersAbelLogFourierPrimitive_norm ht]
+      ring
+    _ = d * ∫ x in a..b,
+          ‖deriv (selectedFerrersAbelLogCell k (k + 1 - j)) x‖ := by
+      rw [intervalIntegral.integral_const_mul]
+    _ = (1 / (2 * Real.pi * |t|)) *
+        ∫ x in
+          selectedFerrersAbelLogPartitionPoint k j..
+          selectedFerrersAbelLogPartitionPoint k (j + 1),
+          ‖deriv (selectedFerrersAbelLogCell k (k + 1 - j)) x‖ := rfl
+
+private theorem selectedFerrersAbelLogDerivativeIntegralSum_norm_le
+    (k : ℕ) {t : ℝ} (ht : t ≠ 0) :
+    ‖∑ j ∈ Finset.range (k + 1),
+      ∫ x in
+        selectedFerrersAbelLogPartitionPoint k j..
+        selectedFerrersAbelLogPartitionPoint k (j + 1),
+        deriv (selectedFerrersAbelLogCell k (k + 1 - j)) x *
+          selectedFerrersAbelLogFourierPrimitive t x‖ ≤
+      (1 / (2 * Real.pi * |t|)) *
+        selectedFerrersAbelLogDerivativeBudget k := by
+  calc
+    ‖∑ j ∈ Finset.range (k + 1),
+        ∫ x in
+          selectedFerrersAbelLogPartitionPoint k j..
+          selectedFerrersAbelLogPartitionPoint k (j + 1),
+          deriv (selectedFerrersAbelLogCell k (k + 1 - j)) x *
+            selectedFerrersAbelLogFourierPrimitive t x‖
+        ≤ ∑ j ∈ Finset.range (k + 1),
+            ‖∫ x in
+              selectedFerrersAbelLogPartitionPoint k j..
+              selectedFerrersAbelLogPartitionPoint k (j + 1),
+              deriv (selectedFerrersAbelLogCell k (k + 1 - j)) x *
+                selectedFerrersAbelLogFourierPrimitive t x‖ :=
+          norm_sum_le _ _
+    _ ≤ ∑ j ∈ Finset.range (k + 1),
+          (1 / (2 * Real.pi * |t|)) *
+            ∫ x in
+              selectedFerrersAbelLogPartitionPoint k j..
+              selectedFerrersAbelLogPartitionPoint k (j + 1),
+              ‖deriv (selectedFerrersAbelLogCell k (k + 1 - j)) x‖ := by
+      apply Finset.sum_le_sum
+      intro j hj
+      exact selectedFerrersAbelLogCellDerivativeIntegral_norm_le
+        k j (Finset.mem_range.mp hj) ht
+    _ = (1 / (2 * Real.pi * |t|)) *
+        selectedFerrersAbelLogDerivativeBudget k := by
+      rw [← Finset.mul_sum,
+        ← selectedFerrersAbelLogDerivativeBudget_eq_cellPartition]
+
+private theorem selectedFerrersAbelLogCellBoundarySum_norm_le
+    (k : ℕ) {t : ℝ} (ht : t ≠ 0) :
+    ‖∑ j ∈ Finset.range (k + 1),
+      selectedFerrersAbelLogCellBoundaryTerm k t j‖ ≤
+      (1 / (2 * Real.pi * |t|)) *
+        (‖selectedFerrersAbelLogRepresentative k
+            (L_m (selectedFerrersPreAnchorIndex k))‖ +
+          ‖selectedFerrersAbelLogLowerRightValue k‖ +
+          ∑ i ∈ Finset.range k,
+            ‖selectedFerrersAbelLogSeamTerm k (k + 1 - i)‖) := by
+  rw [selectedFerrersAbelLogCellBoundary_telescope_range]
+  let A := selectedFerrersAbelLogRepresentative k
+      (L_m (selectedFerrersPreAnchorIndex k)) *
+    selectedFerrersAbelLogFourierPrimitive t
+      (L_m (selectedFerrersPreAnchorIndex k))
+  let B := selectedFerrersAbelLogLowerRightValue k *
+    selectedFerrersAbelLogFourierPrimitive t 0
+  let S := ∑ i ∈ Finset.range k,
+    selectedFerrersAbelLogSeamTerm k (k + 1 - i) *
+      selectedFerrersAbelLogFourierPrimitive t
+        (selectedFerrersAbelLogPartitionPoint k (i + 1))
+  calc
+    ‖A - B + S‖ ≤ ‖A - B‖ + ‖S‖ := norm_add_le _ _
+    _ ≤ (‖A‖ + ‖B‖) + ‖S‖ :=
+      add_le_add (norm_sub_le A B) le_rfl
+    _ ≤ (‖A‖ + ‖B‖) +
+        ∑ i ∈ Finset.range k,
+          ‖selectedFerrersAbelLogSeamTerm k (k + 1 - i) *
+            selectedFerrersAbelLogFourierPrimitive t
+              (selectedFerrersAbelLogPartitionPoint k (i + 1))‖ := by
+      have hS : ‖S‖ ≤ ∑ i ∈ Finset.range k,
+          ‖selectedFerrersAbelLogSeamTerm k (k + 1 - i) *
+            selectedFerrersAbelLogFourierPrimitive t
+              (selectedFerrersAbelLogPartitionPoint k (i + 1))‖ := by
+        dsimp only [S]
+        exact norm_sum_le _ _
+      exact add_le_add le_rfl hS
+    _ = (1 / (2 * Real.pi * |t|)) *
+        (‖selectedFerrersAbelLogRepresentative k
+            (L_m (selectedFerrersPreAnchorIndex k))‖ +
+          ‖selectedFerrersAbelLogLowerRightValue k‖ +
+          ∑ i ∈ Finset.range k,
+            ‖selectedFerrersAbelLogSeamTerm k (k + 1 - i)‖) := by
+      dsimp only [A, B, S]
+      rw [norm_mul, selectedFerrersAbelLogFourierPrimitive_norm ht,
+        norm_mul, selectedFerrersAbelLogFourierPrimitive_norm ht]
+      simp_rw [norm_mul, selectedFerrersAbelLogFourierPrimitive_norm ht]
+      rw [← Finset.sum_mul]
+      ring
+
+private theorem
+    selectedFerrersAbelLogZeroExtension_fourier_decay_off_zero_sharp_range
+    (k : ℕ) {t : ℝ} (ht : t ≠ 0) :
+    ‖𝓕 (selectedFerrersAbelLogZeroExtension k) t‖ ≤
+      (selectedFerrersAbelLogDerivativeBudget k +
+        ‖selectedFerrersAbelLogLowerRightValue k‖ +
+        ‖selectedFerrersAbelLogRepresentative k
+          (L_m (selectedFerrersPreAnchorIndex k))‖ +
+        ∑ i ∈ Finset.range k,
+          ‖selectedFerrersAbelLogSeamTerm k (k + 1 - i)‖) /
+      (2 * Real.pi * |t|) := by
+  rw [selectedFerrersAbelLogZeroExtension_fourier_eq_intervalIntegral,
+    selectedFerrersAbelLogFourierIntegral_eq_boundary_sub_deriv k ht]
+  let BS := ∑ j ∈ Finset.range (k + 1),
+    selectedFerrersAbelLogCellBoundaryTerm k t j
+  let DS := ∑ j ∈ Finset.range (k + 1),
+    ∫ x in
+      selectedFerrersAbelLogPartitionPoint k j..
+      selectedFerrersAbelLogPartitionPoint k (j + 1),
+      deriv (selectedFerrersAbelLogCell k (k + 1 - j)) x *
+        selectedFerrersAbelLogFourierPrimitive t x
+  have hB := selectedFerrersAbelLogCellBoundarySum_norm_le k ht
+  have hD := selectedFerrersAbelLogDerivativeIntegralSum_norm_le k ht
+  change ‖BS - DS‖ ≤ _
+  change ‖BS‖ ≤ _ at hB
+  change ‖DS‖ ≤ _ at hD
+  calc
+    ‖BS - DS‖ ≤ ‖BS‖ + ‖DS‖ := norm_sub_le _ _
+    _ ≤ (1 / (2 * Real.pi * |t|)) *
+          (‖selectedFerrersAbelLogRepresentative k
+              (L_m (selectedFerrersPreAnchorIndex k))‖ +
+            ‖selectedFerrersAbelLogLowerRightValue k‖ +
+            ∑ i ∈ Finset.range k,
+              ‖selectedFerrersAbelLogSeamTerm k (k + 1 - i)‖) +
+        (1 / (2 * Real.pi * |t|)) *
+          selectedFerrersAbelLogDerivativeBudget k :=
+      add_le_add hB hD
+    _ = (selectedFerrersAbelLogDerivativeBudget k +
+          ‖selectedFerrersAbelLogLowerRightValue k‖ +
+          ‖selectedFerrersAbelLogRepresentative k
+            (L_m (selectedFerrersPreAnchorIndex k))‖ +
+          ∑ i ∈ Finset.range k,
+            ‖selectedFerrersAbelLogSeamTerm k (k + 1 - i)‖) /
+        (2 * Real.pi * |t|) := by ring
+
+private theorem selectedFerrersAbelLog_sum_Icc_two_eq_sum_range
+    {E : Type*} [AddCommMonoid E] (f : ℕ → E) (k : ℕ) :
+    ∑ n ∈ Finset.Icc 2 (k + 1), f n =
+      ∑ i ∈ Finset.range k, f (i + 2) := by
+  induction k with
+  | zero => simp
+  | succ k ih =>
+      rw [Finset.sum_range_succ,
+        Finset.sum_Icc_succ_top (by omega : 2 ≤ k + 2), ih]
+
+private theorem selectedFerrersAbelLogInternalSeamNormSum_range_eq_Icc
+    (k : ℕ) :
+    (∑ i ∈ Finset.range k,
+      ‖selectedFerrersAbelLogSeamTerm k (k + 1 - i)‖) =
+      ∑ n ∈ Finset.Icc 2 (k + 1),
+        ‖selectedFerrersAbelLogSeamTerm k n‖ := by
+  rw [selectedFerrersAbelLog_sum_Icc_two_eq_sum_range]
+  rw [← Finset.sum_range_reflect
+    (fun i => ‖selectedFerrersAbelLogSeamTerm k (i + 2)‖) k]
+  apply Finset.sum_congr rfl
+  intro i hi
+  congr 3
+  have hi' : i < k := Finset.mem_range.mp hi
+  omega
+
+private theorem
+    selectedFerrersAbelLogZeroExtension_fourier_decay_off_zero_sharp
+    (k : ℕ) {t : ℝ} (ht : t ≠ 0) :
+    ‖𝓕 (selectedFerrersAbelLogZeroExtension k) t‖ ≤
+      (selectedFerrersAbelLogDerivativeBudget k +
+        ‖selectedFerrersAbelLogLowerRightValue k‖ +
+        ‖selectedFerrersAbelLogRepresentative k
+          (L_m (selectedFerrersPreAnchorIndex k))‖ +
+        ∑ n ∈ Finset.Icc 2 (k + 1),
+          ‖selectedFerrersAbelLogSeamTerm k n‖) /
+      (2 * Real.pi * |t|) := by
+  rw [← selectedFerrersAbelLogInternalSeamNormSum_range_eq_Icc]
+  exact selectedFerrersAbelLogZeroExtension_fourier_decay_off_zero_sharp_range
+    k ht
+
+private theorem selectedFerrersAbelLogJumpBudget_eq_internal_add_lower
+    (k : ℕ) :
+    selectedFerrersAbelLogJumpBudget k =
+      ‖selectedFerrersAbelLogRepresentative k 0‖ +
+      ‖selectedFerrersAbelLogRepresentative k
+        (L_m (selectedFerrersPreAnchorIndex k))‖ +
+      (∑ n ∈ Finset.Icc 2 (k + 1),
+        ‖selectedFerrersAbelLogSeamTerm k n‖) +
+      ‖selectedFerrersAbelLogLowerEndpointSeam k‖ := by
+  unfold selectedFerrersAbelLogJumpBudget
+  rw [Finset.sum_Icc_succ_top (by omega : 2 ≤ k + 2)]
+  change ‖selectedFerrersAbelLogRepresentative k 0‖ +
+        ‖selectedFerrersAbelLogRepresentative k
+          (L_m (selectedFerrersPreAnchorIndex k))‖ +
+        ((∑ n ∈ Finset.Icc 2 (k + 1),
+          ‖selectedFerrersAbelLogSeamTerm k n‖) +
+          ‖selectedFerrersAbelLogSeamTerm k (k + 2)‖) = _
+  rw [selectedFerrersAbelLogSeamTerm_last]
+  ring
+
+theorem selectedFerrersAbelLogZeroExtension_fourier_decay_off_zero
+    (k : ℕ) {t : ℝ} (ht : t ≠ 0) :
+    ‖𝓕 (selectedFerrersAbelLogZeroExtension k) t‖ ≤
+      (selectedFerrersAbelLogDerivativeBudget k +
+        selectedFerrersAbelLogJumpBudget k) /
+      (2 * Real.pi * |t|) := by
+  apply (selectedFerrersAbelLogZeroExtension_fourier_decay_off_zero_sharp
+    k ht).trans
+  have hlower : ‖selectedFerrersAbelLogLowerRightValue k‖ ≤
+      ‖selectedFerrersAbelLogRepresentative k 0‖ +
+        ‖selectedFerrersAbelLogLowerEndpointSeam k‖ :=
+    norm_sub_le _ _
+  rw [selectedFerrersAbelLogJumpBudget_eq_internal_add_lower]
+  have hnum : selectedFerrersAbelLogDerivativeBudget k +
+        ‖selectedFerrersAbelLogLowerRightValue k‖ +
+        ‖selectedFerrersAbelLogRepresentative k
+          (L_m (selectedFerrersPreAnchorIndex k))‖ +
+        ∑ n ∈ Finset.Icc 2 (k + 1),
+          ‖selectedFerrersAbelLogSeamTerm k n‖ ≤
+      selectedFerrersAbelLogDerivativeBudget k +
+        (‖selectedFerrersAbelLogRepresentative k 0‖ +
+          ‖selectedFerrersAbelLogRepresentative k
+            (L_m (selectedFerrersPreAnchorIndex k))‖ +
+          ∑ n ∈ Finset.Icc 2 (k + 1),
+            ‖selectedFerrersAbelLogSeamTerm k n‖ +
+          ‖selectedFerrersAbelLogLowerEndpointSeam k‖) := by
+    linarith
+  exact div_le_div_of_nonneg_right hnum (by positivity)
+
 private theorem selectedFerrersAbelLogLowerRightValue_norm_le (k : ℕ) :
     ‖selectedFerrersAbelLogLowerRightValue k‖ ≤
       ‖selectedFerrersAbelLogRepresentative k 0‖ +
