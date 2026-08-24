@@ -1213,6 +1213,13 @@ private noncomputable def selectedFerrersAbelLogLowerRightValue
   selectedFerrersAbelLogRepresentative k 0 -
     selectedFerrersAbelLogLowerEndpointSeam k
 
+private noncomputable def selectedFerrersAbelLogSeamTerm
+    (k n : ℕ) : ℂ :=
+  (((Real.sqrt
+      (lambda_m (selectedFerrersPreAnchorIndex k) / (n : ℝ)) : ℝ) : ℂ) *
+    selectedFerrersLemma73SourcePacket k
+      (lambda_m (selectedFerrersPreAnchorIndex k)))
+
 private def selectedFerrersAbelLogFourierPhase
     (t x : ℝ) : ℂ :=
   (Real.fourierChar (-(x * t)) : ℂ)
@@ -1221,6 +1228,17 @@ private noncomputable def selectedFerrersAbelLogFourierPrimitive
     (t x : ℝ) : ℂ :=
   (((((-2 * Real.pi * t : ℝ) : ℂ) * Complex.I)⁻¹) *
     selectedFerrersAbelLogFourierPhase t x)
+
+private noncomputable def selectedFerrersAbelLogCellBoundaryTerm
+    (k : ℕ) (t : ℝ) (j : ℕ) : ℂ :=
+  selectedFerrersAbelLogCell k (k + 1 - j)
+      (selectedFerrersAbelLogPartitionPoint k (j + 1)) *
+    selectedFerrersAbelLogFourierPrimitive t
+      (selectedFerrersAbelLogPartitionPoint k (j + 1)) -
+  selectedFerrersAbelLogCell k (k + 1 - j)
+      (selectedFerrersAbelLogPartitionPoint k j) *
+    selectedFerrersAbelLogFourierPrimitive t
+      (selectedFerrersAbelLogPartitionPoint k j)
 
 private theorem selectedFerrersW4_lambda_pos (k : ℕ) :
     0 < lambda_m (selectedFerrersPreAnchorIndex k) := by
@@ -1630,6 +1648,36 @@ private theorem selectedFerrersAbelLogCellRepresentative_lower_value
   dsimp [jp] at hu hs ht ⊢
   rw [← hu, hs, ht]
   ring
+
+private theorem selectedFerrersAbelLogCell_upper_value
+    (k n : ℕ) (hn : 0 < n) (hnk : n ≤ k + 1) :
+    selectedFerrersAbelLogCell k n
+        (selectedFerrersAbelLogSeamPoint k n) =
+      selectedFerrersAbelLogRepresentative k
+        (selectedFerrersAbelLogSeamPoint k n) := by
+  have hcell := selectedFerrersAbelLogCell_eq_cellRepresentative
+    k n hn (by omega)
+  rw [congrFun hcell]
+  rw [selectedFerrersAbelLogSeamPoint_eq_seam k n hn]
+  exact selectedFerrersAbelLogCellRepresentative_upper_value
+    (j := ⟨n, hn⟩) k (by
+      change n ≤ k + 2
+      omega)
+
+private theorem selectedFerrersAbelLogCell_lower_value
+    (k n : ℕ) (hn : 0 < n) (hnk : n ≤ k + 1) :
+    selectedFerrersAbelLogCell k n
+        (selectedFerrersAbelLogSeamPoint k (n + 1)) =
+      selectedFerrersAbelLogRepresentative k
+          (selectedFerrersAbelLogSeamPoint k (n + 1)) -
+        selectedFerrersAbelLogSeamTerm k (n + 1) := by
+  have hcell := selectedFerrersAbelLogCell_eq_cellRepresentative
+    k n hn (by omega)
+  rw [congrFun hcell]
+  rw [selectedFerrersAbelLogSeamPoint_eq_seam k (n + 1) (by omega)]
+  simpa only [selectedFerrersAbelLogSeamTerm] using
+    selectedFerrersAbelLogCellRepresentative_lower_value
+      (k := k) (j := (⟨n, hn⟩ : ℕ+)) hnk
 
 private theorem selectedFerrersAbelLogCellRepresentative_eventuallyEq_representative
     (k : ℕ) {j : ℕ+} (hj : (j : ℕ) ≤ k + 1) {x : ℝ}
@@ -2088,6 +2136,133 @@ private theorem selectedFerrersAbelLogLowerEndpointSeam_eq_lastSummand
     rw [← hsq']
     field_simp
   simp only [selectedFerrersAbelLogLowerEndpointSeam, hquot]
+
+private theorem selectedFerrersAbelLogSeamTerm_last
+    (k : ℕ) :
+    selectedFerrersAbelLogSeamTerm k (k + 2) =
+      selectedFerrersAbelLogLowerEndpointSeam k := by
+  rw [selectedFerrersAbelLogLowerEndpointSeam_eq_lastSummand]
+  simp only [selectedFerrersAbelLogSeamTerm, Nat.cast_add, Nat.cast_ofNat]
+
+private theorem selectedFerrersAbelLogCell_last_lower_value
+    (k : ℕ) :
+    selectedFerrersAbelLogCell k (k + 1) 0 =
+      selectedFerrersAbelLogLowerRightValue k := by
+  have h := selectedFerrersAbelLogCell_lower_value
+    k (k + 1) (by omega) (by omega)
+  have hz : selectedFerrersAbelLogSeamPoint k (k + 2) = 0 := by
+    rw [selectedFerrersAbelLogSeamPoint_eq_seam k (k + 2) (by omega)]
+    exact selectedFerrersAbelLogSeam_last k
+  rw [hz, selectedFerrersAbelLogSeamTerm_last] at h
+  exact h
+
+private theorem selectedFerrersAbelLogCellBoundaryTerm_zero
+    (k : ℕ) (t : ℝ) :
+    selectedFerrersAbelLogCellBoundaryTerm k t 0 =
+      selectedFerrersAbelLogRepresentative k
+          (selectedFerrersAbelLogPartitionPoint k 1) *
+        selectedFerrersAbelLogFourierPrimitive t
+          (selectedFerrersAbelLogPartitionPoint k 1) -
+      selectedFerrersAbelLogLowerRightValue k *
+        selectedFerrersAbelLogFourierPrimitive t 0 := by
+  have hp1 : selectedFerrersAbelLogPartitionPoint k 1 =
+      selectedFerrersAbelLogSeamPoint k (k + 1) := by
+    unfold selectedFerrersAbelLogPartitionPoint
+    congr 1
+  unfold selectedFerrersAbelLogCellBoundaryTerm
+  simp only [Nat.sub_zero, Nat.zero_add]
+  rw [selectedFerrersAbelLogPartitionPoint_zero, hp1,
+    selectedFerrersAbelLogCell_upper_value k (k + 1) (by omega) (by omega),
+    selectedFerrersAbelLogCell_last_lower_value]
+
+private theorem selectedFerrersAbelLogCellBoundaryTerm_succ
+    (k i : ℕ) (hi : i < k) (t : ℝ) :
+    selectedFerrersAbelLogCellBoundaryTerm k t (i + 1) =
+      selectedFerrersAbelLogRepresentative k
+          (selectedFerrersAbelLogPartitionPoint k (i + 2)) *
+        selectedFerrersAbelLogFourierPrimitive t
+          (selectedFerrersAbelLogPartitionPoint k (i + 2)) -
+      (selectedFerrersAbelLogRepresentative k
+          (selectedFerrersAbelLogPartitionPoint k (i + 1)) -
+        selectedFerrersAbelLogSeamTerm k (k + 1 - i)) *
+        selectedFerrersAbelLogFourierPrimitive t
+          (selectedFerrersAbelLogPartitionPoint k (i + 1)) := by
+  let n := k - i
+  have hn : 0 < n := by dsimp [n]; omega
+  have hnk : n ≤ k + 1 := by dsimp [n]; omega
+  have hsub : k + 1 - (i + 1) = n := by dsimp [n]; omega
+  have hidx : n + 1 = k + 1 - i := by dsimp [n]; omega
+  have hpUpper : selectedFerrersAbelLogPartitionPoint k (i + 2) =
+      selectedFerrersAbelLogSeamPoint k n := by
+    unfold selectedFerrersAbelLogPartitionPoint
+    congr 1
+    dsimp [n]
+    omega
+  have hpLower : selectedFerrersAbelLogPartitionPoint k (i + 1) =
+      selectedFerrersAbelLogSeamPoint k (n + 1) := by
+    unfold selectedFerrersAbelLogPartitionPoint
+    congr 1
+    dsimp [n]
+    omega
+  unfold selectedFerrersAbelLogCellBoundaryTerm
+  rw [hsub, hpUpper, hpLower,
+    selectedFerrersAbelLogCell_upper_value k n hn hnk,
+    selectedFerrersAbelLogCell_lower_value k n hn hnk]
+  rw [hidx]
+
+private theorem selectedFerrersAbelLogCellBoundary_telescope_range
+    (k : ℕ) (t : ℝ) :
+    (∑ j ∈ Finset.range (k + 1),
+      selectedFerrersAbelLogCellBoundaryTerm k t j) =
+      selectedFerrersAbelLogRepresentative k
+          (L_m (selectedFerrersPreAnchorIndex k)) *
+        selectedFerrersAbelLogFourierPrimitive t
+          (L_m (selectedFerrersPreAnchorIndex k)) -
+      selectedFerrersAbelLogLowerRightValue k *
+        selectedFerrersAbelLogFourierPrimitive t 0 +
+      ∑ i ∈ Finset.range k,
+        selectedFerrersAbelLogSeamTerm k (k + 1 - i) *
+          selectedFerrersAbelLogFourierPrimitive t
+            (selectedFerrersAbelLogPartitionPoint k (i + 1)) := by
+  let g : ℕ → ℂ := fun j =>
+    selectedFerrersAbelLogRepresentative k
+        (selectedFerrersAbelLogPartitionPoint k j) *
+      selectedFerrersAbelLogFourierPrimitive t
+        (selectedFerrersAbelLogPartitionPoint k j)
+  let q : ℕ → ℂ := fun i =>
+    selectedFerrersAbelLogSeamTerm k (k + 1 - i) *
+      selectedFerrersAbelLogFourierPrimitive t
+        (selectedFerrersAbelLogPartitionPoint k (i + 1))
+  have hb0 : selectedFerrersAbelLogCellBoundaryTerm k t 0 =
+      g 1 - selectedFerrersAbelLogLowerRightValue k *
+        selectedFerrersAbelLogFourierPrimitive t 0 := by
+    simpa only [g] using selectedFerrersAbelLogCellBoundaryTerm_zero k t
+  have hbs : ∀ i < k,
+      selectedFerrersAbelLogCellBoundaryTerm k t (i + 1) =
+        (g (i + 2) - g (i + 1)) + q i := by
+    intro i hi
+    rw [selectedFerrersAbelLogCellBoundaryTerm_succ k i hi t]
+    dsimp only [g, q]
+    ring
+  have htail : (∑ i ∈ Finset.range k,
+      selectedFerrersAbelLogCellBoundaryTerm k t (i + 1)) =
+      ∑ i ∈ Finset.range k, ((g (i + 2) - g (i + 1)) + q i) := by
+    apply Finset.sum_congr rfl
+    intro i hi
+    exact hbs i (Finset.mem_range.mp hi)
+  have htel : (∑ i ∈ Finset.range k, (g (i + 2) - g (i + 1))) =
+      g (k + 1) - g 1 := by
+    simpa [Nat.add_assoc, Nat.add_comm, Nat.add_left_comm] using
+      (Finset.sum_range_sub (fun i => g (i + 1)) k)
+  rw [Finset.sum_range_succ', hb0, htail, Finset.sum_add_distrib, htel]
+  rw [show g (k + 1) =
+      selectedFerrersAbelLogRepresentative k
+          (L_m (selectedFerrersPreAnchorIndex k)) *
+        selectedFerrersAbelLogFourierPrimitive t
+          (L_m (selectedFerrersPreAnchorIndex k)) by
+    simp only [g, selectedFerrersAbelLogPartitionPoint_last]]
+  simp only [q]
+  ring
 
 private theorem selectedFerrersAbelLogLowerRightValue_norm_le (k : ℕ) :
     ‖selectedFerrersAbelLogLowerRightValue k‖ ≤
