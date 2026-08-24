@@ -1,12 +1,12 @@
 {
   "active_exploration": null,
   "active_proshka_phase": {
-    "conversation_id": "6a7afc0e-2aec-83eb-a9ca-469b44c84f83",
+    "conversation_id": "6a8c3e2a-df50-83eb-b53d-dd4cc46f646f",
     "full_context_uploads": 0,
     "last_adjudicated_pin": "7e04518b5e10f109550f8bbb0a91dd934b97df30",
     "last_boundary_id": "GOAL058_G3_PRODUCTION_SPECTRAL_IFF_JUDGE",
-    "opened_at": "2026-08-13T07:25:47+02:00",
-    "opening_pin": "08a2db998f2b5467d70effdfd135d3846189999c",
+    "opened_at": "2026-08-24T14:58:31+02:00",
+    "opening_pin": "42c23256dd5493c2ba85598ac611beb2ad7e0165",
     "owner_boundary_count": 0,
     "phase_id": "PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13",
     "phase_key": {
@@ -27,8 +27,8 @@
     "delegated_strategic_review_calls": 44,
     "exploration_review_calls": 0,
     "fanout_violations": 0,
-    "forced_rollovers": 0,
-    "fresh_chats_opened": 1,
+    "forced_rollovers": 1,
+    "fresh_chats_opened": 2,
     "mathematical_owner_deferral_violations": 0,
     "ordinary_goal_close_calls": 0,
     "phases_opened": 2,
