@@ -721,6 +721,41 @@ private theorem selectedFerrersAbelLogPacketTerm_hasDerivAt_of_argument_mem_Ioo
   simpa only [Function.comp_apply] using
     hd.scomp x (selectedFerrersAbelLogArgument_hasDerivAt k n x)
 
+private theorem
+    selectedFerrersAbelLogPacketTerm_absolutelyContinuousOnInterval_of_mapsToWindow
+    (k : ℕ) (n : ℕ+) {a b : ℝ}
+    (hmem : ∀ x ∈ Set.uIcc a b,
+      selectedFerrersAbelLogArgument k n x ∈
+        Set.Icc (-(selectedFerrersPreAnchorPair k).pw.lambda)
+          (selectedFerrersPreAnchorPair k).pw.lambda) :
+    AbsolutelyContinuousOnInterval
+      (fun x => selectedFerrersLemma73SourcePacket k
+        (selectedFerrersAbelLogArgument k n x)) a b := by
+  obtain ⟨Cpacket, hCpacket, hpacket⟩ :=
+    selectedPacket_lipschitz_on_window k
+  obtain ⟨Carg, hCarg, harg⟩ :=
+    selectedFerrersAbelLogArgument_lipschitzOn k n a b
+  have hlip : LipschitzOnWith (Real.toNNReal (Cpacket * Carg))
+      (fun x => selectedFerrersLemma73SourcePacket k
+        (selectedFerrersAbelLogArgument k n x)) (Set.uIcc a b) := by
+    apply LipschitzOnWith.of_dist_le'
+    intro x hx y hy
+    have hp := hpacket _ (hmem x hx) _ (hmem y hy)
+    have ha := harg.dist_le_mul x hx y hy
+    rw [Complex.dist_eq, Real.dist_eq]
+    rw [Real.coe_toNNReal Carg hCarg] at ha
+    calc
+      ‖selectedFerrersLemma73SourcePacket k
+            (selectedFerrersAbelLogArgument k n x) -
+          selectedFerrersLemma73SourcePacket k
+            (selectedFerrersAbelLogArgument k n y)‖ ≤
+          Cpacket * |selectedFerrersAbelLogArgument k n x -
+            selectedFerrersAbelLogArgument k n y| := hp
+      _ ≤ Cpacket * (Carg * |x - y|) :=
+        mul_le_mul_of_nonneg_left (by simpa [Real.dist_eq] using ha) hCpacket
+      _ = (Cpacket * Carg) * |x - y| := by ring
+  exact hlip.absolutelyContinuousOnInterval
+
 
 
 private theorem selectedFerrersAbelLogPacketTerm_lipschitzOn_of_seamFree
@@ -918,6 +953,40 @@ private theorem selectedFerrersAbelLogSqrtWeight_lipschitzOn
   rw [selectedFerrersAbelLogSqrtWeight_eq k x,
     selectedFerrersAbelLogSqrtWeight_eq k y]
   simpa [D, Real.dist_eq, Real.coe_toNNReal C hC, norm_sub_rev] using hmv
+
+private theorem selectedFerrersAbelLogSqrtWeight_absolutelyContinuousOnInterval
+    (k : ℕ) (a b : ℝ) :
+    AbsolutelyContinuousOnInterval
+      (fun x =>
+        (Real.sqrt
+          (Real.exp x /
+            lambda_m (selectedFerrersPreAnchorIndex k)) : ℂ)) a b := by
+  obtain ⟨C, hC, hreal⟩ :=
+    selectedFerrersAbelLogSqrtWeight_lipschitzOn k a b
+  apply LipschitzOnWith.absolutelyContinuousOnInterval
+  apply LipschitzOnWith.of_dist_le'
+  intro x hx y hy
+  have hxy := hreal.dist_le_mul x hx y hy
+  rw [Complex.dist_eq, ← Complex.ofReal_sub, Complex.norm_real,
+    Real.norm_eq_abs, Real.dist_eq]
+  simpa [Real.dist_eq, Real.coe_toNNReal C hC] using hxy
+
+private theorem
+    selectedFerrersAbelLogProductionTerm_absolutelyContinuousOnInterval_of_mapsToWindow
+    (k : ℕ) (n : ℕ+) {a b : ℝ}
+    (hmem : ∀ x ∈ Set.uIcc a b,
+      selectedFerrersAbelLogArgument k n x ∈
+        Set.Icc (-(selectedFerrersPreAnchorPair k).pw.lambda)
+          (selectedFerrersPreAnchorPair k).pw.lambda) :
+    AbsolutelyContinuousOnInterval
+      (selectedFerrersAbelLogProductionTerm k n) a b := by
+  have hw := selectedFerrersAbelLogSqrtWeight_absolutelyContinuousOnInterval
+    k a b
+  have hp :=
+    selectedFerrersAbelLogPacketTerm_absolutelyContinuousOnInterval_of_mapsToWindow
+      k n hmem
+  simpa only [selectedFerrersAbelLogProductionTerm, smul_eq_mul] using
+    hw.fun_smul hp
 
 private theorem selectedFerrersAbelLogScale_mem_window
     (k : ℕ) {x : ℝ}
