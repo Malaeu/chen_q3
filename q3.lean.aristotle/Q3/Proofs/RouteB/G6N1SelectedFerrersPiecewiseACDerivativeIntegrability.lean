@@ -642,6 +642,52 @@ private theorem selectedPacket_lipschitz_on_window (k : ℕ) :
         ((|P.I4| * C0 + |P.I0| * C4) / den) * |u - v| := by
       ring
 
+/-- The exact selected packet is differentiable at every point strictly inside
+its physical window.  The derivative value is deliberately existential: W4
+only needs a right-derivative supplier for integration by parts, not another
+public formula. -/
+private theorem selectedFerrersLemma73SourcePacket_hasDerivAt_of_mem_Ioo
+    (k : ℕ) {u : ℝ}
+    (hu : u ∈ Set.Ioo
+      (-(selectedFerrersPreAnchorPair k).pw.lambda)
+      (selectedFerrersPreAnchorPair k).pw.lambda) :
+    ∃ u' : ℂ, HasDerivAt
+      (selectedFerrersLemma73SourcePacket k) u' u := by
+  obtain ⟨hlam, hh0, hh4, -⟩ := selectedFerrersPreAnchorPair_spec k
+  have hm : 2 ≤ k + 2 := by omega
+  have hu' : u ∈ Set.Ioo
+      (-Real.sqrt (((k + 2 : ℕ) : ℝ)))
+      (Real.sqrt (((k + 2 : ℕ) : ℝ))) := by
+    simpa [hlam] using hu
+  obtain ⟨d0, hd0⟩ : ∃ d0 : ℂ,
+      HasDerivAt
+        (selectedFerrersPreAnchorSolution0 k).normalizedPhysicalMode d0 u := by
+    exact ⟨_, normalizedPhysicalMode_hasDerivAt
+      (selectedFerrersPreAnchorSolution0 k) hm hu'⟩
+  obtain ⟨d4, hd4⟩ : ∃ d4 : ℂ,
+      HasDerivAt
+        (selectedFerrersPreAnchorSolution4 k).normalizedPhysicalMode d4 u := by
+    exact ⟨_, normalizedPhysicalMode_hasDerivAt
+      (selectedFerrersPreAnchorSolution4 k) hm hu'⟩
+  refine ⟨selectedFerrersLemma73SourceScale k *
+      (((selectedFerrersPreAnchorPair k).I4 : ℂ) * d0 -
+        ((selectedFerrersPreAnchorPair k).I0 : ℂ) * d4) /
+      ((selectedFerrersPreAnchorPair k).normalizingDenominator : ℂ), ?_⟩
+  change HasDerivAt
+    (fun x => selectedFerrersLemma73SourceScale k *
+      ((((selectedFerrersPreAnchorPair k).I4 : ℂ) *
+          (selectedFerrersPreAnchorPair k).h0 x -
+        ((selectedFerrersPreAnchorPair k).I0 : ℂ) *
+          (selectedFerrersPreAnchorPair k).h4 x) /
+        ((selectedFerrersPreAnchorPair k).normalizingDenominator : ℂ))) _ u
+  rw [hh0, hh4]
+  convert (((hd0.const_mul
+      ((selectedFerrersPreAnchorPair k).I4 : ℂ)).sub
+        (hd4.const_mul
+          ((selectedFerrersPreAnchorPair k).I0 : ℂ))).div_const
+      ((selectedFerrersPreAnchorPair k).normalizingDenominator : ℂ)).const_mul
+        (selectedFerrersLemma73SourceScale k) using 1 <;> ring
+
 
 
 private theorem selectedFerrersAbelLogPacketTerm_lipschitzOn_of_seamFree
