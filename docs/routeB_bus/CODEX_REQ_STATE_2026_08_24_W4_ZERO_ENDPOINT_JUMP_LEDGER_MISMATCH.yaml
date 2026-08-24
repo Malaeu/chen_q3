@@ -1,12 +1,12 @@
 blocker_fingerprint: 0aabc895314f59028e540621af5e8382478aa7dbb6b010e04f779c8545a6ae04
 codex_session_id: 01a022d7-0d31-7951-b6e4-e1ab983a1e83
 phase_key_hash: 1c0914e2e93a49defedf2c8a8497fbdc22de993b7404e0426e4b2d6c131f9aae
-previous_state_sha256: null
+previous_state_sha256: 745e285d987edd0569cf7331300d3083b6b94c176a5e17f4a5944eb160fedfdd
 request_blob: 38791b1ab648beb4b5682d55cd1984576747dc3e179d32260dbeb264f697dbbc
 request_git_blob: 9e58266f1424c0b92ac85fab304c60741d9d80ea
 request_id: REQ-2026-08-24-W4-ZERO-ENDPOINT-JUMP-LEDGER
 request_introducing_commit: abb10b6934456304f70a08f52f83cfa2a8264dd6
 resolved_locally_after_claim: false
-revision: 0
+revision: 1
 schema: q3_codex_request_state.v1
-status: OPEN
+status: IN_REVIEW
