@@ -177,6 +177,13 @@ private noncomputable def selectedFerrersAbelLogArgument
   ((n : ℕ) : ℝ) *
     (Real.exp x / lambda_m (selectedFerrersPreAnchorIndex k))
 
+private noncomputable def selectedFerrersAbelLogProductionTerm
+    (k : ℕ) (n : ℕ+) (x : ℝ) : ℂ :=
+  (Real.sqrt
+      (Real.exp x / lambda_m (selectedFerrersPreAnchorIndex k)) : ℂ) *
+    selectedFerrersLemma73SourcePacket k
+      (selectedFerrersAbelLogArgument k n x)
+
 private theorem selectedFerrersAbelLogArgument_continuous
     (k : ℕ) (n : ℕ+) :
     Continuous (selectedFerrersAbelLogArgument k n) := by
@@ -829,6 +836,46 @@ private theorem selectedFerrersAbelLogSqrtWeight_eq
   rw [div_eq_mul_inv, Real.sqrt_mul (Real.exp_nonneg x), ← Real.exp_half]
   ring
 
+private theorem selectedFerrersAbelLogSqrtWeight_hasDerivAt
+    (k : ℕ) (x : ℝ) :
+    ∃ d : ℂ, HasDerivAt
+      (fun y =>
+        (Real.sqrt
+          (Real.exp y /
+            lambda_m (selectedFerrersPreAnchorIndex k)) : ℂ)) d x := by
+  have heq : (fun y =>
+      (Real.sqrt
+        (Real.exp y /
+          lambda_m (selectedFerrersPreAnchorIndex k)) : ℂ)) =
+      (fun y =>
+        ((Real.sqrt
+          (lambda_m (selectedFerrersPreAnchorIndex k))⁻¹ *
+            Real.exp (y / 2) : ℝ) : ℂ)) := by
+    funext y
+    rw [selectedFerrersAbelLogSqrtWeight_eq]
+  rw [heq]
+  let D : ℝ := Real.sqrt
+    (lambda_m (selectedFerrersPreAnchorIndex k))⁻¹
+  have hr : HasDerivAt (fun y : ℝ => D * Real.exp (y / 2))
+      (D * ((1 / 2 : ℝ) * Real.exp (x / 2))) x := by
+    convert ((Real.hasDerivAt_exp (x / 2)).comp x
+      ((hasDerivAt_id x).div_const 2)).const_mul D using 1 <;> ring
+  refine ⟨((D * ((1 / 2 : ℝ) * Real.exp (x / 2)) : ℝ) : ℂ), ?_⟩
+  simpa only [D, Complex.ofRealCLM_apply, Function.comp_apply] using
+    Complex.ofRealCLM.hasFDerivAt.comp_hasDerivAt x hr
+
+private theorem selectedFerrersAbelLogProductionTerm_hasDerivAt_of_argument_mem_Ioo
+    (k : ℕ) (n : ℕ+) {x : ℝ}
+    (hx : selectedFerrersAbelLogArgument k n x ∈ Set.Ioo
+      (-(selectedFerrersPreAnchorPair k).pw.lambda)
+      (selectedFerrersPreAnchorPair k).pw.lambda) :
+    ∃ d : ℂ, HasDerivAt
+      (selectedFerrersAbelLogProductionTerm k n) d x := by
+  obtain ⟨dw, hw⟩ := selectedFerrersAbelLogSqrtWeight_hasDerivAt k x
+  obtain ⟨dh, hh⟩ :=
+    selectedFerrersAbelLogPacketTerm_hasDerivAt_of_argument_mem_Ioo k n hx
+  exact ⟨_, hw.mul hh⟩
+
 private theorem selectedFerrersAbelLogSqrtWeight_lipschitzOn
     (k : ℕ) (a b : ℝ) :
     ∃ C : ℝ, 0 ≤ C ∧
@@ -928,6 +975,20 @@ private theorem selectedFerrersAbelLogRepresentative_eq_finite
   rw [E_star_eq_finiteEStar_of_windowFiniteSupport
     (selectedFerrersLemma73SourcePacket_windowFiniteSupport k)
     (selectedFerrersAbelLogScale_mem_window k hx)]
+
+private theorem selectedFerrersAbelLogRepresentative_eq_productionSum
+    (k : ℕ) {x : ℝ}
+    (hx : x ∈ Set.Icc 0 (L_m (selectedFerrersPreAnchorIndex k))) :
+    selectedFerrersAbelLogRepresentative k x =
+      (∑ n ∈ sourcePositiveIndexFinset (selectedFerrersPreAnchorIndex k),
+        selectedFerrersAbelLogProductionTerm k n x) +
+      (1 / 2 : ℂ) * selectedFerrersLemma73SourcePacket k 0 *
+        (Real.sqrt
+          (Real.exp x / lambda_m (selectedFerrersPreAnchorIndex k)) : ℂ) := by
+  rw [selectedFerrersAbelLogRepresentative_eq_finite k hx]
+  simp only [finiteEStar, finiteEStarCore,
+    selectedFerrersAbelLogProductionTerm,
+    selectedFerrersAbelLogArgument, Finset.mul_sum]
 
 theorem selectedFerrersLemma73SourcePacket_absolutelyContinuousOnInterval
     (k : ℕ) :
