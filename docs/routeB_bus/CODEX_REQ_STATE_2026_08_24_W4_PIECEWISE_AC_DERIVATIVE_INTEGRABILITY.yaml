@@ -1,0 +1,12 @@
+blocker_fingerprint: 85280424cfb0e1bd5693d79ee77d9c3fcee1fe43691b30ee5c5dbfac4be76200
+codex_session_id: 01a022d7-0d31-7951-b6e4-e1ab983a1e83
+phase_key_hash: 1c0914e2e93a49defedf2c8a8497fbdc22de993b7404e0426e4b2d6c131f9aae
+previous_state_sha256: null
+request_blob: c8dd8046526f600cb5d4b4cf95aaac5119f18acef62066bbbf6e20c3218f3883
+request_git_blob: facfeae5bde395370e5371449d758733d23b0488
+request_id: REQ-2026-08-24-W4-PIECEWISE-AC
+request_introducing_commit: 711cf43e26ef36bc4b30f052dbe66a67301f8695
+resolved_locally_after_claim: false
+revision: 0
+schema: q3_codex_request_state.v1
+status: OPEN
