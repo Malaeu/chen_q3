@@ -272,3 +272,59 @@ Recommended next transaction: close
 node, then assemble W4 on top of it. Splitting it out keeps the failing case
 visible: if the derivative is not integrable on some piece, the route dies
 there and not inside a large file.
+
+## ADDENDUM — pinned API reconnaissance for the named lemma
+
+Added after the main body, in the same read-only tact. No Lean written.
+
+### The pinned IBP theorem does not apply to our object
+
+`Mathlib/Analysis/Fourier/FourierTransformDeriv.lean:822`:
+
+```lean
+theorem fourier_deriv {f : ℝ → E}
+    (hf : Integrable f) (h'f : Differentiable ℝ f) (hf' : Integrable (deriv f)) :
+    𝓕 (deriv f) = fun x ↦ (2 * π * I * x) • (𝓕 f x)
+```
+
+`h'f : Differentiable ℝ f` is **everywhere** differentiability. Our `g_k` is
+discontinuous by construction — two window-endpoint jumps plus the finite seam
+set of AUDIT 3 — so this row cannot discharge our consumer.
+
+**This is the same wall as in W3**, where `Real.fourierCoeff_tsum_comp_add`
+required `f : C(ℝ, ℂ)` and the production packet had jumps. The pattern is now
+twice observed and worth naming: the pinned Fourier API is stated for the
+smooth case, and every production object on this rope carries jumps on purpose,
+because the full-endpoint convention is load-bearing.
+
+Consequence for cost: the integration by parts of AUDIT 5 must be done
+**piecewise and by hand**, exactly as the periodization coefficient was in W3.
+It is not free, but it is the known shape of work, not new analysis.
+
+### What the pin does offer
+
+`Mathlib/MeasureTheory/Function/AbsolutelyContinuous.lean` supplies
+`AbsolutelyContinuousOnInterval` with a usable algebra: `fun_add`, `fun_neg`,
+`fun_sub`, `const_smul`, `const_mul`, `fun_smul`, `fun_mul`, `mono`, `symm`,
+and the `ε`-`δ` characterization `absolutelyContinuousOnInterval_iff`.
+
+That closure under sums and products is what the named lemma needs: on a
+seam-free subinterval `g_k` is a finite sum of `C¹`-transported packet
+translates times `√u`, and each operation in that description has a pinned
+closure lemma.
+
+### Revised cost of the named lemma
+
+```
+W4_PIECEWISE_AC_DERIVATIVE_INTEGRABILITY_LEMMA
+  previous estimate: assembly only
+  revised:           assembly plus a hand-written piecewise IBP, because the
+                     pinned fourier_deriv is unusable on a jumping source
+  still not:         new analysis; the derivative majorant and the weighted
+                     summability remain kernel-green inside W2
+```
+
+The recommendation of the main body stands and is strengthened: close this
+lemma as its own small node before W4. The hand-written IBP is precisely the
+place where a hidden non-integrability would surface, and it should surface in
+a small file.
