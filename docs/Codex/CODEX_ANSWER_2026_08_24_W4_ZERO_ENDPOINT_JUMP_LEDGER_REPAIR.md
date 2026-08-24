@@ -1,0 +1,33 @@
+# CODEX_ANSWER — W4 zero-endpoint jump-ledger repair
+
+```yaml
+ANSWER_SCHEMA_VERSION: q3_codex_answer.v1
+ANSWERS_REQ: REQ-2026-08-24-W4-ZERO-ENDPOINT-JUMP-LEDGER
+REQUEST_BLOB: 38791b1ab648beb4b5682d55cd1984576747dc3e179d32260dbeb264f697dbbc
+REQUEST_GIT_BLOB: 9e58266f1424c0b92ac85fab304c60741d9d80ea
+REQUEST_SOURCE_COMMIT: abb10b6934456304f70a08f52f83cfa2a8264dd6
+PHASE_KEY_HASH: 1c0914e2e93a49defedf2c8a8497fbdc22de993b7404e0426e4b2d6c131f9aae
+BLOCKER_FINGERPRINT: 0aabc895314f59028e540621af5e8382478aa7dbb6b010e04f779c8545a6ae04
+VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_CODEX_REQ_2026_08_24_W4_ZERO_ENDPOINT_JUMP_LEDGER_REPAIR_2026-08-24.md
+VERDICT_BLOB: 76d70ddef8c5770fa7c2e05ab6b9fefdf64c26a0
+DECISION: TRY_W4_ZERO_ENDPOINT_JUMP_LEDGER_REPAIR
+NEXT_NODE: H2A_4_1B_3C_1_13A_W4_ZERO_ENDPOINT_JUMP_LEDGER_REPAIR_LEAN
+FORBIDDEN:
+  - PX_RH_CLAIM
+  - ROUTE_PROMOTION
+  - BUS_010
+  - W5_COFINAL_RATE
+  - DOWNSTREAM_W4_ASSEMBLY_BEFORE_KERNEL_GREEN_AND_SEMANTIC_ADMISSION
+  - PACKET_REPRESENTATIVE_CHANGE
+  - FULL_ENDPOINT_CONVENTION_CHANGE
+  - REAL_VALUED_SURROGATE
+  - ENDPOINT_CANCELLATION_SEARCH
+  - UNSUPPORTED_RIGHT_LIMIT_NORM_INEQUALITY
+```
+
+The independent verdict authorizes resuming exactly
+`q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean`.
+The repair extends the public seam range through `k + 2`, proves the sharp
+right-limit estimate first, and pays the lower endpoint seam as a separate last
+summand.  Downstream assembly remains outside this transaction until the full
+kernel and semantic gates are green.
