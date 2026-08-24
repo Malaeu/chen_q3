@@ -1,7 +1,35 @@
 {
   "active_lease": null,
   "control_version": 9,
-  "entries": [],
+  "entries": [
+    {
+      "admitted_scope": [],
+      "closes": [
+        "W5_QUANTITATIVE_SHIFTED_ENERGY_EXTRACTION"
+      ],
+      "domain": "literal selected-Ferrers additive-log packet on the production source window and the whole Fourier line",
+      "entry_id": "GOAL058_W5_QUANTITATIVE_SHIFTED_ENERGY_20260825",
+      "hypothesis_provenance": [],
+      "hypothesis_provenance_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "normalization": "production selectedFerrersLemma73SourcePacket with the repaired full-endpoint W4 jump ledger and literal shifted Archimedean symbol",
+      "opens": [
+        "W5_COFINAL_PACKET_BUDGET_RATE"
+      ],
+      "quantifiers": "for every k : Nat; the universal envelope is independent of k and all remaining k-dependence is explicit in the W4 packet budget",
+      "semantic_attestation_id": null,
+      "source_commit": "d50e1899261c7b318e5d9a3c1977fcba18a7e79c",
+      "source_git_blob": "5205b76c962a01411dffbe6ded97bf2eaa6fd313",
+      "source_path": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersQuantitativeShiftedRootEnergy.lean",
+      "status": "KERNEL_GREEN",
+      "task_blob": "5e9d7835cb4a31947000006cdbaecd85b40dbff3",
+      "task_path": "docs/Codex/TASK_2026-08-25_goal058_w5_quantitative_shifted_energy.md",
+      "terminal_consumer": "W5 cofinal selected-Ferrers shifted-energy rate",
+      "theorem_ids": [
+        "Q3.RouteB.D0Pstar.selectedFerrersAbelLogZeroExtension_fourier_decay_quantitative",
+        "Q3.RouteB.D0Pstar.selectedFerrersAbelLimit_shiftedEnergy_le_majorant"
+      ]
+    }
+  ],
   "event_ledger": [],
   "schema": "q3_semantic_quarantine.v1",
   "tactical_repairs": []
