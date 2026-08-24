@@ -183,6 +183,17 @@ private theorem selectedFerrersAbelLogArgument_continuous
   unfold selectedFerrersAbelLogArgument
   fun_prop
 
+private theorem selectedFerrersAbelLogArgument_hasDerivAt
+    (k : ℕ) (n : ℕ+) (x : ℝ) :
+    HasDerivAt (selectedFerrersAbelLogArgument k n)
+      ((((n : ℕ) : ℝ) /
+          lambda_m (selectedFerrersPreAnchorIndex k)) * Real.exp x) x := by
+  simpa only [selectedFerrersAbelLogArgument, div_eq_mul_inv, mul_assoc,
+    mul_comm, mul_left_comm] using
+    (Real.hasDerivAt_exp x).const_mul
+      (((n : ℕ) : ℝ) /
+        lambda_m (selectedFerrersPreAnchorIndex k))
+
 /-- On a seam-free connected interval, one production term is either active
 throughout or already strictly beyond the closed physical support throughout. -/
 private theorem selectedFerrersAbelLogArgument_side_of_seamFree
@@ -687,6 +698,21 @@ private theorem selectedFerrersLemma73SourcePacket_hasDerivAt_of_mem_Ioo
           ((selectedFerrersPreAnchorPair k).I0 : ℂ))).div_const
       ((selectedFerrersPreAnchorPair k).normalizingDenominator : ℂ)).const_mul
         (selectedFerrersLemma73SourceScale k) using 1 <;> ring
+
+private theorem selectedFerrersAbelLogPacketTerm_hasDerivAt_of_argument_mem_Ioo
+    (k : ℕ) (n : ℕ+) {x : ℝ}
+    (hx : selectedFerrersAbelLogArgument k n x ∈ Set.Ioo
+      (-(selectedFerrersPreAnchorPair k).pw.lambda)
+      (selectedFerrersPreAnchorPair k).pw.lambda) :
+    ∃ d : ℂ, HasDerivAt
+      (fun y => selectedFerrersLemma73SourcePacket k
+        (selectedFerrersAbelLogArgument k n y)) d x := by
+  obtain ⟨d, hd⟩ :=
+    selectedFerrersLemma73SourcePacket_hasDerivAt_of_mem_Ioo k hx
+  refine ⟨((((n : ℕ) : ℝ) /
+      lambda_m (selectedFerrersPreAnchorIndex k)) * Real.exp x) • d, ?_⟩
+  simpa only [Function.comp_apply] using
+    hd.scomp x (selectedFerrersAbelLogArgument_hasDerivAt k n x)
 
 
 
