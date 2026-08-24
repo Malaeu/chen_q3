@@ -2670,6 +2670,141 @@ theorem selectedFerrersAbelLogZeroExtension_fourier_decay_off_zero
     linarith
   exact div_le_div_of_nonneg_right hnum (by positivity)
 
+private theorem selectedFerrersAbelLogDerivativeBudget_nonneg (k : ℕ) :
+    0 ≤ selectedFerrersAbelLogDerivativeBudget k := by
+  unfold selectedFerrersAbelLogDerivativeBudget
+  exact intervalIntegral.integral_nonneg_of_forall
+    (logLength_pos (selectedFerrersPreAnchorIndex k)).le
+    (fun x => norm_nonneg _)
+
+private theorem selectedFerrersAbelLogJumpBudget_nonneg (k : ℕ) :
+    0 ≤ selectedFerrersAbelLogJumpBudget k := by
+  unfold selectedFerrersAbelLogJumpBudget
+  positivity
+
+private theorem selectedFerrersAbelLogZeroExtension_fourier_norm_le_integral_norm
+    (k : ℕ) (t : ℝ) :
+    ‖𝓕 (selectedFerrersAbelLogZeroExtension k) t‖ ≤
+      ∫ x : ℝ, ‖selectedFerrersAbelLogZeroExtension k x‖ := by
+  rw [Real.fourier_eq]
+  calc
+    ‖∫ x : ℝ, Real.fourierChar (-⟪x, t⟫) •
+        selectedFerrersAbelLogZeroExtension k x‖ ≤
+        ∫ x : ℝ, ‖Real.fourierChar (-⟪x, t⟫) •
+          selectedFerrersAbelLogZeroExtension k x‖ :=
+      norm_integral_le_integral_norm _
+    _ = ∫ x : ℝ, ‖selectedFerrersAbelLogZeroExtension k x‖ := by
+      apply integral_congr_ae
+      filter_upwards [] with x
+      rw [Circle.smul_def, smul_eq_mul, norm_mul, Circle.norm_coe, one_mul]
+
+private theorem selectedFerrersAbelLogRepresentative_intervalIntegrable
+    (k : ℕ) :
+    IntervalIntegrable (selectedFerrersAbelLogRepresentative k) volume
+      0 (L_m (selectedFerrersPreAnchorIndex k)) := by
+  have hint : ∀ j < k + 1,
+      IntervalIntegrable (selectedFerrersAbelLogRepresentative k) volume
+        (selectedFerrersAbelLogPartitionPoint k j)
+        (selectedFerrersAbelLogPartitionPoint k (j + 1)) := by
+    intro j hj
+    have hprod :=
+      selectedFerrersAbelLogRepresentativePhase_intervalIntegrable_cell
+        k j hj 0
+    apply hprod.congr_ae
+    filter_upwards [] with x
+    simp [selectedFerrersAbelLogFourierPhase, Real.fourierChar_apply]
+  have h := IntervalIntegrable.trans_iterate hint
+  rw [selectedFerrersAbelLogPartitionPoint_zero,
+    selectedFerrersAbelLogPartitionPoint_last] at h
+  exact h
+
+private theorem selectedFerrersAbelLogZeroExtension_integrable
+    (k : ℕ) :
+    Integrable (selectedFerrersAbelLogZeroExtension k) volume := by
+  have hL := (logLength_pos (selectedFerrersPreAnchorIndex k)).le
+  have hOn : IntegrableOn (selectedFerrersAbelLogRepresentative k)
+      (Set.Icc 0 (L_m (selectedFerrersPreAnchorIndex k))) volume :=
+    (intervalIntegrable_iff_integrableOn_Icc_of_le hL).mp
+      (selectedFerrersAbelLogRepresentative_intervalIntegrable k)
+  unfold selectedFerrersAbelLogZeroExtension
+  exact (integrable_indicator_iff measurableSet_Icc).2 hOn
+
+theorem selectedFerrersAbelLogZeroExtension_fourier_decay
+    (k : ℕ) :
+    ∃ C : ℝ, 0 ≤ C ∧
+      ∀ t : ℝ,
+        ‖𝓕 (selectedFerrersAbelLogZeroExtension k) t‖ ≤
+          C / (1 + |t|) := by
+  let A : ℝ := ∫ x : ℝ, ‖selectedFerrersAbelLogZeroExtension k x‖
+  let D : ℝ :=
+    (selectedFerrersAbelLogDerivativeBudget k +
+      selectedFerrersAbelLogJumpBudget k) / (2 * Real.pi)
+  refine ⟨2 * (A + D), ?_, ?_⟩
+  · have hA : 0 ≤ A := by
+      dsimp only [A]
+      exact integral_nonneg_of_ae (Eventually.of_forall fun x => norm_nonneg _)
+    have hD : 0 ≤ D := by
+      dsimp only [D]
+      positivity [selectedFerrersAbelLogDerivativeBudget_nonneg k,
+        selectedFerrersAbelLogJumpBudget_nonneg k]
+    positivity
+  · intro t
+    have hA : 0 ≤ A := by
+      dsimp only [A]
+      exact integral_nonneg_of_ae (Eventually.of_forall fun x => norm_nonneg _)
+    have hD : 0 ≤ D := by
+      dsimp only [D]
+      positivity [selectedFerrersAbelLogDerivativeBudget_nonneg k,
+        selectedFerrersAbelLogJumpBudget_nonneg k]
+    have hden : 0 < 1 + |t| := by positivity
+    by_cases ht : |t| ≤ 1
+    · have hfour :=
+        selectedFerrersAbelLogZeroExtension_fourier_norm_le_integral_norm k t
+      change ‖𝓕 (selectedFerrersAbelLogZeroExtension k) t‖ ≤ A at hfour
+      apply hfour.trans
+      apply (le_div_iff₀ hden).2
+      nlinarith [abs_nonneg t]
+    · have ht1 : 1 < |t| := lt_of_not_ge ht
+      have ht0 : t ≠ 0 := abs_pos.mp (by linarith)
+      have hfour := selectedFerrersAbelLogZeroExtension_fourier_decay_off_zero
+        k ht0
+      have hrewrite :
+          (selectedFerrersAbelLogDerivativeBudget k +
+            selectedFerrersAbelLogJumpBudget k) /
+              (2 * Real.pi * |t|) = D / |t| := by
+        dsimp only [D]
+        field_simp
+      rw [hrewrite] at hfour
+      apply hfour.trans
+      apply (div_le_div_iff₀ (abs_pos.mpr ht0) hden).2
+      nlinarith [abs_nonneg t]
+
+private theorem selectedFerrersAbelLogClosedCell_not_seamFree_plant
+    (k : ℕ) :
+    ¬ selectedFerrersAbelLogSeamFreeOn k 0
+      (selectedFerrersAbelLogSeamPoint k (k + 1)) := by
+  intro hfree
+  let n : ℕ+ := ⟨k + 2, by omega⟩
+  have hne := hfree.2 n 0 (Set.left_mem_uIcc)
+  change selectedFerrersAbelLogArgument k n 0 ≠
+    lambda_m (selectedFerrersPreAnchorIndex k) at hne
+  have hlast : selectedFerrersAbelLogSeam k n = 0 := by
+    exact selectedFerrersAbelLogSeam_last k
+  rw [← hlast] at hne
+  exact hne (selectedFerrersAbelLogArgument_at_seam k n)
+
+private theorem selectedFerrersAbelLogLowerRight_norm_shortcut_false_plant :
+    ¬ ∀ a b : ℂ, ‖a - b‖ ≤ ‖a‖ := by
+  intro h
+  have hbad := h 0 1
+  norm_num at hbad
+
+private theorem selectedFerrersAbelLogTwoCell_telescope_plant
+    (g J p A B : ℂ) :
+    (g * p - A) + (B - (g - J) * p) =
+      B - A + J * p := by
+  ring
+
 private theorem selectedFerrersAbelLogLowerRightValue_norm_le (k : ℕ) :
     ‖selectedFerrersAbelLogLowerRightValue k‖ ≤
       ‖selectedFerrersAbelLogRepresentative k 0‖ +
@@ -2681,5 +2816,11 @@ private theorem selectedFerrersAbelLogLowerRightValue_norm_le (k : ℕ) :
   selectedFerrersAbelLogRepresentative_absolutelyContinuousOnInterval_of_seamFree
 #print axioms
   selectedFerrersAbelLogRepresentative_intervalIntegrable_deriv_of_seamFree
+#print axioms selectedFerrersAbelLogZeroExtension_fourier_decay_off_zero
+#print axioms selectedFerrersAbelLogZeroExtension_fourier_decay
+#print axioms selectedFerrersAbelLogClosedCell_not_seamFree_plant
+#print axioms selectedFerrersAbelLogLowerRight_norm_shortcut_false_plant
+#print axioms selectedFerrersAbelLogTwoCell_telescope_plant
+#print axioms selectedFerrersAbelLogFourierPrimitive_hasDerivAt
 
 end Q3.RouteB.D0Pstar
