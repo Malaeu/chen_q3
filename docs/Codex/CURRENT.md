@@ -3,9 +3,9 @@
 ```yaml
 schema: q3_codex_current_task.v1
 status: ACTIVE
-task_file: docs/Codex/TASK_2026-08-24_selected_ferrers_abel_poisson_l2.md
-source_commit: 1c31b8115aba2cb90c4cc5886a9621410b8dc12f
-updated_at: 2026-08-24T08:38:05+02:00
+task_file: docs/Codex/TASK_2026-08-24_goal058_selected_ferrers_phase_closure.md
+source_commit: 81b8c6d8372cc1e4526697feb06aa1033b77f0ad
+updated_at: 2026-08-24T19:50:55+02:00
 updated_by: CODEX_ON_OWNER_INSTRUCTION
 ```
 
