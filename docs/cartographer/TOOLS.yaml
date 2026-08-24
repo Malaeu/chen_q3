@@ -314,6 +314,24 @@ tool_families:
         validation: All eight mandatory control-v9 plants plus crash and mutation plants.
         last_verified: 2026-08-21
 
+      - id: codex-watch-read-only
+        status: ENABLED
+        audience: [CODEX, HUMAN]
+        mode: WRITES_DERIVED
+        path: orchestrator/three_body_loop.py
+        invoke: >-
+          .venv/bin/python orchestrator/three_body_loop.py watch-read-only
+          --session-id <exact-session-id> --branch rh_clean
+          --codex-bin /home/chirurgie/.nvm/versions/node/v24.13.0/bin/codex
+        trigger: systemd user timer after a possible canonical-branch update.
+        writes: true
+        approval: NONE_FOR_READ_ONLY_WAKE
+        authority: REMOTE_ADVANCE_NOTIFICATION_NOT_WORKTREE_SYNC_OR_MATHEMATICAL_DISPATCH
+        records_to: [systemd journal, exact resumed Codex session]
+        validation: >-
+          test_three_body_loop read-only no-op and pinned-session plants; live zero-ahead dry tick.
+        last_verified: 2026-08-24
+
   retrieval_and_memory:
     summary: Search accumulated knowledge before external search or object creation.
     front_door: supplier-preflight

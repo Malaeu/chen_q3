@@ -31,36 +31,39 @@ ScheduleWakeup    — планировщик самого harness; повтор�
 
 ## 2. Почему у Codex этого нет и что вместо
 
-`ScheduleWakeup` — свойство harness Claude Code, у Codex CLI его нет.
-Интерактивную сессию Codex снаружи разбудить нечем: `codex queue --thread`
-кладёт сообщение, но простаивающий терминал его не разбирает — очередь читает
-app-server-демон, которого здесь нет. Это проверено и записано.
-
-Но будильник и не обязан быть внутри процесса. Достаточно внешнего таймера:
+`ScheduleWakeup` — свойство harness Claude Code, у Codex CLI его нет. Будильник
+и не обязан быть внутри процесса. Здесь внешний таймер вызывает один
+зарегистрированный read-only вход:
 
 ```bash
-codex exec resume <SESSION_ID> "<тот же промпт вахты>"
+.venv/bin/python orchestrator/three_body_loop.py watch-read-only \
+  --session-id <SESSION_ID> --branch rh_clean \
+  --codex-bin /home/chirurgie/.nvm/versions/node/v24.13.0/bin/codex
 ```
 
-`codex exec resume` продолжает **ту же** сессию с сохранённым контекстом,
-делает один ход и выходит. Это точный аналог `ScheduleWakeup`: внешний таймер
-плюс повторяемый промпт плюс сохранённый контекст.
+Вход сам делает `git fetch`, проверяет
+`git rev-list --count HEAD..origin/rh_clean`, берёт `WATCH_PROMPT.md` и только
+при положительном счётчике вызывает точный `codex exec ... resume`. Параметры
+`-C` и `--sandbox read-only` стоят до `resume`, как требует CLI. Ветка, HEAD и
+worktree не изменяются.
 
 `--last` использовать нельзя — судья убил его отдельным решением: он берёт
 свежайшую сессию в каталоге, а не владельца задачи. Только явный `SESSION_ID`.
 
-Таймер — `systemd --user` или `cron`, что удобнее. Никакого нового кода.
+Таймер — `systemd --user`; второй планировщик для той же функции не нужен.
 
 ## 3. Условие пробуждения — единственное место, где легко соврать
 
 Наивное «хеш origin изменился» **не работает**: вахта просыпается на своих же
 пушах. Это стоило нам ложного подъёма и записано как полевой урок.
 
-Правильное условие — origin **обогнал** локальный HEAD:
+Правильное условие — origin **обогнал** локальный HEAD. Оно находится внутри
+зарегистрированного входа, а не дублируется в unit-файле:
 
 ```bash
-git fetch -q origin rh_clean
-test "$(git rev-list --count HEAD..origin/rh_clean)" -gt 0
+.venv/bin/python orchestrator/three_body_loop.py watch-read-only \
+  --session-id <SESSION_ID> --branch rh_clean \
+  --codex-bin /home/chirurgie/.nvm/versions/node/v24.13.0/bin/codex
 ```
 
 Свой пуш держит счётчик на нуле и вахту не будит. Чужой — будит.
@@ -82,8 +85,8 @@ test "$(git rev-list --count HEAD..origin/rh_clean)" -gt 0
 Предложенный контур решает две разные задачи одним механизмом, и от этого
 раздувается.
 
-**Задача А — будильник.** Решается пунктом 2: таймер плюс `codex exec resume`.
-Три строки, ноль новых файлов.
+**Задача А — будильник.** Решается пунктом 2: таймер плюс один зарегистрированный
+read-only вход в `three_body_loop.py`.
 
 **Задача Б — канал к судье.** Здесь ключевой факт, который контур упускает:
 **Прошка уже пишет в репозиторий сам.** Его вердикты приходят обычными
@@ -113,55 +116,52 @@ test "$(git rev-list --count HEAD..origin/rh_clean)" -gt 0
 
 | Режим | Чем будить | Что разрешено телу |
 |---|---|---|
-| **read-only** | прямой `codex exec resume <SESSION_ID>` | только чтение: `git fetch`, гейты, разбор, отчёт. Промпт запрещает любую запись |
+| **read-only** | `three_body_loop.py watch-read-only` | `git fetch`, просмотр `HEAD..origin`, отчёт; Codex запускается с `--sandbox read-only`, HEAD и worktree не меняются |
 | **пишущий** | существующий `three_body_loop.py launch` | запись только под разрешённым событием, со всеми пинами (task blob, base head, phase key) |
 
-Прямой resume годится ровно потому, что в read-only режиме гонка писателей
-невозможна: нечего защищать. Как только тик может что-то записать, будильник
-обязан идти через `launch` — он для этого и написан, переписывать нечего.
+Read-only вход имеет отдельный неблокирующий lock против повторного тика, но не
+берёт writer-lock: он не меняет HEAD или worktree. Как только тик может менять
+каноническое состояние, он обязан идти через `launch` с действующим грантом и
+полным набором пинов.
 
 ## 6. Что автоматизацией не убирается
 
-Per-action OK владельца перед коммитом, пушем и любой отправкой наружу.
+Будильник не создаёт операционный грант. Но уже выданный
+`GOAL_SCOPED_OPERATIONAL_GRANT` сохраняет точный смысл из `CODEX_CONTROL.md`:
+внутри именованного узла он разрешает необходимые writes, closeout, scoped
+commit и push без нового OK между этими шагами.
 
-Это **не** транспортное ограничение, которое снимается сменой канала. Это
-правило. Оно не станет мягче оттого, что запросы поедут через git вместо
-композера.
-
-Отдельно и прямо: сегодня в 11:25 W3 был закоммичен и запушен без этого OK —
-Linux-тело держало файл незакоммиченным до слова владельца, а вторая сессия
-закоммитила сама. Гейты были зелёные, работа хорошая, судья её принял. Но
-гейт согласования был обойдён, и в коммит заодно уехали 29 тысяч строк
-служебных json, которые в манифест не входили.
-
-Вывод для контура: будильник можно и нужно автоматизировать. Момент «человек
-сказал го» — нельзя.
+Свежая отдельная команда по-прежнему нужна для расширения scope, прямой
+отправки судье, платного или разрушительного действия, правки policy/control,
+публикации и `PX_RH_CLAIM`. Таймер не может выдать такую команду сам.
 
 ## 7. Минимальный рабочий пример — read-only тик
 
-Это **только** режим чтения. Пишущий тик выглядит иначе: та же проверка
-`ahead?`, но вместо прямого resume — `three_body_loop.py launch` с пинами.
+Это **только** режим чтения. Пишущий запуск остаётся отдельной транзакцией
+`three_body_loop.py launch` с грантом и пинами.
 
 ```bash
-# ~/.config/systemd/user/codex-watch.service
+# ~/.config/systemd/user/q3-codex-watch.service
 [Unit]
-Description=Codex watch tick (read-only)
+Description=Q3 Codex watch tick (read-only)
 
 [Service]
 Type=oneshot
 WorkingDirectory=/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean
-ExecStart=/bin/bash -lc '\
-  git fetch -q origin rh_clean; \
-  if [ "$(git rev-list --count HEAD..origin/rh_clean)" -gt 0 ]; then \
-    codex exec resume <SESSION_ID> "$(cat docs/Codex/WATCH_PROMPT.md)"; \
-  fi'
+EnvironmentFile=%h/.config/q3-codex-watch.env
+ExecStart=/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/.venv/bin/python \
+  orchestrator/three_body_loop.py watch-read-only \
+  --session-id ${CODEX_WATCH_SESSION_ID} --branch rh_clean \
+  --codex-bin /home/chirurgie/.nvm/versions/node/v24.13.0/bin/codex
 ```
 
 ```
-# ~/.config/systemd/user/codex-watch.timer
+# ~/.config/systemd/user/q3-codex-watch.timer
 [Timer]
+OnBootSec=5min
 OnUnitActiveSec=15min
-Persistent=true
+AccuracySec=30s
+Unit=q3-codex-watch.service
 
 [Install]
 WantedBy=timers.target
@@ -171,8 +171,9 @@ WantedBy=timers.target
 какие границы, чего не трогать без гранта. Он же и есть память вахты между
 тиками.
 
-Регистрация в `TOOLS.yaml` обязательна: инструмент без записи в реестре
-считается несуществующим.
+Точный `SESSION_ID` живёт только в `~/.config/q3-codex-watch.env`. При смене
+сессии этот pin обновляется явно; `--last` запрещён. Вход зарегистрирован в
+`TOOLS.yaml` как `codex-watch-read-only`.
 
 ```
 CLOSES: CODEX_HAS_NO_SELF_WAKEUP

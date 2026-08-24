@@ -38,6 +38,7 @@ import yaml
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_STATE = REPO_ROOT / "orchestrator" / "state" / "SEMANTIC_QUARANTINE.json"
 DEFAULT_WRITER_LOCK = REPO_ROOT / ".git" / "q3-three-body.writer.lock"
+DEFAULT_READ_ONLY_WATCH_LOCK = REPO_ROOT / ".git" / "q3-three-body.watch-read-only.lock"
 CONTROL_VERSION = 9
 
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
@@ -1466,8 +1467,6 @@ def build_codex_resume_command(
     return [
         "codex",
         "exec",
-        "resume",
-        session_id,
         "-C",
         str(repo_root.resolve()),
         "--sandbox",
@@ -1477,8 +1476,103 @@ def build_codex_resume_command(
         str(output_schema.resolve()),
         "-o",
         str(final_reply.resolve()),
+        "resume",
+        session_id,
         prompt,
     ]
+
+
+def build_codex_read_only_resume_command(
+    *,
+    session_id: str,
+    repo_root: Path,
+    prompt: str,
+    codex_bin: str = "codex",
+) -> list[str]:
+    if SESSION_RE.fullmatch(session_id) is None:
+        _fail("PINNED_SESSION_INVALID", "session ID is not canonical")
+    if not prompt.strip() or not codex_bin.strip():
+        _fail("PINNED_SESSION_INVALID", "empty prompt or Codex binary")
+    return [
+        codex_bin,
+        "exec",
+        "-C",
+        str(repo_root.resolve()),
+        "--sandbox",
+        "read-only",
+        "resume",
+        session_id,
+        prompt,
+    ]
+
+
+def run_read_only_watch(
+    *,
+    repo_root: Path,
+    branch: str,
+    session_id: str,
+    prompt_path: str,
+    codex_bin: str = "codex",
+    lock_path: Path | None = None,
+) -> dict[str, Any]:
+    """Fetch the pinned branch and wake Codex only when origin is ahead.
+
+    This path never updates HEAD or the worktree. It deliberately does not use
+    the writer lock or event ledger because the resumed turn is sandboxed
+    read-only and may only inspect ``HEAD..origin/<branch>``.
+    """
+    if not branch or branch.startswith("-") or _current_branch(repo_root) != branch:
+        _fail("LAUNCH_PIN_DRIFT", "watch branch changed")
+    relative_prompt = _canonical_repo_path(
+        prompt_path, code="PINNED_SESSION_INVALID", field="prompt_path"
+    )
+    prompt_file = repo_root / relative_prompt
+    if not prompt_file.is_file():
+        _fail("PINNED_SESSION_INVALID", f"missing watch prompt: {relative_prompt}")
+    prompt = prompt_file.read_text(encoding="utf-8")
+    command = build_codex_read_only_resume_command(
+        session_id=session_id,
+        repo_root=repo_root,
+        prompt=prompt,
+        codex_bin=codex_bin,
+    )
+    watch_lock = lock_path or DEFAULT_READ_ONLY_WATCH_LOCK
+    try:
+        with _plain_flock(watch_lock, blocking=False):
+            _git_output(
+                repo_root,
+                "fetch",
+                "--quiet",
+                "origin",
+                branch,
+                code="PINNED_SESSION_LAUNCH_FAILED",
+            )
+            raw_ahead = _git_output(
+                repo_root,
+                "rev-list",
+                "--count",
+                f"HEAD..origin/{branch}",
+                code="PINNED_SESSION_LAUNCH_FAILED",
+            )
+            try:
+                remote_ahead = int(raw_ahead.decode("ascii").strip())
+            except ValueError:
+                _fail("PINNED_SESSION_LAUNCH_FAILED", "invalid remote-ahead count")
+            if remote_ahead <= 0:
+                return {"result": "NO_REMOTE_ADVANCE", "remote_ahead": 0}
+            result = subprocess.run(command, cwd=repo_root, stdin=subprocess.DEVNULL)
+            if result.returncode != 0:
+                _fail(
+                    "PINNED_SESSION_LAUNCH_FAILED",
+                    f"read-only resume exited {result.returncode}",
+                )
+            return {
+                "result": "READ_ONLY_WAKE_COMPLETE",
+                "remote_ahead": remote_ahead,
+                "session_id": session_id,
+            }
+    except BlockingIOError:
+        return {"result": "WATCH_ALREADY_RUNNING"}
 
 
 def _current_branch(repo_root: Path) -> str:
@@ -1898,6 +1992,14 @@ def _parser() -> argparse.ArgumentParser:
     launch.add_argument("--output-schema", type=Path, required=True)
     launch.add_argument("--final-reply", type=Path, required=True)
     launch.add_argument("--prompt", required=True)
+    watch = sub.add_parser(
+        "watch-read-only", help="wake one exact Codex session when origin is ahead"
+    )
+    watch.add_argument("--lock", type=Path, default=DEFAULT_READ_ONLY_WATCH_LOCK)
+    watch.add_argument("--session-id", required=True)
+    watch.add_argument("--branch", required=True)
+    watch.add_argument("--prompt-path", default="docs/Codex/WATCH_PROMPT.md")
+    watch.add_argument("--codex-bin", default="codex")
     child = sub.add_parser("_child-exec")
     child.add_argument("--marker", required=True)
     child.add_argument("--error-fd", type=int, required=True)
@@ -1926,6 +2028,17 @@ def main(argv: Sequence[str] | None = None) -> int:
         if args.command_name == "request-validate":
             envelope, payload = parse_request_body(args.path.read_bytes())
             print(f"CODEX_REQUEST_VALID id={envelope['CODEX_REQ']} payload_bytes={len(payload)}")
+            return 0
+        if args.command_name == "watch-read-only":
+            result = run_read_only_watch(
+                repo_root=REPO_ROOT,
+                branch=args.branch,
+                session_id=args.session_id,
+                prompt_path=args.prompt_path,
+                codex_bin=args.codex_bin,
+                lock_path=args.lock,
+            )
+            print(json.dumps(result, ensure_ascii=False, sort_keys=True))
             return 0
         if args.command_name == "launch":
             command = build_codex_resume_command(

@@ -4,34 +4,37 @@ ahead of the local HEAD. Mechanics: docs/Codex/WATCH_LOOP_FOR_CODEX.md.
 Your chain is AGENTS.md -> docs/CODEX_CONTROL.md -> SESSION_ENTRY.md. CLAUDE.md
 is the observer's file; do not read it as policy.
 
-## This tick may not write. At all.
+## This tick may not write the repository or worktree
 
 FORBIDDEN in this tick, without exception:
 
 ```
-any file edit, create or delete
-git add / commit / push / rebase / reset / checkout -b
+any repository or worktree edit, create or delete
+git pull / add / commit / push / rebase / reset / checkout
 lake build, lake env lean, any writing refresh (spine.py --refresh,
   inventory.py, kb migrators)
 sending anything outside the machine
 ```
 
-Reason this is absolute: the writing path exists and is different. It goes
-through `three_body_loop.py launch`, which carries at-most-once, the writer
-lock and the pins. A direct resume — which is how you were woken — has none of
-that. If this tick concludes that a write is needed, it says so and stops.
+The wrapper already fetched origin and launched this turn with
+`--sandbox read-only`. The writing path is different: `three_body_loop.py
+launch` carries at-most-once, the writer lock and the pins. If this tick
+concludes that a write is needed, it reports the exact pending action and stops.
 
 ## What to do
 
-1. `git pull --ff-only origin rh_clean`. If it is not a fast-forward, stop and
-   report: the branch diverged and that is a human decision.
-2. Read what arrived. A judge verdict has the `[Proshka]` prefix.
+1. Confirm the branch and run
+   `git rev-list --count HEAD..origin/rh_clean`. Do not fetch or pull again.
+2. Read the remote-only delta with `git log HEAD..origin/rh_clean`,
+   `git diff --name-status HEAD..origin/rh_clean`, and
+   `git show origin/rh_clean:<path>`. A judge verdict has the `[Proshka]`
+   prefix.
 3. Classify it in one line each:
    - which node it admits, kills or authorizes;
    - whether it names a task for this body;
    - whether it contradicts a verdict already on the branch.
-4. If another `lake` or `codex` process is running, do not compete for the
-   tree. Report and stop.
+4. Do not interpret this read-only wake as permission to compete with a writer.
+   Report any dirty worktree or branch divergence and stop.
 5. Report. That is the whole deliverable of a read-only tick.
 
 ## What NOT to conclude

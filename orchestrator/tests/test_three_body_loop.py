@@ -393,7 +393,72 @@ class ThreeBodyPlants(unittest.TestCase):
         )
         self.assertIn(SESSION_ID, command)
         self.assertNotIn("--last", command)
-        self.assertEqual(command[command.index("resume") + 1], SESSION_ID)
+        resume_index = command.index("resume")
+        self.assertEqual(command[resume_index + 1], SESSION_ID)
+        self.assertLess(command.index("-C"), resume_index)
+        self.assertLess(command.index("--sandbox"), resume_index)
+        self.assertLess(command.index("--output-schema"), resume_index)
+
+    def test_read_only_watch_noops_when_origin_is_not_ahead(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            prompt = root / "docs" / "Codex" / "WATCH_PROMPT.md"
+            prompt.parent.mkdir(parents=True)
+            prompt.write_text("Inspect remote state only.\n", encoding="utf-8")
+            with (
+                mock.patch.object(three_body_loop, "_current_branch", return_value="rh_clean"),
+                mock.patch.object(three_body_loop, "_git_output", side_effect=[b"", b"0\n"]),
+                mock.patch.object(three_body_loop.subprocess, "run") as resume,
+            ):
+                result = three_body_loop.run_read_only_watch(
+                    repo_root=root,
+                    branch="rh_clean",
+                    session_id=SESSION_ID,
+                    prompt_path="docs/Codex/WATCH_PROMPT.md",
+                    lock_path=root / "watch.lock",
+                )
+            self.assertEqual(result, {"result": "NO_REMOTE_ADVANCE", "remote_ahead": 0})
+            resume.assert_not_called()
+
+    def test_read_only_watch_uses_pinned_session_and_read_only_sandbox(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            prompt = root / "docs" / "Codex" / "WATCH_PROMPT.md"
+            prompt.parent.mkdir(parents=True)
+            prompt.write_text("Inspect remote state only.\n", encoding="utf-8")
+            with (
+                mock.patch.object(three_body_loop, "_current_branch", return_value="rh_clean"),
+                mock.patch.object(three_body_loop, "_git_output", side_effect=[b"", b"2\n"]),
+                mock.patch.object(
+                    three_body_loop.subprocess,
+                    "run",
+                    return_value=subprocess.CompletedProcess([], 0),
+                ) as resume,
+            ):
+                result = three_body_loop.run_read_only_watch(
+                    repo_root=root,
+                    branch="rh_clean",
+                    session_id=SESSION_ID,
+                    prompt_path="docs/Codex/WATCH_PROMPT.md",
+                    codex_bin="/opt/codex",
+                    lock_path=root / "watch.lock",
+                )
+            command = resume.call_args.args[0]
+            resume_index = command.index("resume")
+            self.assertEqual(command[0], "/opt/codex")
+            self.assertEqual(command[resume_index + 1], SESSION_ID)
+            self.assertEqual(command[command.index("--sandbox") + 1], "read-only")
+            self.assertLess(command.index("-C"), resume_index)
+            self.assertEqual(result["result"], "READ_ONLY_WAKE_COMPLETE")
+            self.assertEqual(result["remote_ahead"], 2)
+            self.assertIs(resume.call_args.kwargs["stdin"], subprocess.DEVNULL)
+
+    def test_watch_prompt_never_fast_forwards_the_worktree(self) -> None:
+        prompt = (three_body_loop.REPO_ROOT / "docs" / "Codex" / "WATCH_PROMPT.md").read_text(
+            encoding="utf-8"
+        )
+        self.assertNotIn("git pull --ff-only", prompt)
+        self.assertIn("git show origin/rh_clean:<path>", prompt)
 
     def test_launch_cli_routes_branch_pin_to_launcher(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
