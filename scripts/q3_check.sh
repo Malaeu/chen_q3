@@ -4,7 +4,9 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 Q3_ROOT="$ROOT/q3.lean.aristotle"
 
+default_mode=false
 if [[ $# -eq 0 ]]; then
+  default_mode=true
   targets=(
     "Q3/Proofs/PSD_CenteredCardinalBSpline.lean"
     "Q3/Proofs/PSD_CenteredCoeffEntryHboxImport.lean"
@@ -24,6 +26,7 @@ elif [[ -f ".venv/bin/activate" ]]; then
   source ".venv/bin/activate"
 fi
 
+normalized_targets=()
 for target in "${targets[@]}"; do
   if [[ "$target" == q3.lean.aristotle/* ]]; then
     target="${target#q3.lean.aristotle/}"
@@ -31,7 +34,21 @@ for target in "${targets[@]}"; do
   if [[ "$target" == ./* ]]; then
     target="${target#./}"
   fi
+  normalized_targets+=("$target")
+done
 
+if [[ "$default_mode" == true ]]; then
+  modules=()
+  for target in "${normalized_targets[@]}"; do
+    module="${target%.lean}"
+    modules+=("${module//\//.}")
+  done
+
+  echo "build ${modules[*]}"
+  lake build "${modules[@]}"
+fi
+
+for target in "${normalized_targets[@]}"; do
   echo "lean $target"
   lake env lean "$target"
 
