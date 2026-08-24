@@ -116,6 +116,123 @@
     },
     {
       "front": "UNCLASSIFIED_FRONT",
+      "goal_id": "GOAL058_COMPLEX_HERMITIAN_P59_CONNECTOR_CLOSEOUT_2026-08-13",
+      "id": "AUT_3d193378b4e6a92aab74",
+      "namewatch_eligible": false,
+      "note": ">-",
+      "raw_sha256": "e771660a72b2cef59a013acb983ab5feef075f0135626894e71befa5f5ee28cf",
+      "shape": null,
+      "source_file": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_COMPLEX_HERMITIAN_P59_CONNECTOR_CLOSEOUT_2026-08-13.md",
+      "source_line": 134,
+      "structured": false,
+      "tag": "LEGACY_UNCLASSIFIED"
+    },
+    {
+      "front": "UNCLASSIFIED_FRONT",
+      "goal_id": "GOAL058_EXPLICIT_CCM_LIMIT_FOURIER_POISSON_CLOSEOUT_2026-08-14",
+      "id": "AUT_d2fccfe97837b74377d4",
+      "namewatch_eligible": false,
+      "note": "The concrete limit supplier is exact; the actual prolate approximation rate, central floor, and coupled schedule remain source obligations.",
+      "raw_sha256": "32671000a5e446bab2bf914715fd851b5ad8f34c7591329f523c04bc113a19ed",
+      "shape": null,
+      "source_file": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_EXPLICIT_CCM_LIMIT_FOURIER_POISSON_CLOSEOUT_2026-08-14.md",
+      "source_line": 126,
+      "structured": true,
+      "tag": "DEPENDENCY"
+    },
+    {
+      "front": "UNCLASSIFIED_FRONT",
+      "goal_id": "GOAL058_G3_DLMF_EVEN_FINITE_MATRIX_CLOSEOUT_2026-08-14",
+      "id": "AUT_b069c1ae874135f08d2c",
+      "namewatch_eligible": false,
+      "note": "the finite source matrix is exact, but no source-locked ordered eigenvalue limit supplies the classical endpoint counts",
+      "raw_sha256": "06f18b6118a90a5fd07c0bb08163afb9e8dad8c0f59e99bb29ead4bb3f8720e6",
+      "shape": null,
+      "source_file": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_DLMF_EVEN_FINITE_MATRIX_CLOSEOUT_2026-08-14.md",
+      "source_line": 121,
+      "structured": true,
+      "tag": "SPECTRAL_ORDERING"
+    },
+    {
+      "front": "UNCLASSIFIED_FRONT",
+      "goal_id": "GOAL058_G3_DLMF_EVEN_FINITE_MATRIX_CLOSEOUT_2026-08-14",
+      "id": "AUT_d1288f5ab59cfb1a54aa",
+      "namewatch_eligible": false,
+      "note": "the indexed classical even spectrum and its degree-four identification are not yet materialized as Lean source objects",
+      "raw_sha256": "3d32acce1dfc30f366b4d5d467975e0bfd9b6a76cb781451d37e8941d6cc41ac",
+      "shape": null,
+      "source_file": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_DLMF_EVEN_FINITE_MATRIX_CLOSEOUT_2026-08-14.md",
+      "source_line": 122,
+      "structured": true,
+      "tag": "SOURCE_IDENTITY"
+    },
+    {
+      "front": "UNCLASSIFIED_FRONT",
+      "goal_id": "GOAL058_G3_DLMF_FULL_FINITE_SPECTRUM_CROSSWALK_CLOSEOUT_2026-08-14",
+      "id": "AUT_b125e3ce9c8704b4b58b",
+      "namewatch_eligible": false,
+      "note": "the exact finite ordered family exists, but no Lean carrier proves the DLMF 30.16.3 same-index classical limit",
+      "raw_sha256": "2576a90e8fc9f13f2a4ef0b6d51f0913f556b32f0568f40b34573b0b4e9b5987",
+      "shape": null,
+      "source_file": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_DLMF_FULL_FINITE_SPECTRUM_CROSSWALK_CLOSEOUT_2026-08-14.md",
+      "source_line": 110,
+      "structured": true,
+      "tag": "SPECTRAL_ORDERING"
+    },
+    {
+      "front": "UNCLASSIFIED_FRONT",
+      "goal_id": "GOAL058_G3_DLMF_FULL_FINITE_SPECTRUM_CROSSWALK_CLOSEOUT_2026-08-14",
+      "id": "AUT_5cf7ded95f2757e3eedb",
+      "namewatch_eligible": false,
+      "note": "the classical degree-four selector and endpoint counts remain unmaterialized",
+      "raw_sha256": "099ec2a5469ce3613e1497687d0125d8c99f30fcc5357376d65f658b67c37cce",
+      "shape": null,
+      "source_file": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_DLMF_FULL_FINITE_SPECTRUM_CROSSWALK_CLOSEOUT_2026-08-14.md",
+      "source_line": 111,
+      "structured": true,
+      "tag": "SOURCE_IDENTITY"
+    },
+    {
+      "front": "UNCLASSIFIED_FRONT",
+      "goal_id": "GOAL058_INVERSION_COEFFICIENT_DENOMINATOR_CROSSWALK_CLOSEOUT_2026-08-14",
+      "id": "AUT_c2e4e319a768fa7d01cf",
+      "namewatch_eligible": false,
+      "note": "Crosswalk and floor algebra are exact; the explicit inversion-even limit packet, approximation rate, and coupled cofinal schedule remain source obligations.",
+      "raw_sha256": "f4d887e8322d545f31739df09509ee14685bea158e21204ff351f35c6163284b",
+      "shape": null,
+      "source_file": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_INVERSION_COEFFICIENT_DENOMINATOR_CROSSWALK_CLOSEOUT_2026-08-14.md",
+      "source_line": 113,
+      "structured": true,
+      "tag": "DEPENDENCY"
+    },
+    {
+      "front": "UNCLASSIFIED_FRONT",
+      "goal_id": "GOAL058_SOURCE_CCM_ODD_MASS_REFLECTION_DEFECT_CLOSEOUT_2026-08-14",
+      "id": "AUT_669e85319929476e8eb2",
+      "namewatch_eligible": false,
+      "note": "Odd mass now has an exact physical error receiver; source inversion-defect decay and normalization remain open.",
+      "raw_sha256": "c88679be3e367d4306af62a6245b4e1ba798518cfe2d1f1b955ec75ddeebcb80",
+      "shape": null,
+      "source_file": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_SOURCE_CCM_ODD_MASS_REFLECTION_DEFECT_CLOSEOUT_2026-08-14.md",
+      "source_line": 149,
+      "structured": true,
+      "tag": "DEPENDENCY"
+    },
+    {
+      "front": "UNCLASSIFIED_FRONT",
+      "goal_id": "GOAL058_SOURCE_COMPLEX_TRIAL_LINE_FESHBACH_CLOSEOUT_2026-08-13",
+      "id": "AUT_89c3097f7df32135907d",
+      "namewatch_eligible": false,
+      "note": "Finite algebra now names the two exact source quantities, but neither the floor nor its cofinal residual ratio is supplied.",
+      "raw_sha256": "c9d42e1bc84642d9823f9b002cfa3447dba97ba9a26c27005a32798d6104daf6",
+      "shape": null,
+      "source_file": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_SOURCE_COMPLEX_TRIAL_LINE_FESHBACH_CLOSEOUT_2026-08-13.md",
+      "source_line": 149,
+      "structured": true,
+      "tag": "DEPENDENCY"
+    },
+    {
+      "front": "UNCLASSIFIED_FRONT",
       "goal_id": "PROSHKA_054_1B_V2_ADJUDICATION_2026-08-05",
       "id": "AUT_4b6de3506c5d3ce92b4c",
       "namewatch_eligible": false,
@@ -141,10 +258,10 @@
       "tag": "LEGACY_UNCLASSIFIED"
     }
   ],
-  "generated_at": "2026-08-11T07:32:12+00:00",
+  "generated_at": "2026-08-24T09:08:53+00:00",
   "namewatch_candidates": [],
   "schema": "q3_autopsy_map.v1",
-  "source_commit": "eea6515259ec667c8ad298befcd7f9c12cefb92b",
+  "source_commit": "636e075d915449b382096a00843a7e91f5273dce",
   "walls": [
     {
       "candidate_card": null,
@@ -153,12 +270,14 @@
         "SOURCE_IDENTITY"
       ],
       "dropped_structure": "source-faithful identification or transport between the constructed object and the literal consumer",
-      "event_count": 1,
+      "event_count": 3,
       "fronts": [
         "UNCLASSIFIED_FRONT"
       ],
       "goals": [
-        "056"
+        "056",
+        "GOAL058_G3_DLMF_EVEN_FINITE_MATRIX_CLOSEOUT_2026-08-14",
+        "GOAL058_G3_DLMF_FULL_FINITE_SPECTRUM_CROSSWALK_CLOSEOUT_2026-08-14"
       ],
       "id": "W_SOURCE_FAITHFUL_TRANSPORT",
       "status": "UNTESTED_SPLIT_REQUIRED",
@@ -201,6 +320,26 @@
     {
       "candidate_card": null,
       "coverage_tags": [
+        "DEPENDENCY"
+      ],
+      "dropped_structure": "dependency",
+      "event_count": 4,
+      "fronts": [
+        "UNCLASSIFIED_FRONT"
+      ],
+      "goals": [
+        "GOAL058_EXPLICIT_CCM_LIMIT_FOURIER_POISSON_CLOSEOUT_2026-08-14",
+        "GOAL058_INVERSION_COEFFICIENT_DENOMINATOR_CROSSWALK_CLOSEOUT_2026-08-14",
+        "GOAL058_SOURCE_CCM_ODD_MASS_REFLECTION_DEFECT_CLOSEOUT_2026-08-14",
+        "GOAL058_SOURCE_COMPLEX_TRIAL_LINE_FESHBACH_CLOSEOUT_2026-08-13"
+      ],
+      "id": "W_DROPPED_DEPENDENCY",
+      "status": "OBSERVED_UNRATIFIED",
+      "tag": "DEPENDENCY"
+    },
+    {
+      "candidate_card": null,
+      "coverage_tags": [
         "ORIENTATION"
       ],
       "dropped_structure": "orientation",
@@ -232,6 +371,24 @@
       "id": "W_DROPPED_QUANTIFIER",
       "status": "OBSERVED_UNRATIFIED",
       "tag": "QUANTIFIER"
+    },
+    {
+      "candidate_card": null,
+      "coverage_tags": [
+        "SPECTRAL_ORDERING"
+      ],
+      "dropped_structure": "spectral_ordering",
+      "event_count": 2,
+      "fronts": [
+        "UNCLASSIFIED_FRONT"
+      ],
+      "goals": [
+        "GOAL058_G3_DLMF_EVEN_FINITE_MATRIX_CLOSEOUT_2026-08-14",
+        "GOAL058_G3_DLMF_FULL_FINITE_SPECTRUM_CROSSWALK_CLOSEOUT_2026-08-14"
+      ],
+      "id": "W_DROPPED_SPECTRAL_ORDERING",
+      "status": "OBSERVED_UNRATIFIED",
+      "tag": "SPECTRAL_ORDERING"
     }
   ]
 }

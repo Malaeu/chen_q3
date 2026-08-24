@@ -1,9 +1,9 @@
-# Sorry Frontier (auto) — 2026-08-11 07:49 UTC
+# Sorry Frontier (auto) — 2026-08-24 09:18 UTC
 
 **Purpose:** Exact active `sorry` sites plus their membership in configured root closures.
 **Method:** header-only import DAG, dependency/allowlist protection, then exact content scan.
-**Scope:** 3396 Lean files; excludes `Q3/Clean` and `Q3/Archive`.
-**Content scan:** 2093 files; 1303 heavy non-root generated files explicitly marked not scanned.
+**Scope:** 3525 Lean files; excludes `Q3/Clean` and `Q3/Archive`.
+**Content scan:** 2222 files; 1303 heavy non-root generated files explicitly marked not scanned.
 **Bytes avoided:** 4,312,275,592.
 **Total active sorries:** 0
 **Root-impacting sorries:** 0

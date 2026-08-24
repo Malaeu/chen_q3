@@ -107,7 +107,7 @@ supplied by a source-faithful analytic carrier, not inserted as hypotheses.
 ```text
 STOP_CODE:
 DLMF_FULL_FINITE_SPECTRUM_CROSSWALK_PROVED_ORDERED_FINITE_TO_CLASSICAL_LIMIT_ENDPOINT_COUNTS_2_3_AND_INDEX4_IDENTIFICATION_MISSING
-AUTOPSY: dropped=SPECTRAL_LIMIT; note=the exact finite ordered family exists, but no Lean carrier proves the DLMF 30.16.3 same-index classical limit
+AUTOPSY: dropped=SPECTRAL_ORDERING; note=the exact finite ordered family exists, but no Lean carrier proves the DLMF 30.16.3 same-index classical limit
 AUTOPSY: dropped=SOURCE_IDENTITY; note=the classical degree-four selector and endpoint counts remain unmaterialized
 ```
 
