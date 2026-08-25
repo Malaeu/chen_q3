@@ -1,16 +1,44 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 339,
-  "declarations": 3597,
-  "in_docs": 1789,
+  "files_scanned": 348,
+  "declarations": 3735,
+  "in_docs": 1870,
   "in_lemma_db": 3557,
-  "orphans": 9,
-  "uncatalogued": 9,
+  "orphans": 67,
+  "uncatalogued": 67,
   "orphan_files_top": [
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      28
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1CylinderTransportL1Budget.lean",
+      9
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarFirstOrderProjectionTailReceiver.lean",
+      8
+    ],
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersQuantitativeShiftedRootEnergy.lean",
       8
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SturmWeightedEnergyIdentity.lean",
+      7
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5DerivativeBudgetRate.lean",
+      4
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFirstOrderCoefficientEnvelope.lean",
+      1
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersScaleBandwidthClosure.lean",
+      1
     ],
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5JumpSeamRate.lean",
@@ -8784,7 +8812,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersInteriorRegularity.lean",
       "line": 321,
       "signature": "theorem mode4FerrersSeries_contDiffOn_two_Ioo (a : ℕ → ℝ) (r : ℝ) (hr0 : 0 < r) (hr1 : r < 1) (haAbs : Summable (fun q : ℕ => |a q|)) (ha2 : Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ) ^ 2) * |a q|)) : ContDiffOn ℝ 2 (mode4FerrersSeries a) (Set.Ioo (-r) r)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -14366,6 +14394,146 @@
       "signature": "theorem E_star_explicitCCMLimitH_inv (u : ℝ) (hu : 0 < u) : E_star explicitCCMLimitH u⁻¹ = E_star explicitCCMLimitH u",
       "in_docs": true,
       "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "w5rTailWeight",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarFirstOrderProjectionTailReceiver.lean",
+      "line": 27,
+      "signature": "private def w5rTailWeight (i : PairIndex) (n : ℤ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5r_nat_base_summable",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarFirstOrderProjectionTailReceiver.lean",
+      "line": 30,
+      "signature": "private theorem w5r_nat_base_summable : Summable (fun n : ℕ => ((n : ℝ) ^ 2)⁻¹)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "w5r_int_base_summable",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarFirstOrderProjectionTailReceiver.lean",
+      "line": 34,
+      "signature": "private theorem w5r_int_base_summable : Summable (fun n : ℤ => ((n : ℝ) ^ 2)⁻¹)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "w5rTailWeight_nonneg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarFirstOrderProjectionTailReceiver.lean",
+      "line": 38,
+      "signature": "private theorem w5rTailWeight_nonneg (i : PairIndex) (n : ℤ) : 0 ≤ w5rTailWeight i n",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "w5rTailWeight_le_base",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarFirstOrderProjectionTailReceiver.lean",
+      "line": 43,
+      "signature": "private theorem w5rTailWeight_le_base (i : PairIndex) (n : ℤ) : w5rTailWeight i n ≤ ((n : ℝ) ^ 2)⁻¹",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "w5rTailWeight_summable",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarFirstOrderProjectionTailReceiver.lean",
+      "line": 50,
+      "signature": "private theorem w5rTailWeight_summable (i : PairIndex) : Summable (w5rTailWeight i)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "w5rNatTail",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarFirstOrderProjectionTailReceiver.lean",
+      "line": 56,
+      "signature": "private def w5rNatTail (N : ℕ) (n : ℕ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5rNatTail_nonneg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarFirstOrderProjectionTailReceiver.lean",
+      "line": 59,
+      "signature": "private theorem w5rNatTail_nonneg (N n : ℕ) : 0 ≤ w5rNatTail N n",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "w5rNatTail_summable",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarFirstOrderProjectionTailReceiver.lean",
+      "line": 63,
+      "signature": "private theorem w5rNatTail_summable (N : ℕ) : Summable (w5rNatTail N)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "w5rNatTail_tsum_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarFirstOrderProjectionTailReceiver.lean",
+      "line": 73,
+      "signature": "private theorem w5rNatTail_tsum_le (N : ℕ) : ∑' n : ℕ, w5rNatTail N n ≤ 2 / ((N : ℝ) + 1)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "w5rTailWeight_nat_eq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarFirstOrderProjectionTailReceiver.lean",
+      "line": 97,
+      "signature": "private theorem w5rTailWeight_nat_eq (i : PairIndex) (n : ℕ) : w5rTailWeight i (n : ℤ) = w5rNatTail i.N n",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5rTailWeight_neg_eq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarFirstOrderProjectionTailReceiver.lean",
+      "line": 108,
+      "signature": "private theorem w5rTailWeight_neg_eq (i : PairIndex) (n : ℕ) : w5rTailWeight i (-((n : ℤ) + 1)) = w5rNatTail i.N (n + 1)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5rTailWeight_tsum_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarFirstOrderProjectionTailReceiver.lean",
+      "line": 122,
+      "signature": "private theorem w5rTailWeight_tsum_le (i : PairIndex) : ∑' n : ℤ, w5rTailWeight i n ≤ 4 / ((i.N : ℝ) + 1)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedProjectionTailDecay_of_firstOrderCoefficientBudgetAndBandwidth",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarFirstOrderProjectionTailReceiver.lean",
+      "line": 177,
+      "signature": "theorem selectedProjectionTailDecay_of_firstOrderCoefficientBudgetAndBandwidth (S : ProlateCanonicalSourceData) (hCoeff : ∃ C : ℝ, 0 ≤ C ∧ ∀ᶠ k : ℕ in atTop, ∀ n : ℤ, n ∉ modeSet (selectedPairIndex S k) → ‖physicalFourierCoefficient (selectedPairIndex S k) (gTrial_m (selectedPairIndex S k) (selectedProlateTrial S k) (S.source.eStar_memLp (selectedPairIndex S k))) n‖ ^ 2 ≤ C ^ 2 * L_m (selectedPairIndex S k) / (n : ℝ) ^ 2) (hBandwidth : SelectedPhysicalBandwidthCofinal S) : SelectedProjectionTailDecay S",
+      "in_docs": true,
+      "in_lemma_db": false,
       "orphan": false
     },
     {
@@ -21889,6 +22057,156 @@
       "orphan": false
     },
     {
+      "kind": "def",
+      "name": "ctW0",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1CylinderTransportL1Budget.lean",
+      "line": 27,
+      "signature": "def ctW0 (x : ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "ctW4",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1CylinderTransportL1Budget.lean",
+      "line": 31,
+      "signature": "def ctW4 (x : ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "ctT0",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1CylinderTransportL1Budget.lean",
+      "line": 37,
+      "signature": "def ctT0 (x : ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "ctT4",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1CylinderTransportL1Budget.lean",
+      "line": 42,
+      "signature": "def ctT4 (x : ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ctW0_eq_cylinder",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1CylinderTransportL1Budget.lean",
+      "line": 48,
+      "signature": "theorem ctW0_eq_cylinder (x : ℝ) : ctW0 x = parabolicCylinderD 0 (projectCylinderArgument x)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ct_exp_hasDerivAt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1CylinderTransportL1Budget.lean",
+      "line": 58,
+      "signature": "private theorem ct_exp_hasDerivAt (y : ℝ) : HasDerivAt (fun t : ℝ => Real.exp (-Real.pi * t ^ 2)) (-2 * Real.pi * y * Real.exp (-Real.pi * y ^ 2)) y",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ct_polyexp_hasDerivAt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1CylinderTransportL1Budget.lean",
+      "line": 67,
+      "signature": "private theorem ct_polyexp_hasDerivAt {P : ℝ → ℝ} {p : ℝ} (y : ℝ) (hP : HasDerivAt P p y) : HasDerivAt (fun t : ℝ => P t * Real.exp (-Real.pi * t ^ 2)) ((p - 2 * Real.pi * y * P y) * Real.exp (-Real.pi * y ^ 2)) y",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ctW0_transport_hasDerivAt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1CylinderTransportL1Budget.lean",
+      "line": 75,
+      "signature": "private theorem ctW0_transport_hasDerivAt (y : ℝ) : HasDerivAt (fun x : ℝ => x ^ 2 * (-2 * Real.pi * x * Real.exp (-Real.pi * x ^ 2))) (ctT0 y) y",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ctW4_transport_hasDerivAt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1CylinderTransportL1Budget.lean",
+      "line": 92,
+      "signature": "private theorem ctW4_transport_hasDerivAt (y : ℝ) : HasDerivAt (fun x : ℝ => x ^ 2 * ((-32 * Real.pi ^ 3 * x ^ 5 + 112 * Real.pi ^ 2 * x ^ 3 - 54 * Real.pi * x) * Real.exp (-Real.pi * x ^ 2))) (ctT4 y) y",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ctW4_hasDerivAt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1CylinderTransportL1Budget.lean",
+      "line": 119,
+      "signature": "private theorem ctW4_hasDerivAt (y : ℝ) : HasDerivAt ctW4 ((-32 * Real.pi ^ 3 * y ^ 5 + 112 * Real.pi ^ 2 * y ^ 3 - 54 * Real.pi * y) * Real.exp (-Real.pi * y ^ 2)) y",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ctW0_hasDerivAt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1CylinderTransportL1Budget.lean",
+      "line": 137,
+      "signature": "private theorem ctW0_hasDerivAt (y : ℝ) : HasDerivAt ctW0 (-2 * Real.pi * y * Real.exp (-Real.pi * y ^ 2)) y",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ct_gauss_poly_integrable",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1CylinderTransportL1Budget.lean",
+      "line": 141,
+      "signature": "private theorem ct_gauss_poly_integrable (c : ℝ) (k : ℕ) : Integrable (fun y : ℝ => c * (y ^ (2 * k) * Real.exp (-Real.pi * y ^ 2))) volume",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ctT0_abs_integrable",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1CylinderTransportL1Budget.lean",
+      "line": 151,
+      "signature": "private theorem ctT0_abs_integrable : Integrable (fun y : ℝ => |ctT0 y|) volume",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ctT4_abs_integrable",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1CylinderTransportL1Budget.lean",
+      "line": 183,
+      "signature": "private theorem ctT4_abs_integrable : Integrable (fun y : ℝ => |ctT4 y|) volume",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "cylinderTransport_L1_bounded",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1CylinderTransportL1Budget.lean",
+      "line": 228,
+      "signature": "theorem cylinderTransport_L1_bounded : ∃ D : ℝ, 0 ≤ D ∧ (∫ y : ℝ, |ctT0 y|) ≤ D ∧ (∫ y : ℝ, |ctT4 y|) ≤ D ∧ Integrable (fun y : ℝ => |ctT0 y|) volume ∧ Integrable (fun y : ℝ => |ctT4 y|) volume",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
       "kind": "theorem",
       "name": "hasDerivAt_zero_of_even",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1EvenCenterDerivative.lean",
@@ -22696,6 +23014,436 @@
       "signature": "theorem selectedFerrersFactorFourExplicitLimitMellinOuterTail_tendstoUniformlyOn : TendstoUniformlyOn selectedFerrersFactorFourExplicitLimitMellinOuterTail (fun _ : ℂ => 0) Filter.atTop centeredCriticalStrip",
       "in_docs": true,
       "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "hbHRe",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 31,
+      "signature": "def hbHRe (y : ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "hbG",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 35,
+      "signature": "def hbG (y : ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "hbG1",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 40,
+      "signature": "def hbG1 (y : ℝ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "hbG2",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 46,
+      "signature": "def hbG2 (y : ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "hbV",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 52,
+      "signature": "def hbV (y : ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "hb_exp_hasDerivAt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 55,
+      "signature": "private theorem hb_exp_hasDerivAt (y : ℝ) : HasDerivAt (fun t : ℝ => Real.exp (-Real.pi * t ^ 2)) (-2 * Real.pi * y * Real.exp (-Real.pi * y ^ 2)) y",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hb_polyexp_hasDerivAt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 64,
+      "signature": "private theorem hb_polyexp_hasDerivAt {P : ℝ → ℝ} {p : ℝ} (y : ℝ) (hP : HasDerivAt P p y) : HasDerivAt (fun t : ℝ => P t * Real.exp (-Real.pi * t ^ 2)) ((p - 2 * Real.pi * y * P y) * Real.exp (-Real.pi * y ^ 2)) y",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hbV_hasDerivAt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 71,
+      "signature": "private theorem hbV_hasDerivAt (y : ℝ) : HasDerivAt hbV (hbG y) y",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hbG_hasDerivAt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 84,
+      "signature": "private theorem hbG_hasDerivAt (y : ℝ) : HasDerivAt hbG (hbG1 y) y",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hbG1_hasDerivAt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 102,
+      "signature": "private theorem hbG1_hasDerivAt (y : ℝ) : HasDerivAt hbG1 (hbG2 y) y",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hbG_continuous",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 122,
+      "signature": "private theorem hbG_continuous : Continuous hbG",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hbG1_continuous",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 126,
+      "signature": "private theorem hbG1_continuous : Continuous hbG1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hbG2_continuous",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 130,
+      "signature": "private theorem hbG2_continuous : Continuous hbG2",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "explicitCCMLimitH_eq_hbHRe",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 138,
+      "signature": "theorem explicitCCMLimitH_eq_hbHRe (y : ℝ) : explicitCCMLimitH y = ((hbHRe y : ℝ) : ℂ)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "hbHRe_hasDerivAt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 146,
+      "signature": "private theorem hbHRe_hasDerivAt (y : ℝ) : HasDerivAt hbHRe ((-(2 * Real.pi ^ 3) * y ^ 5 + 7 * Real.pi ^ 2 * y ^ 3 - 3 * Real.pi * y) * Real.exp (-Real.pi * y ^ 2)) y",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hbG_eq_four_mul_deriv",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 166,
+      "signature": "theorem hbG_eq_four_mul_deriv (y : ℝ) : hbG y = 4 * y * deriv hbHRe y",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "hbCg1",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 175,
+      "signature": "def hbCg1 : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "hbCgC",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 178,
+      "signature": "def hbCgC : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "hbCv1",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 181,
+      "signature": "def hbCv1 : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "hbCvC",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 184,
+      "signature": "def hbCvC : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "hbKG",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 187,
+      "signature": "def hbKG : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "hbCg1_pos",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 189,
+      "signature": "private theorem hbCg1_pos : 0 < hbCg1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hbCgC_pos",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 190,
+      "signature": "private theorem hbCgC_pos : 0 < hbCgC",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hbCv1_pos",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 194,
+      "signature": "private theorem hbCv1_pos : 0 < hbCv1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hbCvC_pos",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 195,
+      "signature": "private theorem hbCvC_pos : 0 < hbCvC",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hbKG_nonneg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 196,
+      "signature": "private theorem hbKG_nonneg : 0 ≤ hbKG",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hb_exp_le_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 200,
+      "signature": "private theorem hb_exp_le_one (y : ℝ) : Real.exp (-Real.pi * y ^ 2) ≤ 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hb_exp_tail",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 207,
+      "signature": "private theorem hb_exp_tail (y : ℝ) (hy : 0 < y) : Real.exp (-Real.pi * y ^ 2) ≤ 24 / (Real.pi ^ 4 * y ^ 8)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hbG_head",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 221,
+      "signature": "private theorem hbG_head (y : ℝ) (h0 : 0 ≤ y) (h1 : y ≤ 1) : |hbG y| ≤ hbCg1 * y ^ 2",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hbG_tail",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 248,
+      "signature": "private theorem hbG_tail (y : ℝ) (hy : 1 ≤ y) : |hbG y| ≤ hbCgC / y ^ 2",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hbV_head",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 279,
+      "signature": "private theorem hbV_head (y : ℝ) (h0 : 0 ≤ y) (h1 : y ≤ 1) : |hbV y| ≤ hbCv1 * y ^ 3",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hbV_tail",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 302,
+      "signature": "private theorem hbV_tail (y : ℝ) (hy : 1 / 2 ≤ y) : |hbV y| ≤ hbCvC / y ^ 2",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hb_ftc",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 342,
+      "signature": "private theorem hb_ftc (a b : ℝ) : ∫ y in a..b, hbG y = hbV b - hbV a",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hbG2_abs_integrable",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 348,
+      "signature": "private theorem hbG2_abs_integrable : IntegrableOn (fun y : ℝ => |hbG2 y|) (Ioi (0 : ℝ)) volume",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hb_cell",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 410,
+      "signature": "private theorem hb_cell (u m : ℝ) (hu : 0 < u) : |u * hbG m - ∫ y in (m - u / 2)..(m + u / 2), hbG y| ≤ u ^ 2 / 2 * ∫ y in (m - u / 2)..(m + u / 2), |hbG2 y|",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "hb_comb",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 510,
+      "signature": "private theorem hb_comb (u : ℝ) (hu : 0 < u) (M : ℕ) : |(∑ n ∈ Finset.Icc 1 M, hbG ((n : ℝ) * u)) - (hbV (((M : ℝ) + 1 / 2) * u) - hbV (u / 2)) / u| ≤ u / 2 * hbKG",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "hbMaj",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 598,
+      "signature": "noncomputable def hbMaj (lam u : ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "hbBudget",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 605,
+      "signature": "noncomputable def hbBudget : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "hbBudget_nonneg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 608,
+      "signature": "theorem hbBudget_nonneg : 0 ≤ hbBudget",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "hb_sqrt2_gt_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 616,
+      "signature": "private theorem hb_sqrt2_gt_one : (1 : ℝ) < Real.sqrt 2",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hbComb_le_hbMaj",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 621,
+      "signature": "theorem hbComb_le_hbMaj (lam u : ℝ) (hlam : Real.sqrt 2 ≤ lam) (hu1 : lam⁻¹ ≤ u) (hu2 : u ≤ lam) : |∑ n ∈ Finset.Icc 1 (Nat.floor (lam / u)), hbG ((n : ℝ) * u)| ≤ hbMaj lam u",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "hbMaj_integral_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 733,
+      "signature": "theorem hbMaj_integral_le (lam : ℝ) (hlam : Real.sqrt 2 ≤ lam) : (∫ u in Icc lam⁻¹ lam, (Real.sqrt u)⁻¹ * hbMaj lam u) ≤ hbBudget",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "explicitH_derivative_comb_budget",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "line": 944,
+      "signature": "theorem explicitH_derivative_comb_budget : ∃ D : ℝ, 0 ≤ D ∧ ∀ lam : ℝ, Real.sqrt 2 ≤ lam → (∀ u ∈ Icc lam⁻¹ lam, |∑ n ∈ Finset.Icc 1 (Nat.floor (lam / u)), hbG ((n : ℝ) * u)| ≤ hbMaj lam u) ∧ (∫ u in Icc lam⁻¹ lam, (Real.sqrt u)⁻¹ * hbMaj lam u) ≤ D",
+      "in_docs": true,
+      "in_lemma_db": false,
       "orphan": false
     },
     {
@@ -26260,6 +27008,156 @@
     },
     {
       "kind": "def",
+      "name": "SelectedFerrersPreAnchorProductionFamilyCrosswalk",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFirstOrderBudgetApplication.lean",
+      "line": 32,
+      "signature": "def SelectedFerrersPreAnchorProductionFamilyCrosswalk (S : ProlateCanonicalSourceData) : Prop",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5a_coeff_transport",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFirstOrderBudgetApplication.lean",
+      "line": 39,
+      "signature": "private theorem w5a_coeff_transport {i i' : PairIndex} (hii : i = i') {h h' : ℝ → ℂ} (hhh : h = h') (w : MemLp (E_star h) 2 (dStar.restrict (I_m i))) (w' : MemLp (E_star h') 2 (dStar.restrict (I_m i'))) (n : ℤ) : physicalFourierCoefficient i (gTrial_m i h w) n = physicalFourierCoefficient i' (gTrial_m i' h' w') n",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5a_eStar_scale",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFirstOrderBudgetApplication.lean",
+      "line": 51,
+      "signature": "private theorem w5a_eStar_scale (k : ℕ) (u : ℝ) : E_star (selectedFerrersLemma73SourcePacket k) u = selectedFerrersLemma73SourceScale k * E_star (prolateCombination (selectedFerrersPreAnchorPair k)) u",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5a_gTrial_eq_smul",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFirstOrderBudgetApplication.lean",
+      "line": 59,
+      "signature": "private theorem w5a_gTrial_eq_smul (k : ℕ) : gTrial_m (selectedFerrersPreAnchorIndex k) (prolateCombination (selectedFerrersPreAnchorPair k)) (selectedFerrersPreAnchorPair_eStar_memLp k) = (selectedFerrersLemma73SourceScale k)⁻¹ • selectedFerrersEStarHm k",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5a_center_bound",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFirstOrderBudgetApplication.lean",
+      "line": 88,
+      "signature": "private theorem w5a_center_bound {C : ℝ} (hrate : ∀ᶠ k in Filter.atTop, ∀ x ∈ Set.Icc (-(selectedFerrersPaperLambda k)) (selectedFerrersPaperLambda k), ‖selectedFerrersLemma73SourceScale k * prolateCombination (selectedFerrersPreAnchorPair k) x - (4 : ℂ) * explicitCCMLimitH x‖ ≤ C / (selectedFerrersPaperLambda k) ^ 2) : ∀ᶠ k in Filter.atTop, ‖selectedFerrersLemma73SourcePacket k 0‖ ≤ C / (selectedFerrersPaperLambda k) ^ 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5a_paperLambda_one_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFirstOrderBudgetApplication.lean",
+      "line": 111,
+      "signature": "private theorem w5a_paperLambda_one_le (k : ℕ) : (1 : ℝ) ≤ selectedFerrersPaperLambda k",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedProjectionTailDecay_of_selectedFerrersFirstOrderBudget",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFirstOrderBudgetApplication.lean",
+      "line": 123,
+      "signature": "theorem selectedProjectionTailDecay_of_selectedFerrersFirstOrderBudget (S : ProlateCanonicalSourceData) (hFamily : SelectedFerrersPreAnchorProductionFamilyCrosswalk S) (C0 C4 Cχ : ℝ) (hC0 : 0 ≤ C0) (hC4 : 0 ≤ C4) (hCχ : 0 ≤ Cχ) (hmode : ∀ᶠ k in Filter.atTop, ∀ x ∈ Set.Icc (-(selectedFerrersPaperLambda k)) (selectedFerrersPaperLambda k), ‖centerAnchorScalarZero k * (selectedFerrersPreAnchorPair k).h0 x - ((parabolicCylinderD 0 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤ C0 / (selectedFerrersPaperLambda k) ^ 2 ∧ ‖centerAnchorScalarFour k * (selectedFerrersPreAnchorPair k).h4 x - ((parabolicCylinderD 4 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤ C4 / (selectedFerrersPaperLambda k) ^ 2) (hχ : ∀ᶠ k in Filter.atTop, |1 - (selectedFerrersPreAnchorPair k).chi0| ≤ Cχ / (selectedFerrersPaperLambda k) ^ 2 ∧ |1 - (selectedFerrersPreAnchorPair k).chi2| ≤ Cχ / (selectedFerrersPaperLambda k) ^ 2) (hD : ∃ D : ℝ, 0 ≤ D ∧ ∀ᶠ k in Filter.atTop, selectedFerrersAbelLogDerivativeBudget k ≤ D) (hScale : ∃ M : ℝ, 0 ≤ M ∧ ∀ᶠ k in Filter.atTop, ‖(selectedFerrersLemma73SourceScale k)⁻¹‖ ≤ M) (hBandwidth : SelectedPhysicalBandwidthCofinal S) : SelectedProjectionTailDecay S",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5c_additiveMode_memLp",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFirstOrderCoefficientEnvelope.lean",
+      "line": 30,
+      "signature": "private theorem w5c_additiveMode_memLp (i : PairIndex) (n : ℤ) : MemLp (fun x : ℝ => ((Real.sqrt (L_m i))⁻¹ : ℂ) * Complex.exp (2 * Real.pi * Complex.I * n * (x / L_m i))) 2 (volume.restrict (Set.Icc (0 : ℝ) (L_m i)))",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "w5c_additiveModeLp",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFirstOrderCoefficientEnvelope.lean",
+      "line": 65,
+      "signature": "private def w5c_additiveModeLp (i : PairIndex) (n : ℤ) : MeasureTheory.Lp ℂ 2 (volume.restrict (Set.Icc (0 : ℝ) (L_m i)))",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5c_logWindowL2Equiv_additiveModeLp",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFirstOrderCoefficientEnvelope.lean",
+      "line": 72,
+      "signature": "private theorem w5c_logWindowL2Equiv_additiveModeLp (i : PairIndex) (n : ℤ) : logWindowL2Equiv i (w5c_additiveModeLp i n) = V_n_m i n",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5c_symm_V_n_m",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFirstOrderCoefficientEnvelope.lean",
+      "line": 93,
+      "signature": "private theorem w5c_symm_V_n_m (i : PairIndex) (n : ℤ) : (logWindowL2Equiv i).symm (V_n_m i n) = w5c_additiveModeLp i n",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5c_fourier_congr_ae",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFirstOrderCoefficientEnvelope.lean",
+      "line": 99,
+      "signature": "private theorem w5c_fourier_congr_ae {f g : ℝ → ℂ} (hfg : f =ᵐ[volume] g) (t : ℝ) : 𝓕 f t = 𝓕 g t",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "physicalFourierCoefficient_eq_fourier_sourceLogWindowZeroExtension",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFirstOrderCoefficientEnvelope.lean",
+      "line": 113,
+      "signature": "theorem physicalFourierCoefficient_eq_fourier_sourceLogWindowZeroExtension (i : PairIndex) (x : H_m i) (n : ℤ) : physicalFourierCoefficient i x n = ((Real.sqrt (L_m i))⁻¹ : ℂ) * 𝓕 (sourceLogWindowZeroExtension i x) ((n : ℝ) / L_m i)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLimitHm_physicalCoefficient_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFirstOrderCoefficientEnvelope.lean",
+      "line": 204,
+      "signature": "theorem selectedFerrersAbelLimitHm_physicalCoefficient_le (k : ℕ) (n : ℤ) (hn : n ≠ 0) : ‖physicalFourierCoefficient (selectedFerrersPreAnchorIndex k) (selectedFerrersAbelLimitHm k) n‖ ≤ selectedFerrersAbelFourierDecayBudget k * Real.sqrt (L_m (selectedFerrersPreAnchorIndex k)) / |(n : ℝ)|",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLimitHm_physicalCoefficient_sq_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFirstOrderCoefficientEnvelope.lean",
+      "line": 268,
+      "signature": "theorem selectedFerrersAbelLimitHm_physicalCoefficient_sq_le (k : ℕ) (n : ℤ) (hn : n ≠ 0) : ‖physicalFourierCoefficient (selectedFerrersPreAnchorIndex k) (selectedFerrersAbelLimitHm k) n‖ ^ 2 ≤ selectedFerrersAbelFourierDecayBudget k ^ 2 * L_m (selectedFerrersPreAnchorIndex k) / (n : ℝ) ^ 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
       "name": "selectedFerrersAbelLimitHm",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFixedKShiftedRootEnergy.lean",
       "line": 31,
@@ -26536,6 +27434,156 @@
       "signature": "theorem selectedFerrersFiniteCCMComplementFloor_of_sectorFloors_oddMass_residual (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData) (k : ℕ) (βp βm ρ betaEff : ℝ) (hη1 : selectedFerrersFiniteCCMOddMass P k < 1) (heven : ∀ x, ccmComplexReflectionMatrix ((selectedFerrersCofinalSourceData P).index k).N *ᵥ x = x → star ((2⁻¹ : ℂ) • (selectedFerrersFiniteCCMRow P k + ccmComplexReflectionMatrix ((selectedFerrersCofinalSourceData P).index k).N *ᵥ selectedFerrersFiniteCCMRow P k)) ⬝ᵥ x = 0 → βp * (star x ⬝ᵥ x).re ≤ (star x ⬝ᵥ ((sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k) - ((selectedFerrersFiniteCCMRayleigh P k : ℝ) : ℂ) • (1 : Matrix _ _ ℂ)) *ᵥ x)).re) (hodd : ∀ x, ccmComplexReflectionMatrix ((selectedFerrersCofinalSourceData P).index k).N *ᵥ x = -x → βm * (star x ⬝ᵥ x).re ≤ (star x ⬝ᵥ ((sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k) - ((selectedFerrersFiniteCCMRayleigh P k : ℝ) : ℂ) • (1 : Matrix _ _ ℂ)) *ᵥ x)).re) (hρ0 : 0 ≤ ρ) (hρ : (star (selectedFerrersFiniteCCMResidual P k) ⬝ᵥ selectedFerrersFiniteCCMResidual P k).re ≤ ρ ^ 2) (hbeta : betaEff = min βp βm * (1 - selectedFerrersFiniteCCMOddMass P k) - (2 * Real.sqrt (selectedFerrersFiniteCCMOddMass P k) + selectedFerrersFiniteCCMOddMass P k) / Real.sqrt (1 - selectedFerrersFiniteCCMOddMass P k) * ρ) (hbeta0 : 0 < betaEff) : complexTrialComplementFloor (sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k)) (selectedFerrersFiniteCCMRow P k) ((selectedFerrersFiniteCCMRayleigh P k : ℝ) : ℂ) betaEff",
       "in_docs": true,
       "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5m_one_lt_lambda",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersMidpointDeltaEnvelope.lean",
+      "line": 28,
+      "signature": "private theorem w5m_one_lt_lambda (i : PairIndex) : 1 < lambda_m i",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5m_exp_half_L",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersMidpointDeltaEnvelope.lean",
+      "line": 35,
+      "signature": "private theorem w5m_exp_half_L (i : PairIndex) : Real.exp (L_m i / 2) = lambda_m i",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5m_finiteWindow",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersMidpointDeltaEnvelope.lean",
+      "line": 51,
+      "signature": "private theorem w5m_finiteWindow (i : PairIndex) : IsFiniteMeasure (dStar.restrict (I_m i))",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5m_sqrtU_memLp",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersMidpointDeltaEnvelope.lean",
+      "line": 67,
+      "signature": "private theorem w5m_sqrtU_memLp (i : PairIndex) : MemLp (fun u : ℝ => (Real.sqrt u : ℂ)) 2 (dStar.restrict (I_m i))",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "selectedFerrersSqrtUHm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersMidpointDeltaEnvelope.lean",
+      "line": 80,
+      "signature": "noncomputable def selectedFerrersSqrtUHm (k : ℕ) : H_m (selectedFerrersPreAnchorIndex k)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5m_eStar_eq_fun",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersMidpointDeltaEnvelope.lean",
+      "line": 84,
+      "signature": "private theorem w5m_eStar_eq_fun (k : ℕ) : E_star (selectedFerrersLemma73SourcePacket k) = fun u : ℝ => selectedFerrersAbelLimit k u - ((1 / 2 : ℂ) * selectedFerrersLemma73SourcePacket k 0) * (Real.sqrt u : ℂ)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5m_eStar_memLp",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersMidpointDeltaEnvelope.lean",
+      "line": 94,
+      "signature": "theorem w5m_eStar_memLp (k : ℕ) : MemLp (E_star (selectedFerrersLemma73SourcePacket k)) 2 (dStar.restrict (I_m (selectedFerrersPreAnchorIndex k)))",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "selectedFerrersEStarHm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersMidpointDeltaEnvelope.lean",
+      "line": 102,
+      "signature": "noncomputable def selectedFerrersEStarHm (k : ℕ) : H_m (selectedFerrersPreAnchorIndex k)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5m_eStarHm_eq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersMidpointDeltaEnvelope.lean",
+      "line": 106,
+      "signature": "private theorem w5m_eStarHm_eq (k : ℕ) : selectedFerrersEStarHm k = selectedFerrersAbelLimitHm k - ((1 / 2 : ℂ) * selectedFerrersLemma73SourcePacket k 0) • selectedFerrersSqrtUHm k",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5m_sqrtU_zeroExtension_ae",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersMidpointDeltaEnvelope.lean",
+      "line": 142,
+      "signature": "private theorem w5m_sqrtU_zeroExtension_ae (k : ℕ) : sourceLogWindowZeroExtension (selectedFerrersPreAnchorIndex k) (selectedFerrersSqrtUHm k) =ᵐ[volume] Set.indicator (Set.Icc (0 : ℝ) (L_m (selectedFerrersPreAnchorIndex k))) (fun z : ℝ => (Real.sqrt (Real.exp z / lambda_m (selectedFerrersPreAnchorIndex k)) : ℂ))",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5m_fourier_congr_ae",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersMidpointDeltaEnvelope.lean",
+      "line": 196,
+      "signature": "private theorem w5m_fourier_congr_ae {f g : ℝ → ℂ} (hfg : f =ᵐ[volume] g) (t : ℝ) : 𝓕 f t = 𝓕 g t",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5m_sqrtU_fourier_norm_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersMidpointDeltaEnvelope.lean",
+      "line": 205,
+      "signature": "private theorem w5m_sqrtU_fourier_norm_le (k : ℕ) (n : ℤ) (hn : n ≠ 0) : ‖𝓕 (sourceLogWindowZeroExtension (selectedFerrersPreAnchorIndex k) (selectedFerrersSqrtUHm k)) ((n : ℝ) / L_m (selectedFerrersPreAnchorIndex k))‖ ≤ Real.sqrt (lambda_m (selectedFerrersPreAnchorIndex k)) * L_m (selectedFerrersPreAnchorIndex k) / (2 * Real.pi * |(n : ℝ)|)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5m_sqrtU_coefficient_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersMidpointDeltaEnvelope.lean",
+      "line": 354,
+      "signature": "private theorem w5m_sqrtU_coefficient_le (k : ℕ) (n : ℤ) (hn : n ≠ 0) : ‖physicalFourierCoefficient (selectedFerrersPreAnchorIndex k) (selectedFerrersSqrtUHm k) n‖ ≤ Real.sqrt (lambda_m (selectedFerrersPreAnchorIndex k)) * Real.sqrt (L_m (selectedFerrersPreAnchorIndex k)) / (2 * Real.pi * |(n : ℝ)|)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersEStarHm_physicalCoefficient_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersMidpointDeltaEnvelope.lean",
+      "line": 390,
+      "signature": "theorem selectedFerrersEStarHm_physicalCoefficient_le (k : ℕ) (n : ℤ) (hn : n ≠ 0) : ‖physicalFourierCoefficient (selectedFerrersPreAnchorIndex k) (selectedFerrersEStarHm k) n‖ ≤ (selectedFerrersAbelFourierDecayBudget k + ‖selectedFerrersLemma73SourcePacket k 0‖ * Real.sqrt (lambda_m (selectedFerrersPreAnchorIndex k)) / (4 * Real.pi)) * Real.sqrt (L_m (selectedFerrersPreAnchorIndex k)) / |(n : ℝ)|",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersEStarHm_physicalCoefficient_sq_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersMidpointDeltaEnvelope.lean",
+      "line": 447,
+      "signature": "theorem selectedFerrersEStarHm_physicalCoefficient_sq_le (k : ℕ) (n : ℤ) (hn : n ≠ 0) : ‖physicalFourierCoefficient (selectedFerrersPreAnchorIndex k) (selectedFerrersEStarHm k) n‖ ^ 2 ≤ (selectedFerrersAbelFourierDecayBudget k + ‖selectedFerrersLemma73SourcePacket k 0‖ * Real.sqrt (lambda_m (selectedFerrersPreAnchorIndex k)) / (4 * Real.pi)) ^ 2 * L_m (selectedFerrersPreAnchorIndex k) / (n : ℝ) ^ 2",
+      "in_docs": true,
+      "in_lemma_db": false,
       "orphan": false
     },
     {
@@ -28840,6 +29888,226 @@
     },
     {
       "kind": "theorem",
+      "name": "w5s_D0_eq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersScaleBandwidthClosure.lean",
+      "line": 30,
+      "signature": "private theorem w5s_D0_eq (t : ℝ) : parabolicCylinderD 0 t = Real.exp (-t ^ 2 / 4)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5s_paperLambda_sq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersScaleBandwidthClosure.lean",
+      "line": 35,
+      "signature": "private theorem w5s_paperLambda_sq (k : ℕ) : (selectedFerrersPaperLambda k) ^ 2 = ((k + 2 : ℕ) : ℝ)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5s_paperLambda_one_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersScaleBandwidthClosure.lean",
+      "line": 40,
+      "signature": "private theorem w5s_paperLambda_one_le (k : ℕ) : (1 : ℝ) ≤ selectedFerrersPaperLambda k",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "w5s_error_small",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersScaleBandwidthClosure.lean",
+      "line": 47,
+      "signature": "private theorem w5s_error_small {C0 : ℝ} : ∀ᶠ k : ℕ in atTop, C0 / (selectedFerrersPaperLambda k) ^ 2 < 1 / 4",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5s_a0_lower",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersScaleBandwidthClosure.lean",
+      "line": 65,
+      "signature": "private theorem w5s_a0_lower (C0 C4 : ℝ) (hmode : ∀ᶠ k in Filter.atTop, ∀ x ∈ Set.Icc (-(selectedFerrersPaperLambda k)) (selectedFerrersPaperLambda k), ‖centerAnchorScalarZero k * (selectedFerrersPreAnchorPair k).h0 x - ((parabolicCylinderD 0 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤ C0 / (selectedFerrersPaperLambda k) ^ 2 ∧ ‖centerAnchorScalarFour k * (selectedFerrersPreAnchorPair k).h4 x - ((parabolicCylinderD 4 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤ C4 / (selectedFerrersPaperLambda k) ^ 2) : ∀ᶠ k : ℕ in atTop, (1 / 3 : ℝ) ≤ ‖centerAnchorScalarZero k‖",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5s_chi2_lower",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersScaleBandwidthClosure.lean",
+      "line": 160,
+      "signature": "private theorem w5s_chi2_lower (Cχ : ℝ) (hχ : ∀ᶠ k in Filter.atTop, |1 - (selectedFerrersPreAnchorPair k).chi0| ≤ Cχ / (selectedFerrersPaperLambda k) ^ 2 ∧ |1 - (selectedFerrersPreAnchorPair k).chi2| ≤ Cχ / (selectedFerrersPaperLambda k) ^ 2) : ∀ᶠ k : ℕ in atTop, (1 / 2 : ℝ) ≤ |(selectedFerrersPreAnchorPair k).chi2|",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersSourceScale_inverse_bounded",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersScaleBandwidthClosure.lean",
+      "line": 180,
+      "signature": "theorem selectedFerrersSourceScale_inverse_bounded (C0 C4 Cχ : ℝ) (hmode : ∀ᶠ k in Filter.atTop, ∀ x ∈ Set.Icc (-(selectedFerrersPaperLambda k)) (selectedFerrersPaperLambda k), ‖centerAnchorScalarZero k * (selectedFerrersPreAnchorPair k).h0 x - ((parabolicCylinderD 0 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤ C0 / (selectedFerrersPaperLambda k) ^ 2 ∧ ‖centerAnchorScalarFour k * (selectedFerrersPreAnchorPair k).h4 x - ((parabolicCylinderD 4 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤ C4 / (selectedFerrersPaperLambda k) ^ 2) (hχ : ∀ᶠ k in Filter.atTop, |1 - (selectedFerrersPreAnchorPair k).chi0| ≤ Cχ / (selectedFerrersPaperLambda k) ^ 2 ∧ |1 - (selectedFerrersPreAnchorPair k).chi2| ≤ Cχ / (selectedFerrersPaperLambda k) ^ 2) : ∀ᶠ k : ℕ in atTop, ‖(selectedFerrersLemma73SourceScale k)⁻¹‖ ≤ 8",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedPhysicalBandwidthCofinal_of_familyCrosswalk",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersScaleBandwidthClosure.lean",
+      "line": 279,
+      "signature": "theorem selectedPhysicalBandwidthCofinal_of_familyCrosswalk (S : ProlateCanonicalSourceData) (hFamily : SelectedFerrersPreAnchorProductionFamilyCrosswalk S) : SelectedPhysicalBandwidthCofinal S",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedProjectionTailDecay_of_selectedFerrersFirstOrderBudget_closedScaleBandwidth",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersScaleBandwidthClosure.lean",
+      "line": 365,
+      "signature": "theorem selectedProjectionTailDecay_of_selectedFerrersFirstOrderBudget_closedScaleBandwidth (S : ProlateCanonicalSourceData) (hFamily : SelectedFerrersPreAnchorProductionFamilyCrosswalk S) (C0 C4 Cχ : ℝ) (hC0 : 0 ≤ C0) (hC4 : 0 ≤ C4) (hCχ : 0 ≤ Cχ) (hmode : ∀ᶠ k in Filter.atTop, ∀ x ∈ Set.Icc (-(selectedFerrersPaperLambda k)) (selectedFerrersPaperLambda k), ‖centerAnchorScalarZero k * (selectedFerrersPreAnchorPair k).h0 x - ((parabolicCylinderD 0 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤ C0 / (selectedFerrersPaperLambda k) ^ 2 ∧ ‖centerAnchorScalarFour k * (selectedFerrersPreAnchorPair k).h4 x - ((parabolicCylinderD 4 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤ C4 / (selectedFerrersPaperLambda k) ^ 2) (hχ : ∀ᶠ k in Filter.atTop, |1 - (selectedFerrersPreAnchorPair k).chi0| ≤ Cχ / (selectedFerrersPaperLambda k) ^ 2 ∧ |1 - (selectedFerrersPreAnchorPair k).chi2| ≤ Cχ / (selectedFerrersPaperLambda k) ^ 2) (hD : ∃ D : ℝ, 0 ≤ D ∧ ∀ᶠ k in Filter.atTop, selectedFerrersAbelLogDerivativeBudget k ≤ D) : SelectedProjectionTailDecay S",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5d_packet_differentiableAt_of_mem_open",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5DerivativeBudgetRate.lean",
+      "line": 36,
+      "signature": "private theorem w5d_packet_differentiableAt_of_mem_open (k : ℕ) {y : ℝ} (hy : y ∈ Set.Ioo (-(selectedFerrersPreAnchorPair k).pw.lambda) (selectedFerrersPreAnchorPair k).pw.lambda) : DifferentiableAt ℝ (selectedFerrersLemma73SourcePacket k) y",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "w5d_packet_zero_outside",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5DerivativeBudgetRate.lean",
+      "line": 61,
+      "signature": "private theorem w5d_packet_zero_outside (k : ℕ) (y : ℝ) (hy : y ∉ Set.Icc (-(selectedFerrersPreAnchorPair k).pw.lambda) (selectedFerrersPreAnchorPair k).pw.lambda) : selectedFerrersLemma73SourcePacket k y = 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "w5d_packet_differentiableAt_of_gt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5DerivativeBudgetRate.lean",
+      "line": 73,
+      "signature": "private theorem w5d_packet_differentiableAt_of_gt (k : ℕ) {y : ℝ} (hy : (selectedFerrersPreAnchorPair k).pw.lambda < y) : DifferentiableAt ℝ (selectedFerrersLemma73SourcePacket k) y",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "w5d_packet_differentiableAt_of_pos_ne",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5DerivativeBudgetRate.lean",
+      "line": 86,
+      "signature": "private theorem w5d_packet_differentiableAt_of_pos_ne (k : ℕ) {y : ℝ} (hpos : 0 < y) (hne : y ≠ (selectedFerrersPreAnchorPair k).pw.lambda) : DifferentiableAt ℝ (selectedFerrersLemma73SourcePacket k) y",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5d_packet_windowFiniteSupport",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5DerivativeBudgetRate.lean",
+      "line": 104,
+      "signature": "private theorem w5d_packet_windowFiniteSupport (k : ℕ) : WindowFiniteSupport (lambda_m (selectedFerrersPreAnchorIndex k)) (sourcePositiveIndexFinset (selectedFerrersPreAnchorIndex k)) (selectedFerrersLemma73SourcePacket k)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5d_logCoordinate_mem_window",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5DerivativeBudgetRate.lean",
+      "line": 116,
+      "signature": "private theorem w5d_logCoordinate_mem_window (k : ℕ) {x : ℝ} (hx : x ∈ Set.Icc 0 (L_m (selectedFerrersPreAnchorIndex k))) : Real.exp x / lambda_m (selectedFerrersPreAnchorIndex k) ∈ I_m (selectedFerrersPreAnchorIndex k)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "w5d_rep_eq_finite",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5DerivativeBudgetRate.lean",
+      "line": 162,
+      "signature": "private theorem w5d_rep_eq_finite (k : ℕ) {x : ℝ} (hx : x ∈ Set.Icc 0 (L_m (selectedFerrersPreAnchorIndex k))) : selectedFerrersAbelLogRepresentative k x = finiteEStar (sourcePositiveIndexFinset (selectedFerrersPreAnchorIndex k)) (selectedFerrersLemma73SourcePacket k) (Real.exp x / lambda_m (selectedFerrersPreAnchorIndex k)) + (1 / 2 : ℂ) * selectedFerrersLemma73SourcePacket k 0 * (Real.sqrt (Real.exp x / lambda_m (selectedFerrersPreAnchorIndex k)) : ℂ)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "w5d_Q",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5DerivativeBudgetRate.lean",
+      "line": 185,
+      "signature": "private noncomputable def w5d_Q (k : ℕ) (y : ℝ) : ℂ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5d_hasDerivAt_of_no_seam",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5DerivativeBudgetRate.lean",
+      "line": 192,
+      "signature": "private theorem w5d_hasDerivAt_of_no_seam (k : ℕ) {x : ℝ} (hx : x ∈ Set.Ioo 0 (L_m (selectedFerrersPreAnchorIndex k))) (hseam : ∀ n : ℕ+, ((n : ℕ) : ℝ) * (Real.exp x / lambda_m (selectedFerrersPreAnchorIndex k)) ≠ lambda_m (selectedFerrersPreAnchorIndex k)) : HasDerivAt (selectedFerrersAbelLogRepresentative k) ((1 / 2 : ℂ) * selectedFerrersAbelLogRepresentative k x + (Real.sqrt (Real.exp x / lambda_m (selectedFerrersPreAnchorIndex k)) : ℂ) * ∑ n ∈ sourcePositiveIndexFinset (selectedFerrersPreAnchorIndex k), w5d_Q k (((n : ℕ) : ℝ) * (Real.exp x / lambda_m (selectedFerrersPreAnchorIndex k)))) x",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "w5d_seamSet",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5DerivativeBudgetRate.lean",
+      "line": 329,
+      "signature": "private def w5d_seamSet (k : ℕ) : Set ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5d_seamSet_measure_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5DerivativeBudgetRate.lean",
+      "line": 336,
+      "signature": "private theorem w5d_seamSet_measure_zero (k : ℕ) : MeasureTheory.volume (w5d_seamSet k) = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5d_budget_reduction",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5DerivativeBudgetRate.lean",
+      "line": 369,
+      "signature": "private theorem w5d_budget_reduction (k : ℕ) (hint : IntervalIntegrable (fun x : ℝ => (1 / 2) * ‖selectedFerrersAbelLogRepresentative k x‖ + Real.sqrt (Real.exp x / lambda_m (selectedFerrersPreAnchorIndex k)) * ‖∑ n ∈ sourcePositiveIndexFinset (selectedFerrersPreAnchorIndex k), w5d_Q k (((n : ℕ) : ℝ) * (Real.exp x / lambda_m (selectedFerrersPreAnchorIndex k)))‖) MeasureTheory.volume 0 (L_m (selectedFerrersPreAnchorIndex k))) (hbudget : IntervalIntegrable (fun x : ℝ => ‖deriv (selectedFerrersAbelLogRepresentative k) x‖) MeasureTheory.volume 0 (L_m (selectedFerrersPreAnchorIndex k))) : selectedFerrersAbelLogDerivativeBudget k ≤ ∫ x in (0 : ℝ)..L_m (selectedFerrersPreAnchorIndex k), ((1 / 2) * ‖selectedFerrersAbelLogRepresentative k x‖ + Real.sqrt (Real.exp x / lambda_m (selectedFerrersPreAnchorIndex k)) * ‖∑ n ∈ sourcePositiveIndexFinset (selectedFerrersPreAnchorIndex k), w5d_Q k (((n : ℕ) : ℝ) * (Real.exp x / lambda_m (selectedFerrersPreAnchorIndex k)))‖)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelFourierDecayBudget_bounded_of_modeAndChiRates",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5DerivativeBudgetRate.lean",
+      "line": 513,
+      "signature": "theorem selectedFerrersAbelFourierDecayBudget_bounded_of_modeAndChiRates (C0 C4 Cχ : ℝ) (hC0 : 0 ≤ C0) (hC4 : 0 ≤ C4) (hCχ : 0 ≤ Cχ) (hmode : ∀ᶠ k in Filter.atTop, ∀ x ∈ Set.Icc (-(selectedFerrersPaperLambda k)) (selectedFerrersPaperLambda k), ‖centerAnchorScalarZero k * (selectedFerrersPreAnchorPair k).h0 x - ((parabolicCylinderD 0 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤ C0 / (selectedFerrersPaperLambda k) ^ 2 ∧ ‖centerAnchorScalarFour k * (selectedFerrersPreAnchorPair k).h4 x - ((parabolicCylinderD 4 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤ C4 / (selectedFerrersPaperLambda k) ^ 2) (hχ : ∀ᶠ k in Filter.atTop, |1 - (selectedFerrersPreAnchorPair k).chi0| ≤ Cχ / (selectedFerrersPaperLambda k) ^ 2 ∧ |1 - (selectedFerrersPreAnchorPair k).chi2| ≤ Cχ / (selectedFerrersPaperLambda k) ^ 2) (hD : ∃ D : ℝ, 0 ≤ D ∧ ∀ᶠ k in Filter.atTop, selectedFerrersAbelLogDerivativeBudget k ≤ D) : ∃ Cb : ℝ, 0 ≤ Cb ∧ ∀ᶠ k in Filter.atTop, selectedFerrersAbelFourierDecayBudget k ≤ Cb",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
       "name": "w5e_target_le_half_gaussian",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5EndpointValueRate.lean",
       "line": 33,
@@ -29636,6 +30904,146 @@
       "signature": "theorem regularEvenSpheroidalEigenvalue_physicalSatz9SourceData {lambda Lambda : ℝ} (hlambda : 0 < lambda) (h : RegularEvenSpheroidalEigenvalue ((2 * Real.pi * lambda ^ 2) ^ 2) Lambda) : Nonempty (D0Pstar.Satz9SourceData lambda (Lambda + (2 * Real.pi * lambda ^ 2) ^ 2))",
       "in_docs": true,
       "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sturm_weighted_energy_identity",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SturmWeightedEnergyIdentity.lean",
+      "line": 34,
+      "signature": "theorem sturm_weighted_energy_identity (lam : ℝ) (hlam : 0 < lam) (g gd r : ℝ → ℝ) (hg : ∀ x ∈ Ioo (-lam) lam, HasDerivAt g (gd x) x) (hr : ∀ x ∈ Ioo (-lam) lam, HasDerivAt (fun y : ℝ => (lam ^ 2 - y ^ 2) * gd y) (r x) x) (hflux_top : Tendsto (fun x : ℝ => (lam ^ 2 - x ^ 2) * gd x * g x) (nhdsWithin lam (Iio lam)) (𝓝 0)) (hflux_bot : Tendsto (fun x : ℝ => (lam ^ 2 - x ^ 2) * gd x * g x) (nhdsWithin (-lam) (Ioi (-lam))) (𝓝 0)) (hint1 : IntegrableOn (fun x : ℝ => r x * g x) (Ioo (-lam) lam) volume) (hint2 : IntegrableOn (fun x : ℝ => (lam ^ 2 - x ^ 2) * gd x ^ 2) (Ioo (-lam) lam) volume) : (∫ x in Ioo (-lam) lam, (lam ^ 2 - x ^ 2) * gd x ^ 2) = -∫ x in Ioo (-lam) lam, r x * g x",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sturm_weighted_energy_truncated_bound",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SturmWeightedEnergyIdentity.lean",
+      "line": 185,
+      "signature": "theorem sturm_weighted_energy_truncated_bound (lam : ℝ) (hlam : 0 < lam) (g gd r : ℝ → ℝ) (hg : ∀ x ∈ Ioo (-lam) lam, HasDerivAt g (gd x) x) (hr : ∀ x ∈ Ioo (-lam) lam, HasDerivAt (fun y : ℝ => (lam ^ 2 - y ^ 2) * gd y) (r x) x) (hcont_gd : ContinuousOn gd (Ioo (-lam) lam)) (hcont_rg : ContinuousOn (fun x : ℝ => r x * g x) (Ioo (-lam) lam)) (hint1 : IntegrableOn (fun x : ℝ => r x * g x) (Ioo (-lam) lam) volume) (a b : ℝ) (hab : a ≤ b) (haI : a ∈ Ioo (-lam) lam) (hbI : b ∈ Ioo (-lam) lam) : (∫ x in a..b, (lam ^ 2 - x ^ 2) * gd x ^ 2) ≤ |(lam ^ 2 - b ^ 2) * gd b * g b| + |(lam ^ 2 - a ^ 2) * gd a * g a| + ∫ x in Ioo (-lam) lam, |r x * g x|",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "ctW0d",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SturmWeightedEnergyIdentity.lean",
+      "line": 279,
+      "signature": "def ctW0d (x : ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "ctW0dd",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SturmWeightedEnergyIdentity.lean",
+      "line": 282,
+      "signature": "def ctW0dd (x : ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "ctW4d",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SturmWeightedEnergyIdentity.lean",
+      "line": 286,
+      "signature": "def ctW4d (x : ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "ctW4dd",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SturmWeightedEnergyIdentity.lean",
+      "line": 291,
+      "signature": "def ctW4dd (x : ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ct2_exp_hasDerivAt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SturmWeightedEnergyIdentity.lean",
+      "line": 296,
+      "signature": "private theorem ct2_exp_hasDerivAt (y : ℝ) : HasDerivAt (fun t : ℝ => Real.exp (-Real.pi * t ^ 2)) (-2 * Real.pi * y * Real.exp (-Real.pi * y ^ 2)) y",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ct2_polyexp_hasDerivAt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SturmWeightedEnergyIdentity.lean",
+      "line": 305,
+      "signature": "private theorem ct2_polyexp_hasDerivAt {P : ℝ → ℝ} {p : ℝ} (y : ℝ) (hP : HasDerivAt P p y) : HasDerivAt (fun t : ℝ => P t * Real.exp (-Real.pi * t ^ 2)) ((p - 2 * Real.pi * y * P y) * Real.exp (-Real.pi * y ^ 2)) y",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ctW0_hasDerivAt'",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SturmWeightedEnergyIdentity.lean",
+      "line": 312,
+      "signature": "theorem ctW0_hasDerivAt' (y : ℝ) : HasDerivAt ctW0 (ctW0d y) y",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ctW0d_hasDerivAt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SturmWeightedEnergyIdentity.lean",
+      "line": 317,
+      "signature": "theorem ctW0d_hasDerivAt (y : ℝ) : HasDerivAt ctW0d (ctW0dd y) y",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ctW4_hasDerivAt'",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SturmWeightedEnergyIdentity.lean",
+      "line": 328,
+      "signature": "theorem ctW4_hasDerivAt' (y : ℝ) : HasDerivAt ctW4 (ctW4d y) y",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ctW4d_hasDerivAt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SturmWeightedEnergyIdentity.lean",
+      "line": 342,
+      "signature": "theorem ctW4d_hasDerivAt (y : ℝ) : HasDerivAt ctW4d (ctW4dd y) y",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ctW0_cylinder_eigenrelation",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SturmWeightedEnergyIdentity.lean",
+      "line": 359,
+      "signature": "theorem ctW0_cylinder_eigenrelation (x : ℝ) : -ctW0dd x + 4 * Real.pi ^ 2 * x ^ 2 * ctW0 x = 2 * Real.pi * ctW0 x",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ctW4_cylinder_eigenrelation",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SturmWeightedEnergyIdentity.lean",
+      "line": 365,
+      "signature": "theorem ctW4_cylinder_eigenrelation (x : ℝ) : -ctW4dd x + 4 * Real.pi ^ 2 * x ^ 2 * ctW4 x = 18 * Real.pi * ctW4 x",
+      "in_docs": true,
+      "in_lemma_db": false,
       "orphan": false
     },
     {
