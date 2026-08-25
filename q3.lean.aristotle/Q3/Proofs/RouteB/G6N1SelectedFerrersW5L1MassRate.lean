@@ -329,4 +329,45 @@ private theorem gaussian_tail_intervalIntegral_le {b : ℝ} (hb : 1 ≤ b) :
 
 #print axioms gaussian_tail_intervalIntegral_le
 
+/-! ## The envelope in the additive coordinate
+
+Writing `u = exp y` with `y ≥ 0` turns the Gaussian envelope into a plain
+decaying exponential: `exp (2*y) ≥ 1 + 2*y` is the only inequality spent, and
+no change of variables is ever needed. -/
+
+private theorem envelope_additive_bound {y : ℝ} (hy : 0 ≤ y) :
+    24 * Real.sqrt (Real.exp y) *
+        Real.exp (-(Real.pi * (Real.exp y) ^ 2) / 2) ≤
+      24 * Real.exp (-Real.pi / 2) *
+        Real.exp (-(Real.pi - 1 / 2) * y) := by
+  have hpi := Real.pi_pos
+  have hsqrt : Real.sqrt (Real.exp y) = Real.exp (y / 2) :=
+    (Real.exp_half y).symm
+  have hsq : (Real.exp y) ^ 2 = Real.exp (2 * y) := by
+    rw [sq, ← Real.exp_add]
+    congr 1
+    ring
+  have hlin : (1 : ℝ) + 2 * y ≤ (Real.exp y) ^ 2 := by
+    rw [hsq]
+    have := Real.add_one_le_exp (2 * y)
+    linarith
+  -- compare the exponents directly
+  have hexp_le : Real.exp (-(Real.pi * (Real.exp y) ^ 2) / 2) ≤
+      Real.exp (-(Real.pi * (1 + 2 * y)) / 2) := by
+    apply Real.exp_le_exp.mpr
+    have := mul_le_mul_of_nonneg_left hlin hpi.le
+    linarith
+  calc
+    24 * Real.sqrt (Real.exp y) *
+        Real.exp (-(Real.pi * (Real.exp y) ^ 2) / 2) ≤
+        24 * Real.exp (y / 2) * Real.exp (-(Real.pi * (1 + 2 * y)) / 2) := by
+      rw [hsqrt]
+      exact mul_le_mul_of_nonneg_left hexp_le (by positivity)
+    _ = 24 * Real.exp (-Real.pi / 2) * Real.exp (-(Real.pi - 1 / 2) * y) := by
+      rw [mul_assoc, mul_assoc, ← Real.exp_add, ← Real.exp_add]
+      congr 2
+      ring
+
+#print axioms envelope_additive_bound
+
 end Q3.RouteB.D0Pstar
