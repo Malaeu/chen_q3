@@ -171,6 +171,110 @@ theorem sturm_weighted_energy_identity
   rw [hzero] at hadd
   linarith [hadd]
 
+/--
+**Energy finiteness and bound from the flux limits.**  Same hypotheses as the
+identity, but WITHOUT assuming integrability of the energy: on every
+truncated interval the FTC gives
+`∫_{a_n}^{b_n} w·gd² = F(b_n) − F(a_n) − ∫_{a_n}^{b_n} r·g`, the right side
+converges, and the left side is monotone in `n`; hence every truncated
+energy integral obeys the uniform bound
+`∫_{Ioc(a,b)} w·gd² ≤ |F(b)| + |F(a)| + ∫_{Ioo} |r·g|` — which is what the
+rate ledger consumes.  (Stated at the truncated level to avoid assuming
+integrability; the consumer works with truncations and monotone limits.)
+-/
+theorem sturm_weighted_energy_truncated_bound
+    (lam : ℝ) (hlam : 0 < lam)
+    (g gd r : ℝ → ℝ)
+    (hg : ∀ x ∈ Ioo (-lam) lam, HasDerivAt g (gd x) x)
+    (hr : ∀ x ∈ Ioo (-lam) lam,
+      HasDerivAt (fun y : ℝ => (lam ^ 2 - y ^ 2) * gd y) (r x) x)
+    (hcont_gd : ContinuousOn gd (Ioo (-lam) lam))
+    (hcont_rg : ContinuousOn (fun x : ℝ => r x * g x) (Ioo (-lam) lam))
+    (hint1 : IntegrableOn (fun x : ℝ => r x * g x) (Ioo (-lam) lam) volume)
+    (a b : ℝ)
+    (hab : a ≤ b)
+    (haI : a ∈ Ioo (-lam) lam) (hbI : b ∈ Ioo (-lam) lam) :
+    (∫ x in a..b, (lam ^ 2 - x ^ 2) * gd x ^ 2) ≤
+      |(lam ^ 2 - b ^ 2) * gd b * g b| + |(lam ^ 2 - a ^ 2) * gd a * g a| +
+        ∫ x in Ioo (-lam) lam, |r x * g x| := by
+  set F : ℝ → ℝ := fun x => (lam ^ 2 - x ^ 2) * gd x * g x with hF
+  have hsub_uIcc : Set.uIcc a b ⊆ Ioo (-lam) lam := by
+    rw [Set.uIcc_of_le hab]
+    intro x hx
+    exact ⟨lt_of_lt_of_le haI.1 hx.1, lt_of_le_of_lt hx.2 hbI.2⟩
+  have hFderiv : ∀ x ∈ Ioo (-lam) lam,
+      HasDerivAt F (r x * g x + (lam ^ 2 - x ^ 2) * gd x ^ 2) x := by
+    intro x hx
+    have h1 : HasDerivAt (fun y : ℝ => ((lam ^ 2 - y ^ 2) * gd y) * g y)
+        (r x * g x + (lam ^ 2 - x ^ 2) * gd x * gd x) x :=
+      (hr x hx).mul (hg x hx)
+    have hFfun : (fun y : ℝ => ((lam ^ 2 - y ^ 2) * gd y) * g y) = F := by
+      funext y
+      rw [hF]
+    rw [hFfun] at h1
+    exact h1.congr_deriv (by ring)
+  have hcont_sum : ContinuousOn
+      (fun x : ℝ => r x * g x + (lam ^ 2 - x ^ 2) * gd x ^ 2)
+      (Ioo (-lam) lam) := by
+    apply hcont_rg.add
+    apply ContinuousOn.mul
+    · fun_prop
+    · exact (hcont_gd.mul hcont_gd).congr (fun x _ => by ring)
+  have hFTC : (∫ x in a..b, (r x * g x + (lam ^ 2 - x ^ 2) * gd x ^ 2)) =
+      F b - F a := by
+    apply intervalIntegral.integral_eq_sub_of_hasDerivAt
+    · intro x hx
+      exact hFderiv x (hsub_uIcc hx)
+    · exact (hcont_sum.mono hsub_uIcc).intervalIntegrable
+  have hint_rg_ab : IntervalIntegrable (fun x : ℝ => r x * g x) volume a b :=
+    ((hint1.mono_set hsub_uIcc)).intervalIntegrable
+  have hint_en_ab : IntervalIntegrable
+      (fun x : ℝ => (lam ^ 2 - x ^ 2) * gd x ^ 2) volume a b := by
+    apply ContinuousOn.intervalIntegrable
+    apply (ContinuousOn.mono _ hsub_uIcc)
+    apply ContinuousOn.mul
+    · fun_prop
+    · exact (hcont_gd.mul hcont_gd).congr (fun x _ => by ring)
+  have hsplit : (∫ x in a..b, (lam ^ 2 - x ^ 2) * gd x ^ 2) =
+      (F b - F a) - ∫ x in a..b, r x * g x := by
+    rw [← hFTC, ← intervalIntegral.integral_sub
+      (hint_rg_ab.add hint_en_ab) hint_rg_ab]
+    apply intervalIntegral.integral_congr
+    intro x _
+    ring
+  rw [hsplit]
+  have h1 : |∫ x in a..b, r x * g x| ≤
+      ∫ x in Ioo (-lam) lam, |r x * g x| := by
+    calc
+      |∫ x in a..b, r x * g x| ≤ abs (∫ x in a..b, |r x * g x|) := by
+        have h := intervalIntegral.norm_integral_le_abs_integral_norm
+          (f := fun x : ℝ => r x * g x) (a := a) (b := b) (μ := volume)
+        simpa [Real.norm_eq_abs] using h
+      _ = ∫ x in a..b, |r x * g x| :=
+          abs_of_nonneg (intervalIntegral.integral_nonneg hab
+            (fun x _ => abs_nonneg _))
+      _ = ∫ x in Ioc a b, |r x * g x| :=
+          intervalIntegral.integral_of_le hab
+      _ ≤ ∫ x in Ioo (-lam) lam, |r x * g x| := by
+          apply setIntegral_mono_set hint1.abs
+            (Eventually.of_forall fun x => abs_nonneg _)
+          apply HasSubset.Subset.eventuallyLE
+          intro x hx
+          exact ⟨lt_of_lt_of_le haI.1 hx.1.le, lt_of_le_of_lt hx.2 hbI.2⟩
+  have h2 : F b - F a ≤ |F b| + |F a| := by
+    have := abs_sub_abs_le_abs_sub (F b) (F a)
+    have h3 := le_abs_self (F b - F a)
+    have h4 : |F b - F a| ≤ |F b| + |F a| := by
+      calc |F b - F a| = |F b + -F a| := by rw [sub_eq_add_neg]
+        _ ≤ |F b| + |-F a| := abs_add_le _ _
+        _ = |F b| + |F a| := by rw [abs_neg]
+    linarith
+  have h5 : -(∫ x in a..b, r x * g x) ≤ |∫ x in a..b, r x * g x| :=
+    neg_le_abs _
+  rw [hF] at h2
+  simp only [] at h2
+  linarith [h1, h2, h5]
+
 /-! ## Exact cylinder eigenrelations for the two fixed profiles -/
 
 /-- First derivative of the mode-0 profile. -/
@@ -266,6 +370,7 @@ theorem ctW4_cylinder_eigenrelation (x : ℝ) :
   ring
 
 #print axioms sturm_weighted_energy_identity
+#print axioms sturm_weighted_energy_truncated_bound
 #print axioms ctW0_cylinder_eigenrelation
 #print axioms ctW4_cylinder_eigenrelation
 
