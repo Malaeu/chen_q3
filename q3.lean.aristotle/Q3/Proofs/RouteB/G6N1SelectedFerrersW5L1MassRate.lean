@@ -107,4 +107,60 @@ private theorem explicitCCMLimitH_le_half_gaussian (y : ℝ) :
 
 #print axioms explicitCCMLimitH_le_half_gaussian
 
+/-! ## The right half of the signed envelope: `1 ≤ u`
+
+For `1 ≤ u` every active index satisfies `n * u ≥ n`, so the signed comb is
+dominated termwise by the Gaussian series `Σ_n 12 * exp (-pi * (n*u)^2 / 2)`,
+and that series telescopes below a single geometric tail.  No cancellation is
+spent here; the left half `u ≤ 1` is where zero mass will have to work. -/
+
+/-- Geometric domination of the Gaussian series on the right half.  For
+`1 ≤ u` the `n`-th Gaussian is at most the first one times `2^(1-n)`, because
+`exp (-pi u^2 (n^2 - 1) / 2) ≤ exp (-(n-1)) ≤ 2^(1-n)`. -/
+private theorem gaussian_series_le_geometric
+    {u : ℝ} (hu : 1 ≤ u) (n : ℕ) (hn : 1 ≤ n) :
+    Real.exp (-(Real.pi * ((n : ℝ) * u) ^ 2) / 2) ≤
+      Real.exp (-(Real.pi * u ^ 2) / 2) * (2 : ℝ)⁻¹ ^ (n - 1) := by
+  have hpi := Real.pi_pos
+  have hu0 : (0 : ℝ) < u := lt_of_lt_of_le one_pos hu
+  have hn1 : (1 : ℝ) ≤ (n : ℝ) := by exact_mod_cast hn
+  -- (n*u)^2 = u^2 + u^2*(n^2-1) and u^2*(n^2-1) >= n-1 pointwise.
+  have hgap : (Real.pi * u ^ 2 * ((n : ℝ) ^ 2 - 1)) / 2 ≥ ((n : ℝ) - 1) := by
+    have hu2 : (1 : ℝ) ≤ u ^ 2 := by nlinarith
+    have hpi3 : (3 : ℝ) < Real.pi := Real.pi_gt_three
+    have hsq : (0 : ℝ) ≤ (n : ℝ) ^ 2 - 1 := by nlinarith [hn1]
+    have htwo : (2 : ℝ) * ((n : ℝ) - 1) ≤ (n : ℝ) ^ 2 - 1 := by
+      nlinarith [sq_nonneg ((n : ℝ) - 1)]
+    have hthree : (3 : ℝ) ≤ Real.pi * u ^ 2 := by nlinarith [hpi3, hu2, hpi]
+    have hchain : (3 : ℝ) * ((n : ℝ) ^ 2 - 1) ≤
+        Real.pi * u ^ 2 * ((n : ℝ) ^ 2 - 1) :=
+      mul_le_mul_of_nonneg_right hthree hsq
+    linarith [hchain, htwo]
+  have hsplit : -(Real.pi * ((n : ℝ) * u) ^ 2) / 2 =
+      -(Real.pi * u ^ 2) / 2 - (Real.pi * u ^ 2 * ((n : ℝ) ^ 2 - 1)) / 2 := by
+    ring
+  rw [hsplit, Real.exp_sub]
+  apply mul_le_mul_of_nonneg_left _ (Real.exp_pos _).le
+  -- exp (-(gap)) <= exp (-(n-1)) <= 2^(1-n)
+  have hstep1 : Real.exp (-((Real.pi * u ^ 2 * ((n : ℝ) ^ 2 - 1)) / 2)) ≤
+      Real.exp (-((n : ℝ) - 1)) := by
+    apply Real.exp_le_exp.mpr
+    linarith [hgap]
+  refine le_trans (by simpa [Real.exp_neg] using hstep1) ?_
+  -- exp (n-1) >= 2^(n-1) since exp 1 >= 2
+  have hgoal : Real.exp (1 - (n : ℝ)) = (Real.exp ((n : ℝ) - 1))⁻¹ := by
+    rw [← Real.exp_neg]
+    congr 1
+    ring
+  rw [hgoal, show ((2 : ℝ)⁻¹ ^ (n - 1)) = ((2 : ℝ) ^ (n - 1))⁻¹ by
+    rw [inv_pow]]
+  rw [inv_le_inv₀ (Real.exp_pos _) (by positivity)]
+  have hcast : ((n : ℝ) - 1) = ((n - 1 : ℕ) : ℝ) := by
+    have : (1 : ℕ) ≤ n := hn
+    push_cast [Nat.cast_sub this]
+    ring
+  rw [hcast, ← Real.exp_one_rpow ((n - 1 : ℕ) : ℝ), Real.rpow_natCast]
+  apply pow_le_pow_left₀ (by norm_num)
+  linarith [Real.add_one_le_exp (1 : ℝ)]
+
 end Q3.RouteB.D0Pstar
