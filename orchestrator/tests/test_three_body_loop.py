@@ -993,5 +993,190 @@ class ThreeBodyPlants(unittest.TestCase):
                     spine.validate_tool_manifest()
 
 
+class SemanticAdmissionPlants(ThreeBodyPlants):
+    """Mandatory plants for CONTROL_V9_LINUX_ATTESTATION_BROKER_AND_ATOMIC_ADMIT.
+
+    The admission path must fail closed on every route that would let a
+    committing body mint, name or edit its own semantic attestation.
+    """
+
+    ATTEST = "ATTEST_PLANT_V1"
+
+    def _green(self, root: Path) -> tuple[Path, dict[str, object]]:
+        state_path, _commit = self._kernel_green_state(root)
+        state = three_body_loop.load_state(state_path, repo_root=root)
+        return state_path, state
+
+    def _receipt_for(self, state: dict[str, object], attestation_id: str) -> dict[str, object]:
+        entry = json.loads(json.dumps(state["entries"][0]))
+        entry["semantic_attestation_id"] = attestation_id
+        entry["admitted_scope"] = ["production"]
+        return self._semantic_receipt(entry)
+
+    def _admit(self, root: Path, state_path: Path, resolver, attestation_id=None):
+        entry_id = json.loads(state_path.read_bytes())["entries"][0]["entry_id"]
+        return three_body_loop.materialize_semantic_admission(
+            entry_id=entry_id,
+            attestation_id=attestation_id or self.ATTEST,
+            state_path=state_path,
+            lock_path=root / "writer.lock",
+            repo_root=root,
+            semantic_attestation_resolver=resolver,
+        )
+
+    def test_PLANT_BROKER_UNAVAILABLE_REJECTS_ADMISSION(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            state_path, _state = self._green(root)
+            self.assert_code(
+                "SEMANTIC_ADMISSION_REFUSED",
+                self._admit,
+                root,
+                state_path,
+                lambda _id: None,
+            )
+            after = three_body_loop.load_state(state_path, repo_root=root)
+            self.assertEqual(after["entries"][0]["status"], "KERNEL_GREEN")
+
+    def test_PLANT_UNKNOWN_ATTESTATION_ID_REJECTS_ADMISSION(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            state_path, state = self._green(root)
+            known = self._receipt_for(state, self.ATTEST)
+            resolver = lambda requested: known if requested == self.ATTEST else None
+            self.assert_code(
+                "SEMANTIC_ADMISSION_REFUSED",
+                self._admit,
+                root,
+                state_path,
+                resolver,
+                "ATTEST_NEVER_ISSUED",
+            )
+
+    def test_PLANT_WRONG_ISSUER_REJECTS_ADMISSION(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            state_path, state = self._green(root)
+            forged = self._receipt_for(state, self.ATTEST)
+            forged["issuer"] = "CODEX_EXECUTOR"
+            self.assert_code(
+                "SEMANTIC_ADMISSION_REFUSED",
+                self._admit,
+                root,
+                state_path,
+                lambda _id: forged,
+            )
+
+    def test_PLANT_RECEIPT_FIELD_DRIFT_REJECTS_ADMISSION(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            state_path, state = self._green(root)
+            drifted = self._receipt_for(state, self.ATTEST)
+            drifted["source_commit"] = "0" * 40
+            with self.assertRaises(three_body_loop.ThreeBodyViolation):
+                self._admit(root, state_path, lambda _id: drifted)
+            after = three_body_loop.load_state(state_path, repo_root=root)
+            self.assertEqual(after["entries"][0]["status"], "KERNEL_GREEN")
+
+    def test_PLANT_ARBITRARY_RECEIPT_PATH_IS_NOT_AN_INTERFACE(self) -> None:
+        parser = three_body_loop._parser()
+        for forbidden in ("--receipt-path", "--receipt-json", "--issuer", "--admitted-scope"):
+            with self.assertRaises(SystemExit):
+                parser.parse_args(
+                    [
+                        "semantic-admit",
+                        "--entry-id",
+                        "E",
+                        "--attestation-id",
+                        "A",
+                        forbidden,
+                        "value",
+                    ]
+                )
+
+    def test_PLANT_INLINE_JSON_RECEIPT_IS_NOT_AN_INTERFACE(self) -> None:
+        import inspect
+
+        signature = inspect.signature(three_body_loop.materialize_semantic_admission)
+        for forbidden in ("receipt", "receipt_path", "receipt_json", "issuer", "admitted_scope"):
+            self.assertNotIn(forbidden, signature.parameters)
+        broker_signature = inspect.signature(
+            three_body_loop.resolve_linux_semantic_attestation
+        )
+        self.assertEqual(
+            [name for name in broker_signature.parameters if name != "socket_path"],
+            ["attestation_id"],
+        )
+
+    def test_PLANT_SOURCE_WRITTEN_CANNOT_BE_ADMITTED(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            state_path, state = self._green(root)
+            raw = json.loads(state_path.read_bytes())
+            raw["entries"][0]["status"] = "SOURCE_WRITTEN"
+            state_path.write_bytes(three_body_loop._canonical_state_bytes(raw))
+            receipt = self._receipt_for(state, self.ATTEST)
+            self.assert_code(
+                "SEMANTIC_ADMISSION_REFUSED",
+                self._admit,
+                root,
+                state_path,
+                lambda _id: receipt,
+            )
+
+    def test_PLANT_SECOND_ATTESTATION_CANNOT_REPLACE_ADMITTED(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            state_path, state = self._green(root)
+            receipt = self._receipt_for(state, self.ATTEST)
+            first = self._admit(root, state_path, lambda _id: receipt)
+            self.assertTrue(first["changed"])
+            replay = self._admit(root, state_path, lambda _id: receipt)
+            self.assertFalse(replay["changed"])
+            other = self._receipt_for(state, "ATTEST_OTHER_V1")
+            self.assert_code(
+                "SEMANTIC_ADMISSION_REFUSED",
+                self._admit,
+                root,
+                state_path,
+                lambda _id: other,
+                "ATTEST_OTHER_V1",
+            )
+
+    def test_PLANT_KERNEL_GREEN_STILL_BLOCKS_DISPATCH(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._green(root)
+            self.assert_code(
+                "SEMANTIC_QUARANTINE_ACTIVE",
+                three_body_loop.validate_repository_gate,
+                repo_root=root,
+                require_dispatch_clear=True,
+                semantic_attestation_resolver=lambda _id: None,
+            )
+
+    def test_PLANT_ADMISSION_CLEARS_ONLY_THE_QUARANTINE_BARRIER(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            state_path, state = self._green(root)
+            before = json.loads(state_path.read_bytes())["entries"][0]
+            receipt = self._receipt_for(state, self.ATTEST)
+            self._admit(root, state_path, lambda _id: receipt)
+            after = json.loads(state_path.read_bytes())["entries"][0]
+            self.assertEqual(after["status"], "SEMANTICALLY_ADMITTED")
+            self.assertEqual(after["admitted_scope"], ["production"])
+            self.assertEqual(after["semantic_attestation_id"], self.ATTEST)
+            mutable = {"status", "admitted_scope", "semantic_attestation_id"}
+            for field in set(before) | set(after):
+                if field in mutable:
+                    continue
+                self.assertEqual(before[field], after[field], f"{field} must be byte-identical")
+            three_body_loop.validate_repository_gate(
+                repo_root=root,
+                require_dispatch_clear=True,
+                semantic_attestation_resolver=lambda _id: receipt,
+            )
+
+
 if __name__ == "__main__":
     unittest.main()

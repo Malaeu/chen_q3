@@ -3,7 +3,10 @@
   "control_version": 9,
   "entries": [
     {
-      "admitted_scope": [],
+      "admitted_scope": [
+        "W5_FIXED_K_QUANTITATIVE_FOURIER_DECAY_EXACT_W4_BUDGET",
+        "W5_FIXED_K_LITERAL_SHIFTED_FORM_ENERGY_MAJORANT"
+      ],
       "closes": [
         "W5_QUANTITATIVE_SHIFTED_ENERGY_EXTRACTION"
       ],
@@ -16,11 +19,11 @@
         "W5_COFINAL_PACKET_BUDGET_RATE"
       ],
       "quantifiers": "for every k : Nat; the universal envelope is independent of k and all remaining k-dependence is explicit in the W4 packet budget",
-      "semantic_attestation_id": null,
+      "semantic_attestation_id": "ATTEST_GOAL058_W5_B635BA98B2C465FFE271B0775AFD174F74953C19_V1",
       "source_commit": "d50e1899261c7b318e5d9a3c1977fcba18a7e79c",
       "source_git_blob": "5205b76c962a01411dffbe6ded97bf2eaa6fd313",
       "source_path": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersQuantitativeShiftedRootEnergy.lean",
-      "status": "KERNEL_GREEN",
+      "status": "SEMANTICALLY_ADMITTED",
       "task_blob": "5e9d7835cb4a31947000006cdbaecd85b40dbff3",
       "task_path": "docs/Codex/TASK_2026-08-25_goal058_w5_quantitative_shifted_energy.md",
       "terminal_consumer": "W5 cofinal selected-Ferrers shifted-energy rate",

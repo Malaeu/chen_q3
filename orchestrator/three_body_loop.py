@@ -24,6 +24,7 @@ import hashlib
 import json
 import os
 import re
+import socket
 import subprocess
 import sys
 import tempfile
@@ -349,6 +350,66 @@ def _canonical_json_bytes(value: object) -> bytes:
 
 def _canonical_state_bytes(value: Mapping[str, Any]) -> bytes:
     return (json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True) + "\n").encode("utf-8")
+
+
+SEMANTIC_ATTESTATION_SOCKET = Path("/run/q3-control-v9/semantic-attestation.sock")
+SEMANTIC_ATTESTATION_QUERY_SCHEMA = "q3_semantic_attestation_query.v1"
+SEMANTIC_ATTESTATION_ISSUER = "LINUX_INDEPENDENT_SEMANTIC_AUDITOR"
+_SEMANTIC_ATTESTATION_TIMEOUT = 5.0
+_SEMANTIC_ATTESTATION_MAX_BYTES = 262144
+
+
+def resolve_linux_semantic_attestation(
+    attestation_id: str,
+    *,
+    socket_path: Path = SEMANTIC_ATTESTATION_SOCKET,
+) -> dict[str, Any] | None:
+    """Resolve one attestation through the fixed external broker socket.
+
+    The transport is a fixed Unix-domain socket.  There is no shell
+    invocation, no environment override and no caller-selected path: a caller
+    can name an attestation ID and nothing else.  An unavailable broker
+    resolves to ``None``, which makes admission fail closed.
+    """
+    if not isinstance(attestation_id, str) or not attestation_id:
+        return None
+    query = _canonical_json_bytes(
+        {
+            "schema": SEMANTIC_ATTESTATION_QUERY_SCHEMA,
+            "attestation_id": attestation_id,
+        }
+    )
+    try:
+        with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as client:
+            client.settimeout(_SEMANTIC_ATTESTATION_TIMEOUT)
+            client.connect(str(socket_path))
+            client.sendall(query + b"\n")
+            chunks: list[bytes] = []
+            size = 0
+            while True:
+                chunk = client.recv(65536)
+                if not chunk:
+                    break
+                chunks.append(chunk)
+                size += len(chunk)
+                if size > _SEMANTIC_ATTESTATION_MAX_BYTES:
+                    return None
+                if chunks[-1].endswith(b"\n"):
+                    break
+    except OSError:
+        return None
+    try:
+        envelope = json.loads(b"".join(chunks))
+    except ValueError:
+        return None
+    if not isinstance(envelope, dict):
+        return None
+    receipt = envelope.get("receipt")
+    if receipt is None:
+        return None
+    if not isinstance(receipt, dict):
+        return None
+    return receipt
 
 
 def _canonical_yaml_bytes(value: Mapping[str, Any]) -> bytes:
@@ -890,7 +951,9 @@ def validate_repository_gate(
     repo_root: Path = REPO_ROOT,
     state_path: Path | None = None,
     require_dispatch_clear: bool = False,
-    semantic_attestation_resolver: Callable[[str], dict[str, Any] | None] | None = None,
+    semantic_attestation_resolver: Callable[[str], dict[str, Any] | None] | None = (
+        resolve_linux_semantic_attestation
+    ),
     supplier_preflight_resolver: Callable[[str], str | None] | None = None,
     autonomy_lease_resolver: Callable[[str], dict[str, Any] | None] | None = None,
 ) -> dict[str, Any]:
@@ -1273,7 +1336,11 @@ def record_tactical_repair_attempt(
     lock_path: Path,
 ) -> dict[str, Any]:
     with _plain_flock(lock_path):
-        state = load_state(state_path, repo_root=state_path.parents[2])
+        state = load_state(
+            state_path,
+            repo_root=state_path.parents[2],
+            semantic_attestation_resolver=resolve_linux_semantic_attestation,
+        )
         matches = [row for row in state["tactical_repairs"] if row["repair_id"] == repair_id]
         if matches:
             repair = matches[0]
@@ -1740,7 +1807,11 @@ def launch_pinned_session(
         lock_fd = _acquire_writer_lock(lock_path, record)
     except ThreeBodyViolation as exc:
         if exc.code == "WRITER_LOCK_COLLISION":
-            reread = load_state(state_path, repo_root=repo_root)
+            reread = load_state(
+                state_path,
+                repo_root=repo_root,
+                semantic_attestation_resolver=resolve_linux_semantic_attestation,
+            )
             existing = _find_event(reread, wake)
             if existing is not None and all(existing[field] == wake[field] for field in wake):
                 return {"result": "DUPLICATE_TRIGGER_NOOP", "event": existing}
@@ -1882,7 +1953,11 @@ def recover_launch_state(
     repo_root: Path,
 ) -> str:
     wake = _validate_wake_event(dict(event))
-    state = load_state(state_path, repo_root=repo_root)
+    state = load_state(
+        state_path,
+        repo_root=repo_root,
+        semantic_attestation_resolver=resolve_linux_semantic_attestation,
+    )
     current = _find_event(state, wake)
     if current is None:
         _fail("THREE_BODY_EVENT_LEDGER_INVALID", "event was never reserved")
@@ -1969,6 +2044,95 @@ def _child_exec(args: argparse.Namespace) -> int:
         return 127
 
 
+def materialize_semantic_admission(
+    *,
+    entry_id: str,
+    attestation_id: str,
+    state_path: Path = DEFAULT_STATE,
+    lock_path: Path = DEFAULT_WRITER_LOCK,
+    repo_root: Path = REPO_ROOT,
+    semantic_attestation_resolver: Callable[[str], dict[str, Any] | None] | None = None,
+    supplier_preflight_resolver: Callable[[str], str | None] | None = None,
+    autonomy_lease_resolver: Callable[[str], dict[str, Any] | None] | None = None,
+) -> dict[str, Any]:
+    """Move one quarantine entry from KERNEL_GREEN to SEMANTICALLY_ADMITTED.
+
+    Exactly three fields change: ``status``, ``admitted_scope`` and
+    ``semantic_attestation_id``.  The admitted scope comes from the externally
+    resolved receipt, never from an argument.  The candidate state is validated
+    with the same resolver before it replaces the tracked state.
+    """
+    code = "SEMANTIC_ADMISSION_REFUSED"
+    resolver = semantic_attestation_resolver or resolve_linux_semantic_attestation
+    with _plain_flock(lock_path):
+        if not state_path.is_file():
+            _fail(code, f"missing state: {state_path}")
+        state = _load_unique_json_bytes(
+            state_path.read_bytes(), code="SEMANTIC_QUARANTINE_STATE_INVALID"
+        )
+        entries = state.get("entries")
+        if not isinstance(entries, list):
+            _fail(code, "state has no entry list")
+        index = None
+        for position, candidate in enumerate(entries):
+            if isinstance(candidate, Mapping) and candidate.get("entry_id") == entry_id:
+                index = position
+                break
+        if index is None:
+            _fail(code, f"unknown entry: {entry_id}")
+        entry = dict(entries[index])
+
+        status = entry.get("status")
+        if status == "SEMANTICALLY_ADMITTED":
+            if entry.get("semantic_attestation_id") == attestation_id:
+                return {
+                    "entry_id": entry_id,
+                    "attestation_id": attestation_id,
+                    "status": status,
+                    "admitted_scope": list(entry.get("admitted_scope") or []),
+                    "changed": False,
+                }
+            _fail(code, "admitted entry cannot take a different attestation ID")
+        if status != "KERNEL_GREEN":
+            _fail(code, f"entry is {status}, only KERNEL_GREEN can be admitted")
+
+        receipt = resolver(attestation_id)
+        if receipt is None:
+            _fail(code, f"no external receipt resolved for {attestation_id}")
+        if receipt.get("issuer") != SEMANTIC_ATTESTATION_ISSUER:
+            _fail(code, "receipt issuer is not the independent Linux auditor")
+        if receipt.get("attestation_id") != attestation_id:
+            _fail(code, "receipt does not carry the requested attestation ID")
+        scope = receipt.get("admitted_scope")
+        if not isinstance(scope, list) or not scope:
+            _fail(code, "receipt carries no admitted scope")
+
+        entry["status"] = "SEMANTICALLY_ADMITTED"
+        entry["admitted_scope"] = list(scope)
+        entry["semantic_attestation_id"] = attestation_id
+
+        candidate_entries = list(entries)
+        candidate_entries[index] = entry
+        candidate_state = dict(state)
+        candidate_state["entries"] = candidate_entries
+
+        validated = validate_state(
+            candidate_state,
+            repo_root=repo_root,
+            semantic_attestation_resolver=resolver,
+            supplier_preflight_resolver=supplier_preflight_resolver,
+            autonomy_lease_resolver=autonomy_lease_resolver,
+        )
+        _atomic_write(state_path, _canonical_state_bytes(validated))
+        return {
+            "entry_id": entry_id,
+            "attestation_id": attestation_id,
+            "status": "SEMANTICALLY_ADMITTED",
+            "admitted_scope": list(scope),
+            "changed": True,
+        }
+
+
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command_name", required=True)
@@ -2000,6 +2164,14 @@ def _parser() -> argparse.ArgumentParser:
     watch.add_argument("--branch", required=True)
     watch.add_argument("--prompt-path", default="docs/Codex/WATCH_PROMPT.md")
     watch.add_argument("--codex-bin", default="codex")
+    admit = sub.add_parser(
+        "semantic-admit",
+        help="materialize one externally attested semantic admission",
+    )
+    admit.add_argument("--entry-id", required=True)
+    admit.add_argument("--attestation-id", required=True)
+    admit.add_argument("--state", type=Path, default=DEFAULT_STATE)
+    admit.add_argument("--lock", type=Path, default=DEFAULT_WRITER_LOCK)
     child = sub.add_parser("_child-exec")
     child.add_argument("--marker", required=True)
     child.add_argument("--error-fd", type=int, required=True)
@@ -2018,12 +2190,26 @@ def main(argv: Sequence[str] | None = None) -> int:
         if args.command_name == "_child-exec":
             return _child_exec(args)
         if args.command_name == "validate":
-            state = load_state(args.state, repo_root=REPO_ROOT)
+            state = load_state(
+                args.state,
+                repo_root=REPO_ROOT,
+                semantic_attestation_resolver=resolve_linux_semantic_attestation,
+            )
             print(
                 "THREE_BODY_STATE_VALID "
                 f"entries={len(state['entries'])} events={len(state['event_ledger'])} "
                 f"active_lease={'yes' if state['active_lease'] else 'no'}"
             )
+            return 0
+        if args.command_name == "semantic-admit":
+            result = materialize_semantic_admission(
+                entry_id=args.entry_id,
+                attestation_id=args.attestation_id,
+                state_path=args.state,
+                lock_path=args.lock,
+                repo_root=REPO_ROOT,
+            )
+            print(json.dumps(result, ensure_ascii=False, sort_keys=True))
             return 0
         if args.command_name == "request-validate":
             envelope, payload = parse_request_body(args.path.read_bytes())

@@ -314,6 +314,45 @@ tool_families:
         validation: All eight mandatory control-v9 plants plus crash and mutation plants.
         last_verified: 2026-08-21
 
+      - id: semantic-attestation-broker
+        status: ENABLED
+        audience: [HUMAN, CLAUDE_CODE]
+        mode: READ_ONLY
+        path: orchestrator/semantic_attestation_broker.py
+        invoke: python3 orchestrator/semantic_attestation_broker.py
+        trigger: >-
+          Control-v9 admission needs an external receipt; the broker must be
+          listening before any dispatch-clear check.
+        writes: false
+        approval: NONE_FOR_LOOKUP
+        authority: >-
+          EXTERNAL_RECEIPT_LOOKUP_ONLY_NOT_ISSUANCE_AND_NOT_ADMISSION
+        records_to: [fixed unix socket /run/q3-control-v9/semantic-attestation.sock]
+        validation: >-
+          test_semantic_attestation_broker: lookup is not a path, issuer drift and
+          id mismatch do not resolve, unavailable broker resolves to null.
+        last_verified: 2026-08-25
+
+      - id: semantic-admit
+        status: ENABLED
+        audience: [HUMAN, CLAUDE_CODE]
+        mode: WRITES_CANONICAL
+        path: orchestrator/three_body_loop.py
+        invoke: >-
+          python3 orchestrator/three_body_loop.py semantic-admit
+          --entry-id <entry> --attestation-id <attestation>
+        trigger: A judge verdict admitted a quarantined node and a receipt exists.
+        writes: true
+        approval: EXTERNAL_RECEIPT_REQUIRED_NO_INLINE_RECEIPT_ACCEPTED
+        authority: >-
+          KERNEL_GREEN_TO_SEMANTICALLY_ADMITTED_TRANSITION_ONLY_THREE_MUTABLE_FIELDS
+        records_to: [orchestrator/state/SEMANTIC_QUARANTINE.json]
+        validation: >-
+          test_three_body_loop SemanticAdmissionPlants: broker unavailable, unknown id,
+          wrong issuer, field drift, receipt path, inline json, SOURCE_WRITTEN,
+          second attestation, pre-admission barrier, post-admission scope.
+        last_verified: 2026-08-25
+
       - id: codex-watch-read-only
         status: ENABLED
         audience: [CODEX, HUMAN]

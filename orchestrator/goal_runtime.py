@@ -205,7 +205,9 @@ def _fail(code: str, detail: str = "") -> None:
 def _validate_three_body_dispatch(
     *,
     repo_root: Path,
-    semantic_attestation_resolver: Callable[[str], dict[str, Any] | None] | None = None,
+    semantic_attestation_resolver: Callable[[str], dict[str, Any] | None] | None = (
+        three_body_loop.resolve_linux_semantic_attestation
+    ),
     supplier_preflight_resolver: Callable[[str], str | None] | None = None,
     autonomy_lease_resolver: Callable[[str], dict[str, Any] | None] | None = None,
 ) -> None:
@@ -758,7 +760,9 @@ def select_action(
     current_phase_key: dict[str, str] | None = None,
     repo_root: Path = REPO_ROOT,
     proshka_receipt_validator: Callable[[dict[str, Any]], bool] | None = None,
-    semantic_attestation_resolver: Callable[[str], dict[str, Any] | None] | None = None,
+    semantic_attestation_resolver: Callable[[str], dict[str, Any] | None] | None = (
+        three_body_loop.resolve_linux_semantic_attestation
+    ),
     supplier_preflight_resolver: Callable[[str], str | None] | None = None,
     autonomy_lease_resolver: Callable[[str], dict[str, Any] | None] | None = None,
 ) -> SelectionDecision:
@@ -954,7 +958,9 @@ def validate_runtime_state(
     *,
     repo_root: Path = REPO_ROOT,
     grant_resolver: Callable[[str], dict[str, Any] | None] | None = None,
-    semantic_attestation_resolver: Callable[[str], dict[str, Any] | None] | None = None,
+    semantic_attestation_resolver: Callable[[str], dict[str, Any] | None] | None = (
+        three_body_loop.resolve_linux_semantic_attestation
+    ),
     supplier_preflight_resolver: Callable[[str], str | None] | None = None,
     autonomy_lease_resolver: Callable[[str], dict[str, Any] | None] | None = None,
 ) -> dict[str, Any]:

@@ -1,0 +1,19 @@
+[Unit]
+Description=Q3 Control-v9 semantic attestation broker (Linux independent auditor)
+Documentation=file:///mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_W5_CONTROL_V9_SEMANTIC_ATTESTATION_MATERIALIZATION_2026-08-25.md
+After=default.target
+
+[Service]
+Type=simple
+WorkingDirectory=/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean
+ExecStart=/usr/bin/python3 orchestrator/semantic_attestation_broker.py
+Restart=on-failure
+RestartSec=5
+# The broker only reads its own registry; it never writes the repository.
+ProtectSystem=strict
+ReadWritePaths=/run/q3-control-v9
+PrivateTmp=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=default.target
