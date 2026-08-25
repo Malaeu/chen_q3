@@ -163,4 +163,91 @@ private theorem gaussian_series_le_geometric
   apply pow_le_pow_left₀ (by norm_num)
   linarith [Real.add_one_le_exp (1 : ℝ)]
 
+/-! ## Global bound for the starred target comb on the right half -/
+
+/-- On `1 ≤ u` the starred target comb is a single Gaussian with an explicit
+constant: the half-Gaussian bound dominates each term and the geometric lemma
+telescopes the series to twice its first term. -/
+private theorem E_star_explicitCCMLimitH_norm_le_of_one_le
+    {u : ℝ} (hu : 1 ≤ u) :
+    ‖E_star explicitCCMLimitH u‖ ≤
+      24 * Real.sqrt u * Real.exp (-(Real.pi * u ^ 2) / 2) := by
+  have hu0 : (0 : ℝ) < u := lt_of_lt_of_le one_pos hu
+  have hnorm_summable : Summable
+      (fun n : ℕ+ => ‖explicitCCMLimitH ((n : ℕ) * u)‖) := by
+    -- dominated by the geometric Gaussian series
+    apply Summable.of_nonneg_of_le (fun n => norm_nonneg _)
+      (fun n => ?_)
+      (f := fun n : ℕ+ =>
+        12 * Real.exp (-(Real.pi * u ^ 2) / 2) * (2 : ℝ)⁻¹ ^ ((n : ℕ) - 1))
+    · apply Summable.mul_left
+      have hgeo : Summable (fun m : ℕ => ((2 : ℝ)⁻¹) ^ m) :=
+        summable_geometric_of_lt_one (by norm_num) (by norm_num)
+      have hinj : Function.Injective (fun n : ℕ+ => ((n : ℕ) - 1)) := by
+        intro a b hab
+        have ha := a.pos
+        have hb := b.pos
+        have hab' : (a : ℕ) - 1 = (b : ℕ) - 1 := hab
+        exact PNat.coe_injective (by omega)
+      simpa using hgeo.comp_injective hinj
+    · calc
+        ‖explicitCCMLimitH ((n : ℕ) * u)‖ ≤
+            12 * Real.exp (-(Real.pi * ((n : ℕ) * u) ^ 2) / 2) :=
+          explicitCCMLimitH_le_half_gaussian _
+        _ ≤ 12 * (Real.exp (-(Real.pi * u ^ 2) / 2) *
+              (2 : ℝ)⁻¹ ^ ((n : ℕ) - 1)) := by
+          have := gaussian_series_le_geometric hu (n : ℕ) n.pos
+          nlinarith [this, Real.exp_pos (-(Real.pi * ((n:ℕ) * u) ^ 2) / 2)]
+        _ = 12 * Real.exp (-(Real.pi * u ^ 2) / 2) *
+              (2 : ℝ)⁻¹ ^ ((n : ℕ) - 1) := by ring
+  rw [E_star, norm_mul, Complex.norm_real, Real.norm_eq_abs,
+    abs_of_nonneg (Real.sqrt_nonneg _)]
+  have htsum : ‖∑' n : ℕ+, explicitCCMLimitH ((n : ℕ) * u)‖ ≤
+      24 * Real.exp (-(Real.pi * u ^ 2) / 2) := by
+    calc
+      ‖∑' n : ℕ+, explicitCCMLimitH ((n : ℕ) * u)‖ ≤
+          ∑' n : ℕ+, ‖explicitCCMLimitH ((n : ℕ) * u)‖ :=
+        norm_tsum_le_tsum_norm hnorm_summable
+      _ ≤ ∑' n : ℕ+,
+            12 * Real.exp (-(Real.pi * u ^ 2) / 2) *
+              (2 : ℝ)⁻¹ ^ ((n : ℕ) - 1) := by
+        apply hnorm_summable.tsum_le_tsum _ ?_
+        · intro n
+          calc
+            ‖explicitCCMLimitH ((n : ℕ) * u)‖ ≤
+                12 * Real.exp (-(Real.pi * ((n : ℕ) * u) ^ 2) / 2) :=
+              explicitCCMLimitH_le_half_gaussian _
+            _ ≤ 12 * Real.exp (-(Real.pi * u ^ 2) / 2) *
+                  (2 : ℝ)⁻¹ ^ ((n : ℕ) - 1) := by
+              have := gaussian_series_le_geometric hu (n : ℕ) n.pos
+              nlinarith [this,
+                Real.exp_pos (-(Real.pi * ((n:ℕ) * u) ^ 2) / 2)]
+        · apply Summable.mul_left
+          have hgeo : Summable (fun m : ℕ => ((2 : ℝ)⁻¹) ^ m) :=
+            summable_geometric_of_lt_one (by norm_num) (by norm_num)
+          have hinj : Function.Injective (fun n : ℕ+ => ((n : ℕ) - 1)) := by
+            intro a b hab
+            have ha := a.pos
+            have hb := b.pos
+            have hab' : (a : ℕ) - 1 = (b : ℕ) - 1 := hab
+            exact PNat.coe_injective (by omega)
+          simpa using hgeo.comp_injective hinj
+      _ ≤ 24 * Real.exp (-(Real.pi * u ^ 2) / 2) := by
+        rw [tsum_mul_left]
+        have hval : ∑' n : ℕ+, ((2 : ℝ)⁻¹) ^ ((n : ℕ) - 1) = 2 := by
+          have hfun : (fun n : ℕ+ => ((2 : ℝ)⁻¹) ^ ((n : ℕ) - 1)) =
+              (fun n : ℕ+ =>
+                (fun m : ℕ => ((2 : ℝ)⁻¹) ^ m) (Equiv.pnatEquivNat n)) := by
+            funext n
+            simp [Equiv.pnatEquivNat, PNat.natPred]
+          rw [hfun, Equiv.pnatEquivNat.tsum_eq
+            (f := fun m : ℕ => ((2 : ℝ)⁻¹) ^ m), tsum_geometric_inv_two]
+        rw [hval]
+        nlinarith [Real.exp_pos (-(Real.pi * u ^ 2) / 2)]
+  calc
+    Real.sqrt u * ‖∑' n : ℕ+, explicitCCMLimitH ((n : ℕ) * u)‖ ≤
+        Real.sqrt u * (24 * Real.exp (-(Real.pi * u ^ 2) / 2)) :=
+      mul_le_mul_of_nonneg_left htsum (Real.sqrt_nonneg _)
+    _ = 24 * Real.sqrt u * Real.exp (-(Real.pi * u ^ 2) / 2) := by ring
+
 end Q3.RouteB.D0Pstar
