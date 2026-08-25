@@ -2977,3 +2977,79 @@ as the operative node (theorem shape in Section 4 of the artifact)?
 Alternative on request: we run the second-order ODE pairing anyway —
 registered prediction P_LINUX_R2_GAP_1 (0.90) says it reproduces the same
 boundary family at n^2 weight.
+
+---
+
+## 2026-08-26 (Linux) — BATCH: Sturm node 1 complete + three adjudications
+
+STATUS: READY_TO_SEND (batch of 4, assembled per phase-then-batch rule)
+
+### Item 1 — STURM_ENERGY node 1: analytic chain kernel-green, ratify instantiation inputs
+
+Chain (verdict 4c0e13ba, node order ratified): file
+q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SturmDefectTruncatedEnergy.lean
+(blob 0ce87cea, 1045 lines) + G6N1SturmWeightedEnergyIdentity.lean +
+G6N1SturmDefectEnergyModePlumbing.lean. Commits d24be617, 0422a5f5,
+69a0d4a6, 3de5e54d, c20be54b, a3c84e45. All public theorems: standard
+axiom triple, no sorry, full build exit 0.
+
+What is PROVED (per-mode, against any C2 cylinder profile W):
+1. Signed identity (B4): INT_{-lam}^{lam} (lam^2-x^2)|delta'|^2
+   = -INT r*delta, delta = c*physSeries - W, r exact from the committed
+   physical prolate ODE. Flux terms GONE (B3a: zero-flux transport +
+   vanishing weight), energy integrability PROVED (B3b: AECover
+   exhaustion), no edge hypothesis anywhere.
+2. Rate ledger (B5): with the cylinder eigenrelation W'' = (4pi^2u^2-mu)W,
+   pointwise -r*delta = m(mu-4pi^2u^2)delta^2 + (theta-m*mu)(cS)delta
+   - (u^2W''+2uW')delta; the potential SIGN pays the bulk (indicator
+   majorant on the core |u| <= sqrt(mu)/(2pi)); output
+   INT (lam^2-x^2)|delta'|^2 <= m*mu*Cd^2*(sqrt(mu)/pi) + Ce*Cphi*Cd + D*Cd.
+
+Remaining for the C^2/lam^2 endpoint (STURM_NODE1_INSTANTIATION), four
+named inputs, all typed as hypotheses of the ledger:
+  Cd  — C0 defect bound on the window        <- F72.6 (committed input family)
+  Ce  — |theta - m*mu| eigenvalue defect     <- F72.3B rates
+  Cphi — mode L1 mass on the window          <- F72.6 C0 + |D_n| envelope
+  D   — transport L1 mass                    <- node 2 (2b630d14) ctT0/ctT4 EXACT
+QUESTION 1: ratify this input list as THE instantiation contract for
+node 1 (nothing else enters), so node 3 (WEIGHTED_CONSUMER) can consume
+the weighted energy as a black box with these constants?
+Что меняется в действиях: да -> строим узел 3 немедленно, входы узла 1
+больше не трогаем; нет -> назови недостающий вход до узла 3.
+
+### Item 2 — FINITE_CERTIFICATE_RECEIVER: admit as a named receiver node?
+
+docs/FINITE_CERTIFICATE_PRINCIPLE.md (commits 7c9626ac, 25f72006): the
+three-line discriminant receiver — coercive tail mu, bounded interaction
+B, kernel margin nu, nu*mu >= B^2 ==> Q >= 0. Candidate Lean statement
+included (real inner-product space, orthogonal decomposition). This is
+an ASSEMBLY-SHAPE claim: the roof step becomes a finite certificate
+check, discovery stays in the pillars.
+QUESTION 2: admit FINITE_CERTIFICATE_RECEIVER as a named node of the
+assembly (VOI: decision-changing — it fixes the TARGET SHAPE all pillar
+outputs must feed), or kill it as premature until G-pillar budgets exist?
+Что меняется в действиях: да -> pillar outputs are typed toward
+(mu, B, nu) triples from now on; нет -> assembly shape stays open.
+
+### Item 3 — operator vocabulary drift (registry hygiene, cheap)
+
+Your recent verdicts use CONSUMER_STRENGTH_REDUCTION, ENERGY_REPRESENTATION,
+TYPE_BOUNDARY, FUNCTIONAL_AUDIT — none in the 2026-08-06 operator registry;
+strict validation in session_start is red on them.
+QUESTION 3: emit a one-line registry-extension verdict (four names, one
+sentence each), or map them onto existing registry operators?
+Что меняется в действиях: валидация зеленеет; наши парсеры вердиктов
+перестают спотыкаться об эти четыре имени.
+
+### Item 4 — Proposal v2_1_SHADOW (prompt delta, relay from the owner's correspondent)
+
+docs/routeB_bus/PROPOSAL_PROSHKA_V2_1_SHADOW_2026-08-26.md (d430a33b),
+disk-verified sections marked VERIFIED_BY_LINUX_FROM_DISK. Core deltas:
+belief-changing -> decision-changing (VOI_CLASS), certificate-first gate,
+W9 -> frontier-hardness, ROLE_MODE JUDGE|AUTHOR split, prompt-drift fix.
+Live prompt is HARD — untouched; this is a SHADOW backtest protocol.
+QUESTION 4 (а/б/в): (а) run the shadow backtest as specified; (б) adopt
+selected deltas without backtest (name which); (в) reject with reasons.
+Что меняется в действиях: (а) -> мы готовим backtest-пары из архива
+вердиктов; (б) -> точечная правка промпта через владельца; (в) -> файл
+остаётся архивом.
