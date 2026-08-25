@@ -178,4 +178,143 @@ private theorem w5d_rep_eq_finite
 #print axioms w5d_packet_differentiableAt_of_pos_ne
 #print axioms w5d_rep_eq_finite
 
+/-! ## The exact additive derivative decomposition -/
+
+/-- The weighted-derivative packet `Q_k(y) = y * pkt'(y)`.  Its comb is the
+exact derivative content of the representative; it is kept signed. -/
+private noncomputable def w5d_Q (k : ℕ) (y : ℝ) : ℂ :=
+  (y : ℂ) * deriv (selectedFerrersLemma73SourcePacket k) y
+
+/-- At every seam-free interior point the representative has the exact
+derivative `(1/2) * rep + sqrt u * Σ_{active} Q(n u)`.  This is the additive
+decomposition the derivative verdict puts first; nothing is taken in norm and
+nothing about the mass of `Q` is asserted. -/
+private theorem w5d_hasDerivAt_of_no_seam
+    (k : ℕ) {x : ℝ}
+    (hx : x ∈ Set.Ioo 0 (L_m (selectedFerrersPreAnchorIndex k)))
+    (hseam : ∀ n : ℕ+,
+      ((n : ℕ) : ℝ) *
+          (Real.exp x / lambda_m (selectedFerrersPreAnchorIndex k)) ≠
+        lambda_m (selectedFerrersPreAnchorIndex k)) :
+    HasDerivAt (selectedFerrersAbelLogRepresentative k)
+      ((1 / 2 : ℂ) * selectedFerrersAbelLogRepresentative k x +
+        (Real.sqrt
+            (Real.exp x / lambda_m (selectedFerrersPreAnchorIndex k)) : ℂ) *
+          ∑ n ∈ sourcePositiveIndexFinset (selectedFerrersPreAnchorIndex k),
+            w5d_Q k (((n : ℕ) : ℝ) *
+              (Real.exp x / lambda_m (selectedFerrersPreAnchorIndex k)))) x := by
+  set lam : ℝ := lambda_m (selectedFerrersPreAnchorIndex k) with hlamdef
+  have hlam0 : (0 : ℝ) < lam := by
+    rw [hlamdef, lambda_m]
+    apply Real.sqrt_pos.mpr
+    have h1 : (selectedFerrersPreAnchorIndex k).m = k + 2 := rfl
+    rw [h1]
+    positivity
+  set u : ℝ → ℝ := fun z => Real.exp z / lam with hudef
+  have hu0 : ∀ z, 0 < u z := fun z => by
+    rw [hudef]
+    positivity
+  have hcoordDeriv : ∀ z : ℝ, HasDerivAt u (u z) z := by
+    intro z
+    rw [hudef]
+    simpa using (Real.hasDerivAt_exp z).div_const lam
+  -- derivative of the sqrt weight, as a complex-valued map
+  have hsqrtDeriv : ∀ z : ℝ,
+      HasDerivAt (fun w : ℝ => ((Real.sqrt (u w) : ℝ) : ℂ))
+        (((1 / 2 * Real.sqrt (u z) : ℝ) : ℂ)) z := by
+    intro z
+    have hreal : HasDerivAt (fun w : ℝ => Real.sqrt (u w))
+        (1 / (2 * Real.sqrt (u z)) * u z) z := by
+      have h := (Real.hasDerivAt_sqrt (ne_of_gt (hu0 z))).comp z (hcoordDeriv z)
+      exact h
+    have hval : 1 / (2 * Real.sqrt (u z)) * u z = 1 / 2 * Real.sqrt (u z) := by
+      have hss : Real.sqrt (u z) * Real.sqrt (u z) = u z :=
+        Real.mul_self_sqrt (hu0 z).le
+      have hs0 : (0 : ℝ) < Real.sqrt (u z) := Real.sqrt_pos.mpr (hu0 z)
+      field_simp
+      linarith [hss]
+    rw [hval] at hreal
+    exact hreal.ofReal_comp
+  -- derivative of each comb term
+  have htermDeriv : ∀ n ∈ sourcePositiveIndexFinset
+      (selectedFerrersPreAnchorIndex k),
+      HasDerivAt (fun w : ℝ =>
+        selectedFerrersLemma73SourcePacket k (((n : ℕ) : ℝ) * u w))
+        (w5d_Q k (((n : ℕ) : ℝ) * u x)) x := by
+    intro n _
+    have hnpos : (0 : ℝ) < ((n : ℕ) : ℝ) := by exact_mod_cast n.pos
+    have hargPos : 0 < ((n : ℕ) : ℝ) * u x := mul_pos hnpos (hu0 x)
+    have hargNe : ((n : ℕ) : ℝ) * u x ≠
+        (selectedFerrersPreAnchorPair k).pw.lambda := by
+      rw [selectedFerrersPreAnchorPair_lambda_eq k, ← hlamdef]
+      exact hseam n
+    have hpkt := (w5d_packet_differentiableAt_of_pos_ne k hargPos
+      hargNe).hasDerivAt
+    have hinner : HasDerivAt (fun w : ℝ => ((n : ℕ) : ℝ) * u w)
+        (((n : ℕ) : ℝ) * u x) x := (hcoordDeriv x).const_mul _
+    have hcomp := hpkt.scomp x hinner
+    have hval : (((n : ℕ) : ℝ) * u x) •
+        deriv (selectedFerrersLemma73SourcePacket k) (((n : ℕ) : ℝ) * u x) =
+        w5d_Q k (((n : ℕ) : ℝ) * u x) := by
+      rw [w5d_Q, Complex.real_smul]
+    rw [hval] at hcomp
+    exact hcomp
+  -- derivative of the finite comb
+  have hcombDeriv : HasDerivAt (fun w : ℝ =>
+      ∑ n ∈ sourcePositiveIndexFinset (selectedFerrersPreAnchorIndex k),
+        selectedFerrersLemma73SourcePacket k (((n : ℕ) : ℝ) * u w))
+      (∑ n ∈ sourcePositiveIndexFinset (selectedFerrersPreAnchorIndex k),
+        w5d_Q k (((n : ℕ) : ℝ) * u x)) x :=
+    HasDerivAt.fun_sum htermDeriv
+  -- product with the sqrt weight, plus the shadow
+  have hfinite : HasDerivAt (fun w : ℝ =>
+      ((Real.sqrt (u w) : ℝ) : ℂ) *
+        ∑ n ∈ sourcePositiveIndexFinset (selectedFerrersPreAnchorIndex k),
+          selectedFerrersLemma73SourcePacket k (((n : ℕ) : ℝ) * u w) +
+      (1 / 2 : ℂ) * selectedFerrersLemma73SourcePacket k 0 *
+        ((Real.sqrt (u w) : ℝ) : ℂ))
+      ((((1 / 2 * Real.sqrt (u x) : ℝ) : ℂ)) *
+          (∑ n ∈ sourcePositiveIndexFinset (selectedFerrersPreAnchorIndex k),
+            selectedFerrersLemma73SourcePacket k (((n : ℕ) : ℝ) * u x)) +
+        ((Real.sqrt (u x) : ℝ) : ℂ) *
+          (∑ n ∈ sourcePositiveIndexFinset (selectedFerrersPreAnchorIndex k),
+            w5d_Q k (((n : ℕ) : ℝ) * u x)) +
+        (1 / 2 : ℂ) * selectedFerrersLemma73SourcePacket k 0 *
+          (((1 / 2 * Real.sqrt (u x) : ℝ) : ℂ))) x := by
+    exact ((hsqrtDeriv x).mul hcombDeriv).add
+      (((hsqrtDeriv x).const_mul
+        ((1 / 2 : ℂ) * selectedFerrersLemma73SourcePacket k 0)))
+  -- the representative agrees with the finite form on a neighbourhood
+  have hrepEq : selectedFerrersAbelLogRepresentative k =ᶠ[nhds x]
+      (fun w : ℝ =>
+        ((Real.sqrt (u w) : ℝ) : ℂ) *
+          ∑ n ∈ sourcePositiveIndexFinset (selectedFerrersPreAnchorIndex k),
+            selectedFerrersLemma73SourcePacket k (((n : ℕ) : ℝ) * u w) +
+        (1 / 2 : ℂ) * selectedFerrersLemma73SourcePacket k 0 *
+          ((Real.sqrt (u w) : ℝ) : ℂ)) := by
+    filter_upwards [isOpen_Ioo.mem_nhds hx] with w hw
+    rw [w5d_rep_eq_finite k ⟨hw.1.le, hw.2.le⟩, finiteEStar, finiteEStarCore]
+  have hgoal := hfinite.congr_of_eventuallyEq hrepEq
+  -- identify the derivative value with the stated decomposition
+  have hvalue :
+      ((((1 / 2 * Real.sqrt (u x) : ℝ) : ℂ)) *
+          (∑ n ∈ sourcePositiveIndexFinset (selectedFerrersPreAnchorIndex k),
+            selectedFerrersLemma73SourcePacket k (((n : ℕ) : ℝ) * u x)) +
+        ((Real.sqrt (u x) : ℝ) : ℂ) *
+          (∑ n ∈ sourcePositiveIndexFinset (selectedFerrersPreAnchorIndex k),
+            w5d_Q k (((n : ℕ) : ℝ) * u x)) +
+        (1 / 2 : ℂ) * selectedFerrersLemma73SourcePacket k 0 *
+          (((1 / 2 * Real.sqrt (u x) : ℝ) : ℂ))) =
+      ((1 / 2 : ℂ) * selectedFerrersAbelLogRepresentative k x +
+        ((Real.sqrt (u x) : ℝ) : ℂ) *
+          ∑ n ∈ sourcePositiveIndexFinset (selectedFerrersPreAnchorIndex k),
+            w5d_Q k (((n : ℕ) : ℝ) * u x)) := by
+    rw [w5d_rep_eq_finite k ⟨hx.1.le, hx.2.le⟩, finiteEStar, finiteEStarCore]
+    push_cast
+    ring
+  rw [hvalue] at hgoal
+  exact hgoal
+
+#print axioms w5d_hasDerivAt_of_no_seam
+
 end Q3.RouteB.D0Pstar
