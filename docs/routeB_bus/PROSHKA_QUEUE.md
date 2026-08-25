@@ -2982,7 +2982,7 @@ boundary family at n^2 weight.
 
 ## 2026-08-26 (Linux) — BATCH: Sturm node 1 complete + three adjudications
 
-STATUS: READY_TO_SEND (batch of 4, assembled per phase-then-batch rule)
+STATUS: ANSWERED — verdict 0c7f8d5a (REQ-2026-08-26-A): inputs frozen, receiver admitted non-exclusive, vocab crosswalk, shadow (a)
 
 ### Item 1 — STURM_ENERGY node 1: analytic chain kernel-green, ratify instantiation inputs
 
