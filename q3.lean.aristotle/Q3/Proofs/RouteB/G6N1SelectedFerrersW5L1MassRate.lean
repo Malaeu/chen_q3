@@ -370,4 +370,46 @@ private theorem envelope_additive_bound {y : ℝ} (hy : 0 ≤ y) :
 
 #print axioms envelope_additive_bound
 
+/-- The decaying exponential integrates below its constant over `[0, b]`. -/
+private theorem exp_decay_intervalIntegral_le {b : ℝ} (hb : 0 ≤ b) :
+    ∫ y in (0 : ℝ)..b, Real.exp (-(Real.pi - 1 / 2) * y) ≤
+      (Real.pi - 1 / 2)⁻¹ := by
+  have hpi3 : (3 : ℝ) < Real.pi := Real.pi_gt_three
+  have hc : (0 : ℝ) < Real.pi - 1 / 2 := by linarith
+  have hanti : ∀ y : ℝ, HasDerivAt
+      (fun v : ℝ => -(Real.pi - 1 / 2)⁻¹ * Real.exp (-(Real.pi - 1 / 2) * v))
+      (Real.exp (-(Real.pi - 1 / 2) * y)) y := by
+    intro y
+    have hlin : HasDerivAt (fun v : ℝ => -(Real.pi - 1 / 2) * v)
+        (-(Real.pi - 1 / 2)) y := by
+      simpa using (hasDerivAt_id y).const_mul (-(Real.pi - 1 / 2))
+    have hexp := hlin.exp
+    have hmul := hexp.const_mul (-(Real.pi - 1 / 2)⁻¹)
+    have hne : Real.pi - 1 / 2 ≠ 0 := ne_of_gt hc
+    have hrew : -(Real.pi - 1 / 2)⁻¹ *
+        (Real.exp (-(Real.pi - 1 / 2) * y) * -(Real.pi - 1 / 2)) =
+        Real.exp (-(Real.pi - 1 / 2) * y) := by
+      have hstep : -(Real.pi - 1 / 2)⁻¹ *
+          (Real.exp (-(Real.pi - 1 / 2) * y) * -(Real.pi - 1 / 2)) =
+          ((Real.pi - 1 / 2)⁻¹ * (Real.pi - 1 / 2)) *
+            Real.exp (-(Real.pi - 1 / 2) * y) := by ring
+      rw [hstep, inv_mul_cancel₀ hne, one_mul]
+    rw [hrew] at hmul
+    exact hmul
+  have hint : ∫ y in (0 : ℝ)..b, Real.exp (-(Real.pi - 1 / 2) * y) =
+      -(Real.pi - 1 / 2)⁻¹ * Real.exp (-(Real.pi - 1 / 2) * b) -
+        (-(Real.pi - 1 / 2)⁻¹ * Real.exp (-(Real.pi - 1 / 2) * 0)) := by
+    apply intervalIntegral.integral_eq_sub_of_hasDerivAt (fun y _ => hanti y)
+    apply Continuous.intervalIntegrable
+    continuity
+  rw [hint]
+  have h0 : Real.exp (-(Real.pi - 1 / 2) * 0) = 1 := by
+    norm_num
+  rw [h0]
+  have hpos : (0 : ℝ) < Real.exp (-(Real.pi - 1 / 2) * b) := Real.exp_pos _
+  have hinvpos : (0 : ℝ) < (Real.pi - 1 / 2)⁻¹ := by positivity
+  nlinarith [hpos, hinvpos]
+
+#print axioms exp_decay_intervalIntegral_le
+
 end Q3.RouteB.D0Pstar
