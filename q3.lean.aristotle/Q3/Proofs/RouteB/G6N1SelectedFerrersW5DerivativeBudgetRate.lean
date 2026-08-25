@@ -503,4 +503,116 @@ private theorem w5d_budget_reduction (k : ℕ)
               Complex.norm_real]
             norm_num]
 
+/-! ## The conditional W5 closure
+
+Everything proved so far assembles into: the full Fourier budget `C_k` is
+eventually bounded, conditional on the F72.6 inputs and on the one open
+supplier `W5_LOG_DERIVATIVE_BUDGET_BOUNDED`, carried here as the hypothesis
+`hD`.  This is exactly consumer strength: `BOUNDED_CK_SUFFICES`. -/
+
+theorem selectedFerrersAbelFourierDecayBudget_bounded_of_modeAndChiRates
+    (C0 C4 Cχ : ℝ) (hC0 : 0 ≤ C0) (hC4 : 0 ≤ C4) (hCχ : 0 ≤ Cχ)
+    (hmode :
+      ∀ᶠ k in Filter.atTop,
+        ∀ x ∈ Set.Icc (-(selectedFerrersPaperLambda k))
+            (selectedFerrersPaperLambda k),
+          ‖centerAnchorScalarZero k *
+              (selectedFerrersPreAnchorPair k).h0 x -
+            ((parabolicCylinderD 0 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤
+              C0 / (selectedFerrersPaperLambda k) ^ 2 ∧
+          ‖centerAnchorScalarFour k *
+              (selectedFerrersPreAnchorPair k).h4 x -
+            ((parabolicCylinderD 4 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤
+              C4 / (selectedFerrersPaperLambda k) ^ 2)
+    (hχ :
+      ∀ᶠ k in Filter.atTop,
+        |1 - (selectedFerrersPreAnchorPair k).chi0| ≤
+            Cχ / (selectedFerrersPaperLambda k) ^ 2 ∧
+          |1 - (selectedFerrersPreAnchorPair k).chi2| ≤
+            Cχ / (selectedFerrersPaperLambda k) ^ 2)
+    (hD : ∃ D : ℝ, 0 ≤ D ∧
+      ∀ᶠ k in Filter.atTop,
+        selectedFerrersAbelLogDerivativeBudget k ≤ D) :
+    ∃ Cb : ℝ, 0 ≤ Cb ∧
+      ∀ᶠ k in Filter.atTop,
+        selectedFerrersAbelFourierDecayBudget k ≤ Cb := by
+  obtain ⟨AL1, BL1, hAL1, hBL1, hL1⟩ :=
+    selectedFerrersAbelLogZeroExtension_l1_rate_of_modeAndChiRates
+      C0 C4 Cχ hC0 hC4 hCχ hmode hχ
+  obtain ⟨AE, hAE, hends⟩ :=
+    selectedFerrersAbelLogEndpointValues_rate_of_modeAndChiRates
+      C0 C4 Cχ hC0 hC4 hCχ hmode hχ
+  obtain ⟨CS, hCS, hrate⟩ :=
+    selectedFerrers_factorFourPortPacketRate_of_modeAndChiRates
+      C0 C4 Cχ hC0 hC4 hCχ hmode hχ
+  have hseam := selectedFerrersAbelLogInternalSeamSum_rate_of_modeAndChiRates
+    hCS hrate
+  obtain ⟨D, hD0, hDbound⟩ := hD
+  have hpi := Real.pi_pos
+  refine ⟨2 * ((BL1 + AL1) +
+      (D + (2 * AE + 2 * (CS + 132))) / (2 * Real.pi)),
+    by positivity, ?_⟩
+  filter_upwards [hL1, hends, hseam, hDbound] with k hL1k hendsk hseamk hDk
+  have hs1 : (1 : ℝ) ≤ Real.sqrt (selectedFerrersPaperLambda k) := by
+    apply Real.one_le_sqrt.mpr
+    rw [selectedFerrersPaperLambda]
+    have h1 : (1 : ℝ) ≤ ((k + 2 : ℕ) : ℝ) := by
+      have : (1 : ℕ) ≤ k + 2 := Nat.le_add_left 1 (k + 1)
+      exact_mod_cast this
+    simpa using Real.one_le_sqrt.mpr h1
+  have hs0 : (0 : ℝ) < Real.sqrt (selectedFerrersPaperLambda k) :=
+    lt_of_lt_of_le one_pos hs1
+  -- each 1/sqrt(lambda) correction is at most its own constant
+  have hdrop : ∀ {c : ℝ}, 0 ≤ c →
+      c / Real.sqrt (selectedFerrersPaperLambda k) ≤ c := fun {c} hc =>
+    div_le_self hc hs1
+  have hlameq : lambda_m (selectedFerrersPreAnchorIndex k) =
+      selectedFerrersPaperLambda k :=
+    selectedFerrersPaperLambda_eq_lambda_m k
+  -- bound the jump budget
+  have hjump : selectedFerrersAbelLogJumpBudget k ≤
+      2 * AE + 2 * (CS + 132) := by
+    rw [selectedFerrersAbelLogJumpBudget]
+    have h0 := hendsk.1
+    have hL := hendsk.2
+    have hseam' := hseamk
+    rw [hlameq]
+    calc
+      ‖selectedFerrersAbelLogRepresentative k 0‖ +
+          ‖selectedFerrersAbelLogRepresentative k
+            (L_m (selectedFerrersPreAnchorIndex k))‖ +
+          ∑ n ∈ Finset.Icc 2 (k + 2),
+            ‖((Real.sqrt
+                (selectedFerrersPaperLambda k / (n : ℝ)) : ℝ) : ℂ) *
+              selectedFerrersLemma73SourcePacket k
+                (selectedFerrersPaperLambda k)‖ ≤
+          AE / Real.sqrt (selectedFerrersPaperLambda k) +
+            AE / Real.sqrt (selectedFerrersPaperLambda k) +
+            2 * (CS + 132) / Real.sqrt (selectedFerrersPaperLambda k) :=
+        add_le_add (add_le_add h0 hL) hseam'
+      _ ≤ AE + AE + 2 * (CS + 132) := by
+        have h1 := hdrop hAE
+        have h2 := hdrop (by linarith : (0:ℝ) ≤ 2 * (CS + 132))
+        linarith
+      _ = 2 * AE + 2 * (CS + 132) := by ring
+  -- bound the L1 mass
+  have hmass : (∫ x : ℝ, ‖selectedFerrersAbelLogZeroExtension k x‖) ≤
+      BL1 + AL1 := by
+    refine le_trans hL1k ?_
+    have := hdrop hAL1
+    linarith
+  -- assemble
+  rw [selectedFerrersAbelFourierDecayBudget]
+  have hsum : selectedFerrersAbelLogDerivativeBudget k +
+      selectedFerrersAbelLogJumpBudget k ≤
+      D + (2 * AE + 2 * (CS + 132)) := add_le_add hDk hjump
+  have hdiv : (selectedFerrersAbelLogDerivativeBudget k +
+      selectedFerrersAbelLogJumpBudget k) / (2 * Real.pi) ≤
+      (D + (2 * AE + 2 * (CS + 132))) / (2 * Real.pi) := by
+    apply div_le_div_of_nonneg_right hsum
+    positivity
+  nlinarith [hmass, hdiv]
+
+#print axioms selectedFerrersAbelFourierDecayBudget_bounded_of_modeAndChiRates
+
 end Q3.RouteB.D0Pstar
