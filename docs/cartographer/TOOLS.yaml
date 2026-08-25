@@ -333,6 +333,27 @@ tool_families:
           size of that mistake stays visible against the sign-correct run.
         last_verified: 2026-08-25
 
+      - id: r2-coefficient-identity-probe
+        status: ENABLED
+        audience: [HUMAN, CLAUDE_CODE, CODEX]
+        mode: READ_ONLY
+        path: scripts/r2_coefficient_identity_probe.py
+        invoke: python3 scripts/r2_coefficient_identity_probe.py
+        alternatives:
+          - python3 scripts/r2_coefficient_identity_probe.py --edge 0.0
+        trigger: >-
+          The R2 first-order coefficient identity for the windowed E_star packet
+          or its n^2-summability obstruction needs reproducing.
+        writes: false
+        approval: NONE
+        authority: >-
+          DIAGNOSTIC_NUMERICS_ONLY_NEVER_A_PROOF_AND_NEVER_A_LEAN_INPUT
+        records_to: stdout
+        validation: >-
+          Identity error is pure quadrature (<=1e-3 relative at n=200); the
+          edge=0 control shows the left trace alone stalls n^2*|c_n|^2.
+        last_verified: 2026-08-25
+
       - id: semantic-attestation-broker
         status: ENABLED
         audience: [HUMAN, CLAUDE_CODE]

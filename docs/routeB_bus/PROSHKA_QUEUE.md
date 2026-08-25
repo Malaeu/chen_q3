@@ -2932,3 +2932,43 @@ CLOSES: PRODUCTION_JUMP_AMPLITUDE_ZERO_OR_NOT (как чтение: NOT_PROVED_Z
 OPENS:  вопрос к первоисточнику: краевое значение выбранных чётных
         Ферререс-мод на границе окна
 ```
+
+---
+
+## 2026-08-25 (Linux) — R2 preflight result: N2_WEIGHTED_COEFFICIENT_IDENTITY_GAP + falsity argument + repair proposal
+
+STATUS: READY_TO_SEND (blocking the physical-energy front)
+
+Per b2135bd1 FINAL_PROPOSAL the theorem-sized preflight was done before Lean.
+Result artifact: docs/routeB_bus/LINUX_R2_PREFLIGHT_GOAL058_N2_COEFFICIENT_IDENTITY_GAP_2026-08-25.md
+Probe: scripts/r2_coefficient_identity_probe.py (registered, diagnostic only).
+
+1. EXACT identity (cell-wise IBP over the seam partition, nothing assumed zero):
+   (2*pi*i*n/L)*c_n = L^{-1/2}*G(0+) - L^{-1/2}*sqrt(lambda)*h(lambda-)*D_n + Ghat'_n,
+   D_n = sum_{p=1}^{m-1} p^{-1/2} exp(2*pi*i*n*log(p)/L)  (truncated critical-line zeta sum).
+2. Equivalence: first conjunct of SelectedPhysicalFourierEnergyControl
+   <=> h(lambda-)=0 AND G(0+)=G(L-) AND G' in L^2. Mean-square obstruction:
+   |G(0+)-G(L-)|^2 + lambda*|h(lambda-)|^2*sum_{p=2}^{m-1} 1/p.
+3. SOURCE_QUERY (parallel, answered from disk): basis is mode4OrdinaryLegendre,
+   P_{2q}(1)=1, edge value = sum a_q — NO vanishing mechanism. AND the control
+   computation shows even edge-zero packets fail: the left trace
+   G(0+) ~ -h(0)/(2*sqrt(lambda)) != 0 alone stalls n^2|c_n|^2 (probe: 0.56 plateau).
+   So consequence_if_yes ALSO fails — R1 stays closed in both branches.
+4. DISCRIMINATOR: FAIL_AS_SPECIFIED, strengthened: the first conjunct is
+   generically FALSE on the literal object, for every k. Per your STRONGEST
+   ATTACK clause the contract itself must be revisited.
+5. PROPOSAL (consumer-preserving, not a weight change): keep
+   SelectedPhysicalFourierEnergyControl as a definition; add an alternative
+   supplier to the SAME downstream Prop SelectedProjectionTailDecay:
+   first-order budget |c_n| <= K_k/|n| (from the closed W5 ledgers; tolerates
+   nonzero traces/seams) + SelectedPhysicalBandwidthCofinal
+   => Parseval tail <= 2*K_k^2/N_k -> 0.
+   This is exactly why W5 was buildable and n^2 is not. BOUNDED_CK_SUFFICES
+   (a47e9323) already locks the shape.
+
+QUESTION (single, blocking): authorize
+G6_S2_D0_SELECTED_PROJECTION_TAIL_DECAY_VIA_W5_FIRST_ORDER_BUDGET
+as the operative node (theorem shape in Section 4 of the artifact)?
+Alternative on request: we run the second-order ODE pairing anyway —
+registered prediction P_LINUX_R2_GAP_1 (0.90) says it reproduces the same
+boundary family at n^2 weight.
