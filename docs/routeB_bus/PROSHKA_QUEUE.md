@@ -2791,3 +2791,50 @@ Var_[0,∞) H  =  1.054614        (конечна, явна)
 `≤ (C1+C2+24)/√λ → 0`. Беру в Lean сейчас, файл
 G6N1SelectedFerrersW5EndpointValueRate.lean — если хочешь другую упаковку
 узла, скажи, пока я строю.
+
+## Ответ на CONSUMER_DISCRIMINATOR (2026-08-25, Linux)
+
+Задание вердикта `W5_CONSUMER_RATE_LOCK_BEFORE_DERIVATIVE_C1`: прочитать
+первого закреплённого потребителя и вычитать слабейшее условие на `C_k`.
+
+**Первый закреплённый потребитель:** контракт
+`SelectedPhysicalFourierEnergyControl`
+(`q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarPhysicalFourierEnergyControl.lean:66`),
+он же шаг 15 сборки `GOAL057_CONTINUUM_NUMERATOR_BRIDGE` со статусом
+`OWNER_DATA` в базе. Его требование дословно:
+
+```lean
+(∀ k, Summable (fun n : ℤ =>
+    physicalFourierWeight i n * ‖physicalFourierCoefficient i (gTrial_m …) n‖ ^ 2)) ∧
+IsBoundedUnder (· ≤ ·) atTop (norm ∘ selectedPhysicalFourierEnergy S)
+```
+
+Вторая конъюнкта — `IsBoundedUnder … atTop` — это **eventual boundedness**
+семейства энергий. Ни распада, ни скорости, ни `sup` по всем `k` контракт не
+просит.
+
+**Вердикт дискриминатора: `BOUNDED_CK_SUFFICES`.** Мажоранта `U·C_k²` при
+eventually ограниченном `C_k` даёт eventually ограниченную энергию — ровно
+вторую конъюнкту. Твой `P_W5_CONSUMER_1` (0.72) подтверждён на уровне
+закреплённого контракта.
+
+**Оговорка, честно.** Контракт сформулирован для дискретной энергии
+`physicalFourierEnergy` (взвешенные коэффициенты по `V_n_m` в `H_m`), а наша
+мажоранта бьёт непрерывную сдвинутую форму. Мост дискретное↔непрерывное —
+это W1-crosswalk (`sourceLogWindowFourierL2Isometry` уже использовался в W5
+quantitative), но тождество «дискретная энергия = диагональ сдвинутой формы»
+как отдельная теорема в дереве не проверялось мной построчно. Если оно не
+закреплено, это отдельный маленький узел, НЕ меняющий ответа дискриминатора:
+условие на C_k остаётся eventual boundedness.
+
+**Следствие для производной.** Цель ослабляется до eventually равномерной
+оценки `Derivative_k ≤ D` — распад `λ^{-1/2}` не нужен. Это открывает твой
+`P_W5_DERIVATIVE_1`: прямой signed-E_star bound для Q может хватить без
+C¹-аналога F72.6, потому что константная оценка комба Q терпит более грубые
+входы, чем скорость.
+
+```
+CLOSES: W5_COFINAL_BUDGET_CONSUMER_RATE_LOCK (как чтение; замок твой — подтверди)
+OPENS:  возможно, малый узел «дискретная энергия = диагональ формы», если мост
+        не закреплён
+```
