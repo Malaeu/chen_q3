@@ -670,4 +670,137 @@ private theorem exp_pos_half_intervalIntegral_le {L : ℝ} (hL : 0 ≤ L) :
 #print axioms exp_neg_half_intervalIntegral_le
 #print axioms exp_pos_half_intervalIntegral_le
 
+/-- Pointwise ledger on the additive window, for one fixed `k` whose error and
+center bounds are already in hand.  The three summands are exactly the three
+integral profiles proved above. -/
+private theorem rep_pointwise_bound
+    {k : ℕ} {C1 C2 : ℝ}
+    (herr : ∀ u ∈ sourceWindow (selectedFerrersPaperLambda k),
+      ‖selectedFerrersFullEStarError k u‖ ≤
+        C1 / (selectedFerrersPaperLambda k * Real.sqrt u))
+    (hcenter : ‖selectedFerrersLemma73SourcePacket k 0‖ ≤
+      C2 / (selectedFerrersPaperLambda k) ^ 2)
+    {x : ℝ}
+    (hx : x ∈ Set.Icc 0 (L_m (selectedFerrersPreAnchorIndex k))) :
+    ‖selectedFerrersAbelLogRepresentative k x‖ ≤
+      96 * Real.exp (-Real.pi / 2) *
+          Real.exp (-(Real.pi - 1 / 2) *
+            |x - Real.log (selectedFerrersPaperLambda k)|) +
+        C1 * (Real.sqrt (selectedFerrersPaperLambda k))⁻¹ *
+          Real.exp (-x / 2) +
+        C2 / 2 *
+          ((selectedFerrersPaperLambda k) ^ 2 *
+            Real.sqrt (selectedFerrersPaperLambda k))⁻¹ *
+          Real.exp (x / 2) := by
+  set lam : ℝ := selectedFerrersPaperLambda k with hlamdef
+  have hlam1 : (1 : ℝ) ≤ lam := by
+    rw [hlamdef, selectedFerrersPaperLambda]
+    have h1 : (1 : ℝ) ≤ ((k + 2 : ℕ) : ℝ) := by
+      have : (1 : ℕ) ≤ k + 2 := by omega
+      exact_mod_cast this
+    simpa using Real.one_le_sqrt.mpr h1
+  have hlam0 : (0 : ℝ) < lam := lt_of_lt_of_le one_pos hlam1
+  have hlamsq : lam ^ 2 = ((k + 2 : ℕ) : ℝ) := by
+    rw [hlamdef, selectedFerrersPaperLambda, Real.sq_sqrt (by positivity)]
+  have hlameq : lambda_m (selectedFerrersPreAnchorIndex k) = lam :=
+    (selectedFerrersPaperLambda_eq_lambda_m k).symm
+  have hLval : L_m (selectedFerrersPreAnchorIndex k) =
+      Real.log ((k + 2 : ℕ) : ℝ) := rfl
+  -- the multiplicative coordinate and its window membership
+  set u : ℝ := Real.exp x / lam with hudef
+  have hu0 : 0 < u := by positivity
+  have humem : u ∈ sourceWindow lam := by
+    constructor
+    · -- lam⁻¹ ≤ u
+      rw [hudef]
+      have hex : (1 : ℝ) ≤ Real.exp x := Real.one_le_exp_iff.mpr hx.1
+      rw [le_div_iff₀ hlam0, inv_mul_cancel₀ (ne_of_gt hlam0)]
+      exact hex
+    · -- u ≤ lam
+      rw [hudef, div_le_iff₀ hlam0]
+      have hex : Real.exp x ≤ ((k + 2 : ℕ) : ℝ) := by
+        calc
+          Real.exp x ≤ Real.exp (L_m (selectedFerrersPreAnchorIndex k)) :=
+            Real.exp_le_exp.mpr hx.2
+          _ = ((k + 2 : ℕ) : ℝ) := by
+            rw [hLval, Real.exp_log (by positivity)]
+      calc
+        Real.exp x ≤ ((k + 2 : ℕ) : ℝ) := hex
+        _ = lam * lam := by rw [← hlamsq]; ring
+  -- sqrt u in additive form
+  have hsqrtu : Real.sqrt u = (Real.sqrt lam)⁻¹ * Real.exp (x / 2) := by
+    rw [hudef, Real.sqrt_div (Real.exp_pos x).le, Real.exp_half]
+    ring
+  -- decompose and take norms
+  have hrep : selectedFerrersAbelLogRepresentative k x =
+      selectedFerrersAbelLimit k u := by
+    rw [selectedFerrersAbelLogRepresentative, hlameq]
+  rw [hrep, abelLimit_decomposition]
+  refine le_trans (norm_add_le _ _) ?_
+  refine le_trans (add_le_add (norm_add_le _ _) le_rfl) ?_
+  have hterm1 : ‖(4 : ℂ) * E_star explicitCCMLimitH u‖ ≤
+      96 * Real.exp (-Real.pi / 2) *
+        Real.exp (-(Real.pi - 1 / 2) * |x - Real.log lam|) := by
+    rw [norm_mul, show ‖(4 : ℂ)‖ = 4 by
+      rw [show (4 : ℂ) = ((4 : ℝ) : ℂ) by norm_num, Complex.norm_real]
+      norm_num]
+    have henv := E_star_explicitCCMLimitH_additive_envelope hlam0 x
+    rw [← hudef] at henv
+    nlinarith [henv, norm_nonneg (E_star explicitCCMLimitH u),
+      Real.exp_pos (-(Real.pi - 1 / 2) * |x - Real.log lam|),
+      Real.exp_pos (-Real.pi / 2)]
+  have hterm2 : ‖selectedFerrersFullEStarError k u‖ ≤
+      C1 * (Real.sqrt lam)⁻¹ * Real.exp (-x / 2) := by
+    have h := herr u humem
+    have hden : lam * Real.sqrt u =
+        Real.sqrt lam * Real.exp (x / 2) := by
+      rw [hsqrtu]
+      calc
+        lam * ((Real.sqrt lam)⁻¹ * Real.exp (x / 2)) =
+            lam / Real.sqrt lam * Real.exp (x / 2) := by ring
+        _ = Real.sqrt lam * Real.exp (x / 2) := by rw [Real.div_sqrt]
+    rw [hden] at h
+    refine le_trans h ?_
+    rw [div_eq_mul_inv, mul_inv]
+    have hexinv : (Real.exp (x / 2))⁻¹ = Real.exp (-x / 2) := by
+      rw [← Real.exp_neg]
+      congr 1
+      ring
+    rw [hexinv, mul_assoc]
+  have hterm3 : ‖(1 / 2 : ℂ) * selectedFerrersLemma73SourcePacket k 0 *
+      (Real.sqrt u : ℂ)‖ ≤
+      C2 / 2 * (lam ^ 2 * Real.sqrt lam)⁻¹ * Real.exp (x / 2) := by
+    rw [norm_mul, norm_mul, Complex.norm_real, Real.norm_eq_abs,
+      abs_of_nonneg (Real.sqrt_nonneg _),
+      show ‖(1 / 2 : ℂ)‖ = 1 / 2 by
+        rw [show (1 / 2 : ℂ) = ((1 / 2 : ℝ) : ℂ) by norm_num,
+          Complex.norm_real]
+        norm_num]
+    rw [hsqrtu]
+    have hbound := hcenter
+    have hnn : (0 : ℝ) ≤ (Real.sqrt lam)⁻¹ * Real.exp (x / 2) := by positivity
+    calc
+      1 / 2 * ‖selectedFerrersLemma73SourcePacket k 0‖ *
+          ((Real.sqrt lam)⁻¹ * Real.exp (x / 2)) ≤
+          1 / 2 * (C2 / lam ^ 2) *
+            ((Real.sqrt lam)⁻¹ * Real.exp (x / 2)) := by
+        apply mul_le_mul_of_nonneg_right _ hnn
+        exact mul_le_mul_of_nonneg_left hbound (by norm_num)
+      _ = C2 / 2 * (lam ^ 2 * Real.sqrt lam)⁻¹ * Real.exp (x / 2) := by
+        rw [mul_inv]
+        ring
+  calc
+    ‖(4 : ℂ) * E_star explicitCCMLimitH u‖ +
+        ‖selectedFerrersFullEStarError k u‖ +
+        ‖(1 / 2 : ℂ) * selectedFerrersLemma73SourcePacket k 0 *
+          (Real.sqrt u : ℂ)‖ ≤
+        96 * Real.exp (-Real.pi / 2) *
+            Real.exp (-(Real.pi - 1 / 2) * |x - Real.log lam|) +
+          C1 * (Real.sqrt lam)⁻¹ * Real.exp (-x / 2) +
+          C2 / 2 * (lam ^ 2 * Real.sqrt lam)⁻¹ * Real.exp (x / 2) := by
+      exact add_le_add (add_le_add hterm1 hterm2) hterm3
+    _ = _ := rfl
+
+#print axioms rep_pointwise_bound
+
 end Q3.RouteB.D0Pstar
