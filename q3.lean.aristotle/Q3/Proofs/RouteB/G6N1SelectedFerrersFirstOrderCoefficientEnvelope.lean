@@ -201,12 +201,12 @@ selected `k` and every nonzero integer mode, the physical coefficient of
 `selectedFerrersAbelLimitHm` obeys the exact receiver envelope with
 constant `selectedFerrersAbelFourierDecayBudget k`.
 -/
-theorem selectedFerrersAbelLimitHm_physicalCoefficient_sq_le
+theorem selectedFerrersAbelLimitHm_physicalCoefficient_le
     (k : ℕ) (n : ℤ) (hn : n ≠ 0) :
     ‖physicalFourierCoefficient (selectedFerrersPreAnchorIndex k)
-        (selectedFerrersAbelLimitHm k) n‖ ^ 2 ≤
-      selectedFerrersAbelFourierDecayBudget k ^ 2 *
-        L_m (selectedFerrersPreAnchorIndex k) / (n : ℝ) ^ 2 := by
+        (selectedFerrersAbelLimitHm k) n‖ ≤
+      selectedFerrersAbelFourierDecayBudget k *
+        Real.sqrt (L_m (selectedFerrersPreAnchorIndex k)) / |(n : ℝ)| := by
   set i := selectedFerrersPreAnchorIndex k with hi
   have hL : 0 < L_m i := logLength_pos i
   have hB := selectedFerrersAbelFourierDecayBudget_nonneg k
@@ -262,21 +262,34 @@ theorem selectedFerrersAbelLimitHm_physicalCoefficient_sq_le
             ring
       _ = B * Real.sqrt (L_m i) / |(n : ℝ)| := by
             rw [Real.div_sqrt]
-  have hfinal :
-      ‖physicalFourierCoefficient i (selectedFerrersAbelLimitHm k) n‖ ≤
-        B * Real.sqrt (L_m i) / |(n : ℝ)| := hnorm.trans htail
+  exact hnorm.trans htail
+
+/-- Squared form of the envelope, in the exact receiver shape. -/
+theorem selectedFerrersAbelLimitHm_physicalCoefficient_sq_le
+    (k : ℕ) (n : ℤ) (hn : n ≠ 0) :
+    ‖physicalFourierCoefficient (selectedFerrersPreAnchorIndex k)
+        (selectedFerrersAbelLimitHm k) n‖ ^ 2 ≤
+      selectedFerrersAbelFourierDecayBudget k ^ 2 *
+        L_m (selectedFerrersPreAnchorIndex k) / (n : ℝ) ^ 2 := by
+  set i := selectedFerrersPreAnchorIndex k with hi
+  have hL : 0 < L_m i := logLength_pos i
+  set B := selectedFerrersAbelFourierDecayBudget k with hBdef
+  have hB : (0 : ℝ) ≤ B := selectedFerrersAbelFourierDecayBudget_nonneg k
+  have hfinal := selectedFerrersAbelLimitHm_physicalCoefficient_le k n hn
   have hnn : (0 : ℝ) ≤ ‖physicalFourierCoefficient i
       (selectedFerrersAbelLimitHm k) n‖ := norm_nonneg _
   calc
     ‖physicalFourierCoefficient i (selectedFerrersAbelLimitHm k) n‖ ^ 2
         ≤ (B * Real.sqrt (L_m i) / |(n : ℝ)|) ^ 2 := by
           apply sq_le_sq' _ hfinal
-          have : (0 : ℝ) ≤ B * Real.sqrt (L_m i) / |(n : ℝ)| := by positivity
+          have : (0 : ℝ) ≤ B * Real.sqrt (L_m i) / |(n : ℝ)| :=
+            div_nonneg (mul_nonneg hB (Real.sqrt_nonneg _)) (abs_nonneg _)
           linarith
     _ = B ^ 2 * L_m i / (n : ℝ) ^ 2 := by
           rw [div_pow, mul_pow, Real.sq_sqrt hL.le, sq_abs]
 
 #print axioms physicalFourierCoefficient_eq_fourier_sourceLogWindowZeroExtension
+#print axioms selectedFerrersAbelLimitHm_physicalCoefficient_le
 #print axioms selectedFerrersAbelLimitHm_physicalCoefficient_sq_le
 
 end Q3.RouteB.D0Pstar
