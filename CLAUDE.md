@@ -49,6 +49,8 @@ docs/cartographer/CHAIN_GAP_DESIGN.md  микроскоп разрывов: 7 с
                                  «всего · закреплено · осталось натянуть»
 docs/VOI_GATE_RULE.md            VOI-гейт: дешёвый различающий зонд прежде
                                  дорогого шага; ветки ЕСЛИ_A/ЕСЛИ_B обязательны
+docs/FINITE_CERTIFICATE_PRINCIPLE.md  рамка эндшпиля: coercive tail + finite
+                                 exact certificate; карта соответствия по файлам
 docs/NIGHT_LOOP_DESIGN.md        ночная/дневная петля Claude↔Прошка: NIGHT_GRANT
                                  (ратифицирован 20.08), такт, вахта, ИНСТРУКЦИЯ.
                                  Команды владельца «ночная петля» / «петля, я отошёл»
