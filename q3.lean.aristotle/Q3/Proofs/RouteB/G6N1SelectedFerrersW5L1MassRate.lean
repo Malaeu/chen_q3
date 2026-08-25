@@ -497,4 +497,60 @@ private theorem fullEStarError_window_bound
 
 #print axioms fullEStarError_window_bound
 
+/-- `H(0) = 0`, so the F72.6 window rate at the origin bounds the packet's own
+central value: `‖h_k(0)‖ ≤ C / lam ^ 2` eventually.  This is what pays the
+center-shadow term of the L1 ledger. -/
+private theorem selectedPacket_center_bound
+    {C : ℝ}
+    (hrate : ∀ᶠ k in Filter.atTop,
+      ∀ x ∈ Set.Icc (-(selectedFerrersPaperLambda k))
+          (selectedFerrersPaperLambda k),
+        ‖selectedFerrersLemma73SourceScale k *
+            prolateCombination (selectedFerrersPreAnchorPair k) x -
+          (4 : ℂ) * explicitCCMLimitH x‖ ≤
+            C / (selectedFerrersPaperLambda k) ^ 2) :
+    ∀ᶠ k in Filter.atTop,
+      ‖selectedFerrersLemma73SourcePacket k 0‖ ≤
+        C / (selectedFerrersPaperLambda k) ^ 2 := by
+  filter_upwards [hrate] with k hk
+  have hlam : 0 ≤ selectedFerrersPaperLambda k := Real.sqrt_nonneg _
+  have hmem : (0 : ℝ) ∈ Set.Icc (-(selectedFerrersPaperLambda k))
+      (selectedFerrersPaperLambda k) := ⟨by linarith, hlam⟩
+  have h := hk 0 hmem
+  have hH0 : explicitCCMLimitH 0 = 0 := by
+    rw [explicitCCMLimitH]
+    norm_num
+  rw [hH0, mul_zero, sub_zero] at h
+  exact h
+
+/-- The Abel limit splits into the explicit target, the full starred error and
+the center shadow: `E_star` is linear in its packet, and the source packet is
+the scale times the prolate combination. -/
+private theorem abelLimit_decomposition (k : ℕ) (u : ℝ) :
+    selectedFerrersAbelLimit k u =
+      (4 : ℂ) * E_star explicitCCMLimitH u +
+        selectedFerrersFullEStarError k u +
+        (1 / 2 : ℂ) * selectedFerrersLemma73SourcePacket k 0 *
+          (Real.sqrt u : ℂ) := by
+  rw [selectedFerrersAbelLimit, selectedFerrersFullEStarError]
+  have hlin : E_star (selectedFerrersLemma73SourcePacket k) u =
+      selectedFerrersLemma73SourceScale k *
+        E_star (prolateCombination (selectedFerrersPreAnchorPair k)) u := by
+    rw [E_star, E_star]
+    have hfun : (fun n : ℕ+ =>
+        selectedFerrersLemma73SourcePacket k (((n : ℕ) : ℝ) * u)) =
+        (fun n : ℕ+ =>
+          selectedFerrersLemma73SourceScale k *
+            prolateCombination (selectedFerrersPreAnchorPair k)
+              (((n : ℕ) : ℝ) * u)) := by
+      funext n
+      rfl
+    rw [hfun, tsum_mul_left]
+    ring
+  rw [hlin]
+  ring
+
+#print axioms selectedPacket_center_bound
+#print axioms abelLimit_decomposition
+
 end Q3.RouteB.D0Pstar
