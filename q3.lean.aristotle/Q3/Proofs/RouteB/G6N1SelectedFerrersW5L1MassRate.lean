@@ -271,4 +271,62 @@ private theorem E_star_explicitCCMLimitH_norm_le_of_le_one
 
 #print axioms E_star_explicitCCMLimitH_norm_le_of_le_one
 
+/-! ## The Gaussian tail integral with an explicit constant -/
+
+/-- On `[1, b]` the half-Gaussian integrates below `(2 / pi) * exp (-pi / 2)`:
+compare with `exp (-(pi * u) / 2)` (valid since `u ≤ u ^ 2` there) and
+integrate the exponential exactly through its antiderivative. -/
+private theorem gaussian_tail_intervalIntegral_le {b : ℝ} (hb : 1 ≤ b) :
+    ∫ u in (1 : ℝ)..b, Real.exp (-(Real.pi * u ^ 2) / 2) ≤
+      2 / Real.pi * Real.exp (-Real.pi / 2) := by
+  have hpi := Real.pi_pos
+  -- termwise comparison on [1, b]
+  have hcompare : ∀ u ∈ Set.Icc (1 : ℝ) b,
+      Real.exp (-(Real.pi * u ^ 2) / 2) ≤ Real.exp (-(Real.pi * u) / 2) := by
+    intro u hu
+    apply Real.exp_le_exp.mpr
+    have hu1 : (1 : ℝ) ≤ u := hu.1
+    have hsq : u ≤ u ^ 2 := by nlinarith [hu1]
+    have := mul_le_mul_of_nonneg_left hsq hpi.le
+    linarith
+  -- the exponential has an exact antiderivative
+  have hanti : ∀ u : ℝ, HasDerivAt
+      (fun v : ℝ => -(2 / Real.pi) * Real.exp (-(Real.pi * v) / 2))
+      (Real.exp (-(Real.pi * u) / 2)) u := by
+    intro u
+    have hlin : HasDerivAt (fun v : ℝ => -(Real.pi * v) / 2)
+        (-(Real.pi) / 2) u := by
+      have heq : (fun v : ℝ => -(Real.pi * v) / 2) =
+          (fun v : ℝ => (-(Real.pi) / 2) * v) := by
+        funext v; ring
+      rw [heq]
+      simpa using (hasDerivAt_id u).const_mul (-(Real.pi) / 2)
+    have hexp := hlin.exp
+    have := hexp.const_mul (-(2 / Real.pi))
+    convert this using 1
+    field_simp
+  have hint : ∫ u in (1 : ℝ)..b, Real.exp (-(Real.pi * u) / 2) =
+      -(2 / Real.pi) * Real.exp (-(Real.pi * b) / 2) -
+        (-(2 / Real.pi) * Real.exp (-(Real.pi * 1) / 2)) := by
+    apply intervalIntegral.integral_eq_sub_of_hasDerivAt
+      (fun u _ => hanti u)
+    apply Continuous.intervalIntegrable
+    continuity
+  have hmono : ∫ u in (1 : ℝ)..b, Real.exp (-(Real.pi * u ^ 2) / 2) ≤
+      ∫ u in (1 : ℝ)..b, Real.exp (-(Real.pi * u) / 2) := by
+    apply intervalIntegral.integral_mono_on hb
+    · apply Continuous.intervalIntegrable
+      continuity
+    · apply Continuous.intervalIntegrable
+      continuity
+    · exact hcompare
+  refine le_trans hmono ?_
+  rw [hint]
+  simp only [mul_one]
+  have hpos : (0 : ℝ) < Real.exp (-(Real.pi * b) / 2) := Real.exp_pos _
+  have hconst : (0 : ℝ) < 2 / Real.pi := by positivity
+  nlinarith [hpos, hconst, Real.exp_pos (-(Real.pi) / 2)]
+
+#print axioms gaussian_tail_intervalIntegral_le
+
 end Q3.RouteB.D0Pstar
