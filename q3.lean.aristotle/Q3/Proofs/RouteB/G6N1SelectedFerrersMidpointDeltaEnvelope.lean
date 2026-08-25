@@ -91,7 +91,7 @@ private theorem w5m_eStar_eq_fun (k : ℕ) :
   rw [selectedFerrersAbelLimit]
   ring
 
-private theorem w5m_eStar_memLp (k : ℕ) :
+theorem w5m_eStar_memLp (k : ℕ) :
     MemLp (E_star (selectedFerrersLemma73SourcePacket k)) 2
       (dStar.restrict (I_m (selectedFerrersPreAnchorIndex k))) := by
   rw [w5m_eStar_eq_fun k]
