@@ -361,16 +361,146 @@ private theorem w5d_seamSet_measure_zero (k : ℕ) :
   exact hfin.measure_zero _
 
 /-- The authorized reduction: the derivative budget is at most half the `L¹`
-mass plus the weighted `Q`-comb integral. -/
-private theorem w5d_budget_reduction (k : ℕ) :
-    selectedFerrersAbelLogDerivativeBudget k ≤
-      (1 / 2) * (∫ x in (0 : ℝ)..L_m (selectedFerrersPreAnchorIndex k),
-        ‖selectedFerrersAbelLogRepresentative k x‖) +
-      ∫ x in (0 : ℝ)..L_m (selectedFerrersPreAnchorIndex k),
+window mass plus the weighted `Q`-comb integral.  Almost everywhere off the
+finite seam set the derivative is the D2 decomposition; the triangle
+inequality and a.e. interval-integral monotonicity carry the rest.  Nothing
+here bounds the `Q`-comb: that is the open supplier
+`W5_LOG_DERIVATIVE_BUDGET_BOUNDED`. -/
+private theorem w5d_budget_reduction (k : ℕ)
+    (hint : IntervalIntegrable
+      (fun x : ℝ =>
+        (1 / 2) * ‖selectedFerrersAbelLogRepresentative k x‖ +
         Real.sqrt (Real.exp x / lambda_m (selectedFerrersPreAnchorIndex k)) *
           ‖∑ n ∈ sourcePositiveIndexFinset (selectedFerrersPreAnchorIndex k),
             w5d_Q k (((n : ℕ) : ℝ) *
-              (Real.exp x / lambda_m (selectedFerrersPreAnchorIndex k)))‖ := by
-  sorry
+              (Real.exp x / lambda_m (selectedFerrersPreAnchorIndex k)))‖)
+      MeasureTheory.volume 0 (L_m (selectedFerrersPreAnchorIndex k)))
+    (hbudget : IntervalIntegrable
+      (fun x : ℝ => ‖deriv (selectedFerrersAbelLogRepresentative k) x‖)
+      MeasureTheory.volume 0 (L_m (selectedFerrersPreAnchorIndex k))) :
+    selectedFerrersAbelLogDerivativeBudget k ≤
+      ∫ x in (0 : ℝ)..L_m (selectedFerrersPreAnchorIndex k),
+        ((1 / 2) * ‖selectedFerrersAbelLogRepresentative k x‖ +
+          Real.sqrt
+            (Real.exp x / lambda_m (selectedFerrersPreAnchorIndex k)) *
+            ‖∑ n ∈ sourcePositiveIndexFinset
+                (selectedFerrersPreAnchorIndex k),
+              w5d_Q k (((n : ℕ) : ℝ) *
+                (Real.exp x /
+                  lambda_m (selectedFerrersPreAnchorIndex k)))‖) := by
+  have hL0 : (0 : ℝ) ≤ L_m (selectedFerrersPreAnchorIndex k) :=
+    (logLength_pos (selectedFerrersPreAnchorIndex k)).le
+  rw [selectedFerrersAbelLogDerivativeBudget]
+  apply intervalIntegral.integral_mono_ae_restrict hL0 hbudget hint
+  -- pointwise a.e. bound off the seam set
+  have hnull : MeasureTheory.volume (w5d_seamSet k) = 0 :=
+    w5d_seamSet_measure_zero k
+  have hae : ∀ᵐ x ∂(MeasureTheory.volume.restrict
+      (Set.Icc (0 : ℝ) (L_m (selectedFerrersPreAnchorIndex k)))),
+      x ∉ w5d_seamSet k :=
+    MeasureTheory.ae_restrict_of_ae
+      ((MeasureTheory.ae_iff).mpr (by simpa using hnull))
+  have hbd : ∀ᵐ x ∂(MeasureTheory.volume.restrict
+      (Set.Icc (0 : ℝ) (L_m (selectedFerrersPreAnchorIndex k)))),
+      x ∉ ({0, L_m (selectedFerrersPreAnchorIndex k)} : Set ℝ) := by
+    apply MeasureTheory.ae_restrict_of_ae
+    have hfin : ({0, L_m (selectedFerrersPreAnchorIndex k)} : Set ℝ).Finite :=
+      (Set.finite_singleton _).insert _
+    exact MeasureTheory.measure_zero_iff_ae_notMem.mp
+      (hfin.measure_zero (μ := MeasureTheory.volume))
+  filter_upwards [hae,
+    MeasureTheory.ae_restrict_mem measurableSet_Icc, hbd]
+    with x hxseam hxmem hxbd
+  have hxint : x ∈ Set.Ioo (0 : ℝ)
+      (L_m (selectedFerrersPreAnchorIndex k)) := by
+    rcases lt_or_eq_of_le hxmem.1 with h0 | h0
+    · rcases lt_or_eq_of_le hxmem.2 with hL | hL
+      · exact ⟨h0, hL⟩
+      · exact absurd (by simp [hL] : x ∈ ({0,
+          L_m (selectedFerrersPreAnchorIndex k)} : Set ℝ)) hxbd
+    · exact absurd (by simp [← h0] : x ∈ ({0,
+        L_m (selectedFerrersPreAnchorIndex k)} : Set ℝ)) hxbd
+  · -- interior seam-free point: the D2 decomposition is the derivative
+    have hseam : ∀ n : ℕ+,
+        ((n : ℕ) : ℝ) *
+            (Real.exp x / lambda_m (selectedFerrersPreAnchorIndex k)) ≠
+          lambda_m (selectedFerrersPreAnchorIndex k) := by
+      intro n hcontra
+      apply hxseam
+      rw [w5d_seamSet]
+      by_cases hn : n ∈ sourcePositiveIndexFinset
+          (selectedFerrersPreAnchorIndex k)
+      · exact Set.mem_biUnion hn hcontra
+      · -- an index outside the finset means n > k + 2, and then the seam
+        -- equation contradicts u > 1 / lambda on the open window.
+        exfalso
+        have hlam : 0 < lambda_m (selectedFerrersPreAnchorIndex k) := by
+          rw [lambda_m]
+          apply Real.sqrt_pos.mpr
+          have h1 : (selectedFerrersPreAnchorIndex k).m = k + 2 := rfl
+          rw [h1]
+          positivity
+        have hsq : lambda_m (selectedFerrersPreAnchorIndex k) *
+            lambda_m (selectedFerrersPreAnchorIndex k) =
+            ((k + 2 : ℕ) : ℝ) := by
+          have h1 : (selectedFerrersPreAnchorIndex k).m = k + 2 := rfl
+          rw [lambda_m, h1, Real.mul_self_sqrt (by positivity)]
+        have hbig : (k + 2 : ℕ) < (n : ℕ) := by
+          rw [sourcePositiveIndexFinset, Finset.mem_Icc] at hn
+          push_neg at hn
+          have hle := hn n.one_le
+          exact_mod_cast hle
+        have hu_gt : (lambda_m (selectedFerrersPreAnchorIndex k))⁻¹ <
+            Real.exp x / lambda_m (selectedFerrersPreAnchorIndex k) := by
+          rw [div_eq_mul_inv]
+          have hex : (1 : ℝ) < Real.exp x := by
+            rw [show (1 : ℝ) = Real.exp 0 from (Real.exp_zero).symm]
+            exact Real.exp_lt_exp.mpr hxint.1
+          nlinarith [hex, inv_pos.mpr hlam]
+        have hbigR : ((k + 2 : ℕ) : ℝ) < ((n : ℕ) : ℝ) := by
+          exact_mod_cast hbig
+        -- lambda = n*u > n/lambda > (k+2)/lambda = lambda: contradiction.
+        have hnpos : (0 : ℝ) < ((n : ℕ) : ℝ) := by exact_mod_cast n.pos
+        have h1 := mul_lt_mul_of_pos_left hu_gt hnpos
+        rw [hcontra] at h1
+        have h2 := mul_lt_mul_of_pos_right hbigR (inv_pos.mpr hlam)
+        have hinv : lambda_m (selectedFerrersPreAnchorIndex k) *
+            (lambda_m (selectedFerrersPreAnchorIndex k))⁻¹ = 1 :=
+          mul_inv_cancel₀ (ne_of_gt hlam)
+        nlinarith [h1, h2, hsq, hinv, hlam, inv_pos.mpr hlam]
+    have hd := w5d_hasDerivAt_of_no_seam k hxint hseam
+    rw [hd.deriv]
+    calc
+      ‖(1 / 2 : ℂ) * selectedFerrersAbelLogRepresentative k x +
+          (Real.sqrt (Real.exp x /
+            lambda_m (selectedFerrersPreAnchorIndex k)) : ℂ) *
+            ∑ n ∈ sourcePositiveIndexFinset
+              (selectedFerrersPreAnchorIndex k),
+              w5d_Q k (((n : ℕ) : ℝ) *
+                (Real.exp x /
+                  lambda_m (selectedFerrersPreAnchorIndex k)))‖ ≤
+          ‖(1 / 2 : ℂ) * selectedFerrersAbelLogRepresentative k x‖ +
+            ‖(Real.sqrt (Real.exp x /
+              lambda_m (selectedFerrersPreAnchorIndex k)) : ℂ) *
+              ∑ n ∈ sourcePositiveIndexFinset
+                (selectedFerrersPreAnchorIndex k),
+                w5d_Q k (((n : ℕ) : ℝ) *
+                  (Real.exp x /
+                    lambda_m (selectedFerrersPreAnchorIndex k)))‖ :=
+        norm_add_le _ _
+      _ = (1 / 2) * ‖selectedFerrersAbelLogRepresentative k x‖ +
+            Real.sqrt (Real.exp x /
+              lambda_m (selectedFerrersPreAnchorIndex k)) *
+              ‖∑ n ∈ sourcePositiveIndexFinset
+                (selectedFerrersPreAnchorIndex k),
+                w5d_Q k (((n : ℕ) : ℝ) *
+                  (Real.exp x /
+                    lambda_m (selectedFerrersPreAnchorIndex k)))‖ := by
+        rw [norm_mul, norm_mul, Complex.norm_real, Real.norm_eq_abs,
+          abs_of_nonneg (Real.sqrt_nonneg _),
+          show ‖(1 / 2 : ℂ)‖ = 1 / 2 by
+            rw [show (1 / 2 : ℂ) = ((1 / 2 : ℝ) : ℂ) by norm_num,
+              Complex.norm_real]
+            norm_num]
 
 end Q3.RouteB.D0Pstar
