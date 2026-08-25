@@ -2428,3 +2428,49 @@ preflight, который требует B и который является ш
    не видит).
 3. Ядра Пуассона в пине нет вообще — `grep` по всему Mathlib пуст. Строим сами,
    как и предполагает шаг 4 маршрута.
+
+## Долг (2026-08-25, Linux): шесть обязательных plant'ов W4 отсутствуют в дереве
+
+Не вопрос к судье — запись долга, чтобы он не потерялся между вердиктами.
+
+**Что требовалось.** Авторизация W4 piecewise-AC потребовала четыре plant'а.
+Вердикт о ремонте нулевого края повторил их дословно — «retain the four
+plants from the prior authorization and add» — и добавил два своих.
+
+**Что в дереве на `794b7b38`.** Три plant'а из вердикта об архитектуре
+телескопа. Из шести прежних — ни одного:
+
+```
+boundedVariation_without_absoluteContinuity_plant
+ae_equal_representatives_can_disagree_on_absoluteContinuity_plant
+global_absolute_continuity_fails_for_finite_jump_sources_plant
+fixed_k_decay_does_not_supply_uniform_family_rate_plant
+full_endpoint_value_does_not_control_lower_right_value_without_seam_plant
+lower_endpoint_is_also_production_seam_plant
+```
+
+**Почему это не косметика.** `fixed_k_decay_does_not_supply_uniform_family_rate_plant`
+стережёт границу «фиксированное k против кофинальной скорости». Фронт стоит
+ровно на ней: W5 закрыт при фиксированном k, открыт
+`W5_COFINAL_PACKET_BUDGET_RATE`. Страж, отделяющий одно от другого, не написан.
+
+**Закономерность, а не единичный пропуск.** Исполняется всегда только
+последний вердикт; требования предыдущих не переносятся, даже когда перенос
+предписан дословно.
+
+**Материал готов.** Все шесть доказаны и kernel-green на ветке
+`linux/w4-independent-2026-08-25`, вместе с
+`selectedFerrersAbelLogRepresentative_tendsto_lowerRightValue` — доказательством,
+что нижнее одностороннее значение есть настоящий правый предел production-
+представителя, а не только арифметическая разность. В production-линии этот
+объект определён, но с пределом нигде не отождествлён.
+
+```
+CLOSES: W4_MANDATORY_PLANT_DEBT
+OPENS:  ничего — доказательства существуют, нужен только перенос в
+        production-файл под действующей транзакцией
+```
+
+Переносить в `G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean`
+самостоятельно я не стал: это правка production Lean-источника, а ночной
+грант такие правки от нашего имени запрещает.
