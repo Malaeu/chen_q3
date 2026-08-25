@@ -412,4 +412,37 @@ private theorem exp_decay_intervalIntegral_le {b : ℝ} (hb : 0 ≤ b) :
 
 #print axioms exp_decay_intervalIntegral_le
 
+/-- The two envelope halves combine into one continuous majorant on the whole
+line: with `t = x - log lam` the starred target obeys
+`24 * exp (-pi/2) * exp (-(pi - 1/2) * |t|)`.  This is the only bound the L1
+assembly ever integrates, so the (unproved) continuity of `E_star H` itself is
+never needed. -/
+private theorem E_star_explicitCCMLimitH_additive_envelope
+    {lam : ℝ} (hlam : 0 < lam) (x : ℝ) :
+    ‖E_star explicitCCMLimitH (Real.exp x / lam)‖ ≤
+      24 * Real.exp (-Real.pi / 2) *
+        Real.exp (-(Real.pi - 1 / 2) * |x - Real.log lam|) := by
+  have hu : Real.exp x / lam = Real.exp (x - Real.log lam) := by
+    rw [Real.exp_sub, Real.exp_log hlam]
+  set t : ℝ := x - Real.log lam with ht
+  rw [hu]
+  rcases le_or_lt 0 t with hpos | hneg
+  · -- right half: u = exp t >= 1
+    have habs : |t| = t := abs_of_nonneg hpos
+    rw [habs]
+    refine le_trans (E_star_explicitCCMLimitH_norm_le_of_one_le
+      (Real.one_le_exp_iff.mpr hpos)) ?_
+    simpa using envelope_additive_bound hpos
+  · -- left half: u = exp t <= 1, invert
+    have habs : |t| = -t := abs_of_neg hneg
+    rw [habs]
+    have hle : Real.exp t ≤ 1 := Real.exp_le_one_iff.mpr hneg.le
+    have hinv : (Real.exp t)⁻¹ = Real.exp (-t) := (Real.exp_neg t).symm
+    refine le_trans (E_star_explicitCCMLimitH_norm_le_of_le_one
+      (Real.exp_pos t) hle) ?_
+    rw [hinv]
+    simpa using envelope_additive_bound (neg_nonneg.mpr hneg.le)
+
+#print axioms E_star_explicitCCMLimitH_additive_envelope
+
 end Q3.RouteB.D0Pstar
