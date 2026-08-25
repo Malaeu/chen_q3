@@ -250,4 +250,25 @@ private theorem E_star_explicitCCMLimitH_norm_le_of_one_le
       mul_le_mul_of_nonneg_left htsum (Real.sqrt_nonneg _)
     _ = 24 * Real.sqrt u * Real.exp (-(Real.pi * u ^ 2) / 2) := by ring
 
+#print axioms E_star_explicitCCMLimitH_norm_le_of_one_le
+
+/-! ## The left half by exact inversion -/
+
+/-- On `0 < u ≤ 1` the same Gaussian bound holds with `u` replaced by its
+inverse: the starred comb is inversion-symmetric, so the left half of the
+envelope is the right half read backwards.  This is the exact cancellation
+mechanism; no Poisson summation is needed. -/
+private theorem E_star_explicitCCMLimitH_norm_le_of_le_one
+    {u : ℝ} (hu0 : 0 < u) (hu : u ≤ 1) :
+    ‖E_star explicitCCMLimitH u‖ ≤
+      24 * Real.sqrt u⁻¹ * Real.exp (-(Real.pi * (u⁻¹) ^ 2) / 2) := by
+  have hinv : E_star explicitCCMLimitH u = E_star explicitCCMLimitH u⁻¹ := by
+    have h := E_star_explicitCCMLimitH_inv u⁻¹ (by positivity)
+    simpa [inv_inv] using h
+  rw [hinv]
+  exact E_star_explicitCCMLimitH_norm_le_of_one_le
+    (one_le_inv_iff₀.mpr ⟨hu0, hu⟩)
+
+#print axioms E_star_explicitCCMLimitH_norm_le_of_le_one
+
 end Q3.RouteB.D0Pstar
