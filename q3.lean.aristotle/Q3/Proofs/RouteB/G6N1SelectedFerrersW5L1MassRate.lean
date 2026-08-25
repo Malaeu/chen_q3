@@ -1,4 +1,7 @@
 import Q3.Proofs.RouteB.G6N1SelectedFerrersW5JumpSeamRate
+import Q3.Proofs.RouteB.G6N1SelectedFerrersEStarWindowMainError
+import Q3.Proofs.RouteB.G6N1ExplicitCCMLimitBeyondSourceWindowTail
+import Q3.Proofs.RouteB.D0LogWindowMeasureTransport
 
 /-!
 # W5 — the additive-log `L¹` packet mass component
@@ -444,5 +447,54 @@ private theorem E_star_explicitCCMLimitH_additive_envelope
     simpa using envelope_additive_bound (neg_nonneg.mpr hneg.le)
 
 #print axioms E_star_explicitCCMLimitH_additive_envelope
+
+/-- The full starred error obeys the same `C / (lam * sqrt u)` window bound as
+its two committed halves: triangle inequality through the committed
+decomposition into main error minus target tail. -/
+private theorem fullEStarError_window_bound
+    (C0 C4 Cχ : ℝ) (hC0 : 0 ≤ C0) (hC4 : 0 ≤ C4) (hCχ : 0 ≤ Cχ)
+    (hmode :
+      ∀ᶠ k in Filter.atTop,
+        ∀ x ∈ Set.Icc (-(selectedFerrersPaperLambda k))
+            (selectedFerrersPaperLambda k),
+          ‖centerAnchorScalarZero k *
+              (selectedFerrersPreAnchorPair k).h0 x -
+            ((parabolicCylinderD 0 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤
+              C0 / (selectedFerrersPaperLambda k) ^ 2 ∧
+          ‖centerAnchorScalarFour k *
+              (selectedFerrersPreAnchorPair k).h4 x -
+            ((parabolicCylinderD 4 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤
+              C4 / (selectedFerrersPaperLambda k) ^ 2)
+    (hχ :
+      ∀ᶠ k in Filter.atTop,
+        |1 - (selectedFerrersPreAnchorPair k).chi0| ≤
+            Cχ / (selectedFerrersPaperLambda k) ^ 2 ∧
+          |1 - (selectedFerrersPreAnchorPair k).chi2| ≤
+            Cχ / (selectedFerrersPaperLambda k) ^ 2) :
+    ∃ C : ℝ, 0 ≤ C ∧
+      ∀ᶠ k in Filter.atTop,
+        ∀ u ∈ sourceWindow (selectedFerrersPaperLambda k),
+          ‖selectedFerrersFullEStarError k u‖ ≤
+            C / (selectedFerrersPaperLambda k * Real.sqrt u) := by
+  obtain ⟨C1, hC1, hmain⟩ :=
+    selectedFerrersEStarWindowMainError_bound_of_modeAndChiRates
+      C0 C4 Cχ hC0 hC4 hCχ hmode hχ
+  obtain ⟨C2, hC2, htail⟩ := selectedFerrersExplicitTargetTail_bound
+  refine ⟨C1 + C2, by linarith, ?_⟩
+  filter_upwards [hmain, htail] with k hk1 hk2
+  intro u hu
+  rw [selectedFerrersFullEStarError_eq_main_sub_targetTail k hu]
+  calc
+    ‖selectedFerrersEStarWindowMainError k u -
+        selectedFerrersExplicitTargetTail k u‖ ≤
+        ‖selectedFerrersEStarWindowMainError k u‖ +
+          ‖selectedFerrersExplicitTargetTail k u‖ := norm_sub_le _ _
+    _ ≤ C1 / (selectedFerrersPaperLambda k * Real.sqrt u) +
+          C2 / (selectedFerrersPaperLambda k * Real.sqrt u) :=
+      add_le_add (hk1 u hu) (hk2 u hu)
+    _ = (C1 + C2) / (selectedFerrersPaperLambda k * Real.sqrt u) := by
+      rw [div_add_div_same]
+
+#print axioms fullEStarError_window_bound
 
 end Q3.RouteB.D0Pstar
