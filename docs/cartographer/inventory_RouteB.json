@@ -1,16 +1,20 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 336,
-  "declarations": 3569,
-  "in_docs": 1758,
-  "in_lemma_db": 3556,
-  "orphans": 10,
-  "uncatalogued": 10,
+  "files_scanned": 339,
+  "declarations": 3597,
+  "in_docs": 1789,
+  "in_lemma_db": 3557,
+  "orphans": 9,
+  "uncatalogued": 9,
   "orphan_files_top": [
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersQuantitativeShiftedRootEnergy.lean",
-      10
+      8
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5JumpSeamRate.lean",
+      1
     ]
   ],
   "items": [
@@ -23580,7 +23584,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersAbelPoissonL2.lean",
       "line": 167,
       "signature": "private theorem selectedPacket_zero_mass (k : ℕ) : (∫ x : ℝ, selectedPacket k x) = 0",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -26290,7 +26294,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFixedKShiftedRootEnergy.lean",
       "line": 99,
       "signature": "private theorem shiftedSqrtWeight_sq_le_envelope (t : ℝ) : sourceArchimedeanShiftedSqrtWeight t ^ 2 ≤ (2 * (|Real.log Real.pi| + Real.log 4 + 7)) * vModeLogGrowthEnvelope t",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -28800,9 +28804,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersQuantitativeShiftedRootEnergy.lean",
       "line": 134,
       "signature": "noncomputable def selectedFerrersShiftedEnergyMajorant (k : ℕ) : ℝ",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -28810,9 +28814,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersQuantitativeShiftedRootEnergy.lean",
       "line": 139,
       "signature": "private theorem shiftedSqrtWeight_sq_le_envelope' (t : ℝ) : sourceArchimedeanShiftedSqrtWeight t ^ 2 ≤ (2 * (|Real.log Real.pi| + Real.log 4 + 7)) * vModeLogGrowthEnvelope t",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -28830,6 +28834,286 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersQuantitativeShiftedRootEnergy.lean",
       "line": 165,
       "signature": "theorem selectedFerrersAbelLimit_shiftedEnergy_le_majorant (k : ℕ) : (sourceArchimedeanShiftedSesquilinearForm (selectedFerrersPreAnchorIndex k) (⟨selectedFerrersAbelLimitHm k, selectedFerrersAbelLimit_mem_sourceArchimedeanShiftedFormDomain k⟩) (⟨selectedFerrersAbelLimitHm k, selectedFerrersAbelLimit_mem_sourceArchimedeanShiftedFormDomain k⟩)).re ≤ selectedFerrersShiftedEnergyMajorant k",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5e_target_le_half_gaussian",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5EndpointValueRate.lean",
+      "line": 33,
+      "signature": "private theorem w5e_target_le_half_gaussian (y : ℝ) : ‖explicitCCMLimitH y‖ ≤ 12 * Real.exp (-(Real.pi * y ^ 2) / 2)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5e_gaussian_series_le_geometric",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5EndpointValueRate.lean",
+      "line": 97,
+      "signature": "private theorem w5e_gaussian_series_le_geometric {u : ℝ} (hu : 1 ≤ u) (n : ℕ) (hn : 1 ≤ n) : Real.exp (-(Real.pi * ((n : ℝ) * u) ^ 2) / 2) ≤ Real.exp (-(Real.pi * u ^ 2) / 2) * (2 : ℝ)⁻¹ ^ (n - 1)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5e_E_star_norm_le_of_one_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5EndpointValueRate.lean",
+      "line": 140,
+      "signature": "private theorem w5e_E_star_norm_le_of_one_le {u : ℝ} (hu : 1 ≤ u) : ‖E_star explicitCCMLimitH u‖ ≤ 24 * Real.sqrt u * Real.exp (-(Real.pi * u ^ 2) / 2)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5e_fullEStarError_window_bound",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5EndpointValueRate.lean",
+      "line": 215,
+      "signature": "private theorem w5e_fullEStarError_window_bound (C0 C4 Cχ : ℝ) (hC0 : 0 ≤ C0) (hC4 : 0 ≤ C4) (hCχ : 0 ≤ Cχ) (hmode : ∀ᶠ k in Filter.atTop, ∀ x ∈ Set.Icc (-(selectedFerrersPaperLambda k)) (selectedFerrersPaperLambda k), ‖centerAnchorScalarZero k * (selectedFerrersPreAnchorPair k).h0 x - ((parabolicCylinderD 0 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤ C0 / (selectedFerrersPaperLambda k) ^ 2 ∧ ‖centerAnchorScalarFour k * (selectedFerrersPreAnchorPair k).h4 x - ((parabolicCylinderD 4 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤ C4 / (selectedFerrersPaperLambda k) ^ 2) (hχ : ∀ᶠ k in Filter.atTop, |1 - (selectedFerrersPreAnchorPair k).chi0| ≤ Cχ / (selectedFerrersPaperLambda k) ^ 2 ∧ |1 - (selectedFerrersPreAnchorPair k).chi2| ≤ Cχ / (selectedFerrersPaperLambda k) ^ 2) : ∃ C : ℝ, 0 ≤ C ∧ ∀ᶠ k in Filter.atTop, ∀ u ∈ sourceWindow (selectedFerrersPaperLambda k), ‖selectedFerrersFullEStarError k u‖ ≤ C / (selectedFerrersPaperLambda k * Real.sqrt u)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5e_center_bound",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5EndpointValueRate.lean",
+      "line": 259,
+      "signature": "private theorem w5e_center_bound {C : ℝ} (hrate : ∀ᶠ k in Filter.atTop, ∀ x ∈ Set.Icc (-(selectedFerrersPaperLambda k)) (selectedFerrersPaperLambda k), ‖selectedFerrersLemma73SourceScale k * prolateCombination (selectedFerrersPreAnchorPair k) x - (4 : ℂ) * explicitCCMLimitH x‖ ≤ C / (selectedFerrersPaperLambda k) ^ 2) : ∀ᶠ k in Filter.atTop, ‖selectedFerrersLemma73SourcePacket k 0‖ ≤ C / (selectedFerrersPaperLambda k) ^ 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "w5e_abelLimit_decomposition",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5EndpointValueRate.lean",
+      "line": 282,
+      "signature": "private theorem w5e_abelLimit_decomposition (k : ℕ) (u : ℝ) : selectedFerrersAbelLimit k u = (4 : ℂ) * E_star explicitCCMLimitH u + selectedFerrersFullEStarError k u + (1 / 2 : ℂ) * selectedFerrersLemma73SourcePacket k 0 * (Real.sqrt u : ℂ)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogEndpointValues_rate_of_modeAndChiRates",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5EndpointValueRate.lean",
+      "line": 313,
+      "signature": "theorem selectedFerrersAbelLogEndpointValues_rate_of_modeAndChiRates (C0 C4 Cχ : ℝ) (hC0 : 0 ≤ C0) (hC4 : 0 ≤ C4) (hCχ : 0 ≤ Cχ) (hmode : ∀ᶠ k in Filter.atTop, ∀ x ∈ Set.Icc (-(selectedFerrersPaperLambda k)) (selectedFerrersPaperLambda k), ‖centerAnchorScalarZero k * (selectedFerrersPreAnchorPair k).h0 x - ((parabolicCylinderD 0 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤ C0 / (selectedFerrersPaperLambda k) ^ 2 ∧ ‖centerAnchorScalarFour k * (selectedFerrersPreAnchorPair k).h4 x - ((parabolicCylinderD 4 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤ C4 / (selectedFerrersPaperLambda k) ^ 2) (hχ : ∀ᶠ k in Filter.atTop, |1 - (selectedFerrersPreAnchorPair k).chi0| ≤ Cχ / (selectedFerrersPaperLambda k) ^ 2 ∧ |1 - (selectedFerrersPreAnchorPair k).chi2| ≤ Cχ / (selectedFerrersPaperLambda k) ^ 2) : ∃ A : ℝ, 0 ≤ A ∧ ∀ᶠ k in Filter.atTop, ‖selectedFerrersAbelLogRepresentative k 0‖ ≤ A / Real.sqrt (selectedFerrersPaperLambda k) ∧ ‖selectedFerrersAbelLogRepresentative k (L_m (selectedFerrersPreAnchorIndex k))‖ ≤ A / Real.sqrt (selectedFerrersPaperLambda k)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "explicitCCMLimitH_inverse_four_decay",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5JumpSeamRate.lean",
+      "line": 43,
+      "signature": "private theorem explicitCCMLimitH_inverse_four_decay {x : ℝ} (hx : 1 ≤ |x|) : ‖explicitCCMLimitH x‖ ≤ 33 / x ^ 4",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "inverse_sqrt_sum_Icc_one_le_two_sqrt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5JumpSeamRate.lean",
+      "line": 130,
+      "signature": "private theorem inverse_sqrt_sum_Icc_one_le_two_sqrt (N : ℕ) : ∑ n ∈ Finset.Icc 1 N, (Real.sqrt (n : ℝ))⁻¹ ≤ 2 * Real.sqrt (N : ℝ)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "finite_inverse_sqrt_sum_le_two_sqrt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5JumpSeamRate.lean",
+      "line": 160,
+      "signature": "private theorem finite_inverse_sqrt_sum_le_two_sqrt (N : ℕ) : ∑ n ∈ Finset.Icc 2 N, (Real.sqrt (n : ℝ))⁻¹ ≤ 2 * Real.sqrt (N : ℝ)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersLemma73SourcePacket_edge_rate",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5JumpSeamRate.lean",
+      "line": 175,
+      "signature": "private theorem selectedFerrersLemma73SourcePacket_edge_rate {C : ℝ} (hC : 0 ≤ C) (hrate : ∀ᶠ k in Filter.atTop, ∀ x ∈ Set.Icc (-(selectedFerrersPaperLambda k)) (selectedFerrersPaperLambda k), ‖selectedFerrersLemma73SourceScale k * prolateCombination (selectedFerrersPreAnchorPair k) x - (4 : ℂ) * explicitCCMLimitH x‖ ≤ C / (selectedFerrersPaperLambda k) ^ 2) : ∀ᶠ k in Filter.atTop, ‖selectedFerrersLemma73SourcePacket k (selectedFerrersPaperLambda k)‖ ≤ (C + 132) / (selectedFerrersPaperLambda k) ^ 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogInternalSeamSum_rate_of_modeAndChiRates",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5JumpSeamRate.lean",
+      "line": 257,
+      "signature": "theorem selectedFerrersAbelLogInternalSeamSum_rate_of_modeAndChiRates {C : ℝ} (hC : 0 ≤ C) (hrate : ∀ᶠ k in Filter.atTop, ∀ x ∈ Set.Icc (-(selectedFerrersPaperLambda k)) (selectedFerrersPaperLambda k), ‖selectedFerrersLemma73SourceScale k * prolateCombination (selectedFerrersPreAnchorPair k) x - (4 : ℂ) * explicitCCMLimitH x‖ ≤ C / (selectedFerrersPaperLambda k) ^ 2) : ∀ᶠ k in Filter.atTop, ∑ n ∈ Finset.Icc (2 : ℕ) (k + 2), ‖((Real.sqrt (selectedFerrersPaperLambda k / (n : ℝ)) : ℝ) : ℂ) * selectedFerrersLemma73SourcePacket k (selectedFerrersPaperLambda k)‖ ≤ 2 * (C + 132) / Real.sqrt (selectedFerrersPaperLambda k)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "explicitCCMLimitH_le_half_gaussian",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5L1MassRate.lean",
+      "line": 45,
+      "signature": "private theorem explicitCCMLimitH_le_half_gaussian (y : ℝ) : ‖explicitCCMLimitH y‖ ≤ 12 * Real.exp (-(Real.pi * y ^ 2) / 2)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "gaussian_series_le_geometric",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5L1MassRate.lean",
+      "line": 123,
+      "signature": "private theorem gaussian_series_le_geometric {u : ℝ} (hu : 1 ≤ u) (n : ℕ) (hn : 1 ≤ n) : Real.exp (-(Real.pi * ((n : ℝ) * u) ^ 2) / 2) ≤ Real.exp (-(Real.pi * u ^ 2) / 2) * (2 : ℝ)⁻¹ ^ (n - 1)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "E_star_explicitCCMLimitH_norm_le_of_one_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5L1MassRate.lean",
+      "line": 174,
+      "signature": "private theorem E_star_explicitCCMLimitH_norm_le_of_one_le {u : ℝ} (hu : 1 ≤ u) : ‖E_star explicitCCMLimitH u‖ ≤ 24 * Real.sqrt u * Real.exp (-(Real.pi * u ^ 2) / 2)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "E_star_explicitCCMLimitH_norm_le_of_le_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5L1MassRate.lean",
+      "line": 264,
+      "signature": "private theorem E_star_explicitCCMLimitH_norm_le_of_le_one {u : ℝ} (hu0 : 0 < u) (hu : u ≤ 1) : ‖E_star explicitCCMLimitH u‖ ≤ 24 * Real.sqrt u⁻¹ * Real.exp (-(Real.pi * (u⁻¹) ^ 2) / 2)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "gaussian_tail_intervalIntegral_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5L1MassRate.lean",
+      "line": 282,
+      "signature": "private theorem gaussian_tail_intervalIntegral_le {b : ℝ} (hb : 1 ≤ b) : ∫ u in (1 : ℝ)..b, Real.exp (-(Real.pi * u ^ 2) / 2) ≤ 2 / Real.pi * Real.exp (-Real.pi / 2)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "envelope_additive_bound",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5L1MassRate.lean",
+      "line": 341,
+      "signature": "private theorem envelope_additive_bound {y : ℝ} (hy : 0 ≤ y) : 24 * Real.sqrt (Real.exp y) * Real.exp (-(Real.pi * (Real.exp y) ^ 2) / 2) ≤ 24 * Real.exp (-Real.pi / 2) * Real.exp (-(Real.pi - 1 / 2) * y)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "exp_decay_intervalIntegral_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5L1MassRate.lean",
+      "line": 377,
+      "signature": "private theorem exp_decay_intervalIntegral_le {b : ℝ} (hb : 0 ≤ b) : ∫ y in (0 : ℝ)..b, Real.exp (-(Real.pi - 1 / 2) * y) ≤ (Real.pi - 1 / 2)⁻¹",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "E_star_explicitCCMLimitH_additive_envelope",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5L1MassRate.lean",
+      "line": 423,
+      "signature": "private theorem E_star_explicitCCMLimitH_additive_envelope {lam : ℝ} (hlam : 0 < lam) (x : ℝ) : ‖E_star explicitCCMLimitH (Real.exp x / lam)‖ ≤ 24 * Real.exp (-Real.pi / 2) * Real.exp (-(Real.pi - 1 / 2) * |x - Real.log lam|)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "fullEStarError_window_bound",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5L1MassRate.lean",
+      "line": 454,
+      "signature": "private theorem fullEStarError_window_bound (C0 C4 Cχ : ℝ) (hC0 : 0 ≤ C0) (hC4 : 0 ≤ C4) (hCχ : 0 ≤ Cχ) (hmode : ∀ᶠ k in Filter.atTop, ∀ x ∈ Set.Icc (-(selectedFerrersPaperLambda k)) (selectedFerrersPaperLambda k), ‖centerAnchorScalarZero k * (selectedFerrersPreAnchorPair k).h0 x - ((parabolicCylinderD 0 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤ C0 / (selectedFerrersPaperLambda k) ^ 2 ∧ ‖centerAnchorScalarFour k * (selectedFerrersPreAnchorPair k).h4 x - ((parabolicCylinderD 4 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤ C4 / (selectedFerrersPaperLambda k) ^ 2) (hχ : ∀ᶠ k in Filter.atTop, |1 - (selectedFerrersPreAnchorPair k).chi0| ≤ Cχ / (selectedFerrersPaperLambda k) ^ 2 ∧ |1 - (selectedFerrersPreAnchorPair k).chi2| ≤ Cχ / (selectedFerrersPaperLambda k) ^ 2) : ∃ C : ℝ, 0 ≤ C ∧ ∀ᶠ k in Filter.atTop, ∀ u ∈ sourceWindow (selectedFerrersPaperLambda k), ‖selectedFerrersFullEStarError k u‖ ≤ C / (selectedFerrersPaperLambda k * Real.sqrt u)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedPacket_center_bound",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5L1MassRate.lean",
+      "line": 503,
+      "signature": "private theorem selectedPacket_center_bound {C : ℝ} (hrate : ∀ᶠ k in Filter.atTop, ∀ x ∈ Set.Icc (-(selectedFerrersPaperLambda k)) (selectedFerrersPaperLambda k), ‖selectedFerrersLemma73SourceScale k * prolateCombination (selectedFerrersPreAnchorPair k) x - (4 : ℂ) * explicitCCMLimitH x‖ ≤ C / (selectedFerrersPaperLambda k) ^ 2) : ∀ᶠ k in Filter.atTop, ‖selectedFerrersLemma73SourcePacket k 0‖ ≤ C / (selectedFerrersPaperLambda k) ^ 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "abelLimit_decomposition",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5L1MassRate.lean",
+      "line": 529,
+      "signature": "private theorem abelLimit_decomposition (k : ℕ) (u : ℝ) : selectedFerrersAbelLimit k u = (4 : ℂ) * E_star explicitCCMLimitH u + selectedFerrersFullEStarError k u + (1 / 2 : ℂ) * selectedFerrersLemma73SourcePacket k 0 * (Real.sqrt u : ℂ)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "exp_abs_intervalIntegral_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5L1MassRate.lean",
+      "line": 559,
+      "signature": "private theorem exp_abs_intervalIntegral_le {a L : ℝ} (ha : 0 ≤ a) (haL : a ≤ L) : ∫ x in (0 : ℝ)..L, Real.exp (-(Real.pi - 1 / 2) * |x - a|) ≤ 2 * (Real.pi - 1 / 2)⁻¹",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "exp_neg_half_intervalIntegral_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5L1MassRate.lean",
+      "line": 616,
+      "signature": "private theorem exp_neg_half_intervalIntegral_le {L : ℝ} (hL : 0 ≤ L) : ∫ x in (0 : ℝ)..L, Real.exp (-x / 2) ≤ 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "exp_pos_half_intervalIntegral_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5L1MassRate.lean",
+      "line": 643,
+      "signature": "private theorem exp_pos_half_intervalIntegral_le {L : ℝ} (hL : 0 ≤ L) : ∫ x in (0 : ℝ)..L, Real.exp (x / 2) ≤ 2 * Real.exp (L / 2)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "rep_pointwise_bound",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5L1MassRate.lean",
+      "line": 676,
+      "signature": "private theorem rep_pointwise_bound {k : ℕ} {C1 C2 : ℝ} (herr : ∀ u ∈ sourceWindow (selectedFerrersPaperLambda k), ‖selectedFerrersFullEStarError k u‖ ≤ C1 / (selectedFerrersPaperLambda k * Real.sqrt u)) (hcenter : ‖selectedFerrersLemma73SourcePacket k 0‖ ≤ C2 / (selectedFerrersPaperLambda k) ^ 2) {x : ℝ} (hx : x ∈ Set.Icc 0 (L_m (selectedFerrersPreAnchorIndex k))) : ‖selectedFerrersAbelLogRepresentative k x‖ ≤ 96 * Real.exp (-Real.pi / 2) * Real.exp (-(Real.pi - 1 / 2) * |x - Real.log (selectedFerrersPaperLambda k)|) + C1 * (Real.sqrt (selectedFerrersPaperLambda k))⁻¹ * Real.exp (-x / 2) + C2 / 2 * ((selectedFerrersPaperLambda k) ^ 2 * Real.sqrt (selectedFerrersPaperLambda k))⁻¹ * Real.exp (x / 2)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersAbelLogZeroExtension_l1_rate_of_modeAndChiRates",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersW5L1MassRate.lean",
+      "line": 814,
+      "signature": "theorem selectedFerrersAbelLogZeroExtension_l1_rate_of_modeAndChiRates (C0 C4 Cχ : ℝ) (hC0 : 0 ≤ C0) (hC4 : 0 ≤ C4) (hCχ : 0 ≤ Cχ) (hmode : ∀ᶠ k in Filter.atTop, ∀ x ∈ Set.Icc (-(selectedFerrersPaperLambda k)) (selectedFerrersPaperLambda k), ‖centerAnchorScalarZero k * (selectedFerrersPreAnchorPair k).h0 x - ((parabolicCylinderD 0 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤ C0 / (selectedFerrersPaperLambda k) ^ 2 ∧ ‖centerAnchorScalarFour k * (selectedFerrersPreAnchorPair k).h4 x - ((parabolicCylinderD 4 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤ C4 / (selectedFerrersPaperLambda k) ^ 2) (hχ : ∀ᶠ k in Filter.atTop, |1 - (selectedFerrersPreAnchorPair k).chi0| ≤ Cχ / (selectedFerrersPaperLambda k) ^ 2 ∧ |1 - (selectedFerrersPreAnchorPair k).chi2| ≤ Cχ / (selectedFerrersPaperLambda k) ^ 2) : ∃ A B : ℝ, 0 ≤ A ∧ 0 ≤ B ∧ ∀ᶠ k in Filter.atTop, (∫ x : ℝ, ‖selectedFerrersAbelLogZeroExtension k x‖) ≤ B + A / Real.sqrt (selectedFerrersPaperLambda k)",
       "in_docs": true,
       "in_lemma_db": false,
       "orphan": false
