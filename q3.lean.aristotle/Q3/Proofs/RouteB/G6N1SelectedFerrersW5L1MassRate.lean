@@ -803,4 +803,207 @@ private theorem rep_pointwise_bound
 
 #print axioms rep_pointwise_bound
 
+/-! ## The public L1 rate -/
+
+set_option maxHeartbeats 1000000 in
+/-- The additive-log `L¹` packet mass is eventually bounded by a constant plus
+an explicit `1 / sqrt lambda` correction, conditional on the F72.6 mode and
+chi rate inputs.  This closes `W5_L1_LOG_PACKET_MASS_RATE`; the derivative
+budget and the two full-endpoint values are separate components and are not
+claimed here. -/
+theorem selectedFerrersAbelLogZeroExtension_l1_rate_of_modeAndChiRates
+    (C0 C4 Cχ : ℝ) (hC0 : 0 ≤ C0) (hC4 : 0 ≤ C4) (hCχ : 0 ≤ Cχ)
+    (hmode :
+      ∀ᶠ k in Filter.atTop,
+        ∀ x ∈ Set.Icc (-(selectedFerrersPaperLambda k))
+            (selectedFerrersPaperLambda k),
+          ‖centerAnchorScalarZero k *
+              (selectedFerrersPreAnchorPair k).h0 x -
+            ((parabolicCylinderD 0 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤
+              C0 / (selectedFerrersPaperLambda k) ^ 2 ∧
+          ‖centerAnchorScalarFour k *
+              (selectedFerrersPreAnchorPair k).h4 x -
+            ((parabolicCylinderD 4 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤
+              C4 / (selectedFerrersPaperLambda k) ^ 2)
+    (hχ :
+      ∀ᶠ k in Filter.atTop,
+        |1 - (selectedFerrersPreAnchorPair k).chi0| ≤
+            Cχ / (selectedFerrersPaperLambda k) ^ 2 ∧
+          |1 - (selectedFerrersPreAnchorPair k).chi2| ≤
+            Cχ / (selectedFerrersPaperLambda k) ^ 2) :
+    ∃ A B : ℝ, 0 ≤ A ∧ 0 ≤ B ∧
+      ∀ᶠ k in Filter.atTop,
+        (∫ x : ℝ, ‖selectedFerrersAbelLogZeroExtension k x‖) ≤
+          B + A / Real.sqrt (selectedFerrersPaperLambda k) := by
+  obtain ⟨C1, hC1, herr⟩ := fullEStarError_window_bound
+    C0 C4 Cχ hC0 hC4 hCχ hmode hχ
+  obtain ⟨C2, hC2, hrate⟩ :=
+    selectedFerrers_factorFourPortPacketRate_of_modeAndChiRates
+      C0 C4 Cχ hC0 hC4 hCχ hmode hχ
+  have hcenter := selectedPacket_center_bound hrate
+  have hpi3 : (3 : ℝ) < Real.pi := Real.pi_gt_three
+  have hcpos : (0 : ℝ) < Real.pi - 1 / 2 := by linarith
+  refine ⟨2 * C1 + C2,
+    192 * Real.exp (-Real.pi / 2) * (Real.pi - 1 / 2)⁻¹,
+    by linarith, by positivity, ?_⟩
+  filter_upwards [herr, hcenter] with k herrk hcenterk
+  set lam : ℝ := selectedFerrersPaperLambda k with hlamdef
+  have hlam1 : (1 : ℝ) ≤ lam := by
+    rw [hlamdef, selectedFerrersPaperLambda]
+    have h1 : (1 : ℝ) ≤ ((k + 2 : ℕ) : ℝ) := by
+      have : (1 : ℕ) ≤ k + 2 := by exact Nat.le_add_left 1 (k + 1)
+      exact_mod_cast this
+    simpa using Real.one_le_sqrt.mpr h1
+  have hlam0 : (0 : ℝ) < lam := lt_of_lt_of_le one_pos hlam1
+  have hs0 : (0 : ℝ) < Real.sqrt lam := Real.sqrt_pos.mpr hlam0
+  set L : ℝ := L_m (selectedFerrersPreAnchorIndex k) with hLdef
+  have hLnat : L = Real.log ((k + 2 : ℕ) : ℝ) := rfl
+  have hL0 : (0 : ℝ) ≤ L := by
+    rw [hLnat]
+    apply Real.log_nonneg
+    have : (1 : ℕ) ≤ k + 2 := by exact Nat.le_add_left 1 (k + 1)
+    exact_mod_cast this
+  have hloglam : Real.log lam = L / 2 := by
+    rw [hlamdef, selectedFerrersPaperLambda, Real.log_sqrt (by positivity),
+      hLnat]
+  have hexpL : Real.exp (L / 2) = lam := by
+    rw [← hloglam, Real.exp_log hlam0]
+  -- the majorant
+  set core : ℝ → ℝ := fun x =>
+    96 * Real.exp (-Real.pi / 2) *
+        Real.exp (-(Real.pi - 1 / 2) * |x - Real.log lam|) +
+      C1 * (Real.sqrt lam)⁻¹ * Real.exp (-x / 2) +
+      C2 / 2 * (lam ^ 2 * Real.sqrt lam)⁻¹ * Real.exp (x / 2)
+    with hcoredef
+  have habs : Continuous fun x : ℝ => |x - Real.log lam| :=
+    continuous_abs.comp (continuous_id.sub continuous_const)
+  have hcont : Continuous core := by
+    rw [hcoredef]
+    refine ((continuous_const.mul (Real.continuous_exp.comp
+      (continuous_const.mul habs))).add
+      (continuous_const.mul (Real.continuous_exp.comp
+        ((continuous_neg.comp continuous_id).div_const 2)))).add
+      (continuous_const.mul (Real.continuous_exp.comp
+        (continuous_id.div_const 2)))
+  have hg_int : MeasureTheory.Integrable
+      ((Set.Icc (0 : ℝ) L).indicator core) := by
+    exact (hcont.integrableOn_Icc).integrable_indicator measurableSet_Icc
+  -- pointwise domination
+  have hpoint : ∀ x : ℝ,
+      ‖selectedFerrersAbelLogZeroExtension k x‖ ≤
+        (Set.Icc (0 : ℝ) L).indicator core x := by
+    intro x
+    by_cases hx : x ∈ Set.Icc (0 : ℝ) L
+    · rw [selectedFerrersAbelLogZeroExtension, Set.indicator_of_mem hx,
+        Set.indicator_of_mem hx]
+      exact rep_pointwise_bound herrk hcenterk hx
+    · rw [selectedFerrersAbelLogZeroExtension, Set.indicator_of_notMem hx,
+        Set.indicator_of_notMem hx]
+      simp
+  -- integral comparison
+  have hmono : (∫ x : ℝ, ‖selectedFerrersAbelLogZeroExtension k x‖) ≤
+      ∫ x : ℝ, (Set.Icc (0 : ℝ) L).indicator core x := by
+    apply MeasureTheory.integral_mono_of_nonneg
+    · exact Filter.Eventually.of_forall fun x => norm_nonneg _
+    · exact hg_int
+    · exact Filter.Eventually.of_forall hpoint
+  refine le_trans hmono ?_
+  -- evaluate the majorant integral
+  rw [MeasureTheory.integral_indicator measurableSet_Icc,
+    MeasureTheory.integral_Icc_eq_integral_Ioc,
+    ← intervalIntegral.integral_of_le hL0]
+  have hint1 : IntervalIntegrable
+      (fun x : ℝ => 96 * Real.exp (-Real.pi / 2) *
+        Real.exp (-(Real.pi - 1 / 2) * |x - Real.log lam|)) volume 0 L :=
+    ((continuous_const.mul (Real.continuous_exp.comp
+      (continuous_const.mul habs)))).intervalIntegrable 0 L
+  have hint2 : IntervalIntegrable
+      (fun x : ℝ => C1 * (Real.sqrt lam)⁻¹ * Real.exp (-x / 2)) volume 0 L :=
+    (continuous_const.mul (Real.continuous_exp.comp
+      ((continuous_neg.comp continuous_id).div_const 2))).intervalIntegrable 0 L
+  have hint3 : IntervalIntegrable
+      (fun x : ℝ => C2 / 2 * (lam ^ 2 * Real.sqrt lam)⁻¹ *
+        Real.exp (x / 2)) volume 0 L :=
+    (continuous_const.mul (Real.continuous_exp.comp
+      (continuous_id.div_const 2))).intervalIntegrable 0 L
+  have hsplit : (∫ x in (0 : ℝ)..L, core x) =
+      (∫ x in (0 : ℝ)..L, 96 * Real.exp (-Real.pi / 2) *
+          Real.exp (-(Real.pi - 1 / 2) * |x - Real.log lam|)) +
+        (∫ x in (0 : ℝ)..L, C1 * (Real.sqrt lam)⁻¹ * Real.exp (-x / 2)) +
+        ∫ x in (0 : ℝ)..L, C2 / 2 * (lam ^ 2 * Real.sqrt lam)⁻¹ *
+          Real.exp (x / 2) := by
+    rw [hcoredef]
+    rw [intervalIntegral.integral_add (hint1.add hint2) hint3,
+      intervalIntegral.integral_add hint1 hint2]
+  rw [hsplit]
+  -- three explicit bounds
+  have hlog0 : (0 : ℝ) ≤ Real.log lam := Real.log_nonneg hlam1
+  have hlogL : Real.log lam ≤ L := by
+    rw [hloglam]
+    linarith [hL0]
+  have hI1 : (∫ x in (0 : ℝ)..L, 96 * Real.exp (-Real.pi / 2) *
+      Real.exp (-(Real.pi - 1 / 2) * |x - Real.log lam|)) ≤
+      192 * Real.exp (-Real.pi / 2) * (Real.pi - 1 / 2)⁻¹ := by
+    rw [intervalIntegral.integral_const_mul]
+    have h := exp_abs_intervalIntegral_le hlog0 hlogL
+    have hnn : (0 : ℝ) ≤ 96 * Real.exp (-Real.pi / 2) := by positivity
+    calc
+      96 * Real.exp (-Real.pi / 2) *
+          ∫ x in (0 : ℝ)..L,
+            Real.exp (-(Real.pi - 1 / 2) * |x - Real.log lam|) ≤
+          96 * Real.exp (-Real.pi / 2) * (2 * (Real.pi - 1 / 2)⁻¹) :=
+        mul_le_mul_of_nonneg_left h hnn
+      _ = 192 * Real.exp (-Real.pi / 2) * (Real.pi - 1 / 2)⁻¹ := by ring
+  have hI2 : (∫ x in (0 : ℝ)..L, C1 * (Real.sqrt lam)⁻¹ *
+      Real.exp (-x / 2)) ≤ 2 * C1 / Real.sqrt lam := by
+    rw [intervalIntegral.integral_const_mul]
+    have h := exp_neg_half_intervalIntegral_le hL0
+    have hnn : (0 : ℝ) ≤ C1 * (Real.sqrt lam)⁻¹ := by positivity
+    calc
+      C1 * (Real.sqrt lam)⁻¹ * ∫ x in (0 : ℝ)..L, Real.exp (-x / 2) ≤
+          C1 * (Real.sqrt lam)⁻¹ * 2 := mul_le_mul_of_nonneg_left h hnn
+      _ = 2 * C1 / Real.sqrt lam := by
+        rw [div_eq_mul_inv]
+        ring
+  have hI3 : (∫ x in (0 : ℝ)..L, C2 / 2 * (lam ^ 2 * Real.sqrt lam)⁻¹ *
+      Real.exp (x / 2)) ≤ C2 / Real.sqrt lam := by
+    rw [intervalIntegral.integral_const_mul]
+    have h := exp_pos_half_intervalIntegral_le hL0
+    have hnn : (0 : ℝ) ≤ C2 / 2 * (lam ^ 2 * Real.sqrt lam)⁻¹ := by positivity
+    calc
+      C2 / 2 * (lam ^ 2 * Real.sqrt lam)⁻¹ *
+          ∫ x in (0 : ℝ)..L, Real.exp (x / 2) ≤
+          C2 / 2 * (lam ^ 2 * Real.sqrt lam)⁻¹ * (2 * Real.exp (L / 2)) :=
+        mul_le_mul_of_nonneg_left h hnn
+      _ = C2 * lam * (lam ^ 2 * Real.sqrt lam)⁻¹ := by
+        rw [hexpL]
+        ring
+      _ ≤ C2 / Real.sqrt lam := by
+        rw [mul_inv, div_eq_mul_inv]
+        have hlamsq : (lam ^ 2)⁻¹ ≤ lam⁻¹ := by
+          rw [inv_le_inv₀ (by positivity) hlam0]
+          nlinarith [hlam1]
+        calc
+          C2 * lam * ((lam ^ 2)⁻¹ * (Real.sqrt lam)⁻¹) ≤
+              C2 * lam * (lam⁻¹ * (Real.sqrt lam)⁻¹) := by
+            apply mul_le_mul_of_nonneg_left _ (by positivity)
+            exact mul_le_mul_of_nonneg_right hlamsq (by positivity)
+          _ = C2 * (lam * lam⁻¹) * (Real.sqrt lam)⁻¹ := by ring
+          _ = C2 * (Real.sqrt lam)⁻¹ := by
+            rw [mul_inv_cancel₀ (ne_of_gt hlam0), mul_one]
+  calc
+    (∫ x in (0 : ℝ)..L, 96 * Real.exp (-Real.pi / 2) *
+        Real.exp (-(Real.pi - 1 / 2) * |x - Real.log lam|)) +
+        (∫ x in (0 : ℝ)..L, C1 * (Real.sqrt lam)⁻¹ * Real.exp (-x / 2)) +
+        (∫ x in (0 : ℝ)..L, C2 / 2 * (lam ^ 2 * Real.sqrt lam)⁻¹ *
+          Real.exp (x / 2)) ≤
+        192 * Real.exp (-Real.pi / 2) * (Real.pi - 1 / 2)⁻¹ +
+          2 * C1 / Real.sqrt lam + C2 / Real.sqrt lam :=
+      add_le_add (add_le_add hI1 hI2) hI3
+    _ = 192 * Real.exp (-Real.pi / 2) * (Real.pi - 1 / 2)⁻¹ +
+          (2 * C1 + C2) / Real.sqrt lam := by
+      rw [add_assoc, div_add_div_same]
+
+#print axioms selectedFerrersAbelLogZeroExtension_l1_rate_of_modeAndChiRates
+
 end Q3.RouteB.D0Pstar
