@@ -244,4 +244,79 @@ private theorem selectedFerrersLemma73SourcePacket_edge_rate
       add_le_add hdiff (le_trans hfour hpow)
     _ = (C + 132) / (selectedFerrersPaperLambda k) ^ 2 := by ring
 
+/-! ## The repaired internal seam sum decays -/
+
+/-- The internal seam sum of the repaired W4 jump ledger tends to zero along
+the family.  The packet argument inside the sum is always the window edge, so
+the sum factors into the edge value times an explicit scalar, and the edge rate
+beats the growth of that scalar.
+
+This closes only the seam component.  The `L1` mass, the derivative budget and
+the two full-endpoint values are separate components of `C_k` and are not
+controlled here. -/
+theorem selectedFerrersAbelLogInternalSeamSum_rate_of_modeAndChiRates
+    {C : ℝ} (hC : 0 ≤ C)
+    (hrate : ∀ᶠ k in Filter.atTop,
+      ∀ x ∈ Set.Icc (-(selectedFerrersPaperLambda k))
+          (selectedFerrersPaperLambda k),
+        ‖selectedFerrersLemma73SourceScale k *
+            prolateCombination (selectedFerrersPreAnchorPair k) x -
+          (4 : ℂ) * explicitCCMLimitH x‖ ≤
+            C / (selectedFerrersPaperLambda k) ^ 2) :
+    ∀ᶠ k in Filter.atTop,
+      ∑ n ∈ Finset.Icc (2 : ℕ) (k + 2),
+          ‖((Real.sqrt (selectedFerrersPaperLambda k / (n : ℝ)) : ℝ) : ℂ) *
+            selectedFerrersLemma73SourcePacket k
+              (selectedFerrersPaperLambda k)‖ ≤
+        2 * (C + 132) / Real.sqrt (selectedFerrersPaperLambda k) := by
+  filter_upwards [selectedFerrersLemma73SourcePacket_edge_rate hC hrate] with k hedge
+  set lam := selectedFerrersPaperLambda k with hlamdef
+  have hlam : lam = Real.sqrt ((k + 2 : ℕ) : ℝ) := rfl
+  have hone : (1 : ℝ) ≤ lam := by
+    rw [hlam]
+    have h1 : (1 : ℝ) ≤ ((k + 2 : ℕ) : ℝ) := by
+      have : (1 : ℕ) ≤ k + 2 := by omega
+      exact_mod_cast this
+    simpa using Real.one_le_sqrt.mpr h1
+  have hpos : (0 : ℝ) < lam := lt_of_lt_of_le one_pos hone
+  have hsqrtlam : (0 : ℝ) < Real.sqrt lam := Real.sqrt_pos.mpr hpos
+  have hlamsq : (0 : ℝ) < lam ^ 2 := by positivity
+  -- Each summand splits into the fixed edge value and an explicit scalar.
+  have hsplit : ∀ n ∈ Finset.Icc (2 : ℕ) (k + 2),
+      ‖((Real.sqrt (lam / (n : ℝ)) : ℝ) : ℂ) *
+          selectedFerrersLemma73SourcePacket k lam‖ =
+        Real.sqrt lam * (Real.sqrt (n : ℝ))⁻¹ *
+          ‖selectedFerrersLemma73SourcePacket k lam‖ := by
+    intro n hn
+    rw [Finset.mem_Icc] at hn
+    have hnpos : (0 : ℝ) < (n : ℝ) := by
+      have : 0 < n := by omega
+      exact_mod_cast this
+    rw [norm_mul, Complex.norm_real, Real.norm_eq_abs,
+      abs_of_nonneg (Real.sqrt_nonneg _),
+      Real.sqrt_div (le_of_lt hpos) (n : ℝ), div_eq_mul_inv]
+  rw [Finset.sum_congr rfl hsplit, ← Finset.sum_mul, ← Finset.mul_sum]
+  -- The scalar factor is bounded by the finite inverse square-root sum.
+  have hsum := finite_inverse_sqrt_sum_le_two_sqrt (k + 2)
+  have hsumcast : ∑ n ∈ Finset.Icc (2 : ℕ) (k + 2), (Real.sqrt (n : ℝ))⁻¹ ≤
+      2 * lam := by
+    rw [hlam]
+    exact hsum
+  have hpacketNonneg : (0 : ℝ) ≤ ‖selectedFerrersLemma73SourcePacket k lam‖ :=
+    norm_nonneg _
+  calc
+    Real.sqrt lam * (∑ n ∈ Finset.Icc (2 : ℕ) (k + 2), (Real.sqrt (n : ℝ))⁻¹) *
+          ‖selectedFerrersLemma73SourcePacket k lam‖ ≤
+        Real.sqrt lam * (2 * lam) * ((C + 132) / lam ^ 2) := by
+      apply mul_le_mul _ hedge hpacketNonneg
+      · positivity
+      · exact mul_le_mul_of_nonneg_left hsumcast (Real.sqrt_nonneg _)
+    _ = 2 * (C + 132) / Real.sqrt lam := by
+      have hll : Real.sqrt lam * Real.sqrt lam = lam :=
+        Real.mul_self_sqrt (le_of_lt hpos)
+      field_simp
+      nlinarith [hll, hsqrtlam, hpos]
+
+#print axioms selectedFerrersAbelLogInternalSeamSum_rate_of_modeAndChiRates
+
 end Q3.RouteB.D0Pstar
