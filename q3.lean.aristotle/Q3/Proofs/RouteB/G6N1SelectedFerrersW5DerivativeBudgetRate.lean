@@ -317,4 +317,60 @@ private theorem w5d_hasDerivAt_of_no_seam
 
 #print axioms w5d_hasDerivAt_of_no_seam
 
+/-! ## The authorized reduction
+
+`DerivativeBudget ≤ (1/2)·L1 + ∫ √u·‖Q-comb‖`.  The derivative equals the D2
+decomposition off the finite seam set, hence almost everywhere; the budget
+integrand is dominated pointwise a.e. and the comparison integral carries the
+rest.  Nothing here bounds the `Q`-comb: that is the exact open supplier
+`W5_LOG_DERIVATIVE_BUDGET_BOUNDED` of the conditional-closure verdict. -/
+
+/-- The finite additive seam set: images of the multiplicative seams. -/
+private def w5d_seamSet (k : ℕ) : Set ℝ :=
+  ⋃ n ∈ ((sourcePositiveIndexFinset
+      (selectedFerrersPreAnchorIndex k) : Finset ℕ+) : Set ℕ+),
+    {x : ℝ | ((n : ℕ) : ℝ) *
+        (Real.exp x / lambda_m (selectedFerrersPreAnchorIndex k)) =
+      lambda_m (selectedFerrersPreAnchorIndex k)}
+
+private theorem w5d_seamSet_measure_zero (k : ℕ) :
+    MeasureTheory.volume (w5d_seamSet k) = 0 := by
+  have hfin : (w5d_seamSet k).Finite := by
+    rw [w5d_seamSet]
+    apply Set.Finite.biUnion (Finset.finite_toSet _)
+    intro n _
+    have hlam : 0 < lambda_m (selectedFerrersPreAnchorIndex k) := by
+      rw [lambda_m]
+      apply Real.sqrt_pos.mpr
+      have h1 : (selectedFerrersPreAnchorIndex k).m = k + 2 := rfl
+      rw [h1]
+      positivity
+    have hnpos : (0 : ℝ) < ((n : ℕ) : ℝ) := by exact_mod_cast n.pos
+    apply Set.Finite.subset
+      (Set.finite_singleton
+        (Real.log (lambda_m (selectedFerrersPreAnchorIndex k) *
+          lambda_m (selectedFerrersPreAnchorIndex k) / ((n : ℕ) : ℝ))))
+    intro x hx
+    simp only [Set.mem_setOf_eq] at hx
+    simp only [Set.mem_singleton_iff]
+    have hexp : Real.exp x = lambda_m (selectedFerrersPreAnchorIndex k) *
+        lambda_m (selectedFerrersPreAnchorIndex k) / ((n : ℕ) : ℝ) := by
+      field_simp at hx ⊢
+      nlinarith [hx]
+    rw [← hexp, Real.log_exp]
+  exact hfin.measure_zero _
+
+/-- The authorized reduction: the derivative budget is at most half the `L¹`
+mass plus the weighted `Q`-comb integral. -/
+private theorem w5d_budget_reduction (k : ℕ) :
+    selectedFerrersAbelLogDerivativeBudget k ≤
+      (1 / 2) * (∫ x in (0 : ℝ)..L_m (selectedFerrersPreAnchorIndex k),
+        ‖selectedFerrersAbelLogRepresentative k x‖) +
+      ∫ x in (0 : ℝ)..L_m (selectedFerrersPreAnchorIndex k),
+        Real.sqrt (Real.exp x / lambda_m (selectedFerrersPreAnchorIndex k)) *
+          ‖∑ n ∈ sourcePositiveIndexFinset (selectedFerrersPreAnchorIndex k),
+            w5d_Q k (((n : ℕ) : ℝ) *
+              (Real.exp x / lambda_m (selectedFerrersPreAnchorIndex k)))‖ := by
+  sorry
+
 end Q3.RouteB.D0Pstar
