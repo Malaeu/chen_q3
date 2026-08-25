@@ -314,6 +314,25 @@ tool_families:
         validation: All eight mandatory control-v9 plants plus crash and mutation plants.
         last_verified: 2026-08-21
 
+      - id: w5-budget-probe
+        status: ENABLED
+        audience: [HUMAN, CLAUDE_CODE, CODEX]
+        mode: READ_ONLY
+        path: scripts/w5_budget_probe.py
+        invoke: python3 scripts/w5_budget_probe.py --steps 800
+        alternatives:
+          - python3 scripts/w5_budget_probe.py --wrong-way
+        trigger: A growth claim about a W5 budget component needs reproducing or refuting.
+        writes: false
+        approval: NONE
+        authority: >-
+          DIAGNOSTIC_NUMERICS_ONLY_NEVER_A_PROOF_AND_NEVER_A_LEAN_INPUT
+        records_to: stdout
+        validation: >-
+          --wrong-way reproduces the 2026-08-25 modulus-inside-the-sum error, so the
+          size of that mistake stays visible against the sign-correct run.
+        last_verified: 2026-08-25
+
       - id: semantic-attestation-broker
         status: ENABLED
         audience: [HUMAN, CLAUDE_CODE]
