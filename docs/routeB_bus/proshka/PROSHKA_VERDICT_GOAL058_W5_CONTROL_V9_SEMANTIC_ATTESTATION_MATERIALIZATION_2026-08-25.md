@@ -5,12 +5,12 @@ OPERATIVE_CLASS: REPAIR_W5_CONTROL_V9_SEMANTIC_ATTESTATION_MATERIALIZATION
 PRIMARY_COUNT: 1
 DOCUMENT_ROLE: CONTROL_PLANE_ADJUDICATION
 
-REQUEST:
+REQUEST_LOCK:
   REPOSITORY: Malaeu/chen_q3
   BRANCH: rh_clean
   REQUEST_COMMIT: 38dd9f131aec0efb8a470ff4fa7ff7cbdbe9131a
   REQUEST_PATH: docs/routeB_bus/proshka/PROSHKA_REQUEST_CODEX_GOAL058_W5_CONTROL_V9_SEMANTIC_ATTESTATION_MATERIALIZATION_2026-08-25.md
-  REQUEST_GIT_BLOB: 550d2c5f46ef0f5a360706bc193cc98ba56bb051
+  REQUEST_GIT_BLOB: 273bf6ae0414ef384b9b9609e21ff31c4c00f13a
   ENTRY_ID: GOAL058_W5_QUANTITATIVE_SHIFTED_ENERGY_20260825
 
 OPERATIVE_SEMANTIC_JUDGMENT:
@@ -38,10 +38,10 @@ CURRENT_QUARANTINE:
 
 CONTROL_PATH_AUDIT:
   POLICY_REQUIRES_EXTERNAL_RECEIPT: true
-  CLOSED_RECEIPT_SCHEMA_IMPLEMENTED: true
+  RECEIPT_SCHEMA_IMPLEMENTED: true
   BYTE_FOR_FIELD_VALIDATOR_IMPLEMENTED: true
   INJECTED_RESOLVER_LIBRARY_SEAM_IMPLEMENTED: true
-  TEST_ONLY_LAMBDA_RESOLUTION_IMPLEMENTED: true
+  TEST_ONLY_RESOLVER_INJECTION_IMPLEMENTED: true
   DURABLE_EXTERNAL_RESOLVER_IMPLEMENTED: false
   EXTERNAL_RECEIPT_REGISTRY_IMPLEMENTED: false
   ATOMIC_KERNEL_GREEN_TO_ADMITTED_MUTATOR_IMPLEMENTED: false
@@ -52,9 +52,9 @@ CONTROL_PATH_AUDIT:
   EXISTING_OPERATIVE_MATERIALIZATION_PATH: false
 
 CLASS_DECISION:
-  TRY: REJECTED_NO_EXISTING_OPERATIVE_RESOLVER_PATH
-  KILL: REJECTED_RECEIPT_SCHEMA_CAN_REPRESENT_THE_ADMITTED_JUDGMENT_EXACTLY
-  REPAIR: SELECTED
+  TRY_W5_CONTROL_V9_EXTERNAL_ATTESTATION_MATERIALIZATION: REJECTED_PATH_ABSENT
+  KILL_W5_CONTROL_V9_SEMANTIC_ADMISSION: REJECTED_SCHEMA_COMPATIBLE
+  REPAIR_W5_CONTROL_V9_SEMANTIC_ATTESTATION_MATERIALIZATION: SELECTED
 
 SELECTED_REPAIR:
   CODE: CONTROL_V9_LINUX_ATTESTATION_BROKER_AND_ATOMIC_ADMIT
@@ -63,9 +63,9 @@ SELECTED_REPAIR:
   STATE_SCHEMA_CHANGED: false
   RECEIPT_SCHEMA_CHANGED: false
   REASON_NO_VERSION_BUMP: >-
-    The repair materializes the already specified external-resolver seam and
-    KERNEL_GREEN-to-SEMANTICALLY_ADMITTED transition without changing any
-    closed field, issuer, status meaning, admission rule, or authority boundary.
+    The repair implements the external resolver seam and admission transition
+    already specified by Control v9. It changes no closed field, issuer,
+    status meaning, admission rule, or authority boundary.
 
   EXTERNAL_BROKER:
     SOCKET_PATH: /run/q3-control-v9/semantic-attestation.sock
@@ -74,12 +74,12 @@ SELECTED_REPAIR:
     QUERY_FIELD: attestation_id
     RESPONSE_SCHEMA: q3_semantic_attestation.v1
     ISSUE_OPERATION_EXPOSED_TO_CODEX: false
-    INLINE_RECEIPT_PAYLOAD_ACCEPTED_FROM_CODEX: false
+    INLINE_RECEIPT_ACCEPTED_FROM_CODEX: false
     CALLER_SELECTED_RECEIPT_PATH_ACCEPTED: false
     FAILURE_IF_UNAVAILABLE: SEMANTIC_ATTESTATION_INVALID
 
   REPOSITORY_ADAPTER:
-    RESOLVER_FUNCTION: resolve_linux_semantic_attestation
+    FUNCTION: resolve_linux_semantic_attestation
     INPUT: attestation_id
     OUTPUT: closed q3_semantic_attestation.v1 object or null
     TRANSPORT: fixed Unix-domain socket only
@@ -89,9 +89,7 @@ SELECTED_REPAIR:
   ATOMIC_TRANSITION:
     FUNCTION: materialize_semantic_admission
     CLI: semantic-admit
-    CLI_ARGUMENTS:
-      - entry-id
-      - attestation-id
+    CLI_ARGUMENTS: [entry-id, attestation-id]
     FORBIDDEN_CLI_ARGUMENTS:
       - receipt-path
       - receipt-json
@@ -108,17 +106,17 @@ SELECTED_REPAIR:
       - semantic_attestation_id
     ADMITTED_SCOPE_SOURCE: externally resolved receipt
     WRITE_ORDER:
-      - resolve receipt
+      - resolve receipt by ID
       - construct candidate state in memory
-      - validate complete candidate with the same resolver
+      - validate the complete candidate with the same resolver
       - atomically replace tracked state
 
   RESOLVER_THREADING:
     - three_body_loop validate
-    - three_body_loop launch internal preflight
+    - three_body_loop launch preflight
     - goal_runtime selection
     - goal_runtime runtime-state validation
-    - any dispatch-clear check
+    - every dispatch-clear check
 
 W5_MATERIALIZATION_LOCK:
   ATTESTATION_ID: ATTEST_GOAL058_W5_B635BA98B2C465FFE271B0775AFD174F74953C19_V1
@@ -190,7 +188,7 @@ MANDATORY_PLANTS:
   - arbitrary receipt path is not an accepted interface
   - inline JSON receipt is not an accepted interface
   - SOURCE_WRITTEN entry cannot be admitted
-  - second different attestation ID cannot replace an admitted receipt
+  - a second different attestation ID cannot replace an admitted receipt
   - pre-admission KERNEL_GREEN still blocks dispatch
   - post-admission valid external receipt clears only the quarantine barrier
 
@@ -208,12 +206,12 @@ RUNNER_UP_NOT_SELECTED:
     not required to materialize the existing resolver abstraction.
 
 FORBIDDEN_REPAIRS:
-  - treat the Proshka markdown verdict as q3_semantic_attestation.v1
-  - accept an unsigned tracked receipt through a built-in repo resolver
-  - let Codex pass receipt JSON, receipt path, issuer or admitted scope
+  - treat the Proshka Markdown verdict as q3_semantic_attestation.v1
+  - accept an unsigned tracked receipt through a built-in repository resolver
+  - let Codex pass receipt JSON, receipt path, issuer, or admitted scope
   - set status to SEMANTICALLY_ADMITTED without resolving the receipt
   - delete or retire the quarantine entry to evade admission
-  - mutate theorem statements, Lean source, W4 artifacts, Route state or RH-facing artifacts
+  - mutate theorem statements, Lean source, W4 artifacts, Route state, or RH-facing artifacts
 
 CLOSES:
   - W5_CONTROL_V9_ATTESTATION_PATH_ADJUDICATION
@@ -239,18 +237,18 @@ PREDICTION_LEDGER:
 REGISTERED_PREDICTIONS_FOR_REPAIR:
   P_CTRL_W5_1:
     probability: 0.92
-    prediction: the existing closed receipt validator accepts the exact W5 receipt without a state-schema or control-version change
+    prediction: the existing receipt validator accepts the exact W5 receipt without a state-schema or control-version change
   P_CTRL_W5_2:
     probability: 0.86
-    prediction: the first implementation defect will be incomplete resolver threading through launch or goal_runtime rather than a receipt field mismatch
+    prediction: the first implementation defect is incomplete resolver threading through launch or goal_runtime rather than a receipt-field mismatch
   P_CTRL_W5_3:
     probability: 0.99
     prediction: no Lean source or mathematical theorem change is required
   LIKELIEST_FAILURE: RESOLVER_NOT_THREADED_THROUGH_ALL_DISPATCH_ENTRY_POINTS
 
 AUTOPSY:
-  - dropped=DEPENDENCY; note=Control v9 defines a resolver callback and closed receipt validator but wires no durable resolver or state transition into production entry points.
-  - dropped=TRUST; note=An unsigned tracked receipt or caller-selected path would allow Codex to self-resolve the authority it is forbidden to possess.
+  - dropped=DEPENDENCY; note=Control v9 defines a resolver callback and closed receipt validator but wires no durable resolver or admission transition into production entry points.
+  - dropped=TRUST; note=An unsigned tracked receipt or caller-selected path would let Codex resolve the authority it is forbidden to possess.
 
 SCOPE: ABSTRACT
 VERIFIER: PAPER
@@ -273,48 +271,48 @@ RH_CLAIM: false
 
 | Item | Verdict | Exact boundary | Tags |
 |---|---|---|---|
-| W5 mathematical semantic judgment | **OPERATIVE** | Commit `dd469b72...` and current blob `b635ba98...` admit exactly fixed-`k` quantitative Fourier decay and the literal shifted-form energy majorant. This request does not reopen that judgment. | `[COFINAL_FAMILY][LEAN]` |
-| Raced duplicate | **REDUNDANT** | Commit `adcce6a6...` agreed semantically, but its duplicate file was removed by `21c1c9e...`; it is history, not a second operative judgment or receipt. | `[ABSTRACT][PAPER]` |
-| Closed receipt schema and validator | **PRESENT** | `three_body_loop.py` has the exact closed fields and byte-for-field comparison required by Control v9. | `[ABSTRACT][PAPER]` |
-| Durable external resolver | **ABSENT** | Repository search finds no receipt registry, authority broker, default resolver, or production resolver adapter. | `[ABSTRACT][PAPER]` |
-| State-transition writer | **ABSENT** | The CLI exposes `validate`, request validation, launch, and read-only watch, but no semantic-admission transition. | `[ABSTRACT][PAPER]` |
-| Existing TRY path | **REJECTED** | A callback type used by tests is not an operative materialization path. Default validation and dispatch call the state loader without a resolver. | `[ABSTRACT][PAPER]` |
-| KILL of W5 admission | **REJECTED** | The exact prior judgment fits every closed receipt field; the failure is control plumbing, not semantic incompatibility. | `[COFINAL_FAMILY][PAPER]` |
-| Selected repair | **OPEN** | Add one fixed Linux authority broker, one resolver adapter, one atomic transition, and thread the resolver through every dispatch gate. | `[ABSTRACT][CONDITIONAL]` |
+| W5 mathematical judgment | **OPERATIVE** | Commit `dd469b72...` and current blob `b635ba98...` admit only fixed-`k` quantitative Fourier decay and the literal shifted-form energy majorant. | `[COFINAL_FAMILY][LEAN]` |
+| Raced duplicate | **REDUNDANT** | Commit `adcce6a6...` agreed semantically, but its duplicate file was removed by `21c1c9e...`. It is history, not a second operative judgment or receipt. | `[ABSTRACT][PAPER]` |
+| Closed receipt validator | **PRESENT** | `three_body_loop.py` defines the exact receipt fields and byte-for-field comparison required by Control v9. | `[ABSTRACT][PAPER]` |
+| Durable external resolver | **ABSENT** | No receipt registry, authority broker, default resolver, or production resolver adapter exists. | `[ABSTRACT][PAPER]` |
+| Admission-state writer | **ABSENT** | The CLI has validation, request validation, launch, and read-only watch, but no semantic-admission transition. | `[ABSTRACT][PAPER]` |
+| Existing TRY path | **REJECTED** | An injected callback used by tests is not an operative materialization path; default validation and dispatch do not supply it. | `[ABSTRACT][PAPER]` |
+| KILL of W5 admission | **REJECTED** | The prior judgment fits every closed receipt field. The defect is control plumbing, not semantic incompatibility. | `[COFINAL_FAMILY][PAPER]` |
+| Selected repair | **OPEN** | Add one fixed Linux authority broker, one resolver adapter, one atomic transition, and thread the resolver through all dispatch gates. | `[ABSTRACT][CONDITIONAL]` |
 
 ## FINAL PROPOSAL
 
-Freeze the mathematical judgment at `dd469b72...`. Do not ask for another W5 semantic review.
+Freeze the mathematical judgment at `dd469b72...`. Do not request another W5 semantic review.
 
-Implement one bounded **control-only** transaction named:
+Implement one bounded control-only transaction:
 
 ```text
 CONTROL_V9_LINUX_ATTESTATION_BROKER_AND_ATOMIC_ADMIT
 ```
 
-The transaction must preserve Control version 9, the quarantine schema and the receipt schema. It must not accept an inline receipt, caller-selected path, issuer or scope. The external Linux broker is the sole authority source; repository code only resolves an already issued ID and performs the validated three-field state transition.
+It must preserve Control version 9 and the closed state and receipt schemas. The external Linux broker is the sole authority source. Repository code may resolve only an already issued attestation ID and may mutate only the three fields frozen above.
 
-After the repair is green, the independent Linux auditor issues the exact receipt frozen above. The control plane then performs the exact state delta. Only after `validate` and dispatch-clear tests are green may the next mathematical target be `W5_COFINAL_PACKET_BUDGET_RATE`.
+After that repair is green, the independent Linux auditor issues the exact receipt in this verdict. Only after the atomic transition, strict validation, and dispatch-clear tests pass may the next mathematical target be `W5_COFINAL_PACKET_BUDGET_RATE`.
 
 This verdict itself changes no quarantine state and authorizes no downstream mathematical dispatch.
 
 ## STRONGEST ATTACK
 
-### Attack 1 — use the Proshka verdict itself as the receipt
+### Attack 1 — use the Proshka verdict as the receipt
 
-Rejected. The verdict is the semantic judgment. Control v9 requires a different closed object, a different issuer and an externally resolved authority path. Treating Markdown as the receipt collapses judge and admission transport into one object. **[C04][C10]**
+Rejected. The verdict is the semantic judgment. Control v9 requires a separate closed object, a different issuer, and an external resolution path. Treating Markdown as the receipt collapses judgment and admission transport. **[C04][C10]**
 
-### Attack 2 — add a tracked JSON file and let the default resolver read it
+### Attack 2 — add an unsigned tracked JSON receipt
 
-Rejected unless independently authenticated. Codex already has repository write authority inside its goal scope. An unsigned tracked file would allow Codex to mint the receipt and then resolve its own work, violating the central three-body separation. **[C09]**
+Rejected. Codex can write repository files inside an authorized goal scope. A built-in resolver for an unsigned tracked receipt would let Codex mint and resolve its own authority. **[C09]**
 
-### Attack 3 — the missing resolver means the semantic admission must be killed
+### Attack 3 — missing plumbing kills the mathematical admission
 
-Rejected. The exact W5 theorem IDs, source bytes, task bytes, normalization, domain, quantifiers, `CLOSES`, `OPENS` and empty canonical provenance digest fit the existing receipt schema without weakening or reinterpretation. The gap is executable control plumbing.
+Rejected. The exact theorem IDs, source and task bytes, scope, normalization, domain, quantifiers, `CLOSES`, `OPENS`, and provenance digest fit the existing receipt schema without weakening.
 
-### Attack 4 — delete the quarantine entry and continue
+### Attack 4 — delete the quarantine entry
 
-Rejected. Deletion erases the required tracked transition and converts a control defect into silent history loss. No retirement mechanism was authorized by the request.
+Rejected. Deletion erases the required tracked transition and converts a control defect into silent history loss.
 
 ## CODEX DIRECTIVE
 
@@ -327,7 +325,7 @@ Do not create or self-resolve a semantic receipt.
 Do not start W5_COFINAL_PACKET_BUDGET_RATE.
 Do not edit docs/CODEX_CONTROL.md or orchestrator code without a separate explicit owner grant for the named control-only repair.
 
-Next admissible implementation target under such a grant:
+Next admissible implementation target under that grant:
   CONTROL_V9_LINUX_ATTESTATION_BROKER_AND_ATOMIC_ADMIT
 ```
 
@@ -335,19 +333,19 @@ Next admissible implementation target under such a grant:
 
 **What became smaller?**
 
-The blocker is no longer “semantic admission cannot be materialized.” It is one exact missing control component: a fixed external Linux resolver plus an atomic three-field transition.
+The blocker is one exact missing control component: a fixed external Linux resolver plus an atomic three-field transition.
 
 **What was killed?**
 
-- interpreting the test-only callback seam as a production path;
+- treating the test-only callback seam as a production path;
 - treating the Proshka verdict as the Linux receipt;
 - unsigned tracked-receipt self-resolution;
-- deleting quarantine to bypass the transition;
-- killing a mathematically compatible admission because of missing plumbing.
+- deleting quarantine to bypass admission;
+- killing a compatible semantic judgment because its transport is absent.
 
 **What must not be tried again?**
 
-Do not mint another W5 semantic verdict. Do not pass receipt bytes or scope from Codex. Do not change theorem semantics to fit the control implementation.
+Do not mint another W5 semantic verdict. Do not pass receipt bytes or admitted scope from Codex. Do not change theorem semantics to fit control plumbing.
 
 **Current smallest named gap:**
 
@@ -357,11 +355,11 @@ CONTROL_V9_LINUX_ATTESTATION_BROKER_AND_ATOMIC_ADMIT
 
 **Next cheapest decisive test:**
 
-Run the existing closed receipt validator against the exact frozen receipt via the future broker, then verify that only `status`, `admitted_scope` and `semantic_attestation_id` change and that dispatch-clear succeeds.
+Resolve the frozen receipt through the future broker, validate the candidate state, and prove that only `status`, `admitted_scope`, and `semantic_attestation_id` change while dispatch-clear succeeds.
 
 **Fate of prior registered predictions:**
 
-No prior prediction existed for this control request; none was created retroactively.
+No prior prediction existed for this request. None was created retroactively.
 
 **Memory entry:**
 
@@ -372,7 +370,7 @@ iteration:
   failed_strategy: treat injected test callback as an operative external path
   cognitive_operator_used: UNIT_AUDIT
   new_gap_name: CONTROL_V9_LINUX_ATTESTATION_BROKER_AND_ATOMIC_ADMIT
-  invariant_learned: semantic judgment, receipt issuance, receipt resolution and state mutation are four distinct powers
+  invariant_learned: semantic judgment, receipt issuance, receipt resolution, and state mutation are four distinct powers
   forbidden_future_move: unsigned tracked receipt or caller-supplied receipt path
-  next_decisive_test: exact frozen W5 receipt through a fixed external broker and atomic three-field state transition
+  next_decisive_test: frozen W5 receipt through a fixed external broker and atomic three-field state transition
 ```
