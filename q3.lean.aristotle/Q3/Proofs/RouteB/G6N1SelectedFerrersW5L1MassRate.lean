@@ -553,4 +553,121 @@ private theorem abelLimit_decomposition (k : ℕ) (u : ℝ) :
 #print axioms selectedPacket_center_bound
 #print axioms abelLimit_decomposition
 
+/-- The two-sided decaying exponential integrates below twice its constant,
+independently of the window length: split at the peak and translate each side
+onto `exp_decay_intervalIntegral_le`. -/
+private theorem exp_abs_intervalIntegral_le
+    {a L : ℝ} (ha : 0 ≤ a) (haL : a ≤ L) :
+    ∫ x in (0 : ℝ)..L, Real.exp (-(Real.pi - 1 / 2) * |x - a|) ≤
+      2 * (Real.pi - 1 / 2)⁻¹ := by
+  have hpi3 : (3 : ℝ) < Real.pi := Real.pi_gt_three
+  have hc : (0 : ℝ) < Real.pi - 1 / 2 := by linarith
+  have hcont : Continuous
+      (fun x : ℝ => Real.exp (-(Real.pi - 1 / 2) * |x - a|)) := by
+    continuity
+  -- split at the peak
+  have hsplit :
+      ∫ x in (0 : ℝ)..L, Real.exp (-(Real.pi - 1 / 2) * |x - a|) =
+        (∫ x in (0 : ℝ)..a, Real.exp (-(Real.pi - 1 / 2) * |x - a|)) +
+          ∫ x in a..L, Real.exp (-(Real.pi - 1 / 2) * |x - a|) :=
+    (intervalIntegral.integral_add_adjacent_intervals
+      (hcont.intervalIntegrable _ _) (hcont.intervalIntegrable _ _)).symm
+  rw [hsplit]
+  -- left of the peak: |x - a| = a - x
+  have hleft :
+      (∫ x in (0 : ℝ)..a, Real.exp (-(Real.pi - 1 / 2) * |x - a|)) =
+        ∫ x in (0 : ℝ)..a, Real.exp (-(Real.pi - 1 / 2) * (a - x)) := by
+    apply intervalIntegral.integral_congr
+    intro x hx
+    rw [Set.uIcc_of_le ha] at hx
+    simp only []
+    rw [show |x - a| = a - x by
+      rw [abs_of_nonpos (by linarith [hx.2])]; ring]
+  -- right of the peak: |x - a| = x - a
+  have hright :
+      (∫ x in a..L, Real.exp (-(Real.pi - 1 / 2) * |x - a|)) =
+        ∫ x in a..L, Real.exp (-(Real.pi - 1 / 2) * (x - a)) := by
+    apply intervalIntegral.integral_congr
+    intro x hx
+    rw [Set.uIcc_of_le haL] at hx
+    simp only []
+    rw [show |x - a| = x - a from abs_of_nonneg (by linarith [hx.1])]
+  rw [hleft, hright]
+  -- translate each side onto the one-sided lemma
+  have hL :
+      (∫ x in (0 : ℝ)..a, Real.exp (-(Real.pi - 1 / 2) * (a - x))) ≤
+        (Real.pi - 1 / 2)⁻¹ := by
+    have := intervalIntegral.integral_comp_sub_left
+      (a := (0 : ℝ)) (b := a)
+      (f := fun y : ℝ => Real.exp (-(Real.pi - 1 / 2) * y)) a
+    rw [this, sub_self, sub_zero]
+    exact exp_decay_intervalIntegral_le ha
+  have hR :
+      (∫ x in a..L, Real.exp (-(Real.pi - 1 / 2) * (x - a))) ≤
+        (Real.pi - 1 / 2)⁻¹ := by
+    have := intervalIntegral.integral_comp_sub_right
+      (a := a) (b := L)
+      (f := fun y : ℝ => Real.exp (-(Real.pi - 1 / 2) * y)) a
+    rw [this, sub_self]
+    exact exp_decay_intervalIntegral_le (by linarith)
+  linarith [hL, hR]
+
+/-- `exp (-x / 2)` integrates below `2` on `[0, L]`. -/
+private theorem exp_neg_half_intervalIntegral_le {L : ℝ} (hL : 0 ≤ L) :
+    ∫ x in (0 : ℝ)..L, Real.exp (-x / 2) ≤ 2 := by
+  have hanti : ∀ y : ℝ, HasDerivAt
+      (fun v : ℝ => -2 * Real.exp (-v / 2)) (Real.exp (-y / 2)) y := by
+    intro y
+    have hlin : HasDerivAt (fun v : ℝ => -v / 2) (-(1 / 2) : ℝ) y := by
+      have heq : (fun v : ℝ => -v / 2) = (fun v : ℝ => (-(1 / 2) : ℝ) * v) := by
+        funext v; ring
+      rw [heq]
+      simpa using (hasDerivAt_id y).const_mul (-(1 / 2) : ℝ)
+    have hexp := hlin.exp
+    have hmul := hexp.const_mul (-2 : ℝ)
+    have hrew : (-2 : ℝ) * (Real.exp (-y / 2) * -(1 / 2)) =
+        Real.exp (-y / 2) := by ring
+    rw [hrew] at hmul
+    exact hmul
+  have hint : ∫ x in (0 : ℝ)..L, Real.exp (-x / 2) =
+      -2 * Real.exp (-L / 2) - (-2 * Real.exp (-(0 : ℝ) / 2)) := by
+    apply intervalIntegral.integral_eq_sub_of_hasDerivAt (fun y _ => hanti y)
+    apply Continuous.intervalIntegrable
+    continuity
+  rw [hint]
+  have h0 : Real.exp (-(0 : ℝ) / 2) = 1 := by norm_num
+  rw [h0]
+  nlinarith [Real.exp_pos (-L / 2)]
+
+/-- `exp (x / 2)` integrates to at most `2 * exp (L / 2)` on `[0, L]`. -/
+private theorem exp_pos_half_intervalIntegral_le {L : ℝ} (hL : 0 ≤ L) :
+    ∫ x in (0 : ℝ)..L, Real.exp (x / 2) ≤ 2 * Real.exp (L / 2) := by
+  have hanti : ∀ y : ℝ, HasDerivAt
+      (fun v : ℝ => 2 * Real.exp (v / 2)) (Real.exp (y / 2)) y := by
+    intro y
+    have hlin : HasDerivAt (fun v : ℝ => v / 2) ((1 / 2) : ℝ) y := by
+      have heq : (fun v : ℝ => v / 2) = (fun v : ℝ => ((1 / 2) : ℝ) * v) := by
+        funext v; ring
+      rw [heq]
+      simpa using (hasDerivAt_id y).const_mul ((1 / 2) : ℝ)
+    have hexp := hlin.exp
+    have hmul := hexp.const_mul (2 : ℝ)
+    have hrew : (2 : ℝ) * (Real.exp (y / 2) * (1 / 2)) =
+        Real.exp (y / 2) := by ring
+    rw [hrew] at hmul
+    exact hmul
+  have hint : ∫ x in (0 : ℝ)..L, Real.exp (x / 2) =
+      2 * Real.exp (L / 2) - 2 * Real.exp ((0 : ℝ) / 2) := by
+    apply intervalIntegral.integral_eq_sub_of_hasDerivAt (fun y _ => hanti y)
+    apply Continuous.intervalIntegrable
+    continuity
+  rw [hint]
+  have h0 : Real.exp ((0 : ℝ) / 2) = 1 := by norm_num
+  rw [h0]
+  nlinarith [Real.exp_pos (L / 2)]
+
+#print axioms exp_abs_intervalIntegral_le
+#print axioms exp_neg_half_intervalIntegral_le
+#print axioms exp_pos_half_intervalIntegral_le
+
 end Q3.RouteB.D0Pstar
