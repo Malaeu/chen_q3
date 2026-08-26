@@ -660,4 +660,37 @@ theorem goalG6N1ZeroTarget_nonvanishing_not_free :
 #print axioms SelectedProlateCofinalSourceData.canonicalApproximation_slotAnchor
 #print axioms goalG6N1ZeroTarget_nonvanishing_not_free
 
+/-! ### Public cofinal reindex receipt (verdict REQ-2026-08-26-K) -/
+
+/-- **The cofinal reindex receipt.**  The theorem-generated selected shell is
+the literal pre-anchor family along one explicit cofinal shift: one shift
+function, its cofinality, and exact equalities of the index, pair and source
+scale.  Every equality is definitional; nothing about the shell constructor
+changes. -/
+theorem selectedProlateCofinalSourceDataOfPreAnchorPort_exists_cofinal_reindex
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D) :
+    ∃ φ : ℕ → ℕ,
+      Tendsto φ atTop atTop ∧
+      (∀ k : ℕ, k ≤ φ k) ∧
+      (∀ k : ℕ,
+        (selectedProlateCofinalSourceDataOfPreAnchorPort D P).index k =
+          D.index (φ k)) ∧
+      (∀ k : ℕ,
+        (selectedProlateCofinalSourceDataOfPreAnchorPort D P).pair k =
+          D.pair (φ k)) ∧
+      (∀ k : ℕ,
+        (selectedProlateCofinalSourceDataOfPreAnchorPort D P).sourceScale k =
+          P.sourceScale (φ k)) := by
+  refine ⟨preAnchorTailShift D P, preAnchorTailShift_tendsto D P,
+    preAnchorTailIndex_le_shift D P, ?_, ?_, ?_⟩
+  · intro k
+    rfl
+  · intro k
+    rfl
+  · intro k
+    rfl
+
+#print axioms selectedProlateCofinalSourceDataOfPreAnchorPort_exists_cofinal_reindex
+
 end Q3.RouteB.D0Pstar
