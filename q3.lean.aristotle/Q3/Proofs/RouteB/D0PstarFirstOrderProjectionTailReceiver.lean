@@ -277,4 +277,115 @@ theorem selectedProjectionTailDecay_of_firstOrderCoefficientBudgetAndBandwidth
 
 #print axioms selectedProjectionTailDecay_of_firstOrderCoefficientBudgetAndBandwidth
 
+/--
+**The rate-aware first-order receiver** (verdict c47b75a8, REQ-2026-08-26-B).
+The coefficient constant is allowed to GROW with `k` (the honest `√log`
+non-top consumer rate); the exact ratio `C_k² / bandwidth_k → 0` replaces
+bare cofinality.  Generic `SelectedPhysicalBandwidthCofinal` alone is NOT
+sufficient at growing `C_k` — the ratio limit is the correct consumer, and
+the selected Ferrers schedule pays it (`L_k = log(k+2)`,
+`bandwidth_k ≥ π√(k+2)`).  The uniform-constant receiver above is the
+special case `C k = C`.
+-/
+theorem selectedProjectionTailDecay_of_firstOrderCoefficientRate
+    (S : ProlateCanonicalSourceData)
+    (hCoeff : ∃ C : ℕ → ℝ, (∀ k : ℕ, 0 ≤ C k) ∧
+      (∀ᶠ k : ℕ in atTop,
+        ∀ n : ℤ, n ∉ modeSet (selectedPairIndex S k) →
+          ‖physicalFourierCoefficient (selectedPairIndex S k)
+              (gTrial_m (selectedPairIndex S k) (selectedProlateTrial S k)
+                (S.source.eStar_memLp (selectedPairIndex S k))) n‖ ^ 2 ≤
+            (C k) ^ 2 * L_m (selectedPairIndex S k) / (n : ℝ) ^ 2) ∧
+      Tendsto (fun k : ℕ => (C k) ^ 2 *
+          (physicalFourierBandwidth (selectedPairIndex S k))⁻¹)
+        atTop (𝓝 0)) :
+    SelectedProjectionTailDecay S := by
+  obtain ⟨C, hC0, hEv, hratio⟩ := hCoeff
+  have hres_sq : ∀ᶠ k : ℕ in atTop,
+      selectedUnnormalizedGalerkinResidualNorm S k ^ 2 ≤
+        8 * Real.pi * ((C k) ^ 2 *
+          (physicalFourierBandwidth (selectedPairIndex S k))⁻¹) := by
+    refine hEv.mono ?_
+    intro k hk
+    set i := selectedPairIndex S k with hi
+    set f := gTrial_m i (selectedProlateTrial S k) (S.source.eStar_memLp i)
+      with hf
+    have hL : 0 < L_m i := logLength_pos i
+    have hN1 : (0 : ℝ) < (i.N : ℝ) + 1 := by positivity
+    have hparseval :
+        selectedUnnormalizedGalerkinResidualNorm S k ^ 2 =
+          ∑' n : ℤ,
+            if n ∈ modeSet i then 0
+            else ‖inner ℂ (V_n_m i n) f‖ ^ 2 := by
+      have h0 := norm_sub_coe_P_m_N_sq_eq_tsum_complement i f
+      simpa [selectedUnnormalizedGalerkinResidualNorm, gTrial_m_N,
+        norm_sub_rev, hi, hf] using h0
+    have hpoint : ∀ n : ℤ,
+        (if n ∈ modeSet i then 0 else ‖inner ℂ (V_n_m i n) f‖ ^ 2) ≤
+          (C k) ^ 2 * L_m i * w5rTailWeight i n := by
+      intro n
+      unfold w5rTailWeight
+      by_cases h : n ∈ modeSet i
+      · simp [h]
+      · have hcn := hk n h
+        simp only [h, if_false]
+        calc
+          ‖inner ℂ (V_n_m i n) f‖ ^ 2 ≤
+              (C k) ^ 2 * L_m i / (n : ℝ) ^ 2 := by
+                simpa [physicalFourierCoefficient, hi, hf] using hcn
+          _ = (C k) ^ 2 * L_m i * ((n : ℝ) ^ 2)⁻¹ := by
+                rw [div_eq_mul_inv]
+    have hmaj_summable :
+        Summable (fun n : ℤ => (C k) ^ 2 * L_m i * w5rTailWeight i n) :=
+      (w5rTailWeight_summable i).mul_left _
+    have hlhs_summable :
+        Summable (fun n : ℤ =>
+          if n ∈ modeSet i then (0 : ℝ)
+          else ‖inner ℂ (V_n_m i n) f‖ ^ 2) := by
+      refine Summable.of_nonneg_of_le (fun n => ?_) hpoint hmaj_summable
+      split <;> positivity
+    have htail :
+        selectedUnnormalizedGalerkinResidualNorm S k ^ 2 ≤
+          (C k) ^ 2 * L_m i * (4 / ((i.N : ℝ) + 1)) := by
+      calc
+        selectedUnnormalizedGalerkinResidualNorm S k ^ 2
+            = ∑' n : ℤ,
+                if n ∈ modeSet i then 0
+                else ‖inner ℂ (V_n_m i n) f‖ ^ 2 := hparseval
+        _ ≤ ∑' n : ℤ, (C k) ^ 2 * L_m i * w5rTailWeight i n :=
+              Summable.tsum_le_tsum hpoint hlhs_summable hmaj_summable
+        _ = (C k) ^ 2 * L_m i * ∑' n : ℤ, w5rTailWeight i n := tsum_mul_left
+        _ ≤ (C k) ^ 2 * L_m i * (4 / ((i.N : ℝ) + 1)) := by
+              have hcl : 0 ≤ (C k) ^ 2 * L_m i := by positivity
+              exact mul_le_mul_of_nonneg_left (w5rTailWeight_tsum_le i) hcl
+    have hconvert :
+        (C k) ^ 2 * L_m i * (4 / ((i.N : ℝ) + 1)) =
+          8 * Real.pi * ((C k) ^ 2 * (physicalFourierBandwidth i)⁻¹) := by
+      simp only [physicalFourierBandwidth]
+      rw [Nat.cast_add, Nat.cast_one]
+      field_simp
+      ring
+    calc
+      selectedUnnormalizedGalerkinResidualNorm S k ^ 2 ≤
+          (C k) ^ 2 * L_m i * (4 / ((i.N : ℝ) + 1)) := htail
+      _ = 8 * Real.pi * ((C k) ^ 2 * (physicalFourierBandwidth i)⁻¹) :=
+          hconvert
+  have hmaj_zero : Tendsto
+      (fun k : ℕ =>
+        8 * Real.pi * ((C k) ^ 2 *
+          (physicalFourierBandwidth (selectedPairIndex S k))⁻¹))
+      atTop (𝓝 0) := by
+    have := hratio.const_mul (8 * Real.pi)
+    simpa using this
+  have hsq : Tendsto
+      (fun k : ℕ => selectedUnnormalizedGalerkinResidualNorm S k ^ 2)
+      atTop (𝓝 0) := by
+    refine squeeze_zero'
+      (Eventually.of_forall fun k => sq_nonneg _) hres_sq hmaj_zero
+  have hsqrt := hsq.sqrt
+  simpa [SelectedProjectionTailDecay, selectedUnnormalizedGalerkinResidualNorm,
+    Real.sqrt_sq_eq_abs, abs_of_nonneg] using hsqrt
+
+#print axioms selectedProjectionTailDecay_of_firstOrderCoefficientRate
+
 end Q3.RouteB.D0Pstar
