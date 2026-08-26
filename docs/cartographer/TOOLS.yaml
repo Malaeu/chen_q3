@@ -333,6 +333,29 @@ tool_families:
           size of that mistake stays visible against the sign-correct run.
         last_verified: 2026-08-25
 
+      - id: edge-slope-probe
+        status: ENABLED
+        audience: [HUMAN, CLAUDE_CODE, CODEX]
+        mode: READ_ONLY
+        path: scripts/edge_slope_probe.py
+        invoke: python3 scripts/edge_slope_probe.py
+        trigger: >-
+          The edge/top-lattice behaviour of the committed even prolate Ferrers
+          mode or its cylinder defect needs reproducing (Goal 058 edge-top
+          preflight 2026-08-26). Builds the mode from the committed three-term
+          recurrence INCLUDING the (-1)^q of mode4FerrersTerm — omitting that
+          sign preserves the spectrum and destroys the function.
+        writes: false
+        approval: NONE
+        authority: >-
+          DIAGNOSTIC_NUMERICS_ONLY_NEVER_A_PROOF_AND_NEVER_A_LEAN_INPUT
+        records_to: stdout
+        validation: >-
+          mu = theta/m must approach 2*pi (even-PSWF ladder) and the anchored
+          mode must match exp(-pi y^2) at sup-error ~0.021/lam^2; T follows
+          e^{-pi*lam^2/4} on the pre-float-floor points m=16,32.
+        last_verified: 2026-08-26
+
       - id: r2-coefficient-identity-probe
         status: ENABLED
         audience: [HUMAN, CLAUDE_CODE, CODEX]
