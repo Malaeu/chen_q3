@@ -6007,4 +6007,43 @@ theorem selectedProjectionTailDecay_of_selectedFerrersW5RateLedger
 #print axioms etw13_fourier_budget_rate
 #print axioms etw10_budget_rate
 
+/-! ### S6: public quantitative export (verdict REQ-2026-08-26-J) -/
+
+/-- **Public Abel-budget rate export.**  A thin wrapper around the internal
+`etw13_fourier_budget_rate`: it re-exports the already-kernel-green
+quantitative decay budget for the N2 consumer.  No W5 analysis is reopened;
+no existing declaration is touched. -/
+theorem selectedFerrersAbelFourierDecayBudget_rate_of_modeChiThetaRates
+    (C0 C4 Cχ Cθ : ℝ) (hC0 : 0 ≤ C0) (hC4 : 0 ≤ C4) (hCχ : 0 ≤ Cχ)
+    (hCθ : 0 ≤ Cθ)
+    (hmode : ∀ᶠ k in Filter.atTop,
+      ∀ x ∈ Set.Icc (-(selectedFerrersPaperLambda k))
+          (selectedFerrersPaperLambda k),
+        ‖centerAnchorScalarZero k *
+            (selectedFerrersPreAnchorPair k).h0 x -
+          ((parabolicCylinderD 0 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤
+            C0 / (selectedFerrersPaperLambda k) ^ 2 ∧
+        ‖centerAnchorScalarFour k *
+            (selectedFerrersPreAnchorPair k).h4 x -
+          ((parabolicCylinderD 4 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤
+            C4 / (selectedFerrersPaperLambda k) ^ 2)
+    (hχ : ∀ᶠ k in Filter.atTop,
+      |1 - (selectedFerrersPreAnchorPair k).chi0| ≤
+          Cχ / (selectedFerrersPaperLambda k) ^ 2 ∧
+        |1 - (selectedFerrersPreAnchorPair k).chi2| ≤
+          Cχ / (selectedFerrersPaperLambda k) ^ 2)
+    (hθ : ∀ᶠ k in Filter.atTop,
+      |mode4ClassicalEvenEigenvalue (mode4JacobiG (k + 2)) 0 +
+          mode4JacobiG (k + 2) - ((k + 2 : ℕ) : ℝ) * (2 * Real.pi)| ≤ Cθ ∧
+        |mode4ClassicalEvenEigenvalue (mode4JacobiG (k + 2)) 2 +
+          mode4JacobiG (k + 2) - ((k + 2 : ℕ) : ℝ) * (18 * Real.pi)| ≤
+          Cθ) :
+    ∃ AF : ℝ, 0 ≤ AF ∧ ∀ᶠ k in Filter.atTop,
+      selectedFerrersAbelFourierDecayBudget k ≤
+        AF * (Real.sqrt (Real.sqrt ((k + 2 : ℕ) : ℝ)) *
+          Real.sqrt (Real.log ((k + 2 : ℕ) : ℝ) + 2)) :=
+  etw13_fourier_budget_rate C0 C4 Cχ Cθ hC0 hC4 hCχ hCθ hmode hχ hθ
+
+#print axioms selectedFerrersAbelFourierDecayBudget_rate_of_modeChiThetaRates
+
 end Q3.RouteB.D0Pstar
