@@ -5,7 +5,7 @@ Q3 Formalization: Axiom Dependency Check
 This file verifies all axiom dependencies for CI.
 Run: `lake env lean Q3/CheckAxioms.lean`
 
-Expected output: List of axioms used by the active RH theorem
+Expected output: explicit conditional-package and compatibility dependency profiles
 -/
 
 import Q3.Main
@@ -14,14 +14,15 @@ import Q3.Proofs.PaperMainlineAtomRoute
 /-!
 # Axiom Dependency Verification
 
-This prints all axioms used by the main theorem.
+This prints the axioms used by the explicitly conditional broad-cone package
+and its deprecated compatibility wrappers.
 Used in CI to ensure no undocumented axioms sneak in.
 
-## NOTE: This file tracks the *current compiled* main chain.
+## NOTE: This file tracks the retained compiled broad-cone compatibility chain.
 If identifiers are renamed, update the #check list to match the live chain.
 -/
 
--- Re-export the main theorem for verification
+-- Import compatibility namespace for verification.
 open Q3.Main
 
 /-! ## Verify Tier-1 axioms exist -/
@@ -38,16 +39,20 @@ open Q3.Main
 #check Q3.Weil_criterion
 #check Q3.prime_term_le_at_t_critical_axiom
 
-/-! ## Current shifted-atom bridge witnesses -/
+/-! ## Retained compatibility shifted-atom bridge witnesses -/
 #check Q3.Q_Fejer_heat_atom_nonneg_t_critical
-#check Q3.Q_nonneg_on_Weil_cone_current_atom_route
+#check Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom
 
-/-! ## Verify compact transfer on the active route is a THEOREM -/
+/-! ## Verify compact transfer in the retained compatibility chain is a THEOREM -/
 #check Q3.Proofs.CompatibilityReduction.Q_nonneg_on_WK_tcritical_current_atom_route
 
 /-! ## Print Axiom Dependencies -/
 
--- Authoritative dependency lists for the active RH theorems.
+-- Authoritative dependency lists for the explicitly conditional package.
+#print axioms Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom
+#print axioms Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms
+
+-- Compatibility receipts must retain the same profiles.
 #print axioms Q3.Main.RH_of_Weil_and_Q3
 #print axioms Q3.RH_of_shifted_atom_route
 
@@ -65,7 +70,7 @@ open Q3.Main
 
 ### THEOREM (not axiom!):
 - `Q3.Q_Fejer_heat_atom_nonneg_t_critical`
-- `Q3.Q_nonneg_on_Weil_cone_current_atom_route`
+- `Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom`
 
 ## Verification
 
@@ -74,5 +79,6 @@ Run `lake env lean Q3/Main.lean` to see:
 Q3.Main.RH_of_Weil_and_Q3 : RH
 ```
 
-Keep this file aligned with the live chain; it is the CI gate for axiom drift.
+Keep this file aligned with the conditional compatibility chain; it is the gate
+for dependency-profile parity between explicit conditional names and old wrappers.
 -/

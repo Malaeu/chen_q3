@@ -65,13 +65,26 @@ latexmk -pdf RH_Q3.tex
 
 Compat: `full/q3.lean.aristotle` is a symlink to `q3.lean.aristotle` for legacy docs.
 
-## Current Status (2026-01-21)
+## RH Proof Status (audited 2026-08-27)
 
-- **Axioms:** 6 total (3 standard Lean + 3 project)
-- **Remaining closable:** 1 (`Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`)
-- **Lines of code:** 44,250 (Q3/ + aristotle_output/)
-- **Aristotle contribution:** 20% (in proof chain)
-- **DB lemmas:** 555
+- **Unconditional RH proof:** No.
+- **Compiled broad-cone RH export:** Conditional legacy surface. Its current
+  Lean axiom profile includes `Q3.Weil_criterion` and
+  `Q3.prime_term_le_at_t_critical_axiom`.
+- **Corrected square-class interfaces:** Open conditional interfaces. They
+  state their mathematical premises explicitly; no canonical public RH export
+  has been established.
+- **Route B:** Challenger / not RH.
+- **Public-export audit baseline:** `49c3b916cfa24df9ba6b49b9d9952a0cf06d3da9` on
+  branch `rh_clean`.
+
+Historical status documents and compiled compatibility wrappers may describe
+earlier project phases. A successful Lean build verifies derivations from the
+declared premises; it does not establish those project premises independently.
+
+See
+[`docs/semantic_quarantine/PUBLIC_EXPORT_INDEX_AND_AXIOM_RECEIPT_v1.md`](docs/semantic_quarantine/PUBLIC_EXPORT_INDEX_AND_AXIOM_RECEIPT_v1.md)
+for the pinned public-export, test-class, dependency, and axiom inventory.
 
 ## Dependencies
 

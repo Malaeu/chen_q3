@@ -2,10 +2,12 @@
 Q3 Formalization - Riemann Hypothesis via Weil Positivity
 =========================================================
 
-Entry point for the Q3 proof chain. This file re-exports the main theorem
-and all supporting modules for documentation generation.
+Default entry point for the Q3 formalization and documentation surface.
 
-Main result: `Q3.Main.RH_of_Weil_and_Q3 : RH`
+There is no unconditional RH export.  The corrected square-class interfaces
+state their mathematical inputs explicitly.  The compiled broad-cone
+compatibility route requires an explicit `import Q3.Main` and is not re-exported
+from this default module.
 -/
 
 -- Core modules (for doc-gen4 to include in documentation)
@@ -14,7 +16,6 @@ import Q3.Basic.WeilSquareClass
 import Q3.Basic.WeilDirectRoute
 import Q3.Axioms
 import Q3.AxiomsTheorems
-import Q3.Main
 
 -- Supporting theorems
 import Q3.A1_Density

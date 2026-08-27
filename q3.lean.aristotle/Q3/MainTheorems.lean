@@ -1,9 +1,9 @@
 /-
-Q3 Main Theorem with Proven Tier-2
-==================================
+Conditional legacy broad-cone compatibility theorems
+=====================================================
 
-This file proves RH using theorems instead of axioms for Tier-2.
-Only Tier-1 (classical) axioms remain in the compiled legacy broad-cone route.
+This file retains compiled broad-cone compatibility wrappers.  It does not
+provide an unconditional or corrected square-class RH export.
 
 Fatal square-class audit note (2026-06-25): the broad-cone RH wrappers in this
 file are not the corrected Weil-square export route.
@@ -25,14 +25,14 @@ The theorems in Q3.Theorems have the same types as the axioms in Q3.Axioms.
 This means any proof using the axioms can be replicated using the theorems.
 -/
 
--- Re-export the active main theorem
+-- Check retained compatibility names.
 #check Q3.Main.RH_of_Weil_and_Q3
 #check Q3.RH_of_shifted_atom_route
 
 /-!
-# Direct proof using theorems
+# Retained conditional construction
 
-We can also construct RH directly using the theorems:
+The following declarations preserve the old compatibility surface:
 -/
 
 /-- Legacy broad-cone theorem: Q is nonnegative on `W_K` using theorems.
@@ -46,12 +46,14 @@ theorem Q_nonneg_on_W_K_thm (K : ℝ) (hK : K ≥ 1) : ∀ Φ ∈ Q3.W_K K, Q3.Q
   -- 3. Q_nonneg_on_atoms (Q ≥ 0 on atoms)
   exact Q3.T5.T5_transfer K hK
 
-/-- Legacy compiled RH wrapper on the active shifted-atom broad-cone mainline.
+/-- Deprecated legacy RH wrapper on the shifted-atom broad-cone route.
 
 This records the old route shape only; it is not the corrected Weil-square RH
 export after the 2026-06-25 audit. -/
+@[deprecated Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms
+  (since := "2026-08-27")]
 theorem RH_proven : Q3.RH :=
-  Q3.RH_of_shifted_atom_route
+  Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms
 
 end Q3.MainTheorems
 
@@ -60,7 +62,7 @@ end Q3.MainTheorems
 
 Run `#print axioms Q3.MainTheorems.RH_proven` to see:
 
-Expected current result (main-chain):
+Expected compatibility dependency profile:
 - propext (Lean standard)
 - Classical.choice (Lean standard)
 - Quot.sound (Lean standard)

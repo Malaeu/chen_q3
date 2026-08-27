@@ -40,8 +40,8 @@ lemma exists_WK_of_mem_Weil_cone (Φ : ℝ → ℝ) (hΦ : Φ ∈ Weil_cone) :
   exact ⟨hleft, hright⟩
 
 /--
-Paper-style broad-cone positivity node for the current `t_critical`
-shifted-atom route.
+Legacy broad-cone positivity implementation for the `t_critical` shifted-atom
+route, retained for compatibility.
 
 This theorem packages the compiled broad-cone route. After the target-cone
 audit it should be read as a background export only. Its mathematical honesty
@@ -57,8 +57,8 @@ theorem Q_nonneg_on_Weil_cone_current_atom_route :
       K hK Φ hWK
 
 /--
-Current RH theorem obtained from the shifted-atom compiled broad-cone route at
-`t_critical`.
+Legacy RH implementation theorem for the shifted-atom compiled broad-cone
+route at `t_critical`, retained for compatibility.
 
 This theorem bypasses the legacy `τ = 0` cone and uses the broad `Weil_cone`
 export, but after the target-cone audit it should be read as background route
@@ -70,15 +70,49 @@ theorem RH_of_shifted_atom_route : RH := by
 
 end Q3.Proofs.PaperMainlineAtomRoute
 
-namespace Q3
+namespace Q3.Conditional.LegacyBroadCone
 
-/-- Root-level wrapper for the current compiled broad-cone shifted-atom route. -/
-theorem Q_nonneg_on_Weil_cone_current_atom_route :
-    ∀ Φ ∈ Weil_cone, Q Φ ≥ 0 :=
+/-- Compiled broad-cone positivity conditional on the live prime-term assumption.
+
+This is the preferred explicit conditional name for the retained legacy route.
+Its statement uses `Q3.Weil_cone`, not the corrected square class `Q3.W_sq`. -/
+theorem Q_nonneg_on_broadWeilCone_of_primeTermAxiom :
+    ∀ Φ ∈ Q3.Weil_cone, Q3.Q Φ ≥ 0 :=
   Q3.Proofs.PaperMainlineAtomRoute.Q_nonneg_on_Weil_cone_current_atom_route
 
-/-- Root-level RH wrapper via the current compiled broad-cone route. -/
-theorem RH_of_shifted_atom_route : RH :=
+/-- RH obtained from the retained broad-cone project axioms.
+
+The name makes the conditional legacy status explicit; this is not an
+unconditional or corrected square-class RH export. -/
+theorem RH_of_legacyBroadConeAxioms : Q3.RH :=
   Q3.Proofs.PaperMainlineAtomRoute.RH_of_shifted_atom_route
+
+end Q3.Conditional.LegacyBroadCone
+
+attribute [deprecated
+  Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom
+  (since := "2026-08-27")]
+  Q3.Proofs.PaperMainlineAtomRoute.Q_nonneg_on_Weil_cone_current_atom_route
+
+attribute [deprecated
+  Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms
+  (since := "2026-08-27")]
+  Q3.Proofs.PaperMainlineAtomRoute.RH_of_shifted_atom_route
+
+namespace Q3
+
+/-- Deprecated root-level compatibility wrapper for broad-cone positivity. -/
+@[deprecated
+  Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom
+  (since := "2026-08-27")]
+theorem Q_nonneg_on_Weil_cone_current_atom_route :
+    ∀ Φ ∈ Weil_cone, Q Φ ≥ 0 :=
+  Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom
+
+/-- Deprecated root-level compatibility wrapper for the broad-cone RH route. -/
+@[deprecated Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms
+  (since := "2026-08-27")]
+theorem RH_of_shifted_atom_route : RH :=
+  Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms
 
 end Q3
