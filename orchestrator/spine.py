@@ -32,7 +32,7 @@ import sqlite3
 import subprocess
 import sys
 import tempfile
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 
 import yaml
 
@@ -724,18 +724,24 @@ def _validate_active_control() -> None:
         _fail("MATHEMATICAL_OWNER_DEFERRAL_OUTSIDE_PX_RH", "removed failure code remains")
 
 
-def _live_cognitive_operator_tokens() -> list[str]:
-    tokens: list[str] = []
+def _live_cognitive_operator_occurrences() -> list[tuple[str, str]]:
+    occurrences: list[tuple[str, str]] = []
     proshka_dir = REPO / "docs" / "routeB_bus" / "proshka"
     if not proshka_dir.is_dir():
-        return tokens
+        return occurrences
     pattern = re.compile(
         r"^(?:cognitive_operator_used|COGNITIVE_OPERATOR):\s*([A-Z][A-Z0-9_]*)\s*$",
         re.MULTILINE,
     )
     for path in sorted(proshka_dir.glob("*.md")):
-        tokens.extend(pattern.findall(path.read_text(encoding="utf-8", errors="replace")))
-    return tokens
+        relative = path.relative_to(REPO).as_posix()
+        occurrences.extend(
+            (relative, token)
+            for token in pattern.findall(
+                path.read_text(encoding="utf-8", errors="replace")
+            )
+        )
+    return occurrences
 
 
 def validate_cognitive_operator_tokens(tokens: list[str], canonical: set[str]) -> None:
@@ -745,13 +751,173 @@ def validate_cognitive_operator_tokens(tokens: list[str], canonical: set[str]) -
               f"unknown live cognitive operators: {unknown}")
 
 
+def _canonical_proshka_markdown_path(value: str) -> str:
+    path = PurePosixPath(value)
+    if (
+        not value
+        or "\\" in value
+        or any(ord(char) < 32 or ord(char) == 127 for char in value)
+        or path.is_absolute()
+        or path.as_posix() != value
+        or any(part in {"", ".", ".."} for part in path.parts)
+        or path.parent.as_posix() != "docs/routeB_bus/proshka"
+        or path.suffix != ".md"
+    ):
+        raise ValueError(f"noncanonical Proshka receipt path: {value!r}")
+    return value
+
+
+def _validate_source_acquisition_adjudication(
+    receipt: dict[str, object], *, repo: Path = REPO
+) -> None:
+    """Bind the v1 Codex adjudication semantics to its exact receipt fields."""
+    ratifier = repo / str(receipt["ratifying_verdict_path"])
+    match = re.search(
+        r"```yaml\n(.*?)\n```", ratifier.read_text(encoding="utf-8"), re.DOTALL
+    )
+    if match is None:
+        raise ValueError("SOURCE_ACQUISITION adjudication YAML missing")
+    try:
+        payload = yaml.safe_load(match.group(1))
+    except yaml.YAMLError as exc:
+        raise ValueError(f"SOURCE_ACQUISITION adjudication YAML invalid: {exc}") from exc
+    if not isinstance(payload, dict):
+        raise ValueError("SOURCE_ACQUISITION adjudication payload invalid")
+    source = payload.get("SOURCE_OCCURRENCE")
+    decision = payload.get("ADJUDICATION")
+    expected_source = {
+        "path": receipt["artifact_path"],
+        "blob": receipt["artifact_blob"],
+        "field": "COGNITIVE_OPERATOR",
+        "original_token": receipt["original_token"],
+    }
+    required_top = {
+        "SCHEMA": "q3_historical_cognitive_operator_adjudication.v1",
+        "STATUS": "RATIFIED_HISTORICAL_RECEIPT_ONLY",
+        "ACTOR": "CODEX",
+    }
+    expected_decision = {
+        "relation": receipt["relation"],
+        "related_canonical_token": receipt["related_canonical_token"],
+        "direct_alias": False,
+        "live_vocabulary_extended": False,
+        "normalization_allowed": False,
+        "query_grouping_allowed": False,
+    }
+    if any(payload.get(key) != value for key, value in required_top.items()):
+        raise ValueError("SOURCE_ACQUISITION adjudication identity mismatch")
+    if source != expected_source or decision != expected_decision:
+        raise ValueError("SOURCE_ACQUISITION adjudication receipt mismatch")
+
+
+def _git_stdout(args: list[str], *, repo: Path) -> str:
+    proc = subprocess.run(
+        ["git", *args], cwd=repo, text=True, capture_output=True, check=False
+    )
+    if proc.returncode != 0:
+        raise ValueError(
+            f"git {' '.join(args)} failed: {proc.stderr.strip() or proc.returncode}"
+        )
+    return proc.stdout
+
+
+def _verify_pinned_git_file(
+    relative: str, expected_blob: str, *, repo: Path = REPO
+) -> None:
+    relative = _canonical_proshka_markdown_path(relative)
+    if not re.fullmatch(r"[0-9a-f]{40}", expected_blob):
+        raise ValueError(f"invalid expected Git blob for {relative}")
+
+    head_rows = [
+        row for row in _git_stdout(
+            ["ls-tree", "-z", "HEAD", "--", relative], repo=repo
+        ).split("\0") if row
+    ]
+    if len(head_rows) != 1:
+        raise ValueError(f"HEAD entry count drift for {relative}")
+    head_meta, head_path = head_rows[0].split("\t", 1)
+    head_mode, head_kind, head_blob = head_meta.split()
+    if (head_path, head_mode, head_kind, head_blob) != (
+        relative, "100644", "blob", expected_blob
+    ):
+        raise ValueError(f"HEAD mode/blob drift for {relative}")
+
+    index_rows = [
+        row for row in _git_stdout(
+            ["ls-files", "--stage", "-z", "--", relative], repo=repo
+        ).split("\0") if row
+    ]
+    if len(index_rows) != 1:
+        raise ValueError(f"index entry count or conflict-stage drift for {relative}")
+    index_meta, index_path = index_rows[0].split("\t", 1)
+    index_mode, index_blob, index_stage = index_meta.split()
+    if (index_path, index_mode, index_blob, index_stage) != (
+        relative, "100644", expected_blob, "0"
+    ):
+        raise ValueError(f"index mode/blob/stage drift for {relative}")
+
+    parent = repo
+    for component in PurePosixPath(relative).parts[:-1]:
+        parent /= component
+        if parent.is_symlink():
+            raise ValueError(
+                f"worktree path has symlinked parent component: {relative}"
+            )
+    worktree_path = repo / relative
+    if worktree_path.is_symlink() or not worktree_path.is_file():
+        raise ValueError(f"worktree object is not a regular non-symlink file: {relative}")
+    worktree_blob = _git_stdout(
+        ["hash-object", f"--path={relative}", "--", relative], repo=repo
+    ).strip()
+    if worktree_blob != expected_blob:
+        raise ValueError(f"worktree blob drift for {relative}")
+
+
+def validate_cognitive_operator_occurrences(
+    occurrences: list[tuple[str, str]],
+    canonical: set[str],
+    receipts: list[dict[str, object]],
+    *,
+    repo: Path = REPO,
+) -> None:
+    by_occurrence: dict[tuple[str, str], dict[str, object]] = {}
+    for receipt in receipts:
+        key = (str(receipt["artifact_path"]), str(receipt["original_token"]))
+        if key in by_occurrence:
+            raise ValueError(f"duplicate historical receipt occurrence: {key!r}")
+        by_occurrence[key] = receipt
+
+    consumed: set[tuple[str, str]] = set()
+    for relative, token in occurrences:
+        if token in canonical:
+            continue
+        key = (relative, token)
+        receipt = by_occurrence.get(key)
+        if receipt is None or key in consumed:
+            raise ValueError(f"unreceipted historical operator occurrence: {key!r}")
+        _verify_pinned_git_file(
+            relative, str(receipt["artifact_blob"]), repo=repo
+        )
+        _verify_pinned_git_file(
+            str(receipt["ratifying_verdict_path"]),
+            str(receipt["ratifying_verdict_blob"]),
+            repo=repo,
+        )
+        if token == "SOURCE_ACQUISITION":
+            _validate_source_acquisition_adjudication(receipt, repo=repo)
+        consumed.add(key)
+    unconsumed = sorted(set(by_occurrence) - consumed)
+    if unconsumed:
+        raise ValueError(f"unconsumed historical operator receipts: {unconsumed!r}")
+
+
 def validate_cognitive_operator_registry(
     *, registry_path: Path = COGNITIVE_OPERATOR_REGISTRY,
     db_path: Path = KNOWLEDGE_DB,
-    live_tokens: list[str] | None = None,
 ) -> dict[str, object]:
     try:
         payload = _kb.load_operator_registry(registry_path)
+        receipt_payload = _kb.load_historical_operator_receipts(registry_path)
         canonical = {row["token"] for row in payload["canonical_enum"]["operators"]}
         legacy = {row["token"] for row in payload["legacy_enum"]["operators"]}
         expected_crosswalk = {
@@ -774,11 +940,18 @@ def validate_cognitive_operator_registry(
             conn.close()
         if db_canonical != canonical or db_legacy != legacy or db_crosswalk != expected_crosswalk:
             raise ValueError("operator registry file/database drift")
-        validate_cognitive_operator_tokens(
-            _live_cognitive_operator_tokens() if live_tokens is None else live_tokens,
+        validate_cognitive_operator_occurrences(
+            _live_cognitive_operator_occurrences(),
             canonical,
+            receipt_payload["receipts"],
         )
-        return {"schema": payload["schema"], "canonical": 8, "legacy": 9, "crosswalk": 9}
+        return {
+            "schema": payload["schema"],
+            "canonical": 8,
+            "legacy": 9,
+            "crosswalk": 9,
+            "historical_receipts": 5,
+        }
     except (OSError, ValueError, sqlite3.DatabaseError, KeyError, TypeError) as exc:
         _fail("COGNITIVE_OPERATOR_REGISTRY_UNAVAILABLE_OR_INVALID", str(exc))
 

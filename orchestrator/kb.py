@@ -35,6 +35,25 @@ SCHEMA = REPO / "q3.lean.aristotle" / "aristotle_db" / "knowledge_schema.sql"
 VIEW_OUT = REPO / "docs" / "KILLS.md"
 OPERATOR_REGISTRY = REPO / "q3.lean.aristotle" / "COGNITIVE_OPERATORS.md"
 OPERATOR_SCHEMA_VERSION = "q3_cognitive_operator_registry.v1"
+HISTORICAL_OPERATOR_RECEIPT_SCHEMA_VERSION = (
+    "q3_historical_cognitive_operator_receipts.v1"
+)
+EXPECTED_HISTORICAL_RELATIONS = {
+    ("CONSUMER_STRENGTH_REDUCTION", "RELATED_NOT_EQUIVALENT", "MINIMAL_LEMMA"),
+    ("ENERGY_REPRESENTATION", "RELATED_NOT_EQUIVALENT", "REPRESENTATION_SHIFT"),
+    ("TYPE_BOUNDARY", "RELATED_NOT_EQUIVALENT", "UNIT_AUDIT"),
+    ("FUNCTIONAL_AUDIT", "RELATED_NOT_EQUIVALENT", "UNIT_AUDIT"),
+    ("SOURCE_ACQUISITION", "RELATED_NOT_EQUIVALENT", "LITERATURE_BRIDGE"),
+}
+HISTORICAL_RECEIPT_FIELDS = {
+    "artifact_path",
+    "artifact_blob",
+    "original_token",
+    "relation",
+    "related_canonical_token",
+    "ratifying_verdict_path",
+    "ratifying_verdict_blob",
+}
 
 UNIT_TYPES = ("route", "object", "strategy", "wall", "criterion")
 STATUSES = ("killed", "live", "repaired", "superseded", "standing")
@@ -137,6 +156,75 @@ def validate_operator_registry_payload(payload: object) -> dict[str, object]:
         "DIRECT_ALIAS": 2, "RELATED_NOT_EQUIVALENT": 2, "LEGACY_ONLY": 5,
     }:
         raise ValueError("crosswalk coverage or class counts invalid")
+    return payload
+
+
+def load_historical_operator_receipts(
+    path: Path = OPERATOR_REGISTRY,
+) -> dict[str, object]:
+    """Load exact historical exceptions without changing either live vocabulary."""
+    if not path.is_file():
+        raise ValueError(f"operator registry missing: {path}")
+    match = re.search(
+        r"```json historical_cognitive_operator_receipts\n(.*?)\n```",
+        path.read_text(encoding="utf-8"),
+        re.DOTALL,
+    )
+    if not match:
+        raise ValueError("historical operator receipt block missing")
+    try:
+        payload = json.loads(match.group(1))
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"historical operator receipts JSON invalid: {exc}") from exc
+    return validate_historical_operator_receipts_payload(
+        payload, load_operator_registry(path)
+    )
+
+
+def validate_historical_operator_receipts_payload(
+    payload: object, registry: dict[str, object]
+) -> dict[str, object]:
+    expected_top_fields = {
+        "schema", "live_write_allowed", "normalization_allowed", "receipts"
+    }
+    if not isinstance(payload, dict) or set(payload) != expected_top_fields:
+        raise ValueError("historical operator receipt top-level schema invalid")
+    if payload.get("schema") != HISTORICAL_OPERATOR_RECEIPT_SCHEMA_VERSION:
+        raise ValueError("unsupported historical operator receipt schema")
+    if payload.get("live_write_allowed") is not False:
+        raise ValueError("historical operator receipts must forbid live writes")
+    if payload.get("normalization_allowed") is not False:
+        raise ValueError("historical operator receipts must forbid normalization")
+    receipts = payload.get("receipts")
+    if not isinstance(receipts, list) or len(receipts) != 5:
+        raise ValueError("historical operator receipt count must be exactly 5")
+    canonical = {
+        row["token"] for row in registry["canonical_enum"]["operators"]
+    }
+    seen_paths: set[str] = set()
+    seen_tokens: set[str] = set()
+    relations: set[tuple[str, str, str]] = set()
+    for receipt in receipts:
+        if not isinstance(receipt, dict) or set(receipt) != HISTORICAL_RECEIPT_FIELDS:
+            raise ValueError("historical operator receipt fields invalid")
+        artifact_path = receipt["artifact_path"]
+        original_token = receipt["original_token"]
+        relation = receipt["relation"]
+        related = receipt["related_canonical_token"]
+        if not all(isinstance(receipt[field], str) and receipt[field]
+                   for field in HISTORICAL_RECEIPT_FIELDS):
+            raise ValueError("historical operator receipt value invalid")
+        if artifact_path in seen_paths or original_token in seen_tokens:
+            raise ValueError("historical operator receipt path or token duplicated")
+        if related not in canonical or original_token in canonical:
+            raise ValueError("historical operator receipt vocabulary collision")
+        if relation != "RELATED_NOT_EQUIVALENT":
+            raise ValueError("historical operator relation must not normalize")
+        seen_paths.add(artifact_path)
+        seen_tokens.add(original_token)
+        relations.add((original_token, relation, related))
+    if relations != EXPECTED_HISTORICAL_RELATIONS:
+        raise ValueError("historical operator relation set drift")
     return payload
 
 

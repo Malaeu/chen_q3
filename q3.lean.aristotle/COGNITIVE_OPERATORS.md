@@ -47,6 +47,66 @@
 }
 ```
 
+```json historical_cognitive_operator_receipts
+{
+  "schema": "q3_historical_cognitive_operator_receipts.v1",
+  "live_write_allowed": false,
+  "normalization_allowed": false,
+  "receipts": [
+    {
+      "artifact_path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_STURM_WEIGHTED_ENERGY_AND_EDGE_CONSUMER_2026-08-25.md",
+      "artifact_blob": "e76fdc4e49cad08570b5a50acd0e5b0bf9d772c4",
+      "original_token": "CONSUMER_STRENGTH_REDUCTION",
+      "relation": "RELATED_NOT_EQUIVALENT",
+      "related_canonical_token": "MINIMAL_LEMMA",
+      "ratifying_verdict_path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_REQ_2026_08_26_A_STURM_CERTIFICATE_REGISTRY_SHADOW_2026-08-26.md",
+      "ratifying_verdict_blob": "0f52763de5723b1d6faa91e302aa5f4a801ec195"
+    },
+    {
+      "artifact_path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_W5_DERIVATIVE_H_SPLIT_AND_L2_STURM_PRIMARY_2026-08-25.md",
+      "artifact_blob": "a6388d27b0104062d16b76baed8b2f050ea5d6c5",
+      "original_token": "ENERGY_REPRESENTATION",
+      "relation": "RELATED_NOT_EQUIVALENT",
+      "related_canonical_token": "REPRESENTATION_SHIFT",
+      "ratifying_verdict_path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_REQ_2026_08_26_A_STURM_CERTIFICATE_REGISTRY_SHADOW_2026-08-26.md",
+      "ratifying_verdict_blob": "0f52763de5723b1d6faa91e302aa5f4a801ec195"
+    },
+    {
+      "artifact_path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_POST_FIRST_ORDER_FAMILY_CROSSWALK_FORK_2026-08-25.md",
+      "artifact_blob": "b58136d3be6edc692d31afde6c1b14b981db4cac",
+      "original_token": "TYPE_BOUNDARY",
+      "relation": "RELATED_NOT_EQUIVALENT",
+      "related_canonical_token": "UNIT_AUDIT",
+      "ratifying_verdict_path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_REQ_2026_08_26_A_STURM_CERTIFICATE_REGISTRY_SHADOW_2026-08-26.md",
+      "ratifying_verdict_blob": "0f52763de5723b1d6faa91e302aa5f4a801ec195"
+    },
+    {
+      "artifact_path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_POST_W5_PHYSICAL_ENERGY_FRONT_2026-08-25.md",
+      "artifact_blob": "0cd7061221c3de95c59545c435c576fdb54f7ca4",
+      "original_token": "FUNCTIONAL_AUDIT",
+      "relation": "RELATED_NOT_EQUIVALENT",
+      "related_canonical_token": "UNIT_AUDIT",
+      "ratifying_verdict_path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_REQ_2026_08_26_A_STURM_CERTIFICATE_REGISTRY_SHADOW_2026-08-26.md",
+      "ratifying_verdict_blob": "0f52763de5723b1d6faa91e302aa5f4a801ec195"
+    },
+    {
+      "artifact_path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_OWNER_NEXT_STEP_WEIGHTED_DIRICHLET_AND_VITALI_LITERATURE_TRIAGE_2026-08-27.md",
+      "artifact_blob": "8cc3bd491381030464d414bb6d391ae11db27b0a",
+      "original_token": "SOURCE_ACQUISITION",
+      "relation": "RELATED_NOT_EQUIVALENT",
+      "related_canonical_token": "LITERATURE_BRIDGE",
+      "ratifying_verdict_path": "docs/routeB_bus/proshka/CODEX_ADJUDICATION_SOURCE_ACQUISITION_OPERATOR_2026-08-27.md",
+      "ratifying_verdict_blob": "9430e0ec63c39c5d05bac880139fe7880f7dcf2d"
+    }
+  ]
+}
+```
+
+These receipts are exact historical exceptions, not aliases or replacement
+rules.  They do not make the original tokens canonical, legacy,
+query-groupable, or valid for new writes.  Each receipt is consumed only by
+the exact pinned occurrence in the named immutable Git blob.
+
 Status: versioned registry for `COGNITIVE_KERNEL.md` and Proshka M2. These
 values guide strategy selection and executor control; they do not prove
 mathematics. `PROSHKA_M2` is the sole live enum for
