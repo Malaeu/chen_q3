@@ -1,0 +1,491 @@
+# STATUS: OPEN — FAIL РАТИФИЦИРОВАН; L2-ЛЕДЖЕР НЕ ПЛАТИТ ПОЛЯРИЗОВАННОЕ ДЕЙСТВИЕ; EXACT FIXED-TEST MIXED FUNCTIONAL SELECTED
+
+```yaml
+PRIMARY: RATIFY_POST_W5_FAIL_REJECT_L2_TO_ACTION_AND_SELECT_FIXED_TEST_MIXED_FUNCTIONAL
+PRIMARY_COUNT: 1
+
+QUEUE:
+  QUEUE_REQ_ID: REQ-2026-08-26-N
+  ADJUDICATION_ROLE: READ_ONLY_PREFLIGHT_CLOSEOUT
+  SOURCE_QUEUE: docs/routeB_bus/PROSHKA_QUEUE.md
+  QUEUE_STATUS_MUTATED: false
+
+SOURCE_LOCK:
+  REPO: Malaeu/chen_q3
+  BRANCH: rh_clean
+  REPORT_COMMIT: 7193a16094f26852527ee0a5489e231ed4760d24
+  REPORT_PARENT: 1189f702f9e0af9f0572bc5a5b2ebb0ed8ed0428
+  REPORT_PATH: docs/routeB_bus/LINUX_POLARIZED_NEAR_RADICAL_POST_W5_PREFLIGHT_GOAL058_2026-08-27.md
+  REPORT_GIT_BLOB: 2a1ffb7c9e9412eb4f8ac972f2da0ad4ffcac911
+  REPORT_LINES: 128
+  REPORT_ONLY_COMMIT: true
+  HEAD_IS_REPORT_COMMIT_AT_AUDIT: true
+
+MODE:
+  REPORT_MODE: PAPER_AND_SOURCE_READ_ONLY
+  LEAN_EDIT_PERFORMED: false
+  NUMERICAL_PROBE_PERFORMED: false
+  JUDGE_RERAN_LEAN: false
+  JUDGE_RERAN_NUMERICS: false
+
+ADJUDICATION:
+  discriminator_fail_confirmed: true
+  failure_code_confirmed: GOAL058_GLOBAL_WINDOW_FORM_CROSSWALK_OR_BV_PRIME_OSCILLATION_WALL
+  ground_graph_representation_killed: false
+  P59_self_consistency_route_killed: true
+  collapse_identity_accepted: "(M-epsilon) r = C r + norm(r)^2 q"
+  commutator_rank_at_most_two_accepted: true
+  global_limit_target_radicality: PAPER_ACCEPTED_ON_S0_EVEN
+  BV_Poisson_completion: PAPER_ACCEPTED_WITH_ONE_CENTER_DEFECT
+  one_precommitted_tail_preserved: true
+  component_split_used: false
+  L2_defect_magnitude_rates: ACCEPTED_AT_MAGNITUDE_LEVEL
+  polarized_action_rates_from_L2_alone: REJECTED
+  all_defect_products_payable_now: false
+  exactly_one_cheap_classical_BV_port_remains: false
+  exact_remaining_object: SELECTED_FERRERS_GRAPH_TEST_POLARIZED_DEFECT_FUNCTIONAL_COMPACT_DECAY
+  Lean_source_authorized_now: false
+
+DECISIVE_PLANT:
+  name: L2_SMALL_DEFECT_WITH_UNBOUNDED_ACTION_PLANT
+  carrier: "ell2(N)"
+  operator: "A e_n = n e_n"
+  test_vector: "v_n = e_n"
+  defect: "delta_n = n^(-1) e_n"
+  facts:
+    - "norm(v_n) = 1"
+    - "norm(delta_n) -> 0"
+    - "inner(A v_n, delta_n) = 1"
+  conclusion: >-
+    An L2 defect rate and an L2 envelope for the test vector do not imply
+    decay of the polarized action. One must control the action of the test
+    vector, the form-dual norm, or the exact mixed functional itself.
+
+EXACT_CONSUMER:
+  graph_test: "V_k(z) = zeroExtend(S_k(C_k^(-1) kappa_k(z)))"
+  full_defect: "Delta_k = G_k - zeroExtend(P_Nk(restrict_window(G_k)))"
+  scalar: >-
+    E_k(z) = centerFactor_k * QW_global(V_k(z), Delta_k)
+  required_conclusion: >-
+    for every compact K in the open centered strip,
+    sup_{z in K} norm(E_k(z)) tends to zero on the already precommitted tail
+  consumer_not_required_to_prove:
+    - "norm(r_k) tends to zero"
+    - "global self-energy tends to zero"
+    - "full BV x BV continuity of QW_global"
+
+RATE_GUARD:
+  projection_tail_L2_rate: "O((log m)^2 / sqrt(m))"
+  graph_test_L2_envelope: "O(m^(sigma/2) * sqrt(log m)) on |Im z| <= sigma"
+  missing_factor: MIXED_ACTION_AMPLIFICATION
+  exact_product_must_tend_to_zero: true
+  forbidden_placeholder: "times an unspecified polynomial"
+  consequence: >-
+    Under a factorized bound |QW(V,delta)| <= B_m norm(V) norm(delta),
+    B_m must have an explicit subcritical exponent. For all fixed
+    sigma < 1/2, B_m = O(m^(1/4) polylog(m)) is still spendable;
+    arbitrary polynomial growth is not.
+
+CLOSES:
+  - L2_DEFECT_MAGNITUDE_AS_POLARIZED_ACTION_BOUND
+  - UNSPECIFIED_POLYNOMIAL_AS_RATE_LEDGER
+  - BROAD_BV_EXTENSION_AS_A_CHEAP_DOMAIN_ONLY_PORT
+
+OPENS: []
+
+CARRIES_OPEN:
+  - SELECTED_FERRERS_EVENTUAL_COMPLEMENT_FLOOR
+  - SELECTED_FERRERS_ODD_SECTOR_FLOOR
+  - SELECTED_FERRERS_GRAPH_TEST_POLARIZED_DEFECT_FUNCTIONAL_COMPACT_DECAY
+  - SELECTED_FERRERS_GROUND_COFINAL_CONVERGENCE_ASSEMBLY
+  - EXACT_COMBINED_GAMMA_RETAINED_PRIME_RATE
+
+SCOPE: COFINAL_FAMILY
+VERIFIER: PAPER
+PROGRESS_CLASS:
+  - FALSIFICATION_PROGRESS
+  - REPRESENTATION_PROGRESS
+COGNITIVE_OPERATOR: MINIMAL_LEMMA
+ROUTE_SCORE: 5
+
+NEXT_TRANSACTION:
+  AUTHORIZED: true
+  TASK_ID: GOAL058_SELECTED_FERRERS_GRAPH_TEST_POLARIZED_DEFECT_FUNCTIONAL_PREFLIGHT
+  MODE: PAPER_AND_SOURCE_READ_ONLY
+  LEAN_EDIT_AUTHORIZED: false
+  NUMERICAL_PROBE_AUTHORIZED: false
+  ARISTOTLE_AUTHORIZED: false
+  DISCRIMINATOR:
+    PASS: SELECTED_FERRERS_GRAPH_TEST_POLARIZED_DEFECT_FUNCTIONAL_SOURCE_READY
+    FAIL: GOAL058_FIXED_TEST_MIXED_WEIL_PAIRING_REQUIRES_UNCONTROLLED_AMBIENT_ACTION_OR_RETAINED_PRIME_RATE
+  SUCCESS_CODE: SELECTED_FERRERS_GRAPH_TEST_POLARIZED_DEFECT_FUNCTIONAL_PAPER_READY
+  FAILURE_CODE: GOAL058_FIXED_TEST_MIXED_WEIL_PAIRING_REQUIRES_UNCONTROLLED_AMBIENT_ACTION_OR_RETAINED_PRIME_RATE
+
+CANDIDATE_REPRESENTATIONS:
+  R1_FIXED_TEST_SMOOTH_CORE_MIXED_FUNCTIONAL:
+    rank: PRIMARY
+    target: >-
+      Define and estimate only the exact one-sided global Weil functional
+      generated by the graph test V_k(z) on the actual combined defect Delta_k.
+      Use smooth-core regularization and the exact BV Poisson shadow identity;
+      do not prove a full BV x BV theory.
+    kill_power: 10/10
+    proof_cost: 7/10
+    route_fit: 10/10
+  R2_TWO_MODE_TARGET_SUBSPACE_FESHBACH:
+    rank: RUNNER_UP
+    target: >-
+      Enlarge the retained source-defined subspace to include the factor-four
+      target directions and control the ground graph through an exact Schur
+      complement, avoiding the global BV pairing if a uniform coupling budget exists.
+    kill_power: 9/10
+    proof_cost: 9/10
+    route_fit: 7/10
+  R3_EXACT_COMBINED_GAMMA_RETAINED_PRIME:
+    rank: LAST_RESORT
+    target: >-
+      Prove a cancellation-preserving cofinal estimate directly for the exact
+      combined Gamma_k = D_k r_k, including the retained-prime action and W02 trace.
+    kill_power: 10/10
+    proof_cost: 10/10
+    route_fit: 9/10
+
+REGISTERED_PREDICTIONS:
+  P_NEAR_RADICAL_POST_W5_1:
+    prior_probability: 0.68
+    fate: PARTIALLY_CONFIRMED
+    note: >-
+      The committed post-W5 rates pay the L2 sizes of the named defects, but
+      they do not by themselves pay the exact polarized source action.
+  P_MIXED_FUNCTIONAL_1:
+    probability: 0.62
+    prediction: >-
+      A source-faithful one-sided mixed functional can be defined by a smooth-core
+      limit without constructing a full BV x BV form, but its compact rate still
+      requires an explicit action envelope.
+  P_MIXED_FUNCTIONAL_2:
+    probability: 0.38
+    prediction: >-
+      The exact action envelope exposes the retained-prime oscillation or grows
+      at least critically, returning the route to combined Gamma or Feshbach.
+
+ARSENAL_MANDATE: ACCEPTED_STANDING
+SHADOW_DISCOVERY_COMPILER_MANDATE: ACKNOWLEDGED_NOT_EXECUTED
+CARDS_APPLIED:
+  - C04_SAME_COORDINATES_TWO_LAWS
+  - C09_PRECOMMIT_AND_STRENGTHEN_INVARIANT
+  - C10_FUNCTIONAL_NOT_SURROGATE
+  - C13_RESTORE_SYMMETRY_BY_EXPLICIT_SHADOW
+
+ROUTE: CHALLENGER_NOT_RH
+BUS_010: VOID
+GOAL_055: HOLD
+ROUTE_PROMOTION: false
+RH_CLAIM: false
+```
+
+## ROUTE MAP
+
+| Claim | Verdict | Tags |
+|---|---|---|
+| Report source lock | Commit `7193a160...` is the direct child of verdict `1189f702...`, adds only the 128-line report, and was `rh_clean` HEAD at audit. | `[ABSTRACT][PAPER]` |
+| P59 self-consistency | The full-row commutator reduction returns the original functional and supplies no contraction. The report correctly accepts this kill. | `[FINITE_CELL][PAPER]` |
+| Graph representation | The exact coefficient and transform graph identities remain useful; this verdict does not kill them. | `[FINITE_CELL][PAPER]` |
+| Limit target radicality | The explicit factor-four limit target satisfies the paper's Schwartz, even, zero-value and zero-mass conditions and is admitted in the global radical at paper scope. | `[ABSTRACT][PAPER]` |
+| BV Poisson completion | The exact midpoint-compatible identity carries one surviving center defect for the selected zero-mass trial. | `[ABSTRACT][PAPER]` |
+| Post-W5 L2 ledger | The named D1-D4 defects have magnitude rates sufficient after the known compact kernel growth, provided the exact mixed-action amplification is subcritical. | `[COFINAL_FAMILY][CONDITIONAL]` |
+| Polarized action | No current theorem turns those L2 rates into the required global mixed Weil pairings for the exact graph test. | `[COFINAL_FAMILY][PAPER]` |
+| Remaining gap | The minimal object is the exact one-sided polarized defect functional, not a full anonymous BV spectral theorem. | `[COFINAL_FAMILY][PAPER]` |
+
+## 1. What survives the preflight
+
+The report contains real progress.
+
+First, it accepts the exact collapse
+
+\[
+(M-\epsilon)r=Cr+\|r\|^2q
+\]
+
+and the rank-two form of the commutator. Thus the previously alleged infinite
+action hierarchy is dead.
+
+Second, the exact BV Poisson completion remains the correct C13 shadow identity:
+
+\[
+E(f)(u)=E(\widehat f)(1/u)
++\frac12\widehat f(0)u^{-1/2}
+-\frac12 f(0)u^{1/2}.
+\]
+
+For the selected zero-mass trial only the center shadow survives. The endpoint
+values remain function-level data; no distributional atoms are inserted.
+
+Third, the one-tail discipline is preserved, no W02/Arch/Prime component norm
+sum replaces the signed consumer, and the global factor-four target is on the
+paper's radical domain.
+
+These findings keep the ground-graph representation alive.
+
+## 2. The decisive defect: L2 magnitude is not source action
+
+The report's Section 7 makes a stronger claim than its sources support.
+
+The Lean theorem
+
+```text
+sourceWeilSesquilinearForm_apply_ccmFiniteSynthesis
+```
+
+identifies the matrix pairing only when **both arguments are finite CCM
+syntheses**. It does not state a mixed identity with an arbitrary projection
+tail, an outside-window tail, or a BV zero extension.
+
+The actual defects are not all finite syntheses:
+
+- the projection defect \((I-P_N)G\) lies in the orthogonal complement of the
+  finite span;
+- the below-window defect lives outside the window Hilbert carrier;
+- the center and truncation shadows are explicit functions, not automatically
+  finite CCM rows.
+
+The shifted source form is a closed lower-bounded form with an unbounded
+archimedean part. Its lower-semicontinuous extension does not make the unshifted
+polarized form continuous in the Hilbert norm.
+
+The abstract plant is conclusive. On \(\ell^2\), let
+
+\[
+Ae_n=ne_n,\qquad v_n=e_n,\qquad \delta_n=n^{-1}e_n.
+\]
+
+Then
+
+\[
+\|v_n\|=1,\qquad \|\delta_n\|\to0,
+\]
+
+but
+
+\[
+|\langle Av_n,\delta_n\rangle|=1.
+\]
+
+Therefore a compact envelope for \(v_n\) and an L2 rate for \(\delta_n\) do
+not pay the mixed action. One needs one of:
+
+```text
+an L2 envelope for the associated action on the test vector;
+a form-dual norm bound;
+an exact direct estimate of the mixed functional;
+an absorbable inequality |Phi| <= X_k + eta_k |Phi| with eta_k < 1.
+```
+
+The project already contains the same semantic plant in source-specific form:
+vanishing Hilbert error without a uniform Riesz action bound does not control
+the residual, and exact target matching without a target-action theorem does
+not control it.
+
+This is **C10 FUNCTIONAL-NOT-SURROGATE**. The consumer is a polarized source
+action, not the Hilbert norm of its second argument.
+
+## 3. Why “one classical BV theorem” is not yet a compression
+
+A single theorem may syntactically contain all missing statements. That does
+not make it a small port.
+
+To close the route, such a theorem would have to supply, on the exact source
+objects:
+
+1. a legal definition of the mixed global Weil pairing;
+2. the exact global-to-window identity with the explicit shift and signs;
+3. inversion transport or the equivalent completed Poisson identity;
+4. control of conditionally convergent prime/Fourier tails;
+5. a subcritical compact action envelope for the graph test;
+6. continuity to the actual D1-D4 defect class;
+7. the same common tail and normalization.
+
+Items 4 and 5 are precisely where the retained-prime/source-action wall can
+reappear. Calling the package “BV spectral representation” changes the name,
+not the hardness.
+
+The positive repair is to weaken the theorem to the exact one-sided consumer.
+We do not need a general BV x BV form. We need the mixed functional generated by
+one source-defined graph test and one source-defined combined defect.
+
+## 4. Exact rate guard
+
+For the projection defect, the report uses
+
+\[
+\|D_{3,k}\|_2=O\!\left(\frac{(\log m_k)^2}{\sqrt{m_k}}\right)
+\]
+
+and
+
+\[
+\|V_k(z)\|_2
+=O_K\!\left(m_k^{\sigma/2}\sqrt{\log m_k}\right),
+\qquad \sigma<\frac12.
+\]
+
+If the missing action theorem had the factorized shape
+
+\[
+|QW(V,\delta)|\le B_m\|V\|_2\|\delta\|_2,
+\]
+
+then its contribution would be
+
+\[
+B_m\,m^{\sigma/2-1/2}(\log m)^{5/2}.
+\]
+
+Thus an unspecified polynomial is not harmless. A bound
+
+\[
+B_m=O(m^{1/4}\operatorname{polylog}m)
+\]
+
+is still spendable on every fixed closed substrip; a generic polynomial may
+kill the margin. The next transaction must export the full exponent ledger.
+
+## 5. Selected representation
+
+Define only the exact consumer:
+
+\[
+V_k(z)=\iota\,S_k(C_k^{-1}\kappa_k(z)),
+\]
+
+\[
+\Delta_k
+=G_k-\iota P_{N_k}(G_k|_{I_k}),
+\]
+
+and
+
+\[
+\mathcal E_k(z)
+=
+\frac{\Xi(0)}{\operatorname{rawFplus}_k(0)}
+QW_{\rm global}(V_k(z),\Delta_k).
+\]
+
+The smallest named gap is
+
+\[
+\boxed{
+\sup_{z\in K}|\mathcal E_k(z)|\longrightarrow0
+\quad
+\text{for every }K\Subset\{|\Im z|<1/2\}.
+}
+\]
+
+This preserves the exact functional and any cancellation among the defects.
+The BV Poisson identity is a candidate proof mechanism, not the theorem's
+identity.
+
+## 6. Next transaction
+
+Authorize one read-only source/paper discriminator:
+
+```text
+TASK_ID:
+  GOAL058_SELECTED_FERRERS_GRAPH_TEST_POLARIZED_DEFECT_FUNCTIONAL_PREFLIGHT
+
+MODE:
+  PAPER_AND_SOURCE_READ_ONLY
+```
+
+It must do all of the following:
+
+1. define the exact mixed functional on a smooth core;
+2. specify the exact source and target carriers, measures and conjugation;
+3. derive the global-to-window identity before taking limits;
+4. retain the complete prime contribution and its summation convention;
+5. decide whether the functional extends to the actual combined defect;
+6. derive either a direct compact-rate bound or an exact absorbable inequality
+   \(|\Phi_k|\le X_k+\eta_k|\Phi_k|\) with \(X_k\to0\) and eventually
+   \(\eta_k\le1/2\);
+7. export the full powers of \(m\) and \(\log m\);
+8. reuse the one precommitted tail;
+9. rerun the L2-small/unbounded-action plant;
+10. return FAIL if the retained-prime pairing remains unrestricted.
+
+No Lean source, numerical probe or Aristotle submission is authorized.
+
+## STRONGEST ATTACK
+
+The strongest reviewer objection is:
+
+> The proposed global radical argument uses a global distributional form on a
+> pair for which the project has no source-faithful mixed pairing, then treats
+> the second argument's L2 smallness as if the form were bounded on L2.
+
+That objection succeeds against the present report. The repaired statement is
+not “all defects are paid.” It is:
+
+> All named defects have sufficiently small L2 magnitudes; the route closes if
+> the exact graph-test mixed Weil functional has a subcritical one-sided action
+> envelope on those defects.
+
+Failure of that envelope kills this representation, not the already proved
+finite real-zero and graph identities.
+
+## META CLOSEOUT
+
+### What became smaller?
+
+The open wall is no longer “prove a full BV spectral theory.” It is one exact
+source-defined mixed functional and one explicit compact-rate inequality.
+
+### What was killed?
+
+```text
+L2 defect decay -> mixed Weil action decay;
+an unspecified polynomial action loss;
+“one classical BV theorem” as evidence that the hard source action disappeared.
+```
+
+### What must not be tried again?
+
+```text
+finite-matrix pairing on a nonfinite defect;
+Hilbert-tail decay relabeled as source-action decay;
+component opNorm sums replacing the complete signed form;
+a second tail or post-hoc schedule;
+full-row P59 self-consistency.
+```
+
+### Current smallest named gap
+
+```text
+SELECTED_FERRERS_GRAPH_TEST_POLARIZED_DEFECT_FUNCTIONAL_COMPACT_DECAY
+```
+
+### Next cheapest decisive test
+
+Derive or kill the exact one-sided mixed functional on a smooth core, including
+its retained-prime rate and the quarter-power action threshold.
+
+### Prediction fate
+
+```text
+P_NEAR_RADICAL_POST_W5_1:
+  PARTIALLY_CONFIRMED, with no retroactive repair.
+```
+
+### Memory entry
+
+```yaml
+iteration:
+  target: graph-functional polarized near-radical compact decay
+  status: OPEN
+  failed_strategy: L2_DEFECT_MAGNITUDE_AS_ACTION_BOUND
+  cognitive_operator_used: MINIMAL_LEMMA
+  new_gap_name: SELECTED_FERRERS_GRAPH_TEST_POLARIZED_DEFECT_FUNCTIONAL_COMPACT_DECAY
+  invariant_learned: exact mixed source action and one common tail must be preserved
+  forbidden_future_move: do not pay an unbounded form with an L2 rate alone
+  next_decisive_test: fixed-test smooth-core mixed-functional source preflight
+```
