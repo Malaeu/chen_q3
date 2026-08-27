@@ -79,3 +79,19 @@ ask.sh перед каждым отрицательным утверждение
 - /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/LINUX_*_2026-08-27.md — 9 отчётов
 - /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/proshka/PROSHKA_VERDICT_*_2026-08-27.md — 7 вердиктов
 - /home/chirurgie/.claude/projects/-mnt-hdd01-Soft-GitHub-chen-q3-rh-clean/memory/goal058-g6-front-status.md — RESUME
+
+## Nachtrag (Gate A, вторая половина дня)
+
+13. Owner-решение: фронт не менять, Gate A, две дорожки; контракты заморожены
+    файлом d8e4bbe0; вердикт-допуск 071d3eb0 (оба трека авторизованы, HOLD).
+14. Track 1 (4651fc18): FAIL — безусловного степенного выигрыша нет
+    (websearch: K–V/Pintz соответствие essentially optimal); препятствие
+    Ingham–Turán–Pintz названо, но судьёй принято как warning (конверс для
+    конкретного семейства не доказан — C10).
+15. Track 2 (a21fc2e7): G6N1SelectedFerrersFiniteAssetBank.lean — 808 строк,
+    12 публичных теорем, чистая тройка, полный гейт. РАТИФИЦИРОВАН как
+    ядро-банк; полный пакетный PASS отказан (прекоммит-дрифт: D2 отложен
+    post-hoc). Уроки в памяти (q3-check-admitted-trap §3–5).
+16. Closeout c998edbd: Gate A = HOLD финально, транзакции закрыты; дальше
+    только новый owner-контракт (двери: R1' graph-test kernel saving 9/8,
+    R4 Krylov карантин).
