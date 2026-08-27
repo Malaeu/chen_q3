@@ -1,0 +1,24 @@
+{
+  "schema": "q3_project_facts.v1",
+  "version": 1,
+  "public_claims": {
+    "unconditional_rh_proof": false,
+    "compiled_broad_cone_export": "CONDITIONAL_LEGACY",
+    "public_canonical_export": "OPEN"
+  },
+  "route_facts": {
+    "route_b_rank": "CHALLENGER",
+    "route_b_rh_status": "NOT_RH",
+    "owner_boundary": "PX_RH_CLAIM"
+  },
+  "receipts": [
+    {
+      "path": "docs/semantic_quarantine/PUBLIC_EXPORT_INDEX_AND_AXIOM_RECEIPT_v1.md",
+      "sha256": "357947e3e5e56c2aae358a09cad7537ef85cc5b76c715c8b9607b67338123838"
+    },
+    {
+      "path": "docs/semantic_quarantine/MODULE_CLASS_REGISTRY_v1.json",
+      "sha256": "0ad8a71ec42d123ec8956740b73816d29ccd1662338ea31ec51d8db24c7f0caf"
+    }
+  ]
+}

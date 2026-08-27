@@ -1,0 +1,81 @@
+{
+  "schema": "q3_project_state.v1",
+  "version": 1,
+  "authority": "AUTHORITATIVE_STATE",
+  "source_hashes": {
+    "facts": {
+      "path": "orchestrator/state/PROJECT_FACTS.json",
+      "sha256": "8fa804c6a0d0487d7a63fe621cd5174e7fce4c3ef55695cbc49fda044e8bb9a3"
+    },
+    "execution": {
+      "path": "orchestrator/state/PROJECT_EXECUTION_STATE.json",
+      "sha256": "b065c763d272256551b3ecdd9014678d11eb796d97ceef15902f26fa064a9657"
+    },
+    "events": {
+      "path": "orchestrator/state/PROJECT_STATE_EVENTS.jsonl",
+      "sha256": "bbe169aa97d764e1bb4769242325e3294b3d0b1f80de51974365f1175606167e"
+    },
+    "surface_registry": {
+      "path": "docs/semantic_quarantine/STATUS_SURFACE_REGISTRY_v1.json",
+      "sha256": "042641c0059fda3e82ad193feec5b55c9e7a2d033f6a1a9fd5e8a924210ecd56"
+    },
+    "schema": {
+      "path": "docs/semantic_quarantine/SINGLE_MACHINE_STATE_SCHEMA_v1.json",
+      "sha256": "50bf0390395411e2b11cf98455e67db1b050452027c24d79ca3f76a9d78dd144"
+    },
+    "builder_program": {
+      "path": "orchestrator/project_state.py",
+      "sha256": "7cfd8fe70ceabdb2809b85e58eb005e578f52dfc202049bddbd703192365ba8c"
+    },
+    "selector_program": {
+      "path": "orchestrator/goal_runtime.py",
+      "sha256": "04956752c316d18ad7bcb8eace7b3501621d84a0e593d4ecbd569d141c3e673d"
+    }
+  },
+  "event_log": {
+    "count": 1,
+    "tail_sha256": "311d03b11c183c07e5a1ad5f28449e6767d2c1232d3d56788e39bce5834aaacb"
+  },
+  "component_hashes": [
+    {
+      "path": "docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md",
+      "sha256": "eb418123c65320ad54769d8021717594fb4135488201d93f3ff0c88ca35423ff"
+    },
+    {
+      "path": "SESSION_ENTRY.md",
+      "sha256": "39b538ba2b66849b2b78b8e59112016f992d6d224641a6f33aba352020cb2582"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/SESSION_ENTRY.md",
+      "sha256": "39b538ba2b66849b2b78b8e59112016f992d6d224641a6f33aba352020cb2582"
+    },
+    {
+      "path": "docs/Codex/CURRENT.md",
+      "sha256": "931b69417252cd0dc7cb50fd2e94ca3ba2fcc3c521fb3f4935483541fb788fba"
+    },
+    {
+      "path": "orchestrator/state/CHANNEL_RUNTIME.json",
+      "sha256": "a0458d8defe75e0953008f93d8cd27564fe0f315e6d3e9d4db40174840d7d399"
+    },
+    {
+      "path": "orchestrator/state/SEMANTIC_QUARANTINE.json",
+      "sha256": "83efe011ad70d8bd254af804b93abc085a513b3c0bf4d427979847294593ed47"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_STATE.json",
+      "sha256": "8d00c37f9b7bc04eb489a555a8f3728334a5aa3cb0293dd3fd1053d436b79b46"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_STATE.md",
+      "sha256": "0e19eb124cbaf587c74b9d7703686b35cb87c6afd8d3af24b8fbaba892c7e263"
+    }
+  ],
+  "projection": {
+    "selected_goal_id": "058",
+    "selected_goal_path": "docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md",
+    "route_b_rank": "CHALLENGER",
+    "route_b_rh_status": "NOT_RH",
+    "unconditional_rh_proof": false,
+    "public_export_receipt_path": "docs/semantic_quarantine/PUBLIC_EXPORT_INDEX_AND_AXIOM_RECEIPT_v1.md"
+  }
+}

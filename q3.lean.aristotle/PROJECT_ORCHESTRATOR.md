@@ -43,6 +43,15 @@ It remains a fallback, not a second claim of completion.
 
 ## Current operational selector
 
+<!-- PROJECT_STATE:START -->
+<!-- project_state_sha256: c9b1122a26e227354021da261957566feaafae7ab182c9b81e7e5246c121ba48 -->
+Project-level current status is generated from
+`orchestrator/state/PROJECT_STATE.json`.
+Human views: `docs/generated/PROJECT_STATUS.md` and
+`docs/generated/WORK_QUEUE.md`.
+Current projection: RH proof `NO`; Route B `CHALLENGER / NOT_RH`; goal `058`.
+<!-- PROJECT_STATE:END -->
+
 No generic monitor selects work automatically:
 
 | Surface | State | Selection rule |
@@ -70,17 +79,9 @@ Its current step is never copied from a monitor. Read, in order:
 3. `docs/routeB_bus/BUS_PROTOCOL.md` and physical `docs/routeB_bus/`;
 4. `routeb_status.py --check`.
 
-Physical snapshot at this update:
-
-```text
-GOAL_056_PHASE4L_CLOSED_UNIFIED_CHAIN_DELEGATED_REVIEW_PENDING
-BUS: closed=056..056u active=NONE next-number=057 selected-next=NONE
-```
-
-Goal 057 is not minted by this snapshot or by arithmetic. The pending standing
-direction must first pass its delegated strategic-review contract. Stable
-restrictions remain `BUS_010: VOID`, `GOAL_055: HOLD`, G2/CCM frozen, and no
-Route B promotion or RH claim.
+The bounded generated block above supplies the current physical-goal projection.
+Stable restrictions remain `BUS_010: VOID`, `GOAL_055: HOLD`, G2/CCM frozen,
+and no Route B promotion or RH claim.
 
 ## Gate table
 

@@ -1,0 +1,477 @@
+{
+  "schema": "q3_status_surface_registry.v1",
+  "version": 1,
+  "owner_label_crosswalk": {
+    "owner_label": "P5_SINGLE_MACHINE_STATE_SCHEMA_V1",
+    "phase_text": "Phase P5 — one authoritative state, generated views",
+    "board_acceptance_ids": ["P5.001", "P5.002", "P5.003", "P5.004", "P5.005", "P5.006", "P5.007", "P5.008", "P4.008"],
+    "acceptance_text": [
+      "Complete status-surface map.",
+      "Exact precedence and schema are frozen.",
+      "Facts and mutable selectors live in distinct typed stores.",
+      "Generated headers include source state hash.",
+      "No historical monitor can select work.",
+      "Manual divergence is detected.",
+      "Corrections never erase registered predictions or old verdicts.",
+      "Active state is small; history remains queryable.",
+      "Generated views match machine state."
+    ],
+    "failure_codes": ["STATUS_SURFACE_INVENTORY_INCOMPLETE", "STATE_AUTHORITY_AMBIGUOUS", "FACT_STATE_CONFLATION", "GENERATED_VIEW_WITHOUT_SOURCE_HASH", "STALE_MONITOR_SELECTED_WORK", "GENERATED_VIEW_DRIFT_UNDETECTED", "RETROACTIVE_STATE_REPAIR", "STATE_DUPLICATION_PERSISTS", "CI_STATE_DRIFT_MISSING"]
+  },
+  "event_authority_policy": {
+    "history_mode": "GIT_FIRST_PARENT",
+    "registration_rule": "EVENT_REGISTERED_ONLY_ON_CANONICAL_FIRST_PARENT_CHAIN",
+    "merge_rule": "MERGE_RESULT_MUST_PREFIX_EXTEND_PREMERGE_FIRST_PARENT",
+    "side_branch_rule": "SIDE_BRANCH_EVENT_IS_DRAFT_UNTIL_CANONICAL_ADMISSION"
+  },
+  "p5_000_crosswalk": {
+    "meta": {"migration_label": "P5.000_FULL_LABEL_CROSSWALK", "failure_code": "MIGRATION_LABEL_CROSSWALK_INCOMPLETE"},
+    "rows": [
+      {"migration_label": "P5.001_STATUS_SURFACE_INVENTORY", "board_items": [{"board_id": "P5.001", "acceptance_text": "Complete status-surface map.", "failure_code": "STATUS_SURFACE_INVENTORY_INCOMPLETE"}]},
+      {"migration_label": "P5.002_AUTHORITATIVE_STATE_MANIFEST", "board_items": [{"board_id": "P5.002", "acceptance_text": "Exact precedence and schema are frozen.", "failure_code": "STATE_AUTHORITY_AMBIGUOUS"}]},
+      {"migration_label": "P5.003_FACT_EXECUTION_SPLIT", "board_items": [{"board_id": "P5.003", "acceptance_text": "Facts and mutable selectors live in distinct typed stores.", "failure_code": "FACT_STATE_CONFLATION"}]},
+      {"migration_label": "P5.004_HASHED_GENERATED_VIEWS", "board_items": [{"board_id": "P5.004", "acceptance_text": "Generated headers include source state hash.", "failure_code": "GENERATED_VIEW_WITHOUT_SOURCE_HASH"}]},
+      {"migration_label": "P5.005_NON_SELECTOR_METADATA", "board_items": [{"board_id": "P5.005", "acceptance_text": "No historical monitor can select work.", "failure_code": "STALE_MONITOR_SELECTED_WORK"}]},
+      {"migration_label": "P5.006_VIEW_DRIFT_CHECKER", "board_items": [
+        {"board_id": "P5.006", "acceptance_text": "Manual divergence is detected.", "failure_code": "GENERATED_VIEW_DRIFT_UNDETECTED"},
+        {"board_id": "P4.008", "acceptance_text": "Generated views match machine state.", "failure_code": "CI_STATE_DRIFT_MISSING"}
+      ]},
+      {"migration_label": "P5.007_APPEND_ONLY_EVENTS", "board_items": [{"board_id": "P5.007", "acceptance_text": "Corrections never erase registered predictions or old verdicts.", "failure_code": "RETROACTIVE_STATE_REPAIR"}]},
+      {"migration_label": "P5.008_BOUNDED_ACTIVE_VIEWS", "board_items": [{"board_id": "P5.008", "acceptance_text": "Active state is small; history remains queryable.", "failure_code": "STATE_DUPLICATION_PERSISTS"}]}
+    ]
+  },
+  "surfaces": [
+    {
+      "path": "orchestrator/state/PROJECT_STATE.json",
+      "role": "AUTHORITATIVE_STATE",
+      "selector_effect": "ACTIVE",
+      "source_store": "PROJECT_FACTS+PROJECT_EXECUTION_STATE+PROJECT_STATE_EVENTS+STATUS_SURFACE_REGISTRY",
+      "consumers": ["orchestrator/project_state.py", "docs/generated/PROJECT_STATUS.md", "docs/generated/WORK_QUEUE.md", "docs/generated/PUBLIC_ROUTE_GRAPH.md"],
+      "drift_risk": "FAIL_CLOSED_HASHED"
+    },
+    {
+      "path": "orchestrator/state/PROJECT_EXECUTION_STATE.json",
+      "role": "SELECTOR",
+      "selector_effect": "ACTIVE",
+      "source_store": "PHYSICAL_BUS+COMPONENT_STATE",
+      "consumers": ["orchestrator/project_state.py"],
+      "drift_risk": "CHECKED_AGAINST_GOAL_RUNTIME"
+    },
+    {
+      "path": "orchestrator/state/PROJECT_FACTS.json",
+      "role": "FACT",
+      "selector_effect": "NONE",
+      "source_store": "PINNED_RECEIPTS",
+      "consumers": ["orchestrator/project_state.py"],
+      "drift_risk": "HASH_PINNED"
+    },
+    {
+      "path": "docs/semantic_quarantine/SINGLE_MACHINE_STATE_SCHEMA_v1.json",
+      "role": "FACT",
+      "selector_effect": "NONE",
+      "source_store": "PINNED_CONTROL_SCHEMA",
+      "consumers": ["orchestrator/project_state.py", "orchestrator/state/PROJECT_STATE.json"],
+      "drift_risk": "SOURCE_HASHED_AND_GENERATED_HEADER_PINNED"
+    },
+    {
+      "path": "docs/semantic_quarantine/STATUS_SURFACE_REGISTRY_v1.json",
+      "role": "FACT",
+      "selector_effect": "NONE",
+      "source_store": "PINNED_STATUS_SURFACE_POLICY",
+      "consumers": [
+        "orchestrator/project_state.py",
+        "orchestrator/state/PROJECT_STATE.json"
+      ],
+      "drift_risk": "SOURCE_HASHED_AND_SCHEMA_CLOSED"
+    },
+    {
+      "path": "orchestrator/project_state.py",
+      "role": "FACT",
+      "selector_effect": "NONE",
+      "source_store": "PINNED_STATE_BUILDER_PROGRAM",
+      "consumers": ["orchestrator/state/PROJECT_STATE.json", "docs/generated/PROJECT_STATUS.md"],
+      "drift_risk": "SOURCE_HASHED_AND_GENERATED_HEADER_PINNED"
+    },
+    {
+      "path": "orchestrator/goal_runtime.py",
+      "role": "FACT",
+      "selector_effect": "NONE",
+      "source_store": "PINNED_GOAL_SELECTOR_PROGRAM",
+      "consumers": ["orchestrator/project_state.py", "orchestrator/state/PROJECT_EXECUTION_STATE.json"],
+      "drift_risk": "SOURCE_HASHED_AND_GENERATED_HEADER_PINNED"
+    },
+    {
+      "path": "orchestrator/state/PROJECT_STATE_EVENTS.jsonl",
+      "role": "EVENT_LOG",
+      "selector_effect": "NONE",
+      "source_store": "APPEND_ONLY_HASH_CHAIN_GIT_FIRST_PARENT",
+      "consumers": ["orchestrator/project_state.py"],
+      "drift_risk": "CANONICAL_FIRST_PARENT_PREFIX_AND_HASH_CHAIN_CHECKED"
+    },
+    {
+      "path": "orchestrator/state/CHANNEL_RUNTIME.json",
+      "role": "COMPONENT_STATE",
+      "selector_effect": "COMPONENT_ONLY",
+      "source_store": "CHANNEL_RUNTIME",
+      "consumers": ["orchestrator/goal_runtime.py", "orchestrator/spine.py", "orchestrator/three_body_loop.py", "specs_docs/session_start.sh"],
+      "drift_risk": "LIVE_HANDLE_AND_PHASE_COMPONENT"
+    },
+    {
+      "path": "orchestrator/state/SEMANTIC_QUARANTINE.json",
+      "role": "COMPONENT_STATE",
+      "selector_effect": "COMPONENT_ONLY",
+      "source_store": "SEMANTIC_QUARANTINE",
+      "consumers": ["orchestrator/spine.py", "orchestrator/three_body_loop.py"],
+      "drift_risk": "LIVE_ADMISSION_COMPONENT"
+    },
+    {
+      "path": "docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md",
+      "role": "COMPONENT_STATE",
+      "selector_effect": "COMPONENT_ONLY",
+      "source_store": "PHYSICAL_BUS",
+      "consumers": ["orchestrator/goal_runtime.py", "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb_status.py"],
+      "drift_risk": "PHYSICAL_GOAL_AUTHORITY"
+    },
+    {
+      "path": "docs/Codex/CURRENT.md",
+      "role": "SELECTOR",
+      "selector_effect": "ACTIVE",
+      "source_store": "CODEX_TASK_POINTER",
+      "consumers": ["specs_docs/session_start.sh"],
+      "drift_risk": "CURRENTLY_CLOSED"
+    },
+    {
+      "path": "SESSION_ENTRY.md",
+      "role": "SELECTOR",
+      "selector_effect": "ACTIVE",
+      "source_store": "SCOPED_PRECEDENCE_ROUTER_ALIAS",
+      "consumers": ["Codex session bootstrap"],
+      "drift_risk": "POLICY_ROUTER_NOT_MUTABLE_PROJECT_STATE"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/SESSION_ENTRY.md",
+      "role": "SELECTOR",
+      "selector_effect": "ACTIVE",
+      "source_store": "SCOPED_PRECEDENCE_ROUTER_CANONICAL",
+      "consumers": ["SESSION_ENTRY.md symlink", "Codex session bootstrap"],
+      "drift_risk": "CANONICAL_ROUTER_TARGET"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_STATE.json",
+      "role": "COMPONENT_STATE",
+      "selector_effect": "COMPONENT_ONLY",
+      "source_store": "ROUTE_B_RUNTIME",
+      "consumers": ["routeb_status.py", "specs_docs/session_start.sh", "scripts/build_proshka_brief.py"],
+      "drift_risk": "STALE_FIELDS_CHECKED_AGAINST_PHYSICAL_BUS"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_STATE.md",
+      "role": "FACT",
+      "selector_effect": "NONE",
+      "source_store": "APPEND_HISTORY_WITH_LEGACY_HEADER",
+      "consumers": ["scripts/build_proshka_brief.py", "route-local analytical tools"],
+      "drift_risk": "CURRENT_HEADER_STALE_HISTORY_LIVE"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_CONTROL.md",
+      "role": "HISTORICAL",
+      "selector_effect": "NONE",
+      "source_store": "FROZEN_DAG_CONTRACT",
+      "consumers": ["human architecture readers"],
+      "drift_risk": "STALE_RB_IDLE_HEADER"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/loop_state.json",
+      "role": "HISTORICAL",
+      "selector_effect": "NONE",
+      "source_store": "COMPATIBILITY_MIRROR",
+      "consumers": ["legacy route-local analytical tools"],
+      "drift_risk": "MUST_NOT_SELECT_WORK"
+    },
+    {
+      "path": "orchestrator/state/SPINE_STATE.json",
+      "role": "GENERATED_VIEW",
+      "selector_effect": "NONE",
+      "source_store": "orchestrator/spine.py",
+      "consumers": ["orchestrator/spine.py"],
+      "drift_risk": "DERIVED_NONCANONICAL_OPERATIONAL_VIEW"
+    },
+    {
+      "path": "orchestrator/state/SPINE_VIEW.md",
+      "role": "GENERATED_VIEW",
+      "selector_effect": "NONE",
+      "source_store": "orchestrator/spine.py",
+      "consumers": ["human startup readers", "orchestrator/packet.py"],
+      "drift_risk": "COMMITTED_HOST_SNAPSHOT"
+    },
+    {
+      "path": "orchestrator/state/META_CORPUS.json",
+      "role": "GENERATED_VIEW",
+      "selector_effect": "NONE",
+      "source_store": "orchestrator/spine.py",
+      "consumers": ["orchestrator/spine.py"],
+      "drift_risk": "DERIVED_REGISTRY"
+    },
+    {
+      "path": "orchestrator/state/SEMANTIC_INDEX_STATUS.json",
+      "role": "GENERATED_VIEW",
+      "selector_effect": "NONE",
+      "source_store": "orchestrator/spine.py",
+      "consumers": ["orchestrator/spine.py"],
+      "drift_risk": "DERIVED_INDEX_RECEIPT"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/graphs/PROOF_GRAPH.json",
+      "role": "GENERATED_VIEW",
+      "selector_effect": "NONE",
+      "source_store": "scripts/build_proof_graph.py",
+      "consumers": ["orchestrator/sensors.py"],
+      "drift_risk": "INDEPENDENT_SENSOR_NOT_PROJECT_SELECTOR"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/graphs/PROOF_GRAPH.md",
+      "role": "GENERATED_VIEW",
+      "selector_effect": "NONE",
+      "source_store": "scripts/build_proof_graph.py",
+      "consumers": ["human observability readers"],
+      "drift_risk": "INDEPENDENT_SENSOR_NOT_PROJECT_SELECTOR"
+    },
+    {
+      "path": "README.md",
+      "role": "GENERATED_VIEW",
+      "selector_effect": "NONE",
+      "source_store": "BOUNDED_PROJECT_STATE_BLOCK",
+      "consumers": ["public readers"],
+      "drift_risk": "BOUNDED_BLOCK_CHECKED"
+    },
+    {
+      "path": "q3.lean.aristotle/PROJECT_ORCHESTRATOR.md",
+      "role": "FACT",
+      "selector_effect": "NONE",
+      "source_store": "STABLE_ARCHITECTURE+BOUNDED_PROJECT_STATE_BLOCK",
+      "consumers": ["SESSION_ENTRY.md", "scripts/build_proshka_brief.py"],
+      "drift_risk": "LEGACY_SNAPSHOT_REPLACED_BY_POINTER"
+    },
+    {
+      "path": "docs/generated/PROJECT_STATUS.md",
+      "role": "GENERATED_VIEW",
+      "selector_effect": "NONE",
+      "source_store": "PROJECT_STATE",
+      "consumers": ["README.md", "human readers"],
+      "drift_risk": "HASHED_AND_CHECKED"
+    },
+    {
+      "path": "docs/generated/WORK_QUEUE.md",
+      "role": "GENERATED_VIEW",
+      "selector_effect": "NONE",
+      "source_store": "PROJECT_STATE",
+      "consumers": ["human readers"],
+      "drift_risk": "HASHED_AND_CHECKED"
+    },
+    {
+      "path": "docs/generated/PUBLIC_ROUTE_GRAPH.md",
+      "role": "GENERATED_VIEW",
+      "selector_effect": "NONE",
+      "source_store": "PROJECT_STATE",
+      "consumers": ["human readers"],
+      "drift_risk": "HASHED_AND_CHECKED"
+    },
+    {
+      "path": "docs/routeB_bus/PROSHKA_QUEUE.md",
+      "role": "HISTORICAL",
+      "selector_effect": "NONE",
+      "source_store": "MANUAL_APPEND_QUEUE",
+      "consumers": ["specs_docs/session_start.sh", "specs_docs/hooks/q3-toolbelt.sh"],
+      "drift_risk": "REQUEST_HISTORY_NOT_PROJECT_SELECTOR"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md",
+      "role": "HISTORICAL",
+      "selector_effect": "NONE",
+      "source_store": "PARKED_MONITOR",
+      "consumers": ["SESSION_ENTRY.md"],
+      "drift_risk": "PARKED_CLOSED"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md",
+      "role": "HISTORICAL",
+      "selector_effect": "NONE",
+      "source_store": "DORMANT_MONITOR",
+      "consumers": ["SESSION_ENTRY.md"],
+      "drift_risk": "DORMANT"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/SPRINT_MONITOR.md",
+      "role": "HISTORICAL",
+      "selector_effect": "NONE",
+      "source_store": "CLOSED_MONITOR",
+      "consumers": ["SESSION_ENTRY.md"],
+      "drift_risk": "DONE_CLOSED"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/MAIN_CHAIN_DEPS.md",
+      "role": "HISTORICAL",
+      "selector_effect": "NONE",
+      "source_store": "MARCH_AXIOM_SNAPSHOT",
+      "consumers": ["historical readers"],
+      "drift_risk": "STALE_AXIOM_PROFILE"
+    },
+    {
+      "path": "q3.lean.aristotle/docs/CHAIN_STATUS.md",
+      "role": "HISTORICAL",
+      "selector_effect": "NONE",
+      "source_store": "MARCH_CHAIN_SNAPSHOT",
+      "consumers": ["scripts/q3_docs_corpus.py"],
+      "drift_risk": "STALE_CHAIN_STATUS"
+    },
+    {
+      "path": "q3.lean.aristotle/docs/PAPER_MAINLINE_TRACKER.md",
+      "role": "FACT",
+      "selector_effect": "NONE",
+      "source_store": "PAPER_THEOREM_MAP",
+      "consumers": ["SESSION_ENTRY.md"],
+      "drift_risk": "PAPER_FACTS_NOT_QUEUE"
+    },
+    {
+      "path": "orchestrator/state/state.json",
+      "role": "HISTORICAL",
+      "selector_effect": "NONE",
+      "source_store": "LEGACY_RESUME_STATE",
+      "consumers": ["none current"],
+      "drift_risk": "EXECUTABLE_LOOKING_LEGACY_STATE"
+    },
+    {
+      "path": "orchestrator/state/log.jsonl",
+      "role": "HISTORICAL",
+      "selector_effect": "NONE",
+      "source_store": "LEGACY_EVENT_LOG",
+      "consumers": ["none current"],
+      "drift_risk": "NOT_CURRENT_EVENT_AUTHORITY"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/STATE.json",
+      "role": "HISTORICAL",
+      "selector_effect": "NONE",
+      "source_store": "PRE_TWOLEVEL_ROUTE_STATE",
+      "consumers": ["historical route receipts"],
+      "drift_risk": "STALE_BUS_001_009"
+    },
+    {
+      "path": "q3.lean.aristotle/FORMALIZATION_STATUS.md",
+      "role": "HISTORICAL",
+      "selector_effect": "NONE",
+      "source_store": "JANUARY_POINTER",
+      "consumers": ["historical readers"],
+      "drift_risk": "STALE_POINTER"
+    },
+    {
+      "path": "q3.lean.aristotle/FORMALIZATION_STATUS_1.md",
+      "role": "HISTORICAL",
+      "selector_effect": "NONE",
+      "source_store": "LEGACY_FORMALIZATION_SNAPSHOT",
+      "consumers": ["historical readers"],
+      "drift_risk": "STALE_STATUS"
+    },
+    {
+      "path": "q3.lean.aristotle/FULL_AXIOM_STATUS.md",
+      "role": "HISTORICAL",
+      "selector_effect": "NONE",
+      "source_store": "LEGACY_AXIOM_SNAPSHOT",
+      "consumers": ["historical readers"],
+      "drift_risk": "STALE_AXIOM_COUNT"
+    },
+    {
+      "path": "q3.lean.aristotle/LEAN_VERIFICATION_STATUS.md",
+      "role": "HISTORICAL",
+      "selector_effect": "NONE",
+      "source_store": "LEGACY_VERIFICATION_SNAPSHOT",
+      "consumers": ["historical readers"],
+      "drift_risk": "STALE_STATUS"
+    },
+    {
+      "path": "q3.lean.aristotle/PROJECT_STATUS.md",
+      "role": "HISTORICAL",
+      "selector_effect": "NONE",
+      "source_store": "LEGACY_PROJECT_SNAPSHOT",
+      "consumers": ["historical readers"],
+      "drift_risk": "STALE_STATUS"
+    },
+    {
+      "path": "q3.lean.aristotle/PROJECT_STATUS_dradt.md",
+      "role": "HISTORICAL",
+      "selector_effect": "NONE",
+      "source_store": "LEGACY_DRAFT_SNAPSHOT",
+      "consumers": ["historical readers"],
+      "drift_risk": "STALE_STATUS"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/chain_status.md",
+      "role": "HISTORICAL",
+      "selector_effect": "NONE",
+      "source_store": "LEGACY_ACTIVE_CHAIN_SNAPSHOT",
+      "consumers": ["historical readers"],
+      "drift_risk": "STALE_CHAIN_STATUS"
+    },
+    {
+      "path": "q3.lean.aristotle/KB/SESSION_STATE.md",
+      "role": "HISTORICAL",
+      "selector_effect": "NONE",
+      "source_store": "FEBRUARY_SESSION_SNAPSHOT",
+      "consumers": ["historical readers"],
+      "drift_risk": "STALE_NEXT_STEP"
+    },
+    {
+      "path": "Q3_OBSTRUCTION_ATLAS.md",
+      "role": "HISTORICAL",
+      "selector_effect": "NONE",
+      "source_store": "FROZEN_OBSTRUCTION_ATLAS",
+      "consumers": ["historical readers"],
+      "drift_risk": "FROZEN_CURRENT_FRONTIER_LABEL"
+    },
+    {
+      "path": "TASK.md",
+      "role": "HISTORICAL",
+      "selector_effect": "NONE",
+      "source_store": "JANUARY_COMPLETED_TASK",
+      "consumers": ["historical readers"],
+      "drift_risk": "NO_MACHINE_HISTORY_MARKER"
+    },
+    {
+      "path": "louise-current-snapshot.md",
+      "role": "HISTORICAL",
+      "selector_effect": "NONE",
+      "source_store": "ROOT_BROWSER_SNAPSHOT",
+      "consumers": ["P8 root-artifact classification"],
+      "drift_risk": "BROWSER_DUMP_NOT_PROJECT_SELECTOR"
+    }
+  ],
+  "coverage_rules": [
+    {"path_prefix": "docs/routeB_bus/", "role": "HISTORICAL", "exception_glob": "docs/routeB_bus/[0-9][0-9][0-9]_*.goal.md", "exception_paths": ["docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md"], "note": "Immutable bus receipts are history; goal files are content-aware seeds and executable OPEN goals require an exact component-state row."},
+    {"path_prefix": "q3.lean.aristotle/ACTIVE/requests/", "role": "HISTORICAL", "exception_paths": ["q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_STATE.json", "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_STATE.md"], "note": "Request packets and old state snapshots do not select project work."},
+    {"path_prefix": "orchestrator/state/queue/", "role": "HISTORICAL", "note": "Legacy queue history."},
+    {"path_prefix": "orchestrator/state/inbox/", "role": "HISTORICAL", "note": "Ingest receipts, not selectors."},
+    {"path_prefix": "q3.lean.aristotle/ACTIVE/graphs/", "role": "GENERATED_VIEW", "note": "Sensor outputs never select work."},
+    {"path_prefix": "q3.lean.aristotle/ACTIVE/pipeline/", "role": "HISTORICAL", "note": "Pipeline registries and reports are component evidence, not project selectors."},
+    {"path_prefix": "q3.lean.aristotle/ACTIVE/aristotle/", "role": "HISTORICAL", "note": "Aristotle queues and receipts do not select project work."},
+    {"path_prefix": "q3.lean.aristotle/ACTIVE/refs/", "role": "HISTORICAL", "note": "Reference snapshots do not select work."},
+    {"path_prefix": "docs/Aristotle_models_training/", "role": "HISTORICAL", "note": "Training-analysis graphs are historical evidence."},
+    {"path_prefix": "docs/GLOWER_ODD_FLOOR_10_08_2026/", "role": "HISTORICAL", "note": "Packet archive is not a selector."},
+    {"path_prefix": "full/archive_latex_2026_01_29/", "role": "HISTORICAL", "note": "Archived manuscript state."},
+    {"path_prefix": "paper/output/", "role": "GENERATED_VIEW", "note": "Paper build outputs are generated views."},
+    {"path_prefix": "q3.lean.aristotle/docs/insights/", "role": "HISTORICAL", "note": "Dated insight audits are evidence, not selectors."},
+    {"path_prefix": "research_swarm/workers/", "role": "HISTORICAL", "note": "Worker test status files are noncanonical experiment receipts."},
+    {"path_prefix": "q3.lean.aristotle/archive/", "role": "HISTORICAL", "note": "Archive never selects work."},
+    {"path_prefix": "archive/", "role": "HISTORICAL", "note": "Archive never selects work."}
+  ],
+  "foreign_worktree_denylist": {
+    "exact_paths": [
+      "docs/routeB_bus/mythos/DRAFT_ARSENAL_CARD_CANDIDATES_BB_GORZ_20260827.md",
+      "docs/routeB_bus/mythos/DRAFT_CODEX_TASK_CONTROL_PLANE_REFRESH_20260827.md",
+      "docs/routeB_bus/mythos/DRAFT_CODEX_TASK_RH_PROVEN_RENAME_20260827.md",
+      "docs/routeB_bus/mythos/DRAFT_EXTERNAL_INTERFACE_FAITHFULNESS_AUDIT_BRIEF_v1_20260827.md",
+      "docs/routeB_bus/mythos/DRAFT_ROUTE_B_CONTRACT_V2_STATUS_ADDENDUM_v1_20260827.md",
+      "docs/routeB_bus/mythos/MYTHOS_PREDICTION_REGISTER_20260827.md"
+    ],
+    "glob_patterns": ["orchestrator/state/*.db"]
+  }
+}

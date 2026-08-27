@@ -67,24 +67,21 @@ Compat: `full/q3.lean.aristotle` is a symlink to `q3.lean.aristotle` for legacy 
 
 ## RH Proof Status (audited 2026-08-27)
 
-- **Unconditional RH proof:** No.
-- **Compiled broad-cone RH export:** Conditional legacy surface. Its current
-  Lean axiom profile includes `Q3.Weil_criterion` and
-  `Q3.prime_term_le_at_t_critical_axiom`.
-- **Corrected square-class interfaces:** Open conditional interfaces. They
-  state their mathematical premises explicitly; no canonical public RH export
-  has been established.
-- **Route B:** Challenger / not RH.
-- **Public-export audit baseline:** `49c3b916cfa24df9ba6b49b9d9952a0cf06d3da9` on
-  branch `rh_clean`.
+<!-- PROJECT_STATE:START -->
+<!-- project_state_sha256: c9b1122a26e227354021da261957566feaafae7ab182c9b81e7e5246c121ba48 -->
+Project-level current status is generated from
+`orchestrator/state/PROJECT_STATE.json`.
+Human views: `docs/generated/PROJECT_STATUS.md` and
+`docs/generated/WORK_QUEUE.md`.
+Current projection: RH proof `NO`; Route B `CHALLENGER / NOT_RH`; goal `058`.
+<!-- PROJECT_STATE:END -->
 
 Historical status documents and compiled compatibility wrappers may describe
 earlier project phases. A successful Lean build verifies derivations from the
 declared premises; it does not establish those project premises independently.
 
-See
-[`docs/semantic_quarantine/PUBLIC_EXPORT_INDEX_AND_AXIOM_RECEIPT_v1.md`](docs/semantic_quarantine/PUBLIC_EXPORT_INDEX_AND_AXIOM_RECEIPT_v1.md)
-for the pinned public-export, test-class, dependency, and axiom inventory.
+The generated project status links the pinned public-export, test-class,
+dependency, and axiom inventory.
 
 ## Dependencies
 

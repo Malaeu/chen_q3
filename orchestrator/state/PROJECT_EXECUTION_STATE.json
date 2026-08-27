@@ -1,0 +1,66 @@
+{
+  "schema": "q3_project_execution_state.v1",
+  "version": 1,
+  "selector": {
+    "action": "SELECT_EXACT_GOAL",
+    "selected_goal_id": "058",
+    "selected_goal_path": "docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md",
+    "phase_key_sha256": "1c0914e2e93a49defedf2c8a8497fbdc22de993b7404e0426e4b2d6c131f9aae",
+    "selector_program": "orchestrator/goal_runtime.py"
+  },
+  "authority_domains": [
+    {
+      "domain": "PROJECT_GOAL_SELECTION",
+      "authority_order": ["PHYSICAL_BUS", "GOAL_RUNTIME", "PROJECT_EXECUTION_STATE"],
+      "component_ids": ["PHYSICAL_BUS_GOAL"],
+      "aggregate_role": "PROJECT_STATE_AGGREGATES_BUT_DOES_NOT_REPLACE_DOMAIN_AUTHORITY"
+    },
+    {
+      "domain": "CODEX_TASK_SELECTION",
+      "authority_order": ["CODEX_CURRENT"],
+      "component_ids": ["CODEX_CURRENT"],
+      "aggregate_role": "PROJECT_STATE_AGGREGATES_BUT_DOES_NOT_REPLACE_DOMAIN_AUTHORITY"
+    }
+  ],
+  "component_states": [
+    {
+      "id": "PHYSICAL_BUS_GOAL",
+      "role": "SELECTOR_INPUT"
+    },
+    {
+      "id": "SESSION_ENTRY_ROUTER",
+      "path": "SESSION_ENTRY.md",
+      "role": "SCOPED_SELECTOR_ALIAS"
+    },
+    {
+      "id": "SESSION_ENTRY_ROUTER_CANONICAL",
+      "path": "q3.lean.aristotle/ACTIVE/SESSION_ENTRY.md",
+      "role": "SCOPED_SELECTOR_CANONICAL"
+    },
+    {
+      "id": "CODEX_CURRENT",
+      "path": "docs/Codex/CURRENT.md",
+      "role": "SCOPED_SELECTOR"
+    },
+    {
+      "id": "CHANNEL_RUNTIME",
+      "path": "orchestrator/state/CHANNEL_RUNTIME.json",
+      "role": "RUNTIME_COMPONENT"
+    },
+    {
+      "id": "SEMANTIC_QUARANTINE",
+      "path": "orchestrator/state/SEMANTIC_QUARANTINE.json",
+      "role": "SEMANTIC_COMPONENT"
+    },
+    {
+      "id": "ROUTE_B_EXECUTION_STATE",
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_STATE.json",
+      "role": "RUNTIME_COMPONENT"
+    },
+    {
+      "id": "ROUTE_B_FACT_HISTORY",
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_STATE.md",
+      "role": "FACT_HISTORY"
+    }
+  ]
+}
