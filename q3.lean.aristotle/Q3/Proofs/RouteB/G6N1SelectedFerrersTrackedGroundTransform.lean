@@ -665,4 +665,365 @@ theorem selectedFerrersTrackedGroundTransform_realZeros_and_pointwiseTracking_of
 
 #print axioms selectedFerrersTrackedGroundTransform_realZeros_and_pointwiseTracking_of_sectorFloors
 
+/-! ## Step 6: pointwise floor API (verdict of 2026-08-27, append-only)
+
+The declarations above take a global floor family.  The source supplier gives
+only an eventual floor, so the executable boundary needs constructions that
+consume the floor at the current cell alone.  Nothing above is modified. -/
+
+/-- Tracked ground eigenvalue from the floor at this cell only. -/
+def selectedFerrersTrackedGroundEigenvalueAt
+    (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData)
+    (k : ℕ) (beta : ℝ)
+    (hfloorAt :
+      complexTrialComplementFloor
+        (sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k))
+        (selectedFerrersFiniteCCMRow P k)
+        ((selectedFerrersFiniteCCMRayleigh P k : ℝ) : ℂ) beta) : ℝ :=
+  Classical.choose (gtt_ground_extraction P k beta hfloorAt)
+
+/-- Tracked ground vector from the floor at this cell only. -/
+def selectedFerrersTrackedGroundVectorAt
+    (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData)
+    (k : ℕ) (beta : ℝ)
+    (hfloorAt :
+      complexTrialComplementFloor
+        (sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k))
+        (selectedFerrersFiniteCCMRow P k)
+        ((selectedFerrersFiniteCCMRayleigh P k : ℝ) : ℂ) beta) :
+    CCMModeFinite ((selectedFerrersCofinalSourceData P).index k).N → ℂ :=
+  Classical.choose
+    (Classical.choose_spec (gtt_ground_extraction P k beta hfloorAt))
+
+/-- Both fields of the pointwise choice. -/
+theorem selectedFerrersTrackedGroundVectorAt_spec
+    (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData)
+    (k : ℕ) (beta : ℝ)
+    (hfloorAt :
+      complexTrialComplementFloor
+        (sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k))
+        (selectedFerrersFiniteCCMRow P k)
+        ((selectedFerrersFiniteCCMRayleigh P k : ℝ) : ℂ) beta) :
+    complexHermitianGroundGapAtLeast
+        (sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k))
+        (selectedFerrersTrackedGroundEigenvalueAt P k beta hfloorAt) beta
+        (selectedFerrersTrackedGroundVectorAt P k beta hfloorAt) ∧
+      1 - Complex.normSq
+          (star (selectedFerrersTrackedGroundVectorAt P k beta hfloorAt) ⬝ᵥ
+            selectedFerrersFiniteCCMRow P k) ≤
+        (star (selectedFerrersFiniteCCMResidual P k) ⬝ᵥ
+          selectedFerrersFiniteCCMResidual P k).re / beta ^ 2 :=
+  Classical.choose_spec
+    (Classical.choose_spec (gtt_ground_extraction P k beta hfloorAt))
+
+/-- Pointwise projective overlap. -/
+def selectedFerrersTrackedGroundOverlapAt
+    (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData)
+    (k : ℕ) (beta : ℝ)
+    (hfloorAt :
+      complexTrialComplementFloor
+        (sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k))
+        (selectedFerrersFiniteCCMRow P k)
+        ((selectedFerrersFiniteCCMRayleigh P k : ℝ) : ℂ) beta) : ℂ :=
+  star (selectedFerrersTrackedGroundVectorAt P k beta hfloorAt) ⬝ᵥ
+    selectedFerrersFiniteCCMRow P k
+
+/-- Pointwise tracked scale. -/
+def selectedFerrersTrackedGroundScaleAt
+    (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData)
+    (k : ℕ) (beta : ℝ)
+    (hfloorAt :
+      complexTrialComplementFloor
+        (sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k))
+        (selectedFerrersFiniteCCMRow P k)
+        ((selectedFerrersFiniteCCMRayleigh P k : ℝ) : ℂ) beta) : ℂ :=
+  centeredXi 0 / (selectedFerrersCofinalSourceData P).rawFplus k 0 *
+    selectedFerrersTrackedGroundOverlapAt P k beta hfloorAt
+
+/-- **The pointwise tracked ground transform.**  Its construction consumes the
+floor at this cell only. -/
+def selectedFerrersTrackedGroundTransformAt
+    (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData)
+    (k : ℕ) (beta : ℝ)
+    (hfloorAt :
+      complexTrialComplementFloor
+        (sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k))
+        (selectedFerrersFiniteCCMRow P k)
+        ((selectedFerrersFiniteCCMRayleigh P k : ℝ) : ℂ) beta)
+    (z : ℂ) : ℂ :=
+  selectedFerrersTrackedGroundScaleAt P k beta hfloorAt *
+    sourceOrderedCCMRawTransform
+      (logLength ((selectedFerrersCofinalSourceData P).index k))
+      ((selectedFerrersCofinalSourceData P).index k).N
+      (selectedFerrersTrackedGroundVectorAt P k beta hfloorAt) z
+
+theorem selectedFerrersTrackedGroundTransformAt_realZeros_and_pointwiseTracking_of_sectorFloors
+    (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData)
+    (k : ℕ) (beta0 beta : ℝ)
+    (hbeta0 : 0 < beta0) (hbeta : 0 < beta)
+    (hm : 2 ≤ ((selectedFerrersCofinalSourceData P).index k).m)
+    (hN : 1 ≤ ((selectedFerrersCofinalSourceData P).index k).N)
+    (hoddFloor :
+      ∀ x : CCMModeFinite ((selectedFerrersCofinalSourceData P).index k).N → ℂ,
+        ccmComplexReflectionMatrix ((selectedFerrersCofinalSourceData P).index k).N *ᵥ x = -x →
+        beta0 * (star x ⬝ᵥ x).re ≤
+          (star x ⬝ᵥ
+            ((sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k) -
+              ((selectedFerrersFiniteCCMRayleigh P k : ℝ) : ℂ) •
+                (1 : Matrix (CCMModeFinite ((selectedFerrersCofinalSourceData P).index k).N)
+                  (CCMModeFinite ((selectedFerrersCofinalSourceData P).index k).N) ℂ)) *ᵥ x)).re)
+    (hfloorAt :
+      complexTrialComplementFloor
+        (sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k))
+        (selectedFerrersFiniteCCMRow P k)
+        ((selectedFerrersFiniteCCMRayleigh P k : ℝ) : ℂ) beta)
+    (hratio : selectedFerrersTrackedGroundResidualFloorRatio P beta k < 1) :
+    ZerosRealOn Set.univ
+      (selectedFerrersTrackedGroundTransformAt P k beta hfloorAt) ∧
+    ∀ z : ℂ,
+      ‖selectedFerrersTrackedGroundTransformAt P k beta hfloorAt z -
+          (selectedFerrersCofinalSourceData P).centeredPstar k z‖ ≤
+        ‖centeredXi 0 / (selectedFerrersCofinalSourceData P).rawFplus k 0‖ *
+          sourceOrderedCCMKernelL2
+            (logLength ((selectedFerrersCofinalSourceData P).index k))
+            ((selectedFerrersCofinalSourceData P).index k).N z *
+          Real.sqrt
+            (selectedFerrersTrackedGroundResidualFloorRatio P beta k) := by
+  classical
+  obtain ⟨htgap, htdefect⟩ :=
+    selectedFerrersTrackedGroundVectorAt_spec P k beta hfloorAt
+  have hxunit := htgap.1
+  have hxeig := htgap.2.1
+  have hxbottom := htgap.2.2.1
+  -- overlap nonvanishing from the strict ratio
+  have hov_ne :
+      selectedFerrersTrackedGroundOverlapAt P k beta hfloorAt ≠ 0 := by
+    intro hzero
+    rw [selectedFerrersTrackedGroundOverlapAt] at hzero
+    rw [hzero] at htdefect
+    simp only [map_zero, sub_zero] at htdefect
+    rw [selectedFerrersTrackedGroundResidualFloorRatio] at hratio
+    linarith
+  -- the ratified real ground representative with real P59 zeros
+  obtain ⟨eps2, xiC2, xiR, c2, hc2, hcast2, heig2, heven2, hnorm2, hbot2,
+      hsimple2, hzeros⟩ :=
+    selectedFerrersGround_exists_proposition59_zerosRealOn_of_sectorFloors
+      P k beta0 beta hbeta0 hbeta hm hN hoddFloor hfloorAt
+  have hxiRc := gtt_complexify_eigen ((selectedFerrersCofinalSourceData P).index k).m ((selectedFerrersCofinalSourceData P).index k).N eps2 xiR heig2
+  have hxiR_ne : (fun j => ((xiR j : ℝ) : ℂ)) ≠ 0 := by
+    intro hzero
+    have hall : ∀ j, xiR j = 0 := by
+      intro j
+      have h := congrFun hzero j
+      simp only [Pi.zero_apply] at h
+      exact_mod_cast h
+    have hsum : ccmEtaFinite ((selectedFerrersCofinalSourceData P).index k).N ⬝ᵥ xiR = 0 := by
+      rw [dotProduct]
+      exact Finset.sum_eq_zero fun j _ => by rw [hall j, mul_zero]
+    rw [hnorm2] at hsum
+    norm_num at hsum
+  -- the two independent choices share the eigenvalue
+  have heps : selectedFerrersTrackedGroundEigenvalueAt P k beta hfloorAt = eps2 := by
+    obtain ⟨hq1, hq2⟩ := gtt_real_quadratic ((selectedFerrersCofinalSourceData P).index k).m ((selectedFerrersCofinalSourceData P).index k).N xiR
+    have hnormpos : 0 < xiR ⬝ᵥ xiR := by
+      by_contra hcon
+      push_neg at hcon
+      have hnn : (0:ℝ) ≤ xiR ⬝ᵥ xiR := by
+        rw [dotProduct]
+        exact Finset.sum_nonneg fun j _ => mul_self_nonneg _
+      have hzero : xiR ⬝ᵥ xiR = 0 := le_antisymm hcon hnn
+      have hall : ∀ j, xiR j = 0 := by
+        intro j
+        have := (Finset.sum_eq_zero_iff_of_nonneg
+          (fun i _ => mul_self_nonneg (xiR i))).mp (by rw [dotProduct] at hzero; exact hzero)
+          j (Finset.mem_univ j)
+        exact mul_self_eq_zero.mp this
+      exact hxiR_ne (funext fun j => by rw [hall j]; norm_num)
+    -- direction one: the tracked bottom tested on the real vector
+    have hdir1 : selectedFerrersTrackedGroundEigenvalueAt P k beta hfloorAt ≤ eps2 := by
+      have hb := hxbottom (fun j => ((xiR j : ℝ) : ℂ))
+      have henergy :
+          (star (fun j => ((xiR j : ℝ) : ℂ)) ⬝ᵥ
+            (sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k) *ᵥ
+              (fun j => ((xiR j : ℝ) : ℂ)))).re = eps2 * (xiR ⬝ᵥ xiR) := by
+        rw [show sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k) *ᵥ
+              (fun j => ((xiR j : ℝ) : ℂ)) =
+            (eps2 : ℂ) • (fun j => ((xiR j : ℝ) : ℂ)) from hxiRc]
+        rw [dotProduct_smul, smul_eq_mul, Complex.mul_re, Complex.ofReal_re,
+          Complex.ofReal_im, hq1]
+        ring
+      rw [hq1, henergy] at hb
+      exact le_of_mul_le_mul_right (by linarith) hnormpos
+    -- direction two: the real bottom tested on a nonzero part of the tracked vector
+    have hxeigCast :
+        (fun j l => ((ccmWeilMatFinite ((selectedFerrersCofinalSourceData P).index k).m ((selectedFerrersCofinalSourceData P).index k).N j l : ℝ) : ℂ)) *ᵥ
+          selectedFerrersTrackedGroundVectorAt P k beta hfloorAt =
+        ((selectedFerrersTrackedGroundEigenvalueAt P k beta hfloorAt : ℝ) : ℂ) •
+          selectedFerrersTrackedGroundVectorAt P k beta hfloorAt := hxeig
+    obtain ⟨hRe, hIm⟩ := gtt_re_im_eigen ((selectedFerrersCofinalSourceData P).index k).m ((selectedFerrersCofinalSourceData P).index k).N _ hxeigCast
+    have hxi_ne : selectedFerrersTrackedGroundVectorAt P k beta hfloorAt ≠ 0 := by
+      intro hzero
+      rw [hzero] at hxunit
+      simp at hxunit
+    have hpart : ∃ v : CCMModeFinite ((selectedFerrersCofinalSourceData P).index k).N → ℝ, v ≠ 0 ∧
+        Matrix.mulVec (ccmWeilMatFinite ((selectedFerrersCofinalSourceData P).index k).m ((selectedFerrersCofinalSourceData P).index k).N) v =
+          selectedFerrersTrackedGroundEigenvalueAt P k beta hfloorAt • v := by
+      by_cases hre :
+        (fun j => (selectedFerrersTrackedGroundVectorAt P k beta hfloorAt j).re) = 0
+      · refine ⟨fun j =>
+          (selectedFerrersTrackedGroundVectorAt P k beta hfloorAt j).im, ?_, hIm⟩
+        intro him
+        apply hxi_ne
+        funext j
+        have h1 : (selectedFerrersTrackedGroundVectorAt P k beta hfloorAt j).re = 0 :=
+          congrFun hre j
+        have h2 : (selectedFerrersTrackedGroundVectorAt P k beta hfloorAt j).im = 0 :=
+          congrFun him j
+        exact Complex.ext h1 h2
+      · exact ⟨_, hre, hRe⟩
+    obtain ⟨v, hv_ne, hveig⟩ := hpart
+    have hvnorm : 0 < v ⬝ᵥ v := by
+      by_contra hcon
+      push_neg at hcon
+      have hnn : (0:ℝ) ≤ v ⬝ᵥ v := by
+        rw [dotProduct]
+        exact Finset.sum_nonneg fun j _ => mul_self_nonneg _
+      have hzero : v ⬝ᵥ v = 0 := le_antisymm hcon hnn
+      apply hv_ne
+      funext j
+      have := (Finset.sum_eq_zero_iff_of_nonneg
+        (fun i _ => mul_self_nonneg (v i))).mp (by rw [dotProduct] at hzero; exact hzero)
+        j (Finset.mem_univ j)
+      exact mul_self_eq_zero.mp this
+    have hb2 := hbot2 v
+    have henergy2 : v ⬝ᵥ Matrix.mulVec
+        (ccmWeilMatFinite ((selectedFerrersCofinalSourceData P).index k).m ((selectedFerrersCofinalSourceData P).index k).N) v =
+        selectedFerrersTrackedGroundEigenvalueAt P k beta hfloorAt * (v ⬝ᵥ v) := by
+      rw [hveig, dotProduct_smul, smul_eq_mul]
+    rw [henergy2] at hb2
+    have hdir2 : eps2 ≤ selectedFerrersTrackedGroundEigenvalueAt P k beta hfloorAt :=
+      le_of_mul_le_mul_right (by linarith) hvnorm
+    linarith
+  -- the real representative lies on the tracked ground line
+  have hline := gtt_ground_line hbeta htgap
+    (by rw [heps]; exact hxiRc :
+      sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k) *ᵥ (fun j => ((xiR j : ℝ) : ℂ)) =
+        ((selectedFerrersTrackedGroundEigenvalueAt P k beta hfloorAt : ℝ) : ℂ) •
+          (fun j => ((xiR j : ℝ) : ℂ)))
+  set alpha : ℂ := star (selectedFerrersTrackedGroundVectorAt P k beta hfloorAt) ⬝ᵥ
+    (fun j => ((xiR j : ℝ) : ℂ)) with halpha
+  have halpha_ne : alpha ≠ 0 := by
+    intro hzero
+    apply hxiR_ne
+    rw [hline, hzero, zero_smul]
+  -- the tracked transform is a nonzero multiple of the real P59 transform
+  have hrow_smul : ∀ z : ℂ,
+      sourceOrderedCCMRawTransform (logLength ((selectedFerrersCofinalSourceData P).index k)) ((selectedFerrersCofinalSourceData P).index k).N
+          (fun j => ((xiR j : ℝ) : ℂ)) z =
+        alpha * sourceOrderedCCMRawTransform (logLength ((selectedFerrersCofinalSourceData P).index k)) ((selectedFerrersCofinalSourceData P).index k).N
+          (selectedFerrersTrackedGroundVectorAt P k beta hfloorAt) z := by
+    intro z
+    have hj : ∀ j, ((xiR j : ℝ) : ℂ) =
+        alpha * selectedFerrersTrackedGroundVectorAt P k beta hfloorAt j := by
+      intro j
+      have h := congrFun hline j
+      simpa [Pi.smul_apply, smul_eq_mul] using h
+    have hsum :
+        (∑ j, ((xiR j : ℝ) : ℂ) *
+            proposition59PoleKernel (logLength ((selectedFerrersCofinalSourceData P).index k))
+              (ccmModeFinite ((selectedFerrersCofinalSourceData P).index k).N j) (-z)) =
+          alpha * ∑ j, selectedFerrersTrackedGroundVectorAt P k beta hfloorAt j *
+            proposition59PoleKernel (logLength ((selectedFerrersCofinalSourceData P).index k))
+              (ccmModeFinite ((selectedFerrersCofinalSourceData P).index k).N j) (-z) := by
+      rw [Finset.mul_sum]
+      apply Finset.sum_congr rfl
+      intro j _
+      rw [hj j]
+      ring
+    rw [sourceOrderedCCMRawTransform_eq_mode_sum,
+      sourceOrderedCCMRawTransform_eq_mode_sum, hsum]
+    ring
+  have htracked_eq : ∀ z : ℂ,
+      selectedFerrersTrackedGroundTransformAt P k beta hfloorAt z =
+        ((centeredXi 0 /
+            (selectedFerrersCofinalSourceData P).rawFplus k 0 *
+          selectedFerrersTrackedGroundOverlapAt P k beta hfloorAt) * alpha⁻¹) *
+          proposition59CCMTransform (ccmL ((selectedFerrersCofinalSourceData P).index k).m) ((selectedFerrersCofinalSourceData P).index k).N xiR (-z) := by
+    intro z
+    rw [selectedFerrersTrackedGroundTransformAt, selectedFerrersTrackedGroundScaleAt]
+    have hinv : sourceOrderedCCMRawTransform (logLength ((selectedFerrersCofinalSourceData P).index k)) ((selectedFerrersCofinalSourceData P).index k).N
+        (selectedFerrersTrackedGroundVectorAt P k beta hfloorAt) z =
+        alpha⁻¹ * sourceOrderedCCMRawTransform (logLength ((selectedFerrersCofinalSourceData P).index k)) ((selectedFerrersCofinalSourceData P).index k).N
+          (fun j => ((xiR j : ℝ) : ℂ)) z := by
+      rw [hrow_smul z, ← mul_assoc, inv_mul_cancel₀ halpha_ne, one_mul]
+    rw [hinv]
+    have hcross : sourceOrderedCCMRawTransform (logLength ((selectedFerrersCofinalSourceData P).index k))
+        ((selectedFerrersCofinalSourceData P).index k).N (fun j => ((xiR j : ℝ) : ℂ)) z =
+        proposition59CCMTransform (ccmL ((selectedFerrersCofinalSourceData P).index k).m) ((selectedFerrersCofinalSourceData P).index k).N xiR (-z) :=
+      gtt_transform_crosswalk (logLength ((selectedFerrersCofinalSourceData P).index k)) ((selectedFerrersCofinalSourceData P).index k).N xiR heven2 z
+    rw [hcross]
+    ring
+  have hscale_ne :
+      (centeredXi 0 / (selectedFerrersCofinalSourceData P).rawFplus k 0 *
+        selectedFerrersTrackedGroundOverlapAt P k beta hfloorAt) * alpha⁻¹ ≠ 0 := by
+    apply mul_ne_zero
+    · apply mul_ne_zero
+      · exact div_ne_zero centeredXi_zero_ne_zero
+          ((selectedFerrersCofinalSourceData P).rawZeroNonzero k)
+      · exact hov_ne
+    · exact inv_ne_zero halpha_ne
+  constructor
+  · -- reality of the zero set
+    refine Q3.RouteB.zerosRealOn_of_eq_smul hscale_ne (fun z _ => htracked_eq z) ?_
+    exact gtt_zerosRealOn_neg hzeros
+  · -- the pointwise projective estimate
+    intro z
+    have hproj := sourceOrderedCCMRawTransform_sub_projection_le
+      (logLength ((selectedFerrersCofinalSourceData P).index k)) ((selectedFerrersCofinalSourceData P).index k).N
+      (selectedFerrersTrackedGroundVectorAt P k beta hfloorAt)
+      (selectedFerrersFiniteCCMRow P k)
+      hxunit (selectedFerrersFiniteCCMRow_unit P k) z
+    have hsqrt_le :
+        Real.sqrt (1 - Complex.normSq
+            (selectedFerrersTrackedGroundOverlapAt P k beta hfloorAt)) ≤
+          Real.sqrt (selectedFerrersTrackedGroundResidualFloorRatio P beta k) := by
+      apply Real.sqrt_le_sqrt
+      simpa [selectedFerrersTrackedGroundOverlapAt,
+        selectedFerrersTrackedGroundResidualFloorRatio] using htdefect
+    have hcenter :
+        (selectedFerrersCofinalSourceData P).centeredPstar k z =
+          centeredXi 0 / (selectedFerrersCofinalSourceData P).rawFplus k 0 *
+            sourceOrderedCCMRawTransform (logLength ((selectedFerrersCofinalSourceData P).index k)) ((selectedFerrersCofinalSourceData P).index k).N
+              (selectedFerrersFiniteCCMRow P k) z := by
+      rw [SelectedProlateCofinalSourceData.centeredPstar,
+        sourceOrderedCCMRawTransform_selectedFerrersFiniteCCMRow_eq_rawFplus]
+    rw [selectedFerrersTrackedGroundTransformAt, selectedFerrersTrackedGroundScaleAt,
+      hcenter, mul_assoc, ← mul_sub, norm_mul, norm_sub_rev]
+    calc ‖centeredXi 0 / (selectedFerrersCofinalSourceData P).rawFplus k 0‖ *
+        ‖sourceOrderedCCMRawTransform (logLength ((selectedFerrersCofinalSourceData P).index k)) ((selectedFerrersCofinalSourceData P).index k).N
+            (selectedFerrersFiniteCCMRow P k) z -
+          selectedFerrersTrackedGroundOverlapAt P k beta hfloorAt *
+            sourceOrderedCCMRawTransform (logLength ((selectedFerrersCofinalSourceData P).index k)) ((selectedFerrersCofinalSourceData P).index k).N
+              (selectedFerrersTrackedGroundVectorAt P k beta hfloorAt) z‖ ≤
+        ‖centeredXi 0 / (selectedFerrersCofinalSourceData P).rawFplus k 0‖ *
+          (sourceOrderedCCMKernelL2 (logLength ((selectedFerrersCofinalSourceData P).index k)) ((selectedFerrersCofinalSourceData P).index k).N z *
+            Real.sqrt (1 - Complex.normSq
+              (selectedFerrersTrackedGroundOverlapAt P k beta hfloorAt))) := by
+          apply mul_le_mul_of_nonneg_left _ (norm_nonneg _)
+          simpa [selectedFerrersTrackedGroundOverlapAt] using hproj
+      _ ≤ ‖centeredXi 0 / (selectedFerrersCofinalSourceData P).rawFplus k 0‖ *
+          (sourceOrderedCCMKernelL2 (logLength ((selectedFerrersCofinalSourceData P).index k)) ((selectedFerrersCofinalSourceData P).index k).N z *
+            Real.sqrt
+              (selectedFerrersTrackedGroundResidualFloorRatio P beta k)) := by
+          apply mul_le_mul_of_nonneg_left _ (norm_nonneg _)
+          apply mul_le_mul_of_nonneg_left hsqrt_le
+          exact sourceOrderedCCMKernelL2_nonneg _ _ _
+      _ = ‖centeredXi 0 / (selectedFerrersCofinalSourceData P).rawFplus k 0‖ *
+          sourceOrderedCCMKernelL2 (logLength ((selectedFerrersCofinalSourceData P).index k)) ((selectedFerrersCofinalSourceData P).index k).N z *
+          Real.sqrt
+            (selectedFerrersTrackedGroundResidualFloorRatio P beta k) := by
+          ring
+
+#print axioms selectedFerrersTrackedGroundTransformAt_realZeros_and_pointwiseTracking_of_sectorFloors
+
 end Q3.RouteB.D0Pstar
