@@ -1,0 +1,139 @@
+{
+  "schema": "q3_import_firewall_receipt.v1",
+  "version": 1,
+  "inputs": {
+    "policy": {
+      "path": "docs/semantic_quarantine/IMPORT_FIREWALL_POLICY_v1.json",
+      "sha256": "9aae6afe0068dacca6a8cb20b99fbcbd5f3887fac8a19bebed0361314ce5dc73"
+    },
+    "registry": {
+      "path": "docs/semantic_quarantine/MODULE_CLASS_REGISTRY_v1.json",
+      "sha256": "0ad8a71ec42d123ec8956740b73816d29ccd1662338ea31ec51d8db24c7f0caf"
+    },
+    "registry_schema": {
+      "path": "docs/semantic_quarantine/MODULE_CLASS_SCHEMA_v1.json",
+      "sha256": "555c47cbb826cd343e0df81f5e59638610b707f3c04283fb7e1a795fa8083920"
+    },
+    "checker": {
+      "path": "orchestrator/import_firewall.py",
+      "sha256": "d8f69b700f24b8aba75d1557c080f1e71e787f8ba85ea4d22d53286838689b17"
+    },
+    "lean_toolchain": {
+      "path": "q3.lean.aristotle/lean-toolchain",
+      "sha256": "e8173aad377a6d70041e5f7a5d8895ed587628f5cab243c53a18c40a1b7b6bf8"
+    },
+    "launcher": {
+      "path": "scripts/check_import_firewall.sh",
+      "sha256": "96d3cf1dfd2f7e40316058639afdf3229504fea98fc3118efbfff88a92d6de58"
+    },
+    "python_project": {
+      "path": "pyproject.toml",
+      "sha256": "2098a91694be2e47d3516646d85f74525e2a57e28affc73e51a1cc876451ecd1"
+    },
+    "python_lock": {
+      "path": "uv.lock",
+      "sha256": "cf9446bc83a0c76dd971540076a47276b50f3ee33981f0c1c8303b2d9c78e623"
+    },
+    "lakefile": {
+      "path": "q3.lean.aristotle/lakefile.toml",
+      "sha256": "0d845f63a6c4c4034e0fc1bc53a16015892da8430a8810cb3ae0daf60f2d5c57"
+    },
+    "lake_manifest": {
+      "path": "q3.lean.aristotle/lake-manifest.json",
+      "sha256": "f59bc3a30bdefd46a07325a01743cb6f48b9f725f45e292b70d21ca4fc86226a"
+    }
+  },
+  "graph": {
+    "public_roots": [
+      "Q3.Basic.WeilDirectRoute",
+      "Q3.Basic.WeilSquareClass"
+    ],
+    "reachable_modules": [
+      {
+        "module": "Q3.Basic.Defs",
+        "path": "q3.lean.aristotle/Q3/Basic/Defs.lean",
+        "module_class": "CORE_SHARED"
+      },
+      {
+        "module": "Q3.Basic.WeilDirectRoute",
+        "path": "q3.lean.aristotle/Q3/Basic/WeilDirectRoute.lean",
+        "module_class": "PUBLIC_CANONICAL"
+      },
+      {
+        "module": "Q3.Basic.WeilSquareClass",
+        "path": "q3.lean.aristotle/Q3/Basic/WeilSquareClass.lean",
+        "module_class": "PUBLIC_CANONICAL"
+      }
+    ],
+    "local_edges": [
+      {
+        "source": "Q3.Basic.WeilDirectRoute",
+        "source_class": "PUBLIC_CANONICAL",
+        "target": "Q3.Basic.WeilSquareClass",
+        "target_class": "PUBLIC_CANONICAL"
+      },
+      {
+        "source": "Q3.Basic.WeilSquareClass",
+        "source_class": "PUBLIC_CANONICAL",
+        "target": "Q3.Basic.Defs",
+        "target_class": "CORE_SHARED"
+      }
+    ],
+    "external_imports": [
+      {
+        "source": "Q3.Basic.Defs",
+        "target": "Mathlib"
+      }
+    ]
+  },
+  "graph_sha256": "6032f91a29ea339592e5708473e8ae030bc42983fe2b8af03cd0d112fe6dd867",
+  "public_root_fresh_build": {
+    "roots": [
+      "Q3.Basic.WeilDirectRoute",
+      "Q3.Basic.WeilSquareClass"
+    ],
+    "status": "PASS"
+  },
+  "semantic_declaration_audit": {
+    "engine": "LEAN_ENVIRONMENT_TRANSITIVE_CONSTANT_REFERENCES",
+    "public_declarations": 125,
+    "checked_declarations": 136,
+    "mixed_modules": [
+      "Q3.Basic.Defs"
+    ],
+    "forbidden_declarations": [
+      "Q3.W_K",
+      "Q3.W_K_subset_Weil_cone_K",
+      "Q3.Weil_cone",
+      "Q3.Weil_cone_K"
+    ],
+    "status": "PASS"
+  },
+  "plants": [
+    {
+      "plant": "PUBLIC_IMPORTS_LEGACY_MODULE",
+      "status": "REJECTED"
+    },
+    {
+      "plant": "PUBLIC_DECLARATION_USES_LEGACY_OVERRIDE",
+      "status": "REJECTED"
+    },
+    {
+      "plant": "PUBLIC_TRANSITIVE_DECLARATION_USES_LEGACY_OVERRIDE",
+      "status": "REJECTED"
+    },
+    {
+      "plant": "PUBLIC_TYPE_USES_LEGACY_OVERRIDE",
+      "status": "REJECTED"
+    },
+    {
+      "plant": "UNPARSED_IMPORT_FAIL_CLOSED",
+      "status": "REJECTED"
+    }
+  ],
+  "positive_controls": {
+    "current_public_canonical_slice": "PASS",
+    "legacy_compatibility_class_remains_separate": "PASS"
+  },
+  "status": "PASS"
+}

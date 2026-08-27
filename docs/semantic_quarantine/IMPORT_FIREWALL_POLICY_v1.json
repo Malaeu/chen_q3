@@ -1,0 +1,47 @@
+{
+  "schema": "q3_import_firewall_policy.v1",
+  "version": 1,
+  "registry_path": "docs/semantic_quarantine/MODULE_CLASS_REGISTRY_v1.json",
+  "registry_schema_path": "docs/semantic_quarantine/MODULE_CLASS_SCHEMA_v1.json",
+  "source_root": "q3.lean.aristotle",
+  "public_root_class": "PUBLIC_CANONICAL",
+  "external_import_policy": "ALLOW_UNCLASSIFIED_NONLOCAL",
+  "local_reachability_policy": "REQUIRE_CLASSIFICATION",
+  "allowed_class_edges": {
+    "PUBLIC_CANONICAL": ["CORE_SHARED", "PUBLIC_CANONICAL"],
+    "CORE_SHARED": ["CORE_SHARED"]
+  },
+  "forbidden_public_target_classes": [
+    "ARCHIVE",
+    "CHALLENGER",
+    "CONDITIONAL_COMPILED",
+    "EXPERIMENT",
+    "GENERATED_VIEW",
+    "LEGACY"
+  ],
+  "semantic_declaration_audit": {
+    "enabled": true,
+    "engine": "LEAN_ENVIRONMENT_TRANSITIVE_CONSTANT_REFERENCES",
+    "inspect": ["TYPE", "VALUE"],
+    "forbidden_override_classes": [
+      "ARCHIVE",
+      "CHALLENGER",
+      "CONDITIONAL_COMPILED",
+      "EXPERIMENT",
+      "GENERATED_VIEW",
+      "LEGACY"
+    ],
+    "mixed_module_rule": "MODULE_EDGE_ALLOWED_ONLY_IF_FORBIDDEN_DECLARATION_CLOSURE_IS_EMPTY"
+  },
+  "required_plants": [
+    "PUBLIC_IMPORTS_LEGACY_MODULE",
+    "PUBLIC_DECLARATION_USES_LEGACY_OVERRIDE",
+    "PUBLIC_TRANSITIVE_DECLARATION_USES_LEGACY_OVERRIDE",
+    "PUBLIC_TYPE_USES_LEGACY_OVERRIDE",
+    "UNPARSED_IMPORT_FAIL_CLOSED"
+  ],
+  "positive_controls": [
+    "CURRENT_PUBLIC_CANONICAL_SLICE",
+    "LEGACY_COMPATIBILITY_CLASS_REMAINS_SEPARATE"
+  ]
+}

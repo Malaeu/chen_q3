@@ -493,3 +493,11 @@ The documentary exception is not an import or declaration-use firewall.
 Executable enforcement remains a mandatory P6 gate. The authoritative P3
 machine records are `MODULE_CLASS_SCHEMA_v1.json` and
 `MODULE_CLASS_REGISTRY_v1.json` in this directory.
+
+P6 supplies that executable gate through
+`docs/semantic_quarantine/IMPORT_FIREWALL_POLICY_v1.json`, the deterministic
+`IMPORT_FIREWALL_RECEIPT_v1.json`, and `scripts/check_import_firewall.sh`.
+The gate checks the complete tracked `PUBLIC_CANONICAL` root set, rejects
+forbidden transitive local import edges, and audits declaration references in
+the Lean environment so the mixed `Q3.Basic.Defs` module cannot leak its four
+legacy declaration overrides into a public export.
