@@ -95,3 +95,82 @@ ask.sh перед каждым отрицательным утверждение
 16. Closeout c998edbd: Gate A = HOLD финально, транзакции закрыты; дальше
     только новый owner-контракт (двери: R1' graph-test kernel saving 9/8,
     R4 Krylov карантин).
+
+---
+
+# Abendsitzung 27.08.2026 — Volterra-Wende (Linux-Claude)
+
+## Kontext
+
+Nach dem FATAL des Tracking-Korridors lief die Nachtschleife weiter. Der Richter
+gab nacheinander sechs Transaktionen frei; alle wurden ausgeführt. Der Abend
+brachte den größten Schritt der Sitzung und drei eigene Korrekturen.
+
+## Erledigt (chronologisch, alle gepusht)
+
+1. `c1e5f00f` — Cut-tree + Ricci-Vorprüfung. Behauptung `RICCI_DOOB_SIGN_FRUSTRATION_FATAL`.
+2. `6d647f05` — Primpotenz-Annihilator: FAIL, `range(A*) = (ker A)^perp` macht die
+   Bedingung zur Zielaussage selbst; Haar-Lokalisierung blockinvariant.
+3. `a4bcf777` — **Korrektur 5**: der Paritätsbeweis aus (1) ist falsch. Richterplant
+   `beta_n = -n` erfüllt alle Hypothesen und besteht das Gatter. Fehlender Lieferant:
+   `SOURCE_BETA_POSITIVE_AT_A_POSITIVE_MODE`.
+4. `5a02a6fd` — Completed-beta polarisiertes Spektrum, HOLD. Die drei Ledger sind
+   **eine** Maßgröße auf einer Winkelachse; Verbraucher = eine Diagonalsumme plus ein
+   Integral einer Testfunktion.
+5. `2aaff3e7` — **Lean, kernel-green**: `CCMFiniteWeilCenterSpectralNormalForm.lean`,
+   sieben Deklarationen, Axiomtripel sauber, `lake build` = 0. Der
+   Euler-Mascheroni-Kopf verschwindet am Zentrum von selbst; der Faktor `n` kürzt
+   sich in beiden Ledgern.
+6. `535074f7` — Verifikationsbericht auf Anweisung des Eigentümers. Numerik stimmt
+   auf `3.6e-16`. Nebenbefund: `beta_1 > 0` bei allen geprüften `m` — Diagnose, kein
+   Beweis.
+7. `9c1a5a9b` / `0f4eb211` — Groskin arXiv:2607.02828 vollständig gelesen;
+   **Korrektur 6**: die Ein-Maß-Beobachtung ist seine Lemma 2.3, nicht neu. Die
+   Karteikarte lag seit 07.08. in der Bibliothek.
+8. `b9e7c589` — **Der Durchbruch.** Hilbert-Strom und Volterra-Kern sind ein
+   Instrument: `K(omega) = sum_k (alpha_k + beta_k omega) e^{2 pi i k omega}` mit
+   `alpha_k = omega_k(x,q)/(pi i)` und `beta_k = 2 conj(x_k) q_k`. Polarisierung für
+   beliebige komplexe Paare geschlossen. Das Instrument war am 07.08. in
+   `phase0_scripts/arch_block.py` gebaut und gegen Groskins Referenz auf `8.5e-20`
+   geprüft worden — drei Wochen unbemerkt.
+9. `d2c044f7` — Polneutralitäts-Crosswalk, HOLD.
+10. `a3c5cf7a` — **Korrektur 7**: drei Behauptungen aus (9) zurückgezogen.
+11. `f8ac6384` — W02-Zwei-Endpunkt-Vorprüfung, HOLD. Die beiden Endpunkte sind Real-
+    und Imaginärteil **eines** Cauchy-Werts bei `i beta`.
+
+## Geprüft
+
+- Lean-Gatter: sieben Deklarationen, Axiomtripel `[propext, Classical.choice, Quot.sound]`,
+  Lochscan sauber, Modulbau Code 0.
+- Numerisch: Normalform gegen Literaldefinitionen `<= 3.6e-16`; Volterra-Identitäten
+  `<= 2.2e-14`; Nullmasse `1.6e-15`.
+- Literatur: arXiv:2607.02828 vollständig gelesen, Karteikarte konsolidiert.
+
+## Offen — nächste Schritte
+
+- `SELECTED_FERRERS_LITERAL_W02_TWO_ENDPOINT_CONSUMER_CONTROL` (Bericht `f8ac6384`
+  wartet auf Adjudikation).
+- `WEIGHTED_MODE_MOMENT_BOUND_FOR_GRAPH_RESOLVENT_VECTOR`.
+- `COMPLETED_MEASURE_POLARIZED_VOLTERRA_CONSUMER_RATE` — nach eigener Lesart die
+  lebende Linie (`R3` des Richters).
+- Lean-Freigabe für die polarisierte Volterra-Brücke steht aus.
+
+## Wichtige Fakten
+
+- Der Richter hat einen eigenen falschen `PAYOFF_IF_TRUE`-Punkt zurückgezogen und die
+  Relay-Regel verschärft: nicht-evidente Etiketten dürfen ohne eigene Prüfung nie in
+  harte Fakten eingehen. Zweiter Vorfall dieser Art, eskaliert.
+- Vier neue verbotene Züge im Gedächtnis: Vorzeichen folgt nicht aus Symmetrie;
+  Literaturkarte erst nach Registerzeile; `phase0`-Skripte sind Lieferanten und
+  `ask.sh` indiziert kein Python; Symmetrie der erzeugenden Funktion ist nicht
+  Symmetrie der projizierten Zeile.
+- Der ChatGPT-Composer schneidet Eingaben über etwa 1500 Zeichen ab. In Blöcken
+  senden und per Screenshot prüfen.
+
+## Dateien (absolute Pfade)
+
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilCenterSpectralNormalForm.lean`
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/LINUX_VOLTERRA_HILBERT_ARE_ONE_INSTRUMENT_GOAL058_2026-08-27.md`
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/LINUX_W02_TWO_ENDPOINT_FUNCTIONAL_PREFLIGHT_GOAL058_2026-08-27.md`
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/litreview/GROSKIN_TAILORDER_USAGE_CARDS.md` (Abschnitt 6)
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/phase0_scripts/arch_block.py`
