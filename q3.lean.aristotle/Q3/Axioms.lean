@@ -2,15 +2,16 @@
 Q3 Formalization: External Axioms
 =================================
 
-This file contains axioms organized by tier:
-- **Tier-1**: Classical results from peer-reviewed literature (1911-1999)
-- **Tier-2**: Q3 paper contributions (new technical results)
+This file contains a mixed legacy assumption surface organized by tier:
+- **Tier-1**: literature results together with explicitly quarantined legacy
+  assumptions that are not literature-certified facts;
+- **Tier-2**: Q3 paper assumptions for new technical results.
 
 IMPORTANT: Run `#print axioms RH_of_Weil_and_Q3` to verify all dependencies.
 
-Axiom Summary:
-- Tier-1: 12 axioms (Weil, Guinand, a_star properties, Szegő-Böttcher, Schur, etc.)
-- Tier-2: 12 axioms (A1', A2, A3, RKHS, node spacing, Q ≥ 0 on compacts)
+Assumption summary:
+- Tier-1 mixes literature-backed and explicitly quarantined legacy declarations.
+- Tier-2 contains project-specific assumptions; counts must come from source census.
 
 New additions (2024-12):
 - T1.3d: a_star_even (digamma conjugation symmetry)
@@ -32,10 +33,11 @@ open scoped Matrix.Norms.L2Operator
 namespace Q3
 
 /-!
-## TIER-1: CLASSICAL AXIOMS FROM LITERATURE
+## TIER-1: LITERATURE RESULTS AND QUARANTINED LEGACY ASSUMPTIONS
 
-These are well-established theorems from peer-reviewed mathematics.
-Each is cited with publication details.
+Each declaration must be read with its local status note. In particular, the
+broad-cone export and raw-kernel floor assumptions are legacy conditional
+surfaces, not unconditional literature theorems.
 -/
 
 /-! ## Axiom T1.1: Legacy broad-cone Weil Criterion export (1952)
@@ -270,27 +272,35 @@ axiom Schur_test {n : Type*} [Fintype n] [DecidableEq n] :
   ∀ (A : Matrix n n ℝ), A.IsSymm →
   ∀ (C : ℝ), 0 ≤ C → (∀ i, ∑ j, |A i j| ≤ C) → ‖A‖ ≤ C
 
-/-! ## Axiom T1.6: Archimedean Constant Positivity
+/-! ## Legacy assumption T1.6: raw-kernel compact infimum positivity
 
-c₀(K) = inf_{|ξ| ≤ K} a*(ξ) > 0 by continuity and T1.3.
-Since a*(ξ) > 0 for all ξ (T1.3) and continuous (T1.3b),
-the infimum over a compact set is attained and positive.
-
-**Citation:**
-- Follows from T1.3 (positivity), T1.3b (continuity), and extreme value theorem.
+This is not justified by T1.3. T1.3 proves positivity only at the origin and
+explicitly records that global positivity of `a_star` is false. The assumption
+is retained only for compatibility and quarantined under an explicit namespace.
 -/
 
 /-- Archimedean constant: c₀(K) = inf_{|ξ| ≤ K} a*(ξ) -/
 noncomputable def c_arch (K : ℝ) : ℝ :=
   sInf {a_star ξ | ξ ∈ Set.Icc (-K) K}
 
-axiom c_arch_pos : ∀ K : ℝ, K > 0 → c_arch K > 0
+namespace Conditional.LegacyArchFloor
 
-/-! ## Uniform Archimedean Floor (December 2025 paper update)
+axiom rawKernelCompactInfPosAssumption :
+  ∀ K : ℝ, K > 0 → c_arch K > 0
+
+end Conditional.LegacyArchFloor
+
+@[deprecated Q3.Conditional.LegacyArchFloor.rawKernelCompactInfPosAssumption
+  (since := "2026-08-27")]
+theorem c_arch_pos : ∀ K : ℝ, K > 0 → c_arch K > 0 :=
+  Q3.Conditional.LegacyArchFloor.rawKernelCompactInfPosAssumption
+
+/-! ## Uniform Archimedean Floor (legacy compatibility surface)
 
 The paper was updated to use a UNIFORM floor c* = 11/10 instead of K-dependent c_arch(K).
-This is the global minimum of P_A(θ) over the entire torus T.
-Proven in A3_Floor_Main.lean.
+The number is associated in historical prose with the periodized torus symbol
+`_root_.P_A`. No theorem currently identifies that symbol with the raw-kernel
+compact infimum `c_arch` below.
 
 Benefits of uniform approach:
 - M₀ is K-independent (single threshold for all K)
@@ -298,8 +308,11 @@ Benefits of uniform approach:
 - Simplifies the A3_bridge axiom chain
 -/
 
-/-- Uniform Archimedean floor: c* = 11/10
-    This is min_{θ ∈ T} P_A(θ) where P_A is the Archimedean symbol. -/
+/-- Legacy numerical floor constant `c* = 11/10`.
+
+This definition is only the number `11/10`. Separate theorems about
+`_root_.P_A` may use the same number, but that does not identify `P_A` with
+the raw kernel `a_star` or its compact infimum `c_arch`. -/
 noncomputable def c_star : ℝ := 11 / 10
 
 /-- c* is positive (trivial computation) -/
@@ -311,17 +324,24 @@ lemma c_star_gt_one : c_star > 1 := by norm_num [c_star]
 /-- c*/4 > 0 (the bound used in A3_bridge) -/
 lemma c_star_div_four_pos : c_star / 4 > 0 := by norm_num [c_star]
 
-/-- c* ≤ c_arch(K) for K ≥ threshold.
+/- Legacy assumption `c_star ≤ c_arch K` for `K ≥ 1`.
 
-Since c_star = 11/10 is the GLOBAL minimum of P_A(θ) over the torus T,
-and c_arch(K) = inf_{|ξ| ≤ K} a_star(ξ) is the minimum over [-K, K],
-we have c_star ≤ c_arch(K) when the support of the periodization
-is contained in [-K, K].
-
-This lemma allows backwards-compatible use of old K-dependent proofs:
-any bound using c_star/4 automatically gives a bound using c_arch(K)/4.
+There is no theorem-level crosswalk from the periodized torus symbol
+`_root_.P_A` to the raw-kernel compact infimum `c_arch`. In particular, a
+floor theorem for `P_A` does not prove this statement. The declaration below
+is retained only as an explicitly named compatibility assumption.
 -/
-axiom c_star_le_c_arch : ∀ K : ℝ, K ≥ 1 → c_star ≤ c_arch K
+namespace Conditional.LegacyArchFloor
+
+axiom torusFloorLeRawKernelCompactInfAssumption :
+  ∀ K : ℝ, K ≥ 1 → c_star ≤ c_arch K
+
+end Conditional.LegacyArchFloor
+
+@[deprecated Q3.Conditional.LegacyArchFloor.torusFloorLeRawKernelCompactInfAssumption
+  (since := "2026-08-27")]
+theorem c_star_le_c_arch : ∀ K : ℝ, K ≥ 1 → c_star ≤ c_arch K :=
+  Q3.Conditional.LegacyArchFloor.torusFloorLeRawKernelCompactInfAssumption
 
 /-! ## Axiom T1.7: Eigenvalue-Norm Bound
 
@@ -398,12 +418,14 @@ lemma AtomCone_K_fixed_subset (K t0 : ℝ) (ht0 : t0 > 0) :
 
 /-- BaseAtomCone_K: Fejér-heat atoms with τ = 0 only (centered atoms).
 
-This cone aligns directly with the A3 bridge which uses P_A(B, t) without τ-shift.
+Historical prose described this cone through `P_A(B,t)`. The formal legacy A3
+statement below instead uses `ToeplitzMatrix M a_star`; no theorem identifies
+that matrix with the separate periodized symbol `_root_.P_A`.
 For τ = 0: Fejer_heat_atom B t 0 ξ = 2 * Fejer_kernel B ξ * heat_kernel_A1 t ξ
 (symmetric, no shift).
 
 **Architecture:**
-1. Q ≥ 0 on BaseAtomCone_K via A3 bridge (P_A floor + RKHS cap)
+1. Q ≥ 0 on BaseAtomCone_K via the conditional raw-kernel floor + RKHS cap
 2. τ-transfer to AtomCone_K_fixed via Q Lipschitz continuity
 -/
 def BaseAtomCone_K (K t0 : ℝ) : Set (ℝ → ℝ) :=
@@ -587,7 +609,7 @@ axiom off_diag_exp_sum_axiom : ∀ (K t : ℝ) (hK : K ≥ 1) (ht : t > 0)
 
 **DEPRECATED:** Use `A3_bridge_uniform` instead.
 
-`λ_min(T_M[P_A] - T_P) ≥ c_arch(K)/4` for `M ≥ M₀(K)`.
+`λ_min(T_M[a_star] - T_P) ≥ c_arch(K)/4` for `M ≥ M₀(K)`.
 
 * **Q3:** `thm:A3` (old K-dependent formulation)
 * **TeX:** `sections/A3/main.tex`
@@ -603,7 +625,7 @@ axiom A3_bridge_axiom : ∀ (K : ℝ) (hK : K ≥ 1),
 
 /-- **[A3 Uniform]** K-independent Toeplitz-symbol bridge.
 
-`λ_min(T_M[P_A] - T_P) ≥ c*/4` for `M ≥ M₀` (uniform threshold).
+`λ_min(T_M[a_star] - T_P) ≥ c*/4` for `M ≥ M₀` (uniform threshold).
 
 Key: uses `c* = 11/10` instead of K-dependent `c_arch(K)`.
 
@@ -715,14 +737,15 @@ axiom Q_nonneg_on_atoms_uniform :
 ## AXIOM VERIFICATION
 -/
 
--- Tier-1 axioms (7 classical)
+-- Mixed Tier-1 declarations, including quarantined legacy assumptions
 #check Weil_criterion
 #check explicit_formula
 #check a_star_pos
 #check Szego_Bottcher_eigenvalue_bound
 #check Szego_Bottcher_convergence
 #check Schur_test
-#check c_arch_pos
+#check Conditional.LegacyArchFloor.rawKernelCompactInfPosAssumption
+#check Conditional.LegacyArchFloor.torusFloorLeRawKernelCompactInfAssumption
 #check eigenvalue_le_norm
 
 -- Uniform definitions (December 2025 paper update)

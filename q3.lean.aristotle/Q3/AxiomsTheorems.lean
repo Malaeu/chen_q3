@@ -64,7 +64,8 @@ These are re-exported from Q3.Axioms
 #check Q3.Szego_Bottcher_eigenvalue_bound
 #check Q3.Szego_Bottcher_convergence
 #check Q3.Schur_test
-#check Q3.c_arch_pos
+#check Q3.Conditional.LegacyArchFloor.rawKernelCompactInfPosAssumption
+#check Q3.Conditional.LegacyArchFloor.torusFloorLeRawKernelCompactInfAssumption
 #check Q3.eigenvalue_le_norm
 
 /-! ## Tier-1 Theorems: a_star properties (from Mathlib Gamma) -/
@@ -80,23 +81,20 @@ theorem a_star_even : ∀ ξ : ℝ, Q3.a_star (-ξ) = Q3.a_star ξ :=
 /-!
 # TIER-2: Q3 PAPER CONTRIBUTIONS
 
-## Status (2026-01-20):
+## Current RH export status
 
-**In main proof chain (`#print axioms RH_of_Weil_and_Q3`):**
-- 3 Q3 PAPER AXIOMS remain (single‑scale): `SingleScale.continuous_P_A_shift`,
-  `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`,
-  `SingleScale.rho_oneK_tcritical_le_cstar_quarter`
-- 6 EXTERNAL AXIOMS: `Weil_criterion`, `a_star_*`, `Schur_test`
+The authoritative profile is the exact `#print axioms` receipt in the summary
+below:
+`[propext, Classical.choice, Q3.Weil_criterion,
+Q3.prime_term_le_at_t_critical_axiom, Quot.sound]`.
 
-**Theorem status:**
-- ✅ PROVEN: node_spacing, S_K_small, W_sum_finite, Q_Lipschitz, RKHS_contraction
-- ⚠️ AXIOM FALLBACK: A1_density (theorem exists but wiring issue), off_diag_exp_sum, A3_bridge
-
-Note: "PROVEN" = actual theorem proof wired into main chain.
-"AXIOM FALLBACK" = theorem may exist but main chain still uses axiom.
+The declarations collected in this section have mixed statuses. Their presence
+or theorem-shaped types do not establish that they are consumed by, or remove
+assumptions from, the current RH export. Dependency claims must follow the
+printed profile rather than this catalogue.
 -/
 
-/-! ## PROVEN THEOREMS (4/9) - Self-contained bridges + real proofs -/
+/-! ## Theorem and compatibility catalogue -/
 
 -- NOTE: Schur_test remains as axiom (Tier-1 classical).
 -- The Mathlib proof uses L∞ norm (Matrix.linfty_opNorm_def),
@@ -252,13 +250,13 @@ end Q3.Theorems
 
 ## Main Proof Chain: `#print axioms RH_of_Weil_and_Q3`
 
-**Axiom dependencies (run `#print axioms RH_of_Weil_and_Q3` to refresh):**
-- 3 Standard Lean: `propext`, `Classical.choice`, `Quot.sound`
-- 6 External/Classical: `Weil_criterion`, `a_star_pos/continuous/bdd/even`, `Schur_test`
-- 3 Q3 Paper (single‑scale) are now theorems (not axioms):
-  `SingleScale.continuous_P_A_shift`,
-  `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter` (requires floor on `P_A_shift` at t_critical),
-  `SingleScale.rho_oneK_tcritical_le_cstar_quarter`
+**Exact current dependency profile (refresh with `#print axioms`):**
+`[propext, Classical.choice, Q3.Weil_criterion,
+Q3.prime_term_le_at_t_critical_axiom, Quot.sound]`.
+
+The quarantined `Q3.Conditional.LegacyArchFloor` assumptions are absent from
+this RH export profile. The single-scale theorems below are separate wiring
+results and do not remove either project assumption in the displayed profile.
 
 ## Theorem Wiring Status
 

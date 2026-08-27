@@ -1,19 +1,18 @@
 /-
-Q3 Formalization: A3 Toeplitz-Symbol Bridge
-===========================================
+Q3 Legacy A3 Raw-Kernel Bridge
+==============================
 
-This file proves the Toeplitz-Symbol bridge theorem A3:
-  λ_min(T_M[P_A] - T_P) ≥ c₀(K)/4
+This file exposes the legacy conditional A3 bridge:
+  λ_min(T_M[a_star] - T_P) ≥ c_arch(K)/4
 
 where:
-- T_M[P_A] is the Toeplitz matrix with archimedean symbol P_A
+- T_M[a_star] is the matrix constructed from the raw kernel `Q3.a_star`
 - T_P is the prime sampling operator
-- c₀(K) is the archimedean constant
+- c_arch(K) is the raw-kernel compact infimum
 
-The key insight is that the archimedean contribution dominates the prime term
-for appropriate parameters.
-
-Supporting lemmas for periodization/smoothing are in 04_A3_aristotle.lean.
+The result is supplied by `Q3.A3_bridge_axiom`; this file does not prove its
+analytic premise. The separate periodized symbol `_root_.P_A` is not the
+object in the theorem statement, and no `P_A`-to-`c_arch` crosswalk is used.
 -/
 
 import Mathlib
@@ -49,11 +48,12 @@ def modulusOfContinuity (f : ℝ → ℝ) (δ : ℝ) : ℝ :=
 
 -- c_arch and ToeplitzMatrix are defined in Q3 namespace in Axioms.lean
 
-/-! ## Archimedean Positivity -/
+/-! ## Legacy raw-kernel compact-infimum assumption -/
 
-/-- The archimedean constant is positive -/
-lemma c_arch_pos (K : ℝ) (hK : K > 0) : Q3.c_arch K > 0 :=
-  Q3.c_arch_pos K hK
+/-- Explicit consumption of the quarantined legacy compact-infimum assumption. -/
+lemma rawKernelCompactInfPos_ofLegacyAssumption
+    (K : ℝ) (hK : K > 0) : Q3.c_arch K > 0 :=
+  Q3.Conditional.LegacyArchFloor.rawKernelCompactInfPosAssumption K hK
 
 /-! ## Szegő-Böttcher Theory -/
 
@@ -67,20 +67,16 @@ theorem Szego_Bottcher (M : ℕ) (_hM : M ≥ 1) (P : ℝ → ℝ) (hP_cont : Co
 
 /-! ## Main A3 Theorem -/
 
-/-- **Theorem A3 (Toeplitz-Symbol Bridge)**:
+/-- **Legacy conditional A3 raw-kernel bridge**:
 
-For the archimedean symbol P_A with appropriate smoothing, and the prime
-operator T_P, we have:
+For the raw-kernel matrix in the displayed theorem statement and the prime
+operator, the declaration `Q3.A3_bridge_axiom` supplies:
 
-  λ_min(T_M[P_A] - T_P) ≥ c₀(K)/4
+  λ_min(T_M[a_star] - T_P) ≥ c_arch(K)/4
 
-This follows from:
-1. Szegő-Böttcher: eigenvalues of T_M[P_A] ≈ inf P_A = c₀(K)
-2. RKHS contraction: ‖T_P‖ ≤ ρ_K < 1
-3. For M large enough: error from Szegő ≤ c₀(K)/4
-4. Combined: λ_min ≥ c₀(K) - c₀(K)/4 - ‖T_P‖ ≥ c₀(K)/2
-
-Note: The precise bound depends on the modulus of continuity of P_A.
+This theorem is only a wrapper around `Q3.A3_bridge_axiom`. It neither derives
+the bound from Szegő–Böttcher theory nor identifies `_root_.P_A` with
+`Q3.a_star` or `Q3.c_arch`.
 -/
 theorem A3_bridge (K : ℝ) (hK : K ≥ 1) :
     ∃ M₀ : ℕ, ∃ t > 0, ∀ M ≥ M₀,

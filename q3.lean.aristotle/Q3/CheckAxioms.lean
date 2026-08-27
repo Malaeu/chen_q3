@@ -32,7 +32,8 @@ open Q3.Main
 #check Q3.Szego_Bottcher_eigenvalue_bound
 #check Q3.Szego_Bottcher_convergence
 #check Q3.Schur_test
-#check Q3.c_arch_pos
+#check Q3.Conditional.LegacyArchFloor.rawKernelCompactInfPosAssumption
+#check Q3.Conditional.LegacyArchFloor.torusFloorLeRawKernelCompactInfAssumption
 #check Q3.eigenvalue_le_norm
 
 /-! ## Verify Tier-2 shifted-atom mainline bridge exists -/

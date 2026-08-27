@@ -1,17 +1,17 @@
 /-
-Q_Lipschitz Bridge v2 (CLEAN - uses Tier-1 axioms only)
-========================================================
+Q_Lipschitz Bridge v2 (legacy conditional surface)
+=====================================================
 
-This file creates a CLEAN bridge for Q Lipschitz theorem.
-Uses Q3.Basic.Defs + Q3.Clean.AxiomsTier1 (Tier-1 classical axioms).
-NO import of Q3.Axioms (Tier-2)!
+This file creates a legacy conditional bridge for the Q Lipschitz theorem.
+It imports `Q3.Clean.AxiomsTier1`, including the quarantined, known-false
+global raw-kernel positivity assumption. It does not import `Q3.Axioms`.
 
 The theorem states: Q is Lipschitz on W_K with constant L_Q = 2K·M_a + W_sum
 where M_a = sup|a_star| on [-K,K].
 -/
 
 import Q3.Basic.Defs
-import Q3.Clean.AxiomsTier1  -- Tier-1 axioms only (a_star bounds)
+import Q3.Clean.AxiomsTier1  -- legacy conditional assumptions, including raw-kernel positivity
 
 set_option linter.mathlibStandardSet false
 set_option linter.unusedVariables false
@@ -50,9 +50,9 @@ Q is Lipschitz on W_K. Mathematical argument:
 3. |prime_term(Φ-Ψ)| ≤ Σ w_Q(n) |Φ-Ψ|(ξ_n) ≤ W_sum · ‖Φ-Ψ‖_∞
 4. So |Q(Φ) - Q(Ψ)| ≤ (2K·M_a + W_sum) · ‖Φ-Ψ‖_∞ = L_Q · ‖Φ-Ψ‖_∞
 
-Requires Tier-1 axioms:
+Requires explicit legacy assumptions:
 - a_star_bdd_on_compact: M_a is well-defined
-- a_star_pos: a_star > 0
+- rawKernelGlobalPosAssumption: a_star > 0 (known-false globally; quarantined)
 -/
 
 /-- a_star is bounded above on [-K, K] (from Tier-1) -/
@@ -74,7 +74,8 @@ lemma a_star_image_nonempty (K : ℝ) (hK : K > 0) :
 /-- M_a K is positive -/
 lemma M_a_pos (K : ℝ) (hK : K > 0) : M_a K > 0 := by
   have h_bdd := a_star_bdd_above K hK
-  have h_pos : Q3.a_star 0 > 0 := Q3.Clean.a_star_pos 0
+  have h_pos : Q3.a_star 0 > 0 :=
+    Q3.Clean.Conditional.LegacyArchFloor.rawKernelGlobalPosAssumption 0
   have h_mem : Q3.a_star 0 ∈ Q3.a_star '' Set.Icc (-K) K := by
     use 0
     constructor
@@ -181,7 +182,8 @@ lemma arch_term_Lipschitz_local (K : ℝ) (hK : K > 0) (Φ Ψ : ℝ → ℝ)
           exact norm_integral_le_integral_norm _
     _ = ∫ ξ in Set.Icc (-K) K, Q3.a_star ξ * |Φ ξ - Ψ ξ| := by
           congr 1; ext ξ
-          rw [abs_mul, abs_of_pos (Q3.Clean.a_star_pos ξ)]
+          rw [abs_mul, abs_of_pos
+            (Q3.Clean.Conditional.LegacyArchFloor.rawKernelGlobalPosAssumption ξ)]
     _ ≤ ∫ ξ in Set.Icc (-K) K, M_a K * D := by
           apply MeasureTheory.setIntegral_mono_on
           · apply ContinuousOn.integrableOn_Icc
@@ -414,18 +416,19 @@ end Q3.Proofs.QLipschitzBridgeV2
 /-!
 # Summary
 
-CLEAN bridge for Q_Lipschitz:
-- Imports only Q3.Basic.Defs (no Q3.Axioms!)
+Legacy conditional bridge for Q_Lipschitz:
+- Imports Q3.Basic.Defs and Q3.Clean.AxiomsTier1
 - Defines L_Q (Lipschitz constant)
-- Proves Lipschitz theorem in the clean chain
+- Proves the Lipschitz theorem under the imported assumptions
 
-Requires Tier-1 axioms (a_star bounds).
-The clean chain will provide these via AxiomsTier1.lean.
+The dependency surface includes the quarantined, known-false global
+raw-kernel positivity assumption; this is not an unconditional clean chain.
 
 # Verification
 ```
 lake build Q3.Proofs.Q_Lipschitz_bridge_v2
 #print axioms Q3.Proofs.QLipschitzBridgeV2.Q_Lipschitz_on_W_K
 ```
-Expected: [propext, Classical.choice, Quot.sound]
+The printed profile must expose every imported assumption actually consumed,
+including the quarantined raw-kernel positivity assumption.
 -/
