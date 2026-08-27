@@ -1,0 +1,38 @@
+{
+  "active_append_history_surface_count": 1,
+  "active_clean_path_count": 24,
+  "active_machine_local_registry_count": 1,
+  "append_history_anchor": {
+    "byte_length": 223499,
+    "commit": "ad621220393ab5646c8d0502dfe8553b9317c24e",
+    "path": "docs/routeB_bus/PROSHKA_QUEUE.md",
+    "sha256": "c37620f6676f7bceed4f20ec008673eedffc2b1dd5cc0b56b721d0734c7cd29a"
+  },
+  "hashes": {
+    "checker": "780d6bf66ef222a9c63ccb26773585ec0990c6a1628e75435e2e690d9269af4f",
+    "lean_toolchain": "e8173aad377a6d70041e5f7a5d8895ed587628f5cab243c53a18c40a1b7b6bf8",
+    "manifest": "a1ed7662a59fe95a48c1efe2a0199f7645e0d49f63f850713e25ae7d5bc9bd9f",
+    "schema": "f1a843112d277277a76359a511cbb7d292d4922c14a1681ce483cf4c00bc73e0",
+    "tests": "457c2dd8658d16321d73b76f46d710c1a113239788226a6e8e380ed41bbe2d82",
+    "wrapper": "d69452e74cf3e8abcd0bba134f763e9e8fdfb62eab25ccf4142206f675a2af7a"
+  },
+  "historical_hit_file_count": 687,
+  "plants": [
+    "ACTIVE_ABSOLUTE_PATH",
+    "ACTIVE_STALE_REPO_NAME",
+    "ABSOLUTE_PATH_UNCLASSIFIED",
+    "INVENTORY_INCOMPLETE",
+    "HISTORICAL_PATH_MUTATED_OR_ACTIVE",
+    "ABSOLUTE_SYMLINK",
+    "ESCAPING_SYMLINK",
+    "BROKEN_SYMLINK",
+    "WRAPPER_MISSING",
+    "WRAPPER_NOT_EXECUTABLE",
+    "P7_STAGED_SCOPE_DRIFT"
+  ],
+  "prospective_tree_excluding_receipt": "19027306e98e49acaf61d7d26668effe2b2ebe63",
+  "schema_version": "q3.portability_receipt.v1",
+  "source_commit": "ad621220393ab5646c8d0502dfe8553b9317c24e",
+  "status": "PASS",
+  "symlink_count": 35
+}

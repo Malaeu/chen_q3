@@ -425,7 +425,7 @@ def main() -> None:
         "# Route B bus mirror manifest",
         "",
         (
-            f"Proshka mirror from `rh_lean_01_2026`; "
+            f"Proshka mirror from the canonical `rh_clean` worktree; "
             f"{len(mirrored) + len(nested_mirrored)} mirrored source files "
             "plus `CHANNEL_RULE.md`."
         ),

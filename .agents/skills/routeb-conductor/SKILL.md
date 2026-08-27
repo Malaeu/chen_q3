@@ -23,7 +23,8 @@ description: >
 ## Первое, что делать после перезапуска сессии
 
 ```bash
-cd /Users/emalam/GitHub/rh_lean_01_2026
+# From outside the checkout, export Q3_REPO to its machine-local path first.
+cd "$(git -C "${Q3_REPO:-$PWD}" rev-parse --show-toplevel)"
 cat orchestrator/state/state.json          # блок _RESUME_AFTER_RESTART
 python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb_status.py --check
                                               # открытый фронт живой шины

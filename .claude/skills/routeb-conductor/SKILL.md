@@ -23,7 +23,8 @@ description: >
 ## Первое, что делать после перезапуска сессии
 
 ```bash
-cd /Users/emalam/GitHub/rh_lean_01_2026
+# From outside the checkout, export Q3_REPO to its machine-local path first.
+cd "$(git -C "${Q3_REPO:-$PWD}" rev-parse --show-toplevel)"
 cat orchestrator/state/state.json          # блок _RESUME_AFTER_RESTART
 .venv/bin/python orchestrator/sense.py     # открытый фронт шины
 ./orchestrator/codex_app.sh probe          # жив ли доступ к Codex.app

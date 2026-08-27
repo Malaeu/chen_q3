@@ -1,8 +1,8 @@
 {
   "schema_version": "route_b_execution_state.v3_live_bus",
-  "updated_at": "2026-08-14T01:56:41+02:00",
+  "updated_at": "2026-08-27T23:29:09+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
-  "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
+  "canonical_repo_path": ".",
   "architecture": {
     "status": "ALPHA_ROUTE_REMAINS_CHALLENGER",
     "global_mainline": "T0-pd -> H-bridge -> H4 -> RH",

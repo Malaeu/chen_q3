@@ -18,7 +18,7 @@
 
 ```bash
 # Ensure qmd on PATH (bun global bin)
-export PATH="/home/chirurgie/.bun/bin:$PATH"
+export PATH="$HOME/.bun/bin:$PATH"
 
 # Sanity check
 qmd status

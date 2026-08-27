@@ -59,7 +59,7 @@ lake env lean aristotle_input/step33_endpoint_v18_first_row_pilot.lean
 Submit after explicit user OK with:
 
 ```bash
-source /Users/emalam/Documents/GitHub/rh_lean_01_2026/.venv/bin/activate
+source .venv/bin/activate
 aristotle submit "Fill the two intentional endpoint proof holes in aristotle_input/step33_endpoint_v18_first_row_pilot.lean. Use the checked Q3 receivers named in aristotle_input/step33_endpoint_v18_first_row_proof_pack.md; do not add axioms, unsafe code, trusted numerical black boxes, admit, exact?, or theorem weakening. Return hole-free Lean proof replacements or the exact missing analytic lemma." --project-dir {out}
 ```
 """

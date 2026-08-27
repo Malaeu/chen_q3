@@ -47,6 +47,7 @@ It also supports a split-classifier mode:
 from __future__ import annotations
 
 import argparse
+import tempfile
 import csv
 import math
 from collections import defaultdict
@@ -859,7 +860,8 @@ def search_conventions(
 
 def default_csv_path() -> Path:
     timestamp = datetime.now().strftime("%Y_%m_%d_%H%M%S_%f")
-    return Path("/Users/emalam/Documents/GitHub/rh_lean_01_2026/tmp") / f"h1_filtered_mismatch_map_{timestamp}.csv"
+    output_dir = Path(tempfile.mkdtemp(prefix="q3_h1_filtered_"))
+    return output_dir / f"h1_filtered_mismatch_map_{timestamp}.csv"
 
 
 def default_subspace_csv_path(csv_path: Path) -> Path:

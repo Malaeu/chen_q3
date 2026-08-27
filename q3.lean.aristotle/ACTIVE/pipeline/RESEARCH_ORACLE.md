@@ -20,8 +20,9 @@
 bun install -g https://github.com/tobi/qmd
 ```
 
-If qmd is installed via bun, ensure `~/.bun/bin` is on PATH
-or set `"qmd_command": "/home/<user>/.bun/bin/qmd"` in `RESEARCH_ORACLE.json`.
+If qmd is installed via bun, put `~/.bun/bin` on `PATH` and keep
+`"qmd_command": "qmd"` in `RESEARCH_ORACLE.json`. The resolver does not expand
+`~` inside a configured command path.
 
 ## Refresh `q3_docs`
 
@@ -54,7 +55,7 @@ See:
 ## Ingest literature
 
 ```bash
-/Users/emalam/Documents/GitHub/rh_lean_01_2026/scripts/research_oracle.py ingest --embed
+./scripts/research_oracle.py ingest --embed
 ```
 
 Ensure literature lives under `full/q3.lean.aristotle/literature/`.

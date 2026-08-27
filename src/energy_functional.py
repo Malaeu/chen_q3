@@ -109,7 +109,7 @@ def compute_table(gamma: np.ndarray, Ts: Sequence[float], alpha: float, sigma: f
 def main():
     import argparse
     parser = argparse.ArgumentParser(description="Energy functional E(T)")
-    parser.add_argument("--zeros", default="/Users/emalam/Documents/GitHub/RH_August_September_2025/zeros/zeros100k.txt")
+    parser.add_argument("--zeros", required=True, help="path to a file containing one zero per line")
     parser.add_argument("--limit", type=int, default=10000, help="number of zeros to use")
     parser.add_argument("--alpha", type=float, default=1.0)
     parser.add_argument("--sigma", type=float, default=1.0)

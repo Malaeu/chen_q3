@@ -249,8 +249,8 @@ summary; канонический report оформит оркестратор.
 только request path и supporting files.
 
 ```text
-Ты второй агент внутри active phase/sprint в repo
-/Users/emalam/Documents/GitHub/rh_lean_01_2026.
+Ты второй агент внутри active phase/sprint в каноническом checkout репозитория
+(корень определяется командой `git rev-parse --show-toplevel`).
 
 Работай не как оркестратор, а как worker agent.
 

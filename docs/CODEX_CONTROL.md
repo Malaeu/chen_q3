@@ -968,7 +968,7 @@ WRITE_LOCK:
   reader: CLAUDE_CODE      # read-only until the owner reassigns
   declared_by: OWNER
   declared_at: 2026-08-06
-  scope: shared Mac host, worktree /Users/emalam/GitHub/rh_lean_01_2026
+  scope: shared Mac host, canonical worktree containing this control (resolved via git top-level)
 ```
 
 Reassignment happens **only** on an explicit owner instruction, never by either body deciding

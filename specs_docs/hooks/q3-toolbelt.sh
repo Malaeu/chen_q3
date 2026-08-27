@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# q3-toolbelt.sh — SessionStart hook для репозитория chen_q3_rh_clean.
+# q3-toolbelt.sh — SessionStart hook для канонического репозитория Q3.
 #
 # Зачем. В контекст без действия попадают ровно три вещи: CLAUDE.md, память проекта и вывод
 # SessionStart-хуков. Всё остальное — карта, спеки, база, литобзор — надо пойти и взять,
@@ -8,15 +8,15 @@
 #
 # Быстрый по построению: никаких lake/spine/сборок, только дешёвые запросы. Цель — < 2 с.
 
-REPO="/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean"
+REPO="$(git -C "${Q3_REPO:-$PWD}" rev-parse --show-toplevel 2>/dev/null)" || exit 0
+[ -n "$REPO" ] || exit 0
+[ -f "$REPO/docs/CODEX_CONTROL.md" ] || exit 0
+[ -f "$REPO/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md" ] || exit 0
+[ -f "$REPO/q3.lean.aristotle/lakefile.toml" ] || exit 0
 
 # Молчать вне Q3.  Хук стоит в глобальном settings.json, поэтому запускается на старте
 # ЛЮБОЙ сессии; печатать пояс Q3 в чужом проекте — мусор в чужом контексте.
 # Проверять существование каталога недостаточно: он существует всегда.
-case "$PWD/" in
-  "$REPO"/*) ;;
-  *) exit 0 ;;
-esac
 cd "$REPO" || exit 0
 
 KB="q3.lean.aristotle/aristotle_db/knowledge.db"

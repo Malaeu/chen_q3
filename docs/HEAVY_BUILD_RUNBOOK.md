@@ -1,9 +1,14 @@
 # Heavy Build Runbook
 
+Prerequisite: set `Q3_REPO` to the checkout to operate on when the current directory is
+outside that checkout. If it is unset, every command below resolves the repository from
+the current directory with `git rev-parse --show-toplevel` and fails closed outside a Q3
+worktree.
+
 ## 1) Безопасный мониторинг в другом терминале
 
 ```bash
-cd /mnt/hdd01/Soft/GitHub/chen_q3/worktrees/rh_clean
+cd "$(git -C "${Q3_REPO:-$PWD}" rev-parse --show-toplevel)"
 ./scripts/primepow_status.sh
 LOG=$(ls -1t tmp/primepow_gt10000_logs/build_*.log | head -1)
 tail -f "$LOG"
@@ -14,7 +19,7 @@ tail -f "$LOG"
 ## 2) Ночной перезапуск после timeout/fail (больший таймаут на шард)
 
 ```bash
-cd /mnt/hdd01/Soft/GitHub/chen_q3/worktrees/rh_clean
+cd "$(git -C "${Q3_REPO:-$PWD}" rev-parse --show-toplevel)"
 systemctl --user daemon-reload
 systemctl --user set-property --runtime codex-heavy.slice MemoryHigh=24G MemoryMax=32G CPUWeight=80 ManagedOOMPreference=avoid
 ./scripts/run_heavy.sh ./scripts/build_primepow_gt10000_sequential.sh --timeout 18000
@@ -34,7 +39,7 @@ pgrep -af 'build_primepow_gt10000_sequential.sh|lake build Q3.Proofs.PrimeCert.B
 
 ```bash
 tmux new -s primepow
-cd /mnt/hdd01/Soft/GitHub/chen_q3/worktrees/rh_clean
+cd "$(git -C "${Q3_REPO:-$PWD}" rev-parse --show-toplevel)"
 systemctl --user daemon-reload
 ./scripts/run_heavy.sh ./scripts/build_primepow_gt10000_sequential.sh --timeout 18000
 ```
@@ -61,7 +66,7 @@ tmux attach -t primepow
 ## 5) Мониторинг из любого терминала
 
 ```bash
-cd /mnt/hdd01/Soft/GitHub/chen_q3/worktrees/rh_clean
+cd "$(git -C "${Q3_REPO:-$PWD}" rev-parse --show-toplevel)"
 ./scripts/primepow_status.sh
 LOG=$(ls -1t tmp/primepow_gt10000_logs/build_*.log | head -1)
 tail -f "$LOG"
@@ -70,7 +75,7 @@ tail -f "$LOG"
 Оценка прогресса/ETA/среднего времени на batch (шард):
 
 ```bash
-cd /mnt/hdd01/Soft/GitHub/chen_q3/worktrees/rh_clean
+cd "$(git -C "${Q3_REPO:-$PWD}" rev-parse --show-toplevel)"
 watch -n 30 './scripts/primepow_status.sh'
 ```
 

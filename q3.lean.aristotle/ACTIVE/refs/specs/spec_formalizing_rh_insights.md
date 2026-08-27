@@ -1,1 +1,1 @@
-../../../../../docs/Как работают модели типа Аристотель и их тренировка/Инсайты из FormalizingRiemannHypothesis.md
+../../../../docs/Aristotle_models_training/Инсайты из FormalizingRiemannHypothesis.md

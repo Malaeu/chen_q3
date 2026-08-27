@@ -1,7 +1,7 @@
 """P-M2 Мифоса: Грам-форма B_480 − d⁻¹·Σ_k r_k r_kᵀ вместо скаляра B_480 − p·I."""
 import importlib.util, sys, time
 from pathlib import Path
-REPO = Path("/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean")
+REPO = Path(__file__).resolve().parents[3]
 spec = importlib.util.spec_from_file_location("p1", REPO/"docs/routeB_bus/phase1_scripts/ccm_control_cell_penalty.py")
 p1 = importlib.util.module_from_spec(spec); sys.modules["p1"] = p1; spec.loader.exec_module(p1)
 DPS, N, R, S = 200, 960, 70, 480

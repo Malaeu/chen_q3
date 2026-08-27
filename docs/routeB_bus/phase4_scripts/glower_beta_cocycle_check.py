@@ -6,7 +6,7 @@
 """
 import importlib.util, sys
 from pathlib import Path
-REPO = Path("/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean")
+REPO = Path(__file__).resolve().parents[3]
 spec = importlib.util.spec_from_file_location("p1", REPO/"docs/routeB_bus/phase1_scripts/ccm_control_cell_penalty.py")
 p1 = importlib.util.module_from_spec(spec); sys.modules["p1"]=p1; spec.loader.exec_module(p1)
 p1.ctx.dps = 60; p1.N = 40

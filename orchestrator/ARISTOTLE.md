@@ -7,7 +7,7 @@ to Codex's local Lean as the cheapest decisive channel).
 ## Two access paths
 
 **CLI / Python (primary, scriptable — this is what the conductor drives):**
-- Activate the repo venv: `source .venv/bin/activate` (in the Mac `rh_lean_01_2026` / q3 tree).
+- From the repository root, activate the project environment: `source .venv/bin/activate`.
 - Keep `ARISTOTLE_API_KEY` in env (never on the CLI arg line — leaks to history).
 - Submit async and poll:
   ```python

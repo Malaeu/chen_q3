@@ -8,10 +8,10 @@ Pro judge) · **Mythos** (Fable 5 orchestrator-brain, writes the distribution) �
 Proven live end-to-end on 2026-07-30 (Codex → Proška REPAIR_034 → Mythos distribution).
 This guide is how to stand the environment up and run it.
 
-> **WHERE IT RUNS: the Mac.** The live bus is
-> `/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/bus/`
-> and Codex must see `rh_lean_01_2026`. The Linux box only has a mirror + the browser
-> side. Do the setup below on the **Mac's** Claude Code + Chrome.
+> **WHERE IT RUNS:** in the canonical checkout on the host that owns the live bus.
+> Resolve the checkout with `git rev-parse --show-toplevel`; the bus path below is
+> repository-relative. Host-specific checkout locations belong in untracked local
+> configuration, never in committed state.
 
 ---
 

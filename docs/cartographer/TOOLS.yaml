@@ -10,7 +10,7 @@ meta:
   canonical: docs/cartographer/TOOLS.yaml
   observer_copy: machine-local codex_specs/TOOLS.yaml if present
   observer_rule: NONAUTHORITATIVE_NOT_A_CODEX_STARTUP_DEPENDENCY
-  repo: /Users/emalam/GitHub/rh_lean_01_2026
+  repo: .
   canonical_branch: rh_clean
   policy: docs/CODEX_CONTROL.md
   session_router: q3.lean.aristotle/ACTIVE/SESSION_ENTRY.md
@@ -424,7 +424,7 @@ tool_families:
         invoke: >-
           .venv/bin/python orchestrator/three_body_loop.py watch-read-only
           --session-id <exact-session-id> --branch rh_clean
-          --codex-bin /home/chirurgie/.nvm/versions/node/v24.13.0/bin/codex
+          --codex-bin codex
         trigger: systemd user timer after a possible canonical-branch update.
         writes: true
         approval: NONE_FOR_READ_ONLY_WAKE
@@ -804,7 +804,7 @@ tool_families:
         path: docs/cartographer/atom_describe.py
         invoke: >-
           python3 docs/cartographer/atom_describe.py --limit 0
-          --foreign /mnt/hdd01/Soft/GitHub/zeta-23-lean
+          --foreign <foreign-repository-path>
           --json docs/cartographer/atoms_described.json
         alternatives:
           - python3 docs/cartographer/atom_describe.py --selftest
@@ -837,7 +837,7 @@ tool_families:
         audience: [CODEX, CLAUDE_CODE, HUMAN]
         mode: READ_ONLY
         path: docs/cartographer/foreign_atoms.py
-        invoke: python3 docs/cartographer/foreign_atoms.py --foreign /mnt/hdd01/Soft/GitHub/zeta-23-lean
+        invoke: python3 docs/cartographer/foreign_atoms.py --foreign <foreign-repository-path>
         cwd: repository root
         trigger: Locating a foreign formalization layer by topic.
         writes: false
