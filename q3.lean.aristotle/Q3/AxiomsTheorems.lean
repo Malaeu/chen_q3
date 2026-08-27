@@ -1,11 +1,11 @@
 /-
-Q3 Axioms with Tier-2 as Theorems
-=================================
+Q3 Mixed Theorem and Conditional Compatibility Catalogue
+=========================================================
 
-This file replaces Tier-2 axioms with proven theorems.
-Tier-1 axioms (classical results) remain as axioms.
-
-Usage: Import this instead of Q3.Axioms to get axiom-free Tier-2.
+This file collects proven declarations together with compatibility wrappers
+whose proofs still use imported project assumptions.
+Theorem-shaped declarations in this module therefore have mixed dependency
+profiles.  This is not an assumption-free module and not a public RH export.
 
 REFACTORED 2025-12-20: Removed circular *_integrated imports.
 Now uses REAL bridges for proven theorems.
@@ -51,8 +51,9 @@ open scoped BigOperators Real Classical Pointwise Matrix.Norms.L2Operator
 namespace Q3.Theorems
 
 /-!
-# TIER-1: CLASSICAL AXIOMS (remain as axioms)
-These are re-exported from Q3.Axioms
+# IMPORTED PROJECT ASSUMPTIONS AND OTHER DEPENDENCIES
+These are available through the `Q3.Axioms` import.  The catalogue does not
+classify every project assumption as a classical result.
 -/
 
 -- Tier-1 axioms are already available via Q3.Axioms (imported by _integrated files)
@@ -258,18 +259,38 @@ The quarantined `Q3.Conditional.LegacyArchFloor` assumptions are absent from
 this RH export profile. The single-scale theorems below are separate wiring
 results and do not remove either project assumption in the displayed profile.
 
-## Theorem Wiring Status
+## Consumer Status
 
-### ✅ WIRED INTO MAIN CHAIN (not in `#print axioms`)
-- `node_spacing` → NodeSpacingBridge.node_spacing_Q3
-- `S_K_small` → S_K_SmallBridgeV2.S_K_small_Q3
-- `W_sum_finite` → W_sum_BridgeV2.W_sum_finite_Q3
-- `Q_Lipschitz` → Q3.Proofs.Q_Lipschitz_on_W_K_thm
-- `RKHS_contraction` → SingleScale.rkhs_contraction_data_of_tcritical
+### Current compatibility `Q3.Main` route
 
-### ✅ THEOREM WIRED (previous wiring gaps closed)
-- `A1_density` → A1prime.A1_density_WK_fixed_t0
-- `Q_nonneg_on_atoms` → QNonnegClosure.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_thm
+Live consumer search shows no direct `Q3.Theorems` token in
+`Q3.Proofs.PaperMainlineAtomRoute` or `Q3.Main`.  There is nevertheless one
+transitively consumed declaration from this catalogue:
+
+`PaperMainlineAtomRoute`
+→ `CompatibilityReduction.Q_nonneg_on_WK_tcritical_current_atom_route`
+→ `Q3.T5.T5_transfer_of_atoms`
+→ `Q3.Theorems.A1_density_WK` (`Q3/T5_Transfer.lean:99`).
+
+The same transfer theorem directly consumes
+`Q3.Proofs.Q_Lipschitz_on_W_K_thm`; it does not consume the catalogue wrapper
+`Q3.Theorems.Q_Lipschitz`.  The exact `#print axioms` profile above remains the
+authority for the assembled compatibility RH route.
+
+### Catalogue / proof-of-concept / clean-route ingredients
+
+- `node_spacing` → `NodeSpacingBridge.node_spacing_Q3`
+- `S_K_small` → `S_K_SmallBridgeV2.S_K_small_Q3`
+- `W_sum_finite` → `W_sum_BridgeV3.W_sum_finite_Q3`
+- `Q_Lipschitz` → `Q3.Proofs.Q_Lipschitz_on_W_K_thm`
+- `RKHS_contraction` → `SingleScale.rkhs_contraction_data_of_tcritical`
+- `Q_nonneg_on_atoms` →
+  `QNonnegClosure.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_thm`
+
+These listed wrappers are not consumed by the current compatibility route;
+they may be consumed by separate transfer, proof-of-concept, or clean modules.
+Presence here is not evidence that they reduce the current compatibility RH
+export's project-assumption profile.
 
 ## Next Steps to Close Axioms
 1. Remove remaining axioms (off_diag_exp_sum, A3_bridge if still referenced)

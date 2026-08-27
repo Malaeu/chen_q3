@@ -156,17 +156,23 @@ if [[ "$actual_assumptions" != "$expected_assumptions" ]]; then
   exit 1
 fi
 
-printf 'exact audited axiom-module content hashes\n'
+printf 'exact audited axiom and compatibility-catalogue content hashes\n'
 expected_axioms_sha='ac2523639ae52cebf323a08ebcb01394094d3fd39d8abd6185af28c810f50b2a'
 expected_clean_sha='98df0d9bc0c9d8fee63e3c916be0f4f6cb72d596d985421a5db3831768d000c5'
+expected_catalogue_sha='90b28b53bae71764e87dcef7f537d06ca6de619bad3a59ea4752d2bb84dffe1b'
 actual_axioms_sha="$(sha256sum Q3/Axioms.lean | cut -d' ' -f1)"
 actual_clean_sha="$(sha256sum Q3/Clean/AxiomsTier1.lean | cut -d' ' -f1)"
+actual_catalogue_sha="$(sha256sum Q3/AxiomsTheorems.lean | cut -d' ' -f1)"
 [[ "$actual_axioms_sha" == "$expected_axioms_sha" ]] || {
   printf 'Q3/Axioms.lean content drift: %s\n' "$actual_axioms_sha" >&2
   exit 1
 }
 [[ "$actual_clean_sha" == "$expected_clean_sha" ]] || {
   printf 'Q3/Clean/AxiomsTier1.lean content drift: %s\n' "$actual_clean_sha" >&2
+  exit 1
+}
+[[ "$actual_catalogue_sha" == "$expected_catalogue_sha" ]] || {
+  printf 'Q3/AxiomsTheorems.lean content drift: %s\n' "$actual_catalogue_sha" >&2
   exit 1
 }
 
