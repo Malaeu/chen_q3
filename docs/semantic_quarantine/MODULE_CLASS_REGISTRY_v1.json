@@ -1,0 +1,200 @@
+{
+  "schema": "q3_module_class_registry.v1",
+  "schema_ref": "docs/semantic_quarantine/MODULE_CLASS_SCHEMA_v1.json",
+  "version": 1,
+  "rules": {
+    "exact": [
+      {
+        "id": "q3_root",
+        "artifact_kind": "LEAN_MODULE",
+        "identity": {
+          "source_root": "q3.lean.aristotle",
+          "repo_relative_path": "q3.lean.aristotle/Q3.lean",
+          "lean_module": "Q3"
+        },
+        "module_class": "CONDITIONAL_COMPILED",
+        "lifecycle_status": "ACTIVE",
+        "traits": ["PROJECT_AXIOMS", "LEGACY_BROAD_CONE"]
+      },
+      {
+        "id": "q3_basic_defs",
+        "artifact_kind": "LEAN_MODULE",
+        "identity": {
+          "source_root": "q3.lean.aristotle",
+          "repo_relative_path": "q3.lean.aristotle/Q3/Basic/Defs.lean",
+          "lean_module": "Q3.Basic.Defs"
+        },
+        "module_class": "CORE_SHARED",
+        "lifecycle_status": "ACTIVE",
+        "traits": ["LEGACY_BROAD_CONE"],
+        "physical_split": false,
+        "declaration_overrides": [
+          {
+            "declaration": "Q3.Weil_cone",
+            "module_class": "LEGACY",
+            "lifecycle_status": "COMPATIBILITY_ONLY",
+            "traits": ["LEGACY_BROAD_CONE"],
+            "source_identity": {
+              "source_root": "q3.lean.aristotle",
+              "repo_relative_path": "q3.lean.aristotle/Q3/Basic/Defs.lean",
+              "lean_module": "Q3.Basic.Defs"
+            }
+          },
+          {
+            "declaration": "Q3.Weil_cone_K",
+            "module_class": "LEGACY",
+            "lifecycle_status": "COMPATIBILITY_ONLY",
+            "traits": ["LEGACY_BROAD_CONE"],
+            "source_identity": {
+              "source_root": "q3.lean.aristotle",
+              "repo_relative_path": "q3.lean.aristotle/Q3/Basic/Defs.lean",
+              "lean_module": "Q3.Basic.Defs"
+            }
+          },
+          {
+            "declaration": "Q3.W_K",
+            "module_class": "LEGACY",
+            "lifecycle_status": "COMPATIBILITY_ONLY",
+            "traits": ["LEGACY_BROAD_CONE"],
+            "source_identity": {
+              "source_root": "q3.lean.aristotle",
+              "repo_relative_path": "q3.lean.aristotle/Q3/Basic/Defs.lean",
+              "lean_module": "Q3.Basic.Defs"
+            }
+          },
+          {
+            "declaration": "Q3.W_K_subset_Weil_cone_K",
+            "module_class": "LEGACY",
+            "lifecycle_status": "COMPATIBILITY_ONLY",
+            "traits": ["LEGACY_BROAD_CONE"],
+            "source_identity": {
+              "source_root": "q3.lean.aristotle",
+              "repo_relative_path": "q3.lean.aristotle/Q3/Basic/Defs.lean",
+              "lean_module": "Q3.Basic.Defs"
+            }
+          }
+        ]
+      },
+      {
+        "id": "q3_basic_weil_square_class",
+        "artifact_kind": "LEAN_MODULE",
+        "identity": {
+          "source_root": "q3.lean.aristotle",
+          "repo_relative_path": "q3.lean.aristotle/Q3/Basic/WeilSquareClass.lean",
+          "lean_module": "Q3.Basic.WeilSquareClass"
+        },
+        "module_class": "PUBLIC_CANONICAL",
+        "lifecycle_status": "CANDIDATE",
+        "traits": []
+      },
+      {
+        "id": "q3_basic_weil_direct_route",
+        "artifact_kind": "LEAN_MODULE",
+        "identity": {
+          "source_root": "q3.lean.aristotle",
+          "repo_relative_path": "q3.lean.aristotle/Q3/Basic/WeilDirectRoute.lean",
+          "lean_module": "Q3.Basic.WeilDirectRoute"
+        },
+        "module_class": "PUBLIC_CANONICAL",
+        "lifecycle_status": "CANDIDATE",
+        "traits": []
+      },
+      {
+        "id": "q3_axioms",
+        "artifact_kind": "LEAN_MODULE",
+        "identity": {
+          "source_root": "q3.lean.aristotle",
+          "repo_relative_path": "q3.lean.aristotle/Q3/Axioms.lean",
+          "lean_module": "Q3.Axioms"
+        },
+        "module_class": "CONDITIONAL_COMPILED",
+        "lifecycle_status": "ACTIVE",
+        "traits": ["PROJECT_AXIOMS", "LEGACY_BROAD_CONE"]
+      },
+      {
+        "id": "q3_main",
+        "artifact_kind": "LEAN_MODULE",
+        "identity": {
+          "source_root": "q3.lean.aristotle",
+          "repo_relative_path": "q3.lean.aristotle/Q3/Main.lean",
+          "lean_module": "Q3.Main"
+        },
+        "module_class": "CONDITIONAL_COMPILED",
+        "lifecycle_status": "COMPATIBILITY_ONLY",
+        "traits": ["PROJECT_AXIOMS", "LEGACY_BROAD_CONE"]
+      },
+      {
+        "id": "q3_paper_mainline_atom_route",
+        "artifact_kind": "LEAN_MODULE",
+        "identity": {
+          "source_root": "q3.lean.aristotle",
+          "repo_relative_path": "q3.lean.aristotle/Q3/Proofs/PaperMainlineAtomRoute.lean",
+          "lean_module": "Q3.Proofs.PaperMainlineAtomRoute"
+        },
+        "module_class": "CONDITIONAL_COMPILED",
+        "lifecycle_status": "COMPATIBILITY_ONLY",
+        "traits": ["PROJECT_AXIOMS", "LEGACY_BROAD_CONE"]
+      },
+      {
+        "id": "q3_main_theorems",
+        "artifact_kind": "LEAN_MODULE",
+        "identity": {
+          "source_root": "q3.lean.aristotle",
+          "repo_relative_path": "q3.lean.aristotle/Q3/MainTheorems.lean",
+          "lean_module": "Q3.MainTheorems"
+        },
+        "module_class": "LEGACY",
+        "lifecycle_status": "COMPATIBILITY_ONLY",
+        "traits": ["PROJECT_AXIOMS", "LEGACY_BROAD_CONE"]
+      },
+      {
+        "id": "root_main_theorems",
+        "artifact_kind": "LEAN_MODULE",
+        "identity": {
+          "source_root": "q3.lean.aristotle",
+          "repo_relative_path": "q3.lean.aristotle/MainTheorems.lean",
+          "lean_module": "MainTheorems"
+        },
+        "module_class": "LEGACY",
+        "lifecycle_status": "COMPATIBILITY_ONLY",
+        "traits": ["PROJECT_AXIOMS", "LEGACY_BROAD_CONE"]
+      },
+      {
+        "id": "q3_clean_main_clean",
+        "artifact_kind": "LEAN_MODULE",
+        "identity": {
+          "source_root": "q3.lean.aristotle",
+          "repo_relative_path": "q3.lean.aristotle/Q3/Clean/MainClean.lean",
+          "lean_module": "Q3.Clean.MainClean"
+        },
+        "module_class": "LEGACY",
+        "lifecycle_status": "BROKEN",
+        "traits": ["BROKEN_BUILD"]
+      }
+    ],
+    "prefix": [
+      {
+        "id": "route_b_modules",
+        "artifact_kind": "LEAN_MODULE",
+        "match": {
+          "source_root": "q3.lean.aristotle",
+          "repo_relative_path_prefix": "q3.lean.aristotle/Q3/Proofs/RouteB/",
+          "lean_module_prefix": "Q3.Proofs.RouteB."
+        },
+        "module_class": "CHALLENGER",
+        "lifecycle_status": "ACTIVE",
+        "traits": []
+      }
+    ]
+  },
+  "declared_coverage": [
+    {
+      "id": "all_tracked_route_b_modules",
+      "artifact_kind": "LEAN_MODULE",
+      "source_root": "q3.lean.aristotle",
+      "tracked_path_prefix": "q3.lean.aristotle/Q3/Proofs/RouteB/",
+      "lean_module_prefix": "Q3.Proofs.RouteB.",
+      "expected_module_class": "CHALLENGER"
+    }
+  ]
+}

@@ -29,12 +29,14 @@ project axioms or turn an explicit mathematical premise into a proved premise.
 - `LEGACY`: retained historical or compatibility surface; not a public result.
 - `EXPERIMENT`: noncanonical exploratory surface.
 - `ARCHIVE`: historical material outside the live interface.
+- `GENERATED_VIEW`: generated projection from authoritative machine state;
+  never a proof source.
 
-## Default entrypoint
+## Audited-baseline default entrypoint
 
-The Lake default target is `Q3`, rooted at `q3.lean.aristotle/Q3.lean`. It
-imports both the corrected square-class interfaces and the compiled broad-cone
-route:
+At audited baseline `49c3b916cfa24df9ba6b49b9d9952a0cf06d3da9`, the Lake
+default target was `Q3`, rooted at `q3.lean.aristotle/Q3.lean`. It imported both
+the corrected square-class interfaces and the compiled broad-cone route:
 
 ```text
 Q3.Basic.WeilSquareClass       PUBLIC_CANONICAL_CANDIDATE module
@@ -400,7 +402,7 @@ Q3.MainTheorems.RH_proven@root_MainTheorems
    → Q3.Main.Q_nonneg_on_Weil_cone
 ```
 
-Direct importers of `Q3.Main`:
+Direct importers of `Q3.Main` at the audited baseline:
 
 ```text
 q3.lean.aristotle/Q3.lean
@@ -454,3 +456,40 @@ clean_surface: LEGACY_BUILD_FAILED
 route_b: CHALLENGER_NOT_RH
 canonical_public_entrypoint_established: false
 ```
+
+## Post-baseline semantic-quarantine delta
+
+This delta records later repository changes without rewriting the pinned
+baseline receipt above.
+
+```yaml
+delta_id: P2_LEGACY_BROAD_CONE_NAMESPACE_QUARANTINE_V1
+source_commit: 9716df6cab7936fbb442797367b88c6c8aee96ae
+default_root_change:
+  path: q3.lean.aristotle/Q3.lean
+  imports_Q3_Main: false
+  still_imports_Q3_Axioms: true
+  resulting_class: CONDITIONAL_COMPILED
+explicit_conditional_names:
+  - Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom
+  - Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms
+representative_deprecated_compatibility_wrappers:
+  - Q3.Q_nonneg_on_Weil_cone_current_atom_route
+  - Q3.RH_of_shifted_atom_route
+unconditional_rh_proof: false
+```
+
+P3 classifies `Q3.Basic.Defs` as `CORE_SHARED`; no physical split occurs. Its
+legacy broad-cone surface is frozen at declaration granularity to exactly:
+
+```text
+Q3.Weil_cone
+Q3.Weil_cone_K
+Q3.W_K
+Q3.W_K_subset_Weil_cone_K
+```
+
+The documentary exception is not an import or declaration-use firewall.
+Executable enforcement remains a mandatory P6 gate. The authoritative P3
+machine records are `MODULE_CLASS_SCHEMA_v1.json` and
+`MODULE_CLASS_REGISTRY_v1.json` in this directory.

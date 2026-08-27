@@ -1,0 +1,237 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "q3_module_class_registry.schema.v1",
+  "title": "Q3 module and status-document classification registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_ref",
+    "version",
+    "rules",
+    "declared_coverage"
+  ],
+  "properties": {
+    "schema": {"const": "q3_module_class_registry.v1"},
+    "schema_ref": {"const": "docs/semantic_quarantine/MODULE_CLASS_SCHEMA_v1.json"},
+    "version": {"const": 1},
+    "rules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["exact", "prefix"],
+      "properties": {
+        "exact": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/exactRule"}
+        },
+        "prefix": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/prefixRule"}
+        }
+      }
+    },
+    "declared_coverage": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/coverageRule"}
+    }
+  },
+  "$defs": {
+    "moduleClass": {
+      "enum": [
+        "CORE_SHARED",
+        "PUBLIC_CANONICAL",
+        "CHALLENGER",
+        "CONDITIONAL_COMPILED",
+        "LEGACY",
+        "EXPERIMENT",
+        "ARCHIVE",
+        "GENERATED_VIEW"
+      ]
+    },
+    "artifactKind": {
+      "enum": ["LEAN_MODULE", "STATUS_DOCUMENT"]
+    },
+    "lifecycleStatus": {
+      "enum": [
+        "ACTIVE",
+        "CANDIDATE",
+        "COMPATIBILITY_ONLY",
+        "BROKEN",
+        "HISTORICAL",
+        "GENERATED"
+      ]
+    },
+    "trait": {
+      "enum": ["PROJECT_AXIOMS", "LEGACY_BROAD_CONE", "BROKEN_BUILD"]
+    },
+    "canonicalPath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[^/\\\\](?:[^\\\\]*[^/\\\\])?$",
+      "$comment": "This pattern excludes absolute paths, backslashes, and trailing separators. Dot segments and repeated separators are rejected by the executable canonical-path validator."
+    },
+    "canonicalDirectoryPrefix": {
+      "type": "string",
+      "minLength": 2,
+      "pattern": "^[^/\\\\](?:[^\\\\]*/)$"
+    },
+    "ruleId": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$"
+    },
+    "leanModule": {
+      "type": "string",
+      "pattern": "^[A-Za-z_][A-Za-z0-9_]*(?:\\.[A-Za-z_][A-Za-z0-9_]*)*$"
+    },
+    "leanModulePrefix": {
+      "type": "string",
+      "pattern": "^[A-Za-z_][A-Za-z0-9_]*(?:\\.[A-Za-z_][A-Za-z0-9_]*)*\\.$"
+    },
+    "moduleIdentity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_root", "repo_relative_path", "lean_module"],
+      "properties": {
+        "source_root": {"$ref": "#/$defs/canonicalPath"},
+        "repo_relative_path": {"$ref": "#/$defs/canonicalPath"},
+        "lean_module": {"$ref": "#/$defs/leanModule"}
+      }
+    },
+    "documentIdentity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repo_relative_path"],
+      "properties": {
+        "repo_relative_path": {"$ref": "#/$defs/canonicalPath"}
+      }
+    },
+    "declarationOverride": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "declaration",
+        "module_class",
+        "lifecycle_status",
+        "traits",
+        "source_identity"
+      ],
+      "properties": {
+        "declaration": {"type": "string", "minLength": 1},
+        "module_class": {"$ref": "#/$defs/moduleClass"},
+        "lifecycle_status": {"$ref": "#/$defs/lifecycleStatus"},
+        "traits": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/trait"}
+        },
+        "source_identity": {"$ref": "#/$defs/moduleIdentity"}
+      }
+    },
+    "exactRule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "artifact_kind",
+        "identity",
+        "module_class",
+        "lifecycle_status",
+        "traits"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {"artifact_kind": {"const": "LEAN_MODULE"}},
+            "required": ["artifact_kind"]
+          },
+          "then": {
+            "properties": {"identity": {"$ref": "#/$defs/moduleIdentity"}}
+          }
+        },
+        {
+          "if": {
+            "properties": {"artifact_kind": {"const": "STATUS_DOCUMENT"}},
+            "required": ["artifact_kind"]
+          },
+          "then": {
+            "properties": {
+              "identity": {"$ref": "#/$defs/documentIdentity"},
+              "declaration_overrides": {"maxItems": 0}
+            },
+            "not": {"required": ["physical_split"]}
+          }
+        }
+      ],
+      "properties": {
+        "id": {"$ref": "#/$defs/ruleId"},
+        "artifact_kind": {"$ref": "#/$defs/artifactKind"},
+        "identity": {},
+        "module_class": {"$ref": "#/$defs/moduleClass"},
+        "lifecycle_status": {"$ref": "#/$defs/lifecycleStatus"},
+        "traits": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/trait"}
+        },
+        "physical_split": {"type": "boolean"},
+        "declaration_overrides": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/declarationOverride"}
+        }
+      }
+    },
+    "prefixRule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "artifact_kind",
+        "match",
+        "module_class",
+        "lifecycle_status",
+        "traits"
+      ],
+      "properties": {
+        "id": {"$ref": "#/$defs/ruleId"},
+        "artifact_kind": {"const": "LEAN_MODULE"},
+        "match": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["source_root", "repo_relative_path_prefix", "lean_module_prefix"],
+          "properties": {
+            "source_root": {"$ref": "#/$defs/canonicalPath"},
+            "repo_relative_path_prefix": {"$ref": "#/$defs/canonicalDirectoryPrefix"},
+            "lean_module_prefix": {"$ref": "#/$defs/leanModulePrefix"}
+          }
+        },
+        "module_class": {"$ref": "#/$defs/moduleClass"},
+        "lifecycle_status": {"$ref": "#/$defs/lifecycleStatus"},
+        "traits": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/trait"}
+        }
+      }
+    },
+    "coverageRule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "artifact_kind",
+        "source_root",
+        "tracked_path_prefix",
+        "lean_module_prefix",
+        "expected_module_class"
+      ],
+      "properties": {
+        "id": {"$ref": "#/$defs/ruleId"},
+        "artifact_kind": {"const": "LEAN_MODULE"},
+        "source_root": {"$ref": "#/$defs/canonicalPath"},
+        "tracked_path_prefix": {"$ref": "#/$defs/canonicalDirectoryPrefix"},
+        "lean_module_prefix": {"$ref": "#/$defs/leanModulePrefix"},
+        "expected_module_class": {"$ref": "#/$defs/moduleClass"}
+      }
+    }
+  }
+}
