@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "q3.root_artifact_classification.v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "source_commit", "scope", "physical_moves_performed", "script_output_policy", "future_session_protocol_policy", "target_availability_status", "entries"],
+  "properties": {
+    "schema_version": {"const": "q3.root_artifact_classification.v1"},
+    "source_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "scope": {"const": "ALL_TRACKED_IMMEDIATE_ROOT_ENTRIES"},
+    "physical_moves_performed": {"const": false},
+    "target_availability_status": {"const": "PENDING_P9_RECHECK"},
+    "future_session_protocol_policy": {
+      "const": {"closed_root": true, "existing_root_action": "KEEP", "future_directory": "docs/session_protocols", "filename_regex": "^SESSION_PROTOKOLL_[0-9]{4}-[0-9]{2}-[0-9]{2}\\.md$"}
+    },
+    "script_output_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "assurance", "runtime_root_diff_guard_required_before_P9", "typed_exceptions"],
+      "properties": {
+        "status": {"const": "LITERAL_STATIC_PREFLIGHT_ONLY"},
+        "assurance": {"const": "NOT_A_COMPLETE_RUNTIME_PROOF"},
+        "runtime_root_diff_guard_required_before_P9": {"const": true},
+        "typed_exceptions": {"const": [{"path": "q3.lean.aristotle/scripts/build_docs.sh", "literal": "docbuild.log", "basis": "OUTPUT_AFTER_EXPLICIT_CD_TO_NONROOT_DOCBUILD_DIR"}]}
+      }
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 69,
+      "maxItems": 69,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "object_kind", "git_mode", "source_oid", "classification", "drift_class", "reason", "zero_reference_status"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1, "pattern": "^[^/]+$"},
+          "object_kind": {"enum": ["tree", "blob", "symlink"]},
+          "git_mode": {"enum": ["040000", "100644", "100755", "120000"]},
+          "source_oid": {"type": "string", "pattern": "^[0-9a-f]{40,64}$"},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "byte_size": {"type": "integer", "minimum": 0},
+          "symlink_target": {"type": "string", "minLength": 1},
+          "classification": {"enum": ["KEEP", "ARCHIVE", "MOVE", "IGNORE"]},
+          "drift_class": {"enum": ["ROOT_STRUCTURE", "KEEP_MUTABLE", "KEEP_PINNED", "ARCHIVE_DEFERRED"]},
+          "reason": {"type": "string", "minLength": 8},
+          "target": {"type": "string", "minLength": 1},
+          "zero_reference_status": {"enum": ["NOT_APPLICABLE", "PENDING"]}
+        },
+        "allOf": [
+          {"if": {"properties": {"object_kind": {"const": "tree"}}}, "then": {"properties": {"git_mode": {"const": "040000"}, "drift_class": {"const": "ROOT_STRUCTURE"}}, "not": {"anyOf": [{"required": ["sha256"]}, {"required": ["byte_size"]}, {"required": ["symlink_target"]}]}}},
+          {"if": {"properties": {"object_kind": {"enum": ["blob", "symlink"]}}}, "then": {"required": ["sha256", "byte_size"]}},
+          {"if": {"properties": {"object_kind": {"const": "symlink"}}}, "then": {"required": ["symlink_target"], "properties": {"git_mode": {"const": "120000"}, "drift_class": {"const": "KEEP_PINNED"}}}},
+          {"if": {"properties": {"object_kind": {"const": "tree"}}}, "then": {"properties": {"classification": {"const": "KEEP"}}}},
+          {"if": {"properties": {"object_kind": {"const": "symlink"}}}, "then": {"properties": {"classification": {"const": "KEEP"}}}},
+          {"if": {"properties": {"classification": {"const": "ARCHIVE"}}}, "then": {"required": ["target"], "properties": {"object_kind": {"const": "blob"}, "drift_class": {"const": "ARCHIVE_DEFERRED"}, "zero_reference_status": {"const": "PENDING"}}}},
+          {"if": {"properties": {"classification": {"const": "KEEP"}, "object_kind": {"const": "blob"}}}, "then": {"properties": {"drift_class": {"const": "KEEP_MUTABLE"}}}},
+          {"if": {"properties": {"classification": {"const": "KEEP"}}}, "then": {"properties": {"zero_reference_status": {"const": "NOT_APPLICABLE"}}, "not": {"required": ["target"]}}},
+          {"if": {"properties": {"classification": {"enum": ["MOVE", "IGNORE"]}}}, "then": false}
+        ]
+      }
+    }
+  }
+}

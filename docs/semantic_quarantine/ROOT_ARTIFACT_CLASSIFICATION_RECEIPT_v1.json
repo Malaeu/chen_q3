@@ -1,0 +1,135 @@
+{
+  "archive_count": 20,
+  "foreign_dirty_snapshot": [
+    {
+      "byte_size": 2567,
+      "kind": "file",
+      "mode": 384,
+      "path": "README.md",
+      "sha256": "583c285aa9cf3f6f38d56e807c29102d093aed3868f9b8087267c59d5cc323c3"
+    },
+    {
+      "byte_size": 1385,
+      "kind": "file",
+      "mode": 384,
+      "path": "docs/generated/PROJECT_STATUS.md",
+      "sha256": "d2ef3e4d64373dbb58177f32d1fbae501cdfacb4315946e3767b2609837c07f7"
+    },
+    {
+      "byte_size": 1083,
+      "kind": "file",
+      "mode": 384,
+      "path": "docs/generated/PUBLIC_ROUTE_GRAPH.md",
+      "sha256": "05666cf539b9161c4675c7e1c65467d422459049fdd635b6dc2b08d85581c4e1"
+    },
+    {
+      "byte_size": 1068,
+      "kind": "file",
+      "mode": 384,
+      "path": "docs/generated/WORK_QUEUE.md",
+      "sha256": "4a167b027a6ca482f55ebc1b2f4928e9ff834112f86c2097f26f084a6a6fcb54"
+    },
+    {
+      "byte_size": 9746,
+      "kind": "file",
+      "mode": 436,
+      "path": "docs/routeB_bus/mythos/DRAFT_ARSENAL_CARD_CANDIDATES_BB_GORZ_20260827.md",
+      "sha256": "1eaf577e05e55e63433e5711bf1bdd761a6d60673413467465bae66e60233de1"
+    },
+    {
+      "byte_size": 7192,
+      "kind": "file",
+      "mode": 436,
+      "path": "docs/routeB_bus/mythos/DRAFT_CODEX_TASK_CONTROL_PLANE_REFRESH_20260827.md",
+      "sha256": "a09d4ab25673f3ead8900d676acf09a5d3c876eb06e7806a2856e7ee5298e0f8"
+    },
+    {
+      "byte_size": 5906,
+      "kind": "file",
+      "mode": 436,
+      "path": "docs/routeB_bus/mythos/DRAFT_CODEX_TASK_RH_PROVEN_RENAME_20260827.md",
+      "sha256": "2b5eda8346e452af949ec9683346ecdc1c61674d83515d0c4ab3021616a70e8a"
+    },
+    {
+      "byte_size": 7526,
+      "kind": "file",
+      "mode": 436,
+      "path": "docs/routeB_bus/mythos/DRAFT_EXTERNAL_INTERFACE_FAITHFULNESS_AUDIT_BRIEF_v1_20260827.md",
+      "sha256": "f694e90b7964139e41e395d7cc501b8d40ae1a5ecb0207efafe94f748b3399a6"
+    },
+    {
+      "byte_size": 6392,
+      "kind": "file",
+      "mode": 436,
+      "path": "docs/routeB_bus/mythos/DRAFT_ROUTE_B_CONTRACT_V2_STATUS_ADDENDUM_v1_20260827.md",
+      "sha256": "7074c2a6423ce482444166cf004458ebc6f5bf018bd0cf6f2ada946b1489ab06"
+    },
+    {
+      "byte_size": 6150,
+      "kind": "file",
+      "mode": 436,
+      "path": "docs/routeB_bus/mythos/MYTHOS_PREDICTION_REGISTER_20260827.md",
+      "sha256": "ada1dd5328fcac12d85413ec4313e5d314862ea2a11edff5cf0e761d62f8961c"
+    },
+    {
+      "byte_size": 0,
+      "kind": "file",
+      "mode": 436,
+      "path": "orchestrator/state/*.db",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "byte_size": 710,
+      "kind": "file",
+      "mode": 436,
+      "path": "orchestrator/state/PROJECT_FACTS.json",
+      "sha256": "5cdadb59f4bc1ce5fbcdb1229e18d82e2bd2562c3cfaa9fa637d0102436809e8"
+    },
+    {
+      "byte_size": 3129,
+      "kind": "file",
+      "mode": 384,
+      "path": "orchestrator/state/PROJECT_STATE.json",
+      "sha256": "2e1273f2e383a54f6f9c9b82a57dcb8b64e3b229913f16263ab35273001250a4"
+    },
+    {
+      "byte_size": 816,
+      "kind": "file",
+      "mode": 436,
+      "path": "orchestrator/state/PROJECT_STATE_EVENTS.jsonl",
+      "sha256": "ded252796f8ac44bc2abaaeec48f3277b563f2395f7e6bdd338f603d462fbb07"
+    },
+    {
+      "byte_size": 6812,
+      "kind": "file",
+      "mode": 384,
+      "path": "q3.lean.aristotle/PROJECT_ORCHESTRATOR.md",
+      "sha256": "c9a0d1c1059e49426ebf03ca0260f0ba09086b9f4e080b2ac0a1085af7215ba8"
+    }
+  ],
+  "hashes": {
+    "checker": "27307e281663be94218f8ef87e163d68927240c9e120bb7c4ee6cca73f18a9e3",
+    "classification": "80243d5da2ffc0f0f7a4ed1226025c724fbd6d73fab0ccd176a2d25b7c39cd56",
+    "schema": "69ee67954fc0292f174aeacd722fe5e03897f3979d619254c6606d4b7d7c55c0",
+    "tests": "50af5167844aeabcf7f177385af6f0d3ba1f433c9996f9a1f54fb42e835ec675",
+    "wrapper": "3b215af980b1026e9e99c456811740aa1386462c7478d065c7345a2abfe6ac6c"
+  },
+  "ignore_count": 0,
+  "keep_count": 49,
+  "move_count": 0,
+  "plants": [
+    "ROOT_ARTIFACT_UNCLASSIFIED",
+    "TRACKED_IGNORE_FORBIDDEN",
+    "ARCHIVE_TARGET_COLLISION_OR_ESCAPE",
+    "LITERAL_SCRIPT_ROOT_OUTPUT_PREFLIGHT",
+    "ROOT_SYMLINK_DRIFT",
+    "FOREIGN_DIRTY_PATH_MUTATION"
+  ],
+  "prospective_tree_excluding_receipt": "48ab75d138f99f8b8c02adbe3148bfb04530d3a2",
+  "root_entry_count": 69,
+  "schema_version": "q3.root_artifact_classification_receipt.v1",
+  "script_output_assurance": "NOT_A_COMPLETE_RUNTIME_PROOF",
+  "script_output_gate_scope": "LITERAL_STATIC_PREFLIGHT_ONLY",
+  "source_commit": "e89acb7ab029f062808e38eb59c6e2e28a06fc71",
+  "status": "PASS"
+}
