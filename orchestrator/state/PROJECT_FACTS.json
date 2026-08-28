@@ -14,7 +14,7 @@
   "receipts": [
     {
       "path": "docs/semantic_quarantine/PUBLIC_EXPORT_INDEX_AND_AXIOM_RECEIPT_v1.md",
-      "sha256": "357947e3e5e56c2aae358a09cad7537ef85cc5b76c715c8b9607b67338123838"
+      "sha256": "411d220c62a977ec8cf10d5c03b2a8159fbf4cef3419c312372f77d6b1c6d735"
     },
     {
       "path": "docs/semantic_quarantine/MODULE_CLASS_REGISTRY_v1.json",

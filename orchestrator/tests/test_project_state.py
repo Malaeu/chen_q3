@@ -180,13 +180,17 @@ def test_event_hash_chain_rejects_retroactive_edit(tmp_path: Path) -> None:
 
 @pytest.mark.parametrize(("field", "value"), [("event_id", 7), ("kind", "bad-kind"), ("summary", None), ("recorded_at", "2026-08-27T12:00:00")])
 def test_event_shape_rejects_malformed_rehashed_values(tmp_path: Path, field: str, value: object) -> None:
-    event = json.loads((ROOT / "orchestrator/state/PROJECT_STATE_EVENTS.jsonl").read_text(encoding="utf-8"))
+    events = ps.load_events(ROOT / "orchestrator/state/PROJECT_STATE_EVENTS.jsonl")
+    event = events[-1]
     event[field] = value
     payload = dict(event)
     payload.pop("event_sha256")
     event["event_sha256"] = hashlib.sha256(ps.canonical_json(payload)).hexdigest()
     path = tmp_path / "events.jsonl"
-    path.write_text(json.dumps(event, separators=(",", ":")) + "\n", encoding="utf-8")
+    path.write_text(
+        "".join(json.dumps(item, separators=(",", ":")) + "\n" for item in events),
+        encoding="utf-8",
+    )
     with pytest.raises(ps.StateError, match="EVENT_SCHEMA_INVALID"):
         ps.load_events(path)
 
@@ -194,7 +198,7 @@ def test_event_shape_rejects_malformed_rehashed_values(tmp_path: Path, field: st
 def test_event_ids_are_unique(tmp_path: Path) -> None:
     path = tmp_path / "events.jsonl"
     path.write_bytes((ROOT / "orchestrator/state/PROJECT_STATE_EVENTS.jsonl").read_bytes())
-    original_id = json.loads(path.read_text(encoding="utf-8"))["event_id"]
+    original_id = ps.load_events(path)[0]["event_id"]
     append_valid_event(path, original_id, "duplicate id")
     with pytest.raises(ps.StateError, match="EVENT_SCHEMA_INVALID"):
         ps.load_events(path)
@@ -212,19 +216,24 @@ def test_committed_event_history_rejects_rewrite_and_rehash(tmp_path: Path) -> N
     event_dir = tmp_path / "orchestrator/state"
     event_dir.mkdir(parents=True)
     event_path = event_dir / "PROJECT_STATE_EVENTS.jsonl"
-    original = json.loads((ROOT / "orchestrator/state/PROJECT_STATE_EVENTS.jsonl").read_text(encoding="utf-8"))
-    event_path.write_text(json.dumps(original, separators=(",", ":")) + "\n", encoding="utf-8")
+    source = ROOT / "orchestrator/state/PROJECT_STATE_EVENTS.jsonl"
+    original_events = ps.load_events(source)
+    event_path.write_bytes(source.read_bytes())
     subprocess.run(["git", "init", "-q"], cwd=tmp_path, check=True)
     subprocess.run(["git", "config", "user.email", "plant@example.invalid"], cwd=tmp_path, check=True)
     subprocess.run(["git", "config", "user.name", "P5 plant"], cwd=tmp_path, check=True)
     subprocess.run(["git", "add", "orchestrator/state/PROJECT_STATE_EVENTS.jsonl"], cwd=tmp_path, check=True)
     subprocess.run(["git", "commit", "-qm", "bootstrap"], cwd=tmp_path, check=True)
-    rewritten = dict(original)
+    rewritten_events = copy.deepcopy(original_events)
+    rewritten = rewritten_events[-1]
     rewritten["summary"] = "retroactively rewritten history"
     payload = dict(rewritten)
     payload.pop("event_sha256")
     rewritten["event_sha256"] = hashlib.sha256(ps.canonical_json(payload)).hexdigest()
-    event_path.write_text(json.dumps(rewritten, separators=(",", ":")) + "\n", encoding="utf-8")
+    event_path.write_text(
+        "".join(json.dumps(event, separators=(",", ":")) + "\n" for event in rewritten_events),
+        encoding="utf-8",
+    )
     ps.load_events(event_path)  # internally valid after the attacker rehashes it
     with pytest.raises(ps.StateError, match="RETROACTIVE_STATE_REPAIR"):
         ps.check_event_append_only(tmp_path)

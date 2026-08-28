@@ -44,7 +44,7 @@ It remains a fallback, not a second claim of completion.
 ## Current operational selector
 
 <!-- PROJECT_STATE:START -->
-<!-- project_state_sha256: c9b1122a26e227354021da261957566feaafae7ab182c9b81e7e5246c121ba48 -->
+<!-- project_state_sha256: 98713af7ad3292ad22cc92a7355a798a50cf59c940a3cdce8e12cb1571d85435 -->
 Project-level current status is generated from
 `orchestrator/state/PROJECT_STATE.json`.
 Human views: `docs/generated/PROJECT_STATUS.md` and
