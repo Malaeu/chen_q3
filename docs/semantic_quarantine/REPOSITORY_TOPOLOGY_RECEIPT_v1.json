@@ -1,0 +1,187 @@
+{
+  "baseline_commit": "a9934dc476a26f29d232749a3ec5c272109aa810",
+  "candidate_objects": {
+    "docs/semantic_quarantine/REPOSITORY_TOPOLOGY_DECISION_SCHEMA_v1.json": {
+      "byte_size": 4322,
+      "mode": "100644",
+      "oid": "437cdfd91ac45ce141be3d32434351ea0f7cd4dc",
+      "sha256": "e578f39569d692a1d8dac043af808f282aef90977ed05f23628586bdb92fe335"
+    },
+    "docs/semantic_quarantine/REPOSITORY_TOPOLOGY_DECISION_v1.json": {
+      "byte_size": 13036,
+      "mode": "100644",
+      "oid": "71b7dea183dd3fbf9e12f0e681e1e97f401407c9",
+      "sha256": "2d164623b9251012c0bb51a124b967101359131dce21e2e62e0be9fcf8bcb6fd"
+    },
+    "docs/semantic_quarantine/REPOSITORY_TOPOLOGY_RATIONALE_v1.md": {
+      "byte_size": 2340,
+      "mode": "100644",
+      "oid": "0d003a70e9f9837a962a81205af591aba5cac346",
+      "sha256": "2aafd6161d67ef289faec4f98657acc4f54f0b47e2b59ef1c474042be486e059"
+    },
+    "docs/semantic_quarantine/REPOSITORY_TOPOLOGY_RECEIPT_SCHEMA_v1.json": {
+      "byte_size": 2422,
+      "mode": "100644",
+      "oid": "23c503b417ab9d598a2472062c05bfa0e39dd7be",
+      "sha256": "7b126a64625279bbdbe7790b937fbec14d16c7c4ddc8e954f60985cc0b5ccad3"
+    },
+    "orchestrator/repository_topology_decision.py": {
+      "byte_size": 32901,
+      "mode": "100644",
+      "oid": "41b500b961097e2e5dbf82662d02980dda18220e",
+      "sha256": "ee9d68445278168e76f7241d64f9d29642762b0969f7edc07663e4deb4920225"
+    },
+    "orchestrator/tests/test_repository_topology_decision.py": {
+      "byte_size": 9236,
+      "mode": "100644",
+      "oid": "a4a07b576462795f74296d64b08644fe45d24484",
+      "sha256": "35f95d5d1422cbe288c4cb46422a515c5f5bd2ba4ede447e969da11cbc47a8c1"
+    },
+    "scripts/check_repository_topology_decision.sh": {
+      "byte_size": 378,
+      "mode": "100755",
+      "oid": "abbfe2abd0ea81863d1a92a525246a9521660d89",
+      "sha256": "a1297b12ad4e5c1cbdd4e35c7efb334c132e0b55f470532a1b4a0b54ef8778c8"
+    }
+  },
+  "checks": [
+    "EVIDENCE_GIT_OBJECTS_HASHED",
+    "PUBLIC_CLAIM_BOUNDARY_CONDITIONAL_OPEN",
+    "PUBLIC_FIREWALL_SEMANTICS_PASS_AT_PIN",
+    "GOAL058_ONE_FAMILY_CONTRACT_BOUND",
+    "SAME_FAMILY_LEAN_AND_PROOF_RECEIPT_BOUND",
+    "ROUTEB_NOT_RH_AT_PIN",
+    "DISCOVERY_SHADOW_CONDITIONAL",
+    "EXACT_FIVE_ZONE_DECISION",
+    "STATE_AUTHORITY_EXIT_GATES_EXPLICIT",
+    "FOREIGN_DIRTY_BYTE_MODE_TYPE_BOUND",
+    "NO_GITHUB_OR_EXTRACTION_MUTATION"
+  ],
+  "decision_sha256": "2d164623b9251012c0bb51a124b967101359131dce21e2e62e0be9fcf8bcb6fd",
+  "evidence_digest": "7fd84ce2f01ba7839f683a4da6540a1647832638d46748ad590bcef3491f7872",
+  "foreign_dirty_snapshot": [
+    {
+      "byte_size": 2567,
+      "kind": "file",
+      "mode": 384,
+      "path": "README.md",
+      "sha256": "583c285aa9cf3f6f38d56e807c29102d093aed3868f9b8087267c59d5cc323c3"
+    },
+    {
+      "byte_size": 1385,
+      "kind": "file",
+      "mode": 384,
+      "path": "docs/generated/PROJECT_STATUS.md",
+      "sha256": "d2ef3e4d64373dbb58177f32d1fbae501cdfacb4315946e3767b2609837c07f7"
+    },
+    {
+      "byte_size": 1083,
+      "kind": "file",
+      "mode": 384,
+      "path": "docs/generated/PUBLIC_ROUTE_GRAPH.md",
+      "sha256": "05666cf539b9161c4675c7e1c65467d422459049fdd635b6dc2b08d85581c4e1"
+    },
+    {
+      "byte_size": 1068,
+      "kind": "file",
+      "mode": 384,
+      "path": "docs/generated/WORK_QUEUE.md",
+      "sha256": "4a167b027a6ca482f55ebc1b2f4928e9ff834112f86c2097f26f084a6a6fcb54"
+    },
+    {
+      "byte_size": 9746,
+      "kind": "file",
+      "mode": 436,
+      "path": "docs/routeB_bus/mythos/DRAFT_ARSENAL_CARD_CANDIDATES_BB_GORZ_20260827.md",
+      "sha256": "1eaf577e05e55e63433e5711bf1bdd761a6d60673413467465bae66e60233de1"
+    },
+    {
+      "byte_size": 7192,
+      "kind": "file",
+      "mode": 436,
+      "path": "docs/routeB_bus/mythos/DRAFT_CODEX_TASK_CONTROL_PLANE_REFRESH_20260827.md",
+      "sha256": "a09d4ab25673f3ead8900d676acf09a5d3c876eb06e7806a2856e7ee5298e0f8"
+    },
+    {
+      "byte_size": 5906,
+      "kind": "file",
+      "mode": 436,
+      "path": "docs/routeB_bus/mythos/DRAFT_CODEX_TASK_RH_PROVEN_RENAME_20260827.md",
+      "sha256": "2b5eda8346e452af949ec9683346ecdc1c61674d83515d0c4ab3021616a70e8a"
+    },
+    {
+      "byte_size": 7526,
+      "kind": "file",
+      "mode": 436,
+      "path": "docs/routeB_bus/mythos/DRAFT_EXTERNAL_INTERFACE_FAITHFULNESS_AUDIT_BRIEF_v1_20260827.md",
+      "sha256": "f694e90b7964139e41e395d7cc501b8d40ae1a5ecb0207efafe94f748b3399a6"
+    },
+    {
+      "byte_size": 6392,
+      "kind": "file",
+      "mode": 436,
+      "path": "docs/routeB_bus/mythos/DRAFT_ROUTE_B_CONTRACT_V2_STATUS_ADDENDUM_v1_20260827.md",
+      "sha256": "7074c2a6423ce482444166cf004458ebc6f5bf018bd0cf6f2ada946b1489ab06"
+    },
+    {
+      "byte_size": 6150,
+      "kind": "file",
+      "mode": 436,
+      "path": "docs/routeB_bus/mythos/MYTHOS_PREDICTION_REGISTER_20260827.md",
+      "sha256": "ada1dd5328fcac12d85413ec4313e5d314862ea2a11edff5cf0e761d62f8961c"
+    },
+    {
+      "byte_size": 0,
+      "kind": "file",
+      "mode": 436,
+      "path": "orchestrator/state/*.db",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "byte_size": 710,
+      "kind": "file",
+      "mode": 436,
+      "path": "orchestrator/state/PROJECT_FACTS.json",
+      "sha256": "5cdadb59f4bc1ce5fbcdb1229e18d82e2bd2562c3cfaa9fa637d0102436809e8"
+    },
+    {
+      "byte_size": 3129,
+      "kind": "file",
+      "mode": 384,
+      "path": "orchestrator/state/PROJECT_STATE.json",
+      "sha256": "2e1273f2e383a54f6f9c9b82a57dcb8b64e3b229913f16263ab35273001250a4"
+    },
+    {
+      "byte_size": 816,
+      "kind": "file",
+      "mode": 436,
+      "path": "orchestrator/state/PROJECT_STATE_EVENTS.jsonl",
+      "sha256": "ded252796f8ac44bc2abaaeec48f3277b563f2395f7e6bdd338f603d462fbb07"
+    },
+    {
+      "byte_size": 6812,
+      "kind": "file",
+      "mode": 384,
+      "path": "q3.lean.aristotle/PROJECT_ORCHESTRATOR.md",
+      "sha256": "c9a0d1c1059e49426ebf03ca0260f0ba09086b9f4e080b2ac0a1085af7215ba8"
+    }
+  ],
+  "foreign_dirty_snapshot_sha256": "ddfaddd6b2fa9401b9ef8c47a9f614600509811a6a4b2985c5d9752420467cd0",
+  "plants": [
+    "NEW_REPOSITORY_NOW_TRUE",
+    "DUPLICATE_OR_MISSING_ZONE",
+    "ROUTE_B_SPLIT_WHILE_LIVE",
+    "CERTIFICATE_CONSUMER_SPLIT",
+    "DISCOVERY_EXTRACTION_WITH_OPEN_GATES",
+    "LEGACY_EXTRACTION_WITHOUT_ZERO_IMPORTS",
+    "EVIDENCE_ID_PATH_OR_HASH_DRIFT",
+    "BRANCH_REQUIRED_CHECK_FALSELY_CLOSED",
+    "SECOND_LIFECYCLE_AUTHORIZED",
+    "FOREIGN_DIRTY_BYTE_MODE_OR_TYPE_DRIFT",
+    "DUPLICATE_JSON_KEY",
+    "NONCANONICAL_JSON_BYTES"
+  ],
+  "prospective_tree_excluding_receipt": "cf03865f769baa4249f86eac5c9a4f8034e9ab78",
+  "schema_version": "q3.repository_topology_receipt.v1",
+  "status": "NO_NEW_REPO_NOW_DECISION_VERIFIED"
+}

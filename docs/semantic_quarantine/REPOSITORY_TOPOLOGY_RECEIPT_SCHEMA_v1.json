@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "q3.repository_topology_receipt.v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "status", "baseline_commit", "decision_sha256", "evidence_digest", "foreign_dirty_snapshot", "foreign_dirty_snapshot_sha256", "candidate_objects", "prospective_tree_excluding_receipt", "checks", "plants"],
+  "properties": {
+    "schema_version": {"type": "string", "const": "q3.repository_topology_receipt.v1"},
+    "status": {"type": "string", "const": "NO_NEW_REPO_NOW_DECISION_VERIFIED"},
+    "baseline_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "decision_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "evidence_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "foreign_dirty_snapshot": {
+      "type": "array", "minItems": 1, "uniqueItems": true,
+      "items": {"$ref": "#/$defs/dirtyObject"}
+    },
+    "foreign_dirty_snapshot_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "candidate_objects": {
+      "type": "object", "minProperties": 7, "maxProperties": 7,
+      "additionalProperties": {"$ref": "#/$defs/object"}
+    },
+    "prospective_tree_excluding_receipt": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "checks": {"type": "array", "minItems": 11, "uniqueItems": true, "items": {"type": "string"}},
+    "plants": {"type": "array", "minItems": 12, "uniqueItems": true, "items": {"type": "string"}}
+  },
+  "$defs": {
+    "object": {
+      "type": "object", "additionalProperties": false,
+      "required": ["mode", "oid", "sha256", "byte_size"],
+      "properties": {
+        "mode": {"type": "string", "pattern": "^[0-9]{6}$"},
+        "oid": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "byte_size": {"type": "integer", "minimum": 0}
+      }
+    },
+    "dirtyObject": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "kind", "mode", "sha256", "byte_size"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "kind": {"type": "string", "enum": ["file", "symlink", "directory", "other"]},
+        "mode": {"type": "integer", "minimum": 0, "maximum": 4095},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "byte_size": {"type": "integer", "minimum": 0}
+      }
+    }
+  }
+}

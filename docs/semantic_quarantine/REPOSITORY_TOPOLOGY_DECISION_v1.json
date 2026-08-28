@@ -1,0 +1,331 @@
+{
+  "baseline_commit": "a9934dc476a26f29d232749a3ec5c272109aa810",
+  "create_new_repository_now": false,
+  "evidence_pins": [
+    {
+      "commit": "9716df6cab7936fbb442797367b88c6c8aee96ae",
+      "id": "P2_PUBLIC_EXPORT_RECEIPT",
+      "path": "docs/semantic_quarantine/PUBLIC_EXPORT_INDEX_AND_AXIOM_RECEIPT_v1.md",
+      "phase": "P2",
+      "role": "PUBLIC_HONESTY_AND_AXIOM_BOUNDARY",
+      "sha256": "0db7e17e3c31f064bd66d2c6bef4e8992ea4f2fa5bb6555fc0f0875bff14c293"
+    },
+    {
+      "commit": "4d0cde95137dfbf4fc983afc454e53d2fbcd8ac3",
+      "id": "P3_MODULE_SCHEMA",
+      "path": "docs/semantic_quarantine/MODULE_CLASS_SCHEMA_v1.json",
+      "phase": "P3",
+      "role": "MODULE_CLASS_CLOSED_ENUM",
+      "sha256": "555c47cbb826cd343e0df81f5e59638610b707f3c04283fb7e1a795fa8083920"
+    },
+    {
+      "commit": "4d0cde95137dfbf4fc983afc454e53d2fbcd8ac3",
+      "id": "P3_MODULE_REGISTRY",
+      "path": "docs/semantic_quarantine/MODULE_CLASS_REGISTRY_v1.json",
+      "phase": "P3",
+      "role": "PUBLIC_ROUTE_LEGACY_CLASSIFICATION",
+      "sha256": "0ad8a71ec42d123ec8956740b73816d29ccd1662338ea31ec51d8db24c7f0caf"
+    },
+    {
+      "commit": "6eaee9b6f7bed4a09fc034ed017cdfaf2c60b2ee",
+      "id": "P4_ARCH_FLOOR_QUARANTINE",
+      "path": "docs/semantic_quarantine/ARCH_FLOOR_SEMANTIC_QUARANTINE_v1.md",
+      "phase": "P4",
+      "role": "ARCH_FLOOR_SEMANTIC_BOUNDARY",
+      "sha256": "dcb526c556f4dfd4ca3383d5977a294decae3d5c6ac4f4fc588156259ea3b9df"
+    },
+    {
+      "commit": "c7cd20c6ceb63fb6f9ffca3c68d080001e6d140e",
+      "id": "P5_STATE_SCHEMA",
+      "path": "docs/semantic_quarantine/SINGLE_MACHINE_STATE_SCHEMA_v1.json",
+      "phase": "P5",
+      "role": "SINGLE_MACHINE_STATE_CONTRACT",
+      "sha256": "50bf0390395411e2b11cf98455e67db1b050452027c24d79ca3f76a9d78dd144"
+    },
+    {
+      "commit": "c7cd20c6ceb63fb6f9ffca3c68d080001e6d140e",
+      "id": "P5_STATUS_REGISTRY",
+      "path": "docs/semantic_quarantine/STATUS_SURFACE_REGISTRY_v1.json",
+      "phase": "P5",
+      "role": "STATUS_SURFACE_AUTHORITY",
+      "sha256": "042641c0059fda3e82ad193feec5b55c9e7a2d033f6a1a9fd5e8a924210ecd56"
+    },
+    {
+      "commit": "4b49c8013547cfe0686087beb1b467ac322aacac",
+      "id": "P6_FIREWALL_POLICY",
+      "path": "docs/semantic_quarantine/IMPORT_FIREWALL_POLICY_v1.json",
+      "phase": "P6",
+      "role": "PUBLIC_IMPORT_EDGE_POLICY",
+      "sha256": "9aae6afe0068dacca6a8cb20b99fbcbd5f3887fac8a19bebed0361314ce5dc73"
+    },
+    {
+      "commit": "4b49c8013547cfe0686087beb1b467ac322aacac",
+      "id": "P6_FIREWALL_RECEIPT",
+      "path": "docs/semantic_quarantine/IMPORT_FIREWALL_RECEIPT_v1.json",
+      "phase": "P6",
+      "role": "SEMANTIC_DECLARATION_AUDIT_PASS",
+      "sha256": "33bbd1a01e836dc865f22c8a4b2e170689a627b383c8a30e01157d40aa31c072"
+    },
+    {
+      "commit": "d3eb9923e028f5be24890eadd899b8dbc0a510b7",
+      "id": "P7_PORTABILITY_RECEIPT",
+      "path": "docs/semantic_quarantine/PORTABILITY_RECEIPT_v1.json",
+      "phase": "P7",
+      "role": "PORTABLE_MONOREPO_BOUNDARY",
+      "sha256": "c5f8af3e895bfd8019f2cd9e6c1c6e550ac795b3561feb11f12c9ca7496c38ec"
+    },
+    {
+      "commit": "190b268fce2380592e323a4f3304e82b56037b1c",
+      "id": "P8_ROOT_CLASSIFICATION_RECEIPT",
+      "path": "docs/semantic_quarantine/ROOT_ARTIFACT_CLASSIFICATION_RECEIPT_v1.json",
+      "phase": "P8",
+      "role": "ROOT_SURFACE_CLASSIFICATION",
+      "sha256": "ba070b4ab0cd1498e2a83e35997249bf1d5cc96f21e90ce3793135220369b844"
+    },
+    {
+      "commit": "c450773bd63b295439df2174da12fafa16958f1f",
+      "id": "P9_ARCHIVE_RECEIPT",
+      "path": "docs/semantic_quarantine/ROOT_ARCHIVE_ZERO_REFERENCE_RECEIPT_v1.json",
+      "phase": "P9",
+      "role": "ZERO_REFERENCE_ARCHIVE_TRANSACTION",
+      "sha256": "99c8d54feae0f019a182b8aa5439370f198c452c0ee68e993d597d55d482b03e"
+    },
+    {
+      "commit": "c450773bd63b295439df2174da12fafa16958f1f",
+      "id": "P9_ARCHIVE_UMBRELLA",
+      "path": "docs/semantic_quarantine/ROOT_ARCHIVE_EXECUTION_UMBRELLA_v1.json",
+      "phase": "P9",
+      "role": "P7_P8_P9_TWO_STAGE_BINDING",
+      "sha256": "1160da2aa2f5297926edfaf6501aca1f5301c35b778de9f2d83a8d0c29ed57e8"
+    },
+    {
+      "commit": "a9934dc476a26f29d232749a3ec5c272109aa810",
+      "id": "P9_LIFECYCLE_SUCCESSOR",
+      "path": "docs/semantic_quarantine/ROOT_ARCHIVE_LIFECYCLE_SUCCESSOR_RECEIPT_v1.json",
+      "phase": "P9_SUCCESSOR",
+      "role": "CANONICAL_POSTCOMMIT_BINDING",
+      "sha256": "5c718470e8d707edae3180473db2ac8abc6bb1a5f6145989a6eb4cdc77e0d56c"
+    },
+    {
+      "commit": "a9934dc476a26f29d232749a3ec5c272109aa810",
+      "id": "P10_TOPOLOGY_SOURCE",
+      "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_REPOSITORY_TOPOLOGY_SEMANTIC_QUARANTINE_AND_TODO_2026-08-27.md",
+      "phase": "P10_SOURCE",
+      "role": "OWNER_RATIFIED_TOPOLOGY_SOURCE",
+      "sha256": "724657329593fd161dad8d098cc9ec1f90b4d3dec706c35567aad3810cb0b315"
+    },
+    {
+      "commit": "a9934dc476a26f29d232749a3ec5c272109aa810",
+      "id": "P10_ROUTE_B_STATE",
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_STATE.json",
+      "phase": "P10_SOURCE",
+      "role": "HISTORICAL_LIVE_CHALLENGER_STATE",
+      "sha256": "0c747255ff2653c6ff696b1b25af43bf67076d8f49e2980dc9aa297f89d1693c"
+    },
+    {
+      "commit": "a9934dc476a26f29d232749a3ec5c272109aa810",
+      "id": "P10_DISCOVERY_MANDATE",
+      "path": "docs/routeB_bus/proshka/ARSENAL_MANDATE_2026-08-23_MODULAR_DISCOVERY_COMPILER_SHADOW.md",
+      "phase": "P10_SOURCE",
+      "role": "SHADOW_SIDECAR_EXTRACTION_CONDITIONAL",
+      "sha256": "58d736888d788e3fcf7f44b8cdf9d2b15ab79da2ca86db8fbe1a02427cd02f25"
+    },
+    {
+      "commit": "a9934dc476a26f29d232749a3ec5c272109aa810",
+      "id": "P10_SELECTED_GOAL_STATE",
+      "path": "orchestrator/state/PROJECT_EXECUTION_STATE.json",
+      "phase": "P10_SOURCE",
+      "role": "EXACT_GOAL058_SELECTOR",
+      "sha256": "b065c763d272256551b3ecdd9014678d11eb796d97ceef15902f26fa064a9657"
+    },
+    {
+      "commit": "a9934dc476a26f29d232749a3ec5c272109aa810",
+      "id": "P10_GOAL058_CONTRACT",
+      "path": "docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md",
+      "phase": "P10_SOURCE",
+      "role": "ONE_FAMILY_STOP_CONTRACT",
+      "sha256": "eb418123c65320ad54769d8021717594fb4135488201d93f3ff0c88ca35423ff"
+    },
+    {
+      "commit": "a9934dc476a26f29d232749a3ec5c272109aa810",
+      "id": "P10_SAME_FAMILY_LEAN_SOURCE",
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/CanonicalRHRouteSkeleton.lean",
+      "phase": "P10_SOURCE",
+      "role": "TYPED_SAME_COFINAL_GUARD",
+      "sha256": "2e849d677e0ec771c47a436abdf657690e833e52555af8c8698185e30274536b"
+    },
+    {
+      "commit": "a9934dc476a26f29d232749a3ec5c272109aa810",
+      "id": "P10_SAME_FAMILY_PROOF_RECEIPT",
+      "path": "docs/routeB_bus/056_k8_muntz_v3_slot_s2_bridge.answer.md",
+      "phase": "P10_SOURCE",
+      "role": "LEAN_STANDARD_AXIOM_TRIPLE_RECEIPT",
+      "sha256": "3c6be71662fddcfd7cdef9e4446772816ac9b03862b4c957f7726da607d25baa"
+    }
+  ],
+  "future_split_gates": [
+    {
+      "candidate": "PUBLIC_CORE_EMERGENCY_EXTRACTION",
+      "failure_code": "PREMATURE_PUBLIC_CORE_EXTRACTION",
+      "required_gates": [
+        "IMPORT_FIREWALL_UNENFORCEABLE_ON_CANONICAL_BRANCH",
+        "MINIMAL_PUBLIC_SLICE_COMPLETE",
+        "CERTIFICATE_ATOMICITY_PRESERVED",
+        "AUTHORITATIVE_STATE_MIGRATION_COMPLETE",
+        "ZERO_SELECTOR_WRITES_TO_SUPERSEDED_AUTHORITY",
+        "SINGLE_LIFECYCLE_VALIDATOR_PASS",
+        "OWNER_RATIFIED_REEVALUATION"
+      ],
+      "status": "NOT_TRIGGERED"
+    },
+    {
+      "candidate": "ROUTE_B",
+      "failure_code": "ROUTEB_LIVE_SPLIT_FORBIDDEN",
+      "required_gates": [
+        "NO_LIVE_BUS_DEPENDENCY",
+        "SAME_FAMILY_CROSSWALKS_VERSIONED",
+        "ZERO_PUBLIC_CANONICAL_IMPORTS",
+        "CERTIFICATES_REMAIN_COLOCATED",
+        "AUTHORITATIVE_STATE_MIGRATION_COMPLETE",
+        "ZERO_SELECTOR_WRITES_TO_SUPERSEDED_AUTHORITY",
+        "SINGLE_LIFECYCLE_VALIDATOR_PASS",
+        "OWNER_RATIFIED_REEVALUATION"
+      ],
+      "status": "FORBIDDEN_LIVE"
+    },
+    {
+      "candidate": "Q3_DISCOVERY",
+      "failure_code": "PREMATURE_DISCOVERY_REPO",
+      "required_gates": [
+        "STABLE_VERSIONED_SCHEMA",
+        "INDEPENDENT_CLI_OR_PACKAGE_BOUNDARY",
+        "BLINDED_HOLDOUT_BACKTEST_VALUE",
+        "ZERO_LIVE_ROUTE_WRITES",
+        "MAINTENANCE_COST_BELOW_SAVED_WORK",
+        "AUTHORITATIVE_STATE_MIGRATION_COMPLETE",
+        "ZERO_SELECTOR_WRITES_TO_SUPERSEDED_AUTHORITY",
+        "SINGLE_LIFECYCLE_VALIDATOR_PASS",
+        "OWNER_RATIFIED_REEVALUATION"
+      ],
+      "status": "HOLD_GATES_OPEN"
+    },
+    {
+      "candidate": "LEGACY_ARCHIVE",
+      "failure_code": "PREMATURE_LEGACY_REPO",
+      "required_gates": [
+        "ZERO_ACTIVE_IMPORTS",
+        "ZERO_PUBLIC_EXPORTS",
+        "FROZEN_READ_ONLY_CONTENT",
+        "HISTORY_PRESERVATION_PLAN",
+        "MAIN_REPO_POINTER_MANIFEST",
+        "OWNER_RATIFIED_REEVALUATION"
+      ],
+      "status": "HOLD_GATES_OPEN"
+    }
+  ],
+  "invariants": [
+    "NO_NEW_REPOSITORY_CREATED",
+    "NO_REPOSITORY_SETTINGS_CHANGED",
+    "NO_PHYSICAL_EXTRACTION_PERFORMED",
+    "PUBLIC_CANONICAL_IMPORT_FIREWALL_PASS_AT_PIN",
+    "PUBLIC_CANONICAL_EXPORT_REMAINS_CONDITIONAL_OPEN",
+    "UNCONDITIONAL_RH_PROOF_FALSE",
+    "ROUTE_B_CHALLENGER_NOT_RH_AT_PIN",
+    "PROOF_CERTIFICATE_CONSUMER_ATOMICITY",
+    "SINGLE_AUTHORITATIVE_STATE_NO_DUPLICATE_LIFECYCLE",
+    "FUTURE_SPLIT_REQUIRES_NEW_EXPLICIT_REEVALUATION",
+    "BRANCH_REQUIRED_CHECK_REMAINS_OPEN"
+  ],
+  "physical_extraction_authorized": false,
+  "plants": [
+    "NEW_REPOSITORY_NOW_TRUE",
+    "DUPLICATE_OR_MISSING_ZONE",
+    "ROUTE_B_SPLIT_WHILE_LIVE",
+    "CERTIFICATE_CONSUMER_SPLIT",
+    "DISCOVERY_EXTRACTION_WITH_OPEN_GATES",
+    "LEGACY_EXTRACTION_WITHOUT_ZERO_IMPORTS",
+    "EVIDENCE_ID_PATH_OR_HASH_DRIFT",
+    "BRANCH_REQUIRED_CHECK_FALSELY_CLOSED",
+    "SECOND_LIFECYCLE_AUTHORIZED",
+    "FOREIGN_DIRTY_BYTE_MODE_OR_TYPE_DRIFT",
+    "DUPLICATE_JSON_KEY",
+    "NONCANONICAL_JSON_BYTES"
+  ],
+  "public_claim_boundary": {
+    "default_target": "CONDITIONAL_COMPILED",
+    "public_canonical_export": "OPEN_CONDITIONAL",
+    "route_b": "CHALLENGER_NOT_RH",
+    "unconditional_rh_proof": false
+  },
+  "schema_version": "q3.repository_topology_decision.v1",
+  "selected_pattern": "STRANGLER_MONOREPO_WITH_IMPORT_FIREWALL",
+  "state_authority_policy": {
+    "authoritative_state": "orchestrator/state/PROJECT_STATE.json",
+    "duplicate_lifecycle_authorized": false,
+    "selector_writes_to_superseded_authority_authorized": false
+  },
+  "status": "EVIDENCE_BOUND_NO_NEW_REPO_NOW",
+  "zones": [
+    {
+      "boundary": [
+        "Q3.Basic.WeilDirectRoute",
+        "Q3.Basic.WeilSquareClass",
+        "Q3.Basic.Defs:allowed-declaration-closure-only"
+      ],
+      "disposition": "KEEP_PROOF_MONOREPO_WITH_HARD_FIREWALL",
+      "future_policy": "EXTRACT_ONLY_IF_CANONICAL_FIREWALL_CANNOT_REMAIN_ENFORCEABLE",
+      "id": "PUBLIC_CORE",
+      "reason": "The executable import and declaration firewall separates the current public canonical slice from challenger and legacy declarations.",
+      "split_now": false
+    },
+    {
+      "boundary": [
+        "q3.lean.aristotle/Q3/Proofs/RouteB/",
+        "docs/routeB_bus/",
+        "same-family source locks"
+      ],
+      "disposition": "DO_NOT_SPLIT_LIVE_CHALLENGER",
+      "future_policy": "RECONSIDER_ONLY_AFTER_LIVE_BUS_AND_SAME_FAMILY_CROSSWALKS_CLOSE",
+      "id": "ROUTE_B",
+      "reason": "Goal058 was source-open and NOT_RH at the pinned decision snapshot; crosswalks and bus receipts require atomic history.",
+      "split_now": false
+    },
+    {
+      "boundary": [
+        "Lean source",
+        "proof certificates",
+        "axiom receipts",
+        "source-lock receipts"
+      ],
+      "disposition": "DO_NOT_SPLIT_FROM_CONSUMERS",
+      "future_policy": "COLOCATE_WITH_CONSUMER_IN_ANY_FUTURE_TOPOLOGY",
+      "id": "PROOF_CERTIFICATES",
+      "reason": "Separating a certificate from its exact consumer destroys atomic source provenance.",
+      "split_now": false
+    },
+    {
+      "boundary": [
+        "docs/cartographer/",
+        "typed discovery schemas",
+        "shadow backtests"
+      ],
+      "disposition": "HOLD_SAME_REPO_SHADOW_SIDECAR",
+      "future_policy": "CONDITIONAL_EXTRACTION_AFTER_ALL_DISCOVERY_GATES",
+      "id": "Q3_DISCOVERY",
+      "reason": "The mandate authorizes same-repository shadow mode and makes extraction conditional on measured independent value.",
+      "split_now": false
+    },
+    {
+      "boundary": [
+        "CONDITIONAL_COMPILED",
+        "LEGACY",
+        "ARCHIVE"
+      ],
+      "disposition": "HOLD_QUARANTINED_IN_PLACE",
+      "future_policy": "CONDITIONAL_READ_ONLY_ARCHIVE_AFTER_ALL_LEGACY_GATES",
+      "id": "LEGACY_ARCHIVE",
+      "reason": "Logical quarantine exists, but zero active imports, frozen content, and history-preserving extraction are not evidenced for the whole legacy layer.",
+      "split_now": false
+    }
+  ]
+}

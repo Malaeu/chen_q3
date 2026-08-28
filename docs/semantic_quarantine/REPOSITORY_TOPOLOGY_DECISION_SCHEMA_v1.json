@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "q3.repository_topology_decision.v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "status", "baseline_commit", "selected_pattern", "create_new_repository_now", "physical_extraction_authorized", "public_claim_boundary", "state_authority_policy", "zones", "future_split_gates", "evidence_pins", "invariants", "plants"],
+  "properties": {
+    "schema_version": {"type": "string", "const": "q3.repository_topology_decision.v1"},
+    "status": {"type": "string", "const": "EVIDENCE_BOUND_NO_NEW_REPO_NOW"},
+    "baseline_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "selected_pattern": {"type": "string", "const": "STRANGLER_MONOREPO_WITH_IMPORT_FIREWALL"},
+    "create_new_repository_now": {"type": "boolean", "const": false},
+    "physical_extraction_authorized": {"type": "boolean", "const": false},
+    "public_claim_boundary": {
+      "type": "object", "additionalProperties": false,
+      "required": ["unconditional_rh_proof", "public_canonical_export", "default_target", "route_b"],
+      "properties": {
+        "unconditional_rh_proof": {"type": "boolean", "const": false},
+        "public_canonical_export": {"type": "string", "const": "OPEN_CONDITIONAL"},
+        "default_target": {"type": "string", "const": "CONDITIONAL_COMPILED"},
+        "route_b": {"type": "string", "const": "CHALLENGER_NOT_RH"}
+      }
+    },
+    "state_authority_policy": {
+      "type": "object", "additionalProperties": false,
+      "required": ["authoritative_state", "duplicate_lifecycle_authorized", "selector_writes_to_superseded_authority_authorized"],
+      "properties": {
+        "authoritative_state": {"type": "string", "const": "orchestrator/state/PROJECT_STATE.json"},
+        "duplicate_lifecycle_authorized": {"type": "boolean", "const": false},
+        "selector_writes_to_superseded_authority_authorized": {"type": "boolean", "const": false}
+      }
+    },
+    "zones": {
+      "type": "array", "minItems": 5, "maxItems": 5, "uniqueItems": true,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["id", "disposition", "split_now", "boundary", "reason", "future_policy"],
+        "properties": {
+          "id": {"type": "string", "enum": ["PUBLIC_CORE", "ROUTE_B", "PROOF_CERTIFICATES", "Q3_DISCOVERY", "LEGACY_ARCHIVE"]},
+          "disposition": {"type": "string"},
+          "split_now": {"type": "boolean", "const": false},
+          "boundary": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+          "reason": {"type": "string", "minLength": 1},
+          "future_policy": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "future_split_gates": {
+      "type": "array", "minItems": 4, "maxItems": 4,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["candidate", "status", "required_gates", "failure_code"],
+        "properties": {
+          "candidate": {"type": "string", "enum": ["PUBLIC_CORE_EMERGENCY_EXTRACTION", "ROUTE_B", "Q3_DISCOVERY", "LEGACY_ARCHIVE"]},
+          "status": {"type": "string", "enum": ["NOT_TRIGGERED", "FORBIDDEN_LIVE", "HOLD_GATES_OPEN"]},
+          "required_gates": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+          "failure_code": {"type": "string", "pattern": "^[A-Z0-9_]+$"}
+        }
+      }
+    },
+    "evidence_pins": {
+      "type": "array", "minItems": 20, "maxItems": 20,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["id", "phase", "commit", "path", "sha256", "role"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[A-Z0-9_]+$"},
+          "phase": {"type": "string", "pattern": "^P(2|3|4|5|6|7|8|9|9_SUCCESSOR|10_SOURCE)$"},
+          "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+          "path": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "role": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "invariants": {"type": "array", "minItems": 11, "uniqueItems": true, "items": {"type": "string"}},
+    "plants": {"type": "array", "minItems": 12, "uniqueItems": true, "items": {"type": "string"}}
+  }
+}
