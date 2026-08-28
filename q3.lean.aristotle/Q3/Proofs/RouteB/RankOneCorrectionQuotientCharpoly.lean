@@ -166,8 +166,35 @@ theorem sourceLagrangePolynomial_eq_signed_quotient_charpoly
       _ = Polynomial.X * (-sourceLagrangePolynomial lam xi) := by ring
   simpa using (congrArg Neg.neg hcancel).symm
 
+/-- For a normalized rank-one cell, the global numerator degree is exactly one
+less than the indexed background-pole count, with repeated pole locations still
+counted by their indices.  This is a global algebraic degree statement only; it
+makes no assertion about roots in any local interval. -/
+theorem sourceLagrangePolynomial_natDegree_eq_card_sub_one
+    {n : Type*} [Fintype n] [DecidableEq n]
+    (lam xi : n → ℝ)
+    (hnormalized : (1 : n → ℝ) ⬝ᵥ xi = 1) :
+    (sourceLagrangePolynomial lam xi).natDegree = Fintype.card n - 1 := by
+  rw [sourceLagrangePolynomial_eq_signed_quotient_charpoly lam xi hnormalized]
+  rw [Polynomial.natDegree_neg, Polynomial.natDegree_mul]
+  · rw [Polynomial.natDegree_C]
+    simp only [LinearMap.charpoly_natDegree]
+    have hxi0 : xi ≠ 0 := by
+      intro h
+      subst xi
+      simp at hnormalized
+    have hspan : Module.finrank ℝ (ℝ ∙ xi : Submodule ℝ (n → ℝ)) = 1 := by
+      simpa using finrank_span_singleton hxi0
+    have hdim :=
+      (ℝ ∙ xi : Submodule ℝ (n → ℝ)).finrank_quotient_add_finrank
+    rw [hspan, Module.finrank_pi] at hdim
+    omega
+  · simp
+  · exact (LinearMap.charpoly_monic _).ne_zero
+
 #print axioms charpoly_eq_X_mul_quotientSpanSingletonEnd_charpoly
 #print axioms rankOneCorrection_charpoly_eq_X_mul_quotient_charpoly
 #print axioms sourceLagrangePolynomial_eq_signed_quotient_charpoly
+#print axioms sourceLagrangePolynomial_natDegree_eq_card_sub_one
 
 end Q3.RouteB
