@@ -787,9 +787,12 @@ tool_families:
         authority: docs/CODEX_CONTROL.md
         records_to: docs/cartographer/lean_env/env_index.jsonl (gitignored derived index)
         last_verified: >-
-          2026-08-14 Linux invocation exit 0: 2207 unique declarations from all 238 current
-          source-backed RouteB modules; 0 orphan .olean, 0 stale, 0 never-built, 0 truncated
-          or failed pretty-prints, 0 sorryAx, and 0 other nonstandard axioms.
+          2026-08-28 Linux full run under leanprover/lean4:v4.26.0 after an explicit
+          364-target RouteB build completed 8111/8111 jobs: invocation exit 0, 3322 unique
+          declarations from all 364 current source-backed RouteB modules; 0 orphan .olean,
+          0 stale, 0 never-built, 0 duplicate names, 0 truncated or failed pretty-prints,
+          0 sorryAx, and 0 other nonstandard axioms. env_index SHA-256
+          b35a25832c7a6df20696be0c061a3553877d6564ec402f53a6b0f93965bbea8e.
         failure_mode: >-
           Fails closed and preserves the previous index if Lean exits nonzero, JSONL is empty
           or malformed, any elaborated type contains a pretty-printer omission/failure marker,
