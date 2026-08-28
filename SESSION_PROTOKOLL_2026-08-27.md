@@ -232,3 +232,48 @@ Meine Empfehlung: R1. Begründung im Closeout, Abschnitt 5.
 - `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/LINUX_CLOSEOUT_CENTRAL_WINDOW_PROGRAM_GOAL058_2026-08-28.md`
 - `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/LINUX_ORIENTED_FULL_VOLTERRA_SOURCE_RATE_PREFLIGHT_GOAL058_2026-08-28.md`
 - `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilCenterSpectralNormalForm.lean`
+
+---
+
+# R1-Durchgang 28.08.2026 — Vitali/Montel, zurück beim Eigentümer
+
+## Kontext
+
+Der Eigentümer wählte R1. Der Durchgang lief bis etwa 05:00 und endet erneut mit
+`OWNER_REPRESENTATION_RERANK`. Kein Auftrag ist offen.
+
+## Erledigt
+
+Objektsperre der Grundfamilie (`9ff604bd`); `L^2`-Eichung als Straffheitszeuge
+(`e7fc70b0`); Selbsttest zur Nullstellendichte nach dem `cos(nz)`-Killer
+(`7c5f2a50`); lokale Spektralzählung (`5c5a5bef`); relativer Spektralshift
+(`91e40850`, unter inzwischen aufgehobener Autorisierung); Kontrollzustandsnotiz.
+Selbstkorrekturen 15 bis 17.
+
+## Geprüft, mit dem Instrument das zählt
+
+Der Killer `cos(nz)` wurde nachgerechnet, der Sperrplant in **exakter rationaler
+Arithmetik** reproduziert — beide Lagrange-Zeilen Bruch für Bruch. Das ersetzte
+eine unautorisierte Gleitkommatabelle und ist die Lehre des Durchgangs:
+**exakte Pflanzen statt Zahlenreihen**.
+
+## Wichtigste Sachergebnisse
+
+- Der Wert im Anker ist `L` mal dem Zentralkoeffizienten; der Punktanker ist damit
+  blockiert, weil sein einziger Weg die tote Verfolgungsrate importiert.
+- Die `L^2`-Eichung liefert Straffheit umsonst, aber **keine** lokale
+  Beschränktheit: gemessen `3.5 / 9.1 / 90 / 7580`.
+- Der nullstellenfreie Typkorrektor repariert die obere Halbebene.
+- Das Vorzeichenmuster bestimmt die lokale Nullstellenzahl **nicht**.
+- Global unterscheiden sich Null- und Polzahl um genau eins, umsonst; lokal nicht.
+
+## Offen — Entscheidung des Eigentümers
+
+Drei Optionen, im Kontrollzustandsvermerk ausgeführt: Zielerhaltungssatz für den
+relativen Shift erwerben; auf R2 zurückgehen; oder die Front anhalten und das
+Gebankte konsolidieren.
+
+## Dateien (absolute Pfade)
+
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/LINUX_CONTROL_STATE_NOTE_OWNER_RERANK_GOAL058_2026-08-28.md`
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/LINUX_R1_RELATIVE_SPECTRAL_SHIFT_PREFLIGHT_GOAL058_2026-08-28.md`
