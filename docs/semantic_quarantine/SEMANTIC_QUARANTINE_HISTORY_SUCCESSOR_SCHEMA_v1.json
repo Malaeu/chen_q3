@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "q3.semantic_quarantine_history_successor.v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "status", "topology_commit", "transactions",
+    "transaction_chain_digest", "superseded_transaction_state_wrappers",
+    "canonical_future_wrapper", "no_second_state_lifecycle", "descendant_policy",
+    "precommit_foreign_snapshot", "precommit_foreign_snapshot_sha256",
+    "successor_objects", "prospective_tree_excluding_receipt", "successor_paths", "plants"
+  ],
+  "properties": {
+    "schema_version": {"const": "q3.semantic_quarantine_history_successor.v1"},
+    "status": {"const": "P9_P10_HISTORY_BOUND_DESCENDANTS_ALLOWED"},
+    "topology_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "transactions": {
+      "type": "array", "minItems": 3, "maxItems": 3,
+      "items": {"$ref": "#/$defs/transaction"}
+    },
+    "transaction_chain_digest": {"$ref": "#/$defs/sha256"},
+    "superseded_transaction_state_wrappers": {
+      "type": "array", "minItems": 3, "maxItems": 3, "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "canonical_future_wrapper": {"const": "scripts/check_semantic_quarantine_history_successor.sh"},
+    "no_second_state_lifecycle": {"const": true},
+    "descendant_policy": {"const": "ARBITRARY_DESCENDANTS_AND_STAGED_CHANGES_ALLOWED_NOT_ATTESTED"},
+    "precommit_foreign_snapshot": {
+      "type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/dirtyObject"}
+    },
+    "precommit_foreign_snapshot_sha256": {"$ref": "#/$defs/sha256"},
+    "successor_objects": {
+      "type": "object", "minProperties": 4, "maxProperties": 4,
+      "additionalProperties": {"$ref": "#/$defs/blob"}
+    },
+    "prospective_tree_excluding_receipt": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "successor_paths": {
+      "type": "array", "minItems": 5, "maxItems": 5, "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "plants": {"type": "array", "minItems": 10, "uniqueItems": true, "items": {"type": "string"}}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "blob": {
+      "type": "object", "additionalProperties": false,
+      "required": ["mode", "oid", "sha256", "byte_size"],
+      "properties": {
+        "mode": {"type": "string", "pattern": "^[0-9]{6}$"},
+        "oid": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "byte_size": {"type": "integer", "minimum": 0}
+      }
+    },
+    "artifact": {
+      "oneOf": [
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["kind"], "properties": {"kind": {"const": "absent"}}
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["kind", "mode", "oid", "sha256", "byte_size"],
+          "properties": {
+            "kind": {"const": "blob"},
+            "mode": {"type": "string", "pattern": "^[0-9]{6}$"},
+            "oid": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+            "sha256": {"$ref": "#/$defs/sha256"},
+            "byte_size": {"type": "integer", "minimum": 0}
+          }
+        }
+      ]
+    },
+    "transaction": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "commit", "parent", "tree", "paths", "artifacts"],
+      "properties": {
+        "id": {"enum": ["P9_ARCHIVE_TRANSACTION", "P9_ARCHIVE_LIFECYCLE_SUCCESSOR", "P10_REPOSITORY_TOPOLOGY"]},
+        "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "parent": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "tree": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "paths": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+        "artifacts": {"type": "object", "minProperties": 1, "additionalProperties": {"$ref": "#/$defs/artifact"}}
+      }
+    },
+    "dirtyObject": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "kind", "mode", "sha256", "byte_size"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "kind": {"enum": ["file", "symlink", "absent"]},
+        "mode": {"type": "integer", "minimum": 0, "maximum": 4095},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "byte_size": {"type": "integer", "minimum": 0}
+      }
+    }
+  }
+}

@@ -1,0 +1,499 @@
+{
+  "canonical_future_wrapper": "scripts/check_semantic_quarantine_history_successor.sh",
+  "descendant_policy": "ARBITRARY_DESCENDANTS_AND_STAGED_CHANGES_ALLOWED_NOT_ATTESTED",
+  "no_second_state_lifecycle": true,
+  "plants": [
+    "WRONG_TRANSACTION_PARENT",
+    "WRONG_TRANSACTION_TREE",
+    "WRONG_TRANSACTION_SCOPE",
+    "WRONG_TRANSACTION_ARTIFACT",
+    "WRONG_ANCESTRY_ORDER",
+    "TOPOLOGY_NOT_ANCESTOR",
+    "UNRELATED_PRECOMMIT_STAGED_PATH",
+    "DUPLICATE_JSON_KEY",
+    "NONCANONICAL_JSON_BYTES",
+    "CANONICAL_FIRST_PARENT_MERGE"
+  ],
+  "precommit_foreign_snapshot": [
+    {
+      "byte_size": 2567,
+      "kind": "file",
+      "mode": 384,
+      "path": "README.md",
+      "sha256": "583c285aa9cf3f6f38d56e807c29102d093aed3868f9b8087267c59d5cc323c3"
+    },
+    {
+      "byte_size": 1385,
+      "kind": "file",
+      "mode": 384,
+      "path": "docs/generated/PROJECT_STATUS.md",
+      "sha256": "d2ef3e4d64373dbb58177f32d1fbae501cdfacb4315946e3767b2609837c07f7"
+    },
+    {
+      "byte_size": 1083,
+      "kind": "file",
+      "mode": 384,
+      "path": "docs/generated/PUBLIC_ROUTE_GRAPH.md",
+      "sha256": "05666cf539b9161c4675c7e1c65467d422459049fdd635b6dc2b08d85581c4e1"
+    },
+    {
+      "byte_size": 1068,
+      "kind": "file",
+      "mode": 384,
+      "path": "docs/generated/WORK_QUEUE.md",
+      "sha256": "4a167b027a6ca482f55ebc1b2f4928e9ff834112f86c2097f26f084a6a6fcb54"
+    },
+    {
+      "byte_size": 9746,
+      "kind": "file",
+      "mode": 436,
+      "path": "docs/routeB_bus/mythos/DRAFT_ARSENAL_CARD_CANDIDATES_BB_GORZ_20260827.md",
+      "sha256": "1eaf577e05e55e63433e5711bf1bdd761a6d60673413467465bae66e60233de1"
+    },
+    {
+      "byte_size": 7192,
+      "kind": "file",
+      "mode": 436,
+      "path": "docs/routeB_bus/mythos/DRAFT_CODEX_TASK_CONTROL_PLANE_REFRESH_20260827.md",
+      "sha256": "a09d4ab25673f3ead8900d676acf09a5d3c876eb06e7806a2856e7ee5298e0f8"
+    },
+    {
+      "byte_size": 5906,
+      "kind": "file",
+      "mode": 436,
+      "path": "docs/routeB_bus/mythos/DRAFT_CODEX_TASK_RH_PROVEN_RENAME_20260827.md",
+      "sha256": "2b5eda8346e452af949ec9683346ecdc1c61674d83515d0c4ab3021616a70e8a"
+    },
+    {
+      "byte_size": 7526,
+      "kind": "file",
+      "mode": 436,
+      "path": "docs/routeB_bus/mythos/DRAFT_EXTERNAL_INTERFACE_FAITHFULNESS_AUDIT_BRIEF_v1_20260827.md",
+      "sha256": "f694e90b7964139e41e395d7cc501b8d40ae1a5ecb0207efafe94f748b3399a6"
+    },
+    {
+      "byte_size": 6392,
+      "kind": "file",
+      "mode": 436,
+      "path": "docs/routeB_bus/mythos/DRAFT_ROUTE_B_CONTRACT_V2_STATUS_ADDENDUM_v1_20260827.md",
+      "sha256": "7074c2a6423ce482444166cf004458ebc6f5bf018bd0cf6f2ada946b1489ab06"
+    },
+    {
+      "byte_size": 6150,
+      "kind": "file",
+      "mode": 436,
+      "path": "docs/routeB_bus/mythos/MYTHOS_PREDICTION_REGISTER_20260827.md",
+      "sha256": "ada1dd5328fcac12d85413ec4313e5d314862ea2a11edff5cf0e761d62f8961c"
+    },
+    {
+      "byte_size": 5108,
+      "kind": "file",
+      "mode": 436,
+      "path": "docs/session_protocols/SESSION_PROTOKOLL_2026-08-28.md",
+      "sha256": "3a538cf89f0cd9587baec5f8749bd4293f88244cd51b7661e11b8d1f08624a62"
+    },
+    {
+      "byte_size": 0,
+      "kind": "file",
+      "mode": 436,
+      "path": "orchestrator/state/*.db",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "byte_size": 710,
+      "kind": "file",
+      "mode": 436,
+      "path": "orchestrator/state/PROJECT_FACTS.json",
+      "sha256": "5cdadb59f4bc1ce5fbcdb1229e18d82e2bd2562c3cfaa9fa637d0102436809e8"
+    },
+    {
+      "byte_size": 3129,
+      "kind": "file",
+      "mode": 384,
+      "path": "orchestrator/state/PROJECT_STATE.json",
+      "sha256": "2e1273f2e383a54f6f9c9b82a57dcb8b64e3b229913f16263ab35273001250a4"
+    },
+    {
+      "byte_size": 816,
+      "kind": "file",
+      "mode": 436,
+      "path": "orchestrator/state/PROJECT_STATE_EVENTS.jsonl",
+      "sha256": "ded252796f8ac44bc2abaaeec48f3277b563f2395f7e6bdd338f603d462fbb07"
+    },
+    {
+      "byte_size": 6812,
+      "kind": "file",
+      "mode": 384,
+      "path": "q3.lean.aristotle/PROJECT_ORCHESTRATOR.md",
+      "sha256": "c9a0d1c1059e49426ebf03ca0260f0ba09086b9f4e080b2ac0a1085af7215ba8"
+    }
+  ],
+  "precommit_foreign_snapshot_sha256": "8562a814226c48f11f0107d6ccca8964fe804edc29af663080f8761deab0d7a7",
+  "prospective_tree_excluding_receipt": "5833df07981744dad40ad7aaac94a26491124a5a",
+  "schema_version": "q3.semantic_quarantine_history_successor.v1",
+  "status": "P9_P10_HISTORY_BOUND_DESCENDANTS_ALLOWED",
+  "successor_objects": {
+    "docs/semantic_quarantine/SEMANTIC_QUARANTINE_HISTORY_SUCCESSOR_SCHEMA_v1.json": {
+      "byte_size": 4454,
+      "mode": "100644",
+      "oid": "3ce22b8e990fff69acae4fbfedc2c66595ef1f60",
+      "sha256": "f4201aad591c732995f2f6aaa4c4d1c52a91eafefa8c1a44684a500097ae1c44"
+    },
+    "orchestrator/semantic_quarantine_history_successor.py": {
+      "byte_size": 18299,
+      "mode": "100644",
+      "oid": "c70618c4eb27f49fc48c0a2c3aa8714e8d735020",
+      "sha256": "db8b7b208b9d5cc76f39bf3baf2b2fb3ffd4f51803f3af269f10ddda7d04c987"
+    },
+    "orchestrator/tests/test_semantic_quarantine_history_successor.py": {
+      "byte_size": 5603,
+      "mode": "100644",
+      "oid": "5f5bd8ffac8f3915d4ed536a7aa63c06ee1cdd0c",
+      "sha256": "4ebf76070bdc6b6e1248432cefa117a8cce53d0366940125f587c92c1f35dc8d"
+    },
+    "scripts/check_semantic_quarantine_history_successor.sh": {
+      "byte_size": 405,
+      "mode": "100755",
+      "oid": "d7e463a065dcbdcf43181c7c60af2c5a0371e72f",
+      "sha256": "a8f3b85f2bfb920c4b868b537c8ad454b5223391dd8d3691249cec40cb089677"
+    }
+  },
+  "successor_paths": [
+    "docs/semantic_quarantine/SEMANTIC_QUARANTINE_HISTORY_SUCCESSOR_RECEIPT_v1.json",
+    "docs/semantic_quarantine/SEMANTIC_QUARANTINE_HISTORY_SUCCESSOR_SCHEMA_v1.json",
+    "orchestrator/semantic_quarantine_history_successor.py",
+    "orchestrator/tests/test_semantic_quarantine_history_successor.py",
+    "scripts/check_semantic_quarantine_history_successor.sh"
+  ],
+  "superseded_transaction_state_wrappers": [
+    "scripts/check_root_archive_preflight.sh",
+    "scripts/check_root_archive_lifecycle_successor.sh",
+    "scripts/check_repository_topology_decision.sh"
+  ],
+  "topology_commit": "72377c2a12b17a3590b5f460b039e9cbe4d6d9b7",
+  "transaction_chain_digest": "49b550051fffaf7b494ddc6adf84e18934d0fa92cea84ec719df3b904db32bc0",
+  "transactions": [
+    {
+      "artifacts": {
+        ".codex_browser_snapshot_proshka.md": {
+          "kind": "absent"
+        },
+        "archive/root_artifacts/browser_snapshots/.codex_browser_snapshot_proshka.md": {
+          "byte_size": 139143,
+          "kind": "blob",
+          "mode": "100644",
+          "oid": "2d724297c71e344f09968eb09b66c2b4e6828220",
+          "sha256": "34117cfc30c2ea1c0c03b7fb4bc1f3c61d06c7203693cb63bd2b3bec6f615c82"
+        },
+        "archive/root_artifacts/browser_snapshots/louise-current-tab.png": {
+          "byte_size": 115045,
+          "kind": "blob",
+          "mode": "100644",
+          "oid": "5851bebb44c9d9ec14a6b61204155a742cd8b2c1",
+          "sha256": "818b7245efef9ab1e896a3c0a1fd6ec37d44e1dfc98acf751f7655ec51e6a2fb"
+        },
+        "archive/root_artifacts/browser_snapshots/louise-last-response.md": {
+          "byte_size": 14451,
+          "kind": "blob",
+          "mode": "100644",
+          "oid": "33d03acfba6811861f99254a90a34b4ea872d31c",
+          "sha256": "5d1aeeba935564f7aa2c68a70f9e8e3abce92feacf60ec2f1772e786af030110"
+        },
+        "archive/root_artifacts/provenance/codex_4af2_uncommitted_20260727.patch": {
+          "byte_size": 21750,
+          "kind": "blob",
+          "mode": "100644",
+          "oid": "3181f913c0dd04e2ccb6263429191edb68eae2d6",
+          "sha256": "625967f99367bd4471a00cc4e0db70a81e9071a358bc752a42fe4c7ee0f7e7af"
+        },
+        "archive/root_artifacts/provenance/run.jsonl": {
+          "byte_size": 0,
+          "kind": "blob",
+          "mode": "100644",
+          "oid": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "codex_4af2_uncommitted_20260727.patch": {
+          "kind": "absent"
+        },
+        "docs/semantic_quarantine/PORTABILITY_RELOCATION_SUCCESSOR_RECEIPT_v1.json": {
+          "byte_size": 565,
+          "kind": "blob",
+          "mode": "100644",
+          "oid": "4e7496d773b40a24c7d099e4292874ddc183b9f4",
+          "sha256": "aa6dee50b405ddeb21b4cfea81c62e1a7e4c1ac7f920e87211e1ce5dbfa6282c"
+        },
+        "docs/semantic_quarantine/PORTABILITY_RELOCATION_SUCCESSOR_SCHEMA_v1.json": {
+          "byte_size": 694,
+          "kind": "blob",
+          "mode": "100644",
+          "oid": "c53d2ef3b4c202de59d690701f9fcade07ad6e8e",
+          "sha256": "37d78d0212b28e959583fabdcb9cb5adb6d63404fb36dfe355af07008d7f9018"
+        },
+        "docs/semantic_quarantine/PORTABILITY_RELOCATION_SUCCESSOR_v1.json": {
+          "byte_size": 1443,
+          "kind": "blob",
+          "mode": "100644",
+          "oid": "8df7839d92cffce3bc850baa1e3a52dde03fd062",
+          "sha256": "617b3649f97c662aabddbcc8af17b8b55242a6b242669ab6d32b4fa5431a3114"
+        },
+        "docs/semantic_quarantine/ROOT_ARCHIVE_EXECUTION_UMBRELLA_v1.json": {
+          "byte_size": 640,
+          "kind": "blob",
+          "mode": "100644",
+          "oid": "5be9436bff152b4488e7b5df732d43cb50e8f3fb",
+          "sha256": "1160da2aa2f5297926edfaf6501aca1f5301c35b778de9f2d83a8d0c29ed57e8"
+        },
+        "docs/semantic_quarantine/ROOT_ARCHIVE_ZERO_REFERENCE_RECEIPT_v1.json": {
+          "byte_size": 58243,
+          "kind": "blob",
+          "mode": "100644",
+          "oid": "f252ff24be54374bcedf0dbd33585fac8af3667e",
+          "sha256": "99c8d54feae0f019a182b8aa5439370f198c452c0ee68e993d597d55d482b03e"
+        },
+        "docs/semantic_quarantine/ROOT_ARCHIVE_ZERO_REFERENCE_SCHEMA_v1.json": {
+          "byte_size": 1518,
+          "kind": "blob",
+          "mode": "100644",
+          "oid": "d0033c18dba2d46f210cdcce58603c7562aab882",
+          "sha256": "f7d33c907f39f86694731b5c8e9a9b2581aa0008ef4fe0a03b98d8b601e3426f"
+        },
+        "docs/semantic_quarantine/ROOT_ARTIFACT_CLASSIFICATION_RECEIPT_v2.json": {
+          "byte_size": 1073,
+          "kind": "blob",
+          "mode": "100644",
+          "oid": "14b9c0860c5204abdef2195142c71572aa725f95",
+          "sha256": "ba47258b5dbdfcf838183f1614a693101384973f8f852deee543ac062df1d2b6"
+        },
+        "docs/semantic_quarantine/ROOT_ARTIFACT_CLASSIFICATION_SCHEMA_v2.json": {
+          "byte_size": 1250,
+          "kind": "blob",
+          "mode": "100644",
+          "oid": "de18f6d6fd5c83d5c294427647b367002da8a3ad",
+          "sha256": "3a02c4c9cfce918f2f717dbbf550476a357f5935c95a3786c5c548672ac1e896"
+        },
+        "docs/semantic_quarantine/ROOT_ARTIFACT_CLASSIFICATION_v2.json": {
+          "byte_size": 36859,
+          "kind": "blob",
+          "mode": "100644",
+          "oid": "dcb2994de059053ba1ff1c99489229f86619f936",
+          "sha256": "4e62cf98efc61bb49baaaf50ab6b19884a9f1a7161e2e7616a57a5a4bf7c05e8"
+        },
+        "louise-current-tab.png": {
+          "kind": "absent"
+        },
+        "louise-last-response.md": {
+          "kind": "absent"
+        },
+        "orchestrator/portability_manifest.py": {
+          "byte_size": 43096,
+          "kind": "blob",
+          "mode": "100644",
+          "oid": "187afc3f6f0571474220830c2e14777d2b9356ff",
+          "sha256": "e90c17b1ca62fe10f76c31a03fab455f86b3a1e18da44fb29ed15ba2adf4a3d3"
+        },
+        "orchestrator/root_archive_moves.py": {
+          "byte_size": 54711,
+          "kind": "blob",
+          "mode": "100644",
+          "oid": "7e1812414a9d83a322d8db2ae06351929968604c",
+          "sha256": "4e62c798ec3396420dcd7461fa31a17be750e564ada1afed11aeb92c2646f3ea"
+        },
+        "orchestrator/root_artifact_classification.py": {
+          "byte_size": 42965,
+          "kind": "blob",
+          "mode": "100755",
+          "oid": "f545d1b3cdda874745d620815d02e87fef61f97e",
+          "sha256": "4954b38d2c4cde02f5b6db958146850288cc4efa8fa8427ac168f45d01481bb0"
+        },
+        "orchestrator/tests/test_portability_manifest.py": {
+          "byte_size": 14466,
+          "kind": "blob",
+          "mode": "100644",
+          "oid": "33efc2f59daccedb3ccc6d4db68b9ed07f52ea71",
+          "sha256": "818fffaaa3be9c036fd4d661d6837be1362b022ccad8e6a3d38218e9c6b0fb68"
+        },
+        "orchestrator/tests/test_root_archive_moves.py": {
+          "byte_size": 11368,
+          "kind": "blob",
+          "mode": "100644",
+          "oid": "0440ae4af3014421e23b40f9eb6254f573cd01ce",
+          "sha256": "3af4f8c705e976591f5078f7f98e797f368bdca88c1d12ea7c0f28978bb258fc"
+        },
+        "orchestrator/tests/test_root_artifact_classification.py": {
+          "byte_size": 18755,
+          "kind": "blob",
+          "mode": "100644",
+          "oid": "d235040925a0bfb7eccee17a07ef69b1df96a9be",
+          "sha256": "e5045f75fc9c8d87d062261ceb31d557ed41c646d85f12d3a9ee497787020e42"
+        },
+        "run.jsonl": {
+          "kind": "absent"
+        },
+        "scripts/check_root_archive_preflight.sh": {
+          "byte_size": 980,
+          "kind": "blob",
+          "mode": "100755",
+          "oid": "bb10187500abcdb1f7fca87ffd4c81eab2bd2610",
+          "sha256": "604c94d0994be1f48f4ec0935da92993107cc04babe3bd0e731d8e96cea7d412"
+        }
+      },
+      "commit": "c450773bd63b295439df2174da12fafa16958f1f",
+      "id": "P9_ARCHIVE_TRANSACTION",
+      "parent": "1c5988c3d97c46c1cb97bdb8a7019fd52a429c1f",
+      "paths": [
+        ".codex_browser_snapshot_proshka.md",
+        "archive/root_artifacts/browser_snapshots/.codex_browser_snapshot_proshka.md",
+        "archive/root_artifacts/browser_snapshots/louise-current-tab.png",
+        "archive/root_artifacts/browser_snapshots/louise-last-response.md",
+        "archive/root_artifacts/provenance/codex_4af2_uncommitted_20260727.patch",
+        "archive/root_artifacts/provenance/run.jsonl",
+        "codex_4af2_uncommitted_20260727.patch",
+        "docs/semantic_quarantine/PORTABILITY_RELOCATION_SUCCESSOR_RECEIPT_v1.json",
+        "docs/semantic_quarantine/PORTABILITY_RELOCATION_SUCCESSOR_SCHEMA_v1.json",
+        "docs/semantic_quarantine/PORTABILITY_RELOCATION_SUCCESSOR_v1.json",
+        "docs/semantic_quarantine/ROOT_ARCHIVE_EXECUTION_UMBRELLA_v1.json",
+        "docs/semantic_quarantine/ROOT_ARCHIVE_ZERO_REFERENCE_RECEIPT_v1.json",
+        "docs/semantic_quarantine/ROOT_ARCHIVE_ZERO_REFERENCE_SCHEMA_v1.json",
+        "docs/semantic_quarantine/ROOT_ARTIFACT_CLASSIFICATION_RECEIPT_v2.json",
+        "docs/semantic_quarantine/ROOT_ARTIFACT_CLASSIFICATION_SCHEMA_v2.json",
+        "docs/semantic_quarantine/ROOT_ARTIFACT_CLASSIFICATION_v2.json",
+        "louise-current-tab.png",
+        "louise-last-response.md",
+        "orchestrator/portability_manifest.py",
+        "orchestrator/root_archive_moves.py",
+        "orchestrator/root_artifact_classification.py",
+        "orchestrator/tests/test_portability_manifest.py",
+        "orchestrator/tests/test_root_archive_moves.py",
+        "orchestrator/tests/test_root_artifact_classification.py",
+        "run.jsonl",
+        "scripts/check_root_archive_preflight.sh"
+      ],
+      "tree": "cc0717eea10b9ea00c50c0db8b8870de11fd80d1"
+    },
+    {
+      "artifacts": {
+        "docs/semantic_quarantine/ROOT_ARCHIVE_LIFECYCLE_SUCCESSOR_RECEIPT_v1.json": {
+          "byte_size": 6668,
+          "kind": "blob",
+          "mode": "100644",
+          "oid": "f106ee3903d3a1180ae2af1df7de05df6bd7811d",
+          "sha256": "5c718470e8d707edae3180473db2ac8abc6bb1a5f6145989a6eb4cdc77e0d56c"
+        },
+        "docs/semantic_quarantine/ROOT_ARCHIVE_LIFECYCLE_SUCCESSOR_SCHEMA_v1.json": {
+          "byte_size": 3107,
+          "kind": "blob",
+          "mode": "100644",
+          "oid": "01af0836d1c658bbff4c9cbcf604632945bdb08a",
+          "sha256": "591ab80316e6bd6fe416475be3d693757b8b1fceb4ebe02137072565415f990a"
+        },
+        "orchestrator/root_archive_lifecycle_successor.py": {
+          "byte_size": 16704,
+          "kind": "blob",
+          "mode": "100644",
+          "oid": "0ba7650714587f512c0c7f4c15a8fe5ac9655e0d",
+          "sha256": "363531e451aca823a787088e665c302e5b6cb1d94137dd927d216e74fd36052e"
+        },
+        "orchestrator/tests/test_root_archive_lifecycle_successor.py": {
+          "byte_size": 5153,
+          "kind": "blob",
+          "mode": "100644",
+          "oid": "39b4547034b219261179782e13b3d9e45d7563f0",
+          "sha256": "1aad7c9d3f3fb1880e973a7361f0bc7742a205e2dc9c9ebd447f4eab730736a0"
+        },
+        "scripts/check_root_archive_lifecycle_successor.sh": {
+          "byte_size": 390,
+          "kind": "blob",
+          "mode": "100755",
+          "oid": "2182db98cad16454c7c57238fae207e96b562c33",
+          "sha256": "e25b2f1b90118aa130bbe03881dd9e5d3fbefdc3440279b1985b257c24b235c4"
+        }
+      },
+      "commit": "a9934dc476a26f29d232749a3ec5c272109aa810",
+      "id": "P9_ARCHIVE_LIFECYCLE_SUCCESSOR",
+      "parent": "c450773bd63b295439df2174da12fafa16958f1f",
+      "paths": [
+        "docs/semantic_quarantine/ROOT_ARCHIVE_LIFECYCLE_SUCCESSOR_RECEIPT_v1.json",
+        "docs/semantic_quarantine/ROOT_ARCHIVE_LIFECYCLE_SUCCESSOR_SCHEMA_v1.json",
+        "orchestrator/root_archive_lifecycle_successor.py",
+        "orchestrator/tests/test_root_archive_lifecycle_successor.py",
+        "scripts/check_root_archive_lifecycle_successor.sh"
+      ],
+      "tree": "79289a2bc967edb3533949101aeb4c8329491bb0"
+    },
+    {
+      "artifacts": {
+        "docs/semantic_quarantine/REPOSITORY_TOPOLOGY_DECISION_SCHEMA_v1.json": {
+          "byte_size": 4322,
+          "kind": "blob",
+          "mode": "100644",
+          "oid": "437cdfd91ac45ce141be3d32434351ea0f7cd4dc",
+          "sha256": "e578f39569d692a1d8dac043af808f282aef90977ed05f23628586bdb92fe335"
+        },
+        "docs/semantic_quarantine/REPOSITORY_TOPOLOGY_DECISION_v1.json": {
+          "byte_size": 13036,
+          "kind": "blob",
+          "mode": "100644",
+          "oid": "71b7dea183dd3fbf9e12f0e681e1e97f401407c9",
+          "sha256": "2d164623b9251012c0bb51a124b967101359131dce21e2e62e0be9fcf8bcb6fd"
+        },
+        "docs/semantic_quarantine/REPOSITORY_TOPOLOGY_RATIONALE_v1.md": {
+          "byte_size": 2340,
+          "kind": "blob",
+          "mode": "100644",
+          "oid": "0d003a70e9f9837a962a81205af591aba5cac346",
+          "sha256": "2aafd6161d67ef289faec4f98657acc4f54f0b47e2b59ef1c474042be486e059"
+        },
+        "docs/semantic_quarantine/REPOSITORY_TOPOLOGY_RECEIPT_SCHEMA_v1.json": {
+          "byte_size": 2422,
+          "kind": "blob",
+          "mode": "100644",
+          "oid": "23c503b417ab9d598a2472062c05bfa0e39dd7be",
+          "sha256": "7b126a64625279bbdbe7790b937fbec14d16c7c4ddc8e954f60985cc0b5ccad3"
+        },
+        "docs/semantic_quarantine/REPOSITORY_TOPOLOGY_RECEIPT_v1.json": {
+          "byte_size": 6779,
+          "kind": "blob",
+          "mode": "100644",
+          "oid": "08febea24fcc62e82558ee668d5408bb7a68cb79",
+          "sha256": "4c67cb37698d9b590864d60bab941d90ab6479c301d9d8e49f9b2086ef29c2a4"
+        },
+        "orchestrator/repository_topology_decision.py": {
+          "byte_size": 32901,
+          "kind": "blob",
+          "mode": "100644",
+          "oid": "41b500b961097e2e5dbf82662d02980dda18220e",
+          "sha256": "ee9d68445278168e76f7241d64f9d29642762b0969f7edc07663e4deb4920225"
+        },
+        "orchestrator/tests/test_repository_topology_decision.py": {
+          "byte_size": 9236,
+          "kind": "blob",
+          "mode": "100644",
+          "oid": "a4a07b576462795f74296d64b08644fe45d24484",
+          "sha256": "35f95d5d1422cbe288c4cb46422a515c5f5bd2ba4ede447e969da11cbc47a8c1"
+        },
+        "scripts/check_repository_topology_decision.sh": {
+          "byte_size": 378,
+          "kind": "blob",
+          "mode": "100755",
+          "oid": "abbfe2abd0ea81863d1a92a525246a9521660d89",
+          "sha256": "a1297b12ad4e5c1cbdd4e35c7efb334c132e0b55f470532a1b4a0b54ef8778c8"
+        }
+      },
+      "commit": "72377c2a12b17a3590b5f460b039e9cbe4d6d9b7",
+      "id": "P10_REPOSITORY_TOPOLOGY",
+      "parent": "a9934dc476a26f29d232749a3ec5c272109aa810",
+      "paths": [
+        "docs/semantic_quarantine/REPOSITORY_TOPOLOGY_DECISION_SCHEMA_v1.json",
+        "docs/semantic_quarantine/REPOSITORY_TOPOLOGY_DECISION_v1.json",
+        "docs/semantic_quarantine/REPOSITORY_TOPOLOGY_RATIONALE_v1.md",
+        "docs/semantic_quarantine/REPOSITORY_TOPOLOGY_RECEIPT_SCHEMA_v1.json",
+        "docs/semantic_quarantine/REPOSITORY_TOPOLOGY_RECEIPT_v1.json",
+        "orchestrator/repository_topology_decision.py",
+        "orchestrator/tests/test_repository_topology_decision.py",
+        "scripts/check_repository_topology_decision.sh"
+      ],
+      "tree": "3f13ce024eedfb116830e144475aef4d457558c4"
+    }
+  ]
+}
