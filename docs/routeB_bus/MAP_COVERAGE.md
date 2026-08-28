@@ -4,7 +4,7 @@
 `python3 docs/cartographer/map_coverage.py`. Рукописная карта — `MAP.md`, она
 описывает узлы маршрута; это приложение описывает **файлы**, и оно полное.
 
-Всего файлов: **267** · упомянуто в `MAP.md`: **21** · вне карты: **246** · без описания в шапке: **0**
+Всего файлов: **364** · упомянуто в `MAP.md`: **26** · вне карты: **338** · без описания в шапке: **0**
 
 «вне карты» не значит «лишний»: значит, что обходом карты файл не находится.
 Именно так 2026-08-11 был построен заново мост `ker ↔ eigenspace`, стоявший в
@@ -17,6 +17,7 @@
 | `AmbientResidualSplit` | — | Residual in the ambient carrier. -/ | 0 |
 | `AutocorrelationSquareRootReconstruction` | — | Status: STUB / INACTIVE | 0 |
 | `BDetReality` | — | The finite detector scalar on a fixed two-parameter carrier. -/ | 0 |
+| `CCMComplexTrialReflectionContaminationFloor` | — | H2a.1 — reflection sector floors, odd mass and residual give the full | 0 |
 | `CCMFiniteWeilBottomSpectral` | — | The shifted CCM matrix operator is the source operator minus the scalar | 0 |
 | `CCMFiniteWeilCell13N2ClassCrosswalk` | — | Exact antipodal class crosswalk for the CCM `(13, 2)` cell | 0 |
 | `CCMFiniteWeilCell13N2NonintegralConstantNormalForm` | — | Nonintegral constant normal form for the CCM cell `(13, 2)` | 0 |
@@ -24,6 +25,7 @@
 | `CCMFiniteWeilCell13N2SevenClassLayout` | — | Exact seven-class layout of the CCM cell `(13, 2)` | 0 |
 | `CCMFiniteWeilCell13N2VonMangoldtNormalForm` | — | Exact finite von-Mangoldt normal form for the CCM cell `(13, 2)` | 0 |
 | `CCMFiniteWeilCell13N2W02NormalForm` | — | Exact `W02` normal form for the CCM cell `(13, 2)` | 0 |
+| `CCMFiniteWeilCenterSpectralNormalForm` | — | Center spectral normal form of the CCM source field `beta` | 0 |
 | `CCMFiniteWeilEtaNonzero` | — | The source-mode diagonal sends an even vector to an odd vector. -/ | 0 |
 | `CCMFiniteWeilLogBounds` | — | Rational scalar bounds used in the CCM cell `(13, 2)` | 0 |
 | `CCMFiniteWeilParity` | — | Reflection of source vectors across the central CCM mode. -/ | 0 |
@@ -42,17 +44,22 @@
 | `CanonicalRHRouteSkeleton` | карта | Fail-closed canonical Route-B roof | 0 |
 | `CenteredXiZeroNonzero` | карта | первая декларация: `etaPairTerm` | 0 |
 | `ClassicalXiInterface` | — | Riemann's entire `xi`, expressed through Mathlib's pole-removed entire | 0 |
+| `CofinalFixedShiftLiteralComplementFloor` | карта | Cofinal fixed-shift literal CCM complement floor | 0 |
+| `CofinalSourceResidualGapTransformTailBudget` | карта | Cofinal source residual/gap transform-tail budget | 0 |
 | `CompactEvaluationRateTransfer` | — | A uniform evaluation bound on a compact set transfers any vanishing | 0 |
 | `CompletedTrackerScope` | — | The completion factor ratified in the D0.7e owner input. -/ | 0 |
 | `D0AnchorFloor` | — | The zero Fourier mode belongs to the exact Galerkin carrier.  This is the | 0 |
 | `D0CanonicalApproximation` | карта | The independent D0 parameters.  The lower bound `m ≥ 2` ensures that the | 0 |
 | `D0CenteredCriticalMoment` | карта | The centered critical-moment contract | 0 |
 | `D0CenteredDensityFactorizationFailure` | — | Exact no-go for a generic centered-density square factorization | 0 |
+| `D0CenteredMomentRatioLeakageEquivalence` | — | The critical-moment ratio is exactly a uniform leakage bound | 0 |
 | `D0CriticalMomentCanonicalCluster` | карта | первая декларация: `exists_refined_clusterData_of_criticalMomentRatio` | 0 |
 | `D0CriticalMomentMontelGate` | карта | The critical-moment ratio supplies the closed-substrip bounds, which | 0 |
 | `D0CriticalMomentStripBound` | — | первая декларация: `exp_mode_half_shift` | 0 |
 | `D0CriticalStripCompactBound` | — | Compact-local boundedness of the exact selected family on the open | 0 |
+| `D0DiagonalSelectionAndSubcriticalExtension` | — | Two abstract steps of the registered G5 route | 0 |
 | `D0FiniteProjectionReconstruction` | — | The exact finite Galerkin projection reconstructed in the literal | 0 |
+| `D0FixedWindowWeightBoundedness` | — | At a fixed window the subcritical weight is bounded | 0 |
 | `D0HermitianNegativeIndexDrop` | — | Strict Hermitian drop forces a negative-index jump | 0 |
 | `D0HilbertBasisWeightedTail` | — | Generic Hilbert-basis weighted tail | 0 |
 | `D0KTrialStage1` | — | D0.1 source lock: | 0 |
@@ -87,10 +94,12 @@
 | `D0Mode4FerrersPhysicalFourierNonzeroScalar` | — | Goal 058 G3: the physical Ferrers Fourier scalar is nonzero | 0 |
 | `D0Mode4FerrersPhysicalFourierRealScalar` | — | Goal 058 G3: the physical Ferrers Fourier scalar is real | 0 |
 | `D0Mode4FerrersPhysicalFourierScalarProportionality` | — | Goal 058 G3: physical Ferrers finite-Fourier scalar proportionality | 0 |
+| `D0Mode4FerrersPhysicalFourierScalarSign` | — | Goal 058 G3: sign lock for the physical Ferrers Fourier scalar | 0 |
 | `D0Mode4FerrersPhysicalNormalizedZeroExtension` | — | Goal 058 G3: normalized physical Ferrers zero extension | 0 |
 | `D0Mode4FerrersPhysicalProlateScaling` | — | Goal 058 G3: physical scaling of the accepted mode-four Ferrers solution | 0 |
 | `D0Mode4FerrersProlateDifferentialEquation` | — | Exact prolate ODE for the matched mode-four Ferrers series | 0 |
 | `D0Mode4FerrersRegularEvenProlateSolution` | — | Goal 058 G3: regular even mode-four Ferrers solution assembly | 0 |
+| `D0Mode4FerrersRegularEvenProlateSolutionUniqueness` | — | Goal 058 G3: uniqueness inside the regular Ferrers solution package | 0 |
 | `D0Mode4FerrersSturmComparison` | — | Goal 058 G3: interior Sturm comparison on one nodal interval | 0 |
 | `D0Mode4FiniteBlockInertiaAdditivity` | — | Finite block inertia for the mode-four Schur truncation | 0 |
 | `D0Mode4FiniteToLiteralNegativeCount` | — | Eventual finite-to-literal mode-four negative-count transport | 0 |
@@ -138,6 +147,7 @@
 | `D0PstarExactArchSymbolLowerBound` | — | первая декларация: `b3_0n_one_fourth_le_norm_sourceArchimedeanArgument` | 0 |
 | `D0PstarExactArchSymbolWeightedModeL2` | — | Goal 057 B3.0B3: exact archimedean-symbol weighted-mode L2 transfer | 0 |
 | `D0PstarExplicitCCMLimitFourier` | — | Fourier invariance of the explicit CCM limiting packet | 0 |
+| `D0PstarFirstOrderProjectionTailReceiver` | — | First-order coefficient receiver for the selected projection tail | 0 |
 | `D0PstarFullMellinGwinCrosswalk` | — | Selected full Mellin/Gwin crosswalk | 0 |
 | `D0PstarGalerkinResidualDecay` | карта | Conditional selected Galerkin residual decay receiver | 0 |
 | `D0PstarInversionCoefficientCrosswalk` | — | Inversion symmetry to production coefficient reflection | 0 |
@@ -167,6 +177,7 @@
 | `D0PstarSourceArchModePairingKernel` | — | Goal 057 B3.0D: source archimedean mode-pairing kernel Hermitianity | 0 |
 | `D0PstarSourceArchOffDiagonalCCMWRCrosswalk` | — | первая декларация: `logWindowZeroExtendedMode_integrable_for_e4a` | 0 |
 | `D0PstarSourceCCMOddMassReflectionDefect` | — | Exact source CCM odd mass as a reflection defect | 0 |
+| `D0PstarSourceLogWindowFourierIntegralCrosswalk` | — | H2a.4.1b.3c.1.10 — the source log-window Fourier integral crosswalk | 0 |
 | `D0PstarSourceLogWindowFourierL2Isometry` | — | первая декларация: `fourierLogWindowMode_memLp` | 0 |
 | `D0PstarSourceLowBandModeDecay` | — | Source low-band decay of a single production Fourier mode | 0 |
 | `D0PstarSourceModeCosineCCMQKernel` | — | первая декларация: `complexConvolution` | 0 |
@@ -195,21 +206,100 @@
 | `D0PstarW02AmbientContinuousForm` | — | Literal positive source-W02 endpoint value on a logarithmic mode. -/ | 0 |
 | `D0PstarW02EndpointFunctionals` | — | первая декларация: `sourceW02EndpointPlusWeight_memLp` | 0 |
 | `D0PstarW02RankTwoForm` | — | Generic bounded rank-two endpoint form. The W02-specific source theorem | 0 |
+| `D0RawTransformRowScaling` | — | Row scaling of the raw transform, and the value crosswalk it reduces | 0 |
 | `D0ScaledJacobiForcedReceiver` | — | A finite-to-infinite core for the scaled Jacobi forced receiver | 0 |
 | `D0ScaledJacobiReceiverCompatibility` | — | The resonant Jacobi receiver compatibility discriminator | 0 |
 | `D0SelectedCentralFloor` | — | Exact selected-sequence source data for a single uniform relative central | 0 |
 | `D0StripMontelRefinement` | — | Strip-local Montel compactness produces a nonzero cluster after its strict | 0 |
+| `D0SubcriticalWeightedRateIntegral` | — | The subcritical weighted integral of the derived pointwise rate | 0 |
+| `D0ZerosRealOnScalarTransfer` | — | Zeros-real transfers along a nonzero scalar and along pointwise equality | 0 |
 | `DoubleCompletionStripMismatch` | — | первая декларация: `normalizedDoubleCompletedXi` | 0 |
 | `EStarWindowedMellinCrosswalk` | — | Finite-window Mellin crosswalk for the D0 starred packet | 0 |
 | `EntirePhaseNormalization` | — | A finite linear combination of candidate entire summands. -/ | 0 |
 | `EntireSquareRootRigidity` | — | Two entire functions with identical pointwise squares differ by one | 0 |
 | `EvenRealAutocorrelationRigidity` | — | Typed transform-side model for full autocorrelation on the real-even, | 0 |
 | `FplusConstantMode` | — | A finite Fourier trial on one logarithmic period of length `L`. -/ | 0 |
+| `G6N1BookRegularSpectrumSourceInterface` | — | W13.7B — the source interface for the regular even endpoint spectrum | 0 |
+| `G6N1CenterAnchorScalarLock` | — | F72.0B1 — the center-anchor scalar lock | 0 |
+| `G6N1CenterNormalizedSatz9RateTransfer` | — | F72.1A0 — the center-normalized Satz-9 rate transfer | 0 |
+| `G6N1CenterNormalizedUniquenessReceiver` | — | F72.0B2C — the center-normalized uniqueness receiver | 0 |
+| `G6N1CutoffLocalOrderedEnumerationLock` | — | The cutoff-local ordered enumeration lock | 0 |
+| `G6N1CylinderTransportL1Budget` | — | W_TRANSPORT_L1_NODE (verdict 4c0e13ba, node 2) | 0 |
+| `G6N1EvenCenterDerivative` | — | W13.11 — the derivative of an even function at the centre | 0 |
+| `G6N1EvenSolutionCenterNonvanishing` | — | The centre of a nontrivial even solution cannot vanish | 0 |
+| `G6N1ExplicitCCMLimitBeyondSourceWindowTail` | — | L73.4 — the explicit target tail beyond the source window | 0 |
+| `G6N1ExplicitCCMLimitMellinNormalization` | — | L73.5 — the explicit CCM limit Mellin normalization | 0 |
+| `G6N1ExplicitCCMLimitMellinOuterTail` | — | L73.6 — the explicit CCM limit outer Mellin tail, uniform on the strip | 0 |
+| `G6N1ExplicitHDerivativeCombBudget` | — | The explicit H derivative comb budget (W5_EXPLICIT_H_QCOMB_BOUNDED) | 0 |
+| `G6N1FiniteLimitCharacteristicRange` | — | The project finite-limit carrier has exactly the low characteristic range | 0 |
+| `G6N1FiniteLimitSelectedThetaModularBind` | — | The finite-limit / source selected-theta modular bind | 0 |
+| `G6N1FuchsProjectOperatorIntertwining` | — | F72.3A — exact intertwining of the paper and project finite Fourier operators | 0 |
+| `G6N1FuchsSelectedEigenvalueDefectRate` | — | F72.3B — the Fuchs selected eigenvalue defect-rate port | 0 |
+| `G6N1OrderedEnumerationLock` | — | W13.7D — the ordered-enumeration lock | 0 |
+| `G6N1ParabolicCylinderD0D4Exact` | — | F72.1B — exact `D_0` and `D_4` at the project scale | 0 |
+| `G6N1PreAnchorLimitZeroModeAndSelectedShell` | — | G6/N1 pre-anchor limit, exact zero mode, and additive selected shell | 0 |
+| `G6N1Satz9SourcePackageInterface` | — | F72.0B2B/D — the Satz-9 source package as a typed hole, and the bind | 0 |
+| `G6N1SelectedFerrersAbelPoissonL2` | — | H2a.4.1b.3c.1.12 — selected Ferrers Abel–Poisson `L²` lock (W3) | 0 |
+| `G6N1SelectedFerrersBetaMomentOddMass` | — | H2a.4.1b.3a — the selected Ferrers beta-moment source lock | 0 |
+| `G6N1SelectedFerrersCCMLemma73PreAnchorPort` | — | L73.8 — the conditional selected Ferrers CCM Lemma 7.3 pre-anchor port | 0 |
+| `G6N1SelectedFerrersCenterCoefficientFloor` | — | H2a.4.1b.3c.0 — the selected Ferrers center-coefficient inverse-log floor | 0 |
+| `G6N1SelectedFerrersCenterIntegralRate` | — | F72.4 — the center-anchored integral rate from the chi defect | 0 |
+| `G6N1SelectedFerrersClosedSubstripMellinConvergence` | — | L73.7 — selected Ferrers closed-substrip Mellin convergence | 0 |
+| `G6N1SelectedFerrersCommutatorResidualDefect` | — | H2a.4.1b.3b — the selected Ferrers commutator residual ratio lock | 0 |
+| `G6N1SelectedFerrersDirectCylinderRate` | — | F72.1C — selected Ferrers direct cylinder rate, with explicit paper-rate input | 0 |
+| `G6N1SelectedFerrersEStarWindowMainError` | — | L73.3 — the selected Ferrers E-star window main error | 0 |
+| `G6N1SelectedFerrersEdgeTopFluxConsumer` | — | Edge-top flux consumer, stage A (verdict ed7c8f7d, REQ-2026-08-26-E) | 0 |
+| `G6N1SelectedFerrersFactorFourPortRate` | — | F72.6 — the factor-four port source scale and final packet rate | 0 |
+| `G6N1SelectedFerrersFiniteAssetBank` | — | G6N1: selected Ferrers finite asset bank (Track 2, verdict `071d3eb0`) | 0 |
+| `G6N1SelectedFerrersFiniteCCMResidualSourceActionSplit` | — | H2a.4.1a — the selected Ferrers finite Riesz source-action split | 0 |
+| `G6N1SelectedFerrersFiniteCCMResidualVariance` | — | H2a.4.0 — the selected Ferrers finite CCM residual variance lock | 0 |
+| `G6N1SelectedFerrersFiniteCCMSourceRow` | — | H2a phase zero — the selected Ferrers finite CCM source row lock | 0 |
+| `G6N1SelectedFerrersFirstOrderBudgetApplication` | — | Application: selected projection-tail decay from the W5 first-order budget | 0 |
+| `G6N1SelectedFerrersFirstOrderCoefficientEnvelope` | — | First-order physical coefficient envelope on the W3 Abel-limit vector | 0 |
+| `G6N1SelectedFerrersFixedKShiftedRootEnergy` | — | Selected Ferrers fixed-`k` shifted root energy | 0 |
+| `G6N1SelectedFerrersGroundParityRealification` | — | Goal 058 — selected Ferrers ground parity, realification, eta normalization | 0 |
+| `G6N1SelectedFerrersGroundProposition59RealZeros` | — | Goal 058 — real zeros of the selected finite ground Proposition-59 transform | 0 |
+| `G6N1SelectedFerrersH2aSourceQuantities` | — | H2a.2 — the selected Ferrers H2a source-quantities lock | 0 |
+| `G6N1SelectedFerrersHilbertPairing` | — | G6N1: exact Hilbert-pairing identity for divided-difference (Loewner) forms | 0 |
+| `G6N1SelectedFerrersMidpointDeltaEnvelope` | — | Midpoint-delta envelope: from the W3 Abel-limit vector to the pure E_star vector | 0 |
+| `G6N1SelectedFerrersN2CompactDecayAssembly` | — | Goal 058 — N2/N3/N4 selected-shell compact closure | 0 |
+| `G6N1SelectedFerrersN2SourceScaledTailRate` | — | Goal 058 — N2 pre-anchor source-scaled Mellin projection-tail rate | 0 |
+| `G6N1SelectedFerrersOddMassDecay` | — | H2a.3 — the selected Ferrers odd-mass decay | 0 |
+| `G6N1SelectedFerrersOuterPolynomialDecay` | — | Outer polynomial decay of the committed even prolate Ferrers modes | 0 |
+| `G6N1SelectedFerrersPacketVariation` | — | H2a.4.1b.3c.1.11 — the selected Ferrers packet variation certificate (W2) | 0 |
+| `G6N1SelectedFerrersPaperParameterDictionary` | — | F72.0A — project-side parameter and index dictionary | 0 |
+| `G6N1SelectedFerrersPiecewiseACDerivativeIntegrability` | — | первая декларация: `absolutelyContinuousOnInterval_congrOn` | 0 |
+| `G6N1SelectedFerrersPreAnchorDataInhabitant` | — | The selected Ferrers inhabitant of `SelectedProlatePreAnchorData` | 0 |
+| `G6N1SelectedFerrersQuantitativeShiftedRootEnergy` | — | Selected Ferrers quantitative shifted root energy | 0 |
+| `G6N1SelectedFerrersScaleBandwidthClosure` | — | Closing the scale and bandwidth inputs of the b1 application | 0 |
+| `G6N1SelectedFerrersTrackedGroundTailReindex` | — | Goal 058 — eventual floors to one precommitted tail reindex | 0 |
+| `G6N1SelectedFerrersTrackedGroundTransform` | — | Goal 058 — the tracked ground transform: real zeros AND pointwise tracking | 0 |
+| `G6N1SelectedFerrersTrialNormalizerClosure` | — | Goal 058 — selected Ferrers trial-normalizer closure (local-cell floor) | 0 |
+| `G6N1SelectedFerrersW5DerivativeBudgetRate` | — | W5 — towards the eventual bound of the log-derivative budget | 0 |
+| `G6N1SelectedFerrersW5EndpointValueRate` | — | W5 — the two full-endpoint values decay | 0 |
+| `G6N1SelectedFerrersW5JumpSeamRate` | — | W5 — cofinal decay of the repaired internal seam sum | 0 |
+| `G6N1SelectedFerrersW5L1MassRate` | — | W5 — the additive-log `L¹` packet mass component | 0 |
+| `G6N1SelectedFerrersW5RateAssembly` | — | W5 rate assembly (verdict 66362fe1, REQ-2026-08-26-F) | 0 |
+| `G6N1SelectedFerrersWeightedResidualComplementFloor` | — | H2a.4.1b.2 — weighted residual to eventual complement floor | 0 |
+| `G6N1SelectedFerrersZeroMassCylinderPacket` | — | F72.5 — the selected zero-mass cylinder packet assembly | 0 |
+| `G6N1SelectedSatz9SourcePackageTransport` | — | Selected Satz-9 source package transport | 0 |
+| `G6N1SelectedThetaEqualityDegreeZeroFour` | — | W13.7E — selected theta equality at source degrees zero and four | 0 |
+| `G6N1SelectedThetaEqualityDegreeZeroFourModular` | — | Selected theta equality, modular consumer | 0 |
+| `G6N1SpheroidalCharacteristicRange` | — | The modular characteristic range equality | 0 |
+| `G6N1SpheroidalCrosswalkForward` | — | The forward crosswalk: a source eigenvalue satisfies the DLMF characteristic equation | 0 |
+| `G6N1SpheroidalCrosswalkReverse` | — | The reverse crosswalk: a project characteristic root is a source eigenvalue | 0 |
+| `G6N1SpheroidalSourcePhysicalLift` | — | The dimensionless-to-physical source lift | 0 |
+| `G6N1SturmDefectEnergyModePlumbing` | — | STURM_ENERGY_NODE, part B1: physical mode plumbing (verdict 4c0e13ba) | 0 |
+| `G6N1SturmDefectTruncatedEnergy` | — | STURM_ENERGY_NODE, part B2: the defect truncated energy bound | 0 |
+| `G6N1SturmWeightedConsumerNonTopRate` | — | WEIGHTED_CONSUMER nodes 3A/3B (verdict c47b75a8, REQ-2026-08-26-B) | 0 |
+| `G6N1SturmWeightedEnergyIdentity` | — | STURM_ENERGY_NODE, part A (verdict 4c0e13ba, node 1) | 0 |
 | `GammaSoftZeroFree` | — | The SOFT completion factor.  For a positive real scale `lambda`, the | 0 |
 | `GenericZeroTransfer` | — | A quantitative open-mapping replacement for the one-disk Rouché step. | 0 |
 | `H2aPenaltyCoercivity` | карта | Aristotle project `16535289-f016-4f62-bfbd-be83d826b4da`, imported | 0 |
 | `HermitianDeterminantRealZeros` | карта | первая декларация: `periodicScalingDet` | 0 |
 | `HermitianUnitMinimumEigenpair` | — | Unit minimum eigenpair for a finite complex Hermitian matrix | 0 |
+| `LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail` | карта | Literal CCM cofinal residual/floor envelope and transform tail | 0 |
+| `LiteralCCMComplementFloorConstruction` | карта | Literal CCM complement-floor construction by fixed-shift transport | 0 |
 | `MatrixBilinFormRadical` | — | The left radical of the bilinear form represented by `Q` is the kernel | 0 |
 | `MatrixBilinRadicalQuotientEquiv` | — | The equality between the full bilinear radical and the calibration line | 0 |
 | `MontelCenteredCriticalStrip` | — | The open centered critical strip is preconnected. -/ | 0 |
@@ -267,10 +357,17 @@
 | `SafeBoundsToSquareEnvelope` | — | Contract-v2 SAFE upper/lower bounds plus an independently supplied | 0 |
 | `SafeBridgeFalsifiers` | — | The scalar values realized by `A = diag(0,1)` and | 0 |
 | `SafeRateAssembly` | — | The cofinal-filter version of the Contract-v2 rate core.  Once the exact | 0 |
+| `SameFamilyGroundTrialCompositionCore` | карта | Same-family ground-to-trial cofinal composition core | 0 |
 | `SectorIsolationRadius` | — | Half the smaller of the next-even and bottom-odd gaps above the selected | 0 |
 | `SimpleEvenGroundSectorCriterion` | — | A nonzero eigenvector whose eigenvalue is recorded as a real number. | 0 |
 | `SimpleRadicalSpan` | — | A one-dimensional radical is exactly the line generated by any named | 0 |
 | `SoftL2Round13Integration` | — | Typed form of the Round-13 quantifier guard.  `S2` is allowed to pass to | 0 |
+| `SpheroidalSourceDefs` | — | Fixed-parameter even regular spheroidal spectrum, order `m = 0` | 0 |
+| `SpheroidalSourceEvenPackage` | — | The even-only source spectrum package, inhabited | 0 |
+| `SpheroidalSourceHighMode` | — | High-mode preflight: uniform diagonal dominance and the decay crosswalk | 0 |
+| `SpheroidalSourceLegendre` | — | Legendre polynomials | 0 |
+| `SpheroidalSourceMain` | — | Milestone 1: the Lagrange/Green identity with the degenerate coefficient `1 - x^2` -/ | 0 |
+| `SpheroidalSourceSpectrum` | — | Existence of infinitely many regular even spheroidal eigenvalues | 0 |
 | `TempleResidualGapEnvelopeTransfer` | — | A Temple residual-square envelope carrying two copies of the common | 0 |
 | `TwoSidedNormalizedBControl` | — | The Contract-v2 two-sided normalized `b` bound gives pointwise | 0 |
 | `UniformDifferenceReferenceTransfer` | — | первая декларация: `tendstoUniformlyOn_of_difference_and_reference` | 0 |
