@@ -12,8 +12,8 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 
 ## Operational tool manifest
 - schema / authority: `q3_tool_manifest.v2` / `REPO_CANONICAL`
-- families / tools / writers: `7` / `43` / `24`
-- SHA-256: `622607b9678977ccc10fdf77e178b9e194ff007a5beeb194025edaab946729fb`
+- families / tools / writers: `7` / `48` / `25`
+- SHA-256: `37620d4f360740169fdd8959ae8c9393921141eab3f9bb5be477f8b914a2a351`
 - Codex current task: `CLOSED`
 
 ## Phase chat and bounded exploration
@@ -61,21 +61,21 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 - collection: `q3_docs`
 - mode / status: `search_plus_vsearch` / `PASS`
 - `POST_JUNE_IDENTIFICATION` query `IdentificationAt`: `PASS`, results `30`.
-- `POST_JUNE_EDGE_SLIVER` query `edge-sliver`: `PASS`, results `40`.
-- `PRE_SWITCH_STEP33` query `ActiveCenteredCoeffEntryHboxCert`: `PASS`, results `28`.
+- `POST_JUNE_EDGE_SLIVER` query `edge-sliver`: `PASS`, results `38`.
+- `PRE_SWITCH_STEP33` query `ActiveCenteredCoeffEntryHboxCert`: `PASS`, results `37`.
 
 ## Meta-corpus registry
 - derived surfaces: `9`; authority: `DERIVED_REGISTRY_NOT_NEW_TRUTH_SOURCE`.
 
 ## Observability snapshot (derived, non-authoritative)
 - authority: `DERIVED_NONCANONICAL_OBSERVABILITY`
-- snapshot: `OBS_7c66e51e3d26f0aa6c43` at `2026-08-24T20:29:26+00:00` from `928b08b9f8e4`
+- snapshot: `OBS_f33c117098e9b1f162c8` at `2026-08-28T17:54:01+00:00` from `1437cfa7e129`
 - sources: `8`; stale: `0`; degraded: `1`
 - sorry sites/files: `0` / `0`
-- proof roots/root memberships: `2` / `131`
-- file states/import edges: `3531` / `5899`
-- taint status: `{"CONTENT_SCAN_SKIPPED_GENERATED_NONROOT": 1303, "IMPORT_BOUNDARY": 1, "NO_OBSERVED_ISSUE": 2227}`; doomed: `0`
-- axiom dependencies / proof nodes: `10` / `10`
+- proof roots/root memberships: `4` / `261`
+- file states/import edges: `3559` / `5964`
+- taint status: `{"CONTENT_SCAN_SKIPPED_GENERATED_NONROOT": 1303, "IMPORT_BOUNDARY": 1, "NO_OBSERVED_ISSUE": 2255}`; doomed: `0`
+- axiom dependencies / proof nodes: `19` / `19`
 - numeric checks: `0` `{}`
 - Proshka runs: `65`; observed seconds total/mean/median: `68876` / `1093.3` / `1044`; lower bounds: `1`
 - Answer-now clicks: `0`
@@ -83,14 +83,14 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 
 | Source | Records | Generated | Stale | Parse | Health |
 |---|---:|---|---|---|---|
-| `autopsy_map` | 18 | 2026-08-24T17:31:02+00:00 | no | PARSED | READY |
-| `dependency_tree` | 10 | 2026-08-24 20:29 UTC | no | PARSED | READY |
-| `numeric_checks` | 0 | 2026-08-24 20:29 UTC | no | PARSED | ZERO_COVERAGE |
-| `proof_graph` | 10 | 2026-08-24 20:29 UTC | no | PARSED | READY |
+| `autopsy_map` | 18 | 2026-08-24T09:08:53+00:00 | no | PARSED | READY |
+| `dependency_tree` | 19 | 2026-08-28 17:53 UTC | no | PARSED | READY |
+| `numeric_checks` | 0 | 2026-08-28 17:53 UTC | no | PARSED | ZERO_COVERAGE |
+| `proof_graph` | 19 | 2026-08-28 17:53 UTC | no | PARSED | READY |
 | `proshka_timing` | 65 | NOT_CAPTURED | no | PARSED | READY |
-| `sorry_frontier` | 0 | 2026-08-24 20:29 UTC | no | PARSED | READY |
-| `taint_graph` | 3531 | 2026-08-24 20:29 UTC | no | PARSED | READY |
-| `taint_sources` | 3531 | 2026-08-24 20:29 UTC | no | PARSED | READY |
+| `sorry_frontier` | 0 | 2026-08-28 17:53 UTC | no | PARSED | READY |
+| `taint_graph` | 3559 | 2026-08-28 17:53 UTC | no | PARSED | READY |
+| `taint_sources` | 3559 | 2026-08-28 17:53 UTC | no | PARSED | READY |
 
 ### Slowest recorded Proshka runs
 
@@ -103,9 +103,10 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | `GOAL057_B3_0G_SOURCE_W02_MODE_PAIRING_SOURCE_AUDIT` | GOAL057/P057_B3_0G | 1662 | observed | OPEN_PREFLIGHT_AUTHORIZED_PRODUCTION_FORBIDDEN |
 
 ## Staleness warnings
+- CHANNEL_RUNTIME active phase record is 101 hours old (2026-08-24T14:58:31+02:00); revalidate the existing chat handle and six-field phase key. Age alone never authorizes a fresh chat.
 - observability source health degraded: numeric_checks:ZERO_COVERAGE — this is not a green sensor state.
-- COGNITIVE_GOVERNOR.md is 24 days old (2026-07-31) and references a possibly retired front — regenerate.
-- FAILED_STRATEGIES.yaml last updated 2026-07-31 (24 days) — bus iteration blocks after that date are NOT merged.
+- COGNITIVE_GOVERNOR.md is 28 days old (2026-07-31) and references a possibly retired front — regenerate.
+- FAILED_STRATEGIES.yaml last updated 2026-07-31 (28 days) — bus iteration blocks after that date are NOT merged.
 
 ## Source freshness
 | Source | Last commit |
@@ -117,10 +118,10 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | `Q3_OBSTRUCTION_ATLAS.md` | 2026-08-06 |
 | `docs/RH_TRICK_ATLAS.md` | 2026-08-06 |
 | `q3.lean.aristotle/docs/INSIGHTS.md` | 2026-08-21 |
-| `docs/Progress_Log.md` | 2026-08-23 |
+| `docs/Progress_Log.md` | 2026-08-28 |
 | `docs/GENEALOGY.md` | 2026-08-10 |
-| `docs/RECORDING_RULES.md` | 2026-08-09 |
-| `docs/cartographer/TOOLS.yaml` | 2026-08-24 |
+| `docs/RECORDING_RULES.md` | 2026-08-25 |
+| `docs/cartographer/TOOLS.yaml` | 2026-08-28 |
 | `q3.lean.aristotle/ACTIVE/COGNITIVE_GOVERNOR.md` | 2026-07-31 |
 
 ## 1-2. Kills (knowledge.db: routes, objects, strategies, walls, criteria)
@@ -156,7 +157,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | VERDICT_S1_ANCHOR_2026_07_27 | PHASE_SUBSEQUENCE | killed |  |
 | ZETA23_INERTIA_LEAN_HSIMPLE | чужой Zeta23 Inertia.lean как прямой поставщик hsimple | killed | H2aPenalty.H2a_SimpleEvenGround_FromPenaltyCoercivity (H2aPenaltyCoercivity.lean:395) —... |
 
-**route** (19)
+**route** (20)
 
 | id | subject | status | next / rollback |
 |---|---|---|---|
@@ -178,9 +179,10 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | S_PD_COMPACT_SCALAR_ROUTE | S-pd compact scalar route | killed | `H-bridge` primary route |
 | VERDICT_G2_NUMERIC_ROPES_CRITICAL_PATH_2026_08_20 | STATUS: FATAL FOR G2 NUMERIC ROPES AS ROOF-CRITICAL — THE `(13,120)` C | killed |  |
 | VERDICT_GOAL058_ARISTOTLE_SOURCE_LOCK_STOP_2026_08_13 | STATUS: FATAL — AUTHORITATIVE SOURCE LOCK UNAVAILABLE | killed |  |
+| VERDICT_REQ_2026_08_26_N_COMBINED_GAMMA_FAIL_AND_SELECTED_FE | STATUS: FATAL — SELECTED-FERRERS GROUND-TRACKING RATE CORRIDOR ONLY; R | killed |  |
 | ZIP_AUDIT_FOLLOWUP_2026_07_27 | STATUS: FATAL для контракта v1 | killed |  |
 
-**strategy** (176)
+**strategy** (225)
 
 | id | subject | status | next / rollback |
 |---|---|---|---|
@@ -221,6 +223,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | MYTHOS_ADDENDUM_ADJUDICATION_2026_08_09 | identify_full_section_coercivity_with_the_minimal_filtered_consumer | standing | RUN_DELTA_N480_AITKEN |
 | NEXT_AFTER_8C3AEC96_GOAL058_2026_08_12 | infer_tracking_from_observed_projective_overlap | standing | persist Kq and certify residual plus even/odd complement gaps at m13_N120 |
 | RADIUS_DRIVEN_CERTIFICATE_CUTOFF_AND_TOOTH_ALIGNED_TRANSITIO | infer the cofinal transition from a radius-driven cutoff or tooth-alig | standing | ESCAPE: RepresentationShift \| replay the exact 031 identity at generic m with the live ... |
+| RECEIPT_REQ_2026_08_26_N_STOP_RULE_ACCEPTANCE_AND_OWNER_HAND | CENTRAL_WINDOW_CAUCHY_OBSERVABILITY | standing | owner_selects_R1_or_R2_then_precommits_route_discriminator |
 | REQUEST_GOAL057_A5_DEFERRED_REVIEW_2026_08_07 | <text> | standing | <text> |
 | RESUBMIT_ALREADY_CLOSED_SUPPLIER_TO_CLOUD | resubmit the already-closed T4a supplier to Aristotle | standing | ESCAPE: MemoryConsolidation \| keep the T4a contract quarantined; reuse the Goal 040 PL2... |
 | ROUTE_COMPARISON_EFFORT_ESTIMATE_2026_08_09 | compare_file_counts_without_interface_source_split | standing | run the three bounded classifiers without route commitment |
@@ -240,6 +243,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | VERDICT_CCM_IMPORT_C3_SPLIT_2026_07_31 | treat_trial_limit_and_real_zero_family_as_the_same_sequence | standing | exact_projective_ground_to_trial_residual_on_one_control_cell |
 | VERDICT_CCM_LEMMA_7_3_PREANCHOR_PORT_FLOORS_2026_08_20 | treat_paper_convergence_field_as_project_inhabitant | standing | Codex_pair_provenance_then_typecheck_L73_2_statement |
 | VERDICT_CCM_PENALTY_CROSSWALK_2026_08_07 | interpret_sectional_gap_or_prolate_proxy_as_the_operator_input_B_ratio | standing | no_fit_control_cell_13_120_source_crosscheck |
+| VERDICT_CODEX_REQ_GOAL058_W5_QUANTITATIVE_SHIFTED_ENERGY_SEM | null | standing | >- |
 | VERDICT_COGNITIVE_OPERATOR_VOCABULARY_2026_08_06 | collapse_legacy_control_actions_into_m2 | standing | dual_field_knowledge_db_round_trip |
 | VERDICT_DRAFT041_HOLD_VERSIONED_REPAIR_2026_07_31 | retroactive_goal_amendment | standing | compare original_goal_040_sha_across_sync |
 | VERDICT_EULER_LOGARITHMIC_REPRESENTATION_AUDIT_2026_08_20 | direct_infinity_or_raw_determinant_gap | standing | exact_source_P59_anchored_log_derivative_preflight |
@@ -301,6 +305,9 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | VERDICT_GOAL057_B3_ASSOCIATED_WEIL_OPERATOR_DOMAIN_SOURCE_AU | infer_operator_domain_from_form_core_or_replace_A_m_by_bounded_lift | standing | exact_mode_Fourier_formula_plus_log_multiplier_L2 |
 | VERDICT_GOAL058_G1_G3_SOURCE_ENVELOPE_DISCRIMINATOR_2026_08_ | promote_one_strong_cell_to_cofinal_sector_package | standing | source_envelope_discriminator |
 | VERDICT_GOAL058_SOURCE_ARCHITECTURE_RATIFICATION_2026_08_13 | choose_a_receiver_or_commutator_identity_as_a_cofinal_source_supplier | standing | local_phase_realification_and_nontautological_trial_line_block_preflight |
+| VERDICT_GOAL058_W5_COFINAL_RATE_EDGE_LEDGER_2026_08_25 | GLOBAL_LIPSCHITZ_L2_EDGE_INTERPOLATION | standing | F72_6 edge specialization plus exact inverse-sqrt telescope |
+| VERDICT_GOAL058_W5_CONTROL_V9_SEMANTIC_ATTESTATION_MATERIALI | treat injected test callback as an operative external path | standing | frozen W5 receipt through a fixed external broker and atomic three-field state transition |
+| VERDICT_GOAL058_W5_L1_LOG_PACKET_MASS_RATE_2026_08_25 | TERMNORM_TARGET_MAJORANT | standing | dStar integration of the public full-error bound |
 | VERDICT_LITERAL_CCM_COFINAL_RED_GATE_2026_08_18 | source_reading_and_hash_receipts_as_proxy_for_kernel_validation | standing | exact_gate_on_follow_up_source |
 | VERDICT_LITERAL_CCM_COMPLEMENT_FLOOR_CONSTRUCTION_GREEN_2026 | none | standing | canonical literal Schur head-tail certificate family |
 | VERDICT_N0_REPAIR_TOTAL_COST_2026_08_20 | invasive_selected_record_narrowing | standing | >- |
@@ -352,6 +359,49 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | VERDICT_REQ_2026_08_22_V_V3_0_SEMANTIC_ADMISSION_AND_V3_1_AU | global_project_StrictMono_plus_separate_source_cut | standing | compile_cutoff_local_strong_induction_lock |
 | VERDICT_REQ_2026_08_22_V_V3_1_SEMANTIC_ADMISSION_AND_V3_2_AU | global_project_StrictMono_plus_separate_numeric_hsrcCut | standing | compile_universal_rank_two_bind_for_arbitrary_source_package |
 | VERDICT_REQ_2026_08_22_V_V3_2_SEMANTIC_ADMISSION_AND_SOURCE_ | global_project_order_plus_numeric_source_cutoff | standing | compile_source_only_physical_rescaling_to_Satz9SourceData |
+| VERDICT_REQ_2026_08_26_A_STURM_CERTIFICATE_REGISTRY_SHADOW_2 | exclusive_scalar_receiver_and_unregistered_operator_vocab | standing | kernel_gate_G6N1SturmWeightedConsumer |
+| VERDICT_REQ_2026_08_26_B_WEIGHTED_CONSUMER_EDGE_BAND_RATE_20 | ENERGY_ONLY_UNIFORM_WEIGHTED_CAUCHY_SCHWARZ | standing | kernel_gate_non_top_sqrt_log_rate |
+| VERDICT_REQ_2026_08_26_C_EDGE_TOP_OUTER_DECAY_2026_08_26 | uniform_C0_plus_flux_as_sufficient_top_control | standing | source_locked_higher_order_fixed_mode_remainder_audit |
+| VERDICT_REQ_2026_08_26_F_EDGE_TOP_ADMISSION_AND_W5_RATE_ASSE | uniform_edge_band_from_weighted_energy_alone | standing | ask_catalog_then_build_one_selected_rate_assembly |
+| VERDICT_REQ_2026_08_26_G_W5_RATE_ASSEMBLY_SEMANTIC_ADMISSION | uniform_D_edge_band | standing | full_object_norm_floor_versus_direct_weighted_product |
+| VERDICT_REQ_2026_08_26_I_TRIAL_NORMALIZER_CLOSURE_ADMISSION_ | CENTRAL_V0_OVERLAP_FLOOR | standing | exact W5-rate versus moving Mellin-envelope exponent ledger |
+| VERDICT_REQ_2026_08_26_J_N2_COMPACT_RATE_PREFLIGHT_ADMISSION | separate_sourceScale_upper_times_unscaled_residual | standing | kernel_check_scalar_projection_homogeneity |
+| VERDICT_REQ_2026_08_26_L_N2_N3_N4_COMPACT_CLOSURE_SEMANTIC_A | none | standing | H2a_and_Theorem510_exact_consumer_preflight |
+| VERDICT_REQ_2026_08_26_M_H2A_FINAL_CONSUMER_PREFLIGHT_KILL_A | hide_exact_trial_ground_identity_inside_H2aAt | standing | source_audit_complex_ground_to_real_eta_normalized_row |
+| VERDICT_REQ_2026_08_26_N_CENTRAL_WINDOW_STOP_RULE_AND_OWNER_ | FIXED_CENTRAL_COORDINATE_OBSERVABILITY_AND_SCHUR_WRAPPER | standing | OWNER_RERANK_R1_OR_R2 |
+| VERDICT_REQ_2026_08_26_N_COMPACT_GAMMA_FAIL_AND_RAYLEIGH_EXC | second_order_W4_and_q_line_Feshbach | standing | source_lock_a_consumer_strength_ground_eigenvalue_lower_envelope |
+| VERDICT_REQ_2026_08_26_N_COMPACT_OBSERVABILITY_HOLD_AND_CENT | GENERIC_OBSERVABILITY_AND_SOURCE_LOCALIZATION_SURROGATE | standing | FIXED_COMPACT_P59_POLE_SAMPLING_AND_CENTRAL_MASS_LEDGER |
+| VERDICT_REQ_2026_08_26_N_COMPENSATED_REFLECTION_HOLD_LITERAL | ONE_FUNCTIONAL_AND_FULL_TO_FINITE_ENERGY_SHORTCUT | standing | EXACT_TWO_CHANNEL_AND_FINITE_ROW_ADAPTER |
+| VERDICT_REQ_2026_08_26_N_COMPENSATED_REFLECTION_HOLD_NORMALI | exact full-energy equals normalized finite-row mode moment | standing | literal P59 row norm divided by exact complement floor |
+| VERDICT_REQ_2026_08_26_N_CORRECTIONS_10_11_P59_NORM_AND_QPRO | one odd reflection functional for the full consumer | standing | exact completed-source formula for the Q-projected diagonal shadow |
+| VERDICT_REQ_2026_08_26_N_CORRECTION_12_QPROJECTED_DIAGONAL_A | RAW_UNREFLECTED_UNIFORM_COSINE_TRANSFORM | standing | ORIENTED_FULL_VOLTERRA_SOURCE_RATE_PREFLIGHT |
+| VERDICT_REQ_2026_08_26_N_CORRECTION_7_RATIFICATION_AND_RELAY | function symmetry and one Cauchy moment treated as full row/operator c | standing | adjudicate the exact two-endpoint report separately |
+| VERDICT_REQ_2026_08_26_N_GROUND_COMPACT_TRACKING_PREFLIGHT_F | weighted_residual_or_raw_LG_as_compact_rate | standing | audit_new_Sturm_W5_against_exact_combined_Gamma_rate |
+| VERDICT_REQ_2026_08_26_N_GROUND_GRAPH_RESOLVENT_FAIL_AND_P59 | READY_MADE_SOURCE_RATE_SEARCH | standing | >- |
+| VERDICT_REQ_2026_08_26_N_GROUND_P59_REAL_ZEROS_ADMISSION_AND | none | standing | compile_same_witness_real_zero_and_pointwise_tracking_theorem |
+| VERDICT_REQ_2026_08_26_N_GROUND_PARITY_REALIFICATION_KERNEL_ | eta_first_orientation_circle | standing | compile_same_witness_selected_ground_P59_real_zero_consumer |
+| VERDICT_REQ_2026_08_26_N_GROUND_ROOF_SELF_CORRECTION_AND_PAR | classify_eta_nonvanishing_as_missing_after_searching_consumers_only | standing | compile_source_specific_ground_parity_realification_theorem |
+| VERDICT_REQ_2026_08_26_N_ORDERED_BETA_HOLD_POLARIZED_EXACT_C | same-vector quadratic pairing treated as literal consumer | standing | polarized Abel plus diagonal identity on C_inverse_kappa and q |
+| VERDICT_REQ_2026_08_26_N_ORIENTED_FULL_VOLTERRA_UNIFORM_SMOO | FOLDED_NONPERIODIC_FIRST_MOMENT_WITHOUT_SHADOW | standing | endpoint-free Stieltjes partial summation |
+| VERDICT_REQ_2026_08_26_N_P59_KERNEL_COMMUTATOR_FAIL_AND_POLA | self-consistent action transfer through the trial-line graph inverse | standing | post-W5 polarized near-radical graph-functional preflight |
+| VERDICT_REQ_2026_08_26_N_PENALTY_SLACK_FAIL_GROUND_GRAPH_RES | penalty_slack_self_energy_as_source_ready_representation | standing | source_audit_the_graph_resolvent_P59_matrix_element |
+| VERDICT_REQ_2026_08_26_N_POLARIZED_NEAR_RADICAL_FAIL_AND_FIX | L2_DEFECT_MAGNITUDE_AS_ACTION_BOUND | standing | fixed-test smooth-core mixed-functional source preflight |
+| VERDICT_REQ_2026_08_26_N_POLARIZED_VOLTERRA_PASS_AND_POLE_NE | generic_modulus_of_continuity_search | standing | exact_pole_neutral_functional_on_literal_row |
+| VERDICT_REQ_2026_08_26_N_POLE_NEUTRALITY_RANK_TWO_REPAIR_202 | one Cauchy hyperplane plus inferred exact evenness | standing | literal two-endpoint source preflight |
+| VERDICT_REQ_2026_08_26_N_PRIME_COUNT_SCALE_AND_ANNIHILATOR_P | count_only_prime_cancellation | standing | exact_adjoint_range_decomposition |
+| VERDICT_REQ_2026_08_26_N_R1_OWNER_REENTRY_AND_GROUND_FAMILY_ | CENTRAL_WINDOW_CAUCHY_OBSERVABILITY | standing | literal_ground_family_anchor_and_fixed_jet_lock |
+| VERDICT_REQ_2026_08_26_N_RAYLEIGH_EXCESS_FAIL_PENALTY_SLACK_ | Temple_equivalence_and_broad_fixed_block_Schur | standing | source_lock_and_rate_a_near_minimal_penalty_slack_on_one_precommitted_schedule |
+| VERDICT_REQ_2026_08_26_N_REENTRY_GATE_A_DUAL_TRACK_CLOSEOUT_ | UNIVERSAL_SELECTED_KERNEL_POWER_SAVING_FROM_CURRENT_PNT_SHELF | standing | owner-scoped new representation gate only |
+| VERDICT_REQ_2026_08_26_N_REFLECTION_DUHAMEL_VOLTERRA_RATIFIC | positive measure annihilation plus naive cumulative discrepancy | standing | compensated circle Stieltjes/Duhamel rate audit |
+| VERDICT_REQ_2026_08_26_N_SELF_CORRECTION_4_AND_HILBERT_PAIRI | literal zeta'/zeta critical-line identification | standing | exact Abel prefix-flux source preflight |
+| VERDICT_REQ_2026_08_26_N_STIELTJES_MAJORANT_FAIL_AND_ZERO_TR | ABSOLUTE_MAJORANT_OF_E | standing | exact zero-transfer coefficient and P59 span/circularity audit |
+| VERDICT_REQ_2026_08_26_N_TRACKED_GROUND_SAME_WITNESS_ADMISSI | global_floor_indexed_family_as_direct_consumer_of_eventual_floor | standing | compile_pointwise_tracked_ground_and_additive_tail_receipt |
+| VERDICT_REQ_2026_08_26_N_TRACKED_GROUND_TAIL_REINDEX_ADMISSI | broad_cofinal_wrapper_before_raw_rate_audit | standing | source_read_compact_kernel_times_raw_residual_rate |
+| VERDICT_REQ_2026_08_26_N_ZERO_TRANSFER_IDENTITY_AND_COMPACT_ | EXACT_NONANNIHILATION_AS_QUANTITATIVE_LOWER_BOUND | standing | fixed-compact literal observation-product envelope |
+| VERDICT_REQ_2026_08_28_R1A_CORRECTION_16_GLOBAL_GAUGE_KILL_A | L2_GAUGE_PLUS_REAL_ZERO_PROPAGATION | standing | source_interlacing_or_Herglotz_gate |
+| VERDICT_REQ_2026_08_28_R1A_LOCAL_ZERO_COUNT_SIGN_PARITY_REPA | coefficient sign pattern as exact zero-count law | standing | >- |
+| VERDICT_REQ_2026_08_28_R1_LOCAL_SPECTRAL_COUNT_SIGN_GATE_REP | SIGN_PATTERN_AND_RICCI_GATE_AS_COUNT_DECIDER | standing | owner_acquisition_of_a_direct_local_spectral_measure_theorem |
+| VERDICT_REQ_2026_08_28_R1_ZERO_DENSITY_ALARM_AND_LOCAL_SPECT | sine_lattice_as_zero_set | standing | local_finite_spectral_count_source_audit |
 | VERDICT_RULEB_POSTCLOSE_RATIFIED_RULEA_REJECTED_2026_07_31 | treat_preflight_protocol_as_equivalent_to_one_stop_condition | standing | pin A1_as_canonical_and_A2_as_corollary |
 | VERDICT_SAME_FAMILY_PUBLICATION_SPEC_2026_08_11 | market_classical_Hurwitz_closure_as_new_RH_criterion | standing | Proposition59GroundLagrangeZeroSetBridge |
 | VERDICT_SPEC_011_TYPED_DISCOVERY_COMPILER_AUDIT_2026_08_23 | RANKING_BEFORE_CONTEXT_COHERENT_PORT_MATCHING | standing | positive_controls_plus_semantic_counterfeit_plants |
@@ -359,6 +409,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | VERDICT_T2_2_PORT_MATCHER_PROOF_EDGE_AUDIT_2026_08_23 | SHAPE_VALIDATED_METADATA_AS_PROOF_EDGE | standing | P11_P15_SOURCE_SEMANTICS |
 | VERDICT_TYPED_IO_MEET_IN_THE_MIDDLE_GAP_ALGEBRA_2026_08_23 | ranking_before_typed_port_matching | standing | five_port_matcher_plants |
 | VERDICT_W2_SELECTED_FERRERS_PACKET_VARIATION_SEMANTIC_ADMISS | INTERIOR_ANALYTICITY_AS_GLOBAL_VARIATION | standing | pinned_source_and_api_search_for_W3 |
+| VERDICT_W5_SIGNED_ESTAR_RETRACTION_2026_08_25 | termwise_absolute_lattice_sum_probe | standing | proof_grade_uniform_signed_envelope |
 | WHOLE_EXPRESSION_PILOT_WITHOUT_COMPLETE_SOURCE_STREAM | run numeric/probe whole-expression pilots or emit DirectConcretePayloa | standing | ESCAPE: CertificateShift \| produce proof-grade same-target collapsedExpression coeffici... |
 
 **wall** (11)
@@ -377,7 +428,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | PRIME_SIDE_WALL | Prime-side wall | standing |  |
 | STEP33_SCALAR_REPLAY_SWAMP_WALL | Step33 scalar replay swamp wall | standing |  |
 
-_227 records, 185 cross-file aliases. Query: `./orchestrator/kb.py search <term>`._
+_277 records, 234 cross-file aliases. Query: `./orchestrator/kb.py search <term>`._
 
 ## 3. Bus strategy memory (M3 iteration blocks in verdicts)
 | verdict file | target | forbidden_future_move | new_gap |
@@ -423,12 +474,12 @@ _227 records, 185 cross-file aliases. Query: `./orchestrator/kb.py search <term>
 - [applied] 11. Sign-Uncertainty Surcharge
 
 ## 6. Recent branch decisions (Progress_Log.md)
+- 2026-08-28 — консолидация вперёд R1: сперва закрепить, потом идти
 - 2026-08-23 — вся алгебраическая цепь F72 закрыта за ночь; paper-входы типизированы
 - 2026-08-22 — ordering front закрыт целиком; physical lift открыт следующим
 - 2026-08-22 — U2.1 снят сдвигом представления; проектная ветвь — классический носитель
 - 2026-08-22 — forward-преflight: печатная дробь и limUnder оказались одной конвенцией
 - 2026-08-17 — право расщеплять по чётности само стоит на недоказанной простоте
-- 2026-08-17 — дно дополнения расколото по чётности; пустая чётная нога прочитана
 - 2026-08-09 — манифест соединён с обратным поиском
 
 ## 7. Recent insights (INSIGHTS.md head)

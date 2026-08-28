@@ -1,4 +1,4 @@
-# Numeric Evidence Report — 2026-08-24 20:29 UTC
+# Numeric Evidence Report — 2026-08-28 17:53 UTC
 
 **Authority:** evidence only; not Lean authority, proof status, taint, or route kill.
 **Coverage:** `EMPTY_CONFIG`

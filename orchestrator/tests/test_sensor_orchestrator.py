@@ -3,16 +3,30 @@
 from __future__ import annotations
 
 import json
+import re
 import tempfile
 import unittest
 from pathlib import Path
 
 from orchestrator import sensors
+from scripts import build_sorry_frontier
 
 
 class SensorBundleTests(unittest.TestCase):
     def write(self, root: Path, name: str, value: dict) -> None:
         (root / name).write_text(json.dumps(value), encoding="utf-8")
+
+    def test_sorry_frontier_tracks_every_live_axiom_receipt_root(self) -> None:
+        check_axioms = (
+            sensors.REPO / "full/q3.lean.aristotle/Q3/CheckAxioms.lean"
+        ).read_text(encoding="utf-8")
+        printed_roots = re.findall(
+            r"^\s*#print axioms\s+(\S+)", check_axioms, flags=re.MULTILINE
+        )
+        self.assertEqual(
+            list(build_sorry_frontier.ROOT_ENTRIES),
+            printed_roots,
+        )
 
     def test_root_identity_mismatch_fails_before_publish(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

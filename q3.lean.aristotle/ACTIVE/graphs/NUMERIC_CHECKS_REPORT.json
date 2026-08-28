@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
   "sensor_kind": "NUMERIC_EVIDENCE_COMMAND_RUNNER",
-  "generated_at": "2026-08-24 20:29 UTC",
+  "generated_at": "2026-08-28 17:53 UTC",
   "coverage_status": "EMPTY_CONFIG",
   "boundary": {
     "evidence_only": true,

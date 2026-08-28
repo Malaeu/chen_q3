@@ -31,6 +31,12 @@ Q3_DIR = ROOT / "Q3"
 ACTIVE_DIR = ROOT / "ACTIVE"
 
 ROOT_ENTRIES = {
+    "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom": (
+        "Q3/Proofs/PaperMainlineAtomRoute.lean"
+    ),
+    "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms": (
+        "Q3/Proofs/PaperMainlineAtomRoute.lean"
+    ),
     "Q3.Main.RH_of_Weil_and_Q3": "Q3/Main.lean",
     "Q3.RH_of_shifted_atom_route": "Q3/Proofs/PaperMainlineAtomRoute.lean",
 }
@@ -111,8 +117,10 @@ def render_markdown(data: dict[str, object]) -> str:
     lines = [
         f"# Sorry Frontier (auto) — {data['generated_at']}",
         "",
-        "**Purpose:** Exact active `sorry` sites plus their membership in configured root closures.",
-        "**Method:** header-only import DAG, dependency/allowlist protection, then exact content scan.",
+        "**Purpose:** Exact active `sorry` sites plus their membership in configured "
+        "root closures.",
+        "**Method:** header-only import DAG, dependency/allowlist protection, then exact "
+        "content scan.",
         f"**Scope:** {scope['included_files']} Lean files; excludes `Q3/Clean` and `Q3/Archive`.",
         (
             "**Content scan:** "

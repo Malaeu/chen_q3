@@ -73,6 +73,7 @@
 | `q3.lean.aristotle/aristotle_input/req_r_ms_satz1_m0_even_spectrum_2026_08_22_harvest/lake-manifest.json` | 85 | 2026-08-22 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/muntz_v3/lake-manifest.json` | 85 | 2026-07-30 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/muntz_r6/lake-manifest.json` | 85 | 2026-07-30 | **NO** |
+| `docs/session_protocols/SESSION_PROTOKOLL_2026-08-28.md` | 80 | 2026-08-28 | **NO** |
 | `q3.lean.aristotle/ACTIVE/FAILED_STRATEGIES.yaml` | 80 | 2026-08-05 | yes |
 | `docs/Progress_Log.md` | 78 | 2026-08-28 | yes |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/phase_trace_and_ledger_filter_v1.json` | 78 | 2026-07-10 | **NO** |
@@ -93,7 +94,6 @@
 | `q3.lean.aristotle/ACTIVE/pipeline/FAILURE_ATLAS.json` | 56 | 2026-08-05 | yes |
 | `docs/routeB_bus/GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER_CLOSEOUT_2026-08-08.md` | 53 | 2026-08-08 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER_CLOSEOUT_2026-08-08.md` | 53 | 2026-08-08 | **NO** |
-| `docs/session_protocols/SESSION_PROTOKOLL_2026-08-28.md` | 48 | 2026-08-28 | **NO** |
 | `SESSION_PROTOKOLL_2026-08-24.md` | 45 | 2026-08-27 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/ROUTE_B_DATA_MANIFEST.md` | 45 | 2026-07-27 | **NO** |
 | `docs/routeB_bus/GOAL058_SELECTED_FERRERS_V_TERMINAL_LEDGER_2026-08-24.md` | 43 | 2026-08-24 | **NO** |
@@ -130,7 +130,7 @@
 | `docs/routeB_bus/GOAL057_B3_0AC_ARCH_PRIME_SHIFTED_LEDGER_CLOSEOUT_2026-08-10.md` | 19 | 2026-08-10 | **NO** |
 | `docs/routeB_bus/proshka/PROSHKA_BRIEF_GOAL058_G1_G3_ACTUAL_SOURCE_CLOSURE_2026-08-14.md` | 19 | 2026-08-14 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/GOAL057_B3_0AC_ARCH_PRIME_SHIFTED_LEDGER_CLOSEOUT_2026-08-10.md` | 19 | 2026-08-10 | **NO** |
-| `q3.lean.aristotle/blueprint/blueprint_manifest.json` | 18 | untracked | yes |
+| `q3.lean.aristotle/blueprint/blueprint_manifest.json` | 18 | 2026-08-28 | yes |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/register_read_only_docs_v1_actions_log.md` | 17 | 2026-07-10 | **NO** |
 | `Q3_OBSTRUCTION_ATLAS.md` | 15 | 2026-08-06 | yes |
 | `.agents/skills/routeb-conductor/SKILL.md` | 15 | 2026-08-28 | yes |
@@ -231,6 +231,7 @@
 | Tool | Last | Refs | In rules | Purpose |
 |---|---|---|---|---|
 | `docs/cartographer/atoms.py` | 2026-08-28 | 19 | yes | Extract external Lean atoms from the complete Route B source tree. |
+| `docs/cartographer/blueprint_gen.py` | 2026-08-28 | 11 | yes | Generate an honest leanblueprint skeleton from assembly and proof receipts. |
 | `docs/cartographer/brief.py` | 2026-08-28 | 26 | yes | brief.py — собрать source-locked пакет из базы для Прошки/Codex. |
 | `docs/cartographer/inventory.py` | 2026-08-28 | 21 | yes | Картограф, фаза 1 — детерминированный инвентарь. |
 | `orchestrator/portability_manifest.py` | 2026-08-28 | 28 | **NO** | Build and verify the deterministic Q3 portability inventory. |
@@ -258,9 +259,8 @@
 | `scripts/q3_check.sh` | 2026-08-24 | 2297 | **NO** | shellcheck disable=SC1091 |
 | `docs/cartographer/comparator/port_matcher.py` | 2026-08-23 | 25 | **NO** | Q3 typed I/O port matcher — T2.2 fail-closed release. |
 | `scripts/qmd_ops.py` | 2026-08-21 | 1 | **NO** | Accept a fully emitted JSON result when Bun crashes during finalization. |
-| `docs/cartographer/blueprint_gen.py` | 2026-08-20 | 8 | yes | Generate an honest leanblueprint skeleton from assembly and proof receipts. |
 | `docs/cartographer/depgraph.py` | 2026-08-20 | 4 | yes | depgraph — настоящий граф зависимостей живого дерева, из исходников. |
-| `specs_docs/session_start.sh` | 2026-08-20 | 48 | yes | session_start.sh — один вход в сессию. |
+| `specs_docs/session_start.sh` | 2026-08-20 | 49 | yes | session_start.sh — один вход в сессию. |
 | `ask.sh` | 2026-08-19 | 239 | yes | ask.sh — ОДИН вход в накопленное знание. Спрашивать ДО внешнего поиска и ДО создания чего-либо. |
 | `docs/cartographer/cheap.py` | 2026-08-19 | 48 | yes | cheap-closure-finder — очередь незакрытых шагов по ЦЕНЕ, а не по номеру. |
 | `docs/cartographer/comparator/fit.py` | 2026-08-18 | 10 | yes | Generic fail-closed direct type-fit over the local Lean environment index. |
@@ -291,7 +291,7 @@
 | `scripts/build_autopsy_map.py` | 2026-08-06 | 6 | yes | Build the structured AUTOPSY -> wall-map -> namewatch sensor. |
 | `scripts/build_dependency_tree.py` | 2026-08-06 | 5 | **NO** | Build the Lean-checked axiom dependency inventory for the live Q3 roots. |
 | `scripts/build_proof_graph.py` | 2026-08-06 | 17 | yes | Build the compact root-to-axiom observability projection. |
-| `scripts/build_sorry_frontier.py` | 2026-08-06 | 4 | **NO** | Build the lightweight, root-aware Q3 sorry frontier. |
+| `scripts/build_sorry_frontier.py` | 2026-08-06 | 5 | **NO** | Build the lightweight, root-aware Q3 sorry frontier. |
 | `scripts/build_taint_graph.py` | 2026-08-06 | 11 | yes | Build source-hole/import-boundary propagation for the active Q3 tree. |
 | `scripts/numeric_sanity_check.py` | 2026-08-06 | 7 | **NO** | Run explicitly configured numeric diagnostics as non-authoritative evidence. |
 | `scripts/q3_sensor_scan.py` | 2026-08-06 | 3 | yes | Fast shared source scanner for the Q3 observability generators. |

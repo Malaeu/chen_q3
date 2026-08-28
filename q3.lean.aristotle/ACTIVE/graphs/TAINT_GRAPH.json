@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
   "sensor_kind": "SOURCE_HOLE_AND_IMPORT_BOUNDARY_PROPAGATION",
-  "generated_at": "2026-08-24 20:29 UTC",
+  "generated_at": "2026-08-28 17:53 UTC",
   "root": "Q3/",
   "semantics": {
     "numeric_checks": "EVIDENCE_ONLY_NOT_PROPAGATED",
@@ -9,7 +9,7 @@
     "doomed": "DISABLED"
   },
   "scope": {
-    "included_files": 3531,
+    "included_files": 3559,
     "excluded_directories": [
       "Q3/Clean",
       "Q3/Archive"
@@ -26,8 +26,8 @@
       "policy": "ROOT_CLOSURE_PLUS_LIVE_SUPPLIER_ALLOWLIST",
       "heavy_generated_family": "Q3/Proofs/PrimeCert",
       "heavy_threshold_bytes": 1000000,
-      "content_scanned_files": 2228,
-      "content_scanned_bytes": 96794274,
+      "content_scanned_files": 2256,
+      "content_scanned_bytes": 97854921,
       "skipped_generated_files": 1303,
       "skipped_generated_bytes": 4312275592,
       "skipped_file_ids": [
@@ -1347,6 +1347,22 @@
   },
   "root_status": [
     {
+      "root_id": "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+      "entry_file": "Q3/Proofs/PaperMainlineAtomRoute.lean",
+      "closure_files": 65,
+      "tainted_files": 0,
+      "status": "NO_OBSERVED_ISSUE",
+      "taint_sources": []
+    },
+    {
+      "root_id": "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
+      "entry_file": "Q3/Proofs/PaperMainlineAtomRoute.lean",
+      "closure_files": 65,
+      "tainted_files": 0,
+      "status": "NO_OBSERVED_ISSUE",
+      "taint_sources": []
+    },
+    {
       "root_id": "Q3.Main.RH_of_Weil_and_Q3",
       "entry_file": "Q3/Main.lean",
       "closure_files": 66,
@@ -1481,6 +1497,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -1558,6 +1576,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -1598,6 +1618,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -1623,6 +1645,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -1724,6 +1748,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -1751,6 +1777,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -1856,6 +1884,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -1933,6 +1963,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -1960,6 +1992,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -1987,6 +2021,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -2065,6 +2101,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -2094,6 +2132,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -2149,6 +2189,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -2174,6 +2216,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -2251,6 +2295,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -2279,6 +2325,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -2308,6 +2356,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -2333,6 +2383,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -2360,6 +2412,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -2388,6 +2442,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -2417,6 +2473,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -2472,6 +2530,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -2497,6 +2557,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -2525,6 +2587,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -2552,6 +2616,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -2581,6 +2647,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -2610,6 +2678,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -2683,6 +2753,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -2710,6 +2782,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -28514,6 +28588,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -28597,6 +28673,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -28622,6 +28700,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -78721,6 +78801,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -78821,6 +78903,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -78848,6 +78932,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -78903,6 +78989,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -78935,6 +79023,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -78991,6 +79081,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -79051,6 +79143,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -79103,6 +79197,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -79164,6 +79260,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -79194,6 +79292,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -79246,6 +79346,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -79302,6 +79404,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -79363,6 +79467,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -79401,6 +79507,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -79455,6 +79563,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -79484,6 +79594,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -79542,6 +79654,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -79567,6 +79681,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -79666,6 +79782,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -79697,6 +79815,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -79752,6 +79872,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -79780,6 +79902,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -79807,6 +79931,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -80103,6 +80229,30 @@
       "module": "Q3.Proofs.RouteB.CCMFiniteWeilCell13N2W02NormalForm",
       "dependencies": [
         "Q3/Proofs/RouteB/CCMFiniteWeilCell13N2VonMangoldtNormalForm.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/RouteB/CCMFiniteWeilCenterSpectralNormalForm.lean",
+      "module": "Q3.Proofs.RouteB.CCMFiniteWeilCenterSpectralNormalForm",
+      "dependencies": [
+        "Q3/Proofs/RouteB/CCMFiniteWeilSourceCommutator.lean"
       ],
       "sorries": [],
       "numeric_check": "NOT_CONFIGURED",
@@ -81915,30 +82065,6 @@
       "is_doomed": false
     },
     {
-      "id": "Q3/Proofs/RouteB/D0Mode4FerrersSingularEndpointRegularity.lean",
-      "module": "Q3.Proofs.RouteB.D0Mode4FerrersSingularEndpointRegularity",
-      "dependencies": [
-        "Q3/Proofs/RouteB/D0Mode4FerrersInteriorZeroSimplicity.lean"
-      ],
-      "sorries": [],
-      "numeric_check": "NOT_CONFIGURED",
-      "content_scan_status": "SCANNED",
-      "direct_status": "CLEAR",
-      "propagation_status": "NO_OBSERVED_ISSUE",
-      "integrity_status": "NO_OBSERVED_ISSUE",
-      "taint_sources": [],
-      "taint_predecessors": [],
-      "taint_origin_count": 0,
-      "root_ids": [],
-      "unresolved_imports": [],
-      "intrinsic_risk": null,
-      "risk_score": null,
-      "risk_threshold": null,
-      "risk_status": "NOT_APPLICABLE",
-      "risk_exceeds": null,
-      "is_doomed": false
-    },
-    {
       "id": "Q3/Proofs/RouteB/D0Mode4FerrersSturmComparison.lean",
       "module": "Q3.Proofs.RouteB.D0Mode4FerrersSturmComparison",
       "dependencies": [
@@ -81968,31 +82094,6 @@
       "dependencies": [
         "Q3/Proofs/RouteB/D0Mode4BackwardTailFiniteTailPosDef.lean",
         "Q3/Proofs/RouteB/D0Mode4HermitianNegativeCountStability.lean"
-      ],
-      "sorries": [],
-      "numeric_check": "NOT_CONFIGURED",
-      "content_scan_status": "SCANNED",
-      "direct_status": "CLEAR",
-      "propagation_status": "NO_OBSERVED_ISSUE",
-      "integrity_status": "NO_OBSERVED_ISSUE",
-      "taint_sources": [],
-      "taint_predecessors": [],
-      "taint_origin_count": 0,
-      "root_ids": [],
-      "unresolved_imports": [],
-      "intrinsic_risk": null,
-      "risk_score": null,
-      "risk_threshold": null,
-      "risk_status": "NOT_APPLICABLE",
-      "risk_exceeds": null,
-      "is_doomed": false
-    },
-    {
-      "id": "Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
-      "module": "Q3.Proofs.RouteB.D0Mode4FiniteEvenLegendreQuadraticForm",
-      "dependencies": [
-        "Q3/Proofs/RouteB/D0Mode4LegendreHermitianCoordinateScale.lean",
-        "Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreGram.lean"
       ],
       "sorries": [],
       "numeric_check": "NOT_CONFIGURED",
@@ -82303,58 +82404,9 @@
       "is_doomed": false
     },
     {
-      "id": "Q3/Proofs/RouteB/D0Mode4LegendreHermitianCoordinateScale.lean",
-      "module": "Q3.Proofs.RouteB.D0Mode4LegendreHermitianCoordinateScale",
-      "dependencies": [
-        "Q3/Proofs/RouteB/D0Mode4DLMFEvenFiniteMatrix.lean"
-      ],
-      "sorries": [],
-      "numeric_check": "NOT_CONFIGURED",
-      "content_scan_status": "SCANNED",
-      "direct_status": "CLEAR",
-      "propagation_status": "NO_OBSERVED_ISSUE",
-      "integrity_status": "NO_OBSERVED_ISSUE",
-      "taint_sources": [],
-      "taint_predecessors": [],
-      "taint_origin_count": 0,
-      "root_ids": [],
-      "unresolved_imports": [],
-      "intrinsic_risk": null,
-      "risk_score": null,
-      "risk_threshold": null,
-      "risk_status": "NOT_APPLICABLE",
-      "risk_exceeds": null,
-      "is_doomed": false
-    },
-    {
       "id": "Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreAffineKernel.lean",
       "module": "Q3.Proofs.RouteB.D0Mode4OrdinaryLegendreAffineKernel",
       "dependencies": [],
-      "sorries": [],
-      "numeric_check": "NOT_CONFIGURED",
-      "content_scan_status": "SCANNED",
-      "direct_status": "CLEAR",
-      "propagation_status": "NO_OBSERVED_ISSUE",
-      "integrity_status": "NO_OBSERVED_ISSUE",
-      "taint_sources": [],
-      "taint_predecessors": [],
-      "taint_origin_count": 0,
-      "root_ids": [],
-      "unresolved_imports": [],
-      "intrinsic_risk": null,
-      "risk_score": null,
-      "risk_threshold": null,
-      "risk_status": "NOT_APPLICABLE",
-      "risk_exceeds": null,
-      "is_doomed": false
-    },
-    {
-      "id": "Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreGram.lean",
-      "module": "Q3.Proofs.RouteB.D0Mode4OrdinaryLegendreGram",
-      "dependencies": [
-        "Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreIntervalBound.lean",
-        "Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreXSquaredAction.lean"
-      ],
       "sorries": [],
       "numeric_check": "NOT_CONFIGURED",
       "content_scan_status": "SCANNED",
@@ -83141,6 +83193,30 @@
       "module": "Q3.Proofs.RouteB.D0PstarExplicitCCMLimitFourier",
       "dependencies": [
         "Q3/Proofs/RouteB/D0KTrialStage2.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/RouteB/D0PstarFirstOrderProjectionTailReceiver.lean",
+      "module": "Q3.Proofs.RouteB.D0PstarFirstOrderProjectionTailReceiver",
+      "dependencies": [
+        "Q3/Proofs/RouteB/D0PstarPhysicalFourierEnergyControl.lean"
       ],
       "sorries": [],
       "numeric_check": "NOT_CONFIGURED",
@@ -85020,6 +85096,31 @@
       "is_doomed": false
     },
     {
+      "id": "Q3/Proofs/RouteB/G6N1CylinderTransportL1Budget.lean",
+      "module": "Q3.Proofs.RouteB.G6N1CylinderTransportL1Budget",
+      "dependencies": [
+        "Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+        "Q3/Proofs/RouteB/G6N1ParabolicCylinderD0D4Exact.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
       "id": "Q3/Proofs/RouteB/G6N1EvenCenterDerivative.lean",
       "module": "Q3.Proofs.RouteB.G6N1EvenCenterDerivative",
       "dependencies": [
@@ -85124,6 +85225,30 @@
       "dependencies": [
         "Q3/Proofs/RouteB/G6N1ExplicitCCMLimitMellinNormalization.lean",
         "Q3/Proofs/RouteB/G6N1SelectedFerrersPaperParameterDictionary.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/RouteB/G6N1ExplicitHDerivativeCombBudget.lean",
+      "module": "Q3.Proofs.RouteB.G6N1ExplicitHDerivativeCombBudget",
+      "dependencies": [
+        "Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean"
       ],
       "sorries": [],
       "numeric_check": "NOT_CONFIGURED",
@@ -85563,10 +85688,63 @@
       "is_doomed": false
     },
     {
+      "id": "Q3/Proofs/RouteB/G6N1SelectedFerrersEdgeTopFluxConsumer.lean",
+      "module": "Q3.Proofs.RouteB.G6N1SelectedFerrersEdgeTopFluxConsumer",
+      "dependencies": [
+        "Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
+        "Q3/Proofs/RouteB/D0PstarPhysicalFourierEnergyControl.lean",
+        "Q3/Proofs/RouteB/G6N1SelectedFerrersFactorFourPortRate.lean",
+        "Q3/Proofs/RouteB/G6N1SelectedFerrersOuterPolynomialDecay.lean",
+        "Q3/Proofs/RouteB/G6N1SelectedFerrersPacketVariation.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
       "id": "Q3/Proofs/RouteB/G6N1SelectedFerrersFactorFourPortRate.lean",
       "module": "Q3.Proofs.RouteB.G6N1SelectedFerrersFactorFourPortRate",
       "dependencies": [
         "Q3/Proofs/RouteB/G6N1SelectedFerrersZeroMassCylinderPacket.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/RouteB/G6N1SelectedFerrersFiniteAssetBank.lean",
+      "module": "Q3.Proofs.RouteB.G6N1SelectedFerrersFiniteAssetBank",
+      "dependencies": [
+        "Q3/Proofs/RouteB/CCMFiniteWeilSourceCommutator.lean",
+        "Q3/Proofs/RouteB/Proposition59EntireTransform.lean"
       ],
       "sorries": [],
       "numeric_check": "NOT_CONFIGURED",
@@ -85662,6 +85840,58 @@
       "is_doomed": false
     },
     {
+      "id": "Q3/Proofs/RouteB/G6N1SelectedFerrersFirstOrderBudgetApplication.lean",
+      "module": "Q3.Proofs.RouteB.G6N1SelectedFerrersFirstOrderBudgetApplication",
+      "dependencies": [
+        "Q3/Proofs/RouteB/D0PstarFirstOrderProjectionTailReceiver.lean",
+        "Q3/Proofs/RouteB/G6N1SelectedFerrersMidpointDeltaEnvelope.lean",
+        "Q3/Proofs/RouteB/G6N1SelectedFerrersW5DerivativeBudgetRate.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/RouteB/G6N1SelectedFerrersFirstOrderCoefficientEnvelope.lean",
+      "module": "Q3.Proofs.RouteB.G6N1SelectedFerrersFirstOrderCoefficientEnvelope",
+      "dependencies": [
+        "Q3/Proofs/RouteB/D0PstarPhysicalFourierEnergyControl.lean",
+        "Q3/Proofs/RouteB/G6N1SelectedFerrersFixedKShiftedRootEnergy.lean",
+        "Q3/Proofs/RouteB/G6N1SelectedFerrersQuantitativeShiftedRootEnergy.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
       "id": "Q3/Proofs/RouteB/G6N1SelectedFerrersFixedKShiftedRootEnergy.lean",
       "module": "Q3.Proofs.RouteB.G6N1SelectedFerrersFixedKShiftedRootEnergy",
       "dependencies": [
@@ -85669,6 +85899,59 @@
         "Q3/Proofs/RouteB/D0PstarSourceLogWindowFourierIntegralCrosswalk.lean",
         "Q3/Proofs/RouteB/D0PstarVModeLogWeightedL2.lean",
         "Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/RouteB/G6N1SelectedFerrersGroundParityRealification.lean",
+      "module": "Q3.Proofs.RouteB.G6N1SelectedFerrersGroundParityRealification",
+      "dependencies": [
+        "Q3/Proofs/RouteB/CCMFiniteWeilEtaNonzero.lean",
+        "Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementSpectral.lean",
+        "Q3/Proofs/RouteB/G6N1SelectedFerrersH2aSourceQuantities.lean",
+        "Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
+        "Q3/Proofs/RouteB/SimpleEvenGroundSectorCriterion.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/RouteB/G6N1SelectedFerrersGroundProposition59RealZeros.lean",
+      "module": "Q3.Proofs.RouteB.G6N1SelectedFerrersGroundProposition59RealZeros",
+      "dependencies": [
+        "Q3/Proofs/RouteB/G6N1SelectedFerrersGroundParityRealification.lean",
+        "Q3/Proofs/RouteB/Proposition59GroundLagrangeZeroSetBridge.lean"
       ],
       "sorries": [],
       "numeric_check": "NOT_CONFIGURED",
@@ -85714,12 +85997,138 @@
       "is_doomed": false
     },
     {
+      "id": "Q3/Proofs/RouteB/G6N1SelectedFerrersHilbertPairing.lean",
+      "module": "Q3.Proofs.RouteB.G6N1SelectedFerrersHilbertPairing",
+      "dependencies": [],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/RouteB/G6N1SelectedFerrersMidpointDeltaEnvelope.lean",
+      "module": "Q3.Proofs.RouteB.G6N1SelectedFerrersMidpointDeltaEnvelope",
+      "dependencies": [
+        "Q3/Proofs/RouteB/G6N1SelectedFerrersFirstOrderCoefficientEnvelope.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/RouteB/G6N1SelectedFerrersN2CompactDecayAssembly.lean",
+      "module": "Q3.Proofs.RouteB.G6N1SelectedFerrersN2CompactDecayAssembly",
+      "dependencies": [
+        "Q3/Proofs/RouteB/CompactEvaluationRateTransfer.lean",
+        "Q3/Proofs/RouteB/D0PstarProjectedMellinCoordinate.lean",
+        "Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+        "Q3/Proofs/RouteB/G6N1SelectedFerrersCCMLemma73PreAnchorPort.lean",
+        "Q3/Proofs/RouteB/G6N1SelectedFerrersN2SourceScaledTailRate.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/RouteB/G6N1SelectedFerrersN2SourceScaledTailRate.lean",
+      "module": "Q3.Proofs.RouteB.G6N1SelectedFerrersN2SourceScaledTailRate",
+      "dependencies": [
+        "Q3/Proofs/RouteB/G6N1SelectedFerrersW5RateAssembly.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
       "id": "Q3/Proofs/RouteB/G6N1SelectedFerrersOddMassDecay.lean",
       "module": "Q3.Proofs.RouteB.G6N1SelectedFerrersOddMassDecay",
       "dependencies": [
         "Q3/Proofs/RouteB/D0PstarInversionCoefficientCrosswalk.lean",
         "Q3/Proofs/RouteB/G6N1ExplicitCCMLimitBeyondSourceWindowTail.lean",
         "Q3/Proofs/RouteB/G6N1SelectedFerrersH2aSourceQuantities.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/RouteB/G6N1SelectedFerrersOuterPolynomialDecay.lean",
+      "module": "Q3.Proofs.RouteB.G6N1SelectedFerrersOuterPolynomialDecay",
+      "dependencies": [
+        "Q3/Proofs/RouteB/D0Mode4ClassicalCarrierHeadUpper.lean",
+        "Q3/Proofs/RouteB/G6N1CenterAnchorScalarLock.lean",
+        "Q3/Proofs/RouteB/G6N1ParabolicCylinderD0D4Exact.lean",
+        "Q3/Proofs/RouteB/G6N1SelectedFerrersPaperParameterDictionary.lean",
+        "Q3/Proofs/RouteB/G6N1SturmDefectTruncatedEnergy.lean"
       ],
       "sorries": [],
       "numeric_check": "NOT_CONFIGURED",
@@ -85820,6 +86229,260 @@
         "Q3/Proofs/RouteB/D0ModeZeroFourFerrersProductionProlatePair.lean",
         "Q3/Proofs/RouteB/D0PstarActualProlateEStarMemLp.lean",
         "Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/RouteB/G6N1SelectedFerrersQuantitativeShiftedRootEnergy.lean",
+      "module": "Q3.Proofs.RouteB.G6N1SelectedFerrersQuantitativeShiftedRootEnergy",
+      "dependencies": [
+        "Q3/Proofs/RouteB/D0PstarSourceWeilOddTailExplicitCoercivity.lean",
+        "Q3/Proofs/RouteB/G6N1SelectedFerrersFixedKShiftedRootEnergy.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/RouteB/G6N1SelectedFerrersScaleBandwidthClosure.lean",
+      "module": "Q3.Proofs.RouteB.G6N1SelectedFerrersScaleBandwidthClosure",
+      "dependencies": [
+        "Q3/Proofs/RouteB/G6N1SelectedFerrersFirstOrderBudgetApplication.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/RouteB/G6N1SelectedFerrersTrackedGroundTailReindex.lean",
+      "module": "Q3.Proofs.RouteB.G6N1SelectedFerrersTrackedGroundTailReindex",
+      "dependencies": [
+        "Q3/Proofs/RouteB/G6N1SelectedFerrersTrackedGroundTransform.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/RouteB/G6N1SelectedFerrersTrackedGroundTransform.lean",
+      "module": "Q3.Proofs.RouteB.G6N1SelectedFerrersTrackedGroundTransform",
+      "dependencies": [
+        "Q3/Proofs/RouteB/D0ZerosRealOnScalarTransfer.lean",
+        "Q3/Proofs/RouteB/G6N1SelectedFerrersGroundProposition59RealZeros.lean",
+        "Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/RouteB/G6N1SelectedFerrersTrialNormalizerClosure.lean",
+      "module": "Q3.Proofs.RouteB.G6N1SelectedFerrersTrialNormalizerClosure",
+      "dependencies": [
+        "Q3/Proofs/RouteB/D0PstarGalerkinResidualDecay.lean",
+        "Q3/Proofs/RouteB/G6N1SelectedFerrersCenterIntegralRate.lean",
+        "Q3/Proofs/RouteB/G6N1SelectedFerrersW5RateAssembly.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/RouteB/G6N1SelectedFerrersW5DerivativeBudgetRate.lean",
+      "module": "Q3.Proofs.RouteB.G6N1SelectedFerrersW5DerivativeBudgetRate",
+      "dependencies": [
+        "Q3/Proofs/RouteB/G6N1SelectedFerrersW5EndpointValueRate.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/RouteB/G6N1SelectedFerrersW5EndpointValueRate.lean",
+      "module": "Q3.Proofs.RouteB.G6N1SelectedFerrersW5EndpointValueRate",
+      "dependencies": [
+        "Q3/Proofs/RouteB/G6N1SelectedFerrersW5L1MassRate.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/RouteB/G6N1SelectedFerrersW5JumpSeamRate.lean",
+      "module": "Q3.Proofs.RouteB.G6N1SelectedFerrersW5JumpSeamRate",
+      "dependencies": [
+        "Q3/Proofs/RouteB/G6N1SelectedFerrersFactorFourPortRate.lean",
+        "Q3/Proofs/RouteB/G6N1SelectedFerrersQuantitativeShiftedRootEnergy.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/RouteB/G6N1SelectedFerrersW5L1MassRate.lean",
+      "module": "Q3.Proofs.RouteB.G6N1SelectedFerrersW5L1MassRate",
+      "dependencies": [
+        "Q3/Proofs/RouteB/D0LogWindowMeasureTransport.lean",
+        "Q3/Proofs/RouteB/G6N1ExplicitCCMLimitBeyondSourceWindowTail.lean",
+        "Q3/Proofs/RouteB/G6N1SelectedFerrersEStarWindowMainError.lean",
+        "Q3/Proofs/RouteB/G6N1SelectedFerrersW5JumpSeamRate.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/RouteB/G6N1SelectedFerrersW5RateAssembly.lean",
+      "module": "Q3.Proofs.RouteB.G6N1SelectedFerrersW5RateAssembly",
+      "dependencies": [
+        "Q3/Proofs/RouteB/D0PstarFirstOrderProjectionTailReceiver.lean",
+        "Q3/Proofs/RouteB/G6N1CylinderTransportL1Budget.lean",
+        "Q3/Proofs/RouteB/G6N1SelectedFerrersEdgeTopFluxConsumer.lean",
+        "Q3/Proofs/RouteB/G6N1SelectedFerrersFirstOrderBudgetApplication.lean",
+        "Q3/Proofs/RouteB/G6N1SelectedFerrersScaleBandwidthClosure.lean",
+        "Q3/Proofs/RouteB/G6N1SturmWeightedConsumerNonTopRate.lean"
       ],
       "sorries": [],
       "numeric_check": "NOT_CONFIGURED",
@@ -86065,6 +86728,106 @@
       "is_doomed": false
     },
     {
+      "id": "Q3/Proofs/RouteB/G6N1SturmDefectEnergyModePlumbing.lean",
+      "module": "Q3.Proofs.RouteB.G6N1SturmDefectEnergyModePlumbing",
+      "dependencies": [
+        "Q3/Proofs/RouteB/D0Mode4FerrersEndpointFlux.lean",
+        "Q3/Proofs/RouteB/D0Mode4FerrersPhysicalProlateScaling.lean",
+        "Q3/Proofs/RouteB/G6N1SelectedFerrersPreAnchorDataInhabitant.lean",
+        "Q3/Proofs/RouteB/G6N1SturmWeightedEnergyIdentity.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/RouteB/G6N1SturmDefectTruncatedEnergy.lean",
+      "module": "Q3.Proofs.RouteB.G6N1SturmDefectTruncatedEnergy",
+      "dependencies": [
+        "Q3/Proofs/RouteB/D0Mode4FerrersCoefficientAbsoluteSummability.lean",
+        "Q3/Proofs/RouteB/G6N1SturmDefectEnergyModePlumbing.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/RouteB/G6N1SturmWeightedConsumerNonTopRate.lean",
+      "module": "Q3.Proofs.RouteB.G6N1SturmWeightedConsumerNonTopRate",
+      "dependencies": [
+        "Q3/Proofs/RouteB/G6N1SturmDefectTruncatedEnergy.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/RouteB/G6N1SturmWeightedEnergyIdentity.lean",
+      "module": "Q3.Proofs.RouteB.G6N1SturmWeightedEnergyIdentity",
+      "dependencies": [
+        "Q3/Proofs/RouteB/G6N1CylinderTransportL1Budget.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
       "id": "Q3/Proofs/RouteB/GammaSoftZeroFree.lean",
       "module": "Q3.Proofs.RouteB.GammaSoftZeroFree",
       "dependencies": [
@@ -86094,6 +86857,52 @@
       "module": "Q3.Proofs.RouteB.GenericZeroTransfer",
       "dependencies": [
         "Q3/Proofs/RouteB/ZeroEscapeLogic.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/RouteB/Goal058OrientedSmoothModelMass.lean",
+      "module": "Q3.Proofs.RouteB.Goal058OrientedSmoothModelMass",
+      "dependencies": [],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/RouteB/Goal058PolarizedVolterra.lean",
+      "module": "Q3.Proofs.RouteB.Goal058PolarizedVolterra",
+      "dependencies": [
+        "Q3/Proofs/RouteB/G6N1SelectedFerrersHilbertPairing.lean"
       ],
       "sorries": [],
       "numeric_check": "NOT_CONFIGURED",
@@ -87097,6 +87906,30 @@
       "is_doomed": false
     },
     {
+      "id": "Q3/Proofs/RouteB/Proposition59PoleKernelNorm.lean",
+      "module": "Q3.Proofs.RouteB.Proposition59PoleKernelNorm",
+      "dependencies": [
+        "Q3/Proofs/RouteB/Proposition59EntireTransform.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
       "id": "Q3/Proofs/RouteB/QuadraticDivisorTransfer.lean",
       "module": "Q3.Proofs.RouteB.QuadraticDivisorTransfer",
       "dependencies": [
@@ -88057,6 +88890,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -88128,6 +88963,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -88156,6 +88993,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -88213,6 +89052,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -88240,6 +89081,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -88267,6 +89110,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -88362,6 +89207,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -88389,6 +89236,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -88439,6 +89288,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
@@ -88577,6 +89428,8 @@
       "taint_predecessors": [],
       "taint_origin_count": 0,
       "root_ids": [
+        "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
+        "Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms",
         "Q3.Main.RH_of_Weil_and_Q3",
         "Q3.RH_of_shifted_atom_route"
       ],
