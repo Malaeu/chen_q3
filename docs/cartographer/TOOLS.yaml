@@ -531,10 +531,21 @@ tool_families:
         mode: WRITES_CANONICAL
         path: orchestrator/kb_migrate_route058.py
         invoke: python3 orchestrator/kb_migrate_route058.py --check
+        check_mode: READ_ONLY
+        write_variant: python3 orchestrator/kb_migrate_route058.py --write
         cwd: repository root
         trigger: >-
           Checking whether the assembly chain still matches the master route; --write only when
           the route text itself changed.
+        check_contract:
+          expected_rows: 8
+          expected_steps: [0, 1, 2, 3, 4, 5, 6, 7]
+          persisted_fields: [step, requirement, required_by, supplied_by, supplier_file, supplier_line, status, note, run_id, objects]
+          normalization: NONE
+          exact_exit: 0
+          drift_exit: 1
+          infrastructure_exit: 2
+          drift_exit_nonzero: true
         writes: true
         approval: EXACT_OUTPUT_SCOPE
         authority: ROUTE_TEXT_IS_THE_SOURCE_DB_IS_THE_PROJECTION
@@ -542,7 +553,8 @@ tool_families:
           --write replaces every row of its own chain and touches no other, so a stale script
           silently reverts hand edits made in the database. Edit the script, never the rows.
         records_to: knowledge.db table assembly, chain REALZERO_GROUND_DIAGONAL_TO_XI
-        last_verified: 2026-08-12
+        validation: orchestrator/tests/test_cartographer_c2_repair.py
+        last_verified: 2026-08-28
 
       - id: research-oracle
         status: ENABLED
@@ -661,11 +673,19 @@ tool_families:
         invoke: python3 docs/cartographer/atoms.py docs/cartographer/atoms_RouteB.json
         cwd: repository root
         trigger: Explicit atom refresh after inventory changes.
+        file_id_semantics: ROUTEB_ROOT_RELATIVE_POSIX
+        compatibility: Top-level IDs remain basenames; nested IDs include their RouteB-relative directory.
+        coverage_denominator: LIVE_RECURSIVE_SOURCE_PLUS_EXACT_INVENTORY_DECLARATION_PROJECTION
+        inventory_projection_fields: [kind, name, file, line, signature]
+        output_schema: BARE_LIST_V1_UNCHANGED
+        publication: ATOMIC_REPLACE
+        drift_exit_nonzero: true
         writes: true
         approval: EXACT_OUTPUT_SCOPE
         authority: DETERMINISTIC_EXTERNAL_ATOM_INDEX
         records_to: atoms_RouteB.json
-        last_verified: 2026-08-10
+        validation: orchestrator/tests/test_cartographer_c2_repair.py
+        last_verified: 2026-08-28
 
       - id: map-coverage
         status: ENABLED

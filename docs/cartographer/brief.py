@@ -9,7 +9,10 @@
   python3 brief.py GOAL057              # одна цепочка по префиксу
   python3 brief.py GOAL057 --out /tmp/b.md
 """
-import sqlite3, sys, pathlib, datetime, subprocess
+import pathlib
+import sqlite3
+import subprocess
+import sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 DB = f"file:{ROOT}/q3.lean.aristotle/aristotle_db/knowledge.db?mode=ro"
@@ -43,9 +46,9 @@ def main():
 
     A("# Состояние графа Q3 — пакет из базы\n")
     A("```yaml")
-    A(f"SOURCE: q3.lean.aristotle/aristotle_db/knowledge.db")
+    A("SOURCE: q3.lean.aristotle/aristotle_db/knowledge.db")
     A(f"HEAD: {head()}")
-    A(f"GENERATOR: codex_specs/cartographer/brief.py")
+    A("GENERATOR: docs/cartographer/brief.py")
     A("ROUTE: CHALLENGER_NOT_RH")
     A("RH_CLAIM: NOT_MADE")
     A("```\n")
@@ -90,9 +93,12 @@ def main():
                 loc = f" (`{sf}:{sl}`)" if sf and sl else ""
                 A(f"- поставщик: `{sup}`{loc}")
             else:
-                A(f"- поставщика нет")
+                A("- поставщика нет")
             if objs:
-                A(f"- объекты: {', '.join('`'+o.strip()+'`' for o in objs.split(',') if o.strip())}")
+                object_list = ", ".join(
+                    "`" + obj.strip() + "`" for obj in objs.split(",") if obj.strip()
+                )
+                A(f"- объекты: {object_list}")
             if note:
                 # только последний блок note — он самый свежий
                 last = note.split(" | ")[-1].strip()

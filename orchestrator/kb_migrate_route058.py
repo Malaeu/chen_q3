@@ -25,6 +25,7 @@ import argparse
 import sqlite3
 import sys
 from pathlib import Path
+from typing import Any
 
 REPO = Path(__file__).resolve().parents[1]
 DB = REPO / "q3.lean.aristotle/aristotle_db/knowledge.db"
@@ -106,6 +107,86 @@ STEPS: list[tuple] = [
      "rh_of_canonical_strip_slots,ZerosApproachOn,Q3.RH,sameCofinalGuard"),
 ]
 
+PERSISTED_FIELDS = (
+    "step", "requirement", "required_by", "supplied_by", "supplier_file",
+    "supplier_line", "status", "note", "run_id", "objects",
+)
+
+
+def expected_rows() -> list[tuple[Any, ...]]:
+    """Return the exact typed database projection encoded by ``STEPS``."""
+    return [
+        (step[0], step[1], step[2], step[3], step[4], step[5], step[6], step[7], RUN_ID, step[8])
+        for step in STEPS
+    ]
+
+
+def _typed_row_equal(actual: tuple[Any, ...], expected: tuple[Any, ...]) -> bool:
+    return len(actual) == len(expected) and all(
+        actual_value == expected_value and type(actual_value) is type(expected_value)
+        for actual_value, expected_value in zip(actual, expected)
+    )
+
+
+def check_database(db: Path = DB) -> int:
+    """Compare every persisted field; return 0 exact, 1 drift, 2 infrastructure."""
+    try:
+        con = sqlite3.connect(f"file:{db}?mode=ro", uri=True)
+        rows = list(con.execute(
+            "select step, requirement, required_by, supplied_by, supplier_file, "
+            "supplier_line, status, note, run_id, objects "
+            "from assembly where chain=? order by step, requirement",
+            (CHAIN,),
+        ))
+        con.close()
+    except (sqlite3.Error, OSError) as exc:
+        print(f"ROUTE058_CHECK_INFRASTRUCTURE_ERROR: {exc}", file=sys.stderr)
+        return 2
+
+    expected = expected_rows()
+    steps = [row[0] for row in rows]
+    structural_errors: list[str] = []
+    if len(rows) != 8:
+        structural_errors.append(f"row_count={len(rows)} expected=8")
+    if len(set(steps)) != len(steps):
+        structural_errors.append(f"duplicate_steps={steps!r}")
+    if sorted(steps) != list(range(8)):
+        structural_errors.append(f"steps={steps!r} expected={list(range(8))!r}")
+    for row in rows:
+        supplier_line = row[5]
+        if supplier_line is not None and type(supplier_line) is not int:
+            structural_errors.append(
+                f"step={row[0]!r} supplier_line_type={type(supplier_line).__name__}"
+            )
+
+    exact_rows = len(rows) == len(expected) and all(
+        _typed_row_equal(actual, wanted) for actual, wanted in zip(rows, expected)
+    )
+    if not structural_errors and exact_rows:
+        print(f"ROUTE058_ASSEMBLY_EXACT: {len(rows)} rows, fields={len(PERSISTED_FIELDS)}")
+        return 0
+
+    print("ROUTE058_ASSEMBLY_DRIFT", file=sys.stderr)
+    for error in structural_errors:
+        print(f"  STRUCTURE: {error}", file=sys.stderr)
+    for index in range(max(len(rows), len(expected))):
+        actual = rows[index] if index < len(rows) else None
+        wanted = expected[index] if index < len(expected) else None
+        if actual is not None and wanted is not None and _typed_row_equal(actual, wanted):
+            continue
+        if actual is None or wanted is None:
+            print(f"  ROW[{index}]: actual={actual!r} expected={wanted!r}", file=sys.stderr)
+            continue
+        for field, actual_value, expected_value in zip(PERSISTED_FIELDS, actual, wanted):
+            if actual_value != expected_value or type(actual_value) is not type(expected_value):
+                print(
+                    f"  step={wanted[0]!r} field={field}: "
+                    f"actual={actual_value!r} ({type(actual_value).__name__}) "
+                    f"expected={expected_value!r} ({type(expected_value).__name__})",
+                    file=sys.stderr,
+                )
+    return 1
+
 
 def main() -> int:
     ap = argparse.ArgumentParser()
@@ -118,20 +199,7 @@ def main() -> int:
         return 2
 
     if args.check:
-        con = sqlite3.connect(f"file:{DB}?mode=ro", uri=True)
-        have = {r[0]: r for r in con.execute(
-            "select step, requirement, status from assembly where chain=?", (CHAIN,))}
-        print(f"в базе шагов цепи {CHAIN}: {len(have)} · в скрипте: {len(STEPS)}")
-        for s in STEPS:
-            row = have.get(s[0])
-            if row is None:
-                print(f"  ОТСУТСТВУЕТ  шаг {s[0]}  {s[1][:60]}")
-            elif row[2] != s[6]:
-                print(f"  СТАТУС РАЗОШЁЛСЯ шаг {s[0]}: база {row[2]} · скрипт {s[6]}")
-        extra = set(have) - {s[0] for s in STEPS}
-        for e in sorted(extra):
-            print(f"  ЛИШНИЙ В БАЗЕ шаг {e}")
-        return 0
+        return check_database(DB)
 
     print(f"цепь {CHAIN}, шагов {len(STEPS)}:")
     for s in STEPS:
