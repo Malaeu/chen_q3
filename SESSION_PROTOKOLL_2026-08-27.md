@@ -174,3 +174,61 @@ brachte den größten Schritt der Sitzung und drei eigene Korrekturen.
 - `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/LINUX_W02_TWO_ENDPOINT_FUNCTIONAL_PREFLIGHT_GOAL058_2026-08-27.md`
 - `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/litreview/GROSKIN_TAILORDER_USAGE_CARDS.md` (Abschnitt 6)
 - `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/phase0_scripts/arch_block.py`
+
+---
+
+# Nachtsitzung 28.08.2026 — Zentralfenster-Programm, FATAL (Linux-Claude)
+
+## Kontext
+
+Die Nachtschleife lief bis 03:00 durch. Der Richter gab neun Transaktionen frei;
+alle wurden ausgeführt. Das Programm endet mit einer FATAL-Einstufung und einer
+Entscheidung, die dem Eigentümer zusteht.
+
+## Erledigt (alles gepusht)
+
+1. `2aaff3e7` — Lean, kernel-green: Zentrale Spektralnormalform von `ccmBetaScalar`.
+2. `b9e7c589` — Hilbert-Strom und Volterra-Kern sind ein Instrument; Polarisierung
+   für beliebige komplexe Paare geschlossen.
+3. `a31f2ef6` — orientierte Ein-Funktional-Identität `Psi = <sigma_m, J>`,
+   numerisch auf `2.5e-11` bestätigt.
+4. `b11a33e0` — Stieltjes-Diskriminator FAIL: absolute Majorante importiert die
+   `exp(L/2)` gegen `exp(c L^{3/5})`-Lücke.
+5. `0acfef97` / `4c6956a9` / `655c9831` — Nulltransfer, kompakte Beobachtbarkeit,
+   Zentralfenster. Exakte Identitäten, keine Rate.
+6. `fc36f7d3` — Closeout.
+
+Selbstkorrekturen 5 bis 14, alle gepusht. Wachdienst-Bug gefunden und behoben
+(`^\[Linux` fing auch `[Linux-Codex]`).
+
+## Geprüft
+
+Lean-Gatter für `2aaff3e7`: sieben Deklarationen, Axiomtripel sauber, `lake build`
+Code 0. Numerische Bestätigungen jeweils deklariert als DIAGNOSTIC_NEVER_A_PROOF.
+
+## Wichtigste Sachergebnisse
+
+- Die glatte orientierte Quelle hat die gleichmäßige Schranke `6/pi`; das
+  `sqrt m`-Hindernis ist dort beseitigt.
+- `||kappa(z)||^2 = L^2 sinh(L Im z)/(L Im z)`, geschlossene Form.
+- `kappa_m(2 pi j/L) = (-1)^j L e_j`.
+- Der Verbraucher **sieht** eine Nullstelle abseits der kritischen Geraden; das ist
+  keine Schwäche der Konstruktion, sondern ihre Treue.
+
+## Offen — Entscheidung des Eigentümers
+
+Der Richter verlangt `OWNER_RERANK`. Zwei Türen:
+
+- **R1** (primär, kill 9, Kosten 7): Rate durch lokale Beschränktheit plus
+  Konvergenz auf einer Eindeutigkeitsmenge ersetzen; Vitali liefert dann lokal
+  gleichmäßige Konvergenz ohne quantitatives Programm.
+- **R2** (Nachrücker, kill 9, Kosten 9): quellenangepasstes bewegtes
+  Krylov/Feshbach, benötigt einen eigenen Grant.
+
+Meine Empfehlung: R1. Begründung im Closeout, Abschnitt 5.
+
+## Dateien (absolute Pfade)
+
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/LINUX_CLOSEOUT_CENTRAL_WINDOW_PROGRAM_GOAL058_2026-08-28.md`
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/LINUX_ORIENTED_FULL_VOLTERRA_SOURCE_RATE_PREFLIGHT_GOAL058_2026-08-28.md`
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilCenterSpectralNormalForm.lean`
