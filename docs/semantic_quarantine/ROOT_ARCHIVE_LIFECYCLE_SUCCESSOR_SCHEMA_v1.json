@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "q3.root_archive_lifecycle_successor_receipt.v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "status",
+    "transaction_commit",
+    "baseline_commit",
+    "transaction_tree",
+    "transaction_paths_no_renames",
+    "transaction_artifacts",
+    "foreign_dirty_snapshot_sha256",
+    "executed_moves",
+    "successor_objects",
+    "expected_successor_tree_excluding_receipt",
+    "successor_paths",
+    "plants"
+  ],
+  "properties": {
+    "schema_version": {"type": "string", "const": "q3.root_archive_lifecycle_successor_receipt.v1"},
+    "status": {"type": "string", "const": "CANONICAL_POSTCOMMIT_LIFECYCLE_BOUND"},
+    "transaction_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "baseline_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "transaction_tree": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "transaction_paths_no_renames": {
+      "type": "array",
+      "minItems": 26,
+      "maxItems": 26,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "transaction_artifacts": {
+      "type": "object",
+      "minProperties": 5,
+      "maxProperties": 5,
+      "additionalProperties": {"$ref": "#/$defs/object"}
+    },
+    "foreign_dirty_snapshot_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "executed_moves": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["source", "target", "mode", "oid", "sha256", "byte_size"],
+        "properties": {
+          "source": {"type": "string"},
+          "target": {"type": "string"},
+          "mode": {"type": "string", "pattern": "^[0-9]{6}$"},
+          "oid": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "byte_size": {"type": "integer", "minimum": 0}
+        }
+      }
+    },
+    "successor_objects": {
+      "type": "object",
+      "minProperties": 4,
+      "maxProperties": 4,
+      "additionalProperties": {"$ref": "#/$defs/object"}
+    },
+    "expected_successor_tree_excluding_receipt": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "successor_paths": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "uniqueItems": true,
+      "items": {"type": "string"}
+    },
+    "plants": {
+      "type": "array",
+      "minItems": 3,
+      "uniqueItems": true,
+      "items": {"enum": ["UNRELATED_CHILD_PATH", "WRONG_TRANSACTION_TREE", "SUCCESSOR_OBJECT_HASH_DRIFT"]}
+    }
+  },
+  "$defs": {
+    "object": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "oid", "sha256", "byte_size"],
+      "properties": {
+        "mode": {"type": "string", "pattern": "^[0-9]{6}$"},
+        "oid": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "byte_size": {"type": "integer", "minimum": 0}
+      }
+    }
+  }
+}

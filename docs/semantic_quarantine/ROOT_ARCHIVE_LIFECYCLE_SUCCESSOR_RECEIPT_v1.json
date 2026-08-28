@@ -1,0 +1,149 @@
+{
+  "baseline_commit": "1c5988c3d97c46c1cb97bdb8a7019fd52a429c1f",
+  "executed_moves": [
+    {
+      "byte_size": 139143,
+      "mode": "100644",
+      "oid": "2d724297c71e344f09968eb09b66c2b4e6828220",
+      "sha256": "34117cfc30c2ea1c0c03b7fb4bc1f3c61d06c7203693cb63bd2b3bec6f615c82",
+      "source": ".codex_browser_snapshot_proshka.md",
+      "target": "archive/root_artifacts/browser_snapshots/.codex_browser_snapshot_proshka.md"
+    },
+    {
+      "byte_size": 21750,
+      "mode": "100644",
+      "oid": "3181f913c0dd04e2ccb6263429191edb68eae2d6",
+      "sha256": "625967f99367bd4471a00cc4e0db70a81e9071a358bc752a42fe4c7ee0f7e7af",
+      "source": "codex_4af2_uncommitted_20260727.patch",
+      "target": "archive/root_artifacts/provenance/codex_4af2_uncommitted_20260727.patch"
+    },
+    {
+      "byte_size": 115045,
+      "mode": "100644",
+      "oid": "5851bebb44c9d9ec14a6b61204155a742cd8b2c1",
+      "sha256": "818b7245efef9ab1e896a3c0a1fd6ec37d44e1dfc98acf751f7655ec51e6a2fb",
+      "source": "louise-current-tab.png",
+      "target": "archive/root_artifacts/browser_snapshots/louise-current-tab.png"
+    },
+    {
+      "byte_size": 14451,
+      "mode": "100644",
+      "oid": "33d03acfba6811861f99254a90a34b4ea872d31c",
+      "sha256": "5d1aeeba935564f7aa2c68a70f9e8e3abce92feacf60ec2f1772e786af030110",
+      "source": "louise-last-response.md",
+      "target": "archive/root_artifacts/browser_snapshots/louise-last-response.md"
+    },
+    {
+      "byte_size": 0,
+      "mode": "100644",
+      "oid": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "run.jsonl",
+      "target": "archive/root_artifacts/provenance/run.jsonl"
+    }
+  ],
+  "expected_successor_tree_excluding_receipt": "41c017cd930d60a3ed08cf9962b7dbbd5f54af79",
+  "foreign_dirty_snapshot_sha256": "ddfaddd6b2fa9401b9ef8c47a9f614600509811a6a4b2985c5d9752420467cd0",
+  "plants": [
+    "UNRELATED_CHILD_PATH",
+    "WRONG_TRANSACTION_TREE",
+    "SUCCESSOR_OBJECT_HASH_DRIFT"
+  ],
+  "schema_version": "q3.root_archive_lifecycle_successor_receipt.v1",
+  "status": "CANONICAL_POSTCOMMIT_LIFECYCLE_BOUND",
+  "successor_objects": {
+    "docs/semantic_quarantine/ROOT_ARCHIVE_LIFECYCLE_SUCCESSOR_SCHEMA_v1.json": {
+      "byte_size": 3107,
+      "mode": "100644",
+      "oid": "01af0836d1c658bbff4c9cbcf604632945bdb08a",
+      "sha256": "591ab80316e6bd6fe416475be3d693757b8b1fceb4ebe02137072565415f990a"
+    },
+    "orchestrator/root_archive_lifecycle_successor.py": {
+      "byte_size": 16704,
+      "mode": "100644",
+      "oid": "0ba7650714587f512c0c7f4c15a8fe5ac9655e0d",
+      "sha256": "363531e451aca823a787088e665c302e5b6cb1d94137dd927d216e74fd36052e"
+    },
+    "orchestrator/tests/test_root_archive_lifecycle_successor.py": {
+      "byte_size": 5153,
+      "mode": "100644",
+      "oid": "39b4547034b219261179782e13b3d9e45d7563f0",
+      "sha256": "1aad7c9d3f3fb1880e973a7361f0bc7742a205e2dc9c9ebd447f4eab730736a0"
+    },
+    "scripts/check_root_archive_lifecycle_successor.sh": {
+      "byte_size": 390,
+      "mode": "100755",
+      "oid": "2182db98cad16454c7c57238fae207e96b562c33",
+      "sha256": "e25b2f1b90118aa130bbe03881dd9e5d3fbefdc3440279b1985b257c24b235c4"
+    }
+  },
+  "successor_paths": [
+    "docs/semantic_quarantine/ROOT_ARCHIVE_LIFECYCLE_SUCCESSOR_RECEIPT_v1.json",
+    "docs/semantic_quarantine/ROOT_ARCHIVE_LIFECYCLE_SUCCESSOR_SCHEMA_v1.json",
+    "orchestrator/root_archive_lifecycle_successor.py",
+    "orchestrator/tests/test_root_archive_lifecycle_successor.py",
+    "scripts/check_root_archive_lifecycle_successor.sh"
+  ],
+  "transaction_artifacts": {
+    "docs/semantic_quarantine/ROOT_ARCHIVE_EXECUTION_UMBRELLA_v1.json": {
+      "byte_size": 640,
+      "mode": "100644",
+      "oid": "5be9436bff152b4488e7b5df732d43cb50e8f3fb",
+      "sha256": "1160da2aa2f5297926edfaf6501aca1f5301c35b778de9f2d83a8d0c29ed57e8"
+    },
+    "docs/semantic_quarantine/ROOT_ARCHIVE_ZERO_REFERENCE_RECEIPT_v1.json": {
+      "byte_size": 58243,
+      "mode": "100644",
+      "oid": "f252ff24be54374bcedf0dbd33585fac8af3667e",
+      "sha256": "99c8d54feae0f019a182b8aa5439370f198c452c0ee68e993d597d55d482b03e"
+    },
+    "orchestrator/root_archive_moves.py": {
+      "byte_size": 54711,
+      "mode": "100644",
+      "oid": "7e1812414a9d83a322d8db2ae06351929968604c",
+      "sha256": "4e62c798ec3396420dcd7461fa31a17be750e564ada1afed11aeb92c2646f3ea"
+    },
+    "orchestrator/tests/test_root_archive_moves.py": {
+      "byte_size": 11368,
+      "mode": "100644",
+      "oid": "0440ae4af3014421e23b40f9eb6254f573cd01ce",
+      "sha256": "3af4f8c705e976591f5078f7f98e797f368bdca88c1d12ea7c0f28978bb258fc"
+    },
+    "scripts/check_root_archive_preflight.sh": {
+      "byte_size": 980,
+      "mode": "100755",
+      "oid": "bb10187500abcdb1f7fca87ffd4c81eab2bd2610",
+      "sha256": "604c94d0994be1f48f4ec0935da92993107cc04babe3bd0e731d8e96cea7d412"
+    }
+  },
+  "transaction_commit": "c450773bd63b295439df2174da12fafa16958f1f",
+  "transaction_paths_no_renames": [
+    ".codex_browser_snapshot_proshka.md",
+    "archive/root_artifacts/browser_snapshots/.codex_browser_snapshot_proshka.md",
+    "archive/root_artifacts/browser_snapshots/louise-current-tab.png",
+    "archive/root_artifacts/browser_snapshots/louise-last-response.md",
+    "archive/root_artifacts/provenance/codex_4af2_uncommitted_20260727.patch",
+    "archive/root_artifacts/provenance/run.jsonl",
+    "codex_4af2_uncommitted_20260727.patch",
+    "docs/semantic_quarantine/PORTABILITY_RELOCATION_SUCCESSOR_RECEIPT_v1.json",
+    "docs/semantic_quarantine/PORTABILITY_RELOCATION_SUCCESSOR_SCHEMA_v1.json",
+    "docs/semantic_quarantine/PORTABILITY_RELOCATION_SUCCESSOR_v1.json",
+    "docs/semantic_quarantine/ROOT_ARCHIVE_EXECUTION_UMBRELLA_v1.json",
+    "docs/semantic_quarantine/ROOT_ARCHIVE_ZERO_REFERENCE_RECEIPT_v1.json",
+    "docs/semantic_quarantine/ROOT_ARCHIVE_ZERO_REFERENCE_SCHEMA_v1.json",
+    "docs/semantic_quarantine/ROOT_ARTIFACT_CLASSIFICATION_RECEIPT_v2.json",
+    "docs/semantic_quarantine/ROOT_ARTIFACT_CLASSIFICATION_SCHEMA_v2.json",
+    "docs/semantic_quarantine/ROOT_ARTIFACT_CLASSIFICATION_v2.json",
+    "louise-current-tab.png",
+    "louise-last-response.md",
+    "orchestrator/portability_manifest.py",
+    "orchestrator/root_archive_moves.py",
+    "orchestrator/root_artifact_classification.py",
+    "orchestrator/tests/test_portability_manifest.py",
+    "orchestrator/tests/test_root_archive_moves.py",
+    "orchestrator/tests/test_root_artifact_classification.py",
+    "run.jsonl",
+    "scripts/check_root_archive_preflight.sh"
+  ],
+  "transaction_tree": "cc0717eea10b9ea00c50c0db8b8870de11fd80d1"
+}
