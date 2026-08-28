@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 
-from docs.cartographer import atoms
+from docs.cartographer import atoms, map_coverage
 from docs.cartographer import inventory as inventory_module
 from orchestrator import kb_migrate_route058 as route058
 
@@ -27,6 +27,19 @@ def write_inventory(repo: Path, path: Path) -> dict:
     payload = {"scope": "RouteB", "files_scanned": files, "items": items}
     path.write_text(json.dumps(payload), encoding="utf-8")
     return payload
+
+
+def write_doc(repo: Path, relative: str, text: str) -> Path:
+    path = repo / relative
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(text, encoding="utf-8")
+    return path
+
+
+def declaration_in_docs(repo: Path, declaration: str) -> bool:
+    result = inventory_module.build_inventory(repo, "RouteB")
+    item = next(entry for entry in result["items"] if entry["name"] == declaration)
+    return item["in_docs"]
 
 
 def test_atoms_recursive_ids_collision_and_bare_list(tmp_path: Path) -> None:
@@ -246,6 +259,115 @@ def test_route058_schema_error_is_infrastructure_failure(tmp_path: Path) -> None
     assert route058.check_database(path) == 2
 
 
+@pytest.mark.parametrize(
+    "relative",
+    [
+        "docs/generated/nested/evidence.md",
+        "docs/routeB_bus/MAP_COVERAGE.md",
+        "docs/TOOLS.md",
+        "docs/.lake/packages/pkg/README.md",
+    ],
+)
+def test_inventory_generated_and_volatile_docs_do_not_count(
+    tmp_path: Path,
+    relative: str,
+) -> None:
+    write_lean(tmp_path, "Evidence.lean", "GeneratedOnlyEvidence")
+    write_doc(tmp_path, relative, "GeneratedOnlyEvidence")
+    assert not declaration_in_docs(tmp_path, "GeneratedOnlyEvidence")
+
+
+@pytest.mark.parametrize(
+    "relative",
+    [
+        "docs/manual.md",
+        "q3.lean.aristotle/ACTIVE/manual.md",
+        "docs/generatedish/manual.md",
+    ],
+)
+def test_inventory_independent_docs_count(tmp_path: Path, relative: str) -> None:
+    write_lean(tmp_path, "Evidence.lean", "IndependentEvidence")
+    write_doc(tmp_path, relative, "IndependentEvidence")
+    assert declaration_in_docs(tmp_path, "IndependentEvidence")
+
+
+def test_inventory_symlink_classification(tmp_path: Path) -> None:
+    write_lean(tmp_path, "Evidence.lean", "SymlinkEvidence")
+    generated = write_doc(
+        tmp_path,
+        "docs/generated/generated-target.md",
+        "SymlinkEvidence",
+    )
+    alias = tmp_path / "docs/ordinary-alias.md"
+    alias.symlink_to(generated)
+    assert not declaration_in_docs(tmp_path, "SymlinkEvidence")
+
+    ordinary_target = write_doc(tmp_path, "evidence/ordinary.md", "SymlinkEvidence")
+    active_alias = tmp_path / "q3.lean.aristotle/ACTIVE/ordinary-alias.md"
+    active_alias.parent.mkdir(parents=True, exist_ok=True)
+    active_alias.symlink_to(ordinary_target)
+    assert declaration_in_docs(tmp_path, "SymlinkEvidence")
+
+
+def test_inventory_does_not_follow_directory_symlinks(tmp_path: Path) -> None:
+    write_lean(tmp_path, "Evidence.lean", "DirectorySymlinkEvidence")
+    write_doc(tmp_path, "evidence-dir/hidden.md", "DirectorySymlinkEvidence")
+    docs = tmp_path / "docs"
+    docs.mkdir(parents=True, exist_ok=True)
+    (docs / "linked-dir").symlink_to(tmp_path / "evidence-dir", target_is_directory=True)
+    assert not declaration_in_docs(tmp_path, "DirectorySymlinkEvidence")
+
+
+@pytest.mark.parametrize("kind", ["broken", "external"])
+@pytest.mark.parametrize(
+    "relative",
+    ["docs/routeB_bus/MAP_COVERAGE.md", "docs/TOOLS.md"],
+)
+def test_inventory_excluded_unsafe_file_symlink_fails_closed(
+    tmp_path: Path,
+    kind: str,
+    relative: str,
+) -> None:
+    alias = tmp_path / relative
+    alias.parent.mkdir(parents=True, exist_ok=True)
+    if kind == "broken":
+        alias.symlink_to(tmp_path / "missing.md")
+    else:
+        outside = tmp_path.parent / f"{tmp_path.name}-outside.md"
+        outside.write_text("outside", encoding="utf-8")
+        alias.symlink_to(outside)
+    with pytest.raises(inventory_module.DocumentationCorpusError):
+        inventory_module.documentation_files(tmp_path)
+
+
+def test_inventory_is_byte_stable_across_map_coverage_generation(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    write_lean(tmp_path, "MapEvidence.lean", "MapGeneratedEvidence")
+    write_doc(tmp_path, "docs/routeB_bus/MAP.md", "# Empty manual map\n")
+    before = inventory_module.inventory_bytes(
+        inventory_module.build_inventory(tmp_path, "RouteB")
+    )
+
+    monkeypatch.setattr(map_coverage, "REPO", tmp_path)
+    monkeypatch.setattr(map_coverage, "ROUTEB", tmp_path / ROUTEB_REL)
+    monkeypatch.setattr(map_coverage, "MAP", tmp_path / "docs/routeB_bus/MAP.md")
+    monkeypatch.setattr(
+        "sys.argv",
+        ["map_coverage.py", "--out", "docs/routeB_bus/MAP_COVERAGE.md"],
+    )
+    assert map_coverage.main() == 0
+    assert "MapGeneratedEvidence" in (
+        tmp_path / "docs/routeB_bus/MAP_COVERAGE.md"
+    ).read_text(encoding="utf-8")
+
+    after = inventory_module.inventory_bytes(
+        inventory_module.build_inventory(tmp_path, "RouteB")
+    )
+    assert before == after
+
+
 def test_brief_and_tool_manifest_contracts() -> None:
     repo = Path(__file__).resolve().parents[2]
     brief = (repo / "docs/cartographer/brief.py").read_text(encoding="utf-8")
@@ -259,3 +381,9 @@ def test_brief_and_tool_manifest_contracts() -> None:
         in manifest
     )
     assert "drift_exit_nonzero: true" in manifest
+    assert "documentation_roots: [docs, q3.lean.aristotle/ACTIVE]" in manifest
+    assert "exact_excludes: [docs/routeB_bus/MAP_COVERAGE.md, docs/TOOLS.md]" in manifest
+    assert "subtree_excludes: [docs/generated]" in manifest
+    assert 'volatile_path_components: [".lake"]' in manifest
+    assert "directory_symlinks: DO_NOT_FOLLOW" in manifest
+    assert "unsafe_file_symlinks: FAIL_CLOSED" in manifest

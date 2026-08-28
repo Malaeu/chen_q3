@@ -659,11 +659,21 @@ tool_families:
         implementation: [docs/cartographer/inventory.py, orchestrator/backfill_db.py]
         cwd: repository root
         trigger: GOAL_CLOSE after Route B source changes, or explicit inventory/catalog refresh.
+        documentation_coverage:
+          documentation_roots: [docs, q3.lean.aristotle/ACTIVE]
+          exact_excludes: [docs/routeB_bus/MAP_COVERAGE.md, docs/TOOLS.md]
+          subtree_excludes: [docs/generated]
+          volatile_path_components: [".lake"]
+          directory_symlinks: DO_NOT_FOLLOW
+          ordinary_file_symlinks: RESOLVE_INSIDE_REPO_AND_RECLASSIFY_TARGET
+          unsafe_file_symlinks: FAIL_CLOSED
+          rule: Generated and machine-local views are not independent documentation evidence.
         writes: true
         approval: GOAL_SCOPED_OPERATIONAL_GRANT_OR_EXACT_OUTPUT_SCOPE
         authority: DETERMINISTIC_SOURCE_INVENTORY_AND_METADATA_INDEX_NOT_LEAN_TRUTH
         records_to: [inventory_RouteB.json, aristotle_proofs.db]
-        last_verified: 2026-08-10
+        validation: orchestrator/tests/test_cartographer_c2_repair.py
+        last_verified: 2026-08-28
 
       - id: atom-index
         status: ENABLED
