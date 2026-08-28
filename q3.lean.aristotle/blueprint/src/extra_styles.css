@@ -1,0 +1,2 @@
+/* Validation records are evidence, not proof nodes. */
+.validation { border-left: .35rem solid #d97706; padding-left: .75rem; }

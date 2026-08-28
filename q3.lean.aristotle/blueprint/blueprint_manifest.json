@@ -1,0 +1,21 @@
+{
+  "PX_RH_CLAIM": "NOT_MADE",
+  "assembly_rows_digest": "9eaa7bd67808ec0ccf848e86461ebd09120739f3624f41d211cabdfe7967760f",
+  "bibliography_path": "docs/routeB_bus/litreview/references.bib",
+  "counts": {
+    "assembly_rows": 69,
+    "green": 22,
+    "interface_green": 2,
+    "open_math": 18,
+    "unresolved_receipt": 26,
+    "validation_only": 3
+  },
+  "env_index_digest": "9f5e59f08f8dfed5289777b8be2dbe9b71bd92972dd8878ee7c6a52cb1d9b765",
+  "generator_digest": "c838e0ba1ebbfadc491cca75bce818fac86f7012f2b0b50c5baf5cfe2b625156",
+  "git_head": "7eb60c2840b8fd7ae3ed324c03da4d7149974c45",
+  "git_head_semantics": "latest commit touching tracked blueprint data inputs",
+  "proof_statement_digest": "73f92dcf6a78cd96c100c4f752d52d0d6b21ca6c25f714f03813f8880d48c537",
+  "rh_status": "NOT_RH",
+  "route_status": "CHALLENGER",
+  "schema": "q3_blueprint.v1"
+}

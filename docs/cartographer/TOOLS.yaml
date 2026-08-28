@@ -956,27 +956,32 @@ tool_families:
         mode: WRITES_DERIVED
         path: docs/cartographer/blueprint_gen.py
         invoke: python3 docs/cartographer/blueprint_gen.py
+        read_only_variant: python3 docs/cartographer/blueprint_gen.py --check
         cwd: repository root
         trigger: >-
-          Regenerate the paper skeleton after any assembly change. The article
-          is the second dashboard of the assembly table: a fastened rope turns
-          its entry green, a hanging one stays red with its measured hole.
+          Regenerate after assembly, proof-registry, or complete Route-B
+          environment-index changes. The Markdown and TeX views share one
+          deterministic model; --check detects missing or stale outputs without
+          writing.
         writes: true
         approval: NONE_FOR_REGENERATION
         authority: >-
-          MIRRORS_ASSEMBLY_NOT_THE_KERNEL. A rope greens because its assembly
-          row says READY, not because Lean accepted anything. Closing a Lean
-          node changes nothing here until the corresponding assembly row is
-          updated, so a regeneration whose only diff is the date means the
-          ledger has not been told. Measured 2026-08-21: three kernel-green
-          nodes landed that day and the regenerated file differed by one line,
-          the timestamp.
+          EXACT_PUBLICATION_RECEIPT_NOT_PROOF_AUTHORITY. A row greens only when
+          READY has one exact proven aristotle_proofs.db statement and the same
+          public safe declaration exists in its source module in the complete
+          EnvDump index with only standard axioms. The proof registry remains
+          metadata and EnvDump remains a kernel-derived index; neither proves
+          the mathematical statement independently of Lean.
         scope_negation: >-
-          Does NOT produce LaTeX and is not the manuscript. It emits the
-          skeleton in Markdown; the LaTeX frame, prose and final human pass are
-          separate work that has not started.
-        records_to: full/blueprint/blueprint.md
-        last_verified: 2026-08-21
+          Does NOT turn VALIDATION, OPEN mathematics, or READY prose/module
+          receipts green; does not infer dependency edges; does not run
+          checkdecls; does not claim Route B promotion or RH. Generated TeX is
+          a publication skeleton, not a completed manuscript.
+        records_to: >-
+          full/blueprint/blueprint.md;
+          q3.lean.aristotle/blueprint/src/;
+          q3.lean.aristotle/blueprint/blueprint_manifest.json
+        last_verified: 2026-08-28
 
       - id: cartographer-brief
         status: ENABLED

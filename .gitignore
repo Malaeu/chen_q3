@@ -77,6 +77,12 @@ full/q3.lean.aristotle/literature/quillen_working_papers/
 q3.lean.aristotle/archive/untracked_cleanup_*/
 q3.lean.aristotle/.qmd_cache/
 
+# leanblueprint build products (generated sources and manifest stay tracked)
+q3.lean.aristotle/blueprint/print/
+q3.lean.aristotle/blueprint/web/
+q3.lean.aristotle/blueprint/lean_decls
+q3.lean.aristotle/blueprint/src/web.bbl
+
 # Local vendor clones for external AI/research artifacts
 archive/subprojects/erdos-minimum-overlap/
 
