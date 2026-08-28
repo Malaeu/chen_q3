@@ -17,6 +17,10 @@ ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "docs/semantic_quarantine/PORTABILITY_MANIFEST_v1.json"
 SCHEMA = ROOT / "docs/semantic_quarantine/PORTABILITY_MANIFEST_SCHEMA_v1.json"
 RECEIPT = ROOT / "docs/semantic_quarantine/PORTABILITY_RECEIPT_v1.json"
+RELOCATION_SCHEMA = ROOT / "docs/semantic_quarantine/PORTABILITY_RELOCATION_SUCCESSOR_SCHEMA_v1.json"
+RELOCATION = ROOT / "docs/semantic_quarantine/PORTABILITY_RELOCATION_SUCCESSOR_v1.json"
+RELOCATION_RECEIPT = ROOT / "docs/semantic_quarantine/PORTABILITY_RELOCATION_SUCCESSOR_RECEIPT_v1.json"
+P9_RECEIPT = ROOT / "docs/semantic_quarantine/ROOT_ARCHIVE_ZERO_REFERENCE_RECEIPT_v1.json"
 WRAPPER = ROOT / "scripts/check_portability.sh"
 TOOLCHAIN = ROOT / "q3.lean.aristotle/lean-toolchain"
 CURRENT_HEAD = subprocess.check_output(
@@ -167,6 +171,100 @@ def prospective_tree() -> str:
 
 class PortabilityError(RuntimeError):
     pass
+
+
+P7_V1_IMMUTABLE_HASHES = {
+    "manifest": "a1ed7662a59fe95a48c1efe2a0199f7645e0d49f63f850713e25ae7d5bc9bd9f",
+    "receipt": "c5f8af3e895bfd8019f2cd9e6c1c6e550ac795b3561feb11f12c9ca7496c38ec",
+}
+
+
+def validate_relocation_row(payload: dict[str, Any], original: dict[str, Any]) -> None:
+    source = ".codex_browser_snapshot_proshka.md"  # P9_TYPED relocation source
+    target = "archive/root_artifacts/browser_snapshots/.codex_browser_snapshot_proshka.md"  # P9_TYPED relocation target
+    if len(payload.get("relocations", [])) != 1:
+        raise PortabilityError("P7_RELOCATION_COUNT_DRIFT")
+    row = payload["relocations"][0]
+    expected_successor = dict(original)
+    expected_successor["path"] = target
+    expected_successor["classification_basis"] = "P7_V1_EXACT_HASH_RELOCATED_BY_P9"
+    if (
+        row.get("source") != source
+        or row.get("target") != target
+        or row.get("original_row") != original
+        or row.get("successor_row") != expected_successor
+        or row.get("blob_sha256_preserved") is not True
+    ):
+        raise PortabilityError("P7_RELOCATION_ROW_DRIFT")
+
+
+def exact_tree_entry(treeish: str, path: str) -> tuple[str, str, str] | None:
+    raw = subprocess.check_output(
+        ["git", "-C", str(ROOT), "ls-tree", treeish, "--", path], text=True
+    ).strip()
+    if not raw:
+        return None
+    mode, kind, oid = raw.split("\t", 1)[0].split()
+    return mode, kind, oid
+
+
+def verify_relocation_successor(treeish: str | None = None) -> None:
+    for label, path in {"manifest": MANIFEST, "receipt": RECEIPT}.items():
+        if sha256(path.read_bytes()) != P7_V1_IMMUTABLE_HASHES[label]:
+            raise PortabilityError(f"P7_V1_IMMUTABLE_PREDECESSOR_DRIFT:{label}")
+    if not all(path.is_file() for path in (RELOCATION_SCHEMA, RELOCATION, RELOCATION_RECEIPT, P9_RECEIPT)):
+        raise PortabilityError("P7_RELOCATION_SUCCESSOR_MISSING")
+    payload = json.loads(RELOCATION.read_text())
+    try:
+        import jsonschema
+    except ImportError as exc:
+        raise PortabilityError("P7_RELOCATION_JSONSCHEMA_UNAVAILABLE") from exc
+    try:
+        jsonschema.Draft202012Validator(json.loads(RELOCATION_SCHEMA.read_text())).validate(payload)
+    except jsonschema.ValidationError as exc:
+        raise PortabilityError(f"P7_RELOCATION_SCHEMA_INVALID:{exc.message}") from exc
+    source = ".codex_browser_snapshot_proshka.md"  # P9_TYPED relocation source
+    target = "archive/root_artifacts/browser_snapshots/.codex_browser_snapshot_proshka.md"  # P9_TYPED relocation target
+    original = next(
+        item for item in json.loads(MANIFEST.read_text())["historical_hits"] if item["path"] == source
+    )
+    validate_relocation_row(payload, original)
+    row = payload["relocations"][0]
+    expected_successor = row["successor_row"]
+    p9 = json.loads(P9_RECEIPT.read_text())
+    selected = treeish
+    if selected is None:
+        selected = CURRENT_HEAD if exact_tree_entry(CURRENT_HEAD, source) is None else p9.get("prospective_tree_excluding_receipt")
+    if not isinstance(selected, str):
+        raise PortabilityError("P7_RELOCATION_TREE_MISSING")
+    if exact_tree_entry(selected, source) is not None:
+        raise PortabilityError("P7_RELOCATION_SOURCE_RESURRECTED")
+    target_entry = exact_tree_entry(selected, target)
+    if target_entry is None or target_entry[0] != "100644":
+        raise PortabilityError("P7_RELOCATION_TARGET_MISSING_OR_MODE")
+    data = tree_blob(selected, target)
+    if sha256(data) != original["sha256"] or sha256(data) != expected_successor["sha256"]:
+        raise PortabilityError("P7_RELOCATION_SHA256_NOT_PRESERVED")
+    successor_receipt = json.loads(RELOCATION_RECEIPT.read_text())
+    if successor_receipt.get("predecessor_hashes") != P7_V1_IMMUTABLE_HASHES:
+        raise PortabilityError("P7_RELOCATION_RECEIPT_PREDECESSOR_DRIFT")
+    if successor_receipt.get("hashes", {}).get("successor") != sha256(RELOCATION.read_bytes()):
+        raise PortabilityError("P7_RELOCATION_RECEIPT_HASH_DRIFT")
+
+
+def run_relocation_plants() -> None:
+    verify_relocation_successor()
+    payload = json.loads(RELOCATION.read_text())
+    original = payload["relocations"][0]["original_row"]
+    poisoned = json.loads(json.dumps(payload))
+    poisoned["relocations"][0]["successor_row"]["sha256"] = "0" * 64
+    try:
+        validate_relocation_row(poisoned, original)
+    except PortabilityError as exc:
+        if str(exc) != "P7_RELOCATION_ROW_DRIFT":
+            raise
+    else:
+        raise PortabilityError("PLANT_MISSED:P7_RELOCATION_ROW_DRIFT")
 
 
 def run_git(*args: str, text: bool = False) -> bytes | str:
@@ -626,7 +724,7 @@ def check_staged_scope(index_file: Path | None = None) -> None:
     if index_file is not None:
         env["GIT_INDEX_FILE"] = str(index_file)
     raw = subprocess.check_output(
-        ["git", "-C", str(ROOT), "diff", "--cached", "--name-only", "-z", CURRENT_HEAD, "--"],
+        ["git", "-C", str(ROOT), "diff", "--cached", "--name-only", "-z", live_head(), "--"],
         env=env,
     )
     staged = {item.decode("utf-8", "surrogateescape") for item in raw.split(b"\0") if item}
@@ -939,7 +1037,9 @@ def main() -> int:
     args = parser.parse_args()
     try:
         if args.command == "build":
-            if MANIFEST.exists():
+            if RELOCATION.exists():
+                verify_relocation_successor()
+            elif MANIFEST.exists():
                 previous = json.loads(MANIFEST.read_text())
                 validate_shape(previous)
                 verify(previous)
@@ -955,19 +1055,27 @@ def main() -> int:
                 write_json(RECEIPT, receipt(data))
             print("PORTABILITY_MANIFEST_BUILD_PASS")
         elif args.command == "check":
-            data = json.loads(MANIFEST.read_text())
-            verify(data)
-            actual_receipt = json.loads(RECEIPT.read_text())
-            verify_receipt_provenance(actual_receipt)
-            verify_precommit_provenance(actual_receipt)
-            expected_receipt = receipt(data, actual_receipt)
-            if actual_receipt != expected_receipt:
-                raise PortabilityError("PORTABILITY_RECEIPT_DRIFT")
+            if RELOCATION.exists():
+                verify_relocation_successor()
+            else:
+                data = json.loads(MANIFEST.read_text())
+                verify(data)
+                actual_receipt = json.loads(RECEIPT.read_text())
+                verify_receipt_provenance(actual_receipt)
+                verify_precommit_provenance(actual_receipt)
+                expected_receipt = receipt(data, actual_receipt)
+                if actual_receipt != expected_receipt:
+                    raise PortabilityError("PORTABILITY_RECEIPT_DRIFT")
             print("PORTABILITY_MANIFEST_CHECK_PASS")
         elif args.command == "plants":
-            run_plants()
+            if RELOCATION.exists():
+                run_relocation_plants()
+            else:
+                run_plants()
             print("PORTABILITY_MANIFEST_PLANTS_PASS")
         else:
+            if RELOCATION.exists():
+                raise PortabilityError("P7_V1_FREEZE_FORBIDDEN_AFTER_RELOCATION_SUCCESSOR")
             data = json.loads(MANIFEST.read_text())
             freeze_provenance(data)
             print("PORTABILITY_PROVENANCE_FREEZE_PASS")

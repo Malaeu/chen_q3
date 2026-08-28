@@ -1,0 +1,24 @@
+{
+  "baseline_commit": "1c5988c3d97c46c1cb97bdb8a7019fd52a429c1f",
+  "counts": {
+    "archive_pending": 15,
+    "executed": 5,
+    "keep": 49,
+    "live_root_entries": 64
+  },
+  "hashes": {
+    "manifest_v2": "4e62cf98efc61bb49baaaf50ab6b19884a9f1a7161e2e7616a57a5a4bf7c05e8",
+    "p9_checker": "4e62c798ec3396420dcd7461fa31a17be750e564ada1afed11aeb92c2646f3ea",
+    "p9_schema": "f7d33c907f39f86694731b5c8e9a9b2581aa0008ef4fe0a03b98d8b601e3426f",
+    "p9_tests": "3af4f8c705e976591f5078f7f98e797f368bdca88c1d12ea7c0f28978bb258fc",
+    "p9_wrapper": "604c94d0994be1f48f4ec0935da92993107cc04babe3bd0e731d8e96cea7d412",
+    "schema_v2": "3a02c4c9cfce918f2f717dbbf550476a357f5935c95a3786c5c548672ac1e896"
+  },
+  "predecessor_hashes": {
+    "manifest": "80243d5da2ffc0f0f7a4ed1226025c724fbd6d73fab0ccd176a2d25b7c39cd56",
+    "receipt": "ba070b4ab0cd1498e2a83e35997249bf1d5cc96f21e90ce3793135220369b844",
+    "schema": "69ee67954fc0292f174aeacd722fe5e03897f3979d619254c6606d4b7d7c55c0"
+  },
+  "schema_version": "q3.root_artifact_classification_receipt.v2",
+  "status": "PASS"
+}

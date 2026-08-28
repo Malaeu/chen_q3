@@ -19,6 +19,10 @@ ROOT = Path(__file__).resolve().parents[1]
 CLASSIFICATION = ROOT / "docs/semantic_quarantine/ROOT_ARTIFACT_CLASSIFICATION_v1.json"
 SCHEMA = ROOT / "docs/semantic_quarantine/ROOT_ARTIFACT_CLASSIFICATION_SCHEMA_v1.json"
 RECEIPT = ROOT / "docs/semantic_quarantine/ROOT_ARTIFACT_CLASSIFICATION_RECEIPT_v1.json"
+CLASSIFICATION_V2 = ROOT / "docs/semantic_quarantine/ROOT_ARTIFACT_CLASSIFICATION_v2.json"
+SCHEMA_V2 = ROOT / "docs/semantic_quarantine/ROOT_ARTIFACT_CLASSIFICATION_SCHEMA_v2.json"
+RECEIPT_V2 = ROOT / "docs/semantic_quarantine/ROOT_ARTIFACT_CLASSIFICATION_RECEIPT_v2.json"
+P9_RECEIPT = ROOT / "docs/semantic_quarantine/ROOT_ARCHIVE_ZERO_REFERENCE_RECEIPT_v1.json"
 TESTS = ROOT / "orchestrator/tests/test_root_artifact_classification.py"
 WRAPPER = ROOT / "scripts/check_root_artifacts.sh"
 CURRENT_HEAD = subprocess.check_output(
@@ -27,7 +31,7 @@ CURRENT_HEAD = subprocess.check_output(
 
 ARCHIVE_PATHS = frozenset(
     {
-        ".codex_browser_snapshot_proshka.md",
+        ".codex_browser_snapshot_proshka.md",  # P9_TYPED predecessor declaration
         "FINDINGS_SUMMARY.md",
         "IMPLEMENTATION_PLAN.md",
         "ORCHESTRATION_DESIGN.md",
@@ -36,14 +40,14 @@ ARCHIVE_PATHS = frozenset(
         "Q_STAR_DEFINITIONS.md",
         "TASK.md",
         "bellman_bmo.py",
-        "codex_4af2_uncommitted_20260727.patch",
+        "codex_4af2_uncommitted_20260727.patch",  # P9_TYPED predecessor declaration
         "idei dla.txt",
         "louise-current-snapshot.md",
-        "louise-current-tab.png",
-        "louise-last-response.md",
+        "louise-current-tab.png",  # P9_TYPED predecessor declaration
+        "louise-last-response.md",  # P9_TYPED predecessor declaration
         "memo.md",
         "project_tree.txt",
-        "run.jsonl",
+        "run.jsonl",  # P9_TYPED predecessor declaration
         "verify_phase0.py",
         "verify_q_tail.py",
         "verify_variant_b.py",
@@ -52,10 +56,10 @@ ARCHIVE_PATHS = frozenset(
 
 ARCHIVE_GROUPS = {
     "browser_snapshots": {
-        ".codex_browser_snapshot_proshka.md",
+        ".codex_browser_snapshot_proshka.md",  # P9_TYPED predecessor group
         "louise-current-snapshot.md",
-        "louise-current-tab.png",
-        "louise-last-response.md",
+        "louise-current-tab.png",  # P9_TYPED predecessor group
+        "louise-last-response.md",  # P9_TYPED predecessor group
     },
     "generated_lean": {
         "PSD_CenteredCoeffRawOmegaACombinedCancellationActiveActualCenterJetRowsPayload.lean"
@@ -75,9 +79,9 @@ ARCHIVE_GROUPS = {
         "verify_variant_b.py",
     },
     "provenance": {
-        "codex_4af2_uncommitted_20260727.patch",
+        "codex_4af2_uncommitted_20260727.patch",  # P9_TYPED predecessor group
         "project_tree.txt",
-        "run.jsonl",
+        "run.jsonl",  # P9_TYPED predecessor group
     },
     "research_notes": {"idei dla.txt", "memo.md"},
 }
@@ -114,6 +118,118 @@ SCRIPT_OUTPUT_EXCEPTIONS = {
 
 class RootArtifactError(RuntimeError):
     pass
+
+
+P8_V1_IMMUTABLE_HASHES = {
+    "schema": "69ee67954fc0292f174aeacd722fe5e03897f3979d619254c6606d4b7d7c55c0",
+    "classification": "80243d5da2ffc0f0f7a4ed1226025c724fbd6d73fab0ccd176a2d25b7c39cd56",
+    "receipt": "ba070b4ab0cd1498e2a83e35997249bf1d5cc96f21e90ce3793135220369b844",
+}
+P8_V2_EXECUTED_MAPPING = {
+    ".codex_browser_snapshot_proshka.md": "archive/root_artifacts/browser_snapshots/.codex_browser_snapshot_proshka.md",  # P9_TYPED exact mapping
+    "louise-current-tab.png": "archive/root_artifacts/browser_snapshots/louise-current-tab.png",  # P9_TYPED exact mapping
+    "louise-last-response.md": "archive/root_artifacts/browser_snapshots/louise-last-response.md",  # P9_TYPED exact mapping
+    "run.jsonl": "archive/root_artifacts/provenance/run.jsonl",  # P9_TYPED exact mapping
+    "codex_4af2_uncommitted_20260727.patch": "archive/root_artifacts/provenance/codex_4af2_uncommitted_20260727.patch",  # P9_TYPED exact mapping
+}
+
+
+def validate_v2_executed_mapping(payload: dict[str, Any]) -> None:
+    actual = {row.get("source"): row.get("target") for row in payload.get("executed_moves", [])}
+    if actual != P8_V2_EXECUTED_MAPPING or len(payload.get("executed_moves", [])) != 5:
+        raise RootArtifactError("P8_V2_EXECUTED_MAPPING_DRIFT")
+
+
+def verify_v2_transition(treeish: str | None = None) -> None:
+    if not all(path.is_file() for path in (CLASSIFICATION_V2, SCHEMA_V2, RECEIPT_V2, P9_RECEIPT)):
+        raise RootArtifactError("P8_V2_ARTIFACT_MISSING")
+    for label, path in {
+        "schema": SCHEMA,
+        "classification": CLASSIFICATION,
+        "receipt": RECEIPT,
+    }.items():
+        if sha256(path.read_bytes()) != P8_V1_IMMUTABLE_HASHES[label]:
+            raise RootArtifactError(f"P8_V1_IMMUTABLE_PREDECESSOR_DRIFT:{label}")
+    payload = json.loads(CLASSIFICATION_V2.read_text())
+    schema = json.loads(SCHEMA_V2.read_text())
+    try:
+        import jsonschema
+    except ImportError as exc:
+        raise RootArtifactError("P8_V2_JSONSCHEMA_UNAVAILABLE") from exc
+    try:
+        jsonschema.Draft202012Validator(schema).validate(payload)
+    except jsonschema.ValidationError as exc:
+        raise RootArtifactError(f"P8_V2_SCHEMA_INVALID:{exc}") from exc
+    if payload.get("counts") != {
+        "live_root_entries": 64,
+        "keep": 49,
+        "archive_pending": 15,
+        "executed": 5,
+    }:
+        raise RootArtifactError("P8_V2_COUNT_DRIFT")
+    validate_v2_executed_mapping(payload)
+    v1 = json.loads(CLASSIFICATION.read_text())
+    moved = {row["source"] for row in payload.get("executed_moves", [])}
+    expected_entries = [row for row in v1["entries"] if row["path"] not in moved]
+    if payload.get("entries") != expected_entries or len(moved) != 5:
+        raise RootArtifactError("P8_V2_PREDECESSOR_TRANSITION_DRIFT")
+    p9 = json.loads(P9_RECEIPT.read_text())
+    candidate = p9.get("prospective_tree_excluding_receipt")
+    selected = treeish
+    if selected is None:
+        live_paths = root_entries(CURRENT_HEAD)
+        selected = CURRENT_HEAD if moved.isdisjoint(live_paths) else candidate
+    if not isinstance(selected, str):
+        raise RootArtifactError("P8_V2_CANDIDATE_TREE_MISSING")
+    live = root_entries(selected)
+    registered = {row["path"]: row for row in payload["entries"]}
+    if live.keys() != registered.keys():
+        raise RootArtifactError("P8_V2_LIVE_ROOT_SET_DRIFT")
+    for path, row in registered.items():
+        current = live[path]
+        if current["object_kind"] != row["object_kind"] or current["git_mode"] != row["git_mode"]:
+            raise RootArtifactError(f"P8_V2_ROOT_KIND_MODE_DRIFT:{path}")
+        if row["drift_class"] in {"ARCHIVE_DEFERRED", "KEEP_PINNED"} and current["source_oid"] != row["source_oid"]:
+            raise RootArtifactError(f"P8_V2_PINNED_OBJECT_DRIFT:{path}")
+    for row in payload["executed_moves"]:
+        if exact_tree_entry(selected, row["source"]) is not None:
+            raise RootArtifactError(f"P8_V2_SOURCE_RESURRECTED:{row['source']}")
+        target = exact_tree_entry(selected, row["target"])
+        if target is None or target[0] != row["git_mode"] or target[2] != row["source_oid"]:
+            raise RootArtifactError(f"P8_V2_TARGET_DRIFT:{row['target']}")
+    receipt_v2 = json.loads(RECEIPT_V2.read_text())
+    if receipt_v2.get("predecessor_hashes") != {
+        "schema": P8_V1_IMMUTABLE_HASHES["schema"],
+        "manifest": P8_V1_IMMUTABLE_HASHES["classification"],
+        "receipt": P8_V1_IMMUTABLE_HASHES["receipt"],
+    }:
+        raise RootArtifactError("P8_V2_RECEIPT_PREDECESSOR_DRIFT")
+    if receipt_v2.get("hashes", {}).get("manifest_v2") != sha256(CLASSIFICATION_V2.read_bytes()):
+        raise RootArtifactError("P8_V2_RECEIPT_MANIFEST_HASH_DRIFT")
+
+
+def run_v2_plants() -> None:
+    verify_v2_transition()
+    payload = json.loads(CLASSIFICATION_V2.read_text())
+    poisoned = json.loads(json.dumps(payload))
+    poisoned["executed_moves"][0]["target"] = "archive/wrong-target"
+    try:
+        validate_v2_executed_mapping(poisoned)
+    except RootArtifactError as exc:
+        if str(exc) != "P8_V2_EXECUTED_MAPPING_DRIFT":
+            raise
+    else:
+        raise RootArtifactError("PLANT_MISSED:P8_V2_EXECUTED_MAPPING_DRIFT")
+
+
+def exact_tree_entry(treeish: str, path: str) -> tuple[str, str, str] | None:
+    raw = subprocess.check_output(
+        ["git", "-C", str(ROOT), "ls-tree", treeish, "--", path], text=True
+    ).strip()
+    if not raw:
+        return None
+    mode, kind, oid = raw.split("\t", 1)[0].split()
+    return mode, kind, oid
 
 
 def sha256(data: bytes) -> str:
@@ -587,7 +703,7 @@ def check_staged_scope(index: Path | None = None) -> None:
     if index is not None:
         env["GIT_INDEX_FILE"] = str(index)
     raw = subprocess.check_output(
-        ["git", "-C", str(ROOT), "diff", "--cached", "--name-only", "-z", CURRENT_HEAD, "--"],
+        ["git", "-C", str(ROOT), "diff", "--cached", "--name-only", "-z", live_head(), "--"],
         env=env,
     )
     staged = {item.decode("utf-8", "surrogateescape") for item in raw.split(b"\0") if item}
@@ -899,21 +1015,32 @@ def main() -> int:
     args = parser.parse_args()
     try:
         if args.command == "build":
-            build_or_verify()
+            if CLASSIFICATION_V2.exists():
+                verify_v2_transition()
+            else:
+                build_or_verify()
             print("ROOT_ARTIFACT_CLASSIFICATION_BUILD_PASS")
         elif args.command == "check":
-            payload = json.loads(CLASSIFICATION.read_text())
-            verify(payload)
-            actual_receipt = json.loads(RECEIPT.read_text())
-            verify_receipt_provenance(actual_receipt, payload)
-            verify_precommit(actual_receipt)
-            if actual_receipt != receipt(payload, actual_receipt):
-                raise RootArtifactError("ROOT_ARTIFACT_RECEIPT_DRIFT")
+            if CLASSIFICATION_V2.exists():
+                verify_v2_transition()
+            else:
+                payload = json.loads(CLASSIFICATION.read_text())
+                verify(payload)
+                actual_receipt = json.loads(RECEIPT.read_text())
+                verify_receipt_provenance(actual_receipt, payload)
+                verify_precommit(actual_receipt)
+                if actual_receipt != receipt(payload, actual_receipt):
+                    raise RootArtifactError("ROOT_ARTIFACT_RECEIPT_DRIFT")
             print("ROOT_ARTIFACT_CLASSIFICATION_CHECK_PASS")
         elif args.command == "plants":
-            run_plants()
+            if CLASSIFICATION_V2.exists():
+                run_v2_plants()
+            else:
+                run_plants()
             print("ROOT_ARTIFACT_CLASSIFICATION_PLANTS_PASS")
         else:
+            if CLASSIFICATION_V2.exists():
+                raise RootArtifactError("P8_V1_FREEZE_FORBIDDEN_AFTER_V2")
             payload = json.loads(CLASSIFICATION.read_text())
             freeze(payload)
             print("ROOT_ARTIFACT_CLASSIFICATION_FREEZE_PASS")

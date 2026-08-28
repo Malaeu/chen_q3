@@ -1,0 +1,12 @@
+{
+  "baseline_commit": "1c5988c3d97c46c1cb97bdb8a7019fd52a429c1f",
+  "cohort_digest": "0c511fdb079d80a7197d97e2c6319abe26db1e1f0490ec78b82a53c1f935b2e4",
+  "hashes": {
+    "p7_relocation_receipt": "aa6dee50b405ddeb21b4cfea81c62e1a7e4c1ac7f920e87211e1ce5dbfa6282c",
+    "p8_v2_receipt": "ba47258b5dbdfcf838183f1614a693101384973f8f852deee543ac062df1d2b6",
+    "p9_execution_receipt": "99c8d54feae0f019a182b8aa5439370f198c452c0ee68e993d597d55d482b03e"
+  },
+  "prospective_tree_excluding_receipts": "acf98ed035fa1180ac5737d587f5782836db4c69",
+  "schema_version": "q3.root_archive_execution_umbrella.v1",
+  "status": "EXACT_TWO_STAGE_BINDING"
+}

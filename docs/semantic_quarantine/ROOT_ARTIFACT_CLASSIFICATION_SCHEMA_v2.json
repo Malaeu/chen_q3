@@ -1,0 +1,58 @@
+{
+  "$id": "q3.root_artifact_classification.v2",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "baseline_commit": {
+      "const": "1c5988c3d97c46c1cb97bdb8a7019fd52a429c1f"
+    },
+    "counts": {
+      "type": "object"
+    },
+    "entries": {
+      "maxItems": 64,
+      "minItems": 64,
+      "type": "array"
+    },
+    "executed_moves": {
+      "maxItems": 5,
+      "minItems": 5,
+      "type": "array"
+    },
+    "future_session_protocol_policy": {
+      "type": "object"
+    },
+    "physical_moves_performed": {
+      "const": true
+    },
+    "predecessor": {
+      "type": "object"
+    },
+    "schema_version": {
+      "const": "q3.root_artifact_classification.v2"
+    },
+    "scope": {
+      "const": "ALL_TRACKED_IMMEDIATE_ROOT_ENTRIES_PLUS_EXECUTED_LEDGER"
+    },
+    "script_output_policy": {
+      "type": "object"
+    },
+    "status": {
+      "const": "P9_EXECUTED_TRANSITION"
+    }
+  },
+  "required": [
+    "schema_version",
+    "status",
+    "predecessor",
+    "baseline_commit",
+    "scope",
+    "physical_moves_performed",
+    "counts",
+    "future_session_protocol_policy",
+    "script_output_policy",
+    "entries",
+    "executed_moves"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,14 @@
+{
+  "baseline_commit": "1c5988c3d97c46c1cb97bdb8a7019fd52a429c1f",
+  "hashes": {
+    "schema": "37d78d0212b28e959583fabdcb9cb5adb6d63404fb36dfe355af07008d7f9018",
+    "successor": "617b3649f97c662aabddbcc8af17b8b55242a6b242669ab6d32b4fa5431a3114"
+  },
+  "predecessor_hashes": {
+    "manifest": "a1ed7662a59fe95a48c1efe2a0199f7645e0d49f63f850713e25ae7d5bc9bd9f",
+    "receipt": "c5f8af3e895bfd8019f2cd9e6c1c6e550ac795b3561feb11f12c9ca7496c38ec"
+  },
+  "relocation_count": 1,
+  "schema_version": "q3.portability_relocation_successor_receipt.v1",
+  "status": "PASS"
+}

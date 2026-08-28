@@ -17,6 +17,54 @@ pm = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(pm)
 
 
+P7_V1_PREDECESSOR = json.loads(pm.RECEIPT.read_text())["source_commit"]
+
+
+@pytest.fixture(autouse=True)
+def explicit_predecessor_tree_for_v1_tests(
+    request: pytest.FixtureRequest, monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> object:
+    index = tmp_path / "phase-isolated.index"
+    env = os.environ.copy()
+    env["GIT_INDEX_FILE"] = str(index)
+    subprocess.run(
+        ["git", "-C", str(ROOT), "read-tree", pm.live_head()], env=env, check=True
+    )
+    monkeypatch.setenv("GIT_INDEX_FILE", str(index))
+    if not request.node.name.startswith("test_relocation_"):
+        monkeypatch.setattr(pm, "CURRENT_HEAD", P7_V1_PREDECESSOR)
+    pm.head_snapshot.cache_clear()
+    yield
+    pm.head_snapshot.cache_clear()
+
+
+def test_relocation_successor_verifies_exact_candidate() -> None:
+    pm.verify_relocation_successor()
+
+
+def test_relocation_preserves_original_row_and_hash() -> None:
+    payload = json.loads(pm.RELOCATION.read_text())
+    row = payload["relocations"][0]
+    assert row["source"] == ".codex_browser_snapshot_proshka.md"  # P9_TYPED test
+    assert row["target"] == (
+        "archive/root_artifacts/browser_snapshots/.codex_browser_snapshot_proshka.md"  # P9_TYPED test
+    )
+    assert row["original_row"]["sha256"] == row["successor_row"]["sha256"]
+    assert row["blob_sha256_preserved"] is True
+
+
+def test_relocation_v1_artifacts_are_immutable() -> None:
+    assert pm.sha256(pm.MANIFEST.read_bytes()) == pm.P7_V1_IMMUTABLE_HASHES["manifest"]
+    assert pm.sha256(pm.RECEIPT.read_bytes()) == pm.P7_V1_IMMUTABLE_HASHES["receipt"]
+
+
+def test_relocation_staged_scope_uses_live_head_not_semantic_predecessor(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(pm, "CURRENT_HEAD", P7_V1_PREDECESSOR)
+    pm.check_staged_scope()
+
+
 def test_inventory_is_schema_valid_and_complete() -> None:
     inventory = pm.build_inventory()
     pm.validate_shape(inventory)
@@ -251,6 +299,11 @@ def test_descendant_new_nonmanaged_hit_is_rejected_without_staged_drift(
     try:
         with pytest.raises(pm.PortabilityError, match="INVENTORY_INCOMPLETE"):
             pm.verify(json.loads(pm.MANIFEST.read_text()))
+        # Staged-scope validation is intentionally anchored to the live checkout,
+        # not the historical P7 scan head used by this synthetic descendant.
+        subprocess.run(
+            ["git", "-C", str(ROOT), "read-tree", pm.live_head()], env=env, check=True
+        )
         pm.check_staged_scope(index)
     finally:
         pm.head_snapshot.cache_clear()
@@ -274,8 +327,10 @@ def test_append_history_anchor_and_first_parent_chain_are_verified() -> None:
     data = pm.effective_bytes(path)
     row = pm.validate_append_history_surface(path, data)
     assert row["validation"] == "FIRST_PARENT_FULL_BYTE_PREFIX_CHAIN_ANCHORED_AT_FREEZE"
-    anchor = pm.queue_anchor()
-    pm.verify_append_history_anchor(anchor, worktree_bytes=data + b"\nappend-only plant\n")
+    anchor = pm.queue_anchor(P7_V1_PREDECESSOR)
+    pm.verify_append_history_anchor(
+        anchor, head=P7_V1_PREDECESSOR, worktree_bytes=data + b"\nappend-only plant\n"
+    )
 
 
 def test_append_history_rejects_shortening_and_internal_rewrite() -> None:

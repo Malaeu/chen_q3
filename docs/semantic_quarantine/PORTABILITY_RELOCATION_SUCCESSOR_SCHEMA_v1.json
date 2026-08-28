@@ -1,0 +1,32 @@
+{
+  "$id": "q3.portability_relocation_successor.v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "baseline_commit": {
+      "const": "1c5988c3d97c46c1cb97bdb8a7019fd52a429c1f"
+    },
+    "predecessor": {
+      "type": "object"
+    },
+    "relocations": {
+      "maxItems": 1,
+      "minItems": 1,
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "q3.portability_relocation_successor.v1"
+    },
+    "status": {
+      "const": "TYPED_RELOCATION_SUCCESSOR"
+    }
+  },
+  "required": [
+    "schema_version",
+    "status",
+    "baseline_commit",
+    "predecessor",
+    "relocations"
+  ],
+  "type": "object"
+}

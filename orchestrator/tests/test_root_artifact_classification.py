@@ -17,8 +17,67 @@ pm = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(pm)
 
 
+P8_V1_PREDECESSOR = json.loads(pm.CLASSIFICATION.read_text())["source_commit"]
+
+
+@pytest.fixture(autouse=True)
+def explicit_predecessor_tree_for_v1_tests(
+    request: pytest.FixtureRequest, monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    index = tmp_path / "phase-isolated.index"
+    env = os.environ.copy()
+    env["GIT_INDEX_FILE"] = str(index)
+    subprocess.run(
+        ["git", "-C", str(ROOT), "read-tree", pm.live_head()], env=env, check=True
+    )
+    monkeypatch.setenv("GIT_INDEX_FILE", str(index))
+    if not request.node.name.startswith("test_v2_"):
+        monkeypatch.setattr(pm, "CURRENT_HEAD", P8_V1_PREDECESSOR)
+        live_collision = pm.portable_worktree_collision
+        executed_targets = set(pm.P8_V2_EXECUTED_MAPPING.values())
+
+        def predecessor_collision(root: Path, target: str) -> str | None:
+            if target in executed_targets:
+                return None
+            return live_collision(root, target)
+
+        monkeypatch.setattr(pm, "portable_worktree_collision", predecessor_collision)
+
+
+def test_v2_transition_verifies_exact_candidate() -> None:
+    pm.verify_v2_transition()
+
+
+def test_v2_counts_and_executed_ledger_are_exact() -> None:
+    payload = json.loads(pm.CLASSIFICATION_V2.read_text())
+    assert payload["counts"] == {
+        "live_root_entries": 64,
+        "keep": 49,
+        "archive_pending": 15,
+        "executed": 5,
+    }
+    assert len(payload["entries"]) == 64
+    assert len(payload["executed_moves"]) == 5
+
+
+def test_v2_predecessor_artifacts_are_immutable() -> None:
+    assert pm.sha256(pm.SCHEMA.read_bytes()) == pm.P8_V1_IMMUTABLE_HASHES["schema"]
+    assert (
+        pm.sha256(pm.CLASSIFICATION.read_bytes())
+        == pm.P8_V1_IMMUTABLE_HASHES["classification"]
+    )
+    assert pm.sha256(pm.RECEIPT.read_bytes()) == pm.P8_V1_IMMUTABLE_HASHES["receipt"]
+
+
+def test_v2_staged_scope_uses_live_head_not_semantic_predecessor(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(pm, "CURRENT_HEAD", P8_V1_PREDECESSOR)
+    pm.check_staged_scope()
+
+
 def payload() -> dict:
-    return pm.build_classification()
+    return pm.build_classification(P8_V1_PREDECESSOR)
 
 
 def descendant(
@@ -387,6 +446,7 @@ def test_receipt_source_cross_and_stale_tree_fail(monkeypatch: pytest.MonkeyPatc
     ).strip()
     with pytest.raises(pm.RootArtifactError, match="P8_RECEIPT_CLASSIFICATION_SOURCE_CROSS"):
         pm.verify_receipt_provenance(crossed, data)
+    monkeypatch.setattr(pm, "p8_dirty", lambda: True)
     monkeypatch.setattr(pm, "prospective_tree", lambda: "0" * 40)
     with pytest.raises(pm.RootArtifactError, match="P8_PRECOMMIT_TREE_STALE"):
         pm.verify_precommit(receipt)

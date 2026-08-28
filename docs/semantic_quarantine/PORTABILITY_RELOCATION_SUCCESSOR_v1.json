@@ -1,0 +1,39 @@
+{
+  "baseline_commit": "1c5988c3d97c46c1cb97bdb8a7019fd52a429c1f",
+  "predecessor": {
+    "hashes": {
+      "manifest": "a1ed7662a59fe95a48c1efe2a0199f7645e0d49f63f850713e25ae7d5bc9bd9f",
+      "receipt": "c5f8af3e895bfd8019f2cd9e6c1c6e550ac795b3561feb11f12c9ca7496c38ec"
+    },
+    "schema_version": "q3.portability_manifest.v1"
+  },
+  "relocations": [
+    {
+      "blob_sha256_preserved": true,
+      "original_row": {
+        "class": "HISTORICAL_PINNED",
+        "classification_basis": "EXACT_PATH_AND_SHA256_P7_REVIEWED_BASELINE",
+        "path": ".codex_browser_snapshot_proshka.md",
+        "pattern_ids": [
+          "HOME_USERS",
+          "STALE_REPO_MAC"
+        ],
+        "sha256": "34117cfc30c2ea1c0c03b7fb4bc1f3c61d06c7203693cb63bd2b3bec6f615c82"
+      },
+      "source": ".codex_browser_snapshot_proshka.md",
+      "successor_row": {
+        "class": "HISTORICAL_PINNED",
+        "classification_basis": "P7_V1_EXACT_HASH_RELOCATED_BY_P9",
+        "path": "archive/root_artifacts/browser_snapshots/.codex_browser_snapshot_proshka.md",
+        "pattern_ids": [
+          "HOME_USERS",
+          "STALE_REPO_MAC"
+        ],
+        "sha256": "34117cfc30c2ea1c0c03b7fb4bc1f3c61d06c7203693cb63bd2b3bec6f615c82"
+      },
+      "target": "archive/root_artifacts/browser_snapshots/.codex_browser_snapshot_proshka.md"
+    }
+  ],
+  "schema_version": "q3.portability_relocation_successor.v1",
+  "status": "TYPED_RELOCATION_SUCCESSOR"
+}

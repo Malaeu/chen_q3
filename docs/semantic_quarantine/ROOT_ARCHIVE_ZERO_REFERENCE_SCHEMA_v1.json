@@ -1,0 +1,69 @@
+{
+  "$id": "q3.root_archive_zero_reference_receipt.v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "active_consumer_count": {
+      "const": 0
+    },
+    "baseline_commit": {
+      "const": "1c5988c3d97c46c1cb97bdb8a7019fd52a429c1f"
+    },
+    "candidate_objects": {
+      "type": "object"
+    },
+    "cohort": {
+      "maxItems": 5,
+      "minItems": 5,
+      "type": "array"
+    },
+    "evolution_contract": {
+      "type": "object"
+    },
+    "foreign_dirty_snapshot": {
+      "type": "array"
+    },
+    "generic_selectors": {
+      "type": "array"
+    },
+    "occurrences": {
+      "type": "array"
+    },
+    "plants": {
+      "maxItems": 13,
+      "minItems": 13,
+      "type": "array"
+    },
+    "prospective_tree_excluding_receipt": {
+      "pattern": "^[0-9a-f]{40,64}$",
+      "type": "string"
+    },
+    "rollback_mapping": {
+      "maxItems": 5,
+      "minItems": 5,
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "q3.root_archive_zero_reference_receipt.v1"
+    },
+    "status": {
+      "const": "ZERO_ACTIVE_CONSUMERS_WITH_CONTROL_PLANE_MIGRATION_REFS"
+    }
+  },
+  "required": [
+    "schema_version",
+    "status",
+    "baseline_commit",
+    "prospective_tree_excluding_receipt",
+    "candidate_objects",
+    "cohort",
+    "occurrences",
+    "generic_selectors",
+    "active_consumer_count",
+    "foreign_dirty_snapshot",
+    "rollback_mapping",
+    "evolution_contract",
+    "plants"
+  ],
+  "type": "object"
+}
