@@ -2,10 +2,10 @@
 
 ```yaml
 schema: q3_codex_current_task.v1
-status: CLOSED
-task_file: null
-source_commit: null
-updated_at: 2026-08-24T23:30:00+02:00
+status: ACTIVE
+task_file: docs/Codex/TASK_2026-08-28_goal058_consolidation.md
+source_commit: 56e144c49cae5f8c2dc80a09f6ca963a17dda88d
+updated_at: 2026-08-28T15:28:09+02:00
 updated_by: CODEX_ON_OWNER_INSTRUCTION
 ```
 
