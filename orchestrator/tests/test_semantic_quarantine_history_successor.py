@@ -21,10 +21,12 @@ def receipt() -> dict:
 
 
 def exact_successor_commit() -> str:
+    head = pm.git("rev-parse", "HEAD").decode().strip()
+    successor = pm.first_descendant(head)
     return (
         pm.git(
             "commit-tree",
-            pm.expected_final_tree(),
+            pm.git("rev-parse", f"{successor}^{{tree}}").decode().strip(),
             "-p",
             pm.P10_TOPOLOGY,
             "-m",
@@ -52,12 +54,50 @@ def test_all_transaction_paths_have_exact_historical_artifacts() -> None:
             assert artifact == pm.transaction_artifact(row["commit"], path)
 
 
-def test_payload_schema_canonical_bytes_and_precommit_foreign_snapshot() -> None:
-    payload = receipt()
-    pm.verify_payload(payload, verify_foreign=True)
-    assert pm.RECEIPT.read_bytes() == pm.artifact_json(payload)
+def test_payload_schema_canonical_bytes_and_frozen_foreign_snapshot() -> None:
+    head = pm.git("rev-parse", "HEAD").decode().strip()
+    successor = pm.first_descendant(head)
+    payload = pm.parse_artifact(
+        pm.tree_blob(successor, str(pm.RECEIPT.relative_to(pm.ROOT))),
+        "TEST_COMMITTED_RECEIPT",
+    )
+    pm.verify_historical_payload(payload, head)
     assert payload["no_second_state_lifecycle"] is True
-    assert payload["precommit_foreign_snapshot"] == pm.current_foreign_snapshot()
+
+
+def test_precommit_snapshot_plant_and_future_dirty_do_not_change_history(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    head = pm.git("rev-parse", "HEAD").decode().strip()
+    successor = pm.first_descendant(head)
+    payload = pm.parse_artifact(
+        pm.tree_blob(successor, str(pm.RECEIPT.relative_to(pm.ROOT))),
+        "TEST_COMMITTED_RECEIPT",
+    )
+    pm.verify_precommit_foreign_snapshot(payload, payload["precommit_foreign_snapshot"])
+    poisoned = json.loads(json.dumps(payload["precommit_foreign_snapshot"]))
+    poisoned[0]["sha256"] = "0" * 64
+    with pytest.raises(pm.HistoryError, match="FOREIGN_SNAPSHOT_DRIFT"):
+        pm.verify_precommit_foreign_snapshot(payload, poisoned)
+    monkeypatch.setattr(pm, "current_foreign_snapshot", lambda: poisoned)
+    pm.verify_historical_payload(payload, head)
+
+
+def test_later_verifier_support_evolution_does_not_recompute_frozen_objects(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    head = pm.git("rev-parse", "HEAD").decode().strip()
+    successor = pm.first_descendant(head)
+    payload = pm.parse_artifact(
+        pm.tree_blob(successor, str(pm.RECEIPT.relative_to(pm.ROOT))),
+        "TEST_COMMITTED_RECEIPT",
+    )
+
+    def forbidden_live_support_recompute() -> dict:
+        raise AssertionError("historical mode consulted current support files")
+
+    monkeypatch.setattr(pm, "support_objects", forbidden_live_support_recompute)
+    pm.verify_historical_payload(payload, head)
 
 
 def test_exact_successor_then_arbitrary_descendants_are_allowed() -> None:
@@ -87,14 +127,17 @@ def test_first_parent_successor_survives_legitimate_merge() -> None:
 
 def test_wrong_successor_parent_tree_and_scope_are_rejected() -> None:
     successor = exact_successor_commit()
+    head = pm.git("rev-parse", "HEAD").decode().strip()
+    historical = pm.first_descendant(head)
+    final_tree = pm.git("rev-parse", f"{historical}^{{tree}}").decode().strip()
     wrong_parent = pm.synthetic_commit(
         pm.P9_LIFECYCLE, "README.md", b"wrong parent\n", "wrong parent"
     )
     with pytest.raises(pm.HistoryError, match="SUCCESSOR_PARENT_DRIFT"):
-        pm.validate_successor_commit(wrong_parent, pm.expected_final_tree())
+        pm.validate_successor_commit(wrong_parent, final_tree)
     wrong_tree = pm.synthetic_commit(successor, "README.md", b"wrong tree\n", "wrong tree")
     with pytest.raises(pm.HistoryError, match="SUCCESSOR_PARENT_DRIFT|SUCCESSOR_TREE_DRIFT"):
-        pm.validate_successor_commit(wrong_tree, pm.expected_final_tree())
+        pm.validate_successor_commit(wrong_tree, final_tree)
     scope_tree = pm.apply_objects(
         pm.P10_TOPOLOGY,
         {"README.md": pm.file_object(ROOT / "README.md")},
@@ -120,8 +163,11 @@ def test_payload_mutations_duplicate_keys_and_whitespace_are_rejected() -> None:
     payload = receipt()
     poisoned = json.loads(json.dumps(payload))
     poisoned["transactions"][2]["tree"] = "0" * 40
-    with pytest.raises(pm.HistoryError, match="HISTORY_RECEIPT_DRIFT"):
-        pm.verify_payload(poisoned, verify_foreign=True)
+    with pytest.raises(pm.HistoryError, match="HISTORY_RECEIPT_COMMIT_DRIFT"):
+        pm.verify_historical_payload(
+            poisoned,
+            pm.git("rev-parse", "HEAD").decode().strip(),
+        )
     with pytest.raises(pm.HistoryError, match="DUPLICATE_KEY"):
         pm.parse_artifact(b'{"status":"x","status":"x"}\n', "TEST")
     with pytest.raises(pm.HistoryError, match="NONCANONICAL_BYTES"):
@@ -139,5 +185,28 @@ def test_precommit_unrelated_staged_path_is_not_in_successor_scope() -> None:
         )
 
 
-def test_plants_fire() -> None:
+def test_precommit_plants_fire_with_frozen_fixture(monkeypatch: pytest.MonkeyPatch) -> None:
+    payload = receipt()
+    original_git = pm.git
+
+    def precommit_git(*args: str, **kwargs: object) -> bytes:
+        if args == ("rev-parse", "HEAD"):
+            return f"{pm.P10_TOPOLOGY}\n".encode()
+        return original_git(*args, **kwargs)
+
+    monkeypatch.setattr(pm, "git", precommit_git)
+    monkeypatch.setattr(
+        pm,
+        "support_objects",
+        lambda: json.loads(json.dumps(payload["successor_objects"])),
+    )
+    monkeypatch.setattr(
+        pm,
+        "current_foreign_snapshot",
+        lambda: json.loads(json.dumps(payload["precommit_foreign_snapshot"])),
+    )
+    pm.run_plants()
+
+
+def test_descendant_plants_fire() -> None:
     pm.run_plants()

@@ -320,12 +320,15 @@ def expected_receipt() -> dict[str, Any]:
     }
 
 
-def validate_schema(payload: dict[str, Any]) -> None:
+def validate_schema(payload: dict[str, Any], schema_bytes: bytes | None = None) -> None:
     try:
         import jsonschema
     except ImportError as exc:
         raise HistoryError("HISTORY_JSONSCHEMA_UNAVAILABLE") from exc
-    schema = strict_json(SCHEMA.read_bytes(), "HISTORY_SCHEMA")
+    schema = strict_json(
+        SCHEMA.read_bytes() if schema_bytes is None else schema_bytes,
+        "HISTORY_SCHEMA",
+    )
     try:
         jsonschema.Draft202012Validator(schema).validate(payload)
     except jsonschema.ValidationError as exc:
@@ -333,13 +336,55 @@ def validate_schema(payload: dict[str, Any]) -> None:
 
 
 def verify_payload(payload: dict[str, Any], *, verify_foreign: bool) -> None:
-    validate_schema(payload)
     expected = expected_receipt()
     if not verify_foreign:
         expected["precommit_foreign_snapshot"] = payload["precommit_foreign_snapshot"]
         expected["precommit_foreign_snapshot_sha256"] = payload["precommit_foreign_snapshot_sha256"]
+    verify_precommit_candidate(
+        payload,
+        expected,
+        expected["precommit_foreign_snapshot"],
+    )
+
+
+def verify_precommit_candidate(
+    payload: dict[str, Any],
+    expected: dict[str, Any],
+    actual_snapshot: list[dict[str, Any]],
+) -> None:
+    validate_schema(payload)
+    verify_precommit_foreign_snapshot(payload, actual_snapshot)
     if payload != expected:
         raise HistoryError("HISTORY_RECEIPT_DRIFT")
+
+
+def verify_frozen_foreign_snapshot(payload: dict[str, Any]) -> None:
+    snapshot = payload["precommit_foreign_snapshot"]
+    if payload["precommit_foreign_snapshot_sha256"] != sha256(canonical_digest(snapshot)):
+        raise HistoryError("HISTORY_FOREIGN_SNAPSHOT_DIGEST_DRIFT")
+
+
+def verify_precommit_foreign_snapshot(
+    payload: dict[str, Any], actual_snapshot: list[dict[str, Any]]
+) -> None:
+    verify_frozen_foreign_snapshot(payload)
+    if payload["precommit_foreign_snapshot"] != actual_snapshot:
+        raise HistoryError("HISTORY_FOREIGN_SNAPSHOT_DRIFT")
+
+
+def object_record(data: bytes, mode: str = "100644") -> dict[str, Any]:
+    oid = git("hash-object", "-w", "--stdin", input_data=data).decode().strip()
+    return {"mode": mode, "oid": oid, "sha256": sha256(data), "byte_size": len(data)}
+
+
+def frozen_final_tree(payload: dict[str, Any], receipt_bytes: bytes) -> str:
+    prospective = apply_objects(P10_TOPOLOGY, payload["successor_objects"])
+    if prospective != payload["prospective_tree_excluding_receipt"]:
+        raise HistoryError("HISTORY_FROZEN_PROSPECTIVE_TREE_DRIFT")
+    return apply_objects(
+        prospective,
+        {str(RECEIPT.relative_to(ROOT)): object_record(receipt_bytes)},
+    )
 
 
 def expected_final_tree() -> str:
@@ -363,6 +408,33 @@ def first_descendant(head: str) -> str:
     return commits[0]
 
 
+def verify_historical_payload(candidate: dict[str, Any], head: str) -> tuple[str, str]:
+    successor = first_descendant(head)
+    receipt_path = str(RECEIPT.relative_to(ROOT))
+    receipt_bytes = tree_blob(successor, receipt_path)
+    committed = parse_artifact(receipt_bytes, "HISTORY_COMMITTED_SUCCESSOR_RECEIPT")
+    if candidate != committed:
+        raise HistoryError("HISTORY_RECEIPT_COMMIT_DRIFT")
+    schema_path = str(SCHEMA.relative_to(ROOT))
+    validate_schema(candidate, tree_blob(successor, schema_path))
+    verify_frozen_foreign_snapshot(candidate)
+    transactions = [transaction_record(spec) for spec in TRANSACTION_SPECS]
+    if candidate["transactions"] != transactions:
+        raise HistoryError("HISTORY_TRANSACTION_RECEIPT_DRIFT")
+    if candidate["transaction_chain_digest"] != sha256(canonical_digest(transactions)):
+        raise HistoryError("HISTORY_TRANSACTION_CHAIN_DIGEST_DRIFT")
+    if set(candidate["successor_objects"]) != SUPPORT_PATHS:
+        raise HistoryError("HISTORY_FROZEN_SUPPORT_SCOPE_DRIFT")
+    for path, expected in candidate["successor_objects"].items():
+        actual = transaction_artifact(successor, path)
+        actual.pop("kind", None)
+        if actual != expected:
+            raise HistoryError(f"HISTORY_FROZEN_SUPPORT_ARTIFACT_DRIFT:{path}")
+    final_tree = frozen_final_tree(candidate, receipt_bytes)
+    validate_successor_commit(successor, final_tree)
+    return successor, final_tree
+
+
 def validate_successor_commit(commit: str, final_tree: str) -> None:
     parent = git("rev-parse", f"{commit}^").decode().strip()
     tree = git("rev-parse", f"{commit}^{{tree}}").decode().strip()
@@ -381,10 +453,10 @@ def validate_precommit_state(paths: set[str], staged_tree: str, final_tree: str)
 
 
 def verify_state() -> None:
-    payload = load_artifact(RECEIPT, "HISTORY_RECEIPT")
     head = git("rev-parse", "HEAD").decode().strip()
     origin = git("rev-parse", "origin/rh_clean").decode().strip()
     if head == P10_TOPOLOGY:
+        payload = load_artifact(RECEIPT, "HISTORY_RECEIPT")
         if origin != P10_TOPOLOGY:
             raise HistoryError("HISTORY_PREFLIGHT_ORIGIN_DRIFT")
         verify_payload(payload, verify_foreign=True)
@@ -397,11 +469,16 @@ def verify_state() -> None:
         }
         validate_precommit_state(paths, git("write-tree").decode().strip(), expected_final_tree())
         return
-    verify_payload(payload, verify_foreign=False)
+    successor = first_descendant(head)
+    payload = parse_artifact(
+        tree_blob(successor, str(RECEIPT.relative_to(ROOT))),
+        "HISTORY_COMMITTED_SUCCESSOR_RECEIPT",
+    )
+    verify_historical_payload(payload, head)
     verify_ancestry_order(head)
     if origin != head:
         raise HistoryError("HISTORY_CANONICAL_ORIGIN_DRIFT")
-    validate_successor_commit(first_descendant(head), expected_final_tree())
+    validate_successor_commit(successor, git("rev-parse", f"{successor}^{{tree}}").decode().strip())
 
 
 def write_receipt() -> None:
@@ -429,8 +506,20 @@ def synthetic_merge(first_parent: str, second_parent: str, message: str) -> str:
 
 
 def run_plants() -> None:
-    payload = load_artifact(RECEIPT, "HISTORY_RECEIPT")
-    verify_payload(payload, verify_foreign=True)
+    head = git("rev-parse", "HEAD").decode().strip()
+    precommit = head == P10_TOPOLOGY
+    if precommit:
+        payload = load_artifact(RECEIPT, "HISTORY_RECEIPT")
+        expected = expected_receipt()
+        actual_snapshot = current_foreign_snapshot()
+        verify_precommit_candidate(payload, expected, actual_snapshot)
+    else:
+        successor = first_descendant(head)
+        payload = parse_artifact(
+            tree_blob(successor, str(RECEIPT.relative_to(ROOT))),
+            "HISTORY_COMMITTED_SUCCESSOR_RECEIPT",
+        )
+        verify_historical_payload(payload, head)
     mutations = []
     for field in ("parent", "tree"):
         poisoned = json.loads(json.dumps(payload))
@@ -446,13 +535,31 @@ def run_plants() -> None:
     lifecycle = json.loads(json.dumps(payload))
     lifecycle["no_second_state_lifecycle"] = False
     mutations.append(lifecycle)
+    foreign_digest = json.loads(json.dumps(payload))
+    foreign_digest["precommit_foreign_snapshot_sha256"] = "0" * 64
+    mutations.append(foreign_digest)
     for index, poisoned in enumerate(mutations):
         try:
-            verify_payload(poisoned, verify_foreign=True)
+            if precommit:
+                verify_precommit_candidate(poisoned, expected, actual_snapshot)
+            else:
+                verify_historical_payload(poisoned, head)
         except HistoryError:
             continue
         raise HistoryError(f"HISTORY_PLANT_ESCAPED:{index}")
-    final_tree = expected_final_tree()
+    poisoned_snapshot = json.loads(json.dumps(payload["precommit_foreign_snapshot"]))
+    poisoned_snapshot[0]["sha256"] = "0" * 64
+    try:
+        verify_precommit_foreign_snapshot(payload, poisoned_snapshot)
+    except HistoryError:
+        pass
+    else:
+        raise HistoryError("HISTORY_PLANT_ESCAPED:PRECOMMIT_FOREIGN_SNAPSHOT")
+    if precommit:
+        final_tree = expected_final_tree()
+    else:
+        successor = first_descendant(head)
+        final_tree = git("rev-parse", f"{successor}^{{tree}}").decode().strip()
     wrong_parent = synthetic_commit(
         P9_LIFECYCLE, "README.md", b"wrong parent plant\n", "wrong parent"
     )
