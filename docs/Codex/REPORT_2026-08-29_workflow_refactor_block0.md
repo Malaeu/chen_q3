@@ -101,6 +101,17 @@ and `test_codex_current_task` expects `CURRENT: ACTIVE` while the canonical
 pointer is `CLOSED`. The complete applicable Control-v9, selector, and new
 Block-0 suite above is green.
 
+### Post-push canonical gate
+
+After fast-forwarding the canonical dirty checkout and preserving all foreign
+changes through autostash:
+
+- combined applicable suite: **123 tests, OK**;
+- canonical selector: **1.36 s**, same Goal 058 and phase-key hash;
+- semantic refresh: PASS, receipt bound to commit `cbac53b5`;
+- final strict Spine: **1.70 s**, `P9_STRICT_PASS`, semantic index PASS,
+  tool manifest PASS, authority unchanged.
+
 ## Changed paths
 
 - `orchestrator/three_body_loop.py`
