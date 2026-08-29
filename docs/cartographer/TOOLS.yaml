@@ -301,19 +301,19 @@ tool_families:
       - id: workflow-runtime
         status: ENABLED
         audience: [CODEX, HUMAN]
-        mode: READ_ONLY
+        mode: WRITES_CANONICAL
         path: orchestrator/workflow_runtime.py
         invoke: python3 orchestrator/workflow_runtime.py plan
         alternatives:
           - python3 orchestrator/workflow_runtime.py run --through close-node
           - python3 orchestrator/workflow_runtime.py close-phase
           - python3 orchestrator/workflow_runtime.py close-session
-        trigger: One stateless lifecycle plan or routing to an existing close entry.
-        writes: false
-        approval: NONE_FOR_PLAN_CLOSE_SUBCOMMAND_INHERITS_CALLEE_SCOPE
-        authority: STATELESS_LIFECYCLE_COMPILER_NOT_SELECTOR_OR_POLICY_KERNEL
-        records_to: stdout
-        validation: test_workflow_runtime plus deterministic double-plan shadow check
+        trigger: One stateless lifecycle plan or execution through a verified scoped close-node transition.
+        writes: true
+        approval: NONE_FOR_PLAN; ACTIVE_GOAL_RUN_AND_EXACT_OWNED_PATHS_FOR_RUN_OR_CLOSE
+        authority: STATELESS_LIFECYCLE_EXECUTOR_NOT_SELECTOR_POLICY_KERNEL_MATHEMATICAL_AUTHOR_OR_GIT_DELIVERY
+        records_to: stdout receipt plus outputs of the explicitly selected registered writers
+        validation: test_workflow_runtime including startup-red, owned-scope, event, and command-failure plants
         last_verified: 2026-08-29
 
       - id: workflow-session-close
@@ -333,14 +333,14 @@ tool_families:
       - id: workflow-phase-close
         status: ENABLED
         audience: [CODEX, HUMAN]
-        mode: WRITES_DERIVED
+        mode: WRITES_CANONICAL
         path: specs_docs/phase_close.py
         invoke: python3 orchestrator/workflow_runtime.py close-phase
         trigger: Phase transition after node closure.
         writes: true
         approval: EXACT_PHASE_SCOPE
-        authority: GATE_ORCHESTRATION_AND_DEBT_VISIBILITY_NOT_SEMANTIC_JUDGMENT
-        records_to: stdout or explicit JSON receipt plus registered derived outputs
+        authority: GATE_ORCHESTRATION_VERDICT_MIGRATION_BLUEPRINT_REGENERATION_AND_DEBT_VISIBILITY_NOT_SEMANTIC_JUDGMENT
+        records_to: stdout or explicit JSON receipt plus knowledge.db and registered derived outputs
         validation: test_phase_close
         last_verified: 2026-08-29
 
@@ -1008,12 +1008,15 @@ tool_families:
         path: docs/cartographer/blueprint_gen.py
         invoke: python3 docs/cartographer/blueprint_gen.py
         read_only_variant: python3 docs/cartographer/blueprint_gen.py --check
+        alternatives:
+          - python3 docs/cartographer/blueprint_gen.py --prepare-env
         cwd: repository root
         trigger: >-
-          Regenerate after assembly, proof-registry, or complete Route-B
-          environment-index changes. The Markdown and TeX views share one
-          deterministic model; --check detects missing or stale outputs without
-          writing.
+          Regenerate after assembly, proof-registry, or Route-B environment
+          changes. The phase-close repair uses --prepare-env to compile the
+          Route-B library and refresh its byte-bound EnvDump only when its
+          source fingerprint changes. The Markdown and TeX views share one
+          deterministic model; --check never writes.
         writes: true
         approval: NONE_FOR_REGENERATION
         authority: >-

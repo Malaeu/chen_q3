@@ -52,6 +52,27 @@ class DependencyRegistryPlants(unittest.TestCase):
             refs.write_text("| X | HAVE | `X_USAGE_CARDS.md` |\n")
             self.assertEqual(dependency_registry.evaluate(root, row).status, "FRESH")
 
+    def test_command_check_and_consumer_routing_fail_closed(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            row = {
+                "id": "generated",
+                "detector": "COMMAND_CHECK",
+                "inputs": ["input"],
+                "outputs": ["output"],
+                "check_command": ["sh", "-c", "test -f output"],
+                "repair_command": ["touch", "output"],
+                "consumers": ["phase-close"],
+            }
+            self.assertEqual(dependency_registry.evaluate(root, row).status, "STALE")
+            (root / "output").write_text("ok\n")
+            self.assertEqual(dependency_registry.evaluate(root, row).status, "FRESH")
+            self.assertTrue(dependency_registry.applies_to(row, "phase-close"))
+            self.assertFalse(dependency_registry.applies_to(row, "session-start"))
+            row["check_command"] = ["sh", "-c", "exit 2"]
+            row["repair_exit_codes"] = [1, 2]
+            self.assertEqual(dependency_registry.evaluate(root, row).status, "STALE")
+
 
 if __name__ == "__main__":
     unittest.main()

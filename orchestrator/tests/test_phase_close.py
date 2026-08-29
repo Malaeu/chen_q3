@@ -9,6 +9,19 @@ from specs_docs import phase_close
 
 
 class PhaseClosePlants(unittest.TestCase):
+    def test_default_gates_are_continuous_not_frozen_transactions(self) -> None:
+        self.assertEqual(
+            tuple(path.name for path in phase_close.DEFAULT_GATES),
+            phase_close.CONTINUOUS_GATE_NAMES,
+        )
+        self.assertTrue(
+            {
+                "check_repository_topology_decision.sh",
+                "check_root_archive_lifecycle_successor.sh",
+                "check_root_archive_preflight.sh",
+            }.isdisjoint(phase_close.CONTINUOUS_GATE_NAMES)
+        )
+
     def test_gate_stops_after_first_failure(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -26,6 +39,8 @@ class PhaseClosePlants(unittest.TestCase):
                 conn.execute("CREATE TABLE assembly(chain TEXT, step INTEGER, status TEXT)")
                 conn.executemany("INSERT INTO assembly VALUES(?,?,?)", [("A", 2, "OPEN"), ("B", 1, "READY")])
             self.assertEqual(phase_close.assembly_debt(db), ["A:2:OPEN"])
+            self.assertEqual(phase_close.assembly_debt(db, chain="B"), [])
+            self.assertEqual(phase_close.assembly_debt(db, chain="A"), ["A:2:OPEN"])
             debt = phase_close.manual_debt(statuses=[], assembly=["A:2:OPEN"], owned_paths=["x"], insight_receipt=None)
             self.assertEqual(debt["insight_required"], ["INSIGHT_REQUIRED_FOR_CHANGED_SCOPE"])
 

@@ -224,7 +224,7 @@ HOLD вне шины) уже спроектирован как импортёр 
 |---|---|---|---|
 | **conductor** (= Claude Code) | Транспорт петли: состояние, коммиты, Aristotle CLI. Математику НЕ решает («красная линия») | CLI Linux/Mac | `orchestrator/CONDUCTOR.md` |
 | **Mythos / Fable** | Диспетчер-мозг: выпускает goal'ы, пишет директивы, скорит предсказания. Не судит, не исполняет | claude.ai (браузер, на работе НЕТ GitHub/FS) | `MYTHOS_ORCHESTRATION_ADDENDUM.md` |
-| **Proshka** | Судья: read-only, читает зеркало на GitHub, вердикт одним md + коды. Write-доступа нет | ChatGPT Pro (браузер) | `proshka/PROSHKA_SYSTEM_PROMPT_v2.md` |
+| **Proshka** | Судья: читает канонический Git-снимок и возвращает source-locked verdict/request artifact; транспорт очереди в Control v9 принадлежит Linux, прямой Mac→чат запрещён | ChatGPT Pro + Git transport | `docs/CODEX_CONTROL.md` §19.3 |
 | **Codex** | Исполнитель: Lean, сертификаты, + git/mirror/MANIFEST после ретайра кондуктора | CLI (gpt-5.6-sol) | `ORG_UPDATE_CONDUCTOR_RETIRED_2026-07-30.md` |
 | **Aristotle** | AI-доказатель (облако), дорожка спит пока очередь заблокирована | CLI + dashboard | `orchestrator/ARISTOTLE.md` |
 | **Ылша** | Владелец: релеит Прошку, сабмитит Aristotle, держит `PX_RH_CLAIM` | чат | — |
@@ -233,9 +233,10 @@ HOLD вне шины) уже спроектирован как импортёр 
 `mathematical_authority_mode = CODEX_PROSHKA_FULL_EXCEPT_PX_RH_CLAIM`
 (`orchestrator/state/CHANNEL_RUNTIME.json`, `orchestrator/state/SPINE_STATE.json`).
 То есть **математические решения Codex и Прошка принимают полностью сами**; единственный
-owner-гейт — **`PX_RH_CLAIM`, и он `NOT_MADE`**. Отдельно и независимо действует
-per-action owner OK на исходящие тексты, коммиты и пуши — это про транспорт, не про
-математику.
+owner-гейт — **`PX_RH_CLAIM`, и он `NOT_MADE`**. Goal-scoped operational grant уже
+включает scoped closeout commit/rebase/push. Отдельного разрешения требуют внешний
+reviewer transport, публикация вне репозитория, paid/destructive actions, control edits
+и действия за пределами названного scope.
 
 | Закон | Смысл |
 |---|---|
@@ -243,7 +244,7 @@ per-action owner OK на исходящие тексты, коммиты и пу
 | **source-lock** | Объект (h, коэффициенты, SHA) жёстко фиксирован; supplier обязан совпадать с точным семейством |
 | **taint = 0** | Проверка без побочных допущений — условие приёма сертификата |
 | **standard axiom triple** | Аксиомы ровно `propext, Classical.choice, Quot.sound` — никаких проектных |
-| **per-action owner OK** | Любой исходящий текст/commit/push ПОКАЗЫВАЕТСЯ владельцу, отправка — только явной командой |
+| **goal-scoped delivery** | Внутренний closeout commit/rebase/push входит в названный owner goal; внешний transport и публикация — отдельная граница |
 | **PX_RH_CLAIM — единственный owner-гейт** | Заявить RH может только владелец; статус `NOT_MADE` |
 | **CHALLENGER / NOT_RH · Bus 010 VOID** | Route B — челленджер, RH не заявляется, промоушен в mainline запрещён |
 
@@ -475,9 +476,9 @@ G0 объект/координата/нормировка  →  G1 ground-пак
 Статусы **не дублируются здесь** — они протухают. Живое: `brief.py`, `cheap.py`,
 `kb_migrate_route058.py --check`.
 
-**Дешёвый следующий шаг:** `G2b`, теорема `Proposition59GroundLagrangeZeroSetBridge` —
-перенос множества нулей с многочлена на преобразование той же строки. Схема из семи шагов в
-уставе; все объекты в дереве; судейского решения не требует.
+**Следующий шаг здесь не фиксируется.** `G2b` закрыт. Точный текущий адрес вычисляют
+`routeb_status.py --check`, `brief.py`, `cheap.py` и `kb_migrate_route058.py --check`;
+ручная карта не имеет права дублировать их изменяемый verdict.
 
 **Убито и не подлежит возврату:** `Pstar = c_N · многочлен` (у преобразования бесконечно
 много нулей на синус-решётке, у многочлена конечное число) · `exact ground equals trial` ·

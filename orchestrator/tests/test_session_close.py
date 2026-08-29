@@ -30,13 +30,30 @@ class SessionClosePlants(unittest.TestCase):
             executed, statuses = session_close.repair_derived(root, registry, repair=True)
             self.assertEqual(executed, ["copy"])
             self.assertEqual((root / "foreign").read_text(), "keep\n")
-            # Inputs remain dirty until committed, so the detector honestly remains stale.
-            self.assertEqual(statuses[0].status, "STALE")
-            run(root, "git", "add", "input", "output")
-            run(root, "git", "-c", "user.name=Plant", "-c", "user.email=p@example.invalid", "commit", "-qm", "refresh")
+            # The byte-bound local receipt proves the current worktree projection
+            # and makes an immediate second close a true no-op.
+            self.assertEqual(statuses[0].status, "CURRENT_WORKTREE")
+            self.assertEqual(
+                session_close.dependency_registry.statuses(root, registry)[0].status,
+                "CURRENT_WORKTREE",
+            )
+            payload = yaml.safe_load(registry.read_text())
+            payload["artifacts"][0]["repair_command"] = ["cp", "--", "input", "output"]
+            registry.write_text(yaml.safe_dump(payload))
+            self.assertEqual(
+                session_close.dependency_registry.statuses(root, registry)[0].status,
+                "STALE",
+            )
+            payload["artifacts"][0]["repair_command"] = ["cp", "input", "output"]
+            registry.write_text(yaml.safe_dump(payload))
             executed2, statuses2 = session_close.repair_derived(root, registry, repair=True)
             self.assertEqual(executed2, [])
-            self.assertEqual(statuses2[0].status, "FRESH")
+            self.assertEqual(statuses2[0].status, "CURRENT_WORKTREE")
+            run(root, "git", "add", "input", "output")
+            run(root, "git", "-c", "user.name=Plant", "-c", "user.email=p@example.invalid", "commit", "-qm", "refresh")
+            executed3, statuses3 = session_close.repair_derived(root, registry, repair=True)
+            self.assertEqual(executed3, [])
+            self.assertEqual(statuses3[0].status, "FRESH")
             owned, foreign = session_close.dirty_split(root, ["input", "output"])
             self.assertEqual(owned, [])
             self.assertEqual(foreign, ["foreign", "registry.yaml"])

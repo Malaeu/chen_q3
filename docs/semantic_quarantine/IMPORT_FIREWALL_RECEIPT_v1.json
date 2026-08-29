@@ -36,7 +36,7 @@
     },
     "lakefile": {
       "path": "q3.lean.aristotle/lakefile.toml",
-      "sha256": "0d845f63a6c4c4034e0fc1bc53a16015892da8430a8810cb3ae0daf60f2d5c57"
+      "sha256": "0c8c85fa4157dec0676f57c8a2d380eb909c20acd0ff7a2b5ff30f6890a40261"
     },
     "lake_manifest": {
       "path": "q3.lean.aristotle/lake-manifest.json",

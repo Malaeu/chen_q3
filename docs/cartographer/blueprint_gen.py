@@ -28,6 +28,8 @@ LEAN_ROOT = ROOT / "q3.lean.aristotle"
 KB_PATH = LEAN_ROOT / "aristotle_db" / "knowledge.db"
 PDB_PATH = LEAN_ROOT / "aristotle_db" / "aristotle_proofs.db"
 ENV_PATH = ROOT / "docs/cartographer/lean_env/env_index.jsonl"
+ENV_DUMP = ROOT / "docs/cartographer/lean_env/envdump.py"
+ENV_RECEIPT_PATH = LEAN_ROOT / ".qmd_cache/routeb_env_index_receipt.json"
 PREVIEW_PATH = ROOT / "full/blueprint/blueprint.md"
 BP_ROOT = LEAN_ROOT / "blueprint"
 SRC = BP_ROOT / "src"
@@ -47,6 +49,11 @@ TRACKED_INPUTS = (
     "q3.lean.aristotle/Q3/Basic/Defs.lean",
     "q3.lean.aristotle/Q3/Proofs/RouteB",
 )
+ENV_SOURCE_INPUTS = (
+    LEAN_ROOT / "lean-toolchain",
+    LEAN_ROOT / "lakefile.toml",
+    ENV_DUMP,
+)
 CHAIN_TITLES = {
     "PSD_CERTIFICATE_FOR_CCM_CELL": "Pillar G2 — finite-cell validation package",
     "SIMPLE_EVEN_GROUND_TO_REAL_ZEROS": "Pillar G3 — real-zeros bridge",
@@ -59,6 +66,88 @@ CHAIN_TITLES = {
 
 class BlueprintError(RuntimeError):
     """The current sources cannot support an honest generated blueprint."""
+
+
+def routeb_source_closure() -> list[Path]:
+    pending = list((LEAN_ROOT / "Q3/Proofs/RouteB").glob("*.lean"))
+    seen: set[Path] = set()
+    while pending:
+        path = pending.pop()
+        if path in seen:
+            continue
+        seen.add(path)
+        for module in re.findall(
+            r"^import\s+(Q3(?:\.[A-Za-z0-9_']+)*)\s*$",
+            path.read_text(encoding="utf-8"),
+            re.MULTILINE,
+        ):
+            dependency = LEAN_ROOT / (module.replace(".", "/") + ".lean")
+            if not dependency.is_file():
+                raise BlueprintError(f"local import source missing: {module}")
+            pending.append(dependency)
+    return sorted(seen)
+
+
+def routeb_env_source_fingerprint() -> dict[str, str]:
+    paths = [*ENV_SOURCE_INPUTS, *routeb_source_closure()]
+    return {
+        path.relative_to(ROOT).as_posix(): hashlib.sha256(path.read_bytes()).hexdigest()
+        for path in paths
+    }
+
+
+def env_receipt_matches() -> bool:
+    if not ENV_PATH.is_file() or not ENV_RECEIPT_PATH.is_file():
+        return False
+    try:
+        receipt = json.loads(ENV_RECEIPT_PATH.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return False
+    return receipt == {
+        "schema": "q3_routeb_env_index_receipt.v1",
+        "inputs": routeb_env_source_fingerprint(),
+        "env_index_sha256": hashlib.sha256(ENV_PATH.read_bytes()).hexdigest(),
+    }
+
+
+def prepare_env_index() -> None:
+    if env_receipt_matches():
+        print("Route-B EnvDump current: source fingerprint unchanged")
+        return
+    build = subprocess.run(
+        ["lake", "query", "Q3"],
+        cwd=LEAN_ROOT,
+        capture_output=True,
+        text=True,
+    )
+    if build.returncode != 0:
+        diagnostics = "\n".join(
+            [*build.stdout.splitlines()[-20:], *build.stderr.splitlines()[-20:]]
+        )
+        raise BlueprintError(
+            f"Route-B library build failed: {build.returncode}\n{diagnostics}"
+        )
+    print("Route-B library build current")
+    environment = os.environ.copy()
+    environment.pop("LD_LIBRARY_PATH", None)
+    dump = subprocess.run([sys.executable, str(ENV_DUMP)], cwd=ROOT, env=environment)
+    if dump.returncode != 0 or not ENV_PATH.is_file():
+        raise BlueprintError(f"Route-B EnvDump failed: {dump.returncode}")
+    receipt = {
+        "schema": "q3_routeb_env_index_receipt.v1",
+        "inputs": routeb_env_source_fingerprint(),
+        "env_index_sha256": hashlib.sha256(ENV_PATH.read_bytes()).hexdigest(),
+    }
+    ENV_RECEIPT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.NamedTemporaryFile(
+        "w", encoding="utf-8", dir=ENV_RECEIPT_PATH.parent, delete=False
+    ) as handle:
+        json.dump(receipt, handle, ensure_ascii=False, indent=2, sort_keys=True)
+        handle.write("\n")
+        handle.flush()
+        os.fsync(handle.fileno())
+        temporary = Path(handle.name)
+    os.replace(temporary, ENV_RECEIPT_PATH)
 
 
 @dataclasses.dataclass(frozen=True)
@@ -693,8 +782,17 @@ def stale_paths(rendered: Mapping[Path, bytes]) -> list[Path]:
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="read-only stale check")
+    parser.add_argument(
+        "--prepare-env",
+        action="store_true",
+        help="compile Route B and refresh EnvDump if its byte fingerprint changed",
+    )
     args = parser.parse_args(argv)
     try:
+        if args.check and args.prepare_env:
+            raise BlueprintError("--check and --prepare-env are mutually exclusive")
+        if args.prepare_env:
+            prepare_env_index()
         model = build_model()
         rendered = outputs(model)
         validate(model, rendered)

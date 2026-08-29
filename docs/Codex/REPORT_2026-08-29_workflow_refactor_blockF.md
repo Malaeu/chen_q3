@@ -1,5 +1,10 @@
 # WORKFLOW REFACTOR — BLOCK F
 
+> Superseded operationally by Workflow Repair G. The Block-F command named
+> `run --through close-node` compiled a plan but did not execute a close-node
+> transition; its empty write set and constant zero-review field were shadow
+> assertions, not a closed autonomous loop.
+
 ```yaml
 status: DONE
 block: F

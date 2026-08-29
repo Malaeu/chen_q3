@@ -10,6 +10,7 @@ artifacts:
     repair_command: [python3, docs/cartographer/inventory.py, --scope, RouteB]
     authority: DERIVED_SOURCE_INVENTORY_NOT_LEAN_TRUTH
     cost_tier: CHEAP
+    consumers: [session-start, session-close, phase-close, workflow-plan]
 
   - id: routeb-atoms
     detector: GIT_DERIVATION
@@ -22,6 +23,7 @@ artifacts:
     repair_command: [python3, docs/cartographer/atoms.py, docs/cartographer/atoms_RouteB.json]
     authority: DERIVED_EXTERNAL_ATOM_INDEX
     cost_tier: MEDIUM
+    consumers: [session-start, session-close, phase-close, workflow-plan]
 
   - id: litreview-needs-cards
     detector: NEEDS_CARDS_CONSISTENCY
@@ -33,3 +35,37 @@ artifacts:
     repair_command: null
     authority: MANUAL_SEMANTIC_MAPPING
     cost_tier: MANUAL
+    consumers: [session-start, session-close, phase-close, workflow-plan]
+
+  - id: routeb-map-coverage
+    detector: GIT_DERIVATION
+    inputs:
+      - q3.lean.aristotle/Q3/Proofs/RouteB/**/*.lean
+      - docs/routeB_bus/MAP.md
+      - docs/cartographer/map_coverage.py
+    outputs: [docs/routeB_bus/MAP_COVERAGE.md]
+    generator_tool: map-coverage
+    repair_command: [python3, docs/cartographer/map_coverage.py]
+    authority: FILE_COVERAGE_NOT_ROUTE_STATUS
+    cost_tier: CHEAP
+    consumers: [session-close, phase-close]
+
+  - id: routeb-publication-blueprint
+    detector: COMMAND_CHECK
+    inputs:
+      - q3.lean.aristotle/aristotle_db/knowledge.db
+      - q3.lean.aristotle/aristotle_db/aristotle_proofs.db
+      - docs/cartographer/lean_env/env_index.jsonl
+      - q3.lean.aristotle/Q3/Proofs/RouteB/**/*.lean
+      - docs/cartographer/blueprint_gen.py
+    outputs:
+      - full/blueprint/blueprint.md
+      - q3.lean.aristotle/blueprint/src/content.tex
+      - q3.lean.aristotle/blueprint/blueprint_manifest.json
+    generator_tool: blueprint-skeleton-generator
+    check_command: [python3, docs/cartographer/blueprint_gen.py, --check]
+    repair_command: [python3, docs/cartographer/blueprint_gen.py, --prepare-env]
+    repair_exit_codes: [1, 2]
+    authority: PUBLICATION_SKELETON_NOT_PROOF_OR_EXTERNAL_PUBLICATION
+    cost_tier: MEDIUM
+    consumers: [phase-close-publication]

@@ -55,13 +55,20 @@ python3 orchestrator/workflow_runtime.py close-phase
 python3 orchestrator/workflow_runtime.py close-session
 ```
 
-It compiles the existing physical selector, registered tools, derived-artifact
-freshness, gates, and manual debt. It does not create another lifecycle state,
-commit, push, publish, promote, or make an RH claim. The older selector and
-close scripts remain directly callable compatibility entry points.
+`plan` runs the read-only startup receipt and compiles the existing physical
+selector, registered tools, derived-artifact freshness, scoped assembly debt,
+expected writes, and full input fingerprints. `run --through close-node` is a
+real scoped transition: it requires exact owned paths and an attempt event,
+performs triggered shelf/supplier checks, validates owned Lean, runs step-close,
+and repairs/verifies session-close outputs. It still does not invent
+mathematics, commit, push, publish externally, promote, or make an RH claim.
+The older selector and close scripts remain directly callable compatibility
+entry points.
 
 - `docs/Codex/CURRENT.md` — the single startup-readable task pointer
 - `docs/Codex/TASK_*.md` — the assignments themselves
+- `docs/Codex/TASK_2026-08-29_workflow_repair_g.md` — closed executable-loop contract
+- `docs/Codex/REPORT_2026-08-29_workflow_repair_g.md` — Repair G closeout and gate evidence
 - `docs/CODEX_HOME_HANDOFF_2026-08-05.md` — the earlier owner→Codex handoff
 - `docs/CODEX_CYCLE_RECONSTRUCTION_2026-08-05.md` — how the Codex loop actually runs
   (§5 still holds the five Mac-only GAPS)

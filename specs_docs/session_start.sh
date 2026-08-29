@@ -24,6 +24,8 @@ RB_STATE="q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUT
 LIVE_BUS="docs/routeB_bus"
 KB="q3.lean.aristotle/aristotle_db/knowledge.db"
 CURRENT_TASK="docs/Codex/CURRENT.md"
+PYTHON="python3"
+[ -x .venv/bin/python ] && PYTHON=".venv/bin/python"
 
 DIVERGENCE=()
 note() { DIVERGENCE+=("$1"); }
@@ -301,12 +303,12 @@ fi
 # не годятся — git не хранит mtime, после клона он у всех файлов одинаковый.
 hr
 echo "КАРТОГРАФ"
-DEP_STATUS="$(python3 orchestrator/dependency_registry.py status --artifact routeb-inventory 2>&1)"
+DEP_STATUS="$(python3 orchestrator/dependency_registry.py status --consumer session-start 2>&1)"
 DEP_RC=$?
 if [ "$DEP_RC" -eq 0 ]; then
   echo "  $DEP_STATUS"
 else
-  note "derived registry: $DEP_STATUS — repair: python3 docs/cartographer/inventory.py --scope RouteB"
+  note "derived registry: $DEP_STATUS — repair: python3 orchestrator/workflow_runtime.py close-session --repair"
 fi
 
 # ── 10a. Опоры и канаты: сколько шагов до жёсткости каждой опоры крыши ─────────
@@ -316,7 +318,7 @@ fi
 # вслух: опора без измеренных канатов хуже опоры с большим k.
 hr
 echo "ОПОРЫ И КАНАТЫ (крыша ждёт: G2 G3 G5 G6 · стоят: G1 G4 · бетон: G7+Гурвиц)"
-.venv/bin/python - 2>/dev/null <<'PYEOF' || echo "  (assembly недоступна)"
+"$PYTHON" - 2>/dev/null <<'PYEOF' || echo "  (assembly недоступна)"
 import sqlite3
 con = sqlite3.connect("file:q3.lean.aristotle/aristotle_db/knowledge.db?mode=ro", uri=True)
 # дорога -> опора (сверено по required_by финальных шагов, 2026-08-19)
@@ -352,31 +354,8 @@ done = sum(n - k for _, k, n in rows)
 alln = sum(n for _, _, n in rows)
 print(f"  {'':14s} ВСЕГО в базе {alln} канатов · ЗАКРЕПЛЕНО {done} · висит {total}")
 print("  бумажные движки (Connes и др.) канатами НЕ считаются, пока не формализованы")
-print("  G5: 2 каната, подтверждено ядром 19.08 — равномерный моментный бюджет"
-      " + PairCofinal (ОБЩИЙ канат с G6: поле CanonicalData)")
-print("  G6_N1_PREANCHOR: kernel GREEN (36->5->2->0), но это УСЛОВНЫЙ композер —")
-print("    SelectedProlateCofinalSourceData строится ИЗ SelectedProlatePreAnchorData")
-print("    и CCMLemma73PreAnchorPort. Пересчёт судьи 20.08: дельта НОЛЬ.")
-print("    Следующие несущие дыры, ПОРЯДОК ЖЁСТКИЙ (вердикт N2 20.08):")
-print("      1) SELECTED_PROLATE_PREANCHOR_DATA_INHABITANT — ЗАКРЫТ 20.08")
-print("         (Linux-тело за Codex: selectedFerrersPreAnchorData, pair_spec")
-print("         экспортирован, тройка аксиом, q3_check ok)")
-print("      2) CCM_LEMMA_7_3_PREANCHOR_PORT_INHABITANT — 9 этажей L73.0-L73.8")
-print("         (вердикт FLOORS 20.08): стена L73.2 (Lemma-7.2 rate), L73.5")
-print("         (Mellin=centeredXi) НЕЗАВИСИМ — бить параллельно")
-print("      3) стена N2 разложена на этажи N2_0..N2_5; исполнение ДО 1-2 запрещено;")
-print("         бонус: SelectedTrialNormalizerBounded для N2 НЕ НУЖЕН (zero-mode")
-print("         сокращение нормировщиков — шаг 13 GOAL057 выходит из зависимостей)")
-print("  G3-порт CvS: 2 узла (value-crosswalk ground/trial + сборка); типы не менять")
-print("  ═══ ОСТАЛОСЬ НАТЯНУТЬ ДО RH — ВЫБОР МАРШРУТА (дедуп 19.08) ═══")
-print("    G5 (1) + G6 (7) нужны в ЛЮБОМ случае, и дальше ОДНО из двух:")
-print("      + G2 (0!) + G3 (5) =  13  классика; G2-ЧИСЛА СНЯТЫ С ПУТИ 20.08")
-print("        (REQ-2026-08-20-B: клетка m13 = валидация/falsifier, не поставщик")
-print("         SlotH2a; настоящий G2-поставщик = SIEG_of_penalty на семье — в G3/058)")
-print("      + гол 058 (5)      =  13  равные дороги; 058 = ground -> Xi напрямую")
-print("    платим за ОДНУ дорогу, не за обе")
-print("    характер 17: 3 числа · 3 owner-data · 4-5 сборок · 2 порта · 4-5 стен")
-print("    флаг: SIMPLE_EVEN:15 ~ N1 может дать 17->16 (решится при постройке N1)")
+print("  динамический следующий адрес задают physical goal + routeb_status.py + assembly;")
+print("  исторические оценки и ручная MAP.md не маршрутизируют исполнение")
 con.close()
 PYEOF
 
@@ -399,10 +378,14 @@ fi
 # кричит, боевой прогон — с per-action OK (knowledge.db бинарник в git).
 hr
 echo "МИГРАТОР ПРОТИВ ШИНЫ"
-MIG_OUT="$(.venv/bin/python orchestrator/kb_migrate_verdicts.py --dry-run 2>/dev/null | rg 'new strategy rows|supplier-ledger rows|new verdict-kill' )"
+MIG_RAW="$("$PYTHON" orchestrator/kb_migrate_verdicts.py --dry-run 2>&1)"
+MIG_RC=$?
+MIG_OUT="$(printf '%s\n' "$MIG_RAW" | rg 'new strategy rows|new verdict-kill' || true)"
 printf '%s\n' "$MIG_OUT" | sed 's/^/  /'
-if printf '%s' "$MIG_OUT" | rg -q ': *[1-9]'; then
-  note "мигратор отстал от шины — есть непрожатые вердикты: .venv/bin/python orchestrator/kb_migrate_verdicts.py (боевой, с OK владельца)"
+if [ "$MIG_RC" -ne 0 ]; then
+  note "мигратор вердиктов не отработал (код $MIG_RC)"
+elif printf '%s' "$MIG_OUT" | rg -q ': *[1-9]'; then
+  note "мигратор отстал от шины — есть непрожатые вердикты: python3 orchestrator/workflow_runtime.py close-phase --repair (в активном goal scope)"
 fi
 
 # ── 10b. Записи журнала: обязательные графы заполнены? ─────────────────────────
@@ -413,7 +396,7 @@ fi
 # каждом старте сессии у каждого тела, а не ждать прогона тестов.
 hr
 echo "ЖУРНАЛ РАЗВИЛОК (обязательные графы)"
-PLOG_ERR="$(.venv/bin/python - 2>&1 <<'PYEOF'
+PLOG_ERR="$("$PYTHON" - 2>&1 <<'PYEOF'
 import sys
 sys.path.insert(0, "orchestrator")
 try:

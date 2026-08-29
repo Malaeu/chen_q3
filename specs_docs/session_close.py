@@ -9,6 +9,7 @@ import os
 import subprocess
 import sys
 import tempfile
+from dataclasses import replace
 from pathlib import Path
 from typing import Any
 
@@ -19,18 +20,38 @@ if str(REPO) not in sys.path:
 from orchestrator import dependency_registry  # noqa: E402
 
 
-def repair_derived(repo: Path, registry_path: Path, *, repair: bool) -> tuple[list[str], list[dependency_registry.ArtifactStatus]]:
-    rows = dependency_registry.load_registry(registry_path)
+def repair_derived(
+    repo: Path,
+    registry_path: Path,
+    *,
+    repair: bool,
+    consumer: str = "session-close",
+) -> tuple[list[str], list[dependency_registry.ArtifactStatus]]:
+    rows = [
+        row for row in dependency_registry.load_registry(registry_path)
+        if dependency_registry.applies_to(row, consumer)
+    ]
     executed: list[str] = []
     for row in rows:
         state = dependency_registry.evaluate(repo, row)
         command = row.get("repair_command")
-        if state.status == "STALE" and state.repairable and command and repair:
+        if state.status in {"STALE", "MISSING"} and state.repairable and command and repair:
             proc = subprocess.run([str(part) for part in command], cwd=repo)
             if proc.returncode != 0:
                 raise RuntimeError(f"DERIVED_REPAIR_FAILED:{row['id']}:{proc.returncode}")
+            dependency_registry.record_current_worktree(repo, row)
             executed.append(row["id"])
-    final = [dependency_registry.evaluate(repo, row) for row in rows]
+    final = []
+    for row in rows:
+        state = dependency_registry.evaluate(repo, row)
+        if row["id"] in executed and state.status == "STALE":
+            state = replace(
+                state,
+                status="CURRENT_WORKTREE",
+                detail="generator succeeded for current uncommitted inputs",
+                repairable=False,
+            )
+        final.append(state)
     return executed, final
 
 
@@ -39,7 +60,11 @@ def dirty_split(repo: Path, owned_paths: list[str]) -> tuple[list[str], list[str
         ["git", "status", "--porcelain=v1", "--untracked-files=all"],
         cwd=repo, check=True, capture_output=True, text=True,
     ).stdout.splitlines()
-    paths = [line[3:] for line in lines if len(line) > 3]
+    receipt_prefix = dependency_registry.RECEIPT_DIR.as_posix().rstrip("/") + "/"
+    paths = [
+        line[3:] for line in lines
+        if len(line) > 3 and not line[3:].startswith(receipt_prefix)
+    ]
     owned: list[str] = []
     foreign: list[str] = []
     for path in paths:
@@ -144,7 +169,7 @@ def main() -> int:
     except (RuntimeError, dependency_registry.DependencyRegistryError, subprocess.CalledProcessError) as exc:
         print(exc)
         return 2
-    residual = [item for item in statuses if item.status != "FRESH"]
+    residual = [item for item in statuses if item.status not in {"FRESH", "CURRENT_WORKTREE"}]
     return 1 if residual else 0
 
 
