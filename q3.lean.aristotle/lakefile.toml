@@ -16,7 +16,7 @@ rev = "v4.24.0"
 [[lean_lib]]
 name = "Q3"
 moreLeanArgs = ["-j", "1", "-s", "65536"]
-globs = ["Q3"]
+globs = ["Q3", "Q3.Proofs.RouteB.+"]
 
 [[lean_lib]]
 name = "aristotle_output"
