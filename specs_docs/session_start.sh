@@ -301,23 +301,12 @@ fi
 # не годятся — git не хранит mtime, после клона он у всех файлов одинаковый.
 hr
 echo "КАРТОГРАФ"
-INVJ="docs/cartographer/inventory_RouteB.json"
-LEAN_DIR="q3.lean.aristotle/Q3/Proofs/RouteB"
-if [ ! -f "$INVJ" ]; then
-  echo "  инвентарь не построен — python3 docs/cartographer/inventory.py"
+DEP_STATUS="$(python3 orchestrator/dependency_registry.py status --artifact routeb-inventory 2>&1)"
+DEP_RC=$?
+if [ "$DEP_RC" -eq 0 ]; then
+  echo "  $DEP_STATUS"
 else
-  inv_at="$(git log -1 --format=%h -- "$INVJ" 2>/dev/null)"
-  if [ -z "$inv_at" ]; then
-    echo "  инвентарь есть, но не в git — точки отсчёта нет, протухание не вычисляется"
-  elif git diff --quiet "$inv_at" HEAD -- "$LEAN_DIR" 2>/dev/null; then
-    echo "  актуален: .lean в RouteB не менялись с $inv_at"
-  else
-    n="$(git diff --name-only "$inv_at" HEAD -- "$LEAN_DIR" 2>/dev/null | wc -l)"
-    note "инвентарь картографа протух (.lean изменилось: $n с $inv_at) — python3 docs/cartographer/inventory.py"
-  fi
-  # Незакоммиченные .lean HEAD не видит — картограф уже врёт, хотя история чиста.
-  dirty="$(git status --porcelain -- "$LEAN_DIR" 2>/dev/null | wc -l)"
-  [ "$dirty" -gt 0 ] && echo "  плюс незакоммиченных .lean в дереве: $dirty"
+  note "derived registry: $DEP_STATUS — repair: python3 docs/cartographer/inventory.py --scope RouteB"
 fi
 
 # ── 10a. Опоры и канаты: сколько шагов до жёсткости каждой опоры крыши ─────────

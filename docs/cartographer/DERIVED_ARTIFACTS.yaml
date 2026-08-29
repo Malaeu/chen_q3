@@ -1,0 +1,35 @@
+schema: q3_derived_artifact_registry.v1
+artifacts:
+  - id: routeb-inventory
+    detector: GIT_DERIVATION
+    inputs:
+      - q3.lean.aristotle/Q3/Proofs/RouteB/**/*.lean
+      - docs/cartographer/inventory.py
+    outputs: [docs/cartographer/inventory_RouteB.json]
+    generator_tool: routeb-inventory
+    repair_command: [python3, docs/cartographer/inventory.py, --scope, RouteB]
+    authority: DERIVED_SOURCE_INVENTORY_NOT_LEAN_TRUTH
+    cost_tier: CHEAP
+
+  - id: routeb-atoms
+    detector: GIT_DERIVATION
+    inputs:
+      - q3.lean.aristotle/Q3/Proofs/RouteB/**/*.lean
+      - docs/cartographer/inventory_RouteB.json
+      - docs/cartographer/atoms.py
+    outputs: [docs/cartographer/atoms_RouteB.json]
+    generator_tool: atom-index
+    repair_command: [python3, docs/cartographer/atoms.py, docs/cartographer/atoms_RouteB.json]
+    authority: DERIVED_EXTERNAL_ATOM_INDEX
+    cost_tier: MEDIUM
+
+  - id: litreview-needs-cards
+    detector: NEEDS_CARDS_CONSISTENCY
+    inputs:
+      - docs/routeB_bus/litreview/REFERENCES.md
+      - docs/routeB_bus/litreview/*_USAGE_CARDS.md
+    outputs: [docs/routeB_bus/litreview/REFERENCES.md]
+    generator_tool: null
+    repair_command: null
+    authority: MANUAL_SEMANTIC_MAPPING
+    cost_tier: MANUAL
