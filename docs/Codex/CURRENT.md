@@ -2,10 +2,10 @@
 
 ```yaml
 schema: q3_codex_current_task.v1
-status: CLOSED
-task_file: null
-source_commit: null
-updated_at: 2026-08-28T19:47:56+02:00
+status: ACTIVE
+task_file: docs/Codex/TASK_2026-08-29_goal058_r2_moving_krylov_feshbach.md
+source_commit: 02e60cc4177e9ec45b3571dfd082253d20f12f92
+updated_at: 2026-08-29T18:28:00+02:00
 updated_by: CODEX_ON_OWNER_INSTRUCTION
 ```
 
