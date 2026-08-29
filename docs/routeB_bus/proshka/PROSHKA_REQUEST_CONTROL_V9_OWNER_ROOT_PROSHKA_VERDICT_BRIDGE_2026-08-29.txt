@@ -1,0 +1,92 @@
+# PROSHKA REQUEST: temporary owner-root bridge for the existing W5 semantic verdict
+
+## Address lock
+
+REPOSITORY: Malaeu/chen_q3
+BRANCH: rh_clean
+SOURCE_HEAD: 261e79a6
+TRANSPORT_VERDICT_COMMIT: 66533ae2a009c7d495aeee2b842c85e21b2d2da0
+TRANSPORT_VERDICT_BLOB: 8ff0d94b4d6a66cfd6d02e262e36ad8d6b28fdc5
+W5_SEMANTIC_VERDICT_COMMIT: dd469b72ee3118a0257dd19296f3db7a02a05518
+W5_SEMANTIC_VERDICT_BLOB: b635ba98b2c465ffe271b0775afd174f74953c19
+CURRENT_ATTESTATION_ID: ATTEST_GOAL058_W5_B635BA98B2C465FFE271B0775AFD174F74953C19_V1
+CURRENT_RECEIPT_SHA256: e02d953cc4e894da1a18ce6a3ab546f83346c5a6e568c4ceeb32480c741eee38
+CURRENT_RECEIPT_GIT_BLOB: 3fb888192ff4f1e43d3dbe27bca3c2c3e6b32547
+CURRENT_MAC_RESOLVER_IMPLEMENTATION: 261e79a6
+
+## Operational fact requiring a ruling
+
+The independent Linux auditor host is physically unavailable until Monday.
+The owner has explicitly rejected idling the Mac executor until then and has
+ordered an honest immediate workaround.  The Mac resolver implementation and
+all mandatory plants are complete.  Production startup is blocked only by the
+missing detached signature and root trust installation.
+
+Neither the W5 semantic verdict commit nor the cross-host transport verdict
+commit contains a Git gpgsig header.  `git verify-commit` exits 1 for both.
+Therefore Codex refuses to reinterpret either unsigned commit as the existing
+LINUX_INDEPENDENT_SEMANTIC_AUDITOR cryptographic authority, and refuses to mint
+or possess a key under that principal.
+
+This request does not reopen W5 mathematics.  It asks only for a temporary,
+truthfully named authority bridge that binds the already-written Proshka
+verdict to the already-canonical receipt while keeping the private key outside
+Codex.
+
+## Proposed bridge
+
+OPERATIVE_CANDIDATE: TRY_CONTROL_V9_OWNER_ROOT_PROSHKA_VERDICT_BRIDGE
+
+1. Keep Proshka as the semantic reviewer.  No new mathematical judgment is
+   made by Codex or by the owner-root signer.
+2. Introduce a canonical bridge manifest whose signed bytes bind all of:
+   - repository and branch;
+   - W5 semantic verdict commit and exact verdict Git blob;
+   - transport verdict commit and exact verdict Git blob;
+   - attestation ID;
+   - canonical receipt SHA256 and Git blob;
+   - explicit role OWNER_ROOT_PROSHKA_VERDICT_TRANSPORT;
+   - an expiry no later than 2026-08-31T23:59:59Z.
+3. The owner, not Codex, creates and controls an Ed25519 key in a root-owned
+   Mac path.  Codex must never read, print, commit, or transmit the private key.
+4. The owner performs the one privileged signing action only after visibly
+   comparing the manifest hashes with this request and the live Proshka chat.
+5. The Mac resolver verifies the root-owned trust anchor, the detached SSHSIG,
+   the canonical bridge manifest, the exact verdict blobs, and the unchanged
+   existing receipt validator before startup can pass.
+6. The principal is never LINUX_INDEPENDENT_SEMANTIC_AUDITOR.  The provenance
+   remains explicit: Proshka supplied the semantic verdict; owner-root supplied
+   local transport authentication.
+7. The bridge fails closed after expiry and is removed when the independent
+   Linux signature is installed.  It cannot admit any other quarantine entry.
+
+## Required adjudication
+
+Return exactly one PRIMARY class:
+
+- TRY_CONTROL_V9_OWNER_ROOT_PROSHKA_VERDICT_BRIDGE
+- REPAIR_CONTROL_V9_OWNER_ROOT_PROSHKA_VERDICT_BRIDGE
+- KILL_CONTROL_V9_OWNER_ROOT_PROSHKA_VERDICT_BRIDGE
+
+If TRY or REPAIR, freeze all of the following:
+
+- whether Control version 9 may remain or must be bumped;
+- exact bridge-manifest schema and canonical bytes;
+- exact signer principal and SSHSIG namespace;
+- exact root-owned key, allowed-signers, and revocation paths on Mac;
+- whether the live-chat owner comparison is a required ceremony receipt;
+- maximum expiry and cleanup semantics;
+- resolver selection order and exact failure codes;
+- mandatory adversarial plants;
+- whether successful bridge validation authorizes strict startup and the next
+  already-authorized non-RH execution node.
+
+## Frozen boundaries
+
+- Do not change the W5 theorem verdict or admitted scope.
+- Do not claim that the owner is the independent Linux semantic auditor.
+- Do not give Codex access to any private signing key.
+- Do not silently weaken exact-field validation or all-entry validation.
+- Do not authorize W5 cofinal closure, Route promotion, or an RH claim.
+- If no honest owner-root bridge is admissible, KILL it explicitly and identify
+  the strongest control-only work that remains executable before Monday.
