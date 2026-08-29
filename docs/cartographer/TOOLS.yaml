@@ -194,6 +194,7 @@ tool_families:
   startup_and_control:
     summary: Read-only orientation and physical-state selection.
     front_door: codex-session-start
+    workflow_front_door: workflow-runtime
     coverage: [specs_docs/session_start.sh, orchestrator/spine.py, orchestrator/three_body_loop.py, "**/routeb_status.py"]
     tools:
       - id: codex-session-start
@@ -296,6 +297,52 @@ tool_families:
         authority: PHYSICAL_GOAL_SELECTION_AND_GOAL_RUN_SCHEMA_NOT_PROOF_OR_DISPATCH
         records_to: stdout
         last_verified: 2026-08-13
+
+      - id: workflow-runtime
+        status: ENABLED
+        audience: [CODEX, HUMAN]
+        mode: READ_ONLY
+        path: orchestrator/workflow_runtime.py
+        invoke: python3 orchestrator/workflow_runtime.py plan
+        alternatives:
+          - python3 orchestrator/workflow_runtime.py run --through close-node
+          - python3 orchestrator/workflow_runtime.py close-phase
+          - python3 orchestrator/workflow_runtime.py close-session
+        trigger: One stateless lifecycle plan or routing to an existing close entry.
+        writes: false
+        approval: NONE_FOR_PLAN_CLOSE_SUBCOMMAND_INHERITS_CALLEE_SCOPE
+        authority: STATELESS_LIFECYCLE_COMPILER_NOT_SELECTOR_OR_POLICY_KERNEL
+        records_to: stdout
+        validation: test_workflow_runtime plus deterministic double-plan shadow check
+        last_verified: 2026-08-29
+
+      - id: workflow-session-close
+        status: ENABLED
+        audience: [CODEX, HUMAN]
+        mode: WRITES_DERIVED
+        path: specs_docs/session_close.py
+        invoke: python3 orchestrator/workflow_runtime.py close-session
+        trigger: Incremental session close after scoped work.
+        writes: true
+        approval: EXACT_OWNED_PATHS_AND_OPTIONAL_PROTOCOL_OUTPUT
+        authority: DERIVED_REPAIR_KERNEL_CHECK_AND_CLOSE_SKELETON_NOT_GIT_DELIVERY
+        records_to: optional explicit protocol path and registered derived outputs
+        validation: test_session_close
+        last_verified: 2026-08-29
+
+      - id: workflow-phase-close
+        status: ENABLED
+        audience: [CODEX, HUMAN]
+        mode: WRITES_DERIVED
+        path: specs_docs/phase_close.py
+        invoke: python3 orchestrator/workflow_runtime.py close-phase
+        trigger: Phase transition after node closure.
+        writes: true
+        approval: EXACT_PHASE_SCOPE
+        authority: GATE_ORCHESTRATION_AND_DEBT_VISIBILITY_NOT_SEMANTIC_JUDGMENT
+        records_to: stdout or explicit JSON receipt plus registered derived outputs
+        validation: test_phase_close
+        last_verified: 2026-08-29
 
       - id: three-body-loop
         status: ENABLED

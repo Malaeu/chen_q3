@@ -46,6 +46,20 @@ pasted (thin UI, fat repo).
 
 ## Related
 
+The stateless workflow front door is:
+
+```bash
+python3 orchestrator/workflow_runtime.py plan
+python3 orchestrator/workflow_runtime.py run --through close-node
+python3 orchestrator/workflow_runtime.py close-phase
+python3 orchestrator/workflow_runtime.py close-session
+```
+
+It compiles the existing physical selector, registered tools, derived-artifact
+freshness, gates, and manual debt. It does not create another lifecycle state,
+commit, push, publish, promote, or make an RH claim. The older selector and
+close scripts remain directly callable compatibility entry points.
+
 - `docs/Codex/CURRENT.md` — the single startup-readable task pointer
 - `docs/Codex/TASK_*.md` — the assignments themselves
 - `docs/CODEX_HOME_HANDOFF_2026-08-05.md` — the earlier owner→Codex handoff
