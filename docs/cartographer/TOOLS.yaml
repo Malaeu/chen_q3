@@ -306,13 +306,17 @@ tool_families:
         alternatives:
           - python3 orchestrator/three_body_loop.py request-validate <CODEX_REQ.md>
           - python3 orchestrator/three_body_loop.py launch <pinned-v9-arguments>
-        trigger: Control-v9 validation, request CAS, or one exact pinned wake event.
+        trigger: >-
+          Control-v9 validation, Darwin signed-offline or Linux broker receipt
+          resolution, request CAS, or one exact pinned wake event.
         writes: true
         approval: ACTIVE_CONTROL_V9_TRANSACTION_OR_EXTERNALLY_RESOLVED_BOUNDED_LEASE
         authority: QUARANTINE_REQUEST_LIFECYCLE_AND_PINNED_LAUNCH_NOT_SEMANTIC_ATTESTATION
         records_to: [orchestrator/state/SEMANTIC_QUARANTINE.json, CODEX_REQ_STATE_*.yaml, pinned final reply]
-        validation: All eight mandatory control-v9 plants plus crash and mutation plants.
-        last_verified: 2026-08-21
+        validation: >-
+          test_signed_offline_semantic_attestation plus all original control-v9,
+          crash, mutation, broker, and goal-runtime plants.
+        last_verified: 2026-08-29
 
       - id: w5-budget-probe
         status: ENABLED

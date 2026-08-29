@@ -24,7 +24,9 @@ import hashlib
 import json
 import os
 import re
+import shlex
 import socket
+import stat
 import subprocess
 import sys
 import tempfile
@@ -358,6 +360,20 @@ SEMANTIC_ATTESTATION_ISSUER = "LINUX_INDEPENDENT_SEMANTIC_AUDITOR"
 _SEMANTIC_ATTESTATION_TIMEOUT = 5.0
 _SEMANTIC_ATTESTATION_MAX_BYTES = 262144
 
+SIGNED_OFFLINE_BUNDLE_DIR = REPO_ROOT / "orchestrator" / "attestations" / "control-v9"
+SIGNED_OFFLINE_ALLOWED_SIGNERS = Path(
+    "/etc/q3-control-v9/semantic_attestation_allowed_signers"
+)
+SIGNED_OFFLINE_REVOCATIONS = Path(
+    "/etc/q3-control-v9/semantic_attestation_revoked_ids.v1.json"
+)
+SIGNED_OFFLINE_SSH_KEYGEN = Path("/usr/bin/ssh-keygen")
+SIGNED_OFFLINE_NAMESPACE = "q3-control-v9-semantic-attestation"
+SIGNED_OFFLINE_PRINCIPAL = SEMANTIC_ATTESTATION_ISSUER
+SIGNED_OFFLINE_TRUST_OWNER_UID = 0
+SIGNED_OFFLINE_REVOCATION_FIELDS = frozenset({"schema", "revoked_attestation_ids"})
+_SIGNED_OFFLINE_SIGNATURE_MAX_BYTES = 65536
+
 
 def resolve_linux_semantic_attestation(
     attestation_id: str,
@@ -410,6 +426,160 @@ def resolve_linux_semantic_attestation(
     if not isinstance(receipt, dict):
         return None
     return receipt
+
+
+def _require_secure_trust_file(path: Path) -> bytes:
+    code = "CONTROL_V9_OFFLINE_ATTESTATION_TRUST_INVALID"
+    try:
+        parent = path.parent.lstat()
+        info = path.lstat()
+    except OSError as exc:
+        _fail(code, str(exc))
+    if stat.S_ISLNK(parent.st_mode) or not stat.S_ISDIR(parent.st_mode):
+        _fail(code, f"unsafe trust directory: {path.parent}")
+    if parent.st_uid != SIGNED_OFFLINE_TRUST_OWNER_UID or parent.st_mode & 0o022:
+        _fail(code, f"unsafe trust directory ownership or mode: {path.parent}")
+    if stat.S_ISLNK(info.st_mode) or not stat.S_ISREG(info.st_mode):
+        _fail(code, f"trust path is not a regular file: {path}")
+    if info.st_uid != SIGNED_OFFLINE_TRUST_OWNER_UID or info.st_mode & 0o022:
+        _fail(code, f"unsafe trust file ownership or mode: {path}")
+    try:
+        return path.read_bytes()
+    except OSError as exc:
+        _fail(code, str(exc))
+
+
+def _validate_allowed_signers() -> None:
+    code = "CONTROL_V9_OFFLINE_ATTESTATION_TRUST_INVALID"
+    raw = _require_secure_trust_file(SIGNED_OFFLINE_ALLOWED_SIGNERS)
+    try:
+        text = raw.decode("utf-8")
+    except UnicodeDecodeError as exc:
+        _fail(code, str(exc))
+    active = [line.strip() for line in text.splitlines() if line.strip() and not line.lstrip().startswith("#")]
+    if len(active) != 1:
+        _fail(code, "allowed-signers must contain exactly one active line")
+    try:
+        fields = shlex.split(active[0], comments=True, posix=True)
+    except ValueError as exc:
+        _fail(code, str(exc))
+    expected_namespace = f"namespaces={SIGNED_OFFLINE_NAMESPACE}"
+    if (
+        len(fields) < 4
+        or fields[0] != SIGNED_OFFLINE_PRINCIPAL
+        or fields[1] != expected_namespace
+        or fields[2] != "ssh-ed25519"
+        or not fields[3]
+    ):
+        _fail(code, "allowed-signers principal, namespace, or key type drift")
+
+
+def _load_offline_revocations() -> set[str]:
+    code = "CONTROL_V9_OFFLINE_ATTESTATION_TRUST_INVALID"
+    raw = _require_secure_trust_file(SIGNED_OFFLINE_REVOCATIONS)
+    data = _load_unique_json_bytes(raw, code=code)
+    data = _require_exact_fields(
+        data,
+        SIGNED_OFFLINE_REVOCATION_FIELDS,
+        code=code,
+        label="offline attestation revocations",
+    )
+    if data["schema"] != "q3_semantic_attestation_revocations.v1":
+        _fail(code, "unsupported revocation schema")
+    revoked = data["revoked_attestation_ids"]
+    if not isinstance(revoked, list):
+        _fail(code, "revoked_attestation_ids is not a list")
+    if len(set(revoked)) != len(revoked):
+        _fail(code, "duplicate revoked attestation ID")
+    for attestation_id in revoked:
+        if not isinstance(attestation_id, str) or TOKEN_RE.fullmatch(attestation_id) is None:
+            _fail(code, "invalid revoked attestation ID")
+    return set(revoked)
+
+
+def _require_tracked_bundle_file(path: Path, *, max_bytes: int) -> bytes:
+    code = "CONTROL_V9_OFFLINE_ATTESTATION_BUNDLE_MISSING"
+    try:
+        info = path.lstat()
+    except OSError as exc:
+        _fail(code, str(exc))
+    if stat.S_ISLNK(info.st_mode) or not stat.S_ISREG(info.st_mode):
+        _fail(code, f"bundle path is not a regular file: {path}")
+    if info.st_size > max_bytes:
+        _fail(code, f"bundle file is too large: {path}")
+    try:
+        return path.read_bytes()
+    except OSError as exc:
+        _fail(code, str(exc))
+
+
+def resolve_signed_offline_semantic_attestation(attestation_id: str) -> dict[str, Any]:
+    """Resolve one auditor-signed receipt without a live Linux dependency."""
+    if not isinstance(attestation_id, str) or TOKEN_RE.fullmatch(attestation_id) is None:
+        _fail("CONTROL_V9_OFFLINE_ATTESTATION_RECEIPT_INVALID", "invalid attestation ID")
+
+    receipt_path = SIGNED_OFFLINE_BUNDLE_DIR / f"{attestation_id}.receipt.json"
+    signature_path = SIGNED_OFFLINE_BUNDLE_DIR / f"{attestation_id}.receipt.sshsig"
+    raw = _require_tracked_bundle_file(
+        receipt_path, max_bytes=_SEMANTIC_ATTESTATION_MAX_BYTES
+    )
+    _require_tracked_bundle_file(
+        signature_path, max_bytes=_SIGNED_OFFLINE_SIGNATURE_MAX_BYTES
+    )
+
+    _validate_allowed_signers()
+    revoked = _load_offline_revocations()
+    try:
+        verification = subprocess.run(
+            [
+                str(SIGNED_OFFLINE_SSH_KEYGEN),
+                "-Y",
+                "verify",
+                "-f",
+                str(SIGNED_OFFLINE_ALLOWED_SIGNERS),
+                "-I",
+                SIGNED_OFFLINE_PRINCIPAL,
+                "-n",
+                SIGNED_OFFLINE_NAMESPACE,
+                "-s",
+                str(signature_path),
+            ],
+            input=raw,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            check=False,
+            timeout=5,
+        )
+    except (OSError, subprocess.SubprocessError) as exc:
+        _fail("CONTROL_V9_OFFLINE_ATTESTATION_SIGNATURE_INVALID", str(exc))
+    if verification.returncode != 0:
+        _fail("CONTROL_V9_OFFLINE_ATTESTATION_SIGNATURE_INVALID", "SSHSIG verify failed")
+
+    receipt = _load_unique_json_bytes(
+        raw, code="CONTROL_V9_OFFLINE_ATTESTATION_RECEIPT_INVALID"
+    )
+    if raw != _canonical_json_bytes(receipt) + b"\n":
+        _fail(
+            "CONTROL_V9_OFFLINE_ATTESTATION_RECEIPT_INVALID",
+            "receipt bytes are not canonical with one final LF",
+        )
+    if receipt.get("attestation_id") != attestation_id:
+        _fail("CONTROL_V9_OFFLINE_ATTESTATION_RECEIPT_INVALID", "attestation ID drift")
+    if attestation_id in revoked:
+        _fail("CONTROL_V9_OFFLINE_ATTESTATION_ID_REVOKED", attestation_id)
+    return receipt
+
+
+def resolve_semantic_attestation(attestation_id: str) -> dict[str, Any] | None:
+    """Select the fixed authority transport from the trusted host platform."""
+    if sys.platform == "darwin":
+        return resolve_signed_offline_semantic_attestation(attestation_id)
+    if sys.platform.startswith("linux"):
+        return resolve_linux_semantic_attestation(attestation_id)
+    _fail(
+        "CONTROL_V9_OFFLINE_ATTESTATION_ALL_ENTRY_VALIDATION_FAILED",
+        f"unsupported platform: {sys.platform}",
+    )
 
 
 def _canonical_yaml_bytes(value: Mapping[str, Any]) -> bytes:
@@ -625,6 +795,8 @@ def _validate_semantic_attestation(
         _fail(code, "no independent semantic attestation resolver")
     try:
         receipt = resolver(attestation_id)
+    except ThreeBodyViolation:
+        raise
     except Exception as exc:
         _fail(code, f"semantic resolver failed: {exc}")
     receipt = _require_exact_fields(
@@ -888,15 +1060,29 @@ def validate_state(
     for field in ("entries", "event_ledger", "tactical_repairs"):
         if not isinstance(state[field], list):
             _fail(code, f"{field} is not a list")
-    entries = [
-        _validate_quarantine_entry(
-            row,
-            repo_root=repo_root,
-            semantic_attestation_resolver=semantic_attestation_resolver,
-            supplier_preflight_resolver=supplier_preflight_resolver,
-        )
-        for row in state["entries"]
-    ]
+    entries = []
+    for row in state["entries"]:
+        try:
+            entries.append(
+                _validate_quarantine_entry(
+                    row,
+                    repo_root=repo_root,
+                    semantic_attestation_resolver=semantic_attestation_resolver,
+                    supplier_preflight_resolver=supplier_preflight_resolver,
+                )
+            )
+        except ThreeBodyViolation as exc:
+            if (
+                exc.code.startswith("CONTROL_V9_OFFLINE_ATTESTATION_")
+                and exc.code
+                != "CONTROL_V9_OFFLINE_ATTESTATION_ALL_ENTRY_VALIDATION_FAILED"
+            ):
+                entry_id = row.get("entry_id") if isinstance(row, dict) else "UNKNOWN"
+                _fail(
+                    "CONTROL_V9_OFFLINE_ATTESTATION_ALL_ENTRY_VALIDATION_FAILED",
+                    f"{entry_id}: {exc.code}",
+                )
+            raise
     if len({row["entry_id"] for row in entries}) != len(entries):
         _fail(code, "duplicate quarantine entry ID")
     pending = [row for row in entries if row["status"] in {"SOURCE_WRITTEN", "KERNEL_GREEN"}]
@@ -952,7 +1138,7 @@ def validate_repository_gate(
     state_path: Path | None = None,
     require_dispatch_clear: bool = False,
     semantic_attestation_resolver: Callable[[str], dict[str, Any] | None] | None = (
-        resolve_linux_semantic_attestation
+        resolve_semantic_attestation
     ),
     supplier_preflight_resolver: Callable[[str], str | None] | None = None,
     autonomy_lease_resolver: Callable[[str], dict[str, Any] | None] | None = None,
@@ -1339,7 +1525,7 @@ def record_tactical_repair_attempt(
         state = load_state(
             state_path,
             repo_root=state_path.parents[2],
-            semantic_attestation_resolver=resolve_linux_semantic_attestation,
+            semantic_attestation_resolver=resolve_semantic_attestation,
         )
         matches = [row for row in state["tactical_repairs"] if row["repair_id"] == repair_id]
         if matches:
@@ -1848,7 +2034,7 @@ def launch_pinned_session(
             reread = load_state(
                 state_path,
                 repo_root=repo_root,
-                semantic_attestation_resolver=resolve_linux_semantic_attestation,
+                semantic_attestation_resolver=resolve_semantic_attestation,
             )
             existing = _find_event(reread, wake)
             if existing is not None and all(existing[field] == wake[field] for field in wake):
@@ -1994,7 +2180,7 @@ def recover_launch_state(
     state = load_state(
         state_path,
         repo_root=repo_root,
-        semantic_attestation_resolver=resolve_linux_semantic_attestation,
+        semantic_attestation_resolver=resolve_semantic_attestation,
     )
     current = _find_event(state, wake)
     if current is None:
@@ -2101,7 +2287,7 @@ def materialize_semantic_admission(
     with the same resolver before it replaces the tracked state.
     """
     code = "SEMANTIC_ADMISSION_REFUSED"
-    resolver = semantic_attestation_resolver or resolve_linux_semantic_attestation
+    resolver = semantic_attestation_resolver or resolve_semantic_attestation
     with _plain_flock(lock_path):
         if not state_path.is_file():
             _fail(code, f"missing state: {state_path}")
@@ -2231,7 +2417,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             state = load_state(
                 args.state,
                 repo_root=REPO_ROOT,
-                semantic_attestation_resolver=resolve_linux_semantic_attestation,
+                semantic_attestation_resolver=resolve_semantic_attestation,
             )
             print(
                 "THREE_BODY_STATE_VALID "

@@ -8,6 +8,7 @@ import subprocess
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 from orchestrator import kb_migrate_progress_log, spine, tools_census
 
@@ -182,7 +183,17 @@ class ToolManifestMemoryPlants(unittest.TestCase):
         self.assertIn("all enabled external Lean bases", proc.stdout)
 
     def test_spine_view_exposes_recent_branch_decisions(self) -> None:
-        view = spine.build()
+        validated_gate = {
+            "schema": "q3_semantic_quarantine.v1",
+            "entries": [],
+            "active_lease": None,
+        }
+        with mock.patch.object(
+            spine._three_body_loop,
+            "validate_repository_gate",
+            return_value=validated_gate,
+        ):
+            view = spine.build()
         self.assertIn("Recent branch decisions (Progress_Log.md)", view)
         self.assertIn("манифест соединён с обратным поиском", view)
         self.assertIn("q3_tool_manifest.v2", view)
