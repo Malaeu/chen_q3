@@ -1154,7 +1154,13 @@ def validate_repository_gate(
     request_states: list[dict[str, Any]] = []
     request_root = repo_root / "docs" / "routeB_bus"
     if request_root.is_dir():
-        for request_state_path in sorted(request_root.rglob("CODEX_REQ_STATE_*.yaml")):
+        request_state_paths = sorted(request_root.rglob("CODEX_REQ_STATE_*.yaml"))
+        first_parent_commits = (
+            _first_parent_commits(repo_root, code="CODEX_REQUEST_STATE_INVALID")
+            if request_state_paths
+            else ()
+        )
+        for request_state_path in request_state_paths:
             suffix = request_state_path.name.removeprefix("CODEX_REQ_STATE_").removesuffix(".yaml")
             request_path = request_state_path.with_name(f"CODEX_REQ_{suffix}.md")
             request_states.append(
@@ -1162,6 +1168,7 @@ def validate_repository_gate(
                     request_path,
                     request_state_path,
                     repo_root=repo_root,
+                    first_parent_commits=first_parent_commits,
                 )
             )
     validate_request_open_set(request_states)
@@ -1294,8 +1301,73 @@ def validate_request_open_set(states: Sequence[object]) -> list[dict[str, Any]]:
     return validated
 
 
+def _first_parent_commits(repo_root: Path, *, code: str) -> tuple[str, ...]:
+    """Return the exact first-parent history once for one repository gate run."""
+    try:
+        commits = tuple(
+            _git_output(
+                repo_root,
+                "rev-list",
+                "--first-parent",
+                "--reverse",
+                "HEAD",
+                code=code,
+            )
+            .decode("ascii")
+            .splitlines()
+        )
+    except UnicodeDecodeError as exc:
+        _fail(code, f"first-parent history is not ASCII: {exc}")
+    if not commits or any(GIT_OBJECT_RE.fullmatch(commit) is None for commit in commits):
+        _fail(code, "first-parent history is empty or malformed")
+    return commits
+
+
+def _first_commit_with_blob(
+    *,
+    repo_root: Path,
+    commits: Sequence[str],
+    path: str,
+    expected_blob: str,
+    code: str,
+) -> str | None:
+    """Find the first commit whose exact path has ``expected_blob`` in one Git batch.
+
+    The former implementation spawned ``git rev-parse`` once for every commit.
+    ``cat-file --batch-check`` asks the same treeish:path questions through one
+    Git process, preserving first-parent order, merge states, deletions, and
+    blob reappearance semantics.
+    """
+    if not commits:
+        return None
+    if "\n" in path or "\r" in path:
+        _fail(code, "request path contains a batch-protocol line break")
+    queries = "".join(f"{commit}:{path}\n" for commit in commits)
+    result = subprocess.run(
+        ["git", "cat-file", "--batch-check=%(objectname)"],
+        cwd=repo_root,
+        input=queries,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+    )
+    if result.returncode != 0:
+        _fail(code, f"batched request-history lookup failed: {result.stderr.strip()}")
+    rows = result.stdout.splitlines()
+    if len(rows) != len(commits):
+        _fail(code, "batched request-history lookup returned the wrong row count")
+    for commit, row in zip(commits, rows, strict=True):
+        if row == expected_blob:
+            return commit
+    return None
+
+
 def validate_request_file_binding(
-    request_path: Path, state_path: Path, *, repo_root: Path
+    request_path: Path,
+    state_path: Path,
+    *,
+    repo_root: Path,
+    first_parent_commits: Sequence[str] | None = None,
 ) -> dict[str, Any]:
     code = "CODEX_REQUEST_STATE_INVALID"
     try:
@@ -1323,22 +1395,16 @@ def validate_request_file_binding(
         code=code,
         field="SOURCE_COMMIT",
     )
-    first_commit: str | None = None
-    for commit in (
-        _git_output(repo_root, "rev-list", "--first-parent", "--reverse", "HEAD", code=code)
-        .decode("ascii")
-        .splitlines()
-    ):
-        result = subprocess.run(
-            ["git", "rev-parse", f"{commit}:{request_relative}"],
-            cwd=repo_root,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.DEVNULL,
-            text=True,
-        )
-        if result.returncode == 0 and result.stdout.strip() == state["request_git_blob"]:
-            first_commit = commit
-            break
+    commits = first_parent_commits
+    if commits is None:
+        commits = _first_parent_commits(repo_root, code=code)
+    first_commit = _first_commit_with_blob(
+        repo_root=repo_root,
+        commits=commits,
+        path=request_relative,
+        expected_blob=state["request_git_blob"],
+        code=code,
+    )
     if first_commit != state["request_introducing_commit"]:
         _fail(code, "request_introducing_commit is not the first canonical appearance")
     return state

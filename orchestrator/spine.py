@@ -1594,8 +1594,12 @@ def validate_semantic_index(
     return data
 
 
-def build_state() -> dict[str, object]:
-    validation = validate_p9a()
+def build_state(
+    validation: dict[str, object] | None = None,
+) -> dict[str, object]:
+    """Build the derived state, reusing an exact validation from this run."""
+    if validation is None:
+        validation = validate_p9a()
     runtime = _read_runtime()
     if OBSERVABILITY_DB.is_file():
         observability = _observability.summary_data(OBSERVABILITY_DB)
@@ -1842,9 +1846,15 @@ def build(state: dict[str, object] | None = None) -> str:
     return "\n".join(parts) + "\n"
 
 
-def write_outputs() -> dict[str, object]:
-    state = build_state()
-    view = build(state)
+def write_outputs(
+    state: dict[str, object] | None = None,
+    view: str | None = None,
+) -> dict[str, object]:
+    """Write one already-validated snapshot without repeating the repository gate."""
+    if state is None:
+        state = build_state()
+    if view is None:
+        view = build(state)
     OUT.parent.mkdir(parents=True, exist_ok=True)
     STATE_OUT.write_text(
         json.dumps(state, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
@@ -2034,7 +2044,7 @@ def main() -> int:
         validation = validate_p9a()
         if args.strict and args.reason != "sensor-refresh":
             validate_semantic_index()
-        state = build_state()
+        state = build_state(validation)
         view = build(state)
     except ControlViolation as exc:
         print(exc, file=sys.stderr)
@@ -2042,7 +2052,7 @@ def main() -> int:
     if args.stdout:
         sys.stdout.write(view)
     elif not args.refresh or refresh_writes_spine_outputs(args.reason):
-        write_outputs()
+        write_outputs(state, view)
         print(f"wrote {STATE_OUT}, {OUT}, {META_CORPUS_OUT}")
     else:
         print(f"SPINE_REFRESH_COMPLETE reason={args.reason}")
