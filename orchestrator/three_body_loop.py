@@ -1383,15 +1383,53 @@ def validate_tactical_repair_candidate(
 def _boot_id() -> str:
     try:
         return Path("/proc/sys/kernel/random/boot_id").read_text(encoding="ascii").strip()
-    except OSError as exc:
-        _fail("WRITER_LOCK_IDENTITY_INVALID", str(exc))
+    except OSError:
+        pass
+    if sys.platform == "darwin":
+        try:
+            result = subprocess.run(
+                ["/usr/sbin/sysctl", "-n", "kern.boottime"],
+                check=False,
+                capture_output=True,
+                text=True,
+                encoding="ascii",
+                timeout=2,
+            )
+        except (OSError, subprocess.SubprocessError) as exc:
+            _fail("WRITER_LOCK_IDENTITY_INVALID", str(exc))
+        value = result.stdout.strip()
+        if result.returncode != 0 or not value:
+            _fail("WRITER_LOCK_IDENTITY_INVALID", "cannot read Darwin boot time")
+        return f"darwin-{hashlib.sha256(value.encode('ascii')).hexdigest()}"
+    _fail("WRITER_LOCK_IDENTITY_INVALID", "cannot read host boot identity")
 
 
 def _process_start_time(pid: int) -> str:
     try:
         raw = Path(f"/proc/{pid}/stat").read_text(encoding="ascii")
-    except OSError as exc:
-        _fail("WRITER_LOCK_IDENTITY_INVALID", str(exc))
+    except OSError:
+        raw = ""
+    if not raw and sys.platform == "darwin":
+        env = os.environ.copy()
+        env["LC_ALL"] = "C"
+        try:
+            result = subprocess.run(
+                ["/bin/ps", "-o", "lstart=", "-p", str(pid)],
+                check=False,
+                capture_output=True,
+                text=True,
+                encoding="ascii",
+                env=env,
+                timeout=2,
+            )
+        except (OSError, subprocess.SubprocessError) as exc:
+            _fail("WRITER_LOCK_IDENTITY_INVALID", str(exc))
+        value = result.stdout.strip()
+        if result.returncode != 0 or not value:
+            _fail("WRITER_LOCK_IDENTITY_INVALID", f"cannot read Darwin process {pid}")
+        return f"darwin-{hashlib.sha256(value.encode('ascii')).hexdigest()}"
+    if not raw:
+        _fail("WRITER_LOCK_IDENTITY_INVALID", f"cannot read /proc/{pid}/stat")
     right = raw.rsplit(")", 1)
     if len(right) != 2:
         _fail("WRITER_LOCK_IDENTITY_INVALID", f"malformed /proc/{pid}/stat")
