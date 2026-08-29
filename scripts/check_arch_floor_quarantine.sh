@@ -101,7 +101,7 @@ printf 'build %s\n' "${modules[*]}"
 env -u LD_LIBRARY_PATH lake build "${modules[@]}"
 
 for module in "${modules[@]}"; do
-  file="${module//./\/}.lean"
+  file="${module//.//}.lean"
   printf 'lean %s\n' "$file"
   env -u LD_LIBRARY_PATH lake env lean "$file"
 done

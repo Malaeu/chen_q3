@@ -32,3 +32,8 @@ plants cover three lifecycle closure shapes, host-independent logical plans,
 fail-closed missing tools and stale artifacts, deterministic repeated plans,
 foreign-dirty preservation, zero Proshka calls on ordinary close, and the ban on
 automatic delivery or RH claims.
+
+The final phase-close acceptance run also exposed a pre-existing macOS Bash 3.2
+path-conversion defect in `check_arch_floor_quarantine.sh`: its escaped slash was
+preserved literally. The portable parameter expansion now maps `Q3.Axioms` to
+`Q3/Axioms.lean` on both registered hosts before the gate is rerun.
