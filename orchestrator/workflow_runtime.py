@@ -2,10 +2,12 @@
 """Stateless front door for the existing Q3 goal lifecycle.
 
 This module compiles the authoritative selector, tool manifest, derived-artifact
-registry, and close helpers into one deterministic plan.  Its run command then
-executes the registered, explicitly scoped transition and emits receipts.  It
-owns no durable runtime state and never commits, pushes, publishes externally,
-promotes, or makes an RH claim.
+registry, review transport contract, and close helpers into one deterministic
+plan.  Its run command then executes the registered, explicitly scoped
+transition and emits receipts.  It owns no durable runtime state and never
+commits, pushes, publishes externally, promotes, or makes an RH claim.  Browser
+transport is performed by the current Codex body after ``review-plan`` has
+validated the exact attachment; compiling a plan never claims delivery.
 """
 
 from __future__ import annotations
@@ -45,6 +47,12 @@ RUNTIME_FINGERPRINT_PATHS = (
     Path("q3.lean.aristotle/.qmd_cache/semantic_index_receipt.json"),
 )
 
+REVIEW_INSTRUCTION = (
+    "Read the attached controlling request in full. Treat the .txt attachment as the "
+    "authoritative byte-exact payload. Follow its required response schema and return "
+    "exactly the requested verdict. Same living phase chat. Do not use Answer now."
+)
+
 COMMON_TOOLS = (
     "workflow-runtime",
     "codex-session-start",
@@ -81,6 +89,109 @@ def _git(repo: Path, *args: str) -> str:
     return subprocess.run(
         ["git", *args], cwd=repo, check=True, capture_output=True, text=True
     ).stdout.strip()
+
+
+def _relative_repo_path(repo: Path, path: Path) -> str:
+    try:
+        return path.resolve().relative_to(repo.resolve()).as_posix()
+    except ValueError as exc:
+        raise WorkflowRuntimeError(f"REVIEW_ATTACHMENT_OUTSIDE_REPO:{path}") from exc
+
+
+def compile_review_dispatch(
+    repo: Path,
+    *,
+    attachment: Path,
+    request_commit: str,
+    boundary_id: str,
+    expected_sha256: str,
+) -> dict[str, Any]:
+    """Validate one byte-locked review attachment without claiming it was sent.
+
+    The returned envelope is consumed by the current Codex body, which performs
+    the same-chat browser upload and send autonomously.  UI observation is the
+    delivery receipt; this pure compiler deliberately cannot manufacture one.
+    """
+    holds: list[str] = []
+    path = attachment if attachment.is_absolute() else repo / attachment
+    relative = _relative_repo_path(repo, path)
+    if path.suffix != ".txt":
+        holds.append("PROSHKA_ATTACHMENT_NOT_TXT")
+    if not path.is_file():
+        holds.append(f"PROSHKA_ATTACHMENT_MISSING:{relative}")
+        raw = b""
+    else:
+        raw = path.read_bytes()
+    try:
+        raw.decode("utf-8")
+    except UnicodeDecodeError:
+        holds.append("PROSHKA_ATTACHMENT_NOT_UTF8")
+    if not raw.endswith(b"\n"):
+        holds.append("PROSHKA_ATTACHMENT_FINAL_LF_MISSING")
+    actual_sha256 = hashlib.sha256(raw).hexdigest()
+    if not re.fullmatch(r"[0-9a-f]{64}", expected_sha256):
+        holds.append("PROSHKA_EXPECTED_SHA256_INVALID")
+    elif actual_sha256 != expected_sha256:
+        holds.append("PROSHKA_ATTACHMENT_SHA256_MISMATCH")
+
+    try:
+        _git(repo, "cat-file", "-e", f"{request_commit}^{{commit}}")
+        commit_blob = _git(repo, "rev-parse", f"{request_commit}:{relative}")
+        worktree_blob = _git(repo, "hash-object", relative)
+        if commit_blob != worktree_blob:
+            holds.append("PROSHKA_ATTACHMENT_COMMIT_BLOB_MISMATCH")
+    except subprocess.CalledProcessError:
+        commit_blob = "UNRESOLVED"
+        worktree_blob = "UNRESOLVED"
+        holds.append("PROSHKA_REQUEST_COMMIT_OR_PATH_INVALID")
+
+    runtime_path = repo / "orchestrator/state/CHANNEL_RUNTIME.json"
+    try:
+        runtime = json.loads(runtime_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        runtime = {}
+        holds.append("PROSHKA_CHAT_HANDLE_LOST")
+    phase = runtime.get("active_proshka_phase") if isinstance(runtime, dict) else None
+    if not isinstance(phase, dict) or phase.get("status") != "ACTIVE":
+        conversation_id = None
+        holds.append("PROSHKA_ACTIVE_PHASE_MISSING")
+    else:
+        conversation_id = phase.get("conversation_id")
+        if not isinstance(conversation_id, str) or not conversation_id.strip():
+            holds.append("PROSHKA_CHAT_HANDLE_LOST")
+        if phase.get("last_boundary_id") == boundary_id:
+            holds.append(f"PROSHKA_REVIEW_BOUNDARY_ALREADY_RECORDED:{boundary_id}")
+
+    manifest = {
+        "path": relative,
+        "bytes": len(raw),
+        "lines": raw.count(b"\n"),
+        "final_newline": "LF" if raw.endswith(b"\n") else "MISSING",
+        "sha256": actual_sha256,
+        "git_blob": worktree_blob,
+        "request_commit": request_commit,
+        "commit_blob": commit_blob,
+    }
+    return {
+        "schema": "q3_review_dispatch_plan.v1",
+        "status": "HOLD" if holds else "REVIEW_DISPATCH_READY",
+        "holds": sorted(set(holds)),
+        "boundary_id": boundary_id,
+        "conversation_id": conversation_id,
+        "attachment_manifest": manifest,
+        "short_instruction": REVIEW_INSTRUCTION,
+        "transport": {
+            "owner": "CURRENT_CODEX_BODY",
+            "same_living_chat_required": True,
+            "single_attachment_required": True,
+            "repository_owner_confirmation_required": False,
+            "host_safety_confirmation": "ENFORCED_BY_ACTIVE_UI_RUNTIME",
+            "answer_now_forbidden": True,
+            "delivery_receipt_required": True,
+            "delivery_performed": False,
+        },
+        "PX_RH_CLAIM": "NOT_MADE",
+    }
 
 
 def _exists_at_head(repo: Path, relative: str) -> bool:
@@ -272,14 +383,23 @@ def compile_plan(
         "foreign_dirty_preserved": foreign_dirty,
         "input_fingerprints": fingerprints,
         "proshka": {
-            "calls_performed": 0,
+            "dispatch_performed": False,
             "eligible_class": (
                 "DELEGATED_STRATEGIC_REVIEW"
                 if action == "PHASE_TRANSITION_REQUIRED" else None
             ),
-            "transport_owner": "CODEX_LINUX_ONLY",
+            "transport_owner": "CURRENT_CODEX_BODY",
+            "same_living_chat_required": True,
+            "byte_exact_attachment_required": True,
+            "repository_owner_confirmation_required": False,
+            "host_safety_confirmation": "ENFORCED_BY_ACTIVE_UI_RUNTIME",
+            "delivery_receipt_required": True,
         },
-        "commit_push_performed": False,
+        "scoped_delivery": {
+            "performed": False,
+            "repository_owner_confirmation_required": False,
+            "required_after_green_owned_delta": True,
+        },
         "PX_RH_CLAIM": "NOT_MADE",
     }
     unique_holds = sorted(set(item for item in holds if item))
@@ -449,12 +569,36 @@ def main() -> int:
     run_parser.add_argument("--protocol-out", type=Path)
     subparsers.add_parser("close-session")
     subparsers.add_parser("close-phase")
+    review_parser = subparsers.add_parser("review-plan")
+    review_parser.add_argument("--attachment", type=Path, required=True)
+    review_parser.add_argument("--request-commit", required=True)
+    review_parser.add_argument("--boundary-id", required=True)
+    review_parser.add_argument("--expected-sha256", required=True)
     args, forwarded = parser.parse_known_args()
     repo = args.root.resolve()
     if args.command == "close-session":
         return _run_close_script(repo, "specs_docs/session_close.py", forwarded)
     if args.command == "close-phase":
         return _run_close_script(repo, "specs_docs/phase_close.py", forwarded)
+    if args.command == "review-plan":
+        if forwarded:
+            parser.error("unrecognized arguments: " + " ".join(forwarded))
+        try:
+            result = compile_review_dispatch(
+                repo,
+                attachment=args.attachment,
+                request_commit=args.request_commit,
+                boundary_id=args.boundary_id,
+                expected_sha256=args.expected_sha256,
+            )
+        except (WorkflowRuntimeError, subprocess.CalledProcessError) as exc:
+            result = {
+                "schema": "q3_review_dispatch_plan.v1",
+                "status": "HOLD",
+                "holds": [str(exc)],
+            }
+        print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
+        return 0 if result.get("status") == "REVIEW_DISPATCH_READY" else 2
     if forwarded:
         parser.error("unrecognized arguments: " + " ".join(forwarded))
     through = "close-node" if args.command == "run" else "plan"

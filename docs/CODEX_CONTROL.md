@@ -224,10 +224,14 @@ authoritative byte-exact payload. Follow its required response schema and return
 exactly the requested verdict. Same living phase chat. Do not use Answer now.
 ```
 
-Before send, Codex shows the owner the exact attachment manifest and exact short
-instruction under the per-action OK rule. Delivery is complete only after the
-same living chat, exact single file tile, sent message, and natural reasoning
-start are observed.
+Before send, Codex validates the exact attachment manifest and exact short
+instruction through `orchestrator/workflow_runtime.py review-plan`. A successful
+`REVIEW_DISPATCH_READY` removes any separate repository-level per-action OK and
+assigns the same-chat upload/send to the current active Codex body. A mandatory
+host UI safety confirmation, if imposed by the active browser runtime, remains
+external to repository policy and must not be bypassed. Delivery is complete
+only after the same living chat, exact single file tile, sent message, and
+natural reasoning start are observed; `review-plan` alone never claims delivery.
 
 Any upload, attachment, session, or delivery ambiguity fails closed as
 `PROSHKA_BYTE_EXACT_ATTACHMENT_DELIVERY_UNVERIFIED`. Never click `Answer now` or
@@ -1103,8 +1107,12 @@ Priority is safety stop, then an already `IN_REVIEW` transport, then all older
 privilege. FIFO — First In, First Out — is the total order of first appearance
 in the canonical branch's first-parent history, followed by canonical path and
 immutable request ID for requests entering in the same commit. A request absent
-from that history fails closed. Linux alone owns batching and judge transport;
-direct Codex-to-Proshka transport remains forbidden.
+from that history fails closed. The current active Codex body owns batching and
+judge transport on any supported host. It must use the same living chat and the
+byte-exact attachment contract from §4.2, must not invent a repository-level
+confirmation step, and must not confuse a compiled dispatch plan with an
+observed delivery receipt. Host-mandated UI safety confirmation remains outside
+this policy.
 
 ### 19.4 Pinned at-most-once launcher and writer lock
 

@@ -362,12 +362,27 @@ PYEOF
 # ── 10a1. Запросы судье: что висит без ответа ──────────────────────────────────
 hr
 echo "ЗАПРОСЫ СУДЬЕ (PROSHKA_QUEUE)"
-OPEN_REQS="$(rg -o 'REQ-[0-9-]+[A-Z]' -B0 docs/routeB_bus/PROSHKA_QUEUE.md 2>/dev/null | paste -sd' ' -)"
-OPEN_LIST="$(rg -B1 'STATUS: OPEN' docs/routeB_bus/PROSHKA_QUEUE.md 2>/dev/null | rg -o 'REQ-[0-9A-Za-z-]+' | paste -sd' ' -)"
+REQ_STATUS="$($PYTHON - docs/routeB_bus/PROSHKA_QUEUE.md <<'PYEOF'
+import re, sys
+from pathlib import Path
+
+text = Path(sys.argv[1]).read_text(encoding="utf-8")
+for match in re.finditer(r"(?ms)^##\s+(REQ-[0-9A-Za-z-]+)\b(.*?)(?=^##\s+|\Z)", text):
+    request_id, body = match.groups()
+    status = re.search(r"(?m)^-?\s*\x60?STATUS:\s*(OPEN|IN_REVIEW|ANSWERED|DROPPED)\b", body)
+    if status and status.group(1) in {"OPEN", "IN_REVIEW"}:
+        print(f"{status.group(1)} {request_id}")
+PYEOF
+)"
+OPEN_LIST="$(printf '%s\n' "$REQ_STATUS" | awk '$1 == "OPEN" {print $2}' | paste -sd' ' -)"
+REVIEW_LIST="$(printf '%s\n' "$REQ_STATUS" | awk '$1 == "IN_REVIEW" {print $2}' | paste -sd' ' -)"
+if [ -n "$REVIEW_LIST" ]; then
+  echo "  В РАБОТЕ У СУДЬИ: $REVIEW_LIST — same-chat delivery уже выполнена; ждём natural verdict"
+fi
 if [ -n "$OPEN_LIST" ]; then
-  echo "  БЕЗ ОТВЕТА: $OPEN_LIST — судья читает очередь на старте своей сессии;"
-  echo "    если ответа нет два его захода подряд, напомнить ему id в чате"
-else
+  echo "  НЕ ОТПРАВЛЕНЫ: $OPEN_LIST — текущий Codex-body должен выполнить review-plan и same-chat send сам"
+fi
+if [ -z "$OPEN_LIST" ] && [ -z "$REVIEW_LIST" ]; then
   echo "  все запросы отвечены"
 fi
 

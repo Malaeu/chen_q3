@@ -66,12 +66,19 @@ python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb
 До review локально отработай фазу до реальной стены и собери 2–4 связанных
 блокера. Один unchanged six-field phase key использует один living chat.
 
-Control v9: Linux единолично владеет batching и judge transport. Прямая
-Mac/Codex→Proshka отправка, вставка controlling request в composer и открытие
-нового чата запрещены. Запрос — byte-exact UTF-8 attachment и canonical
-request/state CAS lifecycle; ответ принимается только с exact source commit,
-blob, verdict path/blob и operative `TRY_`, `KILL_`, `RUN_` либо
-`OWNER_AUTHORITY_REQUIRED_PX_RH_CLAIM`.
+Judge transport выполняет текущее активное Codex-тело на любом поддержанном
+host через тот же living chat. Перед отправкой запусти `workflow_runtime.py
+review-plan` с exact attachment, request commit, boundary ID и ожидаемым SHA-256.
+При `REVIEW_DISPATCH_READY` самостоятельно прикрепи ровно один byte-exact UTF-8
+`.txt`, сверь file tile и отправь каноническую короткую инструкцию. Отдельный
+репозиторный owner click/OK не требуется; если активный browser runtime требует
+обязательное action-time safety confirmation, исполни эту внешнюю границу и не
+пытайся обходить её другим UI-инструментом. Вставка controlling request в
+composer и открытие нового чата запрещены. `review-plan` не является delivery
+receipt; доставка установлена только после наблюдения sent message и начала
+natural reasoning. Ответ
+принимается только с exact source commit, blob, verdict path/blob и operative
+`TRY_`, `KILL_`, `RUN_` либо `OWNER_AUTHORITY_REQUIRED_PX_RH_CLAIM`.
 
 После нового `[Proshka]` commit: fetch, безопасный rebase/autostash, проверка
 request/verdict binding, затем `verdict-intake` или phase-close migration.
@@ -94,7 +101,8 @@ source verification, usage card/PDF/REFERENCES/bib validation. Внешняя
 ## Стопы
 
 - Не использовать `orchestrator/state/state.json` как resume authority.
-- Не писать в browser composer и не обходить Linux judge transport.
+- Не вставлять controlling request в browser composer, не открывать новый чат и
+  не выдумывать repository-level подтверждение поверх обязательной host policy.
 - Не называть plan исполнением, `KERNEL_GREEN` semantic admission или RH.
 - Не трогать foreign dirty paths, force-push, main merge, Route promotion или
   `PX_RH_CLAIM` без их точной отдельной authority.

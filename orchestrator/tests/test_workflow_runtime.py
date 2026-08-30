@@ -1,6 +1,9 @@
 from __future__ import annotations
 
 from pathlib import Path
+import json
+import subprocess
+import tempfile
 from unittest import mock
 import unittest
 
@@ -37,7 +40,14 @@ class WorkflowRuntimePlants(unittest.TestCase):
         self.assertEqual([exact["status"], mint["status"], phase["status"]], ["READY"] * 3)
         self.assertIn("workflow-session-close", [item["id"] for item in exact["logical_plan"]["selected_tools"]])
         self.assertIn("workflow-phase-close", [item["id"] for item in phase["logical_plan"]["selected_tools"]])
-        self.assertEqual(exact["logical_plan"]["proshka"]["calls_performed"], 0)
+        self.assertFalse(exact["logical_plan"]["proshka"]["dispatch_performed"])
+        self.assertEqual(
+            exact["logical_plan"]["proshka"]["transport_owner"],
+            "CURRENT_CODEX_BODY",
+        )
+        self.assertFalse(
+            exact["logical_plan"]["proshka"]["repository_owner_confirmation_required"]
+        )
         self.assertIsNone(exact["logical_plan"]["proshka"]["eligible_class"])
         self.assertEqual(
             phase["logical_plan"]["proshka"]["eligible_class"],
@@ -74,7 +84,8 @@ class WorkflowRuntimePlants(unittest.TestCase):
         self.assertEqual(first, second)
         logical = first["logical_plan"]
         self.assertEqual(logical["expected_writes"], [])
-        self.assertFalse(logical["commit_push_performed"])
+        self.assertFalse(logical["scoped_delivery"]["performed"])
+        self.assertFalse(logical["scoped_delivery"]["repository_owner_confirmation_required"])
         self.assertEqual(logical["PX_RH_CLAIM"], "NOT_MADE")
         self.assertEqual(logical["foreign_dirty_preserved"], ["foreign.txt"])
 
@@ -149,6 +160,101 @@ class WorkflowRuntimePlants(unittest.TestCase):
             ["session-start", "step-close", "session-close"],
         )
         self.assertEqual(command.call_count, 2)
+
+    def test_review_plan_binds_bytes_commit_blob_and_living_chat(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            subprocess.run(["git", "init", "-q"], cwd=repo, check=True)
+            subprocess.run(["git", "config", "user.email", "plant@example.invalid"], cwd=repo, check=True)
+            subprocess.run(["git", "config", "user.name", "Workflow Plant"], cwd=repo, check=True)
+            request = repo / "docs/routeB_bus/proshka/request.txt"
+            request.parent.mkdir(parents=True)
+            request.write_bytes(b"exact request\n")
+            runtime = repo / "orchestrator/state/CHANNEL_RUNTIME.json"
+            runtime.parent.mkdir(parents=True)
+            runtime.write_text(
+                json.dumps({
+                    "active_proshka_phase": {
+                        "status": "ACTIVE",
+                        "conversation_id": "living-chat",
+                        "last_boundary_id": "older-boundary",
+                    }
+                }) + "\n",
+                encoding="utf-8",
+            )
+            subprocess.run(["git", "add", "."], cwd=repo, check=True)
+            subprocess.run(["git", "commit", "-qm", "plant"], cwd=repo, check=True)
+            commit = subprocess.run(
+                ["git", "rev-parse", "HEAD"], cwd=repo, check=True,
+                capture_output=True, text=True,
+            ).stdout.strip()
+            digest = workflow_runtime.hashlib.sha256(request.read_bytes()).hexdigest()
+
+            result = workflow_runtime.compile_review_dispatch(
+                repo,
+                attachment=request,
+                request_commit=commit,
+                boundary_id="new-boundary",
+                expected_sha256=digest,
+            )
+
+            self.assertEqual(result["status"], "REVIEW_DISPATCH_READY")
+            self.assertEqual(result["conversation_id"], "living-chat")
+            self.assertFalse(result["transport"]["repository_owner_confirmation_required"])
+            self.assertEqual(
+                result["transport"]["host_safety_confirmation"],
+                "ENFORCED_BY_ACTIVE_UI_RUNTIME",
+            )
+            self.assertFalse(result["transport"]["delivery_performed"])
+            self.assertEqual(
+                result["attachment_manifest"]["git_blob"],
+                result["attachment_manifest"]["commit_blob"],
+            )
+
+    def test_review_plan_rejects_mutation_and_duplicate_boundary(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            subprocess.run(["git", "init", "-q"], cwd=repo, check=True)
+            subprocess.run(["git", "config", "user.email", "plant@example.invalid"], cwd=repo, check=True)
+            subprocess.run(["git", "config", "user.name", "Workflow Plant"], cwd=repo, check=True)
+            request = repo / "request.txt"
+            request.write_bytes(b"committed\n")
+            runtime = repo / "orchestrator/state/CHANNEL_RUNTIME.json"
+            runtime.parent.mkdir(parents=True)
+            runtime.write_text(
+                json.dumps({
+                    "active_proshka_phase": {
+                        "status": "ACTIVE",
+                        "conversation_id": "living-chat",
+                        "last_boundary_id": "same-boundary",
+                    }
+                }) + "\n",
+                encoding="utf-8",
+            )
+            subprocess.run(["git", "add", "."], cwd=repo, check=True)
+            subprocess.run(["git", "commit", "-qm", "plant"], cwd=repo, check=True)
+            commit = subprocess.run(
+                ["git", "rev-parse", "HEAD"], cwd=repo, check=True,
+                capture_output=True, text=True,
+            ).stdout.strip()
+            request.write_bytes(b"mutated without final newline")
+
+            result = workflow_runtime.compile_review_dispatch(
+                repo,
+                attachment=request,
+                request_commit=commit,
+                boundary_id="same-boundary",
+                expected_sha256="0" * 64,
+            )
+
+            self.assertEqual(result["status"], "HOLD")
+            self.assertIn("PROSHKA_ATTACHMENT_FINAL_LF_MISSING", result["holds"])
+            self.assertIn("PROSHKA_ATTACHMENT_SHA256_MISMATCH", result["holds"])
+            self.assertIn("PROSHKA_ATTACHMENT_COMMIT_BLOB_MISMATCH", result["holds"])
+            self.assertIn(
+                "PROSHKA_REVIEW_BOUNDARY_ALREADY_RECORDED:same-boundary",
+                result["holds"],
+            )
 
 
 if __name__ == "__main__":
