@@ -4,9 +4,9 @@
 schema: q3_codex_current_task.v1
 status: ACTIVE
 task_file: docs/Codex/TASK_2026-08-30_goal058_g3_rate_floor_source_rerank.md
-source_commit: 13fab4c521b62fd5b8ca23b097160894f8cd15f0
-updated_at: 2026-08-30T10:51:46+02:00
-updated_by: CODEX_G3_RATE_FLOOR_SOURCE_RERANK
+source_commit: 0a0e57e12c5ce13df5583d08e013343fc3ce5d30
+updated_at: 2026-08-30T13:15:31+02:00
+updated_by: CODEX_G3_SATZ9_UNIFORM_ASYMPTOTIC_LIBRARY_WALL
 ```
 
 This is the single owner-controlled repository pointer for work that Codex must
