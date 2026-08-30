@@ -8,6 +8,20 @@ same-chat доставки и `IN_REVIEW -> ANSWERED` только после п
 safety confirmation остаётся внешней границей. Судья статусы не трогает, но
 обязан в вердикте называть `REQ`-id, на который отвечает.
 
+## REQ-2026-08-30-G3SATZ9WALL · Goal 058 G3 Satz-9 library-wall next action · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_G3_SATZ9_LIBRARY_WALL_NEXT_ACTION_2026-08-30.txt`
+- Source report: `docs/routeB_bus/CODEX_REPORT_GOAL058_G3_SATZ9_UNIFORM_ASYMPTOTIC_LIBRARY_WALL_2026-08-30.md`
+- Boundary: `GOAL058_G3_SATZ9_UNIFORM_ASYMPTOTIC_LIBRARY_WALL`
+- Blocks: whether to decompose and formalize the actual fixed-mode uniform
+  asymptotic core or kill/rerank this implementation route on cost.
+- Action split: minimal theorem-sized analytic chain, honest cost kill/rerank,
+  or exact repair of a source-defective frozen target.
+- Boundaries: same phase/chat, one byte-exact attachment, no raw-rate premise,
+  no new axiom, no repeated receiver, no Route promotion,
+  `PX_RH_CLAIM: NOT_MADE`.
+
 ## REQ-2026-08-30-G3RATEFLOOR · Goal 058 G3 paper-rate source rerank · ANSWERED
 
 - `STATUS: ANSWERED`

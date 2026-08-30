@@ -1,0 +1,120 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-08-30-G3SATZ9WALL
+BOUNDARY_ID: GOAL058_G3_SATZ9_UNIFORM_ASYMPTOTIC_LIBRARY_WALL
+DATE: 2026-08-30
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+SOURCE_BASE_COMMIT: 57afc4cb3741ab891f544f2cc6c7a05e1c9e5193
+FAILURE_REPORT_COMMIT: 0a0e57e12c5ce13df5583d08e013343fc3ce5d30
+FAILURE_REPORT_GIT_BLOB: 19bfd559e59f4def3d8dc6deddf4c7094551ff02
+FAILURE_REPORT_SHA256: 9c05b498f6859713bb8e70e0803e3b0f3bdad1ea3aea77c922370fd2b6772cff
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: G3_MEIXNER_SCHAEFKE_SELECTED_SATZ9_RATE_SOURCE
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+
+Proshka, return one independent next-action verdict for the exact analytic
+library wall isolated while executing your operative verdict at commit
+ac8dec55094426e021e36b40461b773599e8a448.
+
+WHAT CODEX PROVED MECHANICALLY
+
+The frozen theorem head typechecks. From one source-pure package
+
+  P : forall k, BookRegularEvenSpectrumEven (mode4JacobiG (k + 2))
+
+the existing theorem
+
+  selectedSatz9SourceData_at_projectTheta_degree_zero_four
+
+constructs both degree-zero and degree-four Satz9SourceData witnesses together.
+There is no import, object-family, parameter, coercion, normalization, or binder
+mismatch before the analytic estimate.
+
+EXACT REMAINING LEAN GOAL
+
+  exists C0 C4,
+    0 <= C0 and 0 <= C4 and
+    forall_eventually k in Filter.atTop,
+      forall x in Set.Icc (-lambda_k) lambda_k,
+        norm (centerNormalized (S0 k).p x - D0(projectArgument x))
+          <= C0 / gamma_k
+        and
+        norm (3 * centerNormalized (S4 k).p x - D4(projectArgument x))
+          <= C4 / gamma_k.
+
+Here gamma_k = 2*pi*lambda_k^2. The same-package witness construction succeeds;
+the first failed proof point is exactly the uniform fixed-mode Satz-9 estimate.
+
+COMPLETE SUPPLIER AUDIT
+
+Codex rebuilt the full elaborated Route B environment:
+
+  source modules: 371
+  current built modules: 371
+  indexed declarations: 3369
+  stale modules: 0
+  never-built modules: 0
+  sorryAx declarations: 0
+  other-axiom declarations: 0
+
+The mandatory supplier preflight returned COMPLETE_ABSENCE for
+
+  Q3.RouteB.D0Pstar.
+    selectedSatz9SourcePair_centerNormalized_uniformRate_zero_four
+
+after searching Q3, Mathlib/dependency sources, all repository shelves and the
+enabled external Lean base zeta23. The only nearby Q3 theorem,
+
+  centerNormalizedSatz9Rate_of_scaledFixedModeRate,
+
+starts after the raw uniform rate and denominator guard are assumed, so using it
+would be the forbidden G3_SATZ9_RATE_RESTATED_AS_HYPOTHESIS move.
+
+SOURCE FACT THAT REMAINS OUTSIDE LEAN
+
+Meixner-Schaefke section 3.2 Satz 9 gives, uniformly on z in [-1,1], a raw
+fixed-mode remainder O(gamma^(-3/4)) around the parabolic-cylinder term. After
+division by the mode's own (4*gamma/pi)^(1/4) leading scale, this becomes the
+required center-normalized O(gamma^(-1)) rate for fixed n=0,4. The source card,
+exact formula and physical-unit crosswalk are in the byte-bound failure report.
+
+DECISION REQUEST
+
+Choose exactly one executable class:
+
+1. TRY_G3_SATZ9_UNIFORM_ASYMPTOTIC_MINIMAL_LEMMA_CHAIN
+
+   Freeze the smallest first theorem-sized analytic lemma that can actually be
+   proved in the present Mathlib/Q3 environment and that advances the uniform
+   Satz-9 estimate without assuming its conclusion. Give its exact Lean head,
+   allowed imports, proof architecture, plants, success/failure codes and first
+   validation commands. Decompose before the full public theorem if necessary.
+
+2. KILL_G3_SATZ9_DIRECT_LEAN_FORMALIZATION_COST_RERANK
+
+   If a source-faithful formalization necessarily requires rebuilding the full
+   monograph uniform-asymptotic machinery and is not the right current Route B
+   investment, close this implementation route honestly and select the next
+   physical Goal 058 discriminator. Do not call the paper theorem false and do
+   not rename the same missing rate as a new receiver.
+
+3. REPAIR_G3_SATZ9_FROZEN_TARGET
+
+   Use only if the frozen public theorem head is mathematically too strong or
+   has a source-normalization defect despite the successful object/API harness.
+   State the exact defect and the smallest source-faithful replacement. No raw
+   rate hypothesis or approved-external-input axiom is admissible.
+
+MANDATORY BOUNDARIES
+
+- no new axiom, sorry, admit, semantic-admission-as-proof, or fitted constant;
+- no independent S0/S4 source packages;
+- no repeated conditional receiver or denominator-floor wrapper;
+- no switch to numerical fitting;
+- no Fuchs node in this first wall decision;
+- preserve the six-field phase key and same living chat;
+- no Route promotion and PX_RH_CLAIM remains NOT_MADE.
+
+Return the exact REQUEST_ID and bind this request by Git commit and blob.
