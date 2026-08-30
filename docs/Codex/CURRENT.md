@@ -3,9 +3,9 @@
 ```yaml
 schema: q3_codex_current_task.v1
 status: ACTIVE
-task_file: docs/Codex/TASK_2026-08-30_goal058_r1_phase1_normality_source_audit.md
-source_commit: d5589d79206ac9719c7367821ea8dc9024439557
-updated_at: 2026-08-30T03:18:00+02:00
+task_file: docs/Codex/TASK_2026-08-30_goal058_odd_sector_floor_source_discriminator.md
+source_commit: e4f31ed6ad12b3f0e28e1a4502d281a42d333b3b
+updated_at: 2026-08-30T08:09:17+02:00
 updated_by: CODEX_ON_OWNER_INSTRUCTION
 ```
 
