@@ -31,6 +31,35 @@ does not change Lean, route, or roof status.
 
 ## Runs
 
+### 2026-08-30 — Goal 058 G3 rate/floor source rerank
+
+```yaml
+proof_address: RouteB.Goal058.G3.ProlateRateFloorSourceRerank
+front: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
+transaction: GOAL058_G3_PROLATE_RATE_FLOOR_SOURCE_RERANK
+conversation_id: 6a8c3e2a-df50-83eb-b53d-dd4cc46f646f
+request_message_id: c20e440e-c98a-42d4-a13f-f84dfa0932fe
+response_message_id: PENDING
+sent_at: 2026-08-30T11:00:50+02:00
+completed_at: PENDING
+wall_seconds: PENDING
+wall_human: PENDING_NATURAL_REASONING_ACTIVE
+answer_now_shown: false
+answer_now_clicked: false
+primary: PENDING
+status: IN_REVIEW
+result_pointer: PENDING
+request_sha256: a2a41613ee4f620397d2f65bc80656a1f49a68bf396eb365e9cb97a714f931e3
+notes: >-
+  Eighth call in the unchanged living Goal 058 phase. The exact single 6,740-byte,
+  159-line UTF-8 request was uploaded after REVIEW_DISPATCH_READY bound its
+  committed Git blob. The sent message, attachment tile and natural Pro reasoning
+  start were observed. The request asks for exactly one source-policy action:
+  formalize the exact Satz9/Fuchs rate theorem, use an already-authorized source
+  interface, or kill and rerank the stale G3 execution front. No Answer now,
+  Route promotion, PX request or RH claim.
+```
+
 ### 2026-08-15 — Goal 058 G3 production spectral-iff judgment
 
 ```yaml

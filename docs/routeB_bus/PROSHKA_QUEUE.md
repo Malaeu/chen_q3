@@ -8,10 +8,18 @@ same-chat доставки и `IN_REVIEW -> ANSWERED` только после п
 safety confirmation остаётся внешней границей. Судья статусы не трогает, но
 обязан в вердикте называть `REQ`-id, на который отвечает.
 
-## REQ-2026-08-30-G3RATEFLOOR · Goal 058 G3 paper-rate source rerank · OPEN
+## REQ-2026-08-30-G3RATEFLOOR · Goal 058 G3 paper-rate source rerank · IN_REVIEW
 
-- `STATUS: OPEN`
+- `STATUS: IN_REVIEW`
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_G3_RATE_FLOOR_SOURCE_RERANK_2026-08-30.txt`
+- Request commit: `13fab4c521b62fd5b8ca23b097160894f8cd15f0`
+- Delivery: same living chat `6a8c3e2a-df50-83eb-b53d-dd4cc46f646f`, message
+  `c20e440e-c98a-42d4-a13f-f84dfa0932fe`, sent
+  `2026-08-30T11:00:50+02:00`; exact single file tile and natural Pro reasoning
+  start observed; `Answer now` not used.
+- Attachment: `6740` bytes, `159` LF-terminated lines, SHA-256
+  `a2a41613ee4f620397d2f65bc80656a1f49a68bf396eb365e9cb97a714f931e3`,
+  Git blob `b48a7111ed7e048c3eda67d55651fd4230b438d5`.
 - Boundary: `GOAL058_G3_PROLATE_RATE_FLOOR_SOURCE_RERANK`
 - Blocks: exact executable meaning of the live G3 rate/floor contract after its
   receiver and denominator-floor side were closed conditionally.
