@@ -8,10 +8,19 @@ same-chat доставки и `IN_REVIEW -> ANSWERED` только после п
 safety confirmation остаётся внешней границей. Судья статусы не трогает, но
 обязан в вердикте называть `REQ`-id, на который отвечает.
 
-## REQ-2026-08-30-G3SATZ9WALL · Goal 058 G3 Satz-9 library-wall next action · OPEN
+`OPEN` — исполнимое состояние доставки, а не состояние ожидания ответа. Вахта
+не имеет права молча завершаться при `OPEN`: она запускает exact `review-plan`
+и доставляет запрос сама либо немедленно называет единственную внешнюю границу,
+которая фактически мешает отправке. Проверять ответ разрешено только после
+наблюдаемого перехода в `IN_REVIEW`.
 
-- `STATUS: OPEN`
+## REQ-2026-08-30-G3SATZ9WALL · Goal 058 G3 Satz-9 library-wall next action · IN_REVIEW
+
+- `STATUS: IN_REVIEW`
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_G3_SATZ9_LIBRARY_WALL_NEXT_ACTION_2026-08-30.txt`
+- Delivery: same living chat `6a8c3e2a-df50-83eb-b53d-dd4cc46f646f`, sent
+  `2026-08-30T15:14+02:00`; exact single file tile and canonical short
+  instruction observed, followed by natural `Pro-Denkvorgang` reasoning.
 - Source report: `docs/routeB_bus/CODEX_REPORT_GOAL058_G3_SATZ9_UNIFORM_ASYMPTOTIC_LIBRARY_WALL_2026-08-30.md`
 - Boundary: `GOAL058_G3_SATZ9_UNIFORM_ASYMPTOTIC_LIBRARY_WALL`
 - Blocks: whether to decompose and formalize the actual fixed-mode uniform
