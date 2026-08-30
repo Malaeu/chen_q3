@@ -3,9 +3,9 @@
 ```yaml
 schema: q3_codex_current_task.v1
 status: ACTIVE
-task_file: docs/Codex/TASK_2026-08-29_goal058_r2_moving_krylov_feshbach.md
-source_commit: 02e60cc4177e9ec45b3571dfd082253d20f12f92
-updated_at: 2026-08-29T18:28:00+02:00
+task_file: docs/Codex/TASK_2026-08-30_goal058_r1_phase1_normality_source_audit.md
+source_commit: d5589d79206ac9719c7367821ea8dc9024439557
+updated_at: 2026-08-30T03:18:00+02:00
 updated_by: CODEX_ON_OWNER_INSTRUCTION
 ```
 
