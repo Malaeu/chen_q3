@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import importlib.util
+import re
 import sqlite3
 import subprocess
 import tempfile
@@ -52,6 +53,41 @@ class ToolManifestMemoryPlants(unittest.TestCase):
             set(tools[0]["records_to"]),
             {"knowledge.db", "q3.lean.aristotle/docs/INSIGHTS.md"},
         )
+
+    def test_workflow_runtime_registers_review_plan_transport(self) -> None:
+        data = spine.yaml.safe_load(
+            (REPO / "docs/cartographer/TOOLS.yaml").read_text(encoding="utf-8")
+        )
+        tools = {
+            tool["id"]: tool
+            for family in data["tool_families"].values()
+            for tool in family.get("tools", [])
+        }
+        runtime = tools["workflow-runtime"]
+        alternatives = "\n".join(runtime["alternatives"])
+        self.assertIn("workflow_runtime.py review-plan", alternatives)
+        self.assertIn("--expected-sha256 <sha256>", alternatives)
+        self.assertIn("review-plan byte-binding", runtime["validation"])
+
+    def test_cross_host_operator_card_inventory_matches_manifest(self) -> None:
+        manifest = spine.yaml.safe_load(
+            (REPO / "docs/cartographer/TOOLS.yaml").read_text(encoding="utf-8")
+        )
+        expected = {
+            tool["id"]
+            for family in manifest["tool_families"].values()
+            for tool in family.get("tools", [])
+        }
+        card = (
+            REPO / "docs/Codex/CARD_CROSS_HOST_Q3_WORKFLOW_AND_TOOL_INVENTORY.md"
+        ).read_text(encoding="utf-8")
+        match = re.search(
+            r"```yaml registered_tool_ids\n(.*?)\n```", card, flags=re.DOTALL
+        )
+        self.assertIsNotNone(match)
+        registered = spine.yaml.safe_load(match.group(1))
+        self.assertEqual(set(registered), expected)
+        self.assertEqual(len(registered), len(set(registered)))
 
     def test_absence_event_routes_through_unified_supplier_preflight(self) -> None:
         data = spine.yaml.safe_load(

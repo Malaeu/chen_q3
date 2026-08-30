@@ -308,13 +308,23 @@ tool_families:
           - python3 orchestrator/workflow_runtime.py run --through close-node
           - python3 orchestrator/workflow_runtime.py close-phase
           - python3 orchestrator/workflow_runtime.py close-session
-        trigger: One stateless lifecycle plan or execution through a verified scoped close-node transition.
+          - >-
+            python3 orchestrator/workflow_runtime.py review-plan
+            --attachment <request.txt> --request-commit <commit>
+            --request-id <request-id> --boundary-id <boundary-id>
+            --expected-sha256 <sha256>
+        trigger: >-
+          One stateless lifecycle plan, execution through a verified scoped
+          close-node transition, or byte-exact same-chat review dispatch plan.
         writes: true
         approval: NONE_FOR_PLAN; ACTIVE_GOAL_RUN_AND_EXACT_OWNED_PATHS_FOR_RUN_OR_CLOSE
         authority: STATELESS_LIFECYCLE_EXECUTOR_NOT_SELECTOR_POLICY_KERNEL_MATHEMATICAL_AUTHOR_OR_GIT_DELIVERY
         records_to: stdout receipt plus outputs of the explicitly selected registered writers
-        validation: test_workflow_runtime including startup-red, owned-scope, event, and command-failure plants
-        last_verified: 2026-08-29
+        validation: >-
+          test_workflow_runtime including startup-red, owned-scope, event,
+          command-failure, review-plan byte-binding, queue-lifecycle, and
+          duplicate-dispatch plants.
+        last_verified: 2026-08-30
 
       - id: workflow-session-close
         status: ENABLED
