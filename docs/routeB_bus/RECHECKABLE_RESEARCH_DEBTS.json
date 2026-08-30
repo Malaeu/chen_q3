@@ -1,0 +1,103 @@
+{
+  "schema": "q3_routeb_recheckable_research_debts.v1",
+  "lifecycle": {
+    "automatic_reopen_allowed": false,
+    "ordered_states": [
+      "KILLED_RECHECKABLE",
+      "REOPEN_CANDIDATE",
+      "SOURCE_VERIFIED",
+      "REOPENED"
+    ],
+    "rule": "A search hit can create REOPEN_CANDIDATE only. Exact source and interface verification are required for SOURCE_VERIFIED; a separate authorized state transaction is required for REOPENED."
+  },
+  "debts": [
+    {
+      "id": "G3_SATZ9_FUCHS_DIRECT_LEAN_FORMALIZATION",
+      "status": "KILLED_RECHECKABLE",
+      "killed_at": "2026-08-30",
+      "reason": "The paper theorem and conditional receivers are preserved, but the current direct Lean route lacks the fixed-mode eigenvalue remainder and singular closed-interval uniform-stability machinery.",
+      "reopen_if": [
+        "An audited source theorem supplies quantitative fixed-mode residual-to-uniform-error control on the exact regular endpoint branch with explicit constants.",
+        "A source-specific Green or Volterra inverse estimate closes the normalized gamma-inverse remainder without assuming that remainder.",
+        "A common-basis coefficient expansion plus a uniform contraction or inverse theorem supplies the required full-window bound."
+      ],
+      "last_external_check": "2026-08-30",
+      "search_hints": [
+        "Meixner SchaeFke section 2.333 Satz 9 uniform approximation explicit remainder",
+        "fixed mode spheroidal singular endpoint uniform Green kernel estimate",
+        "Fuchs fixed n eigenvalue asymptotic explicit remainder prolate"
+      ],
+      "related_goal": "058",
+      "authoritative_refs": [
+        {
+          "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_G3_SATZ9_LIBRARY_WALL_NEXT_ACTION_2026-08-30.md",
+          "commit": "7b96eca0121087abdbc69f360d54c703c02fd0c8",
+          "git_blob": "7463adb215423323d8689d08729d25f39c70ce26"
+        },
+        {
+          "path": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_STATE.json",
+          "commit": "d3eb9923e028f5be24890eadd899b8dbc0a510b7",
+          "git_blob": "349b565742b170553e37f567aa77338e9515c39c"
+        }
+      ]
+    },
+    {
+      "id": "SELECTED_FERRERS_ODD_SECTOR_FLOOR_CURRENT_SOURCE_SHELF",
+      "status": "KILLED_RECHECKABLE",
+      "killed_at": "2026-08-30",
+      "reason": "The current shelf supplies structure and parity but no uniform coercivity for the literal selected trial-shifted odd compression; the mathematical floor itself was not disproved.",
+      "reopen_if": [
+        "A source theorem gives one explicit uniform odd-form lower bound at the exact selected Rayleigh shift on the selected cofinal schedule.",
+        "A signed odd head-tail Feshbach theorem supplies an exact tail floor, residual ledger and uniform coupling constants."
+      ],
+      "last_external_check": "2026-08-30",
+      "search_hints": [
+        "localized Weil form odd subspace coercivity exact Rayleigh shift",
+        "odd head tail Feshbach uniform coercivity truncated Weil operator",
+        "reflection odd spectral gap selected Ferrers cofinal schedule"
+      ],
+      "related_goal": "058",
+      "authoritative_refs": [
+        {
+          "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SELECTED_FERRERS_ODD_SECTOR_FLOOR_DISCRIMINATOR_2026-08-30.md",
+          "commit": "4a38091b6732a6376d23b96e8d3608d11b74cfae",
+          "git_blob": "478bb1f0250a449f9a82465924f8cf994a13c484"
+        },
+        {
+          "path": "docs/routeB_bus/CODEX_CLOSEOUT_GOAL058_SELECTED_FERRERS_ODD_SECTOR_FLOOR_SOURCE_SHELF_2026-08-30.md",
+          "commit": "4e7de5c102f947ea8394b60b8b7a4ce0b65138ca",
+          "git_blob": "4c4c1e8409e29f4dc975b63fd467631f30993ec6"
+        }
+      ]
+    },
+    {
+      "id": "SELECTED_FERRERS_EVEN_SECTOR_FLOOR_CURRENT_SOURCE_SHELF",
+      "status": "KILLED_RECHECKABLE",
+      "killed_at": "2026-08-30",
+      "reason": "The audited source and Lean shelf has no uniform even-sector floor orthogonal to the exact selected even trial component at the selected Rayleigh shift; the mathematical floor itself remains open.",
+      "reopen_if": [
+        "A primary theorem supplies direct even-form coercivity with the literal selected shift and one constant uniform on the selected schedule.",
+        "An even head-tail Feshbach representation supplies a uniform tail floor, exact head bound and coupling estimate with positive Schur margin."
+      ],
+      "last_external_check": "2026-08-30",
+      "search_hints": [
+        "localized Weil form even subspace coercivity orthogonal ground trial",
+        "even head tail Feshbach uniform spectral floor truncated Weil matrix",
+        "simple even lowest state truncated Weil form quantitative gap"
+      ],
+      "related_goal": "058",
+      "authoritative_refs": [
+        {
+          "path": "docs/routeB_bus/CODEX_REPORT_GOAL058_SELECTED_FERRERS_EVEN_SECTOR_FLOOR_SOURCE_DISCRIMINATOR_2026-08-30.md",
+          "commit": "9ca5025152f8ca0e0d231d8bec7644af87c271a4",
+          "git_blob": "0b4521d07854d89982c177582738899472f00ce7"
+        },
+        {
+          "path": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_STATE.json",
+          "commit": "d3eb9923e028f5be24890eadd899b8dbc0a510b7",
+          "git_blob": "349b565742b170553e37f567aa77338e9515c39c"
+        }
+      ]
+    }
+  ]
+}

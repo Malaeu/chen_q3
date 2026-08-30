@@ -195,6 +195,21 @@ else:
   fi
 fi
 
+# ── 4a. Delta-aware Route B briefing ─────────────────────────────────────────
+# Read-only: the small local checkpoint is written only by close-session.
+hr
+if briefing_out="$("$PYTHON" orchestrator/session_briefing.py brief 2>&1)"; then
+  printf '%s\n' "$briefing_out"
+  if printf '%s\n' "$briefing_out" | grep -q '^  BRIEFING_BLOCKER: CONTROL_PLANE_DRIFT$'; then
+    note "Route B briefing: CONTROL_PLANE_DRIFT — state address is older than the latest authorized closeout"
+  fi
+else
+  briefing_rc=$?
+  echo "ROUTE B — SESSION BRIEF: ПРОВАЛ (код $briefing_rc)"
+  printf '%s\n' "$briefing_out" | tail -8 | sed 's/^/  /'
+  note "Route B session briefing registry/checkpoint/state validation failed"
+fi
+
 # ── 5. База знаний ─────────────────────────────────────────────────────────────
 hr
 echo "БАЗА ЗНАНИЙ"

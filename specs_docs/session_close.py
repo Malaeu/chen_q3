@@ -18,6 +18,7 @@ if str(REPO) not in sys.path:
     sys.path.insert(0, str(REPO))
 
 from orchestrator import dependency_registry  # noqa: E402
+from orchestrator import session_briefing  # noqa: E402
 
 
 def repair_derived(
@@ -154,6 +155,7 @@ def main() -> int:
     parser.add_argument("--repair", action="store_true")
     parser.add_argument("--run-kernel", action="store_true")
     parser.add_argument("--protocol-out", type=Path)
+    parser.add_argument("--no-session-checkpoint", action="store_true")
     args = parser.parse_args()
     repo = args.root.resolve()
     try:
@@ -162,14 +164,19 @@ def main() -> int:
         checked = verify_owned_lean(repo, owned, run_kernel=args.run_kernel)
         head = subprocess.run(["git", "rev-parse", "HEAD"], cwd=repo, check=True, capture_output=True, text=True).stdout.strip()
         protocol = render_protocol(head=head, executed=executed, statuses=statuses, owned=owned, foreign=foreign, checked=checked)
+        residual = [item for item in statuses if item.status not in {"FRESH", "CURRENT_WORKTREE"}]
+        checkpoint = None
+        if not residual and not args.no_session_checkpoint:
+            checkpoint = session_briefing.write_checkpoint(repo)
         if args.protocol_out:
             atomic_write(args.protocol_out, protocol)
         else:
             print(protocol, end="")
+        if checkpoint is not None:
+            print(f"SESSION_CHECKPOINT_WRITTEN {checkpoint}")
     except (RuntimeError, dependency_registry.DependencyRegistryError, subprocess.CalledProcessError) as exc:
         print(exc)
         return 2
-    residual = [item for item in statuses if item.status not in {"FRESH", "CURRENT_WORKTREE"}]
     return 1 if residual else 0
 
 

@@ -9,7 +9,7 @@ control: docs/CODEX_CONTROL.md
 tool_manifest: docs/cartographer/TOOLS.yaml
 workflow_front_door: orchestrator/workflow_runtime.py
 inventory_snapshot_date: 2026-08-30
-registered_tools: 51
+registered_tools: 53
 route_promotion_authorized: false
 PX_RH_CLAIM: NOT_MADE
 ```
@@ -64,6 +64,8 @@ python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb
 
 Красный startup запрещает математику. Разрешён только узкий ремонт
 воспроизводимого control/tool defect. Зелёный plan не маскирует красный gate.
+Тот же вход печатает delta-aware Route B briefing и предлагает выбрать, искать
+ли сегодня recheckable research debts; внешний поиск автоматически не запускается.
 
 ### 2.2 Выбор и narrowing
 
@@ -221,7 +223,7 @@ Q3_CONTROL_V9_MAC_TRACKED_RECEIPT_FALLBACK=1 bash specs_docs/session_start.sh
 ## 7. Зарегистрированный инвентарь
 
 Единственный routable inventory — docs/cartographer/TOOLS.yaml. На снимке
-2026-08-30 зарегистрирован 51 инструмент: 44 ENABLED, 6 AVAILABLE и 1 DEGRADED.
+2026-08-30 зарегистрировано 53 инструмента: 46 ENABLED, 6 AVAILABLE и 1 DEGRADED.
 Сотни вспомогательных scripts, tests и one-shot probes на диске не становятся
 автоматически routable: для рождения инструмента нужен полный manifest contract.
 
@@ -230,6 +232,8 @@ Q3_CONTROL_V9_MAC_TRACKED_RECEIPT_FALLBACK=1 bash specs_docs/session_start.sh
 
 ```yaml registered_tool_ids
 - codex-session-start
+- routeb-session-briefing
+- routeb-session-checkpoint
 - knowledge-spine-strict
 - knowledge-spine-goal-close
 - knowledge-spine-step-close

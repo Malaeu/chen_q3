@@ -195,7 +195,7 @@ tool_families:
     summary: Read-only orientation and physical-state selection.
     front_door: codex-session-start
     workflow_front_door: workflow-runtime
-    coverage: [specs_docs/session_start.sh, orchestrator/spine.py, orchestrator/three_body_loop.py, "**/routeb_status.py"]
+    coverage: [specs_docs/session_start.sh, orchestrator/session_briefing.py, orchestrator/spine.py, orchestrator/three_body_loop.py, "**/routeb_status.py"]
     tools:
       - id: codex-session-start
         status: ENABLED
@@ -209,6 +209,36 @@ tool_families:
         authority: ORIENTATION_AND_CONSISTENCY_CHECK
         records_to: NONE
         last_verified: 2026-08-10
+
+      - id: routeb-session-briefing
+        status: ENABLED
+        audience: [CODEX, HUMAN]
+        mode: READ_ONLY
+        path: orchestrator/session_briefing.py
+        invoke: python3 orchestrator/session_briefing.py brief
+        alternatives:
+          - python3 orchestrator/session_briefing.py validate
+        trigger: Internal read-only Route B summary called once by codex-session-start.
+        writes: false
+        approval: NONE
+        authority: DELTA_AWARE_ORIENTATION_NOT_GOAL_SELECTION_OR_VERDICT_AUTHORITY
+        records_to: stdout
+        validation: test_session_briefing
+        last_verified: 2026-08-30
+
+      - id: routeb-session-checkpoint
+        status: ENABLED
+        audience: [CODEX]
+        mode: WRITES_DERIVED
+        path: orchestrator/session_briefing.py
+        invoke: python3 orchestrator/session_briefing.py checkpoint
+        trigger: Internal machine-local delta checkpoint after a clean workflow-session-close.
+        writes: true
+        approval: NONE_FOR_MACHINE_LOCAL_DERIVED_CHECKPOINT
+        authority: DETERMINISTIC_NONCANONICAL_DELTA_BASELINE_NOT_ROUTE_STATE
+        records_to: q3.lean.aristotle/.qmd_cache/session_briefing_checkpoint.json
+        validation: test_session_briefing
+        last_verified: 2026-08-30
 
       - id: knowledge-spine-strict
         status: ENABLED
