@@ -1,7 +1,7 @@
 # Codex task — Goal 058 G3 rate/floor source rerank
 
 Date: 2026-08-30
-Status: `ACTIVE_STRATEGIC_SOURCE_REVIEW`
+Status: `BLOCKED_G3_SATZ9_UNIFORM_ASYMPTOTIC_LIBRARY_WALL`
 Parent: Goal 058 / G3 prolate rate and projected denominator floor
 
 ## Exact conflict
@@ -41,3 +41,25 @@ current G3 front to be killed and reranked.
 - Do not edit or stage foreign mode-four files or foreign control/map deltas.
 - No finite-cell promotion, Route promotion, or RH claim.
 - `PX_RH_CLAIM: NOT_MADE`.
+
+## Executed verdict and exact stop
+
+The byte-bound verdict at commit
+`ac8dec55094426e021e36b40461b773599e8a448` selected
+`TRY_FORMALIZE_G3_EXPLICIT_SATZ9_FUCHS_RATE_SOURCE`. Codex typechecked the
+frozen first theorem head and constructed both degree-zero and degree-four
+`Satz9SourceData` witnesses from the same source-pure spectrum package.
+
+The first and only remaining Lean goal is the fixed-mode center-normalized
+uniform `O(selectedFerrersPaperGamma k ^ (-1))` consequence of
+Meixner--Schaefke Satz 9. The complete Q3/Mathlib/external shelf contains no
+unconditional supplier; the existing rate transport begins only after this
+rate is assumed.
+
+Exact report:
+`docs/routeB_bus/CODEX_REPORT_GOAL058_G3_SATZ9_UNIFORM_ASYMPTOTIC_LIBRARY_WALL_2026-08-30.md`.
+
+No fallback receiver, fitted constant, axiom, or weakened theorem is allowed.
+The next action must target the missing uniform asymptotic lemma itself or be a
+new source-locked strategic rerank; repeating the same receiver/source search
+is closed by this task.
