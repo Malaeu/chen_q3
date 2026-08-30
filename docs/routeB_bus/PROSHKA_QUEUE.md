@@ -8,6 +8,18 @@ same-chat доставки и `IN_REVIEW -> ANSWERED` только после п
 safety confirmation остаётся внешней границей. Судья статусы не трогает, но
 обязан в вердикте называть `REQ`-id, на который отвечает.
 
+## REQ-2026-08-30-G3RATEFLOOR · Goal 058 G3 paper-rate source rerank · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_G3_RATE_FLOOR_SOURCE_RERANK_2026-08-30.txt`
+- Boundary: `GOAL058_G3_PROLATE_RATE_FLOOR_SOURCE_RERANK`
+- Blocks: exact executable meaning of the live G3 rate/floor contract after its
+  receiver and denominator-floor side were closed conditionally.
+- Action split: formalize one exact paper theorem, use one already-authorized
+  source interface, or kill/rerank this front without renaming the same gap.
+- Boundaries: same phase/chat, one byte-exact attachment, no new project axiom,
+  no repeated conditional receiver, no Route promotion, `PX_RH_CLAIM: NOT_MADE`.
+
 
 **Пересобрана 2026-08-10** после выходных на Маке. Что изменилось — в разделе
 «Состояние фронта» сразу под правилами.

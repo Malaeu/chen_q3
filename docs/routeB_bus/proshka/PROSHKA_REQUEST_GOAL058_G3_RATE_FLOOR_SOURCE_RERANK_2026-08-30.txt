@@ -1,0 +1,159 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-08-30-G3RATEFLOOR
+BOUNDARY_ID: GOAL058_G3_PROLATE_RATE_FLOOR_SOURCE_RERANK
+DATE: 2026-08-30
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+SOURCE_BASE_COMMIT: 239a12108baac55f4b53abc908a37e6d9ce7054e
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: PROPOSITION59_CCM_FINITE_BOTTOM_GROUND_FAMILY
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+
+Proshka, return one independent strategic verdict on a live execution-state
+conflict in Goal 058 G3.
+
+CURRENT LIVE ADDRESS
+
+The current machine state still says:
+
+  operational_status = GOAL_058_G3_PROLATE_RATE_AND_FLOOR_OPEN
+  contract = G3_PROLATE_RATE_CENTRAL_OVERLAP_DENOMINATOR_FLOOR
+  status = SOURCE_THEOREM_OPEN
+
+Its next action asks Codex to construct the actual normalized two-mode prolate
+h_lambda, export the CCM Lemma 7.2 O(lambda^-2) approximation, prove a nonzero
+central overlap and an eventual projected denominator floor on one coupled
+(m,N) schedule.
+
+LATER KERNEL-GREEN FACTS
+
+The receiver side was subsequently implemented. In particular:
+
+1. selectedFerrers_directCylinderRate_of_explicitSatz9RawRates
+
+   gives the selected Ferrers direct cylinder rate, but only from explicit raw
+   Satz 9 rate hypotheses for the exact source families S0 and S4.
+
+2. selectedFerrers_finiteFourierEigenvalueDefectRate_of_explicitFuchsRates
+
+   gives the chi/eigenvalue-defect rate, but only from explicit Fuchs
+   eigenfunction and defect-rate hypotheses.
+
+3. selectedTrialNormalizerBounded_of_selectedFerrersW5RateLedger
+
+   gives the projected norm floor and bounded normalizer once the exact mode,
+   chi and theta rates are supplied.
+
+4. selectedSatz9SourceData_at_projectTheta_degree_zero_four
+
+   constructs the exact source payload but explicitly does not prove the raw
+   Satz 9 rate.
+
+5. E_star_explicitCCMLimitH_pos
+
+   gives positivity of the limiting central-overlap target, not convergence of
+   the selected family to that target.
+
+The public axiom profile of the receiver chain is the standard
+[propext, Classical.choice, Quot.sound]. No project axiom supplies the paper
+rate.
+
+MECHANICAL PREFLIGHT
+
+At SOURCE_BASE_COMMIT, supplier_preflight for an unconditional selected Ferrers
+Satz9/Fuchs paper-rate supplier returns INCOMPLETE. The bounded-normalizer
+candidate is a consumer with explicit rate premises, not an exact supplier.
+
+WHY THIS IS A STRATEGIC BOUNDARY
+
+Writing another conditional receiver or denominator-floor wrapper repeats work
+already closed. On the other hand, a citation does not create a Lean proof term,
+and the repository has previously forbidden inventing a project axiom merely to
+name a published estimate. The live execution address therefore underspecifies
+which source policy is intended.
+
+QUESTION 1 — EXACT PAPER SUPPLY
+
+Is there an exact theorem in the pinned primary sources that supplies, for the
+same selected degree-zero/four families and normalization, all missing raw
+Satz9/Fuchs rate inputs required by the three kernel-green consumers above?
+
+If yes, give:
+
+- exact paper, theorem/equation pin and hypotheses;
+- exact source functions and scaling constants;
+- uniformity range and O(lambda^-2) constants;
+- parameter, coordinate, Fourier-normalization and eigenvalue crosswalk;
+- the first theorem-sized Lean statement to formalize without assuming its own
+  conclusion or importing RH-equivalent information.
+
+QUESTION 2 — APPROVED SOURCE INTERFACE
+
+If the published result is accepted as an external mathematical input rather
+than re-proved, is there an already authorized Q3 source-interface mechanism
+that may carry it honestly without a new project axiom and without relabeling
+semantic admission as kernel proof?
+
+If yes, specify the exact interface, trust label, required receipt, forbidden
+claims and first implementation step. Do not invent a new trust class.
+
+QUESTION 3 — KILL/RERANK
+
+If neither an exact formalizable paper theorem nor an already authorized source
+interface is available, should the current G3 prolate-rate/floor front be killed
+as an executable program and reranked? If so, name the next physical Goal 058
+discriminator that does not consume the same missing paper-rate theorem under a
+new name.
+
+RETURN EXACTLY ONE PRIMARY CLASS
+
+TRY_FORMALIZE_G3_EXPLICIT_SATZ9_FUCHS_RATE_SOURCE
+
+  Return one exact first public Lean theorem head, owned file, imports, primary
+  source pins, hypotheses, conclusion, downstream consumer, two adversarial
+  plants and validation commands.
+
+REPAIR_G3_RATE_FLOOR_VIA_EXISTING_APPROVED_SOURCE_INTERFACE
+
+  Return the exact already-existing source-interface mechanism, its trust and
+  receipt semantics, the exact rate payload and one theorem-sized first action.
+  The repair must not create a new axiom class or claim kernel proof of the
+  published analytic input.
+
+KILL_G3_PROLATE_RATE_FLOOR_CURRENT_FRONT_AND_RERANK
+
+  Return the exact kill scope, why the existing conditional receiver chain is
+  preserved, the next permitted physical discriminator, its first executable
+  contract, and the state/map/current-pointer changes required for an honest
+  rerank.
+
+MANDATORY ATTACKS
+
+1. Reject any answer that merely restates the existing rate hypotheses.
+2. Reject a fixed finite-cell numerical fit as a cofinal rate theorem.
+3. Reject a changed prolate family, coordinate, Fourier normalization or
+   independently chosen S0/S4 witnesses.
+4. Reject circular use of the projected denominator floor to prove the rates
+   that supply that floor.
+5. Reject semantic admission, a browser verdict or a citation as a kernel proof.
+6. Reject reranking to a node that consumes the same missing Satz9/Fuchs input
+   under another name.
+
+SOURCE FILES TO INSPECT
+
+  q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_STATE.json
+  q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/IMPLEMENTATION_PLAN.md
+  q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersDirectCylinderRate.lean
+  q3.lean.aristotle/Q3/Proofs/RouteB/G6N1FuchsSelectedEigenvalueDefectRate.lean
+  q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersTrialNormalizerClosure.lean
+  q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedSatz9SourcePackageTransport.lean
+  q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean
+  docs/routeB_bus/LINUX_SOURCE_RECORD_REQ_V_F72_1C_SELECTED_FERRERS_DIRECT_CYLINDER_RATE_2026-08-23.md
+  docs/routeB_bus/LINUX_SOURCE_RECORD_REQ_V_F72_3B_FUCHS_SELECTED_EIGENVALUE_DEFECT_RATE_2026-08-23.md
+  docs/Progress_Log.md
+
+Do not authorize another conditional receiver. Do not touch foreign mode-four
+files. No phase-key change, Route promotion, or RH claim.
