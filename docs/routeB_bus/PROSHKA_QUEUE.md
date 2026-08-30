@@ -3200,3 +3200,22 @@ critical strip калибровка `g_k`, такая что семейство 
   `KILL_R2_MOVING_KRYLOV_FESHBACH`.
 - Boundaries: same living Goal 058 phase; no Lean before verdict; no Route/RH
   promotion; `PX_RH_CLAIM: NOT_MADE`.
+
+## REQ-2026-08-30-ODDFLOOR · Goal 058 selected Ferrers odd-sector floor discriminator · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SELECTED_FERRERS_ODD_SECTOR_FLOOR_DISCRIMINATOR_2026-08-30.txt`
+- Request commit: `d4f5a04c42463c358dd8e1a6fdace47ff8fc8e6b`
+- Attachment bytes: `6024`
+- Attachment lines: `141`
+- Attachment SHA-256: `93336c4bdad88cdc8c2771ee5db3f93d740696c27278cbc165834fc60fb5816a`
+- Attachment Git blob: `435ea5be295391e7c5cf72920d669c00c9ef443c`
+- Final LF: `true`
+- Boundary: `GOAL058_SELECTED_FERRERS_ODD_SECTOR_FLOOR_DISCRIMINATOR`
+- Expected return: one `[Proshka]` commit naming
+  `TRY_SELECTED_FERRERS_ODD_SECTOR_FLOOR_SOURCE`,
+  `REPAIR_SELECTED_FERRERS_ODD_SECTOR_FLOOR_VIA_SOURCE_CROSSWALK`, or
+  `KILL_SELECTED_FERRERS_ODD_SECTOR_FLOOR_ON_CURRENT_SOURCE_SHELF`.
+- Boundaries: no Lean before a source-ready `TRY`/`REPAIR`; do not touch foreign
+  mode-four/G3 work; no phase-key change, Route promotion, or RH claim;
+  `PX_RH_CLAIM: NOT_MADE`.
