@@ -112,7 +112,50 @@ case, сохраняет координату `-L*z/(2*pi)` и завершае�
 
 ---
 
-## Что убито и не подлежит возврату
+## Scoped exclusions и conditional supplier ban
+
+Эти записи относятся к разным epistemic классам и не создают общий запрет на
+поиск более слабого consumer-sufficient интерфейса.
+
+```yaml
+dependencies:
+  - original_requested_object: PSTAR_EQUALS_SCALAR_TIMES_SOURCE_LAGRANGE_POLYNOMIAL
+    downstream_consumer: PROPOSITION59_SAME_ROW_ZERO_SET_TRANSFER
+    actual_consumer_requirement: EXACT_ZERO_SET_DECOMPOSITION_WITH_REAL_LATTICE_FACTOR
+    original_object_is: NOT_NECESSARY
+    known_weaker_interfaces: [ZERO_SET_UNION_WITH_REAL_LATTICE_FACTOR]
+    consumer_implication: ZERO_SET_UNION_WITH_REAL_LATTICE_FACTOR => PROPOSITION59_SAME_ROW_ZERO_SET_TRANSFER
+    failure_type: COUNTEREXAMPLE
+    failure_scope: NONZERO_FINITE_POLYNOMIAL_VERSUS_INFINITE_SINE_LATTICE_ZERO_SET
+    epistemic_status: MATHEMATICALLY_DEAD
+    death_evidence:
+      - kind: COUNTEREXAMPLE
+        path: docs/routeB_bus/ROUTE058_GATE_CONTRACTS.md
+        commit: fef398aa75d5ae37012e8a672f80ca5f7d0e5359
+        git_blob: f30481486ad219a5c3c6454ee56a82fd214cf305
+        scope: SCALAR_ONLY_FULL_TRANSFORM_EQUALITY_FOR_NONZERO_FINITE_SOURCE_POLYNOMIAL
+        claim: FULL_TRANSFORM_HAS_INFINITELY_MANY_EXTERIOR_SINE_LATTICE_ZEROS_WHILE_NONZERO_FINITE_POLYNOMIAL_HAS_FINITELY_MANY
+  - original_requested_object: EXACT_GROUND_EQUALS_TRIAL
+    downstream_consumer: SAME_GROUND_FAMILY_TRACKS_PROJECTED_TRIAL
+    actual_consumer_requirement: CONVERGENCE_OR_TRACKING_ON_THE_SAME_GROUND_FAMILY
+    original_object_is: NOT_NECESSARY
+    known_weaker_interfaces: [SAME_FAMILY_TRACKING_ESTIMATE]
+    consumer_implication: SAME_FAMILY_TRACKING_ESTIMATE => GOAL058_G3
+    failure_type: NO_DERIVATION
+    failure_scope: EXACT_IDENTITY_ATTEMPT_OF_SECTION_8_7_UNSUPPORTED_BY_CURRENT_SOURCE_CONTRACT
+    epistemic_status: RESEARCH_DEBT
+    death_evidence: []
+    reopen_triggers: [NEW_THEOREM, NEW_DERIVATION, COUNTEREXAMPLE]
+  - original_requested_object: GLOWER_ARTIFACTS_AS_DIRECT_ODD_BLOCK_SUPPLIER
+    downstream_consumer: LITERAL_SELECTED_ODD_COMPRESSION
+    actual_consumer_requirement: FINITE_COMPRESSION_BRIDGE_IN_EXACT_COORDINATES
+    original_object_is: UNKNOWN
+    known_weaker_interfaces: [EXPLICIT_FINITE_COMPRESSION_BRIDGE]
+    consumer_implication: EXPLICIT_FINITE_COMPRESSION_BRIDGE => LITERAL_SELECTED_ODD_COMPRESSION
+    failure_type: NO_DERIVATION
+    failure_scope: DIRECT_SUPPLIER_USE_WITHOUT_COMPRESSION_BRIDGE
+    epistemic_status: RESEARCH_DEBT
+```
 
 **`Pstar = c_N · лагранжев многочлен`** — запись `PSTAR_C_N_UMNOZHIT_NA_LAGRANZHEV_MNOGOCHLEN`.
 У преобразования Proposition-5.9 бесконечно много внешних нулей на синус-решётке, у ненулевого
@@ -123,7 +166,9 @@ case, сохраняет координату `-L*z/(2*pi)` и завершае�
 Z(F_{m,N}) = Z(P_{m,N}) ∪ Z(Λ_{m,N})       Λ — вещественный решёточный множитель
 ```
 
-**`exact ground equals trial`** — убито маршрутом, §8.7.
+**`exact ground equals trial`** — operationally killed как неподтверждённая и
+необязательная exact-identity попытка, но математически не опровергнута, §8.7.
+Живой consumer требует более слабую same-family tracking estimate.
 
 **Артефакты GLOWER как поставщик odd-блока** — запрещено до явной леммы-моста конечной
 компрессии (`GLOWER_ARTEFAKTY_NE_POSTAVSHCHIKI_ODD_BLOKA_BEZ_MOSTA_KOMPRE`).

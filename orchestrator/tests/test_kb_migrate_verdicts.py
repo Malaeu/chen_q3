@@ -1,10 +1,11 @@
 import sqlite3
+import sys
 import unittest
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest.mock import patch
 
-from orchestrator import kb_migrate_verdicts
+from orchestrator import kb, kb_migrate_verdicts
 
 
 class VerdictIdTests(unittest.TestCase):
@@ -122,6 +123,68 @@ class VerdictIdTests(unittest.TestCase):
         )
         self.assertTrue(reused)
         self.assertEqual(repeated, collision_id)
+
+    def test_dual_iteration_and_kill_emit_two_stable_rows(self) -> None:
+        with TemporaryDirectory() as td:
+            repo = Path(td)
+            verdict_dir = repo / "docs" / "routeB_bus" / "proshka"
+            verdict_dir.mkdir(parents=True)
+            verdict = verdict_dir / "PROSHKA_VERDICT_DUAL_2026-08-30.md"
+            verdict.write_text(
+                "# Dual verdict\n"
+                "PRIMARY: KILL_EXACT_SOURCE\n"
+                "iteration:\n"
+                "  target: CONSUMER_Y\n"
+                "  failed_strategy: THEOREM_X_DIRECT\n"
+                "  new_gap_name: WEAKER_Z\n"
+                "  invariant_learned: X_IS_NOT_NECESSARY\n"
+                "  forbidden_future_move: DO_NOT_RETRY_X\n"
+                "  next_decisive_test: TRY_Z\n",
+                encoding="utf-8",
+            )
+            db = repo / "knowledge.db"
+            conn = sqlite3.connect(db)
+            conn.executescript(kb.SCHEMA.read_text(encoding="utf-8"))
+            conn.executescript(
+                """
+                CREATE TABLE IF NOT EXISTS capability (
+                  theorem TEXT, file TEXT, lens TEXT, provides TEXT, requires TEXT,
+                  strength TEXT, run_id TEXT
+                );
+                CREATE TABLE IF NOT EXISTS link (
+                  from_type TEXT, from_id TEXT, to_type TEXT, to_id TEXT
+                );
+                CREATE TABLE IF NOT EXISTS source_ledger (
+                  source_file TEXT PRIMARY KEY, expected_rows INTEGER,
+                  migrated_at TEXT, note TEXT
+                );
+                """
+            )
+            conn.close()
+
+            with (
+                patch.object(kb_migrate_verdicts.kb, "DB_PATH", db),
+                patch.object(kb_migrate_verdicts, "REPO", repo),
+                patch.object(sys, "argv", ["kb_migrate_verdicts.py"]),
+            ):
+                self.assertEqual(kb_migrate_verdicts.main(), 0)
+                self.assertEqual(kb_migrate_verdicts.main(), 0)
+
+            conn = sqlite3.connect(db)
+            rows = conn.execute(
+                "SELECT id,status,scope_negation FROM kill ORDER BY status"
+            ).fetchall()
+            evidence = conn.execute(
+                "SELECT kill_id FROM kill_evidence WHERE kind='verdict_copy'"
+            ).fetchall()
+            conn.close()
+
+        self.assertEqual(len(rows), 2)
+        self.assertEqual({row[1] for row in rows}, {"standing", "killed"})
+        killed = next(row for row in rows if row[1] == "killed")
+        self.assertIn("does not imply MATHEMATICALLY_DEAD", killed[2])
+        self.assertEqual(len({row[0] for row in evidence}), 2)
+        self.assertTrue(any(row[0].endswith("__VERDICT_KILL") for row in rows))
 
 
 if __name__ == "__main__":

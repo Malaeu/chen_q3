@@ -31,12 +31,22 @@ project-interface verification are required for `SOURCE_VERIFIED`;
 `READY_FOR_RERANK` remains non-executable and only the separate authorized
 execution selector may reopen a route. Session start never performs web search.
 
-Each reopenable row is `RESEARCH_DEBT` and `not_disproved: true`. The same file's
-separate `adjudications` section stores atomically scoped `MATHEMATICALLY_DEAD`
-theorem shapes with counterexample/impossibility evidence; those entries never
-enter ranking or reopen queues. The briefing ranks debts by new signal, recheck
-age, unlock value and estimated difficulty; these are ordering labels, not
-success probabilities.
+Each reopenable row is `RESEARCH_DEBT` and `not_disproved: true`. A named object
+may be `SUFFICIENT_ONLY` or `NOT_NECESSARY`; every row carries the complete
+16-class `alternative_interface_audit`, and `NUMERICAL_HYPOTHESIS_ONLY` is never
+proof. Goal 056's unsupported arbitrary-cofinal theorem shape is therefore a
+recheckable debt with coupled-schedule and constructive-diagonal alternatives,
+not a mathematical refutation. The same file's separate `adjudications` section
+stores only atomically scoped `MATHEMATICALLY_DEAD` theorem shapes with exact
+path/commit/blob evidence; those entries never enter ranking or reopen queues.
+The briefing ranks debts by new signal, recheck age, unlock value and estimated
+difficulty; these are ordering labels, not success probabilities.
+
+The deterministic semantic projection is
+`docs/routeB_bus/RESEARCH_DEPENDENCY_CLASSIFICATION.md`. It is generated from the
+registry, contains a compact non-actionable dead block, and is part of the
+curated `q3_docs` source set. It is semantic orientation only and cannot select
+or reopen execution.
 
 Debt prompt priority is based on `last_external_check`: 0–6 days is passive,
 7–29 days normal, and 30+ days highlighted. `REOPEN_CANDIDATE` or

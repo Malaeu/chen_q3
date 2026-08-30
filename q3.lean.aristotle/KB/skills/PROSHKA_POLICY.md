@@ -4,46 +4,17 @@ priority: medium
 last_updated: 2026-02-08
 ---
 
-# PROSHKA POLICY (single source of truth)
+# Proshka policy pointer
 
-**Goal:** keep Proshka inputs minimal, canonical, and non-duplicative.
+Status: compatibility copy of `q3.lean.aristotle/docs/PROSHKA_POLICY.md`.
+Canonical behavior lives in `docs/CODEX_CONTROL.md`.
 
-## Canonical set (use these 3)
+Current judge/dependency sources are
+`docs/routeB_bus/PROSHKA_SYSTEM_PROMPT_v2.md`,
+`docs/Codex/RESEARCH_DEPENDENCY_PROTOCOL.md`, and
+`docs/routeB_bus/RECHECKABLE_RESEARCH_DEBTS.json`. Exact request selection and
+transport use `workflow_runtime.py review-plan` plus one source-locked UTF-8
+`.txt` in the existing living phase chat.
 
-1) **Knowledge base (stable index)**
-   - `ACTIVE/KNOWLEDGE_BASE.md`
-
-2) **Current request (changes when target changes)**
-   - `PROSHKA_REQUEST_4.md`
-
-3) **Packed context (generated, one file)**
-   - `PROSHKA_CONTEXT_SINGLE_SCALE_2026_01_24.md`
-
-## Legacy / optional
-
-- `ACTIVE/aristotle/proshka_memory_pack.md` is a symlink to `ACTIVE/KNOWLEDGE_BASE.md`.
-- Older requests (e.g., `PROSHKA_REQUEST_3.md`) are **archive only**.
-
-## Rule of thumb
-
-- If you need orientation → **Knowledge base**.
-- If you need exact task → **Current request**.
-- If you need everything in one file → **Packed context**.
-
-## Build / update
-
-Use:
-```
-python3 scripts/build_proshka_brief.py --mode full --max-file-lines 2000 \
-  --include-glob 'full/q3.lean.aristotle/ACTIVE/spec_*.md' \
-  --include-glob 'docs/Как работают модели типа Аристотель и их тренировка/*.md' \
-  --out full/q3.lean.aristotle/PROSHKA_CONTEXT_SINGLE_SCALE_2026_01_24.md
-```
-
-## Do not duplicate
-
-Do **not** create parallel packs or parallel requests unless the target changes.
-
-## Proshka pack updater
-- scripts/refresh_proshka_pack.sh (manual refresh)
-- .git/hooks/post-commit (auto refresh; local only)
+`scripts/build_proshka_brief.py` creates evidence only, never a request or front
+door. January requests/packs and `refresh_proshka_pack.sh` are historical only.

@@ -12,8 +12,9 @@ Until today only the single 2026-08-05 G6/S2 kill had been hand-copied into
 ROUTE_KILL_REGISTRY.md. The rest lived only inside verdict prose — invisible to any query.
 
 Dedup rules:
-  * one row per distinct verdict NAME; every path it appears at is recorded as evidence,
-    so the canon/mirror split is preserved without duplicating knowledge;
+  * one stable row per semantic component of a distinct verdict NAME.  A verdict carrying
+    both an `iteration:` block and a structured KILL emits two rows; collapsing those two
+    statements loses the surviving strategy memory or the operational closeout;
   * a strategy already migrated from FAILED_STRATEGIES.yaml is NOT re-inserted — the verdict
     becomes an evidence row and an alias on the existing record instead.
 """
@@ -205,6 +206,37 @@ def choose_kill_id(
     raise RuntimeError(f"stable verdict id collision: {name} -> {candidate}")
 
 
+def choose_component_id(
+    name: str,
+    rel_canon: str,
+    known_ids: dict[str, str | None],
+    component: str,
+    dual: bool,
+) -> tuple[str, bool]:
+    """Stable, class-aware row id for a verdict component.
+
+    Historical single-component verdicts retain their old id.  For a dual verdict the
+    iteration row retains the base id and the operational KILL gets an explicit suffix.
+    """
+    base, reused = choose_kill_id(name, rel_canon, known_ids)
+    if component == "iteration" or not dual:
+        return base, reused
+    candidate = f"{base[:43]}__VERDICT_KILL"
+    source = known_ids.get(candidate)
+    if source is None and candidate not in known_ids:
+        return candidate, False
+    if source and Path(source).name == Path(rel_canon).name:
+        return candidate, True
+    suffix = hashlib.sha256((name + "\0kill").encode("utf-8")).hexdigest()[:8].upper()
+    collision = f"{base[:32]}__VERDICT_KILL__{suffix}"
+    collision_source = known_ids.get(collision)
+    if collision_source is None and collision not in known_ids:
+        return collision, False
+    if collision_source and Path(collision_source).name == Path(rel_canon).name:
+        return collision, True
+    raise RuntimeError(f"stable verdict component id collision: {name} -> {collision}")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true")
@@ -258,6 +290,8 @@ def main() -> int:
             continue
         live_names.add(name)
 
+        component_ids: list[str] = []
+        iteration_reused = False
         if it and it.get("failed_strategy") in known_strategies:
             # Already migrated from FAILED_STRATEGIES.yaml — attach provenance, do not double.
             target = conn.execute(
@@ -265,58 +299,74 @@ def main() -> int:
                 (it["failed_strategy"],)).fetchone()
             if target:
                 n_reused += 1
+                iteration_reused = True
+                component_ids.append(target[0])
                 evidence.append((target[0], "verdict", rel_canon))
                 if it.get("new_gap_name"):
                     aliases.append((target[0], it["new_gap_name"],
                                     f"gap named by verdict {name}"))
-                continue
 
-        kid, already_materialized = choose_kill_id(name, rel_canon, known_ids)
-        if already_materialized:
-            n_existing += 1
+        if it and not iteration_reused:
+            kid, already_materialized = choose_component_id(
+                name, rel_canon, known_ids, "iteration", bool(verdict_kill)
+            )
+            component_ids.append(kid)
+            if already_materialized:
+                n_existing += 1
+            else:
+                known_ids[kid] = rel_canon
+                n_iter += 1
+                reason = " | ".join(filter(None, [
+                    f"TARGET: {it.get('target')}" if it.get("target") else None,
+                    f"FAILED: {it.get('failed_strategy')}" if it.get("failed_strategy") else None,
+                    f"INVARIANT: {it.get('invariant_learned')}"
+                    if it.get("invariant_learned") else None,
+                ]))
+                rows.append({
+                    "id": kid, "unit_type": "strategy",
+                    "subject": it.get("failed_strategy") or it.get("target") or name,
+                    "status": "standing",
+                    "reason": norm(reason), "scope_negation": None, "rollback_target": None,
+                    "replacement": norm(it.get("next_decisive_test") or it.get("new_gap_name")),
+                    "forbidden_future_move": norm(it.get("forbidden_future_move")),
+                    "stop_code": it.get("progress_class") or it.get("status"),
+                    "track": "RouteB", "recorded_at": date, "source_file": rel_canon,
+                })
+                for key in ("cognitive_operator_used", "new_gap_name", "invariant_learned",
+                            "route_score", "next_decisive_test"):
+                    if it.get(key):
+                        evidence.append((kid, key, it[key][:500]))
+            if it.get("new_gap_name"):
+                aliases.append((kid, it["new_gap_name"], f"gap named by verdict {name}"))
+
+        if verdict_kill:
+            kid, already_materialized = choose_component_id(
+                name, rel_canon, known_ids, "kill", bool(it)
+            )
+            component_ids.append(kid)
+            if already_materialized:
+                n_existing += 1
+            else:
+                known_ids[kid] = rel_canon
+                n_kill += 1
+                headline = re.search(r"^#\s+(.+)$", text, re.M)
+                rows.append({
+                    "id": kid, "unit_type": "object" if killed_subject else "route",
+                    "subject": killed_subject or (norm(headline.group(1)) if headline else name),
+                    "status": "killed", "reason": f"verdict marker: {verdict_kill}",
+                    "scope_negation": (
+                        "Execution KILL of this exact verdict subject and source scope only; "
+                        "it does not imply MATHEMATICALLY_DEAD and does not close a weaker "
+                        "consumer-sufficient interface."
+                    ),
+                    "rollback_target": None, "replacement": None,
+                    "forbidden_future_move": None, "stop_code": verdict_kill,
+                    "track": "RouteB", "recorded_at": date, "source_file": rel_canon,
+                })
+
+        for kid in dict.fromkeys(component_ids):
             for p in paths:
                 evidence.append((kid, "verdict_copy", str(p.relative_to(REPO))))
-            if it and it.get("new_gap_name"):
-                aliases.append((kid, it["new_gap_name"], f"gap named by verdict {name}"))
-            continue
-        known_ids[kid] = rel_canon
-
-        if it:
-            n_iter += 1
-            reason = " | ".join(filter(None, [
-                f"TARGET: {it.get('target')}" if it.get("target") else None,
-                f"FAILED: {it.get('failed_strategy')}" if it.get("failed_strategy") else None,
-                f"INVARIANT: {it.get('invariant_learned')}"
-                if it.get("invariant_learned") else None,
-            ]))
-            rows.append({
-                "id": kid, "unit_type": "strategy",
-                "subject": it.get("failed_strategy") or it.get("target") or name,
-                "status": "standing",
-                "reason": norm(reason), "scope_negation": None, "rollback_target": None,
-                "replacement": norm(it.get("next_decisive_test") or it.get("new_gap_name")),
-                "forbidden_future_move": norm(it.get("forbidden_future_move")),
-                "stop_code": it.get("progress_class") or it.get("status"),
-                "track": "RouteB", "recorded_at": date, "source_file": rel_canon,
-            })
-            for key in ("cognitive_operator_used", "new_gap_name", "invariant_learned",
-                        "route_score", "next_decisive_test"):
-                if it.get(key):
-                    evidence.append((kid, key, it[key][:500]))
-        else:
-            n_kill += 1
-            headline = re.search(r"^#\s+(.+)$", text, re.M)
-            rows.append({
-                "id": kid, "unit_type": "object" if killed_subject else "route",
-                "subject": killed_subject or (norm(headline.group(1)) if headline else name),
-                "status": "killed", "reason": f"verdict marker: {verdict_kill}",
-                "scope_negation": None, "rollback_target": None, "replacement": None,
-                "forbidden_future_move": None, "stop_code": verdict_kill,
-                "track": "RouteB", "recorded_at": date, "source_file": rel_canon,
-            })
-
-        for p in paths:
-            evidence.append((kid, "verdict_copy", str(p.relative_to(REPO))))
 
     print(f"distinct verdicts scanned : {len(by_name)}")
     print(f"  new strategy rows (M3)  : {n_iter}")
@@ -360,6 +410,8 @@ def main() -> int:
         [(src, n, datetime.date.today().isoformat(), "wave 3 verdicts")
          for src, n in collections.Counter(r["source_file"] for r in rows).items()])
     conn.commit()
+    backfilled = kb.backfill_operational_scope_negations(conn)
+    print(f"backfilled legacy operational scope negations: {backfilled}")
     print("migrated into", kb.DB_PATH)
     return 0
 

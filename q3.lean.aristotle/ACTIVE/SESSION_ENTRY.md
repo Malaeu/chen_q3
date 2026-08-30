@@ -53,7 +53,7 @@ hit создаёт максимум `REOPEN_CANDIDATE`: до `SOURCE_VERIFIED` �
 `NO`. При `YES/SELECT` сначала выбрать один ранжированный `RESEARCH_DEBT` и
 собрать детерминированный пакет через `research_debt_challenge.py`. Это только
 подтип пакета, не новый класс вызова: отправка разрешена исключительно когда
-уже выполнен существующий gate `EXPLORATION_REVIEW` Control v9 и
+уже выполнен существующий gate `EXPLORATION_REVIEW` канонического Control и
 `review-plan` дал `REVIEW_DISPATCH_READY`. Пакет обязан содержать точные
 `REQUEST_ID` и `BOUNDARY_ID`; согласие на подготовку не заменяет gate.
 `MATHEMATICALLY_DEAD` в этот список не входит.
@@ -166,7 +166,9 @@ finite certificates, прочитать `ACTIVE/PSD_STEP33_MONITOR.md`. Испо
 
 - Incoming notes: читать `docs/EMBEDDING_INGEST_WORKFLOW.md` и использовать
   `q3-note-ingest`.
-- Новый blocker: сначала определить точный target lemma и consumer, затем
+- Новый blocker: сначала определить downstream consumer и его минимальный
+  достаточный интерфейс; только затем выбрать target lemma или альтернативную
+  форму, которая доказывает точную импликацию в неизменённый consumer. После этого
   выполнить 3–5 запросов через `scripts/research_oracle.py`; перед повторным
   поиском проверить `./orchestrator/kb.py flags <адрес|термин>`.
 - Oracle-карточки: читать `ACTIVE/pipeline/RESEARCH_ORACLE.md` и generated

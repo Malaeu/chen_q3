@@ -22,6 +22,7 @@ DIRECT_FILES = (
     "docs/CODEX_CONTROL.md",
     "docs/GENEALOGY.md",
     "docs/Progress_Log.md",
+    "docs/routeB_bus/RESEARCH_DEPENDENCY_CLASSIFICATION.md",
     "docs/RECORDING_RULES.md",
     "docs/GLOSSARY.md",
     "docs/cartographer/TOOLS.yaml",

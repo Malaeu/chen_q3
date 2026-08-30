@@ -46,6 +46,31 @@ TRANSITIONS = {
     "SOURCE_VERIFIED": {"REOPEN_CANDIDATE", "READY_FOR_RERANK"},
     "READY_FOR_RERANK": set(),
 }
+ALTERNATIVE_INTERFACE_CLASSES = (
+    "EXACT_ORIGINAL_THEOREM",
+    "WEAKER_THEOREM",
+    "COMBINED_ESTIMATE",
+    "ASYMPTOTIC_ONLY",
+    "AVERAGE_OR_WEIGHTED_ESTIMATE",
+    "FINITE_DIMENSIONAL_SUBSTITUTE",
+    "HEAD_TAIL_DECOMPOSITION",
+    "VARIATIONAL_OR_RAYLEIGH",
+    "COERCIVITY",
+    "FESHBACH_OR_SCHUR",
+    "SYMMETRY_OR_PARITY",
+    "PERTURBATIVE",
+    "COMPACTNESS",
+    "DIRECT_CONSUMER_PROOF",
+    "ALTERNATIVE_REPRESENTATION",
+    "NUMERICAL_HYPOTHESIS_ONLY",
+)
+ALTERNATIVE_INTERFACE_STATUSES = {
+    "PROMISING",
+    "SUFFICIENT_CANDIDATE",
+    "REJECTED",
+    "NOT_RELEVANT",
+    "HYPOTHESIS_ONLY",
+}
 
 
 class SessionBriefingError(RuntimeError):
@@ -80,6 +105,32 @@ def _git(repo: Path, *args: str) -> str:
     if proc.returncode != 0:
         raise SessionBriefingError(proc.stderr.strip() or "GIT_QUERY_FAILED")
     return proc.stdout.strip()
+
+
+def _validate_git_ref(
+    repo: Path,
+    ref: Any,
+    *,
+    owner_id: str,
+    require_claim: bool = False,
+) -> None:
+    required = {"path", "commit", "git_blob"}
+    if require_claim:
+        required.update({"kind", "scope", "claim"})
+    if not isinstance(ref, dict) or set(ref) != required:
+        raise SessionBriefingError(f"RESEARCH_DEPENDENCY_REF_INVALID:{owner_id}")
+    for field in required:
+        if not isinstance(ref[field], str) or not ref[field].strip():
+            raise SessionBriefingError(
+                f"RESEARCH_DEPENDENCY_REF_FIELD_INVALID:{owner_id}:{field}"
+            )
+    source = repo / ref["path"]
+    if not source.is_file():
+        raise SessionBriefingError(f"RESEARCH_DEPENDENCY_REF_MISSING:{ref['path']}")
+    _git(repo, "merge-base", "--is-ancestor", ref["commit"], "HEAD")
+    actual = _git(repo, "rev-parse", f"{ref['commit']}:{ref['path']}")
+    if actual != ref["git_blob"]:
+        raise SessionBriefingError(f"RESEARCH_DEPENDENCY_REF_BLOB_DRIFT:{ref['path']}")
 
 
 def _machine_header(path: Path) -> dict[str, Any]:
@@ -131,6 +182,7 @@ def validate_registry(repo: Path, path: Path | None = None) -> dict[str, Any]:
         "killed_at", "reason", "missing_object", "terminal_consumer",
         "original_requested_object", "downstream_consumer",
         "actual_consumer_requirement", "original_object_is",
+        "alternative_interface_audit", "failure_scope",
         "necessity_evidence", "known_weaker_interfaces", "failure_type",
         "death_evidence", "consumer_implication", "weaker_interface_probe",
         "why_interesting", "unlock_value", "estimated_difficulty",
@@ -155,6 +207,26 @@ def validate_registry(repo: Path, path: Path | None = None) -> dict[str, Any]:
             research_dependency_contract.validate(row)
         except research_dependency_contract.DependencyContractError as exc:
             raise SessionBriefingError(str(exc)) from exc
+        audit = row["alternative_interface_audit"]
+        if not isinstance(audit, list) or len(audit) != len(ALTERNATIVE_INTERFACE_CLASSES):
+            raise SessionBriefingError(f"ALTERNATIVE_INTERFACE_AUDIT_INVALID:{debt_id}")
+        audit_classes: list[str] = []
+        for audit_row in audit:
+            if not isinstance(audit_row, dict) or set(audit_row) != {"class", "status", "reason"}:
+                raise SessionBriefingError(f"ALTERNATIVE_INTERFACE_AUDIT_ROW_INVALID:{debt_id}")
+            audit_class = audit_row["class"]
+            audit_classes.append(audit_class)
+            if audit_row["status"] not in ALTERNATIVE_INTERFACE_STATUSES:
+                raise SessionBriefingError(f"ALTERNATIVE_INTERFACE_STATUS_INVALID:{debt_id}:{audit_class}")
+            if not isinstance(audit_row["reason"], str) or not audit_row["reason"].strip():
+                raise SessionBriefingError(f"ALTERNATIVE_INTERFACE_REASON_INVALID:{debt_id}:{audit_class}")
+            if (
+                audit_class == "NUMERICAL_HYPOTHESIS_ONLY"
+                and audit_row["status"] != "HYPOTHESIS_ONLY"
+            ):
+                raise SessionBriefingError(f"NUMERICAL_INTERFACE_MUST_REMAIN_HYPOTHESIS:{debt_id}")
+        if tuple(audit_classes) != ALTERNATIVE_INTERFACE_CLASSES:
+            raise SessionBriefingError(f"ALTERNATIVE_INTERFACE_CLASSES_INVALID:{debt_id}")
         if row["unlock_value"] not in {"HIGH", "MEDIUM", "LOW"}:
             raise SessionBriefingError(f"RESEARCH_DEBT_UNLOCK_INVALID:{debt_id}")
         if row["estimated_difficulty"] not in {"LOW", "MEDIUM", "HIGH", "UNKNOWN"}:
@@ -201,15 +273,7 @@ def validate_registry(repo: Path, path: Path | None = None) -> dict[str, Any]:
                 f"RESEARCH_DEBT_DATE_INVALID:{debt_id}:last_attempt.date"
             ) from exc
         for ref in row["authoritative_refs"]:
-            if not isinstance(ref, dict) or set(ref) != {"path", "commit", "git_blob"}:
-                raise SessionBriefingError(f"RESEARCH_DEBT_REF_INVALID:{debt_id}")
-            source = repo / ref["path"]
-            if not source.is_file():
-                raise SessionBriefingError(f"RESEARCH_DEBT_REF_MISSING:{ref['path']}")
-            _git(repo, "merge-base", "--is-ancestor", ref["commit"], "HEAD")
-            actual = _git(repo, "rev-parse", f"{ref['commit']}:{ref['path']}")
-            if actual != ref["git_blob"]:
-                raise SessionBriefingError(f"RESEARCH_DEBT_REF_BLOB_DRIFT:{ref['path']}")
+            _validate_git_ref(repo, ref, owner_id=debt_id)
     adjudications = data.get("adjudications")
     if not isinstance(adjudications, list):
         raise SessionBriefingError("RESEARCH_DEPENDENCY_ADJUDICATIONS_INVALID")
@@ -231,6 +295,13 @@ def validate_registry(repo: Path, path: Path | None = None) -> dict[str, Any]:
                 raise SessionBriefingError(f"RESEARCH_DEPENDENCY_ADJUDICATION_TEXT_INVALID:{field}")
         if not isinstance(item["evidence_refs"], list) or not item["evidence_refs"]:
             raise SessionBriefingError("MATHEMATICALLY_DEAD_WITHOUT_EVIDENCE")
+        for ref in item["evidence_refs"]:
+            _validate_git_ref(
+                repo,
+                ref,
+                owner_id=item["id"],
+                require_claim=True,
+            )
     return data
 
 

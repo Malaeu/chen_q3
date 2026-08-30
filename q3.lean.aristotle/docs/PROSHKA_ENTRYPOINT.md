@@ -1,35 +1,36 @@
-# PROSHKA ENTRYPOINT (READ THIS FIRST)
+# Proshka entrypoint — current pointer
 
-Purpose: Provide the minimal, current context for Q3 formalization.
-All other files are optional and linked below.
+Status: current pointer, not an independent policy kernel and not a task
+selector.
 
-## 1) Contract (must match RH_Q3)
-- docs/PROJECT_SPECS.md
-- docs/insights/rh_q3_invariants_contract_2026_01_16.md
+## Active sources
 
-## 2) Current status and next step
-- PROJECT_ORCHESTRATOR.md (Active Next Step)
-- PROJECT_WORKFLOW.md
+Read these in precedence order:
 
-## 3) Drift checklist (red flags)
-- A3 symbol must be P_A (period-1); do not use a_star as A3 symbol.
-- Toeplitz in A3 must be Fourier/Rayleigh, not sampling P(π(i-j)/M).
-- Prime operator must be compression/rank-one sum with w_Q.
-- Keep t_sym and t_rkhs distinct; do not mix w_Q and w_RKHS.
+1. `docs/CODEX_CONTROL.md` for review taxonomy, living-chat transport, and
+   operative verdict classes;
+2. `docs/routeB_bus/PROSHKA_SYSTEM_PROMPT_v2.md` for the active judge prompt;
+3. `docs/Codex/RESEARCH_DEPENDENCY_PROTOCOL.md` for consumer-first dependency
+   and research-debt classification;
+4. `docs/routeB_bus/RECHECKABLE_RESEARCH_DEBTS.json` for the validated debt
+   registry;
+5. the one exact UTF-8 `.txt` request selected and byte-bound by
+   `orchestrator/workflow_runtime.py review-plan`.
 
-## 4) If stuck
-- docs/INSIGHTS.md + docs/insights/INDEX.md
-- docs/ERRORS_DESTROYER.md
+Only the physical bus and current execution/runtime state select work. This
+pointer, a context pack, a queue marker, or a historical request does not.
 
-## 5) Current Proshka request
-- PROSHKA_REQUEST_4.md (single-scale closure pack; 3 open axioms)
+## Transport
 
-## 6) Packed context (one file)
-- PROSHKA_CONTEXT_SINGLE_SCALE_2026_01_24.md
- - Build script: scripts/build_proshka_brief.py
+Use the existing living phase chat. The authoritative request is exactly one
+source-locked UTF-8 `.txt` attachment with request ID, boundary ID, commit and
+SHA-256 validated by `review-plan`. `scripts/build_proshka_brief.py` emits an
+evidence pack only; it is not a request, transport payload, or dispatch front
+door.
 
-## 7) Policy (canonical set)
-- docs/PROSHKA_POLICY.md
+## Historical January surfaces
 
-## 8) Legacy
-- PROSHKA_REQUEST_3.md (archive only)
+`PROSHKA_REQUEST_3.md`, `PROSHKA_REQUEST_4.md`,
+`PROSHKA_CONTEXT_SINGLE_SCALE_2026_01_24.md` and
+`scripts/refresh_proshka_pack.sh` are historical evidence. They are never a
+current request, current policy, or current status source.

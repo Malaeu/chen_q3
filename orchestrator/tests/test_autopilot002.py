@@ -464,6 +464,29 @@ def test_migration_census_reports_stale_database_rows() -> None:
     assert row["stale_ids"] == ["old"]
 
 
+def test_migration_census_is_class_and_multiplicity_aware() -> None:
+    source = migration_census.collections.Counter(
+        {"VERDICT.md::iteration": 1, "VERDICT.md::kill": 1}
+    )
+    database = migration_census.collections.Counter({"VERDICT.md::iteration": 1})
+    row = migration_census.make_count_row("verdicts", source, database)
+    assert row["source_rows"] == 2
+    assert row["database_rows"] == 1
+    assert row["unmigrated_ids"] == ["VERDICT.md::kill"]
+
+
+def test_migration_census_retains_history_from_live_verdict_sources() -> None:
+    source = migration_census.collections.Counter({"LIVE.md::iteration": 1})
+    database = migration_census.collections.Counter(
+        {"LIVE.md::iteration": 1, "LIVE.md::kill": 2, "GONE.md::kill": 1}
+    )
+    retained, vanished = migration_census.classify_verdict_surplus(
+        source, database, {"LIVE.md"}
+    )
+    assert retained == migration_census.collections.Counter({"LIVE.md::kill": 2})
+    assert vanished == migration_census.collections.Counter({"GONE.md::kill": 1})
+
+
 def test_step_close_requires_attempt_and_other_reasons_forbid_payloads(
     tmp_path: Path,
 ) -> None:

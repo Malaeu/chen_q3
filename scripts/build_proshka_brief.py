@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Build a Proshka context pack from the Q3 repo.
+"""Build a non-authoritative Proshka evidence pack from the Q3 repo.
 
-This script is link-first but can inline key files for a single packed brief.
+This script is link-first but can inline key files for a single evidence pack.
+It is not a request generator, review transport, or dispatch front door.
 """
 
 from __future__ import annotations
@@ -20,6 +21,14 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from orchestrator.routeb_goal_state import is_paused_goal
+
+
+PACK_DISCLAIMER = (
+    "EVIDENCE PACK ONLY. This is not the authoritative Proshka request, not a "
+    "dispatch payload, and not a transport/front door. The exact request must "
+    "be a separately source-locked UTF-8 .txt validated by workflow_runtime.py "
+    "review-plan in the existing living phase chat."
+)
 
 
 def _run(cmd: List[str], cwd: pathlib.Path) -> str:
@@ -103,6 +112,9 @@ def _default_includes(repo: pathlib.Path) -> List[pathlib.Path]:
     route_state = q3 / "ACTIVE" / "requests" / "routeB_twolevel_spectral_ladder"
     bus = repo / "docs" / "routeB_bus"
     files = [
+        repo / "docs" / "Codex" / "RESEARCH_DEPENDENCY_PROTOCOL.md",
+        bus / "RECHECKABLE_RESEARCH_DEBTS.json",
+        bus / "PROSHKA_SYSTEM_PROMPT_v2.md",
         q3 / "PROJECT_ORCHESTRATOR.md",
         route_state / "ROUTE_B_EXECUTION_STATE.json",
         route_state / "ROUTE_B_EXECUTION_CONTROL.md",
@@ -178,11 +190,11 @@ def main() -> int:
 
     out: List[str] = []
     header = [
-        "# PROSHKA CONTEXT PACK",
+        "# PROSHKA EVIDENCE PACK",
         f"Generated: {_dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
         f"Repo: {repo}",
         "",
-        "This pack is intended for Proshka. It inlines key files and recent git context.",
+        PACK_DISCLAIMER,
     ]
     out.append("\n".join(header))
 

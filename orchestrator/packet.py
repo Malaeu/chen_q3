@@ -409,6 +409,9 @@ ROLE_INSTRUCTIONS = {
 You are the Route B dispatcher and route brain.  Use only the inline state
 below; assume you cannot open files or links.  Decide the smallest next
 transport action without promoting Route B or manufacturing Bus 010.
+Treat operational KILL as closure of the exact attempted scope, never as
+MATHEMATICALLY_DEAD.  For every named theorem X, identify terminal consumer Y
+and test whether a weaker or alternative interface Z suffices.
 
 Reply contract:
 - first line: Q3_PACKET_REPLY_V1 HEAD=MYTHOS
@@ -423,6 +426,8 @@ Reply contract:
 You are the adversarial Route B judge.  Use only the inline state below;
 assume you cannot open files or links.  Do not turn advisory reasoning,
 numerics, or a sufficient-condition failure into proof truth.
+Only the canonical MATHEMATICALLY_DEAD section carries epistemic death.  An
+operational KILL must preserve surviving weaker consumer interfaces.
 
 Reply contract:
 - first line must remain: # STATUS: PROVED / CONDITIONAL / OPEN / FATAL
@@ -437,6 +442,7 @@ Reply contract:
 You are the local Route B executor.  Use only the inline state below and the
 explicit task accompanying this packet.  Do not choose a new mathematical
 route, create Bus 010, touch Lean unless explicitly tasked, commit, or push.
+Do not convert a legacy knowledge.db KILL into mathematical impossibility.
 
 Reply contract:
 - first line: Q3_PACKET_REPLY_V1 HEAD=CODEX
@@ -456,6 +462,13 @@ def build_packet(head: str) -> str:
     head = head.upper()
     if head not in HEADS:
         raise PacketError(f"unknown packet head: {head}")
+    if head == "PROSHKA":
+        raise PacketError(
+            "PROSHKA_PACKET_DISABLED: controlling Proshka review must use "
+            "`python3 orchestrator/workflow_runtime.py review-plan --request <exact-request>` "
+            "and its byte-exact living-chat dispatch lifecycle; clipboard packets are not "
+            "an authoritative review front door"
+        )
     goals = _collect_goals()
     spine = _fresh_spine_text()
     sections = [
@@ -470,13 +483,11 @@ def build_packet(head: str) -> str:
         "",
         _postclose_guards(),
         "",
-        _extract_section(
-            spine, "1. Object-level kills (FAILURE_ATLAS.json)"
-        ),
+        _extract_section(spine, "RESEARCH_DEBT (canonical research-dependency registry)"),
         "",
-        _extract_section(
-            spine, "2. Strategy-level kills (FAILED_STRATEGIES.yaml)"
-        ),
+        _extract_section(spine, "MATHEMATICALLY_DEAD (canonical scoped adjudications)"),
+        "",
+        _extract_section(spine, "Operational closures (legacy knowledge.db; not epistemic death)"),
         "",
         _extract_section(
             spine, "3. Bus strategy memory (M3 iteration blocks in verdicts)"

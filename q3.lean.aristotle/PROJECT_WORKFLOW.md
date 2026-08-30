@@ -358,8 +358,12 @@ the explicit recovery rule in `docs/CODEX_CONTROL.md`, not a new proof attempt.
 
 Жёсткое правило:
 
-- убитая ветка остаётся в истории как доказанный тупик;
-- её нельзя тихо воскресить без нового explicit obstruction-killer;
+- operationally killed ветка остаётся в истории как закрытая попытка с
+  отдельно записанным epistemic status; это не утверждение математической
+  смерти;
+- её нельзя тихо воскресить: для `RESEARCH_DEBT` нужен новый source,
+  derivation или consumer-sufficient interface, а для опровергнутой theorem
+  shape — explicit obstruction-killer;
 - если в route graph есть следующая живая ветка, идём в неё сразу.
 
 ## Address numbering / branch coordinates

@@ -265,12 +265,12 @@ tool_families:
         invoke: python3 orchestrator/research_dependency_gate.py check
         alternatives:
           - python3 orchestrator/research_dependency_gate.py plants
-        trigger: After changes to dependency registry, active Proshka prompt, debt packet generator, or semantic-source selection.
+        trigger: Unconditionally inside normal P9/session-start validation, and directly after changes to any active dependency surface, generator, registry, prompt, skill, or semantic-source selection.
         writes: false
         approval: NONE
         authority: CONSUMER_FIRST_DEPENDENCY_AND_EPISTEMIC_CLASSIFICATION_GATE
         records_to: stdout
-        validation: test_research_dependency_contract
+        validation: test_research_dependency_contract + test_rigid_dependency_scan + test_research_dependency_p9_wiring; lifecycle-aware contextual scan covers active controls and source generators.
         last_verified: 2026-08-30
 
       - id: knowledge-spine-strict
@@ -379,14 +379,18 @@ tool_families:
         trigger: >-
           One stateless lifecycle plan, execution through a verified scoped
           close-node transition, or byte-exact same-chat review dispatch plan.
+          Review dispatch requires one canonical CALL_CLASS; an
+          EXPLORATION_REVIEW also requires the live bounded-exploration gate.
+          Named supplier preflight requires a bound consumer-first contract receipt.
         writes: true
         approval: NONE_FOR_PLAN; ACTIVE_GOAL_RUN_AND_EXACT_OWNED_PATHS_FOR_RUN_OR_CLOSE
         authority: STATELESS_LIFECYCLE_EXECUTOR_NOT_SELECTOR_POLICY_KERNEL_MATHEMATICAL_AUTHOR_OR_GIT_DELIVERY
         records_to: stdout receipt plus outputs of the explicitly selected registered writers
         validation: >-
           test_workflow_runtime including startup-red, owned-scope, event,
-          command-failure, review-plan byte-binding, queue-lifecycle, and
-          duplicate-dispatch plants.
+          command-failure, review-plan byte-binding, CALL_CLASS and
+          EXPLORATION_REVIEW eligibility, consumer-first supplier receipt,
+          queue-lifecycle, and duplicate-dispatch plants.
         last_verified: 2026-08-30
 
       - id: workflow-session-close
@@ -1236,7 +1240,7 @@ tool_families:
 
   external_review_and_transport:
     summary: Expensive advisory channels; local-first and byte-exact transport apply.
-    front_door: proshka-context-pack
+    front_door: workflow-runtime
     coverage: [scripts/build_proshka_brief.py, orchestrator/packet.py, ~/.codex/skills/proshka-brief, ~/.codex/skills/oracle]
     tools:
       - id: proshka-context-pack
@@ -1245,26 +1249,27 @@ tool_families:
         mode: READ_ONLY
         path: scripts/build_proshka_brief.py
         invoke: python3 scripts/build_proshka_brief.py --mode tight
-        trigger: Approved phase-open or delta packet preparation.
+        trigger: Evidence/context assembly only after an exact canonical request has already been selected; never a transport or review front door.
         writes: false
         approval: NONE_FOR_STDOUT
-        authority: CONTEXT_ASSEMBLY_ONLY
+        authority: EVIDENCE_CONTEXT_ASSEMBLY_ONLY_NOT_REQUEST_NOT_TRANSPORT_NOT_DISPATCH
         records_to: stdout
-        validation: tight mode includes current Route B state and every unanswered live-bus goal; no legacy full/ mirror paths.
-        last_verified: 2026-08-10
+        validation: test_build_proshka_brief; output includes the canonical dependency protocol, registry and active prompt plus an evidence-only disclaimer.
+        last_verified: 2026-08-30
 
       - id: packet-build
         status: AVAILABLE
         audience: [CODEX, HUMAN]
         mode: READ_ONLY
         path: orchestrator/packet.py
-        invoke: python3 orchestrator/packet.py build mythos|proshka|codex
-        trigger: Explicit transport-packet request.
+        invoke: python3 orchestrator/packet.py build mythos|codex
+        trigger: Explicit non-Proshka packet request; the Proshka head is disabled fail-closed and redirects to workflow-runtime review-plan.
         writes: false
         approval: NONE
-        authority: TRANSPORT_ASSEMBLY_ONLY
+        authority: NON_PROSHKA_TRANSPORT_ASSEMBLY_ONLY
         records_to: stdout
-        last_verified: 2026-08-09
+        validation: test_operational_closure_semantics; PROSHKA_PACKET_DISABLED plant.
+        last_verified: 2026-08-30
 
       - id: packet-ingest
         status: AVAILABLE

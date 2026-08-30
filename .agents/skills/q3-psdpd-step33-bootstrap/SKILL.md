@@ -99,9 +99,14 @@ Control `k=9` follows the same shape after primary.
 5. Do not edit `Q3.Main` before Step35.
 6. Run `lake env lean <touched Lean file>` from `q3.lean.aristotle`.
 7. Run `scripts/q3_check.sh <touched Lean file>` from the repo root.
-8. If route choice or generated payload shape is unclear, append a
-   `PRO_REVIEW_REQUEST` to
-   `q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md`.
+8. If route choice or generated payload shape reaches an eligible registered
+   review gate, create the source-locked request in the canonical queue and run
+   `orchestrator/workflow_runtime.py review-plan` with its exact attachment,
+   request commit, request ID, boundary ID, and SHA-256. Only
+   `REVIEW_DISPATCH_READY` permits the current Codex body to send the single
+   byte-exact UTF-8 `.txt` through the same living Proshka chat and observe the
+   delivery receipt. Otherwise record the exact HOLD; do not create an ad-hoc
+   review marker or a new chat.
 9. Update `q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md` with
    theorem, files touched, validation commands, and status.
 10. Add a short synthesis to `q3.lean.aristotle/docs/INSIGHTS.md`.
@@ -119,5 +124,7 @@ Control `k=9` follows the same shape after primary.
   part of the contract.
 - Do not call untracked files foreign or disposable; they are simply not
   tracked by Git unless the task says otherwise.
-- Do not assume automatic access to the Pro/Louise chat.  Use pasted or
-  appshot context only when supplied; otherwise write `PRO_REVIEW_REQUEST`.
+- Proshka transport uses only the registered same-living-chat lifecycle in
+  `docs/CODEX_CONTROL.md`: canonical queue, source-locked attachment,
+  `review-plan`, and an observed natural-reasoning receipt. Pasted/appshot
+  context is evidence only and never substitutes for dispatch or receipt.

@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import collections
 import json
 import sqlite3
 import sys
@@ -39,6 +40,43 @@ def make_row(
         "stale_rows": len(stale),
         "stale_ids": stale,
     }
+
+
+def make_count_row(
+    surface: str,
+    source: collections.Counter[str],
+    database: collections.Counter[str],
+) -> dict[str, object]:
+    """Multiplicity-aware census row for sources with several semantic records."""
+    missing = source - database
+    stale = database - source
+    expand = lambda counts: sorted(
+        key if count == 1 else f"{key} (x{count})"
+        for key, count in counts.items()
+    )
+    return {
+        "surface": surface,
+        "source_rows": sum(source.values()),
+        "database_rows": sum(database.values()),
+        "unmigrated_rows": sum(missing.values()),
+        "unmigrated_ids": expand(missing),
+        "stale_rows": sum(stale.values()),
+        "stale_ids": expand(stale),
+    }
+
+
+def classify_verdict_surplus(
+    source: collections.Counter[str],
+    database: collections.Counter[str],
+    live_names: set[str],
+) -> tuple[collections.Counter[str], collections.Counter[str]]:
+    """Split extra DB components into retained live-source history and true orphans."""
+    retained: collections.Counter[str] = collections.Counter()
+    vanished: collections.Counter[str] = collections.Counter()
+    for key, count in (database - source).items():
+        source_name = key.rsplit("::", 1)[0]
+        (retained if source_name in live_names else vanished)[key] += count
+    return retained, vanished
 
 
 def _insights_rows(conn: sqlite3.Connection) -> list[dict[str, object]]:
@@ -78,24 +116,49 @@ def _progress_row(conn: sqlite3.Connection) -> dict[str, object]:
 
 
 def _verdict_row(conn: sqlite3.Connection) -> dict[str, object]:
-    source_ids: set[str] = set()
+    live_names = set(kb_migrate_verdicts.collect_files())
+    source_ids: collections.Counter[str] = collections.Counter()
     for name, paths in sorted(kb_migrate_verdicts.collect_files().items()):
         canonical = paths[0]
         text = canonical.read_text(encoding="utf-8", errors="ignore")
         iteration = kb_migrate_verdicts.parse_iteration(text)
         verdict_kill, _subject = kb_migrate_verdicts.parse_verdict_kill(text)
-        if iteration or verdict_kill:
-            source_ids.add(canonical.name)
+        if iteration:
+            source_ids[f"{canonical.name}::iteration"] += 1
+        if verdict_kill:
+            source_ids[f"{canonical.name}::kill"] += 1
 
-    database_ids = {
-        Path(str(row[0])).name
-        for row in conn.execute(
-            "SELECT source_file FROM source_ledger WHERE note='wave 3 verdicts' "
-            "UNION SELECT DISTINCT ref FROM kill_evidence "
-            "WHERE kind='verdict'"
-        )
-    }
-    return make_row("verdicts", source_ids, database_ids)
+    database_ids: collections.Counter[str] = collections.Counter()
+    for source_file, status in conn.execute(
+        "SELECT source_file,status FROM kill WHERE source_file IN "
+        "(SELECT source_file FROM source_ledger WHERE note='wave 3 verdicts')"
+    ):
+        klass = "kill" if status == "killed" else "iteration"
+        database_ids[f"{Path(str(source_file)).name}::{klass}"] += 1
+    # Iterations reused from FAILED_STRATEGIES keep that canonical row and attach the
+    # verdict as provenance instead of duplicating it under a verdict source_file.
+    for ref, status in conn.execute(
+        "SELECT DISTINCT e.ref,k.status FROM kill_evidence e "
+        "JOIN kill k ON k.id=e.kill_id WHERE e.kind='verdict'"
+    ):
+        klass = "kill" if status == "killed" else "iteration"
+        database_ids[f"{Path(str(ref)).name}::{klass}"] += 1
+    row = make_count_row("verdicts", source_ids, database_ids)
+    # The verdict parser is intentionally monotone and conservative: structured
+    # components discovered by today's parser must exist in the database, while
+    # older, explicitly adjudicated components from a still-live source are
+    # retained as history.  They are not projection drift.  Only a row whose
+    # source document itself vanished is stale.
+    retained, vanished = classify_verdict_surplus(source_ids, database_ids, live_names)
+    expand = lambda counts: sorted(
+        key if count == 1 else f"{key} (x{count})"
+        for key, count in counts.items()
+    )
+    row["stale_rows"] = sum(vanished.values())
+    row["stale_ids"] = expand(vanished)
+    row["retained_historical_rows"] = sum(retained.values())
+    row["retained_historical_ids"] = expand(retained)
+    return row
 
 
 def census(db_path: Path = DEFAULT_DB) -> dict[str, object]:
@@ -143,6 +206,9 @@ def main() -> int:
             remaining_stale = len(row["stale_ids"]) - 10
             if remaining_stale > 0:
                 print(f"  ... and {remaining_stale} more stale rows")
+            retained = row.get("retained_historical_rows", 0)
+            if retained:
+                print(f"  - retained historical rows from live sources: {retained}")
         print(f"status: {payload['status']}")
     return 1 if args.strict and payload["status"] != "PASS" else 0
 

@@ -86,6 +86,32 @@ Naming firewall: historical control-plane `Rule A` / `Rule B` labels are never
 proof-route names. Proof routes are written `Route A` / `Route B`; new control
 rules use descriptive identifiers instead of ambiguous letters.
 
+### 1.1 Consumer-first dependency and death classification
+
+This subsection is the closed realization of the existing `MINIMAL_LEMMA`, K4,
+and K8 obligations; it clarifies their required evidence and does not create a
+new call class or change an admitted theorem contract.
+
+Every live theorem or source dependency starts from the exact downstream
+consumer and the weakest sufficient interface that consumer can spend. A named
+theorem, paper, rate, floor, inverse, representation, or Lean declaration is a
+candidate dependency, never a mandatory one merely because a request named it.
+Necessity requires pinned evidence; otherwise Codex must test a weaker lemma,
+alternative representation, direct estimate, or other interface together with
+the exact implication from that interface to the unchanged consumer.
+
+Execution status and epistemic status are independent. `KILL` may close an
+attempt or route under the current contract, but missing literature, a missing
+derivation or bridge, formalization cost, budget exhaustion, or local
+non-progress is `RESEARCH_DEBT`, not mathematical death. A dependency is
+`MATHEMATICALLY_DEAD` only with a scoped counterexample, proved
+incompatibility, or formal impossibility. A new source or weaker-interface hit
+creates at most a recheck/rerank candidate; it never reactivates a route or
+changes physical execution state by itself. The operational packet schema and
+registry projection are defined in
+`docs/Codex/RESEARCH_DEPENDENCY_PROTOCOL.md`; that document implements this
+invariant and cannot weaken or replace it.
+
 Operational permission is a different category. An explicit owner instruction
 that names a goal or bounded package and says to execute it is a
 `GOAL_SCOPED_OPERATIONAL_GRANT`. Within that named scope Codex may make the
@@ -462,8 +488,9 @@ source-object/consumer comparison, axiom audit, and direct Lean compilation
 pass. Aristotle and Oracle are executor-invoked tools, never proof authorities;
 paid calls still require their operational budget gate.
 
-Research begins with exact target and consumer, current knowledge search, and
-primary-source verification. Citations are checked in the current batch; a
+Research begins with the exact downstream consumer and its weakest sufficient
+interface, followed by current knowledge search and primary-source verification.
+Citations are checked in the current batch; a
 paper, advisory model, or numeric diagnostic cannot silently become proof
 truth.
 
@@ -673,6 +700,8 @@ EXPERIMENTAL_CANONICAL_CONTAMINATION
 EXPLORATION_ALIAS_RESTART
 EXPLORATION_BUDGET_EXHAUSTED
 EXPLORATION_KB_NOISE_POLICY_VIOLATION
+RESEARCH_DEPENDENCY_CONSUMER_CONTRACT_MISSING
+RESEARCH_DEPENDENCY_DEATH_EVIDENCE_MISSING
 PROJECT_DATABASE_ROLE_COLLISION
 NATIVE_MEMORY_SEMANTIC_OVERRIDE
 OBSERVABILITY_SNAPSHOT_INVALID

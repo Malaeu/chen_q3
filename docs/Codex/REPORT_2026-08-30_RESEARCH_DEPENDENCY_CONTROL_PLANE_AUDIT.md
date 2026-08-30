@@ -1,7 +1,7 @@
 # Research dependency control-plane audit — 2026-08-30
 
 ```yaml
-STATUS: COMPLETE
+STATUS: COMPLETE_VERIFIED
 SCOPE: ACTIVE_CONTROL_AND_GENERATOR_REPAIR_WITH_HISTORICAL_EVIDENCE_AUDIT
 ROUTE_SELECTION: NOT_PERFORMED
 ROUTE_PROMOTION: NOT_PERFORMED
@@ -25,6 +25,13 @@ lexical scan produced 969 candidate hard-dependency lines; because most are
 historical evidence, byte/source identity requirements or already frozen local
 contracts, the regression gate is structural and lifecycle-aware rather than a
 banned-word regex.
+
+The original task was then re-read against the delivered tree after all six
+specialist audits. The closure pass added the missing contextual rigid-language
+scanner, deterministic registry projection, normal-P9 wiring, source-generator
+checks, dispatch eligibility checks, and the live knowledge migration. Strict
+session start now passes with `research_dependency=PASS` and zero migration
+debt.
 
 ## Critical faults found and repaired
 
@@ -54,13 +61,19 @@ The backward-compatible path
 `docs/routeB_bus/RECHECKABLE_RESEARCH_DEBTS.json` now carries schema
 `q3_routeb_research_dependencies.v3`.
 
-- Reopenable debts: Satz9/Fuchs direct formalization, selected odd-sector
-  current source shelf, selected even-sector current source shelf. All are
-  execution `KILLED`, epistemic `RESEARCH_DEBT`, and explicitly not disproved.
+- Reopenable debts: Satz9/Fuchs direct formalization; selected odd-sector,
+  even-sector and weighted-residual current source shelves; and the Goal 056
+  arbitrary-cofinal theorem shape. All are execution `KILLED`, epistemic
+  `RESEARCH_DEBT`, and explicitly not disproved. Goal 056 is additionally
+  classified `NOT_NECESSARY` because its consumer only needs one coherent
+  schedule, not the old every-schedule strengthening.
 - Scoped mathematical deaths: broad-cone scalar Prime target, dense-dictionary
-  A3-pd uniform floor, EStarMuntz v1 raw-pole contract, and the Goal 056
-  arbitrary-cofinal theorem shape. Each has an exact obstruction and surviving
-  interface.
+  A3-pd uniform floor, EStarMuntz v1 raw-pole contract, and the scalar-only
+  `PSTAR_EQUALS_SCALAR_TIMES_SOURCE_LAGRANGE_POLYNOMIAL` shape. Each has an
+  exact obstruction and surviving interface. The nearby
+  `EXACT_GROUND_EQUALS_TRIAL` attempt is deliberately *not* dead: it remains an
+  operational no-derivation research debt because the pinned source contains no
+  falsifier.
 - The registry ends at `READY_FOR_RERANK`; it has no epistemic `REOPENED` state
   and cannot select execution.
 
@@ -80,21 +93,25 @@ Important split findings retained in this report rather than flattened:
 No historical request, verdict, answer, INSIGHTS entry, genealogy item or kill
 certificate was rewritten. Old hard-X requests remain evidence and regression
 fixtures. They do not become executable merely because semantic search finds
-them. The stale tracked `q3-step32-lean/SKILL 2.md`, January Proshka policy/pack
-files and old mandate status remain historical cleanup candidates, not active
-authority.
+them. The duplicate tracked `q3-step32-lean/SKILL 2.md` was removed; January
+Proshka entry/policy files and the old active knowledge/governor surfaces are
+now explicit historical tombstones or canonical pointers, not active authority.
 
-## Remaining data-projection debt
+## Data projection and migration
 
-The existing `knowledge.db` `kill` table remains an operational incident
-projection, not epistemic truth. Its schema and migrators collapse source-shelf
-exhaustion, provenance stops, attempt kills and actual refutations into
-`killed`; one dual iteration+KILL verdict can also lose the KILL row while the
-old census still passes by filename. Until a separate normalized
-`research_dependency` projection and multiplicity-aware census are introduced,
-the v3 registry is canonical and DB kill rows must never mint
-`MATHEMATICALLY_DEAD`. This is recorded as a migration debt rather than hidden
-by a risky in-place DB/schema rewrite during the active dirty-worktree repair.
+The v3 JSON registry is the epistemic source of truth and has a deterministic
+semantic Markdown projection. `knowledge.db.kill` remains an operational
+closure ledger and is explicitly forbidden from minting mathematical death.
+The migrator now preserves a dual `iteration` plus operational `KILL` verdict as
+two stable rows, and the census is both class- and multiplicity-aware. The live
+database was migrated: 17 pending verdict components were materialized, the
+post-write dry-run reports zero new rows, and the strict census reports zero
+unmigrated or source-orphan rows. Three older adjudicated components whose
+source documents remain live are intentionally retained as history rather than
+misreported as stale drift. A second history-preserving migration persisted the
+non-death scope negation for 28 legacy operational closures; all 55 `killed`
+rows now carry it. Both official census entrypoints consume the same
+class/multiplicity-aware judgment and report `PASS`.
 
 ## Gates and plants
 
@@ -107,9 +124,46 @@ by a risky in-place DB/schema rewrite during the active dirty-worktree repair.
 - rejection of no-source/cost/derivation as mathematical death;
 - rejection of `PROVED_NECESSARY` without pinned evidence;
 - acceptance of counterexample-backed, exactly scoped death.
+- byte freshness of the deterministic semantic projection;
+- contextual hard-X claims in active controls and their generators: a claim is
+  accepted only beside its downstream consumer and minimal-interface rationale.
+- authoritative top-level lifecycle rather than incidental nested `CLOSED`
+  examples, with historical sections excluded locally rather than hiding a live
+  document;
+- actual `q3_docs_corpus.collect_sources()` membership, not merely the presence
+  of exclusion strings in generator source.
+
+The gate runs inside normal P9 rather than as an optional audit command. The
+negative wiring plant proves that ordinary P9 fails closed when the dependency
+gate fails. Mutation plants cover unjustified active prose, unjustified
+generator output, justified consumer-first contracts and historical CLOSED
+surfaces.
 
 The challenge and briefing plants also bind request/boundary IDs, final LF,
 deterministic bytes, lifecycle transitions and the no-auto-reopen boundary.
+
+## Original-task acceptance ledger
+
+1. Skills, Codex/Proshka prompts, archived INSIGHTS, active state, generators,
+   KB/schema/migrators and semantic corpus were audited by six independent
+   scopes and rechecked in the integrated tree.
+2. Execution `KILL` and epistemic `MATHEMATICALLY_DEAD` are separate types;
+   no-source, no-derivation, cost and attempt exhaustion create debt, not death.
+3. Every debt records consumer Y, actual requirement, necessity status, weaker
+   Z probe, exact Z-to-Y implication and all 16 alternative-interface classes.
+4. The canonical registry validates evidence path, commit, Git blob, scope and
+   claim, and its projection is deterministic and P9-gated.
+5. Proshka receives one source-locked request through the existing Control-v9
+   call class; a debt challenge is only an `EXPLORATION_REVIEW` packet subtype.
+6. Codex session entry and briefing start consumer-first and show reopenable
+   debt without selecting it for execution.
+7. Historical material remains evidence and cannot become active through search.
+8. Active hard-X prose and the generators that can recreate it are scanned
+   contextually on every normal P9/session start.
+9. Review dispatch checks phase key, call class, eligible stall and exact
+   consumer-first supplier receipt; missing evidence yields `HOLD`.
+10. Migration, projection, scanner, prompt mirrors, workflow runtime, briefing,
+    packet/KB semantics and P9 wiring have positive and negative tests.
 
 ## Final invariant
 

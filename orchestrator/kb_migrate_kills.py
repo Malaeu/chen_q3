@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""One-shot migration of the kill family into knowledge.db (wave 1).
+"""One-shot migration of legacy operational closures into knowledge.db (wave 1).
 
 Sources (37-ish records total, all frozen after this runs):
   1. ACTIVE/pipeline/FAILURE_ATLAS.json        5  killed objects, machine ids, Lean witnesses
@@ -16,6 +16,10 @@ Curation notes, so a later reader knows what was judgement and what was mechanic
   * Walls and S5 are prose: fields were extracted by hand and are inlined below verbatim
     enough to be auditable against the frozen files.
   * Four cross-file overlaps are asserted explicitly in ALIASES with a reason each.
+
+The source vocabulary says KILL, FATAL, and REJECTED.  Their database projection is an
+execution-scoped closeout only.  It never creates a MATHEMATICALLY_DEAD adjudication;
+`kb.insert_kills` supplies an explicit scope negation where a source did not state one.
 
 Usage:  ./orchestrator/kb_migrate_kills.py [--dry-run]
 """
@@ -337,6 +341,8 @@ def main() -> int:
         "VALUES (?,?,?,?)",
         [(sf, n, "2026-08-05", "wave 1 kill-family migration") for sf, n in counts.items()])
     conn.commit()
+    backfilled = kb.backfill_operational_scope_negations(conn)
+    print(f"backfilled legacy operational scope negations: {backfilled}")
     print("migrated into", kb.DB_PATH)
     return 0
 

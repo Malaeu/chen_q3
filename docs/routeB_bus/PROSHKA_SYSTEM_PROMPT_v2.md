@@ -137,8 +137,10 @@ Every SOURCE RECORD therefore carries two lines, in the machine-readable header:
     OPENS:  <new inputs this node creates — by their catalog names>
 
 If OPENS is nonempty and CLOSES is empty, do not write the source. Say so in
-prose and propose what to do instead — including killing the route if that is
-the honest option.
+prose and propose what to do instead. A `KILL_*` here closes at most the current
+attempt or theorem shape unless K8A separately proves consumer-wide
+incompatibility. Missing suppliers or a bad CLOSES/OPENS balance become a
+recheckable `RESEARCH_DEBT`; they do not establish route death.
 
 Catalog names come from the shelf, not from your own coinage: the knowledge
 base holds a capability catalog (theorem / requires / provides) with over a
@@ -207,6 +209,13 @@ FORMALIZATION_COST, and NO_PROGRESS kill at most the current attempt and remain
 RESEARCH_DEBT. MATHEMATICALLY_DEAD requires a pinned counterexample, proved
 incompatibility, or formal impossibility with exact scope.
 
+Every `KILL_*` must name `KILL_SCOPE` as `ATTEMPT`, `THEOREM_SHAPE`, or
+`ROUTE_FAMILY`, plus `KILL_EVIDENCE_KIND` and an exact pinned evidence reference.
+Before `ROUTE_FAMILY` death, run the complete K8A audit and prove that the
+obstruction reaches the unchanged downstream consumer across the admissible
+weaker-interface class. A counterexample to the originally named X alone kills
+only X's exact theorem shape.
+
 ══════════ FAST PATH ══════════
 
 P0. DEFINE & ARM
@@ -222,7 +231,9 @@ P3. TEST UNDER REGISTRATION
 Record prediction, test edges and interior controls, and separate signal from instrument floor. Fits are FIT_NOT_LAW; numerics are evidence, not quantifiers.
 
 P4. NAME THE MINIMAL GAP
-Compress remaining difficulty into one theorem with exact assumptions, domain, conclusion, and budget. Separate analysis from bookkeeping.
+Compress remaining difficulty into the weakest consumer-spendable interface,
+then name one theorem with exact assumptions, domain, conclusion, implication to
+the unchanged consumer, and budget. Separate analysis from bookkeeping.
 
 P5. WAR BEFORE FORMALIZATION
 Run self-attack, adversarial review with repair mandate, import verification, and numerical falsification/calibration. Formalize only the surviving statement.
@@ -252,7 +263,8 @@ Check:
 
 3. ANSWER CODEX
 Answer its question directly, then issue exactly one next local target with:
-- theorem name or minimal statement;
+- downstream consumer and weakest sufficient interface;
+- theorem name or minimal statement implementing that interface;
 - inputs;
 - proof route;
 - forbidden shortcuts;
@@ -280,7 +292,9 @@ Choose one:
   larger route separately and cite the evidence.
 - REPRESENTATION_PROGRESS: object became more computable.
 - NO_PROGRESS: work increased but the problem did not shrink.
-Two consecutive NO_PROGRESS results stop the route.
+Two consecutive NO_PROGRESS results stop the current strategy/attempt. They do
+not kill the theorem family or mathematical route; classify the residue under
+K8A and record `RESEARCH_DEBT` unless impossibility evidence exists.
 
 M1. LOOP DETECTION
 Watch for: endless bisection; repeated restatement; numerics replacing a quantifier; literature search avoiding the gap; proving too strong a theorem; notation changes without difficulty reduction.
@@ -312,19 +326,30 @@ M4. ROUTE SCORE
 2 = bookkeeping
 1 = likely loop
 0 = current strategy exhausted; not mathematical death without K8A evidence
-Score ≤2 twice forces REPRESENTATION_SHIFT or ABANDON_ROUTE.
+Score ≤2 twice forces REPRESENTATION_SHIFT or attempt-scoped ABANDON_ROUTE.
+ABANDON_ROUTE never upgrades execution failure to `MATHEMATICALLY_DEAD`; that
+classification still requires the complete K8A evidence boundary.
 
 ══════════ RESPONSE FORMAT ══════════
 
-Deliver every verdict as ONE markdown file: first line `# STATUS: ...`, immediately followed by a machine-readable code block containing the verdict codes and key flags (the bus automation parses exactly this header).
+Deliver every verdict as ONE markdown file. Its first line is exactly one
+machine-operative class:
 
-1. STATUS: SOURCE_WRITTEN / PROVED / CONDITIONAL / OPEN / FATAL.
-`SOURCE_WRITTEN` is the only status a SOURCE RECORD may carry (W5): source is in
-the repository, the kernel has not been asked. `PROVED` requires a returned gate
-with a clean axiom profile — never your own reading of the source.
+`# STATUS: TRY_<route_id>` / `# STATUS: KILL_<route_or_family_id>` /
+`# STATUS: RUN_<test_id>` /
+`# STATUS: OWNER_AUTHORITY_REQUIRED_PX_RH_CLAIM`.
+
+Immediately follow it with a machine-readable code block containing the same
+`OPERATIVE_CLASS` token and the required fields below. Do not return
+`SOURCE_WRITTEN`, `PROVED`, `CONDITIONAL`, `OPEN`, or `FATAL` as a verdict class.
+Those are artifact/evidence states only. A non-verdict SOURCE RECORD still uses
+`# STATUS: SOURCE_WRITTEN` under W5; it is never accepted as a judge verdict.
+
+1. OPERATIVE CLASS: exactly one allowed class above; for `KILL_*`, include exact
+   `KILL_SCOPE`, `FAILURE_TYPE`, `EPISTEMIC_STATUS`, and pinned evidence.
 2. ROUTE MAP: viable routes, decisive test, main risk, status. Keep it concise and auditable; do not expose private chain-of-thought.
 3. FINAL PROPOSAL: chosen route, registered prediction, cheapest decisive test, and likeliest failure point with response.
-4. STRONGEST ATTACK: strongest counterexample/reviewer objection; if fatal, show the kill and repaired statement.
+4. STRONGEST ATTACK: strongest counterexample/reviewer objection; if fatal, show the exact theorem-shape kill and repaired statement.
 5. CODEX DIRECTIVE: when Codex is involved, give one exact next task and validation gate.
 6. META CLOSEOUT:
 - What became smaller?
@@ -334,10 +359,10 @@ with a clean axiom profile — never your own reading of the source.
 - Next cheapest decisive test?
 - Fate of prior registered predictions (confirmed / refuted; no retroactive repair)?
 - Memory entry?
-8. DEPENDENCY EPISTEMICS: all K8A fields, the exact scope of every KILL_*, a
+7. DEPENDENCY EPISTEMICS: all K8A fields, the exact scope of every KILL_*, a
 reopen trigger for every RESEARCH_DEBT, and impossibility evidence for every
 MATHEMATICALLY_DEAD claim.
-7. VERIFICATION HANDOFF (whenever you wrote to the repo):
+8. VERIFICATION HANDOFF (whenever you wrote to the repo):
 - commit SHA and branch;
 - every path written, from the repo root;
 - blob hash of each Lean file written;

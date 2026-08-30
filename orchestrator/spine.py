@@ -39,6 +39,7 @@ import yaml
 try:
     from orchestrator import kb as _kb
     from orchestrator import observability as _observability
+    from orchestrator import research_dependency_gate as _research_dependency_gate
     from orchestrator import three_body_loop as _three_body_loop
     from scripts.q3_docs_corpus import (
         corpus_snapshot as _q3_docs_corpus_snapshot,
@@ -52,6 +53,7 @@ try:
 except ModuleNotFoundError:  # direct `python3 orchestrator/spine.py`
     import kb as _kb
     import observability as _observability
+    import research_dependency_gate as _research_dependency_gate
     import three_body_loop as _three_body_loop
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
@@ -70,6 +72,9 @@ OUT = REPO / "orchestrator" / "state" / "SPINE_VIEW.md"
 STATE_OUT = REPO / "orchestrator" / "state" / "SPINE_STATE.json"
 META_CORPUS_OUT = REPO / "orchestrator" / "state" / "META_CORPUS.json"
 KNOWLEDGE_DB = REPO / "q3.lean.aristotle" / "aristotle_db" / "knowledge.db"
+RESEARCH_DEPENDENCY_REGISTRY = (
+    REPO / "docs" / "routeB_bus" / "RECHECKABLE_RESEARCH_DEBTS.json"
+)
 CONTROL = REPO / "docs" / "CODEX_CONTROL.md"
 CHANNEL_RUNTIME = REPO / "orchestrator" / "state" / "CHANNEL_RUNTIME.json"
 BEHAVIOR_REGISTRY = REPO / "orchestrator" / "BEHAVIOR_CONTROL_REGISTRY.json"
@@ -1142,6 +1147,10 @@ def validate_p9a() -> dict[str, object]:
     tool_manifest = validate_tool_manifest()
     current_task = validate_current_codex_task()
     try:
+        _research_dependency_gate.check(REPO)
+    except Exception as exc:
+        _fail("RIGID_DEPENDENCY_UNJUSTIFIED", str(exc))
+    try:
         three_body = _three_body_loop.validate_repository_gate(
             repo_root=REPO,
             state_path=SEMANTIC_QUARANTINE,
@@ -1157,6 +1166,7 @@ def validate_p9a() -> dict[str, object]:
         "cognitive_operators": cognitive_operators,
         "tool_manifest": tool_manifest,
         "current_task": current_task,
+        "research_dependency": "PASS",
         "three_body": {
             "schema": three_body["schema"],
             "pending": len(three_body["entries"]),
@@ -1177,6 +1187,7 @@ SOURCES = {
     "recording_rules": REPO / "docs/RECORDING_RULES.md",
     "tool_manifest": TOOL_MANIFEST,
     "cognitive_governor": REPO / "q3.lean.aristotle/ACTIVE/COGNITIVE_GOVERNOR.md",
+    "research_dependency_registry": RESEARCH_DEPENDENCY_REGISTRY,
     "bus_dir": REPO / "docs/routeB_bus",
 }
 
@@ -1203,7 +1214,7 @@ def _freshness_table() -> list[str]:
 
 
 def _kills_from_db() -> list[str]:
-    """All kills from knowledge.db, grouped by unit type.
+    """Operational closures from the backward-compatible knowledge.db table.
 
     Replaces the former `_object_kills()` (JSON) and `_strategy_kills()` (hand-rolled YAML
     regex). Those two rendered 13 of the family's 38 records; the walls of
@@ -1214,24 +1225,63 @@ def _kills_from_db() -> list[str]:
                 "./orchestrator/kb_migrate_kills.py)"]
     conn = sqlite3.connect(f"file:{KNOWLEDGE_DB}?mode=ro", uri=True)
     conn.row_factory = sqlite3.Row
-    lines: list[str] = []
+    lines: list[str] = [
+        "_Semantic boundary: `killed` is execution-scoped operational closure only; ",
+        "it never implies `MATHEMATICALLY_DEAD` and does not close weaker interfaces._",
+    ]
     for (unit,) in conn.execute(
             "SELECT DISTINCT unit_type FROM kill ORDER BY unit_type"):
         rows = conn.execute(
-            "SELECT id, subject, status, replacement, rollback_target, stop_code "
+            "SELECT id, subject, status, replacement, rollback_target, stop_code, "
+            "scope_negation "
             "FROM kill WHERE unit_type=? ORDER BY id", (unit,)).fetchall()
         lines += [f"", f"**{unit}** ({len(rows)})", "",
-                  "| id | subject | status | next / rollback |", "|---|---|---|---|"]
+                  "| id | subject | execution status | scope NOT closed | next / rollback |",
+                  "|---|---|---|---|---|"]
         for r in rows:
             nxt = r["replacement"] or r["rollback_target"] or ""
             nxt = (nxt[:87] + "...") if len(nxt) > 90 else nxt
             subj = (r["subject"] or "")[:70].replace("|", "\\|")
-            lines.append(f"| {r['id']} | {subj} | {r['status']} | {nxt.replace('|', chr(92)+'|')} |")
+            scope = r["scope_negation"] or _kb.DEFAULT_KILL_SCOPE_NEGATION
+            scope = (scope[:87] + "...") if len(scope) > 90 else scope
+            lines.append(
+                f"| {r['id']} | {subj} | {r['status']} | "
+                f"{scope.replace('|', chr(92)+'|')} | {nxt.replace('|', chr(92)+'|')} |"
+            )
     n = conn.execute("SELECT COUNT(*) FROM kill").fetchone()[0]
     a = conn.execute("SELECT COUNT(*) FROM kill_alias").fetchone()[0]
     conn.close()
     lines += ["", f"_{n} records, {a} cross-file aliases. Query: "
                   "`./orchestrator/kb.py search <term>`._"]
+    return lines
+
+
+def _research_dependency_projection(classification: str) -> list[str]:
+    """Render one canonical epistemic class separately from execution closures."""
+    if not RESEARCH_DEPENDENCY_REGISTRY.is_file():
+        return [f"(canonical registry missing: `{RESEARCH_DEPENDENCY_REGISTRY.relative_to(REPO)}`)"]
+    try:
+        payload = json.loads(RESEARCH_DEPENDENCY_REGISTRY.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        return [f"(canonical registry unreadable: {exc})"]
+    key = "debts" if classification == "RESEARCH_DEBT" else "adjudications"
+    rows = [
+        row for row in payload.get(key, [])
+        if isinstance(row, dict) and row.get("classification") == classification
+    ]
+    if not rows:
+        return [f"- NONE ({classification})"]
+    lines = [
+        "| id | consumer / exact scope | missing object / death reason | surviving interface |",
+        "|---|---|---|---|",
+    ]
+    for row in rows:
+        consumer = row.get("actual_consumer_requirement") or row.get("scope") or ""
+        reason = row.get("missing_object") or row.get("dead_reason") or row.get("reason") or ""
+        surviving = row.get("weaker_interface_probe") or row.get("surviving_interface") or ""
+        cells = [row.get("id", ""), consumer, reason, surviving]
+        cells = [str(cell).replace("|", "\\|").replace("\n", " ")[:300] for cell in cells]
+        lines.append("| " + " | ".join(cells) + " |")
     return lines
 
 
@@ -1824,7 +1874,13 @@ def build(state: dict[str, object] | None = None) -> str:
         "## Source freshness",
         *_freshness_table(),
         "",
-        "## 1-2. Kills (knowledge.db: routes, objects, strategies, walls, criteria)",
+        "## RESEARCH_DEBT (canonical research-dependency registry)",
+        *_research_dependency_projection("RESEARCH_DEBT"),
+        "",
+        "## MATHEMATICALLY_DEAD (canonical scoped adjudications)",
+        *_research_dependency_projection("MATHEMATICALLY_DEAD"),
+        "",
+        "## Operational closures (legacy knowledge.db; not epistemic death)",
         *_kills_from_db(),
         "",
         "## 3. Bus strategy memory (M3 iteration blocks in verdicts)",
@@ -2059,7 +2115,8 @@ def main() -> int:
     if args.strict:
         print(
             f"P9_STRICT_PASS reason={args.reason} base_control=PASS "
-            f"semantic_index=PASS tool_manifest=PASS authority={validation['authority']}"
+            f"semantic_index=PASS tool_manifest=PASS research_dependency=PASS "
+            f"authority={validation['authority']}"
         )
     return 0
 

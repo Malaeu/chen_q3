@@ -30,7 +30,7 @@ REPO = Path(__file__).resolve().parents[1]
 if str(REPO) not in sys.path:
     sys.path.insert(0, str(REPO))
 
-from orchestrator import dependency_registry  # noqa: E402
+from orchestrator import dependency_registry, research_dependency_contract, spine  # noqa: E402
 from specs_docs import phase_close, session_close  # noqa: E402
 
 TOOLS = Path("docs/cartographer/TOOLS.yaml")
@@ -52,6 +52,14 @@ REVIEW_INSTRUCTION = (
     "authoritative byte-exact payload. Follow its required response schema and return "
     "exactly the requested verdict. Same living phase chat. Do not use Answer now."
 )
+
+CANONICAL_CALL_CLASSES = {
+    "DELEGATED_STRATEGIC_REVIEW",
+    "EXPLORATION_REVIEW",
+    "PX_RH_CLAIM_REVIEW",
+}
+RESEARCH_DEBT_PACKET_SUBTYPE = "RESEARCH_DEBT_CHALLENGE"
+DEPENDENCY_CONTRACT_RECEIPT_SCHEMA = "q3_research_dependency_contract_receipt.v1"
 
 COMMON_TOOLS = (
     "workflow-runtime",
@@ -79,6 +87,132 @@ ACTION_TOOLS = {
 
 class WorkflowRuntimeError(RuntimeError):
     pass
+
+
+def _single_request_header(text: str, field: str) -> tuple[str | None, str | None]:
+    matches = re.findall(rf"(?m)^{re.escape(field)}:\s*(\S+)\s*$", text)
+    if not matches:
+        return None, f"PROSHKA_{field}_MISSING"
+    if len(matches) != 1:
+        return None, f"PROSHKA_{field}_AMBIGUOUS"
+    return matches[0], None
+
+
+def _exploration_review_receipt(runtime: dict[str, Any]) -> dict[str, Any]:
+    """Validate and summarize the canonical bounded-exploration call gate."""
+    try:
+        spine.validate_runtime(runtime)
+        active = runtime.get("active_exploration")
+        phase = runtime.get("active_proshka_phase")
+        if not isinstance(active, dict):
+            raise spine.ControlViolation(
+                "EXPLORATION_RUNTIME_MISSING", "no active bounded exploration"
+            )
+        if not isinstance(phase, dict) or phase.get("status") != "ACTIVE":
+            raise spine.ControlViolation(
+                "EXPLORATION_RUNTIME_MISSING", "no active Proshka phase"
+            )
+        if not spine.phase_keys_equal(active.get("phase_key"), phase.get("phase_key")):
+            raise spine.ControlViolation(
+                "EXPLORATION_PHASE_KEY_SMUGGLE",
+                "bounded exploration and living chat have different phase keys",
+            )
+        exploration_id = active.get("exploration_id")
+        blocker = active.get("blocker_fingerprint")
+        if not isinstance(exploration_id, str) or not exploration_id.strip():
+            raise spine.ControlViolation(
+                "EXPLORATION_RUNTIME_MISSING", "exploration_id is missing"
+            )
+        if not isinstance(blocker, str) or not re.fullmatch(r"[0-9a-f]{64}", blocker):
+            raise spine.ControlViolation(
+                "EXPLORATION_RUNTIME_MISSING", "blocker_fingerprint is missing or invalid"
+            )
+        counter_fields = (
+            "no_progress_streak",
+            "total_cycles",
+            "active_reasoning_seconds",
+            "proshka_review_count",
+        )
+        if any(not isinstance(active.get(field), int) for field in counter_fields):
+            raise spine.ControlViolation(
+                "EXPLORATION_RUNTIME_MISSING", "bounded-exploration counters are incomplete"
+            )
+        decision = spine.stall_decision(
+            no_progress_streak=active["no_progress_streak"],
+            total_cycles=active["total_cycles"],
+            active_reasoning_seconds=active["active_reasoning_seconds"],
+            proshka_review_count=active["proshka_review_count"],
+        )
+        if decision.get("state") != "HARD_STALL" or decision.get("proshka_call") is not True:
+            raise spine.ControlViolation(
+                "EXPLORATION_REVIEW_OUTSIDE_GATE",
+                f"bounded exploration state is {decision.get('state')}",
+            )
+        spine.validate_exploration_review({
+            "fresh_chat": False,
+            "full_context_reupload": False,
+            "state": decision["state"],
+            "review_count_for_episode": active["proshka_review_count"],
+            "review_count_for_phase_blocker": active["proshka_review_count"],
+            "ordinary_goal_close_as_sole_trigger": False,
+        })
+    except spine.ControlViolation as exc:
+        raise WorkflowRuntimeError(exc.code) from exc
+    return {
+        "schema": "q3_bounded_exploration_review_eligibility.v1",
+        "result": "EXPLORATION_REVIEW_ALLOWED",
+        "exploration_id": exploration_id,
+        "phase_id": phase.get("phase_id"),
+        "blocker_fingerprint": blocker,
+        "no_progress_streak": active["no_progress_streak"],
+        "total_cycles": active["total_cycles"],
+        "proshka_review_count": active["proshka_review_count"],
+    }
+
+
+def _dependency_contract_receipt(
+    repo: Path,
+    path: Path,
+    *,
+    candidate: str,
+    target: str,
+) -> dict[str, Any]:
+    resolved = path if path.is_absolute() else repo / path
+    try:
+        raw = resolved.read_bytes()
+        payload = json.loads(raw.decode("utf-8"))
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise WorkflowRuntimeError(
+            f"CONSUMER_FIRST_CONTRACT_RECEIPT_INVALID:{exc}"
+        ) from exc
+    if not isinstance(payload, dict) or set(payload) != {
+        "schema", "candidate", "target", "contract"
+    }:
+        raise WorkflowRuntimeError("CONSUMER_FIRST_CONTRACT_RECEIPT_INVALID:SCHEMA")
+    if payload.get("schema") != DEPENDENCY_CONTRACT_RECEIPT_SCHEMA:
+        raise WorkflowRuntimeError("CONSUMER_FIRST_CONTRACT_RECEIPT_INVALID:SCHEMA")
+    if payload.get("candidate") != candidate:
+        raise WorkflowRuntimeError("CONSUMER_FIRST_CONTRACT_CANDIDATE_MISMATCH")
+    if payload.get("target") != target:
+        raise WorkflowRuntimeError("CONSUMER_FIRST_CONTRACT_TARGET_MISMATCH")
+    contract = payload.get("contract")
+    if not isinstance(contract, dict):
+        raise WorkflowRuntimeError("CONSUMER_FIRST_CONTRACT_RECEIPT_INVALID:CONTRACT")
+    try:
+        research_dependency_contract.validate(contract)
+    except research_dependency_contract.DependencyContractError as exc:
+        raise WorkflowRuntimeError(
+            f"CONSUMER_FIRST_CONTRACT_RECEIPT_INVALID:{exc}"
+        ) from exc
+    return {
+        "label": "consumer-first-contract",
+        "schema": DEPENDENCY_CONTRACT_RECEIPT_SCHEMA,
+        "path": str(resolved),
+        "sha256": hashlib.sha256(raw).hexdigest(),
+        "candidate": candidate,
+        "target": target,
+        "status": "VALID",
+    }
 
 
 def _sha256(path: Path) -> str:
@@ -142,6 +276,19 @@ def compile_review_dispatch(
     if boundary_match is None or boundary_match.group(1) != boundary_id:
         holds.append("PROSHKA_BOUNDARY_ID_MISMATCH")
 
+    call_class, call_class_hold = _single_request_header(request_text, "CALL_CLASS")
+    packet_subtype, packet_subtype_hold = _single_request_header(
+        request_text, "PACKET_SUBTYPE"
+    )
+    if call_class_hold:
+        holds.append(call_class_hold)
+    elif call_class not in CANONICAL_CALL_CLASSES:
+        holds.append(f"PROSHKA_CALL_CLASS_INVALID:{call_class}")
+    if packet_subtype_hold and "PACKET_SUBTYPE:" in request_text:
+        holds.append(packet_subtype_hold)
+    if packet_subtype == RESEARCH_DEBT_PACKET_SUBTYPE and call_class != "EXPLORATION_REVIEW":
+        holds.append("RESEARCH_DEBT_CHALLENGE_CALL_CLASS_MISMATCH")
+
     queue_path = repo / "docs/routeB_bus/PROSHKA_QUEUE.md"
     try:
         queue_text = queue_path.read_text(encoding="utf-8")
@@ -171,6 +318,7 @@ def compile_review_dispatch(
         holds.append("PROSHKA_REQUEST_COMMIT_OR_PATH_INVALID")
 
     runtime_path = repo / "orchestrator/state/CHANNEL_RUNTIME.json"
+    eligibility_receipt = None
     try:
         runtime = json.loads(runtime_path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError):
@@ -186,6 +334,11 @@ def compile_review_dispatch(
             holds.append("PROSHKA_CHAT_HANDLE_LOST")
         if phase.get("last_boundary_id") == boundary_id:
             holds.append(f"PROSHKA_REVIEW_BOUNDARY_ALREADY_RECORDED:{boundary_id}")
+    if call_class == "EXPLORATION_REVIEW":
+        try:
+            eligibility_receipt = _exploration_review_receipt(runtime)
+        except WorkflowRuntimeError as exc:
+            holds.append(str(exc))
 
     manifest = {
         "path": relative,
@@ -203,8 +356,11 @@ def compile_review_dispatch(
         "holds": sorted(set(holds)),
         "boundary_id": boundary_id,
         "request_id": request_id,
+        "call_class": call_class,
+        "packet_subtype": packet_subtype,
         "queue_status": queue_status,
         "conversation_id": conversation_id,
+        "eligibility_receipt": eligibility_receipt,
         "attachment_manifest": manifest,
         "short_instruction": REVIEW_INSTRUCTION,
         "transport": {
@@ -497,6 +653,7 @@ def execute_close_node(
     insight_payload: Path | None,
     run_kernel: bool,
     protocol_out: Path | None,
+    dependency_contract_receipt: Path | None = None,
 ) -> dict[str, Any]:
     receipts: list[dict[str, Any]] = []
     startup = plan.get("logical_plan", {}).get("startup_receipt") or startup_receipt(repo)
@@ -513,6 +670,18 @@ def execute_close_node(
     if candidate or target:
         if not (query and candidate and target):
             holds.append("SUPPLIER_PREFLIGHT_TRIPLE_REQUIRED")
+        if dependency_contract_receipt is None:
+            holds.append("CONSUMER_FIRST_CONTRACT_RECEIPT_REQUIRED")
+        elif candidate and target:
+            try:
+                receipts.append(_dependency_contract_receipt(
+                    repo,
+                    dependency_contract_receipt,
+                    candidate=candidate,
+                    target=target,
+                ))
+            except WorkflowRuntimeError as exc:
+                holds.append(str(exc))
     if holds:
         return {
             "schema": "q3_workflow_run.v1",
@@ -536,7 +705,7 @@ def execute_close_node(
                 receipts.append(command_receipt(repo, ["bash", "scripts/q3_check.sh", path], label=f"kernel:{path}"))
     elif any(path.endswith(".lean") for path in owned_paths):
         holds.append("KERNEL_GATE_REQUIRED")
-    if any(item["exit"] != 0 for item in receipts):
+    if any(item.get("exit", 0) != 0 for item in receipts):
         holds.append("PRE_CLOSE_GATE_FAILED")
     if not holds:
         command = [sys.executable, "orchestrator/spine.py", "--refresh", "--reason", "step-close",
@@ -553,7 +722,7 @@ def execute_close_node(
         if protocol_out:
             command.extend(("--protocol-out", str(protocol_out)))
         receipts.append(command_receipt(repo, command, label="session-close"))
-    failed = [item for item in receipts if item["exit"] != 0]
+    failed = [item for item in receipts if item.get("exit", 0) != 0]
     after = _git(repo, "status", "--porcelain=v1", "--untracked-files=all")
     return {
         "schema": "q3_workflow_run.v1",
@@ -594,6 +763,7 @@ def main() -> int:
     run_parser.add_argument("--insight-payload", type=Path)
     run_parser.add_argument("--run-kernel", action="store_true")
     run_parser.add_argument("--protocol-out", type=Path)
+    run_parser.add_argument("--dependency-contract-receipt", type=Path)
     subparsers.add_parser("close-session")
     subparsers.add_parser("close-phase")
     review_parser = subparsers.add_parser("review-plan")
@@ -651,6 +821,7 @@ def main() -> int:
                 insight_payload=args.insight_payload,
                 run_kernel=args.run_kernel,
                 protocol_out=args.protocol_out,
+                dependency_contract_receipt=args.dependency_contract_receipt,
             )
             if args.command == "run" else plan
         )

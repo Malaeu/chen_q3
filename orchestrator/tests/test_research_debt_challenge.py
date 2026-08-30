@@ -25,13 +25,23 @@ class ResearchDebtChallengePlants(unittest.TestCase):
         self.assertIn("CALL_CLASS: EXPLORATION_REVIEW", text)
         self.assertIn("EXISTING_CONTROL_V9_GATE_REQUIRED", text)
         self.assertIn("ACTUAL_CONSUMER_REQUIREMENT", text)
-        self.assertIn("ORIGINAL_OBJECT_IS: UNKNOWN", text)
+        debt = next(
+            row
+            for row in session_briefing.validate_registry(session_briefing.REPO)["debts"]
+            if row["id"] == DEBT_ID
+        )
+        self.assertIn(f"ORIGINAL_OBJECT_IS: {debt['original_object_is']}", text)
         self.assertIn("WEAKER_INTERFACE_PROBE", text)
         self.assertIn("CONSUMER_IMPLICATION", text)
         self.assertIn("NO_SOURCE research debt, never mathematical death", text)
         self.assertIn("NOVELTY_REQUIREMENT", text)
         self.assertIn("ALLOWED_RESEARCH_OUTCOMES", text)
         self.assertIn("TRY_, KILL_, or RUN_", text)
+        self.assertIn("KILL_SCOPE as ATTEMPT, THEOREM_SHAPE, or ROUTE_FAMILY", text)
+        self.assertIn("counterexample to original X kills only X's exact theorem shape", text)
+        self.assertIn("ROUTE_FAMILY death additionally requires consumer-wide evidence", text)
+        self.assertIn("every admissible weaker interface Z", text)
+        self.assertNotIn("proving the route mathematically dead", text)
 
     def test_manifest_binds_exact_bytes(self) -> None:
         payload = research_debt_challenge.render(session_briefing.REPO, DEBT_ID, REQUEST_ID, BOUNDARY_ID)

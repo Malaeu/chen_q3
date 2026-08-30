@@ -66,12 +66,14 @@ Source of truth:
   - `ACTIVE/aristotle/aristotle.md`
   - `ACTIVE/aristotle/aristotle_sandbox_guide.md`
 - Proshka:
-  - `ACTIVE/aristotle/proshka_entrypoint.md`
-  - `ACTIVE/aristotle/proshka_memory_pack.md`
-  - `PROSHKA_REQUEST_4.md` (single‑scale closure pack)
-  - `ACTIVE/aristotle/proshka_context_single_scale.md` (one‑file packed brief)
-  - `scripts/build_proshka_brief.py` (pack builder)
-  - `docs/PROSHKA_POLICY.md` (canonical set policy)
+  - `docs/CODEX_CONTROL.md` (canonical review/transport control)
+  - `docs/routeB_bus/PROSHKA_SYSTEM_PROMPT_v2.md` (active judge prompt)
+  - `docs/Codex/RESEARCH_DEPENDENCY_PROTOCOL.md` (consumer-first contract)
+  - `docs/routeB_bus/RECHECKABLE_RESEARCH_DEBTS.json` (validated debt registry)
+  - `orchestrator/workflow_runtime.py review-plan` (exact request byte binding)
+  - `scripts/build_proshka_brief.py` (read-only evidence pack, not transport)
+  - `docs/PROSHKA_ENTRYPOINT.md` and `docs/PROSHKA_POLICY.md` (current pointers)
+  - January `PROSHKA_REQUEST_3/4` and single-scale packs are historical only
   - `ACTIVE/requests/INDEX.md` (request tree: why -> evidence -> decision -> request)
 
 ## 5) Stats update

@@ -86,8 +86,10 @@ K8. COMPRESS THE UNKNOWN.
     The success metric of any session: the open part ended SMALLER and
     MORE PRECISELY NAMED than it started (wall → lemma → one inequality
     on one explicit cone with one numeric budget). If after real work the
-    unknown is neither smaller nor sharper, the route was wrong — change
-    route, not effort. FAILURE AUTOPSY: every killed or abandoned route
+    unknown is neither smaller nor sharper, the current attempt has not earned
+    further execution. Re-audit the downstream consumer, its minimum sufficient
+    interface, and weaker representations before changing route rather than
+    effort. FAILURE AUTOPSY: every killed or abandoned route
     is closed with ONE explicit line naming the structure it dropped or
     forgot (localization, sign position, multiplicity, boundedness,
     coupling, measure vs algebra…). The autopsy line is mandatory in the

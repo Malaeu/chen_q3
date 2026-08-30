@@ -8,7 +8,8 @@ from pathlib import Path
 
 import yaml
 
-from orchestrator import session_briefing
+from orchestrator import research_dependency_projection, session_briefing
+from scripts import q3_docs_corpus
 
 
 class SessionBriefingPlants(unittest.TestCase):
@@ -133,6 +134,70 @@ class SessionBriefingPlants(unittest.TestCase):
             self.assertEqual(row["classification"], "RESEARCH_DEBT")
             self.assertIs(row["not_disproved"], True)
             self.assertTrue(row["novelty_requirement"])
+            self.assertEqual(
+                [entry["class"] for entry in row["alternative_interface_audit"]],
+                list(session_briefing.ALTERNATIVE_INTERFACE_CLASSES),
+            )
+            numerical = row["alternative_interface_audit"][-1]
+            self.assertEqual(numerical["class"], "NUMERICAL_HYPOTHESIS_ONLY")
+            self.assertEqual(numerical["status"], "HYPOTHESIS_ONLY")
+
+        goal056 = next(row for row in registry["debts"] if row["related_goal"] == "056")
+        self.assertEqual(goal056["original_object_is"], "NOT_NECESSARY")
+        self.assertNotIn(
+            "GOAL056_ARBITRARY_COFINAL_PROJECTION_TAIL_THEOREM_SHAPE",
+            {row["id"] for row in registry["adjudications"]},
+        )
+        for item in registry["adjudications"]:
+            for ref in item["evidence_refs"]:
+                self.assertEqual(
+                    set(ref),
+                    {"kind", "path", "commit", "git_blob", "scope", "claim"},
+                )
+
+    def test_adjudication_evidence_is_exact_git_bound(self) -> None:
+        registry_path = session_briefing.REPO / session_briefing.DEBT_REGISTRY
+        registry = json.loads(registry_path.read_text(encoding="utf-8"))
+        registry["adjudications"][0]["evidence_refs"][0]["git_blob"] = "0" * 40
+        with tempfile.TemporaryDirectory() as tmp:
+            planted = Path(tmp) / "registry.json"
+            planted.write_text(json.dumps(registry) + "\n", encoding="utf-8")
+            with self.assertRaisesRegex(
+                session_briefing.SessionBriefingError,
+                "RESEARCH_DEPENDENCY_REF_BLOB_DRIFT",
+            ):
+                session_briefing.validate_registry(session_briefing.REPO, planted)
+
+    def test_goal058_dead_claims_are_pinned_or_downgraded(self) -> None:
+        registry = session_briefing.validate_registry(session_briefing.REPO)
+        adjudications = {row["id"]: row for row in registry["adjudications"]}
+        pstar = adjudications["PSTAR_EQUALS_SCALAR_TIMES_SOURCE_LAGRANGE_POLYNOMIAL"]
+        self.assertEqual(pstar["classification"], "MATHEMATICALLY_DEAD")
+        self.assertEqual(pstar["evidence_refs"][0]["kind"], "COUNTEREXAMPLE")
+        self.assertNotIn("EXACT_GROUND_EQUALS_TRIAL", adjudications)
+
+        goal = (
+            session_briefing.REPO
+            / "docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md"
+        ).read_text(encoding="utf-8")
+        ground_block = goal.split(
+            "original_requested_object: EXACT_GROUND_EQUALS_TRIAL", 1
+        )[1].split("- original_requested_object:", 1)[0]
+        self.assertIn("failure_type: NO_DERIVATION", ground_block)
+        self.assertIn("epistemic_status: RESEARCH_DEBT", ground_block)
+        self.assertIn("death_evidence: []", ground_block)
+
+    def test_canonical_projection_is_deterministic_and_semantic(self) -> None:
+        output = session_briefing.REPO / research_dependency_projection.OUTPUT
+        rendered = research_dependency_projection.render(session_briefing.REPO)
+        self.assertEqual(output.read_bytes(), rendered)
+        self.assertTrue(rendered.endswith(b"\n"))
+        self.assertIn("Mathematically dead — non-actionable".encode("utf-8"), rendered)
+        selected = {
+            path.relative_to(session_briefing.REPO).as_posix()
+            for path in q3_docs_corpus.collect_sources(session_briefing.REPO)
+        }
+        self.assertIn(research_dependency_projection.OUTPUT.as_posix(), selected)
 
     def test_rank_prefers_even_high_unlock_unknown_over_satz9_high(self) -> None:
         registry = session_briefing.validate_registry(session_briefing.REPO)

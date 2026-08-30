@@ -26,13 +26,32 @@
       "original_requested_object": "A direct Satz9/Fuchs fixed-mode quantitative remainder with singular closed-window uniform stability.",
       "downstream_consumer": "The Goal 058 G3 central-overlap denominator-floor receiver on the literal regular endpoint branch.",
       "actual_consumer_requirement": "Any proof-carrying bound strong enough to give the receiver's explicit positive closed-window denominator floor.",
-      "original_object_is": "UNKNOWN",
+      "original_object_is": "SUFFICIENT_ONLY",
       "necessity_evidence": [],
       "known_weaker_interfaces": [
         "A source-specific Green or Volterra inverse estimate on the required window.",
         "A direct residual-to-denominator estimate that bypasses a full eigenfunction remainder."
       ],
+      "alternative_interface_audit": [
+        {"class": "EXACT_ORIGINAL_THEOREM", "status": "REJECTED", "reason": "The current direct Satz9/Fuchs formalization exhausted its affordable library route."},
+        {"class": "WEAKER_THEOREM", "status": "SUFFICIENT_CANDIDATE", "reason": "Only the explicit positive closed-window denominator floor is consumed."},
+        {"class": "COMBINED_ESTIMATE", "status": "PROMISING", "reason": "A residual plus inverse estimate may provide the consumer floor without a full remainder theorem."},
+        {"class": "ASYMPTOTIC_ONLY", "status": "PROMISING", "reason": "A quantitative fixed-mode asymptotic with explicit remainder could close the window."},
+        {"class": "AVERAGE_OR_WEIGHTED_ESTIMATE", "status": "NOT_RELEVANT", "reason": "The consumer needs a pointwise positive denominator floor on the closed window."},
+        {"class": "FINITE_DIMENSIONAL_SUBSTITUTE", "status": "REJECTED", "reason": "A finite table alone does not control the singular closed-window remainder."},
+        {"class": "HEAD_TAIL_DECOMPOSITION", "status": "PROMISING", "reason": "A finite head plus audited uniform tail may supply explicit constants."},
+        {"class": "VARIATIONAL_OR_RAYLEIGH", "status": "NOT_RELEVANT", "reason": "No direct variational implication to the normalized denominator floor is registered."},
+        {"class": "COERCIVITY", "status": "NOT_RELEVANT", "reason": "A coercivity statement is useful only after an explicit inverse-to-floor implication."},
+        {"class": "FESHBACH_OR_SCHUR", "status": "PROMISING", "reason": "A source-specific inverse or Schur estimate could bypass the full eigenfunction remainder."},
+        {"class": "SYMMETRY_OR_PARITY", "status": "NOT_RELEVANT", "reason": "Parity does not provide the missing quantitative remainder."},
+        {"class": "PERTURBATIVE", "status": "PROMISING", "reason": "A perturbative Green or Volterra construction is one named reentry route."},
+        {"class": "COMPACTNESS", "status": "REJECTED", "reason": "Qualitative compactness does not supply the explicit uniform constant consumed downstream."},
+        {"class": "DIRECT_CONSUMER_PROOF", "status": "SUFFICIENT_CANDIDATE", "reason": "A direct residual-to-denominator floor proves exactly the unchanged consumer."},
+        {"class": "ALTERNATIVE_REPRESENTATION", "status": "PROMISING", "reason": "Green, Volterra, resolvent or common-basis representations remain open."},
+        {"class": "NUMERICAL_HYPOTHESIS_ONLY", "status": "HYPOTHESIS_ONLY", "reason": "Numerics may scout constants but cannot prove the closed-window floor."}
+      ],
       "failure_type": "NO_DERIVATION",
+      "failure_scope": "The current direct Satz9/Fuchs formalization route only; neither the paper theorem nor the downstream denominator-floor consumer is disproved.",
       "death_evidence": [],
       "consumer_implication": "Any audited interface Z yielding the explicit positive closed-window denominator floor discharges the G3 receiver; the named Satz9 remainder is only one candidate Z.",
       "weaker_interface_probe": "Derive the receiver floor directly from a Green/Volterra or residual estimate and prove the exact implication to the existing receiver.",
@@ -99,13 +118,32 @@
       "original_requested_object": "One literal selected odd-compression uniform coercivity theorem or a complete signed Feshbach package.",
       "downstream_consumer": "The Goal 058 odd-sector floor discriminator for the selected Ferrers cofinal schedule.",
       "actual_consumer_requirement": "A certified positive lower margin for the selected odd contribution, uniform on the required cofinal schedule.",
-      "original_object_is": "UNKNOWN",
+      "original_object_is": "SUFFICIENT_ONLY",
       "necessity_evidence": [],
       "known_weaker_interfaces": [
         "A signed quadratic-form bound only on the consumer subspace.",
         "A residual-weighted or resolvent estimate implying the same positive margin."
       ],
+      "alternative_interface_audit": [
+        {"class": "EXACT_ORIGINAL_THEOREM", "status": "REJECTED", "reason": "The current shelf has no literal odd-compression uniform coercivity theorem."},
+        {"class": "WEAKER_THEOREM", "status": "SUFFICIENT_CANDIDATE", "reason": "A positive margin only on the consumer subspace is sufficient."},
+        {"class": "COMBINED_ESTIMATE", "status": "PROMISING", "reason": "A combined form and residual estimate may imply the odd discriminator."},
+        {"class": "ASYMPTOTIC_ONLY", "status": "PROMISING", "reason": "An eventual explicit margin on the selected schedule would suffice."},
+        {"class": "AVERAGE_OR_WEIGHTED_ESTIMATE", "status": "SUFFICIENT_CANDIDATE", "reason": "A residual-weighted bound is an explicit registered weaker interface."},
+        {"class": "FINITE_DIMENSIONAL_SUBSTITUTE", "status": "REJECTED", "reason": "A finite head without a certified tail cannot give the uniform schedule margin."},
+        {"class": "HEAD_TAIL_DECOMPOSITION", "status": "PROMISING", "reason": "A signed head-tail estimate is a named reopening condition."},
+        {"class": "VARIATIONAL_OR_RAYLEIGH", "status": "PROMISING", "reason": "The selected Rayleigh shift makes a consumer-subspace form estimate natural."},
+        {"class": "COERCIVITY", "status": "PROMISING", "reason": "Direct odd-sector coercivity would close the target if sourced."},
+        {"class": "FESHBACH_OR_SCHUR", "status": "PROMISING", "reason": "A positive signed Schur margin is an explicit accepted interface."},
+        {"class": "SYMMETRY_OR_PARITY", "status": "PROMISING", "reason": "Parity supplies structure but still needs a quantitative positive margin."},
+        {"class": "PERTURBATIVE", "status": "PROMISING", "reason": "Perturbative control of head-tail coupling may yield the Schur margin."},
+        {"class": "COMPACTNESS", "status": "REJECTED", "reason": "Qualitative compactness supplies no explicit uniform positive constant."},
+        {"class": "DIRECT_CONSUMER_PROOF", "status": "SUFFICIENT_CANDIDATE", "reason": "Any direct proof of the odd discriminator closes the unchanged consumer."},
+        {"class": "ALTERNATIVE_REPRESENTATION", "status": "PROMISING", "reason": "Resolvent and residual-weighted representations remain open."},
+        {"class": "NUMERICAL_HYPOTHESIS_ONLY", "status": "HYPOTHESIS_ONLY", "reason": "Finite numerics may identify a candidate margin but are not proof."}
+      ],
       "failure_type": "NO_SOURCE",
+      "failure_scope": "The current odd-sector source shelf only; the selected odd-sector positive margin is not disproved.",
       "death_evidence": [],
       "consumer_implication": "Any certified uniform positive odd-sector margin Z implies the discriminator required by the selected schedule; full compression coercivity is not yet proved necessary.",
       "weaker_interface_probe": "Search for a consumer-subspace form or resolvent bound and prove its exact implication to the odd discriminator.",
@@ -171,13 +209,32 @@
       "original_requested_object": "A literal selected even-complement uniform coercivity theorem or a complete even head-tail Feshbach package.",
       "downstream_consumer": "The Goal 058 selected ground-to-trial chain requiring a positive even-complement margin on the cofinal schedule.",
       "actual_consumer_requirement": "A proof-carrying positive margin sufficient for the ground-to-trial consumer, not necessarily a global compression floor.",
-      "original_object_is": "UNKNOWN",
+      "original_object_is": "SUFFICIENT_ONLY",
       "necessity_evidence": [],
       "known_weaker_interfaces": [
         "A residual-weighted estimate restricted to the selected trial complement.",
         "A local Schur margin with explicit head, tail, and coupling constants."
       ],
+      "alternative_interface_audit": [
+        {"class": "EXACT_ORIGINAL_THEOREM", "status": "REJECTED", "reason": "The current shelf has no direct global even-compression floor."},
+        {"class": "WEAKER_THEOREM", "status": "SUFFICIENT_CANDIDATE", "reason": "Only a positive complement margin on the consumer schedule is needed."},
+        {"class": "COMBINED_ESTIMATE", "status": "PROMISING", "reason": "A local head, tail and coupling estimate may prove the required margin."},
+        {"class": "ASYMPTOTIC_ONLY", "status": "PROMISING", "reason": "An eventual explicit complement margin is sufficient for the consumer."},
+        {"class": "AVERAGE_OR_WEIGHTED_ESTIMATE", "status": "SUFFICIENT_CANDIDATE", "reason": "A selected-complement residual-weighted estimate is a registered weaker interface."},
+        {"class": "FINITE_DIMENSIONAL_SUBSTITUTE", "status": "REJECTED", "reason": "Finite-head certification alone leaves the infinite tail uncontrolled."},
+        {"class": "HEAD_TAIL_DECOMPOSITION", "status": "PROMISING", "reason": "An even head-tail discriminator is the named next representation."},
+        {"class": "VARIATIONAL_OR_RAYLEIGH", "status": "PROMISING", "reason": "A form estimate at the selected Rayleigh shift may target the complement directly."},
+        {"class": "COERCIVITY", "status": "PROMISING", "reason": "Direct even-form coercivity would close the target if sourced."},
+        {"class": "FESHBACH_OR_SCHUR", "status": "PROMISING", "reason": "An explicit positive Schur margin is an accepted sufficient interface."},
+        {"class": "SYMMETRY_OR_PARITY", "status": "PROMISING", "reason": "Even symmetry organizes the sector but does not itself prove the floor."},
+        {"class": "PERTURBATIVE", "status": "PROMISING", "reason": "Perturbative coupling bounds may complete the local Schur estimate."},
+        {"class": "COMPACTNESS", "status": "REJECTED", "reason": "Qualitative compactness cannot supply the explicit uniform margin."},
+        {"class": "DIRECT_CONSUMER_PROOF", "status": "SUFFICIENT_CANDIDATE", "reason": "A direct eventual complement-floor proof reaches the unchanged consumer."},
+        {"class": "ALTERNATIVE_REPRESENTATION", "status": "PROMISING", "reason": "Residual-weighted, resolvent and local Schur forms remain open."},
+        {"class": "NUMERICAL_HYPOTHESIS_ONLY", "status": "HYPOTHESIS_ONLY", "reason": "Numerical spectra can scout constants but cannot prove the uniform floor."}
+      ],
       "failure_type": "NO_SOURCE",
+      "failure_scope": "The current even-sector source shelf only; the selected complement margin is not disproved.",
       "death_evidence": [],
       "consumer_implication": "Any certified positive complement margin Z on the selected schedule discharges the ground-to-trial consumer; global even coercivity is not yet proved necessary.",
       "weaker_interface_probe": "Build the weakest residual-weighted or local Schur estimate and prove its exact implication to the ground-to-trial consumer.",
@@ -243,13 +300,32 @@
       "original_requested_object": "A selected-family source rate for the weighted literal Rayleigh residual.",
       "downstream_consumer": "The Goal 058 eventual complement-floor receiver for the literal selected Ferrers family.",
       "actual_consumer_requirement": "Any proof-carrying source estimate sufficient for the exact weighted-residual limit consumed by the existing receiver.",
-      "original_object_is": "UNKNOWN",
+      "original_object_is": "SUFFICIENT_ONLY",
       "necessity_evidence": [],
       "known_weaker_interfaces": [
         "Direct decay of L_k times oddMass_k times the exact commutator-defect energy.",
         "A consumer-specific resolvent or form estimate implying the same eventual complement-floor conclusion without a standalone global residual rate."
       ],
+      "alternative_interface_audit": [
+        {"class": "EXACT_ORIGINAL_THEOREM", "status": "REJECTED", "reason": "The current mode and chi shelf has no selected-family global source rate."},
+        {"class": "WEAKER_THEOREM", "status": "SUFFICIENT_CANDIDATE", "reason": "Any estimate proving the exact weighted-residual limit is sufficient."},
+        {"class": "COMBINED_ESTIMATE", "status": "SUFFICIENT_CANDIDATE", "reason": "A combined odd-mass and commutator-defect estimate matches the consumed product."},
+        {"class": "ASYMPTOTIC_ONLY", "status": "SUFFICIENT_CANDIDATE", "reason": "The consumer only needs the selected product to tend to zero."},
+        {"class": "AVERAGE_OR_WEIGHTED_ESTIMATE", "status": "SUFFICIENT_CANDIDATE", "reason": "The target itself is a weighted residual estimate."},
+        {"class": "FINITE_DIMENSIONAL_SUBSTITUTE", "status": "REJECTED", "reason": "Finite checks do not establish the cofinal asymptotic rate."},
+        {"class": "HEAD_TAIL_DECOMPOSITION", "status": "PROMISING", "reason": "A cancellation-preserving head-tail split may produce the missing rate."},
+        {"class": "VARIATIONAL_OR_RAYLEIGH", "status": "PROMISING", "reason": "A selected-family form estimate may imply the consumer directly."},
+        {"class": "COERCIVITY", "status": "PROMISING", "reason": "A local complement margin may bypass the standalone residual rate."},
+        {"class": "FESHBACH_OR_SCHUR", "status": "PROMISING", "reason": "A consumer-specific Schur estimate may prove the eventual floor directly."},
+        {"class": "SYMMETRY_OR_PARITY", "status": "REJECTED", "reason": "Parity alone supplies no subcritical log-weighted decay."},
+        {"class": "PERTURBATIVE", "status": "PROMISING", "reason": "Derivative-level or commutator perturbation control is a named novelty axis."},
+        {"class": "COMPACTNESS", "status": "REJECTED", "reason": "Qualitative compactness does not provide the explicit decay rate."},
+        {"class": "DIRECT_CONSUMER_PROOF", "status": "SUFFICIENT_CANDIDATE", "reason": "A direct eventual complement-floor estimate bypasses the missing global rate."},
+        {"class": "ALTERNATIVE_REPRESENTATION", "status": "PROMISING", "reason": "Oscillatory, resolvent and local form representations remain open."},
+        {"class": "NUMERICAL_HYPOTHESIS_ONLY", "status": "HYPOTHESIS_ONLY", "reason": "Numerics may suggest decay but cannot prove the asymptotic limit."}
+      ],
       "failure_type": "NO_SOURCE",
+      "failure_scope": "The current mode, chi and source shelf only; the weighted-residual limit and eventual complement-floor consumer are not disproved.",
       "death_evidence": [],
       "consumer_implication": "Any audited interface Z proving the exact weighted-residual limit, or directly proving the existing eventual complement-floor conclusion with the same source objects, discharges this debt.",
       "weaker_interface_probe": "Target the complement-floor consumer directly and prove the exact implication from a derivative-level, oscillatory, resolvent, or local form estimate.",
@@ -295,9 +371,111 @@
           "git_blob": "dd70b92e62a3b4efe558a5106be5d00f3ca76a64"
         }
       ]
+    },
+    {
+      "id": "GOAL056_ARBITRARY_COFINAL_PROJECTION_TAIL_CURRENT_THEOREM_SHAPE",
+      "target_id": "G6_S2_D0_SELECTED_LOG_WINDOW_FOURIER_TAIL_RATE",
+      "classification": "RESEARCH_DEBT",
+      "execution_status": "KILLED",
+      "epistemic_status": "RESEARCH_DEBT",
+      "not_disproved": true,
+      "status": "KILLED_RECHECKABLE",
+      "killed_at": "2026-08-06",
+      "reason": "The arbitrary-cofinal projection-tail theorem is unsupported by fixed-vector Fourier density when the vector, space, window and cutoff move together; the source record explicitly says the theorem shape was not mathematically refuted.",
+      "missing_object": "A coupled-schedule uniform Fourier or Sobolev tail estimate, or a constructive diagonal schedule, with an exact implication to the Goal 056 projection-tail consumer.",
+      "terminal_consumer": "The Goal 056 selected projection-tail bridge.",
+      "original_requested_object": "A projection-tail theorem for every already-supplied arbitrary cofinal schedule from fixed-vector density alone.",
+      "downstream_consumer": "The Goal 056 selected projection-tail bridge.",
+      "actual_consumer_requirement": "One source-coherent schedule on which the transported projection tail tends to zero; the consumer does not require the unsupported every-schedule strengthening.",
+      "original_object_is": "NOT_NECESSARY",
+      "necessity_evidence": [],
+      "known_weaker_interfaces": [
+        "A named coupled schedule with a genuine uniform Fourier or Sobolev tail estimate.",
+        "A constructive diagonal schedule extracted from fixed-window Fourier density."
+      ],
+      "alternative_interface_audit": [
+        {"class": "EXACT_ORIGINAL_THEOREM", "status": "REJECTED", "reason": "The arbitrary-cofinal strengthening is unsupported and unnecessary for the consumer."},
+        {"class": "WEAKER_THEOREM", "status": "SUFFICIENT_CANDIDATE", "reason": "One source-coherent schedule with tail decay is sufficient."},
+        {"class": "COMBINED_ESTIMATE", "status": "PROMISING", "reason": "A bandwidth law combined with uniform transported energy can prove the tail."},
+        {"class": "ASYMPTOTIC_ONLY", "status": "SUFFICIENT_CANDIDATE", "reason": "The consumer needs only convergence along the selected schedule."},
+        {"class": "AVERAGE_OR_WEIGHTED_ESTIMATE", "status": "PROMISING", "reason": "A weighted Fourier-tail inequality is one component of the named future interface."},
+        {"class": "FINITE_DIMENSIONAL_SUBSTITUTE", "status": "PROMISING", "reason": "Finite-cutoff density can support a constructive diagonal schedule when coupled explicitly."},
+        {"class": "HEAD_TAIL_DECOMPOSITION", "status": "NOT_RELEVANT", "reason": "The missing quantifier and uniform-rate issue is not a head-tail spectral split."},
+        {"class": "VARIATIONAL_OR_RAYLEIGH", "status": "NOT_RELEVANT", "reason": "No variational implication to the moving Fourier tail is registered."},
+        {"class": "COERCIVITY", "status": "NOT_RELEVANT", "reason": "Coercivity does not resolve the simultaneous moving-window quantifiers."},
+        {"class": "FESHBACH_OR_SCHUR", "status": "NOT_RELEVANT", "reason": "The projection-tail consumer is not a Schur-complement problem."},
+        {"class": "SYMMETRY_OR_PARITY", "status": "NOT_RELEVANT", "reason": "Symmetry does not provide the missing uniform bandwidth-energy law."},
+        {"class": "PERTURBATIVE", "status": "PROMISING", "reason": "Uniform regularity perturbation bounds may support a coupled schedule."},
+        {"class": "COMPACTNESS", "status": "PROMISING", "reason": "A constructive diagonal compactness argument may yield one good schedule."},
+        {"class": "DIRECT_CONSUMER_PROOF", "status": "SUFFICIENT_CANDIDATE", "reason": "Direct construction of one selected schedule closes the exact consumer."},
+        {"class": "ALTERNATIVE_REPRESENTATION", "status": "PROMISING", "reason": "Coupled-rate and constructive-diagonal representations remain open."},
+        {"class": "NUMERICAL_HYPOTHESIS_ONLY", "status": "HYPOTHESIS_ONLY", "reason": "Finite projection experiments cannot prove cofinal tail decay."}
+      ],
+      "failure_type": "NO_SOURCE",
+      "failure_scope": "The unsupported arbitrary-cofinal theorem shape under fixed-vector density only; the source record explicitly does not claim mathematical refutation.",
+      "death_evidence": [],
+      "consumer_implication": "Either a coupled schedule with the required uniform rate or a constructive diagonal schedule discharges the selected projection-tail consumer without proving the arbitrary-cofinal theorem shape.",
+      "weaker_interface_probe": "Construct one source-coherent schedule and prove that its explicit bandwidth and energy bounds imply the exact selected projection-tail limit.",
+      "why_interesting": "It preserves the completed same-m source-coherence repair and identifies the weaker schedule interface actually needed by the Goal 056 consumer.",
+      "unlock_value": "MEDIUM",
+      "estimated_difficulty": "HIGH",
+      "last_attempt": {
+        "date": "2026-08-06",
+        "outcome": "KILL_CURRENT_SOURCE_UNSUPPORTED_THEOREM_SHAPE",
+        "approach": "Audit of fixed-vector Fourier density against simultaneously moving vectors, spaces, windows and cutoffs."
+      },
+      "reopen_if": [
+        "A source theorem supplies a uniform transported Fourier or Sobolev tail estimate on a named coupled schedule.",
+        "A constructive diagonal extraction is proved to satisfy the exact selected projection-tail consumer."
+      ],
+      "reopen_triggers": [
+        "NEW_LITERATURE",
+        "NEW_THEOREM",
+        "NEW_DERIVATION",
+        "PROSHKA_RESEARCH",
+        "COUNTEREXAMPLE"
+      ],
+      "next_probe": "Choose between a coupled-rate interface and a constructive diagonal schedule; do not restate the unsupported arbitrary-cofinal theorem.",
+      "novelty_requirement": [
+        "Supply a schedule-coupled uniform energy or bandwidth theorem absent from the prior fixed-vector density argument.",
+        "Change the quantifier structure to one explicit constructive diagonal schedule and prove it reaches the unchanged consumer.",
+        "Give a scoped counterexample only if claiming the original every-schedule theorem shape is mathematically false."
+      ],
+      "last_external_check": "2026-08-30",
+      "search_hints": [
+        "uniform Fourier tail moving interval coupled cutoff Sobolev estimate",
+        "constructive diagonal schedule Galerkin projection tail",
+        "prolate transported Fourier energy uniform cofinal schedule"
+      ],
+      "related_goal": "056",
+      "authoritative_refs": [
+        {
+          "path": "q3.lean.aristotle/docs/INSIGHTS.md",
+          "commit": "e2ef5f0741c15b644514eade8332d35ed5629666",
+          "git_blob": "85a60ac0ed3e999fe58f7a59e24490e90647cdac"
+        }
+      ]
     }
   ],
   "adjudications": [
+    {
+      "id": "PSTAR_EQUALS_SCALAR_TIMES_SOURCE_LAGRANGE_POLYNOMIAL",
+      "classification": "MATHEMATICALLY_DEAD",
+      "scope": "Scalar-only equality between the full nonzero Proposition-5.9 transform and one nonzero finite source Lagrange polynomial.",
+      "downstream_consumer": "The Proposition-5.9 same-row real-zero transfer.",
+      "dead_reason": "The full transform has infinitely many exterior sine-lattice zeros, while a nonzero finite polynomial has only finitely many zeros; multiplication by one scalar cannot make the functions equal.",
+      "surviving_interface": "Use the exact zero-set union with the real sine-lattice factor and the same-row Lagrange zero-set bridge.",
+      "evidence_refs": [
+        {
+          "kind": "COUNTEREXAMPLE",
+          "path": "docs/routeB_bus/ROUTE058_GATE_CONTRACTS.md",
+          "commit": "fef398aa75d5ae37012e8a672f80ca5f7d0e5359",
+          "git_blob": "f30481486ad219a5c3c6454ee56a82fd214cf305",
+          "scope": "Scalar-only full-transform equality for a nonzero finite source polynomial; not the zero-set union interface.",
+          "claim": "The pinned gate contract records infinitely many exterior sine-lattice zeros for the full transform versus finitely many zeros for the nonzero finite polynomial."
+        }
+      ]
+    },
     {
       "id": "BROAD_CONE_SCALAR_PRIME_CERTIFICATE_TARGET",
       "classification": "MATHEMATICALLY_DEAD",
@@ -305,7 +483,16 @@
       "downstream_consumer": "The retired broad-cone Prime positivity route.",
       "dead_reason": "An L1 kernel transform decays while a finite positive cosine sum recurrently returns near full mass, forcing the required difference negative.",
       "surviving_interface": "Compact S1/S2/S3/S4 calculations remain diagnostics only.",
-      "evidence_refs": ["docs/GENEALOGY.md @ e3e920de8 blob 718202b25ba39b497409d7482eebc46054d87413"]
+      "evidence_refs": [
+        {
+          "kind": "FORMAL_IMPOSSIBILITY",
+          "path": "docs/GENEALOGY.md",
+          "commit": "e3e920de80f43a88904fa222d3f606b207c86569",
+          "git_blob": "718202b25ba39b497409d7482eebc46054d87413",
+          "scope": "Broad-cone scalar Prime-certificate theorem shape only.",
+          "claim": "The broad-cone scalar target is impossible because the L1 transform decays while recurrent finite positive cosine sums return near full mass."
+        }
+      ]
     },
     {
       "id": "A3_PD_DENSE_PACKET_DICTIONARY_UNIFORM_SYMBOL_FLOOR",
@@ -314,7 +501,16 @@
       "downstream_consumer": "The retired dense-dictionary A3 coercivity route.",
       "dead_reason": "Difference packets collapse as their translation tends to zero, so no uniform positive gap exists on the dense dictionary.",
       "surviving_interface": "The exact packet Rayleigh identity and PSD-pd kernel representation remain useful alternatives.",
-      "evidence_refs": ["q3.lean.aristotle/docs/INSIGHTS.md @ d7a3e6f01 blob e60c1232e7e6cc90db36b88052a4cc138de97a86"]
+      "evidence_refs": [
+        {
+          "kind": "COUNTEREXAMPLE_FAMILY",
+          "path": "q3.lean.aristotle/docs/INSIGHTS.md",
+          "commit": "d7a3e6f01b14d46528d9740a50e60711987cf07b",
+          "git_blob": "e60c1232e7e6cc90db36b88052a4cc138de97a86",
+          "scope": "Uniform positive A3-pd floor on the full dense difference-packet dictionary only.",
+          "claim": "Dense difference packets collapse as their translation tends to zero, ruling out a uniform positive A3-pd floor on that dictionary."
+        }
+      ]
     },
     {
       "id": "ESTARMUNTZ_V1_RAW_POLE_CONTRACT",
@@ -323,16 +519,16 @@
       "downstream_consumer": "The old T4/T5 raw-pole transfer.",
       "dead_reason": "At the pole the raw product is not the value of its removable continuation, so the old point-value theorem shape is false.",
       "surviving_interface": "ZetaMellinReg is the consumer-faithful regularized interface.",
-      "evidence_refs": ["q3.lean.aristotle/docs/INSIGHTS.md @ 45e0daafe blob dec3b41b3e8dd882e9821cedcd18dae9fd153eef"]
-    },
-    {
-      "id": "GOAL056_ARBITRARY_COFINAL_PROJECTION_TAIL_THEOREM_SHAPE",
-      "classification": "MATHEMATICALLY_DEAD",
-      "scope": "Arbitrary-cofinal theorem shape deriving joint moving-vector, moving-space, window and cutoff control from fixed-vector density alone.",
-      "downstream_consumer": "The Goal 056 projection-tail bridge.",
-      "dead_reason": "Fixed-vector density does not control all simultaneously moving objects; the claimed universal implication is invalid.",
-      "surviving_interface": "A coupled schedule or constructive diagonal remains a useful alternative interface.",
-      "evidence_refs": ["q3.lean.aristotle/docs/INSIGHTS.md @ e2ef5f074 blob 85a60ac0ed3e999fe58f7a59e24490e90647cdac"]
+      "evidence_refs": [
+        {
+          "kind": "INCOMPATIBILITY",
+          "path": "q3.lean.aristotle/docs/INSIGHTS.md",
+          "commit": "45e0daafec2bb11c8d11aa16f67214b22c10764a",
+          "git_blob": "dec3b41b3e8dd882e9821cedcd18dae9fd153eef",
+          "scope": "EStarMuntz v1 raw-product point-value contract at the zeta pole only.",
+          "claim": "At the zeta pole the raw product is not the value of its removable continuation, so the old raw-pole point-value contract is false."
+        }
+      ]
     }
   ]
 }

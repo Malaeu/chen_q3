@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""kb — the single entry point to knowledge.db ("have we already tried / killed this?").
+"""kb — the entry point to legacy operational-closure knowledge in knowledge.db.
 
 Written 2026-08-05 after two near-duplications in one session. The knowledge existed, in
 five different files with incompatible vocabularies; nothing could be asked in one query.
@@ -57,6 +57,11 @@ HISTORICAL_RECEIPT_FIELDS = {
 
 UNIT_TYPES = ("route", "object", "strategy", "wall", "criterion")
 STATUSES = ("killed", "live", "repaired", "superseded", "standing")
+
+DEFAULT_KILL_SCOPE_NEGATION = (
+    "Operational KILL of the recorded scope only; this does not imply "
+    "MATHEMATICALLY_DEAD and does not close weaker consumer interfaces."
+)
 
 KILL_COLUMNS = ("id", "unit_type", "subject", "status", "reason", "scope_negation",
                 "rollback_target", "replacement", "forbidden_future_move", "stop_code",
@@ -342,11 +347,17 @@ def slugify(text: str, maxlen: int = 60) -> str:
 
 
 def insert_kills(conn, rows, evidence=(), aliases=()) -> int:
-    """Bulk insert. One transaction, not one per row."""
+    """Bulk insert operational records, making every KILL scope-safe."""
+    normalized = []
+    for source in rows:
+        row = dict(source)
+        if row.get("status") == "killed" and not row.get("scope_negation"):
+            row["scope_negation"] = DEFAULT_KILL_SCOPE_NEGATION
+        normalized.append(row)
     conn.executemany(
         f"INSERT OR REPLACE INTO kill ({','.join(KILL_COLUMNS)}) "
         f"VALUES ({','.join('?' * len(KILL_COLUMNS))})",
-        [tuple(r.get(c) for c in KILL_COLUMNS) for r in rows])
+        [tuple(r.get(c) for c in KILL_COLUMNS) for r in normalized])
     if evidence:
         conn.executemany(
             "INSERT OR REPLACE INTO kill_evidence (kill_id, kind, ref) VALUES (?,?,?)",
@@ -357,6 +368,17 @@ def insert_kills(conn, rows, evidence=(), aliases=()) -> int:
             list(aliases))
     conn.commit()
     return len(rows)
+
+
+def backfill_operational_scope_negations(conn: sqlite3.Connection) -> int:
+    """Scope-safe, history-preserving migration for legacy operational KILL rows."""
+    cursor = conn.execute(
+        "UPDATE kill SET scope_negation=? WHERE status='killed' "
+        "AND (scope_negation IS NULL OR trim(scope_negation)='')",
+        (DEFAULT_KILL_SCOPE_NEGATION,),
+    )
+    conn.commit()
+    return cursor.rowcount
 
 
 def _parse_exploration_link(value: str) -> tuple[str, str, str, str | None]:
@@ -498,8 +520,11 @@ def cmd_add(args) -> int:
 
 
 def _render(conn, rows, verbose=False) -> None:
+    print("NOTE: killed = operational closure of the recorded scope; "
+          "never MATHEMATICALLY_DEAD.\n")
     for r in rows:
-        head = f"[{r['unit_type']}/{r['status']}]"
+        status = "operationally-killed" if r["status"] == "killed" else r["status"]
+        head = f"[{r['unit_type']}/{status}]"
         print(f"{head:22s} {r['id']}")
         print(f"   subject : {r['subject']}")
         if r["reason"]:
@@ -682,16 +707,27 @@ def cmd_list(args) -> int:
 
 
 def cmd_census(args) -> int:
-    """Judge of the organ: do the frozen files still agree with the DB?
+    """Judge of the organ using class-aware verdict multiplicity.
 
     A database without a judge drifts — aristotle_proofs.db silently fell to 31% coverage
     exactly because nothing compared expected against actual.
+
+    The legacy `source_ledger.expected_rows` remains authoritative for non-verdict
+    migrations.  Wave-3 verdict ledgers are filename-only historical receipts and are
+    explicitly non-authoritative: iteration/KILL multiplicity is judged by
+    `migration_census.census` instead.
     """
     conn = connect()
     print(f"{'source file':62s} {'expected':>9s} {'in db':>7s}  verdict")
     print("-" * 96)
     bad = 0
-    for r in conn.execute("SELECT * FROM source_ledger ORDER BY source_file"):
+    wave3 = conn.execute(
+        "SELECT COUNT(*) FROM source_ledger WHERE note='wave 3 verdicts'"
+    ).fetchone()[0]
+    for r in conn.execute(
+        "SELECT * FROM source_ledger WHERE coalesce(note,'') != 'wave 3 verdicts' "
+        "ORDER BY source_file"
+    ):
         # A source may have landed in any layer — count them all, or the judge cries drift
         # over a perfectly migrated file just because it was not a kill.
         actual = sum(
@@ -706,6 +742,36 @@ def cmd_census(args) -> int:
         bad += 0 if ok else 1
         print(f"{r['source_file'][:62]:62s} {r['expected_rows']:9d} {actual:7d}  "
               f"{'OK' if ok else 'DRIFT'}")
+    if wave3:
+        try:
+            from orchestrator import migration_census as _migration_census
+        except ImportError:  # direct `python3 orchestrator/kb.py`
+            import migration_census as _migration_census  # type: ignore
+        migration = _migration_census.census(DB_PATH)
+        verdicts = next(
+            row for row in migration["surfaces"] if row["surface"] == "verdicts"
+        )
+        verdict_ok = (
+            verdicts["unmigrated_rows"] == 0 and verdicts["stale_rows"] == 0
+        )
+        migration_ok = migration["status"] == "PASS"
+        bad += 0 if migration_ok else 1
+        print(
+            f"{'wave-3 verdict components (class-aware)':62s} "
+            f"{verdicts['source_rows']:9d} {verdicts['database_rows']:7d}  "
+            f"{'OK' if verdict_ok else 'DRIFT'}"
+        )
+        print(f"  class-aware migration census: {migration['status']}")
+        retained = int(verdicts.get("retained_historical_rows", 0))
+        if retained:
+            print(
+                f"  retained historical components: {retained} "
+                "(live source; not projection drift)"
+            )
+        print(
+            f"  legacy filename-only wave-3 ledger rows: {wave3} "
+            "(diagnostic only; not an equality authority)"
+        )
     print()
     for t in ("kill", "move", "journal_entry", "dossier", "postmortem",
               "search_session", "link"):
@@ -714,9 +780,33 @@ def cmd_census(args) -> int:
     total = conn.execute("SELECT COUNT(*) FROM kill").fetchone()[0]
     aliases = conn.execute("SELECT COUNT(*) FROM kill_alias").fetchone()[0]
     ev = conn.execute("SELECT COUNT(*) FROM kill_evidence").fetchone()[0]
+    kill_columns = {row[1] for row in conn.execute("PRAGMA table_info(kill)")}
+    missing_scopes = (
+        conn.execute(
+            "SELECT COUNT(*) FROM kill WHERE status='killed' "
+            "AND (scope_negation IS NULL OR trim(scope_negation)='')"
+        ).fetchone()[0]
+        if {"status", "scope_negation"}.issubset(kill_columns)
+        else 0
+    )
+    bad += 1 if missing_scopes else 0
     print("-" * 96)
-    print(f"rows {total} · aliases {aliases} · evidence {ev} · drifting sources {bad}")
+    print(
+        f"rows {total} · aliases {aliases} · evidence {ev} · "
+        f"missing operational scope negations {missing_scopes} · drifting sources {bad}"
+    )
     return 1 if bad else 0
+
+
+def cmd_backfill_operational_scopes(_args) -> int:
+    conn = connect()
+    changed = backfill_operational_scope_negations(conn)
+    remaining = conn.execute(
+        "SELECT COUNT(*) FROM kill WHERE status='killed' "
+        "AND (scope_negation IS NULL OR trim(scope_negation)='')"
+    ).fetchone()[0]
+    print(f"backfilled operational scope negations: {changed}; remaining: {remaining}")
+    return 1 if remaining else 0
 
 
 def cmd_excluded(args) -> int:
@@ -836,21 +926,25 @@ def cmd_flags(args) -> int:
 
 def cmd_export(_args) -> int:
     conn = connect()
-    out = ["# KILLS.md — generated view of knowledge.db\n",
+    out = ["# OPERATIONAL_CLOSURES.md — generated legacy view of knowledge.db\n",
            "> **GENERATED FILE — do not edit by hand.** Regenerate with "
            "`./orchestrator/kb.py export`.\n",
            "> New entries go through `./orchestrator/kb.py add`, never by editing this file "
-           "or the frozen source atlases.\n"]
+           "or the frozen source atlases.\n",
+           "> **Semantic boundary:** `killed` means only that the recorded execution scope "
+           "closed. It never implies `MATHEMATICALLY_DEAD`; consult the canonical research-"
+           "dependency registry for epistemic status.\n"]
     for unit in UNIT_TYPES:
         rows = conn.execute(
             "SELECT * FROM kill WHERE unit_type=? ORDER BY id", (unit,)).fetchall()
         if not rows:
             continue
         out.append(f"\n## {unit} ({len(rows)})\n")
-        out.append("| id | subject | status | reason | rollback | next |")
-        out.append("|---|---|---|---|---|---|")
+        out.append("| id | subject | execution status | reason | scope NOT closed | rollback | next |")
+        out.append("|---|---|---|---|---|---|---|")
         for r in rows:
             cells = [r["id"], r["subject"], r["status"], r["reason"] or "",
+                     r["scope_negation"] or DEFAULT_KILL_SCOPE_NEGATION,
                      r["rollback_target"] or "", r["replacement"] or ""]
             cells = [str(c).replace("|", "\\|").replace("\n", " ")[:300] for c in cells]
             out.append("| " + " | ".join(cells) + " |")
@@ -884,7 +978,7 @@ def main() -> int:
     s.add_argument("-v", "--verbose", action="store_true")
     s.set_defaults(fn=cmd_list)
 
-    s = sub.add_parser("add", help="record a new kill")
+    s = sub.add_parser("add", help="record an operational closure (not mathematical death)")
     s.add_argument("--id")
     s.add_argument("--unit-type", required=True, choices=UNIT_TYPES)
     s.add_argument("--subject", required=True)
@@ -942,7 +1036,11 @@ def main() -> int:
 
     sub.add_parser("census", help="compare frozen sources against the DB").set_defaults(
         fn=cmd_census)
-    sub.add_parser("export", help="regenerate docs/KILLS.md").set_defaults(fn=cmd_export)
+    sub.add_parser(
+        "backfill-operational-scopes",
+        help="scope-safe migration of legacy killed rows; never infers mathematical death",
+    ).set_defaults(fn=cmd_backfill_operational_scopes)
+    sub.add_parser("export", help="regenerate the legacy operational-closure view").set_defaults(fn=cmd_export)
 
     args = p.parse_args()
     return args.fn(args)

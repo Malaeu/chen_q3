@@ -32,7 +32,110 @@ def plan(action: str, *, host: str = "CODEX_MAC", tools=None):
     )
 
 
+PHASE_KEY = {
+    "route_id": "ROUTE_B",
+    "front_id": "FRONT",
+    "source_object_family_id": "SOURCE",
+    "terminal_consumer_id": "CONSUMER",
+    "honesty_state": "CHALLENGER_NOT_RH",
+    "convention_lock_id": "LOCK",
+}
+
+
+def exploration_runtime(*, no_progress_streak: int = 6, review_count: int = 0):
+    return {
+        "schema": "q3_channel_runtime.v1",
+        "control_status": "ACTIVE",
+        "active_proshka_phase": {
+            "status": "ACTIVE",
+            "phase_id": "PHASE-1",
+            "phase_key": PHASE_KEY,
+            "conversation_id": "living-chat",
+        },
+        "active_exploration": {
+            "exploration_id": "EXP-1",
+            "phase_key": PHASE_KEY,
+            "blocker_fingerprint": "b" * 64,
+            "candidates": [],
+            "cycles": [],
+            "no_progress_streak": no_progress_streak,
+            "total_cycles": 6,
+            "active_reasoning_seconds": 0,
+            "proshka_review_count": review_count,
+        },
+        "last_exploration_close": None,
+        "mathematical_authority_mode": "CODEX_PROSHKA_FULL_EXCEPT_PX_RH_CLAIM",
+        "px_rh_claim_state": "NOT_READY",
+        "operational_action_pending": None,
+        "meter": {
+            "phases_opened": 1,
+            "fresh_chats_opened": 1,
+            "delegated_strategic_review_calls": 0,
+            "exploration_review_calls": review_count,
+            "px_rh_claim_requests": 0,
+            "ordinary_goal_close_calls": 0,
+            "mathematical_owner_deferral_violations": 0,
+            "fanout_violations": 0,
+            "forced_rollovers": 0,
+        },
+    }
+
+
+def dependency_contract() -> dict[str, object]:
+    return {
+        "original_requested_object": "Q3.RouteB.candidate",
+        "downstream_consumer": "Q3.RouteB.target",
+        "actual_consumer_requirement": "the exact target type",
+        "consumer_implication": "the candidate directly inhabits the target type",
+        "weaker_interface_probe": "check a weaker declaration against the same target",
+        "original_object_is": "UNKNOWN",
+        "necessity_evidence": [],
+        "known_weaker_interfaces": ["a declaration with the same target type"],
+        "failure_type": "NO_SOURCE",
+        "failure_scope": "current supplier shelf only",
+        "epistemic_status": "RESEARCH_DEBT",
+        "death_evidence": [],
+        "reopen_triggers": ["NEW_SOURCE"],
+    }
+
+
 class WorkflowRuntimePlants(unittest.TestCase):
+    def _review_fixture(
+        self,
+        repo: Path,
+        *,
+        call_class: str | None,
+        packet_subtype: str | None = None,
+        runtime: dict | None = None,
+    ) -> tuple[Path, str, str]:
+        subprocess.run(["git", "init", "-q"], cwd=repo, check=True)
+        subprocess.run(["git", "config", "user.email", "plant@example.invalid"], cwd=repo, check=True)
+        subprocess.run(["git", "config", "user.name", "Workflow Plant"], cwd=repo, check=True)
+        lines = ["REQUEST_ID: REQ-PLANT", "BOUNDARY_ID: boundary"]
+        if packet_subtype is not None:
+            lines.append(f"PACKET_SUBTYPE: {packet_subtype}")
+        if call_class is not None:
+            lines.append(f"CALL_CLASS: {call_class}")
+        lines.append("exact request")
+        request = repo / "request.txt"
+        request.write_text("\n".join(lines) + "\n", encoding="utf-8")
+        queue = repo / "docs/routeB_bus/PROSHKA_QUEUE.md"
+        queue.parent.mkdir(parents=True)
+        queue.write_text("## REQ-PLANT · plant\n\n- `STATUS: OPEN`\n", encoding="utf-8")
+        runtime_path = repo / "orchestrator/state/CHANNEL_RUNTIME.json"
+        runtime_path.parent.mkdir(parents=True)
+        runtime_path.write_text(
+            json.dumps(runtime or exploration_runtime()) + "\n", encoding="utf-8"
+        )
+        subprocess.run(["git", "add", "."], cwd=repo, check=True)
+        subprocess.run(["git", "commit", "-qm", "plant"], cwd=repo, check=True)
+        commit = subprocess.run(
+            ["git", "rev-parse", "HEAD"], cwd=repo, check=True,
+            capture_output=True, text=True,
+        ).stdout.strip()
+        digest = workflow_runtime.hashlib.sha256(request.read_bytes()).hexdigest()
+        return request, commit, digest
+
     def test_three_closure_shapes_compile_without_second_selector(self) -> None:
         exact = plan("SELECT_EXACT_GOAL")
         mint = plan("MINT_READY")
@@ -170,7 +273,8 @@ class WorkflowRuntimePlants(unittest.TestCase):
             request = repo / "docs/routeB_bus/proshka/request.txt"
             request.parent.mkdir(parents=True)
             request.write_bytes(
-                b"REQUEST_ID: REQ-PLANT\nBOUNDARY_ID: new-boundary\nexact request\n"
+                b"REQUEST_ID: REQ-PLANT\nBOUNDARY_ID: new-boundary\n"
+                b"CALL_CLASS: DELEGATED_STRATEGIC_REVIEW\nexact request\n"
             )
             queue = repo / "docs/routeB_bus/PROSHKA_QUEUE.md"
             queue.write_text(
@@ -207,6 +311,7 @@ class WorkflowRuntimePlants(unittest.TestCase):
             )
 
             self.assertEqual(result["status"], "REVIEW_DISPATCH_READY")
+            self.assertEqual(result["call_class"], "DELEGATED_STRATEGIC_REVIEW")
             self.assertEqual(result["conversation_id"], "living-chat")
             self.assertFalse(result["transport"]["repository_owner_confirmation_required"])
             self.assertEqual(
@@ -227,7 +332,8 @@ class WorkflowRuntimePlants(unittest.TestCase):
             subprocess.run(["git", "config", "user.name", "Workflow Plant"], cwd=repo, check=True)
             request = repo / "request.txt"
             request.write_bytes(
-                b"REQUEST_ID: REQ-PLANT\nBOUNDARY_ID: same-boundary\ncommitted\n"
+                b"REQUEST_ID: REQ-PLANT\nBOUNDARY_ID: same-boundary\n"
+                b"CALL_CLASS: DELEGATED_STRATEGIC_REVIEW\ncommitted\n"
             )
             queue = repo / "docs/routeB_bus/PROSHKA_QUEUE.md"
             queue.parent.mkdir(parents=True)
@@ -276,6 +382,208 @@ class WorkflowRuntimePlants(unittest.TestCase):
                 "PROSHKA_REQUEST_NOT_OPEN:REQ-PLANT:ANSWERED",
                 result["holds"],
             )
+
+    def test_research_debt_challenge_requires_eligible_exploration_receipt(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            request, commit, digest = self._review_fixture(
+                repo,
+                call_class="EXPLORATION_REVIEW",
+                packet_subtype="RESEARCH_DEBT_CHALLENGE",
+            )
+            result = workflow_runtime.compile_review_dispatch(
+                repo,
+                attachment=request,
+                request_commit=commit,
+                request_id="REQ-PLANT",
+                boundary_id="boundary",
+                expected_sha256=digest,
+            )
+        self.assertEqual(result["status"], "REVIEW_DISPATCH_READY")
+        self.assertEqual(result["call_class"], "EXPLORATION_REVIEW")
+        self.assertEqual(
+            result["eligibility_receipt"]["result"],
+            "EXPLORATION_REVIEW_ALLOWED",
+        )
+
+    def test_research_debt_challenge_rejects_wrong_or_ineligible_call(self) -> None:
+        cases = (
+            (None, exploration_runtime(), "PROSHKA_CALL_CLASS_MISSING"),
+            (
+                "DELEGATED_STRATEGIC_REVIEW",
+                exploration_runtime(),
+                "RESEARCH_DEBT_CHALLENGE_CALL_CLASS_MISMATCH",
+            ),
+            (
+                "EXPLORATION_REVIEW",
+                exploration_runtime(no_progress_streak=5),
+                "EXPLORATION_REVIEW_OUTSIDE_GATE",
+            ),
+            (
+                "EXPLORATION_REVIEW",
+                dict(exploration_runtime(), active_exploration=None),
+                "EXPLORATION_RUNTIME_MISSING",
+            ),
+        )
+        for call_class, runtime, expected in cases:
+            with self.subTest(call_class=call_class, expected=expected):
+                with tempfile.TemporaryDirectory() as tmp:
+                    repo = Path(tmp)
+                    request, commit, digest = self._review_fixture(
+                        repo,
+                        call_class=call_class,
+                        packet_subtype="RESEARCH_DEBT_CHALLENGE",
+                        runtime=runtime,
+                    )
+                    result = workflow_runtime.compile_review_dispatch(
+                        repo,
+                        attachment=request,
+                        request_commit=commit,
+                        request_id="REQ-PLANT",
+                        boundary_id="boundary",
+                        expected_sha256=digest,
+                    )
+                self.assertEqual(result["status"], "HOLD")
+                self.assertIn(expected, result["holds"])
+
+    def test_review_plan_rejects_noncanonical_or_ambiguous_call_class(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            request, commit, digest = self._review_fixture(
+                repo,
+                call_class="RESEARCH_DEBT_CHALLENGE",
+            )
+            invalid = workflow_runtime.compile_review_dispatch(
+                repo,
+                attachment=request,
+                request_commit=commit,
+                request_id="REQ-PLANT",
+                boundary_id="boundary",
+                expected_sha256=digest,
+            )
+        self.assertEqual(invalid["status"], "HOLD")
+        self.assertIn(
+            "PROSHKA_CALL_CLASS_INVALID:RESEARCH_DEBT_CHALLENGE",
+            invalid["holds"],
+        )
+
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            request, _, _ = self._review_fixture(
+                repo,
+                call_class="DELEGATED_STRATEGIC_REVIEW",
+            )
+            request.write_text(
+                request.read_text(encoding="utf-8")
+                + "CALL_CLASS: EXPLORATION_REVIEW\n",
+                encoding="utf-8",
+            )
+            subprocess.run(["git", "add", "."], cwd=repo, check=True)
+            subprocess.run(["git", "commit", "-qm", "ambiguous class"], cwd=repo, check=True)
+            commit = subprocess.run(
+                ["git", "rev-parse", "HEAD"], cwd=repo, check=True,
+                capture_output=True, text=True,
+            ).stdout.strip()
+            digest = workflow_runtime.hashlib.sha256(request.read_bytes()).hexdigest()
+            ambiguous = workflow_runtime.compile_review_dispatch(
+                repo,
+                attachment=request,
+                request_commit=commit,
+                request_id="REQ-PLANT",
+                boundary_id="boundary",
+                expected_sha256=digest,
+            )
+        self.assertEqual(ambiguous["status"], "HOLD")
+        self.assertIn("PROSHKA_CALL_CLASS_AMBIGUOUS", ambiguous["holds"])
+
+    def test_named_supplier_preflight_requires_valid_consumer_contract_receipt(self) -> None:
+        compiled = plan("SELECT_EXACT_GOAL")
+        compiled["logical_plan"]["startup_receipt"] = {
+            "label": "session-start", "exit": 0, "output_tail": "green"
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            missing = workflow_runtime.execute_close_node(
+                repo,
+                plan=compiled,
+                owned_paths=["owned.md"],
+                query="supplier",
+                candidate="Q3.RouteB.candidate",
+                target="Q3.RouteB.target",
+                attempt_payload=Path("attempt.json"),
+                insight_payload=None,
+                run_kernel=False,
+                protocol_out=None,
+            )
+            self.assertIn("CONSUMER_FIRST_CONTRACT_RECEIPT_REQUIRED", missing["holds"])
+
+            receipt = repo / "contract.json"
+            receipt.write_text(json.dumps({
+                "schema": workflow_runtime.DEPENDENCY_CONTRACT_RECEIPT_SCHEMA,
+                "candidate": "Q3.RouteB.candidate",
+                "target": "Q3.RouteB.target",
+                "contract": dependency_contract(),
+            }) + "\n", encoding="utf-8")
+            ok = lambda label: {"label": label, "exit": 0, "output_tail": "ok"}
+            with (
+                mock.patch.object(workflow_runtime, "_git", return_value=""),
+                mock.patch.object(workflow_runtime, "_exists_at_head", return_value=True),
+                mock.patch.object(
+                    workflow_runtime,
+                    "command_receipt",
+                    side_effect=lambda _repo, _command, label: ok(label),
+                ),
+            ):
+                result = workflow_runtime.execute_close_node(
+                    repo,
+                    plan=compiled,
+                    owned_paths=["owned.md"],
+                    query="supplier",
+                    candidate="Q3.RouteB.candidate",
+                    target="Q3.RouteB.target",
+                    attempt_payload=Path("attempt.json"),
+                    insight_payload=None,
+                    run_kernel=False,
+                    protocol_out=None,
+                    dependency_contract_receipt=receipt,
+                )
+        self.assertEqual(result["status"], "CLOSED_NODE")
+        self.assertEqual(result["receipts"][1]["label"], "consumer-first-contract")
+
+    def test_supplier_contract_receipt_binds_candidate_and_valid_contract(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            receipt = repo / "contract.json"
+            payload = {
+                "schema": workflow_runtime.DEPENDENCY_CONTRACT_RECEIPT_SCHEMA,
+                "candidate": "wrong",
+                "target": "Q3.RouteB.target",
+                "contract": dependency_contract(),
+            }
+            receipt.write_text(json.dumps(payload) + "\n", encoding="utf-8")
+            with self.assertRaisesRegex(
+                workflow_runtime.WorkflowRuntimeError,
+                "CONSUMER_FIRST_CONTRACT_CANDIDATE_MISMATCH",
+            ):
+                workflow_runtime._dependency_contract_receipt(
+                    repo,
+                    receipt,
+                    candidate="Q3.RouteB.candidate",
+                    target="Q3.RouteB.target",
+                )
+            payload["candidate"] = "Q3.RouteB.candidate"
+            payload["contract"]["actual_consumer_requirement"] = ""
+            receipt.write_text(json.dumps(payload) + "\n", encoding="utf-8")
+            with self.assertRaisesRegex(
+                workflow_runtime.WorkflowRuntimeError,
+                "CONSUMER_FIRST_CONTRACT_RECEIPT_INVALID",
+            ):
+                workflow_runtime._dependency_contract_receipt(
+                    repo,
+                    receipt,
+                    candidate="Q3.RouteB.candidate",
+                    target="Q3.RouteB.target",
+                )
 
 
 if __name__ == "__main__":

@@ -1,11 +1,17 @@
--- knowledge.db — one home for "have we already tried / killed this?"
+-- knowledge.db — one home for "have we already tried / operationally closed this?"
 --
 -- Why this exists (2026-08-05): the same knowledge was scattered over five files with
 -- incompatible vocabularies, and the same object (`L = Mplus * F_v`) was recorded four
 -- separate times without any key linking the copies. Nothing could answer "did we already
 -- kill this?" in less than an archaeological dig.
 --
--- Design decision: ONE `kill` table with a `unit_type` column, not three tables. The five
+-- Backward-compatibility note: `kill` is a legacy table name.  A `status='killed'` row
+-- records closure of an exact execution attempt, source, theorem shape, or route scope.
+-- It does NOT assert MATHEMATICALLY_DEAD and does not close weaker consumer interfaces.
+-- Canonical RESEARCH_DEBT / MATHEMATICALLY_DEAD adjudications live in the research-
+-- dependency registry and are projected separately by the Spine and session packet.
+--
+-- Design decision: ONE legacy `kill` table with a `unit_type` column, not three tables. The five
 -- source files differ in which optional columns they populate, not in what entity they
 -- describe — and three of the four known overlaps are the SAME incident seen from a
 -- different angle (dead object vs dead move vs dead route). Separate tables would force a
@@ -17,10 +23,10 @@
 CREATE TABLE IF NOT EXISTS kill (
     id                    TEXT PRIMARY KEY,  -- machine id where one exists, else a slug
     unit_type             TEXT NOT NULL,     -- route | object | strategy | wall | criterion
-    subject               TEXT NOT NULL,     -- the dead thing: route shape, candidate, move, wall
-    status                TEXT NOT NULL,     -- killed | live | repaired | superseded | standing
-    reason                TEXT,              -- why it died / why the wall stands
-    scope_negation        TEXT,              -- what this kill does NOT kill (anti-overreach)
+    subject               TEXT NOT NULL,     -- exact route shape, candidate, move, or wall
+    status                TEXT NOT NULL,     -- killed=operational closure | live | repaired | superseded | standing
+    reason                TEXT,              -- why the exact attempt closed / why the wall stands
+    scope_negation        TEXT,              -- mandatory-by-writer for killed rows: what remains open
     rollback_target       TEXT,              -- where to fall back to
     replacement           TEXT,              -- next branch / replacement / next action
     forbidden_future_move TEXT,              -- the standing prohibition this leaves behind
