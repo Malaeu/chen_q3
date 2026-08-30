@@ -8,23 +8,33 @@ from orchestrator import session_briefing
 
 
 DEBT_ID = "SELECTED_FERRERS_EVEN_SECTOR_FLOOR_CURRENT_SOURCE_SHELF"
+REQUEST_ID = "REQ-TEST-DEBT"
+BOUNDARY_ID = "BOUNDARY-TEST-DEBT"
 
 
 class ResearchDebtChallengePlants(unittest.TestCase):
     def test_packet_is_deterministic_utf8_with_final_lf(self) -> None:
-        first = research_debt_challenge.render(session_briefing.REPO, DEBT_ID)
-        second = research_debt_challenge.render(session_briefing.REPO, DEBT_ID)
+        first = research_debt_challenge.render(session_briefing.REPO, DEBT_ID, REQUEST_ID, BOUNDARY_ID)
+        second = research_debt_challenge.render(session_briefing.REPO, DEBT_ID, REQUEST_ID, BOUNDARY_ID)
         self.assertEqual(first, second)
         self.assertTrue(first.endswith(b"\n"))
         text = first.decode("utf-8")
-        self.assertIn("REQUEST_KIND: RESEARCH_DEBT_CHALLENGE", text)
-        self.assertIn("DISPATCH: FORBIDDEN_UNTIL_QUEUE_OPEN_AND_REVIEW_PLAN_READY", text)
+        self.assertIn(f"REQUEST_ID: {REQUEST_ID}", text)
+        self.assertIn(f"BOUNDARY_ID: {BOUNDARY_ID}", text)
+        self.assertIn("PACKET_SUBTYPE: RESEARCH_DEBT_CHALLENGE", text)
+        self.assertIn("CALL_CLASS: EXPLORATION_REVIEW", text)
+        self.assertIn("EXISTING_CONTROL_V9_GATE_REQUIRED", text)
+        self.assertIn("ACTUAL_CONSUMER_REQUIREMENT", text)
+        self.assertIn("ORIGINAL_OBJECT_IS: UNKNOWN", text)
+        self.assertIn("WEAKER_INTERFACE_PROBE", text)
+        self.assertIn("CONSUMER_IMPLICATION", text)
+        self.assertIn("NO_SOURCE research debt, never mathematical death", text)
         self.assertIn("NOVELTY_REQUIREMENT", text)
         self.assertIn("ALLOWED_RESEARCH_OUTCOMES", text)
         self.assertIn("TRY_, KILL_, or RUN_", text)
 
     def test_manifest_binds_exact_bytes(self) -> None:
-        payload = research_debt_challenge.render(session_briefing.REPO, DEBT_ID)
+        payload = research_debt_challenge.render(session_briefing.REPO, DEBT_ID, REQUEST_ID, BOUNDARY_ID)
         result = research_debt_challenge.manifest(payload, DEBT_ID)
         self.assertEqual(result["sha256"], hashlib.sha256(payload).hexdigest())
         self.assertEqual(result["bytes"], len(payload))
@@ -35,7 +45,13 @@ class ResearchDebtChallengePlants(unittest.TestCase):
         with self.assertRaisesRegex(
             session_briefing.SessionBriefingError, "RESEARCH_DEBT_UNKNOWN"
         ):
-            research_debt_challenge.render(session_briefing.REPO, "NO_SUCH_DEBT")
+            research_debt_challenge.render(session_briefing.REPO, "NO_SUCH_DEBT", REQUEST_ID, BOUNDARY_ID)
+
+    def test_request_binding_is_mandatory(self) -> None:
+        with self.assertRaisesRegex(
+            session_briefing.SessionBriefingError, "REQUEST_BINDING_INVALID"
+        ):
+            research_debt_challenge.render(session_briefing.REPO, DEBT_ID, "bad", "")
 
 
 if __name__ == "__main__":

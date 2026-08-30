@@ -68,6 +68,11 @@ EXCLUDE_PATTERNS = (
     "q3.lean.aristotle/ACTIVE/aristotle/queue/**",
     "q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/**",
     "q3.lean.aristotle/ACTIVE/refs/legacy_two_scale_index.md",
+    # Dormant/stale control surfaces are evidence, not current semantic authority.
+    "q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md",
+    "q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/**",
+    "q3.lean.aristotle/ACTIVE/pipeline/PROBLEM_SOLVER_PROMPT_RU.md",
+    "q3.lean.aristotle/ACTIVE/COGNITIVE_GOVERNOR.md",
     "q3.lean.aristotle/ACTIVE/requests/**/_backups/**",
     "q3.lean.aristotle/ACTIVE/requests/**/raw/**",
     "q3.lean.aristotle/Q3/Archive/**",

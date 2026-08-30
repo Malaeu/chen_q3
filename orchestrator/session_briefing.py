@@ -17,6 +17,10 @@ from typing import Any
 import yaml
 
 REPO = Path(__file__).resolve().parents[1]
+if str(REPO) not in sys.path:
+    sys.path.insert(0, str(REPO))
+
+from orchestrator import research_dependency_contract
 ROUTE_STATE = Path(
     "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/"
     "ROUTE_B_EXECUTION_STATE.json"
@@ -29,18 +33,18 @@ DEFAULT_CHECKPOINT = Path(
 )
 
 SCHEMA = "q3_routeb_session_checkpoint.v1"
-REGISTRY_SCHEMA = "q3_routeb_recheckable_research_debts.v2"
+REGISTRY_SCHEMA = "q3_routeb_research_dependencies.v3"
 DEBT_STATUSES = {
     "KILLED_RECHECKABLE",
     "REOPEN_CANDIDATE",
     "SOURCE_VERIFIED",
-    "REOPENED",
+    "READY_FOR_RERANK",
 }
 TRANSITIONS = {
     "KILLED_RECHECKABLE": {"REOPEN_CANDIDATE"},
     "REOPEN_CANDIDATE": {"KILLED_RECHECKABLE", "SOURCE_VERIFIED"},
-    "SOURCE_VERIFIED": {"REOPEN_CANDIDATE", "REOPENED"},
-    "REOPENED": set(),
+    "SOURCE_VERIFIED": {"REOPEN_CANDIDATE", "READY_FOR_RERANK"},
+    "READY_FOR_RERANK": set(),
 }
 
 
@@ -96,14 +100,14 @@ def _machine_header(path: Path) -> dict[str, Any]:
 def validate_registry(repo: Path, path: Path | None = None) -> dict[str, Any]:
     registry_path = path or repo / DEBT_REGISTRY
     data = load_json(registry_path)
-    if set(data) != {"schema", "lifecycle", "debts"} or data.get("schema") != REGISTRY_SCHEMA:
+    if set(data) != {"schema", "lifecycle", "debts", "adjudications"} or data.get("schema") != REGISTRY_SCHEMA:
         raise SessionBriefingError("RESEARCH_DEBT_REGISTRY_SCHEMA_INVALID")
     lifecycle = data.get("lifecycle")
     expected = [
         "KILLED_RECHECKABLE",
         "REOPEN_CANDIDATE",
         "SOURCE_VERIFIED",
-        "REOPENED",
+        "READY_FOR_RERANK",
     ]
     if (
         not isinstance(lifecycle, dict)
@@ -122,8 +126,13 @@ def validate_registry(repo: Path, path: Path | None = None) -> dict[str, Any]:
         "PROSHKA_RESEARCH", "COUNTEREXAMPLE",
     }
     required = {
-        "id", "target_id", "classification", "not_disproved", "status",
+        "id", "target_id", "classification", "execution_status",
+        "epistemic_status", "not_disproved", "status",
         "killed_at", "reason", "missing_object", "terminal_consumer",
+        "original_requested_object", "downstream_consumer",
+        "actual_consumer_requirement", "original_object_is",
+        "necessity_evidence", "known_weaker_interfaces", "failure_type",
+        "death_evidence", "consumer_implication", "weaker_interface_probe",
         "why_interesting", "unlock_value", "estimated_difficulty",
         "last_attempt", "reopen_if", "reopen_triggers", "next_probe",
         "novelty_requirement", "last_external_check", "search_hints",
@@ -140,6 +149,12 @@ def validate_registry(repo: Path, path: Path | None = None) -> dict[str, Any]:
             raise SessionBriefingError(f"RESEARCH_DEBT_STATUS_INVALID:{debt_id}")
         if row["classification"] != "RESEARCH_DEBT" or row["not_disproved"] is not True:
             raise SessionBriefingError(f"RESEARCH_DEBT_CLASSIFICATION_INVALID:{debt_id}")
+        if row["execution_status"] != "KILLED" or row["epistemic_status"] != "RESEARCH_DEBT":
+            raise SessionBriefingError(f"RESEARCH_DEBT_STATUS_AXES_INVALID:{debt_id}")
+        try:
+            research_dependency_contract.validate(row)
+        except research_dependency_contract.DependencyContractError as exc:
+            raise SessionBriefingError(str(exc)) from exc
         if row["unlock_value"] not in {"HIGH", "MEDIUM", "LOW"}:
             raise SessionBriefingError(f"RESEARCH_DEBT_UNLOCK_INVALID:{debt_id}")
         if row["estimated_difficulty"] not in {"LOW", "MEDIUM", "HIGH", "UNKNOWN"}:
@@ -195,6 +210,27 @@ def validate_registry(repo: Path, path: Path | None = None) -> dict[str, Any]:
             actual = _git(repo, "rev-parse", f"{ref['commit']}:{ref['path']}")
             if actual != ref["git_blob"]:
                 raise SessionBriefingError(f"RESEARCH_DEBT_REF_BLOB_DRIFT:{ref['path']}")
+    adjudications = data.get("adjudications")
+    if not isinstance(adjudications, list):
+        raise SessionBriefingError("RESEARCH_DEPENDENCY_ADJUDICATIONS_INVALID")
+    adjudication_ids: set[str] = set()
+    required_adjudication = {
+        "id", "classification", "scope", "downstream_consumer", "dead_reason",
+        "surviving_interface", "evidence_refs",
+    }
+    for item in adjudications:
+        if not isinstance(item, dict) or set(item) != required_adjudication:
+            raise SessionBriefingError("RESEARCH_DEPENDENCY_ADJUDICATION_FIELDS_INVALID")
+        if item["classification"] != "MATHEMATICALLY_DEAD":
+            raise SessionBriefingError("RESEARCH_DEPENDENCY_ADJUDICATION_CLASS_INVALID")
+        if item["id"] in adjudication_ids or item["id"] in seen:
+            raise SessionBriefingError("RESEARCH_DEPENDENCY_ADJUDICATION_ID_DUPLICATE")
+        adjudication_ids.add(item["id"])
+        for field in ("id", "scope", "downstream_consumer", "dead_reason", "surviving_interface"):
+            if not isinstance(item[field], str) or not item[field].strip():
+                raise SessionBriefingError(f"RESEARCH_DEPENDENCY_ADJUDICATION_TEXT_INVALID:{field}")
+        if not isinstance(item["evidence_refs"], list) or not item["evidence_refs"]:
+            raise SessionBriefingError("MATHEMATICALLY_DEAD_WITHOUT_EVIDENCE")
     return data
 
 
@@ -442,7 +478,12 @@ def render_briefing(
             f"unlock {row['unlock_value']} · difficulty {row['estimated_difficulty']} · "
             f"last check {age}d ago"
         )
-        lines.append(f"    missing: {row['missing_object']}")
+        lines.append(f"    execution / epistemic: {row['execution_status']} / {row['epistemic_status']}")
+        lines.append(f"    consumer: {row['downstream_consumer']}")
+        lines.append(f"    actually needs: {row['actual_consumer_requirement']}")
+        lines.append(f"    named object: {row['original_requested_object']} [{row['original_object_is']}]")
+        lines.append(f"    failure type: {row['failure_type']}")
+        lines.append(f"    weaker probe: {row['weaker_interface_probe']}")
         lines.append(f"    reopen only if: {row['reopen_if'][0]}")
     if ordered:
         top = ordered[0]
@@ -467,10 +508,10 @@ def render_briefing(
     lines.extend([
         "",
         f"Search our debts today? YES / NO / SELECT  [default: {default}]",
-        "Spend one Proshka research cycle? YES / NO / SELECT  [default: NO]",
-        "  YES prepares one exact gated RESEARCH_DEBT_CHALLENGE; it does not auto-send it.",
+        "Prepare one gated research-debt challenge? YES / NO / SELECT  [default: NO]",
+        "  Preparation is not a call class; dispatch still requires an eligible Control v9 EXPLORATION_REVIEW.",
         "  External web/literature search was NOT run.",
-        "  A search hit may create REOPEN_CANDIDATE only; SOURCE_VERIFIED is required before REOPENED.",
+        "  A search hit may create REOPEN_CANDIDATE only; READY_FOR_RERANK remains non-executable.",
     ])
     return "\n".join(lines) + "\n"
 

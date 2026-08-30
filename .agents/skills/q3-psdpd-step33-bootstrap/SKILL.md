@@ -113,7 +113,10 @@ Control `k=9` follows the same shape after primary.
 - No numerical PSD table as proof.
 - No raw-coordinate PSD proof when the Gram-corrected coefficient model is
   required.
-- No theorem weakening to make a gate compile.
+- No silent theorem weakening merely to make a gate compile. A strictly weaker
+  theorem is allowed only when the unchanged downstream consumer is named and
+  an exact proved implication from the weaker interface to that consumer is
+  part of the contract.
 - Do not call untracked files foreign or disposable; they are simply not
   tracked by Git unless the task says otherwise.
 - Do not assume automatic access to the Pro/Louise chat.  Use pasted or

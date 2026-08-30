@@ -332,18 +332,17 @@ smaller timing value.  If an older run was already in progress when timing was
 introduced, record a conservative lower bound instead of inventing an exact
 start time.
 
-For each new proof transaction, use a fresh Proshka chat inside the same Q3
-project and seed it with a high-recall context pack.  Before typing or sending
-anything, inspect the target chat and confirm that no response is currently
-generating.  Never add a prompt to a busy chat, interrupt an active response,
-or reuse a long-running chat merely to save setup time.  A user-created branch
-or side conversation is independent context unless the user explicitly hands
-its result back to the Q3 pipeline.
+Use one living Proshka chat while the six-field phase key is unchanged. Dispatch
+only the one byte-exact request selected by the canonical `review-plan`; never
+send into a busy chat or use Answer-now. A new chat requires a phase change or
+the explicit recovery rule in `docs/CODEX_CONTROL.md`, not a new proof attempt.
 
 ## Route-kill protocol
 
-Если активная доказательная ветка упирается не во временный technical blocker,
-а в настоящий математический тупик, мы больше не зависаем в мета-разговорах.
+Если активная попытка упирается в obstruction, сначала классифицируем его.
+`MATHEMATICALLY_DEAD` требует контрпримера, доказанной несовместимости или
+формальной невозможности. Отсутствующий источник, bridge, derivation или
+доступная формализация остаются `RESEARCH_DEBT` с reopen triggers.
 Делаем ровно это:
 
 1. формулируем точный **kill statement**:
@@ -382,7 +381,9 @@ D2g29b
 1. Каждый новый нетривиальный theorem-packet получает адрес родителя, а не
    свободное имя сбоку.
 2. Дети всегда наследуют адресный префикс родителя.
-3. Если parent-node killed, то его subtree killed по умолчанию тоже.
+3. Если parent-node operationally killed, его subtree становится неисполняемым,
+   но не автоматически математически мёртвым; epistemic class наследуется
+   только при доказанной применимости того же obstruction.
 
 ### Kill inheritance
 

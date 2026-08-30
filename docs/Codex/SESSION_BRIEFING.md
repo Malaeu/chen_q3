@@ -23,18 +23,18 @@ links to exact verdict/state Git blobs.  It is not a verdict registry and does
 not replace the execution state.  Its lifecycle is:
 
 ```text
-KILLED_RECHECKABLE -> REOPEN_CANDIDATE -> SOURCE_VERIFIED -> REOPENED
+KILLED_RECHECKABLE -> REOPEN_CANDIDATE -> SOURCE_VERIFIED -> READY_FOR_RERANK
 ```
 
-A search hit may only create `REOPEN_CANDIDATE`.  Exact primary-source and
-project-interface verification are required for `SOURCE_VERIFIED`; reopening
-still needs a separate authorized state/verdict transaction.  Session start
-never performs web or literature search.
+A search hit may only create `REOPEN_CANDIDATE`. Exact primary-source and
+project-interface verification are required for `SOURCE_VERIFIED`;
+`READY_FOR_RERANK` remains non-executable and only the separate authorized
+execution selector may reopen a route. Session start never performs web search.
 
-Each registry row is explicitly `classification: RESEARCH_DEBT` and
-`not_disproved: true`. A representation proved impossible belongs to the
-verdict/decision record as `MATHEMATICALLY_DEAD`, not in this reopenable
-registry. The briefing ranks debts deterministically by new signal, recheck
+Each reopenable row is `RESEARCH_DEBT` and `not_disproved: true`. The same file's
+separate `adjudications` section stores atomically scoped `MATHEMATICALLY_DEAD`
+theorem shapes with counterexample/impossibility evidence; those entries never
+enter ranking or reopen queues. The briefing ranks debts by new signal, recheck
 age, unlock value and estimated difficulty; these are ordering labels, not
 success probabilities.
 
@@ -42,19 +42,22 @@ Debt prompt priority is based on `last_external_check`: 0–6 days is passive,
 7–29 days normal, and 30+ days highlighted. `REOPEN_CANDIDATE` or
 `SOURCE_VERIFIED` is high priority regardless of age.
 
-When the owner chooses one Proshka research cycle, the read-only builder emits
-one deterministic `RESEARCH_DEBT_CHALLENGE` packet:
+When the owner chooses preparation of one research-debt challenge, the read-only
+builder emits one deterministic packet subtype:
 
 ```bash
 python3 orchestrator/research_debt_challenge.py rank
-python3 orchestrator/research_debt_challenge.py manifest --debt-id ID
+python3 orchestrator/research_debt_challenge.py manifest --debt-id ID \
+  --request-id REQ-ID --boundary-id BOUNDARY-ID
 ```
 
 The packet requires a materially novel theorem family, representation,
 decomposition, weaker target, constructive derivation or counterexample search.
-It cannot dispatch itself: the queue must be `OPEN`, the registered
-`workflow_runtime.py review-plan` must be ready, and ordinary exact attachment,
-receipt and living-chat rules still apply. A research result can create at most
+It is not a new Control call class. It may dispatch only through an independently
+eligible Control v9 `EXPLORATION_REVIEW`, with an `OPEN` queue row and a ready
+`workflow_runtime.py review-plan`; exact attachment, receipt and living-chat
+rules still apply. Owner selection prepares a packet but does not grant that gate.
+A research result can create at most
 `REOPEN_CANDIDATE`; it cannot reopen a route by itself.
 
 Commands:

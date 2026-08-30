@@ -33,13 +33,18 @@ def ranked(repo: Path, today: dt.date | None = None) -> list[dict[str, Any]]:
     )
 
 
-def render(repo: Path, debt_id: str) -> bytes:
+def render(repo: Path, debt_id: str, request_id: str, boundary_id: str) -> bytes:
     row = _row(repo, debt_id)
+    if not request_id.startswith("REQ-") or not boundary_id.strip():
+        raise session_briefing.SessionBriefingError("RESEARCH_DEBT_REQUEST_BINDING_INVALID")
     attempt = row["last_attempt"]
     lines = [
-        "REQUEST_KIND: RESEARCH_DEBT_CHALLENGE",
-        "REVIEW_GATE: REQUIRED_NOT_GRANTED_BY_THIS_PACKET",
-        "DISPATCH: FORBIDDEN_UNTIL_QUEUE_OPEN_AND_REVIEW_PLAN_READY",
+        "PACKET_SUBTYPE: RESEARCH_DEBT_CHALLENGE",
+        f"REQUEST_ID: {request_id}",
+        f"BOUNDARY_ID: {boundary_id}",
+        "CALL_CLASS: EXPLORATION_REVIEW",
+        "REVIEW_GATE: EXISTING_CONTROL_V9_GATE_REQUIRED",
+        "DISPATCH: FORBIDDEN_UNLESS_EXPLORATION_REVIEW_ELIGIBLE_AND_REVIEW_PLAN_READY",
         f"DEBT_ID: {row['id']}",
         f"TARGET: {row['target_id']}",
         f"GOAL: {row['related_goal']}",
@@ -50,7 +55,23 @@ def render(repo: Path, debt_id: str) -> bytes:
         row["missing_object"],
         "",
         "TERMINAL_CONSUMER:",
-        row["terminal_consumer"],
+        row["downstream_consumer"],
+        "",
+        "ACTUAL_CONSUMER_REQUIREMENT:",
+        row["actual_consumer_requirement"],
+        "",
+        "ORIGINAL_REQUESTED_OBJECT:",
+        row["original_requested_object"],
+        f"ORIGINAL_OBJECT_IS: {row['original_object_is']}",
+        "",
+        "CONSUMER_IMPLICATION:",
+        row["consumer_implication"],
+        "",
+        "WEAKER_INTERFACE_PROBE:",
+        row["weaker_interface_probe"],
+        "",
+        "KNOWN_WEAKER_INTERFACES:",
+        *[f"- {item}" for item in row["known_weaker_interfaces"]],
         "",
         "WHY_INTERESTING:",
         row["why_interesting"],
@@ -66,6 +87,8 @@ def render(repo: Path, debt_id: str) -> bytes:
         "- Do not treat this packet as authorization to reopen a route or make an RH claim.",
         "",
         "MISSION:",
+        "Start from consumer Y and find the weakest proof-carrying interface Z that reaches it.",
+        "Audit whether the originally named object X is necessary, merely sufficient, or unnecessary.",
         "Find or derive genuinely new mathematics that changes this debt's evidential state.",
         f"Preferred next probe: {row['next_probe']}",
         "",
@@ -78,12 +101,14 @@ def render(repo: Path, debt_id: str) -> bytes:
         "A. Missed primary theorem or source with exact statement and interface fit.",
         "B. New derivation that supplies the missing object without assuming it.",
         "C. Weaker sufficient lemma plus an exact argument that it reaches the terminal consumer.",
-        "D. Counterexample or obstruction proving the route mathematically dead.",
+        "D. Counterexample, incompatibility, or formal impossibility proving the route mathematically dead.",
         "E. One precise theorem-sized sublemma that strictly reduces the debt.",
+        "F. No source found: classify as NO_SOURCE research debt, never mathematical death.",
+        "G. Formalization is too costly: classify as FORMALIZATION_COST research debt.",
         "",
         "OPERATIVE_RESPONSE_CLASS:",
         "Return exactly one project-compatible class beginning TRY_, KILL_, or RUN_,",
-        "and state which allowed research outcome (A-E) supports it.",
+        "state which outcome (A-G) supports it, and report FAILURE_TYPE and EPISTEMIC_STATUS.",
         "",
         "REOPEN_BOUNDARY:",
         "A result may create REOPEN_CANDIDATE only. SOURCE_VERIFIED and a separate",
@@ -115,6 +140,8 @@ def main() -> int:
     parser.add_argument("command", choices=["rank", "render", "manifest"])
     parser.add_argument("--root", type=Path, default=REPO)
     parser.add_argument("--debt-id")
+    parser.add_argument("--request-id")
+    parser.add_argument("--boundary-id")
     parser.add_argument("--as-of", type=dt.date.fromisoformat)
     args = parser.parse_args()
     repo = args.root.resolve()
@@ -136,7 +163,9 @@ def main() -> int:
             return 0
         if not args.debt_id:
             raise session_briefing.SessionBriefingError("RESEARCH_DEBT_ID_REQUIRED")
-        payload = render(repo, args.debt_id)
+        if not args.request_id or not args.boundary_id:
+            raise session_briefing.SessionBriefingError("RESEARCH_DEBT_REQUEST_BINDING_REQUIRED")
+        payload = render(repo, args.debt_id, args.request_id, args.boundary_id)
         if args.command == "render":
             sys.stdout.buffer.write(payload)
         else:

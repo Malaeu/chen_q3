@@ -1,3 +1,10 @@
+# SUPERSEDED OPERATIONAL ADDENDUM — HISTORICAL EVIDENCE ONLY
+
+Этот файл не является действующим transport/control источником. Его описания
+GitHub-outbound, ручного harvest и owner route-choice заменены
+`docs/CODEX_CONTROL.md`, registered `workflow_runtime.py review-plan` и одним
+living phase chat. Не использовать этот текст для dispatch или выбора маршрута.
+
 # Дополнение к роли судьи — оркестрация Route B
 
 Это **дополнение**, не замена. `PROSHKA_SYSTEM_PROMPT_v2.md` — твоя дисциплина

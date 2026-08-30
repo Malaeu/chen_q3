@@ -247,14 +247,30 @@ tool_families:
         path: orchestrator/research_debt_challenge.py
         invoke: python3 orchestrator/research_debt_challenge.py rank
         alternatives:
-          - python3 orchestrator/research_debt_challenge.py render --debt-id ID
-          - python3 orchestrator/research_debt_challenge.py manifest --debt-id ID
-        trigger: Owner selects one reopenable research debt for a novel Proshka research cycle.
+          - python3 orchestrator/research_debt_challenge.py render --debt-id ID --request-id REQ-ID --boundary-id BOUNDARY-ID
+          - python3 orchestrator/research_debt_challenge.py manifest --debt-id ID --request-id REQ-ID --boundary-id BOUNDARY-ID
+        trigger: Owner selects preparation of one reopenable research-debt packet subtype.
         writes: false
-        approval: NONE_TO_RANK_OR_RENDER; DISPATCH_REQUIRES_REGISTERED_REVIEW_LIFECYCLE
-        authority: PACKET_PREPARATION_ONLY_NOT_DISPATCH_NOT_VERDICT_NOT_ROUTE_REOPEN
+        approval: NONE_TO_RANK_OR_RENDER; DISPATCH_REQUIRES_INDEPENDENT_CONTROL_V9_EXPLORATION_REVIEW_ELIGIBILITY
+        authority: PACKET_SUBTYPE_PREPARATION_ONLY_NOT_CALL_CLASS_NOT_DISPATCH_NOT_VERDICT_NOT_ROUTE_REOPEN
         records_to: stdout
         validation: test_research_debt_challenge
+        last_verified: 2026-08-30
+
+      - id: research-dependency-gate
+        status: ENABLED
+        audience: [CODEX, HUMAN]
+        mode: READ_ONLY
+        path: orchestrator/research_dependency_gate.py
+        invoke: python3 orchestrator/research_dependency_gate.py check
+        alternatives:
+          - python3 orchestrator/research_dependency_gate.py plants
+        trigger: After changes to dependency registry, active Proshka prompt, debt packet generator, or semantic-source selection.
+        writes: false
+        approval: NONE
+        authority: CONSUMER_FIRST_DEPENDENCY_AND_EPISTEMIC_CLASSIFICATION_GATE
+        records_to: stdout
+        validation: test_research_dependency_contract
         last_verified: 2026-08-30
 
       - id: knowledge-spine-strict

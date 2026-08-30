@@ -9,7 +9,7 @@ control: docs/CODEX_CONTROL.md
 tool_manifest: docs/cartographer/TOOLS.yaml
 workflow_front_door: orchestrator/workflow_runtime.py
 inventory_snapshot_date: 2026-08-30
-registered_tools: 54
+registered_tools: 55
 route_promotion_authorized: false
 PX_RH_CLAIM: NOT_MADE
 ```
@@ -65,12 +65,14 @@ python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb
 Красный startup запрещает математику. Разрешён только узкий ремонт
 воспроизводимого control/tool defect. Зелёный plan не маскирует красный gate.
 Тот же вход печатает delta-aware Route B briefing, ранжирует reopenable
-`RESEARCH_DEBT` и предлагает выбрать, искать ли сегодня долг или потратить один
-исследовательский цикл Прошки; внешний поиск и отправка автоматически не запускаются.
+`RESEARCH_DEBT` и предлагает выбрать, готовить ли сегодня challenge; внешний
+поиск и отправка автоматически не запускаются.
 
-`research-debt-challenge` — read-only генератор. Он строит byte-stable пакет с
-обязательным novelty requirement и разрешёнными исходами, но не меняет очередь,
-не отправляет сообщение, не создаёт verdict и не открывает маршрут.
+`research-debt-challenge` — read-only генератор packet subtype. Он требует
+consumer Y, минимальный достаточный интерфейс Z, necessity audit для X,
+`REQUEST_ID`/`BOUNDARY_ID` и novelty requirement, но не создаёт нового call
+class. Отправка возможна только при независимо выполненном Control v9
+`EXPLORATION_REVIEW` gate.
 
 ### 2.2 Выбор и narrowing
 
@@ -148,8 +150,10 @@ confirmation, это внешняя safety-граница платформы; Co
 собственным вопросом и продолжает сразу после подтверждения.
 
 После verdict commit выполняются fetch, безопасный rebase/autostash, проверка
-request/verdict binding и verdict migration. KILL закрывает названную
-репрезентацию, а не автоматически весь математический goal.
+request/verdict binding и verdict migration. KILL закрывает названную попытку
+или репрезентацию. `MATHEMATICALLY_DEAD` требует контрпримера, доказанной
+несовместимости или формальной невозможности; no-source/no-derivation/
+formalization-cost остаются `RESEARCH_DEBT`.
 
 ## 4. Три разных semantic-контура
 
@@ -228,7 +232,7 @@ Q3_CONTROL_V9_MAC_TRACKED_RECEIPT_FALLBACK=1 bash specs_docs/session_start.sh
 ## 7. Зарегистрированный инвентарь
 
 Единственный routable inventory — docs/cartographer/TOOLS.yaml. На снимке
-2026-08-30 зарегистрировано 54 инструмента: 47 ENABLED, 6 AVAILABLE и 1 DEGRADED.
+2026-08-30 зарегистрировано 55 инструментов: 48 ENABLED, 6 AVAILABLE и 1 DEGRADED.
 Сотни вспомогательных scripts, tests и one-shot probes на диске не становятся
 автоматически routable: для рождения инструмента нужен полный manifest contract.
 
@@ -240,6 +244,7 @@ Q3_CONTROL_V9_MAC_TRACKED_RECEIPT_FALLBACK=1 bash specs_docs/session_start.sh
 - routeb-session-briefing
 - routeb-session-checkpoint
 - research-debt-challenge
+- research-dependency-gate
 - knowledge-spine-strict
 - knowledge-spine-goal-close
 - knowledge-spine-step-close

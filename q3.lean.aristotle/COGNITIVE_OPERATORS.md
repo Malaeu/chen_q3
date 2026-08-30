@@ -124,7 +124,7 @@ must never be silently normalized into M2.
 | `UNIT_AUDIT` | Check units, normalization, measure, scale, and object identity. |
 | `MINIMAL_LEMMA` | Select the smallest theorem with a named downstream consumer. |
 | `LITERATURE_BRIDGE` | Import a primary-source theorem through an explicit interface audit. |
-| `ABANDON_ROUTE` | Terminate the active M2 route after a decisive kill. |
+| `ABANDON_ROUTE` | Terminate the active M2 attempt after a decisive kill. Classify a falsified theorem shape as `MATHEMATICALLY_DEAD` only with counterexample/incompatibility evidence; missing source, bridge, derivation, or affordable formalization remains `RESEARCH_DEBT` with reopen triggers. |
 
 ## Frozen Legacy Control-Action Table
 

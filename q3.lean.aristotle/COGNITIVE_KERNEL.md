@@ -85,30 +85,15 @@ Representation mismatch is the most common expensive failure in this repo:
 pointwise inequalities, scalar budgets, or local row bounds often do not
 transport to the operator / cone / packet object that the proof actually needs.
 
-## Proshka / Computer Use Hook
+## Proshka review hook
 
-In Codex Desktop sessions where the in-app browser is open to the ChatGPT
-Pro/Louise project chat, Computer Use is part of the route-review loop.
-
-When the kernel trigger fires and the browser is available:
-
-1. Ask Proshka before changing strategy.
-2. Send a compact self-contained prompt:
-   - route;
-   - current theorem/file;
-   - exact blocker and failure code;
-   - what was tried;
-   - options A/B/C;
-   - Codex recommendation;
-   - one concrete question.
-3. Treat the answer as advisory only.
-4. Accept only the theorem shape after local verification.
-5. Record the accepted route choice in the active report/monitor or
-   `docs/INSIGHTS.md`.
-
-If the browser is unavailable or not confirmed in the current session, write
-the existing `PRO_REVIEW_REQUEST` block instead.  Do not claim automatic
-external access.
+All review transport is governed exclusively by `docs/CODEX_CONTROL.md` and the
+registered `workflow_runtime.py review-plan` / receipt lifecycle. This kernel
+does not create a direct browser prompt, a new call class, or an INSIGHTS-based
+queue. Before any eligible review, bind the exact downstream consumer, its
+minimal sufficient interface, the necessity status of any named theorem, and
+at least one weaker-interface probe. Reuse the living phase chat and the exact
+UTF-8 attachment only when the canonical gate authorizes dispatch.
 
 ## After-Iteration Hook
 
@@ -119,10 +104,8 @@ run_progress_audit()
 if loop_or_bisection_trap_detected:
   classify_gap()
   select_cognitive_operator()
-  if route_fork_or_strategy_change and browser_available:
-    ask_Proshka_via_Computer_Use()
-  else if route_fork_or_strategy_change:
-    write_PRO_REVIEW_REQUEST()
+  if canonical_review_gate_is_eligible:
+    run_registered_review_plan_and_living_chat_lifecycle()
   update_failed_strategy_memory()
   choose_smallest_next_proof_artifact()
 ```
@@ -130,4 +113,3 @@ if loop_or_bisection_trap_detected:
 The output of this hook is not a plan by itself.  It must name the next file,
 the next theorem/certificate, and the validation command that would make the
 next proof state more true.
-

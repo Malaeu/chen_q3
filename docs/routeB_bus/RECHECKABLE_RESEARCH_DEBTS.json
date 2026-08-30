@@ -1,26 +1,41 @@
 {
-  "schema": "q3_routeb_recheckable_research_debts.v2",
+  "schema": "q3_routeb_research_dependencies.v3",
   "lifecycle": {
     "automatic_reopen_allowed": false,
     "ordered_states": [
       "KILLED_RECHECKABLE",
       "REOPEN_CANDIDATE",
       "SOURCE_VERIFIED",
-      "REOPENED"
+      "READY_FOR_RERANK"
     ],
-    "rule": "A search hit can create REOPEN_CANDIDATE only. Exact source and interface verification are required for SOURCE_VERIFIED; a separate authorized state transaction is required for REOPENED."
+    "rule": "A search hit can create REOPEN_CANDIDATE only. Exact source and interface verification are required for SOURCE_VERIFIED; READY_FOR_RERANK is still non-executable and only the execution selector may reopen a route."
   },
   "debts": [
     {
       "id": "G3_SATZ9_FUCHS_DIRECT_LEAN_FORMALIZATION",
       "target_id": "G3_SATZ9_FUCHS_FIXED_MODE_UNIFORM_REMAINDER",
       "classification": "RESEARCH_DEBT",
+      "execution_status": "KILLED",
+      "epistemic_status": "RESEARCH_DEBT",
       "not_disproved": true,
       "status": "KILLED_RECHECKABLE",
       "killed_at": "2026-08-30",
       "reason": "The paper theorem and conditional receivers are preserved, but the current direct Lean route lacks the fixed-mode eigenvalue remainder and singular closed-interval uniform-stability machinery.",
       "missing_object": "A proof-carrying fixed-mode quantitative remainder or equivalent inverse estimate that yields the exact closed-window uniform bound with explicit constants.",
       "terminal_consumer": "The Goal 058 G3 central-overlap denominator-floor receiver on the literal regular endpoint branch.",
+      "original_requested_object": "A direct Satz9/Fuchs fixed-mode quantitative remainder with singular closed-window uniform stability.",
+      "downstream_consumer": "The Goal 058 G3 central-overlap denominator-floor receiver on the literal regular endpoint branch.",
+      "actual_consumer_requirement": "Any proof-carrying bound strong enough to give the receiver's explicit positive closed-window denominator floor.",
+      "original_object_is": "UNKNOWN",
+      "necessity_evidence": [],
+      "known_weaker_interfaces": [
+        "A source-specific Green or Volterra inverse estimate on the required window.",
+        "A direct residual-to-denominator estimate that bypasses a full eigenfunction remainder."
+      ],
+      "failure_type": "NO_DERIVATION",
+      "death_evidence": [],
+      "consumer_implication": "Any audited interface Z yielding the explicit positive closed-window denominator floor discharges the G3 receiver; the named Satz9 remainder is only one candidate Z.",
+      "weaker_interface_probe": "Derive the receiver floor directly from a Green/Volterra or residual estimate and prove the exact implication to the existing receiver.",
       "why_interesting": "It would reopen the shortest direct G3 source route and reuse the preserved paper theorem and existing conditional Lean receivers.",
       "unlock_value": "HIGH",
       "estimated_difficulty": "HIGH",
@@ -73,12 +88,27 @@
       "id": "SELECTED_FERRERS_ODD_SECTOR_FLOOR_CURRENT_SOURCE_SHELF",
       "target_id": "SELECTED_FERRERS_ODD_SECTOR_UNIFORM_COERCIVITY_OR_FESHBACH",
       "classification": "RESEARCH_DEBT",
+      "execution_status": "KILLED",
+      "epistemic_status": "RESEARCH_DEBT",
       "not_disproved": true,
       "status": "KILLED_RECHECKABLE",
       "killed_at": "2026-08-30",
       "reason": "The current shelf supplies structure and parity but no uniform coercivity for the literal selected trial-shifted odd compression; the mathematical floor itself was not disproved.",
       "missing_object": "One explicit uniform lower bound for the literal selected odd compression, or a signed head-tail Feshbach estimate with a positive Schur margin.",
       "terminal_consumer": "The Goal 058 odd-sector floor discriminator for the selected Ferrers cofinal schedule.",
+      "original_requested_object": "One literal selected odd-compression uniform coercivity theorem or a complete signed Feshbach package.",
+      "downstream_consumer": "The Goal 058 odd-sector floor discriminator for the selected Ferrers cofinal schedule.",
+      "actual_consumer_requirement": "A certified positive lower margin for the selected odd contribution, uniform on the required cofinal schedule.",
+      "original_object_is": "UNKNOWN",
+      "necessity_evidence": [],
+      "known_weaker_interfaces": [
+        "A signed quadratic-form bound only on the consumer subspace.",
+        "A residual-weighted or resolvent estimate implying the same positive margin."
+      ],
+      "failure_type": "NO_SOURCE",
+      "death_evidence": [],
+      "consumer_implication": "Any certified uniform positive odd-sector margin Z implies the discriminator required by the selected schedule; full compression coercivity is not yet proved necessary.",
+      "weaker_interface_probe": "Search for a consumer-subspace form or resolvent bound and prove its exact implication to the odd discriminator.",
       "why_interesting": "It could restore an independent parity-sector route, but currently unlocks less of the selected ground-to-trial chain than the even-sector debt.",
       "unlock_value": "MEDIUM",
       "estimated_difficulty": "UNKNOWN",
@@ -130,12 +160,27 @@
       "id": "SELECTED_FERRERS_EVEN_SECTOR_FLOOR_CURRENT_SOURCE_SHELF",
       "target_id": "SELECTED_FERRERS_EVEN_SECTOR_UNIFORM_COERCIVITY_OR_FESHBACH",
       "classification": "RESEARCH_DEBT",
+      "execution_status": "KILLED",
+      "epistemic_status": "RESEARCH_DEBT",
       "not_disproved": true,
       "status": "KILLED_RECHECKABLE",
       "killed_at": "2026-08-30",
       "reason": "The audited source and Lean shelf has no uniform even-sector floor orthogonal to the exact selected even trial component at the selected Rayleigh shift; the mathematical floor itself remains open.",
       "missing_object": "A uniform even-sector coercive lower bound at the literal selected shift, or an explicit head-tail Feshbach package with positive Schur margin.",
       "terminal_consumer": "The Goal 058 selected ground-to-trial chain requiring the even complement floor on the cofinal schedule.",
+      "original_requested_object": "A literal selected even-complement uniform coercivity theorem or a complete even head-tail Feshbach package.",
+      "downstream_consumer": "The Goal 058 selected ground-to-trial chain requiring a positive even-complement margin on the cofinal schedule.",
+      "actual_consumer_requirement": "A proof-carrying positive margin sufficient for the ground-to-trial consumer, not necessarily a global compression floor.",
+      "original_object_is": "UNKNOWN",
+      "necessity_evidence": [],
+      "known_weaker_interfaces": [
+        "A residual-weighted estimate restricted to the selected trial complement.",
+        "A local Schur margin with explicit head, tail, and coupling constants."
+      ],
+      "failure_type": "NO_SOURCE",
+      "death_evidence": [],
+      "consumer_implication": "Any certified positive complement margin Z on the selected schedule discharges the ground-to-trial consumer; global even coercivity is not yet proved necessary.",
+      "weaker_interface_probe": "Build the weakest residual-weighted or local Schur estimate and prove its exact implication to the ground-to-trial consumer.",
       "why_interesting": "A successful result would directly reopen the highest-value parity-sector route into the current Goal 058 terminal consumer.",
       "unlock_value": "HIGH",
       "estimated_difficulty": "UNKNOWN",
@@ -182,6 +227,44 @@
           "git_blob": "349b565742b170553e37f567aa77338e9515c39c"
         }
       ]
+    }
+  ],
+  "adjudications": [
+    {
+      "id": "BROAD_CONE_SCALAR_PRIME_CERTIFICATE_TARGET",
+      "classification": "MATHEMATICALLY_DEAD",
+      "scope": "Broad-cone scalar Prime-certificate theorem shape with a uniform positive difference against recurrent finite positive cosine sums.",
+      "downstream_consumer": "The retired broad-cone Prime positivity route.",
+      "dead_reason": "An L1 kernel transform decays while a finite positive cosine sum recurrently returns near full mass, forcing the required difference negative.",
+      "surviving_interface": "Compact S1/S2/S3/S4 calculations remain diagnostics only.",
+      "evidence_refs": ["docs/GENEALOGY.md @ e3e920de8 blob 718202b25ba39b497409d7482eebc46054d87413"]
+    },
+    {
+      "id": "A3_PD_DENSE_PACKET_DICTIONARY_UNIFORM_SYMBOL_FLOOR",
+      "classification": "MATHEMATICALLY_DEAD",
+      "scope": "Uniform positive A3-pd symbol floor on the full dense difference-packet dictionary.",
+      "downstream_consumer": "The retired dense-dictionary A3 coercivity route.",
+      "dead_reason": "Difference packets collapse as their translation tends to zero, so no uniform positive gap exists on the dense dictionary.",
+      "surviving_interface": "The exact packet Rayleigh identity and PSD-pd kernel representation remain useful alternatives.",
+      "evidence_refs": ["q3.lean.aristotle/docs/INSIGHTS.md @ d7a3e6f01 blob e60c1232e7e6cc90db36b88052a4cc138de97a86"]
+    },
+    {
+      "id": "ESTARMUNTZ_V1_RAW_POLE_CONTRACT",
+      "classification": "MATHEMATICALLY_DEAD",
+      "scope": "Raw-product point-value contract at the zeta pole in EStarMuntz v1.",
+      "downstream_consumer": "The old T4/T5 raw-pole transfer.",
+      "dead_reason": "At the pole the raw product is not the value of its removable continuation, so the old point-value theorem shape is false.",
+      "surviving_interface": "ZetaMellinReg is the consumer-faithful regularized interface.",
+      "evidence_refs": ["q3.lean.aristotle/docs/INSIGHTS.md @ 45e0daafe blob dec3b41b3e8dd882e9821cedcd18dae9fd153eef"]
+    },
+    {
+      "id": "GOAL056_ARBITRARY_COFINAL_PROJECTION_TAIL_THEOREM_SHAPE",
+      "classification": "MATHEMATICALLY_DEAD",
+      "scope": "Arbitrary-cofinal theorem shape deriving joint moving-vector, moving-space, window and cutoff control from fixed-vector density alone.",
+      "downstream_consumer": "The Goal 056 projection-tail bridge.",
+      "dead_reason": "Fixed-vector density does not control all simultaneously moving objects; the claimed universal implication is invalid.",
+      "surviving_interface": "A coupled schedule or constructive diagonal remains a useful alternative interface.",
+      "evidence_refs": ["q3.lean.aristotle/docs/INSIGHTS.md @ e2ef5f074 blob 85a60ac0ed3e999fe58f7a59e24490e90647cdac"]
     }
   ]
 }

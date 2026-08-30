@@ -51,13 +51,13 @@ class SessionBriefingPlants(unittest.TestCase):
             session_briefing.transition_allowed("KILLED_RECHECKABLE", "REOPEN_CANDIDATE")
         )
         self.assertFalse(
-            session_briefing.transition_allowed("KILLED_RECHECKABLE", "REOPENED")
+            session_briefing.transition_allowed("KILLED_RECHECKABLE", "READY_FOR_RERANK")
         )
         self.assertFalse(
-            session_briefing.transition_allowed("REOPEN_CANDIDATE", "REOPENED")
+            session_briefing.transition_allowed("REOPEN_CANDIDATE", "READY_FOR_RERANK")
         )
         self.assertTrue(
-            session_briefing.transition_allowed("SOURCE_VERIFIED", "REOPENED")
+            session_briefing.transition_allowed("SOURCE_VERIFIED", "READY_FOR_RERANK")
         )
 
     def test_later_unselected_root_is_control_plane_drift(self) -> None:
