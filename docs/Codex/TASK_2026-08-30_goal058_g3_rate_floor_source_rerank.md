@@ -1,7 +1,7 @@
 # Codex task — Goal 058 G3 rate/floor source rerank
 
 Date: 2026-08-30
-Status: `BLOCKED_G3_SATZ9_UNIFORM_ASYMPTOTIC_LIBRARY_WALL`
+Status: `CLOSED_RERANKED_TO_EVEN_SECTOR_SOURCE_KILL`
 Parent: Goal 058 / G3 prolate rate and projected denominator floor
 
 ## Exact conflict
@@ -63,3 +63,23 @@ No fallback receiver, fitted constant, axiom, or weakened theorem is allowed.
 The next action must target the missing uniform asymptotic lemma itself or be a
 new source-locked strategic rerank; repeating the same receiver/source search
 is closed by this task.
+
+## Subsequent strategic closeout
+
+The byte-bound Proshka verdict at commit
+`7b96eca0121087abdbc69f360d54c703c02fd0c8` classified the direct Satz 9 Lean
+rebuild as `KILL_G3_SATZ9_DIRECT_LEAN_FORMALIZATION_COST_RERANK` and selected
+one read-only discriminator for `SELECTED_FERRERS_EVEN_SECTOR_FLOOR`.
+
+Codex executed that discriminator without Lean or numerics.  The current shelf
+contains no uniform even-sector floor at the literal selected Rayleigh shift;
+the transaction closed as
+`KILL_SELECTED_FERRERS_EVEN_SECTOR_FLOOR_ON_CURRENT_SOURCE_SHELF`.
+
+Exact report:
+`docs/routeB_bus/CODEX_REPORT_GOAL058_SELECTED_FERRERS_EVEN_SECTOR_FLOOR_SOURCE_DISCRIMINATOR_2026-08-30.md`.
+
+The even-sector floor itself remains open.  The next independent dependency
+root named by the consolidation graph is
+`SELECTED_FERRERS_WEIGHTED_RESIDUAL_SOURCE_RATE`; it is not authorized here as
+an implicit reopening of the killed Satz9/Fuchs route.

@@ -14,9 +14,13 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-08-30-G3SATZ9WALL · Goal 058 G3 Satz-9 library-wall next action · IN_REVIEW
+## REQ-2026-08-30-G3SATZ9WALL · Goal 058 G3 Satz-9 library-wall next action · ANSWERED
 
-- `STATUS: IN_REVIEW`
+- `STATUS: ANSWERED`
+- Verdict: `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_G3_SATZ9_LIBRARY_WALL_NEXT_ACTION_2026-08-30.md`
+- Verdict commit: `7b96eca0121087abdbc69f360d54c703c02fd0c8`
+- Verdict Git blob: `7463adb215423323d8689d08729d25f39c70ce26`
+- Operative class: `KILL_G3_SATZ9_DIRECT_LEAN_FORMALIZATION_COST_RERANK`
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_G3_SATZ9_LIBRARY_WALL_NEXT_ACTION_2026-08-30.txt`
 - Delivery: same living chat `6a8c3e2a-df50-83eb-b53d-dd4cc46f646f`, sent
   `2026-08-30T15:14+02:00`, message
