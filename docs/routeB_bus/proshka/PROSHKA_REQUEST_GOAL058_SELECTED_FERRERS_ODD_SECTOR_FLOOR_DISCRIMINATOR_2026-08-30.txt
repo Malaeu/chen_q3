@@ -1,0 +1,141 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-08-30-ODDFLOOR
+BOUNDARY_ID: GOAL058_SELECTED_FERRERS_ODD_SECTOR_FLOOR_DISCRIMINATOR
+DATE: 2026-08-30
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+SOURCE_BASE_COMMIT: 3ff1e14f7824ff0a311c43a287e864cfe1dea0c2
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SELECTED_FERRERS_PRODUCTION_FLOORS
+SOURCE_OBJECT_FAMILY_ID: PROPOSITION59_CCM_FINITE_SELECTED_FERRERS_FAMILY
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+
+Proshka, return one independent verdict on the next physical Goal 058 source
+discriminator after R1 closed and R2 moving Krylov/Feshbach was killed.
+
+Lifecycle correction already committed:
+
+  R1 raw same-ground-family normality is closed as an executable program.
+  Its target-preservation theorem was already kernel-green per cell, but the
+  relative object does not carry the required limit.  Its last proposed
+  Krein/sign-variation gate is not determined by the current complex
+  Classical.choose ground-vector specification and was merged into the standing
+  G3 nodal-count source gap.
+
+  R2 moving Krylov/Feshbach is independently KILL, with the request-byte binding
+  repaired by Proshka commit 034123539bb4a13c1aa5b902bcdd9ada1efc701c.
+
+Do not reopen either program.
+
+The selected dependency root is:
+
+  SELECTED_FERRERS_ODD_SECTOR_FLOOR.
+
+For the exact selected source package P, write
+
+  i_k = (selectedFerrersCofinalSourceData P).index k
+  J_k = ccmComplexReflectionMatrix i_k.N
+  K_k = sourceCCMFiniteMatrix i_k
+  q_k = selectedFerrersFiniteCCMRow P k
+  a_k = selectedFerrersFiniteCCMRayleigh P k.
+
+The exact production target is:
+
+  exists beta0 : Real,
+    0 < beta0 and
+    eventually k atTop,
+      forall x,
+        J_k *v x = -x ->
+        beta0 * Re(star x dot x) <=
+          Re(star x dot ((K_k - a_k I) *v x)).
+
+This is the literal hodd input of
+
+  selectedFerrersFiniteCCMComplementFloor_eventually_of_sectorFloors_weightedResidual.
+
+It is also retained as theorem cargo by the ground-parity and tracked-tail
+consumers.  A generic finite-cell receiver is not a supplier.
+
+Already kernel-green and insufficient by themselves:
+
+  K_k is Hermitian;
+  J_k is Hermitian and J_k^2 = I;
+  K_k J_k = J_k K_k;
+  q_k is unit;
+  a_k is the exact trial Rayleigh value;
+  the exact selected odd mass and weighted-residual receiver;
+  the exact finite source Feshbach identity.
+
+Shelf result at SOURCE_BASE_COMMIT:
+
+  ask.sh returns no exact supplier for SELECTED_FERRERS_ODD_SECTOR_FLOOR.
+  The existing contamination-aware theorem explicitly leaves the even and odd
+  sector floors open.  The Connes-Consani-Moscovici structured commutator gives
+  an exact beta/commutator identity, not a uniform odd-sector positivity theorem.
+
+QUESTION 1 - SOURCE THEOREM
+
+Does the literal CCM/source formula or an exact primary source theorem imply the
+eventual odd-sector floor above with one k-independent beta0?  Give the exact
+paper theorem, hypotheses, coordinate order, metric, normalization, and the map
+to K_k - a_k I.  Reject any citation that controls a different prolate operator,
+a fixed finite cell, an unshifted matrix, or an eigenvalue gap without an exact
+uniform adapter.
+
+QUESTION 2 - CHEAPEST HONEST REPAIR
+
+If the theorem controls a source-equivalent odd compression in another basis or
+metric, state the smallest exact crosswalk needed in Lean.  It must preserve the
+selected family, eventual quantifier, fixed beta0, exact Rayleigh shift, and
+literal reflection-odd subspace.  It may not assume the complement floor, G3
+zero-count, tracking rate, Route promotion, or RH.
+
+QUESTION 3 - FIRST THEOREM OR KILL
+
+Return exactly one of:
+
+  TRY_SELECTED_FERRERS_ODD_SECTOR_FLOOR_SOURCE
+    with one exact first public Lean theorem head, its primary-source pin,
+    inputs, output, consumer, and two adversarial plants;
+
+  REPAIR_SELECTED_FERRERS_ODD_SECTOR_FLOOR_VIA_SOURCE_CROSSWALK
+    with the exact source operator, basis/metric adapter, uniform constant and
+    first theorem-sized contract;
+
+  KILL_SELECTED_FERRERS_ODD_SECTOR_FLOOR_ON_CURRENT_SOURCE_SHELF
+    if every honest route needs an unproved uniform gap, a changed family, a
+    finite-cell promotion, or one of the already-open G3/tracking hypotheses.
+
+Mandatory attacks:
+
+1. Generic symmetry is insufficient.  Use a commuting Hermitian/reflection plant
+   with an even unit trial q, exact Rayleigh a, and an odd eigenvalue a + delta
+   where delta tends to zero.  It satisfies the structural package but defeats
+   every uniform beta0.
+2. A penalty certificate does not automatically supply this floor unless its
+   exact source hypotheses include the literal selected q and reflection-odd
+   subspace; the repository already rejected that shortcut because selected q is
+   not proved exactly even.
+3. A positive minimum eigenvalue in finitely many inspected cells is not an
+   eventual cofinal theorem.
+4. Do not treat the open G3 classical PSF nodal-count supplier, the eventual
+   complement floor, or the dead ground-to-trial tracking rate as an input under
+   another name.
+
+Source files to inspect at SOURCE_BASE_COMMIT:
+
+  q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersH2aSourceQuantities.lean
+  q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersWeightedResidualComplementFloor.lean
+  q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersGroundParityRealification.lean
+  q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersTrackedGroundTailReindex.lean
+  q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrix.lean
+  q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceCommutator.lean
+  docs/routeB_bus/CODEX_GOAL058_CONSOLIDATION_BLOCK2_2026-08-28.md
+  docs/routeB_bus/CODEX_CORRECTION_GOAL058_POST_R2_RERANK_2026-08-30.md
+  docs/Codex/TASK_2026-08-30_goal058_odd_sector_floor_source_discriminator.md
+
+Do not authorize Lean unless the verdict is TRY or a fully specified REPAIR.
+Do not touch the foreign uncommitted mode-four/G3 files.  No phase-key change,
+Route promotion, or RH claim.
