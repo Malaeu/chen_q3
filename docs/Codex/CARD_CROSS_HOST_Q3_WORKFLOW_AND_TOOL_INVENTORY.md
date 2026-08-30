@@ -96,6 +96,28 @@ EnvDump обновляется publication blueprint. Blueprint не являе�
 После зелёного owned delta Codex сам делает scoped commit, pull --rebase и push.
 Чужие dirty paths не входят в staged scope.
 
+### 2.4 Постоянная операционная авторизация владельца
+
+Владелец заранее авторизует Codex на обоих хостах выполнять без отдельного
+повторного вопроса все обычные обратимые действия внутри уже выбранного Q3
+scope:
+
+- создавать и обновлять source-locked request/task/receipt артефакты;
+- делать scoped commit, pull --rebase --autostash и push в `rh_clean`;
+- отправлять разрешённый byte-exact запрос Прошке в тот же living phase chat;
+- забирать, проверять и мигрировать verdict commit;
+- передавать Linux-телу точный scoped baton или запрос, когда Linux действительно
+  является нужным executor или независимым auditor;
+- запускать зарегистрированные read-only поиски, gates, plants, Lean validation,
+  semantic refresh и разрешённые close transactions.
+
+Отдельный вопрос владельцу нужен только если действие меняет заданный scope или
+authority: `PX_RH_CLAIM`, новый phase key/chat, удаление или необратимое действие,
+секрет/credential, финансовое действие, неизвестная внешняя сторона либо
+действительно обязательная safety-confirmation активного host runtime. Такая
+внешняя safety-confirmation не должна превращаться в репозиторный owner-click и
+не меняет математический pipeline.
+
 ## 3. Когда вызывается Proshka
 
 Обычное закрытие goal делает ноль вызовов к Proshka. Review разрешён для:
@@ -110,6 +132,13 @@ review-plan. Он сам прикрепляет один файл и отпра�
 же чат. План отправки не является receipt: доставка установлена только после
 наблюдения sent message и natural reasoning start. Повторная отправка для
 IN_REVIEW или ANSWERED запрещена.
+
+`REVIEW_DISPATCH_READY` вместе с `STATUS: OPEN` является постоянной
+репозиторной авторизацией current Codex body на same-chat upload/send. Codex не
+просит у владельца отдельное подтверждение решения, commit, push или отправки.
+Если активная UI-платформа всё же навязывает обязательную action-time
+confirmation, это внешняя safety-граница платформы; Codex не дублирует её
+собственным вопросом и продолжает сразу после подтверждения.
 
 После verdict commit выполняются fetch, безопасный rebase/autostash, проверка
 request/verdict binding и verdict migration. KILL закрывает названную
@@ -181,6 +210,7 @@ Q3_CONTROL_V9_MAC_TRACKED_RECEIPT_FALLBACK=1 bash specs_docs/session_start.sh
 | shelf candidate найден | supplier-preflight; использовать только при EXACT_FIT |
 | шесть no-delta cycles | собрать blocker fingerprint и разрешённый exploration review |
 | Proshka request OPEN и review-plan ready | current Codex body доставляет exact attachment в living chat |
+| scoped commit/push или same-chat Proshka delivery | выполнять автономно по постоянной owner authorization |
 | request IN_REVIEW или ANSWERED | не отправлять повторно |
 | Lean KERNEL_GREEN, admission требуется | ждать независимый receipt; downstream использование запрещено |
 | SEMANTICALLY_ADMITTED | использовать только точные admitted scopes |
