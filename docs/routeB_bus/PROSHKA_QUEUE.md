@@ -3202,10 +3202,14 @@ critical strip калибровка `g_k`, такая что семейство 
 - Boundaries: same living Goal 058 phase; no Lean before verdict; no Route/RH
   promotion; `PX_RH_CLAIM: NOT_MADE`.
 
-## REQ-2026-08-30-ODDFLOOR · Goal 058 selected Ferrers odd-sector floor discriminator · OPEN
+## REQ-2026-08-30-ODDFLOOR · Goal 058 selected Ferrers odd-sector floor discriminator · ANSWERED
 
-- `STATUS: OPEN`
+- `STATUS: ANSWERED`
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SELECTED_FERRERS_ODD_SECTOR_FLOOR_DISCRIMINATOR_2026-08-30.txt`
+- Verdict: `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SELECTED_FERRERS_ODD_SECTOR_FLOOR_DISCRIMINATOR_2026-08-30.md`
+- Operative class: `KILL_SELECTED_FERRERS_ODD_SECTOR_FLOOR_ON_CURRENT_SOURCE_SHELF`
+- Verdict commit: `4a38091b6732a6376d23b96e8d3608d11b74cfae`
+- Verdict Git blob: `478bb1f0250a449f9a82465924f8cf994a13c484`
 - Request commit: `d4f5a04c42463c358dd8e1a6fdace47ff8fc8e6b`
 - Attachment bytes: `6024`
 - Attachment lines: `141`
