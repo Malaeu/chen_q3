@@ -124,6 +124,25 @@ class SessionBriefingPlants(unittest.TestCase):
         }
         self.assertFalse(tools["routeb-session-briefing"]["writes"])
         self.assertTrue(tools["routeb-session-checkpoint"]["writes"])
+        self.assertFalse(tools["research-debt-challenge"]["writes"])
+
+    def test_registry_distinguishes_research_debt_from_dead(self) -> None:
+        registry = session_briefing.validate_registry(session_briefing.REPO)
+        self.assertTrue(registry["debts"])
+        for row in registry["debts"]:
+            self.assertEqual(row["classification"], "RESEARCH_DEBT")
+            self.assertIs(row["not_disproved"], True)
+            self.assertTrue(row["novelty_requirement"])
+
+    def test_rank_prefers_even_high_unlock_unknown_over_satz9_high(self) -> None:
+        registry = session_briefing.validate_registry(session_briefing.REPO)
+        ranked = session_briefing.ranked_debts(
+            registry["debts"], dt.date(2026, 8, 30)
+        )
+        self.assertEqual(
+            ranked[0]["id"],
+            "SELECTED_FERRERS_EVEN_SECTOR_FLOOR_CURRENT_SOURCE_SHELF",
+        )
 
 
 if __name__ == "__main__":

@@ -29,7 +29,7 @@ DEFAULT_CHECKPOINT = Path(
 )
 
 SCHEMA = "q3_routeb_session_checkpoint.v1"
-REGISTRY_SCHEMA = "q3_routeb_recheckable_research_debts.v1"
+REGISTRY_SCHEMA = "q3_routeb_recheckable_research_debts.v2"
 DEBT_STATUSES = {
     "KILLED_RECHECKABLE",
     "REOPEN_CANDIDATE",
@@ -117,10 +117,17 @@ def validate_registry(repo: Path, path: Path | None = None) -> dict[str, Any]:
     if not isinstance(debts, list):
         raise SessionBriefingError("RESEARCH_DEBT_ROWS_INVALID")
     seen: set[str] = set()
+    allowed_triggers = {
+        "NEW_LITERATURE", "NEW_THEOREM", "NEW_DERIVATION",
+        "PROSHKA_RESEARCH", "COUNTEREXAMPLE",
+    }
     required = {
-        "id", "status", "killed_at", "reason", "reopen_if",
-        "last_external_check", "search_hints", "related_goal",
-        "authoritative_refs",
+        "id", "target_id", "classification", "not_disproved", "status",
+        "killed_at", "reason", "missing_object", "terminal_consumer",
+        "why_interesting", "unlock_value", "estimated_difficulty",
+        "last_attempt", "reopen_if", "reopen_triggers", "next_probe",
+        "novelty_requirement", "last_external_check", "search_hints",
+        "related_goal", "authoritative_refs",
     }
     for row in debts:
         if not isinstance(row, dict) or set(row) != required:
@@ -131,9 +138,40 @@ def validate_registry(repo: Path, path: Path | None = None) -> dict[str, Any]:
         seen.add(debt_id)
         if row["status"] not in DEBT_STATUSES:
             raise SessionBriefingError(f"RESEARCH_DEBT_STATUS_INVALID:{debt_id}")
-        for field in ("reopen_if", "search_hints", "authoritative_refs"):
+        if row["classification"] != "RESEARCH_DEBT" or row["not_disproved"] is not True:
+            raise SessionBriefingError(f"RESEARCH_DEBT_CLASSIFICATION_INVALID:{debt_id}")
+        if row["unlock_value"] not in {"HIGH", "MEDIUM", "LOW"}:
+            raise SessionBriefingError(f"RESEARCH_DEBT_UNLOCK_INVALID:{debt_id}")
+        if row["estimated_difficulty"] not in {"LOW", "MEDIUM", "HIGH", "UNKNOWN"}:
+            raise SessionBriefingError(f"RESEARCH_DEBT_DIFFICULTY_INVALID:{debt_id}")
+        for field in (
+            "target_id", "reason", "missing_object", "terminal_consumer",
+            "why_interesting", "next_probe", "related_goal",
+        ):
+            if not isinstance(row[field], str) or not row[field].strip():
+                raise SessionBriefingError(f"RESEARCH_DEBT_TEXT_INVALID:{debt_id}:{field}")
+        if not isinstance(row["last_attempt"], dict) or set(row["last_attempt"]) != {
+            "date", "outcome", "approach"
+        }:
+            raise SessionBriefingError(f"RESEARCH_DEBT_LAST_ATTEMPT_INVALID:{debt_id}")
+        if any(
+            not isinstance(row["last_attempt"][field], str)
+            or not row["last_attempt"][field].strip()
+            for field in ("date", "outcome", "approach")
+        ):
+            raise SessionBriefingError(f"RESEARCH_DEBT_LAST_ATTEMPT_INVALID:{debt_id}")
+        for field in (
+            "reopen_if", "reopen_triggers", "novelty_requirement",
+            "search_hints", "authoritative_refs",
+        ):
             if not isinstance(row[field], list) or not row[field]:
                 raise SessionBriefingError(f"RESEARCH_DEBT_LIST_INVALID:{debt_id}:{field}")
+        if not set(row["reopen_triggers"]).issubset(allowed_triggers):
+            raise SessionBriefingError(f"RESEARCH_DEBT_TRIGGER_INVALID:{debt_id}")
+        if any(not isinstance(item, str) or not item.strip() for field in (
+            "reopen_if", "reopen_triggers", "novelty_requirement", "search_hints"
+        ) for item in row[field]):
+            raise SessionBriefingError(f"RESEARCH_DEBT_LIST_ITEM_INVALID:{debt_id}")
         for field in ("killed_at", "last_external_check"):
             try:
                 dt.date.fromisoformat(row[field])
@@ -141,6 +179,12 @@ def validate_registry(repo: Path, path: Path | None = None) -> dict[str, Any]:
                 raise SessionBriefingError(
                     f"RESEARCH_DEBT_DATE_INVALID:{debt_id}:{field}"
                 ) from exc
+        try:
+            dt.date.fromisoformat(row["last_attempt"]["date"])
+        except (TypeError, ValueError) as exc:
+            raise SessionBriefingError(
+                f"RESEARCH_DEBT_DATE_INVALID:{debt_id}:last_attempt.date"
+            ) from exc
         for ref in row["authoritative_refs"]:
             if not isinstance(ref, dict) or set(ref) != {"path", "commit", "git_blob"}:
                 raise SessionBriefingError(f"RESEARCH_DEBT_REF_INVALID:{debt_id}")
@@ -314,6 +358,26 @@ def debt_priority(row: dict[str, Any], today: dt.date) -> tuple[str, int]:
     return "RECENT_PASSIVE", age
 
 
+def ranked_debts(rows: list[dict[str, Any]], today: dt.date) -> list[dict[str, Any]]:
+    priority_order = {
+        "HIGH_NEW_SIGNAL": 0,
+        "HIGHLIGHT_30_PLUS": 1,
+        "NORMAL": 2,
+        "RECENT_PASSIVE": 3,
+    }
+    unlock_order = {"HIGH": 0, "MEDIUM": 1, "LOW": 2}
+    difficulty_order = {"LOW": 0, "MEDIUM": 1, "UNKNOWN": 2, "HIGH": 3}
+    return sorted(
+        rows,
+        key=lambda row: (
+            priority_order[debt_priority(row, today)[0]],
+            unlock_order[row["unlock_value"]],
+            difficulty_order[row["estimated_difficulty"]],
+            row["id"],
+        ),
+    )
+
+
 def render_briefing(
     repo: Path,
     *,
@@ -369,19 +433,27 @@ def render_briefing(
         lines.append(f"  {route.get('status') or 'No machine-readable blocker found.'}")
     lines.extend(["", "WHAT CAN REOPEN"])
     today = today or dt.datetime.now(dt.timezone.utc).date()
-    ordered = sorted(
-        registry["debts"],
-        key=lambda row: (
-            {"HIGH_NEW_SIGNAL": 0, "HIGHLIGHT_30_PLUS": 1, "NORMAL": 2, "RECENT_PASSIVE": 3}[
-                debt_priority(row, today)[0]
-            ],
-            row["id"],
-        ),
-    )
+    ordered = ranked_debts(registry["debts"], today)
+    lines.append(f"  REOPENABLE RESEARCH DEBTS: {len(ordered)}")
     for row in ordered:
         priority, age = debt_priority(row, today)
-        lines.append(f"  [{priority}] {row['id']} · last check {age}d ago")
+        lines.append(
+            f"  [{priority}] {row['id']} · RESEARCH_DEBT · "
+            f"unlock {row['unlock_value']} · difficulty {row['estimated_difficulty']} · "
+            f"last check {age}d ago"
+        )
+        lines.append(f"    missing: {row['missing_object']}")
         lines.append(f"    reopen only if: {row['reopen_if'][0]}")
+    if ordered:
+        top = ordered[0]
+        lines.extend([
+            "",
+            "TOP RESEARCH-VALUE DEBT",
+            f"  {top['id']}",
+            f"  Why interesting: {top['why_interesting']}",
+            f"  Next novel probe: {top['next_probe']}",
+            "  Suggested action: ASK PROSHKA FOR NEW MATHEMATICS",
+        ])
     lines.extend(["", "WHAT NEXT"])
     if drift:
         lines.append(
@@ -395,6 +467,8 @@ def render_briefing(
     lines.extend([
         "",
         f"Search our debts today? YES / NO / SELECT  [default: {default}]",
+        "Spend one Proshka research cycle? YES / NO / SELECT  [default: NO]",
+        "  YES prepares one exact gated RESEARCH_DEBT_CHALLENGE; it does not auto-send it.",
         "  External web/literature search was NOT run.",
         "  A search hit may create REOPEN_CANDIDATE only; SOURCE_VERIFIED is required before REOPENED.",
     ])

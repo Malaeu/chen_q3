@@ -49,6 +49,13 @@ Briefing заканчивается вопросом `Search our debts today? YE
 hit создаёт максимум `REOPEN_CANDIDATE`: до `SOURCE_VERIFIED` и отдельного
 разрешённого state/verdict-перехода ветка не становится `REOPENED`.
 
+Отдельный вопрос `Spend one Proshka research cycle?` по умолчанию имеет ответ
+`NO`. При `YES/SELECT` сначала выбрать один ранжированный `RESEARCH_DEBT` и
+собрать детерминированный пакет через `research_debt_challenge.py`. Пакет обязан
+назвать новый математический ход и сам по себе не разрешает отправку: далее
+действует обычный queue/review-plan/receipt lifecycle того же living chat.
+`MATHEMATICALLY_DEAD` в этот список не входит.
+
 `SPINE_VIEW.md` — коммитимый снимок другого хоста, не обязательный вход.
 Текущий вид получать из `--stdout`; сенсоры и базы обновлять только явным
 `--refresh`.

@@ -1,0 +1,42 @@
+from __future__ import annotations
+
+import hashlib
+import unittest
+
+from orchestrator import research_debt_challenge
+from orchestrator import session_briefing
+
+
+DEBT_ID = "SELECTED_FERRERS_EVEN_SECTOR_FLOOR_CURRENT_SOURCE_SHELF"
+
+
+class ResearchDebtChallengePlants(unittest.TestCase):
+    def test_packet_is_deterministic_utf8_with_final_lf(self) -> None:
+        first = research_debt_challenge.render(session_briefing.REPO, DEBT_ID)
+        second = research_debt_challenge.render(session_briefing.REPO, DEBT_ID)
+        self.assertEqual(first, second)
+        self.assertTrue(first.endswith(b"\n"))
+        text = first.decode("utf-8")
+        self.assertIn("REQUEST_KIND: RESEARCH_DEBT_CHALLENGE", text)
+        self.assertIn("DISPATCH: FORBIDDEN_UNTIL_QUEUE_OPEN_AND_REVIEW_PLAN_READY", text)
+        self.assertIn("NOVELTY_REQUIREMENT", text)
+        self.assertIn("ALLOWED_RESEARCH_OUTCOMES", text)
+        self.assertIn("TRY_, KILL_, or RUN_", text)
+
+    def test_manifest_binds_exact_bytes(self) -> None:
+        payload = research_debt_challenge.render(session_briefing.REPO, DEBT_ID)
+        result = research_debt_challenge.manifest(payload, DEBT_ID)
+        self.assertEqual(result["sha256"], hashlib.sha256(payload).hexdigest())
+        self.assertEqual(result["bytes"], len(payload))
+        self.assertEqual(result["lines"], payload.count(b"\n"))
+        self.assertIs(result["final_newline"], True)
+
+    def test_unknown_debt_fails_closed(self) -> None:
+        with self.assertRaisesRegex(
+            session_briefing.SessionBriefingError, "RESEARCH_DEBT_UNKNOWN"
+        ):
+            research_debt_challenge.render(session_briefing.REPO, "NO_SUCH_DEBT")
+
+
+if __name__ == "__main__":
+    unittest.main()

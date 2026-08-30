@@ -240,6 +240,23 @@ tool_families:
         validation: test_session_briefing
         last_verified: 2026-08-30
 
+      - id: research-debt-challenge
+        status: ENABLED
+        audience: [CODEX, HUMAN]
+        mode: READ_ONLY
+        path: orchestrator/research_debt_challenge.py
+        invoke: python3 orchestrator/research_debt_challenge.py rank
+        alternatives:
+          - python3 orchestrator/research_debt_challenge.py render --debt-id ID
+          - python3 orchestrator/research_debt_challenge.py manifest --debt-id ID
+        trigger: Owner selects one reopenable research debt for a novel Proshka research cycle.
+        writes: false
+        approval: NONE_TO_RANK_OR_RENDER; DISPATCH_REQUIRES_REGISTERED_REVIEW_LIFECYCLE
+        authority: PACKET_PREPARATION_ONLY_NOT_DISPATCH_NOT_VERDICT_NOT_ROUTE_REOPEN
+        records_to: stdout
+        validation: test_research_debt_challenge
+        last_verified: 2026-08-30
+
       - id: knowledge-spine-strict
         status: ENABLED
         audience: [CODEX, HUMAN]

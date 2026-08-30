@@ -9,7 +9,7 @@ control: docs/CODEX_CONTROL.md
 tool_manifest: docs/cartographer/TOOLS.yaml
 workflow_front_door: orchestrator/workflow_runtime.py
 inventory_snapshot_date: 2026-08-30
-registered_tools: 53
+registered_tools: 54
 route_promotion_authorized: false
 PX_RH_CLAIM: NOT_MADE
 ```
@@ -64,8 +64,13 @@ python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb
 
 Красный startup запрещает математику. Разрешён только узкий ремонт
 воспроизводимого control/tool defect. Зелёный plan не маскирует красный gate.
-Тот же вход печатает delta-aware Route B briefing и предлагает выбрать, искать
-ли сегодня recheckable research debts; внешний поиск автоматически не запускается.
+Тот же вход печатает delta-aware Route B briefing, ранжирует reopenable
+`RESEARCH_DEBT` и предлагает выбрать, искать ли сегодня долг или потратить один
+исследовательский цикл Прошки; внешний поиск и отправка автоматически не запускаются.
+
+`research-debt-challenge` — read-only генератор. Он строит byte-stable пакет с
+обязательным novelty requirement и разрешёнными исходами, но не меняет очередь,
+не отправляет сообщение, не создаёт verdict и не открывает маршрут.
 
 ### 2.2 Выбор и narrowing
 
@@ -223,7 +228,7 @@ Q3_CONTROL_V9_MAC_TRACKED_RECEIPT_FALLBACK=1 bash specs_docs/session_start.sh
 ## 7. Зарегистрированный инвентарь
 
 Единственный routable inventory — docs/cartographer/TOOLS.yaml. На снимке
-2026-08-30 зарегистрировано 53 инструмента: 46 ENABLED, 6 AVAILABLE и 1 DEGRADED.
+2026-08-30 зарегистрировано 54 инструмента: 47 ENABLED, 6 AVAILABLE и 1 DEGRADED.
 Сотни вспомогательных scripts, tests и one-shot probes на диске не становятся
 автоматически routable: для рождения инструмента нужен полный manifest contract.
 
@@ -234,6 +239,7 @@ Q3_CONTROL_V9_MAC_TRACKED_RECEIPT_FALLBACK=1 bash specs_docs/session_start.sh
 - codex-session-start
 - routeb-session-briefing
 - routeb-session-checkpoint
+- research-debt-challenge
 - knowledge-spine-strict
 - knowledge-spine-goal-close
 - knowledge-spine-step-close

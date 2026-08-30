@@ -31,9 +31,31 @@ project-interface verification are required for `SOURCE_VERIFIED`; reopening
 still needs a separate authorized state/verdict transaction.  Session start
 never performs web or literature search.
 
+Each registry row is explicitly `classification: RESEARCH_DEBT` and
+`not_disproved: true`. A representation proved impossible belongs to the
+verdict/decision record as `MATHEMATICALLY_DEAD`, not in this reopenable
+registry. The briefing ranks debts deterministically by new signal, recheck
+age, unlock value and estimated difficulty; these are ordering labels, not
+success probabilities.
+
 Debt prompt priority is based on `last_external_check`: 0–6 days is passive,
 7–29 days normal, and 30+ days highlighted. `REOPEN_CANDIDATE` or
 `SOURCE_VERIFIED` is high priority regardless of age.
+
+When the owner chooses one Proshka research cycle, the read-only builder emits
+one deterministic `RESEARCH_DEBT_CHALLENGE` packet:
+
+```bash
+python3 orchestrator/research_debt_challenge.py rank
+python3 orchestrator/research_debt_challenge.py manifest --debt-id ID
+```
+
+The packet requires a materially novel theorem family, representation,
+decomposition, weaker target, constructive derivation or counterexample search.
+It cannot dispatch itself: the queue must be `OPEN`, the registered
+`workflow_runtime.py review-plan` must be ready, and ordinary exact attachment,
+receipt and living-chat rules still apply. A research result can create at most
+`REOPEN_CANDIDATE`; it cannot reopen a route by itself.
 
 Commands:
 

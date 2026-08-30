@@ -1,5 +1,5 @@
 {
-  "schema": "q3_routeb_recheckable_research_debts.v1",
+  "schema": "q3_routeb_recheckable_research_debts.v2",
   "lifecycle": {
     "automatic_reopen_allowed": false,
     "ordered_states": [
@@ -13,13 +13,41 @@
   "debts": [
     {
       "id": "G3_SATZ9_FUCHS_DIRECT_LEAN_FORMALIZATION",
+      "target_id": "G3_SATZ9_FUCHS_FIXED_MODE_UNIFORM_REMAINDER",
+      "classification": "RESEARCH_DEBT",
+      "not_disproved": true,
       "status": "KILLED_RECHECKABLE",
       "killed_at": "2026-08-30",
       "reason": "The paper theorem and conditional receivers are preserved, but the current direct Lean route lacks the fixed-mode eigenvalue remainder and singular closed-interval uniform-stability machinery.",
+      "missing_object": "A proof-carrying fixed-mode quantitative remainder or equivalent inverse estimate that yields the exact closed-window uniform bound with explicit constants.",
+      "terminal_consumer": "The Goal 058 G3 central-overlap denominator-floor receiver on the literal regular endpoint branch.",
+      "why_interesting": "It would reopen the shortest direct G3 source route and reuse the preserved paper theorem and existing conditional Lean receivers.",
+      "unlock_value": "HIGH",
+      "estimated_difficulty": "HIGH",
+      "last_attempt": {
+        "date": "2026-08-30",
+        "outcome": "KILL_CURRENT_DIRECT_FORMALIZATION",
+        "approach": "Direct Satz9/Fuchs source extraction plus normalized gamma-inverse remainder and closed-window stability search."
+      },
       "reopen_if": [
         "An audited source theorem supplies quantitative fixed-mode residual-to-uniform-error control on the exact regular endpoint branch with explicit constants.",
         "A source-specific Green or Volterra inverse estimate closes the normalized gamma-inverse remainder without assuming that remainder.",
         "A common-basis coefficient expansion plus a uniform contraction or inverse theorem supplies the required full-window bound."
+      ],
+      "reopen_triggers": [
+        "NEW_LITERATURE",
+        "NEW_THEOREM",
+        "NEW_DERIVATION",
+        "PROSHKA_RESEARCH",
+        "COUNTEREXAMPLE"
+      ],
+      "next_probe": "Try a source-specific Green/Volterra inverse or a weaker terminal-consumer estimate instead of another direct Satz9 restatement.",
+      "novelty_requirement": [
+        "Use a different theorem family or source than the prior Satz9/Fuchs extraction.",
+        "Change representation, for example to a Green, Volterra, resolvent, or common-basis argument.",
+        "Target a strictly weaker sufficient consumer lemma with an explicit implication proof.",
+        "Give a constructive derivation of the missing remainder from audited premises.",
+        "Search for a counterexample or obstruction that would justify MATHEMATICALLY_DEAD."
       ],
       "last_external_check": "2026-08-30",
       "search_hints": [
@@ -43,12 +71,40 @@
     },
     {
       "id": "SELECTED_FERRERS_ODD_SECTOR_FLOOR_CURRENT_SOURCE_SHELF",
+      "target_id": "SELECTED_FERRERS_ODD_SECTOR_UNIFORM_COERCIVITY_OR_FESHBACH",
+      "classification": "RESEARCH_DEBT",
+      "not_disproved": true,
       "status": "KILLED_RECHECKABLE",
       "killed_at": "2026-08-30",
       "reason": "The current shelf supplies structure and parity but no uniform coercivity for the literal selected trial-shifted odd compression; the mathematical floor itself was not disproved.",
+      "missing_object": "One explicit uniform lower bound for the literal selected odd compression, or a signed head-tail Feshbach estimate with a positive Schur margin.",
+      "terminal_consumer": "The Goal 058 odd-sector floor discriminator for the selected Ferrers cofinal schedule.",
+      "why_interesting": "It could restore an independent parity-sector route, but currently unlocks less of the selected ground-to-trial chain than the even-sector debt.",
+      "unlock_value": "MEDIUM",
+      "estimated_difficulty": "UNKNOWN",
+      "last_attempt": {
+        "date": "2026-08-30",
+        "outcome": "KILL_CURRENT_SOURCE_SHELF",
+        "approach": "Current literature and Lean shelf audit for a literal odd coercive floor and direct head-tail Feshbach constants."
+      },
       "reopen_if": [
         "A source theorem gives one explicit uniform odd-form lower bound at the exact selected Rayleigh shift on the selected cofinal schedule.",
         "A signed odd head-tail Feshbach theorem supplies an exact tail floor, residual ledger and uniform coupling constants."
+      ],
+      "reopen_triggers": [
+        "NEW_LITERATURE",
+        "NEW_THEOREM",
+        "NEW_DERIVATION",
+        "PROSHKA_RESEARCH",
+        "COUNTEREXAMPLE"
+      ],
+      "next_probe": "Derive a signed odd head-tail estimate from a new decomposition or reduce the terminal consumer to a weaker explicit form bound.",
+      "novelty_requirement": [
+        "Use a new decomposition rather than repeating the current source-shelf audit.",
+        "Change representation to a signed form, block operator, or resolvent estimate.",
+        "Prove a weaker sufficient floor with an exact consumer implication.",
+        "Construct the missing constants from explicit matrix or kernel bounds.",
+        "Search for a counterexample or obstruction that would justify MATHEMATICALLY_DEAD."
       ],
       "last_external_check": "2026-08-30",
       "search_hints": [
@@ -72,12 +128,40 @@
     },
     {
       "id": "SELECTED_FERRERS_EVEN_SECTOR_FLOOR_CURRENT_SOURCE_SHELF",
+      "target_id": "SELECTED_FERRERS_EVEN_SECTOR_UNIFORM_COERCIVITY_OR_FESHBACH",
+      "classification": "RESEARCH_DEBT",
+      "not_disproved": true,
       "status": "KILLED_RECHECKABLE",
       "killed_at": "2026-08-30",
       "reason": "The audited source and Lean shelf has no uniform even-sector floor orthogonal to the exact selected even trial component at the selected Rayleigh shift; the mathematical floor itself remains open.",
+      "missing_object": "A uniform even-sector coercive lower bound at the literal selected shift, or an explicit head-tail Feshbach package with positive Schur margin.",
+      "terminal_consumer": "The Goal 058 selected ground-to-trial chain requiring the even complement floor on the cofinal schedule.",
+      "why_interesting": "A successful result would directly reopen the highest-value parity-sector route into the current Goal 058 terminal consumer.",
+      "unlock_value": "HIGH",
+      "estimated_difficulty": "UNKNOWN",
+      "last_attempt": {
+        "date": "2026-08-30",
+        "outcome": "KILL_CURRENT_SOURCE_SHELF",
+        "approach": "Audit of the current literature and Lean shelf for a direct uniform even floor at the selected Rayleigh shift."
+      },
       "reopen_if": [
         "A primary theorem supplies direct even-form coercivity with the literal selected shift and one constant uniform on the selected schedule.",
         "An even head-tail Feshbach representation supplies a uniform tail floor, exact head bound and coupling estimate with positive Schur margin."
+      ],
+      "reopen_triggers": [
+        "NEW_LITERATURE",
+        "NEW_THEOREM",
+        "NEW_DERIVATION",
+        "PROSHKA_RESEARCH",
+        "COUNTEREXAMPLE"
+      ],
+      "next_probe": "Build an explicit even head-tail Feshbach discriminator or prove a weaker residual-weighted bound that still reaches the terminal consumer.",
+      "novelty_requirement": [
+        "Use a different theorem family than the prior direct floor search.",
+        "Change representation to head-tail Feshbach, residual-weighted, or resolvent form.",
+        "Target a weaker sufficient consumer lemma with an exact implication proof.",
+        "Construct explicit constants from the selected finite head and an audited tail estimate.",
+        "Search for a counterexample or obstruction that would justify MATHEMATICALLY_DEAD."
       ],
       "last_external_check": "2026-08-30",
       "search_hints": [
