@@ -103,6 +103,7 @@ def compile_review_dispatch(
     *,
     attachment: Path,
     request_commit: str,
+    request_id: str,
     boundary_id: str,
     expected_sha256: str,
 ) -> dict[str, Any]:
@@ -123,8 +124,9 @@ def compile_review_dispatch(
     else:
         raw = path.read_bytes()
     try:
-        raw.decode("utf-8")
+        request_text = raw.decode("utf-8")
     except UnicodeDecodeError:
+        request_text = ""
         holds.append("PROSHKA_ATTACHMENT_NOT_UTF8")
     if not raw.endswith(b"\n"):
         holds.append("PROSHKA_ATTACHMENT_FINAL_LF_MISSING")
@@ -133,6 +135,29 @@ def compile_review_dispatch(
         holds.append("PROSHKA_EXPECTED_SHA256_INVALID")
     elif actual_sha256 != expected_sha256:
         holds.append("PROSHKA_ATTACHMENT_SHA256_MISMATCH")
+    request_id_match = re.search(r"(?m)^REQUEST_ID:\s*(\S+)\s*$", request_text)
+    boundary_match = re.search(r"(?m)^BOUNDARY_ID:\s*(\S+)\s*$", request_text)
+    if request_id_match is None or request_id_match.group(1) != request_id:
+        holds.append("PROSHKA_REQUEST_ID_MISMATCH")
+    if boundary_match is None or boundary_match.group(1) != boundary_id:
+        holds.append("PROSHKA_BOUNDARY_ID_MISMATCH")
+
+    queue_path = repo / "docs/routeB_bus/PROSHKA_QUEUE.md"
+    try:
+        queue_text = queue_path.read_text(encoding="utf-8")
+    except OSError:
+        queue_text = ""
+        holds.append("PROSHKA_QUEUE_MISSING")
+    section = re.search(
+        rf"(?ms)^##\s+{re.escape(request_id)}\b(.*?)(?=^##\s+|\Z)", queue_text,
+    )
+    status_match = (
+        re.search(r"(?m)^-?\s*`?STATUS:\s*(OPEN|IN_REVIEW|ANSWERED|DROPPED)\b", section.group(1))
+        if section else None
+    )
+    queue_status = status_match.group(1) if status_match else None
+    if queue_status != "OPEN":
+        holds.append(f"PROSHKA_REQUEST_NOT_OPEN:{request_id}:{queue_status or 'MISSING'}")
 
     try:
         _git(repo, "cat-file", "-e", f"{request_commit}^{{commit}}")
@@ -177,6 +202,8 @@ def compile_review_dispatch(
         "status": "HOLD" if holds else "REVIEW_DISPATCH_READY",
         "holds": sorted(set(holds)),
         "boundary_id": boundary_id,
+        "request_id": request_id,
+        "queue_status": queue_status,
         "conversation_id": conversation_id,
         "attachment_manifest": manifest,
         "short_instruction": REVIEW_INSTRUCTION,
@@ -572,6 +599,7 @@ def main() -> int:
     review_parser = subparsers.add_parser("review-plan")
     review_parser.add_argument("--attachment", type=Path, required=True)
     review_parser.add_argument("--request-commit", required=True)
+    review_parser.add_argument("--request-id", required=True)
     review_parser.add_argument("--boundary-id", required=True)
     review_parser.add_argument("--expected-sha256", required=True)
     args, forwarded = parser.parse_known_args()
@@ -588,6 +616,7 @@ def main() -> int:
                 repo,
                 attachment=args.attachment,
                 request_commit=args.request_commit,
+                request_id=args.request_id,
                 boundary_id=args.boundary_id,
                 expected_sha256=args.expected_sha256,
             )

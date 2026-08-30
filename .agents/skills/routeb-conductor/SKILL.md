@@ -68,7 +68,9 @@ python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb
 
 Judge transport выполняет текущее активное Codex-тело на любом поддержанном
 host через тот же living chat. Перед отправкой запусти `workflow_runtime.py
-review-plan` с exact attachment, request commit, boundary ID и ожидаемым SHA-256.
+review-plan` с exact attachment, request commit, request ID, boundary ID и
+ожидаемым SHA-256. Только queue status `OPEN` допускает dispatch;
+`IN_REVIEW`/`ANSWERED` запрещают повторную отправку.
 При `REVIEW_DISPATCH_READY` самостоятельно прикрепи ровно один byte-exact UTF-8
 `.txt`, сверь file tile и отправь каноническую короткую инструкцию. Отдельный
 репозиторный owner click/OK не требуется; если активный browser runtime требует

@@ -169,7 +169,14 @@ class WorkflowRuntimePlants(unittest.TestCase):
             subprocess.run(["git", "config", "user.name", "Workflow Plant"], cwd=repo, check=True)
             request = repo / "docs/routeB_bus/proshka/request.txt"
             request.parent.mkdir(parents=True)
-            request.write_bytes(b"exact request\n")
+            request.write_bytes(
+                b"REQUEST_ID: REQ-PLANT\nBOUNDARY_ID: new-boundary\nexact request\n"
+            )
+            queue = repo / "docs/routeB_bus/PROSHKA_QUEUE.md"
+            queue.write_text(
+                "## REQ-PLANT · plant\n\n- `STATUS: OPEN`\n",
+                encoding="utf-8",
+            )
             runtime = repo / "orchestrator/state/CHANNEL_RUNTIME.json"
             runtime.parent.mkdir(parents=True)
             runtime.write_text(
@@ -194,6 +201,7 @@ class WorkflowRuntimePlants(unittest.TestCase):
                 repo,
                 attachment=request,
                 request_commit=commit,
+                request_id="REQ-PLANT",
                 boundary_id="new-boundary",
                 expected_sha256=digest,
             )
@@ -218,7 +226,15 @@ class WorkflowRuntimePlants(unittest.TestCase):
             subprocess.run(["git", "config", "user.email", "plant@example.invalid"], cwd=repo, check=True)
             subprocess.run(["git", "config", "user.name", "Workflow Plant"], cwd=repo, check=True)
             request = repo / "request.txt"
-            request.write_bytes(b"committed\n")
+            request.write_bytes(
+                b"REQUEST_ID: REQ-PLANT\nBOUNDARY_ID: same-boundary\ncommitted\n"
+            )
+            queue = repo / "docs/routeB_bus/PROSHKA_QUEUE.md"
+            queue.parent.mkdir(parents=True)
+            queue.write_text(
+                "## REQ-PLANT · plant\n\n- `STATUS: ANSWERED`\n",
+                encoding="utf-8",
+            )
             runtime = repo / "orchestrator/state/CHANNEL_RUNTIME.json"
             runtime.parent.mkdir(parents=True)
             runtime.write_text(
@@ -243,6 +259,7 @@ class WorkflowRuntimePlants(unittest.TestCase):
                 repo,
                 attachment=request,
                 request_commit=commit,
+                request_id="REQ-PLANT",
                 boundary_id="same-boundary",
                 expected_sha256="0" * 64,
             )
@@ -253,6 +270,10 @@ class WorkflowRuntimePlants(unittest.TestCase):
             self.assertIn("PROSHKA_ATTACHMENT_COMMIT_BLOB_MISMATCH", result["holds"])
             self.assertIn(
                 "PROSHKA_REVIEW_BOUNDARY_ALREADY_RECORDED:same-boundary",
+                result["holds"],
+            )
+            self.assertIn(
+                "PROSHKA_REQUEST_NOT_OPEN:REQ-PLANT:ANSWERED",
                 result["holds"],
             )
 

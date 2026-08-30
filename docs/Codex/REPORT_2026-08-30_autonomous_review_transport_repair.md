@@ -14,6 +14,9 @@ final browser click.
 - `workflow_runtime.py review-plan` now validates the exact `.txt` bytes,
   UTF-8 decoding, final LF, expected SHA-256, request commit, committed Git blob,
   worktree Git blob, active phase and living-chat handle.
+- Dispatch additionally binds the request and boundary IDs and requires the
+  queue section to be exactly `OPEN`; `IN_REVIEW`, `ANSWERED`, `DROPPED` or a
+  missing section fail closed against duplicate sends.
 - A green plan names `CURRENT_CODEX_BODY` as transport owner and sets
   `repository_owner_confirmation_required=false`; mandatory host UI safety
   confirmation remains an external runtime boundary and is never bypassed.

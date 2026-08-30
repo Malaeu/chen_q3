@@ -54,6 +54,7 @@ python3 orchestrator/workflow_runtime.py run --through close-node
 python3 orchestrator/workflow_runtime.py review-plan \
   --attachment <byte-exact-request.txt> \
   --request-commit <request-commit> \
+  --request-id <request-id> \
   --boundary-id <review-boundary> \
   --expected-sha256 <sha256>
 python3 orchestrator/workflow_runtime.py close-phase
@@ -61,7 +62,8 @@ python3 orchestrator/workflow_runtime.py close-session
 ```
 
 `review-plan` validates the UTF-8 attachment, final LF, SHA-256, Git blob,
-request commit and living-chat handle. `REVIEW_DISPATCH_READY` means the current
+request commit, request/boundary IDs, queue status `OPEN`, and living-chat
+handle. `REVIEW_DISPATCH_READY` means the current
 Codex body owns the upload/send in that same chat with no extra repository-level
 OK. Any mandatory host UI safety confirmation remains enforced by that runtime.
 The plan does not claim delivery until the sent message and natural reasoning
