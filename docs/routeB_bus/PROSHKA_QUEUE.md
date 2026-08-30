@@ -8,9 +8,13 @@ same-chat доставки и `IN_REVIEW -> ANSWERED` только после п
 safety confirmation остаётся внешней границей. Судья статусы не трогает, но
 обязан в вердикте называть `REQ`-id, на который отвечает.
 
-## REQ-2026-08-30-G3RATEFLOOR · Goal 058 G3 paper-rate source rerank · IN_REVIEW
+## REQ-2026-08-30-G3RATEFLOOR · Goal 058 G3 paper-rate source rerank · ANSWERED
 
-- `STATUS: IN_REVIEW`
+- `STATUS: ANSWERED`
+- Verdict: `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_G3_RATE_FLOOR_SOURCE_RERANK_2026-08-30.md`
+- Verdict commit: `ac8dec55094426e021e36b40461b773599e8a448`
+- Verdict Git blob: `768173802446a04663f827d4bdb77e5d1e508cf2`
+- Operative class: `TRY_FORMALIZE_G3_EXPLICIT_SATZ9_FUCHS_RATE_SOURCE`
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_G3_RATE_FLOOR_SOURCE_RERANK_2026-08-30.txt`
 - Request commit: `13fab4c521b62fd5b8ca23b097160894f8cd15f0`
 - Delivery: same living chat `6a8c3e2a-df50-83eb-b53d-dd4cc46f646f`, message
