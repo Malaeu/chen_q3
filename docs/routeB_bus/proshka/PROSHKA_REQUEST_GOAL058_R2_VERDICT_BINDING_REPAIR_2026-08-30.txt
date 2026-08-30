@@ -1,0 +1,55 @@
+STATUS: REQUEST_BINDING_REPAIR_ONLY
+REQUEST_ID: REQ-2026-08-29-R2K-BINDING-REPAIR
+ORIGINAL_REQUEST_ID: REQ-2026-08-29-R2K
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+ORIGINAL_REQUEST_INTRODUCING_COMMIT: 02e60cc4177e9ec45b3571dfd082253d20f12f92
+ORIGINAL_ACTIVATION_COMMIT: 2661fe430cc04e45908e7d0d63b4c111db52a926
+ORIGINAL_VERDICT_COMMIT: 81da25d6ed2675800bb72d6feaf1a42a1f292a03
+ORIGINAL_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_R2_MOVING_KRYLOV_FESHBACH_DISCRIMINATOR_2026-08-29.md
+ORIGINAL_VERDICT_GIT_BLOB: beeffcd1ca7dd8f038f99a8e151d22e3fec021a5
+
+Repair only the byte binding of the already returned verdict. Do not repeat the
+mathematical audit and do not change KILL_R2_MOVING_KRYLOV_FESHBACH.
+
+The original verdict records this incorrect attachment manifest:
+
+  BYTES: 5398
+  LINES: 111
+  SHA256: 04d0b471f6f8c59b3176d12e257df7cf3e5d90e45afc199b290379467ef30dd3
+  GIT_BLOB: 067dd092faf722d7db193c160c2f1324285217b2
+
+The authoritative request bytes actually committed at the request-introducing
+commit are:
+
+  PATH: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_R2_MOVING_KRYLOV_FESHBACH_DISCRIMINATOR_2026-08-29.txt
+  BYTES: 4682
+  LINES: 108
+  SHA256: a746da60b5a6052a0e32d6341681d4848bb9c36b4a20b88c50a0f41271031e3f
+  GIT_BLOB: 067dd5f70bca53b948003702de49aca13bde0102
+  FINAL_LF: true
+
+Verify these values directly from commit
+02e60cc4177e9ec45b3571dfd082253d20f12f92. Then write and push exactly one
+append-only binding-repair verdict file:
+
+  docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_R2_MOVING_KRYLOV_FESHBACH_BINDING_REPAIR_2026-08-30.md
+
+The repair must bind:
+
+  ORIGINAL_REQUEST_ID
+  ORIGINAL_REQUEST_INTRODUCING_COMMIT
+  exact corrected request path, bytes, lines, SHA256, Git blob, and final LF
+  ORIGINAL_VERDICT_COMMIT
+  ORIGINAL_VERDICT_PATH
+  ORIGINAL_VERDICT_GIT_BLOB
+  OPERATIVE_CLASS: KILL_R2_MOVING_KRYLOV_FESHBACH
+  MATHEMATICAL_CONTENT_CHANGED: false
+  LEAN_AUTHORIZED: false
+  NEXT_CONTROL_ACTION: OWNER_RERANK_AFTER_R2_KILL
+  ROUTE: CHALLENGER_NOT_RH
+  ROUTE_PROMOTION: false
+  RH_CLAIM: false
+
+Commit and push the repair to rh_clean. Do not edit the original request,
+original verdict, Lean, the six-field phase key, Route status, or RH status.
