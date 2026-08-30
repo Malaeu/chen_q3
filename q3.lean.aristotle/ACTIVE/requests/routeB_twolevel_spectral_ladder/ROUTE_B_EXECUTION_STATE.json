@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v3_live_bus",
-  "updated_at": "2026-08-27T23:29:09+02:00",
+  "updated_at": "2026-08-30T23:15:42+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": ".",
   "architecture": {
@@ -10,17 +10,17 @@
     "route_b_rh_status": "NOT_RH",
     "root_implementation_plan_overridden": false
   },
-  "operational_status": "GOAL_058_G3_PROLATE_RATE_AND_FLOOR_OPEN",
+  "operational_status": "GOAL_058_WEIGHTED_RESIDUAL_SOURCE_RATE_SELECTED",
   "current": {
-    "stage_id": "RB-GOAL-058-G3-PROLATE-RATE-FLOOR",
-    "contract_obligation": "G3_PROLATE_RATE_CENTRAL_OVERLAP_DENOMINATOR_FLOOR",
-    "name": "Goal058G3ProlateRateFloor",
-    "status": "SOURCE_THEOREM_OPEN",
+    "stage_id": "RB-GOAL-058-WEIGHTED-RESIDUAL-SOURCE-RATE",
+    "contract_obligation": "SELECTED_FERRERS_WEIGHTED_RESIDUAL_SOURCE_RATE",
+    "name": "Goal058SelectedFerrersWeightedResidualSourceRate",
+    "status": "SELECTED_READ_ONLY_SOURCE_DISCRIMINATOR",
     "stop_code": null,
     "selected_bus_goal_nnn": "058",
     "selected_bus_goal_path": "docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md",
     "next_required_actor": "CODEX",
-    "next_action": "Construct the actual normalized two-mode prolate h_lambda on the current PairIndex family, export the CCM Lemma 7.2 uniform O(lambda^-2) estimate to the proved explicitCCMLimitH, prove nonzero central overlap and an eventual projected denominator floor, and bind them to one precommitted coupled (m,N) schedule. Keep G1 open; do not claim G3, Route B promotion, or RH.",
+    "next_action": "Run exactly one read-only discriminator for an exact current-shelf source identity or bound implying sqrt(selected odd mass) times sqrt(literal residual energy) tends to zero on the selected cofinal schedule. Reuse prior source records and plants; do not reopen direct Satz9/Fuchs or parity-floor searches, edit Lean, run numerics, promote Route B, or claim RH.",
     "route_promotion": false,
     "rh_claimed": false
   },

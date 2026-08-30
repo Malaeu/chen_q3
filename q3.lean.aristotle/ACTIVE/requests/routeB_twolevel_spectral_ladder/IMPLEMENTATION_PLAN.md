@@ -1,26 +1,27 @@
 # Route B — request-local implementation plan
 
-Updated: 2026-08-14 01:56 CEST
+Updated: 2026-08-30 23:15 CEST
 
-Status: `GOAL_058_G3_PROLATE_RATE_AND_FLOOR_OPEN / NOT_RH / CHALLENGER`
+Status: `GOAL_058_WEIGHTED_RESIDUAL_SOURCE_RATE_SELECTED / NOT_RH / CHALLENGER`
 
 This request-local plan does not override the root `IMPLEMENTATION_PLAN.md` or
 promote Route B above the H-bridge mainline.
 
 ## Current action
 
-The explicit-limit leaf is closed by
-`D0PstarExplicitCCMLimitFourier.lean`:
+The owner-authorized physical rerank selects exactly one read-only source
+discriminator for `SELECTED_FERRERS_WEIGHTED_RESIDUAL_SOURCE_RATE`.  Its exact
+consumer is
 
-1. the literal polynomial-Gaussian `h` of CCM Eq. (7.1) is defined;
-2. its Fourier invariance is proved in the current repository convention;
-3. Poisson summation proves multiplicative inversion of `E_star h`.
+```text
+sqrt(selectedFerrersFiniteCCMOddMass P k) *
+  sqrt(selectedFerrersFiniteCCMResidualEnergy P k) -> 0
+```
 
-The current G3 source obligation is the actual normalized two-mode prolate
-`h_lambda` on `PairIndex`, the CCM Lemma 7.2 uniform `O(lambda^-2)` estimate to
-the proved `h`, a nonzero central overlap and eventual projected denominator
-floor, all bound to one precommitted coupled `(m,N)` schedule. G1 stays open as
-the parallel spectral front.
+on the selected cofinal schedule.  The discriminator must identify an exact
+current-shelf supplier or derivation and verify its implication to this
+consumer.  Existing source records and plants are evidence; repeating the same
+mode/chi or direct Satz9/Fuchs search is forbidden.
 
 ## Physical bus
 
@@ -49,11 +50,11 @@ Finite calibration facts and the generic `NormalizedTrackingRateTransfer` and
 ## Execution rule
 
 1. Keep the active physical Goal 058 open.
-2. Execute only
-   `G3_PROLATE_RATE_CENTRAL_OVERLAP_DENOMINATOR_FLOOR` until it closes or
-   reaches an honest source/API stop.
-3. Preserve the P59 `_normalized` supplier name lock and the one-family invariant.
-4. Do not create Bus 010, promote Route B, or
+2. Execute only `SELECTED_FERRERS_WEIGHTED_RESIDUAL_SOURCE_RATE` as a read-only
+   source discriminator.
+3. Do not edit Lean, run numerics, call Aristotle, or dispatch a reviewer.
+4. Preserve the P59 `_normalized` supplier name lock and the one-family invariant.
+5. Do not create Bus 010, promote Route B, or
    claim RH.
 
 Validation:

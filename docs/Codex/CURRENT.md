@@ -2,11 +2,11 @@
 
 ```yaml
 schema: q3_codex_current_task.v1
-status: CLOSED
-task_file: docs/Codex/TASK_2026-08-30_goal058_g3_rate_floor_source_rerank.md
-source_commit: 7b96eca0121087abdbc69f360d54c703c02fd0c8
-updated_at: 2026-08-30T15:32:40+02:00
-updated_by: CODEX_SELECTED_FERRERS_EVEN_SECTOR_FLOOR_SOURCE_DISCRIMINATOR
+status: ACTIVE
+task_file: docs/Codex/TASK_2026-08-30_goal058_weighted_residual_source_rate_rerank.md
+source_commit: 93f66d31c6e942a248f6a9e9cc4bd2f23534fa11
+updated_at: 2026-08-30T23:15:42+02:00
+updated_by: OWNER_AUTHORIZED_PHYSICAL_RERANK
 ```
 
 This is the single owner-controlled repository pointer for work that Codex must

@@ -14,24 +14,22 @@ facts/history. `loop_state.json` is a compatibility mirror only. The stale twin
 path `/Users/emalam/Documents/GitHub/rh_lean_01_2026` is pointer-only for this
 request state.
 
-## CURRENT OPERATIONAL STATUS — 2026-08-14
+## CURRENT OPERATIONAL STATUS — 2026-08-30
 
 ```text
-GOAL_058_G3_PROLATE_RATE_AND_FLOOR_OPEN
-RB-GOAL-058-G3-PROLATE-RATE-FLOOR / G3_PROLATE_RATE_CENTRAL_OVERLAP_DENOMINATOR_FLOOR
+GOAL_058_WEIGHTED_RESIDUAL_SOURCE_RATE_SELECTED
+RB-GOAL-058-WEIGHTED-RESIDUAL-SOURCE-RATE / SELECTED_FERRERS_WEIGHTED_RESIDUAL_SOURCE_RATE
 CHALLENGER / NOT_RH
 BUS_010: VOID
 ```
 
-The bounded explicit-limit leaf is closed: the literal polynomial-Gaussian `h`
-of CCM Eq. (7.1), its Fourier invariance, and
-`E_star h (u^-1) = E_star h u` are kernel checked in
-`D0PstarExplicitCCMLimitFourier.lean`. The current G3 source obligation is now
-the actual normalized two-mode prolate `h_lambda` on `PairIndex`, the CCM Lemma
-7.2 uniform approximation rate to this proved limit, a nonzero central overlap
-and projected denominator floor, all on one coupled `(m,N)` schedule. G1
-remains open as the parallel spectral front. No G3 closure, Route B promotion,
-or RH claim follows from the closed leaf.
+The direct Satz9/Fuchs formalization and current-shelf even-sector source
+transaction are attempt-level KILLs.  The owner-authorized physical rerank now
+selects the consolidation DAG's next independent root: the exact weighted
+residual source rate consumed by the already kernel-checked eventual
+complement-floor receiver.  The first action is one read-only current-shelf
+source discriminator.  It does not reopen either killed route, supply a sector
+floor, close Goal 058, promote Route B, or make an RH claim.
 
 ## GOAL 057 RESTORABLE PAUSE — 2026-08-13
 
