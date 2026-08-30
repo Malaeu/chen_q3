@@ -3182,10 +3182,15 @@ critical strip калибровка `g_k`, такая что семейство 
   нормальности или нормировки при растущем типе.
 
 **Вопрос:** есть ли классическая теорема этой формы, или нужен другой объект?
-## REQ-2026-08-29-R2K · Goal 058 moving Krylov/Feshbach discriminator · OPEN
+## REQ-2026-08-29-R2K · Goal 058 moving Krylov/Feshbach discriminator · ANSWERED
 
-- `STATUS: OPEN`
+- `STATUS: ANSWERED`
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_R2_MOVING_KRYLOV_FESHBACH_DISCRIMINATOR_2026-08-29.txt`
+- Verdict: `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_R2_MOVING_KRYLOV_FESHBACH_DISCRIMINATOR_2026-08-29.md`
+- Binding repair: `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_R2_MOVING_KRYLOV_FESHBACH_BINDING_REPAIR_2026-08-30.md`
+- Operative class: `KILL_R2_MOVING_KRYLOV_FESHBACH`
+- Verdict commit: `81da25d6ed2675800bb72d6feaf1a42a1f292a03`
+- Binding-repair commit: `034123539bb4a13c1aa5b902bcdd9ada1efc701c`
 - Boundary: `GOAL058_R2_MOVING_KRYLOV_FESHBACH_DISCRIMINATOR`
 - Batch: three coupled questions — carrier admissibility, independent coupling
   consumer, and exact first theorem versus route kill.
