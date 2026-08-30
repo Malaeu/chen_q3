@@ -17,14 +17,14 @@
   "anchor_locked_A3_status": "PASS",
   "anchor_locked_A4_code": "CROSSOVER_CONFIRMED",
   "anchor_locked_A5_tail_code": "TAIL_FLATTENING_REFUTED",
-  "current_gate": "GOAL_058_WEIGHTED_RESIDUAL_SOURCE_RATE_DISCRIMINATOR",
+  "current_gate": "GOAL_058_WEIGHTED_RESIDUAL_CURRENT_SHELF_KILLED_RECHECKABLE",
   "dust_model_D1_code": "DUST_ADDITIVE_REFUTED",
   "dust_model_D2_code": "ZONED_JUDGE_PASS",
   "dust_model_D2_zero_consistent_fraction_j100": "0.5500000000000000444089209850062616169452667236328125",
   "dust_model_D3_first_zero_share_ZC_pass": true,
   "dust_model_D4_code": "CROSSOVER_LAW_REFUTED",
   "dust_model_D5_status": "NOT_RUN",
-  "failure_code": null,
+  "failure_code": "KILL_SELECTED_FERRERS_WEIGHTED_RESIDUAL_SOURCE_RATE_ON_CURRENT_SOURCE_SHELF",
   "forbidden_next_before_operator_gate": [],
   "historical_forbidden_before_operator_gate": [
     "BoundaryOperatorConstructionAudit",
@@ -33,7 +33,7 @@
     "slope_refit",
     "raw_scalar_N_convergence_repair"
   ],
-  "last_attempted_gate": "ZeoProvenanceHarmonizationVerify_v1",
+  "last_attempted_gate": "GOAL058_WEIGHTED_RESIDUAL_SOURCE_RATE_DISCRIMINATOR",
   "last_codes": [
     "ANCHOR_REPRODUCED",
     "PLANCHEREL_REAL_PASS",
@@ -89,8 +89,8 @@
     "T5_FPLUS_CONSTANT_MODE_LEAN_PROVED",
     "ZETA_HALF_ETA_CONTINUATION_BRIDGE_MISSING"
   ],
-  "last_completed_gate": "ZeoProvenanceHarmonizationVerify_v1",
-  "last_completed_gate_status": "OVERCLAIM_LIST_PLUS_MYTHOS_REPAIRS_PRESENT_PLUS_OPEN_CRITICAL_ZEO_EXPORT_AMBIGUOUS_PLUS_PLANT_INERT",
+  "last_completed_gate": "GOAL058_WEIGHTED_RESIDUAL_SOURCE_RATE_DISCRIMINATOR",
+  "last_completed_gate_status": "KILL_SELECTED_FERRERS_WEIGHTED_RESIDUAL_SOURCE_RATE_ON_CURRENT_SOURCE_SHELF",
   "last_failure_codes": [
     "OVERCLAIM_LIST",
     "PLANT_INERT",
@@ -98,8 +98,8 @@
     "EXECUTION_STATE_OUT_OF_SCOPE_STALE_AFTER_009"
   ],
   "last_json": "NONE_ZERO_COMPUTE",
-  "last_report": "bus/009_zeo_provenance_harmonization_verify.answer.md",
-  "last_verdict": "OVERCLAIM_LIST;MYTHOS_REPAIRS_PRESENT;OPEN_CRITICAL_ZEO_EXPORT_AMBIGUOUS;PLANT_INERT;CLASSIFICATION_SCOPE_INCOMPLETE;EXECUTION_STATE_OUT_OF_SCOPE_STALE_AFTER_009",
+  "last_report": "docs/routeB_bus/CODEX_REPORT_GOAL058_WEIGHTED_RESIDUAL_SOURCE_RATE_DISCRIMINATOR_2026-08-30.md",
+  "last_verdict": "KILL_SELECTED_FERRERS_WEIGHTED_RESIDUAL_SOURCE_RATE_ON_CURRENT_SOURCE_SHELF",
   "ledger_preflight_json": "out/ledger_audit_v2_preflight.json",
   "ledger_preflight_report": "ledger_audit_v2.md",
   "ledger_preflight_status": "LEDGER_AUDIT_BLOCKED",
@@ -111,7 +111,7 @@
   "nconv_t1_stop": "N_NOT_CONVERGING_FALSE",
   "nconv_triage_json": "out/nconv_triage.json",
   "new_lambda_or_N_anchor_bought": false,
-  "next_gate": "WEIGHTED_RESIDUAL_CURRENT_SHELF_SOURCE_IDENTITY_OR_BOUND",
+  "next_gate": "CONSUMER_FIRST_PHYSICAL_RERANK_WITH_NAMED_NOVELTY_AXIS",
   "operator_gate_alignment_append": "zero-pad nested V_n packet vectors before 3x3 Procrustes",
   "operator_gate_block_structure": "S0=(2x2 even) direct_sum (1x1 odd); report S0_oo, eig(even 2x2), Delta_eff separately",
   "operator_gate_case_b_signature": "ratio drift 90->120 at least 10x smaller than raw theta drift",

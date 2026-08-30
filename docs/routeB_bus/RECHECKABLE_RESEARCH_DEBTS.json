@@ -227,6 +227,74 @@
           "git_blob": "349b565742b170553e37f567aa77338e9515c39c"
         }
       ]
+    },
+    {
+      "id": "SELECTED_FERRERS_WEIGHTED_RESIDUAL_SOURCE_RATE_CURRENT_SHELF",
+      "target_id": "SELECTED_FERRERS_WEIGHTED_RESIDUAL_SOURCE_RATE",
+      "classification": "RESEARCH_DEBT",
+      "execution_status": "KILLED",
+      "epistemic_status": "RESEARCH_DEBT",
+      "not_disproved": true,
+      "status": "KILLED_RECHECKABLE",
+      "killed_at": "2026-08-30",
+      "reason": "The exact mode-weighted residual identities and conditional receivers are present, but the current mode/chi and source shelf supplies no subcritical log-weighted commutator rate for the selected cofinal family.",
+      "missing_object": "A source theorem or alternative consumer-specific interface implying sqrt(selected odd mass) times sqrt(literal residual energy) tends to zero on the selected cofinal schedule.",
+      "terminal_consumer": "The Goal 058 eventual complement-floor receiver for the literal selected Ferrers family.",
+      "original_requested_object": "A selected-family source rate for the weighted literal Rayleigh residual.",
+      "downstream_consumer": "The Goal 058 eventual complement-floor receiver for the literal selected Ferrers family.",
+      "actual_consumer_requirement": "Any proof-carrying source estimate sufficient for the exact weighted-residual limit consumed by the existing receiver.",
+      "original_object_is": "UNKNOWN",
+      "necessity_evidence": [],
+      "known_weaker_interfaces": [
+        "Direct decay of L_k times oddMass_k times the exact commutator-defect energy.",
+        "A consumer-specific resolvent or form estimate implying the same eventual complement-floor conclusion without a standalone global residual rate."
+      ],
+      "failure_type": "NO_SOURCE",
+      "death_evidence": [],
+      "consumer_implication": "Any audited interface Z proving the exact weighted-residual limit, or directly proving the existing eventual complement-floor conclusion with the same source objects, discharges this debt.",
+      "weaker_interface_probe": "Target the complement-floor consumer directly and prove the exact implication from a derivative-level, oscillatory, resolvent, or local form estimate.",
+      "why_interesting": "It would reuse the complete kernel-green residual and complement-floor receiver chain and avoid rebuilding the killed direct Satz9 and parity-floor source searches.",
+      "unlock_value": "HIGH",
+      "estimated_difficulty": "HIGH",
+      "last_attempt": {
+        "date": "2026-08-30",
+        "outcome": "KILL_CURRENT_SOURCE_SHELF",
+        "approach": "Consumer-first audit of the exact commutator identity, current mode/chi rate inputs, derivative-level source controls and prior source-rate preflight."
+      },
+      "reopen_if": [
+        "A derivative or log-Sobolev source theorem supplies a subcritical bound for the literal selected residual.",
+        "A cancellation-preserving oscillatory prime estimate supplies the missing commutator-defect rate.",
+        "A direct consumer-specific estimate proves the weighted-residual limit or eventual complement floor without the unavailable global source rate."
+      ],
+      "reopen_triggers": [
+        "NEW_LITERATURE",
+        "NEW_THEOREM",
+        "NEW_DERIVATION",
+        "PROSHKA_RESEARCH",
+        "COUNTEREXAMPLE"
+      ],
+      "next_probe": "Ask for a genuinely new derivative-level, oscillatory, resolvent, or consumer-direct interface; do not repeat the current mode/chi shelf audit.",
+      "novelty_requirement": [
+        "Add a derivative-level source premise not present in the prior mode/chi package.",
+        "Use cancellation-preserving oscillatory information rather than componentwise absolute bounds.",
+        "Change representation to a resolvent or direct complement-floor estimate.",
+        "Prove a strictly weaker sufficient consumer lemma with an exact implication proof.",
+        "Search for a counterexample or obstruction that would justify MATHEMATICALLY_DEAD."
+      ],
+      "last_external_check": "2026-08-30",
+      "search_hints": [
+        "selected Ferrers derivative log Sobolev residual source rate",
+        "oscillatory von Mangoldt finite window commutator defect estimate",
+        "weighted residual direct complement floor resolvent selected cofinal family"
+      ],
+      "related_goal": "058",
+      "authoritative_refs": [
+        {
+          "path": "docs/routeB_bus/CODEX_REPORT_GOAL058_WEIGHTED_RESIDUAL_SOURCE_RATE_DISCRIMINATOR_2026-08-30.md",
+          "commit": "4aa058d4ee49a61f2ea3623a425e25a037ddc46b",
+          "git_blob": "dd70b92e62a3b4efe558a5106be5d00f3ca76a64"
+        }
+      ]
     }
   ],
   "adjudications": [

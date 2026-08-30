@@ -17,19 +17,20 @@ request state.
 ## CURRENT OPERATIONAL STATUS — 2026-08-30
 
 ```text
-GOAL_058_WEIGHTED_RESIDUAL_SOURCE_RATE_SELECTED
+GOAL_058_WEIGHTED_RESIDUAL_CURRENT_SHELF_KILLED_RECHECKABLE
 RB-GOAL-058-WEIGHTED-RESIDUAL-SOURCE-RATE / SELECTED_FERRERS_WEIGHTED_RESIDUAL_SOURCE_RATE
 CHALLENGER / NOT_RH
 BUS_010: VOID
 ```
 
-The direct Satz9/Fuchs formalization and current-shelf even-sector source
-transaction are attempt-level KILLs.  The owner-authorized physical rerank now
-selects the consolidation DAG's next independent root: the exact weighted
-residual source rate consumed by the already kernel-checked eventual
-complement-floor receiver.  The first action is one read-only current-shelf
-source discriminator.  It does not reopen either killed route, supply a sector
-floor, close Goal 058, promote Route B, or make an RH claim.
+The owner-authorized weighted-residual current-shelf discriminator closed as
+`KILL_SELECTED_FERRERS_WEIGHTED_RESIDUAL_SOURCE_RATE_ON_CURRENT_SOURCE_SHELF`.
+The exact mode-weighted residual identities and conditional complement-floor
+receiver are kernel-green, but current mode/chi inputs do not supply the
+required subcritical log-weighted commutator source rate.  The mathematical
+rate remains open as a recheckable research debt.  No later execution root is
+selected by this closeout.  Goal 058 stays open; no sector floor, Route
+promotion, or RH claim follows.
 
 ## GOAL 057 RESTORABLE PAUSE — 2026-08-13
 

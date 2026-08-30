@@ -1,7 +1,7 @@
 # Codex task — Goal 058 weighted-residual source-rate rerank
 
 Date: 2026-08-30
-Status: `ACTIVE`
+Status: `CLOSED_CURRENT_SHELF_KILL_RESEARCH_DEBT`
 Parent: Goal 058 / selected Ferrers ground-to-trial chain
 
 ## Owner selection
@@ -53,3 +53,16 @@ authorized by this discriminator.
 - Do not touch foreign mode-four or dirty control/map paths.
 - No Route promotion and no RH claim.
 - `PX_RH_CLAIM: NOT_MADE`.
+
+## Executed result
+
+The read-only discriminator closed as
+`KILL_SELECTED_FERRERS_WEIGHTED_RESIDUAL_SOURCE_RATE_ON_CURRENT_SOURCE_SHELF`.
+The exact representation chain and conditional receivers are kernel-green, but
+the current mode/chi and source inputs do not supply the required subcritical
+log-weighted commutator rate.  No newer exact supplier was found, and the prior
+source preflight already exhausted this same shelf.
+
+The mathematical rate remains open as `KILLED_RECHECKABLE / RESEARCH_DEBT`.
+Exact closeout:
+`docs/routeB_bus/CODEX_REPORT_GOAL058_WEIGHTED_RESIDUAL_SOURCE_RATE_DISCRIMINATOR_2026-08-30.md`.
