@@ -107,9 +107,9 @@ LEAN_DECL  H2a_SimpleEvenGround_FromPenaltyCoercivity  H2aPenaltyCoercivity.lean
 `hnormalized` — тоже уходит в `G2` как гипотезы одного вызова.
 
 **Наработки, сведённые нами 2026-08-11.** `hsimple` эквивалентен счёту:
-`rank(M − εI) = 2N` (`probes/Probe_Inertia_SimpleAsCount.lean`), и расщепляется чётностью на
-два условия размерности `N` (`probes/Probe_Parity_KernelSplit.lean`). Ни одно из двух не
-доказано.
+`rank(M − εI) = 2N` (`docs/cartographer/probes/Probe_Inertia_SimpleAsCount.lean`), и
+расщепляется чётностью на два условия размерности `N`
+(`docs/cartographer/probes/Probe_Parity_KernelSplit.lean`). Ни одно из двух не доказано.
 
 ### Дно дополнения раскалывается по чётности — вердикт Мифоса 2026-08-14
 

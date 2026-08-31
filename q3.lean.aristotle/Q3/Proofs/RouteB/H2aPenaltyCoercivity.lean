@@ -425,22 +425,50 @@ theorem H2a_SimpleEvenGround_FromPenaltyCoercivity
   · apply even_clause hG hJ hJG hJK hJq hcert (by linarith) (simplicity_clause hG hcert (by linarith))
 
 /-!
-## Next step: family instantiation
+## Downstream status (audited 2026-08-15)
 
 The abstract theorem `H2a_SimpleEvenGround_FromPenaltyCoercivity` above is the finite,
-basis-invariant engine of slot `H2a`.  The next lemma to prove is the **family
-instantiation** feeding it into the RH route (`RequestProject/Main.lean`):
+basis-invariant engine of slot `H2a`.  An earlier version of this note listed a lemma
+`SIEG_of_penalty` as the next thing to prove.  **That transport lemma already exists**
+under different names; the note was stale.  Current status of the three downstream
+layers, together with where each one lives:
 
-theorem `SIEG_of_penalty` : given `RHRoute.Approx P` and index `j`, the concrete finite
-data `(n, G, K, J, q, a, β, τ)` attached to the `j`-th approximant `F_j` satisfying the
-eight hypotheses of `H2a_SimpleEvenGround_FromPenaltyCoercivity` (in particular the
-penalty certificate `K - β G + τ (Gq)(Gq)* ⪰ 0` with `a < β`), together with a bridge
-relating this `(K, G)`-pencil eigenproblem to the transform used by the abstract predicate
-`RHRoute.SIEG`, yields `RHRoute.SIEG P j`.  Its proof applies
-`H2a_SimpleEvenGround_FromPenaltyCoercivity` to obtain the simple, isolated, `J`-even
-lowest generalized eigenvalue, then transports that conclusion across the bridge.  That
-lemma, plus the actual construction of `(G_j, K_j, J_j, q_j)` and a verified certificate
-for each `j`, is what discharges `RHRoute.supply_H2a`.
+1. **Transport (DONE, placeholder-free).**
+   `aristotle_output/output-final_aristotle/RequestProject/H2aBridge.lean`
+   * `RHRoute.ground_simple_isolated_even_of_spectralData` — from `SpectralData P j`,
+     obtains this engine's simple / isolated / `J`-even lowest generalized eigenvalue;
+   * `RHRoute.hfam_even_of_spectralData` — carries that conclusion across
+     `PencilBridge` to evenness of the approximant `Hfam P j`;
+   * `RHRoute.wrong_parity_blocks_evenness` — `Fin 2` plant showing `hJK` is
+     load-bearing (drop it and the ground state is no longer `J`-even).
+   Caveat: that file sits in the Aristotle sandbox on toolchain `v4.28.0`, while this
+   tree is on `v4.26.0`, and the names `Approx / Hfam / PencilData / PencilBridge /
+   SpectralData` do not exist anywhere under `Q3/`.  Porting it in is mechanical but
+   has not been done.
+
+2. **Wiring (DONE, but vacuous by construction).**
+   `aristotle_output/16535289-.../RequestProject/ProjectApprox.lean`
+   * `supply_H2a_Pstar_of_penaltyPilot` discharges `SlotH2a (Pstar D)` from a
+     `PenaltyPilotFamily D` — but that proof is `⟨P.pencil j, P.bridge j⟩`, i.e. it
+     merely unpacks fields.  Likewise `supply_{H1,anchor,S1,S2}_Pstar` are projections
+     out of the hypothesis bundle `PstarSupplyContract`.  These files supply the frame,
+     not the content, and say so explicitly.
+
+3. **Content (OPEN — this is the actual debt).**
+   Nothing above produces a single concrete matrix.  What remains is to construct, for
+   the source-locked `Pstar D`:
+   * `pencil : ℕ → PencilData` — the finite data `(n, G_j, K_j, J_j, q_j, a, β, τ)`
+     discharging all ten `PencilData` fields, in particular the penalty certificate
+     `K - β G + τ (Gq)(Gq)* ⪰ 0` with `a < β`;
+   * `bridge : ∀ j, Nonempty (PencilBridge (Pstar D) j (pencil j))` — the linear
+     `transform`, plus `parity_intertwine` and `ground_link`.
+
+`ground_link` is the hard one: it asserts that the transform of a lowest eigenvector of
+the finite pencil is a nonzero scalar multiple of the holomorphic approximant `Hfam P j`.
+`PencilBridge` currently carries it as a hypothesis field and flags the construction as
+out of scope ("`Ran(synthesis)` is not `T`-invariant in this project — the pencil IS the
+compressed object").  Discharging it is a representation theorem, not a certificate
+computation, and it is what actually blocks `RHRoute.supply_H2a`.
 -/
 
 end H2aPenalty
