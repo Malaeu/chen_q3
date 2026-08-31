@@ -63,6 +63,36 @@
         "Q3.RouteB.D0Pstar.sourceWeilGraphEvenNonzeroTail_low_fourier_vanish",
         "Q3.RouteB.D0Pstar.sourceWeilGraphEvenZeroMode_orthogonal_nonzeroTail"
       ]
+    },
+    {
+      "admitted_scope": [],
+      "closes": [
+        "D0PSTAR_SOURCE_EVEN_NONZERO_ORTHONORMAL_SYNTHESIS_LOW_BAND_ASSEMBLY"
+      ],
+      "domain": "source-Weil shifted graph carrier, finite zero-plus-nonzero-even head, and closed nonzero-even tail for every PairIndex and natural cutoff R",
+      "entry_id": "GOAL058_D0PSTAR_SOURCE_EVEN_NONZERO_LOW_BAND_ASSEMBLY_20260831",
+      "hypothesis_provenance": [],
+      "hypothesis_provenance_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "normalization": "the public low-band coefficient index n in Fin R denotes the normalized physical pair plus-or-minus (n+1), with the zero mode added separately and the closed tail beginning at plus-or-minus (R+1)",
+      "opens": [
+        "SELECTED_FERRERS_EVEN_HEAD_TAIL_EXACT_SHIFT_COERCIVITY_OR_FESHBACH"
+      ],
+      "quantifiers": "for every PairIndex i, cutoff R, zero coefficient c0, finite coefficient family c : Fin R to Complex, and vector in the closed nonzero-even tail; the ambient inner product of the synthesized head with that tail vector is zero",
+      "semantic_attestation_id": null,
+      "source_commit": "2d41a7dccc20a2c2e2a5ad21bcf3b4227a94dde5",
+      "source_git_blob": "f9f354eb41f1a3326800fdaf5cc07c22dc420519",
+      "source_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroLowBandAssembly.lean",
+      "status": "KERNEL_GREEN",
+      "task_blob": "4aa7af2dccd702f3b927ab1deb38eeb38b69d71d",
+      "task_path": "docs/Codex/TASK_2026-08-31_goal058_even_nonzero_low_band_assembly.md",
+      "terminal_consumer": "literal selected-row even head-tail coercivity or positive Schur-Feshbach margin at the exact selected Rayleigh shift on the production cofinal schedule",
+      "theorem_ids": [
+        "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenNonzeroMode_orthonormal",
+        "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenNonzeroLowBandSynthesis",
+        "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenHeadSynthesis",
+        "Q3.RouteB.D0Pstar.sourceWeilGraphEvenNonzeroLowBandSynthesis_orthogonal_tail",
+        "Q3.RouteB.D0Pstar.sourceWeilGraphEvenHeadSynthesis_orthogonal_tail"
+      ]
     }
   ],
   "event_ledger": [],
