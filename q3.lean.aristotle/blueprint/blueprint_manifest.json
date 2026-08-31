@@ -12,7 +12,7 @@
   },
   "env_index_digest": "9f5e59f08f8dfed5289777b8be2dbe9b71bd92972dd8878ee7c6a52cb1d9b765",
   "generator_digest": "4e6ccc1d3b3ef5df025fef6630c594115f190ce28520ac4b6dcf231cc1f5c821",
-  "git_head": "86597736a03931480dd7d6d52d0b3c6deac1f025",
+  "git_head": "cf1e261c199f2d1715ccd96d487d3eefc56b13d7",
   "git_head_semantics": "latest commit touching tracked blueprint data inputs",
   "proof_statement_digest": "73f92dcf6a78cd96c100c4f752d52d0d6b21ca6c25f714f03813f8880d48c537",
   "rh_status": "NOT_RH",
