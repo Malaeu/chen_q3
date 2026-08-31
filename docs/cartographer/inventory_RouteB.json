@@ -1,16 +1,16 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 373,
-  "declarations": 4110,
-  "in_docs": 2028,
+  "files_scanned": 374,
+  "declarations": 4129,
+  "in_docs": 2043,
   "in_lemma_db": 4091,
-  "orphans": 12,
-  "uncatalogued": 12,
+  "orphans": 17,
+  "uncatalogued": 17,
   "orphan_files_top": [
     [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroLowBandAssembly.lean",
-      7
+      "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenFiniteHeadCrosswalk.lean",
+      12
     ],
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroTailCarrier.lean",
@@ -17489,14 +17489,204 @@
       "orphan": false
     },
     {
+      "kind": "def",
+      "name": "ccmEvenPositiveFinite",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenFiniteHeadCrosswalk.lean",
+      "line": 28,
+      "signature": "def ccmEvenPositiveFinite (N : ℕ) (r : Fin N) : CCMModeFinite N",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmEvenPositiveFinite_inj",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenFiniteHeadCrosswalk.lean",
+      "line": 31,
+      "signature": "private theorem ccmEvenPositiveFinite_inj (N : ℕ) (r s : Fin N) : ccmEvenPositiveFinite N r = ccmEvenPositiveFinite N s ↔ r = s",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmEvenPositiveFinite_ne_center",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenFiniteHeadCrosswalk.lean",
+      "line": 42,
+      "signature": "private theorem ccmEvenPositiveFinite_ne_center (N : ℕ) (r : Fin N) : ccmEvenPositiveFinite N r ≠ ccmCenterFinite N",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmEvenPositiveFinite_ne_neg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenFiniteHeadCrosswalk.lean",
+      "line": 50,
+      "signature": "private theorem ccmEvenPositiveFinite_ne_neg (N : ℕ) (r s : Fin N) : ccmEvenPositiveFinite N r ≠ ccmNegFinite N (ccmEvenPositiveFinite N s)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmEvenNegativeFinite_inj",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenFiniteHeadCrosswalk.lean",
+      "line": 59,
+      "signature": "private theorem ccmEvenNegativeFinite_inj (N : ℕ) (r s : Fin N) : ccmNegFinite N (ccmEvenPositiveFinite N r) = ccmNegFinite N (ccmEvenPositiveFinite N s) ↔ r = s",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmEvenNegativeFinite_ne_pos",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenFiniteHeadCrosswalk.lean",
+      "line": 73,
+      "signature": "private theorem ccmEvenNegativeFinite_ne_pos (N : ℕ) (r s : Fin N) : ccmNegFinite N (ccmEvenPositiveFinite N r) ≠ ccmEvenPositiveFinite N s",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmEvenNegativeFinite_ne_center",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenFiniteHeadCrosswalk.lean",
+      "line": 79,
+      "signature": "private theorem ccmEvenNegativeFinite_ne_center (N : ℕ) (r : Fin N) : ccmNegFinite N (ccmEvenPositiveFinite N r) ≠ ccmCenterFinite N",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmEvenNegFinite_involutive",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenFiniteHeadCrosswalk.lean",
+      "line": 87,
+      "signature": "private theorem ccmEvenNegFinite_involutive (N : ℕ) (j : CCMModeFinite N) : ccmNegFinite N (ccmNegFinite N j) = j",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "ccmEvenPairVector",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenFiniteHeadCrosswalk.lean",
+      "line": 95,
+      "signature": "noncomputable def ccmEvenPairVector (N : ℕ) (r : Fin N) : CCMModeFinite N → ℂ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "ccmEvenCoefficientEmbedding",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenFiniteHeadCrosswalk.lean",
+      "line": 105,
+      "signature": "noncomputable def ccmEvenCoefficientEmbedding (N : ℕ) (c0 : ℂ) (c : Fin N → ℂ) : CCMModeFinite N → ℂ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmEvenCoefficientEmbedding_reflection_even",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenFiniteHeadCrosswalk.lean",
+      "line": 113,
+      "signature": "theorem ccmEvenCoefficientEmbedding_reflection_even (N : ℕ) (c0 : ℂ) (c : Fin N → ℂ) : ∀ j, ccmEvenCoefficientEmbedding N c0 c (ccmNegFinite N j) = ccmEvenCoefficientEmbedding N c0 c j",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmEvenCoefficientEmbedding_center",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenFiniteHeadCrosswalk.lean",
+      "line": 168,
+      "signature": "private theorem ccmEvenCoefficientEmbedding_center (N : ℕ) (c0 : ℂ) (c : Fin N → ℂ) : ccmEvenCoefficientEmbedding N c0 c (ccmCenterFinite N) = c0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmEvenCoefficientEmbedding_positive",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenFiniteHeadCrosswalk.lean",
+      "line": 185,
+      "signature": "private theorem ccmEvenCoefficientEmbedding_positive (N : ℕ) (c0 : ℂ) (c : Fin N → ℂ) (r : Fin N) : ccmEvenCoefficientEmbedding N c0 c (ccmEvenPositiveFinite N r) = c r * (((Real.sqrt 2 : ℝ) : ℂ)⁻¹)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmEvenCoefficientEmbedding_negative",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenFiniteHeadCrosswalk.lean",
+      "line": 194,
+      "signature": "private theorem ccmEvenCoefficientEmbedding_negative (N : ℕ) (c0 : ℂ) (c : Fin N → ℂ) (r : Fin N) : ccmEvenCoefficientEmbedding N c0 c (ccmNegFinite N (ccmEvenPositiveFinite N r)) = c r * (((Real.sqrt 2 : ℝ) : ℂ)⁻¹)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmEvenCoefficientEmbedding_reconstruct",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenFiniteHeadCrosswalk.lean",
+      "line": 205,
+      "signature": "theorem ccmEvenCoefficientEmbedding_reconstruct (N : ℕ) (x : CCMModeFinite N → ℂ) (hx : ∀ j, x (ccmNegFinite N j) = x j) : ccmEvenCoefficientEmbedding N (x (ccmCenterFinite N)) (fun r => (((Real.sqrt 2 : ℝ) : ℂ)) * x (ccmEvenPositiveFinite N r)) = x",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmFiniteSynthesis_evenCoefficientEmbedding",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenFiniteHeadCrosswalk.lean",
+      "line": 258,
+      "signature": "theorem ccmFiniteSynthesis_evenCoefficientEmbedding (i : PairIndex) (c0 : ℂ) (c : Fin i.N → ℂ) : ccmFiniteSynthesis i (ccmEvenCoefficientEmbedding i.N c0 c) = sourceWeilGraphAmbient i (sourceWeilGraphEvenHeadSynthesis i c0 c)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmFiniteSynthesis_eq_sourceWeilGraphAmbient_evenHead_of_reflection",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenFiniteHeadCrosswalk.lean",
+      "line": 299,
+      "signature": "theorem ccmFiniteSynthesis_eq_sourceWeilGraphAmbient_evenHead_of_reflection (i : PairIndex) (x : CCMModeFinite i.N → ℂ) (hx : ∀ j, x (ccmNegFinite i.N j) = x j) : ccmFiniteSynthesis i x = sourceWeilGraphAmbient i (sourceWeilGraphEvenHeadSynthesis i (x (ccmCenterFinite i.N)) (fun r => (((Real.sqrt 2 : ℝ) : ℂ)) * x (ccmEvenPositiveFinite i.N r)))",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmFiniteSynthesis_eq_sourceWeilGraphAmbient_evenHead_of_mulVec_eq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenFiniteHeadCrosswalk.lean",
+      "line": 313,
+      "signature": "theorem ccmFiniteSynthesis_eq_sourceWeilGraphAmbient_evenHead_of_mulVec_eq (i : PairIndex) (x : CCMModeFinite i.N → ℂ) (hx : ccmComplexReflectionMatrix i.N *ᵥ x = x) : ccmFiniteSynthesis i x = sourceWeilGraphAmbient i (sourceWeilGraphEvenHeadSynthesis i (x (ccmCenterFinite i.N)) (fun r => (((Real.sqrt 2 : ℝ) : ℂ)) * x (ccmEvenPositiveFinite i.N r)))",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmFiniteSynthesis_reflectionEven_orthogonal_evenNonzeroTail",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenFiniteHeadCrosswalk.lean",
+      "line": 334,
+      "signature": "theorem ccmFiniteSynthesis_reflectionEven_orthogonal_evenNonzeroTail (i : PairIndex) (x : CCMModeFinite i.N → ℂ) (hx : ccmComplexReflectionMatrix i.N *ᵥ x = x) (y : SourceWeilGraphEvenNonzeroTailCarrier i i.N) : inner ℂ (ccmFiniteSynthesis i x) (sourceWeilGraphAmbient i (y : SourceWeilGraphCarrier i)) = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
       "kind": "theorem",
       "name": "sourceWeilGraphAmbient_evenNonzeroMode_orthonormal",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroLowBandAssembly.lean",
       "line": 29,
       "signature": "theorem sourceWeilGraphAmbient_evenNonzeroMode_orthonormal (i : PairIndex) : Orthonormal ℂ (fun n : ℕ => sourceWeilGraphAmbient i (sourceWeilGraphEvenNonzeroMode i n))",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "def",
@@ -17504,9 +17694,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroLowBandAssembly.lean",
       "line": 72,
       "signature": "noncomputable def sourceWeilGraphEvenNonzeroLowBandSynthesis (i : PairIndex) {R : ℕ} (c : Fin R → ℂ) : SourceWeilGraphCarrier i",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "def",
@@ -17514,9 +17704,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroLowBandAssembly.lean",
       "line": 78,
       "signature": "noncomputable def sourceWeilGraphEvenHeadSynthesis (i : PairIndex) {R : ℕ} (c0 : ℂ) (c : Fin R → ℂ) : SourceWeilGraphCarrier i",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -17524,9 +17714,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroLowBandAssembly.lean",
       "line": 84,
       "signature": "@[simp] theorem sourceWeilGraphAmbient_evenNonzeroLowBandSynthesis (i : PairIndex) {R : ℕ} (c : Fin R → ℂ) : sourceWeilGraphAmbient i (sourceWeilGraphEvenNonzeroLowBandSynthesis i c) = ∑ n : Fin R, c n • (((Real.sqrt 2 : ℝ) : ℂ)⁻¹ • (V_n_m i (n.val + 1 : ℕ) + V_n_m i (-((n.val + 1 : ℕ) : ℤ))))",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -17534,9 +17724,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroLowBandAssembly.lean",
       "line": 98,
       "signature": "@[simp] theorem sourceWeilGraphAmbient_evenHeadSynthesis (i : PairIndex) {R : ℕ} (c0 : ℂ) (c : Fin R → ℂ) : sourceWeilGraphAmbient i (sourceWeilGraphEvenHeadSynthesis i c0 c) = c0 • V_n_m i 0 + ∑ n : Fin R, c n • (((Real.sqrt 2 : ℝ) : ℂ)⁻¹ • (V_n_m i (n.val + 1 : ℕ) + V_n_m i (-((n.val + 1 : ℕ) : ℤ))))",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -17544,9 +17734,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroLowBandAssembly.lean",
       "line": 113,
       "signature": "theorem sourceWeilGraphEvenNonzeroLowBandSynthesis_orthogonal_tail (i : PairIndex) (R : ℕ) (c : Fin R → ℂ) (x : SourceWeilGraphEvenNonzeroTailCarrier i R) : inner ℂ (sourceWeilGraphAmbient i (sourceWeilGraphEvenNonzeroLowBandSynthesis i c)) (sourceWeilGraphAmbient i (x : SourceWeilGraphCarrier i)) = 0",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -17554,9 +17744,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroLowBandAssembly.lean",
       "line": 152,
       "signature": "theorem sourceWeilGraphEvenHeadSynthesis_orthogonal_tail (i : PairIndex) (R : ℕ) (c0 : ℂ) (c : Fin R → ℂ) (x : SourceWeilGraphEvenNonzeroTailCarrier i R) : inner ℂ (sourceWeilGraphAmbient i (sourceWeilGraphEvenHeadSynthesis i c0 c)) (sourceWeilGraphAmbient i (x : SourceWeilGraphCarrier i)) = 0",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "def",
@@ -41104,7 +41294,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/ZeroEscapeLogic.lean",
       "line": 28,
       "signature": "theorem zerosRealOn_of_zerosApproachOn (S : Set ℂ) (F : ℕ → ℂ → ℂ) (f : ℂ → ℂ) (hF : ∀ n, ZerosRealOn Set.univ (F n)) (htransfer : ZerosApproachOn S F f) : ZerosRealOn S f",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },

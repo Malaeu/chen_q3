@@ -4,7 +4,7 @@
 `python3 docs/cartographer/map_coverage.py`. Рукописная карта — `MAP.md`, она
 описывает узлы маршрута; это приложение описывает **файлы**, и оно полное.
 
-Всего файлов: **373** · упомянуто в `MAP.md`: **25** · вне карты: **348** · без описания в шапке: **0**
+Всего файлов: **374** · упомянуто в `MAP.md`: **25** · вне карты: **349** · без описания в шапке: **0**
 
 «вне карты» не значит «лишний»: значит, что обходом карты файл не находится.
 Именно так 2026-08-11 был построен заново мост `ker ↔ eigenspace`, стоявший в
@@ -181,6 +181,7 @@
 | `D0PstarSourceArchModePairingKernel` | — | Goal 057 B3.0D: source archimedean mode-pairing kernel Hermitianity | 0 |
 | `D0PstarSourceArchOffDiagonalCCMWRCrosswalk` | — | первая декларация: `logWindowZeroExtendedMode_integrable_for_e4a` | 0 |
 | `D0PstarSourceCCMOddMassReflectionDefect` | — | Exact source CCM odd mass as a reflection defect | 0 |
+| `D0PstarSourceEvenFiniteHeadCrosswalk` | — | Exact finite reflection-even CCM to source-Weil head crosswalk | 0 |
 | `D0PstarSourceEvenNonzeroLowBandAssembly` | — | Source-Weil nonzero-even low-band assembly | 0 |
 | `D0PstarSourceEvenNonzeroTailCarrier` | — | Source-Weil even zero mode and nonzero-tail carrier | 0 |
 | `D0PstarSourceLogWindowFourierIntegralCrosswalk` | — | H2a.4.1b.3c.1.10 — the source log-window Fourier integral crosswalk | 0 |
