@@ -1386,8 +1386,9 @@ known_hazards:
     canonical_proof_db: q3.lean.aristotle/aristotle_db/aristotle_proofs.db
 
   - id: routeb-outside-every-build-target
-    status: FINDING
+    status: RESOLVED
     discovered: 2026-08-12
+    resolved: 2026-08-29
     audience: [CODEX, CLAUDE_CODE, HUMAN]
     mode: READ_ONLY
     path: q3.lean.aristotle/lakefile.toml
@@ -1418,9 +1419,20 @@ known_hazards:
       Modules built by explicit name, one per invocation, failures recorded per module.
       The lakefile was NOT edited: it sits under the Codex control chain, and changing a glob
       would silently enrol files that have never compiled.
-    remedy_not_taken: >-
-      Changing `globs` to `Q3.+` would fix this permanently and needs an owner decision plus
-      the Codex chain, because it changes what a green build asserts.
+    remedy_deferred_until_2026_08_29: >-
+      Changing `globs` would fix this permanently but needed an owner decision plus the Codex
+      chain, because it changes what a green build asserts.  That decision was taken and the
+      change landed; the paragraphs above describe the state before it and are kept as the
+      record of the defect, not of the present tree.
+    resolution: >-
+      Commit `4811e460` (2026-08-29, workflow refactor Block E) set
+      `globs = ["Q3", "Q3.Proofs.RouteB.+"]`, so the existing default target now covers the
+      whole RouteB subtree without a second library or selector.  The combined graph was
+      measured BEFORE the edit at commit `c0316cb8`: the explicit union of `Q3` and all 367
+      tracked RouteB modules completed 8181 jobs in 882 s with status 0, against 7814 jobs
+      for `Q3` alone.  A regression plant covers an existing RouteB module, a hypothetical
+      nested module, and separately proves that bare `Q3` is not accepted as subtree
+      coverage.  Report: `docs/Codex/REPORT_2026-08-29_workflow_refactor_blockE.md`.
 
   - id: primecert-museum
     status: RETIRED
