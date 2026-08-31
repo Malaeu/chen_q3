@@ -20,7 +20,7 @@ REPO = Path(__file__).resolve().parents[1]
 if str(REPO) not in sys.path:
     sys.path.insert(0, str(REPO))
 
-from orchestrator import research_dependency_contract
+from orchestrator import proof_loop, research_dependency_contract
 ROUTE_STATE = Path(
     "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/"
     "ROUTE_B_EXECUTION_STATE.json"
@@ -31,6 +31,7 @@ DEBT_REGISTRY = Path("docs/routeB_bus/RECHECKABLE_RESEARCH_DEBTS.json")
 DEFAULT_CHECKPOINT = Path(
     "q3.lean.aristotle/.qmd_cache/session_briefing_checkpoint.json"
 )
+ASSEMBLY_DB = Path("q3.lean.aristotle/aristotle_db/knowledge.db")
 
 SCHEMA = "q3_routeb_session_checkpoint.v1"
 REGISTRY_SCHEMA = "q3_routeb_research_dependencies.v3"
@@ -393,6 +394,7 @@ def snapshot(repo: Path) -> dict[str, Any]:
             "latest_named_unselected_root": _latest_named_root(task_text),
             "current_task_status": task.get("status"),
             "current_task_file": task.get("task_file"),
+            "selected_goal_path": current.get("selected_bus_goal_path"),
         },
         "totals": authoritative_totals(repo),
     }
@@ -501,7 +503,31 @@ def render_briefing(
     route = now["route"]
     candidate = route.get("latest_named_unselected_root")
     drift = control_plane_drift(route)
-    lines = [
+    selected_goal = route.get("selected_goal_path")
+    selected_goal_path = repo / selected_goal if isinstance(selected_goal, str) else None
+    chain = proof_loop.goal_assembly_chain(selected_goal_path)
+    assembly = proof_loop.assembly_snapshot(repo / ASSEMBLY_DB, chain=chain)
+    route_holds = []
+    if isinstance(route.get("status"), str) and route["status"].startswith("HOLD"):
+        route_holds.append(route["status"])
+    if drift:
+        route_holds.append("CONTROL_PLANE_DRIFT")
+    contract = proof_loop.compile_contract(
+        goal_binding={
+            "action": "HOLD" if route_holds else "ROUTE_STATE_SELECTED",
+            "selected_goal_id": route.get("goal"),
+            "selected_goal_path": selected_goal,
+        },
+        holds=route_holds,
+        assembly_debt=[
+            f"{item['chain']}:{item['step']}:{item['status']}"
+            for item in assembly.get("open_joints", [])
+        ],
+        assembly=assembly,
+        route=route,
+    )
+    lines = proof_loop.render_battle_brief(contract).rstrip("\n").splitlines() + [
+        "",
         "ROUTE B — SESSION BRIEF",
         "",
         "WHERE WE ARE",

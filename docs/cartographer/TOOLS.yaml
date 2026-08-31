@@ -223,8 +223,8 @@ tool_families:
         approval: NONE
         authority: DELTA_AWARE_ORIENTATION_NOT_GOAL_SELECTION_OR_VERDICT_AUTHORITY
         records_to: stdout
-        validation: test_session_briefing
-        last_verified: 2026-08-30
+        validation: test_session_briefing; starts with q3_proof_loop.v1 battle brief and never invents a joint under HOLD
+        last_verified: 2026-08-31
 
       - id: routeb-session-checkpoint
         status: ENABLED
@@ -390,8 +390,9 @@ tool_families:
           test_workflow_runtime including startup-red, owned-scope, event,
           command-failure, review-plan byte-binding, CALL_CLASS and
           EXPLORATION_REVIEW eligibility, consumer-first supplier receipt,
-          queue-lifecycle, and duplicate-dispatch plants.
-        last_verified: 2026-08-30
+          queue-lifecycle, duplicate-dispatch plants, and the additive
+          logical_plan.proof_loop q3_proof_loop.v1 operating card.
+        last_verified: 2026-08-31
 
       - id: workflow-session-close
         status: ENABLED

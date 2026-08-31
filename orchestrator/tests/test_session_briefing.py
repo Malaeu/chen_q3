@@ -127,6 +127,24 @@ class SessionBriefingPlants(unittest.TestCase):
         self.assertTrue(tools["routeb-session-checkpoint"]["writes"])
         self.assertFalse(tools["research-debt-challenge"]["writes"])
 
+    def test_battle_brief_is_the_first_session_surface(self) -> None:
+        assembly = session_briefing.proof_loop.assembly_snapshot(
+            session_briefing.REPO / session_briefing.ASSEMBLY_DB
+        )
+        totals = assembly["global"]
+        rendered = session_briefing.render_briefing(
+            session_briefing.REPO,
+            today=dt.date(2026, 8, 31),
+        )
+        self.assertTrue(rendered.startswith("Q3 PROOF LOOP — BATTLE BRIEF\n"))
+        self.assertIn(
+            f"  cords: {totals['fixed']}/{totals['total']} fixed · "
+            f"proved {totals['proved']} · validation {totals['validation']} · "
+            f"{totals['open']} open\n",
+            rendered,
+        )
+        self.assertIn("  loop: contract → suppliers → preflight → bridge → Lean → close → recompute\n", rendered)
+
     def test_registry_distinguishes_research_debt_from_dead(self) -> None:
         registry = session_briefing.validate_registry(session_briefing.REPO)
         self.assertTrue(registry["debts"])

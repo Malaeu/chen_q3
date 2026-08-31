@@ -156,6 +156,12 @@ class WorkflowRuntimePlants(unittest.TestCase):
             phase["logical_plan"]["proshka"]["eligible_class"],
             "DELEGATED_STRATEGIC_REVIEW",
         )
+        loop = exact["logical_plan"]["proof_loop"]
+        self.assertEqual(loop["schema"], "q3_proof_loop.v1")
+        self.assertEqual(loop["mode"], "CONSUMER_FIRST")
+        self.assertEqual(loop["next_joint"]["status"], "CONTRACT_REQUIRED")
+        self.assertTrue(loop["recompute_after_close"])
+        self.assertEqual(loop["PX_RH_CLAIM"], "NOT_MADE")
 
     def test_host_changes_executor_not_logical_plan(self) -> None:
         mac = plan("SELECT_EXACT_GOAL", host="CODEX_MAC")
@@ -180,6 +186,13 @@ class WorkflowRuntimePlants(unittest.TestCase):
         self.assertEqual(result["status"], "HOLD")
         self.assertIn("REQUIRED_TOOL_UNREGISTERED:lean-validation", result["holds"])
         self.assertIn("DERIVED_ARTIFACT_NOT_FRESH:routeb-inventory:STALE", result["holds"])
+        self.assertEqual(
+            result["logical_plan"]["proof_loop"]["next_joint"]["status"],
+            "BLOCKED",
+        )
+        self.assertIsNone(
+            result["logical_plan"]["proof_loop"]["next_joint"]["address"]
+        )
 
     def test_repeated_plan_is_identical_and_never_claims_delivery(self) -> None:
         first = plan("SELECT_EXACT_GOAL")

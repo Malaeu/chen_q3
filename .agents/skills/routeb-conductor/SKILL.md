@@ -33,6 +33,30 @@ python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb
 ремонтируется первым в точном owner scope; его нельзя маскировать зелёным
 планом.
 
+## Боевой бриф и proof loop
+
+`workflow_runtime.py plan` обязан содержать `logical_plan.proof_loop` со schema
+`q3_proof_loop.v1`. Это machine-readable operating card, а не новый policy
+kernel. В начале каждой сессии сначала выдай владельцу короткий battle brief:
+
+- сколько канатов закрыто и открыто;
+- live physical goal и verified frontier;
+- связан ли exact consumer contract;
+- статус следующего joint и один настоящий blocker;
+- математический маршрут текущего joint, если он уже связан.
+
+Не пересказывай полную служебную диагностику до этого брифа. При
+`next_joint.status = BLOCKED` не начинай математику и не выдумывай адрес. При
+`CONTRACT_REQUIRED` используй physical goal, `brief.py`, `cheap.py`, assembly и
+consumer-first contract, чтобы выбрать один допустимый joint; текстовый кандидат
+не становится supplier до `EXACT_FIT`. При `READY_FOR_PREFLIGHT` запускай один
+precommitted proof cycle. После закрытия узла заново запусти runtime-plan и
+потребляй пересчитанный `proof_loop`, а не старую очередь.
+
+Кратчайший доказуемый путь минимизирует ожидаемую стоимость честного закрытия:
+proof difficulty, semantic gap, Lean formalization cost, dependency risk и
+unverified assumptions. Число теорем само по себе не является стоимостью.
+
 ## Один цикл
 
 1. Привяжи owner scope к одному physical goal или source-locked Codex task.

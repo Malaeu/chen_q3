@@ -30,7 +30,13 @@ REPO = Path(__file__).resolve().parents[1]
 if str(REPO) not in sys.path:
     sys.path.insert(0, str(REPO))
 
-from orchestrator import dependency_registry, research_dependency_contract, spine  # noqa: E402
+from orchestrator import (  # noqa: E402
+    dependency_registry,
+    proof_loop,
+    research_dependency_contract,
+    session_briefing,
+    spine,
+)
 from specs_docs import phase_close, session_close  # noqa: E402
 
 TOOLS = Path("docs/cartographer/TOOLS.yaml")
@@ -516,6 +522,8 @@ def compile_plan(
     owned_scope: list[str] | None = None,
     expected_writes: list[str] | None = None,
     startup: dict[str, Any] | None = None,
+    assembly_snapshot: dict[str, Any] | None = None,
+    route: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     action = str(goal_binding.get("action", "HOLD"))
     requested = list(dict.fromkeys((*COMMON_TOOLS, *ACTION_TOOLS.get(action, ()))))
@@ -586,6 +594,13 @@ def compile_plan(
         "PX_RH_CLAIM": "NOT_MADE",
     }
     unique_holds = sorted(set(item for item in holds if item))
+    logical_plan["proof_loop"] = proof_loop.compile_contract(
+        goal_binding=goal_binding,
+        holds=unique_holds,
+        assembly_debt=assembly_debt,
+        assembly=assembly_snapshot,
+        route=route,
+    )
     return {
         "schema": "q3_workflow_plan.v1",
         "status": "HOLD" if unique_holds else "READY",
@@ -611,7 +626,17 @@ def live_plan(
     statuses = dependency_registry.statuses(repo, repo / REGISTRY, consumer="workflow-plan")
     owned, foreign = session_close.dirty_split(repo, owned_paths)
     host = {"Darwin": "CODEX_MAC", "Linux": "CODEX_LINUX"}.get(platform.system(), "UNSUPPORTED_HOST")
+    route = session_briefing.snapshot(repo)["route"]
     startup = startup_receipt(repo)
+    selected_goal = binding.get("selected_goal_path") or route.get("selected_goal_path")
+    selected_goal_path = Path(selected_goal) if isinstance(selected_goal, str) else None
+    if selected_goal_path is not None and not selected_goal_path.is_absolute():
+        selected_goal_path = repo / selected_goal_path
+    chain = proof_loop.goal_assembly_chain(selected_goal_path)
+    assembly = proof_loop.assembly_snapshot(
+        (repo / phase_close.DEFAULT_DB.relative_to(REPO)).resolve(),
+        chain=chain,
+    )
     return compile_plan(
         goal_binding=binding,
         selector_hold=selector_hold,
@@ -638,6 +663,8 @@ def live_plan(
               for output in row["outputs"]),
         ],
         startup=startup,
+        assembly_snapshot=assembly,
+        route=route,
     )
 
 
