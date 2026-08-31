@@ -31,6 +31,36 @@
         "Q3.RouteB.D0Pstar.selectedFerrersAbelLogZeroExtension_fourier_decay_quantitative",
         "Q3.RouteB.D0Pstar.selectedFerrersAbelLimit_shiftedEnergy_le_majorant"
       ]
+    },
+    {
+      "admitted_scope": [],
+      "closes": [
+        "D0PSTAR_SOURCE_EVEN_NONZERO_TAIL_CARRIER_PRE_GATE"
+      ],
+      "domain": "source-Weil shifted graph carrier for every PairIndex and every natural cutoff R",
+      "entry_id": "GOAL058_D0PSTAR_SOURCE_EVEN_NONZERO_TAIL_CARRIER_20260831",
+      "hypothesis_provenance": [],
+      "hypothesis_provenance_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "normalization": "the public nonzero-even index n denotes the normalized physical pair plus-or-minus (n+1), and cutoff R starts the closed tail at plus-or-minus (R+1)",
+      "opens": [
+        "D0PSTAR_SOURCE_EVEN_NONZERO_ORTHONORMAL_SYNTHESIS_LOW_BAND_ASSEMBLY"
+      ],
+      "quantifiers": "for every PairIndex i and cutoff R; low Fourier coefficients vanish for every algebraic or closed-tail vector and every integer n with natAbs n at most R",
+      "semantic_attestation_id": null,
+      "source_commit": "aa8ca906c959c13af2f9e513cd9dfdec1aa5b2b8",
+      "source_git_blob": "d71832913a0d6e9258b2940a0842e7f0e7b5f426",
+      "source_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroTailCarrier.lean",
+      "status": "KERNEL_GREEN",
+      "task_blob": "48520f7921668fc5acbf668afa9278e502637cec",
+      "task_path": "docs/Codex/TASK_2026-08-31_goal058_even_nonzero_tail_carrier.md",
+      "terminal_consumer": "nonzero-even orthonormal synthesis and finite low-band assembly before selected-row parity or Feshbach use",
+      "theorem_ids": [
+        "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenZeroMode",
+        "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenNonzeroMode",
+        "Q3.RouteB.D0Pstar.sourceWeilGraphEvenNonzeroTailAlgebraic_low_fourier_vanish",
+        "Q3.RouteB.D0Pstar.sourceWeilGraphEvenNonzeroTail_low_fourier_vanish",
+        "Q3.RouteB.D0Pstar.sourceWeilGraphEvenZeroMode_orthogonal_nonzeroTail"
+      ]
     }
   ],
   "event_ledger": [],
