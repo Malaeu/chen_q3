@@ -12,9 +12,9 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 
 ## Operational tool manifest
 - schema / authority: `q3_tool_manifest.v2` / `REPO_CANONICAL`
-- families / tools / writers: `7` / `48` / `25`
-- SHA-256: `37620d4f360740169fdd8959ae8c9393921141eab3f9bb5be477f8b914a2a351`
-- Codex current task: `CLOSED`
+- families / tools / writers: `7` / `51` / `28`
+- SHA-256: `7270fa4f4a4b1a73337556d08a2f011270a0ae9c4c9cb92b3fec119389ba4112`
+- Codex current task: `ACTIVE` / `docs/Codex/TASK_2026-08-30_goal058_g3_rate_floor_source_rerank.md`
 
 ## Phase chat and bounded exploration
 - validation: `VALID`
@@ -26,7 +26,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 
 | Meter | Count |
 |---|---:|
-| `delegated_strategic_review_calls` | 44 |
+| `delegated_strategic_review_calls` | 45 |
 | `exploration_review_calls` | 0 |
 | `fanout_violations` | 0 |
 | `forced_rollovers` | 1 |
@@ -61,21 +61,21 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 - collection: `q3_docs`
 - mode / status: `search_plus_vsearch` / `PASS`
 - `POST_JUNE_IDENTIFICATION` query `IdentificationAt`: `PASS`, results `30`.
-- `POST_JUNE_EDGE_SLIVER` query `edge-sliver`: `PASS`, results `38`.
-- `PRE_SWITCH_STEP33` query `ActiveCenteredCoeffEntryHboxCert`: `PASS`, results `37`.
+- `POST_JUNE_EDGE_SLIVER` query `edge-sliver`: `PASS`, results `42`.
+- `PRE_SWITCH_STEP33` query `ActiveCenteredCoeffEntryHboxCert`: `PASS`, results `34`.
 
 ## Meta-corpus registry
 - derived surfaces: `9`; authority: `DERIVED_REGISTRY_NOT_NEW_TRUTH_SOURCE`.
 
 ## Observability snapshot (derived, non-authoritative)
 - authority: `DERIVED_NONCANONICAL_OBSERVABILITY`
-- snapshot: `OBS_f33c117098e9b1f162c8` at `2026-08-28T17:54:01+00:00` from `1437cfa7e129`
+- snapshot: `OBS_7c66e51e3d26f0aa6c43` at `2026-08-24T20:29:26+00:00` from `928b08b9f8e4`
 - sources: `8`; stale: `0`; degraded: `1`
 - sorry sites/files: `0` / `0`
-- proof roots/root memberships: `4` / `261`
-- file states/import edges: `3559` / `5964`
-- taint status: `{"CONTENT_SCAN_SKIPPED_GENERATED_NONROOT": 1303, "IMPORT_BOUNDARY": 1, "NO_OBSERVED_ISSUE": 2255}`; doomed: `0`
-- axiom dependencies / proof nodes: `19` / `19`
+- proof roots/root memberships: `2` / `131`
+- file states/import edges: `3531` / `5899`
+- taint status: `{"CONTENT_SCAN_SKIPPED_GENERATED_NONROOT": 1303, "IMPORT_BOUNDARY": 1, "NO_OBSERVED_ISSUE": 2227}`; doomed: `0`
+- axiom dependencies / proof nodes: `10` / `10`
 - numeric checks: `0` `{}`
 - Proshka runs: `65`; observed seconds total/mean/median: `68876` / `1093.3` / `1044`; lower bounds: `1`
 - Answer-now clicks: `0`
@@ -83,14 +83,14 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 
 | Source | Records | Generated | Stale | Parse | Health |
 |---|---:|---|---|---|---|
-| `autopsy_map` | 18 | 2026-08-24T09:08:53+00:00 | no | PARSED | READY |
-| `dependency_tree` | 19 | 2026-08-28 17:53 UTC | no | PARSED | READY |
-| `numeric_checks` | 0 | 2026-08-28 17:53 UTC | no | PARSED | ZERO_COVERAGE |
-| `proof_graph` | 19 | 2026-08-28 17:53 UTC | no | PARSED | READY |
+| `autopsy_map` | 18 | 2026-08-24T17:31:02+00:00 | no | PARSED | READY |
+| `dependency_tree` | 10 | 2026-08-24 20:29 UTC | no | PARSED | READY |
+| `numeric_checks` | 0 | 2026-08-24 20:29 UTC | no | PARSED | ZERO_COVERAGE |
+| `proof_graph` | 10 | 2026-08-24 20:29 UTC | no | PARSED | READY |
 | `proshka_timing` | 65 | NOT_CAPTURED | no | PARSED | READY |
-| `sorry_frontier` | 0 | 2026-08-28 17:53 UTC | no | PARSED | READY |
-| `taint_graph` | 3559 | 2026-08-28 17:53 UTC | no | PARSED | READY |
-| `taint_sources` | 3559 | 2026-08-28 17:53 UTC | no | PARSED | READY |
+| `sorry_frontier` | 0 | 2026-08-24 20:29 UTC | no | PARSED | READY |
+| `taint_graph` | 3531 | 2026-08-24 20:29 UTC | no | PARSED | READY |
+| `taint_sources` | 3531 | 2026-08-24 20:29 UTC | no | PARSED | READY |
 
 ### Slowest recorded Proshka runs
 
@@ -103,10 +103,10 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | `GOAL057_B3_0G_SOURCE_W02_MODE_PAIRING_SOURCE_AUDIT` | GOAL057/P057_B3_0G | 1662 | observed | OPEN_PREFLIGHT_AUTHORIZED_PRODUCTION_FORBIDDEN |
 
 ## Staleness warnings
-- CHANNEL_RUNTIME active phase record is 101 hours old (2026-08-24T14:58:31+02:00); revalidate the existing chat handle and six-field phase key. Age alone never authorizes a fresh chat.
+- CHANNEL_RUNTIME active phase record is 144 hours old (2026-08-24T14:58:31+02:00); revalidate the existing chat handle and six-field phase key. Age alone never authorizes a fresh chat.
 - observability source health degraded: numeric_checks:ZERO_COVERAGE — this is not a green sensor state.
-- COGNITIVE_GOVERNOR.md is 28 days old (2026-07-31) and references a possibly retired front — regenerate.
-- FAILED_STRATEGIES.yaml last updated 2026-07-31 (28 days) — bus iteration blocks after that date are NOT merged.
+- COGNITIVE_GOVERNOR.md is 30 days old (2026-07-31) and references a possibly retired front — regenerate.
+- FAILED_STRATEGIES.yaml last updated 2026-07-31 (30 days) — bus iteration blocks after that date are NOT merged.
 
 ## Source freshness
 | Source | Last commit |
@@ -121,7 +121,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | `docs/Progress_Log.md` | 2026-08-28 |
 | `docs/GENEALOGY.md` | 2026-08-10 |
 | `docs/RECORDING_RULES.md` | 2026-08-25 |
-| `docs/cartographer/TOOLS.yaml` | 2026-08-28 |
+| `docs/cartographer/TOOLS.yaml` | 2026-08-30 |
 | `q3.lean.aristotle/ACTIVE/COGNITIVE_GOVERNOR.md` | 2026-07-31 |
 
 ## 1-2. Kills (knowledge.db: routes, objects, strategies, walls, criteria)
@@ -157,7 +157,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | VERDICT_S1_ANCHOR_2026_07_27 | PHASE_SUBSEQUENCE | killed |  |
 | ZETA23_INERTIA_LEAN_HSIMPLE | чужой Zeta23 Inertia.lean как прямой поставщик hsimple | killed | H2aPenalty.H2a_SimpleEvenGround_FromPenaltyCoercivity (H2aPenaltyCoercivity.lean:395) —... |
 
-**route** (20)
+**route** (21)
 
 | id | subject | status | next / rollback |
 |---|---|---|---|
@@ -179,10 +179,11 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | S_PD_COMPACT_SCALAR_ROUTE | S-pd compact scalar route | killed | `H-bridge` primary route |
 | VERDICT_G2_NUMERIC_ROPES_CRITICAL_PATH_2026_08_20 | STATUS: FATAL FOR G2 NUMERIC ROPES AS ROOF-CRITICAL — THE `(13,120)` C | killed |  |
 | VERDICT_GOAL058_ARISTOTLE_SOURCE_LOCK_STOP_2026_08_13 | STATUS: FATAL — AUTHORITATIVE SOURCE LOCK UNAVAILABLE | killed |  |
+| VERDICT_GOAL058_SELECTED_FERRERS_ODD_SECTOR_FLOOR_DISCRIMINA | STATUS: FATAL — KILL_SELECTED_FERRERS_ODD_SECTOR_FLOOR_ON_CURRENT_SOUR | killed |  |
 | VERDICT_REQ_2026_08_26_N_COMBINED_GAMMA_FAIL_AND_SELECTED_FE | STATUS: FATAL — SELECTED-FERRERS GROUND-TRACKING RATE CORRIDOR ONLY; R | killed |  |
 | ZIP_AUDIT_FOLLOWUP_2026_07_27 | STATUS: FATAL для контракта v1 | killed |  |
 
-**strategy** (225)
+**strategy** (228)
 
 | id | subject | status | next / rollback |
 |---|---|---|---|
@@ -245,6 +246,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | VERDICT_CCM_PENALTY_CROSSWALK_2026_08_07 | interpret_sectional_gap_or_prolate_proxy_as_the_operator_input_B_ratio | standing | no_fit_control_cell_13_120_source_crosscheck |
 | VERDICT_CODEX_REQ_GOAL058_W5_QUANTITATIVE_SHIFTED_ENERGY_SEM | null | standing | >- |
 | VERDICT_COGNITIVE_OPERATOR_VOCABULARY_2026_08_06 | collapse_legacy_control_actions_into_m2 | standing | dual_field_knowledge_db_round_trip |
+| VERDICT_CONTROL_V9_OWNER_ROOT_VERDICT_BRIDGE_2026_08_29 | second authority path after primary signature return | standing | Mac root trust install plus strict offline startup gate |
 | VERDICT_DRAFT041_HOLD_VERSIONED_REPAIR_2026_07_31 | retroactive_goal_amendment | standing | compare original_goal_040_sha_across_sync |
 | VERDICT_EULER_LOGARITHMIC_REPRESENTATION_AUDIT_2026_08_20 | direct_infinity_or_raw_determinant_gap | standing | exact_source_P59_anchored_log_derivative_preflight |
 | VERDICT_G3_G5_G6_PILLAR_ROPE_BATCH_2026_08_19 | bridge_first_without_value_or_limit_suppliers | standing | exact_ground_Pstar_value_typecheck_then_CCM_L73_normalization_lock |
@@ -304,6 +306,8 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | VERDICT_GOAL057_B3_0_SOURCE_WEIL_ASSOCIATED_OPERATOR_GRAPH_R | hide_source_form_and_L2_Fourier_in_one_six_declaration_file | standing | resonance_and_off_resonance_exact_mode_Fourier_formula |
 | VERDICT_GOAL057_B3_ASSOCIATED_WEIL_OPERATOR_DOMAIN_SOURCE_AU | infer_operator_domain_from_form_core_or_replace_A_m_by_bounded_lift | standing | exact_mode_Fourier_formula_plus_log_multiplier_L2 |
 | VERDICT_GOAL058_G1_G3_SOURCE_ENVELOPE_DISCRIMINATOR_2026_08_ | promote_one_strong_cell_to_cofinal_sector_package | standing | source_envelope_discriminator |
+| VERDICT_GOAL058_G3_RATE_FLOOR_SOURCE_RERANK_2026_08_30 | conditional_receiver_accumulation | standing | typecheck exact theorem head and isolate first analytic lemma |
+| VERDICT_GOAL058_R2_MOVING_KRYLOV_FESHBACH_DISCRIMINATOR_2026 | finite moving Krylov carrier without source coupling law | standing | owner rerank or independent literal-CCM coupling theorem |
 | VERDICT_GOAL058_SOURCE_ARCHITECTURE_RATIFICATION_2026_08_13 | choose_a_receiver_or_commutator_identity_as_a_cofinal_source_supplier | standing | local_phase_realification_and_nontautological_trial_line_block_preflight |
 | VERDICT_GOAL058_W5_COFINAL_RATE_EDGE_LEDGER_2026_08_25 | GLOBAL_LIPSCHITZ_L2_EDGE_INTERPOLATION | standing | F72_6 edge specialization plus exact inverse-sqrt telescope |
 | VERDICT_GOAL058_W5_CONTROL_V9_SEMANTIC_ATTESTATION_MATERIALI | treat injected test callback as an operative external path | standing | frozen W5 receipt through a fixed external broker and atomic three-field state transition |
@@ -428,7 +432,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | PRIME_SIDE_WALL | Prime-side wall | standing |  |
 | STEP33_SCALAR_REPLAY_SWAMP_WALL | Step33 scalar replay swamp wall | standing |  |
 
-_277 records, 234 cross-file aliases. Query: `./orchestrator/kb.py search <term>`._
+_281 records, 236 cross-file aliases. Query: `./orchestrator/kb.py search <term>`._
 
 ## 3. Bus strategy memory (M3 iteration blocks in verdicts)
 | verdict file | target | forbidden_future_move | new_gap |

@@ -4,7 +4,7 @@
 `python3 docs/cartographer/map_coverage.py`. Рукописная карта — `MAP.md`, она
 описывает узлы маршрута; это приложение описывает **файлы**, и оно полное.
 
-Всего файлов: **368** · упомянуто в `MAP.md`: **25** · вне карты: **343** · без описания в шапке: **0**
+Всего файлов: **372** · упомянуто в `MAP.md`: **25** · вне карты: **347** · без описания в шапке: **0**
 
 «вне карты» не значит «лишний»: значит, что обходом карты файл не находится.
 Именно так 2026-08-11 был построен заново мост `ker ↔ eigenspace`, стоявший в
@@ -100,8 +100,10 @@
 | `D0Mode4FerrersProlateDifferentialEquation` | — | Exact prolate ODE for the matched mode-four Ferrers series | 0 |
 | `D0Mode4FerrersRegularEvenProlateSolution` | — | Goal 058 G3: regular even mode-four Ferrers solution assembly | 0 |
 | `D0Mode4FerrersRegularEvenProlateSolutionUniqueness` | — | Goal 058 G3: uniqueness inside the regular Ferrers solution package | 0 |
+| `D0Mode4FerrersSingularEndpointRegularity` | — | Goal 058 G3: nonvanishing at the singular Ferrers endpoints | 0 |
 | `D0Mode4FerrersSturmComparison` | — | Goal 058 G3: interior Sturm comparison on one nodal interval | 0 |
 | `D0Mode4FiniteBlockInertiaAdditivity` | — | Finite block inertia for the mode-four Schur truncation | 0 |
+| `D0Mode4FiniteEvenLegendreQuadraticForm` | — | Exact finite even-Legendre quadratic form | 0 |
 | `D0Mode4FiniteToLiteralNegativeCount` | — | Eventual finite-to-literal mode-four negative-count transport | 0 |
 | `D0Mode4HermitianNegativeCountStability` | — | Eventual stability of the mode-four Hermitian negative count | 0 |
 | `D0Mode4HermitianSchurTailEnvelopes` | — | Source-neutral finite-left envelopes for the mode-four Hermitian Schur determinant | 0 |
@@ -114,7 +116,9 @@
 | `D0Mode4JacobiRootFunction` | — | The mode-four left continuant and root function | 0 |
 | `D0Mode4JacobiSchurContinuant` | — | The mode-four Schur continuant orientation | 0 |
 | `D0Mode4JacobiTailContraction` | — | The mode-four Jacobi tail contraction core | 0 |
+| `D0Mode4LegendreHermitianCoordinateScale` | — | Even Legendre to Hermitian coordinate scale | 0 |
 | `D0Mode4OrdinaryLegendreAffineKernel` | — | Ordinary Legendre affine kernel for the mode-four Ferrers gate | 0 |
+| `D0Mode4OrdinaryLegendreGram` | — | Exact even ordinary-Legendre Gram identities | 0 |
 | `D0Mode4OrdinaryLegendreIntervalBound` | — | Ordinary Legendre differential equation and the sharp interval bound | 0 |
 | `D0Mode4OrdinaryLegendreRecurrence` | — | Three-term recurrence for the mode-four ordinary Legendre kernel | 0 |
 | `D0Mode4OrdinaryLegendreXAction` | — | Multiplication by X in the mode-four ordinary Legendre basis | 0 |

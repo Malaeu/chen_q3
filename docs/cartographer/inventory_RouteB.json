@@ -1,10 +1,10 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 368,
-  "declarations": 4069,
-  "in_docs": 2020,
-  "in_lemma_db": 4057,
+  "files_scanned": 372,
+  "declarations": 4103,
+  "in_docs": 2028,
+  "in_lemma_db": 4091,
   "orphans": 5,
   "uncatalogued": 5,
   "orphan_files_top": [
@@ -8020,7 +8020,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMFEvenFiniteMatrix.lean",
       "line": 85,
       "signature": "noncomputable def mode4DLMFEvenSimilarityScale (G : ℝ) : ℕ → ℝ | 0 => 1 | q + 1 => mode4DLMFEvenSimilarityScale G q * mode4JacobiSymmetricOff G q / mode4JacobiUpper G q  private theorem mode4JacobiLower_succ_pos (G : ℝ) (q : ℕ) (hG : 0 < G) : 0 < mode4JacobiLower G (q + 1)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -9925,6 +9925,46 @@
       "orphan": false
     },
     {
+      "kind": "def",
+      "name": "mode4FerrersFlux",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersSingularEndpointRegularity.lean",
+      "line": 26,
+      "signature": "private noncomputable def mode4FerrersFlux (a : ℕ → ℝ) (x : ℝ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "Mode4FerrersRegularEvenProlateSolution.flux_hasDerivAt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersSingularEndpointRegularity.lean",
+      "line": 30,
+      "signature": "private theorem Mode4FerrersRegularEvenProlateSolution.flux_hasDerivAt {mProject K : ℕ} {Λ x : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (hx : x ∈ Set.Ioo (-1 : ℝ) 1) : HasDerivAt (mode4FerrersFlux S.coefficients) (-(Λ + mode4JacobiG mProject * (1 - x ^ 2)) * mode4FerrersSeries S.coefficients x) x",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "endpoint_norm_sub_le_of_deriv_bound",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersSingularEndpointRegularity.lean",
+      "line": 51,
+      "signature": "private theorem endpoint_norm_sub_le_of_deriv_bound {F F' : ℝ → ℝ} {L C s : ℝ} (hs : s < 1) (hderiv : ∀ x ∈ Set.Ico s 1, HasDerivAt F (F' x) x) (hbound : ∀ x ∈ Set.Ico s 1, ‖F' x‖ ≤ C) (hlim : Filter.Tendsto F (nhdsWithin (1 : ℝ) (Set.Iio 1)) (nhds L)) : ‖L - F s‖ ≤ C * (1 - s)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "Mode4FerrersRegularEvenProlateSolution.endpoint_values_ne_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersSingularEndpointRegularity.lean",
+      "line": 91,
+      "signature": "theorem Mode4FerrersRegularEvenProlateSolution.endpoint_values_ne_zero {mProject K : ℕ} {Λ : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) : mode4FerrersSeries S.coefficients (-1) ≠ 0 ∧ mode4FerrersSeries S.coefficients 1 ≠ 0",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
       "kind": "theorem",
       "name": "sturmParameterDirectionPlant",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersSturmComparison.lean",
@@ -10210,6 +10250,196 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteBlockInertiaAdditivity.lean",
       "line": 313,
       "signature": "theorem mode4ActualFiniteJacobiTruncation_negativeCount_eq_schurApprox (mProject K d : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) : mode4HermitianNegativeEigenvalueCount (mode4ActualFiniteJacobiTruncation mProject Λ K d) (mode4ActualFiniteJacobiTruncation_isHermitian mProject Λ K d) = mode4HermitianNegativeEigenvalueCount (mode4BackwardTailSchurApprox mProject Λ K d) (mode4BackwardTailSchurApprox_isHermitian mProject K d Λ)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "mode4FiniteEvenLegendrePolynomial",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 34,
+      "signature": "noncomputable def mode4FiniteEvenLegendrePolynomial (G : ℝ) {d : ℕ} (b : Fin d → ℝ) : ℝ[X]",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FiniteEvenLegendrePolynomial_eval",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 41,
+      "signature": "private theorem mode4FiniteEvenLegendrePolynomial_eval (G : ℝ) {d : ℕ} (b : Fin d → ℝ) (x : ℝ) : (mode4FiniteEvenLegendrePolynomial G b).eval x = ∑ q : Fin d, ((-1 : ℝ) ^ q.val) * mode4DLMFEvenSimilarityScale G q.val * b q * mode4OrdinaryLegendre (2 * q.val) x",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FiniteEvenLegendrePolynomial_l2",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 57,
+      "signature": "theorem mode4FiniteEvenLegendrePolynomial_l2 (G : ℝ) {d : ℕ} (b : Fin d → ℝ) (hG : 0 < G) : (∫ x in (-1 : ℝ)..1, (mode4FiniteEvenLegendrePolynomial G b).eval x ^ 2) = 2 * (b ⬝ᵥ b)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FiniteEvenLegendre_Xsq_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 128,
+      "signature": "private theorem mode4FiniteEvenLegendre_Xsq_zero (G x : ℝ) : G * x ^ 2 * mode4OrdinaryLegendre 0 x = -mode4PSWFLegendreSubdiagonal G 1 * mode4OrdinaryLegendre 2 x + (mode4PSWFLegendreDiagonal G 0 - ((0 : ℝ) * (0 + 1))) * mode4OrdinaryLegendre 0 x",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FiniteEvenLegendre_Xsq_succ",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 151,
+      "signature": "private theorem mode4FiniteEvenLegendre_Xsq_succ (G x : ℝ) (q : ℕ) : G * x ^ 2 * mode4OrdinaryLegendre (2 * (q + 1)) x = -mode4PSWFLegendreSubdiagonal G (q + 2) * mode4OrdinaryLegendre (2 * (q + 2)) x + (mode4PSWFLegendreDiagonal G (q + 1) - (((2 * (q + 1) : ℕ) : ℝ) * (((2 * (q + 1) : ℕ) : ℝ) + 1))) * mode4OrdinaryLegendre (2 * (q + 1)) x - mode4PSWFLegendreSuperdiagonal G q * mode4OrdinaryLegendre (2 * q) x",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FiniteEvenLegendre_potential_pair_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 260,
+      "signature": "private theorem mode4FiniteEvenLegendre_potential_pair_zero (G : ℝ) (r : ℕ) : (∫ x in (-1 : ℝ)..1, G * x ^ 2 * mode4OrdinaryLegendre 0 x * mode4OrdinaryLegendre (2 * r) x) = (-mode4PSWFLegendreSubdiagonal G 1) * (if 1 = r then 2 / 5 else 0) + mode4PSWFLegendreDiagonal G 0 * (if 0 = r then 2 else 0)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FiniteEvenLegendre_potential_pair_succ",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 294,
+      "signature": "private theorem mode4FiniteEvenLegendre_potential_pair_succ (G : ℝ) (q r : ℕ) : (∫ x in (-1 : ℝ)..1, G * x ^ 2 * mode4OrdinaryLegendre (2 * (q + 1)) x * mode4OrdinaryLegendre (2 * r) x) = (-mode4PSWFLegendreSubdiagonal G (q + 2)) * (if q + 2 = r then 2 / (((4 * (q + 2) + 1 : ℕ) : ℝ)) else 0) + (mode4PSWFLegendreDiagonal G (q + 1) - (((2 * (q + 1) : ℕ) : ℝ) * (((2 * (q + 1) : ℕ) : ℝ) + 1))) * (if q + 1 = r then 2 / (((4 * (q + 1) + 1 : ℕ) : ℝ)) else 0) + (-mode4PSWFLegendreSuperdiagonal G q) * (if q = r then 2 / (((4 * q + 1 : ℕ) : ℝ)) else 0)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "mode4FiniteEvenLegendreEnergyPair",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 348,
+      "signature": "private noncomputable def mode4FiniteEvenLegendreEnergyPair (G Λ : ℝ) (q r : ℕ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FiniteEvenLegendreEnergyPair_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 360,
+      "signature": "private theorem mode4FiniteEvenLegendreEnergyPair_zero (G Λ : ℝ) (r : ℕ) : mode4FiniteEvenLegendreEnergyPair G Λ 0 r = (-mode4PSWFLegendreSubdiagonal G 1) * (if 1 = r then 2 / 5 else 0) + (mode4PSWFLegendreDiagonal G 0 - (Λ + G)) * (if 0 = r then 2 else 0)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FiniteEvenLegendreEnergyPair_succ",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 388,
+      "signature": "private theorem mode4FiniteEvenLegendreEnergyPair_succ (G Λ : ℝ) (q r : ℕ) : mode4FiniteEvenLegendreEnergyPair G Λ (q + 1) r = (-mode4PSWFLegendreSubdiagonal G (q + 2)) * (if q + 2 = r then 2 / (((4 * (q + 2) + 1 : ℕ) : ℝ)) else 0) + (mode4PSWFLegendreDiagonal G (q + 1) - (Λ + G)) * (if q + 1 = r then 2 / (((4 * (q + 1) + 1 : ℕ) : ℝ)) else 0) + (-mode4PSWFLegendreSuperdiagonal G q) * (if q = r then 2 / (((4 * q + 1 : ℕ) : ℝ)) else 0)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FiniteEvenLegendreEnergyPair_diag",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 421,
+      "signature": "private theorem mode4FiniteEvenLegendreEnergyPair_diag (G Λ : ℝ) (q : ℕ) : mode4FiniteEvenLegendreEnergyPair G Λ q q = mode4JacobiCenter G Λ q * (2 / (((4 * q + 1 : ℕ) : ℝ)))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FiniteEvenLegendreEnergyPair_upper",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 439,
+      "signature": "private theorem mode4FiniteEvenLegendreEnergyPair_upper (G Λ : ℝ) (q : ℕ) : mode4FiniteEvenLegendreEnergyPair G Λ q (q + 1) = mode4JacobiLower G (q + 1) * (2 / (((4 * (q + 1) + 1 : ℕ) : ℝ)))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FiniteEvenLegendreEnergyPair_symm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 458,
+      "signature": "private theorem mode4FiniteEvenLegendreEnergyPair_symm (G Λ : ℝ) (q r : ℕ) : mode4FiniteEvenLegendreEnergyPair G Λ q r = mode4FiniteEvenLegendreEnergyPair G Λ r q",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FiniteEvenLegendreEnergyPair_eq_zero_of_far",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 467,
+      "signature": "private theorem mode4FiniteEvenLegendreEnergyPair_eq_zero_of_far (G Λ : ℝ) (q r : ℕ) (hdiag : q ≠ r) (hupper : r ≠ q + 1) (hlower : q ≠ r + 1) : mode4FiniteEvenLegendreEnergyPair G Λ q r = 0",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FiniteEvenLegendre_scale_lower_balance_of_fin_succ",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 486,
+      "signature": "private theorem mode4FiniteEvenLegendre_scale_lower_balance_of_fin_succ (G Λ : ℝ) {d : ℕ} (hG : 0 < G) (q r : Fin d) (hsucc : r.val = q.val + 1) : mode4JacobiLower G r.val * mode4DLMFEvenSimilarityScale G q.val = mode4DLMFEvenSimilarityScale G r.val * mode4JacobiSymmetricOff G q.val",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FiniteEvenLegendre_scaledEnergyPair_eq_matrix",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 507,
+      "signature": "private theorem mode4FiniteEvenLegendre_scaledEnergyPair_eq_matrix (G Λ : ℝ) {d : ℕ} (hG : 0 < G) (q r : Fin d) : (((-1 : ℝ) ^ q.val) * mode4DLMFEvenSimilarityScale G q.val) * (((-1 : ℝ) ^ r.val) * mode4DLMFEvenSimilarityScale G r.val) * mode4FiniteEvenLegendreEnergyPair G Λ q.val r.val = 2 * mode4ForwardHermitianFiniteMatrix G Λ d q r",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FiniteEvenLegendrePolynomial_derivative_eval",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 651,
+      "signature": "private theorem mode4FiniteEvenLegendrePolynomial_derivative_eval (G : ℝ) {d : ℕ} (b : Fin d → ℝ) (x : ℝ) : (mode4FiniteEvenLegendrePolynomial G b).derivative.eval x = ∑ q : Fin d, ((-1 : ℝ) ^ q.val) * mode4DLMFEvenSimilarityScale G q.val * b q * (mode4OrdinaryLegendrePolynomial (2 * q.val)).derivative.eval x",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FiniteEvenLegendre_energy_pointwise",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 667,
+      "signature": "private theorem mode4FiniteEvenLegendre_energy_pointwise (G Λ : ℝ) {d : ℕ} (b : Fin d → ℝ) (x : ℝ) : (1 - x ^ 2) * ((mode4FiniteEvenLegendrePolynomial G b).derivative.eval x) ^ 2 + G * x ^ 2 * ((mode4FiniteEvenLegendrePolynomial G b).eval x) ^ 2 - (Λ + G) * ((mode4FiniteEvenLegendrePolynomial G b).eval x) ^ 2 = ∑ q : Fin d, ∑ r : Fin d, (((( -1 : ℝ) ^ q.val) * mode4DLMFEvenSimilarityScale G q.val * b q) * (((-1 : ℝ) ^ r.val) * mode4DLMFEvenSimilarityScale G r.val * b r)) * ((1 - x ^ 2) * (mode4OrdinaryLegendrePolynomial (2 * q.val)).derivative.eval x * (mode4OrdinaryLegendrePolynomial (2 * r.val)).derivative.eval x + G * x ^ 2 * mode4OrdinaryLegendre (2 * q.val) x * mode4OrdinaryLegendre (2 * r.val) x - (Λ + G) * (mode4OrdinaryLegendre (2 * q.val) x * mode4OrdinaryLegendre (2 * r.val) x))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FiniteEvenLegendrePolynomial_energy",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+      "line": 703,
+      "signature": "theorem mode4FiniteEvenLegendrePolynomial_energy (G Λ : ℝ) {d : ℕ} (b : Fin d → ℝ) (hG : 0 < G) : (∫ x in (-1 : ℝ)..1, (1 - x ^ 2) * ((mode4FiniteEvenLegendrePolynomial G b).derivative.eval x) ^ 2 + G * x ^ 2 * ((mode4FiniteEvenLegendrePolynomial G b).eval x) ^ 2 - (Λ + G) * ((mode4FiniteEvenLegendrePolynomial G b).eval x) ^ 2) = 2 * (b ⬝ᵥ ((mode4ForwardHermitianFiniteMatrix G Λ d) *ᵥ b))",
       "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
@@ -11725,6 +11955,16 @@
       "orphan": false
     },
     {
+      "kind": "theorem",
+      "name": "mode4DLMFEvenSimilarityScale_sq_eq_legendreWeight",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4LegendreHermitianCoordinateScale.lean",
+      "line": 26,
+      "signature": "theorem mode4DLMFEvenSimilarityScale_sq_eq_legendreWeight (G : ℝ) (q : ℕ) (hG : 0 < G) : mode4DLMFEvenSimilarityScale G q ^ 2 = 4 * (q : ℝ) + 1",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
       "kind": "def",
       "name": "mode4OrdinaryLegendreAffine",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreAffineKernel.lean",
@@ -11840,7 +12080,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreAffineKernel.lean",
       "line": 113,
       "signature": "theorem mode4OrdinaryLegendre_even (q : ℕ) (x : ℝ) : mode4OrdinaryLegendre (2 * q) (-x) = mode4OrdinaryLegendre (2 * q) x",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -11911,6 +12151,106 @@
       "line": 171,
       "signature": "private theorem mode4OddIndex_changes_sign_at_endpoints : mode4OrdinaryLegendre 1 (-1) ≠ mode4OrdinaryLegendre 1 1",
       "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4OrdinaryLegendre_gram_offdiag",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreGram.lean",
+      "line": 20,
+      "signature": "private theorem mode4OrdinaryLegendre_gram_offdiag (n m : ℕ) (hnm : n ≠ m) : (∫ x in (-1 : ℝ)..1, mode4OrdinaryLegendre n x * mode4OrdinaryLegendre m x) = 0",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4OrdinaryLegendrePolynomial_X_mul_all",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreGram.lean",
+      "line": 83,
+      "signature": "private theorem mode4OrdinaryLegendrePolynomial_X_mul_all (n : ℕ) : X * mode4OrdinaryLegendrePolynomial n = C ((((n + 1 : ℕ) : ℝ) / ((2 * n + 1 : ℕ) : ℝ))) * mode4OrdinaryLegendrePolynomial (n + 1) + C (((n : ℝ) / ((2 * n + 1 : ℕ) : ℝ))) * mode4OrdinaryLegendrePolynomial (n - 1)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "mode4OrdinaryLegendreGram",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreGram.lean",
+      "line": 96,
+      "signature": "private noncomputable def mode4OrdinaryLegendreGram (n m : ℕ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4OrdinaryLegendre_X_mul_eval",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreGram.lean",
+      "line": 101,
+      "signature": "private theorem mode4OrdinaryLegendre_X_mul_eval (n : ℕ) (x : ℝ) : x * mode4OrdinaryLegendre n x = (((n + 1 : ℕ) : ℝ) / ((2 * n + 1 : ℕ) : ℝ)) * mode4OrdinaryLegendre (n + 1) x + ((n : ℝ) / ((2 * n + 1 : ℕ) : ℝ)) * mode4OrdinaryLegendre (n - 1) x",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4OrdinaryLegendreGram_X_left",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreGram.lean",
+      "line": 111,
+      "signature": "private theorem mode4OrdinaryLegendreGram_X_left (n m : ℕ) : (∫ x in (-1 : ℝ)..1, (x * mode4OrdinaryLegendre n x) * mode4OrdinaryLegendre m x) = (((n + 1 : ℕ) : ℝ) / ((2 * n + 1 : ℕ) : ℝ)) * mode4OrdinaryLegendreGram (n + 1) m + ((n : ℝ) / ((2 * n + 1 : ℕ) : ℝ)) * mode4OrdinaryLegendreGram (n - 1) m",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4OrdinaryLegendreGram_norm_succ_relation",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreGram.lean",
+      "line": 159,
+      "signature": "private theorem mode4OrdinaryLegendreGram_norm_succ_relation (n : ℕ) : (((n + 1 : ℕ) : ℝ) / ((2 * n + 1 : ℕ) : ℝ)) * mode4OrdinaryLegendreGram (n + 1) (n + 1) = (((n + 1 : ℕ) : ℝ) / ((2 * n + 3 : ℕ) : ℝ)) * mode4OrdinaryLegendreGram n n",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4OrdinaryLegendreGram_norm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreGram.lean",
+      "line": 200,
+      "signature": "private theorem mode4OrdinaryLegendreGram_norm (n : ℕ) : mode4OrdinaryLegendreGram n n = 2 / (((2 * n + 1 : ℕ) : ℝ))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4OrdinaryLegendre_even_gram",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreGram.lean",
+      "line": 218,
+      "signature": "theorem mode4OrdinaryLegendre_even_gram (q r : ℕ) : (∫ x in (-1 : ℝ)..1, mode4OrdinaryLegendre (2 * q) x * mode4OrdinaryLegendre (2 * r) x) = if q = r then 2 / (((4 * q + 1 : ℕ) : ℝ)) else 0",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4OrdinaryLegendre_derivative_gram_eq_eigen_mul_gram",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreGram.lean",
+      "line": 234,
+      "signature": "private theorem mode4OrdinaryLegendre_derivative_gram_eq_eigen_mul_gram (n m : ℕ) : (∫ x in (-1 : ℝ)..1, (1 - x ^ 2) * (mode4OrdinaryLegendrePolynomial n).derivative.eval x * (mode4OrdinaryLegendrePolynomial m).derivative.eval x) = ((n : ℝ) * (n + 1)) * mode4OrdinaryLegendreGram n m",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4OrdinaryLegendre_even_derivative_gram",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreGram.lean",
+      "line": 298,
+      "signature": "theorem mode4OrdinaryLegendre_even_derivative_gram (q r : ℕ) : (∫ x in (-1 : ℝ)..1, (1 - x ^ 2) * (mode4OrdinaryLegendrePolynomial (2 * q)).derivative.eval x * (mode4OrdinaryLegendrePolynomial (2 * r)).derivative.eval x) = if q = r then (((2 * q : ℕ) : ℝ) * (((2 * q + 1 : ℕ) : ℝ))) * (2 / (((4 * q + 1 : ℕ) : ℝ))) else 0",
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
