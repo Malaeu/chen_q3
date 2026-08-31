@@ -80,3 +80,50 @@ The active Aristotle queue contains only
 - `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/semantic_quarantine/PUBLIC_EXPORT_INDEX_AND_AXIOM_RECEIPT_v1.md`
 - `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/q3.lean.aristotle/scripts/aristotle_dag_loop.py`
 - `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb_status.py`
+
+## Goal 058 rerank — Fortsetzung
+
+### Aufgabe
+
+Rerank the still-independent Goal 058 dependency roots from the exact live
+consumer, select one genuinely new representation, and terminate the
+transaction as `PROVED`, `KILLED`, or honest `HOLD` without a Route or RH claim.
+
+### Erledigt
+
+- Killed the Goal 056 constructive-schedule candidate for the current rerank:
+  its production consumer is already supplied by the selected W5 theorem.
+- Killed direct reuse of Galerkin decay for the finite CCM ratio: the two
+  residual objects are not definitionally or semantically interchangeable.
+- Selected the even head/tail Feshbach representation as the highest-value new
+  dependency root.
+- Ran an independent read-only Codex subagent adjudication.
+- Closed the rerank as `HOLD`: the live shelf has no selected-even tail object,
+  no adapter from the fixed Goal 057 shift to `a_k`, and no positive uniform
+  Schur margin.
+- Corrected the Goal 056 debt record so it no longer appears as a live Goal 058
+  rerank candidate.
+
+### Geprüft
+
+- Exact live consumer and its three eventual inputs were read directly.
+- Existing odd-tail coercivity is real and uniform over `PairIndex`.
+- Existing Schur target is fixed at `m = 13`, `c0 = 10^-58`; positivity remains
+  a receiver and does not transfer to the selected cell-dependent shift.
+- No live `SourceWeilEvenTail` or selected-even Schur adapter exists.
+
+### Offen — nächste Schritte
+
+- Reopen only with
+  `SELECTED_FERRERS_EVEN_TAIL_COERCIVITY_AND_SCHUR_MARGIN_AT_EXACT_RAYLEIGH_SHIFT`
+  or a strictly weaker theorem with an exact implication to the unchanged
+  consumer.
+- Goal 058 remains mathematical `OPEN`, Route B remains `CHALLENGER / NOT_RH`.
+
+### Dateien
+
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/CODEX_RERANK_GOAL058_EVEN_HEAD_TAIL_FESHBACH_HOLD_2026-08-31.md`
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/RECHECKABLE_RESEARCH_DEBTS.json`
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_STATE.json`
+
+`PX_RH_CLAIM: NOT_MADE`.

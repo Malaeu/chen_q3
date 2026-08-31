@@ -240,11 +240,11 @@
       "weaker_interface_probe": "Build the weakest residual-weighted or local Schur estimate and prove its exact implication to the ground-to-trial consumer.",
       "why_interesting": "A successful result would directly reopen the highest-value parity-sector route into the current Goal 058 terminal consumer.",
       "unlock_value": "HIGH",
-      "estimated_difficulty": "UNKNOWN",
+      "estimated_difficulty": "HIGH",
       "last_attempt": {
-        "date": "2026-08-30",
-        "outcome": "KILL_CURRENT_SOURCE_SHELF",
-        "approach": "Audit of the current literature and Lean shelf for a direct uniform even floor at the selected Rayleigh shift."
+        "date": "2026-08-31",
+        "outcome": "HOLD_EVEN_HEAD_TAIL_FESHBACH_NO_SELECTED_SHIFT_PACKAGE",
+        "approach": "Consumer-first rerank to a source-defined even head-tail Schur representation; the live tree has no even-tail object, selected-Rayleigh-shift adapter, or positive uniform Schur margin."
       },
       "reopen_if": [
         "A primary theorem supplies direct even-form coercivity with the literal selected shift and one constant uniform on the selected schedule.",
@@ -257,7 +257,7 @@
         "PROSHKA_RESEARCH",
         "COUNTEREXAMPLE"
       ],
-      "next_probe": "Build an explicit even head-tail Feshbach discriminator or prove a weaker residual-weighted bound that still reaches the terminal consumer.",
+      "next_probe": "Acquire a selected-family even-tail coercivity theorem and a positive uniform Schur margin at the exact selected Rayleigh shift; otherwise keep this root on HOLD.",
       "novelty_requirement": [
         "Use a different theorem family than the prior direct floor search.",
         "Change representation to head-tail Feshbach, residual-weighted, or resolvent form.",
@@ -386,7 +386,7 @@
       "terminal_consumer": "The Goal 056 selected projection-tail bridge.",
       "original_requested_object": "A projection-tail theorem for every already-supplied arbitrary cofinal schedule from fixed-vector density alone.",
       "downstream_consumer": "The Goal 056 selected projection-tail bridge.",
-      "actual_consumer_requirement": "One source-coherent schedule on which the transported projection tail tends to zero; the consumer does not require the unsupported every-schedule strengthening.",
+      "actual_consumer_requirement": "The production selected schedule already has projection-tail decay through selectedProjectionTailDecay_of_selectedFerrersW5RateLedger. The historical arbitrary-cofinal strengthening is not consumed by the live Goal 058 ground-tail theorem.",
       "original_object_is": "NOT_NECESSARY",
       "necessity_evidence": [],
       "known_weaker_interfaces": [
@@ -416,13 +416,13 @@
       "death_evidence": [],
       "consumer_implication": "Either a coupled schedule with the required uniform rate or a constructive diagonal schedule discharges the selected projection-tail consumer without proving the arbitrary-cofinal theorem shape.",
       "weaker_interface_probe": "Construct one source-coherent schedule and prove that its explicit bandwidth and energy bounds imply the exact selected projection-tail limit.",
-      "why_interesting": "It preserves the completed same-m source-coherence repair and identifies the weaker schedule interface actually needed by the Goal 056 consumer.",
-      "unlock_value": "MEDIUM",
+      "why_interesting": "Historical recheckable debt only. It no longer unlocks the live Goal 058 consumer because the production selected schedule already has the required projection-tail decay.",
+      "unlock_value": "LOW",
       "estimated_difficulty": "HIGH",
       "last_attempt": {
-        "date": "2026-08-06",
-        "outcome": "KILL_CURRENT_SOURCE_UNSUPPORTED_THEOREM_SHAPE",
-        "approach": "Audit of fixed-vector Fourier density against simultaneously moving vectors, spaces, windows and cutoffs."
+        "date": "2026-08-31",
+        "outcome": "SUPERSEDED_AT_CURRENT_PRODUCTION_CONSUMER",
+        "approach": "Exact-consumer audit found the selected W5 projection-tail theorem already proved and found no SelectedProjectionTailDecay input in the live Goal 058 tracked-ground tail consumer."
       },
       "reopen_if": [
         "A source theorem supplies a uniform transported Fourier or Sobolev tail estimate on a named coupled schedule.",
@@ -435,7 +435,7 @@
         "PROSHKA_RESEARCH",
         "COUNTEREXAMPLE"
       ],
-      "next_probe": "Choose between a coupled-rate interface and a constructive diagonal schedule; do not restate the unsupported arbitrary-cofinal theorem.",
+      "next_probe": "Do not include this debt in Goal 058 reranks. Reopen only for an independently justified study of the historical arbitrary-cofinal theorem shape.",
       "novelty_requirement": [
         "Supply a schedule-coupled uniform energy or bandwidth theorem absent from the prior fixed-vector density argument.",
         "Change the quantifier structure to one explicit constructive diagonal schedule and prove it reaches the unchanged consumer.",

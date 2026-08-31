@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v3_live_bus",
-  "updated_at": "2026-08-30T23:22:00+02:00",
+  "updated_at": "2026-08-31T15:12:13+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": ".",
   "architecture": {
@@ -10,21 +10,37 @@
     "route_b_rh_status": "NOT_RH",
     "root_implementation_plan_overridden": false
   },
-  "operational_status": "GOAL_058_WEIGHTED_RESIDUAL_CURRENT_SHELF_KILLED_RECHECKABLE",
+  "operational_status": "GOAL_058_EVEN_HEAD_TAIL_FESHBACH_RERANK_HOLD",
   "current": {
-    "stage_id": "RB-GOAL-058-WEIGHTED-RESIDUAL-SOURCE-RATE",
-    "contract_obligation": "SELECTED_FERRERS_WEIGHTED_RESIDUAL_SOURCE_RATE",
-    "name": "Goal058SelectedFerrersWeightedResidualSourceRate",
-    "status": "KILLED_RECHECKABLE_RESEARCH_DEBT",
-    "stop_code": "KILL_SELECTED_FERRERS_WEIGHTED_RESIDUAL_SOURCE_RATE_ON_CURRENT_SOURCE_SHELF",
+    "stage_id": "RB-GOAL-058-EVEN-HEAD-TAIL-FESHBACH-RERANK",
+    "contract_obligation": "SELECTED_FERRERS_EVEN_SECTOR_UNIFORM_COERCIVITY_OR_FESHBACH",
+    "name": "Goal058SelectedFerrersEvenHeadTailFeshbach",
+    "status": "HOLD_RESEARCH_DEBT",
+    "stop_code": "HOLD_SELECTED_FERRERS_EVEN_HEAD_TAIL_FESHBACH_NO_SELECTED_SHIFT_PACKAGE",
     "selected_bus_goal_nnn": "058",
     "selected_bus_goal_path": "docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md",
-    "next_required_actor": "CODEX_PROSHKA_RERANK",
-    "next_action": "Rerank among still-independent Goal 058 dependency roots using the exact downstream consumer and a named novelty axis. Do not repeat the current mode/chi weighted-residual shelf, reopen direct Satz9/Fuchs or parity-floor searches, promote Route B, or claim RH.",
+    "next_required_actor": "OWNER_NEW_MATHEMATICS_OR_SOURCE",
+    "next_action": "Reopen only with a source-defined selected even-tail coercivity and positive Schur-margin package at the exact selected Rayleigh shift on the precommitted cofinal schedule, or a strictly weaker direct-consumer theorem with an exact implication. Do not substitute the odd-tail fixed-shift package, Galerkin residual, prolate gap, finite cells, promote Route B, or claim RH.",
     "route_promotion": false,
     "rh_claimed": false
   },
   "terminal_history": {
+    "goal_058_even_head_tail_feshbach_rerank": {
+      "classification": "GOAL058_EVEN_HEAD_TAIL_FESHBACH_RERANK_HOLD",
+      "status": "HOLD_CURRENT_EXECUTABLE_SHELF_MATHEMATICAL_TARGET_OPEN",
+      "base_commit": "f58c0f1ced43b6d177c93d17343890890da23e92",
+      "closeout_path": "docs/routeB_bus/CODEX_RERANK_GOAL058_EVEN_HEAD_TAIL_FESHBACH_HOLD_2026-08-31.md",
+      "selected_root": "SELECTED_FERRERS_EVEN_HEAD_TAIL_FESHBACH",
+      "novelty_axis": "SOURCE_DEFINED_EVEN_HEAD_TAIL_SCHUR_AT_SELECTED_RAYLEIGH_SHIFT",
+      "exact_consumer": "selectedFerrersTrackedGroundTail_exists_cofinal_reindex_of_eventually_sectorFloors",
+      "independent_review": "CODEX_SUBAGENT_HOLD",
+      "smallest_named_gap": "SELECTED_FERRERS_EVEN_TAIL_COERCIVITY_AND_SCHUR_MARGIN_AT_EXACT_RAYLEIGH_SHIFT",
+      "goal056_candidate": "KILLED_AS_CURRENT_RERANK_SUPERSEDED_AT_PRODUCTION_CONSUMER",
+      "ratio_direct_candidate": "KILLED_ON_CURRENT_SHELF_DISTINCT_RESIDUAL_OBJECT",
+      "odd_feshbach_candidate": "HOLD_FIXED_M13_C0_SHIFT_DOES_NOT_ADAPT_TO_SELECTED_A_K",
+      "route_promotion": false,
+      "rh_claimed": false
+    },
     "goal_058_g2b_proposition59_ground_lagrange_zero_bridge": {
       "classification": "P59_GROUND_LAGRANGE_ZEROSET_BRIDGE_PROVED",
       "status": "PASS_G2B_CLOSED_GOAL058_REMAINS_OPEN",
