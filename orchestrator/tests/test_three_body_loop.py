@@ -1024,6 +1024,71 @@ class SemanticAdmissionPlants(ThreeBodyPlants):
             semantic_attestation_resolver=resolver,
         )
 
+    def test_PLANT_DEFAULT_ADMISSION_RESOLVER_IS_LINUX_BROKER(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            state_path, _state = self._green(root)
+            entry_id = json.loads(state_path.read_bytes())["entries"][0]["entry_id"]
+            with mock.patch.object(
+                three_body_loop,
+                "resolve_linux_semantic_attestation",
+                return_value=None,
+            ), mock.patch.object(
+                three_body_loop,
+                "resolve_semantic_attestation",
+                side_effect=AssertionError("tracked receipt must not admit a new entry"),
+            ):
+                self.assert_code(
+                    "SEMANTIC_ADMISSION_REFUSED",
+                    three_body_loop.materialize_semantic_admission,
+                    entry_id=entry_id,
+                    attestation_id=self.ATTEST,
+                    state_path=state_path,
+                    lock_path=root / "writer.lock",
+                    repo_root=root,
+                )
+
+    def test_EXACT_OWNER_WAIVER_ADMITS_ONLY_THE_PINNED_ENTRY(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            state_path, _state = self._green(root)
+            state = json.loads(state_path.read_bytes())
+            state["entries"][0]["entry_id"] = three_body_loop.EXACT_OWNER_WAIVER_ENTRY_ID
+            state_path.write_bytes(three_body_loop._canonical_state_bytes(state))
+            loaded = three_body_loop.load_state(state_path, repo_root=root)
+            receipt = self._receipt_for(
+                loaded, three_body_loop.EXACT_OWNER_WAIVER_ATTESTATION_ID
+            )
+            receipt["issuer"] = three_body_loop.EXACT_OWNER_WAIVER_ISSUER
+            with mock.patch.object(
+                three_body_loop,
+                "resolve_semantic_attestation",
+                return_value=receipt,
+            ):
+                result = three_body_loop.materialize_semantic_admission(
+                    entry_id=three_body_loop.EXACT_OWNER_WAIVER_ENTRY_ID,
+                    attestation_id=three_body_loop.EXACT_OWNER_WAIVER_ATTESTATION_ID,
+                    state_path=state_path,
+                    lock_path=root / "writer.lock",
+                    repo_root=root,
+                )
+            self.assertTrue(result["changed"])
+            self.assertEqual(result["status"], "SEMANTICALLY_ADMITTED")
+
+    def test_OWNER_WAIVER_ISSUER_REJECTS_ANY_OTHER_ENTRY(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            state_path, state = self._green(root)
+            forged = self._receipt_for(state, self.ATTEST)
+            forged["issuer"] = three_body_loop.EXACT_OWNER_WAIVER_ISSUER
+            self.assert_code(
+                "SEMANTIC_ADMISSION_REFUSED",
+                self._admit,
+                root,
+                state_path,
+                lambda _id: forged,
+            )
+
     def test_PLANT_BROKER_UNAVAILABLE_REJECTS_ADMISSION(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

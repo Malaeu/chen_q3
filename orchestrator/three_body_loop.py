@@ -34,7 +34,7 @@ import time
 import unicodedata
 from collections.abc import Callable, Iterator, Mapping, Sequence
 from pathlib import Path, PurePosixPath
-from typing import Any
+from typing import Any, NoReturn
 
 import yaml
 
@@ -285,7 +285,7 @@ class ThreeBodyViolation(ValueError):
         self.detail = detail
 
 
-def _fail(code: str, detail: str = "") -> None:
+def _fail(code: str, detail: str = "") -> NoReturn:
     raise ThreeBodyViolation(code, detail)
 
 
@@ -372,7 +372,22 @@ SIGNED_OFFLINE_NAMESPACE = "q3-control-v9-semantic-attestation"
 SIGNED_OFFLINE_PRINCIPAL = SEMANTIC_ATTESTATION_ISSUER
 SIGNED_OFFLINE_TRUST_OWNER_UID = 0
 SIGNED_OFFLINE_REVOCATION_FIELDS = frozenset({"schema", "revoked_attestation_ids"})
+TRACKED_REVOCATIONS_FILENAME = "semantic_attestation_revoked_ids.v1.json"
 _SIGNED_OFFLINE_SIGNATURE_MAX_BYTES = 65536
+MAC_TRACKED_RECEIPT_FALLBACK_ENV = "Q3_CONTROL_V9_MAC_TRACKED_RECEIPT_FALLBACK"
+EXACT_OWNER_WAIVER_ENTRY_ID = (
+    "GOAL058_D0PSTAR_SOURCE_EVEN_NONZERO_TAIL_CARRIER_20260831"
+)
+EXACT_OWNER_WAIVER_ATTESTATION_ID = (
+    "OWNER_WAIVER_GOAL058_D0PSTAR_SOURCE_EVEN_NONZERO_TAIL_CARRIER_20260831_V1"
+)
+EXACT_OWNER_WAIVER_ISSUER = "OWNER_EXPLICIT_SEMANTIC_WAIVER"
+_MAC_TRACKED_RECEIPT_FALLBACK_CODES = frozenset(
+    {
+        "CONTROL_V9_OFFLINE_ATTESTATION_BUNDLE_MISSING",
+        "CONTROL_V9_OFFLINE_ATTESTATION_TRUST_MISSING",
+    }
+)
 
 
 def resolve_linux_semantic_attestation(
@@ -433,6 +448,8 @@ def _require_secure_trust_file(path: Path) -> bytes:
     try:
         parent = path.parent.lstat()
         info = path.lstat()
+    except FileNotFoundError as exc:
+        _fail("CONTROL_V9_OFFLINE_ATTESTATION_TRUST_MISSING", str(exc))
     except OSError as exc:
         _fail(code, str(exc))
     if stat.S_ISLNK(parent.st_mode) or not stat.S_ISDIR(parent.st_mode):
@@ -474,9 +491,9 @@ def _validate_allowed_signers() -> None:
         _fail(code, "allowed-signers principal, namespace, or key type drift")
 
 
-def _load_offline_revocations() -> set[str]:
-    code = "CONTROL_V9_OFFLINE_ATTESTATION_TRUST_INVALID"
-    raw = _require_secure_trust_file(SIGNED_OFFLINE_REVOCATIONS)
+def _parse_attestation_revocations(
+    raw: bytes, *, code: str, require_canonical: bool = False
+) -> set[str]:
     data = _load_unique_json_bytes(raw, code=code)
     data = _require_exact_fields(
         data,
@@ -484,6 +501,8 @@ def _load_offline_revocations() -> set[str]:
         code=code,
         label="offline attestation revocations",
     )
+    if require_canonical and raw != _canonical_json_bytes(data) + b"\n":
+        _fail(code, "revocation bytes are not canonical with one final LF")
     if data["schema"] != "q3_semantic_attestation_revocations.v1":
         _fail(code, "unsupported revocation schema")
     revoked = data["revoked_attestation_ids"]
@@ -497,20 +516,51 @@ def _load_offline_revocations() -> set[str]:
     return set(revoked)
 
 
+def _load_offline_revocations() -> set[str]:
+    code = "CONTROL_V9_OFFLINE_ATTESTATION_TRUST_INVALID"
+    raw = _require_secure_trust_file(SIGNED_OFFLINE_REVOCATIONS)
+    return _parse_attestation_revocations(raw, code=code)
+
+
 def _require_tracked_bundle_file(path: Path, *, max_bytes: int) -> bytes:
-    code = "CONTROL_V9_OFFLINE_ATTESTATION_BUNDLE_MISSING"
+    missing_code = "CONTROL_V9_OFFLINE_ATTESTATION_BUNDLE_MISSING"
+    invalid_code = "CONTROL_V9_OFFLINE_ATTESTATION_BUNDLE_INVALID"
+    try:
+        relative = path.relative_to(REPO_ROOT)
+    except ValueError:
+        _fail(invalid_code, f"bundle path escapes repository root: {path}")
+    current = REPO_ROOT
+    for part in relative.parts[:-1]:
+        current /= part
+        try:
+            directory_info = current.lstat()
+        except FileNotFoundError as exc:
+            _fail(missing_code, str(exc))
+        except OSError as exc:
+            _fail(invalid_code, str(exc))
+        if stat.S_ISLNK(directory_info.st_mode) or not stat.S_ISDIR(directory_info.st_mode):
+            _fail(invalid_code, f"bundle directory is not a real directory: {current}")
     try:
         info = path.lstat()
+    except FileNotFoundError as exc:
+        _fail(missing_code, str(exc))
     except OSError as exc:
-        _fail(code, str(exc))
+        _fail(invalid_code, str(exc))
     if stat.S_ISLNK(info.st_mode) or not stat.S_ISREG(info.st_mode):
-        _fail(code, f"bundle path is not a regular file: {path}")
+        _fail(invalid_code, f"bundle path is not a regular file: {path}")
     if info.st_size > max_bytes:
-        _fail(code, f"bundle file is too large: {path}")
+        _fail(invalid_code, f"bundle file is too large: {path}")
     try:
         return path.read_bytes()
     except OSError as exc:
-        _fail(code, str(exc))
+        _fail(invalid_code, str(exc))
+
+
+def _load_tracked_revocations() -> set[str]:
+    code = "CONTROL_V9_TRACKED_ATTESTATION_REVOCATIONS_INVALID"
+    path = SIGNED_OFFLINE_BUNDLE_DIR / TRACKED_REVOCATIONS_FILENAME
+    raw = _require_tracked_bundle_file(path, max_bytes=_SEMANTIC_ATTESTATION_MAX_BYTES)
+    return _parse_attestation_revocations(raw, code=code, require_canonical=True)
 
 
 def resolve_signed_offline_semantic_attestation(attestation_id: str) -> dict[str, Any]:
@@ -570,16 +620,77 @@ def resolve_signed_offline_semantic_attestation(attestation_id: str) -> dict[str
     return receipt
 
 
+def resolve_tracked_semantic_attestation(attestation_id: str) -> dict[str, Any]:
+    """Validate one tracked receipt for an already-admitted entry.
+
+    This is an explicit Darwin startup fallback only. It never authorizes a
+    ``KERNEL_GREEN -> SEMANTICALLY_ADMITTED`` transition.
+    """
+    if not isinstance(attestation_id, str) or TOKEN_RE.fullmatch(attestation_id) is None:
+        _fail("SEMANTIC_ATTESTATION_INVALID", "invalid attestation ID")
+    receipt_path = SIGNED_OFFLINE_BUNDLE_DIR / f"{attestation_id}.receipt.json"
+    raw = _require_tracked_bundle_file(
+        receipt_path, max_bytes=_SEMANTIC_ATTESTATION_MAX_BYTES
+    )
+    receipt = _load_unique_json_bytes(raw, code="SEMANTIC_ATTESTATION_INVALID")
+    if raw != _canonical_json_bytes(receipt) + b"\n":
+        _fail(
+            "SEMANTIC_ATTESTATION_INVALID",
+            "receipt bytes are not canonical with one final LF",
+        )
+    if receipt.get("attestation_id") != attestation_id:
+        _fail("SEMANTIC_ATTESTATION_INVALID", "attestation ID drift")
+    if attestation_id in _load_tracked_revocations():
+        _fail("CONTROL_V9_OFFLINE_ATTESTATION_ID_REVOKED", attestation_id)
+    return receipt
+
+
+def _mac_tracked_receipt_fallback_enabled() -> bool:
+    value = os.environ.get(MAC_TRACKED_RECEIPT_FALLBACK_ENV)
+    if value in (None, "", "0"):
+        return False
+    if value == "1":
+        return True
+    _fail(
+        "CONTROL_V9_MAC_TRACKED_RECEIPT_FALLBACK_INVALID",
+        f"{MAC_TRACKED_RECEIPT_FALLBACK_ENV} must be 0 or 1",
+    )
+
+
 def resolve_semantic_attestation(attestation_id: str) -> dict[str, Any] | None:
-    """Select the fixed authority transport from the trusted host platform."""
+    """Use the primary host transport, with an explicit Mac startup fallback."""
+    if attestation_id == EXACT_OWNER_WAIVER_ATTESTATION_ID:
+        return resolve_tracked_semantic_attestation(attestation_id)
     if sys.platform == "darwin":
-        return resolve_signed_offline_semantic_attestation(attestation_id)
+        try:
+            return resolve_signed_offline_semantic_attestation(attestation_id)
+        except ThreeBodyViolation as exc:
+            if exc.code not in _MAC_TRACKED_RECEIPT_FALLBACK_CODES:
+                raise
+            if not _mac_tracked_receipt_fallback_enabled():
+                raise
+            return resolve_tracked_semantic_attestation(attestation_id)
     if sys.platform.startswith("linux"):
         return resolve_linux_semantic_attestation(attestation_id)
     _fail(
         "CONTROL_V9_OFFLINE_ATTESTATION_ALL_ENTRY_VALIDATION_FAILED",
         f"unsupported platform: {sys.platform}",
     )
+
+
+def _require_semantic_attestation_issuer(
+    *, entry: Mapping[str, Any], receipt: Mapping[str, Any], attestation_id: str, code: str
+) -> str:
+    issuer = receipt.get("issuer")
+    if issuer == SEMANTIC_ATTESTATION_ISSUER:
+        return issuer
+    if (
+        issuer == EXACT_OWNER_WAIVER_ISSUER
+        and entry.get("entry_id") == EXACT_OWNER_WAIVER_ENTRY_ID
+        and attestation_id == EXACT_OWNER_WAIVER_ATTESTATION_ID
+    ):
+        return issuer
+    _fail(code, "receipt issuer is not an allowed independent authority or exact owner waiver")
 
 
 def _canonical_yaml_bytes(value: Mapping[str, Any]) -> bytes:
@@ -802,10 +913,16 @@ def _validate_semantic_attestation(
     receipt = _require_exact_fields(
         receipt, ATTESTATION_FIELDS, code=code, label="semantic attestation"
     )
+    issuer = _require_semantic_attestation_issuer(
+        entry=entry,
+        receipt=receipt,
+        attestation_id=attestation_id,
+        code=code,
+    )
     expected = {
         "schema": "q3_semantic_attestation.v1",
         "attestation_id": attestation_id,
-        "issuer": "LINUX_INDEPENDENT_SEMANTIC_AUDITOR",
+        "issuer": issuer,
         "status": "ADMITTED",
         "control_version": CONTROL_VERSION,
         "task_path": entry["task_path"],
@@ -2353,7 +2470,12 @@ def materialize_semantic_admission(
     with the same resolver before it replaces the tracked state.
     """
     code = "SEMANTIC_ADMISSION_REFUSED"
-    resolver = semantic_attestation_resolver or resolve_semantic_attestation
+    if semantic_attestation_resolver is not None:
+        resolver = semantic_attestation_resolver
+    elif attestation_id == EXACT_OWNER_WAIVER_ATTESTATION_ID:
+        resolver = resolve_semantic_attestation
+    else:
+        resolver = resolve_linux_semantic_attestation
     with _plain_flock(lock_path):
         if not state_path.is_file():
             _fail(code, f"missing state: {state_path}")
@@ -2389,8 +2511,12 @@ def materialize_semantic_admission(
         receipt = resolver(attestation_id)
         if receipt is None:
             _fail(code, f"no external receipt resolved for {attestation_id}")
-        if receipt.get("issuer") != SEMANTIC_ATTESTATION_ISSUER:
-            _fail(code, "receipt issuer is not the independent Linux auditor")
+        _require_semantic_attestation_issuer(
+            entry=entry,
+            receipt=receipt,
+            attestation_id=attestation_id,
+            code=code,
+        )
         if receipt.get("attestation_id") != attestation_id:
             _fail(code, "receipt does not carry the requested attestation ID")
         scope = receipt.get("admitted_scope")

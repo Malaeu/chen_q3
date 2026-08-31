@@ -430,16 +430,24 @@ tool_families:
         alternatives:
           - python3 orchestrator/three_body_loop.py request-validate <CODEX_REQ.md>
           - python3 orchestrator/three_body_loop.py launch <pinned-v9-arguments>
+          - Q3_CONTROL_V9_MAC_TRACKED_RECEIPT_FALLBACK=1 python3 orchestrator/three_body_loop.py validate
+          - >-
+            python3 orchestrator/three_body_loop.py semantic-admit
+            --entry-id GOAL058_D0PSTAR_SOURCE_EVEN_NONZERO_TAIL_CARRIER_20260831
+            --attestation-id OWNER_WAIVER_GOAL058_D0PSTAR_SOURCE_EVEN_NONZERO_TAIL_CARRIER_20260831_V1
         trigger: >-
-          Control-v9 validation, Darwin signed-offline or Linux broker receipt
-          resolution, request CAS, or one exact pinned wake event.
+          Control-v9 validation, Darwin signed-offline receipt resolution,
+          explicit Mac tracked-receipt fallback for already-admitted entries,
+          Linux-broker admission, request CAS, or one exact pinned wake event.
         writes: true
         approval: ACTIVE_CONTROL_V9_TRANSACTION_OR_EXTERNALLY_RESOLVED_BOUNDED_LEASE
-        authority: QUARANTINE_REQUEST_LIFECYCLE_AND_PINNED_LAUNCH_NOT_SEMANTIC_ATTESTATION
+        authority: QUARANTINE_REQUEST_LIFECYCLE_PINNED_LAUNCH_AND_ONE_EXACT_OWNER_WAIVER_NOT_GENERAL_SEMANTIC_ATTESTATION
         records_to: [orchestrator/state/SEMANTIC_QUARANTINE.json, CODEX_REQ_STATE_*.yaml, pinned final reply]
         validation: >-
-          test_signed_offline_semantic_attestation plus all original control-v9,
-          crash, mutation, broker, and goal-runtime plants.
+          test_signed_offline_semantic_attestation covers the signed primary,
+          explicit Darwin fallback, tracked revocations, symlink rejection, and
+          fail-closed boundaries, plus all original control-v9, crash, mutation,
+          broker, and goal-runtime plants.
         last_verified: 2026-08-29
 
       - id: w5-budget-probe

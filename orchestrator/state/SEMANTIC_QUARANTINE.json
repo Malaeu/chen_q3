@@ -33,7 +33,9 @@
       ]
     },
     {
-      "admitted_scope": [],
+      "admitted_scope": [
+        "D0PSTAR_SOURCE_EVEN_NONZERO_TAIL_CARRIER_PRE_GATE"
+      ],
       "closes": [
         "D0PSTAR_SOURCE_EVEN_NONZERO_TAIL_CARRIER_PRE_GATE"
       ],
@@ -46,11 +48,11 @@
         "D0PSTAR_SOURCE_EVEN_NONZERO_ORTHONORMAL_SYNTHESIS_LOW_BAND_ASSEMBLY"
       ],
       "quantifiers": "for every PairIndex i and cutoff R; low Fourier coefficients vanish for every algebraic or closed-tail vector and every integer n with natAbs n at most R",
-      "semantic_attestation_id": null,
+      "semantic_attestation_id": "OWNER_WAIVER_GOAL058_D0PSTAR_SOURCE_EVEN_NONZERO_TAIL_CARRIER_20260831_V1",
       "source_commit": "aa8ca906c959c13af2f9e513cd9dfdec1aa5b2b8",
       "source_git_blob": "d71832913a0d6e9258b2940a0842e7f0e7b5f426",
       "source_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroTailCarrier.lean",
-      "status": "KERNEL_GREEN",
+      "status": "SEMANTICALLY_ADMITTED",
       "task_blob": "48520f7921668fc5acbf668afa9278e502637cec",
       "task_path": "docs/Codex/TASK_2026-08-31_goal058_even_nonzero_tail_carrier.md",
       "terminal_consumer": "nonzero-even orthonormal synthesis and finite low-band assembly before selected-row parity or Feshbach use",

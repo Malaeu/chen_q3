@@ -756,6 +756,10 @@ SEMANTIC_QUARANTINE_STATE_INVALID
 SEMANTIC_QUARANTINE_CAP_EXCEEDED
 SEMANTIC_QUARANTINE_ACTIVE
 SEMANTIC_ATTESTATION_INVALID
+CONTROL_V9_MAC_TRACKED_RECEIPT_FALLBACK_INVALID
+CONTROL_V9_OFFLINE_ATTESTATION_BUNDLE_INVALID
+CONTROL_V9_OFFLINE_ATTESTATION_TRUST_MISSING
+CONTROL_V9_TRACKED_ATTESTATION_REVOCATIONS_INVALID
 HYPOTHESIS_PROVENANCE_INVALID
 CODEX_REQUEST_INVALID
 CODEX_REQUEST_STATE_INVALID
@@ -1093,6 +1097,33 @@ independent auditor's semantic judgement, not a runtime proof: the receipt binds
 the auditor to the complete structured object and provenance digest. A receiver
 without an exact source, supplier, or production inhabitant/plant remains an
 abstract conditional and closes no source-specific node.
+
+On Darwin, signed offline verification remains the default startup transport.
+For emergency Mac-only operation, the owner may explicitly enable the weaker
+tracked-receipt fallback:
+
+```bash
+Q3_CONTROL_V9_MAC_TRACKED_RECEIPT_FALLBACK=1 bash specs_docs/session_start.sh
+```
+
+The fallback is attempted only when the signed bundle or local root-owned trust
+files are missing. It validates both the exact canonical tracked receipt and
+`orchestrator/attestations/control-v9/semantic_attestation_revoked_ids.v1.json`
+for an already `SEMANTICALLY_ADMITTED` entry. Every path component must be a real
+directory rather than a symlink. The fallback does not mask an invalid signature,
+invalid trust file, or revoked attestation; it does not run on Linux and cannot
+authorize or perform a new `KERNEL_GREEN -> SEMANTICALLY_ADMITTED` transition.
+Without the exact value `1`, Darwin remains fail-closed on the signed transport.
+
+One task-local exception is recorded for the Owner's explicit 2026-08-31
+instruction to continue without the unavailable Linux contour. Only entry
+`GOAL058_D0PSTAR_SOURCE_EVEN_NONZERO_TAIL_CARRIER_20260831` may consume the
+tracked receipt
+`OWNER_WAIVER_GOAL058_D0PSTAR_SOURCE_EVEN_NONZERO_TAIL_CARRIER_20260831_V1`
+with issuer `OWNER_EXPLICIT_SEMANTIC_WAIVER`. The exception is exact-ID and
+exact-field bound, admits only
+`D0PSTAR_SOURCE_EVEN_NONZERO_TAIL_CARRIER_PRE_GATE`, and cannot authorize any
+other quarantine entry, Route promotion, publication, or `PX_RH_CLAIM`.
 
 ### 19.2 Request body, lifecycle, and answer binding
 

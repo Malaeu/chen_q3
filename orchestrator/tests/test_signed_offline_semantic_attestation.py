@@ -53,9 +53,12 @@ class SignedOfflinePlants(unittest.TestCase):
         )
         self.allowed = self.trust / "allowed_signers"
         self.revocations = self.trust / "revocations.json"
+        self.tracked_revocations = self.bundle / "semantic_attestation_revoked_ids.v1.json"
         self._write_allowed_signers(self.key)
         self._write_revocations([])
+        self._write_tracked_revocations([])
         self.patchers = [
+            mock.patch.object(loop, "REPO_ROOT", self.root),
             mock.patch.object(loop, "SIGNED_OFFLINE_BUNDLE_DIR", self.bundle),
             mock.patch.object(loop, "SIGNED_OFFLINE_ALLOWED_SIGNERS", self.allowed),
             mock.patch.object(loop, "SIGNED_OFFLINE_REVOCATIONS", self.revocations),
@@ -107,6 +110,13 @@ class SignedOfflinePlants(unittest.TestCase):
             encoding="utf-8",
         )
         self.revocations.chmod(0o600)
+
+    def _write_tracked_revocations(self, revoked: list[str]) -> None:
+        payload = {
+            "schema": "q3_semantic_attestation_revocations.v1",
+            "revoked_attestation_ids": revoked,
+        }
+        self.tracked_revocations.write_bytes(loop._canonical_json_bytes(payload) + b"\n")
 
     def _write_bundle(
         self,
@@ -164,6 +174,205 @@ class SignedOfflinePlants(unittest.TestCase):
             loop, "resolve_linux_semantic_attestation", side_effect=AssertionError("network")
         ):
             self.assertEqual(loop.resolve_semantic_attestation(ATTESTATION_ID), RECEIPT)
+
+    def test_explicit_mac_tracked_receipt_fallback_recovers_missing_signature(self) -> None:
+        receipt, _ = self._paths()
+        receipt.write_bytes(loop._canonical_json_bytes(RECEIPT) + b"\n")
+        with mock.patch.object(loop.sys, "platform", "darwin"), mock.patch.dict(
+            os.environ,
+            {"Q3_CONTROL_V9_MAC_TRACKED_RECEIPT_FALLBACK": "1"},
+        ):
+            self.assertEqual(loop.resolve_semantic_attestation(ATTESTATION_ID), RECEIPT)
+
+    def test_exact_owner_waiver_uses_only_the_tracked_receipt(self) -> None:
+        with mock.patch.object(
+            loop,
+            "resolve_tracked_semantic_attestation",
+            return_value=RECEIPT,
+        ) as tracked, mock.patch.object(
+            loop,
+            "resolve_signed_offline_semantic_attestation",
+            side_effect=AssertionError("owner waiver entered signed transport"),
+        ):
+            self.assertEqual(
+                loop.resolve_semantic_attestation(loop.EXACT_OWNER_WAIVER_ATTESTATION_ID),
+                RECEIPT,
+            )
+        tracked.assert_called_once_with(loop.EXACT_OWNER_WAIVER_ATTESTATION_ID)
+
+    def test_signed_path_stays_primary_when_fallback_is_enabled(self) -> None:
+        self._write_bundle()
+        with mock.patch.object(loop.sys, "platform", "darwin"), mock.patch.dict(
+            os.environ,
+            {"Q3_CONTROL_V9_MAC_TRACKED_RECEIPT_FALLBACK": "1"},
+        ), mock.patch.object(
+            loop,
+            "resolve_tracked_semantic_attestation",
+            side_effect=AssertionError("fallback used despite a valid signature"),
+        ):
+            self.assertEqual(loop.resolve_semantic_attestation(ATTESTATION_ID), RECEIPT)
+
+    def test_fallback_is_disabled_by_default(self) -> None:
+        receipt, _ = self._paths()
+        receipt.write_bytes(loop._canonical_json_bytes(RECEIPT) + b"\n")
+        with mock.patch.object(loop.sys, "platform", "darwin"), mock.patch.dict(
+            os.environ,
+            {},
+            clear=False,
+        ):
+            os.environ.pop("Q3_CONTROL_V9_MAC_TRACKED_RECEIPT_FALLBACK", None)
+            self.assert_code(
+                "CONTROL_V9_OFFLINE_ATTESTATION_BUNDLE_MISSING",
+                loop.resolve_semantic_attestation,
+                ATTESTATION_ID,
+            )
+
+    def test_fallback_does_not_mask_invalid_signature(self) -> None:
+        self._write_bundle(namespace="wrong-namespace")
+        with mock.patch.object(loop.sys, "platform", "darwin"), mock.patch.dict(
+            os.environ,
+            {"Q3_CONTROL_V9_MAC_TRACKED_RECEIPT_FALLBACK": "1"},
+        ):
+            self.assert_code(
+                "CONTROL_V9_OFFLINE_ATTESTATION_SIGNATURE_INVALID",
+                loop.resolve_semantic_attestation,
+                ATTESTATION_ID,
+            )
+
+    def test_fallback_rejects_noncanonical_receipt(self) -> None:
+        receipt, _ = self._paths()
+        receipt.write_text(json.dumps(RECEIPT, indent=2) + "\n", encoding="utf-8")
+        with mock.patch.object(loop.sys, "platform", "darwin"), mock.patch.dict(
+            os.environ,
+            {"Q3_CONTROL_V9_MAC_TRACKED_RECEIPT_FALLBACK": "1"},
+        ):
+            self.assert_code(
+                "SEMANTIC_ATTESTATION_INVALID",
+                loop.resolve_semantic_attestation,
+                ATTESTATION_ID,
+            )
+
+    def test_fallback_is_darwin_only(self) -> None:
+        receipt, _ = self._paths()
+        receipt.write_bytes(loop._canonical_json_bytes(RECEIPT) + b"\n")
+        with mock.patch.object(loop.sys, "platform", "linux"), mock.patch.dict(
+            os.environ,
+            {"Q3_CONTROL_V9_MAC_TRACKED_RECEIPT_FALLBACK": "1"},
+        ), mock.patch.object(
+            loop,
+            "resolve_linux_semantic_attestation",
+            return_value=None,
+        ):
+            self.assertIsNone(loop.resolve_semantic_attestation(ATTESTATION_ID))
+
+    def test_explicit_fallback_recovers_missing_root_trust(self) -> None:
+        self._write_bundle()
+        self.allowed.unlink()
+        with mock.patch.object(loop.sys, "platform", "darwin"), mock.patch.dict(
+            os.environ,
+            {"Q3_CONTROL_V9_MAC_TRACKED_RECEIPT_FALLBACK": "1"},
+        ):
+            self.assertEqual(loop.resolve_semantic_attestation(ATTESTATION_ID), RECEIPT)
+
+    def test_invalid_fallback_switch_fails_closed(self) -> None:
+        receipt, _ = self._paths()
+        receipt.write_bytes(loop._canonical_json_bytes(RECEIPT) + b"\n")
+        with mock.patch.object(loop.sys, "platform", "darwin"), mock.patch.dict(
+            os.environ,
+            {"Q3_CONTROL_V9_MAC_TRACKED_RECEIPT_FALLBACK": "true"},
+        ):
+            self.assert_code(
+                "CONTROL_V9_MAC_TRACKED_RECEIPT_FALLBACK_INVALID",
+                loop.resolve_semantic_attestation,
+                ATTESTATION_ID,
+            )
+
+    def test_fallback_does_not_bypass_revocation(self) -> None:
+        self._write_bundle()
+        self._write_revocations([ATTESTATION_ID])
+        with mock.patch.object(loop.sys, "platform", "darwin"), mock.patch.dict(
+            os.environ,
+            {"Q3_CONTROL_V9_MAC_TRACKED_RECEIPT_FALLBACK": "1"},
+        ):
+            self.assert_code(
+                "CONTROL_V9_OFFLINE_ATTESTATION_ID_REVOKED",
+                loop.resolve_semantic_attestation,
+                ATTESTATION_ID,
+            )
+
+    def test_fallback_without_signature_honors_tracked_revocation(self) -> None:
+        receipt, _ = self._paths()
+        receipt.write_bytes(loop._canonical_json_bytes(RECEIPT) + b"\n")
+        self._write_tracked_revocations([ATTESTATION_ID])
+        with mock.patch.object(loop.sys, "platform", "darwin"), mock.patch.dict(
+            os.environ,
+            {"Q3_CONTROL_V9_MAC_TRACKED_RECEIPT_FALLBACK": "1"},
+        ):
+            self.assert_code(
+                "CONTROL_V9_OFFLINE_ATTESTATION_ID_REVOKED",
+                loop.resolve_semantic_attestation,
+                ATTESTATION_ID,
+            )
+
+    def test_fallback_does_not_mask_unsafe_trust_permissions(self) -> None:
+        self._write_bundle()
+        self.allowed.chmod(0o620)
+        with mock.patch.object(loop.sys, "platform", "darwin"), mock.patch.dict(
+            os.environ,
+            {"Q3_CONTROL_V9_MAC_TRACKED_RECEIPT_FALLBACK": "1"},
+        ):
+            self.assert_code(
+                "CONTROL_V9_OFFLINE_ATTESTATION_TRUST_INVALID",
+                loop.resolve_semantic_attestation,
+                ATTESTATION_ID,
+            )
+
+    def test_fallback_does_not_mask_symlinked_signature(self) -> None:
+        receipt, signature = self._paths()
+        receipt.write_bytes(loop._canonical_json_bytes(RECEIPT) + b"\n")
+        target = self.root / "signature-target"
+        target.write_text("not a signature\n", encoding="utf-8")
+        signature.symlink_to(target)
+        with mock.patch.object(loop.sys, "platform", "darwin"), mock.patch.dict(
+            os.environ,
+            {"Q3_CONTROL_V9_MAC_TRACKED_RECEIPT_FALLBACK": "1"},
+        ):
+            self.assert_code(
+                "CONTROL_V9_OFFLINE_ATTESTATION_BUNDLE_INVALID",
+                loop.resolve_semantic_attestation,
+                ATTESTATION_ID,
+            )
+
+    def test_fallback_rejects_symlinked_bundle_directory(self) -> None:
+        real_bundle = self.root / "real-bundle"
+        real_bundle.mkdir()
+        receipt = real_bundle / f"{ATTESTATION_ID}.receipt.json"
+        receipt.write_bytes(loop._canonical_json_bytes(RECEIPT) + b"\n")
+        tracked_revocations = real_bundle / "semantic_attestation_revoked_ids.v1.json"
+        tracked_revocations.write_bytes(
+            loop._canonical_json_bytes(
+                {
+                    "schema": "q3_semantic_attestation_revocations.v1",
+                    "revoked_attestation_ids": [],
+                }
+            )
+            + b"\n"
+        )
+        linked_bundle = self.root / "linked-bundle"
+        linked_bundle.symlink_to(real_bundle, target_is_directory=True)
+        with (
+            mock.patch.object(loop, "SIGNED_OFFLINE_BUNDLE_DIR", linked_bundle),
+            mock.patch.object(loop.sys, "platform", "darwin"),
+            mock.patch.dict(
+                os.environ,
+                {"Q3_CONTROL_V9_MAC_TRACKED_RECEIPT_FALLBACK": "1"},
+            ),
+        ):
+            self.assert_code(
+                "CONTROL_V9_OFFLINE_ATTESTATION_BUNDLE_INVALID",
+                loop.resolve_semantic_attestation,
+                ATTESTATION_ID,
+            )
 
     def test_missing_receipt_fails_closed(self) -> None:
         self.assert_code(
