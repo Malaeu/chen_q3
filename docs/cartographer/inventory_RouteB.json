@@ -1,13 +1,18 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 367,
-  "declarations": 4057,
-  "in_docs": 2012,
+  "files_scanned": 368,
+  "declarations": 4069,
+  "in_docs": 2020,
   "in_lemma_db": 4057,
-  "orphans": 0,
-  "uncatalogued": 0,
-  "orphan_files_top": [],
+  "orphans": 5,
+  "uncatalogued": 5,
+  "orphan_files_top": [
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroTailCarrier.lean",
+      5
+    ]
+  ],
   "items": [
     {
       "kind": "def",
@@ -17140,6 +17145,126 @@
       "orphan": false
     },
     {
+      "kind": "def",
+      "name": "sourceWeilGraphEvenZeroMode",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroTailCarrier.lean",
+      "line": 26,
+      "signature": "noncomputable def sourceWeilGraphEvenZeroMode (i : PairIndex) : SourceWeilGraphCarrier i",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilGraphEvenNonzeroMode",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroTailCarrier.lean",
+      "line": 33,
+      "signature": "noncomputable def sourceWeilGraphEvenNonzeroMode (i : PairIndex) (n : ℕ) : SourceWeilGraphCarrier i",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilGraphEvenNonzeroTail",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroTailCarrier.lean",
+      "line": 42,
+      "signature": "noncomputable def sourceWeilGraphEvenNonzeroTail (i : PairIndex) (R : ℕ) : Submodule ℂ (SourceWeilGraphCarrier i)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "abbrev",
+      "name": "SourceWeilGraphEvenNonzeroTailCarrier",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroTailCarrier.lean",
+      "line": 47,
+      "signature": "abbrev SourceWeilGraphEvenNonzeroTailCarrier (i : PairIndex) (R : ℕ)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "instance",
+      "name": "sourceWeilGraphEvenNonzeroTailCompleteSpace",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroTailCarrier.lean",
+      "line": 50,
+      "signature": "noncomputable instance sourceWeilGraphEvenNonzeroTailCompleteSpace (i : PairIndex) (R : ℕ) : CompleteSpace (SourceWeilGraphEvenNonzeroTailCarrier i R)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "instance",
+      "name": "sourceWeilGraphEvenNonzeroTailInnerProductSpace",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroTailCarrier.lean",
+      "line": 58,
+      "signature": "instance sourceWeilGraphEvenNonzeroTailInnerProductSpace (i : PairIndex) (R : ℕ) : InnerProductSpace ℂ (SourceWeilGraphEvenNonzeroTailCarrier i R)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "instance",
+      "name": "sourceWeilGraphEvenNonzeroTailHasOrthogonalProjection",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroTailCarrier.lean",
+      "line": 63,
+      "signature": "noncomputable instance sourceWeilGraphEvenNonzeroTailHasOrthogonalProjection (i : PairIndex) (R : ℕ) : (sourceWeilGraphEvenNonzeroTail i R).HasOrthogonalProjection",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilGraphAmbient_evenZeroMode",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroTailCarrier.lean",
+      "line": 69,
+      "signature": "@[simp] theorem sourceWeilGraphAmbient_evenZeroMode (i : PairIndex) : sourceWeilGraphAmbient i (sourceWeilGraphEvenZeroMode i) = V_n_m i 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilGraphAmbient_evenNonzeroMode",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroTailCarrier.lean",
+      "line": 75,
+      "signature": "@[simp] theorem sourceWeilGraphAmbient_evenNonzeroMode (i : PairIndex) (n : ℕ) : sourceWeilGraphAmbient i (sourceWeilGraphEvenNonzeroMode i n) = ((Real.sqrt 2 : ℝ) : ℂ)⁻¹ • (V_n_m i (n + 1 : ℕ) + V_n_m i (-((n + 1 : ℕ) : ℤ)))",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilGraphEvenNonzeroTailAlgebraic_low_fourier_vanish",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroTailCarrier.lean",
+      "line": 86,
+      "signature": "theorem sourceWeilGraphEvenNonzeroTailAlgebraic_low_fourier_vanish (i : PairIndex) (R : ℕ) (x : SourceWeilGraphCarrier i) (hx : x ∈ Submodule.span ℂ (Set.range (fun k : ℕ => sourceWeilGraphEvenNonzeroMode i (R + k)))) (n : ℤ) (hn : n.natAbs ≤ R) : inner ℂ (V_n_m i n) (sourceWeilGraphAmbient i x) = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilGraphEvenNonzeroTail_low_fourier_vanish",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroTailCarrier.lean",
+      "line": 123,
+      "signature": "theorem sourceWeilGraphEvenNonzeroTail_low_fourier_vanish (i : PairIndex) (R : ℕ) (x : SourceWeilGraphEvenNonzeroTailCarrier i R) (n : ℤ) (hn : n.natAbs ≤ R) : inner ℂ (V_n_m i n) (sourceWeilGraphAmbient i (x : SourceWeilGraphCarrier i)) = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilGraphEvenZeroMode_orthogonal_nonzeroTail",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroTailCarrier.lean",
+      "line": 156,
+      "signature": "theorem sourceWeilGraphEvenZeroMode_orthogonal_nonzeroTail (i : PairIndex) (R : ℕ) (x : SourceWeilGraphEvenNonzeroTailCarrier i R) : inner ℂ (sourceWeilGraphAmbient i (sourceWeilGraphEvenZeroMode i)) (sourceWeilGraphAmbient i (x : SourceWeilGraphCarrier i)) = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
       "kind": "theorem",
       "name": "one_mode_agreement_without_complete_basis_does_not_identify_maps_plant",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceLogWindowFourierIntegralCrosswalk.lean",
@@ -19015,7 +19140,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
       "line": 55,
       "signature": "noncomputable def sourceWeilGraphAmbient (i : PairIndex) : SourceWeilGraphCarrier i →L[ℂ] H_m i",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
