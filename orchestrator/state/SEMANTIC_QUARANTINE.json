@@ -65,7 +65,9 @@
       ]
     },
     {
-      "admitted_scope": [],
+      "admitted_scope": [
+        "D0PSTAR_SOURCE_EVEN_NONZERO_ORTHONORMAL_SYNTHESIS_LOW_BAND_ASSEMBLY"
+      ],
       "closes": [
         "D0PSTAR_SOURCE_EVEN_NONZERO_ORTHONORMAL_SYNTHESIS_LOW_BAND_ASSEMBLY"
       ],
@@ -78,11 +80,11 @@
         "SELECTED_FERRERS_EVEN_HEAD_TAIL_EXACT_SHIFT_COERCIVITY_OR_FESHBACH"
       ],
       "quantifiers": "for every PairIndex i, cutoff R, zero coefficient c0, finite coefficient family c : Fin R to Complex, and vector in the closed nonzero-even tail; the ambient inner product of the synthesized head with that tail vector is zero",
-      "semantic_attestation_id": null,
+      "semantic_attestation_id": "OWNER_WAIVER_GOAL058_D0PSTAR_SOURCE_EVEN_NONZERO_LOW_BAND_ASSEMBLY_20260831_V1",
       "source_commit": "2d41a7dccc20a2c2e2a5ad21bcf3b4227a94dde5",
       "source_git_blob": "f9f354eb41f1a3326800fdaf5cc07c22dc420519",
       "source_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroLowBandAssembly.lean",
-      "status": "KERNEL_GREEN",
+      "status": "SEMANTICALLY_ADMITTED",
       "task_blob": "4aa7af2dccd702f3b927ab1deb38eeb38b69d71d",
       "task_path": "docs/Codex/TASK_2026-08-31_goal058_even_nonzero_low_band_assembly.md",
       "terminal_consumer": "literal selected-row even head-tail coercivity or positive Schur-Feshbach margin at the exact selected Rayleigh shift on the production cofinal schedule",

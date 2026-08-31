@@ -1115,15 +1115,23 @@ invalid trust file, or revoked attestation; it does not run on Linux and cannot
 authorize or perform a new `KERNEL_GREEN -> SEMANTICALLY_ADMITTED` transition.
 Without the exact value `1`, Darwin remains fail-closed on the signed transport.
 
-One task-local exception is recorded for the Owner's explicit 2026-08-31
-instruction to continue without the unavailable Linux contour. Only entry
-`GOAL058_D0PSTAR_SOURCE_EVEN_NONZERO_TAIL_CARRIER_20260831` may consume the
-tracked receipt
-`OWNER_WAIVER_GOAL058_D0PSTAR_SOURCE_EVEN_NONZERO_TAIL_CARRIER_20260831_V1`
-with issuer `OWNER_EXPLICIT_SEMANTIC_WAIVER`. The exception is exact-ID and
-exact-field bound, admits only
-`D0PSTAR_SOURCE_EVEN_NONZERO_TAIL_CARRIER_PRE_GATE`, and cannot authorize any
-other quarantine entry, Route promotion, publication, or `PX_RH_CLAIM`.
+Two task-local exceptions record the Owner's explicit 2026-08-31 instructions
+to continue without the unavailable Linux contour.  They are exact-ID and
+exact-field bound:
+
+- entry `GOAL058_D0PSTAR_SOURCE_EVEN_NONZERO_TAIL_CARRIER_20260831` may consume
+  tracked receipt
+  `OWNER_WAIVER_GOAL058_D0PSTAR_SOURCE_EVEN_NONZERO_TAIL_CARRIER_20260831_V1`
+  and admits only `D0PSTAR_SOURCE_EVEN_NONZERO_TAIL_CARRIER_PRE_GATE`;
+- entry `GOAL058_D0PSTAR_SOURCE_EVEN_NONZERO_LOW_BAND_ASSEMBLY_20260831` may
+  consume tracked receipt
+  `OWNER_WAIVER_GOAL058_D0PSTAR_SOURCE_EVEN_NONZERO_LOW_BAND_ASSEMBLY_20260831_V1`
+  and admits only
+  `D0PSTAR_SOURCE_EVEN_NONZERO_ORTHONORMAL_SYNTHESIS_LOW_BAND_ASSEMBLY`.
+
+Both receipts use issuer `OWNER_EXPLICIT_SEMANTIC_WAIVER`.  Neither exception
+can authorize any other quarantine entry, Route promotion, publication, or
+`PX_RH_CLAIM`, and the two entry/attestation pairs are not interchangeable.
 
 ### 19.2 Request body, lifecycle, and answer binding
 

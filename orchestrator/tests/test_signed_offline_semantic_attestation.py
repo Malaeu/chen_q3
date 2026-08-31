@@ -194,11 +194,16 @@ class SignedOfflinePlants(unittest.TestCase):
             "resolve_signed_offline_semantic_attestation",
             side_effect=AssertionError("owner waiver entered signed transport"),
         ):
-            self.assertEqual(
-                loop.resolve_semantic_attestation(loop.EXACT_OWNER_WAIVER_ATTESTATION_ID),
-                RECEIPT,
-            )
-        tracked.assert_called_once_with(loop.EXACT_OWNER_WAIVER_ATTESTATION_ID)
+            for _entry_id, attestation_id in sorted(loop.EXACT_OWNER_WAIVERS):
+                with self.subTest(attestation_id=attestation_id):
+                    self.assertEqual(
+                        loop.resolve_semantic_attestation(attestation_id),
+                        RECEIPT,
+                    )
+        self.assertEqual(
+            tracked.call_args_list,
+            [mock.call(attestation_id) for _, attestation_id in sorted(loop.EXACT_OWNER_WAIVERS)],
+        )
 
     def test_signed_path_stays_primary_when_fallback_is_enabled(self) -> None:
         self._write_bundle()

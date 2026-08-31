@@ -381,7 +381,19 @@ EXACT_OWNER_WAIVER_ENTRY_ID = (
 EXACT_OWNER_WAIVER_ATTESTATION_ID = (
     "OWNER_WAIVER_GOAL058_D0PSTAR_SOURCE_EVEN_NONZERO_TAIL_CARRIER_20260831_V1"
 )
+LOW_BAND_OWNER_WAIVER_ENTRY_ID = (
+    "GOAL058_D0PSTAR_SOURCE_EVEN_NONZERO_LOW_BAND_ASSEMBLY_20260831"
+)
+LOW_BAND_OWNER_WAIVER_ATTESTATION_ID = (
+    "OWNER_WAIVER_GOAL058_D0PSTAR_SOURCE_EVEN_NONZERO_LOW_BAND_ASSEMBLY_20260831_V1"
+)
 EXACT_OWNER_WAIVER_ISSUER = "OWNER_EXPLICIT_SEMANTIC_WAIVER"
+EXACT_OWNER_WAIVERS = frozenset(
+    {
+        (EXACT_OWNER_WAIVER_ENTRY_ID, EXACT_OWNER_WAIVER_ATTESTATION_ID),
+        (LOW_BAND_OWNER_WAIVER_ENTRY_ID, LOW_BAND_OWNER_WAIVER_ATTESTATION_ID),
+    }
+)
 _MAC_TRACKED_RECEIPT_FALLBACK_CODES = frozenset(
     {
         "CONTROL_V9_OFFLINE_ATTESTATION_BUNDLE_MISSING",
@@ -621,10 +633,11 @@ def resolve_signed_offline_semantic_attestation(attestation_id: str) -> dict[str
 
 
 def resolve_tracked_semantic_attestation(attestation_id: str) -> dict[str, Any]:
-    """Validate one tracked receipt for an already-admitted entry.
+    """Validate one exact tracked receipt.
 
-    This is an explicit Darwin startup fallback only. It never authorizes a
-    ``KERNEL_GREEN -> SEMANTICALLY_ADMITTED`` transition.
+    This transport is used only by an explicit exact owner waiver or by the
+    Darwin startup fallback for an already-admitted entry.  Merely placing a
+    receipt in the tracked bundle never authorizes a transition.
     """
     if not isinstance(attestation_id, str) or TOKEN_RE.fullmatch(attestation_id) is None:
         _fail("SEMANTIC_ATTESTATION_INVALID", "invalid attestation ID")
@@ -659,7 +672,7 @@ def _mac_tracked_receipt_fallback_enabled() -> bool:
 
 def resolve_semantic_attestation(attestation_id: str) -> dict[str, Any] | None:
     """Use the primary host transport, with an explicit Mac startup fallback."""
-    if attestation_id == EXACT_OWNER_WAIVER_ATTESTATION_ID:
+    if any(attestation_id == waiver_id for _, waiver_id in EXACT_OWNER_WAIVERS):
         return resolve_tracked_semantic_attestation(attestation_id)
     if sys.platform == "darwin":
         try:
@@ -686,8 +699,7 @@ def _require_semantic_attestation_issuer(
         return issuer
     if (
         issuer == EXACT_OWNER_WAIVER_ISSUER
-        and entry.get("entry_id") == EXACT_OWNER_WAIVER_ENTRY_ID
-        and attestation_id == EXACT_OWNER_WAIVER_ATTESTATION_ID
+        and (entry.get("entry_id"), attestation_id) in EXACT_OWNER_WAIVERS
     ):
         return issuer
     _fail(code, "receipt issuer is not an allowed independent authority or exact owner waiver")
@@ -2472,7 +2484,7 @@ def materialize_semantic_admission(
     code = "SEMANTIC_ADMISSION_REFUSED"
     if semantic_attestation_resolver is not None:
         resolver = semantic_attestation_resolver
-    elif attestation_id == EXACT_OWNER_WAIVER_ATTESTATION_ID:
+    elif any(attestation_id == waiver_id for _, waiver_id in EXACT_OWNER_WAIVERS):
         resolver = resolve_semantic_attestation
     else:
         resolver = resolve_linux_semantic_attestation

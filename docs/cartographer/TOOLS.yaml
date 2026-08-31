@@ -436,20 +436,26 @@ tool_families:
             python3 orchestrator/three_body_loop.py semantic-admit
             --entry-id GOAL058_D0PSTAR_SOURCE_EVEN_NONZERO_TAIL_CARRIER_20260831
             --attestation-id OWNER_WAIVER_GOAL058_D0PSTAR_SOURCE_EVEN_NONZERO_TAIL_CARRIER_20260831_V1
+          - >-
+            python3 orchestrator/three_body_loop.py semantic-admit
+            --entry-id GOAL058_D0PSTAR_SOURCE_EVEN_NONZERO_LOW_BAND_ASSEMBLY_20260831
+            --attestation-id OWNER_WAIVER_GOAL058_D0PSTAR_SOURCE_EVEN_NONZERO_LOW_BAND_ASSEMBLY_20260831_V1
         trigger: >-
           Control-v9 validation, Darwin signed-offline receipt resolution,
           explicit Mac tracked-receipt fallback for already-admitted entries,
-          Linux-broker admission, request CAS, or one exact pinned wake event.
+          Linux-broker admission, either of the two exact owner-waiver
+          admissions, request CAS, or one exact pinned wake event.
         writes: true
         approval: ACTIVE_CONTROL_V9_TRANSACTION_OR_EXTERNALLY_RESOLVED_BOUNDED_LEASE
-        authority: QUARANTINE_REQUEST_LIFECYCLE_PINNED_LAUNCH_AND_ONE_EXACT_OWNER_WAIVER_NOT_GENERAL_SEMANTIC_ATTESTATION
+        authority: QUARANTINE_REQUEST_LIFECYCLE_PINNED_LAUNCH_AND_TWO_EXACT_OWNER_WAIVERS_NOT_GENERAL_SEMANTIC_ATTESTATION
         records_to: [orchestrator/state/SEMANTIC_QUARANTINE.json, CODEX_REQ_STATE_*.yaml, pinned final reply]
         validation: >-
           test_signed_offline_semantic_attestation covers the signed primary,
-          explicit Darwin fallback, tracked revocations, symlink rejection, and
-          fail-closed boundaries, plus all original control-v9, crash, mutation,
-          broker, and goal-runtime plants.
-        last_verified: 2026-08-29
+          explicit Darwin fallback, tracked revocations, symlink rejection,
+          both exact owner-waiver pairings, cross-pair rejection, and
+          fail-closed boundaries, plus all original control-v9, crash,
+          mutation, broker, and goal-runtime plants.
+        last_verified: 2026-08-31
 
       - id: w5-budget-probe
         status: ENABLED

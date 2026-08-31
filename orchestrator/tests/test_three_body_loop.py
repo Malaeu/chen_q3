@@ -1048,7 +1048,33 @@ class SemanticAdmissionPlants(ThreeBodyPlants):
                     repo_root=root,
                 )
 
-    def test_EXACT_OWNER_WAIVER_ADMITS_ONLY_THE_PINNED_ENTRY(self) -> None:
+    def test_EXACT_OWNER_WAIVERS_ADMIT_ONLY_THE_PINNED_ENTRIES(self) -> None:
+        for entry_id, attestation_id in sorted(three_body_loop.EXACT_OWNER_WAIVERS):
+            with self.subTest(entry_id=entry_id), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                state_path, _state = self._green(root)
+                state = json.loads(state_path.read_bytes())
+                state["entries"][0]["entry_id"] = entry_id
+                state_path.write_bytes(three_body_loop._canonical_state_bytes(state))
+                loaded = three_body_loop.load_state(state_path, repo_root=root)
+                receipt = self._receipt_for(loaded, attestation_id)
+                receipt["issuer"] = three_body_loop.EXACT_OWNER_WAIVER_ISSUER
+                with mock.patch.object(
+                    three_body_loop,
+                    "resolve_semantic_attestation",
+                    return_value=receipt,
+                ):
+                    result = three_body_loop.materialize_semantic_admission(
+                        entry_id=entry_id,
+                        attestation_id=attestation_id,
+                        state_path=state_path,
+                        lock_path=root / "writer.lock",
+                        repo_root=root,
+                    )
+                self.assertTrue(result["changed"])
+                self.assertEqual(result["status"], "SEMANTICALLY_ADMITTED")
+
+    def test_OWNER_WAIVER_PAIRS_CANNOT_BE_CROSSED(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             state_path, _state = self._green(root)
@@ -1057,23 +1083,19 @@ class SemanticAdmissionPlants(ThreeBodyPlants):
             state_path.write_bytes(three_body_loop._canonical_state_bytes(state))
             loaded = three_body_loop.load_state(state_path, repo_root=root)
             receipt = self._receipt_for(
-                loaded, three_body_loop.EXACT_OWNER_WAIVER_ATTESTATION_ID
+                loaded, three_body_loop.LOW_BAND_OWNER_WAIVER_ATTESTATION_ID
             )
             receipt["issuer"] = three_body_loop.EXACT_OWNER_WAIVER_ISSUER
-            with mock.patch.object(
-                three_body_loop,
-                "resolve_semantic_attestation",
-                return_value=receipt,
-            ):
-                result = three_body_loop.materialize_semantic_admission(
-                    entry_id=three_body_loop.EXACT_OWNER_WAIVER_ENTRY_ID,
-                    attestation_id=three_body_loop.EXACT_OWNER_WAIVER_ATTESTATION_ID,
-                    state_path=state_path,
-                    lock_path=root / "writer.lock",
-                    repo_root=root,
-                )
-            self.assertTrue(result["changed"])
-            self.assertEqual(result["status"], "SEMANTICALLY_ADMITTED")
+            self.assert_code(
+                "SEMANTIC_ADMISSION_REFUSED",
+                three_body_loop.materialize_semantic_admission,
+                entry_id=three_body_loop.EXACT_OWNER_WAIVER_ENTRY_ID,
+                attestation_id=three_body_loop.LOW_BAND_OWNER_WAIVER_ATTESTATION_ID,
+                state_path=state_path,
+                lock_path=root / "writer.lock",
+                repo_root=root,
+                semantic_attestation_resolver=lambda _id: receipt,
+            )
 
     def test_OWNER_WAIVER_ISSUER_REJECTS_ANY_OTHER_ENTRY(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
