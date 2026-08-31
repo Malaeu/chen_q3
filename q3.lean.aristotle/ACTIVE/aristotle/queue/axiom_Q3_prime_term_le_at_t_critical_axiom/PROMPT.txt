@@ -1,15 +1,12 @@
 Task
-Fill the remaining `sorry` in file `Q3/Clean/MainClean.lean`.
-
-Targets (nearest declarations):
-- RH_conditional_on_Gate_clean_broken
+Close the axiom `Q3.prime_term_le_at_t_critical_axiom` by replacing it with a theorem (no new axioms).
 
 Hard constraints:
-- Modify ONLY this file.
+- Modify only the file that declares this axiom.
 - Do NOT add new imports.
-- Do NOT touch transitive dependencies.
 - Do NOT change definitions/structures.
 - Stay within single-scale assumptions (no two-scale bridges).
+- Use existing lemmas already imported.
 
 Preferred tactics:
 - Use `suffices` for goal reduction.
@@ -17,5 +14,5 @@ Preferred tactics:
 - Prefer `simp`, `linarith`, `nlinarith`, `gcongr`, `positivity`.
 
 If the statement is false or under-specified:
-- Provide a counterexample or a proof of the negation,
-  and point to the missing assumption.
+- Provide a concrete counterexample or a proof of the negation,
+  and explain which assumption is missing.

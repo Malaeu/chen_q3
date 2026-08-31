@@ -98,8 +98,8 @@ The standalone proofs use only:
 - Standard Lean axioms (propext, Classical.choice, Quot.sound)
 - Tier-1 external axioms (Weil, Szegő-Böttcher, etc.) where appropriate
 
-**Why axioms still appear in #print axioms RH_proven:**
-The main proof chain (T5_transfer → Main → RH_proven) imports Q3.Axioms directly.
+**Why axioms still appear in #print axioms RH_of_legacyBroadConeAxioms_compat:**
+The main proof chain (T5_transfer → Main → RH_of_legacyBroadConeAxioms_compat) imports Q3.Axioms directly.
 Lean axioms cannot be "closed" after definition - requires architectural refactor.
 
 **Bridge Status:**

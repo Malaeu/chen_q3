@@ -2407,3 +2407,12 @@ Fix: Закомментировать строку:
 - [ ] Warnings понятны и не критичны
 - [ ] (Опционально) Подставить `exact?` suggestions
 ```
+
+## 2026-08-31 semantic-quarantine note
+
+The live legacy broad-cone wrapper is
+`Q3.MainTheorems.RH_of_legacyBroadConeAxioms_compat`. The clean prototype is
+`Q3.Clean.RH_conditional_on_Gate_clean_broken` and remains a registered
+`LEGACY / BROKEN / BROKEN_BUILD` module with its existing `sorry`. Neither
+surface is an unconditional RH result. Historical status text above remains
+unchanged for provenance.

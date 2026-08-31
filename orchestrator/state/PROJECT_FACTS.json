@@ -14,11 +14,11 @@
   "receipts": [
     {
       "path": "docs/semantic_quarantine/PUBLIC_EXPORT_INDEX_AND_AXIOM_RECEIPT_v1.md",
-      "sha256": "411d220c62a977ec8cf10d5c03b2a8159fbf4cef3419c312372f77d6b1c6d735"
+      "sha256": "33542997242a8b14ec94afb9b89377d413d154a6e024e910ad72f221f8754286"
     },
     {
       "path": "docs/semantic_quarantine/MODULE_CLASS_REGISTRY_v1.json",
-      "sha256": "0ad8a71ec42d123ec8956740b73816d29ccd1662338ea31ec51d8db24c7f0caf"
+      "sha256": "3941d168a81b63233dcffb65aefba3a7d98f61374af3dd80a5c12281c6074b15"
     }
   ]
 }

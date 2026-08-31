@@ -115,3 +115,11 @@
   axiom RKHS_inner_product_pos : ⟨f, f⟩_RKHS ≥ 0                 -- Aronszajn 1950
 
   Это честно: мы ИСПОЛЬЗУЕМ классическую математику, а не ЗАНОВО её доказываем.
+
+## 2026-08-31 semantic-quarantine note
+
+The current legacy broad-cone compatibility exports are
+`Q3.MainTheorems.RH_of_legacyBroadConeAxioms_compat` and the broken clean
+prototype `Q3.Clean.RH_conditional_on_Gate_clean_broken`. Both names state
+their conditional status; neither is an unconditional RH export. The earlier
+snapshot above is retained as provenance and must not select current work.

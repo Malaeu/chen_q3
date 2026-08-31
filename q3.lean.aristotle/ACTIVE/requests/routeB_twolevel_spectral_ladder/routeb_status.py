@@ -22,6 +22,9 @@ from orchestrator.routeb_goal_state import is_paused_goal
 
 BUS_DIR = REPO_ROOT / "docs" / "routeB_bus"
 STATE_PATH = REQUEST_DIR / "ROUTE_B_EXECUTION_STATE.json"
+STATUS_SURFACE_REGISTRY_PATH = (
+    REPO_ROOT / "docs" / "semantic_quarantine" / "STATUS_SURFACE_REGISTRY_v1.json"
+)
 NAME_RE = re.compile(
     r"^(?P<goal_id>\d{3}[A-Za-z]*)_(?P<stem>[a-z0-9_]+)\.(?P<kind>goal|answer)\.md$"
 )
@@ -51,6 +54,41 @@ def load_json(path: Path) -> dict[str, Any]:
     if not isinstance(data, dict):
         raise ValueError(f"top-level JSON must be an object: {path}")
     return data
+
+
+def historical_marker_errors(
+    repo_root: Path = REPO_ROOT,
+    registry_path: Path = STATUS_SURFACE_REGISTRY_PATH,
+) -> list[str]:
+    """Validate explicit marker subscriptions on historical status surfaces."""
+    try:
+        registry = load_json(registry_path)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        return [f"STATUS_SURFACE_REGISTRY_INVALID:{exc}"]
+
+    surfaces = registry.get("surfaces")
+    if not isinstance(surfaces, list):
+        return ["STATUS_SURFACE_REGISTRY_INVALID:surfaces must be a list"]
+
+    errors: list[str] = []
+    for row in surfaces:
+        if not isinstance(row, dict) or row.get("role") != "HISTORICAL":
+            continue
+        marker = row.get("required_marker")
+        if not isinstance(marker, str) or not marker:
+            continue
+        rel = row.get("path")
+        if not isinstance(rel, str) or not rel:
+            errors.append("STATUS_SURFACE_REGISTRY_INVALID:marker row missing path")
+            continue
+        path = repo_root / rel
+        try:
+            text = path.read_text(encoding="utf-8")
+        except OSError:
+            text = ""
+        if marker not in text:
+            errors.append(f"STALE_MONITOR_MISSING_HISTORICAL_MARKER:{rel}")
+    return errors
 
 
 def goal_id_key(goal_id: str) -> tuple[int, str]:
@@ -160,6 +198,7 @@ def main() -> int:
     bus_errors = list(bus["errors"])
     state_errors: list[str] = []
     pin_errors: list[str] = []
+    marker_errors = historical_marker_errors()
 
     try:
         state = load_json(STATE_PATH)
@@ -243,6 +282,7 @@ def main() -> int:
         "bus_errors": bus_errors,
         "state_errors": state_errors,
         "pin_errors": pin_errors,
+        "status_surface_errors": marker_errors,
     }
 
     if args.json:
@@ -277,7 +317,7 @@ def main() -> int:
         )
         print(f"ACTOR: {result['next_required_actor']}")
         print(f"ACTION: {result['next_action']}")
-        all_errors = bus_errors + state_errors + pin_errors
+        all_errors = bus_errors + state_errors + pin_errors + marker_errors
         if all_errors:
             print("CHECK: FAIL")
             for error in all_errors:
@@ -287,6 +327,8 @@ def main() -> int:
 
     if not args.check:
         return 0
+    if marker_errors:
+        return 5
     if pin_errors:
         return 4
     if state_errors:

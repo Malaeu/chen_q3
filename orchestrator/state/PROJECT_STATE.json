@@ -5,7 +5,7 @@
   "source_hashes": {
     "facts": {
       "path": "orchestrator/state/PROJECT_FACTS.json",
-      "sha256": "5cdadb59f4bc1ce5fbcdb1229e18d82e2bd2562c3cfaa9fa637d0102436809e8"
+      "sha256": "cc8fb73ca7c63790a96bd8da217a3b5caf0d2ca5dceb1d23728b6e44b0dac085"
     },
     "execution": {
       "path": "orchestrator/state/PROJECT_EXECUTION_STATE.json",
@@ -17,19 +17,19 @@
     },
     "surface_registry": {
       "path": "docs/semantic_quarantine/STATUS_SURFACE_REGISTRY_v1.json",
-      "sha256": "042641c0059fda3e82ad193feec5b55c9e7a2d033f6a1a9fd5e8a924210ecd56"
+      "sha256": "62ec2494f7409d7bd2fc2c11c30ec87e95c82766132c61135acd133c004aa706"
     },
     "schema": {
       "path": "docs/semantic_quarantine/SINGLE_MACHINE_STATE_SCHEMA_v1.json",
-      "sha256": "50bf0390395411e2b11cf98455e67db1b050452027c24d79ca3f76a9d78dd144"
+      "sha256": "aec862d9f4bcb34c16acf7cd933b8294095068bf531e33819a0649bc941a0b59"
     },
     "builder_program": {
       "path": "orchestrator/project_state.py",
-      "sha256": "7cfd8fe70ceabdb2809b85e58eb005e578f52dfc202049bddbd703192365ba8c"
+      "sha256": "13ec5606c462176359b6ba1813fa3de5808ae449e553711836dbb65efba5765d"
     },
     "selector_program": {
       "path": "orchestrator/goal_runtime.py",
-      "sha256": "04956752c316d18ad7bcb8eace7b3501621d84a0e593d4ecbd569d141c3e673d"
+      "sha256": "cfc02f1ba169ca19832fdc21c456eeb4902aa305771d6e797774d58e3d5e0fcf"
     }
   },
   "event_log": {
@@ -39,23 +39,23 @@
   "component_hashes": [
     {
       "path": "docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md",
-      "sha256": "eb418123c65320ad54769d8021717594fb4135488201d93f3ff0c88ca35423ff"
+      "sha256": "ffc9c8369bc94dbc8a8c81f73831228714d31a15b0827d3a95f43bbf932dad32"
     },
     {
       "path": "SESSION_ENTRY.md",
-      "sha256": "39b538ba2b66849b2b78b8e59112016f992d6d224641a6f33aba352020cb2582"
+      "sha256": "388104a882fb98d97e1b528a2a2eb2e90a6c0dd6a922f1824dae173ee241df30"
     },
     {
       "path": "q3.lean.aristotle/ACTIVE/SESSION_ENTRY.md",
-      "sha256": "39b538ba2b66849b2b78b8e59112016f992d6d224641a6f33aba352020cb2582"
+      "sha256": "388104a882fb98d97e1b528a2a2eb2e90a6c0dd6a922f1824dae173ee241df30"
     },
     {
       "path": "docs/Codex/CURRENT.md",
-      "sha256": "931b69417252cd0dc7cb50fd2e94ca3ba2fcc3c521fb3f4935483541fb788fba"
+      "sha256": "a424b840ae3eff1e9d96011c2b867f5ab78484afe2d5b5e790d0972c0f2e157b"
     },
     {
       "path": "orchestrator/state/CHANNEL_RUNTIME.json",
-      "sha256": "a0458d8defe75e0953008f93d8cd27564fe0f315e6d3e9d4db40174840d7d399"
+      "sha256": "657269c6eab3ed2ebe923e97dd90b88221237d7f27f2c7bac2b2b48d30622dda"
     },
     {
       "path": "orchestrator/state/SEMANTIC_QUARANTINE.json",
@@ -63,11 +63,11 @@
     },
     {
       "path": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_STATE.json",
-      "sha256": "0c747255ff2653c6ff696b1b25af43bf67076d8f49e2980dc9aa297f89d1693c"
+      "sha256": "0429c6f0f35e33c57d03f5af518ca6681845288d3e70d111c17a469df5c14ca8"
     },
     {
       "path": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_STATE.md",
-      "sha256": "0e19eb124cbaf587c74b9d7703686b35cb87c6afd8d3af24b8fbaba892c7e263"
+      "sha256": "178c3156227bf75bfd359074b91904c16e41ebb924e2b18742e730f2fbbc4958"
     }
   ],
   "projection": {

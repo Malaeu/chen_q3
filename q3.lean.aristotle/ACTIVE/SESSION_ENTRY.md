@@ -98,7 +98,13 @@ hit создаёт максимум `REOPEN_CANDIDATE`: до `SOURCE_VERIFIED` �
 1. `PROJECT_ORCHESTRATOR.md` фиксирует только ранг `CHALLENGER / NOT_RH`.
 2. `docs/routeB_bus/` решает, существует ли исполнимый goal.
 3. `ROUTE_B_EXECUTION_STATE.json` задаёт текущий operational address.
-4. `ROUTE_B_THEOREM_CONTRACT_v2.md` и `ROUTE_B_EXECUTION_CONTROL.md` задают DAG.
+4. Исполняемый DAG задаёт мастер-маршрут 058
+   (`docs/routeB_bus/proshka/PROSHKA_MASTER_ROUTE_REALZERO_GROUND_DIAGONAL_TO_XI_2026-08-11.md`).
+   `ROUTE_B_THEOREM_CONTRACT_v2.md` — historical candidate; его дисциплинарные
+   статьи K7, anti-circularity, `SAFE_IS_RH_REPACKAGING` и запрет tau0-подмены
+   действуют на весь проект. `ROUTE_B_EXECUTION_CONTROL.md` — historical surface
+   без selector effect. Канонический статус зафиксирован в
+   `docs/ROUTE_B_CONTRACT_V2_STATUS_ADDENDUM_v1.md`.
 5. `ROUTE_B_STATE.md` хранит проверенные факты и историю.
 6. `loop_state.json`, generated views и `INSIGHTS` ничего не выбирают.
 

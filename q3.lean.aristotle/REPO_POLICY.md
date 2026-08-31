@@ -182,3 +182,11 @@ Before merging any PR:
 ---
 
 *Policy version: 1.0 | Created: 2025-12-22*
+
+## 2026-08-31 semantic-quarantine note
+
+For current checks, use
+`#print axioms Q3.MainTheorems.RH_of_legacyBroadConeAxioms_compat`. The clean
+prototype is named `Q3.Clean.RH_conditional_on_Gate_clean_broken` and remains
+outside the buildable public surface. These declarations are conditional
+legacy artifacts; their names and compilation do not constitute an RH claim.

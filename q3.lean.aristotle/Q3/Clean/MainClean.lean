@@ -1,15 +1,15 @@
 /-
-Q3 Clean: RH_proven_clean
-===========================
+Q3 Clean: RH_conditional_on_Gate_clean_broken
+================================================
 
-This is the CLEAN version of RH_proven.
+This is the legacy CLEAN conditional wrapper.
 It imports only:
 - Q3.Clean.AxiomsTier1 (classical axioms)
 - Q3.Clean.TheoremsTier2 (Q3 paper theorems)
 
 NO import of Q3.Axioms!
 
-#print axioms Q3.Clean.RH_proven_clean should show:
+#print axioms Q3.Clean.RH_conditional_on_Gate_clean_broken should show:
 - Standard Lean: propext, Classical.choice, Quot.sound
 - Tier-1 axioms: Weil_criterion, a_star_*, Szego_*, Schur_test, etc.
 - sorryAx: from incomplete Tier-2 proofs
@@ -32,7 +32,7 @@ namespace Q3.Clean
 # Main RH Proof (Clean Version)
 -/
 
-/-- The Riemann Hypothesis, proven from:
+/-- The Riemann Hypothesis, conditional on the incomplete clean gate:
     - Tier-1 classical axioms (Weil criterion, etc.)
     - Tier-2 theorems (Q ≥ 0 on atoms, density, etc.)
 
@@ -44,8 +44,10 @@ namespace Q3.Clean
     5. By density + continuity: Q ≥ 0 extends to all of W_K ⊂ Weil_cone
     6. Taking K → ∞: Q ≥ 0 on all of Weil_cone
     7. By Weil criterion: RH holds
+
+    Renamed from RH_proven_clean 2026-08-31; conditional — see #print axioms.
 -/
-theorem RH_proven_clean : Q3.RH := by
+theorem RH_conditional_on_Gate_clean_broken : Q3.RH := by
   -- Apply Weil criterion (Tier-1 axiom)
   rw [← Weil_criterion]
   -- Need to show: ∀ Φ ∈ Weil_cone, Q Φ ≥ 0
@@ -65,7 +67,7 @@ end Q3.Clean
 
 Run:
 ```
-#print axioms Q3.Clean.RH_proven_clean
+#print axioms Q3.Clean.RH_conditional_on_Gate_clean_broken
 ```
 
 Expected output shows:
@@ -84,4 +86,4 @@ This confirms the clean architecture:
 Tier-2 results are THEOREMS (with sorries), not axioms.
 -/
 
-#print axioms Q3.Clean.RH_proven_clean
+#print axioms Q3.Clean.RH_conditional_on_Gate_clean_broken

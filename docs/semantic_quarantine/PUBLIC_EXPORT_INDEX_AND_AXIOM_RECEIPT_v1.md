@@ -501,3 +501,34 @@ The gate checks the complete tracked `PUBLIC_CANONICAL` root set, rejects
 forbidden transitive local import edges, and audits declaration references in
 the Lean environment so the mixed `Q3.Basic.Defs` module cannot leak its four
 legacy declaration overrides into a public export.
+
+## 2026-08-31 naming migration
+
+```yaml
+migration_id: LEGACY_RH_PROVEN_NAME_REMOVAL_V1
+executed_on_base: abe6a74abe725c40bb941a1cb939e1ba999d1dee
+renames:
+  - old: Q3.MainTheorems.RH_proven
+    new: Q3.MainTheorems.RH_of_legacyBroadConeAxioms_compat
+    source: q3.lean.aristotle/Q3/MainTheorems.lean
+  - old: Q3.MainTheorems.RH_proven
+    new: Q3.MainTheorems.RH_of_legacyBroadConeAxioms_compat
+    source: q3.lean.aristotle/MainTheorems.lean
+  - old: Q3.Clean.RH_proven_clean
+    new: Q3.Clean.RH_conditional_on_Gate_clean_broken
+    source: q3.lean.aristotle/Q3/Clean/MainClean.lean
+  - old: Q3.Clean.RH_proven_clean
+    new: Q3.Clean.RH_conditional_on_Gate_clean_broken
+    source: q3.lean.aristotle/Clean/MainClean.lean
+buildable_wrapper_axioms:
+  - propext
+  - Classical.choice
+  - Q3.Weil_criterion
+  - Q3.prime_term_le_at_t_critical_axiom
+  - Quot.sound
+pre_post_axiom_profile_identical: true
+proof_body_changed: false
+clean_broken_sorry_changed: false
+unconditional_rh_proof: false
+PX_RH_CLAIM: NOT_MADE
+```

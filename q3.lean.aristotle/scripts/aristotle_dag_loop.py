@@ -22,12 +22,13 @@ from pathlib import Path
 from typing import Iterable
 
 ROOT = Path(__file__).resolve().parents[1]  # full/q3.lean.aristotle
-REPO_ROOT = ROOT.parents[1]  # repo root
+REPO_ROOT = ROOT.parent  # repo root
 ACTIVE_DIR = ROOT / "ACTIVE"
 QUEUE_DIR = ACTIVE_DIR / "aristotle" / "queue"
 QUEUE_JSON = ACTIVE_DIR / "aristotle" / "ARISTOTLE_QUEUE.json"
 QUEUE_MD = ACTIVE_DIR / "aristotle" / "ARISTOTLE_QUEUE.md"
 DEPS_JSON = ACTIVE_DIR / "graphs" / "DEPS_TREE_MAIN.json"
+ARCHIVE_DIR = ROOT / "Q3" / "Archive"
 
 DEFAULT_IGNORE_AXIOMS = {
     "propext",
@@ -82,9 +83,12 @@ def strip_comments(lines: list[str]) -> list[str]:
 
 def scan_sorries(path: Path) -> list[SorryInfo]:
     try:
-        lines = path.read_text(encoding="utf-8").splitlines()
+        text = path.read_text(encoding="utf-8")
     except Exception:
         return []
+    if SORRY_RE.search(text) is None:
+        return []
+    lines = text.splitlines()
     stripped = strip_comments(lines)
     last_decl = None
     results: list[SorryInfo] = []
@@ -100,8 +104,10 @@ def scan_sorries(path: Path) -> list[SorryInfo]:
 def iter_lean_files(paths: Iterable[Path]) -> Iterable[Path]:
     for path in paths:
         if path.is_dir():
-            yield from path.rglob("*.lean")
-        elif path.suffix == ".lean":
+            for candidate in path.rglob("*.lean"):
+                if not candidate.is_relative_to(ARCHIVE_DIR):
+                    yield candidate
+        elif path.suffix == ".lean" and not path.is_relative_to(ARCHIVE_DIR):
             yield path
 
 

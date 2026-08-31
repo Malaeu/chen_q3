@@ -170,6 +170,18 @@
         "module_class": "LEGACY",
         "lifecycle_status": "BROKEN",
         "traits": ["BROKEN_BUILD"]
+      },
+      {
+        "id": "root_clean_main_clean",
+        "artifact_kind": "LEAN_MODULE",
+        "identity": {
+          "source_root": "q3.lean.aristotle",
+          "repo_relative_path": "q3.lean.aristotle/Clean/MainClean.lean",
+          "lean_module": "Clean.MainClean"
+        },
+        "module_class": "LEGACY",
+        "lifecycle_status": "BROKEN",
+        "traits": ["BROKEN_BUILD"]
       }
     ],
     "prefix": [

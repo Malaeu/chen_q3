@@ -96,16 +96,9 @@ EVENT_AUTHORITY_POLICY = {
     "merge_rule": "MERGE_RESULT_MUST_PREFIX_EXTEND_PREMERGE_FIRST_PARENT",
     "side_branch_rule": "SIDE_BRANCH_EVENT_IS_DRAFT_UNTIL_CANONICAL_ADMISSION",
 }
-REQUIRED_FOREIGN_EXACT_PATHS = {
-    "docs/routeB_bus/mythos/DRAFT_ARSENAL_CARD_CANDIDATES_BB_GORZ_20260827.md",
-    "docs/routeB_bus/mythos/DRAFT_CODEX_TASK_CONTROL_PLANE_REFRESH_20260827.md",
-    "docs/routeB_bus/mythos/DRAFT_CODEX_TASK_RH_PROVEN_RENAME_20260827.md",
-    "docs/routeB_bus/mythos/DRAFT_EXTERNAL_INTERFACE_FAITHFULNESS_AUDIT_BRIEF_v1_20260827.md",
-    "docs/routeB_bus/mythos/DRAFT_ROUTE_B_CONTRACT_V2_STATUS_ADDENDUM_v1_20260827.md",
-    "docs/routeB_bus/mythos/MYTHOS_PREDICTION_REGISTER_20260827.md",
-}
+REQUIRED_FOREIGN_EXACT_PATHS: set[str] = set()
 REQUIRED_FOREIGN_GLOB_PATTERNS = {"orchestrator/state/*.db"}
-CANONICAL_SURFACES_SHA256 = "cfec5cac186a4a59c2a1b0022d94b9c1529467f976be820f07f92b81c88265ea"
+CANONICAL_SURFACES_SHA256 = "9b42dfb8489c87b5b1a0d7eb4ddc0ed5f81027ab346262dae574328bbc6bb96f"
 P5_PROSPECTIVE_PATHS = {
     "docs/generated/PROJECT_STATUS.md",
     "docs/generated/PUBLIC_ROUTE_GRAPH.md",
@@ -351,12 +344,18 @@ def _validate_document_shape(document: dict[str, Any]) -> None:
         if document["p5_000_crosswalk"] != CANONICAL_P5_CROSSWALK:
             raise StateError(f"STATE_SCHEMA_INVALID: {kind} exact crosswalk")
         for row in document["surfaces"]:
-            require_exact_keys(row, {"path", "role", "selector_effect", "source_store", "consumers", "drift_risk"}, kind)
+            required = {"path", "role", "selector_effect", "source_store", "consumers", "drift_risk"}
+            allowed = required | {"required_marker"}
+            if not required.issubset(row) or not set(row).issubset(allowed):
+                raise StateError(f"STATE_SCHEMA_INVALID: {kind} keys")
             if row["role"] not in VALID_ROLES or row["selector_effect"] not in {"ACTIVE", "COMPONENT_ONLY", "NONE"}:
                 raise StateError(f"STATE_SCHEMA_INVALID: {kind} surface")
             canonical_path(row["path"])
             if not isinstance(row["source_store"], str) or not row["source_store"] or not isinstance(row["consumers"], list) or not all(isinstance(item, str) and item for item in row["consumers"]) or not isinstance(row["drift_risk"], str) or not row["drift_risk"]:
                 raise StateError(f"STATE_SCHEMA_INVALID: {kind} surface fields")
+            if "required_marker" in row:
+                if row["role"] != "HISTORICAL" or not isinstance(row["required_marker"], str) or not row["required_marker"]:
+                    raise StateError(f"STATE_SCHEMA_INVALID: {kind} required marker")
         if sha256_bytes(canonical_json(document["surfaces"])) != CANONICAL_SURFACES_SHA256:
             raise StateError(f"STATE_SCHEMA_INVALID: {kind} surface policy digest")
         for row in document["coverage_rules"]:
@@ -383,7 +382,7 @@ def _validate_document_shape(document: dict[str, Any]) -> None:
         require_exact_keys(denylist, {"exact_paths", "glob_patterns"}, f"{kind} denylist")
         exact_paths = denylist["exact_paths"]
         glob_patterns = denylist["glob_patterns"]
-        if not isinstance(exact_paths, list) or len(exact_paths) != 6 or len(set(exact_paths)) != len(exact_paths):
+        if not isinstance(exact_paths, list) or exact_paths or len(set(exact_paths)) != len(exact_paths):
             raise StateError(f"STATE_SCHEMA_INVALID: {kind} denylist exact paths")
         if not isinstance(glob_patterns, list) or len(glob_patterns) != 1 or len(set(glob_patterns)) != len(glob_patterns):
             raise StateError(f"STATE_SCHEMA_INVALID: {kind} denylist glob patterns")

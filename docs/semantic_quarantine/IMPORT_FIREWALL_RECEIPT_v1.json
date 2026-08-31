@@ -8,7 +8,7 @@
     },
     "registry": {
       "path": "docs/semantic_quarantine/MODULE_CLASS_REGISTRY_v1.json",
-      "sha256": "0ad8a71ec42d123ec8956740b73816d29ccd1662338ea31ec51d8db24c7f0caf"
+      "sha256": "3941d168a81b63233dcffb65aefba3a7d98f61374af3dd80a5c12281c6074b15"
     },
     "registry_schema": {
       "path": "docs/semantic_quarantine/MODULE_CLASS_SCHEMA_v1.json",

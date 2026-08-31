@@ -1,12 +1,11 @@
-# NODE BRIEF - Q3/Clean/MainClean.lean
+# NODE BRIEF - Q3.prime_term_le_at_t_critical_axiom
 
 ## Location
-- File: `Q3/Clean/MainClean.lean`
-- Sorries:
-- RH_conditional_on_Gate_clean_broken @ L61
+- File: `Q3/Proofs/Q_nonneg_t_critical.lean`
+- Declaration: `Q3.prime_term_le_at_t_critical_axiom`
 
 ## Goal (informal)
-Fill all remaining `sorry` in this file without touching imports/defs.
+Replace axiom with theorem; no new axioms, no new imports.
 
 ## Fixed assumptions / invariants
 - Single-scale mainline (t_critical).

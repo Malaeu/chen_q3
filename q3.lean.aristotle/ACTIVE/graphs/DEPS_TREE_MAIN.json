@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
   "sensor_kind": "LEAN_PRINT_AXIOMS",
-  "generated_at": "2026-08-28 17:53 UTC",
+  "generated_at": "2026-08-31 08:50 UTC",
   "check_file": "Q3/CheckAxioms.lean",
   "check_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "source_scan": {
@@ -9,7 +9,7 @@
     "heavy_generated_family": "Q3/Proofs/PrimeCert",
     "heavy_threshold_bytes": 1000000,
     "content_scanned_files": 2256,
-    "content_scanned_bytes": 97854921,
+    "content_scanned_bytes": 97855045,
     "skipped_generated_files": 1303,
     "skipped_generated_bytes": 4312275592,
     "allowlist_entries": [

@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
   "sensor_kind": "ROOT_AXIOM_PROJECTION",
-  "generated_at": "2026-08-28 17:53 UTC",
+  "generated_at": "2026-08-31 08:50 UTC",
   "root": "Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom",
   "nodes": [
     {
@@ -500,7 +500,7 @@
     }
   ],
   "inputs": {
-    "dependency_tree": "b399c70cdcfdf6c668e0d65ee442c090cc65f1b39eb7504ff6eb0860f433f87a",
+    "dependency_tree": "a280b3a1356db7c169d58088686efe501bb35ac70d5567f6ed4e04a713174a1d",
     "taint_graph": "151d117b7ae889643706a454510489179764b3233ab74edf67d95c798e90b2b3",
     "alternative_paths": "75d44409e3869ae421e493484aca7f9226b62842200dcf8bbe89db28bbaeedd7"
   },

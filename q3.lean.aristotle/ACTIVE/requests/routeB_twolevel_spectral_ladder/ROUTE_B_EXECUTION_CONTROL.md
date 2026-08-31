@@ -1,5 +1,11 @@
 # Route B — execution control
 
+CLASSIFICATION 2026-08-31: HISTORICAL · selector_effect NONE ·
+source_store FROZEN_DAG_CONTRACT (`docs/semantic_quarantine/STATUS_SURFACE_REGISTRY_v1.json`).
+This file does not report current state and must not select work.
+Current state comes only from the authoritative machine state.
+Canonical status addendum: `docs/ROUTE_B_CONTRACT_V2_STATUS_ADDENDUM_v1.md`.
+
 Status: `IDLE_AWAITING_EXPLICIT_PROSHKA_MATHEMATICAL_TARGET / CONTROL_PLANE / NOT_RH / CHALLENGER`
 Schema: `route_b_execution_control.v2`
 Canonical repo: `/Users/emalam/GitHub/rh_lean_01_2026`

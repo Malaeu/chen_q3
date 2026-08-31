@@ -177,6 +177,7 @@
       "role": "HISTORICAL",
       "selector_effect": "NONE",
       "source_store": "FROZEN_DAG_CONTRACT",
+      "required_marker": "CLASSIFICATION 2026-08-31: HISTORICAL · selector_effect NONE ·",
       "consumers": ["human architecture readers"],
       "drift_risk": "STALE_RB_IDLE_HEADER"
     },
@@ -437,6 +438,30 @@
       "drift_risk": "NO_MACHINE_HISTORY_MARKER"
     },
     {
+      "path": "docs/Codex/TASK_2026-08-31_naming_and_status_surface_closeout.md",
+      "role": "HISTORICAL",
+      "selector_effect": "NONE",
+      "source_store": "OWNER_DIRECT_TASK_NOT_CURRENT_POINTER",
+      "consumers": ["Codex closeout report", "historical task readers"],
+      "drift_risk": "CURRENT_POINTER_REMAINS_CLOSED"
+    },
+    {
+      "path": "docs/ROUTE_B_CONTRACT_V2_STATUS_ADDENDUM_v1.md",
+      "role": "FACT",
+      "selector_effect": "NONE",
+      "source_store": "RATIFIED_STATUS_ADDENDUM",
+      "consumers": ["SESSION_ENTRY.md", "Route B architecture readers"],
+      "drift_risk": "TIP_AND_RATIFICATION_PINS_SEPARATE"
+    },
+    {
+      "path": "docs/Codex/REPORT_2026-08-31_naming_and_status_surface_closeout.md",
+      "role": "HISTORICAL",
+      "selector_effect": "NONE",
+      "source_store": "CODEX_CLOSEOUT_REPORT",
+      "consumers": ["owner", "future repository auditors"],
+      "drift_risk": "REPORT_NOT_SELECTOR"
+    },
+    {
       "path": "louise-current-snapshot.md",
       "role": "HISTORICAL",
       "selector_effect": "NONE",
@@ -464,14 +489,7 @@
     {"path_prefix": "archive/", "role": "HISTORICAL", "note": "Archive never selects work."}
   ],
   "foreign_worktree_denylist": {
-    "exact_paths": [
-      "docs/routeB_bus/mythos/DRAFT_ARSENAL_CARD_CANDIDATES_BB_GORZ_20260827.md",
-      "docs/routeB_bus/mythos/DRAFT_CODEX_TASK_CONTROL_PLANE_REFRESH_20260827.md",
-      "docs/routeB_bus/mythos/DRAFT_CODEX_TASK_RH_PROVEN_RENAME_20260827.md",
-      "docs/routeB_bus/mythos/DRAFT_EXTERNAL_INTERFACE_FAITHFULNESS_AUDIT_BRIEF_v1_20260827.md",
-      "docs/routeB_bus/mythos/DRAFT_ROUTE_B_CONTRACT_V2_STATUS_ADDENDUM_v1_20260827.md",
-      "docs/routeB_bus/mythos/MYTHOS_PREDICTION_REGISTER_20260827.md"
-    ],
+    "exact_paths": [],
     "glob_patterns": ["orchestrator/state/*.db"]
   }
 }

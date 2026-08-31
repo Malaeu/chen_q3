@@ -323,3 +323,12 @@ Round 3:
 - **Workflow:** `PROJECT_WORKFLOW.md`
 - **LaTeX c_*=1.5:** `../sections/A3/symbol_floor.tex`
 - **Previous result:** `dbfa2c26_aristotle.lean` (definitions)
+
+## 2026-08-31 semantic-quarantine note
+
+Current compatibility names are
+`Q3.MainTheorems.RH_of_legacyBroadConeAxioms_compat` and
+`Q3.Clean.RH_conditional_on_Gate_clean_broken`. They replace the misleading
+legacy names without changing any proof body or axiom dependency. The clean
+prototype remains broken and is not a public proof route; the map above is a
+historical planning snapshot.

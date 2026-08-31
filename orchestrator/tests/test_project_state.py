@@ -400,7 +400,7 @@ def test_authoritative_state_excludes_foreign_worktree_bytes() -> None:
     } | {item["path"] for item in state["component_hashes"]}
     denylist = registry["foreign_worktree_denylist"]
     assert referenced.isdisjoint(denylist["exact_paths"])
-    assert len(denylist["exact_paths"]) == 6
+    assert denylist["exact_paths"] == []
     assert denylist["glob_patterns"] == ["orchestrator/state/*.db"]
     with pytest.raises(ps.StateError, match="FOREIGN_WORKTREE_FILE_TRACKED"):
         ps.validate_registry(registry, ["orchestrator/state/future.db"])
@@ -488,6 +488,13 @@ def test_builtin_and_jsonschema_share_closed_poison_corpus() -> None:
     item["surfaces"][0]["role"] = "UNKNOWN"
     poisons.append(item)
     item = copy.deepcopy(registry)
+    item["surfaces"][0]["required_marker"] = "marker only belongs on historical surfaces"
+    poisons.append(item)
+    item = copy.deepcopy(registry)
+    historical = next(row for row in item["surfaces"] if row["role"] == "HISTORICAL")
+    historical["required_marker"] = ""
+    poisons.append(item)
+    item = copy.deepcopy(registry)
     item["surfaces"][0]["drift_risk"] = "MUTATED_POLICY"
     poisons.append(item)
     item = copy.deepcopy(registry)
@@ -501,14 +508,14 @@ def test_builtin_and_jsonschema_share_closed_poison_corpus() -> None:
     item["coverage_rules"][0]["extra"] = True
     poisons.append(item)
     item = copy.deepcopy(registry)
-    item["foreign_worktree_denylist"]["exact_paths"][0] = "/absolute/foreign"
+    item["foreign_worktree_denylist"]["exact_paths"] = ["/absolute/foreign"]
     poisons.append(item)
     for denylist in ([], "abc"):
         item = copy.deepcopy(registry)
         item["foreign_worktree_denylist"] = denylist
         poisons.append(item)
     item = copy.deepcopy(registry)
-    item["foreign_worktree_denylist"]["exact_paths"][1] = item["foreign_worktree_denylist"]["exact_paths"][0]
+    item["foreign_worktree_denylist"]["exact_paths"] = ["duplicate", "duplicate"]
     poisons.append(item)
     item = copy.deepcopy(registry)
     item["foreign_worktree_denylist"]["glob_patterns"] = ["*"]

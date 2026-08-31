@@ -5,7 +5,7 @@ Conditional legacy broad-cone compatibility theorems
 This standalone file retains conditional legacy broad-cone wrappers.  It does
 not provide an unconditional or corrected square-class RH export.
 
-Run: #print axioms Q3.MainTheorems.RH_proven
+Run: #print axioms Q3.MainTheorems.RH_of_legacyBroadConeAxioms_compat
 to see the minimal axiom set.
 -/
 
@@ -45,10 +45,10 @@ theorem Q_nonneg_on_W_K_thm (K : ℝ) (hK : K ≥ 1) : ∀ Φ ∈ Q3.W_K K, Q3.Q
 theorem Q_nonneg_Weil_cone : ∀ Φ ∈ Q3.Weil_cone, Q3.Q Φ ≥ 0 :=
   Q3.Conditional.LegacyBroadCone.Q_nonneg_on_broadWeilCone_of_primeTermAxiom
 
-/-- Deprecated conditional RH wrapper. -/
-@[deprecated Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms
-  (since := "2026-08-27")]
-theorem RH_proven : Q3.RH := by
+/-- Conditional RH compatibility wrapper.
+
+Renamed from RH_proven 2026-08-31; conditional — see #print axioms. -/
+theorem RH_of_legacyBroadConeAxioms_compat : Q3.RH := by
   exact Q3.Conditional.LegacyBroadCone.RH_of_legacyBroadConeAxioms
 
 end Q3.MainTheorems
@@ -56,7 +56,7 @@ end Q3.MainTheorems
 /-!
 # Axiom Summary
 
-Run `#print axioms Q3.MainTheorems.RH_proven` to see:
+Run `#print axioms Q3.MainTheorems.RH_of_legacyBroadConeAxioms_compat` to see:
 
 Expected compatibility dependency profile:
 - propext (Lean standard)
@@ -66,4 +66,4 @@ Expected compatibility dependency profile:
 - Q3.prime_term_le_at_t_critical_axiom
 -/
 
-#print axioms Q3.MainTheorems.RH_proven
+#print axioms Q3.MainTheorems.RH_of_legacyBroadConeAxioms_compat

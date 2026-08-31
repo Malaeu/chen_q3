@@ -128,6 +128,6 @@ Next steps:
 2. Create AxiomsTier1.lean (only 8 classical axioms)
 3. Create TheoremsTier2.lean (all 9 proven theorems)
 4. Create T5_Transfer_clean.lean
-5. Create MainClean.lean with RH_proven_clean
-6. Verify: #print axioms Q3.Clean.RH_proven_clean
+5. Create MainClean.lean with RH_conditional_on_Gate_clean_broken
+6. Verify: #print axioms Q3.Clean.RH_conditional_on_Gate_clean_broken
 -/
