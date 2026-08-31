@@ -4,7 +4,8 @@ Date: 2026-08-31
 Status: `DRAFT_AWAITING_OWNER_ACTIVATION`
 Class: `CONTROL_PLANE_AND_LEAN_RENAME / NO_NEW_MATH / NO_PROOF_BODY_CHANGES`
 Branch: `rh_clean`
-Pin at drafting: `4da62702066748b8acb1c8a23740189e60435b04`
+Original pin at drafting: `4da62702066748b8acb1c8a23740189e60435b04`
+Corrected activation pin: `2d2a6441328f70ae28de5058c336518b6733ff04`
 Parent: Mythos repo audit 2026-08-27 (findings M3a, M3b, M3g, M4, K1),
 re-scoped by the observer against the semantic-quarantine layer landed
 2026-08-27 … 2026-08-31.
@@ -64,11 +65,13 @@ A1. Rename all four declarations; keep no alias.
   wrappers when the old name no longer exists; keep the delegation body.
   On `RH_proven_clean` add nothing beyond the rename and the docstring line.
 
-Rationale for A1: no Lean consumer exists. `git grep RH_proven -- '*.lean'`
-outside the four files returns only prose lines in `Tier2_Verification.lean:101-102`.
-The alias was introduced four days ago and serves no external compatibility.
-The goal is that an outside reader's grep no longer finds a theorem *named*
-"proven".
+Rationale for A1: no Lean consumer exists. The live preflight found prose-only
+references outside the four declaration files in both copies of
+`Tier2_Verification.lean` and both copies of `Clean/PoC.lean`; none is a Lean
+consumer. The alias was introduced four days ago and serves no external
+compatibility. The goal is that an outside reader's grep no longer finds a
+theorem *named* "proven" or live prose that still presents that name as the
+current export.
 
 Owner may switch to variant A2 (keep the deprecated aliases, rename nothing)
 by editing this line before activation. If A2 is chosen, Block A reduces to
@@ -84,23 +87,49 @@ Steps:
    comment lines in the same files).
 3. Add one docstring line to each renamed declaration:
    `Renamed from RH_proven(_clean) 2026-08-31; conditional — see #print axioms.`
-4. `git grep -n "RH_proven" -- '*.lean'` must afterwards return only the
+4. Update the prose-only references in both copies of
+   `Tier2_Verification.lean` and both copies of `Clean/PoC.lean` to name the
+   replacement declarations. These edits change no declaration or proof body.
+5. Regenerate the Aristotle queue through its canonical generator:
+
+   ```text
+   python3 q3.lean.aristotle/scripts/aristotle_dag_loop.py --refresh --print-next 10
+   ```
+
+   Verify that all four generated surfaces consistently name the replacement
+   declaration and target:
+   `ACTIVE/aristotle/ARISTOTLE_QUEUE.json`,
+   `ACTIVE/aristotle/ARISTOTLE_QUEUE.md`,
+   `ACTIVE/aristotle/queue/sorry_Q3_Clean_MainClean_lean/PROMPT.txt`, and
+   `ACTIVE/aristotle/queue/sorry_Q3_Clean_MainClean_lean/NODE_BRIEF.md`.
+   If the generator changes unrelated queue entries, stop and report the exact
+   diff rather than hand-editing generated output.
+6. `git grep -n "RH_proven" -- '*.lean'` must afterwards return only the
    "Renamed from" docstring lines and files under `archive/`.
-5. Prose references: append one dated note, do not rewrite, in
+7. Prose references: append one dated note, do not rewrite, in
    `q3.lean.aristotle/ARCHITECTURE.md`,
-   `q3.lean.aristotle/ACTIVE/aristotle/ARISTOTLE_QUEUE.md`,
-   `q3.lean.aristotle/ACTIVE/aristotle/queue/sorry_Q3_Clean_MainClean_lean/NODE_BRIEF.md`,
    `q3.lean.aristotle/PROJECT_STATUS.md`, `q3.lean.aristotle/PROOF_MAP.md`,
    `q3.lean.aristotle/REPO_POLICY.md`.
-   Leave `docs/Paper_RH/`, `STRATEGIC_CONTEXT.md`, `*_old.md`, `*_dradt.md`
-   and everything under `archive/` untouched — they are history.
-6. Append a dated migration row to
+   Leave `docs/Paper_RH/`, `STRATEGIC_CONTEXT.md`, `*_old.md`, `*_dradt.md`,
+   `UNIFORM_MIGRATION_PLAN.md`, and everything under `archive/` untouched —
+   they are history and do not select a current declaration.
+8. Append a dated migration row to
    `docs/semantic_quarantine/PUBLIC_EXPORT_INDEX_AND_AXIOM_RECEIPT_v1.md`
    recording old name → new name and the post-change axiom profile.
    Append only; the audited baseline block stays as written.
-7. `lake build Q3` green, and `#print axioms` of the renamed buildable
-   wrappers identical to the pre-change profile.
-8. Hole scan (`q3_check`) shows no new match.
+9. Compile the two buildable wrapper files explicitly; `lake build Q3` does
+   not cover them:
+
+   ```text
+   cd q3.lean.aristotle
+   env -u LD_LIBRARY_PATH lake env lean Q3/MainTheorems.lean
+   env -u LD_LIBRARY_PATH lake env lean MainTheorems.lean
+   ```
+
+   Their post-change `#print axioms` output must be identical to the
+   pre-change profile. Then run `lake build Q3` as a separate default-target
+   regression gate.
+10. Hole scan (`q3_check`) shows no new match.
 
 The `sorry` at `MainClean.lean:59` is **not** to be fixed here. The module is
 registered `LEGACY / BROKEN / BROKEN_BUILD`; leave the build failure in place.
@@ -144,12 +173,12 @@ disciplinary articles (K7, anti-circularity, `SAFE_IS_RH_REPACKAGING`,
 tau0-substitution ban) remain project-wide, and that `ROUTE_B_EXECUTION_CONTROL.md`
 is a historical surface with no selector effect. Keep both copies identical.
 
-C3. Commit the ratified addendum. The owner ratifies
-`docs/routeB_bus/mythos/DRAFT_ROUTE_B_CONTRACT_V2_STATUS_ADDENDUM_v1_20260827.md`
-separately; on ratification move its body to
-`docs/ROUTE_B_CONTRACT_V2_STATUS_ADDENDUM_v1.md`, re-pin `TIP_AT_DRAFT` to the
-execution HEAD, and reference it from C1 and C2. If it is not ratified when
-this task runs, execute C1 and C2 without the reference and say so in the report.
+C3. The owner ratified the addendum on 2026-08-31. Its canonical materialization
+is `docs/ROUTE_B_CONTRACT_V2_STATUS_ADDENDUM_v1.md`. Preserve the historical
+`TIP_AT_DRAFT`; record the execution commit separately as `RATIFIED_AT` and
+`EVIDENCE_REVALIDATED_AT`. The source draft remains as a provenance pointer
+unless the owner separately authorizes deletion. Reference the canonical
+addendum from C1 and C2.
 
 `ROUTE_B_THEOREM_CONTRACT_v2.md` itself is never edited.
 
@@ -162,15 +191,19 @@ it never reads that file.
 Add one read-only check to `--check`, matching the post-quarantine semantics —
 freshness of a snapshot is the wrong test now that the file is historical:
 
-D1. For every path the status-surface registry marks `role: HISTORICAL`, assert
-the file carries the classification marker from C1.
+D1. Add a `required_marker` field to the
+`ROUTE_B_EXECUTION_CONTROL.md` row in the status-surface registry. In `--check`,
+iterate over registry rows marked `role: HISTORICAL` that carry a nonempty
+`required_marker`, and assert that the named file contains that exact marker.
+Do not infer this requirement for every historical row: many immutable JSON,
+JSONL, monitor, queue, and snapshot surfaces are intentionally unmodified.
 D2. Fail with `STALE_MONITOR_MISSING_HISTORICAL_MARKER` when a registered
 historical surface lacks it.
 D3. Keep the checker read-only. No auto-repair.
 D4. Negative test: temporarily remove the marker, confirm the failure, restore.
 
 Registry path is `docs/semantic_quarantine/STATUS_SURFACE_REGISTRY_v1.json`.
-Read it; do not hardcode the file list.
+Read the path and marker from it; do not hardcode either value in the checker.
 
 ## Not in this task
 
@@ -194,7 +227,10 @@ removed. Nothing under `archive/` is touched.
 
 ## Verification and closeout
 
-1. `lake build Q3` — exit 0, take `${PIPESTATUS[0]}`, not the tail of a pipe.
+1. Explicitly compile both renamed buildable wrapper files and compare their
+   `#print axioms` output with the pre-change receipt; then run `lake build Q3`
+   as the default-target regression gate. Take `${PIPESTATUS[0]}`, not the tail
+   of a pipe.
 2. `python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb_status.py --check`
    — exit 0, plus the D4 negative test.
 3. `bash specs_docs/session_start.sh` — exit 0, no divergence.
@@ -203,5 +239,6 @@ removed. Nothing under `archive/` is touched.
 6. Report to `docs/Codex/REPORT_2026-08-31_naming_and_status_surface_closeout.md`.
 7. Commit manifest to the owner. Commit and push only after per-action approval.
 
-Re-pin `Pin at drafting` to the fresh HEAD at start: another Codex session was
-active in this repository on 2026-08-31 and the tree moves.
+If the tree moves after `Corrected activation pin`, stop and revalidate the
+task inputs before editing. Preserve both historical pins rather than rewriting
+their meaning.

@@ -1,12 +1,14 @@
-# DRAFT — ROUTE B CONTRACT v2 STATUS ADDENDUM v1 (закрытие находки M3-б)
+# SOURCE DRAFT — ROUTE B CONTRACT v2 STATUS ADDENDUM v1 (закрытие находки M3-б)
 
 ```yaml
-STATUS: DRAFT_PROPOSED_FOR_RATIFICATION   # не действует, пока владелец не ратифицирует
+STATUS: RATIFIED_SOURCE_PRESERVED
+RATIFIED_AT: 2d2a6441328f70ae28de5058c336518b6733ff04
+CANONICAL_TARGET: docs/ROUTE_B_CONTRACT_V2_STATUS_ADDENDUM_v1.md
 AUTHOR: Mythos (аудит 2026-08-27)
 ROUTING: показан владельцу; коммитит Linux-канал/Codex ТОЛЬКО по per-action OK (R0.1/R0.2)
 OPTIONAL_COUNTERSIGN: Прошка (кандидат в PROSHKA_QUEUE, батчевать по правилу 2–4)
 BRANCH: rh_clean
-TIP_AT_DRAFT: d78a18e   # переприннить при коммите
+TIP_AT_DRAFT: d78a18ea5bd13c47db643a98d0673c21e086ff1b
 KERNEL_SHA256_8: a13dfbe1
 DECK_SHA256_8: 46065599
 TARGET_PATH_PROPOSED: docs/ROUTE_B_CONTRACT_V2_STATUS_ADDENDUM_v1.md
