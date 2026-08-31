@@ -95,6 +95,37 @@
         "Q3.RouteB.D0Pstar.sourceWeilGraphEvenNonzeroLowBandSynthesis_orthogonal_tail",
         "Q3.RouteB.D0Pstar.sourceWeilGraphEvenHeadSynthesis_orthogonal_tail"
       ]
+    },
+    {
+      "admitted_scope": [],
+      "closes": [
+        "D0PSTAR_FINITE_CCM_REFLECTION_EVEN_TO_SOURCE_WEIL_HEAD_TAIL_CROSSWALK"
+      ],
+      "domain": "literal finite CCM carrier on modes minus N through N, source-Weil shifted graph carrier, and closed nonzero-even tail after cutoff N for every PairIndex",
+      "entry_id": "GOAL058_D0PSTAR_FINITE_CCM_REFLECTION_EVEN_HEAD_TAIL_CROSSWALK_20260901",
+      "hypothesis_provenance": [],
+      "hypothesis_provenance_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "normalization": "the finite CCM center carries mode zero; each r in Fin N carries the normalized symmetric physical pair plus-or-minus (r+1), with coefficient sqrt two times the positive-mode coordinate",
+      "opens": [
+        "SELECTED_FERRERS_EVEN_TAIL_COERCIVITY_AND_SCHUR_MARGIN_AT_EXACT_RAYLEIGH_SHIFT"
+      ],
+      "quantifiers": "for every PairIndex i, finite complex coefficient vector x fixed by the literal CCM reflection matrix, and vector y in the closed nonzero-even graph tail after cutoff i.N; the ambient inner product of ccmFiniteSynthesis i x with the ambient image of y is zero",
+      "semantic_attestation_id": null,
+      "source_commit": "7f5cbc0589b796750312b378ec38229e9ecfb14f",
+      "source_git_blob": "fcc211dee53fe8d21cb2dc0b4dd706d747228bec",
+      "source_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenFiniteHeadCrosswalk.lean",
+      "status": "KERNEL_GREEN",
+      "task_blob": "c230e932b2a055bcaff87a80a85aea31c19c6113",
+      "task_path": "docs/Codex/TASK_2026-09-01_goal058_even_finite_head_crosswalk.md",
+      "terminal_consumer": "eventual uniform selected Ferrers reflection-even sector floor at the literal selected Rayleigh shift, as consumed by selectedFerrersFiniteCCMComplementFloor_eventually_of_sectorFloors_weightedResidual",
+      "theorem_ids": [
+        "Q3.RouteB.D0Pstar.ccmEvenCoefficientEmbedding_reflection_even",
+        "Q3.RouteB.D0Pstar.ccmEvenCoefficientEmbedding_reconstruct",
+        "Q3.RouteB.D0Pstar.ccmFiniteSynthesis_evenCoefficientEmbedding",
+        "Q3.RouteB.D0Pstar.ccmFiniteSynthesis_eq_sourceWeilGraphAmbient_evenHead_of_reflection",
+        "Q3.RouteB.D0Pstar.ccmFiniteSynthesis_eq_sourceWeilGraphAmbient_evenHead_of_mulVec_eq",
+        "Q3.RouteB.D0Pstar.ccmFiniteSynthesis_reflectionEven_orthogonal_evenNonzeroTail"
+      ]
     }
   ],
   "event_ledger": [],
