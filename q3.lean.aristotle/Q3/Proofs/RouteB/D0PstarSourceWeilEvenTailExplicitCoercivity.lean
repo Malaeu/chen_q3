@@ -544,6 +544,49 @@ theorem sourceArchimedeanSesquilinearForm_re_self_lower_evenGraphFinsuppShift
   dsimp only [C, A0, R, x, xg] at hshift ⊢
   nlinarith
 
+/-- After bounded Prime absorption, the Arch-Prime form alone retains the
+W02 norm plus the fixed margin `1/2` on every finite high-even synthesis. -/
+theorem sourceArchPrimeSesquilinearForm_re_self_lower_evenGraphFinsuppShift
+    (i : PairIndex) (c : ℕ →₀ ℂ) :
+    (‖sourceW02AmbientContinuousSesquilinearForm i‖ + 1 / 2) *
+        ‖sourceWeilEvenAmbientFinsuppShift i
+          (sourceWeilEvenTailCutoff i) c‖ ^ 2 ≤
+      (sourceArchPrimeSesquilinearForm i
+        (sourceWeilGraphDomain i
+          (sourceWeilEvenGraphFinsuppShift i
+            (sourceWeilEvenTailCutoff i) c))
+        (sourceWeilGraphDomain i
+          (sourceWeilEvenGraphFinsuppShift i
+            (sourceWeilEvenTailCutoff i) c))).re := by
+  let R : ℕ := sourceWeilEvenTailCutoff i
+  let xg : SourceWeilGraphCarrier i := sourceWeilEvenGraphFinsuppShift i R c
+  let x : sourceArchimedeanShiftedFormDomain i := sourceWeilGraphDomain i xg
+  let v : H_m i := sourceWeilEvenAmbientFinsuppShift i R c
+  have hx : (x : H_m i) = v := by
+    calc
+      (x : H_m i) = sourceWeilGraphAmbient i xg := by
+        rw [sourceWeilGraphDomain_coe]
+      _ = v := by rw [sourceWeilGraphAmbient_evenGraphFinsuppShift]
+  have harch :
+      (sourceWeilEvenTailHighTarget i - 1 / 2) * ‖v‖ ^ 2 ≤
+        (sourceArchimedeanSesquilinearForm i x x).re := by
+    simpa [R, x, xg, v] using
+      sourceArchimedeanSesquilinearForm_re_self_lower_evenGraphFinsuppShift i c
+  have hpNorm := norm_sourcePrimeSesquilinearForm_apply_le i v v
+  have hpUpper :
+      (sourcePrimeSesquilinearForm i v v).re ≤
+        ‖sourcePrimeContinuousSesquilinearForm i‖ * ‖v‖ ^ 2 := by
+    simpa [pow_two, mul_assoc] using (Complex.re_le_norm _).trans hpNorm
+  change (‖sourceW02AmbientContinuousSesquilinearForm i‖ + 1 / 2) *
+      ‖sourceWeilEvenAmbientFinsuppShift i
+        (sourceWeilEvenTailCutoff i) c‖ ^ 2 ≤ _
+  rw [sourceArchPrimeSesquilinearForm_apply]
+  simp only [sub_re]
+  rw [hx]
+  dsimp only [v, R] at harch hpUpper ⊢
+  unfold sourceWeilEvenTailHighTarget sourceWeilOddTailHighTarget at harch
+  nlinarith
+
 /-- After bounded W02/Prime absorption, every finite high-even synthesis has
 the fixed source-Weil margin `1/2`. -/
 theorem sourceWeilSesquilinearForm_re_self_lower_evenGraphFinsuppShift
@@ -652,6 +695,7 @@ theorem sourceWeilEvenTailAmbientCoercive_explicit (i : PairIndex) :
 #print axioms norm_sourceWeilEvenAmbientFinsuppShift_sq
 #print axioms integral_norm_sourceWeilEvenFourierFinsuppShift_sq_le_lowBand
 #print axioms sourceArchimedeanSesquilinearForm_re_self_lower_evenGraphFinsuppShift
+#print axioms sourceArchPrimeSesquilinearForm_re_self_lower_evenGraphFinsuppShift
 #print axioms sourceWeilSesquilinearForm_re_self_lower_evenGraphFinsuppShift
 #print axioms sourceWeilEvenTailAlgebraicCoercive_explicit
 #print axioms sourceWeilEvenTailAmbientCoercive_explicit
