@@ -695,12 +695,17 @@ def _require_semantic_attestation_issuer(
     *, entry: Mapping[str, Any], receipt: Mapping[str, Any], attestation_id: str, code: str
 ) -> str:
     issuer = receipt.get("issuer")
+    reserved_owner_waiver_id = any(
+        attestation_id == waiver_id for _, waiver_id in EXACT_OWNER_WAIVERS
+    )
+    if reserved_owner_waiver_id:
+        if (
+            issuer == EXACT_OWNER_WAIVER_ISSUER
+            and (entry.get("entry_id"), attestation_id) in EXACT_OWNER_WAIVERS
+        ):
+            return issuer
+        _fail(code, "reserved owner-waiver attestation ID is not bound to its exact pair")
     if issuer == SEMANTIC_ATTESTATION_ISSUER:
-        return issuer
-    if (
-        issuer == EXACT_OWNER_WAIVER_ISSUER
-        and (entry.get("entry_id"), attestation_id) in EXACT_OWNER_WAIVERS
-    ):
         return issuer
     _fail(code, "receipt issuer is not an allowed independent authority or exact owner waiver")
 
@@ -2484,10 +2489,14 @@ def materialize_semantic_admission(
     code = "SEMANTIC_ADMISSION_REFUSED"
     if semantic_attestation_resolver is not None:
         resolver = semantic_attestation_resolver
-    elif any(attestation_id == waiver_id for _, waiver_id in EXACT_OWNER_WAIVERS):
-        resolver = resolve_semantic_attestation
     else:
-        resolver = resolve_linux_semantic_attestation
+        def resolver(requested_attestation_id: str) -> dict[str, Any] | None:
+            if any(
+                requested_attestation_id == waiver_id
+                for _, waiver_id in EXACT_OWNER_WAIVERS
+            ):
+                return resolve_semantic_attestation(requested_attestation_id)
+            return resolve_linux_semantic_attestation(requested_attestation_id)
     with _plain_flock(lock_path):
         if not state_path.is_file():
             _fail(code, f"missing state: {state_path}")

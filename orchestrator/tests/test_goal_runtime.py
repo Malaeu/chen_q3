@@ -715,37 +715,45 @@ class GoalRuntimePlants(unittest.TestCase):
 
     def test_live_repository_selects_058_and_not_paused_057(self) -> None:
         state = json.loads(three_body_loop.DEFAULT_STATE.read_text(encoding="utf-8"))
-        entry = next(row for row in state["entries"] if row["status"] == "SEMANTICALLY_ADMITTED")
-        receipt = {
-            "schema": "q3_semantic_attestation.v1",
-            "attestation_id": entry["semantic_attestation_id"],
-            "issuer": "LINUX_INDEPENDENT_SEMANTIC_AUDITOR",
-            "status": "ADMITTED",
-            "control_version": 9,
-            **{
-                field: entry[field]
-                for field in (
-                    "task_path",
-                    "task_blob",
-                    "source_commit",
-                    "source_git_blob",
-                    "theorem_ids",
-                    "admitted_scope",
-                    "terminal_consumer",
-                    "closes",
-                    "opens",
-                    "normalization",
-                    "domain",
-                    "quantifiers",
-                    "hypothesis_provenance_sha256",
-                )
-            },
-        }
+        receipts = {}
+        for entry in state["entries"]:
+            if entry["status"] != "SEMANTICALLY_ADMITTED":
+                continue
+            attestation_id = entry["semantic_attestation_id"]
+            issuer = (
+                three_body_loop.EXACT_OWNER_WAIVER_ISSUER
+                if (entry["entry_id"], attestation_id)
+                in three_body_loop.EXACT_OWNER_WAIVERS
+                else three_body_loop.SEMANTIC_ATTESTATION_ISSUER
+            )
+            receipts[attestation_id] = {
+                "schema": "q3_semantic_attestation.v1",
+                "attestation_id": attestation_id,
+                "issuer": issuer,
+                "status": "ADMITTED",
+                "control_version": 9,
+                **{
+                    field: entry[field]
+                    for field in (
+                        "task_path",
+                        "task_blob",
+                        "source_commit",
+                        "source_git_blob",
+                        "theorem_ids",
+                        "admitted_scope",
+                        "terminal_consumer",
+                        "closes",
+                        "opens",
+                        "normalization",
+                        "domain",
+                        "quantifiers",
+                        "hypothesis_provenance_sha256",
+                    )
+                },
+            }
         decision = goal_runtime.select_action(
             goal_runtime.DEFAULT_BUS,
-            semantic_attestation_resolver=lambda attestation_id: (
-                receipt if attestation_id == receipt["attestation_id"] else None
-            ),
+            semantic_attestation_resolver=receipts.get,
         )
         self.assertEqual(decision.action, "SELECT_EXACT_GOAL")
         self.assertEqual(decision.selected_goal_id, "058")
