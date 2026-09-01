@@ -1,20 +1,28 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 374,
-  "declarations": 4129,
-  "in_docs": 2043,
+  "files_scanned": 375,
+  "declarations": 4153,
+  "in_docs": 2047,
   "in_lemma_db": 4091,
-  "orphans": 17,
-  "uncatalogued": 17,
+  "orphans": 38,
+  "uncatalogued": 38,
   "orphan_files_top": [
     [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+      22
+    ],
+    [
       "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenFiniteHeadCrosswalk.lean",
-      12
+      11
     ],
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroTailCarrier.lean",
-      5
+      4
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailCoercivityClosure.lean",
+      1
     ]
   ],
   "items": [
@@ -17494,9 +17502,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenFiniteHeadCrosswalk.lean",
       "line": 28,
       "signature": "def ccmEvenPositiveFinite (N : ℕ) (r : Fin N) : CCMModeFinite N",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -17784,9 +17792,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroTailCarrier.lean",
       "line": 47,
       "signature": "abbrev SourceWeilGraphEvenNonzeroTailCarrier (i : PairIndex) (R : ℕ)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "instance",
@@ -19099,6 +19107,236 @@
       "orphan": false
     },
     {
+      "kind": "abbrev",
+      "name": "sourceWeilEvenTailHighTarget",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+      "line": 30,
+      "signature": "abbrev sourceWeilEvenTailHighTarget (i : PairIndex) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "abbrev",
+      "name": "sourceWeilEvenTailBandRadius",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+      "line": 34,
+      "signature": "abbrev sourceWeilEvenTailBandRadius (i : PairIndex) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "abbrev",
+      "name": "sourceWeilEvenTailCutoff",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+      "line": 38,
+      "signature": "abbrev sourceWeilEvenTailCutoff (i : PairIndex) : ℕ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilEvenAmbientMode",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+      "line": 43,
+      "signature": "noncomputable def sourceWeilEvenAmbientMode (i : PairIndex) (k : ℕ) : H_m i",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilEvenAmbientMode_orthonormal",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+      "line": 47,
+      "signature": "theorem sourceWeilEvenAmbientMode_orthonormal (i : PairIndex) : Orthonormal ℂ (sourceWeilEvenAmbientMode i)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilEvenFourierModeFunction",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+      "line": 53,
+      "signature": "noncomputable def sourceWeilEvenFourierModeFunction (i : PairIndex) (k : ℕ) (t : ℝ) : ℂ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "coeFn_sourceLogWindowFourierL2Isometry_apply_evenAmbientMode",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+      "line": 61,
+      "signature": "theorem coeFn_sourceLogWindowFourierL2Isometry_apply_evenAmbientMode (i : PairIndex) (k : ℕ) : ((sourceLogWindowFourierL2Isometry i (sourceWeilEvenAmbientMode i k) : MeasureTheory.Lp ℂ 2 (MeasureTheory.volume : MeasureTheory.Measure ℝ)) : ℝ → ℂ) =ᵐ[MeasureTheory.volume] sourceWeilEvenFourierModeFunction i k",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "norm_sourceWeilEvenAmbientModeFourier_le_lowBand_inv",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+      "line": 104,
+      "signature": "theorem norm_sourceWeilEvenAmbientModeFourier_le_lowBand_inv (i : PairIndex) (k : ℕ) (T t : ℝ) (hT : 0 ≤ T) (hk : 2 * L_m i * (T + 1) ≤ (k + 1 : ℝ)) (ht : |t| ≤ T) : ‖sourceWeilEvenFourierModeFunction i k t‖ ≤ 4 * Real.sqrt (L_m i) / (Real.pi * (k + 1 : ℝ))",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilEvenFourierFinsuppShift",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+      "line": 152,
+      "signature": "noncomputable def sourceWeilEvenFourierFinsuppShift (i : PairIndex) (R : ℕ) (c : ℕ →₀ ℂ) (t : ℝ) : ℂ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilEvenAmbientFinsuppShift",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+      "line": 157,
+      "signature": "noncomputable def sourceWeilEvenAmbientFinsuppShift (i : PairIndex) (R : ℕ) (c : ℕ →₀ ℂ) : H_m i",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilEvenGraphFinsuppShift",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+      "line": 162,
+      "signature": "noncomputable def sourceWeilEvenGraphFinsuppShift (i : PairIndex) (R : ℕ) (c : ℕ →₀ ℂ) : SourceWeilGraphCarrier i",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilGraphAmbient_evenGraphFinsuppShift",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+      "line": 167,
+      "signature": "theorem sourceWeilGraphAmbient_evenGraphFinsuppShift (i : PairIndex) (R : ℕ) (c : ℕ →₀ ℂ) : sourceWeilGraphAmbient i (sourceWeilEvenGraphFinsuppShift i R c) = sourceWeilEvenAmbientFinsuppShift i R c",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "norm_sourceWeilEvenAmbientFinsuppShift_sq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+      "line": 180,
+      "signature": "theorem norm_sourceWeilEvenAmbientFinsuppShift_sq (i : PairIndex) (R : ℕ) (c : ℕ →₀ ℂ) : ‖sourceWeilEvenAmbientFinsuppShift i R c‖ ^ 2 = ∑ k ∈ c.support, ‖c k‖ ^ 2",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "coeFn_sourceLogWindowFourierL2Isometry_apply_evenAmbientFinsuppShift",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+      "line": 208,
+      "signature": "theorem coeFn_sourceLogWindowFourierL2Isometry_apply_evenAmbientFinsuppShift (i : PairIndex) (R : ℕ) (c : ℕ →₀ ℂ) : ((sourceLogWindowFourierL2Isometry i (sourceWeilEvenAmbientFinsuppShift i R c) : MeasureTheory.Lp ℂ 2 (MeasureTheory.volume : MeasureTheory.Measure ℝ)) : ℝ → ℂ) =ᵐ[MeasureTheory.volume] sourceWeilEvenFourierFinsuppShift i R c",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "norm_sourceWeilEvenFourierFinsuppShift_sq_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+      "line": 280,
+      "signature": "theorem norm_sourceWeilEvenFourierFinsuppShift_sq_le (i : PairIndex) (R : ℕ) (c : ℕ →₀ ℂ) (t : ℝ) : ‖sourceWeilEvenFourierFinsuppShift i R c t‖ ^ 2 ≤ (∑ k ∈ c.support, ‖c k‖ ^ 2) * ∑ k ∈ c.support, ‖sourceWeilEvenFourierModeFunction i (R + k) t‖ ^ 2",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "norm_sourceWeilEvenFourierFinsuppShift_sq_le_lowBand",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+      "line": 316,
+      "signature": "theorem norm_sourceWeilEvenFourierFinsuppShift_sq_le_lowBand (i : PairIndex) (R : ℕ) (c : ℕ →₀ ℂ) (T t : ℝ) (hR : 0 < R) (hT : 0 ≤ T) (hcut : 2 * L_m i * (T + 1) ≤ (R + 1 : ℝ)) (ht : |t| ≤ T) : ‖sourceWeilEvenFourierFinsuppShift i R c t‖ ^ 2 ≤ (∑ k ∈ c.support, ‖c k‖ ^ 2) * ((4 * Real.sqrt (L_m i) / Real.pi) ^ 2 * (1 / (R : ℝ)))",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "integral_norm_sourceWeilEvenFourierFinsuppShift_sq_le_lowBand",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+      "line": 355,
+      "signature": "theorem integral_norm_sourceWeilEvenFourierFinsuppShift_sq_le_lowBand (i : PairIndex) (R : ℕ) (c : ℕ →₀ ℂ) (T : ℝ) (hR : 0 < R) (hT : 0 ≤ T) (hcut : 2 * L_m i * (T + 1) ≤ (R + 1 : ℝ)) : (∫ t in Set.Icc (-T) T, ‖sourceWeilEvenFourierFinsuppShift i R c t‖ ^ 2) ≤ ((2 * T) * ((4 * Real.sqrt (L_m i) / Real.pi) ^ 2 * (1 / (R : ℝ)))) * ‖sourceWeilEvenAmbientFinsuppShift i R c‖ ^ 2",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceArchimedeanSesquilinearForm_re_self_lower_evenGraphFinsuppShift",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+      "line": 414,
+      "signature": "theorem sourceArchimedeanSesquilinearForm_re_self_lower_evenGraphFinsuppShift (i : PairIndex) (c : ℕ →₀ ℂ) : (sourceWeilEvenTailHighTarget i - 1 / 2) * ‖sourceWeilEvenAmbientFinsuppShift i (sourceWeilEvenTailCutoff i) c‖ ^ 2 ≤ (sourceArchimedeanSesquilinearForm i (sourceWeilGraphDomain i (sourceWeilEvenGraphFinsuppShift i (sourceWeilEvenTailCutoff i) c)) (sourceWeilGraphDomain i (sourceWeilEvenGraphFinsuppShift i (sourceWeilEvenTailCutoff i) c))).re",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilSesquilinearForm_re_self_lower_evenGraphFinsuppShift",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+      "line": 549,
+      "signature": "theorem sourceWeilSesquilinearForm_re_self_lower_evenGraphFinsuppShift (i : PairIndex) (c : ℕ →₀ ℂ) : (1 / 2 : ℝ) * ‖sourceWeilEvenAmbientFinsuppShift i (sourceWeilEvenTailCutoff i) c‖ ^ 2 ≤ (sourceWeilSesquilinearForm i (sourceWeilGraphDomain i (sourceWeilEvenGraphFinsuppShift i (sourceWeilEvenTailCutoff i) c)) (sourceWeilGraphDomain i (sourceWeilEvenGraphFinsuppShift i (sourceWeilEvenTailCutoff i) c))).re",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "SourceWeilEvenTailAlgebraicCoercive",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+      "line": 607,
+      "signature": "def SourceWeilEvenTailAlgebraicCoercive (i : PairIndex) (R : ℕ) (mu : ℝ) : Prop",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "SourceWeilEvenTailAmbientCoercive",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+      "line": 618,
+      "signature": "def SourceWeilEvenTailAmbientCoercive (i : PairIndex) (R : ℕ) (mu : ℝ) : Prop",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilEvenTailAlgebraicCoercive_explicit",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+      "line": 627,
+      "signature": "theorem sourceWeilEvenTailAlgebraicCoercive_explicit (i : PairIndex) : SourceWeilEvenTailAlgebraicCoercive i (sourceWeilEvenTailCutoff i) (1 / 2)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilEvenTailAmbientCoercive_explicit",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+      "line": 640,
+      "signature": "theorem sourceWeilEvenTailAmbientCoercive_explicit (i : PairIndex) : SourceWeilEvenTailAmbientCoercive i (sourceWeilEvenTailCutoff i) (1 / 2)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
       "kind": "theorem",
       "name": "sourceWeilFiniteForm_eq_ccmWeilMatrixForm",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilFiniteFormCCMWeilCrosswalk.lean",
@@ -19460,9 +19698,19 @@
     },
     {
       "kind": "theorem",
-      "name": "sourceWeilOddTailAmbientCoercive_of_algebraic",
+      "name": "sourceWeilGraphTailAmbientCoercive_of_algebraic",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailCoercivityClosure.lean",
       "line": 170,
+      "signature": "theorem sourceWeilGraphTailAmbientCoercive_of_algebraic (i : PairIndex) (generator : ℕ → SourceWeilGraphCarrier i) (mu : ℝ) (h : ∀ x : SourceWeilGraphCarrier i, x ∈ Submodule.span ℂ (Set.range generator) → mu * ‖sourceWeilGraphAmbient i x‖ ^ 2 ≤ (sourceWeilSesquilinearForm i (sourceWeilGraphDomain i x) (sourceWeilGraphDomain i x)).re) : ∀ x : (Submodule.span ℂ (Set.range generator)).topologicalClosure, mu * ‖sourceWeilGraphAmbient i (x : SourceWeilGraphCarrier i)‖ ^ 2 ≤ (sourceWeilSesquilinearForm i (sourceWeilGraphDomain i (x : SourceWeilGraphCarrier i)) (sourceWeilGraphDomain i (x : SourceWeilGraphCarrier i))).re",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilOddTailAmbientCoercive_of_algebraic",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailCoercivityClosure.lean",
+      "line": 230,
       "signature": "theorem sourceWeilOddTailAmbientCoercive_of_algebraic (i : PairIndex) (R : ℕ) (mu : ℝ) (h : SourceWeilOddTailAlgebraicCoercive i R mu) : SourceWeilOddTailAmbientCoercive i R mu",
       "in_docs": true,
       "in_lemma_db": true,
@@ -19653,7 +19901,7 @@
       "name": "weightedIntegral_ge_const_mul_total_sub_band",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailExplicitCoercivity.lean",
       "line": 267,
-      "signature": "private theorem weightedIntegral_ge_const_mul_total_sub_band (F q : ℝ → ℝ) (T D : ℝ) (hFint : MeasureTheory.Integrable F) (hqFint : MeasureTheory.Integrable (fun t => q t * F t)) (hFnonneg : ∀ t, 0 ≤ F t) (hqnonneg : ∀ t, 0 ≤ q t) (houtside : ∀ t ∈ (Set.Icc (-T) T)ᶜ, D ≤ q t) : D * ((∫ t, F t) - ∫ t in Set.Icc (-T) T, F t) ≤ ∫ t, q t * F t",
+      "signature": "theorem weightedIntegral_ge_const_mul_total_sub_band (F q : ℝ → ℝ) (T D : ℝ) (hFint : MeasureTheory.Integrable F) (hqFint : MeasureTheory.Integrable (fun t => q t * F t)) (hFnonneg : ∀ t, 0 ≤ F t) (hqnonneg : ∀ t, 0 ≤ q t) (houtside : ∀ t ∈ (Set.Icc (-T) T)ᶜ, D ≤ q t) : D * ((∫ t, F t) - ∫ t in Set.Icc (-T) T, F t) ≤ ∫ t, q t * F t",
       "in_docs": false,
       "in_lemma_db": true,
       "orphan": false
@@ -19714,7 +19962,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
       "line": 40,
       "signature": "abbrev SourceWeilGraphCarrier (i : PairIndex)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },

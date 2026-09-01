@@ -4,7 +4,7 @@
 `python3 docs/cartographer/map_coverage.py`. Рукописная карта — `MAP.md`, она
 описывает узлы маршрута; это приложение описывает **файлы**, и оно полное.
 
-Всего файлов: **374** · упомянуто в `MAP.md`: **25** · вне карты: **349** · без описания в шапке: **0**
+Всего файлов: **375** · упомянуто в `MAP.md`: **25** · вне карты: **350** · без описания в шапке: **0**
 
 «вне карты» не значит «лишний»: значит, что обходом карты файл не находится.
 Именно так 2026-08-11 был построен заново мост `ker ↔ eigenspace`, стоявший в
@@ -193,6 +193,7 @@
 | `D0PstarSourceW02FiniteFormCCMW02Crosswalk` | — | B3.0H hole-free preflight: lift the exact entrywise source-W02 crosswalk | 0 |
 | `D0PstarSourceW02ModePairing` | — | первая декларация: `sourceW02ModePairing` | 0 |
 | `D0PstarSourceWeilClosedForm` | — | The bounded part of the shifted source-Weil diagonal.  The two operator | 0 |
+| `D0PstarSourceWeilEvenTailExplicitCoercivity` | — | Explicit source-Weil coercivity on the literal nonzero-even tail | 0 |
 | `D0PstarSourceWeilFiniteFormCCMWeilCrosswalk` | — | B3.0K preflight candidate: assemble the exact three-component source Weil | 0 |
 | `D0PstarSourceWeilFiniteFourierLedger` | — | первая декларация: `sourceArchimedeanFiniteSynthesisPairing_eq_modeSum` | 0 |
 | `D0PstarSourceWeilFormCoreTopology` | — | Source-Weil form-core topology | 0 |
