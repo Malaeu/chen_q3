@@ -1,28 +1,28 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 375,
-  "declarations": 4153,
-  "in_docs": 2047,
+  "files_scanned": 376,
+  "declarations": 4171,
+  "in_docs": 2067,
   "in_lemma_db": 4091,
-  "orphans": 38,
-  "uncatalogued": 38,
+  "orphans": 37,
+  "uncatalogued": 37,
   "orphan_files_top": [
     [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
-      22
+      "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersEvenSectorArchPrimeReduction.lean",
+      14
     ],
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenFiniteHeadCrosswalk.lean",
       11
     ],
     [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroTailCarrier.lean",
-      4
+      "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+      8
     ],
     [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailCoercivityClosure.lean",
-      1
+      "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroTailCarrier.lean",
+      4
     ]
   ],
   "items": [
@@ -13782,7 +13782,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarArchPrimeSesquilinearForm.lean",
       "line": 47,
       "signature": "noncomputable def sourceArchPrimeSesquilinearForm (i : PairIndex) : sourceArchimedeanShiftedFormDomain i →ₗ⋆[ℂ] sourceArchimedeanShiftedFormDomain i →ₗ[ℂ] ℂ",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -19132,9 +19132,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
       "line": 38,
       "signature": "abbrev sourceWeilEvenTailCutoff (i : PairIndex) : ℕ",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "def",
@@ -19142,9 +19142,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
       "line": 43,
       "signature": "noncomputable def sourceWeilEvenAmbientMode (i : PairIndex) (k : ℕ) : H_m i",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -19152,9 +19152,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
       "line": 47,
       "signature": "theorem sourceWeilEvenAmbientMode_orthonormal (i : PairIndex) : Orthonormal ℂ (sourceWeilEvenAmbientMode i)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "def",
@@ -19172,9 +19172,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
       "line": 61,
       "signature": "theorem coeFn_sourceLogWindowFourierL2Isometry_apply_evenAmbientMode (i : PairIndex) (k : ℕ) : ((sourceLogWindowFourierL2Isometry i (sourceWeilEvenAmbientMode i k) : MeasureTheory.Lp ℂ 2 (MeasureTheory.volume : MeasureTheory.Measure ℝ)) : ℝ → ℂ) =ᵐ[MeasureTheory.volume] sourceWeilEvenFourierModeFunction i k",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -19182,9 +19182,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
       "line": 104,
       "signature": "theorem norm_sourceWeilEvenAmbientModeFourier_le_lowBand_inv (i : PairIndex) (k : ℕ) (T t : ℝ) (hT : 0 ≤ T) (hk : 2 * L_m i * (T + 1) ≤ (k + 1 : ℝ)) (ht : |t| ≤ T) : ‖sourceWeilEvenFourierModeFunction i k t‖ ≤ 4 * Real.sqrt (L_m i) / (Real.pi * (k + 1 : ℝ))",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "def",
@@ -19192,9 +19192,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
       "line": 152,
       "signature": "noncomputable def sourceWeilEvenFourierFinsuppShift (i : PairIndex) (R : ℕ) (c : ℕ →₀ ℂ) (t : ℝ) : ℂ",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "def",
@@ -19202,9 +19202,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
       "line": 157,
       "signature": "noncomputable def sourceWeilEvenAmbientFinsuppShift (i : PairIndex) (R : ℕ) (c : ℕ →₀ ℂ) : H_m i",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "def",
@@ -19232,9 +19232,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
       "line": 180,
       "signature": "theorem norm_sourceWeilEvenAmbientFinsuppShift_sq (i : PairIndex) (R : ℕ) (c : ℕ →₀ ℂ) : ‖sourceWeilEvenAmbientFinsuppShift i R c‖ ^ 2 = ∑ k ∈ c.support, ‖c k‖ ^ 2",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -19252,9 +19252,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
       "line": 280,
       "signature": "theorem norm_sourceWeilEvenFourierFinsuppShift_sq_le (i : PairIndex) (R : ℕ) (c : ℕ →₀ ℂ) (t : ℝ) : ‖sourceWeilEvenFourierFinsuppShift i R c t‖ ^ 2 ≤ (∑ k ∈ c.support, ‖c k‖ ^ 2) * ∑ k ∈ c.support, ‖sourceWeilEvenFourierModeFunction i (R + k) t‖ ^ 2",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -19262,9 +19262,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
       "line": 316,
       "signature": "theorem norm_sourceWeilEvenFourierFinsuppShift_sq_le_lowBand (i : PairIndex) (R : ℕ) (c : ℕ →₀ ℂ) (T t : ℝ) (hR : 0 < R) (hT : 0 ≤ T) (hcut : 2 * L_m i * (T + 1) ≤ (R + 1 : ℝ)) (ht : |t| ≤ T) : ‖sourceWeilEvenFourierFinsuppShift i R c t‖ ^ 2 ≤ (∑ k ∈ c.support, ‖c k‖ ^ 2) * ((4 * Real.sqrt (L_m i) / Real.pi) ^ 2 * (1 / (R : ℝ)))",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -19272,9 +19272,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
       "line": 355,
       "signature": "theorem integral_norm_sourceWeilEvenFourierFinsuppShift_sq_le_lowBand (i : PairIndex) (R : ℕ) (c : ℕ →₀ ℂ) (T : ℝ) (hR : 0 < R) (hT : 0 ≤ T) (hcut : 2 * L_m i * (T + 1) ≤ (R + 1 : ℝ)) : (∫ t in Set.Icc (-T) T, ‖sourceWeilEvenFourierFinsuppShift i R c t‖ ^ 2) ≤ ((2 * T) * ((4 * Real.sqrt (L_m i) / Real.pi) ^ 2 * (1 / (R : ℝ)))) * ‖sourceWeilEvenAmbientFinsuppShift i R c‖ ^ 2",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -19282,9 +19282,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
       "line": 414,
       "signature": "theorem sourceArchimedeanSesquilinearForm_re_self_lower_evenGraphFinsuppShift (i : PairIndex) (c : ℕ →₀ ℂ) : (sourceWeilEvenTailHighTarget i - 1 / 2) * ‖sourceWeilEvenAmbientFinsuppShift i (sourceWeilEvenTailCutoff i) c‖ ^ 2 ≤ (sourceArchimedeanSesquilinearForm i (sourceWeilGraphDomain i (sourceWeilEvenGraphFinsuppShift i (sourceWeilEvenTailCutoff i) c)) (sourceWeilGraphDomain i (sourceWeilEvenGraphFinsuppShift i (sourceWeilEvenTailCutoff i) c))).re",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -19292,9 +19292,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
       "line": 549,
       "signature": "theorem sourceWeilSesquilinearForm_re_self_lower_evenGraphFinsuppShift (i : PairIndex) (c : ℕ →₀ ℂ) : (1 / 2 : ℝ) * ‖sourceWeilEvenAmbientFinsuppShift i (sourceWeilEvenTailCutoff i) c‖ ^ 2 ≤ (sourceWeilSesquilinearForm i (sourceWeilGraphDomain i (sourceWeilEvenGraphFinsuppShift i (sourceWeilEvenTailCutoff i) c)) (sourceWeilGraphDomain i (sourceWeilEvenGraphFinsuppShift i (sourceWeilEvenTailCutoff i) c))).re",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "def",
@@ -19322,9 +19322,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
       "line": 627,
       "signature": "theorem sourceWeilEvenTailAlgebraicCoercive_explicit (i : PairIndex) : SourceWeilEvenTailAlgebraicCoercive i (sourceWeilEvenTailCutoff i) (1 / 2)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -19702,9 +19702,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailCoercivityClosure.lean",
       "line": 170,
       "signature": "theorem sourceWeilGraphTailAmbientCoercive_of_algebraic (i : PairIndex) (generator : ℕ → SourceWeilGraphCarrier i) (mu : ℝ) (h : ∀ x : SourceWeilGraphCarrier i, x ∈ Submodule.span ℂ (Set.range generator) → mu * ‖sourceWeilGraphAmbient i x‖ ^ 2 ≤ (sourceWeilSesquilinearForm i (sourceWeilGraphDomain i x) (sourceWeilGraphDomain i x)).re) : ∀ x : (Submodule.span ℂ (Set.range generator)).topologicalClosure, mu * ‖sourceWeilGraphAmbient i (x : SourceWeilGraphCarrier i)‖ ^ 2 ≤ (sourceWeilSesquilinearForm i (sourceWeilGraphDomain i (x : SourceWeilGraphCarrier i)) (sourceWeilGraphDomain i (x : SourceWeilGraphCarrier i))).re",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -27604,6 +27604,186 @@
       "signature": "theorem selectedFerrersDefectEdgeTopBudget_bandwidthNegligible_of_modeChiThetaRates (C0 C4 Cχ Cθ : ℝ) (hC0 : 0 ≤ C0) (hC4 : 0 ≤ C4) (hmode : ∀ᶠ k in Filter.atTop, ∀ x ∈ Set.Icc (-(selectedFerrersPaperLambda k)) (selectedFerrersPaperLambda k), ‖centerAnchorScalarZero k * (selectedFerrersPreAnchorPair k).h0 x - ((parabolicCylinderD 0 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤ C0 / (selectedFerrersPaperLambda k) ^ 2 ∧ ‖centerAnchorScalarFour k * (selectedFerrersPreAnchorPair k).h4 x - ((parabolicCylinderD 4 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤ C4 / (selectedFerrersPaperLambda k) ^ 2) (hchi : ∀ᶠ k in Filter.atTop, |1 - (selectedFerrersPreAnchorPair k).chi0| ≤ Cχ / (selectedFerrersPaperLambda k) ^ 2 ∧ |1 - (selectedFerrersPreAnchorPair k).chi2| ≤ Cχ / (selectedFerrersPaperLambda k) ^ 2) (hθ : ∀ᶠ k in Filter.atTop, |mode4ClassicalEvenEigenvalue (mode4JacobiG (k + 2)) 0 + mode4JacobiG (k + 2)| ≤ Cθ * ((k + 2 : ℕ) : ℝ) ∧ |mode4ClassicalEvenEigenvalue (mode4JacobiG (k + 2)) 2 + mode4JacobiG (k + 2)| ≤ Cθ * ((k + 2 : ℕ) : ℝ)) : Filter.Tendsto (fun k : ℕ => (selectedFerrersDefectEdgeTopBudget k) ^ 2 * (physicalFourierBandwidth (selectedFerrersPreAnchorIndex k))⁻¹) Filter.atTop (𝓝 0)",
       "in_docs": true,
       "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "w02EvenCoordinate",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersEvenSectorArchPrimeReduction.lean",
+      "line": 36,
+      "signature": "private noncomputable def w02EvenCoordinate (L : ℝ) (n : ℤ) : ℂ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "w02OddCoordinate",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersEvenSectorArchPrimeReduction.lean",
+      "line": 41,
+      "signature": "private noncomputable def w02OddCoordinate (L : ℝ) (n : ℤ) : ℂ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmW02Entry_eq_rankTwoCoordinates",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersEvenSectorArchPrimeReduction.lean",
+      "line": 46,
+      "signature": "private theorem ccmW02Entry_eq_rankTwoCoordinates (L : ℝ) (hL : 0 < L) (n r : ℤ) : (Q3.RouteB.ccmW02Entry L n r : ℂ) = ((32 * L * Real.sinh (L / 4) ^ 2 : ℝ) : ℂ) * (w02EvenCoordinate L n * w02EvenCoordinate L r - w02OddCoordinate L n * w02OddCoordinate L r)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "w02OddCoordinate_neg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersEvenSectorArchPrimeReduction.lean",
+      "line": 62,
+      "signature": "private theorem w02OddCoordinate_neg (L : ℝ) (n : ℤ) : w02OddCoordinate L (-n) = -w02OddCoordinate L n",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "w02OddCoordinate_dotProduct_eq_zero_of_even",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersEvenSectorArchPrimeReduction.lean",
+      "line": 69,
+      "signature": "private theorem w02OddCoordinate_dotProduct_eq_zero_of_even (N : ℕ) (L : ℝ) (x : CCMModeFinite N → ℂ) (hx : ∀ j, x (ccmNegFinite N j) = x j) : (fun j => w02OddCoordinate L (ccmModeFinite N j)) ⬝ᵥ x = 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "w02OddCoordinate_dotProduct_eq_zero_of_reflection_even",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersEvenSectorArchPrimeReduction.lean",
+      "line": 100,
+      "signature": "private theorem w02OddCoordinate_dotProduct_eq_zero_of_reflection_even (N : ℕ) (L : ℝ) (x : CCMModeFinite N → ℂ) (hx : ccmComplexReflectionMatrix N *ᵥ x = x) : (fun j => w02OddCoordinate L (ccmModeFinite N j)) ⬝ᵥ x = 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmW02Matrix_mulVec_eq_even_rankOne_of_reflection_even",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersEvenSectorArchPrimeReduction.lean",
+      "line": 112,
+      "signature": "private theorem ccmW02Matrix_mulVec_eq_even_rankOne_of_reflection_even (i : PairIndex) (x : CCMModeFinite i.N → ℂ) (hx : ccmComplexReflectionMatrix i.N *ᵥ x = x) : (fun j k => (Q3.RouteB.ccmW02Entry (L_m i) (ccmModeFinite i.N j) (ccmModeFinite i.N k) : ℂ)) *ᵥ x = fun j => ((32 * L_m i * Real.sinh (L_m i / 4) ^ 2 : ℝ) : ℂ) * w02EvenCoordinate (L_m i) (ccmModeFinite i.N j) * ((fun k => w02EvenCoordinate (L_m i) (ccmModeFinite i.N k)) ⬝ᵥ x)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "star_w02EvenCoordinate",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersEvenSectorArchPrimeReduction.lean",
+      "line": 152,
+      "signature": "@[simp] private theorem star_w02EvenCoordinate (L : ℝ) (n : ℤ) : star (w02EvenCoordinate L n) = w02EvenCoordinate L n",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "star_dot_evenCoordinate_eq_star_dotProduct",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersEvenSectorArchPrimeReduction.lean",
+      "line": 157,
+      "signature": "private theorem star_dot_evenCoordinate_eq_star_dotProduct (N : ℕ) (L : ℝ) (x : CCMModeFinite N → ℂ) : star x ⬝ᵥ (fun j => w02EvenCoordinate L (ccmModeFinite N j)) = star ((fun j => w02EvenCoordinate L (ccmModeFinite N j)) ⬝ᵥ x)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmW02Quadratic_eq_even_rankOne_of_reflection_even",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersEvenSectorArchPrimeReduction.lean",
+      "line": 182,
+      "signature": "private theorem ccmW02Quadratic_eq_even_rankOne_of_reflection_even (i : PairIndex) (x : CCMModeFinite i.N → ℂ) (hx : ccmComplexReflectionMatrix i.N *ᵥ x = x) : star x ⬝ᵥ ((fun j k => (Q3.RouteB.ccmW02Entry (L_m i) (ccmModeFinite i.N j) (ccmModeFinite i.N k) : ℂ)) *ᵥ x) = ((32 * L_m i * Real.sinh (L_m i / 4) ^ 2 : ℝ) : ℂ) * star ((fun j => w02EvenCoordinate (L_m i) (ccmModeFinite i.N j)) ⬝ᵥ x) * ((fun j => w02EvenCoordinate (L_m i) (ccmModeFinite i.N j)) ⬝ᵥ x)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmW02Quadratic_re_nonneg_of_reflection_even",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersEvenSectorArchPrimeReduction.lean",
+      "line": 235,
+      "signature": "theorem ccmW02Quadratic_re_nonneg_of_reflection_even (i : PairIndex) (x : CCMModeFinite i.N → ℂ) (hx : ccmComplexReflectionMatrix i.N *ᵥ x = x) : 0 ≤ (star x ⬝ᵥ ((fun j k => (Q3.RouteB.ccmW02Entry (L_m i) (ccmModeFinite i.N j) (ccmModeFinite i.N k) : ℂ)) *ᵥ x)).re",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceW02AmbientContinuousSesquilinearForm_apply_ccmFiniteSynthesis_eq_quadratic",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersEvenSectorArchPrimeReduction.lean",
+      "line": 261,
+      "signature": "private theorem sourceW02AmbientContinuousSesquilinearForm_apply_ccmFiniteSynthesis_eq_quadratic (i : PairIndex) (x : CCMModeFinite i.N → ℂ) : sourceW02AmbientContinuousSesquilinearForm i (ccmFiniteSynthesis i x) (ccmFiniteSynthesis i x) = star x ⬝ᵥ ((fun j k => (Q3.RouteB.ccmW02Entry (L_m i) (ccmModeFinite i.N j) (ccmModeFinite i.N k) : ℂ)) *ᵥ x)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilSesquilinearForm_apply_ccmFiniteSynthesis_eq_quadratic",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersEvenSectorArchPrimeReduction.lean",
+      "line": 279,
+      "signature": "private theorem sourceWeilSesquilinearForm_apply_ccmFiniteSynthesis_eq_quadratic (i : PairIndex) (x : CCMModeFinite i.N → ℂ) : sourceWeilSesquilinearForm i (ccmFiniteShiftedFormDomainSynthesis i x) (ccmFiniteShiftedFormDomainSynthesis i x) = star x ⬝ᵥ (sourceCCMFiniteMatrix i *ᵥ x)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceCCMFiniteMatrix_quadratic_eq_w02_add_archPrime",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersEvenSectorArchPrimeReduction.lean",
+      "line": 296,
+      "signature": "private theorem sourceCCMFiniteMatrix_quadratic_eq_w02_add_archPrime (i : PairIndex) (x : CCMModeFinite i.N → ℂ) : star x ⬝ᵥ (sourceCCMFiniteMatrix i *ᵥ x) = star x ⬝ᵥ ((fun j k => (Q3.RouteB.ccmW02Entry (L_m i) (ccmModeFinite i.N j) (ccmModeFinite i.N k) : ℂ)) *ᵥ x) + sourceArchPrimeSesquilinearForm i (ccmFiniteShiftedFormDomainSynthesis i x) (ccmFiniteShiftedFormDomainSynthesis i x)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceCCMFiniteMatrix_shifted_quadratic_eq_w02_add_archPrime_shifted",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersEvenSectorArchPrimeReduction.lean",
+      "line": 311,
+      "signature": "private theorem sourceCCMFiniteMatrix_shifted_quadratic_eq_w02_add_archPrime_shifted (i : PairIndex) (x : CCMModeFinite i.N → ℂ) (mu : ℂ) : star x ⬝ᵥ ((sourceCCMFiniteMatrix i - mu • (1 : Matrix (CCMModeFinite i.N) (CCMModeFinite i.N) ℂ)) *ᵥ x) = (star x ⬝ᵥ ((fun j k => (Q3.RouteB.ccmW02Entry (L_m i) (ccmModeFinite i.N j) (ccmModeFinite i.N k) : ℂ)) *ᵥ x) + (sourceArchPrimeSesquilinearForm i (ccmFiniteShiftedFormDomainSynthesis i x) (ccmFiniteShiftedFormDomainSynthesis i x) - mu * (star x ⬝ᵥ x)))",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceCCMFiniteMatrix_shifted_floor_of_archPrimeShifted_floor_even",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersEvenSectorArchPrimeReduction.lean",
+      "line": 330,
+      "signature": "theorem sourceCCMFiniteMatrix_shifted_floor_of_archPrimeShifted_floor_even (i : PairIndex) (x : CCMModeFinite i.N → ℂ) (mu : ℂ) (beta : ℝ) (hx : ccmComplexReflectionMatrix i.N *ᵥ x = x) (hfloor : beta * (star x ⬝ᵥ x).re ≤ (sourceArchPrimeSesquilinearForm i (ccmFiniteShiftedFormDomainSynthesis i x) (ccmFiniteShiftedFormDomainSynthesis i x) - mu * (star x ⬝ᵥ x)).re) : beta * (star x ⬝ᵥ x).re ≤ (star x ⬝ᵥ ((sourceCCMFiniteMatrix i - mu • (1 : Matrix (CCMModeFinite i.N) (CCMModeFinite i.N) ℂ)) *ᵥ x)).re",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersArchPrimeShifted_zero_reachability_plant",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersEvenSectorArchPrimeReduction.lean",
+      "line": 353,
+      "signature": "private theorem selectedFerrersArchPrimeShifted_zero_reachability_plant (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData) (k : ℕ) (beta : ℝ) : ∃ x : CCMModeFinite ((selectedFerrersCofinalSourceData P).index k).N → ℂ, ccmComplexReflectionMatrix ((selectedFerrersCofinalSourceData P).index k).N *ᵥ x = x ∧ star ((2⁻¹ : ℂ) • (selectedFerrersFiniteCCMRow P k + ccmComplexReflectionMatrix ((selectedFerrersCofinalSourceData P).index k).N *ᵥ selectedFerrersFiniteCCMRow P k)) ⬝ᵥ x = 0 ∧ beta * (star x ⬝ᵥ x).re ≤ (sourceArchPrimeSesquilinearForm ((selectedFerrersCofinalSourceData P).index k) (ccmFiniteShiftedFormDomainSynthesis ((selectedFerrersCofinalSourceData P).index k) x) (ccmFiniteShiftedFormDomainSynthesis ((selectedFerrersCofinalSourceData P).index k) x) - (((selectedFerrersFiniteCCMRayleigh P k : ℝ) : ℂ) * (star x ⬝ᵥ x))).re",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersFiniteCCMEvenSectorFloor_eventually_of_archPrimeShifted",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersEvenSectorArchPrimeReduction.lean",
+      "line": 379,
+      "signature": "theorem selectedFerrersFiniteCCMEvenSectorFloor_eventually_of_archPrimeShifted (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData) (beta : ℝ) (harchPrime : ∀ᶠ k in Filter.atTop, ∀ x, ccmComplexReflectionMatrix ((selectedFerrersCofinalSourceData P).index k).N *ᵥ x = x → star ((2⁻¹ : ℂ) • (selectedFerrersFiniteCCMRow P k + ccmComplexReflectionMatrix ((selectedFerrersCofinalSourceData P).index k).N *ᵥ selectedFerrersFiniteCCMRow P k)) ⬝ᵥ x = 0 → beta * (star x ⬝ᵥ x).re ≤ (sourceArchPrimeSesquilinearForm ((selectedFerrersCofinalSourceData P).index k) (ccmFiniteShiftedFormDomainSynthesis ((selectedFerrersCofinalSourceData P).index k) x) (ccmFiniteShiftedFormDomainSynthesis ((selectedFerrersCofinalSourceData P).index k) x) - (((selectedFerrersFiniteCCMRayleigh P k : ℝ) : ℂ) * (star x ⬝ᵥ x))).re) : ∀ᶠ k in Filter.atTop, ∀ x, ccmComplexReflectionMatrix ((selectedFerrersCofinalSourceData P).index k).N *ᵥ x = x → star ((2⁻¹ : ℂ) • (selectedFerrersFiniteCCMRow P k + ccmComplexReflectionMatrix ((selectedFerrersCofinalSourceData P).index k).N *ᵥ selectedFerrersFiniteCCMRow P k)) ⬝ᵥ x = 0 → beta * (star x ⬝ᵥ x).re ≤ (star x ⬝ᵥ ((sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k) - ((selectedFerrersFiniteCCMRayleigh P k : ℝ) : ℂ) • (1 : Matrix _ _ ℂ)) *ᵥ x)).re",
+      "in_docs": true,
+      "in_lemma_db": false,
       "orphan": false
     },
     {

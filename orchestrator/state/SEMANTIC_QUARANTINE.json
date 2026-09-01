@@ -170,7 +170,9 @@
       ]
     },
     {
-      "admitted_scope": [],
+      "admitted_scope": [
+        "ARCH_PRIME_SHIFTED_FLOOR_EVEN_TO_EXACT_HEVEN"
+      ],
       "closes": [
         "SELECTED_FERRERS_EVEN_SECTOR_W02_POSITIVITY",
         "SELECTED_FERRERS_EVEN_SECTOR_ARCH_PRIME_REDUCTION"
@@ -202,11 +204,11 @@
         "SELECTED_N_EVEN_RETAINED_PRIME_SHIFTED_QUADRATIC_FLOOR"
       ],
       "quantifiers": "for every PairIndex and every complex reflection-even finite CCM vector, W02 is nonnegative; for every selected port P and one common real beta, an eventual Arch-Prime shifted floor implies the exact eventual heven floor at the same selected cells and Rayleigh scalars",
-      "semantic_attestation_id": null,
+      "semantic_attestation_id": "ATTEST_GOAL058_SELECTED_FERRERS_EVEN_SECTOR_ARCH_PRIME_REDUCTION_20260901_V1",
       "source_commit": "57b642ebd480728b8b30f5219dbcb1946b6422d5",
       "source_git_blob": "255131af8f3202b45b909c67fe548facaa4a4956",
       "source_path": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersEvenSectorArchPrimeReduction.lean",
-      "status": "KERNEL_GREEN",
+      "status": "SEMANTICALLY_ADMITTED",
       "task_blob": "f17f76aa08d2cfbf4b7dbed5b23dceb73bca9ce2",
       "task_path": "docs/Codex/TASK_2026-09-01_goal058_selected_even_arch_prime_reduction.md",
       "terminal_consumer": "Q3.RouteB.D0Pstar.selectedFerrersFiniteCCMComplementFloor_eventually_of_sectorFloors_weightedResidual exact reflection-even heven hypothesis",

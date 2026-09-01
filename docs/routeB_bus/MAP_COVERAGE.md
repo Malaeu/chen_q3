@@ -4,7 +4,7 @@
 `python3 docs/cartographer/map_coverage.py`. Рукописная карта — `MAP.md`, она
 описывает узлы маршрута; это приложение описывает **файлы**, и оно полное.
 
-Всего файлов: **375** · упомянуто в `MAP.md`: **25** · вне карты: **350** · без описания в шапке: **0**
+Всего файлов: **376** · упомянуто в `MAP.md`: **25** · вне карты: **351** · без описания в шапке: **0**
 
 «вне карты» не значит «лишний»: значит, что обходом карты файл не находится.
 Именно так 2026-08-11 был построен заново мост `ker ↔ eigenspace`, стоявший в
@@ -257,6 +257,7 @@
 | `G6N1SelectedFerrersDirectCylinderRate` | — | F72.1C — selected Ferrers direct cylinder rate, with explicit paper-rate input | 0 |
 | `G6N1SelectedFerrersEStarWindowMainError` | — | L73.3 — the selected Ferrers E-star window main error | 0 |
 | `G6N1SelectedFerrersEdgeTopFluxConsumer` | — | Edge-top flux consumer, stage A (verdict ed7c8f7d, REQ-2026-08-26-E) | 0 |
+| `G6N1SelectedFerrersEvenSectorArchPrimeReduction` | — | Selected reflection-even W02 positivity and Arch-Prime reduction | 0 |
 | `G6N1SelectedFerrersFactorFourPortRate` | — | F72.6 — the factor-four port source scale and final packet rate | 0 |
 | `G6N1SelectedFerrersFiniteAssetBank` | — | G6N1: selected Ferrers finite asset bank (Track 2, verdict `071d3eb0`) | 0 |
 | `G6N1SelectedFerrersFiniteCCMResidualSourceActionSplit` | — | H2a.4.1a — the selected Ferrers finite Riesz source-action split | 0 |
