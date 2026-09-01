@@ -66,6 +66,16 @@ noncomputable def sourceOrderedCCMRawTransform
   proposition59RawTransform L (Finset.Icc (-(N : ℤ)) N)
     (sourceOrderedCCMCoefficient N q) (-z)
 
+/-- The source-ordered finite Proposition-59 transform is entire. -/
+theorem differentiable_sourceOrderedCCMRawTransform
+    (L : ℝ) (N : ℕ) (q : CCMModeFinite N → ℂ) :
+    Differentiable ℂ (sourceOrderedCCMRawTransform L N q) := by
+  unfold sourceOrderedCCMRawTransform
+  exact
+    (differentiable_proposition59RawTransform L
+      (Finset.Icc (-(N : ℤ)) N) (sourceOrderedCCMCoefficient N q)).comp
+      differentiable_neg
+
 /-- Exact Euclidean size of the source-ordered Proposition-59 kernel row. -/
 noncomputable def sourceOrderedCCMKernelL2
     (L : ℝ) (N : ℕ) (z : ℂ) : ℝ :=
@@ -652,6 +662,7 @@ theorem goal058NormalizerCollapse_overlap_zero_and_defect_one :
     dotProduct, Fin.sum_univ_succ]
 
 #print axioms sourceOrderedCCMRawTransform_sourceRow_eq_rawFplus
+#print axioms differentiable_sourceOrderedCCMRawTransform
 #print axioms selectedCCMGroundTransform_sub_selectedFamily_le
 #print axioms literalCCMCofinalResidualFloorEnvelopeAndTransformTail
 #print axioms goal058NormalizerCollapse_overlap_zero_and_defect_one

@@ -757,6 +757,21 @@ def selectedFerrersTrackedGroundTransformAt
       ((selectedFerrersCofinalSourceData P).index k).N
       (selectedFerrersTrackedGroundVectorAt P k beta hfloorAt) z
 
+/-- The pointwise tracked ground transform is entire. -/
+theorem differentiable_selectedFerrersTrackedGroundTransformAt
+    (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData)
+    (k : ℕ) (beta : ℝ)
+    (hfloorAt :
+      complexTrialComplementFloor
+        (sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k))
+        (selectedFerrersFiniteCCMRow P k)
+        ((selectedFerrersFiniteCCMRayleigh P k : ℝ) : ℂ) beta) :
+    Differentiable ℂ
+      (selectedFerrersTrackedGroundTransformAt P k beta hfloorAt) := by
+  unfold selectedFerrersTrackedGroundTransformAt
+  exact
+    (differentiable_sourceOrderedCCMRawTransform _ _ _).const_mul _
+
 theorem selectedFerrersTrackedGroundTransformAt_realZeros_and_pointwiseTracking_of_sectorFloors
     (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData)
     (k : ℕ) (beta0 beta : ℝ)
@@ -1025,5 +1040,6 @@ theorem selectedFerrersTrackedGroundTransformAt_realZeros_and_pointwiseTracking_
           ring
 
 #print axioms selectedFerrersTrackedGroundTransformAt_realZeros_and_pointwiseTracking_of_sectorFloors
+#print axioms differentiable_selectedFerrersTrackedGroundTransformAt
 
 end Q3.RouteB.D0Pstar
