@@ -4,7 +4,7 @@
 `python3 docs/cartographer/map_coverage.py`. Рукописная карта — `MAP.md`, она
 описывает узлы маршрута; это приложение описывает **файлы**, и оно полное.
 
-Всего файлов: **376** · упомянуто в `MAP.md`: **25** · вне карты: **351** · без описания в шапке: **0**
+Всего файлов: **377** · упомянуто в `MAP.md`: **25** · вне карты: **352** · без описания в шапке: **0**
 
 «вне карты» не значит «лишний»: значит, что обходом карты файл не находится.
 Именно так 2026-08-11 был построен заново мост `ker ↔ eigenspace`, стоявший в
@@ -304,6 +304,7 @@
 | `G6N1SturmWeightedEnergyIdentity` | — | STURM_ENERGY_NODE, part A (verdict 4c0e13ba, node 1) | 0 |
 | `GammaSoftZeroFree` | — | The SOFT completion factor.  For a positive real scale `lambda`, the | 0 |
 | `GenericZeroTransfer` | — | A quantitative open-mapping replacement for the one-disk Rouché step. | 0 |
+| `Goal058DirectGroundZeroEscape` | — | Goal 058 — direct tracked-ground ZeroEscape consumer | 0 |
 | `Goal058OrientedSmoothModelMass` | — | The exact finite-parameter mass of the smooth oriented source model from | 0 |
 | `Goal058PolarizedVolterra` | — | первая декларация: `goal058ModeFrequency` | 0 |
 | `H2aPenaltyCoercivity` | карта | Aristotle project `16535289-f016-4f62-bfbd-be83d826b4da`, imported | 0 |
