@@ -284,7 +284,9 @@
       ]
     },
     {
-      "admitted_scope": [],
+      "admitted_scope": [
+        "ADAPTIVE_REUSE_OF_EXISTING_EXPLICIT_EVEN_TAIL_VIA_C_LE_R_LE_N"
+      ],
       "closes": [
         "ADAPTIVE_REUSE_OF_EXISTING_EXPLICIT_EVEN_TAIL_VIA_C_LE_R_LE_N"
       ],
@@ -302,11 +304,11 @@
         "FINITE_EVEN_HEAD_CORRECTED_SCHUR_MARGIN_AT_EXACT_RAYLEIGH_SHIFT"
       ],
       "quantifiers": "for every natural k, there does not exist a natural cutoff R with sourceWeilEvenTailCutoff (selectedFerrersPreAnchorIndex k) less than or equal to R and R less than or equal to (selectedFerrersPreAnchorIndex k).N",
-      "semantic_attestation_id": null,
+      "semantic_attestation_id": "ATTEST_GOAL058_SELECTED_ADAPTIVE_TAIL_CUTOFF_OBSTRUCTION_20260901_V1",
       "source_commit": "f88cbe75b22172f81ac8d6e190b0930b5c9f6b72",
       "source_git_blob": "fff37ed51262174b1d1cb93e144d3cbafde30218",
       "source_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSelectedFerrersAdaptiveTailCutoffObstruction.lean",
-      "status": "KERNEL_GREEN",
+      "status": "SEMANTICALLY_ADMITTED",
       "task_blob": "596341e66bd9e28695e72337dd12672d3135f44c",
       "task_path": "docs/Codex/TASK_2026-09-01_goal058_selected_adaptive_tail_cutoff_obstruction.md",
       "terminal_consumer": "the adaptive selected finite-tail transfer that would reuse the existing explicit source-Weil even-tail coercivity through a cutoff R satisfying C_k less than or equal to R less than or equal to N_k before the exact selected Rayleigh-shifted finite-sector floor",
