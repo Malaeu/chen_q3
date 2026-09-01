@@ -168,6 +168,53 @@
         "Q3.RouteB.D0Pstar.sourceWeilEvenTailAlgebraicCoercive_explicit",
         "Q3.RouteB.D0Pstar.sourceWeilEvenTailAmbientCoercive_explicit"
       ]
+    },
+    {
+      "admitted_scope": [],
+      "closes": [
+        "SELECTED_FERRERS_EVEN_SECTOR_W02_POSITIVITY",
+        "SELECTED_FERRERS_EVEN_SECTOR_ARCH_PRIME_REDUCTION"
+      ],
+      "domain": "literal complex finite CCM carrier at each PairIndex, exact reflection-even sector, exact selected symmetrized-row complement, and the source Arch-Prime shifted form domain",
+      "entry_id": "GOAL058_SELECTED_FERRERS_EVEN_SECTOR_ARCH_PRIME_REDUCTION_20260901",
+      "hypothesis_provenance": [
+        {
+          "class": "NEW_OPEN_OBLIGATION",
+          "consumer": "Q3.RouteB.D0Pstar.selectedFerrersFiniteCCMEvenSectorFloor_eventually_of_archPrimeShifted",
+          "exact_type": "forall-eventually k atTop, for every reflection-even x orthogonal to the exact symmetrized selected row, beta times re(star x dot x) is at most re(sourceArchPrimeSesquilinearForm i_k x x - selectedFerrersFiniteCCMRayleigh P k times (star x dot x))",
+          "hypothesis_id": "SELECTED_N_EVEN_RETAINED_PRIME_SHIFTED_QUADRATIC_FLOOR_INPUT",
+          "open_obligation_id": "SELECTED_N_EVEN_RETAINED_PRIME_SHIFTED_QUADRATIC_FLOOR",
+          "production_inhabitant_or_plant": {
+            "blob": "255131af8f3202b45b909c67fe548facaa4a4956",
+            "declaration": "selectedFerrersArchPrimeShifted_zero_reachability_plant",
+            "exact_type": "for every fixed selected port P, cell k, and real beta, there exists x in the exact selected CCMModeFinite carrier satisfying the literal reflection-even equation, exact selected-row-complement orthogonality, and selected-Rayleigh-shifted Arch-Prime inequality",
+            "kind": "REACHABILITY_PLANT",
+            "path": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersEvenSectorArchPrimeReduction.lean",
+            "scope": "POINTWISE_ZERO_VECTOR_REACHABILITY_OF_EXACT_SELECTED_ARCHPRIME_ANTECEDENT_SHAPE_ONLY",
+            "verifier": "LEAN_KERNEL_AND_INDEPENDENT_SEMANTIC_DELTA_REVIEW"
+          },
+          "source_or_supplier": "open selected reflection-even Arch-Prime shifted floor at the exact selected Rayleigh scalar"
+        }
+      ],
+      "hypothesis_provenance_sha256": "00eeb8a9adaea9aa686e6d831678992e23d310743dc65c9f6ffcaf15cc95ff5a",
+      "normalization": "W02 even coordinate L divided by L squared plus 16 pi squared n squared, odd coordinate 4 pi n divided by the same denominator, coefficient 32 L sinh squared of L over 4, and the literal selected Ferrers Rayleigh scalar subtracted exactly once",
+      "opens": [
+        "SELECTED_N_EVEN_RETAINED_PRIME_SHIFTED_QUADRATIC_FLOOR"
+      ],
+      "quantifiers": "for every PairIndex and every complex reflection-even finite CCM vector, W02 is nonnegative; for every selected port P and one common real beta, an eventual Arch-Prime shifted floor implies the exact eventual heven floor at the same selected cells and Rayleigh scalars",
+      "semantic_attestation_id": null,
+      "source_commit": "57b642ebd480728b8b30f5219dbcb1946b6422d5",
+      "source_git_blob": "255131af8f3202b45b909c67fe548facaa4a4956",
+      "source_path": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersEvenSectorArchPrimeReduction.lean",
+      "status": "KERNEL_GREEN",
+      "task_blob": "f17f76aa08d2cfbf4b7dbed5b23dceb73bca9ce2",
+      "task_path": "docs/Codex/TASK_2026-09-01_goal058_selected_even_arch_prime_reduction.md",
+      "terminal_consumer": "Q3.RouteB.D0Pstar.selectedFerrersFiniteCCMComplementFloor_eventually_of_sectorFloors_weightedResidual exact reflection-even heven hypothesis",
+      "theorem_ids": [
+        "Q3.RouteB.D0Pstar.ccmW02Quadratic_re_nonneg_of_reflection_even",
+        "Q3.RouteB.D0Pstar.sourceCCMFiniteMatrix_shifted_floor_of_archPrimeShifted_floor_even",
+        "Q3.RouteB.D0Pstar.selectedFerrersFiniteCCMEvenSectorFloor_eventually_of_archPrimeShifted"
+      ]
     }
   ],
   "event_ledger": [],
