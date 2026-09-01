@@ -264,7 +264,7 @@ theorem integrable_sourceArchimedeanShiftedMultiplier_mul_fourierNorm_sq
 /-- Elementary measure-theoretic engine for the high/low frequency split:
 if a nonnegative weight is at least `D` off the central band, its weighted
 integral controls `D` times the total mass minus the central-band mass. -/
-private theorem weightedIntegral_ge_const_mul_total_sub_band
+theorem weightedIntegral_ge_const_mul_total_sub_band
     (F q : ℝ → ℝ) (T D : ℝ)
     (hFint : MeasureTheory.Integrable F)
     (hqFint : MeasureTheory.Integrable (fun t => q t * F t))
