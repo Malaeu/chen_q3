@@ -40,6 +40,46 @@
 
 ---
 
+## 2026-09-01 — direct selected-N cancellation убит, выбран adaptive block crosswalk
+
+**Развилка:** выводить exact selected-`N` floor автоматически из
+reflection-even row orthogonality, строить ещё один conditional wrapper,
+дробить direct floor через отдельный Rayleigh envelope или перейти к adaptive
+tail с явным block crosswalk.
+
+**Выбрали:** закрыть только automatic-cancellation shortcut и следующим
+узлом взять `ADAPTIVE_SELECTED_FINITE_TAIL_TO_LITERAL_TOBLOCKS22_CROSSWALK`,
+где `ADAPTIVE_SELECTED_CUTOFF_DOMINATION_R_LE_N` остаётся количественным
+гейтом.
+
+**Почему:** exact reduction не использует row orthogonality в алгебре: она
+передаётся обратно в уже предполагаемый floor. Adaptive high target может
+включить exact Rayleigh shift и beta по построению, тогда как отдельный
+Rayleigh envelope всё равно не даёт selected-`N` unshifted lower bound.
+
+**Что отвергли и почему:** wrapper `hDirect -> heven` отвергнут как
+тавтологический; ортогональность не превращает `Arch - Prime` или scalar
+identity shift в row projector. Сам direct source-specific floor не убит и
+остаётся alternate research debt. Rayleigh-envelope branch не убит, но
+отложен как недостаточный без второй количественной оценки.
+
+**Техника:** complete-shelf supplier preflight, буквальное разворачивание
+`ArchPrime = -WR - Prime`, exact consumer trace и независимый semantic review.
+
+**Следующий ход:** определить weakest adaptive cutoff/block interface,
+проверить exact `toBlocks₂₂` identity и первым killer-тестом решить, возможно
+ли eventual `R_k <= N_k` на selected schedule.
+
+**Адреса:**
+`q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersEvenSectorArchPrimeReduction.lean`;
+`q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarArchPrimeSesquilinearForm.lean`;
+`docs/routeB_bus/CODEX_CLOSEOUT_GOAL058_DIRECT_SELECTED_N_CANCELLATION_PREFLIGHT_2026-09-01.md`.
+
+**Чей вердикт и аргумент:** Codex + независимый Codex subagent. Аргумент:
+`horth` не участвует в algebraic reduction, selected Rayleigh scalar не
+является доказанным eigenvalue, а доступная high-tail coercivity начинается
+за пределом literal selected carrier.
+
 ## 2026-09-01 — фиксированный cutoff убит, выбран direct selected-N
 
 **Развилка:** переносить готовую explicit even-tail coercivity через

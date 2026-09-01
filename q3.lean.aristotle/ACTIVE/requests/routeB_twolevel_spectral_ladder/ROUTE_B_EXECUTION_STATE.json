@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v3_live_bus",
-  "updated_at": "2026-09-01T19:16:45+02:00",
+  "updated_at": "2026-09-01T19:39:45+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": ".",
   "architecture": {
@@ -10,21 +10,37 @@
     "route_b_rh_status": "NOT_RH",
     "root_implementation_plan_overridden": false
   },
-  "operational_status": "GOAL_058_DIRECT_SELECTED_N_EVEN_TAIL_COERCIVITY_PREFLIGHT",
+  "operational_status": "GOAL_058_ADAPTIVE_SELECTED_EVEN_TAIL_BLOCK_CROSSWALK_PREFLIGHT",
   "current": {
-    "stage_id": "RB-GOAL-058-DIRECT-SELECTED-N-EVEN-TAIL-COERCIVITY",
-    "contract_obligation": "DIRECT_SELECTED_N_EVEN_TAIL_COERCIVITY",
-    "name": "Goal058DirectSelectedNEvenTailCoercivity",
+    "stage_id": "RB-GOAL-058-ADAPTIVE-SELECTED-EVEN-TAIL-BLOCK-CROSSWALK",
+    "contract_obligation": "ADAPTIVE_SELECTED_FINITE_TAIL_TO_LITERAL_TOBLOCKS22_CROSSWALK",
+    "name": "Goal058AdaptiveSelectedEvenTailBlockCrosswalk",
     "status": "ACTIVE_SUPPLIER_PREFLIGHT",
     "stop_code": "NONE",
     "selected_bus_goal_nnn": "058",
     "selected_bus_goal_path": "docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md",
     "next_required_actor": "CODEX",
-    "next_action": "Run the exact supplier preflight for direct coercivity on the literal selected-N even carrier, then derive or kill the weakest source-faithful form estimate consumed by the selected even-sector floor. Keep adaptive cutoff domination and the finite-head corrected Schur margin separate; do not reuse the dead fixed-cutoff transfer, promote Route B, or claim RH.",
+    "next_action": "Define the weakest source-faithful adaptive selected even-tail split, identify its shifted tail exactly with the literal toBlocks22 carrier, and run the earliest killer for eventual adaptive cutoff domination R_k <= N_k. Keep the direct source-specific floor and finite-head corrected Schur margin open; do not reuse the dead fixed-cutoff transfer, promote Route B, or claim RH.",
     "route_promotion": false,
     "rh_claimed": false
   },
   "terminal_history": {
+    "goal_058_direct_selected_n_cancellation_preflight": {
+      "classification": "GOAL058_DIRECT_SELECTED_N_AUTOMATIC_CANCELLATION_SHORTCUT_KILLED",
+      "status": "CLOSED_SHORTCUT_ONLY_DIRECT_FLOOR_REMAINS_RESEARCH_DEBT",
+      "base_commit": "e8a442e0b4645fa0c0334bbc37899b6d5b7cd2a0",
+      "closeout_path": "docs/routeB_bus/CODEX_CLOSEOUT_GOAL058_DIRECT_SELECTED_N_CANCELLATION_PREFLIGHT_2026-09-01.md",
+      "exact_result": "ROW_ORTHOGONALITY_SUPPLIES_NO_ARCH_PRIME_OR_IDENTITY_SHIFT_CANCELLATION",
+      "independent_review": "CODEX_SUBAGENT_KILL_SHORTCUT_DIRECT_THEOREM_OPEN",
+      "supplier_preflight": "CANDIDATE_ONLY_NO_EXACT_SUPPLIER_378_OF_378_CURRENT",
+      "autopsy_tag": "CANCELLATION",
+      "direct_floor_status": "OPEN_RESEARCH_DEBT_NOT_MATHEMATICALLY_DEAD",
+      "next_selected_node": "ADAPTIVE_SELECTED_FINITE_TAIL_TO_LITERAL_TOBLOCKS22_CROSSWALK",
+      "adaptive_cutoff_domination_status": "OPEN_QUANTITATIVE_GATE",
+      "finite_head_schur_status": "OPEN_LOAD_BEARING",
+      "route_promotion": false,
+      "rh_claimed": false
+    },
     "goal_058_selected_fixed_even_tail_cutoff_obstruction": {
       "classification": "GOAL058_SELECTED_FIXED_EVEN_TAIL_TRANSFER_KILLED",
       "status": "CLOSED_MATHEMATICALLY_DEAD_FIXED_PREMISE_ONLY",
