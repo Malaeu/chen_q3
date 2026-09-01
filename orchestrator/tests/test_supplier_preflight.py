@@ -2,12 +2,30 @@
 
 from __future__ import annotations
 
+import subprocess
 from types import SimpleNamespace
 
 import pytest
 
 from docs.cartographer.comparator import fit
 from scripts import supplier_preflight
+
+
+def test_ask_shelf_preserves_utf8_when_truncating_long_lean_matches() -> None:
+    proc = subprocess.run(
+        [
+            str(supplier_preflight.ASK),
+            "selectedFerrersPreAnchorIndex N less than "
+            "sourceWeilEvenTailCutoff W02 norm lower bound",
+        ],
+        cwd=supplier_preflight.REPO,
+        capture_output=True,
+        text=False,
+        check=False,
+    )
+    assert proc.returncode in {0, 1}
+    proc.stdout.decode("utf-8")
+    proc.stderr.decode("utf-8")
 
 
 def record(name: str, module: str = "Q3.Proofs.RouteB.Sample") -> dict[str, object]:

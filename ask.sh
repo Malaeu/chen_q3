@@ -40,6 +40,19 @@ SEARCH_FAILURES=()
 
 hdr() { printf '\n── %s %s\n' "$1" "$(printf '─%.0s' $(seq 1 $((60 - ${#1}))))"; }
 
+# GNU `cut -c` truncates bytes rather than Unicode code points even under a
+# UTF-8 locale.  A boundary through `ℝ` or another multibyte character makes
+# this script emit invalid UTF-8, which breaks the registered Python consumer.
+utf8_head_chars() {
+  python3 -c '
+import sys
+
+limit = int(sys.argv[1])
+for line in sys.stdin:
+    sys.stdout.write(line.rstrip("\n")[:limit] + "\n")
+' "$1"
+}
+
 # ── 1. База знаний: убитое, ходы, журнал, досье ───────────────────────────────
 SEARCHED+=("knowledge.db (kill/move/journal/dossier)")
 if [ -f "$KB" ]; then
@@ -125,7 +138,7 @@ fi
 SEARCHED+=("litreview (REFERENCES.md · *_CARDS.md · references.bib · pdfs/)")
 LIT="docs/routeB_bus/litreview"
 if [ -d "$LIT" ]; then
-  OUT="$(rg -in --max-count 3 "$Q" "$LIT"/REFERENCES.md "$LIT"/*.bib "$LIT"/ZOTERO_MASTER.md 2>/dev/null | cut -c1-200)"
+  OUT="$(rg -in --max-count 3 "$Q" "$LIT"/REFERENCES.md "$LIT"/*.bib "$LIT"/ZOTERO_MASTER.md 2>/dev/null | utf8_head_chars 200)"
   CARDS="$(rg -l -i "$Q" "$LIT"/*_CARDS.md 2>/dev/null | sed 's#.*/##')"
   PDFS="$(ls "$LIT"/pdfs/ 2>/dev/null | rg -i "$(printf '%s' "$Q" | tr ' ' '|')" | head -5)"
   if [ -n "$OUT$CARDS$PDFS" ]; then
@@ -170,7 +183,7 @@ PY
 )"
   if [ -n "$OUT" ]; then
     hdr "LEAN — объявления в metadata index"
-    printf '%s\n' "$OUT" | cut -c1-150
+    printf '%s\n' "$OUT" | utf8_head_chars 150
     HITS=$((HITS + 1))
   fi
 fi
@@ -180,7 +193,7 @@ SEARCHED+=("Q3/Proofs/RouteB/*.lean (живое дерево)")
 FIRST_TERM="${Q%% *}"
 OUT="$(rg -in -F --max-count 2 -g '*.lean' "$FIRST_TERM" \
        q3.lean.aristotle/Q3/Proofs/RouteB/ \
-       --glob '!PrimeCert/**' 2>/dev/null | cut -c1-160 | head -6)"
+       --glob '!PrimeCert/**' 2>/dev/null | utf8_head_chars 160 | head -6)"
 if [ -n "$OUT" ]; then
   hdr "LEAN — на диске сейчас"
   printf '%s\n' "$OUT"
