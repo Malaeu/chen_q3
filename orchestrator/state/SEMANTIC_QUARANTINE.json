@@ -219,7 +219,9 @@
       ]
     },
     {
-      "admitted_scope": [],
+      "admitted_scope": [
+        "D0PSTAR_SOURCE_ARCH_PRIME_EVEN_TAIL_EXPLICIT_ALGEBRAIC_FLOOR"
+      ],
       "closes": [
         "D0PSTAR_SOURCE_ARCH_PRIME_EVEN_TAIL_EXPLICIT_ALGEBRAIC_FLOOR"
       ],
@@ -234,11 +236,11 @@
         "FINITE_EVEN_HEAD_CORRECTED_SCHUR_MARGIN_AT_EXACT_RAYLEIGH_SHIFT"
       ],
       "quantifiers": "for every PairIndex i and every finitely supported complex coefficient family c; the W02 form norm plus one half times the squared ambient norm of the exact even-tail synthesis is at most the real part of its Arch-Prime quadratic form",
-      "semantic_attestation_id": null,
+      "semantic_attestation_id": "ATTEST_GOAL058_D0PSTAR_SOURCE_ARCH_PRIME_EVEN_TAIL_FLOOR_20260901_V1",
       "source_commit": "a5856221e1dddf7b8586f881b5e2c2a0c60d2123",
       "source_git_blob": "f9dc5ce21e00802fcb2488a61c504e957c372691",
       "source_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
-      "status": "KERNEL_GREEN",
+      "status": "SEMANTICALLY_ADMITTED",
       "task_blob": "4b5e85dc2ab0fc74ff8b0b3efd5b0caa5b5589f5",
       "task_path": "docs/Codex/TASK_2026-09-01_goal058_arch_prime_even_tail_floor.md",
       "terminal_consumer": "Q3.RouteB.D0Pstar.selectedFerrersFiniteCCMEvenSectorFloor_eventually_of_archPrimeShifted exact selected reflection-even Arch-Prime shifted floor",
