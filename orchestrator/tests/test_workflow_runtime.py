@@ -1,20 +1,30 @@
 from __future__ import annotations
 
-from pathlib import Path
 import json
 import subprocess
+import sys
 import tempfile
-from unittest import mock
 import unittest
+from pathlib import Path
+from unittest import mock
 
 from orchestrator import workflow_runtime
+from orchestrator.startup_runtime import StartupSnapshot
 
 
 def tool_index() -> dict[str, dict[str, object]]:
     ids = set(workflow_runtime.COMMON_TOOLS)
     for values in workflow_runtime.ACTION_TOOLS.values():
         ids.update(values)
-    return {item: {"id": item, "status": "ENABLED", "mode": "READ_ONLY", "writes": False} for item in ids}
+    return {
+        item: {
+            "id": item,
+            "status": "ENABLED",
+            "mode": "READ_ONLY",
+            "writes": False,
+        }
+        for item in ids
+    }
 
 
 def plan(action: str, *, host: str = "CODEX_MAC", tools=None):
@@ -99,6 +109,46 @@ def dependency_contract() -> dict[str, object]:
     }
 
 
+def shadow_snapshot(**overrides: object) -> StartupSnapshot:
+    fields: dict[str, object] = {
+        "schema": "q3_startup_snapshot.v10.shadow.v1",
+        "mode": "SHADOW_NOT_AUTHORITY",
+        "control_sha256": "a" * 64,
+        "control_version": 9,
+        "control_status": "ACTIVE",
+        "git_head": "b" * 40,
+        "git_origin_head": "b" * 40,
+        "git_tree": "c" * 40,
+        "git_dirty": False,
+        "selected_goal": "docs/routeB_bus/058.goal.md",
+        "honesty_state": "CHALLENGER_NOT_RH",
+        "exact_node_pin": "NODE-058",
+        "exact_source_pin": "SOURCE-058",
+        "exact_theorem_pin": "THEOREM-058",
+        "exact_consumer_pin": "CONSUMER-058",
+        "fatal_errors": [],
+        "blocked_features": ("RUN", "DISPATCH", "MINT", "STATE_WRITE"),
+        "warnings": [],
+        "next_action": "READ_ONLY_OBSERVE",
+        "run_authorized": False,
+    }
+    fields.update(overrides)
+    return StartupSnapshot(**fields)
+
+
+def node_registry_summary(*, status: str = "PASS") -> dict[str, object]:
+    return {
+        "schema": "q3_node_registry_gate_summary.v1",
+        "status": status,
+        "code": "PASS" if status == "PASS" else "NODE_REGISTRY_V10_UNAVAILABLE_OR_INVALID",
+        "registry_hash": "d" * 64,
+        "node_count": 2,
+        "edge_count": 1,
+        "historical_v9_unmapped": 0,
+        "consumption_status": "SCOPED_PASS",
+    }
+
+
 class WorkflowRuntimePlants(unittest.TestCase):
     def _review_fixture(
         self,
@@ -109,7 +159,11 @@ class WorkflowRuntimePlants(unittest.TestCase):
         runtime: dict | None = None,
     ) -> tuple[Path, str, str]:
         subprocess.run(["git", "init", "-q"], cwd=repo, check=True)
-        subprocess.run(["git", "config", "user.email", "plant@example.invalid"], cwd=repo, check=True)
+        subprocess.run(
+            ["git", "config", "user.email", "plant@example.invalid"],
+            cwd=repo,
+            check=True,
+        )
         subprocess.run(["git", "config", "user.name", "Workflow Plant"], cwd=repo, check=True)
         lines = ["REQUEST_ID: REQ-PLANT", "BOUNDARY_ID: boundary"]
         if packet_subtype is not None:
@@ -141,8 +195,14 @@ class WorkflowRuntimePlants(unittest.TestCase):
         mint = plan("MINT_READY")
         phase = plan("PHASE_TRANSITION_REQUIRED")
         self.assertEqual([exact["status"], mint["status"], phase["status"]], ["READY"] * 3)
-        self.assertIn("workflow-session-close", [item["id"] for item in exact["logical_plan"]["selected_tools"]])
-        self.assertIn("workflow-phase-close", [item["id"] for item in phase["logical_plan"]["selected_tools"]])
+        self.assertIn(
+            "workflow-session-close",
+            [item["id"] for item in exact["logical_plan"]["selected_tools"]],
+        )
+        self.assertIn(
+            "workflow-phase-close",
+            [item["id"] for item in phase["logical_plan"]["selected_tools"]],
+        )
         self.assertFalse(exact["logical_plan"]["proshka"]["dispatch_performed"])
         self.assertEqual(
             exact["logical_plan"]["proshka"]["transport_owner"],
@@ -230,6 +290,335 @@ class WorkflowRuntimePlants(unittest.TestCase):
         self.assertEqual(logical["PX_RH_CLAIM"], "NOT_MADE")
         self.assertEqual(logical["foreign_dirty_preserved"], ["foreign.txt"])
 
+    def test_shadow_v10_builds_one_snapshot_and_reuses_selected_goal(self) -> None:
+        snapshot = shadow_snapshot()
+        with (
+            mock.patch.object(
+                workflow_runtime, "build_shadow_snapshot", return_value=snapshot
+            ) as build,
+            mock.patch.object(
+                workflow_runtime.node_registry_v10,
+                "startup_gate_summary",
+                return_value=node_registry_summary(),
+            ) as registry,
+        ):
+            result = workflow_runtime.live_shadow_plan_v10(
+                Path("/repo"), owned_paths=["owned.md"]
+            )
+        build.assert_called_once_with(Path("/repo"), owned_paths=("owned.md",))
+        registry.assert_called_once_with(
+            Path("/repo"),
+            snapshot.selected_goal,
+            owned_paths=("owned.md",),
+            exact_node_pin=snapshot.exact_node_pin,
+            exact_theorem_pin=snapshot.exact_theorem_pin,
+            exact_consumer_pin=snapshot.exact_consumer_pin,
+        )
+        self.assertEqual(result["schema"], "q3_workflow_plan.v2")
+        self.assertEqual(result["selected_goal"], snapshot.selected_goal)
+        self.assertFalse(result["run_authorized"])
+        self.assertFalse(result["writes_performed"])
+
+    def test_shadow_v10_hot_path_never_enters_legacy_or_subprocess_startup(self) -> None:
+        snapshot = shadow_snapshot()
+        with (
+            mock.patch.object(
+                workflow_runtime, "build_shadow_snapshot", return_value=snapshot
+            ),
+            mock.patch.object(
+                workflow_runtime.node_registry_v10,
+                "startup_gate_summary",
+                return_value=node_registry_summary(),
+            ),
+            mock.patch.object(
+                workflow_runtime.subprocess,
+                "run",
+                side_effect=AssertionError("shadow hot path invoked subprocess"),
+            ),
+            mock.patch.object(
+                workflow_runtime, "startup_receipt", side_effect=AssertionError
+            ),
+            mock.patch.object(
+                workflow_runtime, "selector_binding", side_effect=AssertionError
+            ),
+        ):
+            result = workflow_runtime.live_shadow_plan_v10(Path("/repo"), owned_paths=[])
+        self.assertEqual(result["status"], "READY")
+        self.assertEqual(
+            result["startup"]["blocked_features"],
+            ["RUN", "DISPATCH", "MINT", "STATE_WRITE"],
+        )
+        self.assertEqual(result["holds"], [])
+
+    def test_shadow_v10_cli_imports_no_legacy_runtime_modules(self) -> None:
+        repo = Path(__file__).resolve().parents[2]
+        entry = repo / "orchestrator/workflow_runtime.py"
+        blocked = (
+            "orchestrator.proof_loop",
+            "orchestrator.roof_port_ledger",
+            "orchestrator.session_briefing",
+            "orchestrator.spine",
+            "orchestrator.three_body_loop",
+            "specs_docs.phase_close",
+            "specs_docs.session_close",
+        )
+        program = (
+            "import runpy,sys\n"
+            f"blocked={blocked!r}\n"
+            "for name in blocked: sys.modules[name] = None\n"
+            f"sys.argv=[{str(entry)!r},'--root',{str(repo)!r},'plan','--shadow-v10']\n"
+            f"runpy.run_path({str(entry)!r}, run_name='__main__')\n"
+        )
+
+        proc = subprocess.run(
+            [sys.executable, "-c", program],
+            cwd=repo,
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+
+        self.assertIn(proc.returncode, {0, 2}, proc.stderr)
+        self.assertNotIn("ModuleNotFoundError", proc.stderr)
+        payload = json.loads(proc.stdout)
+        self.assertEqual(payload["schema"], "q3_workflow_plan.v2")
+        self.assertFalse(payload["run_authorized"])
+
+    def test_compile_plan_imports_proof_loop_only_on_legacy_call(self) -> None:
+        repo = Path(__file__).resolve().parents[2]
+        blocked = (
+            "orchestrator.proof_loop",
+            "orchestrator.spine",
+            "orchestrator.three_body_loop",
+        )
+        program = (
+            "import json,sys\n"
+            "from orchestrator import workflow_runtime\n"
+            f"blocked={blocked!r}\n"
+            "before={name:name in sys.modules for name in blocked}\n"
+            "ids=set(workflow_runtime.COMMON_TOOLS)\n"
+            "for values in workflow_runtime.ACTION_TOOLS.values(): ids.update(values)\n"
+            "tools={item:{'id':item,'status':'ENABLED','mode':'READ_ONLY',"
+            "'writes':False} for item in ids}\n"
+            "result=workflow_runtime.compile_plan("
+            "goal_binding={'action':'SELECT_EXACT_GOAL'},selector_hold=None,"
+            "tool_index=tools,derived_status=[],assembly_debt=[],owned_dirty=[],"
+            "foreign_dirty=[],fingerprints={},host_executor='CODEX_LINUX')\n"
+            "after={name:name in sys.modules for name in blocked}\n"
+            "print(json.dumps({'before':before,'after':after,"
+            "'schema':result['schema']}))\n"
+        )
+
+        proc = subprocess.run(
+            [sys.executable, "-c", program],
+            cwd=repo,
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+
+        payload = json.loads(proc.stdout)
+        self.assertEqual(payload["schema"], "q3_workflow_plan.v1")
+        self.assertFalse(payload["before"]["orchestrator.proof_loop"])
+        self.assertTrue(payload["after"]["orchestrator.proof_loop"])
+        self.assertFalse(payload["after"]["orchestrator.spine"])
+        self.assertFalse(payload["after"]["orchestrator.three_body_loop"])
+
+    def test_shadow_v10_partial_physical_pins_stay_scoped_hold(self) -> None:
+        snapshot = shadow_snapshot(
+            exact_theorem_pin=None,
+            exact_consumer_pin=None,
+            blocked_features=(
+                "BLOCKED_FEATURE:EXACT_THEOREM_EDGE_UNSELECTED",
+                "BLOCKED_FEATURE:EXACT_CONSUMER_EDGE_UNSELECTED",
+                "RUN",
+                "DISPATCH",
+                "MINT",
+                "STATE_WRITE",
+            ),
+        )
+        summary = node_registry_summary(status="HOLD")
+        summary["code"] = "NODE_REGISTRY_EXACT_EDGE_REQUIRED"
+        with (
+            mock.patch.object(
+                workflow_runtime, "build_shadow_snapshot", return_value=snapshot
+            ),
+            mock.patch.object(
+                workflow_runtime.node_registry_v10,
+                "startup_gate_summary",
+                return_value=summary,
+            ) as registry,
+        ):
+            result = workflow_runtime.live_shadow_plan_v10(
+                Path("/repo"), owned_paths=[]
+            )
+
+        registry.assert_called_once_with(
+            Path("/repo"),
+            snapshot.selected_goal,
+            owned_paths=(),
+            exact_node_pin=None,
+            exact_theorem_pin=None,
+            exact_consumer_pin=None,
+        )
+        self.assertEqual(result["status"], "HOLD")
+        self.assertEqual(
+            result["node_registry"]["code"], "NODE_REGISTRY_EXACT_EDGE_REQUIRED"
+        )
+
+    def test_shadow_v10_output_is_bounded_and_never_authorizes_run(self) -> None:
+        result = workflow_runtime.compile_shadow_plan_v10(
+            startup_snapshot=shadow_snapshot(
+                warnings=["w" * 500] * 20,
+                blocked_features=["blocked"],
+            ),
+            node_registry_summary=node_registry_summary(status="HOLD"),
+            host_executor="CODEX_LINUX",
+        )
+        rendered = workflow_runtime.render_shadow_plan_v10(result)
+        startup_rendered = json.dumps(
+            result["startup"], ensure_ascii=False, indent=2, sort_keys=True
+        )
+        self.assertLessEqual(len(rendered.encode("utf-8")), 8 * 1024)
+        self.assertLessEqual(len(rendered.splitlines()), 150)
+        self.assertLessEqual(len(startup_rendered.encode("utf-8")), 4 * 1024)
+        self.assertLessEqual(len(startup_rendered.splitlines()), 60)
+        self.assertFalse(result["run_authorized"])
+        self.assertEqual(result["status"], "HOLD")
+        self.assertEqual(result["startup"]["warnings_omitted"], 12)
+        self.assertIn(
+            {
+                "feature": "RUN_CLOSE_NODE",
+                "scope": "NODE_REGISTRY_V10_CONSUMPTION",
+                "code": "NODE_REGISTRY_V10_UNAVAILABLE_OR_INVALID",
+            },
+            result["blocked_features"],
+        )
+
+    def test_shadow_v10_preserves_validation_required_as_scoped_hold(self) -> None:
+        registry = node_registry_summary(status="VALIDATION_REQUIRED")
+        registry["code"] = "NODE_REGISTRY_COMMITTED_VALIDATION_STALE"
+        result = workflow_runtime.compile_shadow_plan_v10(
+            startup_snapshot=shadow_snapshot(),
+            node_registry_summary=registry,
+            host_executor="CODEX_LINUX",
+        )
+        self.assertEqual(result["status"], "HOLD")
+        self.assertEqual(result["holds"], [])
+        self.assertEqual(result["node_registry"]["status"], "VALIDATION_REQUIRED")
+        self.assertIn(
+            {
+                "feature": "RUN_CLOSE_NODE",
+                "scope": "NODE_REGISTRY_V10_CONSUMPTION",
+                "code": "NODE_REGISTRY_COMMITTED_VALIDATION_STALE",
+            },
+            result["blocked_features"],
+        )
+
+    def test_shadow_v10_rejects_malformed_snapshot_and_registry_identity(self) -> None:
+        with self.assertRaisesRegex(
+            workflow_runtime.WorkflowRuntimeError,
+            "SHADOW_V10_STARTUP_SNAPSHOT_INVALID",
+        ):
+            workflow_runtime.compile_shadow_plan_v10(
+                startup_snapshot=shadow_snapshot(mode="BATTLE_V10"),
+                node_registry_summary=node_registry_summary(),
+                host_executor="CODEX_LINUX",
+            )
+        malformed = node_registry_summary()
+        malformed["schema"] = "q3_node_registry_gate_summary.v0"
+        result = workflow_runtime.compile_shadow_plan_v10(
+            startup_snapshot=shadow_snapshot(),
+            node_registry_summary=malformed,
+            host_executor="CODEX_LINUX",
+        )
+        self.assertEqual(result["status"], "FATAL")
+        self.assertIn("NODE_REGISTRY_V10_UNAVAILABLE_OR_INVALID", result["holds"])
+
+    def test_default_plan_cli_remains_on_legacy_v9_path(self) -> None:
+        legacy = {"schema": "q3_workflow_plan.v1", "status": "READY"}
+        argv = ["workflow_runtime.py", "--root", "/repo", "plan"]
+        with (
+            mock.patch.object(workflow_runtime.sys, "argv", argv),
+            mock.patch.object(workflow_runtime, "live_plan", return_value=legacy) as live,
+            mock.patch.object(
+                workflow_runtime,
+                "live_shadow_plan_v10",
+                side_effect=AssertionError("default plan entered shadow"),
+            ),
+            mock.patch("builtins.print") as emit,
+        ):
+            status = workflow_runtime.main()
+        self.assertEqual(status, 0)
+        live.assert_called_once()
+        emit.assert_called_once_with(
+            json.dumps(legacy, ensure_ascii=False, indent=2, sort_keys=True)
+        )
+
+    def test_shadow_v10_close_node_cannot_enter_startup_or_deep_gate(self) -> None:
+        shadow = workflow_runtime.compile_shadow_plan_v10(
+            startup_snapshot=shadow_snapshot(),
+            node_registry_summary=node_registry_summary(),
+            host_executor="CODEX_LINUX",
+        )
+        with (
+            mock.patch.object(
+                workflow_runtime, "startup_receipt", side_effect=AssertionError
+            ),
+            mock.patch.object(
+                workflow_runtime.node_registry_v10,
+                "verify_consumption",
+                side_effect=AssertionError,
+            ),
+        ):
+            result = workflow_runtime.execute_close_node(
+                Path("/repo"),
+                plan=shadow,
+                owned_paths=[],
+                query=None,
+                candidate=None,
+                target=None,
+                attempt_payload=None,
+                insight_payload=None,
+                run_kernel=False,
+                protocol_out=None,
+            )
+        self.assertEqual(result["status"], "HOLD")
+        self.assertIn("SHADOW_V10_RUN_AUTHORITY_FORBIDDEN", result["holds"])
+
+    def test_fabricated_battle_v10_authority_cannot_bypass_shadow_block(self) -> None:
+        battle = {
+            "schema": workflow_runtime.SHADOW_PLAN_SCHEMA,
+            "mode": "BATTLE_V10",
+            "status": "READY",
+            "holds": [],
+            "selected_goal": "docs/routeB_bus/058.goal.md",
+            "run_authorized": True,
+        }
+        with (
+            mock.patch.object(
+                workflow_runtime, "startup_receipt", side_effect=AssertionError
+            ),
+            mock.patch.object(
+                workflow_runtime.node_registry_v10,
+                "verify_consumption",
+                side_effect=AssertionError("fabricated authority entered deep gate"),
+            ),
+        ):
+            result = workflow_runtime.execute_close_node(
+                Path("/repo"),
+                plan=battle,
+                owned_paths=[],
+                query=None,
+                candidate=None,
+                target=None,
+                attempt_payload=None,
+                insight_payload=None,
+                run_kernel=False,
+                protocol_out=None,
+            )
+        self.assertIn("SHADOW_V10_RUN_AUTHORITY_FORBIDDEN", result["holds"])
+
     def test_run_holds_on_red_startup_before_any_writer(self) -> None:
         compiled = plan("SELECT_EXACT_GOAL")
         red = {"label": "session-start", "exit": 1, "output_tail": "red"}
@@ -273,10 +662,17 @@ class WorkflowRuntimePlants(unittest.TestCase):
         compiled["logical_plan"]["startup_receipt"] = {
             "label": "session-start", "exit": 0, "output_tail": "green"
         }
-        ok = lambda label: {"label": label, "exit": 0, "output_tail": "ok"}
+        def ok(label: str) -> dict[str, object]:
+            return {"label": label, "exit": 0, "output_tail": "ok"}
+
         with (
             mock.patch.object(workflow_runtime, "_git", return_value=""),
             mock.patch.object(workflow_runtime, "_exists_at_head", return_value=True),
+            mock.patch.object(
+                workflow_runtime.node_registry_v10,
+                "verify_consumption",
+                side_effect=AssertionError("v1 run entered v10 deep gate"),
+            ),
             mock.patch.object(
                 workflow_runtime,
                 "command_receipt",
@@ -306,7 +702,11 @@ class WorkflowRuntimePlants(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             repo = Path(tmp)
             subprocess.run(["git", "init", "-q"], cwd=repo, check=True)
-            subprocess.run(["git", "config", "user.email", "plant@example.invalid"], cwd=repo, check=True)
+            subprocess.run(
+                ["git", "config", "user.email", "plant@example.invalid"],
+                cwd=repo,
+                check=True,
+            )
             subprocess.run(["git", "config", "user.name", "Workflow Plant"], cwd=repo, check=True)
             request = repo / "docs/routeB_bus/proshka/request.txt"
             request.parent.mkdir(parents=True)
@@ -366,7 +766,11 @@ class WorkflowRuntimePlants(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             repo = Path(tmp)
             subprocess.run(["git", "init", "-q"], cwd=repo, check=True)
-            subprocess.run(["git", "config", "user.email", "plant@example.invalid"], cwd=repo, check=True)
+            subprocess.run(
+                ["git", "config", "user.email", "plant@example.invalid"],
+                cwd=repo,
+                check=True,
+            )
             subprocess.run(["git", "config", "user.name", "Workflow Plant"], cwd=repo, check=True)
             request = repo / "request.txt"
             request.write_bytes(
@@ -562,7 +966,9 @@ class WorkflowRuntimePlants(unittest.TestCase):
                 "target": "Q3.RouteB.target",
                 "contract": dependency_contract(),
             }) + "\n", encoding="utf-8")
-            ok = lambda label: {"label": label, "exit": 0, "output_tail": "ok"}
+            def ok(label: str) -> dict[str, object]:
+                return {"label": label, "exit": 0, "output_tail": "ok"}
+
             with (
                 mock.patch.object(workflow_runtime, "_git", return_value=""),
                 mock.patch.object(workflow_runtime, "_exists_at_head", return_value=True),

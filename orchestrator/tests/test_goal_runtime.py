@@ -713,7 +713,7 @@ class GoalRuntimePlants(unittest.TestCase):
                     grant_resolver=broken_resolver,
                 )
 
-    def test_live_repository_selects_058_and_not_paused_057(self) -> None:
+    def test_live_v9_gate_preserves_current_quarantine(self) -> None:
         state = json.loads(three_body_loop.DEFAULT_STATE.read_text(encoding="utf-8"))
         receipts = {}
         for entry in state["entries"]:
@@ -751,12 +751,49 @@ class GoalRuntimePlants(unittest.TestCase):
                     )
                 },
             }
-        decision = goal_runtime.select_action(
-            goal_runtime.DEFAULT_BUS,
-            semantic_attestation_resolver=receipts.get,
-        )
-        self.assertEqual(decision.action, "SELECT_EXACT_GOAL")
-        self.assertEqual(decision.selected_goal_id, "058")
+        pending = [
+            entry["entry_id"]
+            for entry in state["entries"]
+            if entry["status"] in {"SOURCE_WRITTEN", "KERNEL_GREEN"}
+        ]
+        if pending:
+            with self.assertRaisesRegex(
+                goal_runtime.GoalRuntimeError,
+                "SEMANTIC_QUARANTINE_ACTIVE: " + ",".join(pending),
+            ):
+                goal_runtime.select_action(
+                    goal_runtime.DEFAULT_BUS,
+                    semantic_attestation_resolver=receipts.get,
+                )
+        else:
+            decision = goal_runtime.select_action(
+                goal_runtime.DEFAULT_BUS,
+                semantic_attestation_resolver=receipts.get,
+            )
+            self.assertEqual(decision.action, "SELECT_EXACT_GOAL")
+            self.assertEqual(decision.selected_goal_id, "058")
+
+
+    def test_v10_shadow_selector_is_pure_and_numeric_id_is_not_authority(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            bus = root / "docs" / "routeB_bus"
+            bus.mkdir(parents=True)
+            goal_runtime._write_goal(bus, "001", PHASE)
+            goal_runtime._write_goal(bus, "999", PHASE)
+            paused = bus / "999_plant.goal.md"
+            paused.write_text(
+                paused.read_text(encoding="utf-8").replace(
+                    "STATUS: OPEN", "STATUS: PAUSED_RESTORABLE"
+                ),
+                encoding="utf-8",
+            )
+
+            result = goal_runtime.select_v10_shadow_goal(root)
+
+            self.assertEqual(result.selected_goal, "docs/routeB_bus/001_plant.goal.md")
+            self.assertEqual(result.exact_node_pin, "Plant001")
+            self.assertFalse(result.fatal_errors)
 
 
 if __name__ == "__main__":

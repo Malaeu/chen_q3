@@ -30,15 +30,12 @@ REPO = Path(__file__).resolve().parents[1]
 if str(REPO) not in sys.path:
     sys.path.insert(0, str(REPO))
 
-from orchestrator import (  # noqa: E402
-    dependency_registry,
-    proof_loop,
-    research_dependency_contract,
-    roof_port_ledger,
-    session_briefing,
-    spine,
+from orchestrator import node_registry_v10  # noqa: E402
+from orchestrator.startup_runtime import (  # noqa: E402
+    StartupRuntimeError,
+    StartupSnapshot,
+    build_shadow_snapshot,
 )
-from specs_docs import phase_close, session_close  # noqa: E402
 
 TOOLS = Path("docs/cartographer/TOOLS.yaml")
 REGISTRY = Path("docs/cartographer/DERIVED_ARTIFACTS.yaml")
@@ -67,6 +64,12 @@ CANONICAL_CALL_CLASSES = {
 }
 RESEARCH_DEBT_PACKET_SUBTYPE = "RESEARCH_DEBT_CHALLENGE"
 DEPENDENCY_CONTRACT_RECEIPT_SCHEMA = "q3_research_dependency_contract_receipt.v1"
+SHADOW_PLAN_SCHEMA = "q3_workflow_plan.v2"
+SHADOW_PLAN_MAX_BYTES = 8 * 1024
+SHADOW_PLAN_MAX_LINES = 150
+SHADOW_STARTUP_MAX_BYTES = 4 * 1024
+SHADOW_STARTUP_MAX_LINES = 60
+SHADOW_STARTUP_SCHEMA = "q3_startup_snapshot.v10.shadow.v1"
 
 COMMON_TOOLS = (
     "workflow-runtime",
@@ -97,6 +100,182 @@ class WorkflowRuntimeError(RuntimeError):
     pass
 
 
+def _bounded_shadow_values(value: object, *, limit: int = 8) -> tuple[list[str], int]:
+    values = list(value) if isinstance(value, (list, tuple)) else []
+    compact = [str(item)[:160] for item in values[:limit]]
+    return compact, max(0, len(values) - len(compact))
+
+
+def _compact_startup_snapshot(snapshot: StartupSnapshot) -> dict[str, Any]:
+    raw = snapshot.to_dict()
+    if (
+        raw.get("schema") != SHADOW_STARTUP_SCHEMA
+        or raw.get("mode") != "SHADOW_NOT_AUTHORITY"
+        or raw.get("run_authorized") is not False
+        or raw.get("honesty_state") != "CHALLENGER_NOT_RH"
+    ):
+        raise WorkflowRuntimeError("SHADOW_V10_STARTUP_SNAPSHOT_INVALID")
+    fatal_errors, fatal_errors_omitted = _bounded_shadow_values(raw["fatal_errors"])
+    blocked_features, blocked_features_omitted = _bounded_shadow_values(
+        raw["blocked_features"]
+    )
+    warnings, warnings_omitted = _bounded_shadow_values(raw["warnings"])
+    compact = {
+        "schema": raw["schema"],
+        "mode": raw["mode"],
+        "control_sha256": raw["control_sha256"],
+        "control_version": raw["control_version"],
+        "control_status": raw["control_status"],
+        "git_head": raw["git_head"],
+        "git_origin_head": raw["git_origin_head"],
+        "git_tree": raw["git_tree"],
+        "git_dirty": raw["git_dirty"],
+        "selected_goal": raw["selected_goal"],
+        "honesty_state": raw["honesty_state"],
+        "exact_node_pin": raw["exact_node_pin"],
+        "exact_source_pin": raw["exact_source_pin"],
+        "exact_theorem_pin": raw["exact_theorem_pin"],
+        "exact_consumer_pin": raw["exact_consumer_pin"],
+        "fatal_errors": fatal_errors,
+        "fatal_errors_omitted": fatal_errors_omitted,
+        "blocked_features": blocked_features,
+        "blocked_features_omitted": blocked_features_omitted,
+        "warnings": warnings,
+        "warnings_omitted": warnings_omitted,
+        "next_action": str(raw["next_action"])[:320],
+        "run_authorized": False,
+    }
+    rendered = json.dumps(compact, ensure_ascii=False, indent=2, sort_keys=True)
+    if len(rendered.encode("utf-8")) > SHADOW_STARTUP_MAX_BYTES or len(
+        rendered.splitlines()
+    ) > SHADOW_STARTUP_MAX_LINES:
+        raise WorkflowRuntimeError("SHADOW_V10_STARTUP_SUMMARY_LIMIT_EXCEEDED")
+    return compact
+
+
+def _compact_node_registry_summary(summary: dict[str, Any]) -> dict[str, Any]:
+    valid = (
+        summary.get("schema") == node_registry_v10.SUMMARY_SCHEMA
+        and summary.get("status") in {"PASS", "HOLD", "VALIDATION_REQUIRED", "FATAL"}
+        and isinstance(summary.get("code"), str)
+    )
+    compact = {
+        "schema": summary.get("schema"),
+        "status": summary["status"] if valid else "FATAL",
+        "code": (
+            summary["code"]
+            if valid
+            else "NODE_REGISTRY_V10_UNAVAILABLE_OR_INVALID"
+        ),
+        "registry_hash": summary.get("registry_hash"),
+        "node_count": summary.get("node_count"),
+        "edge_count": summary.get("edge_count"),
+        "historical_v9_unmapped": summary.get("historical_v9_unmapped"),
+        "consumption_status": summary.get("consumption_status"),
+    }
+    if summary.get("detail"):
+        compact["detail"] = str(summary["detail"])[:320]
+    return compact
+
+
+def compile_shadow_plan_v10(
+    *,
+    startup_snapshot: StartupSnapshot,
+    node_registry_summary: dict[str, Any],
+    host_executor: str,
+) -> dict[str, Any]:
+    """Compile a bounded read-only v10 observation with no run authority."""
+    startup = _compact_startup_snapshot(startup_snapshot)
+    registry = _compact_node_registry_summary(node_registry_summary)
+    holds = list(startup["fatal_errors"])
+    registry_status = registry["status"]
+    if registry_status == "FATAL":
+        holds.append(str(registry["code"]))
+    if startup["control_status"] != "ACTIVE":
+        holds.append(f"CONTROL_NOT_ACTIVE:{startup['control_status']}")
+    status = "FATAL" if startup["fatal_errors"] or registry_status == "FATAL" else (
+        "HOLD" if holds or registry_status in {"HOLD", "VALIDATION_REQUIRED"} else "READY"
+    )
+    blocked_features = [
+        {
+            "feature": feature,
+            "scope": "SHADOW_V10_EXECUTION",
+            "code": "BLOCKED_BY_DESIGN",
+        }
+        for feature in startup["blocked_features"]
+    ]
+    if registry_status in {"HOLD", "VALIDATION_REQUIRED"}:
+        blocked_features.append(
+            {
+                "feature": "RUN_CLOSE_NODE",
+                "scope": "NODE_REGISTRY_V10_CONSUMPTION",
+                "code": registry["code"],
+            }
+        )
+    return {
+        "schema": SHADOW_PLAN_SCHEMA,
+        "status": status,
+        "mode": "SHADOW_V10_READ_ONLY",
+        "host_executor": host_executor,
+        "startup": startup,
+        "node_registry": registry,
+        "selected_goal": startup["selected_goal"],
+        "holds": sorted(set(holds)),
+        "blocked_features": blocked_features,
+        "run_authorized": False,
+        "writes_performed": False,
+        "legacy_v9_authority_unchanged": True,
+        "PX_RH_CLAIM": "NOT_MADE",
+    }
+
+
+def live_shadow_plan_v10(repo: Path, *, owned_paths: list[str]) -> dict[str, Any]:
+    """Build exactly one startup snapshot and reuse it for the shadow plan."""
+    owned_scope = tuple(owned_paths)
+    snapshot = build_shadow_snapshot(repo, owned_paths=owned_scope)
+    exact_edge_pins = (
+        snapshot.exact_node_pin,
+        snapshot.exact_theorem_pin,
+        snapshot.exact_consumer_pin,
+    )
+    if not all(isinstance(pin, str) and pin for pin in exact_edge_pins):
+        exact_edge_pins = (None, None, None)
+    registry_summary = node_registry_v10.startup_gate_summary(
+        repo,
+        snapshot.selected_goal,
+        owned_paths=owned_scope,
+        exact_node_pin=exact_edge_pins[0],
+        exact_theorem_pin=exact_edge_pins[1],
+        exact_consumer_pin=exact_edge_pins[2],
+    )
+    host = {"Darwin": "CODEX_MAC", "Linux": "CODEX_LINUX"}.get(
+        platform.system(), "UNSUPPORTED_HOST"
+    )
+    return compile_shadow_plan_v10(
+        startup_snapshot=snapshot,
+        node_registry_summary=registry_summary,
+        host_executor=host,
+    )
+
+
+def render_shadow_plan_v10(plan: dict[str, Any]) -> str:
+    rendered = json.dumps(plan, ensure_ascii=False, separators=(",", ":"), sort_keys=True)
+    if len(rendered.encode("utf-8")) > SHADOW_PLAN_MAX_BYTES or len(
+        rendered.splitlines()
+    ) > SHADOW_PLAN_MAX_LINES:
+        fallback = {
+            "schema": SHADOW_PLAN_SCHEMA,
+            "status": "FATAL",
+            "holds": ["SHADOW_V10_OUTPUT_LIMIT_EXCEEDED"],
+            "run_authorized": False,
+            "writes_performed": False,
+            "legacy_v9_authority_unchanged": True,
+            "PX_RH_CLAIM": "NOT_MADE",
+        }
+        return json.dumps(fallback, separators=(",", ":"), sort_keys=True)
+    return rendered
+
+
 def _single_request_header(text: str, field: str) -> tuple[str | None, str | None]:
     matches = re.findall(rf"(?m)^{re.escape(field)}:\s*(\S+)\s*$", text)
     if not matches:
@@ -108,6 +287,8 @@ def _single_request_header(text: str, field: str) -> tuple[str | None, str | Non
 
 def _exploration_review_receipt(runtime: dict[str, Any]) -> dict[str, Any]:
     """Validate and summarize the canonical bounded-exploration call gate."""
+    from orchestrator import spine
+
     try:
         spine.validate_runtime(runtime)
         active = runtime.get("active_exploration")
@@ -185,6 +366,8 @@ def _dependency_contract_receipt(
     candidate: str,
     target: str,
 ) -> dict[str, Any]:
+    from orchestrator import research_dependency_contract
+
     resolved = path if path.is_absolute() else repo / path
     try:
         raw = resolved.read_bytes()
@@ -456,7 +639,11 @@ def goal_assembly_chain(goal_path: str | None) -> str | None:
     path = Path(goal_path)
     if not path.is_file():
         return None
-    match = re.search(r"^ASSEMBLY_CHAIN:\s*([^\s]+)\s*$", path.read_text(encoding="utf-8"), re.MULTILINE)
+    match = re.search(
+        r"^ASSEMBLY_CHAIN:\s*([^\s]+)\s*$",
+        path.read_text(encoding="utf-8"),
+        re.MULTILINE,
+    )
     return match.group(1) if match else None
 
 
@@ -528,6 +715,8 @@ def compile_plan(
     roof_ledger_snapshot: dict[str, Any] | None = None,
     route: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
+    from orchestrator import proof_loop
+
     action = str(goal_binding.get("action", "HOLD"))
     requested = list(dict.fromkeys((*COMMON_TOOLS, *ACTION_TOOLS.get(action, ()))))
     selected: list[dict[str, Any]] = []
@@ -630,6 +819,14 @@ def live_plan(
     owned_paths: list[str],
     through: str,
 ) -> dict[str, Any]:
+    from orchestrator import (
+        dependency_registry,
+        proof_loop,
+        roof_port_ledger,
+        session_briefing,
+    )
+    from specs_docs import phase_close, session_close
+
     binding, selector_hold = selector_binding(
         repo,
         next_goal_spec=next_goal_spec,
@@ -637,7 +834,9 @@ def live_plan(
     )
     statuses = dependency_registry.statuses(repo, repo / REGISTRY, consumer="workflow-plan")
     owned, foreign = session_close.dirty_split(repo, owned_paths)
-    host = {"Darwin": "CODEX_MAC", "Linux": "CODEX_LINUX"}.get(platform.system(), "UNSUPPORTED_HOST")
+    host = {"Darwin": "CODEX_MAC", "Linux": "CODEX_LINUX"}.get(
+        platform.system(), "UNSUPPORTED_HOST"
+    )
     route = session_briefing.snapshot(repo)["route"]
     startup = startup_receipt(repo)
     selected_goal = binding.get("selected_goal_path") or route.get("selected_goal_path")
@@ -700,11 +899,21 @@ def execute_close_node(
     dependency_contract_receipt: Path | None = None,
 ) -> dict[str, Any]:
     receipts: list[dict[str, Any]] = []
-    startup = plan.get("logical_plan", {}).get("startup_receipt") or startup_receipt(repo)
+    is_v10 = plan.get("schema") == SHADOW_PLAN_SCHEMA
+    if is_v10:
+        startup = {
+            "label": "v10-startup-snapshot",
+            "exit": 0 if plan.get("status") == "READY" else 2,
+            "output_tail": str(plan.get("status")),
+        }
+    else:
+        startup = plan.get("logical_plan", {}).get("startup_receipt") or startup_receipt(repo)
     receipts.append(startup)
     holds = list(plan.get("holds", []))
     if startup["exit"] != 0:
         holds.append(f"START_GATE_FAILED:{startup['exit']}")
+    if is_v10:
+        holds.append("SHADOW_V10_RUN_AUTHORITY_FORBIDDEN")
     if not owned_paths:
         holds.append("OWNED_SCOPE_REQUIRED")
     if attempt_payload is None:
@@ -746,7 +955,13 @@ def execute_close_node(
     if run_kernel:
         for path in owned_paths:
             if path.endswith(".lean") and path.startswith("q3.lean.aristotle/"):
-                receipts.append(command_receipt(repo, ["bash", "scripts/q3_check.sh", path], label=f"kernel:{path}"))
+                receipts.append(
+                    command_receipt(
+                        repo,
+                        ["bash", "scripts/q3_check.sh", path],
+                        label=f"kernel:{path}",
+                    )
+                )
     elif any(path.endswith(".lean") for path in owned_paths):
         holds.append("KERNEL_GATE_REQUIRED")
     if any(item.get("exit", 0) != 0 for item in receipts):
@@ -771,7 +986,17 @@ def execute_close_node(
     return {
         "schema": "q3_workflow_run.v1",
         "status": "HOLD" if failed or holds else "CLOSED_NODE",
-        "holds": sorted(set([*holds, *(f"COMMAND_FAILED:{item['label']}:{item['exit']}" for item in failed)])),
+        "holds": sorted(
+            set(
+                [
+                    *holds,
+                    *(
+                        f"COMMAND_FAILED:{item['label']}:{item['exit']}"
+                        for item in failed
+                    ),
+                ]
+            )
+        ),
         "plan": plan,
         "receipts": receipts,
         "changed_paths_before": before.splitlines(),
@@ -788,7 +1013,10 @@ def _add_plan_options(parser: argparse.ArgumentParser) -> None:
 
 
 def _run_close_script(repo: Path, script: str, forwarded: list[str]) -> int:
-    return subprocess.run([sys.executable, str(repo / script), "--root", str(repo), *forwarded], cwd=repo).returncode
+    return subprocess.run(
+        [sys.executable, str(repo / script), "--root", str(repo), *forwarded],
+        cwd=repo,
+    ).returncode
 
 
 def main() -> int:
@@ -797,6 +1025,7 @@ def main() -> int:
     subparsers = parser.add_subparsers(dest="command", required=True)
     plan_parser = subparsers.add_parser("plan")
     _add_plan_options(plan_parser)
+    plan_parser.add_argument("--shadow-v10", action="store_true")
     run_parser = subparsers.add_parser("run")
     run_parser.add_argument("--through", choices=["close-node"], required=True)
     _add_plan_options(run_parser)
@@ -844,6 +1073,32 @@ def main() -> int:
         return 0 if result.get("status") == "REVIEW_DISPATCH_READY" else 2
     if forwarded:
         parser.error("unrecognized arguments: " + " ".join(forwarded))
+    if args.command == "plan" and args.shadow_v10:
+        try:
+            result = live_shadow_plan_v10(repo, owned_paths=args.owned_path)
+        except (
+            WorkflowRuntimeError,
+            StartupRuntimeError,
+            node_registry_v10.NodeRegistryError,
+            KeyError,
+            OSError,
+            subprocess.CalledProcessError,
+            TypeError,
+        ) as exc:
+            result = {
+                "schema": SHADOW_PLAN_SCHEMA,
+                "status": "FATAL",
+                "mode": "SHADOW_V10_READ_ONLY",
+                "holds": [f"SHADOW_V10_UNAVAILABLE:{type(exc).__name__}:{exc}"],
+                "run_authorized": False,
+                "writes_performed": False,
+                "legacy_v9_authority_unchanged": True,
+                "PX_RH_CLAIM": "NOT_MADE",
+            }
+        print(render_shadow_plan_v10(result))
+        return 0 if result.get("status") == "READY" else 2
+    from orchestrator import dependency_registry
+
     through = "close-node" if args.command == "run" else "plan"
     try:
         plan = live_plan(
@@ -869,7 +1124,11 @@ def main() -> int:
             )
             if args.command == "run" else plan
         )
-    except (WorkflowRuntimeError, dependency_registry.DependencyRegistryError, subprocess.CalledProcessError) as exc:
+    except (
+        WorkflowRuntimeError,
+        dependency_registry.DependencyRegistryError,
+        subprocess.CalledProcessError,
+    ) as exc:
         result = {"schema": "q3_workflow_plan.v1", "status": "HOLD", "holds": [str(exc)]}
     print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
     return 0 if result.get("status") in {"READY", "CLOSED_NODE"} else 2
