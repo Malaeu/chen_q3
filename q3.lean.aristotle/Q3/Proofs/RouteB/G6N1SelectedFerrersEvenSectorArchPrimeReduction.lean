@@ -345,6 +345,37 @@ theorem sourceCCMFiniteMatrix_shifted_floor_of_archPrimeShifted_floor_even
   have hw := ccmW02Quadratic_re_nonneg_of_reflection_even i x hx
   linarith
 
+/-- Reachability plant for the exact selected Arch-Prime antecedent shape.
+The zero vector inhabits the literal reflection-even row complement and makes
+the pointwise shifted inequality an equality for every scalar.  This proves
+only pointwise non-vacuity of the carrier and equations; it is not the open
+eventual uniform positive-floor supplier. -/
+private theorem selectedFerrersArchPrimeShifted_zero_reachability_plant
+    (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData)
+    (k : ℕ) (beta : ℝ) :
+    ∃ x : CCMModeFinite
+        ((selectedFerrersCofinalSourceData P).index k).N → ℂ,
+      ccmComplexReflectionMatrix
+          ((selectedFerrersCofinalSourceData P).index k).N *ᵥ x = x ∧
+      star ((2⁻¹ : ℂ) •
+        (selectedFerrersFiniteCCMRow P k +
+          ccmComplexReflectionMatrix
+            ((selectedFerrersCofinalSourceData P).index k).N *ᵥ
+              selectedFerrersFiniteCCMRow P k)) ⬝ᵥ x = 0 ∧
+      beta * (star x ⬝ᵥ x).re ≤
+        (sourceArchPrimeSesquilinearForm
+            ((selectedFerrersCofinalSourceData P).index k)
+            (ccmFiniteShiftedFormDomainSynthesis
+              ((selectedFerrersCofinalSourceData P).index k) x)
+            (ccmFiniteShiftedFormDomainSynthesis
+              ((selectedFerrersCofinalSourceData P).index k) x) -
+          (((selectedFerrersFiniteCCMRayleigh P k : ℝ) : ℂ) *
+            (star x ⬝ᵥ x))).re := by
+  refine ⟨0, ?_, ?_, ?_⟩
+  · simp
+  · simp [dotProduct]
+  · simp
+
 theorem selectedFerrersFiniteCCMEvenSectorFloor_eventually_of_archPrimeShifted
     (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData)
     (beta : ℝ)
