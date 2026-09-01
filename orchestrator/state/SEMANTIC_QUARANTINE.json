@@ -130,7 +130,9 @@
       ]
     },
     {
-      "admitted_scope": [],
+      "admitted_scope": [
+        "D0PSTAR_SOURCE_WEIL_EVEN_TAIL_EXPLICIT_UNSHIFTED_COERCIVITY"
+      ],
       "closes": [
         "D0PSTAR_SOURCE_WEIL_EVEN_TAIL_EXPLICIT_UNSHIFTED_COERCIVITY"
       ],
@@ -146,11 +148,11 @@
         "FINITE_EVEN_HEAD_SCHUR_MARGIN"
       ],
       "quantifiers": "for every PairIndex i and every vector in the closed source-Weil nonzero-even graph tail after sourceWeilEvenTailCutoff i; one half times the squared ambient norm is at most the real part of the unshifted source-Weil quadratic form",
-      "semantic_attestation_id": null,
+      "semantic_attestation_id": "ATTEST_GOAL058_D0PSTAR_SOURCE_WEIL_EVEN_TAIL_EXPLICIT_COERCIVITY_20260901_V1",
       "source_commit": "7ee47b0b476c5e9ede031bba81769a43f8585b38",
       "source_git_blob": "1c61823b4eff8790a40e86d0a0f1a13630a0721a",
       "source_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
-      "status": "KERNEL_GREEN",
+      "status": "SEMANTICALLY_ADMITTED",
       "task_blob": "686b4854333f85df9b30e383513cf873336e6251",
       "task_path": "docs/Codex/TASK_2026-09-01_goal058_even_tail_explicit_coercivity.md",
       "terminal_consumer": "eventual uniform selected Ferrers reflection-even sector floor at the literal selected Rayleigh shift, as consumed by selectedFerrersFiniteCCMComplementFloor_eventually_of_sectorFloors_weightedResidual",
