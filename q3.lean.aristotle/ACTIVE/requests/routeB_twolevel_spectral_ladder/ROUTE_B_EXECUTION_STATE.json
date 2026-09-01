@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v3_live_bus",
-  "updated_at": "2026-08-31T15:12:13+02:00",
+  "updated_at": "2026-09-01T19:16:45+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": ".",
   "architecture": {
@@ -10,21 +10,38 @@
     "route_b_rh_status": "NOT_RH",
     "root_implementation_plan_overridden": false
   },
-  "operational_status": "GOAL_058_EVEN_HEAD_TAIL_FESHBACH_RERANK_HOLD",
+  "operational_status": "GOAL_058_DIRECT_SELECTED_N_EVEN_TAIL_COERCIVITY_PREFLIGHT",
   "current": {
-    "stage_id": "RB-GOAL-058-EVEN-HEAD-TAIL-FESHBACH-RERANK",
-    "contract_obligation": "SELECTED_FERRERS_EVEN_SECTOR_UNIFORM_COERCIVITY_OR_FESHBACH",
-    "name": "Goal058SelectedFerrersEvenHeadTailFeshbach",
-    "status": "HOLD_RESEARCH_DEBT",
-    "stop_code": "HOLD_SELECTED_FERRERS_EVEN_HEAD_TAIL_FESHBACH_NO_SELECTED_SHIFT_PACKAGE",
+    "stage_id": "RB-GOAL-058-DIRECT-SELECTED-N-EVEN-TAIL-COERCIVITY",
+    "contract_obligation": "DIRECT_SELECTED_N_EVEN_TAIL_COERCIVITY",
+    "name": "Goal058DirectSelectedNEvenTailCoercivity",
+    "status": "ACTIVE_SUPPLIER_PREFLIGHT",
+    "stop_code": "NONE",
     "selected_bus_goal_nnn": "058",
     "selected_bus_goal_path": "docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md",
-    "next_required_actor": "OWNER_NEW_MATHEMATICS_OR_SOURCE",
-    "next_action": "Reopen only with a source-defined selected even-tail coercivity and positive Schur-margin package at the exact selected Rayleigh shift on the precommitted cofinal schedule, or a strictly weaker direct-consumer theorem with an exact implication. Do not substitute the odd-tail fixed-shift package, Galerkin residual, prolate gap, finite cells, promote Route B, or claim RH.",
+    "next_required_actor": "CODEX",
+    "next_action": "Run the exact supplier preflight for direct coercivity on the literal selected-N even carrier, then derive or kill the weakest source-faithful form estimate consumed by the selected even-sector floor. Keep adaptive cutoff domination and the finite-head corrected Schur margin separate; do not reuse the dead fixed-cutoff transfer, promote Route B, or claim RH.",
     "route_promotion": false,
     "rh_claimed": false
   },
   "terminal_history": {
+    "goal_058_selected_fixed_even_tail_cutoff_obstruction": {
+      "classification": "GOAL058_SELECTED_FIXED_EVEN_TAIL_TRANSFER_KILLED",
+      "status": "CLOSED_MATHEMATICALLY_DEAD_FIXED_PREMISE_ONLY",
+      "proof_commit": "bed49f3a0646d2e7d7636ef1d1d7e0978b65d060",
+      "admission_commit": "2db4c33daf7b55851cb2d793272c893bf4645eae",
+      "closeout_path": "docs/routeB_bus/CODEX_CLOSEOUT_GOAL058_SELECTED_FIXED_EVEN_TAIL_CUTOFF_OBSTRUCTION_2026-09-01.md",
+      "theorem": "Q3.RouteB.D0Pstar.selectedFerrersPreAnchorIndex_not_cutoff_le_N",
+      "exact_result": "FOR_ALL_K_SELECTED_N_STRICTLY_LT_FIXED_SOURCE_WEIL_EVEN_TAIL_CUTOFF",
+      "independent_review": "CODEX_SUBAGENT_ADMIT_ZERO_SEMANTIC_FINDINGS",
+      "attestation_id": "ATTEST_GOAL058_SELECTED_FIXED_EVEN_TAIL_CUTOFF_OBSTRUCTION_20260901_V1",
+      "autopsy_tag": "LOCALIZATION",
+      "next_selected_node": "DIRECT_SELECTED_N_EVEN_TAIL_COERCIVITY",
+      "adaptive_cutoff_status": "OPEN_NOT_KILLED",
+      "finite_head_schur_status": "OPEN_LOAD_BEARING",
+      "route_promotion": false,
+      "rh_claimed": false
+    },
     "goal_058_even_head_tail_feshbach_rerank": {
       "classification": "GOAL058_EVEN_HEAD_TAIL_FESHBACH_RERANK_HOLD",
       "status": "HOLD_CURRENT_EXECUTABLE_SHELF_MATHEMATICAL_TARGET_OPEN",

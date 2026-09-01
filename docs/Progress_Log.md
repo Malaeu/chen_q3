@@ -40,6 +40,40 @@
 
 ---
 
+## 2026-09-01 — фиксированный cutoff убит, выбран direct selected-N
+
+**Развилка:** переносить готовую explicit even-tail coercivity через
+фиксированный `sourceWeilEvenTailCutoff <= N`, строить adaptive cutoff или
+атаковать форму прямо на literal selected-`N` carrier.
+
+**Выбрали:** закрыть fixed transfer как математически мёртвый и следующим
+узлом взять `DIRECT_SELECTED_N_EVEN_TAIL_COERCIVITY`.
+
+**Почему:** Lean доказал строгую противоположность требуемой посылке на каждой
+selected-клетке: `N < cutoff`. Direct selected-`N` — слабейший интерфейс,
+который уже совпадает с carrier потребителя и не добавляет отдельный долг
+`R_k <= N_k`.
+
+**Что отвергли и почему:** фиксированный transfer отвергнут доказанным
+контрнеравенством. Adaptive cutoff не убит, но отложен: он добавляет новый
+объект и domination/crosswalk до того, как доказана необходимость этой цены.
+
+**Техника:** `BOUNDARY_CASE` плюс central-mode operator-norm lower bound;
+точная selected schedule `m=N=k+2`; независимая semantic attestation.
+
+**Следующий ход:** complete-shelf supplier preflight для weakest direct
+selected-`N` coercivity, затем один source-faithful decisive test.
+
+**Адреса:**
+`q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSelectedFerrersEvenTailCutoffObstruction.lean`;
+`docs/routeB_bus/CODEX_CLOSEOUT_GOAL058_SELECTED_FIXED_EVEN_TAIL_CUTOFF_OBSTRUCTION_2026-09-01.md`;
+admission `2db4c33d`.
+
+**Чей вердикт и аргумент:** Codex + независимый Codex subagent. Аргумент:
+квантор универсальный, направление строгое `N < cutoff`, поэтому закрывается
+только fixed-premise transfer; adaptive и direct finite-carrier методы не
+затронуты.
+
 ## 2026-08-28 — консолидация вперёд R1: сперва закрепить, потом идти
 
 **Развилка:** после того как вердикт `8aff714d` поставил
