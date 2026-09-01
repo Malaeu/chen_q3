@@ -249,7 +249,10 @@
       ]
     },
     {
-      "admitted_scope": [],
+      "admitted_scope": [
+        "FIXED_SOURCE_WEIL_EVEN_TAIL_CUTOFF_LE_SELECTED_FERRERS_N",
+        "FIXED_SOURCE_WEIL_EVEN_TAIL_DIRECT_TRANSFER_VIA_CUTOFF_LE_N"
+      ],
       "closes": [
         "FIXED_SOURCE_WEIL_EVEN_TAIL_CUTOFF_LE_SELECTED_FERRERS_N",
         "FIXED_SOURCE_WEIL_EVEN_TAIL_DIRECT_TRANSFER_VIA_CUTOFF_LE_N"
@@ -266,11 +269,11 @@
         "FINITE_EVEN_HEAD_CORRECTED_SCHUR_MARGIN_AT_EXACT_RAYLEIGH_SHIFT"
       ],
       "quantifiers": "for every natural k, the selected carrier endpoint N is strictly less than sourceWeilEvenTailCutoff at selectedFerrersPreAnchorIndex k, hence the fixed premise cutoff less than or equal to N is false on every selected cell",
-      "semantic_attestation_id": null,
+      "semantic_attestation_id": "ATTEST_GOAL058_SELECTED_FIXED_EVEN_TAIL_CUTOFF_OBSTRUCTION_20260901_V1",
       "source_commit": "32cccfcd7717c1734044ac16ed97724d4a480a1b",
       "source_git_blob": "8b9b1d38a91b549819b7193ccfd9d7075e65575e",
       "source_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSelectedFerrersEvenTailCutoffObstruction.lean",
-      "status": "KERNEL_GREEN",
+      "status": "SEMANTICALLY_ADMITTED",
       "task_blob": "7839d0d8fe4610bcb0909572697a9dd9e9cd85fc",
       "task_path": "docs/Codex/TASK_2026-09-01_goal058_selected_fixed_even_tail_cutoff_obstruction.md",
       "terminal_consumer": "the selected finite reflection-even tail transfer requiring sourceWeilEvenTailCutoff i less than or equal to i.N before the exact selected Rayleigh-shifted finite-sector floor",
