@@ -1,9 +1,9 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 377,
-  "declarations": 4175,
-  "in_docs": 2068,
+  "files_scanned": 378,
+  "declarations": 4178,
+  "in_docs": 2071,
   "in_lemma_db": 4091,
   "orphans": 40,
   "uncatalogued": 40,
@@ -15896,6 +15896,36 @@
       "signature": "theorem selectedProjectedMellinCoordinate_eq_selectedRawTransformCoordinate (S : ProlateCanonicalSourceData) (k : ℕ) (z : ℂ) : selectedProjectedMellinCoordinate S k z = selectedRawTransformCoordinate S k z",
       "in_docs": true,
       "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceW02AmbientContinuousSesquilinearForm_norm_lower",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSelectedFerrersEvenTailCutoffObstruction.lean",
+      "line": 30,
+      "signature": "theorem sourceW02AmbientContinuousSesquilinearForm_norm_lower (i : PairIndex) : 2 * L_m i ≤ ‖sourceW02AmbientContinuousSesquilinearForm i‖",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersPreAnchorIndex_N_lt_sourceWeilEvenTailCutoff",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSelectedFerrersEvenTailCutoffObstruction.lean",
+      "line": 78,
+      "signature": "theorem selectedFerrersPreAnchorIndex_N_lt_sourceWeilEvenTailCutoff (k : ℕ) : (selectedFerrersPreAnchorIndex k).N < sourceWeilEvenTailCutoff (selectedFerrersPreAnchorIndex k)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersPreAnchorIndex_not_cutoff_le_N",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSelectedFerrersEvenTailCutoffObstruction.lean",
+      "line": 146,
+      "signature": "theorem selectedFerrersPreAnchorIndex_not_cutoff_le_N (k : ℕ) : ¬ sourceWeilEvenTailCutoff (selectedFerrersPreAnchorIndex k) ≤ (selectedFerrersPreAnchorIndex k).N",
+      "in_docs": true,
+      "in_lemma_db": false,
       "orphan": false
     },
     {
