@@ -8,8 +8,8 @@ canonical_branch: rh_clean
 control: docs/CODEX_CONTROL.md
 tool_manifest: docs/cartographer/TOOLS.yaml
 workflow_front_door: orchestrator/workflow_runtime.py
-inventory_snapshot_date: 2026-08-30
-registered_tools: 55
+inventory_snapshot_date: 2026-09-01
+registered_tools: 56
 route_promotion_authorized: false
 PX_RH_CLAIM: NOT_MADE
 ```
@@ -67,6 +67,12 @@ python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb
 Тот же вход печатает delta-aware Route B briefing, ранжирует reopenable
 `RESEARCH_DEBT` и предлагает выбрать, готовить ли сегодня challenge; внешний
 поиск и отправка автоматически не запускаются.
+
+Перед любым математическим narrowing startup также строит read-only
+`q3_roof_port_supplier_ledger.v1`: шесть semantic slots, семь прямых proof
+inputs и все bundled fields одного `CanonicalApproximation C`. Legacy assembly
+counts выводятся только как bookkeeping строк, не как процент доказательства;
+условный roof-wrapper с незаполненными premises исключается из roof closure.
 
 `research-debt-challenge` — read-only генератор packet subtype. Он требует
 consumer Y, минимальный достаточный интерфейс Z, necessity audit для X,
@@ -232,7 +238,7 @@ Q3_CONTROL_V9_MAC_TRACKED_RECEIPT_FALLBACK=1 bash specs_docs/session_start.sh
 ## 7. Зарегистрированный инвентарь
 
 Единственный routable inventory — docs/cartographer/TOOLS.yaml. На снимке
-2026-08-30 зарегистрировано 55 инструментов: 48 ENABLED, 6 AVAILABLE и 1 DEGRADED.
+2026-09-01 зарегистрировано 56 инструментов: 49 ENABLED, 6 AVAILABLE и 1 DEGRADED.
 Сотни вспомогательных scripts, tests и one-shot probes на диске не становятся
 автоматически routable: для рождения инструмента нужен полный manifest contract.
 
@@ -242,6 +248,7 @@ Q3_CONTROL_V9_MAC_TRACKED_RECEIPT_FALLBACK=1 bash specs_docs/session_start.sh
 ```yaml registered_tool_ids
 - codex-session-start
 - routeb-session-briefing
+- roof-port-supplier-ledger
 - routeb-session-checkpoint
 - research-debt-challenge
 - research-dependency-gate

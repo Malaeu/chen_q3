@@ -8,7 +8,7 @@ from pathlib import Path
 
 import yaml
 
-from orchestrator import research_dependency_projection, session_briefing
+from orchestrator import research_dependency_projection, roof_port_ledger, session_briefing
 from scripts import q3_docs_corpus
 
 
@@ -126,22 +126,73 @@ class SessionBriefingPlants(unittest.TestCase):
         self.assertFalse(tools["routeb-session-briefing"]["writes"])
         self.assertTrue(tools["routeb-session-checkpoint"]["writes"])
         self.assertFalse(tools["research-debt-challenge"]["writes"])
+        self.assertFalse(tools["roof-port-supplier-ledger"]["writes"])
 
     def test_battle_brief_is_the_first_session_surface(self) -> None:
         assembly = session_briefing.proof_loop.assembly_snapshot(
             session_briefing.REPO / session_briefing.ASSEMBLY_DB
         )
         totals = assembly["global"]
+        roof = roof_port_ledger.build(
+            session_briefing.REPO,
+            session_briefing.REPO / session_briefing.ASSEMBLY_DB,
+        )
         rendered = session_briefing.render_briefing(
             session_briefing.REPO,
             today=dt.date(2026, 8, 31),
         )
         self.assertTrue(rendered.startswith("Q3 PROOF LOOP — BATTLE BRIEF\n"))
         self.assertIn(
-            f"  cords: {totals['fixed']}/{totals['total']} fixed · "
-            f"proved {totals['proved']} · validation {totals['validation']} · "
-            f"{totals['open']} open\n",
+            f"  assembly bookkeeping (not proof %): fixed rows "
+            f"{totals['fixed']}/{totals['total']} · READY rows {totals['proved']} · "
+            f"validation {totals['validation']} · open rows {totals['open']}\n",
             rendered,
+        )
+        self.assertIn(
+            f"  roof ports: 0/7 jointly bound · "
+            f"{roof['port_summary']['candidate_supplier_terms']} candidate suppliers · "
+            f"{roof['port_summary']['without_exact_supplier']} without exact supplier\n",
+            rendered,
+        )
+        self.assertEqual(roof["semantic_slot_count"], 6)
+        self.assertEqual(roof["direct_proof_input_count"], 7)
+        self.assertEqual(roof["proof_percentage_interpretation"], "REJECTED")
+        self.assertEqual(roof["integrity_status"], "HEAD_LOCKED")
+        self.assertTrue(roof["assembly_bookkeeping"]["quarantined_edges"])
+        self.assertIn(
+            "  roof quarantine: 1 legacy fixed edge(s) excluded from roof closure\n",
+            rendered,
+        )
+        self.assertIn(
+            "  candidate roof ports: hH1, hanchor, hMontel, hS2\n", rendered
+        )
+        self.assertIn("  no exact supplier: hH2a, hS1, h510\n", rendered)
+        expected_port_fields = {
+            "exact_type",
+            "bundled_context",
+            "downstream_consumer",
+            "supplier_term",
+            "adapters",
+            "shared_unifier",
+            "source_family",
+            "normalization",
+            "scope",
+            "verifier",
+            "axioms",
+            "status",
+            "unused_incoming_edges",
+            "missing_obligation",
+        }
+        self.assertEqual({row["port"] for row in roof["ports"]}, {
+            "hH1", "hH2a", "hanchor", "hS1", "hMontel", "h510", "hS2"
+        })
+        for row in roof["ports"]:
+            self.assertTrue(expected_port_fields.issubset(row))
+        montel = next(row for row in roof["ports"] if row["port"] == "hMontel")
+        self.assertEqual(montel["semantic_role"], "MONTEL_ASSEMBLY_BEAM_NOT_SEVENTH_SLOT")
+        self.assertEqual(
+            roof["closed_audit_gap"],
+            "EXACT_ROOF_PORT_TO_SUPPLIER_LEDGER_AT_CURRENT_HEAD",
         )
         self.assertIn("  loop: contract → suppliers → preflight → bridge → Lean → close → recompute\n", rendered)
 

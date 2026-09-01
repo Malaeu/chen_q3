@@ -162,6 +162,31 @@ class WorkflowRuntimePlants(unittest.TestCase):
         self.assertEqual(loop["next_joint"]["status"], "CONTRACT_REQUIRED")
         self.assertTrue(loop["recompute_after_close"])
         self.assertEqual(loop["PX_RH_CLAIM"], "NOT_MADE")
+        self.assertEqual(
+            loop["roof_port_ledger"]["proof_percentage_interpretation"],
+            "REJECTED",
+        )
+
+    def test_invalid_roof_ledger_holds_runtime_fail_closed(self) -> None:
+        result = workflow_runtime.compile_plan(
+            goal_binding={"action": "SELECT_EXACT_GOAL"},
+            selector_hold=None,
+            tool_index=tool_index(),
+            derived_status=[{"artifact_id": "inventory", "status": "FRESH"}],
+            assembly_debt=[],
+            owned_dirty=[],
+            foreign_dirty=[],
+            fingerprints={},
+            host_executor="CODEX_MAC",
+            roof_ledger_snapshot={
+                "integrity_status": "INVALID",
+                "integrity_reasons": ["ROOF_SIGNATURE_DRIFT"],
+            },
+        )
+        self.assertEqual(result["status"], "HOLD")
+        self.assertIn(
+            "ROOF_PORT_LEDGER_INVALID:ROOF_SIGNATURE_DRIFT", result["holds"]
+        )
 
     def test_host_changes_executor_not_logical_plan(self) -> None:
         mac = plan("SELECT_EXACT_GOAL", host="CODEX_MAC")

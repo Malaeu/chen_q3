@@ -69,7 +69,11 @@ def goal_assembly_chain(goal_path: Path | None) -> str | None:
 
 
 def assembly_snapshot(db_path: Path, *, chain: str | None = None) -> dict[str, Any]:
-    """Return exact read-only cord counts and open assembly addresses."""
+    """Return read-only legacy assembly bookkeeping and open addresses.
+
+    These row counts are never a proof percentage.  Exact roof closure lives in
+    ``roof_port_ledger`` and requires seven terms under one dependent context.
+    """
     empty = {
         "status": "UNAVAILABLE",
         "global": {
@@ -81,6 +85,7 @@ def assembly_snapshot(db_path: Path, *, chain: str | None = None) -> dict[str, A
         },
         "selected_chain": None,
         "open_joints": [],
+        "interpretation": "BOOKKEEPING_ONLY_NOT_PROOF_PERCENTAGE",
     }
     if not db_path.is_file():
         return dict(empty, reason="ASSEMBLY_DB_MISSING")
@@ -160,6 +165,7 @@ def assembly_snapshot(db_path: Path, *, chain: str | None = None) -> dict[str, A
         },
         "selected_chain": selected,
         "open_joints": joints,
+        "interpretation": "BOOKKEEPING_ONLY_NOT_PROOF_PERCENTAGE",
     }
 
 
@@ -189,6 +195,7 @@ def compile_contract(
     holds: list[str],
     assembly_debt: list[str],
     assembly: dict[str, Any] | None = None,
+    roof_ledger: dict[str, Any] | None = None,
     route: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Compile one honest operating card without inventing a theorem contract."""
@@ -277,6 +284,20 @@ def compile_contract(
             "selector_action": action,
         },
         "cords": assembly,
+        "roof_port_ledger": roof_ledger or {
+            "schema": "q3_roof_port_supplier_ledger.v1",
+            "integrity_status": "UNAVAILABLE",
+            "semantic_slot_count": 6,
+            "direct_proof_input_count": 7,
+            "port_summary": {
+                "jointly_bound": None,
+                "candidate_supplier_terms": None,
+                "without_exact_supplier": None,
+                "total": 7,
+                "status": "UNAVAILABLE",
+            },
+            "proof_percentage_interpretation": "REJECTED",
+        },
         "exact_consumer_contract": exact_contract,
         "next_joint": joint,
         "selection_cost_factors": list(SELECTION_COST_FACTORS),
@@ -290,27 +311,52 @@ def compile_contract(
 
 def render_battle_brief(contract: dict[str, Any]) -> str:
     cords = contract.get("cords", {}).get("global", {})
+    roof = contract.get("roof_port_ledger", {})
+    port_summary = roof.get("port_summary", {})
     frontier = contract.get("verified_frontier", {})
     exact = contract.get("exact_consumer_contract", {})
     joint = contract.get("next_joint", {})
     selected_chain = frontier.get("selected_chain")
+    ports = roof.get("ports") or []
+    candidate_ports = [row.get("port") for row in ports if row.get("supplier_term")]
+    no_supplier_ports = [row.get("port") for row in ports if not row.get("supplier_term")]
     if isinstance(selected_chain, dict):
         frontier_text = (
             f"{selected_chain.get('chain')} · {selected_chain.get('fixed')}/"
-            f"{selected_chain.get('total')} fixed"
+            f"{selected_chain.get('total')} fixed rows"
         )
     else:
         frontier_text = frontier.get("status", "UNBOUND")
     lines = [
         "Q3 PROOF LOOP — BATTLE BRIEF",
         (
-            "  cords: "
+            "  assembly bookkeeping (not proof %): fixed rows "
             f"{cords.get('fixed') if cords.get('fixed') is not None else '—'}/"
-            f"{cords.get('total') if cords.get('total') is not None else '—'} fixed · "
-            f"proved {cords.get('proved') if cords.get('proved') is not None else '—'} · "
+            f"{cords.get('total') if cords.get('total') is not None else '—'} · "
+            f"READY rows {cords.get('proved') if cords.get('proved') is not None else '—'} · "
             f"validation {cords.get('validation') if cords.get('validation') is not None else '—'} · "
-            f"{cords.get('open') if cords.get('open') is not None else '—'} open"
+            f"open rows {cords.get('open') if cords.get('open') is not None else '—'}"
         ),
+        (
+            "  roof ports: "
+            f"{port_summary.get('jointly_bound') if port_summary.get('jointly_bound') is not None else '—'}/"
+            f"{port_summary.get('total', 7)} jointly bound · "
+            f"{port_summary.get('candidate_supplier_terms') if port_summary.get('candidate_supplier_terms') is not None else '—'} candidate suppliers · "
+            f"{port_summary.get('without_exact_supplier') if port_summary.get('without_exact_supplier') is not None else '—'} without exact supplier"
+        ),
+        (
+            "  roof contract: "
+            f"{roof.get('semantic_slot_count', 6)} semantic slots · "
+            f"{roof.get('direct_proof_input_count', 7)} direct proof inputs · "
+            f"{roof.get('integrity_status', 'UNAVAILABLE')}"
+        ),
+        (
+            "  roof quarantine: "
+            f"{len(roof.get('assembly_bookkeeping', {}).get('quarantined_edges', []))} "
+            "legacy fixed edge(s) excluded from roof closure"
+        ),
+        f"  candidate roof ports: {', '.join(candidate_ports) if candidate_ports else '—'}",
+        f"  no exact supplier: {', '.join(no_supplier_ports) if no_supplier_ports else '—'}",
         f"  live goal: {frontier.get('selected_goal_id') or '—'}",
         f"  verified frontier: {frontier_text}",
         f"  active dependency root: {frontier.get('active_dependency_root') or '—'}",

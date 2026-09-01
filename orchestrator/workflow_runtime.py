@@ -34,6 +34,7 @@ from orchestrator import (  # noqa: E402
     dependency_registry,
     proof_loop,
     research_dependency_contract,
+    roof_port_ledger,
     session_briefing,
     spine,
 )
@@ -70,6 +71,7 @@ DEPENDENCY_CONTRACT_RECEIPT_SCHEMA = "q3_research_dependency_contract_receipt.v1
 COMMON_TOOLS = (
     "workflow-runtime",
     "codex-session-start",
+    "roof-port-supplier-ledger",
     "goal-run-selector",
     "ask-shelf",
     "kb-query",
@@ -523,6 +525,7 @@ def compile_plan(
     expected_writes: list[str] | None = None,
     startup: dict[str, Any] | None = None,
     assembly_snapshot: dict[str, Any] | None = None,
+    roof_ledger_snapshot: dict[str, Any] | None = None,
     route: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     action = str(goal_binding.get("action", "HOLD"))
@@ -550,6 +553,14 @@ def compile_plan(
             holds.append(f"DERIVED_ARTIFACT_NOT_FRESH:{item.get('artifact_id')}:{item.get('status')}")
     if action == "OWNER_AUTHORITY_REQUIRED_PX_RH_CLAIM":
         holds.append("OWNER_AUTHORITY_REQUIRED_PX_RH_CLAIM")
+    if (
+        roof_ledger_snapshot is not None
+        and roof_ledger_snapshot.get("integrity_status") != "HEAD_LOCKED"
+    ):
+        holds.append(
+            "ROOF_PORT_LEDGER_INVALID:"
+            + ",".join(roof_ledger_snapshot.get("integrity_reasons") or ["UNKNOWN"])
+        )
     logical_plan = {
         "goal_binding": goal_binding,
         "startup_receipt": startup,
@@ -599,6 +610,7 @@ def compile_plan(
         holds=unique_holds,
         assembly_debt=assembly_debt,
         assembly=assembly_snapshot,
+        roof_ledger=roof_ledger_snapshot,
         route=route,
     )
     return {
@@ -637,6 +649,10 @@ def live_plan(
         (repo / phase_close.DEFAULT_DB.relative_to(REPO)).resolve(),
         chain=chain,
     )
+    roof_ledger_snapshot = roof_port_ledger.build(
+        repo,
+        (repo / phase_close.DEFAULT_DB.relative_to(REPO)).resolve(),
+    )
     return compile_plan(
         goal_binding=binding,
         selector_hold=selector_hold,
@@ -664,6 +680,7 @@ def live_plan(
         ],
         startup=startup,
         assembly_snapshot=assembly,
+        roof_ledger_snapshot=roof_ledger_snapshot,
         route=route,
     )
 

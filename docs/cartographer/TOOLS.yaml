@@ -223,8 +223,22 @@ tool_families:
         approval: NONE
         authority: DELTA_AWARE_ORIENTATION_NOT_GOAL_SELECTION_OR_VERDICT_AUTHORITY
         records_to: stdout
-        validation: test_session_briefing; starts with q3_proof_loop.v1 battle brief and never invents a joint under HOLD
-        last_verified: 2026-08-31
+        validation: test_session_briefing; starts with q3_proof_loop.v1 battle brief, labels assembly rows as non-percentage bookkeeping, and never invents a joint under HOLD
+        last_verified: 2026-09-01
+
+      - id: roof-port-supplier-ledger
+        status: ENABLED
+        audience: [CODEX, HUMAN]
+        mode: READ_ONLY
+        path: orchestrator/roof_port_ledger.py
+        invoke: python3 orchestrator/roof_port_ledger.py
+        trigger: Every Route B startup/runtime plan; reverse-audit the seven roof inputs under one CanonicalApproximation C.
+        writes: false
+        approval: NONE
+        authority: SOURCE_LOCKED_DEPENDENT_PORT_AUDIT_NOT_MATHEMATICAL_VERDICT_OR_RH_CLAIM
+        records_to: stdout and logical_plan.proof_loop.roof_port_ledger
+        validation: test_session_briefing and test_workflow_runtime; current roof signature and audited axiom source blob must match HEAD
+        last_verified: 2026-09-01
 
       - id: routeb-session-checkpoint
         status: ENABLED
@@ -391,8 +405,9 @@ tool_families:
           command-failure, review-plan byte-binding, CALL_CLASS and
           EXPLORATION_REVIEW eligibility, consumer-first supplier receipt,
           queue-lifecycle, duplicate-dispatch plants, and the additive
-          logical_plan.proof_loop q3_proof_loop.v1 operating card.
-        last_verified: 2026-08-31
+          logical_plan.proof_loop q3_proof_loop.v1 operating card with the
+          source-locked q3_roof_port_supplier_ledger.v1 reverse ledger.
+        last_verified: 2026-09-01
 
       - id: workflow-session-close
         status: ENABLED

@@ -20,7 +20,7 @@ REPO = Path(__file__).resolve().parents[1]
 if str(REPO) not in sys.path:
     sys.path.insert(0, str(REPO))
 
-from orchestrator import proof_loop, research_dependency_contract
+from orchestrator import proof_loop, research_dependency_contract, roof_port_ledger
 ROUTE_STATE = Path(
     "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/"
     "ROUTE_B_EXECUTION_STATE.json"
@@ -507,6 +507,11 @@ def render_briefing(
     selected_goal_path = repo / selected_goal if isinstance(selected_goal, str) else None
     chain = proof_loop.goal_assembly_chain(selected_goal_path)
     assembly = proof_loop.assembly_snapshot(repo / ASSEMBLY_DB, chain=chain)
+    roof_ledger = roof_port_ledger.build(repo, repo / ASSEMBLY_DB)
+    if roof_ledger["integrity_status"] != "HEAD_LOCKED":
+        raise SessionBriefingError(
+            "ROOF_PORT_LEDGER_INVALID:" + ",".join(roof_ledger["integrity_reasons"])
+        )
     route_holds = []
     if isinstance(route.get("status"), str) and route["status"].startswith("HOLD"):
         route_holds.append(route["status"])
@@ -524,6 +529,7 @@ def render_briefing(
             for item in assembly.get("open_joints", [])
         ],
         assembly=assembly,
+        roof_ledger=roof_ledger,
         route=route,
     )
     lines = proof_loop.render_battle_brief(contract).rstrip("\n").splitlines() + [

@@ -326,53 +326,10 @@ else
   note "derived registry: $DEP_STATUS — repair: python3 orchestrator/workflow_runtime.py close-session --repair"
 fi
 
-# ── 10a. Опоры и канаты: сколько шагов до жёсткости каждой опоры крыши ─────────
-# Язык владельца (2026-08-19): крыша rh_of_canonical_strip_slots стоит на шести
-# опорах G1-G6 (через И); канаты = незакрытые шаги дорог снабжения (assembly).
-# Дороги к одной опоре — ИЛИ: платим за одну. Несосчитанные места называются
-# вслух: опора без измеренных канатов хуже опоры с большим k.
-hr
-echo "ОПОРЫ И КАНАТЫ (крыша ждёт: G2 G3 G5 G6 · стоят: G1 G4 · бетон: G7+Гурвиц)"
-"$PYTHON" - 2>/dev/null <<'PYEOF' || echo "  (assembly недоступна)"
-import sqlite3
-con = sqlite3.connect("file:q3.lean.aristotle/aristotle_db/knowledge.db?mode=ro", uri=True)
-# дорога -> опора (сверено по required_by финальных шагов, 2026-08-19)
-GATE = {"PSD_CERTIFICATE_FOR_CCM_CELL": "G2",
-        "SIMPLE_EVEN_GROUND_TO_REAL_ZEROS": "G3",
-        "G3_CVS_PORT": "G3-порт CvS",
-        "G5_CRITICAL_MOMENT": "G5",
-        "REALZERO_GROUND_DIAGONAL_TO_XI": "гол 058 ЗАМЕНА G2+G3",
-        "GOAL057_CONTINUUM_NUMERATOR_BRIDGE": "G6"}
-rows = con.execute("""select chain,
-    sum(case when status not in ('READY','VALIDATION') then 1 else 0 end), count(*)
-    from assembly group by chain order by 2""").fetchall()
-def origin(chain):
-    # происхождение ЗАКРЕПЛЁННЫХ канатов: кто доказал (вопрос владельца 19.08)
-    ours = ml = data = 0
-    for (sf,) in con.execute(
-            "select coalesce(supplier_file,'') from assembly "
-            "where chain=? and status='READY'", (chain,)):
-        if sf.startswith("q3.lean.aristotle"): ours += 1
-        elif ".lake/packages/mathlib" in sf:   ml += 1
-        else:                                   data += 1
-    parts = [f"наш Lean {ours}"]
-    if ml:   parts.append(f"Mathlib {ml}")
-    if data: parts.append(f"данные {data}")
-    return " · ".join(parts)
-total = 0
-for chain, k, n in rows:
-    gate = GATE.get(chain, "?")
-    total += k
-    print(f"  {gate:14s} всего канатов {n} · закреплено {n-k} ({origin(chain)}) · ОСТАЛОСЬ НАТЯНУТЬ {k}")
-    print(f"  {'':14s}   [{chain}]")
-done = sum(n - k for _, k, n in rows)
-alln = sum(n for _, _, n in rows)
-print(f"  {'':14s} ВСЕГО в базе {alln} канатов · ЗАКРЕПЛЕНО {done} · висит {total}")
-print("  бумажные движки (Connes и др.) канатами НЕ считаются, пока не формализованы")
-print("  динамический следующий адрес задают physical goal + routeb_status.py + assembly;")
-print("  исторические оценки и ручная MAP.md не маршрутизируют исполнение")
-con.close()
-PYEOF
+# The old G1-G7/assembly count surface was removed here.  It duplicated the
+# battle brief and incorrectly made legacy READY rows look like jointly bound
+# roof premises.  session_briefing.py now owns the source-locked six-slot /
+# seven-input dependent roof ledger and labels assembly totals as bookkeeping.
 
 # ── 10a1. Запросы судье: что висит без ответа ──────────────────────────────────
 hr
