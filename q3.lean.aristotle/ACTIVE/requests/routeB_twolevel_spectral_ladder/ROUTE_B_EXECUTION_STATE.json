@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v3_live_bus",
-  "updated_at": "2026-09-01T19:39:45+02:00",
+  "updated_at": "2026-09-01T20:40:09+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": ".",
   "architecture": {
@@ -10,21 +10,39 @@
     "route_b_rh_status": "NOT_RH",
     "root_implementation_plan_overridden": false
   },
-  "operational_status": "GOAL_058_ADAPTIVE_SELECTED_EVEN_TAIL_BLOCK_CROSSWALK_PREFLIGHT",
+  "operational_status": "GOAL_058_FINITE_EVEN_HEAD_CORRECTED_SCHUR_MARGIN_PREFLIGHT",
   "current": {
-    "stage_id": "RB-GOAL-058-ADAPTIVE-SELECTED-EVEN-TAIL-BLOCK-CROSSWALK",
-    "contract_obligation": "ADAPTIVE_SELECTED_FINITE_TAIL_TO_LITERAL_TOBLOCKS22_CROSSWALK",
-    "name": "Goal058AdaptiveSelectedEvenTailBlockCrosswalk",
+    "stage_id": "RB-GOAL-058-FINITE-EVEN-HEAD-CORRECTED-SCHUR-MARGIN",
+    "contract_obligation": "FINITE_EVEN_HEAD_CORRECTED_SCHUR_MARGIN_AT_EXACT_RAYLEIGH_SHIFT",
+    "name": "Goal058FiniteEvenHeadCorrectedSchurMargin",
     "status": "ACTIVE_SUPPLIER_PREFLIGHT",
     "stop_code": "NONE",
     "selected_bus_goal_nnn": "058",
     "selected_bus_goal_path": "docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md",
     "next_required_actor": "CODEX",
-    "next_action": "Define the weakest source-faithful adaptive selected even-tail split, identify its shifted tail exactly with the literal toBlocks22 carrier, and run the earliest killer for eventual adaptive cutoff domination R_k <= N_k. Keep the direct source-specific floor and finite-head corrected Schur margin open; do not reuse the dead fixed-cutoff transfer, promote Route B, or claim RH.",
+    "next_action": "Trace the exact literal finite-head corrected Schur consumer at the selected Rayleigh shift, freeze its weakest sufficient theorem shape, and run the cheapest source-faithful killer or kernel-checkable reduction. Keep the direct selected-N floor and the earlier-adaptive-estimate crosswalk open as research debt; do not reuse the dead explicit-tail cutoff branch, promote Route B, or claim RH.",
     "route_promotion": false,
     "rh_claimed": false
   },
   "terminal_history": {
+    "goal_058_selected_adaptive_tail_cutoff_obstruction": {
+      "classification": "GOAL058_ADAPTIVE_EXPLICIT_TAIL_REUSE_KILLED",
+      "status": "CLOSED_MATHEMATICALLY_DEAD_EXPLICIT_REUSE_ONLY",
+      "proof_commit": "aca1823b564d6caa0407c92f4459e99e18b75175",
+      "admission_commit": "043440e07139eca33123996bbb813fbdd1cf4c8c",
+      "closeout_path": "docs/routeB_bus/CODEX_CLOSEOUT_GOAL058_SELECTED_ADAPTIVE_TAIL_CUTOFF_OBSTRUCTION_2026-09-01.md",
+      "theorem": "Q3.RouteB.D0Pstar.selectedFerrersPreAnchorIndex_no_tailCutoff_between_fixed_and_N",
+      "exact_result": "NO_R_SATISFIES_EXISTING_EXPLICIT_CUTOFF_C_LE_R_LE_SELECTED_ENDPOINT_N_ON_ANY_SELECTED_CELL",
+      "independent_review": "CODEX_SUBAGENT_ADMIT_ZERO_SEMANTIC_FINDINGS",
+      "attestation_id": "ATTEST_GOAL058_SELECTED_ADAPTIVE_TAIL_CUTOFF_OBSTRUCTION_20260901_V1",
+      "autopsy_tag": "LOCALIZATION",
+      "next_selected_node": "FINITE_EVEN_HEAD_CORRECTED_SCHUR_MARGIN_AT_EXACT_RAYLEIGH_SHIFT",
+      "abstract_adaptive_crosswalk_status": "OPEN_RESEARCH_DEBT_REQUIRES_NEW_EARLIER_SOURCE_ESTIMATE",
+      "direct_selected_n_floor_status": "OPEN_RESEARCH_DEBT_NOT_MATHEMATICALLY_DEAD",
+      "pure_toblocks22_identity_status": "OPEN_ALGEBRAIC_DEBT",
+      "route_promotion": false,
+      "rh_claimed": false
+    },
     "goal_058_direct_selected_n_cancellation_preflight": {
       "classification": "GOAL058_DIRECT_SELECTED_N_AUTOMATIC_CANCELLATION_SHORTCUT_KILLED",
       "status": "CLOSED_SHORTCUT_ONLY_DIRECT_FLOOR_REMAINS_RESEARCH_DEBT",

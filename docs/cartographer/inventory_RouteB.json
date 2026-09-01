@@ -1,9 +1,9 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 378,
-  "declarations": 4178,
-  "in_docs": 2071,
+  "files_scanned": 379,
+  "declarations": 4179,
+  "in_docs": 2073,
   "in_lemma_db": 4091,
   "orphans": 40,
   "uncatalogued": 40,
@@ -13764,7 +13764,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarArchPrimeSesquilinearForm.lean",
       "line": 13,
       "signature": "noncomputable def sourcePrimeShiftedDomainSesquilinearForm (i : PairIndex) : sourceArchimedeanShiftedFormDomain i →ₗ⋆[ℂ] sourceArchimedeanShiftedFormDomain i →ₗ[ℂ] ℂ",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -15896,6 +15896,16 @@
       "signature": "theorem selectedProjectedMellinCoordinate_eq_selectedRawTransformCoordinate (S : ProlateCanonicalSourceData) (k : ℕ) (z : ℂ) : selectedProjectedMellinCoordinate S k z = selectedRawTransformCoordinate S k z",
       "in_docs": true,
       "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "selectedFerrersPreAnchorIndex_no_tailCutoff_between_fixed_and_N",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSelectedFerrersAdaptiveTailCutoffObstruction.lean",
+      "line": 19,
+      "signature": "theorem selectedFerrersPreAnchorIndex_no_tailCutoff_between_fixed_and_N (k : ℕ) : ¬ ∃ R : ℕ, sourceWeilEvenTailCutoff (selectedFerrersPreAnchorIndex k) ≤ R ∧ R ≤ (selectedFerrersPreAnchorIndex k).N",
+      "in_docs": true,
+      "in_lemma_db": false,
       "orphan": false
     },
     {

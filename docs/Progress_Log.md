@@ -40,6 +40,46 @@
 
 ---
 
+## 2026-09-01 — adaptive explicit-tail reuse убит, выбран exact Schur margin
+
+**Развилка:** продолжать adaptive tail через более поздний cutoff, вернуться к
+direct selected-`N` floor, искать новую оценку до существующего cutoff или
+перейти к независимому finite-head corrected Schur margin.
+
+**Выбрали:** закрыть только
+`ADAPTIVE_REUSE_OF_EXISTING_EXPLICIT_EVEN_TAIL_VIA_C_LE_R_LE_N` и следующим
+узлом взять
+`FINITE_EVEN_HEAD_CORRECTED_SCHUR_MARGIN_AT_EXACT_RAYLEIGH_SHIFT`.
+
+**Почему:** Lean доказал, что на каждой selected-клетке `N_k < C_k`; поэтому
+никакой `R_k` не может одновременно наследовать существующую explicit estimate
+через `C_k <= R_k` и лежать внутри carrier через `R_k <= N_k`. Schur margin
+остаётся load-bearing при любом живом tail supplier и уже имеет literal finite
+consumer.
+
+**Что отвергли и почему:** немедленный adaptive wrapper отвергнут как перенос
+той же недостающей source estimate под новое имя. Direct selected-`N` floor и
+новая earlier estimate при `R_k < C_k` не убиты, но остаются research debt без
+exact supplier. Pure `toBlocks22` identity остаётся открытым algebraic debt.
+
+**Техника:** `BOUNDARY_CASE`, универсальный natural-order contradiction,
+Control-v9 semantic quarantine, независимая byte-exact receipt reconstruction
+и detached OpenSSH signature.
+
+**Следующий ход:** зафиксировать exact corrected-head Schur consumer и его
+weakest sufficient theorem shape, затем запустить самый дешёвый plant или
+kernel-checkable reduction до построения нового tail supplier.
+
+**Адреса:**
+`q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSelectedFerrersAdaptiveTailCutoffObstruction.lean`;
+`docs/routeB_bus/CODEX_CLOSEOUT_GOAL058_SELECTED_ADAPTIVE_TAIL_CUTOFF_OBSTRUCTION_2026-09-01.md`;
+admission `043440e0`.
+
+**Чей вердикт и аргумент:** Codex + независимый Codex subagent. Аргумент:
+`C_k <= R_k <= N_k` противоречит уже admitted `N_k < C_k` для каждого `k`;
+это убивает только reuse текущей explicit theorem, но не earlier estimate,
+direct selected-`N` floor или abstract block identity.
+
 ## 2026-09-01 — direct selected-N cancellation убит, выбран adaptive block crosswalk
 
 **Развилка:** выводить exact selected-`N` floor автоматически из

@@ -4,7 +4,7 @@
 `python3 docs/cartographer/map_coverage.py`. Рукописная карта — `MAP.md`, она
 описывает узлы маршрута; это приложение описывает **файлы**, и оно полное.
 
-Всего файлов: **378** · упомянуто в `MAP.md`: **25** · вне карты: **353** · без описания в шапке: **0**
+Всего файлов: **379** · упомянуто в `MAP.md`: **25** · вне карты: **354** · без описания в шапке: **0**
 
 «вне карты» не значит «лишний»: значит, что обходом карты файл не находится.
 Именно так 2026-08-11 был построен заново мост `ker ↔ eigenspace`, стоявший в
@@ -163,6 +163,7 @@
 | `D0PstarPhysicalFourierEnergyControl` | карта | Physical Fourier-energy control of the selected Galerkin residual | 0 |
 | `D0PstarPrimeAmbientSesquilinearForm` | — | первая декларация: `sourcePrimeCosineLInf` | 0 |
 | `D0PstarProjectedMellinCoordinate` | — | Selected projected Mellin coordinate | 0 |
+| `D0PstarSelectedFerrersAdaptiveTailCutoffObstruction` | — | Adaptive reuse obstruction for the selected Ferrers finite carrier | 0 |
 | `D0PstarSelectedFerrersEvenTailCutoffObstruction` | — | Fixed even-tail cutoff obstruction on the selected Ferrers schedule | 0 |
 | `D0PstarShiftedArchClosedForm` | — | The maximal square-root-weight multiplication operator underlying the | 0 |
 | `D0PstarShiftedArchFiniteModeDomain` | — | Every vector in the exact finite Galerkin carrier belongs to the shifted | 0 |
