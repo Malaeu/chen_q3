@@ -5,11 +5,39 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from contextlib import contextmanager
 from pathlib import Path
 from unittest import mock
 
 from orchestrator import workflow_runtime
+from orchestrator.benchmarks import control_v10_benchmark as benchmark
 from orchestrator.startup_runtime import StartupSnapshot
+
+
+class _FakeEpochGuard:
+    def __init__(
+        self, events: list[str] | None = None, *, recheck_error: str | None = None
+    ) -> None:
+        self.events = events if events is not None else []
+        self.recheck_error = recheck_error
+        self.open = False
+
+    def recheck(self) -> str | None:
+        self.events.append("recheck")
+        return self.recheck_error
+
+
+@contextmanager
+def _fake_startup_epoch(
+    guard: _FakeEpochGuard, lock_error: str | None = None
+):
+    guard.events.append("lock")
+    guard.open = True
+    try:
+        yield guard, lock_error
+    finally:
+        guard.open = False
+        guard.events.append("close")
 
 
 def tool_index() -> dict[str, dict[str, object]]:
@@ -292,20 +320,53 @@ class WorkflowRuntimePlants(unittest.TestCase):
 
     def test_shadow_v10_builds_one_snapshot_and_reuses_selected_goal(self) -> None:
         snapshot = shadow_snapshot()
+        timing: dict[str, object] = {}
+        events: list[str] = []
+        guard = _FakeEpochGuard(events)
+
+        def build_snapshot(*_args: object, **kwargs: object) -> StartupSnapshot:
+            self.assertTrue(guard.open)
+            self.assertIs(kwargs["_epoch_guard"], guard)
+            self.assertIsNone(kwargs["_epoch_lock_error"])
+            events.append("snapshot")
+            return snapshot
+
+        def registry_summary(*_args: object, **_kwargs: object) -> dict[str, object]:
+            self.assertTrue(guard.open)
+            events.append("registry")
+            return node_registry_summary()
+
         with (
             mock.patch.object(
-                workflow_runtime, "build_shadow_snapshot", return_value=snapshot
+                workflow_runtime,
+                "_startup_read_epoch",
+                return_value=_fake_startup_epoch(guard),
+            ),
+            mock.patch.object(
+                workflow_runtime, "build_shadow_snapshot", side_effect=build_snapshot
             ) as build,
+            mock.patch.object(
+                workflow_runtime.time,
+                "perf_counter",
+                side_effect=[10.0, 10.125],
+            ),
             mock.patch.object(
                 workflow_runtime.node_registry_v10,
                 "startup_gate_summary",
-                return_value=node_registry_summary(),
+                side_effect=registry_summary,
             ) as registry,
         ):
             result = workflow_runtime.live_shadow_plan_v10(
-                Path("/repo"), owned_paths=["owned.md"]
+                Path("/repo"),
+                owned_paths=["owned.md"],
+                _benchmark_timing_sink=timing,
             )
-        build.assert_called_once_with(Path("/repo"), owned_paths=("owned.md",))
+        build.assert_called_once_with(
+            Path("/repo"),
+            owned_paths=("owned.md",),
+            _epoch_guard=guard,
+            _epoch_lock_error=None,
+        )
         registry.assert_called_once_with(
             Path("/repo"),
             snapshot.selected_goal,
@@ -318,10 +379,87 @@ class WorkflowRuntimePlants(unittest.TestCase):
         self.assertEqual(result["selected_goal"], snapshot.selected_goal)
         self.assertFalse(result["run_authorized"])
         self.assertFalse(result["writes_performed"])
+        self.assertEqual(events, ["lock", "snapshot", "registry", "recheck", "close"])
+        self.assertEqual(
+            timing,
+            {
+                "schema": "q3_shadow_startup_timing.v1",
+                "startup_duration_ms": 125.0,
+                "snapshot_constructor_calls": 1,
+            },
+        )
+
+    def test_shadow_v10_registry_epoch_drift_fails_closed(self) -> None:
+        error = "FATAL:WRITER_LOCK_IDENTITY_CHANGED"
+        guard = _FakeEpochGuard(recheck_error=error)
+        snapshot = shadow_snapshot()
+        with (
+            mock.patch.object(
+                workflow_runtime,
+                "_startup_read_epoch",
+                return_value=_fake_startup_epoch(guard),
+            ),
+            mock.patch.object(
+                workflow_runtime, "build_shadow_snapshot", return_value=snapshot
+            ) as build,
+            mock.patch.object(
+                workflow_runtime.node_registry_v10,
+                "startup_gate_summary",
+                return_value=node_registry_summary(),
+            ) as registry,
+        ):
+            result = workflow_runtime.live_shadow_plan_v10(
+                Path("/repo"), owned_paths=[]
+            )
+
+        build.assert_called_once()
+        registry.assert_called_once()
+        self.assertEqual(result["status"], "FATAL")
+        self.assertIsNone(result["selected_goal"])
+        self.assertIn(error, result["holds"])
+        self.assertIn("NODE_REGISTRY_STARTUP_EPOCH_DRIFT", result["holds"])
+        self.assertFalse(result["run_authorized"])
+        self.assertEqual(guard.events, ["lock", "recheck", "close"])
+
+    def test_shadow_v10_lock_failure_skips_unprotected_registry_read(self) -> None:
+        lock_error = "FATAL:WRITER_LOCK_COLLISION"
+        guard = _FakeEpochGuard()
+        with (
+            mock.patch.object(
+                workflow_runtime,
+                "_startup_read_epoch",
+                return_value=_fake_startup_epoch(guard, lock_error),
+            ),
+            mock.patch.object(
+                workflow_runtime,
+                "build_shadow_snapshot",
+                return_value=shadow_snapshot(fatal_errors=(lock_error,)),
+            ) as build,
+            mock.patch.object(
+                workflow_runtime.node_registry_v10, "startup_gate_summary"
+            ) as registry,
+        ):
+            result = workflow_runtime.live_shadow_plan_v10(
+                Path("/repo"), owned_paths=[]
+            )
+
+        build.assert_called_once()
+        registry.assert_not_called()
+        self.assertEqual(result["status"], "FATAL")
+        self.assertIn(lock_error, result["holds"])
+        self.assertIn("NODE_REGISTRY_WRITER_EPOCH_UNAVAILABLE", result["holds"])
+        self.assertFalse(result["run_authorized"])
+        self.assertEqual(guard.events, ["lock", "close"])
 
     def test_shadow_v10_hot_path_never_enters_legacy_or_subprocess_startup(self) -> None:
         snapshot = shadow_snapshot()
+        guard = _FakeEpochGuard()
         with (
+            mock.patch.object(
+                workflow_runtime,
+                "_startup_read_epoch",
+                return_value=_fake_startup_epoch(guard),
+            ),
             mock.patch.object(
                 workflow_runtime, "build_shadow_snapshot", return_value=snapshot
             ),
@@ -341,6 +479,11 @@ class WorkflowRuntimePlants(unittest.TestCase):
             mock.patch.object(
                 workflow_runtime, "selector_binding", side_effect=AssertionError
             ),
+            mock.patch.object(
+                workflow_runtime.time,
+                "perf_counter",
+                side_effect=AssertionError("default shadow path timed"),
+            ),
         ):
             result = workflow_runtime.live_shadow_plan_v10(Path("/repo"), owned_paths=[])
         self.assertEqual(result["status"], "READY")
@@ -354,6 +497,7 @@ class WorkflowRuntimePlants(unittest.TestCase):
         repo = Path(__file__).resolve().parents[2]
         entry = repo / "orchestrator/workflow_runtime.py"
         blocked = (
+            "orchestrator.goal_runtime",
             "orchestrator.proof_loop",
             "orchestrator.roof_port_ledger",
             "orchestrator.session_briefing",
@@ -383,6 +527,60 @@ class WorkflowRuntimePlants(unittest.TestCase):
         payload = json.loads(proc.stdout)
         self.assertEqual(payload["schema"], "q3_workflow_plan.v2")
         self.assertFalse(payload["run_authorized"])
+
+    def test_shadow_v10_benchmark_timing_keeps_stdout_identical(self) -> None:
+        repo = Path(__file__).resolve().parents[2]
+        command = [
+            sys.executable,
+            str(repo / "orchestrator/workflow_runtime.py"),
+            "--root",
+            str(repo),
+            "plan",
+            "--shadow-v10",
+        ]
+        normal = subprocess.run(
+            command,
+            cwd=repo,
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        timed = subprocess.run(
+            [*command, "--benchmark-startup-timing"],
+            cwd=repo,
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(normal.returncode, timed.returncode)
+        self.assertEqual(normal.stdout, timed.stdout)
+        self.assertNotIn(workflow_runtime._BENCHMARK_TIMING_PREFIX, normal.stderr)
+        timing = benchmark._parse_production_startup_timing(timed.stderr)
+        self.assertEqual(timing["snapshot_constructor_calls"], 1)
+        self.assertGreaterEqual(timing["startup_duration_ms"], 0)
+
+    def test_benchmark_timing_flag_requires_shadow_v10(self) -> None:
+        repo = Path(__file__).resolve().parents[2]
+        proc = subprocess.run(
+            [
+                sys.executable,
+                str(repo / "orchestrator/workflow_runtime.py"),
+                "--root",
+                str(repo),
+                "plan",
+                "--benchmark-startup-timing",
+            ],
+            cwd=repo,
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(proc.returncode, 2)
+        self.assertEqual(proc.stdout, "")
+        self.assertIn(
+            "--benchmark-startup-timing requires --shadow-v10",
+            proc.stderr,
+        )
 
     def test_compile_plan_imports_proof_loop_only_on_legacy_call(self) -> None:
         repo = Path(__file__).resolve().parents[2]
@@ -439,7 +637,13 @@ class WorkflowRuntimePlants(unittest.TestCase):
         )
         summary = node_registry_summary(status="HOLD")
         summary["code"] = "NODE_REGISTRY_EXACT_EDGE_REQUIRED"
+        guard = _FakeEpochGuard()
         with (
+            mock.patch.object(
+                workflow_runtime,
+                "_startup_read_epoch",
+                return_value=_fake_startup_epoch(guard),
+            ),
             mock.patch.object(
                 workflow_runtime, "build_shadow_snapshot", return_value=snapshot
             ),
@@ -555,69 +759,35 @@ class WorkflowRuntimePlants(unittest.TestCase):
             json.dumps(legacy, ensure_ascii=False, indent=2, sort_keys=True)
         )
 
-    def test_shadow_v10_close_node_cannot_enter_startup_or_deep_gate(self) -> None:
+    def test_run_rejects_non_v1_plan_before_startup_or_writers(self) -> None:
         shadow = workflow_runtime.compile_shadow_plan_v10(
             startup_snapshot=shadow_snapshot(),
             node_registry_summary=node_registry_summary(),
             host_executor="CODEX_LINUX",
         )
         with (
-            mock.patch.object(
-                workflow_runtime, "startup_receipt", side_effect=AssertionError
-            ),
-            mock.patch.object(
-                workflow_runtime.node_registry_v10,
-                "verify_consumption",
-                side_effect=AssertionError,
-            ),
+            mock.patch.object(workflow_runtime, "startup_receipt") as startup,
+            mock.patch.object(workflow_runtime, "_exists_at_head") as exists,
+            mock.patch.object(workflow_runtime, "command_receipt") as command,
         ):
             result = workflow_runtime.execute_close_node(
                 Path("/repo"),
                 plan=shadow,
-                owned_paths=[],
+                owned_paths=["owned.txt"],
                 query=None,
                 candidate=None,
                 target=None,
-                attempt_payload=None,
+                attempt_payload=Path("attempt.json"),
                 insight_payload=None,
                 run_kernel=False,
                 protocol_out=None,
             )
         self.assertEqual(result["status"], "HOLD")
-        self.assertIn("SHADOW_V10_RUN_AUTHORITY_FORBIDDEN", result["holds"])
-
-    def test_fabricated_battle_v10_authority_cannot_bypass_shadow_block(self) -> None:
-        battle = {
-            "schema": workflow_runtime.SHADOW_PLAN_SCHEMA,
-            "mode": "BATTLE_V10",
-            "status": "READY",
-            "holds": [],
-            "selected_goal": "docs/routeB_bus/058.goal.md",
-            "run_authorized": True,
-        }
-        with (
-            mock.patch.object(
-                workflow_runtime, "startup_receipt", side_effect=AssertionError
-            ),
-            mock.patch.object(
-                workflow_runtime.node_registry_v10,
-                "verify_consumption",
-                side_effect=AssertionError("fabricated authority entered deep gate"),
-            ),
-        ):
-            result = workflow_runtime.execute_close_node(
-                Path("/repo"),
-                plan=battle,
-                owned_paths=[],
-                query=None,
-                candidate=None,
-                target=None,
-                attempt_payload=None,
-                insight_payload=None,
-                run_kernel=False,
-                protocol_out=None,
-            )
-        self.assertIn("SHADOW_V10_RUN_AUTHORITY_FORBIDDEN", result["holds"])
+        self.assertEqual(result["holds"], ["WORKFLOW_RUN_PLAN_SCHEMA_UNSUPPORTED"])
+        self.assertEqual(result["receipts"], [])
+        startup.assert_not_called()
+        exists.assert_not_called()
+        command.assert_not_called()
 
     def test_run_holds_on_red_startup_before_any_writer(self) -> None:
         compiled = plan("SELECT_EXACT_GOAL")
@@ -1028,6 +1198,1331 @@ class WorkflowRuntimePlants(unittest.TestCase):
                     candidate="Q3.RouteB.candidate",
                     target="Q3.RouteB.target",
                 )
+
+
+class ControlV10BenchmarkPlants(unittest.TestCase):
+    @staticmethod
+    def _shadow_plan(**overrides: object) -> dict[str, object]:
+        payload: dict[str, object] = {
+            "schema": workflow_runtime.SHADOW_PLAN_SCHEMA,
+            "mode": "SHADOW_V10_READ_ONLY",
+            "status": "FATAL",
+            "holds": ["STARTUP_SOURCE_COMMIT_PIN_DRIFT"],
+            "blocked_features": [
+                {"feature": feature}
+                for feature in sorted(benchmark.REQUIRED_BLOCKED_FEATURES)
+            ],
+            "startup": {
+                "fatal_errors": ["STARTUP_SOURCE_COMMIT_PIN_DRIFT"],
+                "honesty_state": "CHALLENGER_NOT_RH",
+            },
+            "run_authorized": False,
+            "writes_performed": False,
+            "legacy_v9_authority_unchanged": True,
+            "PX_RH_CLAIM": "NOT_MADE",
+            "node_registry": {"detail": "same"},
+        }
+        payload.update(overrides)
+        return payload
+
+    @staticmethod
+    def _timing_stderr(
+        duration_ms: float = 0.0, *, constructor_calls: int = 1
+    ) -> str:
+        payload = {
+            "schema": workflow_runtime._BENCHMARK_TIMING_SCHEMA,
+            "startup_duration_ms": duration_ms,
+            "snapshot_constructor_calls": constructor_calls,
+        }
+        return workflow_runtime._BENCHMARK_TIMING_PREFIX + json.dumps(
+            payload, separators=(",", ":"), sort_keys=True
+        )
+
+    @classmethod
+    def _runtime_records(
+        cls,
+        *,
+        direct_argv: list[list[str]] | None = None,
+        observed_runtime_argv: list[list[str]] | None = None,
+        production_payload: dict[str, object] | None = None,
+        direct_payload: dict[str, object] | None = None,
+        audited_payload: dict[str, object] | None = None,
+        opened_repo_paths: list[str] | None = None,
+    ) -> tuple[dict[str, object], dict[str, object], dict[str, object]]:
+        production_repo = Path("/tmp/production")
+        direct_repo = Path("/tmp/direct")
+        audited_repo = Path("/tmp/audited")
+        commands = direct_argv or [["git", "status"]]
+        observed = observed_runtime_argv or [list(command) for command in commands]
+        production_plan = production_payload or cls._shadow_plan()
+        direct_plan = direct_payload or json.loads(json.dumps(production_plan))
+        audited_plan = audited_payload or json.loads(json.dumps(production_plan))
+        direct_counts = {
+            "subprocess": len(commands),
+            "git": sum(
+                bool(command) and Path(command[0]).name == "git"
+                for command in commands
+            ),
+            "path": 1,
+            "repo_path": 1,
+            "scandir": 0,
+            "open": 1,
+            "opened_repo_paths": 1,
+        }
+        descendant_counts = {
+            "subprocess": len(observed),
+            "git": sum(
+                bool(command) and Path(command[0]).name == "git"
+                for command in observed
+            ),
+            "path": 1,
+            "repo_path": 1,
+            "scandir": 0,
+            "open": 1,
+            "opened_repo_paths": len(opened_repo_paths or []),
+        }
+        direct_audit = benchmark._functional_plan_audit(direct_plan)
+        audited_audit = benchmark._functional_plan_audit(audited_plan)
+        production_audit = benchmark._functional_plan_audit(production_plan)
+        direct_sample = {
+            "payload": direct_plan,
+            "startup": {"duration_ms": 2.0, "counts": dict(direct_counts)},
+            "plan": {"duration_ms": 1.0, "counts": dict(direct_counts)},
+            "total": {"duration_ms": 3.0, "counts": dict(direct_counts)},
+            "result": {},
+            "budgets": {"pass": True},
+            "snapshot_constructor_calls": 1,
+            "runtime_subprocess_argv": [list(command) for command in commands],
+            "functional_audit": direct_audit,
+        }
+        production = {
+            "repo": str(production_repo),
+            "command": benchmark._workflow_plan_command(production_repo),
+            "returncode": 2,
+            "duration_ms": 5.0,
+            "startup_timing": {
+                "schema": workflow_runtime._BENCHMARK_TIMING_SCHEMA,
+                "startup_duration_ms": 3.0,
+                "snapshot_constructor_calls": 1,
+            },
+            "payload": production_plan,
+            "functional_audit": production_audit,
+            "write_audit": {"pass": True},
+        }
+        direct = {"repo": str(direct_repo), "sample": direct_sample}
+        successful = [
+            benchmark._workflow_plan_command(audited_repo),
+            *[list(command) for command in observed],
+        ]
+        opened = list(opened_repo_paths or [])
+        audited_sample = {
+            "payload": audited_plan,
+            "startup": {"duration_ms": 4.0, "counts": dict(descendant_counts)},
+            "plan": {"duration_ms": 1.0, "counts": dict(descendant_counts)},
+            "total": {"duration_ms": 5.0, "counts": dict(descendant_counts)},
+            "result": {},
+            "budgets": {"pass": True},
+            "snapshot_constructor_calls": 1,
+            "runtime_subprocess_argv": [list(command) for command in observed],
+            "functional_audit": audited_audit,
+        }
+        audited = {
+            "repo": str(audited_repo),
+            "command": ["strace", "--", *benchmark._workflow_plan_command(audited_repo)],
+            "runtime_command": benchmark._workflow_plan_command(audited_repo),
+            "returncode": 2,
+            "duration_ms": 6.0,
+            "sample": audited_sample,
+            "trace_audit": {
+                "execve_argv": successful,
+                "successful_execve_argv": successful,
+                "runtime_execve_argv": [list(command) for command in observed],
+                "runtime_subprocess_count": len(observed),
+                "runtime_git_count": descendant_counts["git"],
+                "opened_repo_paths": opened,
+                "opened_repo_paths_count": len(opened),
+                "write_events": [],
+                "write_free_pass": True,
+                "trace_coverage": {"all": True},
+                "trace_coverage_pass": True,
+                "sentinels_before": {},
+                "sentinels_after": {},
+                "sentinels_unchanged": True,
+                "ignored_repo_paths_in_scope": True,
+            },
+        }
+        return production, direct, audited
+
+    def test_production_timing_parser_fails_closed(self) -> None:
+        valid = self._timing_stderr(123.0)
+        self.assertEqual(
+            benchmark._parse_production_startup_timing(valid)[
+                "startup_duration_ms"
+            ],
+            123.0,
+        )
+        invalid_cases = (
+            ("", "BENCHMARK_STARTUP_TIMING_MISSING"),
+            (valid + "\n" + valid, "BENCHMARK_STARTUP_TIMING_DUPLICATE"),
+            (
+                workflow_runtime._BENCHMARK_TIMING_PREFIX + "{",
+                "BENCHMARK_STARTUP_TIMING_INVALID_JSON",
+            ),
+            (
+                workflow_runtime._BENCHMARK_TIMING_PREFIX
+                + json.dumps(
+                    {
+                        "schema": workflow_runtime._BENCHMARK_TIMING_SCHEMA,
+                        "startup_duration_ms": -1,
+                        "snapshot_constructor_calls": 1,
+                    }
+                ),
+                "BENCHMARK_STARTUP_TIMING_DURATION_INVALID",
+            ),
+            (
+                workflow_runtime._BENCHMARK_TIMING_PREFIX
+                + json.dumps(
+                    {
+                        "schema": workflow_runtime._BENCHMARK_TIMING_SCHEMA,
+                        "startup_duration_ms": True,
+                        "snapshot_constructor_calls": 1,
+                    }
+                ),
+                "BENCHMARK_STARTUP_TIMING_DURATION_INVALID",
+            ),
+            (
+                workflow_runtime._BENCHMARK_TIMING_PREFIX
+                + json.dumps(
+                    {
+                        "schema": workflow_runtime._BENCHMARK_TIMING_SCHEMA,
+                        "startup_duration_ms": 1,
+                        "snapshot_constructor_calls": 1,
+                        "unknown": "field",
+                    }
+                ),
+                "BENCHMARK_STARTUP_TIMING_FIELDS_INVALID",
+            ),
+            (
+                self._timing_stderr(1.0, constructor_calls=2),
+                "BENCHMARK_STARTUP_TIMING_SNAPSHOT_COUNT_INVALID",
+            ),
+        )
+        for stderr, code in invalid_cases:
+            with self.subTest(code=code), self.assertRaisesRegex(
+                RuntimeError, code
+            ):
+                benchmark._parse_production_startup_timing(stderr)
+
+    def test_functional_audit_rejects_unexpected_fatal_and_unavailable(self) -> None:
+        unexpected = benchmark._functional_plan_audit(
+            self._shadow_plan(status="FATAL", holds=["FUTURE_FATAL"])
+        )
+        unavailable = benchmark._functional_plan_audit(
+            self._shadow_plan(
+                status="HOLD",
+                holds=["SHADOW_V10_UNAVAILABLE:RuntimeError:boom"],
+            )
+        )
+        expected = benchmark._functional_plan_audit(
+            self._shadow_plan()
+        )
+        self.assertFalse(unexpected["pass"])
+        self.assertIn("PLAN_UNEXPECTED_FATAL:FUTURE_FATAL", unexpected["errors"])
+        self.assertFalse(unavailable["pass"])
+        self.assertIn("SHADOW_V10_UNAVAILABLE", unavailable["errors"])
+        self.assertTrue(expected["pass"])
+        self.assertEqual(
+            expected["expected_live_fatals"],
+            ["STARTUP_SOURCE_COMMIT_PIN_DRIFT"],
+        )
+
+    def test_functional_audit_requires_exact_live_fatal_contract(self) -> None:
+        for mutation in (
+            {"status": "READY", "holds": []},
+            {"status": "HOLD", "holds": []},
+            {
+                "status": "FATAL",
+                "holds": [
+                    "STARTUP_SOURCE_COMMIT_PIN_DRIFT",
+                    "STARTUP_SOURCE_COMMIT_PIN_DRIFT",
+                ],
+            },
+            {"startup": {"fatal_errors": [], "honesty_state": "CHALLENGER_NOT_RH"}},
+            {
+                "startup": {
+                    "fatal_errors": ["STARTUP_SOURCE_COMMIT_PIN_DRIFT"],
+                    "honesty_state": "NOT_RH",
+                }
+            },
+            {"legacy_v9_authority_unchanged": False},
+            {"PX_RH_CLAIM": "MADE"},
+        ):
+            with self.subTest(mutation=mutation):
+                self.assertFalse(
+                    benchmark._functional_plan_audit(
+                        self._shadow_plan(**mutation)
+                    )["pass"]
+                )
+        accepted = benchmark._functional_plan_audit(self._shadow_plan())
+        self.assertTrue(accepted["pass"])
+        for field in (
+            "exact_live_fatal_status_pass",
+            "exact_live_fatal_set_pass",
+            "startup_fatal_set_pass",
+            "startup_honesty_state_pass",
+            "legacy_v9_authority_unchanged_pass",
+            "px_rh_claim_not_made_pass",
+        ):
+            self.assertTrue(accepted[field], field)
+
+    def test_functional_audit_enforces_exact_identity_and_safety_fields(self) -> None:
+        for mutation in (
+            {"schema": "wrong"},
+            {"mode": "wrong"},
+            {"run_authorized": True},
+            {"writes_performed": True},
+            {"blocked_features": []},
+        ):
+            with self.subTest(mutation=mutation):
+                self.assertFalse(
+                    benchmark._functional_plan_audit(
+                        self._shadow_plan(**mutation)
+                    )["pass"]
+                )
+
+    def test_runtime_environment_disables_optional_git_locks(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            temp_root = Path(tmp) / "isolated"
+            environment = benchmark._runtime_environment(temp_root)
+            self.assertEqual(environment["GIT_OPTIONAL_LOCKS"], "0")
+            self.assertEqual(environment["PYTHONDONTWRITEBYTECODE"], "1")
+            self.assertEqual(Path(environment["TMPDIR"]), temp_root)
+            self.assertEqual(
+                Path(environment["XDG_CACHE_HOME"]), temp_root / "cache"
+            )
+            self.assertTrue(temp_root.is_dir())
+            self.assertTrue((temp_root / "cache").is_dir())
+
+    def test_forbidden_runtime_argv_rejects_heavy_and_legacy_tools(self) -> None:
+        commands = [
+            ["/opt/bin/lake", "build"],
+            ["/opt/bin/lean", "Check.lean"],
+            ["bash", "/repo/specs_docs/session_start.sh"],
+            ["python3", "/repo/orchestrator/spine.py"],
+            ["python3", "/repo/orchestrator/three_body_loop.py"],
+            ["bash", "-lc", "cd /repo && lake build Q3"],
+        ]
+        audit = benchmark._forbidden_argv_audit(commands)
+        self.assertFalse(audit["pass"])
+        self.assertEqual(
+            {item["forbidden"] for item in audit["findings"]},
+            benchmark.FORBIDDEN_RUNTIME_COMMANDS,
+        )
+        self.assertTrue(
+            benchmark._forbidden_argv_audit([["git", "rev-parse", "HEAD"]])[
+                "pass"
+            ]
+        )
+
+    def test_descendant_lfs_helper_fanout_consumes_trace_budget(self) -> None:
+        direct = [["git", "status", str(index)] for index in range(5)]
+        observed = [
+            *direct,
+            *[["git-lfs", "filter-process", str(index)] for index in range(4)],
+            *[["git", "lfs-helper", str(index)] for index in range(16)],
+        ]
+        production, direct_record, audited = self._runtime_records(
+            direct_argv=direct,
+            observed_runtime_argv=observed,
+            opened_repo_paths=["/tmp/audited/docs/CODEX_CONTROL.md"],
+        )
+        result = benchmark._combine_runtime_sample(
+            production, direct_record, audited
+        )
+        self.assertEqual(result["total"]["counts"]["subprocess"], 25)
+        self.assertEqual(result["total"]["counts"]["git"], 21)
+        self.assertFalse(result["operation_count_budget"]["pass"])
+        self.assertEqual(
+            result["descendant_process_diagnostics"]["subprocess_count"], 25
+        )
+        self.assertEqual(
+            result["descendant_process_diagnostics"]["git_count"], 21
+        )
+        self.assertTrue(
+            result["descendant_process_diagnostics"]["budget_authority"]
+        )
+        self.assertTrue(result["process_count_crosscheck"]["pass"])
+
+    def test_sixth_direct_git_call_breaks_operation_budget(self) -> None:
+        direct = [["git", "status", str(index)] for index in range(6)]
+        production, direct_record, audited = self._runtime_records(
+            direct_argv=direct,
+            observed_runtime_argv=direct,
+        )
+        result = benchmark._combine_runtime_sample(
+            production, direct_record, audited
+        )
+        self.assertEqual(result["total"]["counts"]["git"], 6)
+        self.assertFalse(result["operation_count_budget"]["pass"])
+
+    def test_direct_argv_crosscheck_requires_duplicate_multiplicity(self) -> None:
+        command = ["git", "cat-file", "--batch-check", "-Z"]
+        audit = benchmark._argv_multiset_containment(
+            [command, command],
+            [command],
+        )
+        self.assertFalse(audit["pass"])
+        self.assertEqual(
+            audit["missing"],
+            [
+                {
+                    "argv": command,
+                    "required": 2,
+                    "observed": 1,
+                    "missing": 1,
+                }
+            ],
+        )
+
+    def test_descendant_lake_helper_breaks_forbidden_audit(self) -> None:
+        direct = [["git", "status"]]
+        production, direct_record, audited = self._runtime_records(
+            direct_argv=direct,
+            observed_runtime_argv=[*direct, ["lake", "build", "Q3"]],
+        )
+        result = benchmark._combine_runtime_sample(
+            production, direct_record, audited
+        )
+        self.assertFalse(result["forbidden_argv_audit"]["pass"])
+        self.assertFalse(result["runtime_acceptance"]["forbidden_argv_pass"])
+        self.assertIn(
+            "lake",
+            {
+                finding["forbidden"]
+                for finding in result["forbidden_argv_audit"]["findings"]
+            },
+        )
+
+    @staticmethod
+    def _trace_sentinels(tag: str) -> dict[str, dict[str, object]]:
+        return {
+            relative: {"bytes": len(tag), "sha256": tag}
+            for relative in benchmark.TRACE_SENTINEL_PATHS
+        }
+
+    @staticmethod
+    def _covered_trace(repo: Path, root_argv: list[str]) -> str:
+        lines = [
+            "1 execve(\"/usr/bin/python3\", "
+            + json.dumps(root_argv)
+            + ", 0x0 /* 0 vars */) = 0"
+        ]
+        for fd, relative in enumerate(benchmark.TRACE_SENTINEL_PATHS, start=3):
+            path = repo / relative
+            lines.append(
+                f'1 openat(AT_FDCWD, "{path}", O_RDONLY|O_CLOEXEC) = {fd}<{path}>'
+            )
+        return "\n".join(lines)
+
+    def test_strace_parser_counts_only_unique_repo_paths(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp) / "repo"
+            repo.mkdir()
+            trace = "\n".join(
+                (
+                    f'1 openat(AT_FDCWD, "a", O_RDONLY) = 3<{repo / "a"}>',
+                    f'1 openat(AT_FDCWD, "a", O_RDONLY) = 4<{repo / "a"}>',
+                    f'1 open("b", O_RDONLY) = 5<{repo / "b"}>',
+                    '1 open("x", O_RDONLY) = 6</etc/ld.so.cache>',
+                    f'1 open("c", O_RDONLY) = 7<{repo}x/c>',
+                )
+            )
+            opened = benchmark._parse_strace_opened_repo_paths(trace, repo)
+        self.assertEqual(opened, sorted((str(repo / "a"), str(repo / "b"))))
+
+    def test_strace_unavailable_fails_closed_before_subprocess(self) -> None:
+        with (
+            mock.patch.object(benchmark.sys, "platform", "linux"),
+            mock.patch.object(benchmark.shutil, "which", return_value=None),
+            mock.patch.object(benchmark.subprocess, "run") as run,
+            self.assertRaisesRegex(RuntimeError, "STRACE_UNAVAILABLE_FAIL_CLOSED"),
+        ):
+            benchmark._run_audited_process(
+                Path("/repo"), {}, Path("/tmp/control-v10.strace")
+            )
+        run.assert_not_called()
+
+    def test_strace_runs_the_exact_production_workflow_cli(self) -> None:
+        repo = Path("/repo")
+        runtime_command = benchmark._workflow_plan_command(repo)
+        payload = self._shadow_plan()
+        completed = subprocess.CompletedProcess(
+            args=[],
+            returncode=2,
+            stdout=json.dumps(payload),
+            stderr=self._timing_stderr(10.0),
+        )
+        sentinels = self._trace_sentinels("same")
+        with tempfile.TemporaryDirectory() as tmp:
+            trace_path = Path(tmp) / "runtime.strace"
+            trace_path.write_text(
+                self._covered_trace(repo, runtime_command), encoding="utf-8"
+            )
+            with (
+                mock.patch.object(benchmark.shutil, "which", return_value="/usr/bin/strace"),
+                mock.patch.object(
+                    benchmark.subprocess, "run", return_value=completed
+                ) as run,
+                mock.patch.object(
+                    benchmark,
+                    "_sentinel_manifest",
+                    side_effect=[sentinels, sentinels],
+                ),
+                mock.patch.object(benchmark.time, "perf_counter", side_effect=[0.0, 0.02]),
+            ):
+                audited = benchmark._run_audited_process(
+                    repo, {}, trace_path
+                )
+        self.assertEqual(audited["runtime_command"], runtime_command)
+        self.assertEqual(audited["sample"]["payload"], payload)
+        traced_command = run.call_args.args[0]
+        self.assertEqual(traced_command[-len(runtime_command) :], runtime_command)
+        self.assertNotIn("--single", traced_command)
+
+    def test_strace_empty_and_unparsed_fail_closed(self) -> None:
+        sentinels = self._trace_sentinels("same")
+        for trace, error in (
+            ("", "STRACE_TRACE_EMPTY_FAIL_CLOSED"),
+            ("not a syscall", "STRACE_TRACE_UNPARSED_FAIL_CLOSED"),
+        ):
+            with self.subTest(error=error), self.assertRaisesRegex(
+                RuntimeError, error
+            ):
+                benchmark._analyze_strace(
+                    trace,
+                    Path("/repo"),
+                    expected_root_argv=["python3", "benchmark.py", "--single"],
+                    sentinels_before=sentinels,
+                    sentinels_after=sentinels,
+                )
+
+    def test_strace_coalesces_unfinished_and_rejects_orphan_fragments(self) -> None:
+        repo = Path("/repo")
+        root_argv = ["python3", "/repo/benchmark.py", "--single"]
+        lines = [
+            "1 execve(\"/usr/bin/python3\", "
+            + json.dumps(root_argv)
+            + ", 0x0 /* 0 vars */) = 0"
+        ]
+        first, *remaining = benchmark.TRACE_SENTINEL_PATHS
+        first_path = repo / first
+        lines.extend(
+            (
+                f'1 openat(AT_FDCWD, "{first_path}", O_RDONLY|O_CLOEXEC '
+                "<unfinished ...>",
+                f'1 <... openat resumed>) = 3<{first_path}>',
+            )
+        )
+        for fd, relative in enumerate(remaining, start=4):
+            path = repo / relative
+            lines.append(
+                f'1 openat(AT_FDCWD, "{path}", O_RDONLY|O_CLOEXEC) = {fd}<{path}>'
+            )
+        sentinels = self._trace_sentinels("same")
+        audit = benchmark._analyze_strace(
+            "\n".join(lines),
+            repo,
+            expected_root_argv=root_argv,
+            sentinels_before=sentinels,
+            sentinels_after=sentinels,
+        )
+        self.assertTrue(audit["trace_coverage_pass"])
+        with self.assertRaisesRegex(RuntimeError, "STRACE_FRAGMENT_GAP:ORPHAN_RESUMED"):
+            benchmark._analyze_strace(
+                self._covered_trace(repo, root_argv)
+                + "\n1 <... openat resumed>) = 9</repo/orphan>",
+                repo,
+                expected_root_argv=root_argv,
+                sentinels_before=sentinels,
+                sentinels_after=sentinels,
+            )
+
+    def test_strace_copy_syscalls_use_ordered_destination_fd(self) -> None:
+        repo = Path("/repo")
+        trace = "\n".join(
+            (
+                "1 copy_file_range(3</repo/source-a>, NULL, "
+                "4</repo/destination-a>, NULL, 1, 0) = 1",
+                "1 sendfile(5</repo/destination-b>, "
+                "6</repo/source-b>, NULL, 1) = 1",
+            )
+        )
+        events = benchmark._strace_write_events(trace, repo)
+        self.assertEqual(
+            [event["path"] for event in events],
+            ["/repo/destination-a", "/repo/destination-b"],
+        )
+        self.assertTrue(
+            all(event["kind"] == "COPY_DESTINATION" for event in events)
+        )
+
+    def test_strace_quoted_sentinel_without_successful_open_is_red(self) -> None:
+        repo = Path("/repo")
+        root_argv = ["python3", "/repo/benchmark.py", "--single"]
+        lines = [
+            "1 execve(\"/usr/bin/python3\", "
+            + json.dumps(root_argv)
+            + ", 0x0 /* 0 vars */) = 0"
+        ]
+        for fd, relative in enumerate(benchmark.TRACE_SENTINEL_PATHS[:2], start=3):
+            path = repo / relative
+            lines.append(
+                f'1 openat(AT_FDCWD, "{path}", O_RDONLY|O_CLOEXEC) = {fd}<{path}>'
+            )
+        missing = repo / benchmark.TRACE_SENTINEL_PATHS[2]
+        lines.append(f'1 write(1</dev/null>, "{missing}", 1) = 1')
+        sentinels = self._trace_sentinels("same")
+        with self.assertRaisesRegex(
+            RuntimeError,
+            "STRACE_TRACE_COVERAGE_INCOMPLETE:all_sentinels_successfully_opened",
+        ):
+            benchmark._analyze_strace(
+                "\n".join(lines),
+                repo,
+                expected_root_argv=root_argv,
+                sentinels_before=sentinels,
+                sentinels_after=sentinels,
+            )
+
+    def test_strace_counts_only_successful_runtime_execve(self) -> None:
+        repo = Path("/repo")
+        root_argv = ["python3", "/repo/benchmark.py", "--single"]
+        trace = "\n".join(
+            (
+                self._covered_trace(repo, root_argv),
+                '2 execve("/missing/git", ["git", "status"], 0x0) = -2 ENOENT',
+                '2 execve("/usr/bin/git", ["git", "status"], 0x0) = 0',
+            )
+        )
+        sentinels = self._trace_sentinels("same")
+        audit = benchmark._analyze_strace(
+            trace,
+            repo,
+            expected_root_argv=root_argv,
+            sentinels_before=sentinels,
+            sentinels_after=sentinels,
+        )
+        self.assertEqual(audit["runtime_subprocess_count"], 1)
+        self.assertEqual(audit["runtime_git_count"], 1)
+        self.assertEqual(audit["runtime_execve_argv"], [["git", "status"]])
+
+    def test_strace_counts_repeated_root_argv_as_runtime_execve(self) -> None:
+        repo = Path("/repo")
+        root_argv = ["python3", "/repo/benchmark.py", "--single"]
+        trace = self._covered_trace(repo, root_argv) + (
+            "\n2 execve(\"/usr/bin/python3\", "
+            + json.dumps(root_argv)
+            + ", 0x0 /* 0 vars */) = 0"
+        )
+        sentinels = self._trace_sentinels("same")
+        audit = benchmark._analyze_strace(
+            trace,
+            repo,
+            expected_root_argv=root_argv,
+            sentinels_before=sentinels,
+            sentinels_after=sentinels,
+        )
+        self.assertEqual(audit["runtime_subprocess_count"], 1)
+        self.assertEqual(audit["runtime_git_count"], 0)
+        self.assertEqual(audit["runtime_execve_argv"], [root_argv])
+
+    def test_strace_write_audit_includes_ignored_lake_paths(self) -> None:
+        repo = Path("/repo")
+        root_argv = ["python3", "/repo/benchmark.py", "--single"]
+        trace = self._covered_trace(repo, root_argv) + (
+            '\n1 openat(AT_FDCWD, "/repo/.lake/build/new.bin", '
+            'O_WRONLY|O_CREAT|O_TRUNC, 0666) = 8</repo/.lake/build/new.bin>'
+            '\n1 write(9</repo/.lake/build/cache.bin>, "x", 1) = 1'
+        )
+        sentinels = self._trace_sentinels("same")
+        audit = benchmark._analyze_strace(
+            trace,
+            repo,
+            expected_root_argv=root_argv,
+            sentinels_before=sentinels,
+            sentinels_after=sentinels,
+        )
+        self.assertTrue(audit["trace_coverage_pass"])
+        self.assertFalse(audit["write_free_pass"])
+        self.assertEqual(
+            audit["write_events"],
+            [
+                {
+                    "line": 5,
+                    "syscall": "openat",
+                    "kind": "WRITE_CAPABLE_OPEN",
+                    "path": "/repo/.lake/build/new.bin",
+                },
+                {
+                    "line": 6,
+                    "syscall": "write",
+                    "kind": "FD_WRITE_OR_TRUNCATE",
+                    "path": "/repo/.lake/build/cache.bin",
+                }
+            ],
+        )
+
+    def test_git_lfs_tmp_write_is_detected_inside_dot_git(self) -> None:
+        repo = Path("/repo")
+        root_argv = ["python3", "/repo/workflow_runtime.py", "plan"]
+        lfs_tmp = repo / ".git/lfs/tmp/object.part"
+        trace = self._covered_trace(repo, root_argv) + (
+            '\n2 execve("/usr/bin/git-lfs", '
+            '["git-lfs", "filter-process"], 0x0) = 0'
+            f'\n2 openat(AT_FDCWD, "{lfs_tmp}", '
+            f'O_WRONLY|O_CREAT|O_TRUNC, 0666) = 8<{lfs_tmp}>'
+            f'\n2 write(8<{lfs_tmp}>, "x", 1) = 1'
+        )
+        sentinels = self._trace_sentinels("same")
+        audit = benchmark._analyze_strace(
+            trace,
+            repo,
+            expected_root_argv=root_argv,
+            sentinels_before=sentinels,
+            sentinels_after=sentinels,
+        )
+        self.assertFalse(audit["write_free_pass"])
+        self.assertIn(
+            str(lfs_tmp),
+            {event["path"] for event in audit["write_events"]},
+        )
+
+    def test_git_index_lock_write_and_rename_are_detected(self) -> None:
+        repo = Path("/repo")
+        root_argv = ["python3", "/repo/workflow_runtime.py", "plan"]
+        index_lock = repo / ".git/index.lock"
+        index = repo / ".git/index"
+        trace = self._covered_trace(repo, root_argv) + (
+            f'\n2 openat(AT_FDCWD, "{index_lock}", '
+            f'O_WRONLY|O_CREAT|O_EXCL, 0666) = 8<{index_lock}>'
+            f'\n2 rename("{index_lock}", "{index}") = 0'
+        )
+        sentinels = self._trace_sentinels("same")
+        audit = benchmark._analyze_strace(
+            trace,
+            repo,
+            expected_root_argv=root_argv,
+            sentinels_before=sentinels,
+            sentinels_after=sentinels,
+        )
+        self.assertFalse(audit["write_free_pass"])
+        events = audit["write_events"]
+        self.assertIn(str(index_lock), {event["path"] for event in events})
+        self.assertTrue(
+            any(
+                event["syscall"] == "rename" and event["path"] == str(index)
+                for event in events
+            )
+        )
+
+    def test_cold_sparse_checkout_uses_minimal_runtime_surface(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            destination = Path(tmp) / "checkout"
+            (destination / ".git").mkdir(parents=True)
+            for relative in benchmark.COLD_REQUIRED_PATHS:
+                path = destination / relative
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text("fixture\n", encoding="utf-8")
+            goal = destination / "docs/routeB_bus/058_fixture.goal.md"
+            goal.parent.mkdir(parents=True, exist_ok=True)
+            goal.write_text("fixture\n", encoding="utf-8")
+            source_relative = "docs/routeB_bus/proshka/fixture-source.md"
+            source = destination / source_relative
+            source.parent.mkdir(parents=True, exist_ok=True)
+            source.write_text("fixture\n", encoding="utf-8")
+            completed = subprocess.CompletedProcess(
+                args=[], returncode=0, stdout="", stderr=""
+            )
+            with mock.patch.object(
+                benchmark.subprocess, "run", return_value=completed
+            ) as run:
+                result = benchmark._isolated_checkout(
+                    Path("/repo"),
+                    destination,
+                    extra_sparse_paths=(source_relative,),
+                )
+        self.assertEqual(result, destination)
+        sparse_set = next(
+            call.args[0]
+            for call in run.call_args_list
+            if call.args[0][:3]
+            == ["git", "sparse-checkout", "set"]
+        )
+        self.assertIn("/docs/routeB_bus/*.goal.md", sparse_set)
+        self.assertIn("/docs/routeB_bus/*.answer.md", sparse_set)
+        self.assertIn("/docs/routeB_bus/**/*.goal.md", sparse_set)
+        self.assertIn("/docs/routeB_bus/**/*.answer.md", sparse_set)
+        self.assertIn("/" + source_relative, sparse_set)
+        for relative in benchmark.COLD_REQUIRED_PATHS:
+            self.assertIn("/" + relative, sparse_set)
+        for broad_pattern in (
+            "/docs/cartographer/",
+            "/docs/routeB_bus/",
+            "/orchestrator/",
+            "/scripts/",
+            "/specs_docs/",
+            "/q3.lean.aristotle/Q3/Benchmarks/",
+            "/q3.lean.aristotle/Q3/Proofs/RouteB/",
+        ):
+            self.assertNotIn(broad_pattern, sparse_set)
+
+    def test_cold_sparse_checkout_rejects_any_forbidden_payload(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            destination = Path(tmp) / "checkout"
+            (destination / ".git").mkdir(parents=True)
+            for relative in benchmark.COLD_REQUIRED_PATHS:
+                path = destination / relative
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text("fixture\n", encoding="utf-8")
+            goal = destination / "docs/routeB_bus/058_fixture.goal.md"
+            goal.parent.mkdir(parents=True, exist_ok=True)
+            goal.write_text("fixture\n", encoding="utf-8")
+            rogue = (
+                destination
+                / "docs/routeB_bus/litreview/pdfs/rogue-uppercase.PDF"
+            )
+            rogue.parent.mkdir(parents=True, exist_ok=True)
+            rogue.write_text("fixture\n", encoding="utf-8")
+            completed = subprocess.CompletedProcess(
+                args=[], returncode=0, stdout="", stderr=""
+            )
+            with mock.patch.object(
+                benchmark.subprocess, "run", return_value=completed
+            ), self.assertRaisesRegex(
+                RuntimeError, "COLD_CHECKOUT_NON_STARTUP_LFS_PAYLOAD_PRESENT"
+            ):
+                benchmark._isolated_checkout(Path("/repo"), destination)
+
+    def test_materialized_cold_checkout_contains_no_filter_lfs_path(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source = root / "source"
+            destination = root / "checkout"
+            subprocess.run(
+                ["git", "init", "--quiet", str(source)],
+                check=True,
+                capture_output=True,
+            )
+            tracked: list[str] = []
+            for relative in benchmark.COLD_REQUIRED_PATHS:
+                path = source / relative
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text("fixture\n", encoding="utf-8")
+                tracked.append(relative)
+            goal_relative = "docs/routeB_bus/058_fixture.goal.md"
+            goal = source / goal_relative
+            goal.parent.mkdir(parents=True, exist_ok=True)
+            goal.write_text("fixture\n", encoding="utf-8")
+            tracked.append(goal_relative)
+            attributes = source / ".gitattributes"
+            attributes.write_text(
+                "payloads/*.bin filter=lfs diff=lfs merge=lfs -text\n",
+                encoding="utf-8",
+            )
+            tracked.append(".gitattributes")
+            subprocess.run(
+                ["git", "add", "--", *tracked],
+                cwd=source,
+                check=True,
+                capture_output=True,
+            )
+            blob = subprocess.run(
+                ["git", "hash-object", "-w", "--stdin"],
+                cwd=source,
+                check=True,
+                capture_output=True,
+                text=True,
+                input="lfs payload excluded from sparse checkout\n",
+            ).stdout.strip()
+            subprocess.run(
+                [
+                    "git",
+                    "update-index",
+                    "--add",
+                    "--cacheinfo",
+                    "100644",
+                    blob,
+                    "payloads/rogue.bin",
+                ],
+                cwd=source,
+                check=True,
+                capture_output=True,
+            )
+            subprocess.run(
+                [
+                    "git",
+                    "-c",
+                    "user.name=Q3 Benchmark",
+                    "-c",
+                    "user.email=q3-benchmark.invalid",
+                    "commit",
+                    "--quiet",
+                    "-m",
+                    "fixture",
+                ],
+                cwd=source,
+                check=True,
+                capture_output=True,
+            )
+            checkout = benchmark._isolated_checkout(source, destination)
+            self.assertFalse((checkout / "payloads/rogue.bin").exists())
+            self.assertEqual(
+                benchmark._materialized_lfs_filter_paths(checkout),
+                (),
+            )
+
+    def test_physical_goal_source_paths_are_exact_and_unanswered_only(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            bus = repo / "docs/routeB_bus"
+            bus.mkdir(parents=True)
+            source_relative = "docs/routeB_bus/proshka/exact-source.md"
+            nested_goal = bus / "nested/058_fixture.goal.md"
+            nested_goal.parent.mkdir(parents=True)
+            nested_goal.write_text(
+                "```yaml\nGOAL: 058\nSTATUS: OPEN\n"
+                f"SOURCE: {source_relative}\n```\n",
+                encoding="utf-8",
+            )
+            (bus / "057_answered.goal.md").write_text(
+                "```yaml\nGOAL: 057\nSTATUS: OPEN\n"
+                "SOURCE: docs/routeB_bus/proshka/ignored.md\n```\n",
+                encoding="utf-8",
+            )
+            (bus / "057_answered.answer.md").write_text(
+                "answered\n", encoding="utf-8"
+            )
+            self.assertEqual(
+                benchmark._physical_goal_source_paths(repo),
+                (source_relative,),
+            )
+
+    def test_extra_sparse_path_validation_fails_closed(self) -> None:
+        for invalid in (
+            "",
+            "/absolute",
+            "../escape",
+            "a/../escape",
+            "a\\b",
+            "docs/**",
+            "docs/file?.md",
+            "docs/[ab].md",
+            "docs/file.md\n/rogue/**",
+            "docs/file.md\r/rogue/**",
+        ):
+            with self.subTest(invalid=invalid), self.assertRaisesRegex(
+                RuntimeError, "COLD_CHECKOUT_EXTRA_SPARSE_PATH_INVALID"
+            ):
+                benchmark._canonical_sparse_paths((invalid,))
+
+    def test_active_current_task_is_an_exact_dynamic_sparse_path(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            current = repo / "docs/Codex/CURRENT.md"
+            current.parent.mkdir(parents=True)
+            current.write_text(
+                "```yaml\nstatus: ACTIVE\n"
+                "task_file: docs/Codex/TASK_exact.md\n```\n",
+                encoding="utf-8",
+            )
+            self.assertEqual(
+                benchmark._active_current_task_paths(repo),
+                ("docs/Codex/TASK_exact.md",),
+            )
+
+    def test_every_direct_production_run_audits_ignored_tree_writes(self) -> None:
+        payload = json.dumps(self._shadow_plan())
+        completed = subprocess.CompletedProcess(
+            args=[],
+            returncode=2,
+            stdout=payload,
+            stderr=self._timing_stderr(),
+        )
+        stable = {
+            "sha256": "stable",
+            "entry_count": 1,
+            "entries": {".lake/cache.bin": {"sha256": "before"}},
+            "scope": "FULL_REPO_TREE_EXCLUDING_DOT_GIT_INCLUDES_IGNORED_PATHS",
+        }
+        mutated = {
+            **stable,
+            "sha256": "mutated",
+            "entries": {".lake/cache.bin": {"sha256": "after"}},
+        }
+        with (
+            mock.patch.object(
+                benchmark,
+                "_non_git_tree_manifest",
+                side_effect=[stable, stable, stable, mutated],
+            ),
+            mock.patch.object(
+                benchmark.subprocess, "run", return_value=completed
+            ) as run,
+        ):
+            first = benchmark._run_production_cli(Path("/repo"), {})
+            with self.assertRaisesRegex(
+                RuntimeError,
+                "BENCHMARK_DIRECT_PRODUCTION_REPO_WRITE:.lake/cache.bin",
+            ):
+                benchmark._run_production_cli(Path("/repo"), {})
+        self.assertTrue(first["write_audit"]["pass"])
+        self.assertTrue(
+            first["write_audit"]["measurement_excludes_manifest_wall"]
+        )
+        self.assertEqual(run.call_count, 2)
+        self.assertEqual(
+            run.call_args_list[0].args[0],
+            [
+                benchmark.sys.executable,
+                "/repo/orchestrator/workflow_runtime.py",
+                "--root",
+                "/repo",
+                "plan",
+                "--shadow-v10",
+                "--benchmark-startup-timing",
+            ],
+        )
+
+    def test_cold_runs_production_before_separate_audited_checkout(self) -> None:
+        events: list[str] = []
+        environments: list[tuple[str, str]] = []
+
+        def checkout(_repo: Path, destination: Path) -> Path:
+            events.append("checkout:" + destination.name)
+            return destination
+
+        def production(repo: Path, environment: dict[str, str]) -> object:
+            events.append("production:" + repo.name)
+            environments.append(("production", environment["TMPDIR"]))
+            return object()
+
+        def direct(repo: Path, environment: dict[str, str]) -> object:
+            events.append("direct:" + repo.name)
+            environments.append(("direct", environment["TMPDIR"]))
+            return object()
+
+        def audited(
+            repo: Path, environment: dict[str, str], _trace_path: Path
+        ) -> object:
+            events.append("audited:" + repo.name)
+            environments.append(("audited", environment["TMPDIR"]))
+            return object()
+
+        with (
+            tempfile.TemporaryDirectory() as tmp,
+            mock.patch.object(
+                benchmark, "_isolated_checkout", side_effect=checkout
+            ),
+            mock.patch.object(
+                benchmark, "_run_production_cli", side_effect=production
+            ),
+            mock.patch.object(
+                benchmark, "_run_direct_instrumentation", side_effect=direct
+            ),
+            mock.patch.object(
+                benchmark, "_run_audited_process", side_effect=audited
+            ),
+            mock.patch.object(
+                benchmark, "_combine_runtime_sample", return_value={}
+            ),
+        ):
+            result = benchmark._cold_once(Path("/source"), Path(tmp))
+        self.assertEqual(
+            events,
+            [
+                "checkout:production-checkout",
+                "production:production-checkout",
+                "checkout:audited-checkout",
+                "direct:audited-checkout",
+                "audited:audited-checkout",
+            ],
+        )
+        self.assertEqual(len(set(result["cold_checkout_paths"].values())), 2)
+        self.assertEqual(
+            [name for name, _path in environments],
+            ["production", "direct", "audited"],
+        )
+        self.assertEqual(len({path for _name, path in environments}), 3)
+
+    def test_prime_is_exactly_one_production_workflow_run(self) -> None:
+        production_result = {"prime": True, "write_audit": {"pass": True}}
+        with (
+            tempfile.TemporaryDirectory() as tmp,
+            mock.patch.object(
+                benchmark, "_run_production_cli", return_value=production_result
+            ) as production,
+        ):
+            result = benchmark._prime_runtime_measurement(
+                Path("/repo"), Path(tmp) / "prime"
+            )
+        self.assertIs(result["production"], production_result)
+        self.assertEqual(result["write_audit"], {"pass": True})
+        production.assert_called_once()
+
+    def test_prime_rejects_ignored_lake_mutation(self) -> None:
+        completed = subprocess.CompletedProcess(
+            args=[],
+            returncode=2,
+            stdout=json.dumps(self._shadow_plan()),
+            stderr="",
+        )
+        before = {
+            "sha256": "before",
+            "entry_count": 1,
+            "entries": {".lake/cache.bin": {"sha256": "before"}},
+            "scope": "FULL_REPO_TREE_EXCLUDING_DOT_GIT_INCLUDES_IGNORED_PATHS",
+        }
+        after = {
+            **before,
+            "sha256": "after",
+            "entries": {".lake/cache.bin": {"sha256": "after"}},
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            with (
+                mock.patch.object(
+                    benchmark,
+                    "_non_git_tree_manifest",
+                    side_effect=[before, after],
+                ),
+                mock.patch.object(
+                    benchmark.subprocess, "run", return_value=completed
+                ) as run,
+                self.assertRaisesRegex(
+                    RuntimeError,
+                    "BENCHMARK_DIRECT_PRODUCTION_REPO_WRITE:.lake/cache.bin",
+                ),
+            ):
+                benchmark._prime_runtime_measurement(
+                    Path("/repo"), Path(tmp) / "prime"
+                )
+        run.assert_called_once()
+
+    def test_warm_uses_per_run_audited_counts_after_one_prime(self) -> None:
+        events: list[str] = []
+        environments: list[tuple[str, str]] = []
+        prime = {"prime": True, "write_audit": {"pass": True}}
+
+        def production(
+            _repo: Path, environment: dict[str, str]
+        ) -> dict[str, int]:
+            index = len([name for name, _path in environments if name == "production"])
+            events.append(f"production:{index}")
+            environments.append(("production", environment["TMPDIR"]))
+            return {"run": index + 1}
+
+        def direct(
+            _repo: Path, environment: dict[str, str]
+        ) -> dict[str, int]:
+            index = len([name for name, _path in environments if name == "direct"])
+            events.append(f"direct:{index}")
+            environments.append(("direct", environment["TMPDIR"]))
+            return {"direct": index + 21}
+
+        def audited(
+            _repo: Path, environment: dict[str, str], _trace_path: Path
+        ) -> dict[str, int]:
+            index = len([name for name, _path in environments if name == "audited"])
+            events.append(f"audited:{index}")
+            environments.append(("audited", environment["TMPDIR"]))
+            return {"count": index + 11}
+
+        with (
+            tempfile.TemporaryDirectory() as tmp,
+            mock.patch.object(
+                benchmark, "_prime_runtime_measurement", return_value=prime
+            ) as prime_call,
+            mock.patch.object(
+                benchmark,
+                "_run_production_cli",
+                side_effect=production,
+            ) as production,
+            mock.patch.object(
+                benchmark,
+                "_run_audited_process",
+                side_effect=audited,
+            ) as audited,
+            mock.patch.object(
+                benchmark,
+                "_run_direct_instrumentation",
+                side_effect=direct,
+            ) as direct_call,
+            mock.patch.object(
+                benchmark,
+                "_combine_runtime_sample",
+                side_effect=lambda current, direct_record, audit: {
+                    "run": current["run"],
+                    "direct": direct_record["direct"],
+                    "count": audit["count"],
+                },
+            ) as combine,
+        ):
+            observed_prime, rows = benchmark._warm_samples(
+                Path("/repo"), Path(tmp), runs=3
+            )
+        self.assertIs(observed_prime, prime)
+        prime_call.assert_called_once_with(Path("/repo"), Path(tmp) / "prime")
+        self.assertEqual(production.call_count, 3)
+        self.assertEqual(direct_call.call_count, 3)
+        self.assertEqual(audited.call_count, 3)
+        self.assertEqual(combine.call_count, 3)
+        self.assertEqual(
+            rows,
+            [
+                {"run": 1, "direct": 21, "count": 11},
+                {"run": 2, "direct": 22, "count": 12},
+                {"run": 3, "direct": 23, "count": 13},
+            ],
+        )
+        self.assertEqual(
+            events,
+            [
+                "production:0",
+                "direct:0",
+                "audited:0",
+                "production:1",
+                "direct:1",
+                "audited:1",
+                "production:2",
+                "direct:2",
+                "audited:2",
+            ],
+        )
+        for index in range(3):
+            run_environments = environments[index * 3 : index * 3 + 3]
+            self.assertEqual(
+                {name for name, _path in run_environments},
+                {"production", "direct", "audited"},
+            )
+            self.assertEqual(
+                len({path for _name, path in run_environments}),
+                3,
+            )
+
+    def test_full_payload_mismatch_is_red(self) -> None:
+        production_payload = self._shadow_plan()
+        audited_payload = json.loads(json.dumps(production_payload))
+        audited_payload["node_registry"]["detail"] = "different"
+        production_record, direct_record, audited_record = self._runtime_records(
+            production_payload=production_payload,
+            direct_payload=production_payload,
+            audited_payload=audited_payload,
+        )
+        production_record["duration_ms"] = 377.0
+        production_record["startup_timing"]["startup_duration_ms"] = 123.0
+        direct_record["sample"]["startup"]["duration_ms"] = 1775.0
+        audited_record["sample"]["startup"]["duration_ms"] = 2775.0
+        result = benchmark._combine_runtime_sample(
+            production_record, direct_record, audited_record
+        )
+        self.assertFalse(
+            result["payload_parity"]["production_matches_audited"]
+        )
+        self.assertFalse(
+            result["runtime_acceptance"]["full_payload_parity_pass"]
+        )
+        self.assertFalse(result["runtime_acceptance"]["pass"])
+        self.assertEqual(result["startup"]["duration_ms"], 123.0)
+        self.assertEqual(
+            result["startup"]["measurement"],
+            "DIRECT_PRODUCTION_BUILD_SHADOW_SNAPSHOT_WALL",
+        )
+        self.assertEqual(result["startup"]["audited_twin_duration_ms"], 2775.0)
+        self.assertEqual(result["plan"]["duration_ms"], 254.0)
+        self.assertEqual(result["total"]["duration_ms"], 377.0)
+        self.assertTrue(
+            result["runtime_acceptance"]["snapshot_count_parity_pass"]
+        )
+        self.assertNotEqual(
+            result["startup"]["duration_ms"], result["total"]["duration_ms"]
+        )
+        production_record["payload"] = audited_payload
+        direct_record["sample"]["payload"] = audited_payload
+        matched = benchmark._combine_runtime_sample(
+            production_record, direct_record, audited_record
+        )
+        self.assertEqual(matched["startup"]["duration_ms"], 123.0)
+        self.assertEqual(
+            matched["startup"]["audited_twin_duration_ms"], 2775.0
+        )
+        self.assertTrue(matched["runtime_acceptance"]["pass"])
+
+    def test_authoritative_benchmark_requires_exact_20_by_3_matrix(self) -> None:
+        with self.assertRaisesRegex(
+            ValueError, "BENCHMARK_AUTHORITATIVE_MATRIX_REQUIRES_20_WARM_3_COLD"
+        ):
+            benchmark.benchmark(Path("/repo"), warm_runs=1, cold_runs=1)
+
+    def test_proof_body_plant_targets_exact_registered_theorem(self) -> None:
+        source = (
+            b"namespace Other\n"
+            b"theorem target : True := by\n  trivial\n"
+            b"end Other\n\n"
+            b"namespace Q3.RouteB\n"
+            b"theorem first : True := by\n  trivial\n\n"
+            b"theorem target : True := by\n"
+            b"  have nested : True := by trivial\n"
+            b"  exact nested\n\n"
+            b"theorem last : True := by\n  trivial\n"
+            b"end Q3.RouteB\n"
+        )
+        theorem_id = "Q3.RouteB.target"
+        planted = benchmark._proof_body_plant_bytes(source, theorem_id)
+        assignment = benchmark._proof_body_assignment_offset(source, theorem_id)
+        marker = planted.index(benchmark.PROOF_BODY_PLANT_MARKER)
+        q3_namespace = planted.index(b"namespace Q3.RouteB")
+        target = planted.index(b"theorem target", q3_namespace)
+        last = planted.index(b"theorem last")
+        self.assertGreater(marker, assignment + len(b":= by"))
+        self.assertGreater(marker, target)
+        self.assertLess(marker, last)
+        self.assertNotIn(benchmark.PROOF_BODY_PLANT_MARKER, planted[:target])
+        self.assertEqual(planted.count(benchmark.PROOF_BODY_PLANT_MARKER), 1)
+
+    def test_proof_body_plant_rejects_ambiguous_exact_leaf(self) -> None:
+        source = (
+            b"namespace Q3.RouteB\n"
+            b"theorem target : True := by trivial\n"
+            b"theorem target : True := by trivial\n"
+            b"end Q3.RouteB\n"
+        )
+        with self.assertRaisesRegex(
+            RuntimeError, "PROOF_BODY_PLANT_EXACT_DECLARATION_COUNT:2"
+        ):
+            benchmark._proof_body_plant_bytes(source, "Q3.RouteB.target")
+
+    def test_proof_body_plant_skips_binder_default_proof_assignment(self) -> None:
+        source = (
+            b"namespace Q3.RouteB\n"
+            b"theorem target (h : True := by trivial) : True := by\n"
+            b"  have nested : True := by trivial\n"
+            b"  exact h\n"
+            b"end Q3.RouteB\n"
+        )
+        first_assignment = source.index(b":= by")
+        outer_assignment = source.index(b":= by", first_assignment + 1)
+        assignment = benchmark._proof_body_assignment_offset(
+            source, "Q3.RouteB.target"
+        )
+        planted = benchmark._proof_body_plant_bytes(
+            source, "Q3.RouteB.target"
+        )
+        marker = planted.index(benchmark.PROOF_BODY_PLANT_MARKER)
+        self.assertEqual(assignment, outer_assignment)
+        self.assertGreater(marker, outer_assignment + len(b":= by"))
+        self.assertNotIn(
+            benchmark.PROOF_BODY_PLANT_MARKER,
+            planted[:outer_assignment],
+        )
 
 
 if __name__ == "__main__":

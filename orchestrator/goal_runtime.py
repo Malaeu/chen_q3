@@ -19,7 +19,7 @@ from collections.abc import Callable
 from dataclasses import asdict, dataclass
 from datetime import datetime
 from pathlib import Path, PurePosixPath
-from typing import TYPE_CHECKING, Any
+from typing import Any
 
 import yaml
 
@@ -35,9 +35,6 @@ from orchestrator.routeb_goal_state import (  # noqa: E402
     goal_machine_header_text,
     load_unique_yaml,
 )
-
-if TYPE_CHECKING:
-    from orchestrator.startup_runtime import ShadowGoalSelection
 
 DEFAULT_BUS = REPO_ROOT / "docs" / "routeB_bus"
 CHANNEL_RUNTIME_REL = PurePosixPath("orchestrator/state/CHANNEL_RUNTIME.json")
@@ -199,19 +196,6 @@ class SelectionDecision:
     selected_goal_path: str | None = None
     mathematical_phase_key_sha256: str | None = None
     detail: str | None = None
-
-
-def select_v10_shadow_goal(repo_root: Path = REPO_ROOT) -> ShadowGoalSelection:
-    """Expose the pure v10 selector without changing AUTOPILOT_000 defaults.
-
-    The implementation lives in ``startup_runtime`` so its shadow builder does
-    not import the v9 Spine or three-body runtime pulled in by this legacy
-    module.
-    """
-
-    from orchestrator.startup_runtime import select_v10_shadow_goal as select_shadow
-
-    return select_shadow(repo_root)
 
 
 def _fail(code: str, detail: str = "") -> None:

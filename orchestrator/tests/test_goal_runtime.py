@@ -773,28 +773,5 @@ class GoalRuntimePlants(unittest.TestCase):
             self.assertEqual(decision.action, "SELECT_EXACT_GOAL")
             self.assertEqual(decision.selected_goal_id, "058")
 
-
-    def test_v10_shadow_selector_is_pure_and_numeric_id_is_not_authority(self) -> None:
-        with tempfile.TemporaryDirectory() as tmp:
-            root = Path(tmp)
-            bus = root / "docs" / "routeB_bus"
-            bus.mkdir(parents=True)
-            goal_runtime._write_goal(bus, "001", PHASE)
-            goal_runtime._write_goal(bus, "999", PHASE)
-            paused = bus / "999_plant.goal.md"
-            paused.write_text(
-                paused.read_text(encoding="utf-8").replace(
-                    "STATUS: OPEN", "STATUS: PAUSED_RESTORABLE"
-                ),
-                encoding="utf-8",
-            )
-
-            result = goal_runtime.select_v10_shadow_goal(root)
-
-            self.assertEqual(result.selected_goal, "docs/routeB_bus/001_plant.goal.md")
-            self.assertEqual(result.exact_node_pin, "Plant001")
-            self.assertFalse(result.fatal_errors)
-
-
 if __name__ == "__main__":
     unittest.main()

@@ -15,13 +15,15 @@ import os
 import re
 import stat
 import subprocess
+from contextlib import contextmanager
 from dataclasses import asdict, dataclass, replace
 from pathlib import Path, PurePosixPath
-from typing import Any, BinaryIO
+from typing import Any, BinaryIO, Iterator
 
 import yaml
 
 from orchestrator.routeb_goal_state import (
+    MACHINE_HEADER_RE,
     PAUSED_STATUSES,
     STATUS_RE,
     goal_machine_header_text,
@@ -40,13 +42,30 @@ CONTROL_FENCE_RE = re.compile(
 )
 COMMIT_RE = re.compile(r"^[0-9a-f]{40}$")
 GOAL_FILE_RE = re.compile(r"^(?P<goal_id>\d{3}[A-Za-z]*)_.+\.goal\.md$")
-ANSWER_FILE_RE = re.compile(r"^(?P<goal_id>\d{3}[A-Za-z]*)_.+\.answer\.md$")
 OPEN_STATUS = "OPEN"
 TERMINAL_GOAL_STATUSES = frozenset({"CLOSED", "CLOSED_PHASE0"})
 CURRENT_INACTIVE_STATUSES = frozenset({"CLOSED", "EMPTY"})
+KNOWN_GOAL_STATUSES = frozenset(
+    {OPEN_STATUS, *PAUSED_STATUSES, *TERMINAL_GOAL_STATUSES}
+)
+YAML_NULL_SPELLINGS = frozenset({"~", "null"})
 SHADOW_MODE = "SHADOW_NOT_AUTHORITY"
 HONESTY_STATE = "CHALLENGER_NOT_RH"
-FROZEN_V9_BASELINE = "8bddaa6faf35e093f0a8459d15381c4c6d27305e"
+HISTORICAL_PAIRED_BASELINE_COMMIT = (
+    "8bddaa6faf35e093f0a8459d15381c4c6d27305e"
+)
+HISTORICAL_STRUCTURED_PAIRED_GOALS = frozenset(
+    {
+        (
+            PurePosixPath(
+                "docs/routeB_bus/056_k8_muntz_v3_slot_s2_bridge.goal.md"
+            ),
+            "PHASE0_INTERFACE_AUDIT",
+        )
+    }
+)
+HISTORICAL_PAIRED_EXPECTED_COUNT = 47
+BUS_DIRECTORY_SCAN_LIMIT = 256
 
 
 class StartupRuntimeError(ValueError):
@@ -168,11 +187,16 @@ class _WriterLockGuard:
 @dataclass(frozen=True)
 class _SelectionContext:
     selection: ShadowGoalSelection
+    state_selected_goal: str | None
     source_path: str | None
     final_tree: str | None
     final_origin: str | None
+    control_head_blob: str | None
+    state_head_blob: str | None
     errors: tuple[str, ...]
     fingerprints: tuple[tuple[PurePosixPath, _PathFingerprint], ...]
+    bus_manifest_sha256: str | None
+    owned_uncommitted_source_candidate: bool = False
 
 
 def _repo_file(repo: Path, relative: PurePosixPath) -> Path:
@@ -414,11 +438,13 @@ def _pins(mapping: dict[str, Any]) -> tuple[str | None, str | None, str | None, 
     return node, source, theorem, consumer
 
 
-def _goal_header(path: Path) -> dict[str, Any]:
+def _goal_header_if_present(path: Path) -> dict[str, Any] | None:
     try:
         text = path.read_text(encoding="utf-8")
     except (OSError, UnicodeDecodeError) as exc:
         raise StartupRuntimeError("STARTUP_GOAL_HEADER_INVALID", f"{path}: {exc}") from exc
+    if MACHINE_HEADER_RE.search(text) is None:
+        return None
     header = goal_machine_header_text(text)
     if header is None:
         raise StartupRuntimeError(
@@ -427,7 +453,21 @@ def _goal_header(path: Path) -> dict[str, Any]:
     return header
 
 
-def _goal_id(path: Path, header: dict[str, Any]) -> str:
+def _goal_header(path: Path) -> dict[str, Any]:
+    header = _goal_header_if_present(path)
+    if header is None:
+        raise StartupRuntimeError(
+            "STARTUP_GOAL_HEADER_INVALID", f"missing or malformed header: {path}"
+        )
+    return header
+
+
+def _goal_id(
+    path: Path,
+    header: dict[str, Any],
+    *,
+    allow_paired_phase_alias: bool = False,
+) -> str:
     match = GOAL_FILE_RE.fullmatch(path.name)
     value = header.get("GOAL")
     if match is None or not isinstance(value, str):
@@ -436,6 +476,14 @@ def _goal_id(path: Path, header: dict[str, Any]) -> str:
         )
     file_goal_id = match.group("goal_id")
     if value != file_goal_id:
+        phase_alias = re.fullmatch(r"(?P<base>\d{3})[A-Za-z]+", file_goal_id)
+        if (
+            allow_paired_phase_alias
+            and phase_alias is not None
+            and value == phase_alias.group("base")
+            and _nonempty_machine_scalar(header, "PHASE")
+        ):
+            return file_goal_id
         raise StartupRuntimeError(
             "STARTUP_GOAL_IDENTITY_MISMATCH",
             f"machine GOAL {value!r} disagrees with {path.name!r}",
@@ -443,41 +491,73 @@ def _goal_id(path: Path, header: dict[str, Any]) -> str:
     return file_goal_id
 
 
-def _answer_result_present(header: dict[str, Any]) -> bool:
-    keys = (
-        "EXACT_RESULT",
-        "RESULT",
-        "VERDICT",
-        "PRIMARY",
-        "PRIMARY_VERDICT",
-        "SUCCESS",
-        "STOP",
-        "FAILURE_CODE",
-    )
-    return any(
-        isinstance(header.get(key), str)
-        and header[key].strip()
-        and header[key].strip().lower() != "null"
-        for key in keys
+def _nonempty_machine_scalar(mapping: dict[str, Any], key: str) -> bool:
+    value = mapping.get(key)
+    normalized = value.strip().lower() if isinstance(value, str) else None
+    return (
+        isinstance(value, str)
+        and bool(normalized)
+        and normalized not in YAML_NULL_SPELLINGS
     )
 
 
-def _validate_answer(goal_id: str, answer_path: Path) -> None:
+def _validate_modern_answer(
+    goal_path: Path,
+    goal_header: dict[str, Any],
+    answer_path: Path,
+) -> None:
+    """Require one exact modern goal/answer closure edge."""
+
     try:
-        header = _goal_header(answer_path)
+        answer_header = _goal_header(answer_path)
     except StartupRuntimeError as exc:
         raise StartupRuntimeError("STARTUP_ANSWER_INVALID", str(exc)) from exc
-    match = ANSWER_FILE_RE.fullmatch(answer_path.name)
-    answer_goal = header.get("GOAL")
+
+    match = GOAL_FILE_RE.fullmatch(goal_path.name)
+    file_goal = match.group("goal_id") if match is not None else None
+    goal_value = goal_header.get("GOAL")
+    answer_value = answer_header.get("GOAL")
+    goal_phase = goal_header.get("PHASE")
+    answer_phase = answer_header.get("PHASE")
+    goal_node = goal_header.get("NODE")
+    answer_node = answer_header.get("NODE")
+    phase_alias = (
+        re.fullmatch(r"(?P<base>\d{3})[A-Za-z]+", file_goal)
+        if isinstance(file_goal, str)
+        else None
+    )
+    alias_valid = (
+        phase_alias is not None
+        and goal_value == phase_alias.group("base")
+        and _nonempty_machine_scalar(goal_header, "PHASE")
+        and answer_phase == goal_phase
+    )
+    identity_valid = (
+        isinstance(file_goal, str)
+        and isinstance(goal_value, str)
+        and answer_value == goal_value
+        and (goal_value == file_goal or alias_valid)
+    )
+    phase_valid = goal_phase == answer_phase
+    node_valid = (
+        _nonempty_machine_scalar(goal_header, "NODE")
+        and _nonempty_machine_scalar(answer_header, "NODE")
+        and answer_node == goal_node
+    )
+    result_valid = any(
+        _nonempty_machine_scalar(answer_header, key)
+        for key in ("EXACT_RESULT", "RESULT", "SUCCESS")
+    )
     if (
-        match is None
-        or match.group("goal_id") != goal_id
-        or answer_goal != goal_id
-        or header.get("STATUS") not in TERMINAL_GOAL_STATUSES
-        or not _answer_result_present(header)
+        not identity_valid
+        or not phase_valid
+        or not node_valid
+        or answer_header.get("STATUS") not in TERMINAL_GOAL_STATUSES
+        or not result_valid
     ):
         raise StartupRuntimeError(
-            "STARTUP_ANSWER_INVALID", f"identity, status, or result invalid: {answer_path}"
+            "STARTUP_ANSWER_INVALID",
+            f"identity, phase, node, status, or result invalid: {answer_path}",
         )
 
 
@@ -555,7 +635,7 @@ def _active_current_selection(
     task_fingerprint = _path_fingerprint(repo, task_rel)
     task_header = _current_mapping(task_path, expected=task_fingerprint)
     node, _source, theorem, consumer = _pins(task_header)
-    missing_exact_pins = any(pin is None for pin in (node, theorem, consumer))
+    missing_node_pin = node is None
     return (
         ShadowGoalSelection(
             selected_goal=task_rel.as_posix(),
@@ -563,11 +643,11 @@ def _active_current_selection(
             exact_source_pin=source_commit,
             exact_theorem_pin=theorem,
             exact_consumer_pin=consumer,
-            fatal_errors=("STARTUP_EXACT_PINS_MISSING",) if missing_exact_pins else (),
+            fatal_errors=("STARTUP_EXACT_PINS_MISSING",) if missing_node_pin else (),
             warnings=("CURRENT_ACTIVE_FALLBACK_WITHOUT_OPEN_BUS_GOAL",),
             next_action=(
                 "STOP_FAIL_CLOSED"
-                if missing_exact_pins
+                if missing_node_pin
                 else "SHADOW_INSPECT_SELECTED_GOAL"
             ),
         ),
@@ -575,60 +655,49 @@ def _active_current_selection(
     )
 
 
-def _historical_baseline_is_ancestor(repo: Path) -> bool:
-    ancestor = subprocess.run(
-        ["git", "merge-base", "--is-ancestor", FROZEN_V9_BASELINE, "HEAD"],
-        cwd=repo,
-        check=False,
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
-    )
-    return ancestor.returncode == 0
-
-
 def _physical_bus_paths(
-    repo: Path, git_state: _GitObservation
-) -> tuple[tuple[Path, ...], tuple[Path, ...]]:
+    repo: Path,
+) -> tuple[tuple[Path, ...], tuple[Path, ...], str]:
     bus = _repo_file(repo, BUS_REL)
     goal_names: set[str] = set()
     answer_names: set[str] = set()
     physical_symlinks: list[str] = []
 
-    def fail_walk(error: OSError) -> None:
-        raise StartupRuntimeError("STARTUP_BUS_SCAN_UNAVAILABLE", str(error))
-
-    for directory, dirnames, filenames in os.walk(
-        bus, followlinks=False, onerror=fail_walk
-    ):
-        base = Path(directory)
-        for name in tuple(dirnames):
-            candidate = base / name
-            relative = _lexical_relative(repo, candidate).as_posix()
-            if candidate.is_symlink():
-                physical_symlinks.append(relative)
-                continue
-            if name.endswith(".goal.md"):
-                goal_names.add(relative)
-            elif name.endswith(".answer.md"):
-                answer_names.add(relative)
-        for name in filenames:
-            if not name.endswith((".goal.md", ".answer.md")):
-                continue
-            candidate = base / name
-            relative = _lexical_relative(repo, candidate).as_posix()
-            if candidate.is_symlink():
-                physical_symlinks.append(relative)
-                continue
-            if name.endswith(".goal.md"):
-                goal_names.add(relative)
-            else:
-                answer_names.add(relative)
-
-    if git_state.head is None:
+    if not (repo / ".git").exists():
+        pending = [bus]
+        while pending:
+            directory = pending.pop()
+            try:
+                with os.scandir(directory) as scan:
+                    entries = tuple(scan)
+            except OSError as exc:
+                raise StartupRuntimeError(
+                    "STARTUP_BUS_SCAN_UNAVAILABLE", str(exc)
+                ) from exc
+            for entry in entries:
+                candidate = Path(entry.path)
+                relative = _lexical_relative(repo, candidate).as_posix()
+                try:
+                    if entry.is_symlink():
+                        physical_symlinks.append(relative)
+                    elif entry.is_dir(follow_symlinks=False):
+                        pending.append(candidate)
+                    elif entry.is_file(follow_symlinks=False):
+                        if entry.name.endswith(".goal.md"):
+                            goal_names.add(relative)
+                        elif entry.name.endswith(".answer.md"):
+                            answer_names.add(relative)
+                except OSError as exc:
+                    raise StartupRuntimeError(
+                        "STARTUP_BUS_SCAN_UNAVAILABLE", str(exc)
+                    ) from exc
         if physical_symlinks:
             raise StartupRuntimeError(
                 "STARTUP_SYMLINK_COMPONENT", physical_symlinks[0]
             )
+        encoded = "\0".join((*sorted(goal_names), *sorted(answer_names))).encode(
+            "utf-8", errors="surrogateescape"
+        )
         return (
             tuple(
                 _repo_file(repo, PurePosixPath(name))
@@ -638,13 +707,21 @@ def _physical_bus_paths(
                 _repo_file(repo, PurePosixPath(name))
                 for name in sorted(answer_names)
             ),
+            hashlib.sha256(encoded).hexdigest(),
         )
-    tracked = subprocess.run(
+
+    physical_records = subprocess.run(
         [
             "git",
             "ls-files",
             "-z",
+            "--cached",
+            "--others",
             "--stage",
+            "--exclude=*",
+            "--exclude=!*/",
+            "--exclude=!*.goal.md",
+            "--exclude=!*.answer.md",
             "--",
             BUS_REL.as_posix(),
         ],
@@ -653,22 +730,61 @@ def _physical_bus_paths(
         stdout=subprocess.PIPE,
         stderr=subprocess.DEVNULL,
     )
-    if tracked.returncode != 0:
+    if physical_records.returncode != 0:
         raise StartupRuntimeError("STARTUP_BUS_INDEX_UNAVAILABLE")
-    for item in tracked.stdout.split(b"\0"):
+    for item in physical_records.stdout.split(b"\0"):
         if not item:
             continue
         metadata, separator, raw_path = item.partition(b"\t")
         fields = metadata.split()
-        if not separator or len(fields) != 3:
-            raise StartupRuntimeError("STARTUP_BUS_INDEX_UNAVAILABLE")
-        path = raw_path.decode("utf-8", errors="surrogateescape")
-        if fields[0] == b"120000":
+        indexed = (
+            bool(separator)
+            and len(fields) == 3
+            and re.fullmatch(rb"[0-7]{6}", fields[0]) is not None
+            and re.fullmatch(rb"[0-9a-f]{40,64}", fields[1]) is not None
+            and fields[2] in {b"0", b"1", b"2", b"3"}
+        )
+        path = (raw_path if indexed else item).decode(
+            "utf-8", errors="surrogateescape"
+        )
+        relative = PurePosixPath(path)
+        if BUS_REL not in relative.parents:
+            continue
+        if not indexed and _has_symlink_component(repo, relative):
+            physical_symlinks.append(path)
+        if indexed and fields[0] == b"120000":
             raise StartupRuntimeError("STARTUP_TRACKED_BUS_SYMLINK", path)
         if path.endswith(".goal.md"):
             goal_names.add(path)
         elif path.endswith(".answer.md"):
             answer_names.add(path)
+    pending = [bus]
+    scanned_directories = 0
+    while pending:
+        if scanned_directories >= BUS_DIRECTORY_SCAN_LIMIT:
+            raise StartupRuntimeError("STARTUP_BUS_SCAN_LIMIT_EXCEEDED")
+        directory = pending.pop()
+        scanned_directories += 1
+        try:
+            with os.scandir(directory) as scan:
+                entries = tuple(scan)
+        except OSError as exc:
+            raise StartupRuntimeError(
+                "STARTUP_BUS_SCAN_UNAVAILABLE", str(exc)
+            ) from exc
+        for entry in entries:
+            candidate = Path(entry.path)
+            try:
+                if entry.is_symlink():
+                    physical_symlinks.append(
+                        _lexical_relative(repo, candidate).as_posix()
+                    )
+                elif entry.is_dir(follow_symlinks=False):
+                    pending.append(candidate)
+            except OSError as exc:
+                raise StartupRuntimeError(
+                    "STARTUP_BUS_SCAN_UNAVAILABLE", str(exc)
+                ) from exc
     if physical_symlinks:
         raise StartupRuntimeError("STARTUP_SYMLINK_COMPONENT", physical_symlinks[0])
     return (
@@ -678,10 +794,15 @@ def _physical_bus_paths(
         tuple(
             _repo_file(repo, PurePosixPath(name)) for name in sorted(answer_names)
         ),
+        hashlib.sha256(physical_records.stdout).hexdigest(),
     )
 
 
-def _shadow_selection_context(repo: Path, git_state: _GitObservation) -> _SelectionContext:
+def _shadow_selection_context(
+    repo: Path,
+    git_state: _GitObservation,
+    owned_paths: tuple[str, ...] = (),
+) -> _SelectionContext:
     bus = _repo_file(repo, BUS_REL)
     empty = ShadowGoalSelection(
         None, None, None, None, None, (), (), "STOP_FAIL_CLOSED"
@@ -692,53 +813,36 @@ def _shadow_selection_context(repo: Path, git_state: _GitObservation) -> _Select
             None,
             None,
             None,
+            None,
+            None,
+            None,
             (),
             (),
+            None,
         )
     try:
-        goal_paths, answer_paths = _physical_bus_paths(repo, git_state)
+        goal_paths, answer_paths, bus_manifest_sha256 = _physical_bus_paths(repo)
     except StartupRuntimeError as exc:
         return _SelectionContext(
             replace(empty, fatal_errors=(str(exc),)),
             None,
             None,
             None,
+            None,
+            None,
+            None,
             (),
             (),
+            None,
         )
 
     open_goals: list[tuple[Path, dict[str, Any], _PathFingerprint | None]] = []
-    answered: list[tuple[Path, Path]] = []
-    orphan_answers: list[Path] = []
+    paired: list[tuple[Path, Path]] = []
+    historical_pairs: list[tuple[Path, Path]] = []
     fatal: list[str] = []
     warnings: list[str] = []
     fingerprints: list[tuple[PurePosixPath, _PathFingerprint]] = []
-    expected_answers = {
-        goal_path.with_name(
-            goal_path.name.removesuffix(".goal.md") + ".answer.md"
-        )
-        for goal_path in goal_paths
-    }
-    for answer_path in answer_paths:
-        answer_rel = _lexical_relative(repo, answer_path)
-        if _has_symlink_component(repo, answer_rel):
-            fatal.append(f"STARTUP_SYMLINK_COMPONENT:{answer_rel.as_posix()}")
-            continue
-        orphan = answer_path not in expected_answers
-        if not answer_path.is_file():
-            if orphan:
-                fatal.append(f"STARTUP_ANSWER_ORPHAN:{answer_rel.as_posix()}")
-            fatal.append(f"STARTUP_ANSWER_INVALID:{answer_rel.as_posix()}")
-            continue
-        try:
-            fingerprints.append(
-                (answer_rel, _path_fingerprint(repo, answer_rel))
-            )
-        except StartupRuntimeError as exc:
-            fatal.append(str(exc))
-            continue
-        if orphan:
-            orphan_answers.append(answer_path)
+    answer_path_set = set(answer_paths)
     for goal_path in goal_paths:
         goal_rel = _lexical_relative(repo, goal_path)
         answer_path = goal_path.with_name(
@@ -759,29 +863,77 @@ def _shadow_selection_context(repo: Path, git_state: _GitObservation) -> _Select
         except StartupRuntimeError as exc:
             fatal.append(str(exc))
             continue
-        if answer_path.exists():
+        paired_answer = answer_path in answer_path_set
+        answer_available = True
+        if paired_answer:
+            paired.append((goal_path, answer_path))
             if not answer_path.is_file():
+                answer_available = False
                 fatal.append(f"STARTUP_ANSWER_INVALID:{answer_rel.as_posix()}")
             else:
-                answered.append((goal_path, answer_path))
-            continue
+                try:
+                    fingerprints.append(
+                        (answer_rel, _path_fingerprint(repo, answer_rel))
+                    )
+                except StartupRuntimeError as exc:
+                    answer_available = False
+                    fatal.append(str(exc))
         try:
-            header = _goal_header(goal_path)
-            goal_id = _goal_id(goal_path, header)
+            header = (
+                _goal_header_if_present(goal_path)
+                if paired_answer
+                else _goal_header(goal_path)
+            )
+            if header is not None:
+                _goal_id(
+                    goal_path,
+                    header,
+                    allow_paired_phase_alias=paired_answer,
+                )
+                status = header.get("STATUS")
+                if not isinstance(status, str) or STATUS_RE.fullmatch(status) is None:
+                    raise StartupRuntimeError(
+                        "STARTUP_GOAL_HEADER_INVALID", f"STATUS missing: {goal_path}"
+                    )
+            else:
+                status = None
         except StartupRuntimeError as exc:
             fatal.append(str(exc))
             continue
-        status = header.get("STATUS")
-        if not isinstance(status, str) or STATUS_RE.fullmatch(status) is None:
-            fatal.append(f"STARTUP_GOAL_HEADER_INVALID: STATUS missing: {goal_path}")
-        elif status == OPEN_STATUS:
+        if header is None:
+            historical_pairs.append((goal_path, answer_path))
+            continue
+        if (
+            paired_answer
+            and answer_available
+            and (goal_rel, status) in HISTORICAL_STRUCTURED_PAIRED_GOALS
+        ):
+            historical_pairs.append((goal_path, answer_path))
+            continue
+        if status not in KNOWN_GOAL_STATUSES:
+            fatal.append(
+                f"STARTUP_UNKNOWN_GOAL_STATUS:{status}:{goal_rel.as_posix()}"
+            )
+            continue
+        answer_valid = False
+        if paired_answer and answer_available:
+            try:
+                _validate_modern_answer(goal_path, header, answer_path)
+                answer_valid = True
+            except StartupRuntimeError as exc:
+                fatal.append(str(exc))
+        if paired_answer and status in PAUSED_STATUSES:
+            fatal.append(f"STARTUP_ANSWER_INVALID:paused goal has answer:{goal_rel}")
+            answer_valid = False
+        if answer_valid:
+            continue
+        if status == OPEN_STATUS:
             open_goals.append((goal_path, header, fingerprint))
         elif status in PAUSED_STATUSES:
             warnings.append(f"PAUSED_RESTORABLE_EXCLUDED:{goal_rel.as_posix()}")
         elif status in TERMINAL_GOAL_STATUSES:
-            fatal.append(f"STARTUP_ANSWER_MISSING:{goal_rel.as_posix()}")
-        else:
-            fatal.append(f"STARTUP_UNKNOWN_GOAL_STATUS:{status}:{goal_rel.as_posix()}")
+            if not paired_answer:
+                fatal.append(f"STARTUP_ANSWER_MISSING:{goal_rel.as_posix()}")
     if len(open_goals) > 1:
         labels = ",".join(_canonical_relative(repo, item[0]) for item in open_goals)
         fatal.append(f"STARTUP_AMBIGUOUS_OPEN_GOALS:{labels}")
@@ -855,21 +1007,27 @@ def _shadow_selection_context(repo: Path, git_state: _GitObservation) -> _Select
     identity_specs = ("HEAD", "HEAD^{tree}", upstream)
     if git_state.head is not None:
         specs.extend(identity_specs)
+        specs.extend(
+            (
+                f"HEAD:{CONTROL_REL.as_posix()}",
+                f"HEAD:{EXECUTION_STATE_REL.as_posix()}",
+            )
+        )
+        specs.append(HISTORICAL_PAIRED_BASELINE_COMMIT)
+        for goal_path in goal_paths:
+            goal_rel = _lexical_relative(repo, goal_path).as_posix()
+            specs.append(f"HEAD:{goal_rel}")
         if CURRENT_REL.as_posix() in fingerprint_by_path:
             specs.append(f"HEAD:{CURRENT_REL.as_posix()}")
-        if answered or orphan_answers:
-            if not _historical_baseline_is_ancestor(repo):
-                fatal.append("STARTUP_HISTORICAL_BASELINE_INVALID")
-            for goal_path, answer_path in answered:
-                for path in (goal_path, answer_path):
-                    relative = _lexical_relative(repo, path).as_posix()
-                    specs.extend(
-                        (f"{FROZEN_V9_BASELINE}:{relative}", f"HEAD:{relative}")
-                    )
-            for answer_path in orphan_answers:
-                relative = _lexical_relative(repo, answer_path).as_posix()
-                specs.extend(
-                    (f"{FROZEN_V9_BASELINE}:{relative}", f"HEAD:{relative}")
+        for goal_path, answer_path in paired:
+            for path in (goal_path, answer_path):
+                relative = _lexical_relative(repo, path).as_posix()
+                specs.append(f"HEAD:{relative}")
+        for goal_path, answer_path in historical_pairs:
+            for path in (goal_path, answer_path):
+                relative = _lexical_relative(repo, path).as_posix()
+                specs.append(
+                    f"{HISTORICAL_PAIRED_BASELINE_COMMIT}:{relative}"
                 )
         if selection.selected_goal and selection.selected_goal.startswith(
             f"{BUS_REL.as_posix()}/"
@@ -897,74 +1055,78 @@ def _shadow_selection_context(repo: Path, git_state: _GitObservation) -> _Select
             )
     checked = _batch_check(repo, tuple(dict.fromkeys(specs))) if specs else {}
 
-    for answer_path in orphan_answers:
-        answer_rel = _lexical_relative(repo, answer_path).as_posix()
-        baseline_answer = checked.get(f"{FROZEN_V9_BASELINE}:{answer_rel}")
-        head_answer = checked.get(f"HEAD:{answer_rel}")
-        unchanged_historical = (
-            git_state.head is not None
-            and baseline_answer is not None
-            and head_answer is not None
-            and baseline_answer[0] == head_answer[0]
-            and _fingerprint_matches_git_blob(
-                fingerprint_by_path.get(answer_rel), head_answer[0]
-            )
-            and answer_rel not in git_state.dirty_paths
-        )
-        if unchanged_historical:
-            continue
-        fatal.append(f"STARTUP_ANSWER_ORPHAN:{answer_rel}")
-        match = ANSWER_FILE_RE.fullmatch(answer_path.name)
-        try:
-            _validate_answer(match.group("goal_id") if match else "", answer_path)
-        except StartupRuntimeError as exc:
-            fatal.append(str(exc))
+    if git_state.head is not None:
+        for goal_path in goal_paths:
+            goal_rel = _lexical_relative(repo, goal_path).as_posix()
+            head_goal = checked.get(f"HEAD:{goal_rel}")
+            if head_goal is None or not _fingerprint_matches_git_blob(
+                fingerprint_by_path.get(goal_rel), head_goal[0]
+            ):
+                fatal.append("STARTUP_GOAL_BLOB_DRIFT")
 
-    for goal_path, answer_path in answered:
+    for goal_path, answer_path in paired:
         goal_rel = _lexical_relative(repo, goal_path).as_posix()
         answer_rel = _lexical_relative(repo, answer_path).as_posix()
-        unchanged = False
-        if git_state.head is not None:
-            base_goal = checked.get(f"{FROZEN_V9_BASELINE}:{goal_rel}")
-            head_goal = checked.get(f"HEAD:{goal_rel}")
-            base_answer = checked.get(f"{FROZEN_V9_BASELINE}:{answer_rel}")
-            head_answer = checked.get(f"HEAD:{answer_rel}")
-            unchanged = (
-                base_goal is not None
-                and head_goal is not None
-                and base_answer is not None
-                and head_answer is not None
-                and base_goal[0] == head_goal[0]
-                and base_answer[0] == head_answer[0]
-                and _fingerprint_matches_git_blob(
-                    fingerprint_by_path.get(goal_rel), head_goal[0]
-                )
-                and _fingerprint_matches_git_blob(
-                    fingerprint_by_path.get(answer_rel), head_answer[0]
-                )
-                and goal_rel not in git_state.dirty_paths
-                and answer_rel not in git_state.dirty_paths
-            )
-        if unchanged:
+        head_goal = checked.get(f"HEAD:{goal_rel}")
+        head_answer = checked.get(f"HEAD:{answer_rel}")
+        if head_answer is None:
+            fatal.append(f"STARTUP_ANSWER_CLOSURE_UNTRACKED:{answer_rel}")
             continue
-        try:
-            header = _goal_header(goal_path)
-            goal_id = _goal_id(goal_path, header)
-            status = header.get("STATUS")
-            if status in PAUSED_STATUSES:
-                raise StartupRuntimeError(
-                    "STARTUP_ANSWER_INVALID", f"paused goal has answer: {goal_rel}"
-                )
-            if status not in ({OPEN_STATUS} | TERMINAL_GOAL_STATUSES):
-                raise StartupRuntimeError(
-                    "STARTUP_UNKNOWN_GOAL_STATUS", f"{status}:{goal_rel}"
-                )
-            _validate_answer(goal_id, answer_path)
-        except StartupRuntimeError as exc:
-            fatal.append(str(exc))
+        if head_goal is None:
+            fatal.append(f"STARTUP_ANSWER_CLOSURE_UNTRACKED:{goal_rel}")
+            continue
+        if not _fingerprint_matches_git_blob(
+            fingerprint_by_path.get(goal_rel), head_goal[0]
+        ):
+            fatal.append(f"STARTUP_ANSWER_CLOSURE_BLOB_DRIFT:{goal_rel}")
+        if not _fingerprint_matches_git_blob(
+            fingerprint_by_path.get(answer_rel), head_answer[0]
+        ):
+            fatal.append(f"STARTUP_ANSWER_CLOSURE_BLOB_DRIFT:{answer_rel}")
+
+    baseline_object = checked.get(HISTORICAL_PAIRED_BASELINE_COMMIT)
+    baseline_available = (
+        baseline_object is not None
+        and baseline_object[0] == HISTORICAL_PAIRED_BASELINE_COMMIT
+        and baseline_object[1] == "commit"
+    )
+    if baseline_available or historical_pairs:
+        if not baseline_available:
+            fatal.append("STARTUP_HISTORICAL_PAIRED_BASELINE_INVALID")
+        if len(historical_pairs) != HISTORICAL_PAIRED_EXPECTED_COUNT:
+            fatal.append(
+                "STARTUP_HISTORICAL_PAIRED_COUNT_DRIFT:"
+                f"{len(historical_pairs)}:{HISTORICAL_PAIRED_EXPECTED_COUNT}"
+            )
+        if baseline_available:
+            for goal_path, answer_path in historical_pairs:
+                pair_valid = True
+                for path in (goal_path, answer_path):
+                    relative = _lexical_relative(repo, path).as_posix()
+                    baseline_blob = checked.get(
+                        f"{HISTORICAL_PAIRED_BASELINE_COMMIT}:{relative}"
+                    )
+                    head_blob = checked.get(f"HEAD:{relative}")
+                    if (
+                        baseline_blob is None
+                        or head_blob is None
+                        or baseline_blob[1] != "blob"
+                        or head_blob[1] != "blob"
+                        or baseline_blob[0] != head_blob[0]
+                        or not _fingerprint_matches_git_blob(
+                            fingerprint_by_path.get(relative), head_blob[0]
+                        )
+                    ):
+                        pair_valid = False
+                if not pair_valid:
+                    fatal.append(
+                        "STARTUP_HISTORICAL_PAIRED_BLOB_DRIFT:"
+                        f"{_lexical_relative(repo, goal_path).as_posix()}"
+                    )
 
     final_tree = None
     final_origin = None
+    owned_uncommitted_source_candidate = False
     if checked:
         head_object = checked.get(identity_specs[0])
         tree_object = checked.get(identity_specs[1])
@@ -997,15 +1159,38 @@ def _shadow_selection_context(repo: Path, git_state: _GitObservation) -> _Select
                 pin_object = checked.get(source_pin)
                 pinned_source = checked.get(f"{source_pin}:{source_path}")
                 head_blob = head_source[0] if head_source else None
+                source_fingerprint = fingerprint_by_path.get(source_path)
+                owned_uncommitted_source_candidate = (
+                    _owned_uncommitted_source_candidate(
+                        source_path,
+                        source_fingerprint,
+                        head_blob,
+                        git_state,
+                        owned_paths,
+                    )
+                )
+                if not _fingerprint_matches_git_blob(
+                    source_fingerprint, head_blob
+                ) and not owned_uncommitted_source_candidate:
+                    fatal.append("STARTUP_SOURCE_WORKTREE_DRIFT")
                 if pin_object is None:
                     fatal.append("STARTUP_SOURCE_PIN_INVALID")
                 elif pin_object[1] == "blob":
-                    if pin_object[0] != head_blob:
+                    if owned_uncommitted_source_candidate and head_blob is None:
+                        blob_matches = _fingerprint_matches_git_blob(
+                            source_fingerprint, pin_object[0]
+                        )
+                    else:
+                        blob_matches = pin_object[0] == head_blob
+                    if not blob_matches:
                         fatal.append("STARTUP_SOURCE_BLOB_DRIFT")
                 elif pin_object[1] == "commit":
-                    if pinned_source is None:
+                    if (
+                        pinned_source is None
+                        and not owned_uncommitted_source_candidate
+                    ):
                         fatal.append("STARTUP_SOURCE_COMMIT_PIN_DRIFT")
-                    elif pinned_source[0] != head_blob:
+                    elif pinned_source is not None and pinned_source[0] != head_blob:
                         fatal.append("STARTUP_SOURCE_BLOB_DRIFT")
                 else:
                     fatal.append("STARTUP_SOURCE_PIN_INVALID")
@@ -1046,18 +1231,32 @@ def _shadow_selection_context(repo: Path, git_state: _GitObservation) -> _Select
             fatal.append("STARTUP_CURRENT_BLOB_DRIFT")
 
     fatal.extend(selection.fatal_errors)
+    fatal = list(dict.fromkeys(fatal))
+    state_selected_goal = selection.selected_goal
     selection = replace(
         selection,
+        selected_goal=None if fatal else selection.selected_goal,
+        exact_node_pin=None if fatal else selection.exact_node_pin,
+        exact_source_pin=None if fatal else selection.exact_source_pin,
+        exact_theorem_pin=None if fatal else selection.exact_theorem_pin,
+        exact_consumer_pin=None if fatal else selection.exact_consumer_pin,
         fatal_errors=tuple(fatal),
         next_action="STOP_FAIL_CLOSED" if fatal else selection.next_action,
     )
+    control_object = checked.get(f"HEAD:{CONTROL_REL.as_posix()}")
+    state_object = checked.get(f"HEAD:{EXECUTION_STATE_REL.as_posix()}")
     return _SelectionContext(
         selection,
+        state_selected_goal,
         source_path,
         final_tree,
         final_origin,
+        control_object[0] if control_object else None,
+        state_object[0] if state_object else None,
         (),
         tuple(fingerprints),
+        bus_manifest_sha256,
+        owned_uncommitted_source_candidate,
     )
 
 
@@ -1079,8 +1278,7 @@ def _git_observation(repo: Path) -> _GitObservation:
             "--porcelain=v2",
             "-z",
             "--branch",
-            "--untracked-files=all",
-            "--ignored=traditional",
+            "--untracked-files=normal",
         ],
         cwd=repo,
         check=False,
@@ -1124,10 +1322,6 @@ def _git_observation(repo: Path) -> _GitObservation:
             upstream = decode(record.removeprefix(b"# branch.upstream "))
         elif record.startswith(b"? "):
             dirty.append(decode(record[2:]))
-        elif record.startswith(b"! "):
-            ignored = decode(record[2:])
-            if ignored.startswith(f"{BUS_REL.as_posix()}/"):
-                dirty.append(ignored)
         elif record.startswith(b"1 "):
             dirty.append(decode(record.split(b" ", 8)[-1]))
         elif record.startswith(b"2 "):
@@ -1188,7 +1382,25 @@ def _is_owned(path: str, owned_paths: tuple[str, ...]) -> bool:
     return False
 
 
-def _load_unique_json(path: Path) -> dict[str, Any]:
+def _owned_uncommitted_source_candidate(
+    source_path: str | None,
+    source_fingerprint: _PathFingerprint | None,
+    head_blob: str | None,
+    git_state: _GitObservation,
+    owned_paths: tuple[str, ...],
+) -> bool:
+    return (
+        source_path is not None
+        and source_fingerprint is not None
+        and PurePosixPath(source_path).suffix == ".lean"
+        and _is_owned(source_path, owned_paths)
+        and (source_path in git_state.dirty_paths or head_blob is None)
+    )
+
+
+def _load_unique_json(
+    path: Path, *, expected: _PathFingerprint | None = None
+) -> dict[str, Any]:
     def unique_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
         result: dict[str, Any] = {}
         for key, value in pairs:
@@ -1198,9 +1410,19 @@ def _load_unique_json(path: Path) -> dict[str, Any]:
         return result
 
     try:
+        raw = path.read_bytes()
+        if (
+            expected is not None
+            and hashlib.sha256(raw).hexdigest() != expected.content_sha256
+        ):
+            raise StartupRuntimeError(
+                "STARTUP_PATH_CONCURRENT_MUTATION", str(path)
+            )
         payload = json.loads(
-            path.read_text(encoding="utf-8"), object_pairs_hook=unique_object
+            raw.decode("utf-8"), object_pairs_hook=unique_object
         )
+    except StartupRuntimeError:
+        raise
     except (OSError, UnicodeDecodeError, ValueError) as exc:
         raise StartupRuntimeError("STARTUP_STATE_INVALID", f"{path}: {exc}") from exc
     if not isinstance(payload, dict):
@@ -1297,13 +1519,31 @@ def _acquire_writer_lock(repo: Path) -> tuple[_WriterLockGuard, str | None]:
     return _WriterLockGuard(lock_path, handle, initial), None
 
 
+@contextmanager
+def _startup_read_epoch(
+    repo: Path,
+) -> Iterator[tuple[_WriterLockGuard, str | None]]:
+    """Keep one writer-lock epoch open across startup and registry reads."""
+
+    guard, lock_error = _acquire_writer_lock(repo.resolve())
+    try:
+        yield guard, lock_error
+    finally:
+        guard.close()
+
+
 def _state_pins_and_errors(
-    repo: Path, selected_goal: str | None, selected_physical: str | None
+    repo: Path,
+    selected_goal: str | None,
+    selected_physical: str | None,
+    state_fingerprint: _PathFingerprint | None,
 ) -> tuple[str | None, str | None, tuple[str, ...]]:
     if _has_symlink_component(repo, EXECUTION_STATE_REL):
         return None, None, ("STARTUP_SYMLINK_COMPONENT:execution-state",)
     try:
-        state = _load_unique_json(_repo_file(repo, EXECUTION_STATE_REL))
+        state = _load_unique_json(
+            _repo_file(repo, EXECUTION_STATE_REL), expected=state_fingerprint
+        )
         architecture = state["architecture"]
         current = state["current"]
         if not isinstance(architecture, dict) or not isinstance(current, dict):
@@ -1353,15 +1593,23 @@ def _state_pins_and_errors(
 def _relevant_dirty(path: str, *, selected: str | None, source: str | None) -> bool:
     exact = {
         CONTROL_REL.as_posix(),
-        CURRENT_REL.as_posix(),
         EXECUTION_STATE_REL.as_posix(),
         selected,
         source,
     }
-    dirty_bus_lifecycle = path.startswith(f"{BUS_REL.as_posix()}/") and path.endswith(
-        (".goal.md", ".answer.md")
+    selected_physical = selected is not None and selected.startswith(
+        f"{BUS_REL.as_posix()}/"
     )
-    return path in exact or dirty_bus_lifecycle
+    if not selected_physical:
+        exact.add(CURRENT_REL.as_posix())
+    relative = PurePosixPath(path)
+    top_level_goal = relative.parent == BUS_REL and path.endswith(".goal.md")
+    selected_answer = (
+        selected_physical
+        and selected is not None
+        and path == selected.removesuffix(".goal.md") + ".answer.md"
+    )
+    return path in exact or top_level_goal or selected_answer
 
 
 def _bus_symlink_errors(repo: Path, dirty_paths: tuple[str, ...]) -> tuple[str, ...]:
@@ -1371,24 +1619,37 @@ def _bus_symlink_errors(repo: Path, dirty_paths: tuple[str, ...]) -> tuple[str, 
         if not path.startswith(prefix):
             continue
         relative = PurePosixPath(path)
+        if relative.parent != BUS_REL:
+            continue
         if _has_symlink_component(repo, relative):
             errors.append(f"STARTUP_SYMLINK_COMPONENT:{path}")
     return tuple(errors)
 
 
 def build_shadow_snapshot(
-    repo: Path, owned_paths: tuple[str, ...] = ()
+    repo: Path,
+    owned_paths: tuple[str, ...] = (),
+    *,
+    _epoch_guard: _WriterLockGuard | None = None,
+    _epoch_lock_error: str | None = None,
 ) -> StartupSnapshot:
     """Build one immutable v9-based observation that can never authorize run."""
 
     repo = repo.resolve()
     fatal: list[str] = []
     warnings: list[str] = []
-    guard, lock_error = _acquire_writer_lock(repo)
+    owns_guard = _epoch_guard is None
+    if owns_guard:
+        guard, lock_error = _acquire_writer_lock(repo)
+    else:
+        guard = _epoch_guard
+        lock_error = _epoch_lock_error
+        assert guard is not None
     if lock_error:
         fatal.append(lock_error)
     fingerprints: list[tuple[PurePosixPath, _PathFingerprint]] = []
     try:
+        control_fingerprint: _PathFingerprint | None = None
         try:
             control_fingerprint = _path_fingerprint(repo, CONTROL_REL)
             fingerprints.append((CONTROL_REL, control_fingerprint))
@@ -1415,7 +1676,7 @@ def build_shadow_snapshot(
         git_state = _git_observation(repo)
         fatal.extend(git_state.errors)
         fatal.extend(_bus_symlink_errors(repo, git_state.dirty_paths))
-        context = _shadow_selection_context(repo, git_state)
+        context = _shadow_selection_context(repo, git_state, owned_paths)
         selection = context.selection
         fatal.extend(selection.fatal_errors)
         fatal.extend(context.errors)
@@ -1424,10 +1685,13 @@ def build_shadow_snapshot(
         source_path = context.source_path
         final_tree = context.final_tree
         final_origin = context.final_origin
+        control_head_blob = context.control_head_blob
+        state_head_blob = context.state_head_blob
+        state_selected_goal = context.state_selected_goal
         selected_physical = (
-            selection.selected_goal
-            if selection.selected_goal is not None
-            and selection.selected_goal.startswith(f"{BUS_REL.as_posix()}/")
+            state_selected_goal
+            if state_selected_goal is not None
+            and state_selected_goal.startswith(f"{BUS_REL.as_posix()}/")
             else None
         )
         if selection.selected_goal is not None:
@@ -1436,15 +1700,30 @@ def build_shadow_snapshot(
             ):
                 fatal.append("STARTUP_SELECTED_GOAL_PATH_INVALID")
 
+        state_fingerprint: _PathFingerprint | None = None
         try:
             state_fingerprint = _path_fingerprint(repo, EXECUTION_STATE_REL)
             fingerprints.append((EXECUTION_STATE_REL, state_fingerprint))
         except StartupRuntimeError as exc:
             fatal.append(str(exc))
         state_theorem, state_consumer, state_errors = _state_pins_and_errors(
-            repo, selection.selected_goal, selected_physical
+            repo,
+            state_selected_goal,
+            selected_physical,
+            state_fingerprint,
         )
         fatal.extend(state_errors)
+        if git_state.head is not None:
+            if not _fingerprint_matches_git_blob(
+                control_fingerprint,
+                control_head_blob,
+            ):
+                fatal.append("STARTUP_CONTROL_BLOB_DRIFT")
+            if not _fingerprint_matches_git_blob(
+                state_fingerprint,
+                state_head_blob,
+            ):
+                fatal.append("STARTUP_STATE_BLOB_DRIFT")
         exact_theorem = selection.exact_theorem_pin or state_theorem
         exact_consumer = selection.exact_consumer_pin or state_consumer
         if selection.selected_goal is not None and any(
@@ -1457,18 +1736,26 @@ def build_shadow_snapshot(
             blocked_features.append("BLOCKED_FEATURE:EXACT_THEOREM_EDGE_UNSELECTED")
         if selection.selected_goal is not None and exact_consumer is None:
             blocked_features.append("BLOCKED_FEATURE:EXACT_CONSUMER_EDGE_UNSELECTED")
+        owned_dirty_candidate = context.owned_uncommitted_source_candidate
+        if owned_dirty_candidate:
+            blocked_features.append(
+                "BLOCKED_FEATURE:OWNED_DIRTY_CANDIDATE_UNCOMMITTED"
+            )
         blocked_features.extend(("RUN", "DISPATCH", "MINT", "STATE_WRITE"))
 
-        if git_state.dirty_paths:
+        if git_state.dirty_paths or owned_dirty_candidate:
             relevant = tuple(
                 path
                 for path in git_state.dirty_paths
                 if _relevant_dirty(
                     path, selected=selection.selected_goal, source=source_path
                 )
+                and not (owned_dirty_candidate and path == source_path)
             )
             foreign = tuple(
-                path for path in git_state.dirty_paths if not _is_owned(path, owned_paths)
+                path
+                for path in git_state.dirty_paths
+                if not _is_owned(path, owned_paths)
             )
             warnings.append("GIT_WORKTREE_DIRTY")
             if relevant:
@@ -1514,6 +1801,16 @@ def build_shadow_snapshot(
         ):
             fatal.append("STARTUP_GIT_CONCURRENT_MUTATION")
         fatal.extend(final_git.errors)
+        if context.bus_manifest_sha256 is not None:
+            try:
+                _final_goals, _final_answers, final_bus_manifest_sha256 = (
+                    _physical_bus_paths(repo)
+                )
+            except StartupRuntimeError as exc:
+                fatal.append(str(exc))
+            else:
+                if final_bus_manifest_sha256 != context.bus_manifest_sha256:
+                    fatal.append("STARTUP_BUS_CONCURRENT_MUTATION")
         lock_recheck = guard.recheck()
         if lock_recheck:
             fatal.append(lock_recheck)
@@ -1526,6 +1823,17 @@ def build_shadow_snapshot(
         if any(item.startswith("BLOCKED_FEATURE:") for item in blocked_features):
             next_action = "SHADOW_BLOCKED_EXACT_EDGE_SELECTION"
         if fatal:
+            selection = replace(
+                selection,
+                selected_goal=None,
+                exact_node_pin=None,
+                exact_source_pin=None,
+                exact_theorem_pin=None,
+                exact_consumer_pin=None,
+                next_action="STOP_FAIL_CLOSED",
+            )
+            exact_theorem = None
+            exact_consumer = None
             next_action = "STOP_FAIL_CLOSED"
 
         snapshot = StartupSnapshot(
@@ -1537,7 +1845,7 @@ def build_shadow_snapshot(
             git_head=git_state.head,
             git_origin_head=final_origin,
             git_tree=final_tree,
-            git_dirty=bool(git_state.dirty_paths),
+            git_dirty=bool(git_state.dirty_paths) or owned_dirty_candidate,
             selected_goal=selection.selected_goal,
             honesty_state=HONESTY_STATE,
             exact_node_pin=selection.exact_node_pin,
@@ -1551,5 +1859,6 @@ def build_shadow_snapshot(
             run_authorized=False,
         )
     finally:
-        guard.close()
+        if owns_guard:
+            guard.close()
     return snapshot

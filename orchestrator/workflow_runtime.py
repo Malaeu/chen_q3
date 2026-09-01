@@ -20,7 +20,7 @@ import re
 import subprocess
 import sys
 import time
-from dataclasses import asdict
+from dataclasses import asdict, replace
 from pathlib import Path
 from typing import Any
 
@@ -34,6 +34,7 @@ from orchestrator import node_registry_v10  # noqa: E402
 from orchestrator.startup_runtime import (  # noqa: E402
     StartupRuntimeError,
     StartupSnapshot,
+    _startup_read_epoch,
     build_shadow_snapshot,
 )
 
@@ -70,6 +71,8 @@ SHADOW_PLAN_MAX_LINES = 150
 SHADOW_STARTUP_MAX_BYTES = 4 * 1024
 SHADOW_STARTUP_MAX_LINES = 60
 SHADOW_STARTUP_SCHEMA = "q3_startup_snapshot.v10.shadow.v1"
+_BENCHMARK_TIMING_SCHEMA = "q3_shadow_startup_timing.v1"
+_BENCHMARK_TIMING_PREFIX = "Q3_SHADOW_STARTUP_TIMING:"
 
 COMMON_TOOLS = (
     "workflow-runtime",
@@ -178,6 +181,20 @@ def _compact_node_registry_summary(summary: dict[str, Any]) -> dict[str, Any]:
     return compact
 
 
+def _registry_epoch_failure(code: str, detail: str) -> dict[str, Any]:
+    return {
+        "schema": node_registry_v10.SUMMARY_SCHEMA,
+        "status": "FATAL",
+        "code": code,
+        "registry_hash": None,
+        "node_count": 0,
+        "edge_count": 0,
+        "historical_v9_unmapped": 0,
+        "consumption_status": "NOT_RUN_STARTUP_EPOCH_INVALID",
+        "detail": detail,
+    }
+
+
 def compile_shadow_plan_v10(
     *,
     startup_snapshot: StartupSnapshot,
@@ -229,25 +246,72 @@ def compile_shadow_plan_v10(
     }
 
 
-def live_shadow_plan_v10(repo: Path, *, owned_paths: list[str]) -> dict[str, Any]:
+def live_shadow_plan_v10(
+    repo: Path,
+    *,
+    owned_paths: list[str],
+    _benchmark_timing_sink: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     """Build exactly one startup snapshot and reuse it for the shadow plan."""
     owned_scope = tuple(owned_paths)
-    snapshot = build_shadow_snapshot(repo, owned_paths=owned_scope)
-    exact_edge_pins = (
-        snapshot.exact_node_pin,
-        snapshot.exact_theorem_pin,
-        snapshot.exact_consumer_pin,
+    startup_started = (
+        time.perf_counter() if _benchmark_timing_sink is not None else None
     )
-    if not all(isinstance(pin, str) and pin for pin in exact_edge_pins):
-        exact_edge_pins = (None, None, None)
-    registry_summary = node_registry_v10.startup_gate_summary(
-        repo,
-        snapshot.selected_goal,
-        owned_paths=owned_scope,
-        exact_node_pin=exact_edge_pins[0],
-        exact_theorem_pin=exact_edge_pins[1],
-        exact_consumer_pin=exact_edge_pins[2],
-    )
+    with _startup_read_epoch(repo) as (epoch_guard, lock_error):
+        snapshot = build_shadow_snapshot(
+            repo,
+            owned_paths=owned_scope,
+            _epoch_guard=epoch_guard,
+            _epoch_lock_error=lock_error,
+        )
+        if _benchmark_timing_sink is not None:
+            assert startup_started is not None
+            _benchmark_timing_sink.update(
+                {
+                    "schema": _BENCHMARK_TIMING_SCHEMA,
+                    "startup_duration_ms": round(
+                        (time.perf_counter() - startup_started) * 1000, 3
+                    ),
+                    "snapshot_constructor_calls": 1,
+                }
+            )
+        exact_edge_pins = (
+            snapshot.exact_node_pin,
+            snapshot.exact_theorem_pin,
+            snapshot.exact_consumer_pin,
+        )
+        if not all(isinstance(pin, str) and pin for pin in exact_edge_pins):
+            exact_edge_pins = (None, None, None)
+        if lock_error is not None:
+            registry_summary = _registry_epoch_failure(
+                "NODE_REGISTRY_WRITER_EPOCH_UNAVAILABLE", lock_error
+            )
+        else:
+            registry_summary = node_registry_v10.startup_gate_summary(
+                repo,
+                snapshot.selected_goal,
+                owned_paths=owned_scope,
+                exact_node_pin=exact_edge_pins[0],
+                exact_theorem_pin=exact_edge_pins[1],
+                exact_consumer_pin=exact_edge_pins[2],
+            )
+            epoch_error = epoch_guard.recheck()
+            if epoch_error is not None:
+                snapshot = replace(
+                    snapshot,
+                    selected_goal=None,
+                    exact_node_pin=None,
+                    exact_source_pin=None,
+                    exact_theorem_pin=None,
+                    exact_consumer_pin=None,
+                    fatal_errors=tuple(
+                        dict.fromkeys((epoch_error, *snapshot.fatal_errors))
+                    ),
+                    next_action="STOP_FAIL_CLOSED",
+                )
+                registry_summary = _registry_epoch_failure(
+                    "NODE_REGISTRY_STARTUP_EPOCH_DRIFT", epoch_error
+                )
     host = {"Darwin": "CODEX_MAC", "Linux": "CODEX_LINUX"}.get(
         platform.system(), "UNSUPPORTED_HOST"
     )
@@ -898,22 +962,22 @@ def execute_close_node(
     protocol_out: Path | None,
     dependency_contract_receipt: Path | None = None,
 ) -> dict[str, Any]:
-    receipts: list[dict[str, Any]] = []
-    is_v10 = plan.get("schema") == SHADOW_PLAN_SCHEMA
-    if is_v10:
-        startup = {
-            "label": "v10-startup-snapshot",
-            "exit": 0 if plan.get("status") == "READY" else 2,
-            "output_tail": str(plan.get("status")),
+    if plan.get("schema") != "q3_workflow_plan.v1":
+        return {
+            "schema": "q3_workflow_run.v1",
+            "status": "HOLD",
+            "holds": ["WORKFLOW_RUN_PLAN_SCHEMA_UNSUPPORTED"],
+            "plan": plan,
+            "receipts": [],
+            "commit_push_performed": False,
+            "PX_RH_CLAIM": "NOT_MADE",
         }
-    else:
-        startup = plan.get("logical_plan", {}).get("startup_receipt") or startup_receipt(repo)
+    receipts: list[dict[str, Any]] = []
+    startup = plan.get("logical_plan", {}).get("startup_receipt") or startup_receipt(repo)
     receipts.append(startup)
     holds = list(plan.get("holds", []))
     if startup["exit"] != 0:
         holds.append(f"START_GATE_FAILED:{startup['exit']}")
-    if is_v10:
-        holds.append("SHADOW_V10_RUN_AUTHORITY_FORBIDDEN")
     if not owned_paths:
         holds.append("OWNED_SCOPE_REQUIRED")
     if attempt_payload is None:
@@ -1026,6 +1090,11 @@ def main() -> int:
     plan_parser = subparsers.add_parser("plan")
     _add_plan_options(plan_parser)
     plan_parser.add_argument("--shadow-v10", action="store_true")
+    plan_parser.add_argument(
+        "--benchmark-startup-timing",
+        action="store_true",
+        help=argparse.SUPPRESS,
+    )
     run_parser = subparsers.add_parser("run")
     run_parser.add_argument("--through", choices=["close-node"], required=True)
     _add_plan_options(run_parser)
@@ -1073,9 +1142,22 @@ def main() -> int:
         return 0 if result.get("status") == "REVIEW_DISPATCH_READY" else 2
     if forwarded:
         parser.error("unrecognized arguments: " + " ".join(forwarded))
+    if (
+        args.command == "plan"
+        and args.benchmark_startup_timing
+        and not args.shadow_v10
+    ):
+        parser.error("--benchmark-startup-timing requires --shadow-v10")
     if args.command == "plan" and args.shadow_v10:
+        benchmark_timing: dict[str, Any] | None = (
+            {} if args.benchmark_startup_timing else None
+        )
         try:
-            result = live_shadow_plan_v10(repo, owned_paths=args.owned_path)
+            result = live_shadow_plan_v10(
+                repo,
+                owned_paths=args.owned_path,
+                _benchmark_timing_sink=benchmark_timing,
+            )
         except (
             WorkflowRuntimeError,
             StartupRuntimeError,
@@ -1096,6 +1178,17 @@ def main() -> int:
                 "PX_RH_CLAIM": "NOT_MADE",
             }
         print(render_shadow_plan_v10(result))
+        if benchmark_timing:
+            print(
+                _BENCHMARK_TIMING_PREFIX
+                + json.dumps(
+                    benchmark_timing,
+                    ensure_ascii=True,
+                    separators=(",", ":"),
+                    sort_keys=True,
+                ),
+                file=sys.stderr,
+            )
         return 0 if result.get("status") == "READY" else 2
     from orchestrator import dependency_registry
 
