@@ -44,11 +44,11 @@ CYCLE = (
     "GRAPH_RECOMPUTATION",
 )
 TOOL_SUPPLIERS = {
-    "planning": ("cartographer-brief", "cheap-closure-finder", "goal-run-selector"),
+    "planning": ("cartographer-brief", "cheap-closure-finder"),
     "discovery": ("ask-shelf", "kb-query"),
     "compatibility": ("supplier-preflight",),
     "gap_solving": ("research-debt-challenge", "workflow-runtime"),
-    "certification": ("lean-validation", "three-body-loop"),
+    "certification": ("lean-validation",),
     "closure": (
         "knowledge-spine-step-close",
         "workflow-session-close",
@@ -237,13 +237,21 @@ def compile_contract(
         "open_joints": _debt_joints(assembly_debt),
     }
     candidates = list(assembly.get("open_joints") or _debt_joints(assembly_debt))
+    candidate_addresses = [
+        address
+        for candidate in candidates
+        if isinstance(candidate, dict)
+        and isinstance((address := candidate.get("address")), str)
+        and address
+    ]
     blocking = sorted(set(item for item in holds if item))
     if blocking or action == "HOLD":
         joint = {
             "status": "BLOCKED",
             "address": None,
             "selection_reason": "canonical hold prevents mathematical dispatch",
-            "candidates": candidates,
+            "candidates": candidate_addresses,
+            "candidate_details_ref": "cords.open_joints",
         }
     elif not exact_bound:
         joint = {
@@ -253,14 +261,16 @@ def compile_contract(
                 "physical goal is selected; brief and cheap rank candidates, then the "
                 "exact consumer contract must be bound before proof work"
             ),
-            "candidates": candidates,
+            "candidates": candidate_addresses,
+            "candidate_details_ref": "cords.open_joints",
         }
     else:
         joint = {
             "status": "READY_FOR_PREFLIGHT",
             "address": goal_binding.get("joint_address"),
             "selection_reason": "exact consumer contract is bound",
-            "candidates": candidates,
+            "candidates": candidate_addresses,
+            "candidate_details_ref": "cords.open_joints",
         }
 
     return {

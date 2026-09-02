@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Read-only warm/cold benchmark for the v10 shadow workflow plan."""
+"""Read-only warm/cold benchmark for the production Control-v10 plan."""
 
 from __future__ import annotations
 
@@ -44,15 +44,13 @@ T = TypeVar("T")
 EXPECTED_GOAL = "docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md"
 EXPECTED_NODE = "REALZERO_GROUND_DIAGONAL_TO_XI"
 EXPECTED_SOURCE_PIN = "f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7"
-EXPECTED_LIVE_FATALS: frozenset[str] = frozenset()
+EXPECTED_LIVE_HOLDS: frozenset[str] = frozenset(
+    {"NODE_REGISTRY_EXACT_EDGE_REQUIRED"}
+)
 REQUIRED_BLOCKED_FEATURES = frozenset(
     {
         "BLOCKED_FEATURE:EXACT_THEOREM_EDGE_UNSELECTED",
         "BLOCKED_FEATURE:EXACT_CONSUMER_EDGE_UNSELECTED",
-        "RUN",
-        "DISPATCH",
-        "MINT",
-        "STATE_WRITE",
         "RUN_CLOSE_NODE",
     }
 )
@@ -68,6 +66,9 @@ TRACE_SENTINEL_PATHS = (
 OPAQUE_BUS_SENTINEL_PATH = "docs/routeB_bus/.benchmark-opaque/deep/999_fake.goal.md"
 PHASE_A_CANDIDATE_PATHS = (
     EXPECTED_GOAL,
+    "docs/CODEX_CONTROL.md",
+    "docs/cartographer/TOOLS.yaml",
+    "orchestrator/proof_loop.py",
     "orchestrator/workflow_runtime.py",
     "orchestrator/benchmarks/control_v10_benchmark.py",
     "orchestrator/startup_runtime.py",
@@ -84,7 +85,21 @@ PHASE_A_CANDIDATE_PATHS = (
 COLD_REQUIRED_PATHS = (
     "docs/CODEX_CONTROL.md",
     "docs/Codex/CURRENT.md",
+    "docs/cartographer/TOOLS.yaml",
+    "docs/semantic_quarantine/PUBLIC_EXPORT_INDEX_AND_AXIOM_RECEIPT_v1.md",
+    "orchestrator/proof_loop.py",
+    "orchestrator/roof_port_ledger.py",
     "orchestrator/routeb_goal_state.py",
+    "orchestrator/state/CHANNEL_RUNTIME.json",
+    "q3.lean.aristotle/Q3/Proofs/RouteB/CanonicalRHRouteSkeleton.lean",
+    "q3.lean.aristotle/Q3/Proofs/RouteB/D0CanonicalApproximation.lean",
+    "q3.lean.aristotle/Q3/Proofs/RouteB/D0PostAnchorMontel.lean",
+    "q3.lean.aristotle/Q3/Proofs/RouteB/D0StripMontelRefinement.lean",
+    (
+        "q3.lean.aristotle/Q3/Proofs/RouteB/"
+        "G6N1SelectedFerrersN2CompactDecayAssembly.lean"
+    ),
+    "q3.lean.aristotle/aristotle_db/knowledge.db",
     (
         "q3.lean.aristotle/ACTIVE/requests/"
         "routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_STATE.json"
@@ -157,7 +172,7 @@ def _functional_plan_audit(plan: dict[str, Any]) -> dict[str, Any]:
     errors: list[str] = []
     if plan.get("schema") != workflow_runtime.SHADOW_PLAN_SCHEMA:
         errors.append("PLAN_SCHEMA_MISMATCH")
-    if plan.get("mode") != "SHADOW_V10_READ_ONLY":
+    if plan.get("mode") != workflow_runtime.PRODUCTION_PLAN_MODE:
         errors.append("PLAN_MODE_MISMATCH")
     if plan.get("run_authorized") is not False:
         errors.append("PLAN_RUN_AUTHORIZED")
@@ -178,23 +193,23 @@ def _functional_plan_audit(plan: dict[str, Any]) -> dict[str, Any]:
         errors.append("PLAN_REQUIRED_BLOCKERS_MISSING:" + ",".join(missing_blockers))
     holds = plan.get("holds")
     hold_values = [str(item) for item in holds] if isinstance(holds, list) else []
-    if any("SHADOW_V10_UNAVAILABLE" in item for item in hold_values):
-        errors.append("SHADOW_V10_UNAVAILABLE")
-    expected_fatal_values = sorted(EXPECTED_LIVE_FATALS)
+    if any("PRODUCTION_V10_UNAVAILABLE" in item for item in hold_values):
+        errors.append("PRODUCTION_V10_UNAVAILABLE")
+    expected_hold_values = sorted(EXPECTED_LIVE_HOLDS)
     status = plan.get("status")
-    exact_live_fatal_status_pass = status == "HOLD"
-    if not exact_live_fatal_status_pass:
+    exact_live_hold_status_pass = status == "HOLD"
+    if not exact_live_hold_status_pass:
         errors.append("PLAN_STATUS_NOT_EXPECTED_HOLD:" + str(status))
-    expected_fatals = [
-        item for item in hold_values if item in EXPECTED_LIVE_FATALS
+    expected_holds = [
+        item for item in hold_values if item in EXPECTED_LIVE_HOLDS
     ]
     unexpected = [
-        item for item in hold_values if item not in EXPECTED_LIVE_FATALS
+        item for item in hold_values if item not in EXPECTED_LIVE_HOLDS
     ]
-    exact_live_fatal_set_pass = hold_values == expected_fatal_values
-    if not exact_live_fatal_set_pass:
-        detail = ",".join(unexpected) if unexpected else "MISSING_FATAL_CODE"
-        errors.append("PLAN_UNEXPECTED_FATAL:" + detail)
+    exact_live_hold_set_pass = hold_values == expected_hold_values
+    if not exact_live_hold_set_pass:
+        detail = ",".join(unexpected) if unexpected else "MISSING_HOLD_CODE"
+        errors.append("PLAN_UNEXPECTED_HOLD:" + detail)
     startup = plan.get("startup")
     startup_fatal_errors = (
         [str(item) for item in startup.get("fatal_errors", [])]
@@ -202,7 +217,7 @@ def _functional_plan_audit(plan: dict[str, Any]) -> dict[str, Any]:
         and isinstance(startup.get("fatal_errors"), list)
         else []
     )
-    startup_fatal_set_pass = startup_fatal_errors == expected_fatal_values
+    startup_fatal_set_pass = startup_fatal_errors == []
     if not startup_fatal_set_pass:
         errors.append("PLAN_STARTUP_FATAL_SET_MISMATCH")
     startup_honesty_state_pass = (
@@ -221,11 +236,11 @@ def _functional_plan_audit(plan: dict[str, Any]) -> dict[str, Any]:
     )
     if not exact_selector_pass:
         errors.append("PLAN_EXACT_SELECTOR_MISMATCH")
-    legacy_v9_authority_unchanged_pass = (
-        plan.get("legacy_v9_authority_unchanged") is True
+    legacy_v9_not_authority_pass = (
+        plan.get("legacy_v9_authority_unchanged") is False
     )
-    if not legacy_v9_authority_unchanged_pass:
-        errors.append("PLAN_LEGACY_V9_AUTHORITY_CHANGED")
+    if not legacy_v9_not_authority_pass:
+        errors.append("PLAN_LEGACY_V9_STILL_AUTHORITY")
     px_rh_claim_not_made_pass = plan.get("PX_RH_CLAIM") == "NOT_MADE"
     if not px_rh_claim_not_made_pass:
         errors.append("PLAN_PX_RH_CLAIM_CHANGED")
@@ -233,15 +248,13 @@ def _functional_plan_audit(plan: dict[str, Any]) -> dict[str, Any]:
         "pass": not errors,
         "errors": errors,
         "status": status,
-        "expected_live_fatals": expected_fatals,
-        "exact_live_fatal_status_pass": exact_live_fatal_status_pass,
-        "exact_live_fatal_set_pass": exact_live_fatal_set_pass,
+        "expected_live_holds": expected_holds,
+        "exact_live_hold_status_pass": exact_live_hold_status_pass,
+        "exact_live_hold_set_pass": exact_live_hold_set_pass,
         "startup_fatal_set_pass": startup_fatal_set_pass,
         "startup_honesty_state_pass": startup_honesty_state_pass,
         "exact_selector_pass": exact_selector_pass,
-        "legacy_v9_authority_unchanged_pass": (
-            legacy_v9_authority_unchanged_pass
-        ),
+        "legacy_v9_not_authority_pass": legacy_v9_not_authority_pass,
         "px_rh_claim_not_made_pass": px_rh_claim_not_made_pass,
         "required_blocked_features": sorted(REQUIRED_BLOCKED_FEATURES),
         "observed_blocked_features": sorted(blocked_names),
@@ -412,7 +425,6 @@ def _workflow_plan_command(repo: Path) -> list[str]:
         "--root",
         str(repo),
         "plan",
-        "--shadow-v10",
         "--benchmark-startup-timing",
     ]
 
@@ -458,7 +470,7 @@ def _instrumented_once(
 ) -> dict[str, Any]:
     startup_capture: dict[str, Any] = {}
     snapshot_constructor_calls = 0
-    original_builder = workflow_runtime.build_shadow_snapshot
+    original_builder = workflow_runtime.build_startup_snapshot
     original_summary = workflow_runtime.node_registry_v10.startup_gate_summary
 
     def production_plan(
@@ -484,6 +496,7 @@ def _instrumented_once(
             owned_paths: object = (),
             *,
             exact_node_pin: str | None = None,
+            exact_source_pin: str | None = None,
             exact_theorem_pin: str | None = None,
             exact_consumer_pin: str | None = None,
         ) -> dict[str, Any]:
@@ -492,6 +505,7 @@ def _instrumented_once(
             )
             if registry_scope is not None:
                 exact_node_pin = None
+                exact_source_pin = None
                 exact_theorem_pin = None
                 exact_consumer_pin = None
             return original_summary(
@@ -499,13 +513,14 @@ def _instrumented_once(
                 selected,
                 owned_paths=owned_paths,
                 exact_node_pin=exact_node_pin,
+                exact_source_pin=exact_source_pin,
                 exact_theorem_pin=exact_theorem_pin,
                 exact_consumer_pin=exact_consumer_pin,
             )
 
         with (
             mock.patch.object(
-                workflow_runtime, "build_shadow_snapshot", new=measured_builder
+                workflow_runtime, "build_startup_snapshot", new=measured_builder
             ),
             mock.patch.object(
                 workflow_runtime.node_registry_v10,
@@ -513,8 +528,8 @@ def _instrumented_once(
                 new=measured_summary,
             ),
         ):
-            plan = workflow_runtime.live_shadow_plan_v10(repo, owned_paths=[])
-            return plan, workflow_runtime.render_shadow_plan_v10(plan)
+            plan = workflow_runtime.live_plan_v10(repo, owned_paths=[])
+            return plan, workflow_runtime.render_plan_v10(plan)
 
     (plan, rendered), total_metrics = _instrument_call(repo, production_plan)
     if not startup_capture:
@@ -552,8 +567,8 @@ def _instrumented_once(
         "forbidden_argv_audit": _forbidden_argv_audit(runtime_argv),
         "measurement": {
             "duration": (
-                "STARTUP_IS_EXACT_BUILD_SHADOW_SNAPSHOT_WALL; "
-                "TOTAL_IS_LIVE_SHADOW_PLAN_IN_PROCESS_INCLUDES_RENDER"
+                "STARTUP_IS_EXACT_BUILD_STARTUP_SNAPSHOT_WALL; "
+                "TOTAL_IS_LIVE_PRODUCTION_PLAN_IN_PROCESS_INCLUDES_RENDER"
             ),
             "counts": "VERIFIED_DIRECT_RUNTIME_COUNTS_NOT_OS_WIDE",
             "counts_scope": (
@@ -1678,12 +1693,12 @@ def _combine_runtime_sample(
         )
     )
     functional_invariant_fields = (
-        "exact_live_fatal_status_pass",
-        "exact_live_fatal_set_pass",
+        "exact_live_hold_status_pass",
+        "exact_live_hold_set_pass",
         "startup_fatal_set_pass",
         "startup_honesty_state_pass",
         "exact_selector_pass",
-        "legacy_v9_authority_unchanged_pass",
+        "legacy_v9_not_authority_pass",
         "px_rh_claim_not_made_pass",
     )
     functional_invariants = {
@@ -1702,7 +1717,7 @@ def _combine_runtime_sample(
     audited_startup_duration_ms = audited_sample["startup"]["duration_ms"]
     startup = dict(direct_sample["startup"])
     startup["duration_ms"] = production_startup["startup_duration_ms"]
-    startup["measurement"] = "DIRECT_PRODUCTION_BUILD_SHADOW_SNAPSHOT_WALL"
+    startup["measurement"] = "DIRECT_PRODUCTION_BUILD_STARTUP_SNAPSHOT_WALL"
     startup["direct_instrumented_duration_ms"] = direct_startup_duration_ms
     startup["direct_instrumented_measurement"] = (
         "IN_PROCESS_DIRECT_CALL_DIAGNOSTIC_NOT_PERFORMANCE_BUDGET"
@@ -2384,12 +2399,12 @@ def benchmark(repo: Path, *, warm_runs: int, cold_runs: int) -> dict[str, Any]:
         row["runtime_acceptance"]["functional_plan_pass"]
         for row in [*warm, *cold]
     )
-    exact_live_fatal_status_pass = all(
-        row["runtime_acceptance"]["exact_live_fatal_status_pass"]
+    exact_live_hold_status_pass = all(
+        row["runtime_acceptance"]["exact_live_hold_status_pass"]
         for row in [*warm, *cold]
     )
-    exact_live_fatal_set_pass = all(
-        row["runtime_acceptance"]["exact_live_fatal_set_pass"]
+    exact_live_hold_set_pass = all(
+        row["runtime_acceptance"]["exact_live_hold_set_pass"]
         for row in [*warm, *cold]
     )
     startup_fatal_set_pass = all(
@@ -2404,8 +2419,8 @@ def benchmark(repo: Path, *, warm_runs: int, cold_runs: int) -> dict[str, Any]:
         row["runtime_acceptance"]["exact_selector_pass"]
         for row in [*warm, *cold]
     )
-    legacy_v9_authority_unchanged_pass = all(
-        row["runtime_acceptance"]["legacy_v9_authority_unchanged_pass"]
+    legacy_v9_not_authority_pass = all(
+        row["runtime_acceptance"]["legacy_v9_not_authority_pass"]
         for row in [*warm, *cold]
     )
     px_rh_claim_not_made_pass = all(
@@ -2441,14 +2456,12 @@ def benchmark(repo: Path, *, warm_runs: int, cold_runs: int) -> dict[str, Any]:
         "output_budgets_pass": output_budgets_pass,
         "one_snapshot_per_plan_pass": constructor_budget_pass,
         "functional_plan_exact_contract_pass": functional_plan_pass,
-        "exact_live_fatal_status_pass": exact_live_fatal_status_pass,
-        "exact_live_fatal_set_pass": exact_live_fatal_set_pass,
+        "exact_live_hold_status_pass": exact_live_hold_status_pass,
+        "exact_live_hold_set_pass": exact_live_hold_set_pass,
         "startup_fatal_set_pass": startup_fatal_set_pass,
         "startup_honesty_state_pass": startup_honesty_state_pass,
         "exact_goal_058_selector_pass": exact_selector_pass,
-        "legacy_v9_authority_unchanged_pass": (
-            legacy_v9_authority_unchanged_pass
-        ),
+        "legacy_v9_not_authority_pass": legacy_v9_not_authority_pass,
         "px_rh_claim_not_made_pass": px_rh_claim_not_made_pass,
         "direct_production_tree_manifest_pass": (
             direct_production_tree_manifest_pass

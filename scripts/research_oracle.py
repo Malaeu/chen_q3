@@ -386,7 +386,10 @@ def cmd_validate_external_receipt(args, _cfg) -> int:
         import search_external_lean  # type: ignore[no-redef]
 
     payload, errors = search_external_lean.load_secure_receipt(
-        Path(args.receipt), expected_query=args.query
+        Path(args.receipt),
+        expected_query=args.query,
+        expected_candidate=args.candidate,
+        expected_candidate_provenance=args.candidate_provenance,
     )
     if errors or payload is None:
         print(
@@ -458,6 +461,11 @@ def main() -> int:
     p_receipt = sub.add_parser("validate-external-receipt")
     p_receipt.add_argument("query")
     p_receipt.add_argument("receipt")
+    p_receipt.add_argument("--candidate")
+    p_receipt.add_argument(
+        "--candidate-provenance",
+        choices=["GENERATED_OR_DERIVED", "SOURCE_DECLARED"],
+    )
     p_receipt.set_defaults(func=cmd_validate_external_receipt)
 
     args = ap.parse_args()

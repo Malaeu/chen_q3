@@ -185,6 +185,117 @@ def query_terms(query: str) -> list[str]:
     return terms
 
 
+def _scan_base(
+    base_id: str,
+    root: Path,
+    *,
+    terms: list[str],
+    candidate: str | None,
+    max_matches: int,
+    deadline: float,
+) -> tuple[dict[str, Any], list[dict[str, object]]]:
+    """Scan one immutable root and return the result bound to its byte identity."""
+
+    before, files = _content_identity(root, deadline)
+    canonical = Path(str(before["canonical_root"]))
+    folded_terms = [term.casefold() for term in terms]
+    query_names = set(folded_terms)
+    candidate_folded = candidate.casefold() if candidate else None
+    candidate_tail = candidate.rsplit(".", 1)[-1].casefold() if candidate else None
+    candidate_is_qualified = candidate is not None and "." in candidate
+    exact_lines: list[str] = []
+    uncertain_lines: list[str] = []
+    matches: list[dict[str, object]] = []
+    for source in files:
+        _remaining(deadline)
+        rel = source.relative_to(canonical).as_posix()
+        try:
+            lines = source.read_text(encoding="utf-8").splitlines()
+        except (OSError, UnicodeError) as exc:
+            raise SearchIncomplete(f"cannot decode {source}: {exc}") from exc
+        for line_number, snippet in enumerate(lines, start=1):
+            _remaining(deadline)
+            folded = snippet.casefold()
+            declaration = DECLARATION_RE.match(snippet)
+            if len(matches) < max_matches and any(
+                term in folded for term in folded_terms
+            ):
+                declaration_name = declaration.group("name") if declaration else None
+                match_kind = "TEXT_CANDIDATE"
+                if declaration_name and (
+                    declaration_name.casefold() in query_names
+                    or declaration_name.rsplit(".", 1)[-1].casefold() in query_names
+                ):
+                    match_kind = "EXACT_DECLARATION"
+                matches.append(
+                    {
+                        "base_id": base_id,
+                        "path": rel,
+                        "line": line_number,
+                        "match_kind": match_kind,
+                        "declaration_name": declaration_name,
+                        "snippet": snippet[:240],
+                    }
+                )
+            if candidate_tail and candidate_tail in folded:
+                if declaration is not None:
+                    declared = declaration.group("name").casefold()
+                    declared_tail = declared.rsplit(".", 1)[-1]
+                    if candidate_is_qualified:
+                        if declared == candidate_folded:
+                            exact_lines.append(f"{rel}:{line_number}:{snippet}")
+                        elif declared_tail == candidate_tail:
+                            # A namespace block is not reconstructed by this lexical scanner.
+                            # A same-tail declaration can therefore never prove the identity of
+                            # a fully-qualified requested theorem.
+                            uncertain_lines.append(f"{rel}:{line_number}:{snippet}")
+                    elif declared_tail == candidate_tail:
+                        exact_lines.append(f"{rel}:{line_number}:{snippet}")
+                elif DECLARATION_START_RE.match(snippet) or re.match(
+                    r"^\s*(?:macro|syntax|elab)\b", snippet
+                ):
+                    uncertain_lines.append(f"{rel}:{line_number}:{snippet}")
+    after, after_files = _content_identity(root, deadline)
+    if before != after or len(files) != len(after_files):
+        raise SearchIncomplete("source identity changed during search")
+    exact_result: dict[str, Any] | None = None
+    if candidate is not None:
+        bound_lines = sorted(exact_lines)
+        status = (
+            "INCOMPLETE"
+            if uncertain_lines
+            else ("PRESENT" if bound_lines else "ABSENT")
+        )
+        exact_result = {
+            "status": status,
+            "searched_regular_source_count": len(files),
+            "match_count": len(bound_lines),
+            "match_digest": _canonical_hash(bound_lines),
+            "displayed_matches": bound_lines[:20],
+            "uncertain_count": len(uncertain_lines),
+            "boundary": (
+                "SOURCE_DECLARATION_LOOKUP_UNCERTAIN"
+                if uncertain_lines
+                else (
+                    "SOURCE_DECLARATION_PRESENT"
+                    if bound_lines
+                    else "SOURCE_DECLARATION_ABSENCE"
+                )
+            ),
+        }
+    return (
+        {
+            "base_id": base_id,
+            "canonical_root": str(canonical),
+            "identity_before": before,
+            "identity_after": after,
+            "searched_regular_source_count": len(files),
+            "exact_candidate": exact_result,
+        },
+        matches,
+    )
+
+
 def search_registry(
     query: str,
     *,
@@ -226,105 +337,28 @@ def search_registry(
     if not terms:
         errors.append("query has no searchable Lean identifier")
 
-    if terms and not (duplicates or missing or unexpected):
+    if max_matches < 0:
+        errors.append("max_matches must be nonnegative")
+    if terms and not (duplicates or missing or unexpected) and max_matches >= 0:
         seen: set[str] = set()
-        folded_terms = [term.casefold() for term in terms]
-        query_names = set(folded_terms)
-        candidate_tail = candidate.rsplit(".", 1)[-1].casefold() if candidate else None
         for base_id, root in resolved:
             if base_id in seen:
                 continue
             seen.add(base_id)
             try:
-                before, files = _content_identity(root, deadline)
-                canonical = Path(str(before["canonical_root"]))
-                exact_lines: list[str] = []
-                uncertain_lines: list[str] = []
-                for source in files:
-                    _remaining(deadline)
-                    rel = source.relative_to(canonical).as_posix()
-                    try:
-                        lines = source.read_text(encoding="utf-8").splitlines()
-                    except (OSError, UnicodeError) as exc:
-                        raise SearchIncomplete(f"cannot decode {source}: {exc}") from exc
-                    for line_number, snippet in enumerate(lines, start=1):
-                        _remaining(deadline)
-                        folded = snippet.casefold()
-                        declaration = DECLARATION_RE.match(snippet)
-                        if len(matches) < max_matches and any(
-                            term in folded for term in folded_terms
-                        ):
-                            declaration_name = declaration.group("name") if declaration else None
-                            match_kind = "TEXT_CANDIDATE"
-                            if declaration_name and (
-                                declaration_name.casefold() in query_names
-                                or declaration_name.rsplit(".", 1)[-1].casefold()
-                                in query_names
-                            ):
-                                match_kind = "EXACT_DECLARATION"
-                            matches.append(
-                                {
-                                    "base_id": base_id,
-                                    "path": rel,
-                                    "line": line_number,
-                                    "match_kind": match_kind,
-                                    "declaration_name": declaration_name,
-                                    "snippet": snippet[:240],
-                                }
-                            )
-                        if candidate_tail and candidate_tail in folded:
-                            if declaration is not None:
-                                declared_tail = (
-                                    declaration.group("name")
-                                    .rsplit(".", 1)[-1]
-                                    .casefold()
-                                )
-                                if declared_tail == candidate_tail:
-                                    exact_lines.append(f"{rel}:{line_number}:{snippet}")
-                            elif DECLARATION_START_RE.match(snippet) or re.match(
-                                r"^\s*(?:macro|syntax|elab)\b", snippet
-                            ):
-                                uncertain_lines.append(f"{rel}:{line_number}:{snippet}")
-                after, after_files = _content_identity(root, deadline)
-                if before != after or len(files) != len(after_files):
-                    raise SearchIncomplete("source identity changed during search")
-                exact_result: dict[str, Any] | None = None
-                if candidate is not None:
-                    bound_lines = sorted(exact_lines)
-                    status = (
-                        "INCOMPLETE"
-                        if uncertain_lines
-                        else ("PRESENT" if bound_lines else "ABSENT")
-                    )
-                    exact_result = {
-                        "status": status,
-                        "searched_regular_source_count": len(files),
-                        "match_count": len(bound_lines),
-                        "match_digest": _canonical_hash(bound_lines),
-                        "displayed_matches": bound_lines[:20],
-                        "uncertain_count": len(uncertain_lines),
-                        "boundary": (
-                            "SOURCE_DECLARATION_LOOKUP_UNCERTAIN"
-                            if uncertain_lines
-                            else (
-                                "SOURCE_DECLARATION_PRESENT"
-                                if bound_lines
-                                else "SOURCE_DECLARATION_ABSENCE"
-                            )
-                        ),
-                    }
-                    if uncertain_lines:
-                        errors.append(f"{base_id}: exact candidate lookup uncertain")
-                base_results.append(
-                    {
-                        "base_id": base_id,
-                        "canonical_root": str(canonical),
-                        "identity_before": before,
-                        "identity_after": after,
-                        "searched_regular_source_count": len(files),
-                        "exact_candidate": exact_result,
-                    }
+                row, base_matches = _scan_base(
+                    base_id,
+                    root,
+                    terms=terms,
+                    candidate=candidate,
+                    max_matches=max(0, max_matches - len(matches)),
+                    deadline=deadline,
                 )
+                base_results.append(row)
+                matches.extend(base_matches)
+                exact_result = row["exact_candidate"]
+                if isinstance(exact_result, dict) and exact_result["status"] == "INCOMPLETE":
+                    errors.append(f"{base_id}: exact candidate lookup uncertain")
                 queried.append(base_id)
             except (OSError, RuntimeError, SearchIncomplete, subprocess.TimeoutExpired) as exc:
                 errors.append(f"{base_id}: {exc}")
@@ -339,6 +373,7 @@ def search_registry(
         "candidate_sha256": _sha256_text(candidate),
         "candidate_provenance": candidate_provenance,
         "budget_seconds": budget_seconds,
+        "max_matches": max_matches,
         "registry_sha256": _canonical_hash({"enabled": expected, "resolved": registry_rows}),
         "enabled_bases": expected,
         "bases_queried": queried,
@@ -374,6 +409,9 @@ def validate_receipt(
     budget = payload.get("budget_seconds")
     if not isinstance(budget, (int, float)) or budget <= 0 or budget > max_budget_seconds:
         errors.append("external receipt budget is invalid")
+    max_matches = payload.get("max_matches")
+    if not isinstance(max_matches, int) or isinstance(max_matches, bool) or max_matches < 0:
+        errors.append("external receipt max_matches is invalid")
     enabled = payload.get("enabled_bases")
     queried = payload.get("bases_queried")
     rows = payload.get("base_results")
@@ -397,6 +435,8 @@ def validate_receipt(
         payload.get("terms"), list
     ):
         errors.append("external receipt result fields are malformed")
+    elif payload.get("terms") != query_terms(expected_query):
+        errors.append("external receipt query terms mismatch")
     candidate_value = payload.get("candidate")
     candidate = candidate_value if isinstance(candidate_value, str) else None
     if payload.get("candidate_sha256") != _sha256_text(candidate):
@@ -404,14 +444,10 @@ def validate_receipt(
     provenance = payload.get("candidate_provenance")
     if provenance is not None and provenance not in PROVENANCE_CLASSES:
         errors.append("external receipt candidate provenance is invalid")
-    if expected_candidate is not None and candidate != expected_candidate:
+    if candidate != expected_candidate:
         errors.append("external receipt exact candidate replay mismatch")
-    if (
-        expected_candidate_provenance is not None
-        and provenance != expected_candidate_provenance
-    ):
+    if provenance != expected_candidate_provenance:
         errors.append("external receipt candidate provenance replay mismatch")
-    deadline = time.monotonic() + max(0.001, max_budget_seconds)
     for row in rows:
         if not isinstance(row, dict):
             errors.append("external receipt base row is malformed")
@@ -461,14 +497,37 @@ def validate_receipt(
             "searched_regular_source_count"
         ):
             errors.append(f"{row.get('base_id')}: exact candidate denominator mismatch")
-        if revalidate_current_roots and isinstance(row.get("canonical_root"), str):
+    if (
+        revalidate_current_roots
+        and isinstance(max_matches, int)
+        and max_matches >= 0
+        and isinstance(enabled, list)
+        and isinstance(rows, list)
+    ):
+        recomputed_rows: list[dict[str, Any]] = []
+        recomputed_matches: list[dict[str, object]] = []
+        replay_deadline = time.monotonic() + max(0.001, max_budget_seconds)
+        for row in rows:
+            if not isinstance(row, dict) or not isinstance(row.get("canonical_root"), str):
+                continue
             try:
-                current, _ = _content_identity(Path(row["canonical_root"]), deadline)
+                replay_row, replay_matches = _scan_base(
+                    str(row.get("base_id")),
+                    Path(row["canonical_root"]),
+                    terms=query_terms(expected_query),
+                    candidate=candidate,
+                    max_matches=max(0, max_matches - len(recomputed_matches)),
+                    deadline=replay_deadline,
+                )
             except Exception as exc:
-                errors.append(f"{row.get('base_id')}: current identity unavailable: {exc}")
-            else:
-                if current != after:
-                    errors.append(f"{row.get('base_id')}: source identity changed after receipt")
+                errors.append(f"{row.get('base_id')}: result replay unavailable: {exc}")
+                continue
+            if replay_row.get("identity_after") != row.get("identity_after"):
+                errors.append(f"{row.get('base_id')}: source identity changed after receipt")
+            recomputed_rows.append(replay_row)
+            recomputed_matches.extend(replay_matches)
+        if recomputed_rows != rows or recomputed_matches != payload.get("matches"):
+            errors.append("external receipt search results do not match current sources")
     return not errors, errors
 
 
@@ -476,6 +535,8 @@ def load_secure_receipt(
     path: Path,
     *,
     expected_query: str,
+    expected_candidate: str | None = None,
+    expected_candidate_provenance: str | None = None,
     validate_configured_registry: bool = True,
 ) -> tuple[dict[str, Any] | None, list[str]]:
     """Load one private, non-repository receipt and validate its live bindings."""
@@ -496,8 +557,6 @@ def load_secure_receipt(
             payload = json.load(handle)
     except (OSError, ValueError, json.JSONDecodeError) as exc:
         return None, errors + [f"external receipt unreadable: {exc}"]
-    valid, validation_errors = validate_receipt(payload, expected_query=expected_query)
-    errors.extend(validation_errors)
     if validate_configured_registry and isinstance(payload, dict):
         try:
             expected_ids, configured = _load_bases()
@@ -514,6 +573,14 @@ def load_secure_receipt(
             ]
             if payload.get("enabled_bases") != expected_ids or receipt_rows != configured_rows:
                 errors.append("external receipt does not match current configured registry")
+    _valid, validation_errors = validate_receipt(
+        payload,
+        expected_query=expected_query,
+        expected_candidate=expected_candidate,
+        expected_candidate_provenance=expected_candidate_provenance,
+        revalidate_current_roots=not errors,
+    )
+    errors.extend(validation_errors)
     return (payload if isinstance(payload, dict) else None), errors
 
 
@@ -530,7 +597,10 @@ def main() -> int:
     args = parser.parse_args()
     if args.validate_receipt is not None:
         payload, errors = load_secure_receipt(
-            args.validate_receipt, expected_query=args.query
+            args.validate_receipt,
+            expected_query=args.query,
+            expected_candidate=args.candidate,
+            expected_candidate_provenance=args.candidate_provenance,
         )
         if errors or payload is None:
             print(

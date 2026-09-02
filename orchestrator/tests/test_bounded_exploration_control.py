@@ -256,6 +256,26 @@ class RuntimeAndSpineTests(unittest.TestCase):
         self.assertEqual(result["control"], "ACTIVE")
         self.assertEqual(result["authority"],
                          "CODEX_PROSHKA_FULL_EXCEPT_PX_RH_CLAIM")
+        self.assertEqual(result["three_body"]["legacy_control_version"], 9)
+        self.assertFalse(result["three_body"]["startup_barrier"])
+
+    def test_manual_spine_never_enters_legacy_live_attestation_broker(self) -> None:
+        with (
+            mock.patch.object(
+                spine._three_body_loop,
+                "resolve_linux_semantic_attestation",
+                side_effect=AssertionError("legacy Linux broker entered v10 Spine"),
+            ) as broker,
+            mock.patch.object(
+                spine._three_body_loop,
+                "resolve_semantic_attestation",
+                side_effect=AssertionError("legacy host resolver entered v10 Spine"),
+            ) as host_resolver,
+        ):
+            result = spine.validate_p9a()
+        broker.assert_not_called()
+        host_resolver.assert_not_called()
+        self.assertEqual(result["three_body"]["historical_entries"], 9)
 
     def test_spine_render_is_deterministic(self) -> None:
         first = spine.build()
@@ -263,7 +283,7 @@ class RuntimeAndSpineTests(unittest.TestCase):
         self.assertEqual(first, second)
         self.assertIn("## Staleness warnings", first)
         self.assertNotIn("## Staleness warnings\n- none detected", first)
-        self.assertIn("Behavior controls (P9 active)", first)
+        self.assertIn("Behavior controls (Control v10 active)", first)
         self.assertIn("Phase chat and bounded exploration", first)
         self.assertNotIn("candidate brainstorm", first)
 

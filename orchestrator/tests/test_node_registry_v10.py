@@ -80,6 +80,7 @@ def live() -> dict:
 def test_live_registry_has_seven_v9_nodes_nine_edges_and_three_unmapped() -> None:
     document = live()
     assert document["algorithm_version"] == registry.ALGORITHM_VERSION
+    assert document["mode"] == "PRODUCTION_V10_READ_ONLY"
     assert len(document["nodes"]) == 7
     assert len(document["edges"]) == 9
     assert sum(node["lifecycle"] == "HISTORICAL_V9_UNMAPPED" for node in document["nodes"]) == 3
@@ -105,6 +106,42 @@ def test_live_registry_has_seven_v9_nodes_nine_edges_and_three_unmapped() -> Non
     assert arch_prime["review"]["historical_receipt"]["entry_id"] == (
         arch_prime["node_id"]
     )
+    assert (
+        document["review_policy"]["historical_receipt_transport"]
+        == "OFFLINE_EMBEDDED_NO_SOCKET"
+    )
+
+
+def test_production_startup_gate_never_resolves_historical_receipt_transport(
+    monkeypatch,
+) -> None:
+    document = live()
+    node = next(
+        item
+        for item in document["nodes"]
+        if item["lifecycle"] == "HISTORICAL_V9"
+        and item["semantic_review_inputs"]["exact_edges"]
+    )
+    edge_id = node["semantic_review_inputs"]["exact_edges"][0]
+    edge = next(item for item in document["edges"] if item["edge_id"] == edge_id)
+    monkeypatch.setattr(registry, "_read_registry_document", lambda _repo: document)
+    monkeypatch.setattr(
+        registry,
+        "_validate_historical_receipts",
+        lambda *_args, **_kwargs: (_ for _ in ()).throw(
+            AssertionError("startup entered historical v9 receipt transport")
+        ),
+    )
+    summary = registry.startup_gate_summary(
+        ROOT,
+        node["validation_inputs"]["task_path"],
+        exact_node_pin=node["node_id"],
+        exact_source_pin=node["source"]["commit"],
+        exact_theorem_pin=edge["theorem"],
+        exact_consumer_pin=edge["consumer"],
+    )
+    assert summary["status"] == "PASS"
+    assert summary["consumption_status"] == "NOT_RUN_STARTUP_FAST_PATH"
 
 
 def test_authority_loader_requires_clean_exact_head_bytes(monkeypatch) -> None:
@@ -388,9 +425,10 @@ def test_startup_fast_path_scopes_physical_goal_and_never_runs_lean(monkeypatch)
         "historical_v9_unmapped": 3,
         "consumption_status": "NOT_RUN_STARTUP_FAST_PATH",
     }
-    assert registry.startup_gate_summary(ROOT, "docs/routeB_bus/999.goal.md")["code"] == (
-        "NODE_REGISTRY_SELECTED_SCOPE_UNREGISTERED"
-    )
+    unregistered = registry.startup_gate_summary(ROOT, "docs/routeB_bus/999.goal.md")
+    assert unregistered["status"] == "HOLD"
+    assert unregistered["code"] == "NODE_REGISTRY_SELECTED_SCOPE_UNREGISTERED"
+    assert unregistered["consumption_status"] == "NOT_RUN_STARTUP_FAST_PATH"
 
 
 def test_startup_summary_is_zero_git_structural_scope_only(monkeypatch) -> None:
@@ -418,7 +456,7 @@ def test_exact_unmapped_historical_node_is_never_startup_pass() -> None:
     assert summary["code"] == "NODE_REGISTRY_HISTORICAL_V9_UNMAPPED"
 
 
-def test_startup_exact_pin_triple_selects_one_edge_and_fails_closed() -> None:
+def test_startup_exact_pins_select_one_edge_and_fail_closed() -> None:
     document = live()
     node = document["nodes"][0]
     edge = document["edges"][0]
@@ -426,6 +464,7 @@ def test_startup_exact_pin_triple_selects_one_edge_and_fails_closed() -> None:
         ROOT,
         GOAL,
         exact_node_pin=node["node_id"],
+        exact_source_pin=node["source"]["commit"],
         exact_theorem_pin=edge["theorem"],
         exact_consumer_pin=edge["consumer"],
     )
@@ -436,6 +475,7 @@ def test_startup_exact_pin_triple_selects_one_edge_and_fails_closed() -> None:
         ROOT,
         node["validation_inputs"]["task_path"],
         exact_node_pin=node["node_id"],
+        exact_source_pin=node["source"]["commit"],
         exact_theorem_pin=edge["theorem"],
         exact_consumer_pin=edge["consumer"],
     )
@@ -450,6 +490,7 @@ def test_startup_exact_pin_triple_selects_one_edge_and_fails_closed() -> None:
         ROOT,
         GOAL,
         exact_node_pin=node["node_id"],
+        exact_source_pin=node["source"]["commit"],
         exact_theorem_pin=edge["theorem"] + "Missing",
         exact_consumer_pin=edge["consumer"],
     )
@@ -459,11 +500,23 @@ def test_startup_exact_pin_triple_selects_one_edge_and_fails_closed() -> None:
         ROOT,
         "docs/Codex/TASK_wrong.md",
         exact_node_pin=node["node_id"],
+        exact_source_pin=node["source"]["commit"],
         exact_theorem_pin=edge["theorem"],
         exact_consumer_pin=edge["consumer"],
     )
     assert drift["status"] == "FATAL"
     assert "EXACT_EDGE_PIN_GOAL_DRIFT" in drift["detail"]
+
+    source_drift = registry.startup_gate_summary(
+        ROOT,
+        GOAL,
+        exact_node_pin=node["node_id"],
+        exact_source_pin="0" * 40,
+        exact_theorem_pin=edge["theorem"],
+        exact_consumer_pin=edge["consumer"],
+    )
+    assert source_drift["status"] == "FATAL"
+    assert "EXACT_SOURCE_PIN_DRIFT" in source_drift["detail"]
 
 
 def test_helper_auto_only_without_semantic_triggers_and_ambiguity_is_bridge() -> None:
@@ -508,6 +561,14 @@ def test_semantic_hash_excludes_blobs_but_binds_hypothesis_port() -> None:
         "axioms",
         "dependency_graph",
     }
+
+
+def test_source_blob_is_bound_to_validation_source_bytes() -> None:
+    document = live()
+    document["nodes"][0]["source"]["blob"] = "0" * 40
+    rehash(document)
+    with pytest.raises(registry.NodeRegistryError, match="SOURCE_BLOB_BINDING_DRIFT"):
+        registry._validate_registry(document)
 
 
 def test_self_review_never_opens_and_roof_needs_owner_plus_second() -> None:
@@ -572,7 +633,9 @@ def test_lifecycle_review_coupling_and_native_receipt_independence() -> None:
     registry._validate_historical_receipts(ROOT, document, [node])
 
 
-def test_external_and_adversarial_review_evidence_fail_closed() -> None:
+def test_external_review_verifier_is_required_only_for_selected_review(
+    monkeypatch,
+) -> None:
     document = live()
     node = document["nodes"][1]
     evidence = node["review"]["evidence"][0]
@@ -590,8 +653,63 @@ def test_external_and_adversarial_review_evidence_fail_closed() -> None:
 
     evidence.update(signed=True, key_id="untrusted-key", signature="not-verified")
     rehash(document)
-    with pytest.raises(registry.NodeRegistryError, match="EXTERNAL_REVIEW_VERIFIER_UNAVAILABLE"):
-        registry._validate_registry(document)
+    registry._validate_registry(document)
+    edge_id = node["semantic_review_inputs"]["exact_edges"][0]
+    edge = next(row for row in document["edges"] if row["edge_id"] == edge_id)
+    monkeypatch.setattr(registry, "_read_registry_document", lambda _repo: document)
+    exact = {
+        "exact_node_pin": node["node_id"],
+        "exact_source_pin": node["source"]["commit"],
+        "exact_theorem_pin": edge["theorem"],
+        "exact_consumer_pin": edge["consumer"],
+    }
+    unavailable = registry.startup_gate_summary(
+        ROOT,
+        node["validation_inputs"]["task_path"],
+        **exact,
+    )
+    assert unavailable["status"] == "HOLD"
+    assert unavailable["code"] == "NODE_REGISTRY_EXTERNAL_REVIEW_VERIFIER_UNAVAILABLE"
+    assert "EXTERNAL_REVIEW_VERIFIER_UNAVAILABLE" in unavailable["detail"]
+
+    invalid = registry.startup_gate_summary(
+        ROOT,
+        node["validation_inputs"]["task_path"],
+        external_review_verifier=lambda _row: False,
+        **exact,
+    )
+    assert invalid["status"] == "FATAL"
+    assert "EXTERNAL_REVIEW_SIGNATURE_INVALID" in invalid["detail"]
+
+    accepted = registry.startup_gate_summary(
+        ROOT,
+        node["validation_inputs"]["task_path"],
+        external_review_verifier=lambda _row: True,
+        **exact,
+    )
+    assert accepted["status"] == "PASS"
+
+    other = document["nodes"][0]
+    other_edge = next(
+        row
+        for row in document["edges"]
+        if row["edge_id"] in other["semantic_review_inputs"]["exact_edges"]
+    )
+    calls: list[object] = []
+    other_summary = registry.startup_gate_summary(
+        ROOT,
+        other["validation_inputs"]["task_path"],
+        exact_node_pin=other["node_id"],
+        exact_source_pin=other["source"]["commit"],
+        exact_theorem_pin=other_edge["theorem"],
+        exact_consumer_pin=other_edge["consumer"],
+        external_review_verifier=lambda row: calls.append(row) is None,
+    )
+    assert other_summary["status"] == "PASS"
+    assert calls == []
+
+
+def test_adversarial_review_evidence_fails_closed() -> None:
 
     document = live()
     node = document["nodes"][1]
@@ -844,6 +962,7 @@ def test_verify_consumption_exact_direct_pass(monkeypatch) -> None:
         selected_goal_path=node["validation_inputs"]["task_path"],
         dependency_snapshot=snapshot,
         exact_node_pin=node["node_id"],
+        exact_source_pin=node["source"]["commit"],
         exact_theorem_pin=edge["theorem"],
         exact_consumer_pin=edge["consumer"],
     )
@@ -865,9 +984,96 @@ def test_verify_consumption_exact_direct_pass(monkeypatch) -> None:
             selected_goal_path=node["validation_inputs"]["task_path"],
             dependency_snapshot=snapshot,
             exact_node_pin=node["node_id"],
+            exact_source_pin=node["source"]["commit"],
             exact_theorem_pin=edge["theorem"] + "B",
             exact_consumer_pin=edge["consumer"],
         )
+
+
+def test_native_adversarial_review_is_consumable_without_external_verifier(
+    monkeypatch,
+) -> None:
+    document, snapshot, node = deep_fixture(monkeypatch)
+    edge = document["edges"][0]
+    node["review"]["reviewers"] = ["ADVERSARIAL_READ_ONLY"]
+    node["review"]["evidence"][0].update(
+        reviewer_class="ADVERSARIAL_READ_ONLY",
+        reviewer_id="LOCAL_ADVERSARIAL_READ_ONLY_REVIEW",
+        principal="local-adversarial-reviewer",
+    )
+    rehash(document)
+    result = registry._verify_consumption(
+        ROOT,
+        document,
+        selected_goal_path=node["validation_inputs"]["task_path"],
+        dependency_snapshot=snapshot,
+        exact_node_pin=node["node_id"],
+        exact_source_pin=node["source"]["commit"],
+        exact_theorem_pin=edge["theorem"],
+        exact_consumer_pin=edge["consumer"],
+    )
+    assert result["status"] == "PASS"
+
+
+def test_selected_external_review_requires_and_uses_verifier_in_deep_gate(
+    monkeypatch,
+) -> None:
+    document, snapshot, node = deep_fixture(monkeypatch)
+    edge = document["edges"][0]
+    node["review"]["reviewers"] = ["EXTERNAL_SIGNED"]
+    node["review"]["evidence"][0].update(
+        reviewer_class="EXTERNAL_SIGNED",
+        reviewer_id="EXTERNAL_REVIEW_TEST",
+        signed=True,
+        principal="external-reviewer",
+        key_id="test-key",
+        signature="test-signature",
+    )
+    rehash(document)
+    kwargs = {
+        "selected_goal_path": node["validation_inputs"]["task_path"],
+        "dependency_snapshot": snapshot,
+        "exact_node_pin": node["node_id"],
+        "exact_source_pin": node["source"]["commit"],
+        "exact_theorem_pin": edge["theorem"],
+        "exact_consumer_pin": edge["consumer"],
+    }
+    with pytest.raises(
+        registry.NodeRegistryError,
+        match="EXTERNAL_REVIEW_VERIFIER_UNAVAILABLE",
+    ):
+        registry._verify_consumption(ROOT, document, **kwargs)
+    with pytest.raises(
+        registry.NodeRegistryError,
+        match="EXTERNAL_REVIEW_SIGNATURE_INVALID",
+    ):
+        registry._verify_consumption(
+            ROOT,
+            document,
+            external_review_verifier=lambda _row: False,
+            **kwargs,
+        )
+
+    def broken_verifier(_row):
+        raise RuntimeError("verifier transport failed")
+
+    with pytest.raises(
+        registry.NodeRegistryError,
+        match="EXTERNAL_REVIEW_SIGNATURE_INVALID",
+    ):
+        registry._verify_consumption(
+            ROOT,
+            document,
+            external_review_verifier=broken_verifier,
+            **kwargs,
+        )
+    result = registry._verify_consumption(
+        ROOT,
+        document,
+        external_review_verifier=lambda _row: True,
+        **kwargs,
+    )
+    assert result["status"] == "PASS"
 
 
 def test_exact_pair_pin_preserves_all_distinct_first_hop_ports(monkeypatch) -> None:
@@ -929,6 +1135,7 @@ def test_exact_pair_pin_preserves_all_distinct_first_hop_ports(monkeypatch) -> N
         selected_goal_path=node["validation_inputs"]["task_path"],
         dependency_snapshot=snapshot,
         exact_node_pin=node["node_id"],
+        exact_source_pin=node["source"]["commit"],
         exact_theorem_pin=first["theorem"],
         exact_consumer_pin=first["consumer"],
     )
@@ -943,6 +1150,7 @@ def test_exact_pair_pin_preserves_all_distinct_first_hop_ports(monkeypatch) -> N
         selected_goal_path=node["validation_inputs"]["task_path"],
         dependency_snapshot=snapshot,
         exact_node_pin=node["node_id"],
+        exact_source_pin=node["source"]["commit"],
         exact_theorem_pin=first["theorem"],
         exact_consumer_pin=first["consumer"],
     )
@@ -962,6 +1170,7 @@ def test_exact_pair_pin_preserves_all_distinct_first_hop_ports(monkeypatch) -> N
             selected_goal_path=node["validation_inputs"]["task_path"],
             dependency_snapshot=snapshot,
             exact_node_pin=node["node_id"],
+            exact_source_pin=node["source"]["commit"],
             exact_theorem_pin=first["theorem"],
             exact_consumer_pin=first["consumer"],
         )
@@ -1232,7 +1441,7 @@ def test_deep_probe_imports_only_scoped_source_and_consumer(monkeypatch) -> None
     assert registry._module_from_path(unrelated) not in calls[0]
 
 
-def test_public_consumption_rejects_embedded_native_admission_authority(monkeypatch) -> None:
+def test_public_consumption_accepts_reviewed_native_admission(monkeypatch) -> None:
     document, snapshot, node = deep_fixture(monkeypatch)
     edge = document["edges"][0]
     calls: list[tuple[list[str], list[str], list[str]]] = []
@@ -1259,18 +1468,16 @@ def test_public_consumption_rejects_embedded_native_admission_authority(monkeypa
             selected_goal_path=edge["consumer"],
         )
     assert calls == []
-    with pytest.raises(
-        registry.NodeRegistryError,
-        match="NATIVE_ADMISSION_AUTHORITY_UNAVAILABLE",
-    ):
-        registry.verify_consumption(
-            ROOT,
-            selected_goal_path=node["validation_inputs"]["task_path"],
-            exact_node_pin=node["node_id"],
-            exact_theorem_pin=edge["theorem"],
-            exact_consumer_pin=edge["consumer"],
-        )
-    assert calls == []
+    result = registry.verify_consumption(
+        ROOT,
+        selected_goal_path=node["validation_inputs"]["task_path"],
+        exact_node_pin=node["node_id"],
+        exact_source_pin=node["source"]["commit"],
+        exact_theorem_pin=edge["theorem"],
+        exact_consumer_pin=edge["consumer"],
+    )
+    assert result["status"] == "PASS"
+    assert len(calls) == 1
     with pytest.raises(TypeError):
         registry.verify_consumption(  # type: ignore[call-arg]
             ROOT,
@@ -1283,6 +1490,57 @@ def test_public_consumption_rejects_embedded_native_admission_authority(monkeypa
             selected_goal_path=node["node_id"],
             dependency_snapshot=snapshot,
         )
+
+
+def test_public_consumption_binds_exact_edge_and_avoids_nested_writer_lock(
+    monkeypatch,
+) -> None:
+    captured: dict[str, object] = {}
+    lock_calls: list[Path] = []
+
+    def deep(repo, registry_override, **kwargs):
+        captured["repo"] = repo
+        captured["registry_override"] = registry_override
+        captured.update(kwargs)
+        return {"status": "PASS", "code": "NODE_REGISTRY_CONSUMPTION_EXACT"}
+
+    monkeypatch.setattr(
+        registry,
+        "_writer_read_lock",
+        lambda repo: (lock_calls.append(repo), nullcontext())[1],
+    )
+    monkeypatch.setattr(registry, "_verify_consumption", deep)
+    result = registry.verify_consumption(
+        ROOT,
+        selected_goal_path=GOAL,
+        owned_paths=["owned.lean"],
+        exact_node_pin="NODE",
+        exact_source_pin="SOURCE",
+        exact_theorem_pin="THEOREM",
+        exact_consumer_pin="CONSUMER",
+    )
+    assert result["status"] == "PASS"
+    assert captured["registry_override"] is None
+    assert captured["selected_goal_path"] == GOAL
+    assert captured["owned_paths"] == ["owned.lean"]
+    assert captured["exact_node_pin"] == "NODE"
+    assert captured["exact_source_pin"] == "SOURCE"
+    assert captured["exact_theorem_pin"] == "THEOREM"
+    assert captured["exact_consumer_pin"] == "CONSUMER"
+    assert captured["dependency_snapshot"] is None
+    assert captured["external_review_verifier"] is None
+    assert lock_calls == [ROOT]
+
+    registry.verify_consumption(
+        ROOT,
+        selected_goal_path=GOAL,
+        exact_node_pin="NODE",
+        exact_source_pin="SOURCE",
+        exact_theorem_pin="THEOREM",
+        exact_consumer_pin="CONSUMER",
+        writer_lock_held=True,
+    )
+    assert lock_calls == [ROOT]
 
 
 def test_historical_type_placeholder_requires_semantic_review(

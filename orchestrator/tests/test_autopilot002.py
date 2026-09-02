@@ -117,13 +117,21 @@ def test_foreign_machine_receipt_is_rejected(
 
 
 def test_deep_mode_runs_semantics_even_after_exact_hit(tmp_path: Path) -> None:
-    fake = tmp_path / "oracle.py"
+    fake = tmp_path / "qmd"
     fake.write_text(
-        "import json\nprint(json.dumps([{'file':'qmd://q3_docs/deep-hit.md'}]))\n",
+        "#!/usr/bin/env python3\n"
+        "import json\n"
+        "print(json.dumps([{'file':'qmd://q3_docs/deep-hit.md'}]))\n",
         encoding="utf-8",
     )
+    fake.chmod(0o755)
+    substituted_oracle = tmp_path / "substituted_oracle.py"
+    substituted_oracle.write_text(
+        "print('FORBIDDEN_ORACLE_BACKEND_SUBSTITUTION')\n", encoding="utf-8"
+    )
     env = os.environ.copy()
-    env["Q3_RESEARCH_ORACLE_PY"] = str(fake)
+    env["PATH"] = f"{tmp_path}:{env['PATH']}"
+    env["Q3_RESEARCH_ORACLE_PY"] = str(substituted_oracle)
     proc = subprocess.run(
         ["./ask.sh", "--deep", "SelectedTrialNormalizerBounded"],
         cwd=REPO,
@@ -139,6 +147,7 @@ def test_deep_mode_runs_semantics_even_after_exact_hit(tmp_path: Path) -> None:
     assert "LEAN — объявления" in proc.stdout
     assert "СЕМАНТИЧЕСКИЙ ИНДЕКС q3_docs" in proc.stdout
     assert "deep-hit.md" in proc.stdout
+    assert "FORBIDDEN_ORACLE_BACKEND_SUBSTITUTION" not in proc.stdout
     if proc.returncode == 2:
         assert "ASK_STATUS: INCOMPLETE" in proc.stdout
 
@@ -197,7 +206,7 @@ def test_external_exact_candidate_lookup_is_independent_of_shelf_query_and_cap(
     base.mkdir()
     (base / "Many.lean").write_text(
         "\n".join(f"theorem shelfNeedle{i} : True := by trivial" for i in range(30))
-        + "\ntheorem ExactSupplier : True := by trivial\n",
+        + "\ntheorem Some.Namespace.ExactSupplier : True := by trivial\n",
         encoding="utf-8",
     )
     result = search_external_lean.search_registry(
@@ -377,6 +386,78 @@ def test_external_receipt_rejects_malformed_exact_metadata(tmp_path: Path) -> No
     )
     assert not valid
     assert any("metadata malformed" in error for error in errors)
+
+
+def test_external_receipt_rejects_forged_present_to_absent_result(
+    tmp_path: Path,
+) -> None:
+    base = tmp_path / "foreign"
+    base.mkdir()
+    (base / "Only.lean").write_text(
+        "theorem ExactSupplier : True := by trivial\n", encoding="utf-8"
+    )
+    receipt = search_external_lean.search_registry(
+        "ExactSupplier",
+        candidate="ExactSupplier",
+        candidate_provenance="SOURCE_DECLARED",
+        bases=[("foreign", base)],
+    )
+    receipt["matches"] = []
+    exact = receipt["base_results"][0]["exact_candidate"]
+    exact.update(
+        status="ABSENT",
+        match_count=0,
+        match_digest=search_external_lean._canonical_hash([]),
+        displayed_matches=[],
+        boundary="SOURCE_DECLARATION_ABSENCE",
+    )
+    valid, errors = search_external_lean.validate_receipt(
+        receipt,
+        expected_query="ExactSupplier",
+        expected_candidate="ExactSupplier",
+        expected_candidate_provenance="SOURCE_DECLARED",
+    )
+    assert not valid
+    assert any("search results do not match" in error for error in errors)
+
+
+def test_external_qualified_candidate_same_tail_is_not_exact(tmp_path: Path) -> None:
+    base = tmp_path / "foreign"
+    base.mkdir()
+    (base / "Only.lean").write_text(
+        "theorem Other.Namespace.ExactSupplier : True := by trivial\n",
+        encoding="utf-8",
+    )
+    result = search_external_lean.search_registry(
+        "ExactSupplier",
+        candidate="Expected.Namespace.ExactSupplier",
+        candidate_provenance="SOURCE_DECLARED",
+        bases=[("foreign", base)],
+    )
+    assert result["errors"] == ["foreign: exact candidate lookup uncertain"]
+    assert result["base_results"][0]["exact_candidate"]["status"] == "INCOMPLETE"
+
+
+def test_external_receipt_candidate_and_provenance_are_not_wildcards(
+    tmp_path: Path,
+) -> None:
+    base = tmp_path / "foreign"
+    base.mkdir()
+    (base / "Only.lean").write_text(
+        "theorem ExactSupplier : True := by trivial\n", encoding="utf-8"
+    )
+    receipt = search_external_lean.search_registry(
+        "ExactSupplier",
+        candidate="ExactSupplier",
+        candidate_provenance="SOURCE_DECLARED",
+        bases=[("foreign", base)],
+    )
+    valid, errors = search_external_lean.validate_receipt(
+        receipt, expected_query="ExactSupplier"
+    )
+    assert not valid
+    assert "external receipt exact candidate replay mismatch" in errors
+    assert "external receipt candidate provenance replay mismatch" in errors
 
 
 def test_secure_external_receipt_requires_mode_0600(tmp_path: Path) -> None:

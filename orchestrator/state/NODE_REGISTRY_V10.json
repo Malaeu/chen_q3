@@ -146,7 +146,7 @@
       "theorem": "Q3.RouteB.D0Pstar.sourceWeilGraphTailAmbientCoercive_of_algebraic"
     }
   ],
-  "mode": "SHADOW_V10_READ_ONLY",
+  "mode": "PRODUCTION_V10_READ_ONLY",
   "nodes": [
     {
       "lifecycle": "HISTORICAL_V9",
@@ -908,7 +908,7 @@
       "q3.lean.aristotle/Q3"
     ]
   },
-  "registry_hash": "e52b02f7020cf255ab64a1822ee5fb2820452c1e382b544e6b1cb486ab60e5fe",
+  "registry_hash": "23bf5b00716c65988a1c189cf473f4a938ef92644752d649ed3a70563c1510f5",
   "review_policy": {
     "allowed_reviewers": [
       "OWNER_SIGNOFF",

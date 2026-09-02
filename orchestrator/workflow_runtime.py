@@ -13,16 +13,20 @@ validated the exact attachment; compiling a plan never claims delivery.
 from __future__ import annotations
 
 import argparse
+import fcntl
 import hashlib
 import json
+import os
 import platform
 import re
+import stat
 import subprocess
 import sys
 import time
+from contextlib import contextmanager
 from dataclasses import asdict, replace
 from pathlib import Path
-from typing import Any
+from typing import Any, BinaryIO, Iterator
 
 import yaml
 
@@ -32,10 +36,14 @@ if str(REPO) not in sys.path:
 
 from orchestrator import node_registry_v10  # noqa: E402
 from orchestrator.startup_runtime import (  # noqa: E402
+    AUTHORITATIVE_MODE,
+    AUTHORITATIVE_SCHEMA,
     StartupRuntimeError,
     StartupSnapshot,
+    _git_common_dir,
     _startup_read_epoch,
     build_shadow_snapshot,
+    build_startup_snapshot,
 )
 
 TOOLS = Path("docs/cartographer/TOOLS.yaml")
@@ -99,6 +107,7 @@ SUPPLIER_PAYLOAD_FIELDS = frozenset(
     }
 )
 SHADOW_PLAN_SCHEMA = "q3_workflow_plan.v2"
+PRODUCTION_PLAN_MODE = "PRODUCTION_V10"
 SHADOW_PLAN_MAX_BYTES = 8 * 1024
 SHADOW_PLAN_MAX_LINES = 150
 SHADOW_STARTUP_MAX_BYTES = 4 * 1024
@@ -117,6 +126,7 @@ COMMON_TOOLS = (
 )
 ACTION_TOOLS = {
     "SELECT_EXACT_GOAL": (
+        "workflow-close-node",
         "supplier-preflight",
         "lean-validation",
         "knowledge-spine-step-close",
@@ -136,21 +146,103 @@ class WorkflowRuntimeError(RuntimeError):
     pass
 
 
+class _ExecutionWriterEpoch:
+    """Stable exclusive ownership of the canonical repository writer lock."""
+
+    def __init__(
+        self,
+        *,
+        path: Path,
+        handle: BinaryIO,
+        identity: tuple[int, int, int],
+    ) -> None:
+        self.path = path
+        self.handle = handle
+        self.identity = identity
+        self.open = True
+
+    @staticmethod
+    def _identity(value: os.stat_result) -> tuple[int, int, int]:
+        return value.st_dev, value.st_ino, value.st_mode
+
+    def recheck(self) -> None:
+        if not self.open:
+            raise WorkflowRuntimeError("WORKFLOW_WRITER_LOCK_NOT_HELD")
+        try:
+            path_identity = self._identity(os.lstat(self.path))
+            handle_identity = self._identity(os.fstat(self.handle.fileno()))
+        except OSError as exc:
+            raise WorkflowRuntimeError(
+                f"WORKFLOW_WRITER_LOCK_UNAVAILABLE:{exc}"
+            ) from exc
+        if path_identity != self.identity or handle_identity != self.identity:
+            raise WorkflowRuntimeError("WORKFLOW_WRITER_LOCK_IDENTITY_CHANGED")
+
+
+@contextmanager
+def _execution_writer_epoch(repo: Path) -> Iterator[_ExecutionWriterEpoch]:
+    """Hold one non-blocking exclusive flock across the entire write transaction."""
+
+    try:
+        lock_path = _git_common_dir(repo.resolve()) / "q3-three-body.writer.lock"
+        initial = os.lstat(lock_path)
+    except (OSError, StartupRuntimeError) as exc:
+        raise WorkflowRuntimeError(f"WORKFLOW_WRITER_LOCK_UNAVAILABLE:{exc}") from exc
+    identity = _ExecutionWriterEpoch._identity(initial)
+    if stat.S_ISLNK(initial.st_mode) or not stat.S_ISREG(initial.st_mode):
+        raise WorkflowRuntimeError("WORKFLOW_WRITER_LOCK_IDENTITY_INVALID")
+    handle: BinaryIO | None = None
+    epoch: _ExecutionWriterEpoch | None = None
+    try:
+        descriptor = os.open(
+            lock_path,
+            os.O_RDONLY | getattr(os, "O_CLOEXEC", 0) | getattr(os, "O_NOFOLLOW", 0),
+        )
+        handle = os.fdopen(descriptor, "rb", closefd=True)
+        if _ExecutionWriterEpoch._identity(os.fstat(handle.fileno())) != identity:
+            raise WorkflowRuntimeError("WORKFLOW_WRITER_LOCK_IDENTITY_CHANGED")
+        try:
+            fcntl.flock(handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError as exc:
+            raise WorkflowRuntimeError("WORKFLOW_WRITER_LOCK_COLLISION") from exc
+        epoch = _ExecutionWriterEpoch(path=lock_path, handle=handle, identity=identity)
+        epoch.recheck()
+        yield epoch
+        epoch.recheck()
+    finally:
+        if epoch is not None:
+            epoch.open = False
+        if handle is not None:
+            try:
+                fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
+            finally:
+                handle.close()
+
+
 def _bounded_shadow_values(value: object, *, limit: int = 8) -> tuple[list[str], int]:
     values = list(value) if isinstance(value, (list, tuple)) else []
     compact = [str(item)[:160] for item in values[:limit]]
     return compact, max(0, len(values) - len(compact))
 
 
-def _compact_startup_snapshot(snapshot: StartupSnapshot) -> dict[str, Any]:
+def _compact_startup_snapshot(
+    snapshot: StartupSnapshot, *, shadow: bool = True
+) -> dict[str, Any]:
     raw = snapshot.to_dict()
+    expected_schema = SHADOW_STARTUP_SCHEMA if shadow else AUTHORITATIVE_SCHEMA
+    expected_mode = "SHADOW_NOT_AUTHORITY" if shadow else AUTHORITATIVE_MODE
     if (
-        raw.get("schema") != SHADOW_STARTUP_SCHEMA
-        or raw.get("mode") != "SHADOW_NOT_AUTHORITY"
-        or raw.get("run_authorized") is not False
+        raw.get("schema") != expected_schema
+        or raw.get("mode") != expected_mode
+        or (shadow and raw.get("run_authorized") is not False)
+        or (not shadow and not isinstance(raw.get("run_authorized"), bool))
         or raw.get("honesty_state") != "CHALLENGER_NOT_RH"
     ):
-        raise WorkflowRuntimeError("SHADOW_V10_STARTUP_SNAPSHOT_INVALID")
+        raise WorkflowRuntimeError(
+            "SHADOW_V10_STARTUP_SNAPSHOT_INVALID"
+            if shadow
+            else "PRODUCTION_V10_STARTUP_SNAPSHOT_INVALID"
+        )
     fatal_errors, fatal_errors_omitted = _bounded_shadow_values(raw["fatal_errors"])
     blocked_features, blocked_features_omitted = _bounded_shadow_values(
         raw["blocked_features"]
@@ -179,13 +271,17 @@ def _compact_startup_snapshot(snapshot: StartupSnapshot) -> dict[str, Any]:
         "warnings": warnings,
         "warnings_omitted": warnings_omitted,
         "next_action": str(raw["next_action"])[:320],
-        "run_authorized": False,
+        "run_authorized": bool(raw["run_authorized"]),
     }
     rendered = json.dumps(compact, ensure_ascii=False, indent=2, sort_keys=True)
     if len(rendered.encode("utf-8")) > SHADOW_STARTUP_MAX_BYTES or len(
         rendered.splitlines()
     ) > SHADOW_STARTUP_MAX_LINES:
-        raise WorkflowRuntimeError("SHADOW_V10_STARTUP_SUMMARY_LIMIT_EXCEEDED")
+        raise WorkflowRuntimeError(
+            "SHADOW_V10_STARTUP_SUMMARY_LIMIT_EXCEEDED"
+            if shadow
+            else "PRODUCTION_V10_STARTUP_SUMMARY_LIMIT_EXCEEDED"
+        )
     return compact
 
 
@@ -228,6 +324,178 @@ def _registry_epoch_failure(code: str, detail: str) -> dict[str, Any]:
     }
 
 
+def _production_goal_binding(startup: dict[str, Any]) -> dict[str, Any]:
+    selected_goal = startup.get("selected_goal")
+    return {
+        "action": "SELECT_EXACT_GOAL" if selected_goal else "HOLD",
+        "selected_goal_id": startup.get("exact_node_pin"),
+        "selected_goal_path": selected_goal,
+        "exact_node_pin": startup.get("exact_node_pin"),
+        "exact_source_pin": startup.get("exact_source_pin"),
+        "exact_theorem_pin": startup.get("exact_theorem_pin"),
+        "exact_consumer_pin": startup.get("exact_consumer_pin"),
+    }
+
+
+def _worktree_git_blob(path: Path) -> str | None:
+    try:
+        raw = path.read_bytes()
+    except OSError:
+        return None
+    header = f"blob {len(raw)}\0".encode("ascii")
+    return hashlib.sha1(header + raw).hexdigest()
+
+
+def _build_compact_roof_ledger(
+    repo: Path,
+    *,
+    git_head: str | None,
+    database: Path,
+) -> dict[str, Any]:
+    """Run the canonical roof builder with one closed-set batch Git read."""
+
+    from orchestrator import roof_port_ledger
+
+    tracked_paths = {
+        roof_port_ledger.ROOF_SOURCE.as_posix(),
+        *(
+            raw_path
+            for spec in roof_port_ledger.PORT_SPECS
+            for raw_path, _declaration, _target in spec["candidates"]
+        ),
+    }
+    receipt_path = repo / roof_port_ledger.AXIOM_RECEIPT
+    try:
+        receipt_text = receipt_path.read_text(encoding="utf-8")
+    except OSError:
+        receipt_text = ""
+    match = re.search(
+        r"(?m)^audited_baseline_head:\s*([0-9a-f]{40})\s*$", receipt_text
+    )
+    audited_head = match.group(1) if match else None
+    specs = [f"HEAD:{path}" for path in sorted(tracked_paths)]
+    if audited_head is not None:
+        specs.append(f"{audited_head}:{roof_port_ledger.ROOF_SOURCE.as_posix()}")
+    proc = subprocess.run(
+        ["git", "cat-file", "--batch-check"],
+        cwd=repo,
+        input="".join(f"{spec}\n" for spec in specs),
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    lines = proc.stdout.splitlines()
+    if proc.returncode != 0 or len(lines) != len(specs):
+        raise WorkflowRuntimeError("WORKFLOW_ROOF_GIT_BATCH_INVALID")
+    resolved: dict[str, str | None] = {}
+    for spec, line in zip(specs, lines, strict=True):
+        fields = line.split()
+        if len(fields) == 3 and fields[1] == "blob":
+            resolved[spec] = fields[0]
+        elif line.endswith(" missing"):
+            resolved[spec] = None
+        else:
+            raise WorkflowRuntimeError("WORKFLOW_ROOF_GIT_BATCH_INVALID")
+
+    def cached_git(_repo: Path, *args: str) -> str | None:
+        if args == ("rev-parse", "HEAD"):
+            return git_head
+        if len(args) == 2 and args[0] == "rev-parse":
+            if args[1] not in resolved:
+                raise WorkflowRuntimeError("WORKFLOW_ROOF_GIT_QUERY_OUTSIDE_BATCH")
+            return resolved[args[1]]
+        if len(args) == 2 and args[0] == "hash-object":
+            if args[1] not in tracked_paths:
+                raise WorkflowRuntimeError("WORKFLOW_ROOF_GIT_QUERY_OUTSIDE_BATCH")
+            return _worktree_git_blob(repo / args[1])
+        raise WorkflowRuntimeError("WORKFLOW_ROOF_GIT_QUERY_OUTSIDE_BATCH")
+
+    original_git = roof_port_ledger._git
+    roof_port_ledger._git = cached_git
+    try:
+        roof = roof_port_ledger.build(repo, database)
+    finally:
+        roof_port_ledger._git = original_git
+    roof_bookkeeping = roof.get("assembly_bookkeeping", {})
+    return {
+        "schema": roof.get("schema"),
+        "integrity_status": roof.get("integrity_status"),
+        "integrity_reasons": roof.get("integrity_reasons"),
+        "honesty_state": roof.get("honesty_state"),
+        "semantic_slot_count": roof.get("semantic_slot_count"),
+        "direct_proof_input_count": roof.get("direct_proof_input_count"),
+        "port_summary": roof.get("port_summary"),
+        "assembly_bookkeeping": {
+            "status": roof_bookkeeping.get("status"),
+            "interpretation": "BOOKKEEPING_ONLY_NOT_PROOF_PERCENTAGE",
+            "global": roof_bookkeeping.get("global"),
+            "quarantined_edge_count": len(
+                roof_bookkeeping.get("quarantined_edges") or []
+            ),
+        },
+        "proof_percentage_interpretation": "REJECTED",
+        "PX_RH_CLAIM": "NOT_MADE",
+    }
+
+
+def _compile_production_logical_plan(
+    repo: Path,
+    *,
+    snapshot: StartupSnapshot,
+    registry_summary: dict[str, Any],
+    holds: list[str],
+) -> dict[str, Any]:
+    """Build the proof-loop card from the already selected startup epoch."""
+
+    from orchestrator import proof_loop
+
+    selected_goal_path = (
+        repo / snapshot.selected_goal if snapshot.selected_goal is not None else None
+    )
+    database = repo / "q3.lean.aristotle/aristotle_db/knowledge.db"
+    chain = proof_loop.goal_assembly_chain(selected_goal_path)
+    assembly = proof_loop.assembly_snapshot(database, chain=chain)
+    compact_roof = _build_compact_roof_ledger(
+        repo,
+        git_head=snapshot.git_head,
+        database=database,
+    )
+    startup = _compact_startup_snapshot(snapshot, shadow=False)
+    contract = proof_loop.compile_contract(
+        goal_binding=_production_goal_binding(startup),
+        holds=holds,
+        assembly_debt=[],
+        assembly=assembly,
+        roof_ledger=compact_roof,
+        route=None,
+    )
+    assembly_global = assembly.get("global", {})
+    roof_ports = compact_roof.get("port_summary", {})
+    return {
+        "proof_loop": contract,
+        "denominator_statuses": {
+            "assembly": {
+                "status": assembly.get("status"),
+                "fixed": assembly_global.get("fixed"),
+                "total": assembly_global.get("total"),
+                "interpretation": "BOOKKEEPING_ONLY_NOT_PROOF_PERCENTAGE",
+            },
+            "roof_port_ledger": {
+                "status": compact_roof.get("integrity_status"),
+                "semantic_slot_count": compact_roof.get("semantic_slot_count"),
+                "direct_proof_input_count": compact_roof.get(
+                    "direct_proof_input_count"
+                ),
+                "jointly_bound": roof_ports.get("jointly_bound"),
+            },
+            "node_registry": {
+                "status": registry_summary.get("status"),
+                "code": registry_summary.get("code"),
+            },
+        },
+    }
+
+
 def compile_shadow_plan_v10(
     *,
     startup_snapshot: StartupSnapshot,
@@ -235,7 +503,7 @@ def compile_shadow_plan_v10(
     host_executor: str,
 ) -> dict[str, Any]:
     """Compile a bounded read-only v10 observation with no run authority."""
-    startup = _compact_startup_snapshot(startup_snapshot)
+    startup = _compact_startup_snapshot(startup_snapshot, shadow=True)
     registry = _compact_node_registry_summary(node_registry_summary)
     holds = list(startup["fatal_errors"])
     registry_status = registry["status"]
@@ -279,6 +547,91 @@ def compile_shadow_plan_v10(
     }
 
 
+def compile_plan_v10(
+    *,
+    startup_snapshot: StartupSnapshot,
+    node_registry_summary: dict[str, Any],
+    host_executor: str,
+    logical_plan: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Compile the authoritative read-only startup result for production v10."""
+
+    startup = _compact_startup_snapshot(startup_snapshot, shadow=False)
+    registry = _compact_node_registry_summary(node_registry_summary)
+    holds = list(startup["fatal_errors"])
+    registry_status = registry["status"]
+    if registry_status != "PASS":
+        holds.append(str(registry["code"]))
+    if startup["control_status"] != "ACTIVE":
+        holds.append(f"CONTROL_NOT_ACTIVE:{startup['control_status']}")
+    blocked_features = [
+        {
+            "feature": feature,
+            "scope": "PRODUCTION_V10_EXECUTION",
+            "code": "STARTUP_FEATURE_BLOCKED",
+        }
+        for feature in startup["blocked_features"]
+    ]
+    if registry_status in {"HOLD", "VALIDATION_REQUIRED"}:
+        blocked_features.append(
+            {
+                "feature": "RUN_CLOSE_NODE",
+                "scope": "NODE_REGISTRY_V10_CONSUMPTION",
+                "code": registry["code"],
+            }
+        )
+    fatal = bool(startup["fatal_errors"]) or registry_status == "FATAL"
+    run_authorized = bool(
+        startup["run_authorized"] and registry_status == "PASS" and not holds
+    )
+    status = "FATAL" if fatal else ("READY" if run_authorized else "HOLD")
+    if logical_plan is None:
+        from orchestrator import proof_loop
+
+        contract = proof_loop.compile_contract(
+            goal_binding=_production_goal_binding(startup),
+            holds=holds,
+            assembly_debt=[],
+        )
+        logical_plan = {
+            "proof_loop": contract,
+            "denominator_statuses": {
+                "assembly": {
+                    "status": "UNAVAILABLE",
+                    "fixed": None,
+                    "total": None,
+                    "interpretation": "BOOKKEEPING_ONLY_NOT_PROOF_PERCENTAGE",
+                },
+                "roof_port_ledger": {
+                    "status": "UNAVAILABLE",
+                    "semantic_slot_count": 6,
+                    "direct_proof_input_count": 7,
+                    "jointly_bound": None,
+                },
+                "node_registry": {
+                    "status": registry["status"],
+                    "code": registry["code"],
+                },
+            },
+        }
+    return {
+        "schema": SHADOW_PLAN_SCHEMA,
+        "status": status,
+        "mode": PRODUCTION_PLAN_MODE,
+        "host_executor": host_executor,
+        "startup": startup,
+        "node_registry": registry,
+        "logical_plan": logical_plan,
+        "selected_goal": startup["selected_goal"],
+        "holds": sorted(set(holds)),
+        "blocked_features": blocked_features,
+        "run_authorized": run_authorized,
+        "writes_performed": False,
+        "legacy_v9_authority_unchanged": False,
+        "PX_RH_CLAIM": "NOT_MADE",
+    }
+
+
 def live_shadow_plan_v10(
     repo: Path,
     *,
@@ -310,11 +663,12 @@ def live_shadow_plan_v10(
             )
         exact_edge_pins = (
             snapshot.exact_node_pin,
+            snapshot.exact_source_pin,
             snapshot.exact_theorem_pin,
             snapshot.exact_consumer_pin,
         )
         if not all(isinstance(pin, str) and pin for pin in exact_edge_pins):
-            exact_edge_pins = (None, None, None)
+            exact_edge_pins = (None, None, None, None)
         if lock_error is not None:
             registry_summary = _registry_epoch_failure(
                 "NODE_REGISTRY_WRITER_EPOCH_UNAVAILABLE", lock_error
@@ -325,8 +679,9 @@ def live_shadow_plan_v10(
                 snapshot.selected_goal,
                 owned_paths=owned_scope,
                 exact_node_pin=exact_edge_pins[0],
-                exact_theorem_pin=exact_edge_pins[1],
-                exact_consumer_pin=exact_edge_pins[2],
+                exact_source_pin=exact_edge_pins[1],
+                exact_theorem_pin=exact_edge_pins[2],
+                exact_consumer_pin=exact_edge_pins[3],
             )
             epoch_error = epoch_guard.recheck()
             if epoch_error is not None:
@@ -355,6 +710,98 @@ def live_shadow_plan_v10(
     )
 
 
+def live_plan_v10(
+    repo: Path,
+    *,
+    owned_paths: list[str],
+    _benchmark_timing_sink: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Build exactly one authoritative v10 snapshot and reuse its exact pins."""
+
+    owned_scope = tuple(owned_paths)
+    startup_started = (
+        time.perf_counter() if _benchmark_timing_sink is not None else None
+    )
+    with _startup_read_epoch(repo) as (epoch_guard, lock_error):
+        snapshot = build_startup_snapshot(
+            repo,
+            owned_paths=owned_scope,
+            _epoch_guard=epoch_guard,
+            _epoch_lock_error=lock_error,
+        )
+        if _benchmark_timing_sink is not None:
+            assert startup_started is not None
+            _benchmark_timing_sink.update(
+                {
+                    "schema": _BENCHMARK_TIMING_SCHEMA,
+                    "startup_duration_ms": round(
+                        (time.perf_counter() - startup_started) * 1000, 3
+                    ),
+                    "snapshot_constructor_calls": 1,
+                }
+            )
+        exact_edge_pins = (
+            snapshot.exact_node_pin,
+            snapshot.exact_source_pin,
+            snapshot.exact_theorem_pin,
+            snapshot.exact_consumer_pin,
+        )
+        if not all(isinstance(pin, str) and pin for pin in exact_edge_pins):
+            exact_edge_pins = (None, None, None, None)
+        if lock_error is not None:
+            registry_summary = _registry_epoch_failure(
+                "NODE_REGISTRY_WRITER_EPOCH_UNAVAILABLE", lock_error
+            )
+        else:
+            registry_summary = node_registry_v10.startup_gate_summary(
+                repo,
+                snapshot.selected_goal,
+                owned_paths=owned_scope,
+                exact_node_pin=exact_edge_pins[0],
+                exact_source_pin=exact_edge_pins[1],
+                exact_theorem_pin=exact_edge_pins[2],
+                exact_consumer_pin=exact_edge_pins[3],
+            )
+            epoch_error = epoch_guard.recheck()
+            if epoch_error is not None:
+                snapshot = replace(
+                    snapshot,
+                    selected_goal=None,
+                    exact_node_pin=None,
+                    exact_source_pin=None,
+                    exact_theorem_pin=None,
+                    exact_consumer_pin=None,
+                    fatal_errors=tuple(
+                        dict.fromkeys((epoch_error, *snapshot.fatal_errors))
+                    ),
+                    next_action="STOP_FAIL_CLOSED",
+                    run_authorized=False,
+                )
+                registry_summary = _registry_epoch_failure(
+                    "NODE_REGISTRY_STARTUP_EPOCH_DRIFT", epoch_error
+                )
+        logical_holds = list(snapshot.fatal_errors)
+        if registry_summary.get("status") != "PASS":
+            logical_holds.append(str(registry_summary.get("code")))
+        if snapshot.control_status != "ACTIVE":
+            logical_holds.append(f"CONTROL_NOT_ACTIVE:{snapshot.control_status}")
+        logical_plan = _compile_production_logical_plan(
+            repo,
+            snapshot=snapshot,
+            registry_summary=registry_summary,
+            holds=sorted(set(logical_holds)),
+        )
+    host = {"Darwin": "CODEX_MAC", "Linux": "CODEX_LINUX"}.get(
+        platform.system(), "UNSUPPORTED_HOST"
+    )
+    return compile_plan_v10(
+        startup_snapshot=snapshot,
+        node_registry_summary=registry_summary,
+        host_executor=host,
+        logical_plan=logical_plan,
+    )
+
+
 def render_shadow_plan_v10(plan: dict[str, Any]) -> str:
     rendered = json.dumps(plan, ensure_ascii=False, separators=(",", ":"), sort_keys=True)
     if len(rendered.encode("utf-8")) > SHADOW_PLAN_MAX_BYTES or len(
@@ -367,6 +814,26 @@ def render_shadow_plan_v10(plan: dict[str, Any]) -> str:
             "run_authorized": False,
             "writes_performed": False,
             "legacy_v9_authority_unchanged": True,
+            "PX_RH_CLAIM": "NOT_MADE",
+        }
+        return json.dumps(fallback, separators=(",", ":"), sort_keys=True)
+    return rendered
+
+
+def render_plan_v10(plan: dict[str, Any]) -> str:
+    """Render one bounded production plan without invoking any other runtime."""
+
+    rendered = json.dumps(plan, ensure_ascii=False, separators=(",", ":"), sort_keys=True)
+    if len(rendered.encode("utf-8")) > SHADOW_PLAN_MAX_BYTES or len(
+        rendered.splitlines()
+    ) > SHADOW_PLAN_MAX_LINES:
+        fallback = {
+            "schema": SHADOW_PLAN_SCHEMA,
+            "status": "FATAL",
+            "mode": PRODUCTION_PLAN_MODE,
+            "holds": ["PRODUCTION_V10_OUTPUT_LIMIT_EXCEEDED"],
+            "run_authorized": False,
+            "writes_performed": False,
             "PX_RH_CLAIM": "NOT_MADE",
         }
         return json.dumps(fallback, separators=(",", ":"), sort_keys=True)
@@ -462,6 +929,8 @@ def _dependency_contract_receipt(
     *,
     candidate: str,
     target: str,
+    exact_theorem_pin: str | None = None,
+    exact_consumer_pin: str | None = None,
 ) -> dict[str, Any]:
     from orchestrator import research_dependency_contract
 
@@ -497,6 +966,22 @@ def _dependency_contract_receipt(
         raise WorkflowRuntimeError(
             f"CONSUMER_FIRST_CONTRACT_RECEIPT_INVALID:{exc}"
         ) from exc
+    if contract.get("original_requested_object") != candidate:
+        raise WorkflowRuntimeError(
+            "CONSUMER_FIRST_CONTRACT_ORIGINAL_OBJECT_MISMATCH"
+        )
+    if contract.get("downstream_consumer") != target:
+        raise WorkflowRuntimeError(
+            "CONSUMER_FIRST_CONTRACT_DOWNSTREAM_CONSUMER_MISMATCH"
+        )
+    if exact_theorem_pin is not None and candidate != exact_theorem_pin:
+        raise WorkflowRuntimeError(
+            "CONSUMER_FIRST_CONTRACT_ACTIVE_THEOREM_EDGE_MISMATCH"
+        )
+    if exact_consumer_pin is not None and target != exact_consumer_pin:
+        raise WorkflowRuntimeError(
+            "CONSUMER_FIRST_CONTRACT_ACTIVE_CONSUMER_EDGE_MISMATCH"
+        )
     return {
         "label": "consumer-first-contract",
         "schema": DEPENDENCY_CONTRACT_RECEIPT_SCHEMA,
@@ -517,6 +1002,43 @@ def _git(repo: Path, *args: str) -> str:
     return subprocess.run(
         ["git", *args], cwd=repo, check=True, capture_output=True, text=True
     ).stdout.strip()
+
+
+def _recheck_production_identity(
+    repo: Path,
+    *,
+    plan: dict[str, Any],
+    epoch: _ExecutionWriterEpoch,
+) -> str | None:
+    """Revalidate the startup identity while the exclusive writer epoch is held."""
+
+    try:
+        epoch.recheck()
+        startup = plan.get("startup")
+        if not isinstance(startup, dict):
+            return "WORKFLOW_EXECUTION_SNAPSHOT_INVALID"
+        if _git(repo, "rev-parse", "HEAD") != startup.get("git_head"):
+            return "WORKFLOW_EXECUTION_EPOCH_HEAD_DRIFT"
+        if _git(repo, "rev-parse", "HEAD^{tree}") != startup.get("git_tree"):
+            return "WORKFLOW_EXECUTION_EPOCH_TREE_DRIFT"
+        control = repo / "docs/CODEX_CONTROL.md"
+        if _sha256(control) != startup.get("control_sha256"):
+            return "WORKFLOW_EXECUTION_EPOCH_CONTROL_DRIFT"
+        selected_goal = startup.get("selected_goal")
+        if selected_goal != plan.get("selected_goal") or not isinstance(
+            selected_goal, str
+        ):
+            return "WORKFLOW_EXECUTION_EPOCH_SELECTED_GOAL_DRIFT"
+        selected = Path(selected_goal)
+        if selected.is_absolute() or ".." in selected.parts or "\\" in selected_goal:
+            return "WORKFLOW_EXECUTION_EPOCH_SELECTED_GOAL_DRIFT"
+        head_blob = _git(repo, "rev-parse", f"HEAD:{selected_goal}")
+        current_blob = _git(repo, "hash-object", "--", selected_goal)
+        if current_blob != head_blob:
+            return "WORKFLOW_EXECUTION_EPOCH_SELECTED_GOAL_DRIFT"
+    except (OSError, subprocess.SubprocessError, WorkflowRuntimeError):
+        return "WORKFLOW_EXECUTION_EPOCH_RECHECK_FAILED"
+    return None
 
 
 def _relative_repo_path(repo: Path, path: Path) -> str:
@@ -804,10 +1326,6 @@ def _supplier_preflight_receipt(
     }
 
 
-def startup_receipt(repo: Path) -> dict[str, Any]:
-    return command_receipt(repo, ["bash", "specs_docs/session_start.sh"], label="session-start")
-
-
 def goal_assembly_chain(goal_path: str | None) -> str | None:
     if not goal_path:
         return None
@@ -1007,33 +1525,31 @@ def live_plan(
         next_goal_spec=next_goal_spec,
         current_phase_key=current_phase_key,
     )
-    statuses = dependency_registry.statuses(repo, repo / REGISTRY, consumer="workflow-plan")
+    statuses = dependency_registry.statuses(
+        repo, repo / REGISTRY, consumer="workflow-plan"
+    )
     owned, foreign = session_close.dirty_split(repo, owned_paths)
     host = {"Darwin": "CODEX_MAC", "Linux": "CODEX_LINUX"}.get(
         platform.system(), "UNSUPPORTED_HOST"
     )
     route = session_briefing.snapshot(repo)["route"]
-    startup = startup_receipt(repo)
-    selected_goal = binding.get("selected_goal_path") or route.get("selected_goal_path")
+    selected_goal = binding.get("selected_goal_path") or route.get(
+        "selected_goal_path"
+    )
     selected_goal_path = Path(selected_goal) if isinstance(selected_goal, str) else None
     if selected_goal_path is not None and not selected_goal_path.is_absolute():
         selected_goal_path = repo / selected_goal_path
     chain = proof_loop.goal_assembly_chain(selected_goal_path)
-    assembly = proof_loop.assembly_snapshot(
-        (repo / phase_close.DEFAULT_DB.relative_to(REPO)).resolve(),
-        chain=chain,
-    )
-    roof_ledger_snapshot = roof_port_ledger.build(
-        repo,
-        (repo / phase_close.DEFAULT_DB.relative_to(REPO)).resolve(),
-    )
+    database = (repo / phase_close.DEFAULT_DB.relative_to(REPO)).resolve()
+    assembly = proof_loop.assembly_snapshot(database, chain=chain)
+    roof_ledger_snapshot = roof_port_ledger.build(repo, database)
     return compile_plan(
         goal_binding=binding,
         selector_hold=selector_hold,
         tool_index=load_tool_index(repo / TOOLS),
         derived_status=[asdict(item) for item in statuses],
         assembly_debt=phase_close.assembly_debt(
-            (repo / phase_close.DEFAULT_DB.relative_to(REPO)).resolve(),
+            database,
             chain=goal_assembly_chain(binding.get("selected_goal_path")),
         ),
         owned_dirty=owned,
@@ -1048,80 +1564,111 @@ def live_plan(
         owned_scope=owned_paths,
         expected_writes=[
             *(str(item) for item in owned_paths),
-            *(str(output) for row in dependency_registry.load_registry(repo / REGISTRY)
-              if dependency_registry.applies_to(row, "session-close")
-              for output in row["outputs"]),
+            *(
+                str(output)
+                for row in dependency_registry.load_registry(repo / REGISTRY)
+                if dependency_registry.applies_to(row, "session-close")
+                for output in row["outputs"]
+            ),
         ],
-        startup=startup,
+        startup=None,
         assembly_snapshot=assembly,
         roof_ledger_snapshot=roof_ledger_snapshot,
         route=route,
     )
 
 
-def execute_close_node(
+def _held_run(
+    *,
+    plan: dict[str, Any],
+    receipts: list[dict[str, Any]],
+    holds: list[str],
+) -> dict[str, Any]:
+    return {
+        "schema": "q3_workflow_run.v1",
+        "status": "HOLD",
+        "holds": sorted(set(holds)),
+        "plan": plan,
+        "receipts": receipts,
+        "commit_push_performed": False,
+        "PX_RH_CLAIM": "NOT_MADE",
+    }
+
+
+def _execution_epoch_hold(
     repo: Path,
     *,
     plan: dict[str, Any],
+    epoch: _ExecutionWriterEpoch,
+    holds: list[str],
+) -> bool:
+    code = _recheck_production_identity(repo, plan=plan, epoch=epoch)
+    if code is None:
+        return False
+    holds.append(code)
+    return True
+
+
+def _execute_close_node_transaction(
+    repo: Path,
+    *,
+    plan: dict[str, Any],
+    production_v10: bool,
+    startup: dict[str, Any],
+    epoch: _ExecutionWriterEpoch | None,
     owned_paths: list[str],
     query: str | None,
     candidate: str | None,
     target: str | None,
-    attempt_payload: Path | None,
+    attempt_payload: Path,
     insight_payload: Path | None,
     run_kernel: bool,
     protocol_out: Path | None,
-    dependency_contract_receipt: Path | None = None,
+    contract_receipt: dict[str, Any] | None,
+    receipts: list[dict[str, Any]],
+    holds: list[str],
 ) -> dict[str, Any]:
-    if plan.get("schema") != "q3_workflow_plan.v1":
-        return {
-            "schema": "q3_workflow_run.v1",
-            "status": "HOLD",
-            "holds": ["WORKFLOW_RUN_PLAN_SCHEMA_UNSUPPORTED"],
-            "plan": plan,
-            "receipts": [],
-            "commit_push_performed": False,
-            "PX_RH_CLAIM": "NOT_MADE",
-        }
-    receipts: list[dict[str, Any]] = []
-    startup = plan.get("logical_plan", {}).get("startup_receipt") or startup_receipt(repo)
-    receipts.append(startup)
-    holds = list(plan.get("holds", []))
-    if startup["exit"] != 0:
-        holds.append(f"START_GATE_FAILED:{startup['exit']}")
-    if not owned_paths:
-        holds.append("OWNED_SCOPE_REQUIRED")
-    if attempt_payload is None:
-        holds.append("GOAL_ATTEMPT_EVENT_REQUIRED")
-    if any(not _exists_at_head(repo, path) for path in owned_paths) and not query:
-        holds.append("ASK_SHELF_REQUIRED_FOR_NEW_OBJECT")
-    contract_receipt: dict[str, Any] | None = None
-    if candidate or target:
-        if not (query and candidate and target):
-            holds.append("SUPPLIER_PREFLIGHT_TRIPLE_REQUIRED")
-        if dependency_contract_receipt is None:
-            holds.append("CONSUMER_FIRST_CONTRACT_RECEIPT_REQUIRED")
-        elif candidate and target:
-            try:
-                contract_receipt = _dependency_contract_receipt(
-                    repo,
-                    dependency_contract_receipt,
-                    candidate=candidate,
-                    target=target,
+    if production_v10:
+        assert epoch is not None
+        if _execution_epoch_hold(repo, plan=plan, epoch=epoch, holds=holds):
+            return _held_run(plan=plan, receipts=receipts, holds=holds)
+        if any(not _exists_at_head(repo, path) for path in owned_paths) and not query:
+            holds.append("ASK_SHELF_REQUIRED_FOR_NEW_OBJECT")
+            return _held_run(plan=plan, receipts=receipts, holds=holds)
+        try:
+            consumption = node_registry_v10.verify_consumption(
+                repo,
+                selected_goal_path=plan.get("selected_goal"),
+                owned_paths=owned_paths,
+                exact_node_pin=startup.get("exact_node_pin"),
+                exact_source_pin=startup.get("exact_source_pin"),
+                exact_theorem_pin=startup.get("exact_theorem_pin"),
+                exact_consumer_pin=startup.get("exact_consumer_pin"),
+                writer_lock_held=True,
+            )
+        except (
+            node_registry_v10.NodeRegistryError,
+            OSError,
+            subprocess.SubprocessError,
+        ) as exc:
+            holds.append(f"NODE_REGISTRY_V10_CONSUMPTION_FAILED:{exc}")
+        else:
+            if consumption.get("status") != "PASS":
+                holds.append(
+                    "NODE_REGISTRY_V10_CONSUMPTION_FAILED:"
+                    + str(consumption.get("code", consumption.get("status")))
                 )
-                receipts.append(contract_receipt)
-            except WorkflowRuntimeError as exc:
-                holds.append(str(exc))
-    if holds:
-        return {
-            "schema": "q3_workflow_run.v1",
-            "status": "HOLD",
-            "holds": sorted(set(holds)),
-            "plan": plan,
-            "receipts": receipts,
-            "commit_push_performed": False,
-            "PX_RH_CLAIM": "NOT_MADE",
-        }
+            receipts.append(
+                {
+                    "label": "node-registry-v10-consumption",
+                    "exit": 0 if consumption.get("status") == "PASS" else 2,
+                    "payload": consumption,
+                }
+            )
+        _execution_epoch_hold(repo, plan=plan, epoch=epoch, holds=holds)
+        if holds:
+            return _held_run(plan=plan, receipts=receipts, holds=holds)
+
     before = _git(repo, "status", "--porcelain=v1", "--untracked-files=all")
     if query:
         provenance = (
@@ -1154,6 +1701,9 @@ def execute_close_node(
             )
         else:
             holds.append(f"SUPPLIER_PREFLIGHT_DISCOVERY_ONLY:{supplier_status}")
+        if production_v10:
+            assert epoch is not None
+            _execution_epoch_hold(repo, plan=plan, epoch=epoch, holds=holds)
     if run_kernel and not holds:
         for path in owned_paths:
             if path.endswith(".lean") and path.startswith("q3.lean.aristotle/"):
@@ -1164,18 +1714,40 @@ def execute_close_node(
                         label=f"kernel:{path}",
                     )
                 )
+                if production_v10:
+                    assert epoch is not None
+                    if _execution_epoch_hold(
+                        repo, plan=plan, epoch=epoch, holds=holds
+                    ):
+                        break
     elif not holds and any(path.endswith(".lean") for path in owned_paths):
         holds.append("KERNEL_GATE_REQUIRED")
     if any(item.get("exit", 0) != 0 for item in receipts):
         holds.append("PRE_CLOSE_GATE_FAILED")
     if not holds:
-        command = [sys.executable, "orchestrator/spine.py", "--refresh", "--reason", "step-close",
-                   "--attempt-payload", str(attempt_payload)]
+        command = [
+            sys.executable,
+            "orchestrator/spine.py",
+            "--refresh",
+            "--reason",
+            "step-close",
+            "--attempt-payload",
+            str(attempt_payload),
+        ]
         if insight_payload:
             command.extend(("--insight-payload", str(insight_payload)))
         receipts.append(command_receipt(repo, command, label="step-close"))
+        if production_v10:
+            assert epoch is not None
+            _execution_epoch_hold(repo, plan=plan, epoch=epoch, holds=holds)
     if not holds and receipts[-1]["exit"] == 0:
-        command = [sys.executable, "specs_docs/session_close.py", "--root", str(repo), "--repair"]
+        command = [
+            sys.executable,
+            "specs_docs/session_close.py",
+            "--root",
+            str(repo),
+            "--repair",
+        ]
         for path in owned_paths:
             command.extend(("--owned-path", path))
         if run_kernel:
@@ -1183,6 +1755,9 @@ def execute_close_node(
         if protocol_out:
             command.extend(("--protocol-out", str(protocol_out)))
         receipts.append(command_receipt(repo, command, label="session-close"))
+        if production_v10:
+            assert epoch is not None
+            _execution_epoch_hold(repo, plan=plan, epoch=epoch, holds=holds)
     failed = [item for item in receipts if item.get("exit", 0) != 0]
     after = _git(repo, "status", "--porcelain=v1", "--untracked-files=all")
     return {
@@ -1206,6 +1781,139 @@ def execute_close_node(
         "commit_push_performed": False,
         "PX_RH_CLAIM": "NOT_MADE",
     }
+
+
+def execute_close_node(
+    repo: Path,
+    *,
+    plan: dict[str, Any],
+    owned_paths: list[str],
+    query: str | None,
+    candidate: str | None,
+    target: str | None,
+    attempt_payload: Path | None,
+    insight_payload: Path | None,
+    run_kernel: bool,
+    protocol_out: Path | None,
+    dependency_contract_receipt: Path | None = None,
+) -> dict[str, Any]:
+    plan_schema = plan.get("schema")
+    production_v10 = (
+        plan_schema == SHADOW_PLAN_SCHEMA
+        and plan.get("mode") == PRODUCTION_PLAN_MODE
+    )
+    legacy_v9 = plan_schema == "q3_workflow_plan.v1"
+    if not (production_v10 or legacy_v9):
+        return {
+            "schema": "q3_workflow_run.v1",
+            "status": "HOLD",
+            "holds": ["WORKFLOW_RUN_PLAN_SCHEMA_UNSUPPORTED"],
+            "plan": plan,
+            "receipts": [],
+            "commit_push_performed": False,
+            "PX_RH_CLAIM": "NOT_MADE",
+        }
+    receipts: list[dict[str, Any]] = []
+    holds = list(plan.get("holds", []))
+    if production_v10:
+        startup = plan.get("startup")
+        if not isinstance(startup, dict):
+            holds.append("PRODUCTION_V10_STARTUP_SNAPSHOT_INVALID")
+        else:
+            receipts.append({"label": "production-v10-startup", "payload": startup})
+        if plan.get("status") != "READY" or plan.get("run_authorized") is not True:
+            holds.append("PRODUCTION_V10_RUN_NOT_AUTHORIZED")
+    else:
+        startup = plan.get("logical_plan", {}).get("startup_receipt")
+        if not isinstance(startup, dict):
+            holds.append("LEGACY_V9_STARTUP_RECEIPT_REQUIRED")
+        else:
+            receipts.append(startup)
+            if startup.get("exit") != 0:
+                holds.append(f"START_GATE_FAILED:{startup.get('exit')}")
+    if not owned_paths:
+        holds.append("OWNED_SCOPE_REQUIRED")
+    if attempt_payload is None:
+        holds.append("GOAL_ATTEMPT_EVENT_REQUIRED")
+    if (
+        not holds
+        and not production_v10
+        and any(not _exists_at_head(repo, path) for path in owned_paths)
+        and not query
+    ):
+        holds.append("ASK_SHELF_REQUIRED_FOR_NEW_OBJECT")
+    contract_receipt: dict[str, Any] | None = None
+    if candidate or target:
+        if not (query and candidate and target):
+            holds.append("SUPPLIER_PREFLIGHT_TRIPLE_REQUIRED")
+        if dependency_contract_receipt is None:
+            holds.append("CONSUMER_FIRST_CONTRACT_RECEIPT_REQUIRED")
+        elif candidate and target:
+            try:
+                contract_receipt = _dependency_contract_receipt(
+                    repo,
+                    dependency_contract_receipt,
+                    candidate=candidate,
+                    target=target,
+                    exact_theorem_pin=(
+                        startup.get("exact_theorem_pin")
+                        if production_v10 and isinstance(startup, dict)
+                        else None
+                    ),
+                    exact_consumer_pin=(
+                        startup.get("exact_consumer_pin")
+                        if production_v10 and isinstance(startup, dict)
+                        else None
+                    ),
+                )
+                receipts.append(contract_receipt)
+            except WorkflowRuntimeError as exc:
+                holds.append(str(exc))
+    if holds:
+        return _held_run(plan=plan, receipts=receipts, holds=holds)
+    assert attempt_payload is not None
+    if production_v10:
+        try:
+            with _execution_writer_epoch(repo) as epoch:
+                return _execute_close_node_transaction(
+                    repo,
+                    plan=plan,
+                    production_v10=True,
+                    startup=startup,
+                    epoch=epoch,
+                    owned_paths=owned_paths,
+                    query=query,
+                    candidate=candidate,
+                    target=target,
+                    attempt_payload=attempt_payload,
+                    insight_payload=insight_payload,
+                    run_kernel=run_kernel,
+                    protocol_out=protocol_out,
+                    contract_receipt=contract_receipt,
+                    receipts=receipts,
+                    holds=holds,
+                )
+        except WorkflowRuntimeError as exc:
+            holds.append(str(exc))
+            return _held_run(plan=plan, receipts=receipts, holds=holds)
+    return _execute_close_node_transaction(
+        repo,
+        plan=plan,
+        production_v10=False,
+        startup=startup,
+        epoch=None,
+        owned_paths=owned_paths,
+        query=query,
+        candidate=candidate,
+        target=target,
+        attempt_payload=attempt_payload,
+        insight_payload=insight_payload,
+        run_kernel=run_kernel,
+        protocol_out=protocol_out,
+        contract_receipt=contract_receipt,
+        receipts=receipts,
+        holds=holds,
+    )
 
 
 def _add_plan_options(parser: argparse.ArgumentParser) -> None:
@@ -1280,12 +1988,6 @@ def main() -> int:
         return 0 if result.get("status") == "REVIEW_DISPATCH_READY" else 2
     if forwarded:
         parser.error("unrecognized arguments: " + " ".join(forwarded))
-    if (
-        args.command == "plan"
-        and args.benchmark_startup_timing
-        and not args.shadow_v10
-    ):
-        parser.error("--benchmark-startup-timing requires --shadow-v10")
     if args.command == "plan" and args.shadow_v10:
         benchmark_timing: dict[str, Any] | None = (
             {} if args.benchmark_startup_timing else None
@@ -1328,17 +2030,20 @@ def main() -> int:
                 file=sys.stderr,
             )
         return 0 if result.get("status") == "READY" else 2
-    from orchestrator import dependency_registry
-
-    through = "close-node" if args.command == "run" else "plan"
     try:
-        plan = live_plan(
-            repo,
-            next_goal_spec=args.next_goal_spec,
-            current_phase_key=args.current_phase_key,
-            owned_paths=args.owned_path,
-            through=through,
+        benchmark_timing = (
+            {}
+            if args.command == "plan" and args.benchmark_startup_timing
+            else None
         )
+        if benchmark_timing is None:
+            plan = live_plan_v10(repo, owned_paths=args.owned_path)
+        else:
+            plan = live_plan_v10(
+                repo,
+                owned_paths=args.owned_path,
+                _benchmark_timing_sink=benchmark_timing,
+            )
         result = (
             execute_close_node(
                 repo,
@@ -1357,11 +2062,38 @@ def main() -> int:
         )
     except (
         WorkflowRuntimeError,
-        dependency_registry.DependencyRegistryError,
+        StartupRuntimeError,
+        node_registry_v10.NodeRegistryError,
+        RuntimeError,
         subprocess.CalledProcessError,
+        KeyError,
+        OSError,
+        TypeError,
     ) as exc:
-        result = {"schema": "q3_workflow_plan.v1", "status": "HOLD", "holds": [str(exc)]}
-    print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
+        result = {
+            "schema": SHADOW_PLAN_SCHEMA,
+            "status": "FATAL",
+            "mode": PRODUCTION_PLAN_MODE,
+            "holds": [str(exc)],
+            "run_authorized": False,
+            "writes_performed": False,
+            "PX_RH_CLAIM": "NOT_MADE",
+        }
+    if args.command == "plan":
+        print(render_plan_v10(result))
+    else:
+        print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
+    if benchmark_timing:
+        print(
+            _BENCHMARK_TIMING_PREFIX
+            + json.dumps(
+                benchmark_timing,
+                ensure_ascii=True,
+                separators=(",", ":"),
+                sort_keys=True,
+            ),
+            file=sys.stderr,
+        )
     return 0 if result.get("status") in {"READY", "CLOSED_NODE"} else 2
 
 

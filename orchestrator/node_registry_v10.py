@@ -11,8 +11,8 @@ import re
 import stat
 import subprocess
 import unicodedata
-from collections.abc import Iterable, Iterator, Mapping, Sequence
-from contextlib import contextmanager
+from collections.abc import Callable, Iterable, Iterator, Mapping, Sequence
+from contextlib import contextmanager, nullcontext
 from pathlib import Path, PurePosixPath
 from typing import Any
 
@@ -252,7 +252,12 @@ def required_reviews(node_class: str) -> dict[str, Any]:
     raise NodeRegistryError("NODE_REGISTRY_CLASS_INVALID")
 
 
-def _validate_review(node: Mapping[str, Any]) -> None:
+def _validate_review(
+    node: Mapping[str, Any],
+    external_review_verifier: Callable[[Mapping[str, Any]], bool] | None = None,
+    *,
+    require_external_verifier: bool = False,
+) -> None:
     review = _exact_keys(
         node["review"],
         {"state", "reviewers", "historical_receipt", "transport", "evidence"},
@@ -297,7 +302,22 @@ def _validate_review(node: Mapping[str, Any]) -> None:
                 for field in ("principal", "key_id", "signature")
             ):
                 raise NodeRegistryError("NODE_REGISTRY_EXTERNAL_REVIEW_UNSIGNED")
-            raise NodeRegistryError("NODE_REGISTRY_EXTERNAL_REVIEW_VERIFIER_UNAVAILABLE")
+            if external_review_verifier is None:
+                if require_external_verifier:
+                    raise NodeRegistryError(
+                        "NODE_REGISTRY_EXTERNAL_REVIEW_VERIFIER_UNAVAILABLE"
+                    )
+            else:
+                try:
+                    verified = external_review_verifier(row)
+                except Exception as exc:
+                    raise NodeRegistryError(
+                        "NODE_REGISTRY_EXTERNAL_REVIEW_SIGNATURE_INVALID"
+                    ) from exc
+                if verified is not True:
+                    raise NodeRegistryError(
+                        "NODE_REGISTRY_EXTERNAL_REVIEW_SIGNATURE_INVALID"
+                    )
         if reviewer_class == "ADVERSARIAL_READ_ONLY" and (
             row["converged"] is not True or row["read_only"] is not True
         ):
@@ -362,7 +382,10 @@ def _validate_review(node: Mapping[str, Any]) -> None:
         raise NodeRegistryError("NODE_REGISTRY_REVIEW_STATE_INVALID")
 
 
-def _validate_registry_inner(registry: Mapping[str, Any]) -> None:
+def _validate_registry_inner(
+    registry: Mapping[str, Any],
+    external_review_verifier: Callable[[Mapping[str, Any]], bool] | None = None,
+) -> None:
     _exact_keys(
         registry,
         {
@@ -380,7 +403,7 @@ def _validate_registry_inner(registry: Mapping[str, Any]) -> None:
     if (
         registry["schema"] != SCHEMA
         or registry["algorithm_version"] != ALGORITHM_VERSION
-        or registry["mode"] != "SHADOW_V10_READ_ONLY"
+        or registry["mode"] != "PRODUCTION_V10_READ_ONLY"
     ):
         raise NodeRegistryError("NODE_REGISTRY_SCHEMA_INVALID: identity")
     project = _exact_keys(
@@ -559,6 +582,8 @@ def _validate_registry_inner(registry: Mapping[str, Any]) -> None:
         )
         _hex(source_bytes["git_blob"], "source_bytes.git_blob", git_blob=True)
         _hex(source_bytes["sha256"], "source_bytes.sha256")
+        if source["blob"] != source_bytes["git_blob"]:
+            raise NodeRegistryError("NODE_REGISTRY_SOURCE_BLOB_BINDING_DRIFT")
         toolchain = _exact_keys(
             validation_inputs["toolchain"], {"path", "sha256"}, "toolchain"
         )
@@ -733,7 +758,7 @@ def _validate_registry_inner(registry: Mapping[str, Any]) -> None:
             )
         if set(terminal_consumers) != {edge["consumer"] for edge in node_edges}:
             raise NodeRegistryError("NODE_REGISTRY_TERMINAL_CONSUMER_EDGE_DRIFT")
-        _validate_review(node)
+        _validate_review(node, external_review_verifier)
     for edge in registry["edges"]:
         if edge["theorem"] not in theorem_owners:
             raise NodeRegistryError("NODE_REGISTRY_EDGE_THEOREM_UNREGISTERED")
@@ -744,11 +769,14 @@ def _validate_registry_inner(registry: Mapping[str, Any]) -> None:
         raise NodeRegistryError("NODE_REGISTRY_CANONICAL_HASH_DRIFT")
 
 
-def _validate_registry(registry: Mapping[str, Any]) -> None:
+def _validate_registry(
+    registry: Mapping[str, Any],
+    external_review_verifier: Callable[[Mapping[str, Any]], bool] | None = None,
+) -> None:
     """Validate fail-closed without leaking raw container/type exceptions."""
 
     try:
-        _validate_registry_inner(registry)
+        _validate_registry_inner(registry, external_review_verifier)
     except NodeRegistryError:
         raise
     except (AttributeError, KeyError, TypeError, ValueError) as exc:
@@ -757,7 +785,10 @@ def _validate_registry(registry: Mapping[str, Any]) -> None:
         ) from exc
 
 
-def _parse_registry_bytes(raw: bytes) -> dict[str, Any]:
+def _parse_registry_bytes(
+    raw: bytes,
+    external_review_verifier: Callable[[Mapping[str, Any]], bool] | None = None,
+) -> dict[str, Any]:
     try:
         value = json.loads(raw, object_pairs_hook=_reject_duplicates)
     except (UnicodeError, json.JSONDecodeError) as exc:
@@ -765,7 +796,7 @@ def _parse_registry_bytes(raw: bytes) -> dict[str, Any]:
     if not isinstance(value, dict):
         raise NodeRegistryError("NODE_REGISTRY_V10_UNAVAILABLE_OR_INVALID: root")
     try:
-        _validate_registry(value)
+        _validate_registry(value, external_review_verifier)
     except NodeRegistryError:
         raise
     except (AttributeError, KeyError, TypeError, ValueError) as exc:
@@ -775,7 +806,12 @@ def _parse_registry_bytes(raw: bytes) -> dict[str, Any]:
     return value
 
 
-def _read_registry_document(repo: Path | str, path: Path | str | None = None) -> dict[str, Any]:
+def _read_registry_document(
+    repo: Path | str,
+    path: Path | str | None = None,
+    *,
+    external_review_verifier: Callable[[Mapping[str, Any]], bool] | None = None,
+) -> dict[str, Any]:
     repo_path = Path(repo).resolve()
     selected = Path(path) if path is not None else Path(DEFAULT_PATH)
     selected = selected if selected.is_absolute() else repo_path / selected
@@ -789,10 +825,15 @@ def _read_registry_document(repo: Path | str, path: Path | str | None = None) ->
         raw = selected.read_bytes()
     except OSError as exc:
         raise NodeRegistryError(f"NODE_REGISTRY_V10_UNAVAILABLE_OR_INVALID: {exc}") from exc
-    return _parse_registry_bytes(raw)
+    return _parse_registry_bytes(raw, external_review_verifier)
 
 
-def load_registry(repo: Path | str, path: Path | str | None = None) -> dict[str, Any]:
+def load_registry(
+    repo: Path | str,
+    path: Path | str | None = None,
+    *,
+    external_review_verifier: Callable[[Mapping[str, Any]], bool] | None = None,
+) -> dict[str, Any]:
     """Load only a clean, non-symlinked registry whose exact bytes are at HEAD."""
 
     repo_path = Path(repo).resolve()
@@ -813,7 +854,7 @@ def load_registry(repo: Path | str, path: Path | str | None = None) -> dict[str,
     head_bytes = _git_bytes(repo_path, "show", f"HEAD:{rel}")
     if working_bytes != head_bytes:
         raise NodeRegistryError("NODE_REGISTRY_AUTHORITY_HEAD_BLOB_DRIFT")
-    return _parse_registry_bytes(working_bytes)
+    return _parse_registry_bytes(working_bytes, external_review_verifier)
 
 
 def _validate_historical_receipts(
@@ -1109,10 +1150,11 @@ def _resolve_exact_edge_pin(
     registry: Mapping[str, Any],
     selected_goal_path: Path | str | None,
     exact_node_pin: str | None,
+    exact_source_pin: str | None,
     exact_theorem_pin: str | None,
     exact_consumer_pin: str | None,
 ) -> tuple[list[dict[str, Any]], set[str], str]:
-    pins = (exact_node_pin, exact_theorem_pin, exact_consumer_pin)
+    pins = (exact_node_pin, exact_source_pin, exact_theorem_pin, exact_consumer_pin)
     if not all(isinstance(pin, str) and pin for pin in pins):
         raise NodeRegistryError("NODE_REGISTRY_EXACT_EDGE_PIN_INCOMPLETE")
     node_matches = [
@@ -1121,6 +1163,8 @@ def _resolve_exact_edge_pin(
     if len(node_matches) != 1:
         raise NodeRegistryError("NODE_REGISTRY_EXACT_EDGE_PIN_INVALID")
     node = node_matches[0]
+    if exact_source_pin != node["source"]["commit"]:
+        raise NodeRegistryError("NODE_REGISTRY_EXACT_SOURCE_PIN_DRIFT")
     if selected_goal_path is not None and str(selected_goal_path) not in {
         node["validation_inputs"]["physical_goal_path"],
         node["validation_inputs"]["task_path"],
@@ -1136,7 +1180,7 @@ def _resolve_exact_edge_pin(
     if not edge_matches:
         raise NodeRegistryError("NODE_REGISTRY_EXACT_EDGE_PIN_INVALID")
     # A theorem may enter one consumer through more than one first-hop port.
-    # The public triple pins the complete registered port set for that pair;
+    # The public pin set identifies the complete registered port set for that pair;
     # it must never select one port by list order or silently collapse the set.
     return [node], {edge["edge_id"] for edge in edge_matches}, "PINNED_EXACT_EDGE"
 
@@ -1173,8 +1217,10 @@ def startup_gate_summary(
     owned_paths: Iterable[Path | str] = (),
     *,
     exact_node_pin: str | None = None,
+    exact_source_pin: str | None = None,
     exact_theorem_pin: str | None = None,
     exact_consumer_pin: str | None = None,
+    external_review_verifier: Callable[[Mapping[str, Any]], bool] | None = None,
 ) -> dict[str, Any]:
     """Return the zero-git structural/scope summary; authority belongs to deep gate."""
 
@@ -1191,12 +1237,13 @@ def startup_gate_summary(
     }
     try:
         registry = _read_registry_document(repo_path)
-        pins = (exact_node_pin, exact_theorem_pin, exact_consumer_pin)
+        pins = (exact_node_pin, exact_source_pin, exact_theorem_pin, exact_consumer_pin)
         if any(pin is not None for pin in pins):
             scoped, _edge_ids, scope_kind = _resolve_exact_edge_pin(
                 registry,
                 selected_goal_path,
                 exact_node_pin,
+                exact_source_pin,
                 exact_theorem_pin,
                 exact_consumer_pin,
             )
@@ -1211,7 +1258,10 @@ def startup_gate_summary(
             ),
         )
         if selected_goal_path is not None and not scoped:
-            base["code"] = "NODE_REGISTRY_SELECTED_SCOPE_UNREGISTERED"
+            base.update(
+                status="HOLD",
+                code="NODE_REGISTRY_SELECTED_SCOPE_UNREGISTERED",
+            )
             return base
         if scope_kind in {"GLOBAL", "PHYSICAL_GOAL"}:
             base.update(
@@ -1225,9 +1275,20 @@ def startup_gate_summary(
                 code="NODE_REGISTRY_HISTORICAL_V9_UNMAPPED",
             )
             return base
+        for node in scoped:
+            _validate_review(
+                node,
+                external_review_verifier,
+                require_external_verifier=True,
+            )
         base.update(status="PASS", code="NODE_REGISTRY_STARTUP_SCOPE_PASS")
         return base
     except NodeRegistryError as exc:
+        if str(exc) == "NODE_REGISTRY_EXTERNAL_REVIEW_VERIFIER_UNAVAILABLE":
+            base.update(
+                status="HOLD",
+                code="NODE_REGISTRY_EXTERNAL_REVIEW_VERIFIER_UNAVAILABLE",
+            )
         base["detail"] = str(exc)
         return base
 
@@ -1551,21 +1612,23 @@ def _verify_consumption(
     owned_paths: Iterable[Path | str] = (),
     dependency_snapshot: Mapping[str, Any] | None = None,
     exact_node_pin: str | None = None,
+    exact_source_pin: str | None = None,
     exact_theorem_pin: str | None = None,
     exact_consumer_pin: str | None = None,
-    require_external_review_authority: bool = False,
+    external_review_verifier: Callable[[Mapping[str, Any]], bool] | None = None,
 ) -> dict[str, Any]:
     """Private implementation; dependency_snapshot exists only for isolated tests."""
 
     repo_path = Path(repo).resolve()
     current = dict(registry) if registry is not None else load_registry(repo_path)
     _validate_registry(current)
-    pins = (exact_node_pin, exact_theorem_pin, exact_consumer_pin)
+    pins = (exact_node_pin, exact_source_pin, exact_theorem_pin, exact_consumer_pin)
     if any(pin is not None for pin in pins):
         scoped, scoped_edge_ids, scope_kind = _resolve_exact_edge_pin(
             current,
             selected_goal_path,
             exact_node_pin,
+            exact_source_pin,
             exact_theorem_pin,
             exact_consumer_pin,
         )
@@ -1575,10 +1638,12 @@ def _verify_consumption(
         raise NodeRegistryError("NODE_REGISTRY_SELECTED_SCOPE_UNREGISTERED")
     if scope_kind in {"GLOBAL", "PHYSICAL_GOAL"}:
         return _exact_scope_required(current, selected_goal_path, scoped)
-    if require_external_review_authority and any(
-        node["lifecycle"] == "ADMITTED" for node in scoped
-    ):
-        raise NodeRegistryError("NODE_REGISTRY_NATIVE_ADMISSION_AUTHORITY_UNAVAILABLE")
+    for node in scoped:
+        _validate_review(
+            node,
+            external_review_verifier,
+            require_external_verifier=True,
+        )
     _validate_historical_receipts(repo_path, current, scoped)
     if any(
         node["lifecycle"]
@@ -2133,16 +2198,20 @@ def verify_consumption(
     selected_goal_path: Path | str | None = None,
     owned_paths: Iterable[Path | str] = (),
     exact_node_pin: str | None = None,
+    exact_source_pin: str | None = None,
     exact_theorem_pin: str | None = None,
     exact_consumer_pin: str | None = None,
+    external_review_verifier: Callable[[Mapping[str, Any]], bool] | None = None,
+    writer_lock_held: bool = False,
 ) -> dict[str, Any]:
     """Deep public authority path; always obtains fresh build and Lean evidence."""
 
-    pins = (exact_node_pin, exact_theorem_pin, exact_consumer_pin)
+    pins = (exact_node_pin, exact_source_pin, exact_theorem_pin, exact_consumer_pin)
     if not all(isinstance(pin, str) and pin for pin in pins):
         raise NodeRegistryError("NODE_REGISTRY_EXACT_EDGE_PIN_INCOMPLETE")
     repo_path = Path(repo).resolve()
-    with _writer_read_lock(repo_path):
+    lock = nullcontext() if writer_lock_held else _writer_read_lock(repo_path)
+    with lock:
         return _verify_consumption(
             repo_path,
             None,
@@ -2150,7 +2219,8 @@ def verify_consumption(
             owned_paths=owned_paths,
             dependency_snapshot=None,
             exact_node_pin=exact_node_pin,
+            exact_source_pin=exact_source_pin,
             exact_theorem_pin=exact_theorem_pin,
             exact_consumer_pin=exact_consumer_pin,
-            require_external_review_authority=True,
+            external_review_verifier=external_review_verifier,
         )

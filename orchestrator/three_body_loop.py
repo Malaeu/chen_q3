@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Control-v9 three-body runtime: quarantine, request CAS, and pinned launch.
+"""Immutable Control-v9 evidence and transport compatibility runtime.
 
 The module deliberately separates three powers:
 
@@ -42,7 +42,8 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_STATE = REPO_ROOT / "orchestrator" / "state" / "SEMANTIC_QUARANTINE.json"
 DEFAULT_WRITER_LOCK = REPO_ROOT / ".git" / "q3-three-body.writer.lock"
 DEFAULT_READ_ONLY_WATCH_LOCK = REPO_ROOT / ".git" / "q3-three-body.watch-read-only.lock"
-CONTROL_VERSION = 9
+EXECUTOR_CONTROL_VERSION = 10
+LEGACY_QUARANTINE_CONTROL_VERSION = 9
 
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 GIT_OBJECT_RE = re.compile(r"^[0-9a-f]{40}$")
@@ -485,7 +486,11 @@ def _validate_allowed_signers() -> None:
         text = raw.decode("utf-8")
     except UnicodeDecodeError as exc:
         _fail(code, str(exc))
-    active = [line.strip() for line in text.splitlines() if line.strip() and not line.lstrip().startswith("#")]
+    active = [
+        line.strip()
+        for line in text.splitlines()
+        if line.strip() and not line.lstrip().startswith("#")
+    ]
     if len(active) != 1:
         _fail(code, "allowed-signers must contain exactly one active line")
     try:
@@ -941,7 +946,7 @@ def _validate_semantic_attestation(
         "attestation_id": attestation_id,
         "issuer": issuer,
         "status": "ADMITTED",
-        "control_version": CONTROL_VERSION,
+        "control_version": LEGACY_QUARANTINE_CONTROL_VERSION,
         "task_path": entry["task_path"],
         "task_blob": entry["task_blob"],
         "source_commit": entry["source_commit"],
@@ -1116,7 +1121,7 @@ def _validate_active_lease(
     if (
         lease["schema"] != "q3_codex_autonomy_lease.v1"
         or lease["status"] != "ACTIVE"
-        or lease["control_version"] != CONTROL_VERSION
+        or lease["control_version"] != LEGACY_QUARANTINE_CONTROL_VERSION
         or lease["writer_lock_holder"] != "CODEX"
         or lease["revoked"] is not False
     ):
@@ -1157,7 +1162,7 @@ def _validate_active_lease(
         _fail(code, "lease expiry is not UTC RFC3339 seconds")
     if calendar.timegm(expires) <= time.time():
         _fail(code, "lease expired")
-    if _control_version(repo_root) != CONTROL_VERSION:
+    if _control_version(repo_root) != LEGACY_QUARANTINE_CONTROL_VERSION:
         _fail(code, "active control version changed")
     if _current_branch(repo_root) != lease["branch"]:
         _fail(code, "lease branch changed")
@@ -1189,7 +1194,10 @@ def validate_state(
 ) -> dict[str, Any]:
     code = "SEMANTIC_QUARANTINE_STATE_INVALID"
     state = _require_exact_fields(state, STATE_FIELDS, code=code, label="quarantine state")
-    if state["schema"] != "q3_semantic_quarantine.v1" or state["control_version"] != 9:
+    if (
+        state["schema"] != "q3_semantic_quarantine.v1"
+        or state["control_version"] != LEGACY_QUARANTINE_CONTROL_VERSION
+    ):
         _fail(code, "schema or control version mismatch")
     for field in ("entries", "event_ledger", "tactical_repairs"):
         if not isinstance(state[field], list):
@@ -1309,6 +1317,30 @@ def validate_repository_gate(
     if require_dispatch_clear:
         assert_no_quarantine_barrier(state)
     return state
+
+
+def validate_historical_repository_gate(
+    *,
+    repo_root: Path = REPO_ROOT,
+    state_path: Path | None = None,
+    supplier_preflight_resolver: Callable[[str], str | None] | None = None,
+    autonomy_lease_resolver: Callable[[str], dict[str, Any] | None] | None = None,
+) -> dict[str, Any]:
+    """Validate frozen v9 evidence locally without reviving its live barrier.
+
+    This is the Control-v10 deep/manual inspection path.  It retains the
+    quarantine schema, committed pins, historical receipts, request lifecycle,
+    and lease validation, but it neither contacts the old broker nor treats a
+    pending v9 entry as a global v10 startup barrier.
+    """
+    return validate_repository_gate(
+        repo_root=repo_root,
+        state_path=state_path,
+        require_dispatch_clear=False,
+        semantic_attestation_resolver=resolve_tracked_semantic_attestation,
+        supplier_preflight_resolver=supplier_preflight_resolver,
+        autonomy_lease_resolver=autonomy_lease_resolver,
+    )
 
 
 def parse_request_body(raw: bytes) -> tuple[dict[str, Any], bytes]:
@@ -2199,7 +2231,7 @@ def launch_pinned_session(
         _fail("LAUNCH_PIN_DRIFT", "HEAD or source event commit changed")
     if _current_branch(repo_root) != branch:
         _fail("LAUNCH_PIN_DRIFT", "branch changed")
-    if _control_version(repo_root) != CONTROL_VERSION:
+    if _control_version(repo_root) != LEGACY_QUARANTINE_CONTROL_VERSION:
         _fail("LAUNCH_PIN_DRIFT", "control version changed")
     if _git_blob_for_worktree_path(repo_root, task_path) != task_blob:
         _fail("LAUNCH_PIN_DRIFT", "task blob changed")

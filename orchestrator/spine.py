@@ -15,9 +15,9 @@ Usage:
     ./orchestrator/spine.py --stdout   # read-only unless combined with --refresh
     ./orchestrator/spine.py --strict --stdout --reason session-start
 
-P9 control/runtime/operator validation is unconditional in every mode.
-``--strict`` adds the machine-local semantic-receipt gate; it does not turn
-otherwise absent P9 validation on. A writing refresh requires a closed reason.
+Control/runtime/operator validation is unconditional in every mode.
+``--strict`` adds the machine-local semantic-receipt gate; base Control-v10
+validation is always on. A writing refresh requires a closed reason.
 """
 
 from __future__ import annotations
@@ -91,6 +91,7 @@ COGNITIVE_OPERATOR_REGISTRY = REPO / "q3.lean.aristotle" / "COGNITIVE_OPERATORS.
 TOOL_MANIFEST = REPO / "docs" / "cartographer" / "TOOLS.yaml"
 CURRENT_CODEX_TASK = REPO / "docs" / "Codex" / "CURRENT.md"
 SEMANTIC_QUARANTINE = REPO / "orchestrator" / "state" / "SEMANTIC_QUARANTINE.json"
+ACTIVE_EXECUTOR_CONTROL_VERSION = 10
 
 PHASE_KEY_FIELDS = (
     "route_id",
@@ -185,7 +186,7 @@ ACTION_COMMANDS: dict[str, tuple[str, ...]] = {
 
 
 class ControlViolation(ValueError):
-    """A fail-closed P9A behavior-control violation."""
+    """A fail-closed executor behavior-control violation."""
 
     def __init__(self, code: str, detail: str = "") -> None:
         super().__init__(f"{code}: {detail}" if detail else code)
@@ -449,7 +450,7 @@ def validate_runtime(runtime: object) -> dict[str, object]:
     if not required.issubset(runtime):
         _fail("EXPLORATION_RUNTIME_MISSING", "runtime fields are missing")
     if runtime["control_status"] != "ACTIVE":
-        _fail("EXPLORATION_CONTOUR_ORPHANED", "P9 runtime is not active")
+        _fail("EXPLORATION_CONTOUR_ORPHANED", "executor runtime is not active")
     if runtime["mathematical_authority_mode"] != "CODEX_PROSHKA_FULL_EXCEPT_PX_RH_CLAIM":
         _fail("MATHEMATICAL_OWNER_DEFERRAL_OUTSIDE_PX_RH", "runtime authority mode drift")
     if runtime["px_rh_claim_state"] not in {"NOT_READY", "READY_FOR_OWNER", "AUTHORIZED", "DECLINED"}:
@@ -678,10 +679,12 @@ def _validate_active_control() -> None:
     text = CONTROL.read_text(encoding="utf-8")
     required = (
         "CONTROL_ID: Q3_EXECUTOR_CONTROL",
-        "CONTROL_VERSION: 9",
+        f"CONTROL_VERSION: {ACTIVE_EXECUTOR_CONTROL_VERSION}",
         "STATUS: ACTIVE",
         "ROLE: CODEX_EXECUTOR",
         "BODIES:\n  - CODEX_MAC\n  - CODEX_LINUX",
+        "HONESTY_STATE: CHALLENGER_NOT_RH",
+        "OWNER_ONLY_BOUNDARY: PX_RH_CLAIM",
         "CLAUDE_CODE_INDEPENDENT_OBSERVER",
         "TRIGGER_OWNER: Codex",
         "behavior_control_and_bounded_exploration",
@@ -692,7 +695,6 @@ def _validate_active_control() -> None:
         "AUTOPILOT_NEXT_GOAL_SPEC_SOURCE_BINDING_INVALID",
         "AUTOPILOT_RUNTIME_PHASE_PIN_INVALID",
         "PAUSED_RESTORABLE",
-        "BOUNDED_EXPLORATION_PHASE",
         "MATHEMATICAL_OWNER_DEFERRAL_OUTSIDE_PX_RH",
         "q3.lean.aristotle/aristotle_db/knowledge.db",
         "q3.lean.aristotle/aristotle_db/aristotle_proofs.db",
@@ -705,12 +707,17 @@ def _validate_active_control() -> None:
         "SEMANTIC_INDEX_LOCAL_RECEIPT_INVALID",
         "AUTOPSY: dropped=<AUTOPSY_TAG_V1>",
         "fresh_chats_opened <= phases_opened + forced_rollovers",
+        "q3_semantic_quarantine.v1",
+        "control_version: 9",
         "SOURCE_WRITTEN -> KERNEL_GREEN -> SEMANTICALLY_ADMITTED",
         "MAX_KERNEL_GREEN_AWAITING_SEMANTIC_REVIEW = 1",
-        "HYPOTHESIS_PROVENANCE",
-        "CODEX_AUTONOMY_LEASE_V1",
-        "AT_MOST_ONCE_LAUNCH",
-        "CHILD_READY_TO_EXEC",
+        "No new v9 request, admission, autonomy lease, or wake launch",
+        "q3_node_registry.v10",
+        "OWNER_SIGNOFF",
+        "ADVERSARIAL_READ_ONLY",
+        "EXTERNAL_SIGNED",
+        "SELF_REVIEW",
+        "Exactly one writer may mutate a shared worktree",
     )
     missing = [token for token in required if token not in text]
     if missing:
@@ -721,8 +728,7 @@ def _validate_active_control() -> None:
         _fail("EXPLORATION_CONTOUR_ORPHANED", "missing control YAML header")
     if "CLAUDE.md" in control_header or "CLAUDE_CODE_LINUX" in control_header:
         _fail("BEHAVIOR_BODY_MULTIROLE", "Claude bootstrap leaked into Codex control")
-    owner_classes = set(re.findall(
-        r"^OWNER_AUTHORITY_REQUIRED_[A-Z0-9_]+$", text, re.MULTILINE))
+    owner_classes = set(re.findall(r"\bOWNER_AUTHORITY_REQUIRED_[A-Z0-9_]+\b", text))
     if owner_classes != {"OWNER_AUTHORITY_REQUIRED_PX_RH_CLAIM"}:
         _fail("INVALID_OWNER_AUTHORITY_REQUIRED_CLASS", repr(sorted(owner_classes)))
     if "OWNER_AUTHORITY_BYPASS" in text:
@@ -1140,6 +1146,12 @@ def validate_tool_manifest() -> dict[str, object]:
 
 
 def validate_p9a() -> dict[str, object]:
+    """Run the active v10 deep/manual control validation.
+
+    Frozen v9 quarantine and transport records remain validated as historical
+    evidence, but their retired live broker and global dispatch barrier are not
+    part of the v10 startup path.
+    """
     _validate_active_control()
     controls = validate_behavior_registry()
     runtime = _read_runtime()
@@ -1151,10 +1163,9 @@ def validate_p9a() -> dict[str, object]:
     except Exception as exc:
         _fail("RIGID_DEPENDENCY_UNJUSTIFIED", str(exc))
     try:
-        three_body = _three_body_loop.validate_repository_gate(
+        three_body = _three_body_loop.validate_historical_repository_gate(
             repo_root=REPO,
             state_path=SEMANTIC_QUARANTINE,
-            require_dispatch_clear=True,
         )
     except _three_body_loop.ThreeBodyViolation as exc:
         _fail(exc.code, exc.detail)
@@ -1169,7 +1180,13 @@ def validate_p9a() -> dict[str, object]:
         "research_dependency": "PASS",
         "three_body": {
             "schema": three_body["schema"],
-            "pending": len(three_body["entries"]),
+            "legacy_control_version": three_body["control_version"],
+            "historical_entries": len(three_body["entries"]),
+            "pending": sum(
+                row["status"] in {"SOURCE_WRITTEN", "KERNEL_GREEN"}
+                for row in three_body["entries"]
+            ),
+            "startup_barrier": False,
             "active_lease": three_body["active_lease"] is not None,
         },
     }
@@ -1835,7 +1852,7 @@ def build(state: dict[str, object] | None = None) -> str:
         "Generated deterministically by `orchestrator/spine.py`. DO NOT EDIT.",
         "Adapter over existing sources; sources stay canonical, this file is a read view.",
         "",
-        "## Behavior controls (P9 active)",
+        "## Behavior controls (Control v10 active)",
         *_behavior_control_view(validation["behavior_controls"]),
         "",
         "## Operational tool manifest",
@@ -2037,8 +2054,14 @@ def main() -> int:
         "--stdout", action="store_true",
         help="print instead of writing Spine outputs; read-only unless combined with --refresh",
     )
-    ap.add_argument("--strict", action="store_true",
-                    help="add semantic-index validation and a receipt; base P9 validation is unconditional")
+    ap.add_argument(
+        "--strict",
+        action="store_true",
+        help=(
+            "add semantic-index validation and a receipt; base Control-v10 "
+            "validation is unconditional"
+        ),
+    )
     ap.add_argument("--refresh", action="store_true",
                     help="write the complete sensor/index refresh before validation and Spine rendering")
     ap.add_argument("--reason", default="manual",
@@ -2114,7 +2137,7 @@ def main() -> int:
         print(f"SPINE_REFRESH_COMPLETE reason={args.reason}")
     if args.strict:
         print(
-            f"P9_STRICT_PASS reason={args.reason} base_control=PASS "
+            f"CONTROL_V10_STRICT_PASS reason={args.reason} base_control=PASS "
             f"semantic_index=PASS tool_manifest=PASS research_dependency=PASS "
             f"authority={validation['authority']}"
         )

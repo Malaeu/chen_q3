@@ -1,7 +1,7 @@
 ---
 name: routeb-conductor
 description: >
-  Ведёт текущую Route B петлю по физической шине и Control v9: выбирает ровно
+  Ведёт текущую Route B петлю по физической шине и Control v10: выбирает ровно
   один goal, проверяет runtime-plan, маршрутизирует локальную работу и
   source-locked review lifecycle, закрывает каталоги/карту/blueprint и scoped
   delivery. Триггеры: «продолжай петлю», «что на шине», «забери вердикт»,
@@ -16,18 +16,20 @@ description: >
 
 ## Вход
 
-Полностью прочитай канонический bootstrap, затем:
+Полностью прочитай канонический bootstrap, затем запусти ровно один front door:
 
 ```bash
-bash specs_docs/session_start.sh
 python3 orchestrator/workflow_runtime.py plan
-python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb_status.py --check
 ```
+
+`bash specs_docs/session_start.sh` и прямой `routeb_status.py --check` — ручные
+diagnostic wrappers. Не запускай их дополнительно при обычном входе: plan уже
+читает physical bus, execution state и scoped node registry в одном read epoch.
 
 `orchestrator/state/state.json`, старые conductor queues, browser composer state
 и исторические мониторы не являются текущим resume authority. Точный адрес
-дают один `OPEN` physical goal, `goal_runtime.py`, execution state и
-`CHANNEL_RUNTIME.json`.
+дают один `OPEN` physical goal, execution state, `CHANNEL_RUNTIME.json` и
+`NODE_REGISTRY_V10.json`.
 
 Красный startup останавливает математику. Воспроизводимый control/tool defect
 ремонтируется первым в точном owner scope; его нельзя маскировать зелёным
@@ -48,8 +50,9 @@ kernel. В начале каждой сессии сначала выдай вл
 Не пересказывай полную служебную диагностику до этого брифа. При
 `next_joint.status = BLOCKED` не начинай математику и не выдумывай адрес. При
 `CONTRACT_REQUIRED` используй physical goal, `brief.py`, `cheap.py`, assembly и
-consumer-first contract, чтобы выбрать один допустимый joint; текстовый кандидат
-не становится supplier до `EXACT_FIT`. При `READY_FOR_PREFLIGHT` запускай один
+  consumer-first contract, чтобы выбрать один допустимый joint и exact
+  `node + theorem + consumer`; текстовый кандидат не становится supplier до
+  `EXACT_FIT`. При `READY_FOR_PREFLIGHT` запускай один
 precommitted proof cycle. После закрытия узла заново запусти runtime-plan и
 потребляй пересчитанный `proof_loop`, а не старую очередь.
 
@@ -78,6 +81,12 @@ unverified assumptions. Число теорем само по себе не яв
 `workflow_runtime.py run --through close-node` требует точные `--owned-path`,
 `--attempt-payload` и kernel gate для owned Lean. Новый объект дополнительно
 требует `--query`; supplier candidate/target передаются парой.
+
+Перед потреблением exact edge пройди scoped v10 gate. `HELPER` допускает ноль
+reviews только при полном отсутствии semantic triggers; `SEMANTIC_BRIDGE`
+требует один non-self exact-payload review; `ROOF_CHANGE` требует owner signoff
+и второй non-self review. `CANDIDATE`, stale validation, changed review hash и
+`HISTORICAL_V9_UNMAPPED` остаются `HOLD`. Kernel-green не равен admission.
 
 ## Proshka
 
@@ -110,6 +119,11 @@ natural reasoning. Ответ
 request/verdict binding, затем `verdict-intake` или phase-close migration.
 Непрожатый verdict делает полки неполными и блокирует продолжение.
 
+`orchestrator/three_body_loop.py` — только ручной historical-v9 compatibility
+tool. Он не является startup front door, не создаёт native v10 admission и не
+разрешает новые v9 request/lease/wake transitions. Старые v9 receipts проверяются
+с их исходными schema, version, namespace, signature и exact pairing.
+
 ## Карта и публикация
 
 `MAP.md` хранит устойчивую топологию и запреты, но не текущий следующий шаг.
@@ -130,6 +144,7 @@ source verification, usage card/PDF/REFERENCES/bib validation. Внешняя
 - Не вставлять controlling request в browser composer, не открывать новый чат и
   не выдумывать repository-level подтверждение поверх обязательной host policy.
 - Не называть plan исполнением, `KERNEL_GREEN` semantic admission или RH.
+- Не считать historical v9 receipt native v10 review/admission authority.
 - Не трогать foreign dirty paths, force-push, main merge, Route promotion или
   `PX_RH_CLAIM` без их точной отдельной authority.
 - Не запускать Aristotle без точного source-locked theorem contract и

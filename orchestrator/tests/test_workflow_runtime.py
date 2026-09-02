@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import fcntl
 import json
 import subprocess
 import sys
@@ -38,6 +39,30 @@ def _fake_startup_epoch(
     finally:
         guard.open = False
         guard.events.append("close")
+
+
+class _FakeWriterEpoch:
+    def __init__(self, events: list[str] | None = None) -> None:
+        self.events = events if events is not None else []
+        self.open = False
+
+    def recheck(self) -> None:
+        if not self.open:
+            raise workflow_runtime.WorkflowRuntimeError("fake lock not held")
+        self.events.append("lock-recheck")
+
+
+@contextmanager
+def _fake_writer_epoch(epoch: _FakeWriterEpoch):
+    epoch.open = True
+    epoch.events.append("lock-open")
+    try:
+        epoch.recheck()
+        yield epoch
+        epoch.recheck()
+    finally:
+        epoch.events.append("lock-close")
+        epoch.open = False
 
 
 def tool_index() -> dict[str, dict[str, object]]:
@@ -208,6 +233,33 @@ def shadow_snapshot(**overrides: object) -> StartupSnapshot:
     return StartupSnapshot(**fields)
 
 
+def production_snapshot(**overrides: object) -> StartupSnapshot:
+    fields: dict[str, object] = {
+        "schema": "q3_startup_snapshot.v10.v1",
+        "mode": "PRODUCTION_V10_READ_ONLY",
+        "control_sha256": "a" * 64,
+        "control_version": 10,
+        "control_status": "ACTIVE",
+        "git_head": "b" * 40,
+        "git_origin_head": "b" * 40,
+        "git_tree": "c" * 40,
+        "git_dirty": False,
+        "selected_goal": "docs/routeB_bus/058.goal.md",
+        "honesty_state": "CHALLENGER_NOT_RH",
+        "exact_node_pin": "NODE-058",
+        "exact_source_pin": "SOURCE-058",
+        "exact_theorem_pin": "THEOREM-058",
+        "exact_consumer_pin": "CONSUMER-058",
+        "fatal_errors": [],
+        "blocked_features": (),
+        "warnings": [],
+        "next_action": "RUN_SELECTED_GOAL",
+        "run_authorized": True,
+    }
+    fields.update(overrides)
+    return StartupSnapshot(**fields)
+
+
 def node_registry_summary(*, status: str = "PASS") -> dict[str, object]:
     return {
         "schema": "q3_node_registry_gate_summary.v1",
@@ -292,6 +344,13 @@ class WorkflowRuntimePlants(unittest.TestCase):
         self.assertEqual(loop["schema"], "q3_proof_loop.v1")
         self.assertEqual(loop["mode"], "CONSUMER_FIRST")
         self.assertEqual(loop["next_joint"]["status"], "CONTRACT_REQUIRED")
+        self.assertEqual(
+            loop["next_joint"]["candidate_details_ref"], "cords.open_joints"
+        )
+        self.assertEqual(
+            loop["next_joint"]["candidates"],
+            [joint["address"] for joint in loop["cords"]["open_joints"]],
+        )
         self.assertTrue(loop["recompute_after_close"])
         self.assertEqual(loop["PX_RH_CLAIM"], "NOT_MADE")
         self.assertEqual(
@@ -416,6 +475,7 @@ class WorkflowRuntimePlants(unittest.TestCase):
             snapshot.selected_goal,
             owned_paths=("owned.md",),
             exact_node_pin=snapshot.exact_node_pin,
+            exact_source_pin=snapshot.exact_source_pin,
             exact_theorem_pin=snapshot.exact_theorem_pin,
             exact_consumer_pin=snapshot.exact_consumer_pin,
         )
@@ -432,6 +492,204 @@ class WorkflowRuntimePlants(unittest.TestCase):
                 "snapshot_constructor_calls": 1,
             },
         )
+
+    def test_production_v10_builds_proof_loop_inside_the_single_startup_epoch(
+        self,
+    ) -> None:
+        events: list[str] = []
+        guard = _FakeEpochGuard(events)
+        snapshot = production_snapshot()
+        logical = {
+            "proof_loop": {"schema": "q3_proof_loop.v1"},
+            "denominator_statuses": {
+                "assembly": {"fixed": 51, "total": 69},
+                "roof_port_ledger": {
+                    "semantic_slot_count": 6,
+                    "direct_proof_input_count": 7,
+                    "jointly_bound": 0,
+                },
+                "node_registry": {"status": "PASS"},
+            },
+        }
+
+        def build(*_args, **_kwargs):
+            self.assertTrue(guard.open)
+            events.append("snapshot")
+            return snapshot
+
+        def registry(*_args, **_kwargs):
+            self.assertTrue(guard.open)
+            events.append("registry")
+            return node_registry_summary()
+
+        def compile_logical(*_args, **_kwargs):
+            self.assertTrue(guard.open)
+            events.append("proof-loop")
+            return logical
+
+        with (
+            mock.patch.object(
+                workflow_runtime,
+                "_startup_read_epoch",
+                return_value=_fake_startup_epoch(guard),
+            ),
+            mock.patch.object(
+                workflow_runtime, "build_startup_snapshot", side_effect=build
+            ) as startup,
+            mock.patch.object(
+                workflow_runtime.node_registry_v10,
+                "startup_gate_summary",
+                side_effect=registry,
+            ) as gate,
+            mock.patch.object(
+                workflow_runtime,
+                "_compile_production_logical_plan",
+                side_effect=compile_logical,
+            ) as proof,
+        ):
+            result = workflow_runtime.live_plan_v10(Path("/repo"), owned_paths=[])
+
+        startup.assert_called_once()
+        gate.assert_called_once_with(
+            Path("/repo"),
+            snapshot.selected_goal,
+            owned_paths=(),
+            exact_node_pin="NODE-058",
+            exact_source_pin="SOURCE-058",
+            exact_theorem_pin="THEOREM-058",
+            exact_consumer_pin="CONSUMER-058",
+        )
+        proof.assert_called_once()
+        self.assertEqual(
+            events,
+            ["lock", "snapshot", "registry", "recheck", "proof-loop", "close"],
+        )
+        self.assertEqual(result["logical_plan"], logical)
+
+    def test_production_logical_plan_labels_assembly_as_bookkeeping(self) -> None:
+        assembly = {
+            "status": "AVAILABLE",
+            "global": {
+                "total": 69,
+                "fixed": 51,
+                "proved": 48,
+                "validation": 3,
+                "open": 18,
+            },
+            "selected_chain": None,
+            "open_joints": [],
+            "interpretation": "BOOKKEEPING_ONLY_NOT_PROOF_PERCENTAGE",
+        }
+        roof = {
+            "schema": "q3_roof_port_supplier_ledger.v1",
+            "integrity_status": "HEAD_LOCKED",
+            "integrity_reasons": [],
+            "honesty_state": "CHALLENGER_NOT_RH",
+            "semantic_slot_count": 6,
+            "direct_proof_input_count": 7,
+            "port_summary": {"jointly_bound": 0, "total": 7},
+            "assembly_bookkeeping": {
+                "status": "AVAILABLE",
+                "global": {"total": 69, "fixed": 51, "open": 18},
+                "quarantined_edges": [],
+            },
+        }
+        from orchestrator import proof_loop
+
+        with (
+            mock.patch.object(proof_loop, "goal_assembly_chain", return_value=None),
+            mock.patch.object(proof_loop, "assembly_snapshot", return_value=assembly),
+            mock.patch.object(
+                workflow_runtime, "_build_compact_roof_ledger", return_value=roof
+            ),
+        ):
+            logical = workflow_runtime._compile_production_logical_plan(
+                Path("/repo"),
+                snapshot=production_snapshot(),
+                registry_summary=node_registry_summary(),
+                holds=[],
+            )
+
+        loop = logical["proof_loop"]
+        self.assertEqual(loop["schema"], "q3_proof_loop.v1")
+        self.assertEqual(loop["roof_port_ledger"]["semantic_slot_count"], 6)
+        self.assertEqual(loop["roof_port_ledger"]["direct_proof_input_count"], 7)
+        self.assertEqual(loop["roof_port_ledger"]["port_summary"]["jointly_bound"], 0)
+        denominator = logical["denominator_statuses"]["assembly"]
+        self.assertEqual((denominator["fixed"], denominator["total"]), (51, 69))
+        self.assertEqual(
+            denominator["interpretation"],
+            "BOOKKEEPING_ONLY_NOT_PROOF_PERCENTAGE",
+        )
+
+    def test_compact_roof_ledger_batches_git_and_rejects_unknown_queries(self) -> None:
+        from orchestrator import roof_port_ledger
+
+        tracked_paths = {
+            roof_port_ledger.ROOF_SOURCE.as_posix(),
+            *(
+                path
+                for spec in roof_port_ledger.PORT_SPECS
+                for path, _declaration, _target in spec["candidates"]
+            ),
+        }
+        batch_lines = "\n".join(
+            f"{'a' * 40} blob 1" for _path in sorted(tracked_paths)
+        )
+        batch = subprocess.CompletedProcess(
+            args=["git", "cat-file", "--batch-check"],
+            returncode=0,
+            stdout=f"{batch_lines}\n",
+            stderr="",
+        )
+
+        def canonical_build(repo: Path, database: Path) -> dict[str, object]:
+            self.assertEqual(repo, Path("/repo"))
+            self.assertEqual(database, Path("/repo/knowledge.db"))
+            self.assertEqual(roof_port_ledger._git(repo, "rev-parse", "HEAD"), "b" * 40)
+            self.assertEqual(
+                roof_port_ledger._git(
+                    repo,
+                    "rev-parse",
+                    f"HEAD:{roof_port_ledger.ROOF_SOURCE.as_posix()}",
+                ),
+                "a" * 40,
+            )
+            with self.assertRaisesRegex(
+                workflow_runtime.WorkflowRuntimeError,
+                "WORKFLOW_ROOF_GIT_QUERY_OUTSIDE_BATCH",
+            ):
+                roof_port_ledger._git(repo, "rev-parse", "HEAD:unexpected.lean")
+            return {
+                "schema": roof_port_ledger.SCHEMA,
+                "integrity_status": "HEAD_LOCKED",
+                "integrity_reasons": [],
+                "honesty_state": "CHALLENGER_NOT_RH",
+                "semantic_slot_count": 6,
+                "direct_proof_input_count": 7,
+                "port_summary": {"jointly_bound": 0, "total": 7},
+                "assembly_bookkeeping": {
+                    "status": "AVAILABLE",
+                    "global": {"total": 69, "fixed": 51, "open": 18},
+                    "quarantined_edges": [],
+                },
+            }
+
+        with (
+            mock.patch.object(workflow_runtime.subprocess, "run", return_value=batch) as run,
+            mock.patch.object(roof_port_ledger, "build", side_effect=canonical_build),
+        ):
+            compact = workflow_runtime._build_compact_roof_ledger(
+                Path("/repo"),
+                git_head="b" * 40,
+                database=Path("/repo/knowledge.db"),
+            )
+
+        run.assert_called_once()
+        self.assertEqual(compact["integrity_status"], "HEAD_LOCKED")
+        self.assertEqual(compact["semantic_slot_count"], 6)
+        self.assertEqual(compact["direct_proof_input_count"], 7)
+        self.assertEqual(compact["port_summary"]["jointly_bound"], 0)
 
     def test_shadow_v10_registry_epoch_drift_fails_closed(self) -> None:
         error = "FATAL:WRITER_LOCK_IDENTITY_CHANGED"
@@ -518,9 +776,6 @@ class WorkflowRuntimePlants(unittest.TestCase):
                 side_effect=AssertionError("shadow hot path invoked subprocess"),
             ),
             mock.patch.object(
-                workflow_runtime, "startup_receipt", side_effect=AssertionError
-            ),
-            mock.patch.object(
                 workflow_runtime, "selector_binding", side_effect=AssertionError
             ),
             mock.patch.object(
@@ -537,13 +792,11 @@ class WorkflowRuntimePlants(unittest.TestCase):
         )
         self.assertEqual(result["holds"], [])
 
-    def test_shadow_v10_cli_imports_no_legacy_runtime_modules(self) -> None:
+    def test_default_v10_cli_imports_no_legacy_runtime_modules(self) -> None:
         repo = Path(__file__).resolve().parents[2]
         entry = repo / "orchestrator/workflow_runtime.py"
         blocked = (
             "orchestrator.goal_runtime",
-            "orchestrator.proof_loop",
-            "orchestrator.roof_port_ledger",
             "orchestrator.session_briefing",
             "orchestrator.spine",
             "orchestrator.three_body_loop",
@@ -554,7 +807,7 @@ class WorkflowRuntimePlants(unittest.TestCase):
             "import runpy,sys\n"
             f"blocked={blocked!r}\n"
             "for name in blocked: sys.modules[name] = None\n"
-            f"sys.argv=[{str(entry)!r},'--root',{str(repo)!r},'plan','--shadow-v10']\n"
+            f"sys.argv=[{str(entry)!r},'--root',{str(repo)!r},'plan']\n"
             f"runpy.run_path({str(entry)!r}, run_name='__main__')\n"
         )
 
@@ -570,9 +823,13 @@ class WorkflowRuntimePlants(unittest.TestCase):
         self.assertNotIn("ModuleNotFoundError", proc.stderr)
         payload = json.loads(proc.stdout)
         self.assertEqual(payload["schema"], "q3_workflow_plan.v2")
-        self.assertFalse(payload["run_authorized"])
+        self.assertEqual(payload["mode"], "PRODUCTION_V10")
+        self.assertEqual(
+            payload["logical_plan"]["proof_loop"]["schema"],
+            "q3_proof_loop.v1",
+        )
 
-    def test_shadow_v10_benchmark_timing_keeps_stdout_identical(self) -> None:
+    def test_production_v10_benchmark_timing_keeps_stdout_identical(self) -> None:
         repo = Path(__file__).resolve().parents[2]
         command = [
             sys.executable,
@@ -580,7 +837,6 @@ class WorkflowRuntimePlants(unittest.TestCase):
             "--root",
             str(repo),
             "plan",
-            "--shadow-v10",
         ]
         normal = subprocess.run(
             command,
@@ -603,7 +859,7 @@ class WorkflowRuntimePlants(unittest.TestCase):
         self.assertEqual(timing["snapshot_constructor_calls"], 1)
         self.assertGreaterEqual(timing["startup_duration_ms"], 0)
 
-    def test_benchmark_timing_flag_requires_shadow_v10(self) -> None:
+    def test_benchmark_timing_flag_is_supported_on_bare_production_plan(self) -> None:
         repo = Path(__file__).resolve().parents[2]
         proc = subprocess.run(
             [
@@ -619,12 +875,12 @@ class WorkflowRuntimePlants(unittest.TestCase):
             capture_output=True,
             text=True,
         )
-        self.assertEqual(proc.returncode, 2)
-        self.assertEqual(proc.stdout, "")
-        self.assertIn(
-            "--benchmark-startup-timing requires --shadow-v10",
-            proc.stderr,
-        )
+        self.assertIn(proc.returncode, {0, 2}, proc.stderr)
+        payload = json.loads(proc.stdout)
+        self.assertEqual(payload["schema"], "q3_workflow_plan.v2")
+        self.assertEqual(payload["mode"], "PRODUCTION_V10")
+        timing = benchmark._parse_production_startup_timing(proc.stderr)
+        self.assertEqual(timing["snapshot_constructor_calls"], 1)
 
     def test_compile_plan_imports_proof_loop_only_on_legacy_call(self) -> None:
         repo = Path(__file__).resolve().parents[2]
@@ -706,6 +962,7 @@ class WorkflowRuntimePlants(unittest.TestCase):
             snapshot.selected_goal,
             owned_paths=(),
             exact_node_pin=None,
+            exact_source_pin=None,
             exact_theorem_pin=None,
             exact_consumer_pin=None,
         )
@@ -783,25 +1040,77 @@ class WorkflowRuntimePlants(unittest.TestCase):
         self.assertEqual(result["status"], "FATAL")
         self.assertIn("NODE_REGISTRY_V10_UNAVAILABLE_OR_INVALID", result["holds"])
 
-    def test_default_plan_cli_remains_on_legacy_v9_path(self) -> None:
-        legacy = {"schema": "q3_workflow_plan.v1", "status": "READY"}
+    def test_default_plan_cli_uses_production_v10_path(self) -> None:
+        production = workflow_runtime.compile_plan_v10(
+            startup_snapshot=production_snapshot(),
+            node_registry_summary=node_registry_summary(),
+            host_executor="CODEX_LINUX",
+        )
         argv = ["workflow_runtime.py", "--root", "/repo", "plan"]
         with (
             mock.patch.object(workflow_runtime.sys, "argv", argv),
-            mock.patch.object(workflow_runtime, "live_plan", return_value=legacy) as live,
+            mock.patch.object(
+                workflow_runtime, "live_plan_v10", return_value=production
+            ) as live,
+            mock.patch.object(
+                workflow_runtime,
+                "live_plan",
+                side_effect=AssertionError("default plan entered legacy v9"),
+            ),
             mock.patch.object(
                 workflow_runtime,
                 "live_shadow_plan_v10",
-                side_effect=AssertionError("default plan entered shadow"),
+                side_effect=AssertionError("default plan entered diagnostic shadow"),
             ),
             mock.patch("builtins.print") as emit,
         ):
             status = workflow_runtime.main()
         self.assertEqual(status, 0)
-        live.assert_called_once()
-        emit.assert_called_once_with(
-            json.dumps(legacy, ensure_ascii=False, indent=2, sort_keys=True)
-        )
+        live.assert_called_once_with(Path("/repo"), owned_paths=[])
+        emit.assert_called_once_with(workflow_runtime.render_plan_v10(production))
+
+    def test_legacy_v9_flag_is_not_exposed_by_workflow_cli(self) -> None:
+        argv = [
+            "workflow_runtime.py",
+            "--root",
+            "/repo",
+            "plan",
+            "--legacy-v9-maintenance",
+        ]
+        with (
+            mock.patch.object(workflow_runtime.sys, "argv", argv),
+            mock.patch.object(workflow_runtime, "live_plan") as legacy,
+            mock.patch.object(workflow_runtime, "live_plan_v10") as production,
+            self.assertRaises(SystemExit) as raised,
+        ):
+            workflow_runtime.main()
+        self.assertEqual(raised.exception.code, 2)
+        legacy.assert_not_called()
+        production.assert_not_called()
+
+    def test_workflow_runtime_has_no_session_start_wrapper_call(self) -> None:
+        source = Path(workflow_runtime.__file__).read_text(encoding="utf-8")
+        self.assertNotIn("specs_docs/session_start.sh", source)
+        self.assertNotIn("--legacy-v9-maintenance", source)
+
+    def test_legacy_v9_run_requires_embedded_manual_startup_receipt(self) -> None:
+        compiled = plan("SELECT_EXACT_GOAL")
+        with mock.patch.object(workflow_runtime, "command_receipt") as command:
+            result = workflow_runtime.execute_close_node(
+                Path("/repo"),
+                plan=compiled,
+                owned_paths=["owned.txt"],
+                query=None,
+                candidate=None,
+                target=None,
+                attempt_payload=Path("attempt.json"),
+                insight_payload=None,
+                run_kernel=False,
+                protocol_out=None,
+            )
+        self.assertEqual(result["status"], "HOLD")
+        self.assertIn("LEGACY_V9_STARTUP_RECEIPT_REQUIRED", result["holds"])
+        command.assert_not_called()
 
     def test_run_rejects_non_v1_plan_before_startup_or_writers(self) -> None:
         shadow = workflow_runtime.compile_shadow_plan_v10(
@@ -810,7 +1119,6 @@ class WorkflowRuntimePlants(unittest.TestCase):
             host_executor="CODEX_LINUX",
         )
         with (
-            mock.patch.object(workflow_runtime, "startup_receipt") as startup,
             mock.patch.object(workflow_runtime, "_exists_at_head") as exists,
             mock.patch.object(workflow_runtime, "command_receipt") as command,
         ):
@@ -829,18 +1137,44 @@ class WorkflowRuntimePlants(unittest.TestCase):
         self.assertEqual(result["status"], "HOLD")
         self.assertEqual(result["holds"], ["WORKFLOW_RUN_PLAN_SCHEMA_UNSUPPORTED"])
         self.assertEqual(result["receipts"], [])
-        startup.assert_not_called()
         exists.assert_not_called()
         command.assert_not_called()
 
-    def test_run_holds_on_red_startup_before_any_writer(self) -> None:
-        compiled = plan("SELECT_EXACT_GOAL")
-        red = {"label": "session-start", "exit": 1, "output_tail": "red"}
-        with mock.patch.object(workflow_runtime, "startup_receipt", return_value=red):
+    def test_production_v10_run_requires_deep_consumption_before_writers(self) -> None:
+        compiled = workflow_runtime.compile_plan_v10(
+            startup_snapshot=production_snapshot(),
+            node_registry_summary=node_registry_summary(),
+            host_executor="CODEX_LINUX",
+        )
+        failed = {
+            "schema": "q3_node_registry_consumption.v1",
+            "status": "HOLD",
+            "code": "NODE_REGISTRY_HISTORICAL_V9_UNMAPPED",
+        }
+        epoch = _FakeWriterEpoch()
+        with (
+            mock.patch.object(
+                workflow_runtime,
+                "_execution_writer_epoch",
+                return_value=_fake_writer_epoch(epoch),
+            ),
+            mock.patch.object(
+                workflow_runtime,
+                "_recheck_production_identity",
+                return_value=None,
+            ),
+            mock.patch.object(workflow_runtime, "_exists_at_head", return_value=True),
+            mock.patch.object(
+                workflow_runtime.node_registry_v10,
+                "verify_consumption",
+                return_value=failed,
+            ) as verify,
+            mock.patch.object(workflow_runtime, "command_receipt") as writer,
+        ):
             result = workflow_runtime.execute_close_node(
-                Path("."),
+                Path("/repo"),
                 plan=compiled,
-                owned_paths=["owned.txt"],
+                owned_paths=["docs/Codex/owned.md"],
                 query=None,
                 candidate=None,
                 target=None,
@@ -849,25 +1183,256 @@ class WorkflowRuntimePlants(unittest.TestCase):
                 run_kernel=False,
                 protocol_out=None,
             )
+        verify.assert_called_once_with(
+            Path("/repo"),
+            selected_goal_path="docs/routeB_bus/058.goal.md",
+            owned_paths=["docs/Codex/owned.md"],
+            exact_node_pin="NODE-058",
+            exact_source_pin="SOURCE-058",
+            exact_theorem_pin="THEOREM-058",
+            exact_consumer_pin="CONSUMER-058",
+            writer_lock_held=True,
+        )
+        self.assertFalse(epoch.open)
+        writer.assert_not_called()
+        self.assertEqual(result["status"], "HOLD")
+        self.assertIn(
+            "NODE_REGISTRY_V10_CONSUMPTION_FAILED:"
+            "NODE_REGISTRY_HISTORICAL_V9_UNMAPPED",
+            result["holds"],
+        )
+
+    def test_production_v10_holds_one_exclusive_lock_through_all_writers(self) -> None:
+        compiled = workflow_runtime.compile_plan_v10(
+            startup_snapshot=production_snapshot(),
+            node_registry_summary=node_registry_summary(),
+            host_executor="CODEX_LINUX",
+        )
+        events: list[str] = []
+        epoch = _FakeWriterEpoch(events)
+
+        def verify(*_args, **kwargs):
+            self.assertTrue(epoch.open)
+            self.assertTrue(kwargs["writer_lock_held"])
+            events.append("consume")
+            return {"status": "PASS", "code": "PASS"}
+
+        def identity(*_args, **_kwargs):
+            self.assertTrue(epoch.open)
+            events.append("identity")
+            return None
+
+        def writer(_repo, _command, *, label):
+            self.assertTrue(epoch.open)
+            events.append(label)
+            return {"label": label, "exit": 0, "output_tail": "ok"}
+
+        with (
+            mock.patch.object(
+                workflow_runtime,
+                "_execution_writer_epoch",
+                return_value=_fake_writer_epoch(epoch),
+            ),
+            mock.patch.object(
+                workflow_runtime,
+                "_recheck_production_identity",
+                side_effect=identity,
+            ),
+            mock.patch.object(workflow_runtime, "_exists_at_head", return_value=True),
+            mock.patch.object(workflow_runtime, "_git", return_value=""),
+            mock.patch.object(
+                workflow_runtime.node_registry_v10,
+                "verify_consumption",
+                side_effect=verify,
+            ) as consumption,
+            mock.patch.object(
+                workflow_runtime, "command_receipt", side_effect=writer
+            ),
+        ):
+            result = workflow_runtime.execute_close_node(
+                Path("/repo"),
+                plan=compiled,
+                owned_paths=["docs/Codex/owned.md"],
+                query=None,
+                candidate=None,
+                target=None,
+                attempt_payload=Path("attempt.json"),
+                insight_payload=None,
+                run_kernel=False,
+                protocol_out=None,
+            )
+
+        self.assertEqual(result["status"], "CLOSED_NODE")
+        consumption.assert_called_once_with(
+            Path("/repo"),
+            selected_goal_path="docs/routeB_bus/058.goal.md",
+            owned_paths=["docs/Codex/owned.md"],
+            exact_node_pin="NODE-058",
+            exact_source_pin="SOURCE-058",
+            exact_theorem_pin="THEOREM-058",
+            exact_consumer_pin="CONSUMER-058",
+            writer_lock_held=True,
+        )
+        self.assertFalse(epoch.open)
+        self.assertLess(events.index("consume"), events.index("step-close"))
+        self.assertLess(events.index("step-close"), events.index("session-close"))
+        self.assertEqual(events[-1], "lock-close")
+
+    def test_production_v10_toctou_drift_stops_before_child_writers(self) -> None:
+        compiled = workflow_runtime.compile_plan_v10(
+            startup_snapshot=production_snapshot(),
+            node_registry_summary=node_registry_summary(),
+            host_executor="CODEX_LINUX",
+        )
+        epoch = _FakeWriterEpoch()
+        with (
+            mock.patch.object(
+                workflow_runtime,
+                "_execution_writer_epoch",
+                return_value=_fake_writer_epoch(epoch),
+            ),
+            mock.patch.object(
+                workflow_runtime,
+                "_recheck_production_identity",
+                side_effect=[None, "WORKFLOW_EXECUTION_EPOCH_HEAD_DRIFT"],
+            ),
+            mock.patch.object(workflow_runtime, "_exists_at_head", return_value=True),
+            mock.patch.object(
+                workflow_runtime.node_registry_v10,
+                "verify_consumption",
+                return_value={"status": "PASS", "code": "PASS"},
+            ),
+            mock.patch.object(workflow_runtime, "command_receipt") as writer,
+        ):
+            result = workflow_runtime.execute_close_node(
+                Path("/repo"),
+                plan=compiled,
+                owned_paths=["docs/Codex/owned.md"],
+                query=None,
+                candidate=None,
+                target=None,
+                attempt_payload=Path("attempt.json"),
+                insight_payload=None,
+                run_kernel=False,
+                protocol_out=None,
+            )
+
+        self.assertEqual(result["status"], "HOLD")
+        self.assertIn("WORKFLOW_EXECUTION_EPOCH_HEAD_DRIFT", result["holds"])
+        writer.assert_not_called()
+        self.assertFalse(epoch.open)
+
+    def test_execution_writer_epoch_is_exclusive_and_stable(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            subprocess.run(["git", "init", "-q"], cwd=repo, check=True)
+            lock_path = repo / ".git/q3-three-body.writer.lock"
+            lock_path.write_text("", encoding="utf-8")
+            contender = lock_path.open("rb")
+            try:
+                with workflow_runtime._execution_writer_epoch(repo) as epoch:
+                    epoch.recheck()
+                    with self.assertRaises(BlockingIOError):
+                        fcntl.flock(
+                            contender.fileno(), fcntl.LOCK_SH | fcntl.LOCK_NB
+                        )
+                fcntl.flock(contender.fileno(), fcntl.LOCK_SH | fcntl.LOCK_NB)
+                fcntl.flock(contender.fileno(), fcntl.LOCK_UN)
+            finally:
+                contender.close()
+
+    def test_execution_identity_recheck_detects_control_and_goal_toctou(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            subprocess.run(["git", "init", "-q"], cwd=repo, check=True)
+            subprocess.run(
+                ["git", "config", "user.email", "plant@example.invalid"],
+                cwd=repo,
+                check=True,
+            )
+            subprocess.run(
+                ["git", "config", "user.name", "Workflow Plant"],
+                cwd=repo,
+                check=True,
+            )
+            control = repo / "docs/CODEX_CONTROL.md"
+            goal = repo / "docs/routeB_bus/058.goal.md"
+            control.parent.mkdir(parents=True)
+            goal.parent.mkdir(parents=True)
+            control.write_text("control-v10\n", encoding="utf-8")
+            goal.write_text("goal-058\n", encoding="utf-8")
+            subprocess.run(["git", "add", "docs"], cwd=repo, check=True)
+            subprocess.run(["git", "commit", "-qm", "plant"], cwd=repo, check=True)
+            lock_path = repo / ".git/q3-three-body.writer.lock"
+            lock_path.write_text("", encoding="utf-8")
+            startup = production_snapshot(
+                control_sha256=workflow_runtime._sha256(control),
+                git_head=workflow_runtime._git(repo, "rev-parse", "HEAD"),
+                git_tree=workflow_runtime._git(repo, "rev-parse", "HEAD^{tree}"),
+            )
+            compiled = workflow_runtime.compile_plan_v10(
+                startup_snapshot=startup,
+                node_registry_summary=node_registry_summary(),
+                host_executor="CODEX_LINUX",
+            )
+
+            with workflow_runtime._execution_writer_epoch(repo) as epoch:
+                self.assertIsNone(
+                    workflow_runtime._recheck_production_identity(
+                        repo, plan=compiled, epoch=epoch
+                    )
+                )
+                control.write_text("control-drift\n", encoding="utf-8")
+                self.assertEqual(
+                    workflow_runtime._recheck_production_identity(
+                        repo, plan=compiled, epoch=epoch
+                    ),
+                    "WORKFLOW_EXECUTION_EPOCH_CONTROL_DRIFT",
+                )
+                control.write_text("control-v10\n", encoding="utf-8")
+                goal.write_text("goal-drift\n", encoding="utf-8")
+                self.assertEqual(
+                    workflow_runtime._recheck_production_identity(
+                        repo, plan=compiled, epoch=epoch
+                    ),
+                    "WORKFLOW_EXECUTION_EPOCH_SELECTED_GOAL_DRIFT",
+                )
+
+    def test_run_holds_on_red_startup_before_any_writer(self) -> None:
+        compiled = plan("SELECT_EXACT_GOAL")
+        red = {"label": "session-start", "exit": 1, "output_tail": "red"}
+        compiled["logical_plan"]["startup_receipt"] = red
+        result = workflow_runtime.execute_close_node(
+            Path("."),
+            plan=compiled,
+            owned_paths=["owned.txt"],
+            query=None,
+            candidate=None,
+            target=None,
+            attempt_payload=Path("attempt.json"),
+            insight_payload=None,
+            run_kernel=False,
+            protocol_out=None,
+        )
         self.assertEqual(result["status"], "HOLD")
         self.assertIn("START_GATE_FAILED:1", result["holds"])
 
     def test_run_requires_owned_scope_and_attempt_event(self) -> None:
         compiled = plan("SELECT_EXACT_GOAL")
         green = {"label": "session-start", "exit": 0, "output_tail": "green"}
-        with mock.patch.object(workflow_runtime, "startup_receipt", return_value=green):
-            result = workflow_runtime.execute_close_node(
-                Path("."),
-                plan=compiled,
-                owned_paths=[],
-                query=None,
-                candidate=None,
-                target=None,
-                attempt_payload=None,
-                insight_payload=None,
-                run_kernel=False,
-                protocol_out=None,
-            )
+        compiled["logical_plan"]["startup_receipt"] = green
+        result = workflow_runtime.execute_close_node(
+            Path("."),
+            plan=compiled,
+            owned_paths=[],
+            query=None,
+            candidate=None,
+            target=None,
+            attempt_payload=None,
+            insight_payload=None,
+            run_kernel=False,
+            protocol_out=None,
+        )
         self.assertIn("OWNED_SCOPE_REQUIRED", result["holds"])
         self.assertIn("GOAL_ATTEMPT_EVENT_REQUIRED", result["holds"])
 
@@ -1343,20 +1908,93 @@ class WorkflowRuntimePlants(unittest.TestCase):
                     target="Q3.RouteB.target",
                 )
 
+    def test_supplier_contract_receipt_binds_nested_object_and_consumer(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            receipt = repo / "contract.json"
+            payload = {
+                "schema": workflow_runtime.DEPENDENCY_CONTRACT_RECEIPT_SCHEMA,
+                "candidate": "Q3.RouteB.candidate",
+                "target": "Q3.RouteB.target",
+                "candidate_provenance": "SOURCE_DECLARED",
+                "contract": dependency_contract(),
+            }
+            payload["contract"]["original_requested_object"] = "Q3.RouteB.other"
+            receipt.write_text(json.dumps(payload) + "\n", encoding="utf-8")
+            with self.assertRaisesRegex(
+                workflow_runtime.WorkflowRuntimeError,
+                "CONSUMER_FIRST_CONTRACT_ORIGINAL_OBJECT_MISMATCH",
+            ):
+                workflow_runtime._dependency_contract_receipt(
+                    repo,
+                    receipt,
+                    candidate="Q3.RouteB.candidate",
+                    target="Q3.RouteB.target",
+                )
+            payload["contract"] = dependency_contract()
+            payload["contract"]["downstream_consumer"] = "Q3.RouteB.other"
+            receipt.write_text(json.dumps(payload) + "\n", encoding="utf-8")
+            with self.assertRaisesRegex(
+                workflow_runtime.WorkflowRuntimeError,
+                "CONSUMER_FIRST_CONTRACT_DOWNSTREAM_CONSUMER_MISMATCH",
+            ):
+                workflow_runtime._dependency_contract_receipt(
+                    repo,
+                    receipt,
+                    candidate="Q3.RouteB.candidate",
+                    target="Q3.RouteB.target",
+                )
 
+    def test_supplier_contract_receipt_binds_active_exact_edge(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            receipt = repo / "contract.json"
+            receipt.write_text(json.dumps({
+                "schema": workflow_runtime.DEPENDENCY_CONTRACT_RECEIPT_SCHEMA,
+                "candidate": "Q3.RouteB.candidate",
+                "target": "Q3.RouteB.target",
+                "candidate_provenance": "SOURCE_DECLARED",
+                "contract": dependency_contract(),
+            }) + "\n", encoding="utf-8")
+            with self.assertRaisesRegex(
+                workflow_runtime.WorkflowRuntimeError,
+                "CONSUMER_FIRST_CONTRACT_ACTIVE_THEOREM_EDGE_MISMATCH",
+            ):
+                workflow_runtime._dependency_contract_receipt(
+                    repo,
+                    receipt,
+                    candidate="Q3.RouteB.candidate",
+                    target="Q3.RouteB.target",
+                    exact_theorem_pin="Q3.RouteB.other",
+                    exact_consumer_pin="Q3.RouteB.target",
+                )
+            with self.assertRaisesRegex(
+                workflow_runtime.WorkflowRuntimeError,
+                "CONSUMER_FIRST_CONTRACT_ACTIVE_CONSUMER_EDGE_MISMATCH",
+            ):
+                workflow_runtime._dependency_contract_receipt(
+                    repo,
+                    receipt,
+                    candidate="Q3.RouteB.candidate",
+                    target="Q3.RouteB.target",
+                    exact_theorem_pin="Q3.RouteB.candidate",
+                    exact_consumer_pin="Q3.RouteB.other",
+                )
 class ControlV10BenchmarkPlants(unittest.TestCase):
     @staticmethod
     def _shadow_plan(**overrides: object) -> dict[str, object]:
         payload: dict[str, object] = {
             "schema": workflow_runtime.SHADOW_PLAN_SCHEMA,
-            "mode": "SHADOW_V10_READ_ONLY",
+            "mode": workflow_runtime.PRODUCTION_PLAN_MODE,
             "status": "HOLD",
-            "holds": [],
+            "holds": ["NODE_REGISTRY_EXACT_EDGE_REQUIRED"],
             "blocked_features": [
                 {"feature": feature}
                 for feature in sorted(benchmark.REQUIRED_BLOCKED_FEATURES)
             ],
             "startup": {
+                "schema": "q3_startup_snapshot.v10.v1",
+                "mode": "PRODUCTION_V10_READ_ONLY",
                 "fatal_errors": [],
                 "honesty_state": "CHALLENGER_NOT_RH",
                 "selected_goal": benchmark.EXPECTED_GOAL,
@@ -1367,7 +2005,7 @@ class ControlV10BenchmarkPlants(unittest.TestCase):
             },
             "run_authorized": False,
             "writes_performed": False,
-            "legacy_v9_authority_unchanged": True,
+            "legacy_v9_authority_unchanged": False,
             "PX_RH_CLAIM": "NOT_MADE",
             "node_registry": {"detail": "same"},
         }
@@ -1562,27 +2200,30 @@ class ControlV10BenchmarkPlants(unittest.TestCase):
             ):
                 benchmark._parse_production_startup_timing(stderr)
 
-    def test_functional_audit_rejects_unexpected_fatal_and_unavailable(self) -> None:
+    def test_functional_audit_rejects_unexpected_hold_and_unavailable(self) -> None:
         unexpected = benchmark._functional_plan_audit(
             self._shadow_plan(status="FATAL", holds=["FUTURE_FATAL"])
         )
         unavailable = benchmark._functional_plan_audit(
             self._shadow_plan(
                 status="HOLD",
-                holds=["SHADOW_V10_UNAVAILABLE:RuntimeError:boom"],
+                holds=["PRODUCTION_V10_UNAVAILABLE:RuntimeError:boom"],
             )
         )
         expected = benchmark._functional_plan_audit(
             self._shadow_plan()
         )
         self.assertFalse(unexpected["pass"])
-        self.assertIn("PLAN_UNEXPECTED_FATAL:FUTURE_FATAL", unexpected["errors"])
+        self.assertIn("PLAN_UNEXPECTED_HOLD:FUTURE_FATAL", unexpected["errors"])
         self.assertFalse(unavailable["pass"])
-        self.assertIn("SHADOW_V10_UNAVAILABLE", unavailable["errors"])
+        self.assertIn("PRODUCTION_V10_UNAVAILABLE", unavailable["errors"])
         self.assertTrue(expected["pass"])
-        self.assertEqual(expected["expected_live_fatals"], [])
+        self.assertEqual(
+            expected["expected_live_holds"],
+            ["NODE_REGISTRY_EXACT_EDGE_REQUIRED"],
+        )
 
-    def test_functional_audit_requires_exact_live_fatal_contract(self) -> None:
+    def test_functional_audit_requires_exact_live_hold_contract(self) -> None:
         for mutation in (
             {"status": "READY", "holds": []},
             {"status": "FATAL", "holds": []},
@@ -1600,7 +2241,7 @@ class ControlV10BenchmarkPlants(unittest.TestCase):
                     "honesty_state": "NOT_RH",
                 }
             },
-            {"legacy_v9_authority_unchanged": False},
+            {"legacy_v9_authority_unchanged": True},
             {"PX_RH_CLAIM": "MADE"},
         ):
             with self.subTest(mutation=mutation):
@@ -1612,11 +2253,11 @@ class ControlV10BenchmarkPlants(unittest.TestCase):
         accepted = benchmark._functional_plan_audit(self._shadow_plan())
         self.assertTrue(accepted["pass"])
         for field in (
-            "exact_live_fatal_status_pass",
-            "exact_live_fatal_set_pass",
+            "exact_live_hold_status_pass",
+            "exact_live_hold_set_pass",
             "startup_fatal_set_pass",
             "startup_honesty_state_pass",
-            "legacy_v9_authority_unchanged_pass",
+            "legacy_v9_not_authority_pass",
             "px_rh_claim_not_made_pass",
         ):
             self.assertTrue(accepted[field], field)
@@ -1648,6 +2289,64 @@ class ControlV10BenchmarkPlants(unittest.TestCase):
             )
             self.assertTrue(temp_root.is_dir())
             self.assertTrue((temp_root / "cache").is_dir())
+
+    def test_instrumented_once_forwards_exact_source_pin(self) -> None:
+        guard = _FakeEpochGuard()
+        observed: dict[str, object] = {}
+
+        def summarize(
+            repo: Path,
+            selected_goal_path: object,
+            owned_paths: object = (),
+            *,
+            exact_node_pin: str | None = None,
+            exact_source_pin: str | None = None,
+            exact_theorem_pin: str | None = None,
+            exact_consumer_pin: str | None = None,
+        ) -> dict[str, object]:
+            observed.update(
+                {
+                    "repo": repo,
+                    "selected_goal_path": selected_goal_path,
+                    "owned_paths": owned_paths,
+                    "exact_node_pin": exact_node_pin,
+                    "exact_source_pin": exact_source_pin,
+                    "exact_theorem_pin": exact_theorem_pin,
+                    "exact_consumer_pin": exact_consumer_pin,
+                }
+            )
+            return node_registry_summary(status="HOLD")
+
+        with (
+            mock.patch.object(
+                workflow_runtime,
+                "_startup_read_epoch",
+                return_value=_fake_startup_epoch(guard),
+            ),
+            mock.patch.object(
+                workflow_runtime,
+                "build_startup_snapshot",
+                return_value=production_snapshot(),
+            ),
+            mock.patch.object(
+                workflow_runtime.node_registry_v10,
+                "startup_gate_summary",
+                side_effect=summarize,
+            ),
+            mock.patch.object(
+                workflow_runtime,
+                "_compile_production_logical_plan",
+                return_value={"schema": "q3_proof_loop.v1"},
+            ),
+        ):
+            sample = benchmark._instrumented_once(Path("/repo"))
+
+        self.assertEqual(sample["payload"]["schema"], workflow_runtime.SHADOW_PLAN_SCHEMA)
+        self.assertEqual(observed["exact_node_pin"], "NODE-058")
+        self.assertEqual(observed["exact_source_pin"], "SOURCE-058")
+        self.assertEqual(observed["exact_theorem_pin"], "THEOREM-058")
+        self.assertEqual(observed["exact_consumer_pin"], "CONSUMER-058")
+        self.assertEqual(sample["snapshot_constructor_calls"], 1)
 
     def test_forbidden_runtime_argv_rejects_heavy_and_legacy_tools(self) -> None:
         commands = [
@@ -2109,6 +2808,7 @@ class ControlV10BenchmarkPlants(unittest.TestCase):
         self.assertNotIn("/docs/routeB_bus/**/*.goal.md", sparse_set)
         self.assertNotIn("/docs/routeB_bus/**/*.answer.md", sparse_set)
         self.assertIn("/" + source_relative, sparse_set)
+        self.assertIn("/orchestrator/proof_loop.py", sparse_set)
         for relative in benchmark.COLD_REQUIRED_PATHS:
             self.assertIn("/" + relative, sparse_set)
         for broad_pattern in (
@@ -2121,6 +2821,60 @@ class ControlV10BenchmarkPlants(unittest.TestCase):
             "/q3.lean.aristotle/Q3/Proofs/RouteB/",
         ):
             self.assertNotIn(broad_pattern, sparse_set)
+
+    def test_cold_required_paths_cover_production_logical_plan_surface(self) -> None:
+        required = set(benchmark.COLD_REQUIRED_PATHS)
+        candidate = set(benchmark.PHASE_A_CANDIDATE_PATHS)
+        self.assertTrue(
+            {
+                "docs/CODEX_CONTROL.md",
+                "docs/cartographer/TOOLS.yaml",
+                "orchestrator/proof_loop.py",
+            }
+            <= candidate
+        )
+        self.assertTrue(
+            {
+                "docs/cartographer/TOOLS.yaml",
+                "docs/semantic_quarantine/PUBLIC_EXPORT_INDEX_AND_AXIOM_RECEIPT_v1.md",
+                "orchestrator/proof_loop.py",
+                "orchestrator/roof_port_ledger.py",
+                "orchestrator/state/CHANNEL_RUNTIME.json",
+                "q3.lean.aristotle/Q3/Proofs/RouteB/CanonicalRHRouteSkeleton.lean",
+                "q3.lean.aristotle/Q3/Proofs/RouteB/D0CanonicalApproximation.lean",
+                "q3.lean.aristotle/Q3/Proofs/RouteB/D0PostAnchorMontel.lean",
+                "q3.lean.aristotle/Q3/Proofs/RouteB/D0StripMontelRefinement.lean",
+                (
+                    "q3.lean.aristotle/Q3/Proofs/RouteB/"
+                    "G6N1SelectedFerrersN2CompactDecayAssembly.lean"
+                ),
+                "q3.lean.aristotle/aristotle_db/knowledge.db",
+            }
+            <= required
+        )
+
+    def test_clean_goal_058_production_plan_fits_output_budget(self) -> None:
+        repo = Path(__file__).resolve().parents[2]
+        with tempfile.TemporaryDirectory(prefix="q3-v10-output-budget-") as tmp:
+            candidate = benchmark._candidate_checkout(repo, Path(tmp) / "candidate")
+            plan = workflow_runtime.live_plan_v10(candidate, owned_paths=[])
+            rendered = workflow_runtime.render_plan_v10(plan)
+
+        payload = json.loads(rendered)
+        self.assertLessEqual(
+            len(rendered.encode("utf-8")), workflow_runtime.SHADOW_PLAN_MAX_BYTES
+        )
+        self.assertEqual(payload["status"], "HOLD")
+        self.assertEqual(
+            payload["selected_goal"], benchmark.EXPECTED_GOAL
+        )
+        self.assertNotIn("PRODUCTION_V10_OUTPUT_LIMIT_EXCEEDED", payload["holds"])
+        self.assertEqual(
+            payload["logical_plan"]["proof_loop"]["next_joint"][
+                "candidate_details_ref"
+            ],
+            "cords.open_joints",
+        )
 
     def test_cold_sparse_checkout_rejects_any_forbidden_payload(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -2340,7 +3094,6 @@ class ControlV10BenchmarkPlants(unittest.TestCase):
                 "--root",
                 "/repo",
                 "plan",
-                "--shadow-v10",
                 "--benchmark-startup-timing",
             ],
         )
@@ -2587,7 +3340,7 @@ class ControlV10BenchmarkPlants(unittest.TestCase):
         self.assertEqual(result["startup"]["duration_ms"], 123.0)
         self.assertEqual(
             result["startup"]["measurement"],
-            "DIRECT_PRODUCTION_BUILD_SHADOW_SNAPSHOT_WALL",
+            "DIRECT_PRODUCTION_BUILD_STARTUP_SNAPSHOT_WALL",
         )
         self.assertEqual(result["startup"]["audited_twin_duration_ms"], 2775.0)
         self.assertEqual(result["plan"]["duration_ms"], 254.0)

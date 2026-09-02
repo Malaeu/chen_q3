@@ -8,8 +8,8 @@ canonical_branch: rh_clean
 control: docs/CODEX_CONTROL.md
 tool_manifest: docs/cartographer/TOOLS.yaml
 workflow_front_door: orchestrator/workflow_runtime.py
-inventory_snapshot_date: 2026-09-01
-registered_tools: 56
+inventory_snapshot_date: 2026-09-02
+registered_tools: 57
 route_promotion_authorized: false
 PX_RH_CLAIM: NOT_MADE
 ```
@@ -26,7 +26,7 @@ state и математический frontier общие. Хост меняет
 
 1. откуда Codex узнаёт, что делать;
 2. в каком порядке вызываются инструменты;
-3. когда нужен Proshka, semantic admission, карта или публикационный blueprint;
+3. когда нужен Proshka, scoped semantic edge gate, карта или публикационный blueprint;
 4. что различается между Mac и Linux.
 
 Текущий математический шаг в карточке намеренно не заморожен. Его каждый раз
@@ -36,13 +36,13 @@ state и математический frontier общие. Хост меняет
 
 ```text
 OWNER INTENT
-  -> STRICT STARTUP
+  -> ONE CONTROL-V10 STARTUP SNAPSHOT
   -> EXACT PHYSICAL GOAL
   -> LOCAL SHELVES AND KNOWLEDGE
   -> SUPPLIER PREFLIGHT
   -> ONE PRECOMMITTED PROOF OR TEST CYCLE
   -> KERNEL AND AXIOM GATE
-  -> SEMANTIC ADMISSION, ONLY WHEN REQUIRED
+  -> SCOPED NODE GATE, ONLY FOR THE EXACT CONSUMER EDGE
   -> STEP OR GOAL CLOSE
   -> INVENTORY, ATOMS, MAP AND PUBLICATION BLUEPRINT
   -> SCOPED COMMIT, REBASE AND PUSH
@@ -51,22 +51,23 @@ OWNER INTENT
 
 ### 2.1 Startup
 
-На обоих хостах вход одинаковый:
+На обоих хостах канонический вход один:
 
 ```bash
-cd /path/to/rh_lean_01_2026
-git rev-parse --show-toplevel
-git branch --show-current
-bash specs_docs/session_start.sh
 python3 orchestrator/workflow_runtime.py plan
-python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb_status.py --check
 ```
 
-Красный startup запрещает математику. Разрешён только узкий ремонт
-воспроизводимого control/tool defect. Зелёный plan не маскирует красный gate.
-Тот же вход печатает delta-aware Route B briefing, ранжирует reopenable
-`RESEARCH_DEBT` и предлагает выбрать, готовить ли сегодня challenge; внешний
-поиск и отправка автоматически не запускаются.
+Команда один раз строит `StartupSnapshot`, выбирает physical goal и проверяет
+точные source/node/theorem/consumer pins, execution state, scoped node registry,
+writer epoch и dirty split. Она ничего не пишет, не запускает Lean, не вызывает
+внешних агентов и не обращается к сети. `specs_docs/session_start.sh`, прямой
+`routeb_status.py --check`, Spine startup и `three_body_loop.py` являются только
+ручными legacy-диагностическими средствами и не добавляются к обычному входу.
+
+`FATAL` запрещает математику и разрешает только узкий ремонт названного
+control/tool defect. `HOLD` блокирует только указанную возможность, например
+потребление ещё не связанного exact theorem-to-consumer edge; он не превращает
+весь проект в глобальный карантин.
 
 Перед любым математическим narrowing startup также строит read-only
 `q3_roof_port_supplier_ledger.v1`: шесть semantic slots, семь прямых proof
@@ -77,7 +78,7 @@ counts выводятся только как bookkeeping строк, не ка�
 `research-debt-challenge` — read-only генератор packet subtype. Он требует
 consumer Y, минимальный достаточный интерфейс Z, necessity audit для X,
 `REQUEST_ID`/`BOUNDARY_ID` и novelty requirement, но не создаёт нового call
-class. Отправка возможна только при независимо выполненном Control v9
+class. Отправка возможна только через разрешённый активным Control v10
 `EXPLORATION_REVIEW` gate.
 
 ### 2.2 Выбор и narrowing
@@ -121,8 +122,8 @@ scope:
 - делать scoped commit, pull --rebase --autostash и push в `rh_clean`;
 - отправлять разрешённый byte-exact запрос Прошке в тот же living phase chat;
 - забирать, проверять и мигрировать verdict commit;
-- передавать Linux-телу точный scoped baton или запрос, когда Linux действительно
-  является нужным executor или независимым auditor;
+- передавать другому хосту точный scoped baton или запрос, когда этот хост
+  действительно является нужным executor;
 - запускать зарегистрированные read-only поиски, gates, plants, Lean validation,
   semantic refresh и разрешённые close transactions.
 
@@ -167,21 +168,24 @@ formalization-cost остаются `RESEARCH_DEBT`.
 
 q3_docs — retrieval-only индекс. Он помогает найти определения, источники,
 suppliers и прошлые решения. Его результат не является доказательством. Corpus
-или receipt drift даёт SEMANTIC_INDEX_CORPUS_STALE; после разрешённого refresh
-strict startup запускается заново.
+или receipt drift даёт `SEMANTIC_INDEX_CORPUS_STALE` для точного retrieval scope.
+Разрешённый refresh обновляет этот scope; текущий `StartupSnapshot` не строится
+и workflow startup не запускается повторно.
 
-### 4.2 Semantic quarantine и attestation
+### 4.2 Scoped node registry и semantic review
 
-Load-bearing Lean input проходит отдельную цепь:
+Новый Lean input потребляется только через точную связь `node + theorem +
+consumer + hypothesis port` в `NODE_REGISTRY_V10.json`. Structural startup gate
+проверяет выбранный scope быстро; глубокий consumption gate запускается только
+перед реальным использованием и связывает source/consumer blobs, import closure,
+toolchain, elaborated types, axioms, validation hash и semantic-review hash.
 
-```text
-SOURCE_WRITTEN -> KERNEL_GREEN -> external attestation -> SEMANTICALLY_ADMITTED
-```
-
-semantic-attestation-broker только находит внешний receipt и не выпускает его.
-semantic-admit материализует переход для exact entry и exact attestation через
-three_body_loop. Допуск ограничен перечисленными scopes и не означает закрытие
-Goal 058, Route B или RH.
+Обычный `SEMANTIC_BRIDGE` допускается по converged `ADVERSARIAL_READ_ONLY`,
+точному `OWNER_SIGNOFF` или настоящему `EXTERNAL_SIGNED` от отдельного principal
+и ключа. Linux- или Mac-процесс, socket, broker либо название роли сами по себе
+не являются независимым review. `three_body_loop.py` и Control-v9 quarantine
+сохраняются только для ручной проверки неизменяемых исторических receipts и не
+создают native-v10 admission.
 
 ### 4.3 Knowledge spine
 
@@ -194,11 +198,10 @@ moves, branch decisions, attempts и проверенные связи. Это �
 | Операция | Mac | Linux |
 |---|---|---|
 | Канонический repo/branch | тот же rh_clean | тот же rh_clean |
-| Startup, selector, runtime | одинаковые команды | одинаковые команды |
+| Startup, selector, runtime | один `workflow_runtime.py plan` | один `workflow_runtime.py plan` |
 | Lean | обычный lake/lean | перед lake/lean удалить LD_LIBRARY_PATH |
-| Existing semantic admission | signed offline verification по умолчанию | внешний broker/auditor path |
-| Emergency existing-admission startup | tracked-receipt fallback только по явному owner enable; не создаёт новый admission | неприменимо |
-| Новый semantic admission | Codex не выпускает auditor receipt | независимый Linux auditor выпускает receipt; materialization остаётся exact-scope transition |
+| Native-v10 semantic gate | тот же scoped registry/review contract | тот же scoped registry/review contract |
+| Historical-v9 receipts | только ручная offline compatibility-проверка | только ручная offline compatibility-проверка |
 | Commit prefix | [MacOS][rh_clean] | [Linux-Codex][rh_clean] |
 | Proshka | тот же living phase chat | тот же living phase chat |
 
@@ -208,15 +211,6 @@ Linux-команды Lean:
 env -u LD_LIBRARY_PATH lake build <target>
 env -u LD_LIBRARY_PATH lake env lean <file>.lean
 ```
-
-Mac emergency fallback применяется только для уже admitted entry и только по
-точной owner-инструкции:
-
-```bash
-Q3_CONTROL_V9_MAC_TRACKED_RECEIPT_FALLBACK=1 bash specs_docs/session_start.sh
-```
-
-Он не заменяет подпись, не создаёт новый admission и не переносится на Linux.
 
 ## 6. Decision table
 
@@ -229,8 +223,8 @@ Q3_CONTROL_V9_MAC_TRACKED_RECEIPT_FALLBACK=1 bash specs_docs/session_start.sh
 | Proshka request OPEN и review-plan ready | current Codex body доставляет exact attachment в living chat |
 | scoped commit/push или same-chat Proshka delivery | выполнять автономно по постоянной owner authorization |
 | request IN_REVIEW или ANSWERED | не отправлять повторно |
-| Lean KERNEL_GREEN, admission требуется | ждать независимый receipt; downstream использование запрещено |
-| SEMANTICALLY_ADMITTED | использовать только точные admitted scopes |
+| Lean KERNEL_GREEN, exact edge не admitted | downstream использование запрещено; выполнить scoped v10 review/validation gate |
+| Node registry consumption gate PASS | использовать только точный зарегистрированный theorem-to-consumer edge |
 | theorem/goal действительно закрыт | close transaction, карта/blueprint, scoped delivery |
 | foreign dirty paths | сохранить; не stage и не commit |
 | PX_RH_CLAIM | остановиться на owner authority boundary |
@@ -238,7 +232,8 @@ Q3_CONTROL_V9_MAC_TRACKED_RECEIPT_FALLBACK=1 bash specs_docs/session_start.sh
 ## 7. Зарегистрированный инвентарь
 
 Единственный routable inventory — docs/cartographer/TOOLS.yaml. На снимке
-2026-09-01 зарегистрировано 56 инструментов: 49 ENABLED, 6 AVAILABLE и 1 DEGRADED.
+2026-09-02 зарегистрировано 57 инструментов: 42 ENABLED, 12 AVAILABLE,
+2 RETIRED и 1 DEGRADED.
 Сотни вспомогательных scripts, tests и one-shot probes на диске не становятся
 автоматически routable: для рождения инструмента нужен полный manifest contract.
 
@@ -259,6 +254,7 @@ Q3_CONTROL_V9_MAC_TRACKED_RECEIPT_FALLBACK=1 bash specs_docs/session_start.sh
 - routeb-status
 - goal-run-selector
 - workflow-runtime
+- workflow-close-node
 - workflow-session-close
 - workflow-phase-close
 - three-body-loop
@@ -318,8 +314,8 @@ python3 orchestrator/tools_census.py
 - Один repo, один branch, одна physical bus и одна project memory для обоих хостов.
 - Plan не является исполнением.
 - Search result не является supplier.
-- Kernel green не является semantic admission.
-- Semantic admission не является математическим goal close.
+- Kernel green не открывает scoped semantic edge.
+- Scoped semantic edge gate не является математическим goal close.
 - Map coverage не доказывает актуальность математики.
 - Publication blueprint не является внешней публикацией.
 - Ни один green gate не означает Route promotion или RH.

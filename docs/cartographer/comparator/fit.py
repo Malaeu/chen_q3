@@ -62,6 +62,8 @@ def resolve_declaration(
     """Resolve a full name or one unique basename; ambiguity is never guessed."""
     if requested in index:
         return requested, index[requested]
+    if "." in requested:
+        raise FitError("DECLARATION_NOT_FOUND", requested)
     basename = requested.rsplit(".", 1)[-1]
     candidates = sorted(
         name for name in index if name.rsplit(".", 1)[-1] == basename

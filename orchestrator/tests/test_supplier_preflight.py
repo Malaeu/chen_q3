@@ -97,6 +97,12 @@ def test_resolve_declaration_rejects_ambiguous_basename() -> None:
         fit.resolve_declaration("same", index)
 
 
+def test_resolve_declaration_never_substitutes_a_qualified_name() -> None:
+    index = {"Other.Namespace.same": record("Other.Namespace.same")}
+    with pytest.raises(fit.FitError, match="DECLARATION_NOT_FOUND"):
+        fit.resolve_declaration("Expected.Namespace.same", index)
+
+
 def test_harness_uses_target_term_type_and_both_modules() -> None:
     candidate = record("Q3.RouteB.supplier", "Q3.Proofs.RouteB.Supplier")
     target = record("Q3.RouteB.target", "Q3.Proofs.RouteB.Target")
@@ -111,7 +117,13 @@ def test_harness_uses_target_term_type_and_both_modules() -> None:
     assert str(target["type"]) not in source
 
 
-def external_payload(*, exact: str = "ABSENT") -> dict[str, object]:
+def external_payload(
+    *,
+    exact: str = "ABSENT",
+    query: str = "supplier",
+    candidate: str | None = None,
+    candidate_provenance: str | None = None,
+) -> dict[str, object]:
     boundary = (
         supplier_preflight.SOURCE_ABSENCE_SCOPE
         if exact == "ABSENT"
@@ -119,6 +131,15 @@ def external_payload(*, exact: str = "ABSENT") -> dict[str, object]:
     )
     return {
         "schema": supplier_preflight.EXTERNAL_SCHEMA,
+        "query": query,
+        "query_sha256": __import__("hashlib").sha256(query.encode()).hexdigest(),
+        "candidate": candidate,
+        "candidate_sha256": (
+            __import__("hashlib").sha256(candidate.encode()).hexdigest()
+            if candidate is not None
+            else None
+        ),
+        "candidate_provenance": candidate_provenance,
         "enabled_bases": ["zeta23"],
         "bases_queried": ["zeta23"],
         "matches": [],
@@ -137,8 +158,19 @@ def external_payload(*, exact: str = "ABSENT") -> dict[str, object]:
     }
 
 
-def external_run(*, exact: str = "ABSENT") -> dict[str, object]:
-    payload = external_payload(exact=exact)
+def external_run(
+    *,
+    exact: str = "ABSENT",
+    query: str = "supplier",
+    candidate: str | None = None,
+    candidate_provenance: str | None = None,
+) -> dict[str, object]:
+    payload = external_payload(
+        exact=exact,
+        query=query,
+        candidate=candidate,
+        candidate_provenance=candidate_provenance,
+    )
     return {
         "returncode": 0,
         "stdout": __import__("json").dumps(payload),
@@ -155,7 +187,12 @@ def patch_retrieval(
     monkeypatch.setattr(
         supplier_preflight,
         "run_external",
-        lambda *_args, **_kwargs: external_run(exact=exact),
+        lambda query, **kwargs: external_run(
+            exact=exact,
+            query=query,
+            candidate=kwargs.get("candidate"),
+            candidate_provenance=kwargs.get("candidate_provenance"),
+        ),
     )
     monkeypatch.setattr(
         supplier_preflight,
@@ -188,7 +225,11 @@ def fake_fit(
         resolve_declaration=resolve,
         source_declaration_candidates=lambda _name: [],
         declaration_properties=lambda name, row: {"name": name, **row},
-        direct_type_fit=lambda _candidate, _target: {"status": fit_status},
+        direct_type_fit=lambda candidate, target: {
+            "status": fit_status,
+            "candidate": {"name": candidate},
+            "target": {"name": target},
+        },
     )
 
 
@@ -287,7 +328,49 @@ def test_exact_fit_is_preserved_only_from_direct_comparator(
         candidate_provenance="SOURCE_DECLARED",
     )
     assert result["status"] == "EXACT_FIT"
-    assert result["comparison"] == {"status": "EXACT_FIT"}
+    assert result["comparison"]["status"] == "EXACT_FIT"
+    assert result["comparison"]["candidate"]["name"] == "Q3.RouteB.supplier"
+    assert result["comparison"]["target"]["name"] == "Q3.RouteB.target"
+
+
+def test_generated_candidate_requires_verifiable_provenance_evidence(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    patch_retrieval(monkeypatch)
+    monkeypatch.setattr(
+        supplier_preflight,
+        "_load_module",
+        lambda *_args: fake_fit(resolved=True, fit_status="EXACT_FIT"),
+    )
+    result = supplier_preflight.run_preflight(
+        "supplier",
+        candidate="Q3.RouteB.supplier",
+        target="Q3.RouteB.target",
+        candidate_provenance="GENERATED_OR_DERIVED",
+    )
+    assert result["status"] == "INCOMPLETE"
+    assert result["reason"] == "CANDIDATE_PROVENANCE_EVIDENCE_REQUIRED"
+
+
+def test_comparator_identity_substitution_cannot_be_exact_fit(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    patch_retrieval(monkeypatch)
+    fit_module = fake_fit(resolved=True, fit_status="EXACT_FIT")
+    fit_module.direct_type_fit = lambda _candidate, target: {
+        "status": "EXACT_FIT",
+        "candidate": {"name": "Other.Namespace.supplier"},
+        "target": {"name": target},
+    }
+    monkeypatch.setattr(supplier_preflight, "_load_module", lambda *_args: fit_module)
+    result = supplier_preflight.run_preflight(
+        "supplier",
+        candidate="Q3.RouteB.supplier",
+        target="Q3.RouteB.target",
+        candidate_provenance="SOURCE_DECLARED",
+    )
+    assert result["status"] == "INCOMPLETE"
+    assert result["reason"] == "direct type-fit declaration identity mismatch"
 
 
 def test_external_receipt_is_mode_0600_and_removed_after_shelf(
@@ -332,3 +415,28 @@ def test_receipt_is_removed_when_shelf_raises(
     result = supplier_preflight.run_preflight("supplier")
     assert result["status"] == "INCOMPLETE"
     assert not observed[0].exists()
+
+
+def test_external_receipt_candidate_binding_mismatch_is_incomplete(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    replay = external_run(
+        query="supplier",
+        candidate="Q3.replayed",
+        candidate_provenance="SOURCE_DECLARED",
+    )
+    monkeypatch.setattr(
+        supplier_preflight, "run_external", lambda *_args, **_kwargs: replay
+    )
+    monkeypatch.setattr(
+        supplier_preflight,
+        "run_shelf",
+        lambda *_args, **_kwargs: {"status": "HITS", "returncode": 0},
+    )
+    result = supplier_preflight.run_preflight(
+        "supplier",
+        candidate="Q3.expected",
+        candidate_provenance="SOURCE_DECLARED",
+    )
+    assert result["status"] == "INCOMPLETE"
+    assert result["reason"] == "enabled external-base denominator failed"

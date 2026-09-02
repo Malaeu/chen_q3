@@ -207,6 +207,35 @@ class ThreeBodyPlants(unittest.TestCase):
         self.assertEqual(caught.exception.code, code)
         return caught.exception
 
+    def test_executor_and_legacy_quarantine_versions_are_distinct(self) -> None:
+        self.assertEqual(three_body_loop.EXECUTOR_CONTROL_VERSION, 10)
+        self.assertEqual(three_body_loop.LEGACY_QUARANTINE_CONTROL_VERSION, 9)
+        state = _empty_state()
+        three_body_loop.validate_state(state)
+        state["control_version"] = 10
+        self.assert_code(
+            "SEMANTIC_QUARANTINE_STATE_INVALID",
+            three_body_loop.validate_state,
+            state,
+        )
+
+    def test_v10_historical_gate_uses_no_broker_and_no_v9_global_barrier(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            state_path, _commit = self._kernel_green_state(root)
+            with mock.patch.object(
+                three_body_loop,
+                "resolve_linux_semantic_attestation",
+                side_effect=AssertionError("legacy broker entered v10 inspection"),
+            ) as broker:
+                result = three_body_loop.validate_historical_repository_gate(
+                    repo_root=root,
+                    state_path=state_path,
+                )
+            broker.assert_not_called()
+            self.assertEqual(result["control_version"], 9)
+            self.assertEqual(result["entries"][0]["status"], "KERNEL_GREEN")
+
     @staticmethod
     def _launch_fixture(root: Path) -> dict[str, object]:
         _git_init(root)
@@ -960,7 +989,7 @@ class ThreeBodyPlants(unittest.TestCase):
             bad_control = root / "CODEX_CONTROL.md"
             bad_control.write_text(
                 spine.CONTROL.read_text(encoding="utf-8").replace(
-                    "CONTROL_VERSION: 9", "CONTROL_VERSION: 8"
+                    "CONTROL_VERSION: 10", "CONTROL_VERSION: 9"
                 ),
                 encoding="utf-8",
             )

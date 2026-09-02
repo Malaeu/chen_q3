@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# session_start.sh — один вход в сессию.
+# session_start.sh — manual legacy diagnostic wrapper.
 #
 # Печатает СОСТОЯНИЕ (не пересказывает правила) и падает, когда источники противоречат
 # друг другу. Смысл: то, что протухает, не должно лежать в прозе — оно вычисляется здесь.
@@ -12,11 +12,22 @@
 #   1 — найдено противоречие между источниками (детали в разделе РАСХОЖДЕНИЯ)
 #   2 — не удалось прочитать обязательный источник
 #
-# Правила старта живут в docs/CODEX_CONTROL.md. Этот скрипт их не дублирует.
+# Правила старта живут в docs/CODEX_CONTROL.md. Канонический production front
+# door — `python3 orchestrator/workflow_runtime.py plan`; этот wrapper никогда
+# не вызывает его и не участвует в production workflow.
 
 set -uo pipefail
 
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+if [ "${1:-}" = "--legacy-v9-maintenance" ]; then
+  shift
+fi
+if [ "$#" -ne 0 ]; then
+  echo "usage: $0 [--legacy-v9-maintenance]" >&2
+  exit 2
+fi
+echo "DEPRECATED_LEGACY_V9_MAINTENANCE" >&2
+
 cd "$REPO" || exit 2
 
 RUNTIME="orchestrator/state/CHANNEL_RUNTIME.json"

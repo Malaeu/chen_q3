@@ -5,7 +5,7 @@
 schema: q3_tool_manifest.v2
 
 meta:
-  updated: 2026-08-14
+  updated: 2026-09-02
   owner: OWNER
   canonical: docs/cartographer/TOOLS.yaml
   observer_copy: machine-local codex_specs/TOOLS.yaml if present
@@ -43,28 +43,26 @@ tool_contract:
 startup_contract:
   order:
     - docs/CODEX_CONTROL.md
-    - q3.lean.aristotle/COGNITIVE_OPERATORS.md
     - q3.lean.aristotle/ACTIVE/SESSION_ENTRY.md
-    - docs/cartographer/TOOLS.yaml
-    - docs/Codex/CURRENT.md
-    - task_local_physical_state
-    - bash specs_docs/session_start.sh
+    - python3 orchestrator/workflow_runtime.py plan
   manifest_read:
-    always: [meta, tool_contract, startup_contract, memory_event_routes, data_surfaces, known_hazards]
-    on_task_match: [tool_families]
+    runtime_validation: FULL_MANIFEST_BY_WORKFLOW_PLAN
+    after_plan_on_task_match: [tool_families]
+  cognitive_operator_read: ONLY_ON_MATHEMATICAL_STRATEGY_TRIGGER_AFTER_PLAN
   validation:
-    command: bash specs_docs/session_start.sh
-    checks: [schema, required_sections, tool_contract_fields, codex_path_resolution, current_task_pointer]
+    command: python3 orchestrator/workflow_runtime.py plan
+    checks: [control_v10_identity, one_read_epoch, physical_goal_or_current_task, exact_source_pin, scoped_node_registry, tool_contract_fields, own_foreign_dirty_split]
     writes: false
   prohibition:
     - CLAUDE.md is not a Codex startup input.
     - A generated view never overrides physical task state.
     - An ENABLED label without audience, trigger, mode, and write contract is invalid.
+    - bash specs_docs/session_start.sh is a manual legacy diagnostic wrapper, not a second startup front door.
 
 memory_event_routes:
   SESSION_START:
     read: [startup_contract, data_surfaces, known_hazards]
-    run: [codex-session-start]
+    run: [workflow-runtime]
     record: NONE
 
   GOAL_DISPATCH:
@@ -73,9 +71,9 @@ memory_event_routes:
     record: Read-only decision; no runtime or database write in AUTOPILOT_000.
 
   THREE_BODY_CONTROL:
-    condition: Control-v9 quarantine validation, request lifecycle transition, or pinned Codex wake event.
+    condition: Manual validation of immutable historical Control-v9 quarantine, receipts, request lifecycle, or pinned wake evidence.
     run: [three-body-loop]
-    record: Canonical quarantine/event state or request-local CAS state; semantic admission and lease authority remain external.
+    record: NONE_IN_CONTROL_V10; historical schemas and receipts remain byte-bound and do not create native v10 authority.
 
   REGISTERED_CYCLE:
     condition: After one precommitted proof-cycle action has a result and before step-close.
@@ -190,23 +188,29 @@ data_surfaces:
     tracked_snapshot: orchestrator/state/SEMANTIC_INDEX_STATUS.json
     tracked_snapshot_authority: HISTORICAL_NONAUTHORITATIVE_CROSS_MACHINE_EVIDENCE
 
+  scoped_node_registry:
+    path: orchestrator/state/NODE_REGISTRY_V10.json
+    authority: SCOPED_SEMANTIC_ADMISSION_LEDGER_NOT_LEAN_TRUTH
+    schema: q3_node_registry.v10
+    rule: Exact node, theorem, consumer and hypothesis-port edges are required before consumption.
+
 tool_families:
   startup_and_control:
     summary: Read-only orientation and physical-state selection.
-    front_door: codex-session-start
-    workflow_front_door: workflow-runtime
+    front_door: workflow-runtime
+    manual_legacy_wrapper: codex-session-start
     coverage: [specs_docs/session_start.sh, orchestrator/session_briefing.py, orchestrator/spine.py, orchestrator/three_body_loop.py, "**/routeb_status.py"]
     tools:
       - id: codex-session-start
-        status: ENABLED
+        status: AVAILABLE
         audience: [CODEX, HUMAN]
         mode: READ_ONLY
         path: specs_docs/session_start.sh
         invoke: bash specs_docs/session_start.sh
-        trigger: Every Codex session in Q3.
+        trigger: Manual legacy diagnostics only; never called by canonical Control-v10 startup.
         writes: false
         approval: NONE
-        authority: ORIENTATION_AND_CONSISTENCY_CHECK
+        authority: LEGACY_DIAGNOSTIC_WRAPPER_NOT_STARTUP_AUTHORITY
         records_to: NONE
         last_verified: 2026-08-10
 
@@ -265,7 +269,7 @@ tool_families:
           - python3 orchestrator/research_debt_challenge.py manifest --debt-id ID --request-id REQ-ID --boundary-id BOUNDARY-ID
         trigger: Owner selects preparation of one reopenable research-debt packet subtype.
         writes: false
-        approval: NONE_TO_RANK_OR_RENDER; DISPATCH_REQUIRES_INDEPENDENT_CONTROL_V9_EXPLORATION_REVIEW_ELIGIBILITY
+        approval: NONE_TO_RANK_OR_RENDER; DISPATCH_REQUIRES_ACTIVE_CONTROL_EXPLORATION_REVIEW_ELIGIBILITY
         authority: PACKET_SUBTYPE_PREPARATION_ONLY_NOT_CALL_CLASS_NOT_DISPATCH_NOT_VERDICT_NOT_ROUTE_REOPEN
         records_to: stdout
         validation: test_research_debt_challenge
@@ -279,7 +283,7 @@ tool_families:
         invoke: python3 orchestrator/research_dependency_gate.py check
         alternatives:
           - python3 orchestrator/research_dependency_gate.py plants
-        trigger: Unconditionally inside normal P9/session-start validation, and directly after changes to any active dependency surface, generator, registry, prompt, skill, or semantic-source selection.
+        trigger: Through the Control-v10 workflow plan or directly after changes to any active dependency surface, generator, registry, prompt, skill, or semantic-source selection.
         writes: false
         approval: NONE
         authority: CONSUMER_FIRST_DEPENDENCY_AND_EPISTEMIC_CLASSIFICATION_GATE
@@ -288,12 +292,12 @@ tool_families:
         last_verified: 2026-08-30
 
       - id: knowledge-spine-strict
-        status: ENABLED
+        status: AVAILABLE
         audience: [CODEX, HUMAN]
         mode: READ_ONLY
         path: orchestrator/spine.py
         invoke: python3 orchestrator/spine.py --strict --stdout --reason session-start
-        trigger: Internal check called once by codex-session-start; manual invocation is diagnostic only.
+        trigger: Manual compatibility diagnostic; canonical v10 startup uses workflow-runtime.
         writes: false
         approval: NONE
         authority: DERIVED_CONTROL_AND_MEMORY_VIEW
@@ -347,20 +351,20 @@ tool_families:
         last_verified: 2026-08-13
 
       - id: routeb-status
-        status: ENABLED
+        status: AVAILABLE
         audience: [CODEX, CLAUDE_CODE, HUMAN]
         mode: READ_ONLY
         path: q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb_status.py
         invoke: python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb_status.py --check
-        trigger: Every Route B task.
+        trigger: Manual explicit route/state discrepancy diagnostic only; canonical Control-v10 plan performs this check internally and never calls this executable.
         writes: false
         approval: NONE
-        authority: OPERATIONAL_ADDRESS_CHECK_NOT_PROOF
+        authority: MANUAL_DIAGNOSTIC_ONLY_NOT_PRODUCTION_V10_SELECTOR_NOT_PROOF
         records_to: stdout
         last_verified: 2026-08-10
 
       - id: goal-run-selector
-        status: ENABLED
+        status: AVAILABLE
         audience: [CODEX, HUMAN]
         mode: READ_ONLY
         path: orchestrator/goal_runtime.py
@@ -368,46 +372,56 @@ tool_families:
         alternatives:
           - python3 orchestrator/goal_runtime.py --selftest
           - Python API validate_runtime_state(..., grant_resolver=<authority>)
-        trigger: GOAL_DISPATCH before dispatch or source-locked mint readiness.
+        trigger: Explicit legacy-v9 maintenance or standalone diagnostics only; canonical Control-v10 plan selects through startup_runtime exactly once.
         writes: false
         approval: NONE
-        authority: PHYSICAL_GOAL_SELECTION_AND_GOAL_RUN_SCHEMA_NOT_PROOF_OR_DISPATCH
+        authority: LEGACY_V9_MAINTENANCE_SELECTOR_NOT_PRODUCTION_V10_AUTHORITY
         records_to: stdout
         last_verified: 2026-08-13
 
       - id: workflow-runtime
         status: ENABLED
         audience: [CODEX, HUMAN]
-        mode: WRITES_CANONICAL
-        path: orchestrator/workflow_runtime.py
+        mode: READ_ONLY
+        paths: [orchestrator/workflow_runtime.py, orchestrator/startup_runtime.py, orchestrator/routeb_goal_state.py, orchestrator/node_registry_v10.py, orchestrator/lean_dependency_runtime.py, orchestrator/proof_loop.py, orchestrator/roof_port_ledger.py]
         invoke: python3 orchestrator/workflow_runtime.py plan
         alternatives:
-          - python3 orchestrator/workflow_runtime.py run --through close-node
-          - python3 orchestrator/workflow_runtime.py close-phase
-          - python3 orchestrator/workflow_runtime.py close-session
           - >-
             python3 orchestrator/workflow_runtime.py review-plan
             --attachment <request.txt> --request-commit <commit>
             --request-id <request-id> --boundary-id <boundary-id>
             --expected-sha256 <sha256>
         trigger: >-
-          One stateless lifecycle plan, execution through a verified scoped
-          close-node transition, or byte-exact same-chat review dispatch plan.
+          One stateless lifecycle plan or byte-exact same-chat review dispatch plan.
           Review dispatch requires one canonical CALL_CLASS; an
           EXPLORATION_REVIEW also requires the live bounded-exploration gate.
-          Named supplier preflight requires a bound consumer-first contract receipt.
-        writes: true
-        approval: NONE_FOR_PLAN; ACTIVE_GOAL_RUN_AND_EXACT_OWNED_PATHS_FOR_RUN_OR_CLOSE
-        authority: STATELESS_LIFECYCLE_EXECUTOR_NOT_SELECTOR_POLICY_KERNEL_MATHEMATICAL_AUTHOR_OR_GIT_DELIVERY
-        records_to: stdout receipt plus outputs of the explicitly selected registered writers
+        writes: false
+        approval: NONE
+        authority: STATELESS_READ_ONLY_PLANNER_NOT_SELECTOR_POLICY_KERNEL_MATHEMATICAL_AUTHOR_OR_GIT_DELIVERY
+        records_to: stdout plan or review-dispatch plan
         validation: >-
-          test_workflow_runtime including startup-red, owned-scope, event,
+          test_workflow_runtime including the internal scoped
+          node_registry_v10 startup/consumption gate, startup-red, owned-scope, event,
           command-failure, review-plan byte-binding, CALL_CLASS and
           EXPLORATION_REVIEW eligibility, consumer-first supplier receipt,
           queue-lifecycle, duplicate-dispatch plants, and the additive
           logical_plan.proof_loop q3_proof_loop.v1 operating card with the
           source-locked q3_roof_port_supplier_ledger.v1 reverse ledger.
         last_verified: 2026-09-01
+
+      - id: workflow-close-node
+        status: ENABLED
+        audience: [CODEX, HUMAN]
+        mode: WRITES_CANONICAL
+        path: orchestrator/workflow_runtime.py
+        invoke: python3 orchestrator/workflow_runtime.py run --through close-node
+        trigger: Execute one already-selected exact node/theorem/consumer edge through its registered close-node writers.
+        writes: true
+        approval: ACTIVE_GOAL_RUN_AND_EXACT_OWNED_PATHS
+        authority: SCOPED_LIFECYCLE_EXECUTOR_NOT_SELECTOR_POLICY_KERNEL_MATHEMATICAL_AUTHOR_OR_GIT_DELIVERY
+        records_to: stdout receipt plus outputs of the explicitly selected registered writers
+        validation: test_workflow_runtime including writer epoch, exact edge, consumer-first supplier receipt, kernel gate, command failure and close-node plants
+        last_verified: 2026-09-02
 
       - id: workflow-session-close
         status: ENABLED
@@ -438,38 +452,30 @@ tool_families:
         last_verified: 2026-08-29
 
       - id: three-body-loop
-        status: ENABLED
+        status: AVAILABLE
         audience: [CODEX, HUMAN]
-        mode: WRITES_CANONICAL
+        mode: READ_ONLY
         path: orchestrator/three_body_loop.py
         invoke: python3 orchestrator/three_body_loop.py validate
         alternatives:
           - python3 orchestrator/three_body_loop.py request-validate <CODEX_REQ.md>
-          - python3 orchestrator/three_body_loop.py launch <pinned-v9-arguments>
           - Q3_CONTROL_V9_MAC_TRACKED_RECEIPT_FALLBACK=1 python3 orchestrator/three_body_loop.py validate
-          - >-
-            python3 orchestrator/three_body_loop.py semantic-admit
-            --entry-id GOAL058_D0PSTAR_SOURCE_EVEN_NONZERO_TAIL_CARRIER_20260831
-            --attestation-id OWNER_WAIVER_GOAL058_D0PSTAR_SOURCE_EVEN_NONZERO_TAIL_CARRIER_20260831_V1
-          - >-
-            python3 orchestrator/three_body_loop.py semantic-admit
-            --entry-id GOAL058_D0PSTAR_SOURCE_EVEN_NONZERO_LOW_BAND_ASSEMBLY_20260831
-            --attestation-id OWNER_WAIVER_GOAL058_D0PSTAR_SOURCE_EVEN_NONZERO_LOW_BAND_ASSEMBLY_20260831_V1
         trigger: >-
-          Control-v9 validation, Darwin signed-offline receipt resolution,
-          explicit Mac tracked-receipt fallback for already-admitted entries,
-          Linux-broker admission, either of the two exact owner-waiver
-          admissions, request CAS, or one exact pinned wake event.
-        writes: true
-        approval: ACTIVE_CONTROL_V9_TRANSACTION_OR_EXTERNALLY_RESOLVED_BOUNDED_LEASE
-        authority: QUARANTINE_REQUEST_LIFECYCLE_PINNED_LAUNCH_AND_TWO_EXACT_OWNER_WAIVERS_NOT_GENERAL_SEMANTIC_ATTESTATION
-        records_to: [orchestrator/state/SEMANTIC_QUARANTINE.json, CODEX_REQ_STATE_*.yaml, pinned final reply]
+          Manual compatibility validation of immutable Control-v9 quarantine,
+          signed-offline receipts, exact historical owner-waiver pairings,
+          request CAS evidence, or pinned wake evidence. It is never called by
+          the canonical Control-v10 startup or admission path.
+        writes: false
+        approval: NONE_FOR_MANUAL_HISTORICAL_VALIDATION; NO_NATIVE_V10_ADMISSION
+        authority: HISTORICAL_V9_COMPATIBILITY_VALIDATOR_NOT_ACTIVE_CONTROL_NOT_NATIVE_V10_ADMISSION
+        records_to: stdout
         validation: >-
           test_signed_offline_semantic_attestation covers the signed primary,
           explicit Darwin fallback, tracked revocations, symlink rejection,
           both exact owner-waiver pairings, cross-pair rejection, and
-          fail-closed boundaries, plus all original control-v9, crash,
-          mutation, broker, and goal-runtime plants.
+          fail-closed boundaries, plus all original immutable control-v9,
+          crash, mutation, broker, and goal-runtime plants. Native v10
+          admission is explicitly out of scope.
         last_verified: 2026-08-31
 
       - id: w5-budget-probe
@@ -536,18 +542,18 @@ tool_families:
         last_verified: 2026-08-25
 
       - id: semantic-attestation-broker
-        status: ENABLED
+        status: AVAILABLE
         audience: [HUMAN, CLAUDE_CODE]
         mode: READ_ONLY
         path: orchestrator/semantic_attestation_broker.py
         invoke: python3 orchestrator/semantic_attestation_broker.py
         trigger: >-
-          Control-v9 admission needs an external receipt; the broker must be
-          listening before any dispatch-clear check.
+          Manual historical Control-v9 receipt lookup only. Native Control-v10
+          review/admission never depends on this socket.
         writes: false
         approval: NONE_FOR_LOOKUP
         authority: >-
-          EXTERNAL_RECEIPT_LOOKUP_ONLY_NOT_ISSUANCE_AND_NOT_ADMISSION
+          HISTORICAL_V9_EXTERNAL_RECEIPT_LOOKUP_ONLY_NOT_NATIVE_V10_AUTHORITY
         records_to: [fixed unix socket /run/q3-control-v9/semantic-attestation.sock]
         validation: >-
           test_semantic_attestation_broker: lookup is not a path, issuer drift and
@@ -555,18 +561,18 @@ tool_families:
         last_verified: 2026-08-25
 
       - id: semantic-admit
-        status: ENABLED
+        status: RETIRED
         audience: [HUMAN, CLAUDE_CODE]
         mode: WRITES_CANONICAL
         path: orchestrator/three_body_loop.py
         invoke: >-
           python3 orchestrator/three_body_loop.py semantic-admit
           --entry-id <entry> --attestation-id <attestation>
-        trigger: A judge verdict admitted a quarantined node and a receipt exists.
+        trigger: NEVER_CONTROL_V10; retained only as the historical Control-v9 transaction record.
         writes: true
-        approval: EXTERNAL_RECEIPT_REQUIRED_NO_INLINE_RECEIPT_ACCEPTED
+        approval: HISTORICAL_CONTROL_V9_EXACT_RECEIPT_REQUIRED_NO_INLINE_RECEIPT_ACCEPTED
         authority: >-
-          KERNEL_GREEN_TO_SEMANTICALLY_ADMITTED_TRANSITION_ONLY_THREE_MUTABLE_FIELDS
+          HISTORICAL_V9_KERNEL_GREEN_TO_SEMANTICALLY_ADMITTED_ONLY_NOT_NATIVE_V10_ADMISSION
         records_to: [orchestrator/state/SEMANTIC_QUARANTINE.json]
         validation: >-
           test_three_body_loop SemanticAdmissionPlants: broker unavailable, unknown id,
@@ -575,7 +581,7 @@ tool_families:
         last_verified: 2026-08-25
 
       - id: codex-watch-read-only
-        status: ENABLED
+        status: RETIRED
         audience: [CODEX, HUMAN]
         mode: WRITES_DERIVED
         path: orchestrator/three_body_loop.py
@@ -583,10 +589,10 @@ tool_families:
           .venv/bin/python orchestrator/three_body_loop.py watch-read-only
           --session-id <exact-session-id> --branch rh_clean
           --codex-bin codex
-        trigger: systemd user timer after a possible canonical-branch update.
+        trigger: NEVER_CONTROL_V10; retained only as historical pinned-session evidence.
         writes: true
         approval: NONE_FOR_READ_ONLY_WAKE
-        authority: REMOTE_ADVANCE_NOTIFICATION_NOT_WORKTREE_SYNC_OR_MATHEMATICAL_DISPATCH
+        authority: HISTORICAL_V9_REMOTE_ADVANCE_NOTIFICATION_NOT_CONTROL_V10_DISPATCH
         records_to: [systemd journal, exact resumed Codex session]
         validation: >-
           test_three_body_loop read-only no-op and pinned-session plants; live zero-ahead dry tick.

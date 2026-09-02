@@ -26,7 +26,12 @@ class ResearchDependencyP9Wiring(unittest.TestCase):
             mock.patch.object(
                 spine._three_body_loop,
                 "validate_repository_gate",
-                return_value={"schema": "test", "entries": [], "active_lease": None},
+                return_value={
+                    "schema": "test",
+                    "control_version": 9,
+                    "entries": [],
+                    "active_lease": None,
+                },
             ),
         )
 

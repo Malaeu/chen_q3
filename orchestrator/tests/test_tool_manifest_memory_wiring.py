@@ -68,6 +68,36 @@ class ToolManifestMemoryPlants(unittest.TestCase):
         self.assertIn("workflow_runtime.py review-plan", alternatives)
         self.assertIn("--expected-sha256 <sha256>", alternatives)
         self.assertIn("review-plan byte-binding", runtime["validation"])
+        self.assertEqual(runtime["mode"], "READ_ONLY")
+        self.assertFalse(runtime["writes"])
+        close_node = tools["workflow-close-node"]
+        self.assertEqual(close_node["mode"], "WRITES_CANONICAL")
+        self.assertTrue(close_node["writes"])
+        self.assertIn("run --through close-node", close_node["invoke"])
+
+    def test_production_plan_does_not_route_legacy_selectors_or_v9_gate(self) -> None:
+        data = spine.yaml.safe_load(
+            (REPO / "docs/cartographer/TOOLS.yaml").read_text(encoding="utf-8")
+        )
+        tools = {
+            tool["id"]: tool
+            for family in data["tool_families"].values()
+            for tool in family.get("tools", [])
+        }
+        self.assertEqual(tools["routeb-status"]["status"], "AVAILABLE")
+        self.assertIn("never calls", tools["routeb-status"]["trigger"])
+        self.assertEqual(tools["goal-run-selector"]["status"], "AVAILABLE")
+        self.assertIn("legacy-v9", tools["goal-run-selector"]["trigger"])
+
+        from orchestrator import proof_loop
+
+        routed = {
+            tool
+            for suppliers in proof_loop.TOOL_SUPPLIERS.values()
+            for tool in suppliers
+        }
+        self.assertNotIn("goal-run-selector", routed)
+        self.assertNotIn("three-body-loop", routed)
 
     def test_cross_host_operator_card_inventory_matches_manifest(self) -> None:
         manifest = spine.yaml.safe_load(
@@ -272,12 +302,13 @@ class ToolManifestMemoryPlants(unittest.TestCase):
     def test_spine_view_exposes_recent_branch_decisions(self) -> None:
         validated_gate = {
             "schema": "q3_semantic_quarantine.v1",
+            "control_version": 9,
             "entries": [],
             "active_lease": None,
         }
         with mock.patch.object(
             spine._three_body_loop,
-            "validate_repository_gate",
+            "validate_historical_repository_gate",
             return_value=validated_gate,
         ):
             view = spine.build()
@@ -287,7 +318,9 @@ class ToolManifestMemoryPlants(unittest.TestCase):
 
     def test_control_routes_commands_to_live_manifest(self) -> None:
         control = (REPO / "docs" / "CODEX_CONTROL.md").read_text(encoding="utf-8")
-        self.assertIn("CONTROL_VERSION: 9", control)
+        self.assertIn("CONTROL_VERSION: 10", control)
+        self.assertIn("HONESTY_STATE: CHALLENGER_NOT_RH", control)
+        self.assertIn("OWNER_ONLY_BOUNDARY: PX_RH_CLAIM", control)
         self.assertIn("scripts/supplier_preflight.py", control)
         self.assertIn("CODEX_LINUX", control)
         self.assertIn("GOAL_RUN", control)
@@ -295,20 +328,89 @@ class ToolManifestMemoryPlants(unittest.TestCase):
         self.assertIn("docs/cartographer/TOOLS.yaml", control)
         self.assertIn("specs_docs/TOOLS_SPEC.md` is a historical", control)
 
-    def test_session_start_counts_untracked_files_individually(self) -> None:
+    def test_session_start_is_manual_legacy_diagnostic_only(self) -> None:
         script = (REPO / "specs_docs" / "session_start.sh").read_text(encoding="utf-8")
+        executable_lines = [
+            line.strip()
+            for line in script.splitlines()
+            if line.strip() and not line.lstrip().startswith("#")
+        ]
+        self.assertTrue(
+            any("DEPRECATED_LEGACY_V9_MAINTENANCE" in line for line in executable_lines)
+        )
+        self.assertFalse(
+            any(
+                re.match(
+                    r"^(?:exec\s+)?python3\s+orchestrator/workflow_runtime\.py\b",
+                    line,
+                )
+                for line in executable_lines
+            )
+        )
+        self.assertNotIn("--shadow-v10", script)
         self.assertIn("git status --porcelain=v1 -uall", script)
 
     def test_session_entry_has_one_startup_front_door(self) -> None:
         entry = (
             REPO / "q3.lean.aristotle" / "ACTIVE" / "SESSION_ENTRY.md"
         ).read_text(encoding="utf-8")
-        startup = entry.split("## Карта знаний по триггеру", 1)[0]
-        self.assertIn("bash specs_docs/session_start.sh", startup)
-        self.assertNotIn(
-            "python3 orchestrator/spine.py --strict --stdout --reason session-start",
-            startup,
+        startup = entry.split("## Как читать plan", 1)[0]
+        self.assertEqual(
+            startup.count("python3 orchestrator/workflow_runtime.py plan"), 1
         )
+        self.assertNotIn("--shadow-v10", startup)
+        self.assertIn("ручной legacy-диагностический", startup)
+
+    def test_bootstrap_does_not_require_large_preplan_manual_reads(self) -> None:
+        control = (REPO / "docs/CODEX_CONTROL.md").read_text(encoding="utf-8")
+        header = control.split("```", 2)[1]
+        self.assertNotIn("COGNITIVE_OPERATORS.md", header)
+
+        entry = (
+            REPO / "q3.lean.aristotle" / "ACTIVE" / "SESSION_ENTRY.md"
+        ).read_text(encoding="utf-8")
+        preplan = entry.split("python3 orchestrator/workflow_runtime.py plan", 1)[0]
+        self.assertNotIn("COGNITIVE_OPERATORS.md", preplan)
+        self.assertNotIn("docs/cartographer/TOOLS.yaml", preplan)
+
+        manifest = spine.yaml.safe_load(
+            (REPO / "docs/cartographer/TOOLS.yaml").read_text(encoding="utf-8")
+        )
+        order = manifest["startup_contract"]["order"]
+        self.assertNotIn("q3.lean.aristotle/COGNITIVE_OPERATORS.md", order)
+        self.assertNotIn("docs/cartographer/TOOLS.yaml", order)
+
+    def test_v9_transport_is_available_historical_compatibility_only(self) -> None:
+        manifest = spine.yaml.safe_load(
+            (REPO / "docs/cartographer/TOOLS.yaml").read_text(encoding="utf-8")
+        )
+        tools = {
+            tool["id"]: tool
+            for family in manifest["tool_families"].values()
+            for tool in family.get("tools", [])
+        }
+        for tool_id in ("three-body-loop", "semantic-attestation-broker"):
+            tool = tools[tool_id]
+            self.assertEqual(tool["status"], "AVAILABLE")
+            self.assertEqual(tool["mode"], "READ_ONLY")
+            self.assertFalse(tool["writes"])
+            contract = " ".join(
+                str(tool.get(key, ""))
+                for key in ("trigger", "approval", "authority", "validation")
+            )
+            self.assertIn("v9", contract.lower())
+            self.assertIn("histor", contract.lower())
+            self.assertIn("v10", contract.lower())
+        self.assertEqual(tools["semantic-admit"]["status"], "RETIRED")
+        self.assertEqual(tools["codex-watch-read-only"]["status"], "RETIRED")
+
+    def test_routeb_conductor_names_control_v10_and_bare_front_door(self) -> None:
+        conductor = (
+            REPO / ".agents/skills/routeb-conductor/SKILL.md"
+        ).read_text(encoding="utf-8")
+        self.assertIn("Control v10", conductor)
+        self.assertIn("python3 orchestrator/workflow_runtime.py plan", conductor)
+        self.assertNotIn("--shadow-v10", conductor)
 
     def test_tool_census_help_does_not_run_the_census(self) -> None:
         proc = subprocess.run(

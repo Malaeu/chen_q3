@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import importlib.util
 import json
 import os
@@ -143,17 +144,27 @@ def _secure_receipt(raw: str) -> Path:
 
 
 def run_shelf(
-    query: str, *, external_receipt: Path, timeout: int = 60
+    query: str,
+    *,
+    external_receipt: Path,
+    candidate: str | None,
+    candidate_provenance: str | None,
+    timeout: int = 60,
 ) -> dict[str, Any]:
+    command = [
+        str(ASK),
+        "--deep",
+        "--external-receipt",
+        str(external_receipt),
+    ]
+    if candidate is not None:
+        command.extend(("--external-candidate", candidate))
+    if candidate_provenance is not None:
+        command.extend(("--external-candidate-provenance", candidate_provenance))
+    command.append(query)
     try:
         proc = subprocess.run(
-            [
-                str(ASK),
-                "--deep",
-                "--external-receipt",
-                str(external_receipt),
-                query,
-            ],
+            command,
             cwd=REPO,
             capture_output=True,
             text=True,
@@ -203,6 +214,26 @@ def _external_complete(external: dict[str, Any]) -> bool:
         and external.get("errors") == []
         and external.get("boundary")
         == "CANDIDATE_MATCH_NOT_LEAN_PROOF_OR_INTERFACE_EQUIVALENCE"
+    )
+
+
+def _external_request_bound(
+    external: dict[str, Any],
+    *,
+    query: str,
+    candidate: str | None,
+    candidate_provenance: str | None,
+) -> bool:
+    def digest(value: str) -> str:
+        return hashlib.sha256(value.encode("utf-8")).hexdigest()
+
+    return (
+        external.get("query") == query
+        and external.get("query_sha256") == digest(query)
+        and external.get("candidate") == candidate
+        and external.get("candidate_sha256")
+        == (digest(candidate) if candidate is not None else None)
+        and external.get("candidate_provenance") == candidate_provenance
     )
 
 
@@ -285,7 +316,12 @@ def run_preflight(
     receipt: Path | None = None
     try:
         receipt = _secure_receipt(str(external_run["stdout"]))
-        shelf = run_shelf(query, external_receipt=receipt)
+        shelf = run_shelf(
+            query,
+            external_receipt=receipt,
+            candidate=candidate,
+            candidate_provenance=candidate_provenance,
+        )
     except (OSError, ValueError) as exc:
         payload["reason"] = f"secure external receipt unavailable: {exc}"
         return payload
@@ -294,7 +330,16 @@ def run_preflight(
             receipt.unlink(missing_ok=True)
     payload["shelf"] = shelf
 
-    if external_run.get("error") or not _external_complete(external):
+    if (
+        external_run.get("error")
+        or not _external_complete(external)
+        or not _external_request_bound(
+            external,
+            query=query,
+            candidate=candidate,
+            candidate_provenance=candidate_provenance,
+        )
+    ):
         payload["reason"] = "enabled external-base denominator failed"
         return payload
     if shelf["status"] == "INCOMPLETE":
@@ -370,6 +415,9 @@ def run_preflight(
         return payload
 
     payload["candidate"] = fit.declaration_properties(candidate_name, candidate_row)
+    if candidate_provenance != "SOURCE_DECLARED":
+        payload["reason"] = "CANDIDATE_PROVENANCE_EVIDENCE_REQUIRED"
+        return payload
     if target is None:
         payload["status"] = "CANDIDATE_ONLY"
         payload["reason"] = "candidate properties resolved; exact target not supplied"
@@ -380,6 +428,16 @@ def run_preflight(
     comparison_status = comparison.get("status")
     if comparison_status not in {"EXACT_FIT", "REJECTED", "INCOMPLETE"}:
         payload["reason"] = "direct type-fit emitted an invalid status"
+        return payload
+    comparison_candidate = comparison.get("candidate")
+    comparison_target = comparison.get("target")
+    if comparison_status in {"EXACT_FIT", "REJECTED"} and (
+        not isinstance(comparison_candidate, dict)
+        or comparison_candidate.get("name") != candidate
+        or not isinstance(comparison_target, dict)
+        or comparison_target.get("name") != target
+    ):
+        payload["reason"] = "direct type-fit declaration identity mismatch"
         return payload
     payload["status"] = comparison_status
     payload["reason"] = {

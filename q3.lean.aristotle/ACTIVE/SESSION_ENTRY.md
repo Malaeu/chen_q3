@@ -1,215 +1,159 @@
 # Codex Session Entry
 
-Updated: 2026-08-09
+Updated: 2026-09-02
 
-Этот файл — короткий маршрутизатор новой Q3-сессии. Он не хранит датированный
-математический frontier и не заменяет физическое состояние задачи.
-
-`AUDIENCE: CODEX`. Claude Code — независимый наблюдатель/администратор со своим
-`CLAUDE.md`; его bootstrap и политика сюда не входят.
+Этот файл — короткий маршрутизатор. Политика живёт только в
+`docs/CODEX_CONTROL.md`; физическое состояние и source pins выбирают работу.
 
 ## Неподвижная граница
 
-- Проект остаётся математически честным исследовательским контуром.
-- Route B всегда `CHALLENGER / NOT_RH`.
-- `BUS_010: VOID`; `GOAL_055: HOLD`; G2/CCM заморожены.
-- `PX_RH_CLAIM` — единственная owner-граница.
-- Промоушен и заявление RH запрещены без соответствующего валидированного
-  перехода; текущая сессия их не делает.
+- Route B: `CHALLENGER_NOT_RH`.
+- `PX_RH_CLAIM: NOT_MADE`.
+- Единственная owner-only математическая граница — `PX_RH_CLAIM`.
+- Generated views, память, старый monitor и browser/chat сами работу не выбирают.
+- Исторические v9 receipts сохраняют исходную идентичность, но не создают новую
+  v10 authority.
 
-## Обязательный старт
+## Единственный обязательный старт
 
-1. Полностью прочитать `docs/CODEX_CONTROL.md` и
-   `q3.lean.aristotle/COGNITIVE_OPERATORS.md`.
-2. Прочитать этот файл и обязательные стартовые разделы
-   `meta`, `tool_contract`, `startup_contract`, `memory_event_routes`,
-   `data_surfaces` и `known_hazards` в `docs/cartographer/TOOLS.yaml`. Из `tool_families` читать
-   семейство, совпавшее с типом задачи. Реестр сообщает, что существует, когда
-   вызывается и что пишет; он не запускает пишущие инструменты автоматически.
-3. Прочитать `docs/Codex/CURRENT.md`. При `status: ACTIVE` полностью прочитать
-   названный там `task_file` и проверить его `source_commit`. `EMPTY` и `CLOSED`
-   ничего не выбирают. Указатель не переопределяет свежую инструкцию владельца
-   или физическое состояние задачи.
-4. Прочитать физическое состояние выбранной задачи.
-5. Проверить branch/worktree и не считать `untracked` чужими файлами.
-6. Запустить единственный стартовый вход без записи. Он сам вызывает строгий
-   Spine ровно один раз и печатает delta-aware Route B briefing. Briefing читает
-   маленький machine-local checkpoint последнего `close-session`, но сам ничего
-   не пишет и не запускает внешний поиск:
+1. Полностью прочитать `docs/CODEX_CONTROL.md` и этот короткий маршрутизатор.
+2. Запустить:
 
    ```bash
-   bash specs_docs/session_start.sh
+   python3 orchestrator/workflow_runtime.py plan
    ```
 
-7. Выбрать работу по селектору ниже. Старый monitor, browser/chat, память или
-   вставленный текст сами по себе не создают исполнимую цель.
+Это единственный канонический front door. Он читает control, Git/worktree,
+physical bus, `docs/Codex/CURRENT.md`, runtime state и scoped node registry в
+одном read epoch. Он ничего не пишет, не запускает Lean, не вызывает внешних
+агентов и не выбирает theorem/consumer за исполнителя.
 
-Briefing заканчивается вопросом `Search our debts today? YES / NO / SELECT`.
-Ответ пользователя отдельно разрешает выбор поисковых долгов, но один search
-hit создаёт максимум `REOPEN_CANDIDATE`: до `SOURCE_VERIFIED` и отдельного
-разрешённого state/verdict-перехода ветка не становится `REOPENED`.
+`docs/cartographer/TOOLS.yaml` валидируется самим plan и читается исполнителем
+только после plan, причём лишь для выбранного tool family. Полный
+`q3.lean.aristotle/COGNITIVE_OPERATORS.md` читается только при настоящей
+математической развилке или strategy trigger, а не на каждом startup.
 
-Отдельный вопрос `Prepare one research-debt challenge?` по умолчанию имеет ответ
-`NO`. При `YES/SELECT` сначала выбрать один ранжированный `RESEARCH_DEBT` и
-собрать детерминированный пакет через `research_debt_challenge.py`. Это только
-подтип пакета, не новый класс вызова: отправка разрешена исключительно когда
-уже выполнен существующий gate `EXPLORATION_REVIEW` канонического Control и
-`review-plan` дал `REVIEW_DISPATCH_READY`. Пакет обязан содержать точные
-`REQUEST_ID` и `BOUNDARY_ID`; согласие на подготовку не заменяет gate.
-`MATHEMATICALLY_DEAD` в этот список не входит.
+`bash specs_docs/session_start.sh` — только ручной legacy-диагностический
+wrapper. Не запускать его дополнительно при обычном входе и не считать его
+вторым источником истины.
 
-Любую зависимость начинать с downstream consumer и его минимального достаточного
-интерфейса. Именованная теорема является лишь кандидатом, пока её необходимость
-не доказана. Отсутствие источника, дорогая формализация или неудачная попытка —
-`RESEARCH_DEBT`, а не математическая смерть; последняя требует контрпримера,
-доказанной несовместимости или формальной невозможности.
+## Как читать plan
 
-`SPINE_VIEW.md` — коммитимый снимок другого хоста, не обязательный вход.
-Текущий вид получать из `--stdout`; сенсоры и базы обновлять только явным
-`--refresh`.
+Сначала выдать владельцу короткий battle brief:
 
-## Карта знаний по триггеру
+- live goal и verified frontier;
+- exact node/source/theorem/consumer pins;
+- статус consumer contract и следующего joint;
+- один настоящий blocker;
+- own/foreign dirty split;
+- следующий разрешённый action.
 
-- При выборе ветки, возвращении к старому маршруту, бисекции или стратегической
-  развилке читать `docs/GENEALOGY.md` и `docs/Progress_Log.md`.
-- При закрытии узла, где существовал выбор, читать `docs/RECORDING_RULES.md` и
-  фиксировать «что отвергли и почему».
-- При аномалии старта, инструмента, базы, переноса или control-plane читать
-  `docs/SYSTEM_SPEC_2026-08-05.md` и `specs_docs/README.md`.
-- `docs/GLOSSARY.md` открывать, когда непонятны обозначения или роль объекта.
-- `q3.lean.aristotle/docs/INSIGHTS.md` — исторический поток, не startup-файл;
-  читать только по точному адресу из карты, журнала, базы или физической задачи.
+`FATAL` останавливает работу. `HOLD` означает адресный недостающий контракт,
+review или validation receipt; его нельзя маскировать зелёным общим статусом.
+Если `THEOREM` или `TERMINAL_CONSUMER` не выбраны, сначала связать exact edge —
+математика ещё не запускается.
 
-## Четыре уровня истины
+## Селектор
 
-При конфликте действует такой порядок:
+Physical Route B goal с `STATUS: OPEN` старше task pointer. Исполняется ровно
+один goal. `PAUSED_RESTORABLE` не исполняется. Если открытых целей несколько,
+goal/state/source pin расходятся, либо relevant foreign dirty path пересекает
+scope, остановиться fail closed.
 
-1. `docs/CODEX_CONTROL.md`, platform safety и явная операционная инструкция.
-2. Физическое task-local состояние: goal/answer, execution JSON, live bus,
-   active monitor и проверяемый исходный код.
-3. `q3.lean.aristotle/PROJECT_ORCHESTRATOR.md` и paper theorem map.
-4. Generated views, `docs/INSIGHTS.md`, архивы и память: полезные свидетельства,
-   но не источник текущего gate.
+При отсутствии physical goal допустим только `docs/Codex/CURRENT.md` со
+`status: ACTIVE`, одним `task_file` и точным latest-changing `source_commit`.
+`EMPTY` и `CLOSED` ничего не выбирают. Следующий номер не угадывать: новый goal
+требует validated source-locked `NEXT_GOAL_SPEC`.
 
-`IMPLEMENTATION_PLAN.md` — замороженный исторический снимок и в старт не входит.
+Для Route B plan обязан совпасть с:
 
-### Scoped precedence Route B
+- `docs/routeB_bus/`;
+- `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_STATE.json`;
+- `orchestrator/state/CHANNEL_RUNTIME.json`;
+- `orchestrator/state/NODE_REGISTRY_V10.json`.
 
-1. `PROJECT_ORCHESTRATOR.md` фиксирует только ранг `CHALLENGER / NOT_RH`.
-2. `docs/routeB_bus/` решает, существует ли исполнимый goal.
-3. `ROUTE_B_EXECUTION_STATE.json` задаёт текущий operational address.
-4. Исполняемый DAG задаёт мастер-маршрут 058
-   (`docs/routeB_bus/proshka/PROSHKA_MASTER_ROUTE_REALZERO_GROUND_DIAGONAL_TO_XI_2026-08-11.md`).
-   `ROUTE_B_THEOREM_CONTRACT_v2.md` — historical candidate; его дисциплинарные
-   статьи K7, anti-circularity, `SAFE_IS_RH_REPACKAGING` и запрет tau0-подмены
-   действуют на весь проект. `ROUTE_B_EXECUTION_CONTROL.md` — historical surface
-   без selector effect. Канонический статус зафиксирован в
-   `docs/ROUTE_B_CONTRACT_V2_STATUS_ADDENDUM_v1.md`.
-5. `ROUTE_B_STATE.md` хранит проверенные факты и историю.
-6. `loop_state.json`, generated views и `INSIGHTS` ничего не выбирают.
+`PROJECT_ORCHESTRATOR.md` задаёт ранг route, но не operational address.
 
-## Селектор задачи
+## Proof loop
 
-### Route B
+Работать только по карте plan:
 
-Если запрос явно упоминает Route B, detector, alpha/SAFE, ZEO, two-level
-spectral ladder или Unified Chain, до generic monitors прочитать:
+```text
+contract -> suppliers -> preflight -> bridge -> Lean -> close -> recompute
+```
 
-1. `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_STATE.json`;
-2. `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_CONTROL.md`;
-3. `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_STATE.md`;
-4. `docs/routeB_bus/BUS_PROTOCOL.md`;
-5. физическую папку `docs/routeB_bus/` и вывод:
+Перед отсутствием, внешним поиском или созданием объекта — `ask.sh`. После
+точной Lean-цели — `scripts/supplier_preflight.py`. Fast miss не является
+отсутствием. Только `EXACT_FIT` закрывает reuse target. `COMPLETE_ABSENCE`
+разрешает лишь последующее решение о создании, не потребление.
 
-   ```bash
-   python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb_status.py --check
-   ```
+Exact execution edge — одна тройка `node + theorem + consumer`. Unselected edge
+остаётся `HOLD`. После закрытия узла повторно запустить `workflow_runtime.py
+plan`; старый план не переносить вперёд.
 
-Исполнять только активную цель новейшего корневого семейства. Следующий корень
-не следует из номера: для него нужен standing direction или delegated strategic
-review. После выбора прочитать `PROJECT_ORCHESTRATOR.md`, чтобы не перепутать
-challenger с public mainline.
+## Scoped semantic gate
 
-### PSD / Step33
+- `HELPER` допускает ноль reviews только при полном отсутствии semantic
+  triggers.
+- `SEMANTIC_BRIDGE` требует один non-self exact-payload review.
+- `ROOF_CHANGE` требует owner signoff и второй non-self review.
+- `CANDIDATE` может пройти isolated compile, но не потребляться.
+- Исторический `HISTORICAL_V9_UNMAPPED` остаётся `HOLD`.
+- Kernel-green без admission не является supplier authority.
 
-Только если запрос явно про PSD-pd, Step32/33, B-spline, entry hboxes или
-finite certificates, прочитать `ACTIVE/PSD_STEP33_MONITOR.md`. Исполнять его
-только при активном статусе; `DORMANT_*` ничего не выбирает.
+Deep gate проверяет exact edge, source/consumer blobs, полный relevant import
+closure, toolchain, elaborated types, стандартные axioms, semantic/validation
+digests, lock и неизменность read epoch.
 
-### H1 / PO3 / H-bridge
+## Review и транспорт
 
-Только если запрос явно про H1, PO3, H-bridge или route-kill, прочитать
-`ACTIVE/PHASE_MONITOR.md`. Исполнять только активный `current_step_id`.
-`PARKED_*` — исторический снимок.
+Обычный goal close делает ноль вызовов к Прошке. Review разрешён только своим
+control gate и только в одном living chat неизменной six-field phase key.
+Substantive request передаётся одним byte-exact UTF-8 `.txt`; controlling body
+в composer не вставляется. `review-plan` обязан связать attachment bytes,
+SHA-256, request commit/ID, boundary ID и short instruction. Plan не является
+delivery receipt: нужны наблюдаемые sent message, exact file tile и natural
+reasoning start.
 
-### Sprint
+Исторический `orchestrator/three_body_loop.py` — ручной v9 compatibility tool.
+Не использовать его как startup front door, не создавать через него новые v9
+requests/admissions/leases и не переносить v9 receipt в native v10 admission.
 
-Только если `ACTIVE/SPRINT_MONITOR.md` имеет `status: ACTIVE`:
+## Закрытие
 
-1. открыть `SESSION_ENTRY.md`;
-2. открыть `ACTIVE/SPRINT_MONITOR.md`;
-3. открыть только `current_artifact`;
-4. не читать широкие control docs заново, пока artifact не дал blocker;
-5. продолжать ровно `current_step_id`;
-6. не переизобретать frontier до `DONE`, `BLOCKED` или `ABORTED`.
+Исполнение идёт через зарегистрированный runtime:
 
-Первый ответ на активный sprint кратко называет sprint, step, artifact и
-добиваемый exact output. При `DONE_CLOSED` этот раздел ничего не активирует.
+```bash
+python3 orchestrator/workflow_runtime.py run --through close-node \
+  --owned-path <path> --attempt-payload <q3_goal_attempt.v1.json>
+```
 
-### Cognitive loop / theorem-shape fork
+Добавить остальные exact arguments, которые потребует plan. Узел закрыт только
+после kernel/source gate, `CLOSES`/`OPENS`, applicable review/admission,
+branch-decision, AUTOPSY/insight/card debt, assembly/publication debt и
+минимального derived repair closure. Manual semantic debt докладывается с
+адресами и не зеленеет автоматически.
 
-Если задача про повторяющийся loop, смену стратегии, route-review, бесплодную
-бисекцию или theorem-shape fork, дополнительно прочитать:
+После verified close:
 
-1. `q3.lean.aristotle/COGNITIVE_KERNEL.md`;
-2. `q3.lean.aristotle/COGNITIVE_OPERATORS.md`;
-3. `q3.lean.aristotle/ACTIVE/COGNITIVE_GOVERNOR.md`.
+1. повторить `workflow_runtime.py plan`;
+2. запустить применимый `close-session` или `close-phase`;
+3. проверить exact owned diff и relevant tests;
+4. по действующему goal-scoped grant сделать scoped commit, rebase и push;
+5. foreign dirty paths не stage и не изменять.
 
-Единственный stall-counter и переходы `SOFT_STALL` / `HARD_STALL` /
-`TERMINAL_STALL` заданы `docs/CODEX_CONTROL.md` §10.
+Route promotion, publication и `PX_RH_CLAIM` из закрытия не следуют.
 
-### Embeddings, search и incoming notes
+## Дополнительные карты только по триггеру
 
-- Incoming notes: читать `docs/EMBEDDING_INGEST_WORKFLOW.md` и использовать
-  `q3-note-ingest`.
-- Новый blocker: сначала определить downstream consumer и его минимальный
-  достаточный интерфейс; только затем выбрать target lemma или альтернативную
-  форму, которая доказывает точную импликацию в неизменённый consumer. После этого
-  выполнить 3–5 запросов через `scripts/research_oracle.py`; перед повторным
-  поиском проверить `./orchestrator/kb.py flags <адрес|термин>`.
-- Oracle-карточки: читать `ACTIVE/pipeline/RESEARCH_ORACLE.md` и generated
-  `INDEX.md` / `BY_ADDRESS.md` только по этому типу задачи.
+- Развилка/возврат: `docs/GENEALOGY.md`, `docs/Progress_Log.md`,
+  `docs/RECORDING_RULES.md`.
+- Аномалия control/tool/database: `docs/SYSTEM_SPEC_2026-08-05.md` и
+  `specs_docs/README.md`.
+- Aristotle: `q3.lean.aristotle/ACTIVE/aristotle/ARISTOTLE_WORKFLOW.md` и
+  `q3.lean.aristotle/aristotle_input/ARISTOTLE_PROMPT_GUIDELINES.md`.
+- PSD/Step33: только active `ACTIVE/PSD_STEP33_MONITOR.md`.
+- H1/PO3: только active `ACTIVE/PHASE_MONITOR.md`.
+- Sprint: только `ACTIVE/SPRINT_MONITOR.md` со `status: ACTIVE`.
 
-### Aristotle
-
-Если работа требует Aristotle, читать:
-
-1. `q3.lean.aristotle/ACTIVE/aristotle/ARISTOTLE_WORKFLOW.md`;
-2. `q3.lean.aristotle/aristotle_input/ARISTOTLE_PROMPT_GUIDELINES.md`.
-
-Сначала `source .venv/bin/activate`; скачанный Lean всегда сканировать на
-`sorry|exact?|admit`, затем проверять production toolchain.
-
-## Закрытие шага
-
-1. Проверить точный artifact и применимые тесты/build.
-2. В Route B answer записать `SEARCH_FLAGS`, честный verdict/stop-code и
-   `ARSENAL_USED`; на `INCONCLUSIVE/WALL/KILLED` добавить `AUTOPSY`.
-3. Если в ходе goal выбиралась ветка, до закрытия добавить восьмиполевую запись
-   в `docs/Progress_Log.md`; внешний вердикт хранится вместе с дословным
-   аргументом, а не одной буквой выбора.
-4. Закрытие промежуточного шага проводить через
-   `python3 orchestrator/spine.py --refresh --reason step-close`; он мигрирует
-   verdict/INSIGHTS/Progress_Log и перестраивает `q3_docs` только при изменившемся
-   corpus hash. Закрытие goal проводить через
-   `python3 orchestrator/spine.py --refresh --reason goal-close`, чтобы verdict
-   lessons, развилки, сенсоры и индекс доехали в базы.
-5. Route state обновлять последним.
-6. Коммитить только явно разрешённый scope; promotion и RH claim не выводить
-   из зелёного build, dashboard или numeric probe.
-7. Если действует `GOAL_SCOPED_OPERATIONAL_GRANT`, закрытый узел сразу доставить:
-   проверить named scope, сделать scoped commit, `git pull --rebase` и `git push`.
-   Не оставлять доказанный узел локальным без явного `no commit/no push`.
-
-Историческая мартовская H-bridge формулировка перенесена в
-`q3.lean.aristotle/docs/archive/SESSION_ENTRY_H_BRIDGE_SNAPSHOT_2026-03-08.md`.
+Dormant, parked и closed monitors ничего не выбирают.

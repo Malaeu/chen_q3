@@ -16,13 +16,15 @@ set -uo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")" || exit 2
 
 if [ $# -eq 0 ]; then
-  echo "usage: ./ask.sh [--deep] [--external-receipt PATH] <термин> [ещё термины]"
+  echo "usage: ./ask.sh [--deep] [--external-receipt PATH] [--external-candidate NAME] [--external-candidate-provenance CLASS] <термин> [ещё термины]"
   echo "       ищет каскадом: knowledge.db · litreview · Lean · specs/docs · q3_docs · external Lean"
   exit 2
 fi
 
 DEEP=0
 EXTERNAL_RECEIPT=""
+EXTERNAL_CANDIDATE=""
+EXTERNAL_CANDIDATE_PROVENANCE=""
 while [ $# -gt 0 ]; do
   case "${1:-}" in
     --deep) DEEP=1; shift ;;
@@ -31,13 +33,31 @@ while [ $# -gt 0 ]; do
       EXTERNAL_RECEIPT="$2"
       shift 2
       ;;
+    --external-candidate)
+      [ $# -ge 2 ] || { echo "--external-candidate requires a name"; exit 2; }
+      EXTERNAL_CANDIDATE="$2"
+      shift 2
+      ;;
+    --external-candidate-provenance)
+      [ $# -ge 2 ] || { echo "--external-candidate-provenance requires a class"; exit 2; }
+      EXTERNAL_CANDIDATE_PROVENANCE="$2"
+      shift 2
+      ;;
     --) shift; break ;;
     -*) echo "unknown option: $1"; exit 2 ;;
     *) break ;;
   esac
 done
 if [ $# -eq 0 ]; then
-  echo "usage: ./ask.sh [--deep] [--external-receipt PATH] <термин> [ещё термины]"
+  echo "usage: ./ask.sh [--deep] [--external-receipt PATH] [--external-candidate NAME] [--external-candidate-provenance CLASS] <термин> [ещё термины]"
+  exit 2
+fi
+if [ -z "$EXTERNAL_RECEIPT" ] && { [ -n "$EXTERNAL_CANDIDATE" ] || [ -n "$EXTERNAL_CANDIDATE_PROVENANCE" ]; }; then
+  echo "external candidate binding requires --external-receipt"
+  exit 2
+fi
+if [ -n "$EXTERNAL_CANDIDATE_PROVENANCE" ] && [ -z "$EXTERNAL_CANDIDATE" ]; then
+  echo "--external-candidate-provenance requires --external-candidate"
   exit 2
 fi
 
@@ -268,7 +288,7 @@ fi
 
 # ── 6. Семантический индекс: один search; в deep ещё один vsearch ────────────
 SEARCHED+=("q3_docs (bounded qmd search через research_oracle.py)")
-ORACLE_PY="${Q3_RESEARCH_ORACLE_PY:-scripts/research_oracle.py}"
+ORACLE_PY="scripts/research_oracle.py"
 OUT="$(python3 "$ORACLE_PY" query "$Q" -c q3_docs --mode search --budget-seconds 3 2>&1)"
 RC=$?
 if [ "$RC" -ne 0 ]; then
@@ -305,7 +325,10 @@ fi
 # A local hit never licenses skipping them: otherwise "not found anywhere" has a
 # hidden denominator and can be false on a registered base.
 if [ -n "$EXTERNAL_RECEIPT" ]; then
-  OUT="$(python3 scripts/research_oracle.py validate-external-receipt "$Q" "$EXTERNAL_RECEIPT" 2>&1)"
+  EXTERNAL_VALIDATE=(python3 scripts/research_oracle.py validate-external-receipt "$Q" "$EXTERNAL_RECEIPT")
+  [ -n "$EXTERNAL_CANDIDATE" ] && EXTERNAL_VALIDATE+=(--candidate "$EXTERNAL_CANDIDATE")
+  [ -n "$EXTERNAL_CANDIDATE_PROVENANCE" ] && EXTERNAL_VALIDATE+=(--candidate-provenance "$EXTERNAL_CANDIDATE_PROVENANCE")
+  OUT="$("${EXTERNAL_VALIDATE[@]}" 2>&1)"
 else
   EXTERNAL_BUDGET=3
   [ "$DEEP" -eq 1 ] && EXTERNAL_BUDGET=15
