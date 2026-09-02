@@ -60,6 +60,40 @@ semantic layer afterwards. Exact hits therefore cannot suppress semantic
 retrieval. It also queries every enabled base in
 `docs/cartographer/lean_bases.yaml`; matches are candidates, not Lean truth.
 
+## Executable SearchIntent and literature discovery
+
+`orchestrator/workflow_runtime.py run --through supplier-preflight
+--search-intent <json>` is the only production SearchIntent entry. The
+read-only supplier accepts only the closed `q3_search_intent.v1` schema. The
+runtime binds the physical goal hash, exact terminal consumer,
+object/domain/normalization/quantifiers/assumptions/output surface,
+canonical terms, typed alias hypotheses, known false friends, allow-listed
+collections, network policy, and the `DISCOVERY` or `ADMISSION` boundary.
+
+The executable budget is 3–5 distinct initial queries, at most eight distinct
+initial plus feedback queries, at most eight alias hypotheses, one initial web
+batch, at most one candidate-derived feedback batch, and exactly one external
+Lean root scan. Local work has one monotonic 12-second budget and at most eight
+qmd subprocesses. Failure, mutation, denominator drift, or cap overflow returns
+`INCOMPLETE`, never absence.
+
+`scripts/literature_discovery.py` queries current arXiv and Crossref metadata
+with at most eight candidates per provider/query, 24 globally deduplicated
+candidates, 512 KiB per response, 300 Unicode title characters, and 1200 excerpt
+characters. Its output is discovery evidence only: alternate terminology,
+characterizations, translations, dual representations and negative results are
+candidates for source verification, never theorem identity or admission.
+
+## Publication blueprint v2
+
+Phase close regenerates `q3_blueprint.v2` from the exact NODE_REGISTRY_V10,
+fresh EnvDump, active physical goal/execution/channel state and bibliography.
+The manifest contains registered nodes/edges and both hashes, recorded plus
+current source/consumer blob evidence, proof-relevant elaborated types,
+theorem-to-axiom map, dependency/taint evidence, terminal route/phase state,
+bibliography hashes and a compact edge appendix. Missing relevant declarations
+or stale EnvDump fail closed with `--prepare-env`; unrelated helpers are omitted.
+
 ## Validation plants
 
 ```text

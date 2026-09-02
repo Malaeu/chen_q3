@@ -35,8 +35,15 @@ mode_semantics:
   network_write: Sends, publishes, downloads, or changes remote state.
   external: Belongs to another executor or runtime and is not a Codex startup input.
 
+classification_semantics:
+  values: [AUTOMATIC, MANUAL, DISPLAY_ONLY, RETIRED]
+  automatic: Invoked by a registered workflow event or close transaction.
+  manual: Callable only after its explicit trigger is satisfied.
+  display_only: Reports state and cannot clear a gate.
+  retired: Never routable in the production contour.
+
 tool_contract:
-  required_fields: [id, status, audience, mode, path_or_paths, invocation, trigger, writes, approval, authority, records_to, last_verified]
+  required_fields: [id, classification, status, audience, mode, path_or_paths, invocation, trigger, writes, approval, authority, records_to, last_verified]
   validation: last_verified is accepted only after the declared invocation or a task-specific plant succeeds.
   family_rule: Family coverage permits discovery only; it never inherits ENABLED status into an uninspected script.
 
@@ -67,8 +74,8 @@ memory_event_routes:
 
   GOAL_DISPATCH:
     condition: Before any physical goal dispatch or readiness to mint a source-locked next goal.
-    run: [goal-run-selector]
-    record: Read-only decision; no runtime or database write in AUTOPILOT_000.
+    run: [workflow-runtime]
+    record: Canonical startup snapshot and read-only workflow plan; legacy selectors are display-only.
 
   THREE_BODY_CONTROL:
     condition: Manual validation of immutable historical Control-v9 quarantine, receipts, request lifecycle, or pinned wake evidence.
@@ -77,18 +84,23 @@ memory_event_routes:
 
   REGISTERED_CYCLE:
     condition: After one precommitted proof-cycle action has a result and before step-close.
-    run: [goal-event-writer]
-    record: One closed-schema attempt row in knowledge.db; exact retry is idempotent.
+    run: [workflow-close-node]
+    record: The workflow transaction routes the attempt through its internal step-close writer; exact retry is idempotent.
 
   REUSABLE_INSIGHT:
     condition: A checked synthesis is reusable beyond the current attempt.
-    run: [goal-event-writer]
-    record: One compact provenance-bound machine block after the frozen INSIGHTS.md boundary; semantic duplicates are suppressed.
+    run: [workflow-close-node]
+    record: The workflow transaction routes the optional insight through its internal step-close writer; semantic duplicates are suppressed.
 
   ABSENCE_OR_NEW_OBJECT:
     condition: Before claiming absence, searching externally, or creating a replacement.
     run: [supplier-preflight]
     record: SEARCH_FLAGS in the artifact being produced anyway.
+
+  LITERATURE_DISCOVERY:
+    condition: A bounded query asks whether a theorem shape, characterization, translation, or alias exists in current publications.
+    run: [literature-discovery]
+    record: Read-only metadata receipt to stdout only; no card ownership or repository write. Durable q3_search_intent.v1 evidence remains a separate workflow-search-evidence route.
 
   THEOREM_SHAPE_FORK:
     condition: Branch selection, return to an old route, bisection, or strategy pivot.
@@ -114,7 +126,7 @@ memory_event_routes:
     record: One compact reviewed closeout; raw speculative cycles stay out of durable memory.
 
   GOAL_CLOSE:
-    run: [knowledge-spine-goal-close]
+    run: [workflow-close-node]
     record:
       - SEARCH_FLAGS and AUTOPSY from task artifacts.
       - Progress_Log branch decisions into knowledge.db.
@@ -202,6 +214,7 @@ tool_families:
     coverage: [specs_docs/session_start.sh, orchestrator/session_briefing.py, orchestrator/spine.py, orchestrator/three_body_loop.py, "**/routeb_status.py"]
     tools:
       - id: codex-session-start
+        classification: MANUAL
         status: AVAILABLE
         audience: [CODEX, HUMAN]
         mode: READ_ONLY
@@ -215,6 +228,7 @@ tool_families:
         last_verified: 2026-08-10
 
       - id: routeb-session-briefing
+        classification: DISPLAY_ONLY
         status: ENABLED
         audience: [CODEX, HUMAN]
         mode: READ_ONLY
@@ -231,6 +245,7 @@ tool_families:
         last_verified: 2026-09-01
 
       - id: roof-port-supplier-ledger
+        classification: DISPLAY_ONLY
         status: ENABLED
         audience: [CODEX, HUMAN]
         mode: READ_ONLY
@@ -245,6 +260,7 @@ tool_families:
         last_verified: 2026-09-01
 
       - id: routeb-session-checkpoint
+        classification: AUTOMATIC
         status: ENABLED
         audience: [CODEX]
         mode: WRITES_DERIVED
@@ -259,6 +275,7 @@ tool_families:
         last_verified: 2026-08-30
 
       - id: research-debt-challenge
+        classification: MANUAL
         status: ENABLED
         audience: [CODEX, HUMAN]
         mode: READ_ONLY
@@ -276,6 +293,7 @@ tool_families:
         last_verified: 2026-08-30
 
       - id: research-dependency-gate
+        classification: MANUAL
         status: ENABLED
         audience: [CODEX, HUMAN]
         mode: READ_ONLY
@@ -292,6 +310,7 @@ tool_families:
         last_verified: 2026-08-30
 
       - id: knowledge-spine-strict
+        classification: DISPLAY_ONLY
         status: AVAILABLE
         audience: [CODEX, HUMAN]
         mode: READ_ONLY
@@ -305,6 +324,7 @@ tool_families:
         last_verified: 2026-08-10
 
       - id: knowledge-spine-goal-close
+        classification: AUTOMATIC
         status: ENABLED
         audience: [CODEX]
         mode: WRITES_CANONICAL
@@ -318,6 +338,7 @@ tool_families:
         last_verified: 2026-08-09
 
       - id: knowledge-spine-step-close
+        classification: AUTOMATIC
         status: ENABLED
         audience: [CODEX]
         mode: WRITES_CANONICAL
@@ -338,6 +359,7 @@ tool_families:
         last_verified: 2026-08-13
 
       - id: migration-census
+        classification: MANUAL
         status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]
         mode: READ_ONLY
@@ -351,6 +373,7 @@ tool_families:
         last_verified: 2026-08-13
 
       - id: routeb-status
+        classification: DISPLAY_ONLY
         status: AVAILABLE
         audience: [CODEX, CLAUDE_CODE, HUMAN]
         mode: READ_ONLY
@@ -364,6 +387,7 @@ tool_families:
         last_verified: 2026-08-10
 
       - id: goal-run-selector
+        classification: DISPLAY_ONLY
         status: AVAILABLE
         audience: [CODEX, HUMAN]
         mode: READ_ONLY
@@ -380,6 +404,7 @@ tool_families:
         last_verified: 2026-08-13
 
       - id: workflow-runtime
+        classification: AUTOMATIC
         status: ENABLED
         audience: [CODEX, HUMAN]
         mode: READ_ONLY
@@ -410,6 +435,7 @@ tool_families:
         last_verified: 2026-09-01
 
       - id: workflow-close-node
+        classification: AUTOMATIC
         status: ENABLED
         audience: [CODEX, HUMAN]
         mode: WRITES_CANONICAL
@@ -423,7 +449,28 @@ tool_families:
         validation: test_workflow_runtime including writer epoch, exact edge, consumer-first supplier receipt, kernel gate, command failure and close-node plants
         last_verified: 2026-09-02
 
+      - id: workflow-search-evidence
+        classification: AUTOMATIC
+        status: ENABLED
+        audience: [CODEX, HUMAN]
+        mode: WRITES_CANONICAL
+        paths: [orchestrator/workflow_runtime.py, scripts/supplier_preflight.py, q3.lean.aristotle/scripts/oracle_questions.py]
+        invoke: >-
+          python3 orchestrator/workflow_runtime.py run --through supplier-preflight
+          --search-intent <q3_search_intent.v1.json> --record-evidence
+          --oracle-card <existing-card.md> --owned-path <existing-card.md>
+        trigger: >-
+          Persist one validated SearchIntent observation after the canonical
+          runtime binds the physical goal, exact consumer scope and owner path.
+        writes: true
+        approval: ACTIVE_GOAL_RUN_AND_EXACT_ORACLE_CARD_OWNERSHIP
+        authority: SCOPED_SEARCH_EVIDENCE_WRITER_NOT_DISCOVERY_PROOF_ADMISSION_OR_GIT_DELIVERY
+        records_to: one existing owned oracle card through the canonical locked writer
+        validation: test_workflow_runtime and test_oracle_search_evidence writer ownership, lock, receipt and mutation plants
+        last_verified: 2026-09-02
+
       - id: workflow-session-close
+        classification: AUTOMATIC
         status: ENABLED
         audience: [CODEX, HUMAN]
         mode: WRITES_DERIVED
@@ -438,6 +485,7 @@ tool_families:
         last_verified: 2026-08-29
 
       - id: workflow-phase-close
+        classification: AUTOMATIC
         status: ENABLED
         audience: [CODEX, HUMAN]
         mode: WRITES_CANONICAL
@@ -452,6 +500,7 @@ tool_families:
         last_verified: 2026-08-29
 
       - id: three-body-loop
+        classification: MANUAL
         status: AVAILABLE
         audience: [CODEX, HUMAN]
         mode: READ_ONLY
@@ -479,6 +528,7 @@ tool_families:
         last_verified: 2026-08-31
 
       - id: w5-budget-probe
+        classification: MANUAL
         status: ENABLED
         audience: [HUMAN, CLAUDE_CODE, CODEX]
         mode: READ_ONLY
@@ -498,6 +548,7 @@ tool_families:
         last_verified: 2026-08-25
 
       - id: edge-slope-probe
+        classification: MANUAL
         status: ENABLED
         audience: [HUMAN, CLAUDE_CODE, CODEX]
         mode: READ_ONLY
@@ -521,6 +572,7 @@ tool_families:
         last_verified: 2026-08-26
 
       - id: r2-coefficient-identity-probe
+        classification: MANUAL
         status: ENABLED
         audience: [HUMAN, CLAUDE_CODE, CODEX]
         mode: READ_ONLY
@@ -542,6 +594,7 @@ tool_families:
         last_verified: 2026-08-25
 
       - id: semantic-attestation-broker
+        classification: MANUAL
         status: AVAILABLE
         audience: [HUMAN, CLAUDE_CODE]
         mode: READ_ONLY
@@ -561,6 +614,7 @@ tool_families:
         last_verified: 2026-08-25
 
       - id: semantic-admit
+        classification: RETIRED
         status: RETIRED
         audience: [HUMAN, CLAUDE_CODE]
         mode: WRITES_CANONICAL
@@ -581,6 +635,7 @@ tool_families:
         last_verified: 2026-08-25
 
       - id: codex-watch-read-only
+        classification: RETIRED
         status: RETIRED
         audience: [CODEX, HUMAN]
         mode: WRITES_DERIVED
@@ -601,9 +656,10 @@ tool_families:
   retrieval_and_memory:
     summary: Search accumulated knowledge before external search or object creation.
     front_door: supplier-preflight
-    coverage: [ask.sh, scripts/supplier_preflight.py, scripts/search_external_lean.py, docs/cartographer/lean_env/envdump.py, docs/cartographer/comparator/fit.py, orchestrator/kb.py, scripts/research_oracle.py, orchestrator/kb_migrate_*.py]
+    coverage: [ask.sh, scripts/supplier_preflight.py, scripts/search_external_lean.py, scripts/literature_discovery.py, docs/cartographer/lean_env/envdump.py, docs/cartographer/comparator/fit.py, orchestrator/kb.py, scripts/research_oracle.py, orchestrator/kb_migrate_*.py]
     tools:
       - id: ask-shelf
+        classification: MANUAL
         status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]
         mode: READ_ONLY
@@ -632,6 +688,7 @@ tool_families:
         last_verified: 2026-09-02 Phase C contract
 
       - id: supplier-preflight
+        classification: MANUAL
         status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]
         mode: READ_ONLY
@@ -662,7 +719,32 @@ tool_families:
           current consumption; only EXACT_FIT clears the exact-fit reuse gate.
         last_verified: 2026-09-02 Phase C contract
 
+      - id: literature-discovery
+        classification: AUTOMATIC
+        status: ENABLED
+        audience: [CODEX, CLAUDE_CODE, HUMAN]
+        mode: NETWORK_WRITE
+        path: scripts/literature_discovery.py
+        invoke: python3 scripts/literature_discovery.py "<query-1>" "<query-2>"
+        trigger: >-
+          LITERATURE_DISCOVERY for one bounded current-publication metadata
+          query family, independently of oracle-card ownership or persistence.
+        writes: false
+        approval: NONE
+        authority: CURRENT_ARXIV_AND_CROSSREF_METADATA_CANDIDATES_ONLY
+        records_to: stdout q3_literature_discovery.v1 receipt
+        outcomes: [CANDIDATES, ZERO_HITS_AT_TIME, INCOMPLETE]
+        budgets: >-
+          At most eight distinct initial plus feedback queries, eight candidates
+          per provider/query, 24 globally deduplicated candidates, and 512 KiB
+          per HTTP response. Any provider error or cap overflow is INCOMPLETE.
+        scope_negation: >-
+          Metadata titles and excerpts do not establish theorem identity,
+          semantic equivalence, source correctness, Lean fit, or absence.
+        last_verified: 2026-09-02 bounded unit plants
+
       - id: kb-query
+        classification: MANUAL
         status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]
         mode: READ_ONLY
@@ -677,6 +759,7 @@ tool_families:
         last_verified: 2026-08-09
 
       - id: kb-canonical-write
+        classification: MANUAL
         status: ENABLED
         audience: [CODEX]
         mode: WRITES_CANONICAL
@@ -691,6 +774,7 @@ tool_families:
         last_verified: 2026-08-09
 
       - id: progress-log-migrator
+        classification: MANUAL
         status: ENABLED
         audience: [CODEX]
         mode: WRITES_CANONICAL
@@ -705,6 +789,7 @@ tool_families:
         last_verified: 2026-08-09
 
       - id: route058-migrator
+        classification: MANUAL
         status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]
         mode: WRITES_CANONICAL
@@ -736,6 +821,7 @@ tool_families:
         last_verified: 2026-08-28
 
       - id: research-oracle
+        classification: MANUAL
         status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]
         mode: READ_ONLY
@@ -759,6 +845,7 @@ tool_families:
         last_verified: 2026-08-10
 
       - id: q3-docs-refresh
+        classification: AUTOMATIC
         status: ENABLED
         audience: [CODEX]
         mode: WRITES_DERIVED
@@ -772,6 +859,7 @@ tool_families:
         last_verified: 2026-08-13
 
       - id: semantic-preflight
+        classification: AUTOMATIC
         status: ENABLED
         audience: [CODEX]
         mode: WRITES_DERIVED
@@ -791,9 +879,21 @@ tool_families:
           HEAD/tree plus clean tracked/index/untracked Lean state and a full Lean-byte
           manifest; non-git roots bind a sorted path/full-byte manifest. Symlinks, mutation,
           timeout, missing bases, or denominator mismatch are INCOMPLETE.
+        search_intent_contract: >-
+          orchestrator/workflow_runtime.py run --through supplier-preflight
+          --search-intent <q3_search_intent.v1.json> is the production entry;
+          it validates an exact goal/consumer semantic surface, 1..8 canonical
+          terms, at most eight typed alias hypotheses, false friends,
+          allow-listed collections and DISCOVERY versus ADMISSION boundaries.
+          It emits three to five initial queries, permits at most one
+          candidate-derived feedback batch, performs exactly one external-Lean
+          root scan, and returns q3_search_evidence.v1. Only an exact ADMISSION
+          fit may clear reuse; discovery results remain candidates. Durable
+          evidence is written only by workflow-search-evidence under its lock.
         last_verified: 2026-08-13
 
       - id: goal-event-writer
+        classification: AUTOMATIC
         status: ENABLED
         audience: [CODEX]
         mode: WRITES_CANONICAL
@@ -827,6 +927,7 @@ tool_families:
       - Record the selected branch and rejected alternatives in Progress_Log.
     tools:
       - id: property-descent
+        classification: MANUAL
         status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]
         mode: READ_ONLY
@@ -841,6 +942,7 @@ tool_families:
         last_verified: 2026-08-10
 
       - id: routeb-inventory
+        classification: AUTOMATIC
         status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]
         mode: WRITES_CANONICAL
@@ -867,6 +969,7 @@ tool_families:
         last_verified: 2026-08-28
 
       - id: atom-index
+        classification: AUTOMATIC
         status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]
         mode: WRITES_DERIVED
@@ -889,6 +992,7 @@ tool_families:
         last_verified: 2026-08-28
 
       - id: map-coverage
+        classification: AUTOMATIC
         status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]
         mode: WRITES_DERIVED
@@ -909,6 +1013,7 @@ tool_families:
         last_verified: 2026-08-11
 
       - id: comparator-lite
+        classification: MANUAL
         status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]
         mode: READ_ONLY
@@ -961,6 +1066,7 @@ tool_families:
           the project's toolchain. Anthropic's tree is on v4.33.0-rc2.
 
       - id: lean-env-dump
+        classification: AUTOMATIC
         status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]
         mode: WRITES_DERIVED
@@ -1022,6 +1128,7 @@ tool_families:
           the check the regex layer could not perform.
 
       - id: atom-describe
+        classification: AUTOMATIC
         status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]
         mode: WRITES_DERIVED
@@ -1057,6 +1164,7 @@ tool_families:
         last_verified: 2026-08-11
 
       - id: foreign-atom-bridge
+        classification: MANUAL
         status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]
         mode: READ_ONLY
@@ -1075,6 +1183,7 @@ tool_families:
         last_verified: 2026-08-11
 
       - id: constructor-probes
+        classification: MANUAL
         status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]
         mode: READ_ONLY
@@ -1099,6 +1208,7 @@ tool_families:
         last_verified: 2026-08-11
 
       - id: cheap-closure-finder
+        classification: MANUAL
         status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]
         mode: READ_ONLY
@@ -1113,6 +1223,7 @@ tool_families:
         last_verified: 2026-08-10
 
       - id: depgraph-roof-cone
+        classification: MANUAL
         status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]
         mode: READ_ONLY
@@ -1142,6 +1253,7 @@ tool_families:
         last_verified: 2026-08-20
 
       - id: blueprint-skeleton-generator
+        classification: AUTOMATIC
         status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]
         mode: WRITES_DERIVED
@@ -1152,15 +1264,20 @@ tool_families:
           - python3 docs/cartographer/blueprint_gen.py --prepare-env
         cwd: repository root
         trigger: >-
-          Regenerate after assembly, proof-registry, or Route-B environment
-          changes. The phase-close repair uses --prepare-env to compile the
+          Regenerate after assembly, proof-registry, NODE_REGISTRY_V10,
+          selected route/phase, bibliography, or Route-B environment changes.
+          The phase-close repair uses --prepare-env to compile the
           Route-B library and refresh its byte-bound EnvDump only when its
           source fingerprint changes. The Markdown and TeX views share one
           deterministic model; --check never writes.
         writes: true
         approval: NONE_FOR_REGENERATION
         authority: >-
-          EXACT_PUBLICATION_RECEIPT_NOT_PROOF_AUTHORITY. A row greens only when
+          INTERNAL_EVIDENCE_BLUEPRINT_NOT_PROOF_AUTHORITY. q3_blueprint.v2
+          projects exact registered nodes/edges/hashes, source and consumer
+          provenance/blobs, proof-relevant elaborated declarations and their
+          axiom map, dependency evidence, terminal route/phase state and
+          bibliography hashes. A row greens only when
           READY has one exact proven aristotle_proofs.db statement and the same
           public safe declaration exists in its source module in the complete
           EnvDump index with only standard axioms. The proof registry remains
@@ -1168,16 +1285,17 @@ tool_families:
           the mathematical statement independently of Lean.
         scope_negation: >-
           Does NOT turn VALIDATION, OPEN mathematics, or READY prose/module
-          receipts green; does not infer dependency edges; does not run
+          receipts green; does not infer unregistered dependency edges; does not run
           checkdecls; does not claim Route B promotion or RH. Generated TeX is
           a publication skeleton, not a completed manuscript.
         records_to: >-
           full/blueprint/blueprint.md;
           q3.lean.aristotle/blueprint/src/;
           q3.lean.aristotle/blueprint/blueprint_manifest.json
-        last_verified: 2026-08-28
+        last_verified: 2026-09-02 q3_blueprint.v2 focused plants; live check correctly fail-closed on stale EnvDump
 
       - id: cartographer-brief
+        classification: DISPLAY_ONLY
         status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]
         mode: READ_ONLY
@@ -1193,6 +1311,7 @@ tool_families:
         last_verified: 2026-08-10
 
       - id: cartographer-loaders
+        classification: MANUAL
         status: DEGRADED
         audience: [HUMAN]
         mode: EXTERNAL
@@ -1215,6 +1334,7 @@ tool_families:
     coverage: [orchestrator/observability.py, orchestrator/sensors.py, scripts/q3_sensor_scan.py, scripts/build_*graph.py, scripts/build_autopsy_map.py]
     tools:
       - id: observability-summary
+        classification: DISPLAY_ONLY
         status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]
         mode: READ_ONLY
@@ -1229,6 +1349,7 @@ tool_families:
         last_verified: 2026-08-10
 
       - id: observability-refresh
+        classification: AUTOMATIC
         status: ENABLED
         audience: [CODEX]
         mode: WRITES_DERIVED
@@ -1243,6 +1364,7 @@ tool_families:
         last_verified: 2026-08-09
 
       - id: tool-census
+        classification: MANUAL
         status: AVAILABLE
         audience: [CODEX, HUMAN]
         mode: WRITES_DERIVED
@@ -1261,6 +1383,7 @@ tool_families:
     coverage: [lake, lean, scripts/check_axioms.sh, q3.lean.aristotle/ACTIVE/aristotle, paper.sh]
     tools:
       - id: lean-validation
+        classification: AUTOMATIC
         status: ENABLED
         audience: [CODEX]
         mode: WRITES_DERIVED
@@ -1276,6 +1399,7 @@ tool_families:
         last_verified: 2026-08-09
 
       - id: aristotle
+        classification: MANUAL
         status: AVAILABLE
         audience: [CODEX]
         mode: NETWORK_WRITE
@@ -1289,6 +1413,7 @@ tool_families:
         last_verified: 2026-08-09
 
       - id: paper-ingest
+        classification: MANUAL
         status: AVAILABLE
         audience: [CODEX, HUMAN]
         mode: NETWORK_WRITE
@@ -1307,6 +1432,7 @@ tool_families:
     coverage: [scripts/build_proshka_brief.py, orchestrator/packet.py, ~/.codex/skills/proshka-brief, ~/.codex/skills/oracle]
     tools:
       - id: proshka-context-pack
+        classification: MANUAL
         status: ENABLED
         audience: [CODEX]
         mode: READ_ONLY
@@ -1321,6 +1447,7 @@ tool_families:
         last_verified: 2026-08-30
 
       - id: packet-build
+        classification: MANUAL
         status: AVAILABLE
         audience: [CODEX, HUMAN]
         mode: READ_ONLY
@@ -1335,6 +1462,7 @@ tool_families:
         last_verified: 2026-08-30
 
       - id: packet-ingest
+        classification: MANUAL
         status: AVAILABLE
         audience: [CODEX]
         mode: WRITES_CANONICAL
@@ -1356,6 +1484,7 @@ tool_families:
     codex_skills: Runtime skill registry is authoritative for availability; this manifest records only Q3 routing and hazards.
     tools:
       - id: task-specific-generators
+        classification: MANUAL
         status: AVAILABLE
         audience: [CODEX]
         mode: WRITES_DERIVED

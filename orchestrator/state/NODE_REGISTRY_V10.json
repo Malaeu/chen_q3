@@ -206,7 +206,7 @@
         "Q3.RouteB.D0Pstar.selectedFerrersAbelLogZeroExtension_fourier_decay_quantitative",
         "Q3.RouteB.D0Pstar.selectedFerrersAbelLimit_shiftedEnergy_le_majorant"
       ],
-      "validation_hash": "4c5d7713e91bde91b470fda30c93d6a350dee17793b7e6112d8312bf1bc77a6b",
+      "validation_hash": "ca33fa47be6a8cba34522bb780448755c9da541735250a5a5558d58d80daa220",
       "validation_inputs": {
         "axioms": {
           "sha256": "b635ba98b2c465ffe271b0775afd174f74953c19413eade3960153f6008e3d1c",
@@ -221,7 +221,7 @@
           "algorithm_version": "LEAN_EXPR_USED_CONSTANTS_V1",
           "coverage": "ALL_PROJECT_ROOTS",
           "historical_entry_binding_sha256": "3c0ee949a032198865f37adb694b76c51a97877f2686f1dcaae2542e3798e99a",
-          "project_dependency_tree_hash": "12c3a49e41ef98f96438e00bee7327a3c6db6e7cad18d1feda5dbae96ed39160",
+          "project_dependency_tree_hash": "37eb0417e0afb534a302b0b28882ec2c9615dddd8ab8d6a19d6b407353adda29",
           "sha256": "d036965b697f9e0748077d57b9c60d3281ed85c6695ccb8b3e70034778d67230"
         },
         "holes": {
@@ -322,7 +322,7 @@
         "Q3.RouteB.D0Pstar.sourceWeilGraphEvenNonzeroTail_low_fourier_vanish",
         "Q3.RouteB.D0Pstar.sourceWeilGraphEvenZeroMode_orthogonal_nonzeroTail"
       ],
-      "validation_hash": "4f3f49a176b6f722e0e75b95806515e2a6dc030a7a8acc8a7958829edb0f0e8c",
+      "validation_hash": "e83a648aaa197f64f73089210e77132ed0104309ce5e17b3a3d0e6ce9db2b573",
       "validation_inputs": {
         "axioms": {
           "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
@@ -337,7 +337,7 @@
           "algorithm_version": "LEAN_EXPR_USED_CONSTANTS_V1",
           "coverage": "ALL_PROJECT_ROOTS",
           "historical_entry_binding_sha256": "c25421d7cfcf5b41ada15c7e6f87e25f693c2e97752dd9c6cbacef6f9a56b9a9",
-          "project_dependency_tree_hash": "12c3a49e41ef98f96438e00bee7327a3c6db6e7cad18d1feda5dbae96ed39160",
+          "project_dependency_tree_hash": "37eb0417e0afb534a302b0b28882ec2c9615dddd8ab8d6a19d6b407353adda29",
           "sha256": "4470024ddedae5da1f4095a38f889e83395d575bd6847017605bef994f99c375"
         },
         "holes": {
@@ -445,7 +445,7 @@
         "Q3.RouteB.D0Pstar.sourceWeilGraphEvenNonzeroLowBandSynthesis_orthogonal_tail",
         "Q3.RouteB.D0Pstar.sourceWeilGraphEvenHeadSynthesis_orthogonal_tail"
       ],
-      "validation_hash": "0f4e3188973c789564acc8601bec1f39edf530ffe4e583792d9d4ba01f7b039f",
+      "validation_hash": "6d71e63360efd567eb2ee02617569151bb4a453aa72885bc2100ac13f6de7f80",
       "validation_inputs": {
         "axioms": {
           "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
@@ -460,7 +460,7 @@
           "algorithm_version": "LEAN_EXPR_USED_CONSTANTS_V1",
           "coverage": "ALL_PROJECT_ROOTS",
           "historical_entry_binding_sha256": "672d69e62f1b6b57be41b7d91819776de59d4e558a92c7a4e4300a64dd7af90f",
-          "project_dependency_tree_hash": "12c3a49e41ef98f96438e00bee7327a3c6db6e7cad18d1feda5dbae96ed39160",
+          "project_dependency_tree_hash": "37eb0417e0afb534a302b0b28882ec2c9615dddd8ab8d6a19d6b407353adda29",
           "sha256": "4b5f8676da96590291957ec7ef79fc43f6a8f19059c4989bf4055d7e79fb6d33"
         },
         "holes": {
@@ -541,7 +541,7 @@
         "Q3.RouteB.D0Pstar.ccmFiniteSynthesis_eq_sourceWeilGraphAmbient_evenHead_of_mulVec_eq",
         "Q3.RouteB.D0Pstar.ccmFiniteSynthesis_reflectionEven_orthogonal_evenNonzeroTail"
       ],
-      "validation_hash": "3edaf92b1c4315ae7fb15761275b44451f842f159c6bc58377245ea2ae07b22a",
+      "validation_hash": "f8b159a410df5197c608b42dabd5d2a64a2b323f01aab31af60a56c03ffc5fc1",
       "validation_inputs": {
         "axioms": {
           "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
@@ -556,7 +556,7 @@
           "algorithm_version": "LEAN_EXPR_USED_CONSTANTS_V1",
           "coverage": "ALL_PROJECT_ROOTS",
           "historical_entry_binding_sha256": "e41e376f3b5ef013ffd0464c4d28fcb0d848c8a5c06245f0329ed3d8d3471f68",
-          "project_dependency_tree_hash": "12c3a49e41ef98f96438e00bee7327a3c6db6e7cad18d1feda5dbae96ed39160",
+          "project_dependency_tree_hash": "37eb0417e0afb534a302b0b28882ec2c9615dddd8ab8d6a19d6b407353adda29",
           "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         },
         "holes": {
@@ -650,7 +650,7 @@
         "Q3.RouteB.D0Pstar.sourceWeilEvenTailAlgebraicCoercive_explicit",
         "Q3.RouteB.D0Pstar.sourceWeilEvenTailAmbientCoercive_explicit"
       ],
-      "validation_hash": "064e369d7503727560e8684c8d16ae39e2c6328eb26f890fe42fb091fe5a3288",
+      "validation_hash": "ab7a9f2d8aa48869bf4e198eb0836cb186a42940b73c550101aead493aa903b3",
       "validation_inputs": {
         "axioms": {
           "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
@@ -665,7 +665,7 @@
           "algorithm_version": "LEAN_EXPR_USED_CONSTANTS_V1",
           "coverage": "ALL_PROJECT_ROOTS",
           "historical_entry_binding_sha256": "305e83496daf277949d8f812208de84411bcc947623c9b1f93fb4b974f34483d",
-          "project_dependency_tree_hash": "12c3a49e41ef98f96438e00bee7327a3c6db6e7cad18d1feda5dbae96ed39160",
+          "project_dependency_tree_hash": "37eb0417e0afb534a302b0b28882ec2c9615dddd8ab8d6a19d6b407353adda29",
           "sha256": "e7c62bfca4c50dfcc5b3dabe6d094b3d51c845ad350f6d4b84c452f1d1377014"
         },
         "holes": {
@@ -741,7 +741,7 @@
         "Q3.RouteB.D0Pstar.sourceCCMFiniteMatrix_shifted_floor_of_archPrimeShifted_floor_even",
         "Q3.RouteB.D0Pstar.selectedFerrersFiniteCCMEvenSectorFloor_eventually_of_archPrimeShifted"
       ],
-      "validation_hash": "550b127b44035d32f38ae9576e589b3abdfbb97a29a7af78450c16f26f942e4c",
+      "validation_hash": "3df7681037005a9b836a3c843afa2f64ada633ad03db71aa2d810e5caaf546d4",
       "validation_inputs": {
         "axioms": {
           "sha256": "00eeb8a9adaea9aa686e6d831678992e23d310743dc65c9f6ffcaf15cc95ff5a",
@@ -756,7 +756,7 @@
           "algorithm_version": "LEAN_EXPR_USED_CONSTANTS_V1",
           "coverage": "ALL_PROJECT_ROOTS",
           "historical_entry_binding_sha256": "0096c7892537530966d9ec8b6614557c2056d43a072b8e0bc80d00ca55a23089",
-          "project_dependency_tree_hash": "12c3a49e41ef98f96438e00bee7327a3c6db6e7cad18d1feda5dbae96ed39160",
+          "project_dependency_tree_hash": "37eb0417e0afb534a302b0b28882ec2c9615dddd8ab8d6a19d6b407353adda29",
           "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         },
         "holes": {
@@ -865,7 +865,7 @@
       "theorem_ids": [
         "Q3.RouteB.D0Pstar.sourceArchPrimeSesquilinearForm_re_self_lower_evenGraphFinsuppShift"
       ],
-      "validation_hash": "b5256cb081059b0cfeae3a6049282d0f31e570483aee8b0504217c1b6e0885c2",
+      "validation_hash": "e1cc83a6494929dfe2dfbcd5ea6f36609d6b5d1cdc0a9a9b11126e51aa4e0801",
       "validation_inputs": {
         "axioms": {
           "sha256": "161d45883b61bcd7ac026467b3851e656d9d71f08c12e29f9191d7550e1d7be0",
@@ -880,7 +880,7 @@
           "algorithm_version": "LEAN_EXPR_USED_CONSTANTS_V1",
           "coverage": "ALL_PROJECT_ROOTS",
           "historical_entry_binding_sha256": "c874b981fb82bd15da8e0cbe4761fdc270de4814a653038d54f17070b1cd362c",
-          "project_dependency_tree_hash": "12c3a49e41ef98f96438e00bee7327a3c6db6e7cad18d1feda5dbae96ed39160",
+          "project_dependency_tree_hash": "37eb0417e0afb534a302b0b28882ec2c9615dddd8ab8d6a19d6b407353adda29",
           "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         },
         "holes": {
@@ -901,14 +901,14 @@
     }
   ],
   "project": {
-    "file_count": 3590,
-    "project_dependency_tree_hash": "12c3a49e41ef98f96438e00bee7327a3c6db6e7cad18d1feda5dbae96ed39160",
+    "file_count": 3592,
+    "project_dependency_tree_hash": "37eb0417e0afb534a302b0b28882ec2c9615dddd8ab8d6a19d6b407353adda29",
     "root_count": 1,
     "roots": [
       "q3.lean.aristotle/Q3"
     ]
   },
-  "registry_hash": "23bf5b00716c65988a1c189cf473f4a938ef92644752d649ed3a70563c1510f5",
+  "registry_hash": "fdb964c486d3f09932f983eb53b2dd36d004eae8b90985b04445116f273e6c8b",
   "review_policy": {
     "allowed_reviewers": [
       "OWNER_SIGNOFF",

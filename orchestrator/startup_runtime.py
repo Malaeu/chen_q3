@@ -43,6 +43,18 @@ COMMIT_RE = re.compile(r"^[0-9a-f]{40}$")
 GOAL_FILE_RE = re.compile(r"^(?P<goal_id>\d{3}[A-Za-z]*)_.+\.goal\.md$")
 OPEN_STATUS = "OPEN"
 TERMINAL_GOAL_STATUSES = frozenset({"CLOSED", "CLOSED_PHASE0"})
+GOAL_CLOSE_RECEIPT_SCHEMA = "q3_goal_close_receipt.v1"
+PHASE_CLOSE_RECEIPT_SCHEMA = "q3_phase_close_receipt.v1"
+PHASE_KEY_FIELDS = frozenset(
+    {
+        "route_id",
+        "front_id",
+        "source_object_family_id",
+        "terminal_consumer_id",
+        "honesty_state",
+        "convention_lock_id",
+    }
+)
 CURRENT_INACTIVE_STATUSES = frozenset({"CLOSED", "EMPTY"})
 KNOWN_GOAL_STATUSES = frozenset({OPEN_STATUS, *PAUSED_STATUSES, *TERMINAL_GOAL_STATUSES})
 YAML_NULL_SPELLINGS = frozenset({"~", "null"})
@@ -170,6 +182,7 @@ HISTORICAL_STRUCTURED_PAIRED_GOALS = {
 BUS_DIRECT_ENTRY_LIMIT = 4096
 GIT_STATUS_PATHS = (
     CONTROL_REL.as_posix(),
+    BUS_REL.as_posix(),
     CURRENT_REL.as_posix(),
     EXECUTION_STATE_REL.as_posix(),
     CHANNEL_RUNTIME_REL.as_posix(),
@@ -677,6 +690,409 @@ def _validate_modern_answer(
         )
 
 
+def goal_close_receipt_path(goal_path: Path) -> Path:
+    return goal_path.with_name(
+        goal_path.name.removesuffix(".goal.md") + ".goal-close.json"
+    )
+
+
+def phase_close_receipt_path(goal_path: Path) -> Path:
+    return goal_path.with_name(
+        goal_path.name.removesuffix(".goal.md") + ".phase-close.json"
+    )
+
+
+def _valid_phase_key(value: object) -> bool:
+    return (
+        isinstance(value, dict)
+        and set(value) == PHASE_KEY_FIELDS
+        and all(isinstance(item, str) and item.strip() for item in value.values())
+    )
+
+
+def validate_goal_close_receipt(
+    goal_path: Path,
+    answer_path: Path,
+    receipt_path: Path,
+    *,
+    verify_git_epoch: bool = True,
+) -> dict[str, Any]:
+    """Validate the crash-recovery marker without granting Git delivery."""
+
+    if goal_path.parent.name != "routeB_bus" or goal_path.parent.parent.name != "docs":
+        raise StartupRuntimeError("STARTUP_GOAL_CLOSE_RECEIPT_INVALID", "goal location")
+    repo = goal_path.parent.parent.parent
+    if _has_symlink_component(repo, _lexical_relative(repo, receipt_path)):
+        raise StartupRuntimeError("STARTUP_SYMLINK_COMPONENT", str(receipt_path))
+    payload = _load_unique_json(receipt_path)
+    required = {
+        "schema", "goal_path", "answer_path", "base_head",
+        "git_tree", "control_sha256",
+        "open_goal_sha256", "terminal_goal_sha256", "answer_sha256",
+        "attempt_path", "attempt_sha256", "exact_edge", "stages",
+        "next_goal_spec_path", "next_goal_spec_sha256",
+        "channel_runtime_sha256", "phase_close_required",
+        "current_phase_key", "next_phase_key",
+        "current_phase_key_path", "current_phase_key_sha256",
+    }
+    if set(payload) != required or payload.get("schema") != GOAL_CLOSE_RECEIPT_SCHEMA:
+        raise StartupRuntimeError("STARTUP_GOAL_CLOSE_RECEIPT_INVALID", "schema")
+    goal_rel = _lexical_relative(repo, goal_path).as_posix()
+    answer_rel = _lexical_relative(repo, answer_path).as_posix()
+    if payload.get("goal_path") != goal_rel or payload.get("answer_path") != answer_rel:
+        raise StartupRuntimeError("STARTUP_GOAL_CLOSE_RECEIPT_INVALID", "path binding")
+    hashes = (
+        payload.get("open_goal_sha256"), payload.get("terminal_goal_sha256"),
+        payload.get("answer_sha256"), payload.get("attempt_sha256"),
+    )
+    if any(
+        not isinstance(value, str)
+        or re.fullmatch(r"[0-9a-f]{64}", value) is None
+        for value in hashes
+    ):
+        raise StartupRuntimeError("STARTUP_GOAL_CLOSE_RECEIPT_INVALID", "hash binding")
+    if hashlib.sha256(answer_path.read_bytes()).hexdigest() != payload["answer_sha256"]:
+        raise StartupRuntimeError("STARTUP_GOAL_CLOSE_RECEIPT_INVALID", "answer drift")
+    attempt_value = payload.get("attempt_path")
+    if not isinstance(attempt_value, str):
+        raise StartupRuntimeError("STARTUP_GOAL_CLOSE_RECEIPT_INVALID", "attempt path")
+    attempt_rel = PurePosixPath(attempt_value)
+    if (
+        attempt_rel.is_absolute()
+        or ".." in attempt_rel.parts
+        or "\\" in attempt_value
+        or _has_symlink_component(repo, attempt_rel)
+    ):
+        raise StartupRuntimeError("STARTUP_GOAL_CLOSE_RECEIPT_INVALID", "attempt path")
+    attempt_path = repo / attempt_rel
+    if (
+        not attempt_path.is_file()
+        or hashlib.sha256(attempt_path.read_bytes()).hexdigest()
+        != payload["attempt_sha256"]
+    ):
+        raise StartupRuntimeError("STARTUP_GOAL_CLOSE_RECEIPT_INVALID", "attempt drift")
+    goal_sha = hashlib.sha256(goal_path.read_bytes()).hexdigest()
+    if goal_sha not in {payload["open_goal_sha256"], payload["terminal_goal_sha256"]}:
+        raise StartupRuntimeError("STARTUP_GOAL_CLOSE_RECEIPT_INVALID", "goal drift")
+    edge = payload.get("exact_edge")
+    if (
+        not isinstance(edge, dict)
+        or set(edge) != {"node", "source", "theorem", "consumer"}
+        or any(not isinstance(item, str) or not item for item in edge.values())
+    ):
+        raise StartupRuntimeError("STARTUP_GOAL_CLOSE_RECEIPT_INVALID", "edge binding")
+    header_edge = dict(
+        zip(("node", "source", "theorem", "consumer"), _pins(_goal_header(goal_path)))
+    )
+    if any(
+        expected is not None and edge[field] != expected
+        for field, expected in header_edge.items()
+    ):
+        raise StartupRuntimeError("STARTUP_GOAL_CLOSE_RECEIPT_INVALID", "edge drift")
+    stages = payload.get("stages")
+    if (
+        not isinstance(stages, list)
+        or len(stages) != 1
+        or not isinstance(stages[0], dict)
+        or set(stages[0]) != {
+            "schema", "status", "label", "exit", "duration_ms", "output_sha256",
+        }
+        or stages[0].get("schema") != "q3_close_stage.v1"
+        or stages[0].get("status") != "PASS"
+        or stages[0].get("label") != "goal-close"
+        or stages[0].get("exit") != 0
+        or not isinstance(stages[0].get("duration_ms"), int)
+        or stages[0]["duration_ms"] < 0
+        or not isinstance(stages[0].get("output_sha256"), str)
+        or re.fullmatch(r"[0-9a-f]{64}", stages[0]["output_sha256"]) is None
+    ):
+        raise StartupRuntimeError("STARTUP_GOAL_CLOSE_RECEIPT_INVALID", "stages")
+    if (
+        not isinstance(payload.get("base_head"), str)
+        or COMMIT_RE.fullmatch(payload["base_head"]) is None
+    ):
+        raise StartupRuntimeError("STARTUP_GOAL_CLOSE_RECEIPT_INVALID", "base head")
+    if (
+        not isinstance(payload.get("git_tree"), str)
+        or COMMIT_RE.fullmatch(payload["git_tree"]) is None
+        or not isinstance(payload.get("control_sha256"), str)
+        or re.fullmatch(r"[0-9a-f]{64}", payload["control_sha256"]) is None
+    ):
+        raise StartupRuntimeError("STARTUP_GOAL_CLOSE_RECEIPT_INVALID", "epoch binding")
+    control_path = repo / CONTROL_REL
+    if (
+        not control_path.is_file()
+        or hashlib.sha256(control_path.read_bytes()).hexdigest()
+        != payload["control_sha256"]
+    ):
+        raise StartupRuntimeError("STARTUP_GOAL_CLOSE_RECEIPT_INVALID", "control epoch")
+    base_head = payload["base_head"]
+    if verify_git_epoch:
+        epoch_objects = _batch_check(
+            repo,
+            (
+                base_head,
+                f"{base_head}^{{tree}}",
+                f"{base_head}:{CONTROL_REL.as_posix()}",
+                "HEAD",
+            ),
+        )
+        control_fingerprint = _path_fingerprint(repo, CONTROL_REL)
+        if (
+            epoch_objects.get(base_head) != (base_head, "commit")
+            or epoch_objects.get(f"{base_head}^{{tree}}")
+            != (payload["git_tree"], "tree")
+            or not _fingerprint_matches_git_blob(
+                control_fingerprint,
+                (
+                    epoch_objects[f"{base_head}:{CONTROL_REL.as_posix()}"][0]
+                    if epoch_objects.get(f"{base_head}:{CONTROL_REL.as_posix()}")
+                    else None
+                ),
+            )
+            or epoch_objects.get("HEAD") is None
+        ):
+            raise StartupRuntimeError(
+                "STARTUP_GOAL_CLOSE_RECEIPT_INVALID", "epoch object"
+            )
+        ancestry = subprocess.run(
+            ["git", "merge-base", "--is-ancestor", base_head, "HEAD"],
+            cwd=repo,
+            check=False,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            env={**os.environ, "GIT_OPTIONAL_LOCKS": "0"},
+        )
+        if ancestry.returncode != 0:
+            raise StartupRuntimeError(
+                "STARTUP_GOAL_CLOSE_RECEIPT_INVALID", "epoch ancestry"
+            )
+    channel_hash = payload.get("channel_runtime_sha256")
+    channel_path = repo / "orchestrator/state/CHANNEL_RUNTIME.json"
+    if (
+        not isinstance(channel_hash, str)
+        or re.fullmatch(r"[0-9a-f]{64}", channel_hash) is None
+        or not channel_path.is_file()
+        or hashlib.sha256(channel_path.read_bytes()).hexdigest() != channel_hash
+    ):
+        raise StartupRuntimeError("STARTUP_GOAL_CLOSE_RECEIPT_INVALID", "channel hash")
+    phase_required = payload.get("phase_close_required")
+    spec_path_value = payload.get("next_goal_spec_path")
+    spec_hash = payload.get("next_goal_spec_sha256")
+    current_phase = payload.get("current_phase_key")
+    next_phase = payload.get("next_phase_key")
+    current_phase_path_value = payload.get("current_phase_key_path")
+    current_phase_hash = payload.get("current_phase_key_sha256")
+    if not isinstance(phase_required, bool):
+        raise StartupRuntimeError("STARTUP_GOAL_CLOSE_RECEIPT_INVALID", "phase flag")
+    if spec_path_value is None:
+        raise StartupRuntimeError(
+            "STARTUP_GOAL_CLOSE_RECEIPT_INVALID", "next goal spec required"
+        )
+    else:
+        if not isinstance(spec_path_value, str):
+            raise StartupRuntimeError("STARTUP_GOAL_CLOSE_RECEIPT_INVALID", "spec path")
+        spec_rel = PurePosixPath(spec_path_value)
+        if (
+            spec_rel.is_absolute()
+            or ".." in spec_rel.parts
+            or "\\" in spec_path_value
+            or _has_symlink_component(repo, spec_rel)
+        ):
+            raise StartupRuntimeError("STARTUP_GOAL_CLOSE_RECEIPT_INVALID", "spec path")
+        spec_path = repo / spec_rel
+        if (
+            not isinstance(spec_hash, str)
+            or re.fullmatch(r"[0-9a-f]{64}", spec_hash) is None
+            or not spec_path.is_file()
+            or hashlib.sha256(spec_path.read_bytes()).hexdigest() != spec_hash
+            or not _valid_phase_key(current_phase)
+            or not _valid_phase_key(next_phase)
+            or phase_required == (current_phase == next_phase)
+            or edge["consumer"] != current_phase["terminal_consumer_id"]
+        ):
+            raise StartupRuntimeError("STARTUP_GOAL_CLOSE_RECEIPT_INVALID", "phase binding")
+        if current_phase_path_value is None:
+            if current_phase_hash is not None:
+                raise StartupRuntimeError(
+                    "STARTUP_GOAL_CLOSE_RECEIPT_INVALID", "current phase key binding"
+                )
+        else:
+            if not isinstance(current_phase_path_value, str):
+                raise StartupRuntimeError(
+                    "STARTUP_GOAL_CLOSE_RECEIPT_INVALID", "current phase key path"
+                )
+            current_phase_rel = PurePosixPath(current_phase_path_value)
+            current_phase_path = repo / current_phase_rel
+            if (
+                current_phase_rel.is_absolute()
+                or ".." in current_phase_rel.parts
+                or "\\" in current_phase_path_value
+                or _has_symlink_component(repo, current_phase_rel)
+                or not isinstance(current_phase_hash, str)
+                or re.fullmatch(r"[0-9a-f]{64}", current_phase_hash) is None
+                or not current_phase_path.is_file()
+                or hashlib.sha256(current_phase_path.read_bytes()).hexdigest()
+                != current_phase_hash
+            ):
+                raise StartupRuntimeError(
+                    "STARTUP_GOAL_CLOSE_RECEIPT_INVALID", "current phase key binding"
+                )
+    return payload
+
+
+def _validate_persisted_phase_evidence(payload: object) -> str:
+    required = {
+        "schema", "derived_executed", "derived_status", "gates",
+        "verdict_migration", "blueprint_exit", "manual_debt",
+        "commit_push_performed", "PX_RH_CLAIM",
+    }
+    if not isinstance(payload, dict) or set(payload) != required:
+        raise StartupRuntimeError("STARTUP_PHASE_CLOSE_RECEIPT_INVALID", "phase evidence")
+    encoded = json.dumps(
+        payload, ensure_ascii=False, sort_keys=True, separators=(",", ":")
+    ).encode()
+    if len(encoded) > 32768 or payload.get("schema") != "q3_phase_close.v1":
+        raise StartupRuntimeError("STARTUP_PHASE_CLOSE_RECEIPT_INVALID", "phase evidence")
+    gates = payload.get("gates")
+    statuses = payload.get("derived_status")
+    migration = payload.get("verdict_migration")
+    debt = payload.get("manual_debt")
+    if (
+        not isinstance(gates, list)
+        or not gates
+        or any(
+            not isinstance(row, dict)
+            or set(row) != {"path", "exit"}
+            or row.get("exit") != 0
+            for row in gates
+        )
+        or not isinstance(statuses, list)
+        or not statuses
+        or any(
+            not isinstance(row, dict)
+            or set(row) != {"id", "status"}
+            or row.get("status") not in {"FRESH", "CURRENT_WORKTREE"}
+            for row in statuses
+        )
+        or not any(row.get("id") == "routeb-publication-blueprint" for row in statuses)
+        or not isinstance(migration, dict)
+        or migration.get("exit") != 0
+        or migration.get("pending") is not False
+        or not isinstance(debt, dict)
+        or set(debt) != {"assembly_review_required", "insight_required", "cards"}
+        or any(not isinstance(items, list) or items for items in debt.values())
+        or payload.get("blueprint_exit") != 0
+        or payload.get("commit_push_performed") is not False
+        or payload.get("PX_RH_CLAIM") != "NOT_MADE"
+    ):
+        raise StartupRuntimeError("STARTUP_PHASE_CLOSE_RECEIPT_INVALID", "phase evidence")
+    return hashlib.sha256(encoded).hexdigest()
+
+
+def validate_phase_close_receipt(
+    goal_path: Path,
+    goal_receipt_path: Path,
+    phase_receipt_path: Path,
+) -> dict[str, Any]:
+    goal_receipt = _load_unique_json(goal_receipt_path)
+    phase_receipt = _load_unique_json(phase_receipt_path)
+    required = {
+        "schema",
+        "goal_path",
+        "goal_close_receipt_sha256",
+        "next_goal_spec_sha256",
+        "channel_runtime_sha256",
+        "current_phase_key",
+        "next_phase_key",
+        "stage",
+        "phase_output_sha256",
+        "phase_evidence",
+        "derived_output_fingerprints",
+    }
+    if set(phase_receipt) != required or phase_receipt.get("schema") != PHASE_CLOSE_RECEIPT_SCHEMA:
+        raise StartupRuntimeError("STARTUP_PHASE_CLOSE_RECEIPT_INVALID", "schema")
+    repo = goal_path.parent.parent.parent
+    phase_rel = _lexical_relative(repo, phase_receipt_path)
+    if _has_symlink_component(repo, phase_rel):
+        raise StartupRuntimeError("STARTUP_PHASE_CLOSE_RECEIPT_INVALID", "symlink")
+    outputs = phase_receipt.get("derived_output_fingerprints")
+    stage = phase_receipt.get("stage")
+    evidence = phase_receipt.get("phase_evidence")
+    evidence_hash = _validate_persisted_phase_evidence(
+        evidence
+    )
+    from orchestrator import dependency_registry
+    try:
+        registry = dependency_registry.load_registry(
+            repo / "docs/cartographer/DERIVED_ARTIFACTS.yaml"
+        )
+    except (OSError, ValueError, dependency_registry.DependencyRegistryError) as exc:
+        raise StartupRuntimeError(
+            "STARTUP_PHASE_CLOSE_RECEIPT_INVALID", "derived registry"
+        ) from exc
+    blueprint_rows = [
+        row for row in registry if row.get("id") == "routeb-publication-blueprint"
+    ]
+    expected_outputs = (
+        {str(value) for value in blueprint_rows[0].get("outputs", [])}
+        if len(blueprint_rows) == 1
+        else set()
+    )
+    evidence_ids = {
+        row.get("id")
+        for row in evidence.get("derived_status", [])
+        if isinstance(row, dict)
+    }
+    if (
+        phase_receipt.get("goal_path") != _lexical_relative(repo, goal_path).as_posix()
+        or phase_receipt.get("goal_close_receipt_sha256")
+        != hashlib.sha256(goal_receipt_path.read_bytes()).hexdigest()
+        or phase_receipt.get("next_goal_spec_sha256")
+        != goal_receipt.get("next_goal_spec_sha256")
+        or phase_receipt.get("channel_runtime_sha256")
+        != goal_receipt.get("channel_runtime_sha256")
+        or phase_receipt.get("current_phase_key") != goal_receipt.get("current_phase_key")
+        or phase_receipt.get("next_phase_key") != goal_receipt.get("next_phase_key")
+        or not isinstance(stage, dict)
+        or set(stage) != {
+            "schema", "status", "label", "exit", "duration_ms", "output_sha256",
+        }
+        or stage.get("schema") != "q3_close_stage.v1"
+        or stage.get("status") != "PASS"
+        or stage.get("label") != "phase-close"
+        or stage.get("exit") != 0
+        or not isinstance(stage.get("duration_ms"), int)
+        or stage["duration_ms"] < 0
+        or not isinstance(stage.get("output_sha256"), str)
+        or re.fullmatch(r"[0-9a-f]{64}", stage["output_sha256"]) is None
+        or not isinstance(phase_receipt.get("phase_output_sha256"), str)
+        or re.fullmatch(r"[0-9a-f]{64}", phase_receipt["phase_output_sha256"]) is None
+        or phase_receipt.get("phase_output_sha256") != evidence_hash
+        or not isinstance(outputs, dict)
+        or len(expected_outputs) != 12
+        or "routeb-publication-blueprint" not in evidence_ids
+        or set(outputs) != expected_outputs
+    ):
+        raise StartupRuntimeError("STARTUP_PHASE_CLOSE_RECEIPT_INVALID", "binding")
+    for relative, digest in outputs.items():
+        output_rel = PurePosixPath(relative) if isinstance(relative, str) else None
+        output_path = repo / output_rel if output_rel is not None else None
+        if (
+            output_rel is None
+            or output_rel.is_absolute()
+            or ".." in output_rel.parts
+            or not isinstance(digest, str)
+            or re.fullmatch(r"[0-9a-f]{64}", digest) is None
+            or _has_symlink_component(repo, output_rel)
+            or output_path is None
+            or not output_path.is_file()
+            or hashlib.sha256(output_path.read_bytes()).hexdigest() != digest
+        ):
+            raise StartupRuntimeError("STARTUP_PHASE_CLOSE_RECEIPT_INVALID", "outputs")
+    return phase_receipt
+
+
 def _current_mapping(
     current_path: Path, *, expected: _PathFingerprint | None = None
 ) -> dict[str, Any]:
@@ -884,7 +1300,13 @@ def _shadow_selection_context(
         )
 
     open_goals: list[tuple[Path, dict[str, Any], _PathFingerprint | None]] = []
+    close_pending: list[tuple[Path, dict[str, Any], _PathFingerprint | None]] = []
+    close_pending_actions: dict[Path, str] = {}
     paired: list[tuple[Path, Path]] = []
+    close_receipts: list[Path] = []
+    phase_receipts: list[Path] = []
+    receipt_managed_goal_paths: set[str] = set()
+    delivery_pending_goal_paths: set[str] = set()
     historical_pairs: list[tuple[Path, Path]] = []
     fatal: list[str] = []
     warnings: list[str] = []
@@ -987,6 +1409,90 @@ def _shadow_selection_context(
             fatal.append(f"STARTUP_ANSWER_INVALID:paused goal has answer:{goal_rel}")
             answer_valid = False
         if answer_valid:
+            if authoritative and goal_rel not in HISTORICAL_STRUCTURED_PAIRED_GOALS:
+                receipt_path = goal_close_receipt_path(goal_path)
+                if not receipt_path.is_file():
+                    if status == OPEN_STATUS:
+                        open_goals.append((goal_path, header, fingerprint))
+                        warnings.append(
+                            "OPEN_ANSWER_WITHOUT_CLOSE_RECEIPT_FULL_TRANSACTION_REQUIRED:"
+                            f"{goal_rel.as_posix()}"
+                        )
+                        continue
+                    fatal.append(
+                        f"STARTUP_GOAL_CLOSE_RECEIPT_MISSING:{goal_rel.as_posix()}"
+                    )
+                    continue
+                try:
+                    receipt = validate_goal_close_receipt(
+                        goal_path, answer_path, receipt_path
+                    )
+                    receipt_rel = _lexical_relative(repo, receipt_path)
+                    fingerprints.append((receipt_rel, _path_fingerprint(repo, receipt_rel)))
+                    close_receipts.append(receipt_path)
+                    receipt_managed_goal_paths.add(goal_rel.as_posix())
+                    receipt_edge = receipt["exact_edge"]
+                    header = dict(header)
+                    header.update(
+                        {
+                            "EXACT_NODE": receipt_edge["node"],
+                            "EXACT_SOURCE_PIN": receipt_edge["source"],
+                            "EXACT_THEOREM": receipt_edge["theorem"],
+                            "EXACT_CONSUMER": receipt_edge["consumer"],
+                        }
+                    )
+                    if (
+                        status == OPEN_STATUS
+                        and hashlib.sha256(goal_path.read_bytes()).hexdigest()
+                        == receipt["open_goal_sha256"]
+                    ):
+                        close_pending.append((goal_path, header, fingerprint))
+                        close_pending_actions[goal_path] = "GOAL_TERMINALIZE_PENDING"
+                        warnings.append(
+                            f"GOAL_TERMINALIZE_PENDING:{goal_rel.as_posix()}"
+                        )
+                        continue
+                    phase_path = phase_close_receipt_path(goal_path)
+                    if receipt["phase_close_required"]:
+                        if not phase_path.is_file():
+                            close_pending.append((goal_path, header, fingerprint))
+                            close_pending_actions[goal_path] = "PHASE_CLOSE_RETRY_PENDING"
+                            warnings.append(
+                                f"PHASE_CLOSE_RETRY_PENDING:{goal_rel.as_posix()}"
+                            )
+                            continue
+                        validate_phase_close_receipt(
+                            goal_path, receipt_path, phase_path
+                        )
+                        phase_rel = _lexical_relative(repo, phase_path)
+                        fingerprints.append(
+                            (phase_rel, _path_fingerprint(repo, phase_rel))
+                        )
+                        phase_receipts.append(phase_path)
+                    if status in TERMINAL_GOAL_STATUSES and any(
+                        _dirty_path_covers(path, relative)
+                        for path in git_state.dirty_paths
+                        for relative in (
+                            goal_rel.as_posix(),
+                            answer_rel.as_posix(),
+                            receipt_rel.as_posix(),
+                            *(
+                                (_lexical_relative(repo, phase_path).as_posix(),)
+                                if receipt["phase_close_required"]
+                                else ()
+                            ),
+                        )
+                    ):
+                        delivery_pending_goal_paths.add(goal_rel.as_posix())
+                        close_pending.append((goal_path, header, fingerprint))
+                        close_pending_actions[goal_path] = "GOAL_CLOSE_DELIVERY_PENDING"
+                        warnings.append(
+                            f"GOAL_CLOSE_DELIVERY_PENDING:{goal_rel.as_posix()}"
+                        )
+                        continue
+                except StartupRuntimeError as exc:
+                    fatal.append(str(exc))
+                    continue
             continue
         if status == OPEN_STATUS:
             open_goals.append((goal_path, header, fingerprint))
@@ -995,13 +1501,19 @@ def _shadow_selection_context(
         elif status in TERMINAL_GOAL_STATUSES:
             if not paired_answer:
                 fatal.append(f"STARTUP_ANSWER_MISSING:{goal_rel.as_posix()}")
-    if len(open_goals) > 1:
-        labels = ",".join(_canonical_relative(repo, item[0]) for item in open_goals)
+    selectable = [*open_goals, *close_pending]
+    if close_pending and open_goals:
+        labels = ",".join(
+            _canonical_relative(repo, item[0]) for item in close_pending
+        )
+        fatal.append(f"STARTUP_PRIOR_CLOSE_DELIVERY_BARRIER:{labels}")
+    if len(selectable) > 1:
+        labels = ",".join(_canonical_relative(repo, item[0]) for item in selectable)
         fatal.append(f"STARTUP_AMBIGUOUS_OPEN_GOALS:{labels}")
 
     selected_header: dict[str, Any] | None = None
-    if len(open_goals) == 1:
-        selected_path, selected_header, _selected_fingerprint = open_goals[0]
+    if len(selectable) == 1:
+        selected_path, selected_header, _selected_fingerprint = selectable[0]
         node, _source, theorem, consumer = _pins(selected_header)
         source_pin = _first_string(selected_header, ("SOURCE_PIN",))
         selection = ShadowGoalSelection(
@@ -1012,7 +1524,7 @@ def _shadow_selection_context(
             consumer,
             (),
             tuple(warnings),
-            "SHADOW_INSPECT_SELECTED_GOAL",
+            close_pending_actions.get(selected_path, "SHADOW_INSPECT_SELECTED_GOAL"),
         )
     elif fatal:
         selection = replace(empty, fatal_errors=tuple(fatal), warnings=tuple(warnings))
@@ -1085,6 +1597,14 @@ def _shadow_selection_context(
             for path in (goal_path, answer_path):
                 relative = _lexical_relative(repo, path).as_posix()
                 specs.append(f"HEAD:{relative}")
+        for receipt_path in close_receipts:
+            specs.append(
+                f"HEAD:{_lexical_relative(repo, receipt_path).as_posix()}"
+            )
+        for receipt_path in phase_receipts:
+            specs.append(
+                f"HEAD:{_lexical_relative(repo, receipt_path).as_posix()}"
+            )
         for goal_path, answer_path in historical_pairs:
             for path in (goal_path, answer_path):
                 relative = _lexical_relative(repo, path).as_posix()
@@ -1141,6 +1661,8 @@ def _shadow_selection_context(
     for goal_path, answer_path in paired:
         goal_rel = _lexical_relative(repo, goal_path).as_posix()
         answer_rel = _lexical_relative(repo, answer_path).as_posix()
+        if goal_rel in delivery_pending_goal_paths:
+            continue
         head_goal = checked.get(f"HEAD:{goal_rel}")
         head_answer = checked.get(f"HEAD:{answer_rel}")
         if head_answer is None:
@@ -1150,9 +1672,38 @@ def _shadow_selection_context(
             fatal.append(f"STARTUP_ANSWER_CLOSURE_UNTRACKED:{goal_rel}")
             continue
         if not _fingerprint_matches_git_blob(fingerprint_by_path.get(goal_rel), head_goal[0]):
-            fatal.append(f"STARTUP_ANSWER_CLOSURE_BLOB_DRIFT:{goal_rel}")
+            receipt_path = goal_close_receipt_path(goal_path)
+            receipt = (
+                _load_unique_json(receipt_path)
+                if goal_rel in receipt_managed_goal_paths
+                else None
+            )
+            current_hash = hashlib.sha256(goal_path.read_bytes()).hexdigest()
+            if not (
+                isinstance(receipt, dict)
+                and current_hash == receipt.get("terminal_goal_sha256")
+            ):
+                fatal.append(f"STARTUP_ANSWER_CLOSURE_BLOB_DRIFT:{goal_rel}")
         if not _fingerprint_matches_git_blob(fingerprint_by_path.get(answer_rel), head_answer[0]):
             fatal.append(f"STARTUP_ANSWER_CLOSURE_BLOB_DRIFT:{answer_rel}")
+    for receipt_path in close_receipts:
+        receipt_rel = _lexical_relative(repo, receipt_path).as_posix()
+        head_receipt = checked.get(f"HEAD:{receipt_rel}")
+        if head_receipt is None:
+            warnings.append(f"GOAL_CLOSE_DELIVERY_PENDING:{receipt_rel}")
+        elif not _fingerprint_matches_git_blob(
+            fingerprint_by_path.get(receipt_rel), head_receipt[0]
+        ):
+            fatal.append(f"STARTUP_GOAL_CLOSE_RECEIPT_BLOB_DRIFT:{receipt_rel}")
+    for receipt_path in phase_receipts:
+        receipt_rel = _lexical_relative(repo, receipt_path).as_posix()
+        head_receipt = checked.get(f"HEAD:{receipt_rel}")
+        if head_receipt is None:
+            warnings.append(f"GOAL_CLOSE_DELIVERY_PENDING:{receipt_rel}")
+        elif not _fingerprint_matches_git_blob(
+            fingerprint_by_path.get(receipt_rel), head_receipt[0]
+        ):
+            fatal.append(f"STARTUP_PHASE_CLOSE_RECEIPT_BLOB_DRIFT:{receipt_rel}")
 
     baseline_object = checked.get(HISTORICAL_PAIRED_BASELINE_COMMIT)
     baseline_available = (
@@ -1821,6 +2372,7 @@ def _validate_declared_startup_surfaces(
             "meta",
             "status_semantics",
             "mode_semantics",
+            "classification_semantics",
             "tool_contract",
             "startup_contract",
             "memory_event_routes",
@@ -1838,6 +2390,7 @@ def _validate_declared_startup_surfaces(
 
         status_values = manifest["status_semantics"].get("values")
         mode_values = manifest["mode_semantics"].get("values")
+        classification_values = manifest["classification_semantics"].get("values")
         families = manifest["tool_families"]
         startup_validation = manifest["startup_contract"].get("validation")
         required_contract_fields = manifest["tool_contract"].get("required_fields")
@@ -1857,6 +2410,9 @@ def _validate_declared_startup_surfaces(
             "NETWORK_WRITE",
             "EXTERNAL",
         }
+        expected_classification_values = {
+            "AUTOMATIC", "MANUAL", "DISPLAY_ONLY", "RETIRED",
+        }
         if (
             not isinstance(status_values, list)
             or not all(isinstance(value, str) for value in status_values)
@@ -1864,6 +2420,9 @@ def _validate_declared_startup_surfaces(
             or not isinstance(mode_values, list)
             or not all(isinstance(value, str) for value in mode_values)
             or set(mode_values) != expected_mode_values
+            or not isinstance(classification_values, list)
+            or not all(isinstance(value, str) for value in classification_values)
+            or set(classification_values) != expected_classification_values
             or not families
             or not isinstance(startup_validation, dict)
             or startup_validation.get("command") != "python3 orchestrator/workflow_runtime.py plan"
@@ -1871,6 +2430,7 @@ def _validate_declared_startup_surfaces(
             or not isinstance(required_contract_fields, list)
             or not {
                 "id",
+                "classification",
                 "status",
                 "audience",
                 "mode",
@@ -1888,6 +2448,7 @@ def _validate_declared_startup_surfaces(
 
         required_tool_fields = {
             "id",
+            "classification",
             "status",
             "audience",
             "mode",
@@ -1900,6 +2461,7 @@ def _validate_declared_startup_surfaces(
         }
         allowed_audiences = {"CODEX", "CLAUDE_CODE", "HUMAN"}
         seen_ids: set[str] = set()
+        tools_by_id: dict[str, dict[str, Any]] = {}
         for family in families.values():
             if not isinstance(family, dict) or not isinstance(family.get("tools"), list):
                 raise StartupRuntimeError("STARTUP_TOOL_MANIFEST_INVALID")
@@ -1908,29 +2470,47 @@ def _validate_declared_startup_surfaces(
                     raise StartupRuntimeError("STARTUP_TOOL_MANIFEST_INVALID")
                 tool_id = tool["id"]
                 audience = tool["audience"]
+                classification = tool["classification"]
+                status = tool["status"]
+                mode = tool["mode"]
                 if (
                     not isinstance(tool_id, str)
                     or not tool_id
                     or tool_id in seen_ids
-                    or tool["status"] not in status_values
-                    or tool["mode"] not in mode_values
+                    or status not in status_values
+                    or mode not in mode_values
+                    or classification not in classification_values
                     or not isinstance(audience, list)
                     or not audience
                     or any(item not in allowed_audiences for item in audience)
                     or not isinstance(tool["writes"], bool)
-                    or (tool["mode"] == "READ_ONLY" and tool["writes"])
+                    or (mode == "READ_ONLY" and tool["writes"])
                     or (tool["writes"] and tool["approval"] == "NONE")
+                    or (classification == "AUTOMATIC" and status != "ENABLED")
+                    or (
+                        classification == "DISPLAY_ONLY"
+                        and (mode != "READ_ONLY" or tool["writes"])
+                    )
+                    or ((classification == "RETIRED") != (status == "RETIRED"))
                     or ("path" not in tool and "paths" not in tool)
                     or not any(key in tool for key in ("invoke", "read_invoke", "write_invoke"))
                 ):
                     raise StartupRuntimeError("STARTUP_TOOL_MANIFEST_INVALID")
                 seen_ids.add(tool_id)
+                tools_by_id[tool_id] = tool
         for route in manifest["memory_event_routes"].values():
             run_ids = route.get("run", []) if isinstance(route, dict) else None
             if (
                 not isinstance(route, dict)
                 or not isinstance(run_ids, list)
                 or any(item not in seen_ids for item in run_ids)
+                or any(
+                    tools_by_id[item]["classification"] in {"DISPLAY_ONLY", "RETIRED"}
+                    or tools_by_id[item]["status"]
+                    in {"DISCONNECTED", "RETIRED", "BROKEN", "PLANNED"}
+                    for item in run_ids
+                    if item in tools_by_id
+                )
             ):
                 raise StartupRuntimeError("STARTUP_TOOL_MANIFEST_INVALID")
     except StartupRuntimeError as exc:

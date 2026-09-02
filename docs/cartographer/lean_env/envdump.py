@@ -17,6 +17,7 @@ typeclass после elaboration, вставленных приведений и
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import subprocess
@@ -34,6 +35,7 @@ REQUIRED_RECORD_FIELDS = {
     "name", "kind", "type", "levelParams", "numBinders", "file", "line",
     "doc", "typeConsts", "axioms", "isPrivate", "isUnsafe",
 }
+EXPECTED_STATE_SCHEMA = "q3_envdump_expected_state.v1"
 
 
 def built_modules(prefix: str) -> list[str]:
@@ -140,16 +142,27 @@ def _write_jsonl_atomic(records: list[dict], out_path: Path) -> None:
     os.replace(tmp, out_path)
 
 
-def run(mods: list[str], prefixes: list[str],
+def exact_name_set_diagnostics(
+    records: list[dict], exact_names: list[str]
+) -> tuple[list[str], list[str]]:
+    """Return explicit set drift for exact-name mode before publication."""
+    requested = set(exact_names)
+    returned = {str(record.get("name")) for record in records}
+    return sorted(requested - returned), sorted(returned - requested)
+
+
+def run(mods: list[str], prefixes: list[str], exact_names: list[str],
         timeout: int) -> tuple[int, list[dict], str]:
     src = TEMPLATE.read_text(encoding="utf-8")
     assert "-- IMPORTS_PLACEHOLDER" in src, "в шаблоне нет метки импортов"
     imports = "\n".join(f"import {m}" for m in mods)
     src = src.replace("-- IMPORTS_PLACEHOLDER", imports)
     pref = ", ".join(f"`{p}" for p in prefixes)
+    names = ", ".join(f"`{name}" for name in exact_names)
     module_filter = ", ".join(f"`{m}" for m in mods)
-    src = src.replace("dumpEnv [] []",
-                      f"dumpEnv [{pref}] [{module_filter}]")
+    src = src.replace(
+        "dumpEnv [] [] []", f"dumpEnv [{pref}] [{names}] [{module_filter}]"
+    )
 
     with tempfile.NamedTemporaryFile(
             mode="w", encoding="utf-8", dir=LEAN_ROOT,
@@ -181,13 +194,16 @@ def run(mods: list[str], prefixes: list[str],
     return code, records, "\n".join(diagnostics)
 
 
-def module_selection(prefix: str, limit: int = 0) \
+def module_selection(prefix: str, limit: int = 0, *, lake_validated: bool = False) \
         -> tuple[list[str], list[str], list[str], list[str], list[str]]:
     """Freeze one honest import selection and all coverage-denominator classes."""
     built_all = built_modules(prefix)
     sources = source_modules(prefix)
     source_backed, never_built, orphaned = source_backed_modules(built_all, sources)
-    stale = stale_source_modules(source_backed)
+    # Git checkout and cache restoration legitimately make source mtimes newer
+    # than byte-current oleans.  A caller that just completed `lake query Q3`
+    # has stronger content-addressed evidence than this conservative heuristic.
+    stale = [] if lake_validated else stale_source_modules(source_backed)
     selected = sorted(set(source_backed) - set(stale))
     if limit:
         selected = selected[:limit]
@@ -211,6 +227,127 @@ def module_state_fingerprint(prefix: str) -> tuple[tuple[str, int, int], ...]:
     return tuple(rows)
 
 
+def _sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as stream:
+        for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def module_content_fingerprint(prefix: str) -> tuple[tuple[str, int, str], ...]:
+    """Bind exact source and olean bytes for one Lake-validated read epoch."""
+    rows: list[tuple[str, int, str]] = []
+    sources = source_modules(prefix)
+    built = built_modules(prefix)
+    for kind, modules, base, suffix in (
+        ("source", sources, LEAN_ROOT, ".lean"),
+        ("olean", built, BUILD_LIB, ".olean"),
+        # Lake traces bind the content-addressed transitive import closure,
+        # compiler identity, options and source digest used for each olean.
+        ("trace", built, BUILD_LIB, ".trace"),
+    ):
+        for module in modules:
+            path = base / Path(*module.split(".")).with_suffix(suffix)
+            if not path.is_file():
+                raise FileNotFoundError(f"нет build identity {path}")
+            rows.append((f"{kind}:{module}", path.stat().st_size, _sha256_file(path)))
+    return tuple(rows)
+
+
+def dependency_artifact_roots() -> tuple[tuple[str, Path], ...]:
+    lean_prefix = subprocess.run(
+        ["lean", "--print-prefix"],
+        cwd=LEAN_ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if lean_prefix.returncode != 0 or not lean_prefix.stdout.strip():
+        raise FileNotFoundError("cannot resolve Lean toolchain prefix")
+    toolchain_root = Path(lean_prefix.stdout.strip()) / "lib/lean"
+    package_roots = tuple(
+        (f"package:{path.parents[3].name}", path)
+        for path in sorted((LEAN_ROOT / ".lake/packages").glob("*/.lake/build/lib/lean"))
+    )
+    return (("project", BUILD_LIB), *package_roots, ("toolchain", toolchain_root))
+
+
+def dependency_content_digest() -> str:
+    """Hash the actual compiled closure EnvDump can load, not only Lake metadata."""
+    digest = hashlib.sha256()
+    for label, root in dependency_artifact_roots():
+        current = Path(root.anchor)
+        for component in root.parts[1:]:
+            current /= component
+            if current.is_symlink():
+                raise ValueError(f"symlink dependency root component forbidden: {current}")
+        if not root.is_dir():
+            raise FileNotFoundError(f"нет dependency artifact root {root}")
+        paths: list[Path] = []
+        for directory, dirnames, filenames in os.walk(root, followlinks=False):
+            base = Path(directory)
+            for name in dirnames:
+                child = base / name
+                if child.is_symlink():
+                    raise ValueError(f"symlink dependency directory forbidden: {child}")
+            for name in filenames:
+                path = base / name
+                if path.is_symlink():
+                    raise ValueError(f"symlink dependency artifact forbidden: {path}")
+                if name.endswith(".trace") or ".olean" in name:
+                    paths.append(path)
+        paths.sort()
+        for path in paths:
+            relative = path.relative_to(root).as_posix()
+            stat = path.stat()
+            digest.update(label.encode("utf-8"))
+            digest.update(b"\0")
+            digest.update(relative.encode("utf-8"))
+            digest.update(b"\0")
+            digest.update(str(stat.st_size).encode("ascii"))
+            digest.update(b"\0")
+            with path.open("rb") as stream:
+                for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+                    digest.update(chunk)
+            digest.update(b"\0")
+    return digest.hexdigest()
+
+
+def load_expected_state(
+    path: Path, prefix: str
+) -> tuple[tuple[tuple[str, int, str], ...], str]:
+    try:
+        value = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise ValueError(f"неверный expected-state: {exc}") from exc
+    if not isinstance(value, dict) or set(value) != {
+        "schema", "prefix", "entries", "dependency_digest"
+    }:
+        raise ValueError("неверная схема expected-state")
+    if value.get("schema") != EXPECTED_STATE_SCHEMA or value.get("prefix") != prefix:
+        raise ValueError("expected-state не совпадает с prefix/schema")
+    entries = value.get("entries")
+    if not isinstance(entries, list):
+        raise ValueError("expected-state entries не являются массивом")
+    parsed: list[tuple[str, int, str]] = []
+    for row in entries:
+        if (
+            not isinstance(row, list)
+            or len(row) != 3
+            or not isinstance(row[0], str)
+            or not isinstance(row[1], int)
+            or not isinstance(row[2], str)
+            or len(row[2]) != 64
+        ):
+            raise ValueError("неверная строка expected-state")
+        parsed.append((row[0], row[1], row[2]))
+    dependency_digest = value.get("dependency_digest")
+    if not isinstance(dependency_digest, str) or len(dependency_digest) != 64:
+        raise ValueError("неверный dependency_digest expected-state")
+    return tuple(parsed), dependency_digest
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -218,17 +355,58 @@ def main() -> int:
                     help="какие модули импортировать (по умолчанию RouteB)")
     ap.add_argument("--namespace", action="append", default=None,
                     help="опциональный повторяемый фильтр имён; по умолчанию все выбранные модули")
+    ap.add_argument("--name", action="append", default=None,
+                    help="опциональное точное имя декларации; повторяемый")
+    ap.add_argument("--module", action="append", default=None,
+                    help="опциональный точный source-backed модуль; повторяемый")
     ap.add_argument("--out", default=str(HERE / "env_index.jsonl"))
     ap.add_argument("--timeout", type=int, default=3600)
     ap.add_argument("--limit", type=int, default=0, help="взять первые N модулей")
+    ap.add_argument(
+        "--expected-state",
+        type=Path,
+        help="exact content snapshot, созданный сразу после lake query Q3",
+    )
     a = ap.parse_args()
 
     if not BUILD_LIB.is_dir():
         print(f"нет каталога сборки {BUILD_LIB} — сначала lake build", file=sys.stderr)
         return 2
 
-    built, have_src, missing_modules, orphaned_oleans, stale_oleans = \
-        module_selection(a.prefix, a.limit)
+    try:
+        expected_state = (
+            load_expected_state(a.expected_state, a.prefix)
+            if a.expected_state is not None
+            else None
+        )
+    except ValueError as exc:
+        print(str(exc), file=sys.stderr)
+        return 2
+    if expected_state is not None:
+        expected_modules, expected_dependencies = expected_state
+        if (
+            module_content_fingerprint(a.prefix) != expected_modules
+            or dependency_content_digest() != expected_dependencies
+        ):
+            print("expected-state изменился до EnvDump", file=sys.stderr)
+            return 2
+
+    selected_all, have_src, missing_modules, orphaned_oleans, stale_oleans = \
+        module_selection(a.prefix, a.limit, lake_validated=expected_state is not None)
+    selection_before = (
+        selected_all, have_src, missing_modules, orphaned_oleans, stale_oleans
+    )
+    built = selected_all
+    if a.module:
+        requested_modules = sorted(set(a.module))
+        unavailable = sorted(set(requested_modules) - set(built))
+        if unavailable:
+            print(
+                "requested modules unavailable: " + ", ".join(unavailable),
+                file=sys.stderr,
+            )
+            return 2
+        built = requested_modules
     before_state = module_state_fingerprint(a.prefix)
     if not built:
         print(f"под префиксом {a.prefix} нет ни одного собранного модуля", file=sys.stderr)
@@ -250,7 +428,26 @@ def main() -> int:
     if a.limit:
         print(f"лимит импорта              : {a.limit}")
 
-    code, records, errs = run(built, a.namespace or [], a.timeout)
+    code, records, errs = run(
+        built, a.namespace or [], sorted(set(a.name or [])), a.timeout
+    )
+    if a.name:
+        missing_names, unexpected_names = exact_name_set_diagnostics(
+            records, sorted(set(a.name))
+        )
+        if missing_names or unexpected_names:
+            if missing_names:
+                print(
+                    "requested exact names missing: " + ", ".join(missing_names),
+                    file=sys.stderr,
+                )
+            if unexpected_names:
+                print(
+                    "unexpected exact names returned: " + ", ".join(unexpected_names),
+                    file=sys.stderr,
+                )
+            print("индекс не опубликован: exact --name set mismatch", file=sys.stderr)
+            return 1
     n = len(records)
     if errs.strip():
         print("── диагностика Lean ──", file=sys.stderr)
@@ -264,9 +461,14 @@ def main() -> int:
 
     # Другая сессия могла собрать/удалить модуль во время долгого обхода. В этом
     # случае результат уже устарел до публикации: оставляем прежний индекс целым.
-    after = module_selection(a.prefix, a.limit)
-    if (after != (built, have_src, missing_modules, orphaned_oleans, stale_oleans)
-            or module_state_fingerprint(a.prefix) != before_state):
+    after = module_selection(a.prefix, a.limit, lake_validated=expected_state is not None)
+    if (after != selection_before
+            or module_state_fingerprint(a.prefix) != before_state
+            or (expected_state is not None
+                and (
+                    module_content_fingerprint(a.prefix) != expected_state[0]
+                    or dependency_content_digest() != expected_state[1]
+                ))):
         print("индекс не опубликован: набор .lean/.olean изменился во время прогона",
               file=sys.stderr)
         return 1

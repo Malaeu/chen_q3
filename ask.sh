@@ -16,18 +16,20 @@ set -uo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")" || exit 2
 
 if [ $# -eq 0 ]; then
-  echo "usage: ./ask.sh [--deep] [--external-receipt PATH] [--external-candidate NAME] [--external-candidate-provenance CLASS] <термин> [ещё термины]"
+  echo "usage: ./ask.sh [--deep] [--defer-external] [--external-receipt PATH] [--external-candidate NAME] [--external-candidate-provenance CLASS] <термин> [ещё термины]"
   echo "       ищет каскадом: knowledge.db · litreview · Lean · specs/docs · q3_docs · external Lean"
   exit 2
 fi
 
 DEEP=0
+DEFER_EXTERNAL=0
 EXTERNAL_RECEIPT=""
 EXTERNAL_CANDIDATE=""
 EXTERNAL_CANDIDATE_PROVENANCE=""
 while [ $# -gt 0 ]; do
   case "${1:-}" in
     --deep) DEEP=1; shift ;;
+    --defer-external) DEFER_EXTERNAL=1; shift ;;
     --external-receipt)
       [ $# -ge 2 ] || { echo "--external-receipt requires a path"; exit 2; }
       EXTERNAL_RECEIPT="$2"
@@ -52,6 +54,10 @@ if [ $# -eq 0 ]; then
   echo "usage: ./ask.sh [--deep] [--external-receipt PATH] [--external-candidate NAME] [--external-candidate-provenance CLASS] <термин> [ещё термины]"
   exit 2
 fi
+if [ "$DEFER_EXTERNAL" -eq 1 ] && [ -n "$EXTERNAL_RECEIPT$EXTERNAL_CANDIDATE$EXTERNAL_CANDIDATE_PROVENANCE" ]; then
+  echo "--defer-external cannot be combined with external receipt/candidate options"
+  exit 2
+fi
 if [ -z "$EXTERNAL_RECEIPT" ] && { [ -n "$EXTERNAL_CANDIDATE" ] || [ -n "$EXTERNAL_CANDIDATE_PROVENANCE" ]; }; then
   echo "external candidate binding requires --external-receipt"
   exit 2
@@ -67,6 +73,11 @@ PROOFS="q3.lean.aristotle/aristotle_db/aristotle_proofs.db"
 HITS=0
 SEARCHED=()
 SEARCH_FAILURES=()
+QMD_SEARCH_STATUS="INCOMPLETE"
+QMD_CANDIDATES_JSON="[]"
+QMD_CORPUS_SHA256=""
+QMD_COLLECTION_IDENTITY=""
+LOCAL_CANDIDATE_RECORDS=()
 
 hdr() { printf '\n── %s %s\n' "$1" "$(printf '─%.0s' $(seq 1 $((60 - ${#1}))))"; }
 
@@ -83,6 +94,16 @@ for line in sys.stdin:
 ' "$1"
 }
 
+record_local_candidates() {
+  local provider="$1" provenance="$2" text="$3" line count=0
+  while IFS= read -r line; do
+    [ -n "$line" ] || continue
+    LOCAL_CANDIDATE_RECORDS+=("${provider}"$'\x1f'"${provenance}"$'\x1f'"${line}")
+    count=$((count + 1))
+    [ "$count" -ge 2 ] && break
+  done <<< "$text"
+}
+
 # ── 1. База знаний: убитое, ходы, журнал, досье ───────────────────────────────
 SEARCHED+=("knowledge.db (kill/move/journal/dossier)")
 if [ -f "$KB" ]; then
@@ -93,6 +114,7 @@ if [ -f "$KB" ]; then
     hdr "ЗНАНИЕ (kb.py ask)"
     printf '%s\n' "$OUT" | head -30
     HITS=$((HITS + 1))
+    record_local_candidates "knowledge-db" "kb.py ask" "$OUT"
   fi
 else
   SEARCH_FAILURES+=("knowledge.db: required database missing")
@@ -170,6 +192,7 @@ PY
     hdr "СТЫКОВКИ — входы и выходы"
     printf '%s\n' "$OUT"
     HITS=$((HITS + 1))
+    record_local_candidates "knowledge-db" "capability/assembly/counterexample" "$OUT"
   fi
 fi
 
@@ -202,6 +225,7 @@ if [ -d "$LIT" ]; then
     [ -n "$CARDS" ] && echo "  разобранные карточки: $(printf '%s' "$CARDS" | tr '\n' ' ')"
     [ -n "$PDFS" ] && echo "  PDF на диске: $(printf '%s' "$PDFS" | tr '\n' ' ')"
     HITS=$((HITS + 1))
+    record_local_candidates "local-literature" "docs/routeB_bus/litreview" "$OUT${CARDS:+$'\n'$CARDS}${PDFS:+$'\n'$PDFS}"
   fi
 else
   SEARCH_FAILURES+=("litreview: required root missing")
@@ -244,6 +268,7 @@ PY
     hdr "LEAN — объявления в metadata index"
     printf '%s\n' "$OUT" | utf8_head_chars 150
     HITS=$((HITS + 1))
+    record_local_candidates "lean-index" "aristotle_proofs.db" "$OUT"
   fi
 else
   SEARCH_FAILURES+=("aristotle_proofs.db: required database missing")
@@ -263,6 +288,7 @@ if [ -n "$OUT" ]; then
   hdr "LEAN — на диске сейчас"
   printf '%s\n' "$OUT"
   HITS=$((HITS + 1))
+  record_local_candidates "lean-tree" "Q3/Proofs/RouteB" "$OUT"
 fi
 
 # ── 5. Спеки, карты и память развилок ─────────────────────────────────────────
@@ -284,22 +310,50 @@ if [ -n "$OUT" ]; then
   hdr "СПЕКИ, КАРТЫ И ПАМЯТЬ РАЗВИЛОК"
   printf '%s\n' "$OUT" | sed 's/^/  /'
   HITS=$((HITS + 1))
+  record_local_candidates "specs-docs" "specs/maps" "$OUT"
 fi
 
 # ── 6. Семантический индекс: один search; в deep ещё один vsearch ────────────
 SEARCHED+=("q3_docs (bounded qmd search через research_oracle.py)")
 ORACLE_PY="scripts/research_oracle.py"
-OUT="$(python3 "$ORACLE_PY" query "$Q" -c q3_docs --mode search --budget-seconds 3 2>&1)"
+QMD_IDENTITY_JSON="$(python3 -c '
+import json
+from orchestrator.spine import validate_semantic_index
+value = validate_semantic_index()
+print(json.dumps({
+    "corpus_sha256": value["corpus"]["sha256"],
+    "collection_identity": value["qmd_index"]["identity"],
+}, separators=(",", ":")))
+' 2>&1)"
 RC=$?
 if [ "$RC" -ne 0 ]; then
-  SEARCH_FAILURES+=("q3_docs: qmd search failed (code $RC)")
-elif printf '%s' "$OUT" | grep -q '"file"'; then
-  hdr "СЕМАНТИЧЕСКИЙ ИНДЕКС q3_docs — search-кандидаты"
-  printf '%s\n' "$OUT" | head -60
-  HITS=$((HITS + 1))
+  SEARCH_FAILURES+=("q3_docs: semantic-index freshness validation failed")
+else
+  QMD_CORPUS_SHA256="$(printf '%s' "$QMD_IDENTITY_JSON" | python3 -c 'import json,sys; print(json.load(sys.stdin)["corpus_sha256"])')"
+  QMD_COLLECTION_IDENTITY="$(printf '%s' "$QMD_IDENTITY_JSON" | python3 -c 'import json,sys; print(json.load(sys.stdin)["collection_identity"])')"
+  OUT="$(python3 "$ORACLE_PY" query "$Q" -c q3_docs --mode search --budget-seconds 3 2>&1)"
+  RC=$?
+  if [ "$RC" -ne 0 ]; then
+    SEARCH_FAILURES+=("q3_docs: qmd search failed (code $RC)")
+  elif printf '%s' "$OUT" | grep -q '"file"'; then
+    QMD_SEARCH_STATUS="CANDIDATES"
+    QMD_CANDIDATES_JSON="$(printf '%s' "$OUT" | python3 -c '
+import json, sys
+try:
+    rows = json.load(sys.stdin)
+except Exception:
+    rows = []
+print(json.dumps(rows[:8] if isinstance(rows, list) else [], ensure_ascii=False, separators=(",", ":")))
+')"
+    hdr "СЕМАНТИЧЕСКИЙ ИНДЕКС q3_docs — search-кандидаты"
+    printf '%s\n' "$OUT" | head -60
+    HITS=$((HITS + 1))
+  else
+    QMD_SEARCH_STATUS="LOCAL_ZERO_AT_CORPUS_HASH"
+  fi
 fi
 
-if [ "$DEEP" -eq 1 ]; then
+if [ "$DEEP" -eq 1 ] && [ -n "$QMD_COLLECTION_IDENTITY" ]; then
   SEARCHED+=("q3_docs (bounded qmd vsearch через research_oracle.py)")
   OUT="$(python3 "$ORACLE_PY" query "$Q" -c q3_docs --mode vsearch --budget-seconds 15 2>&1)"
   RC=$?
@@ -321,10 +375,12 @@ if [ "$DEEP" -eq 1 ]; then
   fi
 fi
 
-# Enabled external bases are part of the shelf, not an optional web-search layer.
+# Enabled external bases are part of the complete shelf, not an optional web-search layer.
 # A local hit never licenses skipping them: otherwise "not found anywhere" has a
 # hidden denominator and can be false on a registered base.
-if [ -n "$EXTERNAL_RECEIPT" ]; then
+if [ "$DEFER_EXTERNAL" -eq 1 ]; then
+  SEARCHED+=("all enabled external Lean bases (DEFERRED_BY_CALLER)")
+elif [ -n "$EXTERNAL_RECEIPT" ]; then
   EXTERNAL_VALIDATE=(python3 scripts/research_oracle.py validate-external-receipt "$Q" "$EXTERNAL_RECEIPT")
   [ -n "$EXTERNAL_CANDIDATE" ] && EXTERNAL_VALIDATE+=(--candidate "$EXTERNAL_CANDIDATE")
   [ -n "$EXTERNAL_CANDIDATE_PROVENANCE" ] && EXTERNAL_VALIDATE+=(--candidate-provenance "$EXTERNAL_CANDIDATE_PROVENANCE")
@@ -369,6 +425,94 @@ fi
 
 # ── Итог ──────────────────────────────────────────────────────────────────────
 printf '\n%s\n' "$(printf '━%.0s' $(seq 1 64))"
+ASK_LOCAL_STATUS="HITS"
+if [ "${#SEARCH_FAILURES[@]}" -gt 0 ]; then
+  ASK_LOCAL_STATUS="INCOMPLETE"
+elif [ "$HITS" -eq 0 ]; then
+  ASK_LOCAL_STATUS="LOCAL_ZERO"
+fi
+ASK_RECEIPT="$(python3 -c '
+import hashlib, json, sys
+query, status, hits, failures, deferred, qmd_status, qmd_corpus, qmd_identity, qmd_candidates = sys.argv[1:10]
+local_records = sys.argv[10:]
+try:
+    candidates = json.loads(qmd_candidates)
+except Exception:
+    candidates = []
+candidate_rows = []
+for record in local_records:
+    parts = record.split("\x1f", 2)
+    if len(parts) != 3:
+        continue
+    provider, provenance, text = parts
+    text = " ".join(text.split())
+    if not text:
+        continue
+    row = {
+        "provider": provider,
+        "query": query,
+        "query_sha256": hashlib.sha256(query.encode()).hexdigest(),
+        "provider_id": hashlib.sha256(f"{provider}\0{provenance}\0{text}".encode()).hexdigest(),
+        "title": text[:300],
+        "excerpt": text[:1200],
+        "url": provenance[:500],
+    }
+    row["metadata_sha256"] = hashlib.sha256(json.dumps(row, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+    candidate_rows.append(row)
+    if len(candidate_rows) == 8:
+        break
+for item in candidates[:8]:
+    if len(candidate_rows) == 8:
+        break
+    if not isinstance(item, dict):
+        continue
+    row = {
+        "provider": "q3_docs",
+        "query": query,
+        "query_sha256": hashlib.sha256(query.encode()).hexdigest(),
+        "provider_id": str(item.get("docid") or item.get("file") or "")[:500],
+        "title": str(item.get("title") or "")[:300],
+        "excerpt": str(item.get("snippet") or "")[:1200],
+        "url": str(item.get("file") or "")[:500],
+        "corpus_sha256": qmd_corpus,
+        "collection_identity": qmd_identity,
+    }
+    row["metadata_sha256"] = hashlib.sha256(json.dumps(row, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+    candidate_rows.append(row)
+q3_candidate_hashes = [
+    item["metadata_sha256"] for item in candidate_rows if item["provider"] == "q3_docs"
+]
+row = {
+    "schema": "q3_ask_local_receipt.v1",
+    "query": query,
+    "query_sha256": hashlib.sha256(query.encode()).hexdigest(),
+    "provider_rows": [
+        {
+            "provider": "local-shelves",
+            "query": query,
+            "query_sha256": hashlib.sha256(query.encode()).hexdigest(),
+            "status": status,
+            "hit_store_count": int(hits),
+            "failure_count": int(failures),
+        },
+        {
+            "provider": "q3_docs",
+            "query": query,
+            "query_sha256": hashlib.sha256(query.encode()).hexdigest(),
+            "status": qmd_status,
+            "corpus_sha256": qmd_corpus or None,
+            "collection_identity": qmd_identity or None,
+            "candidate_count": len(q3_candidate_hashes),
+            "candidate_hashes": q3_candidate_hashes,
+        },
+    ],
+    "candidate_rows": candidate_rows,
+    "external_lean": "DEFERRED" if deferred == "1" else "EXECUTED",
+    "boundary": "LOCAL_RECEIPT_FOREIGN_INCOMPLETE" if deferred == "1" else "COMPLETE_REGISTERED_SHELF",
+}
+print(json.dumps(row, ensure_ascii=False, sort_keys=True, separators=(",", ":")))
+' "$Q" "$ASK_LOCAL_STATUS" "$HITS" "${#SEARCH_FAILURES[@]}" "$DEFER_EXTERNAL" "$QMD_SEARCH_STATUS" "$QMD_CORPUS_SHA256" "$QMD_COLLECTION_IDENTITY" "$QMD_CANDIDATES_JSON" "${LOCAL_CANDIDATE_RECORDS[@]}")"
+printf 'ASK_RECEIPT_JSON: %s\n' "$ASK_RECEIPT"
 if [ "${#SEARCH_FAILURES[@]}" -gt 0 ]; then
   echo "ПОИСК НЕПОЛОН — отсутствие не установлено"
   echo
@@ -377,6 +521,11 @@ if [ "${#SEARCH_FAILURES[@]}" -gt 0 ]; then
   echo "ASK_STATUS: INCOMPLETE"
   exit 2
 elif [ "$HITS" -eq 0 ]; then
+  if [ "$DEFER_EXTERNAL" -eq 1 ]; then
+    echo "Локальные полки завершены без кандидатов; внешний Lean denominator отложен вызывающей стороной."
+    echo "ASK_STATUS: LOCAL_ZERO_FOREIGN_DEFERRED"
+    exit 1
+  fi
   if [ "$DEEP" -eq 0 ]; then
     echo "Быстрый поиск завершён без кандидатов; для вывода о полке требуется --deep."
     echo "ASK_STATUS: INCOMPLETE_FAST_REQUIRES_DEEP"

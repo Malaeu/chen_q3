@@ -68,6 +68,12 @@ unverified assumptions. Число теорем само по себе не яв
 3. Перед утверждением отсутствия, внешним поиском или созданием объекта запускай
    `ask.sh`; после точной Lean-цели запускай `supplier_preflight.py`. Совпадение
    остаётся кандидатом до `EXACT_FIT`.
+   Если нужен поиск по публикациям или альтернативным названиям, передай
+   закрытый `q3_search_intent.v1` только через
+   `workflow_runtime.py run --through supplier-preflight --search-intent`.
+   Используй 3–5 первичных запросов, не более одного feedback batch и не более
+   восьми alias hypotheses. `literature_discovery.py` даёт только bounded
+   metadata candidates; он не доказывает эквивалентность и не очищает admission.
 4. Выполни один precommitted proof/test cycle. Странность запиши до объяснения;
    развилку — в момент выбора.
 5. Закрой результат через attempt/optional insight event, kernel/axiom gate,
@@ -77,6 +83,11 @@ unverified assumptions. Число теорем само по себе не яв
    `pull --rebase --autostash` и push в рамках goal-scoped grant.
 7. Только после доставленного close selector выбирает следующий physical goal
    или валидирует source-locked `NEXT_GOAL_SPEC`.
+
+Terminal close остаётся одной транзакцией `run --through close-node`: сначала
+fsynced `<stem>.goal-close.json`, затем atomic `OPEN -> CLOSED`; новый
+`<stem>.phase-close.json` допустим только после смены six-field phase key и
+зелёного phase-close. При `CLOSE_RETRY_PENDING` заново читай plan.
 
 `workflow_runtime.py run --through close-node` требует точные `--owned-path`,
 `--attempt-payload` и kernel gate для owned Lean. Новый объект дополнительно

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import fcntl
+import hashlib
 import json
 import subprocess
 import sys
@@ -99,10 +100,25 @@ PHASE_KEY = {
     "route_id": "ROUTE_B",
     "front_id": "FRONT",
     "source_object_family_id": "SOURCE",
-    "terminal_consumer_id": "CONSUMER",
+    "terminal_consumer_id": "CONSUMER-058",
     "honesty_state": "CHALLENGER_NOT_RH",
     "convention_lock_id": "LOCK",
 }
+
+BLUEPRINT_OUTPUTS = (
+    "full/blueprint/blueprint.md",
+    "q3.lean.aristotle/blueprint/blueprint_manifest.json",
+    "q3.lean.aristotle/blueprint/src/content.tex",
+    "q3.lean.aristotle/blueprint/src/print.tex",
+    "q3.lean.aristotle/blueprint/src/web.tex",
+    "q3.lean.aristotle/blueprint/src/blueprint.sty",
+    "q3.lean.aristotle/blueprint/src/plastex.cfg",
+    "q3.lean.aristotle/blueprint/src/latexmkrc",
+    "q3.lean.aristotle/blueprint/src/macros/common.tex",
+    "q3.lean.aristotle/blueprint/src/macros/print.tex",
+    "q3.lean.aristotle/blueprint/src/macros/web.tex",
+    "q3.lean.aristotle/blueprint/src/extra_styles.css",
+)
 
 
 def exploration_runtime(*, no_progress_streak: int = 6, review_count: int = 0):
@@ -206,6 +222,39 @@ def supplier_receipt(status: str) -> dict[str, object]:
     }
 
 
+def command_stage(label: str, *, exit_code: int = 0) -> dict[str, object]:
+    return {
+        "label": label,
+        "exit": exit_code,
+        "duration_ms": 1,
+        "output_sha256": "a" * 64,
+    }
+
+
+def phase_close_output() -> dict[str, object]:
+    return {
+        "schema": "q3_phase_close.v1",
+        "derived_executed": ["routeb-publication-blueprint"],
+        "derived_status": [
+            {"id": "routeb-publication-blueprint", "status": "CURRENT_WORKTREE"}
+        ],
+        "gates": [{"path": "gate.sh", "exit": 0}],
+        "verdict_migration": {"exit": 0, "pending": False},
+        "blueprint_exit": 0,
+        "manual_debt": {
+            "assembly_review_required": [],
+            "insight_required": [],
+            "cards": [],
+        },
+        "commit_push_performed": False,
+        "PX_RH_CLAIM": "NOT_MADE",
+    }
+
+
+def close_git_identity(_repo: Path, *args: str) -> str:
+    return "a" * 40 if args == ("rev-parse", "HEAD") else "b" * 40
+
+
 def shadow_snapshot(**overrides: object) -> StartupSnapshot:
     fields: dict[str, object] = {
         "schema": "q3_startup_snapshot.v10.shadow.v1",
@@ -274,6 +323,1447 @@ def node_registry_summary(*, status: str = "PASS") -> dict[str, object]:
 
 
 class WorkflowRuntimePlants(unittest.TestCase):
+    def test_supplier_search_intent_runs_through_canonical_front_door(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            subprocess.run(["git", "init", "-q"], cwd=repo, check=True)
+            lock = repo / ".git/q3-three-body.writer.lock"
+            lock.write_text("lock\n", encoding="utf-8")
+            intent_path = repo / "intent.json"
+            intent_path.write_text("{}\n", encoding="utf-8")
+            card = repo / "oracle.md"
+            card.write_text("card\n", encoding="utf-8")
+            supplier_script = repo / "scripts/supplier_preflight.py"
+            supplier_script.parent.mkdir()
+            supplier_script.write_text(
+                """import argparse, fcntl, json, os
+p = argparse.ArgumentParser()
+p.add_argument('--search-intent')
+a = p.parse_args()
+with open('.git/q3-three-body.writer.lock', 'rb') as lock:
+    fcntl.flock(lock.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+    fcntl.flock(lock.fileno(), fcntl.LOCK_UN)
+print(json.dumps({'schema': 'q3_search_evidence.v1', 'status': 'PASS',
+                  'observed_at': '2026-09-02T12:00:00+00:00'}))
+""",
+                encoding="utf-8",
+            )
+            evidence_payload = {
+                "schema": "q3_search_evidence.v1",
+                "status": "PASS",
+                "observed_at": "2026-09-02T12:00:00+00:00",
+            }
+            observation_id = hashlib.sha256(
+                workflow_runtime._canonical_json_bytes({
+                    "observed_at": evidence_payload["observed_at"],
+                    "evidence": evidence_payload,
+                })[:-1]
+            ).hexdigest()
+            oracle_script = repo / "q3.lean.aristotle/scripts/oracle_questions.py"
+            oracle_script.parent.mkdir(parents=True)
+            oracle_script.write_text(
+                f"""import argparse, hashlib, json, os
+p = argparse.ArgumentParser()
+p.add_argument('command')
+p.add_argument('--card')
+p.add_argument('--intent')
+p.add_argument('--evidence')
+p.add_argument('--inherited-writer-lock-fd', type=int)
+a = p.parse_args()
+assert a.command == 'record-evidence'
+assert a.card == 'oracle.md'
+os.fstat(a.inherited_writer_lock_fd)
+intent = json.load(open(a.intent, encoding='utf-8'))
+evidence = json.load(open(a.evidence, encoding='utf-8'))
+assert intent['node_id'] == 'NODE-058'
+assert evidence['schema'] == 'q3_search_evidence.v1'
+canonical = lambda value: json.dumps(value, sort_keys=True, separators=(',', ':'))
+intent_id = hashlib.sha256(canonical(intent).encode()).hexdigest()
+stored = dict(evidence, observation_id='{observation_id}')
+block = ('<!-- Q3_SEARCH_EVIDENCE_V1_BEGIN intent_id=' + intent_id
+         + ' observation_id={observation_id} -->\\n```json\\n' + canonical(stored)
+         + '\\n```\\n<!-- Q3_SEARCH_EVIDENCE_V1_END -->\\n')
+with open(a.card, 'a', encoding='utf-8') as handle:
+    handle.write(block)
+print(json.dumps({{'schema':'q3_search_evidence_write.v1','status':'RECORDED','observation_id':'{observation_id}'}}))
+""",
+                encoding="utf-8",
+            )
+            intent = {
+                "goal_file": "docs/routeB_bus/058.goal.md",
+                "node_id": "NODE-058",
+                "source_pin": "SOURCE-058",
+                "admission": {
+                    "theorem": "THEOREM-058",
+                    "consumer": "CONSUMER-058",
+                },
+            }
+            startup_payload = production_snapshot().to_dict()
+            compiled = {
+                "status": "HOLD",
+                "selected_goal": startup_payload["selected_goal"],
+                "startup": startup_payload,
+            }
+            argv = [
+                "workflow_runtime.py", "--root", str(repo), "run", "--through",
+                "supplier-preflight", "--search-intent", str(intent_path),
+                "--record-evidence", "--oracle-card", "oracle.md",
+                "--owned-path", "oracle.md",
+            ]
+            with (
+                mock.patch.object(workflow_runtime.sys, "argv", argv),
+                mock.patch.object(
+                    workflow_runtime, "live_plan_v10", return_value=compiled
+                ) as startup,
+                mock.patch.object(
+                    workflow_runtime, "_recheck_production_identity", return_value=None
+                ),
+                mock.patch(
+                    "scripts.supplier_preflight.validate_search_intent_runtime",
+                    return_value=intent,
+                    create=True,
+                ),
+            ):
+                status = workflow_runtime.main()
+            self.assertEqual(status, 0)
+            self.assertEqual(startup.call_count, 2)
+            startup.assert_called_with(repo, owned_paths=["oracle.md"])
+            self.assertIn(
+                f"observation_id={observation_id}", card.read_text(encoding="utf-8")
+            )
+
+    def test_supplier_search_fatal_or_binding_mismatch_never_starts_child(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            intent_path = repo / "intent.json"
+            intent_path.write_text("{}\n", encoding="utf-8")
+            startup_payload = production_snapshot().to_dict()
+            valid_intent = {
+                "goal_file": startup_payload["selected_goal"],
+                "node_id": startup_payload["exact_node_pin"],
+                "source_pin": startup_payload["exact_source_pin"],
+                "admission": None,
+            }
+            cases = (
+                {
+                    "status": "FATAL", "selected_goal": startup_payload["selected_goal"],
+                    "startup": dict(startup_payload, fatal_errors=["fatal"]),
+                },
+                {
+                    "status": "HOLD", "selected_goal": "docs/routeB_bus/other.goal.md",
+                    "startup": startup_payload,
+                },
+            )
+            for compiled in cases:
+                with self.subTest(status=compiled["status"]), (
+                    mock.patch.object(
+                        workflow_runtime, "live_plan_v10", return_value=compiled
+                    )
+                ), mock.patch(
+                    "scripts.supplier_preflight.validate_search_intent_runtime",
+                    return_value=valid_intent,
+                    create=True,
+                ), mock.patch.object(workflow_runtime.subprocess, "run") as child, (
+                    mock.patch("builtins.print")
+                ):
+                    status = workflow_runtime._supplier_search_dispatch(
+                        repo,
+                        search_intent=intent_path,
+                        owned_paths=[],
+                        record_evidence=False,
+                        oracle_card=None,
+                    )
+                self.assertEqual(status, 2)
+                child.assert_not_called()
+
+    def test_supplier_search_read_only_preserves_child_argv_and_exit(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            intent_path = repo / "intent.json"
+            intent_path.write_text("{}\n", encoding="utf-8")
+            startup_payload = production_snapshot().to_dict()
+            compiled = {
+                "status": "HOLD",
+                "selected_goal": startup_payload["selected_goal"],
+                "startup": startup_payload,
+            }
+            intent = {
+                "goal_file": startup_payload["selected_goal"],
+                "node_id": startup_payload["exact_node_pin"],
+                "source_pin": startup_payload["exact_source_pin"],
+                "admission": None,
+            }
+            completed = subprocess.CompletedProcess(args=[], returncode=7)
+            with (
+                mock.patch.object(
+                    workflow_runtime, "live_plan_v10", return_value=compiled
+                ),
+                mock.patch(
+                    "scripts.supplier_preflight.validate_search_intent_runtime",
+                    return_value=intent,
+                ),
+                mock.patch.object(
+                    workflow_runtime.subprocess, "run", return_value=completed
+                ) as child,
+            ):
+                status = workflow_runtime._supplier_search_dispatch(
+                    repo,
+                    search_intent=intent_path,
+                    owned_paths=[],
+                    record_evidence=False,
+                    oracle_card=None,
+                )
+            self.assertEqual(status, 7)
+            child.assert_called_once_with(
+                [
+                    sys.executable,
+                    str(repo / "scripts/supplier_preflight.py"),
+                    "--search-intent",
+                    str(intent_path),
+                ],
+                cwd=repo,
+            )
+
+    def test_supplier_search_record_fails_on_writer_lock_collision(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            subprocess.run(["git", "init", "-q"], cwd=repo, check=True)
+            lock = repo / ".git/q3-three-body.writer.lock"
+            lock.write_text("lock\n", encoding="utf-8")
+            intent_path = repo / "intent.json"
+            intent_path.write_text("{}\n", encoding="utf-8")
+            card = repo / "oracle.md"
+            card.write_text("card\n", encoding="utf-8")
+            startup_payload = production_snapshot().to_dict()
+            compiled = {
+                "status": "HOLD",
+                "selected_goal": startup_payload["selected_goal"],
+                "startup": startup_payload,
+            }
+            intent = {
+                "goal_file": startup_payload["selected_goal"],
+                "node_id": startup_payload["exact_node_pin"],
+                "source_pin": startup_payload["exact_source_pin"],
+                "admission": None,
+            }
+            with lock.open("rb") as contender:
+                fcntl.flock(contender.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+                with (
+                    mock.patch.object(
+                        workflow_runtime, "live_plan_v10", return_value=compiled
+                    ),
+                    mock.patch(
+                        "scripts.supplier_preflight.validate_search_intent_runtime",
+                        return_value=intent,
+                    ),
+                    mock.patch.object(
+                        workflow_runtime.subprocess,
+                        "run",
+                        return_value=subprocess.CompletedProcess(
+                            args=[],
+                            returncode=0,
+                            stdout=json.dumps({
+                                "schema": "q3_search_evidence.v1",
+                                "status": "PASS",
+                                "observed_at": "2026-09-02T12:00:00+00:00",
+                            }),
+                            stderr="",
+                        ),
+                    ) as child,
+                    mock.patch("builtins.print"),
+                ):
+                    status = workflow_runtime._supplier_search_dispatch(
+                        repo,
+                        search_intent=intent_path,
+                        owned_paths=["oracle.md"],
+                        record_evidence=True,
+                        oracle_card="oracle.md",
+                    )
+            self.assertEqual(status, 2)
+            self.assertEqual(child.call_count, 1)
+            self.assertEqual(card.read_text(encoding="utf-8"), "card\n")
+
+    def test_supplier_search_record_rejects_plan_pin_mutation_before_writer(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            intent_path = repo / "intent.json"
+            intent_path.write_text("{}\n", encoding="utf-8")
+            card = repo / "oracle.md"
+            card.write_text("card\n", encoding="utf-8")
+            startup_payload = production_snapshot().to_dict()
+            compiled = {
+                "status": "HOLD",
+                "selected_goal": startup_payload["selected_goal"],
+                "startup": startup_payload,
+            }
+            mutated = json.loads(json.dumps(compiled))
+            mutated["startup"]["exact_source_pin"] = "MUTATED"
+            intent = {
+                "goal_file": startup_payload["selected_goal"],
+                "node_id": startup_payload["exact_node_pin"],
+                "source_pin": startup_payload["exact_source_pin"],
+                "admission": None,
+            }
+            with (
+                mock.patch.object(
+                    workflow_runtime,
+                    "live_plan_v10",
+                    side_effect=[compiled, mutated],
+                ),
+                mock.patch(
+                    "scripts.supplier_preflight.validate_search_intent_runtime",
+                    return_value=intent,
+                ),
+                mock.patch.object(
+                    workflow_runtime.subprocess,
+                    "run",
+                    return_value=subprocess.CompletedProcess(
+                        args=[],
+                        returncode=0,
+                        stdout=json.dumps({
+                            "schema": "q3_search_evidence.v1",
+                            "status": "PASS",
+                            "observed_at": "2026-09-02T12:00:00+00:00",
+                        }),
+                        stderr="",
+                    ),
+                ) as child,
+                mock.patch("builtins.print"),
+            ):
+                status = workflow_runtime._supplier_search_dispatch(
+                    repo,
+                    search_intent=intent_path,
+                    owned_paths=["oracle.md"],
+                    record_evidence=True,
+                    oracle_card="oracle.md",
+                )
+            self.assertEqual(status, 2)
+            self.assertEqual(child.call_count, 1)
+
+    def test_supplier_search_record_rejects_intent_mutation_after_search(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            subprocess.run(["git", "init", "-q"], cwd=repo, check=True)
+            (repo / ".git/q3-three-body.writer.lock").write_text(
+                "lock\n", encoding="utf-8"
+            )
+            intent_path = repo / "intent.json"
+            intent_path.write_text("{}\n", encoding="utf-8")
+            card = repo / "oracle.md"
+            card.write_text("card\n", encoding="utf-8")
+            supplier_script = repo / "scripts/supplier_preflight.py"
+            supplier_script.parent.mkdir()
+            supplier_script.write_text(
+                "import argparse, json\n"
+                "p=argparse.ArgumentParser(); p.add_argument('--search-intent'); a=p.parse_args()\n"
+                "open(a.search_intent, 'w', encoding='utf-8').write('{\\\"mutated\\\":true}\\n')\n"
+                "print(json.dumps({'schema':'q3_search_evidence.v1','status':'PASS',"
+                "'observed_at':'2026-09-02T12:00:00+00:00'}))\n",
+                encoding="utf-8",
+            )
+            startup_payload = production_snapshot().to_dict()
+            compiled = {
+                "status": "HOLD",
+                "selected_goal": startup_payload["selected_goal"],
+                "startup": startup_payload,
+            }
+            intent = {
+                "goal_file": startup_payload["selected_goal"],
+                "node_id": startup_payload["exact_node_pin"],
+                "source_pin": startup_payload["exact_source_pin"],
+                "admission": None,
+            }
+            with (
+                mock.patch.object(
+                    workflow_runtime, "live_plan_v10", return_value=compiled
+                ),
+                mock.patch.object(
+                    workflow_runtime, "_recheck_production_identity", return_value=None
+                ),
+                mock.patch(
+                    "scripts.supplier_preflight.validate_search_intent_runtime",
+                    return_value=intent,
+                ),
+                mock.patch("builtins.print"),
+            ):
+                status = workflow_runtime._supplier_search_dispatch(
+                    repo,
+                    search_intent=intent_path,
+                    owned_paths=["oracle.md"],
+                    record_evidence=True,
+                    oracle_card="oracle.md",
+                )
+            self.assertEqual(status, 2)
+            self.assertEqual(card.read_text(encoding="utf-8"), "card\n")
+
+    def test_supplier_search_record_rejects_supplier_card_mutation(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            subprocess.run(["git", "init", "-q"], cwd=repo, check=True)
+            (repo / ".git/q3-three-body.writer.lock").write_text(
+                "lock\n", encoding="utf-8"
+            )
+            intent_path = repo / "intent.json"
+            intent_path.write_text("{}\n", encoding="utf-8")
+            card = repo / "oracle.md"
+            card.write_text("card\n", encoding="utf-8")
+            supplier_script = repo / "scripts/supplier_preflight.py"
+            supplier_script.parent.mkdir()
+            supplier_script.write_text(
+                "import json\n"
+                "open('oracle.md', 'a', encoding='utf-8').write('fake-write\\n')\n"
+                "print(json.dumps({'schema':'q3_search_evidence.v1','status':'PASS',"
+                "'observed_at':'2026-09-02T12:00:00+00:00'}))\n",
+                encoding="utf-8",
+            )
+            startup_payload = production_snapshot().to_dict()
+            compiled = {
+                "status": "HOLD",
+                "selected_goal": startup_payload["selected_goal"],
+                "startup": startup_payload,
+            }
+            intent = {
+                "goal_file": startup_payload["selected_goal"],
+                "node_id": startup_payload["exact_node_pin"],
+                "source_pin": startup_payload["exact_source_pin"],
+                "admission": None,
+            }
+            with (
+                mock.patch.object(
+                    workflow_runtime, "live_plan_v10", return_value=compiled
+                ),
+                mock.patch.object(
+                    workflow_runtime, "_recheck_production_identity", return_value=None
+                ),
+                mock.patch(
+                    "scripts.supplier_preflight.validate_search_intent_runtime",
+                    return_value=intent,
+                ),
+                mock.patch("builtins.print"),
+            ):
+                status = workflow_runtime._supplier_search_dispatch(
+                    repo,
+                    search_intent=intent_path,
+                    owned_paths=["oracle.md"],
+                    record_evidence=True,
+                    oracle_card="oracle.md",
+                )
+            self.assertEqual(status, 2)
+            self.assertEqual(card.read_text(encoding="utf-8"), "card\nfake-write\n")
+
+    def test_search_writer_receipt_and_noop_postconditions_are_exact(self) -> None:
+        observation_id = "e" * 64
+        evidence_payload = {
+            "schema": "q3_search_evidence.v1",
+            "status": "PASS",
+            "observed_at": "2026-09-02T12:00:00+00:00",
+        }
+        frozen_evidence = workflow_runtime._canonical_json_bytes(evidence_payload)
+        expected_intent_id = "d" * 64
+        with self.assertRaisesRegex(
+            workflow_runtime.WorkflowRuntimeError,
+            "WRITER_RECEIPT_INVALID",
+        ):
+            workflow_runtime._parse_search_writer_receipt(
+                json.dumps({"schema": "q3_search_evidence.v1", "status": "PASS"}),
+                0,
+                expected_observation_id=observation_id,
+            )
+        wrong_observation_id = "f" * 64
+        with self.assertRaisesRegex(
+            workflow_runtime.WorkflowRuntimeError,
+            "WRITER_RECEIPT_INVALID",
+        ):
+            workflow_runtime._parse_search_writer_receipt(
+                json.dumps({
+                    "schema": "q3_search_evidence_write.v1",
+                    "status": "RECORDED",
+                    "observation_id": wrong_observation_id,
+                }),
+                0,
+                expected_observation_id=observation_id,
+            )
+        with tempfile.TemporaryDirectory() as tmp:
+            card = Path(tmp) / "card.md"
+            card.write_text(
+                "<!-- Q3_SEARCH_EVIDENCE_V1_BEGIN "
+                f"intent_id={expected_intent_id} observation_id={observation_id} -->\n"
+                "```json\n"
+                + json.dumps(
+                    dict(evidence_payload, observation_id=observation_id),
+                    sort_keys=True,
+                    separators=(",", ":"),
+                )
+                + "\n```\n<!-- Q3_SEARCH_EVIDENCE_V1_END -->\n",
+                encoding="utf-8",
+            )
+            raw = card.read_bytes()
+            info = card.stat()
+            state = (
+                (
+                    info.st_dev,
+                    info.st_ino,
+                    info.st_mode,
+                    info.st_size,
+                    info.st_mtime_ns,
+                    info.st_uid,
+                    info.st_gid,
+                ),
+                hashlib.sha256(raw).hexdigest(),
+            )
+            workflow_runtime._validate_search_card_postcondition(
+                card,
+                before=state,
+                after=state,
+                writer_receipt={
+                    "schema": "q3_search_evidence_write.v1",
+                    "status": "NOOP",
+                    "observation_id": observation_id,
+                },
+                expected_intent_id=expected_intent_id,
+                expected_observation_id=observation_id,
+                frozen_evidence=frozen_evidence,
+            )
+            substituted = workflow_runtime._canonical_json_bytes(
+                {"schema": "q3_search_evidence.v1", "status": "INCOMPLETE"}
+            )
+            with self.assertRaisesRegex(
+                workflow_runtime.WorkflowRuntimeError,
+                "EVIDENCE_BINDING_FAILED",
+            ):
+                workflow_runtime._validate_search_card_postcondition(
+                    card,
+                    before=state,
+                    after=state,
+                    writer_receipt={
+                        "schema": "q3_search_evidence_write.v1",
+                        "status": "NOOP",
+                        "observation_id": observation_id,
+                    },
+                    expected_intent_id=expected_intent_id,
+                    expected_observation_id=observation_id,
+                    frozen_evidence=substituted,
+                )
+            changed = (state[0], "f" * 64)
+            with self.assertRaisesRegex(
+                workflow_runtime.WorkflowRuntimeError,
+                "CARD_POSTCONDITION_FAILED",
+            ):
+                workflow_runtime._validate_search_card_postcondition(
+                    card,
+                    before=state,
+                    after=changed,
+                    writer_receipt={
+                        "schema": "q3_search_evidence_write.v1",
+                        "status": "NOOP",
+                        "observation_id": observation_id,
+                    },
+                    expected_intent_id=expected_intent_id,
+                    expected_observation_id=observation_id,
+                    frozen_evidence=frozen_evidence,
+                )
+            ownership_changed = (
+                (*state[0][:5], state[0][5] + 1, state[0][6]),
+                state[1],
+            )
+            recorded_before = (state[0], "0" * 64)
+            with self.assertRaisesRegex(
+                workflow_runtime.WorkflowRuntimeError,
+                "CARD_POSTCONDITION_FAILED",
+            ):
+                workflow_runtime._validate_search_card_postcondition(
+                    card,
+                    before=recorded_before,
+                    after=ownership_changed,
+                    writer_receipt={
+                        "schema": "q3_search_evidence_write.v1",
+                        "status": "RECORDED",
+                        "observation_id": observation_id,
+                    },
+                    expected_intent_id=expected_intent_id,
+                    expected_observation_id=observation_id,
+                    frozen_evidence=frozen_evidence,
+                )
+
+    def test_search_evidence_tool_is_selected_exactly_once(self) -> None:
+        self.assertEqual(
+            workflow_runtime.ACTION_TOOLS["SELECT_EXACT_GOAL"].count(
+                "workflow-search-evidence"
+            ),
+            1,
+        )
+
+    def test_supplier_search_record_fails_closed_on_writer_failure(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            subprocess.run(["git", "init", "-q"], cwd=repo, check=True)
+            (repo / ".git/q3-three-body.writer.lock").write_text(
+                "lock\n", encoding="utf-8"
+            )
+            intent_path = repo / "intent.json"
+            intent_path.write_text("{}\n", encoding="utf-8")
+            card = repo / "oracle.md"
+            card.write_text("card\n", encoding="utf-8")
+            supplier_script = repo / "scripts/supplier_preflight.py"
+            supplier_script.parent.mkdir()
+            supplier_script.write_text(
+                "import json\n"
+                "print(json.dumps({'schema':'q3_search_evidence.v1','status':'PASS',"
+                "'observed_at':'2026-09-02T12:00:00+00:00'}))\n",
+                encoding="utf-8",
+            )
+            oracle_script = repo / "q3.lean.aristotle/scripts/oracle_questions.py"
+            oracle_script.parent.mkdir(parents=True)
+            oracle_script.write_text("import sys\nsys.exit(7)\n", encoding="utf-8")
+            startup_payload = production_snapshot().to_dict()
+            compiled = {
+                "status": "HOLD",
+                "selected_goal": startup_payload["selected_goal"],
+                "startup": startup_payload,
+            }
+            intent = {
+                "goal_file": startup_payload["selected_goal"],
+                "node_id": startup_payload["exact_node_pin"],
+                "source_pin": startup_payload["exact_source_pin"],
+                "admission": None,
+            }
+            with (
+                mock.patch.object(
+                    workflow_runtime, "live_plan_v10", return_value=compiled
+                ),
+                mock.patch.object(
+                    workflow_runtime, "_recheck_production_identity", return_value=None
+                ),
+                mock.patch(
+                    "scripts.supplier_preflight.validate_search_intent_runtime",
+                    return_value=intent,
+                ),
+                mock.patch("builtins.print"),
+            ):
+                status = workflow_runtime._supplier_search_dispatch(
+                    repo,
+                    search_intent=intent_path,
+                    owned_paths=["oracle.md"],
+                    record_evidence=True,
+                    oracle_card="oracle.md",
+                )
+            self.assertEqual(status, 2)
+            self.assertEqual(card.read_text(encoding="utf-8"), "card\n")
+
+    def _goal_close_files(self, repo: Path) -> dict[str, Path]:
+        goal = repo / "docs/routeB_bus/058_live.goal.md"
+        goal.parent.mkdir(parents=True)
+        goal.write_text(
+            "```yaml\nGOAL_ID: '058'\nSTATUS: OPEN\nNODE: NODE-058\n"
+            "SOURCE_PIN: SOURCE-058\nTHEOREM: THEOREM-058\n"
+            "TERMINAL_CONSUMER: CONSUMER-058\n```\n",
+            encoding="utf-8",
+        )
+        answer = goal.with_name("058_live.answer.md")
+        answer.write_text("answer\n", encoding="utf-8")
+        attempt = repo / "attempt.json"
+        attempt.write_text(json.dumps({"next_action": "CLOSE_GOAL"}) + "\n", encoding="utf-8")
+        channel = repo / "orchestrator/state/CHANNEL_RUNTIME.json"
+        channel.parent.mkdir(parents=True)
+        channel.write_text(json.dumps(exploration_runtime()) + "\n", encoding="utf-8")
+        control = repo / "docs/CODEX_CONTROL.md"
+        control.write_text("control\n", encoding="utf-8")
+        derived = repo / "derived.out"
+        derived.write_text("derived\n", encoding="utf-8")
+        registry = repo / "docs/cartographer/DERIVED_ARTIFACTS.yaml"
+        registry.parent.mkdir(parents=True, exist_ok=True)
+        registry.write_text(
+            "schema: q3_derived_artifact_registry.v1\nartifacts:\n"
+            "  - id: routeb-publication-blueprint\n"
+            "    detector: COMMAND_CHECK\n"
+            "    inputs: [input.txt]\n"
+            "    outputs:\n"
+            + "".join(f"      - {path}\n" for path in BLUEPRINT_OUTPUTS)
+            + "    authority: INTERNAL_EVIDENCE_BLUEPRINT_NOT_PROOF_OR_EXTERNAL_PUBLICATION\n"
+            "    cost_tier: MEDIUM\n"
+            "    consumers: [phase-close-publication]\n",
+            encoding="utf-8",
+        )
+        for relative in BLUEPRINT_OUTPUTS:
+            output = repo / relative
+            output.parent.mkdir(parents=True, exist_ok=True)
+            output.write_text(relative + "\n", encoding="utf-8")
+        next_spec = repo / "next.json"
+        next_spec.write_text("{}\n", encoding="utf-8")
+        return {
+            "goal": goal, "answer": answer, "attempt": attempt,
+            "channel": channel, "derived": derived, "next_spec": next_spec,
+        }
+
+    def test_goal_close_receipt_precedes_terminalization_and_retry_is_writer_free(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            paths = self._goal_close_files(repo)
+            startup = production_snapshot(
+                selected_goal="docs/routeB_bus/058_live.goal.md",
+                control_sha256=workflow_runtime._sha256(repo / "docs/CODEX_CONTROL.md"),
+                git_head="a" * 40,
+                git_tree="b" * 40,
+            ).to_dict()
+            compiled = {"startup": startup, "selected_goal": startup["selected_goal"]}
+            epoch = _FakeWriterEpoch()
+            epoch.open = True
+            writes: list[str] = []
+            real_atomic = workflow_runtime._atomic_bytes
+
+            def crash_after_receipt(path: Path, payload: bytes) -> None:
+                writes.append(path.name)
+                if path.name.endswith(".goal.md"):
+                    raise OSError("crash plant")
+                real_atomic(path, payload)
+
+            with (
+                mock.patch.object(workflow_runtime, "_validate_modern_answer"),
+                mock.patch("orchestrator.goal_runtime.validate_next_goal_spec", return_value={
+                    "phase_key": PHASE_KEY, "phase_key_change": False,
+                }),
+                mock.patch.object(workflow_runtime, "_execution_epoch_hold", return_value=False),
+                mock.patch.object(workflow_runtime, "_git", side_effect=close_git_identity),
+                mock.patch.object(
+                    workflow_runtime,
+                    "command_receipt",
+                    return_value=command_stage("goal-close"),
+                ),
+                mock.patch.object(
+                    workflow_runtime,
+                    "_atomic_bytes",
+                    side_effect=crash_after_receipt,
+                ),
+                self.assertRaises(OSError),
+            ):
+                workflow_runtime._execute_goal_and_phase_close(
+                    repo,
+                    plan=compiled,
+                    startup=startup,
+                    epoch=epoch,
+                    attempt_payload=paths["attempt"],
+                    attempt={"next_action": "CLOSE_GOAL"},
+                    next_goal_spec=paths["next_spec"],
+                    current_phase_key=None,
+                    receipts=[],
+                )
+            self.assertEqual(writes, ["058_live.goal-close.json", "058_live.goal.md"])
+            self.assertIn("STATUS: OPEN", paths["goal"].read_text(encoding="utf-8"))
+
+            original_attempt = paths["attempt"].read_bytes()
+            real_validate_receipt = workflow_runtime.validate_goal_close_receipt
+            validation_calls = 0
+
+            def mutate_attempt_after_receipt_validation(*args, **kwargs):
+                nonlocal validation_calls
+                result = real_validate_receipt(*args, **kwargs)
+                validation_calls += 1
+                if validation_calls == 2:
+                    paths["attempt"].write_bytes(original_attempt + b" ")
+                return result
+
+            with (
+                mock.patch.object(workflow_runtime, "_validate_modern_answer"),
+                mock.patch("orchestrator.goal_runtime.validate_next_goal_spec", return_value={
+                    "phase_key": PHASE_KEY, "phase_key_change": False,
+                }),
+                mock.patch.object(workflow_runtime, "_git", side_effect=close_git_identity),
+                mock.patch.object(
+                    workflow_runtime,
+                    "validate_goal_close_receipt",
+                    side_effect=mutate_attempt_after_receipt_validation,
+                ),
+                mock.patch.object(
+                    workflow_runtime.node_registry_v10,
+                    "verify_consumption",
+                    return_value={"status": "PASS"},
+                ),
+                self.assertRaisesRegex(
+                    workflow_runtime.WorkflowRuntimeError,
+                    "WORKFLOW_CLOSE_INPUT_DRIFT:attempt",
+                ),
+            ):
+                workflow_runtime._execute_goal_and_phase_close(
+                    repo,
+                    plan=compiled,
+                    startup=startup,
+                    epoch=epoch,
+                    attempt_payload=paths["attempt"],
+                    attempt={"next_action": "CLOSE_GOAL"},
+                    next_goal_spec=paths["next_spec"],
+                    current_phase_key=None,
+                    receipts=[],
+                )
+            self.assertIn("STATUS: OPEN", paths["goal"].read_text(encoding="utf-8"))
+            paths["attempt"].write_bytes(original_attempt)
+
+            with (
+                mock.patch.object(workflow_runtime, "_validate_modern_answer"),
+                mock.patch("orchestrator.goal_runtime.validate_next_goal_spec", return_value={
+                    "phase_key": PHASE_KEY, "phase_key_change": False,
+                }),
+                mock.patch.object(workflow_runtime, "_git", side_effect=close_git_identity),
+                mock.patch.object(
+                    workflow_runtime.node_registry_v10,
+                    "verify_consumption",
+                    side_effect=workflow_runtime.node_registry_v10.NodeRegistryError(
+                        "NODE_REGISTRY_SOURCE_BYTES_DRIFT"
+                    ),
+                ),
+                self.assertRaisesRegex(
+                    workflow_runtime.WorkflowRuntimeError,
+                    "GOAL_CLOSE_RECOVERY_CONSUMPTION_IDENTITY_DRIFT:"
+                    "NODE_REGISTRY_SOURCE_BYTES_DRIFT",
+                ),
+            ):
+                workflow_runtime._execute_goal_and_phase_close(
+                    repo,
+                    plan=compiled,
+                    startup=startup,
+                    epoch=epoch,
+                    attempt_payload=paths["attempt"],
+                    attempt={"next_action": "CLOSE_GOAL"},
+                    next_goal_spec=paths["next_spec"],
+                    current_phase_key=None,
+                    receipts=[],
+                    owned_paths=["owned.lean"],
+                )
+            self.assertIn("STATUS: OPEN", paths["goal"].read_text(encoding="utf-8"))
+
+            def git_identity(_repo: Path, *args: str) -> str:
+                return "a" * 40 if args == ("rev-parse", "HEAD") else "b" * 40
+
+            retry_receipts: list[dict[str, object]] = []
+            with (
+                mock.patch.object(workflow_runtime, "_validate_modern_answer"),
+                mock.patch("orchestrator.goal_runtime.validate_next_goal_spec", return_value={
+                    "phase_key": PHASE_KEY, "phase_key_change": False,
+                }),
+                mock.patch.object(workflow_runtime, "_git", side_effect=git_identity),
+                mock.patch.object(
+                    workflow_runtime.node_registry_v10,
+                    "verify_consumption",
+                    return_value={"status": "PASS"},
+                ),
+                mock.patch.object(workflow_runtime, "command_receipt") as writer,
+            ):
+                status = workflow_runtime._execute_goal_and_phase_close(
+                    repo,
+                    plan=compiled,
+                    startup=startup,
+                    epoch=epoch,
+                    attempt_payload=paths["attempt"],
+                    attempt={"next_action": "CLOSE_GOAL"},
+                    next_goal_spec=paths["next_spec"],
+                    current_phase_key=None,
+                    receipts=retry_receipts,
+                )
+            self.assertEqual(status, "CLOSED_GOAL")
+            self.assertIn("STATUS: CLOSED", paths["goal"].read_text(encoding="utf-8"))
+            self.assertEqual(retry_receipts[0]["status"], "ALREADY_CLOSED")
+            writer.assert_not_called()
+
+    def test_answer_without_receipt_runs_full_node_transaction(self) -> None:
+        repo = Path("/repo")
+        startup = production_snapshot(next_action="CLOSE_RETRY_PENDING").to_dict()
+        epoch = _FakeWriterEpoch()
+        epoch.open = True
+        with (
+            mock.patch.object(
+                workflow_runtime,
+                "_execute_goal_and_phase_close",
+                return_value="CLOSED_GOAL",
+            ) as close,
+            mock.patch.object(workflow_runtime, "_exists_at_head", return_value=True),
+            mock.patch.object(workflow_runtime, "_execution_epoch_hold", return_value=False),
+            mock.patch.object(workflow_runtime, "_git", return_value=""),
+            mock.patch.object(
+                workflow_runtime.node_registry_v10, "verify_consumption",
+                return_value={"status": "HOLD", "code": "PLANT_FULL_TRANSACTION"},
+            ) as consumption,
+            mock.patch.object(workflow_runtime, "command_receipt") as writer,
+        ):
+            result = workflow_runtime._execute_close_node_transaction(
+                repo,
+                plan={"startup": startup, "selected_goal": startup["selected_goal"]},
+                production_v10=True,
+                startup=startup,
+                epoch=epoch,
+                owned_paths=["owned.md"],
+                query=None,
+                candidate=None,
+                target=None,
+                attempt_payload=Path("attempt.json"),
+                attempt={"next_action": "CLOSE_GOAL"},
+                insight_payload=None,
+                run_kernel=False,
+                protocol_out=None,
+                contract_receipt=None,
+                receipts=[],
+                holds=[],
+            )
+        self.assertEqual(result["status"], "HOLD")
+        close.assert_not_called()
+        consumption.assert_called_once()
+        writer.assert_not_called()
+
+    def test_goal_close_rejects_child_goal_mutation_before_receipt(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            paths = self._goal_close_files(repo)
+            startup = production_snapshot(
+                selected_goal="docs/routeB_bus/058_live.goal.md",
+                control_sha256=workflow_runtime._sha256(repo / "docs/CODEX_CONTROL.md"),
+                git_head="a" * 40,
+                git_tree="b" * 40,
+            ).to_dict()
+            epoch = _FakeWriterEpoch()
+            epoch.open = True
+
+            def mutate_goal(
+                _repo: Path, _command: list[str], *, label: str
+            ) -> dict[str, object]:
+                paths["goal"].write_bytes(paths["goal"].read_bytes() + b"\n")
+                return command_stage(label)
+
+            with (
+                mock.patch.object(workflow_runtime, "_validate_modern_answer"),
+                mock.patch("orchestrator.goal_runtime.validate_next_goal_spec", return_value={
+                    "phase_key": PHASE_KEY, "phase_key_change": False,
+                }),
+                mock.patch.object(workflow_runtime, "_execution_epoch_hold", return_value=False),
+                mock.patch.object(workflow_runtime, "command_receipt", side_effect=mutate_goal),
+                self.assertRaisesRegex(
+                    workflow_runtime.WorkflowRuntimeError,
+                    "GOAL_CLOSE_GOAL_BYTES_DRIFT",
+                ),
+            ):
+                workflow_runtime._execute_goal_and_phase_close(
+                    repo,
+                    plan={"startup": startup, "selected_goal": startup["selected_goal"]},
+                    startup=startup,
+                    epoch=epoch,
+                    attempt_payload=paths["attempt"],
+                    attempt={"next_action": "CLOSE_GOAL"},
+                    next_goal_spec=paths["next_spec"],
+                    current_phase_key=None,
+                    receipts=[],
+                )
+            self.assertFalse(workflow_runtime.goal_close_receipt_path(paths["goal"]).exists())
+
+    def test_goal_close_rechecks_epoch_after_goal_child(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            paths = self._goal_close_files(repo)
+            startup = production_snapshot(
+                selected_goal="docs/routeB_bus/058_live.goal.md",
+                control_sha256=workflow_runtime._sha256(repo / "docs/CODEX_CONTROL.md"),
+            ).to_dict()
+            epoch = _FakeWriterEpoch()
+            epoch.open = True
+            with (
+                mock.patch.object(workflow_runtime, "_validate_modern_answer"),
+                mock.patch("orchestrator.goal_runtime.validate_next_goal_spec", return_value={
+                    "phase_key": PHASE_KEY, "phase_key_change": False,
+                }),
+                mock.patch.object(
+                    workflow_runtime,
+                    "_execution_epoch_hold",
+                    side_effect=[False, True],
+                ),
+                mock.patch.object(
+                    workflow_runtime,
+                    "command_receipt",
+                    return_value=command_stage("goal-close"),
+                ),
+                self.assertRaisesRegex(
+                    workflow_runtime.WorkflowRuntimeError,
+                    "WORKFLOW_CLOSE_EPOCH_DRIFT",
+                ),
+            ):
+                workflow_runtime._execute_goal_and_phase_close(
+                    repo,
+                    plan={"startup": startup, "selected_goal": startup["selected_goal"]},
+                    startup=startup,
+                    epoch=epoch,
+                    attempt_payload=paths["attempt"],
+                    attempt={"next_action": "CLOSE_GOAL"},
+                    next_goal_spec=paths["next_spec"],
+                    current_phase_key=None,
+                    receipts=[],
+                )
+            self.assertFalse(workflow_runtime.goal_close_receipt_path(paths["goal"]).exists())
+
+    def test_goal_close_receipt_rejects_epoch_edge_and_stage_drift(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            paths = self._goal_close_files(repo)
+            startup = production_snapshot(
+                selected_goal="docs/routeB_bus/058_live.goal.md",
+                exact_source_pin="SOURCE-058",
+                control_sha256=workflow_runtime._sha256(repo / "docs/CODEX_CONTROL.md"),
+            ).to_dict()
+            epoch = _FakeWriterEpoch()
+            epoch.open = True
+            with (
+                mock.patch.object(workflow_runtime, "_validate_modern_answer"),
+                mock.patch("orchestrator.goal_runtime.validate_next_goal_spec", return_value={
+                    "phase_key": PHASE_KEY, "phase_key_change": False,
+                }),
+                mock.patch.object(workflow_runtime, "_execution_epoch_hold", return_value=False),
+                mock.patch.object(
+                    workflow_runtime,
+                    "command_receipt",
+                    return_value=command_stage("goal-close"),
+                ),
+            ):
+                workflow_runtime._execute_goal_and_phase_close(
+                    repo,
+                    plan={"startup": startup, "selected_goal": startup["selected_goal"]},
+                    startup=startup,
+                    epoch=epoch,
+                    attempt_payload=paths["attempt"],
+                    attempt={"next_action": "CLOSE_GOAL"},
+                    next_goal_spec=paths["next_spec"],
+                    current_phase_key=None,
+                    receipts=[],
+                )
+            marker = workflow_runtime.goal_close_receipt_path(paths["goal"])
+            original = json.loads(marker.read_text())
+            mutations = {
+                "epoch": lambda row: row.__setitem__("control_sha256", "bad"),
+                "edge": lambda row: row["exact_edge"].__setitem__("node", ""),
+                "explicit-consumer-mismatch": lambda row: row["exact_edge"].__setitem__(
+                    "consumer", "OTHER-CONSUMER"
+                ),
+                "stage": lambda row: row["stages"][0].__setitem__("exit", 2),
+                "missing-next-spec": lambda row: row.update({
+                    "next_goal_spec_path": None,
+                    "next_goal_spec_sha256": None,
+                    "phase_close_required": False,
+                    "current_phase_key": None,
+                    "next_phase_key": None,
+                }),
+            }
+            for label, mutate in mutations.items():
+                with self.subTest(label=label):
+                    planted = json.loads(json.dumps(original))
+                    mutate(planted)
+                    marker.write_text(json.dumps(planted) + "\n")
+                    with self.assertRaises(workflow_runtime.StartupRuntimeError):
+                        workflow_runtime.validate_goal_close_receipt(
+                            paths["goal"], paths["answer"], marker
+                        )
+            marker.write_text(json.dumps(original) + "\n")
+
+    def test_changed_six_field_phase_key_runs_phase_close_once(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            paths = self._goal_close_files(repo)
+            next_spec = repo / "next.json"
+            next_spec.write_text("{}\n", encoding="utf-8")
+            startup = production_snapshot(
+                selected_goal="docs/routeB_bus/058_live.goal.md",
+                control_sha256=workflow_runtime._sha256(repo / "docs/CODEX_CONTROL.md"),
+                git_head="a" * 40,
+                git_tree="b" * 40,
+            ).to_dict()
+            compiled = {"startup": startup, "selected_goal": startup["selected_goal"]}
+            epoch = _FakeWriterEpoch()
+            epoch.open = True
+            next_phase = dict(PHASE_KEY, front_id="NEXT")
+            labels: list[str] = []
+
+            def stage(_repo: Path, _command: list[str], *, label: str) -> dict[str, object]:
+                labels.append(label)
+                if label == "phase-close":
+                    output = Path(_command[_command.index("--json-out") + 1])
+                    output.write_text(json.dumps(phase_close_output()) + "\n")
+                return command_stage(label)
+
+            with (
+                mock.patch.object(workflow_runtime, "_validate_modern_answer"),
+                mock.patch.object(workflow_runtime, "_execution_epoch_hold", return_value=False),
+                mock.patch.object(workflow_runtime, "_git", side_effect=close_git_identity),
+                mock.patch.object(workflow_runtime, "command_receipt", side_effect=stage),
+                mock.patch.object(
+                    workflow_runtime,
+                    "_phase_output_fingerprints",
+                    return_value={
+                        relative: workflow_runtime._sha256(repo / relative)
+                        for relative in BLUEPRINT_OUTPUTS
+                    },
+                ),
+                mock.patch("orchestrator.goal_runtime.validate_next_goal_spec", return_value={
+                    "phase_key": next_phase, "phase_key_change": True,
+                }),
+                mock.patch("orchestrator.spine.validate_runtime"),
+                mock.patch(
+                    "orchestrator.spine.validate_phase_key",
+                    side_effect=lambda value: value,
+                ),
+                mock.patch("orchestrator.spine.phase_keys_equal", return_value=False),
+                mock.patch.object(
+                    workflow_runtime.node_registry_v10,
+                    "verify_consumption",
+                    return_value={"status": "PASS"},
+                ),
+            ):
+                status = workflow_runtime._execute_goal_and_phase_close(
+                    repo,
+                    plan=compiled,
+                    startup=startup,
+                    epoch=epoch,
+                    attempt_payload=paths["attempt"],
+                    attempt={"next_action": "CLOSE_GOAL"},
+                    next_goal_spec=next_spec,
+                    current_phase_key=None,
+                    receipts=[],
+                )
+            self.assertEqual(status, "CLOSED_GOAL_PHASE")
+            self.assertEqual(labels, ["goal-close", "phase-close"])
+            phase_marker = repo / "docs/routeB_bus/058_live.phase-close.json"
+            self.assertTrue(phase_marker.is_file())
+            validated = workflow_runtime.validate_phase_close_receipt(
+                paths["goal"],
+                workflow_runtime.goal_close_receipt_path(paths["goal"]),
+                phase_marker,
+            )
+            self.assertEqual(validated["phase_evidence"], phase_close_output())
+            phase_payload = json.loads(phase_marker.read_text())
+            for label, mutate in (
+                (
+                    "missing",
+                    lambda payload: payload["derived_output_fingerprints"].pop(
+                        BLUEPRINT_OUTPUTS[0]
+                    ),
+                ),
+                (
+                    "extra",
+                    lambda payload: payload["derived_output_fingerprints"].update(
+                        {"unexpected.out": "a" * 64}
+                    ),
+                ),
+            ):
+                with self.subTest(output_set=label):
+                    planted = json.loads(json.dumps(phase_payload))
+                    mutate(planted)
+                    phase_marker.write_text(json.dumps(planted) + "\n")
+                    with self.assertRaises(workflow_runtime.StartupRuntimeError):
+                        workflow_runtime.validate_phase_close_receipt(
+                            paths["goal"],
+                            workflow_runtime.goal_close_receipt_path(paths["goal"]),
+                            phase_marker,
+                        )
+            phase_marker.write_text(json.dumps(phase_payload) + "\n")
+            phase_payload["goal_path"] = "docs/routeB_bus/other.goal.md"
+            phase_marker.write_text(json.dumps(phase_payload) + "\n")
+            with self.assertRaises(workflow_runtime.StartupRuntimeError):
+                workflow_runtime.validate_phase_close_receipt(
+                    paths["goal"],
+                    workflow_runtime.goal_close_receipt_path(paths["goal"]),
+                    phase_marker,
+                )
+            phase_payload["goal_path"] = "docs/routeB_bus/058_live.goal.md"
+            phase_marker.write_text(json.dumps(phase_payload) + "\n")
+            target = repo / "phase-receipt-target.json"
+            target.write_bytes(phase_marker.read_bytes())
+            phase_marker.unlink()
+            phase_marker.symlink_to(target)
+            with self.assertRaises(workflow_runtime.StartupRuntimeError):
+                workflow_runtime.validate_phase_close_receipt(
+                    paths["goal"],
+                    workflow_runtime.goal_close_receipt_path(paths["goal"]),
+                    phase_marker,
+                )
+
+    def test_restart_after_phase_failure_runs_phase_repair_only(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            paths = self._goal_close_files(repo)
+            next_spec = repo / "next.json"
+            next_spec.write_text("{}\n", encoding="utf-8")
+            startup = production_snapshot(
+                selected_goal="docs/routeB_bus/058_live.goal.md",
+                control_sha256=workflow_runtime._sha256(repo / "docs/CODEX_CONTROL.md"),
+                git_head="a" * 40,
+                git_tree="b" * 40,
+            ).to_dict()
+            compiled = {"startup": startup, "selected_goal": startup["selected_goal"]}
+            epoch = _FakeWriterEpoch()
+            epoch.open = True
+            next_phase = dict(PHASE_KEY, front_id="NEXT")
+            labels: list[str] = []
+
+            def first_stage(
+                _repo: Path, _command: list[str], *, label: str
+            ) -> dict[str, object]:
+                labels.append(label)
+                return command_stage(
+                    label, exit_code=2 if label == "phase-close" else 0
+                )
+
+            common = (
+                mock.patch.object(workflow_runtime, "_validate_modern_answer"),
+                mock.patch.object(workflow_runtime, "_execution_epoch_hold", return_value=False),
+                mock.patch.object(workflow_runtime, "_git", side_effect=close_git_identity),
+                mock.patch("orchestrator.goal_runtime.validate_next_goal_spec", return_value={
+                    "phase_key": next_phase, "phase_key_change": True,
+                }),
+                mock.patch("orchestrator.spine.validate_runtime"),
+                mock.patch(
+                    "orchestrator.spine.validate_phase_key",
+                    side_effect=lambda value: value,
+                ),
+                mock.patch("orchestrator.spine.phase_keys_equal", return_value=False),
+            )
+            with common[0], common[1], common[2], common[3], common[4], common[5], common[6], (
+                mock.patch.object(workflow_runtime, "command_receipt", side_effect=first_stage)
+            ), self.assertRaises(workflow_runtime.WorkflowRuntimeError):
+                workflow_runtime._execute_goal_and_phase_close(
+                    repo, plan=compiled, startup=startup, epoch=epoch,
+                    attempt_payload=paths["attempt"], attempt={"next_action": "CLOSE_GOAL"},
+                    next_goal_spec=next_spec, current_phase_key=None, receipts=[],
+                )
+            self.assertEqual(labels, ["goal-close", "phase-close"])
+            self.assertTrue(workflow_runtime.goal_close_receipt_path(paths["goal"]).is_file())
+            self.assertFalse(workflow_runtime.phase_close_receipt_path(paths["goal"]).exists())
+
+            labels.clear()
+            def git_identity(_repo: Path, *args: str) -> str:
+                return "a" * 40 if args == ("rev-parse", "HEAD") else "b" * 40
+
+            def retry_stage(
+                _repo: Path, command: list[str], *, label: str
+            ) -> dict[str, object]:
+                labels.append(label)
+                output = Path(command[command.index("--json-out") + 1])
+                output.write_text(json.dumps(phase_close_output()) + "\n")
+                return command_stage(label)
+
+            with (
+                mock.patch.object(workflow_runtime, "_validate_modern_answer"),
+                mock.patch.object(workflow_runtime, "_git", side_effect=git_identity),
+                mock.patch("orchestrator.goal_runtime.validate_next_goal_spec", return_value={
+                    "phase_key": next_phase, "phase_key_change": True,
+                }),
+                mock.patch("orchestrator.spine.validate_runtime"),
+                mock.patch(
+                    "orchestrator.spine.validate_phase_key",
+                    side_effect=lambda value: value,
+                ),
+                mock.patch("orchestrator.spine.phase_keys_equal", return_value=False),
+                mock.patch.object(
+                    workflow_runtime,
+                    "command_receipt",
+                    side_effect=retry_stage,
+                ),
+                mock.patch.object(
+                    workflow_runtime,
+                    "_phase_output_fingerprints",
+                    return_value={
+                        relative: workflow_runtime._sha256(repo / relative)
+                        for relative in BLUEPRINT_OUTPUTS
+                    },
+                ),
+                mock.patch.object(
+                    workflow_runtime.node_registry_v10,
+                    "verify_consumption",
+                    side_effect=workflow_runtime.node_registry_v10.NodeRegistryError(
+                        "NODE_REGISTRY_CONSUMER_BYTES_DRIFT"
+                    ),
+                ),
+                self.assertRaisesRegex(
+                    workflow_runtime.WorkflowRuntimeError,
+                    "GOAL_CLOSE_RECOVERY_CONSUMPTION_IDENTITY_DRIFT:"
+                    "NODE_REGISTRY_CONSUMER_BYTES_DRIFT",
+                ),
+            ):
+                workflow_runtime._execute_goal_and_phase_close(
+                    repo, plan=compiled, startup=startup, epoch=epoch,
+                    attempt_payload=paths["attempt"], attempt={"next_action": "CLOSE_GOAL"},
+                    next_goal_spec=None, current_phase_key=None, receipts=[],
+                    owned_paths=["owned.lean"],
+                )
+            self.assertFalse(workflow_runtime.phase_close_receipt_path(paths["goal"]).exists())
+            self.assertEqual(labels, ["phase-close"])
+            labels.clear()
+
+            with (
+                mock.patch.object(workflow_runtime, "_validate_modern_answer"),
+                mock.patch.object(workflow_runtime, "_git", side_effect=git_identity),
+                mock.patch("orchestrator.goal_runtime.validate_next_goal_spec", return_value={
+                    "phase_key": next_phase, "phase_key_change": True,
+                }),
+                mock.patch("orchestrator.spine.validate_runtime"),
+                mock.patch(
+                    "orchestrator.spine.validate_phase_key",
+                    side_effect=lambda value: value,
+                ),
+                mock.patch("orchestrator.spine.phase_keys_equal", return_value=False),
+                mock.patch.object(
+                    workflow_runtime,
+                    "command_receipt",
+                    side_effect=retry_stage,
+                ),
+                mock.patch.object(
+                    workflow_runtime,
+                    "_phase_output_fingerprints",
+                    return_value={
+                        relative: workflow_runtime._sha256(repo / relative)
+                        for relative in BLUEPRINT_OUTPUTS
+                    },
+                ),
+                mock.patch.object(
+                    workflow_runtime.node_registry_v10,
+                    "verify_consumption",
+                    return_value={"status": "PASS"},
+                ),
+            ):
+                status = workflow_runtime._execute_goal_and_phase_close(
+                    repo, plan=compiled, startup=startup, epoch=epoch,
+                    attempt_payload=paths["attempt"], attempt={"next_action": "CLOSE_GOAL"},
+                    next_goal_spec=None, current_phase_key=None, receipts=[],
+                )
+            self.assertEqual(status, "CLOSED_GOAL_PHASE")
+            self.assertEqual(labels, ["phase-close"])
+
+    def test_phase_close_rejects_non_green_output_and_post_child_drift(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            output = Path(tmp) / "phase.json"
+            bad = phase_close_output()
+            bad["blueprint_exit"] = 1
+            output.write_text(json.dumps(bad) + "\n")
+            with self.assertRaisesRegex(
+                workflow_runtime.WorkflowRuntimeError,
+                "PHASE_CLOSE_OUTPUT_NOT_GREEN",
+            ):
+                workflow_runtime._validate_phase_close_output(output)
+
+            bad = phase_close_output()
+            bad["manual_debt"]["cards"] = ["CARD-OPEN"]
+            output.write_text(json.dumps(bad) + "\n")
+            with self.assertRaisesRegex(
+                workflow_runtime.WorkflowRuntimeError,
+                "PHASE_CLOSE_OUTPUT_NOT_GREEN",
+            ):
+                workflow_runtime._validate_phase_close_output(output)
+
+    def test_close_goal_requires_validated_next_goal_spec(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            paths = self._goal_close_files(repo)
+            startup = production_snapshot(
+                selected_goal="docs/routeB_bus/058_live.goal.md",
+                control_sha256=workflow_runtime._sha256(repo / "docs/CODEX_CONTROL.md"),
+            ).to_dict()
+            epoch = _FakeWriterEpoch()
+            epoch.open = True
+            with (
+                mock.patch.object(workflow_runtime, "_validate_modern_answer"),
+                self.assertRaisesRegex(
+                    workflow_runtime.WorkflowRuntimeError,
+                    "NEXT_GOAL_SPEC_REQUIRED_FOR_CLOSE_GOAL",
+                ),
+            ):
+                workflow_runtime._execute_goal_and_phase_close(
+                    repo,
+                    plan={"startup": startup, "selected_goal": startup["selected_goal"]},
+                    startup=startup,
+                    epoch=epoch,
+                    attempt_payload=paths["attempt"],
+                    attempt={"next_action": "CLOSE_GOAL"},
+                    next_goal_spec=None,
+                    current_phase_key=None,
+                    receipts=[],
+                )
+
+            for label, payload in (
+                ("attempt", '{"next_action":"CLOSE_GOAL","next_action":"CLOSE_GOAL"}\n'),
+                ("next-spec", '{"phase_key":{},"phase_key":{}}\n'),
+                (
+                    "runtime",
+                    '{"schema":"q3_channel_runtime.v1",'
+                    '"schema":"q3_channel_runtime.v1"}\n',
+                ),
+            ):
+                with self.subTest(duplicate_key_surface=label):
+                    duplicate = repo / f"duplicate-{label}.json"
+                    duplicate.write_text(payload, encoding="utf-8")
+                    with self.assertRaisesRegex(
+                        workflow_runtime.WorkflowRuntimeError,
+                        "duplicate key",
+                    ):
+                        workflow_runtime._load_closed_json(
+                            duplicate, code="CLOSE_JSON_INVALID"
+                        )
+
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            paths = self._goal_close_files(repo)
+            next_spec = repo / "next.json"
+            next_spec.write_text("{}\n")
+            startup = production_snapshot(
+                selected_goal="docs/routeB_bus/058_live.goal.md",
+                control_sha256=workflow_runtime._sha256(repo / "docs/CODEX_CONTROL.md"),
+                git_head="a" * 40,
+                git_tree="b" * 40,
+            ).to_dict()
+            epoch = _FakeWriterEpoch()
+            epoch.open = True
+            next_phase = dict(PHASE_KEY, front_id="NEXT")
+
+            def stage(
+                _repo: Path, command: list[str], *, label: str
+            ) -> dict[str, object]:
+                if label == "phase-close":
+                    output_path = Path(command[command.index("--json-out") + 1])
+                    output_path.write_text(json.dumps(phase_close_output()) + "\n")
+                return command_stage(label)
+
+            fingerprints = [
+                {"derived.out": "a" * 64},
+                {"derived.out": "b" * 64},
+            ]
+            with (
+                mock.patch.object(workflow_runtime, "_validate_modern_answer"),
+                mock.patch.object(workflow_runtime, "_execution_epoch_hold", return_value=False),
+                mock.patch.object(workflow_runtime, "_git", side_effect=close_git_identity),
+                mock.patch.object(workflow_runtime, "command_receipt", side_effect=stage),
+                mock.patch.object(
+                    workflow_runtime,
+                    "_phase_output_fingerprints",
+                    side_effect=fingerprints,
+                ),
+                mock.patch("orchestrator.goal_runtime.validate_next_goal_spec", return_value={
+                    "phase_key": next_phase, "phase_key_change": True,
+                }),
+                mock.patch("orchestrator.spine.validate_runtime"),
+                mock.patch(
+                    "orchestrator.spine.validate_phase_key",
+                    side_effect=lambda value: value,
+                ),
+                mock.patch("orchestrator.spine.phase_keys_equal", return_value=False),
+                self.assertRaisesRegex(
+                    workflow_runtime.WorkflowRuntimeError,
+                    "PHASE_CLOSE_DERIVED_OUTPUT_DRIFT",
+                ),
+            ):
+                workflow_runtime._execute_goal_and_phase_close(
+                    repo,
+                    plan={"startup": startup, "selected_goal": startup["selected_goal"]},
+                    startup=startup,
+                    epoch=epoch,
+                    attempt_payload=paths["attempt"],
+                    attempt={"next_action": "CLOSE_GOAL"},
+                    next_goal_spec=next_spec,
+                    current_phase_key=None,
+                    receipts=[],
+                )
+            self.assertFalse(
+                workflow_runtime.phase_close_receipt_path(paths["goal"]).exists()
+            )
+
     def _review_fixture(
         self,
         repo: Path,
@@ -1883,6 +3373,21 @@ class WorkflowRuntimePlants(unittest.TestCase):
                 "candidate_provenance": "SOURCE_DECLARED",
                 "contract": dependency_contract(),
             }
+            receipt.write_text(
+                '{"schema":"q3_dependency_contract_receipt.v1",'
+                '"schema":"q3_dependency_contract_receipt.v1"}\n',
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(
+                workflow_runtime.WorkflowRuntimeError,
+                "duplicate key",
+            ):
+                workflow_runtime._dependency_contract_receipt(
+                    repo,
+                    receipt,
+                    candidate="Q3.RouteB.candidate",
+                    target="Q3.RouteB.target",
+                )
             receipt.write_text(json.dumps(payload) + "\n", encoding="utf-8")
             with self.assertRaisesRegex(
                 workflow_runtime.WorkflowRuntimeError,

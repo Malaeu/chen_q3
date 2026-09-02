@@ -85,9 +85,9 @@ def test_live_registry_has_seven_v9_nodes_nine_edges_and_three_unmapped() -> Non
     assert len(document["edges"]) == 9
     assert sum(node["lifecycle"] == "HISTORICAL_V9_UNMAPPED" for node in document["nodes"]) == 3
     assert document["project"]["root_count"] == len(document["project"]["roots"]) == 1
-    assert document["project"]["file_count"] == 3590
+    assert document["project"]["file_count"] == 3592
     assert document["project"]["project_dependency_tree_hash"] == (
-        "12c3a49e41ef98f96438e00bee7327a3c6db6e7cad18d1feda5dbae96ed39160"
+        "37eb0417e0afb534a302b0b28882ec2c9615dddd8ab8d6a19d6b407353adda29"
     )
 
     arch_prime = next(
@@ -561,6 +561,40 @@ def test_semantic_hash_excludes_blobs_but_binds_hypothesis_port() -> None:
         "axioms",
         "dependency_graph",
     }
+
+
+def test_registry_roundtrip_supports_closed_consumer_challenge_pair() -> None:
+    document = live()
+    edge = document["edges"][0]
+    original_semantic_hash = document["nodes"][0]["semantic_review_hash"]
+    edge["hypothesis_port"].update(
+        challenge_declaration="Q3.RouteB.ConsumerHypothesisChallenge",
+        challenge_type_sha256="a" * 64,
+    )
+    rehash(document)
+    parsed = registry._parse_registry_bytes(registry.canonical_json(document))
+    assert parsed["edges"][0]["hypothesis_port"] == edge["hypothesis_port"]
+    assert parsed["nodes"][0]["semantic_review_hash"] != original_semantic_hash
+
+
+@pytest.mark.parametrize("mutation", ["partial", "bad_hash", "self_fit"])
+def test_registry_rejects_malformed_consumer_challenge_pair(mutation: str) -> None:
+    document = live()
+    port = document["edges"][0]["hypothesis_port"]
+    port["challenge_declaration"] = "Q3.RouteB.ConsumerHypothesisChallenge"
+    port["challenge_type_sha256"] = "a" * 64
+    if mutation == "partial":
+        del port["challenge_type_sha256"]
+    elif mutation == "bad_hash":
+        port["challenge_type_sha256"] = "not-a-hash"
+    else:
+        port["challenge_declaration"] = port["direct_reference"]
+    rehash(document)
+    with pytest.raises(
+        registry.NodeRegistryError,
+        match="SCHEMA_INVALID|HASH_INVALID|HYPOTHESIS_CHALLENGE_INVALID",
+    ):
+        registry._validate_registry(document)
 
 
 def test_source_blob_is_bound_to_validation_source_bytes() -> None:
@@ -1175,6 +1209,67 @@ def test_exact_pair_pin_preserves_all_distinct_first_hop_ports(monkeypatch) -> N
             exact_consumer_pin=first["consumer"],
         )
 
+
+def test_dependency_snapshot_carries_exact_registry_challenge(monkeypatch) -> None:
+    document, snapshot, node = deep_fixture(monkeypatch)
+    edge = document["edges"][0]
+    challenge = "Q3.Plant.ConsumerHypothesisChallenge"
+    challenge_hash = "a" * 64
+    edge["hypothesis_port"].update(
+        challenge_declaration=challenge,
+        challenge_type_sha256=challenge_hash,
+    )
+    snapshot["target_declarations"] = sorted(
+        [*snapshot["target_declarations"], challenge]
+    )
+    snapshot["declarations"].append(
+        {
+            "name": challenge,
+            "module": snapshot["import_modules"][0],
+            "direct_refs": [],
+            "type_fingerprint": expr_fingerprint(912),
+            "value_fingerprint": None,
+            "axioms": ["Classical.choice"],
+        }
+    )
+    node["validation_inputs"]["dependency_graph"]["sha256"] = registry.digest(
+        [registry._dependency_edge_payload(edge)]
+    )
+    rehash(document)
+    result = registry._verify_consumption(
+        ROOT,
+        document,
+        selected_goal_path=node["validation_inputs"]["task_path"],
+        dependency_snapshot=snapshot,
+        exact_node_pin=node["node_id"],
+        exact_source_pin=node["source"]["commit"],
+        exact_theorem_pin=edge["theorem"],
+        exact_consumer_pin=edge["consumer"],
+    )
+    assert result["status"] == "PASS"
+    recorded_port = result["validation_evidence"][0]["dependency_result"]["edges"][0][
+        "hypothesis_port"
+    ]
+    assert recorded_port["challenge_declaration"] == challenge
+    assert recorded_port["challenge_type_sha256"] == challenge_hash
+
+    planted = copy.deepcopy(snapshot)
+    planted["consumptions"][0]["hypothesis_port"]["challenge_declaration"] = (
+        "Q3.Plant.WrongChallenge"
+    )
+    with pytest.raises(
+        registry.NodeRegistryError, match="HYPOTHESIS_CHALLENGE_DRIFT"
+    ):
+        registry._verify_consumption(
+            ROOT,
+            document,
+            selected_goal_path=node["validation_inputs"]["task_path"],
+            dependency_snapshot=planted,
+            exact_node_pin=node["node_id"],
+            exact_source_pin=node["source"]["commit"],
+            exact_theorem_pin=edge["theorem"],
+            exact_consumer_pin=edge["consumer"],
+        )
 
 def test_clean_candidate_runs_full_validation_but_is_never_consumable(monkeypatch) -> None:
     document, snapshot, node = deep_fixture(monkeypatch)

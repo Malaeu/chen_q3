@@ -71,8 +71,11 @@ class StartupRuntimeTests(unittest.TestCase):
             "  values: [ENABLED, AVAILABLE, DEGRADED, DISCONNECTED, RETIRED, BROKEN, PLANNED]\n"
             "mode_semantics:\n"
             "  values: [READ_ONLY, WRITES_DERIVED, WRITES_CANONICAL, NETWORK_WRITE, EXTERNAL]\n"
+            "classification_semantics:\n"
+            "  values: [AUTOMATIC, MANUAL, DISPLAY_ONLY, RETIRED]\n"
             "tool_contract:\n"
-            "  required_fields: [id, status, audience, mode, path_or_paths, invocation, "
+            "  required_fields: [id, classification, status, audience, mode, "
+            "path_or_paths, invocation, "
             "trigger, writes, approval, authority, records_to, last_verified]\n"
             "startup_contract:\n"
             "  validation:\n"
@@ -86,6 +89,7 @@ class StartupRuntimeTests(unittest.TestCase):
             "  runtime:\n"
             "    tools:\n"
             "      - id: workflow-runtime\n"
+            "        classification: AUTOMATIC\n"
             "        status: ENABLED\n"
             "        audience: [CODEX]\n"
             "        mode: READ_ONLY\n"
@@ -1268,6 +1272,68 @@ class StartupRuntimeTests(unittest.TestCase):
                 snapshot.fatal_errors,
             )
 
+    def test_tool_manifest_requires_closed_classification_contract(self) -> None:
+        mutations = (
+            lambda text: text.replace(
+                "classification_semantics:\n"
+                "  values: [AUTOMATIC, MANUAL, DISPLAY_ONLY, RETIRED]\n",
+                "",
+            ),
+            lambda text: text.replace(
+                "classification: AUTOMATIC", "classification: IMPLICIT"
+            ),
+        )
+        for mutate in mutations:
+            with self.subTest(mutation=mutate), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                paths = self._committed_open_snapshot_fixture(root)
+                manifest = paths["manifest"].read_text(encoding="utf-8")
+                paths["manifest"].write_text(mutate(manifest), encoding="utf-8")
+
+                snapshot = startup_runtime.build_startup_snapshot(root)
+
+                self.assertFalse(snapshot.run_authorized)
+                self.assertTrue(
+                    any(
+                        item.startswith("STARTUP_TOOL_MANIFEST_INVALID")
+                        for item in snapshot.fatal_errors
+                    ),
+                    snapshot.fatal_errors,
+                )
+
+    def test_tool_manifest_enforces_classification_semantics_and_route_eligibility(self) -> None:
+        mutations = (
+            lambda text: text.replace(
+                "classification: AUTOMATIC\n        status: ENABLED",
+                "classification: DISPLAY_ONLY\n        status: ENABLED",
+            ).replace("mode: READ_ONLY", "mode: WRITES_CANONICAL", 1),
+            lambda text: text.replace(
+                "classification: AUTOMATIC\n        status: ENABLED",
+                "classification: RETIRED\n        status: ENABLED",
+            ),
+            lambda text: text.replace(
+                "classification: AUTOMATIC\n        status: ENABLED",
+                "classification: DISPLAY_ONLY\n        status: ENABLED",
+            ),
+        )
+        for mutate in mutations:
+            with self.subTest(mutation=mutate), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                paths = self._committed_open_snapshot_fixture(root)
+                manifest = paths["manifest"].read_text(encoding="utf-8")
+                paths["manifest"].write_text(mutate(manifest), encoding="utf-8")
+
+                snapshot = startup_runtime.build_startup_snapshot(root)
+
+                self.assertFalse(snapshot.run_authorized)
+                self.assertTrue(
+                    any(
+                        item.startswith("STARTUP_TOOL_MANIFEST_INVALID")
+                        for item in snapshot.fatal_errors
+                    ),
+                    snapshot.fatal_errors,
+                )
+
     def test_channel_runtime_meter_and_phase_semantics_fail_closed(self) -> None:
         cases = (
             ("fanout_violations", 1),
@@ -2146,7 +2212,8 @@ class StartupRuntimeTests(unittest.TestCase):
             )
             answer = goal.with_name("058_closed.answer.md")
             answer.write_text(
-                "```yaml\nGOAL: '058'\nSTATUS: CLOSED\nRESULT: PASS\n```\n",
+                "```yaml\nGOAL: '058'\nNODE: NODE-058\nSTATUS: CLOSED\n"
+                "RESULT: PASS\n```\n",
                 encoding="utf-8",
             )
             self._execution_state(root, "", "")
@@ -2435,6 +2502,190 @@ class StartupRuntimeTests(unittest.TestCase):
 
             self.assertIn("STARTUP_EXACT_PINS_MISSING", missing_node.fatal_errors)
             self.assertEqual(missing_node.next_action, "STOP_FAIL_CLOSED")
+
+    def test_partial_goal_delivery_without_phase_receipt_reopens_close(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._control(root)
+            self._current(root, "CLOSED")
+            phase = {
+                "route_id": "ROUTE_B", "front_id": "FRONT",
+                "source_object_family_id": "SOURCE",
+                "terminal_consumer_id": "CONSUMER-058",
+                "honesty_state": "CHALLENGER_NOT_RH",
+                "convention_lock_id": "LOCK",
+            }
+            next_phase = dict(phase, front_id="NEXT")
+            channel = root / "orchestrator/state/CHANNEL_RUNTIME.json"
+            runtime = json.loads(channel.read_text(encoding="utf-8"))
+            runtime["active_proshka_phase"] = {
+                "status": "ACTIVE", "phase_id": "PHASE-1",
+                "phase_key": phase, "conversation_id": "living-chat",
+            }
+            channel.write_text(json.dumps(runtime) + "\n", encoding="utf-8")
+            source_rel = "docs/routeB_bus/source.md"
+            source = root / source_rel
+            source.parent.mkdir(parents=True, exist_ok=True)
+            source_bytes = b"source\n"
+            source.write_bytes(source_bytes)
+            source_pin = hashlib.sha1(
+                b"blob " + str(len(source_bytes)).encode() + b"\0" + source_bytes
+            ).hexdigest()
+            goal = self._goal(
+                root, "docs/routeB_bus/058_partial.goal.md", goal_id="058",
+                status="CLOSED", node="NODE-058", source=source_rel,
+                source_pin=source_pin,
+                theorem=None, consumer=None,
+            )
+            answer = goal.with_name("058_partial.answer.md")
+            answer.write_text(
+                "```yaml\nGOAL: '058'\nNODE: NODE-058\nSTATUS: CLOSED\n"
+                "RESULT: PASS\n```\n",
+                encoding="utf-8",
+            )
+            attempt = root / "attempt.json"
+            attempt.write_text('{"next_action":"CLOSE_GOAL"}\n', encoding="utf-8")
+            spec = root / "next.json"
+            spec.write_text("{}\n", encoding="utf-8")
+            open_bytes = goal.read_bytes().replace(b"STATUS: CLOSED", b"STATUS: OPEN")
+            receipt = startup_runtime.goal_close_receipt_path(goal)
+            receipt.write_text(json.dumps({
+                "schema": "q3_goal_close_receipt.v1",
+                "goal_path": goal.relative_to(root).as_posix(),
+                "answer_path": answer.relative_to(root).as_posix(),
+                "base_head": "a" * 40,
+                "git_tree": "b" * 40,
+                "control_sha256": hashlib.sha256(
+                    (root / "docs/CODEX_CONTROL.md").read_bytes()
+                ).hexdigest(),
+                "open_goal_sha256": hashlib.sha256(open_bytes).hexdigest(),
+                "terminal_goal_sha256": hashlib.sha256(goal.read_bytes()).hexdigest(),
+                "answer_sha256": hashlib.sha256(answer.read_bytes()).hexdigest(),
+                "attempt_path": attempt.relative_to(root).as_posix(),
+                "attempt_sha256": hashlib.sha256(attempt.read_bytes()).hexdigest(),
+                "exact_edge": {
+                    "node": "NODE-058", "source": source_pin,
+                    "theorem": "THEOREM-058", "consumer": "CONSUMER-058",
+                },
+                "stages": [{
+                    "schema": "q3_close_stage.v1", "status": "PASS",
+                    "label": "goal-close", "exit": 0, "duration_ms": 1,
+                    "output_sha256": "c" * 64,
+                }],
+                "next_goal_spec_path": spec.relative_to(root).as_posix(),
+                "next_goal_spec_sha256": hashlib.sha256(spec.read_bytes()).hexdigest(),
+                "channel_runtime_sha256": hashlib.sha256(channel.read_bytes()).hexdigest(),
+                "phase_close_required": True,
+                "current_phase_key": phase,
+                "next_phase_key": next_phase,
+                "current_phase_key_path": None,
+                "current_phase_key_sha256": None,
+            }, sort_keys=True) + "\n", encoding="utf-8")
+            self._execution_state(root, "docs/routeB_bus/058_partial.goal.md", "058")
+            self._git_commit(root)
+            receipt_payload = json.loads(receipt.read_text(encoding="utf-8"))
+            receipt_payload["base_head"] = subprocess.run(
+                ["git", "rev-parse", "HEAD"], cwd=root, check=True,
+                capture_output=True, text=True,
+            ).stdout.strip()
+            receipt_payload["git_tree"] = subprocess.run(
+                ["git", "rev-parse", "HEAD^{tree}"], cwd=root, check=True,
+                capture_output=True, text=True,
+            ).stdout.strip()
+            receipt.write_text(
+                json.dumps(receipt_payload, sort_keys=True) + "\n", encoding="utf-8"
+            )
+            self._git_commit(root)
+
+            snapshot = startup_runtime.build_startup_snapshot(root)
+
+            self.assertEqual(
+                snapshot.selected_goal,
+                "docs/routeB_bus/058_partial.goal.md",
+                snapshot.to_dict(),
+            )
+            self.assertEqual(snapshot.next_action, "PHASE_CLOSE_RETRY_PENDING")
+            self.assertTrue(snapshot.run_authorized)
+            self.assertIn(
+                "PHASE_CLOSE_RETRY_PENDING:docs/routeB_bus/058_partial.goal.md",
+                snapshot.warnings,
+            )
+            self._goal(
+                root,
+                "docs/routeB_bus/059_new.goal.md",
+                goal_id="059",
+                status="OPEN",
+                node="NODE-059",
+            )
+            subprocess.run(["git", "add", "."], cwd=root, check=True)
+            subprocess.run(
+                [
+                    "git", "-c", "user.name=Startup Plant",
+                    "-c", "user.email=startup@example.invalid",
+                    "commit", "-q", "-m", "premature next goal",
+                ],
+                cwd=root,
+                check=True,
+            )
+            branch = subprocess.run(
+                ["git", "branch", "--show-current"], cwd=root, check=True,
+                capture_output=True, text=True,
+            ).stdout.strip()
+            subprocess.run(
+                ["git", "update-ref", f"refs/remotes/origin/{branch}", "HEAD"],
+                cwd=root,
+                check=True,
+            )
+
+            blocked = startup_runtime.build_startup_snapshot(root)
+
+            self.assertIn(
+                "STARTUP_PRIOR_CLOSE_DELIVERY_BARRIER:"
+                "docs/routeB_bus/058_partial.goal.md",
+                blocked.fatal_errors,
+            )
+            self.assertIsNone(blocked.selected_goal)
+
+    def test_committed_open_answer_without_receipt_requires_full_transaction(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            paths = self._committed_open_snapshot_fixture(root)
+            answer = paths["goal"].with_name("058_live.answer.md")
+            answer.write_text(
+                "```yaml\nGOAL: '058'\nNODE: live-node\nSTATUS: CLOSED\n"
+                "RESULT: PASS\n```\n",
+                encoding="utf-8",
+            )
+            subprocess.run(["git", "add", "."], cwd=root, check=True)
+            subprocess.run(
+                [
+                    "git", "-c", "user.name=Startup Plant",
+                    "-c", "user.email=startup@example.invalid",
+                    "commit", "-q", "-m", "answer before close receipt",
+                ],
+                cwd=root,
+                check=True,
+            )
+            branch = subprocess.run(
+                ["git", "branch", "--show-current"], cwd=root, check=True,
+                capture_output=True, text=True,
+            ).stdout.strip()
+            subprocess.run(
+                ["git", "update-ref", f"refs/remotes/origin/{branch}", "HEAD"],
+                cwd=root,
+                check=True,
+            )
+
+            snapshot = startup_runtime.build_startup_snapshot(root)
+
+            self.assertEqual(snapshot.selected_goal, paths["goal"].relative_to(root).as_posix())
+            self.assertEqual(snapshot.next_action, "INSPECT_SELECTED_GOAL")
+            self.assertTrue(snapshot.run_authorized)
+            self.assertIn(
+                "OPEN_ANSWER_WITHOUT_CLOSE_RECEIPT_FULL_TRANSACTION_REQUIRED:"
+                + paths["goal"].relative_to(root).as_posix(),
+                snapshot.warnings,
+            )
 
 
 if __name__ == "__main__":

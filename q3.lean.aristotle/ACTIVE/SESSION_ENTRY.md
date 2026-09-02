@@ -87,6 +87,14 @@ contract -> suppliers -> preflight -> bridge -> Lean -> close -> recompute
 отсутствием. Только `EXACT_FIT` закрывает reuse target. `COMPLETE_ABSENCE`
 разрешает лишь последующее решение о создании, не потребление.
 
+Поиск по альтернативным названиям начинается с executable
+`q3_search_intent.v1`: exact goal/consumer, смысловая поверхность, канонические
+термины, типизированные alias hypotheses и false friends. Preflight сам строит
+3–5 первичных запросов и не более одного feedback batch. Интернет-публикации
+возвращаются только как metadata candidates; название или похожий abstract не
+являются semantic fit. `DISCOVERY` ничего не допускает, `ADMISSION` всё равно
+требует exact declaration и `EXACT_FIT`.
+
 Exact execution edge — одна тройка `node + theorem + consumer`. Unselected edge
 остаётся `HOLD`. После закрытия узла повторно запустить `workflow_runtime.py
 plan`; старый план не переносить вперёд.
@@ -143,6 +151,11 @@ branch-decision, AUTOPSY/insight/card debt, assembly/publication debt и
 5. foreign dirty paths не stage и не изменять.
 
 Route promotion, publication и `PX_RH_CLAIM` из закрытия не следуют.
+Goal terminalization пишет рядом `<stem>.goal-close.json` перед переводом
+`STATUS: OPEN -> CLOSED`; phase transition пишет `<stem>.phase-close.json`
+только после новой six-field phase key и зелёного phase-close. Результаты
+`CLOSE_RETRY_PENDING`, `GOAL_TERMINALIZE_PENDING` и
+`GOAL_CLOSE_DELIVERY_PENDING` требуют повторного plan, а не ручного обхода.
 
 ## Дополнительные карты только по триггеру
 

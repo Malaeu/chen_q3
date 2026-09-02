@@ -22,11 +22,13 @@ import re
 import stat
 import subprocess
 import sys
+import tempfile
 import time
 from contextlib import contextmanager
 from dataclasses import asdict, replace
+from datetime import datetime
 from pathlib import Path
-from typing import Any, BinaryIO, Iterator
+from typing import Any, BinaryIO, Iterator, Sequence
 
 import yaml
 
@@ -41,9 +43,18 @@ from orchestrator.startup_runtime import (  # noqa: E402
     StartupRuntimeError,
     StartupSnapshot,
     _git_common_dir,
+    _goal_header,
+    _has_symlink_component,
+    _lexical_relative,
+    _load_unique_json,
     _startup_read_epoch,
+    _validate_modern_answer,
     build_shadow_snapshot,
     build_startup_snapshot,
+    goal_close_receipt_path,
+    phase_close_receipt_path,
+    validate_goal_close_receipt,
+    validate_phase_close_receipt,
 )
 
 TOOLS = Path("docs/cartographer/TOOLS.yaml")
@@ -74,6 +85,8 @@ CANONICAL_CALL_CLASSES = {
 RESEARCH_DEBT_PACKET_SUBTYPE = "RESEARCH_DEBT_CHALLENGE"
 DEPENDENCY_CONTRACT_RECEIPT_SCHEMA = "q3_research_dependency_contract_receipt.v1"
 SUPPLIER_PREFLIGHT_SCHEMA = "q3_supplier_preflight.v1"
+SEARCH_EVIDENCE_SCHEMA = "q3_search_evidence.v1"
+SEARCH_EVIDENCE_STDOUT_MAX_BYTES = 32 * 1024
 SUPPLIER_PROVENANCE_CLASSES = frozenset(
     {"SOURCE_DECLARED", "GENERATED_OR_DERIVED"}
 )
@@ -127,6 +140,7 @@ COMMON_TOOLS = (
 ACTION_TOOLS = {
     "SELECT_EXACT_GOAL": (
         "workflow-close-node",
+        "workflow-search-evidence",
         "supplier-preflight",
         "lean-validation",
         "knowledge-spine-step-close",
@@ -937,8 +951,8 @@ def _dependency_contract_receipt(
     resolved = path if path.is_absolute() else repo / path
     try:
         raw = resolved.read_bytes()
-        payload = json.loads(raw.decode("utf-8"))
-    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+        payload = _load_unique_json(resolved)
+    except (OSError, StartupRuntimeError) as exc:
         raise WorkflowRuntimeError(
             f"CONSUMER_FIRST_CONTRACT_RECEIPT_INVALID:{exc}"
         ) from exc
@@ -996,6 +1010,268 @@ def _dependency_contract_receipt(
 
 def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def _atomic_bytes(path: Path, payload: bytes) -> None:
+    """Durably replace one close marker/state file."""
+
+    import tempfile
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    descriptor, temporary = tempfile.mkstemp(prefix=f".{path.name}.", dir=path.parent)
+    try:
+        with os.fdopen(descriptor, "wb") as handle:
+            handle.write(payload)
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(temporary, path)
+        directory = os.open(path.parent, os.O_RDONLY | os.O_DIRECTORY)
+        try:
+            os.fsync(directory)
+        finally:
+            os.close(directory)
+    finally:
+        Path(temporary).unlink(missing_ok=True)
+
+
+def _terminal_goal_bytes(goal_path: Path) -> bytes:
+    raw = goal_path.read_bytes()
+    try:
+        text = raw.decode("utf-8")
+    except UnicodeDecodeError as exc:
+        raise WorkflowRuntimeError("GOAL_TERMINALIZATION_INVALID_UTF8") from exc
+    fence = re.search(r"```(?:yaml|yml)\s*\n(?P<body>.*?)```", text, re.DOTALL | re.IGNORECASE)
+    if fence is None:
+        raise WorkflowRuntimeError("GOAL_TERMINALIZATION_HEADER_MISSING")
+    body = fence.group("body")
+    matches = list(re.finditer(r"(?m)^STATUS:\s*OPEN\s*$", body))
+    if len(matches) != 1:
+        raise WorkflowRuntimeError("GOAL_TERMINALIZATION_STATUS_INVALID")
+    match = matches[0]
+    start = fence.start("body") + match.start()
+    end = fence.start("body") + match.end()
+    return (text[:start] + "STATUS: CLOSED" + text[end:]).encode()
+
+
+def _load_closed_json(path: Path, *, code: str) -> dict[str, Any]:
+    try:
+        value = _load_unique_json(path)
+    except StartupRuntimeError as exc:
+        raise WorkflowRuntimeError(f"{code}:{exc}") from exc
+    return value
+
+
+def _compact_stage(receipt: dict[str, Any]) -> dict[str, Any]:
+    compact = {
+        key: receipt.get(key)
+        for key in ("label", "exit", "duration_ms", "output_sha256")
+    }
+    compact["schema"] = "q3_close_stage.v1"
+    compact["status"] = "PASS" if receipt.get("exit") == 0 else "FAIL"
+    return compact
+
+
+def _validate_phase_close_output(path: Path) -> tuple[dict[str, Any], str]:
+    try:
+        payload = _load_unique_json(path)
+    except StartupRuntimeError as exc:
+        raise WorkflowRuntimeError(f"PHASE_CLOSE_OUTPUT_INVALID:{exc}") from exc
+    required = {
+        "schema", "derived_executed", "derived_status", "gates",
+        "verdict_migration", "blueprint_exit", "manual_debt",
+        "commit_push_performed", "PX_RH_CLAIM",
+    }
+    if set(payload) != required or payload.get("schema") != "q3_phase_close.v1":
+        raise WorkflowRuntimeError("PHASE_CLOSE_OUTPUT_SCHEMA_INVALID")
+    gates = payload.get("gates")
+    statuses = payload.get("derived_status")
+    migration = payload.get("verdict_migration")
+    debt = payload.get("manual_debt")
+    if (
+        not isinstance(gates, list)
+        or not gates
+        or any(
+            not isinstance(row, dict)
+            or set(row) != {"path", "exit"}
+            or row.get("exit") != 0
+            for row in gates
+        )
+        or not isinstance(statuses, list)
+        or not statuses
+        or any(
+            not isinstance(row, dict)
+            or set(row) != {"id", "status"}
+            or row.get("status") not in {"FRESH", "CURRENT_WORKTREE"}
+            for row in statuses
+        )
+        or not any(row.get("id") == "routeb-publication-blueprint" for row in statuses)
+        or not isinstance(migration, dict)
+        or migration.get("exit") != 0
+        or migration.get("pending") is not False
+        or not isinstance(debt, dict)
+        or set(debt) != {"assembly_review_required", "insight_required", "cards"}
+        or any(not isinstance(items, list) or items for items in debt.values())
+        or payload.get("blueprint_exit") != 0
+        or payload.get("commit_push_performed") is not False
+        or payload.get("PX_RH_CLAIM") != "NOT_MADE"
+    ):
+        raise WorkflowRuntimeError("PHASE_CLOSE_OUTPUT_NOT_GREEN")
+    canonical = json.dumps(
+        payload, ensure_ascii=False, sort_keys=True, separators=(",", ":")
+    ).encode()
+    if len(canonical) > 32768:
+        raise WorkflowRuntimeError("PHASE_CLOSE_OUTPUT_NOT_GREEN")
+    return payload, hashlib.sha256(canonical).hexdigest()
+
+
+def _phase_output_fingerprints(repo: Path, payload: dict[str, Any]) -> dict[str, str]:
+    from orchestrator import dependency_registry
+
+    ids = {row["id"] for row in payload["derived_status"]}
+    if "routeb-publication-blueprint" not in ids:
+        raise WorkflowRuntimeError("PHASE_CLOSE_BLUEPRINT_STATUS_MISSING")
+    registry = dependency_registry.load_registry(
+        repo / "docs/cartographer/DERIVED_ARTIFACTS.yaml"
+    )
+    blueprint_rows = [
+        row for row in registry if row["id"] == "routeb-publication-blueprint"
+    ]
+    if len(blueprint_rows) != 1 or len(blueprint_rows[0]["outputs"]) != 12:
+        raise WorkflowRuntimeError("PHASE_CLOSE_BLUEPRINT_OUTPUT_SET_INVALID")
+    outputs: dict[str, str] = {}
+    for row in blueprint_rows:
+        for pattern_value in row["outputs"]:
+            pattern = str(pattern_value)
+            paths = (
+                sorted(repo.glob(pattern))
+                if any(char in pattern for char in "*?[")
+                else [repo / pattern]
+            )
+            for path in paths:
+                relative = _lexical_relative(repo, path)
+                if (
+                    _has_symlink_component(repo, relative)
+                    or not path.is_file()
+                ):
+                    raise WorkflowRuntimeError(
+                        f"PHASE_CLOSE_DERIVED_OUTPUT_INVALID:{relative.as_posix()}"
+                    )
+                outputs[relative.as_posix()] = _sha256(path)
+    if not outputs:
+        raise WorkflowRuntimeError("PHASE_CLOSE_DERIVED_OUTPUTS_MISSING")
+    return dict(sorted(outputs.items()))
+
+
+def _close_input_hashes(
+    *, answer_path: Path, attempt_path: Path, next_goal_spec: Path | None,
+    channel_runtime: Path, current_phase_key: Path | None = None,
+) -> dict[str, str]:
+    result = {
+        "answer": _sha256(answer_path),
+        "attempt": _sha256(attempt_path),
+        "channel_runtime": _sha256(channel_runtime),
+    }
+    if next_goal_spec is not None:
+        result["next_goal_spec"] = _sha256(next_goal_spec)
+    if current_phase_key is not None:
+        result["current_phase_key"] = _sha256(current_phase_key)
+    return result
+
+
+def _recheck_close_inputs(
+    repo: Path, paths: dict[str, Path], expected: dict[str, str]
+) -> None:
+    for label, path in paths.items():
+        try:
+            relative = _lexical_relative(repo, path)
+        except Exception as exc:
+            raise WorkflowRuntimeError(f"WORKFLOW_CLOSE_INPUT_OUTSIDE_REPO:{label}") from exc
+        if (
+            _has_symlink_component(repo, relative)
+            or not path.is_file()
+            or _sha256(path) != expected[label]
+        ):
+            raise WorkflowRuntimeError(f"WORKFLOW_CLOSE_INPUT_DRIFT:{label}")
+
+
+def _recheck_close_recovery_identity(
+    repo: Path,
+    *,
+    plan: dict[str, Any],
+    epoch: _ExecutionWriterEpoch,
+    receipt: dict[str, Any],
+) -> None:
+    """Recheck immutable production identity while allowing expected goal terminalization."""
+
+    epoch.recheck()
+    startup = plan.get("startup")
+    if not isinstance(startup, dict):
+        raise WorkflowRuntimeError("WORKFLOW_EXECUTION_SNAPSHOT_INVALID")
+    if _git(repo, "rev-parse", "HEAD") != startup.get("git_head"):
+        raise WorkflowRuntimeError("WORKFLOW_CLOSE_EPOCH_HEAD_DRIFT")
+    current_tree = _git(repo, "rev-parse", "HEAD^{tree}")
+    if current_tree != startup.get("git_tree"):
+        raise WorkflowRuntimeError("WORKFLOW_CLOSE_EPOCH_TREE_DRIFT")
+    if _sha256(repo / "docs/CODEX_CONTROL.md") != startup.get("control_sha256"):
+        raise WorkflowRuntimeError("WORKFLOW_CLOSE_EPOCH_CONTROL_DRIFT")
+    if receipt.get("control_sha256") != startup.get("control_sha256"):
+        raise WorkflowRuntimeError("WORKFLOW_CLOSE_RECEIPT_CONTROL_DRIFT")
+    current_head = str(startup["git_head"])
+    base_head = receipt.get("base_head")
+    if current_head == base_head:
+        if receipt.get("git_tree") != current_tree:
+            raise WorkflowRuntimeError("WORKFLOW_CLOSE_RECEIPT_TREE_DRIFT")
+        return
+    goal_rel = str(receipt.get("goal_path"))
+    allowed = {
+        goal_rel,
+        goal_close_receipt_path(repo / goal_rel).relative_to(repo).as_posix(),
+        phase_close_receipt_path(repo / goal_rel).relative_to(repo).as_posix(),
+    }
+    changed = set(
+        _git(repo, "diff", "--name-only", str(base_head), current_head, "--").splitlines()
+    )
+    if not changed or not changed.issubset(allowed):
+        raise WorkflowRuntimeError("WORKFLOW_CLOSE_PARTIAL_DELIVERY_SCOPE_DRIFT")
+    for relative in changed:
+        path = repo / relative
+        if not path.is_file() or _git(repo, "hash-object", "--", relative) != _git(
+            repo, "rev-parse", f"HEAD:{relative}"
+        ):
+            raise WorkflowRuntimeError("WORKFLOW_CLOSE_PARTIAL_DELIVERY_BLOB_DRIFT")
+
+
+def _verify_close_consumption_identity(
+    repo: Path,
+    *,
+    plan: dict[str, Any],
+    startup: dict[str, Any],
+    owned_paths: Sequence[str],
+) -> None:
+    try:
+        consumption = node_registry_v10.verify_consumption(
+            repo,
+            selected_goal_path=plan.get("selected_goal"),
+            owned_paths=owned_paths,
+            exact_node_pin=startup.get("exact_node_pin"),
+            exact_source_pin=startup.get("exact_source_pin"),
+            exact_theorem_pin=startup.get("exact_theorem_pin"),
+            exact_consumer_pin=startup.get("exact_consumer_pin"),
+            writer_lock_held=True,
+        )
+    except (
+        node_registry_v10.NodeRegistryError,
+        OSError,
+        subprocess.SubprocessError,
+    ) as exc:
+        raise WorkflowRuntimeError(
+            f"GOAL_CLOSE_RECOVERY_CONSUMPTION_IDENTITY_DRIFT:{exc}"
+        ) from exc
+    if consumption.get("status") != "PASS":
+        raise WorkflowRuntimeError(
+            "GOAL_CLOSE_RECOVERY_CONSUMPTION_IDENTITY_DRIFT:"
+            + str(consumption.get("code", consumption.get("status")))
+        )
 
 
 def _git(repo: Path, *args: str) -> str:
@@ -1609,6 +1885,334 @@ def _execution_epoch_hold(
     return True
 
 
+def _execute_goal_and_phase_close(
+    repo: Path,
+    *,
+    plan: dict[str, Any],
+    startup: dict[str, Any],
+    epoch: _ExecutionWriterEpoch,
+    attempt_payload: Path,
+    attempt: dict[str, Any],
+    next_goal_spec: Path | None,
+    current_phase_key: Path | None,
+    receipts: list[dict[str, Any]],
+    owned_paths: Sequence[str] = (),
+) -> str:
+    """Finish a CLOSE_GOAL attempt as a recoverable staged transaction."""
+
+    from orchestrator import goal_runtime, spine
+
+    attempt_payload = (
+        attempt_payload if attempt_payload.is_absolute() else repo / attempt_payload
+    )
+    current_phase_key = (
+        current_phase_key
+        if current_phase_key is None or current_phase_key.is_absolute()
+        else repo / current_phase_key
+    )
+    if attempt.get("next_action") != "CLOSE_GOAL":
+        raise WorkflowRuntimeError("GOAL_CLOSE_ATTEMPT_ACTION_REQUIRED")
+    selected = startup.get("selected_goal")
+    if not isinstance(selected, str):
+        raise WorkflowRuntimeError("GOAL_CLOSE_SELECTED_GOAL_REQUIRED")
+    goal_path = repo / selected
+    marker = goal_close_receipt_path(goal_path)
+    answer_path = goal_path.with_name(
+        goal_path.name.removesuffix(".goal.md") + ".answer.md"
+    )
+    if answer_path.is_symlink() or not answer_path.is_file():
+        raise WorkflowRuntimeError("GOAL_CLOSE_MATCHING_ANSWER_REQUIRED")
+    _validate_modern_answer(goal_path, _goal_header(goal_path), answer_path)
+    existing: dict[str, Any] | None = None
+    if marker.is_file():
+        # Startup performs the full Git-epoch/ancestry validation.  Inside the
+        # held writer epoch we validate structure and bytes here, then bind the
+        # receipt to the immutable compiled snapshot below.
+        existing = validate_goal_close_receipt(
+            goal_path, answer_path, marker, verify_git_epoch=False
+        )
+        receipt_spec = existing.get("next_goal_spec_path")
+        if next_goal_spec is None and isinstance(receipt_spec, str):
+            next_goal_spec = repo / receipt_spec
+    if next_goal_spec is None:
+        raise WorkflowRuntimeError("NEXT_GOAL_SPEC_REQUIRED_FOR_CLOSE_GOAL")
+    next_goal_spec = (
+        next_goal_spec
+        if next_goal_spec is None or next_goal_spec.is_absolute()
+        else repo / next_goal_spec
+    )
+    current_phase_key = (
+        current_phase_key
+        if current_phase_key is None or current_phase_key.is_absolute()
+        else repo / current_phase_key
+    )
+    channel_path = repo / "orchestrator/state/CHANNEL_RUNTIME.json"
+    input_paths = {
+        "answer": answer_path,
+        "attempt": attempt_payload,
+        "channel_runtime": channel_path,
+    }
+    if next_goal_spec is not None:
+        input_paths["next_goal_spec"] = next_goal_spec
+    if current_phase_key is not None:
+        input_paths["current_phase_key"] = current_phase_key
+    input_hashes = _close_input_hashes(
+        answer_path=answer_path,
+        attempt_path=attempt_payload,
+        next_goal_spec=next_goal_spec,
+        channel_runtime=channel_path,
+        current_phase_key=current_phase_key,
+    )
+    current: dict[str, str] | None = None
+    next_phase: dict[str, str] | None = None
+    changed = False
+    if next_goal_spec is not None:
+        spec_payload = _load_closed_json(next_goal_spec, code="NEXT_GOAL_SPEC_INVALID")
+        spec = goal_runtime.validate_next_goal_spec(spec_payload, repo_root=repo)
+        runtime = _load_closed_json(channel_path, code="CHANNEL_RUNTIME_INVALID")
+        spine.validate_runtime(runtime)
+        active = runtime.get("active_proshka_phase")
+        if not isinstance(active, dict):
+            raise WorkflowRuntimeError("PHASE_TRANSITION_CURRENT_PHASE_MISSING")
+        current = spine.validate_phase_key(active.get("phase_key"))
+        if current_phase_key is not None:
+            supplied = _load_closed_json(
+                current_phase_key, code="CURRENT_PHASE_KEY_INVALID"
+            )
+            if not spine.phase_keys_equal(supplied, current):
+                raise WorkflowRuntimeError("CURRENT_PHASE_KEY_DRIFT")
+        next_phase = spine.validate_phase_key(spec["phase_key"])
+        changed = not spine.phase_keys_equal(current, next_phase)
+        if spec["phase_key_change"] != changed:
+            raise WorkflowRuntimeError("PHASE_CHANGE_DECLARATION_DRIFT")
+    if existing is not None:
+        startup_edge = {
+            "node": startup.get("exact_node_pin"),
+            "source": startup.get("exact_source_pin"),
+            "theorem": startup.get("exact_theorem_pin"),
+            "consumer": startup.get("exact_consumer_pin"),
+        }
+        if existing.get("exact_edge") != startup_edge:
+            raise WorkflowRuntimeError("GOAL_CLOSE_EXACT_EDGE_DRIFT")
+        attempt_rel = _lexical_relative(repo, attempt_payload).as_posix()
+        if existing.get("attempt_path") != attempt_rel:
+            raise WorkflowRuntimeError("GOAL_CLOSE_ATTEMPT_PATH_DRIFT")
+        if existing.get("attempt_sha256") != input_hashes["attempt"]:
+            raise WorkflowRuntimeError("GOAL_CLOSE_ATTEMPT_BLOB_DRIFT")
+        expected_spec_path = (
+            _lexical_relative(repo, next_goal_spec).as_posix()
+            if next_goal_spec is not None
+            else None
+        )
+        if (
+            existing.get("next_goal_spec_path") != expected_spec_path
+            or existing.get("next_goal_spec_sha256")
+            != input_hashes.get("next_goal_spec")
+            or existing.get("channel_runtime_sha256")
+            != input_hashes["channel_runtime"]
+            or existing.get("phase_close_required") != changed
+            or existing.get("current_phase_key") != current
+            or existing.get("next_phase_key") != next_phase
+            or existing.get("current_phase_key_path")
+            != (
+                _lexical_relative(repo, current_phase_key).as_posix()
+                if current_phase_key is not None
+                else None
+            )
+            or existing.get("current_phase_key_sha256")
+            != input_hashes.get("current_phase_key")
+        ):
+            raise WorkflowRuntimeError("GOAL_CLOSE_PHASE_BINDING_DRIFT")
+        _recheck_close_recovery_identity(
+            repo, plan=plan, epoch=epoch, receipt=existing
+        )
+    else:
+        _recheck_close_inputs(repo, input_paths, input_hashes)
+        if _execution_epoch_hold(repo, plan=plan, epoch=epoch, holds=[]):
+            raise WorkflowRuntimeError("WORKFLOW_CLOSE_EPOCH_DRIFT")
+    if existing is None:
+        open_bytes = goal_path.read_bytes()
+        open_goal_sha256 = hashlib.sha256(open_bytes).hexdigest()
+        terminal_bytes = _terminal_goal_bytes(goal_path)
+        command = [
+            sys.executable,
+            "orchestrator/spine.py",
+            "--refresh",
+            "--reason",
+            "goal-close",
+        ]
+        goal_stage = command_receipt(repo, command, label="goal-close")
+        receipts.append(goal_stage)
+        if goal_stage.get("exit") != 0:
+            raise WorkflowRuntimeError("GOAL_CLOSE_STAGE_FAILED")
+        _recheck_close_inputs(repo, input_paths, input_hashes)
+        if _sha256(goal_path) != open_goal_sha256:
+            raise WorkflowRuntimeError("GOAL_CLOSE_GOAL_BYTES_DRIFT")
+        if _execution_epoch_hold(repo, plan=plan, epoch=epoch, holds=[]):
+            raise WorkflowRuntimeError("WORKFLOW_CLOSE_EPOCH_DRIFT")
+        edge = {
+            "node": startup.get("exact_node_pin"),
+            "source": startup.get("exact_source_pin"),
+            "theorem": startup.get("exact_theorem_pin"),
+            "consumer": startup.get("exact_consumer_pin"),
+        }
+        if any(not isinstance(value, str) or not value for value in edge.values()):
+            raise WorkflowRuntimeError("GOAL_CLOSE_EXACT_EDGE_REQUIRED")
+        marker_payload = {
+            "schema": "q3_goal_close_receipt.v1",
+            "goal_path": selected,
+            "answer_path": answer_path.relative_to(repo).as_posix(),
+            "base_head": startup.get("git_head"),
+            "git_tree": startup.get("git_tree"),
+            "control_sha256": startup.get("control_sha256"),
+            "open_goal_sha256": open_goal_sha256,
+            "terminal_goal_sha256": hashlib.sha256(terminal_bytes).hexdigest(),
+            "answer_sha256": input_hashes["answer"],
+            "attempt_path": _lexical_relative(repo, attempt_payload).as_posix(),
+            "attempt_sha256": input_hashes["attempt"],
+            "exact_edge": edge,
+            "stages": [_compact_stage(goal_stage)],
+            "next_goal_spec_path": (
+                _lexical_relative(repo, next_goal_spec).as_posix()
+                if next_goal_spec is not None
+                else None
+            ),
+            "next_goal_spec_sha256": input_hashes.get("next_goal_spec"),
+            "channel_runtime_sha256": input_hashes["channel_runtime"],
+            "phase_close_required": changed,
+            "current_phase_key": current,
+            "next_phase_key": next_phase,
+            "current_phase_key_path": (
+                _lexical_relative(repo, current_phase_key).as_posix()
+                if current_phase_key is not None
+                else None
+            ),
+            "current_phase_key_sha256": input_hashes.get("current_phase_key"),
+        }
+        _atomic_bytes(
+            marker,
+            (
+                json.dumps(
+                    marker_payload,
+                    ensure_ascii=False,
+                    sort_keys=True,
+                    indent=2,
+                )
+                + "\n"
+            ).encode(),
+        )
+        # Receipt first: a crash here is recoverable as GOAL_TERMINALIZE_PENDING.
+        _recheck_close_inputs(repo, input_paths, input_hashes)
+        validate_goal_close_receipt(
+            goal_path, answer_path, marker, verify_git_epoch=False
+        )
+        if _sha256(goal_path) != open_goal_sha256:
+            raise WorkflowRuntimeError("GOAL_CLOSE_GOAL_BYTES_DRIFT")
+        if _execution_epoch_hold(repo, plan=plan, epoch=epoch, holds=[]):
+            raise WorkflowRuntimeError("WORKFLOW_CLOSE_EPOCH_DRIFT")
+        _atomic_bytes(goal_path, terminal_bytes)
+        existing = marker_payload
+    else:
+        goal_is_open = _goal_header(goal_path).get("STATUS") == "OPEN"
+        terminal_bytes = (
+            _terminal_goal_bytes(goal_path)
+            if goal_is_open
+            else goal_path.read_bytes()
+        )
+        if hashlib.sha256(terminal_bytes).hexdigest() != existing["terminal_goal_sha256"]:
+            raise WorkflowRuntimeError("GOAL_CLOSE_RECEIPT_COLLISION")
+        if goal_is_open:
+            _verify_close_consumption_identity(
+                repo, plan=plan, startup=startup, owned_paths=owned_paths
+            )
+            validate_goal_close_receipt(
+                goal_path, answer_path, marker, verify_git_epoch=False
+            )
+            _recheck_close_inputs(repo, input_paths, input_hashes)
+            _recheck_close_recovery_identity(
+                repo, plan=plan, epoch=epoch, receipt=existing
+            )
+            if _sha256(goal_path) != existing["open_goal_sha256"]:
+                raise WorkflowRuntimeError("GOAL_CLOSE_GOAL_BYTES_DRIFT")
+            _atomic_bytes(goal_path, terminal_bytes)
+        receipts.append({"label": "goal-close", "exit": 0, "status": "ALREADY_CLOSED"})
+
+    if not changed:
+        return "CLOSED_GOAL"
+    assert next_goal_spec is not None and current is not None and next_phase is not None
+    phase_marker = phase_close_receipt_path(goal_path)
+    if phase_marker.is_file():
+        _verify_close_consumption_identity(
+            repo, plan=plan, startup=startup, owned_paths=owned_paths
+        )
+        _recheck_close_inputs(repo, input_paths, input_hashes)
+        _recheck_close_recovery_identity(repo, plan=plan, epoch=epoch, receipt=existing)
+        if _sha256(goal_path) != existing["terminal_goal_sha256"]:
+            raise WorkflowRuntimeError("GOAL_CLOSE_TERMINAL_BYTES_DRIFT")
+        validate_phase_close_receipt(goal_path, marker, phase_marker)
+        receipts.append({"label": "phase-close", "exit": 0, "status": "ALREADY_CLOSED"})
+        return "CLOSED_GOAL_PHASE"
+    _recheck_close_inputs(repo, input_paths, input_hashes)
+    _recheck_close_recovery_identity(repo, plan=plan, epoch=epoch, receipt=existing)
+    if _sha256(goal_path) != existing["terminal_goal_sha256"]:
+        raise WorkflowRuntimeError("GOAL_CLOSE_TERMINAL_BYTES_DRIFT")
+    chain = goal_assembly_chain(str(goal_path))
+    with tempfile.TemporaryDirectory(prefix="q3-phase-close-") as temp_dir:
+        phase_output = Path(temp_dir) / "phase-close.json"
+        command = [
+            sys.executable,
+            "specs_docs/phase_close.py",
+            "--repair",
+            "--json-out",
+            str(phase_output),
+        ]
+        if chain:
+            command.extend(("--assembly-chain", chain))
+        phase_stage = command_receipt(repo, command, label="phase-close")
+        receipts.append(phase_stage)
+        if phase_stage.get("exit") != 0:
+            raise WorkflowRuntimeError("PHASE_CLOSE_STAGE_FAILED")
+        phase_result, phase_output_sha256 = _validate_phase_close_output(phase_output)
+        derived_outputs = _phase_output_fingerprints(repo, phase_result)
+    _recheck_close_inputs(repo, input_paths, input_hashes)
+    _recheck_close_recovery_identity(repo, plan=plan, epoch=epoch, receipt=existing)
+    validate_goal_close_receipt(
+        goal_path, answer_path, marker, verify_git_epoch=False
+    )
+    if _sha256(goal_path) != existing["terminal_goal_sha256"]:
+        raise WorkflowRuntimeError("GOAL_CLOSE_TERMINAL_BYTES_DRIFT")
+    if _phase_output_fingerprints(repo, phase_result) != derived_outputs:
+        raise WorkflowRuntimeError("PHASE_CLOSE_DERIVED_OUTPUT_DRIFT")
+    _verify_close_consumption_identity(
+        repo, plan=plan, startup=startup, owned_paths=owned_paths
+    )
+    _recheck_close_inputs(repo, input_paths, input_hashes)
+    _recheck_close_recovery_identity(repo, plan=plan, epoch=epoch, receipt=existing)
+    validate_goal_close_receipt(
+        goal_path, answer_path, marker, verify_git_epoch=False
+    )
+    if _sha256(goal_path) != existing["terminal_goal_sha256"]:
+        raise WorkflowRuntimeError("GOAL_CLOSE_TERMINAL_BYTES_DRIFT")
+    phase_payload = {
+        "schema": "q3_phase_close_receipt.v1",
+        "goal_path": selected,
+        "goal_close_receipt_sha256": _sha256(marker),
+        "next_goal_spec_sha256": input_hashes["next_goal_spec"],
+        "channel_runtime_sha256": input_hashes["channel_runtime"],
+        "current_phase_key": current,
+        "next_phase_key": next_phase,
+        "stage": _compact_stage(phase_stage),
+        "phase_output_sha256": phase_output_sha256,
+        "phase_evidence": phase_result,
+        "derived_output_fingerprints": derived_outputs,
+    }
+    _atomic_bytes(
+        phase_marker,
+        (json.dumps(phase_payload, ensure_ascii=False, sort_keys=True, indent=2) + "\n").encode(),
+    )
+    return "CLOSED_GOAL_PHASE"
+
+
 def _execute_close_node_transaction(
     repo: Path,
     *,
@@ -1621,15 +2225,80 @@ def _execute_close_node_transaction(
     candidate: str | None,
     target: str | None,
     attempt_payload: Path,
+    attempt: dict[str, Any],
     insight_payload: Path | None,
     run_kernel: bool,
     protocol_out: Path | None,
     contract_receipt: dict[str, Any] | None,
     receipts: list[dict[str, Any]],
     holds: list[str],
+    next_goal_spec: Path | None = None,
+    current_phase_key: Path | None = None,
 ) -> dict[str, Any]:
     if production_v10:
         assert epoch is not None
+        selected = startup.get("selected_goal")
+        recovery_marker = (
+            goal_close_receipt_path(repo / selected)
+            if isinstance(selected, str)
+            else None
+        )
+        recovery_receipt_valid = False
+        if recovery_marker is not None and recovery_marker.is_file():
+            recovery_goal = repo / selected
+            recovery_answer = recovery_goal.with_name(
+                recovery_goal.name.removesuffix(".goal.md") + ".answer.md"
+            )
+            try:
+                validate_goal_close_receipt(
+                    recovery_goal,
+                    recovery_answer,
+                    recovery_marker,
+                    verify_git_epoch=False,
+                )
+            except (StartupRuntimeError, OSError) as exc:
+                holds.append(str(exc))
+                return _held_run(plan=plan, receipts=receipts, holds=holds)
+            recovery_receipt_valid = True
+        if (
+            attempt.get("next_action") == "CLOSE_GOAL"
+            and recovery_receipt_valid
+        ):
+            before = _git(repo, "status", "--porcelain=v1", "--untracked-files=all")
+            try:
+                close_status = _execute_goal_and_phase_close(
+                    repo,
+                    plan=plan,
+                    startup=startup,
+                    epoch=epoch,
+                    attempt_payload=attempt_payload,
+                    attempt=attempt,
+                    next_goal_spec=next_goal_spec,
+                    current_phase_key=current_phase_key,
+                    receipts=receipts,
+                    owned_paths=owned_paths,
+                )
+                recovery_holds: list[str] = []
+            except (
+                WorkflowRuntimeError,
+                StartupRuntimeError,
+                OSError,
+                subprocess.SubprocessError,
+            ) as exc:
+                close_status = "CLOSE_RETRY_PENDING"
+                recovery_holds = [str(exc)]
+            after = _git(repo, "status", "--porcelain=v1", "--untracked-files=all")
+            return {
+                "schema": "q3_workflow_run.v1",
+                "status": close_status,
+                "holds": recovery_holds,
+                "plan": plan,
+                "receipts": receipts,
+                "changed_paths_before": before.splitlines(),
+                "changed_paths_after": after.splitlines(),
+                "commit_push_performed": False,
+                "PX_RH_CLAIM": "NOT_MADE",
+            }
         if _execution_epoch_hold(repo, plan=plan, epoch=epoch, holds=holds):
             return _held_run(plan=plan, receipts=receipts, holds=holds)
         if any(not _exists_at_head(repo, path) for path in owned_paths) and not query:
@@ -1758,11 +2427,44 @@ def _execute_close_node_transaction(
         if production_v10:
             assert epoch is not None
             _execution_epoch_hold(repo, plan=plan, epoch=epoch, holds=holds)
+    close_status = "CLOSED_NODE"
+    if (
+        production_v10
+        and not holds
+        and receipts[-1]["exit"] == 0
+        and attempt.get("next_action") == "CLOSE_GOAL"
+    ):
+        assert epoch is not None
+        try:
+            close_status = _execute_goal_and_phase_close(
+                repo,
+                plan=plan,
+                startup=startup,
+                epoch=epoch,
+                attempt_payload=attempt_payload,
+                attempt=attempt,
+                next_goal_spec=next_goal_spec,
+                current_phase_key=current_phase_key,
+                receipts=receipts,
+                owned_paths=owned_paths,
+            )
+        except (
+            WorkflowRuntimeError,
+            StartupRuntimeError,
+            OSError,
+            subprocess.SubprocessError,
+        ) as exc:
+            holds.append(str(exc))
+            close_status = "CLOSE_RETRY_PENDING"
     failed = [item for item in receipts if item.get("exit", 0) != 0]
     after = _git(repo, "status", "--porcelain=v1", "--untracked-files=all")
     return {
         "schema": "q3_workflow_run.v1",
-        "status": "HOLD" if failed or holds else "CLOSED_NODE",
+        "status": (
+            "CLOSE_RETRY_PENDING"
+            if close_status == "CLOSE_RETRY_PENDING"
+            else "HOLD" if failed or holds else close_status
+        ),
         "holds": sorted(
             set(
                 [
@@ -1796,7 +2498,10 @@ def execute_close_node(
     run_kernel: bool,
     protocol_out: Path | None,
     dependency_contract_receipt: Path | None = None,
+    next_goal_spec: Path | None = None,
+    current_phase_key: Path | None = None,
 ) -> dict[str, Any]:
+    from orchestrator import goal_events
     plan_schema = plan.get("schema")
     production_v10 = (
         plan_schema == SHADOW_PLAN_SCHEMA
@@ -1835,6 +2540,40 @@ def execute_close_node(
         holds.append("OWNED_SCOPE_REQUIRED")
     if attempt_payload is None:
         holds.append("GOAL_ATTEMPT_EVENT_REQUIRED")
+        attempt: dict[str, Any] = {}
+    elif (repo_attempt_payload := (
+        attempt_payload if attempt_payload.is_absolute() else repo / attempt_payload
+    )).is_file():
+        attempt_payload = repo_attempt_payload
+        raw_attempt: dict[str, Any] = {}
+        try:
+            raw_attempt = _load_closed_json(
+                attempt_payload, code="GOAL_ATTEMPT_PAYLOAD_INVALID"
+            )
+            attempt = goal_events.validate_attempt(raw_attempt, repo_root=repo)
+        except (goal_events.GoalEventError, WorkflowRuntimeError) as exc:
+            selected = startup.get("selected_goal") if isinstance(startup, dict) else None
+            recovery_marker = (
+                goal_close_receipt_path(repo / selected)
+                if production_v10 and isinstance(selected, str)
+                else None
+            )
+            # Once the goal bytes are terminal, the original attempt's OPEN-goal
+            # hash intentionally no longer validates. The durable receipt is the
+            # recovery authority and rebinds the exact attempt bytes below.
+            if (
+                raw_attempt.get("next_action") == "CLOSE_GOAL"
+                and recovery_marker is not None
+                and recovery_marker.is_file()
+            ):
+                attempt = raw_attempt
+            else:
+                attempt = {}
+                holds.append(str(exc))
+    else:
+        # The registered step-close writer remains the authority for ordinary
+        # node-only calls; goal terminalization requires the decoded payload.
+        attempt = {}
     if (
         not holds
         and not production_v10
@@ -1886,12 +2625,15 @@ def execute_close_node(
                     candidate=candidate,
                     target=target,
                     attempt_payload=attempt_payload,
+                    attempt=attempt,
                     insight_payload=insight_payload,
                     run_kernel=run_kernel,
                     protocol_out=protocol_out,
                     contract_receipt=contract_receipt,
                     receipts=receipts,
                     holds=holds,
+                    next_goal_spec=next_goal_spec,
+                    current_phase_key=current_phase_key,
                 )
         except WorkflowRuntimeError as exc:
             holds.append(str(exc))
@@ -1907,12 +2649,15 @@ def execute_close_node(
         candidate=candidate,
         target=target,
         attempt_payload=attempt_payload,
+        attempt=attempt,
         insight_payload=insight_payload,
         run_kernel=run_kernel,
         protocol_out=protocol_out,
         contract_receipt=contract_receipt,
         receipts=receipts,
         holds=holds,
+        next_goal_spec=next_goal_spec,
+        current_phase_key=current_phase_key,
     )
 
 
@@ -1929,6 +2674,470 @@ def _run_close_script(repo: Path, script: str, forwarded: list[str]) -> int:
     ).returncode
 
 
+def _supplier_search_dispatch(
+    repo: Path,
+    *,
+    search_intent: Path,
+    owned_paths: list[str],
+    record_evidence: bool,
+    oracle_card: str | None,
+) -> int:
+    """Run one read-only SearchIntent and optionally persist its exact evidence."""
+
+    from scripts import supplier_preflight
+
+    plan = live_plan_v10(repo, owned_paths=owned_paths)
+    startup = plan.get("startup")
+    holds: list[str] = []
+    if plan.get("status") == "FATAL" or not isinstance(startup, dict):
+        holds.append("SUPPLIER_SEARCH_STARTUP_FATAL")
+    elif startup.get("fatal_errors"):
+        holds.append("SUPPLIER_SEARCH_STARTUP_FATAL")
+    if holds:
+        print(json.dumps({
+            "schema": "q3_supplier_search_dispatch.v1",
+            "status": "FATAL",
+            "holds": sorted(set(holds)),
+            "child_started": False,
+        }, ensure_ascii=False, sort_keys=True))
+        return 2
+    try:
+        intent_path = (
+            search_intent if search_intent.is_absolute() else repo / search_intent
+        )
+        intent_raw, intent_before = _search_input_snapshot(intent_path)
+        decoded_intent = json.loads(intent_raw.decode("utf-8"))
+        intent = supplier_preflight.validate_search_intent_runtime(decoded_intent, repo=repo)
+    except (OSError, ValueError, WorkflowRuntimeError) as exc:
+        intent = None
+        holds.append(f"SUPPLIER_SEARCH_INTENT_INVALID:{exc}")
+    if isinstance(startup, dict) and isinstance(intent, dict):
+        bindings = (
+            ("goal_file", plan.get("selected_goal")),
+            ("node_id", startup.get("exact_node_pin")),
+            ("source_pin", startup.get("exact_source_pin")),
+        )
+        for field, expected in bindings:
+            if intent.get(field) != expected:
+                holds.append(f"SUPPLIER_SEARCH_BINDING_MISMATCH:{field}")
+        admission = intent.get("admission")
+        if isinstance(admission, dict):
+            for field, expected in (
+                ("theorem", startup.get("exact_theorem_pin")),
+                ("consumer", startup.get("exact_consumer_pin")),
+            ):
+                if admission.get(field) != expected:
+                    holds.append(f"SUPPLIER_SEARCH_BINDING_MISMATCH:{field}")
+    card_path: Path | None = None
+    card_rel: str | None = None
+    card_before: tuple[tuple[int, int, int, int, int, int, int], str] | None = None
+    if record_evidence:
+        if oracle_card is None:
+            holds.append("SUPPLIER_SEARCH_ORACLE_CARD_REQUIRED")
+        else:
+            try:
+                card_path, card_rel, card_before = _search_card_state(
+                    repo, oracle_card=oracle_card, owned_paths=owned_paths
+                )
+            except WorkflowRuntimeError as exc:
+                holds.append(str(exc))
+    if holds:
+        print(json.dumps({
+            "schema": "q3_supplier_search_dispatch.v1",
+            "status": "FATAL",
+            "holds": sorted(set(holds)),
+            "child_started": False,
+        }, ensure_ascii=False, sort_keys=True))
+        return 2
+    command = [
+        sys.executable,
+        str(repo / "scripts/supplier_preflight.py"),
+        "--search-intent",
+        str(intent_path),
+    ]
+    if not record_evidence:
+        return subprocess.run(command, cwd=repo).returncode
+
+    assert intent is not None
+    assert card_path is not None and card_rel is not None and card_before is not None
+    supplier = subprocess.run(
+        command, cwd=repo, capture_output=True, text=True, check=False
+    )
+    try:
+        evidence = _parse_search_evidence(supplier.stdout, supplier.returncode)
+        current_plan = live_plan_v10(repo, owned_paths=owned_paths)
+        if _supplier_plan_identity(current_plan) != _supplier_plan_identity(plan):
+            raise WorkflowRuntimeError("SUPPLIER_SEARCH_PLAN_IDENTITY_DRIFT")
+    except WorkflowRuntimeError as exc:
+        return _supplier_search_failure(str(exc), supplier_stderr=supplier.stderr)
+
+    try:
+        frozen_intent = _canonical_json_bytes(intent)
+        frozen_evidence = _canonical_json_bytes(evidence)
+        expected_intent_id = hashlib.sha256(frozen_intent[:-1]).hexdigest()
+        expected_observation_id = _search_observation_identity(evidence)
+        with tempfile.TemporaryDirectory(prefix="q3-search-evidence-") as temporary:
+            temporary_path = Path(temporary)
+            intent_temp = temporary_path / "intent.json"
+            evidence_temp = temporary_path / "evidence.json"
+            intent_temp.write_bytes(frozen_intent)
+            evidence_temp.write_bytes(frozen_evidence)
+            with _execution_writer_epoch(repo) as epoch:
+                identity_error = _recheck_production_identity(
+                    repo, plan=current_plan, epoch=epoch
+                )
+                if identity_error is not None:
+                    raise WorkflowRuntimeError(identity_error)
+                if _search_input_snapshot(intent_path)[1] != intent_before:
+                    raise WorkflowRuntimeError("SUPPLIER_SEARCH_INTENT_DRIFT")
+                if _search_card_state(
+                    repo, oracle_card=card_rel, owned_paths=owned_paths
+                )[2] != card_before:
+                    raise WorkflowRuntimeError("SUPPLIER_SEARCH_ORACLE_CARD_DRIFT")
+                supplier_preflight.validate_search_intent_runtime(intent, repo=repo)
+                epoch.recheck()
+                writer_command = [
+                    sys.executable,
+                    str(repo / "q3.lean.aristotle/scripts/oracle_questions.py"),
+                    "record-evidence",
+                    "--card",
+                    card_rel,
+                    "--intent",
+                    str(intent_temp),
+                    "--evidence",
+                    str(evidence_temp),
+                    "--inherited-writer-lock-fd",
+                    str(epoch.handle.fileno()),
+                ]
+                writer = subprocess.run(
+                    writer_command,
+                    cwd=repo,
+                    capture_output=True,
+                    text=True,
+                    check=False,
+                    pass_fds=(epoch.handle.fileno(),),
+                )
+                writer_receipt = _parse_search_writer_receipt(
+                    writer.stdout,
+                    writer.returncode,
+                    expected_observation_id=expected_observation_id,
+                )
+                epoch.recheck()
+                supplier_preflight.validate_search_intent_runtime(intent, repo=repo)
+                if _search_input_snapshot(intent_path)[1] != intent_before:
+                    raise WorkflowRuntimeError("SUPPLIER_SEARCH_INTENT_DRIFT")
+                identity_error = _recheck_production_identity(
+                    repo, plan=current_plan, epoch=epoch
+                )
+                if identity_error is not None:
+                    raise WorkflowRuntimeError(identity_error)
+                card_after_path, _, card_after = _search_card_state(
+                    repo, oracle_card=card_rel, owned_paths=owned_paths
+                )
+                _validate_search_card_postcondition(
+                    card_after_path,
+                    before=card_before,
+                    after=card_after,
+                    writer_receipt=writer_receipt,
+                    expected_intent_id=expected_intent_id,
+                    expected_observation_id=expected_observation_id,
+                    frozen_evidence=frozen_evidence,
+                )
+    except (OSError, ValueError, WorkflowRuntimeError) as exc:
+        writer_stderr = writer.stderr if "writer" in locals() else ""
+        return _supplier_search_failure(str(exc), supplier_stderr=writer_stderr)
+    if supplier.stderr:
+        print(supplier.stderr, file=sys.stderr, end="")
+    print(supplier.stdout, end="")
+    return supplier.returncode
+
+
+def _supplier_plan_identity(plan: dict[str, Any]) -> tuple[object, ...]:
+    startup = plan.get("startup")
+    if not isinstance(startup, dict) or plan.get("status") == "FATAL":
+        raise WorkflowRuntimeError("SUPPLIER_SEARCH_STARTUP_FATAL")
+    return (
+        plan.get("selected_goal"),
+        startup.get("selected_goal"),
+        startup.get("git_head"),
+        startup.get("git_tree"),
+        startup.get("control_sha256"),
+        startup.get("exact_node_pin"),
+        startup.get("exact_source_pin"),
+        startup.get("exact_theorem_pin"),
+        startup.get("exact_consumer_pin"),
+    )
+
+
+def _canonical_json_bytes(value: object) -> bytes:
+    return (
+        json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+        + "\n"
+    ).encode("utf-8")
+
+
+def _search_observation_identity(evidence: dict[str, Any]) -> str:
+    """Independently reproduce the oracle's durable observation identity."""
+
+    observed_at = evidence.get("observed_at")
+    if not isinstance(observed_at, str) or not observed_at:
+        raise WorkflowRuntimeError("SUPPLIER_SEARCH_OBSERVATION_TIME_INVALID")
+    try:
+        observed = datetime.fromisoformat(observed_at)
+    except ValueError as exc:
+        raise WorkflowRuntimeError(
+            "SUPPLIER_SEARCH_OBSERVATION_TIME_INVALID"
+        ) from exc
+    if observed.tzinfo is None:
+        raise WorkflowRuntimeError("SUPPLIER_SEARCH_OBSERVATION_TIME_INVALID")
+
+    def strip_runtime(value: object) -> object:
+        if isinstance(value, dict):
+            return {
+                key: strip_runtime(item)
+                for key, item in value.items()
+                if key
+                not in {
+                    "metrics",
+                    "observation_id",
+                    "elapsed_seconds",
+                    "duration_ms",
+                }
+            }
+        if isinstance(value, list):
+            return [strip_runtime(item) for item in value]
+        return value
+
+    identity_payload = {
+        "observed_at": observed_at,
+        "evidence": strip_runtime(evidence),
+    }
+    return hashlib.sha256(_canonical_json_bytes(identity_payload)[:-1]).hexdigest()
+
+
+def _search_input_snapshot(
+    path: Path,
+) -> tuple[bytes, tuple[tuple[int, int, int, int, int], str]]:
+    if path.is_symlink():
+        raise WorkflowRuntimeError("SUPPLIER_SEARCH_INTENT_SYMLINK")
+    try:
+        before = os.lstat(path)
+        raw = path.read_bytes()
+        after = os.lstat(path)
+    except OSError as exc:
+        raise WorkflowRuntimeError("SUPPLIER_SEARCH_INTENT_UNREADABLE") from exc
+    before_identity = (
+        before.st_dev,
+        before.st_ino,
+        before.st_mode,
+        before.st_size,
+        before.st_mtime_ns,
+    )
+    after_identity = (
+        after.st_dev,
+        after.st_ino,
+        after.st_mode,
+        after.st_size,
+        after.st_mtime_ns,
+    )
+    if not stat.S_ISREG(before.st_mode) or before_identity != after_identity:
+        raise WorkflowRuntimeError("SUPPLIER_SEARCH_INTENT_CONCURRENT_MUTATION")
+    return raw, (before_identity, hashlib.sha256(raw).hexdigest())
+
+
+def _parse_search_evidence(stdout: str, returncode: int) -> dict[str, Any]:
+    try:
+        encoded = stdout.encode("utf-8")
+        if len(encoded) > SEARCH_EVIDENCE_STDOUT_MAX_BYTES:
+            raise WorkflowRuntimeError("SUPPLIER_SEARCH_EVIDENCE_STDOUT_OVERSIZED")
+        evidence = json.loads(stdout)
+    except (UnicodeEncodeError, json.JSONDecodeError) as exc:
+        raise WorkflowRuntimeError("SUPPLIER_SEARCH_EVIDENCE_INVALID") from exc
+    if (
+        not isinstance(evidence, dict)
+        or evidence.get("schema") != SEARCH_EVIDENCE_SCHEMA
+        or evidence.get("status") not in {"PASS", "INCOMPLETE"}
+    ):
+        raise WorkflowRuntimeError("SUPPLIER_SEARCH_EVIDENCE_INVALID")
+    expected_exit = 2 if evidence["status"] == "INCOMPLETE" else 0
+    if returncode != expected_exit:
+        raise WorkflowRuntimeError(
+            f"SUPPLIER_SEARCH_CHILD_EXIT_MISMATCH:{returncode}"
+        )
+    return evidence
+
+
+def _parse_search_writer_receipt(
+    stdout: str, returncode: int, *, expected_observation_id: str
+) -> dict[str, str]:
+    if returncode != 0:
+        raise WorkflowRuntimeError(
+            f"SUPPLIER_SEARCH_EVIDENCE_WRITER_FAILED:{returncode}"
+        )
+    try:
+        if len(stdout.encode("utf-8")) > SEARCH_EVIDENCE_STDOUT_MAX_BYTES:
+            raise WorkflowRuntimeError(
+                "SUPPLIER_SEARCH_EVIDENCE_WRITER_RECEIPT_INVALID"
+            )
+        receipt = json.loads(stdout)
+    except (UnicodeEncodeError, json.JSONDecodeError) as exc:
+        raise WorkflowRuntimeError(
+            "SUPPLIER_SEARCH_EVIDENCE_WRITER_RECEIPT_INVALID"
+        ) from exc
+    if (
+        not isinstance(receipt, dict)
+        or set(receipt) != {"schema", "status", "observation_id"}
+        or receipt.get("schema") != "q3_search_evidence_write.v1"
+        or receipt.get("status") not in {"RECORDED", "NOOP"}
+        or not isinstance(receipt.get("observation_id"), str)
+        or re.fullmatch(r"[0-9a-f]{64}", receipt["observation_id"]) is None
+        or receipt["observation_id"] != expected_observation_id
+    ):
+        raise WorkflowRuntimeError(
+            "SUPPLIER_SEARCH_EVIDENCE_WRITER_RECEIPT_INVALID"
+        )
+    return receipt
+
+
+def _validate_search_card_postcondition(
+    card_path: Path,
+    *,
+    before: tuple[tuple[int, int, int, int, int, int, int], str],
+    after: tuple[tuple[int, int, int, int, int, int, int], str],
+    writer_receipt: dict[str, str],
+    expected_intent_id: str,
+    expected_observation_id: str,
+    frozen_evidence: bytes,
+) -> None:
+    observation_id = writer_receipt["observation_id"]
+    if observation_id != expected_observation_id:
+        raise WorkflowRuntimeError(
+            "SUPPLIER_SEARCH_ORACLE_CARD_EVIDENCE_BINDING_FAILED"
+        )
+    block_pattern = re.compile(
+        rb"<!-- Q3_SEARCH_EVIDENCE_V1_BEGIN intent_id="
+        + expected_intent_id.encode("ascii")
+        + rb" observation_id="
+        + observation_id.encode("ascii")
+        + rb" -->\n```json\n(.*?)\n```\n<!-- Q3_SEARCH_EVIDENCE_V1_END -->",
+        re.DOTALL,
+    )
+    try:
+        card_bytes = card_path.read_bytes()
+        bytes_stable = hashlib.sha256(card_bytes).hexdigest() == after[1]
+        matches = block_pattern.findall(card_bytes)
+        if len(matches) != 1:
+            raise WorkflowRuntimeError(
+                "SUPPLIER_SEARCH_ORACLE_CARD_EVIDENCE_BINDING_FAILED"
+            )
+        stored = json.loads(matches[0].decode("utf-8"))
+        if not isinstance(stored, dict):
+            raise WorkflowRuntimeError(
+                "SUPPLIER_SEARCH_ORACLE_CARD_EVIDENCE_BINDING_FAILED"
+            )
+        stored_observation_id = stored.pop("observation_id", None)
+        exact_evidence = _canonical_json_bytes(stored) == frozen_evidence
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise WorkflowRuntimeError(
+            "SUPPLIER_SEARCH_ORACLE_CARD_POSTCONDITION_FAILED"
+        ) from exc
+    if stored_observation_id != observation_id or not exact_evidence:
+        raise WorkflowRuntimeError(
+            "SUPPLIER_SEARCH_ORACLE_CARD_EVIDENCE_BINDING_FAILED"
+        )
+    status = writer_receipt["status"]
+    if (
+        not bytes_stable
+        or stat.S_IMODE(after[0][2]) != stat.S_IMODE(before[0][2])
+        or after[0][5:] != before[0][5:]
+        or (status == "RECORDED" and after[1] == before[1])
+        or (status == "NOOP" and after != before)
+    ):
+        raise WorkflowRuntimeError(
+            "SUPPLIER_SEARCH_ORACLE_CARD_POSTCONDITION_FAILED"
+        )
+
+
+def _search_card_state(
+    repo: Path, *, oracle_card: str, owned_paths: list[str]
+) -> tuple[Path, str, tuple[tuple[int, int, int, int, int, int, int], str]]:
+    lexical = Path(oracle_card)
+    if "\\" in oracle_card or ".." in lexical.parts:
+        raise WorkflowRuntimeError("SUPPLIER_SEARCH_ORACLE_CARD_PATH_INVALID")
+    if lexical.is_absolute():
+        try:
+            relative = lexical.relative_to(repo)
+        except ValueError as exc:
+            raise WorkflowRuntimeError(
+                "SUPPLIER_SEARCH_ORACLE_CARD_OUTSIDE_REPO"
+            ) from exc
+    else:
+        relative = lexical
+    card_rel = relative.as_posix()
+    normalized_owned: list[str] = []
+    for value in owned_paths:
+        candidate = Path(value)
+        if "\\" in value or ".." in candidate.parts:
+            raise WorkflowRuntimeError("SUPPLIER_SEARCH_OWNED_PATH_INVALID")
+        if candidate.is_absolute():
+            try:
+                candidate = candidate.relative_to(repo)
+            except ValueError as exc:
+                raise WorkflowRuntimeError(
+                    "SUPPLIER_SEARCH_OWNED_PATH_OUTSIDE_REPO"
+                ) from exc
+        normalized_owned.append(candidate.as_posix())
+    if normalized_owned != [card_rel]:
+        raise WorkflowRuntimeError("SUPPLIER_SEARCH_ORACLE_CARD_NOT_EXACTLY_OWNED")
+    card_path = repo / relative
+    if _has_symlink_component(repo, relative):
+        raise WorkflowRuntimeError("SUPPLIER_SEARCH_ORACLE_CARD_SYMLINK")
+    try:
+        before = os.lstat(card_path)
+        raw = card_path.read_bytes()
+        after = os.lstat(card_path)
+    except OSError as exc:
+        raise WorkflowRuntimeError("SUPPLIER_SEARCH_ORACLE_CARD_INVALID") from exc
+    before_identity = (
+        before.st_dev,
+        before.st_ino,
+        before.st_mode,
+        before.st_size,
+        before.st_mtime_ns,
+        before.st_uid,
+        before.st_gid,
+    )
+    after_identity = (
+        after.st_dev,
+        after.st_ino,
+        after.st_mode,
+        after.st_size,
+        after.st_mtime_ns,
+        after.st_uid,
+        after.st_gid,
+    )
+    if (
+        not stat.S_ISREG(before.st_mode)
+        or before_identity != after_identity
+    ):
+        raise WorkflowRuntimeError("SUPPLIER_SEARCH_ORACLE_CARD_INVALID")
+    return card_path, card_rel, (before_identity, hashlib.sha256(raw).hexdigest())
+
+
+def _supplier_search_failure(
+    code: str, *, supplier_stderr: str = "", child_started: bool = True
+) -> int:
+    if supplier_stderr:
+        print(supplier_stderr, file=sys.stderr, end="")
+    print(json.dumps({
+        "schema": "q3_supplier_search_dispatch.v1",
+        "status": "FATAL",
+        "holds": [code],
+        "child_started": child_started,
+    }, ensure_ascii=False, sort_keys=True))
+    return 2
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, default=REPO)
@@ -1942,7 +3151,9 @@ def main() -> int:
         help=argparse.SUPPRESS,
     )
     run_parser = subparsers.add_parser("run")
-    run_parser.add_argument("--through", choices=["close-node"], required=True)
+    run_parser.add_argument(
+        "--through", choices=["close-node", "supplier-preflight"], required=True
+    )
     _add_plan_options(run_parser)
     run_parser.add_argument("--query")
     run_parser.add_argument("--candidate")
@@ -1952,6 +3163,9 @@ def main() -> int:
     run_parser.add_argument("--run-kernel", action="store_true")
     run_parser.add_argument("--protocol-out", type=Path)
     run_parser.add_argument("--dependency-contract-receipt", type=Path)
+    run_parser.add_argument("--search-intent", type=Path)
+    run_parser.add_argument("--record-evidence", action="store_true")
+    run_parser.add_argument("--oracle-card")
     subparsers.add_parser("close-session")
     subparsers.add_parser("close-phase")
     review_parser = subparsers.add_parser("review-plan")
@@ -1988,6 +3202,20 @@ def main() -> int:
         return 0 if result.get("status") == "REVIEW_DISPATCH_READY" else 2
     if forwarded:
         parser.error("unrecognized arguments: " + " ".join(forwarded))
+    if args.command == "run" and args.through == "supplier-preflight":
+        if args.search_intent is None:
+            parser.error("--through supplier-preflight requires --search-intent")
+        if args.record_evidence and not args.oracle_card:
+            parser.error("--record-evidence requires --oracle-card")
+        if args.oracle_card and not args.record_evidence:
+            parser.error("--oracle-card requires --record-evidence")
+        return _supplier_search_dispatch(
+            repo,
+            search_intent=args.search_intent,
+            owned_paths=args.owned_path,
+            record_evidence=args.record_evidence,
+            oracle_card=args.oracle_card,
+        )
     if args.command == "plan" and args.shadow_v10:
         benchmark_timing: dict[str, Any] | None = (
             {} if args.benchmark_startup_timing else None
@@ -2057,6 +3285,8 @@ def main() -> int:
                 run_kernel=args.run_kernel,
                 protocol_out=args.protocol_out,
                 dependency_contract_receipt=args.dependency_contract_receipt,
+                next_goal_spec=args.next_goal_spec,
+                current_phase_key=args.current_phase_key,
             )
             if args.command == "run" else plan
         )
@@ -2094,7 +3324,9 @@ def main() -> int:
             ),
             file=sys.stderr,
         )
-    return 0 if result.get("status") in {"READY", "CLOSED_NODE"} else 2
+    return 0 if result.get("status") in {
+        "READY", "CLOSED_NODE", "CLOSED_GOAL", "CLOSED_GOAL_PHASE",
+    } else 2
 
 
 if __name__ == "__main__":

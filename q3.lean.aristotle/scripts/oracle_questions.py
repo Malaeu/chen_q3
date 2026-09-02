@@ -4,15 +4,21 @@
 from __future__ import annotations
 
 import argparse
+import fcntl
+import hashlib
+import importlib.util
 import json
 import os
 import re
+import stat
+import subprocess
 import sys
+import tempfile
 from collections import defaultdict
+from contextlib import contextmanager, nullcontext
 from dataclasses import dataclass
-from datetime import date
+from datetime import date, datetime
 from pathlib import Path
-
 
 SCRIPT_PATH = Path(__file__).resolve()
 Q3_ROOT = SCRIPT_PATH.parents[1]
@@ -31,6 +37,21 @@ RESERVED_FILES = {
 }
 
 DEFAULT_STATUS = "active"
+SEARCH_INTENT_SCHEMA = "q3_search_intent.v1"
+SEARCH_EVIDENCE_SCHEMA = "q3_search_evidence.v1"
+SEARCH_BLOCK_MAX_BYTES = 64 * 1024
+SEARCH_BLOCK_BEGIN = "<!-- Q3_SEARCH_EVIDENCE_V1_BEGIN"
+SEARCH_BLOCK_END = "<!-- Q3_SEARCH_EVIDENCE_V1_END -->"
+SEARCH_EVIDENCE_FIELDS = {
+    "schema", "intent_id", "observed_at", "mode", "purpose", "status",
+    "decision", "queries", "provider_ledger", "literature", "external_lean",
+    "candidates", "alias_hypotheses", "exact_fit", "errors", "metrics",
+    "boundary",
+}
+SEARCH_BOUNDARY = (
+    "TEXT_OR_SEMANTIC_MATCHES_ARE_CANDIDATES;_ONLY_DIRECT_LEAN_TYPECHECK_"
+    "WITH_STANDARD_AXIOMS_ESTABLISHES_EXACT_FIT"
+)
 
 FRONTMATTER_ORDER = [
     "status",
@@ -145,6 +166,161 @@ def read_card(path: Path) -> Card:
 def write_card(card: Card) -> None:
     text = serialize_frontmatter(card.meta) + "\n\n" + card.body.rstrip() + "\n"
     card.path.write_text(text, encoding="utf-8")
+
+
+def _render_card_bytes(card: Card) -> bytes:
+    return (
+        serialize_frontmatter(card.meta) + "\n\n" + card.body.rstrip() + "\n"
+    ).encode("utf-8")
+
+
+def _assert_no_symlink_components(path: Path, root: Path) -> None:
+    try:
+        relative = path.absolute().relative_to(root.absolute())
+    except ValueError as exc:
+        raise ValueError("SEARCH_EVIDENCE_CARD_OUTSIDE_JOURNAL") from exc
+    current = root.absolute()
+    if current.is_symlink():
+        raise ValueError("SEARCH_EVIDENCE_CARD_SYMLINK_COMPONENT")
+    for part in relative.parts:
+        current = current / part
+        if current.is_symlink():
+            raise ValueError("SEARCH_EVIDENCE_CARD_SYMLINK_COMPONENT")
+
+
+@contextmanager
+def _search_evidence_writer_lock():
+    proc = subprocess.run(
+        ["git", "rev-parse", "--git-path", "q3-three-body.writer.lock"],
+        cwd=REPO_ROOT,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    if proc.returncode != 0 or not proc.stdout.strip():
+        raise ValueError("SEARCH_EVIDENCE_WRITER_LOCK_UNAVAILABLE")
+    lock_path = Path(proc.stdout.strip())
+    if not lock_path.is_absolute():
+        lock_path = REPO_ROOT / lock_path
+    if lock_path.is_symlink() or not lock_path.is_file():
+        raise ValueError("SEARCH_EVIDENCE_WRITER_LOCK_UNAVAILABLE")
+    with lock_path.open("r") as handle:
+        try:
+            fcntl.flock(handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError as exc:
+            raise ValueError("SEARCH_EVIDENCE_WRITER_LOCK_BUSY") from exc
+        try:
+            yield
+        finally:
+            fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
+
+
+def _validate_inherited_writer_lock(fd: int) -> None:
+    """Verify an inherited descriptor names the canonical lock and is held."""
+
+    proc = subprocess.run(
+        ["git", "rev-parse", "--git-path", "q3-three-body.writer.lock"],
+        cwd=REPO_ROOT,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    if proc.returncode != 0 or not proc.stdout.strip():
+        raise ValueError("SEARCH_EVIDENCE_INHERITED_WRITER_LOCK_UNAVAILABLE")
+    lock_path = Path(proc.stdout.strip())
+    if not lock_path.is_absolute():
+        lock_path = REPO_ROOT / lock_path
+    try:
+        path_info = os.lstat(lock_path)
+        inherited_info = os.fstat(fd)
+    except OSError as exc:
+        raise ValueError("SEARCH_EVIDENCE_INHERITED_WRITER_LOCK_INVALID") from exc
+    if (
+        stat.S_ISLNK(path_info.st_mode)
+        or not stat.S_ISREG(path_info.st_mode)
+        or not stat.S_ISREG(inherited_info.st_mode)
+        or (path_info.st_dev, path_info.st_ino)
+        != (inherited_info.st_dev, inherited_info.st_ino)
+    ):
+        raise ValueError("SEARCH_EVIDENCE_INHERITED_WRITER_LOCK_IDENTITY_MISMATCH")
+    probe = os.open(lock_path, os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0))
+    try:
+        probe_info = os.fstat(probe)
+        if (probe_info.st_dev, probe_info.st_ino) != (
+            inherited_info.st_dev,
+            inherited_info.st_ino,
+        ):
+            raise ValueError("SEARCH_EVIDENCE_INHERITED_WRITER_LOCK_IDENTITY_MISMATCH")
+        try:
+            fcntl.flock(probe, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError:
+            pass
+        else:
+            fcntl.flock(probe, fcntl.LOCK_UN)
+            raise ValueError("SEARCH_EVIDENCE_INHERITED_WRITER_LOCK_NOT_HELD")
+    finally:
+        os.close(probe)
+
+
+def _atomic_card_replace(path: Path, payload: bytes, *, expected_sha256: str) -> None:
+    original = os.stat(path, follow_symlinks=False)
+    if (
+        not stat.S_ISREG(original.st_mode)
+        or hashlib.sha256(path.read_bytes()).hexdigest() != expected_sha256
+    ):
+        raise ValueError("SEARCH_EVIDENCE_CARD_INPUT_DRIFT")
+    descriptor, temporary = tempfile.mkstemp(prefix=f".{path.name}.", dir=path.parent)
+    try:
+        with os.fdopen(descriptor, "wb") as handle:
+            temporary_stat = os.fstat(handle.fileno())
+            if temporary_stat.st_uid != original.st_uid:
+                raise ValueError("SEARCH_EVIDENCE_CARD_OWNERSHIP_UNPRESERVABLE")
+            if temporary_stat.st_gid != original.st_gid:
+                try:
+                    os.fchown(handle.fileno(), -1, original.st_gid)
+                except OSError as exc:
+                    raise ValueError(
+                        "SEARCH_EVIDENCE_CARD_OWNERSHIP_UNPRESERVABLE"
+                    ) from exc
+            os.fchmod(handle.fileno(), stat.S_IMODE(original.st_mode))
+            adjusted = os.fstat(handle.fileno())
+            if (
+                (adjusted.st_uid, adjusted.st_gid)
+                != (original.st_uid, original.st_gid)
+                or stat.S_IMODE(adjusted.st_mode)
+                != stat.S_IMODE(original.st_mode)
+            ):
+                raise ValueError("SEARCH_EVIDENCE_CARD_METADATA_UNPRESERVABLE")
+            handle.write(payload)
+            handle.flush()
+            os.fsync(handle.fileno())
+        current = os.stat(path, follow_symlinks=False)
+        if (
+            (current.st_dev, current.st_ino, current.st_mode, current.st_uid, current.st_gid)
+            != (
+                original.st_dev,
+                original.st_ino,
+                original.st_mode,
+                original.st_uid,
+                original.st_gid,
+            )
+            or hashlib.sha256(path.read_bytes()).hexdigest() != expected_sha256
+        ):
+            raise ValueError("SEARCH_EVIDENCE_CARD_INPUT_DRIFT")
+        os.replace(temporary, path)
+        replaced = os.stat(path, follow_symlinks=False)
+        if (
+            (replaced.st_uid, replaced.st_gid) != (original.st_uid, original.st_gid)
+            or stat.S_IMODE(replaced.st_mode) != stat.S_IMODE(original.st_mode)
+        ):
+            raise ValueError("SEARCH_EVIDENCE_CARD_METADATA_DRIFT")
+        directory = os.open(path.parent, os.O_RDONLY | os.O_DIRECTORY)
+        try:
+            os.fsync(directory)
+        finally:
+            os.close(directory)
+    finally:
+        Path(temporary).unlink(missing_ok=True)
 
 
 def slugify(text: str) -> str:
@@ -727,6 +903,404 @@ def cmd_close(args: argparse.Namespace) -> int:
     return run_reindex(write_cards=True)
 
 
+def canonical_hash(value: object) -> str:
+    raw = json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    return hashlib.sha256(raw.encode("utf-8")).hexdigest()
+
+
+def _observation_payload(evidence: dict[str, object]) -> dict[str, object]:
+    def strip_runtime(value: object) -> object:
+        if isinstance(value, dict):
+            return {
+                key: strip_runtime(item)
+                for key, item in value.items()
+                if key not in {"metrics", "observation_id", "elapsed_seconds", "duration_ms"}
+            }
+        if isinstance(value, list):
+            return [strip_runtime(item) for item in value]
+        return value
+
+    return strip_runtime(evidence)  # type: ignore[return-value]
+
+
+def search_observation_identity(evidence: dict[str, object]) -> str:
+    """Return the durable identity shared by the writer and parent runtime."""
+
+    observed_at = evidence.get("observed_at")
+    if not isinstance(observed_at, str) or not observed_at:
+        raise ValueError("SEARCH_EVIDENCE_OBSERVATION_TIME_INVALID")
+    try:
+        observed = datetime.fromisoformat(observed_at)
+    except ValueError as exc:
+        raise ValueError("SEARCH_EVIDENCE_OBSERVATION_TIME_INVALID") from exc
+    if observed.tzinfo is None:
+        raise ValueError("SEARCH_EVIDENCE_OBSERVATION_TIME_INVALID")
+    return canonical_hash(
+        {"observed_at": observed_at, "evidence": _observation_payload(evidence)}
+    )
+
+
+def validate_search_intent_for_record(intent: object) -> dict[str, object]:
+    path = REPO_ROOT / "scripts" / "supplier_preflight.py"
+    spec = importlib.util.spec_from_file_location("q3_supplier_preflight_record", path)
+    if spec is None or spec.loader is None:
+        raise ValueError("SEARCH_EVIDENCE_INTENT_VALIDATOR_UNAVAILABLE")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    try:
+        return module.validate_search_intent_runtime(intent, repo=REPO_ROOT)
+    except Exception as exc:
+        raise ValueError(f"SEARCH_EVIDENCE_INTENT_RUNTIME_INVALID:{exc}") from exc
+
+
+def replay_exact_fit_for_record(intent: dict[str, object]) -> dict[str, object] | None:
+    module_path = REPO_ROOT / "scripts" / "supplier_preflight.py"
+    spec = importlib.util.spec_from_file_location("q3_supplier_fit_replay", module_path)
+    if spec is None or spec.loader is None:
+        raise ValueError("SEARCH_EVIDENCE_EXACT_FIT_REPLAY_UNAVAILABLE")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module._local_exact_fit(intent)
+
+
+def validate_search_evidence(
+    intent: dict[str, object], evidence: object
+) -> dict[str, object]:
+    if not isinstance(evidence, dict) or set(evidence) != SEARCH_EVIDENCE_FIELDS:
+        raise ValueError("SEARCH_EVIDENCE_SCHEMA_FIELDS_INVALID")
+    if evidence.get("schema") != SEARCH_EVIDENCE_SCHEMA:
+        raise ValueError("SEARCH_EVIDENCE_SCHEMA_INVALID")
+    intent_id = canonical_hash(intent)
+    if evidence.get("intent_id") != intent_id:
+        raise ValueError("SEARCH_EVIDENCE_INTENT_BINDING_INVALID")
+    if evidence.get("mode") != intent.get("mode") or evidence.get("purpose") != intent.get("purpose"):
+        raise ValueError("SEARCH_EVIDENCE_MODE_PURPOSE_DRIFT")
+    if evidence.get("boundary") != SEARCH_BOUNDARY:
+        raise ValueError("SEARCH_EVIDENCE_BOUNDARY_INVALID")
+    if evidence.get("status") not in {"PASS", "INCOMPLETE"}:
+        raise ValueError("SEARCH_EVIDENCE_STATUS_INVALID")
+    if evidence.get("decision") not in {
+        "EXACT_FIT", "CANDIDATES", "LOCAL_COMPLETE_NO_EXACT_FIT", "INCOMPLETE"
+    }:
+        raise ValueError("SEARCH_EVIDENCE_DECISION_INVALID")
+    errors = evidence.get("errors")
+    if not isinstance(errors, list) or not all(isinstance(item, str) for item in errors):
+        raise ValueError("SEARCH_EVIDENCE_ERRORS_INVALID")
+    if (evidence["status"] == "INCOMPLETE") != bool(errors):
+        raise ValueError("SEARCH_EVIDENCE_STATUS_ERROR_MISMATCH")
+    if (evidence["decision"] == "INCOMPLETE") != (evidence["status"] == "INCOMPLETE"):
+        raise ValueError("SEARCH_EVIDENCE_DECISION_STATUS_MISMATCH")
+    queries = evidence.get("queries")
+    candidates = evidence.get("candidates")
+    aliases = evidence.get("alias_hypotheses")
+    ledger = evidence.get("provider_ledger")
+    literature = evidence.get("literature")
+    if not isinstance(queries, list) or not 3 <= len(queries) <= 8:
+        raise ValueError("SEARCH_EVIDENCE_QUERY_LIMIT_INVALID")
+    if not isinstance(candidates, list) or len(candidates) > 24:
+        raise ValueError("SEARCH_EVIDENCE_CANDIDATE_LIMIT_INVALID")
+    if not isinstance(aliases, list) or len(aliases) > 8:
+        raise ValueError("SEARCH_EVIDENCE_ALIAS_LIMIT_INVALID")
+    if not isinstance(ledger, list) or len(ledger) > 9:
+        raise ValueError("SEARCH_EVIDENCE_PROVIDER_LEDGER_INVALID")
+    if not isinstance(literature, list) or len(literature) > 2:
+        raise ValueError("SEARCH_EVIDENCE_LITERATURE_LIMIT_INVALID")
+    seen_queries: set[str] = set()
+    for row in queries:
+        if (
+            not isinstance(row, dict)
+            or set(row) != {"kind", "query", "query_sha256"}
+            or not isinstance(row.get("query"), str)
+            or row.get("query_sha256")
+            != hashlib.sha256(str(row.get("query")).encode()).hexdigest()
+            or str(row.get("query")).casefold() in seen_queries
+        ):
+            raise ValueError("SEARCH_EVIDENCE_QUERY_RECEIPT_INVALID")
+        seen_queries.add(str(row["query"]).casefold())
+    for row in candidates:
+        base_fields = {
+            "provider", "query", "provider_id", "title", "excerpt", "url",
+            "metadata_sha256", "classification",
+        }
+        provider = row.get("provider") if isinstance(row, dict) else None
+        expected_fields = set(base_fields)
+        if provider in {
+            "q3_docs", "math_papers", "zotero_lib", "knowledge-db",
+            "local-literature", "lean-index", "lean-tree", "specs-docs",
+        }:
+            expected_fields.add("query_sha256")
+        if provider == "q3_docs":
+            expected_fields.update({"corpus_sha256", "collection_identity"})
+        if provider in {"arxiv", "crossref"}:
+            expected_fields.update({"query_sha256", "published"})
+        hash_payload = (
+            {
+                key: row.get(key)
+                for key in (
+                    "provider", "provider_id", "title", "excerpt", "url", "published"
+                )
+            }
+            if isinstance(row, dict) and provider in {"arxiv", "crossref"}
+            else {
+                key: value
+                for key, value in row.items()
+                if key not in {"metadata_sha256", "classification"}
+            }
+            if isinstance(row, dict)
+            else {}
+        )
+        if (
+            not isinstance(row, dict)
+            or set(row) != expected_fields
+            or row.get("classification")
+            not in {"UNVERIFIED_CANDIDATE", "KNOWN_FALSE_FRIEND"}
+            or not isinstance(row.get("metadata_sha256"), str)
+            or row.get("metadata_sha256")
+            != canonical_hash(hash_payload)
+        ):
+            raise ValueError("SEARCH_EVIDENCE_CANDIDATE_RECEIPT_INVALID")
+    for row in aliases:
+        if (
+            not isinstance(row, dict)
+            or row.get("kind") != "UNVERIFIED_ALIAS_HYPOTHESIS"
+            or not isinstance(row.get("term"), str)
+            or not isinstance(row.get("provenance"), str)
+        ):
+            raise ValueError("SEARCH_EVIDENCE_ALIAS_RECEIPT_INVALID")
+    for row in ledger:
+        if (
+            not isinstance(row, dict)
+            or not isinstance(row.get("provider"), str)
+            or not isinstance(row.get("query"), str)
+            or row.get("status") not in {
+                "HITS", "LOCAL_ZERO", "CANDIDATES", "LOCAL_ZERO_AT_CORPUS_HASH",
+                "HITS_DEDUPED", "INCOMPLETE",
+            }
+            or not isinstance(row.get("errors"), list)
+            or (evidence["status"] == "PASS" and row.get("errors"))
+        ):
+            raise ValueError("SEARCH_EVIDENCE_PROVIDER_RECEIPT_INVALID")
+    literature_path = REPO_ROOT / "scripts" / "literature_discovery.py"
+    literature_spec = importlib.util.spec_from_file_location(
+        "q3_literature_receipt_record", literature_path
+    )
+    if literature_spec is None or literature_spec.loader is None:
+        raise ValueError("SEARCH_EVIDENCE_LITERATURE_VALIDATOR_UNAVAILABLE")
+    literature_module = importlib.util.module_from_spec(literature_spec)
+    literature_spec.loader.exec_module(literature_module)
+    for receipt in literature:
+        if (
+            not isinstance(receipt, dict)
+            or receipt.get("schema") != "q3_literature_discovery.v1"
+            or receipt.get("boundary")
+            != "UNVERIFIED_METADATA_CANDIDATES_NOT_PROOF_OR_SEMANTIC_EQUIVALENCE"
+            or len(receipt.get("candidates", [])) > 24
+            or len(receipt.get("queries", [])) > 8
+            or len(receipt.get("provider_rows", []))
+            > 2 * len(receipt.get("queries", []))
+            or any(
+                not isinstance(row, dict)
+                or row.get("status")
+                not in {"CANDIDATES", "HITS_DEDUPED", "ZERO_HITS_AT_TIME", "INCOMPLETE"}
+                for row in receipt.get("provider_rows", [])
+            )
+        ):
+            raise ValueError("SEARCH_EVIDENCE_LITERATURE_RECEIPT_INVALID")
+        valid_literature, literature_errors = literature_module.validate_receipt(
+            receipt,
+            expected_queries=receipt["queries"],
+            expected_providers=tuple(receipt["providers"]),
+        )
+        if not valid_literature:
+            raise ValueError(
+                "SEARCH_EVIDENCE_LITERATURE_RECEIPT_INVALID:"
+                + ";".join(literature_errors)
+            )
+    external = evidence.get("external_lean")
+    if external is not None and (
+        not isinstance(external, dict)
+        or external.get("schema") != "q3_external_lean_search.v3"
+        or external.get("boundary")
+        not in {
+            "CANDIDATE_MATCH_NOT_LEAN_PROOF_OR_INTERFACE_EQUIVALENCE",
+            "INCOMPLETE_EXTERNAL_LEAN_SEARCH",
+        }
+    ):
+        raise ValueError("SEARCH_EVIDENCE_EXTERNAL_RECEIPT_INVALID")
+    if isinstance(external, dict):
+        if len(external.get("queries", [])) > 8 or any(
+            not isinstance(row, dict)
+            or row.get("identity_before") != row.get("identity_after")
+            or row.get("identity_after") != row.get("identity_final")
+            for row in external.get("base_results", [])
+        ):
+            raise ValueError("SEARCH_EVIDENCE_EXTERNAL_IDENTITY_INVALID")
+        if evidence["status"] == "PASS" and (
+            external.get("errors") != []
+            or external.get("boundary")
+            != "CANDIDATE_MATCH_NOT_LEAN_PROOF_OR_INTERFACE_EQUIVALENCE"
+        ):
+            raise ValueError("SEARCH_EVIDENCE_EXTERNAL_INCOMPLETE_ON_PASS")
+        external_path = REPO_ROOT / "scripts" / "search_external_lean.py"
+        external_spec = importlib.util.spec_from_file_location(
+            "q3_external_receipt_record", external_path
+        )
+        if external_spec is None or external_spec.loader is None:
+            raise ValueError("SEARCH_EVIDENCE_EXTERNAL_VALIDATOR_UNAVAILABLE")
+        external_module = importlib.util.module_from_spec(external_spec)
+        external_spec.loader.exec_module(external_module)
+        admission = intent.get("admission")
+        expected_candidate = (
+            admission.get("theorem") if isinstance(admission, dict) else None
+        )
+        expected_provenance = (
+            admission.get("candidate_provenance")
+            if isinstance(admission, dict)
+            else None
+        )
+        valid_external, external_errors = external_module.validate_batch_receipt(
+            external,
+            expected_queries=[str(row["query"]) for row in queries],
+            expected_candidate=expected_candidate,
+            expected_candidate_provenance=expected_provenance,
+        )
+        if not valid_external:
+            raise ValueError(
+                "SEARCH_EVIDENCE_EXTERNAL_RECEIPT_INVALID:"
+                + ";".join(external_errors)
+            )
+    metrics = evidence.get("metrics")
+    if (
+        not isinstance(metrics, dict)
+        or metrics.get("qmd_subprocesses") not in range(0, 9)
+        or metrics.get("external_lean_batches") not in range(0, 2)
+        or metrics.get("web_batches") not in range(0, 3)
+    ):
+        raise ValueError("SEARCH_EVIDENCE_METRICS_INVALID")
+    if evidence["decision"] == "EXACT_FIT":
+        admission = intent.get("admission")
+        exact_fit = evidence.get("exact_fit")
+        if (
+            not isinstance(admission, dict)
+            or not isinstance(exact_fit, dict)
+            or exact_fit.get("status") != "EXACT_FIT"
+            or not isinstance(exact_fit.get("comparison"), dict)
+            or exact_fit["comparison"].get("status") != "EXACT_FIT"
+            or not isinstance(exact_fit["comparison"].get("candidate"), dict)
+            or exact_fit["comparison"]["candidate"].get("name")
+            != admission.get("theorem")
+            or not isinstance(exact_fit["comparison"].get("target"), dict)
+            or exact_fit["comparison"]["target"].get("name")
+            != admission.get("target_declaration")
+        ):
+            raise ValueError("SEARCH_EVIDENCE_EXACT_FIT_INVALID")
+        replay = replay_exact_fit_for_record(intent)
+        if not isinstance(replay, dict) or replay.get("status") != "EXACT_FIT":
+            raise ValueError("SEARCH_EVIDENCE_EXACT_FIT_REPLAY_FAILED")
+    elif evidence.get("exact_fit") is not None and evidence["status"] == "PASS":
+        raise ValueError("SEARCH_EVIDENCE_NONEXACT_DECISION_HAS_EXACT_FIT")
+    if evidence["status"] == "PASS" and (
+        (evidence["decision"] == "CANDIDATES") != bool(candidates)
+        or (
+            evidence["decision"] == "LOCAL_COMPLETE_NO_EXACT_FIT"
+            and bool(candidates)
+        )
+    ):
+        raise ValueError("SEARCH_EVIDENCE_DECISION_CANDIDATE_MISMATCH")
+    return json.loads(json.dumps(evidence, ensure_ascii=False))
+
+
+def record_search_evidence(
+    card_path: Path,
+    intent: object,
+    evidence: object,
+    *,
+    inherited_writer_lock_fd: int | None = None,
+) -> tuple[str, str]:
+    intent = validate_search_intent_for_record(intent)
+    evidence = validate_search_evidence(intent, evidence)
+    intent_id = canonical_hash(intent)
+    if evidence.get("intent_id") != intent_id:
+        raise ValueError("SEARCH_EVIDENCE_INTENT_BINDING_INVALID")
+    observation_id = search_observation_identity(evidence)
+    stored = json.loads(json.dumps(evidence, ensure_ascii=False))
+    stored["observation_id"] = observation_id
+    rendered = json.dumps(stored, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    block = (
+        f"{SEARCH_BLOCK_BEGIN} intent_id={intent_id} observation_id={observation_id} -->\n"
+        f"```json\n{rendered}\n```\n{SEARCH_BLOCK_END}"
+    )
+    if len(block.encode("utf-8")) > SEARCH_BLOCK_MAX_BYTES:
+        raise ValueError("SEARCH_EVIDENCE_MACHINE_BLOCK_TOO_LARGE")
+    if card_path.is_symlink():
+        raise ValueError("SEARCH_EVIDENCE_CARD_OUTSIDE_JOURNAL")
+    _assert_no_symlink_components(card_path, JOURNAL_DIR)
+    resolved_journal = JOURNAL_DIR.resolve(strict=True)
+    resolved_card = card_path.resolve(strict=True)
+    if not resolved_card.is_file() or not resolved_card.is_relative_to(resolved_journal):
+        raise ValueError("SEARCH_EVIDENCE_CARD_OUTSIDE_JOURNAL")
+    lock_context = _search_evidence_writer_lock()
+    if inherited_writer_lock_fd is not None:
+        _validate_inherited_writer_lock(inherited_writer_lock_fd)
+        lock_context = nullcontext()
+    with lock_context:
+        _assert_no_symlink_components(resolved_card, JOURNAL_DIR)
+        before = resolved_card.read_bytes()
+        before_sha256 = hashlib.sha256(before).hexdigest()
+        card = normalize_card(read_card(resolved_card))
+        marker = f"observation_id={observation_id}"
+        if marker in card.body:
+            existing_pattern = re.compile(
+                rf"{re.escape(SEARCH_BLOCK_BEGIN)}[^\n]*{re.escape(marker)}[^\n]*-->\n```json\n(.*?)\n```\n{re.escape(SEARCH_BLOCK_END)}",
+                re.S,
+            )
+            match = existing_pattern.search(card.body)
+            if match is None or match.group(1) != rendered:
+                raise ValueError("SEARCH_EVIDENCE_OBSERVATION_COLLISION")
+            return "NOOP", observation_id
+        if evidence.get("decision") == "EXACT_FIT":
+            admission = intent.get("admission")
+            theorem = admission.get("theorem") if isinstance(admission, dict) else None
+            if isinstance(theorem, str) and theorem:
+                strong = ensure_list(card.meta, "strong_terms")
+                strong.append(theorem)
+                card.meta["strong_terms"] = unique_preserve_order(strong)
+        explicit_false_friends = intent.get("known_false_friends")
+        if isinstance(explicit_false_friends, list):
+            terms = ensure_list(card.meta, "false_friend_terms")
+            terms.extend(
+                str(row.get("term"))
+                for row in explicit_false_friends
+                if isinstance(row, dict) and isinstance(row.get("term"), str)
+            )
+            card.meta["false_friend_terms"] = unique_preserve_order(terms)
+        card.body = card.body.rstrip() + "\n\n## Search evidence\n\n" + block + "\n"
+        _atomic_card_replace(
+            resolved_card, _render_card_bytes(card), expected_sha256=before_sha256
+        )
+        return "RECORDED", observation_id
+
+
+def cmd_record_evidence(args: argparse.Namespace) -> int:
+    try:
+        if args.inherited_writer_lock_fd is None:
+            raise ValueError("SEARCH_EVIDENCE_INHERITED_WRITER_LOCK_REQUIRED")
+        intent = json.loads(args.intent.read_text(encoding="utf-8"))
+        evidence = json.loads(args.evidence.read_text(encoding="utf-8"))
+        card_path = resolve_card_path(args.card)
+        status, observation_id = record_search_evidence(
+            card_path,
+            intent,
+            evidence,
+            inherited_writer_lock_fd=args.inherited_writer_lock_fd,
+        )
+    except (OSError, json.JSONDecodeError, ValueError) as exc:
+        print(str(exc), file=sys.stderr)
+        return 2
+    print(json.dumps({"schema": "q3_search_evidence_write.v1", "status": status, "observation_id": observation_id}, sort_keys=True))
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Address-aware oracle question journal.")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -764,6 +1338,13 @@ def build_parser() -> argparse.ArgumentParser:
     close.add_argument("--next-address", action="append", default=[], help="Следующий адресный шаг.")
     close.add_argument("--request-node", action="append", default=[], help="Связанный request node.")
     close.set_defaults(func=cmd_close)
+
+    record = sub.add_parser("record-evidence", help="Записать byte-bound supplier evidence в существующую карточку.")
+    record.add_argument("--card", required=True)
+    record.add_argument("--intent", type=Path, required=True)
+    record.add_argument("--evidence", type=Path, required=True)
+    record.add_argument("--inherited-writer-lock-fd", type=int)
+    record.set_defaults(func=cmd_record_evidence)
 
     return parser
 

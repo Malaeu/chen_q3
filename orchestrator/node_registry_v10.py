@@ -156,6 +156,48 @@ def _edge_key(edge: Mapping[str, Any]) -> tuple[Any, Any, Any, Any]:
     )
 
 
+def _challenge_declarations(edges: Iterable[Mapping[str, Any]]) -> set[str]:
+    return {
+        str(port["challenge_declaration"])
+        for edge in edges
+        if isinstance((port := edge.get("hypothesis_port")), Mapping)
+        and "challenge_declaration" in port
+    }
+
+
+def _bind_snapshot_challenges(
+    snapshot: Mapping[str, Any],
+    expected_edges: Mapping[tuple[Any, Any, Any, Any], Mapping[str, Any]],
+) -> dict[str, Any]:
+    """Overlay registry-bound challenge identity onto observed consumption rows."""
+
+    result = dict(snapshot)
+    consumptions = snapshot.get("consumptions")
+    if not isinstance(consumptions, list):
+        return result
+    bound: list[Any] = []
+    for value in consumptions:
+        if not isinstance(value, Mapping):
+            bound.append(value)
+            continue
+        row = dict(value)
+        actual_port = row.get("hypothesis_port")
+        expected = expected_edges.get(_edge_key(row))
+        expected_port = expected.get("hypothesis_port") if expected is not None else None
+        if isinstance(actual_port, Mapping) and isinstance(expected_port, Mapping):
+            port = dict(actual_port)
+            for field in ("challenge_declaration", "challenge_type_sha256"):
+                expected_value = expected_port.get(field)
+                if field in port and port[field] != expected_value:
+                    raise NodeRegistryError("NODE_REGISTRY_HYPOTHESIS_CHALLENGE_DRIFT")
+                if expected_value is not None:
+                    port[field] = expected_value
+            row["hypothesis_port"] = port
+        bound.append(row)
+    result["consumptions"] = bound
+    return result
+
+
 def _historical_entry_binding_digest(
     entry: Mapping[str, Any], node: Mapping[str, Any], edges_by_id: Mapping[str, Mapping[str, Any]]
 ) -> str:
@@ -486,9 +528,20 @@ def _validate_registry_inner(
             or (len(path) == 2) != (edge["relation"] == "DIRECT")
         ):
             raise NodeRegistryError("NODE_REGISTRY_EDGE_PATH_INVALID")
-        port = _exact_keys(
-            edge["hypothesis_port"], {"surface", "direct_reference"}, "hypothesis_port"
-        )
+        raw_port = edge["hypothesis_port"]
+        if not isinstance(raw_port, Mapping) or frozenset(raw_port) not in {
+            frozenset({"surface", "direct_reference"}),
+            frozenset(
+                {
+                    "surface",
+                    "direct_reference",
+                    "challenge_declaration",
+                    "challenge_type_sha256",
+                }
+            ),
+        }:
+            raise NodeRegistryError("NODE_REGISTRY_SCHEMA_INVALID: hypothesis_port")
+        port = raw_port
         if port["surface"] not in {
             "ELABORATED_VALUE",
             "ELABORATED_TYPE",
@@ -497,6 +550,18 @@ def _validate_registry_inner(
             raise NodeRegistryError("NODE_REGISTRY_HYPOTHESIS_PORT_INVALID")
         if port["direct_reference"] != path[1]:
             raise NodeRegistryError("NODE_REGISTRY_HYPOTHESIS_PORT_DRIFT")
+        if "challenge_declaration" in port:
+            challenge = port["challenge_declaration"]
+            if (
+                not isinstance(challenge, str)
+                or not NAME_RE.fullmatch(challenge)
+                or challenge in {theorem, consumer, port["direct_reference"]}
+            ):
+                raise NodeRegistryError("NODE_REGISTRY_HYPOTHESIS_CHALLENGE_INVALID")
+            _hex(
+                port["challenge_type_sha256"],
+                "hypothesis_port.challenge_type_sha256",
+            )
         edge_key = (
             theorem,
             consumer,
@@ -1742,7 +1807,10 @@ def _verify_consumption(
                     )[edge["edge_id"]] = consumer_blob
     if dependency_snapshot is None:
         modules = sorted(_module_from_path(path) for path in probe_root_paths)
-        targets = sorted({theorem for node in scoped for theorem in node["theorem_ids"]})
+        targets = sorted(
+            {theorem for node in scoped for theorem in node["theorem_ids"]}
+            | _challenge_declarations(expected_edges.values())
+        )
         semantic_declarations = sorted(
             {
                 definition["name"]
@@ -1762,8 +1830,14 @@ def _verify_consumption(
         dependency_snapshot["project_dependency_tree_hash"] = (
             project_dependency_tree_hash
         )
+    dependency_snapshot = _bind_snapshot_challenges(
+        dependency_snapshot, expected_edges
+    )
     expected_modules = sorted(_module_from_path(path) for path in probe_root_paths)
-    expected_targets = sorted({theorem for node in scoped for theorem in node["theorem_ids"]})
+    expected_targets = sorted(
+        {theorem for node in scoped for theorem in node["theorem_ids"]}
+        | _challenge_declarations(expected_edges.values())
+    )
     expected_semantic_declarations = sorted(
         {
             definition["name"]
@@ -1947,6 +2021,12 @@ def _verify_consumption(
     for actual in actual_edges.values():
         pair = (actual.get("theorem"), actual.get("consumer"))
         actual_port = actual.get("hypothesis_port")
+        expected_edge = expected_edges.get(_edge_key(actual))
+        if (
+            expected_edge is not None
+            and actual_port != expected_edge.get("hypothesis_port")
+        ):
+            raise NodeRegistryError("NODE_REGISTRY_HYPOTHESIS_CHALLENGE_DRIFT")
         actual_port_key = (
             actual_port.get("surface") if isinstance(actual_port, Mapping) else None,
             actual_port.get("direct_reference")

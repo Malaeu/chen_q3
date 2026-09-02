@@ -56,16 +56,35 @@ artifacts:
       - q3.lean.aristotle/aristotle_db/knowledge.db
       - q3.lean.aristotle/aristotle_db/aristotle_proofs.db
       - docs/cartographer/lean_env/env_index.jsonl
+      - orchestrator/state/NODE_REGISTRY_V10.json
+      - orchestrator/state/CHANNEL_RUNTIME.json
+      - q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_STATE.json
+      - docs/routeB_bus/litreview/references.bib
+      - docs/routeB_bus/litreview/REFERENCES.md
       - q3.lean.aristotle/Q3/Proofs/RouteB/**/*.lean
       - docs/cartographer/blueprint_gen.py
+    dynamic_inputs:
+      selector: q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_STATE.json#/current/selected_bus_goal_path
+      exact_siblings: [answer.md, goal-close.json, phase-close.json]
+      resolver: docs/cartographer/blueprint_gen.py:load_route_phase
+      rule: Canonically confined exact selected goal and matching siblings only; no bus-history glob.
     outputs:
       - full/blueprint/blueprint.md
-      - q3.lean.aristotle/blueprint/src/content.tex
       - q3.lean.aristotle/blueprint/blueprint_manifest.json
+      - q3.lean.aristotle/blueprint/src/content.tex
+      - q3.lean.aristotle/blueprint/src/print.tex
+      - q3.lean.aristotle/blueprint/src/web.tex
+      - q3.lean.aristotle/blueprint/src/blueprint.sty
+      - q3.lean.aristotle/blueprint/src/plastex.cfg
+      - q3.lean.aristotle/blueprint/src/latexmkrc
+      - q3.lean.aristotle/blueprint/src/macros/common.tex
+      - q3.lean.aristotle/blueprint/src/macros/print.tex
+      - q3.lean.aristotle/blueprint/src/macros/web.tex
+      - q3.lean.aristotle/blueprint/src/extra_styles.css
     generator_tool: blueprint-skeleton-generator
     check_command: [python3, docs/cartographer/blueprint_gen.py, --check]
     repair_command: [python3, docs/cartographer/blueprint_gen.py, --prepare-env]
     repair_exit_codes: [1, 2]
-    authority: PUBLICATION_SKELETON_NOT_PROOF_OR_EXTERNAL_PUBLICATION
+    authority: INTERNAL_EVIDENCE_BLUEPRINT_NOT_PROOF_OR_EXTERNAL_PUBLICATION
     cost_tier: MEDIUM
     consumers: [phase-close-publication]

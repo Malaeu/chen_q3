@@ -133,6 +133,87 @@ class ToolManifestMemoryPlants(unittest.TestCase):
         self.assertEqual(tools["supplier-preflight"]["mode"], "READ_ONLY")
         self.assertIn("EXACT_FIT", tools["supplier-preflight"]["outcomes"])
 
+    def test_search_intent_literature_and_blueprint_v2_are_wired(self) -> None:
+        data = spine.yaml.safe_load(
+            (REPO / "docs/cartographer/TOOLS.yaml").read_text(encoding="utf-8")
+        )
+        self.assertEqual(
+            data["memory_event_routes"]["LITERATURE_DISCOVERY"]["run"],
+            ["literature-discovery"],
+        )
+        self.assertIn(
+            "stdout only",
+            data["memory_event_routes"]["LITERATURE_DISCOVERY"]["record"],
+        )
+        tools = {
+            tool["id"]: tool
+            for family in data["tool_families"].values()
+            for tool in family.get("tools", [])
+        }
+        literature = tools["literature-discovery"]
+        self.assertEqual(literature["classification"], "AUTOMATIC")
+        self.assertEqual(literature["mode"], "NETWORK_WRITE")
+        self.assertFalse(literature["writes"])
+        self.assertIn("independently", literature["trigger"])
+        self.assertIn("24 globally", literature["budgets"])
+        writer = tools["workflow-search-evidence"]
+        self.assertEqual(writer["classification"], "AUTOMATIC")
+        self.assertEqual(writer["mode"], "WRITES_CANONICAL")
+        self.assertTrue(writer["writes"])
+        self.assertIn("EXACT_ORACLE_CARD_OWNERSHIP", writer["approval"])
+        self.assertIn("q3_search_intent.v1", tools["semantic-preflight"]["search_intent_contract"])
+        blueprint = tools["blueprint-skeleton-generator"]
+        self.assertIn("q3_blueprint.v2", blueprint["authority"])
+        self.assertIn("NODE_REGISTRY_V10", blueprint["trigger"])
+
+    def test_blueprint_registry_declares_all_generated_outputs(self) -> None:
+        registry = spine.yaml.safe_load(
+            (REPO / "docs/cartographer/DERIVED_ARTIFACTS.yaml").read_text(encoding="utf-8")
+        )
+        artifact = next(
+            row for row in registry["artifacts"]
+            if row["id"] == "routeb-publication-blueprint"
+        )
+        self.assertEqual(len(artifact["outputs"]), 12)
+        self.assertIn("orchestrator/state/NODE_REGISTRY_V10.json", artifact["inputs"])
+        self.assertFalse(any("*.goal-close" in item for item in artifact["inputs"]))
+        self.assertNotIn("docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md", artifact["inputs"])
+        self.assertIn("selected_bus_goal_path", artifact["dynamic_inputs"]["selector"])
+
+    def test_all_tools_have_one_explicit_routing_classification(self) -> None:
+        data = spine.yaml.safe_load(
+            (REPO / "docs/cartographer/TOOLS.yaml").read_text(encoding="utf-8")
+        )
+        allowed = {"AUTOMATIC", "MANUAL", "DISPLAY_ONLY", "RETIRED"}
+        tools = [
+            tool
+            for family in data["tool_families"].values()
+            for tool in family.get("tools", [])
+        ]
+        self.assertEqual(len(tools), 59)
+        self.assertEqual(data["tool_contract"]["required_fields"][1], "classification")
+        self.assertTrue(all(tool.get("classification") in allowed for tool in tools))
+        self.assertTrue(all(
+            (tool["classification"] == "RETIRED") == (tool["status"] == "RETIRED")
+            for tool in tools
+        ))
+        self.assertEqual(
+            data["memory_event_routes"]["GOAL_DISPATCH"]["run"],
+            ["workflow-runtime"],
+        )
+        self.assertEqual(
+            data["memory_event_routes"]["REGISTERED_CYCLE"]["run"],
+            ["workflow-close-node"],
+        )
+        self.assertEqual(
+            data["memory_event_routes"]["REUSABLE_INSIGHT"]["run"],
+            ["workflow-close-node"],
+        )
+        self.assertEqual(
+            data["memory_event_routes"]["GOAL_CLOSE"]["run"],
+            ["workflow-close-node"],
+        )
+
     def test_retrieval_contract_distinguishes_shelf_from_source_absence(self) -> None:
         data = spine.yaml.safe_load(
             (REPO / "docs/cartographer/TOOLS.yaml").read_text(encoding="utf-8")
