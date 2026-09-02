@@ -584,6 +584,58 @@ class StartupRuntimeTests(unittest.TestCase):
             self.assertIsNone(snapshot.selected_goal)
             self.assertFalse(snapshot.fatal_errors, snapshot.fatal_errors)
 
+    def test_direct_bus_entry_limit_accepts_4096_and_rejects_4097(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            bus = root / "docs/routeB_bus"
+            bus.mkdir(parents=True)
+            for index in range(startup_runtime.BUS_DIRECT_ENTRY_LIMIT):
+                (bus / f"junk-{index:04d}").touch()
+
+            goals, answers, manifest, _fingerprints = (
+                startup_runtime._physical_bus_paths(root)
+            )
+
+            self.assertEqual(goals, ())
+            self.assertEqual(answers, ())
+            self.assertRegex(manifest, r"^[0-9a-f]{64}$")
+            (bus / "one-too-many").touch()
+            with self.assertRaisesRegex(
+                startup_runtime.StartupRuntimeError,
+                "STARTUP_BUS_SCAN_LIMIT_EXCEEDED",
+            ):
+                startup_runtime._physical_bus_paths(root)
+
+    def test_bus_observation_failure_does_not_synthesize_drift(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._committed_open_snapshot_fixture(root)
+
+            with mock.patch.object(
+                startup_runtime,
+                "_physical_bus_paths",
+                side_effect=startup_runtime.StartupRuntimeError(
+                    "STARTUP_BUS_SCAN_UNAVAILABLE", "plant"
+                ),
+            ):
+                snapshot = startup_runtime.build_shadow_snapshot(root)
+
+            self.assertIn(
+                "STARTUP_BUS_SCAN_UNAVAILABLE: plant", snapshot.fatal_errors
+            )
+            self.assertFalse(
+                any(
+                    code in item
+                    for item in snapshot.fatal_errors
+                    for code in (
+                        "STARTUP_SELECTOR_STATE_DRIFT",
+                        "STARTUP_CONTROL_BLOB_DRIFT",
+                        "STARTUP_STATE_BLOB_DRIFT",
+                    )
+                ),
+                snapshot.fatal_errors,
+            )
+
     def test_symlink_goal_component_fails_closed(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -1198,7 +1250,7 @@ class StartupRuntimeTests(unittest.TestCase):
                 fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
             self.assertIn("FATAL:WRITER_LOCK_COLLISION", locked_snapshot.fatal_errors)
 
-    def test_untracked_nested_symlink_cannot_hide_open_goal(self) -> None:
+    def test_nested_symlink_and_fake_goal_are_never_entered(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             self._control(root)
@@ -1219,16 +1271,28 @@ class StartupRuntimeTests(unittest.TestCase):
             (nested_parent / "nested").symlink_to(
                 outside, target_is_directory=True
             )
-
-            snapshot = startup_runtime.build_shadow_snapshot(root)
-
-            self.assertTrue(
-                any(
-                    item.startswith("STARTUP_SYMLINK_COMPONENT:")
-                    for item in snapshot.fatal_errors
+            ignored = root / "docs/routeB_bus/.lake-like"
+            for index in range(300):
+                nested = ignored / f"tree-{index:03d}"
+                nested.mkdir(parents=True)
+                (nested / "999_nested.goal.md").write_text(
+                    "must remain opaque\n", encoding="utf-8"
                 )
-            )
-            self.assertNotEqual(snapshot.selected_goal, "outside/999_hidden.goal.md")
+
+            original_scandir = startup_runtime.os.scandir
+
+            def direct_bus_only(path: object) -> object:
+                if Path(path) != root / "docs/routeB_bus":
+                    raise AssertionError(f"nested bus traversal: {path}")
+                return original_scandir(path)
+
+            with mock.patch.object(
+                startup_runtime.os, "scandir", side_effect=direct_bus_only
+            ):
+                result = startup_runtime.select_v10_shadow_goal(root)
+
+            self.assertIsNone(result.selected_goal)
+            self.assertFalse(result.fatal_errors, result.fatal_errors)
 
     def test_unrelated_untracked_file_sets_dirty_warning(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -1249,7 +1313,7 @@ class StartupRuntimeTests(unittest.TestCase):
             self.assertIn("GIT_FOREIGN_DIRTY_PATHS_PRESENT", snapshot.warnings)
             self.assertFalse(snapshot.fatal_errors, snapshot.fatal_errors)
 
-    def test_nested_ignored_open_goal_blocks_active_current(self) -> None:
+    def test_nested_ignored_open_goal_does_not_block_active_current(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             self._control(root)
@@ -1301,17 +1365,10 @@ class StartupRuntimeTests(unittest.TestCase):
 
             result = startup_runtime.select_v10_shadow_goal(root)
 
-            self.assertIsNone(result.selected_goal)
-            self.assertEqual(result.next_action, "STOP_FAIL_CLOSED")
-            self.assertTrue(
-                any(
-                    item.startswith("STARTUP_GOAL_BLOB_DRIFT")
-                    for item in result.fatal_errors
-                ),
-                result.fatal_errors,
-            )
+            self.assertEqual(result.selected_goal, "docs/Codex/TASK_active.md")
+            self.assertFalse(result.fatal_errors, result.fatal_errors)
 
-    def test_nested_ignored_open_goal_participates_in_global_ambiguity(self) -> None:
+    def test_nested_ignored_open_goal_is_not_part_of_global_set(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             self._control(root)
@@ -1323,6 +1380,7 @@ class StartupRuntimeTests(unittest.TestCase):
                 goal_id="058",
                 status="OPEN",
                 node="visible-node",
+                source_pin=None,
             )
             (root / ".gitignore").write_text(
                 "docs/routeB_bus/ignored/\n", encoding="utf-8"
@@ -1338,14 +1396,10 @@ class StartupRuntimeTests(unittest.TestCase):
 
             result = startup_runtime.select_v10_shadow_goal(root)
 
-            self.assertIsNone(result.selected_goal)
-            self.assertTrue(
-                any(
-                    item.startswith("STARTUP_AMBIGUOUS_OPEN_GOALS:")
-                    for item in result.fatal_errors
-                ),
-                result.fatal_errors,
+            self.assertEqual(
+                result.selected_goal, "docs/routeB_bus/058_visible.goal.md"
             )
+            self.assertFalse(result.fatal_errors, result.fatal_errors)
 
     def test_modern_answer_phase_node_result_and_status_drift_are_fatal(self) -> None:
         cases = {
@@ -1581,7 +1635,7 @@ class StartupRuntimeTests(unittest.TestCase):
 
             self.assertTrue(
                 any(
-                    item.startswith("STARTUP_TRACKED_BUS_SYMLINK:")
+                    item.startswith("STARTUP_SYMLINK_COMPONENT:")
                     for item in snapshot.fatal_errors
                 )
             )
@@ -1615,6 +1669,8 @@ class StartupRuntimeTests(unittest.TestCase):
         with mock.patch.object(startup_runtime.subprocess, "run", return_value=completed):
             observed = startup_runtime._git_observation(Path("."))
 
+            command = startup_runtime.subprocess.run.call_args.args[0]
+
         self.assertIn("weird space\nname", observed.dirty_paths)
         self.assertIn("renamed new\nname", observed.dirty_paths)
         self.assertIn("renamed old name", observed.dirty_paths)
@@ -1622,6 +1678,8 @@ class StartupRuntimeTests(unittest.TestCase):
         self.assertTrue(
             any(item.startswith("STARTUP_GIT_UNMERGED:") for item in observed.errors)
         )
+        self.assertIn("--untracked-files=normal", command)
+        self.assertFalse(any(item.startswith("--ignored") for item in command))
 
     def test_linked_worktree_common_dir_lock_is_held_and_identity_checked(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -1713,15 +1771,14 @@ class StartupRuntimeTests(unittest.TestCase):
                     tuple[object, startup_runtime._PathFingerprint], ...
                 ],
             ) -> tuple[str, ...]:
-                result = original(repo, fingerprints)  # type: ignore[arg-type]
                 self._goal(
                     root,
-                    "docs/routeB_bus/hidden/999_concurrent.goal.md",
+                    "docs/routeB_bus/999_concurrent.goal.md",
                     goal_id="999",
                     status="OPEN",
                     node="concurrent-node",
                 )
-                return result
+                return original(repo, fingerprints)  # type: ignore[arg-type]
 
             with mock.patch.object(
                 startup_runtime,

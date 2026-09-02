@@ -65,6 +65,39 @@ CANONICAL_CALL_CLASSES = {
 }
 RESEARCH_DEBT_PACKET_SUBTYPE = "RESEARCH_DEBT_CHALLENGE"
 DEPENDENCY_CONTRACT_RECEIPT_SCHEMA = "q3_research_dependency_contract_receipt.v1"
+SUPPLIER_PREFLIGHT_SCHEMA = "q3_supplier_preflight.v1"
+SUPPLIER_PROVENANCE_CLASSES = frozenset(
+    {"SOURCE_DECLARED", "GENERATED_OR_DERIVED"}
+)
+SUPPLIER_STATUS_EXIT = {
+    "CANDIDATE_ONLY": 0,
+    "EXACT_FIT": 0,
+    "REJECTED": 0,
+    "FOREIGN_UNVERIFIED": 0,
+    "COMPLETE_ABSENCE": 1,
+    "INCOMPLETE": 2,
+}
+SUPPLIER_PAYLOAD_FIELDS = frozenset(
+    {
+        "schema",
+        "query",
+        "candidate_requested",
+        "target_requested",
+        "candidate_provenance",
+        "shelf",
+        "external_lean",
+        "environment",
+        "status",
+        "reason",
+        "boundary",
+        "candidate",
+        "comparison",
+        "foreign_candidate",
+        "source_candidates",
+        "prose_candidates_present",
+        "source_absence_scope",
+    }
+)
 SHADOW_PLAN_SCHEMA = "q3_workflow_plan.v2"
 SHADOW_PLAN_MAX_BYTES = 8 * 1024
 SHADOW_PLAN_MAX_LINES = 150
@@ -441,7 +474,7 @@ def _dependency_contract_receipt(
             f"CONSUMER_FIRST_CONTRACT_RECEIPT_INVALID:{exc}"
         ) from exc
     if not isinstance(payload, dict) or set(payload) != {
-        "schema", "candidate", "target", "contract"
+        "schema", "candidate", "target", "candidate_provenance", "contract"
     }:
         raise WorkflowRuntimeError("CONSUMER_FIRST_CONTRACT_RECEIPT_INVALID:SCHEMA")
     if payload.get("schema") != DEPENDENCY_CONTRACT_RECEIPT_SCHEMA:
@@ -450,6 +483,11 @@ def _dependency_contract_receipt(
         raise WorkflowRuntimeError("CONSUMER_FIRST_CONTRACT_CANDIDATE_MISMATCH")
     if payload.get("target") != target:
         raise WorkflowRuntimeError("CONSUMER_FIRST_CONTRACT_TARGET_MISMATCH")
+    candidate_provenance = payload.get("candidate_provenance")
+    if candidate_provenance not in SUPPLIER_PROVENANCE_CLASSES:
+        raise WorkflowRuntimeError(
+            "CONSUMER_FIRST_CONTRACT_CANDIDATE_PROVENANCE_INVALID"
+        )
     contract = payload.get("contract")
     if not isinstance(contract, dict):
         raise WorkflowRuntimeError("CONSUMER_FIRST_CONTRACT_RECEIPT_INVALID:CONTRACT")
@@ -466,6 +504,7 @@ def _dependency_contract_receipt(
         "sha256": hashlib.sha256(raw).hexdigest(),
         "candidate": candidate,
         "target": target,
+        "candidate_provenance": candidate_provenance,
         "status": "VALID",
     }
 
@@ -690,6 +729,78 @@ def command_receipt(repo: Path, command: list[str], *, label: str) -> dict[str, 
         "duration_ms": round((time.monotonic() - started) * 1000),
         "output_sha256": hashlib.sha256(output.encode()).hexdigest(),
         "output_tail": output[-6000:],
+    }
+
+
+def _supplier_preflight_receipt(
+    repo: Path,
+    *,
+    query: str,
+    candidate: str | None,
+    target: str | None,
+    candidate_provenance: str | None,
+) -> dict[str, Any]:
+    command = [sys.executable, "scripts/supplier_preflight.py", "--query", query]
+    if candidate is not None:
+        command.extend(("--candidate", candidate))
+    if target is not None:
+        command.extend(("--target", target))
+    if candidate_provenance is not None:
+        command.extend(("--candidate-provenance", candidate_provenance))
+    started = time.monotonic()
+    proc = subprocess.run(command, cwd=repo, capture_output=True, text=True)
+    duration_ms = round((time.monotonic() - started) * 1000)
+    error: str | None = None
+    payload: dict[str, Any] | None = None
+    try:
+        decoded = json.loads(proc.stdout)
+        if not isinstance(decoded, dict):
+            raise ValueError("JSON root is not an object")
+        payload = decoded
+    except (json.JSONDecodeError, ValueError) as exc:
+        error = f"SUPPLIER_PREFLIGHT_OUTPUT_INVALID:{exc}"
+    if payload is not None:
+        status = payload.get("status")
+        if set(payload) != SUPPLIER_PAYLOAD_FIELDS:
+            error = "SUPPLIER_PREFLIGHT_OUTPUT_INVALID:SCHEMA_FIELDS"
+        elif payload.get("schema") != SUPPLIER_PREFLIGHT_SCHEMA:
+            error = "SUPPLIER_PREFLIGHT_OUTPUT_INVALID:SCHEMA"
+        elif (
+            payload.get("query") != query
+            or payload.get("candidate_requested") != candidate
+            or payload.get("target_requested") != target
+            or payload.get("candidate_provenance") != candidate_provenance
+        ):
+            error = "SUPPLIER_PREFLIGHT_OUTPUT_INVALID:REQUEST_BINDING"
+        elif status not in SUPPLIER_STATUS_EXIT:
+            error = "SUPPLIER_PREFLIGHT_OUTPUT_INVALID:STATUS"
+        elif proc.returncode != SUPPLIER_STATUS_EXIT[status]:
+            error = "SUPPLIER_PREFLIGHT_EXIT_STATUS_MISMATCH"
+        elif not isinstance(payload.get("reason"), str) or not payload["reason"]:
+            error = "SUPPLIER_PREFLIGHT_OUTPUT_INVALID:REASON"
+        elif not isinstance(payload.get("boundary"), str):
+            error = "SUPPLIER_PREFLIGHT_OUTPUT_INVALID:BOUNDARY"
+        elif status == "EXACT_FIT" and (
+            not isinstance(payload.get("comparison"), dict)
+            or payload["comparison"].get("status") != "EXACT_FIT"
+        ):
+            error = "SUPPLIER_PREFLIGHT_OUTPUT_INVALID:EXACT_FIT_EVIDENCE"
+        elif status == "COMPLETE_ABSENCE" and (
+            candidate_provenance != "SOURCE_DECLARED"
+            or payload.get("source_absence_scope") != "SOURCE_DECLARATION_ABSENCE"
+            or "SOURCE_DECLARATION_ABSENCE" not in payload["reason"]
+        ):
+            error = "SUPPLIER_PREFLIGHT_OUTPUT_INVALID:ABSENCE_SCOPE"
+    combined = proc.stdout + proc.stderr
+    return {
+        "label": "supplier-preflight",
+        "command": command,
+        "exit": proc.returncode,
+        "duration_ms": duration_ms,
+        "output_sha256": hashlib.sha256(combined.encode()).hexdigest(),
+        "output_tail": combined[-6000:],
+        "payload": payload,
+        "validation_error": error,
     }
 
 
@@ -984,6 +1095,7 @@ def execute_close_node(
         holds.append("GOAL_ATTEMPT_EVENT_REQUIRED")
     if any(not _exists_at_head(repo, path) for path in owned_paths) and not query:
         holds.append("ASK_SHELF_REQUIRED_FOR_NEW_OBJECT")
+    contract_receipt: dict[str, Any] | None = None
     if candidate or target:
         if not (query and candidate and target):
             holds.append("SUPPLIER_PREFLIGHT_TRIPLE_REQUIRED")
@@ -991,12 +1103,13 @@ def execute_close_node(
             holds.append("CONSUMER_FIRST_CONTRACT_RECEIPT_REQUIRED")
         elif candidate and target:
             try:
-                receipts.append(_dependency_contract_receipt(
+                contract_receipt = _dependency_contract_receipt(
                     repo,
                     dependency_contract_receipt,
                     candidate=candidate,
                     target=target,
-                ))
+                )
+                receipts.append(contract_receipt)
             except WorkflowRuntimeError as exc:
                 holds.append(str(exc))
     if holds:
@@ -1011,12 +1124,37 @@ def execute_close_node(
         }
     before = _git(repo, "status", "--porcelain=v1", "--untracked-files=all")
     if query:
-        receipts.append(command_receipt(repo, ["bash", "ask.sh", query], label="ask-shelf"))
-        command = [sys.executable, "scripts/supplier_preflight.py", "--query", query]
-        if candidate and target:
-            command.extend(("--candidate", candidate, "--target", target))
-        receipts.append(command_receipt(repo, command, label="supplier-preflight"))
-    if run_kernel:
+        provenance = (
+            contract_receipt.get("candidate_provenance")
+            if contract_receipt is not None
+            else None
+        )
+        supplier = _supplier_preflight_receipt(
+            repo,
+            query=query,
+            candidate=candidate,
+            target=target,
+            candidate_provenance=provenance,
+        )
+        receipts.append(supplier)
+        supplier_payload = supplier.get("payload")
+        supplier_status = (
+            supplier_payload.get("status")
+            if isinstance(supplier_payload, dict)
+            else None
+        )
+        if supplier.get("validation_error"):
+            holds.append(str(supplier["validation_error"]))
+        elif candidate is not None and target is not None:
+            if supplier_status != "EXACT_FIT":
+                holds.append(f"SUPPLIER_PREFLIGHT_NOT_EXACT_FIT:{supplier_status}")
+        elif supplier_status == "COMPLETE_ABSENCE":
+            holds.append(
+                "SUPPLIER_SOURCE_DECLARATION_ABSENCE_REQUIRES_LATER_CREATION_DECISION"
+            )
+        else:
+            holds.append(f"SUPPLIER_PREFLIGHT_DISCOVERY_ONLY:{supplier_status}")
+    if run_kernel and not holds:
         for path in owned_paths:
             if path.endswith(".lean") and path.startswith("q3.lean.aristotle/"):
                 receipts.append(
@@ -1026,7 +1164,7 @@ def execute_close_node(
                         label=f"kernel:{path}",
                     )
                 )
-    elif any(path.endswith(".lean") for path in owned_paths):
+    elif not holds and any(path.endswith(".lean") for path in owned_paths):
         holds.append("KERNEL_GATE_REQUIRED")
     if any(item.get("exit", 0) != 0 for item in receipts):
         holds.append("PRE_CLOSE_GATE_FAILED")

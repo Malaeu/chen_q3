@@ -5,13 +5,20 @@ from __future__ import annotations
 import json
 import os
 import subprocess
+from contextlib import contextmanager
 from pathlib import Path
 from types import SimpleNamespace
 
 import pytest
 
 from orchestrator import migration_census, spine
-from scripts import deep_preflight, q3_docs_corpus, qmd_ops, search_external_lean
+from scripts import (
+    deep_preflight,
+    q3_docs_corpus,
+    qmd_ops,
+    research_oracle,
+    search_external_lean,
+)
 
 REPO = Path(__file__).resolve().parents[2]
 
@@ -125,10 +132,15 @@ def test_deep_mode_runs_semantics_even_after_exact_hit(tmp_path: Path) -> None:
         text=True,
         timeout=30,
     )
-    assert proc.returncode == 0, proc.stdout + proc.stderr
+    # Production freshness is intentionally allowed to be stale here.  Even with
+    # an exact local hit, deep mode must run both semantic backends and then fail
+    # closed rather than hide stale semantic-index provenance.
+    assert proc.returncode in {0, 2}, proc.stdout + proc.stderr
     assert "LEAN — объявления" in proc.stdout
     assert "СЕМАНТИЧЕСКИЙ ИНДЕКС q3_docs" in proc.stdout
     assert "deep-hit.md" in proc.stdout
+    if proc.returncode == 2:
+        assert "ASK_STATUS: INCOMPLETE" in proc.stdout
 
 
 def test_external_lean_registry_is_actually_queried(tmp_path: Path) -> None:
@@ -176,6 +188,256 @@ def test_external_registry_missing_enabled_base_is_incomplete(tmp_path: Path) ->
         enabled_ids=["first", "missing"],
     )
     assert "enabled bases not resolved: missing" in result["errors"]
+
+
+def test_external_exact_candidate_lookup_is_independent_of_shelf_query_and_cap(
+    tmp_path: Path,
+) -> None:
+    base = tmp_path / "foreign"
+    base.mkdir()
+    (base / "Many.lean").write_text(
+        "\n".join(f"theorem shelfNeedle{i} : True := by trivial" for i in range(30))
+        + "\ntheorem ExactSupplier : True := by trivial\n",
+        encoding="utf-8",
+    )
+    result = search_external_lean.search_registry(
+        "shelfNeedle",
+        candidate="Some.Namespace.ExactSupplier",
+        candidate_provenance="SOURCE_DECLARED",
+        bases=[("foreign", base)],
+        max_matches=2,
+    )
+    assert len(result["matches"]) == 2
+    exact = result["base_results"][0]["exact_candidate"]
+    assert exact["status"] == "PRESENT"
+    assert exact["match_count"] == 1
+
+
+def test_external_exact_source_absence_is_narrow_and_denominator_bound(
+    tmp_path: Path,
+) -> None:
+    base = tmp_path / "foreign"
+    base.mkdir()
+    (base / "Only.lean").write_text(
+        "theorem unrelated : True := by trivial\n", encoding="utf-8"
+    )
+    result = search_external_lean.search_registry(
+        "unrelated",
+        candidate="MissingExplicitTheorem",
+        candidate_provenance="SOURCE_DECLARED",
+        bases=[("foreign", base)],
+    )
+    assert result["errors"] == []
+    exact = result["base_results"][0]["exact_candidate"]
+    assert exact["status"] == "ABSENT"
+    assert exact["boundary"] == "SOURCE_DECLARATION_ABSENCE"
+    assert exact["searched_regular_source_count"] == 1
+
+
+def test_external_git_root_rejects_same_head_untracked_lean(tmp_path: Path) -> None:
+    base = tmp_path / "foreign"
+    base.mkdir()
+    subprocess.run(["git", "init", "-q", str(base)], check=True)
+    tracked = base / "Tracked.lean"
+    tracked.write_text("theorem tracked : True := by trivial\n", encoding="utf-8")
+    subprocess.run(["git", "-C", str(base), "add", "Tracked.lean"], check=True)
+    subprocess.run(
+        [
+            "git", "-C", str(base), "-c", "user.name=Q3 Test", "-c",
+            "user.email=q3@example.invalid", "commit", "-qm", "fixture",
+        ],
+        check=True,
+    )
+    (base / "Untracked.lean").write_text(
+        "theorem hidden : True := by trivial\n", encoding="utf-8"
+    )
+    result = search_external_lean.search_registry(
+        "tracked", bases=[("foreign", base)]
+    )
+    assert result["boundary"] == "INCOMPLETE_EXTERNAL_LEAN_SEARCH"
+    assert any("untracked Lean source" in error for error in result["errors"])
+    (base / "Untracked.lean").unlink()
+    tracked.write_text("theorem changed_same_head : True := by trivial\n", encoding="utf-8")
+    result = search_external_lean.search_registry(
+        "changed_same_head", bases=[("foreign", base)]
+    )
+    assert result["boundary"] == "INCOMPLETE_EXTERNAL_LEAN_SEARCH"
+    assert any("dirty or untracked Lean source" in error for error in result["errors"])
+
+
+def test_external_search_detects_pre_post_identity_mutation(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    base = tmp_path / "foreign"
+    base.mkdir()
+    source = base / "Only.lean"
+    source.write_text("theorem needle : True := by trivial\n", encoding="utf-8")
+    real_identity = search_external_lean._content_identity
+    calls = 0
+
+    def mutating_identity(root: Path, deadline: float):
+        nonlocal calls
+        calls += 1
+        if calls == 2:
+            source.write_text("theorem changed : True := by trivial\n", encoding="utf-8")
+        return real_identity(root, deadline)
+
+    monkeypatch.setattr(search_external_lean, "_content_identity", mutating_identity)
+    result = search_external_lean.search_registry(
+        "needle", bases=[("foreign", base)]
+    )
+    assert result["boundary"] == "INCOMPLETE_EXTERNAL_LEAN_SEARCH"
+    assert any("identity changed during search" in error for error in result["errors"])
+
+
+def test_external_search_rejects_symlink_root(tmp_path: Path) -> None:
+    actual = tmp_path / "actual"
+    actual.mkdir()
+    (actual / "Only.lean").write_text(
+        "theorem needle : True := by trivial\n", encoding="utf-8"
+    )
+    linked = tmp_path / "linked"
+    linked.symlink_to(actual, target_is_directory=True)
+    result = search_external_lean.search_registry(
+        "needle", bases=[("foreign", linked)]
+    )
+    assert result["boundary"] == "INCOMPLETE_EXTERNAL_LEAN_SEARCH"
+    assert any("root is a symlink" in error for error in result["errors"])
+
+
+def test_external_search_rejects_symlinked_lean_source(tmp_path: Path) -> None:
+    base = tmp_path / "foreign"
+    base.mkdir()
+    target = tmp_path / "Target.lean"
+    target.write_text("theorem target : True := by trivial\n", encoding="utf-8")
+    (base / "Link.lean").symlink_to(target)
+    result = search_external_lean.search_registry(
+        "target", bases=[("foreign", base)]
+    )
+    assert result["boundary"] == "INCOMPLETE_EXTERNAL_LEAN_SEARCH"
+    assert any("symlink" in error for error in result["errors"])
+
+
+def test_external_receipt_revalidates_query_candidate_provenance_and_root(
+    tmp_path: Path,
+) -> None:
+    base = tmp_path / "foreign"
+    base.mkdir()
+    source = base / "Only.lean"
+    source.write_text("theorem unrelated : True := by trivial\n", encoding="utf-8")
+    receipt = search_external_lean.search_registry(
+        "shelf query",
+        candidate="MissingExplicitTheorem",
+        candidate_provenance="SOURCE_DECLARED",
+        bases=[("foreign", base)],
+    )
+    valid, errors = search_external_lean.validate_receipt(
+        receipt,
+        expected_query="shelf query",
+        expected_candidate="MissingExplicitTheorem",
+        expected_candidate_provenance="SOURCE_DECLARED",
+    )
+    assert valid, errors
+    valid, errors = search_external_lean.validate_receipt(
+        receipt,
+        expected_query="replayed query",
+        expected_candidate="AnotherCandidate",
+        expected_candidate_provenance="GENERATED_OR_DERIVED",
+    )
+    assert not valid
+    assert any("replay mismatch" in error for error in errors)
+    source.write_text("theorem mutated : True := by trivial\n", encoding="utf-8")
+    valid, errors = search_external_lean.validate_receipt(
+        receipt,
+        expected_query="shelf query",
+    )
+    assert not valid
+    assert any("changed after receipt" in error for error in errors)
+
+
+def test_external_receipt_rejects_malformed_exact_metadata(tmp_path: Path) -> None:
+    base = tmp_path / "foreign"
+    base.mkdir()
+    (base / "Only.lean").write_text(
+        "theorem unrelated : True := by trivial\n", encoding="utf-8"
+    )
+    receipt = search_external_lean.search_registry(
+        "unrelated",
+        candidate="MissingExplicitTheorem",
+        candidate_provenance="SOURCE_DECLARED",
+        bases=[("foreign", base)],
+    )
+    receipt["base_results"][0]["exact_candidate"].pop("match_digest")
+    valid, errors = search_external_lean.validate_receipt(
+        receipt,
+        expected_query="unrelated",
+        expected_candidate="MissingExplicitTheorem",
+        expected_candidate_provenance="SOURCE_DECLARED",
+    )
+    assert not valid
+    assert any("metadata malformed" in error for error in errors)
+
+
+def test_secure_external_receipt_requires_mode_0600(tmp_path: Path) -> None:
+    base = tmp_path / "foreign"
+    base.mkdir()
+    (base / "Only.lean").write_text(
+        "theorem unrelated : True := by trivial\n", encoding="utf-8"
+    )
+    receipt = search_external_lean.search_registry(
+        "unrelated", bases=[("foreign", base)]
+    )
+    path = tmp_path / "receipt.json"
+    path.write_text(json.dumps(receipt), encoding="utf-8")
+    path.chmod(0o644)
+    _payload, errors = search_external_lean.load_secure_receipt(
+        path, expected_query="unrelated", validate_configured_registry=False
+    )
+    assert "external receipt mode must be 0600" in errors
+    path.chmod(0o600)
+    payload, errors = search_external_lean.load_secure_receipt(
+        path, expected_query="unrelated", validate_configured_registry=False
+    )
+    assert payload is not None
+    assert errors == []
+
+
+def test_research_oracle_uses_separate_lock_and_command_budget_without_retries(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    observed: dict[str, object] = {}
+
+    @contextmanager
+    def fake_lock(_label: str, *, timeout_s: float):
+        observed["lock_timeout"] = timeout_s
+        yield
+
+    def fake_qmd(
+        _cmd: list[str], *, cwd: Path | None, retries: int, timeout_s: float
+    ) -> str:
+        observed.update(
+            {"cwd": cwd, "retries": retries, "command_timeout": timeout_s}
+        )
+        return "[]"
+
+    monkeypatch.setattr(research_oracle, "qmd_lock", fake_lock)
+    monkeypatch.setattr(research_oracle, "run_qmd", fake_qmd)
+    assert research_oracle.run_query_mode(
+        "qmd",
+        "search",
+        "needle",
+        collection="q3_docs",
+        limit=3,
+        min_score=0,
+        index=None,
+        full=False,
+        line_numbers=False,
+        budget_seconds=3.0,
+    ) == []
+    assert observed["lock_timeout"] == 3.0
+    assert observed["command_timeout"] == 3.0
+    assert observed["retries"] == 0
 
 
 def test_dynamic_goal_path_match_uses_qmd_slug_punctuation(

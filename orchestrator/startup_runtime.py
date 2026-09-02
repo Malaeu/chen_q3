@@ -65,7 +65,7 @@ HISTORICAL_STRUCTURED_PAIRED_GOALS = frozenset(
     }
 )
 HISTORICAL_PAIRED_EXPECTED_COUNT = 47
-BUS_DIRECTORY_SCAN_LIMIT = 256
+BUS_DIRECT_ENTRY_LIMIT = 4096
 
 
 class StartupRuntimeError(ValueError):
@@ -299,10 +299,18 @@ def _recheck_fingerprints(
         try:
             observed = _path_fingerprint(repo, relative)
         except StartupRuntimeError:
-            errors.append(f"STARTUP_PATH_CONCURRENT_MUTATION:{relative.as_posix()}")
+            errors.append(
+                "STARTUP_BUS_CONCURRENT_MUTATION"
+                if relative == BUS_REL
+                else f"STARTUP_PATH_CONCURRENT_MUTATION:{relative.as_posix()}"
+            )
             continue
         if observed != expected:
-            errors.append(f"STARTUP_PATH_CONCURRENT_MUTATION:{relative.as_posix()}")
+            errors.append(
+                "STARTUP_BUS_CONCURRENT_MUTATION"
+                if relative == BUS_REL
+                else f"STARTUP_PATH_CONCURRENT_MUTATION:{relative.as_posix()}"
+            )
     return tuple(errors)
 
 
@@ -657,136 +665,64 @@ def _active_current_selection(
 
 def _physical_bus_paths(
     repo: Path,
-) -> tuple[tuple[Path, ...], tuple[Path, ...], str]:
+) -> tuple[
+    tuple[Path, ...],
+    tuple[Path, ...],
+    str,
+    tuple[tuple[PurePosixPath, _PathFingerprint], ...],
+]:
+    """Observe only the authoritative direct bus surface.
+
+    Nested directories are deliberately opaque: neither tracked nor ignored
+    descendants can become physical goals. Every direct entry participates in
+    the fixed-size scan budget, and every direct record contributes its exact
+    fingerprint to the concurrency manifest.
+    """
+
     bus = _repo_file(repo, BUS_REL)
-    goal_names: set[str] = set()
-    answer_names: set[str] = set()
-    physical_symlinks: list[str] = []
-
-    if not (repo / ".git").exists():
-        pending = [bus]
-        while pending:
-            directory = pending.pop()
-            try:
-                with os.scandir(directory) as scan:
-                    entries = tuple(scan)
-            except OSError as exc:
-                raise StartupRuntimeError(
-                    "STARTUP_BUS_SCAN_UNAVAILABLE", str(exc)
-                ) from exc
-            for entry in entries:
+    goal_names: list[str] = []
+    answer_names: list[str] = []
+    records: list[tuple[str, _PathFingerprint]] = []
+    bus_fingerprint = _path_fingerprint(repo, BUS_REL)
+    try:
+        with os.scandir(bus) as scan:
+            for entry_count, entry in enumerate(scan, start=1):
+                if entry_count > BUS_DIRECT_ENTRY_LIMIT:
+                    raise StartupRuntimeError("STARTUP_BUS_SCAN_LIMIT_EXCEEDED")
                 candidate = Path(entry.path)
-                relative = _lexical_relative(repo, candidate).as_posix()
-                try:
-                    if entry.is_symlink():
-                        physical_symlinks.append(relative)
-                    elif entry.is_dir(follow_symlinks=False):
-                        pending.append(candidate)
-                    elif entry.is_file(follow_symlinks=False):
-                        if entry.name.endswith(".goal.md"):
-                            goal_names.add(relative)
-                        elif entry.name.endswith(".answer.md"):
-                            answer_names.add(relative)
-                except OSError as exc:
-                    raise StartupRuntimeError(
-                        "STARTUP_BUS_SCAN_UNAVAILABLE", str(exc)
-                    ) from exc
-        if physical_symlinks:
-            raise StartupRuntimeError(
-                "STARTUP_SYMLINK_COMPONENT", physical_symlinks[0]
-            )
-        encoded = "\0".join((*sorted(goal_names), *sorted(answer_names))).encode(
-            "utf-8", errors="surrogateescape"
-        )
-        return (
-            tuple(
-                _repo_file(repo, PurePosixPath(name))
-                for name in sorted(goal_names)
-            ),
-            tuple(
-                _repo_file(repo, PurePosixPath(name))
-                for name in sorted(answer_names)
-            ),
-            hashlib.sha256(encoded).hexdigest(),
-        )
-
-    physical_records = subprocess.run(
-        [
-            "git",
-            "ls-files",
-            "-z",
-            "--cached",
-            "--others",
-            "--stage",
-            "--exclude=*",
-            "--exclude=!*/",
-            "--exclude=!*.goal.md",
-            "--exclude=!*.answer.md",
-            "--",
-            BUS_REL.as_posix(),
-        ],
-        cwd=repo,
-        check=False,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.DEVNULL,
-    )
-    if physical_records.returncode != 0:
-        raise StartupRuntimeError("STARTUP_BUS_INDEX_UNAVAILABLE")
-    for item in physical_records.stdout.split(b"\0"):
-        if not item:
-            continue
-        metadata, separator, raw_path = item.partition(b"\t")
-        fields = metadata.split()
-        indexed = (
-            bool(separator)
-            and len(fields) == 3
-            and re.fullmatch(rb"[0-7]{6}", fields[0]) is not None
-            and re.fullmatch(rb"[0-9a-f]{40,64}", fields[1]) is not None
-            and fields[2] in {b"0", b"1", b"2", b"3"}
-        )
-        path = (raw_path if indexed else item).decode(
-            "utf-8", errors="surrogateescape"
-        )
-        relative = PurePosixPath(path)
-        if BUS_REL not in relative.parents:
-            continue
-        if not indexed and _has_symlink_component(repo, relative):
-            physical_symlinks.append(path)
-        if indexed and fields[0] == b"120000":
-            raise StartupRuntimeError("STARTUP_TRACKED_BUS_SYMLINK", path)
-        if path.endswith(".goal.md"):
-            goal_names.add(path)
-        elif path.endswith(".answer.md"):
-            answer_names.add(path)
-    pending = [bus]
-    scanned_directories = 0
-    while pending:
-        if scanned_directories >= BUS_DIRECTORY_SCAN_LIMIT:
-            raise StartupRuntimeError("STARTUP_BUS_SCAN_LIMIT_EXCEEDED")
-        directory = pending.pop()
-        scanned_directories += 1
-        try:
-            with os.scandir(directory) as scan:
-                entries = tuple(scan)
-        except OSError as exc:
-            raise StartupRuntimeError(
-                "STARTUP_BUS_SCAN_UNAVAILABLE", str(exc)
-            ) from exc
-        for entry in entries:
-            candidate = Path(entry.path)
-            try:
+                relative = _lexical_relative(repo, candidate)
                 if entry.is_symlink():
-                    physical_symlinks.append(
-                        _lexical_relative(repo, candidate).as_posix()
+                    raise StartupRuntimeError(
+                        "STARTUP_SYMLINK_COMPONENT", relative.as_posix()
                     )
-                elif entry.is_dir(follow_symlinks=False):
-                    pending.append(candidate)
-            except OSError as exc:
-                raise StartupRuntimeError(
-                    "STARTUP_BUS_SCAN_UNAVAILABLE", str(exc)
-                ) from exc
-    if physical_symlinks:
-        raise StartupRuntimeError("STARTUP_SYMLINK_COMPONENT", physical_symlinks[0])
+                if not entry.is_file(follow_symlinks=False):
+                    continue
+                path = relative.as_posix()
+                if entry.name.endswith(".goal.md"):
+                    goal_names.append(path)
+                elif entry.name.endswith(".answer.md"):
+                    answer_names.append(path)
+                else:
+                    continue
+                records.append((path, _path_fingerprint(repo, relative)))
+    except StartupRuntimeError:
+        raise
+    except OSError as exc:
+        raise StartupRuntimeError("STARTUP_BUS_SCAN_UNAVAILABLE", str(exc)) from exc
+
+    manifest = [
+        {
+            "path": path,
+            "components": fingerprint.components,
+            "content_sha256": fingerprint.content_sha256,
+            "git_blob_sha1": fingerprint.git_blob_sha1,
+            "git_blob_sha256": fingerprint.git_blob_sha256,
+        }
+        for path, fingerprint in sorted(records)
+    ]
+    encoded = json.dumps(
+        manifest, ensure_ascii=False, separators=(",", ":"), sort_keys=True
+    ).encode("utf-8", errors="surrogateescape")
     return (
         tuple(
             _repo_file(repo, PurePosixPath(name)) for name in sorted(goal_names)
@@ -794,7 +730,11 @@ def _physical_bus_paths(
         tuple(
             _repo_file(repo, PurePosixPath(name)) for name in sorted(answer_names)
         ),
-        hashlib.sha256(physical_records.stdout).hexdigest(),
+        hashlib.sha256(encoded).hexdigest(),
+        (
+            (BUS_REL, bus_fingerprint),
+            *tuple((PurePosixPath(path), fingerprint) for path, fingerprint in records),
+        ),
     )
 
 
@@ -821,7 +761,12 @@ def _shadow_selection_context(
             None,
         )
     try:
-        goal_paths, answer_paths, bus_manifest_sha256 = _physical_bus_paths(repo)
+        (
+            goal_paths,
+            answer_paths,
+            bus_manifest_sha256,
+            bus_fingerprints,
+        ) = _physical_bus_paths(repo)
     except StartupRuntimeError as exc:
         return _SelectionContext(
             replace(empty, fatal_errors=(str(exc),)),
@@ -841,7 +786,9 @@ def _shadow_selection_context(
     historical_pairs: list[tuple[Path, Path]] = []
     fatal: list[str] = []
     warnings: list[str] = []
-    fingerprints: list[tuple[PurePosixPath, _PathFingerprint]] = []
+    fingerprints: list[tuple[PurePosixPath, _PathFingerprint]] = list(
+        bus_fingerprints
+    )
     answer_path_set = set(answer_paths)
     for goal_path in goal_paths:
         goal_rel = _lexical_relative(repo, goal_path)
@@ -1377,9 +1324,21 @@ def _is_owned(path: str, owned_paths: tuple[str, ...]) -> bool:
     candidate = PurePosixPath(path)
     for value in owned_paths:
         owned = PurePosixPath(value)
-        if candidate == owned or owned in candidate.parents:
+        if (
+            candidate == owned
+            or owned in candidate.parents
+            or candidate in owned.parents
+        ):
             return True
     return False
+
+
+def _dirty_path_covers(path: str, target: str) -> bool:
+    """Treat a collapsed untracked parent as covering an exact descendant."""
+
+    dirty = PurePosixPath(path)
+    exact = PurePosixPath(target)
+    return dirty == exact or dirty in exact.parents
 
 
 def _owned_uncommitted_source_candidate(
@@ -1394,7 +1353,13 @@ def _owned_uncommitted_source_candidate(
         and source_fingerprint is not None
         and PurePosixPath(source_path).suffix == ".lean"
         and _is_owned(source_path, owned_paths)
-        and (source_path in git_state.dirty_paths or head_blob is None)
+        and (
+            any(
+                _dirty_path_covers(path, source_path)
+                for path in git_state.dirty_paths
+            )
+            or head_blob is None
+        )
     )
 
 
@@ -1537,6 +1502,8 @@ def _state_pins_and_errors(
     selected_goal: str | None,
     selected_physical: str | None,
     state_fingerprint: _PathFingerprint | None,
+    *,
+    compare_selector: bool = True,
 ) -> tuple[str | None, str | None, tuple[str, ...]]:
     if _has_symlink_component(repo, EXECUTION_STATE_REL):
         return None, None, ("STARTUP_SYMLINK_COMPONENT:execution-state",)
@@ -1558,7 +1525,7 @@ def _state_pins_and_errors(
     ):
         errors.append("STARTUP_HONESTY_STATE_DRIFT")
     selected_state_path = current.get("selected_bus_goal_path")
-    if selected_physical is not None:
+    if compare_selector and selected_physical is not None:
         match = GOAL_FILE_RE.fullmatch(Path(selected_physical).name)
         expected_id = match.group("goal_id")[:3] if match else None
         if (
@@ -1566,7 +1533,7 @@ def _state_pins_and_errors(
             or current.get("selected_bus_goal_nnn") != expected_id
         ):
             errors.append("STARTUP_SELECTOR_STATE_DRIFT")
-    elif selected_state_path not in {None, ""}:
+    elif compare_selector and selected_state_path not in {None, ""}:
         errors.append("STARTUP_SELECTOR_STATE_DRIFT")
     theorem_pin: str | None = None
     consumer_pin: str | None = None
@@ -1609,21 +1576,10 @@ def _relevant_dirty(path: str, *, selected: str | None, source: str | None) -> b
         and selected is not None
         and path == selected.removesuffix(".goal.md") + ".answer.md"
     )
-    return path in exact or top_level_goal or selected_answer
-
-
-def _bus_symlink_errors(repo: Path, dirty_paths: tuple[str, ...]) -> tuple[str, ...]:
-    errors: list[str] = []
-    prefix = f"{BUS_REL.as_posix()}/"
-    for path in dirty_paths:
-        if not path.startswith(prefix):
-            continue
-        relative = PurePosixPath(path)
-        if relative.parent != BUS_REL:
-            continue
-        if _has_symlink_component(repo, relative):
-            errors.append(f"STARTUP_SYMLINK_COMPONENT:{path}")
-    return tuple(errors)
+    return any(
+        target is not None and _dirty_path_covers(path, target)
+        for target in exact
+    ) or top_level_goal or selected_answer
 
 
 def build_shadow_snapshot(
@@ -1675,7 +1631,6 @@ def build_shadow_snapshot(
 
         git_state = _git_observation(repo)
         fatal.extend(git_state.errors)
-        fatal.extend(_bus_symlink_errors(repo, git_state.dirty_paths))
         context = _shadow_selection_context(repo, git_state, owned_paths)
         selection = context.selection
         fatal.extend(selection.fatal_errors)
@@ -1711,9 +1666,24 @@ def build_shadow_snapshot(
             state_selected_goal,
             selected_physical,
             state_fingerprint,
+            compare_selector=context.bus_manifest_sha256 is not None,
         )
         fatal.extend(state_errors)
         if git_state.head is not None:
+            if control_head_blob is None or state_head_blob is None:
+                independent = _batch_check(
+                    repo,
+                    (
+                        f"HEAD:{CONTROL_REL.as_posix()}",
+                        f"HEAD:{EXECUTION_STATE_REL.as_posix()}",
+                    ),
+                )
+                control_object = independent.get(f"HEAD:{CONTROL_REL.as_posix()}")
+                state_object = independent.get(
+                    f"HEAD:{EXECUTION_STATE_REL.as_posix()}"
+                )
+                control_head_blob = control_object[0] if control_object else None
+                state_head_blob = state_object[0] if state_object else None
             if not _fingerprint_matches_git_blob(
                 control_fingerprint,
                 control_head_blob,
@@ -1750,7 +1720,11 @@ def build_shadow_snapshot(
                 if _relevant_dirty(
                     path, selected=selection.selected_goal, source=source_path
                 )
-                and not (owned_dirty_candidate and path == source_path)
+                and not (
+                    owned_dirty_candidate
+                    and source_path is not None
+                    and _dirty_path_covers(path, source_path)
+                )
             )
             foreign = tuple(
                 path
@@ -1801,16 +1775,6 @@ def build_shadow_snapshot(
         ):
             fatal.append("STARTUP_GIT_CONCURRENT_MUTATION")
         fatal.extend(final_git.errors)
-        if context.bus_manifest_sha256 is not None:
-            try:
-                _final_goals, _final_answers, final_bus_manifest_sha256 = (
-                    _physical_bus_paths(repo)
-                )
-            except StartupRuntimeError as exc:
-                fatal.append(str(exc))
-            else:
-                if final_bus_manifest_sha256 != context.bus_manifest_sha256:
-                    fatal.append("STARTUP_BUS_CONCURRENT_MUTATION")
         lock_recheck = guard.recheck()
         if lock_recheck:
             fatal.append(lock_recheck)

@@ -103,6 +103,45 @@ class ToolManifestMemoryPlants(unittest.TestCase):
         self.assertEqual(tools["supplier-preflight"]["mode"], "READ_ONLY")
         self.assertIn("EXACT_FIT", tools["supplier-preflight"]["outcomes"])
 
+    def test_retrieval_contract_distinguishes_shelf_from_source_absence(self) -> None:
+        data = spine.yaml.safe_load(
+            (REPO / "docs/cartographer/TOOLS.yaml").read_text(encoding="utf-8")
+        )
+        tools = {
+            tool["id"]: tool
+            for tool in data["tool_families"]["retrieval_and_memory"]["tools"]
+        }
+        ask = tools["ask-shelf"]
+        self.assertEqual(
+            ask["outcomes"],
+            [
+                "HITS",
+                "INCOMPLETE_FAST_REQUIRES_DEEP",
+                "SHELF_ABSENCE",
+                "INCOMPLETE",
+            ],
+        )
+        self.assertIn("never rendered as global semantic absence", ask["note"])
+        supplier = tools["supplier-preflight"]
+        self.assertIn("SOURCE_DECLARATION_ABSENCE", supplier["failure_mode"])
+        self.assertIn("only EXACT_FIT clears", supplier["failure_mode"])
+
+    def test_retrieval_contract_has_bounded_zero_retry_qmd_queries(self) -> None:
+        data = spine.yaml.safe_load(
+            (REPO / "docs/cartographer/TOOLS.yaml").read_text(encoding="utf-8")
+        )
+        tools = {
+            tool["id"]: tool
+            for tool in data["tool_families"]["retrieval_and_memory"]["tools"]
+        }
+        budgets = tools["research-oracle"]["budgets"]
+        self.assertIn("3 seconds", budgets)
+        self.assertIn("15 seconds", budgets)
+        self.assertIn("retries are zero", budgets)
+        external = tools["semantic-preflight"]["external_search_contract"]
+        self.assertIn("one monotonic-budget process", external)
+        self.assertIn("uncapped exact explicit-source declaration lookup", external)
+
     def test_codex_cartography_routes_only_to_repo_local_tools(self) -> None:
         data = spine.yaml.safe_load(
             (REPO / "docs/cartographer/TOOLS.yaml").read_text(encoding="utf-8")
@@ -217,6 +256,18 @@ class ToolManifestMemoryPlants(unittest.TestCase):
         self.assertIn("SelectedTrialNormalizerBounded", proc.stdout)
         self.assertNotIn("НЕ НАЙДЕНО НИГДЕ", proc.stdout)
         self.assertIn("all enabled external Lean bases", proc.stdout)
+
+    def test_fast_shelf_miss_requires_deep_and_never_claims_global_absence(self) -> None:
+        proc = subprocess.run(
+            ["./ask.sh", "q3_phasec_fast_absence_needle_91f6"],
+            cwd=REPO,
+            capture_output=True,
+            text=True,
+            timeout=20,
+        )
+        self.assertEqual(proc.returncode, 2, proc.stdout + proc.stderr)
+        self.assertIn("ASK_STATUS: INCOMPLETE_FAST_REQUIRES_DEEP", proc.stdout)
+        self.assertNotIn("НЕ НАЙДЕНО НИГДЕ", proc.stdout)
 
     def test_spine_view_exposes_recent_branch_decisions(self) -> None:
         validated_gate = {

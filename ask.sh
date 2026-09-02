@@ -16,18 +16,28 @@ set -uo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")" || exit 2
 
 if [ $# -eq 0 ]; then
-  echo "usage: ./ask.sh [--deep] <термин> [ещё термины]"
+  echo "usage: ./ask.sh [--deep] [--external-receipt PATH] <термин> [ещё термины]"
   echo "       ищет каскадом: knowledge.db · litreview · Lean · specs/docs · q3_docs · external Lean"
   exit 2
 fi
 
 DEEP=0
-if [ "${1:-}" = "--deep" ]; then
-  DEEP=1
-  shift
-fi
+EXTERNAL_RECEIPT=""
+while [ $# -gt 0 ]; do
+  case "${1:-}" in
+    --deep) DEEP=1; shift ;;
+    --external-receipt)
+      [ $# -ge 2 ] || { echo "--external-receipt requires a path"; exit 2; }
+      EXTERNAL_RECEIPT="$2"
+      shift 2
+      ;;
+    --) shift; break ;;
+    -*) echo "unknown option: $1"; exit 2 ;;
+    *) break ;;
+  esac
+done
 if [ $# -eq 0 ]; then
-  echo "usage: ./ask.sh [--deep] <термин> [ещё термины]"
+  echo "usage: ./ask.sh [--deep] [--external-receipt PATH] <термин> [ещё термины]"
   exit 2
 fi
 
@@ -57,17 +67,24 @@ for line in sys.stdin:
 SEARCHED+=("knowledge.db (kill/move/journal/dossier)")
 if [ -f "$KB" ]; then
   OUT="$(./orchestrator/kb.py ask "$Q" 2>/dev/null)"
+  RC=$?
+  [ "$RC" -eq 0 ] || [ "$RC" -eq 1 ] || SEARCH_FAILURES+=("knowledge.db: kb.py ask failed (code $RC)")
   if ! printf '%s' "$OUT" | grep -q "^no hits"; then
     hdr "ЗНАНИЕ (kb.py ask)"
     printf '%s\n' "$OUT" | head -30
     HITS=$((HITS + 1))
   fi
+else
+  SEARCH_FAILURES+=("knowledge.db: required database missing")
 fi
 
 # ── 2. Флаги поиска: где уже искали, что оказалось ложным другом ──────────────
 SEARCHED+=("search_session/search_term (kb.py flags)")
 if [ -f "$KB" ]; then
-  OUT="$(./orchestrator/kb.py flags "$Q" 2>/dev/null | head -20)"
+  OUT="$(./orchestrator/kb.py flags "$Q" 2>/dev/null)"
+  RC=$?
+  [ "$RC" -eq 0 ] || [ "$RC" -eq 1 ] || SEARCH_FAILURES+=("knowledge.db: kb.py flags failed (code $RC)")
+  OUT="$(printf '%s\n' "$OUT" | head -20)"
   if [ -n "$OUT" ] && ! printf '%s' "$OUT" | grep -qi "no \|нет "; then
     hdr "ФЛАГИ ПОИСКА — где уже искали"
     printf '%s\n' "$OUT"
@@ -123,10 +140,12 @@ if asm:
 if cex:
     print("КОНТРПРИМЕРЫ (что охраняют):")
     for n, p, b in cex:
-        print(f"  {n}: охраняет {p[:70]} · ломает {b[:60]}")
+        print(f"  {n}: охраняет {(p or '')[:70]} · ломает {(b or '')[:60]}")
 conn.close()
 PY
 )"
+  RC=$?
+  [ "$RC" -eq 0 ] || SEARCH_FAILURES+=("knowledge.db: capability/assembly/counterexample SQL failed (code $RC)")
   if [ -n "$OUT" ]; then
     hdr "СТЫКОВКИ — входы и выходы"
     printf '%s\n' "$OUT"
@@ -138,8 +157,24 @@ fi
 SEARCHED+=("litreview (REFERENCES.md · *_CARDS.md · references.bib · pdfs/)")
 LIT="docs/routeB_bus/litreview"
 if [ -d "$LIT" ]; then
-  OUT="$(rg -in --max-count 3 "$Q" "$LIT"/REFERENCES.md "$LIT"/*.bib "$LIT"/ZOTERO_MASTER.md 2>/dev/null | utf8_head_chars 200)"
-  CARDS="$(rg -l -i "$Q" "$LIT"/*_CARDS.md 2>/dev/null | sed 's#.*/##')"
+  for required in REFERENCES.md references.bib ZOTERO_MASTER.md; do
+    [ -r "$LIT/$required" ] || SEARCH_FAILURES+=("litreview: required file unreadable: $required")
+  done
+  [ -d "$LIT/pdfs" ] && [ -r "$LIT/pdfs" ] || SEARCH_FAILURES+=("litreview: required pdfs directory unreadable")
+  OUT="$(rg -in --max-count 3 "$Q" "$LIT"/REFERENCES.md "$LIT"/*.bib "$LIT"/ZOTERO_MASTER.md 2>/dev/null)"
+  RC=$?
+  [ "$RC" -eq 0 ] || [ "$RC" -eq 1 ] || SEARCH_FAILURES+=("litreview: text search failed (code $RC)")
+  OUT="$(printf '%s\n' "$OUT" | utf8_head_chars 200)"
+  shopt -s nullglob
+  CARD_FILES=("$LIT"/*_CARDS.md)
+  shopt -u nullglob
+  CARDS=""
+  if [ "${#CARD_FILES[@]}" -gt 0 ]; then
+    CARDS="$(rg -l -i "$Q" "${CARD_FILES[@]}" 2>/dev/null)"
+    RC=$?
+    [ "$RC" -eq 0 ] || [ "$RC" -eq 1 ] || SEARCH_FAILURES+=("litreview: card search failed (code $RC)")
+    CARDS="$(printf '%s\n' "$CARDS" | sed 's#.*/##')"
+  fi
   PDFS="$(ls "$LIT"/pdfs/ 2>/dev/null | rg -i "$(printf '%s' "$Q" | tr ' ' '|')" | head -5)"
   if [ -n "$OUT$CARDS$PDFS" ]; then
     hdr "ЛИТЕРАТУРА"
@@ -148,6 +183,8 @@ if [ -d "$LIT" ]; then
     [ -n "$PDFS" ] && echo "  PDF на диске: $(printf '%s' "$PDFS" | tr '\n' ' ')"
     HITS=$((HITS + 1))
   fi
+else
+  SEARCH_FAILURES+=("litreview: required root missing")
 fi
 
 # ── 4. Lean: что уже объявлено (metadata index, не kernel verdict) ────────────
@@ -181,11 +218,15 @@ for name, path in rows:
 conn.close()
 PY
 )"
+  RC=$?
+  [ "$RC" -eq 0 ] || SEARCH_FAILURES+=("aristotle_proofs.db: declaration SQL failed (code $RC)")
   if [ -n "$OUT" ]; then
     hdr "LEAN — объявления в metadata index"
     printf '%s\n' "$OUT" | utf8_head_chars 150
     HITS=$((HITS + 1))
   fi
+else
+  SEARCH_FAILURES+=("aristotle_proofs.db: required database missing")
 fi
 
 # Живое дерево — на случай, если база отстала от диска
@@ -193,7 +234,11 @@ SEARCHED+=("Q3/Proofs/RouteB/*.lean (живое дерево)")
 FIRST_TERM="${Q%% *}"
 OUT="$(rg -in -F --max-count 2 -g '*.lean' "$FIRST_TERM" \
        q3.lean.aristotle/Q3/Proofs/RouteB/ \
-       --glob '!PrimeCert/**' 2>/dev/null | utf8_head_chars 160 | head -6)"
+       --glob '!PrimeCert/**' 2>/dev/null)"
+RC=$?
+[ -d q3.lean.aristotle/Q3/Proofs/RouteB/ ] || SEARCH_FAILURES+=("RouteB Lean: required root missing")
+[ "$RC" -eq 0 ] || [ "$RC" -eq 1 ] || SEARCH_FAILURES+=("RouteB Lean: fixed-string search failed (code $RC)")
+OUT="$(printf '%s\n' "$OUT" | utf8_head_chars 160 | head -6)"
 if [ -n "$OUT" ]; then
   hdr "LEAN — на диске сейчас"
   printf '%s\n' "$OUT"
@@ -205,35 +250,67 @@ SEARCHED+=("specs/maps + GENEALOGY/Progress_Log/RECORDING_RULES/GLOSSARY/TOOLS")
 OUT="$(rg -l -i "$Q" specs_docs/ docs/routeB_bus/maps/ docs/Codex/ docs/CHAT_DIGESTS.md \
        docs/routeB_bus/MAP.md docs/GENEALOGY.md docs/Progress_Log.md \
        docs/RECORDING_RULES.md docs/GLOSSARY.md docs/cartographer/TOOLS.yaml \
-       2>/dev/null | head -12)"
+       2>/dev/null)"
+RC=$?
+for required in specs_docs docs/routeB_bus/maps docs/Codex; do
+  [ -d "$required" ] && [ -r "$required" ] || SEARCH_FAILURES+=("specs/maps: required root unreadable: $required")
+done
+for required in docs/CHAT_DIGESTS.md docs/routeB_bus/MAP.md docs/GENEALOGY.md docs/Progress_Log.md docs/RECORDING_RULES.md docs/GLOSSARY.md docs/cartographer/TOOLS.yaml; do
+  [ -r "$required" ] || SEARCH_FAILURES+=("specs/maps: required file unreadable: $required")
+done
+[ "$RC" -eq 0 ] || [ "$RC" -eq 1 ] || SEARCH_FAILURES+=("specs/maps: search failed (code $RC)")
+OUT="$(printf '%s\n' "$OUT" | head -12)"
 if [ -n "$OUT" ]; then
   hdr "СПЕКИ, КАРТЫ И ПАМЯТЬ РАЗВИЛОК"
   printf '%s\n' "$OUT" | sed 's/^/  /'
   HITS=$((HITS + 1))
 fi
 
-# ── 6. Семантический fallback / обязательный deep-layer ──────────────────────
-# Он заметно дороже точных индексов, поэтому запускается только когда они пусты.
-# Но без него нельзя честно произносить «не найдено нигде»: имя может быть неизвестно,
-# а нужное свойство описано другими словами.
-if [ "$HITS" -eq 0 ] || [ "$DEEP" -eq 1 ]; then
-  SEARCHED+=("q3_docs (semantic fallback через research_oracle.py)")
-  ORACLE_PY="${Q3_RESEARCH_ORACLE_PY:-scripts/research_oracle.py}"
-  OUT="$(python3 "$ORACLE_PY" query "$Q" -c q3_docs 2>&1)"
+# ── 6. Семантический индекс: один search; в deep ещё один vsearch ────────────
+SEARCHED+=("q3_docs (bounded qmd search через research_oracle.py)")
+ORACLE_PY="${Q3_RESEARCH_ORACLE_PY:-scripts/research_oracle.py}"
+OUT="$(python3 "$ORACLE_PY" query "$Q" -c q3_docs --mode search --budget-seconds 3 2>&1)"
+RC=$?
+if [ "$RC" -ne 0 ]; then
+  SEARCH_FAILURES+=("q3_docs: qmd search failed (code $RC)")
+elif printf '%s' "$OUT" | grep -q '"file"'; then
+  hdr "СЕМАНТИЧЕСКИЙ ИНДЕКС q3_docs — search-кандидаты"
+  printf '%s\n' "$OUT" | head -60
+  HITS=$((HITS + 1))
+fi
+
+if [ "$DEEP" -eq 1 ]; then
+  SEARCHED+=("q3_docs (bounded qmd vsearch через research_oracle.py)")
+  OUT="$(python3 "$ORACLE_PY" query "$Q" -c q3_docs --mode vsearch --budget-seconds 15 2>&1)"
   RC=$?
   if [ "$RC" -ne 0 ]; then
-    SEARCH_FAILURES+=("q3_docs: semantic query failed (code $RC)")
+    SEARCH_FAILURES+=("q3_docs: qmd vsearch failed (code $RC)")
   elif printf '%s' "$OUT" | grep -q '"file"'; then
-    hdr "СЕМАНТИЧЕСКИЙ ИНДЕКС q3_docs — кандидаты"
+    hdr "СЕМАНТИЧЕСКИЙ ИНДЕКС q3_docs — vsearch-кандидаты"
     printf '%s\n' "$OUT" | head -60
     HITS=$((HITS + 1))
+  fi
+
+  # Read-only validation only. Never refresh or write the index from ask.sh.
+  FRESHNESS="$(python3 -c 'from orchestrator.spine import validate_semantic_index; validate_semantic_index(); print("PASS")' 2>&1)"
+  RC=$?
+  if [ "$RC" -ne 0 ] || [ "$FRESHNESS" != "PASS" ]; then
+    SEARCH_FAILURES+=("q3_docs: semantic-index freshness validation failed")
+  else
+    SEARCHED+=("q3_docs semantic-index receipt/corpus/machine/live identity (fresh)")
   fi
 fi
 
 # Enabled external bases are part of the shelf, not an optional web-search layer.
 # A local hit never licenses skipping them: otherwise "not found anywhere" has a
 # hidden denominator and can be false on a registered base.
-OUT="$(python3 scripts/search_external_lean.py "$Q" 2>&1)"
+if [ -n "$EXTERNAL_RECEIPT" ]; then
+  OUT="$(python3 scripts/research_oracle.py validate-external-receipt "$Q" "$EXTERNAL_RECEIPT" 2>&1)"
+else
+  EXTERNAL_BUDGET=3
+  [ "$DEEP" -eq 1 ] && EXTERNAL_BUDGET=15
+  OUT="$(python3 scripts/search_external_lean.py "$Q" --budget-seconds "$EXTERNAL_BUDGET" 2>&1)"
+fi
 RC=$?
 if [ "$RC" -ne 0 ]; then
   SEARCHED+=("all enabled external Lean bases (INCOMPLETE registered search)")
@@ -254,7 +331,13 @@ data = json.loads(text[start:])
 print(",".join(data.get("bases_queried", [])))
 ' 2>/dev/null)"
   SEARCHED+=("all enabled external Lean bases (${QUERIED_BASES:-none}; registered read-only search)")
-  if printf '%s' "$OUT" | grep -q '"base_id"'; then
+  EXTERNAL_MATCH_COUNT="$(printf '%s' "$OUT" | python3 -c '
+import json, sys
+text = sys.stdin.read()
+start = text.find("{")
+print(len(json.loads(text[start:]).get("matches", [])))
+' 2>/dev/null)"
+  if [ "${EXTERNAL_MATCH_COUNT:-0}" -gt 0 ] 2>/dev/null; then
     hdr "ВНЕШНИЕ LEAN-БАЗЫ — точные/текстовые кандидаты"
     printf '%s\n' "$OUT" | head -100
     HITS=$((HITS + 1))
@@ -268,18 +351,17 @@ if [ "${#SEARCH_FAILURES[@]}" -gt 0 ]; then
   echo
   for failure in "${SEARCH_FAILURES[@]}"; do echo "  · $failure"; done
   echo
-  echo "Внешний поиск и создание замены пока не оправданы: сначала почини упавший слой."
+  echo "ASK_STATUS: INCOMPLETE"
   exit 2
 elif [ "$HITS" -eq 0 ]; then
-  echo "НЕ НАЙДЕНО НИГДЕ — '$Q'"
-  echo
-  echo "Просмотрены все хранилища:"
-  for s in "${SEARCHED[@]}"; do echo "  · $s"; done
-  echo
-  echo "Только теперь внешний поиск оправдан. Что найдёшь — занеси обратно:"
-  echo "  литература → docs/routeB_bus/litreview/ (REFERENCES.md + references.bib + pdfs/)"
-  echo "  знание     → ./orchestrator/kb.py add …"
-  echo "  слова поиска → блок SEARCH_FLAGS в шапке answer.md"
+  if [ "$DEEP" -eq 0 ]; then
+    echo "Быстрый поиск завершён без кандидатов; для вывода о полке требуется --deep."
+    echo "ASK_STATUS: INCOMPLETE_FAST_REQUIRES_DEEP"
+    exit 2
+  fi
+  echo "Полная зарегистрированная полка завершена без кандидатов."
+  echo "SHELF_ABSENCE — только отсутствие совпадения на проверенных полках; не глобальное семантическое отсутствие."
+  echo "ASK_STATUS: SHELF_ABSENCE"
   exit 1
 else
   echo "Найдено в $HITS хранилищах из ${#SEARCHED[@]}."
@@ -289,5 +371,6 @@ else
   echo
   echo "Совпадения — кандидаты. Для вопроса «подходит ли теорема точной цели» запусти:"
   echo "  python3 scripts/supplier_preflight.py --query '$Q' --candidate <имя> --target <имя>"
+  echo "ASK_STATUS: HITS"
   exit 0
 fi

@@ -603,14 +603,27 @@ tool_families:
         mode: READ_ONLY
         path: ask.sh
         invoke: ./ask.sh "<terms>"
-        alternatives: [./ask.sh --deep "<terms>"]
+        alternatives:
+          - ./ask.sh --deep "<terms>"
+          - ./ask.sh --deep --external-receipt <mode-0600-path-outside-repo> "<terms>"
         trigger: ABSENCE_OR_NEW_OBJECT and before external review/search.
         writes: false
         approval: NONE
-        authority: CASCADED_MULTI_SURFACE_RETRIEVAL_WITH_COMPLETE_ENABLED_EXTERNAL_LEAN_DENOMINATOR
+        authority: SCOPED_FAST_OR_DEEP_SHELF_RETRIEVAL_NOT_GLOBAL_ABSENCE
         records_to: stdout
-        note: Every mode queries every enabled external Lean base. Deep mode also forces q3_docs after exact hits. Semantic and external matches are candidates only; any failed enabled layer forbids an absence claim.
-        last_verified: 2026-08-14
+        outcomes: [HITS, INCOMPLETE_FAST_REQUIRES_DEEP, SHELF_ABSENCE, INCOMPLETE]
+        note: >-
+          Fast runs every exact shelf, one qmd search, and one 3-second external search.
+          A fast miss is INCOMPLETE_FAST_REQUIRES_DEEP. Deep additionally runs one qmd
+          vsearch, validates the machine-local semantic receipt/corpus/live collection
+          read-only, and uses one 15-second external search or one exact secure supplied
+          receipt. Only an all-green deep miss is SHELF_ABSENCE; it authorizes neither
+          creation nor consumption and is never rendered as global semantic absence.
+        failure_mode: >-
+          Any missing/corrupt required shelf, undocumented command failure, stale or
+          foreign semantic receipt, external denominator drift, malformed receipt, or
+          timeout yields INCOMPLETE even when another layer returned candidates.
+        last_verified: 2026-09-02 Phase C contract
 
       - id: supplier-preflight
         status: ENABLED
@@ -620,6 +633,7 @@ tool_families:
         invoke: >-
           python3 scripts/supplier_preflight.py --query "<terms>"
           --candidate <supplier-declaration> --target <exact-target-declaration>
+          --candidate-provenance SOURCE_DECLARED
         alternatives:
           - python3 scripts/supplier_preflight.py --query "<terms>"
         trigger: ABSENCE_OR_NEW_OBJECT and immediately after an exact goal target is understood.
@@ -634,12 +648,13 @@ tool_families:
           launches envdump implicitly; it prints the exact regeneration command. Exact absence
           also requires a miss in Lean core, every local dependency package, and the full Q3 source tree; a source-only
           declaration remains CANDIDATE_ONLY rather than being promoted without EnvDump properties.
-        last_verified: >-
-          2026-08-14 Linux live plants: identical Schur-root theorem EXACT_FIT;
-          neighbouring strict-order theorem REJECTED against the equality target;
-          guaranteed missing declaration COMPLETE_ABSENCE; zeta23-only exact declaration
-          FOREIGN_UNVERIFIED. Every plant queried the enabled zeta23 denominator and used a
-          fresh complete 238-module local environment.
+          COMPLETE_ABSENCE additionally requires a precise SOURCE_DECLARED candidate and
+          SOURCE_DECLARATION_ABSENCE across the fresh local environment/source closure and
+          every enabled external base. Omitted, unknown, or GENERATED_OR_DERIVED provenance
+          yields INCOMPLETE because source-text absence cannot exclude elaborator-generated
+          declarations. COMPLETE_ABSENCE may support a later creation decision but never
+          current consumption; only EXACT_FIT clears the exact-fit reuse gate.
+        last_verified: 2026-09-02 Phase C contract
 
       - id: kb-query
         status: ENABLED
@@ -726,6 +741,9 @@ tool_families:
         approval: NONE_FOR_QUERY_EXACT_SCOPE_FOR_WRITE_VARIANTS
         authority: RETRIEVAL_ONLY
         records_to: stdout
+        budgets: >-
+          Query-path qmd search lock and command each have 3 seconds; qmd vsearch lock
+          and command each have 15 seconds. Query retries are zero.
         optional_corpus:
           id: erdos_minimum_overlap
           builder: q3.lean.aristotle/scripts/refresh_erdos_overlap_kb.py
@@ -758,6 +776,15 @@ tool_families:
         approval: SEMANTIC_INDEX_REFRESH_SCOPE
         authority: LIVE_FIXED_PLANTS_DYNAMIC_GOAL_QUERIES_AND_EXTERNAL_LEAN_CANDIDATE_RECEIPTS
         records_to: q3.lean.aristotle/.qmd_cache/semantic_index_receipt.json
+        external_search_contract: >-
+          scripts/search_external_lean.py performs one monotonic-budget process over the
+          complete enabled-base denominator. Its q3_external_lean_search.v2 receipt binds
+          shelf query and optional exact candidate separately, candidate provenance,
+          registry identity, canonical roots, pre/post content identities, bounded shelf
+          matches, and an uncapped exact explicit-source declaration lookup. Git roots bind
+          HEAD/tree plus clean tracked/index/untracked Lean state and a full Lean-byte
+          manifest; non-git roots bind a sorted path/full-byte manifest. Symlinks, mutation,
+          timeout, missing bases, or denominator mismatch are INCOMPLETE.
         last_verified: 2026-08-13
 
       - id: goal-event-writer

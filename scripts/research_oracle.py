@@ -8,7 +8,10 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-from qmd_ops import qmd_lock, run_qmd
+try:
+    from scripts.qmd_ops import qmd_lock, run_qmd
+except ModuleNotFoundError:  # direct execution from scripts/
+    from qmd_ops import qmd_lock, run_qmd
 
 ROOT = Path(__file__).resolve().parents[1] / "q3.lean.aristotle"
 ACTIVE_DIR = ROOT / "ACTIVE"
@@ -51,10 +54,22 @@ def resolve_default(path: Path, legacy: Path) -> Path:
     return path
 
 
-def run(cmd: list[str], cwd: Path | None = None) -> str:
+def run(
+    cmd: list[str],
+    cwd: Path | None = None,
+    *,
+    qmd_timeout_s: float | None = None,
+) -> str:
     if cmd and Path(cmd[0]).name == "qmd":
         try:
-            return run_qmd(cmd, cwd=cwd)
+            if qmd_timeout_s is None:
+                return run_qmd(cmd, cwd=cwd)
+            return run_qmd(
+                cmd,
+                cwd=cwd,
+                retries=0,
+                timeout_s=qmd_timeout_s,
+            )
         except (RuntimeError, TimeoutError) as exc:
             raise SystemExit(str(exc)) from exc
     proc = subprocess.run(cmd, cwd=cwd, capture_output=True, text=True)
@@ -128,6 +143,7 @@ def run_query_mode(
     index: str | None,
     full: bool,
     line_numbers: bool,
+    budget_seconds: float | None = None,
 ) -> list[dict]:
     cmd = build_query_cmd(
         qmd,
@@ -140,8 +156,9 @@ def run_query_mode(
         full=full,
         line_numbers=line_numbers,
     )
-    with qmd_lock(f"research_oracle_{mode}"):
-        raw = run(cmd)
+    lock_timeout = 300.0 if budget_seconds is None else budget_seconds
+    with qmd_lock(f"research_oracle_{mode}", timeout_s=lock_timeout):
+        raw = run(cmd, qmd_timeout_s=budget_seconds)
     return normalize_results(raw)
 
 
@@ -210,6 +227,11 @@ def cmd_query(args, cfg) -> int:
         backend_errors: list[str] = []
         for backend in ("search", "vsearch"):
             try:
+                backend_budget = (
+                    args.budget_seconds
+                    if args.budget_seconds is not None
+                    else (3.0 if backend == "search" else 15.0)
+                )
                 result_sets[backend] = run_query_mode(
                     qmd,
                     backend,
@@ -220,6 +242,7 @@ def cmd_query(args, cfg) -> int:
                     index=index,
                     full=args.full,
                     line_numbers=args.line_numbers,
+                    budget_seconds=backend_budget,
                 )
             except SystemExit as exc:
                 backend_errors.append(f"{backend}: {exc}")
@@ -235,6 +258,11 @@ def cmd_query(args, cfg) -> int:
     else:
         qmd_mode = "query" if mode == "qmd-query" else mode
         try:
+            mode_budget = (
+                args.budget_seconds
+                if args.budget_seconds is not None
+                else (15.0 if qmd_mode == "vsearch" else 3.0)
+            )
             facts = run_query_mode(
                 qmd,
                 qmd_mode,
@@ -245,6 +273,7 @@ def cmd_query(args, cfg) -> int:
                 index=index,
                 full=args.full,
                 line_numbers=args.line_numbers,
+                budget_seconds=mode_budget,
             )
         except TimeoutError as exc:
             raise SystemExit(str(exc)) from exc
@@ -349,6 +378,35 @@ def cmd_add_speculative(args, cfg) -> int:
     return 0
 
 
+def cmd_validate_external_receipt(args, _cfg) -> int:
+    """Validate a supplied external receipt without launching another search."""
+    try:
+        from scripts import search_external_lean
+    except ModuleNotFoundError:
+        import search_external_lean  # type: ignore[no-redef]
+
+    payload, errors = search_external_lean.load_secure_receipt(
+        Path(args.receipt), expected_query=args.query
+    )
+    if errors or payload is None:
+        print(
+            json.dumps(
+                {
+                    "schema": search_external_lean.SCHEMA,
+                    "query": args.query,
+                    "errors": errors,
+                    "boundary": search_external_lean.INCOMPLETE_BOUNDARY,
+                },
+                ensure_ascii=False,
+                indent=2,
+                sort_keys=True,
+            )
+        )
+        return 2
+    print(json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True))
+    return 0
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", default=str(DEFAULT_CONFIG))
@@ -376,6 +434,11 @@ def main() -> int:
     p_query.add_argument("--line-numbers", action="store_true")
     p_query.add_argument("--raw", action="store_true", help="print raw qmd JSON")
     p_query.add_argument("--out", help="write parsed results to file")
+    p_query.add_argument(
+        "--budget-seconds",
+        type=float,
+        help="separate lock and command budget; query retries are always zero",
+    )
     p_query.set_defaults(func=cmd_query)
 
     p_add = sub.add_parser("add-speculative")
@@ -391,6 +454,11 @@ def main() -> int:
     p_add.add_argument("--equiv", help="path to EQUIVALENCE_GRAPH.json")
     p_add.add_argument("--dry-run", action="store_true")
     p_add.set_defaults(func=cmd_add_speculative)
+
+    p_receipt = sub.add_parser("validate-external-receipt")
+    p_receipt.add_argument("query")
+    p_receipt.add_argument("receipt")
+    p_receipt.set_defaults(func=cmd_validate_external_receipt)
 
     args = ap.parse_args()
     cfg_path = resolve_default(Path(args.config), ACTIVE_DIR / "RESEARCH_ORACLE.json")

@@ -41,8 +41,21 @@ SUBPROCESS_MAX_PER_RUN = 10
 GIT_MAX_PER_RUN = 5
 OPENED_REPO_PATHS_MAX_PER_RUN = 500
 T = TypeVar("T")
-EXPECTED_LIVE_FATALS = frozenset({"STARTUP_SOURCE_COMMIT_PIN_DRIFT"})
-REQUIRED_BLOCKED_FEATURES = frozenset({"RUN", "DISPATCH", "MINT", "STATE_WRITE"})
+EXPECTED_GOAL = "docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md"
+EXPECTED_NODE = "REALZERO_GROUND_DIAGONAL_TO_XI"
+EXPECTED_SOURCE_PIN = "f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7"
+EXPECTED_LIVE_FATALS: frozenset[str] = frozenset()
+REQUIRED_BLOCKED_FEATURES = frozenset(
+    {
+        "BLOCKED_FEATURE:EXACT_THEOREM_EDGE_UNSELECTED",
+        "BLOCKED_FEATURE:EXACT_CONSUMER_EDGE_UNSELECTED",
+        "RUN",
+        "DISPATCH",
+        "MINT",
+        "STATE_WRITE",
+        "RUN_CLOSE_NODE",
+    }
+)
 FORBIDDEN_RUNTIME_COMMANDS = frozenset(
     {"lake", "lean", "session_start.sh", "spine.py", "three_body_loop.py"}
 )
@@ -52,7 +65,9 @@ TRACE_SENTINEL_PATHS = (
     "orchestrator/state/NODE_REGISTRY_V10.json",
     "docs/CODEX_CONTROL.md",
 )
+OPAQUE_BUS_SENTINEL_PATH = "docs/routeB_bus/.benchmark-opaque/deep/999_fake.goal.md"
 PHASE_A_CANDIDATE_PATHS = (
+    EXPECTED_GOAL,
     "orchestrator/workflow_runtime.py",
     "orchestrator/benchmarks/control_v10_benchmark.py",
     "orchestrator/startup_runtime.py",
@@ -80,8 +95,6 @@ COLD_STATIC_SPARSE_PATTERNS = (
     *("/" + relative for relative in COLD_REQUIRED_PATHS),
     "/docs/routeB_bus/*.goal.md",
     "/docs/routeB_bus/*.answer.md",
-    "/docs/routeB_bus/**/*.goal.md",
-    "/docs/routeB_bus/**/*.answer.md",
 )
 COLD_FORBIDDEN_ROOTS = ("docs/routeB_bus/litreview/pdfs",)
 
@@ -169,9 +182,9 @@ def _functional_plan_audit(plan: dict[str, Any]) -> dict[str, Any]:
         errors.append("SHADOW_V10_UNAVAILABLE")
     expected_fatal_values = sorted(EXPECTED_LIVE_FATALS)
     status = plan.get("status")
-    exact_live_fatal_status_pass = status == "FATAL"
+    exact_live_fatal_status_pass = status == "HOLD"
     if not exact_live_fatal_status_pass:
-        errors.append("PLAN_STATUS_NOT_EXPECTED_FATAL:" + str(status))
+        errors.append("PLAN_STATUS_NOT_EXPECTED_HOLD:" + str(status))
     expected_fatals = [
         item for item in hold_values if item in EXPECTED_LIVE_FATALS
     ]
@@ -198,6 +211,16 @@ def _functional_plan_audit(plan: dict[str, Any]) -> dict[str, Any]:
     )
     if not startup_honesty_state_pass:
         errors.append("PLAN_HONESTY_STATE_MISMATCH")
+    exact_selector_pass = (
+        isinstance(startup, dict)
+        and startup.get("selected_goal") == EXPECTED_GOAL
+        and startup.get("exact_node_pin") == EXPECTED_NODE
+        and startup.get("exact_source_pin") == EXPECTED_SOURCE_PIN
+        and startup.get("exact_theorem_pin") is None
+        and startup.get("exact_consumer_pin") is None
+    )
+    if not exact_selector_pass:
+        errors.append("PLAN_EXACT_SELECTOR_MISMATCH")
     legacy_v9_authority_unchanged_pass = (
         plan.get("legacy_v9_authority_unchanged") is True
     )
@@ -215,6 +238,7 @@ def _functional_plan_audit(plan: dict[str, Any]) -> dict[str, Any]:
         "exact_live_fatal_set_pass": exact_live_fatal_set_pass,
         "startup_fatal_set_pass": startup_fatal_set_pass,
         "startup_honesty_state_pass": startup_honesty_state_pass,
+        "exact_selector_pass": exact_selector_pass,
         "legacy_v9_authority_unchanged_pass": (
             legacy_v9_authority_unchanged_pass
         ),
@@ -749,7 +773,18 @@ def _canonical_sparse_paths(extra_sparse_paths: tuple[str, ...]) -> tuple[str, .
 def _physical_goal_source_paths(repo: Path) -> tuple[str, ...]:
     sources: list[str] = []
     bus = repo / Path(*startup_runtime.BUS_REL.parts)
-    for goal in sorted(bus.rglob("*.goal.md")):
+    try:
+        with os.scandir(bus) as iterator:
+            goals = sorted(
+                Path(entry.path)
+                for entry in iterator
+                if not entry.is_symlink()
+                and entry.is_file(follow_symlinks=False)
+                and entry.name.endswith(".goal.md")
+            )
+    except OSError:
+        return ()
+    for goal in goals:
         answer = goal.with_name(goal.name.removesuffix(".goal.md") + ".answer.md")
         if answer.is_file():
             continue
@@ -763,6 +798,21 @@ def _physical_goal_source_paths(repo: Path) -> tuple[str, ...]:
         if isinstance(source, str) and source:
             sources.append(source)
     return tuple(dict.fromkeys(sources))
+
+
+def _plant_production_shape(repo: Path) -> None:
+    """Add stable ignored/nested and collapsed-untracked benchmark plants."""
+
+    opaque = repo / OPAQUE_BUS_SENTINEL_PATH
+    opaque.parent.mkdir(parents=True, exist_ok=True)
+    opaque.write_text("nested bus sentinel: never authoritative\n", encoding="utf-8")
+    exclude = repo / ".git/info/exclude"
+    exclude.parent.mkdir(parents=True, exist_ok=True)
+    with exclude.open("a", encoding="utf-8") as handle:
+        handle.write("\n/docs/routeB_bus/.benchmark-opaque/\n")
+    collapsed = repo / ".benchmark-untracked/nested/sentinel.txt"
+    collapsed.parent.mkdir(parents=True, exist_ok=True)
+    collapsed.write_text("collapsed untracked parent plant\n", encoding="utf-8")
 
 
 def _active_current_task_paths(repo: Path) -> tuple[str, ...]:
@@ -951,6 +1001,7 @@ def _candidate_checkout(repo: Path, destination: Path) -> Path:
         check=True,
         capture_output=True,
     )
+    _plant_production_shape(checkout)
     return checkout
 
 
@@ -1402,6 +1453,9 @@ def _analyze_strace(
         relative: os.path.abspath(repo / relative) in opened
         for relative in TRACE_SENTINEL_PATHS
     }
+    opaque_bus_sentinel_not_opened = (
+        os.path.abspath(repo / OPAQUE_BUS_SENTINEL_PATH) not in opened
+    )
     runtime_execve_argv = list(successful_execve_argv)
     if expected_root_argv in runtime_execve_argv:
         runtime_execve_argv.remove(expected_root_argv)
@@ -1424,6 +1478,7 @@ def _analyze_strace(
             set(sentinels_before) == set(TRACE_SENTINEL_PATHS)
             and set(sentinels_after) == set(TRACE_SENTINEL_PATHS)
         ),
+        "opaque_bus_sentinel_not_opened": opaque_bus_sentinel_not_opened,
     }
     trace_coverage_pass = all(trace_coverage.values())
     if not trace_coverage_pass:
@@ -1452,6 +1507,7 @@ def _analyze_strace(
         "write_events": write_events,
         "ignored_repo_paths_in_scope": True,
         "sentinel_trace_observed": sentinel_observed,
+        "opaque_bus_sentinel_not_opened": opaque_bus_sentinel_not_opened,
         "sentinels_before": sentinels_before,
         "sentinels_after": sentinels_after,
         "sentinels_unchanged": sentinels_unchanged,
@@ -1626,6 +1682,7 @@ def _combine_runtime_sample(
         "exact_live_fatal_set_pass",
         "startup_fatal_set_pass",
         "startup_honesty_state_pass",
+        "exact_selector_pass",
         "legacy_v9_authority_unchanged_pass",
         "px_rh_claim_not_made_pass",
     )
@@ -1855,6 +1912,7 @@ def _cold_once(repo: Path, temp_root: Path) -> dict[str, Any]:
         if startup_dynamic_paths
         else _isolated_checkout(repo, production_destination)
     )
+    _plant_production_shape(production_checkout)
     production = _run_production_cli(
         production_checkout,
         _runtime_environment(temp_root / "production-environment"),
@@ -1869,6 +1927,7 @@ def _cold_once(repo: Path, temp_root: Path) -> dict[str, Any]:
         if startup_dynamic_paths
         else _isolated_checkout(repo, audited_destination)
     )
+    _plant_production_shape(audited_checkout)
     direct = _run_direct_instrumentation(
         audited_checkout,
         _runtime_environment(temp_root / "direct-environment"),
@@ -2341,6 +2400,10 @@ def benchmark(repo: Path, *, warm_runs: int, cold_runs: int) -> dict[str, Any]:
         row["runtime_acceptance"]["startup_honesty_state_pass"]
         for row in [*warm, *cold]
     )
+    exact_selector_pass = all(
+        row["runtime_acceptance"]["exact_selector_pass"]
+        for row in [*warm, *cold]
+    )
     legacy_v9_authority_unchanged_pass = all(
         row["runtime_acceptance"]["legacy_v9_authority_unchanged_pass"]
         for row in [*warm, *cold]
@@ -2382,6 +2445,7 @@ def benchmark(repo: Path, *, warm_runs: int, cold_runs: int) -> dict[str, Any]:
         "exact_live_fatal_set_pass": exact_live_fatal_set_pass,
         "startup_fatal_set_pass": startup_fatal_set_pass,
         "startup_honesty_state_pass": startup_honesty_state_pass,
+        "exact_goal_058_selector_pass": exact_selector_pass,
         "legacy_v9_authority_unchanged_pass": (
             legacy_v9_authority_unchanged_pass
         ),
@@ -2534,11 +2598,16 @@ def main() -> int:
     args = parser.parse_args()
     repo = args.root.resolve()
     os.environ["GIT_OPTIONAL_LOCKS"] = "0"
-    result = (
-        _instrumented_once(repo)
-        if args.single
-        else benchmark(repo, warm_runs=args.warm_runs, cold_runs=args.cold_runs)
-    )
+    if args.single:
+        with tempfile.TemporaryDirectory(
+            prefix="q3-control-v10-smoke-"
+        ) as tmp:
+            candidate = _candidate_checkout(repo, Path(tmp) / "candidate")
+            result = _instrumented_once(candidate)
+    else:
+        result = benchmark(
+            repo, warm_runs=args.warm_runs, cold_runs=args.cold_runs
+        )
     print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
     if args.single:
         single_pass = (

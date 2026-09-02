@@ -137,6 +137,50 @@ def dependency_contract() -> dict[str, object]:
     }
 
 
+def supplier_payload(
+    status: str, *, candidate_provenance: str = "SOURCE_DECLARED"
+) -> dict[str, object]:
+    payload = {field: None for field in workflow_runtime.SUPPLIER_PAYLOAD_FIELDS}
+    payload.update(
+        {
+            "schema": workflow_runtime.SUPPLIER_PREFLIGHT_SCHEMA,
+            "query": "supplier",
+            "candidate_requested": "Q3.RouteB.candidate",
+            "target_requested": "Q3.RouteB.target",
+            "candidate_provenance": candidate_provenance,
+            "shelf": {"status": "HITS", "returncode": 0},
+            "external_lean": {"schema": "q3_external_lean_search.v2"},
+            "environment": {"status": "PASS"},
+            "status": status,
+            "reason": "plant",
+            "boundary": "candidate-is-not-proof",
+            "candidate": {},
+            "comparison": {"status": status} if status == "EXACT_FIT" else None,
+            "foreign_candidate": [],
+            "source_candidates": [],
+            "prose_candidates_present": False,
+            "source_absence_scope": None,
+        }
+    )
+    if status == "COMPLETE_ABSENCE":
+        payload["reason"] = "SOURCE_DECLARATION_ABSENCE: plant"
+        payload["source_absence_scope"] = "SOURCE_DECLARATION_ABSENCE"
+    return payload
+
+
+def supplier_receipt(status: str) -> dict[str, object]:
+    return {
+        "label": "supplier-preflight",
+        "command": ["supplier"],
+        "exit": workflow_runtime.SUPPLIER_STATUS_EXIT[status],
+        "duration_ms": 1,
+        "output_sha256": "a" * 64,
+        "output_tail": "plant",
+        "payload": supplier_payload(status),
+        "validation_error": None,
+    }
+
+
 def shadow_snapshot(**overrides: object) -> StartupSnapshot:
     fields: dict[str, object] = {
         "schema": "q3_startup_snapshot.v10.shadow.v1",
@@ -1134,6 +1178,7 @@ class WorkflowRuntimePlants(unittest.TestCase):
                 "schema": workflow_runtime.DEPENDENCY_CONTRACT_RECEIPT_SCHEMA,
                 "candidate": "Q3.RouteB.candidate",
                 "target": "Q3.RouteB.target",
+                "candidate_provenance": "SOURCE_DECLARED",
                 "contract": dependency_contract(),
             }) + "\n", encoding="utf-8")
             def ok(label: str) -> dict[str, object]:
@@ -1147,6 +1192,11 @@ class WorkflowRuntimePlants(unittest.TestCase):
                     "command_receipt",
                     side_effect=lambda _repo, _command, label: ok(label),
                 ),
+                mock.patch.object(
+                    workflow_runtime,
+                    "_supplier_preflight_receipt",
+                    return_value=supplier_receipt("EXACT_FIT"),
+                ) as supplier,
             ):
                 result = workflow_runtime.execute_close_node(
                     repo,
@@ -1163,6 +1213,99 @@ class WorkflowRuntimePlants(unittest.TestCase):
                 )
         self.assertEqual(result["status"], "CLOSED_NODE")
         self.assertEqual(result["receipts"][1]["label"], "consumer-first-contract")
+        supplier.assert_called_once_with(
+            repo,
+            query="supplier",
+            candidate="Q3.RouteB.candidate",
+            target="Q3.RouteB.target",
+            candidate_provenance="SOURCE_DECLARED",
+        )
+
+    def test_only_exact_fit_clears_supplier_gate(self) -> None:
+        compiled = plan("SELECT_EXACT_GOAL")
+        compiled["logical_plan"]["startup_receipt"] = {
+            "label": "session-start", "exit": 0, "output_tail": "green"
+        }
+        for status in workflow_runtime.SUPPLIER_STATUS_EXIT:
+            with self.subTest(status=status), tempfile.TemporaryDirectory() as tmp:
+                repo = Path(tmp)
+                receipt = repo / "contract.json"
+                receipt.write_text(json.dumps({
+                    "schema": workflow_runtime.DEPENDENCY_CONTRACT_RECEIPT_SCHEMA,
+                    "candidate": "Q3.RouteB.candidate",
+                    "target": "Q3.RouteB.target",
+                    "candidate_provenance": "SOURCE_DECLARED",
+                    "contract": dependency_contract(),
+                }) + "\n", encoding="utf-8")
+                with (
+                    mock.patch.object(workflow_runtime, "_git", return_value=""),
+                    mock.patch.object(workflow_runtime, "_exists_at_head", return_value=True),
+                    mock.patch.object(
+                        workflow_runtime,
+                        "_supplier_preflight_receipt",
+                        return_value=supplier_receipt(status),
+                    ),
+                    mock.patch.object(
+                        workflow_runtime,
+                        "command_receipt",
+                        side_effect=lambda _repo, _command, label: {
+                            "label": label, "exit": 0, "output_tail": "ok"
+                        },
+                    ) as writer,
+                ):
+                    result = workflow_runtime.execute_close_node(
+                        repo,
+                        plan=compiled,
+                        owned_paths=["owned.md"],
+                        query="supplier",
+                        candidate="Q3.RouteB.candidate",
+                        target="Q3.RouteB.target",
+                        attempt_payload=Path("attempt.json"),
+                        insight_payload=None,
+                        run_kernel=False,
+                        protocol_out=None,
+                        dependency_contract_receipt=receipt,
+                    )
+                if status == "EXACT_FIT":
+                    self.assertEqual(result["status"], "CLOSED_NODE")
+                    self.assertEqual(writer.call_count, 2)
+                else:
+                    self.assertEqual(result["status"], "HOLD")
+                    self.assertIn(
+                        f"SUPPLIER_PREFLIGHT_NOT_EXACT_FIT:{status}",
+                        result["holds"],
+                    )
+                    writer.assert_not_called()
+
+    def test_supplier_output_parser_rejects_malformed_and_exit_mismatch(self) -> None:
+        malformed = subprocess.CompletedProcess(
+            args=["supplier"], returncode=0, stdout="{} trailing", stderr=""
+        )
+        with mock.patch.object(workflow_runtime.subprocess, "run", return_value=malformed):
+            result = workflow_runtime._supplier_preflight_receipt(
+                Path("/repo"),
+                query="supplier",
+                candidate="Q3.RouteB.candidate",
+                target="Q3.RouteB.target",
+                candidate_provenance="SOURCE_DECLARED",
+            )
+        self.assertIn("SUPPLIER_PREFLIGHT_OUTPUT_INVALID", result["validation_error"])
+
+        payload = supplier_payload("EXACT_FIT")
+        mismatch = subprocess.CompletedProcess(
+            args=["supplier"], returncode=2, stdout=json.dumps(payload), stderr=""
+        )
+        with mock.patch.object(workflow_runtime.subprocess, "run", return_value=mismatch):
+            result = workflow_runtime._supplier_preflight_receipt(
+                Path("/repo"),
+                query="supplier",
+                candidate="Q3.RouteB.candidate",
+                target="Q3.RouteB.target",
+                candidate_provenance="SOURCE_DECLARED",
+            )
+        self.assertEqual(
+            result["validation_error"], "SUPPLIER_PREFLIGHT_EXIT_STATUS_MISMATCH"
+        )
 
     def test_supplier_contract_receipt_binds_candidate_and_valid_contract(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -1172,6 +1315,7 @@ class WorkflowRuntimePlants(unittest.TestCase):
                 "schema": workflow_runtime.DEPENDENCY_CONTRACT_RECEIPT_SCHEMA,
                 "candidate": "wrong",
                 "target": "Q3.RouteB.target",
+                "candidate_provenance": "SOURCE_DECLARED",
                 "contract": dependency_contract(),
             }
             receipt.write_text(json.dumps(payload) + "\n", encoding="utf-8")
@@ -1206,15 +1350,20 @@ class ControlV10BenchmarkPlants(unittest.TestCase):
         payload: dict[str, object] = {
             "schema": workflow_runtime.SHADOW_PLAN_SCHEMA,
             "mode": "SHADOW_V10_READ_ONLY",
-            "status": "FATAL",
-            "holds": ["STARTUP_SOURCE_COMMIT_PIN_DRIFT"],
+            "status": "HOLD",
+            "holds": [],
             "blocked_features": [
                 {"feature": feature}
                 for feature in sorted(benchmark.REQUIRED_BLOCKED_FEATURES)
             ],
             "startup": {
-                "fatal_errors": ["STARTUP_SOURCE_COMMIT_PIN_DRIFT"],
+                "fatal_errors": [],
                 "honesty_state": "CHALLENGER_NOT_RH",
+                "selected_goal": benchmark.EXPECTED_GOAL,
+                "exact_node_pin": benchmark.EXPECTED_NODE,
+                "exact_source_pin": benchmark.EXPECTED_SOURCE_PIN,
+                "exact_theorem_pin": None,
+                "exact_consumer_pin": None,
             },
             "run_authorized": False,
             "writes_performed": False,
@@ -1431,15 +1580,12 @@ class ControlV10BenchmarkPlants(unittest.TestCase):
         self.assertFalse(unavailable["pass"])
         self.assertIn("SHADOW_V10_UNAVAILABLE", unavailable["errors"])
         self.assertTrue(expected["pass"])
-        self.assertEqual(
-            expected["expected_live_fatals"],
-            ["STARTUP_SOURCE_COMMIT_PIN_DRIFT"],
-        )
+        self.assertEqual(expected["expected_live_fatals"], [])
 
     def test_functional_audit_requires_exact_live_fatal_contract(self) -> None:
         for mutation in (
             {"status": "READY", "holds": []},
-            {"status": "HOLD", "holds": []},
+            {"status": "FATAL", "holds": []},
             {
                 "status": "FATAL",
                 "holds": [
@@ -1960,8 +2106,8 @@ class ControlV10BenchmarkPlants(unittest.TestCase):
         )
         self.assertIn("/docs/routeB_bus/*.goal.md", sparse_set)
         self.assertIn("/docs/routeB_bus/*.answer.md", sparse_set)
-        self.assertIn("/docs/routeB_bus/**/*.goal.md", sparse_set)
-        self.assertIn("/docs/routeB_bus/**/*.answer.md", sparse_set)
+        self.assertNotIn("/docs/routeB_bus/**/*.goal.md", sparse_set)
+        self.assertNotIn("/docs/routeB_bus/**/*.answer.md", sparse_set)
         self.assertIn("/" + source_relative, sparse_set)
         for relative in benchmark.COLD_REQUIRED_PATHS:
             self.assertIn("/" + relative, sparse_set)
@@ -2087,11 +2233,17 @@ class ControlV10BenchmarkPlants(unittest.TestCase):
             bus = repo / "docs/routeB_bus"
             bus.mkdir(parents=True)
             source_relative = "docs/routeB_bus/proshka/exact-source.md"
-            nested_goal = bus / "nested/058_fixture.goal.md"
-            nested_goal.parent.mkdir(parents=True)
-            nested_goal.write_text(
+            direct_goal = bus / "058_fixture.goal.md"
+            direct_goal.write_text(
                 "```yaml\nGOAL: 058\nSTATUS: OPEN\n"
                 f"SOURCE: {source_relative}\n```\n",
+                encoding="utf-8",
+            )
+            nested_goal = bus / "nested/059_ignored.goal.md"
+            nested_goal.parent.mkdir(parents=True)
+            nested_goal.write_text(
+                "```yaml\nGOAL: 059\nSTATUS: OPEN\n"
+                "SOURCE: docs/routeB_bus/proshka/ignored-nested.md\n```\n",
                 encoding="utf-8",
             )
             (bus / "057_answered.goal.md").write_text(
@@ -2235,6 +2387,7 @@ class ControlV10BenchmarkPlants(unittest.TestCase):
             mock.patch.object(
                 benchmark, "_combine_runtime_sample", return_value={}
             ),
+            mock.patch.object(benchmark, "_plant_production_shape"),
         ):
             result = benchmark._cold_once(Path("/source"), Path(tmp))
         self.assertEqual(
