@@ -1044,4 +1044,374 @@ theorem proposition59Curvature_eq_root_sum_add_tail (L : ℝ) (N : ℕ) (v : ℤ
 
 #print axioms proposition59Curvature_eq_root_sum_add_tail
 
+/-! ## Step 7 — `P59_CURVATURE_COMPACT_ENVELOPE`
+
+The Euler tail is bounded, never identified at a node.  Off the real axis the
+included factor `A z` is nonzero and can be cancelled honestly; the resulting
+inequality is a closed condition, so it extends to the whole plane by density
+of `{z | z.im ≠ 0}` — no locally uniform product limit is needed. -/
+
+private theorem norm_quadProduct_le_exp (c : Multiset ℂ) (z : ℂ) :
+    ‖(c.map (fun a : ℂ => 1 - a * z ^ 2)).prod‖ ≤
+      Real.exp (‖z‖ ^ 2 * (c.map (fun a : ℂ => ‖a‖)).sum) := by
+  induction c using Multiset.induction_on with
+  | empty => simp
+  | cons a t ih =>
+      rw [Multiset.map_cons, Multiset.prod_cons, Multiset.map_cons,
+        Multiset.sum_cons, norm_mul]
+      have hfac : ‖1 - a * z ^ 2‖ ≤ Real.exp (‖z‖ ^ 2 * ‖a‖) := by
+        have h1 : ‖1 - a * z ^ 2‖ ≤ 1 + ‖a‖ * ‖z‖ ^ 2 := by
+          calc ‖1 - a * z ^ 2‖ ≤ ‖(1 : ℂ)‖ + ‖a * z ^ 2‖ := norm_sub_le _ _
+            _ = 1 + ‖a‖ * ‖z‖ ^ 2 := by simp
+        refine h1.trans ?_
+        have := Real.add_one_le_exp (‖z‖ ^ 2 * ‖a‖)
+        nlinarith [Real.exp_pos (‖z‖ ^ 2 * ‖a‖)]
+      calc ‖1 - a * z ^ 2‖ * ‖(t.map (fun a : ℂ => 1 - a * z ^ 2)).prod‖
+          ≤ Real.exp (‖z‖ ^ 2 * ‖a‖) *
+              Real.exp (‖z‖ ^ 2 * (t.map (fun a : ℂ => ‖a‖)).sum) := by
+            exact mul_le_mul hfac ih (norm_nonneg _) (Real.exp_pos _).le
+        _ = Real.exp (‖z‖ ^ 2 * (‖a‖ + (t.map (fun a : ℂ => ‖a‖)).sum)) := by
+            rw [← Real.exp_add]
+            ring_nf
+
+private theorem proposition59_euler_tendsto
+    {L : ℝ} (hL : 0 < L) {z : ℂ} (hz : z ≠ 0) :
+    Filter.Tendsto
+      (fun n : ℕ => ∏ j ∈ Finset.range n,
+        (1 - ((proposition59Pole L ((j : ℤ) + 1)) ^ 2)⁻¹ * z ^ 2))
+      Filter.atTop (𝓝 ((L : ℂ)⁻¹ * proposition59PoleKernel L 0 z)) := by
+  have hLC : (L : ℂ) ≠ 0 := by exact_mod_cast hL.ne'
+  have hpi : (Real.pi : ℂ) ≠ 0 := by exact_mod_cast Real.pi_ne_zero
+  set w : ℂ := (L : ℂ) * z / (2 * (Real.pi : ℂ)) with hw
+  have hcoef : ∀ j : ℕ,
+      (1 : ℂ) - w ^ 2 / ((j : ℂ) + 1) ^ 2 =
+        1 - ((proposition59Pole L ((j : ℤ) + 1)) ^ 2)⁻¹ * z ^ 2 := by
+    intro j
+    have hj : ((j : ℂ) + 1) ≠ 0 := by
+      have hjc : ((j : ℂ) + 1) = ((j + 1 : ℕ) : ℂ) := by push_cast; ring
+      rw [hjc]
+      exact_mod_cast Nat.succ_ne_zero j
+    have hcast : ((((j : ℤ) + 1 : ℤ)) : ℂ) = (j : ℂ) + 1 := by push_cast; ring
+    rw [hw, proposition59Pole, hcast]
+    field_simp
+  have hbase := Complex.tendsto_euler_sin_prod w
+  have hconv : ∀ n : ℕ,
+      (Real.pi : ℂ) * w * ∏ j ∈ Finset.range n, ((1 : ℂ) - w ^ 2 / ((j : ℂ) + 1) ^ 2) =
+        ((L : ℂ) * z / 2) * ∏ j ∈ Finset.range n,
+          (1 - ((proposition59Pole L ((j : ℤ) + 1)) ^ 2)⁻¹ * z ^ 2) := by
+    intro n
+    rw [Finset.prod_congr rfl fun j _ => hcoef j]
+    congr 1
+    rw [hw]
+    field_simp
+  have hlim := hbase.congr hconv
+  have hpiw : (Real.pi : ℂ) * w = (L : ℂ) * z / 2 := by
+    rw [hw]; field_simp
+  rw [hpiw] at hlim
+  have hc : (L : ℂ) * z / 2 ≠ 0 := by
+    exact div_ne_zero (mul_ne_zero hLC hz) two_ne_zero
+  have hker : (L : ℂ)⁻¹ * proposition59PoleKernel L 0 z =
+      ((L : ℂ) * z / 2)⁻¹ * Complex.sin ((L : ℂ) * z / 2) := by
+    have hp0 : proposition59Pole L 0 = 0 := by simp [proposition59Pole]
+    rw [proposition59PoleKernel_eq_quotient hL.ne' 0 (by rw [hp0]; exact hz), hp0,
+      sub_zero, proposition59Numerator,
+      show z * (L : ℂ) / 2 = (L : ℂ) * z / 2 from by ring]
+    field_simp
+  have hfinal := hlim.const_mul (((L : ℂ) * z / 2)⁻¹)
+  rw [hker]
+  exact hfinal.congr fun n => inv_mul_cancel_left₀ hc _
+
+#print axioms norm_quadProduct_le_exp
+#print axioms proposition59_euler_tendsto
+
+private theorem prod_range_succ_eq_prod_Icc {M : Type*} [CommMonoid M]
+    (N : ℕ) (f : ℕ → M) :
+    ∏ j ∈ Finset.range N, f (j + 1) = ∏ k ∈ Finset.Icc 1 N, f k := by
+  induction N with
+  | zero => simp
+  | succ n ih =>
+      rw [Finset.prod_range_succ, ih,
+        Finset.prod_Icc_succ_top (by omega : 1 ≤ n + 1)]
+
+theorem proposition59Pole_ofReal (L : ℝ) (k : ℤ) :
+    proposition59Pole L k = ((2 * (k : ℝ) * Real.pi / L : ℝ) : ℂ) := by
+  simp [proposition59Pole]
+
+private theorem proposition59Pole_im (L : ℝ) (k : ℤ) :
+    (proposition59Pole L k).im = 0 := by
+  rw [proposition59Pole_ofReal]
+  simp
+
+private theorem norm_pole_sq_inv (L : ℝ) (k : ℤ) :
+    ‖((proposition59Pole L k) ^ 2)⁻¹‖ = ((2 * (k : ℝ) * Real.pi / L) ^ 2)⁻¹ := by
+  rw [proposition59Pole_ofReal, ← Complex.ofReal_pow, ← Complex.ofReal_inv,
+    Complex.norm_real, Real.norm_eq_abs, abs_of_nonneg (by positivity)]
+
+/-- The Euler head of the tail product equals the included-factor polynomial. -/
+private theorem prod_range_eq_includedPoly (L : ℝ) (N : ℕ) (z : ℂ) :
+    ∏ j ∈ Finset.range N,
+        (1 - ((proposition59Pole L ((j : ℤ) + 1)) ^ 2)⁻¹ * z ^ 2) =
+      (quadProductPoly (proposition59IncludedCoefficients L N)).eval z := by
+  rw [quadProductPoly_eval, proposition59IncludedCoefficients, Multiset.map_map]
+  rw [show ((Finset.Icc 1 N).val.map
+      ((fun a : ℂ => 1 - a * z ^ 2) ∘
+        fun k : ℕ => ((proposition59Pole L (k : ℤ)) ^ 2)⁻¹)).prod =
+      ∏ k ∈ Finset.Icc 1 N,
+        (1 - ((proposition59Pole L (k : ℤ)) ^ 2)⁻¹ * z ^ 2) from rfl]
+  rw [← prod_range_succ_eq_prod_Icc N
+    (fun k : ℕ => 1 - ((proposition59Pole L (k : ℤ)) ^ 2)⁻¹ * z ^ 2)]
+  refine Finset.prod_congr rfl fun j _ => ?_
+  norm_num
+
+/-- The Euler tail block is dominated by the `κ_F` tail sum. -/
+private theorem sum_Ico_norm_pole_sq_inv_le
+    {L : ℝ} (hL : 0 < L) (N n : ℕ) :
+    ∑ j ∈ Finset.Ico N n, ‖((proposition59Pole L ((j : ℤ) + 1)) ^ 2)⁻¹‖ ≤
+      L ^ 2 / (4 * Real.pi ^ 2) * proposition59TailZetaTwo N := by
+  have hpi : Real.pi ≠ 0 := Real.pi_ne_zero
+  have hterm : ∀ j : ℕ,
+      ‖((proposition59Pole L ((j : ℤ) + 1)) ^ 2)⁻¹‖ =
+        L ^ 2 / (4 * Real.pi ^ 2) * ((1 : ℝ) / ((j : ℝ) + 1) ^ 2) := by
+    intro j
+    rw [norm_pole_sq_inv]
+    have hcast : (((j : ℤ) + 1 : ℤ) : ℝ) = (j : ℝ) + 1 := by push_cast; ring
+    rw [hcast]
+    have hj : ((j : ℝ) + 1) ≠ 0 := by positivity
+    field_simp
+    ring
+  simp only [hterm, ← Finset.mul_sum]
+  refine mul_le_mul_of_nonneg_left ?_ (by positivity)
+  have hshift : ∑ j ∈ Finset.Ico N n, (1 : ℝ) / ((j : ℝ) + 1) ^ 2 =
+      ∑ m ∈ Finset.range (n - N), (1 : ℝ) / ((m : ℝ) + N + 1) ^ 2 := by
+    rw [Finset.sum_Ico_eq_sum_range]
+    refine Finset.sum_congr rfl fun m _ => ?_
+    push_cast
+    ring_nf
+  rw [hshift, proposition59TailZetaTwo]
+  exact (proposition59TailZetaTwo_hasSum N).summable.sum_le_tsum _
+    (fun m _ => by positivity)
+
+#print axioms prod_range_eq_includedPoly
+#print axioms sum_Ico_norm_pole_sq_inv_le
+
+private theorem norm_prod_one_sub_le_exp {ι : Type*} (s : Finset ι) (c : ι → ℂ) (z : ℂ) :
+    ‖∏ i ∈ s, (1 - c i * z ^ 2)‖ ≤ Real.exp (‖z‖ ^ 2 * ∑ i ∈ s, ‖c i‖) := by
+  have h1 : ∏ i ∈ s, (1 - c i * z ^ 2) =
+      ((s.val.map c).map (fun a : ℂ => 1 - a * z ^ 2)).prod := by
+    rw [Multiset.map_map]; rfl
+  have h2 : ((s.val.map c).map (fun a : ℂ => ‖a‖)).sum = ∑ i ∈ s, ‖c i‖ := by
+    rw [Multiset.map_map]; rfl
+  rw [h1, ← h2]
+  exact norm_quadProduct_le_exp _ z
+
+private theorem proposition59RootCoefficients_norm_sum
+    (L : ℝ) (N : ℕ) (v : ℤ → ℝ) :
+    ((proposition59RootCoefficients L N (fun k => (v k : ℂ))).map
+      (fun a : ℂ => ‖a‖)).sum =
+      ((positiveRootMultiset (proposition59CauchyNumerator L
+          (Finset.Icc (-(N : ℤ)) (N : ℤ)) (fun k => (v k : ℂ)))).map
+        (fun ρ : ℝ => 1 / ρ ^ 2)).sum := by
+  rw [proposition59RootCoefficients, Multiset.map_map]
+  refine congrArg Multiset.sum (Multiset.map_congr rfl fun ρ _ => ?_)
+  rw [Function.comp_apply, ← Complex.ofReal_pow, ← Complex.ofReal_inv,
+    Complex.norm_real, Real.norm_eq_abs, abs_of_nonneg (by positivity)]
+  rw [one_div]
+
+private theorem proposition59IncludedPoly_eval_ne_zero
+    {L : ℝ} (hL : 0 < L) (N : ℕ) {z : ℂ} (hzim : z.im ≠ 0) :
+    (quadProductPoly (proposition59IncludedCoefficients L N)).eval z ≠ 0 := by
+  rw [quadProductPoly_eval, proposition59IncludedCoefficients, Multiset.map_map]
+  rw [show ((Finset.Icc 1 N).val.map
+      ((fun a : ℂ => 1 - a * z ^ 2) ∘
+        fun k : ℕ => ((proposition59Pole L (k : ℤ)) ^ 2)⁻¹)).prod =
+      ∏ k ∈ Finset.Icc 1 N,
+        (1 - ((proposition59Pole L (k : ℤ)) ^ 2)⁻¹ * z ^ 2) from rfl]
+  refine Finset.prod_ne_zero_iff.mpr fun k hk => ?_
+  have hk1 : 1 ≤ k := (Finset.mem_Icc.mp hk).1
+  have hp0 : proposition59Pole L 0 = 0 := by simp [proposition59Pole]
+  have hxk : proposition59Pole L (k : ℤ) ≠ 0 := by
+    rw [← hp0]
+    exact proposition59Pole_ne hL.ne' (by omega : (k : ℤ) ≠ 0)
+  intro hzero
+  have hsq : z ^ 2 = (proposition59Pole L (k : ℤ)) ^ 2 := by
+    field_simp at hzero
+    linear_combination -hzero
+  have hfac : (z - proposition59Pole L (k : ℤ)) *
+      (z + proposition59Pole L (k : ℤ)) = 0 := by linear_combination hsq
+  rcases mul_eq_zero.mp hfac with h | h
+  · exact hzim (by rw [sub_eq_zero.mp h, proposition59Pole_im])
+  · have hz : z = -proposition59Pole L (k : ℤ) := by linear_combination h
+    rw [hz] at hzim
+    simp [proposition59Pole_im] at hzim
+
+private theorem proposition59_compact_envelope_offAxis
+    {L : ℝ} (hL : 0 < L) (N : ℕ) (v : ℤ → ℝ) (hv : ∀ k : ℤ, v (-k) = v k)
+    (hv0 : v 0 ≠ 0)
+    (hzeros : ZerosRealOn Set.univ
+      (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ))
+        (fun k => (v k : ℂ))))
+    {z : ℂ} (hzim : z.im ≠ 0) :
+    ‖proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ))
+        (fun k => (v k : ℂ)) z‖ ≤
+      ‖proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ))
+        (fun k => (v k : ℂ)) 0‖ *
+        Real.exp (proposition59Curvature L N v * ‖z‖ ^ 2) := by
+  have hLC : (L : ℂ) ≠ 0 := by exact_mod_cast hL.ne'
+  have hv0C : ((v 0 : ℝ) : ℂ) ≠ 0 := by exact_mod_cast hv0
+  have hvC : ∀ k : ℤ, ((v (-k) : ℝ) : ℂ) = ((v k : ℝ) : ℂ) := fun k => by rw [hv k]
+  have hz0 : z ≠ 0 := fun h => hzim (by rw [h]; simp)
+  set vC : ℤ → ℂ := fun k => (v k : ℂ) with hvCdef
+  set Fe : ℂ → ℂ :=
+    proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) vC with hFedef
+  set Ap : Polynomial ℂ :=
+    quadProductPoly (proposition59IncludedCoefficients L N) with hApdef
+  set Qc : Multiset ℂ := proposition59RootCoefficients L N vC with hQcdef
+  set SR : ℝ := ((positiveRootMultiset (proposition59CauchyNumerator L
+      (Finset.Icc (-(N : ℤ)) (N : ℤ)) vC)).map (fun ρ : ℝ => 1 / ρ ^ 2)).sum
+    with hSRdef
+  set KT : ℝ := L ^ 2 / (4 * Real.pi ^ 2) * proposition59TailZetaTwo N with hKTdef
+  have hAne : Ap.eval z ≠ 0 := proposition59IncludedPoly_eval_ne_zero hL N hzim
+  have hApos : 0 < ‖Ap.eval z‖ := norm_pos_iff.mpr hAne
+  -- the Euler head/tail split, bounded uniformly in the cut-off
+  have hpart : ∀ n : ℕ, N ≤ n →
+      ‖∏ j ∈ Finset.range n,
+          (1 - ((proposition59Pole L ((j : ℤ) + 1)) ^ 2)⁻¹ * z ^ 2)‖ ≤
+        ‖Ap.eval z‖ * Real.exp (‖z‖ ^ 2 * KT) := by
+    intro n hn
+    rw [← Finset.prod_range_mul_prod_Ico _ hn, prod_range_eq_includedPoly, norm_mul]
+    have hIco := norm_prod_one_sub_le_exp (Finset.Ico N n)
+      (fun j : ℕ => ((proposition59Pole L ((j : ℤ) + 1)) ^ 2)⁻¹) z
+    have hsum := sum_Ico_norm_pole_sq_inv_le hL N n
+    calc ‖Ap.eval z‖ *
+          ‖∏ j ∈ Finset.Ico N n,
+            (1 - ((proposition59Pole L ((j : ℤ) + 1)) ^ 2)⁻¹ * z ^ 2)‖
+        ≤ ‖Ap.eval z‖ *
+            Real.exp (‖z‖ ^ 2 *
+              ∑ j ∈ Finset.Ico N n,
+                ‖((proposition59Pole L ((j : ℤ) + 1)) ^ 2)⁻¹‖) := by
+          exact mul_le_mul_of_nonneg_left hIco (norm_nonneg _)
+      _ ≤ ‖Ap.eval z‖ * Real.exp (‖z‖ ^ 2 * KT) := by
+          gcongr
+  have hsK : ‖(L : ℂ)⁻¹ * proposition59PoleKernel L 0 z‖ ≤
+      ‖Ap.eval z‖ * Real.exp (‖z‖ ^ 2 * KT) := by
+    refine le_of_tendsto (proposition59_euler_tendsto hL hz0).norm ?_
+    filter_upwards [Filter.eventually_ge_atTop N] with n hn using hpart n hn
+  -- the step-4a identity in normed form
+  have hid := proposition59_explicit_product_identity hL N vC hvC hv0C hzeros z
+  rw [proposition59IncludedFactors_eq_eval hL N z,
+    proposition59RootFactors_eq_eval L N vC z] at hid
+  have hnorm : ‖Fe z‖ * ‖Ap.eval z‖ =
+      ‖Fe 0‖ * ‖(quadProductPoly Qc).eval z‖ *
+        ‖(L : ℂ)⁻¹ * proposition59PoleKernel L 0 z‖ := by
+    rw [← norm_mul, ← norm_mul, ← norm_mul, hid]
+    congr 1
+    rw [div_eq_inv_mul]
+  have hQbound : ‖(quadProductPoly Qc).eval z‖ ≤ Real.exp (‖z‖ ^ 2 * SR) := by
+    rw [quadProductPoly_eval]
+    refine (norm_quadProduct_le_exp Qc z).trans_eq ?_
+    rw [hQcdef, proposition59RootCoefficients_norm_sum]
+  refine le_of_mul_le_mul_right ?_ hApos
+  calc ‖Fe z‖ * ‖Ap.eval z‖
+      = ‖Fe 0‖ * ‖(quadProductPoly Qc).eval z‖ *
+          ‖(L : ℂ)⁻¹ * proposition59PoleKernel L 0 z‖ := hnorm
+    _ ≤ ‖Fe 0‖ * Real.exp (‖z‖ ^ 2 * SR) *
+          (‖Ap.eval z‖ * Real.exp (‖z‖ ^ 2 * KT)) := by
+        exact mul_le_mul (mul_le_mul_of_nonneg_left hQbound (norm_nonneg _))
+          hsK (norm_nonneg _) (by positivity)
+    _ = ‖Fe 0‖ * Real.exp (proposition59Curvature L N v * ‖z‖ ^ 2) *
+          ‖Ap.eval z‖ := by
+        rw [proposition59Curvature, ← hSRdef, ← hKTdef,
+          show (SR + KT) * ‖z‖ ^ 2 = ‖z‖ ^ 2 * SR + ‖z‖ ^ 2 * KT from by ring,
+          Real.exp_add]
+        ring
+
+#print axioms proposition59_compact_envelope_offAxis
+
+private theorem dense_im_ne_zero : Dense {w : ℂ | w.im ≠ 0} := by
+  rw [Metric.dense_iff]
+  intro x r hr
+  by_cases hx : x.im = 0
+  · refine ⟨x + Complex.I * ((r / 2 : ℝ) : ℂ), ⟨?_, ?_⟩⟩
+    · rw [Metric.mem_ball, dist_eq_norm,
+        show x + Complex.I * ((r / 2 : ℝ) : ℂ) - x
+            = Complex.I * ((r / 2 : ℝ) : ℂ) from by ring,
+        norm_mul, Complex.norm_I, one_mul, Complex.norm_real, Real.norm_eq_abs,
+        abs_of_pos (by linarith : (0 : ℝ) < r / 2)]
+      linarith
+    · simp only [Set.mem_setOf_eq, Complex.add_im, Complex.mul_im, Complex.I_re,
+        Complex.I_im, Complex.ofReal_re, Complex.ofReal_im, hx]
+      intro h
+      simp at h
+      linarith
+  · exact ⟨x, ⟨Metric.mem_ball_self hr, hx⟩⟩
+
+/-- `P59_CURVATURE_COMPACT_ENVELOPE`: the global Gaussian envelope
+`‖F z‖ ≤ ‖F 0‖ exp(κ_F ‖z‖²)`, for **every** `z ∈ ℂ`.
+
+The Euler tail is only ever *bounded*, never identified at a removable node:
+off the real axis the included factor is nonzero and cancels honestly, and the
+resulting inequality — a closed condition on `z` — extends to the lattice by
+density of `{z | z.im ≠ 0}`. -/
+theorem proposition59_compact_envelope
+    {L : ℝ} (hL : 0 < L) (N : ℕ) (v : ℤ → ℝ) (hv : ∀ k : ℤ, v (-k) = v k)
+    (hv0 : v 0 ≠ 0)
+    (hzeros : ZerosRealOn Set.univ
+      (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ))
+        (fun k => (v k : ℂ))))
+    (z : ℂ) :
+    ‖proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ))
+        (fun k => (v k : ℂ)) z‖ ≤
+      ‖proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ))
+        (fun k => (v k : ℂ)) 0‖ *
+        Real.exp (proposition59Curvature L N v * ‖z‖ ^ 2) := by
+  set vC : ℤ → ℂ := fun k => (v k : ℂ) with hvCdef
+  set Fe : ℂ → ℂ :=
+    proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) vC with hFedef
+  set C : Set ℂ :=
+    {w : ℂ | ‖Fe w‖ ≤
+      ‖Fe 0‖ * Real.exp (proposition59Curvature L N v * ‖w‖ ^ 2)} with hCdef
+  have hclosed : IsClosed C := by
+    apply isClosed_le
+    · exact (differentiable_proposition59RawTransform L _ vC).continuous.norm
+    · fun_prop
+  have hsub : {w : ℂ | w.im ≠ 0} ⊆ C := fun w hw =>
+    proposition59_compact_envelope_offAxis hL N v hv hv0 hzeros hw
+  have huniv : (Set.univ : Set ℂ) ⊆ C := by
+    rw [← dense_im_ne_zero.closure_eq]
+    exact hclosed.closure_subset_iff.mpr hsub
+  exact huniv (Set.mem_univ z)
+
+/-- The judge's §2.7 roof consequence, in the finite-cell form that is actually
+available: a uniform curvature bound `κ_F ≤ Cst` gives a uniform bound for the
+normalized transform on the closed ball of radius `R`. -/
+theorem proposition59_normalized_bound_on_ball
+    {L : ℝ} (hL : 0 < L) (N : ℕ) (v : ℤ → ℝ) (hv : ∀ k : ℤ, v (-k) = v k)
+    (hv0 : v 0 ≠ 0)
+    (hzeros : ZerosRealOn Set.univ
+      (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ))
+        (fun k => (v k : ℂ))))
+    {Cst R : ℝ} (hC : proposition59Curvature L N v ≤ Cst) (hR : 0 ≤ R)
+    {z : ℂ} (hz : ‖z‖ ≤ R) :
+    ‖proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ))
+        (fun k => (v k : ℂ)) z‖ /
+      ‖proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ))
+        (fun k => (v k : ℂ)) 0‖ ≤ Real.exp (Cst * R ^ 2) := by
+  have hv0C : ((v 0 : ℝ) : ℂ) ≠ 0 := by exact_mod_cast hv0
+  have hF0 : proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ))
+      (fun k => (v k : ℂ)) 0 ≠ 0 :=
+    (proposition59RawTransform_at_zero_ne_zero_iff hL N _).mpr hv0C
+  have hF0pos : 0 < ‖proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ))
+      (fun k => (v k : ℂ)) 0‖ := norm_pos_iff.mpr hF0
+  rw [div_le_iff₀ hF0pos]
+  refine (proposition59_compact_envelope hL N v hv hv0 hzeros z).trans ?_
+  rw [mul_comm]
+  refine mul_le_mul_of_nonneg_right ?_ hF0pos.le
+  refine Real.exp_le_exp.mpr ?_
+  have hkap : 0 ≤ proposition59Curvature L N v := proposition59Curvature_nonneg L N v
+  have hz2 : ‖z‖ ^ 2 ≤ R ^ 2 := by nlinarith [norm_nonneg z]
+  exact mul_le_mul hC hz2 (sq_nonneg _) (hkap.trans hC)
+
+#print axioms proposition59_compact_envelope
+#print axioms proposition59_normalized_bound_on_ball
+
 end Q3.RouteB
