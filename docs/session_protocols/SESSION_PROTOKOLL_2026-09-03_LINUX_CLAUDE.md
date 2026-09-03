@@ -64,3 +64,26 @@ Duplikate in `_inbox` und `incoming_notes` gelöscht, Waise `FASTKILL3` als
 - /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/proshka/PROSHKA_VERDICT_MYTHOS_THREE_STAGE_FASTEST_KILL_PLAN_2026-09-03.md
 - /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/CODEX_ANSWER_2026-09-03_STEP1_3_P59_AGREEMENT_SET_SOURCE_CHECK.md
 - /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/maps/step1_zoom_limit_identification_test_2026-09-03.svg
+
+## Nachtrag 15:20 — Verlauf nach dem ersten Protokoll
+
+**Erledigt (Bus):** `REQ-2026-09-03-CURVRITZ` gebunden (`f5931f4a`), Verdikt `0c0a2b37`
+(`RUN_RELATIVE_RITZ_DECISIVE_TEST`) intake, Queue CURVRITZ/MOVINGNODE → ANSWERED, Gabel
+im `Progress_Log`; `REQ-2026-09-03-SCHURLOEWNER` gebunden (`445bd006`), IN_REVIEW.
+Codex-Branch `codex_linux_app/goal058-curvature-second-jet` fast-forward nach `rh_clean`
+(`e6fdf040`), von mir kernel-geprüft (drei Dateien rc=0, Standardaxiome).
+
+**Erledigt (Zonden, `docs/routeB_bus/phase5_scripts/`, Precommit `c5db76d6` + 7 Amendments):**
+1 CONFIRMED, 2 REFUTED, 3 BOUNDED, 4 CONFIRMED, 5 CONFIRMED, 6 UNRESOLVED (nahe einfarbig);
+relative-Ritz-Spalten deskriptiv (Trial nur bis m=43 treu; auf m=N unbrauchbar, auf (13,120)
+scharf). Loewner-Literatur (Silva Zenodo, Bhatia–Friedland–Jain) gezogen, Appendix LOEWNER.
+
+**Geprüft:** Lamzouri = Kontext; absolute Lücke kollabiert `10^{-1.9m}`; κ_m flach ≈ 0.025;
+R_m(0.40) flach ≈ 1.077; R1 zahlt die Lücke → R2.
+
+**Kosten-Lehren (Memory `subagent-orchestration-cost`):** keine Poll-Agenten; Präzision,
+Gitter, Toleranz vor dem Start festlegen; Rauschnullstellen filtern (Amendment 7);
+Fortschrittszeilen mit ETA im Log.
+
+**Offen:** Verdikt SCHURLOEWNER; Desktop/Mythos-Note zu R2; Fable-Launcher-Kosten (API-Schlüssel,
+Desktop-Domäne); Mathlib-Lücke Hadamard-Faktorisierung (Codex Item 5).
