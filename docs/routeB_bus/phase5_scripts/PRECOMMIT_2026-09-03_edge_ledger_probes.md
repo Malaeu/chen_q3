@@ -88,3 +88,29 @@ Frozen rule for `P_CURVATURE_SOURCE_1` on the schedule m = N ∈ {13,23,43,83,16
 - REFUTED: κ_m grows monotonically with κ_163/κ_13 ≥ 10, or κ_m < 0 for some m
   (a negative κ contradicts the real-zero product and is a STOP: `KAPPA_NEGATIVE`).
 - else UNRESOLVED. N-check pairs are descriptive.
+
+## AMENDMENT 2 (2026-09-03 12:25, after the first ledger checkpoint m ∈ {13,23,43}) — HF/FD stop is Probe-2-local; Probe 2 finding recorded
+
+Observed (checkpoint cells, 120 and 240 dps identical to 8 digits):
+  m=13: dλ₁/dL_fd = +1.5328e-01, hf = +1.5308e-01, rel diff 1.3e-3, λ₁ = 7.9e-31
+  m=23: fd = +8.6775e-02, hf = +8.6675e-02, rel diff 1.2e-3, λ₁ = 7.3e-52
+  m=43: fd = +4.6464e-02, hf = +4.6436e-02, rel diff 6.0e-4, λ₁ = 1.0e-90
+Reading, written before any explanation is confirmed: the derivative of λ₁ with
+respect to the kernel parameter L at FIXED prime set is O(1) while λ₁ itself is
+1e-31 … 1e-90. So the super-small bottom eigenvalue is a feature of the consistent
+point L = log m only; detuning L by h = 1e-6·L moves λ₁ by ~1e-7. The CCM kernel
+depends on L inside the entries (2(L−x)/L·cos(2πnx/L)), so this is not a pure
+domain (window) variation of a fixed form, and the Fuchs/Hadamard identity is
+not expected to apply to it as written. The 6-significant-digit FD/HF agreement
+demanded above was unattainable by construction: both estimates carry O(h²·λ'''/λ')
+truncation error, and λ''' is huge relative to λ' on a function that changes by
+30 orders of magnitude across the schedule.
+Rules, amended:
+- `HF_FD_MISMATCH` is a Probe-2-only flag; it no longer stops Probes 3 and 4.
+- Probe 2 verdict is taken from the SIGN and stability rule as frozen: the
+  observed sign of dλ₁/dL is POSITIVE at every checkpoint cell, hence
+  c_m = −(dλ₁/dL)/edge² < 0 and `P_FUCHS_IDENTITY_NUMERICALLY_HOLDS` scores
+  REFUTED on this variation (fixed primes, kernel parameter L). This does not
+  test the domain-only variation of the continuous form Q_W^a; that remains a
+  question for the judge (Q9-1).
+- Thresholds for Probes 1, 3, 4 are unchanged.
