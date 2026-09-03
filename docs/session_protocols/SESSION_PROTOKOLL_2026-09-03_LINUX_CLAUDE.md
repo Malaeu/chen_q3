@@ -37,18 +37,16 @@ Registriert: `P_LAMZOURI_CONTEXT_NOT_SUPPLIER` p=0.80 (Sonde offen, Papier).
 
 ## Versendet
 
-Nichts. Kein Commit, kein Push (Freigabe des Manifests steht aus).
+Commit `e474302f` auf `rh_clean`, gepusht nach `origin` (Freigabe des Eigentümers im Chat).
+Duplikate in `_inbox` und `incoming_notes` gelöscht, Waise `FASTKILL3` als
+`SUPERSEDED_NEVER_BOUND` archiviert.
 
 ## Offen — nächste Schritte
 
-1. Eigentümer entscheidet über das Commit-Manifest (siehe Chat).
-2. Verwaiste Datei `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_THREE_STAGE_FASTEST_KILL_PAPER_AUDIT_2026-09-03.txt`
-   (`REQ-2026-09-03-FASTKILL3`, 03:22, nie gebunden, durch KILLPLAN ersetzt):
-   löschen oder archivieren — Entscheidung des Eigentümers.
-3. Streukopien `q3.lean.aristotle/docs/incoming_notes/{files.zip, *.svg}` und
-   `docs/_inbox/{files.zip, *.svg}`: Löschung nur mit ausdrücklicher Freigabe.
-4. Papier-Sonde Q8, falls gewünscht (Stunden).
-5. Nach dem Kill von Step 1 ist der nächste tragende Spalt laut Verdikt
+1. `REQ-2026-09-03-MOVINGNODE` (Codex, 10:19) liegt gebunden im Baum, Status in der
+   Queue noch nicht eingetragen; Lieferung an Proshka steht aus.
+2. Papier-Sonde Q8, falls gewünscht (Stunden).
+3. Nach dem Kill von Step 1 ist der nächste tragende Spalt laut Verdikt
    `R2_DIRECT_SAME_FAMILY_LOCAL_UNIFORM_TRACKING` (Kosten 9/10).
 
 ## Wichtige Fakten
