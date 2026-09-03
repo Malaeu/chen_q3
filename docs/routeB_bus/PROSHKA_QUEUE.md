@@ -14,6 +14,20 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-03-SCHURLOEWNER · Goal 058 curvature: Schur/Loewner secular identity, Input-A geometry · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_CURVATURE_SCHUR_LOEWNER_SECULAR_ADJUDICATION_2026-09-03.txt`
+- Boundary: `GOAL058_CURVATURE_SCHUR_LOEWNER_SECULAR_ADJUDICATION`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Parent verdict: `0c0a2b37` (CURVRITZ); harvest of Probes 1-6 attached in the payload (Probe 3 BOUNDED, Probe 4 CONFIRMED, Probe 5 CONFIRMED, Probe 6 UNRESOLVED near one-sign, Probe 1 CONFIRMED, Probe 2 REFUTED)
+- Registered predictions: `P_SECULAR_IDENTITY_EXISTS p=0.55`, `P_LOEWNER_CLAIM_SOURCE_FAITHFUL p=0.60`, `P_TWO_SCHEDULES_ALLOWED p=0.70`; judge to score seven earlier predictions (list in payload)
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `445bd0068d5d49d7b0308608d30fb4bf755683fd` / `7276` / `109` /
+  `26aea53eaf13fe1ca7922ba482359db384a389ce22430ee7374b764e2c15f09d` /
+  `0a6c9f8bb13728dfd5387eda407afa02a82867f4` / `yes`
+- Delivery: owner pastes the canonical short instruction into the living phase chat with the .txt attached byte-exact
+
 ## REQ-2026-09-03-CURVRITZ · Goal 058 curvature / relative-Ritz adjudication (sequel of MOVINGNODE) · ANSWERED
 
 - `STATUS: ANSWERED`
