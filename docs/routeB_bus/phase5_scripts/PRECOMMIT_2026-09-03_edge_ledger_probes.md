@@ -114,3 +114,26 @@ Rules, amended:
   test the domain-only variation of the continuous form Q_W^a; that remains a
   question for the judge (Q9-1).
 - Thresholds for Probes 1, 3, 4 are unchanged.
+
+## ADDENDUM 3 (2026-09-03 13:15, after verdict 0c0a2b37, before any spectral decomposition of ℓ_N was computed) — Probe 5, does the dual annihilator pay the absolute gap?
+
+Judge falsifier `P59_CURVATURE_DUAL_CERT_REOPENS_ABSOLUTE_GAP`: "every proposed dual
+certificate first bounds an inverse by 1/(λ₂−λ₁)". Attack R1 seeks u with
+ℓ_N − c·e_0 = (K − λ₁)*u + s. The minimal-norm exact solution on ξ⊥ is
+u = Σ_{j≥2} ⟨ℓ_N, v_j⟩/(λ_j − λ₁) · v_j (even-sector eigenbasis v_j, λ_j ascending).
+Definitions per cell (even block, unit eigenvectors, arb):
+  a_j := ⟨ℓ_N, v_j⟩ for j = 1..min(6, dim);  ℓ_N = e_0/12 + Σ_{n≠0} e_n/(2π² n²) in the
+  same even-basis coordinates as ξ (respect the √2 scaling of n = 0);
+  w_j := a_j/(λ_j − λ₁) for j ≥ 2;  ‖u‖² = Σ_{j≥2} w_j²;
+  gap_share := w_2² / ‖u‖²;   pay := ‖u‖·(λ₂−λ₁)/‖P⊥ℓ_N‖  (∈ (0,1]; 1 = all mass on v₂).
+  Also a_1/ξ_0 (must reproduce 2κ/L², sanity), and a_2/v_{2,0}.
+Prediction (K6, registered here): `P_DUAL_CERT_PAYS_GAP` p=0.75 — on the schedule
+m = N ∈ {13,23,43,83} the minimal-norm certificate is dominated by the second
+eigenpair: gap_share ≥ 0.5 at every cell.
+- CONFIRMED: gap_share ≥ 0.5 at every cell of the schedule → R1 in its minimal-norm form
+  pays 1/(λ₂−λ₁); move to R2 (Schur–Stieltjes) per the judge's ordered rule.
+- REFUTED: gap_share ≤ 0.05 at every cell (the functional nearly annihilates v₂ as well;
+  a bounded certificate is not excluded by the spectrum).
+- else UNRESOLVED. m = 163 excluded (no full spectrum); descriptive only if computed.
+Needs the full even spectrum for m ≤ 83 (dims ≤ 84, acb_mat.eig already used by the
+builder). DIAGNOSTIC_NEVER_A_PROOF.
