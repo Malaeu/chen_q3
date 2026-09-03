@@ -14,9 +14,13 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-03-CURVBRIDGE · Goal 058: PROVE the explicit-product curvature bridge; adjudicate the Hilbert–Schmidt representation · IN_REVIEW
+## REQ-2026-09-03-CURVBRIDGE · Goal 058: PROVE the explicit-product curvature bridge; adjudicate the Hilbert–Schmidt representation · ANSWERED
 
-- `STATUS: IN_REVIEW`
+- `STATUS: ANSWERED`
+- Verdict: `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_CURVATURE_BRIDGE_PROOF_AND_HS_REPRESENTATION_2026-09-03.md` · commit `926c1865` (judge force-pushed one squashed commit replacing 08f95bde+18ec34aa) · blob `59b8154b22d241994b68da48781f1d60d95afe4b`
+- Operative class: `FORMALIZE_P59_EXPLICIT_PRODUCT_CURVATURE_BRIDGE` · Part 1 PAPER_PROVED_AT_LEAN_GRANULARITY, no Mathlib gap (Euler sine product, polynomial splits, prod_one_add_le_exp_sum, hasSum_zeta_two) · Part 2: HS identity REFUTED as stated, repaired `κ_F = ½‖(D_log)⁻¹‖²_HS` (symmetric spectrum counts ±μ); naive L² Green-kernel bound killed (wrong metric); ranking: bordered secular slope primary (9/3), HS trace runner-up (8/6), zero repulsion third (7/8)
+- Predictions: P_EXPLICIT_PRODUCT_BRIDGE_PROOF CONFIRMED; P_HS_REPRESENTATION_EXACT REFUTED (factor 1/2); P_HS_ATTACK_FOUND UNRESOLVED_ADVERSE
+- Next transaction: Codex formalization `Proposition59ExplicitProductCurvatureBridge.lean` (task file to follow)
 - Delivery observed 2026-09-03 ~16:05 CEST: owner pasted the canonical instruction with the .txt attached in living chat `6a8c3e2a-df50-83eb-b53d-dd4cc46f646f`; judge accepted.
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_CURVATURE_BRIDGE_PROOF_AND_HS_REPRESENTATION_2026-09-03.txt`
 - Boundary: `GOAL058_CURVATURE_BRIDGE_PROOF_AND_HS_REPRESENTATION`
