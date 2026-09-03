@@ -14,9 +14,10 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-03-LATTICEWALL · Goal 058: alternating-lattice form of the curvature wall; weighted lattice error O(L⁻²) as the one statement · OPEN
+## REQ-2026-09-03-LATTICEWALL · Goal 058: alternating-lattice form of the curvature wall; weighted lattice error O(L⁻²) as the one statement · IN_REVIEW
 
-- `STATUS: OPEN`
+- `STATUS: IN_REVIEW`
+- Delivery observed 2026-09-03 ~22:05 CEST: owner (remote) pasted the one-line GitHub-locator instruction in living chat `6a8c3e2a-df50-83eb-b53d-dd4cc46f646f`; judge accepted.
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_ALTERNATING_LATTICE_FORM_OF_THE_CURVATURE_WALL_2026-09-03.txt`
 - Boundary: `GOAL058_ALTERNATING_LATTICE_FORM_OF_THE_CURVATURE_WALL`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
