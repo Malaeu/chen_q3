@@ -14,6 +14,22 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-04-QUASIEIGEN · Goal 058: Xi row is a quasi-eigenvector (residual 10^(-0.4m) vs |RΔ| 1e-2); energy identity exact but empty; odd floor collapsed; collapse as a displacement-structure theorem · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_XI_ROW_QUASI_EIGENVECTOR_AND_COLLAPSE_THEOREM_2026-09-04.txt`
+- Boundary: `GOAL058_XI_ROW_QUASI_EIGENVECTOR_AND_COLLAPSE_THEOREM`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: two preflights (GAP half) + blind re-derivation + Probe 10/11 (identity confirmed non-circularly; odd floor 1e-28..1e-290; ρ_stab up to 1.7e64; S7 tautology; S8 refuted); Beckermann–Townsend 2019 locator; Lean six items green
+- Registered predictions: `P_XI_ROW_QUASI_EIGEN_PROVABLE p=0.65`, `P_REAL_ZEROS_RIGIDITY_IS_THE_SUPPLIER p=0.35`, `P_COLLAPSE_THEOREM_NOW p=0.45`, `P_ATOM_MOVES_TO_IDENTIFICATION p=0.70`
+- Delivery mode: owner remote; GitHub locator; paste only after the judge finishes the living-chat answer it is writing now (chat discipline)
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `d0f217a7d2a5ba86bab57edc4f7a36d44faead94` / `9249` / `104` /
+  `fd98461bd5065dc76caf4e3d2cf21005dbfa6b94d1d1415c27cab1e102667722` /
+  `f5b26c7163f1e556f1e3881f8fdb7f331a3d55ae` / `yes`
+
+---
+
 ## REQ-2026-09-03-SHELLSEARCH · Goal 058: shell search — typed theorems from recognized inputs to the two-component lattice atom (N: W=O(L⁻²); I: compact profile) · ANSWERED
 
 - `STATUS: ANSWERED`
