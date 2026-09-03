@@ -158,3 +158,12 @@ Prediction (K6, registered here): `P_SCHUR_RESIDUES_ONE_SIGN` p=0.35 (i.e. I exp
 - else UNRESOLVED. Also descriptive: the Loewner structure of the off-diagonal entries
   τ_{ij} = (b_i − b_j)/(i − j) (CCM Lemma 5.1) — report whether the sequence b_i is monotone
   on 1..N at each cell. DIAGNOSTIC_NEVER_A_PROOF.
+
+## AMENDMENT 5 (2026-09-03 13:48, before any m=163 Probe 3/4 value existed) — working precision for single-900-dps cells
+
+The m=163 cell exists only at 900 dps (inverse iteration). Running the Probe 3 quadrature
+and the Probe 4 functional at 900 dps is not required by any threshold: the quadrature
+acceptance is 1e-8 relative on grid doubling, and κ needs the ground row to ~1e-12 relative.
+Rule: for cells whose only record is above 300 dps, Probes 3 and 4 run at 240 dps working
+precision on the ball-rounded row; the report records `working_dps=240 (record 900)`.
+Thresholds unchanged. This is a cost decision, not a data decision.
