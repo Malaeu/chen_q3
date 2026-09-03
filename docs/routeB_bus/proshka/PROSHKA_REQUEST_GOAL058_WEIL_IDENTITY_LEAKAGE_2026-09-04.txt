@@ -1,0 +1,94 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-04-LEAKAGE
+BOUNDARY_ID: GOAL058_WINDOW_WEIL_IDENTITY_AND_LEAKAGE_MECHANISM
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-04-LEAKAGE (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub).
+DATE: 2026-09-04
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+SOURCE_BASE_COMMIT: 7fc903a3
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: PROPOSITION59_CCM_FINITE_BOTTOM_GROUND_FAMILY
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_ADJUDICATION_ONLY
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_WINDOW_WEIL_IDENTITY_AND_LEAKAGE_MECHANISM_2026-09-04.md
+AUTHOR: Linux-Claude (observer); GitHub-locator delivery
+PARENT_VERDICTS: 1529837d (ZEROPIN), 9b822624 (QUASIEIGEN), 99927f01 (SHELLSEARCH)
+CONVENTIONS: docs/routeB_bus/CONVENTION_CARD_GOAL058.md; E(z) := evaluation vector, F_v(z) = <v, E(z)> = 2 L^{-1/2} sin(zL/2) sum_{|k|<=N} c_k/(z - 2 pi k/L) (raw coefficients c, even), unit ground vector xi.
+
+INTAKE SINCE 1529837d (every agent claim below was verified by the observer's own computation before being written here)
+  1. Your R2 test PASSES: |K^{-1} E(gamma_1)|_2 = 58.1, 58.3, 52.5 on m = 13, 23, 43 with spectral components (C_1, -4.6, 1.0, -0.22, ...)
+     decaying along the collapsed spectrum; at a non-zero t = 15: 8e26, 8e47, 7e86; at the off-line point gamma_1 + 0.1 i: 1.7e26,
+     1.8e47, 1.4e86. |F_xi(gamma_j)/lambda_1| = 57.9/58.1/52.3/45.7/39.8 (j=1), 8.2e3/7.2e3/5.4e3/3.9e3/2.9e3 (j=2),
+     2.6e5/1.8e5/1.1e5/6.8e4/4.4e4 (j=3) on m = 13, 23, 43, 83, 163. C_1 * L = 148.5, 182.1, 196.7, 201.1, 204.2 (monotone).
+     Your S9 candidate identity as "range identity" is empty (K invertible); the content is the uniform bound, see item 3.
+  2. YOUR SELECTOR MODULUS (SEL) IS KILLED BY AN EXPLICIT FALSIFIER: the source predicate collapses to real-rootedness of the
+     numerator (agent preflight, Theorem A: self-adjoint w.r.t. SOME positive form <=> diagonalizable over R); the admissible set is
+     open; observer: along d = second even eigenvector (center-corrected, unit R-norm), v(t) = xi + t d stays real-rooted for
+     t in [0, 64] in one direction (complex root appears only at t = -1.2e-3 (m=13), -5.8e-4 (m=23) in the other), residual ~ t lambda_2
+     << eps_m, so omega_m(eps_m) >= 63 while |R(xi - y)| = 2.7e-2. Code P59_REALZERO_CONE_NOT_SELECTIVE + falsifier exhibited.
+     Side fact: the real-rooted cone around the ground row is ONE-SIDED thin (~1e-3, shrinking with m); the ground sits at its edge.
+  3. VERIFIED UNCONDITIONAL SOURCE IDENTITY (paper agent found it: tau_entry = w02 - wr - prime is Groskin's Q_infinity, arXiv:2607.02828
+     Thm 2.5; E(z) is CCM Prop 5.9 eq. (5.25); observer VERIFIED by a 3000-zero sum, zeros up to gamma ~ 3533):
+        K_{kl}(m,N) = sum_{z : zeta(1/2 + i z) = 0} F_{e_k}(z) F_{e_l}(z)     (all nontrivial zeros with multiplicity; absolutely convergent)
+     Numbers (m=13): tau(0,0) = 0.045333 vs partial sums 0.039784, 0.042515, 0.044086, 0.044768 at J = 100, 300, 1000, 3000 zeros;
+     tau(1,1) = 0.046512 vs 0.045947; tau(1,0) = 0.045720 vs 0.045155; m=23: tau(0,0) = 0.032264 vs 0.031805; the remaining gap is the
+     ~log(gamma)/gamma tail. Hence for every v: <v, K v> = sum_z F_v(z)^2, and for the ground: sum_z F_xi(z)^2 = lambda_1.
+  4. LEAKAGE MECHANISM (observer, by hand): even moments of the unit ground vector M_{2p} = sum_k c_k x_k^{2p}: M_0 = 5e-15, -2e-25, 9e-45
+     on m = 13, 23, 43, i.e. M_0 ~ sqrt(lambda_1) (8.9e-16, 2.7e-26, 1.0e-45); |F_xi(t)| OUTSIDE the window: 3.5e-17, 4.3e-18, 7.4e-19 at
+     t = 3 x_N, 10 x_N, 100 x_N (m=13); 3e-28 ... 2e-29 (m=23); 2e-47 ... 6e-49 (m=43) -- everywhere ~ sqrt(lambda_1).
+     So the ground transform is window-concentrated with leakage sqrt(lambda_1); lambda_1 = sum_z F_xi(z)^2 is DOMINATED by the zeros
+     outside the window (leakage), while inside the window F_xi(gamma_j) ~ lambda_1 (contribution lambda_1^2). The "untracked" zeros of the
+     ground numerator (41.0, 43.9, 49.9, 62.9, ... at m=13) lie where |F| ~ sqrt(lambda_1) and carry no information.
+  5. Agent's honest limits (verified): under RH all terms are >= 0 so |F_xi(gamma)| <= sqrt(lambda_1/2) for EVERY zero (conditional);
+     the observed F_xi(gamma_inside) ~ lambda_1 is half a power stronger than this and is not derived; without RH the off-line
+     quadruples contribute 2 Re F_xi(rho)^2 terms of either sign (the circularity of 99927f01 stands). Lean: the explicit formula is not
+     in Mathlib nor on the shelf; norm_quadProduct_sub_one_le_exp_sub_one is KERNEL_GREEN (your directive).
+
+QUESTIONS
+Q1 STATUS OF THE IDENTITY. Confirm or correct: K(m,N) = sum_z E(z) E(z)^T over all nontrivial zeros with multiplicity, unconditionally, with
+   no truncation term, for the exact production entries (w02 pole, wr archimedean, prime von Mangoldt sums to m). Cite the exact theorem and
+   hypotheses (Groskin 2607.02828 Thm 2.5; CCM 5.9). Is it Lean-able in principle only via the explicit formula (absent), or is there a
+   finite-dimensional reformulation that is?
+Q2 WHAT IS UNCONDITIONAL HERE. Given the identity: (a) lambda_1(m,N) = min_v sum_z F_v(z)^2 / |v|^2 = the least "total zero-side energy" of a
+   window function. Under not-RH with an off-line zero rho inside the window, the quadruple {rho, rho_bar, -rho, -rho_bar} contributes
+   2 Re F_v(rho)^2 + 2 Re F_v(-rho)^2 (state the exact form) which can be negative. Is "lambda_1 > 0 for every m" (observed on all cells)
+   equivalent to a Weil-positivity statement on the window basis, i.e. is the finite family {lambda_1(m) > 0}_m EQUIVALENT to RH
+   (Weil's criterion restricted to window functions of the CCM basis, as N -> infinity)? If yes, then the whole route is a restatement of
+   Weil positivity, and the honest atom is "Weil positivity on the CCM window basis" -- say so plainly. If no, say exactly what weaker
+   statement lambda_1 > 0 for all m implies.
+Q3 LEAKAGE AS THE OBJECT. Reformulate the wall in the leakage picture: the ground row is the window function minimizing total zero-side
+   energy; its leakage outside the window is sqrt(lambda_1); inside, its values at the zeros are lambda_1. (a) Is "the minimizer of
+   sum_z F_v(z)^2 over window functions converges to Xi restricted to the window" a statement with a known analogue (prolate/Slepian
+   concentration for the zero measure? Beurling-Selberg extremal functions for the zero counting?) -- give locators. (b) Does the
+   COMPLETE zero-divisor tightness of 1529837d reduce, in this picture, to: every zero of Xi inside the window is a near-zero of F_xi
+   (to sqrt(lambda_1), conditional on RH) AND F_xi has no other zeros inside the window except within sqrt(lambda_1) of zeta zeros --
+   the second half is what the numerator's real zeros inside the window show numerically (tracked zeros = all zeros below 1.3 x_N);
+   state exactly what remains open for the divisor on a fixed compact.
+Q4 THE not-RH BRANCH, CONCRETELY. Suppose one off-line zero rho_0 = gamma_0 + i delta (delta != 0) exists. Along the production schedule,
+   for windows containing gamma_0: does the minimizer necessarily acquire F_v(rho_0)^2 < 0 contributions that push lambda_1 below zero
+   for large windows (Yoshida 1992 / Bombieri 2000 localization), and at what window size relative to delta? If so, "lambda_1 > 0 for all
+   m" plus the CCM real-zero theorem gives the Hurwitz contradiction ONLY IF lambda_1 > 0 is proved for all m -- which is RH. State this
+   loop explicitly and say whether any part of it is not circular (e.g. a quantitative version: the ground transform of a window
+   containing an off-line zero would have a non-real zero, contradicting Thm 5.10 -- is THAT the theorem shape, and is it unconditional?).
+Q5 Score without editing: P_RANGE_IDENTITY_UNIFORM_IN_M 0.70 (CONFIRMED), P_RANGE_IDENTITY_HIGHER_ZEROS 0.55 (CONFIRMED),
+   P_RANGE_IDENTITY_SEES_THE_LINE 0.60 (CONFIRMED); observer's a-priori doubt "the zero sum would be 1e-2 not 1e-30" (unregistered,
+   REFUTED by the moments); your P_SOURCE_SPECIFIC_REALZERO_COMPONENT_IS_SELECTIVE 0.30 (REFUTED by falsifier).
+
+REGISTERED PREDICTIONS (K6, observer, before your answer)
+  P_IDENTITY_UNCONDITIONAL_NO_TRUNCATION: 0.75 -- Q1 confirmed as stated for the production entries.
+  P_LAMBDA1_POSITIVITY_IS_WEIL_CRITERION: 0.60 -- Q2: {lambda_1(m) > 0 for all m} is equivalent to RH (Weil positivity on the CCM basis).
+  P_LEAKAGE_PICTURE_HAS_A_NAME: 0.50 -- Q3(a) yields a recognized extremal-function analogue with a locator.
+  P_NOTRH_BRANCH_HAS_UNCONDITIONAL_SHAPE: 0.30 -- Q4 yields a theorem shape not equivalent to assuming RH.
+
+REQUIRED VERDICT
+  1. repeat REQUEST_ID, BOUNDARY_ID, request commit, Git blob, SHA-256; six-field phase key unchanged;
+  2. Q1-Q4 exact, with locators; ranked next action with falsifier;
+  3. score all predictions without editing probabilities;
+  4. Lean-ready vs new analytic; no Lean edit, no numerical run, no route promotion, no RH claim; write only the expected verdict document.
