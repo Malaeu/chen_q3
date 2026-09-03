@@ -14,6 +14,21 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-03-CURVRITZ · Goal 058 curvature / relative-Ritz adjudication (sequel of MOVINGNODE) · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_CURVATURE_RELATIVE_RITZ_ADJUDICATION_2026-09-03.txt`
+- Boundary: `GOAL058_CURVATURE_RELATIVE_RITZ_ADJUDICATION`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Relation: quantitative sequel of `REQ-2026-09-03-MOVINGNODE` (OPEN); judge may answer both in one verdict
+- Item 0: judge commits its own 2026-09-03 chat verdict `TRY_GROUND_REALZERO_CURVATURE_VITALI_WITH_PRODUCTION_RATE_REPAIR` to the bus in the same commit
+- Registered predictions: `P_ABS_GAP_COLLAPSES p=0.80`, `P_CURVATURE_SOURCE_1 p=0.65 (judge)`, `P_FUCHS_IDENTITY_NUMERICALLY_HOLDS p=0.55`, `P_GROUND_RATIO_GROWS_AT_SIGMA_0_4 p=0.60`, `P_JOINT_PROJECTIVE_RATE_1 p=0.38 (judge, to rescore)`, `P_RELATIVE_RITZ_STRICTLY_WEAKER p=0.70`
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `f5931f4a75056e66f911747e118a0522a76616e5` / `11118` / `187` /
+  `ec333554f2010af4ad4fdccbfba961acdf1cbc4925f614f39ccda4502a81a7ce` /
+  `13ea6a841016fbf89fd7185b3d73bb6dd6a53250` / `yes`
+- Delivery: owner pastes the canonical short instruction into the living phase chat with the .txt attached byte-exact
+
 ## REQ-2026-09-03-MOVINGNODE · Goal 058 moving-node ground-normality adjudication · OPEN
 
 - `STATUS: OPEN`
