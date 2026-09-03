@@ -14,9 +14,16 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-03-SHELLSEARCH · Goal 058: shell search — typed theorems from recognized inputs to the two-component lattice atom (N: W=O(L⁻²); I: compact profile) · IN_REVIEW
+## REQ-2026-09-03-SHELLSEARCH · Goal 058: shell search — typed theorems from recognized inputs to the two-component lattice atom (N: W=O(L⁻²); I: compact profile) · ANSWERED
 
-- `STATUS: IN_REVIEW`
+- `STATUS: ANSWERED`
+- Verdict: `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SHELL_SEARCH_SOURCE_TO_LATTICE_ATOM_2026-09-03.md` · commit `99927f01`
+- Operative class: `TRY_RECIPROCAL_MODE_WEIGHTED_L2_SOURCE_BOUND` · seven shells ranked; no zero-open shell (NO_RECOGNIZED_SOURCE, not impossibility) · TOP: H1 `P59_RECIPROCAL_MODE_WEIGHTED_L2_SHELL`, one open input = NEW ATOM `P59_RECIPROCAL_MODE_XI_LATTICE_ERROR_ENERGY_BOUND`: `Σ_{n≤N}|Δ_n|²/n² ≤ C/L⁴` (‖diag(1/n)Δ‖²), gives N (`W ≤ π√C/(√6 L²)`) and I (`sup_{n≤XL/2π}|Δ_n| ≤ X√C/(2πL)`) by Cauchy–Schwarz; stronger than N+I, structurally smaller than the eigen-equation stability identity · H2 discrete Hardy gradient shell (fallback 1) · H6 = CCM's implied shell (two open inputs: finite/continuum trial crosswalk + one-rate) · full chain: 2 analytic open (`COFINAL_SIMPLE_EVEN_FINITE_GROUND`, energy bound) + 2 Lean transactions = 4 obligations
+- Kills: small-Weil-energy ⇒ pointwise zero pinning (indefinite Hermitian zero sum) = observer's sealed candidate, DEAD; global Krein/Weyl–Titchmarsh positivity shell (RH-circular); Suzuki strong-resolvent as available theorem (labelled expected); generic Loewner-to-rate (do not reopen)
+- Predictions: P_A_SHELL_WITH_ZERO_OPEN_INPUTS_EXISTS REFUTED_BY_AUDITED_SOURCE_SEARCH; P_BEST_SHELL_HAS_ONE_OPEN_INPUT CONFIRMED; P_JUDGE_TOP_SHELL_MATCHES_OBSERVER_SEALED REFUTED (sealed: DISJOINT_AND_DOMINATED_AT_INTERFACE, does not survive)
+- Lean-ready: H1, H2, H3 shells; weighted-error-to-curvature; moving-lattice unique-cluster composition
+- Next transaction: read-only preflight `GOAL058_RECIPROCAL_MODE_XI_LATTICE_ENERGY_SOURCE_PREFLIGHT` (refines, not replaces, the eigen-equation preflight; p=0.40 preserved); fallback H2 then H6
+- Intake 2026-09-04 ≈01:20 CEST by Linux-Claude.
 - Delivery observed 2026-09-04 ≈00:20 CEST: owner (remote) pasted the one-line GitHub-locator instruction in living chat `6a8c3e2a-df50-83eb-b53d-dd4cc46f646f`; judge accepted and is working.
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SHELL_SEARCH_SOURCE_TO_LATTICE_ATOM_2026-09-03.txt`
 - Boundary: `GOAL058_SHELL_SEARCH_SOURCE_TO_LATTICE_ATOM`

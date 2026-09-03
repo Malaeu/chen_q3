@@ -47,3 +47,11 @@ P_SHELL_OBS_1_DELIVERS_IDENTIFICATION_GIVEN_NORMALITY = 0.45.
 The observer's independent proposal is ONE shell for ONE component. The count "one shell
 missing" of earlier tonight was an interface count (REQUIRES − PROVIDES) and was wrong by one:
 the judge split the required statement into two components.
+
+## Fate (judge `99927f01`, read after Q1–Q4 were fixed)
+
+`P_JUDGE_TOP_SHELL_MATCHES_OBSERVER_SEALED 0.35` → REFUTED. Relation: DISJOINT_AND_DOMINATED_AT_INTERFACE.
+SHELL_OBS_1 killed as `KILL_SMALL_WEIL_ENERGY_TO_POINTWISE_ZERO_PINNING` (indefinite Hermitian zero
+sum off the line; circular without RH), exactly the first failure the observer predicted; it also
+covered only component I. Judge's top shell: reciprocal-mode weighted-ℓ² (Cauchy–Schwarz), one open
+input. Observer's own probability for survival was 0.30; the kill stands.
