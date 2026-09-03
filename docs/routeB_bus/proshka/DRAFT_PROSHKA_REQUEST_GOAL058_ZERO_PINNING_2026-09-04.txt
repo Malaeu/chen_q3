@@ -1,0 +1,42 @@
+STATUS: DRAFT (not bound; bind after REQ-2026-09-04-QUASIEIGEN is ANSWERED; fold in its verdict)
+REQUEST_ID: REQ-2026-09-04-ZEROPIN
+BOUNDARY_ID: GOAL058_GROUND_TRANSFORM_ZERO_PINNING_AND_REAL_ZERO_IDENTIFICATION
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+PHASE_KEY: unchanged (PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13 / RouteB_TwoLevelSpectralLadder / GOAL058_G1_G3_COFINAL_GROUND_TRACKING / PROPOSITION59_CCM_FINITE_BOTTOM_GROUND_FAMILY / Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi / GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED)
+HONESTY_STATE: CHALLENGER_NOT_RH · PX_RH_CLAIM: NOT_MADE · REVIEW_BOUNDARY: PAPER_ADJUDICATION_ONLY · WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_GROUND_TRANSFORM_ZERO_PINNING_AND_REAL_ZERO_IDENTIFICATION_2026-09-04.md
+CONVENTIONS: docs/routeB_bus/CONVENTION_CARD_GOAL058.md
+
+INTAKE (Probe 12, observer by hand, precommit ADDENDUM 13/14, output phase5_codex/out/xi_row_zeros.md, ERRATUM in Progress_Log 2026-09-04)
+  1. Ground row: the P59 transform F_k has ALL zeros real on m = 13, 23, 43 (Thm 5.10 reproduced; zeros of the degree-2N numerator).
+  2. Xi-sample row y_n = (-1)^n Xi(2 pi n/L)/Xi(0): its transform F_y has GENUINE complex zeros (16/26, 28/46, 50/86 non-real;
+     Newton on F_y converges to z = -18.8595 + 24.6602 i with |F_y(z)| = 0 at m = 13). Real-zero-ness is a NON-SPECTRAL property
+     that distinguishes the ground row from the Xi row (answers Q2(a) of QUASIEIGEN by numerics).
+  3. Sign patterns of (-1)^n c_n are identical for both rows (first flip at the node past gamma_1): signs do NOT distinguish.
+  4. S9 (recorded before explanation): with the unit even ground vector, F_k(gamma_j) = C_j(m) * lambda_1 with
+       C_1 = 57.9, 58.1, 52.3, 45.5 on m = 13, 23, 43, 83 (C_1 * sqrt(L) = 93..103), C_2 ~ -8e3..-4e3, C_3 ~ 2.6e5..7e4.
+     The ground transform vanishes at the zeta zeros to order lambda_1 ~ 10^{-1.9 m} itself (NOT sqrt(lambda_1)); the zero
+     displacement rho_j - gamma_j ~ F(gamma_j)/F'(gamma_j) ~ 1e-26 already at m = 13 (an earlier 2e-8 figure was a root-finder
+     artifact; corrected). Meanwhile node values track Xi only as 1/log^2 m (Probe 9).
+
+QUESTIONS
+Q1 IDENTIFICATION THROUGH ZEROS. The consumer needs local-uniform convergence F_k/F_k(0) -> centeredXi/centeredXi(0). Given
+   (i) bounded kappa_k (normality; Lean bridge), (ii) all zeros of F_k real, (iii) the low zeros of F_k converge to gamma_j
+   (exponentially, item 4), is the limit identified WITHOUT any node estimate: every subsequential limit G is even, real,
+   real-zero, G(0) = 1, entire of exponential type <= L/2 growth ... with zero set {±gamma_j}; by Hadamard/Laguerre-Polya
+   uniqueness (order-1 real-zero even function with prescribed zeros and G(0)=1 is unique up to e^{a z^2}?) does G = Xi/Xi(0)
+   follow, and what exactly pins the e^{a z^2} factor (kappa_k -> kappa_Xi? the second jet?)? State the exact theorem shape
+   and the exact hypotheses beyond (i)-(iii). Is this the "non-spectral identification" of QUASIEIGEN Q2 in closed form?
+Q2 SUPPLIER FOR (iii). Is "zeros of F_k in |z| <= X converge to the zeros of Xi" provable for the finite Weil form
+   unconditionally (Groskin's finite Guinand-Weil dictionary arXiv:2607.02828; CCM Thm 5.10 machinery), or only through the
+   RH-circular "small Weil energy => small values at on-line zeros" (killed in 99927f01)? Give the exact source mechanism of S9:
+   is F_k(gamma) = lambda_1 * G_k(gamma) an identity with G_k from archimedean + prime parts, and is G_k bounded on compacts?
+Q3 THE not-RH BRANCH. Under not-RH the consumer still needs (i)-(iii) to deliver RH by contradiction; where exactly does the
+   zero-convergence supplier of Q2 use RH, if it does? If the supplier is unconditional and (iii) holds, then the limit G has
+   only real zeros = the zeros of Xi in every compact, contradicting an off-line zero — is that the Hurwitz contradiction
+   the route was built for, and what is its first failure point?
+Q4 Lean-ready vs new analytic; CODEX DIRECTIVE for the uniqueness lemma if Mathlib has Hadamard for order 1 (it does not have
+   Hadamard factorization; name what it does have: Laguerre-Polya class? none; propose the finite-product route as in 926c1865).
+PREDICTIONS (K6, observer): P_ZERO_IDENTIFICATION_CLOSES_INPUT_A 0.55; P_S9_IS_SOURCE_IDENTITY 0.50;
+   P_ZERO_SUPPLIER_UNCONDITIONAL 0.25; P_JUDGE_NAMES_ZERO_ROUTE_AS_PRIMARY 0.60.
+REQUIRED VERDICT: standard (REQUEST_ID/BOUNDARY/commit/blob/SHA; Q1-Q4 exact; score predictions; Lean-ready vs analytic; no Lean edit, no numerics, no promotion, no RH claim).
