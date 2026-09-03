@@ -574,4 +574,18 @@ theorem proposition59_explicit_product_identity
 
 #print axioms proposition59_explicit_product_identity
 
+/-- Plant D in machine-checkable form: the normalization hypothesis used
+throughout, `v 0 ≠ 0`, is literally `F 0 ≠ 0`. -/
+theorem proposition59RawTransform_at_zero_ne_zero_iff
+    {L : ℝ} (hL : 0 < L) (N : ℕ) (v : ℤ → ℂ) :
+    proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v 0 ≠ 0 ↔
+      v 0 ≠ 0 := by
+  have h0 : (0 : ℤ) ∈ Finset.Icc (-(N : ℤ)) (N : ℤ) := by simp
+  have hsqrt : (Real.sqrt L : ℂ) ≠ 0 := by
+    exact_mod_cast Real.sqrt_ne_zero'.mpr hL
+  rw [proposition59RawTransform_at_zero_eq_sqrt hL _ v h0]
+  simp [hsqrt]
+
+#print axioms proposition59RawTransform_at_zero_ne_zero_iff
+
 end Q3.RouteB
