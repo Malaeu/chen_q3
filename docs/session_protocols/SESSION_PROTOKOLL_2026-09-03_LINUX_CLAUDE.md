@@ -165,3 +165,13 @@ E-CLOSED ⇔ alternierende Gitter-Summe = Input A mit Gewichten. C2/C3/C4/C5 tot
   ground numerator's zero count equals the count of γ_j inside (6/12/26 on m = 13/23/43) — the discriminator passes there
   numerically; beyond, excess zeros appear where |F| ~ √λ₁.
 - Background watchers were killed twice by something outside owner/observer control (backlog C3).
+
+## Addendum (2026-09-04, close of night) — WINDLOCK verdict and Lean closure
+
+- WINDLOCK verdict (7a78088f): single-endpoint atom KILLED (plant with four real zeros); full-boundary rectangle Rouche is the
+  count lock; supplier = projective ground→trial transfer on the boundary (still pays the gap); polynomial circle argument
+  principle Lean-able — DONE by agent and verified: `P59SingleEndpointAtomCounterexample.lean`, `PolynomialCircleRootCount.lean`.
+- Probe 14 follow-ups: rectangle lock improves with m (0.97→0.67 at R=28); beyond the window e(R)→1 (no free margin).
+- Publication plan extended (items 5–9). Background tasks killed thrice by the harness (backlog C3/C4).
+- State at close: no agents running; queue has no OPEN request; next analytic step is the boundary supplier (judge/Mythos
+  territory, not an Opus agent at night). PX_RH_CLAIM: NOT_MADE.
