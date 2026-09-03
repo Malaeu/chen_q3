@@ -1,9 +1,8 @@
 # Codex task — Goal 058: alternating lattice curvature (Lean), six judge-listed items
 
 Date: 2026-09-04
-Status: `PREPARED_AWAITING_TRANSACTION` — judge `f788d2fa` §CODEX DIRECTIVE: "No execution is
-authorized. A later transaction may formalize the six Lean-ready items." Do not start until
-Linux-Claude or the owner opens the transaction.
+Status: `AUTHORIZED_BY_OWNER` (2026-09-03 ≈00:10 CEST next day; Codex down, executor is a Linux-Claude Opus agent). Judge `f788d2fa` §CODEX DIRECTIVE had said: "No execution is
+authorized. A later transaction may formalize the six Lean-ready items." The owner opened that transaction.
 Parent: verdict `f788d2fa` (`REQ-2026-09-03-LATTICEWALL`); builds on
 `Proposition59ExplicitProductCurvatureBridge.lean` (KERNEL_GREEN 2026-09-03)
 

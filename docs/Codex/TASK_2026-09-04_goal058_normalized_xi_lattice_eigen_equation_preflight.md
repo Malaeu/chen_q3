@@ -2,7 +2,7 @@
 
 Date: 2026-09-04
 Status: `AUTHORIZED_BY_JUDGE` — `CHEAPEST_NEXT_ACTION` of verdict `f788d2fa` (`REQ-2026-09-03-LATTICEWALL`); mode `PAPER_AND_SOURCE_READ_ONLY`
-Executor: Codex (Fable launcher for paper reasoning) or a Linux-Claude Opus agent if Codex is down; prefix `[Linux-Codex][rh_clean][Goal058]` or `[Linux-Claude-Agent][rh_clean][Goal058]`
+Executor: Linux-Claude Opus agent (owner decision 2026-09-03 late: Codex down, do not wait); prefix `[Linux-Codex][rh_clean][Goal058]` or `[Linux-Claude-Agent][rh_clean][Goal058]`
 Author: Linux-Claude (observer), transcribing the judge
 
 ```yaml
