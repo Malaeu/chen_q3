@@ -143,3 +143,14 @@ E-CLOSED ⇔ alternierende Gitter-Summe = Input A mit Gewichten. C2/C3/C4/C5 tot
 - Tools: conventions.py + CONVENTION_CARD; s7_table.py; xi_row_zeros.py; vahta.sh. Rules 11-13 in project CLAUDE.md;
   «Friction first» and «agent output unverified until checked» in ~/.claude/CLAUDE.md; backlog file.
 - Open: QUASIEIGEN verdict (vahta armed); then bind DRAFT ZEROPIN (five ropes listed); Lean uniqueness gap (rope e).
+
+## Addendum (2026-09-04, deep night) — two verdicts, identity verified, leakage mechanism
+
+- QUASIEIGEN `9b822624`: linear shells exhausted; SEL selector modulus — killed by my falsifier (real-rooted row at
+  Xi-residual scale, |R(v−y)| ≥ 63; one-sided hyperbolicity radius 1e-3). ZEROPIN `1529837d`: partial zero pinning does
+  not identify Xi (P vs P(1+εz⁴)); atom = complete zero divisor + mass + crosswalk; Lean quad-product bound GREEN.
+- R2 range test: e(γ) in the good range of K (|b| ≈ 58 vs 1e86 at a non-zero), holds on m=13..163 and j=1..3.
+- Paper agent: K = Σ_z E(z)E(z)ᵀ over all zeta zeros (Groskin 2.5 + CCM 5.9) — VERIFIED by my 3000-zero sum on three
+  entries; my a-priori doubt refuted. Mechanism: ground transform is window-concentrated with leakage √λ₁; λ₁ = leakage.
+- Bugs of mine tonight: ball-vs-threshold; polynomial root accuracy; ctx.dps set after acb construction (twice). All caught.
+- Open: batch LEAKAGE (unconditional use of the identity; not-RH sign; complete divisor in this light).
