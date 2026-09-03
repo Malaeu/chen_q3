@@ -210,4 +210,134 @@ example {L : ℝ} (hL : 0 < L) {j : ℤ} (hj : j ∈ ({-1, 0, 1} : Finset ℤ)) 
 #print axioms proposition59_numerator_root_imp_transform_root
 #print axioms proposition59CauchyNumerator_roots_real
 
+/-! ## Step 3 — even, real-rooted polynomials factor into quadratics
+(`P59_EVEN_REAL_ROOTED_POLYNOMIAL_QUADRATIC_PRODUCT`)
+
+Finite polynomial algebra only.  `Polynomial.Splits` over `ℂ` is free, so
+`Polynomial.Splits.eval_eq_prod_roots` supplies the finite factorization and no
+Hadamard product is involved. -/
+
+/-- For an even polynomial the root multiplicities at `a` and `-a` agree. -/
+private theorem rootMultiplicity_neg_of_even {p : ℂ[X]} (hp : p ≠ 0)
+    (heven : p.comp (-X) = p) (a : ℂ) :
+    p.rootMultiplicity (-a) = p.rootMultiplicity a := by
+  have key : ∀ (b : ℂ) (n : ℕ), (X - C b) ^ n ∣ p → (X - C (-b)) ^ n ∣ p := by
+    rintro b n ⟨q, hq⟩
+    refine ⟨(-1 : ℂ[X]) ^ n * q.comp (-X), ?_⟩
+    have h2 : p = (-X - C b) ^ n * q.comp (-X) := by
+      conv_lhs => rw [← heven]
+      rw [hq]
+      simp [mul_comp, pow_comp, sub_comp]
+    rw [h2, C_neg, show (X - -C b : ℂ[X]) = X + C b by ring,
+      show (-X - C b : ℂ[X]) = -(X + C b) by ring, neg_pow]
+    ring
+  have le1 : p.rootMultiplicity a ≤ p.rootMultiplicity (-a) := by
+    rw [le_rootMultiplicity_iff hp]
+    exact key a _ ((le_rootMultiplicity_iff hp).mp le_rfl)
+  have le2 : p.rootMultiplicity (-a) ≤ p.rootMultiplicity a := by
+    rw [le_rootMultiplicity_iff hp]
+    simpa using key (-a) _ ((le_rootMultiplicity_iff hp).mp le_rfl)
+  exact le_antisymm le2 le1
+
+/-- The root multiset of an even polynomial is invariant under negation. -/
+private theorem roots_map_neg_of_even {p : ℂ[X]} (hp : p ≠ 0)
+    (heven : p.comp (-X) = p) :
+    p.roots.map (fun r => -r) = p.roots := by
+  classical
+  refine Multiset.ext.mpr fun a => ?_
+  have hcount := Multiset.count_map_eq_count'
+    (fun r : ℂ => -r) p.roots neg_injective (-a)
+  simp only [neg_neg] at hcount
+  rw [hcount, Polynomial.count_roots, Polynomial.count_roots,
+    rootMultiplicity_neg_of_even hp heven a]
+
+open scoped Classical in
+/-- The multiset of positive roots, with multiplicity, of a complex polynomial
+whose roots are all real. -/
+noncomputable def positiveRootMultiset (p : ℂ[X]) : Multiset ℝ :=
+  (p.roots.filter (fun r => 0 < r.re)).map Complex.re
+
+theorem positiveRootMultiset_pos {p : ℂ[X]} {ρ : ℝ}
+    (hρ : ρ ∈ positiveRootMultiset p) : 0 < ρ := by
+  classical
+  obtain ⟨r, hr, rfl⟩ := Multiset.mem_map.mp hρ
+  exact (Multiset.mem_filter.mp hr).2
+
+/-- `P59_EVEN_REAL_ROOTED_POLYNOMIAL_QUADRATIC_PRODUCT`: an even complex
+polynomial with only real roots and nonzero value at the origin is, after
+normalization at the origin, the finite product of the paired quadratics
+`1 - z²/ρ²` over its positive roots. -/
+theorem eval_div_eval_zero_eq_prod_positiveRootMultiset
+    {p : ℂ[X]} (hp0 : p.eval 0 ≠ 0) (heven : ∀ z : ℂ, p.eval (-z) = p.eval z)
+    (hreal : ∀ z : ℂ, p.eval z = 0 → z.im = 0) (z : ℂ) :
+    p.eval z / p.eval 0 =
+      ((positiveRootMultiset p).map
+        (fun ρ : ℝ => 1 - z ^ 2 / (ρ : ℂ) ^ 2)).prod := by
+  classical
+  have hp : p ≠ 0 := fun h => hp0 (by simp [h])
+  have hcomp : p.comp (-X) = p := by
+    refine Polynomial.funext fun w => ?_
+    simpa using heven w
+  have hsplits : p.Splits := IsAlgClosed.splits p
+  -- roots are nonzero real numbers
+  have hroot_ne : ∀ r ∈ p.roots, r ≠ 0 := by
+    intro r hr hr0
+    subst hr0
+    exact hp0 ((Polynomial.mem_roots hp).mp hr)
+  have hroot_re : ∀ r ∈ p.roots, ((r.re : ℂ)) = r := by
+    intro r hr
+    have him : r.im = 0 := hreal r ((Polynomial.mem_roots hp).mp hr)
+    exact Complex.ext rfl (by simp [him])
+  have hroot_re_ne : ∀ r ∈ p.roots, r.re ≠ 0 := by
+    intro r hr hre
+    exact hroot_ne r hr (by rw [← hroot_re r hr, hre]; simp)
+  -- the factorization normalized at the origin
+  have hprodroots : p.eval z = p.eval 0 *
+      (p.roots.map (fun r => 1 - z / r)).prod := by
+    rw [hsplits.eval_eq_prod_roots z, hsplits.eval_eq_prod_roots 0, mul_assoc,
+      ← Multiset.prod_map_mul]
+    congr 2
+    refine Multiset.map_congr rfl fun r hr => ?_
+    have hrne : r ≠ 0 := hroot_ne r hr
+    field_simp
+    ring
+  -- split the roots into the positive part and its mirror image
+  set Pos : Multiset ℂ := p.roots.filter (fun r => 0 < r.re) with hPos
+  set Neg : Multiset ℂ := p.roots.filter (fun r => ¬ 0 < r.re) with hNeg
+  have hsplit : Pos + Neg = p.roots := Multiset.filter_add_not _ _
+  have hNegMap : Neg = Pos.map (fun r => -r) := by
+    have hmapneg := roots_map_neg_of_even hp hcomp
+    have h1 : Neg = Multiset.filter (fun r : ℂ => ¬ 0 < r.re)
+        (p.roots.map (fun r => -r)) := by rw [hmapneg]
+    rw [h1, Multiset.filter_map]
+    congr 1
+    refine Multiset.filter_congr fun r hr => ?_
+    have hre := hroot_re_ne r hr
+    simp only [Function.comp_apply, Complex.neg_re]
+    constructor
+    · intro h
+      exact lt_of_le_of_ne (by linarith [not_lt.mp h]) (Ne.symm hre)
+    · intro h
+      exact not_lt.mpr (by linarith)
+  -- assemble the paired quadratic product
+  have hpair : (p.roots.map (fun r => 1 - z / r)).prod =
+      (Pos.map (fun r => 1 - z ^ 2 / r ^ 2)).prod := by
+    rw [← hsplit, Multiset.map_add, Multiset.prod_add, hNegMap,
+      Multiset.map_map, ← Multiset.prod_map_mul]
+    refine congrArg _ (Multiset.map_congr rfl fun r hr => ?_)
+    have hrne : r ≠ 0 := hroot_ne r (Multiset.mem_of_mem_filter hr)
+    simp only [Function.comp_apply]
+    field_simp
+    ring
+  have hposre : (Pos.map (fun r => 1 - z ^ 2 / r ^ 2)) =
+      (positiveRootMultiset p).map
+        (fun ρ : ℝ => 1 - z ^ 2 / (ρ : ℂ) ^ 2) := by
+    rw [positiveRootMultiset, Multiset.map_map]
+    refine Multiset.map_congr rfl fun r hr => ?_
+    rw [Function.comp_apply, hroot_re r (Multiset.mem_of_mem_filter hr)]
+  rw [hprodroots, hpair, hposre, mul_comm, mul_div_assoc, div_self hp0, mul_one]
+
+#print axioms positiveRootMultiset_pos
+#print axioms eval_div_eval_zero_eq_prod_positiveRootMultiset
+
 end Q3.RouteB
