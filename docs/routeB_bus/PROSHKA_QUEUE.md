@@ -14,6 +14,22 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-03-SHELLSEARCH · Goal 058: shell search — typed theorems from recognized inputs to the two-component lattice atom (N: W=O(L⁻²); I: compact profile) · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SHELL_SEARCH_SOURCE_TO_LATTICE_ATOM_2026-09-03.txt`
+- Boundary: `GOAL058_SHELL_SEARCH_SOURCE_TO_LATTICE_ATOM`
+- Call class: `DELEGATED_STRATEGIC_REVIEW` (owner's frame: atom / shell / chain; find shells, not prove them; parallel to the judge's own preflight `GOAL058_NORMALIZED_XI_LATTICE_EIGEN_EQUATION_PREFLIGHT`)
+- Observer's blind candidate sealed BEFORE the request: `docs/routeB_bus/sealed/OBSERVER_SEALED_SHELL_CANDIDATE_2026-09-03.md` (same commit); judge reads it only for Q5
+- Registered predictions: `P_A_SHELL_WITH_ZERO_OPEN_INPUTS_EXISTS p=0.10`, `P_BEST_SHELL_HAS_ONE_OPEN_INPUT p=0.55`, `P_JUDGE_TOP_SHELL_MATCHES_OBSERVER_SEALED p=0.35`
+- Delivery mode: owner remote; GitHub locator in the one-line instruction
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `c1bb9cdea0de351c3b67d185b0b645960f15eb6f` / `6855` / `95` /
+  `47080558c7b75f922966c68b8ba50c7001e996fccf8ac6b7bad1dd45845e73c4` /
+  `71e2223631e2059457d07edcdf7c50d87aa5b598` / `yes`
+
+---
+
 ## REQ-2026-09-03-LATTICEWALL · Goal 058: alternating-lattice form of the curvature wall; weighted lattice error O(L⁻²) as the one statement · ANSWERED
 
 - `STATUS: ANSWERED`
