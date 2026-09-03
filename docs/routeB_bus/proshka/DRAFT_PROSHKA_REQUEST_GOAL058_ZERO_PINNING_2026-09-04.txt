@@ -24,6 +24,13 @@ INTAKE (Probe 12, observer by hand, precommit ADDENDUM 13/14, output phase5_code
      (interpolation error of the sampled Xi) while F_ground(gamma_1) = 8e-29: the ground row's polylog deviation Delta from
      the Xi samples is exactly the correction that annihilates the interpolation error at the zeta zeros, to lambda_1 accuracy.
      Reading: the ground row is "the Nyquist interpolant tuned to vanish at the zeros of Xi" (candidate identity for Q2).
+  6. Observer's own list of ropes for the zero route (to be scored, not assumed): (a) low zeros converge to gamma_j;
+     (b) the EXCESS numerator zeros (m=13: 62.9, 81.7, 134.5, 430.5 beyond the tracked gamma_j) escape every compact
+     (2N numerator zeros vs N(x_N) ~ m zeta zeros below x_N = 2 pi m/L: density matches only asymptotically);
+     (c) the Hadamard factor e^{a z^2}: the envelope |F| <= e^{kappa|z|^2} is order 2, so uniqueness needs kappa_k ->
+     kappa_Xi = sum 1/gamma_j^2 = 0.02310 (numerics 0.0259 -> 0.0245 on m = 13..163; Lean has only boundedness);
+     (d) unconditionality of (a) (not-RH branch); (e) Lean: Mathlib has no Hadamard factorization / uniqueness for
+     real-zero even entire functions -- name the finite-product route (as in 926c1865) or the exact missing lemma.
 
 QUESTIONS
 Q1 IDENTIFICATION THROUGH ZEROS. The consumer needs local-uniform convergence F_k/F_k(0) -> centeredXi/centeredXi(0). Given
@@ -43,6 +50,6 @@ Q3 THE not-RH BRANCH. Under not-RH the consumer still needs (i)-(iii) to deliver
    the route was built for, and what is its first failure point?
 Q4 Lean-ready vs new analytic; CODEX DIRECTIVE for the uniqueness lemma if Mathlib has Hadamard for order 1 (it does not have
    Hadamard factorization; name what it does have: Laguerre-Polya class? none; propose the finite-product route as in 926c1865).
-PREDICTIONS (K6, observer): P_ZERO_IDENTIFICATION_CLOSES_INPUT_A 0.55; P_S9_IS_SOURCE_IDENTITY 0.50;
+PREDICTIONS (K6, observer): P_ZERO_IDENTIFICATION_CLOSES_INPUT_A 0.55; P_EXCESS_ZEROS_ESCAPE 0.60; P_KAPPA_CONVERGES_TO_KAPPA_XI 0.70; P_S9_IS_SOURCE_IDENTITY 0.50;
    P_ZERO_SUPPLIER_UNCONDITIONAL 0.25; P_JUDGE_NAMES_ZERO_ROUTE_AS_PRIMARY 0.60.
 REQUIRED VERDICT: standard (REQUEST_ID/BOUNDARY/commit/blob/SHA; Q1-Q4 exact; score predictions; Lean-ready vs analytic; no Lean edit, no numerics, no promotion, no RH claim).
