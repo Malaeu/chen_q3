@@ -1505,7 +1505,7 @@ tool_families:
       prime-set); no substitute construction. DIAGNOSTIC_NEVER_A_PROOF,
       PX_RH_CLAIM NOT_MADE, no route promotion.
     front_door: edge-ledger-build
-    coverage: [docs/routeB_bus/phase5_scripts/edge_ledger_build.py, docs/routeB_bus/phase5_scripts/edge_ledger_fuchs.py, docs/routeB_bus/phase5_scripts/edge_ledger_ratio.py, docs/routeB_bus/phase5_scripts/edge_ledger_relritz.py, docs/routeB_bus/phase5_scripts/edge_ledger_dualcert.py, docs/routeB_bus/phase5_scripts/edge_ledger_schur.py]
+    coverage: [docs/routeB_bus/phase5_scripts/edge_ledger_build.py, docs/routeB_bus/phase5_scripts/edge_ledger_fuchs.py, docs/routeB_bus/phase5_scripts/edge_ledger_ratio.py, docs/routeB_bus/phase5_scripts/edge_ledger_relritz.py, docs/routeB_bus/phase5_scripts/edge_ledger_dualcert.py, docs/routeB_bus/phase5_scripts/edge_ledger_schur.py, docs/routeB_bus/phase5_codex/slope_split.py]
     tools:
       - id: edge-ledger-build
         classification: MANUAL
@@ -1810,6 +1810,60 @@ tool_families:
           but this is not verified. m=83 took ~48s wall time at dps=360
           (well inside the 30-minute budget); m=163 not attempted (excluded
           by the precommit).
+        last_verified: 2026-09-03
+
+      - id: slope-split
+        classification: MANUAL
+        status: ENABLED
+        audience: [CODEX, CLAUDE_CODE, HUMAN]
+        mode: WRITES_DERIVED
+        path: docs/routeB_bus/phase5_codex/slope_split.py
+        invoke: .venv/bin/python docs/routeB_bus/phase5_codex/slope_split.py
+        trigger: >-
+          Explicit Goal 058 Probe 7 (which part of the central-column
+          coupling b carries the 1/12 cancellation, ADDENDUM 8 of
+          PRECOMMIT_2026-09-03_edge_ledger_probes.md) request only; not
+          part of any automatic startup or goal-close event. Imports
+          CCMArbBuilder/bounds/compute_eig_data/decimal_str/sig_agree from
+          edge_ledger_build.py (imported, never copied) to rebuild its own
+          even blocks.
+        writes: true
+        approval: TASK_SCOPED_OUTPUT_UNDER_docs_routeB_bus_phase5_codex_out
+        authority: FINITE_EVEN_SECTOR_BORDERED_SLOPE_SPLIT_DIAGNOSTIC_NOT_A_CERTIFICATE_NOT_RH
+        records_to: [docs/routeB_bus/phase5_codex/out/slope_split.json, docs/routeB_bus/phase5_codex/out/slope_split.md]
+        note: >-
+          For m=N in {13,23,43,83} (m=83 at 360 dps, others at 240 dps),
+          splits the even block's central coupling column
+          b = even[1:,0] = sqrt2*(w02(0,i) - wr(0,i) - prime(0,i)) into the
+          literal W02 pole part b_pole = sqrt2*w02(0,i) (verified equal to
+          the C_L,n formula from ADDENDUM 8 times the L-only constant
+          8*sinh(L/4)/sqrt(L)) and the Arch-Prime remainder
+          b_AP = -sqrt2*(wr(0,i)+prime(0,i)); solves
+          (D-lambda1)x = b_part via arb_mat.solve(algorithm="precond") for
+          D = even[1:,1:] shifted by lambda1, then dots against
+          c_i = sqrt2/(2*pi^2*i^2) (same even-basis coordinates Probe 5/6
+          validated) to get S_pole, S_AP, S_total = S_pole+S_AP; a second,
+          independent direct solve against the unsplit b cross-checks
+          S_direct = S_total exactly (ball 0). Sanity gate: 1/12-S_total
+          must equal a1/xi0 from out/edge_ledger_dualcert.json (Probe 5,
+          same cell) to >=8 significant digits, else the script stops with
+          SLOPE_SANITY_MISMATCH. Verdict for
+          P_POLE_PART_CARRIES_ONE_TWELFTH (p=0.60) by the frozen ADDENDUM-8
+          rule (CONFIRMED: |1/12-S_pole|<=0.5*(1/12) AND |S_AP|<=0.5*(1/12)
+          at every cell; REFUTED: |S_pole|<=0.1*(1/12) at every cell; else
+          UNRESOLVED).
+        validation: >-
+          Run 2026-09-03 (first by another body in a scratch checkout,
+          independently reproduced bit-for-bit in the main checkout,
+          10.6s wall for all four cells): sanity agreed to >=8 significant
+          digits at every cell (PASS). Neither frozen condition holds at
+          any cell: S_pole/(1/12) and S_AP/(1/12) are astronomically large
+          and nearly opposite (~3.4e22 at m=13, ~5.6e42 at m=23, ~6.5e83 at
+          m=43, ~2.8e155 at m=83), so the pole part does not carry a
+          bounded fraction of 1/12 -- it wildly overshoots and cancels
+          against an equally enormous Arch-Prime part to leave the tiny
+          1/12-S consistent with Probe 5's a1/xi0. Verdict:
+          P_POLE_PART_CARRIES_ONE_TWELFTH: UNRESOLVED.
         last_verified: 2026-09-03
 
 dynamic_queries:
