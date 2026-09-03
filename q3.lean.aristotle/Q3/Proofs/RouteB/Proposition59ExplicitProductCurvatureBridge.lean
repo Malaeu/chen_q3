@@ -432,4 +432,146 @@ theorem proposition59CauchyNumerator_normalized_product
 #print axioms proposition59CauchyNumerator_eval_zero_ne_zero
 #print axioms proposition59CauchyNumerator_normalized_product
 
+/-! ## Step 4a — the removable-node-safe included-factor identity
+
+The finite included lattice factors are moved to the left-hand side, so no
+denominator is cancelled at a node where it vanishes.  The identity is proved
+for every `z`: off the lattice by the Cauchy quotient, at the central node by
+the exact removable value, and at a nonzero node by the *exact* vanishing of
+both sides (the sine numerator is not cancelled globally). -/
+
+/-- `v 0 * D_N(z) = z * P_N(0) * ∏_{k ≠ 0} (1 - z/x_k)`; the finite algebra
+that moves the included lattice factors across. -/
+theorem proposition59CauchyDenominator_eq_included_factors
+    {L : ℝ} (hL : L ≠ 0) (N : ℕ) (v : ℤ → ℂ) (z : ℂ) :
+    v 0 * (proposition59CauchyDenominator L (Finset.Icc (-(N : ℤ)) (N : ℤ))).eval z =
+      z * (proposition59CauchyNumerator L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v).eval 0 *
+        ∏ k ∈ (Finset.Icc (-(N : ℤ)) (N : ℤ)).erase 0,
+          (1 - z / proposition59Pole L k) := by
+  classical
+  set S : Finset ℤ := Finset.Icc (-(N : ℤ)) (N : ℤ) with hSdef
+  have h0 : (0 : ℤ) ∈ S := by simp [hSdef]
+  have hpole0 : proposition59Pole L 0 = 0 := by simp [proposition59Pole]
+  have hxk : ∀ k ∈ S.erase 0, proposition59Pole L k ≠ 0 := by
+    intro k hk
+    rw [← hpole0]
+    exact proposition59Pole_ne hL (Finset.mem_erase.mp hk).1
+  have hD : (proposition59CauchyDenominator L S).eval z =
+      z * ∏ k ∈ S.erase 0, (z - proposition59Pole L k) := by
+    rw [proposition59CauchyDenominator_eval, ← Finset.mul_prod_erase S _ h0, hpole0]
+    ring
+  have hP0 : (proposition59CauchyNumerator L S v).eval 0 =
+      v 0 * ∏ k ∈ S.erase 0, (0 - proposition59Pole L k) := by
+    have := proposition59CauchyNumerator_eval_at_lattice L S v h0
+    rwa [hpole0] at this
+  have hfac : ∏ k ∈ S.erase 0, (z - proposition59Pole L k) =
+      (∏ k ∈ S.erase 0, (0 - proposition59Pole L k)) *
+        ∏ k ∈ S.erase 0, (1 - z / proposition59Pole L k) := by
+    rw [← Finset.prod_mul_distrib]
+    refine Finset.prod_congr rfl fun k hk => ?_
+    have hk0 := hxk k hk
+    field_simp
+    ring
+  rw [hD, hfac, hP0]
+  ring
+
+/-- Step 4a (`P59_REMOVABLE_LATTICE_PRODUCT_EXTENSION`, exact form): for every
+`z`, including the removable nodes. -/
+theorem proposition59_included_factor_product_identity
+    {L : ℝ} (hL : 0 < L) (N : ℕ) (v : ℤ → ℂ) (hv0 : v 0 ≠ 0) (z : ℂ) :
+    proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v z *
+        ∏ k ∈ (Finset.Icc (-(N : ℤ)) (N : ℤ)).erase 0,
+          (1 - z / proposition59Pole L k) =
+      proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v 0 *
+        ((proposition59CauchyNumerator L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v).eval z /
+          (proposition59CauchyNumerator L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v).eval 0) *
+        (proposition59PoleKernel L 0 z / (L : ℂ)) := by
+  classical
+  set S : Finset ℤ := Finset.Icc (-(N : ℤ)) (N : ℤ) with hSdef
+  have h0 : (0 : ℤ) ∈ S := by simp [hSdef]
+  have hpole0 : proposition59Pole L 0 = 0 := by simp [proposition59Pole]
+  have hLC : (L : ℂ) ≠ 0 := by exact_mod_cast hL.ne'
+  have hP0 : (proposition59CauchyNumerator L S v).eval 0 ≠ 0 :=
+    proposition59CauchyNumerator_eval_zero_ne_zero hL.ne' N v hv0
+  have hsqrt : (Real.sqrt L : ℂ) ≠ 0 := by
+    exact_mod_cast Real.sqrt_ne_zero'.mpr hL
+  have hsq : (Real.sqrt L : ℂ) * (Real.sqrt L : ℂ) = (L : ℂ) := by
+    exact_mod_cast Real.mul_self_sqrt hL.le
+  have hF0 : proposition59RawTransform L S v 0 = (Real.sqrt L : ℂ) * v 0 :=
+    proposition59RawTransform_at_zero_eq_sqrt hL S v h0
+  by_cases hlat : ∃ j ∈ S, z = proposition59Pole L j
+  · obtain ⟨j, hj, rfl⟩ := hlat
+    by_cases hj0 : j = 0
+    · subst j
+      rw [hpole0]
+      have hone : ∏ k ∈ S.erase 0, (1 - (0 : ℂ) / proposition59Pole L k) = 1 := by
+        simp
+      have hker : proposition59PoleKernel L 0 0 = (L : ℂ) := by
+        rw [← hpole0, proposition59PoleKernel_at_pole hL.ne' 0]
+        simp
+      rw [hone, hker, div_self hP0, div_self hLC]
+      ring
+    · have hjerase : j ∈ S.erase 0 := Finset.mem_erase.mpr ⟨hj0, hj⟩
+      have hzero : ∏ k ∈ S.erase 0,
+          (1 - proposition59Pole L j / proposition59Pole L k) = 0 :=
+        Finset.prod_eq_zero hjerase (by
+          have : proposition59Pole L j ≠ 0 := by
+            rw [← hpole0]; exact proposition59Pole_ne hL.ne' hj0
+          field_simp
+          ring)
+      have hker : proposition59PoleKernel L 0 (proposition59Pole L j) = 0 := by
+        rw [proposition59PoleKernel_at_lattice_sign hL.ne' 0 j, if_neg (Ne.symm hj0)]
+      rw [hzero, hker, mul_zero, zero_div, mul_zero]
+  · have hz : ∀ k ∈ S, z ≠ proposition59Pole L k := fun k hk hkz => hlat ⟨k, hk, hkz⟩
+    have hz0 : z ≠ 0 := by
+      have := hz 0 h0
+      rwa [hpole0] at this
+    have hDne : (proposition59CauchyDenominator L S).eval z ≠ 0 :=
+      proposition59CauchyDenominator_eval_ne_zero L S hz
+    have hFz : proposition59RawTransform L S v z =
+        (Real.sqrt L : ℂ)⁻¹ * proposition59Numerator L z *
+          ((proposition59CauchyNumerator L S v).eval z /
+            (proposition59CauchyDenominator L S).eval z) := by
+      rw [proposition59RawTransform_eq_paper_formula hL.ne' S v hz,
+        proposition59_finite_cauchy_numerator_identity L S v hz]
+    have hker : proposition59PoleKernel L 0 z =
+        proposition59Numerator L z / z := by
+      rw [proposition59PoleKernel_eq_quotient hL.ne' 0 (by rw [hpole0]; exact hz0),
+        hpole0, sub_zero]
+    have hDrel := proposition59CauchyDenominator_eq_included_factors hL.ne' N v z
+    have hPi : ∏ k ∈ S.erase 0, (1 - z / proposition59Pole L k) =
+        v 0 * (proposition59CauchyDenominator L S).eval z /
+          (z * (proposition59CauchyNumerator L S v).eval 0) := by
+      rw [eq_div_iff (mul_ne_zero hz0 hP0), hDrel]
+      ring
+    rw [hFz, hker, hF0, hPi, ← hsq]
+    field_simp
+
+#print axioms proposition59CauchyDenominator_eq_included_factors
+#print axioms proposition59_included_factor_product_identity
+
+/-- Step 4a combined with step 3: the exact, node-safe explicit-product form of
+the Proposition-5.9 transform.  The right-hand side carries the finite positive
+root product of `P_N` and the entire removable sine factor
+`proposition59PoleKernel L 0 z / L = sin(zL/2)/(zL/2)`; the finite included
+lattice factors stay on the left, so nothing is cancelled at a removable node. -/
+theorem proposition59_explicit_product_identity
+    {L : ℝ} (hL : 0 < L) (N : ℕ) (v : ℤ → ℂ) (hv : ∀ k : ℤ, v (-k) = v k)
+    (hv0 : v 0 ≠ 0)
+    (hzeros : ZerosRealOn Set.univ
+      (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v))
+    (z : ℂ) :
+    proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v z *
+        ∏ k ∈ (Finset.Icc (-(N : ℤ)) (N : ℤ)).erase 0,
+          (1 - z / proposition59Pole L k) =
+      proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v 0 *
+        ((positiveRootMultiset
+            (proposition59CauchyNumerator L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v)).map
+          (fun ρ : ℝ => 1 - z ^ 2 / (ρ : ℂ) ^ 2)).prod *
+        (proposition59PoleKernel L 0 z / (L : ℂ)) := by
+  rw [proposition59_included_factor_product_identity hL N v hv0 z,
+    proposition59CauchyNumerator_normalized_product hL N v hv hv0 hzeros z]
+
+#print axioms proposition59_explicit_product_identity
+
 end Q3.RouteB
