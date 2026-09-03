@@ -48,7 +48,7 @@
       },
       "dps": 240,
       "eigen_method": "vdhoeven_mourrain",
-      "elapsed_seconds": 0.19078762899152935,
+      "elapsed_seconds": 0.17924297996796668,
       "floors": {
         "all_delta_nonnegative": true,
         "argmin_delta_n_full": 1,
@@ -682,7 +682,7 @@
       },
       "dps": 240,
       "eigen_method": "vdhoeven_mourrain",
-      "elapsed_seconds": 0.3899581399746239,
+      "elapsed_seconds": 0.38431185111403465,
       "floors": {
         "all_delta_nonnegative": true,
         "argmin_delta_n_full": 1,
@@ -1316,7 +1316,7 @@
       },
       "dps": 240,
       "eigen_method": "vdhoeven_mourrain",
-      "elapsed_seconds": 1.7260106590110809,
+      "elapsed_seconds": 1.7190837408415973,
       "floors": {
         "all_delta_nonnegative": true,
         "argmin_delta_n_full": 1,
@@ -1950,7 +1950,7 @@
       },
       "dps": 360,
       "eigen_method": "vdhoeven_mourrain",
-      "elapsed_seconds": 16.327808181988075,
+      "elapsed_seconds": 15.867168748984113,
       "floors": {
         "all_delta_nonnegative": true,
         "argmin_delta_n_full": 1,
@@ -2584,7 +2584,7 @@
       },
       "dps": 900,
       "eigen_method": "inverse_iteration_precond",
-      "elapsed_seconds": 297.4617525371723,
+      "elapsed_seconds": 291.77618030505255,
       "floors": {
         "all_delta_nonnegative": true,
         "argmin_delta_n_full": 1,
@@ -3176,15 +3176,16 @@
       "xi0": -0.39504290828505495
     }
   ],
-  "generated_utc": "2026-09-03T18:59:10.499402+00:00",
+  "generated_utc": "2026-09-03T19:05:44.983900+00:00",
   "identity_relative_gate": "1e-30",
   "n_modes": 8,
   "observations": [
     "S7 (\u00a710) distinguishing measurement: |D^odd_12| = m=13: 1.6941e-03, m=23: 4.7034e-04, m=43: 8.0791e-04, m=83: 1.1894e-04, m=163: 2.8554e-04 against a pole part of -0.2325, -0.4424, -0.8056, -1.395, -2.309.",
     "S8 (\u00a710) odd-sector floor: lambda_min((D-lambda1)|_odd) on the full block is m=13: 6.4088e-28, m=23: 1.5112e-48, m=43: 3.6487e-87, m=83: 2.8631e-158, m=163: 6.4172e-290; times L^2: 4.2163e-27, 1.4858e-47, 5.1617e-86, 5.5905e-157, 1.6650e-288.",
     "min_n delta_n over ALL n (not only n <= 8, which is all probe 10 and the report's arithmetic could see): m=13: 7.9155e-04 at n=1, m=23: 2.2967e-04 at n=1, m=43: 3.8929e-04 at n=1, m=83: 5.8795e-05 at n=1, m=163: 1.3985e-04 at n=1.",
-    "Contraction (\u00a75): q_ap = m=13: 6.4335e+00, m=23: 1.1784e+01, m=43: 1.0294e+01, m=83: 2.0231e+01, m=163: 1.8693e+01; q_pole = 4.787, 9.268, 9.129, 19.35, 18.44.",
-    "Stability ratio (\u00a79's deciding number): rho_stab = ||R Delta||/||R R(y)|| = m=13: 6.0352e+07, m=23: 3.8426e+13, m=43: 5.7023e+20, m=83: 1.0286e+36, m=163: 1.6842e+64.",
+    "The quadratic form itself is a near-total cancellation. LHS_direct = m=13: 1.0349e-19, m=23: 7.7385e-31, m=43: 2.2279e-46, m=83: 4.0588e-77, m=163: 2.5629e-134 while its own constituent terms are of size 1e-4 to 1e-6 (see the term table): at m=163 the (MAIN-P) terms are 6.3221e-05, -3.9232e-06, -5.9298e-05 and their sum is 1e-134. Equivalently R Delta sits almost exactly in the near-null space of (D-lambda1)|_odd, which is the same fact as the lambda_min column. The two pairings on the right cancel each other to the same depth. Recorded before it is explained.",
+    "Contraction (\u00a75): q_ap = m=13: 6.4335e+00, m=23: 1.1784e+01, m=43: 1.0294e+01, m=83: 2.0231e+01, m=163: 1.8693e+01; q_pole = 4.787, 9.268, 9.129, 19.35, 18.44. q_pole here runs over the FULL row n = 1..N; the report's \u00a75 table gave the n <= 8 truncation as an explicit lower bound (4.78, 9.23, 8.89, 15.87, 14.75), and the full values sit just above it at every cell, which confirms that arithmetic.",
+    "Stability ratio (\u00a79's deciding number): rho_stab = ||R Delta||/||R R(y)|| = m=13: 6.0352e+07, m=23: 3.8426e+13, m=43: 5.7023e+20, m=83: 1.0286e+36, m=163: 1.6842e+64. \u00a79 fixed the reading in advance: O(1)...O(1e4) and flat would put C_k in the H4 shell at the odd-sector floor; growth like sqrt(m) or faster would not. The measured growth is neither flat nor sqrt(m) -- log10 rho_stab runs 7.8, 13.6, 20.8, 36.0, 64.2 over m = 13..163, i.e. the numerator ||R Delta|| is almost constant (1e-2) while the denominator ||R R(y)|| collapses. DIAGNOSTIC on five cells; no cofinal claim is made about the trend.",
     "b_n relative variation over n <= 8: m=13: 1.7704e+00, m=23: 9.6619e-01, m=43: 2.8233e+00, m=83: 1.3517e-01, m=163: 3.7386e-01; the low-mode figure |b_1-b_2|/|b_1| is 2.7790e-02, 1.0895e-02, 1.8519e-02, 4.6062e-03, 9.9985e-03. Reading A of S7 asks for ~1e-4. The smallness of D^odd_12 measured against its own pole part is |D^odd_12|/|pole| = m=13: 7.2877e-03, m=23: 1.0632e-03, m=43: 1.0028e-03, m=83: 8.5240e-05, m=163: 1.2367e-04 -- i.e. b varies far less than p does, which is the mechanism S7 names, at a different order of magnitude than the 1e-4 the report reads off delta_n.",
     "||R R(y)|| (the denominator of rho_stab): m=13: 4.5401e-10, m=23: 7.2021e-16, m=43: 3.8523e-23, m=83: 1.4968e-38, m=163: 5.8885e-67 against ||R Delta|| = 2.7400e-02, 2.7675e-02, 2.1967e-02, 1.5396e-02, 9.9174e-03. nu(y) = -1.5586e-10, -3.2128e-16, -1.6864e-23, 6.2210e-39, -2.7146e-67: the Xi-sample row very nearly satisfies the eigen-equation of the builder's matrix, which is what makes rho_stab large. Recorded before it is explained.",
     "Eigenvalue sanity chain lambda_min(full) <= lambda_min(8x8) <= min_{n<=8} delta_n holds at every cell (Cauchy interlacing for the principal 8x8 submatrix, and the Rayleigh quotient at the coordinate vectors).",
