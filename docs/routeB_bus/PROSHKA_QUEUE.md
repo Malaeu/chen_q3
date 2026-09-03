@@ -14,9 +14,13 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-03-CURVRITZ · Goal 058 curvature / relative-Ritz adjudication (sequel of MOVINGNODE) · IN_REVIEW
+## REQ-2026-09-03-CURVRITZ · Goal 058 curvature / relative-Ritz adjudication (sequel of MOVINGNODE) · ANSWERED
 
-- `STATUS: IN_REVIEW`
+- `STATUS: ANSWERED`
+- Verdict: `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_CURVATURE_RELATIVE_RITZ_ADJUDICATION_2026-09-03.md`
+- Verdict commit: `0c0a2b37` · operative class: `RUN_RELATIVE_RITZ_DECISIVE_TEST` · curvature–Vitali PRESERVED · fixed absolute floor REJECTED as cofinal target shape · direct κ = primary analytic branch · next gap `P59_CURVATURE_DUAL_ANNIHILATOR_OR_SCALAR_SCHUR_IDENTITY`
+- Item 0 done: prior chat verdict materialized verbatim at `PROSHKA_VERDICT_GOAL058_CURVATURE_VITALI_PRODUCTION_RATE_REPAIR_2026-09-03.md` (blob `9d504200`)
+- Prediction fates: P_FUCHS REFUTED (wrong variation object); P_RELATIVE_RITZ_STRICTLY_WEAKER REFUTED (new interface, not a rewrite); P_MOVING_NODE_STRICTLY_WEAKER CONFIRMED; the rest UNRESOLVED pending m=163 and N-checks
 - Delivery observed 2026-09-03 ~12:20 CEST: owner pasted the canonical instruction with the .txt attached in living chat `6a8c3e2a-df50-83eb-b53d-dd4cc46f646f`; judge acknowledged the byte-exact attachment as authoritative and announced committing both authorized files together (screenshot in owner session). Note: the owner's paste also carried a few lines of observer chat text after the instruction; the attachment, not the paste, is the payload.
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_CURVATURE_RELATIVE_RITZ_ADJUDICATION_2026-09-03.txt`
 - Boundary: `GOAL058_CURVATURE_RELATIVE_RITZ_ADJUDICATION`
@@ -30,9 +34,9 @@ safety confirmation остаётся внешней границей. Судья
   `13ea6a841016fbf89fd7185b3d73bb6dd6a53250` / `yes`
 - Delivery: owner pastes the canonical short instruction into the living phase chat with the .txt attached byte-exact
 
-## REQ-2026-09-03-MOVINGNODE · Goal 058 moving-node ground-normality adjudication · OPEN
+## REQ-2026-09-03-MOVINGNODE · Goal 058 moving-node ground-normality adjudication · ANSWERED
 
-- `STATUS: OPEN`
+- `STATUS: ANSWERED` (answered as RELATED_REQUEST_ID inside the CURVRITZ verdict `0c0a2b37`: MOVING_NODE_LOGIC RATIFIED_WITH_RATE_INTERFACE_REPAIR; P_MOVING_NODE_STRICTLY_WEAKER_THAN_COMPACT_DECAY p=0.70 CONFIRMED; this request was never separately bound)
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_MOVING_NODE_GROUND_NORMALITY_ADJUDICATION_2026-09-03.txt`
 - Source report: `docs/routeB_bus/CODEX_REPORT_2026-09-03_GOAL058_MOVING_NODE_GROUND_NORMALITY_PREFLIGHT.md`
 - Boundary: `GOAL058_MOVING_NODE_GROUND_NORMALITY_ADJUDICATION`
