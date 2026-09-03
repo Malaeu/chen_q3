@@ -922,6 +922,9 @@ K6: `P_ABS_GAP_COLLAPSES` p=0.80, `P_FUCHS_IDENTITY_NUMERICALLY_HOLDS` p=0.55.
    строка коэффициентов функции `q_ground,L − P_N g_{Ξ,L}`, и атом переименовывается:
    `P59_PERIODIZED_XI_PRIMITIVE_L2_RATE`: `‖∂_t⁻¹(q_ground,L − P_N g_{Ξ,L})‖₂ = O(1/L)`.
    Кроссволк (периодизация + конвенция Фурье) в репо не найден; kill-power 9/10, цена кроссволка 2/10.
+   Проверено 04.09: формула Пуассона есть в Mathlib — `Real.tsum_eq_tsum_fourierIntegral`,
+   `SchwartzMap.tsum_eq_tsum_fourierIntegral`, `..._of_rpow_decay` (`Mathlib/Analysis/Fourier/PoissonSummation.lean`);
+   кроссволк Lean-ready как бухгалтерия, при условии, что ядро `φ_Ξ` в проекте задано и убывает.
    Это перевод стены из матрицы в функциональное пространство, где живёт trial CCM §7 —
    и туда же смотрит вопрос Q2 QUASIEIGEN (неспектральное свойство ground-вектора).
 
