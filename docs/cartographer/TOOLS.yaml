@@ -1497,6 +1497,97 @@ tool_families:
         records_to: selected task-local output
         last_verified: 2026-08-09
 
+  goal058_edge_ledger_probes:
+    summary: >-
+      Diagnostic-only Goal 058 edge-ledger data builders (Probes 1-3 of
+      PRECOMMIT_2026-09-03_edge_ledger_probes.md). Faithful parameterizations
+      of the production Phase 1 CCM Weil-matrix builder to (m, N, L,
+      prime-set); no substitute construction. DIAGNOSTIC_NEVER_A_PROOF,
+      PX_RH_CLAIM NOT_MADE, no route promotion.
+    front_door: edge-ledger-build
+    coverage: [docs/routeB_bus/phase5_scripts/edge_ledger_build.py, docs/routeB_bus/phase5_scripts/edge_ledger_fuchs.py, docs/routeB_bus/phase5_scripts/edge_ledger_ratio.py]
+    tools:
+      - id: edge-ledger-build
+        classification: MANUAL
+        status: ENABLED
+        audience: [CODEX, CLAUDE_CODE, HUMAN]
+        mode: WRITES_DERIVED
+        path: docs/routeB_bus/phase5_scripts/edge_ledger_build.py
+        invoke: .venv/bin/python docs/routeB_bus/phase5_scripts/edge_ledger_build.py
+        trigger: Explicit Goal 058 Probe 1/2 data-build request only; not part of any automatic startup or goal-close event.
+        writes: true
+        approval: TASK_SCOPED_OUTPUT_UNDER_docs_routeB_bus_phase5_scripts_out
+        authority: FINITE_EVEN_SECTOR_EIGENPAIR_AND_WINDOW_DERIVATIVE_DIAGNOSTIC_NOT_A_CERTIFICATE_NOT_RH
+        records_to: [docs/routeB_bus/phase5_scripts/out/edge_ledger.json, docs/routeB_bus/phase5_scripts/out/edge_ledger_probe1.md]
+        note: >-
+          Builds the EVEN block only (no odd sector, no beta/tau penalty) for
+          m in {13,23,43,83,163} with N=m, N-check pairs (13,26) and (43,86),
+          plus a frozen regression gate at m=13,N=120 reproducing Phase 1's
+          near-null smallest eigenvalue (~1e-59, must stay below 1e-56).
+          Eigenpairs via python-flint acb_mat.eig(right=True), algorithm
+          vdhoeven_mourrain with rump and precision-escalation fallback.
+          Reports Probe 1's descriptive verdict only; Probe 2 raw
+          finite-difference/Hellmann-Feynman derivative data is stored but
+          not adjudicated by this script.
+        validation: Byte-faithfulness spot-checked against docs/routeB_bus/phase1_scripts/ccm_control_cell_penalty.py (K_0_0, K_1_2, K_2_minus_1 samples and prime-power list identical at m=13); regression gate must PASS or the script stops with REGRESSION_FAIL.
+        last_verified: 2026-09-03
+
+      - id: edge-ledger-ratio
+        classification: MANUAL
+        status: AVAILABLE
+        audience: [CODEX, CLAUDE_CODE, HUMAN]
+        mode: WRITES_DERIVED
+        path: docs/routeB_bus/phase5_scripts/edge_ledger_ratio.py
+        invoke: .venv/bin/python docs/routeB_bus/phase5_scripts/edge_ledger_ratio.py
+        trigger: >-
+          Explicit Goal 058 Probe 3 (ratio kill-test of wall B), Probe 2
+          verdict-computation, and Probe 4 (ADDENDUM, normalized curvature
+          kappa) request only, after edge-ledger-build has written
+          docs/routeB_bus/phase5_scripts/out/edge_ledger.json; not part of
+          any automatic startup or goal-close event.
+        writes: true
+        approval: TASK_SCOPED_OUTPUT_UNDER_docs_routeB_bus_phase5_scripts_out
+        authority: FINITE_EVEN_SECTOR_RATIO_c_m_AND_KAPPA_DIAGNOSTIC_NOT_A_CERTIFICATE_NOT_RH
+        records_to: [docs/routeB_bus/phase5_scripts/out/edge_ledger_ratio.json, docs/routeB_bus/phase5_scripts/out/edge_ledger_probe2_probe3.md]
+        note: >-
+          Reads edge-ledger-build's actual nested schema (schedule -> precision
+          -> cell, xi1_pm_index/xi2_pm_index, bounds-dicts), not a flat record
+          list. Probe 3: q_m(t) = L^{-1/2} sum (-1)^n xi_n e^{2*pi*i*n*t/L},
+          xi = the lambda1 eigenvector (xi1_pm_index); |q_m(t)| is integrated
+          against e^{sigma|t|} via a piecewise-analytic reformulation (an
+          entire cos-series continuation R(x) of Re q_m, split at q_m's sign
+          changes located by a float64/numpy pre-scan, never reported as a
+          number) so acb.integral only ever sees analytic integrands; the
+          pre-scan grid is doubled and the resulting M_m(sigma) compared
+          (<1e-8 relative, else QUADRATURE_GRID_UNCONVERGED). Probe 2: c_m :=
+          -(dlambda1/dL)_HF / edge_sq, c2_m analogously from lambda2's own
+          eigenvector/edge_sq_2; HF/FD mismatch trusts edge-ledger-build's own
+          frozen 6-sig-digit flag, cross-checked independently. Probe 4
+          (ADDENDUM 2026-09-03, P_CURVATURE_SOURCE_1): kappa := -F''(0)/(2F(0))
+          from the lambda1 eigenvector, all arb at the record's precision; a
+          negative kappa at any schedule m is a hard stop (KAPPA_NEGATIVE),
+          checked before any other Probe 4 arithmetic runs. dps=120 vs 240
+          movement (Probes 2/3/4 alike) is judged with the SAME 8-sig-digit
+          sig_agree() convention edge-ledger-build itself uses (not an
+          invented threshold); a moved (m,N) is excluded from the schedule
+          verdict and surfaced explicitly rather than silently dropped or
+          silently used. A verdict that is UNRESOLVED purely because the main
+          schedule isn't fully present is relabeled
+          UNRESOLVED_INCOMPLETE_SCHEDULE so it is never mistaken for a
+          complete-but-ambiguous result.
+        validation: >-
+          As of 2026-09-03, docs/routeB_bus/phase5_scripts/out/edge_ledger.json
+          did not yet exist (edge-ledger-build not yet run to completion), so
+          this script was only run to completion on one self-made synthetic
+          schedule row matching the producer's real nested schema (m=13,N=13,
+          random even unit rows at dps=120 and dps=240) -- confirmed the
+          schema adapter, the sign-change/piecewise quadrature path, the
+          grid-doubling check, and both verdict functions all execute and
+          produce a report; exited with SCRIPT_READY_AWAITING_LEDGER rather
+          than a real verdict. Status kept at AVAILABLE, not ENABLED, until
+          run once against the real ledger.
+        last_verified: 2026-09-03
+
 dynamic_queries:
   knowledge_counts: >-
     sqlite3 -readonly q3.lean.aristotle/aristotle_db/knowledge.db
