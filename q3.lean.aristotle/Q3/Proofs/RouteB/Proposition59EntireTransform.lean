@@ -422,6 +422,192 @@ theorem proposition59RawTransform_secondDerivative_zero
     field_simp [hsqrt]
   rw [← mul_assoc, hscale]
 
+private lemma sum_Icc_symmetric {M : Type*} [AddCommMonoid M]
+    (N : ℕ) (g : ℤ → M) :
+    ∑ k ∈ Finset.Icc (-(N : ℤ)) (N : ℤ), g k =
+      g 0 + ∑ k ∈ Finset.Icc 1 N, (g k + g (-k)) := by
+  erw [show (Finset.Icc (-(N : ℤ)) N : Finset ℤ) =
+      Finset.image (fun i : ℕ ↦ (i : ℤ)) (Finset.Icc 0 N) ∪
+        Finset.image (fun i : ℕ ↦ -((i : ℤ))) (Finset.Icc 1 N) from ?_,
+    Finset.sum_union]
+  · norm_num [Finset.sum_add_distrib]
+    erw [Finset.Icc_eq_cons_Ioc, Finset.sum_cons] <;> aesop
+    rw [add_assoc, Nat.Icc_succ_left]
+  · rw [Finset.disjoint_left]
+    aesop
+  · ext a
+    aesop
+    exact if h : a ≥ 0 then
+      Or.inl ⟨Int.toNat a, by linarith [Int.toNat_of_nonneg h],
+        by rw [Int.toNat_of_nonneg h]⟩
+    else
+      Or.inr ⟨Int.toNat (-a),
+        ⟨by linarith [Int.toNat_of_nonneg (by linarith : 0 ≤ -a)],
+          by linarith [Int.toNat_of_nonneg (by linarith : 0 ≤ -a)]⟩,
+        by rw [Int.toNat_of_nonneg (by linarith : 0 ≤ -a)]; ring⟩
+
+private theorem proposition59SecondJetCoefficient_norm_sq_nat
+    (k : ℕ) (hk : 0 < k) :
+    ‖proposition59SecondJetCoefficient (k : ℤ)‖ ^ 2 =
+      1 / (4 * Real.pi ^ 4 * (k : ℝ) ^ 4) := by
+  simp [proposition59SecondJetCoefficient, ne_of_gt hk]
+  have hpi : Real.pi ≠ 0 := Real.pi_ne_zero
+  have hkR : (k : ℝ) ≠ 0 := by positivity
+  field_simp [hpi, hkR]
+  ring
+
+/-- The squared Euclidean norm of the normalized second-jet coefficient row on
+any symmetric finite lattice window is at most `1 / 80`. -/
+theorem proposition59SecondJetFunctional_norm_sq_le_one_div_eighty (N : ℕ) :
+    ∑ k ∈ Finset.Icc (-(N : ℤ)) (N : ℤ),
+        ‖proposition59SecondJetCoefficient k‖ ^ 2 ≤ (1 / 80 : ℝ) := by
+  rw [sum_Icc_symmetric]
+  have hzero : ‖proposition59SecondJetCoefficient 0‖ ^ 2 = (1 / 144 : ℝ) := by
+    norm_num [proposition59SecondJetCoefficient, Complex.norm_def, Complex.normSq_apply]
+  rw [hzero]
+  have heven : ∀ k : ℕ, 0 < k →
+      ‖proposition59SecondJetCoefficient (-(k : ℤ))‖ ^ 2 =
+        ‖proposition59SecondJetCoefficient (k : ℤ)‖ ^ 2 := by
+    intro k hk
+    simp [proposition59SecondJetCoefficient, ne_of_gt hk]
+  have hpairsum :
+      (∑ k ∈ Finset.Icc 1 N,
+        (‖proposition59SecondJetCoefficient (k : ℤ)‖ ^ 2 +
+          ‖proposition59SecondJetCoefficient (-(k : ℤ))‖ ^ 2)) =
+        ∑ k ∈ Finset.Icc 1 N,
+          2 * (1 / (4 * Real.pi ^ 4 * (k : ℝ) ^ 4)) := by
+    apply Finset.sum_congr rfl
+    intro k hk
+    have hkpos : 0 < k := (Finset.mem_Icc.mp hk).1
+    rw [heven k hkpos, proposition59SecondJetCoefficient_norm_sq_nat k hkpos]
+    ring
+  rw [hpairsum]
+  have hsum :
+      ∑ k ∈ Finset.Icc 1 N, (1 / (k : ℝ) ^ 4) ≤ Real.pi ^ 4 / 90 := by
+    rw [← hasSum_zeta_four.tsum_eq]
+    exact hasSum_zeta_four.summable.sum_le_tsum _ (fun k hk ↦ by positivity)
+  have hpi : 0 < Real.pi ^ 4 := pow_pos Real.pi_pos 4
+  calc
+    1 / 144 + ∑ k ∈ Finset.Icc 1 N,
+        2 * (1 / (4 * Real.pi ^ 4 * (k : ℝ) ^ 4))
+        = 1 / 144 + (1 / (2 * Real.pi ^ 4)) *
+            ∑ k ∈ Finset.Icc 1 N, 1 / (k : ℝ) ^ 4 := by
+              rw [Finset.mul_sum]
+              congr 1
+              apply Finset.sum_congr rfl
+              intro k hk
+              field_simp
+              ring
+    _ ≤ 1 / 144 + (1 / (2 * Real.pi ^ 4)) * (Real.pi ^ 4 / 90) := by
+          gcongr
+    _ = 1 / 80 := by
+          field_simp [ne_of_gt hpi]
+          ring
+
+/-- The finite normalized second-jet coefficient functional. -/
+def proposition59SecondJetFunctional (N : ℕ) (v : ℤ → ℂ) : ℂ :=
+  ∑ k ∈ Finset.Icc (-(N : ℤ)) (N : ℤ),
+    proposition59SecondJetCoefficient k * v k
+
+theorem proposition59SecondJetFunctional_norm_le_one_div_sqrt_eighty
+    (N : ℕ) (v : ℤ → ℂ) :
+    ‖proposition59SecondJetFunctional N v‖ ≤
+      (1 / Real.sqrt 80) *
+        Real.sqrt (∑ k ∈ Finset.Icc (-(N : ℤ)) (N : ℤ), ‖v k‖ ^ 2) := by
+  let S : Finset ℤ := Finset.Icc (-(N : ℤ)) (N : ℤ)
+  have htri : ‖proposition59SecondJetFunctional N v‖ ≤
+      ∑ k ∈ S, ‖proposition59SecondJetCoefficient k‖ * ‖v k‖ := by
+    unfold proposition59SecondJetFunctional
+    exact (norm_sum_le _ _).trans_eq
+      (Finset.sum_congr rfl fun k hk ↦ norm_mul _ _)
+  have hcs :
+      ∑ k ∈ S, ‖proposition59SecondJetCoefficient k‖ * ‖v k‖ ≤
+        Real.sqrt (∑ k ∈ S, ‖proposition59SecondJetCoefficient k‖ ^ 2) *
+          Real.sqrt (∑ k ∈ S, ‖v k‖ ^ 2) :=
+    Real.sum_mul_le_sqrt_mul_sqrt S _ _
+  have hnorm :
+      ∑ k ∈ S, ‖proposition59SecondJetCoefficient k‖ ^ 2 ≤ (1 / 80 : ℝ) := by
+    simpa [S] using proposition59SecondJetFunctional_norm_sq_le_one_div_eighty N
+  have hsqrt :
+      Real.sqrt (∑ k ∈ S, ‖proposition59SecondJetCoefficient k‖ ^ 2) ≤
+        1 / Real.sqrt 80 := by
+    calc
+      Real.sqrt (∑ k ∈ S, ‖proposition59SecondJetCoefficient k‖ ^ 2) ≤
+          Real.sqrt (1 / 80) := Real.sqrt_le_sqrt hnorm
+      _ = 1 / Real.sqrt 80 := by
+        rw [Real.sqrt_div (by norm_num : (0 : ℝ) ≤ 1)]
+        norm_num
+  exact htri.trans
+    (hcs.trans (mul_le_mul_of_nonneg_right hsqrt (Real.sqrt_nonneg _)))
+
+private theorem proposition59RawTransform_secondDerivative_zero_eq_functional
+    {L : ℝ} (hL : 0 < L) (N : ℕ) (v : ℤ → ℂ) :
+    iteratedDeriv 2
+        (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v) 0 =
+      -((L : ℂ) ^ 2 * (Real.sqrt L : ℂ)) *
+        proposition59SecondJetFunctional N v := by
+  rw [proposition59RawTransform_secondDerivative_zero hL]
+  unfold proposition59SecondJetFunctional
+  congr 1
+  let S : Finset ℤ := Finset.Icc (-(N : ℤ)) (N : ℤ)
+  have h0 : (0 : ℤ) ∈ S := by simp [S]
+  change v 0 / 12 + (1 / (2 * (Real.pi : ℂ) ^ 2)) *
+      ∑ k ∈ S.erase 0, v k / (k : ℂ) ^ 2 =
+    ∑ k ∈ S, proposition59SecondJetCoefficient k * v k
+  rw [← Finset.add_sum_erase S _ h0]
+  simp only [proposition59SecondJetCoefficient, if_pos]
+  rw [show v 0 / 12 = (1 / 12) * v 0 by ring]
+  congr 1
+  rw [Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro k hk
+  have hk0 : k ≠ 0 := by
+    exact fun h ↦ by subst k; simpa using hk
+  simp [hk0]
+  field_simp
+
+/-- Stability of the finite Proposition-5.9 second jet under an `ℓ²` change of
+its coefficient row. -/
+theorem proposition59RawTransform_secondDerivative_sub_norm_le
+    {L : ℝ} (hL : 0 < L) (N : ℕ) (xi q : ℤ → ℂ) :
+    ‖iteratedDeriv 2
+          (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) xi) 0 -
+        iteratedDeriv 2
+          (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) q) 0‖ ≤
+      (L ^ 2 * Real.sqrt L / Real.sqrt 80) *
+        Real.sqrt (∑ k ∈ Finset.Icc (-(N : ℤ)) (N : ℤ),
+          ‖xi k - q k‖ ^ 2) := by
+  rw [proposition59RawTransform_secondDerivative_zero_eq_functional hL,
+    proposition59RawTransform_secondDerivative_zero_eq_functional hL]
+  have hlin :
+      proposition59SecondJetFunctional N xi - proposition59SecondJetFunctional N q =
+        proposition59SecondJetFunctional N (fun k ↦ xi k - q k) := by
+    unfold proposition59SecondJetFunctional
+    rw [← Finset.sum_sub_distrib]
+    apply Finset.sum_congr rfl
+    intro k hk
+    ring
+  rw [← mul_sub, hlin, norm_mul]
+  have hscale : ‖-((L : ℂ) ^ 2 * (Real.sqrt L : ℂ))‖ =
+      L ^ 2 * Real.sqrt L := by
+    rw [norm_neg, norm_mul, norm_pow, Complex.norm_real, Complex.norm_real]
+    simp [abs_of_pos hL, abs_of_nonneg (Real.sqrt_nonneg L)]
+  rw [hscale]
+  calc
+    L ^ 2 * Real.sqrt L *
+        ‖proposition59SecondJetFunctional N (fun k ↦ xi k - q k)‖ ≤
+      L ^ 2 * Real.sqrt L *
+        ((1 / Real.sqrt 80) *
+          Real.sqrt (∑ k ∈ Finset.Icc (-(N : ℤ)) (N : ℤ),
+            ‖xi k - q k‖ ^ 2)) := by
+              exact mul_le_mul_of_nonneg_left
+                (proposition59SecondJetFunctional_norm_le_one_div_sqrt_eighty N
+                  (fun k ↦ xi k - q k))
+                (mul_nonneg (sq_nonneg L) (Real.sqrt_nonneg L))
+    _ = (L ^ 2 * Real.sqrt L / Real.sqrt 80) *
+          Real.sqrt (∑ k ∈ Finset.Icc (-(N : ℤ)) (N : ℤ),
+            ‖xi k - q k‖ ^ 2) := by ring
+
 /-- On points avoiding the finite pole lattice, the removable definition is
 definitionally the quotient formula from Proposition 5.9. -/
 theorem proposition59RawTransform_eq_quotient_sum
@@ -469,6 +655,8 @@ theorem proposition59RawTransform_eq_paper_formula
 #print axioms differentiable_proposition59RawTransform
 #print axioms proposition59PoleKernel_secondDerivative_zero
 #print axioms proposition59RawTransform_secondDerivative_zero
+#print axioms proposition59SecondJetFunctional_norm_sq_le_one_div_eighty
+#print axioms proposition59RawTransform_secondDerivative_sub_norm_le
 #print axioms proposition59RawTransform_eq_quotient_sum
 #print axioms proposition59RawTransform_eq_paper_formula
 
