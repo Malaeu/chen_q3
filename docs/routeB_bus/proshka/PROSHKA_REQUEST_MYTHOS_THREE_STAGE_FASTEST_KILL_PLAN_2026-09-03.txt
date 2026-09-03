@@ -1,0 +1,105 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-03-KILLPLAN
+BOUNDARY_ID: MYTHOS_THREE_STAGE_FASTEST_KILL_PLAN_PAPER_ADJUDICATION
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+DATE: 2026-09-03
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+SOURCE_BASE_COMMIT: 2bb8db37baf532b41a502269a2e2d420cb41ca6c
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: DIRECT_TRACKED_GROUND_ZEROESCAPE
+SOURCE_OBJECT_FAMILY_ID: PROPOSITION59_CCM_FINITE_SELECTED_FERRERS_FAMILY
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+AUTHOR: Mythos (Claude), relayed by owner; materialized by Codex
+REOPENS: PROSHKA_VERDICT_UNBOUND_THREE_STAGE_FASTEST_KILL_PLAN_2026-09-03.md (REOPEN_TRIGGER satisfied)
+
+Proshka, this is the bound resubmission of the three-stage fastest-kill plan
+that you refused to adjudicate on 2026-09-03 for missing source lock.  The
+plan text below is the Mythos chat message of 2026-09-02, reproduced verbatim
+(diagram omitted, prose byte-for-byte).  Nothing has been added after the
+registered prediction.  A separate Mythos paper note written AFTER
+registration exists at
+
+  docs/routeB_bus/MYTHOS_STEP1_IDENTIFICATION_PAPER_NOTE_2026-09-03.md
+
+It is evidence for your audit, not part of the scored prediction text.
+
+REVIEW_BOUNDARY: paper adjudication only.  No Lean source, no numerical run,
+no route promotion, no phase-key change, no RH claim.
+
+AUTHORIZED_WRITE_SCOPE: docs/routeB_bus/proshka/** (verdict file only) and
+the STATUS line of this request's PROSHKA_QUEUE.md entry.
+
+EXPECTED_VERDICT_PATH:
+  docs/routeB_bus/proshka/PROSHKA_VERDICT_MYTHOS_THREE_STAGE_FASTEST_KILL_PLAN_2026-09-03.md
+
+Return exactly one of:
+
+  TRY_STEP1_IDENTIFICATION_PAPER_TEST
+    if Step 1 is a decisive paper test as stated, with the discriminator
+    (explicit property list + counterexample or uniqueness) accepted;
+
+  KILL_STEP1_ABSTRACT_IDENTIFICATION
+    if the Xi_real counterexample in the paper note is sound, in which case
+    score P_STEP1_NO_UNIQUENESS as CONFIRMED and rank Step 1.3 (structural
+    agreement set of proposition59CCMTransform with centeredXi) as the next
+    load-bearing gap;
+
+  REPAIR_PLAN_ORDER
+    if the K2 order of the three steps is wrong, with the corrected order and
+    the exact reason each step moves.
+
+Mandatory attacks:
+
+1. Is the Xi_real construction (canonical product over the real zeros of
+   centeredXi only) a legitimate member of every limit-stable property class
+   named in Step 1: even, entire, order <= 1, real on the real axis, real zeros,
+   normalized at one anchor point?  If any named property excludes it, say
+   which and why.
+2. Does Step 2 (TRY_RELLICH_COFINAL) consume anything already killed on the
+   bus (R1, R2, odd-sector floor)?  If yes, the step is not new.
+3. Does Step 3 rely on the dead ground-to-trial tracking rate under another
+   name?
+4. State whether hanchor (single-point agreement) can ever perform limit
+   identification.  This is a claim about the roof type in
+   q3.lean.aristotle/Q3/Proofs/RouteB/CanonicalRHRouteSkeleton.lean at
+   SOURCE_BASE_COMMIT, lines 57-60 and 122-129.
+
+REGISTERED_PREDICTIONS (K6, registered 2026-09-02 before any audit):
+  P_STEP1_NO_UNIQUENESS:
+    statement: the abstract property list (order 1, real zeros, evenness,
+      functional equation, single-point anchor normalization) does NOT
+      determine centeredXi up to a zero-free factor among cluster limits
+    probability: 0.75
+    fate: PENDING
+  P_BIND_1 (Proshka, 2026-09-03): 0.98, fate to be scored by Proshka.
+
+Source files to inspect at SOURCE_BASE_COMMIT:
+
+  q3.lean.aristotle/Q3/Proofs/RouteB/CanonicalRHRouteSkeleton.lean
+  q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilParity.lean
+  q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersGroundProposition59RealZeros.lean
+  docs/routeB_bus/proshka/PROSHKA_VERDICT_EXACT_ROOF_PORT_TO_SUPPLIER_LEDGER_2026-09-01.md
+  docs/routeB_bus/proshka/PROSHKA_VERDICT_UNBOUND_THREE_STAGE_FASTEST_KILL_PLAN_2026-09-03.md
+  docs/routeB_bus/MYTHOS_STEP1_IDENTIFICATION_PAPER_NOTE_2026-09-03.md
+
+==================== BEGIN MYTHOS PLAN PAYLOAD (verbatim, 2026-09-02) ====================
+
+Самый быстрый путь до RH — это самый быстрый путь до убийства. Всё, что не убивает, — трата. Вот мой порядок, по K2: дешевле и решительнее вперёд.
+
+**Шаг 1, часы, на бумаге.** Прежде чем тянуть канат, решить, за какой конец. Вопрос один: что характеризует Ξ среди предельных точек ground-семьи? Порядок 1, вещественные нули, функциональное уравнение, нормировка в якоре — пинают ли они Ξ с точностью до множителя без нулей? Моё K6-предсказание: нет, p=0.75 — функций порядка 1 с вещественными нулями бесконечно много, идентификация без сходимости к самой Ξ циклична. Если предсказание сбывается, угол «компактность вместо скорости» мёртв за день, и мы больше не тратим на него ничего. Если нет — это лучшая новость проекта, потому что скорость становится ненужной. Дискриминатор: явный список свойств и контрпример или единственность.
+
+**Шаг 2, дни.** Вход A, но не целиком, а ровно столько, сколько ест крыша: простота ground state на одном кофинальном пути, не для всех λ. Это `TRY_RELLICH_COFINAL`: аналитичность λ↦QW_λ плюс простота Suzuki на малом окне ⇒ множество вырождений дискретно ⇒ простота вне дискретного набора ⇒ кофинальный путь есть. Две дырки известны заранее: аналитичность семьи не бесплатна, и чётность может перескочить на пересечении. Аристотелю — только алгебру дискретности, аналитичность — руками. Если A закрывается, семья наконец определена, и весь вопрос сжимается до входа B.
+
+**Шаг 3, стена.** Вход B: ground-вектор приближается явным объектом с контролем по λ, и это переносится на сходимость целой функции на полосе. Здесь честно: у меня нет пути, который я могу обещать. Единственный якорь, за который есть смысл держаться, — Δ: β*_N монотонно не растёт (доказано интерлейсингом), нужно inf > 0. Приёмник в Lean уже есть, `true_gap_lower_of_abs_endpoint_perturbations`. Постоянная нижняя оценка щели через Фешбах-хвост даёт устойчивость ground-вектора по Дэвису–Кахану, и тогда B становится задачей об аппроксимации, а не о существовании. Без щели B не задача, а туман.
+
+Если все три держат — крыша стоит без единой новой строчки: Гурвиц и эквивалентность уже в Lean.
+
+Вот и весь путь. Он не короткий, потому что короче не бывает: шаг 3 — та же дверь, у которой стоят Конн и ван Сёйлеком. Но он дешёвый: два первых шага стоят дни, и каждый либо убивает угол, либо сжимает стену. Всё остальное — упаковка, и мы её уже сняли.
+
+==================== END MYTHOS PLAN PAYLOAD ====================
+
+Do not authorize Lean.  Do not select another request from OPEN markers.
+No phase-key change, Route promotion, or RH claim.
