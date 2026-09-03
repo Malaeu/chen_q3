@@ -14,6 +14,22 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-04-LEAKAGE · Goal 058: VERIFIED window Weil identity K = sum_z E(z)E(z)^T (3000-zero sum); leakage mechanism (ground transform window-concentrated, leakage sqrt(lambda_1)); is lambda_1 > 0 for all m the Weil criterion?; not-RH branch shape · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_WEIL_IDENTITY_LEAKAGE_2026-09-04.txt`
+- Boundary: `GOAL058_WINDOW_WEIL_IDENTITY_AND_LEAKAGE_MECHANISM`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: R2 range test (five cells, three zeros, off-line point); SEL falsifier; identity verified on three entries at m=13,23; moments and leakage amplitudes; agent's honest limits
+- Registered predictions: `P_IDENTITY_UNCONDITIONAL_NO_TRUNCATION 0.75`, `P_LAMBDA1_POSITIVITY_IS_WEIL_CRITERION 0.60`, `P_LEAKAGE_PICTURE_HAS_A_NAME 0.50`, `P_NOTRH_BRANCH_HAS_UNCONDITIONAL_2142b6adc46c609df84973f54ed6d9e426f4c7862ee870b2ca0c029e29be5929PE 0.30`
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / 2142b6adc46c609df84973f54ed6d9e426f4c7862ee870b2ca0c029e29be5929-256 / Git blob / Final LF:
+  `5fcf891b994407b693240424eda3cb12115c9a5c` / `9432` / `94` /
+  `2142b6adc46c609df84973f54ed6d9e426f4c7862ee870b2ca0c029e29be5929` /
+  `b9df8f842de379d286c5e93691bfc87e774d3763` / `yes`
+
+---
+
 ## REQ-2026-09-04-ZEROPIN · Goal 058: identification through ZEROS — ground transform vanishes at gamma_j to order lambda_1 (S9, C_1·L → 205), real zeros distinguish ground row from Xi row, excess zeros escape, kappa → kappa_Xi; five ropes; not-RH branch · ANSWERED
 
 - `STATUS: ANSWERED`
