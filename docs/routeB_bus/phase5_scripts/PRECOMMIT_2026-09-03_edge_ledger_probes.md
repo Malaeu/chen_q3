@@ -305,3 +305,17 @@ Predictions (K6, observer, registered before the run):
   `P_XI_ROW_TRANSFORM_REAL_ZEROS` p=0.50 — (ii) gives 0 non-real roots at every cell (then real zeros do NOT distinguish x from y).
   `P_SIGN_PATTERN_SAME` p=0.80 — (iii) both rows change sign first at the same n (the node past the first zeta zero γ₁ ≈ 14.13).
 Executor: observer by hand (rule 13). DIAGNOSTIC_NEVER_A_PROOF.
+
+## ADDENDUM 14 (2026-09-04, after m=13/23 zero offsets were seen, BEFORE m=43) — zero-convergence rate of the ground transform
+
+Observed (observer, by hand): first positive zero of the ground P59 numerator minus γ₁ (mpmath.zetazero, 40 digits):
+`+2.2e-8` at m=13, `−8.4e-18` at m=23; first six offsets at m=23: 8e-18, 2e-15, 4e-14, 2e-12, 4e-12, 6e-12.
+Prediction (K6, observer, registered before m=43 is computed):
+  `P_ZERO_RATE_EXPONENTIAL` p=0.70 — |ρ₁(m) − γ₁| ≤ 10^{−0.6·m} at m=43 (i.e. ≤ 10^{−26}); and the
+    per-zero offset grows with j but stays ≤ 10^{−0.4·m} for j ≤ 6.
+  Reading if CONFIRMED: the ground row is pinned to Ξ through its ZEROS exponentially (consistent with Weil energy
+    λ₁ ~ 10^{−1.9m} ≈ Σ_γ F_k(γ)² ⇒ F_k(γ_j) ~ 10^{−0.95m}), while node VALUES track Ξ only polylogarithmically;
+    identification of the limit could go through zeros (Hurwitz + Hadamard uniqueness), not node values.
+    The mechanism "small Weil energy ⇒ small values at the zeros" is the observer's sealed candidate, killed by the judge
+    as RH-circular (indefinite zero sum off the line); the numerics are consistent with it under RH and prove nothing.
+Executor: observer by hand. DIAGNOSTIC_NEVER_A_PROOF.
