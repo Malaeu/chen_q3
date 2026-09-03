@@ -122,3 +122,12 @@ E-CLOSED ⇔ alternierende Gitter-Summe = Input A mit Gewichten. C2/C3/C4/C5 tot
   PUBLICATION_PLAN standalone-result section. Memory `wall-as-object-method` extended.
 - Open for 2026-09-04: run the preflight (Codex if alive, else Opus agent); Lean transaction after
   it; correct the Fable-chat HTML map note (B and A distinct).
+
+## Addendum (2026-09-04 ≈03:30 CEST) — night run: verdicts, agents, rules
+
+- Verdicts intaken: `f788d2fa` LATTICEWALL, `99927f01` SHELLSEARCH (new atom: reciprocal-mode energy `Σ|Δ_n|²/n² ≤ C/L⁴`; sealed observer candidate killed).
+- Agents (Opus): Lean six items KERNEL_GREEN (`d57b5389`, verified by me); eigen-equation preflight (REIMPORTS_DENSE_TAIL_OR_GAP); Probe 10 (identities exact, D_n nondegenerate, tail ≤ 25 %); energy preflight (exact identity MAIN, odd floor 1e-4, self-check found E2: contraction exists but degenerate = 1/odd floor); S7 refuted by my own arb table (δ_n ≡ τ(n,n)−τ(n,0)); Probe 11 + lattice re-derivation + blind re-derivation RUNNING; judge working on the same question in living chat (owner pasted plain prompt ~20:47).
+- Rules: global-rule definition narrowed; fail-closed and `--no-codex` deleted; «Friction first» and «Agent output is unverified until checked» added to `~/.claude/CLAUDE.md`; backlog `~/.claude/docs/pipeline_refactor_backlog.md`; `specs_docs/vahta.sh` registered; project CLAUDE.md: 10-rule working scheme, method doc `docs/METHOD_ROOF_TO_ATOM.md`.
+- Tools tried: PySR (Julia SIGSEGV, dropped), gplearn (n² + junk, dropped), s7_table.py (kept, registered).
+- My own bugs: TOOLS.yaml colon broke the parser (fixed `PUSHED`); stale m=163 watcher via self-matching pgrep (stopped; vahta.sh lesson).
+- Open: intake Probe 11 + re-derivations; compare with judge's living-chat answer; batch `REQ-2026-09-04-ENERGYFLOOR` (odd floor reopening, S7 correction, E2 contraction reading).
