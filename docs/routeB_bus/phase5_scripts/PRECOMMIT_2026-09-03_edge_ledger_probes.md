@@ -291,3 +291,17 @@ Predictions (K6, observer, registered before the run):
 - CONFIRMED / REFUTED per prediction by the inequality at every cell; else UNRESOLVED.
 Executor: Opus agent; new script `docs/routeB_bus/phase5_codex/odd_floor.py`, output `phase5_codex/out/odd_floor.{json,md}`,
 registered in TOOLS.yaml by the ORCHESTRATOR after the run (agents do not edit the registry, lesson 2026-09-04). DIAGNOSTIC_NEVER_A_PROOF.
+
+## ADDENDUM 13 (2026-09-04, before any zero of the Xi-row transform was computed) — Probe 12, non-spectral properties of the ground row vs the Xi-sample row (Q2 of REQ-2026-09-04-QUASIEIGEN)
+
+Objects per cell (m = N ∈ {13, 23, 43}; even block; ground row x (raw ratio), Xi-sample row y_n = (−1)^n Ξ(x_n)/Ξ(0)
+in raw ratio (y_n^{raw} = y_n/√2 if taken from even coordinates); P59 numerator P(z) = Σ_{|k|≤N} c_k Π_{j≠k}(z − x_j),
+x_j = 2πj/L, c even; zeros of P = zeros of the transform off the lattice):
+  (i)  all roots of P for the ground row: count of non-real roots (must be 0 by CCM Thm 5.10 — a check of the implementation);
+  (ii) all roots of P for the Xi row: count of non-real roots, and max |Im| relative to |z|;
+  (iii) sign pattern: number of n ≤ N with (−1)^n x_n < 0 and with (−1)^n y_n < 0; first n where each changes sign.
+Predictions (K6, observer, registered before the run):
+  `P_GROUND_REAL_ZEROS_IMPL` p=0.95 — (i) gives 0 non-real roots at every cell.
+  `P_XI_ROW_TRANSFORM_REAL_ZEROS` p=0.50 — (ii) gives 0 non-real roots at every cell (then real zeros do NOT distinguish x from y).
+  `P_SIGN_PATTERN_SAME` p=0.80 — (iii) both rows change sign first at the same n (the node past the first zeta zero γ₁ ≈ 14.13).
+Executor: observer by hand (rule 13). DIAGNOSTIC_NEVER_A_PROOF.
