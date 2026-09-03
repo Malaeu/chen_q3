@@ -187,3 +187,17 @@ at most 1e-13·max|q|·L·e^{σL/2} ≈ 3e-13·M_m, far under the 1e-8 acceptanc
 the interior has no genuine sign change at any cell (q_m > 0, as the transform of a
 positive Φ-like density): 2 pieces per cell. Thresholds unchanged; cost decision with a
 stated error bound. Result: the m=163 cell computes in seconds instead of hours.
+
+## ADDENDUM 8 (2026-09-03 evening, after verdict d7c7df36, before any split of S was computed) — Probe 7, which part of b carries the 1/12 cancellation
+
+Object: `S(λ1) = ⟨c,(D−λ1)⁻¹b⟩` with `b = b_pole + b_AP` (pole part of the central coupling
+column along `C_L`; Arch−Prime remainder). `S_pole`, `S_AP` as in the Codex task Part C.
+Prediction (K6, observer): `P_POLE_PART_CARRIES_ONE_TWELFTH` p=0.60 — `S_pole` accounts for the
+leading `1/12`: `|1/12 − S_pole| ≤ 0.5·(1/12)` at every cell m = N ∈ {13,23,43,83}, and
+`|S_AP| ≤ 0.5·(1/12)`.
+- CONFIRMED: both inequalities at every cell.
+- REFUTED: `|S_pole| ≤ 0.1·(1/12)` at every cell (the pole part is negligible; the cancellation
+  lives in the Arch−Prime part).
+- else UNRESOLVED (mixed). Descriptive: `(1/12 − S_pole)·L²` per cell.
+Executor: Codex (owner's numerics channel), script under `docs/routeB_bus/phase5_codex/`.
+DIAGNOSTIC_NEVER_A_PROOF.
