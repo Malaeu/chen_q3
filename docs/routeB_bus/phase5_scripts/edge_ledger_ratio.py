@@ -584,18 +584,29 @@ def probe2_for_record(rec: dict[str, Any]) -> dict[str, Any]:
 
 
 def probe2_verdict(records: list[dict[str, Any]]) -> tuple[str, dict[str, Any]]:
+    """AMENDMENT 2 (2026-09-03 12:25, precommit): HF_FD_MISMATCH is a
+    Probe-2-ONLY per-cell flag (recorded in `detail["hf_fd_mismatch_m"]` and
+    in every probe2 per-record row); it is no longer this function's return
+    value and it no longer stops anything. The verdict itself is the frozen
+    sign/stability rule, amended: a consistently negative c_m across the
+    whole usable schedule (observed at the m=13,23,43 checkpoint: dlambda1/dL
+    is positive at every cell, so c_m = -(dlambda1/dL)/edge_sq < 0
+    everywhere) is itself a REFUTED result for
+    P_FUCHS_IDENTITY_NUMERICALLY_HOLDS -- not merely "sign changes across the
+    schedule" or "ratio >= 100" as the pre-amendment text read literally."""
     hi_dps = max(DPS_SCHEDULE)
     schedule = [r for r in records if r["N"] == r["m"] and r["m"] in SCHEDULE_M and r["dps"] == hi_dps]
 
-    if any(r["hf_fd_mismatch_lambda1"] or r["hf_fd_mismatch_lambda2"] for r in schedule):
-        bad = [r["m"] for r in schedule if r["hf_fd_mismatch_lambda1"] or r["hf_fd_mismatch_lambda2"]]
-        return "HF_FD_MISMATCH", {"mismatched_m": bad}
+    hf_fd_mismatch_m = sorted({
+        r["m"] for r in schedule if r["hf_fd_mismatch_lambda1"] or r["hf_fd_mismatch_lambda2"]
+    })
 
     insufficient_m = [r["m"] for r in schedule if r["insufficient_precision_lambda1"]]
     detail: dict[str, Any] = {
         "dps_used": hi_dps,
         "schedule_c_m": {r["m"]: r["c_m_hf"] for r in schedule},
         "insufficient_precision_m": insufficient_m,
+        "hf_fd_mismatch_m": hf_fd_mismatch_m,
     }
     usable = [r for r in schedule if not r["insufficient_precision_lambda1"]]
     have_all = {r["m"] for r in usable} == set(SCHEDULE_M)
@@ -606,16 +617,18 @@ def probe2_verdict(records: list[dict[str, Any]]) -> tuple[str, dict[str, Any]]:
     c_values = [r["c_m_hf"] for r in usable]
     signs = [1 if c > 0 else (-1 if c < 0 else 0) for c in c_values]
     all_positive = all(s > 0 for s in signs)
+    all_negative = all(s < 0 for s in signs)
     sign_changes = len(set(signs)) > 1
     abs_c = [abs(c) for c in c_values]
     ratio = max(abs_c) / min(abs_c) if min(abs_c) > 0 else float("inf")
     detail["ratio_max_over_min"] = ratio
     detail["all_positive"] = all_positive
+    detail["all_negative"] = all_negative
     detail["sign_changes"] = sign_changes
 
     if have_all and all_positive and ratio <= 3:
         return "CONFIRMED", detail
-    if sign_changes or ratio >= 100:
+    if sign_changes or ratio >= 100 or all_negative:
         return "REFUTED", detail
     return "UNRESOLVED", detail
 
@@ -747,6 +760,16 @@ PRECOMMIT_PROBE2_LINES = (
     "- REFUTED: sign of c_m changes across the schedule, or max/min >= 100.\n"
     "- else UNRESOLVED."
 )
+PRECOMMIT_PROBE2_AMENDMENT2_NOTE = (
+    "AMENDMENT 2 (2026-09-03 12:25): HF_FD_MISMATCH is a Probe-2-only per-cell flag "
+    "(recorded below; no longer a stop for Probes 3/4, and no longer this probe's own "
+    "verdict label). The sign/stability rule above is amended: a consistently NEGATIVE "
+    "c_m across the whole usable schedule -- observed at the checkpoint cells, where "
+    "dlambda1/dL is positive at every cell so c_m = -(dlambda1/dL)/edge_sq < 0 "
+    "everywhere -- is itself REFUTED for P_FUCHS_IDENTITY_NUMERICALLY_HOLDS on this "
+    "(fixed-primes, kernel-parameter-L) variation; it does not test the domain-only "
+    "variation of the continuous form Q_W^a (open question for the judge, Q9-1)."
+)
 PRECOMMIT_PROBE3_LINES = (
     "- GROWS (confirmed): R_m(0.40) monotone increasing over the schedule and "
     "R_163(0.40)/R_13(0.40) >= 3.\n"
@@ -805,6 +828,8 @@ def write_report(
     lines.append("## Probe 2 verdict (quoted rule)")
     lines.append("")
     lines.append(PRECOMMIT_PROBE2_LINES)
+    lines.append("")
+    lines.append(PRECOMMIT_PROBE2_AMENDMENT2_NOTE)
     lines.append("")
     lines.append(f"**VERDICT: {v2}**")
     lines.append("")
@@ -887,17 +912,23 @@ def run(records: list[dict[str, Any]], test_mode: bool) -> None:
         probe4_records.append(probe4_for_record(rec))
     progress_done()
 
+    # HF_FD_MISMATCH (precommit AMENDMENT 2, 2026-09-03 12:25): a Probe-2-ONLY
+    # per-cell flag, recorded in the JSON/report, no longer a stop for
+    # anything -- Probe 2's own verdict is instead the sign/stability rule
+    # (probe2_verdict() below), which already accounts for a consistently
+    # negative c_m as REFUTED. KAPPA_NEGATIVE (Probe 4's own real-zero sign
+    # check, addendum) similarly does not stop Probe 2/3.
     if any(r["hf_fd_mismatch_lambda1"] or r["hf_fd_mismatch_lambda2"] for r in probe2_records):
-        bad = [r["m"] for r in probe2_records if r["hf_fd_mismatch_lambda1"] or r["hf_fd_mismatch_lambda2"]]
-        print(f"\nHF_FD_MISMATCH at m={bad}: FD and HF derivatives disagree beyond "
-              f"{FD_HF_SIG_DIGITS} significant digits.")
-        sys.exit("HF_FD_MISMATCH")
+        bad = sorted({r["m"] for r in probe2_records if r["hf_fd_mismatch_lambda1"] or r["hf_fd_mismatch_lambda2"]})
+        print(f"\nNOTE HF_FD_MISMATCH (Probe-2-only flag, AMENDMENT 2) at m={bad}: FD and HF "
+              f"derivatives disagree beyond {FD_HF_SIG_DIGITS} significant digits; recorded, "
+              f"does not stop Probe 2's own (sign-rule) verdict or Probes 3/4.")
 
     v4 = probe4_verdict(probe4_records)
     if v4[0] == "KAPPA_NEGATIVE":
-        print(f"\nKAPPA_NEGATIVE: {v4[1]}")
-        print("A negative curvature contradicts the real-zero product (precommit ADDENDUM). Stopping.")
-        sys.exit("KAPPA_NEGATIVE")
+        print(f"\nWARNING KAPPA_NEGATIVE: {v4[1]}")
+        print("A negative curvature contradicts the real-zero product (precommit ADDENDUM). "
+              "Probe 4 verdict only; Probe 2/3 unaffected.")
 
     hi_dps = max(DPS_SCHEDULE)
     by_mn_dps = {(r["m"], r["N"], r["dps"]): r for r in probe3_records}

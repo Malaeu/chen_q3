@@ -125,11 +125,15 @@ INVERSE_ITERATION_SECOND_ITERS = 4
 # Rayleigh quotient is unreliable there since the plain "lu" solve loses all
 # but 3-4 digits); dps=600 with algorithm="precond" gives only ~7 correct
 # digits on lambda1 via the Rayleigh quotient; dps=900 gives ~30 correct
-# digits (residual ~1e-311). 900 is used as the primary precision here
-# instead of the frozen default's 120; 1400 is attempted as the "doubled"
-# cross-check only if the wall-clock budget allows (see LARGE_N_TIME_BUDGET).
-LARGE_N_PRECISIONS = (900, 1400)
-LARGE_N_TIME_BUDGET_SECONDS = 40 * 60
+# digits (residual ~1e-311). Coordinator directive 2026-09-03: use dps=900
+# ONLY for m=163 -- a central finite difference with h=1e-6*L on an
+# eigenvalue of size ~1e-311 cannot agree with Hellmann-Feynman at any
+# precision anyone is going to run here (that is a precision statement,
+# not a bug), so a doubled-precision cross-check buys nothing that isn't
+# already flagged via INSUFFICIENT_PRECISION_FD; skip it and keep the whole
+# cell inside a 25-minute budget instead.
+LARGE_N_PRECISIONS = (900,)
+LARGE_N_TIME_BUDGET_SECONDS = 25 * 60
 
 
 def isatty() -> bool:
@@ -509,6 +513,108 @@ def inverse_iteration_deflated(
     return lam, xu, resid
 
 
+def shifted_inverse_iteration_lambda2_estimate(
+    matrix: arb_mat, dim: int, mu: arb, x1: list[arb], iterations: int
+) -> tuple[arb, arb]:
+    """Independent cross-check of lambda2: shift-and-invert iteration around
+    mu (e.g. 10*lambda1 or 100*lambda1), started from a fixed pseudo-random
+    vector orthogonalized against x1 and re-orthogonalized after every step,
+    converging to whichever eigenvalue of Q is closest to mu. If this agrees
+    with the deflation-based lambda2, that is strong evidence the deflation
+    found the genuine second-smallest eigenpair rather than an artifact.
+    Returns (lambda_estimate, residual_norm), both from the Rayleigh quotient
+    against the ORIGINAL (unshifted) matrix.
+    """
+    shifted = arb_mat(matrix)
+    for i in range(dim):
+        shifted[i, i] = shifted[i, i] - mu
+    x = [arb(1) if i % 5 else arb(-1) for i in range(dim)]
+    proj0 = sum((x1[i] * x[i] for i in range(dim)), arb(0))
+    x = [x[i] - proj0 * x1[i] for i in range(dim)]
+    for _ in range(iterations):
+        x = solve_precond_vec(shifted, dim, x)
+        proj = sum((x1[i] * x[i] for i in range(dim)), arb(0))
+        x = [x[i] - proj * x1[i] for i in range(dim)]
+        x = max_component_normalize(x)
+    xu = unit_normalize(x)
+    lam, resid = rayleigh_quotient(matrix, dim, xu)
+    return lam, resid
+
+
+def verify_second_eigenpair(
+    matrix: arb_mat, dim: int, lam1: arb, x1: list[arb], lam2: arb, x2: list[arb],
+    resid2: arb,
+) -> dict[str, Any]:
+    """Extra cross-checks for the deflation-based second eigenpair on cells
+    where full-spectrum isolation is unavailable (large N).
+
+    ODDITY, recorded as found: the coordinator's requested cross-check --
+    shift-and-invert at mu = 10*lambda1 and mu = 100*lambda1, deflated
+    against x1 -- was validated first on m=83 (dim 84), a cell where the
+    deflation-based lambda2 is independently KNOWN CORRECT (it matches
+    flint's full-spectrum isolation to 19 significant digits). On that known-
+    good cell the shift10/shift100 estimates come back as pure noise (an arb
+    ball straddling zero with no useful digits), NOT agreeing with the true
+    lambda2. Reason: for these cells the lambda2/lambda1 gap is enormous
+    (~3.9e7 at m=83), so mu=10*lambda1 or 100*lambda1 is still overwhelmingly
+    closer to lambda1 than to lambda2 -- the shifted matrix stays nearly
+    singular in the x1 direction, and residual x1-contamination from the
+    solve's own ~13-digit floor gets amplified by roughly 1/lambda1 before
+    deflation can remove it, swamping the intended x2-direction signal. This
+    is a property of the shift choice relative to this operator's spectrum,
+    not of the deflation method itself -- so shift10/shift100 are computed
+    and stored (as asked) but are NOT used to gate SECOND_EIGENPAIR_UNVERIFIED.
+
+    The actual gate uses: (i) residual ||Q x2 - lambda2 x2|| (already
+    computed by the caller -- by the Bauer-Fike bound for a symmetric
+    matrix, a tiny residual is a mathematical PROOF that lambda2 lies within
+    that residual distance of some true eigenvalue of Q, independent of
+    convergence concerns); (ii) |<x1,x2>| (near-zero required -- rules out
+    x2 having collapsed back onto x1); (iii) a stability re-run of the
+    deflation with 3 extra iterations, requiring agreement to 10 significant
+    digits (rules out an under-converged x2); (iv) lambda2 >= lambda1 with a
+    relative gap above 1e-3.
+    """
+    v1_dot_v2 = sum((x1[i] * x2[i] for i in range(dim)), arb(0))
+    shift10 = 10 * lam1
+    shift100 = 100 * lam1
+    lam2_shift10, resid_shift10 = shifted_inverse_iteration_lambda2_estimate(
+        matrix, dim, shift10, x1, INVERSE_ITERATION_SECOND_ITERS
+    )
+    lam2_shift100, resid_shift100 = shifted_inverse_iteration_lambda2_estimate(
+        matrix, dim, shift100, x1, INVERSE_ITERATION_SECOND_ITERS
+    )
+    lam2_more_iters, x2_more_iters, resid2_more_iters = inverse_iteration_deflated(
+        matrix, dim, x1, INVERSE_ITERATION_SECOND_ITERS + 3
+    )
+    stability_agree = sig_agree(lam2, lam2_more_iters, 10)
+
+    resid_ok = float(abs(resid2).mid()) < 1e-30 or resid2.mid() == 0
+    orthogonality_ok = float(abs(v1_dot_v2).mid()) < 1e-30 or v1_dot_v2.mid() == 0
+    rel_gap_ok = False
+    if lam1.mid() != 0:
+        rel_gap_ok = float(((lam2 - lam1) / lam1).mid()) > 1e-3
+    order_ok = lam2.mid() >= lam1.mid()
+    unverified = not (order_ok and rel_gap_ok and resid_ok and orthogonality_ok and stability_agree)
+    return {
+        "v1_dot_v2": bounds(v1_dot_v2),
+        "lambda2_shift10_estimate": bounds(lam2_shift10),
+        "lambda2_shift10_residual": str(resid_shift10),
+        "lambda2_shift100_estimate": bounds(lam2_shift100),
+        "lambda2_shift100_residual": str(resid_shift100),
+        "shift_diagnostic_note": (
+            "shift10/shift100 are noise on this operator (see docstring); NOT used to gate the verdict"
+        ),
+        "lambda2_stability_rerun_extra3_iters": bounds(lam2_more_iters),
+        "lambda2_stability_agrees_10sig": stability_agree,
+        "resid2_below_1e-30": resid_ok,
+        "orthogonality_below_1e-30": orthogonality_ok,
+        "lambda2_order_ok": order_ok,
+        "lambda2_rel_gap_above_1e-3": rel_gap_ok,
+        "SECOND_EIGENPAIR_UNVERIFIED": unverified,
+    }
+
+
 def resolve_eigenpair(
     build_matrix_fn, dim: int, base_dps: int, want_vectors: bool
 ) -> dict[str, Any]:
@@ -521,24 +627,32 @@ def resolve_eigenpair(
     checks pass inside two_smallest_eigs). Above the threshold, full
     isolation is skipped entirely (established failure, not a precision
     question -- see INVERSE_ITERATION_N_THRESHOLD) in favor of the inverse-
-    iteration fallback.
+    iteration fallback, with extra cross-checks on lambda2 (see
+    verify_second_eigenpair) whenever eigenvectors are requested -- the
+    deflation-based second eigenpair is the least-trustworthy step in this
+    fallback and must not be reported unverified.
     """
     if dim - 1 <= INVERSE_ITERATION_N_THRESHOLD:
         lam1, lam2, vec1, vec2, algo, bump = robust_eig(build_matrix_fn, base_dps, want_vectors)
         return {
             "lambda1": lam1, "lambda2": lam2, "vec1": vec1, "vec2": vec2,
             "method": algo, "bump": bump, "resid1": None, "resid2": None,
+            "verification": None,
         }
     ctx.dps = base_dps
     ctx.threads = 1
     matrix = build_matrix_fn()
     lam1, x1, resid1 = inverse_iteration_ground(matrix, dim, INVERSE_ITERATION_GROUND_ITERS)
     lam2, x2, resid2 = inverse_iteration_deflated(matrix, dim, x1, INVERSE_ITERATION_SECOND_ITERS)
+    verification = None
+    if want_vectors:
+        verification = verify_second_eigenpair(matrix, dim, lam1, x1, lam2, x2, resid2)
     return {
         "lambda1": lam1, "lambda2": lam2,
         "vec1": x1 if want_vectors else None, "vec2": x2 if want_vectors else None,
         "method": "inverse_iteration_precond_deflation", "bump": 0,
         "resid1": resid1, "resid2": resid2,
+        "verification": verification,
     }
 
 
@@ -572,15 +686,21 @@ def build_cell(m: int, N: int, dps: int) -> dict[str, Any]:
     ctx.dps = dps
     ctx.threads = 1
     started = time.time()
+    dim = N + 1
 
     def build_Q0() -> arb_mat:
         return CCMArbBuilder(m, N).even_block()
 
-    lam1, lam2, vec1, vec2, algo0, bump0 = robust_eig(build_Q0, dps, want_vectors=True)
+    r0 = resolve_eigenpair(build_Q0, dim, dps, want_vectors=True)
+    lam1, lam2, vec1, vec2, algo0, bump0 = (
+        r0["lambda1"], r0["lambda2"], r0["vec1"], r0["vec2"], r0["method"], r0["bump"],
+    )
     # dps0 is the precision actually used to obtain lambda1/lambda2/xi (== dps
-    # unless the rare precision-escalation fallback triggered). Everything
-    # downstream in this cell (L0, h, Qp, Qm, dQ/dL) is recomputed at dps0 so
-    # the Hellmann-Feynman contraction is not mixing precisions.
+    # unless the rare precision-escalation fallback triggered, or unless this
+    # is a large-N cell already run at its own fixed high precision -- bump
+    # is always 0 for the inverse-iteration path). Everything downstream in
+    # this cell (L0, h, Qp, Qm, dQ/dL) is recomputed at dps0 so the
+    # Hellmann-Feynman contraction is not mixing precisions.
     dps0 = dps + bump0
     ctx.dps = dps0
     ctx.threads = 1
@@ -606,8 +726,10 @@ def build_cell(m: int, N: int, dps: int) -> dict[str, Any]:
     def build_Qm() -> arb_mat:
         return CCMArbBuilder(m, N, L_override=L0 - h_abs).even_block()
 
-    lam1_p, lam2_p, _, _, algo_p, bump_p = robust_eig(build_Qp, dps0, want_vectors=False)
-    lam1_m, lam2_m, _, _, algo_m, bump_m = robust_eig(build_Qm, dps0, want_vectors=False)
+    rp = resolve_eigenpair(build_Qp, dim, dps0, want_vectors=False)
+    rm = resolve_eigenpair(build_Qm, dim, dps0, want_vectors=False)
+    lam1_p, lam2_p, algo_p, bump_p = rp["lambda1"], rp["lambda2"], rp["method"], rp["bump"]
+    lam1_m, lam2_m, algo_m, bump_m = rm["lambda1"], rm["lambda2"], rm["method"], rm["bump"]
 
     # Rebuild Qp/Qm explicitly at dps0 (independent of whatever precision the
     # eigenvalue-only isolation above may have escalated to and discarded)
@@ -622,7 +744,6 @@ def build_cell(m: int, N: int, dps: int) -> dict[str, Any]:
     dlambda1_dL_fd = (lam1_p - lam1_m) / two_h
     dlambda2_dL_fd = (lam2_p - lam2_m) / two_h
 
-    dim = N + 1
     dQ_dL = [[(Qp[i, j] - Qm[i, j]) / two_h for j in range(dim)] for i in range(dim)]
 
     def quad_form(vec: list[arb]) -> arb:
@@ -652,6 +773,15 @@ def build_cell(m: int, N: int, dps: int) -> dict[str, Any]:
         "dps": dps,
         "dps_effective": dps0,
         "precision_bumps": {"lambda0": bump0, "plus": bump_p, "minus": bump_m},
+        "inverse_iteration_residuals": {
+            "lambda0_resid1": str(r0["resid1"]) if r0["resid1"] is not None else None,
+            "lambda0_resid2": str(r0["resid2"]) if r0["resid2"] is not None else None,
+            "plus_resid1": str(rp["resid1"]) if rp["resid1"] is not None else None,
+            "plus_resid2": str(rp["resid2"]) if rp["resid2"] is not None else None,
+            "minus_resid1": str(rm["resid1"]) if rm["resid1"] is not None else None,
+            "minus_resid2": str(rm["resid2"]) if rm["resid2"] is not None else None,
+        },
+        "second_eigenpair_verification": r0["verification"],
         "L0": bounds(L0),
         "h_abs": bounds(h_abs),
         "eigen_algorithm_lambda0": algo0,
@@ -738,50 +868,13 @@ def run_gate() -> dict[str, Any]:
     return results
 
 
-def main() -> int:
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
+def precisions_for(N: int) -> tuple[int, ...]:
+    if N > INVERSE_ITERATION_N_THRESHOLD:
+        return LARGE_N_PRECISIONS
+    return PRECISIONS
 
-    progress("[edge_ledger] regression gate m=13 N=120 ...")
-    gate = run_gate()
-    progress_done()
-    if not gate["pass"]:
-        print("REGRESSION_FAIL: gate did not pass.", file=sys.stderr)
-        print(json.dumps(gate, indent=2, sort_keys=True), file=sys.stderr)
-        (OUT_DIR / "edge_ledger_GATE_FAIL.json").write_text(
-            json.dumps(gate, indent=2, sort_keys=True) + "\n", encoding="utf-8"
-        )
-        return 2
-    print(
-        f"[edge_ledger] gate PASS: lambda1(dps={PRECISIONS[-1]}) = "
-        f"{gate[f'dps_{PRECISIONS[-1]}']['lambda1']['ball']}",
-        flush=True,
-    )
 
-    cells: list[tuple[int, int, str]] = []
-    for m in SCHEDULE_M:
-        cells.append((m, m, "main_schedule"))
-    for m, N in N_CHECK_PAIRS:
-        cells.append((m, N, "n_check"))
-
-    schedule_rows = []
-    for m, N, role in cells:
-        row: dict[str, Any] = {"m": m, "N": N, "role": role, "precision": {}}
-        for dps in PRECISIONS:
-            progress(f"[edge_ledger] m={m} N={N} role={role} dps={dps} building ...")
-            t0 = time.time()
-            cell = build_cell(m, N, dps)
-            progress_done()
-            print(
-                f"[edge_ledger] m={m} N={N} dps={dps} done in {time.time() - t0:.2f}s "
-                f"lambda1={cell['lambda1']['ball']} lambda2={cell['lambda2']['ball']}",
-                flush=True,
-            )
-            row["precision"][str(dps)] = cell
-        low = row["precision"][str(PRECISIONS[0])]
-        high = row["precision"][str(PRECISIONS[1])]
-        row["insufficient_precision_flags"] = check_insufficient_precision(low, high)
-        schedule_rows.append(row)
-
+def write_checkpoint(gate: dict[str, Any], schedule_rows: list[dict[str, Any]], out_json: Path) -> None:
     result = {
         "schema": "EdgeLedgerBuild.v1",
         "generated_utc": datetime.now(timezone.utc).isoformat(),
@@ -792,33 +885,191 @@ def main() -> int:
         "python_flint_version": __import__("flint").__version__,
         "python_version": platform.python_version(),
         "eigen_method": (
-            "python-flint acb_mat.eig(right=True), algorithm='vdhoeven_mourrain' "
-            "with 'rump' fallback on isolation failure; flint returns right "
-            "eigenvectors pre-normalized to unit l2 (verified empirically)"
+            "python-flint acb_mat.eig(right=True), algorithm='vdhoeven_mourrain' with "
+            "'rump' fallback and precision-escalation retry, for dim <= "
+            f"{INVERSE_ITERATION_N_THRESHOLD + 1}; flint returns right eigenvectors "
+            "pre-normalized to unit l2 (verified empirically). Above that dimension, "
+            "full-spectrum isolation was found to fail outright regardless of "
+            "precision (empirically: eig(nonstop=True) returns NaN for all 164 "
+            "eigenvalues at N=163 up to dps=520), so the two smallest eigenpairs are "
+            "instead obtained by unshifted inverse power iteration "
+            "(algorithm='precond' linear solves) with deflation for the second "
+            "eigenpair, seeded generically (no external near-null vector), followed "
+            "by a Rayleigh-quotient eigenvalue read-off; residuals are stored per cell."
         ),
-        "precisions_dps": list(PRECISIONS),
+        "precisions_dps_default": list(PRECISIONS),
+        "precisions_dps_large_N": list(LARGE_N_PRECISIONS),
+        "large_N_threshold": INVERSE_ITERATION_N_THRESHOLD,
         "h_relative": H_RELATIVE_NOTE,
+        "oddities": [
+            {
+                "id": "dlambda1_dL_is_O1_while_lambda1_is_astronomically_small",
+                "observation": (
+                    "dlambda1/dL at fixed prime set is O(1) (e.g. +0.153 at m=13) while "
+                    "lambda1 itself ranges over 1e-31 (m=13) down to ~1e-311 (m=163). "
+                    "The super-small ground eigenvalue exists only AT the consistent "
+                    "point L = log m; detuning L by h = 1e-6*L already moves lambda1 by "
+                    "roughly h*O(1) ~ 1e-7*L, i.e. by many orders of magnitude relative "
+                    "to lambda1's own size. This is a genuine finding, not a bug -- do "
+                    "not try to fix it (recorded, not explained away, per project rule: "
+                    "write down what is strange before it is explained)."
+                ),
+                "consequence_for_probe_2": (
+                    "The 6-significant-digit Hellmann-Feynman/finite-difference agreement "
+                    "the precommit originally demanded is unattainable by construction: "
+                    "the CCM kernel entries depend on L internally (via terms like "
+                    "2(L-x)/L * cos(2*pi*n*x/L)), so this is not a pure domain (window) "
+                    "variation of a fixed functional form, and the classical Fuchs/"
+                    "Hadamard identity is not expected to apply to it as written. Both "
+                    "FD and HF estimates carry O(h^2 * lambda1'''/lambda1') truncation "
+                    "error, and lambda1''' is enormous relative to lambda1' for a "
+                    "function changing by 30+ orders of magnitude across the schedule. "
+                    "See docs/routeB_bus/phase5_scripts/PRECOMMIT_2026-09-03_edge_ledger_probes.md "
+                    "AMENDMENT 2 (frozen 2026-09-03 12:25) for the full reading; this "
+                    "script stores dlambda1_dL_fd, dlambda1_dL_hf and their agreement "
+                    "flag honestly for every cell (including cells where full isolation "
+                    "makes lambda1/lambda2 individually rigorous, e.g. m=13,23,43) -- the "
+                    "mismatch is not a precision artifact confined to the large-N "
+                    "inverse-iteration cells, it reproduces at full rigor."
+                ),
+            }
+        ],
         "regression_gate": gate,
         "schedule": schedule_rows,
+        "status": "IN_PROGRESS" if len(schedule_rows) < 7 else "COMPLETE",
     }
-    out_json = OUT_DIR / "edge_ledger.json"
-    out_json.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-    print(f"[edge_ledger] wrote {out_json}", flush=True)
+    text = json.dumps(result, indent=2, sort_keys=True) + "\n"
+    out_json.write_text(text, encoding="utf-8")
 
+
+def load_checkpoint(out_json: Path) -> tuple[dict[str, Any] | None, list[dict[str, Any]]]:
+    """Resume support: if a partial edge_ledger.json already exists (e.g. a
+    prior run was interrupted), reuse its regression gate and completed
+    schedule rows instead of recomputing them."""
+    if not out_json.exists():
+        return None, []
+    try:
+        data = json.loads(out_json.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return None, []
+    gate = data.get("regression_gate")
+    rows = data.get("schedule", [])
+    return gate, rows
+
+
+def main() -> int:
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    out_json = OUT_DIR / "edge_ledger.json"
+
+    cached_gate, cached_rows = load_checkpoint(out_json)
+    if cached_gate is not None and cached_gate.get("pass"):
+        gate = cached_gate
+        print(
+            f"[edge_ledger] RESUME: reusing cached regression gate (PASS) and "
+            f"{len(cached_rows)} already-completed cell(s): "
+            f"{[(r['m'], r['N'], r['role']) for r in cached_rows]}",
+            flush=True,
+        )
+    else:
+        progress("[edge_ledger] regression gate m=13 N=120 ...")
+        gate = run_gate()
+        progress_done()
+        if not gate["pass"]:
+            print("REGRESSION_FAIL: gate did not pass.", file=sys.stderr)
+            print(json.dumps(gate, indent=2, sort_keys=True), file=sys.stderr)
+            (OUT_DIR / "edge_ledger_GATE_FAIL.json").write_text(
+                json.dumps(gate, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+            )
+            return 2
+        cached_rows = []
+    print(
+        f"[edge_ledger] gate PASS: lambda1(dps={PRECISIONS[-1]}) = "
+        f"{gate[f'dps_{PRECISIONS[-1]}']['lambda1']['ball']}",
+        flush=True,
+    )
+    write_checkpoint(gate, cached_rows, out_json)
+
+    cells: list[tuple[int, int, str]] = []
+    for m in SCHEDULE_M:
+        cells.append((m, m, "main_schedule"))
+    for m, N in N_CHECK_PAIRS:
+        cells.append((m, N, "n_check"))
+
+    done_keys = {(r["m"], r["N"]) for r in cached_rows}
+    schedule_rows: list[dict[str, Any]] = list(cached_rows)
+    for m, N, role in cells:
+        if (m, N) in done_keys:
+            print(f"[edge_ledger] RESUME: skipping already-completed m={m} N={N} ({role})", flush=True)
+            continue
+        row: dict[str, Any] = {"m": m, "N": N, "role": role, "precision": {}}
+        precs = precisions_for(N)
+        large_n_cell = N > INVERSE_ITERATION_N_THRESHOLD
+        cell_started = time.time()
+        for i, dps in enumerate(precs):
+            if large_n_cell and i > 0:
+                elapsed_so_far = time.time() - cell_started
+                if elapsed_so_far > LARGE_N_TIME_BUDGET_SECONDS * 0.5:
+                    row["precision_doubling_skipped_time_budget"] = {
+                        "elapsed_after_previous_precision_seconds": elapsed_so_far,
+                        "budget_seconds": LARGE_N_TIME_BUDGET_SECONDS,
+                        "reason": "projected doubled-precision run risked exceeding the 40-minute budget for this cell",
+                    }
+                    break
+            progress(f"[edge_ledger] m={m} N={N} role={role} dps={dps} building ...")
+            t0 = time.time()
+            cell = build_cell(m, N, dps)
+            progress_done()
+            print(
+                f"[edge_ledger] m={m} N={N} dps={dps} done in {time.time() - t0:.2f}s "
+                f"lambda1={cell['lambda1']['ball']} lambda2={cell['lambda2']['ball']} "
+                f"method={cell['eigen_algorithm_lambda0']} dps_effective={cell['dps_effective']}",
+                flush=True,
+            )
+            row["precision"][str(dps)] = cell
+        precs_run = [p for p in precs if str(p) in row["precision"]]
+        if len(precs_run) == 2:
+            low = row["precision"][str(precs_run[0])]
+            high = row["precision"][str(precs_run[1])]
+            row["insufficient_precision_flags"] = check_insufficient_precision(low, high)
+            row["precision_doubling_void"] = bool(low["dps_effective"] == high["dps_effective"])
+            if row["precision_doubling_void"]:
+                print(
+                    f"[edge_ledger] ODDITY m={m} N={N}: both precision runs "
+                    f"({precs_run[0]}, {precs_run[1]}) escalated to the SAME "
+                    f"effective precision ({low['dps_effective']} dps) via the "
+                    "bump fallback -- the doubling cross-check is void for this cell.",
+                    flush=True,
+                )
+        else:
+            row["insufficient_precision_flags"] = "NOT_EVALUATED_ONLY_ONE_PRECISION_RUN"
+            row["precision_doubling_void"] = None
+        schedule_rows.append(row)
+        write_checkpoint(gate, schedule_rows, out_json)
+        print(f"[edge_ledger] checkpoint written after m={m} N={N} ({len(schedule_rows)}/7 cells)", flush=True)
+
+    print(f"[edge_ledger] wrote {out_json}", flush=True)
     write_probe1_report(schedule_rows, out_json)
     return 0
+
+
+def best_precision_cell(row: dict[str, Any]) -> tuple[str, dict[str, Any]]:
+    """The highest-dps precision actually run for this row (large-N cells use
+    their own (900,1400) ladder, not the default (120,240) one, and may have
+    skipped the doubled run under the time budget)."""
+    keys = sorted(row["precision"].keys(), key=int)
+    best = keys[-1]
+    return best, row["precision"][best]
 
 
 def write_probe1_report(schedule_rows: list[dict[str, Any]], json_path: Path) -> None:
     precommit_text = PRECOMMIT.read_text(encoding="utf-8") if PRECOMMIT.exists() else ""
 
     main_rows = [r for r in schedule_rows if r["role"] == "main_schedule"]
-    hi = str(PRECISIONS[1])
     deltas = {}
     ratios = {}
     rel_gaps = {}
     for r in main_rows:
-        cell = r["precision"][hi]
+        _, cell = best_precision_cell(r)
         deltas[r["m"]] = arb(cell["delta"]["ball"])
         ratios[r["m"]] = arb(cell["lambda2_over_lambda1"]["ball"])
         rel_gaps[r["m"]] = arb(cell["rel_gap_delta_over_abs_lambda1"]["ball"])
@@ -858,28 +1109,34 @@ def write_probe1_report(schedule_rows: list[dict[str, Any]], json_path: Path) ->
     lines = []
     lines.append("# Probe 1 report -- absolute gap Delta_m = lambda2 - lambda1 along the schedule")
     lines.append("")
-    lines.append(f"Source data: `{json_path.relative_to(REPO)}`, precision dps={PRECISIONS[1]} (retained; cross-checked against dps={PRECISIONS[0]}).")
+    lines.append(
+        f"Source data: `{json_path.relative_to(REPO)}`. Default cells (N<={INVERSE_ITERATION_N_THRESHOLD}) "
+        f"use precision dps in {PRECISIONS} (highest retained, cross-checked against the lower); "
+        f"large-N cells (N>{INVERSE_ITERATION_N_THRESHOLD}) use dps in {LARGE_N_PRECISIONS} via the "
+        "inverse-iteration fallback (see below), possibly with the doubled run skipped under the "
+        "40-minute time budget -- each row below reports the highest dps actually run for it."
+    )
     lines.append("")
-    lines.append("| m | lambda1 | lambda2 | Delta_m = lambda2-lambda1 | lambda2/lambda1 | Delta_m/|lambda1| |")
-    lines.append("|---|---|---|---|---|---|")
+    lines.append("| m | dps used | method | lambda1 | lambda2 | Delta_m = lambda2-lambda1 | lambda2/lambda1 | Delta_m/|lambda1| |")
+    lines.append("|---|---|---|---|---|---|---|---|")
     for r in main_rows:
-        cell = r["precision"][hi]
+        dps_key, cell = best_precision_cell(r)
         lines.append(
-            f"| {r['m']} | {cell['lambda1']['ball']} | {cell['lambda2']['ball']} | "
+            f"| {r['m']} | {dps_key} | {cell['eigen_algorithm_lambda0']} | {cell['lambda1']['ball']} | {cell['lambda2']['ball']} | "
             f"{cell['delta']['ball']} | {cell['lambda2_over_lambda1']['ball']} | "
             f"{cell['rel_gap_delta_over_abs_lambda1']['ball']} |"
         )
     lines.append("")
     lines.append("## N-check cells (secondary)")
     lines.append("")
-    lines.append("| m | N | lambda1 | lambda2 | Delta | lambda2/lambda1 |")
-    lines.append("|---|---|---|---|---|---|")
+    lines.append("| m | N | dps used | lambda1 | lambda2 | Delta | lambda2/lambda1 |")
+    lines.append("|---|---|---|---|---|---|---|")
     for r in schedule_rows:
         if r["role"] != "n_check":
             continue
-        cell = r["precision"][hi]
+        dps_key, cell = best_precision_cell(r)
         lines.append(
-            f"| {r['m']} | {r['N']} | {cell['lambda1']['ball']} | {cell['lambda2']['ball']} | "
+            f"| {r['m']} | {r['N']} | {dps_key} | {cell['lambda1']['ball']} | {cell['lambda2']['ball']} | "
             f"{cell['delta']['ball']} | {cell['lambda2_over_lambda1']['ball']} |"
         )
     lines.append("")

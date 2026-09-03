@@ -1534,7 +1534,7 @@ tool_families:
 
       - id: edge-ledger-ratio
         classification: MANUAL
-        status: AVAILABLE
+        status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]
         mode: WRITES_DERIVED
         path: docs/routeB_bus/phase5_scripts/edge_ledger_ratio.py
@@ -1574,18 +1574,29 @@ tool_families:
           silently used. A verdict that is UNRESOLVED purely because the main
           schedule isn't fully present is relabeled
           UNRESOLVED_INCOMPLETE_SCHEDULE so it is never mistaken for a
-          complete-but-ambiguous result.
+          complete-but-ambiguous result. AMENDMENT 2 (2026-09-03 12:25,
+          precommit): HF_FD_MISMATCH is Probe-2-ONLY and recorded, never a
+          stop for anything; Probe 2's own verdict is the sign/stability
+          rule, amended so a consistently negative c_m across the whole
+          usable schedule is itself REFUTED (observed at m=13,23,43: dlambda1/dL
+          positive at every cell => c_m < 0 everywhere => REFUTED).
         validation: >-
-          As of 2026-09-03, docs/routeB_bus/phase5_scripts/out/edge_ledger.json
-          did not yet exist (edge-ledger-build not yet run to completion), so
-          this script was only run to completion on one self-made synthetic
-          schedule row matching the producer's real nested schema (m=13,N=13,
-          random even unit rows at dps=120 and dps=240) -- confirmed the
-          schema adapter, the sign-change/piecewise quadrature path, the
-          grid-doubling check, and both verdict functions all execute and
-          produce a report; exited with SCRIPT_READY_AWAITING_LEDGER rather
-          than a real verdict. Status kept at AVAILABLE, not ENABLED, until
-          run once against the real ledger.
+          Run once against the real (partial) ledger 2026-09-03 ~12:28
+          (m=13,23,43 present, m=83/163 and both N-check pairs still missing):
+          completed cleanly, wrote edge_ledger_ratio.json and the .md report.
+          Probe 2 = REFUTED (c_m in [-1.8e20,-1.5e64], all negative, per
+          AMENDMENT 2). Probe 3 and Probe 4 = UNRESOLVED_INCOMPLETE_SCHEDULE
+          (R_m(0.40) in [1.0776,1.0781], kappa_m in [0.02584,0.02626],
+          max/min=1.016 -- both flat across the 3 present cells so far).
+          Sanity-confirmed the eigenvector sign ambiguity is handled
+          correctly: at m=23 the lambda1 eigenvector returned by the eigen-
+          solver has opposite global sign between dps=120 and dps=240
+          (xi_0 = +0.51189... vs -0.51189...), which flips the sign of the
+          reported "bracket"/"bracket*12" fields alone but leaves kappa
+          (bracket/xi_0, by construction sign-invariant) numerically
+          identical at both precisions, as it must. Earlier synthetic-only
+          smoke test (schema adapter, quadrature, grid-doubling, all four
+          verdict functions incl. KAPPA_NEGATIVE) also still passes.
         last_verified: 2026-09-03
 
 dynamic_queries:
