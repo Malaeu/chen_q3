@@ -588,4 +588,279 @@ theorem proposition59RawTransform_at_zero_ne_zero_iff
 
 #print axioms proposition59RawTransform_at_zero_ne_zero_iff
 
+/-! ## Steps 5 and 6 — the exact curvature identity, finite route
+
+The Euler tail limit is never formed.  Instead the node-safe step-4a identity
+`F · A = F 0 · Q · s` is differentiated twice at the origin, where `A` and `Q`
+are *polynomials* in `z²` and `s = sin(zL/2)/(zL/2)` is the already-formalized
+removable kernel, whose exact second jet is
+`proposition59PoleKernel_secondDerivative_zero`. -/
+
+/-! ### Calculus and polynomial helpers -/
+
+private theorem iteratedDeriv_two_eq_deriv_deriv (h : ℂ → ℂ) (z : ℂ) :
+    iteratedDeriv 2 h z = deriv (deriv h) z := by
+  simp [iteratedDeriv_succ]
+
+private theorem iteratedDeriv_two_mul_of_differentiable
+    {f g : ℂ → ℂ} (hf : Differentiable ℂ f) (hg : Differentiable ℂ g) (z : ℂ) :
+    iteratedDeriv 2 (fun w => f w * g w) z =
+      iteratedDeriv 2 f z * g z + 2 * (deriv f z * deriv g z) +
+        f z * iteratedDeriv 2 g z := by
+  have hf2 : ContDiff ℂ 2 f := hf.contDiff.of_le le_top
+  have hg2 : ContDiff ℂ 2 g := hg.contDiff.of_le le_top
+  have hdf : Differentiable ℂ (deriv f) := hf2.differentiable_deriv_two
+  have hdg : Differentiable ℂ (deriv g) := hg2.differentiable_deriv_two
+  have hstep : deriv (fun w => f w * g w) =
+      fun w => deriv f w * g w + f w * deriv g w := by
+    funext w
+    exact deriv_mul (hf w) (hg w)
+  have hA : HasDerivAt (fun w => deriv f w * g w)
+      (deriv (deriv f) z * g z + deriv f z * deriv g z) z :=
+    (hdf z).hasDerivAt.mul (hg z).hasDerivAt
+  have hB : HasDerivAt (fun w => f w * deriv g w)
+      (deriv f z * deriv g z + f z * deriv (deriv g) z) z :=
+    (hf z).hasDerivAt.mul (hdg z).hasDerivAt
+  have hAB : HasDerivAt (fun w => deriv f w * g w + f w * deriv g w)
+      (deriv (deriv f) z * g z + deriv f z * deriv g z +
+        (deriv f z * deriv g z + f z * deriv (deriv g) z)) z := hA.add hB
+  rw [iteratedDeriv_two_eq_deriv_deriv, hstep,
+    iteratedDeriv_two_eq_deriv_deriv f, iteratedDeriv_two_eq_deriv_deriv g,
+    hAB.deriv]
+  ring
+
+private theorem polyEval_deriv_zero (p : Polynomial ℂ) :
+    deriv (fun z : ℂ => p.eval z) 0 = p.coeff 1 := by
+  rw [Polynomial.deriv]
+  simp [← Polynomial.coeff_zero_eq_eval_zero, Polynomial.coeff_derivative]
+
+private theorem polyEval_iteratedDeriv_two_zero (p : Polynomial ℂ) :
+    iteratedDeriv 2 (fun z : ℂ => p.eval z) 0 = 2 * p.coeff 2 := by
+  have hd : deriv (fun z : ℂ => p.eval z) =
+      fun z : ℂ => (Polynomial.derivative p).eval z := by
+    funext z
+    exact Polynomial.deriv p
+  rw [iteratedDeriv_two_eq_deriv_deriv, hd, Polynomial.deriv]
+  simp [← Polynomial.coeff_zero_eq_eval_zero, Polynomial.coeff_derivative]
+  ring
+
+/-- The finite even factor `∏ (1 - c z²)` as a polynomial. -/
+noncomputable def quadProductPoly (c : Multiset ℂ) : Polynomial ℂ :=
+  (c.map (fun a => 1 - Polynomial.C a * Polynomial.X ^ 2)).prod
+
+@[simp] theorem quadProductPoly_eval (c : Multiset ℂ) (z : ℂ) :
+    (quadProductPoly c).eval z = (c.map (fun a => 1 - a * z ^ 2)).prod := by
+  simp [quadProductPoly, Polynomial.eval_multiset_prod, Multiset.map_map]
+
+theorem quadProductPoly_coeff_zero (c : Multiset ℂ) :
+    (quadProductPoly c).coeff 0 = 1 := by
+  rw [Polynomial.coeff_zero_eq_eval_zero, quadProductPoly_eval]
+  simp
+
+theorem quadProductPoly_coeff_one (c : Multiset ℂ) :
+    (quadProductPoly c).coeff 1 = 0 := by
+  induction c using Multiset.induction_on with
+  | empty => simp [quadProductPoly, Polynomial.coeff_one]
+  | cons a c ih =>
+      have hfac : quadProductPoly (a ::ₘ c) =
+          (1 - Polynomial.C a * Polynomial.X ^ 2) * quadProductPoly c := by
+        simp [quadProductPoly]
+      rw [hfac, Polynomial.coeff_mul,
+        Finset.Nat.sum_antidiagonal_eq_sum_range_succ_mk]
+      simp [Finset.sum_range_succ, Polynomial.coeff_one,
+        quadProductPoly_coeff_zero, ih]
+
+theorem quadProductPoly_coeff_two (c : Multiset ℂ) :
+    (quadProductPoly c).coeff 2 = -c.sum := by
+  induction c using Multiset.induction_on with
+  | empty => simp [quadProductPoly, Polynomial.coeff_one]
+  | cons a c ih =>
+      have hfac : quadProductPoly (a ::ₘ c) =
+          (1 - Polynomial.C a * Polynomial.X ^ 2) * quadProductPoly c := by
+        simp [quadProductPoly]
+      rw [hfac, Polynomial.coeff_mul,
+        Finset.Nat.sum_antidiagonal_eq_sum_range_succ_mk]
+      simp [Finset.sum_range_succ, Polynomial.coeff_one,
+        quadProductPoly_coeff_zero, quadProductPoly_coeff_one, ih]
+
+/-- Pairing of a symmetric integer window with its centre removed. -/
+theorem prod_erase_zero_Icc_symm {M : Type*} [CommMonoid M] (N : ℕ) (g : ℤ → M) :
+    ∏ k ∈ (Finset.Icc (-(N : ℤ)) (N : ℤ)).erase 0, g k =
+      ∏ k ∈ Finset.Icc 1 N, (g (k : ℤ) * g (-(k : ℤ))) := by
+  classical
+  induction N with
+  | zero => simp
+  | succ n ih =>
+      have hset : (Finset.Icc (-((n : ℤ) + 1)) ((n : ℤ) + 1)).erase 0 =
+          insert ((n : ℤ) + 1)
+            (insert (-((n : ℤ) + 1)) ((Finset.Icc (-(n : ℤ)) (n : ℤ)).erase 0)) := by
+        ext a
+        simp only [Finset.mem_erase, Finset.mem_Icc, Finset.mem_insert]
+        omega
+      have hnotmem1 : -((n : ℤ) + 1) ∉ (Finset.Icc (-(n : ℤ)) (n : ℤ)).erase 0 := by
+        simp only [Finset.mem_erase, Finset.mem_Icc]
+        omega
+      have hnotmem2 : ((n : ℤ) + 1) ∉
+          insert (-((n : ℤ) + 1)) ((Finset.Icc (-(n : ℤ)) (n : ℤ)).erase 0) := by
+        simp only [Finset.mem_insert, Finset.mem_erase, Finset.mem_Icc]
+        omega
+      have hcast : ((n : ℕ) + 1 : ℤ) = ((n + 1 : ℕ) : ℤ) := by push_cast; ring
+      rw [show (-(((n : ℕ) + 1 : ℕ) : ℤ)) = -((n : ℤ) + 1) by push_cast; ring,
+        show ((((n : ℕ) + 1 : ℕ) : ℤ)) = (n : ℤ) + 1 by push_cast; ring,
+        hset, Finset.prod_insert hnotmem2, Finset.prod_insert hnotmem1, ih,
+        Finset.prod_Icc_succ_top (by omega : 1 ≤ n + 1)]
+      push_cast
+      rw [← mul_assoc, mul_comm]
+
+#print axioms quadProductPoly_coeff_two
+#print axioms prod_erase_zero_Icc_symm
+
+/-! ### The two even factor polynomials -/
+
+/-- `c_k = 1/x_k²` for the included lattice modes `1 ≤ k ≤ N`. -/
+noncomputable def proposition59IncludedCoefficients (L : ℝ) (N : ℕ) : Multiset ℂ :=
+  (Finset.Icc 1 N).val.map (fun k : ℕ => ((proposition59Pole L (k : ℤ)) ^ 2)⁻¹)
+
+/-- `c_ρ = 1/ρ²` over the positive roots of the finite Cauchy numerator. -/
+noncomputable def proposition59RootCoefficients
+    (L : ℝ) (N : ℕ) (v : ℤ → ℂ) : Multiset ℂ :=
+  (positiveRootMultiset
+      (proposition59CauchyNumerator L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v)).map
+    (fun ρ : ℝ => ((ρ : ℂ) ^ 2)⁻¹)
+
+theorem proposition59IncludedFactors_eq_eval
+    {L : ℝ} (hL : 0 < L) (N : ℕ) (z : ℂ) :
+    ∏ k ∈ (Finset.Icc (-(N : ℤ)) (N : ℤ)).erase 0,
+        (1 - z / proposition59Pole L k) =
+      (quadProductPoly (proposition59IncludedCoefficients L N)).eval z := by
+  rw [prod_erase_zero_Icc_symm, quadProductPoly_eval,
+    proposition59IncludedCoefficients, Multiset.map_map]
+  rw [show ((Finset.Icc 1 N).val.map
+      ((fun a : ℂ => 1 - a * z ^ 2) ∘
+        fun k : ℕ => ((proposition59Pole L (k : ℤ)) ^ 2)⁻¹)).prod =
+      ∏ k ∈ Finset.Icc 1 N,
+        (1 - ((proposition59Pole L (k : ℤ)) ^ 2)⁻¹ * z ^ 2) from rfl]
+  refine Finset.prod_congr rfl fun k hk => ?_
+  have hk0 : (k : ℤ) ≠ 0 := by
+    have := (Finset.mem_Icc.mp hk).1
+    omega
+  have hxk : proposition59Pole L (k : ℤ) ≠ 0 := by
+    have hp0 : proposition59Pole L 0 = 0 := by simp [proposition59Pole]
+    rw [← hp0]
+    exact proposition59Pole_ne hL.ne' hk0
+  rw [proposition59Pole_neg]
+  field_simp
+  ring
+
+theorem proposition59RootFactors_eq_eval
+    (L : ℝ) (N : ℕ) (v : ℤ → ℂ) (z : ℂ) :
+    ((positiveRootMultiset
+        (proposition59CauchyNumerator L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v)).map
+      (fun ρ : ℝ => 1 - z ^ 2 / (ρ : ℂ) ^ 2)).prod =
+      (quadProductPoly (proposition59RootCoefficients L N v)).eval z := by
+  rw [quadProductPoly_eval, proposition59RootCoefficients, Multiset.map_map]
+  refine congrArg Multiset.prod (Multiset.map_congr rfl fun ρ _ => ?_)
+  simp [div_eq_inv_mul]
+
+/-! ### The removable sine factor `s(z) = sin(zL/2)/(zL/2)` -/
+
+private theorem proposition59Sinc_at_zero {L : ℝ} (hL : 0 < L) :
+    (L : ℂ)⁻¹ * proposition59PoleKernel L 0 0 = 1 := by
+  have hLC : (L : ℂ) ≠ 0 := by exact_mod_cast hL.ne'
+  have hp0 : proposition59Pole L 0 = 0 := by simp [proposition59Pole]
+  have : proposition59PoleKernel L 0 0 = (L : ℂ) := by
+    rw [← hp0, proposition59PoleKernel_at_pole hL.ne' 0]
+    simp
+  rw [this, inv_mul_cancel₀ hLC]
+
+private theorem proposition59Sinc_secondDeriv {L : ℝ} (hL : 0 < L) :
+    iteratedDeriv 2
+        (fun z : ℂ => (L : ℂ)⁻¹ * proposition59PoleKernel L 0 z) 0 =
+      -((L : ℂ) ^ 2) / 12 := by
+  have hLC : (L : ℂ) ≠ 0 := by exact_mod_cast hL.ne'
+  have hcd : ContDiffAt ℂ 2 (proposition59PoleKernel L 0) 0 :=
+    ((differentiable_proposition59PoleKernel L 0).contDiff.of_le le_top).contDiffAt
+  rw [iteratedDeriv_const_mul hcd,
+    proposition59PoleKernel_secondDerivative_zero hL 0]
+  simp [proposition59SecondJetCoefficient]
+  field_simp
+
+/-! ### Step 5 — the exact second jet of `F` from the explicit product -/
+
+/-- `P59_CURVATURE_SECOND_JET_REAL` (jet half): differentiating the node-safe
+step-4a identity twice at the origin.  All first derivatives at the origin
+carry a vanishing partner, so no unknown `F'(0)` survives. -/
+theorem proposition59_secondDerivative_zero_from_product
+    {L : ℝ} (hL : 0 < L) (N : ℕ) (v : ℤ → ℂ) (hv : ∀ k : ℤ, v (-k) = v k)
+    (hv0 : v 0 ≠ 0)
+    (hzeros : ZerosRealOn Set.univ
+      (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v)) :
+    iteratedDeriv 2
+        (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v) 0 =
+      proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v 0 *
+        (-2 * (proposition59RootCoefficients L N v).sum - (L : ℂ) ^ 2 / 12
+          + 2 * (proposition59IncludedCoefficients L N).sum) := by
+  have hLC : (L : ℂ) ≠ 0 := by exact_mod_cast hL.ne'
+  set S : Finset ℤ := Finset.Icc (-(N : ℤ)) (N : ℤ) with hSdef
+  set Fe : ℂ → ℂ := proposition59RawTransform L S v with hFedef
+  set Ap : Polynomial ℂ :=
+    quadProductPoly (proposition59IncludedCoefficients L N) with hApdef
+  set Qp : Polynomial ℂ :=
+    quadProductPoly (proposition59RootCoefficients L N v) with hQpdef
+  set sK : ℂ → ℂ :=
+    fun z => (L : ℂ)⁻¹ * proposition59PoleKernel L 0 z with hsKdef
+  have hFdiff : Differentiable ℂ Fe :=
+    differentiable_proposition59RawTransform L S v
+  have hAdiff : Differentiable ℂ (fun z : ℂ => Ap.eval z) := Ap.differentiable
+  have hQdiff : Differentiable ℂ (fun z : ℂ => Qp.eval z) := Qp.differentiable
+  have hsdiff : Differentiable ℂ sK :=
+    (differentiable_proposition59PoleKernel L 0).const_mul _
+  have hGdiff : Differentiable ℂ (fun z : ℂ => Fe 0 * Qp.eval z) :=
+    hQdiff.const_mul _
+  have hQcd : ContDiffAt ℂ 2 (fun z : ℂ => Qp.eval z) 0 :=
+    (hQdiff.contDiff.of_le le_top).contDiffAt
+  -- the step-4a identity, as an equality of functions
+  have hid : (fun z : ℂ => Fe z * Ap.eval z) =
+      fun z : ℂ => (Fe 0 * Qp.eval z) * sK z := by
+    funext z
+    rw [hApdef, hQpdef, ← proposition59IncludedFactors_eq_eval hL N z,
+      ← proposition59RootFactors_eq_eval L N v z, hsKdef]
+    rw [proposition59_explicit_product_identity hL N v hv hv0 hzeros z]
+    field_simp
+    ring
+  have hjet := congrArg (fun h : ℂ → ℂ => iteratedDeriv 2 h 0) hid
+  simp only at hjet
+  rw [iteratedDeriv_two_mul_of_differentiable hFdiff hAdiff 0,
+    iteratedDeriv_two_mul_of_differentiable hGdiff hsdiff 0] at hjet
+  have hA0 : Ap.eval 0 = 1 := by
+    rw [← Polynomial.coeff_zero_eq_eval_zero, hApdef, quadProductPoly_coeff_zero]
+  have hA1 : deriv (fun z : ℂ => Ap.eval z) 0 = 0 := by
+    rw [polyEval_deriv_zero, hApdef, quadProductPoly_coeff_one]
+  have hA2 : iteratedDeriv 2 (fun z : ℂ => Ap.eval z) 0 =
+      -2 * (proposition59IncludedCoefficients L N).sum := by
+    rw [polyEval_iteratedDeriv_two_zero, hApdef, quadProductPoly_coeff_two]
+    ring
+  have hQ0 : Qp.eval 0 = 1 := by
+    rw [← Polynomial.coeff_zero_eq_eval_zero, hQpdef, quadProductPoly_coeff_zero]
+  have hQ1 : deriv (fun z : ℂ => Qp.eval z) 0 = 0 := by
+    rw [polyEval_deriv_zero, hQpdef, quadProductPoly_coeff_one]
+  have hQ2 : iteratedDeriv 2 (fun z : ℂ => Qp.eval z) 0 =
+      -2 * (proposition59RootCoefficients L N v).sum := by
+    rw [polyEval_iteratedDeriv_two_zero, hQpdef, quadProductPoly_coeff_two]
+    ring
+  have hG1 : deriv (fun z : ℂ => Fe 0 * Qp.eval z) 0 = 0 := by
+    rw [deriv_const_mul _ (hQdiff 0), hQ1, mul_zero]
+  have hG2 : iteratedDeriv 2 (fun z : ℂ => Fe 0 * Qp.eval z) 0 =
+      Fe 0 * (-2 * (proposition59RootCoefficients L N v).sum) := by
+    rw [iteratedDeriv_const_mul hQcd, hQ2]
+  have hs0 : sK 0 = 1 := proposition59Sinc_at_zero hL
+  have hs2 : iteratedDeriv 2 sK 0 = -((L : ℂ) ^ 2) / 12 :=
+    proposition59Sinc_secondDeriv hL
+  rw [hA0, hA1, hA2, hQ0, hG1, hG2, hs0, hs2] at hjet
+  linear_combination hjet
+
+#print axioms proposition59IncludedFactors_eq_eval
+#print axioms proposition59RootFactors_eq_eval
+#print axioms proposition59_secondDerivative_zero_from_product
+
 end Q3.RouteB
