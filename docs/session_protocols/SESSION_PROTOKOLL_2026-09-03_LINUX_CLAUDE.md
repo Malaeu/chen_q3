@@ -154,3 +154,14 @@ E-CLOSED ⇔ alternierende Gitter-Summe = Input A mit Gewichten. C2/C3/C4/C5 tot
   entries; my a-priori doubt refuted. Mechanism: ground transform is window-concentrated with leakage √λ₁; λ₁ = leakage.
 - Bugs of mine tonight: ball-vs-threshold; polynomial root accuracy; ctx.dps set after acb construction (twice). All caught.
 - Open: batch LEAKAGE (unconditional use of the identity; not-RH sign; complete divisor in this light).
+
+## Addendum (2026-09-04, after LEAKAGE verdict) — the wall has a name
+
+- LEAKAGE verdict (commit on origin): identity confirmed; selected-cell positivity (N = m) is NOT RH without an exhaustion
+  theorem; positivity route = RH restatement; real-zero family route not killed; winding-lock discriminator; 5.10 sign-independent.
+- Lit card WEIL_POSITIVITY_OBJECT_CARD_2026-09-04.md: proven positivity stops at L = log 2 everywhere; our windows are beyond;
+  finite-slice → unconditional only via signature (AF/Lamzouri 67.25 %), not via the floor.
+- Running: winding-lock preflight agent (task file in docs/Codex/). Hand check from Probe 12 data: on disks up to ~1.3 x_N the
+  ground numerator's zero count equals the count of γ_j inside (6/12/26 on m = 13/23/43) — the discriminator passes there
+  numerically; beyond, excess zeros appear where |F| ~ √λ₁.
+- Background watchers were killed twice by something outside owner/observer control (backlog C3).
