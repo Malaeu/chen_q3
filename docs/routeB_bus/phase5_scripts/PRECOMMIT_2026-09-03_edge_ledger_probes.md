@@ -137,3 +137,24 @@ eigenpair: gap_share ≥ 0.5 at every cell.
 - else UNRESOLVED. m = 163 excluded (no full spectrum); descriptive only if computed.
 Needs the full even spectrum for m ≤ 83 (dims ≤ 84, acb_mat.eig already used by the
 builder). DIAGNOSTIC_NEVER_A_PROOF.
+
+## ADDENDUM 4 (2026-09-03 13:22, after Probe 5 CONFIRMED, before any Schur-pairing residue was computed) — Probe 6, sign structure of the center Schur pairing (attack R2)
+
+Judge attack R2: split the even block at the central coordinate, K = [[a, bᵀ],[b, D]],
+ξ = ξ_0·(1, −(D − λ₁)⁻¹ b). Then ℓ_N(ξ)/ξ_0 = 1/12 − ⟨c, (D − λ₁)⁻¹ b⟩ with c the
+n≠0 part of ℓ_N (c_n = 1/(2π² n²)) in the same even-basis coordinates. The two-order
+cancellation is 1/12 − ⟨c,(D−λ₁)⁻¹b⟩ = O(L⁻²). Judge's decisive gate for R2: one-sign
+residues or exact pole-zero interlacing of the scalar function
+f(z) = ⟨c, (D − z)⁻¹ b⟩ = Σ_j r_j/(μ_j − z), r_j = ⟨c, w_j⟩⟨w_j, b⟩ (eigenpairs (μ_j, w_j) of D).
+Definitions per cell (m = N ∈ {13,23,43,83}, arb, same basis mapping as Probe 5):
+  r_j for all j; S_+ = Σ_{r_j>0} r_j, S_− = Σ_{r_j<0} |r_j|; minority_mass = min(S_+,S_−)/(S_+ + S_−);
+  f(λ₁) and the cancellation digits: 1/12 − f(λ₁) vs 2κ/L² (sanity, must match Probe 5's a_1/ξ_0);
+  interlacing check: number of sign changes of f on (μ_j, μ_{j+1}) between consecutive poles.
+Prediction (K6, registered here): `P_SCHUR_RESIDUES_ONE_SIGN` p=0.35 (i.e. I expect mixed signs).
+- CONFIRMED (one sign): at every cell minority_mass ≤ 1e-6 → f is a Stieltjes-type function
+  on this cell; R2's sign gate is numerically open.
+- REFUTED: at every cell minority_mass ≥ 0.05 → no one-sign structure; R2 needs a different
+  identity (interlacing or exact Loewner inverse), not positivity.
+- else UNRESOLVED. Also descriptive: the Loewner structure of the off-diagonal entries
+  τ_{ij} = (b_i − b_j)/(i − j) (CCM Lemma 5.1) — report whether the sequence b_i is monotone
+  on 1..N at each cell. DIAGNOSTIC_NEVER_A_PROOF.
