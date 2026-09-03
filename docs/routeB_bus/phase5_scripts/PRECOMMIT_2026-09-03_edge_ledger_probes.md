@@ -319,3 +319,16 @@ Prediction (K6, observer, registered before m=43 is computed):
     The mechanism "small Weil energy ⇒ small values at the zeros" is the observer's sealed candidate, killed by the judge
     as RH-circular (indefinite zero sum off the line); the numerics are consistent with it under RH and prove nothing.
 Executor: observer by hand. DIAGNOSTIC_NEVER_A_PROOF.
+
+## ADDENDUM 15 (2026-09-04, after the m=13/23/43 R2 observation at gamma_1 and t=15, BEFORE any extension) — Probe 13, evaluation-range identity `e(γ) = K b(γ)`
+
+Observed (not precommitted): `‖K⁻¹e(γ₁)‖₂ = 58.1, 58.3, 52.5` on m = 13, 23, 43 with spectral components `C_1, −4.6, 1.0, −0.2…`;
+`‖K⁻¹e(15)‖₂ = 8e26, 8e47, 7e86`. Extension objects (even block; unit eigenvectors; `b(t) := K⁻¹e(t)` via spectral sum):
+  (i) `‖b(γ_j)‖₂` for j = 1, 2, 3 on m = 83, 163 (and 13, 23, 43 for j = 2, 3);  (ii) `‖b(t)‖₂` at t = 15 and t = 30 (non-zeros);
+  (iii) `‖b(z)‖₂` at the complex point z = γ₁ + 0.1i and at z = 0.5i·γ₁ (off-line probes: does the range property see the line?);
+  (iv) the second spectral component `⟨e(γ₁),u₂⟩/λ₂` trend in m.
+Predictions (K6, observer, registered before the run):
+  `P_RANGE_IDENTITY_UNIFORM_IN_M` p=0.70 — `‖b(γ₁)‖₂ ∈ [30, 80]` at m = 83 and m = 163.
+  `P_RANGE_IDENTITY_HIGHER_ZEROS` p=0.55 — `‖b(γ_j)‖₂ ≤ 10⁶` for j = 2, 3 at every cell (bounded on compacts, growth in j allowed).
+  `P_RANGE_IDENTITY_SEES_THE_LINE` p=0.60 — `‖b(γ₁ + 0.1i)‖₂ ≥ 10⁴·‖b(γ₁)‖₂` at m = 43 (off-line point is NOT in the good range).
+Executor: observer by hand (rule 13). DIAGNOSTIC_NEVER_A_PROOF.
