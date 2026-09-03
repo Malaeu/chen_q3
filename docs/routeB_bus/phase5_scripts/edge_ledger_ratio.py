@@ -115,7 +115,7 @@ def _fmt_s(x: float) -> str:
     x = max(0.0, x)
     return f"{int(x // 60)}m{int(x % 60):02d}s"
 
-def progress(stage: str, done: int, total: int, force: bool = False) -> None:
+def progress_eta(stage: str, done: int, total: int, force: bool = False) -> None:
     """One line at most every PROGRESS_EVERY_S seconds: stage, percent, rate, ETA."""
     global _PROGRESS_LAST
     now = _time.time()
@@ -134,6 +134,7 @@ def progress(stage: str, done: int, total: int, force: bool = False) -> None:
 # doubling, so integrating each piece to 10^-(dps+5) is pure cost (precommit
 # AMENDMENT 6, 2026-09-03). Digits below are far beyond what the verdict consumes.
 QUAD_TOL_DIGITS = int(os.environ.get("EDGE_LEDGER_QUAD_TOL_DIGITS", "40"))
+CROSSING_FLOOR_REL = float(os.environ.get("EDGE_LEDGER_CROSSING_FLOOR_REL", "1e-13"))
 
 # AMENDMENT 5 (2026-09-03 13:48, precommit): working-precision cap for
 # Probes 3/4 on cells whose only ledger record is above this dps (m=163,
@@ -546,7 +547,17 @@ def float_scan_breakpoints(rec: RecordArb, points_per_half_osc: int) -> tuple[li
 
     crossings: list[float] = []
     signs = np.sign(q)
+    # AMENDMENT 7 (2026-09-03): near the window edge |q_m| is super-exponentially small and
+    # the float64 sum is pure cancellation noise; every noise sign flip became a quadrature
+    # piece (2004 pieces at m=163 instead of ~330). A crossing counts only if the larger
+    # neighbour exceeds CROSSING_FLOOR_REL * max|q|; stretches below the floor contribute at
+    # most CROSSING_FLOOR_REL * max|q| * L * e^{sigma L/2} ~ 1e-13 * M_m, far under the 1e-8
+    # acceptance. Sign inside such a stretch is taken from the midpoint as before.
+    qmax = float(np.max(np.abs(q))) if len(q) else 0.0
+    floor = CROSSING_FLOOR_REL * qmax
     for i in range(len(ts) - 1):
+        if max(abs(q[i]), abs(q[i + 1])) < floor:
+            continue
         if signs[i] == 0.0:
             crossings.append(float(ts[i]))
         elif signs[i] * signs[i + 1] < 0.0:
@@ -567,9 +578,9 @@ def integrate_M(rec: RecordArb, breakpoints: list[float], sigmas: list[float]) -
     bp_arb = [arb(repr(t)) for t in breakpoints]
     n_pieces = len(bp_arb) - 1
     stage = f"m={rec.m} N={rec.N} dps={rec.dps} pieces({len(sigmas)} sigmas each)"
-    progress(stage, 0, n_pieces, force=True)
+    progress_eta(stage, 0, n_pieces, force=True)
     for piece_idx, (a, b) in enumerate(zip(bp_arb[:-1], bp_arb[1:]), 1):
-        progress(stage, piece_idx, n_pieces)
+        progress_eta(stage, piece_idx, n_pieces)
         if b <= a:
             continue
         mid = (a + b) / 2
@@ -1098,7 +1109,7 @@ def write_report(
         lines.append("")
         lines.append(
             f"**QUADRATURE_GRID_REDUCED**: this run used "
-            f"{probe3_records[0]['grid_points_per_half_osc_used']} grid points per half-oscillation "
+            f"{probe3_records[0].get('grid_points_per_half_osc_used', '?')} grid points per half-oscillation "
             f"(frozen default {GRID_POINTS_PER_HALF_OSC_DEFAULT}), applied uniformly, per the "
             "coordinator's 30-minute time-budget instruction."
         )

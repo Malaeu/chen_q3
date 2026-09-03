@@ -176,3 +176,14 @@ integrated to 10^-40 (env `EDGE_LEDGER_QUAD_TOL_DIGITS`, default 40), i.e. 32 or
 acceptance criterion. Thresholds unchanged; this is a cost decision. The script now prints one
 progress line per minute (stage, pieces done/total, rate, ETA) to stderr, per the project's
 Python rule; runs are launched with a log file so the observer can read progress.
+
+## AMENDMENT 7 (2026-09-03 15:05, after the m=163 Probe 3 run crashed on 2004 pieces, before any m=163 value existed) — noise crossings
+
+The float64 sign scan that places quadrature breakpoints found 2004 sign changes at m=163
+(and hundreds at m=83) where |q_m| is super-exponentially small and the 327-term sum is pure
+cancellation noise. Rule: a crossing counts only if the larger neighbour exceeds
+1e-13·max|q| (env `EDGE_LEDGER_CROSSING_FLOOR_REL`); stretches below the floor contribute
+at most 1e-13·max|q|·L·e^{σL/2} ≈ 3e-13·M_m, far under the 1e-8 acceptance. With the floor
+the interior has no genuine sign change at any cell (q_m > 0, as the transform of a
+positive Φ-like density): 2 pieces per cell. Thresholds unchanged; cost decision with a
+stated error bound. Result: the m=163 cell computes in seconds instead of hours.
