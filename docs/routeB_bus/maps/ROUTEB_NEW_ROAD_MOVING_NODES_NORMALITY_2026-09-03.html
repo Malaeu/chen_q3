@@ -1232,35 +1232,33 @@ html&gt;body{padding:0}&lt;/style&gt;
 
     &lt;div class=&quot;rb-gates&quot;&gt;
       &lt;div class=&quot;rb-gate&quot;&gt;
-        &lt;button class=&quot;rb-node open&quot; type=&quot;button&quot; data-detail=&quot;Нужно показать: если xₖ₍ₘ₎→x, то √L(−1)ᵏξ₋ₖ→Ξ(x); при x=0 это также даёт ненулевой якорь.&quot; aria-pressed=&quot;false&quot;&gt;
+        &lt;button class=&quot;rb-node open&quot; type=&quot;button&quot; data-detail=&quot;Нужно показать: если xₖ₍ₘ₎→x, то √L(−1)ᵏξ₋ₖ→Ξ(x). Поправка 03.09: production-семья A_n-нормирована, F_n(0)=Ξ(0) по построению, якорь тавтологичен, риск переезжает в A_n→∞. Порт входа A — проективная ошибка p_k; избыток Рэлея на m=N взрывается (ε~1e14..1e89) при малой p_k.&quot; aria-pressed=&quot;false&quot;&gt;
           &lt;span class=&quot;rb-label&quot;&gt;A · Сходимость выборок&lt;/span&gt;
           &lt;span class=&quot;rb-formula&quot;&gt;&lt;code&gt;xₖ₍ₘ₎ → x ⇒ √L(−1)ᵏξ₋ₖ → Ξ(x)&lt;/code&gt;&lt;/span&gt;
-          &lt;span class=&quot;rb-status&quot;&gt;открыто · слабее старого Input B&lt;/span&gt;
+          &lt;span class=&quot;rb-status&quot;&gt;открыто · порт = проективная ошибка p_k ≤ ε_k/(g_k−1) (d7c7df36); относительный Ritz острый только при N ≫ m; A и B на ОДНОМ расписании&lt;/span&gt;
         &lt;/button&gt;
       &lt;/div&gt;
 
       &lt;div class=&quot;rb-gate&quot;&gt;
-        &lt;button class=&quot;rb-node open&quot; type=&quot;button&quot; data-detail=&quot;Равномерная ограниченность на каждом компакте полосы превращает семейство Fₘ в нормальное семейство Монтеля.&quot; aria-pressed=&quot;false&quot;&gt;
+        &lt;button class=&quot;rb-node open&quot; type=&quot;button&quot; data-detail=&quot;Вердикт 0c0a2b37: чётная целая, вещественная на оси, с вещественными нулями, F(0)≠0 ⇒ |F(z)/F(0)| ≤ exp(κ|z|²), κ = Σ1/ρ² = −F″(0)/(2F(0)). Нормальность = sup_k κ_k &lt; ∞. Численно κ_m = 0.0259…0.0245 на m=13…163, ≈ Σ1/γ² = 0.0231 (зонд 4 CONFIRMED). Стена теперь: |∂_tΦ(0,λ₁)| ≤ C/L² (d7c7df36).&quot; aria-pressed=&quot;false&quot;&gt;
           &lt;span class=&quot;rb-label&quot;&gt;B · Нормальность на |Im z| &amp;lt; 1/2&lt;/span&gt;
           &lt;span class=&quot;rb-formula&quot;&gt;&lt;code&gt;supₘ sup(z∈K) |Fₘ(z)| &amp;lt; ∞&lt;/code&gt;&lt;/span&gt;
-          &lt;span class=&quot;rb-status&quot;&gt;открыто · это и есть HumpMassBound&lt;/span&gt;
+          &lt;span class=&quot;rb-status&quot;&gt;открыто как ОДИН скаляр κ = −F″(0)/(2F(0)); HumpMassBound не требуется (0c0a2b37); |F/F(0)| ≤ e^{κ|z|²} — мост в CURVBRIDGE у Прошки&lt;/span&gt;
         &lt;/button&gt;
 
         &lt;div class=&quot;rb-arrow&quot; aria-hidden=&quot;true&quot;&gt;↓ сначала не доказательство, а kill-test&lt;/div&gt;
 
-        &lt;button class=&quot;rb-node test&quot; type=&quot;button&quot; data-detail=&quot;Посчитать ground-отношение при σ=0.1,…,0.45 для доступных m и N; результат калибрует путь, но не доказывает квантор.&quot; aria-pressed=&quot;false&quot;&gt;
-          &lt;span class=&quot;rb-label&quot;&gt;B₀ · Численный ground-ratio&lt;/span&gt;
+        &lt;button class=&quot;rb-node proven&quot; type=&quot;button&quot; data-detail=&quot;СДЕЛАНО 03.09 (зонд 3, прекоммит c5db76d6): R_m(0.40) = 1.0776, 1.0781, 1.0775, 1.0764, 1.0754 на m=N=13…163, N-проверки 1.072/1.074 — BOUNDED по замороженному правилу. Диагностика, не квантор.&quot; aria-pressed=&quot;false&quot;&gt;
+          &lt;span class=&quot;rb-label&quot;&gt;B₀ · Численный ground-ratio · BOUNDED&lt;/span&gt;
           &lt;span class=&quot;rb-formula&quot;&gt;&lt;code&gt;Rₘ(σ)=∫|qₘ|e^{σ|t|}dt /(√L|ξ₀|)&lt;/code&gt;&lt;/span&gt;
         &lt;/button&gt;
 
         &lt;div class=&quot;rb-split&quot;&gt;
           &lt;button class=&quot;rb-node kill&quot; type=&quot;button&quot; data-detail=&quot;Если Rₘ(0.4) явно растёт с m, угол компактности надо закрыть: нормальность неправдоподобна уже на данных.&quot; aria-pressed=&quot;false&quot;&gt;
-            &lt;span class=&quot;rb-label&quot;&gt;Rₘ растёт&lt;/span&gt;
-            путь Монтеля мёртв
+            &lt;span class=&quot;rb-label&quot;&gt;Rₘ растёт&lt;/span&gt; не реализовался (данные 03.09)
           &lt;/button&gt;
-          &lt;button class=&quot;rb-node open&quot; type=&quot;button&quot; data-detail=&quot;Ограниченные значения поддержат аналитическую атаку, но не заменят равномерную оценку для всех k и каждого σ&amp;lt;1/2.&quot; aria-pressed=&quot;false&quot;&gt;
-            &lt;span class=&quot;rb-label&quot;&gt;Rₘ выглядит ограниченным&lt;/span&gt;
-            атаковать доказательство B
+          &lt;button class=&quot;rb-node proven&quot; type=&quot;button&quot; data-detail=&quot;Реализовалось: R_m плоское, κ_m плоское. Аналитическая атака идёт через κ: R1 (dual annihilator) убит зондом 5 — сертификат целиком на второй паре, платит 1/(λ₂−λ₁); выбран R2 — наклон окаймлённого секулярного определителя (d7c7df36).&quot; aria-pressed=&quot;false&quot;&gt;
+            &lt;span class=&quot;rb-label&quot;&gt;Rₘ выглядит ограниченным&lt;/span&gt; реализовалось → атака R2 на κ
           &lt;/button&gt;
         &lt;/div&gt;
       &lt;/div&gt;
@@ -1269,7 +1267,7 @@ html&gt;body{padding:0}&lt;/style&gt;
     &lt;div class=&quot;rb-arrow&quot; aria-hidden=&quot;true&quot;&gt;↓ A + B&lt;/div&gt;
 
     &lt;div class=&quot;rb-chain&quot; aria-label=&quot;Условная цепь замыкания&quot;&gt;
-      &lt;button class=&quot;rb-node conditional&quot; type=&quot;button&quot; data-detail=&quot;Монтель даёт сходящуюся подпоследовательность целых функций на полосе.&quot; aria-pressed=&quot;false&quot;&gt;&lt;span class=&quot;rb-label&quot;&gt;Монтель&lt;/span&gt;подпоследовательность&lt;/button&gt;
+      &lt;button class=&quot;rb-node conditional&quot; type=&quot;button&quot; data-detail=&quot;Монтель даёт подпоследовательность; судья требует Витали + moving-node + аргумент единственного кластера, чтобы сходилась вся последовательность (0c0a2b37, MOVING_NODE ратифицирован).&quot; aria-pressed=&quot;false&quot;&gt;&lt;span class=&quot;rb-label&quot;&gt;Монтель&lt;/span&gt;подпоследовательность&lt;/button&gt;
       &lt;span class=&quot;rb-arrow&quot; aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;
       &lt;button class=&quot;rb-node conditional&quot; type=&quot;button&quot; data-detail=&quot;Совпадение предела с Ξ на плотной вещественной сетке фиксирует весь аналитический предел по теореме тождественности.&quot; aria-pressed=&quot;false&quot;&gt;&lt;span class=&quot;rb-label&quot;&gt;Тождественность&lt;/span&gt;предел = Ξ&lt;/button&gt;
       &lt;span class=&quot;rb-arrow&quot; aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;
@@ -1282,12 +1280,11 @@ html&gt;body{padding:0}&lt;/style&gt;
 
     &lt;div class=&quot;rb-now&quot; role=&quot;note&quot;&gt;
       &lt;span class=&quot;rb-label&quot;&gt;Текущее честное состояние&lt;/span&gt;
-      Входы A и B не доказаны. Новая дорога сокращает контракт, но не обходит стену 3.2; Route B остаётся challenger / NOT_RH.
+      Вечер 03.09: входы A и B не доказаны. B сжат до одного скаляра κ (зонд 4: плоский), старый экспоненциальный момент численно ограничен (зонд 3), абсолютная щель схлопывается 10^{−1.9m} (зонд 1) и убита как цель, R1 платит щель (зонд 5), выбран R2: |∂_tΦ(0,λ₁)| ≤ C/L² без нормы резольвенты. Lean: второй джет, 1/80, относительный Ritz, арифметика расписания kernel-green (e6fdf040); мост «κ → ограниченность» ждёт доказательства без Адамара (CURVBRIDGE у Прошки). Route B остаётся challenger / NOT_RH.
     &lt;/div&gt;
   &lt;/div&gt;
 
-  &lt;div id=&quot;rb-wall-panel&quot; class=&quot;rb-panel&quot; role=&quot;tabpanel&quot; aria-labelledby=&quot;rb-wall-tab&quot; hidden&gt;
-    &lt;div class=&quot;rb-wall-grid&quot;&gt;
+  &lt;div id=&quot;rb-wall-panel&quot; class=&quot;rb-panel&quot; role=&quot;tabpanel&quot; aria-labelledby=&quot;rb-wall-tab&quot; hidden&gt; &lt;div class=&quot;rb-now&quot; role=&quot;note&quot;&gt;&lt;span class=&quot;rb-label&quot;&gt;Статус стены 3.2 на вечер 03.09&lt;/span&gt; Экспоненциально-взвешенный момент численно ограничен (R_m(0.40) ≈ 1.077, зонд 3) и по вердикту 0c0a2b37 НЕ обязателен для маршрута: нормальность идёт через скаляр κ. Поставщики 034/038 остаются открытыми в trial-редукции, но не на критическом пути. Новая стена: наклон окаймлённого определителя (d7c7df36).&lt;/div&gt; &lt;div class=&quot;rb-wall-grid&quot;&gt;
       &lt;button class=&quot;rb-node proven&quot; type=&quot;button&quot; data-detail=&quot;qₘ — центрированная тригонометрическая плотность, собранная из ground-коэффициентов ξ₋ₙ.&quot; aria-pressed=&quot;false&quot;&gt;
         &lt;span class=&quot;rb-label&quot;&gt;Ground-плотность&lt;/span&gt;
         &lt;span class=&quot;rb-formula&quot;&gt;&lt;code&gt;qₘ(t)=L⁻¹ᐟ²Σ(−1)ⁿξ₋ₙe^{2πint/L}&lt;/code&gt;&lt;/span&gt;
@@ -1310,11 +1307,11 @@ html&gt;body{padding:0}&lt;/style&gt;
       &lt;button class=&quot;rb-node kill&quot; type=&quot;button&quot; data-detail=&quot;L²-проекция сохраняет ортогональность, но не экспоненциальный спад; масса может вытечь к ±L/2, где вес равен m^{σ/2}.&quot; aria-pressed=&quot;false&quot;&gt;
         &lt;span class=&quot;rb-label&quot;&gt;Утечка к краям окна&lt;/span&gt;
         &lt;span class=&quot;rb-formula&quot;&gt;&lt;code&gt;e^{σ|t|}&lt;/code&gt; у края = &lt;code&gt;m^{σ/2}&lt;/code&gt;&lt;/span&gt;
-        это горб HumpMassBound
+        это горб HumpMassBound · численно не растёт (зонд 3)
       &lt;/button&gt;
       &lt;button class=&quot;rb-node open&quot; type=&quot;button&quot; data-detail=&quot;Малая ξ₀ делает правую часть слабой; выборковая сходимость A при x=0 могла бы одновременно дать нужный ненулевой якорь.&quot; aria-pressed=&quot;false&quot;&gt;
         &lt;span class=&quot;rb-label&quot;&gt;Проблема якоря&lt;/span&gt;
-        нормировка всего вектора не даёт нижней границы на &lt;code&gt;|ξ₀|&lt;/code&gt;
+        в production-семье якорь F_n(0)=Ξ(0) по построению; риск переехал в A_n → ∞ (03.09)
       &lt;/button&gt;
     &lt;/div&gt;
 
