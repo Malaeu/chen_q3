@@ -7,7 +7,11 @@ Written and run by the orchestrator (rule 13: decisive number by hand). For m = 
   numerator P(z) = sum_{|k|<=N} c_k prod_{j!=k}(z - x_j), x_j = 2 pi j/L; zeros of P = off-lattice zeros of the transform.
 Prints: number of non-real roots (midpoint test |Im| > 1e-6 max(1,|z|)), first positive zeros vs the Riemann zeros
 (mpmath.zetazero at 25 digits), sign-flip sets. Lesson 2026-09-04: never test a ball with a strict threshold
-(undecidable comparison reads as False); use midpoints. DIAGNOSTIC_NEVER_A_PROOF.
+(undecidable comparison reads as False); use midpoints. SECOND LESSON (same day): acb_poly.roots() on this
+numerator (coefficients ~1e29) locates roots only to ~1e-8 -- the printed "zeros vs gamma_j" offsets are root-finder
+accuracy, NOT the transform's zero displacement. The true displacement is F(gamma_j)/F'(gamma_j) ~ lambda_1/1e-3
+(1e-26 at m=13); verify zeros by evaluating F directly and by Newton on F (Progress_Log 2026-09-04 ERRATUM).
+DIAGNOSTIC_NEVER_A_PROOF.
 """
 from __future__ import annotations
 import argparse, sys
