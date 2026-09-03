@@ -409,6 +409,23 @@ tool_families:
           orchestrator 2026-09-04 (agents do not edit the registry).
         last_verified: 2026-09-04
 
+      - id: xi-row-zeros
+        classification: MANUAL
+        status: ENABLED
+        audience: [CLAUDE_CODE, HUMAN]
+        mode: WRITES_DERIVED
+        path: docs/routeB_bus/phase5_codex/xi_row_zeros.py
+        invoke: .venv/bin/python docs/routeB_bus/phase5_codex/xi_row_zeros.py --cells 13:220,23:320,43:480
+        trigger: Probe 12 (precommit ADDENDUM 13/14); zeros of the P59 numerator for the ground row and the Xi row.
+        writes: true
+        approval: TASK_SCOPED_OUTPUT_UNDER_docs_routeB_bus_phase5_codex_out
+        authority: FINITE_CELL_ZERO_DIAGNOSTIC_NOT_A_CERTIFICATE_NOT_RH
+        records_to: [docs/routeB_bus/phase5_codex/out/xi_row_zeros.md]
+        note: >-
+          Written and run by the orchestrator 2026-09-04 (rule 13). Lesson inside the docstring --
+          test arb balls by midpoint, never by a strict threshold.
+        last_verified: 2026-09-04
+
       - id: s7-table
         classification: MANUAL
         status: ENABLED
