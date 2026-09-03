@@ -18,6 +18,7 @@ safety confirmation остаётся внешней границей. Судья
 
 - `STATUS: IN_REVIEW`
 - Delivery observed 2026-09-03 ≈21:45 CEST: owner pasted the one-line GitHub-locator instruction in the living chat; judge accepted.
+- Living-chat relay (unbound, same topic, owner's plain prompt ≈20:47): judge re-derived (MAIN-P) independently (6th channel for the identity); read ‖RΔ‖² as the H⁻¹ distance of densities (Parseval); proposed Variant A (vector-specific coercivity — KILLED by Probe 11: Rayleigh quotient of RΔ is 1e-15..1e-130) and Variant B (periodized Ξ primitive L² rate, Poisson crosswalk — OPEN). Digest: `docs/CHAT_DIGESTS.md` 2026-09-04.
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_XI_ROW_QUASI_EIGENVECTOR_AND_COLLAPSE_THEOREM_2026-09-04.txt`
 - Boundary: `GOAL058_XI_ROW_QUASI_EIGENVECTOR_AND_COLLAPSE_THEOREM`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
