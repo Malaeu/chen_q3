@@ -385,7 +385,9 @@ tool_families:
         approval: TASK_SCOPED_OUTPUT_UNDER_docs_routeB_bus_phase5_codex_out
         authority: FINITE_WINDOW_SOURCE_ENTRY_DIAGNOSTIC_NOT_A_CERTIFICATE_NOT_RH
         records_to: [docs/routeB_bus/phase5_codex/out/s7_table.csv, docs/routeB_bus/phase5_codex/out/s7_table.md]
-        note: Written by the orchestrator 2026-09-04 to test agent claim S7; result: S7 is a rewrite of delta_n's definition (Progress_Log 03:10).
+        note: >-
+          Written by the orchestrator 2026-09-04 to test agent claim S7. Result -- S7 is a rewrite
+          of delta_n's definition (Progress_Log 2026-09-04 03:10).
         last_verified: 2026-09-04
 
       - id: migration-census
