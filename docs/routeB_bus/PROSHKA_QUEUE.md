@@ -14,9 +14,14 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-03-SCHURLOEWNER · Goal 058 curvature: Schur/Loewner secular identity, Input-A geometry · IN_REVIEW
+## REQ-2026-09-03-SCHURLOEWNER · Goal 058 curvature: Schur/Loewner secular identity, Input-A geometry · ANSWERED
 
-- `STATUS: IN_REVIEW`
+- `STATUS: ANSWERED`
+- Verdict: `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_CURVATURE_SCHUR_LOEWNER_SECULAR_ADJUDICATION_2026-09-03.md` · commit `d7c7df36` · blob `6cfe5c7d22ab53d09d60f54a921426dcb6828705`
+- Operative class: `TRY_SECULAR_IDENTITY_FOR_CURVATURE` with representation repair: curvature = ½∂_tΦ(t,λ1)|0 of the bordered rank-two determinant ratio; next gap `P59_CURVATURE_BORDERED_SECULAR_SLOPE_SOURCE_BOUND`; Input A typed on projective defect; two proof schedules REJECTED (one common refinement required)
+- Kills (theorem shape): pole secular as curvature evaluator; generic Loewner → L⁻² rate; strict one-sign residues; two-schedule composition
+- Predictions scored: P_CURVATURE_SOURCE_1 CONFIRMED (finite), P_GROUND_RATIO_GROWS REFUTED, P_ABS_GAP_COLLAPSES CONFIRMED, P_DUAL_CERT_PAYS_GAP CONFIRMED, P_SCHUR_RESIDUES_ONE_SIGN UNRESOLVED, P_DIRECT_FUNCTIONAL_BEATS CONFIRMED (representation), P_JOINT_PROJECTIVE_RATE_1 REFUTED as interface, P_SECULAR_IDENTITY_EXISTS REFUTED as stated, P_LOEWNER_CLAIM CONFIRMED with scope repair, P_TWO_SCHEDULES_ALLOWED see verdict
+- Next transaction: Codex read-only preflight `docs/Codex/TASK_2026-09-03_goal058_curvature_bordered_secular_source_preflight.md`
 - Delivery observed 2026-09-03 ~15:15 CEST: owner pasted the canonical instruction with the .txt attached in living chat `6a8c3e2a-df50-83eb-b53d-dd4cc46f646f`; judge accepted the attachment.
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_CURVATURE_SCHUR_LOEWNER_SECULAR_ADJUDICATION_2026-09-03.txt`
 - Boundary: `GOAL058_CURVATURE_SCHUR_LOEWNER_SECULAR_ADJUDICATION`
