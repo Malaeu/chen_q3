@@ -14,9 +14,13 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-03-NEWMECH · Goal 058: new mechanism for the curvature wall (C1 second jet at 0, C2 dichotomy, C3 relative gap, C4 de Branges chain, C5 judge's own) · IN_REVIEW
+## REQ-2026-09-03-NEWMECH · Goal 058: new mechanism for the curvature wall (C1 second jet at 0, C2 dichotomy, C3 relative gap, C4 de Branges chain, C5 judge's own) · ANSWERED
 
-- `STATUS: IN_REVIEW`
+- `STATUS: ANSWERED`
+- Verdict: `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_NEW_MECHANISM_FOR_CURVATURE_WALL_2026-09-03.md` · commit `3dc82357` · blob `674b17a683af547901e17099d35edcb809341c49`
+- Operative class: `TRY_RECIPROCAL_MODE_ODD_GRAM_CURVATURE_IDENTITY` · C1 DEVELOP (projective two-jet transfer, anchor repair; one rate J_k = |A_k| L^{5/2} √p_k) · C2 KILL · C3 KILL as single mechanism (conditional supplier retained) · C4 KILL · C5 DEVELOP: reciprocal-mode displacement `D R − R D = b rᵀ − r bᵀ`, parity sends the curvature defect to the ODD sector: `κ = (L²/4π²)·E_k`, `E_k = ½‖r‖² − ⟨r,A(Rb)⟩ + (a₀−λ₁)⟨r,Ar⟩ + Σ_{n>N}1/n²`, second even eigenpair removed by parity; gap `P59_RECIPROCAL_MODE_ODD_GRAM_SOURCE_BOUND`
+- Predictions: P_C1 CONFIRMED_WITH_NORMALIZATION_REPAIR; P_C3 REFUTED; P_C4 REFUTED_AS_STATED; P_C2 REFUTED; P_JUDGE_PROPOSES_BETTER_C5 CONFIRMED_AT_REPRESENTATION_SCOPE; judge registered P_C5_ODD_COBBOUNDARY_EXISTS p=0.45
+- Next transaction: read-only preflight `GOAL058_RECIPROCAL_MODE_ODD_GRAM_SOURCE_PREFLIGHT` (task file to follow)
 - Delivery observed 2026-09-03 ~17:50 CEST: owner pasted the canonical instruction with the .txt attached in living chat `6a8c3e2a-df50-83eb-b53d-dd4cc46f646f`; judge accepted.
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_NEW_MECHANISM_FOR_CURVATURE_WALL_2026-09-03.txt`
 - Boundary: `GOAL058_NEW_MECHANISM_FOR_CURVATURE_WALL`
