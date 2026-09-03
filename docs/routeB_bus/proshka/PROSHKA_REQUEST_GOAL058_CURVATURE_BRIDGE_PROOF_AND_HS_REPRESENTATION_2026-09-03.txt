@@ -1,0 +1,121 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-03-CURVBRIDGE
+BOUNDARY_ID: GOAL058_CURVATURE_BRIDGE_PROOF_AND_HS_REPRESENTATION
+CALL_CLASS: DELEGATED_PROOF_AND_REPRESENTATION_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Prove and adjudicate REQ-2026-09-03-CURVBRIDGE (attached .txt is authoritative).
+DATE: 2026-09-03
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+SOURCE_BASE_COMMIT: c8fc4cdbba005d9c87cf08b13d8421b9b9f6bdc7
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: PROPOSITION59_CCM_FINITE_BOTTOM_GROUND_FAMILY
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_PROOF_AT_LEAN_GRANULARITY_PLUS_REPRESENTATION_ADJUDICATION
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_CURVATURE_BRIDGE_PROOF_AND_HS_REPRESENTATION_2026-09-03.md
+AUTHOR: Linux-Claude (observer), on owner instruction; owner relays byte-exact
+PARENT_VERDICTS: 0c0a2b37 (CURVRITZ), d7c7df36 (SCHURLOEWNER)
+
+WHY THIS REQUEST IS A PROOF TASK, NOT AN AUDIT
+
+Codex delivered items 1-4 of the second-jet bookkeeping KERNEL_GREEN (e6fdf040) and
+stopped item 5 with MATHLIB_GAP_NAMED: Mathlib 4.26 has no Hadamard factorization for
+entire functions of order <= 1 and no order predicate. The abstract bridge
+"even + real on R + real zeros + order <= 1 + G(0)=1 + bounded kappa => |G(z)| <= exp(kappa|z|^2)"
+is therefore not formalizable as stated. But the production family does not need it:
+its zero divisor is explicit. Part 1 asks you to PROVE the P59-specific bridge at Lean
+granularity. Part 2 asks you to adjudicate a third representation of the curvature wall.
+
+PART 1 - PROVE: explicit-product curvature bridge for the Proposition-59 transform
+
+Objects (exact Lean names at SOURCE_BASE_COMMIT):
+  proposition59PoleKernel L k z          = 2 sin(zL/2)/(z - 2*pi*k/L), removable at the node
+                                           (Proposition59EntireTransform.lean:50)
+  proposition59RawTransform L S v        = L^(-1/2) * sum_{k in S} v k * poleKernel  (line 177)
+  proposition59CCMTransform (ccmL m) N xi = raw transform on S = Icc (-N) N
+  ZerosRealOn Set.univ F                 (ZeroEscapeLogic.lean:13)
+  proposition59RawTransform_secondDerivative_zero (Codex e6fdf040):
+    F''(0) = -(L^2 sqrt L) * (v 0/12 + (1/(2 pi^2)) sum_{n != 0} v n / n^2)
+  central value F(0) = sqrt L * v 0   (proposition59RawTransform_at_zero_eq_sqrt)
+
+Structure to exploit (paper facts, please verify each):
+  (i)   sum_{|k|<=N} xi_k/(z - x_k) = P(z) / prod_{|k|<=N} (z - x_k), deg P <= 2N, x_k = 2 pi k/L.
+  (ii)  sin(zL/2) / prod_{|k|<=N} (z - x_k) is entire with zero set exactly {x_k : |k| > N},
+        all simple (sin(zL/2) has the simple zeros x_k, k in Z, including x_0 = 0).
+  (iii) F(z) = 2 L^(-1/2) * [sin(zL/2)/prod(z - x_k)] * P(z); zeros of F = zeros of P union
+        {x_k : |k| > N}. If ZerosRealOn univ F then all zeros of P are real.
+  (iv)  For an even row (xi_{-k} = xi_k), P is even; with F(0) != 0 (i.e. xi_0 != 0 and
+        P(0) != 0) and all zeros of P real: P(z)/P(0) = prod_{j} (1 - z^2/rho_j^2) over the
+        positive zeros with multiplicity.
+  (v)   sin(zL/2)/(zL/2) = prod_{k>=1} (1 - z^2/x_k^2) (Euler); hence
+        F(z)/F(0) = prod_j (1 - z^2/rho_j^2) * prod_{k>N} (1 - z^2/x_k^2).
+  (vi)  Elementary bound |1 - z^2/r^2| <= 1 + |z|^2/r^2 <= exp(|z|^2/r^2) gives
+        |F(z)/F(0)| <= exp(kappa |z|^2),  kappa := sum_j 1/rho_j^2 + sum_{k>N} 1/x_k^2.
+  (vii) Logarithmic derivative at 0 of (v) gives kappa = -F''(0)/(2F(0)) exactly; combined
+        with the Codex formula this is a finite identity in xi:
+        (L^2/2) * [1/12 + (1/(2 pi^2 xi_0)) sum_{n != 0} xi_n/n^2]
+          = sum_j 1/rho_j^2 + (L^2/(4 pi^2)) sum_{k>N} 1/k^2.
+
+Deliver: a complete proof of
+  THEOREM (P59 curvature bridge). Let L > 0, N >= 1, xi : Icc(-N) N -> R even, F the
+  Proposition-59 transform, ZerosRealOn univ F, F(0) != 0. Then for every z in C,
+    |F(z)| <= |F(0)| * exp( kappa_F * |z|^2 ),  kappa_F := -F''(0)/(2 F(0)) >= 0,
+  and kappa_F equals the zero sum in (vii).
+with every step at the granularity Codex can formalize (name the Mathlib facts you use:
+Euler product for sin, polynomial factorization over R with real roots, finite products,
+exp bound). State exactly which hypotheses are needed where (evenness for the pairing;
+F(0) != 0 for the normalization; real zeros for the product form). If some step needs a
+fact Mathlib 4.26 lacks, name it precisely (as Codex did) rather than skipping it.
+Also state the consequence for the roof: on any subsequence with sup kappa_k < infinity the
+normalized family F_k/F_k(0) is locally uniformly bounded on C, hence on the strip.
+
+PART 2 - ADJUDICATE: the Hilbert-Schmidt representation of the curvature
+
+CCM Theorem 5.10 (arXiv:2511.22755, pp. 23-24): for the simple bottom eigenvector,
+det_reg(D_log^{(lambda,N)} - z) = -i lambda^{-iz} xi-hat(z), and the zeros of xi-hat are the
+spectrum of the self-adjoint D_log^{(lambda,N)} (modified inner product). With (iii)-(vii):
+  kappa_k = sum_{mu in spec(D_log^{(lambda,N)}), mu != 0} mu^{-2}   (with multiplicity)
+i.e. kappa_k = || (D_log^{(lambda,N)})^{-1} ||_HS^2 on the nonzero spectrum (the forced
+lattice part sum_{k>N} x_k^{-2} = (L^2/4pi^2) sum_{k>N} k^{-2} -> 0 on m = N = k+2 is part of
+it if the lattice zeros belong to the spectrum; say whether they do).
+
+Q2.1 Is this identity exact as stated (which spectrum: the whole real spectrum of the
+     self-adjoint extension, or only the P-zeros)? Give the exact statement.
+Q2.2 The curvature wall now has three representations: (R-secular) |d_t Phi(0,lambda1)| <= C/L^2
+     (d7c7df36), (R-zeros) sum_j rho_j^{-2} bounded, (R-HS) ||(D_log)^{-1}||_HS uniformly bounded.
+     Rank them by attackability with the arsenal (C04, C09, C10, K2): which one admits a
+     source-faithful attack that never touches ||(D - lambda1)^{-1}|| or an absolute gap?
+     For (R-HS): D_log is a first-order operator on an interval of length L with a nonlocal
+     boundary condition; its inverse is an integral operator with an explicit kernel. Is the
+     HS norm of that kernel computable from the source data (Thm 5.10 (i)-(ii)), and does
+     the modified inner product spoil the naive L^2/24 free-Dirac scaling in the right
+     direction? Numerics: kappa_k = 0.0259, 0.0263, 0.0258, 0.0252, 0.0245 on m = N = 13..163,
+     approaching sum_gamma gamma^{-2} = 0.0231; forced part negligible.
+Q2.3 Zero repulsion: (R-zeros) bounded is equivalent to a uniform lower bound on the smallest
+     positive zero rho_min(k) plus summability of the tail. Does CCM's structure (Lemma 7.3
+     trial convergence, or the finite Dirac spectrum) give rho_min(k) >= c > 0 along the
+     schedule without assuming convergence to Xi? Name the first exact failure point.
+
+REGISTERED PREDICTIONS (K6, observer, before your answer)
+  P_EXPLICIT_PRODUCT_BRIDGE_PROOF: 0.85 - Part 1 is provable in full at Lean granularity
+    with Mathlib 4.26 facts only (Euler sine product, real-rooted polynomial factorization).
+  P_HS_REPRESENTATION_EXACT: 0.80 - the identity kappa_k = ||(D_log)^{-1}||_HS^2 over the
+    nonzero spectrum (forced lattice included) is exact.
+  P_HS_ATTACK_FOUND: 0.25 - a source-faithful attack on (R-HS) exists that avoids the
+    absolute gap and is cheaper than (R-secular).
+
+REQUIRED VERDICT
+  1. repeat REQUEST_ID, BOUNDARY_ID, request commit, Git blob, SHA-256; six-field phase key
+     unchanged;
+  2. Part 1: the full proof, or the exact missing step with a named Mathlib gap;
+  3. Part 2: answers to Q2.1-Q2.3, a ranking of the three representations, the cheapest
+     next action with its falsifier;
+  4. score the three predictions without editing probabilities;
+  5. Lean-ready vs new analytic separation; a CODEX DIRECTIVE for formalizing Part 1;
+  6. no Lean edit, no numerical run, no route promotion, no RH claim; write only the
+     expected verdict document.
