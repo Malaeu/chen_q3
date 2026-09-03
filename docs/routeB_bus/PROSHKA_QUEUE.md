@@ -14,9 +14,17 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-03-LATTICEWALL · Goal 058: alternating-lattice form of the curvature wall; weighted lattice error O(L⁻²) as the one statement · IN_REVIEW
+## REQ-2026-09-03-LATTICEWALL · Goal 058: alternating-lattice form of the curvature wall; weighted lattice error O(L⁻²) as the one statement · ANSWERED
 
-- `STATUS: IN_REVIEW`
+- `STATUS: ANSWERED`
+- Verdict: `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_ALTERNATING_LATTICE_FORM_OF_THE_CURVATURE_WALL_2026-09-03.md` · commit `f788d2fa` · blob `5f95f23e44cf251baafc7fc7dfc933ac5d8db46f`
+- Operative class: `TRY_NORMALIZED_XI_LATTICE_EIGEN_EQUATION_PREFLIGHT` · Q1 alternating identity EXACT with tail `|T| ≤ L²/(2π²(N+1)²)` and bound `κ ≤ S_Ξ + (L²/2π²)W + |T|`; `S_Ξ,k` bounded and → κ_Ξ (half-cell quadrature) · Q2 `W=O(L⁻²)` closes NORMALITY, is NOT weakest (exact signed decomposition), does NOT close Input A: Input A needs `sup_{n ≤ XL/2π}|Δ_n| → 0` for every X (compact lattice profile, unweighted, moving index) · Q3 Lemma 7.3 rate `O(λ^{-1/2})` + outer tail, no direct import (continuum trial ≠ finite project trial without crosswalk); node transfer exact with `√L`; `W_ground−trial ≤ π²/(√45·|Ξ(0)|)·|A|·√(L·p)`; one rate `|A|L^{5/2}√p = O(1)` · Q4 attack: center-normalized eigen-equation `R(y)_n = (K̃y)_n − y_n(K̃y)_0 = 0` before any inverse; success `P59_XI_LATTICE_LOW_MODE_STABILITY_IDENTITY`, failure `P59_XI_LATTICE_EQUATION_REIMPORTS_DENSE_TAIL_OR_GAP`
+- Gaps: curvature `P59_WEIGHTED_LATTICE_ERROR_SOURCE_BOUND`; full route `P59_WEIGHTED_AND_COMPACT_LATTICE_PROFILE_SOURCE_BOUND`; smallest `P59_XI_LATTICE_LOW_MODE_STABILITY_IDENTITY`
+- Kills: `W_AS_WEAKEST`, `W_ALONE_AS_INPUT_A`, `C5_AS_NEW_BOUND`
+- Predictions: P_ALTERNATING_FORM_EXACT CONFIRMED; P_WEIGHTED_ERROR_IS_WEAKEST_SUFFICIENT REFUTED_AS_STATED; P_NODE_TRANSFER_EXACT_SQRT_L CONFIRMED_WITH_ANCHOR_REPAIR; P_C5_ODD_COBBOUNDARY_EXISTS CONFIRMED_WITH_ADVERSE_UTILITY; P_ODD_SECTOR_FLOOR_NONCOLLAPSING REFUTED; P_E_TERMS_NOT_GAP_INFLATED REFUTED; P_WEIGHTED_LATTICE_ERROR_POLYLOG CONFIRMED_FINITE; P_SUP_LATTICE_ERROR_POLYLOG CONFIRMED_FINITE
+- Lean-ready (six items, later transaction, file `Proposition59AlternatingLatticeCurvature.lean`): alternating eta-two sum; normalized P59 sample; alternating curvature identity; alternating tail bound; weighted curvature inequality; projective weighted-node inequality
+- Next transaction: read-only preflight `GOAL058_NORMALIZED_XI_LATTICE_EIGEN_EQUATION_PREFLIGHT` (paper + source), judge p=0.40 for `P_LOW_MODE_RECURRENCE_CLOSES_BEFORE_GAP`; falsifier: full inverse / collapsed gap / odd floor / dense tail. Fallback: projective two-jet route `|A|L^{5/2}√p = O(1)`
+- Intake 2026-09-03 ~23:30 CEST by Linux-Claude.
 - Delivery observed 2026-09-03 ~22:05 CEST: owner (remote) pasted the one-line GitHub-locator instruction in living chat `6a8c3e2a-df50-83eb-b53d-dd4cc46f646f`; judge accepted.
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_ALTERNATING_LATTICE_FORM_OF_THE_CURVATURE_WALL_2026-09-03.txt`
 - Boundary: `GOAL058_ALTERNATING_LATTICE_FORM_OF_THE_CURVATURE_WALL`

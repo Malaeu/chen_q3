@@ -106,3 +106,19 @@ E-CLOSED ⇔ alternierende Gitter-Summe = Input A mit Gewichten. C2/C3/C4/C5 tot
 
 **Offen:** Lieferant für `p_k` (C1); Batch an Proshka (E-CLOSED, Prediction-Scoring);
 `P59_EULER_TAIL_LIMIT_API_GAP` an den Knoten (kosmetisch); Fable-Launcher-Kosten (Codex).
+
+## Addendum (≈23:40 CEST) — LATTICEWALL verdict intake; method docs
+
+- Verdict `f788d2fa` (`REQ-2026-09-03-LATTICEWALL`): alternating form EXACT; `W=O(L⁻²)` closes
+  normality only; Input A needs the unweighted compact lattice profile `sup_{n≤XL/2π}|Δ_n|→0`;
+  my "B and A are one statement" REFUTED_AS_STATED. Smallest gap now
+  `P59_XI_LATTICE_LOW_MODE_STABILITY_IDENTITY` (center-normalized eigen-equation, judge 0.40).
+- Intake: queue ANSWERED; Progress_Log fork; migrator run (1 strategy row, 1 kill row);
+  PUBLICATION_PLAN item 2 corrected; wall card updated with the new atom candidate.
+- Tasks written: `docs/Codex/TASK_2026-09-04_goal058_normalized_xi_lattice_eigen_equation_preflight.md`
+  (AUTHORIZED, read-only paper+source), `docs/Codex/TASK_2026-09-04_goal058_p59_alternating_lattice_curvature_lean.md`
+  (PREPARED_AWAITING_TRANSACTION, six Lean items).
+- Method docs: `docs/METHOD_ROOF_TO_ATOM.md` (owner's 7-step method), `docs/routeB_bus/WALL_OBJECT_CARD_2026-09-03.md`,
+  PUBLICATION_PLAN standalone-result section. Memory `wall-as-object-method` extended.
+- Open for 2026-09-04: run the preflight (Codex if alive, else Opus agent); Lean transaction after
+  it; correct the Fable-chat HTML map note (B and A distinct).
