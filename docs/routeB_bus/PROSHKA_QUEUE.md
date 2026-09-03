@@ -14,6 +14,20 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-03-LATTICEWALL · Goal 058: alternating-lattice form of the curvature wall; weighted lattice error O(L⁻²) as the one statement · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_ALTERNATING_LATTICE_FORM_OF_THE_CURVATURE_WALL_2026-09-03.txt`
+- Boundary: `GOAL058_ALTERNATING_LATTICE_FORM_OF_THE_CURVATURE_WALL`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: Lean bridge KERNEL_GREEN 7/7; C5 preflight ONLY_RENAMES; Probe 8 (odd sector collapses); Probe 9 (W_k·L² ≈ 0.2–0.3, sup|Δ_n|·L² ≈ 0.25–0.58, both CONFIRMED)
+- Registered predictions: `P_ALTERNATING_FORM_EXACT p=0.90`, `P_WEIGHTED_ERROR_IS_WEAKEST_SUFFICIENT p=0.60`, `P_NODE_TRANSFER_EXACT_SQRT_L p=0.70`; judge to score `P_C5_ODD_COBBOUNDARY_EXISTS 0.45` and four observer predictions of Probes 8–9
+- Delivery mode: owner is remote (no attachment); the judge fetches the committed file from GitHub by path/commit/blob/SHA-256 stated in the one-line instruction
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `2b78050265dfcc31d12680682bb22dde69c61ef6` / `9052` / `116` /
+  `2809978da5f05335bac4ee7c68207654429e6a8182b7fed5fd955086d7b56384` /
+  `ecd1536add041b6fd43479ad061887f1af1e0cb0` / `yes`
+
 ## REQ-2026-09-03-NEWMECH · Goal 058: new mechanism for the curvature wall (C1 second jet at 0, C2 dichotomy, C3 relative gap, C4 de Branges chain, C5 judge's own) · ANSWERED
 
 - `STATUS: ANSWERED`
