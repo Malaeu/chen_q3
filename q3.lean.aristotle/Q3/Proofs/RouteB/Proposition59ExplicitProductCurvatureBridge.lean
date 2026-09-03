@@ -340,4 +340,96 @@ theorem eval_div_eval_zero_eq_prod_positiveRootMultiset
 #print axioms positiveRootMultiset_pos
 #print axioms eval_div_eval_zero_eq_prod_positiveRootMultiset
 
+/-! ### The finite numerator on the symmetric window is even -/
+
+theorem proposition59Pole_neg (L : ℝ) (k : ℤ) :
+    proposition59Pole L (-k) = -proposition59Pole L k := by
+  simp [proposition59Pole]
+  ring
+
+theorem card_Icc_symm (N : ℕ) :
+    (Finset.Icc (-(N : ℤ)) (N : ℤ)).card = 2 * N + 1 := by
+  rw [Int.card_Icc]
+  omega
+
+/-- `P_N` on a symmetric window with an even coefficient row is an even
+polynomial. -/
+theorem proposition59CauchyNumerator_eval_neg
+    (L : ℝ) (N : ℕ) {v : ℤ → ℂ} (hv : ∀ k : ℤ, v (-k) = v k) (z : ℂ) :
+    (proposition59CauchyNumerator L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v).eval (-z) =
+      (proposition59CauchyNumerator L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v).eval z := by
+  classical
+  set S : Finset ℤ := Finset.Icc (-(N : ℤ)) (N : ℤ) with hSdef
+  have hmemS : ∀ k : ℤ, k ∈ S ↔ -k ∈ S := by
+    intro k
+    simp [hSdef, Finset.mem_Icc]
+    omega
+  rw [proposition59CauchyNumerator_eval, proposition59CauchyNumerator_eval]
+  refine Finset.sum_equiv (Equiv.neg ℤ) (fun k => ?_) (fun k hk => ?_)
+  · simpa using hmemS k
+  · have hkS : k ∈ S := hk
+    have hcard : (S.erase k).card = 2 * N := by
+      rw [Finset.card_erase_of_mem hkS, card_Icc_symm]
+      omega
+    have hsign : ∏ _j ∈ S.erase k, (-1 : ℂ) = 1 := by
+      rw [Finset.prod_const, hcard, pow_mul]
+      norm_num
+    have hinner :
+        ∏ j ∈ S.erase k, (-z - proposition59Pole L j) =
+          ∏ j ∈ S.erase (-k), (z - proposition59Pole L j) := by
+      have hstep :
+          ∏ j ∈ S.erase k, (-z - proposition59Pole L j) =
+            ∏ j ∈ S.erase k, (z - proposition59Pole L (-j)) := by
+        rw [show (∏ j ∈ S.erase k, (z - proposition59Pole L (-j))) =
+            ∏ j ∈ S.erase k,
+              ((-1 : ℂ) * (-z - proposition59Pole L j)) from
+          Finset.prod_congr rfl fun j _ => by
+            rw [proposition59Pole_neg]; ring]
+        rw [Finset.prod_mul_distrib, hsign, one_mul]
+      rw [hstep]
+      refine Finset.prod_equiv (Equiv.neg ℤ) (fun j => ?_) (fun j _ => by simp)
+      simp only [Equiv.neg_apply, Finset.mem_erase, ne_eq, neg_inj]
+      constructor
+      · rintro ⟨hjk, hjS⟩
+        exact ⟨hjk, (hmemS j).mp hjS⟩
+      · rintro ⟨hjk, hjS⟩
+        exact ⟨hjk, (hmemS j).mpr hjS⟩
+    rw [hinner]
+    simp only [Equiv.neg_apply, hv]
+
+#print axioms proposition59CauchyNumerator_eval_neg
+
+/-! ### Step 3 applied to the Proposition-5.9 numerator -/
+
+theorem proposition59CauchyNumerator_eval_zero_ne_zero
+    {L : ℝ} (hL : L ≠ 0) (N : ℕ) (v : ℤ → ℂ) (hv0 : v 0 ≠ 0) :
+    (proposition59CauchyNumerator L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v).eval 0 ≠ 0 := by
+  have h0 : (0 : ℤ) ∈ Finset.Icc (-(N : ℤ)) (N : ℤ) := by simp
+  have hpole : proposition59Pole L 0 = 0 := by simp [proposition59Pole]
+  intro h
+  refine hv0 ((proposition59CauchyNumerator_eval_at_lattice_eq_zero_iff hL _ v h0).mp ?_)
+  rw [hpole]
+  exact h
+
+/-- The normalized finite factorization of the Proposition-5.9 Cauchy numerator
+under the two source hypotheses `ZerosRealOn` and `v 0 ≠ 0`. -/
+theorem proposition59CauchyNumerator_normalized_product
+    {L : ℝ} (hL : 0 < L) (N : ℕ) (v : ℤ → ℂ) (hv : ∀ k : ℤ, v (-k) = v k)
+    (hv0 : v 0 ≠ 0)
+    (hzeros : ZerosRealOn Set.univ
+      (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v))
+    (z : ℂ) :
+    (proposition59CauchyNumerator L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v).eval z /
+        (proposition59CauchyNumerator L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v).eval 0 =
+      ((positiveRootMultiset
+          (proposition59CauchyNumerator L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v)).map
+        (fun ρ : ℝ => 1 - z ^ 2 / (ρ : ℂ) ^ 2)).prod :=
+  eval_div_eval_zero_eq_prod_positiveRootMultiset
+    (proposition59CauchyNumerator_eval_zero_ne_zero hL.ne' N v hv0)
+    (proposition59CauchyNumerator_eval_neg L N hv)
+    (fun _ hw => proposition59CauchyNumerator_roots_real hL _ v hzeros hw) z
+
+#print axioms proposition59CauchyNumerator_eval_zero_ne_zero
+#print axioms proposition59CauchyNumerator_normalized_product
+
 end Q3.RouteB
