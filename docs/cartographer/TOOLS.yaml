@@ -1505,7 +1505,7 @@ tool_families:
       prime-set); no substitute construction. DIAGNOSTIC_NEVER_A_PROOF,
       PX_RH_CLAIM NOT_MADE, no route promotion.
     front_door: edge-ledger-build
-    coverage: [docs/routeB_bus/phase5_scripts/edge_ledger_build.py, docs/routeB_bus/phase5_scripts/edge_ledger_fuchs.py, docs/routeB_bus/phase5_scripts/edge_ledger_ratio.py, docs/routeB_bus/phase5_scripts/edge_ledger_relritz.py, docs/routeB_bus/phase5_scripts/edge_ledger_dualcert.py, docs/routeB_bus/phase5_scripts/edge_ledger_schur.py, docs/routeB_bus/phase5_codex/slope_split.py]
+    coverage: [docs/routeB_bus/phase5_scripts/edge_ledger_build.py, docs/routeB_bus/phase5_scripts/edge_ledger_fuchs.py, docs/routeB_bus/phase5_scripts/edge_ledger_ratio.py, docs/routeB_bus/phase5_scripts/edge_ledger_relritz.py, docs/routeB_bus/phase5_scripts/edge_ledger_dualcert.py, docs/routeB_bus/phase5_scripts/edge_ledger_schur.py, docs/routeB_bus/phase5_codex/slope_split.py, docs/routeB_bus/phase5_codex/odd_gram.py]
     tools:
       - id: edge-ledger-build
         classification: MANUAL
@@ -1864,6 +1864,79 @@ tool_families:
           against an equally enormous Arch-Prime part to leave the tiny
           1/12-S consistent with Probe 5's a1/xi0. Verdict:
           P_POLE_PART_CARRIES_ONE_TWELFTH: UNRESOLVED.
+        last_verified: 2026-09-03
+
+      - id: odd-gram
+        classification: MANUAL
+        status: ENABLED
+        audience: [CODEX, CLAUDE_CODE, HUMAN]
+        mode: WRITES_DERIVED
+        path: docs/routeB_bus/phase5_codex/odd_gram.py
+        invoke: .venv/bin/python docs/routeB_bus/phase5_codex/odd_gram.py
+        trigger: >-
+          Explicit Goal 058 Probe 8 (reciprocal-mode odd-Gram defect and the
+          odd-sector floor, ADDENDUM 9 of
+          PRECOMMIT_2026-09-03_edge_ledger_probes.md, mechanism from verdict
+          3dc82357 Sec. 6 C5) request only; not part of any automatic
+          startup or goal-close event. Imports
+          CCMArbBuilder/bounds/compute_eig_data/decimal_str/sig_agree from
+          edge_ledger_build.py (imported, never copied); unlike
+          edge-ledger-build and slope-split, this probe assembles the FULL
+          (2N+1)x(2N+1) matrix K entry-by-entry from tau_entry(n,m) in the
+          raw +-N mode indexing (both parities), not the folded even basis.
+        writes: true
+        approval: TASK_SCOPED_OUTPUT_UNDER_docs_routeB_bus_phase5_codex_out
+        authority: FINITE_NONCENTRAL_BLOCK_ODD_GRAM_DIAGNOSTIC_NOT_A_CERTIFICATE_NOT_RH
+        records_to: [docs/routeB_bus/phase5_codex/out/odd_gram.json, docs/routeB_bus/phase5_codex/out/odd_gram.md]
+        note: >-
+          For m=N in {13,23,43,83} (m=83 at 360 dps, others at 240 dps):
+          builds a0=tau_entry(0,0), the raw center column
+          b_n=tau_entry(n,0), and the noncentral block
+          D_{nm}=tau_entry(n,m) for n,m in {-N..-1,1..N}; takes lambda1 (the
+          even bottom eigenvalue) from the same even_block() eigen
+          machinery used by edge-ledger-build; defines X=diag(n), R=X^-1,
+          r=R*1 (r_n=1/n), A=(D-lambda1 I)^-1 applied only via
+          arb_mat.solve(algorithm="precond") (never formed as a matrix);
+          computes T1=(1/2)||r||^2, T2=<r,A(Rb)>, T3=(a0-lambda1)<r,Ar>,
+          T4=sum_{n>N}1/n^2 (closed form pi^2/6 minus a finite sum, never a
+          literal infinite summation), E=T1-T2+T3+T4; verifies <r,Ab>=0,
+          <b,Ab>-(a0-lambda1)=0, and the source commutator identity
+          D R - R D = b r^T - r b^T (upper triangle only, both sides
+          antisymmetric) all to a zero-containing ball; sanity gate:
+          kappa=(L^2/(4*pi^2))*E must agree with Probe 4's own kappa
+          (out/edge_ledger_ratio.json, same cell) to >=8 significant
+          digits, else the script stops with ODD_GRAM_SANITY_MISMATCH.
+          Odd sector: O_{ij}=tau_entry(i,j)-tau_entry(i,-j) for i,j=1..N is
+          both the odd block of D and (since b is even under n->-n, checked
+          numerically) the odd block of K restricted to odd modes; reports
+          mu_odd_min (O's smallest eigenvalue) against lambda2 (even second
+          eigenvalue). Verdicts by the frozen ADDENDUM-9 rule:
+          P_ODD_SECTOR_FLOOR_NONCOLLAPSING (p=0.55,
+          mu_odd_min(83)/mu_odd_min(13)>=1e-6) and
+          P_E_TERMS_NOT_GAP_INFLATED (p=0.50, max(|T2|,|T3|)*L^2<=10 at
+          every cell).
+        validation: >-
+          Run 2026-09-03 (24.6s wall for all four cells, well inside the
+          45-minute budget). All identity checks PASS at every cell
+          (parity <r,Ab>=0, Schur root <b,Ab>=a0-lambda1, source
+          commutator D R - R D = b r^T - r b^T, b even under n->-n). Kappa
+          sanity PASS at every cell (agrees with Probe 4 to >=8 digits:
+          e.g. m=83 kappa_computed=0.02516807147 vs
+          kappa_probe4_ref=0.02516807147). Both predictions REFUTED: (1)
+          mu_odd_min collapses super-exponentially across the schedule
+          (6.4e-28 at m=13 to 2.9e-158 at m=83, comparable in scale to
+          lambda2's own collapse 2.8e-25 to 1.3e-154), so
+          mu_odd_min(83)/mu_odd_min(13) ~ 4.5e-131, far below the 1e-6
+          floor -- the odd sector has its own near-collapsing ground
+          eigenvalue, it does not stay bounded away from zero; (2) T2 and
+          T3 individually explode (~1e25 at m=13 to ~2.6e154 at m=83,
+          nearly equal and cancelling to leave a modest E), so
+          max(|T2|,|T3|)*L^2 is astronomically larger than 10 at every
+          cell -- the reciprocal-mode representation still pays a
+          1/mu_odd_min-scale cancellation inside E, the same disease Probe
+          7 found in the pole/Arch-Prime split. Verdicts:
+          P_ODD_SECTOR_FLOOR_NONCOLLAPSING: REFUTED,
+          P_E_TERMS_NOT_GAP_INFLATED: REFUTED.
         last_verified: 2026-09-03
 
 dynamic_queries:
