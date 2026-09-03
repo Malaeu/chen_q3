@@ -51,8 +51,11 @@ Q3 THE not-RH BRANCH. Under not-RH the consumer still needs (i)-(iii) to deliver
    zero-convergence supplier of Q2 use RH, if it does? If the supplier is unconditional and (iii) holds, then the limit G has
    only real zeros = the zeros of Xi in every compact, contradicting an off-line zero — is that the Hurwitz contradiction
    the route was built for, and what is its first failure point?
-Q4 Lean-ready vs new analytic; CODEX DIRECTIVE for the uniqueness lemma if Mathlib has Hadamard for order 1 (it does not have
-   Hadamard factorization; name what it does have: Laguerre-Polya class? none; propose the finite-product route as in 926c1865).
+Q4 Lean-ready vs new analytic; CODEX DIRECTIVE for the uniqueness lemma. Mathlib 4.26 inventory (checked 2026-09-04): NO Hadamard
+   or Weierstrass factorization, NO Laguerre-Polya class; HAS Liouville (Analysis/Complex/Liouville), Jensen's formula
+   (Analysis/Complex/JensenFormula: MeromorphicOn.circleAverage_log_norm), Euler sine product, Poisson summation. Name the
+   finite-product route (as in 926c1865: explicit product of the P59 numerator times the Euler tail) that avoids Hadamard:
+   e.g. uniqueness for limits of such explicit products with converging zero sets and converging second jet.
 PREDICTIONS (K6, observer): P_ZERO_IDENTIFICATION_CLOSES_INPUT_A 0.55; P_EXCESS_ZEROS_ESCAPE 0.60; P_KAPPA_CONVERGES_TO_KAPPA_XI 0.70; P_S9_IS_SOURCE_IDENTITY 0.50;
    P_ZERO_SUPPLIER_UNCONDITIONAL 0.25; P_JUDGE_NAMES_ZERO_ROUTE_AS_PRIMARY 0.60.
 REQUIRED VERDICT: standard (REQUEST_ID/BOUNDARY/commit/blob/SHA; Q1-Q4 exact; score predictions; Lean-ready vs analytic; no Lean edit, no numerics, no promotion, no RH claim).
