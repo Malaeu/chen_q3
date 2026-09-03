@@ -14,9 +14,14 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-04-WINDLOCK · Goal 058: winding lock results — disk fails (imaginary axis), thin rectangle holds on all cells; the compact count question reduces to ONE relative endpoint error e(R) < 1 (component I, weakest form); localized locks; polynomial argument principle in Lean · OPEN
+## REQ-2026-09-04-WINDLOCK · Goal 058: winding lock results — disk fails (imaginary axis), thin rectangle holds on all cells; the compact count question reduces to ONE relative endpoint error e(R) < 1 (component I, weakest form); localized locks; polynomial argument principle in Lean · ANSWERED
 
-- `STATUS: OPEN`
+- `STATUS: ANSWERED`
+- Verdict: `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_WINDING_LOCK_RECTANGLE_RESULTS_AND_ENDPOINT_ATOM_2026-09-04.md` · commit `7a78088f` · blob `f76d4290cf5ea9f2ca164a1950720624b2b087a2`
+- Operative class: `TRY_FULL_RECTANGLE_BOUNDARY_ROUCHE_OR_WINDING_CONTROL` · Q1: full-boundary Rouche on the rectangle VALID (F, X holomorphic on a neighbourhood, X nonzero on the boundary, sup|F−X| < inf|X| on the boundary ⇒ equal counts with multiplicity); SINGLE-ENDPOINT reduction FALSE — kill plant X = 1, F = (1 − z²/a²)(1 − z²/b²), a² + b² = R²: F(R) = X(R) = 1, e(R) = 0, four real zeros inside; LP vertical modulus is a per-function fact, no consequence for differences; Xi application without RH circular · Q2: no independent endpoint supplier; best source-faithful repair = one-node projective ground-to-trial transfer (not a bypass); exact-node + Weil identity does not identify the value; outside-window leakage KILLED as margin supplier (e → 1, not < 1) · Q3: endpoint errors NOT equivalent to divisor convergence; repaired sufficient certificate = strict Rouche/winding on the entire outer boundary + on each isolating domain + multiplicities + count sums, for arbitrarily small domains; fixed compact needs neither tail nor second jet (those remain for the global product) · Q4: polynomial CIRCLE argument principle LEANABLE with named Mathlib ingredients (Polynomial.Splits.eval_eq_prod_roots, logDeriv_prod, circleIntegral.integral_sub_inv_of_mem_ball, Cauchy–Goursat off-countable); rectangle version NEW_ANALYTIC; centeredXi on the shelf (Q3.RouteB.differentiable_centeredXi)
+- Discriminator: `FULL_RECTANGLE_BOUNDARY_ROUCHE_MARGIN` = inf_∂D|X| − sup_∂D|F − X| > 0 (rigorous envelopes); planted failure = the endpoint plant
+- Next: Lean `P59SingleEndpointAtomCounterexample.lean` (judge: execution not authorized; owner authorizes agents) + polynomial circle root-count theorem
+- Intake 2026-09-04 by Linux-Claude. Observer's error recorded: the single-endpoint reduction was mine (Progress_Log).
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_WINDING_LOCK_RESULTS_2026-09-04.txt`
 - Boundary: `GOAL058_WINDING_LOCK_RECTANGLE_RESULTS_AND_ENDPOINT_ATOM`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
