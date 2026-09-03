@@ -19,12 +19,12 @@ safety confirmation остаётся внешней границей. Судья
 - `STATUS: OPEN`
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_CURVATURE_BRIDGE_PROOF_AND_HS_REPRESENTATION_2026-09-03.txt`
 - Boundary: `GOAL058_CURVATURE_BRIDGE_PROOF_AND_HS_REPRESENTATION`
-- Call class: `DELEGATED_PROOF_AND_REPRESENTATION_REVIEW` (proof task: closes Codex item 5 `MATHLIB_GAP_NAMED` without Hadamard; plus third representation κ = ‖(D_log)⁻¹‖²_HS)
+- Call class: `DELEGATED_STRATEGIC_REVIEW` (proof task: closes Codex item 5 `MATHLIB_GAP_NAMED` without Hadamard; plus third representation κ = ‖(D_log)⁻¹‖²_HS)
 - Registered predictions: `P_EXPLICIT_PRODUCT_BRIDGE_PROOF p=0.85`, `P_HS_REPRESENTATION_EXACT p=0.80`, `P_HS_ATTACK_FOUND p=0.25`
 - Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
-  `1f2f03b2b0eb2e67358d0c135afaf801bd5bcb16` / `8133` / `121` /
-  `9c6c154ac75331e849bae9a820fe289832f7a717bee5e2a924ccd7d7e83cc271` /
-  `b7f7dd4995e531d02fc80cae6b47a8da38bdbe79` / `yes`
+  `851a79702d6e9b5d77ebdebb70f478bcb301bb97` / `8118` / `121` /
+  `c56b427d1de7bcbaaa4e77b27d62d58ce907daf2b3bc869be99733dc6c7f864b` /
+  `9e2853367058fcebec86bc4181d8427dd20d7fed` / `yes`
 - Delivery: owner pastes the canonical short instruction into the living phase chat with the .txt attached byte-exact
 
 ## REQ-2026-09-03-SCHURLOEWNER · Goal 058 curvature: Schur/Loewner secular identity, Input-A geometry · ANSWERED
