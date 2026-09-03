@@ -14,9 +14,10 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-03-CURVRITZ · Goal 058 curvature / relative-Ritz adjudication (sequel of MOVINGNODE) · OPEN
+## REQ-2026-09-03-CURVRITZ · Goal 058 curvature / relative-Ritz adjudication (sequel of MOVINGNODE) · IN_REVIEW
 
-- `STATUS: OPEN`
+- `STATUS: IN_REVIEW`
+- Delivery observed 2026-09-03 ~12:20 CEST: owner pasted the canonical instruction with the .txt attached in living chat `6a8c3e2a-df50-83eb-b53d-dd4cc46f646f`; judge acknowledged the byte-exact attachment as authoritative and announced committing both authorized files together (screenshot in owner session). Note: the owner's paste also carried a few lines of observer chat text after the instruction; the attachment, not the paste, is the payload.
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_CURVATURE_RELATIVE_RITZ_ADJUDICATION_2026-09-03.txt`
 - Boundary: `GOAL058_CURVATURE_RELATIVE_RITZ_ADJUDICATION`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
