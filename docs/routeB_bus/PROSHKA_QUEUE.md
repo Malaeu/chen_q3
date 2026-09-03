@@ -14,9 +14,15 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-04-LEAKAGE · Goal 058: VERIFIED window Weil identity K = sum_z E(z)E(z)^T (3000-zero sum); leakage mechanism (ground transform window-concentrated, leakage sqrt(lambda_1)); is lambda_1 > 0 for all m the Weil criterion?; not-RH branch shape · OPEN
+## REQ-2026-09-04-LEAKAGE · Goal 058: VERIFIED window Weil identity K = sum_z E(z)E(z)^T (3000-zero sum); leakage mechanism (ground transform window-concentrated, leakage sqrt(lambda_1)); is lambda_1 > 0 for all m the Weil criterion?; not-RH branch shape · ANSWERED
 
-- `STATUS: OPEN`
+- `STATUS: ANSWERED`
+- Verdict: `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_WINDOW_WEIL_IDENTITY_AND_LEAKAGE_MECHANISM_2026-09-04.md` · commit `9a202947` · blob `05668c94c326b08131801d283889c4467e2cfa9c`
+- Operative class: `REPRESENTATION_SHIFT_FROM_INDEFINITE_ZERO_ENERGY_TO_DIVISOR_COUNT` · Q1: identity CONFIRMED (real even sector; no truncation; Groskin L2.1/L2.2/Thm 2.5 + CCM 5.9 (5.25)); explicit formula = NEW_ANALYTIC_IMPORT for Lean · Q2: Rayleigh identity lambda_1 = min sum_z F_v(z)^2/|v|^2 UNCONDITIONAL, but "total zero energy" wording valid only under RH (off-line quartet 4 Re F(z0)^2 indefinite); positivity for ALL N on a cofinal family of windows + form-core crosswalk <=> Weil positivity <=> RH; our selected single N per m is NOT equivalent (no exhaustion theorem); positivity route = RH_EQUIVALENT_RESTATEMENT; same-family real-zero route NOT killed · Q3: unconditional leakage norm REJECTED (indefinite off RH); under RH K = positive sampling Gram on real zeta ordinates, lambda_1 = least singular value squared; nearest analogue Bombieri 2000 localized minimizer + Slepian; fixed-compact divisor needs matched multiplicities, no extra zeros, zero-free boundary, Rouche/argument-principle certificate · Q4: not-RH => negative localized Weil direction => some finite compression negative (paper shape; Bombieri finite negative index); "non-real ground zero under not-RH" KILLED because Thm 5.10 is sign-independent; circular loop stated; noncircular components: zero-sum identity, simple-even real-zero theorem, negative direction under not-RH
+- Discriminator: `P59_FIXED_COMPACT_WINDING_NUMBER_DIFFERENCE` (argument principle on F_ground'/F_ground - F_trial'/F_trial; planted failure F*(1 - z^2/a^2))
+- Predictions: P_RANGE_IDENTITY_UNIFORM_IN_M CONFIRMED; HIGHER_ZEROS CONFIRMED; SEES_THE_LINE CONFIRMED_WITH_SIGN_GUARD; observer's zero-sum doubt REFUTED; P_SOURCE_SPECIFIC_REALZERO_COMPONENT_IS_SELECTIVE REFUTED; P_IDENTITY_UNCONDITIONAL_NO_TRUNCATION CONFIRMED; P_LAMBDA1_POSITIVITY_IS_WEIL_CRITERION REFUTED_AS_STATED (repaired: full form-core exhaustion is equivalent); P_LEAKAGE_PICTURE_HAS_A_NAME PARTIALLY; P_NOTRH_BRANCH_HAS_UNCONDITIONAL_SHAPE CONFIRMED_AFTER_REPAIR
+- Next: paper preflight `PAPER_PREFLIGHT_P59_ANCHORED_LOG_DERIVATIVE_FIXED_COMPACT` (winding lock: boundary nonvanishing + length/(2pi) * sup|log-derivative difference| < 1 => equal zero counts); Lean execution NOT authorized
+- Intake 2026-09-04 by Linux-Claude.
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_WEIL_IDENTITY_LEAKAGE_2026-09-04.txt`
 - Boundary: `GOAL058_WINDOW_WEIL_IDENTITY_AND_LEAKAGE_MECHANISM`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
