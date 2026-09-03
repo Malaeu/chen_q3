@@ -1,0 +1,109 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-03-SCHURLOEWNER
+BOUNDARY_ID: GOAL058_CURVATURE_SCHUR_LOEWNER_SECULAR_ADJUDICATION
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-03-SCHURLOEWNER (attached .txt is authoritative).
+DATE: 2026-09-03
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+SOURCE_BASE_COMMIT: 362e089bf22364f5111946c2144824dce9c5a2d4
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: PROPOSITION59_CCM_FINITE_BOTTOM_GROUND_FAMILY
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_ADJUDICATION_ONLY
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_CURVATURE_SCHUR_LOEWNER_SECULAR_ADJUDICATION_2026-09-03.md
+AUTHOR: Linux-Claude (observer), on owner instruction; owner relays byte-exact
+PARENT_VERDICT: 0c0a2b37 (REQ-2026-09-03-CURVRITZ, RUN_RELATIVE_RITZ_DECISIVE_TEST)
+
+HARVEST OF THE PRECOMMITTED LEDGER (all DIAGNOSTIC_NEVER_A_PROOF; precommit c5db76d6 + amendments)
+
+  Probe 1 (absolute gap): CONFIRMED. lambda1 = 7.9e-31, 7.3e-52, 1.0e-90, 3.2e-162, 2.4e-294
+    on m = N = 13, 23, 43, 83, 163; lambda2/lambda1 = 3.6e5, 1.7e6, 7.5e6, 3.9e7, 3.6e8.
+    N-checks: (13,26) lambda1 = 4.9e-45; (43,86) lambda1 = 2.2e-137.
+  Probe 2 (fixed-prime kernel-L variation): REFUTED (wrong variation object; you ruled the same).
+  Probe 3 (moment ratio R_m(0.40)): BOUNDED by the frozen rule (max/min 1.0025); values
+    1.0776, 1.0781, 1.0775, 1.0764, 1.0754 on m = N = 13..163; N-checks (13,26) 1.0722,
+    (43,86) 1.0738 (no GEOMETRY_FIRST). m=163 at working 240 dps (record 900), reduced grid,
+    grid-doubling change < 1e-8 (precommit amendments 5-7).
+  Probe 4 (kappa): CONFIRMED by the frozen rule (max/min 1.071 <= 2, certified positive);
+    values 0.02590, 0.02626, 0.02584, 0.02517, 0.02452 on m = N = 13..163; N-checks (13,26)
+    0.02249, (43,86) 0.02353 (approaching Sigma 1/gamma^2 = 0.0231 as N grows).
+  Probe 5 (dual annihilator, R1): CONFIRMED. gap_share = 1.000 at every cell: the minimal-norm
+    certificate sits entirely on the second eigenpair; R1 pays 1/(lambda2-lambda1). Per your
+    ordered rule the front moves to R2.
+  Probe 6 (Schur pairing residues, R2): UNRESOLVED by the frozen 1e-6 rule; residues of
+    f(z) = <c,(D-z)^-1 b> certified positive at m=13,23 and near one-sign at m=43,83
+    (minority mass 4e-6, 6e-6). b_i decreasing at m=23,43,83; at m=13 dips then rises.
+  Relative Ritz (descriptive): on the Phase-1 cell (13,120): eps = 0.355, g = 3.8e7,
+    eta = 9.4e-9, p = 4.7e-9 (bound sharp within 2x). On the m = N schedule: p = 3.7e-3,
+    3.0e-3, 1.9e-3 but eps = 5e14, 2e25, 3e49 (trial Rayleigh stuck near 1e-16 while the
+    ground collapses): eta useless there. Trial generator faithful only to m = 43.
+
+READ AT SOURCE_BASE_COMMIT
+  docs/routeB_bus/phase5_scripts/out/  (edge_ledger_probe2_probe3.md, _probe1.md, _dualcert.md,
+    _schur.md, _relritz.md)
+  docs/routeB_bus/MYTHOS_R2_SECULAR_IDENTITY_NOTE_2026-09-03.md  (Desktop/Mythos paper note on
+    Q1-Q2, if present at adjudication time; relay, not part of this byte-fixed payload)
+  q3.lean.aristotle/Q3/Proofs/RouteB/{Proposition59EntireTransform,RelativeRitzFinite,
+    Goal058CurvatureArithmetic}.lean  (Codex e6fdf040: second jet, 1/80, finite relative Ritz,
+    schedule arithmetic KERNEL_GREEN; abstract bridge MATHLIB_GAP_NAMED: no Hadamard
+    factorization of order <= 1 in Mathlib 4.26)
+  docs/routeB_bus/litreview/SURVEY_WALLS_A_B_DELTA_2026-09-03_APPENDIX_LOEWNER.md
+  docs/routeB_bus/litreview/pdfs/de_andrade_silva_10_5281_zenodo_{20694588,20682834,20737111,20710075}.pdf
+  docs/routeB_bus/litreview/pdfs/1501.01505.pdf (Bhatia-Friedland-Jain, inertia of Loewner matrices)
+  q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrixN1.lean (ccmQKernel, alpha_n)
+
+QUESTIONS
+
+Q1 R2 OBJECT. With K = [[a_0, b^T],[b, D]] (even block split at the central coordinate),
+   xi = xi_0 (1, -(D-lambda1)^-1 b), the curvature bracket is 1/12 - S(lambda1),
+   S(z) = <c,(D-z)^-1 b>, c_n = 1/(2 pi^2 n^2). Polarization gives
+   S = 1/4 [ <c+b,(D-z)^-1 (c+b)> - <c-b,(D-z)^-1 (c-b)> ], two Herglotz self-pairings.
+   Is 1/12 - S(lambda1) = O(L^-2) provable as a scalar secular identity (Weinstein-Aronszajn /
+   Sherman-Morrison against rank-one or rank-two pieces of K) without any bound on
+   ||(D-lambda1)^-1||?  Name the exact rank-one/rank-two split of the CCM kernel that makes
+   lambda1 a root of a scalar secular equation, and whether the same equation evaluates S.
+
+Q2 LOEWNER STRUCTURE. CCM Lemma 5.1: tau_ij = (b_i - b_j)/(i - j), i.e. a Loewner matrix.
+   Silva (Zenodo 20737111, not peer-reviewed) claims the full truncated Weil matrix is the
+   Loewner matrix of an odd function psi(k) = k h(k^2) with parity sectors Loewner matrices of
+   h and Phi(xi) = xi h(xi). Is this claim source-faithful for the production ccmQKernel
+   (with the prime sum)? If yes, does classical Loewner theory (explicit Cauchy-like inverse,
+   displacement rank 2, Bhatia-Sano / Bhatia-Friedland-Jain inertia) give (D-lambda)^-1 b in
+   closed form, or a sign theorem for the residues of S? Probe 6 says the residues are
+   near one-sign numerically; which theorem would make that exact?
+
+Q3 INPUT A GEOMETRY. The relative Ritz supplier eta_k = eps_k/(g_k - 1) is sharp only when the
+   trial is built for the cell's N (Phase-1 cell, N = 120 at m = 13) and useless on m = N
+   (eps ~ 1e14..1e89) although the projective error p_k itself is small there. Rule on
+   (a) whether Input A should be typed on p_k directly with a supplier other than Rayleigh
+   excess, and (b) whether the cofinal schedule for Input A must be N >> m (e.g. N ~ c m)
+   while the curvature/normality branch keeps m = N. Two schedules for two inputs: allowed?
+
+Q4 SCORING. Score, without editing probabilities: P_CURVATURE_SOURCE_1 (0.65),
+   P_GROUND_RATIO_GROWS_AT_SIGMA_0_4 (0.60), P_ABS_GAP_COLLAPSES (0.80),
+   P_DUAL_CERT_PAYS_GAP (0.75), P_SCHUR_RESIDUES_ONE_SIGN (0.35), P_DIRECT_FUNCTIONAL_BEATS_
+   FULL_TRACKING_1 (0.72), P_JOINT_PROJECTIVE_RATE_1 (0.38).
+
+REGISTERED PREDICTIONS (K6, observer, before your answer)
+  P_SECULAR_IDENTITY_EXISTS: 0.55 — a rank-two split of the pole term (as in Silva) yields a
+    scalar secular equation whose root is lambda1 and which evaluates S(lambda1) exactly.
+  P_LOEWNER_CLAIM_SOURCE_FAITHFUL: 0.60 — the production kernel with the prime sum is a
+    Loewner matrix of one odd function.
+  P_TWO_SCHEDULES_ALLOWED: 0.70 — the consumer chain tolerates N >> m for Input A while
+    normality keeps m = N.
+
+REQUIRED VERDICT: exactly one primary class from
+  TRY_SECULAR_IDENTITY_FOR_CURVATURE
+  RUN_LOEWNER_SOURCE_FAITHFULNESS_CHECK
+  REPAIR_INPUT_A_SCHEDULE
+  KILL_R2_SCHUR_ROUTE
+with the usual premise -> source -> consumer -> gap matrix, the cheapest next action and
+its falsifier, Lean-ready vs new analytic separation, scored predictions; no Lean edit,
+no numerical run, no route promotion, no RH claim; write only the expected verdict document.
