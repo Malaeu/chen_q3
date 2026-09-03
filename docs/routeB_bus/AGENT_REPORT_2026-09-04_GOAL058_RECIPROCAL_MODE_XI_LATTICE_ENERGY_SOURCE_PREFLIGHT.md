@@ -590,3 +590,170 @@ of an equation* (§4), so the next re-representation is **H6**, the CCM projecti
 (`|A|L^{5/2}√p = O(1)`), carrying forward (COB), (MAIN), (MAIN-P) as the exact statement of what
 the reciprocal-mode energy contains, `q_ap` as the one cheap decisive source number, and S7/S8 as
 the two new unexplained source facts.
+
+---
+
+## §12 Correction 2026-09-04 — full re-derivation of the chain (owner challenge)
+
+Owner assertion: an error in `(COB) → (MAIN) → (MAIN-P)`, §3.1–3.3. The chain was re-derived from
+scratch, line by line, from `Kξ = λ₁ξ`, with every factor, sign and index range checked against
+`docs/routeB_bus/phase5_scripts/edge_ledger_build.py` and not against §1.
+
+**Result, stated exactly: the chain §3.1–3.3 is correct and unchanged — `(COB)`, `(MAIN)` and
+`(MAIN-P)` stand as printed. Two errors were found elsewhere in the report (E1 in a §3.1
+parenthetical sanity remark, E2 in the §5 quantitative deduction), plus two wording corrections
+(E3, E4). E2 changes the mechanism statement of attempt (d); it does not change the code.**
+
+### 12.1 Checks performed on the chain (all passed)
+
+*Builder-level (against `edge_ledger_build.py`, lines 283–343, and `_alpha` line 227):*
+
+| # | Check | Result |
+|---|---|---|
+| B1 | `w02(n,m) = 32L sinh²(L/4)(L²−16π²mn)/(d_m d_n)` ⟹ `w02(n,0) = A_L/d_n = p_n` | ✓ exact, verified numerically at `m=163`, `n = 1,2,3,7` |
+| B2 | `w02(n,−n) = A_L(L²+16π²n²)/d_n² = A_L/d_n = p_n` — the pole half of `τ(n,−n) = b_n` | ✓ |
+| B3 | `w02(n,n) − w02(n,0) = −32π²A_L n²/d_n²` | ✓ to 1e-16 |
+| B4 | pole obeys the structured law `w02(n,m) = (β_n−β_m)/(n−m)`, `β_n = n·w02(n,0)`, **including signed `m` and `m = −n`** | ✓ at `(3,1), (5,−2), (4,−4)` |
+| B5 | `wr(n,m) = (α_m−α_n)/(n−m)` with `α` odd and `α_0 = 0` ⟹ `−wr(n,0) = α_n/n` and `−wr(n,−n) = α_n/n` | ✓ read literally |
+| B6 | `q_nm(n,m,y) = [sin(2πmy/L) − sin(2πny/L)]/(π(n−m))` ⟹ `−prime(n,0) = −prime(n,−n)·1 = P_n/(πn)` | ✓; `−prime(n,−n) = P_n/(πn)` by the `2n` denominator and the odd sine |
+| B7 | therefore `τ(n,−n) = p_n + α_n/n + P_n/(πn) = τ(n,0) = b_n`, **derived from the literals, not from the structured law** | ✓ |
+| B8 | `a_n := α_n/n + P_n/(πn)` is odd, `b_n = p_n + a_n` is even, `β_n = n b_n` is odd | ✓ |
+| B9 | `even[0,0] = k(0,0)`, `even[0,j] = √2 k(0,j)`, `even[i,j] = k(i,j)+k(i,−j)`; the builder builds the **even block only** | ✓ lines 333–342 |
+| B10 | the even block is the isometric parity reduction of the raw `K`: with `v_0 = c_0`, `v_i = √2 c_i` one has `(K̃v)_0 = (Kξ)_0` and `(K̃v)_i = √2 (Kξ)_i`, so `K̃v = λv ⟺ Kξ = λξ` | ✓ — working on the raw carrier is legitimate |
+| B11 | the two residual conventions differ by exactly `√2`: `𝓡^even(v)_n = √2·𝓡^raw(x̂)_n`, both vanishing at the ground row | ✓ — §2's claim confirmed |
+| B12 | `x` must be the **raw** ratio (no `√2`), because `F(t_n)/F(0) = (−1)^n ξ_n/ξ_0` needs `ξ_n/ξ_0`; feeding the raw `x` to the even block `K̃` would **not** give `𝓡(x) = 0` | ✓ — this is why the report works on the raw carrier throughout |
+
+*Algebraic, re-derived from `Kξ = λ₁ξ`:*
+
+| # | Check | Result |
+|---|---|---|
+| A1 | row 0: `a₀ + bᵀx = λ₁` with `bᵀx = Σ_{m∈M} b_mx_m = 2Σ_{m≥1}` | ✓ |
+| A2 | rows `n≠0`: `(D−λ₁)x = −b` | ✓ |
+| A3 | `ν(w) := (Kw)_0 = a₀ + 2Σ_{m≥1}b_mw_m`; `𝓡(w)_n := (Kw)_n − w_nν` | ✓ definition fixed once, used consistently |
+| A4 | split `τ(n,m) = b_m + n(b_n−b_m)/(n−m)`; the `m = −n` term of the split returns `b_n + 0 = b_n`, i.e. it lands in `Σb_mw_m` and contributes **0** to `Ω` | ✓ — the index range of `Ω` is `m ≥ 1, m ≠ n`, and no term is lost |
+| A5 | `±m` pairing: `n(b_n−b_m)w_m[1/(n−m)+1/(n+m)] = 2n²(b_n−b_m)w_m/(n²−m²)` — the factor `2n²` | ✓ |
+| A6 | RAW-LATTICE-1 `𝓡(w)_n = (b_n+ν−a₀) + (τ(n,n)−b_n−ν)w_n + Ω_n(w)`; `×√2` reproduces the previous report's LATTICE-1 verbatim | ✓ |
+| A7 | (EQ-1) `(D−λ₁)Δ = −𝓡(y) − (ν−λ₁)y`, `Δ = x−y`, and `ν−λ₁ = −bᵀΔ` | ✓ |
+| A8 | `XD−DX = βηᵀ−ηβᵀ` entrywise `(n−m)τ(n,m) = β_n−β_m` (0 = 0 on the diagonal); `R(·)R` gives `DR−RD = brᵀ−rbᵀ` | ✓ |
+| A9 | `(D−λ₁)R = R(D−λ₁) + (DR−RD)` (the `λ₁R` commutes) | ✓ |
+| A10 | parity: `rᵀΔ = 0` (odd·even), `bᵀΔ ≠ 0`; hence exactly one of the two rank-one terms survives | ✓ |
+| A11 | **(COB)** `(D−λ₁)RΔ = −R𝓡(y) + (ν−λ₁)R(η−y)`, `r − Ry = R(η−y)` | ✓ |
+| A12 | odd reduction of the quadratic form: the four index pairs `(n,m),(n,−m),(−n,m),(−n,−m)` give `2(D_{nm}−D_{n,−m})u_nu_m`, and at `n=m` the same formula holds with all four pairs distinct — **no double counting, factor 2 correct** | ✓ |
+| A13 | `D^odd_{nn} = τ(n,n) − τ(n,−n) = τ(n,n) − b_n`; `D^odd_{nm} = 2nm(b_n−b_m)/(n²−m²)` (numerator `2β_nm − 2β_mn = 2nm(b_n−b_m)`) | ✓ |
+| A14 | `u = RΔ` ⟹ `u_nu_m·2nm = 2Δ_nΔ_m`, so the bilinear term of (MAIN) is `2Σ_{n≠m}(b_n−b_m)Δ_nΔ_m/(n²−m²)` — the factor 2, not 4 | ✓ |
+| A15 | right side: `⟨RΔ,R𝓡(y)⟩_M = 2Σ_{n≥1}Δ_n𝓡(y)_n/n²`, same for `R(η−y)`; dividing both sides by 2 gives (MAIN), and **(MAIN)'s left side is `½⟨RΔ,(D−λ₁)RΔ⟩_M`** | ✓ |
+| A16 | pole extraction: `(p_n−p_m)/(n²−m²) = −16π²A_L/(d_nd_m)`; off-diagonal sum `= −32π²A_L[(Σ_{n≥1}Δ_n/d_n)² − Σ_{n≥1}Δ_n²/d_n²]` — the **excluded-diagonal correction** `+32π²A_LΣΔ_n²/d_n²` | ✓ |
+| A17 | `δ_n = D_n − 32π²A_L n²/d_n²` and `(n²/d_n²)(Δ_n²/n²) = Δ_n²/d_n²`, so the excluded-diagonal correction cancels the pole diagonal **identically**, leaving the full rank one | ✓ — and `δ_n = D_n + w02(n,n) − w02(n,0)` re-derived directly from `tau_entry`, independent of §1 |
+| A18 | **(MAIN-P)**, all sums `Σ_{n=1}^{N}` over **positive** indices only | ✓ |
+| A19 | `16π²Σ_{n≥1}Δ_n/d_n = 𝔐 − L²𝔐₂` and `32π²A_L(ΣΔ_n/d_n)² = (A_L/8π²)(𝔐−L²𝔐₂)²` | ✓ |
+| A20 | `δ_n ≥ 0` from interlacing: `⟨e_n^-,(D−λ₁)e_n^-⟩ = D_{nn}−D_{n,−n}−λ₁ = δ_n` with `e_n^- = (e_n−e_{−n})/√2` — the `½·2` is correct | ✓ |
+
+*Independent numerical validation of the whole chain* (synthetic `2N+1 = 13` centrosymmetric
+matrix built from an arbitrary odd `β` and an arbitrary diagonal, so that it satisfies exactly the
+structural laws B4/B7 and nothing else; true bottom eigenpair; arbitrary even target row `y`):
+RAW-LATTICE-1 `3.6e-15`, (EQ-1) `1.3e-13`, `ν−λ₁+bᵀΔ` `7.1e-14`, displacement `2.2e-16`, **(COB)
+`9.4e-14`**, `rᵀΔ = 1.0e-14`, **(MAIN) `L−R = −1.3e-12`**, `½⟨RΔ,(D−λ₁)RΔ⟩ − (MAIN)_L = 3e-13`,
+**(MAIN-P) `L−R = −1.2e-12`**, odd-block form `3.1e-13`, `Gu − h` `5.1e-14`. Every factor of 2,
+every sign and every index range is therefore confirmed independently of the analysis.
+
+### 12.2 E1 — error in §3.1, last sentence (a sanity remark, outside the chain)
+
+Wrong line, §3.1: *"At `y = η` (i.e. `Ξ` replaced by the constant 1) it degenerates to
+`0 = −R𝓡(η)`, the correct trivial case."*
+
+This is false: setting `y = η` kills the second term on the right but **not** the left, because
+`Δ = x − η ≠ 0`. Numerically in the synthetic model `‖(D−λ₁)R(x−η)‖ = 15.18 = ‖R𝓡(η)‖`, not 0.
+
+**Corrected line.** The trivial case of (COB) is `y = x` (then `Δ = 0`, `𝓡(x) = 0`, `ν = λ₁`,
+`0 = 0`). At `y = η` (COB) instead reads `(D−λ₁)R(x−η) = −R𝓡(η)`, and this is a genuine
+consistency check, which passes: expanding the left with C5's
+`(D−λ₁)Rx = −Rb + (a₀−λ₁)r` and the right with the odd-Gram report's inverse-free
+`Dr = R(Dη) − σ_b r` (`σ_b = bᵀη`) gives `−Rb + a₀r − Dr` on both sides. Nothing downstream
+changes.
+
+### 12.3 E2 — error in §5: `q_pole` does not lower-bound the contraction coefficient
+
+Wrong step, §5: from the table of `q_pole = 32π²A_L‖diag(D)^{-1}ĝ‖‖ĝ‖ ≥ 4.78 … 15.87` the report
+concludes *"The pole channel alone already exceeds 1 … No contraction."*
+
+The `q_pole` values are arithmetically correct as the spectral norm of the **pole channel taken
+alone** (`c(diag(D)^{-1}ĝ)ĝᵀ` is rank one, norm `‖v‖‖w‖`). But the splitting's coefficient is
+`q = ‖diag(D)^{-1}(32π²A_Lĝĝᵀ − Off^{ap})‖`, and `q ≥ q_pole − q_{ap}` only — so a large `q_pole`
+proves nothing when the two channels cancel. **They do cancel: that is exactly what §10 S7
+reports.** The report used S7 in §6 and contradicted it in §5.
+
+**Corrected analysis (E2').** Write `G := D^{odd} − λ₁I` (the exact `N×N` odd block; `diag G = δ_n`,
+`G_{nm} = 2nm(b_n−b_m)/(n²−m²)`), so that (MAIN-P) is `⟨u,Gu⟩` and (COB) restricted to `n ≥ 1` is
+`Gu = h`, `h_n = [−𝓡(y)_n + (ν−λ₁)(1−y_n)]/n`. Then, identically,
+
+```
+diag(D)^{-1}( 32π²A_L ĝĝᵀ − Off^{ap} )  =  I − diag(D)^{-1} G ,
+```
+
+so with `D_n > 0` (probe 10: positive for `n ≤ 8`, unknown above) and
+`G̃ := diag(D)^{-1/2} G diag(D)^{-1/2} ⪰ 0` (interlacing),
+
+```
+┌──────────────────────────────────────────────────────────────────────────────┐
+│  spectral radius of the iteration = max_k |1 − μ_k| ,   μ_k = eig(G̃) ⪰ 0     │
+│  μ_min ≤ min_n G̃_nn = min_n δ_n/D_n                                          │
+│  ⇒  a contraction DOES exist in the preconditioned spectral sense,           │
+│      with constant  1/(1−q) ≥ 1/μ_min  =  the odd floor in disguise.         │
+└──────────────────────────────────────────────────────────────────────────────┘
+```
+
+Arithmetic on probe 10's `D_n` (`n ≤ 8`, so each entry is an upper bound for `μ_min`, hence a
+lower bound for the constant):
+
+| m | min_n δ_n | argmin | min_n δ_n/D_n | 1/min_n δ_n | **1/μ_min ≥** |
+|---:|---:|---:|---:|---:|---:|
+| 13 | 7.916e-4 | 1 | 1.752e-3 | 1263 | **571** |
+| 23 | 2.296e-4 | 1 | 2.714e-4 | 4355 | **3684** |
+| 43 | 3.889e-4 | 1 | 2.572e-4 | 2571 | **3888** |
+| 83 | 5.884e-5 | 1 | 2.298e-5 | 16996 | **43517** |
+| 163 | 1.395e-4 | 1 | 3.378e-5 | 7169 | **29600** |
+
+**What changes and what does not.** The verdict of attempt (d) is unchanged — **reading (A)**, and
+the code is unchanged — but the mechanism is now stated correctly and, if anything, more sharply:
+the iteration is not divergent, it is *degenerate*. Its contraction factor is `1 − μ_min` with
+`μ_min ≲ 3·10⁻⁵`, so the constant it delivers is `1/μ_min ≈ 3·10⁴`, which is exactly
+`≈ 1/(odd-sector floor)` — the forbidden object, reached by a different road. The
+"operator norm versus value on the specific row" distinction of §5 survives verbatim: the best
+constant in `‖RΔ‖ ≤ C‖R𝓡(y)‖` is `1/λ_min(G)`, and whether the actual `h` avoids the near-null
+direction of `G` is a property of `y`, not of the source operator. The `q_pole` table stays in the
+report as what it is — the norm of the pole channel alone, i.e. the size of the cancellation that
+S7 asserts — and must **not** be read as a lower bound for `q`.
+
+Downstream: §6 (U1)/(U1') unchanged; §7 plant row for (d) unchanged (`D₁ = 0` still kills the
+preconditioner); §8 `P59_ARCH_PRIME_LOEWNER_CONTRACTION` is **restated** as: the decisive source
+number is not `q_ap` in isolation but `μ_min = λ_min(diag(D)^{-1/2}(D^{odd}−λ₁)diag(D)^{-1/2})`,
+with `q_ap` as its cheap upper-bound diagnostic; §9's deciding ratio `ρ_stab` unchanged, with
+`μ_min` added as the second measured number.
+
+### 12.4 E3 — wording, §5 / §10 S8 / the one-line summary
+
+*"roughly flat over the five cells"* is wrong. `min_n δ_n` falls `7.92e-4 → 1.40e-4` (factor 5.7,
+non-monotone) and the relative floor `min_n δ_n/D_n` falls `1.75e-3 → 3.38e-5` (factor 52) from
+`m = 13` to `m = 163`. **Corrected:** the measured price rises along the schedule, from `≈10³` to
+`≈3·10⁴`. This weakens, but does not overturn, S8's point: `10⁴` is still not `10^{300}`, and the
+odd sector still escapes the collapsed second even pair.
+
+### 12.5 E4 — §3.4, a strengthening, not a weakening
+
+`𝔐 := Σ_{n≤N}Δ_n/n²` is described as *"the wall-card `W`-object, signed"*. That understates it.
+Since `Δ_n = x_n − y_n = (−1)^n Δ^{wall}_n` with `Δ^{wall}_n = F(t_n)/F(0) − Ξ(t_n)/Ξ(0)`, the
+moment `𝔐` is exactly `(4π²/L²)` times the **alternating** lattice sum of wall-card record 10, and
+
+```
+𝔐 = ( E − π²/6 )/2  −  Σ_{n=1}^{N} (−1)^n centeredXi(2πn/L)/(n² centeredXi(0)) ,
+```
+
+i.e. `𝔐` is affine in the target functional `E` with an explicitly computable `Ξ`-constant. The
+fixed-point statement of §3.4 and (U1) is therefore not "bounded by the target" but "equal to the
+target up to a computable constant and a factor 2".
+
+### 12.6 Code
+
+Unchanged: `P59_XI_LATTICE_EQUATION_REIMPORTS_DENSE_TAIL_OR_GAP`, GAP half. E1 is inert, E2
+replaces a wrong route to the same conclusion with a correct one, E3 is a trend correction that
+makes the measured price worse, E4 strengthens the fixed-point argument.
