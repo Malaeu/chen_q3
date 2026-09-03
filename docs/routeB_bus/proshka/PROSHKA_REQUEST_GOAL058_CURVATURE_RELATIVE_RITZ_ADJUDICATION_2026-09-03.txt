@@ -1,0 +1,187 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-03-CURVRITZ
+BOUNDARY_ID: GOAL058_CURVATURE_RELATIVE_RITZ_ADJUDICATION
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-03-CURVRITZ (attached .txt is authoritative).
+DATE: 2026-09-03
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+SOURCE_BASE_COMMIT: 860a7438fdaf0e7806d02c989e1fd07ad6bfb887
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: PROPOSITION59_CCM_FINITE_BOTTOM_GROUND_FAMILY
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_ADJUDICATION_ONLY
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY plus one verbatim copy of your own 2026-09-03 chat verdict (see item 0)
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_CURVATURE_RELATIVE_RITZ_ADJUDICATION_2026-09-03.md
+AUTHOR: Linux-Claude (observer), on owner instruction; owner relays this file byte-exact
+RELATION: quantitative sequel of REQ-2026-09-03-MOVINGNODE (still OPEN on the queue); you may answer both in this one verdict by naming both REQ ids
+
+ITEM 0 - YOUR OWN CHAT VERDICT IS NOT ON THE BUS
+
+On 2026-09-03 you answered in chat with PRIMARY
+TRY_GROUND_REALZERO_CURVATURE_VITALI_WITH_PRODUCTION_RATE_REPAIR (DECISION: GO,
+NEXT_LOAD_BEARING_GAP P59_NORMALIZED_CURVATURE_SOURCE_BOUND_ON_TRACKED_GROUND,
+registered P_CURVATURE_SOURCE_1 0.65, P_JOINT_PROJECTIVE_RATE_1 0.38,
+P_DIRECT_FUNCTIONAL_BEATS_FULL_TRACKING_1 0.72).  That text exists only as an
+owner chat paste.  Commit it verbatim, in the same [Proshka] commit as this
+verdict, at
+  docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_CURVATURE_VITALI_PRODUCTION_RATE_REPAIR_2026-09-03.md
+and cite its blob in this verdict.  Without that file its three predictions
+cannot be scored.
+
+READ AT SOURCE_BASE_COMMIT (exact paths)
+
+  docs/routeB_bus/maps/ROUTEB_PROSHKA_CURVATURE_RELATIVE_RITZ_AUDIT_2026-09-03.md
+    (observer audit of your chat verdict; human-verified relay, not a verdict)
+  docs/routeB_bus/litreview/SURVEY_WALLS_A_B_DELTA_2026-09-03.md  sections 3 and 5
+    (classical gap collapse: Kac-Murdock-Szego 1953 / Widom 1958; Fuchs 1964
+    window-variation identity; edge ledger representation)
+  docs/routeB_bus/phase5_scripts/PRECOMMIT_2026-09-03_edge_ledger_probes.md
+    (frozen thresholds for Probes 1-4, committed before any run)
+  docs/routeB_bus/phase5_scripts/out/  (if present at adjudication time: ledger
+    JSON and Probe 1-4 reports; these are DIAGNOSTIC_NEVER_A_PROOF and are not
+    part of this byte-fixed payload)
+  docs/routeB_bus/proshka/PROSHKA_VERDICT_REQ_2026_08_28_R1A_CORRECTION_16_GLOBAL_GAUGE_KILL_AND_LOG_DERIVATIVE_RERANK_2026-08-28.md
+    (your R1 status of 2026-08-28: R1_A_GENERIC_GLOBAL_GAUGE FATAL; FAIL code
+    R1_NORMALITY_REQUIRES_DEAD_TRACKING_RATE_OR_UNCONTROLLED_GAUGE; stop rules
+    do_not_use_real_zeroness_as_a_global_normality_bound and
+    do_not_reopen_the_stopped_tracking_rate)
+  docs/routeB_bus/LINUX_TRACK_B_VITALI_REAL_ZERO_BOUNDEDNESS_GOAL058_2026-08-27.md
+  docs/routeB_bus/proshka/PROSHKA_VERDICT_REQ_2026_08_26_N_COMPONENT_SPLIT_CORRECTION_TRACK_B_CENTER_REPAIR_AND_TRACK_A_REWRITE_2026-08-27.md
+    (center-curvature bound M_{2,k} = -F_k''(0)/(2F_k(0)) already named there)
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_MOVING_NODE_GROUND_NORMALITY_ADJUDICATION_2026-09-03.txt
+  docs/routeB_bus/CODEX_REPORT_2026-09-03_GOAL058_MOVING_NODE_GROUND_NORMALITY_PREFLIGHT.md
+  q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersTrackedGroundTransform.lean
+    lines 147-151: selectedFerrersTrackedGroundResidualFloorRatio = residual
+    energy / beta^2 (beta is the ABSOLUTE complement floor)
+  q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementFloor.lean
+    line 29: complexTrialComplementFloor
+  q3.lean.aristotle/Q3/Proofs/RouteB/Goal058DirectGroundZeroEscape.lean line 27
+  q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59EntireTransform.lean
+    lines 116-120 and 194-200: lattice sampling and central value sqrt(L)*v_0
+
+CURRENT VERIFIED FACTS
+
+1. Abstract bridge (observer paper check): even entire, order <= 1, real on R,
+   only real zeros, G(0)=1  =>  G = prod (1 - z^2/rho^2),
+   kappa = -G''(0)/2 = sum 1/rho^2 >= 0,  |G(z)| <= exp(kappa |z|^2).
+2. Exact second jet (observer sympy check): for K_n(z) = 2 sin(zL/2)/(z - x_n),
+   K_n''(0) = -2L/x_n^2 (n != 0), K_0''(0) = -L^3/12; functional norm^2
+   = 1/144 + 1/180 = 1/80.  Hence for the production row xi (sum xi_n^2 = 1)
+   F(0) = sqrt(L) xi_0,  F''(0) = -L^{5/2} [xi_0/12 + (1/(2 pi^2)) sum_{n!=0} xi_n/n^2],
+   kappa = (L^2/2) [1/12 + (1/(2 pi^2 xi_0)) sum_{n!=0} xi_n/n^2].
+   Bounded kappa therefore needs the bracket to be O(L^{-2}): a two-order
+   cancellation inside one linear functional of the ground row.
+3. Forced lattice zeros |j|>N contribute L^2/(4 pi^2 N) -> 0 on m = N = k+2.
+4. The production residual/floor ratio r_k divides by the ABSOLUTE complement
+   floor beta (Lean lines cited above).
+5. DIAGNOSTIC partial ledger (Probe 1, m = N, even sector, arb, effective
+   precision >= 120 dps; m = 163 still computing; DIAGNOSTIC_NEVER_A_PROOF):
+     m=13  lambda1 7.9e-31   lambda2 2.8e-25    lambda2/lambda1 3.6e5
+     m=23  lambda1 7.3e-52   lambda2 1.3e-45    lambda2/lambda1 1.7e6
+     m=43  lambda1 1.0e-90   lambda2 7.6e-84    lambda2/lambda1 7.5e6
+     m=83  lambda1 3.2e-162  lambda2 1.3e-154   lambda2/lambda1 3.9e7
+   Observed law: log10 lambda1 ~ -1.9 m (exponential in m, doubly exponential
+   in L).  Absolute gap collapses; relative gap grows.
+6. Classical shelf (survey section 3): for smooth Toeplitz symbols the two
+   extreme eigenvalues separate only by O(n^-2) (Kac-Murdock-Szego 1953, Widom
+   1958); Connes-Consani arXiv:2106.01715 report several very small eigenvalues
+   of the windowed Weil form; Groskin arXiv:2605.20224 reports 1e-334 at c=100.
+7. Your 2026-08-28 verdict already marked R1_A generic global gauge FATAL and
+   set the stop rule do_not_reopen_the_stopped_tracking_rate.  The 2026-08-27
+   center-repair verdict already named M_{2,k} = -F''(0)/(2F(0)) as the one
+   scalar target.  What is new on 2026-09-03 is the exact second-jet formula
+   with the 1/sqrt(80) norm, the polylog joint budget B_k, and the schedule check.
+
+QUESTIONS TO ADJUDICATE
+
+Q1 ABSOLUTE FLOOR.  Given fact 5, is any consumer written through
+   r_k = residual^2 / beta^2 with absolute beta executable on the production
+   schedule?  In particular score whether
+     B_k = |A_k| L_k^{5/2} sqrt(r_k) = O(1)   and   A_k sqrt(L_k) sqrt(r_k) -> 0
+   reopen the stopped tracking rate under a polylog weight, against your own
+   2026-08-28 stop rule.  Name the exact condition under which the polylog
+   weakening is NOT a reopening.
+
+Q2 RELATIVE RITZ.  For a unit trial q with Rayleigh value R(q) and the exact
+   ground pair (lambda1, xi), gap lambda2 - lambda1:
+     1 - |<xi,q>|^2 <= (R(q) - lambda1)/(lambda2 - lambda1)
+                    = eps_k / (lambda2/lambda1 - 1),  eps_k := R(q)/lambda1 - 1.
+   Decide whether a consumer written through the RELATIVE Rayleigh excess eps_k
+   and the growing relative gap lambda2/lambda1 is (a) a correct rewrite of the
+   existing Lean floor interface, (b) strictly weaker than the absolute r_k
+   interface on the production family, (c) not the dead tracking rate under a
+   new name.  State the theorem and hypotheses if an equivalence forces the
+   absolute rate back.
+
+Q3 DIRECT CURVATURE FUNCTIONAL.  The direct target sup_k kappa_k < infinity
+   depends only on the exact ground row (fact 2), not on any trial and not on
+   any gap.  Rank the cheapest noncircular source attacks on the two-order
+   cancellation of the bracket in fact 2 (dual/Schur functional, resolvent
+   representation of the ground row against the 1/n^2 functional, Fuchs-type
+   window-variation identity from survey section 3.2/5, or other).  Name the
+   first exact failure point of each.
+
+Q4 STOP RULES.  Is the curvature-Vitali route compatible with your 2026-08-28
+   stop rules?  Specifically: real-zeroness is used together with the scalar
+   kappa, not alone; the B_k fallback imports r_k.  Rule on both.
+
+Q5 ABSOLUTE GAP AS A TARGET.  Given facts 5-6, should the Step-3 target
+   inf_k (lambda2 - lambda1) > 0 of the 2026-09-02 plan be killed as a target
+   shape and replaced by a relative-gap statement?  If yes, name the exact
+   relative statement the existing consumer chain needs.
+
+REGISTERED PREDICTIONS (K6; do not edit probabilities)
+
+  P_ABS_GAP_COLLAPSES: 0.80 (2026-09-03, before Probe 1 run) - Probe 1 rule in
+    the precommit; to be scored when m=163 lands.
+  P_CURVATURE_SOURCE_1: 0.65 (yours, 2026-09-03, before any kappa was computed)
+    - Probe 4 rule in the precommit addendum.
+  P_FUCHS_IDENTITY_NUMERICALLY_HOLDS: 0.55 (2026-09-03) - Probe 2 rule.
+  P_GROUND_RATIO_GROWS_AT_SIGMA_0_4: 0.60 (2026-09-03) - Probe 3 rule.
+  P_JOINT_PROJECTIVE_RATE_1: 0.38 (yours) - rescore in light of fact 5 without
+    changing the number; state the fate as CONFIRMED / REFUTED / UNRESOLVED.
+  P_RELATIVE_RITZ_STRICTLY_WEAKER: 0.70 (observer, 2026-09-03, registered
+    here before your answer): the relative interface of Q2 is a correct rewrite,
+    strictly weaker than absolute r_k on the production family, and not
+    equivalent to the stopped tracking rate.
+
+REQUIRED VERDICT
+
+Return exactly one primary operative class:
+
+  TRY_DIRECT_CURVATURE_FUNCTIONAL_WITHOUT_GAP
+  RUN_RELATIVE_RITZ_DECISIVE_TEST
+  REPAIR_RATE_INTERFACE_TO_RELATIVE_GAP
+  KILL_CURVATURE_VITALI_ROUTE
+
+Secondary scoped findings are permitted, e.g. KILL_ABSOLUTE_FLOOR_INTERFACE,
+KILL_ABSOLUTE_GAP_TARGET_SHAPE, KILL_B_K_POLYLOG_FALLBACK.
+
+Ordered rule: if the curvature-Vitali logic itself fails or violates a stop
+rule irreparably -> KILL.  Else if Q2 yields a correct strictly weaker
+interface but Q3 has no noncircular attack -> REPAIR.  Else if one bounded
+paper or numerical test discriminates Q2 or Q3 -> RUN.  Else -> TRY with the
+ranked Q3 attack list.
+
+The verdict must:
+  1. repeat REQUEST_ID, BOUNDARY_ID, request commit, Git blob and SHA-256, and
+     the blob of your committed chat verdict (item 0);
+  2. repeat the six-field phase key and state whether it changed;
+  3. score every registered prediction above without editing probabilities;
+  4. give a premise -> exact source/theorem -> consumer -> residual gap matrix
+     for: abstract bridge, second-jet formula, forced zeros, relative Ritz,
+     direct kappa functional, absolute gap target;
+  5. name the cheapest next mathematical action and its falsifier;
+  6. separate Lean-ready bookkeeping (second-jet identity, 1/sqrt(80) norm,
+     abstract bridge) from new analytic work;
+  7. make no Lean edit, numerical run, route promotion or RH claim;
+  8. write only the expected verdict document plus the item-0 copy.
+
+Do not select another request from OPEN markers.  No phase-key change, Route
+promotion, or RH claim.  PX_RH_CLAIM: NOT_MADE.
