@@ -14,6 +14,22 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-04-ZEROPIN · Goal 058: identification through ZEROS — ground transform vanishes at gamma_j to order lambda_1 (S9, C_1·L → 205), real zeros distinguish ground row from Xi row, excess zeros escape, kappa → kappa_Xi; five ropes; not-RH branch · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_ZERO_PINNING_2026-09-04.txt`
+- Boundary: `GOAL058_GROUND_TRANSFORM_ZERO_PINNING_AND_REAL_ZERO_IDENTIFICATION`
+- Call class: `DELEGATED_STRATEGIC_REVIEW` (complementary to 9b822624's selector modulus; zero route, not value route)
+- Intake carried: Probe 12 by hand (xi_row_zeros.py; ERRATUM on root-finder artifacts), S9 five-cell test, ropes (b) and (c) measured, Mathlib inventory for uniqueness
+- Registered predictions: `P_ZERO_IDENTIFICATION_CLOSES_INPUT_A 0.55`, `P_EXCESS_ZEROS_ESCAPE 0.60`, `P_KAPPA_CONVERGES_TO_KAPPA_XI 0.70`, `P_S9_IS_SOURCE_IDENTITY 0.50`, `P_ZERO_SUPPLIER_UNCONDITIONAL 0.25`, `P_JUDGE_NAMES_ZERO_ROUTE_AS_PRIMARY 0.60`
+- Delivery mode: owner remote; GitHub locator; paste when the judge's chat is free
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `ea2bffe9f7657e17f3e2b38f894c63a2dbc04041` / `7846` / `80` /
+  `a5f4a85f03dc619b24228eacf8e3a9eb62d59f3e52379c4cd97944b9823fef99` /
+  `4e251ccf6205d7c7e8906423e6a2f8be862c50e1` / `yes`
+
+---
+
 ## REQ-2026-09-04-QUASIEIGEN · Goal 058: Xi row is a quasi-eigenvector (residual 10^(-0.4m) vs |RΔ| 1e-2); energy identity exact but empty; odd floor collapsed; collapse as a displacement-structure theorem · ANSWERED
 
 - `STATUS: ANSWERED`
