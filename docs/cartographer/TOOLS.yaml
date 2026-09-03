@@ -373,6 +373,21 @@ tool_families:
         notes: Run as a harness background task. Never pgrep its own pattern (field lesson 2026-09-03).
         last_verified: 2026-09-03
 
+      - id: s7-table
+        classification: MANUAL
+        status: ENABLED
+        audience: [CLAUDE_CODE, HUMAN]
+        mode: WRITES_DERIVED
+        path: docs/routeB_bus/phase5_codex/s7_table.py
+        invoke: .venv/bin/python docs/routeB_bus/phase5_codex/s7_table.py --m-max 600 --n-max 12 --dps 60
+        trigger: Source-only diagnostic of the odd-sector diagonal delta_n = tau(n,n) - tau(n,0) over many windows; no eigen-solve.
+        writes: true
+        approval: TASK_SCOPED_OUTPUT_UNDER_docs_routeB_bus_phase5_codex_out
+        authority: FINITE_WINDOW_SOURCE_ENTRY_DIAGNOSTIC_NOT_A_CERTIFICATE_NOT_RH
+        records_to: [docs/routeB_bus/phase5_codex/out/s7_table.csv, docs/routeB_bus/phase5_codex/out/s7_table.md]
+        note: Written by the orchestrator 2026-09-04 to test agent claim S7; result: S7 is a rewrite of delta_n's definition (Progress_Log 03:10).
+        last_verified: 2026-09-04
+
       - id: migration-census
         classification: MANUAL
         status: ENABLED
