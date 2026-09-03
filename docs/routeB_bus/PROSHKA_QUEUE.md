@@ -14,13 +14,27 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-03-KILLPLAN · Mythos three-stage fastest-kill plan, paper adjudication · OPEN
+## REQ-2026-09-03-KILLPLAN · Mythos three-stage fastest-kill plan, paper adjudication · ANSWERED
 
-- `STATUS: OPEN`
+- `STATUS: ANSWERED`
+- Verdict: `docs/routeB_bus/proshka/PROSHKA_VERDICT_MYTHOS_THREE_STAGE_FASTEST_KILL_PLAN_2026-09-03.md`
+- Verdict commit: `387b108500e2f66a756dc5f515e2787ce225d99e`
+- Verdict Git blob: `7b2aff3fe7da88a5ab2b2bc3d4df617f5eaf89c4`
+- Operative class: `KILL_STEP1_ABSTRACT_IDENTIFICATION`
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_MYTHOS_THREE_STAGE_FASTEST_KILL_PLAN_2026-09-03.txt`
+- Delivery: owner-relayed in same living chat
+  `6a8c3e2a-df50-83eb-b53d-dd4cc46f646f`; exact committed attachment
+  acceptance is confirmed by verdict
+  `REQUEST_LOCK.ATTACHMENT_MATCHES_COMMITTED_BYTES: true`; message ID was not
+  recorded by the local runtime.
 - Boundary: `MYTHOS_THREE_STAGE_FASTEST_KILL_PLAN_PAPER_ADJUDICATION`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
-- Registered prediction: `P_STEP1_NO_UNIQUENESS p=0.75 (2026-09-02, PENDING)`
+- Registered prediction: `P_STEP1_NO_UNIQUENESS p=0.75 (2026-09-02, CONFIRMED_AT_ABSTRACT_PROPERTY_LIST_SCOPE)`
+- Follow-up prediction: `P_STEP1_3_NO_STRUCTURAL_AGREEMENT p=0.65 (CONFIRMED_WITHIN_CHECKED_SOURCE_SURFACE)`
+- Follow-up source check:
+  `docs/routeB_bus/CODEX_ANSWER_2026-09-03_STEP1_3_P59_AGREEMENT_SET_SOURCE_CHECK.md`
+  (`NO_AGREEMENT_SET`; this is a checked-source conclusion, not a proof that
+  no future construction can supply such a set).
 - Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
   `34e9850a9c7fdb0e9274414b99f0f395b67169c6` / `8445` / `105` /
   `d662317312585319e3c4989a7096e1f1949eeb39dbf8ced755499368fe46e04d` /
