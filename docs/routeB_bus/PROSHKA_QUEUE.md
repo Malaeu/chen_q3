@@ -14,9 +14,10 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-03-SHELLSEARCH · Goal 058: shell search — typed theorems from recognized inputs to the two-component lattice atom (N: W=O(L⁻²); I: compact profile) · OPEN
+## REQ-2026-09-03-SHELLSEARCH · Goal 058: shell search — typed theorems from recognized inputs to the two-component lattice atom (N: W=O(L⁻²); I: compact profile) · IN_REVIEW
 
-- `STATUS: OPEN`
+- `STATUS: IN_REVIEW`
+- Delivery observed 2026-09-04 ≈00:20 CEST: owner (remote) pasted the one-line GitHub-locator instruction in living chat `6a8c3e2a-df50-83eb-b53d-dd4cc46f646f`; judge accepted and is working.
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SHELL_SEARCH_SOURCE_TO_LATTICE_ATOM_2026-09-03.txt`
 - Boundary: `GOAL058_SHELL_SEARCH_SOURCE_TO_LATTICE_ATOM`
 - Call class: `DELEGATED_STRATEGIC_REVIEW` (owner's frame: atom / shell / chain; find shells, not prove them; parallel to the judge's own preflight `GOAL058_NORMALIZED_XI_LATTICE_EIGEN_EQUATION_PREFLIGHT`)
