@@ -1,6 +1,10 @@
 {
   "PX_RH_CLAIM": "NOT_MADE",
   "assembly_rows_digest": "9eaa7bd67808ec0ccf848e86461ebd09120739f3624f41d211cabdfe7967760f",
+  "bibliography_hashes": {
+    "docs/routeB_bus/litreview/REFERENCES.md": "ddc19dc82a15ffb807b84b701249288926da16358a59fa557d04f21a2b9eb98a",
+    "docs/routeB_bus/litreview/references.bib": "1d7738661074e7557631f3f80a9040f7ecb1c1dc6487b589cebfff835c6d5537"
+  },
   "bibliography_path": "docs/routeB_bus/litreview/references.bib",
   "counts": {
     "assembly_rows": 69,
@@ -10,12 +14,1522 @@
     "unresolved_receipt": 26,
     "validation_only": 3
   },
-  "env_index_digest": "9f5e59f08f8dfed5289777b8be2dbe9b71bd92972dd8878ee7c6a52cb1d9b765",
-  "generator_digest": "4e6ccc1d3b3ef5df025fef6630c594115f190ce28520ac4b6dcf231cc1f5c821",
-  "git_head": "cf1e261c199f2d1715ccd96d487d3eefc56b13d7",
+  "dependency_appendix": [
+    {
+      "consumer": "Q3.RouteB.D0Pstar.selectedFerrersAbelLimitHm_physicalCoefficient_le",
+      "consumer_source_state": "CURRENT",
+      "current_relation": "DIRECT",
+      "edge_id": "E001",
+      "hypothesis_port": {
+        "direct_reference": "Q3.RouteB.D0Pstar.selectedFerrersAbelLogZeroExtension_fourier_decay_quantitative",
+        "surface": "ELABORATED_VALUE"
+      },
+      "path": [
+        "Q3.RouteB.D0Pstar.selectedFerrersAbelLimitHm_physicalCoefficient_le",
+        "Q3.RouteB.D0Pstar.selectedFerrersAbelLogZeroExtension_fourier_decay_quantitative"
+      ],
+      "recorded_relation": "DIRECT",
+      "supplier": "Q3.RouteB.D0Pstar.selectedFerrersAbelLogZeroExtension_fourier_decay_quantitative"
+    },
+    {
+      "consumer": "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenNonzeroMode_orthonormal",
+      "consumer_source_state": "CURRENT",
+      "current_relation": "DIRECT",
+      "edge_id": "E002",
+      "hypothesis_port": {
+        "direct_reference": "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenNonzeroMode",
+        "surface": "ELABORATED_VALUE"
+      },
+      "path": [
+        "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenNonzeroMode_orthonormal",
+        "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenNonzeroMode"
+      ],
+      "recorded_relation": "DIRECT",
+      "supplier": "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenNonzeroMode"
+    },
+    {
+      "consumer": "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenHeadSynthesis",
+      "consumer_source_state": "CURRENT",
+      "current_relation": "DIRECT",
+      "edge_id": "E003",
+      "hypothesis_port": {
+        "direct_reference": "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenZeroMode",
+        "surface": "ELABORATED_VALUE"
+      },
+      "path": [
+        "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenHeadSynthesis",
+        "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenZeroMode"
+      ],
+      "recorded_relation": "DIRECT",
+      "supplier": "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenZeroMode"
+    },
+    {
+      "consumer": "Q3.RouteB.D0Pstar.sourceWeilGraphEvenNonzeroLowBandSynthesis_orthogonal_tail",
+      "consumer_source_state": "CURRENT",
+      "current_relation": "DIRECT",
+      "edge_id": "E004",
+      "hypothesis_port": {
+        "direct_reference": "Q3.RouteB.D0Pstar.sourceWeilGraphEvenNonzeroTail_low_fourier_vanish",
+        "surface": "ELABORATED_VALUE"
+      },
+      "path": [
+        "Q3.RouteB.D0Pstar.sourceWeilGraphEvenNonzeroLowBandSynthesis_orthogonal_tail",
+        "Q3.RouteB.D0Pstar.sourceWeilGraphEvenNonzeroTail_low_fourier_vanish"
+      ],
+      "recorded_relation": "DIRECT",
+      "supplier": "Q3.RouteB.D0Pstar.sourceWeilGraphEvenNonzeroTail_low_fourier_vanish"
+    },
+    {
+      "consumer": "Q3.RouteB.D0Pstar.sourceWeilGraphEvenHeadSynthesis_orthogonal_tail",
+      "consumer_source_state": "CURRENT",
+      "current_relation": "DIRECT",
+      "edge_id": "E005",
+      "hypothesis_port": {
+        "direct_reference": "Q3.RouteB.D0Pstar.sourceWeilGraphEvenZeroMode_orthogonal_nonzeroTail",
+        "surface": "ELABORATED_VALUE"
+      },
+      "path": [
+        "Q3.RouteB.D0Pstar.sourceWeilGraphEvenHeadSynthesis_orthogonal_tail",
+        "Q3.RouteB.D0Pstar.sourceWeilGraphEvenZeroMode_orthogonal_nonzeroTail"
+      ],
+      "recorded_relation": "DIRECT",
+      "supplier": "Q3.RouteB.D0Pstar.sourceWeilGraphEvenZeroMode_orthogonal_nonzeroTail"
+    },
+    {
+      "consumer": "Q3.RouteB.D0Pstar.sourceWeilEvenAmbientMode_orthonormal",
+      "consumer_source_state": "HISTORICAL_SOURCE_ADVANCED",
+      "current_relation": "NOT_ESTABLISHED",
+      "edge_id": "E006",
+      "hypothesis_port": {
+        "direct_reference": "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenNonzeroMode_orthonormal",
+        "surface": "ELABORATED_VALUE"
+      },
+      "path": [
+        "Q3.RouteB.D0Pstar.sourceWeilEvenAmbientMode_orthonormal",
+        "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenNonzeroMode_orthonormal"
+      ],
+      "recorded_relation": "DIRECT",
+      "supplier": "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenNonzeroMode_orthonormal"
+    },
+    {
+      "consumer": "Q3.RouteB.D0Pstar.ccmFiniteSynthesis_evenCoefficientEmbedding",
+      "consumer_source_state": "CURRENT",
+      "current_relation": "DIRECT",
+      "edge_id": "E007",
+      "hypothesis_port": {
+        "direct_reference": "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenHeadSynthesis",
+        "surface": "ELABORATED_VALUE"
+      },
+      "path": [
+        "Q3.RouteB.D0Pstar.ccmFiniteSynthesis_evenCoefficientEmbedding",
+        "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenHeadSynthesis"
+      ],
+      "recorded_relation": "DIRECT",
+      "supplier": "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenHeadSynthesis"
+    },
+    {
+      "consumer": "Q3.RouteB.D0Pstar.ccmFiniteSynthesis_reflectionEven_orthogonal_evenNonzeroTail",
+      "consumer_source_state": "CURRENT",
+      "current_relation": "DIRECT",
+      "edge_id": "E008",
+      "hypothesis_port": {
+        "direct_reference": "Q3.RouteB.D0Pstar.sourceWeilGraphEvenHeadSynthesis_orthogonal_tail",
+        "surface": "ELABORATED_VALUE"
+      },
+      "path": [
+        "Q3.RouteB.D0Pstar.ccmFiniteSynthesis_reflectionEven_orthogonal_evenNonzeroTail",
+        "Q3.RouteB.D0Pstar.sourceWeilGraphEvenHeadSynthesis_orthogonal_tail"
+      ],
+      "recorded_relation": "DIRECT",
+      "supplier": "Q3.RouteB.D0Pstar.sourceWeilGraphEvenHeadSynthesis_orthogonal_tail"
+    },
+    {
+      "consumer": "Q3.RouteB.D0Pstar.sourceWeilEvenTailAmbientCoercive_explicit",
+      "consumer_source_state": "HISTORICAL_SOURCE_ADVANCED",
+      "current_relation": "NOT_ESTABLISHED",
+      "edge_id": "E009",
+      "hypothesis_port": {
+        "direct_reference": "Q3.RouteB.D0Pstar.sourceWeilGraphTailAmbientCoercive_of_algebraic",
+        "surface": "ELABORATED_VALUE"
+      },
+      "path": [
+        "Q3.RouteB.D0Pstar.sourceWeilEvenTailAmbientCoercive_explicit",
+        "Q3.RouteB.D0Pstar.sourceWeilGraphTailAmbientCoercive_of_algebraic"
+      ],
+      "recorded_relation": "DIRECT",
+      "supplier": "Q3.RouteB.D0Pstar.sourceWeilGraphTailAmbientCoercive_of_algebraic"
+    }
+  ],
+  "env_index_digest": "cc042937cbaae73a2d38bb014b801f22a52c4dc3f5e785b481121da0eb0acae2",
+  "generator_digest": "ade0aaa060f81b3ccd1d79562517804fa732e83c76896fb9ace8cffeb654e25f",
+  "git_head": "4ba40bdc3cbf43e2f79cbe33d88d5d019b5746fe",
   "git_head_semantics": "latest commit touching tracked blueprint data inputs",
-  "proof_statement_digest": "73f92dcf6a78cd96c100c4f752d52d0d6b21ca6c25f714f03813f8880d48c537",
+  "node_registry": {
+    "algorithm_version": "NODE_REGISTRY_V10_ALGORITHM_1",
+    "edges": [
+      {
+        "consumer": "Q3.RouteB.D0Pstar.selectedFerrersAbelLimitHm_physicalCoefficient_le",
+        "consumer_blob": "2d6eddd0b9bfb4d2f4be236e8ea98920798a61c2",
+        "consumer_path": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFirstOrderCoefficientEnvelope.lean",
+        "consumer_source_state": "CURRENT",
+        "current_consumer_blob": "2d6eddd0b9bfb4d2f4be236e8ea98920798a61c2",
+        "current_relation": "DIRECT",
+        "edge_id": "E001",
+        "hypothesis_port": {
+          "direct_reference": "Q3.RouteB.D0Pstar.selectedFerrersAbelLogZeroExtension_fourier_decay_quantitative",
+          "surface": "ELABORATED_VALUE"
+        },
+        "path": [
+          "Q3.RouteB.D0Pstar.selectedFerrersAbelLimitHm_physicalCoefficient_le",
+          "Q3.RouteB.D0Pstar.selectedFerrersAbelLogZeroExtension_fourier_decay_quantitative"
+        ],
+        "recorded_consumer_blob_anchor_commits": [],
+        "recorded_consumer_blob_matches_current": true,
+        "recorded_relation": "DIRECT",
+        "recorded_validation_applies_to_current_consumer": true,
+        "theorem": "Q3.RouteB.D0Pstar.selectedFerrersAbelLogZeroExtension_fourier_decay_quantitative"
+      },
+      {
+        "consumer": "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenNonzeroMode_orthonormal",
+        "consumer_blob": "f9f354eb41f1a3326800fdaf5cc07c22dc420519",
+        "consumer_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroLowBandAssembly.lean",
+        "consumer_source_state": "CURRENT",
+        "current_consumer_blob": "f9f354eb41f1a3326800fdaf5cc07c22dc420519",
+        "current_relation": "DIRECT",
+        "edge_id": "E002",
+        "hypothesis_port": {
+          "direct_reference": "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenNonzeroMode",
+          "surface": "ELABORATED_VALUE"
+        },
+        "path": [
+          "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenNonzeroMode_orthonormal",
+          "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenNonzeroMode"
+        ],
+        "recorded_consumer_blob_anchor_commits": [
+          "2d41a7dccc20a2c2e2a5ad21bcf3b4227a94dde5"
+        ],
+        "recorded_consumer_blob_matches_current": true,
+        "recorded_relation": "DIRECT",
+        "recorded_validation_applies_to_current_consumer": true,
+        "theorem": "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenNonzeroMode"
+      },
+      {
+        "consumer": "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenHeadSynthesis",
+        "consumer_blob": "f9f354eb41f1a3326800fdaf5cc07c22dc420519",
+        "consumer_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroLowBandAssembly.lean",
+        "consumer_source_state": "CURRENT",
+        "current_consumer_blob": "f9f354eb41f1a3326800fdaf5cc07c22dc420519",
+        "current_relation": "DIRECT",
+        "edge_id": "E003",
+        "hypothesis_port": {
+          "direct_reference": "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenZeroMode",
+          "surface": "ELABORATED_VALUE"
+        },
+        "path": [
+          "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenHeadSynthesis",
+          "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenZeroMode"
+        ],
+        "recorded_consumer_blob_anchor_commits": [
+          "2d41a7dccc20a2c2e2a5ad21bcf3b4227a94dde5"
+        ],
+        "recorded_consumer_blob_matches_current": true,
+        "recorded_relation": "DIRECT",
+        "recorded_validation_applies_to_current_consumer": true,
+        "theorem": "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenZeroMode"
+      },
+      {
+        "consumer": "Q3.RouteB.D0Pstar.sourceWeilGraphEvenNonzeroLowBandSynthesis_orthogonal_tail",
+        "consumer_blob": "f9f354eb41f1a3326800fdaf5cc07c22dc420519",
+        "consumer_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroLowBandAssembly.lean",
+        "consumer_source_state": "CURRENT",
+        "current_consumer_blob": "f9f354eb41f1a3326800fdaf5cc07c22dc420519",
+        "current_relation": "DIRECT",
+        "edge_id": "E004",
+        "hypothesis_port": {
+          "direct_reference": "Q3.RouteB.D0Pstar.sourceWeilGraphEvenNonzeroTail_low_fourier_vanish",
+          "surface": "ELABORATED_VALUE"
+        },
+        "path": [
+          "Q3.RouteB.D0Pstar.sourceWeilGraphEvenNonzeroLowBandSynthesis_orthogonal_tail",
+          "Q3.RouteB.D0Pstar.sourceWeilGraphEvenNonzeroTail_low_fourier_vanish"
+        ],
+        "recorded_consumer_blob_anchor_commits": [
+          "2d41a7dccc20a2c2e2a5ad21bcf3b4227a94dde5"
+        ],
+        "recorded_consumer_blob_matches_current": true,
+        "recorded_relation": "DIRECT",
+        "recorded_validation_applies_to_current_consumer": true,
+        "theorem": "Q3.RouteB.D0Pstar.sourceWeilGraphEvenNonzeroTail_low_fourier_vanish"
+      },
+      {
+        "consumer": "Q3.RouteB.D0Pstar.sourceWeilGraphEvenHeadSynthesis_orthogonal_tail",
+        "consumer_blob": "f9f354eb41f1a3326800fdaf5cc07c22dc420519",
+        "consumer_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroLowBandAssembly.lean",
+        "consumer_source_state": "CURRENT",
+        "current_consumer_blob": "f9f354eb41f1a3326800fdaf5cc07c22dc420519",
+        "current_relation": "DIRECT",
+        "edge_id": "E005",
+        "hypothesis_port": {
+          "direct_reference": "Q3.RouteB.D0Pstar.sourceWeilGraphEvenZeroMode_orthogonal_nonzeroTail",
+          "surface": "ELABORATED_VALUE"
+        },
+        "path": [
+          "Q3.RouteB.D0Pstar.sourceWeilGraphEvenHeadSynthesis_orthogonal_tail",
+          "Q3.RouteB.D0Pstar.sourceWeilGraphEvenZeroMode_orthogonal_nonzeroTail"
+        ],
+        "recorded_consumer_blob_anchor_commits": [
+          "2d41a7dccc20a2c2e2a5ad21bcf3b4227a94dde5"
+        ],
+        "recorded_consumer_blob_matches_current": true,
+        "recorded_relation": "DIRECT",
+        "recorded_validation_applies_to_current_consumer": true,
+        "theorem": "Q3.RouteB.D0Pstar.sourceWeilGraphEvenZeroMode_orthogonal_nonzeroTail"
+      },
+      {
+        "consumer": "Q3.RouteB.D0Pstar.sourceWeilEvenAmbientMode_orthonormal",
+        "consumer_blob": "1c61823b4eff8790a40e86d0a0f1a13630a0721a",
+        "consumer_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+        "consumer_source_state": "HISTORICAL_SOURCE_ADVANCED",
+        "current_consumer_blob": "f9dc5ce21e00802fcb2488a61c504e957c372691",
+        "current_relation": "NOT_ESTABLISHED",
+        "edge_id": "E006",
+        "hypothesis_port": {
+          "direct_reference": "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenNonzeroMode_orthonormal",
+          "surface": "ELABORATED_VALUE"
+        },
+        "path": [
+          "Q3.RouteB.D0Pstar.sourceWeilEvenAmbientMode_orthonormal",
+          "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenNonzeroMode_orthonormal"
+        ],
+        "recorded_consumer_blob_anchor_commits": [
+          "7ee47b0b476c5e9ede031bba81769a43f8585b38"
+        ],
+        "recorded_consumer_blob_matches_current": false,
+        "recorded_relation": "DIRECT",
+        "recorded_validation_applies_to_current_consumer": false,
+        "theorem": "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenNonzeroMode_orthonormal"
+      },
+      {
+        "consumer": "Q3.RouteB.D0Pstar.ccmFiniteSynthesis_evenCoefficientEmbedding",
+        "consumer_blob": "fcc211dee53fe8d21cb2dc0b4dd706d747228bec",
+        "consumer_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenFiniteHeadCrosswalk.lean",
+        "consumer_source_state": "CURRENT",
+        "current_consumer_blob": "fcc211dee53fe8d21cb2dc0b4dd706d747228bec",
+        "current_relation": "DIRECT",
+        "edge_id": "E007",
+        "hypothesis_port": {
+          "direct_reference": "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenHeadSynthesis",
+          "surface": "ELABORATED_VALUE"
+        },
+        "path": [
+          "Q3.RouteB.D0Pstar.ccmFiniteSynthesis_evenCoefficientEmbedding",
+          "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenHeadSynthesis"
+        ],
+        "recorded_consumer_blob_anchor_commits": [
+          "7f5cbc0589b796750312b378ec38229e9ecfb14f"
+        ],
+        "recorded_consumer_blob_matches_current": true,
+        "recorded_relation": "DIRECT",
+        "recorded_validation_applies_to_current_consumer": true,
+        "theorem": "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenHeadSynthesis"
+      },
+      {
+        "consumer": "Q3.RouteB.D0Pstar.ccmFiniteSynthesis_reflectionEven_orthogonal_evenNonzeroTail",
+        "consumer_blob": "fcc211dee53fe8d21cb2dc0b4dd706d747228bec",
+        "consumer_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenFiniteHeadCrosswalk.lean",
+        "consumer_source_state": "CURRENT",
+        "current_consumer_blob": "fcc211dee53fe8d21cb2dc0b4dd706d747228bec",
+        "current_relation": "DIRECT",
+        "edge_id": "E008",
+        "hypothesis_port": {
+          "direct_reference": "Q3.RouteB.D0Pstar.sourceWeilGraphEvenHeadSynthesis_orthogonal_tail",
+          "surface": "ELABORATED_VALUE"
+        },
+        "path": [
+          "Q3.RouteB.D0Pstar.ccmFiniteSynthesis_reflectionEven_orthogonal_evenNonzeroTail",
+          "Q3.RouteB.D0Pstar.sourceWeilGraphEvenHeadSynthesis_orthogonal_tail"
+        ],
+        "recorded_consumer_blob_anchor_commits": [
+          "7f5cbc0589b796750312b378ec38229e9ecfb14f"
+        ],
+        "recorded_consumer_blob_matches_current": true,
+        "recorded_relation": "DIRECT",
+        "recorded_validation_applies_to_current_consumer": true,
+        "theorem": "Q3.RouteB.D0Pstar.sourceWeilGraphEvenHeadSynthesis_orthogonal_tail"
+      },
+      {
+        "consumer": "Q3.RouteB.D0Pstar.sourceWeilEvenTailAmbientCoercive_explicit",
+        "consumer_blob": "1c61823b4eff8790a40e86d0a0f1a13630a0721a",
+        "consumer_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+        "consumer_source_state": "HISTORICAL_SOURCE_ADVANCED",
+        "current_consumer_blob": "f9dc5ce21e00802fcb2488a61c504e957c372691",
+        "current_relation": "NOT_ESTABLISHED",
+        "edge_id": "E009",
+        "hypothesis_port": {
+          "direct_reference": "Q3.RouteB.D0Pstar.sourceWeilGraphTailAmbientCoercive_of_algebraic",
+          "surface": "ELABORATED_VALUE"
+        },
+        "path": [
+          "Q3.RouteB.D0Pstar.sourceWeilEvenTailAmbientCoercive_explicit",
+          "Q3.RouteB.D0Pstar.sourceWeilGraphTailAmbientCoercive_of_algebraic"
+        ],
+        "recorded_consumer_blob_anchor_commits": [
+          "7ee47b0b476c5e9ede031bba81769a43f8585b38"
+        ],
+        "recorded_consumer_blob_matches_current": false,
+        "recorded_relation": "DIRECT",
+        "recorded_validation_applies_to_current_consumer": false,
+        "theorem": "Q3.RouteB.D0Pstar.sourceWeilGraphTailAmbientCoercive_of_algebraic"
+      }
+    ],
+    "mode": "PRODUCTION_V10_READ_ONLY",
+    "nodes": [
+      {
+        "current_source_lifecycle": "HISTORICAL_V9",
+        "lifecycle": "HISTORICAL_V9",
+        "node_class": "SEMANTIC_BRIDGE",
+        "node_id": "GOAL058_W5_QUANTITATIVE_SHIFTED_ENERGY_20260825",
+        "recorded_validation_applies_to_current_source": true,
+        "review": {
+          "evidence": [],
+          "historical_receipt": {
+            "entry_id": "GOAL058_W5_QUANTITATIVE_SHIFTED_ENERGY_20260825",
+            "entry_sha256": "03d85cfa1afb7fbf45dd1ae57a8f3a62a95baf6705a1dac0c1075f77940d6216",
+            "kind": "HISTORICAL_V9_LOCAL_RECEIPT",
+            "schema": "q3_semantic_quarantine.v1"
+          },
+          "reviewers": [],
+          "state": "CLOSED_HISTORICAL",
+          "transport": "OFFLINE_EMBEDDED_NO_SOCKET"
+        },
+        "semantic_review_hash": "b7482cefcb7b1725c09ca5a97ccb3a56c8d25377379784f57d5915fd7055112c",
+        "semantic_review_inputs": {
+          "assumptions": [],
+          "definitions": [],
+          "domain": "production source window and whole Fourier line",
+          "elaborated_types": [
+            {
+              "status": "HISTORICAL_V9_NOT_REPROBED"
+            }
+          ],
+          "exact_edges": [
+            "E001"
+          ],
+          "normalization": "selectedFerrersLemma73SourcePacket with full-endpoint W4 jump ledger",
+          "object": "literal selected-Ferrers additive-log packet",
+          "provenance": {
+            "attestation_id": "ATTEST_GOAL058_W5_B635BA98B2C465FFE271B0775AFD174F74953C19_V1",
+            "source": "CONTROL_V9"
+          },
+          "quantifiers": "for every k : Nat with k-independent envelope"
+        },
+        "source": {
+          "blob": "5205b76c962a01411dffbe6ded97bf2eaa6fd313",
+          "commit": "d50e1899261c7b318e5d9a3c1977fcba18a7e79c",
+          "current_git_blob": "5205b76c962a01411dffbe6ded97bf2eaa6fd313",
+          "path": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersQuantitativeShiftedRootEnergy.lean",
+          "recorded_blob_matches_current": true,
+          "recorded_commit_blob": "5205b76c962a01411dffbe6ded97bf2eaa6fd313",
+          "recorded_commit_is_ancestor": true,
+          "source_state": "CURRENT"
+        },
+        "terminal_consumer": [
+          "Q3.RouteB.D0Pstar.selectedFerrersAbelLimitHm_physicalCoefficient_le"
+        ],
+        "theorem_ids": [
+          "Q3.RouteB.D0Pstar.selectedFerrersAbelLogZeroExtension_fourier_decay_quantitative",
+          "Q3.RouteB.D0Pstar.selectedFerrersAbelLimit_shiftedEnergy_le_majorant"
+        ],
+        "validation_hash": "ca33fa47be6a8cba34522bb780448755c9da541735250a5a5558d58d80daa220",
+        "validation_inputs": {
+          "axioms": {
+            "sha256": "b635ba98b2c465ffe271b0775afd174f74953c19413eade3960153f6008e3d1c",
+            "status": "HISTORICAL_V9_RECEIPT"
+          },
+          "build": {
+            "lakefile_sha256": "0c8c85fa4157dec0676f57c8a2d380eb909c20acd0ff7a2b5ff30f6890a40261",
+            "manifest_sha256": "f59bc3a30bdefd46a07325a01743cb6f48b9f725f45e292b70d21ca4fc86226a",
+            "status": "HISTORICAL_V9_KERNEL_GREEN"
+          },
+          "dependency_graph": {
+            "algorithm_version": "LEAN_EXPR_USED_CONSTANTS_V1",
+            "coverage": "ALL_PROJECT_ROOTS",
+            "historical_entry_binding_sha256": "3c0ee949a032198865f37adb694b76c51a97877f2686f1dcaae2542e3798e99a",
+            "project_dependency_tree_hash": "37eb0417e0afb534a302b0b28882ec2c9615dddd8ab8d6a19d6b407353adda29",
+            "sha256": "d036965b697f9e0748077d57b9c60d3281ed85c6695ccb8b3e70034778d67230"
+          },
+          "holes": {
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "status": "NO_RECORDED_HOLES"
+          },
+          "physical_goal_path": "docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md",
+          "source_bytes": {
+            "git_blob": "5205b76c962a01411dffbe6ded97bf2eaa6fd313",
+            "sha256": "534e60bd431178d1556b10a17c3eafea344b6ad833fbb938e518a6d5c6218d52"
+          },
+          "task_path": "docs/Codex/TASK_2026-08-25_goal058_w5_quantitative_shifted_energy.md",
+          "toolchain": {
+            "path": "q3.lean.aristotle/lean-toolchain",
+            "sha256": "e8173aad377a6d70041e5f7a5d8895ed587628f5cab243c53a18c40a1b7b6bf8"
+          }
+        }
+      },
+      {
+        "current_source_lifecycle": "HISTORICAL_V9",
+        "lifecycle": "HISTORICAL_V9",
+        "node_class": "SEMANTIC_BRIDGE",
+        "node_id": "GOAL058_D0PSTAR_SOURCE_EVEN_NONZERO_TAIL_CARRIER_20260831",
+        "recorded_validation_applies_to_current_source": true,
+        "review": {
+          "evidence": [
+            {
+              "converged": true,
+              "exact_payload_hash": "2dc055cb48e6052e699e75f2bec92d23ff39a74c7e6922b6a3288813cc7806a1",
+              "key_id": null,
+              "principal": "OWNER",
+              "read_only": true,
+              "reviewer_class": "OWNER_SIGNOFF",
+              "reviewer_id": "OWNER_WAIVER_GOAL058_D0PSTAR_SOURCE_EVEN_NONZERO_TAIL_CARRIER_20260831_V1",
+              "signature": null,
+              "signed": false,
+              "verdict": "APPROVE"
+            }
+          ],
+          "historical_receipt": {
+            "entry_id": "GOAL058_D0PSTAR_SOURCE_EVEN_NONZERO_TAIL_CARRIER_20260831",
+            "entry_sha256": "4b5d3041e535fcf1aeeda32edd7b88d3c1e3d85a7253f0141ceacf2657e1b84d",
+            "kind": "OWNER_SIGNOFF",
+            "schema": "q3_semantic_quarantine.v1"
+          },
+          "reviewers": [
+            "OWNER_SIGNOFF"
+          ],
+          "state": "CLOSED_HISTORICAL",
+          "transport": "OFFLINE_EMBEDDED_NO_SOCKET"
+        },
+        "semantic_review_hash": "2dc055cb48e6052e699e75f2bec92d23ff39a74c7e6922b6a3288813cc7806a1",
+        "semantic_review_inputs": {
+          "assumptions": [],
+          "definitions": [],
+          "domain": "every PairIndex and natural cutoff R",
+          "elaborated_types": [
+            {
+              "status": "HISTORICAL_V9_NOT_REPROBED"
+            }
+          ],
+          "exact_edges": [
+            "E002",
+            "E003",
+            "E004",
+            "E005"
+          ],
+          "normalization": "nonzero-even index n denotes physical pair plus-or-minus n+1",
+          "object": "source-Weil shifted graph carrier",
+          "provenance": {
+            "attestation_id": "OWNER_WAIVER_GOAL058_D0PSTAR_SOURCE_EVEN_NONZERO_TAIL_CARRIER_20260831_V1",
+            "source": "OWNER_EXPLICIT_SEMANTIC_WAIVER"
+          },
+          "quantifiers": "for every PairIndex i, cutoff R, and low Fourier index"
+        },
+        "source": {
+          "blob": "d71832913a0d6e9258b2940a0842e7f0e7b5f426",
+          "commit": "aa8ca906c959c13af2f9e513cd9dfdec1aa5b2b8",
+          "current_git_blob": "d71832913a0d6e9258b2940a0842e7f0e7b5f426",
+          "path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroTailCarrier.lean",
+          "recorded_blob_matches_current": true,
+          "recorded_commit_blob": "d71832913a0d6e9258b2940a0842e7f0e7b5f426",
+          "recorded_commit_is_ancestor": true,
+          "source_state": "CURRENT"
+        },
+        "terminal_consumer": [
+          "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenHeadSynthesis",
+          "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenNonzeroMode_orthonormal",
+          "Q3.RouteB.D0Pstar.sourceWeilGraphEvenHeadSynthesis_orthogonal_tail",
+          "Q3.RouteB.D0Pstar.sourceWeilGraphEvenNonzeroLowBandSynthesis_orthogonal_tail"
+        ],
+        "theorem_ids": [
+          "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenZeroMode",
+          "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenNonzeroMode",
+          "Q3.RouteB.D0Pstar.sourceWeilGraphEvenNonzeroTailAlgebraic_low_fourier_vanish",
+          "Q3.RouteB.D0Pstar.sourceWeilGraphEvenNonzeroTail_low_fourier_vanish",
+          "Q3.RouteB.D0Pstar.sourceWeilGraphEvenZeroMode_orthogonal_nonzeroTail"
+        ],
+        "validation_hash": "e83a648aaa197f64f73089210e77132ed0104309ce5e17b3a3d0e6ce9db2b573",
+        "validation_inputs": {
+          "axioms": {
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "status": "HISTORICAL_OWNER_WAIVER"
+          },
+          "build": {
+            "lakefile_sha256": "0c8c85fa4157dec0676f57c8a2d380eb909c20acd0ff7a2b5ff30f6890a40261",
+            "manifest_sha256": "f59bc3a30bdefd46a07325a01743cb6f48b9f725f45e292b70d21ca4fc86226a",
+            "status": "HISTORICAL_V9_KERNEL_GREEN"
+          },
+          "dependency_graph": {
+            "algorithm_version": "LEAN_EXPR_USED_CONSTANTS_V1",
+            "coverage": "ALL_PROJECT_ROOTS",
+            "historical_entry_binding_sha256": "c25421d7cfcf5b41ada15c7e6f87e25f693c2e97752dd9c6cbacef6f9a56b9a9",
+            "project_dependency_tree_hash": "37eb0417e0afb534a302b0b28882ec2c9615dddd8ab8d6a19d6b407353adda29",
+            "sha256": "4470024ddedae5da1f4095a38f889e83395d575bd6847017605bef994f99c375"
+          },
+          "holes": {
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "status": "NO_RECORDED_HOLES"
+          },
+          "physical_goal_path": "docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md",
+          "source_bytes": {
+            "git_blob": "d71832913a0d6e9258b2940a0842e7f0e7b5f426",
+            "sha256": "57d3e5129eeefb7f4a041dcaebe217276458e1328b42489684ad3b8837707719"
+          },
+          "task_path": "docs/Codex/TASK_2026-08-31_goal058_even_nonzero_tail_carrier.md",
+          "toolchain": {
+            "path": "q3.lean.aristotle/lean-toolchain",
+            "sha256": "e8173aad377a6d70041e5f7a5d8895ed587628f5cab243c53a18c40a1b7b6bf8"
+          }
+        }
+      },
+      {
+        "current_source_lifecycle": "HISTORICAL_V9",
+        "lifecycle": "HISTORICAL_V9",
+        "node_class": "SEMANTIC_BRIDGE",
+        "node_id": "GOAL058_D0PSTAR_SOURCE_EVEN_NONZERO_LOW_BAND_ASSEMBLY_20260831",
+        "recorded_validation_applies_to_current_source": true,
+        "review": {
+          "evidence": [
+            {
+              "converged": true,
+              "exact_payload_hash": "446f274db2cf5fc83e5e701d2f94b150c1138532cda5ef48b23667cf9e458327",
+              "key_id": null,
+              "principal": "OWNER",
+              "read_only": true,
+              "reviewer_class": "OWNER_SIGNOFF",
+              "reviewer_id": "OWNER_WAIVER_GOAL058_D0PSTAR_SOURCE_EVEN_NONZERO_LOW_BAND_ASSEMBLY_20260831_V1",
+              "signature": null,
+              "signed": false,
+              "verdict": "APPROVE"
+            }
+          ],
+          "historical_receipt": {
+            "entry_id": "GOAL058_D0PSTAR_SOURCE_EVEN_NONZERO_LOW_BAND_ASSEMBLY_20260831",
+            "entry_sha256": "af9f7edaf03344ad7f86161feff1fb2155872850ee874624fdfb21b81ab9906c",
+            "kind": "OWNER_SIGNOFF",
+            "schema": "q3_semantic_quarantine.v1"
+          },
+          "reviewers": [
+            "OWNER_SIGNOFF"
+          ],
+          "state": "CLOSED_HISTORICAL",
+          "transport": "OFFLINE_EMBEDDED_NO_SOCKET"
+        },
+        "semantic_review_hash": "446f274db2cf5fc83e5e701d2f94b150c1138532cda5ef48b23667cf9e458327",
+        "semantic_review_inputs": {
+          "assumptions": [],
+          "definitions": [
+            {
+              "name": "Q3.RouteB.D0Pstar.sourceWeilGraphEvenNonzeroLowBandSynthesis",
+              "status": "HISTORICAL_V9_NOT_REPROBED"
+            },
+            {
+              "name": "Q3.RouteB.D0Pstar.sourceWeilGraphEvenHeadSynthesis",
+              "status": "HISTORICAL_V9_NOT_REPROBED"
+            }
+          ],
+          "domain": "every PairIndex and natural cutoff R",
+          "elaborated_types": [
+            {
+              "status": "HISTORICAL_V9_NOT_REPROBED"
+            }
+          ],
+          "exact_edges": [
+            "E006",
+            "E007",
+            "E008"
+          ],
+          "normalization": "Fin R index n denotes physical pair plus-or-minus n+1",
+          "object": "source-Weil shifted graph finite even head and closed tail",
+          "provenance": {
+            "attestation_id": "OWNER_WAIVER_GOAL058_D0PSTAR_SOURCE_EVEN_NONZERO_LOW_BAND_ASSEMBLY_20260831_V1",
+            "source": "OWNER_EXPLICIT_SEMANTIC_WAIVER"
+          },
+          "quantifiers": "for every PairIndex, cutoff, finite coefficients, and closed-tail vector"
+        },
+        "source": {
+          "blob": "f9f354eb41f1a3326800fdaf5cc07c22dc420519",
+          "commit": "2d41a7dccc20a2c2e2a5ad21bcf3b4227a94dde5",
+          "current_git_blob": "f9f354eb41f1a3326800fdaf5cc07c22dc420519",
+          "path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroLowBandAssembly.lean",
+          "recorded_blob_matches_current": true,
+          "recorded_commit_blob": "f9f354eb41f1a3326800fdaf5cc07c22dc420519",
+          "recorded_commit_is_ancestor": true,
+          "source_state": "CURRENT"
+        },
+        "terminal_consumer": [
+          "Q3.RouteB.D0Pstar.ccmFiniteSynthesis_evenCoefficientEmbedding",
+          "Q3.RouteB.D0Pstar.ccmFiniteSynthesis_reflectionEven_orthogonal_evenNonzeroTail",
+          "Q3.RouteB.D0Pstar.sourceWeilEvenAmbientMode_orthonormal"
+        ],
+        "theorem_ids": [
+          "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenNonzeroMode_orthonormal",
+          "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenNonzeroLowBandSynthesis",
+          "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenHeadSynthesis",
+          "Q3.RouteB.D0Pstar.sourceWeilGraphEvenNonzeroLowBandSynthesis_orthogonal_tail",
+          "Q3.RouteB.D0Pstar.sourceWeilGraphEvenHeadSynthesis_orthogonal_tail"
+        ],
+        "validation_hash": "6d71e63360efd567eb2ee02617569151bb4a453aa72885bc2100ac13f6de7f80",
+        "validation_inputs": {
+          "axioms": {
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "status": "HISTORICAL_OWNER_WAIVER"
+          },
+          "build": {
+            "lakefile_sha256": "0c8c85fa4157dec0676f57c8a2d380eb909c20acd0ff7a2b5ff30f6890a40261",
+            "manifest_sha256": "f59bc3a30bdefd46a07325a01743cb6f48b9f725f45e292b70d21ca4fc86226a",
+            "status": "HISTORICAL_V9_KERNEL_GREEN"
+          },
+          "dependency_graph": {
+            "algorithm_version": "LEAN_EXPR_USED_CONSTANTS_V1",
+            "coverage": "ALL_PROJECT_ROOTS",
+            "historical_entry_binding_sha256": "672d69e62f1b6b57be41b7d91819776de59d4e558a92c7a4e4300a64dd7af90f",
+            "project_dependency_tree_hash": "37eb0417e0afb534a302b0b28882ec2c9615dddd8ab8d6a19d6b407353adda29",
+            "sha256": "4b5f8676da96590291957ec7ef79fc43f6a8f19059c4989bf4055d7e79fb6d33"
+          },
+          "holes": {
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "status": "NO_RECORDED_HOLES"
+          },
+          "physical_goal_path": "docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md",
+          "source_bytes": {
+            "git_blob": "f9f354eb41f1a3326800fdaf5cc07c22dc420519",
+            "sha256": "6ddd8cdabdd6b682160e55277f3a35d28fbbe8fa577e4eb58041ff7cdce41681"
+          },
+          "task_path": "docs/Codex/TASK_2026-08-31_goal058_even_nonzero_low_band_assembly.md",
+          "toolchain": {
+            "path": "q3.lean.aristotle/lean-toolchain",
+            "sha256": "e8173aad377a6d70041e5f7a5d8895ed587628f5cab243c53a18c40a1b7b6bf8"
+          }
+        }
+      },
+      {
+        "current_source_lifecycle": "HISTORICAL_V9_UNMAPPED",
+        "lifecycle": "HISTORICAL_V9_UNMAPPED",
+        "node_class": "SEMANTIC_BRIDGE",
+        "node_id": "GOAL058_D0PSTAR_FINITE_CCM_REFLECTION_EVEN_HEAD_TAIL_CROSSWALK_20260901",
+        "recorded_validation_applies_to_current_source": true,
+        "review": {
+          "evidence": [],
+          "historical_receipt": {
+            "entry_id": "GOAL058_D0PSTAR_FINITE_CCM_REFLECTION_EVEN_HEAD_TAIL_CROSSWALK_20260901",
+            "entry_sha256": "ce59462ecf5c58a0af9880b6d65f1cca3579d161124795aa528125ca3641b3da",
+            "kind": "HISTORICAL_V9_LOCAL_RECEIPT",
+            "schema": "q3_semantic_quarantine.v1"
+          },
+          "reviewers": [],
+          "state": "CLOSED_HISTORICAL",
+          "transport": "OFFLINE_EMBEDDED_NO_SOCKET"
+        },
+        "semantic_review_hash": "009c8de168404b169166499be1cc75bceae7e3709bcb7ce4fc521502d2f1f267",
+        "semantic_review_inputs": {
+          "assumptions": [],
+          "definitions": [
+            {
+              "name": "Q3.RouteB.D0Pstar.ccmEvenCoefficientEmbedding",
+              "status": "HISTORICAL_V9_NOT_REPROBED"
+            }
+          ],
+          "domain": "every PairIndex and finite coefficient vector",
+          "elaborated_types": [
+            {
+              "status": "HISTORICAL_V9_NOT_REPROBED"
+            }
+          ],
+          "exact_edges": [],
+          "normalization": "center mode zero and positive index r carries pair plus-or-minus r+1",
+          "object": "finite CCM reflection-even carrier and source-Weil head-tail crosswalk",
+          "provenance": {
+            "attestation_id": "ATTEST_GOAL058_D0PSTAR_FINITE_CCM_REFLECTION_EVEN_HEAD_TAIL_CROSSWALK_20260901_V1",
+            "source": "CONTROL_V9"
+          },
+          "quantifiers": "for every PairIndex, reflection-even x, and closed-tail y"
+        },
+        "source": {
+          "blob": "fcc211dee53fe8d21cb2dc0b4dd706d747228bec",
+          "commit": "7f5cbc0589b796750312b378ec38229e9ecfb14f",
+          "current_git_blob": "fcc211dee53fe8d21cb2dc0b4dd706d747228bec",
+          "path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenFiniteHeadCrosswalk.lean",
+          "recorded_blob_matches_current": true,
+          "recorded_commit_blob": "fcc211dee53fe8d21cb2dc0b4dd706d747228bec",
+          "recorded_commit_is_ancestor": true,
+          "source_state": "CURRENT"
+        },
+        "terminal_consumer": [],
+        "theorem_ids": [
+          "Q3.RouteB.D0Pstar.ccmEvenCoefficientEmbedding_reflection_even",
+          "Q3.RouteB.D0Pstar.ccmEvenCoefficientEmbedding_reconstruct",
+          "Q3.RouteB.D0Pstar.ccmFiniteSynthesis_evenCoefficientEmbedding",
+          "Q3.RouteB.D0Pstar.ccmFiniteSynthesis_eq_sourceWeilGraphAmbient_evenHead_of_reflection",
+          "Q3.RouteB.D0Pstar.ccmFiniteSynthesis_eq_sourceWeilGraphAmbient_evenHead_of_mulVec_eq",
+          "Q3.RouteB.D0Pstar.ccmFiniteSynthesis_reflectionEven_orthogonal_evenNonzeroTail"
+        ],
+        "validation_hash": "f8b159a410df5197c608b42dabd5d2a64a2b323f01aab31af60a56c03ffc5fc1",
+        "validation_inputs": {
+          "axioms": {
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "status": "HISTORICAL_V9_RECEIPT"
+          },
+          "build": {
+            "lakefile_sha256": "0c8c85fa4157dec0676f57c8a2d380eb909c20acd0ff7a2b5ff30f6890a40261",
+            "manifest_sha256": "f59bc3a30bdefd46a07325a01743cb6f48b9f725f45e292b70d21ca4fc86226a",
+            "status": "HISTORICAL_V9_KERNEL_GREEN"
+          },
+          "dependency_graph": {
+            "algorithm_version": "LEAN_EXPR_USED_CONSTANTS_V1",
+            "coverage": "ALL_PROJECT_ROOTS",
+            "historical_entry_binding_sha256": "e41e376f3b5ef013ffd0464c4d28fcb0d848c8a5c06245f0329ed3d8d3471f68",
+            "project_dependency_tree_hash": "37eb0417e0afb534a302b0b28882ec2c9615dddd8ab8d6a19d6b407353adda29",
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "holes": {
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "status": "NO_RECORDED_HOLES"
+          },
+          "physical_goal_path": "docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md",
+          "source_bytes": {
+            "git_blob": "fcc211dee53fe8d21cb2dc0b4dd706d747228bec",
+            "sha256": "4c5c0d1824474638f0b6d8ef3f8b58248a39dcf4c0032c381f594a8f2b48f2af"
+          },
+          "task_path": "docs/Codex/TASK_2026-09-01_goal058_even_finite_head_crosswalk.md",
+          "toolchain": {
+            "path": "q3.lean.aristotle/lean-toolchain",
+            "sha256": "e8173aad377a6d70041e5f7a5d8895ed587628f5cab243c53a18c40a1b7b6bf8"
+          }
+        }
+      },
+      {
+        "current_source_lifecycle": "NOT_ESTABLISHED",
+        "lifecycle": "HISTORICAL_V9",
+        "node_class": "SEMANTIC_BRIDGE",
+        "node_id": "GOAL058_D0PSTAR_SOURCE_WEIL_EVEN_TAIL_EXPLICIT_COERCIVITY_20260901",
+        "recorded_validation_applies_to_current_source": false,
+        "review": {
+          "evidence": [],
+          "historical_receipt": {
+            "entry_id": "GOAL058_D0PSTAR_SOURCE_WEIL_EVEN_TAIL_EXPLICIT_COERCIVITY_20260901",
+            "entry_sha256": "0648e0c4855473795192d135fa83839acaaae7d51f73f96f8043f08afe1f6b3e",
+            "kind": "HISTORICAL_V9_LOCAL_RECEIPT",
+            "schema": "q3_semantic_quarantine.v1"
+          },
+          "reviewers": [],
+          "state": "CLOSED_HISTORICAL",
+          "transport": "OFFLINE_EMBEDDED_NO_SOCKET"
+        },
+        "semantic_review_hash": "c9c4880a64813e74a539ca0ee37379345cc3f605ff6bcdb569001cd74f88c8cf",
+        "semantic_review_inputs": {
+          "assumptions": [],
+          "definitions": [
+            {
+              "name": "Q3.RouteB.D0Pstar.sourceWeilEvenAmbientMode",
+              "status": "HISTORICAL_V9_NOT_REPROBED"
+            },
+            {
+              "name": "Q3.RouteB.D0Pstar.sourceWeilEvenFourierModeFunction",
+              "status": "HISTORICAL_V9_NOT_REPROBED"
+            }
+          ],
+          "domain": "every PairIndex after explicit cutoff",
+          "elaborated_types": [
+            {
+              "status": "HISTORICAL_V9_NOT_REPROBED"
+            }
+          ],
+          "exact_edges": [
+            "E009"
+          ],
+          "normalization": "generator k denotes physical pair plus-or-minus k+1 and margin one half",
+          "object": "closed source-Weil nonzero-even graph tail",
+          "provenance": {
+            "attestation_id": "ATTEST_GOAL058_D0PSTAR_SOURCE_WEIL_EVEN_TAIL_EXPLICIT_COERCIVITY_20260901_V1",
+            "source": "CONTROL_V9"
+          },
+          "quantifiers": "for every PairIndex and every vector in the closed tail"
+        },
+        "source": {
+          "blob": "1c61823b4eff8790a40e86d0a0f1a13630a0721a",
+          "commit": "7ee47b0b476c5e9ede031bba81769a43f8585b38",
+          "current_git_blob": "f9dc5ce21e00802fcb2488a61c504e957c372691",
+          "path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+          "recorded_blob_matches_current": false,
+          "recorded_commit_blob": "1c61823b4eff8790a40e86d0a0f1a13630a0721a",
+          "recorded_commit_is_ancestor": true,
+          "source_state": "HISTORICAL_SOURCE_ADVANCED"
+        },
+        "terminal_consumer": [
+          "Q3.RouteB.D0Pstar.sourceWeilEvenTailAmbientCoercive_explicit"
+        ],
+        "theorem_ids": [
+          "Q3.RouteB.D0Pstar.sourceWeilGraphTailAmbientCoercive_of_algebraic",
+          "Q3.RouteB.D0Pstar.sourceWeilEvenAmbientMode_orthonormal",
+          "Q3.RouteB.D0Pstar.coeFn_sourceLogWindowFourierL2Isometry_apply_evenAmbientMode",
+          "Q3.RouteB.D0Pstar.norm_sourceWeilEvenAmbientModeFourier_le_lowBand_inv",
+          "Q3.RouteB.D0Pstar.norm_sourceWeilEvenAmbientFinsuppShift_sq",
+          "Q3.RouteB.D0Pstar.integral_norm_sourceWeilEvenFourierFinsuppShift_sq_le_lowBand",
+          "Q3.RouteB.D0Pstar.sourceArchimedeanSesquilinearForm_re_self_lower_evenGraphFinsuppShift",
+          "Q3.RouteB.D0Pstar.sourceWeilSesquilinearForm_re_self_lower_evenGraphFinsuppShift",
+          "Q3.RouteB.D0Pstar.sourceWeilEvenTailAlgebraicCoercive_explicit",
+          "Q3.RouteB.D0Pstar.sourceWeilEvenTailAmbientCoercive_explicit"
+        ],
+        "validation_hash": "ab7a9f2d8aa48869bf4e198eb0836cb186a42940b73c550101aead493aa903b3",
+        "validation_inputs": {
+          "axioms": {
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "status": "HISTORICAL_V9_RECEIPT"
+          },
+          "build": {
+            "lakefile_sha256": "0c8c85fa4157dec0676f57c8a2d380eb909c20acd0ff7a2b5ff30f6890a40261",
+            "manifest_sha256": "f59bc3a30bdefd46a07325a01743cb6f48b9f725f45e292b70d21ca4fc86226a",
+            "status": "HISTORICAL_V9_KERNEL_GREEN"
+          },
+          "dependency_graph": {
+            "algorithm_version": "LEAN_EXPR_USED_CONSTANTS_V1",
+            "coverage": "ALL_PROJECT_ROOTS",
+            "historical_entry_binding_sha256": "305e83496daf277949d8f812208de84411bcc947623c9b1f93fb4b974f34483d",
+            "project_dependency_tree_hash": "37eb0417e0afb534a302b0b28882ec2c9615dddd8ab8d6a19d6b407353adda29",
+            "sha256": "e7c62bfca4c50dfcc5b3dabe6d094b3d51c845ad350f6d4b84c452f1d1377014"
+          },
+          "holes": {
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "status": "NO_RECORDED_HOLES"
+          },
+          "physical_goal_path": "docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md",
+          "source_bytes": {
+            "git_blob": "1c61823b4eff8790a40e86d0a0f1a13630a0721a",
+            "sha256": "003e7d21bc3e8fb5735b914eb8241ec804aa4518fb8ec9a72a5cd1a849f22ac8"
+          },
+          "task_path": "docs/Codex/TASK_2026-09-01_goal058_even_tail_explicit_coercivity.md",
+          "toolchain": {
+            "path": "q3.lean.aristotle/lean-toolchain",
+            "sha256": "e8173aad377a6d70041e5f7a5d8895ed587628f5cab243c53a18c40a1b7b6bf8"
+          }
+        }
+      },
+      {
+        "current_source_lifecycle": "HISTORICAL_V9_UNMAPPED",
+        "lifecycle": "HISTORICAL_V9_UNMAPPED",
+        "node_class": "SEMANTIC_BRIDGE",
+        "node_id": "GOAL058_SELECTED_FERRERS_EVEN_SECTOR_ARCH_PRIME_REDUCTION_20260901",
+        "recorded_validation_applies_to_current_source": true,
+        "review": {
+          "evidence": [],
+          "historical_receipt": {
+            "entry_id": "GOAL058_SELECTED_FERRERS_EVEN_SECTOR_ARCH_PRIME_REDUCTION_20260901",
+            "entry_sha256": "e978d2aef741f510ced3a66de6692ad1da4de3a56fd7702470589007efb213d1",
+            "kind": "HISTORICAL_V9_LOCAL_RECEIPT",
+            "schema": "q3_semantic_quarantine.v1"
+          },
+          "reviewers": [],
+          "state": "CLOSED_HISTORICAL",
+          "transport": "OFFLINE_EMBEDDED_NO_SOCKET"
+        },
+        "semantic_review_hash": "a7c0c060e36cc0cfd22d9024482ed0bb22cdf9aea7ec1426f4e858d15e3ca072",
+        "semantic_review_inputs": {
+          "assumptions": [
+            "SELECTED_N_EVEN_RETAINED_PRIME_SHIFTED_QUADRATIC_FLOOR_INPUT"
+          ],
+          "definitions": [],
+          "domain": "every PairIndex and exact selected-row complement",
+          "elaborated_types": [
+            {
+              "status": "HISTORICAL_V9_NOT_REPROBED"
+            }
+          ],
+          "exact_edges": [],
+          "normalization": "W02 even/odd coordinates and selected Rayleigh scalar subtracted once",
+          "object": "literal finite CCM exact reflection-even sector",
+          "provenance": {
+            "attestation_id": "ATTEST_GOAL058_SELECTED_FERRERS_EVEN_SECTOR_ARCH_PRIME_REDUCTION_20260901_V1",
+            "source": "CONTROL_V9"
+          },
+          "quantifiers": "for every PairIndex and reflection-even finite CCM vector"
+        },
+        "source": {
+          "blob": "255131af8f3202b45b909c67fe548facaa4a4956",
+          "commit": "57b642ebd480728b8b30f5219dbcb1946b6422d5",
+          "current_git_blob": "255131af8f3202b45b909c67fe548facaa4a4956",
+          "path": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersEvenSectorArchPrimeReduction.lean",
+          "recorded_blob_matches_current": true,
+          "recorded_commit_blob": "255131af8f3202b45b909c67fe548facaa4a4956",
+          "recorded_commit_is_ancestor": true,
+          "source_state": "CURRENT"
+        },
+        "terminal_consumer": [],
+        "theorem_ids": [
+          "Q3.RouteB.D0Pstar.ccmW02Quadratic_re_nonneg_of_reflection_even",
+          "Q3.RouteB.D0Pstar.sourceCCMFiniteMatrix_shifted_floor_of_archPrimeShifted_floor_even",
+          "Q3.RouteB.D0Pstar.selectedFerrersFiniteCCMEvenSectorFloor_eventually_of_archPrimeShifted"
+        ],
+        "validation_hash": "3df7681037005a9b836a3c843afa2f64ada633ad03db71aa2d810e5caaf546d4",
+        "validation_inputs": {
+          "axioms": {
+            "sha256": "00eeb8a9adaea9aa686e6d831678992e23d310743dc65c9f6ffcaf15cc95ff5a",
+            "status": "HISTORICAL_V9_RECEIPT"
+          },
+          "build": {
+            "lakefile_sha256": "0c8c85fa4157dec0676f57c8a2d380eb909c20acd0ff7a2b5ff30f6890a40261",
+            "manifest_sha256": "f59bc3a30bdefd46a07325a01743cb6f48b9f725f45e292b70d21ca4fc86226a",
+            "status": "HISTORICAL_V9_KERNEL_GREEN"
+          },
+          "dependency_graph": {
+            "algorithm_version": "LEAN_EXPR_USED_CONSTANTS_V1",
+            "coverage": "ALL_PROJECT_ROOTS",
+            "historical_entry_binding_sha256": "0096c7892537530966d9ec8b6614557c2056d43a072b8e0bc80d00ca55a23089",
+            "project_dependency_tree_hash": "37eb0417e0afb534a302b0b28882ec2c9615dddd8ab8d6a19d6b407353adda29",
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "holes": {
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "status": "NO_RECORDED_HOLES"
+          },
+          "physical_goal_path": "docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md",
+          "source_bytes": {
+            "git_blob": "255131af8f3202b45b909c67fe548facaa4a4956",
+            "sha256": "39ce32ce5e0a325d9740f0dc98630e9cdf4c7f8dfd6404cb0b3e9c6d62bed2c6"
+          },
+          "task_path": "docs/Codex/TASK_2026-09-01_goal058_selected_even_arch_prime_reduction.md",
+          "toolchain": {
+            "path": "q3.lean.aristotle/lean-toolchain",
+            "sha256": "e8173aad377a6d70041e5f7a5d8895ed587628f5cab243c53a18c40a1b7b6bf8"
+          }
+        }
+      },
+      {
+        "current_source_lifecycle": "HISTORICAL_V9_UNMAPPED",
+        "lifecycle": "HISTORICAL_V9_UNMAPPED",
+        "node_class": "SEMANTIC_BRIDGE",
+        "node_id": "GOAL058_D0PSTAR_SOURCE_ARCH_PRIME_EVEN_TAIL_FLOOR_20260901",
+        "recorded_validation_applies_to_current_source": true,
+        "review": {
+          "evidence": [],
+          "historical_receipt": {
+            "entry_id": "GOAL058_D0PSTAR_SOURCE_ARCH_PRIME_EVEN_TAIL_FLOOR_20260901",
+            "entry_sha256": "2dd0b0f31bc75db35e0a6ad7f67c9e2b40778b94d789b560769fe1d2a132b359",
+            "kind": "HISTORICAL_V9_LOCAL_RECEIPT",
+            "schema": "q3_semantic_quarantine.v1"
+          },
+          "reviewers": [],
+          "state": "CLOSED_HISTORICAL",
+          "transport": "OFFLINE_EMBEDDED_NO_SOCKET"
+        },
+        "semantic_review_hash": "351ac22ecdcf80d18111f0e9236e3655d7066baad791262288fbaffc4f6a7270",
+        "semantic_review_inputs": {
+          "assumptions": [],
+          "definitions": [
+            {
+              "name": "Q3.RouteB.D0Pstar.sourceArchPrimeSesquilinearForm",
+              "type_fingerprint": {
+                "algorithm": "LEAN_EXPR_HASH_V1",
+                "value": "2558633491"
+              },
+              "value_fingerprint": {
+                "algorithm": "LEAN_EXPR_HASH_V1",
+                "value": "3437671866"
+              }
+            },
+            {
+              "name": "Q3.RouteB.D0Pstar.sourceWeilEvenAmbientFinsuppShift",
+              "type_fingerprint": {
+                "algorithm": "LEAN_EXPR_HASH_V1",
+                "value": "2960694947"
+              },
+              "value_fingerprint": {
+                "algorithm": "LEAN_EXPR_HASH_V1",
+                "value": "476454184"
+              }
+            },
+            {
+              "name": "Q3.RouteB.D0Pstar.sourceWeilEvenTailCutoff",
+              "type_fingerprint": {
+                "algorithm": "LEAN_EXPR_HASH_V1",
+                "value": "2138466285"
+              },
+              "value_fingerprint": {
+                "algorithm": "LEAN_EXPR_HASH_V1",
+                "value": "3208695770"
+              }
+            }
+          ],
+          "domain": "algebraic finite syntheses of the normalized source-Weil nonzero-even graph modes after the explicit parity-independent cutoff for every PairIndex",
+          "elaborated_types": [
+            {
+              "theorem": "Q3.RouteB.D0Pstar.sourceArchPrimeSesquilinearForm_re_self_lower_evenGraphFinsuppShift",
+              "type_fingerprint": {
+                "algorithm": "LEAN_EXPR_HASH_V1",
+                "value": "1593899532"
+              }
+            }
+          ],
+          "exact_edges": [],
+          "normalization": "the public nonzero-even generator index k denotes the normalized physical pair plus-or-minus (k+1); the algebraic tail begins at plus-or-minus (sourceWeilEvenTailCutoff i + 1), and the Arch-Prime margin is the W02 form norm plus one half",
+          "object": "literal algebraic source-Weil nonzero-even tail synthesis at the explicit cutoff",
+          "provenance": {
+            "attestation_id": "ATTEST_GOAL058_D0PSTAR_SOURCE_ARCH_PRIME_EVEN_TAIL_FLOOR_20260901_V1",
+            "source": "CONTROL_V9"
+          },
+          "quantifiers": "for every PairIndex i and every finitely supported complex coefficient family c; the W02 form norm plus one half times the squared ambient norm of the exact even-tail synthesis is at most the real part of its Arch-Prime quadratic form"
+        },
+        "source": {
+          "blob": "f9dc5ce21e00802fcb2488a61c504e957c372691",
+          "commit": "a5856221e1dddf7b8586f881b5e2c2a0c60d2123",
+          "current_git_blob": "f9dc5ce21e00802fcb2488a61c504e957c372691",
+          "path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+          "recorded_blob_matches_current": true,
+          "recorded_commit_blob": "f9dc5ce21e00802fcb2488a61c504e957c372691",
+          "recorded_commit_is_ancestor": true,
+          "source_state": "CURRENT"
+        },
+        "terminal_consumer": [],
+        "theorem_ids": [
+          "Q3.RouteB.D0Pstar.sourceArchPrimeSesquilinearForm_re_self_lower_evenGraphFinsuppShift"
+        ],
+        "validation_hash": "e1cc83a6494929dfe2dfbcd5ea6f36609d6b5d1cdc0a9a9b11126e51aa4e0801",
+        "validation_inputs": {
+          "axioms": {
+            "sha256": "161d45883b61bcd7ac026467b3851e656d9d71f08c12e29f9191d7550e1d7be0",
+            "status": "HISTORICAL_V9_RECEIPT"
+          },
+          "build": {
+            "lakefile_sha256": "0c8c85fa4157dec0676f57c8a2d380eb909c20acd0ff7a2b5ff30f6890a40261",
+            "manifest_sha256": "f59bc3a30bdefd46a07325a01743cb6f48b9f725f45e292b70d21ca4fc86226a",
+            "status": "HISTORICAL_V9_KERNEL_GREEN"
+          },
+          "dependency_graph": {
+            "algorithm_version": "LEAN_EXPR_USED_CONSTANTS_V1",
+            "coverage": "ALL_PROJECT_ROOTS",
+            "historical_entry_binding_sha256": "c874b981fb82bd15da8e0cbe4761fdc270de4814a653038d54f17070b1cd362c",
+            "project_dependency_tree_hash": "37eb0417e0afb534a302b0b28882ec2c9615dddd8ab8d6a19d6b407353adda29",
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "holes": {
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "status": "NO_RECORDED_HOLES"
+          },
+          "physical_goal_path": "docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md",
+          "source_bytes": {
+            "git_blob": "f9dc5ce21e00802fcb2488a61c504e957c372691",
+            "sha256": "1a5d37851bd0092ad6e3c6942293900b71e7566be86d58ed36649a668c68665b"
+          },
+          "task_path": "docs/Codex/TASK_2026-09-01_goal058_arch_prime_even_tail_floor.md",
+          "toolchain": {
+            "path": "q3.lean.aristotle/lean-toolchain",
+            "sha256": "e8173aad377a6d70041e5f7a5d8895ed587628f5cab243c53a18c40a1b7b6bf8"
+          }
+        }
+      }
+    ],
+    "project_dependency_tree_hash": "37eb0417e0afb534a302b0b28882ec2c9615dddd8ab8d6a19d6b407353adda29",
+    "registry_file_sha256": "a828cb734dbb961fef7db31a6319ff9ed943887fa81e22575357c502538235cc",
+    "registry_hash": "fdb964c486d3f09932f983eb53b2dd36d004eae8b90985b04445116f273e6c8b",
+    "review_policy": {
+      "allowed_reviewers": [
+        "OWNER_SIGNOFF",
+        "ADVERSARIAL_READ_ONLY",
+        "EXTERNAL_SIGNED"
+      ],
+      "ambiguous_rule": "SEMANTIC_BRIDGE",
+      "forbidden_claim": "PX_RH_CLAIM",
+      "helper_auto_rule": "ONLY_WHEN_ALL_SEMANTIC_TRIGGERS_ABSENT",
+      "historical_receipt_transport": "OFFLINE_EMBEDDED_NO_SOCKET",
+      "roof_change_rule": "OWNER_PLUS_SECOND_REVIEW",
+      "self_review": "NEVER_OPENS"
+    },
+    "schema": "q3_node_registry.v10"
+  },
+  "proof_relevant_declarations": [
+    {
+      "actual_declaration_source_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenFiniteHeadCrosswalk.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Q3.Proofs.RouteB.D0PstarSourceEvenFiniteHeadCrosswalk",
+      "name": "Q3.RouteB.D0Pstar.ccmFiniteSynthesis_evenCoefficientEmbedding",
+      "registry_anchor_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenFiniteHeadCrosswalk.lean",
+      "source_line": "256",
+      "taint": {
+        "reasons": [],
+        "status": "CLEAN"
+      },
+      "type": "∀ (i : Q3.RouteB.D0Pstar.PairIndex) (c0 : ℂ) (c : Fin i.N → ℂ),\n  (Q3.RouteB.D0Pstar.ccmFiniteSynthesis i) (Q3.RouteB.D0Pstar.ccmEvenCoefficientEmbedding i.N c0 c) =\n    (Q3.RouteB.D0Pstar.sourceWeilGraphAmbient i) (Q3.RouteB.D0Pstar.sourceWeilGraphEvenHeadSynthesis i c0 c)"
+    },
+    {
+      "actual_declaration_source_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenFiniteHeadCrosswalk.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Q3.Proofs.RouteB.D0PstarSourceEvenFiniteHeadCrosswalk",
+      "name": "Q3.RouteB.D0Pstar.ccmFiniteSynthesis_reflectionEven_orthogonal_evenNonzeroTail",
+      "registry_anchor_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenFiniteHeadCrosswalk.lean",
+      "source_line": "330",
+      "taint": {
+        "reasons": [],
+        "status": "CLEAN"
+      },
+      "type": "∀ (i : Q3.RouteB.D0Pstar.PairIndex) (x : Q3.RouteB.CCMModeFinite i.N → ℂ),\n  (Q3.RouteB.D0Pstar.ccmComplexReflectionMatrix i.N).mulVec x = x →\n    ∀ (y : ↥(Q3.RouteB.D0Pstar.SourceWeilGraphEvenNonzeroTailCarrier i i.N)),\n      inner ℂ ((Q3.RouteB.D0Pstar.ccmFiniteSynthesis i) x) ((Q3.RouteB.D0Pstar.sourceWeilGraphAmbient i) ↑y) = 0"
+    },
+    {
+      "actual_declaration_source_path": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFirstOrderCoefficientEnvelope.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Q3.Proofs.RouteB.G6N1SelectedFerrersFirstOrderCoefficientEnvelope",
+      "name": "Q3.RouteB.D0Pstar.selectedFerrersAbelLimitHm_physicalCoefficient_le",
+      "registry_anchor_path": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFirstOrderCoefficientEnvelope.lean",
+      "source_line": "198",
+      "taint": {
+        "reasons": [],
+        "status": "CLEAN"
+      },
+      "type": "∀ (k : ℕ) (n : ℤ),\n  n ≠ 0 →\n    ‖Q3.RouteB.D0Pstar.physicalFourierCoefficient (Q3.RouteB.D0Pstar.selectedFerrersPreAnchorIndex k)\n          (Q3.RouteB.D0Pstar.selectedFerrersAbelLimitHm k) n‖ ≤\n      Q3.RouteB.D0Pstar.selectedFerrersAbelFourierDecayBudget k *\n          √(Q3.RouteB.D0Pstar.L_m (Q3.RouteB.D0Pstar.selectedFerrersPreAnchorIndex k)) /\n        |↑n|"
+    },
+    {
+      "actual_declaration_source_path": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersQuantitativeShiftedRootEnergy.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Q3.Proofs.RouteB.G6N1SelectedFerrersQuantitativeShiftedRootEnergy",
+      "name": "Q3.RouteB.D0Pstar.selectedFerrersAbelLogZeroExtension_fourier_decay_quantitative",
+      "registry_anchor_path": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersQuantitativeShiftedRootEnergy.lean",
+      "source_line": "73",
+      "taint": {
+        "reasons": [],
+        "status": "CLEAN"
+      },
+      "type": "∀ (k : ℕ) (t : ℝ),\n  ‖FourierTransform.fourier (Q3.RouteB.D0Pstar.selectedFerrersAbelLogZeroExtension k) t‖ ≤\n    Q3.RouteB.D0Pstar.selectedFerrersAbelFourierDecayBudget k / (1 + |t|)"
+    },
+    {
+      "actual_declaration_source_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Q3.Proofs.RouteB.D0PstarSourceWeilEvenTailExplicitCoercivity",
+      "name": "Q3.RouteB.D0Pstar.sourceWeilEvenAmbientMode_orthonormal",
+      "registry_anchor_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+      "source_line": "47",
+      "taint": {
+        "reasons": [],
+        "status": "CLEAN"
+      },
+      "type": "∀ (i : Q3.RouteB.D0Pstar.PairIndex), Orthonormal ℂ (Q3.RouteB.D0Pstar.sourceWeilEvenAmbientMode i)"
+    },
+    {
+      "actual_declaration_source_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Q3.Proofs.RouteB.D0PstarSourceWeilEvenTailExplicitCoercivity",
+      "name": "Q3.RouteB.D0Pstar.sourceWeilEvenTailAmbientCoercive_explicit",
+      "registry_anchor_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+      "source_line": "682",
+      "taint": {
+        "reasons": [],
+        "status": "CLEAN"
+      },
+      "type": "∀ (i : Q3.RouteB.D0Pstar.PairIndex),\n  Q3.RouteB.D0Pstar.SourceWeilEvenTailAmbientCoercive i (Q3.RouteB.D0Pstar.sourceWeilEvenTailCutoff i) (1 / 2)"
+    },
+    {
+      "actual_declaration_source_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroLowBandAssembly.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Q3.Proofs.RouteB.D0PstarSourceEvenNonzeroLowBandAssembly",
+      "name": "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenHeadSynthesis",
+      "registry_anchor_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroLowBandAssembly.lean",
+      "source_line": "98",
+      "taint": {
+        "reasons": [],
+        "status": "CLEAN"
+      },
+      "type": "∀ (i : Q3.RouteB.D0Pstar.PairIndex) {R : ℕ} (c0 : ℂ) (c : Fin R → ℂ),\n  (Q3.RouteB.D0Pstar.sourceWeilGraphAmbient i) (Q3.RouteB.D0Pstar.sourceWeilGraphEvenHeadSynthesis i c0 c) =\n    c0 • Q3.RouteB.D0Pstar.V_n_m i 0 +\n      ∑ n, c n • (↑√2)⁻¹ • (Q3.RouteB.D0Pstar.V_n_m i ↑(↑n + 1) + Q3.RouteB.D0Pstar.V_n_m i (-↑(↑n + 1)))"
+    },
+    {
+      "actual_declaration_source_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroTailCarrier.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Q3.Proofs.RouteB.D0PstarSourceEvenNonzeroTailCarrier",
+      "name": "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenNonzeroMode",
+      "registry_anchor_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroTailCarrier.lean",
+      "source_line": "75",
+      "taint": {
+        "reasons": [],
+        "status": "CLEAN"
+      },
+      "type": "∀ (i : Q3.RouteB.D0Pstar.PairIndex) (n : ℕ),\n  (Q3.RouteB.D0Pstar.sourceWeilGraphAmbient i) (Q3.RouteB.D0Pstar.sourceWeilGraphEvenNonzeroMode i n) =\n    (↑√2)⁻¹ • (Q3.RouteB.D0Pstar.V_n_m i ↑(n + 1) + Q3.RouteB.D0Pstar.V_n_m i (-↑(n + 1)))"
+    },
+    {
+      "actual_declaration_source_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroLowBandAssembly.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Q3.Proofs.RouteB.D0PstarSourceEvenNonzeroLowBandAssembly",
+      "name": "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenNonzeroMode_orthonormal",
+      "registry_anchor_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroLowBandAssembly.lean",
+      "source_line": "27",
+      "taint": {
+        "reasons": [],
+        "status": "CLEAN"
+      },
+      "type": "∀ (i : Q3.RouteB.D0Pstar.PairIndex),\n  Orthonormal ℂ fun n =>\n    (Q3.RouteB.D0Pstar.sourceWeilGraphAmbient i) (Q3.RouteB.D0Pstar.sourceWeilGraphEvenNonzeroMode i n)"
+    },
+    {
+      "actual_declaration_source_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroTailCarrier.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Q3.Proofs.RouteB.D0PstarSourceEvenNonzeroTailCarrier",
+      "name": "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenZeroMode",
+      "registry_anchor_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroTailCarrier.lean",
+      "source_line": "69",
+      "taint": {
+        "reasons": [],
+        "status": "CLEAN"
+      },
+      "type": "∀ (i : Q3.RouteB.D0Pstar.PairIndex),\n  (Q3.RouteB.D0Pstar.sourceWeilGraphAmbient i) (Q3.RouteB.D0Pstar.sourceWeilGraphEvenZeroMode i) =\n    Q3.RouteB.D0Pstar.V_n_m i 0"
+    },
+    {
+      "actual_declaration_source_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroLowBandAssembly.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Q3.Proofs.RouteB.D0PstarSourceEvenNonzeroLowBandAssembly",
+      "name": "Q3.RouteB.D0Pstar.sourceWeilGraphEvenHeadSynthesis_orthogonal_tail",
+      "registry_anchor_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroLowBandAssembly.lean",
+      "source_line": "150",
+      "taint": {
+        "reasons": [],
+        "status": "CLEAN"
+      },
+      "type": "∀ (i : Q3.RouteB.D0Pstar.PairIndex) (R : ℕ) (c0 : ℂ) (c : Fin R → ℂ)\n  (x : ↥(Q3.RouteB.D0Pstar.SourceWeilGraphEvenNonzeroTailCarrier i R)),\n  inner ℂ ((Q3.RouteB.D0Pstar.sourceWeilGraphAmbient i) (Q3.RouteB.D0Pstar.sourceWeilGraphEvenHeadSynthesis i c0 c))\n      ((Q3.RouteB.D0Pstar.sourceWeilGraphAmbient i) ↑x) =\n    0"
+    },
+    {
+      "actual_declaration_source_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroLowBandAssembly.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Q3.Proofs.RouteB.D0PstarSourceEvenNonzeroLowBandAssembly",
+      "name": "Q3.RouteB.D0Pstar.sourceWeilGraphEvenNonzeroLowBandSynthesis_orthogonal_tail",
+      "registry_anchor_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroLowBandAssembly.lean",
+      "source_line": "111",
+      "taint": {
+        "reasons": [],
+        "status": "CLEAN"
+      },
+      "type": "∀ (i : Q3.RouteB.D0Pstar.PairIndex) (R : ℕ) (c : Fin R → ℂ)\n  (x : ↥(Q3.RouteB.D0Pstar.SourceWeilGraphEvenNonzeroTailCarrier i R)),\n  inner ℂ\n      ((Q3.RouteB.D0Pstar.sourceWeilGraphAmbient i) (Q3.RouteB.D0Pstar.sourceWeilGraphEvenNonzeroLowBandSynthesis i c))\n      ((Q3.RouteB.D0Pstar.sourceWeilGraphAmbient i) ↑x) =\n    0"
+    },
+    {
+      "actual_declaration_source_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroTailCarrier.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Q3.Proofs.RouteB.D0PstarSourceEvenNonzeroTailCarrier",
+      "name": "Q3.RouteB.D0Pstar.sourceWeilGraphEvenNonzeroTail_low_fourier_vanish",
+      "registry_anchor_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroTailCarrier.lean",
+      "source_line": "121",
+      "taint": {
+        "reasons": [],
+        "status": "CLEAN"
+      },
+      "type": "∀ (i : Q3.RouteB.D0Pstar.PairIndex) (R : ℕ) (x : ↥(Q3.RouteB.D0Pstar.SourceWeilGraphEvenNonzeroTailCarrier i R))\n  (n : ℤ), n.natAbs ≤ R → inner ℂ (Q3.RouteB.D0Pstar.V_n_m i n) ((Q3.RouteB.D0Pstar.sourceWeilGraphAmbient i) ↑x) = 0"
+    },
+    {
+      "actual_declaration_source_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroTailCarrier.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Q3.Proofs.RouteB.D0PstarSourceEvenNonzeroTailCarrier",
+      "name": "Q3.RouteB.D0Pstar.sourceWeilGraphEvenZeroMode_orthogonal_nonzeroTail",
+      "registry_anchor_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroTailCarrier.lean",
+      "source_line": "154",
+      "taint": {
+        "reasons": [],
+        "status": "CLEAN"
+      },
+      "type": "∀ (i : Q3.RouteB.D0Pstar.PairIndex) (R : ℕ) (x : ↥(Q3.RouteB.D0Pstar.SourceWeilGraphEvenNonzeroTailCarrier i R)),\n  inner ℂ ((Q3.RouteB.D0Pstar.sourceWeilGraphAmbient i) (Q3.RouteB.D0Pstar.sourceWeilGraphEvenZeroMode i))\n      ((Q3.RouteB.D0Pstar.sourceWeilGraphAmbient i) ↑x) =\n    0"
+    },
+    {
+      "actual_declaration_source_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailCoercivityClosure.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Q3.Proofs.RouteB.D0PstarSourceWeilOddTailCoercivityClosure",
+      "name": "Q3.RouteB.D0Pstar.sourceWeilGraphTailAmbientCoercive_of_algebraic",
+      "registry_anchor_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+      "source_line": "167",
+      "taint": {
+        "reasons": [],
+        "status": "CLEAN"
+      },
+      "type": "∀ (i : Q3.RouteB.D0Pstar.PairIndex) (generator : ℕ → ↥(Q3.RouteB.D0Pstar.SourceWeilGraphCarrier i)) (mu : ℝ),\n  (∀ x ∈ Submodule.span ℂ (Set.range generator),\n      mu * ‖(Q3.RouteB.D0Pstar.sourceWeilGraphAmbient i) x‖ ^ 2 ≤\n        (((Q3.RouteB.D0Pstar.sourceWeilSesquilinearForm i) (Q3.RouteB.D0Pstar.sourceWeilGraphDomain i x))\n            (Q3.RouteB.D0Pstar.sourceWeilGraphDomain i x)).re) →\n    ∀ (x : ↥(Submodule.span ℂ (Set.range generator)).topologicalClosure),\n      mu * ‖(Q3.RouteB.D0Pstar.sourceWeilGraphAmbient i) ↑x‖ ^ 2 ≤\n        (((Q3.RouteB.D0Pstar.sourceWeilSesquilinearForm i) (Q3.RouteB.D0Pstar.sourceWeilGraphDomain i ↑x))\n            (Q3.RouteB.D0Pstar.sourceWeilGraphDomain i ↑x)).re"
+    }
+  ],
+  "proof_statement_digest": "f19405d42e3c03267bee50e06116e44e9990cd00d90da9a95edb4eb799340ca4",
   "rh_status": "NOT_RH",
+  "route_phase": {
+    "channel_runtime_sha256": "657269c6eab3ed2ebe923e97dd90b88221237d7f27f2c7bac2b2b48d30622dda",
+    "close_receipts": {},
+    "close_state": "OPEN",
+    "contract_obligation": "FINITE_EVEN_HEAD_CORRECTED_SCHUR_MARGIN_AT_EXACT_RAYLEIGH_SHIFT",
+    "execution_schema": "route_b_execution_state.v3_live_bus",
+    "execution_state_sha256": "141a375a4475117272cb4d0304b9ddcb5aab1ee236722718a6ab1a4b0691f022",
+    "honesty_state": "CHALLENGER_NOT_RH",
+    "matching_answer": null,
+    "operational_status": "GOAL_058_FINITE_EVEN_HEAD_CORRECTED_SCHUR_MARGIN_PREFLIGHT",
+    "phase_id": "PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13",
+    "phase_key": {
+      "convention_lock_id": "GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED",
+      "front_id": "GOAL058_G1_G3_COFINAL_GROUND_TRACKING",
+      "honesty_state": "CHALLENGER_NOT_RH",
+      "route_id": "RouteB_TwoLevelSpectralLadder",
+      "source_object_family_id": "PROPOSITION59_CCM_FINITE_BOTTOM_GROUND_FAMILY",
+      "terminal_consumer_id": "Q3.RouteB.CanonicalRHRoute.rh_of_canonical_strip_slots"
+    },
+    "phase_status": "ACTIVE",
+    "px_rh_claim_state": "NOT_READY",
+    "route_id": "RouteB_TwoLevelSpectralLadder",
+    "selected_goal": "docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md",
+    "selected_goal_id": "058",
+    "selected_goal_node": "REALZERO_GROUND_DIAGONAL_TO_XI",
+    "selected_goal_sha256": "36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8",
+    "selected_goal_status": "OPEN",
+    "stage_id": "RB-GOAL-058-FINITE-EVEN-HEAD-CORRECTED-SCHUR-MARGIN",
+    "terminal_consumer": "Q3.RouteB.CanonicalRHRoute.rh_of_canonical_strip_slots",
+    "terminal_route_state": {
+      "global_mainline": "T0-pd -> H-bridge -> H4 -> RH",
+      "global_mainline_frontier": "PO3-square.2d3",
+      "root_implementation_plan_overridden": false,
+      "route_b_rh_status": "NOT_RH",
+      "status": "ALPHA_ROUTE_REMAINS_CHALLENGER"
+    }
+  },
   "route_status": "CHALLENGER",
-  "schema": "q3_blueprint.v1"
+  "schema": "q3_blueprint.v2",
+  "theorem_axiom_map": {
+    "Q3.RouteB.D0Pstar.ccmFiniteSynthesis_evenCoefficientEmbedding": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Q3.RouteB.D0Pstar.ccmFiniteSynthesis_reflectionEven_orthogonal_evenNonzeroTail": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Q3.RouteB.D0Pstar.selectedFerrersAbelLimitHm_physicalCoefficient_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Q3.RouteB.D0Pstar.selectedFerrersAbelLogZeroExtension_fourier_decay_quantitative": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Q3.RouteB.D0Pstar.sourceWeilEvenAmbientMode_orthonormal": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Q3.RouteB.D0Pstar.sourceWeilEvenTailAmbientCoercive_explicit": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenHeadSynthesis": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenNonzeroMode": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenNonzeroMode_orthonormal": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenZeroMode": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Q3.RouteB.D0Pstar.sourceWeilGraphEvenHeadSynthesis_orthogonal_tail": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Q3.RouteB.D0Pstar.sourceWeilGraphEvenNonzeroLowBandSynthesis_orthogonal_tail": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Q3.RouteB.D0Pstar.sourceWeilGraphEvenNonzeroTail_low_fourier_vanish": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Q3.RouteB.D0Pstar.sourceWeilGraphEvenZeroMode_orthogonal_nonzeroTail": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Q3.RouteB.D0Pstar.sourceWeilGraphTailAmbientCoercive_of_algebraic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  }
 }

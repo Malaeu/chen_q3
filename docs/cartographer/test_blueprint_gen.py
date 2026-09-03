@@ -312,13 +312,158 @@ class BlueprintPlantTests(unittest.TestCase):
             self.assertTrue(projection["edges"][0]["recorded_consumer_blob_matches_current"])
             self.assertTrue(projection["nodes"][0]["source"]["recorded_blob_matches_current"])
             self.assertTrue(projection["nodes"][0]["source"]["recorded_commit_is_ancestor"])
+            self.assertEqual(projection["nodes"][0]["source"]["source_state"], "CURRENT")
+            self.assertTrue(
+                projection["nodes"][0][
+                    "recorded_validation_applies_to_current_source"
+                ]
+            )
             self.assertEqual(appendix[0]["hypothesis_port"]["direct_reference"], "Q3.supplier")
             source.write_text("theorem supplier : False := by trivial\n", encoding="utf-8")
             with mock.patch.object(
                 bp.node_registry_v10, "load_registry", return_value=registry,
             ), registry_mocks[0], registry_mocks[1], registry_mocks[2]:
-                with self.assertRaisesRegex(bp.BlueprintError, "source blob drift"):
+                advanced, _declarations, _axioms, _appendix = bp.project_registry(
+                    registry_path.relative_to(root), env, root
+                )
+            self.assertEqual(
+                advanced["nodes"][0]["source"]["source_state"],
+                "HISTORICAL_SOURCE_ADVANCED",
+            )
+            self.assertFalse(
+                advanced["nodes"][0][
+                    "recorded_validation_applies_to_current_source"
+                ]
+            )
+            self.assertEqual(
+                advanced["nodes"][0]["current_source_lifecycle"],
+                "NOT_ESTABLISHED",
+            )
+            consumer = root / registry["edges"][0]["consumer_path"]
+            consumer.write_text("theorem consumer : False := by trivial\n", encoding="utf-8")
+            with mock.patch.object(
+                bp.node_registry_v10, "load_registry", return_value=registry,
+            ), registry_mocks[0], registry_mocks[1], registry_mocks[2]:
+                with self.assertRaisesRegex(bp.BlueprintError, "consumer blob drift"):
                     bp.project_registry(registry_path.relative_to(root), env, root)
+
+    def test_registry_projects_shared_source_at_distinct_ancestor_blobs(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            registry_path, registry, env = registry_plant(root)
+            source = root / registry["nodes"][0]["source"]["path"]
+            old_blob = registry["nodes"][0]["source"]["blob"]
+            source.write_text(
+                "theorem supplier : True := by trivial\n"
+                "theorem archPrime : True := by trivial\n",
+                encoding="utf-8",
+            )
+            current_blob = bp.git_blob_digest(source.read_bytes())
+            registry["nodes"].append(
+                {
+                    **registry["nodes"][0],
+                    "node_id": "N2",
+                    "theorem_ids": ["Q3.archPrime"],
+                    "source": {
+                        **registry["nodes"][0]["source"],
+                        "blob": current_blob,
+                        "commit": "2" * 40,
+                    },
+                }
+            )
+            registry["edges"][0]["consumer_path"] = source.relative_to(root).as_posix()
+            registry["edges"][0]["consumer_blob"] = old_blob
+            blobs_by_commit = {
+                "1" * 40: old_blob,
+                "2" * 40: current_blob,
+            }
+            with mock.patch.object(
+                bp.node_registry_v10, "load_registry", return_value=registry,
+            ), mock.patch.object(
+                bp.node_registry_v10,
+                "_project_tree_at_head",
+                return_value=([], 2, "b" * 64),
+            ), mock.patch.object(
+                bp.node_registry_v10, "_is_ancestor", return_value=True,
+            ), mock.patch.object(
+                bp.node_registry_v10,
+                "_blob_at_commit",
+                side_effect=lambda _root, commit, _path: blobs_by_commit[commit],
+            ):
+                projection, _declarations, _axioms, appendix = bp.project_registry(
+                    registry_path.relative_to(root), env, root
+                )
+            by_node = {node["node_id"]: node for node in projection["nodes"]}
+            self.assertEqual(
+                by_node["N1"]["source"]["source_state"],
+                "HISTORICAL_SOURCE_ADVANCED",
+            )
+            self.assertFalse(
+                by_node["N1"]["recorded_validation_applies_to_current_source"]
+            )
+            self.assertEqual(
+                by_node["N1"]["current_source_lifecycle"], "NOT_ESTABLISHED"
+            )
+            self.assertEqual(by_node["N2"]["source"]["source_state"], "CURRENT")
+            self.assertTrue(
+                by_node["N2"]["recorded_validation_applies_to_current_source"]
+            )
+            self.assertEqual(by_node["N2"]["current_source_lifecycle"], "ADMITTED")
+            edge = projection["edges"][0]
+            self.assertEqual(
+                edge["consumer_source_state"], "HISTORICAL_SOURCE_ADVANCED"
+            )
+            self.assertEqual(edge["recorded_consumer_blob_anchor_commits"], ["1" * 40])
+            self.assertFalse(
+                edge["recorded_validation_applies_to_current_consumer"]
+            )
+            self.assertNotIn("relation", edge)
+            self.assertEqual(edge["recorded_relation"], "DIRECT")
+            self.assertEqual(edge["current_relation"], "NOT_ESTABLISHED")
+            appendix_edge = appendix[0]
+            self.assertNotIn("relation", appendix_edge)
+            self.assertEqual(appendix_edge["recorded_relation"], "DIRECT")
+            self.assertEqual(appendix_edge["current_relation"], "NOT_ESTABLISHED")
+            receipt = bp.Receipt(
+                proof=proof(),
+                full_name="Q3.RouteB.sample",
+                module="Q3.Proofs.RouteB.Sample",
+                axioms=(),
+            )
+            model = bp.Model(
+                nodes=(),
+                interfaces=(receipt, receipt),
+                assembly_rows_digest="a" * 64,
+                proof_statement_digest="b" * 64,
+                env_index_digest="c" * 64,
+                generator_digest="d" * 64,
+                git_head="e" * 40,
+                registry=projection,
+                dependency_appendix=appendix,
+            )
+            rendered = bp.outputs(model)
+            bp.validate(model, rendered)
+            content = rendered[bp.SRC / "content.tex"].decode()
+            preview = rendered[bp.PREVIEW_PATH].decode()
+            manifest = json.loads(rendered[bp.MANIFEST_PATH])
+            self.assertIn("Recorded historical relation:", content)
+            self.assertIn(r"\textbf{Current relation:}", content)
+            self.assertIn(r"NOT\_\allowbreak{}ESTABLISHED", content)
+            self.assertNotIn(r"\textbf{Relation:}", content)
+            self.assertIn("- Recorded historical relation: DIRECT", preview)
+            self.assertIn("- Current relation: NOT_ESTABLISHED", preview)
+            self.assertEqual(
+                manifest["dependency_appendix"][0]["recorded_relation"], "DIRECT"
+            )
+            self.assertEqual(
+                manifest["dependency_appendix"][0]["current_relation"],
+                "NOT_ESTABLISHED",
+            )
+            self.assertNotIn("relation", manifest["dependency_appendix"][0])
+            manifest_edge = manifest["node_registry"]["edges"][0]
+            self.assertNotIn("relation", manifest_edge)
+            self.assertEqual(manifest_edge["recorded_relation"], "DIRECT")
+            self.assertEqual(manifest_edge["current_relation"], "NOT_ESTABLISHED")
 
     def test_registry_rejects_commit_and_project_tree_drift(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

@@ -687,6 +687,7 @@ def project_registry(
 
     node_projection = []
     verified_commits: dict[str, bool] = {}
+    verified_source_anchors: dict[tuple[str, str], set[str]] = defaultdict(set)
     for node in registry["nodes"]:
         source = node["source"]
         source_path = confined_repo_file(root, source["path"])
@@ -706,14 +707,23 @@ def project_registry(
             raise BlueprintError(
                 f"registry source commit/blob drift: {commit}:{source['path']}"
             )
+        verified_source_anchors[(source["path"], source["blob"])].add(commit)
         current_blob = git_blob_digest(source_path.read_bytes())
-        if current_blob != source.get("blob"):
-            raise BlueprintError(f"registry source blob drift: {source['path']}")
+        recorded_blob_matches_current = current_blob == source.get("blob")
+        source_state = (
+            "CURRENT" if recorded_blob_matches_current
+            else "HISTORICAL_SOURCE_ADVANCED"
+        )
         node_projection.append(
             {
                 "node_id": node["node_id"],
                 "node_class": node["node_class"],
                 "lifecycle": node["lifecycle"],
+                "current_source_lifecycle": (
+                    node["lifecycle"]
+                    if recorded_blob_matches_current
+                    else "NOT_ESTABLISHED"
+                ),
                 "theorem_ids": node["theorem_ids"],
                 "terminal_consumer": node["terminal_consumer"],
                 "source": {
@@ -721,10 +731,14 @@ def project_registry(
                     "recorded_commit_blob": recorded_commit_blob,
                     "recorded_commit_is_ancestor": is_ancestor,
                     "current_git_blob": current_blob,
-                    "recorded_blob_matches_current": current_blob == source.get("blob"),
+                    "recorded_blob_matches_current": recorded_blob_matches_current,
+                    "source_state": source_state,
                 },
                 "semantic_review_hash": node["semantic_review_hash"],
                 "validation_hash": node["validation_hash"],
+                "recorded_validation_applies_to_current_source": (
+                    recorded_blob_matches_current
+                ),
                 "semantic_review_inputs": node["semantic_review_inputs"],
                 "validation_inputs": node["validation_inputs"],
                 "review": node["review"],
@@ -735,12 +749,38 @@ def project_registry(
     for edge in registry["edges"]:
         consumer_path = confined_repo_file(root, edge["consumer_path"])
         current_blob = git_blob_digest(consumer_path.read_bytes())
-        if current_blob != edge.get("consumer_blob"):
+        recorded_consumer_blob = edge.get("consumer_blob")
+        recorded_consumer_blob_matches_current = current_blob == recorded_consumer_blob
+        anchor_commits = tuple(
+            sorted(
+                verified_source_anchors.get(
+                    (edge["consumer_path"], recorded_consumer_blob), set()
+                )
+            )
+        )
+        if not recorded_consumer_blob_matches_current and not anchor_commits:
             raise BlueprintError(f"registry consumer blob drift: {edge['consumer_path']}")
+        consumer_source_state = (
+            "CURRENT" if recorded_consumer_blob_matches_current
+            else "HISTORICAL_SOURCE_ADVANCED"
+        )
         projected = {
-            **edge,
+            **{key: value for key, value in edge.items() if key != "relation"},
+            "recorded_relation": edge["relation"],
             "current_consumer_blob": current_blob,
-            "recorded_consumer_blob_matches_current": current_blob == edge.get("consumer_blob"),
+            "recorded_consumer_blob_matches_current": (
+                recorded_consumer_blob_matches_current
+            ),
+            "consumer_source_state": consumer_source_state,
+            "recorded_consumer_blob_anchor_commits": list(anchor_commits),
+            "recorded_validation_applies_to_current_consumer": (
+                recorded_consumer_blob_matches_current
+            ),
+            "current_relation": (
+                edge["relation"]
+                if recorded_consumer_blob_matches_current
+                else "NOT_ESTABLISHED"
+            ),
         }
         edge_projection.append(projected)
         appendix.append(
@@ -748,7 +788,9 @@ def project_registry(
                 "edge_id": edge["edge_id"],
                 "supplier": edge["theorem"],
                 "consumer": edge["consumer"],
-                "relation": edge["relation"],
+                "recorded_relation": projected["recorded_relation"],
+                "current_relation": projected["current_relation"],
+                "consumer_source_state": projected["consumer_source_state"],
                 "path": edge["path"],
                 "hypothesis_port": edge["hypothesis_port"],
             }
@@ -1304,10 +1346,15 @@ def render_content(model: Model) -> str:
     ]
     for edge in model.dependency_appendix:
         lines += [
-            r"\begin{lemma}[Registered edge " + tex_escape(str(edge["edge_id"])) + "]",
+            r"\begin{lemma}[Historical edge record " + tex_escape(str(edge["edge_id"])) + "]",
             r"\textbf{Supplier:} \texttt{" + tex_escape(str(edge["supplier"])) + r"}.\par",
             r"\textbf{Consumer:} \texttt{" + tex_escape(str(edge["consumer"])) + r"}.\par",
-            r"\textbf{Relation:} \texttt{" + tex_escape(str(edge["relation"])) + r"}.\par",
+            r"\textbf{Recorded historical relation:} \texttt{"
+            + tex_escape(str(edge["recorded_relation"])) + r"}.\par",
+            r"\textbf{Current relation:} \texttt{"
+            + tex_escape(str(edge["current_relation"])) + r"}.\par",
+            r"\textbf{Consumer source state:} \texttt{"
+            + tex_escape(str(edge["consumer_source_state"])) + r"}.\par",
             r"\end{lemma}",
         ]
     lines += [
@@ -1340,6 +1387,15 @@ def render_preview(model: Model) -> str:
         f"- Exact edges: {len(model.registry.get('edges', []))}",
         f"- Proof-relevant EnvDump declarations: {len(model.declarations)}",
     ]
+    for edge in model.dependency_appendix:
+        lines += [
+            "",
+            f"### Edge {edge['edge_id']}: {edge['supplier']} → {edge['consumer']}",
+            "",
+            f"- Recorded historical relation: {edge['recorded_relation']}",
+            f"- Current relation: {edge['current_relation']}",
+            f"- Consumer source state: {edge['consumer_source_state']}",
+        ]
     grouped: dict[str, list[Node]] = defaultdict(list)
     for node in model.nodes:
         grouped[node.row.chain].append(node)
@@ -1509,11 +1565,29 @@ def validate(model: Model, rendered: Mapping[Path, bytes]) -> None:
             raise BlueprintError("NODE_REGISTRY_V10 registry_hash missing")
         if len(model.declarations) != len(model.theorem_axioms):
             raise BlueprintError("theorem-to-axiom map does not cover relevant declarations")
+        for edge in model.registry.get("edges", []):
+            if "relation" in edge:
+                raise BlueprintError(
+                    f"ambiguous registry relation field: {edge.get('edge_id')}"
+                )
+            if not edge.get("recorded_relation") or not edge.get("current_relation"):
+                raise BlueprintError(
+                    f"incomplete registry relation status: {edge.get('edge_id')}"
+                )
         for declaration in model.declarations:
             if not declaration.get("type"):
                 raise BlueprintError(
                     f"missing elaborated type: {declaration.get('name')}"
                 )
+    for edge in model.dependency_appendix:
+        if "relation" in edge:
+            raise BlueprintError(
+                f"ambiguous appendix relation field: {edge.get('edge_id')}"
+            )
+        if not edge.get("recorded_relation") or not edge.get("current_relation"):
+            raise BlueprintError(
+                f"incomplete appendix relation status: {edge.get('edge_id')}"
+            )
 
 
 def publish(rendered: Mapping[Path, bytes]) -> None:

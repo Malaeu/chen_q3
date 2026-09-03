@@ -20,6 +20,66 @@ Q3.RouteB.rh_iff_centeredXi_zeros_real is an equivalence, not a proof of RH.
 Q3.RouteB.rh_of_canonical_strip_slots is kernel-checked and conditional.
 It does not close any open assembly row.
 
+## Registered semantic surface
+
+- Registry nodes: 7
+- Exact edges: 9
+- Proof-relevant EnvDump declarations: 15
+
+### Edge E001: Q3.RouteB.D0Pstar.selectedFerrersAbelLogZeroExtension_fourier_decay_quantitative → Q3.RouteB.D0Pstar.selectedFerrersAbelLimitHm_physicalCoefficient_le
+
+- Recorded historical relation: DIRECT
+- Current relation: DIRECT
+- Consumer source state: CURRENT
+
+### Edge E002: Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenNonzeroMode → Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenNonzeroMode_orthonormal
+
+- Recorded historical relation: DIRECT
+- Current relation: DIRECT
+- Consumer source state: CURRENT
+
+### Edge E003: Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenZeroMode → Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenHeadSynthesis
+
+- Recorded historical relation: DIRECT
+- Current relation: DIRECT
+- Consumer source state: CURRENT
+
+### Edge E004: Q3.RouteB.D0Pstar.sourceWeilGraphEvenNonzeroTail_low_fourier_vanish → Q3.RouteB.D0Pstar.sourceWeilGraphEvenNonzeroLowBandSynthesis_orthogonal_tail
+
+- Recorded historical relation: DIRECT
+- Current relation: DIRECT
+- Consumer source state: CURRENT
+
+### Edge E005: Q3.RouteB.D0Pstar.sourceWeilGraphEvenZeroMode_orthogonal_nonzeroTail → Q3.RouteB.D0Pstar.sourceWeilGraphEvenHeadSynthesis_orthogonal_tail
+
+- Recorded historical relation: DIRECT
+- Current relation: DIRECT
+- Consumer source state: CURRENT
+
+### Edge E006: Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenNonzeroMode_orthonormal → Q3.RouteB.D0Pstar.sourceWeilEvenAmbientMode_orthonormal
+
+- Recorded historical relation: DIRECT
+- Current relation: NOT_ESTABLISHED
+- Consumer source state: HISTORICAL_SOURCE_ADVANCED
+
+### Edge E007: Q3.RouteB.D0Pstar.sourceWeilGraphAmbient_evenHeadSynthesis → Q3.RouteB.D0Pstar.ccmFiniteSynthesis_evenCoefficientEmbedding
+
+- Recorded historical relation: DIRECT
+- Current relation: DIRECT
+- Consumer source state: CURRENT
+
+### Edge E008: Q3.RouteB.D0Pstar.sourceWeilGraphEvenHeadSynthesis_orthogonal_tail → Q3.RouteB.D0Pstar.ccmFiniteSynthesis_reflectionEven_orthogonal_evenNonzeroTail
+
+- Recorded historical relation: DIRECT
+- Current relation: DIRECT
+- Consumer source state: CURRENT
+
+### Edge E009: Q3.RouteB.D0Pstar.sourceWeilGraphTailAmbientCoercive_of_algebraic → Q3.RouteB.D0Pstar.sourceWeilEvenTailAmbientCoercive_explicit
+
+- Recorded historical relation: DIRECT
+- Current relation: NOT_ESTABLISHED
+- Consumer source state: HISTORICAL_SOURCE_ADVANCED
+
 ## Pillar G3 — de Branges/CvS port
 
 ### Step 1: OPEN_MATH — P1: GROUND_CANONICAL_PSTAR_VALUE_CROSSWALK — ground-значная CanonicalApproximation ЛИБО точное равенство selected-функции и (ненулевой множитель)×proposition59CCMTransform ground-строки
