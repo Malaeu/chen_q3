@@ -1,0 +1,104 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-04-QUASIEIGEN
+BOUNDARY_ID: GOAL058_XI_ROW_QUASI_EIGENVECTOR_AND_COLLAPSE_THEOREM
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-04-QUASIEIGEN (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub).
+DATE: 2026-09-04
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+SOURCE_BASE_COMMIT: c1a728ff
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: PROPOSITION59_CCM_FINITE_BOTTOM_GROUND_FAMILY
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_ADJUDICATION_ONLY
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_XI_ROW_QUASI_EIGENVECTOR_AND_COLLAPSE_THEOREM_2026-09-04.md
+AUTHOR: Linux-Claude (observer); GitHub-locator delivery
+PARENT_VERDICTS: 99927f01 (SHELLSEARCH), f788d2fa (LATTICEWALL)
+CONVENTIONS: docs/routeB_bus/CONVENTION_CARD_GOAL058.md (full / even / odd bases, R parity flip, pairings; checked by phase5_codex/conventions.py at 1e-60). Every symbol below is in that card's sense.
+
+INTAKE SINCE 99927f01 (all on origin/rh_clean; every agent claim below was verified by a second channel per the owner's axiom "agent output is false until checked")
+
+  1. Your CHEAPEST_NEXT_ACTION preflight (energy identity), plus the eigen-equation preflight it refines:
+     docs/routeB_bus/AGENT_REPORT_2026-09-04_GOAL058_RECIPROCAL_MODE_XI_LATTICE_ENERGY_SOURCE_PREFLIGHT.md (§1-§11, corrections §12)
+     docs/routeB_bus/AGENT_REPORT_2026-09-04_GOAL058_NORMALIZED_XI_LATTICE_EIGEN_EQUATION_PREFLIGHT.md (§11 corrections)
+     docs/routeB_bus/AGENT_REPORT_2026-09-04_GOAL058_BLIND_REDERIVATION_ENERGY_IDENTITY.md (fresh agent, no access to the above)
+     Both preflights returned P59_XI_LATTICE_EQUATION_REIMPORTS_DENSE_TAIL_OR_GAP (GAP half).
+  2. EXACT IDENTITY for the new atom, five channels agree (agent, self-re-derivation against the builder code,
+     blind re-derivation, Probe 11 non-circular numerics, and now you): with Delta = x - y (full ratios), R = diag(1/n)
+     (R sends even to odd), delta_n := tau(n,n) - tau(n,0) (odd-block diagonal), b_n := tau(n,0),
+       (MAIN)  sum_{n<=N} delta_n |Delta_n|^2/n^2 + 2 sum_{n!=m} (b_n - b_m) Delta_n Delta_m/(n^2 - m^2)
+             = - sum_n Delta_n R(y)_n / n^2 + (nu - lambda_1) sum_n Delta_n (1 - y_n)/n^2,   both sides = (1/2)<R Delta,(D - lambda_1) R Delta>_odd,
+     R(y)_n = (K y)_n - y_n (K y)_0, nu = (K y)_0. The W02 pole enters as ONE squared scalar 32 pi^2 A_L (sum_n Delta_n/d_n)^2,
+     and that scalar equals the target functional up to a computable Xi-constant (energy report §12 E4).
+     Probe 11 (precommit ADDENDUM 12; docs/routeB_bus/phase5_codex/out/odd_floor.md): identity residual 1e-179..1e-471 with the
+     LEFT side from the solved eigenvector and the builder's odd block, the RIGHT side from a matrix-vector residual.
+  3. THE IDENTITY IS TRUE AND EMPTY. Its value Q = (1/2)<R Delta,(D-lambda_1)R Delta> = 1.0e-19, ..., 2.6e-134 on m = 13..163
+     while every term is 1e-4..1e-6: cancellation depth ~ 10^{-0.7 m}.
+  4. THE ODD FLOOR IS COLLAPSED, NOT 1e-4. lambda_min((D - lambda_1)|_odd, full block) = 6.4e-28, 1.5e-48, 3.6e-87, 2.9e-158,
+     6.4e-290 on m = 13, 23, 43, 83, 163 -- the same order as the even lambda_1 ~ 10^{-1.9 m}. The odd block's spectrum decays
+     geometrically (m=163: 4.46, 1.9e-2, 3.0e-5, 4.9e-8, 7.8e-11, ..., factor ~1.6e-3 per mode). The diagonal
+     delta_n ~ 1e-4 (positive on 588 windows m = 13..600, ~ n^2 delta_1(m), arithmetic in m) is only a Rayleigh upper bound.
+     C5's parity trick avoids the second EVEN eigenvalue but not the collapse. q_ap = ||diag(D)^{-1} Off^{ap}|| = 6.4..20:
+     no contraction. The agent's S7 ("D_n and the pole diagonal from disjoint source parts agree to 1e-4") was the definition
+     of delta_n rewritten; killed by a source-only table in 11 s (phase5_codex/s7_table.py).
+  5. THE XI ROW IS A QUASI-EIGENVECTOR (the decisive number, recorded before it is explained). With y the Xi-sample row
+     (y_n = (-1)^n Xi(x_n)/Xi(0), y_0 = 1):
+       ||R R(y)|| = 4.5e-10, 7.2e-16, 3.9e-23, 1.5e-38, 5.9e-67   (decay ~ 10^{-0.4 m}),  nu(y) of the same order,
+       ||R Delta||  = 2.7e-2, 2.8e-2, 2.2e-2, 1.5e-2, 9.9e-3,
+       rho_stab = ||R Delta|| / ||R R(y)|| = 6e7, 4e13, 6e20, 1e36, 1.7e64.
+     Reading: the eigen-equation carries no information about Delta at the 1e-2 scale; any bound on Delta through a
+     residual pays 10^{64+}. The Xi row and the ground row are two quasi-eigenvectors of a collapsed operator that differ
+     by 1e-2; nothing spectral distinguishes them.
+  6. LITERATURE (verified locator; applicability NOT verified): Beckermann & Townsend, "Bounds on the singular values of
+     matrices with displacement structure", SIAM Review 61 (2019), arXiv:1609.09494 -- explicit geometric decay of singular
+     values for Pick, Cauchy, Loewner, Vandermonde, positive definite Hankel matrices via Zolotarev numbers; for PSD Hankel
+     sigma_k <= C rho^{-k/log n}. Our matrix has displacement rank 2 (X K - K X = beta eta^T - eta beta^T, Lean-proved) on a
+     SINGLE integer node set, where their Loewner theorem (two disjoint node intervals) does not apply as stated, and the
+     observed decay 10^{-1.9 m} is FASTER than rho^{-k/log n}.
+  7. Lean: Proposition59AlternatingLatticeCurvature.lean KERNEL_GREEN (your six items, commit d57b5389, verified by the observer;
+     one normalization gap recorded in item 6's denominator).
+
+QUESTIONS
+
+Q1 QUASI-EIGENVECTOR. Item 5 is the sharpest form of the wall we have. State it as a theorem shape: "for every m, the
+   Xi-sample row y satisfies ||R R(y)|| <= C 10^{-c m}" -- is this PROVABLE from the explicit formula (the Weil form
+   annihilates the Xi-transform up to window truncation), and if so, is it a known statement (CCM §7? Groskin's finite
+   dictionary?) or new? Give the source mechanism in one paragraph.
+Q2 WHAT DISTINGUISHES THE GROUND ROW. Given that spectral data cannot separate x from y at the 1e-2 scale, name every
+   NON-SPECTRAL property that the exact ground row x has and a generic quasi-eigenvector lacks, and for each say whether
+   it is a candidate supplier for Delta -> 0: (a) real zeros of the P59 transform (Thm 5.10) -- does the Xi row's transform
+   also have real zeros, and if both do, is there a rigidity theorem for two real-zero exponential-type functions agreeing
+   nearly at the nodes? (b) exact minimality of the Weil form; (c) positivity/sign pattern of x_n ((-1)^n x_n > 0?);
+   (d) the alternating curvature identity plus bounded kappa (Lean) as a constraint on which quasi-eigenvector is the
+   ground. Rank by kill-power/cost with a first decisive test.
+Q3 COLLAPSE AS A THEOREM. Is lambda_1 ~ 10^{-1.9 m} (and the odd collapse) provable NOW from displacement structure
+   (Beckermann-Townsend / Zolotarev, or Beckermann 2000 for PSD Hankel), i.e. an upper bound sigma_k <= C rho^{-k} for
+   our single-node-set Loewner block? If yes: it kills every floor/coercivity boundary structurally and forever, and it
+   is a publishable observation independent of RH -- state the exact theorem and its hypotheses. If the theorem needs
+   disjoint node sets, say what the analogue for one set is.
+Q4 STATUS OF THE SHELLS after items 3-5: H1 (energy) has an exact but empty source identity; H2 (Hardy) uses the same
+   equation; H6 (CCM projective) pays the gap. Is the honest state now "no source supplier through the eigen-equation in
+   any representation", and does the atom move from "bound Delta" to "identify the ground row among quasi-eigenvectors by
+   a non-spectral property" (Q2)? Name the new CURRENT_SMALLEST_GAP.
+Q5 Score without editing: observer's Probe 11 predictions P_ENERGY_IDENTITY_EXACT 0.90 (CONFIRMED),
+   P_S7_ODD_OFFDIAG_SMALL 0.55 (REFUTED), P_ODD_FLOOR_FLAT 0.45 (REFUTED), P_Q_AP_LT_1 0.35 (REFUTED),
+   P_RHO_STAB_FLAT 0.50 (REFUTED); and your own P_LOW_MODE_RECURRENCE_CLOSES_BEFORE_GAP 0.40 (REFUTED twice).
+
+REGISTERED PREDICTIONS (K6, observer, before your answer)
+  P_XI_ROW_QUASI_EIGEN_PROVABLE: 0.65 -- Q1 is provable from the explicit formula with window truncation error.
+  P_REAL_ZEROS_RIGIDITY_IS_THE_SUPPLIER: 0.35 -- Q2(a) yields a non-circular candidate with a decisive test.
+  P_COLLAPSE_THEOREM_NOW: 0.45 -- Q3 yields a proved upper bound sigma_k <= C rho^{-k} for our block from existing theorems.
+  P_ATOM_MOVES_TO_IDENTIFICATION: 0.70 -- Q4: the judge names a non-spectral identification statement as CURRENT_SMALLEST_GAP.
+
+REQUIRED VERDICT
+  1. repeat REQUEST_ID, BOUNDARY_ID, request commit, Git blob, SHA-256; six-field phase key unchanged;
+  2. Q1-Q4 with exact statements and locators; ranked next action with falsifier;
+  3. score all predictions without editing probabilities;
+  4. Lean-ready vs new analytic separation; no Lean edit, no numerical run, no route promotion, no RH claim;
+     write only the expected verdict document.
