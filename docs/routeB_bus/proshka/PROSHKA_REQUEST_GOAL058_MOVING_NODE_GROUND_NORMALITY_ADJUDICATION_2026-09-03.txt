@@ -1,0 +1,158 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-03-MOVINGNODE
+BOUNDARY_ID: GOAL058_MOVING_NODE_GROUND_NORMALITY_ADJUDICATION
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-03-MOVINGNODE (attached .txt is authoritative).
+DATE: 2026-09-03
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+SOURCE_BASE_COMMIT: 7e4c60d19cb6da956af7a8bf278edc1a69906e39
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: PROPOSITION59_CCM_FINITE_BOTTOM_GROUND_FAMILY
+TERMINAL_CONSUMER_ID: Q3.RouteB.CanonicalRHRoute.rh_of_canonical_strip_slots
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_ADJUDICATION_ONLY
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_MOVING_NODE_GROUND_NORMALITY_ADJUDICATION_2026-09-03.md
+
+SOURCE_REPORT:
+docs/routeB_bus/CODEX_REPORT_2026-09-03_GOAL058_MOVING_NODE_GROUND_NORMALITY_PREFLIGHT.md
+
+CURRENT VERIFIED FACTS
+
+1. Step 1 and Step 1.3 are closed negatively.  The abstract entire-function
+   properties do not identify centeredXi, and proposition59CCMTransform has no
+   proved exact agreement set with centeredXi having a limit point.
+2. TRY_RELLICH_COFINAL is killed as a production G1 supplier.  The finite CCM
+   matrices do not form the required registered analytic lambda-family, and
+   even-sector dominance is not supplied by simplicity.
+3. The terminal consumer is
+   Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi with hypothesis port
+   hconv : TendstoLocallyUniformlyOn F centeredXi atTop centeredCriticalStrip.
+4. The production family must be
+   selectedFerrersTrackedGroundTransformAt P (phi n) beta (hfloorAt n).
+5. The existing full compact tracking target is
+   A_k * sup_K kernel_k * sqrt(r_k) -> 0 for every compact K.
+6. At the reflected Proposition-59 lattice node, the source-ordered raw
+   transform samples one coefficient with magnitude sqrt(L_k).  The production
+   schedule m=N=k+2 has mesh 2*pi/log(m) -> 0 and radius
+   2*pi*N/log(m) -> infinity, also after strict cofinal reindexing.
+
+PROPOSED WEAKER ROUTE
+
+Let
+
+  A_k = norm(centeredXi(0) / rawFplus_k(0)),
+  r_k = selectedFerrersTrackedGroundResidualFloorRatio(P,beta,k),
+  L_k = logLength(index(k)).
+
+Replace full compact decay by:
+
+  NORMALITY_BOUND:
+    for every compact K in the centered critical strip there exists M_K such
+    that for every k and every z in K, norm(F_k(z)) <= M_K;
+
+  LATTICE_RATE:
+    A_k * sqrt(L_k) * sqrt(r_k) -> 0.
+
+Together with the already proved trial-family convergence, the pointwise
+tracking inequality gives compact-local boundedness of the tracked ground
+family.  For every subsequence, Montel must give a further locally-uniformly
+convergent subsubsequence.  For every real x in a fixed nontrivial interval,
+choose production lattice nodes along that subsubsequence which converge to x.
+Local uniform convergence plus LATTICE_RATE should identify that cluster value
+with centeredXi(x).  The identity theorem should identify the cluster function
+on the whole centered critical strip.  The required final step is the standard
+universal unique-cluster argument: every subsequence has a subsubsequence with
+the same limit centeredXi, hence the original sequence converges locally
+uniformly to centeredXi.  Since every F_k is entire with only real zeros, the
+existing Hurwitz consumer should then finish the route conditionally on the
+still-open ground-family existence hypotheses.
+
+REGISTERED PREDICTION
+
+P_MOVING_NODE_STRICTLY_WEAKER_THAN_COMPACT_DECAY:
+  probability: 0.70
+  scoring_rule: CONFIRMED only if the implication is valid and direct ground
+    normality plus the lattice scalar rate does not assume the old scalar
+    compact-decay hypothesis; REFUTED if the implication fails or these new
+    hypotheses are equivalent to the old scalar hypothesis on the production
+    family; otherwise UNRESOLVED.
+
+BLOCKERS TO ADJUDICATE
+
+B1 LOGICAL SUFFICIENCY
+Check the moving-node Montel argument with moving points x_k, including the
+universal subsequence -> subsubsequence quantifiers, density on a common real
+interval, continuity of centeredXi, the exact analytic identity theorem, and
+the final unique-cluster implication for convergence of the original sequence.
+Identify any missing quantifier or circular use of F_k -> centeredXi.
+
+B2 TRUE WEAKENING
+Compare input hypotheses, not the desired functional conclusions.  Decide
+whether direct compact-local boundedness of F_k plus lattice
+sqrt(L_k) o(1) is genuinely weaker than the old scalar compact-decay hypothesis
+for this source-ordered finite transform, or whether a
+Bernstein/Paley-Wiener/sampling inequality with matching production hypotheses
+forces the old scalar rate back in.  State the exact theorem and hypotheses if
+such an equivalence exists.
+
+B3 SOURCE-FAITHFUL NORMALITY ATTACK
+Find the cheapest noncircular route to compact-local boundedness of the tracked
+ground family.  Test at least:
+  a. trial compact boundedness plus O(1) scalar tracking envelope, while
+     explicitly testing the local two-height objection that this condition
+     already forces the old compact decay;
+  b. unit ground row plus a direct source-ordered kernel bound and central
+     normalizer control;
+  c. a Cartwright/de Branges/Paley-Wiener normal-family criterion using the
+     exact exponential type and anchor.
+Do not accept a theorem whose hypotheses already contain locally-uniform
+convergence or the old compact o(1) target.
+
+B4 SOURCE-FAITHFUL LATTICE RATE ATTACK
+Determine the weakest sufficient decay statement for
+A_k*sqrt(L_k)*sqrt(r_k) -> 0 and whether current paper/source asymptotics can
+supply it.  Preserve the exact residual divided by the true complement floor;
+do not substitute the W5 weighted residual or raw residual.  Search alternate
+terminology: cardinal interpolation stability, sampling on expanding
+Paley-Wiener lattices, ground-state coefficient tracking, Ritz-vector
+component error, Temple/Davis-Kahan coordinate error, and normal families of
+exponential-type functions.
+
+REQUIRED VERDICT
+
+Return exactly one primary operative class:
+
+TRY_MOVING_NODE_WITH_DIRECT_NORMALITY
+RUN_DIRECT_NORMALITY_DECISIVE_TEST
+REPAIR_MOVING_NODE_AFTER_KILL_SCALAR_ENVELOPE_NORMALITY
+KILL_MOVING_NODE_ROUTE
+
+Choose TRY only if B1 is valid and at least one source-faithful direct-normality
+attack in B3 plus a lattice-rate attack in B4 survives.  Choose RUN if one
+bounded decisive paper or numerical test can discriminate direct normality or
+the lattice rate without claiming proof.  Choose REPAIR when the two-height
+kernel argument kills the scalar-envelope normality attack but direct
+ground-family normality remains logically viable and source-unresolved.  Choose
+KILL only if the moving-node logic itself fails, direct normality plus lattice
+rate is equivalent to the old scalar compact-decay hypothesis on the exact
+production family, or every direct-normality and lattice-rate attack is proved
+circular or incompatible.  Failure of the scalar-envelope attack alone must
+not kill the moving-node route.
+
+The verdict must:
+
+1. repeat REQUEST_ID, BOUNDARY_ID, request commit, Git blob, and SHA-256;
+2. repeat the six-field phase key and state whether it changed;
+3. score the registered prediction at probability 0.70 without retroactive
+   editing;
+4. give a premise -> exact source/theorem -> consumer -> residual gap table;
+5. name the cheapest next mathematical action and its falsifier;
+6. separate Lean-ready arithmetic/composition work from new analytic work;
+7. make no Lean edit, numerical run, route promotion, or RH claim;
+8. write only the expected verdict document.

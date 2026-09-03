@@ -1,4 +1,4 @@
-# Aristotle Queue (auto) - 2026-08-31 08:52 UTC
+# Aristotle Queue (auto) - 2026-09-01 19:25 UTC
 
 **Purpose:** Auto-generated queue for Aristotle runs (no submission).
 **Source:** `ACTIVE/graphs/DEPS_TREE_MAIN.json` + sorry scan of Q3/ trees.

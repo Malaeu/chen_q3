@@ -1000,22 +1000,31 @@ def _candidate_checkout(repo: Path, destination: Path) -> Path:
         check=True,
         capture_output=True,
     )
-    subprocess.run(
-        [
-            "git",
-            "-c",
-            "user.name=Control v10 Benchmark",
-            "-c",
-            "user.email=benchmark@example.invalid",
-            "commit",
-            "--quiet",
-            "-m",
-            "temporary exact Phase A candidate",
-        ],
+    staged = subprocess.run(
+        ["git", "diff", "--cached", "--quiet"],
         cwd=checkout,
-        check=True,
+        check=False,
         capture_output=True,
     )
+    if staged.returncode not in {0, 1}:
+        raise RuntimeError("PHASE_A_CANDIDATE_DIFF_FAILED")
+    if staged.returncode == 1:
+        subprocess.run(
+            [
+                "git",
+                "-c",
+                "user.name=Control v10 Benchmark",
+                "-c",
+                "user.email=benchmark@example.invalid",
+                "commit",
+                "--quiet",
+                "-m",
+                "temporary exact Phase A candidate",
+            ],
+            cwd=checkout,
+            check=True,
+            capture_output=True,
+        )
     _plant_production_shape(checkout)
     return checkout
 

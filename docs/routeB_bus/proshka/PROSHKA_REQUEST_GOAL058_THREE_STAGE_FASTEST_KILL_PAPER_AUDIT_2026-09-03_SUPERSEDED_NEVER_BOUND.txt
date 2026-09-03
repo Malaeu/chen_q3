@@ -1,0 +1,118 @@
+STATUS: SUPERSEDED_NEVER_BOUND
+SUPERSEDED_BY: REQ-2026-09-03-KILLPLAN (bound 34e9850a, answered 387b1085); this draft (03:22) was never delivered or bound; archived 2026-09-03 by Linux-Claude on owner instruction
+REQUEST_ID: REQ-2026-09-03-FASTKILL3
+BOUNDARY_ID: GOAL058_THREE_STAGE_FASTEST_KILL_PAPER_AUDIT
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+AUDIT_LABEL: THREE_STAGE_FASTEST_KILL_PAPER_AUDIT
+CANONICAL_SHORT_INSTRUCTION: Read the attached controlling request in full. Treat the .txt attachment as the authoritative byte-exact payload. Follow its required response schema and return exactly the requested verdict. Same living phase chat. Do not use Answer now.
+DATE: 2026-09-03
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+SOURCE_BASE_COMMIT: 2bb8db37baf532b41a502269a2e2d420cb41ca6c
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: PROPOSITION59_CCM_FINITE_BOTTOM_GROUND_FAMILY
+TERMINAL_CONSUMER_ID: Q3.RouteB.CanonicalRHRoute.rh_of_canonical_strip_slots
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_ADJUDICATION_ONLY
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_THREE_STAGE_FASTEST_KILL_PAPER_AUDIT_2026-09-03.md
+
+STEP1_FROZEN_PROPERTY_LIST
+
+Coordinate and target:
+
+- z ranges over C in the centered-Xi coordinate used by the active phase.
+- X(z) is the centered Xi function in that coordinate.
+- A candidate F is a nonzero entire function of exact order 1.
+
+Properties under test, and no unstated ground-family invariant may be added:
+
+S1. F(-z) = F(z) for every z in C.
+S2. F(conj z) = conj(F(z)) for every z in C.
+S3. Every zero of F is real.
+S4. F(0) = X(0).
+
+Equivalence under test:
+
+F is Xi-equivalent iff there exists an entire zero-free U such that F = U * X.
+The characterization-only compactness shortcut succeeds only if every F satisfying
+S1-S4 is Xi-equivalent. A counterexample satisfying S1-S4 but not Xi-equivalent
+kills only that shortcut. It does not kill the fixed ground family, the
+rate-dependent tracking route, or the possibility that additional proved
+ground-family invariants select Xi.
+
+REGISTERED_PREDICTIONS
+
+P_STEP1_NO_UNIQUENESS:
+  probability: 0.75
+  scoring_rule: CONFIRMED only by an explicit F satisfying S1-S4 and proved not Xi-equivalent; REFUTED only by a cited and checked uniqueness theorem for exactly S1-S4 and the stated equivalence; otherwise UNRESOLVED.
+
+CURRENT_GOAL058_JOINT_LEDGER
+
+J0: REALZERO_GROUND_DIAGONAL_TO_XI:0 — exact ground object, coordinate, cofinal schedule and normalization.
+J1: REALZERO_GROUND_DIAGONAL_TO_XI:1 — one cofinal finite simple-even ground package.
+J4: REALZERO_GROUND_DIAGONAL_TO_XI:4 — the same ground-family transform tracks the projected prolate trial locally uniformly.
+J5: REALZERO_GROUND_DIAGONAL_TO_XI:5 — the projected trial tracks the continuum CCM trial.
+J6: REALZERO_GROUND_DIAGONAL_TO_XI:6 — CCM Lemma 7.3, continuum trial converges locally uniformly to Xi.
+
+The user's statement that all three steps make the roof stand without new Lean
+is a claim to audit, not a premise. Require a complete matrix
+joint -> premise -> evidence -> residual gap. Do not infer closure from the
+first joint touched by a step or while any direct roof input remains unbound.
+
+DECISION REQUEST
+
+Audit the exact three-stage fastest-kill plan below. Start with Step 1. If P_STEP1_NO_UNIQUENESS is REFUTED by an exact uniqueness theorem, stop and mark Steps 2-3 NOT_EVALUATED_BY_STEP1_STOP_RULE because the characterization-only shortcut may remove the need for rates. If the prediction is CONFIRMED, the shortcut is killed and Steps 2-3 must be audited as the surviving rate-dependent path. If the prediction is UNRESOLVED, stop and return the cheapest exact Step 1 discriminator. For every evaluated step, distinguish a proved implication, a plausible research program, a missing hypothesis, and a circular identification. Name the cheapest decisive test and the first exact failure point.
+
+Return exactly one primary operative class:
+
+TRY_CHARACTERIZATION_ONLY_COMPACTNESS_SHORTCUT
+RUN_STEP1_CHARACTERIZATION_DECISIVE_TEST
+TRY_RATE_DEPENDENT_THREE_STAGE_PATH
+RUN_RATE_PATH_STEP2_REPAIR
+KILL_RATE_DEPENDENT_PATH_AT_STEP2
+RUN_RATE_PATH_STEP3_REPAIR
+KILL_RATE_DEPENDENT_PATH_AT_STEP3
+
+Choose the class by this ordered rule:
+
+1. P_STEP1_NO_UNIQUENESS = REFUTED -> TRY_CHARACTERIZATION_ONLY_COMPACTNESS_SHORTCUT; do not evaluate Steps 2-3.
+2. P_STEP1_NO_UNIQUENESS = UNRESOLVED -> RUN_STEP1_CHARACTERIZATION_DECISIVE_TEST; do not evaluate Steps 2-3.
+3. P_STEP1_NO_UNIQUENESS = CONFIRMED -> record KILL_CHARACTERIZATION_ONLY_COMPACTNESS_SHORTCUT as a secondary scoped finding and evaluate Step 2.
+4. At Step 2, first test strong path-kill evidence: either a counterexample on the fixed source family that refutes the exact J1 consumer obligation, a proved incompatibility with that obligation, or a proof that no consumer-sufficient repair can exist. If present -> KILL_RATE_DEPENDENT_PATH_AT_STEP2.
+5. Otherwise, if Step 2 is valid at the stated consumer interface -> evaluate Step 3.
+6. Otherwise -> RUN_RATE_PATH_STEP2_REPAIR, with the complete missing-premise list and first decisive test. A counterexample only to the current Rellich-cofinal sufficient implication records KILL_RELLICH_COFINAL_SHORTCUT as a secondary scoped finding; it does not kill the rate-dependent path.
+7. At Step 3, first test strong path-kill evidence: either a counterexample on the fixed source family that refutes the exact J4 tracking consumer obligation, a proved incompatibility with that obligation, or a proof that no consumer-sufficient repair can exist. If present -> KILL_RATE_DEPENDENT_PATH_AT_STEP3.
+8. Otherwise, if Step 3 is valid at the stated consumer interface -> TRY_RATE_DEPENDENT_THREE_STAGE_PATH.
+9. Otherwise -> RUN_RATE_PATH_STEP3_REPAIR, with the complete missing-premise list and first decisive test. A counterexample only to the current gap-plus-residual sufficient implication records KILL_GAP_RESIDUAL_TRACKING_SHORTCUT as a secondary scoped finding; it does not kill the rate-dependent path.
+
+The verdict must:
+
+1. Repeat REQUEST_ID, BOUNDARY_ID, request commit, request Git blob and request SHA-256.
+2. Repeat the complete six-field phase key and state PHASE_KEY_CHANGED: false.
+3. Score P_STEP1_NO_UNIQUENESS as CONFIRMED, REFUTED or UNRESOLVED without changing probability 0.75.
+4. For Step 1, use exactly S1-S4 and the stated Xi-equivalence. If CONFIRMED, provide an explicit counterexample with verification of every property and non-equivalence. If REFUTED, provide an exact uniqueness theorem with assumptions and primary-source locator. If UNRESOLVED, state the exact missing fact, list the sources actually checked, and give the next decisive test without inventing a witness or theorem. Do not infer uniqueness from similarity to Xi.
+5. When required by the ordered decision rule, audit Step 2: whether analytic-family hypotheses and parity-sector crossings actually imply a cofinal simple even ground path. Separate Rellich/Kato analyticity, discreteness of degeneracies, sector ordering and cofinal selection. Otherwise emit NOT_EVALUATED_BY_STEP1_STOP_RULE.
+6. When required by the ordered decision rule and Step 2 survives, audit Step 3: whether a uniform positive true gap plus an explicit residual estimate is sufficient for ground-vector tracking and locally uniform entire-function convergence. Separate Davis-Kahan-type vector stability from the transform approximation and normalization needed by the existing consumer. Otherwise emit the applicable NOT_EVALUATED reason.
+7. Return the complete joint -> premise -> evidence -> residual gap matrix for J0, J1, J4, J5 and J6. Explicitly adjudicate the user's no-new-Lean closure claim.
+8. Make no Lean edit, numerical run, route promotion or RH claim. Write only the expected verdict document.
+
+BEGIN EXACT USER PLAN
+
+Самый быстрый путь до RH — это самый быстрый путь до убийства. Всё, что не убивает, — трата. Вот мой порядок, по K2: дешевле и решительнее вперёд.
+
+**Шаг 1, часы, на бумаге.** Прежде чем тянуть канат, решить, за какой конец. Вопрос один: что характеризует Ξ среди предельных точек ground-семьи? Порядок 1, вещественные нули, функциональное уравнение, нормировка в якоре — пинают ли они Ξ с точностью до множителя без нулей? Моё K6-предсказание: нет, p=0.75 — функций порядка 1 с вещественными нулями бесконечно много, идентификация без сходимости к самой Ξ циклична. Если предсказание сбывается, угол «компактность вместо скорости» мёртв за день, и мы больше не тратим на него ничего. Если нет — это лучшая новость проекта, потому что скорость становится ненужной. Дискриминатор: явный список свойств и контрпример или единственность.
+
+**Шаг 2, дни.** Вход A, но не целиком, а ровно столько, сколько ест крыша: простота ground state на одном кофинальном пути, не для всех λ. Это `TRY_RELLICH_COFINAL`: аналитичность λ↦QW_λ плюс простота Suzuki на малом окне ⇒ множество вырождений дискретно ⇒ простота вне дискретного набора ⇒ кофинальный путь есть. Две дырки известны заранее: аналитичность семьи не бесплатна, и чётность может перескочить на пересечении. Аристотелю — только алгебру дискретности, аналитичность — руками. Если A закрывается, семья наконец определена, и весь вопрос сжимается до входа B.
+
+**Шаг 3, стена.** Вход B: ground-вектор приближается явным объектом с контролем по λ, и это переносится на сходимость целой функции на полосе. Здесь честно: у меня нет пути, который я могу обещать. Единственный якорь, за который есть смысл держаться, — Δ: β*_N монотонно не растёт (доказано интерлейсингом), нужно inf > 0. Приёмник в Lean уже есть, `true_gap_lower_of_abs_endpoint_perturbations`. Постоянная нижняя оценка щели через Фешбах-хвост даёт устойчивость ground-вектора по Дэвису–Кахану, и тогда B становится задачей об аппроксимации, а не о существовании. Без щели B не задача, а туман.
+
+Если все три держат — крыша стоит без единой новой строчки: Гурвиц и эквивалентность уже в Lean.
+
+Вот и весь путь. Он не короткий, потому что короче не бывает: шаг 3 — та же дверь, у которой стоят Конн и ван Сёйлеком. Но он дешёвый: два первых шага стоят дни, и каждый либо убивает угол, либо сжимает стену. Всё остальное — упаковка, и мы её уже сняли.
+
+END EXACT USER PLAN

@@ -14,6 +14,16 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-03-MOVINGNODE · Goal 058 moving-node ground-normality adjudication · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_MOVING_NODE_GROUND_NORMALITY_ADJUDICATION_2026-09-03.txt`
+- Source report: `docs/routeB_bus/CODEX_REPORT_2026-09-03_GOAL058_MOVING_NODE_GROUND_NORMALITY_PREFLIGHT.md`
+- Boundary: `GOAL058_MOVING_NODE_GROUND_NORMALITY_ADJUDICATION`
+- Call class: `DELEGATED_STRATEGIC_REVIEW` (`FRONT_CHANGE` purpose)
+- Registered prediction: `P_MOVING_NODE_STRICTLY_WEAKER_THAN_COMPACT_DECAY p=0.70 (2026-09-03, PENDING)`
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF: `PENDING_BIND_COMMIT`
+
 ## REQ-2026-09-03-KILLPLAN · Mythos three-stage fastest-kill plan, paper adjudication · ANSWERED
 
 - `STATUS: ANSWERED`
@@ -3302,3 +3312,34 @@ critical strip калибровка `g_k`, такая что семейство 
 - Boundaries: no Lean before a source-ready `TRY`/`REPAIR`; do not touch foreign
   mode-four/G3 work; no phase-key change, Route promotion, or RH claim;
   `PX_RH_CLAIM: NOT_MADE`.
+
+## Q8 · Lamzouri Prop. 2.1: сторона нулей матрицы CCM как сумма парной корреляции · OPEN — сначала наш зонд
+
+**Блокирует:** ничего в крыше. Вопрос о представлении, не о слоте.
+**Стоимость ошибки:** малая. Ложное «поставщик» стоило бы дня; ложное «контекст» —
+упущенного численного контроля стороны нулей.
+
+### Вопрос
+
+Lamzouri (arXiv:2609.02882, Prop. 2.1) записывает `Σ_{z,s∈Z} K(z−s)²` как
+`‖F‖²_HS`, `F(u,v) = Σ_z f_z(u)·conj(f_z(v))`, `f_z(u) = η(u)e^{−2πiuz}` на `L²((−λ,λ))`.
+CCM сжимает ту же форму Вейля на решётку мод `2πj/L`, `L = log m` (`ccmQKernel`,
+CCM (2.9)–(2.10)), с явной формулой внутри ядра. Существует ли **точное** тождество
+между HS-нормой усечённой по высоте стороны нулей матрицы CCM в базисе мод и суммой
+парной корреляции с ядром Фейера? Если да — что оно даёт для `J4`/`J5` (трекинг),
+кроме численного контроля?
+
+### Что мы уже проверили сами
+
+- Карточки: `litreview/LAMZOURI_HILBERT_SIMPLE_ZEROS_2026_USAGE_CARDS.md` (2026-09-03).
+- Prop. 2.1 не отождествляет функцию; шаг 1.3, вход A, шаг 3 не затронуты.
+- Потолок метода `C_MT` (Remark 3.4) — доля, не «все нули».
+- По всем нулям `Σ_{ρ,ρ'}|K(ρ−ρ')|²` расходится; CCM не усекает по высоте.
+
+### Почему пока не к Прошке
+
+Зонд бумажный и наш (часы). К судье уходит только если ЕСЛИ_A выстоит и
+понадобится ранжировать против `R2_DIRECT_SAME_FAMILY_LOCAL_UNIFORM_TRACKING`.
+K6: `P_LAMZOURI_CONTEXT_NOT_SUPPLIER` p=0.80, PENDING.
+
+---
