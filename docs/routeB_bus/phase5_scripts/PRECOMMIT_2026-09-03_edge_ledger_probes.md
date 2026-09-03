@@ -270,3 +270,24 @@ Predictions (K6, observer, registered before the run):
 - CONFIRMED / REFUTED per prediction by the inequality at every cell; else UNRESOLVED.
 Executor: observer's numerics channel (Opus agent), new script `docs/routeB_bus/phase5_codex/lattice_equation.py`,
 output `phase5_codex/out/lattice_equation.{json,md}`, registered in TOOLS.yaml. DIAGNOSTIC_NEVER_A_PROOF.
+
+## ADDENDUM 12 (2026-09-04 02:20, before any odd-block entry, q_ap or ρ_stab was computed) — Probe 11, odd-sector floor scale and the S7 cancellation
+
+Source: energy preflight `docs/routeB_bus/AGENT_REPORT_2026-09-04_GOAL058_RECIPROCAL_MODE_XI_LATTICE_ENERGY_SOURCE_PREFLIGHT.md`
+(§3.3 identity MAIN/MAIN-P; §5 contraction: `q_ap = ‖diag(D)⁻¹ Off^{ap}‖`, `q_pole`; §9 measurement list; §10 S7/S8).
+Objects per cell (m = N ∈ {13,23,43,83,163}; unmodified builder + parity_blocks; y = Ξ-sample row; Δ = x − y; n ≤ 8):
+  (i)   residual of (MAIN) and (MAIN-P) to working precision (STOP `ENERGY_IDENTITY_MISMATCH` if > 1e-30 rel);
+  (ii)  odd-block entries `D^odd_{nm} = (D−λ₁)|_odd` for n,m ≤ 8: diagonal δ_n and off-diagonal, especially `D^odd_{12}`;
+        pole part of `D^odd_{12}` separately (S7 distinguishing measurement);
+  (iii) `min_n δ_n`, `λ_min((D−λ₁)|_odd)` on the 8×8 and on the full block (arb eig, DIAGNOSTIC);
+  (iv)  `q_ap = ‖diag(D)⁻¹ Off^{ap}‖₂`, `q_pole`, and the stability ratio `ρ_stab = ‖RΔ‖ / ‖R𝓡(y)‖`;
+  (v)   `b_n` for n ≤ 8: relative variation `max_{n≤8}|b_n − b_1|/|b_1|`.
+Predictions (K6, observer, registered before the run):
+  `P_ENERGY_IDENTITY_EXACT` p=0.90 — (MAIN) residual ≤ 1e-30 relative at every cell.
+  `P_S7_ODD_OFFDIAG_SMALL` p=0.55 — |D^odd_{12}| ≤ 1e-3 at every cell while its pole part alone is O(1) (reading A of S7).
+  `P_ODD_FLOOR_FLAT` p=0.45 — λ_min((D−λ₁)|_odd, full block)·L² ∈ [1e-4, 1e-1] at every cell (polylog, not collapsing).
+  `P_Q_AP_LT_1` p=0.35 — q_ap < 1 at every cell.
+  `P_RHO_STAB_FLAT` p=0.50 — ρ_stab ≤ 1e4 at every cell and varies by < ×10 across the schedule.
+- CONFIRMED / REFUTED per prediction by the inequality at every cell; else UNRESOLVED.
+Executor: Opus agent; new script `docs/routeB_bus/phase5_codex/odd_floor.py`, output `phase5_codex/out/odd_floor.{json,md}`,
+registered in TOOLS.yaml by the ORCHESTRATOR after the run (agents do not edit the registry, lesson 2026-09-04). DIAGNOSTIC_NEVER_A_PROOF.
