@@ -14,6 +14,22 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-04-WINDLOCK · Goal 058: winding lock results — disk fails (imaginary axis), thin rectangle holds on all cells; the compact count question reduces to ONE relative endpoint error e(R) < 1 (component I, weakest form); localized locks; polynomial argument principle in Lean · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_WINDING_LOCK_RESULTS_2026-09-04.txt`
+- Boundary: `GOAL058_WINDING_LOCK_RECTANGLE_RESULTS_AND_ENDPOINT_ATOM`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: winding-lock preflight (agent); Probe 14 by hand (disk/rectangle Rouche ratios, addendum 16 recorded post hoc, two follow-ups registered)
+- Registered predictions: `P_ENDPOINT_ATOM_IS_COMPONENT_I 0.75`, `P_ENDPOINT_SUPPLIER_FROM_LEAKAGE 0.35`, `P_POLY_ARGUMENT_PRINCIPLE_LEANABLE 0.55`
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / 9c24892101a090b4e92e1b41adb13719bef16861c10274d50005944b1b1a15b8-256 / Git blob / Final LF:
+  `84a783a4d4cabe3de40f1ae86f75dfda2d4cd558` / `7466` / `80` /
+  `9c24892101a090b4e92e1b41adb13719bef16861c10274d50005944b1b1a15b8` /
+  `1373897d09bea6c12aaebd49e8d4e5f32ddabf59` / `yes`
+
+---
+
 ## REQ-2026-09-04-LEAKAGE · Goal 058: VERIFIED window Weil identity K = sum_z E(z)E(z)^T (3000-zero sum); leakage mechanism (ground transform window-concentrated, leakage sqrt(lambda_1)); is lambda_1 > 0 for all m the Weil criterion?; not-RH branch shape · ANSWERED
 
 - `STATUS: ANSWERED`
