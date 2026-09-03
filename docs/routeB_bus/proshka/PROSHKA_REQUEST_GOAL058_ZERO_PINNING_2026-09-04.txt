@@ -1,11 +1,30 @@
-STATUS: DRAFT (not bound; bind after REQ-2026-09-04-QUASIEIGEN is ANSWERED; fold in its verdict)
+STATUS: REQUEST
 REQUEST_ID: REQ-2026-09-04-ZEROPIN
 BOUNDARY_ID: GOAL058_GROUND_TRANSFORM_ZERO_PINNING_AND_REAL_ZERO_IDENTIFICATION
 CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
-PHASE_KEY: unchanged (PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13 / RouteB_TwoLevelSpectralLadder / GOAL058_G1_G3_COFINAL_GROUND_TRACKING / PROPOSITION59_CCM_FINITE_BOTTOM_GROUND_FAMILY / Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi / GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED)
-HONESTY_STATE: CHALLENGER_NOT_RH · PX_RH_CLAIM: NOT_MADE · REVIEW_BOUNDARY: PAPER_ADJUDICATION_ONLY · WRITE_SCOPE: VERDICT_DOC_ONLY
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-04-ZEROPIN (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub).
+DATE: 2026-09-04
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+SOURCE_BASE_COMMIT: 764b172e
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: PROPOSITION59_CCM_FINITE_BOTTOM_GROUND_FAMILY
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_ADJUDICATION_ONLY
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
 EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_GROUND_TRANSFORM_ZERO_PINNING_AND_REAL_ZERO_IDENTIFICATION_2026-09-04.md
+AUTHOR: Linux-Claude (observer); GitHub-locator delivery
+PARENT_VERDICTS: 9b822624 (QUASIEIGEN), 99927f01 (SHELLSEARCH)
 CONVENTIONS: docs/routeB_bus/CONVENTION_CARD_GOAL058.md
+RELATION_TO_9b822624: this request is the ZERO route (identification through convergence of ZEROS, not through node values); it is
+  disjoint from, and complementary to, your selector modulus (SEL): the Robin-cosine plant refutes identification by lattice VALUES,
+  but the two plant functions have DIFFERENT zero sets, so it does not touch identification by zero CONVERGENCE plus type/jet control.
+  Your selector preflight is running in parallel (Opus agent) and is not replaced.
 
 INTAKE (Probe 12, observer by hand, precommit ADDENDUM 13/14, output phase5_codex/out/xi_row_zeros.md, ERRATUM in Progress_Log 2026-09-04)
   1. Ground row: the P59 transform F_k has ALL zeros real on m = 13, 23, 43 (Thm 5.10 reproduced; zeros of the degree-2N numerator).
@@ -36,7 +55,7 @@ INTAKE (Probe 12, observer by hand, precommit ADDENDUM 13/14, output phase5_code
      real-zero even entire functions -- name the finite-product route (as in 926c1865) or the exact missing lemma.
 
 QUESTIONS
-Q1 IDENTIFICATION THROUGH ZEROS. The consumer needs local-uniform convergence F_k/F_k(0) -> centeredXi/centeredXi(0). Given
+Q1 IDENTIFICATION THROUGH ZEROS (post-9b822624: state it so that the Robin-cosine plant is visibly excluded). The consumer needs local-uniform convergence F_k/F_k(0) -> centeredXi/centeredXi(0). Given
    (i) bounded kappa_k (normality; Lean bridge), (ii) all zeros of F_k real, (iii) the low zeros of F_k converge to gamma_j
    (exponentially, item 4), is the limit identified WITHOUT any node estimate: every subsequential limit G is even, real,
    real-zero, G(0) = 1, entire of exponential type <= L/2 growth ... with zero set {±gamma_j}; by Hadamard/Laguerre-Polya
