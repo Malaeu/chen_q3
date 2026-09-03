@@ -1505,7 +1505,7 @@ tool_families:
       prime-set); no substitute construction. DIAGNOSTIC_NEVER_A_PROOF,
       PX_RH_CLAIM NOT_MADE, no route promotion.
     front_door: edge-ledger-build
-    coverage: [docs/routeB_bus/phase5_scripts/edge_ledger_build.py, docs/routeB_bus/phase5_scripts/edge_ledger_fuchs.py, docs/routeB_bus/phase5_scripts/edge_ledger_ratio.py, docs/routeB_bus/phase5_scripts/edge_ledger_relritz.py, docs/routeB_bus/phase5_scripts/edge_ledger_dualcert.py, docs/routeB_bus/phase5_scripts/edge_ledger_schur.py, docs/routeB_bus/phase5_codex/slope_split.py, docs/routeB_bus/phase5_codex/odd_gram.py]
+    coverage: [docs/routeB_bus/phase5_scripts/edge_ledger_build.py, docs/routeB_bus/phase5_scripts/edge_ledger_fuchs.py, docs/routeB_bus/phase5_scripts/edge_ledger_ratio.py, docs/routeB_bus/phase5_scripts/edge_ledger_relritz.py, docs/routeB_bus/phase5_scripts/edge_ledger_dualcert.py, docs/routeB_bus/phase5_scripts/edge_ledger_schur.py, docs/routeB_bus/phase5_codex/slope_split.py, docs/routeB_bus/phase5_codex/odd_gram.py, docs/routeB_bus/phase5_codex/lattice_error.py]
     tools:
       - id: edge-ledger-build
         classification: MANUAL
@@ -1937,6 +1937,71 @@ tool_families:
           7 found in the pole/Arch-Prime split. Verdicts:
           P_ODD_SECTOR_FLOOR_NONCOLLAPSING: REFUTED,
           P_E_TERMS_NOT_GAP_INFLATED: REFUTED.
+        last_verified: 2026-09-03
+
+      - id: lattice-error
+        classification: MANUAL
+        status: ENABLED
+        audience: [CODEX, CLAUDE_CODE, HUMAN]
+        mode: WRITES_DERIVED
+        path: docs/routeB_bus/phase5_codex/lattice_error.py
+        invoke: .venv/bin/python docs/routeB_bus/phase5_codex/lattice_error.py
+        trigger: >-
+          Explicit Goal 058 Probe 9 (lattice error of the ledger's finite
+          even eigenvector against the true completed zeta Xi, and the
+          alternating-curvature decomposition kappa_k = S_Xi + S_Delta +
+          tail, ADDENDUM 10 of PRECOMMIT_2026-09-03_edge_ledger_probes.md)
+          request only; not part of any automatic startup or goal-close
+          event. Imports RecordArb/load_ledger from edge_ledger_ratio.py
+          (imported, never copied) for the ground xi row, L, and working
+          precision; Xi itself is implemented independently here, in acb,
+          via the classical completed-zeta formula (verified algebraically
+          identical to ClassicalXiInterface.lean's centeredXi/riemannXi).
+        writes: true
+        approval: TASK_SCOPED_OUTPUT_UNDER_docs_routeB_bus_phase5_codex_out
+        authority: FINITE_EVEN_SECTOR_LATTICE_ERROR_DIAGNOSTIC_NOT_A_CERTIFICATE_NOT_RH
+        records_to: [docs/routeB_bus/phase5_codex/out/lattice_error.json, docs/routeB_bus/phase5_codex/out/lattice_error.md]
+        note: >-
+          For m=N in {13,23,43,83,163} (163 at the ledger's own working-dps
+          cap, 240, reusing edge_ledger_ratio.py's
+          WORKING_DPS_CAP_THRESHOLD/WORKING_DPS_FALLBACK convention): with
+          x_n=2*pi*n/L, f_k(x_n)=(-1)^n*xi_n/xi_0 (ledger row, raw +-N
+          index) and f(x_n)=Xi(x_n)/Xi(0) (Xi in acb, classical formula
+          xi(s)=(1/2)s(s-1)*pi^{-s/2}*Gamma(s/2)*zeta(s), s=1/2+i*x_n never
+          hits the poles 0,1), Delta_n=f_k(x_n)-f(x_n); computes
+          W_k=sum|Delta_n|/n^2, S_Xi=2*sum(-1)^n(f(x_n)-1)/x_n^2,
+          S_Delta=2*sum(-1)^n*Delta_n/x_n^2, and the exact closed-form tail
+          -(L^2/(2*pi^2))*sum_{n>N}(-1)^n/n^2 (via the total alternating sum
+          -pi^2/12 minus a finite partial sum, never a literal infinite
+          sum). kappa_Xi=-Xi''(0)/(2*Xi(0)) is obtained from Xi's exact
+          Taylor coefficients via acb_series composition (zeta/gamma/exp on
+          the series ring), not a finite-h central difference, avoiding
+          h^-2 noise amplification. Sanity gate: kappa_check=S_Xi+S_Delta+tail
+          must agree with Probe 4's own kappa_k (out/edge_ledger_ratio.json,
+          same cell) to >=8 significant digits, else the script stops with
+          ALTERNATING_FORM_MISMATCH. Verdicts for
+          P_WEIGHTED_LATTICE_ERROR_POLYLOG (p=0.65, W_k*L^2<=10 at every
+          cell) and P_SUP_LATTICE_ERROR_POLYLOG (p=0.45,
+          sup_n|Delta_n|*L^2<=10 at every cell) by the frozen ADDENDUM-10
+          rule.
+        validation: >-
+          Run 2026-09-03 (0.4s wall for all five cells, well inside the
+          40-minute budget). Xi implementation checks: Xi(0)=0.4971207782
+          (matches the known Riemann xi(1/2) value), Xi'(0)=0 to >=100
+          digits (evenness), imaginary part on the real axis <=4.1e-251
+          relative at every sampled point (far below the 1e-40 gate),
+          kappa_Xi=-Xi''(0)/(2*Xi(0))=0.02310499312 (matches the ~0.02310
+          reference). kappa_check agreed with Probe 4's kappa_k to full
+          reported precision (>=15 digits, far past the 8-digit gate) at
+          all five cells -- the (-1)^n*xi_n/xi_0 sign convention was
+          correct on the first attempt, no ALTERNATING_FORM_MISMATCH.
+          Both predictions CONFIRMED, not borderline: W_k*L^2 in
+          [0.19, 0.30] and sup|Delta_n|*L^2 in [0.25, 0.58] across the
+          whole schedule, roughly flat in m rather than growing -- an
+          order of magnitude inside the p<=10 gate at every cell. n* (the
+          index of the largest |Delta_n|) drifts slowly upward with the
+          schedule (3, 3, 4, 4, 5), consistent with the low-mode profile
+          broadening as L grows rather than staying pinned at n=1.
         last_verified: 2026-09-03
 
 dynamic_queries:
