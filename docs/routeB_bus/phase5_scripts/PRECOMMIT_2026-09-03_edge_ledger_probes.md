@@ -245,3 +245,28 @@ Predictions (K6, observer):
   `P_SUP_LATTICE_ERROR_POLYLOG` p=0.45 — sup_{n≤N}|Δ_n|·L² ≤ 10 at every cell.
 - CONFIRMED / REFUTED per prediction by the inequality at every cell; else UNRESOLVED.
 DIAGNOSTIC_NEVER_A_PROOF.
+
+## ADDENDUM 11 (2026-09-04 00:50, before any lattice-equation term was computed) — Probe 10, normalized-ξ lattice equation: identities, term sizes, diagonal defect
+
+Source: agent preflight `docs/routeB_bus/AGENT_REPORT_2026-09-04_GOAL058_NORMALIZED_XI_LATTICE_EIGEN_EQUATION_PREFLIGHT.md`
+(code `P59_XI_LATTICE_EQUATION_REIMPORTS_DENSE_TAIL_OR_GAP`; §3 identities LATTICE-1/2/3, §6 remainder
+ρ_n(n₀), §7 new object `P59_ARCH_PRIME_DIAGONAL_DEFECT_NONDEGENERACY`, §8 S6 prediction, §9 measurement list).
+Objects per cell (m = N ∈ {13,23,43,83,163}; unmodified `CCMArbBuilder` + parity_blocks; ground pair from
+the ledger or one precond solve; y = ξ/ξ_0; n = 1..8; cuts n₀ ∈ {⌊L⌋, ⌊L²⌋}):
+  (i)  residuals of LATTICE-1 and LATTICE-2 (must vanish to working precision; STOP `LATTICE_IDENTITY_MISMATCH`
+       if any residual exceeds 1e-30 relative);
+  (ii) the four terms of LATTICE-2 separately: D_n y_n, κ_n Ŝ, √2[W_ℝ(0,0)+Prime(0,0)+a_n+λ₁], Ω_n^{ap},
+       with Ω_n^{ap} split at n₀ into head and tail ρ_n(n₀);
+  (iii) ratios |ρ_n(n₀)|/|D_n y_n| and |κ_n Ŝ|/|D_n y_n|;
+  (iv) min_{n≤8} |D_n| and its trend in L;  (v) Ŝ against −1/(√2 L²);  (vi) Σ_{j>n₀}|y_j|/j², Σ_{j>n₀} y_j/j²;
+  (vii) x_n against −d_n/(2L²).
+Predictions (K6, observer, registered before the run):
+  `P_LATTICE_IDENTITIES_EXACT` p=0.90 — all LATTICE-1/2 residuals ≤ 1e-30 relative at every cell.
+  `P_TAIL_COUPLING_IS_LEADING` p=0.60 — |ρ_n(⌊L⌋)|/|D_n y_n| ≥ 1 for n = 1..3 at every cell
+    (the j>n₀ coupling is not a remainder but the leading term: the equation is a fixed point, as the preflight says).
+  `P_DIAGONAL_DEFECT_NONDEGENERATE` p=0.60 — min_{n≤8}|D_n| / max_{n≤8}|D_n| ≥ 1e-3 at every cell and does
+    not decrease by more than a factor 10 between m=13 and m=163 (the new object is not collapsing).
+  `P_SHAT_SHARP` p=0.50 — |Ŝ + 1/(√2 L²)| ≤ 0.5·|1/(√2 L²)| at every cell (agent's S6 prediction).
+- CONFIRMED / REFUTED per prediction by the inequality at every cell; else UNRESOLVED.
+Executor: observer's numerics channel (Opus agent), new script `docs/routeB_bus/phase5_codex/lattice_equation.py`,
+output `phase5_codex/out/lattice_equation.{json,md}`, registered in TOOLS.yaml. DIAGNOSTIC_NEVER_A_PROOF.
