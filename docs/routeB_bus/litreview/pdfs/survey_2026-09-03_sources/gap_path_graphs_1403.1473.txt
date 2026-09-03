@@ -1,0 +1,1129 @@
+                                         The Fundamental Gap for a Class of Schrödinger Operators on Path and Hypercube
+                                         Graphs
+
+                                                    Michael Jarret1 and Stephen P. Jordan2
+                                                    1)
+                                                         Department of Physics, University of Maryland, College Park,
+                                                    MD 20742-4111a)
+                                                    2)
+                                                         Applied and Computational Mathematics Division, National Institute of Standards
+arXiv:1403.1473v1 [math-ph] 6 Mar 2014
+
+
+
+
+                                                    and Technology, Gaithersburg, MD 20899b)
+
+                                                    We consider the difference between the two lowest eigenvalues (the fundamental gap)
+                                                    of a Schrödinger operator acting on a class of graphs. In particular, we derive tight
+                                                    bounds for the gap of Schrödinger operators with convex potentials acting on the path
+                                                    graph. Additionally, for the hypercube graph, we derive a tight bound for the gap of
+                                                    Schrödinger operators with convex potentials dependent only upon vertex Hamming
+                                                    weight. Our proof makes use of tools from the literature of the fundamental gap
+                                                    theorem as proved in the continuum combined with techniques unique to the discrete
+                                                    case. We prove the tight bound for the hypercube graph as a corollary to our path
+                                                    graph results.
+
+
+
+
+                                         a)
+                                              Electronic mail: mjarret@umd.edu
+                                         b)
+                                              Electronic mail: stephen.jordan@nist.gov
+
+
+                                                                                          1
+I.    INTRODUCTION
+
+
+     The Fundamental Gap Conjecture proposed a tight lower bound of 3π 2 /D 2 to the differ-
+ence between the two lowest eigenvalues (the gap) of a Schrödinger operator −∇2 + V (x)
+with convex potential V on a compact convex domain Ω ⊂ Rn of diameter D and subject to
+Dirichlet boundary conditions. Recently, Andrews and Clutterbuck proved the conjecture for
+all “semiconvex” potentials (which include convex potentials as a special case) in arbitrary
+dimensions1 . Although the community’s focus has largely centered on the continuum1,2,8,14 ,
+as early as 1990 Ashbaugh and Benguria saw the potential for extending their results to
+discrete Laplacians. In their work, they proved a lower bound to the gap for a particular
+class of discrete Laplacians with symmetric-decreasing potentials3 . Indeed, recent interest in
+adiabatic quantum computing justifies their vision and motivates our interest in lifting con-
+tinuum results to graph Laplacians4,5 . While our interest is driven by quantum computation,
+the discrete eigenvalue gap is also of interest to condensed matter physicists. Abstractly,
+this result is a useful addition to spectral theory.
+
+     Previously, in the setting of quantum computation, gap bounds were derived on an as-
+needed basis. For instance, in an analysis of the power of adiabatic algorithms, van Dam
+et al. bounded eigenvalue gaps in the minimum Hamming weight problem by considering
+an explicit gap and then bounding the maximum error on this gap from perturbations12 .
+In another instance, Reichardt considers the eigenvalue gap for an Ising system by using
+properties of the operator’s principal submatrices11 . (At least in the case of the path graph,
+Reichardt’s Sturm sequences are similar in form to our eigenvector recurrence of eq. (17).
+For an explicit examination of the link between principal submatrices and the eigenvector
+recurrences, see Gantmakher and Kreĭn6 .) Unlike the constructions above, we look to develop
+tools of increasingly general applicability. Thus, we begin with systems where gaps are
+demonstrably “large” and search for extensions of these systems to problems of algorithmic
+and physical interest.
+
+     In this work, we consider specifically Schrödinger operators corresponding to graph Lapla-
+cians with suitably defined convex potential terms. Here, the potential is restricted to the
+vertices and can be seen either as a site-dependent physical potential (as in the physics
+literature) or as a weighted graph with loops (as in the mathematical and computer science
+literature). Thus, for a graph G = (V, E) with graph Laplacian L(G) and subjected to a
+
+                                               2
+potential W (·) we consider Schrödinger operators of the form
+
+
+                                   HW (G) = L(G) + W                                       (1)
+
+
+where
+                                        
+                                    W(V ) ij = W (Vi )δij .                                (2)
+
+Although our problem is analogous to the Fundamental Gap Conjecture as proven in the
+continuum, lifting existing results to the discrete realm and maintaining tight bounds is
+non-trivial. Perhaps the most obvious challenge we face is the loss of well-defined bound-
+ary conditions and, for this reason, we restrict our initial study to the path and hypercube
+graphs. In the first case, our restriction gives boundary conditions similar to Neumann
+boundary conditions in the continuum and thus our result bears some resemblance to the
+continuum one of Payne and Weinberger10 and indeed converges upon this result asymp-
+totically. (For the physicist, our path graph Hamiltonian can be viewed as a 1-dimensional
+chain with a nearest-neighbor interaction term and a convex, site-dependent potential term.
+See Figure 1. Up to an identity term, the Laplacian of the hypercube graph of 2N vertices,
+H2N , is equivalent to a sum of the Pauli σx operators acting on each of N qubits. In par-
+ticular, transverse Ising models such as those studied in5 can be cast as potentials on the
+hypercube. Here, like Reichardt11 and van Dam et al.12 , but unlike Farhi et al.5 , we focus
+on the case that the potential depends only on the Hamming distance from a minimum. For
+the hypercube graph see Figure 1.)
+
+
+
+
+             PN    1   2   3   ... N                                            ...
+
+                                                   H2         H4       H8
+
+
+ FIG. 1. The path graph PN of length N and the first three hypercube graphs H2 ,H4 , and H8 .
+
+
+  In particular, we show that for convex potentials on the path graph PN of length N the
+gap Γ is bounded by the gap corresponding to the flat potential
+                                                 π 
+                                   Γ ≥ 2 1 − cos        .                                  (3)
+                                                  N
+
+                                             3
+On the hypercube graph H2N , for convex potentials dependent only upon vertex Hamming
+weight, we prove a similar flat-potential lower bound given by
+
+                                                   Γ ≥ 2.                                     (4)
+
+
+II.     PRELIMINARIES
+
+A.      The graph Laplacian and its Eigenvalues
+
+      Let G = (V, E) be an undirected graph with vertex set V and edge set E ⊆ V × V . Then
+we associate with G a degree matrix D(G) and an adjacency matrix A(G) where
+                                                  
+                                               D(G) ij = di δij                               (5)
+
+with di the degree of vertex Vi ∈ V and
+                                                  
+                                                1 if (Vi , Vj ) ∈ E
+                                                  
+                                     A(G) ij =                                                (6)
+                                                  0 otherwise.
+                                                  
+
+      One then defines the |V | × |V | graph Laplacian L(G) as the difference between the degree
+matrix and adjacency matrix. That is,
+
+                                       L(G) = D(G) − A(G).                                    (7)
+
+      We now extend our attention to a more general class of Schrödinger operators of the form
+                                                 def
+                                      HW (G) = L(G) + W(V )                                   (8)
+
+where for some function W : V → R, W is the diagonal matrix defined by
+                                              def
+                                         W(V ) ij = W (Vi )δij .                              (9)
+
+We can think of the resulting matrix as either the graph Laplacian for a weighted graph with
+loops or as a Schrödinger operator (Hamiltonian) with an external potential. The eigenvalue
+spectrum of HW (G) is λ1 ≤ λ2 ≤ · · · ≤ λ|V | with associated, normalized eigenvectors
+u(λ1 ), u(λ2 ), . . . , u(λ|V | ). Suppose now that we consider the one parameter family HW (G; α)
+with
+                                      HW (G) = HW (G; α)                .                    (10)
+                                                                  α=0
+
+If λk is an eigenvalue of HW (G; α) with no degeneracy, the Hellman-Feynman theorem
+governs the relationship between λk and α. That is,
+
+                                                       4
+Theorem 1 (Hellman-Feynman). Let H(α) be a Hermitian operator (matrix) dependent
+upon a parameter α with non-degenerate eigenvalue λ(α) and associated eigenvector u(λ; α).
+Then                                                      *      +
+                 dλ(α) X ∗            d H(α) ij              d H(α) ij
+                      =     ui (λ; α)           uj (λ; α) ≡                                   (11)
+                  dα    i,j
+                                         dα                     dα
+                                                                                     u(λ;α)
+                       th                              9
+where ui (λ; α) is the i    component of u(λ; α).
+
+     Our primary interest in this paper is the so-called Fundamental Gap,
+                                            def
+                                       Γ(α) = λ2 (α) − λ1 (α)                                 (12)
+
+the difference between the two lowest eigenvalues of HW (G; α). Assuming that both λ1 and
+λ2 are non-degenerate eigenvalues, by Theorem 1 we have that
+                                                              
+                   dΓ(α)      dHW (G; α)              dHW (G; α)
+                          =                       −                                           (13)
+                     dα            dα      u(λ2 )        dα        u(λ1 )
+
+where if we consider HW (G; α) = HαW (G),
+                                  dΓ(α)
+                                        = hWiu(λ2 ) − hWiu(λ1 ) .                             (14)
+                                   dα
+
+B.     Eigenvectors of HW (G)
+
+     In deriving bounds for Γ we make extensive use of the recurrence relations satisfied by
+the eigenvectors of HW (G). Expressing the eigenvalue equation
+
+                                     HW (G)u(λ) − λu(λ) = 0                                   (15)
+
+componentwise, we obtain the following set of linear equations.
+                                                       X
+                           (di + Wi − λ)ui (λ) =                 uj (λ) for Vi ∈ V            (16)
+                                                   (Vi ,Vj )∈E
+
+where for simplicity we let Wi = W (Vi ).
+     When G is the path graph, we always consider the labeling of V such that (Vi , Vj ) ∈
+E =⇒ j = i ± 1. Then, eq. (16) reduces to
+
+                      (2 + Wi − λ)ui (λ) = ui−1 (λ) + ui+1 (λ) for Vi ∈ V .                   (17)
+
+Here, to simplify the treatment, we introduce fictitious vertices u0 (λ) and u|V |+1 (λ). We
+correspondingly set u0 (λ) = u1 (λ) and u|V |+1 (λ) = u|V | (λ) for the path graph.
+
+                                                   5
+   For our purposes, it is often convenient to express eq. (17) in terms of difference equations.
+For this, we need the forward difference operator.
+
+Definition 1 (Forward Difference Operator). For a given sequence (ui ), we define ∆, the
+forward difference operator, by ∆ui = ui+1 − ui . We further define ∆2 , the second difference
+operator, by ∆2 ui = ui+1 − 2ui + ui−1 .
+
+   It is also useful to note that for any sequence (ui ),
+
+                                        b
+                                        X
+                                              ∆ui = ub+1 − ua .                             (18)
+                                        i=a
+
+
+Remark. The reader should note that our notation yields ∆ (∆ui ) 6= ∆2 ui . This makes ∆2
+a central difference operator, not a forward difference operator. This choice is convenient,
+since it allows us to easily keep track of indices as seen below in eq. (19).
+
+   Now, applying Definition 1, eq. (17) becomes
+
+                                    ∆2 ui (λ) = (Wi − λ)ui (λ)                              (19)
+
+which, similar to the second derivative of a continuous function, is an expression of the
+convexity of u at ui .
+   We now define some other useful properties of sequences, which we will apply to both
+sequences and vectors without restatement.
+
+Definition 2 (Generalized Zero). For a given sequence (ui ) we call um ∈ (ui ) a generalized
+zero if um um+1 < 0 or um = 0.
+
+Definition 3. For a given sequence (ui ) we call the piecewise linear curve connecting Carte-
+sian coordinates (i, ui ) the u-line.
+
+Definition 4. For a given sequence (ui ) we call a point at which the u − line intersects zero
+a node and label it by its x-coordinate. From Definition 2 if um ∈ (ui ) is a generalized zero,
+then the u-line has a node at x with x ∈ [m, m + 1).
+
+   For two sequences (ui ), (vi ) we will frequently need the discrete analogue of the Wronskian,
+the Casoratian sequence (wi ). Suppose that u(µ; β), u(λ; α) are two sequences (vectors)
+
+                                                  6
+with µ > λ, satisfying eq. (17), and parameterized by β and α respectively. Then, we are
+interested in
+
+                                    
+                 wi u(µ; β), u(λ; α) = ui+1(µ; β)ui (λ; α) − ui (µ; β)ui+1(λ; α)          (20)
+
+which, when applied to eq. (17) yields
+                                        
+                  ∆wi−1 u(µ; β), u(λ; α) = ΘW,i (µ − λ; β, α)ui(µ; β)ui(λ; α)             (21)
+
+where
+                                           def
+                              ΘW,i (γ; β, α) = Wi (β) − Wi (α) − γ.                       (22)
+
+
+III.    THE PATH GRAPH PN
+
+     For the path graph PN depicted in Figure 1, we are interested in the case of convex
+potentials, for which we offer the following definition:
+
+Definition 5. Let Ja, bK = {a, a + 1, . . . , b − 1, b}. Let PN be the path graph with vertex
+                                      
+set V = {Vi }i∈J1,N K and edge set E = (Vi , Vi+1 ) i∈J1,N −1K . Let W be the set of all convex
+functions w : R → R. We call W : V → R convex if there exists some w ∈ W such that
+W (Vi ) = w(i) ∀ Vi ∈ V .
+     We similarly define the term “linear” and denote its set L.
+
+     We begin by using variational arguments to demonstrate that the gap corresponding to
+each W ∈ W is bounded from below by the gap corresponding to some L ∈ L. This approach
+is modeled on that used by Lavine in the continuum.8 Then, we use the geometry of the
+eigenvectors of HL (PN ) to demonstrate that the gap of each linear potential L is bounded
+from below by the gap for a constant potential.
+
+
+A.     The gap for convex potentials is lower bounded by the gap for linear
+potentials.
+
+     The eigenvalues of HW (PN ) are real and ordered λ1 < λ2 < · · · < λN . Also, recall that
+we have introduced fictitious points u0 (λ) and uN +1 (λ) to satisfy the recurrence eq. (17).
+Then we have the following fact about the intersections of the u(λ1 )-line and u(λ2 )-line.
+
+                                                 7
+Lemma 1. Let 0 ≤ λ1 < λ2 be the two lowest eigenvalues of HW (PN ) for convex W ,
+and let u(λ1 ), u(λ2 ) be their corresponding eigenvectors. Then, ∃m < n ∈ J1, NK such
+that u2i (λ2 ) − u2i (λ1 ) ≥ 0 for all i ∈ J1, mK ∪ Jn + 1, NK and u2i (λ2 ) − u2i (λ1 ) < 0 for all
+i ∈ Jm + 1, nK.
+
+Proof. The intersections of u(λ1 ) and u(λ2 ) can be characterized by the behavior of the
+quantity
+                                          
+                                ui (λ2 )ui+1 (λ2 )ui (λ1 ) − ui (λ2 )ui+1 (λ1 )
+                        ∆                      =                                            (23)
+                                ui (λ1 )          ui+1(λ1 )ui (λ1 )
+                                                            
+                                        wi u(λ2 ), u(λ1 )
+                                     ≡                        .                             (24)
+                                         ui+1 (λ1 )ui (λ1 )
+                                             
+   For simplicity, let wi = wi u(λ2 ), u(λ1 ) . Then, in eq. (21) we can set α = β = 0, yielding
+
+                                           ∆wi−1 = −Γui (λ2 )ui (λ1 )                          (25)
+
+and since u0 (·) = u1 (·) and uN (·) = uN +1 (·), w0 = wN = 0. Thus, from eqs. (18) and (25)
+we have
+                                                         n−1
+                                                         X
+                                     wn = w0 +                  ∆wi                            (26)
+                                                         i=0
+                                                     n−1
+                                                     X
+                                            = −Γ            ui+1 (λ2 )ui+1(λ1 )                (27)
+                                                      i=0
+                                                   N
+                                                   X −1
+                                            =Γ           ui+1 (λ2 )ui+1 (λ1 ).                 (28)
+                                                   i=n
+
+Here, because HW (PN ) is a Jacobi matrix, we are free to choose u(λ1 ) as everywhere positive
+and u(λ2 ) as initially positive with no loss of generality. Further, it is known that u(λ1 )
+has no generalized zeros and u(λ2 ) has exactly one, which we identify with uσ (λ2 ). (See e.g.
+Gantmakher.6 ) Then, from eq. (27)
+                                                      n−1
+                                                      X
+                                    wn≤σ = −Γ                   ui+1 (λ2 )ui+1 (λ1 )           (29)
+                                                         i=0
+                                               ≤0                                              (30)
+
+   Similarly, from eq. (28)
+                                                     N
+                                                     X −1
+                                     wn>σ = Γ               ui+1 (λ2 )ui+1 (λ1 )               (31)
+                                                     i=n
+                                               ≤0                                              (32)
+
+                                                            8
+so that we have wn ≤ 0 ∀ n ∈ J0, NK.
+   Finally, by eq. (24) we arrive at
+                                             
+                                     ui (λ2 )
+                                ∆               ≤ 0 ∀ i ∈ J0, NK .                              (33)
+                                     ui (λ1 )
+
+Now, this sequence can be divided into three regions, where we will find that at least two of
+these regions are nonempty. Specifically, that this quantity is always decreasing guarantees
+that there exists some choice of m < n ∈ J1, NK such that
+                                        
+                                 ui (λ2 )
+                                           > 1,         i ∈ J1, mK
+                              ui (λ1 )
+                             
+                             
+                             
+                                                  
+                                            (λ2 )
+                              −1 ≤ uuii (λ   1)
+                                                    ≤ 1, i ∈ Jm + 1, nK                         (34)
+                             
+                                        
+                              ui (λ2 ) < −1,
+                             
+                                                         i ∈ Jn + 1, NK
+                                 ui (λ1 )
+
+                             N
+and hence u2i (λ2 )−u2i (λ1 ) i=1 has at most two generalized zeros. Further, that ui (λ2 ), ui (λ1 )
+                                                                                N
+are normalized and orthogonal eigenvectors guarantees that u2i (λ2 ) −u2i (λ1 ) i=1 has at least
+one generalized zero. Thus, our proof is complete.
+
+   Using Lemma 1 we now prove a discrete analogue of Lemma 3.2 from Lavine8 :
+
+Lemma 2. Let W be the set of convex potentials and L ⊆ W be the set of linear potentials.
+Let u(λ1 ), u(λ2 ) be the two lowest eigenvectors of some HW (PN ) satisfying eq. (34). Then,
+∀ W ∈ W ∃L ∈ L | Γ(HW (PN )) ≥ Γ(HL (PN )).
+
+Proof. Identify with W (Vi ) a convex function w : R → R such that w(i) = W (Vi ) ∀ i ∈
+J1, NK. Then, we define the linear function lw : R → R as
+                                                                 
+                                 1
+                      lw (i) =          (n − i)w(m) + (i − m)w(n)                               (35)
+                               n−m
+with n and m defined as in Lemma 1, and identify it with the corresponding LW ∈ L.
+Notably, LW (Vi ) ≤ W (Vi ) ∀ i ∈ J1, mK ∪ Jn + 1, NK and L(Vi ) ≥ W (Vi ) ∀ i ∈ Jm + 1, nK.
+Then, clearly
+                             hW − LW iu(λ2 ) − hW − LW iu(λ1 ) ≥ 0                              (36)
+
+where equality is obtained only when W = LW .
+   Now we consider the Schrödinger operator that satisfies
+
+                                    HW (PN ; α) = HW (α) (PN )                                  (37)
+
+                                                9
+and identify with W (α) the convex function w(i; α)
+
+                                        w(i; 0) = w(i)                                        (38)
+                                       dw
+                                          (i; α) = lw(·;α) (i) − w(i; α).                     (39)
+                                       dα
+Thus, by eqs. (13) and (36) we have that the gap of HW (α) (PN ) decreases with α and
+additionally that
+                            Z α
+                                      es−α
+                                                                                         
+              −α
+                                                                                        
+ w(i; α) = e       w(i) +                       (n(s) − i)w m(s); s + (i − m(s))w n(s); s ds. (40)
+                             0    n(s) − m(s)
+Hence, as α increases, we have that w(i; α) gets arbitrarily close to a linear function and
+therefore W (α) gets arbitrarily close to some function in L.
+
+
+B.     The gap for linear potentials is lower bounded by the gap for constant
+potentials.
+
+     We start with u(λ2 ), u(λ1 ) as the eigenvectors of HW (PN ) for some W ∈ W. By Lemma 2
+we need only demonstrate that gaps associated with the class of linear potentials are lower
+bounded by the gaps associated with the constant potential. Because we are confined to
+a discrete setting, this takes a bit of work. The overall strategy is as follows: First, we
+restrict ourselves to a particular class of linear potentials and demonstrate that u(λ1 ) is
+strictly decreasing. Then, we prove some facts about the ordering of the components of
+u(λ2 ) around its node. Next, we demonstrate that for positive slopes, u(λ2 ) always has a
+node left of center. These facts combine to complete our proof.
+     We introduce the notation [U]ij = (i − 1)δij for the unit linear potential. Note that for
+any linear potential L ∈ L with slope α, the potential αU has the same gap. Thus, we
+restrict our study to the unit potential multiplied by some parameter α. Further, symmetry
+allows us to restrict ourselves to the case that α ≥ 0.
+     Our goal is to demonstrate that
+                                                  dΓ(α)
+                                                        >0                                    (41)
+                                                   dα
+for all α ≥ 0.
+     We make use of the following lemma to reduce to the case that u21 (λ2 ) > u21 (λ1 ):
+
+Lemma 3. Let αU ∈ L where U is the unit-linear potential. Then, for HαU (PN ), if u21 (λ2 ) ≤
+u21 (λ1 ), eq. (41) is satisfied.
+
+                                                     10
+Proof. By eq. (13),
+                                    N
+                            dΓ(α) X 2
+                                       ui (λ2 ) − u2i (λ1 ) (i − 1)
+                                                           
+                                 =                                                           (42)
+                             dα    i=1
+                                         N
+                                         X
+                                               u2i (λ2 ) − u2i (λ1 ) (i − c)
+                                                                    
+                                     =                                                       (43)
+                                         i=1
+
+
+for any constant c. (Recall that the u(λ) are normalized eigenvectors.) From Lemma 1
+we know that if u21(λ2 ) ≤ u21 (λ1 ) then ∃n < N such that u2i (λ2 ) − u2i (λ1 ) > 0 for all
+i > n. Choosing c = n we get that eq. (43) is non-negative for each term of the sum, thus
+completing the proof.
+
+   Having reduced to the case that u21 (λ2 ) ≥ u21 (λ1 ), we now prove that u(λ1 ) is a decreasing
+sequence:
+
+Lemma 4. Let HαU (PN ) be defined as in Lemma 3. Then, u(λ1 ) is a decreasing sequence.
+Further, for α > 0, u(λ1 ) is strictly decreasing.
+
+Proof. First we note that at the boundaries, ∆u0 (λ1 ) = ∆uN (λ1 ) = 0. Thus we know that
+the boundaries are local extrema of the u(λ1 )-line. Now, we note that by eq. (17)
+
+                                     u2 (λ1 )
+                                              = (1 − λ1 ) ≤ 1                                (44)
+                                     u1 (λ1 )
+
+where the inequality is strict for α > 0 since this requires that λ1 > 0. Thus, the u(λ1 )-line
+is initially decreasing. Note that from eq. (19) when W = U, ∆2 ui (λ1 ) has at most one
+sign change. Thus, the second boundary term cannot be a maximum and, therefore, both
+boundaries must be global extrema. We therefore have that u(λ1 ) is decreasing for α ≥ 0
+and strictly decreasing for α > 0.
+
+   We now recall a theorem by Cauchy and use it to derive an upper bound for λ2 :
+
+Theorem 2 (Cauchy Interlace Theorem). Let A be an N × N Hermitian matrix with
+eigenvalues λ1 ≤ λ2 ≤ · · · ≤ λN . Suppose that B is an (N − 1) × (N − 1) principal submatrix
+of A with eigenvalues µ1 ≤ µ2 ≤ · · · ≤ µN −1 . Then, the eigenvalues are ordered such that
+λ1 ≤ µ1 ≤ λ2 ≤ µ2 ≤ · · · ≤ λN −1 ≤ µN −1 ≤ λN .
+
+Proof. For proof, we refer the reader to Hwang.7
+
+                                                 11
+Lemma 5. Suppose that an N × N Hermitian matrix A with N ≥ 3 has the 3 × 3 principal
+submatrix                                                       
+                                             2−δ    −1      0
+                                                      
+                                B(δ) =  −1 2 + α −1 
+                                                      
+                                                      
+                                         0   −1 2 + 2α
+with δ ≥ 0. Then, if λ2 is the second lowest eigenvalue of A, λ2 ≤ 2 + α.
+
+Proof. Let µ1 (δ) ≤ µ2 (δ) ≤ µ3 (δ) be the eigenvalues of B(δ). That λ2 ≤ µ2 (δ) is obvious
+from repeated applications of Theorem 2. From, Theorem 1,
+                                             dµ2 (δ)
+                                                     ≤0                                     (45)
+                                               dδ
+and by direct calculation, µ2 (0) = 2 + α. Thus, λ2 ≤ 2 + α.
+
+   Lemma 5 now combines with the following fact to give an ordering of the components of
+u(λ2 ):
+
+Lemma 6. Let HαU (PN ) be defined as in lemma 3 and let u(λ) be an eigenvector. Define
+the quantity
+                                       def
+                               ui+ǫ (λ) = ǫui+1 (λ) + (1 − ǫ)ui (λ).                        (46)
+
+Then, for ui (λ) not a generalized zero,
+
+                        ui+1+ǫ (λ) = (2 + α(ji+ǫ − 1) − λ) ui+ǫ − ui−1+ǫ                    (47)
+
+for some ji+ǫ ∈ [i, i + 1].
+
+Proof. First, note that from eq. (17)
+
+      ui+1+ǫ (λ) = (2 − λ) ui+ǫ (λ) + α (iǫui+1 (λ) + (i − 1)(1 − ǫ)ui (λ)) − ui−1+ǫ (λ).   (48)
+
+Now, with sign(ui+1 (λ)) = sign(ui (λ)), there exists a ji+ǫ ∈ [i, i + 1] such that
+
+            iǫui+1 (λ) + (i − 1)(1 − ǫ)ui (λ) = (ji+ǫ − 1) (ǫui+1 (λ) + (1 − ǫ)ui (λ)) .    (49)
+
+Thus, eq. (48) becomes
+
+                     ui+1+ǫ (λ) = (2 + α(ji+ǫ − 1) − λ) ui+ǫ (λ) − ui−1+ǫ (λ).              (50)
+
+
+
+
+                                               12
+Lemma 7 (Ordering u(λ2 )). Let HαU (PN ) be defined as in Lemma 3. Let x represent the
+first node of the u(λ2 )-line and let um (λ2 ) be the corresponding generalized zero. Suppose
+that x ≤ (N + 1)/2. Let ui+ǫ (λ) be defined as in Lemma 6. Then,
+                    
+                     um+k+ǫ (λ2 ) for m ≤ x ≤ m + 1 and k ∈ J0, m − 1K
+                    
+                      um−1−k+ǫ (λ2 )                 2
+             −1≥                                                                        (51)
+                     um+k+ǫ(λ2 ) for m + 1 < x ≤ m + 1 and k ∈ J1, mK.
+                    
+                      um−k+ǫ (λ2 )         2
+
+Proof. We proceed to prove this lemma by induction. First, consider the case that m+1/2 ≤
+x < m + 1 for some m ∈ J1, ⌊N/2⌋K. For simplicity, let u(λ2 ) = u. Then, there exists an ǫ
+such that (1 − ǫ)um + ǫum+1 = 0. So, from eq. (48) we can consider the base case
+
+                                 um+1+ǫ = ǫαum+1 − um−1+ǫ                               (52)
+                                         < −um−1+ǫ .                                    (53)
+
+For the induction, rearrange eq. (47) for terms left and right of the node,
+          um+k+2+ǫ + um+k+ǫ um−k−2+ǫ + um−k+ǫ
+                           −                  = α(jm+k+1+ǫ − jm−k−1+ǫ ) > 0.            (54)
+              um+k+1+ǫ          um−k−1+ǫ
+Now assume
+                                     um+k+ǫ     um−k+ǫ
+                                             ≤                                          (55)
+                                    um+k+1+ǫ   um−k−1+ǫ
+thus, by eq. (54)
+                                    um+k+2+ǫ   um−k−2+ǫ
+                                             ≥          .                               (56)
+                                    um+k+1+ǫ   um−k−1+ǫ
+Thus,
+                                    um+k+2+ǫ   um+k+1+ǫ
+                                             ≤          .                               (57)
+                                    um−k−2+ǫ   um−k−1+ǫ
+Finally, taking k = 0, eq. (52) satisfies eq. (55) and
+                                        um+k′+ǫ
+                                                ≤ −1                                    (58)
+                                        um−k′+ǫ
+for all k ′ ∈ J1, mK.
+   Next we consider the case that m ≤ x < m + 1/2. In this case, by Definition 4 we can
+choose ǫ such that um+ǫ = −um−1+ǫ . Then,
+          um+k+1+ǫ + um+k−1+ǫ um−k−2+ǫ + um−k+ǫ
+                             −                  = α(jm+k+ǫ − jm−k−1+ǫ ) > 0.            (59)
+                um+k+ǫ            um−k−1+ǫ
+This time, assume
+                                    um+k−1+ǫ    um−k+ǫ
+                                             ≤                                          (60)
+                                     um+k+ǫ    um−k−1+ǫ
+
+                                             13
+then, by eq. (59)
+                                     um+k+1+ǫ   um−k−2+ǫ
+                                              ≥          .                               (61)
+                                      um+k+ǫ    um−k−1+ǫ
+Hence,
+                                     um+k+1+ǫ    um+k+ǫ
+                                              ≤          .                               (62)
+                                     um−k−2+ǫ   um−k−1+ǫ
+Again, taking k = 0, we have that
+
+                                    um+k′+ǫ      um+ǫ
+                                              ≤        ≤ −1.                             (63)
+                                   um−1−k′ +ǫ   um−1+ǫ
+
+for all k ′ ∈ J0, m − 1K.
+
+   Now, we recall a theorem due to Gantmakher and Kreĭn:6
+
+Theorem 3. Let u(µ; α),u(λ; β) be two vectors of length N satisfying eq. (17) and with
+
+                               ΘW,i (µ − λ; α, β) ≤ 0 ∀ i ∈ Jm, nK                       (64)
+
+where ΘW,i (µ − λ; α, β) < 0 for at least some i ∈ Jm, nK. We extend both vectors to length
+N + 2 by including nodes at u0 and uN +1 . (So long as eq. (17) is satisfied, despite previous
+choices of u0 and uN +1 , these points are always considered nodes.) Let η ∈ [m − 1, m), ξ ∈
+(n, n + 1] be two adjacent nodes of u(λ; β) with m ≤ n ∈ J0, N + 1K. Then there exists at
+least one node of u(µ; α) between η and ξ.
+
+Proof. This fact is adapted directly from Gantmakher and Kreĭn, with modifications made
+to allow for our parameterization. The argument is provided in detail in Appendix A for
+the unfamiliar reader.
+
+
+Lemma 8. Let HαU (PN ) be defined as in Lemma 3. u(λ2 ) always has a node at or left of
+x = (N + 1)/2.
+
+Proof. We only want to consider variations with respect to one parameter, so we fix λ =
+µ0 , α = β0 . Then, we note that, by eq. (22), ΘU,i is an increasing sequence in i. Now, we
+assume that there exists a node of u(µ0 ) at x = (N + 1)/2. Next, at β = β0 and µ = µ0 ,
+ΘU,i is identically 0. Then,
+
+                            dΘU,i           dµ
+                                     = Ui −         = Ui − hUiu(µ0 )                     (65)
+                             dβ µ=µ0        dβ µ=µ0
+
+                                              14
+Our assumption that u(µ0 ) at x = (N + 1)/2 requires that ǫ = 1 in Lemma 7. Then,
+Lemma 7 becomes an exact statement about the ordering of the components of u(µ0 ).
+Hence, hUiu(µ0 ) ≥ (N − 1)/2 and we have that
+                                                         N −1
+                       U⌊ N+1 ⌋ − hUiu(µ0 ) ≤ U⌊ N+1 ⌋ −                                 (66)
+                           2
+                                                2
+                                                         2 
+                                                 N +1          N −1
+                                            =             −1 −                           (67)
+                                                    2            2
+                                           ≤ 0.                                          (68)
+
+Further, in the same fashion
+                                   U⌊ N+1 −1⌋ − hUiu(µ0 ) < 0.                           (69)
+                                       2
+
+
+Hence, for some β − β0 = ξ > 0 with ξ sufficiently close to 0, ΘU,i ≤ 0 ∀ i ∈ J1, ⌊(N + 1)/2⌋K
+with at least some i such that ΘU,i < 0. Thus, at β = β0 the node of u(λ2 ) shifts left as β
+increases. Note that if β = β0 = 0, symmetry forces the node of the u(µ)-line to occur at
+x = (N + 1)/2. Thus, there is initially a node at (N + 1)/2 and whenever there is a node at
+x = (N + 1)/2 it shifts left. Hence, there is always a node at or left of (N + 1)/2.
+
+Remark. In fact, with some of the facts that follow, we demonstrate that the node shifts
+left with increasing α. For proof, see Appendix B.
+
+   Lemma 8 allows us to strengthen Lemma 7 through the following fact:
+
+Lemma 9. Let HαU (PN ) be defined as in Lemma 3. Let x represent the first node of the
+u(λ2 )-line. Then, there exists a symmetric region S = J1, mK about x such that u(λ2 ) is a
+decreasing sequence.
+
+Proof. We begin by considering the first point after the node such that u(λ2 ) is increasing
+and label it by m such that ∆um (λ2 )∆um−1 (λ2 ) < 0. Then,
+
+                    um+1 (λ2 ) = (2 + α(m − 1) − λ2 ) um (λ2 ) − um−1 (λ2 ).             (70)
+
+Now, rearranging eq. (70)
+                                                     
+                            um+1 (λ2 )
+         um (λ2 ) = 2 + 1 −              + α(m − 1) − λ2 um (λ2 ) − um−1 (λ2 ).          (71)
+                             um (λ2 )
+Note that in eq. (71), because um (λ2 ) ≤ um+1 (λ2 ) < 0, we know that 1 > um+1 (λ2 )/um (λ2 )
+and thus (ui (λ2 ))i∈J1,mK is an eigenvector of HW (Pm ) where
+                                                               
+                                                     um+1 (λ2 )
+                                Wi = αUi + δim 1 −                .                      (72)
+                                                      um (λ2 )
+
+                                              15
+By Lemma 8 the second eigenvector of HαU (Pm ) has a node left of center. Since λ2 is greater
+than the second eigenvalue of HαU (Pm ) and we know that W is identical to U in all but
+the mth component, we have by Theorem 3 that (ui (λ2 ))i∈J1,mK has a node left of center.
+Further, by our assumptions, (ui (λ2 ))i∈J1,mK is a decreasing sequence. Therefore, there exists
+a symmetric region S = J1, mK about x such that u(λ2 ) is strictly decreasing.
+
+
+   Using Lemma 9 we now prove a corollary to Lemma 7 that holds regardless of whether
+the node falls directly on a vertex:
+
+Corollary 1. Let HαU (PN ) and x be defined as in lemma 7. Let u(λ2 ) be a decreasing
+sequence. Then,
+                         
+                          um+k+1 (λ2 ) for m ≤ x ≤ m + 1 ∀k ∈ J0, m − 1K
+                         
+                            um−k (λ2 )                        2
+                  −1≥                                                                      (73)
+                          um+2+k (λ2 ) for m + 1 < x ≤ m + 1∀k ∈ J1, mK.
+                         
+                            um−k (λ2 )              2
+
+
+Proof. For the first case, assume that m + 1/2 ≤ x < m + 1 for some m ∈ J1, ⌊N/2⌋K. Then,
+from Lemma 7 we have that
+
+                          um+k+ǫ(λ2 )        1
+                   −1≥                for m + < x ≤ m + 1∀k ∈ J1, mK.                      (74)
+                          um−k+ǫ(λ2 )        2
+
+Then, since u(λ2 ) is decreasing, um+1+k ≤ um+k+ǫ and also um−k+ǫ ≥ um+1−k . Thus,
+
+                                          um+k+ǫ (λ2 )   um+1+k (λ2 )
+                              −1 ≥                     ≥              .                    (75)
+                                          um−k+ǫ (λ2 )   um+1−k (λ2 )
+
+   Similarly, for the case that m ≤ x < m + 1/2, we have that
+
+                          um+k+ǫ (λ2 )                 1
+                  −1 ≥                  for m ≤ x ≤ m + ∀k ∈ J1, m − 1K.                   (76)
+                         um−1−k+ǫ (λ2 )                2
+
+In this case, we have that um−1−k+ǫ ≥ um−k . So that finally,
+
+                                          um+k+ǫ (λ2 )    um+1+k (λ2 )
+                             −1 ≥                       ≥              .                   (77)
+                                         um−1−k+ǫ (λ2 )    um−k (λ2 )
+
+
+
+
+Theorem 4. For PN ,
+                                                    π 
+                                  ΓW ∈W ≥ 2 1 − cos        .                               (78)
+                                                     N
+
+                                                  16
+Proof. From Theorem 1 we know that so long as hUiu(λ2 ) −hUiu(λ1 ) > 0, the gap is increasing.
+   Consider a set of indices Sm symmetric about m, the index corresponding to the first
+                                                                
+generalized zero um (λ2 ) of u(λ2 ). Now, define v(λi ) = u(λi ) i∈Sm . From Lemmas 4 and 7
+we know that
+                                       U v(λ2 ) ≥ U v(λ1 ) .                                 (79)
+
+where we restrict U to the same number of terms as v(λ2 ).
+   By Lemma 8 we know that the node of the u(λ2 )-line must occur at or before the midpoint
+of u(λ2 ). Thus, Sm can be taken as Sm = J1, 2m + 1K. By Lemma 3 we restrict ourselves to
+the case that u21 (λ2 ) > u21 (λ1 ). With this restriction, Lemmas 4 and 7 insist that u2k (λ2 ) >
+u2k (λ1 ) ∀k ∈ J1, NK /Sm . It is then obvious that
+
+                                       U u(λ2 ) ≥ U u(λ1 )                                   (80)
+
+for α ≥ 0. Thus, we know that Γ is at a minimum for α = 0. Now, at α = 0 we find that
+λ1 = 0 and thus Γ = λ2 . Hence,
+                                                    π 
+                                  ΓW ∈W ≥ 2 1 − cos        .                                 (81)
+                                                     N
+
+
+
+
+IV.   THE HYPERCUBE GRAPH
+
+   In this section we find a tight lower bound for the gap for Hamming-symmetric convex
+potentials on the N-dimensional hypercube graph H2N = (V, E). To define H2N , we identify
+with each vertex Vi ∈ V a unique vector bi ∈ {0, 1}N . Then, we choose E = {(Vi , Vj ) |vi −
+vj | = 1}, where | · | here denotes the 1-norm. (In the language of computer science, bi , bj
+are bit-strings and |bi − bj | is their Hamming distance.) As in (8) the Schrödinger operator
+includes a potential term W. Thus, an eigenvector u(λ) of eigenvalue λ satisfies
+                                                   X
+                       (N + Wi − λ)ui (λ) =                  uj (λ) for Vi ∈ V .             (82)
+                                               (Vi ,Vj )∈E
+
+Here we restrict our attention to the case that the potential depends only on Hamming
+distance from the vertex of minimum potential. We can label this minimum by the all zeros
+string, and therefore Wi = W|bi | . In this case, the set of Hamming-symmetric vectors are an
+invariant subspace of the Schrödinger operator.
+
+                                              17
+Remark. In the language of quantum-mechanics, this is the space spanned by the N + 1
+state vectors that are uniform superpositions over bit-strings of a given Hamming weight. By
+Schrödinger’s equation, no time-evolution induced by a (possibly time-dependent) Hamming
+symmetric Hamiltonian will ever drive transitions out of this subspace. For many cases, it
+is only the gap within this subspace that is of interest.
+
+   Below, we will bound the gap within the Hamming-symmetric subspace. Here, the (nor-
+malized) uniform superpositions over bit-strings of each Hamming weight form an orthonor-
+mal basis for this subspace. Given a state-vector u(λ), let vm (λ) denote the inner product
+of u(λ) with the Hamming-weight-m basis vector. That is,
+
+                                               1        X
+                                  vm (λ) = q                     ui (λ).                    (83)
+                                               N
+                                                   
+                                               m       |bi |=m
+
+
+   Because u(λ) lies within the symmetric subspace, this corresponds to rewriting the vector
+in a different basis. For arbitrary vectors in the full Hilbert space, this would be a projection
+onto the symmetric subspace.
+   Then, with a bit of work, eq. (82) becomes
+
+                  (N + Wm − λ)vm (λ) = h(m − 1)vm−1 (λ) + h(m)vm+1 (λ)                      (84)
+
+where
+                                           p
+                                  h(m) =    (m + 1)(N − m).                                 (85)
+
+   Now, we know that eq. (84) is the recurrence relation satisfied by some Jacobi matrix
+J with eigenvalue λ ∈ (λi )N
+                           i=1 . In keeping with our typical ordering, we choose λ1 < λ2 <
+
+· · · < λN . Further, since we know that we can shift the diagonal by any c1, c ∈ R without
+altering the gap, we instead consider J → J − N 1 which satisfies the recurrence relation
+
+                     (Wm − λ)vm (λ) = h(m − 1)vm−1 (λ) + h(m)vm+1 (λ)                       (86)
+
+without any loss of generality.
+
+Remark. The reader should note that unlike Section III, v0 (λ) is not a boundary term, but
+vN +1 (λ) is. This inconsistency is an artifact of labeling vertices by their Hamming weights
+as there are vertices with Hamming weight 0, but none with Hamming weight N + 1. The
+boundary terms will be defined where appropriate.
+
+                                              18
+   Now, we define the transformation,
+                                          ′         def
+                                         vm (λ) = f (m)vm (λ)                              (87)
+
+where f (m) is given by
+                                        
+                                        f0 j∈Odd h(j−1)
+                                           Q
+                                        
+                                                   h(j)
+                                                                  if m is even
+                                  def           0<j<m
+                           f (m) =                                                         (88)
+                                        f1 Q j∈Even h(j−1)
+                                        
+                                                                  if m is odd
+                                                          h(j)
+                                                0≤j<m
+
+and we choose,                                 √
+                                         f1       N Γ(N)
+                                            = N −1                                         (89)
+                                         f0  2     (Γ( N 2+1 ))2
+where the Γ above represents the gamma function, not the gap.
+   With this transformation, we have from eqs. (86) and (87)
+             ′           ′        ′                   f (m)                        ′
+            vm−1 (λ) − 2vm (λ) + vm+1 (λ) =                 f (m + 1)(Wm − qm − λ)vm (λ)   (90)
+                                                      h(m)
+where
+                                              def 2h(m)f (m + 1)
+                                        qm =                  .                            (91)
+                                                 f (m)
+Here, our choice of qm (alternatively our choice of f1 /f0 ) maintains symmetry and consistency
+across various choices of N.
+   Now we consider the Casoratian sequence corresponding to eq. (21).
+
+                     wi (v′ (λ2 ), v′ (λ1 )) = vi+1
+                                                ′
+                                                    (λ2 )vi′ (λ1 ) − vi+1
+                                                                      ′
+                                                                          (λ1 )vi′ (λ2 )   (92)
+
+                               ′         ′
+   For consistency, we choose v−1 (·) = vN +1 (·) = 0 and we get that w−1 = wN +1 = 0. Then,
+
+from eq. (90), similarly to eq. (25), we have that
+                                                   f (k)
+                            ∆wk−1 = −Γ                      v ′ (λ2 )vk′ (λ1 ).            (93)
+                                               h(k)f (k + 1) k
+We note that since v(·) are the eigenvectors of a Jacobi matrix, v(λ1 ) has no generalized
+zeros and v(λ2 ) has precisely one generalized zero. Then, since f (m) > 0 ∀m ∈ J0, NK we
+know that v′ (λ1 ) has no zeros and v′ (λ2 ) has precisely one. Thus, labeling the generalized
+zero of v′ (λ2 ) by n, we have that
+                                        m−1
+                                        X
+                          wm≤n =              ∆wi                                          (94)
+                                     k=−1
+                                              k−1
+                                              X     f (k)
+                                  = −Γ                        vk′ (λ2 )vk′ (λ1 )           (95)
+                                           k=−1
+                                                h(k)f (k + 1)
+                                  <0                                                       (96)
+
+                                                     19
+and similarly
+                                                 N
+                                                 X
+                                wm>n = −             ∆wi                                                    (97)
+                                             k=m
+                                              N
+                                             X           f (k)
+                                       =Γ                         v ′ (λ2 )vk′ (λ1 )                        (98)
+                                                     h(k)f (k + 1) k
+                                             k=m
+                                       <0                                                                   (99)
+
+so that wi < 0 ∀ i ∈ J0, NK. As we have already seen in eq. (34), this guarantees that
+                            N
+ v ′ 2i (λ2 ) − v ′ 2i (λ1 ) i=0 has at most two generalized zeros. Now, because we have that
+
+                                2            2
+                              v ′ i (λ2 ) − v ′ i (λ1 ) = f (k)2 vi2 (λ2 ) − vi2 (λ1 )
+                                                                                         
+                                                                                                           (100)
+
+                                                                                                     N
+v ′ 2i (λ2 ) − v ′ 2i (λ1 ) has the same sign as vi2 (λ2 ) − vi2 (λ1 ) and thus, (vi2 (λ2 ) − vi2 (λ1 ))i=0 has at
+most two generalized zeros. That v(λ2 ) is orthogonal to v(λ1 ) guarantees that it has at
+least one generalized zero.
+   At this point, we have satisfied the necessary conditions to apply an obvious analogue of
+Lemma 2:
+
+Lemma 10. Let W be the set of convex potentials and L ⊆ W be the set of linear potentials.
+Let u(λ1 ), u(λ2 ) satisfying eq. (34) be real-valued eigenvectors corresponding to the two lowest
+eigenvalues of some matrix HW (PN ) + M with real eigenvalues, where M is an arbitrary
+N × N matrix independent of W . Then, ∀ W ∈ W ∃L ∈ L | Γ(HW + M) ≥ Γ(HL + M).
+
+Proof. We note that because Lemma 2 depends only upon the variational term W(α), when
+some matrix some matrix HW (PN ) + M satisfies eq. (34), the proof is identical to that of
+Lemma 2. Therefore, this proof is omitted.
+
+   The reduced Hamming-symmetric matrix corresponding to eq. (84) is equivalent to
+HW (PN +1 ) + M for some choice of M. Thus, by Lemma 10 it has a lower bound for a
+linear, Hamming-symmetric potential. Now, for such a linear potential we can consider
+αLi = α(i − N/2). Here, the eigenvalues are exactly solvable and given by
+                      √
+                λk = k 4 + α2 ∀k ∈ {−N/2, −(N − 1)/2, . . . , (N − 1)/2, N/2}.                             (101)
+
+   Then,
+                                                             √
+                                                 ΓαL∈L =         4 + α2                                    (102)
+
+                                                        20
+which is clearly minimized for α = 0. Thus, for convex, Hamming-symmetric potentials on
+the hypercube
+                                             Γ≥2                                        (103)
+
+within the Hamming-symmetric subspace.
+
+
+V.     ACKNOWLEDGEMENTS
+
+     This work was supported in part by the joint center for Quantum Information and Com-
+puter Science (QuICS), a collaboration between the University of Maryland Institute for
+Advanced Computer Studies (UMIACS) and the NIST Information Technology Laboratory
+(ITL). Portions of this paper are a contribution of NIST, an agency of the US government
+and are not subject to US copyright.
+
+
+REFERENCES
+
+1
+    Ben Andrews and Julie Clutterbuck. Proof of the fundamental gap conjecture. Journal of
+    the American Mathematical Society, 24(3):899–916, 2011.
+2
+    Mark S. Ashbaugh and Rafael D. Benguria. Optimal lower bound for the gap between the
+    first two eigenvalues of one-dimensional Schrödinger operators with symmetric single-well
+    potentials. Proceedings of the American Mathematical Society, 105(2):419–424, 1989.
+3
+    Mark S. Ashbaugh and Rafael D. Benguria. Some eigenvalue inequalities for a class of
+    Jacobi matrices. Linear Algebra and its Applications, 136:215–234, 1990.
+4
+    Edward Farhi, Jeffrey Goldstone, and Sam Gutmann. Quantum adiabatic evolution algo-
+    rithms versus simulated annealing. arXiv:quant-ph/0201031, 2002.
+5
+    Edward Farhi, Jeffrey Goldstone, Sam Gutmann, Joshua Lapan, Andrew Lundgren, and
+    Daniel Preda. A quantum adiabatic evolution algorithm applied to random instances of
+    an NP-complete problem. Science, 292(5516):472–475, 2001. arXiv:quant-ph/0104129.
+6
+    Feliks Ruvimovich Gantmakher and Mark Grigor’evich Kreĭn. Oscillation matrices and
+    kernels and small vibrations of mechanical systems. Number 345. American Mathematical
+    Soc., 2002.
+7
+    Suk-Geun Hwang. Cauchy’s interlace theorem for eigenvalues of Hermitian matrices. The
+    American Mathematical Monthly, 111(2):pp. 157–159, 2004.
+
+                                             21
+8
+     Richard Lavine. The eigenvalue gap for one-dimensional convex potentials. Proceedings of
+     the American Mathematical Society, 121(3):pp. 815–821, 1994.
+9
+     It should be noted that the theorem is typically stated for a Hermitian operator Hα
+     with eigenvalues λ0 < λ1 < · · · < λN . Care must be taken in the application of this
+     theorem when considering degenerate eigenvalues13,15 which can occur in broader classes
+     of graph Laplacians. For instance, the ring graph with constant potential has degeneracies.
+     Nonetheless, since the cases we consider in this paper are non-degenerate, we can use this
+     theorem in its above-stated form.
+10
+     L.E. Payne and H.F. Weinberger. An optimal Poincaré inequality for convex domains.
+     Archive for Rational Mechanics and Analysis, 5(1):286–292, 1960.
+11
+     Ben Reichardt. The quantum adiabatic optimization algorithm and local minima. In
+     Proceedings of STOC ’04, pages 502–510, 2004.
+12
+     Wim van Dam, Michele Mosca, and Umesh Vazirani. How powerful is adiabatic quantum
+     computation? In Proceedings of FOCS ’01, pages 279–287, 2001. arXiv:quant-ph/0206003.
+13
+     S. R. Vatsya. Comment on “Breakdown of the Hellmann-Feynman theorem: Degeneracy
+     is the key”. Phys. Rev. B, 69:037102, Jan 2004.
+14
+     Qi Huang Yu and Jia Qing Zhong. Lower bounds of the gap between the first and sec-
+     ond eigenvalues of the Schrödinger operator. Transactions of the American Mathematical
+     Society, 294(1):341–349, 1986.
+15
+     G. P. Zhang and Thomas F. George. Extended Hellmann-Feynman theorem for degenerate
+     eigenstates. Phys. Rev. B, 69:167102, Apr 2004.
+
+
+Appendix A: A sufficient condition for some node of u(µ) to separate adjacent
+nodes of u(λ)
+
+      In this section we give proof of Theorem 3. The following proof is adapted directly from
+Gantmakher and Kreĭn6 , however we consider vectors u(λ) and u(µ) which need not be
+eigenvectors of the same matrix. Rather, we require only that these vectors satisfy eq. (17).
+
+Theorem 3. Let u(µ; α),u(λ; β) be two vectors of length N satisfying eq. (17) and with
+
+                                ΘW,i (µ − λ; α, β) ≤ 0 ∀ i ∈ Jm, nK                        (64)
+
+where ΘW,i (µ − λ; α, β) < 0 for at least some i ∈ Jm, nK. We extend both vectors to length
+
+                                               22
+N + 2 by including nodes at u0 and uN +1 . (So long as eq. (17) is satisfied, despite previous
+choices of u0 and uN +1 , these points are always considered nodes.) Let η ∈ [m − 1, m), ξ ∈
+(n, n + 1] be two adjacent nodes of u(λ; β) with m ≤ n ∈ J0, N + 1K. Then there exists at
+least one node of u(µ; α) between η and ξ.
+
+Proof. First, we consider the extension of vectors u(µ; α),u(λ; β). From eq. (17) we take
+W1 7→ W1 + 1 and, for u(λ; β) get
+
+                               (1 + W1 − λ) u1(λ) = u2 (λ) + u0 (λ)                      (A1)
+
+and similarly for u(µ; α). Here, to maintain consistency between eqs. (17) and (A1) we
+require that in eq. (A1) u0 = 0. Thus, u0 is a node of u. We similarly treat uN +1 as a node.
+Further, since we have shifted W1 , WN by constants, eq. (22) is unaltered. Hence, eq. (21)
+is unchanged and we can proceed with the proof.
+   Let η ∈ [m − 1, m) and ξ ∈ (n, n + 1] be successive nodes of u(λ; β) with η < ξ. Without
+loss of generality, we assume that ui (λ; β) > 0 ∀ i ∈ Jm, nK. Then,
+                     
+                     (m − η)um−1 (λ; β) + (η − m + 1)um (λ; β) = 0
+                     
+                                                                                         (A2)
+                     (n + 1 − ξ)un (λ; β) + (ξ − n)un+1 (λ; β)
+                     
+                                                                       =0
+   Now, again without loss of generality, we assume that ui (µ; α) > 0 ∀ i ∈ Jm, nK. Hence,
+if u(µ; α) also has no nodes in (m, n), we get that
+                     
+                     (m − η)um−1 (µ; α) + (η − m + 1)um (µ; α) ≥ 0
+                     
+                                                                                         (A3)
+                     (n + 1 − ξ)un (µ; α) + (ξ − n)un+1 (µ; α)
+                     
+                                                                       ≥0
+   Combining eqs. (A2) and (A3) yields the inequalities
+                                                        
+                                   wm−1 u(µ; β), u(λ; α) ≤ 0                             (A4)
+                                                        
+                                     wn u(µ; β), u(λ; α) ≥ 0                             (A5)
+
+   Recall from eq. (21) that
+                                      
+                ∆wi−1 u(µ; β), u(λ; α) = ΘW,i (µ − λ; β, α)ui(µ; β)ui(λ; α)              (A6)
+
+where by summing both sides,
+                                               n
+                                            X
+ wn u(µ; β), u(λ; α) − wm−1 u(µ; β), u(λ; α) =   ΘW,i (µ − λ; β, α)ui(µ; β)ui (λ; α) (A7)
+                                                     i=m
+
+
+                                              23
+Thus, by eqs. (A4) and (A5) we have that the left-hand side of eq. (A7) is non-negative.
+Then, by our choice of ui (λ; α), ui (µ; β) > 0 ∀ i ∈ Jm, nK, we see that if ΘW,i (µ − λ; β, α) ≤
+0 ∀ i ∈ Jm, nK with at least some i ∈ Jm, nK such that ΘW,i (µ − λ; β, α) < 0 we arrive at a
+contradiction.
+
+
+Appendix B: For HαU (PN ), the node of u(λ2 ) shifts left with increasing α.
+
+Theorem 5. Let HαU (PN ) be defined as in Lemma 8. Then, the node of u(λ2 ) shifts left
+with increasing α.
+
+Proof. The proof proceeds in analogy to Lemma 8. First, note that by Corollary 1,
+
+                                       hUiu(λ2 ) ≥ m − 1                                    (B1)
+
+where m corresponds to the generalized zero of u(λ2 ). Then, like eq. (66)
+
+                          Um − hUiu(λ2 ) = (m − 1) − hUiu(λ2 ) ≤ 0.                         (B2)
+
+Note that because u(λ2 ) has at least one positive and one negative term, the inequality is
+strict when m = 1. If m > 1,
+                                     Um−1 − hλ2 iu(λ2 ) < 0.                                (B3)
+
+Thus, by eq. (65)
+                                    dΘU,i
+                                          < 0 ∀i ∈ J1, mK.                                  (B4)
+                                     dβ
+Hence, by the same logic as Lemma 8, Theorem 3 applies and the node always shifts left
+with increasing α.
+
+
+
+
+                                              24
+

@@ -1,0 +1,2117 @@
+                                               Improved bounds for the eigenvalues of prolate spheroidal
+                                                wave functions and discrete prolate spheroidal sequences
+
+                                                                   Santhosh Karnik, Justin Romberg, Mark A. Davenport
+                                                                                            September 29, 2020
+arXiv:2006.00427v2 [math.CA] 28 Sep 2020
+
+
+
+
+                                                                                                     Abstract
+                                                     The discrete prolate spheroidal sequences (DPSSs) are a set of orthonormal sequences in `2 (Z) which
+                                                 are strictly bandlimited to a frequency band [−W, W ] and maximally concentrated in a time interval
+                                                 {0, . . . , N − 1}. The timelimited DPSSs (sometimes referred to as the Slepian basis) are an orthonormal
+                                                 set of vectors in CN whose discrete time Fourier transform (DTFT) is maximally concentrated in a fre-
+                                                 quency band [−W, W ]. Due to these properties, DPSSs have a wide variety of signal processing appli-
+                                                 cations. The DPSSs are the eigensequences of a timelimit-then-bandlimit operator and the Slepian basis
+                                                 vectors are the eigenvectors of the so-called prolate matrix. The eigenvalues in both cases are the same,
+                                                 and they exhibit a particular clustering behavior – slightly fewer than 2N W eigenvalues are very close to 1,
+                                                 slightly fewer than N − 2N W eigenvalues are very close to 0, and very few eigenvalues are not near 1 or 0.
+                                                 This eigenvalue behavior is critical in many of the applications in which DPSSs are used. There are many
+                                                 asymptotic characterizations of the number of eigenvalues not near 0 or 1. In contrast, there are very few
+                                                 non-asymptotic results, and these don’t fully characterize the clustering behavior of the DPSS eigenvalues.
+                                                 In this work, we establish two novel non-asymptotic bounds on the number of DPSS eigenvalues between
+                                                  and 1 − . Also, we obtain bounds detailing how close the first ≈ 2N W eigenvalues are to 1 and how
+                                                 close the last ≈ N − 2N W eigenvalues are to 0. Furthermore, we extend these results to the eigenvalues
+                                                 of the prolate spheroidal wave functions (PSWFs), which are the continuous-time version of the DPSSs.
+                                                 Finally, we present numerical experiments demonstrating the quality of our non-asymptotic bounds on
+                                                 the number of DPSS eigenvalues between  and 1 − .
+
+
+
+
+                                           1    Introduction
+                                           A fundamental fact of Fourier analysis is that no non-zero signal can be simultaneously bandlimited and
+                                           timelimited. Thus, a compactly supported non-zero function cannot have a compactly supported Fourier
+                                           transform, and a non-zero function whose Fourier transform is compactly supported cannot itself be com-
+                                           pactly supported. Between 1960 and 1978, Landau, Pollak, and Slepian published a series of seminal pa-
+                                           pers [1–5] exploring to what extent a bandlimited signal can be timelimited and to what extent a timelimited
+                                           signal can be bandlimited. They formulate both of these questions as eigenproblems involving bandlim-
+                                           iting and timelimiting operators. In the continuous-time case, the eigenfunctions which are bandlimited
+                                           to the frequency band [−Ω, Ω] and are maximally concentrated in the time interval [− T2 , T2 ] are known as
+                                           the prolate spheroidal wave functions (PSWFs). In the discrete-time case, the eigensequences which are
+                                           bandlimited to frequencies [−W, W ] and are maximally concentrated in the time indices {0, 1, . . . , N − 1}
+                                           are known as the discrete prolate spheroidal sequences (DPSSs).
+                                               By truncating the DPSSs, one can form the Slepian basis vectors, which are an efficient basis for repre-
+                                           senting a window of samples from bandlimited signals [6–8]. As such, Slepian basis vectors can be used in
+                                           a variety of applications. Some classic applications include prediction of bandlimited signals based on past
+                                           samples [5] and Thomson’s multitaper method for spectral analysis [9]. More recent applications include
+                                               S. Karnik, J. Romberg, and M. A. Davenport are with the School of Electrical and Computer Engineering, Georgia Institute of
+                                           Technology, Atlanta, GA, 30332 USA (e-mail: skarnik1337@gatech.edu, jrom@ece.gatech.edu, mdav@gatech.edu). This work was
+                                           supported by a grant from Lockheed Martin and a gift from the Alfred P. Sloan Foundation.
+
+
+                                                                                                         1
+time-variant channel estimation [10,11], wideband compressive radio receivers [12], compressed sensing of
+analog signals [6], target detection [13, 14], and a fast method [15] for computing Fourier extension series
+coefficients [16, 17].
+    The eigenvalues associated with the PSWFs as well as the DPSSs (which we will refer to in this paper as
+the PSWF eigenvalues and the DPSS eigenvalues respectively) exhibit a particular clustering behavior. All
+of these eigenvalues are strictly between 0 and 1. Furthermore, most of these eigenvalues are either very
+close to 1 or very close to 0, and very few of these eigenvalues are not near 1 or 0. This clustering behavior
+plays a critical role in many applications. In [18], it is shown that the bias of Thomson’s multitaper spectral
+estimator depends on the sum of the leading DPSS eigenvalues. In [6], it is shown that the number of DPSS
+eigenvalues not near 0 determines the effective dimension of a vector of samples from a bandlimited signal.
+Also, the sum of the trailing DPSS eigenvalues bounds the error in approximating a vector of samples from
+a bandlimited signal by a linear combination of the leading DPSSs. In [8, 15, 19], the fact that only a small
+number of DPSS eigenvalues are not near 1 or 0 is exploited to perform fast computations. As such, the
+behavior of the DPSS eigenvalues is of considerable interest. There are many results (both asymptotic and
+non-asymptotic) regarding the eigenvalues associated with the PSWFs [1, 3, 20–25]. However, there are far
+fewer results regarding the DPSS eigenvalues. Furthermore, the existing non-asymptotic results don’t fully
+capture the behavior of the DPSS eigenvalues or the PSWF eigenvalues.
+    The main contribution of this work is establishing a novel non-asymptotic bound on the number of
+DPSS eigenvalues which are not close to 1 or 0, as well as non-asymptotic bounds on the DPSS eigenvalues
+themselves. We show that for any threshold  ∈ (0, 21 ), the number of DPSS eigenvalues which lie in the
+interval (, 1 − ) is bounded above by a quantity that scales like O(log(N W ) log 1 ). This improved bound
+is similar to the known asymptotic result and is a significant improvement over existing non-asymptotic
+bounds which scale like O(log(N W )/) or O(log N log 1 ). Furthermore, the fact that our bound depends on
+the time-bandwidth product N W as opposed to the time duration N allows us to obtain non-asymptotic
+bounds on the PSWF eigenvalues, which are also similar to the known asymptotic result and a substantial
+improvement over existing non-asymptotic results.
+    The rest of this work is organized as follows. In Section 2, we define DPSSs, Slepian basis vectors, and
+PSWFs, as well as review their basic properties. In Sections 3.1 and 3.2, we will outline existing results on
+the DPSS eigenvalues and the PSWF eigenvalues respectively. In Section 3.3, we state our new results. In
+Section 4, we prove two novel non-asymptotic bounds on the number of DPSS eigenvalues that are not
+within  of 1 or 0. In Section 5, we use the two new bounds to derive non-asymptotic bounds on the DPSS
+eigenvalues themselves, as well as the sum of the leading and trailing DPSS eigenvalues. In Section 6, we
+apply the results on DPSS eigenvalues to prove our results on PSWF eigenvalues. Finally, we conclude the
+paper in Section 7 with some numerical results to demonstrate the quality of our non-asymptotic bounds
+on the number of DPSS eigenvalues in (, 1 − ).
+
+
+2     Mathematical Preliminaries
+2.1    Discrete prolate spheroidal sequences and Slepian basis vectors
+We begin by defining the discrete prolate spheroidal sequences (DPSSs) and Slepian basis vectors and re-
+viewing some of their key properties. For a discrete signal x ∈ `2 (Z), we define its discrete time Fourier
+                 b ∈ L2 ([− 21 , 12 ]) by
+transform (DTFT) x
+                                                 ∞
+                                                 X
+                                       x
+                                       b(f ) =          x[n]e−i2πf n   for   f ∈ [− 21 , 12 ],
+                                                 n=−∞
+                                   √
+where we use the notation i =           −1. The inverse DTFT is given by
+                                                Z 1/2
+                                         x[n] =       b(f )ei2πf n df for n ∈ Z.
+                                                      x
+                                                   −1/2
+
+With these definitions, any x, x ∈ `2 (Z) satisfy the Parseval-Plancherel identity hx, x0 i`2 (Z) = hb
+                                   0
+                                                                                                          b0 iL2 ([−1/2,1/2]) .
+                                                                                                       x, x
+For any N ∈ N, we say that x ∈ `2 (Z) is timelimited to n ∈ {0, . . . , N −1} if x[n] = 0 for n ∈ Z\{0, . . . , N −1}.
+Also, for any W ∈ (0, 21 ), we say that x ∈ `2 (Z) is bandlimited to |f | ≤ W if x b(f ) = 0 for |f | > W .
+
+
+                                                                2
+   We can now ask the question “what signal bandlimited to |f | ≤ W has a maximum concentration of
+energy over the time indices n ∈ {0, . . . , N − 1}?”, i.e.,
+                                N
+                                X −1
+                    maximize           |x[n]|2    subject to kxk2`2 (Z) = 1 and x
+                                                                                b(f ) = 0 for |f | > W.
+                     x∈`2 (Z)
+                                n=0
+
+   To help answer this question, we define two self-adjoint operators. For a given N ∈ N we define a
+timelimiting operator TN : `2 (Z) → `2 (Z) by
+                                            (
+                                              x[n] if n ∈ {0, . . . , N − 1}
+                                (TN x)[n] =                                      .
+                                              0    if n ∈ Z \ {0, . . . , N − 1}
+
+For a given bandwidth parameter W ∈ (0, 12 ), we define a bandlimiting operator BW : `2 (Z) → `2 (Z) by
+                                                   ∞
+                                                   X   sin[2πW (m − n)]
+                                 (BW x)[n] =                            x[m] for         n ∈ Z.
+                                                  m=−∞
+                                                           π(m − n)
+
+Note that the DTFT of BW x satisfies B
+                                     [           b(f ) for |f | ≤ W and B
+                                       W x(f ) = x
+                                                                        [ W x(f ) = 0 for |f | > W .
+  For bandlimited signals x ∈ `2 (Z), we can write
+                     N
+                     X −1
+                            |x[n]|2 = hx, TN xi`2 (Z) = hBW x, TN BW xi`2 (Z) = hx, BW TN BW xi`2 (Z) .
+                     n=0
+
+Subject to the constraint kxk2`2 (Z) = 1, this is maximized by the eigensequence of BW TN BW corresponding
+to the largest eigenvalue. Slepian defined the discrete prolate spheroidal sequences (DPSSs) s0 , . . . , sN −1 ∈
+`2 (Z) as the N orthonormal eigensequences of BW TN BW corresponding to non-zero eigenvalues. The cor-
+responding eigenvalues 1 > λ0 > λ1 > · · · > λN −1 > 0 are referred to as the DPSS eigenvalues and are
+sorted in descending order. Note that the notation sk and λk hides the dependence on N and W . When it
+is necessary to make this dependence explicit, we will use the expanded notation sk (N, W ) and λk (N, W )
+respectively.
+    Slepian [5] showed that these eigenvalues are all distinct and strictly between 0 and 1. In addition to s0
+being the bandlimited sequence in `2 (Z) with a maximal concentration of energy in {0, . . . , N − 1}, it is also
+true that for each k = 1, . . . , N − 1, sk is the bandlimited sequence in `2 (Z) with a maximal concentration of
+energy in {0, . . . , N −1} subject to the additional constraint of being orthogonal to s0 , . . . , sk−1 . Furthermore
+λk is equal to the amount of energy sk has in the time interval {0, . . . , N − 1}.
+    We can also ask the question “what signal timelimited to n ∈ {0, . . . , N − 1} has a maximum concentra-
+tion of energy in the frequency band |f | ≤ W ?”, i.e.
+                    Z W
+                                2
+       maximize           x(f )| df subject to kxk2`2 (Z) = 1 and x[n] = 0 for n ∈ Z \ {0, . . . , N − 1}.
+                         |b
+         x∈`2 (Z)    −W
+
+    For timelimited signals x ∈ `2 (Z), we can write
+   Z W               D         E
+                2
+         |b
+          x(f )| df = xb, B
+                          [ Wx               = hx, BW xi`2 (Z) = hTN x, BW TN xi`2 (Z) = hx, TN BW TN xi`2 (Z) .
+    −W                                 L2 ([−1/2,1/2])
+
+Since TN BW TN is self-adjoint, the sequence x ∈ `2 (Z) which solves the above maximization problem is the
+eigensequence of the operator TN BW TN corresponding to the largest eigenvalue.
+    Clearly, the range of TN BW TN and the orthogonal complement of the kernel of TN BW TN is the N -
+dimesional space of timelimited signals. Hence, we can reduce this eigenproblem on `2 (Z) to an eigenprob-
+lem on RN . With respect to the Euclidean basis for the space of timelimited signals, the matrix representa-
+tion of TN BW TN is given by
+                                                 sin[2πW (m − n)]
+                                B[m, n] =                           for   m, n = 0, . . . , N − 1.                  (1)
+                                                     π(m − n)
+
+                                                                3
+This matrix B ∈ RN ×N is known in the literature as the prolate matrix [26, 27]. The Slepian basis vectors
+s0 , . . . , sN −1 ∈ RN are the orthonormal eigenvectors of B, where again the eigenvalues 1 > λ0 > λ1 > · · · >
+λN −1 > 0 are sorted in descending order. Note that the eigenvalues of B are the same as the eigenvalues
+of TN BW TN , which are the same as the eigenvalues of BW TN BW . Hence, we can reuse the notation λk for
+k = 0, . . . , N − 1 to denote the eigenvalues of B. The eigensequences s00 , . . . , s0N −1 ∈ `2 (Z) of TN BW TN are
+then given by s0k [n] = sk [n] for n ∈ {0, . . . , N − 1} and s0k [n] = 0 for n ∈ Z \ {0, . . . , N − 1}. Note that in
+addition to s00 being the timelimited sequence in `2 (Z) whose DTFT has a maximal concentration of energy
+in [−W, W ], it is also true that for each k = 1, . . . , N − 1, s0k is a timelimited sequence in `2 (Z) whose DTFT
+has a maximal concentration of energy in [−W, W ] subject to the additional constraint of being orthogonal
+to s00 , . . . , s0k−1 . Furthermore, the eigenvalue λk is equal to the amount of energy that the DTFT of s0k has in
+the frequency band [−W, W ].
+
+2.2    Prolate spheroidal wave functions
+The concentration problems in the previous subsection can also be posed in the continuous case. For con-
+tinuous signals in L2 (R), we define the continuous time Fourier transform and inverse Fourier transform
+by                 Z ∞                                            Z ∞
+                                                               1
+           yb(ω) =      y(t)e−iωt dt for ω ∈ R and y(t) =              yb(ω)eiωt dω for t ∈ R.
+                    −∞                                        2π    −∞
+
+With these definitions, any y, y 0 ∈ L2 (R) satisfy the Parseval-Plancherel identity hy, y 0 iL2 (R) = 2π
+                                                                                                        1
+                                                                                                           y , yb0 iL2 (R) .
+                                                                                                          hb
+   Again, for a given bandlimit Ω > 0 and duration T > 0, we can ask “what signal bandlimited to |ω| ≤ Ω
+has a maximum concentration of energy in the time interval t ∈ [− T2 , T2 ]?”, i.e.
+                            Z T /2
+                                          2
+              maximize               |y(t)| dt     subject to kyk2L2 (R) = 1 and yb(ω) = 0 for |ω| > Ω.
+                y∈L2 (R)     −T /2
+
+    Just as was done with the discrete case, we can define a self-adjoint timelimiting operator TT : L2 (R) →
+L2 (R) and a self-adjoint bandlimiting operator BΩ : L2 (R) → L2 (R) by
+                       (                                    Z ∞
+                         y(t) if |t| ≤ T2                         sin[Ω(t − t0 )] 0 0
+           (TT y)(t) =                    and   (BΩ y)(t) =                      y(t ) dt for t ∈ R,
+                        0     if |t| > T2                    −∞     π(t − t0 )
+
+and write          Z T /2
+                                 2
+                            |y(t)| dt = hy, TT yiL2 (R) = hBΩ y, TT BΩ yiL2 (R) = hy, BΩ TT BΩ yiL2 (R)
+                    −T /2
+
+for any bandlimited signal y ∈ L2 (R).
+    The result is that the solution to this concentration problem is top eigenfunction of the operator BΩ TT BΩ .
+The orthonormal eigenfunctions ψ0 , ψ1 , . . . ∈ L2 (R) of the self-adjoint operator BΩ TT BΩ are known as the
+prolate spheroidal wave functions (PSWFs), and the corresponding eigenvalues 1 > λ        e0 > λe1 > · · · > 0 are
+known as the PSWF eigenvalues, and are sorted in decreasing order.
+    It is easy to check that the timelimited PSWFs TT ψk for k ∈ N are the eigenfunctions of the operator
+TT BΩ TT with the same corresponding eigenvalues λ        ek . The action of the operator TT BΩ TT on a signal
+y ∈ L2 (R) is given by
+                                                 Z T /2
+                                                        sin[Ω(t − t0 )] 0 0
+                           (TT BΩ TT y)(t) =                           y(t ) dt   for   t ∈ [− T2 , T2 ].
+                                                  −T /2   π(t − t0 )
+
+With a simple change of variable, it can be shown that the eigenvalues of the above kernel integral operator
+only depend on the product ΩT . When it is necessary to denote this dependence, we use the notation λ       ek (c)
+to denote λek for values of Ω, T > 0 which satisfy ΩT /2 = c.
+    As in the discrete case, ψ0 is the signal bandlimited to |ω| ≤ Ω whose energy is maximally concentrated
+in the time interval t ∈ [− T2 , T2 ], and for each integer k ≥ 1, ψk is the signal bandlimited to |ω| ≤ Ω whose
+
+
+                                                                4
+                                                 −1
+Figure 1: A plot of the DPSS Eigenvalues {λk }N                               1
+                                                k=0 for N = 1000 and W = 8 . These eigenvalues satisfy
+λ243 ≈ 0.9997 and λ256 ≈ 0.0003. Only 12 of the 1000 DPSS eigenvalues lie in (0.001, 0.999).
+
+
+energy is maximally concentrated in the time interval t ∈ [− T2 , T2 ] subject to the additional constraint of
+being orthogonal to ψ0 , . . . , ψk−1 . Furthermore, the eigenvalue λek is the equal to the energy of ψk in the
+time interval t ∈ [− T2 , T2 ]. Also, TT ψ0 is the signal timelimited to t ∈ [− T2 , T2 ] whose Fourier transform
+is maximally concentrated in the frequency band |ω| ≤ Ω, and for each integer k ≥ 1, TT ψk is the signal
+timelimited to t ∈ [− T2 , T2 ] whose Fourier transform is maximally concentrated in the frequency band |ω| ≤
+Ω subject to the additional constraint of being orthogonal to TT ψ0 , . . . , TT ψk−1 . Furthermore, the eigenvalue
+ek is the equal to the fraction of energy that TT ψk has in the frequency band |ω| ≤ Ω.
+λ
+
+
+3     Eigenvalue Behavior
+3.1   Prior results on DPSS eigenvalues
+ShowingR that the DPSS   eigenvalues
+                            R          are strictly
+                                                    between 0 and 1 is a trivial consequence of the facts that
+          W           2        1/2         2
+λk = −W |b    sk (f )| df / −1/2 |bsk (f )| df and that b  sk (f ) is a non-zero analytic function. It is also easy
+                                                          PN −1
+to check that the sum of all the DPSS eigenvalues is k=0 λk = trace(B) = 2N W . What is perhaps more
+interesting is that the DPSS eigenvalues obey a particular clustering behavior. For any  ∈ (0, 12 ), slightly
+fewer than 2N W eigenvalues lie in [1 − , 1), slightly fewer than N − 2N W eigenvalues lie in (0, ], and
+very few eigenvalues lie in the transition region (, 1 − ). In Figure 1, we demonstrate this phenomenon by
+plotting the DPSS eigenvalues for N = 1000 and W = 18 (so 2N W = 250). The first 244 eigenvalues lie in
+[0.999, 1) and the last 744 eigenvalues lie in (0, 0.001]. Only 12 eigenvalues lie between 0.001 and 0.999.
+    Experimentally, we can see that the width of this transition region behaves like #{k :  < λk < 1 − } =
+O(log(N W ) log( 1 )). This can be seen in Figures 2 and 3 in Section 7. Our main contribution will be to
+demonstrate this analytically, but before we do, we will briefly review some of the prior results along these
+lines.
+    We begin with the original results from Slepian [5]. For any fixed W ∈ (0, 12 ) and b ∈ R,
+                                                               1
+                                  λb2N W +(b/π) log N c ∼             as N → ∞.
+                                                            1 + ebπ
+From this result, it is easy to show that for any fixed W ∈ (0, 21 ) and  ∈ (0, 12 ),
+                                                                       
+                                                    2             1
+                         #{k :  < λk < 1 − } ∼ 2 log N log         −1     as N → ∞.
+                                                   π              
+
+                                                            5
+This asymptotic bound on the width of the transition region correctly captures the logarithmic dependence
+on both N and , but not the dependence on W . Slepian also stated that if 0.2 < λk < 0.8, then
+                                                                        −1
+                                                   π 2 (2N W − k − 21 )
+                                             
+                                  λk ≈ 1 + exp −
+                                                 log[8N sin(2πW )] + γ
+
+is a good approximation to λk where γ ≈ 0.5772 is the Euler-Mascheroni constant. This would suggest that
+                                                                                
+                                               2                            1
+                      #{k :  < λk < 1 − } ≈ 2 log [8eγ N sin(2πW )] log     −1
+                                              π                             
+
+for  ∈ (0.2, 0.5). This correctly captures the logarithmic dependence on N , W , and , but only holds for
+large values of .
+    Very few papers provide non-asymptotic bounds regarding the width of the transition region #{k :  <
+λk < 1 − }. Zhu and Wakin [14] showed that
+                                                              2                       −1
+                                                              2   log(N − 1) + π22 2N
+                                                                                    N −1
+                               #{k :  ≤ λk ≤ 1 − } ≤ π                                                            (2)
+                                                                         (1 − )
+
+for all integers N ≥ 2, W ∈ (0, 21 ), and  ∈ (0, 12 ). This non-asymptotic bound correctly highlights the
+logarithmic dependence on N , but fails to capture the dependence on W . Also, the dependence on  is
+O( 1 ) as opposed to O(log 1 ). When  is small, this bound is considerably worse than a O(log 1 ) bound. For
+example, when N = 1000, W = 18 , and  = 10−3 , this result becomes #{k :  < λk < 1 − } ≤ 1806. More
+                             −1)
+generally, when  < 2 log(N
+                         π2 N     , this bound is worse than the trivial bound of #{k :  < λk < 1 − } ≤ N .
+     Recently, Boulsane, Bourguiba, and Karoui [28] improved this bound to
+                                                                                           2
+                                                   1                      2  2  sin (2πN W )
+                                                  π 2 log(2N W ) + 0.45 − 3 W +    6π 2 N 2
+                      #{k :  ≤ λk ≤ 1 − } ≤                                                                       (3)
+                                                                         (1 − )
+
+for all integers N ≥ 1, W ∈ (0, 21 ), and  ∈ (0, 12 ). For a fixed W ∈ (0, 12 ) and large N , this bound is roughly
+half of (2). Also, this bound correctly captures the logarithmic dependence on 2N W as opposed to just
+N . However, this bound still has a dependence on  that is O( 1 ). Again, when N = 1000, W = 81 , and
+ = 10−3 , this result becomes #{k :  < λk < 1 − } ≤ 1000. More generally, when  < log(2N       π2 N
+                                                                                                       W)
+                                                                                                          , this bound
+is worse than the trivial bound of #{k :  < λk < 1 − } ≤ N . Boulsane et. al. also used to a result on PSWF
+eigenvalues by Bonami, Jamming, and Karoui [25] to prove that the DPSS eigenvalues satisfy
+                                                 
+                                    k − 2N W
+                  λk ≤ 2 exp −η                         for 2N W + log(πN W ) + 6 ≤ k ≤ πN W,                       (4)
+                                log(πN W ) + 5
+
+where η = 0.069, and
+                                                   
+                                              2k + 2                           eπ
+                   λk ≤ 2 exp −(2k + 1) log                        for    2≤      N W ≤ k ≤ N − 1.                  (5)
+                                              eπN W                             2
+
+However, with no similar lower bounds on the DPSS eigenvalues λk for k < 2N W , they were unable to
+obtain a bound on #{k :  < λk < 1 − } which has a logarithmic dependence on .
+   In [8], the authors of this paper along with Zhu and Wakin proved that
+                                                                          
+                                                      8                     15
+                            #{k :  < λk < 1 − } ≤      log(8N ) + 12 log                      (6)
+                                                      π2                     
+
+for all N ∈ N, W ∈ (0, 12 ), and  ∈ (0, 12 ). This bound correctly captures the logarithmic dependence on
+both N and , but not the dependence on W . Also, the leading constant π82 is four times larger than that
+of the asymptotic results by Slepian. For comparison with the previous two non-asymptotic bounds, when
+N = 1000, W = 81 , and  = 10−3 , then this result becomes #{k :  < λk < 1 − } ≤ 185, which is still much
+larger than the actual value of #{k :  < λk < 1 − } = 12.
+
+
+                                                          6
+3.2   Prior results on PSWF eigenvalues
+The PSWF eigenvalues λ   ek have a similar behavior as the DPSS eigenvalues. The PSWF eigenvalues are also
+                                                         P∞ e           2c
+all strictly between 0 and 1, and they have a sum of k=0 λ       k = π , which is the analogous time-bandwidth
+product in the continuous case. Furthermore, for any  ∈ (0, 2 ), slightly fewer than 2c
+                                                                      1
+                                                                                            π eigenvalues lie in
+[1 − , 1), very few eigenvalues lie in (, 1 − ), and the rest lie in (0, ].
+    Landau and Widom [20] showed that for any fixed  ∈ (0, 12 ),
+                                                                     
+                     n                   o      2              1
+                   # k :  < λk < 1 −  = 2 log(c) log
+                              e                                  − 1 + o(log(c)) as c → ∞.
+                                               π               
+
+This asymptotic result is similar in form to Slepian’s result from [5], except the first logarithm contains the
+time-bandwidth product instead of the time duration. Also, this result specifies that the error term scales
+like o(log(c)).
+    Osipov [22] showed that for any numbers c > 22 and 3 < δ < πc   16 , the PSWF eigenvalues satisfy
+
+                          2 3
+                                                                                              
+                 ek < 7056 c exp −2δ 1 − δ
+                 λ                                         for all k ≥
+                                                                         2c   2
+                                                                            + 2 δ log
+                                                                                            4πec
+                                                                                                       .
+                        2π              2πc                              π   π               δ
+
+With an appropriate choice of δ, this result implies that
+                                                                   
+                                        2 3
+                                                                                70562 c3
+             o 2c                                                                                
+  n
+       ek >  ≤         32         7056 c                31πec                                 31πc      1
+# k:λ                +       log              log                     for            exp −        << .
+                  π    31π 2          2π                      2 3
+                                                    4 log 7056 c                  2π            256      2
+                                                             2π
+
+                                                                                     n               o
+                              eb2c/πc−1 ≥ 1 , the above result by Osipov shows that # k :  < λ
+Since Landau [29] showed that λ                                                               ek ≤ 1 ≤
+                                          2                                                        2
+O(log2 (c) + log(c) log( 1 )). This only bounds roughly half of the transition region. Also, the bound has a
+suboptimal dependence on c, and the constants are rather large.
+   Israel [23] showed that for any α ∈ (0, 21 ], there exists a constant Cα ≥ 1 such that
+
+                                                                         2c
+                                                                            !      
+                                n                 o
+                                        ek < 1 −  ≤ Cα log  1+α   log   π          2c
+                             # k:<λ                                           log
+                                                                                   π
+
+for all c ≥ π and  ∈ (0, 12 ). When compared to the bound by Osipov, this bound has an improved depen-
+dence on c, but a worse dependence on . Also, the constant Cα is not explicitly given.
+    Bonami, Jamming, and Karoui [25] established the following bounds on PSWF eigenvalues
+                                            k
+                           ek ≥ 1 − √7 (2c) e−c for c > 0 and 0 ≤ k < 2c
+                           λ
+                                      c k!                                 2.7
+                                        2c
+                   ek ≤ 1 exp −η k − π
+                                           
+                                                                2c
+                   λ                             for c ≥ 22 and    + log(c) + 6 ≤ k ≤ c
+                        2        log(c) + 5                     π
+                                                 
+                  ek ≤ exp −(2k + 1) log 2k + 2
+                                                                                 ec 
+                  λ                                     for c > 0 and k ≥ max       ,2 ,
+                                              ec                                  2
+
+where η = 0.069. The first bound shows that λ      ek approaches 1 as k decreases at a faster than exponential
+rate. The second bound shows that λ      ek decreases exponentially over a bounded range of values of k that
+are slightly greater than the time-bandwidth product 2c    π . The third bound shows that λk approaches 0 a
+                                                                                                e
+                                                ec
+faster than exponential rate once k > max( 2 , 2). Unfortunately, one can check that for any c > 0 and any
+                       2c
+integer 0.43c ≤ k < 2.7   , the first bound is negative, and thus, uninformative. Thus, these bounds give no
+information about λ ek for k ∈ [0.43c, 2c + log(c) + 6) ∪ (c, ec ), which is a total of O(c) values of k.
+                                         π                    2
+
+
+
+
+                                                       7
+3.3     New results
+In this paper, we will establish the following two non-asymptotic bounds on the number of DPSS eigenval-
+ues in the transition region (, 1 − ).
+Theorem 1. For any N ∈ N, W ∈ (0, 12 ), and  ∈ (0, 12 ),
+                                                                         
+                                                          1          4
+                       #{k :  < λk < 1 − } ≤ 2 2 log(4N ) log               .
+                                                        π         (1 − )
+Theorem 2. For any N ∈ N, W ∈ (0, 12 ), and  ∈ (0, 12 ),
+                                                                                            
+                                                    2                                5
+                          #{k :  < λk < 1 − } ≤      log(100N W + 25) log                      + 7.
+                                                    π2                            (1 − )
+   Both Theorem 1 and Theorem 2 capture the logarithmic dependence of the width of the transition region
+on N and . Also, both bounds have a leading constant of π22 , which is consistent with the asymptotic result
+by Slepian. Furthermore, Theorem 2 also captures the logarithmic dependence on W . We choose to include
+Theorem 1 since the proof is much simpler and since the bound in Theorem 1 is better than the bound in
+                       1
+Theorem 2 when W ≥ 25    . Again for comparison with the existing non-asymptotic bounds, when N = 1000,
+      1             −3
+W = 8 , and  = 10 , the bound in Theorem 1 becomes #{k :  < λk < 1 − } ≤ 14 and the bound in
+Theorem 2 becomes #{k :  < λk < 1 − } ≤ 23. Both of these bounds are much closer to the actual value
+#{k :  < λk < 1 − } = 12 than any of the existing non-asymptotic bounds.
+   With the non-asymptotic bounds in Theorem 1 and Theorem 2, the following bounds on the eigenvalues
+themselves are almost immediate.
+Corollary 1. For any N ∈ N, W ∈ (0, 21 ), we have
+                                                                        
+                         b2N W c − k − 2                  b2N W c − k − 7
+ λk ≥ 1 − min 8 exp −       2                , 10 exp − 2                                    for 0 ≤ k ≤ b2N W c − 1
+                           π 2 log(4N )                π 2 log(100N W + 25)
+
+and
+                                                                
+                   k − d2N W e − 1                k − d2N W e − 6
+  λk ≤ min 8 exp −     2             , 10 exp − 2                                      for       d2N W e ≤ k ≤ N − 1.
+                      π 2 log(4N )             π 2 log(100N W + 25)
+
+    To the best of our knowledge, the first bound in Corollary 1 represents the first non-asymptotic lower
+bound on the DPSS eigenvalues λk for k ≤ b2N W c − 1.
+    The second bound in Corollary 1 is similar in form to (4), except this result has an exponential decay
+                π2                       0.069
+rate of 2 log(100N W +25) instead of log(πN W )+5 . It is not hard to check that when N W ≥ 0.07, the exponential
+decay rate from the second bound is at least 71 times larger than the exponential decay rate in (4).
+    The second bound in Corollary 1 does not capture the faster than exponential decay rate of λk for k ≥
+eπ
+ 2 N W that is demonstrated by (5). However, we note that for N W ≥ 15, the second bound in Corollary 1
+will yield an upper bound for λdeπN W/2e that is less than the single precision machine epsilon of 2−23 ≈
+1.2 × 10−7 . Also, for N W ≥ 31, the second bound in Corollary 1 will yield an upper bound for λdeπN W/2e
+that is below the double precision machine epsilon of 2−52 ≈ 2.2 × 10−16 . So these bounds are still useful.
+    From the eigenvalue bounds in Corollary 1, we can obtain the following bounds on the sums of the
+leading and trailing DPSS eigenvalues.
+Corollary 2. For any N ∈ N, W ∈ (0, 12 ), we have
+K−1                                                                                                          
+X                         16                 b2N W c − K − 2 20                                b2N W c − K − 7
+      (1−λk ) ≤ min          log(4N ) exp  −     2             ,    log(100N W + 25) exp  −  2
+                          π2                    π 2 log(4N )
+                                                                 π2                         π 2 log(100N W + 25)
+k=0
+
+for 1 ≤ K ≤ b2N W c, and
+ N −1                                                                                          
+ X               16                K − d2N W e − 2 20                            K − d2N W e − 7
+      λk ≤ min      log(4N ) exp −    2             , 2 log(100N W + 25) exp − 2
+                 π2                  π 2 log(4N )
+                                                     π                        π 2 log(100N W + 25)
+k=K
+
+for d2N W e ≤ K ≤ N − 1.
+
+
+                                                          8
+    Abreu and Romero [18] have shown that bias of Thomson’s multitaper spectral estimate [9] (using K ta-
+                                                                                          1
+                                                                                            PK−1
+pers) is bounded by the sum of two terms, one which is . W 2 and another which is . K         k=0 (1−λk ). The
+variance of this estimate is . K . By choosing the number of tapers to be K = 2N W −O(log(N W ) log( log(N
+                                1
+                                                                                                             δ
+                                                                                                               W)
+                                                                                                                  ))
+for some small δ > 0 instead of the typically used b2N W c − 1, one can significantly reduce the bias while
+only moderately increasing the variance.
+    Davenport and Wakin [6] have shown that sampled sinusoids with frequency |f | ≤ W can be repre-
+sented by a linear combination of the first K Slepian basis vectors with an average representation error of
+ 1
+    PN −1
+2W     k=K λk . They present asymptotic bounds on this error which hold when K = 2N W (1 + ρ) Slepian
+basis vectors are used for some fixed constant ρ > 0. The second part of Corollary 2 shows that we can
+obtain a small average representation error by using only K = 2N W + O(log(N W ) log( log(N      δ
+                                                                                                   W)
+                                                                                                      )) Slepian
+basis vectors for some small δ > 0.
+    Note that all of the above bounds which depend on W can be easily refined if W is close to 21 . Let B 0 ∈
+RN ×N be the prolate matrix with bandwidth parameter 21 − W , i.e. B 0 [m, n] = sin[2π(1/2−W  )(m−n)]
+                                                                                         π(m−n)       . One can
+              0                ∗             N ×N
+check that B = D(I − B)D where D ∈ R               is a unitary diagonal matrix with entries D[n, n] = (−1)n .
+                              0
+Hence, the eigenvalues of B and B are related by λk (N, 12 − W ) = 1 − λN −1−k (N, W ) for k = 0, . . . , N − 1.
+Therefore, for any N ∈ N and  ∈ (0, 12 ), the width of the transition region is the same for bandwidths
+of W and 12 − W . In particular, when W ∈ ( 41 , 12 ), we can obtain stronger bounds on both #{k :  <
+λk (N, W ) < 1 − } and λk (N, W ) by instead considering the bounds on #{k :  < λk (N, 12 − W ) < 1 − }
+and λk (N, 12 − W ).
+    Finally, we note that a result by Boulsane, Bourguiba, and Karoui [28] shows that the DPSS eigenvalues
+and the PSWF eigenvalues satisfy λk (N, W ) → λ  ek (πN W ) as N → ∞ and W → 0+ with N W held constant.
+Intuitively, this means that the continuous energy concentration problem is the limit of the discrete energy
+concentration problem as the discritization gets arbitrarily fine. With this result, the above non-asymptotic
+results on the DPSS eigenvalues which depend on N W (and not just N ) can be used to obtain the following
+non-asymptotic results on the PSWF eigenvalues.
+Theorem 3. For any c > 0 and  ∈ (0, 21 ),
+                                                                        
+                      n                    o 2    100c                5
+                   # k :  < λk < 1 −  ≤ 2 log
+                               e                       + 25 log              + 7.
+                                             π     π              (1 − )
+Corollary 3. For any c > 0 and  ∈ (0, 12 ),
+                                      "             2c            #
+                                                        −k−7
+                                                                                            
+                     ek ≥ 1 − 10 exp −               π                                    2c
+                     λ                           2      100c
+                                                                       for 0 ≤ k ≤            − 1,
+                                                 π2 log  π + 25
+                                                                                          π
+and                                          "      2c        #
+                                                 −        −
+                                                                                   
+                             ek ≤ 10 exp −     k     π      6                    2c
+                             λ              2       100c
+                                                                        for k ≥      .
+                                           π 2 log    π + 25
+                                                                                 π
+Corollary 4. For any c > 0, we have
+          K−1
+                                                 "     2c         #
+                                                        π −K −7
+                        20                                                                            
+           X                       100c                                                          2c
+                1 − λk ≤ 2 log
+                    e                    + 25 exp − 2        100c                     for 1 ≤ K ≤      ,
+                            π        π             π 2 log( π + 25)
+                                                                                                  π
+           k=0
+
+and
+                 ∞
+                                                      "                  #
+                                                           K − 2c
+                                                                 
+                                                                 π −7
+                                                                                                      
+                       ek ≤ 20 log       100c                                                         2c
+                 X
+                       λ                      + 25 exp − 2      100c              for K ≥                  .
+                            π2            π             π 2 log( π + 25)
+                                                                                                      π
+                 k=K
+   We note that the non-asymptotic bound in Theorem 3 is similar in form to the asymptotic bound by Lan-
+dau and Widom [20] in that it scales like O(log(c) log( 1 )) and has the correct leading constant π22 . Further-
+more, the constants in this bound are all specified and are mild. As such, this is a substantial improvement
+over the existing non-asymptotic bounds.
+   The bounds in Corollary 3 show that the PSWF eigenvalues λ         ek approach 1 and 0 exponentially as k
+                                                  2c
+moves away from the time-bandwidth product π . Also, these bounds are useful (i.e. something stronger
+than 0 < λ
+         ek < 1) for all but O(log(c)) values of k.
+
+
+                                                            9
+4      Proof of Bounds on the Number of DPSS Eigenvalues in the Transi-
+       tion Region (Theorems 1 and 2)
+4.1     Proof overview
+For any rectangular matrix X ∈ CM ×N . we use the notation σk (X) to denote the k th largest singular value
+of X. If k > min{M, N }, we define σk (X) = 0. Also, for a Hermitian matrix A ∈ CN ×N , we use the notation
+µk (A) to denote k th largest eigenvalue of a symmetric matrix. Again, if k > N , we define µk (A) = 0. To be
+consistent with standard notation, we define λk = µk+1 (B) for k ∈ {0, . . . , N − 1}, i.e. λk is the (k + 1)th
+largest eigenvalue of the N × N prolate matrix B with bandwidth parameter W , which is defined in (1).
+Although both B and λk depend on N and W , our notation will omit this dependence for convenience.
+    We first sketch a non-rigorous outline of our proof. We aim to show that B − B 2 has a low numerical
+rank. Therefore, very few of the eigenvalues of B − B 2 are not near 0, and thus, very few of the eigenvalues
+of B are not near 1 or 0. To show B − B 2 has a low numerical rank, recall that B is a matrix representation
+of the self-adjoint operator TN BW TN . Hence, B − B 2 is a matrix representation of the operator
+                             TN BW TN − (TN BW TN )2 = TN BW BW TN − TN BW TN BW TN
+                             = TN BW (I − TN )BW TN = TN BW (I − TN )(I − TN )BW TN
+Thus showing that B − B 2 has a low numerical rank is equivalent to showing that (I − TN )BW TN has a
+low numerical rank. This operator satisfies
+                                         sin[2πW (` − n)]
+         hδ` , (I − TN )BW TN δn i =                        for   ` ∈ Z \ {0, . . . , N − 1}, n ∈ {0, . . . , N − 1},
+                                             π(` − n)
+where {δn }n∈Z are the Euclidean basis sequences for `2 (Z). If we let X be the “matrix” representation
+of this operator with respect to the Euclidean basis, then the entries of X are a smooth function of the
+row and column indices, and X has what is known as a low displacement-rank structure. These facts
+can be exploited to show that X, and thus also (I − TN )BW TN , has a low numerical rank. Proving this
+rigorously requires that we truncate (I − TN )BW TN to a finite dimensional subspace, and take the limit as
+the dimension goes to infinity.
+    The following lemma allows us to start a formal and rigorous version of the above argument.
+Lemma 1. Suppose for some r ∈ {0, . . . , N − 1} and L0 ∈ N, there exists a sequence of matrices X L ∈ R2L×N for
+L = L0 , L0 + 1, . . . , such that:
+                                         2
+      • lim   (B − B 2 ) − X ∗L X L F = 0,
+       L→∞
+                      p
+    • σr+1 (X L ) ≤       (1 − ) for all L ≥ L0 .
+Then, #{k :  < λk < 1 − } ≤ r.
+Proof. By the first property, lim µr+1 (X ∗L X L ) exists and is equal to µr+1 (B − B 2 ). Then by using the fact
+                                   L→∞
+that µr+1 (X ∗L X L ) = σr+1 (X L )2 for all L ≥ L0 along with the second property, we have
+                      µr+1 (B − B 2 ) = lim µr+1 (X ∗L X L ) = lim σr+1 (X L )2 ≤ (1 − ).
+                                             L→∞                    L→∞
+                               2           N −1
+The eigenvalues of B − B are {λk (1 − λk )}k=0  . Also, the function λ 7→ λ(1 − λ) is increasing for λ < 12 and
+decreasing for λ > 2 and symmetric about λ = 12 . As a result,  < λ < 1 −  if and only if λ(1 − λ) > (1 − ).
+                   1
+
+Therefore,
+         #{k :  < λk < 1 − } = #{k : λk (1 − λk ) > (1 − )} = #{k : µk (B − B 2 ) > (1 − )} ≤ r.
+
+
+   We will prove both Theorem 1 and Theorem 2 by using Lemma 1. In Section 4.2, we construct a sequence
+of matrices X L ∈ R2L×N which satisfies the first property above. In section 4.3, we show that the singular
+values of each matrix X L decays exponentially, which allows us to obtain the bound in Theorem 1. In
+Section 4.4, we refine the rate at which the singular values of each X L decay, which allows us to obtain the
+bound in Theorem 2.
+
+
+                                                            10
+4.2     Constructing the sequence of matrices X L
+First, we state an identity involving the sinc function. For any W ∈ (0, 12 ) and any m, n ∈ Z,
+                               ∞
+                               X sin[2πW (` − m)] sin[2πW (` − n)]   sin[2πW (m − n)]
+                                                                   =                  .
+                                     π(` − m)         π(` − n)           π(m − n)
+                           `=−∞
+
+By using this identity, we can write the entries of B − B 2 as:
+                                         N
+                                         X −1
+   (B − B 2 )[m, n] = B[m, n] −                 B[m, `]B[`, n]
+                                         `=0
+                                                     N −1
+                          sin[2πW (m − n)] X sin[2πW (m − `)] sin[2πW (` − n)]
+                      =                   −
+                              π(m − n)           π(m − `)         π(` − n)
+                                                     `=0
+                          ∞                                                    N −1
+                          X         sin[2πW (` − m)] sin[2πW (` − n)] X sin[2πW (` − m)] sin[2πW (` − n)]
+                      =                                              −
+                                        π(` − m)         π(` − n)           π(` − m)         π(` − n)
+                          `=−∞                                                  `=0
+                        −1                                    ∞
+                        X  sin[2πW (` − m)] sin[2πW (` − n)] X sin[2πW (` − m)] sin[2πW (` − n)]
+                      =                                     +                                                              (7)
+                               π(` − m)         π(` − n)           π(` − m)         π(` − n)
+                          `=−∞                                                 `=N
+
+where the rearranging of terms is valid since the summands decay like O(|`|−2 ) as ` → ±∞, and thus, all
+the sums are absolutely convergent.
+   For each integer L ≥ 1, we define an index set
+                    IL = {−L, −L + 1 . . . , −2, −1} ∪ {N, N + 1, . . . , N + L − 2, N + L − 1}
+and we define X L ∈ R2L×N by
+                                         sin[2πW (` − n)]
+                        X L [`, n] =                             for   ` ∈ IL and n ∈ {0, . . . , N − 1}.
+                                             π(` − n)
+Note that we index the rows of X L by IL instead of the usual 0, 1, . . . , 2L − 1 for convenience. We will also
+index the rows and/or columns of other matrices with dimension 2L by IL . With this definition, the entries
+of X ∗L X L are
+                      X
+  (X ∗L X L )[m, n] =   X L [`, m]X L [`, n]
+                        `∈IL
+                        −1                                                    N +L−1
+                        X  sin[2πW (` − m)] sin[2πW (` − n)]                    X      sin[2πW (` − m)] sin[2πW (` − n)]
+                    =                                                     +                                                (8)
+                                      π(` − m)              π(` − n)                       π(` − m)         π(` − n)
+                        `=−L                                                   `=N
+
+      From Equations 7 and 8 above, lim (X ∗L X L )[m, n] = (B − B 2 )[m, n] for each of the N 2 entries. There-
+                                            L→∞
+fore,
+                                                       N −1 N −1
+                                         ∗     2       X    X                                                  2
+             lim   (B − B      2
+                                   ) − X L X L F = lim                  (B − B 2 )[m, n] − (X ∗L X L )[m, n]       = 0.
+            L→∞                                   L→∞
+                                                       m=0 n=0
+
+This shows that the sequence of matrices X L ∈ R2L×N satisfies the first property of Lemma 1. We will
+now focus on bounding the singular values of each X L in order to prove that these matrices X L satisfy the
+second property of Lemma 1.
+
+4.3     Proof of Theorem 1
+In [30], Beckermann and Townsend showed that matrices with a low-rank displacement have rapidly de-
+caying singular values provided the spectra of the left and right displacement matrices are well separated.
+More specifically, suppose a matrix X ∈ CM ×N satisfies the displacement equation
+                                                       CX − XD = U V ∗
+
+
+                                                                  11
+where C ∈ CM ×M and D ∈ CN ×N are normal matrices and U ∈ CM ×ν and D ∈ CN ×ν . If there are closed,
+disjoint subsets E, F of C such that Spec(C) ⊂ E and Spec(D) ⊂ F then the singular values of X satisfy
+
+                                          σνk+1 (X) ≤ σ1 (X)Zk (E, F )
+
+for all integers k ≥ 0, where Zk (E, F ) are the Zolotarev numbers [31] for the sets E and F . As a rule of
+thumb, when E and F are “well-separated”, Zk (E, F ) decays exponentially with k. For more details about
+Zolotarev numbers, see Appendix A.
+    In Appendix B, we build on the work of Beckermann and Townsend to prove the following theorem.
+Theorem 4. Suppose X ∈ CM ×N satisfies the displacement equation
+
+                                               CX − XD = U V ∗
+
+where C ∈ CM ×M and D ∈ CN ×N are normal matrices with real eigenvalues and U ∈ CM ×ν and V ∈ CN ×ν . If
+Spec(C) ⊂ (−∞, c1 ] ∪ [c2 , ∞) and Spec(D) ⊂ [d1 , d2 ] where c1 < d1 < d2 < c2 , then for any integer k ≥ 0,
+                                                π2 k
+                                                        
+                                                                         (c2 − d1 )(d2 − c1 )
+                 σνk+1 (X) ≤ 4kXk exp −                      where γ =                        .
+                                             log(16γ)                    (c2 − d2 )(d1 − c1 )
+   We now show that the matrices X L defined in Section 4.2 satisfy a low-rank displacement equation,
+and use Theorem 4 to bound their singular values. Define a diagonal matrix D ∈ RN ×N by D[n, n] = n for
+n ∈ {0, . . . , N − 1}. For each integer L ≥ 1, define a diagonal matrix C L ∈ R2L×2L by C L [`, `] = ` for ` ∈ IL
+(again, we index C L by ` ∈ IL for convenience). With this definition, we have
+
+                (C L X L − X L D)[`, n] = C L [`, `]X L [`, n] − X L [`, n]D[n, n]
+                                               sin[2πW (` − n)] sin[2πW (` − n)]
+                                         =`·                   −                 ·n
+                                                   π(` − n)         π(` − n)
+                                          1
+                                         =  sin[2πW (` − n)]
+                                          π
+                                          1
+                                         = [sin(2πW `) cos(2πW n) − cos(2πW `) sin(2πW n)] .
+                                          π
+   From this, it is clear that we can factor
+
+                                             C LX L − X LD = U LV ∗
+
+where U L ∈ R2L×2 is defined by
+                               1                             1
+                 U L [`, 0] = √ sin(2πW `) and U L [`, 1] = √ cos(2πW `) for               ` ∈ IL ,
+                                π                             π
+and V ∈ RN ×2 is defined by
+                      1                                      1
+          V [n, 0] = √ cos(2πW n) and          V [n, 1] = − √ sin(2πW n) for         n ∈ {0, . . . , N − 1}.
+                       π                                      π
+In other words, X L has a rank-2 displacement with respect to the matrices C L and D.
+    Since Spec(C L ) = IL ⊂ (−∞, −1] ∪ [N, ∞) and Spec(D) = {0, . . . , N − 1} ⊂ [0, N − 1], we can apply
+Theorem 4 with parameters c1 = −1, d1 = 0, d2 = N − 1, c2 = N , and ν = 2. The theorem tells us that for
+every integer k ≥ 0,
+
+                                             π2 k
+                                                   
+                                                                   (c2 − d1 )(d2 − c1 )
+              σ2k+1 (X L ) ≤ 4kX L k exp −            where γ =                         = N 2.
+                                           log(16γ)                (c2 − d2 )(d1 − c1 )
+   For any L ≥ 1, X L is a submatrix of X L+1 , and so, X ∗L X L  X ∗L+1 X L+1 . Hence, X ∗L X L  lim X ∗L X L =
+                                                                                                         L→∞
+B − B 2 . Therefore,
+                                                                                     1
+                  kX L k2 = kX ∗L X L k ≤ kB − B 2 k = max λk − λ2k ≤ max [λ − λ2 ] = ,
+                                                                  
+                                                        k            0≤λ≤1           4
+
+                                                         12
+and thus, kX L k ≤ 21 for all L ≥ 1. Substituting γ = N 2 and kX L k ≤ 12 into the above bound yields
+
+                                                                π2 k
+                                                                        
+                                      σ2k+1 (X L ) ≤ 2 exp −
+                                                             log(16N 2 )
+
+for all integers k ≥ 0. So, if we set
+                        &                                         !'                                        
+                          1                              2                1                           4
+                   k=         log(16N 2 ) log                           =    log(4N ) log                          ,
+                          π2                                              π2
+                                                  p
+                                                       (1 − )                                    (1 − )
+                        p
+we obtain σ2k+1 (X L ) ≤ (1 − ) for all L ≥ 1.
+   This proves the second property in Lemma 1 for r = 2k and L0 = 1. Therefore, we have proved that
+                                                                              
+                                                       1                   4
+                       #{k :  < λk < 1 − } ≤ 2k = 2 2 log(4N ) log               ,
+                                                       π               (1 − )
+
+which is exactly the content of Theorem 1.
+
+4.4   Proof of Theorem 2
+First, note that if W ∈ [ 14 , 12 ), the bound in Theorem 2 is greater than the bound in Theorem 1, which has
+                                                                           1
+                     1  So we will henceforth assume that W ∈ (0, 4 ).
+already been established.
+    Now, set L1 = 4W (clearly, L1 ≥ 1). For each integer L ≥ L1 + 1, we partition the index set
+
+                   IL = {−L, −L + 1 . . . , −2, −1} ∪ {N, N + 1, . . . , N + L − 2, N + L − 1}
+
+into three sets
+        (0)
+       IL = {−L, −L + 1 . . . , −L1 − 2, −L1 − 1} ∪ {N + L1 , N + L1 + 1, . . . , N + L − 2, N + L − 1}
+        (1)
+       IL = {−L1 , −L1 + 1, . . . , −2, −1}
+        (2)
+       IL = {N, N + 1, . . . , N + L1 − 2, N + L1 − 1}
+                                                                              (0)                      (1)                          (2)
+and then accordingly partition X L into three submatrices X L ∈ R2(L−L1 )×N , X L ∈ RL1 ×N , and X L ∈
+RL1 ×N defined by
+                         (i)                            (i)
+                      X L [`, n] = X L [`, n] for ` ∈ IL and n ∈ {0, . . . , N − 1}.
+                                                 (i)              (i)
+Once again, we index the rows of each X L by ` ∈ IL for convenience. We proceed to bound the singular
+            (0)   (1)   (2)
+values of X L , X L , X L , and then use these bounds to bound the singular values of X L .
+
+                         (0)
+Singular values of X L
+                   (0)
+The submatrix X L , has the same low-rank displacement structure as X L . Specifically, we can write
+                                                (0)    (0)        (0)           (0)
+                                           CL XL − XL D = U L V ∗
+          (0)                                                                                          (0)                            (0)
+where C L ∈ R2(L−L1 )×2(L−L1 ) is the diagonal submatrix of C L defined by C L [`, `] = ` for ` ∈ IL ,
+  (0)                                                       (0)                          (0)
+U L ∈ R2(L−L1 )×2 is the submatrix of U L defined in by U L [`, q] = U L [`, q] for ` ∈ IL and q ∈ {0, 1}, and
+D and V are the same as defined in Section 4.3.
+                 (0)    (0)
+    Since Spec(C L ) = IL ⊂ (−∞, −L1 − 1] ∪ [N + L1 , ∞) and Spec(D) = {0, . . . , N − 1} ⊂ [0, N − 1], we
+can once again apply Theorem 4, but with the parameters c1 = −L1 − 1, d1 = 0, d2 = N − 1, c2 = N + L1 ,
+and ν = 2. Then, the theorem tells us that for any integer k0 ≥ 0,
+                                                                                                                           2
+                                           π 2 k0
+                                                                                                            
+                               (0)                                                  (c2 − d1 )(d2 − c1 )          N + L1
+        σ2k0 +1 (X (0) ) ≤ 4kX L k exp −                      where γ =                                  =                      .
+                                         log(16γ)                                   (c2 − d2 )(d1 − c1 )          L1 + 1
+
+                                                              13
+            (0)                                                       (0)
+   Since X L is a submatrix of X L , we have kX L k ≤ kX L k ≤ 21 . Also, since L1 =
+                                                                                                                    1       1
+                                                                                                                    4W     ≥ 4W −1 > 0
+and Nx+1
+      +x
+         is a non-increasing function of x > 0, we can bound
+                                        2                  1             2
+                                                              − 1)
+                                                
+                               N + L1                N + ( 4W
+                  γ=                         ≤          1                      = (4N W + 1 − 4W )2 ≤ (4N W + 1)2 .
+                               L1 + 1                ( 4W − 1) + 1
+                                                       (0)
+Substituting γ ≤ (4N W + 1)2 and kX L k ≤ 21 into the above bound yields
+
+                                                                    π 2 k0                          π 2 k0
+                                                                                                           
+                             (0)
+                  σ2k0 +1 (X L ) ≤ 2 exp                −                          = 2 exp −
+                                                             log[16(4N W + 1)2 ]             2 log(16N W + 4)
+
+for all integers k0 ≥ 0.
+
+                               (1)
+Singular values of X L
+
+                                                 (1)                                                  (1)         sin[2πW (` − n)]
+To bound the singular values of X L , we exploit the fact that its entries X L [`, n] =                                            are a
+                                                                                                                      π(` − n)
+                                                                                                            (1)
+smooth function of ` and n to construct a tunable low-rank approximation of X L .
+                                  sin(2πW t)
+  Define the sinc function g(t) =            . For each n = 0, . . . , N − 1, define
+                                       πt
+                                                                                 sin[2πW (t − n)]
+                                                 gn (t) = g(t − n) =                              ,
+                                                                                     π(t − n)
+
+and let
+                                                                            k−1
+                                                                            X
+                                                               Pk,n (t) =          pm,n tm
+                                                                            m=0
+
+be the degree k − 1 Chebyshev interpolating polynomial for gn (t) on the interval [−L1 , −1].
+                                                (1)
+    We now define the low rank approximation Xf ∈ RL1 ×N by
+                                                                      L
+
+                                             k−1
+               (1)                           X
+            f [`, n] = Pk,n (`) =
+            X L                                        pm,n `m      for     ` ∈ {−L1 , . . . , −1} and n ∈ {0, . . . , N − 1}.
+                                             m=0
+
+                     (1)
+We can factor Xf = W P where W ∈ RL1 ×k and P ∈ Rk×N are defined by W [`, m] = `m and P [m, n] =
+                 L
+                     (1)
+                   f ) ≤ k.
+pm,n . Hence, rank(X L
+   By Theorem 8 (in Appendix C), the Chebyshev interpolating polynomial satisfies
+
+                                                     (L1 − 1)k
+                      |gn (t) − Pk,n (t)| ≤                       max      g (k) (ξ)          for all t ∈ [−L1 , −1].
+                                                      22k−1 k! ξ∈[−L1 ,−1] n
+
+Also, by Lemma 5 (in Appendix C), the derivatives of the unshifted sinc-function g(t) can be bounded by
+                                                            
+                                                   2W     2
+                        g (k) (t) ≤ (2πW )k min         ,        for all t ∈ R.
+                                                  k + 1 π|t|
+
+
+
+
+                                                                            14
+                         (1)
+Hence, for any ` ∈ IL and n ∈ {0, . . . , N − 1}, we have
+
+                   (1)               (1)
+                X L [`, n] − X
+                             f [`, n] = |gn (`) − Pk,n (`)|
+                               L
+
+                                                        (L1 − 1)k
+                                                    ≤                max      g (k) (ξ)
+                                                         22k−1 k! ξ∈[−L1 ,−1] n
+                                                        (L1 − 1)k
+                                                    =                max      g (k) (ξ − n)
+                                                         22k−1 k! ξ∈[−L1 ,−1]
+                                                        (L1 − 1)k
+                                                    =                  max        g (k) (t)
+                                                         22k−1 k! t∈[−L1 −n,−n−1]
+                                                     (L1 − 1)k
+                                                                                                       
+                                                                                      k       2W    2
+                                                    ≤ 2k−1         max        (2πW ) min          ,
+                                                      2    k! t∈[−L1 −n,−n−1]                k + 1 π|t|
+                                                     (L1 − 1)k
+                                                                                             
+                                                                              2W         2
+                                                    = 2k−1 (2πW )k min              ,
+                                                      2    k!                k + 1 π(n + 1)
+                                                        π          k
+                                                     4( W (L1 − 1))
+                                                                                            
+                                                                              W         1
+                                                    = 2               min         ,            .
+                                                            k!              k + 1 π(n + 1)
+
+                                                                  (1)      (1)             k+1 
+   We proceed to bound the Frobenius norm of X L − X
+                                                   f . Set N1 =
+                                                     L                                      πW . Then,
+
+                                     2       N −1    −1                               2
+                    (1)        (1)           X       X        (1)            (1)
+                 XL − X
+                      f
+                        L                =                  X L [`, n] − X
+                                                                         f [`, n]
+                                                                           L
+                                     F       n=0 `=−L1
+                                             N −1    −1
+                                                        16( π2 W (L1 − 1))2k         W2
+                                                                                                        
+                                             X       X                                            1
+                                         ≤                                   min           ,
+                                             n=0 `=−L1
+                                                                (k!)2              (k + 1)2 π 2 (n + 1)2
+                                             N −1
+                                       16L1 ( π2 W (L1 − 1))2k            W2
+                                                                                              
+                                             X                                          1
+                                         =                       min              ,
+                                   n=0
+                                                  (k!)2                 (k + 1)2 π 2 (n + 1)2
+                                    ∞
+                                       16L1 ( π2 W (L1 − 1))2k            W2
+                                                                                             
+                                   X                                                   1
+                                ≤                                min             ,
+                                   n=0
+                                                 (k!)2                 (k + 1)2 π 2 (n + 1)2
+                                                           "N −1                   ∞
+                                                                                                   #
+                                   16L1 ( π2 W (L1 − 1))2k X   1
+                                                                      W2         X          1
+                                ≤                                             +
+                                             (k!)2            n=0
+                                                                    (k + 1)2          π 2 (n + 1)2
+                                                                                n=N1
+
+                                   16L1 ( π2 W (L1 − 1))2k W 2 N1
+                                                                                
+                                                                             1
+                                ≤                                       +           ,
+                                             (k!)2           (k + 1)2     π 2 N1
+                                              P∞        1         1
+where the last line follows from the bound n=N1 (n+1)      2 ≤ N .
+                                                                   1
+
+
+
+
+                                                                    15
+   We proceed to weaken this result to obtain a more usable upper bound as follows:
+                                        2
+                                            16L1 ( π2 W (L1 − 1))2k               W 2 N1
+                                                                                                    
+                            (1)   (1)                                                        1
+                           XL − X
+                                f
+                                  L       ≤                                               + 2
+                                        F             (k!)2                      (k + 1)2  π N1
+                                              16(L1 − 1)( π2 W L1 )2k W 2 N1
+                                                                                             
+                                                                                          1
+                                            ≤                                       + 2
+                                                         (k!)2             (k + 1)2    π N1
+                                              16( π2 W L1 )2k W 2 (L1 − 1)N1
+                                                                                             
+                                                                                     L1 − 1
+                                            =                                     +
+                                                    (k!)2            (k + 1)2         π 2 N1
+                                              16( π2 W L1 )2k W 2 N1 L1
+                                                                                           
+                                                                                    L1
+                                            ≤                               + 2
+                                                    (k!)2         (k + 1)2     π (N1 + 1)
+                                                                   "                            #
+                                              16( π2 W · 4W1 2k
+                                                              )      W 2 · k+1   1
+                                                                           πW · 4W
+                                                                                            1
+                                                                                           4W
+                                            ≤                                        + 2 k+1
+                                                     (k!)2              (k + 1)2        π · πW
+                                                      8          π 2k
+                                                                    
+                                            =                2
+                                              π(k + 1)(k!)        8
+                                              5600  π 2k
+                                            ≤                  .
+                                               π       48
+The 2nd line follows from the inequalities (L1 − 1)2k ≤ L2k
+                                                          1 and L1 (L1 − 1)
+                                                                            2k
+                                                                                ≤ (L1 − 1)L 2k
+                                                                                           1 . 1The 4th line
+             L1 −1     L1
+holds since N1 ≤ N1 +1 is equivalent to L1 ≤ N1 + 1, which is true since L1 ≤ 4W ≤ 4W < k+1
+                                                                                       1
+                                                                                                      πW ≤
+ k+1                                                                 2   1 2k
+  πW + 1 = N1 + 1. The last line holds due to the fact that (k + 1)(k!) ≥ 700 6  for all integers k ≥ 0.
+                   (1)                     (1)
+    Since rank(X ) ≤ k, we have σk+1 (X ) = 0. Hence, we can bound
+                f
+                  L
+                                        f
+                                                L
+                                                                                                             r
+             (1)              (1)           (1)               (1)   (1)                  (1)   (1)               5600  π k
+     σk+1 (X L ) =    σk+1 (X L ) − σk+1 (X
+                                          f )
+                                            L          ≤     XL − X
+                                                                  f
+                                                                    L            ≤      XL − X
+                                                                                             f
+                                                                                               L         ≤                   .
+                                                                                                     F            π    48
+
+                          (2)
+Singular values of X L
+                                            (2)       (1)                                                          (2)
+We can exploit the symmetry between X L and X L to show that the singular values of X         f are the same
+                                                                                                L
+              (1)                                    (2)                                                     (1)
+as those of X L . Specifically, for any indices ` ∈ IL and n ∈ {0, . . . , N − 1}, we have that N − 1 − ` ∈ IL
+            f
+and N − 1 − n ∈ {0, . . . , N − 1}, and that
+
+      (2)         sin[2πW (` − n)]   sin[2πW ((N − 1 − `) − (N − 1 − n))]     (1)
+   X L [`, n] =                    =                                      = X L [N − 1 − `, N − 1 − n].
+                      π(` − n)           π((N − 1 − `) − (N − 1 − n))
+
+Since the singular values of a matrix are invariant under permutations of rows/columns, we have
+                                                             r
+                                         (2)           (1)     5600  π k
+                                σk+1 (X L ) = σk+1 (X L ) ≤
+                                                                π    48
+for all integers k ≥ 0.
+
+Singular values of X L
+Due to the way we partitioned X L into three submatrices, we have
+                                                (0)∗   (0)          (1)∗   (1)          (2)∗   (2)
+                                X ∗L X L = X L X L + X L X L + X L X L .
+
+By the Weyl eigenvalue inequalities, we have
+                                                    (0)∗     (0)                 (1)∗    (1)             (2)∗     (2)
+              µ2k0 +2k+1 (X ∗L X L ) ≤ µ2k0 +1 (X L X L ) + µk+1 (X L X L ) + µk+1 (X L X L ).
+
+
+
+                                                               16
+Hence, we can bound
+
+              σ2k0 +2k+1 (X L )2 = µ2k0 +2k+1 (X ∗L X L )
+                                                  (0)∗   (0)                      (1)∗    (1)             (2)∗   (2)
+                                  ≤ µ2k0 +1 (X L X L ) + µk+1 (X L X L ) + µk+1 (X L X L )
+                                                  (0)                   (1)                     (2)
+                                  = σ2k0 +1 (X L )2 + σk+1 (X L )2 + σk+1 (X L )2
+                                                   π 2 k0
+                                                            
+                                                                  5600  π 2k 5600  π 2k
+                                  ≤ 4 exp −                    +               +
+                                              log(16N W + 4)       π    48        π  48
+                                                   π 2 k0
+                                                            
+                                                                  11200  π 2k
+                                  = 4 exp −                    +
+                                              log(16N W + 4)        π     48
+
+for any integers k0 ≥ 0 and k ≥ 1.
+    If we set                                                                              
+                                        1                                             5
+                                   k0 =    log(16N W + 4) log
+                                        π2                                        (1 − )
+and                                                                    56000       
+                                                      1                    π
+                                        k=                   log
+                                                  2 log( 48
+                                                         π )
+                                                                        (1 − )
+then we obtain
+                                                             π 2 k0
+                                                                      
+                                        2                                  11200  π 2k
+                      σ2k0 +2k+1 (X L ) ≤ 4 exp −                        +
+                                                        log(16N W + 4)       π    48
+                                              4(1 − ) (1 − )
+                                            ≤            +
+                                                  5            5
+                                            = (1 − ),
+                         p
+i.e., σ2k0 +2k+1 (X L ) ≤ (1 − ). Our steps hold for all L ≥ L1 + 1.
+     This proves the second property of Lemma 1 for r = 2k0 + 2k and L0 = L1 + 1. Therefore,
+                                                                                                                      56000     
+                                     1                                               5                   1                    π
+#{k :  < λk < 1 − } ≤ 2k0 + 2k = 2 2 log(16N W + 4) log                                         +2            log                        .
+                                     π                                            (1 − )           2 log( 48
+                                                                                                            π )
+                                                                                                                           (1 − )
+
+   We can loosen this bound to make it more “user friendly” as follows:
+                                                                                              56000 
+                                1                                5                    1                 π
+  #{k :  < λk < 1 − } ≤ 2        log(16N W    +  4) log                 +  2               log
+                              π2                             (1 − )            2 log( 48
+                                                                                         π )
+                                                                                                    (1 − )
+                                                                                      56000 
+                            2                                 5             1                π
+                         ≤ 2 log(16N W + 4) log                       +           log                 +4
+                           π                             (1 − )       log( 48
+                                                                              π )        (1 − )
+                                                                                                         log 11200
+                                                                                                                
+                            2                                 5             1                5                   π
+                         = 2 log(16N W + 4) log                       +           log                 +               +4
+                           π                             (1 − )       log( 48
+                                                                              π )
+                                                                                         (1 − )          log( 48
+                                                                                                                π )
+                                                                                          log 11200
+                                                                                                  
+                              2                             1                 5                   π
+                         =        log(16N W   +  4) +               log                +                +4
+                             π2                         log( 48
+                                                              π )
+                                                                          (1 − )          log( 48
+                                                                                                  π )
+                                                                                                 log 11200
+                                                                                                       
+                            2                  π2                                    5                   π
+                         = 2 log exp             48     (16N W + 4) log                       +                +4
+                           π               2 log( π )                            (1 − )          log( 48
+                                                                                                         π )
+                                                                     
+                            2                                   5
+                         ≤ 2 log(100N W + 25) log                       + 7,
+                           π                                (1 − )
+
+which establishes theorem 2.
+
+
+
+
+                                                               17
+5     Proof of DPSS Eigenvalue Bounds (Corollaries 1 and 2)
+First, we state a result from [7] which bounds λk for two values of k near 2N W .
+Lemma 2. For any N ∈ N and W ∈ (0, 12 ),
+
+                                                        1
+                                         λb2N W c−1 ≥     ≥ λd2N W e .
+                                                        2
+   To derive bounds on λk , we will set  such that the transition region is too narrow to contain k, and thus
+                                                                                                PK−1
+conclude either λk ≥ 1 −  (if k ≤ b2N W c − 1) or λk ≤  (if k ≥ d2N W e). To derive bounds on k=0 (1 − λk )
+    PN −1
+and k=K λk , we will simply apply the bounds on λk and the formula for the sum of a geometric series.
+
+5.1   Lower bounds on λk for k ≤ b2N W c − 1
+For any integer k such that 0 ≤ k ≤ b2N W c − 1, set
+                                                                  
+                                                   b2N W c − k − 2
+                                       = 8 exp −     2              ,
+                                                     π 2 log(4N )
+
+and suppose for sake of contradiction that λk < 1 − .
+     By using the assumption k ≤ b2N W c − 1 and Lemma 2, we have 12 ≤ λb2N W c−1 ≤ λk < 1 − , i.e.,
+ < 12 . Therefore,  < 12 ≤ λb2N W c−1 ≤ λk < 1 − , i.e. both k and b2N W c − 1 are in the transition region
+{k 0 :  < λk0 < 1 − }, and thus, so are all the indices k 0 between k and b2N W c − 1. Hence,
+
+                   #{k 0 :  < λk0 < 1 − } ≥ #{k 0 : k ≤ k 0 ≤ b2N W c − 1} = b2N W c − k.
+
+However, since  < 21 , by Theorem 1 we have
+                                                                          
+                                  1                 4         2               8
+  #{k 0 :  < λk0 < 1 − } ≤ 2 2 log(4N ) log               < 2 log(4N ) log     + 2 = b2N W c − k.
+                                  π             (1 − )     π                
+
+This is a contradiction. Therefore,
+                                                          
+                                           b2N W c − k − 2
+                  λk ≥ 1 −  = 1 − 8 exp −    2                   for      0 ≤ k ≤ b2N W c − 1.
+                                             π 2 log(4N )
+
+    In a similar manner, we can assume λk < 1 − , where
+                                                                    
+                                                   b2N W c − k − 7
+                                    = 10 exp − 2                      ,
+                                                π 2 log(100N W + 25)
+
+and then invoke theorem 2 to obtain a contradiction. Therefore,
+                                                             
+                                            b2N W c − k − 7
+             λk ≥ 1 −  = 1 − 10 exp − 2                                 for   0 ≤ k ≤ b2N W c − 1.
+                                         π 2 log(100N W + 25)
+
+Combining these two bounds establishes the first part of Corollary 1.
+
+5.2   Upper bounds on λk for k ≥ d2N W e
+For any integer k such that d2N W e ≤ k ≤ N − 1, set
+                                                                 
+                                                  k − d2N W e − 1
+                                       = 8 exp −     2             ,
+                                                     π 2 log(4N )
+
+and suppose for sake of contradiction that λk > .
+
+
+                                                     18
+   By using the assumption k ≥ d2N W e and Lemma 2, we have  < λk ≤ λd2N W e ≤ 21 , i.e.,  < 12 .
+Therefore,  < λk ≤ λd2N W e ≤ 12 < 1 − , i.e., both k and d2N W e are in the transition region {k 0 :  < λk0 <
+1 − }, and thus, so are all the indices k 0 between k and d2N W e. Hence,
+
+                   #{k 0 :  < λk0 < 1 − } ≥ #{k 0 : d2N W e ≤ k 0 ≤ k} = k − d2N W e + 1.
+
+However, since  < 21 , by Theorem 1 we have
+                                                                         
+                                1                  4         2               8
+ #{k 0 :  < λk0 < 1 − } ≤ 2 2 log(4N ) log               < 2 log(4N ) log     + 2 = k − d2N W e + 1.
+                                π              (1 − )     π                
+
+This is a contradiction. Therefore,
+                                                      
+                                       k − d2N W e − 1
+                      λk ≤  = 8 exp −     2                    for   d2N W e ≤ k ≤ N − 1.
+                                          π 2 log(4N )
+
+   In a similar manner, we can assume λk > , where
+                                                                   
+                                                  k − d2N W e − 6
+                                   = 10 exp − 2                      ,
+                                               π 2 log(100N W + 25)
+
+and then invoke Theorem 2 to obtain a contradiction. Therefore,
+                                                       
+                                      k − d2N W e − 6
+                 λk ≤  = 10 exp − 2                        for          d2N W e ≤ k ≤ N − 1.
+                                   π 2 log(100N W + 25)
+
+Combining these two bounds establishes the second part of Corollary 1.
+
+                     PK−1
+5.3   Bounds on         k=0 (1 − λk ) for K ≤ b2N W c
+For any integer K such that 1 ≤ K ≤ b2N W c, we can apply the first part of the lower bound for λk in
+                                       e−x     1
+Corollary 1 along with the inequality 1−e −x ≤ x for x > 0 to obtain
+
+
+                            K−1                 K−1                             
+                            X                   X          b2N W c − k − 2
+                                  (1 − λk ) ≤    8 exp −        2
+                            k=0              k=0               π 2 log(4N )
+                                              K−1                                 
+                                              X              b2N W c − k − 2
+                                           ≤       8 exp −         2
+                                             k=−∞                 π 2 log(4N )
+                                                                            
+                                                      b2N W c − K − 1
+                                             8 exp −      2
+                                                           2 log(4N )
+                                           =            π                 
+                                                                  1
+                                               1 − exp − 2
+                                                           π 2 log(4N )
+                                                                                    
+                                             16                     b2N W c − K − 2
+                                           ≤ 2 log(4N ) exp −            2             .
+                                             π                          π 2 log(4N )
+
+   In a similar manner, we can apply the second part of the lower bound for λk in Corollary 1 instead of
+
+
+
+
+                                                         19
+the first part of the lower bound to obtain
+                    K−1                K−1                                  
+                    X                  X                 b2N W c − k − 7
+                        (1 − λk ) ≤     10 exp − 2
+                    k=0             k=0              π 2 log(100N W + 25)
+                                     K−1                                    
+                                     X                    b2N W c − k − 7
+                                  ≤       8 exp − 2
+                                    k=−∞              π 2 log(100N W + 25)
+                                                                       
+                                                  b2N W c − K − 6
+                                     8 exp − 2
+                                                 2 log(100N W + 25)
+                                  =           π                          
+                                                              1
+                                    1 − exp − 2
+                                                 π 2 log(100N W + 25)
+                                                                                         
+                                    20                                  b2N W c − K − 7
+                                  ≤ 2 log(100N W + 25) exp − 2                              .
+                                    π                                π 2 log(100N W + 25)
+
+Combining these two bounds establishes the first part of Corollary 2.
+
+                    PN −1
+5.4   Bounds on        k=K λk for K ≥ d2N W e
+For any integer K such that d2N W e ≤ K ≤ N − 1, we can apply the first part of the upper bound for λk in
+                                       e−x     1
+Corollary 1 along with the inequality 1−e −x ≤ x for x > 0 to obtain
+
+
+                                N −1         N −1                          
+                                X            X         k − d2N W e − 1
+                                    λk ≤      8 exp −       2
+                                k=K      k=K               π 2 log(4N )
+                                          ∞                                
+                                         X             k − d2N W e − 1
+                                       ≤      8 exp −       2
+                                         k=K               π 2 log(4N )
+                                                                       
+                                                   K − d2N W e − 1
+                                         8 exp −      2
+                                                       2 log(4N )
+                                       =            π                
+                                                              1
+                                           1 − exp − 2
+                                                       π 2 log(4N )
+                                                                               
+                                         16                     K − d2N W e − 2
+                                       ≤ 2 log(4N ) exp −           2             .
+                                         π                         π 2 log(4N )
+
+   In a similar manner, we can apply the second part of the upper bound for λk in Corollary 1 instead of
+the first part of the upper bound to obtain
+                       N −1          N −1                               
+                       X             X               k − d2N W e − 6
+                              λk ≤     10 exp − 2
+                       k=K        k=K             π 2 log(100N W + 25)
+                                   ∞                                    
+                                  X                  k − d2N W e − 6
+                                ≤      10 exp − 2
+                                  k=K             π 2 log(100N W + 25)
+                                                                    
+                                                K − d2N W e − 6
+                                   10 exp − 2
+                                               2 log(100N W + 25)
+                                =           π                        
+                                                          1
+                                  1 − exp − 2
+                                              π 2 log(100N W + 25)
+                                                                                     
+                                  20                                K − d2N W e − 7
+                                ≤ 2 log(100N W + 25) exp − 2                            .
+                                  π                              π 2 log(100N W + 25)
+
+Combining these two bounds establishes the second part of Corollary 2.
+
+
+                                                        20
+6      Proof of PSWF Eigenvalue Bounds
+First, we state a result by Boulsane, Bourguiba, and Karoui [28] which quantifies how close the PSWF
+eigenvalues are to DPSS eigenvalues with the same time-bandwidth product.
+Lemma 3. For any N ∈ N and W ∈ (0, 12 ),
+
+                                    ∞
+                                                                           !1/2
+                                    X                                  2                 4π 2 W 3
+                                          λk (N, W ) − λ
+                                                       ek (πN W )                 ≤               ,
+                                                                                      3 sin(2πW )
+                                    k=0
+
+where we define λk (N, W ) = 0 for k ≥ N for ease of notation.
+
+      In particular, we note that this implies
+
+                                              ∞
+                                                                                  !1/2
+                      c  e                  X                  c  e       2                           4c3
+                λk N,     − λk (c) ≤                 λk       N,     − λk (c)             ≤ δc,N :=
+                      πN
+                                              k=0
+                                                                 πN                                   3πN 3 sin( 2c
+                                                                                                                 N)
+
+
+for all c > 0 and all integers N > 2c
+                                   π and k ≥ 0. Also, for any c > 0, we have δc,N & 0 as N → ∞, and thus,
+
+                                                                   c
+                                                   lim λk (N,        )=λ
+                                                                       ek (c).
+                                                  N →∞            πN
+
+6.1     Proof of Theorem 3
+             c
+               
+Since λk N, πN   −λ
+                  ek (c) ≤ δc,N , we have
+
+                               ek (c) < 1 −  =⇒  − δc,N < λk N, c
+                                                                   
+                             <λ                                      < 1 −  + δc,N
+                                                                 πN
+                                                                                                      c
+for all integers k ≥ 0. For sufficiently large N , δc,N <  and so, we may apply Theorem 2 for W = πN   to
+obtain
+                        ek (c) < 1 −  ≤ # k :  − δc,N < λk N, c
+               n                      o       n                                        o
+             # k:<λ                                                      < 1 −  + δc,N
+                                                                πN                          
+                                            2       100c                        5
+                                        ≤ 2 log          + 25 log                                + 7.
+                                           π          π             ( − δc,N )(1 −  + δc,N )
+
+Since this bound holds for all sufficiently large N , we may take the limit as N → ∞ to obtain
+                                                                                                      
+           n                     o
+                  ek (c) < 1 −  ≤ lim         2       100c                           5
+        # k:<λ                                  log         + 25   log                                + 7
+                                      N →∞ π 2           π                ( − δc,N )(1 −  + δc,N )
+                                                                        
+                                       2        100c                  5
+                                    ≤ 2 log           + 25 log               + 7.
+                                       π         π                (1 − )
+
+6.2     Proof of PSWF eigenvalue bounds (Corollary 3)
+                    2c 
+For any 0 ≤ k ≤      π      − 1, we can apply Corollary 1 for any N > 2c               c
+                                                                           π and W = πN to obtain
+                                                             "       2c           #
+                                          c                              − k − 7
+                                   λk N,       ≥ 1 − 10 exp − 2 π 100c              .
+                                          πN                    π 2 log     π + 25
+
+
+Since this holds for all N > 2c
+                             π , we have
+                                                                      "      2c          #
+                                                      c                      π −k−7 
+                                              
+                            λ
+                            ek (c) = lim λk       N,      ≥ 1 − 10 exp − 2         100c      .
+                                    N →∞             πN                 π 2 log     π + 25
+
+
+                                                                  21
+                                2c                                                 c
+      Similarly, for any k ≥     π , we can apply Corollary 1 for any N > k and W = πN to obtain and
+                                                         "                     #
+                                                                 k − 2c
+                                                                      
+                                             c                        π −6 
+                                        
+                                      λk N,      ≤ 10 exp − 2         100c       .
+                                            πN               π 2 log    π + 25
+
+Since this holds for all N > k, we have
+                                                                 "                   #
+                                                                       k − 2c
+                                                                            
+                                                     c                      π −6 
+                                             
+                          λ
+                          ek (c) = lim λk        N,      ≤ 10 exp − 2       100c       .
+                                     N →∞           πN             π 2 log    π + 25
+
+
+6.3     Proof of PSWF eigenvalue sum bounds (Corollary 4)
+For any integer K such that 1 ≤ K ≤ 2c
+                                         
+                                          π , we can apply the lower bound for λk (c) in Corollary 3 along
+                                                                                            e
+                       −x
+                     e       1
+with the inequality 1−e −x ≤ x for x > 0 to obtain
+
+
+                    K−1
+                                                    "                             #
+                    X               K−1
+                                        X
+                                                              2c 
+                                                                     −  k − 7
+                                                               π
+                          1−λ ek (c) ≤       10 exp − 2              100c
+                                                                                
+                    k=0                 k=0              π 2 log       π + 25
+                                         K−1
+                                                      "          2c                #
+                                                                  π −k−7 
+                                         X
+                                     ≤        10 exp − 2               100c
+                                       k=−∞                 π 2 log      π + 25
+                                                "        2c                #
+                                                          π −k−6 
+                                         10 exp − 2            100c
+                                                     2 log       π + 25
+                                     =           " π                          #
+                                                                 1
+                                        1 − exp − 2             100c
+                                                                            
+                                                     π 2 log      π + 25
+                                                                        "       2c           #
+                                                                                      −   −
+                                                              
+                                        20       100c                                   K   7
+                                     ≤ 2 log            + 25 exp − 2 π 100c                    .
+                                        π          π                        π 2 log    π + 25
+
+   Similarly, for any integer K ≥ 2c
+                                     
+                                     π , we can apply the upper bound for λk (c) in Corollary 3 along with
+                                                                                       e
+                e−x      1
+the inequality 1−e−x ≤ x for x > 0 to obtain
+                          ∞           ∞
+                                                 "               2c          #
+                        X
+                            ek (c) ≤
+                                     X                    k −     π    − 6
+                            λ             10 exp − 2             100c
+                                                                             
+                                                      π 2 log      π + 25
+                        k=K          k=K
+                                             "                            #
+                                                     k − 2c
+                                                           
+                                                             π −6 
+                                      10 exp − 2            100c
+                                                  2 log       π + 25
+                                   =          " π                          #
+                                                              1
+                                     1 − exp − 2             100c
+                                                                         
+                                                  π 2 log      π + 25
+                                                                     "                    #
+                                                                            K − 2c
+                                                                                  
+                                                                                   π −7 
+                                                           
+                                     20       100c
+                                   ≤ 2 log           + 25 exp − 2                 100c      .
+                                     π          π                        π 2 log   π + 25
+
+
+
+7      Numerical Results
+We demonstrate the quality of our bounds on the width of the transition region #{k :  < λk < 1 − } with
+some numerical computations. First, we fix W = 41 (a large value of W ), and for each integer 24 ≤ N ≤ 216
+we use the method described in [32] to compute λk for a range kmin ≤ k ≤ kmax such that λkmin > 1 − 10−13
+and λkmax < 10−13 . From this, we can determine #{k :  < λk < 1 − } for  = 10−3 , 10−8 , 10−13 . We plot
+#{k :  < λk < 1 − } as well as the upper bound on #{k :  < λk < 1 − } from Theorem 1 in Figure 2. We
+note that over this range of parameters, the difference between the bound in Theorem 1 and the true width
+of the transition region #{k :  < λk < 1 − } is between 1 and 14.
+
+
+                                                          22
+   80
+
+   70
+
+   60
+
+   50
+
+   40
+
+   30
+
+   20
+
+   10
+
+    0
+     24      25      26         27    28      29      210     211     212        213     214     215     216
+
+
+
+Figure 2: Plots of the width of the transition region #{k :  < λk < 1 − } vs. N where W = 41 and
+ = 10−3 (blue),  = 10−8 (green), and 10−13 (red) are fixed. The dashed lines indicate the upper bound from
+Theorem 1.
+
+
+
+    Next, we fix N = 216 and for 10001 logarithmically spaced values of W between 2−14 and 2−2 , we use
+the method described in [32] to compute λk for a range kmin ≤ k ≤ kmax such that λkmin > 1 − 10−13 and
+λkmax < 10−13 . From this, we can determine #{k :  < λk < 1 − } for  = 10−3 , 10−8 , 10−13 . We plot
+#{k :  < λk < 1 − } as well as the upper bound on #{k :  < λk < 1 − } from Theorem 2 in Figure 3. We
+note that over this range of parameters, the difference between the bound in Theorem 1 and the true width
+of the transition region #{k :  < λk < 1 − } is between ≈ 9.8 and ≈ 30.7.
+
+                                                 l                         m
+    In Figure 2, we see that the plots of both 2 π12 log(4N ) log( (1−)
+                                                                      4
+                                                                          ) (the bound in Theorem 1) and the
+actual width of the transition region increase roughly linearly with log N and at roughly the same rate.
+However, the difference between the bound in Theorem 1 and the actual width of the transition region is
+noticeably larger for smaller values of  than for larger values of . This provides numerical evidence that
+for a large bandwidth W , the bound’s dependence on N is close to correct, but the dependence on  has
+some room for improvement.                                                      
+   In Figure 3, we see that the plots of both π22 log(100N W + 25) log         5
+                                                                            (1−)   + 7 and the actual width of
+the transition region increase roughly linearly with log(N W ) and at roughly the same rate. However, the
+difference between the bound in Theorem 2 and the actual width of the transition region is quite notice-
+able. This provides numerical evidence that the leading constant of π22 is indeed correct, but that the other
+constants leave significant room for improvement.
+    Finally, we note that for the range of parameters in both plots, the non-asymptotic bounds on the width
+of the transition region given by (2), (3), and (6) (in Section 3.1) would all be well above the range of the
+                                                                              1
+plots in Figures 2 and 3. The bounds in (2) and (3) are proportional to (1−)   . Thus, they are only useful
+when  is not too small. Also, the bound in (6) is rather large since the leading constant π82 being 4 times
+larger than that in Theorems 1 and 2, and the trailing constant 12 dominates π82 log(8N ) when N isn’t too
+large. In particular, for  = 10−3 and any N ∈ N, if we impose the mild constraint that N W ≥ 21 , then the
+                            2
+                           4/π
+bound in (2) is at least (1−)   ≈ 405, the bound in (3) is at least 0.45−1/6
+                                                                       (1−) ≈ 283, and the bound in (6) is at
+        8                   15
+least ( π2 log(8) + 12) log(  ) ≈ 131.
+
+
+                                                      23
+   100
+
+    90
+
+    80
+
+    70
+
+    60
+
+    50
+
+    40
+
+    30
+
+    20
+
+    10
+
+     0
+     2-14    2-13    2-12    2-11    2-10     2-9     2-8     2-7     2-6     2-5     2-4     2-3     2-2
+
+
+
+Figure 3: Plots of the width of the transition region #{k :  < λk < 1 − } vs. W where N = 216 and
+ = 10−3 (blue),  = 10−8 (green), and 10−13 (red) are fixed. The dashed lines indicate the upper bound from
+theorem 2.
+
+
+References
+ [1] D. Slepian and H. O. Pollak. Prolate spheroidal wave functions, Fourier analysis, and uncertainty. I.
+     Bell Systems Tech. J., 40(1):43–64, 1961.
+ [2] H. J. Landau and H. O. Pollak. Prolate spheroidal wave functions, Fourier analysis, and uncertainty.
+     II. Bell Systems Tech. J., 40(1):65–84, 1961.
+
+ [3] H. J. Landau and H. O. Pollak. Prolate spheroidal wave functions, Fourier analysis, and uncertainty.
+     III. Bell Systems Tech. J., 41(4):1295–1336, 1962.
+ [4] D. Slepian. Prolate spheroidal wave functions, Fourier analysis, and uncertainty. IV. Bell Systems Tech.
+     J., 43(6):3009–3058, 1964.
+ [5] D. Slepian. Prolate spheroidal wave functions, Fourier analysis, and uncertainty. V – The discrete case.
+     Bell Systems Tech. J., 57(5):1371–1430, 1978.
+ [6] M. A. Davenport and M. B. Wakin. Compressive sensing of analog signals using discrete prolate
+     spheroidal sequences. Applied and Computational Harmonic Analysis, 33(3):438–472, 2012.
+ [7] Z. Zhu and M. B. Wakin. Approximating sampled sinusoids and multiband signals using multiband
+     modulated dpss dictionaries. Journal of Fourier Analysis and Applications, 23(6):1263–1310, 2017.
+ [8] S. Karnik, Z. Zhu, M. B. Wakin, J. Romberg, and M. A. Davenport. The fast slepian transform. Applied
+     and Computational Harmonic Analysis, 46(3):624–652, 2019.
+ [9] D. J. Thomson. Spectrum estimation and harmonic analysis. Proceedings of the IEEE, 70(9):1055–1096,
+     1982.
+
+[10] T. Zemen and C. Mecklenbräuker. Time-variant channel estimation using Discrete Prolate Spheroidal
+     Sequences. IEEE Trans. Signal Processing, 53(9):3597–3607, 2005.
+
+
+
+
+                                                     24
+[11] T. Zemen, C. F. Mecklenbrauker, F. Kaltenberger, and B. H. Fleury. Minimum-energy band-limited
+     predictor with dynamic subspace selection for time-variant flat-fading channels. IEEE Transactions on
+     Signal Processing, 55(9):4534–4548, 2007.
+[12] M. A. Davenport, S. R. Schnelle, J. P. Slavinsky, R. G. Baraniuk, M. B. Wakin, and P. T. Boufounos.
+     A wideband compressive radio receiver. In 2010-MILCOM 2010 Military Communications Conference,
+     pages 1193–1198. IEEE, 2010.
+[13] F. Yin, C. Debes, and A. M. Zoubir. Parametric waveform design using discrete prolate spheroidal se-
+     quences for enhanced detection of extended targets. IEEE Transactions on Signal Processing, 60(9):4525–
+     4536, 2012.
+
+[14] Z. Zhu and M. B. Wakin. Wall clutter mitigation and target detection using Discrete Prolate Spheroidal
+     Sequences. In Proc. Int. Work. on Compressed Sensing Theory Appl. Radar, Sonar and Remote Sens. (CoSeRa),
+     Pisa, Italy, Jun. 2015.
+[15] R. Matthysen and D. Huybrechs. Fast algorithms for the computation of fourier extensions of arbitrary
+     length. SIAM Journal on Scientific Computing, 38(2):A899–A922, 2016.
+
+[16] D. Huybrechs. On the Fourier extension of nonperiodic functions. SIAM J. Numer. Anal., 47(6):4326–
+     4355, 2010.
+[17] B. Adcock, D. Huybrechs, and J. Martı́n-Vaquero. On the numerical stability of fourier extensions.
+     Foundations of Computational Mathematics, 14(4):635–687, 2014.
+
+[18] L. D. Abreu and J. L. Romero. Mse estimates for multitaper spectral estimation and off-grid compres-
+     sive sensing. IEEE Transactions on Information Theory, 63(12):7770–7776, 2017.
+[19] S. Karnik, J. Romberg, and M. A. Davenport. Fast multitaper spectral estimation. In 2019 International
+     Conference on Sampling Theory and Applications (SampTA). IEEE, 2019.
+[20] H. Landau and H. Widom. Eigenvalue distribution of time and frequency limiting. Journal of Mathe-
+     matical Analysis and Applications, 77(2):469–481, 1980.
+[21] J. A. Hogan and J. D. Lakey. Duration and bandwidth limiting: prolate functions, sampling, and applications.
+     Springer Science & Business Media, 2011.
+[22] A. Osipov. Certain upper bounds on the eigenvalues associated with prolate spheroidal wave func-
+     tions. Applied and Computational Harmonic Analysis, 35(2):309–340, 2013.
+[23] A. Israel. The eigenvalue distribution of time-frequency localization operators.             arXiv preprint
+     arXiv:1502.04404, 2015.
+[24] A. Bonami and A. Karoui. Spectral decay of time and frequency limiting operator. Applied and Compu-
+     tational Harmonic Analysis, 42(1):1–20, 2017.
+
+[25] A. Bonami, P. Jaming, and A. Karoui. Non-asymptotic behaviour of the spectrum of the sinc kernel
+     operator and related applications. arXiv preprint arXiv:1804.01257, 2018.
+[26] J. M. Varah. The prolate matrix. Linear Algebra and its Applications, 187:269 – 278, 1993.
+[27] A. W. Bojanczyk, R. P. Brent, F. R. De Hoog, and D. R. Sweet. On the stability of the bareiss and related
+     toeplitz factorization algorithms. SIAM J. Matrix Analysis and Applications, 16:40–57, 1995.
+[28] M. Boulsane, N. Bourguiba, and A. Karoui. Discrete prolate spheroidal wave functions: Further spec-
+     tral analysis and some related applications. Journal of Scientific Computing, 82(3):1–19, 2020.
+[29] H. Landau. On the density of phase-space expansions.             IEEE transactions on information theory,
+     39(4):1152–1156, 1993.
+
+
+
+                                                       25
+[30] B. Beckermann and A. Townsend. Bounds on the singular values of matrices with displacement struc-
+     ture. SIAM Review, 61(2):319–344, 2019.
+[31] E. I. Zolotarev. Application of elliptic functions to questions of functions deviating least and most from
+     zero. Zap. Imp. Akad. Nauk. St. Petersburg, 30(5):1–59, 1877.
+[32] D. M. Gruenbacher and D. R. Hummels. A simple algorithm for generating discrete prolate spheroidal
+     sequences. IEEE Transactions on Signal Processing, 42(11):3276–3278, 1994.
+[33] N. I. Akhiezer. Elements of the theory of elliptic functions. transl. of mathematical monographs, vol.
+     79. American Mathematical Soc., 1990.
+[34] E. Süli and D. Mayers. An Introduction to Numerical Analysis. Cambridge University Press, 2003.
+
+
+A     Zolotarev numbers
+In this section, we review some properties of Zolotarev numbers, which will be useful in our analysis in
+Appendix B. With the exception of Corollary 6, all the results here have been proven elsewhere. However,
+we state these results and outline the proofs for sake of completeness.
+    For any integer k ≥ 0, we let Rk,k denote the set of rational functions ϕ(z) = p(z)
+                                                                                   q(z) such that p(z) and
+q(z) are polynomials with degree at most k. For any two disjoint, closed subsets of the Riemann sphere
+E, F ⊂ C ∪ {∞}, the Zolotarev number Zk (E, F ) is defined as
+
+                                                                   sup |ϕ(z)|
+                                                                   z∈E
+                                           Zk (E, F ) =    inf                  .
+                                                          ϕ∈Rk,k   inf |ϕ(z)|
+                                                                   z∈F
+
+
+Note that any rational function ϕ(z) = p(z)
+                                       q(z) can be extended to a continuous function on the Riemann sphere
+C ∪ {∞} by defining ϕ(∞) = lim ϕ(z) and ϕ(z) = ∞ for any z such that q(z) = 0.
+                                 |z|→∞
+   Beckermann and Townsend [30] proved the following bound on the Zolotarev numbers for the intervals
+E = [−b, −a] and F = [a, b].
+Theorem 5. [30] For any reals b > a > 0, and any integer k ≥ 0,
+                                                             "               #
+                                                                       π2 k
+                                     Zk ([−b, −a], [a, b]) ≤ 4 exp −           .
+                                                                     log( 4b
+                                                                          a)
+
+   The proof of Theorem 5 involves using theory of elliptic functions to construct a rational function ϕ ∈
+                  sup |ϕ(z)|        "          #
+               z∈[−b,−a]                 π2 k
+Rk,k for which               ≤ 4 exp −           .
+                  inf |ϕ(z)|           log( 4b
+                                            a)
+                   z∈[a,b]
+    A fact about Zolotarev numbers is that they are invariant under invertible Möbius transforms [33].
+Lemma 4. For any two disjoint, closed subsets of the Riemann sphere E, F ⊂ C ∪ {∞} and any Möbius transform
+       β1 z + β2
+φ(z) =           such that β1 β4 6= β2 β3 , we have Zk (φ(E), φ(F )) = Zk (E, F ) for all integers k ≥ 0.
+       β3 z + β4
+   This fact is easily proved by noting that ϕ∗ ∈ Rk,k is the extremal rational function for (φ(E), φ(F )) if
+and only if ϕ∗ ◦ φ ∈ Rk,k is the extremal rational function for (E, F ).
+   Using this fact, Beckermann and Townsend proved the following bound on the Zolotarev numbers for
+two non-overlapping intervals.
+Corollary 5. [30] For any two intervals [c1 , c2 ] and [d1 , d2 ] that are nonoverlapping, and any integer k ≥ 0,
+
+                                                        π2 k
+                                                               
+                                                                                  (d1 − c1 )(d2 − c2 )
+                Zk ([c1 , c2 ], [d1 , d2 ]) ≤ 4 exp −                where γ =                         .
+                                                      log(16γ)                    (d2 − c1 )(d1 − c2 )
+
+                                                           26
+                                                                                                           p
+Proof. It is trivial to check that γ > 1 when [c1 , c2 ] and [d1 , d2 ] do not overlap. Now, set α = 2γ−1+2 γ 2 − γ
+and define the Möbius transforms
+                                       (d2 − d1 )(z − c2 )                    (α − 1)(z + 1)
+                            φ1 (z) =                         and φ2 (z) =                    .
+                                       (d2 − c2 )(z − d1 )                    (α + 1)(z − 1)
+                                                             2
+                                                        (α−1)
+One can check that φ1 ([c1 , c2 ]) = [0, γ−1  γ ] = [0, (α+1)2 ] = φ2 ([−α, −1]) and φ1 ([d1 , d2 ]) = [1, ∞] = φ2 ([1, α]),
+and that both φ1 and φ2 are bijections. Thus, the Möbius transform φ = φ−1                2 ◦ φ1 satisfies φ([c1 , c2 ]) =
+[−α,
+ p   −1] and φ([d  1 , d2 ])  =    [1, α]. So  by applying   Theorem     5, Lemma     4, and  the bound α = 2γ − 1 +
+2 γ 2 − γ ≤ 4γ, we have
+
+                                                                              π2 k                   π2 k
+                                                                                                         
+           Zk ([c1 , c2 ], [d1 , d2 ]) = Zk ([−α, −1], [1, α]) ≤ 4 exp −               ≤ 4 exp −              .
+                                                                            log(4α)                log(16γ)
+
+
+    In a nearly identical manner, we can also prove the following bound.
+Corollary 6. For any real numbers c1 < d1 < d2 < c2 , and any integer k ≥ 0,
+
+                                                             π2 k
+                                                                   
+                                                                                  (c2 − d1 )(d2 − c1 )
+           Zk ([−∞, c1 ] ∪ [c2 , ∞], [d1 , d2 ]) ≤ 4 exp −            where γ =                        .
+                                                           log(16γ)               (c2 − d2 )(d1 − c1 )
+                                                                                         p
+Proof. Again, since c1 < d1 < d2 < c2 , we have γ > 1. Now, set α = 2γ − 1 + 2 γ 2 − γ and define the
+Möbius transforms
+                                     (d2 − d1 )(z − c1 )                (α − 1)(z + 1)
+                          φ1 (z) =                         and φ2 (z) =                .
+                                     (d2 − c1 )(z − d1 )                (α + 1)(z − 1)
+                                                                        2
+                                                                     (α−1)
+One can check that φ1 ([−∞, c1 ] ∪ [c2 , ∞]) = [0, γ−1    γ ] = [0, (α+1)2 ] = φ2 ([−α, −1]) and φ1 ([d1 , d2 ]) = [1, ∞] =
+φ2 ([1, α]), and that both φ1 and φ2 are bijections. Thus, the Möbius transform φ = φ−1                2 ◦ φ1 satisfies
+φ([−∞, c1 ] ∪ [c2 , ∞]) p = [−α, −1] and φ([d1 , d2 ]) = [1, α]. So by applying Theorem 5, Lemma 4, and the
+bound α = 2γ − 1 + 2 γ 2 − γ ≤ 4γ, we have
+
+                                                                                    π2 k                   π2 k
+                                                                                                               
+        Zk ([−∞, c1 ] ∪ [c2 , ∞], [d1 , d2 ]) = Zk ([−α, −1], [1, α]) ≤ 4 exp −            ≤ 4 exp −                .
+                                                                                 log(4α)               log(16γ)
+
+
+
+
+B     Singular values of matrices with low rank displacement
+With the exception of Theorem 4, the results in this section have all been proven elsewhere. Furthermore,
+the proof of Theorem 4 is very similar to that of Theorem 7. However, we state these results and the proof
+of Theorem 4 for sake of completeness.
+    Throughout this section, we suppose that X ∈ CM ×N satisfies the displacement equation
+
+                                                  CX − XD = U V ∗ ,
+
+where C ∈ CM ×M and D ∈ CN ×N are normal matrices, and U ∈ CM ×ν and V ∈ CN ×ν (where it is
+understood that ν  min{M, N } for the results in this section to be useful). Our goal is to show that X is
+approximately low-rank under certain assumptions on Spec(C) and Spec(D).
+   Beckermann and Townsend [30] showed that the numerical rank of X can be bounded in terms of
+Zolotarev numbers.
+Theorem 6. [30] If Spec(C) ⊂ E and Spec(D) ⊂ F , then the singular values of X satisfy
+
+                                             σνk+j (X) ≤ σj (X)Zk (E, F )
+
+for any integers j ≥ 1, k ≥ 0.
+
+
+                                                             27
+  The proof involves showing that for any rational function ϕ ∈ Rk,k , we can construct a rank-(νk + j − 1)
+matrix Y such that
+                                X − Y = ϕ(C)(X − X j−1 )ϕ(D)−1
+where X j−1 is the best rank-(j − 1) approximation to X. Then, by applying the facts that
+                                                                                           −1
+                                                −1                  −1
+    kϕ(C)k ≤ sup |ϕ(z)|,            kϕ(D)            k ≤ sup |ϕ(z)       |=       inf |ϕ(z)|    ,          and kX − X j−1 k = σj (X)
+                     z∈E                                 z∈F                      z∈F
+
+along with the submultiplicativity of the matrix norm, we obtain
+
+                                                                                                                    sup |ϕ(z)|
+                                                                                                                    z∈E
+                   σνk+j (X) ≤ kX − Y k ≤ kϕ(C)k · kX − X j−1 k · kϕ(D)−1 k ≤ σj (X) ·                                            .
+                                                                                                                     inf |ϕ(z)|
+                                                                                                                    z∈F
+
+This bound holds for any ϕ ∈ Rk,k . Taking the infimum over all ϕ ∈ Rk,k yields σνk+j (X) ≤ σj (X)Zk (E, F ).
+   By combining Theorem 6 (with j = 1) along with Corollary 5, Beckermann and Townsend established
+the following result.
+Theorem 7. [30] If Spec(C) ⊂ [c1 , c2 ] and Spec(D) ⊂ [d1 , d2 ] where [c1 , c2 ] and [d1 , d2 ] are nonoverlapping, then
+for any integer k ≥ 0,
+
+                                                 π2 k
+                                                       
+                                                                             (d1 − c1 )(d2 − c2 )
+                    σνk+1 (X) ≤ 4kXk exp −                   where γ =                               .
+                                               log(16γ)                      (d2 − c1 )(d1 − c2 )
+
+   Finally, by combining Theorem 6 (with j = 1) along with Corollary 6, we obtain Theorem 4 (stated in
+Section 4.3).
+
+
+C     Polynomial approximations of the sinc function
+For a bandwidth parameter W > 0, we define the sinc function
+
+                                                               sin(2πW t)
+                                                      g(t) =                      for    t ∈ R.
+                                                                   πt
+First, we prove the following bound on the derivatives of g(t).
+Lemma 5. For any non-negative integer k,
+                                                                                       
+                                        (k)                    k          2W    2
+                                    g         (t) ≤ (2πW ) min                ,              for all t ∈ R.
+                                                                         k + 1 π|t|
+                                                                                                 2
+Proof. For k = 0, we can apply the inequality | sin θ| ≤ min{|θ|, 2} to obtain |g(t)| ≤ min{2W, π|t| }. Hence,
+we can proceed with the case where k ≥ 1. Note that we can write the sinc function as
+                                                                              Z W
+                                                             sin(2πW t)
+                                                  g(t) =                =               ej2πf t df.
+                                                                 πt               −W
+
+By differentiating under the integral sign k times, we obtain
+                             "Z               # Z
+                          k      W                 W                     Z W
+                 (k)     d           j2πf t           dk  j2πf t 
+                g (t) = k          e        df =        k
+                                                           e        df =     (j2πf )k ej2πf t df.
+                         dt     −W                −W dt                   −W
+
+Applying the triangle inequality yields the bound
+                           Z W                               Z W                                   Z W
+             (k)                          k j2πf t                            k j2πf t                                      (2πW )k+1
+         g         (t) =         (j2πf ) e            df ≤           (j2πf ) e              df =           (2π|f |)k df =             .
+                           −W                                  −W                                     −W                     π(k + 1)
+
+
+                                                                         28
+Alternatively, we can use integration by parts before applying the triangle inequality to obtain
+                              Z W
+                (k)
+            g         (t) =         (j2πf )k ej2πf t df
+                              −W
+                                              f =W    Z W
+                                      ej2πf t                                  ej2πf t
+                            
+                         =   (j2πf )k                −        j2πk(j2πf )k−1           df
+                                       j2πt f =−W       −W                      j2πt
+                                                                          Z W
+                            (j2πW )k ej2πW t      (−j2πW )k e−j2πW t                           ej2πf t
+                         =                     −                       −        j2πk(j2πf )k−1         df
+                                   j2πt                 j2πt                −W                  j2πt
+                                                                              Z W
+                            (j2πW )k ej2πW t       (−j2πW )k e−j2πW t                             ej2πf t
+                         ≤                      +                         +        j2πk(j2πf )k−1         df
+                                   j2πt                   j2πt                 −W                  j2πt
+                                                                             Z W
+                            (j2πW )k ej2πW t       (−j2πW )k e−j2πW t                             ej2πf t
+                         ≤                      +                         +        j2πk(j2πf )k−1          df
+                                   j2πt                   j2πt                −W                   j2πt
+                                                    Z W
+                           (2πW )k      (2πW )k           k
+                         =           +            +          (2π|f |)k−1 df
+                             2π|t|        2π|t|      −W  |t|
+                           (2πW )k    (2πW )k
+                         =         +
+                             π|t|       π|t|
+                           2(2πW )k
+                         =          .
+                              π|t|
+
+Combining the two bounds yields
+
+                                   (2πW )k+1 2(2πW )k
+                                                                                
+                                                                         2W    2
+                 g (k) (t) ≤ min             ,          = (2πW )k min        ,       .
+                                    π(k + 1)    π|t|                    k + 1 π|t|
+
+
+
+   We finish this section by noting a well-known theorem on Chebyshev interpolation.
+Theorem 8. [34] Suppose g ∈ C k [a, b] for some positive integer k. Define the Chebyshev interpolating polynomial
+of degree k − 1 by
+                                              k
+                                             X               Y      t − tm0
+                                   Pk (t) =      g(tm )
+                                             m=1           0
+                                                                  t m − tm 0
+                                                                    m =1,...,k
+                                                                     m0 6=m
+
+where                                                                      
+                                     b+a b−a                     2m − 1
+                                tm =    +    cos                        π        for m = 1, . . . , k
+                                      2   2                        2k
+are the Chebyshev nodes used for interpolation. Then, for any t ∈ [a, b], we have
+
+                                                                (b − a)k
+                                            |g(t) − Pk (t)| ≤             max g (k) (ξ) .
+                                                                22k−1 k! ξ∈[a,b]
+
+   We will use both Lemma 5 and Theorem 8 in Section 4.4 to prove Theorem 2.
+
+
+
+
+                                                                  29
+

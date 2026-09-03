@@ -201,3 +201,10 @@ Q3 gap. ★-books/paywall/Zenodo → owner drops PDF in pdfs/ (owner HAS them in
 | DANIELMPELLEGRINOANDEDUARDOVTEIXEIRA-2026 | Daniel M. Pellegrino, Eduardo V. Teixeira, "Polynomial growth of complex polynomial Bohnenblust--Hille constants" | arXiv:2608.16584 | `pdfs/2608.16584.pdf` | HAVE ✓ | карточка: `DANIELMPELLE_USAGE_CARDS.md` |
 | YOUNESSLAMZOURI-2026 | Youness Lamzouri, "A new proof that more than $2/3$ of the zeros of the Riemann zeta function are simple and on the critical line" | arXiv:2609.02882 | `pdfs/2609.02882.pdf` | **HAVE ✓** | карточка `LAMZOURI_HILBERT_SIMPLE_ZEROS_2026_USAGE_CARDS.md` 2026-09-03 — контекст, НЕ поставщик; потолок метода 67.25% (Remark 3.4); ложные друзья «simple»/«real»/«Hilbert» |
 | LEVENTALPGEANDRALPHFURMAN-2026 | Levent Alpöge and Ralph, "More than two thirds of the zeta zeros are simple and on the critical line" | arXiv:2608.13637 | `pdfs/2608.13637.pdf` | **HAVE ✓** | карточка `LAMZOURI_HILBERT_SIMPLE_ZEROS_2026_USAGE_CARDS.md` 2026-09-03 — контекст, НЕ поставщик; потолок метода 67.25% (Remark 3.4); ложные друзья «simple»/«real»/«Hilbert» |
+
+## Обзор стен A/B/Δ (2026-09-03) — сырые источники разведки
+
+| ключ | что | где | статус |
+|---|---|---|---|
+| SURVEY-WALLS-2026-09-03 | обзор «стены A/B/Δ как неравенства: классика и новейшее», два приложения с отчётами разведки | `SURVEY_WALLS_A_B_DELTA_2026-09-03.md`, `…_APPENDIX_NEW.md`, `…_APPENDIX_OLD.md` | HAVE ✓ (суждение наблюдателя, не вердикт) |
+| survey_2026-09-03_sources/ | 30 PDF + извлечённые тексты, открытые разведкой (Duffin–Schaeffer 1952, Widom 1958, Ashbaugh–Benguria 1989, Lavine 1994, Andrews–Clutterbuck 2011, Slepian–Pollak / Landau–Pollak 1961–62, Bonami–Karoui, Osipov, Connes–Consani 2020, Suzuki 2022/23, Burnol, Báez-Duarte, Maślanka, Conrey–Li, Jarret–Jordan, Hofmann–Kerner–Pechmann, Blank–Ulanovskii, Carneiro et al. и др.) | `pdfs/survey_2026-09-03_sources/` | RAW — не в Zotero, карточек нет; тянуть в реестр по одному через `paper.sh`, когда понадобится как поставщик |

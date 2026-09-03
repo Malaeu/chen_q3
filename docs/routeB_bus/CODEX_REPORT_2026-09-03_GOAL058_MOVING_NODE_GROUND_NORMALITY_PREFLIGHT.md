@@ -21,29 +21,32 @@ compact-decay contract, but it is not yet a proof.  Its noncircular form must
 replace
 
 ```text
-A_k * sup_{z in K} kernel_k(z) * sqrt(r_k) -> 0
+A_n * sup_{z in K} kernel_n(z) * sqrt(r_n) -> 0
 ```
 
 on every compact `K` by the pair
 
 ```text
 for every compact K subset strip, there exists M_K such that
-  for every k and z in K, ‖F_k(z)‖ <= M_K
-A_k * sqrt(L_k) * sqrt(r_k) -> 0
+  eventually for every z in K, ‖F_n(z)‖ <= M_K
+A_n * sqrt(L_n) * sqrt(r_n) -> 0
 ```
 
 where
 
 ```text
-A_k = ‖centeredXi 0 / rawFplus_k 0‖
-r_k = selectedFerrersTrackedGroundResidualFloorRatio P beta k
-L_k = logLength(index k).
+k_n = phi(n), the same cofinal tail index used by F_n and hfloorAt(n)
+A_n = ‖centeredXi 0 / rawFplus_(k_n) 0‖
+r_n = selectedFerrersTrackedGroundResidualFloorRatio P beta k_n
+L_n = logLength(index k_n).
 ```
 
-The first line is direct compact-local boundedness of the tracked ground
-family.  It must not be replaced silently by boundedness of the scalar tracking
-envelope.  The second line supplies convergence only at the moving real
-lattice.
+The first line is eventual direct compact-local boundedness of the tracked
+ground family.  Since every finite-head function is entire and therefore
+bounded on a compact, a finite-head absorption wrapper upgrades it to the
+all-index bound required by the existing Montel theorem.  It must not be
+replaced silently by boundedness of the scalar tracking envelope.  The second
+line supplies convergence only at the moving real lattice.
 For every subsequence, Montel must produce a further locally-uniformly
 convergent subsequence.  Density identifies that subsubsequence limit with
 `centeredXi` on a real interval, and the analytic identity theorem identifies
@@ -89,10 +92,14 @@ TRIAL_LIMIT:
 
 GROUND_COMPACT_BOUNDED:
   forall compact K subset strip,
-    exists M, forall n z in K, ‖F n z‖ <= M               [missing analytic supplier]
+    exists n0 M, forall n >= n0 and z in K, ‖F n z‖ <= M  [missing analytic supplier]
+
+FINITE_HEAD_ABSORPTION:
+  continuity of each F n on compact K upgrades the eventual bound
+  to the all-n bound required by Montel                       [Lean-ready]
 
 LATTICE_RATE:
-  A_k * sqrt(L_k) * sqrt(r_k) -> 0                        [missing analytic supplier]
+  A_n * sqrt(L_n) * sqrt(r_n) -> 0                        [missing analytic supplier]
 
 POLE_DENSITY:
   for every real x in a fixed nontrivial interval,
@@ -114,12 +121,12 @@ An initially proposed sufficient route to `GROUND_COMPACT_BOUNDED` was a
 bounded scalar tracking envelope
 
 ```text
-A_k * kernel_k(z) * sqrt(r_k) = O_K(1).
+A_n * kernel_n(z) * sqrt(r_n) = O_K(1).
 ```
 
 That route is not retained as the new hypothesis.  The exact whole-lattice
 kernel formula has exponential growth in `L * |Im z|`.  A bound at one height
-`sigma1` appears to force exponential decay of the scalar prefactor, which then
+`sigma1` appears to force exponential decay of the tail scalar prefactor, which then
 gives compact decay at every smaller height `sigma0 < sigma1`.  Thus this
 particular sufficient condition likely repackages the old compact-decay wall.
 Only a direct ground-family normality supplier, not obtained from that scalar

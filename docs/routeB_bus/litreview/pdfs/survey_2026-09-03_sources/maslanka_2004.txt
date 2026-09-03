@@ -1,0 +1,574 @@
+                                                     EFFECTIVE METHOD OF COMPUTING LI’S
+                                                      COEFFICIENTS AND THEIR PROPERTIES
+arXiv:math/0402168v5 [math.NT] 2 Jun 2004
+
+
+
+
+                                                                          KRZYSZTOF MAŚLANKA
+
+
+                                                    Abstract. In this paper we present an effective method for computing
+                                                    certain real coefficients λn which appear in a criterion for the Riemann
+                                                    hypothesis proved by Xian-Jin Li. With the use of this method a se-
+                                                    quence of over three-thousand λn ’s has been calculated. This sequence
+                                                    reveals a peculiar and unexpected behavior: it can be split into a strictly
+                                                    growing trend and some tiny oscillations superimposed on this trend.
+
+
+
+
+                                                                             1. Introduction
+                                               Since its formulation almost a century and a half ago the Riemann hy-
+                                            pothesis (hereafter called RH) is commonly regarded as both the most chal-
+                                            lenging and the most difficult task in number theory [14]. It states that all
+                                            complex zeroes of the zeta function, defined by the following series if ℜs > 1
+
+                                                                                          ∞
+                                                                                          X 1
+                                            (1.1)                                ζ(s) =
+                                                                                                ns
+                                                                                          n=1
+
+                                            and by analytic continuation to the whole plane, are located right on the
+                                            critical line ℜs = 12 . RH, if true, would shed more light on our knowledge
+                                            of the distribution of prime numbers. More precisely, the absence of zeroes
+                                            of ζ(s) in the half-plane ℜs > θ implies that (see [6], theorem 30)
+                                            (1.2)                        π(x) = li(x) + O(xθ log x)
+                                            where π(x) is the number of primes not exceeding x and li(x) denotes loga-
+                                            rithmic integral. Therefore, the value θ = 21 (as Riemann conjectured) makes
+                                            the theorem useful since the error term in (1.2) is the smallest possible. We
+                                            do know that on the critical line lie infinitely many complex zeroes [5] and
+                                            that among several billions of initial zeroes there is no counterexample to
+                                            RH, cf. [13], [17].
+
+                                            (Place Figure 1 about here.)
+
+                                              Date: 9 May 2004.
+                                              Key words and phrases. Riemann zeta function, Riemann hypothesis, Li’s criterion,
+                                            numerical methods in analytic number theory.
+                                              e-mail: maslanka@oa.uj.edu.pl.
+                                                                                        1
+2                              KRZYSZTOF MAŚLANKA
+
+                                 2. Li’s Criterion
+  In 1997 Xian-Jin Li [10] presented an interesting criterion equivalent to
+the Riemann hypothesis:
+Theorem 2.1. RH is true if and only if all coefficients
+                          1   dn  n−1           
+(2.1)           λn :=           n
+                                   s    ln ξ (s)
+                       Γ (n) ds                    s=1
+are non-negative, where
+                                                  s
+(2.2)             ξ (s) = 2 (s − 1) π −s/2 Γ 1 +      ζ (s) .
+                                                   2
+   An equivalent definition of λn is (see [10], formula 1.4):
+                               X                 
+                                                1 n
+(2.3)                    λn =        1− 1−
+                                ρ
+                                                ρ
+where the sum runs over all (paired) complex zeroes of the Riemann zeta-
+function. However, the above definitions of λn are not suitable for numerical
+calculations. In this paper I shall present an effective method for calculating
+these coefficients. The gathered data investigated numerically up to n =
+3300 reveals unexpected properties: it contains a strictly growing trend plus
+extremely small oscillations superimposed on this trend.
+   The following decomposition of λn is implicitly given in a recent paper by
+Bombieri and Lagarias ([2], Theorem 2):
+                                          n          
+                                     n X          j n            
+(2.4) λn = 1 − (log (4π) + γ) +              (−1)         1 − 2−j ζ (j)
+                                     2                j
+                                         j=2
+                 |                          {z                        }
+                                           trend
+                    n  
+                    X  n
+                −              η j−1
+                          j
+                    j=1
+                    |     {z      }
+                   oscillations
+                −    ∼
+            ≡   λn + λn
+Using the language of signal theory (perhaps not very common but some-
+times appropriate in number theory) one can say that the decomposition
+(2.4) uniquely “splits” the behavior of the sequence of {λn } into a strictly
+                −                                    ∼
+growing trend λn and certain tiny oscillations λn superimposed on it. It
+may be proved that the trend can be expressed as
+             −      1    dn h n−1  −s/2          s i
+(2.5)        λn =            s    ln π      Γ  1 +
+                  Γ (n) dsn                        2     s=1
+while the oscillations are
+                 ∼        1   dn  n−1                   
+(2.6)            λn =            n
+                                   s   ln ((s − 1) ζ (s))
+                        Γ (n) ds                           s=1
+                             ON LI’S COEFFICIENTS                               3
+
+  It may also be proved that the trend is indeed strictly growing as n tends
+to infinity. It is evident that (2.5) differs from the main definition (2.1)
+simply by replacing ξ(s) by the much simpler function π −s/2 Γ(1 + s/2). On
+                                              ∼
+the other hand, the oscillatory behavior of λn is not so evident, nevertheless
+it may be investigated numerically. I shall return to this decomposition
+later.
+   The problem of calculating numerically both components of λn (i.e. trend
+and oscillations), using directly (2.5) and (2.6), is rather hopeless, not to say:
+malicious. One has to take the nth derivatives of functions which depend of
+variable s and are labelled by parameter n. When n tends to infinity both
+families of differentiated functions tend to right angle shaped figures and the
+derivatives are to be taken just at the almost singular point s = 1. What
+is interesting, the first derivative in s = 1 for all functions related to the
+oscillating part is the same and equal to the Euler constant.
+   However, it is possible to calculate several tens of initial derivatives using
+direct numerical approach, for example Mathametica’s ND built-in function.
+This function has several parameters which enable to control the required
+accuracy. One must be aware, however, that there is no guarantee that the
+result will be correct. As with all numerical techniques for evaluating the
+infinite via finite samplings, it is sometimes possible to ”fool” ND into giving
+an incorrect result.
+
+(Place Figure 2 about here.)
+  It turns out that the following function fits very well to the numerically
+tabulated values of (2.5):
+(2.7)                          a (1 + n ln n) + cn
+with
+                                1
+                            a =   ± 8 · 10−9
+                                2
+                            c = −1.130330701...
+(A choice very similar to (2.7) was suggested to me by J. Lagarias, [9].)
+Recently I learned that A. Voros [16] using classic technique of saddle-point
+method calculated the exact value of c
+                               1
+                           c = (γ − 1 − ln 2π)
+                               2
+where γ is Euler constant. Simple fitting procedure gives also coefficients of
+consecutive terms which appear to be related to Bernoulli numbers Bk
+              X Bk          1     1        1         1       1
+(2.8)       −         k−1
+                          = −         +      3
+                                               −       5
+                                                         +        − ...
+                  2kn       4 24n 240n            504n     480n7
+              k=1
+
+This series works well for a dozen or so initial terms although it is formally
+divergent.
+4                              KRZYSZTOF MAŚLANKA
+
+   The starting point of Li’s approach to RH is a certain transformation of
+the complex plane into itself using the map s 7→ z = 1 − 1/s (which is a
+special case of Möbius transformation). Under this transformation the half-
+plane ℜs > 12 is mapped into the unit disk (with the critical line ℜs = 21
+becoming the unit circle, see Figs. 3 and 4). This was Li’s original idea.
+However, he was inspired by studying A. Weil’s proof of RH for function
+fields over finite fields where the critical line is transformed into a unit circle
+[11].
+
+(Place Figures 3 and 4 about here.)
+
+
+                            3. The main derivation
+                                                                    P
+   It has been known since medieval times that the harmonic series ∞   k=1 1/k
+diverges. This was proved long ago with the use of elementary methods by
+Nicole d’Oresme in the 14th century, and, much later, independently by
+Pietro Mengoli (in his book on arithmetic series Novae quadraturae arith-
+meticae, 1650) as well as, using yet another method, by the Bernoulli broth-
+ers.
+   A natural question emerges: how fast does this series diverge? It turns out
+that its divergence is “weak”, more precisely: logarithmic. The quantitative
+answer to this question implies the definition of the following famous number
+called the Euler-Mascheroni constant:
+                                         
+                            X1
+(3.1)           γ := lim         − log x = 0, 5772156649...
+                     x→∞        k
+                               k≤x
+
+Its natural generalization is the sequence γ n defined by
+                                                              
+                     (−1) n        X   1            (log x)n+1
+(3.2)         γ n :=         lim        (log k)n −            
+                       n! x→∞          k               n+1
+                                       k≤x
+
+where γ 0 = γ. These are the so-called Stieltjes constants1. Another “simi-
+lar” very useful sequence denoted by η n is defined by
+                                                              
+                       n                                   n+1
+                  (−1)         X   Λ (k)            (log x)
+(3.3)      η n :=        lim            (log k)n −            ,
+                    n! x→∞           k                 n+1
+                                     k≤x
+
+
+   1It should be noted that the function StieltjesGamma[n] implemented in Wolfram’s
+Mathematica,which employs Keiper’s algorithm [7], uses a different convention. It is re-
+lated to our γ n via
+                                  (−1)n
+                            γn =        StieltjesGamma[n]
+                                    n!
+                                ON LI’S COEFFICIENTS                               5
+
+where Λ(k) is the so-called von Mangoldt function defined for any positive
+integer k as:
+                   
+                         log p if k is a prime p or any power of a prime pn
+(3.4)     Λ(k) =
+                         0 otherwise
+
+   The above sequences are important on their own right since they appear
+in the Laurent expansions for ζ(s) and its logarithmic derivative around
+s = 1. (There are different conventions when defining these numbers, here I
+have adopted those of Bombieri and Lagarias [2]):
+
+                                                    ∞
+                                              1 X
+(3.5)                         ζ (s + 1) =       + γ n sn
+                                              s
+                                                 n=0
+
+
+
+                                                      ∞
+                              ζ′        1 X
+(3.6)                        − (s + 1) = +  η n sn
+                              ζ         s
+                                                      n=0
+
+
+   Integrating the second equation (3.6) with respect to s, inserting the result
+into the first one and equating coefficients in the appropriate powers of the
+variable s one can find explicit relations between the γ n and the η n :
+
+
+                 ∞                                       ∞
+                                                                          !
+                 X      sn+1                             X
+(3.7)                ηn             = − log 1 +                γ n sn+1
+                 n=0
+                        n+1                              n=0
+                 ∞                        ∞                    ∞
+                                                                              !k
+                 X        sn+1            X (−1)k              X
+                       ηn           =                   sk           γ n sn
+                          n+1                   k
+                 n=0                      k=1                  n=0
+
+                                        (k)
+Now introduce the coefficients cn defined by
+
+                             ∞                  ∞
+                                                               !k
+                             X                  X
+                                   c(k) n
+                                    n s =             γ n sn
+                             n=0                n=0
+
+
+Employing a certain formula from [4] (formula 0.314, i.e., raising a power
+series to an arbitrary integral exponent) one can express the c coefficients
+by the following recurrence relations:
+
+                   (k)
+(3.8)            c0        = γk
+                                    m−1
+                                1 X                         (k)
+                 c(k)
+                  m   =             [km − (k + 1) i] γ m−i ci
+                               mγ
+                                    i=0
+6                                KRZYSZTOF MAŚLANKA
+
+    The matrix of coefficients c depends on {γ n }:
+                     m=0 m=1                     m=2                   m=3              m=4
+
+        k=1            γ0         γ1                  γ2                   γ3            γ4
+(3.9)   k=2            γ 20     2γ 0 γ 1     γ 21 + 2γ 0 γ 2      2γ 1 γ 2 + 2γ 0 γ 3    ...
+        k=3            γ 30     3γ 20 γ 1   3γ 0 γ 21 + 3γ 20 γ 2          ...           ...
+        k=4            γ 40     4γ 30 γ 1             ...                  ...           ...
+        k=5            γ 50       ...                 ...                  ...           ...
+(In what follows only the upper triangular part of this infinite matrix will
+be needed.)
+
+(Place Figure 5 about here.)
+
+
+   With the help of (3.7) the coefficients η n may further be expressed using
+the elements of the matrix c as
+                                      n
+                                     X   (−1)k+1 (k+1)
+(3.10)                η n = (n + 1)              c
+                                           k + 1 n−k
+                                             k=0
+    From this we have:
+(3.11) η 0 = −γ 0
+        η 1 = +γ 20 − 2γ 1
+        η 2 = −γ 30 + 3γ 0 γ 1 − 3γ 2
+        η 3 = +γ 40 − 4γ 20 γ 1 + 2γ 21 + 4γ 0 γ 2 − 4γ 3
+        η 4 = −γ 50 + 5γ 30 γ 1 − 5γ 0 γ 21 − 5γ 20 γ 2 + 5γ 1 γ 2 + 5γ 0 γ 3 − 5γ 4 ,
+              ...
+Finally, the oscillating parts of λn are expressible as polynomials in the
+Stieltjes constants:
+                                    n  
+                            ∼      X    n
+(3.12)                      λn = −         η .
+                                        j j−1
+                                             j=1
+
+Using now (3.11) and (3.12) we finally obtain:
+
+        ∼
+(3.13) λ1 = γ 0
+        ∼
+        λ2 = 2γ 0 − γ 20 + 2γ 1
+        ∼
+        λ3 = 3γ 0 − 3γ 20 + γ 30 + 6γ 1 − 3γ 0 γ 1 + 3γ 2
+        ∼
+        λ4 = 4γ 0 − 6γ 20 + 4γ 30 − γ 40 + 12γ 1 − 12γ 0 γ 1 + 4γ 20 γ 1 − 2γ 21
+             +12γ 2 − 4γ 0 γ 2 + 4γ 3
+             ......
+                                   ON LI’S COEFFICIENTS                                          7
+
+Here are some numerical values of various numbers used in this paper:
+                                                              ∼
+   n      γn                        ηn                        λn               λn
+   0      +0.577215664902           -0.577215664902           -                -
+   1      -0.0728158454837          +0.187546232840           0.577215664902   0.0230957089661
+   2      -0.00969036319287         -0.0516886320332          0.966885096963   0.0923457352280
+   3      +0.00205383442030         +0.0147516588255          1.22069692822    0.207638920554
+   4      +0.00232537006547         -0.00452447788850         1.37558813187    0.368790479492
+   5      +0.000793323817301        +0.00144679520453         1.45826850020    0.575542714461
+   6      -0.000238769345430        -0.000471544078185        1.48829832721    0.827566012282
+   7      -0.000527289567058        +0.000155180294164        1.48019084024    1.12446011757
+   8      -0.000352123353803        -0.0000513452121181       1.44485574412    1.46575567715
+   9      -0.0000343947744181       +0.0000170413570471       1.39059640679    1.85091604838
+   10     +0.000205332814909        -5.66605092104·10−6       1.32380368370    2.27933936319
+   11     +0.000270184439544        +1.88584861186·10−6       1.24944277582    2.75036083822
+   12     +0.000167272912105        -6.28055422786·10  −7
+                                                              1.17139824694    3.26325532062
+   13     -0.0000274638066038       +2.09240519074·10−7       1.09272131711    3.81724005785
+   14     -0.000209209262059        -6.97247031237·10−8       1.01580941259    4.41147767868
+   15     -0.000283468655320        +2.32371573798·10   −8
+                                                              0.942538421086   5.04507937203
+   100    -4.25340157171·1017       -6.46775072494·10−49      0.628752815248   118.603775377
+   500    -1.16550527223·10204      -9.16750985401·10−240     2.66350209695    991.900092992
+                             486
+   1000   -1.57095384420·10         -2.52129710770·10  −478
+                                                              1.75626461597    2326.05316169
+   2000   +2.68042467892 ·101109    -1.90708173159·10−955     10.7685011806    5351.75953838
+   3000                                                       -2.09002802367   8617.21920730
+
+
+
+
+                      4. Applications and conclusions
+  The recurrence formulae (3.8) together with (3.10) and (3.12) allow in
+                                           ∼
+principle to compute both η n and λn with arbitrary accuracy for any value
+of n, but it is clear that with increasing n the number of terms increases
+very rapidly2. It would be desirable to simplify the polynomials in (3.11) and
+(3.13), or at least to reveal some hidden regularities in them, but I doubt
+whether this is possible. The table below demonstrates that it would be
+                                                                               ∼
+even impractical to write down explicit expressions for, say, λn for n greater
+than 15 or 20.
+
+
+   2Using        the     On-Line     Encyclopedia        of     Integer    Sequences
+(http://www.research.att.com/˜njas/sequences/) one can see that number of terms
+in η n is related to the number of partitions of n (partition number, PartitionsP[n]
+                                                        √
+in Mathematica notation), which grows like exp(const n), whereas the number of
+          ∼
+terms in λn is equal to the number of sums S of positive integers satisfying S ≤ n
+(Sum[PartitionsP[k],{k,1,n}] in Mathematica notation).
+8                           KRZYSZTOF MAŚLANKA
+
+                                                       ∼
+    n # of terms in η n (eq. 3.11) # of terms in λn (eq. 3.13)
+    0              1                            −
+    1              2                             1
+    2              3                             3
+    3              5                             6
+    4              7                            11
+    5              11                           18
+    10             56                          138
+    20            792                         2713
+    30           6842                         28628
+    40          44583                        215307
+    50         239943                       1295970
+
+   Using the above formulae (3.8), (3.10) and (3.13) I have computed quite
+a lot of initial values of η n and λn . First it was necessary to tabulate
+Stieltjes constants γ n with sufficient number of significant digits. In order
+to obtain these I used Mathematica 5 which can handle arbitrary precision
+numbers and performs automatically full control of accuracy in numerical
+calculations. (For details concerning Mathematica interval arithmetic see
+e.g. [12]). This part of computations took over 60 hours on AMD 1667 MHz
+processor.
+   Recently Kreminski [8] published an effective method of computing Stielt-
+jes gamma using Newton-Cotes integration algorithm. His method would
+be of considerable interest since, due to some ”hardcoded” limitations, the
+current Mathematica version can’t give γ n (with sufficient accuracy) beyond
+n ≈ 2050.
+   The main calculations (η n and λn ) were also time consuming (about 20
+hours) and required also considerable amount of computer memory (3×256
+Mb). In particular, having 2000 pre-computed Stieltjes constants, with 800
+significant digits each, I calculated 2000 η n and almost 3300 λn . Due to finite
+accuracy and the obvious phenomenon of error accumulation, the number
+of significant digits in η n and λn decreases with increasing n (see Fig. 6).
+   In order to verify the computations as well as to compare various pack-
+ages I also tried to repeat the whole procedure using Maple 8. However, it
+turned out that it is impossible to get Stieltjes constants γ n for relatively
+small n =100 with the required precision 800 significant digits.
+
+(Place Figure 6 about here.)
+
+
+   The main conclusion which stems from the above calculations is contained
+in the following plots showing the trend of λ (Fig. 7a) and the oscillating
+part of λ (Fig. 7b). Their sum gives the coefficients which appear in Li’s
+criterion for RH. Note that the scales on both plots differ by nearly two
+                               ON LI’S COEFFICIENTS                                    9
+
+orders of magnitude. As mentioned before, it is easy to show that the trend
+(2.5) is strictly growing. Therefore, if the oscillations were bounded or, at
+least, if their amplitude would grow with n slower than the trend, then
+RH would be true. In other words, we have a new RH criterion, which is
+simply a reformulation the original Li’s result, but from the viewpoint of
+the present paper it has an obvious interpretation. It states that if for all
+positive integer n
+                                        ∼      −
+                                   − λn ≤ λn
+then RH is true. The numerical data gathered so far and presented in
+Figures 7a and 7b is in its favor. Of course, one should bear in mind that in
+number theory the numerical evidence, no matter how ”convincing”, may
+be just illusory. In fact, Oesterlé observed that if the first n zeta zeros are
+on the critical line, then the Li positivity should hold for about the first
+n2 Li coefficients (see [1], p. 441). Therefore, direct numerical search for a
+possible counterexample to RH using Li’s criterion is rather a hopeless task.
+   Finally I would like to stress out that so far there are no published ex-
+tensive tables of Li’s coefficients. Several numerical values of λn are given
+in [1]. All the numerical data obtained during preparation of this paper as
+well as appropriate Mathematica notebook are available from the author.
+
+(Place Figures 7a and 7b about here.)
+
+Acknowledgments. I would like to express my gratitude to Prof. Jef-
+frey C. Lagarias, AT&T Labs, for confirming the effect of tiny oscillations,
+as well as for several remarks concerning further development of the idea
+presented in this paper. I would also like to thank Dr. Mark W. Coffey,
+Department of Physics, Colorado School of Mines, for directing my atten-
+tion to some misprints as well as for sending me a preliminary version of his
+paper prior to publication [3]. Finally, the Referee of this paper made many
+remarks as well as valuable suggestions concerning future development of
+the ideas presented in this paper.
+Note added in proof. After completing the calculations I become aware
+of the paper by Keiper [7]. His Figure 1 looks similar to Figure 7b of the
+present paper. However it is not exactly the same, insofar as he is subtract-
+ing off an approximation to the ”main term”. But presumably the error is a
+constant plus O(1/n) term, in view of my asymptotic series approximation
+(2.8), so it must be pretty close.
+
+
+                                    References
+ [1] Biane, P., Pitman, J., and Yor, M., Probability laws related to the Jacobi theta and
+     Riemann zeta functions, and Brownian excursions, Bull. Amer. Math. Soc. 38, 435-
+     465 (2001).
+ [2] Bombieri, E. and Lagarias, J. C., Complements to Li’s Criterion for the Riemann
+     Hypothesis, J. Number Theory 77, 274-287 (1999)
+10                              KRZYSZTOF MAŚLANKA
+
+ [3] Coffey, M., Relations and positivity results for the derivatives of the Riemann ξ func-
+     tion, J. Comp. Applied Math. 166, 525-534 (2004)
+ [4] Gradshteyn, I. S., Ryzhik, I. M., Tables of Integrals, Series, and Products, corr. enl.
+     4th ed. San Diego, CA: Academic Press, 1980
+ [5] Hardy, G. H., Sur le Zéros de la Fonction ζ(s) de Riemann, C. R. Acad. Sci. Paris,
+     158, 1012-1014 (1914)
+ [6] Ingham, A. E. The distribution of prime numbers, Cambridge University Press, 1932
+ [7] Keiper, J. B. Power Series Expansion of Riemann’s ξ Function, Math. Comp. 58,
+     765-773 (1992)
+ [8] Kreminski, R., Newton-Cotes Integration for Approximating Stieltjes (Generalized
+     Euler) Constants, Math. Comp. 72, 1379-1397 (2003)
+ [9] Lagarias, J. C., private communication, e-mail of October 30, 2003
+[10] Li, X.-J., The Positivity of a Sequence of Numbers and the Riemann Hypothesis, J.
+     Number Theory 65, 325-333 (1997)
+[11] Li, X.-J., private communication, 2003
+[12] http://library.wolfram.com/infocenter/Articles/2612/
+[13] Odlyzko, A. M., The 10 22 -nd zero of the Riemann zeta function, in M. van Franken-
+     huysen, M. L. Lapidus (Eds.): Dynamical, Spectral, and Arithmetic Zeta Functions,
+     American Mathematical Society, Contemporary Mathematics, vol. 290, 139-144 (2001)
+[14] Riemann, G. B. F., Ueber die Anzahl der Primzahlen unter eine gegebenen Grösse,
+     Monatsberichte Königl. Preuss. Akad. Wiss. Berlin, 671 (1859)
+[15] Trott, M., private communication
+[16] Voros, A., A Sharpening of Li’s Criterion for the Riemann Hypothesis, submitted to
+     C. R. Acad. Sci. Paris, Ser. I; posted at arXiv:math.NT/0404213 v2, 15 April 2004
+[17] Wedeniwski, S., ZetaGrid - Verification of the Riemann Hypothesis, available at
+     http://www.zetagrid.net
+
+
+Figure captions
+      • Figure 1. Distribution of zeroes of ζ in the complex plane.
+      • Figure 2. Understanding the Li’s lambda: inevitable difficulties en-
+        countered when calculating numerically both parts of λn . The se-
+        quence of consecutive derivatives is to be taken near s = 0.
+      • Figure 3. Möbius transformation of the complex plane used by Li.
+        The left fragment of the picture is just Fig. 1 reduced to its essential
+        part: the critical strip. The half-plane ℜs > 21 (left picture) is
+        mapped into the unit disk |z| < 1 (right picture).
+                                   1
+      • Figure 4. Plot of 1/|ζ( 1−z  )| on a small part of the transformed
+        complex plane containing all nontrivial zeroes. On the right fragment
+        of Fig. 2 this part of complex plane is a small, very narrow rectangle
+        near z = 1. Nontrivial zeroes are visible as sharp “pins”. White
+        dots are added to help visualize that the zeroes indeed lie on a circle
+        (which looks rather like an ellipse here since the scales on ℜz and
+        ℑz are different). The apparent lack of peaks in the center is an
+        artifact. All complex zeroes are very crowded near z = 1 and the
+        corresponding peaks are increasingly thinner. Obtaining a better
+        picture would require much higher density of points in which values
+        of zeta are calculated (hence more computer memory) and much
+        higher resolution of the picture.
+                              ON LI’S COEFFICIENTS                              11
+
+     • Figure 5. Signs of the coefficients of matrix c (3.8) for k = 100 with
+       rows and columns labelled as in (3.9). Little white squares denote
+       plus sign, black squares denote minus sign; grey squares mark unused
+       entries of the matrix.
+     • Figure 6. Accuracies of various numbers used in this paper: γ n ,
+               ∼
+       η n and λn . Having 2000 precomputed Stieltjes constants γ n , with
+       800 significant digits each, I could (using Mathematica 5 ) obtain
+                                                                            ∼
+       2000 coefficients η n and about 3300 oscillating parts of lambda, λn ,
+       both with linearly decreasing accuracy. The accuracies of η n and
+       ∼
+       λn decrease with n due to complicated error cumulating but almost
+       perfect linearity of their dependence is a priori not so obvious because
+       the number of terms in (3.11) and (3.13) grows fast with increasing
+       n. In particular, the fact that the accuracy of η n decreases faster
+                          ∼
+       than accuracy of λn is rather counter intuitive.
+     • Figures 7a and 7b. The trend of λn (7a) in comparison with the
+       oscillating part of λn (7b). Note different vertical scales. In fact, the
+       sum of the trend and the oscillating part, i.e. full λn , would look
+       exactly like the upper plot since the amplitude of the oscillations is
+       smaller than the thickness of the graph line.
+  Astronomical Observatory of the Jagiellonian University, Orla 171, 30-244
+Cracow, Poland
+Figure 1.
+Figure 2.
+Figure 3
+Figure 4.
+Figure 5.
+Figure 6.
+Figure 7a
+Figure 7b
+

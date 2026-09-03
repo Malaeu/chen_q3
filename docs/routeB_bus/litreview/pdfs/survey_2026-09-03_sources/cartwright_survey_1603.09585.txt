@@ -1,0 +1,553 @@
+                                                                On Cartwright’s theorem
+arXiv:1603.09585v1 [math.CA] 31 Mar 2016
+
+
+
+
+                                                            Natalia Blank and Alexander Ulanovskii
+
+
+                                                                                 Abstract
+                                                     We present a characterization of sets for which Cartwright’s theorem
+                                                 holds true. The connection is discussed between these sets and sampling
+                                                 sets for entire functions of exponential type.
+
+
+
+
+                                           1     Cartwright’s and Beurling’s Theorems
+                                           1.1    Cartwright’s Theorem
+                                           An entire function f (z) is said to be of exponential type if there
+                                           exist positive numbers c and C such that
+                                                                  |f (z)| < Cec|z| ,       for all z ∈ C.                    (1)
+                                           The type of f (z) is defined as the infimum over all c which can be
+                                           used. The function f is of exponential type zero, if (1) holds for
+                                           every c > 0.
+                                              We will denote by Eσ the class of all entire functions of expo-
+                                           nential type ≤ σ, and by E<σ the class of all entire functions of
+                                           exponential type < σ.
+                                              A theorem of M. L. Cartwright states:
+                                           Theorem 1 ([C36]) If a function f ∈ E<π is bounded on the set
+                                           of integers then f is bounded on the real axis.
+                                              The example f (z) = z sin(πz) shows that Theorem 1 ceases to
+                                           be true for the functions of exponential type π.
+                                              A set Λ ⊂ R is called uniformly discrete (u.d.) if
+                                                                  d(Λ) :=        inf         |λ − λ′ | > 0.                  (2)
+                                                                             λ,λ′ ∈Λ,λ6=λ′
+
+                                              2010 Mathematics Subject Classification: 30D15, 30D20. Keywords: Cartwright’s Theo-
+                                           rem, Beurling’s Sampling Theorem, sampling set.
+
+
+                                                                                       1
+The number d(Λ) is called the separation constant of Λ. Denote by
+D − (Λ) the lower uniform density of Λ:
+                                #(Λ ∩ (x − r, x + r))
+             D − (Λ) := lim min                       .
+                        r→∞ x∈R         2r
+Definition 1 We say that Λ ⊂ R is a Cartwright set (CS) for a
+class M of entire functions, if there is no function f ∈ M which is
+bounded on Λ and unbounded on the real axis.
+  Theorem 1 states that the set of integers is a CS for the class
+E<π .
+  We prove
+
+Theorem 2 A set Λ ⊂ R is a CS for E<σ if and only if it contains
+a u.d. subset Λ∗ satisfying D − (Λ∗ ) ≥ σ/π.
+   Since the subject is classical nowadays, this result may be known
+to the experts. However, to the best of our knowledge, it has not
+been recorded in the literature.
+   Cartwright’s theorem has inspired a number of different results.
+In particular, it is shown in [B40] and [DF45] (see also literature
+therein), that certain “perturbations” of the integers are CSs for
+E<π .
+   Papers [A51], [B55], [L57] and [M57] adopt a more general ap-
+proach: The condition of boundedness of f on Λ is dropped, and
+results are obtained concerning the growth of the function from its
+growth on Λ.
+   See [Bn48], [LM61], [OU15] (and the literature therein) for some
+estimates of kf k∞ for functions f ∈ Eσ satisfying kf |Λ k∞ ≤ 1. Here
+            kf k∞ := sup |f (x)|, kf |Λ k∞ := sup |f (λ)|.
+                      x∈R                     λ∈Λ
+
+   See also [LF93], [L74] and [LN04] for some multi-dimensional
+Cartwright-type results.
+   There have been a number of other results related to Theorem 1,
+which we do not mention here.
+   It seems plausible that Theorem 2 can be deduced from the re-
+sults of [A51] or [M57]. In our proof we use A. Beurling’s results
+from [Br89].
+
+
+                                  2
+1.2   Beurling’s Sampling Theorem
+Let Bσ denote the subclass of Eσ of functions f bounded on the
+real axis. It is well–known that every function f ∈ Bσ satisfies the
+inequality (see, for example [L96], Lec. 6, Theorem 3)
+             |f (x + iy)| ≤ kf k∞ eσ|y| ,     for all x, y ∈ R.    (3)
+
+The spaces Bσ are usually called Bernstein spaces.
+  A set Λ is called a sampling set (SS) for Bσ , if there is a constant
+K such that
+                kf k∞ ≤ Kkf |Λ k∞ ,         for all f ∈ Bσ .       (4)
+
+Denote by K(Λ, Bσ ) the infimal K in (4), and set K(Λ, Bσ ) = ∞ if
+Λ is not an SS for Bσ . The constant K(Λ, Bσ ) is called the sampling
+bound for Bσ .
+   A classical result of Beurling describes the SSs for Bσ :
+Theorem 3 ([Br89]) A set Λ ⊂ R is an SS for Bσ if and only if
+it contains a u.d. subset Λ∗ satisfying D − (Λ∗ ) > σ/π.
+
+
+2     Sampling Sets and Cartwright Sets for Eσ
+Let us extend the notion of sampling set.
+Definition 2 We say that a set Λ ⊂ R is an SS for a class M of
+entire functions, if there is a constant K such that for every f ∈ M
+the inequality
+                     max |f (x)| ≤ K max |f (λ)|                  (5)
+                    |x|≤r                λ∈Λ,|λ|≤r
+
+holds on an unbounded set of r ∈ (0, ∞) (this set depends on f ).
+   This definition means that, up to a multiplicative constant, no
+function f ∈ M can grow faster along the real axis than it grows
+along Λ. When M = Bσ , this definition coincides with the classical
+one.
+   In what follows, we denote by K(Λ, M) the infimal K in (5), and
+we set K(Λ, M) = ∞ if Λ is not an SS for M.
+   Since Bσ ⊂ Eσ , we have K(Λ, Bσ ) ≤ K(Λ, Eσ ). In fact, these two
+constants are equal:
+
+
+                                     3
+Theorem 4 A set Λ ⊂ R is an SS for Eσ if and only if it is an SS
+for Bσ . Moreover, K(Λ, Eσ ) = K(Λ, Bσ ).
+    It is clear from the definitions above that every SS for a class M
+is also a CS for M. We show that for the classes Eσ the opposite is
+also true:
+Theorem 5 A set Λ ⊂ R is a CS for Eσ if and only if it is an SS
+for Eσ .
+   Theorems 3,4 and 5 yield
+Corollary 1 A set Λ ⊂ R is a CS for Eσ if and only if it contains
+a u.d. subset Λ∗ satisfying D − (Λ∗ ) > σ/π.
+   Theorem 2 above is an immediate consequence of this corollary.
+Remark 1. It might be interesting to compare Theorem 2 with the
+result in [PM10] which gives a characterization of the Pólya sets. A
+set Λ ⊂ R is called a Pólya set if the constants are the only entire
+functions of exponential type zero which are bounded on Λ. Since
+there is no non-constant function of zero type bounded on R, the
+Pólya sets are therefore the Cartwright sets for the class of entire
+functions of exponential type zero. However, the characterization
+of CSs for functions of finite exponential type involves the lower
+uniform density, while the characterization of Pólya sets involves
+the so-called inner Beurling-Malliavin density, see [PM10].
+Remark 2. One may wish to describe CSs for other classes of entire
+functions. Here we present a result in this direction.
+   Given a natural number n and a positive number σ, we denote
+by E<σ,n the space of all entire functions f satisfying the inequality
+                                      n
+                      |f (z)| ≤ Cec|z| , z ∈ C,
+with some 0 < c < σ and C > 0. Clearly, E<σ,1 = E<σ .
+   The following result extends Theorem 2 to the classes E<σ,n :
+Theorem 6 A set Γ ⊂ R is a CS for E<σ,n if and only if Γn is a
+CS for E<σ , where
+        Γn := {γ n : γ ∈ Γ, γ ≥ 0} ∪ {−|γ|n : γ ∈ Γ, γ < 0}.
+   By Theorem 2, it follows that Γ is a CS for E<σ,n if and only if
+the set Γn contains a u.d. subset Λ satisfying D − (Λ) ≥ σ/π.
+
+                                  4
+3    Auxiliary Result
+1. We will need several results from [Br89].
+   Given two sets Λ, Λ∗ such that Λ∗ ⊂ Λ, it is clear that K(Λ∗ , Bσ ) ≥
+K(Λ, Bσ ). The next proposition shows that for every sampling set
+Λ, one may pick up a uniformly discrete (u.d.) subset Λ∗ without
+changing much the sampling bound:
+Proposition 1 ([Br89]) Suppose Λ is an SS for Bσ . Then for ev-
+ery ε > 0 there is a u.d. subset Λ∗ ⊂ Λ such that K(Λ∗ , Bσ ) <
+K(Λ, Bσ ) + ε.
+   For a given closed set Λ, let Λ(t) = Λ + [−t, t] denote the set of
+points with distance ≤ t from Λ. The Hausdorff distance between
+two closed sets Λ and Γ is the smallest number t so that
+                         Λ ⊂ Γ(t), Γ ⊂ Λ(t).
+We say that a sequence of closed sets Λn converges weakly to a closed
+set Λ, if for every closed interval I = [a, b], a, b 6∈ Λ, the distance
+between Λn ∩ I and Λ ∩ I tends to zero as n → ∞.
+   The next proposition plays a key role in Beurling’s theory:
+Proposition 2 ([Br89]) Assume u.d. sets Λj converge weakly to
+a u.d. set Λ. Then
+                  K(Λ, Bσ ) ≤ lim inf K(Λj , Bσ ).
+                                   j→∞
+
+    The following elementary lemma is stated without proof:
+Lemma 1 (i) Every sequence of sets Λj satisfying d(Λj ) > d >
+0, j ∈ N, where d(Λj ) is the separation constant in (2), has a subse-
+quence converging weakly to some set Λ satisfying d(Λ) > d.
+    (ii) The translations of a set Λ do not change the sampling bound,
+i.e. for every real number a we have K(Λ − a, Bσ ) = K(Λ, Bσ ).
+2. We will also need a variant of Theorem 4 for functions analytic
+in the right half-plane Cr := {z : ℜz > 0}:
+Theorem 7 Let C > 0, σ > 0 and let Λ ⊂ R be an SS for Bσ .
+Assume a function f is analytic in the half-plane Cr , continuous in
+its closure and satisfies
+                             √
+                            σ x2 +y 2
+           |f (x + iy)| < Ce          , for all x ≥ 0, y ∈ R,    (6)
+
+                                   5
+and
+                            lim sup |f (x)| = ∞.                               (7)
+                            x→+∞
+
+Then for every K > K(Λ, Bσ ) the inequality
+                     max |f (x)| ≤ K             max       |f (λ)|             (8)
+                    0≤x≤r                      λ∈Λ,0≤λ≤r
+
+holds on an unbounded set of r ∈ (0, ∞).
+Proof of Theorem 7 (By contradiction). Suppose that the as-
+sumptions of Theorem 7 are fulfilled and that (8) is not true: There
+are numbers K > K(Λ, Bσ ) and r0 > 0 such that
+           max |f (x)| > K           max       |f (λ)|,    for all r > r0 .    (9)
+           0≤x≤r                 λ∈Λ,0≤λ≤r
+
+  By Proposition 1, there is a u.d. set Λ∗ ⊂ Λ satisfying K(Λ∗ , Bσ ) <
+K. So, in the rest of the proof we may assume that Λ is a u.d. set.
+  Let us consider the auxiliary functions
+                             1
+               fn (z) := e− n z log z f (z), ℜz > 0, n ∈ N.                   (10)
+Similar functions were introduced by Beurling (see the proof of The-
+orem 5 in [Br89]). We will use their properties to show that (9) leads
+to a contradiction.
+    From (6) and (10), it follows that each fn tends to zero as x →
++∞. Therefore, by (7), for every large enough n, the function |fn (x)|
+attains its maximum on (0, ∞). Let us denote by xn > 0 the small-
+est point where |fn (xn )| = supx>0 |fn (x)|. Clearly, xn → +∞ and
+|fn (xn )| → ∞ as n → ∞.
+    Observe that xn > r0 for all large enough n, where r0 is the
+number in (9). It follows from (9) that for every λ ∈ Λ ∩ (0, ∞) we
+have
+                                 1                                   1
+         |fn (λ)| = |f (λ)|e− n λ log λ < K max |f (x)|e− n λ log λ ≤
+                                                 0≤x≤λ
+
+                      K max |fn (x)| ≤ K|fn (xn )|.
+                         0≤x≤λ
+
+Hence,
+                      |fn (xn )| > K sup |fn (λ)|.                            (11)
+                                           λ∈Λ,λ>0
+
+
+
+
+                                           6
+   Using (6) and (10), one may easily check that fn satisfies
+                       √        π      1
+                         2  2
+    |fn (x + iy)| ≤ Ceσ x +y + 2n |y|− n x log x , for all x ≥ 0, y ∈ R.
+Since |fn (xn )| > C for all large enough n, this gives
+                                            π
+               |fn (iy)| ≤ |fn (xn )|e(σ+ 2n )|y| , for all y ∈ R.
+Recall that |fn (x)| ≤ |fn (xn )|, x > 0. So, we may apply the Phragmen-
+Lindelöf principle (see [L96], Lec. 6) to f in the first and fourth
+quadrants to get the estimate
+                                        π
+         |fn (x + iy)| ≤ |fn (xn )|e(σ+ 2n )|y| , for all x ≥ 0, y ∈ R.
+   Put
+                                fn (z + xn )
+                    hn (z) :=                , ℜz > −xn .
+                                  fn (xn )
+Then
+                                                π
+       hn (0) = 1, |hn (x + iy)| ≤ e(σ+ 2n )|y| , x > −xn , y ∈ R.         (12)
+   Set Γn := Λ − xn . By (11),
+                                  1
+                     |hn (λ)| <     , λ ∈ Γn , λ > −xn .
+                                  K
+By Lemma 1 (i), there is a subsequence Γnj converging weakly to
+some Γ. Then by Lemma 1 (ii) and Proposition 2, we have
+                        K(Γ, Bσ ) ≤ K(Λ, Bσ ) < K.                         (13)
+   Condition (12) shows that for every compact S in C there is an
+integer n(S) such that {hn , n > n(S)} is a normal family on S.
+Hence, it is clear that there is a subsequence {mj } ⊂ {nj } such
+that hmj converge uniformly on compacts to an entire function h
+satisfying
+            h(0) = 1, |h(x + iy)| ≤ eσ|y| ,         for all x, y ∈ R,
+
+and kh|Γ k∞ ≤ 1/K. These inequalities show that h ∈ Bσ and that
+K(Γ, Bσ ) ≥ K, which contradicts (13).
+
+
+
+
+                                       7
+4     Proofs of Theorems 4 and 6
+4.1   Proof of Theorem 4
+It suffices to check that K(Λ, Eσ ) ≤ K(Λ, Bσ ). In other words, it
+suffices to check that inequality (5) holds on an unbounded set of
+r > 0 for every function f ∈ Eσ and every constant K > K(Λ, Bσ ).
+   If f is bounded on R, then f ∈ Bσ . Hence, (5) holds by the
+definition of sampling bound K(Λ, Bσ ).
+   Assume f is unbounded on (0, ∞) and bounded on (−∞, 0).
+Then (5) immediately follows from Theorem 7.
+   To establish (5) in the case when f is unbounded on (−∞, 0) and
+bounded on (0, ∞), we apply Theorem 7 to the function f (−z).
+   Now assume f that is unbounded on both (−∞, 0) and (0, ∞).
+Let us assume that (5) is not true, i.e. for some K > K(Λ, Bσ ) and
+r > r0 we have
+              max |f (x)| > K max |f (λ)|,             r > r0 .    (14)
+               |x|≤r              |λ|≤r,λ∈Λ
+
+    Consider the functions
+                                       1
+                  gn (x) := |f (x)|e− n |x| log |x| , x ∈ R.
+As in the proof of Theorem 7, for all large enough n we denote by xn
+a point with the smallest absolute value such that |gn (xn )| = kgn k∞ .
+We may assume that an infinite number of n is positive (otherwise,
+we consider gn (−x)). Then, for such n we consider the functions fn
+defined in the proof of Theorem 7. By (14), it is easy to check that
+fn satisfies (11). Then one may repeat the proof of Theorem 7 to
+show that (14) leads to a contradiction.
+
+4.2   Proof of Theorem 6
+(i) Let Γ ⊂ R be such that Λ := Γn is a CS for E<σ . Then, by
+Theorem 4, Λ is an SS for every space Bs , s < σ.
+    Let us show that Γ is a CS for E<σ,n . It suffices to show that if
+a function f ∈ E<σ,n is unbounded on R, then f is also unbounded
+on Γ. We may assume that f is unbounded on (0, ∞). Set g(z) :=
+f (z 1/n ), ℜz > 0. Using the definition of E<σ,n , one may easily check
+that g and Λ satisfy the assumptions of Theorem 7. Hence, g is
+unbounded on Λ ∩ (0, ∞), and so f is unbounded on Γ ∩ (0, ∞).
+
+                                      8
+   If f is unbounded on (−∞, 0), we apply the argument above to
+g(z) := f ((−z)1/n ), ℜz < 0.
+   (ii) Assume Λ = Γn is not a CS for E<σ . Then, by Theorem 5,
+there exists g ∈ E<σ , which is bounded on Λ and unbounded on R.
+Clearly, the function f (z) := g(z n ) belongs to E<σ,n , f is bounded
+on Γ and unbounded on R. We may assume that it is unbounded
+on (0, ∞). Hence, Γ is not a CS for E<σ,n .
+
+
+5    Proof of Theorem 5
+Denote by P Wσ the classical Paley–Wiener space of all Fourier
+transforms                       Z σ
+               f (x) = F̂ (x) :=     e−ixt F (t) dt,
+                                      −σ
+              2
+where F ∈ L (−σ, σ). By the classical Paley–Wiener theorem (see
+[L96], Lec.10), P Wσ consists of all entire functions of exponential
+type ≤ σ which are square-integrable on R:
+                        P Wσ = L2 (R) ∩ Eσ .
+   We say that a set Λ is a uniqueness set for a function space M if
+there is no non-trivial function f ∈ M which vanishes on Λ.
+   We will need
+Lemma 2 Suppose Λ ⊂ R is not a uniqueness set for Bσ . Then
+there exists g ∈ Eσ which vanishes on Λ and is unbounded on R.
+    This lemma is a simple consequence of the following
+Proposition 3 ([Be15]) Every incomplete systems of complex ex-
+ponentials in L2 (−σ, σ) is a subset of some complete and minimal
+system of exponentials.
+   Denote by E(Λ) = {eiλt , λ ∈ Λ} the exponential system with
+frequencies in Λ.
+   Since Λ is not a uniqueness set for Bσ , there is a function h ∈
+Bσ which vanishes on Λ. Then, for every λ0 ∈ Λ, the function
+h(z)/(z − λ0 ) belongs to P Wσ . This means that E(Λ \ {λ0 }) is not
+complete in L2 (−σ, σ). By Proposition 3, there exists Γ ⊃ Λ \ {λ0 }
+such that E(Γ) is complete while every system E(Γ \ {γ0 }), γ0 ∈ Γ,
+is not complete in L2 (−σ, σ).
+
+                                  9
+    We may assume that γ0 6∈ Λ \ {λ0 }. Take a function F ∈
+ 2
+L (−σ, σ) which is orthogonal to E(Γ \ {γ0 }). Then its Fourier
+transform f = F̂ belongs to P Wσ , vanishes on Λ \ {λ0 } and (z −
+γ0 )f (z) 6∈ P Wσ . Now, one may easily check that the function
+g(z) := (z − λ0 )(z − γ0 )f (z) belongs to Eσ , vanishes on Λ and
+is unbounded on R.
+    Observe that the proof of Proposition in [Be15] is nonconstructive
+and based on the deep de Branges theory of entire functions. At the
+end of this note we present a sketch of a more elementary proof of
+Lemma 2.
+Proof of Theorem 5. Clearly, if Λ is an SS for Eσ then it is a CS
+for Eσ . So, it suffices to show that if Λ is not an SS for Eσ , then it
+is not a CS for Eσ , i.e. there exists f ∈ Eσ which is bounded on Λ
+and unbounded on R.
+   We will consider three cases:
+1. Assume Λ ⊂ R is not a uniqueness set for Bσ . Then Theorem 5
+follows from Lemma 2.
+2. Since Λ is not an SS for Bσ , there is a sequence of functions
+fn ∈ Bσ satisfying
+                                        1
+              kfn k∞ = 1, kfn |Λ k∞ < 3 , n = 1, 2, ...         (15)
+                                       n
+   Assume that there is an interval I = [−N, N], N > 0, such that
+kfn · 1N k∞ 6→ 0, as n → ∞. Here 1N (x) is the indicator function of
+[−N, N]. In this case there is a point a, |a| ≤ N, and a subsequence
+nj such that |fnj (a)| > δ > 0. Since fn are uniformly bounded on
+R, by (3) we may choose a subsequence which converges (uniformly
+on compacts) to some non-trivial function f ∈ Bσ . Clearly, f = 0
+on Λ. We are back to the previous case.
+3. Assume kfn · 1N k∞ → 0, n → ∞, for every N > 0. Let xn be a
+point such that |f (xn )| > 1/2. Passing to a subsequence and using
+(3), we may assume that fn is so small on [−2n, 2n] that the classical
+Two-constants theorem (see [N70], ch. 3) implies
+                                   1
+                        |fn (z)| < 3 , |z| < n.
+                                   n
+From this and (3) it follows that the series
+                                   X
+                          f (z) :=    nfn (z)
+                                  n∈N
+
+
+                                  10
+uniformly converges on compacts and that f belongs to Eσ . Clearly,
+f satisfies |f (xn )| > n/2, so that it is not bounded on R. On the
+other hand, by (15), we see that f is bounded on Λ.
+
+6    Proof of Lemma 2
+Here we present a sketch of a proof of Lemma 2.
+  Given a 6= 0 and n ∈ N, set
+                                         n−1
+                                      z2
+                                
+                     Pa,n (z) := 1 − 2        .
+                                      a
+We will use
+Lemma 3 Assume f ∈ Bσ , kf k∞ ≤ 1. Then for every ε > 0 and
+x0 > 0 there exist a > 1 and n ∈ N such that
+    kPa,n f k∞ ≤ 1, kPa,n+1f k∞ > 1, |Pa,n (x)| > 1 − ε, |x| ≤ x0 .
+   The proof follows relatively easily from the following fact: If f ∈
+Bσ , then for every ε > 0 the set
+                       {x ∈ R : |f (x)| > e−ε|x| }
+is unbounded (see, for example, [L96], Lec. 16, Theorem 2). Note
+that the latter estimate is a consequence of the fundamental fact that
+for every f ∈ Bσ the so-called logarithmic integral of f converges,
+see [L96], Lec. 16.
+Proof of Lemma 2. Since Λ is not a uniqueness set for Bσ , there
+is a function f ∈ Bσ which vanishes on Λ. We may assume that
+kf k∞ ≤ 1.
+   Let us consider two cases.
+1. Assume there is an integer n such that
+                       lim sup |x|n |f (x)| = ∞.
+                        |x|→∞
+
+Then the function g(z) := z n f (z) ∈ Eσ , vanishes on Λ and is un-
+bounded on R.
+2. Assume
+              lim sup |x|n |f (x)| = 0,   for every n > 0.
+               |x|→∞
+
+
+                                   11
+   By Lemma 3, there exist a1 > 1 and n1 such that the function
+                        f1 (z) := Pa1 ,n1 (z)f (z)
+satisfies kf1 k∞ ≤ 1 and k(1 − x2 /a21 )f1 (x)k∞ > 1. The latter in-
+equality shows that there is a point x1 such that
+                                           1
+                            |f1 (x1 )| ≥       .                    (16)
+                                           x21
+Clearly, f1 ∈ Bσ .
+   Similarly, we construct a function
+                    f2 (z) := Pa1 ,n1 (z)f1 (z) ∈ Bσ ,
+such that kf2 k∞ ≤ 1 and there is a point x2 such that
+                                           1
+                            |f2 (x2 )| ≥       .
+                                           x22
+In addition, we may assume that |Pa2 ,n2 (x)| > 1/2 for |x| ≤ x1 , so
+that we have
+                                          1
+                             |f2 (x1 )| > 2 .
+                                         2x1
+   One may repeat this procedure n times to construct a sequence
+of functions fn ∈ Bσ satisfying kfn k∞ ≤ 1. Moreover, on each step
+we may assume that |Pak ,nk (x)| is so close to one for |x| ≤ xk−1 , that
+we have
+                                    1
+                     |fn (xk )| > 2 , 1 ≤ k ≤ n.                     (17)
+                                   2xk
+By (2), the family fn ∈ Bσ is normal. Also, every function fn
+vanishes on Λ. Hence, there is a subsequence n = nj → ∞ such
+that fn converge uniformly on compacts to some function ϕ ∈ Bσ .
+Clearly, the function g(z) := z 3 ϕ(z) belongs to Eσ , and it follows
+from (17) that it is unbounded on R.
+Acknowledgement. The authors are grateful to Misha Sodin for
+the constructive comments.
+
+References
+[A51] Agmon, Shmuel. Functions of exponential type in an angle
+    and singularities of Taylor series. Trans. Amer. Math. Soc. 70,
+    (1951), 492–508.
+
+                                   12
+[Be15] Belov, Yu. Complementability of exponential systems. C. R.
+    Acad. Sci. Paris, 353, no. 3, (2015), 215–218.
+[Bn48] Bernstein, S.N. The extension of properties of trigonometric
+    polynomials to entire functions of finite degree, Izv. Akad. Nauk
+    SSSR, Ser. Mat. 12, (1948), 421–444 (in Russian).
+[Br89] Beurling, A. Balayage of Fourier–Stiltjes Transforms. In: The
+    collected Works of Arne Beurling, vol. 2, Harmonic Analysis.
+    Birkhauser, Boston, 1989.
+[B40] R. P. Boas, Jr., Entire functions bounded on a line, Duke
+    Math. J. vol. 6, (1940), 148–169.
+[BS42] Boas, R. P., Jr., Schaeffer, A. C. A theorem of Cartwright.
+    Duke Math. J. 9, (1942), 879–883.
+[B55] Boas, R. P., Jr. Growth of analytic functions along a line. J.
+    Analyse Math. 4, (1955), 1–28.
+[C36] Cartwright, M.L. On certain integral functions of order one,
+    Quart. J. Math. Oxford ser. vol. 7, (1936), 46–55.
+[DF45] Duffin, R. J.; Schaeffer, A. C. Power series with bounded
+    coefficients. Amer. J. Math. 67, (1945), 141–154.
+[L49] Levin, B. On functions of finite degree, bounded on a se-
+    quence of points. (Russian) Doklady Akad. Nauk SSSR (N.S.)
+    65, (1949), 265–268.
+[L57] Levin, B. Ya. Generalization of a theorem of Cartwright con-
+    cerning an entire function of finite degree bounded on a se-
+    quence of points. (Russian) Izv. Akad. Nauk SSSR. Ser. Mat.
+    21, (1957), 549–558.
+[L96] Levin, B. Ya. Lectures on entire functions. In collaboration
+    with and with a preface by Yu. Lyubarskii, M. Sodin and
+    V. Tkachenko. Translated from the Russian manuscript by
+    Tkachenko. Translations of Mathematical Monographs, 150.
+    American Mathematical Society, Providence, RI, 1996.
+[LL93] Levin, B. Ya., Logvinenko, V. N. Classes of functions that
+    are subharmonic in Rm and bounded on certain sets. (Russian.
+    English summary) Zap. Nauchn. Sem. Leningrad. Otdel. Mat.
+
+                                 13
+    Inst. Steklov. (LOMI) 170 (1989), Issled. Linein. Oper. Teorii
+    Funktsii. 17, 157–175, 323; translation in J. Soviet Math. 63,
+    (1993), no. 2, 202–211.
+[LM61] Liu, H. C., Macintyre, A. J. Cartwright’s theorem on func-
+   tions bounded at the integers. Proc. Amer. Math. Soc. 12,
+   (1961), 460–462.
+[L74] Logvinenko, V. N. A multidimensional generalization of M.
+    Cartwright’s theorem. Dokl. Akad. Nauk SSSR, 219, No. 3,
+    (1974), 546–549.
+[LF93] Logvinenko, V. N., Favorov, S. Yu. Cartwright-type theo-
+    rems and real sets of uniqueness for entire functions of expo-
+    nential type. (Russian) Mat. Zametki 53 (1993), no. 3, 72–79;
+    translation in Math. Notes 53, (1993), no. 3-4, 294–299.
+[LN04] Logvinenko, V.N., Nazarova, N. Bernstein-type theorems
+    and uniqueness theorems. (English, Ukrainian summary)
+    Ukran. Mat. Zh. 56 (2004), no. 2, 198–213; translation in
+    Ukrainian Math. J. 56, no. 2, (2004), 244–263.
+[M57] Malliavin, P. Sur la croissance radiale d’une fonction mro-
+    morphe. (French) Illinois J. Math. 1, (1957), 259–296.
+[PM10] Mitkovski, M., Poltoratski, A. Pólya sequences, Toeplitz
+   kernels and gap theorems. (English summary) Adv. Math. 224,
+   (2010), no. 3, 1057–1070.
+[N70] Nevanlinna, R. Analytic functions. Springer-Verlag, 1970.
+[OU15] Olevskii, A., Ulanovskii, A. On irregular sampling in Bern-
+   stein spaces. C. R. Math. Acad. Sci. Paris 353, (2015), no. 1,
+   47–50.
+
+  Stavanger University, 4036 Stavanger, Norway.
+  E-mail addresses:
+  natalia.blank@uis.no
+  alexander.ulanovskii@uis.no
+
+
+
+
+                                14
+

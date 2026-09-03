@@ -1,0 +1,2463 @@
+                                                Certain upper bounds on the eigenvalues associated with
+                                                           prolate spheroidal wave functions
+                                                                                         Andrei Osipov∗†
+arXiv:1206.4541v1 [math.FA] 20 Jun 2012
+
+
+
+
+                                                                                      September 12, 2018
+
+
+                                                                                              Abstract
+                                                     Prolate spheroidal wave functions (PSWFs) play an important role in various areas, from
+                                                 physics (e.g. wave phenomena, fluid dynamics) to engineering (e.g. signal processing, filter de-
+                                                 sign). One of the principal reasons for the importance of PSWFs is that they are a natural and
+                                                 efficient tool for computing with bandlimited functions, that frequently occur in the abovemen-
+                                                 tioned areas. This is due to the fact that PSWFs are the eigenfunctions of the integral operator,
+                                                 that represents timelimiting followed by lowpassing. Needless to say, the behavior of this op-
+                                                 erator is governed by the decay rate of its eigenvalues. Therefore, investigation of this decay
+                                                 rate plays a crucial role in the related theory and applications - for example, in construction of
+                                                 quadratures, interpolation, filter design, etc.
+                                                     The significance of PSWFs and, in particular, of the decay rate of the eigenvalues of the
+                                                 associated integral operator, was realized at least half a century ago. Nevertheless, perhaps
+                                                 surprisingly, despite vast numerical experience and existence of several asymptotic expansions,
+                                                 a non-trivial explicit upper bound on the magnitude of the eigenvalues has been missing for
+                                                 decades.
+                                                     The principal goal of this paper is to close this gap in the theory of PSWFs. We analyze the
+                                                 integral operator associated with PSWFs, to derive fairly tight non-asymptotic upper bounds on
+                                                 the magnitude of its eigenvalues. Our results are illustrated via several numerical experiments.
+                                          Keywords: bandlimited functions, prolate spheroidal wave functions, eigenvalues
+                                          Math subject classification: 33E10, 34L15, 35S30, 42C10, 45C05, 54P05
+
+
+                                          1      Introduction
+                                          The principal purpose of this paper is to establish and prove several inequalities involving the
+                                          eigenvalues of a certain integral operator associated with bandlimited functions (see Section 3 below).
+                                          While some of these inequalities are known from “numerical experience” (see, for example, [4], [9],
+                                          [15]), their proofs appear to be absent in the literature.
+                                              A function f : R → R is bandlimited of band limit c > 0, if there exists a function σ ∈ L2 [−1, 1]
+                                          such that
+                                                                                          Z 1
+                                                                                  f (x) =     σ(t)eicxt dt.                                   (1)
+                                                                                                −1
+
+                                          In other words, the Fourier transform of a bandlimited function is compactly supported. While (1)
+                                          defines f for all real x, one is often interested in bandlimited functions, whose argument is confined
+                                              ∗ This author’s research was supported in part by the AFOSR grant #FA9550-09-1-0241
+                                              † Yale University, 51 Prospect st, New Haven, CT 06511. Email: andrei.osipov@yale.edu.
+
+
+
+
+                                                                                                  1
+to an interval, e.g. −1 ≤ x ≤ 1. Such functions are encountered in physics (wave phenomena, fluid
+dynamics), engineering (signal processing), etc. (see e.g. [13], [19], [20]).
+    About 50 years ago it was observed that the eigenfunctions of the integral operator Fc : L2 [−1, 1] →
+L2 [−1, 1], defined via the formula
+                                                       Z 1
+                                        Fc [ϕ] (x) =         ϕ(t)eicxt dt,                                    (2)
+                                                        −1
+
+provide a natural tool for dealing with bandlimited functions, defined on the interval [−1, 1]. More-
+over, it was observed (see [8], [9], [11]) that the eigenfunctions of Fc are precisely the prolate
+spheroidal wave functions (PSWFs), well known from the mathematical physics (see, for exam-
+ple, [16], [19]). The PSWFs are the eigenfunctions of the differential operator Lc , defined via the
+formula
+                                                                
+                                            d              dϕ
+                            Lc [ϕ] (x) = −     (1 − x2 ) ·    (x) + c2 x2 .                       (3)
+                                           dx              dx
+
+In other words, the integral operator Fc commutes with the differential operator Lc (see [8], [18]).
+This property, being remarkable by itself, also plays an important role in both the analysis of PSWFs
+and the associated numerical algorithms (see, for example, [2], [3]).
+    Obviously, the behavior of the operator Fc is governed by the decay rate of its eigenvalues. Over
+the last half a century, several related asymptotic expansions, as well as results of numerous numerical
+experiments, have been published; moreover, implications of the decay rate of the eigenvalues to both
+theory and applications have been extensively covered in the literature - see, for example, [1], [3],
+[4]. [5], [6], [8], [9], [10], [11], [12], [14], [15], [17]. It is perhaps surprising, however, that a non-trivial
+explicit upper bound on the magnitude of the eigenvalues of Fc has been missing for decades. This
+paper closes this gap in the theory of PSWFs.
+    This paper is mostly devoted to the analysis of the integral operator Fc , defined via (2). More
+specifically, several explicit upper bounds for the magnitude of the eigenvalues of Fc are derived.
+These bounds turn out to be fairly tight. The analysis is illustrated through several numerical
+experiments.
+    Some of the results of this paper are based on the recent analysis of the differential operator
+Lc , defined via (3), that appears in [22], [23]. Nevertheless, the techniques used in this paper are
+quite different from those of [22], [23]. The implications of the recent analysis of both Lc and Fc to
+numerical algorithms involving PSWFs are being currently investigated.
+    This paper is organized as follows. In Section 2, we summarize a number of well known math-
+ematical facts to be used in the rest of this paper. In Section 3, we provide a summary of the
+principal results of this paper, and discuss several consequences of these results. In Section 4, we
+introduce the necessary analytical apparatus and carry out the analysis. In Section 5, we illustrate
+the analysis via several numerical examples.
+
+
+2     Mathematical and Numerical Preliminaries
+In this section, we introduce notation and summarize several facts to be used in the rest of the
+paper.
+
+2.1     Prolate Spheroidal Wave Functions
+In this subsection, we summarize several facts about the PSWFs. Unless stated otherwise, all of
+these facts can be found in [3], [4], [6], [8], [9], [22], [23].
+
+                                                        2
+   Given a real number c > 0, we define the operator Fc : L2 [−1, 1] → L2 [−1, 1] via the formula
+                                                           Z 1
+                                          Fc [ϕ] (x) =           ϕ(t)eicxt dt.                      (4)
+                                                            −1
+
+Obviously, Fc is compact. We denote its eigenvalues by λ0 , λ1 , . . . , λn , . . . and assume that they
+are ordered such that |λn | ≥ |λn+1 | for all natural n ≥ 0. We denote by ψn the eigenfunction
+corresponding to λn . In other words, the following identity holds for all integer n ≥ 0 and all real
+−1 ≤ x ≤ 1:
+                                               Z 1
+                                  λn ψn (x) =      ψn (t)eicxt dt.                                   (5)
+                                                           −1
+
+We adopt the convention1 that kψn kL2 [−1,1] = 1. The following theorem describes the eigenvalues
+and eigenfunctions of Fc (see [3], [4], [8]).
+Theorem 1. Suppose that c > 0 is a real number, and that the operator Fc is defined via (4)
+above. Then, the eigenfunctions ψ0 , ψ1 , . . . of Fc are purely real, are orthonormal and are complete
+in L2 [−1, 1]. The even-numbered functions are even, the odd-numbered ones are odd. Each function
+ψn has exactly n simple roots in (−1, 1). All eigenvalues λn of Fc are non-zero and simple; the
+even-numbered ones are purely real and the odd-numbered ones are purely imaginary; in particular,
+λn = in |λn |.
+We define the self-adjoint operator Qc : L2 [−1, 1] → L2 [−1, 1] via the formula
+                                                     Z 1
+                                                1        sin (c (x − t))
+                                   Qc [ϕ] (x) =                          ϕ(t) dt.                   (6)
+                                                π     −1      x−t
+
+Clearly, if we denote by F : L2 (R) → L2 (R) the unitary Fourier transform, then
+                                                                            
+                        Qc [ϕ] (x) = χ[−1,1] (x) · F−1 χ[−c,c](ξ) · F [ϕ] (ξ) (x),                  (7)
+
+where χ[−a,a] : R → R is the characteristic function of the interval [−a, a], defined via the formula
+                                                (
+                                                  1 −a ≤ x ≤ a,
+                                  χ[−a,a] (x) =                                                    (8)
+                                                  0 otherwise,
+
+for all real x. In other words, Qc represents low-passing followed by time-limiting. Qc relates to Fc ,
+defined via (4), by
+                                                         c
+                                                Qc =       · Fc∗ · Fc ,                             (9)
+                                                        2π
+and the eigenvalues µn of Qn satisfy the identity
+                                                            c        2
+                                                 µn =         · |λn | ,                            (10)
+                                                           2π
+for all integer n ≥ 0. Moreover, Qc has the same eigenfunctions ψn as Fc . In other words,
+
+                                         1 1 sin (c (x − t))
+                                           Z
+                             µn ψn (x) =                     ψn (t) dt,                            (11)
+                                         π −1      x−t
+  1 This convention agrees with that of [3], [4] and differs from that of [8].
+
+
+
+
+                                                            3
+for all integer n ≥ 0 and all −1 ≤ x ≤ 1. Also, Qc is closely related to the operator Pc : L2 (R) →
+L2 (R), defined via the formula
+
+                                           1 ∞ sin (c (x − t))
+                                            Z
+                              Pc [ϕ] (x) =                     ϕ(t) dt,                         (12)
+                                           π −∞     x−t
+
+which is a widely known orthogonal projection onto the space of functions of band limit c > 0 on
+the real line R.
+   The following theorem about the eigenvalues µn of the operator Qc , defined via (6), can be traced
+back to [6]:
+Theorem 2. Suppose that c > 0 and 0 < α < 1 are positive real numbers, and that the operator
+Qc : L2 [−1, 1] → L2 [−1, 1] is defined via (6) above. Suppose also that the integer N (c, α) is the
+number of the eigenvalues µn of Qc that are greater than α. In other words,
+
+                             N (c, α) = max {k = 1, 2, . . . : µk−1 > α} .                       (13)
+
+Then,
+                                                              
+                                      2c         1       1−α
+                         N (c, α) =      +         2
+                                                     log           log c + O (log c) .           (14)
+                                      π          π        α
+
+
+According to (14), there are about 2c/π eigenvalues whose absolute value is close to one, order of
+log c eigenvalues that decay exponentially, and the rest of them are very close to zero.
+    The eigenfunctions ψn of Qc turn out to be the PSWFs, well known from classical mathematical
+physics [16]. The following theorem, proved in a more general form in [11], formalizes this statement.
+Theorem 3. For any c > 0, there exists a strictly increasing unbounded sequence of positive numbers
+χ0 < χ1 < . . . such that, for each integer n ≥ 0, the differential equation
+
+                         1 − x2 · ψ ′′ (x) − 2x · ψ ′ (x) + χn − c2 x2 · ψ(x) = 0
+                                                                     
+                                                                                               (15)
+
+has a solution that is continuous on [−1, 1]. Moreover, all such solutions are constant multiples of
+the eigenfunction ψn of Fc , defined via (4) above.
+   In the following theorem, that appears in [4], an upper bound on |λn | in terms of n and c is
+described (the accuracy of this bound is discussed in Section 3.2 below; see also Theorem 34 and
+Remark 11 in Section 4.3).
+Theorem 4. Suppose that c > 0 is a real number, and n ≥ 0 is a non-negative integer. Suppose
+also that λn is the nth eigenvalue of the operator Fc , defined via (4). Suppose furthermore that the
+real number ν(n, c) is defined via the formula
+                                                     √
+                                                       π · cn (n!)2
+                                      ν(n, c) =                       ,                          (16)
+                                                   (2n)! · Γ(n + 3/2)
+where Γ denotes the gamma function. Then,
+
+                                              |λn | ≤ ν(n, c).                                   (17)
+
+Moreover,
+
+                                       λn (c) = in ν(n, c) · eR(n,c) ,                           (18)
+
+
+                                                       4
+where the real number R(n, c) is defined via the formula
+                                                                     !
+                                          Z c           2
+                                                2 (ψnτ (1)) − 1 n
+                              R(n, c) =                        −         dτ.                    (19)
+                                           0            2τ       τ
+
+The function ψnτ in (19) is the nth PSWF corresponding to the band limit τ .
+The following approximation formula for |λn | appears in Theorem 18 of [4], without proof (though
+the authors do illustrate its accuracy via several numerical examples).
+Theorem 5. Suppose that c ≥ 1 is a real number, and that n ≥ c is a positive integer. Suppose also
+that the real number p0 (n, c) is defined via the formula
+                           r          "              s         !    s         !!#
+                             2π          √             χn − c2        χn − c2
+               p0 (n, c) =      · exp − χn · F                   −E                 ,         (20)
+                              c                           χn            χn
+
+where F, E are the complete elliptic integrals, defined, respectively, via (39), (40) in Section 2.3.
+Then,
+                                                             
+                                      |λn |                1
+                                              −1 =O √           .                                (21)
+                                    p0 (n, c)              cn
+
+
+Remark 1. Obviously, (21) cannot be used in rigorous analysis, due to the lack of both error esti-
+mates and proof. In addition, the assumption n ≥ c turns out to be rather restrictive. Nevertheless,
+in Section 4 we establish several upper bounds on |λn |, whose form is similar to that of p0 (n, c).
+The approximate formula (21) will only be used in the discussion of the accuracy of these bounds,
+in Section 3.2.
+The following four theorems contain relatively recent results. All of them appear in [22], [23].
+   Many properties of the PSWF ψn depend on whether the eigenvalue χn of the ODE (15) is greater
+than or less than c2 . In the following theorem from [22], [23], we describe a simple relationship
+between c, n and χn .
+Theorem 6. Suppose that n ≥ 2 is a non-negative integer.
+   • If n ≤ (2c/π) − 1, then χn < c2 .
+   • If n ≥ (2c/π), then χn > c2 .
+   • If (2c/π) − 1 < n < (2c/π), then either inequality is possible.
+
+In the following theorem from [22], [23], we describe upper and lower bounds on χn in terms of n
+and c.
+Theorem 7. Suppose that n ≥ 2 is a positive integer, and that χn > c2 . Then,
+
+                                   2 1 χ n − c 2 t2
+                                    Z r
+                             n<                       dt =
+                                  π 0         1 − t2
+                                                    
+                                   2√             c
+                                      χn · E √         < n + 3,                                 (22)
+                                  π               χn
+
+where the function E : [0, 1] → R is defined via (40) in Section 2.3.
+
+                                                   5
+In the following theorem, we provide another upper bound on χn in terms of n.
+Theorem 8. Suppose that n ≥ 2 is a positive integer, and that χn > c2 . Then,
+                                          π          2
+                                    χn <      (n + 1) .                                            (23)
+                                            2
+
+
+In the following theorem, we describe an upper bound on the reciprocal of |ψn (0)| for even n (see
+Theorem 21 in [22]).
+Theorem 9. Suppose that n > 0 is an even integer, and that χn > c2 . Then,
+                                                r
+                                      1              χn
+                                            ≤4· n· 2 .                                             (24)
+                                   |ψn (0)|           c
+
+
+Remark 2. Detailed numerical experiments, conducted by the author, seem to indicate that, in fact,
+                                                 1
+                                                       = O(1)                                      (25)
+                                              |ψn (0)|
+(see also [4]). In other words, the inequality (24) is rather crude; on the other hands, it has been
+rigorously proved, and is sufficient for our purposes.
+
+2.2    Legendre Polynomials and PSWFs
+In this subsection, we list several well known facts about Legendre polynomials and the relationship
+between Legendre polynomials and PSWFs. All of these facts can be found, for example, in [7], [3]
+[21].
+    The Legendre polynomials P0 , P1 , P2 , . . . are defined via the formulae
+                                                 P0 (t) = 1,
+                                                 P1 (t) = t,                                       (26)
+and the recurrence relation
+                              (k + 1) Pk+1 (t) = (2k + 1) tPk (t) − kPk−1 (t),                     (27)
+for all k = 1, 2, . . . . The Legendre polynomials {Pk }∞ k=0 constitute a complete orthogonal system in
+L2 [−1, 1]. The normalized Legendre polynomials are defined via the formula
+                                                          p
+                                         Pk (t) = Pk (t) · k + 1/2,                                 (28)
+for all k = 0, 1, 2, . . . . The L2 [−1, 1]-norm of each normalized Legendre polynomial equals to one,
+i.e.
+                                             Z 1
+                                                        2
+                                                  Pk (t) dt = 1.                                  (29)
+                                            −1
+
+Therefore, the normalized Legendre polynomials constitute an orthonormal basis for L2 [−1, 1]. In
+particular, for every real c > 0 and every integer n ≥ 0, the prolate spheroidal wave function ψn ,
+corresponding to the band limit c, can be expanded into the series
+                                                   ∞
+                                                             (n,c)
+                                                   X
+                                        ψn (x) =         βk          · Pk (x),                     (30)
+                                                   k=0
+
+
+
+                                                         6
+                               (n,c)      (n,c)
+for all −1 ≤ x ≤ 1, where β0           , β1   , . . . are defined via the formula
+                                                      Z 1
+                                            (n,c)
+                                           βk      =       ψn (x) · Pk (x) dx,                                  (31)
+                                                         −1
+                                              (n,c)      (n,c)
+for all k = 0, 1, 2, . . . . The sequence β0          , β1        , . . . satisfies the recurrence relation
+                                                                 (n,c)             (n,c)            (n,c)
+                                                  A0,0 · β0              + A0,2 · β2       = χn · β0        ,
+                                                  (n,c)           (n,c)         (n,c)
+                                         A1,1 · β1      + A1,3 · β3     = χn · β1 ,
+                                 (n,c)         (n,c)              (n,c)         (n,c)
+                       Ak,k−2 · βk−2 + Ak,k · βk     + Ak,k+2 · βk+2 = χn · βk ,                                (32)
+for all k = 2, 3, . . . , where Ak,k , Ak+2,k , Ak,k+2 are defined via the formulae
+                                                   2k(k + 1) − 1
+                           Ak,k = k(k + 1) +                        · c2 ,
+                                                  (2k + 3)(2k − 1)
+                                                          (k + 2)(k + 1)
+                               Ak,k+2 = Ak+2,k =            p                      · c2 ,                     (33)
+                                                   (2k + 3) (2k + 1)(2k + 5)
+                                                                      n          o∞
+                                                                           (n,c)
+for all k = 0, 1, 2, . . . . In other words, the infinite vector β = βk                satisfies the identity
+                                                                                              k=0
+
+                                                  (A − χn I) · β = 0,                                           (34)
+where the non-zero entries of the infinite symmetric matrix A are given via (33).
+
+2.3     Elliptic Integrals
+In this subsection, we summarize several facts about elliptic integrals. These facts can be found, for
+example, in section 8.1 in [7], and in [21].
+    The incomplete elliptic integrals of the first and second kind are defined, respectively, by the
+formulae
+                                              Z y
+                                                        dt
+                                   F (y, k) =     p                ,                             (35)
+                                               0    1 − k 2 sin2 t
+                                              Z yp
+                                   E(y, k) =        1 − k 2 sin2 t dt,                           (36)
+                                                             0
+
+where 0 ≤ y ≤ π/2 and 0 ≤ k ≤ 1. By performing the substitution x = sin t, we can write (35) and
+(36) as
+                                      Z sin(y)
+                                                       dx
+                           F (y, k) =          p                       ,                    (37)
+                                       0        (1 − x ) (1 − k 2 x2 )
+                                                      2
+
+
+
+                                                  Z sin(y) r
+                                                                    1 − k 2 x2
+                                  E(y, k) =                                    dx.                              (38)
+                                                   0                 1 − x2
+The complete elliptic integrals of the first and second kind are defined, respectively, by the formulae
+                                         π  Z π/2            dt
+                             F (k) = F       ,k =                         ,                        (39)
+                                           2
+                                                         p
+                                                    0      1 − k 2 sin2 t
+                                          π  Z π/2 p
+                             E(k) = E        ,k =          1 − k 2 sin2 t dt,                      (40)
+                                           2        0
+
+
+
+                                                                   7
+for all 0 ≤ k ≤ 1. Moreover,
+                                                        
+                     p              1           log(k)
+                                                           · k 2 + O k 4 · log(k) .
+                                                                                 
+                 E     1 − k 2 = 1 + − + log(2) −                                            (41)
+                                      4              2
+In addition,
+                                                          π 2
+                                        F (k) − E(k) >      ·k ,                             (42)
+                                                          4
+for all real 0 < k < 1.
+
+
+3     Summary and Discussion
+In this section, we summarize some of the properties of prolate spheroidal wave functions and the
+associated eigenvalues, proved in Section 4. In particular, we present several upper bounds on
+|λn | and discuss their accuracy. The PSWFs and related notions were introduced in Section 2.1.
+Throughout this section, the band limit c > 0 is assumed to be a positive real number.
+
+3.1     Summary of Analysis
+In the following two propositions, we provide some upper bounds on the eigenvalues χn of the ODE
+(15). They are proved in Theorem 25, 26, 30 in Section 4.3.
+Proposition 1. Suppose that n is a positive integer, and that
+                                                            
+                                     2c     2           4eπc
+                                n>      + 2 · δ · log          ,                             (43)
+                                     π     π              δ
+for some
+                                                      5π
+                                           0<δ<          · c.                                (44)
+                                                       4
+Then,
+                                                      4
+                                          χn > c2 +     · δ · c.                             (45)
+                                                      π
+
+
+Proposition 2. Suppose that n is a positive integer, and that
+                                                             
+                           2c         2c     2           4eπc
+                              ≤n≤        + 2 · δ · log          − 3,                         (46)
+                            π         π     π              δ
+for some
+                                                      5π
+                                           3<δ<          · c.                                (47)
+                                                       4
+Then,
+                                                      8·δ
+                                          χn < c2 +       · c.                               (48)
+                                                       π
+
+
+
+                                                  8
+    The following is one of the principal results of this paper. It is proved in Theorem 23 in Section 4.2
+(see also Remark 5), and is illustrated in Experiments 2, 3 in Section 5.
+Proposition 3. Suppose that n > 0 is an even integer number, and that λn is the nth eigenvalue
+of the integral operator Fc , defined via (4), (5) in Section 2.1. Suppose also that
+                                                           2c √
+                                                      n>     + 42.                                                  (49)
+                                                           π
+Suppose furthermore that the real number ζ(n, c) is defined via the formula
+                                                        4
+                                7        4 · χn /c2 − 2             1
+                   ζ(n, c) =           ·           2
+                                                           · χn − c2 4 ·
+                             2|ψn (0)|   3 · χn /c − 1
+                                 "                s          !       s           !!#
+                                     √               χn − c2             χn − c2
+                             exp − χn · F                      −E                    ,                              (50)
+                                                        χn                 χn
+
+where χn is the nth eigenvalue of the differential operator Lc , defined via (3) in Section 1, and F, E
+are the complete elliptic integrals, defined, respectively, via (39), (40) in Section 2.3. Then,
+
+                                                      |λn | < ζ(n, c).                                              (51)
+
+
+
+Remark 3. It follows from the combination of Remark 2 in Section 2.1 and Proposition 2 above
+that
+                                 "             s           !     s          !!#
+                                    √            χ   − c 2          χn − c2
+                         1/4                       n
+        ζ(n, c) = O((δc) ) · exp − χn · F                    −E                 ,       (52)
+                                                    χn                χn
+
+where n, δ are as in (46), (47).
+   In the following proposition, we describe another upper bound on |λn |, which is weaker than the
+one presented in Proposition 3, but has a simpler form. It is proved in Theorem 24 in Section 4.3.
+Proposition 4. Suppose that n > 0 is an even integer number, and that λn is the nth eigenvalue
+of the integral operator Fc , defined via (4), (5) in Section 2.1. Suppose also that
+                                                           2c √
+                                                      n>     + 42.                                                  (53)
+                                                           π
+Suppose furthermore that the real number η(n, c) is defined via the formula
+
+      η(n, c) =
+                                         7       "                  s             !        s             !!#
+                                                                         χn − c2                χn − c2
+                       
+                           π · (n + 1)               √
+      18 · (n + 1) ·                          · exp − χn ·       F                     −E                       ,   (54)
+                                c                                          χn                     χn
+
+where χn is the nth eigenvalue of the differential operator Lc , defined via (3) in Section 1, and F, E
+are the complete elliptic integrals, defined, respectively, via (39), (40) in Section 2.3. Then,
+
+                                                      |λn | < η(n, c).                                              (55)
+
+
+
+
+                                                             9
+Remark 4. According to Proposition 4,
+                                     "               s             !        s             !!#
+                                     √                   χn − c2                χn − c2
+               η(n, c) = O(c) · exp − χn ·      F                      −E                       ,    (56)
+                                                           χn                     χn
+
+as long as n is proportional to c.
+
+    Both ζ(n, c) and η(n, c), defined, respectively, via (50) in Proposition 3 and (54) in Proposition 24,
+depend on χn , which somewhat obscures their behavior. In the following proposition, we eliminate
+this inconvenience by providing yet another upper bound on |λn |. The simplicity of this bound, as
+well as the fact that it depends only on n and c (and not on χn ), make Proposition 5 the principal
+result of this paper.
+    It is proved in Theorem 32 in Section 4.3 and is illustrated via Experiment 3 in Section 5.
+
+Proposition 5. Suppose that c > 0 is a real number, and that
+
+                                                 c > 22.                                             (57)
+
+Suppose also that δ > 0 is a real number, and that
+                                                         πc
+                                              3<δ<          .                                        (58)
+                                                         16
+Suppose, in addition,that n is a positive integer, and that
+                                                                
+                                         2     2            4eπc
+                                   n ≥ c + 2 · δ · log             .                                 (59)
+                                        π      π              δ
+
+Suppose furthermore that the real number ξ(n, c) is defined via the formula
+                                                                 
+                                                                δ
+                             ξ(n, c) = 7056 · c · exp −δ 1 −          .                              (60)
+                                                               2πc
+
+Then,
+
+                                             |λn | < ξ(n, c).                                        (61)
+
+
+
+
+3.2     Accuracy of Upper Bounds on |λn |
+In this subsection, we discuss the accuracy of the upper bounds on |λn |, presented in Propositions 3,
+4, 5. In this discussion, we use the analysis of Section 4; previously reported results; and numerous
+numerical experiments, some of which are described in Section 5. Throughout this subsection, we
+suppose that n is a positive integer in the range
+                                         2c     2c
+                                            <n<    + O(log(c)).                                      (62)
+                                         π      π
+According to the combination of Theorem 5 in Section 2.1 and Remark 3,
+
+                                            ζ(n, c)
+                                                    = O(c3/4 ),                                      (63)
+                                             |λn |
+
+
+                                                    10
+where ζ(n, c) is that of Proposition 3. On the other hand, both |λn | and ζ(n, c) decay with n roughly
+exponentially, at the same rate. Thus, the inequality (51) in Proposition 3 is reasonably tight (see
+also Experiment 2, Experiment 3 in Section 5).
+    The factor O(c3/4 ) in (63) is an artifact of the analysis in Section 4.1. The first source of
+                                                                                         (n,c)
+inaccuracy is the inequality (80) in the proof of Theorem 11. In this inequality, ak             bounded
+from above by 1, while numerical experiments indicate that
+                                            (n,c)
+                                           ak        < O(c−1/2 ),                                   (64)
+
+for all integer k > 0. This contributes to the factor of order c1/2 in (63). The second source of
+inaccuracy is Theorem 14, which gives rise to the factor
+                                             4
+                              4 · χn /c2 − 2             1
+                                        2
+                                                · χn − c2 4 = O(c1/4 )                       (65)
+                               3 · χn /c − 1
+
+in (50) (see also Proposition 2). This contributes to another factor of order c1/4 in (63).
+    In Propositions 4, 5 we introduce two additional upper bounds on |λn |, namely, η(n, c) and
+ξ(n, c). Due to Remarks 3, 4 and Proposition 5,
+
+                                      η(n, c) = ζ(n, c) · O(c3/4 ),
+                                      ξ(n, c) = ζ(n, c) · O(c3/4 ).                                 (66)
+
+Thus, (182) is a tighter upper bound on |λn | than both (191) and (226). This is not surprising, since,
+due to Theorems 24, 32, η(n, c) and ξ(n, c) can be viewed as simplified and less accurate versions
+of ζ(n, c). There are two sources of the discrepancy (66). First, in the proofs of Theorems 24, 32,
+                    1/4
+the term χn − c2         is bounded from above by O(c1/2 ), while, in fact, it is of order c1/4 (see (65)
+above). Additional factor of order c1/2 in (66) is due to Theorem 9 and Remark 2 in Section 2.1.
+See also results of numerical experiments, reported in Section 5.
+    Finally, we observe that the upper bound ν(n, c) on |λn |, introduced in Theorem 4 in Section 2.1,
+is useless for n as in (62), due to the combination of Theorem 34 and Remark 11 in Section 4.3. On
+the other hand, ν(n, c) can be used to understand the behavior of |λn | as n → ∞, for a fixed c > 0.
+
+
+4     Analytical Apparatus
+The purpose of this section is to provide the analytical apparatus to be used in the rest of the paper.
+This principal results of this section are Theorems 23, 24.
+
+4.1    Legendre Expansion
+In this subsection, we analyze the Legendre expansion of PSWFs, introduced in Section 2.2. This
+analysis will be subsequently used in Section 4.2 to prove the principal result of this paper.
+    The following theorem is a direct consequence of the results outlined in Section 2.1 and Sec-
+tion 2.2.
+Theorem 10. Suppose that c > 0 is a real number, and n > 0 is an even positive integer. Suppose
+                       (n,c) (n,c)
+also that the numbers a1 , a2 , . . . are defined via the formula
+                                            Z 1
+                                    (n,c)
+                                   ak     =     ψn (t) · P2k−2 (t) dt,                     (67)
+                                                −1
+
+
+
+                                                      11
+for k = 1, 2, . . . , where ψn is the nth PSWF corresponding
+                                                    n        o to band limit c, and Pk is the kth
+                                                       (n,c)
+normalized Legendre polynomial. Then, the sequence ak          satisfies the recurrence relation
+
+                                        (n,c)            (n,c)
+                                   c1 · a2      + b 1 · a1       = 0,
+                                           (n,c)         (n,c)       (n,c)
+                                   ck+1 · ak+2 + bk+1 · ak+1 + ck · ak     = 0,                      (68)
+
+for k ≥ 1, where the numbers c1 , c2 , . . . are defined via the formula
+
+                                                      2k · (2k − 1)
+                                    ck =               p                    · c2 ,                   (69)
+                                             (4k − 1) · (4k − 3) · (4k + 1)
+
+for k ≥ 1, and the numbers b1 , b2 , . . . are defined via the formula
+
+                                                             2 · (2k − 1) · (2k − 2) − 1 2
+                    bk = 2 · (k − 1) · (2k − 1) +                                       · c − χn ,   (70)
+                                                                  (4k − 1) · (4k − 5)
+
+for k ≥ 1. Here χn is the nth eigenvalue of the prolate differential equation (15). Moreover,
+                                                        ∞
+                                                               (n,c)
+                                                        X
+                                             ψn (t) =         ak       · P2k−2 (t),                  (71)
+                                                        k=1
+
+and
+                                                   ∞         2
+                                                        (n,c)
+                                                   X
+                                                       ak        = 1.                                (72)
+                                                   k=1
+
+Proof. To establish (68) and (71), we combine (30), (33), (34) in Section 2.2 with Theorem 1 in
+Section 2.1. The identity (72) follows from the fact that the normalized Legendre polynomials
+constitute an orthonormal basis for L2 [−1, 1].                                              
+   In the rest of the section, c > 0 is a fixed real number, and n > 0 is an even positive integer.
+                                                            (n,c)
+   The following theorem provides an upper bound on a1            in terms of the elements of another
+sequence.
+Theorem 11. Suppose that the sequence α1 , α2 , . . . is defined via the formula
+                                                                   (n,c)
+                                                                 ak
+                                                        αk =       (n,c)
+                                                                           ,                         (73)
+                                                                 a1
+                   (n,c)   (n,c)
+for k ≥ 1, where a1 , a2 , . . . are defined via (67) in Theorem 10. Then, the sequence α1 , α2 , . . .
+satisfies the recurrence relation
+
+                                             α1 = 1,
+                                             α2 = B0 ,
+                                             αk+2 = Bk · αk+1 − Ak · αk ,                            (74)
+
+for k ≥ 1, where the sequence A1 , A2 , . . . is defined via the formula
+                                                                     r
+                                     k · (2k − 1) · (4k + 3)           4k + 5
+                           Ak =                                    ·          ,                      (75)
+                                  (k + 1) · (2k + 1) · (4k − 1)        4k − 3
+
+
+                                                               12
+for k ≥ 1, and the sequence B0 , B1 , . . . is defined via the formula
+                                                              p
+                          χn − 2k · (2k + 1)          (4k + 3) · (4k + 1) · (4k + 5)
+                  Bk =                              ·                                −
+                                   c2                       (2k + 1) · (2k + 2)
+                                                 p
+                        (4k · (2k + 1) − 1) · (4k + 1) · (4k + 5)
+                                                                        ,                           (76)
+                               (4k − 1) · (2k + 1) · (2k + 2)
+
+for k ≥ 0. Moreover, for every k = 1, 2, . . . ,
+
+                                                      (n,c)          1
+                                                  a1           ≤          .                         (77)
+                                                                    |αk |
+
+
+Proof. Due to (68) in Theorem 10, the recurrence relation (74) holds with Ak , Bk ’s defined via the
+formulae
+                                                  ck                          bk+1
+                                         Ak =            ,     Bk = −              ,                (78)
+                                                 ck+1                         ck+1
+
+where ck , bk ’s are defined, respectively, via (69) and (70). We observe that
+                                                   p
+                                  1     (4k + 3) · (4k + 1) · (4k + 5) 1
+                                     =                                 · 2                          (79)
+                                ck+1           (2k + 1) · (2k + 2)      c
+
+and readily obtain both (75) and (76). Next, due to (72) and (73),
+                                                  (n,c)
+                                     (n,c)       ak                (n,c)               (n,c)
+                              1 ≥ ak         =    (n,c)
+                                                              · a1         = |αk | · a1        ,    (80)
+                                                 a1
+
+for all k = 1, 2, . . . , which implies (77).                                                          
+
+   It is somewhat easier to analyze a rescaled version of the sequence {αk } defined via (73) in
+Theorem 11. This observation is reflected in the following theorem.
+
+Theorem 12. Suppose that the sequence β1 , β2 , . . . is defined via the formula
+                                                 r
+                                                        2
+                                   βk = αk ·                 ,                                      (81)
+                                                      4k − 3
+
+for k ≥ 1, where α1 , α2 , . . . are defined via (73) in Theorem 11 above. Suppose also that the sequence
+B0χ , B1χ , . . . is defined via the formula
+
+                                                                   χn − c2 − 2k · (2k + 1)
+                                                                                          
+                                (4k + 1) · (4k + 3)
+                          Bkχ =                     ·                                        ,      (82)
+                                  (2k + 1) · (2k + 2)                        c2
+
+for k ≥ 0. Then, the sequence β1 , β2 , . . . satisfies the recurrence relation
+                                              √
+                                     β1 = 2,
+                                                   √
+                                     β2 = B̃0 · 2,
+                                         βk+2 = B̃k · βk+1 − Ãk · βk ,                             (83)
+
+
+                                                              13
+for k ≥ 1, where Ã0 , Ã1 , . . . are defined via the formula
+                                               k · (2k − 1) · (4k + 3)
+                                    Ãk =                                 ,                           (84)
+                                            (k + 1) · (2k + 1) · (4k − 1)
+
+for k ≥ 0, and B̃0 , B̃1 , . . . are defined via the formula
+
+                                             B̃k = Bkχ + 1 + Ãk ,                                    (85)
+
+for k ≥ 0.
+Proof. Due to (74) and (81), we have for all k = 1, 2, . . .
+                     r                  r                         r
+                          2                   2                         2
+             βk+2 =           · αk+2 =             · Bk · αk+1 −             · Ak · αk
+                       4k + 5              4k + 5                    4k + 5
+                     r               r                     r               r
+                       4k + 1             2                  4k − 3             2
+                   =          · Bk ·           · αk+1 −             · Ak ·           · αk ,           (86)
+                       4k + 5          4k + 1                4k + 5          4k − 3
+and hence the recurrence relation (83) holds with
+                                  r                     r
+                                    4k − 3                4k + 1
+                           Ãk =           · Ak , B̃k =          · Bk .                               (87)
+                                    4k + 5                4k + 5
+
+It remains to compute Ãk ’s and B̃k ’s. First, we observe that (84) follows immediately from the
+combination of (75) with (87). Second, we combine (76) with (87) to conclude that, for k = 1, 2, . . . ,
+
+                                                              (8k 2 + 4k − 1) · (4k + 1)
+                                
+             χn − 2k · (2k + 1) (4k + 3) · (4k + 1)
+    B̃k =                          ·                     −
+                     c2              (2k + 1) · (2k + 2) (4k − 1) · (2k + 1) · (2k + 2)
+           (4k + 1) · (4k + 3) χn − c2 − 2k · (2k + 1)
+                                                           
+        =                       ·                             +
+           (2k + 1) · (2k + 2)                 c2
+            (4k + 3) · (4k + 1) · (4k − 1) − (4k + 1) · (8k 2 + 4k − 1)
+                           (4k − 1) · (2k + 1) · (2k + 2)
+           (4k + 1) · (4k + 3) χn − c2 − 2k · (2k + 1)
+                                                           
+        =                       ·                              +1+
+           (2k + 1) · (2k + 2)                 c2
+          (4k + 3) · (4k + 1) · (4k − 1) − (4k + 1) · (8k 2 + 4k − 1) − (4k − 1) · (2k + 1) · (2k + 2)
+                                           (4k − 1) · (2k + 1) · (2k + 2)
+           (4k + 1) · (4k + 3) χn − c2 − 2k · (2k + 1)
+                                                           
+        =                       ·                              + 1 + Ãk ,                             (88)
+           (2k + 1) · (2k + 2)                 c2
+which completes the proof.                                                                               
+    The following theorem, in which we establish the monotonicity of both {αk } and {βk } up to a
+certain value of k, is a consequence of Theorem 12.
+Theorem 13. Suppose that χn > c2 , and that β1 , β2 , . . . are defined via (81) in Theorem 12.
+Suppose also that the integer k0 is defined via the formula
+
+                      k0 = max k = 1, 2, . . . : 2k · (2k + 1) < χn − c2
+                                 
+                              k
+                                 (                        r               )
+                                                       1          2
+                                                                      1 1
+                         = max k = 1, 2, . . . : k ≤ · χn − c + −           .              (89)
+                              k                        2              4 4
+
+
+                                                      14
+Then,
+                              √
+                               2 = β1 < β2 < · · · < βk0 < βk0 +1 < βk0 +2 ,                              (90)
+
+and also,
+
+                               1 = α1 < α2 < · · · < αk0 < αk0 +1 < αk0 +2 ,                              (91)
+
+where the sequences {αk } and {βk } are defined via (73) and (81), respectively.
+Proof. Due to (85) in Theorem 12 and the assumption that χn > c2 ,
+
+                                                   3 χn − c2
+                                           B̃0 =     ·       + 1 > 1.                                     (92)
+                                                   2   c2
+Therefore, due to (83) in Theorem 12,
+
+                                               β2 = B̃0 · β1 > β1 .                                       (93)
+
+By induction, suppose that 1 ≤ k ≤ k0 and assume that βk < βk+1 . We observe that Ãk , B̃k > 0,
+and combine this observation with (83), (84), (85) and (89) to conclude that
+
+                          βk+2 = βk+1 + B̃k · βk+1 + Ãk · (βk+1 − βk ) > βk+1 ,                          (94)
+
+which implies (90). To establish (91), we use (81) and observe that
+                                      r                 r
+                             αk+1       4k + 1 βk+1        4k + 1
+                                   =           ·      >           > 1,                                    (95)
+                              αk        4k − 3 βk          4k − 3
+for all 1 ≤ k ≤ k0 + 1.                                                                                     
+   In the following theorem, we bound the sequence β1 , β2 , . . . , defined via (81) in Theorem 12, by
+another sequence from below.
+Theorem 14. Suppose that χn > c2 , and that the sequence ρ1 , ρ2 , . . . , is defined via the formula
+                                             (4k − 6) · (4k − 4) · (4k + 7)
+                                    ρk =                                    ,                             (96)
+                                               (4k − 2) · (4k) · (4k + 3)
+for all k = 1, 2, . . . . Suppose also that the sequence Anew
+                                                          1   , Anew
+                                                                 2   , . . . is defined via the formula
+
+                                                 Anew
+                                                  k   = Ãk · ρk ,                                        (97)
+
+for all k = 1, 2, . . . , where Ãk is defined via (84) in Theorem 12. Suppose furthermore that the
+sequence β1new , β2new , . . . is defined via the formulae
+
+                            β1new = β1 ,
+                            β2new = β2 ,
+                            β3new = β3 , ,
+                             new
+                            βk+2 = (Bkχ + 1) · βk+1
+                                                new
+                                                    + Anew
+                                                       k
+                                                               new
+                                                           · (βk+1 − βknew ),                             (98)
+
+for k ≥ 2, where β1 , β2 , . . . are defined via (81), and Bkχ is defined via (82) in Theorem 12. Then,
+                                                 4k − 4 4k − 6 4k + 7
+                                    Anew
+                                     k   =             ·      ·       ,                                   (99)
+                                                 4k + 4 4k + 2 4k − 1
+
+
+                                                        15
+for all k = 0, 1, . . . , and also
+
+                             0 = Anew
+                                  1   < Anew
+                                         2   < Anew
+                                                3   < · · · < Anew
+                                                               k   < · · · < 1.                       (100)
+
+Moreover,
+                             √
+                              2 = β1new < β2new < · · · < βknew
+                                                             0
+                                                                < βknew
+                                                                     0 +1
+                                                                          < βknew
+                                                                               0 +2
+                                                                                    ,                 (101)
+
+where k0 is defined via (89) in Theorem 13. In addition,
+
+                   β1new ≤ β1 ,      β2new ≤ β2 ,   ...,    βknew
+                                                               0 +1
+                                                                    ≤ βk0 +1 ,   βknew
+                                                                                    0 +2
+                                                                                         ≤ βk0 +2 .   (102)
+
+
+
+Proof. The identity (99) follows immediately from the combination of (84) and (96). The mono-
+tonicity of {Anew
+              k   } follows from the fact that, if we view Ak as a function of the real argument
+k,
+                                dAk   (((3 + k) · 8k − 19) · 2k − 51) · 8k + 2
+                                    =                                          ,                      (103)
+                                 dk       (4k − 1)2 · (k + 1)2 · (2k + 1)2
+which is positive for all k ≥ 2; combining this observation with the fact that Anew
+                                                                                 k    tends to 1 as
+k → ∞, we obtain (100).
+                                           new
+   It follows from (98) by induction that βj+2    new
+                                               > βj+1 as long as Bjχ > 0, which holds for all j ≤ k0 ,
+due to (82) and (89). This observation implies (101).
+   It remains to prove (102). We observe that, due to (96), the sequence 0 = ρ1 , ρ2 , . . . grows
+monotonically and is bounded from above by 1. Combined with (97), this implies that
+
+                                           Anew
+                                            k   < Ãk ,     k = 1, 2, . . . .                         (104)
+
+Eventually, we show by induction that
+                                new
+                               βk+1 − βknew ≤ βk+1 − βk              new
+                                                                and βk+1 ≤ βk+1 ,                     (105)
+
+for all k = 1, 2, . . . , k0 + 1, with k0 defined via (89). For k = 1, 2, the inequalities (105) hold due to
+(98). We assume that they hold for some k ≤ k0 . First, we combine (82), (81), (89), (98), (104) and
+the induction hypothesis to conclude that
+        new
+       βk+2    new
+            − βk+1 = Bkχ · βk+1
+                            new
+                                + Anew
+                                   k
+                                           new
+                                       · (βk+1 − βknew ) ≤ Bkχ · βk+1 + Ãk · (βk+1 − βk ).           (106)
+
+Then, we combine (82), (81), (89), (98), (104) and the induction hypothesis to conclude that
+                new
+        βk+2 − βk+2 = (Bkχ + 1) · (βk+1 − βk+1
+                                           new
+                                               ) + Ãk · (βk+1 − βk ) − Anew
+                                                                         k
+                                                                                 new
+                                                                             · (βk+1 − βknew )
+                                   new
+                         > βk+1 − βk+1 > 0,                                                           (107)
+
+which finishes the proof.                                                                                 
+   Theorem 14 allows us to find a lower bound on βk by finding a lower bound on βknew , for all
+k ≤ k0 + 2. In the following theorem, we simplify the recurrence relation (98) by rescaling {βknew }.
+Theorem 15. Suppose that χn > c2 + 6, and that the sequence β1new , β2new , . . . is defined via (98)
+in Theorem 14. Suppose also that the sequence f1 , f2 , . . . is defined via the formula
+                                                    (4k − 4) · (4k − 6)
+                                            fk =                        ,                             (108)
+                                                         4k − 1
+
+
+                                                           16
+for all k = 1, 2, . . . , and the sequence γ1 , γ2 , . . . is defined via the formulae
+
+                                                 γ1 = β1new ,
+                                                 γk = fk · βknew ,                                 (109)
+
+for k ≥ 2. Then, the sequence γ1 , γ2 , . . . satisfies, for k ≥ 2, the recurrence relation
+                   √
+              γ1 = 2,                                                                              (110)
+                                    χn − c2
+                                               
+                     8
+              γ2 = √ · 2 + 3 ·                    ,                                                (111)
+                    7 2                  c2
+                      √ 
+                                        χn − c2       105 χn − c2 χn − c2 − 6 105
+                                                                                             
+                    16 2
+              γ3 =        · 3 + 15 ·                +       ·         ·              −         ,   (112)
+                     11                      c2         8       c2           c2          2c2
+              γk+2 = BkI + BkII · γk+1 − γk ,
+                                  
+                                                                                                   (113)
+
+where the sequences BkI and BkII are defined via the formulae
+                               
+
+
+                           4 · (4k + 1) · (4k + 3)2          χn − c2 − 2k · (2k + 1)
+                                                                                    
+                       I
+                     Bk =                                ·                             ,           (114)
+                           4k · (4k − 2) · (4k + 7)                     c2
+
+for all k = 1, 2, . . . , and
+                                                                60
+                                    BkII = 2 +                                ,                    (115)
+                                                 32k 4 + 32k 3 − 38k 2 + 7k
+for all k = 1, 2, . . . , respectively. Moreover,
+
+                                245 χn − c2 − 6
+                                    ·           = B1I > B2I > · · · > BkI0 > 0,                    (116)
+                                 22     c2
+where k0 is defined via (89), and
+                                   42
+                                      = B1II > B2II > · · · > BkII > · · · > 2.                    (117)
+                                   11
+
+
+Proof. The identity (110) follows immediately from (98) and (109). Then, it follows from (75), (76),
+that
+                                    √             √ 
+                                                                    χn − c2
+                                                                             
+                         7           5    3χn            5
+                   A1 = , B0 =         ·       −1 =        · 2+3·               ,             (118)
+                         6          2      c2           2              c2
+moreover,
+                          √               √       √               √    √
+                         7 5 χn − 6 11 5         7 5 χn − c2 − 6 7 5 11 5
+                    B1 =     ·   2
+                                     −         =       ·        +   −
+                         √4  c          12        4     c2       4   12
+                                        χn − c2 − 6
+                                                    
+                          5
+                       =    · 10 + 21 ·               .                                            (119)
+                         12                 c2
+
+We combine (118) with (74), (81), (98), (108), (109) to conclude that
+                                              r              r
+                                  8        8     2        8    2
+                           γ2 = · β2 = ·           · α2 = ·      · B0 ,                            (120)
+                                  7        7     5        7    5
+
+
+                                                        17
+from which (111) follows. Then we combine (118), (119) with (74), (81), (98), (108), (109) to
+conclude that
+                                  √            √                          √
+                48          48     2         48 2                       48 2
+           γ3 =    · β3 =       ·    · α3 =        · (B1 α2 − A1 α1 ) =       · (B1 B0 − A1 )
+                11√         11 3              33                         33
+                                          χn − c2                χn − c2 − 6
+                                                                               
+                16 2       5                                                      7
+              =        ·       · 2+3·               · 10 + 21 ·                 −     ,       (121)
+                 11        24               c2                        c2          6
+
+which simplifies to yield (112). The relation (113) is established by using (82), (98), (97), (108),
+(109) to expand, for all k ≥ 2,
+                             new
+             γk+2 = fk+2 · βk+2  = fk+2 · (Bkχ + 1 + Anew
+                                                       k
+                                                                 new
+                                                            ) · βk+1 − fk+2 · Anew
+                                                                               k   · βknew
+                    fk+2                               fk+2
+                  =       · (Bkχ + 1 + Anew
+                                        k   ) · γk+1 −         · Anew
+                                                                  k   · γk .                  (122)
+                    fk+1                                 fk
+
+Since, due to (97), (108), we have
+
+             fk+2
+                  · Anew
+                     k    =
+              fk
+             (4n + 4) · (4n + 2)        4n − 1          (4n − 4) · (4n − 6) · (4n + 7)
+                                 ·                    ·                                = 1,   (123)
+                   4n + 7          (4n − 4) · (4n − 6) (4n + 4) · (4n + 2) · (4n − 1)
+
+the identity (113) readily follows from (122), (123), with
+
+                                                   fk+2
+                                           BkI =        · Bkχ                                 (124)
+                                                   fk+1
+
+and
+                                               fk+2
+                                      BkII =        · (Anew
+                                                        k   + 1) .                            (125)
+                                               fk+1
+
+We substitute (82), (108) into (124) to obtain (114). Next,
+
+               d 4 · (4k + 1) · (4k + 3)2
+                                         
+                                                9            512              50
+                                            =     2
+                                                    +               2
+                                                                      −               <
+              dk 4k · (4k − 2) · (4k + 7)     14k      21 · (7 + 4k)    3 · (2k − 1)2
+                                              
+                   1         9      512     50              2
+                       2
+                         ·      +         −       =−               < 0,                       (126)
+              (k − 1/2)      14 21 · 16 12            (k − 1/2)2
+
+for all k ≥ 1. Due to (89), the term inside the square brackets of (114) is positive for all k ≥ k0
+and monotonically decreases as k grows, which, combined with (126), implies (116). Eventually, we
+substitute (97), (108) into (125) and use (123) to obtain, for all k ≥ 1,
+
+                                                   fk+2 + fk
+                                          BkII =             ,                                (127)
+                                                     fk+1
+
+which yields (115) through straightforward algebraic manipulations. The monotonicity relation (117)
+follows immediately from (115).                                                                  
+
+    We analyze the sequence {γk } from Theorem 15 by considering the ratios of its consecutive
+elements. The latter are bounded from below by the largest eigenvalue of the characteristic equation
+of the recurrence relation (113). In the following two theorems, we elaborate on these ideas.
+
+                                                   18
+Theorem 16. Suppose that χn > c2 , and that the sequence r1 , r2 , . . . is defined via the formula
+                                                         γk+1
+                                                  rk =        ,                                          (128)
+                                                          γk
+
+for all k = 1, 2, . . . , where the sequence γ1 , γ2 , . . . is defined via (109) in Theorem 15. Suppose also
+that the sequence σ1 , σ2 , . . . is defined via the formula
+                                                           s
+                                            I     II
+                                                              I          2
+                                          B + Bk                Bk + BkII
+                                    σk = k            +                      − 1,                      (129)
+                                              2                     2
+
+for all k = 1, 2, . . . , where BkI , BkII are defined via (114),(115) in Theorem 15, respectively. Then,
+
+                                              r2 > B2I + B2II .                                          (130)
+
+Moreover, if B2I + B2II > 2, then σ2 > 0, and
+
+                                                   r2 > σ2 .                                             (131)
+
+
+
+Proof. We use (114), (115) to obtain
+
+                                                  44 121 χn − c2 − 20
+                                   B2I + B2II =      +    ·           .                                  (132)
+                                                  21   20     c2
+Next, we plug (111),(112) into (128) to obtain
+
+                                   χn − c2     105 χn − c2 χn − c2 − 6 105
+                                                                          
+                     28
+                r2 =    · 3 + 15 ·         +       ·      ·           − 2 ·
+                     11               c2         8   c2        c2      2c
+                                            −1
+                                  χn − c2
+                                         
+                           2+3·                .                                                         (133)
+                                     c2
+
+We subtract (132) from (133) to obtain, by performing elementary algebraic manipulations,
+                                                                            −1
+                                   247 1119 χn − c2                 χn − c2
+                                                              
+                                                          98                      596
+            r2 − (B2I + B2II )   =    +      ·          −    · 2+3·             +
+                                   77   220       c2      33          c2          11c2
+                                   247 98     398
+                                 >    −    =       > 0,                                                  (134)
+                                   77   66    231
+which implies (130). Due to (129), σ2 is positive if and only if B2I + B2II > 2; in that case,
+
+                                              B2I + B2II > σ2 ,                                          (135)
+
+which, combined with (130), implies (131).                                                                  
+   The following theorem extends Theorem 16.
+Theorem 17. Suppose that χn > c2 , and that k0 > 2, where k0 is defined via (89) in Theorem 13.
+Suppose also that the sequences r1 , r2 , . . . and σ1 , σ2 , . . . are defined, respectively, via (128), (129)
+in Theorem 16. Then,
+
+                                      σ1 > σ2 > σ3 > · · · > σk0 > 1.                                    (136)
+
+
+                                                      19
+In addition,
+                                        r2 > r3 > · · · > rk0 > 1.                               (137)
+Moreover,
+                         r2 > σ2 > 1,    r3 > σ3 > 1,     ...,    rk0 > σk0 > 1.                 (138)
+
+
+Proof. We combine (114), (115), (116), (117) in Theorem 15 with (129) in Theorem 16 to conclude
+that, for all k = 1, 2, . . . , k0 ,
+                                             BkI + BkII  B II
+                                      σk >              > k > 1.                                 (139)
+                                                 2        2
+We use this in combination with (116) and (117) to conclude that (136) holds. Then, we use (139)
+and Theorem 16 to conclude that
+                                              r2 > σ2 > 1.                                       (140)
+Next, we prove (138) by induction on k ≤ k0 . The case k = 2 is handled by (140). Suppose that
+2 < k < k0 , and (138) is true for k, i.e.
+                                              rk > σk > 1.                                       (141)
+We consider the quadratic equation
+                                     x2 − (BkI + BkII ) · x + 1 = 0,                             (142)
+in the unknown x. Due to (129) and (139), σk is the largest root of the quadratic equation (142),
+and, moreover, σk−1 < 1 is its second (smallest) root. Thus, the left hand side of (142) is negative if
+and only if x ∈ (σk−1 , σk ). We combine this observation with (141) to conclude that
+                                     rk2 − (BkI + BkII ) · rk + 1 > 0,                           (143)
+and, consequently,
+                                                               1
+                                        rk > (BkI + BkII ) −      .                              (144)
+                                                               rk
+Then, we substitute (128) into (113) to obtain
+                              γk+2   (BkI + BkII ) · γk+1 − γk                   1
+                     rk+1 =        =                           = (BkI + BkII ) − .               (145)
+                              γk+1             γk+1                             rk
+By combining (144) with (145) we conclude that
+                                               rk > rk+1 .                                       (146)
+Moreover, we combine (141) with (145) and use the fact that σk is a root of (142) to obtain the
+inequality
+                                                  1                    1
+                         rk+1 = (BkI + BkII ) −      > (BkI + BkII ) −    = σk .                 (147)
+                                                  rk                   σk
+However, combined with the already proved (136) and the fact that k < k0 , the inequality (147)
+implies that
+                                              rk+1 > σk+1 .                                      (148)
+This completes the proof of (138). The relation (137) follows from the inequality (146) above.       
+
+                                                    20
+   In the following theorem, we bound the product of several σk ’s by a definite integral.
+Theorem 18. Suppose that χn > c2 , and that k0 > 2, where k0 is defined via (89) in Theorem 13.
+Suppose also that the real valued function gn is defined via the formula
+                                                v"
+                                2
+                                     2 ! u                             2 !#2
+                         χn − c       2x        u             χn − c2    2x
+       gn (x) = 1 + 2 ·       2
+                                  −           + t    1+2·         2
+                                                                      −          − 1,     (149)
+                            c          c                        c         c
+
+for the real values of x satisfying the inequality 4x2 ≤ χn −c2 . Suppose furthermore that the sequence
+σ1 , σ2 , . . . is defined via the formula (129) in Theorem 16. Then,
+                                                          Z √
+                                                                    
+                                                                   2       χn −c   /2
+                   σ2 · σ3 · · · · · σk0 −1 > (gn (0))−4 · exp                          log (gn (x)) dx.      (150)
+                                                                     0
+
+
+Proof. We observe that, for all k = 1, 2, . . . ,
+                     4 · k 2 < 2k · (2k + 1) < 4 · (k + 1)2 < 2(k + 1) · (2(k + 1) + 1).                      (151)
+In combination with (89), this implies that, for all k = 1, . . . , k0 ,
+                                                χn − c2 − 4 · k 2 > 0.                                        (152)
+Moreover, due to (114), (115) in Theorem 15, the inequality
+                                                            2 !
+                                   χn − c2
+                                              
+                                                2 · (k + 1)
+                      2<2+4·               −                     < BkI + BkII                                 (153)
+                                      c2              c
+
+holds for all k = 1, . . . , k0 − 1, where BkI , BkII are defined via (114), (115), respectively. We combine
+(153) with (129) in Theorem 16 and (149) above to obtain the inequality
+                                                    σk > gn (k + 1),                                          (154)
+which holds for all k = 1, . . . , k0 − 1. Consequently, using the monotonicity of gn ,
+                 σ2 · σ3 · · · · · σk0 −1 >
+                                                        gn (0) · gn (1) · · · · · gn (k0 − 1) · gn (k0 )2
+                 gn (3) · gn (4) · · · · · gn (k0 ) =                                                     >
+                                                              gn (0) · gn (1) · gn (2) · gn (k0 )
+                 gn (0)−4 · exp (log(gn (0)) + · · · + log(gn (k0 + 1)) + 2 · log(gn (k0 ))) .                (155)
+Obviously, due to (152), the inequality
+                                                           Z k+1
+                                        log(gn (k)) >              log(gn (x)) dx                             (156)
+                                                             k
+
+holds for all k = 0, . . . , k0 − 1. Next, due to (89) and (151), we have
+                                               1p
+                                          k0 <     χn − c2 < k0 + 2.                                          (157)
+                                               2
+Therefore,
+                                                                      Z √χn −c2 /2
+                                                                              
+                                   p               
+                                     1
+             2 · log(gn (k0 )) >       χn − c2 − k0 · log(gn (k0 )) >              gn (x) dx.                 (158)
+                                     2                                 k0
+
+Thus, the inequality (150) follows from the combination of (155), (156) and (158).                               
+
+
+                                                              21
+4.2    Principal Result
+In this subsection, we use the tools developed in Section 4.1 to derive an upper bound on |λn |.
+Theorem 23 is the principal result of this subsection.
+   In the following theorem, we simplify the integral in (150) by expressing it in terms of elliptic
+functions.
+Theorem 19. Suppose that χn > c2 , and that the real-valued function gn is defined via the formula
+(149) in Theorem 18. Then,
+               Z √χn −c2 /2
+                       
+                                                        Z π/2
+                                              χn − c2             sin2 (θ) dθ
+                            log (gn (x)) dx =         ·       q                     .         (159)
+                0                                c       0
+                                                                         2
+                                                               1 + χn −c · cos2 (θ)
+                                                                               c2
+
+Moreover,
+            Z √χn −c2 /2
+                                               "          s             !         s             !#
+                                            √                   χn − c2                 χn − c2
+                           log (gn (x)) dx = χn · F                           −E                       ,   (160)
+             0                                                    χn                      χn
+
+where F, E are the elliptic integrals defined, respectively, via the formula (39), (40) in Section 2.3.
+Proof. We use (149) and perform the change of variable
+                                                  2x
+                                             s= p                                                          (161)
+                                                 χn − c2
+in the left-hand side of (159) to obtain
+  Z √χn −c2 /2
+                                                                       !!
+                                    p             Z 1           p
+                                      χn − c2                  s χn − c2
+                 log (gn (x)) dx =              ·     log gn                  ds
+    0                                   2          0                 2
+                                           Z 1
+                                    V ·c                                                        
+                                               log 1 + 2V 2 (1 − s2 ) + (1 + 2V 2 (1 − s2 ))2 − 1 ds
+                                                                       p
+                                 =       ·
+                                     2      0
+                                           Z 1
+                                    V ·c
+                                 =       ·     log(h(s)) ds,                                       (162)
+                                     2      0
+
+where V is defined via the formula
+                                                   r
+                                                       χn − c2
+                                             V =               ,                                           (163)
+                                                         c2
+and the function h : [0, 1] → R is defined via the formula
+                                                     p
+                          h(s) = 1 + 2V 2 (1 − s2 ) + (1 + 2V 2 (1 − s2 ))2 − 1.                           (164)
+We observe that log(h(1)) = 0 and h(0) is finite, hence
+             Z 1                                    Z 1                   Z 1
+                                                        s · h′ (s)            s · h′ (s)
+                 log(h(s)) ds = [s · log(h(s))]10 −                ds = −                ds.               (165)
+              0                                      0    h(s)             0    h(s)
+Then, we differentiate h(s), defined via (164), with respect to s to obtain
+                            2 · (1 + 2V 2 (1 − s2 )) · (−2V 2 · 2s)
+       h′ (s) = −2V 2 · 2s +      p
+                                 2 (1 + 2V 2 (1 − s2 ))2 − 1
+                                                           !
+                                    1 + 2V 2 (1 − s2 )                   4V 2 s · h(s)
+             = −4V 2 s ·   1+ p                               = −p                            .            (166)
+                                 (1 + 2V 2 (1 − s2 ))2 − 1          (1 + 2V 2 (1 − s2 ))2 − 1
+
+
+                                                    22
+We substitute (166) into (165) to obtain
+                   Z 1                 Z 1
+                                                     4V 2 s2
+                       log(h(s)) ds =      p                             ds
+                     0                  0   (1 + 2V 2 (1 − s2 ))2 − 1
+                                       Z 1
+                                                       4V 2 s2
+                                    =      p                                  ds
+                                        0   4V 4 (1 − s2 )2 + 4V 2 (1 − s2 )
+                                           Z 1
+                                                               s2
+                                    = 2V ·     p                                  ds.             (167)
+                                            0     (1 − s2 ) · (1 + V 2 (1 − s2 ))
+We perform the change of variable
+                                      s = sin(θ),   ds = cos(θ) · dθ,                             (168)
+to transform (167) into
+                           Z 1                          Z π/2
+                                                                   sin2 (θ) dθ
+                                 log(h(s)) ds = 2V ·            p                   .             (169)
+                            0                            0       1 + V 2 · cos2 (θ)
+We combine (162), (163) and (169) to obtain the formula (159). Next, we express (159) in terms of
+the elliptic integrals F (k) and E(k), defined, respectively, via (39),(40) in Section 2.3. We note that
+                               Z π/2                               Z π/2
+                                      k 2 sin2 t dt       k2                  sin2 t dt
+               F (k) − E(k) =        p                = √        ·       q                    .    (170)
+                                0      1 − k 2 sin2 t    1 − k2 0                k2
+                                                                           1 + 1−k         2
+                                                                                    2 · cos t
+
+
+
+Motivated by (159) and (170), we solve the equation
+                                              k2     χn − c2
+                                                   =                                              (171)
+                                            1 − k2     c2
+in the unknown k, to obtain the solution
+                                                    s
+                                                        χn − c2
+                                             k=                 .                                 (172)
+                                                          χn
+
+We plug (172) into (170) to conclude that
+               s          !       s         !            Z π/2
+                  χn − c2           χn − c2    χn − c2             sin2 (θ) dθ
+           F                −E                = √      ·                               .          (173)
+                    χn                 χn       c χn
+                                                               q
+                                                                          2
+                                                          0     1 + χnc−c
+                                                                       2    · cos2 (θ)
+
+We combine (159) with (173) to obtain (160).                                                          
+   In the following theorem, we establish a relationship between the eigenvalue λn of the integral
+                                                              (n,c)
+operator Fc defined via (4) in Section 2.1, and the value of a1     defined via (67) in Theorem 10.
+Theorem 20. Suppose that n > 0 is an even integer number, and that λn is the nth eigenvalue of
+the integral operator Fc defined via (4) in Section 2.1. In other words, λn satisfies the identity (5)
+                                                    (n,c) (n,c)
+in Section 2.1. Suppose also, that the sequence a1 , a2 , . . . is defined via the formula (67) in
+Theorem 10. Then,
+                                                 √
+                                                   2      (n,c)
+                                         λn =          ·a       ,                                (174)
+                                               ψn (0) 1
+where ψn is the nth prolate spheroidal wave function defined in Section 2.1.
+
+                                                       23
+Proof. Due to (5) in Section 2.1, (26), (28) in Section 2.2, and (67) above,
+                              Z 1              √ Z 1                       √     (n,c)
+                λn · ψn (0) =      ψn (t) dt = 2 ·     ψn (t) · P0 (t) dt = 2 · a1 ,          (175)
+                                    −1                      −1
+
+from which (174) readily follows.                                                                 
+   In the following theorem, we provide an upper bound on |λn | in terms of the elements of the
+sequence {γk }, defined via (109) in Theorem 15 above.
+Theorem 21. Suppose that n > 0 is an even integer number, and that λn is the nth eigenvalue
+of the integral operator Fc , defined via (4), (5) in Section 2.1. Suppose also that χn > c2 , and
+that k0 > 2, where k0 is defined via (89) in Theorem 13. Suppose furthermore, that the sequence
+γ1 , γ2 , . . . is defined via (109) in Theorem 15. Then,
+                                              2      (4k0 − 4) · (4k0 − 6) 1
+                                 |λn | <           ·             √        ·  .                (176)
+                                           |ψn (0)| (4k0 − 1) · 4k0 − 3 γk0
+
+
+Proof. We combine the inequality (77) in Theorem 11 with the identity (174) in Theorem 20, to
+conclude that
+                        √                  √
+                           2       (n,c)      2    1       2         1      1
+              |λn | =          · |a1 | <         ·    =          ·√       ·    ,        (177)
+                      |ψn (0)|           |ψn (0)| αk0   |ψn (0)|   4k0 − 3 βk0
+where βk0 is defined via (81) in Theorem 12. Next, we combine (98), (102) in Theorem 14, (108),(109)
+in Theorem 15, and (177) to obtain the inequality
+                                   2         1        1        2         1         1
+                   |λn | <               ·√        ·      ≤          ·√        · new
+                                |ψn (0)|   4k0 − 3   β k0   |ψn (0)|   4k0 − 3  β k0
+                                   2      (4k0 − 4) · (4k0 − 6) 1
+                            =           ·             √        ·  ,                           (178)
+                                |ψn (0)| (4k0 − 1) · 4k0 − 3 γk0
+which is precisely (176).                                                                         
+   The following theorem is a direct consequence of Theorems 6, 7 in Section 2.1.
+                                                                                    √
+Theorem 22. Suppose that n > 0 is a positive integer. Suppose also that n > (2c/π) + 42. Then,
+                                                  χn > c2 + 42,                               (179)
+and also,
+                                                     k0 > 2,                                  (180)
+where k0 is defined via (89) in Theorem 13.
+Proof. Suppose that c2 < χn ≥ c2 + 2. Then, due to Theorem 6,
+
+                            2 1 χ n − c 2 t2         2 1
+                              Z r                     Z r
+                                                                   42
+                       n <                     dt ≤         c2 +        dt
+                            π 0       1 − t2         π 0         1 − t2
+                                  √       Z 1
+                            2c 2 42             dt      2c √
+                         <     +        ·     √       =    + 42.                              (181)
+                            π      π       0   1 − t2    π
+We combine (181) with Theorem 6 to conclude (179). Then, we combine (179) with (89) in Theo-
+rem 13 to conclude (180).                                                                 
+
+                                                       24
+   The following theorem is the principal result of this paper.
+Theorem 23. Suppose that n > 0 is an even integer number, and that λn is the nth eigenvalue of
+the integral operator Fc , defined via (4), (5) in Section 2.1. Suppose also that χn > c2 + 42. Suppose
+furthermore that the real number ζ(n, c) is defined via the formula
+                                                         4
+                                 7        4 · χn /c2 − 2             1
+                   ζ(n, c) =            ·           2
+                                                            · χn − c2 4 ·
+                              2|ψn (0)|   3 · χn /c − 1
+                                  "                s          !       s           !!#
+                                      √               χn − c2             χn − c2
+                              exp − χn · F                      −E                    ,           (182)
+                                                         χn                 χn
+where F, E are the complete elliptic integrals, defined, respectively, via (39), (40) in Section 2.3.
+Then,
+                                                |λn | < ζ(n, c).                                          (183)
+
+
+Proof. We start with observing that, due to (89) in Theorem 13 and (157) in Theorem 18, the
+inequality χn > c2 + 42 implies that k0 > 2. We combine (109) in Theorem 15, (128), (129) in
+Theorem 16 and (138) in Theorem 17, to obtain the inequality
+                γ3       γk −1   γk0
+     γk0 = γ2 ·    ···· · 0 ·          = γ2 · r2 · · · · · rk0 −2 · rk0 −1 > γ2 · (σ2 · · · · · σk0 −1 ) . (184)
+                γ2       γk0 −2 γk0 −1
+Next, we substitute (149), (150) in Theorem 18 into (184) to obtain the inequality
+                                          Z √χn −c2 /2
+                                                    
+                                   −4
+                γk0 > γ2 · (gn (0)) · exp                 log (gn (x)) dx
+                                            0
+                                                         √        
+                                            −4             χn −c2 /2
+                                    χn − c2
+                                                     Z
+                     > γ2 · 2 + 4 ·             · exp                  log (gn (x)) dx,                   (185)
+                                      c2               0
+
+where the function gn is defined via (149). Then, we plug the identity (159) from Theorem 19 into
+(185) to obtain the inequality
+                                                                                       
+                                   2 4                 2 Z π/2         2
+                                   
+         1     1            χn − c              χn − c              sin (θ) dθ
+            <     · 2+4·               · exp −         ·                               .  (186)
+        γk0    γ2              c2                  c
+                                                               q
+                                                                          2
+                                                          0     1 + χnc−c
+                                                                        2   · cos 2 (θ)
+
+
+We use (89) in Theorem 13 and (157) in Theorem 18 to conclude that
+                       (4k0 − 4) · (4k0 − 6) p        √            1
+                                   √        < 4k0 < 2 · χn − c2 4 .                                       (187)
+                       (4k0 − 1) · 4k0 − 3
+We substitute (187) into (176) in Theorem 21 to obtain
+                                         2      √           1 1
+                              |λn | <          · 2 · χn − c2 4 ·     .                                    (188)
+                                      |ψn (0)|                   γk0
+Finally, we combine (111) in Theorem 15 with (186), (188) to obtain
+                                                               −1                  4
+                                                      χn − c2                χn − c2
+                                              
+                         7               1
+              |λn | <           · χn − c2 4 · 2 + 3 ·             ·  2 + 4 ·            ·
+                      2|ψn (0)|                           c2                   c2
+                                                                  
+                                      2 Z π/2         2
+                              χ n − c              sin  (θ) dθ
+                      exp −           ·                           .                                     (189)
+                                  c
+                                              q
+                                         0          χn −c2     2
+                                                1 + c2 · cos (θ)
+
+
+                                                      25
+Eventually, we combine (160) in Theorem 19 with (189) to conclude (183).                               
+Remark 5. The assumptions of Theorem 23 are satisfied if n is an even integer such that
+                                               2c √
+                                           n>    + 42,                                              (190)
+                                               π
+since, in this case, χn > c2 + 42 due to Theorem 22.
+
+4.3     Weaker But Simpler Bounds
+In this subsection, we use Theorem 23 in Section 4.2 to derive several upper bounds on |λn |. While
+these bounds are weaker than ζ(n, c) defined via (182), they have a simpler form, and contribute to a
+better understanding of the decay of |λn |. The principal results of this subsection are Theorems 24,
+32.
+    In the following theorem, we simplify the inequality (183). The resulting upper bound on |λn | is
+weaker than (183) in Theorem 23, but has a simpler form.
+Theorem 24. Suppose that n > 0 is an even integer number, and that λn is the nth eigenvalue of
+the integral operator Fc , defined via (4), (5) in Section 2.1. Suppose also that χn > c2 + 42. Suppose
+furthermore that the real number η(n, c) is defined via the formula
+                                                         7
+                                              π · (n + 1)
+                   η(n, c) = 18 · (n + 1) ·                  ·
+                                                   c
+                                  "                 s          !     s          !!#
+                                     √                χn − c2           χn − c2
+                              exp − χn · F                       −E                  ,            (191)
+                                                         χn                χn
+where F, E are the complete elliptic integrals, defined, respectively, via (39), (40) in Section 2.3.
+Then,
+                                                |λn | < η(n, c).                                    (192)
+
+
+Proof. We use (23) in Theorem 8 in Section 2.1 to conclude that
+                                   1/4              π           1/2
+                           χn − c2      < (χn )1/4 <     · (n + 1)       .                          (193)
+                                                       2
+Next,
+                                    −1                    4
+                            χn − c2                 χn − c2
+                                                                        χ 3
+                                                                    7       n
+                      2+3·               ·  2 + 4 ·            <  2   ·        .                    (194)
+                               c2                     c2                   c2
+We combine Theorems 8, 9 in Section 2.1 with (193), (194) to conclude that
+                                         4
+                1         4 · χn /c2 − 2                  1
+                                                         2 4
+                      ·                     ·   χ n −  c     <
+            |ψn (0)|      3 · χn /c2 − 1
+                                                4
+                       χn 4 · χn /c2 − 2
+                r                             
+                                                              1
+            4· n· 2 ·                   2
+                                                  · χn − c2 4 <
+                        c      3 · χn /c − 1
+                                    χ 7/2  π                1/2
+                                       n
+            4 · (n + 1)1/2 · 27 ·              ·     · (n  + 1)      <
+                                     c2            2
+                r                                     7 r                                 7
+                   π 7                   π · (n + 1)             π               π · (n + 1)
+            4·       · 2 · (n + 1) ·                       =       · (n + 1) ·                  .   (195)
+                   2                          2c                 2                    c
+We conclude by combining the inequality (183) in Theorem 23 above with the inequality (195). 
+
+                                                       26
+   Both ζ(n, c) and η(n, c), defined, respectively, via (182) in Theorem 23 and (191) in Theorem 24,
+contain an exponential term (of the form exp [. . . ]). This term depends on band limit c and prolate
+index n through χn , which somewhat obscures its behavior. The following theorem eliminates this
+inconvenience.
+
+Theorem 25. Suppose that n is a positive integer such that n > 2c/π, and that the function
+f : [0, ∞) → R is defined via the formula
+                                                        Z π/2 p
+                                    f (x) = −1 +               x + cos2 (θ) dθ.                                        (196)
+                                                         0
+
+Suppose also that the function H : [0, ∞) → R is the inverse of f , in other words,
+                                               Z π/2 p
+                           y = f (H(y)) = −1 +        H(y) + cos2 (θ) dθ,                                              (197)
+                                                             0
+
+for all y ≥ 0. Suppose furthermore that the function G : [0, ∞) → R is defined via the formula
+                                                   Z π/2
+                                                               sin2 (θ) dθ
+                                        G(x) =               p                 ,                                       (198)
+                                                    0         1 + x · cos2 (θ)
+
+for all x ≥ 0. Then,
+
+                                           χn − c2
+                                  nπ                                                  
+                                                                        nπ     3π
+                             H        −1 <         <H                       −1+             .                          (199)
+                                   2c        c2                          2c     2c
+
+Moreover,
+                                                                     s             !            s             !!
+             nπ                nπ            √                     χn − c2                    χn − c2
+     c·H           −1 ·G H              −1        < χn ·         F                     −E                          ,   (200)
+             2c                   2c                                       χn                         χn
+
+where F, E are the complete elliptic integrals, defined, respectively, via (39), (40) in Section 2.3.
+
+Proof. Obviously, the function f , defined via (196), is monotonically increasing. Moreover, f (0) = 0,
+and
+
+                                                   lim f (x) = ∞.                                                      (201)
+                                                   x→∞
+
+Therefore, H(y) is well defined for all y ≥ 0, and, moreover, the function H is monotonically
+increasing. This observation, combined with Theorems 6, 7 in Section 2.1, implies the inequality
+(199).
+    Next, the right hand side of (200) increases with χn , due to the combination of (39), (40) in
+Section 2.3. This observation, combined with (173) in the proof of Theorem 19, (198) and (199),
+implies (200).                                                                                  
+
+Remark 6. The functions H, G, defined, respectively, via (197), (198) above, do not depend on
+either of n, c, χn . Therefore, while the right-hand side of (200) does depend on χn , its left-hand side
+depends solely on c and n.
+
+   In the following theorem, we provide simple lower and upper bounds on H, defined via (197) in
+Theorem 25.
+
+                                                             27
+Theorem 26. Suppose that the function H : [0, ∞) → R is defined via (197) in Theorem 25. Then,
+
+                                                          s2
+                                                  
+                                       s       16e
+                               s≤H       · log       ≤s+ ,                               (202)
+                                       4        s          5
+
+for all real 0 ≤ s ≤ 5.
+
+Proof. The proof of (202) is straightforward, elementary, and is based on (41) in Section 2.3; it will
+be omitted. The correctness of Theorem 26 has been validated numerically.                          
+
+Remark 7. The relative error of the lower bound in (202) is below 0.07 for all 0 ≤ s ≤ 5; moreover,
+this error grows roughly linearly with s to ≈ 0.0085 for all 0 ≤ s ≤ 0.1. The relative error of the
+upper bound in (202) grows roughly linearly with s to 1, for all 0 ≤ s ≤ 5.
+
+   In the following theorem, we provide simple lower and upper bound on G, defined via (198) in
+Theorem 25.
+
+Theorem 27. Suppose that the function G : [0, ∞) → R is defined via (198) in Theorem 25. Then,
+                                 π        x            π
+                                    · 1−       ≤ G(x) ≤ ,                                (203)
+                                 4         8             4
+for all real 0 ≤ x ≤ 5.
+
+Proof. The proof of (203) is elementary, and is based on the fact that, for all x > 0,
+
+                                                x 3x2
+                                                                 
+                                       π                       3
+                               G(x) = · 1 − +            + O(x ) ,                              (204)
+                                       4         8   64
+
+where G is defined via (198) in Theorem 25. The correctness of Theorem 27 has been validated
+numerically.                                                                              
+
+Remark 8. The relative errors of both lower and upper bounds in (203) are below 0.6 for all
+0 ≤ x ≤ 5; moreover, these errors are below 0.01 for all 0 ≤ x ≤ 0.1, and grow roughly linearly with
+x in this interval.
+
+   The following theorem is in the spirit of Theorems 26, 27.
+
+Theorem 28. Suppose that the functions H, G : [0, ∞) → R are defined, respectively, via (197),
+(198) in Theorem 25. Then,
+                                                               
+                π         s      s       16e         s       16e     π
+                  ·s· 1−      ≤H     · log       ·G H    · log        ≤ · s,             (205)
+                4          8       4        s          4        s       4
+
+for all real 0 ≤ s ≤ 5. Moreover, the function x → H(x) · G(H(x)) is monotonically increasing.
+
+Proof. The proof is based on Theorems 26, 27, is elementary, and will be omitted. The correctness
+of Theorem 28 has been validated numerically.                                                  
+
+Remark 9. The relative errors of both lower and upper bounds in (205) are below 0.5 for all
+0 ≤ s ≤ 5. Moreover, these errors are below 0.01 for all 0 ≤ s ≤ 0.1, and grow roughly linearly with
+s in this interval.
+
+   The following theorem is a consequence of Theorems 25 - 28.
+
+                                                 28
+Theorem 29. Suppose that δ > 0 is a real number, such that
+                                                       5π
+                                            0<δ<          · c.                                         (206)
+                                                        4
+Suppose also that n is a positive integer, such that
+                                                                       
+                                       2    2                    4eπc
+                                    n > c + 2 · δ · log                     .                          (207)
+                                       π   π                       δ
+
+Then,
+                                                 s               !              s             !!
+                                                      χn − c2                       χn − c2
+                           
+                         δ     √
+                  δ· 1−       < χn ·         F                       −E                            ,   (208)
+                        2πc                             χn                            χn
+
+where F, E are the complete elliptic integrals, defined, respectively, via (39), (40) in Section 2.3.
+Proof. It follows from (207) that
+                                                                       
+                                    πn      1 δ                  4eπc
+                                       − 1 > · · log                        .                          (209)
+                                    2c      π c                    δ
+
+We define the real number s > 0 via the formula
+                                                      4δ
+                                                 s=      ,                                             (210)
+                                                      πc
+and observe that 0 < s < 5 due to (206). We combine (209), (210) and Theorem 28 to obtain
+              nπ            nπ       
+          H        −1 ·G H           −1 >
+              2c                2c
+                                                             
+               1 δ          4eπc               1 δ          4eπc
+          H       · · log            ·G H         · · log             =
+               π c            δ                π c            δ
+                                                                           
+               s       16e            s       16e       π          s δ       δ
+          H      · log       ·G H       · log        ≥ ·s· 1−          = · 1−       .     (211)
+               4        s             4        s        4           8   c     2πc
+
+We substitute (211) into the inequality (200) in Theorem 25 to obtain (208).                              
+   In the following theorem, we derive an upper bound on χn in terms of n.
+Theorem 30. Suppose that n is a positive integer, and that
+                                                            
+                          2c         2c     2           4eπc
+                             <n≤        + 2 · δ · log          − 3,                                    (212)
+                          π           π    π              δ
+
+for some
+                                                       5π
+                                            3<δ<          · c.                                         (213)
+                                                        4
+Then,
+
+                                           χn − c2  8 δ
+                                                   < · .                                               (214)
+                                             c2     π c
+
+
+
+                                                  29
+Proof. We combine (212), (213), (199) in Theorem 25 and (202) in Theorem 26 to obtain
+
+      χn − c2
+                                                                          
+                    (n + 3) · π             1 δ         4eπc      4δ         4 δ
+              < H               − 1   < H     · · log           <    ·  1 +    ·   ,              (215)
+        c2              2c                  π c           δ       πc        5π c
+
+which implies (214). We also observe that (213) implies
+                                                     
+                                   2             4eπc
+                                     · δ · log          − 3 > 1.3,                                (216)
+                                  π2               δ
+
+and hence there exist integer n that satisfy (212).                                                  
+    In the following theorem, we derive an upper bound on the non-exponential term of ζ(n, c),
+defined via (182) in Theorem 23.
+Theorem 31. Suppose that n is an even positive integer, and that
+                                                           
+                          2c        2      2           4eπc
+                             < n ≤ c + 2 · δ · log            − 3,                                (217)
+                          π         π     π              δ
+for some
+                                                                  5π
+                                             3<δ<                    · c.                         (218)
+                                                                   4
+Then,
+                                                     4
+                            7       4 · χn /c2 − 2                 1
+                                                                  2 4
+                                  ·                     · χ n − c     <
+                        2|ψn (0)|   3 · χn /c2 − 1
+                                1/4                                     3
+                        448     8                             6δ         16δ
+                             ·          · δ 1/4 · c3/4 · 1 +        · 1+        .                 (219)
+                         3      π                             πc         πc
+
+
+Proof. We use (214) to obtain
+                                  4                           4
+                   4 · χn /c2 − 2      4 4 · (χn − c2 )/c2 + 2
+                                     = ·
+                   3 · χn /c2 − 1      3 4 · (χn − c2 )/c2 + 8/3
+                                                            3                3
+                                                   χn − c2
+                                                                     
+                                       32                         32      16δ
+                                     <    · 1+2·               <     · 1+        .                (220)
+                                        3              c2         3       πc
+
+Then, we use (214) to obtain
+                                                                             41
+                                                  2
+                                                       14             8δc
+                                         χn − c              <                      .             (221)
+                                                                        π
+Next, we combine Theorems 7, 9 in Section 2.1 with Theorem 30 to obtain
+                                                                    3
+                    √
+                          r                                                               
+           1                  χn   4          3   4 3            8δ 4          1         6δ
+                 <4· n·          <   · (χ n ) 4
+                                                <   · c 2 ·  1 +       < 4 · c 2 ·   1 +      .   (222)
+        |ψn (0)|              c2   c              c              πc                      πc
+
+We combine (220), (221), (222) to obtain (219).                                                      
+   The following theorem is one of the principal results of this subsection.
+
+                                                             30
+Theorem 32. Suppose that c > 0 is a real number, and that
+                                                c > 22.                                      (223)
+Suppose also that δ > 0 is a real number, and that
+                                                       πc
+                                             3<δ<         .                                  (224)
+                                                       16
+Suppose, in addition, that n is a positive integer, and that
+                                                                
+                                         2c    2            4eπc
+                                   n≥       + 2 · δ · log          .                         (225)
+                                         π     π              δ
+Suppose furthermore that the real number ξ(n, c) is defined via the formula
+                                                                 
+                                                                δ
+                             ξ(n, c) = 7056 · c · exp −δ 1 −          .                      (226)
+                                                               2πc
+Then,
+                                            |λn | < ξ(n, c).                                 (227)
+
+
+Proof. Suppose first that n is an even positive integer of the form
+                                                               
+                                       2c     2            4eπc
+                                   n=     + 2 · δ · log           ,                          (228)
+                                        π    π               δ
+for some 3 < δ < πc/16 (in other words, (225) is an identity rather than an inequality). We observe
+that, for all real t > 0,
+                                                             
+                                d            4eπc             4πc
+                                   t · log           = log          .                         (229)
+                               dt              t               t
+We combine (223) with (229) to obtain
+                                                                                 
+          2      πc          4eπc                4eπc       2  πc               4πc
+             ·      · log            − δ · log           > 2·        − δ · log
+         π2      8          (πc)/8                 δ       π      8              (πc)/8
+                                                            c
+                                                         >    · log (32) > 3.                (230)
+                                                           8π
+Therefore, it is possible to choose a real number δ̂ such that
+                                                      πc
+                                             3 < δ̂ <    ,                                   (231)
+                                                       8
+and also
+                                                                    
+                                     2c   2                   4eπc
+                                  n=    + 2 · δ̂ · log                   − 3.                (232)
+                                     π   π                     δ̂
+Due to the combination of (231), (232) and Theorem 31,
+                                                   4
+                           7        4 · χn /c2 − 2              1
+                                  ·           2
+                                                       · χn − c2 4 <
+                        2|ψn (0)|   3 · χn /c − 1
+                                                            3
+                        448 1/4 3/4             6           32
+                            ·c ·c · 1+                · 1+         = 7056 · c.               (233)
+                         3                      8           16
+
+
+                                                  31
+We observe that the right-hand side of (233) is independent of δ̂. We combine this observation with
+(233), (183) in Theorem 23, (208) in Theorem 29, and the fact that |λn | decrease monotonically
+with n, to obtain (227).                                                                         
+Definition 1 (δ(n)). Suppose that n is a positive integer, and that
+                                             2c     10c
+                                                <n<     .                                         (234)
+                                             π       π
+We define the real number δ(n) to be the solution of the equation
+                                                              
+                                      2c     2            4eπc
+                                 n=      + 2 · X · log           ,                                (235)
+                                       π    π              X
+
+in the unknown X in the interval 0 < X < 4πc.
+Remark 10. We observe that the right-hand side of (235) is an increasing function of X in the
+range 0 < X < 4πc, due to (229) in the proof of Theorem 32. Therefore, δ(n) is well defined.
+   In the following theorem, we derive yet another upper bound on |λn |.
+                                                                                      √
+Theorem 33. Suppose that n > 0 is a positive integer, and that n > (2c/π) +            42. Suppose also
+that the real number xn is defined via the formula
+                                                        χn
+                                               xn =        .                                      (236)
+                                                        c2
+Then,
+                                                    3                     
+                             3           1         1           π   √      1
+        |λn | < 1195 · c · (xn ) · (xn − 1) · xn −
+                             4           4              · exp − ·   xn − √    ·c .                (237)
+                                                   2           4          xn
+
+
+Proof. We use (236) to obtain
+                                4                          4                3
+                 4 · χn /c2 − 2     4 4 · (χn − c2 )/c2 + 2
+                                                                      
+                                                                 256        1
+                                   = ·                         <     · xn −      .                (238)
+                 3 · χn /c2 − 1     3 4 · (χn − c2 )/c2 + 8/3     3         2
+
+Next, we combine Theorems 7, 9 in Section 2.1 and (236) to obtain
+
+                                   √                          √
+                                        r
+                        1                  χn    4       3               3
+                              <4· n·           < · (χn ) 4 = 4 c · (xn ) 4 .                      (239)
+                     |ψn (0)|              c2    c
+
+We combine (238) and (239) to obtain
+                       1                  4                                             3
+            7 χn − c2 4     4 · χn /c2 − 2
+                                                                                  
+                                                                 3            1         1
+              ·           ·                   < 1195 · c · (xn ) 4 · (x
+                                                                       n − 1) 4 ·  xn −      .    (240)
+            2   |ψn (0)|    3 · χn /c2 − 1                                              2
+
+Also, we combine (39), (40) in Section 2.3 with (170) in the proof of Theorem 19 to obtain
+                            s          !       s          !
+                               χn − c2            χn − c2      π χn − c2
+                        F                −E                 > ·           .                       (241)
+                                 χn                 χn         4      χn
+
+We combine (236), (240), (241) with Theorems 22, 23 to obtain (237).                                 
+
+                                                   32
+   We conclude this subsection with the following theorem, that describes the behavior of the upper
+bound ν(n, c) on |λn | (see (16), (17) in Theorem 4 in Section 2.1).
+Theorem 34. Suppose that n is a positive integer, and that
+                                                      
+                                 2              2    1
+                                   ·c≤n<          +      · c.                                   (242)
+                                 π              π   25
+Then,
+                                                         1
+                                            ν(n, c) ≥       ,                                   (243)
+                                                         10
+where ν(n, c) is defined via (16) in Theorem 4 in Section 2.1.
+Proof. We carry out elementary calculations, involving the well known Stirling’s approximation
+formula for the gamma function, to obtain the inequality
+                                             √
+                                               2πn  ce n
+                                   ν(n, c) ≥        ·      ,                             (244)
+                                             2n + 1    4n
+for all n in the range (242). We use (244) to obtain the inequality
+                                        1           ce 
+                    log(ν(n, c)) > log √ + n · log
+                                         n           4n
+                                                                                
+                                     1            2     1                  e/4
+                                 > − · log(c) +     +       · c · log
+                                     2            π    25               2/π + 1/25
+                                     1           c      1
+                                 > − · log(c) +      ≥ · (1 − log(250)) > −2.27.                (245)
+                                     2          500     2
+The inequality (243) follows directly from (245).                                                   
+Remark 11. According to Theorem 34, the inequality (17) of Theorem 4 in Section 2.1 is trivial
+for all integer n < (2/π + 1/25) · c. In particular, for such n this inequality is useless.
+
+
+5     Numerical Results
+In this section, we illustrate the results of Section 4 via several numerical experiments. All the
+calculations were implemented in FORTRAN (the Lahey 95 LINUX version) and were carried out
+in either double or quadruple precision. The algorithms for the evaluation of PSWFs and the
+associated eigenvalues were based on [3].
+
+5.1     Experiment 1
+In this experiment, we demonstrate the behavior of |λn | with 0 ≤ n ≤ 2c/π, for several values of
+band limit c > 0.
+    For each of five different values of c = 10, 102, 103 , 104 , 105 , we do the following. First, we
+evaluate |λn | numerically, for n = 0, n ≈ c/π and n ≈ 2c/π. For each such n, we also compute
+µn = (c/2π) · |λn |. Here λn is the nth eigenvalue of the integral operator Fc , and µn is the nth
+eigenvalue of the integral operator Qc (see (4), (5), (6), (10) in Section 2.1).
+    In addition, we fix c = 100, and evaluate |λn | numerically, for all integer n between 0 and 2c/π.
+    The results of Experiment 1 are shown in Table 1 and Figure 1. Table 1 has the following
+structure. The first two columns contain the band limit c and the prolate index n, respectively. The
+
+                                                    33
+                                                                                          2
+                    c       n        (πn)/(2c)         |λn |        µn = (c/2π) · |λn |
+                   10        0     0.00000E+00     0.79267E+00        0.10000E+01
+                   10        3     0.47124E+00     0.79183E+00        0.99790E+00
+                   10        6     0.94248E+00     0.52588E+00        0.44015E+00
+                  100        0     0.00000E+00     0.25066E+00        0.10000E+01
+                  100       31     0.48695E+00     0.25066E+00        0.10000E+01
+                  100       63     0.98960E+00     0.18589E+00        0.54997E+00
+                 1000        0     0.00000E+00     0.79267E-01        0.10000E+01
+                 1000      318     0.49951E+00     0.79267E-01        0.10000E+01
+                 1000      636     0.99903E+00     0.57640E-01        0.52877E+00
+                 10000       0     0.00000E+00     0.25066E-01        0.10000E+01
+                 10000    3183     0.49998E+00     0.25066E-01        0.10000E+01
+                 10000    6366     0.99997E+00     0.16644E-01        0.44088E+00
+                100000       0     0.00000E+00     0.79267E-02        0.10000E+01
+                100000    31830    0.49998E+00     0.79267E-02        0.10000E+01
+                100000    63661    0.99998E+00     0.60295E-02        0.57861E+00
+
+
+      Table 1: Behavior of |λn | for 0 ≤ n ≤ 2c/π. Corresponds to Experiment 1 in Section 5.
+
+
+third column contains the ratio of n to 2c/π. The fourth column contains |λn |. The last column
+contains the eigenvalue µn of the integral operator Qc (see (6), (10) in Section 2.1).
+    In Figure 1, we plot |λn |, corresponding to c = 100, as a function of n, for integer n between 0
+and 2c/π.
+    Several observations can be made from Table 1 and Figure 1.
+
+  1. For all five values of band limit c, the eigenvalue µn decreases from ≈ 1 to ≈ 1/2, as n
+     increases from 0 top (2c/π). In other words, the first 2c/π eigenvalues λn have roughly the
+     same magnitude ≈ 2π/c. This observation confirms Theorem 2 in Section 2.1.
+
+  2. Due to Theorem 6 in Section 2.1, the bounds on the decay of |λn |, established in Section 4, hold
+     for n greater than 2c/π only (see also Remark 5). Thus, Table 1 indicates that this assumption
+     on n is, in fact, not restrictive, since the first 2c/π eigenvalues have roughly constant magnitude.
+
+
+5.2    Experiment 2
+In this experiment, we illustrate Theorem 23. As opposed to Experiment 1, we demonstrate the
+behavior of |λn | for n > 2c/π.
+    In this experiment, we proceed as follows. First, we pick band limit c > 0 (more or less arbitrar-
+ily). Then, for each even integer n in the range
+
+                                      2c     2c
+                                         <n<    + 20 · log(c),                                     (246)
+                                      π      π
+we evaluate numerically |λn | and ζ(n, c), where the latter is defined via (182) in Theorem 23.
+    The results of Experiment 2 are shown in Figures 2 - 4 and in Table 2. In Figures 2 - 4, we plot
+both log(|λn |) and log(ζ(n, c)) as functions of n. Each of Figures 2 - 4 corresponds to a certain value
+of band limit (c = 10, 102 , 103 , 104 , 105 , respectively).
+    Table 2 has the following structure. The first column contains precision ε = e−50 , e−100 . The
+second column contains band limit c. The third column contains the integer n1 (ε), defined via the
+
+                                                  34
+              ε      c     n1 (ε)         ∆1 (ε)         n2 (ε)         ∆2 (ε)    n2 (ε) − n1 (ε)
+            e−50    10       32       0.11133E+02          38       0.13738E+02          6
+            e−50    102     107       0.94107E+01         114       0.10931E+02          7
+            e−50    103     700       0.91752E+01         712       0.10912E+02         12
+            e−50    104    6450       0.90987E+01        6468       0.11053E+02         18
+            e−50    105    63765      0.89484E+01        63792      0.11294E+02         27
+            e−100   10       50       0.18950E+02          56       0.21556E+02          6
+            e−100   102     138       0.16142E+02         146       0.17879E+02          8
+            e−100   103     753       0.16848E+02         764       0.18440E+02         11
+            e−100   104    6526       0.17350E+02        6542       0.19087E+02         16
+            e−100   105    63864      0.17547E+02        63890      0.19806E+02         26
+
+
+          Table 2: Illustration of Theorem 23. Corresponds to Experiment 2 in Section 5.
+
+
+formula
+
+                                    n1 (ε) = min {k > 2c/π : |λk | < ε} .                           (247)
+                                              k
+
+In other words, n1 (ε) is the integer satisfying the inequality
+
+                                          |λn1 (ε)−1 | > ε > |λn1 (ε) |.                            (248)
+
+The fourth column contains ∆1 (ε), defined to be the difference between n1 (ε) and 2c/π, scaled by
+log(c). In other words,
+                                                      n1 (ε) − 2c/π
+                                          ∆1 (ε) =                  .                               (249)
+                                                          log(c)
+The fifth column contains the even integer n2 (ε), defined via the formula
+
+                          n2 (ε) = min {k > 2c/π : k is even, |ζ(k, c)| < ε} .                      (250)
+                                      k
+
+In other words, n2 (ε) is the even integer satisfying the inequality
+
+                                    |ζ(n2 (ε) − 2, c)| > ε > |ζ(n2 (ε), c)|.                        (251)
+
+The sixth column contains ∆2 (ε), defined to be the difference between n2 (ε) and 2c/π, scaled by
+log(c). In other words,
+                                                      n2 (ε) − 2c/π
+                                          ∆2 (ε) =                  .                               (252)
+                                                          log(c)
+The last column contains the difference between n2 (ε) and n1 (ε).
+   Several observations can be made from Figures 2 - 4 and Table 2.
+
+  1. In all figures, |λn | < ζ(n, c), as expected, which confirms Theorem 23.
+  2. For each c, both |λn | and ζ(n, c) decay roughly exponentially fast with n.
+  3. For each c, both |λn | and ζ(n, c) decrease to roughly e−125 , as n increases from 2c/π to
+     2c/π + 20 · log(c). In particular,
+
+                                              λ2c/π+20·log(c) ≈ e−125 ,                             (253)
+
+
+                                                       35
+      for c = 10, 102 , 103 , 104 , 105 . The fact that the right-hand side of (253) is the same for all c is
+      somewhat surprising. However, this is not coincidental, as will be illustrated in Experiment 3
+      below.
+  4. For c = 102 , 103 , 104 , 105 , it suffices to take n ≈ 2c/π + 9 · log(c) to ensure that |λn | ≈ e−50
+     (see third column in Table 2). In addition, it suffices to take n ≈ 2c/π + 17 · log(c) to ensure
+     that |λn | ≈ e−100 . In other words,
+                                                                   
+                                                  2c               1
+                                        n1 (ε) ≈     + 0.17 · log     · log(c),                      (254)
+                                                  π                ε
+      where n1 (ε) is defined via (247) above (see also (253)).
+  5. For c = 102 , 103 , 104 , 105 , it suffices to take n ≈ 2c/π + 11 · log(c) to ensure that ζ(n, c) ≈ e−50
+     (see fifth column in Table 2). In addition, it suffices to take n ≈ 2c/π + 19 · log(c) to ensure
+     that ζ(n, c) ≈ e−100 . In other words,
+                                                                   
+                                                   2c              1
+                                         n2 (ε) ≈     + 0.2 · log     · log(c),                         (255)
+                                                    π              ε
+      where n2 (ε) is defined via (250) above (see also (253), (254)).
+  6. The difference n2 (ε) − n1 (ε) is roughly independent of ε, and grows only slowly as c increases
+     (see last column of Table 2). In other words, suppose that one needs to determine n such that
+     |λk | < e−50 for all k ≥ n. Due to (247), n1 (e−50 ) would be the minimal such n. On the other
+     hand, n = n2 (e−50 ) is only larger by 6 for c = 10 and by 27 for c = 105 .
+
+5.3    Experiment 3
+In this experiment, we illustrate Theorem 32. We proceed as follows. First, we pick band limit c > 0
+(more or less arbitrarily). Then, we define the positive integer nmax to be the minimal even integer
+such that
+                                                     
+                            2c     2             4eπc      2c
+                    nmax >     + 2 · 150 · log          ≈     + 30.4 · log(0.23 · c).          (256)
+                             π    π               150       π
+Then, for each positive even integer n in the range
+                                              2c
+                                                 < n < nmax ,                                          (257)
+                                              π
+we evaluate the following quantities:
+   • the eigenvalue λn of the operator Fc (see (4), (5) in Section 2.1);
+   • δ(n) of Definition 1 in Section 4.3;
+   • ζ(n, c), defined via (182) in Theorem 23 in Section 4.2;
+   • ξ(n, c), defined via (226) in Theorem 32 in Section 4.3.
+The results of Experiment 3 are shown in Figures 5(a), 5(b), that correspond, respectively, to band
+limit c = 104 and c = 105 . In each of Figures 5(a), 5(b), we plot log(|λn |), −δ(n), log(ζ(n, c)) and
+log(ξ(n, c)) as functions of n.
+    Several observations can be made from Figures 5(a), 5(b), and from more detailed experiments
+by the author.
+
+                                                     36
+  1. In both figures,
+
+                              log(|λn |) < −δ(n) < log(ζ(n, c)) < log(ξ(n, c)),                  (258)
+
+     for all n. This observation confirms both Theorem 23 of Section 4.2 and Theorem 32 of
+     Section 4.3. Also, ξ(n, c) is weaker than ζ(n, c) as an upper bound on |λn |, as expected.
+  2. All the four functions, plotted in Figures 5(a), 5(b), decay roughly exponentially with n.
+     Moreover,
+                                                      r
+                                                        2π
+                                     log(|λn |) ≈ log      − δ(n),                        (259)
+                                                         c
+     in correspondence with Theorem 5 in Section 2.1. In particular, even the weakest bound ξ(n, c)
+     correctly captures the exponential decay of |λn |. On the other hand, ξ(n, c) overestimates |λn |
+     by a roughly constant factor of order c3/2 (see also Section 3.2).
+
+
+References
+ [1] Yoel Shkolnisky, Mark Tygert, Vladimir Rokhlin, Approximation of Bandlimited
+     Functions, Appl. Comput. Harmon. Anal. 21, No. 3, 413-420 (2006).
+ [2] Andreas Glaser, Xiangtao Liu, Vladimir Rokhlin, A fast algorithm for the calculation
+     of the roots of special functions, SIAM J. Sci. Comput. 29, No. 4, 1420-1438 (2007).
+ [3] H. Xiao, V. Rokhlin, N. Yarvin, Prolate spheroidal wavefunctions, quadrature and interpo-
+     lation, Inverse Probl. 17, No.4, 805-838 (2001).
+ [4] Vladimir Rokhlin, Hong Xiao, Approximate Formulae for Certain Prolate Spheroidal Wave
+     Functions Valid for Large Value of Both Order and Band Limit, Appl. Comput. Harmon. Anal.
+     22, No. 1, 105-123 (2007).
+ [5] Hong Xiao, Vladimir Rokhlin, High-frequency asymptotic expansions for certain prolate
+     spheroidal wave functions, J. Fourier Anal. Appl. 9, No. 6, 575-596 (2003).
+ [6] H. J. Landau, H. Widom, Eigenvalue distribution of time and frequency limiting, J. Math.
+     Anal. Appl. 77, 469-481 (1980).
+ [7] I.S. Gradshteyn, I.M. Ryzhik, Table of Integrals, Series, and Products, Seventh Edition,
+     Elsevier Inc., 2007.
+ [8] D. Slepian, H. O. Pollak, Prolate spheroidal wave functions, Fourier analysis, and uncer-
+     tainty - I, Bell System Tech. J. 40, 43-63 (1961).
+ [9] H. J. Landau, H. O. Pollak, Prolate spheroidal wave functions, Fourier analysis, and un-
+     certainty - II, Bell System Tech. J. 40, 65-84 (1961).
+[10] H. J. Landau, H. O. Pollak, Prolate spheroidal wave functions, Fourier analysis, and un-
+     certainty - III: the dimension of space of essentially time- and band-limited signals, Bell System
+     Tech. J. 41, 1295-1336 (1962).
+[11] D. Slepian, H. O. Pollak, Prolate spheroidal wave functions, Fourier analysis, and uncer-
+     tainty - IV: extensions to many dimensions, generalized prolate spheroidal wave functions, Bell
+     Syst. Tech. J. November 3009-57 (1964).
+
+                                                  37
+[12] D. Slepian, Prolate spheroidal wave functions, Fourier analysis, and uncertainty - V: the
+     discrete case, Bell. System Techn. J. 57, 1371-1430 (1978).
+[13] D. Slepian, Some comments on Fourier analysis, uncertainty, and modeling, SIAM Rev. 25,
+     379-393 (1983).
+[14] D. Slepian, Some asymptotic expansions for prolate spheroidal wave functions, J. Math. Phys.
+     44 99-140 (1965).
+[15] D. Slepian, E. Sonnenblick, Eigenvalues associated with prolate spheroidal wave functions
+     of zero order, Bell Syst. Tech. J. 1745-1759, 1965.
+[16] P. M. Morse, H. Feshbach, Methods of Theoretical Physics, New York McGraw-Hill, 1953.
+[17] W. H. J. Fuchs, On the eigenvalues of an integral equation arising in the theory of band-limited
+     signals, J. Math. Anal. Appl. 9 317-330 (1964).
+[18] F. A. Grünbaum, L. Longhi, M. Perlstadt, Differential operators commuting with finite
+     convolution integral operators: some non-Abelian examples, SIAM J. Appl. Math. 42, 941-955
+     (1982).
+[19] C. Flammer, Spheroidal Wave Functions, Stanford, CA: Stanford University Press, 1956.
+[20] A. Papoulis, Signal Analysis, Mc-Graw Hill, Inc., 1977.
+[21] M. Abramowitz, I. A. Stegun, Handbook of Mathematical Functions with Formulas, Graphs
+     and Mathematical Tables, Dover Publications, 1964.
+[22] A. Osipov, Non-asymptotic Analysis of Bandlimited Functions, Yale CS Technical Report
+     #1449, 2012.
+[23] A. Osipov, Certain inequalities involving prolate spheroidal wave functions and associated
+     quantities, arXiv:1206.4056v1, 2012.
+
+
+
+
+                                                 38
+                                          c = 100
+               0.35
+                                                                  | λn |
+                 0.3
+
+
+               0.25
+
+
+                 0.2
+
+
+                    0               20               40               60
+                                              n
+
+Figure 1:    Behavior of |λn | for 0 < n < 2c/π, with c = 100. Corresponds to Experiment 1 in
+Section 5.
+
+
+
+                                           c = 10
+                   0                                       log|λn|
+
+                −25                                        log(ζ(n,c))
+
+
+                −50
+
+                −75
+
+              −100
+
+                        8         19         31           42         54
+                                             n
+
+  Figure 2: Illustration of Theorem 23 with c = 10. Corresponds to Experiment 2 in Section 5.
+
+
+
+                                              39
+                                  c = 100
+          0                                          log|λn|
+
+       −25                                           log(ζ(n,c))
+
+       −50
+
+       −75
+
+     −100
+
+     −125
+               64         87         110            133    156
+                                      n
+                                   (a) c = 100.
+
+
+                                  c = 103
+          0                                          log|λn|
+
+       −25                                           log(ζ(n,c))
+
+       −50
+
+       −75
+
+     −100
+
+     −125
+              638        672         707            741    776
+                                      n
+                                  (b) c = 1, 000.
+
+
+Figure 3: Illustration of Theorem 23. Corresponds to Experiment 2 in Section 5.
+
+
+
+
+                                        40
+                                  c = 104
+          0                                            log|λn|
+
+       −25                                             log(ζ(n,c))
+
+       −50
+
+       −75
+
+     −100
+
+              6368       6414       6460             6506   6552
+                                     n
+                                 (a) c = 10, 000.
+
+
+                                  c = 105
+          0                                            log|λn|
+
+       −25                                             log(ζ(n,c))
+
+       −50
+
+       −75
+
+     −100
+
+              63662 63719 63777 63834 63892
+                            n
+
+                                 (b) c = 100, 000.
+
+
+Figure 4: Illustration of Theorem 23. Corresponds to Experiment 2 in Section 5.
+
+
+
+
+                                        41
+                                  c = 104
+
+          0
+
+
+       −50
+                   log|λn|
+
+     −100          −δ(n)
+                   log(ζ(n,c))
+                   log(ξ(n,c))
+     −150
+         6374               6450              6526          6602
+                                       n
+                                 (a) c = 10, 000.
+
+
+                                  c = 105
+
+          0
+
+
+       −50
+                    log|λn|
+
+                    −δ(n)
+     −100
+                    log(ζ(n,c))
+                    log(ξ(n,c))
+     −150
+        63670              63768             63867         63966
+                                       n
+
+                                 (b) c = 100, 000.
+
+
+Figure 5: Illustration of Theorem 32. Corresponds to Experiment 3 in Section 5.
+
+
+
+
+                                        42
+

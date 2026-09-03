@@ -1,0 +1,3716 @@
+                                          ON GAUSSIANS, ZEROS, AND LINEAR
+                                           COMBINATIONS OF L - FUNCTIONS
+                                                  Part A: Entire Functions of Beurling-Selberg Type
+arXiv:1311.4862v1 [math.NT] 19 Nov 2013
+
+
+
+
+                                                            and Probability Distributions
+                                                                       D. A. HEJHAL1
+
+
+                                          This is the first of (what is projected to be) a short series of technical reports
+                                          aimed at articulating certain connections between the broad subject headings
+                                          of Gaussians, zeros, and linear combinations of L-functions within the setting
+                                          of analytic number theory.
+                                             In later installments, we shall find ourselves particularly interested in de-
+                                          veloping some techniques by means of which it becomes feasible to say some-
+                                          thing fairly precise (at least near Re(s) = 21 ) about both the asymptotic value
+                                          distribution and the distribution of zeros manifested by run-of-the-mill linear
+                                          combinations F (s) of the aforementioned sort. A large portion of our results
+                                          will have underpinnings that go back to work of Atle Selberg from the 1940s
+                                          and mid-’70s. See [Sel] for an updated perspective on part of this; also [BH].
+                                             To set the stage for these things, it is convenient to begin with several more
+                                          basic reports devoted to discussing some background material that will for the
+                                          most part be seen to either be standard - or else a natural variant of something
+                                          that is. Apart from two or three items of the latter type, any novelty in these
+                                          earlier installments will be confined solely to methodological matters.
+
+                                            §1. Some Interpolation Formulae and Related Heuristics
+
+                                          1.1. The traditional reference for entire functions of Beurling-Selberg type is
+                                          [Beu] coupled with [Sel2, pp. 213–218, 226]. In very loose terms, the central
+                                          issue here function-theoretically is as follows: Consider the real line R. Let
+                                          χE (x) denote the indicator function of set E and
+                                                                             (                )
+                                                                                0,      x=0
+                                                                   sgn(x) =                     .                   (1.1)
+                                                                                x/|x|, x 6= 0
+                                          Keeping ℓ ∈ Z+ , let m(x) be either sgn(x) or χ[0,ℓ] (x) . How does one construct
+                                          entire functions f (z) of exponential type at most 2π such that, along R, one
+                                             1
+                                               Part of the work in this paper was supported by a Bell Companies Fellowship at the
+                                          Institute for Advanced Study in Princeton, N.J.
+
+
+                                                                                    1
+2                         Gaussians, Zeros, and Linear Combinations                       [Part A]
+
+
+has
+
+(i)          f (x) ∈ R and f (x) ≧ m(x) ;
+
+and
+
+(ii)         lim |x|→∞ (f (x) − m(x)) = 0 ?
+
+In (ii), the faster the vanishing, the better. Can one rig things, for instance, so
+that one also has
+       Z ∞
+(iii)        |f (x) − m(x)|q dx < ∞ for every q ∈ [1, ∞) ?
+              −∞
+
+An L1 -norm of (something close to) minimal size would be especially desirable.
+   In §1, our goal will simply be to informally identify some natural candidates
+for f (z). Substantiation of any proposed f will be left for §2. 2
+
+1.2. To get started, we need a few basics. We’ll assume the standard L2 theory
+of Fourier transforms on R as being known. The prototypical formulae
+                                Z ∞
+                       fˆ(p) =        f (x)e−2πipx dx
+                                Z−∞
+                                  ∞
+                       f (x) =        fˆ(p)e2πipx dp
+                                 −∞
+                        Z ∞                 Z ∞
+                                    2
+                             |f (x)| dx =         |fˆ(p)|2 dp
+                                    −∞                  −∞
+                                  hf, gi = hfˆ, ĝi
+                                  (f ′ )∧ = 2πipfˆ(p)
+                                  (f ∗ g)∧ = fˆĝ
+
+are thus available as need be (in, for instance, Schwartz space S). Over and
+beyond this, one readily checks that
+                                                         1
+                                f (x) = g(λx) ⇒ fˆ(p) =     ĝ(p/λ)
+                                                        |λ|
+for λ 6= 0 and that
+                                                               r
+                                          −πax2             1 −πp2 /a
+                                f (x) = e         ⇒ fˆ(p) =    e
+                                                            a
+                                                         sin2 (πpb)
+                     f (x) = max{0, b − |x|} ⇒ fˆ(p) =
+                                                            π 2 p2
+                                                         sin(2πpc)
+                            f (x) = χ[−c,c](x) ⇒ fˆ(p) =
+                                                             πp
+                                                                 sin2 (πpc)
+                     f (x) = sgn(x)χ[−c,c] (x) ⇒ fˆ(p) = −2πip              .
+                                                                    π 2 p2
+      2
+          Note that the analogous constructions for f ≦ m and non-integral ℓ are also treated there.
+                Some Interpolation Formulae and Related Heuristics                              3
+
+
+   For test functions ϕ in C(R) ∩ L1 (R) whose “periodization”
+                                               ∞
+                                               X
+                                    Φ(x) ≡          ϕ(x + k)
+                                             k=−∞
+
+converges uniformly on [0, 1], one knows that the Poisson summation formula
+                                    ∞
+                                    X               ∞
+                                                    X
+                                        ϕ(k) =            ϕ̂(m)                             (1.2)
+                                 k=−∞             m=−∞
+
+holds anytime the right-hand series is convergent. Cf. [Z1, pp.68, 89(3.4)]; also
+[Gau, pp.88–89]. In particular, matters are readily seen to hold with absolute
+convergence throughout anytime ϕ is C 2 and ϕ(j) ∈ L1 (R) for 0 ≦ j ≦ 2. 3
+
+1.3. Another result that’s very familiar, albeit on a much deeper level, is
+the Paley-Wiener theorem, which characterizes L2 (R) functions obtained as
+restrictions of entire functions of exponential type. In this regard, cf. [Boa,
+p.103 (theorem 6.8.1)], [PaW, p.13 (note the typos in 6.10)], and [Z2, p.272
+(theorem 7.2)]. When the type is at most 2πα, the representation
+                                     Z α
+                             f (z) =     g(v)e2πivz dv                     (1.3)
+                                             −α
+
+holds with a unique g ∈ L2 [−α, α] which, in turn, satisfies
+                       Z α               Z ∞
+                            |g(v)|2 dv =     |f (x)|2 dx .
+                               −α                  −∞
+
+A simple application of Leibnitz’s rule then gives
+                                  Z α
+                      f (m) (z) =     (2πiv)m g(v)e2πivz dv                                 (1.4)
+                                          −α
+
+for every m ≧ 1 (the L2 norm of f (m) necessarily being finite in each case).
+   By applying Parseval’s equation to the Fourier series of (2πiv)m g(v) on
+[−α, α], one immediately sees that:
+             Z α                 ∞   k 2 Z ∞
+                         2     1 X
+                  |g(v)| dv =      f      =    |f (x)|2 dx ;                                (1.5)
+               −α             2α      2α    −∞
+                                      k=−∞
+     ∞
+   1 X        k 2 Z ∞                           Z ∞
+       f (m)       =    |f (m) (x)|2 dx ≦ (2πα)2m     |f (x)|2 dx . (1.6)
+  2α          2α     −∞                            −∞
+      k=−∞
+
+   3
+     At the other extreme, see [Kat, pp.130 (problem 15), 12(2.7), 125(1.10)] for a “mass
+redistribution style” construction of a continuous probability density g(t) on R whose Fourier
+transform ϕ belongs to C(R) ∩ L1 (R) but, for which, ϕ(n) = δn0 and g(n) = 0 hold at every
+n ∈ Z. Equation (1.2) clearly fails for the pair (ϕ, g). By either [Z1, p.12(6.2)] or [Kat, p.13],
+the periodizations of ϕ and g must sum to 0 and 1, respectively, almost everywhere. Compare
+[KL, p.306] and (overly-optimistic) problem 12 in [Fel2, p.648].
+4                      Gaussians, Zeros, and Linear Combinations         [Part A]
+
+
+Relations (1.5) and (1.6) continue to hold when k is replaced throughout by
+k + Θ (0 ≦ Θ < 1). At the same time, it pays to keep in mind that, by (1.4),
+
+                                                √       (2πα)m
+                                |f (m) (x)| ≦       2α √        kf k2        (1.7)
+                                                         1 + 2m
+
+holds for every x ∈ R and m ≧ 0.
+
+
+1.4. To develop an interpolation formula for f , one simply returns to (1.3)
+and substitutes the standard L2 Fourier expansion
+                                          ∞
+                                          X
+                                                    cn eπinv/α
+                                         n=−∞
+                         1
+of g(v).     Since cn = 2α f ( −n
+                               2α ), a quick calculation yields
+
+                                               ∞
+                                     sin(2παz) X (−1)k f (k/2α)
+                             f (z) =                                         (1.8)
+                                        2πα        z − k/2α
+                                                    k=−∞
+
+
+just as in [Boa, p.220 (11.5.8)]. Cf. also here [Z2, p.275 (theorem 7.19)] and
+[Lev, p.150 (theorem 1)]. Expansion (1.8) is often referred to as the “cardinal
+series” or sampling theorem.
+   By passing to (f (z) − f (0))/z,4 one can now accommodate milder growth
+restrictions on |f (x)|. References [Boa] and [Z2] (loc. cit.) provide an immedi-
+ate elaboration on this point; one finds with very little effort that
+
+                         ′   sin(2παz) sin(2παz) n f (0) o
+               f (z) = f (0)          +                                      (1.9)
+                                2πα       2πα         z
+                           sin(2παz) X          k h     1   1 i
+                       +               (−1)k f              +
+                              2πα               2α z − k/2α k/2α
+                                         k6=0
+
+
+anytime |f (x)|/(1 + |x|) ∈ L2 (R). The classical relation
+
+                                π    1 X       1   1
+                                    = + (−1)k     +                        (1.10)
+                             sin πw  w         w−k k
+                                                k6=0
+
+
+turns out to be exactly what is needed to handle the terms arising from f (0)
+in (f (z) − f (0))/z. (Notice that (1.10) is just (1.9) with f ≡ 1.)
+   Formula (1.9) has antecedents going back many years. In chronological order,
+see [Po1, §5], [Val, especially p.204 (9)(11) with µ = 1], [PSz, problem III.165],
+[Har, theorem 10], and [Hig1, §1.4 (minus the typo in (10))] for an interesting
+historical perspective on this. Note that (1.8) follows from (1.9) simply by
+applying the latter to the product function zf (z).
+    4
+        which again has exponential type at most 2πα
+             Some Interpolation Formulae and Related Heuristics                      5
+
+
+1.5. Looked at geometrically, the set of nodes in formula (1.8) can be said to
+     1
+be 2α  Z in an obvious sense. If additional information in the form of values of
+  ′
+f happens to be available at the nodes, an elementary reshuffling in (1.3) can
+be used to “cut the nodal set down” to just α1 Z .
+    To see this, we follow Vaaler [Vaa, p.195 (3.5)(3.6)]. (Compare [Sel2, p.214
+(lines 18–19)].) Clearly:
+                          Z α                              Z α
+                f (z) =         g(v)e2πivz dv + e−2πiαz          g(t − α)e2πitz dt
+                           0                                0
+                k       Z α
+            f         =         [g(v) + g(v − α)]e2πivk/α dv ;
+                 α         0
+                          Z α                         Z α
+           1 ′                    2πivz
+              f (z) =      vg(v)e       dv + e −2πiαz
+                                                          (t − α)g(t − α)e2πitz dt
+          2πi          0                               0
+                      Z α
+         1 ′ k 
+            f       =     [vg(v) + (v − α)g(v − α)]e2πivk/α dv .
+        2πi     α      0
+
+Accordingly, as L2 Fourier series on [0, α],
+                                           X 1 k 
+                           g(v) + g(v − α) ∼  f      e−2πikv/α
+                                             α α
+                                           k
+                                           X 1       k
+                 vg(v) + (v − α)g(v − α) ∼        f′    e−2πikv/α .
+                                             2πiα     α
+                                                       k
+
+Denoting the left-hand expressions by G1 and G2 , respectively, we can now
+write
+                                              
+                                              v     1
+                                     g(v) =       1−
+                                                 G1 + G2
+                                              α      α
+                                          v     1
+                                g(v − α) = G1 − G2
+                                          α     α
+and, in this way, obtain
+                         v  X 1  k  −2πikv/α 1 X 1      k
+        g(v) ∼       1−          f     e        +        f′     e−2πikv/α
+                          α     α α               α 2πiα     α
+                                k                               k
+
+                   v X 1  k  −2πikv/α 1 X 1      k
+        g(v − α) ∼      f     e        −        f′    e−2πikv/α
+                   α   α α               α 2πiα     α
+                           k                               k
+
+in a natural L2 sense over [0, α]. By substituting back, we immediately get
+                     X 1 kZ α           v  −2πivk/α 2πivz
+             f (z) =      f            1−     e        e       dv
+                        α α 0              α
+                      k
+                               X 1 kZ α t
+                     +e −2πiαz
+                                     f           e−2πitk/α e2πitz dt
+                                   α α 0 α
+                                k
+                        X 1        kZ α 1
+                     +          f′            e−2πivk/α e2πivz dv
+                           2πiα     α 0 α
+                        k
+                               X (−1)  k  Z α 1
+                     + e−2πiαz          f′            e−2πitk/α e2πitz dt .
+                                   2πiα      α 0 α
+                                       k
+6                   Gaussians, Zeros, and Linear Combinations               [Part A]
+
+
+Writing t = α + u in the second and fourth sums produces:
+                    X 1 k Z α             v  −2πivk/α 2πivz
+           f (z) =        f            1−       e         e      dv
+                        α α 0               α
+                     k
+                      X 1 k Z 0              u  −2πiuk/α 2πiuz
+                   +         f            1+       e         e      du
+                          α α −α                α
+                       k
+                      X 1            Z α
+                                   ′ k
+                   +             f            e−2πivk/α e2πivz dv
+                          2πiα2      α 0
+                       k
+                      X (−1)  k  Z 0
+                   +             f′            e−2πiuk/α e2πiuz du
+                          2πiα2      α −α
+                       k
+                    X  k  Z α  α − |v| 
+                 =      f                       e2πiv(z−k/α) dv
+                           α −α         α2
+                     k
+                      X  k  Z α sgn(v)
+                   +      f′                   e2πiv(z−k/α) dv
+                               α −α 2πiα2
+                       k
+                    X  k  sin(παp) 2
+                 =      f
+                           α        παp
+                     k
+                      X k             sin(παp) 2
+                   +      f′     (−p)
+                               α            παp
+                             k
+                                  {with p ≡ αk − z }
+                        X  k  sin παz 2
+                    =       f               (z − k/α)−2
+                               α    πα
+                          k
+                           X k              sin παz 2
+                        +     f′   (z − k/α)              (z − k/α)−2 .
+                                 α                πα
+                             k
+
+
+    In other words, the alternate representation
+                    sin παz 2 n X
+                                  ∞
+                                                 f (k/α)
+                                                            ∞
+                                                            X f ′ (k/α) o
+         f (z) =                                          +                   (1.11)
+                        πα                     (z − k/α)2     z − k/α
+                                      k=−∞                  k=−∞
+
+is available to us anytime (1.3) holds. Compare: (1.8), (1.5), (1.6). One readily
+checks that the right-hand expression behaves like
+                   k            k         k           k 2
+               f          + f′            z−      + O(1) z −                 (1.11′ )
+                    α             α            α             α
+near each nodal point k/α. (See [Hig2, pp. 97–100] for an interesting higher-
+order generalization; also p. 58 in the second volume of this work.)
+
+1.6. Just as with (1.8), once (1.11) is known, one can pass to (f (z) − f (0))/z
+to widen the class of admissible f . (See [Vaa].) For present purposes, however,
+this augmentation is unnecessary and a simple limit trick suffices to give us the
+heuristic formats that we seek (à la §1.1) in both cases of m.
+               Some Interpolation Formulae and Related Heuristics                   7
+
+
+   One reasons as follows. In view of (1.11) and (1.11′ ) [with α = 1] and the
+fact that ℓ ∈ Z+ , the interpolatory format
+                sin πz 2 n X
+                             ℓ
+                                      1       A    B o
+    Fℓ (z) =                                +   +      (A > 0, B > 0)          (1.12)
+                  π                (z − k)2   z   ℓ−z
+                             k=0
+
+clearly occupies a distinguished position vis à vis χ[0,ℓ](x) — at least for suitably
+controlled A and B.
+   For the L1 norm of Fℓ (x) − χ[0,ℓ] (x) to be finite, it is necessary that B − A
+reduce to zero. In considering (1.12) as a format, we therefore tacitly assume
+this to be so.
+   For bounded A, simple use of the identity
+                                    sin πx 2 X
+                                               ∞
+                                                          1
+                             1=                                                (1.13)
+                                       π          n=−∞
+                                                       (x − n)2
+
+shows that kFℓ − χ[0,ℓ] kp = O(ℓ1/p ) for each p > 1. (The contribution from
+|x| ≧ 3ℓ is trivially seen to be o(1).) Consideration of the elementary calculus
+estimate
+                          X∞
+                                  1       1
+                                      2
+                                        <        (ω > 0)
+                          n=1
+                              (n + ω)     ω
+quickly demonstrates that the earlier exponent 1/p is replaceable by 0.
+  In light of this, it now makes eminently good sense to try to approximate
+sgn(x) by letting ℓ → ∞ in the combination 2(Fℓ (x) − 12 ). Insofar as the
+choice of A can be kept bounded, the term with B automatically drops out
+on compact subsets of R (in this connection, see also (1.7)). The expression
+                                    ∞                 
+                  ∗          sin πz 2 X        1       A
+                F (z) = 2                           +       −1
+                               π           (z − k)2    z
+                                                  k=0
+
+thus takes on a special significance in regard to sgn(x). Notice incidentally that
+F ∗ (0) = 1 (not 0); also that F ∗ (x) = O(1).
+   By virtue of (1.13), F ∗ (z) can be written in three different ways:
+                  sin πz 2 n X
+                               ∞
+                                         1       X    1       2A o
+           ∗
+         F =                                   −            +      ;          (1.14a )
+                      π               (z − k)2     (z − k)2    z
+                                k=0                 k<0
+                           sin πz 2 n X∞
+                                              1       2A o
+         F ∗ = −1 +                    2            +      ;                  (1.14b )
+                              π            (z − k)2    z
+                                           k=0
+                       sin πz 2 n   X    1       2A o
+         F∗ = 1 +                  −2            +      .                     (1.14c )
+                           π            (z − k)2    z
+                                            k<0
+
+   One wants the L1        norm of F ∗ (x) − sgn(x) to be finite.   Since the earlier
+calculus estimate can be strengthened to read
+                                     X∞
+                             1   1          1      1
+                               − 2 <            2
+                                                  < ,                          (1.15)
+                             ω ω     n=1
+                                         (n + ω)   ω
+8                 Gaussians, Zeros, and Linear Combinations                       [Part A]
+
+
+equations (1.14b ) and (1.14c ) immediately show that there is precisely one ad-
+missible value of A; viz., A = 1.
+  We’ll subsequently consider (1.14) only under this restriction. The obvious
+hope here, of course, is that, when A = 1, the norms kFℓ − χ[0,ℓ] kp will remain
+uniformly bounded for all p ≧ 1 as ℓ → ∞.
+  With this, our informal determination of plausible f (z) - formats is complete.
+
+Remark 1.7. Though, in this section, the role played by equation (1.9) has
+mainly been motivational, in other approximation settings (less “constrained”
+as to f ′ ), matters change and (1.9), rather than (1.11), becomes the “ansatz-
+of-choice.” See [Vaa, p.187 ff] – or [Ess, p.16 ff] – for a good example.
+
+        §2. Entire Functions of Beurling-Selberg Type
+
+2.1. After the introductory discussion given in §1, it is relatively pedestrian
+to go back and place matters on a rigorous footing. For this purpose, we first
+recall (1.11′ ) and then write
+                        sin πz 2 n X
+                                     ∞
+                                               1
+                                                      ∞
+                                                      X      1     2o
+             B(z) =                                 −            +    ;              (2.1)
+                           π                (z − k)2 n=1 (z + n)2 z
+                                     k=0
+                        sin πz 2 n X∞
+                                               1       X    ∞
+                                                             1     2o
+              b(z) =                                 −           +    ;              (2.2)
+                           π                (z − k)2     (z + n)2 z
+                                     k=1                   n=0
+                        sin πz 2 n X∞
+                                               1           X∞
+                                                                     1     2o
+            W (z) =                                  −                   +    ;      (2.3)
+                           π                (z − k)2             (z + n)2 z
+                                      k=1                  n=1
+                        sin πz 2        Z 1
+            K(z) =                   =          (1 − |v|)e2πivz dv .                 (2.4)
+                          πz               −1
+
+One immediately checks that B(z) corresponds to F ∗ (z) (à la (1.14)), b(z) =
+−B(−z), W = B − K = b + K, and that the function 2H(x) appearing in [Beu,
+p.371 (bot)] is simply b(x/2π). According to Selberg, the functions B and H
+were first considered by Beurling around 1940 or so ; cf. [Sel2, pp.226 (lines
+10–17), 218 (20.17)].
+   Motivated by equations (20.19), (20.2), and (20.12) in [Sel2, pp.214–218], we
+also define
+                                       1
+                               Sℓ (z) =  [B(z) + B(ℓ − z)]                           (2.5)
+                                       2
+                                       1
+                               σℓ (z) = [b(z) + b(ℓ − z)]                            (2.6)
+                                       2
+
+for any positive real ℓ. When ℓ is integral, one immediately checks that Sℓ (z)
+reduces to Fℓ (z) (cf. (1.12)) with B = A = 1. In a similar way, σℓ (z) is seen to
+reduce to
+
+                     sin πz 2 n X
+                                  ℓ−1
+                                              1      1   1 o
+                                                   +   +     .
+                          π                (z − k)2 z ℓ − z
+                                     k=1
+                         Entire Functions of Beurling-Selberg Type                9
+
+
+These reductions and the discussion in the first part of §1.6 make it plausible
+at least that one will have
+
+                                 σℓ (x) ≦ χ[0,ℓ] (x) ≦ Sℓ (x)
+
+at every x ∈ R. (Compare [Sel2, p.217 (lines 13, 3, 10)].) For later use, notice
+too that 0 ≦ K(x) ≦ 1.
+
+Theorem 2.2. The functions B, b, W are entire and satisfy the following basic
+properties for real x:
+(a)    B(x) = W (x) + K(x), b(x) = W (x) − K(x) ;
+(b)    W (x) + W (−x) = 0, B(x) + B(−x) = 2K(x) ;
+(c)                                        / Z) ;
+       b(x) ≦ sgn(x) ≦ B(x) (strictly if x ∈
+(d)    W (x) ∈ [1 − K(x), 1] if x > 0 ;
+(e)    W (x) ∈ [−1, −1 + K(x)] if x < 0 ;
+(f )   |b(x) − sgn(x)| ≦ 2K(x) , |B(x) − sgn(x)| ≦ 2K(x) ;
+       R∞                        R∞
+(g)      −∞ (sgn(x) − b(x)) dx = −∞ (B(x) − sgn(x)) dx = 1 .
+For z ∈ C, the magnitudes of the numbers |B(z)|, |b(z)|, and |W (z)| are at most
+O(1) exp(2π| Im(z)|).
+
+Proof. Assertions (a) and (b) are trivial; (c) is nearly so upon utilizing relations
+(1.14) and (1.15). To verify (d), one needs to exploit a refinement of (1.15);
+viz.,
+                                     X∞
+                        1     1               1        1
+                          − 2 <                    2
+                                                     <    .
+                        ω 2ω             (k + ω)       ω
+                                           k=1
+
+The left-hand portion of this is immediately recognized as a standard conse-
+quence of the Euler-Maclaurin summation formula with f (t) = (t + ω)−2 . Cf.
+[Ste, pp.124(bot), 132(9)(10), 133(lines 6–20)] with m = 2τ = 2. (Alternatively:
+see [Jor, pp.8(bot), 254(2), 255(6)(7), 261(4)] and [Malm, pp.58(8), 69(47)].)
+   Assertions (e) and (f) follow from (d) by means of (b) and (a), respectively.
+   To address (g), one simply notes that:
+               Z 0                        Z ∞
+                         (B(x) + 1)dx =            (B(−y) + 1)dy
+                    −∞                        0
+                                          Z ∞
+                                      =            (2K(y) − B(y) + 1)dy
+                                          Z0 ∞               Z ∞
+                                      =             K(y)dy −     (B(y) − 1)dy ;
+                                              −∞               0
+           Z                              Z
+                   (sgn(x) − b(x))dx =            (sgn(−y) − b(−y))dy
+               R                          ZR
+                                      =           (B(y) − sgn(y))dy .
+                                              R
+10                         Gaussians, Zeros, and Linear Combinations                [Part A]
+
+
+  It remains to control things for z ∈ C. For this, it is enough to look at
+|W (z)| and, then, only over {Re(z) ≧ 0} ∩ {|z| ≧ 21 }. By virtue of (1.13),
+
+                                 sin πz 2 h 1     ∞
+                                                    X     1     1i
+                   1 − W (z) = 2                  +           −    .                    (2.7)
+                                     π       2z 2     (z + n)2 z
+                                                         n=1
+
+To estimate the bracketed term, one can either use Euler-Maclaurin with f (t) =
+(t + z)−2 and a suitably big m = 2τ or else Stirling’s formula coupled with the
+fact ([Erd, p.15 (2)]) that
+                                                  X ∞
+                                  d2                    1
+                                       log Γ(z) =            .
+                                  dz 2              (z + n)2
+                                                   n=0
+
+The bracket is quickly seen to be O(|z|−3 ) and we are done. 
+
+     The foregoing ideas are readily combined with a little calculation to yield
+                                                                               
+                                 sin πx 2 h X
+                                               N
+                                                 2B            i                
+                       
+                                                    2k                         
+                                                                                
+                       
+                                                       + RN (x)   , x>0        
+                                                                                
+                       
+                                    π            x2k+1                         
+                                                                                
+                                            k=1
+         1 − W (x) =                                                                ,   (2.8)
+                       
+                            h                                  i            
+                                                                             
+                       
+                                         X
+                                          ∞
+                                                                             
+                                                                             
+                       
+                        K(x)  1 − 2x + 2   (−1)n
+                                                  ζ(n)(n − 1)xn
+                                                                 , 0 ≦ x < 1 
+                                                                             
+                                                                            
+                                           n=2
+
+
+wherein Bν are the standard Bernoulli numbers ([Jor, Ste]), N ≧ 0, and the
+remainder term RN (x) satisfies
+
+                           RN (x) = 2θB2N +2 x−2N −3 with 0 < θ < 1 . 5
+
+  An analogous formula holds for 1 − W (z) on C ∩ {| Arg(z)| ≦ π − δ} modulo
+a minor revision in the part concerning θ. Cf. (2.7) and [Erd, p.47 (1)(7)].
+Restricting things to {|z| < 1} leads to the familiar expansion of csc2 (πz) near
+z = 0 (cf. [Erd, p.51 (3)]) and to the curious Taylor series development
+
+                                          X ∞
+                             W (z)
+                                   = 2z +   4m ζ(2m + 1)z 2m+1 .                        (2.9)
+                             K(z)
+                                           m=1
+
+Theorem 2.3. Given any ℓ > 0. The functions σℓ and Sℓ are entire, have
+magnitude O(1) exp(2π| Im(z)|), and satisfy the following basic properties for
+real x:
+(a)          σℓ (x) ≦ χ[0,ℓ] (x) ≦ Sℓ (x) ;
+(b)          max{χ[0,ℓ] (x) − σℓ (x), Sℓ (x) − χ[0,ℓ] (x)} ≦ K(x) + K(ℓ − x) ;
+             R∞                               R∞
+(c)           −∞ (χ [0,ℓ] (x) − σ ℓ (x)) dx =  −∞ (Sℓ (x) − χ[0,ℓ] (x)) dx = 1.
+
+     5
+    When combined with the elementary formula for W (u)−W (u+m) (m ≧ 1), this estimate
+leads to a very efficient way of computing W (x) at any x ∈ R. Compare [Ess, p.18 (24)], where
+the same idea is readily seen to work after breaking things up into partial fractions.
+                   Entire Functions of Beurling-Selberg Type                    11
+
+
+Proof. It suffices to verify (a) for x 6= 0 , ℓ. Under this restriction,
+
+                                    1
+                        χ[0,ℓ] (x) = [sgn(x) + sgn(ℓ − x)]                  (2.10)
+                                    2
+
+holds and the desired estimate follows immediately from Theorem 2.2(c). As-
+sertion (b) is proved similarly utilizing Theorem 2.2(f). Equation (c) follows
+directly from (2.10) and Theorem 2.2(g). 
+
+Theorem 2.4. The entire functions {B, b, W, Sℓ , σℓ } have type exactly equal to
+2π.
+
+Proof. Simply put z = β + iy (y large) in the asymptotic development for W (z)
+cited after (2.8) and keep β bounded; likewise for K(z). Any negative powers
+of ℓ − z are best re-expressed as power series in z −1 . (When ℓ ∈ 21 + Z, a slight
+anomaly occurs in the {σℓ , Sℓ } asymptotics.)
+   Application of the difference operator T [f ] ≡ f (z + 1) − f (z) immediately
+furnishes an alternate proof in the case of {B, b, W }. With a bit more effort,
+the same low-level approach also works for σℓ and Sℓ . 
+
+
+2.5. To streamline the development of the next two theorems, it is helpful
+to preface matters with a general result about entire functions of exponential
+type.
+
+Lemma 2.6. Given any positive p and τ . Let f (z) be an entire function of
+exponential type ≦ τ . Suppose that f (x) ∈ Lp (R). Then:
+(a)   f (x) ∈ Lq (R) for q ∈ [ p, ∞);
+      R∞              p
+                                    R
+                              pτ |y| ∞ |f (x)|p dx for y 6= 0 ;
+(b)    −∞ |f (x + iy)| dx ≦ e        −∞
+(c)   f (z) = o(1) on every horizontal strip {| Im(z)| ≦ ∆};
+      P∞                p
+(d)      n=1 |f (z + n)| converges uniformly on {0 ≦ Re(z) ≦ 1, | Im(z)| ≦ ∆};
+(e)   f (k) (x) ∈ Lp (R) for every k ≧ 1.
+
+Proof. Assertion (b) is a classical result of Plancherel and Pólya; see [PlP,
+pp.120–124] and [Lev, pp.50, 51, 38 (theorem 2)]. (The proof hinges on sub-
+harmonicity and some related Phragmén-Lindelöf type estimates.) Straightfor-
+ward use of the subharmonicity of |f |p then gives
+                                        nZ ∞             o1/p
+                        |f (z)| = O∆ (1)     |f (t)|p dt
+                                            −∞
+
+
+on every {| Im(z)| ≦ ∆}. Cf. [Lev, p.51 (bot)]. Assertion (c) follows by a minor
+adaptation of the same manipulation; cf. [Lev, p.138 (top)]. Assertion (a) is
+then obvious. By using a second (more astute!) adaptation, one obtains (d).
+Cf. [Lev, p.138 (bot)], [PlP, p.126 (top)], and [Boa, p.101 (lines 13–23)].
+  To establish (e), we follow [PlP, p.127]. It suffices to treat k = 1. For x0 ∈ R,
+12                      Gaussians, Zeros, and Linear Combinations                       [Part A]
+
+
+the function g(z) ≡ z −1 [f (x0 + z) − f (x0 )] is entire. Accordingly:
+                                Z 2π
+                             1
+                |g(0)|p ≦            |g(δeiφ )|p dφ
+                            2π 0
+                                  Z 2π
+                              1
+             |f ′ (x0 )|p ≦            |f (x0 + δeiφ ) − f (x0 )|p dφ
+                            2πδp 0
+                                {|u + v|p ≦ 2p max(|u|p , |v|p )}
+                                      Z 2π h                                  i
+                    ′       p     2p                     iφ p               p
+                 |f (x0 )| ≦                 |f (x 0 + δe  )| +   |f (x 0 )|    dφ
+                                2πδp 0
+                                      Z
+                                2p+1 2π
+                 |f ′ (x0 )|p ≦            |f (x0 + δeiφ )|p dφ .
+                                2πδp 0
+
+To conclude, one simply integrates over x0 and applies (b). Upon taking δ =
+τ −1 , we find that
+                    Z ∞                          Z ∞
+                        |f ′ (x)|p dx ≦ 2(2eτ )p     |f (x)|p dx .
+                          −∞                             −∞
+
+Compare [Boa, p.211 (bot)]. 
+
+Theorem 2.7. Let M+ be the set of all entire functions of exponential type
+≦ 2π which majorize sgn(x) along R. Let M− be the counterpart for f (x) ≦
+sgn(x). We then have
+                  Z                                         Z
+           inf          (f (x) − sgn(x))dx = 1 = inf              (sgn(x) − h(x))dx .
+          f ∈M+     R                                h∈M−     R
+
+
+The extremal functions are respectively B(z) and b(z); they are unique.
+
+Proof. Thanks to the transformation h(z) = −f (−z), it is enough to look at
+M+ . There is clearly no loss of generality if we also restrict ourselves to func-
+tions which satisfy f (x) − sgn(x) ∈ L1 (R). The differences f (z) − B(z) will
+then satisfy the hypotheses of Lemma 2.6 with (p, τ ) = (1, 2π). By combin-
+ing this information with the asymptotic of W (z) mentioned after (2.8), we
+immediately see that f (z) − B(z) = o(1) on every strip {| Im(z)| ≦ ∆} and
+that
+   Z ∞              Z ∞               Z ∞             Z ∞
+          ′                ′    ′              ′
+        |f (x)|dx ≦      |f − B |dx +       |K |dx +       |W ′ |dx < ∞ . (2.11)
+     −∞                    −∞                    −∞                 −∞
+
+Likewise for f (k) (x) with k ≧ 2.
+  We now follow Beurling ([Beu]) and look at matters in the framework of a
+judiciously chosen integration by parts. To set the stage, we first write
+                                                                                        1
+      θ(x) = f (x) − sgn(x), θ ∗ (x) = B(x) − sgn(x), k(x) = x − JxK −
+                                                                                        2
+
+and recall that
+                           Entire Functions of Beurling-Selberg Type                                   13
+
+
+                                           ∞
+                                           X sin(2πnx)
+                               k(x) = −                                   / Z.
+                                                                    for x ∈
+                                                         πn
+                                           n=1
+
+The decomposition θ = θ ∗ + (f − B) assures us that θ(x) = o(1). (Cf. Theorem
+2.2(f) à propos θ ∗ (x).)
+   Fix any y ∈/ Z. For large N and small ε, we then have:
+           Z N −ε                        Z N −ε                  h            iN −ε
+                    k(u)dθ(y − u) +               θ(y − u)dk(u) = k(u)θ(y − u)
+             y+ε                          y+ε                                                   y+ε
+           Z N −ε                                 Z N −ε
+                    k(u)f ′ (y − u)(−1)du +                    θ(y − u)du
+             y+ε                                     y+ε
+                                                     X                   h            iN −ε
+                                           =                   θ(y − n) + k(u)θ(y − u)      .
+                                                                                                 y+ε
+                                                y+ε<n<N
+
+Upon letting N → ∞,
+   Z ∞                    Z ∞                               X
+             ′
+ −      k(u)f (y − u)du +     θ(y − u)du = −k(y + ε)θ(−ε) +   θ(y − n) .
+          y+ε                            y+ε                                              n>y
+
+In a similar way,
+    Z y−ε                    Z y−ε                             X
+                ′
+  −        k(u)f (y − u)du +       θ(y − u)du = k(y − ε)θ(ε) +   θ(y − n) .
+           −∞                             −∞                                              n<y
+
+Accordingly:
+ Z                                              h            iε   ∞
+                                                                    X
+                 − k(u)f ′ (y − u) + θ(y − u) du = k(y − v)θ(v)   +   θ(y − n) .
+  |u−y|>ε                                                                            −ε
+                                                                                          −∞
+
+     By passing to the limit in ε, we conclude that
+                             ∞
+                             X                   Z                            Z
+                                                                ′
+                   2k(y) =        θ(y − n) +             k(u)f (y − u)du −           θ(v)dv .
+                             −∞                      R                           R
+
+
+(The format of the final integral clearly depends crucially on the fact that
+k′ (u) = 1 almost everywhere.)
+    Observe now that the Paley-Wiener theorem applies to f ′ (z). Cf. (1.3) with
+α = 1. Since f ′ (x) ∈ L2 ∩ L1 , its Fourier transform is continuous on all of R.
+As such, the “g ” in (1.3) necessarily vanishes at the endpoints.6 By virtue of
+the Poisson summation formula (1.2), we therefore have
+                             ∞
+                             X                           Z ∞
+                                     ′
+                                    f (x + m) =                f ′ (y)dy + 0 = 2 ,
+                           m=−∞                           −∞
+
+     6
+         Cf. [Z2, pp.249 (para 4), 250 (2.17)]; also [Z1, p.26 (11.6)].
+14                                  Gaussians, Zeros, and Linear Combinations                          [Part A]
+
+
+from which it follows that
+         Z                       Z 1     hX
+                                          ∞                i
+             k(u)f ′ (y − u)du =     k(u)   f ′ (y − u + m) du = 0 .
+                       R                               0         −∞
+
+In other words:
+                                               ∞
+                                               X                 Z
+                                     2k(y) =        θ(y − n) −                      / Z.
+                                                                         θ(v)dv , y ∈                      (2.12)
+                                               −∞                    R
+
+
+     Since θ(v) ≧ 0, making y → 0+ yields
+                                                                             Z
+                                     −1 = [non-negative number] −                    θ(v)dv ;
+                                                                                 R
+          R
+i.e.,         R θ(v)dv ≧ 1. Equality holds only if
+
+                                                       N
+                                                       X
+                                                lim         θ(y − n) = 0
+                                                y→0+
+                                                       −N
+
+for each large N . This necessitates that f (n) = B(n) for each fixed n. Since
+f (x) − sgn(x) = θ(x) ≧ 0, we would also need to have f ′ (n) = 0, n 6= 0, and
+f ′ (0) ≧ 0. Utilizing (1.11) 7 , we finally deduce that
+                                                                sin πz 2 c
+                                             f (z) − B(z) =
+                                                                         π       z
+
+with c = f ′ (0) − B ′ (0) = f ′ (0) − 2. Since f − B ∈ L1 (R), the constant c must
+be zero; hence f (z) ≡ B(z). 
+
+   Though Theorem 2.7 is due to Beurling, the following one is perhaps best
+attributed to Selberg. (Cf. [Sel2, p.226 (lines 5–10)].)
+
+Theorem 2.8. Let ℓ be a positive integer and M±
+                                              ℓ be the counterpart of M
+                                                                       ±
+
+for χ[0,ℓ] (x) . We then have
+                           Z                                                 Z
+                 inf               (f (x) − χ[0,ℓ] (x))dx = 1 = inf              (χ[0,ℓ] (x) − h(x))dx .
+               f ∈M+
+                   ℓ           R                                 h∈M−
+                                                                    ℓ        R
+
+
+The functions Sℓ (z) and σℓ (z) are extremal, but they are not unique.
+
+Proof. We begin with M+   ℓ and again restrict ourselves to f which also satisfy
+kf − χ[0,ℓ] k1 < ∞. Just as in the proof of Theorem 2.7 (but with f ′ ֒→ f ),
+                                               ∞
+                                               X
+                                                    f (x + m) = fˆ(0) + 0 .
+                                            m=−∞
+
+     7
+         or, even better, the {G1 , G2 } formalism in §1.5 for f (z) − B(z)
+                      Entire Functions of Beurling-Selberg Type                    15
+
+
+Putting x = 0 immediately gives fˆ(0) ≧ ℓ + 1. By Theorem 2.3(c), equality
+holds for f = Sℓ . Any other extremal function F necessarily satisfies
+
+                  F (m) = χ[0,ℓ] (m)    and        F ′ (k) = 0 if k 6= 0, ℓ .
+
+By (1.11) and F ∈ L1 , we then get
+                                                sin πz 2       ℓ
+                          F (z) = Sℓ (z) + η                          ,         (2.13)
+                                                   π         z(ℓ − z)
+wherein η = F ′ (0) − Sℓ′ (0) = F ′ (0) − 1. Nonuniqueness stems from the fact that
+the right-hand side of (2.13) continues to lie in M+     ℓ for any sufficiently small
+η ∈ R − {0}. Cf. [Sel2, p.217 (line 3)]. Observe too that, for ℓ ∈ Z ,
+     Z ∞                                    Z R
+           sin πx 2       ℓ                      sin πx 2 h 1    1 i
+                                dx = lim                        +       dx = 0 .
+      −∞      π      x(ℓ − x)          R→∞ −R        π        x ℓ−x
+
+The analysis for M−
+                  ℓ runs similarly; see [Sel2, p.217 (line 10)] for the pertinent
+η-condition. 
+
+        / Z , the qualitative reasoning in [Sel2, pp.218 (bot), 219 (top)] immedi-
+   If ℓ ∈
+ately shows that the functions Sℓ and σℓ are no longer extremal: one already
+does better, in fact, with certain multiples (1 − ε)Sℓ (z) and (1 + u)σℓ (z). (Cf.
+the second clause of Theorem 2.2(c). Take u = −1 if 0 < ℓ < 1.)
+   For further information on this, consult [DL, Log] 8 and the two graphs given
+in [Sel2, p.219]. The fact that Sℓ and σℓ are suboptimal in regard to L1 will
+turn out to be of relatively little consequence for subsequent purposes.
+
+Remark 2.9. In constructive function theory, approximants (of various Lp
+types) for a given function m(x) along R are often obtained simply by taking
+convolutions with a rescaled Fejér kernel αK(αz) or similar. See [Tim, Ach]
+and, e.g., [Kat, p.125 (theorem 1.10)]. Since {B, b, W, Sℓ , σℓ } are basically
+defined via (1.11), they are not really amenable to being re-interpreted in a
+natural way as convolutions over R of the aforementioned special type. The
+formal L2 expansions for g(v) and g(v − α) derived in §1.5 offer valuable insight
+on this last point.
+
+2.10. We close §2 by determining what the analog of representation (1.3) is
+for the function W (z). Since
+                                 Z ∞
+                                      1
+                        sgn(x) =        sin(2πxv)dv ,               (2.14)
+                                  −∞ πv
+there is a natural suspicion that
+                                       Z 1
+                                           Q(v)
+                             W (z) =            sin(2πzv)dv                     (2.15)
+                                        −1  v
+
+holds for some nice, even, continuous function Q satisfying Q(0) = 1/π.
+  8
+      in the case of M+
+                      ℓ
+16                Gaussians, Zeros, and Linear Combinations            [Part A]
+
+
+  Following the hint provided by the proof of Theorem 2.7, we first pass to
+W ′ (z) and write              Z       ∞
+                        W ′ (z) =           A(v) cos(2πzv)dv
+                                      −∞
+with an even continuous A(v) having support j [−1, 1]. The asymptotics of
+W (z) cited near (2.8) assure us that W ′ (z) = O[(1 + |z|)−3 ] on every strip
+{| Im(z)| ≦ ∆}. By Fourier inversion,
+                              Z ∞
+                       A(v) =      W ′ (x) cos(2πxv)dx .
+                                  −∞
+
+Letting v = 0 gives A(0) = 2. Since
+                                Z ∞
+                     ′
+                    A (v) = −2π     xW ′ (x) sin(2πxv)dx ,
+                                      −∞
+
+the function A necessarily belongs to C 1 (R). In view of the restriction on
+supp(A),
+                                 A(1) = A′ (1) = 0 .
+                            Rx ′
+     We now write W (x) =   0 W (t)dt and exploit Fubini’s theorem. This gives
+                                 Z xZ 1
+                     W (x) =                A(v) cos(2πtv)dvdt
+                                  0  −1
+                                 Z 1Z x
+                             =              A(v) cos(2πtv)dtdv
+                                  −1    0
+                                 Z 1
+                                              sin(2πxv)
+                             =         A(v)             dv ,
+                                  −1             2πv
+from which it is evident that
+                                               1
+                                  Q(v) =         A(v)
+                                              2π
+works in (2.15). (That Q is unique in (2.15) follows immediately from Leibnitz’s
+rule and the Plancherel theorem.)
+
+Theorem 2.11. The function W (z) is representable in the form (2.15) with
+                                 1
+                      Q(v) =       |v| + (1 − |v|)v ctn(πv) .
+                                 π
+Extending Q to be zero off [−1, 1] produces an even C 1 (R) function (call it q)
+which satisfies
+                                                            
+               
+                     q(0) = π1 , q(1) = 0, q ′ (1) = 0      
+                                                             
+               
+                                                            
+                                                             
+                                                            
+                  ′′           2    ′′      2     ′′
+                 q (0±) = − 3 π, q (1−) = 3 π, q (1+) = 0       .
+               
+                                                            
+                                                             
+               
+                                                            
+                                                             
+                                                            
+                        q ′ (v) < 0    for 0<v<1
+                                 Esseen’s Lemma over R                                      17
+
+
+Proof. Consider W (z) on the disk {|z| ≦ R}. One has
+                             sin πz 2 n X
+                                          N
+                                                      1      XN
+                                                                   1     2o
+          W (z) = lim                                      −           +
+                    N →∞       π                  (z − m)2     (z + m)2 z
+                                         m=1                 m=1
+
+as a uniform limit. But,
+                                       Z 1
+                      K(p − m) =             (1 − |v|)e2πimv e−2πipv dv
+                                        −1
+                                       Z 1
+                                            i
+                            pK(p) =           sgn(v)e−2πipv dv
+                                        −1 2π
+
+via §1.2. Accordingly (note the “−z”):
+               Z 1 X  N                                       
+                                                     i
+  W (z) = lim             (1 − |v|) sgn(m)e2πimv + sgn(v) e−2πizv dv
+          N →∞ −1                                    π
+                      −N
+                 Z 1h                                               i
+                      2(1 − |v|)                      1      1
+        = lim i                   Re(eπiv − e2πiv(N + 2 ) ) + sgn(v) e−2πizv dv
+          N →∞    −1 2 sin(πv)                               π
+          Z 1h                              i
+                                     1
+        =      (1 − |v|) ctn(πv) + sgn(v) sin(2πzv)dv
+           −1                        π
+                 Z 1
+                      1 − |v|
+          − lim                cos 2πv(N + 12 ) sin(2πzv)dv .
+            N →∞ −1 sin(πv)
+
+       1−|v|
+Since sin(πv) sin(2πzv) is a continuous function of (v, z), the final N -limit is 0
+(uniformly w.r.t. z) by the Riemann-Lebesgue lemma. Representation (2.15)
+follows at once.
+                                                                 1
+   To conclude the proof, one simply uses the relation q = 2π      A and a bit of
+elementary calculus. Observe that q(v) + q(1 − v) = π1 holds on [0, 1]. 
+
+  §3. Esseen’s Lemma for Probability Distributions over R
+
+3.1. Our primary focus will now shift to probability distributions F (x) and
+their characteristic functions
+                                      Z
+                               ϕ(ζ) ≡   eiζx dF (x) ,
+                                              R
+
+as discussed, for instance, in [Fel2, chap. 15], [Z2, p.262], and [Bil, §26]. 9
+
+Lemma 3.2. Let F and G be any two probability distributions on R having
+continuous densities f (x) and g(x), respectively. Assume that 0 ≦ g(x) ≦ m
+and that           Z                     Z
+                         α
+                      |x| dF (x) < ∞,       |x|α dG(x) < ∞
+                        R                           R
+   9
+     We make the tacit assumption that all probability distributions on R are taken to be right
+continuous. Similarly for Rk .
+18               Gaussians, Zeros, and Linear Combinations                     [Part A]
+
+
+for some positive α. Take Ω > 0 and put
+                        Z                  Z
+                           iζx
+                 ϕ(ζ) =   e dF (x), ψ(ζ) =   eiζx dG(x) .
+                               R                                  R
+
+The a priori inequality
+                                               Z Ω
+                                                    ϕ(ζ) − ψ(ζ)         m
+               |F (t) − G(t)| ≦ c1                              dζ + c2           (3.1)
+                                                 −Ω      ζ              Ω
+
+will then hold on R for certain universal constants c1 and c2 . (The dζ-integral
+is automatically convergent as an improper Riemann integral.)
+
+Proof. By considering F (x0 + u) and G(x0 + u), it suffices to treat the case
+t = 0. To expedite matters, we refer to Theorem 2.11 and set
+                                                  
+                      0,      v=0                 
+             T (v) =                                  ∈ C[−1, 1] ;
+                      Q(v) − Q(0) , 0 < |v| ≦ 1 
+                             v
+                     1
+           RB (v) = T (v) + (1 − |v|) ∈ C[−1, 1] ;
+                     i
+                     1
+            Rb (v) = T (v) − (1 − |v|) ∈ C[−1, 1] ;
+                     i
+
+                 λ = sup |−iQ(ξ) + ξ(1 − ξ)| .
+                     0≦ξ≦1
+
+For A > 0 and h ∈ C{0 < |v| ≦ A}, we also set
+                     I A                                Z
+                               h(v)dv = lim                           h(v)dv      (3.2)
+                          −A                     ε→0+       ε≦|v|≦A
+
+
+whenever the right-hand limit exists.
+  By combining Theorems 2.2 and 2.11, it is virtually self-evident that
+                         I 1
+                              Q(v)            
+                 B(x) =             + (1 − |v|) e2πixv dv
+                                   −1     iv
+                               I 1
+                                         Q(v)              
+                   b(x) =                        − (1 − |v|) e2πixv dv
+                                   −1     iv
+                               I 1
+                                         1            
+                  B(x) =                       + RB (v) e2πixv dv                (3.3a)
+                                −1 πiv
+                               I 1
+                                      1          
+                   b(x) =                 + Rb (v) e2πixv dv .                  (3.3b)
+                                   −1 πiv
+
+One knows that
+
+                 B(x) = sgn(x) + θ(x),                  0 ≦ θ(x) ≦ 2K(x) ;
+                 b(x) = sgn(x) + σ(x),                  −2K(x) ≦ σ(x) ≦ 0 .
+                              Esseen’s Lemma over R                                  19
+
+
+  Observe now that:
+                                             
+     2 F (0) − G(0) = 2 1 − G(0) − 2 1 − F (0)
+                       Z ∞
+                                                  
+                     =      g(x) − f (x) 1 + sgn(Ωx) dx
+                           −∞
+                          Z ∞
+                                            
+                      =         g(x) − f (x) sgn(Ωx) dx
+                           −∞
+                          Z ∞                                  Z ∞
+                                            
+                      =         g(x) − f (x) B(Ωx) dx −               g(x)θ(Ωx) dx
+                           −∞                                    −∞
+                            Z ∞
+                          +       f (x)θ(Ωx) dx
+                             −∞
+                          Z ∞                                       Z ∞
+                                            
+                      ≧         g(x) − f (x) B(Ωx)dx − m                  θ(Ωx)dx
+                           −∞                                       −∞
+                          Z ∞
+                                                    m
+                      =       g(x) − f (x) B(Ωx)dx −
+                           −∞                        Ω
+
+
+by Theorem 2.2 (g). A trivial substitution for B(Ωx) gives
+    Z ∞                                  Z ∞               I
+                                                        Ω e2πixw    
+           g(x) − f (x) B(Ωx)dx =           g(x) − f (x)              dw dx
+     −∞                               −∞                    −Ω πiw
+                            Z ∞                  I Ω
+                                                     1     w  2πixw 
+                          +       g(x) − f (x)           RB     e     dw dx .
+                             −∞                    −Ω Ω      Ω
+
+Notice, however, that one has
+                Z                         Z
+                         e2πixw                    sin(2πxw)
+                                dw =                         dw
+                  ε≦|w|≦Ω πiw              ε≦|w|≦Ω     πw
+                                               Z Ω
+                                       2             sin(2πxw)
+                                     =                         dw
+                                       π        ε        w
+                                               Z 2πxΩ
+                                          2             sin u
+                                     =                        du = O(1)
+                                          π     2πxε      u
+                                                R∞
+with an implied constant that is absolute (since 0 u−1 sin(u) du converges to
+π/2). By the Lebesgue dominated convergence theorem and Fubini, it follows
+that
+   Z ∞                             I Ω     Z ∞
+                                       1                   
+          g(x) − f (x) B(Ωx)dx =                 g(x) − f (x) e2πixw dx dw
+    −∞                             −Ω πiw −∞
+                                    I Ω           Z
+                                         1    w ∞                  
+                                  +        RB           g(x) − f (x) e2πixw dx dw
+                                     −Ω Ω     Ω −∞
+                                  I Ω
+                                                              
+                                =     r(w) ψ(2πw) − ϕ(2πw) dw
+                                    −Ω
+20                  Gaussians, Zeros, and Linear Combinations             [Part A]
+
+
+wherein
+                      1    1      w
+              r(w) ≡     + RB
+                     πiw   Ω      Ω
+                     1 1            
+                   =       + RB (v) {with v = w/Ω}
+                     Ω πiv
+                       h
+                     1 Q(v)
+                                        i    h
+                                           1 −iQ(v) + v(1 − |v|)
+                                                                 i
+                   =         + (1 − |v|) =                         .
+                     Ω iv                  Ω         v
+Since Q is even, we clearly have
+                                      λ
+                          |r(w)| ≦             for 0 < |w| ≦ Ω .
+                                     |w|
+
+Putting everything together, we find that:
+                            Z ∞
+                                                         m
+         2 F (0) − G(0) ≧         g(x) − f (x) B(Ωx)dx −
+                             −∞                            Ω
+                            I Ω
+                                                             m
+                          =     r(w) ψ(2πw) − ϕ(2πw) dw −
+                             −Ω                                Ω
+                              I Ω
+                                                                 m
+                          ≧−       |r(w)| ϕ(2πw) − ψ(2πw) dw −
+                               −Ω                                Ω
+                               I Ω
+                                     |ϕ(2πw) − ψ(2πw)|       m
+                          ≧ −λ                          dw −
+                                 −Ω           |w|            Ω
+                               I 2πΩ
+                                        |ϕ(w) − ψ(w)|      m
+                          ≧ −λ                        dw −   ,
+                                 −2πΩ        |w|           Ω
+
+where, in the last three lines, a natural convention is made if the dw-integral
+diverges. A parallel manipulation with sgn(Ωx) = b(Ωx) − σ(Ωx) gives
+                                         I 2πΩ
+                                               |ϕ(w) − ψ(w)|      m
+               2 F (0) − G(0) ≦ λ                             dw +   .
+                                           −2πΩ      |w|           Ω
+
+Dividing by 2 and replacing Ω by Ω/2π finally yields
+                                         I Ω
+                                     λ       |ϕ(w) − ψ(w)|      πm
+                |F (0) − G(0)| ≦                           dw +    .
+                                     2    −Ω      |w|            Ω
+
+                          e = min{α, 1} and simply note that
+     To finish up, we set α
+                          Z                            Z
+              ϕ(w) − 1 = (eixw − 1)dF (x) = O(1)|w|αe     |x|αe dF (x),
+                           R                                       R
+
+the implied constant being at most 2. Similarly for ψ(w) − 1. 
+
+   Estimate (3.1) corresponds to [Ess, p.32] and [Fel2, p.538 (3.13)] and is often
+referred to (together with Theorem 3.3 below) as the Esseen smoothing lemma.
+The traditional proof of (3.1) makes use of an auxiliary convolution. The ap-
+proach adopted here, based on the Beurling function (i.e., eq. (3.3)), is some-
+                               Esseen’s Lemma over R                                  21
+
+
+what more direct. Since
+                      q                        q
+                             0 + π12 ≦ λ ≦         1     1    1
+                                                   16 + π 2 < 2 ,
+
+taking (c1 , c2 ) = ( 14 , π) will certainly be admissible.10
+
+Theorem 3.3. Inequality (3.1) remains true without the simplifying hypothe-
+sis that F have a continuous density function on R. It is also valid when the
+initial C 1 function G is only known to be real and to satisfy
+                                             R∞
+     G(−∞) = 0 , G(∞) = 1 , |G′ (x)| ≦ m , −∞ |x|α |G′ (x)|dx < ∞ .     (3.4)
+
+Proof. The extension to a non-monotonic G is self-evident upon reviewing the
+earlier manipulations. With that augmentation in hand, widening the class of
+admissible F is most easily achieved by way of approximation. To this end,
+one forms the (Riemann-Stieltjes) convolution Nε ∗ F with
+                                      Z x
+                                   1          2   2
+                       Nε (x) = √          e−u /2ε du
+                                ε 2π −∞
+
+and then passes to the ε = 0 limit in (3.1). Compare [Fel2, pp.507 (bottom),
+146 (theorem 4)]. The pertinent density and characteristic functions are
+                   Z ∞
+               1               2   2                  2 2
+              √         e−(x−u) /2ε dF (u) and e−ε ζ /2 ϕ(ζ) ,
+             ε 2π −∞
+
+respectively. The dF -integral is manifestly continuous w.r.t. x ; one also knows
+that
+                      E(|Q + X|α ) ≦ 2α E(|Q|α ) + 2α E(|X|α )
+
+for general random variables Q and X. That being said, to finish the proof,
+one simply notes that
+                                      Z
+                                                        
+       lim (Nε ∗ F )(t) − F (t) = lim     F (t − v) − F (t) dNε (v) = 0
+       ε→0+                             ε→0+   R
+
+holds at every point of continuity of F . Since such t are everywhere dense along
+R, inequality (3.1) follows with the same constants cj as before. 
+
+  Esseen’s lemma admits an important (and very well-known) corollary in
+connection with convergence of probability distributions.
+
+Corollary 3.4. Given {G, g, α, ψ} as in Lemma 3.2. Let {Fn }∞
+                                                            n=1 be any
+sequence of probability distributions on R for which
+      R
+(i)      |x|α dFn (x) = O(1);
+      RR iζx
+(ii)    Re   dFn (x) → ψ(ζ) pointwise on R as n → ∞.
+  10
+     Readers having computer experience will readily check that λ = .3263598 to 7 decimal
+places. Those familiar with [Ess, chap. II] may also wish to note that λ/2 ≈ (1.025)/2π.
+22                  Gaussians, Zeros, and Linear Combinations                      [Part A]
+
+
+We then have
+                                      Fn (x) → G(x)
+
+uniformly on R. An analogous result holds when n is replaced by a continuous
+variable ξ.
+
+Proof. An immediate consequence of Theorem 3.3 and the Lebesgue dominated
+convergence theorem. Cf. (i) and the last three lines in the proof of Lemma 3.2.
+A trivial modification of this shows that the characteristic functions {ϕn (ζ)}∞
+                                                                               n=1
+satisfy a uniform Hölder α e-condition on R. The convergence hypothesized in
+(ii) will thus be uniform on every ζ-interval [−Ω, Ω] .
+                                                     e-condition or simply reason
+    To treat Fξ , one can either exploit the Hölder α
+by contradiction. 
+
+3.5. In terms of applications, the single most common one for Corollary 3.4
+is undoubtedly its use in establishing the central limit theorem for sums of N
+identically distributed, independent random variables Xj . See, for instance,
+[Fel2, p.515]. In Corollary 5.5 below, we look at a somewhat more involved
+case. (See [Fel2, pp.542–543] for a prototypical effective example.)
+
+3.6. Hypothesis (i) in Corollary 3.4 is of course very mild. By a change in
+method, it can simply be expunged.
+   To appreciate this, it suffices to recall two standard facts from basic proba-
+bility theory. First: that (ii) is tantamount to Fn approaching G weakly, i.e., in
+distribution. Second: that distributional convergence Fn → P is automatically
+upgradable to uniform convergence on R anytime the limiting probability dis-
+tribution P is everywhere continuous. (Cf. [Fel2, p.285 (problem 5)] or [KeS,
+§4.11] as regards the latter assertion.) Insofar as the “target” distribution G
+is continuous, hypothesis (ii) will thus furnish both a necessary and sufficient
+condition for the uniform x-limit articulated in Corollary 3.4. 11
+   The downside to switching over to this much more rudimentary viewpoint
+[based ultimately on just the Helly selection principle and Fourier-Stieltjes in-
+version] is that the rate of convergence will typically not be very transparent.12
+
+     §4. The Esseen Smoothing Lemma in Several Variables
+
+4.1. It is only natural to wonder if there exists a reasonably simple counter-
+part of (3.1) and Theorem 3.3 in higher dimensions. We examine this question
+in the present section, placing a premium on retaining some measure of formal
+similarity. Because of certain algebraic difficulties, the matter is not as straight-
+forward as one might initially expect.
+   To streamline our exposition, it is helpful to begin with several preliminaries
+and a bit of notation.
+  11
+    Consideration of Nε ∗ G provides a good illustration of what can go wrong if G has atoms.
+  12
+    It is worth noting that the technique used in [Fel2, pp.257–260(top)] runs into similar
+issues. The second line in (4.7) should be deleted there.
+                                         Esseen’s Lemma over Rk                                         23
+
+
+4.2. When k > 1, the one-variable inequalities fj (xj ) ≦ χAj (xj ) do not in
+general concatenate w.r.t. j to produce the relation
+                        Qk
+                           j=1 fj (xj ) ≦ χA (x1 , . . . , xk )
+
+with A = A1 × · · · × Ak over Rk . Fortunately, an elementary ring-theoretic
+lemma [whose form I owe to a 1990 conversation with A. Selberg] enables one
+to circumvent this difficulty with minimal fuss in a wide variety of technical
+settings.13
+
+Lemma 4.3. Given any integer k ≧ 2 . Define symbolic functions
+                                    fj = χj − δj ,                gj = χj + εj
+for 1 ≦ j ≦ k. We then have
+   (1 − k)g1 · · · gk + f1 g2 · · · gk + g1 f2 · · · gk + . . . + g1 · · · gk−1 fk                    (4.1)
+                                   = χ1 · · · χk − S ,
+wherein S is a nonempty sum of monomials ω1 · · · ωk satisfying the conditions
+(i)     ωj ∈ {χj , εj , δj } for each index j ;
+(ii)    ωτ 6= χτ for at least one τ .
+When k > 2, certain of the products ω1 · · · ωk will appear in S with a multiplicity
+larger than one; e.g., ε1 · · · εk .
+
+Proof. Put
+                                                       (                       )
+                                                           χj , m = 0
+                                     Gj (m) =
+                                                           εj ,     m=1
+
+and then keep mj ∈ {0, 1}. Since the LHS of (4.1) is just
+
+             g1 · · · gk + (f1 − g1 )g2 · · · gk + . . . + g1 · · · gk−1 (fk − gk ) ,
+
+one is free to re-express things as
+       X                                         X
+            G1 (m1 ) · · · Gk (mk ) − (δ1 + ε1 )   G2 (m2 ) · · · Gk (mk ) − · · ·
+        {1,...,k}                                                  {2,...,k}
+                                            X
+                          − (δk + εk )                 G1 (m1 ) · · · Gk−1 (mk−1 ) ,
+                                         {1,...,k−1}
+
+{a, . . . , b} serving here as an obvious shorthand for (ma , . . . , mb ). But:
+                 X
+                      G1 (m1 ) . . . Gk (mk )                                                         (4.2)
+                    {1,...,k}
+                                                             X
+                                 = χ1 · · · χk +                          G1 (m1 ) · · · Gk (mk ) .
+                                                       m1 +···+mk >0
+
+  13
+       that of §2 being fairly typical
+24                  Gaussians, Zeros, and Linear Combinations                      [Part A]
+
+
+The last sum is clearly “subsumed” algebraically by
+                        X
+                G1 (1)       G2 (m2 ) · · · Gk (mk ) + · · ·
+                          {2,...,k}
+                                          X
+                        + Gk (1)                     G1 (m1 ) · · · Gk−1 (mk−1 )
+                                       {1,...,k−1}
+                            X
+                   ≡ ε1               G2 (m2 ) · · · Gk (mk ) + · · ·
+                          {2,...,k}
+                                      X
+                        + εk                  G1 (m1 ) · · · Gk−1 (mk−1 ) .
+                                {1,...,k−1}
+
+Inserting a “redacted” form of the above into (4.2) and then backtracking, it
+quickly becomes apparent that S has the properties we’ve posited for it. 
+
+
+     For later use, we’ll abbreviate equation (4.2) as
+
+                           g1 · · · gk = χ1 · · · χk + Se ,                        (4.1 bis)
+
+wherein Se is now viewed as an {χj , εj } – counterpart of the expression S that
+occurs in (4.1).
+
+4.4. Moving onward, suppose next that n ≧ 1 and that the variables {x, v} ∪
+{xj , vj }nj=1 are all real. Keep ∆ and ∆j positive, and write
+
+                           E = [−∆, ∆] , Ej = [−∆j , ∆j ] .
+
+Also set
+                                       E = E1 × · · · × En
+and let d~v be an abbreviation for the standard Euclidean volume element
+dv1 · · · dvn .
+  For functions f ∈ C(E), we introduce a difference operator D by writing
+                                               1
+                              (Df )(v) = [f (v) − f (−v)] .                           (4.3)
+                                               2
+
+For G ∈ C(E), we then let Dj G denote the obvious partial difference. It is
+easily seen that the operators Dj commute; moreover, Dj2 = Dj . The vector
+space C(E) therefore splits into a direct       n
+                                    Qn sum of 2 simultaneous Dj –eigenspaces
+C(E)σ , wherein σ corresponds to j=1 {0, 1} in an obvious fashion.
+   On a related note, recall that a function h ∈ C(E) is said to be Hermitian
+when h(−x) = h(x) . Similarly for H ∈ C(E); here
+
+                        H(−x1 , . . . , −xn ) = H(x1 , . . . , xn ) .
+
+By the symmetry properties of d~v , one immediately sees that
+                         Z
+                            H(v1 , . . . , vn )d~v ∈ R .
+                                  E
+                                    Esseen’s Lemma over Rk                                         25
+
+
+Similarly for h.
+    A moment’s thought shows that functions in C(E) are Hermitian precisely
+when their σ – components in C(E) (Gσ , say) are respectively either real or
+purely imaginary depending on the parity of kσk ≡ σ1 + · · · + σn .
+    In line with this, it is also helpful to observe that:
+(i) the characteristic function ϕ(v1 , . . . , vn ) of any probability distribution F
+(or totally finite signed measure η) on Rn is automatically Hermitian;
+(ii) likewise for any R-linear combination (Dι1 ...Dιr )ϕ with ιm ↑ and 1 ≦ r ≦ n;
+                                                1      w
+                                                              1     w
+                                                                       
+(iii) and – yet again – for the functions ∆       RB ∆     and ∆ Rb ∆    in C(E) that
+arose in the proof of (3.1).
+
+
+4.5. Our subsequent continuity considerations and crude estimates for func-
+tions of types (i) and (ii) will generally rest either implicitly or explicitly on
+some combination of three basic inequalities; viz.,
+
+ |e2i(τ +φ) − e2iφ | = |e2iτ − 1| = 2| sin τ | ≦ 2 min(1, |τ |) ≦ 2 min(1, |τ |ω ) , (4.4)
+              Qn                    βj
+                 j=1 (|xj | + |yj |)   ≦ (kXk∞ + kY k∞ )β1 +···+βn ,                             (4.5)
+       Q         Q           P
+      | nj=1 wj − nj=1 ξj | ≦ nj=1 |wj − ξj |              whenever        |wj | , |ξj | ≦ 1 .   (4.6)
+
+It is understood herein that φ and τ are real, 0 < ω < 1, and βj ≧ 0.
+
+
+4.6. Finally, in connection with both R and Rn , it is convenient to have at
+one’s disposal a symbolic Dirac delta function δ(·) such that, for any r ∈ [1, n]
+and G ∈ C(E),
+  Z
+       δ(v1 ) · · · δ(vr )G(v1 , . . . , vn )d~v                                                 (4.7)
+   E
+                 (                                                                               )
+                      G(0, . . . , 0)                                                 if r = n
+             =        R                                                  Qn                        .
+                        Er+1 ×···×En G(0, . . . , 0, vr+1 , . . . , vn )  j=r+1 dvj   if r < n
+
+                                                                        e
+Similarly for f ∈ C(E) and permuted sets of indices. Also for functions G
+whose continuity is assumed only over, e.g.,
+
+                                   e ≡ E ∩ {vr+1 · · · vn 6= 0},
+                                   E
+
+the behavior elsewhere being such that one at least has
+
+             sup       e 1 , . . . , ξr ; vr+1 , . . . , vn )| ∈ L1 (Er+1 × · · · × En ) ,
+                      |G(ξ                                                                       (4.8)
+         E1 ×···×Er
+
+
+the latter condition serving to ensure that the dvr+1 · · · dvn “cross-sectional
+             e remains nicely continuous as the level (ξ1 , . . . , ξr ) varies.
+integral” of G
+26                          Gaussians, Zeros, and Linear Combinations                                       [Part A]
+
+
+4.7. We are now able to state a prototypical version of our k -variable coun-
+terpart of (3.1).
+   Matters are facilitated in this by letting P denote a generic partition of
+{1, 2, ..., k} into three disjoint (possibly empty!) subsets hB, C, Di and then
+writing
+                                         Q       
+                                DC G ≡     j∈C Dj G .
+
+
+(Here and below, we follow the standard convention that empty products are
+understood to be either 1 or the identity operator. When the context is clear,
+we also agree that “ b ” atop anything signifies expungement.)
+
+Theorem 4.8. Given k ≧ 1 and any list of positive numbers {Ω1 , . . . , Ωk }.
+Let F be any probability distribution on Rk and dG = g(x1 , . . . , xk )d~x any
+totally finite signed measure having g ∈ C(Rk ). Suppose that
+    Z                           Z
+                    α                         α
+           max |xj | dF < ∞ ,         max |xj | |g(x1 , . . . , xk )|d~x < ∞ (4.9)
+        Rk    1≦j≦k                             Rk   1≦j≦k
+
+for some α > 0 and that, in addition,
+                 Z
+                      |g(x1 , . . . , xk )|dx1 · · · d
+                                                     dxℓ · · · dxk ≦ mℓ                                        (4.10)
+                              Rk−1
+
+for every ℓ ∈ [1, k] (the integral sign simply being absent if k = 1). Let ϕ(~v )
+and ψ(~v ) be the usual multivariate characteristic functions of F and dG. (Cf.
+§3.1.) With                             Z y1     Z yk
+                  G(y1 , . . . , yk ) ≡      ···      g(ξ1 , . . . , ξk )dξ~ , (4.11)
+                                                  −∞            −∞
+
+there then exist 14 positive constants c1 and c2 depending solely on k such that
+one has the a priori bound
+
+ |F (t1 , . . . , tk ) − G(t1 , . . . , tk )|                                                                  (4.12)
+
+             X Z Ω1               Z Ωk                  Y 1 Y 1                     | sin(tj vj )|
+                                                                                                      Y
+     ≦ c1                   ···          |DC (ϕ − ψ)|                            +                          δ(vj )d~v
+                   −Ω1             −Ωk                        |vj |         Ωj            |vj |
+             P                                          j∈C           j∈D                             j∈B
+               k
+               X mℓ
+        + c2
+                       Ωℓ
+                 ℓ=1
+
+at every point (t1 , . . . , tk ) ∈ Rk . (Though (4.12) does not require ψ(~0) = 1,
+cases having ψ(~0) 6= 1 will generally be of at most subsidiary interest from a
+probabilistic standpoint; cf. the term with C = D = φ.)
+
+Proof. Apart from some additional bookkeeping, the basic procedure is largely
+a mimic of the approach that was used for Lemma 3.2 and Theorem 3.3.
+  We start by taking α < 1 w.l.o.g and writing β = α/k. By (4.4) and a trivial
+manipulation,
+  14
+       explicitly computable
+                                   Esseen’s Lemma over Rk                              27
+
+
+                    | sin u| ≦ min{1, |u|} ≦ min{1, |u|β };
+                        Z
+                             Q                  Q        ivj xj
+                DC ϕ =         j∈C i sin(vj xj )   j∈B∪D e       dF (~x) .         (4.13)
+                              Rk
+
+(Similarly for DC ψ.) Relation (4.8) is thus fulfilled by a large margin for every
+P – summand in (4.12); cf. (4.9) and §4.5. Notice too that there is no loss of
+generality if a large positive constant N is added to each “max” in (4.9).
+   It will be convenient to first prove (4.12) in the case where (tj ) = (0) and F
+has a continuous density function f (x1 , . . . , xk ). To this end, we write
+
+                                        χ(x) = χ(−∞,0] (x)
+
+and then use Theorem 2.2 to get
+                             1                     1
+                               [1 − B(Ωx)] ≦ χ(x) ≦ [1 − b(Ωx)]
+                             2                     2
+
+for each Ω > 0. This quickly leads to
+
+                                     feΩ (x) ≦ χ(x) ≦ e
+                                                      gΩ (x)                       (4.14)
+
+with
+                       I Ω                             Z Ω
+                   1   Dw (e2πixw )      1                              1   w 
+       feΩ (x) ≡ −                  dw +                    e2πixw δ(w) − RB      dw
+                  2 −Ω    πiw            2               −Ω              Ω   Ω
+                       I Ω                              Z Ω
+                   1       Dw (e2πixw )      1                          1   w 
+       geΩ (x) ≡ −                      dw +                e2πixw δ(w) − Rb      dw
+                   2    −Ω    πiw            2           −Ω              Ω   Ω
+
+thanks to equation (3.3). By Theorem 2.2(a), one knows that
+
+                                   geΩ (x) − feΩ (x) = K(Ωx) .
+
+The situation of Lemma 4.3 is thus applicable with
+                 (                                               )
+                   χj = χ(xj ), fj = feΩj (xj ), gj = geΩj (xj )
+                                                                          .        (4.15)
+                        0 ≦ δj ≦ K(Ωj xj ), 0 ≦ εj ≦ K(Ωj xj )
+
+  To continue, we let
+
+                             T − (x1 , . . . , xk ) = the LHS of (4.1)
+                             T + (x1 , . . . , xk ) = g1 · · · gk
+
+and then exploit the fact that
+
+                               T − + S = χ1 · · · χk = T + − Se                    (4.16)
+
+
+in accordance with (4.1) and (4.1 bis). Since
+                                     Z
+                    F (~0) − G(~0) =    (f − g) χ1 · · · χk d~x
+                                                  Rk
+28                      Gaussians, Zeros, and Linear Combinations                                   [Part A]
+
+
+and f ≧ 0, one immediately obtains
+                            Z                  Z
+           F (~0) − G(~0) ≧   (f − g)T − d~x −                                  |g|S d~x             (4.17a)
+                                              Rk                           Rk
+                                            Z                            Z
+                F (~0) − G(~0) ≦                             +
+                                                   (f − g)T d~x +               |g|Se d~x .          (4.17b)
+                                              Rk                           Rk
+
+Each gj or fj appearing in T ± can and will be viewed as the sum of three
+obvious chunks; cf. the formulae following (4.14).
+  Prior to pushing onward with this, we note that, by (4.10), (4.15), and
+the algebraic format of S and S,e the final terms in (4.17a) and (4.17b) are
+manifestly dominated by
+                    Xk    Z ∞                      Xk
+                                                       mℓ
+                       c3     K(Ωℓ xℓ )mℓ dxℓ = c3                    (4.18)
+                                            −∞                                          Ωℓ
+                             ℓ=1                                                  ℓ=1
+
+for some choice of c3 (= c3 (k)).
+    The central issue now becomes one of substitution and straightforward jus-
+tification of the applicability of Fubini’s theorem. For the latter, it suffices to
+combine (4.9), (4.5), and our earlier observations about | sin u| and N. Cf. also
+here the discussion following (3.3), especially as regards the uniform bounded-
+ness of the integral
+                                 Z γ2
+                                      sin(2πxw)
+                                                dw
+                                                   γ1        πw
+
+and related use of the Lebesgue dominated convergence theorem.
+   On the basis of these remarks, it quickly becomes apparent that all relevant
+manipulations for “ case ~0 ” are easily carried out — in fact, separately so for
+both ϕ and ψ, and with good majorants throughout. One clearly obtains (4.12)
+with ϕ(2π w),
+           ~ ψ(2π w) ~ in place of ϕ(~v ), ψ(~v ). To finish up format-wise, one
+simply replaces each Ωj by Ωj /2π and writes vj = 2πwj .
+   Keeping dF = f d~x , we turn next to the case of an arbitrary point (tj ) ∈ Rk .
+One freezes (tj ) and introduces the new densities
+f ∗ (x1 , . . . , xk ) = f (t1 + x1 , . . . , tk + xk ), g ∗ (x1 , . . . , xk ) = g(t1 + x1 , . . . , tk + xk ).
+Conditions (4.9) and (4.10) are still satisfied. Working separately with the
+analogs of (4.17a) and (4.17b) in accordance with the first two sentences of the
+preceeding paragraph [cf. also here (4.18)], it is immediately evident that, up
+to trivial Q-coefficients, one obtains a specific sum of dw
+                                                          ~ – integrals over
+                                      E = [−Ω1 , Ω1 ] × · · · × [−Ωk , Ωk ]
+whose integrands have the form
+               Y 1 Y 1         w  Y
+                             R∗ j     δ(wj )
+                             πwj             Ωj         Ωj
+                      j∈C             j∈D                    j∈B
+                             Z        Y                      Y
+                         ·                  sin(2πwj xj )           e2πiwj xj (f ∗ − g ∗ )d~x .
+                                 Rk   j∈C                    j ∈C
+                                                               /
+                                                      Esseen’s Lemma over Rk                                              29
+
+
+(Cf. (4.14).) Writing xj = yj − tj , each such integrand then becomes, again up
+to trivial Q-coefficients, a specific sum of expressions like
+      Y 1                w  Y                           Y
+                    R∗            j
+                                                 δ(wj )          e−2πiwj tj                                          (4.19)
+            Ωj                   Ωj
+     j∈D                                   j∈B            j ∈C
+                                                            /
+            Z           Y  sin(2πwj yj )                                      Y  sin(2πwj tj ) 
+        ·                                                  cos(2πwj tj )                                  cos(2πwj yj )
+                Rk j∈C                      πwj                                               πwj
+                             1                                                  j∈C2
+                        Y
+                    ·            e2πiwj yj (f − g)d~y ,
+                        j ∈C
+                          /
+
+wherein hC1 , C2 i is a partition of C. Since max{|yj |, |tj |} ≦ |yj | + |tj | for j ∈ C
+and
+                   Z
+                                            α
+                         1 + k~y k∞ + k~t k∞ (f + |g|)d~y < + ∞ ,
+                                      Rk
+
+each of these new integrands clearly admits a good majorant over the set E.
+Observe now that one can successively “flip” each cos(2πwj yj ) (with j ∈ C2 )
+into exp(2πiwj yj ) without changing the numerical value of the corresponding
+          ~ – integral over E. Similarly for cos(2πwj tj ) with j ∈ C1 .
+iterated dw
+   The upshot of course is that each expression in (4.19) can thus be replaced
+by
+              Y 1       w  Y          Y
+                     R∗ j        δ(wj )    e−2πiwj tj
+                                 Ωj              Ωj
+                        j∈D                            j∈B               j ∈C
+                                                                           /
+                                 Z         Y  sin(2πwj yj )            Y  sin(2πwj tj ) 
+                             ·                                e−2πiwj tj
+                                  Rk j∈C                  πwj                                       πwj
+                                             1                                         j∈C2
+                                           Y                     Y
+                                       ·          e2πiwj yj             e2πiwj yj (f − g)d~y .
+                                           j∈C2                  j ∈C
+                                                                   /
+
+It makes sense to rewrite this as
+        Y 1       w  Y           Y            Y  sin(2πwj tj ) 
+               R∗ j         δ(wj )   e−2πiwj tj                                                                      (4.20)
+                    Ωj                Ωj                                                         πwj
+            j∈D                               j∈B                j ∈C
+                                                                   / 2              j∈C2
+                    Z            Y  i sin(2πwj yj )  Y
+                ·                                                           e2πiwj yj (f − g)d~y ,
+                        Rk                        iπwj
+                             j∈C1                                   j ∈C
+                                                                      / 1
+
+the d~y – integral herein simply being
+
+                                                          DC1 (ϕ − ψ)(2π w) ~
+                                                           Q                  .
+                                                               j∈C1 (iπwj )
+
+Notice incidentally that (4.20) is manifestly Hermitian w.r.t. (w1 , . . . , wk ).
+   Writing Da = D ∪ C2 , the corresponding contribution to the overall estimate
+for |F (tj ) − G(tj )| thus becomes some real number having absolute value
+30                    Gaussians, Zeros, and Linear Combinations                            [Part A]
+
+
+
+              Z Y                                     Y
+                    1               | sin(2πwj tj )|                    |DC1 (ϕ − ψ)(2π w)|
+                                                                                         ~
+       ≦ c4                   +                              δ(wj ) ·     Q                 dw.
+                                                                                             ~
+              E j∈D    2πΩj              2π|wj |                             j∈C1 |2πwj |
+                  a                                    j∈B
+
+
+
+Needless to say: c4 = c4 (k) and {1, 2, . . . , k} = C1 ∪ Da ∪ B .
+  Upon taking vj = 2πwj , temporarily setting Ωj = Ej /2π, and looking at
+
+                                           P∗ = hB, C1 , Da i
+
+in lieu of P, relation (4.12) follows.15
+   To establish (4.12) for a perfectly general F , one simply convolves F with a
+                            hki
+multivariate Gaussian (Nε , say) having density
+
+                                      1 k Qk         uj 2 
+                                     √      j=1 exp − 2 ε2
+                                    ε 2π
+
+and then lets ε → 0 in obvious analogy to what was done earlier for k = 1 and
+Theorem 3.3. Since
+                            Qk            1 2 2
+                              j=1 exp − ε vj            2
+
+is even w.r.t. each vj , the action of DC is trivially visualized and there is no
+difficulty securing a good majorant for each P – summand over E. 
+
+4.9. When k = 1, (4.12) is readily seen to provide a very slight improvement
+in (3.1) [apart from choice of constants]. For k ≧ 2, however, matters are
+less satisfactory. There (4.12) turns out to have two features that tend to be
+somewhat problematic for purposes of applications.
+   The most egregious of these is the fact that, when k > 1, the RHS of (4.12)
+typically tends to blow up anytime one or more of the entries in (t1 , . . . , tk )
+diverges to ±∞.
+   The difficulty stems from the “sine” portion of the D-terms. It suffices to
+look at the partition for which D = {1, 2, ..., k}. Assume, for simplicity, that α
+can be taken very large in (4.9). After utilizing the well-known relation
+
+                              N
+                              X (iy)j             |y|N +1
+                      eiy =                 +Θ                   (for y ∈ R) 16              (4.21)
+                                      j!         (N + 1)!
+                              j=0
+
+
+to form obvious Taylor polynomials and rescaling things a bit, the operative
+“inflationary” mechanism is most easily appreciated [in a model computation
+
+  15
+     Note that the form of the product for j ∈ Da already accounts for all choices of C2
+associated with a given Da .
+  16
+     Cf. equation (5.1) below.
+                                           Esseen’s Lemma over Rk                           31
+
+
+with k = 3] by contemplating the fact that one has
+   Z 1 Z 1 Z 1
+                                                             dwdvdu
+                   [uc + v c + wc − λ(uℓ+1 + v ℓ+1 + wℓ+1 )]
+    1/T1 1/B2 1/B3                                            wvu
+        Z 1 Z 1 Z 1
+                                                                     dwdvdu
+     ≧                  [uℓ + v ℓ + wℓ − (λu)uℓ − (λv)v ℓ − (λw)wℓ ]
+         1/T1 1/B2 1/B3                                               wvu
+          Z 1 Z 1 Z 1
+        1                   uℓ + v ℓ + wℓ
+     ≧                                    dwdvdu
+        2 1/T1 1/B2 1/B3        uvw
+             1 − 2−ℓ
+         ≧           [(log B2 )(log B3 ) + (log T1 )(log B3 ) + (log T1 )(log B2 )]
+                2ℓ
+anytime T1 ≧ 2, B2 ≧ 2, B3 ≧ 2, 1 ≦ c ≦ ℓ, λ ∈ [0, 1/2]. Here T1 corresponds
+essentially to |t1 |.
+   The second snag is more subtle and – as will be seen momentarily – has a
+predominantly “operational” nature. It arises in connection with those entries
+                                            DC (ϕ − ψ)
+                                             Q                   (≡ QC )
+                                                j∈C vj
+
+in (4.12) for which card(C) ≧ 2. We take C = {1, . . . , m} w.l.o.g. (and continue
+to assume k > 1). To explicate matters17 , it is helpful to first observe that
+                                        Z
+                       1
+     (D1 · · · Dm )f = m (v1 · · · vm )    D [m] f (v1 u1 , . . . , vm um ) d~u (4.22)
+                                  2                   [−1,1]m
+
+holds whenever f ∈ C m . Here D [m] f is the obvious mixed partial. (There
+is clearly no harm in suppressing, as we do, any variables that are inactive.
+Notice too that the d~u-integral is automatically even w.r.t. each vj .)
+                                                      Q
+   Suppose now that ~v is situated in that portion of kj=1 [−Ωj , Ωj ] on which
+                                           {|v1 | < τ, . . . , |vm | < τ } .
+Here τ is some suitably small constant. Think of k~tk as being bounded. The
+need to avoid spurious divergences in (4.12) growing out of
+                 Z τ         Z τ
+                                      λ(v1ℓ+1 + · · · + vm
+                                                         ℓ+1
+                                                             )
+                       ···                                     dvm · · · dv1 = +∞ (λ > 0)
+                  0           0             v1 · · · vm
+
+when relation (4.21) is applied crudely over Rm strongly suggests that any
+Taylor approximations for DC (ϕ − ψ) w.r.t. (v1 , . . . , vm ) that one proposes to
+exploit be created in a “pre-factored” format by means of either (4.22)+(4.21)
+or else (4.13) + a variant of (4.21) [call it (4.21)♯ ] which refers to the product
+function
+                               sin(y1 )     sin(ym )
+                                        ···          .
+                                  y1           ym
+The remainder term in relation (4.21)♯ is readily seen (after a bit of manipula-
+tion with multinomial expansions) to have magnitude at most
+  17
+       (some readers may prefer to merely skim the details that follow)
+32                 Gaussians, Zeros, and Linear Combinations                   [Part A]
+
+
+                             Om (1)(|y1 | + · · · + |ym |)N +1
+for yν ∈ R once the total ~y – degree pushes past N . A closer analysis P reveals
+that any fixed number D ≧ 1 can be inserted as a denominator in m          j=1 |yj |.
+   To ensure that everything remains well-defined here [in the first approach
+as well], one tacitly assumes in the foregoing that (4.9) holds with some α ≧
+m + N + 1.
+   Matters receive a useful clarification when Taylor’s theorem with remainder
+written in integral form is brought into the picture. (Recall that the Rm -
+version of Taylor’s theorem is an easy consequence of the   Q corresponding result
+over R1 .) By writing things out for the function G = m       j=1 exp(iξj ), putting
+ξj = yj uj , and then averaging w.r.t. ~u over [−1, 1] , an explicit form of (4.21)♯
+                                                      m
+
+immediately ensues. The essential point here, of course, is that
+                     sin y (a)    Z
+                                   1 1
+                                 =      (iu)a eiyu du for a ≧ 0 .              (4.23)
+                        y          2 −1
+The equation for DC ϕ/(v1 · · · vm ) produced by this version of (4.21)♯ is clear-
+ly
+Qmjust the earlier Taylor manipulation repeated for the augmented function
+   j=1 exp(iξj ) · Ω, wherein ξj = (vj xj )uj and
+                            Q
+                       Ω = kj=m+1 eivj xj · (ix1 ) · · · (ixm )dF,
+followed by an integration w.r.t. (~u, ~x), the part involving ~x being done last.
+   Since D [m]
+            Qϕ(w1 , . . . , wm ; vm+1 , . . . , vk ) can be viewed as a continuous super-
+position of m  j=1 exp(iwj xj )·Ω , it is hardly surprising that formula (4.22) with
+f = ϕ appears when exactly the same procedure is followed, but the integra-
+tion w.r.t. (~u, ~x) is done in reverse order. Integrals having the form
+                        Z
+                             (ix1 )a1 eiw1 x1 · · · (ixm )am eiwm xm · Ω
+                        Rk
+
+are merely partial derivatives of D [m] ϕ; as such, it is easily seen that the Taylor
+developments of DC ϕ/ (v1 · · · vm ) obtained by first integrating the one attached
+to (4.21)♯ and, then, that of D [m] ϕ (à la (4.22)) actually have summands that
+are numerically identical
+                       Q term-by-term. Methods 1 and 2 for handling QC over
+the given portion of kj=1 [−Ωj , Ωj ] are thus equivalent, at least to the extent
+that the sharper version of (4.21)♯ is used.
+   When F is fixed, none of this presents any serious difficulty. In settings,
+however, where ϕ is basically given as a product of many (scaled down, more
+basic) characteristic functions ϕν , making any effective use of this multiplica-
+tivity vis à vis DC ϕ/(v1 · · · vm ) requires a bit of thought, lest unwelcome spuri-
+ous divergences re-appear.
+   On a practical level, for run-of-the-mill ϕν , one finds two main options.
+First: viewing F as an M -fold convolution, one can seek to obtain some sort of
+a priori hold on the magnitudes of appropriately large (4.9) - style moments of
+dF . In certain settings, such information may be relatively easy to obtain by
+means of a bit of algebra. (With bounds of any reasonable quality here, use
+of even the cruder version of (4.21)♯ may already turn out to be sufficient for
+one’s needs.)
+                                     Esseen’s Lemma over Rk                                          33
+
+
+   The second option wouldQbe to exploit method 1; i.e., come in by way of
+(4.22). Writing f = ϕ =         ϕν , one would simply expand D [m] ϕ via a rule
+of Leibnitz type. This is not unreasonable since m ≦ k. (We tacitly assume
+here 18 that each ϕν corresponds to a dFν having finite moments out to order at
+least m + N + 1.) Proceeding in this way enables one to achieve fairly quickly
+at least some orderly use of the multiplicativity “without any division worries.”
+Depending on the form of ϕν , keeping τ sufficiently small may also facilitate
+the calculation of any relevant derivatives
+                                      Q       of log ϕν .
+   In situations where ϕν and ϕ = ϕν are nicely-behaved analytic functions
+of ~v , a third line-of-attack would be to express the linear combination DC ϕ
+as a Cauchy-type integral w.r.t. {vj }m j=1 . Doing this produces a factorization
+formula akin to (4.22).
+QkIn all three of these approaches, it pays to observe that those portions of
+  j=1 [−Ωj , Ωj ] having, e.g.,
+
+          {|v1 | < τ , . . . , |vℓ | < τ ; |vℓ+1 | ≧ τ , . . . , |vm | ≧ τ }       (1 ≦ ℓ ≦ m)
+
+can be easily treated by first expressing DC ϕ as D1 · · · Dℓ g, wherein g is the
+explicit linear combination Dℓ+1 · · · Dm ϕ, and then simply repeating the earlier
+ideas with Rℓ in place of Rm .
+   What is evident from all this is that, in seeking to gain some
+                                                                Q sensible control
+on QC in (4.12) by way of Taylor approximations when ϕ = ϕν , there is in-
+variably an element of context that enters the picture even if, say, α ≧ 1000k.
+
+4.10. This fact, which is not entirely surprising, prompts one to ponder the
+possibility of making a fundamental change in mindset that would enable one
+to simply sidestep the bulk of any contextual issues with QC .
+   To that end, the following corollary of (4.22) [taken now with any m ≧ 1]
+is highly suggestive, particularly when specialized to ϕ − ψ. Namely: for any
+f ∈ C h and ℓ ∈ [1, m], one always has
+                                                                 Q            1/( ℓ )
+                                                                      ′
+                    |D1 · · · Dm f | ≦ |v1 |h/ℓ · · · |vℓ |h/ℓ
+                                                                                    h
+                                                                      σ Mσ f              ,      (4.24)
+
+wherein h ∈ [1, ℓ], σ ranges over all subsets of [1, m] for which
+
+                           card(σ) = h          and      σ j {1, 2, . . . , ℓ} ,
+
+and one defines, e.g.,
+                                         ∂hf                                                   
+  M{1,2,...,h} f ≡ max sup                           u1 v1 , ..., uh vh ; εh+1 vh+1 , ..., εm vm .
+                       εβ2 =1 |uγ |≦1 ∂ξ1 · · · ∂ξh
+
+The index γ ranges over σ, while the “ ′ ” serves to stress that only σ j [1, ℓ]
+are included in the product.
+   The case h = 0 is readily seen to hold trivially if the Mσ - product is given
+an obvious interpretation. At the same time, it is also worth noting that, as a
+technical artifice, taking h = 1 will already be sufficient for most purposes.
+ 18
+      Compare [Fel2, p.528 (problem 15)].
+34                   Gaussians, Zeros, and Linear Combinations                               [Part A]
+
+
+   To prove (4.24) per se, we first put g = Dh+1 · · · Dm f and then think of g
+as a linear combination. The sum of the absolute values of its coefficients is
+2m−h /2m−h = 1. With {vh+1 , ..., vm } frozen, we now apply (4.22) but with m
+replaced by h. This gives:
+                                                                                  
+            |D1 · · · Dm f | = |(D1 · · · Dh )g| ≦ |v1 | · · · |vh | M{1,...,h} g
+                                                                                  
+                                                 ≦ |v1 | · · · |vh | M{1,...,h} f .
+
+(The first M is taken on Rh .) Similarly for any other σ j [1, ℓ] having cardi-
+nality h. Multiplying over the collection of all relevant σ, one clearly gets
+                                     ℓ   Q           ℓ−1    Q′     
+                    |D1 · · · Dm f |(h) ≦ ℓj=1 |vj |(h−1) ·  σ Mσ f .
+
+Since                            
+                         ℓ−1     h ℓ
+                               =      whenever                  1≦h≦ℓ,
+                         h−1     ℓ h
+inequality (4.24) follows immediately.19
+   There exists a slight extension of (4.24) that will also turn out to be useful
+in connection with QC . To explain it, we’ll continue to work in the setting of
+§4.4 with Rn replaced by Rm . In addition to the operators {D1 , ..., Dm }, we
+propose to look at
+
+            Ej = I − Dj , (Pj f )(~v ) = f [((1 − δhj )vh )m
+                                                           h=1 ] , ∆j = I − Pj
+
+for 1 ≦ j ≦ m. By straightforward symbol-pushing, each of these operators on
+C(E) is readily seen to commute with the other 4m−1, and to be an idempotent
+(i.e., satisfy T 2 = T ). One also sees that
+                           Dj Ej = 0 , Dj Pj = 0 , Dj ∆j = Dj ,
+                                Ej Pj = Pj ,      Pj ∆j = 0 ;
+
+                                  I = Pj + Dj + Ej ∆j .                                        (4.25)
+Besides being an idempotent, each summand in (4.25) annihilates the other two.
+The associated direct sum decomposition of C(E) can be viewed as providing a
+kind of “Boolean” Taylor development w.r.t. vj . Corresponding to (4.22), one
+easily checks that
+                                    Z
+   (∆1 · · · ∆m )f = (v1 · · · vm )   (D [m] f )(t1 v1 , ..., tm vm )d~t
+                                       [0,1]m
+                                       Z
+      Q                Qm 1 2
+     ( mj=1 Ej ∆j )f =  j=1 ( 2 vj )                     (D [m,m] f )((tj uj vj ))t1 · · · tm d~u d~t
+                                       [0,1]m ×[−1,1]m
+                                       Z
+      Q                Qm 1 2                    Qm
+     ( mj=1 Ej ∆j )f =  j=1 ( 2 vj )              j=1 (1 − |ξj |) · (D
+                                                                          [m,m]
+                                                                                  f )((ξj vj ))dξ~
+                                       [−1,1]m
+  19
+    When f is the restriction of a characteristic function ϕ to Rm , there are of course bounds
+similar to (4.24) having exponent λ/ℓ (0 < λ ≦ ℓ) in place of h/ℓ. These follow immediately
+from (4.4) and were already referenced, albeit implicitly, in the proof of Theorem 4.8. The
+Mσ -portion is best written as E(k~xk⋆λ ), where k~xk⋆ ≡ max{|xj | : 1 ≦ j ≦ ℓ}.
+                                   Esseen’s Lemma over Rk                                                     35
+
+
+for f ∈ C m and C 2m , respectively. The notations D [m,m] and ((tj uj vj )) are
+obvious abbreviations.
+   Let 1 ≦ n ≦ m and r = m − n. Writing Sj = ∂/∂ξj , we now define
+                                           2                 
+                                           Sj ,     if j ≦ n 
+                                   Tj =                                    .
+                                                                      
+                                              Sj ,   if j > n
+
+Fix any ℓ ∈ [1, n] and δ ∈ [0, r]. Put L = ℓ + δ. In line with {1, . . . , ℓ} ∪
+{n + 1, . . . , n + δ} and the actions of both I = Pj + ∆j and (4.25), for any
+h ∈ [1, L] and f ∈ C h, C 2h (resp.), one has
+                                             Qℓ               Qδ                h/L Q′′         1/(Lh)
+ |∆1 · · · ∆n Dn+1 · · · Dm f | ≦ 2m−h        j=1 |vj | ·         j=1 |vn+j |          σ Mσ f              (4.26)
+
+     Qn           Qm                   m−h   Qℓ               Qδ                h/L Q′′        1/(Lh)
+ |    j=1 Ej ∆j    j=n+1 Dj f | ≦ 2           j=1 |vj | ·         j=1 |vn+j |          σ Mσ f              (4.27)
+
+     Qn           Qm                   m−h   Qℓ           2       Qδ             h/L Q′′        1/(Lh)
+ |    j=1 Ej ∆j    j=n+1 Dj f | ≦ 2           j=1 |vj |       ·    j=1 |vn+j |          σ Nσ f             (4.28)
+
+wherein σ ranges over all subsets of [1, n + r] (= [1, m]) for which
+
+                       card(σ) = h , σ j {1, ..., ℓ} ∪ {n + 1, ..., n + δ}
+
+and one defines, e.g.,
+
+     M{1,...,h} f = \
+                    max sup (S1 · · · Sh f )(u1 v1 , ..., uh vh ; εh+1 vh+1 , ..., εm vm )
+                    εβ2 =0,1 |uγ |≦1
+
+     N{1,...,h} f = \
+                    max sup (T1 · · · Th f )(u1 v1 , ..., uh vh ; εh+1 vh+1 , ..., εm vm )
+                    εβ2 =0,1 |uγ |≦1
+
+
+when h ≦ ℓ. Similarly for a split set {1, ..., h1 } ∪ {n + 1, ..., n + h2 }. In each
+instance, the index γ ranges over σ and “ b ” means “omit εβ = 0 if β > n.”
+   Estimate (4.27) follows immediately from (4.26). The proofs of (4.26) and
+(4.28) are easy mimics of that of (4.24). To keep things simple, one makes an
+intentional overshoot in the coefficient 2m−h .
+   Just as before, the case “h = 0” holds trivially when the product over σ is
+given a natural interpretation.
+   In regard to any applications with f = ϕ − ψ, the key point in (4.24) and
+(4.26)–(4.28) is that h can be taken equal to 1. This imposes only the mild
+restriction that hypothesis (4.9) be true with α = 1 or 2 (as opposed to some-
+thing more like α ≧ m + N + 1, in our earlier notation).
+
+4.11. Before opting to place any further restrictions on α, it seems only pru-
+dent to ask if there might not exist some easy variant of (4.12) [applicable for
+any α] in which the structural hassles that we identified earlier (in §4.9) are
+simply absent.
+   The following result, based on truncation, achieves this goal in a relatively
+cheap way.
+36                      Gaussians, Zeros, and Linear Combinations                                         [Part A]
+
+
+
+Theorem 4.8A. Given the situation of Theorem 4.8 and any number ∆ > 1.
+Assume further that min(Ω1 , . . . , Ωk ) > 1. Putting v • ≡ v/ min{1, ∆|v|} (and,
+say, 0• = 1/∆), we then have
+
+                 |F (t1 , . . . , tk ) − G(t1 , . . . , tk )|                                               (4.29)
+                                  Z Ω1        Z Ωk                   X mℓ                 k
+                                          |ϕ(~v ) − ψ(~v )|
+                          ≦ c5     ···        •          •   d~
+                                                              v + c6
+                               −Ω1     −Ωk |v1 | · · · |vk |         ℓ=1
+                                                                         Ωℓ
+                                        Z
+                           + (k + 1)∆−α    ( max |xj |)α (dF + |g|d~x)
+                                                     Rk 1≦j≦k
+
+
+for every (t1 , . . . , tk ) ∈ Rk , wherein c5 and c6 are certain positive constants that
+depend solely on k. (Note the absence of ~t on the right hand side.) Each factor
+1/|vj• | in (4.29) can be replaced, whenever convenient, by the larger value
+
+                              ∆                                         v
+                                    ,     wherein          vN ≡                 .
+                             |vjN |                                 min{1, |v|}
+
+Proof. It is useful to begin with an intermediate result. Treating ∆ as a natural
+cut-off, we first write                            
+                                   tj , |tj | ≦ ∆ 
+                                                   
+                            t∗j =     ∆, tj > ∆
+                                  
+                                                   
+                                                    
+                                    −∆, tj < −∆
+for every index j. Since
+                                                                                Z
+               |F (t1 , η2 , . . . , ηk ) − F (t∗1 , η2 , . . . , ηk )| ≦ ∆−α            |x1 |α dF (~x)
+                                                                                Rk
+                                     ..
+                                      .
+                                                                                Z
+         |F (η1 , . . . , ηk−1 , tk ) − F (η1 , . . . , ηk−1 , t∗k )| ≦ ∆−α              |xk |α dF (~x) ,
+                                                                                    Rk
+
+we immediately see that
+                                                                Z
+                                                                                α
+       |F (t1 , . . . , tk ) − F (t∗1 , . . . , t∗k )| ≦ k∆−α          max |xj | dF (~x) .                  (4.30)
+                                                                  Rk   1≦j≦k
+
+
+Similarly for G and |g|d~x . Observe, however, that one has
+
+       |F (tj ) − G(tj )| ≦ |F (tj ) − F (t∗j )| + |F (t∗j ) − G(t∗j )| + |G(t∗j ) − G(tj )|
+
+in an obvious shorthand. Since | sin u| ≦ min{1, |u|}, by applying (4.12) to
+|F (t∗j ) − G(t∗j )| and then noting that, on {|vj | ≦ Ωj },
+
+     1                 1         1            1     1              2      2
+        + min |t∗j |,       = min    + |t∗j |,    +       ≦ min 2∆,       = • ,
+     Ωj               |vj |       Ωj           Ωj   |vj |           |vj |  |vj |
+                                  Esseen’s Lemma over Rk                              37
+
+
+one immediately finds [as a natural relative of (4.12)] that
+
+       |F (t1 , . . . , tk ) − G(t1 , . . . , tk )|                                (4.31)
+                    X Z Ω1          Z Ωk                   Y 1 Y 1 Y
+            k
+        ≦ 2 c1                  ···           |DC (ϕ − ψ)|               δ(vj )d~v
+                            −Ω1       −Ωk                   |vj | |vj• |
+                  P                                     j∈C    j∈D       j∈B
+                 k
+                 X                   Z
+                   mℓ
+          + c2              + k∆−α         ( max |xj |)α (dF + |g|d~x)
+                       Ωℓ             Rk   1≦j≦k
+                 ℓ=1
+
+for every (t1 , . . . , tk ) ∈ Rk . Each D-entry can be improved slightly since, a
+couple lines earlier, we could have just as easily written
+           1                 1           1             1            1    1 
+              + min |t∗j |,       = min       + |tj |,     + ∆,        +
+           Ωj               |vj |         Ωj           Ωj           Ωj   |vj |
+                                          2                    2    
+                                  ≦ min       + 2|tj |, 2∆,
+                                          Ωj                  |vj |
+                                             1            1 
+                                  = 2 min      + |tj |, • .
+                                           Ωj           |vj |
+
+Letting ∆ → ∞ in this improved version of things basically reproduces (4.12).
+   Going back to (4.31), the issue is now one of trying to restructure things
+so that all partitions but one (D = {1, . . . , k}) somehow disappear. For this
+purpose, we need to return to the proof of Theorem 4.8 and make several
+key modifications aimed at mollifying the 1/πiw - singularity in feΩ and e
+                                                                         gΩ (cf.
+(4.14)).
+   To simplify matters, it is helpful to first treat the case in which F has a
+continuous density function f (~x). We put
+
+                                            L = 2∆
+
+and initially work with any numbers {Ωj }kj=1 situated within (1/2π, ∞). We
+also set                 Z                         Z
+                    ~
+                FL (ξ) =                      ~
+                           f (~x)d~x and GL (ξ) =     g(~x)d~x ,
+                              A                                 A
+
+wherein
+                              A = (−L, ξ1 ] × · · · × (−L, ξk ]
+
+and each ξj is understood to exceed −L. Since
+          Qk                                    k
+                                 x∈R
+            j=1 (−∞, ξj ] − A j {~                  : xℓ ≦ −L for some index ℓ},
+
+it is self-evident that
+          (                        R                        )
+                            ~ ≦ L−α k max1≦j≦k |xj | α f d~x
+                    ~ − FL (ξ)
+             0 ≦ F (ξ)              R
+                                   R                          .                   (4.32)
+                           ~ ≦ L−α k max1≦j≦ℓ |xj | α |g|d~x
+                   ~ − GL (ξ)|
+               |G(ξ)                 R
+38                 Gaussians, Zeros, and Linear Combinations                [Part A]
+
+
+   The plan is to now bound |FL (ξ)~ − GL (ξ)|
+                                             ~ by mimicking the considerations
+utilized near equation (4.16) in the proof of Theorem 4.8. With ξ~ temporarily
+frozen, we define
+                      χj (x) = χ(−L,ξj ] (x)   (1 ≦ j ≦ k)
+and observe that
+
+                      χA (~x) = χ1 (x1 ) · · · χk (xk )
+                                Z
+                  ~ − GL (ξ)
+              FL (ξ)       ~ =      (f − g) χ1 (x1 ) · · · χk (xk ) d~x .
+                                    Rk
+
+Dropping the subscript j, we also note (cf. (2.10)) that
+
+  b[Ω(x + L)] − B[Ω(x − ξ)]                 B[Ω(x + L)] − b[Ω(x − ξ)]
+                            ≦ χ(−L,ξ] (x) ≦                           (4.33)
+              2                                        2
+
+for all x ∈ R (the points −L and ξ being handled via trivial limits). By
+Theorem 2.2(a), the extreme members of (4.33) have a difference equal to
+K[Ω(x + L)] + K[Ω(x − ξ)].
+   Following (4.14), we express the minorant portion of (4.33) as a Fourier
+transform
+                    I
+          e        1 Ω n e2πiLw    e−2πiξw o 2πixw
+          fΩ (x) =              −           e      dw
+                   2 −Ω    πiw      πiw
+                    Z
+                   1 Ω n e2πiLw     w  e−2πiξw       w o 2πixw
+                 +              Rb     −          RB      e      dw
+                   2 −Ω     Ω       Ω        Ω        Ω
+
+and proceed similarly with the majorant (calling it geΩ ). Each “brace” is clearly
+Hermitian w.r.t. w. In marked contrast, however, to what happened previously,
+the first brace is now a continuous function on [−Ω, Ω]; its value is simply
+
+                               sin[π(L + ξ)w] πi(L−ξ)w
+                           2                 e         .
+                                     πw
+At the same time, it is also natural to write
+
+                            e2πiLw    w  e−2πiξw    w
+                   R− (w) =        Rb    −        RB    ;
+                              Ω       Ω     Ω        Ω
+                            e2πiLw    w  e−2πiξw    w
+                   R+ (w) =        RB    −        Rb     .
+                              Ω       Ω      Ω       Ω
+One clearly has
+                                               O(1)
+                                  |R± (w)| =
+                                                Ω
+with an implied constant that is absolute (the value 15/4 certainly works here
+as a bit of elementary calculus shows).
+   With the essential components all in place, the earlier reasoning [beginning
+                                      Esseen’s Lemma over Rk                                                  39
+
+
+at (4.16)] is readily repeated with P = hφ, C, Di and leads to
+         ~ − GL (ξ)|
+    |FL (ξ)       ~
+               Z Ω1     Z Ωk                     k 
+                                                Y    | sin πwj (L + ξj )|   1 
+          ≦ c7      ···      |ϕ(2π w)
+                                   ~ − ψ(2π w)|
+                                            ~                             +     dw
+                                                                                 ~
+                −Ω1      −Ωk                    j=1
+                                                            π|wj |          Ωj
+                      k
+                      X mℓ
+           + 2 k c3              .
+                            Ωℓ
+                      ℓ=1
+
+
+The coefficient 2k c3 arises from (4.18), the fact that
+                 Z ∞
+                                                          2
+                      {K[Ωℓ (x + L)] + K[Ωℓ (x − ξ)]}dx =     ,
+                   −∞                                     Ω ℓ
+
+and the possibility that each δj , εj [in Lemma 4.3] can theoretically become as
+large as 2 (cf. just after (4.33)).
+   In situations where |ξj | ≦ ∆, we clearly have
+
+             | sin πwj (L + ξj )|        1                       1 3 
+                                  ≦ min         , |L + ξj | ≦ min       , L
+                     π|wj |              π|wj |                    |wj | 2
+          1     | sin(∗ ∗ ∗)|        1    1       1    3          2          
+             +                ≦ min     +       ,     + L ≦ min            , 5L
+          Ωj        π|wj |           Ωj   |wj | Ωj      2            |wj |
+
+on {|wj | ≦ Ωj }, since 1/Ωj < 2π < πL. Here, then,
+                                 Z Ω1            Z Ωk                               k
+                                                                                    Y            1       
+     ~ − GL (ξ)|
+|FL (ξ)      ~ ≦ 5k c7                     ···          |ϕ(2π w)
+                                                              ~ − ψ(2π w)|
+                                                                       ~                  min          , L dw
+                                                                                                            ~
+                                     −Ω1          −Ωk                                            |wj |
+                                                                                    j=1
+                                 k
+                                 X     mℓ
+                      + 2k c3             .
+                                       Ωℓ
+                                 ℓ=1
+
+  Putting vj = 2πwj and temporarily writing Ωℓ = Eℓ /2π now gives
+                                       Z Ω1            Z Ωk                       k
+                                                                                  Y
+         ~ − GL (ξ)|
+                 ~ ≦ 5k c7                                                                     1
+    |FL (ξ)                                      ···          |ϕ(~v ) − ψ(~v )|         min         , ∆)d~v
+                                           −Ω1          −Ωk                                   |vj |
+                                                                                  j=1
+                                             k
+                                             X     mℓ
+                            + 2k (2πc3 )
+                                                   Ωℓ
+                                             ℓ=1
+
+for the original Ωj satisfying min(Ω1 , . . . , Ωk ) > 1. (Observe that 2πc3 is simply
+the coefficient c2 that occurred earlier in (4.12); cf. (4.18).) Relation (4.29)
+follows upon taking ξj = t∗j , noticing that
+
+   |F (tj ) − G(tj )| ≦ |F (tj ) − F (t∗j )| + |F (t∗j ) − FL (t∗j )|                                    (4.34)
+                      + |FL (t∗j ) − GL (t∗j )| + |GL (t∗j ) − G(t∗j )| + |G(t∗j ) − G(tj )| ,
+
+and finally substituting (4.30) + (4.32).
+40                   Gaussians, Zeros, and Linear Combinations                           [Part A]
+
+
+   The case of an arbitrary F is handled by the usual convolution argument.
+In this connection, it may be worthwhile to point out that, while
+
+          E[ (max |Uj ± Yj |)α ]1/α ≦ E[ (max |Uj | + max |Yj |)α ]1/α
+               j                                j              j
+                                                        α 1/α
+                                     ≦ E[ (max |Uj |) ]            + E[ (max |Yj |)α ]1/α
+                                                j                              j
+
+is completely standard for α ≧ 1, the elementary inequality
+
+                   (|x1 | + |x2 |)ω ≦ |x1 |ω + |x2 |ω    for           0<ω<1
+
+leads to
+
+               E[ (max |Uj ± Yj |)α ] ≦ E[ (max |Uj | + max |Yj |)α ]
+                    j                               j              j
+
+                                        ≦ E[ (max |Uj |) + (max |Yj |)α ]
+                                                          α
+                                                    j                  j
+
+                                        = E[ (max |Uj |) ] + E[ (max |Yj |)α ]
+                                                          α
+                                                    j                      j
+                                                                                            hki
+when 0 < α < 1. In either situation, taking a multivariate Gaussian Nε                            for
+Y and letting ε → 0 clearly leads to no change in constants in (4.29). 
+
+  By making a slight adaptation in the foregoing argument, the following result
+parallel to Theorem 4.8A is obtained virtually immediately.
+
+Theorem 4.8B. Given the situation of Theorem 4.8 and any number D > 0.
+Assume further that min(Ω1 , . . . , Ωk ) > 1. Writing v • = v/ min{1, ∆|v|} with
+∆ = 1 + D, and taking
+                                    Q
+                        Aab = kj=1 (aj , bj ] j Rk ,
+
+we then have, in the sense of measures,
+                                 Z Ω1         Z Ωk                            X mℓ  k
+                                                  |ϕ(~v ) − ψ(~v )|
+     |F {Aab } − G{Aab }| ≦ c8          ···           •          •   d~v + c9               (4.35)
+                                  −Ω1          −Ωk |v1 | · · · |vk |            Ωℓ
+                                                                                   ℓ=1
+
+whenever 0 ≦ bj − aj ≦ D . The coefficients c8 and c9 will depend solely on k.
+
+
+Proof. The crux of the matter begins just prior to (4.33); one simply replaces
+−L by aj and ξj by bj , and proceeds from there. Taking Ωj > 1/2π as before,
+the key observation is that, on {|wj | ≦ Ωj },
+
+                1    | sin πwj (bj − aj )|    1
+                                                           1
+                                                                                    
+                   +                       ≦    + min            , |bj − aj |
+                Ωj          π|wj |           Ωj           π|wj |
+                                                    1              
+                                           ≦ 2 min        ,π+D .
+                                                    |wj |
+
+This quickly produces (4.35) with c8 = 2k c7 and c9 = 2k (2πc3 ) = 2k c2 . 
+                                 Esseen’s Lemma over Rk                                      41
+
+
+   As a k-dimensional counterpart to Corollary 3.4, one now has
+
+Corollary 4.12. Given probability distributions Fn and G on Rk having
+characteristic functions ϕn and ψ. Assume that G has a continuous density
+function g(~x) which satisfies (4.9) and (4.10) of Theorem 4.8. Assume further
+that
+       R
+(i)           xk∞ )α dFn (~x) = O(1) ;
+         Rk (k~
+(ii)   ϕn (~v ) → ψ(~v ) pointwise on Rk as n → ∞ .
+We then have
+                                       Fn (~x) → G(~x)
+uniformly on Rk . An analogous result holds when n is replaced by a continuous
+variable ξ.
+
+Proof. An easy consequence of either Theorem 4.8A or 4.8B as the the cut-off
+parameter ∆ is moved upward incrementally. In the case of 4.8B, one exploits
+the double cut-off idea implicit in (4.30)+(4.32) with, say, 14 ∆ in place of ∆
+and keeps ξj ∈ [− L2 , L2 ] in relation (4.32). The essential observation is then
+(4.34). See (4.6)+(4.4) concerning the necessary Hölder estimates. (Recall too
+§3.6 and our earlier comment about continuous distributions P.) 
+
+   If (i) holds with some α > ℓ (ℓ ∈ Z+ ), and D is any partial derivative w.r.t.
+~v of order ≦ ℓ, the assertion Fn → G readily implies Dϕn ⇒ Dψ on compacta.
+ Similarly for the associated moments and absolute moments of dFn .
+
+4.13. Our third, and final, variant of Theorem 4.8 will arise from taking α = 1
+in (4.9), and then revisiting the proof of Theorem 4.8 aided by the circle-of-
+ideas looked at in §4.10. Though its statement over P will be simple enough
+(see (4.40) infra), the argument used in proving it will entail a bit of bookkeep-
+ing. It is helpful to lay the groundwork for this side of things first.
+   To that end, we begin by noticing, in connection with (4.25), that the func-
+tions Dj f, Ej f, ∆j f, Pj f , and Ej ∆j f are all Hermitian anytime f is; cf. §4.4.
+At the same time, we recall that
+                  Z γ2
+                        sin(tv)
+                                dv = O(1) for any γ2 > γ1 , t ∈ R             (4.36)
+                     γ1      v
+and
+                           δ(v) = aδ(av)      whenever       a > 0.                     (4.37)
+For C j {1, 2, . . . , k} and ~v ∈ Rk , we now write
+
+  Cb (~v ) = {j ∈ C : |vj | ≧ 1},    Cs (~v ) = {j ∈ C : |vj | < 1},    ( ∼ big/small )
+
+  EC (~v ) = {ξ~ : ξj = vj if j ∈
+                                / C, ξj = ±vj if j ∈ Cb (~v ), |ξj | ≦ |vj | if j ∈ Cs (~v )},
+
+  EC (~v ) = {ξ~ : ξj = vj if j ∈
+                                / C, ξj = ±vj if j ∈ Cb (~v ), |ξj | ≦ 1 if j ∈ Cs (~v )}.
+
+We also select any numbers F1 , . . . , Fk in (1, ∞) and then restrict ~v to lie in
+Q k
+  j=1 [−Fj , Fj ]. By applying the partition [−Fj , Fj ] = (−1, 1) ∪ {1 ≦ |vj | ≦ Fj },
+42                     Gaussians, Zeros, and Linear Combinations                             [Part A]
+
+         Q
+the box kj=1 [−Fj , Fj ] clearly splits into 2k symmetrically-shaped (generally
+disconnected) subregions. The set of interior points of each such subregion
+will be succinctly                                                            k
+                  Qkreferred to as a “slab.” Taking the union of all 2 of these
+slabs produces j=1 [−Fj , Fj ] apart from a set of (k-dimensional) measure 0.
+The resulting “grid” furnishes a natural underpinning for the obvious electrical
+short-circuit interpretation of the sets EC (~v ) and EC (~v ). Finally, let Sj = ∂/∂ξj
+as in §4.10 and ~v = 2π w~ . We thus have
+                     Q                               Q
+                ~v ∈ kj=1 [−Fj , Fj ] and        ~ ∈ kj=1 [−ωj , ωj ] ,
+                                                 w
+                  1
+wherein ωj = 2π     Fj .
+                                       Q
+   Associated with each f ∈ C 1 ( kj=1 [−Fj , Fj ]) and C j {1, 2, . . . , k} are two
+piecewise continuous functions, namely, |f |C and kf kC , that one introduces by
+writing
+                                                                               
+                           ~ : ξ~ ∈ EC (~v ) ,
+                 max |f (ξ)|                                     if Cs (~v ) = φ 
+  |f |C (~v ) =                                                                     (4.38)
+                                                                               
+                               ~     ~
+                  sup |(Sj f )(ξ)| : ξ ∈ EC (~v ), j ∈ Cs (~v ) , if Cs (~v ) > φ
+and
+                                                                                        
+                           ~ : ξ~ ∈ EC (~v ) ,
+                  max |f (ξ)|                                             if Cs (~v ) = φ 
+ kf kC (~v ) =                                                                                   (4.39)
+                                                                                          
+                                  ~ : ξ~ ∈ EC (~v ), j ∈ Cs (~v ) ,
+                     sup |(Sj f )(ξ)|                                      if Cs (~v ) > φ
+The functions |f |C and kf kC are clearly continuous on each slab.
+   Since kf kC typically manifests at least a partial dependence on ~v , there is a
+slight abuse of notation when we write (4.39). Needless to say,
+                         |f |C ≦ kf kC           and |f |φ = kf kφ = |f (~v )| .
+In working with |f |C and kf kC slab-by-slab, those variables vj for which j ∈ C
+should naturally be viewed as primary (or “active”). Those having j ∈    / C are
+best treated as auxiliaries.
+
+Theorem 4.8C. Consider the situation of Theorem 4.8. Assume that (4.9)
+holds with α = 1 and that the quantities Ωj satisfy min(Ω1 , . . . , Ωk ) > 1. Let
+v N = v/ min{1, |v|} (and 0N = 1) as in Theorem 4.8A. We then have
+         |F (t1 , . . . , tk ) − G(t1 , . . . , tk )|                                            (4.40)
+
+                              X Z Ω1             Z Ωk
+                                                      k ϕ − ψ kC Y 1 Y
+                     ≦b
+                      c1                   ···        Q        N       δ(vj )d~v
+                              P      −Ω1          −Ωk    j∈C |vj | Ωj
+                                                                   j∈D     j∈B
+                              k
+                              X mℓ
+                       + c2
+                                     Ωℓ
+                               ℓ=1
+
+at every point (t1 , . . . , tk ) ∈ Rk , wherein b
+                                                 c1 and c2 are certain [explicitly com-
+putable] positive constants that depend solely on k. The constant c2 is identical
+to the one that occurs in (4.12).
+                                  Esseen’s Lemma over Rk                                                43
+
+
+Proof. The basic idea is very simple: one merely repeats the proof of Theorem
+4.8 up to (4.20) with ωj in place of Ωj , and then, after making a trivial “switch
+over” to ~v = 2π w
+                 ~ and (ωj , Fj ), applies (4.25), (4.27), and (4.36) in a natural
+way to bound the value of the associated d~v – integral on a slab-by-slab basis.
+   The essential steps in the argument go as follows. Let TBDC1 C2 d~v signify the
+updated integrand in (4.20), including any trivial Q-coefficients. Clearly
+                      Y               Y 1              v  Y                      Y
+                 b
+      TBDC1 C2 = A          δ(vj )                R∗     j
+                                                                        e−ivj tj          e−ivj tj   (4.41)
+                                             Fj        Fj
+                      j∈B             j∈D                     j∈B∪D                j∈C1
+                                DC1 (ϕ − ψ)(~v ) Y
+                                                               sin(v t ) 
+                                                                      j j
+                            ·    Q                                            ,
+                                   j∈C1 (ivj )                     vj
+                                                       j∈C2
+
+
+where Ab is some real constant depending solely on k, B, D, C1 , C2 and whether
+the RHS of (4.41) is attached to either the majorant or minorant track. Note
+that T∗ is Hermitian w.r.t. ~v ; cf. §4.4. After fixing any number η in (0, 1/k],
+say, 1/k, we set |v|⋆ = max{|v|, |v|1−η } and form the quantity
+                X Z F1                Z Fk
+                                           |ϕ − ψ|C′ Y 1 Y
+          b
+        Q≡C                     ···        Q                    δ(vj )d~v ,                          (4.42)
+                 P′    −F1             −Fk   j∈C′ |vj |⋆ ′
+                                                           Fj ′ j∈D         j∈B
+
+                                             b is some sufficiently large constant
+wherein P′ = hB′ , C′ , D′ i à la §4.7, and C
+depending solely on k.                                                R
+   Let S be any slab. The plan is to show that the real number S TBDC1 C2 d~v
+splits into at most 2k summands, each of which has absolute value majorized
+by some summand of Q (restricted, of course, to S). No specific relation is
+implied here between {B, D, C1 , C2 } and {B′ , D′ , C′ }. Since
+                                                 Z 1
+                                                        1
+               |ϕ − ψ|C′ ≦ kϕ − ψkC′ and                   dv < +∞ ,
+                                                                   −1 |v|⋆
+
+once this inclusion property is shown, estimate (4.40) follows immediately.
+    With S and {B, D, C1 , C2 } now viewed as fixed, there is obviously no loss of
+generality if we assume that things have been relabelled so that:
+(i) the portion of C2 “having” |vj | < 1 w.r.t. S is {1, 2, . . . , N };
+(ii) C1 = {N + 1, . . . , m};
+(iii) C2 − {1, . . . , N } = {m + 1, . . . , M }.
+The integers N, m, M are adapted to any empty sets in the obvious way.
+    Letting h = ϕ − ψ, we next write h = I h, where
+                                         N
+                                         Y
+                                  I=           (Pj + Dj + Ej ∆j )
+                                         j=1
+
+à la (4.25). This decomposes the function h into 3N summands
+                                                       QN         of the form
+W h, wherein each W is a “word” in (i.e., element of)    j=1 {Pj Dj , Ej ∆j }.
+                                                                 ,
+              R
+The number S TBDC1 C2 d~v (= T S, for short) decomposes similarly. We stress
+here that C1 ∩ C2 = φ.
+44                 Gaussians, Zeros, and Linear Combinations                         [Part A]
+
+
+  Suppose for a moment that W contains some Dι . The function DC1 (W h) is
+odd w.r.t. vι . On the other hand, sin(vι tι )/vι is even. Since S is symmetric,
+the corresponding “chunk” of T S, viewed as an iterated Q  integral (cf. (4.41)), is
+therefore 0. In other words: we need only look at W ∈ N      j=1 {Pj , Ej ∆j }.
+  At this point, one is finally free to take, w.l.o.g.,
+           Qn            QN                                QN                Qn           
+     W =    j=1 Ej ∆j     j=n+1 Pj        and DC1 W h =      j=n+1 Pj   DC1    j=1 Ej ∆j       h.
+
+Referring back to (4.41), one readily sees that the corresponding summand of
+T S is real and factors into
+                                  N
+                                  Y    Z 1 sin(t v )    
+                                                 j j
+                       IN [n + 1]                     dvj ,
+                                                −1     vj
+                                     j=n+1
+
+wherein (4.36) applies and IN [n+1] is a certain iterated integral in the variables
+{vj : j ∈ [1, k], j ∈
+                    / [n + 1, N ]} having a “level parameter” (vn+1 , . . . , vN ) that
+has been set equal to (0, . . . , 0). The integrand in this more general expression
+is simply (4.41) with its {n + 1 ≦ j ≦ N } (sine quotient) terms replaced by 1
+and its numerator entry DC1 (ϕ − ψ) replaced by
+                                DC1 (E1 ∆1 ) · · · (En ∆n )h .                         (4.43)
+The interpretation of (vn+1 , . . . , vN ) as a level parameter makes eminently good
+sense near (0, . . . , 0) and fits with §4.6. The C2 entries “still standing” in the
+integrand have value
+                          n 
+                          Y                Y
+                                            M  sin(t v ) 
+                              sin(tj vj )            j j
+                                                                  .
+                                     vj                     vj
+                          j=1                 j=m+1
+
+Note that, in the second half of this product, one has |vj | > 1; cf. (iii).
+   With W fixed, we now form the absolute value of our T S - summand and
+apply relations (4.41), (4.36), (4.43), and (4.27) with ℓ = n and h = 1 (or
+possibly 0). See also (4.24). After reviewing definition (4.38), dividing C1 into
+two chunks (à la s/b), and doing a bit of slow but elementary bookkeeping, one
+finds an obvious inclusion w.r.t. Q over S, wherein
+
+  B′ = B ∪ {n + 1, . . . , N }, D′ = D, C′ = C1 ∪ {1, . . . , n} ∪ {m + 1, . . . , M }.
+
+The key point is that L ≦ k in (4.27); note too that use of |h|C′ in (4.42)
+actually corresponds to making a convenient overshoot in the Mσ -terms.
+   This completes the proof of (4.40) with Fj in place of Ωj . 
+
+   By restricting one’s attention to those T∗ having C2 = φ, it is immediately
+seen that the B′ D′ C′ -process “visits” every portion of Q as S varies. It also
+goes without saying here that the “1” appearing in Cb (~v ), Cs (~v ), EC (~v ), etc,
+can be replaced by any other positive constant τ , as need be.
+
+4.14. Just as in the case of R1 , the single most common application “of all
+this” is a result that ensues nearly immediately from Corollary 4.12; viz., the
+central limit theorem ([Cr, p.112]) for a sum of N identically distributed, inde-
+                        More on The Central Limit Theorem                                   45
+
+
+pendent, vector-valued random variables X   ~ .
+                                        √ n j
+   One simply looks at ϕn (~v ) = ϕ(~v / n) , where ϕ is the characteristic func-
+tion of the common distribution function F (~x). We assume herein that
+             Z                                           Z                   
+                    ~x dF (~x) = ~0        and    rank             xj xℓ dF       = k.   (4.44)
+               Rk                                             Rk
+
+(Cf. (4.10) and [Cr, p.109 (145)].) The key technical ingredient in verifying
+hypothesis (ii) in Corollary 4.12 is the rudimentary fact that
+
+          eit = 1 + it + 21 (it)2 + O(|t|2 ) min{1, |t|}            for   t∈R.
+
+In condition (i), one naturally takes α equal to 2.
+
+4.15. From the standpoint of modern probability theory, estimates like (4.12),
+(4.29), (4.35), and (4.40) [with genesis in Lemma 4.3] have a structural style
+that is slightly dated. In §5.13, we’ll cite a few references that help to connect
+things to the more recent literature - and to smoothing ideas of other sorts.
+
+
+            §5. More on The Central Limit Theorem
+
+5.1. With its rich history and multitude of formulations, the central limit
+theorem ([Cr, Fel1, Fel2, Usp, Po2]) is aptly regarded as one of the main results
+in classical probability theory.
+   In the first part of this section, we’ll use Corollary 4.12 to quickly establish
+two [low-level] variants of the C.L.T. having particular relevance for our later
+work with logarithms of L-functions. To keep matters simple, we’ll formu-
+late things in a Liapounov style and restrict ourselves to contexts where, after
+rescaling, the underlying sequence of independent random variables {Xj }∞      j=1
+has a common distribution function F (z) on C ( ∼    = R2 ).
+
+5.2. It is helpful to begin by recalling several very basic inequalities. For this
+purpose, let n ≧ 0, N ≧ 1, m ≧ 2, λ ≧ 1, and xj ∈ [0, ∞). Put
+
+             sN = (x21 + · · · + x2N )1/2 ,        BN = max{x1 , . . . , xN } ,
+
+and let Θ signify a complex number (not always the same) having modulus no
+bigger than 1. We then have:
+                               n
+                               X
+                         it      (it)k            |t|n+1
+                        e =                 +Θ                for t ∈ R                   (5.1)
+                                      k!         (n + 1)!
+                               k=0
+
+                          Log(1 + z) = z + Θ|z|2         for |z| ≦ 12                     (5.2)
+                         m
+                         X            m
+                                      X            m
+                                                   X
+                                 1              1       1
+               Bm ≦           xλj λ ≦   xj ≦ m1− λ   xj λ λ ≦ mBm                         (5.3)
+                          1            j=1                    1
+46                 Gaussians, Zeros, and Linear Combinations                                   [Part A]
+
+                   B 3                 N
+                                     1 X 3     BN
+                      N
+                               ≦           x ≦                   anytime      sN 6= 0.            (5.4)
+                     sN             s3N j=1 j  sN
+
+Relation (5.1) follows from the identity
+                                                     Z t
+                                         eit = 1 +           ieiu du
+                                                         0
+
+by a trivial induction. At the same time, one also sees that
+                                 n
+                                 X
+                          it       (it)k                 21−ω |t|n+ω
+                          e =                  +Θ                                                 (5.5)
+                                         k!          (1)(1 + ω)...(n + ω)
+                                 k=0
+
+for any ω ∈ [0, 1). The remainder term in (5.1) thus admits the alternate format
+                                       n |t|n+1          2|t|n o
+                               Θ min                 ,           .                             (5.1bis)
+                                          (n + 1)!        n!
+
+Notice too that, in relation (5.3), the first and last terms simply correspond to
+taking λ = ∞ for each fixed m.
+
+5.3. Let {Xj }∞
+              j=1 now be any sequence of complex-valued , mutually indepen-
+dent random variables having a common distribution function F (z) on C .
+Assume that F satisfies
+                          Z
+                             |z|3 dF (z) = ρ3 < ∞                      (5.6)
+                                     C
+
+in addition to
+    Z                 Z                                  Z
+                                2              2
+        z dF = 0 ,            |z| dF = 2β ,                      z 2 dF = 0     with β > 0 .      (5.7)
+      C                   C                                  C
+
+(Cf. Remark 5.10 concerning the z 2 - integral.) Put z = x + iy as usual and
+then define the characteristic function of F by writing
+                        Z
+                 ϕ(ξ) =      exp[i Re(ξz)] dF (z)  for ξ ∈ C .          (5.8)
+                                C
+
+Taking ξ = v1 + iv2 gives the standard R2 – version. Similarly for any other
+distribution function Farb on C . The RHS of (5.8) is, of course, nothing other
+than E[exp(i Re(ξ Y )] with Y = Xj .
+
+Theorem 5.4. With F and Xj as above, let {bj }∞
+                                              j=1 be any sequence of complex
+numbers such that bj 6≡ 0 and
+                                               N
+                                               X |bj |3
+                                         lim                     = 0,                             (5.9)
+                                       N →∞              s3N
+                                               j=1
+
+wherein sN = (|b1 |2 + · · · + |bN |2 )1/2 . For t ∈ R, let At = (−∞, t]. In the limit
+of large N , the random variable
+                                                         N
+                                             1 X
+                                       TN ≡      bj Xj
+                                            sN
+                                                         j=1
+                     More on The Central Limit Theorem                                                47
+
+
+will then become distributed like a complex Gaussian; i.e.,
+                                               Z x Z y
+                                   1 2                                        u2 + v 2 
+   Pr{TN ∈ Ax × Ay } →            √                                 exp −                 dv du   (5.10)
+                                 β 2π            −∞       −∞                     2β 2
+
+for every (x, y) ∈ R2 . The convergence will be uniform w.r.t. x and y.
+
+Proof. By Hölder’s inequality, E(|TN |) ≦ (2β 2 )1/2 ≦ ρ. In view of Corollary
+4.12, it suffices to check that one has
+                                                              1
+                              ϕN (ξ) ⇒ exp(− β 2 |ξ|2 )
+                                                              2
+
+on every finite disk {|ξ| ≦ A}. Here ϕN is the characteristic function of TN .
+Since the Xj are independent, one immediately gets
+
+                                    N
+                                    Y                                    bj
+                         ϕN (ξ) =            ϕ(Uj ),              Uj ≡      ξ.
+                                                                         sN
+                                    j=1
+
+Using (5.1) and conditions (5.6)+(5.7), we quickly see that
+                  N 
+                  Y                                                 
+                        1               1               1
+         ϕN (ξ) =    1 − β 2 Re2 (Uj ) − β 2 Im2 (Uj ) + Θρ3 |Uj |3
+                              2                           2                          6
+                   j=1
+                  N 
+                  Y                             
+                        1            1
+                =    1 − β 2 |Uj |2 + Θρ3 |Uj |3 .                                                (5.11)
+                              2                      6
+                   j=1
+
+  Letting BN = max{|b1 |, . . . , |bN |}, one also knows by (5.4) that
+                                        BN
+                                           →0                                                     (5.9′ )
+                                        sN
+
+is equivalent to (5.9). With this point noted, we now keep N large enough to
+have, say,
+                            AB 2     XN 
+                                              A|bj | 3
+                                N
+                      4β 2         +2       ρ           < 1.
+                              sN               sN
+                                                 j=1
+
+  Bearing in mind that |Uj | ≦ ABN /sN , for some branch of the logarithm we
+then get:
+                           N 
+                           X                                                   
+                                        1 2         1
+           log ϕN (ξ) =             −     β |Uj |2 + Θρ3 |Uj |3
+                                        2           6
+                           j=1
+                              N
+                              X                                   2
+                                            1 2         1
+                          +         Θ         β |Uj |2 + ρ3 |Uj |3
+                                            2           6
+                              j=1
+                                    N
+                                    X                              N
+                                                                   X
+                            1                             1
+                         = − β2                  2
+                                             |Uj |       + Θ             ρ3 |Uj |3
+                            2                             6
+                                    j=1                            j=1
+48                  Gaussians, Zeros, and Linear Combinations                         [Part A]
+
+                                    N
+                                    X                N
+                                                     X
+                               1                4 1             2
+                            + Θ           β|Uj | + Θ   ρ3 |Uj |3
+                               2                         18
+                                    j=1                         j=1
+                                    N
+                                    X                    N
+                                                         X
+                               1                     1
+                          = − β2          |Uj |2 + Θ            ρ3 |Uj |3
+                               2                     6
+                                    j=1                  j=1
+                                    N 
+                                    X                         
+                               1
+                            + Θ        β 3 |Uj |3 + ρ3 |Uj |3               {β ≦ ρ}
+                               4
+                                    j=1
+                                    N
+                                    X                    N
+                                                         X
+                               1                     2
+                          = − β2          |Uj |2 + Θ            ρ3 |Uj |3
+                               2                     3
+                                    j=1                   j=1
+                                                         N
+                                                         X
+                               1           2               |bj |3
+                          = − β 2 |ξ|2 + Θρ3 A3                        .
+                               2           3                    s3N
+                                                         j=1
+
+ Upon exponentiating and letting N → ∞, the desired convergence of ϕN (ξ)
+follows at once. 
+
+   Prior to continuing, it is convenient to pause for several comments concern-
+ing the R – analog of Theorem 5.4. To this end, let E(x) be any probability
+distribution on R satisfying an analog of (5.6)+(5.7) with respective values
+{ρ3E ; 0, β 2 , β 2 }. Let {(Xj , Yj )}∞
+                                       j=1 be any i.i.d. sequence of random variables
+      2
+on R associated with the product measure dE × dE. The corresponding F (z)
+clearly satisfies (5.6)+(5.7). The following result is now immediate either by
+imitating the proof of Theorem 5.4 or simply putting y = ∞ in (5.10).
+
+Corollary 5.5. (The R – analog of Theorem 5.4.) Given E and independent
+random variables {Xj }∞                        ∞
+                        j=1 as above. Let {bj }j=1 be any sequence of real numbers
+(6≡ 0) satisfying condition (5.9). Write
+                                               N
+                                         1 X
+                                   TN ≡      bj X j .
+                                        sN
+                                               j=1
+
+In the limit of large N , we then have
+                                               Z x
+                                   1                                   u2 
+                     Pr{TN ≦ x} → √                      exp −              du
+                                 β 2π           −∞                    2β 2
+
+for every x ∈ R. The convergence will be uniform w.r.t. x.
+
+   Corollary 5.5 dates back to Liapounov (1901); cf. [Lia]. Either of the indi-
+cated proofs immediately adapts to encompass the nominally broader frame-
+work of (2 + δ) - moments and non-identically distributed, β 2 -normalized Xj
+that one traditionally uses in stating this result. Cf. estimate (5.5) and [Usp,
+p.284], [Cr, §VI.4], [Bil, p.371(27.16)].20 For effective versions of Corollary 5.5,
+  20
+    The numerators in (5.9) are now modified to include appropriate ρ2+δ
+                                                                      j  factors arising from
+the measures dEj . (Cf. the many ρ3 |Uj |3 terms in the proof of Theorem 5.4.)
+                       More on The Central Limit Theorem                       49
+
+
+see, e.g., [Ess, p.43] or [Fel2, p.544]. A quick look at [Fel3, theorem 1] is also
+illuminating.
+
+Remark 5.6. When the variables Xj have their support restricted to a finite
+interval [−∆, ∆], it is also feasible to obtain Corollary 5.5 by a consideration
+of TN - moments. Cf. [Bil, pp.407 (example 30.1) – 410]. Note that, by (5.4),
+Billingsley’s limit hypothesis (30.5) basically coincides with (5.9).
+   Markov showed in 1913 that, with a bit of ingenuity in forming truncated
+variables, the moment method could be successfully recast (i.e., “partitioned”)
+to yield Corollary 5.5 in full generality. Cf. [Usp, pp.388–395] and [Bil, p.600
+(30.1)]. An analogous splitting will come up later in connection with logarithms
+of Euler products.
+
+5.7. In our second C.L.T. variant, we employ a kind of vector “twist” to “lift”
+the Gaussian of Theorem 5.4 up to a related one on CJ . The twist is induced
+by replacing the earlier coefficients bn (note the change of index j ֒→ n) with
+a string of appropriately-behaved column vectors ~bn ∈ CJ .
+   To keep the new Gaussian as unencumbered as possible, we normalize things
+by insisting that
+                                       N
+                             1 X         t       
+                        lim  2   bn,j bn,ℓ = βj δjℓ                        (5.12)
+                       N →∞ σN
+                                     n=1
+
+hold in the sense of matrix addition for certain βj > 0 and certain monotonically
+increasing positive scaling factors σN . [Observe that each J × J summand in
+(5.12) is nonnegative-definite; the thought of transforming (5.12) under a uni-
+tary change of basis is thus present here virtually ab initio. Notice too that
+each summand is preserved under the “local” action ~bn 7→ exp(iωn )~bn . ]
+
+Theorem 5.8. Let {Xn }∞    n=1 be any sequence of complex-valued independent
+random variables having a common distribution function F (z), where F satis-
+fies both (5.6) and (5.7). Let {bn,j , σN , βj } be as in (5.12). Assume that
+                                       N X
+                                       X J
+                                           |bn,j |3
+                               lim                 3      = 0.             (5.13)
+                              N →∞
+                                       n=1 j=1
+                                                  σN
+
+In the limit of large N , the CJ - valued random variable
+                                             N
+                                     1 X
+                               TN ≡      Xn (bn,j )
+                                    σN
+                                            n=1
+
+then becomes distributed like a multivariate Gaussian
+                 Z
+                     QJ       1            |w |2  QJ
+                       j=1       2
+                                   exp − j 2        j=1 duj dvj            (5.14)
+                   E          2πβj β              2βj β
+
+wherein E j CJ and wj ≡ uj + ivj corresponds to the j th component of TN .
+50                    Gaussians, Zeros, and Linear Combinations                                 [Part A]
+
+
+Proof. One simply modifies the approach used over C1 . We need to check [in
+an obvious notation] that
+                                                         QJ                1                    
+          ϕN (ζ1 , κ1 , ζ2 , κ2 , . . . , ζJ , κJ ) ⇒        j=1 exp   −     βj β 2 (ζj2 + κ2j )
+                                                                           2
+
+holds on every compact subset of R2J . To verify this, it is natural to write
+ξj = ζj + iκj and then look at
+                                             P                  
+              ϕN (ξ1 , . . . , ξJ ) = E exp(i Jj=1 Re(ξ j TN,j ))
+                                             1 PJ PN                        
+                                    = E exp(i     j=1    n=1 Re(ξ j bn,j Xn )
+                                                    σN
+
+on the multidisk {|ξ1 | ≦ A, . . . , |ξJ | ≦ A}. Putting
+                                            Z
+                                 ϕ(ξ) =          exp[i Re(ξ z)]dF (z)
+                                             C
+
+as in (5.8) and using the independence of Xn , we first see that
+
+                                           N
+                                           Y                                J
+                                                                    1 X
+                 ϕN (ξ1 , . . . , ξJ ) =         ϕ(Un ),      Un ≡      bn,j ξj .
+                                                                   σN
+                                           n=1                             j=1
+
+
+From (5.11), we then get
+
+                                           N 
+                                           Y                                 
+                                                     1            1
+                 ϕN (ξ1 , . . . , ξJ ) =          1 − β 2 |Un |2 + Θρ3 |Un |3 .
+                                                         2             6
+                                           n=1
+
+
+     By applying (5.3) with xj = |wj |, one immediately checks that
+
+                                   1   kwk
+                                        ~ ∞   kwk
+                                               ~ λ
+                                     ≦      ≦      ≦ 1                                              (5.15)
+                                   J   kwk
+                                        ~ 1   kwk
+                                               ~ 1
+
+        ~ ∈ CJ and 1 ≦ λ < ∞. Temporarily fixing any µ ∈ [1, ∞), we now
+for any w
+write Cn = k~bn kµ and avail ourselves of (5.4)+(5.15) to see that
+
+                                           DN
+                                              →0                                                    (5.13′ )
+                                           σN
+
+with DN = max{C1 , ..., CN } is equivalent to (5.13). Cf. (5.9′ ).
+  At this point, we set µ = 1, so that |Un | ≦ ACn /σN , and then keep N large
+enough to have
+                           AD 2      XN 
+                                               ACn 3
+                               N
+                     4β 2          +2        ρ        < 1.
+                             σN        n=1
+                                               σ N
+
+For some branch of the logarithm, we finally get
+                              More on The Central Limit Theorem                                           51
+
+                                                 N 
+                                                 X                                             
+                                                              1                1
+                log ϕN (ξ1 , . . . , ξJ ) =               − β 2 |Un |2 + Θρ3 |Un |3
+                                                              2                6
+                                                n=1
+                                                 XN                                     2
+                                                                  1 2         1
+                                                +         Θ         β |Un |2 + ρ3 |Un |3
+                                                                  2           6
+                                                    n=1
+                                                          N
+                                                          X                        N
+                                                                                   X
+                                                    1                      2
+                                           = − β2                 |Un |2 + Θ             ρ3 |Un |3
+                                                    2                      3
+                                                          n=1                      n=1
+                                                          XN                              N
+                                                                                          X
+                                              1                            2                C3     n
+                                           = − β2                     2
+                                                                  |Un |   + Θρ3 A3
+                                              2
+                                                          n=1
+                                                                           3                 σ3
+                                                                                          n=1 N
+
+exactly as in the proof of Theorem 5.4. Since Cn ≦ J 2/3 k~bn k3 by (5.3), and
+                        N
+                        X                         X J
+                                                  J X                          N
+                  1 2              2    1                                 1 X          
+                    β          |Un |   = β2                       ξ j ξℓ 2    bn,j bn,ℓ ,
+                  2                     2                                σN
+                        n=1                         j=1 ℓ=1                 n=1
+
+the desired convergence of ϕN (ξ1 , . . . , ξJ ) follows at once. 
+
+  In situations where the coefficients bn,j are real and the probability distri-
+bution E(x) is as in Corollary 5.5, a temporary passage to dF = dE × dE in
+Theorem 5.8 immediately shows that
+                                                          N
+                                             1 X
+                                       SN ≡      Xn (bn,j )
+                                            σN
+                                                          n=1
+
+becomes Gaussian distributed like
+                Z
+                    QJ        1                                      u2j  QJ
+                                 j=1       p            exp −               j=1 duj                    (5.16)
+                          E            β       2πβj                 2βj β 2
+
+in the limit of large N over RJ . The case J = 1 reduces to a minor extension
+of Corollary 5.5.
+
+Remark 5.9. Theorem 5.8 is clearly a bit more “exotic” than Theorem 5.4.
+It is important to note, however, that both results are easy corollaries of the
+(now standard) Lindeberg formulation of the C.L.T. over R2J ; condition (5.7)
+enables the key link from CJ to R2J . Cf. [Cr, §§X.3, VI.3–4] and, for instance,
+[Fel2, pp.260–261, 263 (lines 5–6, 11–16)]. A quick look at the change-of-basis
+idea utilized in [Ber, pp.44–48 (top)] is also helpful. Seen from this perspective,
+Theorem 5.8 (with J > 1) is simply a form of the C.L.T. in which the successive
+random variable summands have their supports restricted to “thin” sets.
+   One very slight advantage to our “pedestrian level” proofs of Theorems 5.4
+and 5.8 is that, when viewed in conjunction with Theorems 4.8A–4.8C, mat-
+ters are explicit enough therein to furnish what would seem to be a convenient
+springboard for the development of some parallel results having well-controlled
+error terms, at least for box-like E . 21 Cf. [Fel2, pp.544–545].
+  21
+       In our later work with L-functions, dF will just be ordinary Haar measure on {|z| = 1}.
+52                 Gaussians, Zeros, and Linear Combinations                                       [Part A]
+
+
+Remark 5.10. Coming back to a point just touched on [concerning (5.7)],
+suppose for a few moments that, beyond having mean 0, distribution function
+F (z) merely satisfies E(|z|q ) < ∞ with some q ≧ 3. (Cf. (5.6).) Let k · k denote
+the Euclidean norm on CJ . In formulating Theorem 5.8, we have been guided
+by a desire to remain in a structural setting where:
+
+  (i) matters are robust enough to produce a good limit distribution for
+      TN anytime (5.12) holds and max{k~b1 k, ..., k~bN k}/σN = o(1) ; and,
+ (ii) in the process of that , every R2J - style second moment of TN is seen
+      to converge to some limit as N → ∞ .
+
+The essential point in (i) is that convergence should still occur even if the
+vectors ~bn are multiplied by arbitrary phase factors exp(iωn ).
+  In connection with (ii), thanks to the algebraic identity
+                                                             
+           x1 x2 x1 y 2       1    1 1      z1 z 2 z1 z2    1  1  i
+                            =                                         ,
+           y 1 x2 y 1 y 2     2   −i i      z 1 z 2 z 1 z2  2  1 −i
+
+we certainly want, e.g. for J = 1, the limiting covariance
+                                                          !
+                                   E(TN T N ) E(TN2 )
+                    M ≡ lim             2
+                           N →∞    E(T N )     E(T N TN )
+                                                √
+to exist. Taking |bn,1 | ≡ 1 and σN =               N produces
+                                                           B
+                                                                     !
+                                                    A      N CN
+                          M = lim               B
+                                                                           ,
+                                 N →∞
+                                                N CN          A
+
+with
+              Z                         Z                                          N
+                                                                                   X
+                     2
+         A=        |z| dF (z),   B=             z 2 dF (z),   and          CN =          b2n,1 .
+               C                            C                                      n=1
+
+   Putting A = 2β 2 > 0 w.l.o.g., and considering the effect of eiωn - twists in
+M, it is nearly self-evident that the coefficient B can only be 0. Similarly for
+J > 1. For this reason: the normalization (5.7) is basically forced on us in the
+present setting.
+   Further corroboration of this point ensues from the simple observation that,
+when q ≧ 4 and assumption (5.12) holds, convergence of TN in distribution
+automatically carries with it fulfillment of property (ii). One checks this by
+bounding the expectations of Re(TN,j )4 and Im(TN,j )4 for each j, and then
+exploiting
+      R    the comment made immediately after the proof of Corollary 4.12.
+Since zdF = 0, the only partitions of 4 that contribute nontrivially here are
+4 and 2 + 2; the aforementioned expectations are thus majorized by
+                                    X
+                                     N                    X
+                                                            N              
+                         constant
+                             4              k~bn k   2
+                                                                  k~bℓ k
+                                                                       2
+                                                                               .
+                           σN       n=1                    ℓ=1
+                           More on The Central Limit Theorem                                      53
+
+
+Compare: [Bil, pp.409(middle) – 410(top)]. By making use of the more sophis-
+ticated Marcinkiewicz-Zygmund inequality (see [MZ1, §8] or [MZ2, §3]) and the
+convexity of Θ(u) = uβ for β > 1, the foregoing observation is readily seen to
+hold for 2 < q < 4 as well.
+
+5.11. To wrap things up, it is now helpful to “make a slight change of gears.”
+Once one has available a reasonable Rk - analog of Esseen’s lemma, it becomes
+natural to contemplate finding k-variable counterparts for not only the clas-
+sical Berry-Esseen-type error estimates in the C.L.T., but also the related re-
+finements of uniform asymptotic type traditionally associated with the names
+of Edgeworth and Cramér. See [Cr, §X.3 (para 1)] for some early remarks on
+both issues, albeit from the standpoint of a slightly different type of smoothing,
+viz., [Cr, §§VII.3, VII.5–6]. 22
+   Though this report is clearly not the place for any sort of comprehensive
+discussion of these matters (the technical details being rather heavy even in
+the case of Theorems 5.4 and 5.8), it does seem reasonable to offer at least a
+few remarks on what can be achieved using Theorems 4.8A–4.8C in the classi-
+cal C.L.T. setting of §4.14. [The ready availability of a pre-existing literature
+here facilitates preparation of an intelligible commentary within the span of
+just a few pages.]
+
+5.12. In the i.i.d. situation of §4.14, one has
+                  1 ~                                                      P
+           T~n = √ (X             ~
+                      1 + · · · + Xn )        and      ψ(~v ) = exp(− 21       vj ajℓ vℓ ) ,
+                    n
+
+wherein ajℓ = E(xj xℓ ); cf. (4.44). The characteristic function ψ(~v ) corresponds
+to that of a k - variate Gaussian ([Cr, p.109 (144)]) having covariance matrix
+[ajℓ ]. Anytime the initial probability distribution F (~x) (of §4.14) satisfies
+                               Z
+                                          q
+                                     k~xk∞ dF < ∞                             (5.17)
+                                      Rk
+
+with an appropriately big q ≧ 3, there is a concomitant expectation that, after
+a modicum of calculation and parameter optimization, Theorems 4.8A–4.8C
+will each be found capable of producing quantitative refinements in the C.L.T.
+analogous to those known to hold in the case of one-variable.
+   In particular, insofar as the characteristic function ϕ of dF satisfies
+
+                                       lim sup |ϕ(~v )| < 1                                    (5.18)
+                                       k~
+                                        v k→∞
+
+[i.e., Cramér’s condition (C)], it should emerge rather quickly that there exist
+asymptotic developments of Edgeworth-type over Rk comparable to those ar-
+ticulated in, say, [Cr, §VII.5], [Ess, pp.48–52], and [Fel2, pp.539, 541(bot-
+tom)] for R1 . To help one appreciate the more formal side of things, a quick
+review of [Cr, pp.26 (lemma 1), 71 (lemma 2), 74 (lemma 3), 75 (102), 81 (C),
+ 22
+      In this connection, see also [Po2, pp.172 (lines 4–18), 177 (para 2)].
+54                   Gaussians, Zeros, and Linear Combinations                        [Part A]
+
+
+85, 86(101a)], [Ess, p.44(lemma 2)], and [vBa, pp.72–74(top)] is very useful.
+The paper by von Bahr deals specifically with Rk and has the added advantage
+                                    √
+of addressing derivatives of ϕ(~v / n)n as well; cf. his Lemmas 2 and 3. 23
+   Just as in the case of R1 , there are no real difficulties implementing these
+technical formalities in the overall calculation until it comes time to bound the
+final error term. The essential question then shifts to how small a size can
+be achieved in the latter through an appropriate choice of parameters. The
+outcome in this will naturally depend on the particular type of smoothing
+inequality that is available.
+   Theorem 2 in [vBa] shows that, under hypothesis (5.18), matters behave
+precisely as one would expect given the analogous results over R1 . von Bahr’s
+theorem serves to refine an earlier estimate (of Berry-Esseen type) obtained
+around twenty years earlier by H. Bergström; see [Berg1, pp.109, 121(top)] and
+[Berg2, p.40 (D)]. 24
+   In perusing this work, what becomes evident nearly immediately is that our
+Theorem 4.8 (with its DC - terms and related sum over P) manifests a certain
+structural similarity with [vBa, pp.77(8), 75(lemma 4)]. Likewise for Theorem
+4.8C. 25 In proving Theorem 4.8C, we have clearly been influenced by several
+aspects of this parallelism. (Cf., in particular, [vBa, pp.76(7), 77(line 14)]. The
+decomposition of I towards the middle of our proof can be seen as a natural
+counterpart of p.76(7).)
+   With these remarks as a backdrop, it should come as no big surprise that
+applying Theorem 4.8C in conjunction with [vBa, Lemma 3] is readily checked
+to lead to a result essentially identical to von Bahr’s Theorem 2. One simply
+takes
+                                        1 √
+                                Ωj = √ ( n)q−1
+                                              k
+as in [vBa, p.77(lines 17–18)] with q ≧ 3, observes that
+                                                  2
+                       0 ≦ |t|n exp(− 21 β|t| q−1 ) ≦ c1 (n, β, q)                      (5.19)
+                                    Pk           
+                                                n ψ
+                                       j=1 |tj |
+                   0 < c2 (k, ψ) ≦ Pk                ≦ c3 (k, ψ) < ∞                    (5.20)
+                                                nψ
+                                       j=1 |tj |
+
+for every n ≧ 0, β > 0, ψ > 0, and then focuses on estimating the d~v -integrals
+in (4.40) one partition at a time, aided by von Bahr’s Lemma 3. Writing
+           C = {1, 2, ..., δ} ,    D = {δ + 1, ..., r} ,     B = {r + 1, ..., k} ,
+w.l.o.g., it is helpful to collapse the region of integration down to
+                          Qr                  Qk
+                            j=1 [−Ωj , Ωj ] ×  j =r+1 {vj = 0}
+
+  23
+     Note that the α in Lemma 3 depends on the specifics of how (5.18) is fulfilled.
+  24
+     It is illuminating at this juncture to also have a look at [Rao, p.360, theorem 2] and
+the less polished, partial refinement obtained by [Dun, Sad] around 1966–68 utilizing Sadi-
+kova’s slightly nonlinear, but highly suggestive, two-dimensional variant of (3.1).
+  25
+     Readers for whom reference [vBa] is new may find it helpful to view this latter assertion
+in the more specific setting of [vBa, pp.74(line 5)(hT )(5), 75(top), 76(bottom), 77(lines 1-10,
+13-15, 18-19)]. Compare: [Berr, p.127(28)], [Fel2, pp.537(3.3)(3.6), 538(3.12)].
+                      More on The Central Limit Theorem                             55
+
+
+and then introduce slabs for j ∈ [1, δ]. In view of (4.39), there is no need to
+look at anything worse than a first derivative in Lemma 3. Since |vjN | ≧ 1 and
+               Z Ωj                       Z ∞
+                    1                                              2
+                      dvj = 2 ,                    exp(− 12 β|t| q−1 )dt < ∞ ,
+                   Ω
+                −Ωj j                         −∞
+
+one immediately recovers Theorem 2 of [vBa].
+   Utilization of Theorem 4.8B in place of 4.8C clearly produces a counterpart
+of Theorem 2 having an extra factor of size at most c10 (D+1)k in the final error
+term. (With a little more effort, (D + 1)k can be replaced by log k−1 (D + e) ;
+cf. (5.21)+(5.22) below.)
+   In the case of Theorem 4.8A, matters are slightly more involved due to
+the need to select appropriate values for both α and ∆ in (4.29). As will
+soon become apparent, however, the choice of α ∈ (0, q] is largely immaterial
+– in that any modifications therein lead to effects felt only at the level of the
+implied constant in the final error term. (That E(kT~n kα ) = O(1) for every α
+in [2, q] is an easy consequence of the Marcinkiewicz-Zygmund inequality; cf.
+the last four lines of Remark 5.10. Setting α = 2 is, of course, simplest.)
+                                                                              2
+   To bound (4.29), one starts by taking Ωj as above and letting γ = q−1        .
+We then note (using (5.20)) that
+          Z Ω1     Z Ωk
+                        k~v kq exp(−βk~vkγ )
+               ···                           d~v ≦ c4 (k, q)I(q)I(0)k−1 ,  (5.21)
+         −Ω1      −Ωk     |v1 | · · · |vk |
+                                •    •
+
+
+
+wherein k~v k is the standard Euclidean norm, ∆ > 1,
+                          Z ∞                b γ)
+                                      exp(−βv
+                 I(m) =         vm                dv         for       m≧0,
+                           0              v•
+
+and βb is some elementary fraction of β. Since 1/v • = min(∆, 1/v) for v > 0,
+it is natural to set v = w/∆ in I(m). By elementary calculus, this promptly
+gives
+                         I(m) = O(1)[1 + δm0 (log ∆)] ,                          (5.22)
+
+with an implied constant depending solely on (m, β, γ, k). Taking account of
+Lemma 3 and page 77 (lines 17–22) in [vBa], things are now optimized (modulo
+unimportant constants) by declaring ∆ = 10n(q−1)/2α . The resulting error
+term matches that of von Bahr’s Theorem 2 apart from an extra factor of
+(log n)k−1 . That is to say, with Theorem 4.8A, one ultimately obtains
+                                         1 q−2
+                   |Remainder| ≦ Cd(n) √         (log n)k−1 ,
+                                                      n
+
+with some d(n) = o(1). Exploitation of the final sentence in Theorem 4.8A
+                                            √
+produces the slightly weaker bound C d(n)(1/ n)q−2−ν with
+                                              q−2
+                                ν =k              ∈ (0, k] .
+                                              q+k
+56                  Gaussians, Zeros, and Linear Combinations                      [Part A]
+
+
+Both error estimates seem eminently reasonable given the relative crudity of
+Theorem 4.8A. (The second bound is of interest mainly for large q. In both
+cases, note that C and d(n) typically depend on {k, q, F }; cf. (5.22).)
+   As a quick review of the foregoing considerations makes clear, there are
+undoubtedly very similar expansions that hold in the setting of Theorems 5.4
+and 5.8 – at least under hypothesis (5.18) and some suitable magnitude restric-
+tions on both k~bn k and the remainder term in (5.12). Our subsequent work
+with L-functions will implicitly entail working out the details of at least one
+such case; see footnote 21. (Notice incidentally that the measure in footnote
+                       for ξ ∈ C ; cf., e.g., [Fel2, p.523 (7.8)]. In (5.18), |ϕ(ξ)|
+21 has ϕ(ξ) = J0 (|ξ|) p
+will thus decay like 1/ |ξ|.)
+
+5.13. Modern treatments of multivariate Edgeworth-type expansions have
+largely come to focus on regions and set-ups substantially more general than
+rectangles. See, for instance, [BhR, pp.208, 214(20.44)–215; 52–54, 210–212];
+also [vBa, pp.85(line 5)–87(middle)].
+   In connection with such results, it is helpful to keep two key facts in mind.
+First: that in contexts where the relevant shapes E are smoothly bounded and
+overshoots in q are a non-issue,26 the uniformity aspect of §5.11–12 will invari-
+ably permit one to obtain some results of Edgeworth-type simply by making
+inner/outer approximations based on rectangular grids and then optimizing the
+choice of grid size(s) only at the very end. Second: though Theorems 4.8–4.8C
+have intentionally been kept quite close to (3.1) format-wise, it has been found
+increasingly expedient over the years for work involving multivariate normal
+approximation to make use of smoothing inequalities having less rigid, convo-
+lution -based formats. See [Ess, pp.101, 104(53)(56), 110(lines 5–9)]27 , [Berg2,
+p.47(lemma 8)], [vBa, pp.79(9), 81(11)], [Saz, pp.184(lemma 2), 195(lemma
+6)], and [BhR, pp. 94(11.13), 98(11.26), 102(top), 210(top), 84–88, 274–278]
+for a few examples, in chronological order. Pages 274–278 in [BhR] relate to
+the much-discussed Stein method of establishing Berry-Esseen type bounds.28
+A concomitant look at [CGS, pp. 336(12.66)–337(top), 4–6, 16(2.13)–18(top),
+20(2.30), 46–48] and [Bar, pp. 293–294] serves to provide some valuable addi-
+tional perspective on these more recent matters.
+
+                                §6. Acknowledgments
+
+  I thank Yumi Karlsson for her assistance in LaTEXing several earlier drafts of this
+report. The first of these dates back to 2010, while I was still active at Uppsala
+University in Sweden. More recently, I am grateful to the Institute for Advanced Study
+in Princeton for providing me with excellent working conditions and a supplemental
+research grant (from the Bell Companies) during the Spring Term of 2012, when work
+on the current, improved, version was being done.
+
+
+
+
+  26
+     e.g., when dF is compactly supported
+  27
+     (lines 5–9 are nicely supplemented by [vBa2, pp.63(8), 64(lines 12–19), 67(C)–68])
+  28
+     (Compare 266 lines 12–19, and note the missing ∗K on 276 line 7.)
+                                 References
+
+
+[Ach] N. I. Achieser, Theory of Approximation, F. Ungar Publishing Co., New York,
+     1956, especially pp.179(top), 201(1), 203(top), 204(4), 205(top). Cf. also 7(top),
+     177, 183(top half), 188–189(3), 190(bottom), and 191(middle)–194.
+
+[Bar] A. D. Barbour, Asymptotic expansions based on smooth functions in the central
+     limit theorem, Prob. Theor. Rel. Fields 72 (1986), 289–303.
+
+[Berg1] H. Bergström, On the central limit theorem in the space Rk , k > 1, Skand.
+     Aktuarietidskr. 28 (1945), 106–127.
+
+[Berg2] H. Bergström, On the central limit theorem in the case of not equally dis-
+     tributed random variables, Skand. Aktuarietidskr. 32 (1949), 37–62.
+
+[Ber] S. Bernstein, Sur l’extension du théorème limite du calcul des probabilités aux
+     sommes de quantités dépendantes, Math. Ann. 97 (1927), 1–59.
+
+[Berr] A. Berry, The accuracy of the Gaussian approximation to the sum of indepen-
+     dent variates, Trans. Amer. Math. Soc. 49 (1941), 122–136.
+
+[Beu] A. Beurling, On functions with a spectral gap (Uppsala University Seminar,
+     March 24, 1942), in The Collected Works of Arne Beurling, vol. 2, Birkäuser,
+     Boston, 1989, pp.370–372.
+
+[BhR] R. N. Bhattacharya and R. Ranga Rao, Normal Approximation and Asymptotic
+    Expansions, Updated edition, Classics in Applied Mathematics No. 64, S.I.A.M.,
+    Philadelphia, 2010.
+
+[Bil] P. Billingsley, Probability and Measure, 2nd edition, John Wiley, New York, 1986.
+
+[Boa] R. P. Boas, Entire Functions, Academic Press, New York, 1954.
+
+[BH] E. Bombieri and D. A. Hejhal, On the distribution of zeros of linear combinations
+    of Euler products, Duke Math. J. 80 (1995), 821–862.
+
+[CGS] L. H. Y. Chen, L. Goldstein, and Q. Shao, Normal Approximation by Stein’s
+    Method, Springer-Verlag, Berlin/Heidelberg, 2011.
+
+[Cr] H. Cramér, Random Variables and Probability Distributions, Cambridge Univer-
+     sity Press, 1937.
+
+[DL] D. L. Donoho and B. F. Logan, Signal recovery and the large sieve, SIAM J. Appl.
+     Math. 52 (1992), 577–591, especially 582 (middle)–587 (top).
+
+[Dun] J. E. A. Dunnage, On Sadikova’s method in the central limit theorem, J. London
+    Math. Soc. (2) 2 (1970), 49–59. (See also: Proc. London Math. Soc. (3) 20 (1970),
+    33–59.)
+
+                                          57
+58                                 REFERENCES
+
+
+[Erd] A. Erdélyi, et al., Higher Transcendental Functions, vol. 1, McGraw-Hill Book
+     Co., New York, 1953.
+
+[Ess] C.-G. Esseen, Fourier analysis of distribution functions. A mathematical study
+     of the Laplace-Gaussian law, Acta Math. 77 (1945), 1–125.
+
+[Fel1] W. Feller, An Introduction to Probability Theory and Its Applications, vol. 1,
+      2nd edition, John Wiley, New York, 1957.
+
+[Fel2] W. Feller, An Introduction to Probability Theory and Its Applications, vol. 2,
+      2nd edition, John Wiley, New York, 1971.
+
+[Fel3] W. Feller, On the Berry-Esseen theorem, Z. Wahrscheinlichkeitstheorie verw.
+      Geb. 10 (1968), 261–268.
+
+[Gau] C. F. Gauss, Werke, Band 8, Königliche Gesellschaft der Wissenschaften zu
+    Göttingen, 1900. (Note that the assertions on p.88 date back to 1799 ∼1813.)
+
+[Har] G. H. Hardy, Notes on special systems of orthogonal functions (IV): the orthog-
+     onal functions of Whittaker’s cardinal series, Proc. Cambr. Philo. Soc. 37 (1941),
+     331–348.
+
+[Hig1] J. R. Higgins, Five short stories about the cardinal series, Bull. Amer. Math.
+     Soc. (N.S.) 12 (1985), 45–89.
+
+[Hig2] J. R. Higgins, Sampling Theory in Fourier and Signal Analysis: Foundations,
+     Oxford Univ. Press, 1996.
+
+[Jor] C. Jordan, Calculus of Finite Differences, 3rd edition, Chelsea Publishing Co.,
+      New York, 1965.
+
+[KL] J.-P. Kahane and P.-G. Lemarié-Rieusset, Remarques sur la formule sommatoire
+     de Poisson, Studia Math. 109 (1994), 303–316.
+
+[Kat] Y. Katznelson, An Introduction to Harmonic Analysis, John Wiley, New York,
+     1968.
+
+[KeS] M. G. Kendall and A. Stuart, The Advanced Theory of Statistics, vol.1 (Distri-
+     bution Theory), 4th edition, Charles Griffin & Company, London, 1977.
+
+[Lev] B. Ya. Levin, Lectures on Entire Functions, Transl. Math. Monographs, Vol. 150,
+     American Math. Society, Providence, 1996.
+
+[Lia] A. M. Liapounov, Nouvelle forme du théorème sur la limite de probabilité, Mém.
+      Acad. Sci. St. Pétersbourg (8) 12 (1901), No. 5, 1–24. (See also: Bull. Acad. Sci.
+      St. Pétersbourg (5) 13 (1900), No. 4, 359–386.)
+
+[Log] B. F. Logan, Bandlimited functions bounded below over an interval, Notices
+     Amer. Math. Soc. 24 (1977), A-331.
+                                            ′                     ′                  ′′
+[Malm] C. J. Malmstén, Sur la formule hux = ∆ux − (h/2)∆ux + (1/2!)B1 h2 ∆ux −
+                  (iv)
+    (1/4!)B2 h4 ∆ux + etc., J. Reine Angew. Math. 35 (1847), 55–82. (See also the
+    improved version in Acta Math. 5 (1884), 1–46.)
+
+[MZ1] J. Marcinkiewicz and A. Zygmund, Sur les fonctions indépendantes, Fund.
+    Math. 29 (1937), 60-90.
+                                    REFERENCES                                           59
+
+
+[MZ2] J. Marcinkiewicz and A. Zygmund, Quelques théorèmes sur les fonctions
+    indépendantes, Studia Math. 7 (1938), 104–120.
+
+[PaW] R. E. A. C. Paley and N. Wiener, Fourier Transforms in the Complex Domain,
+    Amer. Math. Soc. Colloquium Publications Vol. 19, New York, 1934.
+
+[PlP] M. Plancherel and G. Pólya, Fonctions entières et intégrales de Fourier multiples
+     (II), Comment. Math. Helv. 10 (1937/38), 110–163.
+
+[Po1] G. Pólya, Über die Nullstellen gewisser ganzer Funktionen, Math. Zeit. 2 (1918),
+     352–383.
+
+[Po2] G. Pólya, Über den zentralen Grenzwertsatz der Wahrscheinlichkeitsrechnung
+     und das Momentenproblem, Math. Zeit. 8 (1920), 171–181.
+
+[PSz] G. Pólya and G. Szegö, Aufgaben und Lehrsätze aus der Analysis, vol. 1, Julius
+     Springer, Berlin, 1925.
+
+[Rao] R. Ranga Rao, On the central limit theorem in Rk , Bull. Amer. Math. Soc.
+     67 (1961), 359–361.
+
+[Sad] S. M. Sadikova, Two-dimensional analogues of an inequality of Esseen with ap-
+     plications to the central limit theorem, Theor. Prob. Appl. 11 (1966), 325–335.
+     (See also: 13 (1968) pp.165(2.3), 166–167 and 12 (1967), 343.)
+
+[Saz] V. V. Sazonov, On the multi-dimensional central limit theorem, Sankhyā, Ser. A
+     30 (1968), 181–204.
+
+[Sel] A. Selberg, Old and new conjectures and results about a class of Dirichlet series,
+      in Proceedings of the Amalfi Conference on Analytic Number Theory, Sept. 1989
+      (E. Bombieri, et al., eds.), Università di Salerno, 1992, pp.367–385. Cf. also [Sel2,
+      pp.47–63].
+
+[Sel2] A. Selberg, Collected Papers, vol.2, Springer-Verlag, Berlin/Heidelberg, 1991.
+
+[Ste] J. F. Steffensen, Interpolation, 2nd edition, Chelsea Publishing Co., New York,
+      1950.
+
+[Tim] A. F. Timan, Theory of Approximation of Functions of a Real Variable, Per-
+     gamon Press/MacMillan, New York, 1963, especially §§5.1.3–5.1.4, 5.6.35, 5.11
+     (problems 4, 11, 12), 8.7(problems 23–25); cf. also §§9.21, 2.6.3, 2.11.3(10), 2.12.6,
+     3.3(para 2), and 3.5.3.
+
+[Usp] J. V. Uspensky, Introduction to Mathematical Probability, McGraw-Hill Book
+     Co., New York, 1937.
+
+[Vaa] J. Vaaler, Some extremal functions in Fourier analysis, Bull. Amer. Math. Soc.
+     12 (1985), 183–216.
+
+[Val] G. Valiron, Sur la formule d’interpolation de Lagrange, Bull. Sci. Mathematiques
+     (2) 49 (1925), 181–192, 203–224.
+
+[vBa] B. von Bahr, Multi-dimensional integral limit theorems, Arkiv för Matematik
+     7 (1967), 71–88.
+
+[vBa2] B. von Bahr, On the central limit theorem in Rk , Arkiv för Matematik 7 (1967),
+    61–69.
+60                              REFERENCES
+
+
+[Z1] A. Zygmund, Trigonometric Series, 2nd edition, vol. 1, Cambridge Univ. Press,
+     1959.
+
+[Z2] A. Zygmund, Trigonometric Series, 2nd edition, vol. 2, Cambridge Univ. Press,
+     1959.
+
+
+
+School of Mathematics
+University of Minnesota
+Minneapolis, Mn. 55455 USA
+E-mail address: hejhal@math.umn.edu
+

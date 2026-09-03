@@ -1,0 +1,1666 @@
+                                                 NOTES ON PAIR CORRELATION OF ZEROS AND PRIME
+arXiv:math/0412313v1 [math.NT] 16 Dec 2004
+
+
+
+
+                                                                   NUMBERS
+
+                                                                                  D. A. GOLDSTON
+
+
+
+                                                These notes are based on my four lectures given at the Newton Institute in April 2004 during
+                                             the Recent Perspectives in Random Matrix Theory and Number Theory Workshop. Their purpose
+                                             is to introduce the reader to the analytic number theory necessary to understand Montgomery’s
+                                             work on the pair correlation of the zeros of the Riemann zeta-function and subsequent work on
+                                             how this relates to prime numbers. A very brief introduction to Selberg’s work on the moments
+                                             of S(T ) is also given.
+
+                                                              1. Introduction and Some Personal History
+                                                 In 1973 Montgomery’s paper [27], “The Pair Correlation of Zeros of the Zeta
+                                             Function” appeared in the AMS series of Proceedings of Symposia in Pure Mathe-
+                                             matics, and a new field of study was born — slowly. I first came across this paper in
+                                             1977, and was probably the only person at Berkeley to read it. Most zeta-function
+                                             people (as some of us refer to ourselves) recognized the importance of this work
+                                             and the new phenomena discovered, but it was not clear what to do next. At
+                                             first, the main interest was in using Montgomery’s conjectures to refine the classi-
+                                             cal results on primes obtained assuming the Riemann Hypothesis. Gallagher and
+                                             Mueller [12] wrote an important paper on this in 1978, followed by further results
+                                             from Heath-Brown [21]. In 1981 I wrote my Ph.D. thesis on this topic. A few years
+                                             later Montgomery and I [18] obtained an equivalence between the pair correlation
+                                             conjecture and primes. However, this work attracted little attention — probably
+                                             because the results were obtained using Montgomery’s conjectures. Then, in the
+                                             early 1980’s everything changed: Odlyzko [31] computed statistics on the zeros and
+                                             convinced even the most skeptical that after almost a century of intensive study a
+                                             totally new, unsuspected, and fundamental property of the zeta-function had been
+                                             discovered. The field has since had a flood of activity, with the generalization of
+                                             Montgomery’s work to higher correlations by Hejhal [23] and Rudnick-Sarnak [32],
+                                             the interpretation of these results in terms of mathematical physics by Berry and
+                                             Bogomolny-Keating [1, 2], the function field case of Katz-Sarnak [26], the random
+                                             matrix model for moments of the zeta-function of Keating and Snaith culminating
+                                             in [4], and a profusion of new work.
+                                                 In these notes, I will discuss Montgomery’s results and their relations to primes.
+                                             As a unifying tool, I will use Montgomery’s explicit formula [27] to prove a number
+                                             of later results that were originally obtained by other methods. This approach was
+                                             first made use of in part of my Ph.D. thesis, and was based on a suggestion of
+                                             Montgomery in a letter. At that time Heath-Brown had just finished his paper
+                                               Date: September 12, 2018.
+                                               The author was supported by the Focused Research Group grant (0244660) from NSF and the
+                                             American Institute of Mathematics. This paper will appear in “Recent Perspectives in Random
+                                             Matrix Theory and Number Theory” to be published by Cambridge University Press.
+                                                                                           1
+2                                  D. A. GOLDSTON
+
+
+which covered the same ground, and I saw no need to publish this material beyond
+the summary that appeared in [15]. My goal, in line with the emphasis of the
+workshop on reaching out to beginners in the field, is to provide some of the main
+ideas used without technicalities and at the same time supply simple details which
+would be accepted without comment by experts. I have intentionally left out many
+things to keep these notes focused. The last section on Selberg’s theory of S(T )
+and log ζ(s) is somewhat different from the previous ones, and I have decided to
+state only the main results and present a few of the ideas that are used.
+   I would like to thank Andrew Ledoan for the many improvements he suggested
+for these notes.
+
+                         2. Basic Facts and Notation
+   Following Riemann, we use the complex variable s = σ + it. The Riemann
+zeta-function ζ(s) is defined, for σ > 1, by either the Dirichlet series or the Euler
+product
+                                  ∞        Y          −1
+                                 X   1               1
+(2.1)                     ζ(s) =        =       1− s       .
+                                 n=1
+                                     ns    p
+                                                    p
+
+Here p will always denote a prime, so the product is over all the prime numbers.
+To extract information about primes from the Euler product, we compute the
+logarithmic derivative of the zeta-function and use the power series for − log(1 − z),
+to obtain, for σ > 1,
+                                                 ∞                    ∞
+           ζ′        ζ ′ (s)   d             dXX 1                 X   Λ(n)
+(2.2)         (s) :=         =    log ζ(s) =                   =  −            ,
+            ζ        ζ(s)      ds            ds m=1 p mpms           n=1
+                                                                          ns
+
+where the von Mangoldt function Λ(n) is given by
+                          log p, if n = pm , p prime, m ≥ 1,
+                        
+(2.3)           Λ(n) =
+                          0,     otherwise.
+The Chebyshev function ψ(x) is the counting function for Λ(n) given by
+                                      X
+(2.4)                          ψ(x) =     Λ(n).
+                                          n≤x
+
+Because of the simple relationship with the zeta-function, it is preferable to use Λ(n)
+in place of the indicator function for the primes, and ψ(x) in place of the counting
+function π(x) for the number of primes up to x. If needed, one can usually recover
+π(x) from ψ(x) by simple arguments. The Prime Number Theorem (PNT) states
+that as x → ∞
+                                                      x
+(2.5)                       ψ(x) ∼ x, or π(x) ∼           .
+                                                    log x
+The PNT with the error term obtained by de la Vallée Poussin in 1899 is, for a
+small constant c,
+                                         √     
+(2.6)                   ψ(x) = x + O xe−c log x ,
+
+which on returning to π(x) gives (c may differ from equation to equation)
+                                                √    
+(2.7)                    π(x) = li(x) + O xe−c log x ,
+           NOTES ON PAIR CORRELATION OF ZEROS AND PRIME NUMBERS                      3
+
+
+where the logarithmic integral
+                                              Z x
+                                                 du
+                                    li(x) =
+                                            2   log u
+is the actual main term in the theorem. For the error term above, we have for any
+constant A > 0
+                                   √              1
+(2.8)                          e−c log x ≪             .
+                                              (log x)A
+Here, the Vinogradov notation ≪ is equivalent to “big oh” of the right-hand side.
+This estimate is freely used when the PNT is invoked.
+    We frequently need the Dirichlet series for ζ(s)−1 , which from the Euler product
+is
+                                           ∞
+                                    1     X     µ(n)
+(2.9)                                   =
+                                  ζ(s) n=1 ns
+for σ > 1, where the Möbius function is defined by µ(1) = 1 and
+                         (−1)m , if n = p1 p2 · · · pm , pi ’s distinct,
+                      
+(2.10)         µ(n) =
+                         0,        if p2 |n, some p.
+   The zeta-function has a simple pole with residue 1 at s = 1, trivial zeros at
+s = −2n, n = 1, 2, 3, . . ., and complex zeros
+(2.11)                         ρ = β + iγ,      0 < β < 1.
+The inequality β < 1 is the key result needed in the analytic proofs of the PNT.
+The zeros are positioned symmetrically with the real line and the “ 21 -line” 12 + it,
+so that ρ, ρ̄, 1 − ρ, and 1 − ρ̄ are all zeros. The Riemann Hypothesis (RH) is the
+conjecture that β = 21 , and thus ρ = 12 + iγ. For example, the first 6 zeros in the
+upper half of the critical strip are
+              1                       1                      1
+                + i14.13472 . . . ,      + i21.02203 . . . ,   + i25.01085 . . . ,
+(2.12)        2                       2                      2
+              1                       1                      1
+                + i30.42487 . . . ,      + i32.93506 . . . ,   + i37.58617 . . . .
+              2                       2                      2
+   To count the number of complex zeros in a given region, we define
+                                                              n(T + 0) + n(T − 0)
+(2.13)         n(T ) = |{γ : 0 < γ ≤ T }| ,        N (T ) =                        ,
+                                                                       2
+where |A| denotes the number of elements of the set A. Note that N (T ) counts any
+zeros γ = T with weight one-half, which arises naturally in the theory; therefore we
+always use N (T ) in preference to n(T ). The Riemann-von Mangoldt formula for
+N (T ), obtained by applying the argument principle to ζ and using the functional
+equation (see [8], [25], [39]), is
+                                    T       T     7
+(2.14)                 N (T ) =        log      + + R(T ) + S(T ),
+                                  2π       2πe 8
+where
+                                                    1
+(2.15)                                    R(T ) ≪
+                                                    T
+and
+                                                      
+                                      1         1
+(2.16)                    S(T ) = arg ζ           + iT ≪ log T.
+                                      π         2
+4                                     D. A. GOLDSTON
+
+
+In fact, R(T ) is continuous, differentiable, and can be expanded into a series in
+inverse powers of T . We see that (2.14) provides a remarkably precise formula for
+the number of zeros up to height T , with the finer details of the vertical distribution
+of zeros wrapped up in the study of S(T ). In particular we have
+                                        T
+(2.17)                                     log T.
+                                     N (T ) ∼
+                                        2π
+Another consequence of (2.14) – (2.16) which we make frequent use of is the sharp
+estimate
+                                           X
+(2.18)             N (T + 1) − N (T ) =           1 ≪ log T.
+                                                T <γ≤T +1
+
+                                 3. Explicit Formulas
+   To study the relationship between the zeros of the zeta-function and primes you
+need to be able to work with explicit formulas. There are many such formulas but
+the best known is the Riemann-von Mangoldt explicit formula, which states that,
+for x > 1,
+                              X xρ               1
+                                                      
+                                                             1
+                                                               
+(3.1)            ψ0 (x) = x −         − log 2π − log 1 − 2 ,
+                                ρ
+                                  ρ              2           x
+
+where ψ0 (x) = 21 (ψ(x + 0) + ψ(x − 0)). By (2.14), the sum is not absolutely
+convergent and the terms are added with ρ and ρ̄ grouped together. The explicit
+formula also contains this information, since on taking x → 1+ and letting x = eu
+we see that
+                     X eρu       1    1
+(3.2)                         = log + O(1) as u → 0+ .
+                       ρ
+                           ρ     2    u
+
+For applications we usually use the truncated version of (3.1),
+                     X xρ        x                               x 
+                                                                          
+                                              2
+(3.3)   ψ(x) = x −           +O      (log xT ) + O (log x) min 1,           ,
+                          ρ        T                              T ||x||
+                       |γ|≤T
+
+where ||x|| denotes the distance of x to the closest integer, and the last term reflects
+the jumps of ψ(x) at the primes and prime powers. As an example of an application
+of (3.3), assuming RH we have
+                                               1
+                                      xρ     x2
+                                          ≪      ,
+                                       ρ     |γ|
+and so by (2.12) and (2.18), with [x] denoting the integer part of x,
+         X 1      X 1 [TX]+1
+                             1                  X              X log 2n
+               =2     ≤                               1≪                       ≪ (log T )2 .
+           |γ|      γ   n=1
+                             n                                           n
+         |γ|≤T         1<γ≤T                n<γ≤n+1         n≤2T
+
+Thus, taking T = x in (3.3) we have
+                                            1          
+(3.4)                          ψ(x) = x + O x 2 (log x)2 .
+It can also be proved that this estimate implies RH, and therefore is equivalent to
+the RH.1 Equation (3.4) is due to von Koch in 1901 and has never been improved.
+                                                              
+    1Even the seemingly weaker estimate ψ(x) = x + O x 21 +ǫ       for any ǫ > 0 is equivalent to RH.
+          NOTES ON PAIR CORRELATION OF ZEROS AND PRIME NUMBERS                      5
+
+
+   We next apply (3.4) to the problem of large gaps between primes. Let pn denote
+the n-th prime number. The highest power of a prime ≤ x is the largest k for which
+2k ≤ x, so k = [log2 x]. By the PNT,
+                         X           X        X
+                ψ(x) =      log p +               log p
+                            p≤x             2≤m≤log2 x pm ≤x
+                            X               X                 1          
+                        =         log p +          log p + O π x 3 (log x)2
+                                              √
+                            p≤x             p≤ x
+                            X               1
+                        =         log p + O x 2 .
+                            p≤x
+
+Thus (3.4) continues to hold when we only sum over primes. For 1 ≤ h ≤ x, we
+have by (3.4) and differencing that
+                          X                   1          
+                                log p = h + O x 2 (log x)2 .
+                            x<p≤x+h
+                    1
+On taking h = Cx (log x)2 , with the constant C being larger than the implicit
+                    2
+
+absolute constant in the error term, we conclude that the sum on the left is positive
+and ≫ h, and thus the interval (x, x + h] must contain ≫ logh x primes. If pn is the
+first prime in (x, x + h), then
+                                                         1
+(3.5)                         pn+1 − pn < h ≪ pn 2 (log pn )2 .
+   An explicit formula that also exhibits the close connection between zeros and
+primes is the Landau formula, which states that (for x fixed) as T → ∞
+                          X           T Λ(x)
+(3.6)                          xρ = −         + O(log T ).
+                                        2π
+                             0<γ≤T
+
+Here we define Λ(x) to be zero for real non-integer x. Formally this is obtained by
+differentiating (3.1) with respect to x. The exponential sum over the zeros encodes
+the information on which integers are primes or prime powers. Equation (3.6) is
+not particularly useful, but Fujii [10] and independently Gonek [19] have developed
+uniform versions which can be used in applications.
+   An explicit formula of at least historic interest is the Cramér explicit formula,
+which states that for Im(z) > 0
+                           ∞
+                       ez X Λ(n)
+                                                         
+           X
+                ρz                         1          1
+               e =                               +
+           γ>0
+                      2πi n=2 n       z − log n log n
+                                  ∞                             
+                              1 X Λ(n)            1          1
+                          +                              −
+(3.7)                        2πi n=2 n        z + log n log n
+                                                                1 Γ′  z  1 z
+                                                       
+                               1 γ + log 2π             1
+                          +      +                  1+      +              + e
+                               4       2πi              z      2πi Γ 2πi      2
+                                 Z 1                           Z ∞
+                              z                            1          t   dt
+                          −          esz log |ζ(z)| ds −                      .
+                             2πi 0                        2πiz 0 et − 1 t + z
+On taking z = − log τ + iy, 0 < y ≤ 1, and letting τ → ∞ Cramér [7] proved that
+                                      ∞
+                                                            !                
+              X
+                    ρ(− log τ +iy)
+                                     X   Λ(n)        y                    1
+(3.8) −2πRe       e                =                 2       − π + O           .
+              γ>0                    n=2
+                                          n    log nτ + y 2             log τ
+6                                   D. A. GOLDSTON
+
+
+He used (3.8) and related formulas in a series of papers starting in 1920 to prove
+results on primes. One such result is that on RH
+                                                1
+(3.9)                          pn+1 − pn ≪ pn 2 log pn .
+This only saves a logarithm over the trivial use of (3.4) in (3.5) but is the best result
+known on RH. We will later assume a much stronger hypothesis and only improve
+(3.9) by a half-power of a logarithm. On the other hand, Cramér conjectured [7]
+that the gaps between consecutive primes are always much smaller than this size.
+Recent work indicates that Cramér’s original conjecture may be slightly too strong,
+but all evidence still suggests
+(3.10)                          pn+1 − pn ≪ (log pn )2 .
+At one time I had a fondness for Cramér’s formula and made use of it in my thesis,
+but I later decided that nothing was to be gained by its use except complicated
+arguments. The proof of (3.9), for instance, can now be done from a smoothed
+version of (3.1) in just a few lines. However, there have been a number of recent
+papers on the structure of Cramér’s formula (see [24]).
+   Most of these explicit formulas are based on evaluating the contour integral
+                                   Z c+i∞
+                                1           ζ′
+                          I=              − (s)Kz (s) ds,
+                               2πi c−i∞     ζ
+where the kernel Kz (s) is a meromorphic function. Frequently Kz (s) = K(s + z)
+                                                       ′
+or Kz (s) = K(zs). If c > 1 the Dirichlet series for ζζ (s) converges absolutely and
+                  ∞                                Z c+i∞
+                 X                              1
+             I=      Λ(n)K̂z (n), K̂z (n) =                 Kz (s)n−s ds.
+                 n=2
+                                              2πi   c−i∞
+
+One then obtains an explicit formula by moving the contour to the left, thus en-
+countering poles at s = 1 and at the zeros of ζ(s), as well as any poles of Kz (s).
+   Another explicit formula frequently used is the Weil explicit formula, which con-
+tains a general weight function and has the advantage of allowing the relationships
+between terms to be explicitly exhibited. Our approach here, however, is to use
+explicit formulas only as tools for studying zeros and primes. Therefore we will
+take the opposite path and stay specific. The formula we will base our work on is
+due to Montgomery [27].
+Proposition 1. Assume the Riemann Hypothesis. For x ≥ 1,
+                                            ∞
+             1
+               −it
+                   X        xiγ           X    Λ(n)an (x)        2x1−it
+          2x 2                        = −                 +  1
+                                                                     3
+                        1 + (t − γ)2               nit
+                                                                             
+                   γ                      n=1                2 + it   2 − it
+(3.11)                                                                 −2 
+                                         − 12                             x
+                                      + x (log(|t| + 2) + O(1)) + O             ,
+                                                                        |t| + 2
+where
+                                            1   3 
+                                              n 2 x 2
+(3.12)                      an (x) = min          ,        .
+                                              x      n
+Proof. This proposition is proved by using an explicit formula from Landau’s 1909
+Handbuch [28], which states that (unconditionally) for x > 1, x 6= pm ,
+                                                             ∞
+              X Λ(n)           ζ′       x1−s X xρ−s          X  x−2n−s
+(3.13)                s
+                          =  −    (s) +       −           +
+                    n          ζ        1−s      ρ
+                                                    ρ − s n=1 2n + s
+               n≤x
+             NOTES ON PAIR CORRELATION OF ZEROS AND PRIME NUMBERS                           7
+
+
+provided s 6= 1, s 6= ρ, s 6= −2n.2 Rewriting (3.13), we have
+            X xρ                ζ′                           ∞
+                                          X Λ(n)      x     X  x−2n
+(3.14)                 = −xs        (s) +      s
+                                                   +       +          .
+             ρ
+                ρ−s              ζ           n       1 − s n=1 2n + s
+                                                n≤x
+
+This equation holds independently of RH, but assuming RH we have ρ = 12 + iγ.
+Letting s = 32 + it and using (2.2), the above equation simplifies to read
+                                                                      ∞
+         1
+             X               xiγ            X Λ(n)an (x)       x      X     x−2n
+      −x 2                            = xit              +          +                 .
+                 γ
+                         1 + i(t − γ)       n>x
+                                                 nit       − 21 − it n=1 2n + 23 + it
+
+On the other hand, if s = − 12 + it in (3.14) we have
+                              xiγ                                     ζ′
+                                              X Λ(n)an (x)                        
+             1
+                 X                                              1            1
+         x2                            = −xit        it
+                                                           − x− 2 +it       − + it
+                     γ
+                          1 − i(t − γ)             n                  ζ      2
+                                             n≤x
+                                                       ∞
+                                               x      X      x−2n
+                                          + 3       +                  .
+                                             2 − it   n=1
+                                                          2n − 12 + it
+Subtracting the latter from the former and using
+                       ζ′
+                                  
+                             1
+                            − + it = − log(|t| + 2) + O(1),
+                       ζ     2
+which follows easily from the functional equation, we obtain the proposition. By
+continuity the values x = 1, pm no longer need to be excluded. The role of RH in
+Proposition 1 is notational. Recently, a new notation has emerged which is very
+convenient. We write the complex zeros of the zeta function as ρ = 21 + iγ, γ ∈ C,
+so that γ is complex when that zero is off the 21 -line. Thus, the RH becomes the
+statement that γ is real. With this notation we see that the proof is unchanged,
+and Proposition 1 holds unconditionally. We will not make any further use of this
+notation since the size of the terms in our sums over zeros become important and
+the RH is often needed.
+
+                                    4. Montgomery’s theorem
+   We first examine Montgomery’s explicit formula heuristically and see what each
+term means. The weight in the sum over zeros concentrates the sum to zeros in a
+short bounded interval around t, and therefore behaves similarly to
+                                    X
+                                          xiγ .
+                                             t<γ≤t+1
+
+By (2.18), if this sum is substantially smaller than log t then we will have detected
+cancelation from xiγ . If x = 1 or is close to 1 no cancelation can occur, and
+this is reflected by the term x−1/2 log(|t| + 2) in (3.11). The sum over primes is
+concentrated around x, and therefore behaves similarly to
+                                      X Λ(n)
+                                                  .
+                                    1
+                                              nit
+                                            2 x<n≤2x
+
+
+   2If s = 0 we get (3.1). Landau used (3.13) to prove Riemann’s original explicit formula for
+π(x).
+8                                    D. A. GOLDSTON
+
+
+The expected value of the original sum over primes is obtained by the PNT and
+equals the remaining term
+                                       2x1−it
+                                   1
+                                           3      .
+                                   2 + it   2 − it
+   How does one extract information from (3.11)? Montgomery was interested in
+studying the distribution of the differences of pairs of zeros, and for this it is clear
+one needs to square the absolute value of the sum over zeros. It would be nice to
+be able to obtain this distribution in an interval of length one around t, but the
+pointwise dependence on t in the Dirichlet sum over primes is intractable. To cir-
+cumvent this problem, we also integrate with respect to t to obtain our distribution
+in a longer range. To this end we consider
+                             Z T X                    2
+                                            xiγ
+                                                        dt.
+                              0     γ
+                                       1 + (t − γ)2
+Since the weight in the sum will be small when |t − γ| is large, which is the case
+over most of the integration range unless 0 < γ ≤ T , we may restrict the sum to
+this range with a small error. With the sum restricted to the zeros 0 < γ ≤ T ,
+we may extend the integration range to (−∞, ∞) with a small error. Using (2.18),
+Montgomery showed
+     Z T X                 2      Z ∞                     2
+                  xiγ                   X        xiγ
+                                                            dt + O (log T )3 .
+                                                                            
+                         2
+                             dt =                       2
+       0   γ
+              1 + (t − γ)          −∞        1 + (t − γ)
+                                           0<γ≤T
+
+Multiplying out the integral on the right-hand side, we find
+          Z ∞                        2
+                  X         xiγ             π X              ′
+
+                                   2
+                                       dt =           xi(γ−γ ) w(γ − γ ′ ),
+            −∞          1 + (t − γ)         2
+                  0<γ≤T                           0<γ,γ ≤T
+                                                  ′
+
+
+where the weight
+                                                4
+(4.1)                                 w(u) =
+                                             4 + u2
+is obtained on evaluating the integral either by residues, convolution, or otherwise.
+We thus define for x > 0
+                                                                              2
+                                                   2 ∞               xiγ
+                     X                              Z       X
+                             i(γ−γ ′ )        ′
+(4.2) F (x, T ) =           x          w(γ − γ ) =                              dt.
+                                                   π −∞          1 + (t − γ)2
+                   0<γ,γ ≤T
+                        ′                                        0<γ≤T
+
+Then
+                                                                     
+                                                               1
+(4.3)                   F (x, T ) ≥ 0,     F (x, T ) = F         ,T       ,
+                                                               x
+and
+                                 Z T X                2
+                             2               xiγ
+                                                      dt + O (log T )3 .
+                                                                      
+(4.4)          F (x, T ) =                          2
+                             π   0   γ
+                                         1 + (t − γ)
+The next step is to use Proposition 1 to evaluate F (x, T ). Denoting (3.11) by
+                                     L(x, t) = R(x, t),
+we have just shown that
+                 Z T
+                             2
+(4.5)                 L(x, t) dt = 2πxF (x, T ) + O(x(log T )3 ).
+                    0
+           NOTES ON PAIR CORRELATION OF ZEROS AND PRIME NUMBERS                              9
+
+
+For R(x, T ), we compute the mean-square of each term. For the Dirichlet series,
+we use a standard mean value theorem of Montgomery and Vaughan [29], which
+states that
+                    Z T X ∞       2       ∞
+                             an          X
+                                             |an |2 T + O(n) .
+                                                            
+(4.6)                          it
+                                    dt =
+                     0   n=1
+                             n           n=1
+Hence
+                ∞
+            Z T X            2                ∞
+                  Λ(n)an (x)                  X                     2
+                                       dt =         Λ(n)an (x) (T + O(n))
+              0   n=1
+                           nit                n=1
+                                          = xT (log x + O(1)) + O x2 log x ,
+                                                                          
+
+by Stieltjes integration and the PNT (with remainder). The remaining terms are
+elementary:
+                             Z T                       2
+                                        2x1−it
+                                    1         3          dt ≪ x2 ,
+                              0   ( 2 +  it)( 2 −  it)
+           Z T                                  2
+                    1                                   T                          
+                 x− 2 (log(|t| + 2) + O(1)) dt =            (log T )2 + O(log T ) ,
+             0                                          x
+and                              Z T             2
+                                         x−2
+                                                   dt ≪ x−4 .
+                                  0    |t| + 2
+We thus have two main terms, the Dirichlet series term for (log T )3/2 ≤ x ≤ o(T )
+and the term log(|t|+2) which dominates for 1 ≤ x ≤ (log T )3/4 . In the intermediate
+range all terms are o(xT log T ). By the Cauchy-Schwarz inequality, the largest term
+among these provides the main term in an asymptotic formula. Therefore,
+    Z T
+                                                                     T
+        |R(x, t)|2 dt = xT (log x + o(log T )) + O(x2 log x) + (log T )2 (1 + o(1)),
+     0                                                                x
+and we conclude that
+                      T                                            T
+(4.7)    F (x, T ) =     log x + o(T log T ) + O(x log x) +             (log T )2 (1 + o(1)).
+                      2π                                         2πx2
+Following Montgomery, we set
+(4.8)                                      x = Tα
+and normalize by defining
+                                               −1
+                                     T                   X                  ′
+(4.9)      F (α) = F (α, T ) =          log T                      T iα(γ−γ ) w(γ − γ ′ ).
+                                     2π
+                                                      0<γ,γ ′ ≤T
+
+Thus we have arrived at Montgomery’s theorem.
+Theorem 1. Assume the Riemann Hypothesis. Then F (α) is real, even, and non-
+negative. Further, uniformly for 0 ≤ α ≤ 1 − ǫ, we have
+(4.10)                  F (α) = α + o(1) + (1 + o(1))T −2α log T.
+  The error term O(x log x) in (4.7) can be improved to O(x) by using a sieve
+bound for prime twins [18], which shows the theorem holds for
+(4.11)                                   0 ≤ α ≤ 1.
+A detailed analysis of the above proof has recently been done by Tsz Ho Chan,
+with all second order terms obtained.
+10                                            D. A. GOLDSTON
+
+
+        5. Application to simple zeros and small gaps between zeros
+   The function F (α) is useful for evaluating sums over differences of zeros. Let
+r(u) ∈ L1 , and define the Fourier transform by
+                            Z ∞
+(5.1)               r̂(α) =      r(u)e(αu) du,    e(u) = e2πiu .
+                                    −∞
+
+If r̂(α) ∈ L1 , we have almost everywhere
+                                    Z ∞
+(5.2)                       r(u) =      r̂(α)e(−uα) dα.
+                                                  −∞
+
+On multiply (4.9) by r̂(α) and integrating, we obtain
+                                                            Z ∞
+            X                  log T                 T
+(5.3)             r (γ − γ ′ )         w(γ − γ ′ ) =    log T     r̂(α)F (α) dα.
+                                 2π                  2π        −∞
+           0<γ,γ ≤T
+              ′
+
+
+
+Using Theorem 1, we can evaluate the right-hand side provided r̂(α) has support
+in [−1, 1]. Thus, we can evaluate sums over differences of zeros on the class of
+functions whose Fourier transforms are supported in [−1, 1]. Using the Fourier pair
+
+                                   2                                  
+                          sin πλu                        1        |α|
+(5.4)       k(u) =                       ,        k̂(α) = max 1 −     ,0          (λ > 0)
+                            πλu                          λ         λ
+
+we have for 0 < λ ≤ 1
+                                                         !2
+                X          sin( λ2 (γ − γ ′ ) log T )
+                              λ       ′
+                                                              w(γ − γ ′ )
+             0<γ,γ ′ ≤T       2 (γ − γ ) log T
+                                             Z λ                    !
+                                     1                 |α|            T
+                              =                     1−       F (α) dα     log T
+                                     λ       −λ         λ              2π
+(5.5)                                                            !
+                                             Z λ
+                                     2      α      −2α
+                                                                  T
+                              ∼          1−      α+T     log T dα     log T
+                                     λ
+                                     0      λ                      2π
+                                       
+                                  1    λ T
+                              ∼     +       log T.
+                                  λ    3 2π
+
+This result has an important application to simple zeros of ζ(s).
+
+Theorem 2. Assume the Riemann Hypothesis. At least two thirds of the zeros of
+the Riemann zeta-function are simple in the sense that as T → ∞
+                                                   
+                                X           2
+(5.6)               Ns (T ) :=       1≥       − o(1) N (T ).
+                                            3
+                                         0<γ≤T
+                                         ρ simple
+
+   Proof. The sum in (5.5) over pairs of zeros counts distinct zeros weighted by
+their multiplicity. Thus a double pole gets counted 4 times, a triple zero 9 times,
+          NOTES ON PAIR CORRELATION OF ZEROS AND PRIME NUMBERS                                11
+
+
+etc. Denoting the multiplicity of ρ by mρ , we have
+             X              X
+                  mρ =             1
+            0<γ≤T          0<γ,γ ′ ≤T
+                             γ=γ ′
+                                                                           !2
+                                                 λ           ′
+                                                              
+                              X          sin     2 (γ − γ      log T )
+                       ≤                       λ         ′ ) log T
+                                                                                w(γ − γ ′ )
+                           0<γ,γ ′ ≤T          2 (γ  − γ
+                                                    
+                                             1 λ         T
+                       ≤ (1 + o(1))            +            log T.
+                                             λ   3       2π
+Choosing λ = 1, we have
+                                                        
+                             X                    4          T
+(5.7)                              mρ ≤             +ǫ          log T.
+                                                  3          2π
+                           0<γ≤T
+
+But                             X                 X
+                                         1≥              (2 − mρ ),
+                              0<γ≤T            0<γ≤T
+                              ρ simple
+and applying (2.17) completes the proof.
+   It is possible to make very small improvements in the value 23 in Theorem 2. It
+would be a major advance to be able to prove that almost all the zeros are simple,
+even on RH. Conrey, Ghosh, and Gonek [6] have proved using a different method
+that assuming RH and the Generalized Lindelöf Hypothesis,
+                                              
+                                         19
+                             Ns (T ) ≥      − ǫ N (T ).
+                                         27
+   Montgomery also proved that there are gaps between zeros closer than the av-
+erage. He used the transform pair (5.4) with their roles reversed to obtain
+                                                  log γn
+                       lim inf (γn+1 − γn )              ≤ 0.669 . . . .
+                        n→∞                         2π
+Consider the Fourier pair
+                      2                                                         
+                sin πu         1                                         sin 2π|u|
+(5.8) h(u) =                         ,             ĥ(α) = max 1 − |u| +           ,0 ,
+                  πu        1 − u2                                          2π
+where h(u) is the Selberg minorant of the characteristic function of the interval
+[−1, 1] in the class of functions with Fourier transforms with support in [−1, 1]. We
+prove
+Theorem 3. Assume the Riemann Hypothesis. We have
+                                             log γn
+(5.9)                   lim inf (γn+1 − γn )        ≤ 0.6072 . . . .
+                         n→∞                   2π
+   Proof. Take r(u) = h λu . Then r(u) is a minorant of the characteristic function
+                              
+
+of the interval [−λ, λ]. Thus
+                                                                     
+         X                  X                X                  log T
+               mρ + 2                1≥            h (γ − γ ′ )         w(γ − γ ′ )
+                                                                 2πλ
+        0<γ≤T                    2πλ
+                      0<γ−γ ≤ log T
+                              ′              0<γ,γ ≤T
+                                               ′
+
+                                                            Z 1
+                                                 T                λ
+                                         =          log T              λĥ(λα)F (α) dα.
+                                                 2π                1
+                                                                  −λ
+12                                  D. A. GOLDSTON
+
+
+Assume λ < 1. Since the integrand is positive we obtain a lower bound by decreasing
+the integration range to [−1, 1]. We can assume
+                                 X          T
+                                     mρ ∼      log T,
+                                            2π
+                                0<γ≤T
+
+since otherwise we would have infinitely many multiple zeros and the theorem holds
+for this reason. Thus
+                                                      Z 1           
+              X            1        T
+                      1≥     −ǫ        log T λ − 1 + 2λ      αh(λα) dα .
+                  2πλ
+                           2        2π                    0
+         0<γ−γ ≤ log T
+                ′
+
+
+
+By an easy numerical calculation, we find that the right-hand side is positive for
+λ > 0.6072 . . ., which proves the result.
+   By a different method (on RH), Montgomery and Odlyzko [30] improved on this
+result and obtained the upper bound 0.5179. Conrey, Ghosh, and Gonek [5] later
+replaced this by 0.5172.
+
+                         6. Montgomery’s Conjectures
+   What if α > 1? It is not difficult to see from the proof of Montgomery’s theorem
+that for x ≥ T
+                       Z T X ∞
+                   1              Λ(n)an (x)          2x1−it       2
+(6.1) F (x, T ) =                       it
+                                               −  1
+                                                          3       dt + o(T log T ).
+                  2πx 0 n=1           n           2 + it   2 − it
+                                                     T
+We saw that the diagonal terms in the sum contribute 2π log x, while the expected
+value term contributes cx. On the other hand, we have the trivial bound
+                                                 T
+(6.2)                      F (x, T ) ≤ F (0, T ) ∼  log2 T,
+                                                2π
+where the last relation follows from Theorem 1 (or unconditionally from (2.14)).
+Thus F (x, T ) never gets as large as x for x ≫ T (log T )2 , and therefore the off-
+diagonal terms in the sum over primes must almost perfectly cancel the expected
+value term.
+   Montgomery proceeded by multiplying out the integrand in (6.1) and integrat-
+ing term by term. For the off-diagonal terms, one needs to assume the Hardy-
+Littlewood k-tuple conjecture [20] for 2-tuples (or prime pairs) with a strong error
+term. This conjecture states that for 0 < k ≤ N
+                    X                                   1 
+(6.3)                    Λ(n)Λ(n + k) = S(k)N + O N 2 +ǫ ,
+                     n≤N
+
+where
+                            Y p − 1
+                        2C2           ,             if k is even, n 6= 0;
+                       
+                       
+                                 p−2
+(6.4)           S(k) =       p|k
+                       
+                            p>2
+                         0,                          if k is odd;
+                       
+
+and
+                                    Y           1
+                                                          
+(6.5)                        C2 =     1−                      .
+                                    p>2
+                                              (p − 1)2
+            NOTES ON PAIR CORRELATION OF ZEROS AND PRIME NUMBERS                                 13
+
+
+Montgomery stated that this conjecture “would allow us to carry out our program”
+for x ≤ T ≤ x2−ǫ and obtain
+                                           T
+                               F (x, T ) ∼    log T.
+                                           2π
+Further, there is no reason to expect any change in behavior for bounded α ≥ 2.
+On this basis Montgomery made the following conjecture.
+Strong Pair Correlation Conjecture (SPC). For any fixed bounded M ,
+(6.6)                       F (α) = 1 + o(1),       for 1 ≤ α ≤ M.
+A question left unanswered by (6.6) is the rate at which the function M = M (T )
+tends to infinity.
+   With regard to Montgomery’s heuristics for making SPC, the argument that
+(6.3) implies SPC in the range 1 ≤ α ≤ 2 − ǫ was carried out by Bolanz in a
+1987 Diplomarbeit (in 131 pages).3 At the cost of slightly weaker but acceptable
+error terms, one can greatly simplify Bolanz’s proof by smoothing (6.1) (see [16]).
+In section 9, we will see that one can go further by never multiplying out the
+integrand in (6.1).
+   With SPC and Theorem 1 we can now evaluate almost any sum over differences
+of zeros. In particular, Montgomery was lead to make the following now famous
+conjecture.4
+Pair Correlation Conjecture (PCC). For any fixed β > 0,
+                               −1           Z β             2
+                       T            X                   sin πu
+(6.7)    N (T, β) :=      log T          1∼       1−              du.
+                       2π            ′         0          πu
+                                              0<γ,γ ≤T
+                                                       2πβ
+                                            0<γ ′ −γ≤ log T
+
+The density here for the number of pairs of zeros within β of the average spacing
+between zeros is where the connection with random matrix theorem first occured.
+  One can now replace Theorems 2 and 3 with completely satisfactory results.
+From the PCC we immediately see that the following conjecture is true.
+Small Gaps Conjecture (SGC). We have
+                                                      log γn
+(6.8)                          lim inf (γn+1 − γn )          = 0.
+                                n→∞                     2π
+We also have
+Simple Zeros Conjecture (SZC). We have
+                                     −1 X
+                   ∗         T
+(6.9)            N (T ) :=      log T       mρ ∼ 1.
+                             2π
+                                                        0<γ≤T
+
+Technically this is a conjecture on the average multiplicity which implies almost all
+the zeros are simple, but there is no need to make this distinction here. Another
+related conjecture that follows immediately from the PCC is that
+(6.10)                        N (T, β) = o(1),         as β → 0+ ;
+   3This thesis only proves the result in the range x ≤ T ≤ x 23 −ǫ , but Bolanz extended the result
+to the wider range (written communication).
+   4
+     The SPC conjecture doesn’t explicitly say anything about pair correlation, and was often not
+distinguished from the PCC. It is also sometimes called Montgomery’s F (α) conjecture.
+14                                      D. A. GOLDSTON
+
+
+this conjecture and SZC together are sometimes refereed to as the Essential Sim-
+plicity Conjecture (ESC). Of course, the PCC itself implies a stronger repulsion
+between zeros: as β → 0+ ,
+(6.11)                                  N (T, β) ≪ β 3 .
+     We now prove the following result.
+Theorem 4. Assume the Riemann Hypothesis. SPC implies PCC and SZC.
+  First, we need a simple consequence of Theorem 1 to handle the range when
+α ≥ M.
+Lemma 1. Assume the Riemann Hypothesis. We have uniformly for any B, pos-
+sibly depending on T ,
+                         Z B+1
+(6.12)                         F (α) dα ≤ 3.
+                                       B
+
+     Proof. With B = C − 21 , we have
+Z C+ 21                  Z C+1               
+          F (α) dα ≤ 2             1 − |α − C| F (α) dα
+ C− 21                     C−1
+
+                                                                     1        ′
+                                                                                           !2
+                        2      X                ′            sin     2 (γ − γ ) log T
+                  = T                   T iC(γ−γ )                 1        ′
+                                                                                                 w(γ − γ ′ )
+                    2π log T 0<γ,γ ′ ≤T                            2 (γ − γ ) log T
+
+                                                        1        ′
+                                                                            !2
+                        2      X                sin     2 (γ − γ ) log T
+                  ≤ T                                 1        ′
+                                                                                  w(γ − γ ′ )
+                    2π log T 0<γ,γ ′ ≤T               2 (γ − γ ) log T
+                       8
+                  ≤      + ǫ,
+                       3
+by (5.5).
+   Proof of Theorem 4. For SZC, we repeat the calculation in (5.5) but now assume
+λ ≥ 1 and use SPC for that range to find
+                                             !2
+                    sin λ2 (γ − γ ′ ) log T
+                                                                        
+             X
+                                                         ′           1     T
+(6.13)                 λ
+                                                 w(γ − γ   ) ∼  1 +    2
+                                                                              log T.
+                       2 (γ  − γ ′ ) log T                          3λ     2π
+            0<γ,γ ≤T
+               ′
+
+
+The result now follows on letting λ → ∞.
+   To prove the PCC, we use the Fejer kernel from (5.4) and apply (5.3) to get
+       Z ∞                   2
+                    sin(πβα)
+            F (α)                 dα
+         −∞            πβα
+                                 −1
+                                                      (γ − γ ′ ) log T
+                                                                     
+                        T             X       1
+                  =        log T                 1−                      w(γ − γ ′ )
+(6.14)                  2π               ′
+                                              β           2πβ
+                                             0<γ,γ ≤T
+                                                      2πβ
+                                           |γ ′ −γ|≤ log T
+                                           Z β                                       
+                           1 ∗        2                                   β(1 + β)
+                       =     N (T ) + 2          N (T, u) du + O                          ,
+                           β         β      0                             (log T )2
+where the error term comes from removing the factor w(γ−γ ′ ). By SZC, N ∗ (T ) ∼ 1.
+We now evaluate the left-hand side using Theorem 1 in the range |α| ≤ 1, SPC in
+          NOTES ON PAIR CORRELATION OF ZEROS AND PRIME NUMBERS                    15
+
+
+1 < |α| ≤ M , and Lemma 1 in |α| > M . On letting M → ∞, we have
+                 Z β                    Z β                 2
+                                   β2
+                                                   
+                                                     sin πu
+(6.15)               N (T, u) du ∼    +     (u − β)            du.
+                  0                2     0             πu
+Since               Z β                               Z β+h
+               1                                  1
+                         N (T, u) du ≤ N (T, β) ≤             N (T, u) du,
+               h     β−h                          h      β
+we obtain the PCC on differencing (6.15).
+
+        7. Gallagher and Mueller’s Work on Pair Correlation
+   A few years after Montgomery’s work, Gallagher and Mueller [12] proved a num-
+ber of interesting results on pair correlation. Their starting point is the counting
+function N (T, β) in (6.7), but rather than assuming it satisfies the PCC they as-
+sumed
+                                        Z β
+(7.1)                        N (T, β) ∼     1 − µ(α) dα,
+                                            0
+uniformly for 0 ≤ β0 ≤ β ≤ β1 < ∞, as T → ∞, where µ is a real, even, continuous,
+L1 function. Thus they assumed an asymptotic density function for pair correlation,
+where µ(α) measures the deviation from a uniform distribution corresponding to a
+totally random distribution of zeros. They then proved the following result.
+Theorem 5. With N ∗ (T ) given in (6.9), we have
+                           Z ∞
+(7.2)                           µ(α) dα ∼ N ∗ (T ).
+                                 −∞
+
+In particular, PCC implies SZC.
+  From this we see that           Z ∞
+                                          µ(α) dα ≥ 1,
+                                   −∞
+which shows that if the zeros of the zeta-function have an asymptotic pair correla-
+tion density, then the zeros must repulse each other somewhat. Further evidence
+of this was later obtained by Gallagher [11].
+   That the PCC implies SZC follows from
+                              Z ∞          2
+                                     sin πα
+                                               dα = 1.
+                               −∞      πα
+The notable feature here is that this result holds unconditionally. One can obtain
+this result on RH by first using Theorem 1 to prove (5.5), and then evaluating
+the off-diagonal terms in the sum over zeros by partial summation with N (T, β) to
+determine the diagonal terms N ∗ (T ). Gallagher and Mueller replaced Theorem 1
+by a result of Fujii [9] (also obtained by Selberg) on S(T ). Let
+                                     Z T
+(7.3)                     R(T, h) =      (S(t + h) − S(t))2 dt.
+                                      0
+Fujii proved that
+                                                           1
+(7.4)              R(T, h) ≪ T log(2 + h log T ) if            ≪ h ≪ 1,
+                                                         log T
+16                                  D. A. GOLDSTON
+
+
+and
+                             T
+(7.5)           R(T, h) ∼       log(h log T ) if h log T → ∞, h ≪ 1.
+                             π2
+Proof of Theorem 5. We have
+ Z T                            Z T X         2
+     (N (t + h) − N (t))2 dt =                1 dt
+     0                          0    t<γ≤t+h
+                                                   Z h log T
+                                                                             !              
+                                    ∗        4π         2π                        T
+                            ∼    hN (T ) +                     N (T, u) du           log T       .
+                                           log T    0                             2π
+(This is (6.14) from a different perspective.) By (2.14), the left-hand side is also
+                                          2
+                                     log T
+                             ∼T h             + R(T, h).
+                                       2π
+On substituting N (T, u) from (7.1) and letting h log T → ∞ and h → 0 so that
+(7.5) applies, the theorem follows.
+                                              2πβ
+   Gallagher and Mueller proved that for h = log T
+                                    Z ∞
+(7.6)                   R(T, h) ∼ T     min(|α|, β)µ(α) dα,
+                                        −∞
+
+a result essentially equivalent to PCC.
+   Gallagher and Mueller also studied some consequences of (7.1) for primes. In
+particular they proved that the error in the PNT can be improved on assuming
+(7.1) and RH to
+                                          1          
+(7.7)                        ψ(x) = x + o x 2 (log x)2 ,
+and obtained an asymptotic formula for a weighted second moment for primes
+in short intervals first studied by Selberg [34]. Their proof is quite complicated,
+since the approach in using (7.1) requires partial summation to evaluate sums over
+differences of zeros, introducing many complications to handle the “edges” of the
+summation. An interesting consequence is a form of Theorem 1 obtained for µ(α).
+Assuming RH and also SZC, Gallagher and Mueller proved
+(7.8)                       µ̂(α) = 1 − |α|,       |α| ≤ 1.
+The PCC density agrees with this, and has µ̂(α) = 0 elsewhere.
+    Related to this, there is an alternative form of the PCC which has been found
+useful when generalizing to higher correlations. Starting from (5.3), and supposing
+r̂(α) has support in [−1, 1], we have by Theorem 1 on RH that
+             Z ∞                         Z ∞
+                  r̂(α)F (α) dα = r(0) +       r̂(α) (F (α) − 1) dα
+             −∞                              −∞
+                                                 Z 1
+(7.9)                           ∼ r(0) + r̂(0) −     (1 − |α|)r̂(α) dα
+                                                  −1
+                                         Z ∞              sin πα 2 
+                                = r(0) +       r(α) 1 −                 dα,
+                                           −∞                 πα
+by Plancherel’s formula. The second line is still true if F (α) ∼ 1 for |α| ≥ 1 even
+if r̂(α) does not have support in [−1, 1]. It is no accident that the PCC density
+           NOTES ON PAIR CORRELATION OF ZEROS AND PRIME NUMBERS                    17
+
+
+occurs in the integrand. The conclusion is that assuming RH, Theorem 1 implies
+that
+                                                 Z ∞          sin πα 2 
+                       ′ log T
+          X                   
+                                      ′
+(7.10)          r (γ−γ )         w(γ−γ ) ∼ r(0)+     r(α) 1 −               dα,
+                           2π                     −∞              πα
+        0<γ,γ ≤T
+            ′
+
+
+for all r with r̂ having support in [−1, 1]. Moreover, PCC is equivalent to the
+conjecture that (7.10) holds for all test functions r in some dense subset of L1 .
+Here, the factor w(γ − γ ′ ) may be removed, if desired.
+
+                     8. Heath-Brown’s Results on Primes
+   In [21] Heath-Brown proved a number of results on primes using Montgomery’s
+F (α) function. By (6.2), the trivial bound for F (α) is
+(8.1)                           F (α) ≤ (1 + o(1)) log T.
+Heath-Brown showed that any improvement in the order of magnitude of this bound
+would have important implications for primes. First, he proved that the improve-
+ment in the error in the PNT (7.7) also holds if one assumes RH and F (α) = o(log T )
+uniformly for 1 ≤ α ≤ M , for any bounded M . It should be pointed out that fur-
+ther improvements in the error depend not only on the size of F (α) but also on the
+growth of M (T ).
+   Heath-Brown next proved a number of results on gaps between primes, which
+take their strongest form if we assume
+(8.2)                                    F (α) ≪ 1,
+for various ranges of α. With regard to Cramér’s bound (3.9), he proved that,
+assuming RH and (8.2), for α in any small interval around α = 2
+                                        p
+(8.3)                      pn+1 − pn ≪ pn log pn .
+Assuming F (α) ∼ 1 in this range one can improve (8.3) on RH to little oh [22]5.
+(This also follows from a result in the next section.) Next, assuming (8.2) for
+1 ≤ α ≤ 2 + ǫ and RH,
+                           X                     x log x
+(8.4)                             (pn+1 − pn ) ≪         .
+                                                    H
+                              pn ≤x
+                           pn+1 −pn ≥H
+                                      H
+This becomes non-trivial as soon as log x → ∞. On integrating with respect to H,
+we obtain
+                          X
+(8.5)                         (pn+1 − pn )2 ≪ x(log x)2 .
+                             pn ≤x
+
+Previously Selberg [34], improving on earlier work of Cramér [7], obtained these
+results on RH alone with an extra log x in each bound. Finally, Heath-Brown
+proved on RH and F (α) ∼ 1 that in any interval around α = 1
+                                                
+                                       pn+1 − pn
+(8.6)                        lim inf               = 0,
+                              n→∞        log pn
+so that there exist small gaps much smaller than the average gap between primes.
+This result can be made to depend on the size of the error term in the asymptotic
+formula for F (α) for α in a neighborhood of 1. If the error term is a logarithm
+  5The unusual order of the listed authors was due to a typo in the manuscript.
+18                                             D. A. GOLDSTON
+
+
+smaller than the main term, then one actually gets that there are infinitely often
+primes a bounded distance apart.
+   In the next section, we shall prove these results by following a method that is
+structurally different but fundamentally the same as Heath-Brown’s arguments. A
+very useful idea of Heath-Brown is the following bound for the sum over zeros (3.6).
+Theorem 6. For T ≥ 2,
+                                    X                 r
+(8.7)                                      xiγ ≪       T max F (x, t).
+                                                           t≤T
+                                   0≤γ≤T
+
+Note that this becomes non-trivial as soon as our bound for F is non-trivial.
+Proof. We have
+                                Z ∞    X           2
+(8.8)               F (x, T ) =            xiγ eiγu e−2|u| du.
+                                           −∞     0<γ≤T
+
+This is related to (4.2) by Plancherel’s theorem but may be verified directly. By
+Gallagher’s inequality [8],
+                                 Z 1              Z 1
+                       |f (0)| ≪     |f (u)| du +     |f ′ (u)| du
+                                           −1                   −1
+         1
+for f ∈ C . Then with
+                                                   X                 2
+                                     f (u) =              xiγ eiγu ,
+                                                  0<γ≤T
+we obtain
+              X            2       Z 1     X                2
+                     xiγ       ≪                   xiγ eiγu du
+             0≤γ≤T                  −1    0<γ≤T
+                                         Z 1      X                  ∂ X iγ iγu
+                                    +                   xiγ eiγu         x e    du.
+                                          −1                         ∂u
+                                                0<γ≤T                    0<γ≤T
+
+In the first integral on the right we insert the weight e−2|u| and extend the limits
+of integration to (−∞, ∞) to see that, by (8.8), this is bounded by F (x, T ). To
+complete the proof, the second integral is handled similarly following an application
+of the Cauchy-Schwarz inequality and partial summation.
+
+                     9. Equivalence between SPC and Primes
+   In [18] Montgomery and I proved the following equivalence between the SPC and
+the second moment for primes in short intervals.
+Theorem 7. Assume the Riemann Hypothesis. If 0 < B1 ≤ B2 ≤ 1, then
+                   Z X
+                                                 2    1         1
+(9.1)   I(x, δ) :=     (ψ ((1 + δ)x) − ψ(x) − δx) dx ∼ δX 2 log
+                    1                                 2         δ
+holds uniformly for X −B2 ≤ δ ≤ X −B1 provided
+                                            T
+(9.2)                           F (x, T ) ∼    log T
+                                            2π
+holds for
+                        X B1 (log x)−3 ≤ T ≤ X B2 (log x)3 .
+           NOTES ON PAIR CORRELATION OF ZEROS AND PRIME NUMBERS                                                19
+
+
+Conversely, if 1 ≤ A1 ≤ A2 < ∞, then (9.2) holds uniformly for T A1 ≤ X ≤ T A2
+provided that (9.1) holds uniformly for
+                                 1                              1
+                            X − A1 (log x)−3 ≤ δ ≤ X − A2 (log x)3 .
+   In particular, one can prove on RH that SPC is equivalent to
+                     Z X
+                                                            X
+(9.3)                    (ψ(x + h) − ψ(x) − h)2 dx ∼ hX log
+                      1                                     h
+for 1 ≤ h ≤ X 1−ǫ ,6 where an argument of Saffari and Vaughan [33] is used to move
+from primes in the interval (x, x + δx] to the fixed interval (x, x + h]. Results (8.3)
+– (8.6) are consequences of Theorem 7. Further, it is a straightforward exercise to
+show that the twin prime conjecture in the form (6.3) implies (9.1) and (9.3) in the
+                          1                     1
+ranges X −1 ≤ δ ≤ X − 2 −ǫ and 1 ≤ h ≤ X 2 −ǫ respectively, and consequently we
+again obtain that (6.3) implies SPC in the range 1 ≤ α ≤ 2 − ǫ. Of course, the
+second moment for primes in short intervals (9.1) or (9.3) is a considerably weaker
+hypothesis and gives the full range for SPC.
+   Proof of Theorem 7. We follow initially the analysis in [15]. Let us consider
+again Montgomery’s explicit formula (3.11) but now aim towards obtaining a sum
+over primes in a short interval. This is usually done by differencing values of x but
+Montgomery showed me the following elegant approach. Let κ, δ, and T be related
+by
+                                                    1
+(9.4)                              eκ = 1 + δ = 1 +
+                                                    T
+so that δ = T1 , and define
+                                     ∞
+                                                                       !
+                         sin κ2 t                         2x1−it
+                                  X
+                                        Λ(n)an (x)
+(9.5)        Gκ (t) =       κ                      − 1        3       .
+                            2t      n=1
+                                            nit       2 + it   2 − it
+
+The Fourier transform of Gκ (t) is
+                                                                    Z xeκ/2
+                      2π         X                         2πx                              dv
+          Ĝκ (y) =                        Λ(n)an (x) −                       av e−2πy
+                       κ           n
+                                                            δ        xe−κ/2                   v
+                                2π |< 4π
+                           |y+ log     δ
+
+
+
+which has the desired (but weighted) sum over primes in a short interval. By
+Parseval’s identity, we have
+                        Z ∞        2
+                                         Z ∞        2
+(9.6)                        Gκ (t) dt =     Ĝκ (y) dy.
+                             −∞                      −∞
+
+Using (3.11) to express Gκ (t) in terms of a sum over zeros with the remaining terms
+estimated as error terms and simplifying we find, assuming RH,
+(9.7)
+  Z ∞                                 Z x                 2
+            X                                  dv               dy
+                    Λ(n)an (x) − x      av (y)
+   0              y                xe−κ         v                y
+         y<n≤y+ T
+                                                   2 X                       2
+                                        sin κ2 t
+                                 Z ∞
+                          4xκ2                                 xiγ                             (log T )2
+                                                                                                          
+                      =                   κ                                       dt + O                       .
+                           π     0        2t           γ
+                                                           1 + (t − γ)2                           T
+
+  6If (9.3) holds for this range of h it implies RH.
+20                                D. A. GOLDSTON
+
+
+We abbreviate this equation as
+(9.8)                            L(x, T ) = R(x, T ).
+   To prove Heath-Brown’s results (8.3) and (8.4) from the last section, it is easy
+to see that, taking T = 3x
+                        H,
+                                  x     X
+                       L(x, T ) ≫ 2           (pn+1 − pn )
+                                 T    x
+                                        2 <pn ≤x
+                                      pn+1 −pn ≥H
+
+and, assuming (8.2),
+                                               x
+                                 R(x, T ) ≪      log T.
+                                              T
+Equation (8.4) follows from this, and (8.3) follows by taking only the last term in
+(8.4).
+   For the proof of Theorem 7 we would like to remove the weight an (x) in L(x, T )
+and thus obtain an expression involving I(X, δ). In view of (4.4), since κ ∼ T1 ,
+R(x, T ) can be related to F (x, T ) through Abelian and Tauberian theorems. If one
+assumes an asymptotic formula for I(X, δ) one then obtains an asymptotic formula
+for L(x, δ) which gives an asymptotic formula for R(x, δ) and then a Tauberian
+theorem gives an asymptotic formula for F (x, T ). The converse direction works
+similarly using an Abelian theorem. All the details may be found in [18] except
+how L(x, T ) is related to I(X, δ), since the proof there proceeds from (2.14) rather
+than Proposition 1. It took me a long time to figure out how to remove the weight
+an (y) even though it is actually obvious. If Ty is small, then for y < n ≤ y + Ty it
+is reasonable to replace n by y and thus replace an (x) with ay (x) in (9.7) with a
+small error. Thus the weight is removed, and one finds that
+                                  Z ∞                  2
+                                                        x (log T )2
+                                                                    
+                                3             dy
+(9.9)             L(x, T ) = 4x        I(y, δ) 5 + O                  .
+                                   x          y             T3
+Since the integrand is non-negative, if we have an asymptotic formula for L(x, T )
+then a simple differencing argument will give an asymptotic formula for I(x, δ). The
+converse is immediate. Here the error term is smaller than the main term when
+T ≤ x ≤ T 2−ǫ . To obtain the full range, rather than replacing an (x) by ay (x),
+we use Stieltjes integration and the PNT with the RH error (3.4) to evaluate the
+sum over primes, and together with the Cauchy Schwarz inequality we find that
+the error term in (9.9) can be replaced by
+                                      x(log x)4
+                                               
+                                  O        3      .
+                                         T2
+This suffices for the full range.
+
+                         10. Selberg’s theory of S(T )
+   For more than 50 years, Selberg has been working on the distribution of values of
+log ζ(s) and related functions. In the early 1940’s and he made major contributions
+on S(T ) [35, 36]. Further results for Dirichlet L-functions were obtained in [37].
+Selberg has continued to work on these problems, and while he has lectured on his
+results, his next published paper on this subject [38] only appeared in 1992. In
+this already famous paper Selberg introduced the properties of a general class of
+Dirichlet series, now referred to as the “Selberg class”. Selberg showed that his
+theory, originally devised for the Riemann zeta-function, carries over to the Selberg
+           NOTES ON PAIR CORRELATION OF ZEROS AND PRIME NUMBERS                             21
+
+
+class with remarkably few changes. To learn more about this subject, I recommend
+first reading Selberg’s 1992 paper. Second, Kai-man Tsang (Selberg’s only Ph.D.
+student) wrote a thesis [40] in 1984 which contains full details of the proofs for
+some of Selberg’s more recent work on log ζ(s). Also, the two papers of A. Ghosh
+[13, 14] refine some of Selberg’s work from the 1940’s.
+    As examples, we state two of Selberg’s results proved in Tsang’s thesis. Selberg
+has developed methods for evaluating
+                               Z T
+                                   F (log ζ(σ + it)) dt,
+                                    0
+
+for functions F (z) such as sgn(Re(z)), sgn(Im(z)), |Re(z)|, and |Im(z)|. Let χα,β (u)
+be 1 if α ≤ u ≤ β and zero otherwise. Then for α < β
+         Z T      r                        Z β                                 
+                           π                          2           T log log log T
+(10.1)       χα,β                S(t) dt = T     e−πu du + O        √               .
+          0            log log T              α                       log log T
+We have similar results for the real and imaginary parts of log ζ(σ + it).
+   For the second result, let Z(T ) denote the number of sign changes of S(t) in [0, T ].
+                                    1
+Selberg proved Z(T ) ≫ T (log T ) 3 −ǫ on RH in [35], and unconditionally (and with
+an improvement on the ǫ) in [36]. Ghosh [13] improved this to Z(T ) ≫ T (log T )1−ǫ .7
+Tsang’s thesis contains the following remarkable improvements on these results. For
+some c > 0,
+                                                                  2
+(10.2)                      Z(T ) ≫ T log T e−c(log log log T )
+and
+                                            log log log T
+(10.3)                       Z(T ) ≪ T log T √            .
+                                               log log T
+If the analysis of an error term could be improved then one would obtain
+                                               log T
+(10.4)                            Z(T ) ∼ T √            .
+                                             π log log T
+    I will now describe some key ideas that went into Selberg’s work on S(t). The
+very remarkable result that Selberg proved in 1946 is that all the even moments of
+S(t) can be computed unconditionally [36]. He proved this on intervals (T, T + H],
+where T a ≤ H ≤ T and a > 21 , but for simplicity we will consider the interval
+[0, T ].
+Theorem 8. For k ≥ 1, we have
+                Z T                          2k
+                            1 X sin(t log p)
+(10.5)               S(t) +         √           dt ≪k T
+                 0          π  1
+                                       p
+                                        p≤T k
+
+and
+            Z T
+                                    (2k)!                       
+                                                                                k− 12
+                                                                                      
+(10.6)            |S(t)|2k dt =            T (log log T )k
+                                                           + Ok   T (log log T )        .
+              0                   k!(2π)2k
+
+  7Also obtained earlier but unpublished by Selberg
+22                                    D. A. GOLDSTON
+
+
+   This last relation is the 2kth moment of a Gaussian. Earlier Selberg [35] proved
+(10.5) assuming the RH, and also (10.6) on RH but with an error term Ok (T (log log T )k−1 ).
+These results were a great advance over previous work, which had failed to even
+obtain an asymptotic formula for the second moment. From (10.5) we see that S(t)
+can be approximated well in L2k norm by the imaginary part of a short Dirichlet
+series. This series is short enough so that its L2k norm is determined by diagonal
+terms, and has the Gaussian property in (10.6). Thus S(t) has this property too.
+   The proof of (10.5) and (10.6) is based on an approximate formula for S(t), which
+has its origin in Selberg’s earlier paper [34] on primes in short intervals. There, he
+proved on RH that for σ = 21 + logβ T and β ≫ 1,
+                          Z T ′           2
+                               ζ
+(10.7)                            (σ + it) dt ≪β T (log T )2 .
+                           0    ζ
+Selberg’s work was ahead of its time, since we now know that replacing the bound
+in (10.7) by an asymptotic formula is equivalent to the PCC [17].
+                                                    ′
+   Selberg first found an approximate formula for ζζ (s). This is not straightforward.
+                                                                          ′
+For σ > 1, we have the Dirichlet series representation (2.2) for ζζ (s). As we bring s
+into the critical strip the Dirichlet series fails to converge. It is a familiar fact that an
+appropriate partial sum of a Dirichlet series will still provide a good approximation
+for the analytic continuation of the series. However, on or near the critical line we
+expect the poles from the zeros ζ(s) to dominate, as reflected in the partial-fraction
+formula, for s 6= ρ, t ≥ 2,
+                          ζ′       X 1               
+                                                    1
+(10.8)                       (s) =               +      + O(log t).
+                           ζ        ρ
+                                          s−ρ ρ
+
+Since
+                                                     Z ∞       ′         
+                     1             1               1             ζ
+(10.9)         S(t) = arg ζ          + it       =−           Im     (σ + it) dt,
+                     π             2               π    1
+                                                        2
+                                                                 ζ
+it is (maybe) plausible that the Dirichlet series part of S(t) will usually dominate. A
+candidate for an approximate formula is (3.13) which we can rewrite as, for x > 1,
+s 6= 1, s 6= ρ, s 6= −2k,
+                                                      ∞
+                   ζ′         X Λ(n)   x1−s X xρ−s    X  x−2n−s
+(10.10)               (s) = −        +     −        +           .
+                   ζ             ns    1−s   ρ
+                                               ρ − s n=1 2n + s
+                               n≤x
+
+In hindsight (10.10) looks even better, because
+                                     
+                 Z ∞
+               1           X    Λ(n)           1 X Λ(n) sin(t log n)
+             −        Im        σ+it
+                                        dσ = −         √
+               π 12            n                π        n log n
+                              n≤x                            n≤x
+
+which gives exactly the approximation in (10.5) from the terms where n is prime.
+(The prime powers will contribute an error term.) The problem here is that the
+sum over zeros does not converge absolutely, and consequently (10.10) has never
+been used successfully for this problem. Earlier work had smoothed this formula
+(or rather over-smoothed it), so that the correct approximation was lost. Selberg
+had the innovative idea that one only needs to smooth slightly in order to obtain
+absolute convergence in the sum over zeros.
+           NOTES ON PAIR CORRELATION OF ZEROS AND PRIME NUMBERS                           23
+
+
+  Let
+                                   (
+                                       Λ(n),           for 1 ≤ n ≤ x,
+(10.11)                Λx (n) =            log x
+                                                 2
+
+                                       Λ(n) log nn ,   for x ≤ n ≤ x2 .
+Then, for x > 1, s 6= 1, s 6= ρ, s 6= −2k,
+             ζ′         X Λx (n) x2(1−s) − x1−s      1 X xρ−s − x2(ρ−s)
+                (s) = −         +                +
+             ζ           2
+                           ns     (1 − s)2 log x   log x ρ  (ρ − s)2
+                         n≤x
+(10.12)                                               ∞
+                                                 1 X x−2n−s − x−2(2n+s)
+                                           +                            .
+                                               log x n=1 (2n + s)2
+
+This formula is much easier to prove than (10.10). Selberg next argues as follows.
+Assume RH, and suppose 4 ≤ x ≤ t2 . Let
+                                               1   1
+(10.13)                                 σ1 =     +     ,
+                                               2 log x
+which is at the transition from the region where the Dirichlet series dominates to
+the region where the zeros dominate. From (10.12), we see that for σ ≥ σ1 and
+some complex number ω with |ω| ≤ 1
+        ζ′              X Λx (n)       1         1
+                                                        X          σ1 − 12
+(10.14)    (σ+it) = −              +O  x 2 −σ +2ωx 2 −σ                         .
+                                                                    2
+         ζ                   nσ+it                       γ   σ1 − 21 + (t − γ)2
+                       n≤x2
+
+We also have, on taking the real part of (10.8),
+                      ζ′            X       σ − 21
+                 Re      (σ + it) =          2          + O(log t),
+                      ζ               σ − 21 + (t − γ)2
+                                            
+                                    γ
+
+Thus, taking the real part of (10.14) with σ = σ1 gives for some −1 ≤ ω ′ ≤ 1,
+    X           σ1 − 12                        X Λx (n)
+                  2          + O(log t) = −Re
+          σ1 − 21 + (t − γ)2                       nσ1 +it
+                 
+     γ                                        n≤x2
+
+                                                             2ω ′ X    σ1 − 21
+                                               + O(1) +                               .
+                                                              e γ σ1 − 1 2 + (t − γ)2
+                                                                         
+                                                                       2
+             ′
+Since 1 − 2ωe > 1 − 2e > 14 , we conclude that
+                                                         
+             X         σ1 − 21                 X Λx (n)
+                        2             = O                + O(log t).
+              γ  σ1 − 1 + (t − γ)2              2
+                                                  nσ1 +it
+                         2                             n≤x
+
+Substituting this back into (10.14), we obtain
+                                                          
+        ζ′              X Λx (n)            1
+                                        x 2 −σ
+                                                X Λx (n)                     
+                                                            + O x 12 −σ log t .
+(10.15)    (σ + it) = −             + O
+         ζ                 2
+                             nσ+it               2
+                                                   nσ1 +it
+                             n≤x                         n≤x
+
+Selberg next substitutes (10.15) into (10.9) for the integration range σ1 ≤ σ < ∞.
+For 21 < σ ≤ σ1 , he uses (10.8) and (10.15) to show this range only contributes to
+the error terms. The conclusion is the following theorem, which is the primary tool
+for obtaining Theorem 8 assuming the RH.
+24                                      D. A. GOLDSTON
+
+
+Theorem 9. Assume the Riemann Hypothesis. For t ≥ 2, 4 ≤ x ≤ t2 , and σ1
+given in (10.13), we have
+                                                             
+                  X Λx (n) sin(t log n)                                   
+                                               1   X Λx (n)          log t
+(10.16) S(t) = −                        +O                    +O           .
+                     2
+                        nσ1   log n          log x  2
+                                                      nσ1 +it        log x
+                    n<x                                          n≤x
+
+   How do you remove the RH from the above analysis? I think it takes great
+insight to even suspect that this can be done. Selberg makes a much more subtle
+choice for σ1 . He defines
+                                                      
+                                1              1 2
+(10.17)                   σx,t = + 2 max β − ,           ,
+                                2     ρ∈A      2 log x
+where
+                                                      x3|β− 2 |
+                                    (                        1
+                                                                  )
+(10.18)                       A=        ρ : |t − γ| ≤                 .
+                                                       log x
+
+Thus, we move towards or away from the critical line depending on how far off the
+line nearby zeros lie. There is also an issue of convergence, and the explicit formula
+(10.12) needs to be replaced by a similar formula where the sum over zeros has a
+factor of (s − ρ)3 in the denominator. Ultimately the contribution from zeros off
+the 21 -line is bounded by a density estimate proved in [36].
+
+                                         References
+ [1] E. B. Bogomolny and J. P. Keating, Random matrix theory and the Riemann zeros I: three-
+     and four-point correlations, Nonlinearity 8 (1995), 1115–1131.
+ [2] E. B. Bogomolny and J. P. Keating, Random matrix theory and the Riemann zeros II: n-point
+     correlations, Nonlinearity 9 (1996), 911–935.
+ [3] Joachim Bolanz, Uber Die Montgomery’she Paarvermutung, Diplomarbeit 1987, 131 pages.
+ [4] J. B. Conrey, D. W. Farmer, J. P. Keating, M. O. Rubinstein, N. C. Snaith, Integral moments
+     of L-functions, arXiv:math.NT/0206018 , 2002, 71pp.
+ [5] J. B. Conrey, A. Ghosh, and S. M. Gonek, A note on gaps between zeros of the zeta-function,
+     Bull. London Math. Soc. 16 (1984), 421–424.
+ [6] J. B. Conrey, A. Ghosh, and S. M. Gonek, Simple zeros of the Riemann zeta-function, Proc.
+     London Math. Soc. (3) 76 (1998), 497–522.
+ [7] H. Cramér, On the order of magnitude of the difference between consecutive prime numbers,
+     Acta Arithmetica, 2 (1936), 23–46.
+ [8] Harold Davenport, Multiplicative number theory. Revised and with a preface by Hugh L.
+     Montgomery. 3rd ed. Graduate Texts in Mathematics, 74 New York, NY: Springer, 177 pp.
+ [9] A. Fujii, On the zeros of Dirichlet L-functions, I, Trans. A. M. S. , 196 (1974), 225–235.
+[10] Akio Fujii, On a theorem of Landau, Proc. Japan Acad., Ser. A 65, No.2 (1989), 51–54.
+[11] P. X. Gallagher, Pair correlation of zeros of the zeta function, J. Reine Angew. Math. 362
+     (1985), 72–86.
+[12] P. X. Gallagher and J. Mueller, Primes and zeros in short intervals, J. Reine Angew. Math.
+     303/304 (1978), 205–220.
+[13] A. Ghosh, On Riemann’s zeta function—sign changes of S(T ), Recent progress in analytic
+     number theory, Vol. 1 (Durham, 1979), Academic Press, London-New York, 1981, 25–46.
+[14] A. Ghosh, On the Riemann zeta function—mean value theorems and the distribution of
+     |S(T )|, J. Number Theory 17 (1983), no. 1, 93–102.
+[15] D. A. Goldston, Prime numbers and the pair correlation of zeros of the zeta-function, Proc.
+     of the Texas Conference on Number Theory 1982, Univ. of Texas Press.
+[16] D. A. Goldston and S. M. Gonek, Mean value theorems for long Dirichlet polynomials and
+     tails of Dirichlet series, Acta Arith. 84 (1998), 155–192.
+            NOTES ON PAIR CORRELATION OF ZEROS AND PRIME NUMBERS                                 25
+
+
+[17] D. A. Goldston, S. M. Gonek, and H. L. Montgomery, Mean values of the logarithmic deriv-
+     ative of the Riemann zeta-function with applications to primes in short intervals, J. Reine
+     Angew. Math. 537 (2001), 105-126.
+[18] D. A. Goldston and H. L. Montgomery Pair correlation of zeros and primes in short intervals,
+     Analytic Number Theory and Diophantine Problems, Birkhaüser, Boston, Mass. 1987, 183–
+     203.
+[19] S. M. Gonek, An explicit formula of Landau and its applications to the theory of the zeta-
+     function, Knopp, Marvin (ed.) et al., A tribute to Emil Grosswald: number theory and
+     related analysis. Providence, RI: American Mathematical Society. Contemp. Math. 143, 395-
+     413 (1993).
+[20] G. H. Hardy and J. E. Littlewood, Some problems of ‘Partitio Numerorum’: III On the
+     expression of a number as a sum of primes, Acta Math. 44 (1923), 1–70.
+[21] D. R. Heath-Brown Gaps between primes, and the pair correlation of zeros of the zeta-
+     function Acta Arith. 41 (1982), 85–99.
+[22] D. R. Heath-Brown and D. A. Goldston, A note on the difference between consecutive primes,
+     Math. Ann. 266 (1984), 317–320.
+[23] Dennis A. Hejhal, On the triple correlation of zeros of the zeta function, Internat. Math. Res.
+     Notices 293ff Issue 7, (1994), 10pp (electronic).
+[24] Georg Illies, Cramér functions and Guinand equations, Acta Arith. 105 no. 2, (2002), 103–
+     118.
+[25] A. E. Ingham, The distribution of prime numbers, Cambridge Tracts in Mathematics and
+     Mathematical Physics, 30; Cambridge Mathematical Library, Cambridge University Press
+     (1990), 114 pp .
+[26] N. Katz and P. Sarnak, Random matrices, Frobenius eigenvalues, and monodromy, Collo-
+     quium Publications. American Mathematical Society (AMS). 45Providence, RI, (1999) 419
+     pp .
+[27] H. L. Montgomery The pair correlation of zeros of the zeta function Proc. Sympos. Pure
+     Math. 24 AMS, Providence, R. I., 1973, 181–193.
+[28] E. Landau, Handbuch der Lehre von der Verteilung der Primzchlen, Teubner, Leipzig (1909).
+     Reprinted by Chelsea Publishing Co., New York, (1953).
+[29] Hugh L. Montgomery, The analytic principle of the large sieve, Bull. Am. Math. Soc. 84
+     (1978), 547-567.
+[30] H. L. Montgomery and A. Odlyzko, Gaps between zeros of the zeta-function, Topics in
+     Classical Number Theory, Vol I, II, Budapest, 1981, Colloquia Math. Soc. János Bolyai, 34,
+     North-Holland, Amsterdam-New York, 1984, 1079–1106.
+[31] A. M. Odlyzko, On the distribution of spacings between zeros of the zeta function, Math.
+     Comp. 48 (1987), 273–308.
+[32] Zeév Rudnick and Peter Sarnak, Zeros of principal L-functions and random matrix theory.
+     A celebration of John F. Nash, Jr , Duke Math. J. 81 Issue 2, (1996), 269–322.
+[33] Saffari, B. and Vaughan, R. C., On the fractional parts of x/n and related sequences, II.
+     Ann. Inst. Fourier (Grenoble) 27 (1977), no. 2, 1–30.
+[34] A. Selberg, On the normal density of primes in small intervals,and the difference between
+     consecutive primes, Arch. Math. Naturvid. 47 No. 6, (1943), 87-105.
+[35] A. Selberg, On the remainder in the formula for N (T ), the number of zeros of ζ(s) in the
+     strip 0 < t < T , Avh. Norske Vid. Akad. Oslo. I. No.1, (1944) 27 pp.
+[36] A. Selberg, Contributions to the theory of the Riemann zeta-function, Archiv for Mathematik
+     og Naturvidenskab B. 48 (1946), No. 5, 89–155.
+[37] A. Selberg, Contributions to the theory of Dirichlet’s L-functions, Skrifter utgitt av Det
+     Norske Videnskaps-Akademi i Oslo. I. Math.-Naturv. Klasse (1946), No. 3, 1–62.
+[38] A. Selberg, Old and new conjectures and results about a class of Dirichlet series, Bombieri, E.
+     (ed.) et al., Proceedings of the Amalfi conference on analytic number theory, held at Maiori,
+     Amalfi, Italy, Sept. 25–29, 1989. Salerno: Universit di Salerno, (1992) 367-385 .
+[39] E. C. Titchmarsh, The theory of the Riemann zeta-function, Second edition. Edited and with
+     a preface by D. R. Heath-Brown. The Clarendon Press, Oxford University Press, New York,
+     1986.
+[40] Kai-man Tsang, The distribution of the values of the Riemann zeta-function, Thesis, Prince-
+     ton University, October 1984, 179pp.
+26                                 D. A. GOLDSTON
+
+
+     Department of Mathematics, San Jose State University, San Jose, CA 95192, USA
+     E-mail address: goldston@math.sjsu.edu
+

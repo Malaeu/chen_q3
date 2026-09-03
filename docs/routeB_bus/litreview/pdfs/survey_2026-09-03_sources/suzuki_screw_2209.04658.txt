@@ -1,0 +1,623 @@
+                                                  THE SCREW LINE OF THE RIEMANN ZETA-FUNCTION
+                                                              AND ITS APPLICATIONS
+
+                                                                                 MASATOSHI SUZUKI
+
+
+                                                  Abstract. We investigate the screw line corresponding to the screw function associ-
+                                                  ated with the Riemann zeta-function under the Riemann hypothesis and derive three
+                                                  necessary and sufficient conditions for the Riemann hypothesis as applications. One
+                                                  of them explains the non-negativity of the Weil distribution by means of the norm.
+arXiv:2209.04658v3 [math.NT] 17 May 2023
+
+
+
+
+                                                                                  1. Introduction
+                                             Let g(t) be the even real-valued function on the real line defined by
+                                                                                                     
+                                                              t/2    −t/2         t Γ′ 1
+                                                 g(t) := −4(e + e         − 2) −                − log π
+                                                                                 2 Γ 4
+                                                          1                                        X Λ(n)                                (1.1)
+                                                        −     Φ(1, 2, 1/4) − e−t/2 Φ(e−2t , 2, 1/4) +       √ (t − log n)
+                                                          4                                               t
+                                                                                                             n
+                                                                                                           n≤e
+
+                                           for non-negative t, where Λ(n) is the von Mangoldt function defined by Λ(n) = log p
+                                           if n = pk withP k ∈ Z>0−sand       Λ(n) = 0 otherwise, Γ(s) is the gamma function, and
+                                           Φ(z, s, a) = ∞  n=0 (n + a)   z n is the Hurwitz–Lerch zeta-function.
+
+                                              We assume that the Riemann hypothesis (RH, for short) is true, that is, all nontrivial
+                                           zeros of the Riemann zeta-function ζ(s) lie on the critical line ℜ(s) = 1/2. Then, −g(t)
+                                           is non-negative for all t ∈ R and vice versa ([6, Theorem 1.7]). This non-negativity can
+                                           be understood by the Weil distribution ([6, Section 3.4]). In this paper, we demonstrate
+                                           that the non-negativity can be explained by the norm of a Hilbert space, building on
+                                           the same theoretical background used in [8] which explained the non-negativity of Li
+                                           coefficients in terms of norms.
+                                              As stated in [6, Theorem 1.2], the even function g(t) is a screw function on the real
+                                           line in the sense of [4] if the RH is true, that is, the kernel defined by
+                                                                     Gg (t, u) := g(t − u) − g(t) − g(u) + g(0)                            (1.2)
+                                           is non-negative definite on the real line. If g(t) is a screw function, then there exists a
+                                           Hilbert space H and a continuous mapping t 7→ x(t) from R into H such that hx(t +
+                                           v) − x(v), x(u + v) − x(v)iH is independent of v ∈ R for all t, u ∈ R and the equality
+                                           hx(t) − x(0), x(u) − x(0)iH = Gg (t, u) holds. Therefore, kx(t) − x(0)k2H = −2g(t) if we
+                                           note g(0) = 0. A mapping x : R → H endowed with the translation-invariance described
+                                           above is called a screw line.
+                                              One of the screw lines corresponding to g(t) can be constructed as follows. In general,
+                                           an even real-valued function g̃(t) on R with g̃(0) = 0 is a screw function if and only if it
+                                           admits a representation               Z ∞
+                                                                                      cos(γt) − 1
+                                                                         g̃(t) =                   dτ̃ (γ)
+                                                                                  −∞       γ2
+                                                                                       R∞
+                                           with a non-negative measure τ̃ such that −∞ dτ̃ (γ)/(1 + γ 2 ) < ∞. Hence, there exists
+                                           a non-negative measure τ representing g(t) as above under the RH. Then the Hilbert
+
+                                             Date: Version of May 18, 2023.
+                                             2020 Mathematics Subject Classification. 11M26 42A82 46E22.
+                                             Key words and phrases. Riemann zeta-function, screw function, screw line, Weil’s criterion.
+                                                                                            1
+2                                           M. SUZUKI
+
+space H = L2 (τ ) and the mapping t 7→ x(t) := (eitγ − 1)/γ provide a screw line
+satisfying kx(t) − x(0)k2H = −2g(t) ([4, §12]). This spectral construction for a screw line
+is important and useful in analysis, but it is not very useful for studying the nontrivial
+zeros of ζ(s) without assuming the RH. Therefore, we provide a construction of a screw
+line that is at least superficially independent of the measure τ , and apply it to the RH.
+   Let L2 (R) be the usual L2 -space on the real line with respect to the Lebesgue measure.
+Let ξ(s) = 2−1 s(s − 1)π −s/2 Γ(s/2)ζ(s) be the Riemann xi-function. The nontrivial zeros
+of ζ(s) coincide with the zeros of ξ(s) with multiplicity. We define
+                           E(z) := ξ(1/2 − iz) + ξ ′ (1/2 − iz),                       (1.3)
+                                   Θ(z) := E(z̄)/E(z),                                 (1.4)
+and
+                                            i(1 + Θ(z))
+                                St (z) :=        √      Pt (z)                         (1.5)
+                                                2 π
+with
+                        4(et/2 − 1) 4(e−t/2 − 1) X Λ(n) eiz(t−log n) − 1
+             Pt (z) :=              +                 −       √
+                          1 − 2iz       1 + 2iz             t
+                                                                n            iz
+                                                        n≤e
+                                                                               
+                         eitz − 1 Z ′ 1               1          1 Γ′ 1 iz
+                      +                    − iz − log π +                    +
+                            iz      Z 2               2          2Γ 4           2      (1.6)
+                               ′          ′         
+                           1 Γ 1          Γ 1 iz
+                      −                −           +
+                         2iz Γ 4           Γ 4        2
+                           1 −t/2 h                                              i
+                      −      e      Φ(e−2t , 1, 1/4) − Φ(e−2t , 1, 21 ( 12 + iz))
+                         2iz
+for a non-negative real number t and a complex number z, where Z(s) := π −s/2 Γ(s/2)ζ(s).
+For negative t, we define St (z) := S−t (z). For this St , we first obtain the following.
+Proposition 1.1. For any fixed t ∈ R, St (z) belongs to L2 (R) as a function of z.
+  From this result, the mapping t 7→ St (z) from R to L2 (R) is defined. For this
+mapping, the following holds under the RH.
+Theorem 1.1. Assuming that the RH is true, the mapping t 7→ St (z) from R to L2 (R)
+is a screw line corresponding to g(t).
+    The following immediately follows from Theorem 1.1.
+Corollary 1.1. The RH is true if and only if the equality
+                                   kSt k2L2 (R) = −2g(t)                               (1.7)
+holds for all t ≥ t0 for some t0 ≥ 0.
+   In [6, Theorem 1.7], it has been proven that the non-negativity of −g(t) is equivalent to
+the RH being true. Corollary 1.1 explains this non-negativity through a set of equalities
+involving norms. On the other hand, a screw function defines a non-negative definite
+hermitian form. As a variant of Corollary 1.1, the non-negativity of the hermitian form
+associated with g(t) is also explained through a set of equalities involving norms.
+   The kernel (1.2) defines a hermitian form on the space Cc∞ (R) of all smooth and
+compactly supported function on R by
+                       Z ∞Z ∞
+       hφ1 , φ2 iGg :=          Gg (t, u)φ1 (u)φ2 (t) dtdu for φ1 , φ2 ∈ Cc∞ (R).      (1.8)
+                      −∞   −∞
+This hermitian form is non-negative definite if g(t) is a screw function ([4, §5]), that
+is, if the RH is true. By the uniformity of the L2 -norm of St (z) on a compact set of t
+obtained in the proof of Proposition 1.1 and Minkowski’s integral inequality, we obtain
+the following.
+       THE SCREW LINE OF THE RIEMANN ZETA-FUNCTION AND ITS APPLICATIONS                     3
+
+Proposition 1.2. For φ ∈ Cc∞ (R), we define
+                                     Z ∞
+                            c
+                           Pφ (z) :=      St (z)φ(t) dt
+                                           −∞
+                  cφ (z) belongs to L2 (R).
+using (1.5). Then P
+  Based on this proposition, the following holds.
+Theorem 1.2. The RH is true if and only if the equality
+                                   cφ k2 2
+                                  kP   L (R) = hφ, φiGg                          (1.9)
+                                     R ∞
+holds for all φ ∈ Cc∞ (R) satisfying −∞ φ(t) dt = 0. If the RH is true, equality (1.9)
+holds for all φ ∈ Cc∞ (R).
+   The advantage of Corollary 1.1 and Theorem 1.2 is that it has turned the criterion of
+the RH from a set of inequalities like Weil’s criterion into a set of equalities. Theorem
+1.2 can be reformulated as follows.
+   We denote the set of all zeros of ξ(1/2 − iz) without counting multiplicity by Γ and
+the multiplicity of γ ∈ Γ by mγ . Weil’s hermitian form on Cc∞ (R) is defined by
+                                X     Z ∞                Z ∞
+                  hψ1 , ψ2 iW =   mγ       ψ1 (t)eiγt dt     ψ2 (u)eiγ̄u du
+                               γ∈Γ      −∞                −∞
+
+for ψ1 , ψ2 ∈ Cc∞ (R). The relation
+                     hDψ1 , Dψ2 iGg = hψ1 , ψ2 iW ,   (Dψ)(t) := ψ ′ (t)              (1.10)
+of the hermitian forms in [6, Proposition 3.1] immediately leads to the following equiv-
+alence condition for the RH via Weil’s criterion, since the differential operator
+                                                                          R∞      D gives
+                   ∞                          ∞
+a bijection from Cc (R) to the subspace of Cc (R) consisting of φ with −∞ φ(t) dt = 0.
+Corollary 1.2. The RH is true if and only if the equality
+                                  kPd   2
+                                    Dψ kL2 (R) = hψ, ψiW                              (1.11)
+holds for all ψ ∈ Cc∞ (R).
+  A similar result was obtained in [7, Theorem 1.3], but Corollary 1.2 is simpler and
+more efficient as a statement.
+   In the following, we first prove one proposition (Proposition 2.1) used in the proof
+of Proposition 1.1 and Theorem 1.1 in Section 2. Then, we prove Proposition 1.1 in
+the same section. After that, we prove Theorems 1.1 and 1.2 after preparing a result
+(Proposition 3.1) on the theory of model spaces in Section 3. Finally, we mention two
+special values of St (z) in Section 4. The strategy of the proof of Theorem 1.1 is similar to
+[8], however the computational details change. In [8], the analytic or geometric meaning
+of the functions that give the norms is unknown, but in this paper the functions that
+give the norms have the meaning as a screw line. Furthermore, as an advantage of using
+the screw line St , we obtain Theorem 1.2, whose analogue was not obtained in [8].
+
+                         2. Unconditional results for St
+2.1. Expansion of Pt (z) over the zeros. For the basic properties of the Riemann
+zeta-function, we refer to [9]. Let Γ be the set of all zeros of ξ(1/2− iz) without counting
+multiplicity. By two functional equations ξ(s) = ξ(1 − s) and ξ(s) = ξ ♯ (s), if γ ∈ Γ, then
+both −γ and γ belong to Γ with the same multiplicity. Also, |ℑ(γ)| < 1/2 for every
+γ ∈ Γ, since all zeros of ξ(s) lie in the strip 0 < ℜ(s) < 1. The RH is equivalent to all
+γ ∈ Γ are real. For E(z) of (1.4), we define
+                                 A(z) = (E(z) + E(z̄))/2.                              (2.1)
+4                                             M. SUZUKI
+
+
+Then A(z) = ξ(1/2 − iz), because E(z̄) = ξ(1/2 − iz) − ξ ′ (1/2 − iz) by functional
+equations of ξ(s). Therefore, Γ coincides with the set of all zeros of both A(z) and
+1 + Θ(z). We define
+                                    X     eiγt − 1    1
+                          Pt (z) :=    mγ          ·                            (2.2)
+                                              γ      z−γ
+                                           γ∈Γ
+
+for t ∈ R≥0 , where mγ is the multiplicity of γ ∈ Γ. For negative t, we set Pt (z) := P−t (z).
+The series on the right-hand side
+                                P (2.2) converges      absolutely and uniformly on every
+compact subset of C \ Γ, since γ∈Γ mγ |γ|     −1−δ < ∞ for any δ > 0, because A(z) is an
+entire function of order one. Therefore, Pt (z) is a meromorphic function on C with Γ as
+the set of all poles.
+Proposition 2.1. Let Pt (z) and Pt (z) be meromorphic functions defined by (1.6) and
+(2.2), respectively. Then, both coincide.
+Proof. For t ≥ 0 and z ∈ C with ℑ(z) > 0, we define
+
+                      φz,t (x) = (iz)−1 eizx (eizt − e−iz min(0,x) ) 1(−t,∞] (x),
+where 1A (x) = 1 if x ∈ A and 1A (x) = 0 otherwise. The main tool for the proof is
+Weil’s explicit formula
+             X       Z ∞
+       lim        mγ     φ(x) e−iγx dx
+      X→∞                −∞
+             γ∈Γ
+            |γ|≤X
+                Z ∞                          ∞
+                                             X                X∞
+                                                Λ(n)               Λ(n)
+            =         φ(x)(ex/2 + e−x/2 )dx −    √ φ(log n) −       √ φ(− log n)
+                 −∞                         n=1
+                                                   n          n=1
+                                                                      n
+                                       Z ∞n                           o ex/2 dx
+                − (log 4π + γ0 )φ(0) −      φ(x) + φ(−x) − 2e−x/2 φ(0) x
+                                        0                               e − e−x
+which is obtained from the explicit formula in [1, p. 186] by taking φ(t) = et/2 f (et ) for
+test functions f (x) in that formula with the conditions for f (x) in [2, Section 3], where
+γ0 is the Euler–Mascheroni constant. (Note that the formula in [2] has two typographical
+errors in the second line of the right-hand side.)
+   As is easily seen, Weil’s explicit formula can be applied to φ(x) = φz,t (x). We have
+               Z ∞
+                                        eiγt − 1    1
+                    φz,t (x) e−iγx dx =          ·      when ℑ(z) > ℑ(γ).
+                 −∞                         γ      z−γ
+Therefore, the left-hand side of Weil’s explicit formula for φz,t (x) gives Pt (z) of (2.2)
+when ℑ(z) > 1/2. Hence, if it is shown that the right-hand side is equal to Pt (z) for
+ℑ(z) > 1/2, then the conclusion of the proposition follows by analytic continuation.
+  It is easy to verify
+                Z ∞
+                                                 4(et/2 − 1) 4(e−t/2 − 1)
+                     φz,t (x)(ex/2 + e−x/2 )dx =            +
+                 −∞                                1 − 2iz     1 + 2iz
+and
+          X∞                            ∞                             
+              Λ(n)             eizt − 1 X Λ(n)      eizt − 1 ζ ′ 1
+              √ φz,t (log n) =                   =−                − iz ,
+          n=1
+                n                 iz n=1 n1/2−iz       iz    ζ 2
+          X∞                     X Λ(n) eiz(t−log n) − 1
+              Λ(n)
+              √ φz,t (− log n) =    √
+                n                    n         iz
+          n=1                     t     n≤e
+
+for ℑ(z) > 1/2 by direct calculation.
+       THE SCREW LINE OF THE RIEMANN ZETA-FUNCTION AND ITS APPLICATIONS                     5
+
+ Therefore, theR remainingR t task is to calculate the fifth term on the right-hand side.
+                  ∞
+We split it into t and 0 and calculate each integral. For the first part,
+           Z ∞n                                           o ex/2 dx
+                 φz,t (x) + φz,t (−x) − 2e−x/2 φz,t (0) x
+             t                                                e − e−x
+                    izt     Z ∞                      x/2
+                  e −1                              e dx
+                =                 (eizx − 2e−x/2 ) x
+                       iz     t                    e − e−x
+                            Z                 ∞
+                  eizt − 1 ∞ izx −x/2 X −2nx                      eizt − 1    et + 1
+                =                 e e            e        dx −             log t
+                       iz     t                                      iz       e −1
+                                             n=0
+                            "               ∞
+                                                                                    #
+                  eizt − 1 1 −t( 1 −iz) X           e−2nt
+                =                e 2                 1 1           − log coth(et/2 )
+                       iz      2           n=0
+                                               n +    (
+                                                     2 2     − iz)
+                    izt                                                              
+                  e − 1 1 −t( 1 −iz)
+                =                e 2      Φ(e−2t , 1, 12 ( 12 − iz)) − log coth(et/2 ) .
+                       iz     2
+For the second part,
+      Z tn                                       o ex/2 dx
+           φz,t (x) + φz,t (−x) − 2e−x/2 φz,t (0) x
+        0                                         e − e−x
+                 Z tn                                            o      ∞
+                                                                        X
+              1
+          =           (eiz(t−x) − 1) + (eizx − 2e−x/2 )(eizt − 1) e−x/2   e−2nx dx.
+             iz 0
+                                                                                    n=0
+
+To handle the first half of this right-hand side, we calculate as
+       Z t                      XN
+           (eiz(t−x) − 1) e−x/2     e−2nx dx
+         0                           n=0
+                                   N                                 N          1
+                                 1 X eitz − e−t/2 e−2nt        1 X 1 − e− 2 (1+4n)t
+                             =                               −
+                                 2
+                                     n=0
+                                           n + 12 ( 21 + iz)   2
+                                                                 n=0
+                                                                       n + 14
+                                     N
+                              1 itz X          1        1
+                             = e            1 1        − e−t/2 Φ(e−2t , 1, 12 ( 21 + iz))
+                              2     n=0
+                                        n + 2 ( 2 + iz) 2
+                                       N
+                                     1X 1    1
+                                 −        1 + e−t/2 Φ(e−2t , 1, 1/4) + O(e−2N t ),
+                                     2 n+ 4  2
+                                      n=0
+
+where the implied constant depends on t and z. To handle the second half of the
+right-hand side, we calculate as
+              Z t                    N
+                                     X
+                    izx    −x/2 −x/2
+                  (e − 2e      )e      e−2nx dx
+               0                               n=0
+                           N
+                           X           −t( 12 −iz) −2nt       N
+                                                              X
+                       1       1−e          e                   1 − e−t e−2nt
+                   =                1 1                   −
+                       2
+                           n=0
+                                n + 2 ( 2 − iz)               n=0
+                                                                    n + 12
+                           N
+                     1X           1        1     1
+                   =           1   1      − e−t( 2 −iz) Φ(e−2t , 1, 12 ( 12 − iz))
+                     2 n=0 n + 2 ( 2 − iz) 2
+                           N
+                           X     1               t/2
+                       −           1 + log coth(e    ) + O(e−2N t ),
+                           n=0
+                               n + 2
+
+where we used the series expansion of arctanh(e−t ) = 2−1 log coth(et/2 ) and the implied
+constant depends on t and z.
+6                                            M. SUZUKI
+
+    By the above preliminary calculations and the well-known series expansion
+                                        X∞                 
+                         Γ′                     1        1
+                            (w) = −γ0 −             −         ,                                 (2.3)
+                         Γ              n=0
+                                              w+n n+1
+we obtain
+    Z tn                                           o ex/2 dx
+ iz      φz,t (x) + φz,t (−x) − 2e−x/2 φz,t (0) x
+     0                                                 e − e−x
+          1                             1
+       = e−t/2 Φ(e−2t , 1, 1/4) − e−t/2 Φ(e−2t , 1, 12 ( 12 + iz))
+          2                             2
+                izt    1 −t( 1 −iz)
+          − (e − 1) e 2             Φ(e−2t , 1, 12 ( 12 − iz)) + (eizt − 1) log coth(et/2 )
+                       2
+                              "                                  N                      N
+                                                                                                   #
+                itz             1X              1             1X            1          X      1
+          + (e − 1) lim                      1 1           +             1 1         −
+                        N →∞ 2
+                                  n=0
+                                        n +  2 ( 2 +   iz)    2 n=0
+                                                                    n  + 2 ( 2 − iz)   n=0
+                                                                                            n + 12
+                      " N                          N
+                                                               #
+             1         X            1             X        1
+          +       lim                         −
+             2 N →∞
+                       n=0
+                            n + 12 ( 12 + iz) n=0 n + 14
+         1                             1
+      = e−t/2 Φ(e−2t , 1, 1/4) − e−t/2 Φ(e−2t , 1, 12 ( 12 + iz))
+         2                             2
+                         1      1
+        − (eizt − 1) e−t( 2 −iz) Φ(e−2t , 1, 12 ( 12 − iz)) + (eizt − 1) log coth(et/2 )
+                         2                                              
+               itz       1     Γ′ 1         Γ′ 1 iz             Γ′ 1 iz
+        + (e − 1) 2                     −             +      −           −
+                         2     Γ 2           Γ 4        2       Γ 4         2
+                ′                         
+            1 Γ 1              Γ′ 1 iz
+        +                   −         +            .
+            2 Γ 4               Γ 4        2
+                               R∞       Rt
+Combining the results for t and 0 ,
+           Z ∞n                                               o ex/2 dx
+                    φz,t (x) + φz,t (−x) − 2e−x/2 φz,t (0) x
+             0                                                   e − e−x
+                      1 −t/2     h                                              i
+                   =      e        Φ(e−2t , 1, 1/4) − Φ(e−2t , 1, 12 ( 21 + iz))
+                     2iz
+                                                                                
+                        eitz − 1 Γ′ 1               1 Γ′ 1 iz            1 Γ′ 1 iz
+                     +                         −            +       −             −
+                            iz       Γ 2            2Γ 4        2        2Γ 4       2
+                              ′             ′
+                                                          
+                          1 Γ 1              Γ 1 iz
+                     +                  −             +       .
+                        2iz Γ 4              Γ 4         2
+Finally, noting the special value (Γ′ /Γ)(1/2) = −γ0 − 2 log 2, we conclude that the
+right-hand side of Weil’s explicit formula for φz,t (x) is equal to (1.6).        
+2.2. Proof of Proposition 1.1. We have |Θ(z)| = 1 for every z ∈ R by definition.
+In fact, zeros of E(z) in the denominator cancel out in the numerator E(z̄), even if
+they exist. Further, Pt (z) has poles of order one at γ ∈ Γ, but St (z) is holomorphic
+there, since (1 + Θ(z))/2 = A(z)/E(z) = A(z)/(A(z) + iA′ (z)) = (z − γ)(−i/mγ + o(1))
+near z = γ by direct calculation. Hence, St (z) is bounded and holomorphic on the real
+line by (1.5), (2.2), and Proposition 2.1. On the other hand, in the horizontal strip
+|ℑ(z)| ≤ 1/2, we have the well-known estimate (Γ′ /Γ)(1/4 + iz/2) ≪ log |z| and
+                                       X
+                       ζ′ 1                        i
+                             − iz =                   + O(log |z|)
+                        ζ 2                     z−γ
+                                            |ℜ(z)−γ|≤1
+
+by [9, Theorem 9.6 (A)]. In both estimates, implied constants are uniform in |ℑ(z)| ≤
+1/2. The number of zeros γ ∈ Γ satisfying |ℜ(z) − γ| ≤ 1 is O(log |z|) counting with
+multiplicity by [9, Theorem 9.2]. Therefore, St (z) ≪ |z|−1 log |z| as |z| → ∞ with an
+       THE SCREW LINE OF THE RIEMANN ZETA-FUNCTION AND ITS APPLICATIONS                                    7
+
+implied constant depending on a compact set of t by (1.6). Hence St (z) belongs to
+L2 (R) and the norm is uniformly bounded on a compact set of t.                 
+
+                            3. Proof of the main results
+3.1. Preparation on the theory of the model spaces. For this part, we refer to
+[8, Section 3.1], including precise definitions of notions. Let H2 be the Hardy space
+on the upper half-plane. As usual, we identify H2 with a closed subspace of L2 (R)
+via boundary values. Then, the inner product of H2 coincides with the standard inner
+product of L2 (R).
+   Assuming the RH is true, E(z) of (1.3) is an entire function satisfying |E(z̄)| < |E(z)|
+if ℑ(z) > 0 ([5, Theorem 1]). Therefore, it generates the de Branges space H(E), which is
+a Hilbert space of entire functions isomorphic to the model subspace K(Θ) := H2 ⊖ ΘH2
+by the mapping F (z) 7→ F (z)/E(z) from H(E) into H2 , where Θ(z) is the meromorphic
+function defined in (1.4). The model subspace K(Θ) is a subspace of L2 (R) as a Hilbert
+space. In particular, the inner product of K(Θ) matches that of L2 (R).
+Proposition 3.1. Assuming the RH is true, the family
+                                r
+                                  mγ i(1 + Θ(z))
+                      Fγ (z) :=                  , γ∈Γ                                                 (3.1)
+                                  π 2(z − γ)
+forms an orthonormal basis of the Hilbert space K(Θ).
+Proof. See [8, Proposition 3.1].                                                                          
+
+3.2. Proof of Theorem 1.1. By Proposition 2.1, we have
+                                X√      eiγt − 1
+                       St (z) =     mγ           Fγ (z)                                                (3.2)
+                                            γ
+                                             γ∈Γ
+
+unconditionally. Further, the coefficients on the right-hand side converge in L2 -sense:
+                           X √                         2        X mγ
+                                            eiγt − 1
+                                       mγ                  ≤                 < ∞.
+                                                γ                     |γ|2
+                           γ∈Γ                                  γ∈Γ
+
+  Therefore, assuming the RH and applying Proposition 3.1 to St (z) via formula (3.2),
+we find that St (z) belongs to the subspace K(Θ) of L2 (R) and
+                                               X     eiγt − 1 e−iγs − 1
+              hSt+u − Su , Ss+u − Su iL2 (R) =    mγ          ·                  (3.3)
+                                                         γ        γ
+                                                               γ∈Γ
+
+holds. The right-hand side is equal to Gg (t, s) by [6, (1.9)]. Hence, St : R → L2 (R) is a
+screw line of g(t) under the RH.
+   We find that S0 (z) is identically zero by (1.5) and (1.6), since
+                                                                           Γ′        Γ′
+     lim (Φ(e−2t , 1, 1/4) − Φ(e−2t , 1, (1/2 + iz)/2)) = −                   (1/4) + ((1/2 + iz)/2)
+    t→0                                                                    Γ         Γ
+by (2.3). Therefore, by taking u = 0 in (3.3),
+                                 X                         2         X
+                                             eiγt − 1                           1 − cos(γt)
+                kSt k2L2 (R) =         mγ                      =2          mγ               .          (3.4)
+                                                 γ                                  γ2
+                                 γ∈Γ                                 γ∈Γ
+
+On the other hand,
+                                                X              1 − cos(γt)
+                                  − g(t) =             mγ                                              (3.5)
+                                                                   γ2
+                                                γ∈Γ
+by [6, Theorem 1.1 (2)]. Hence equality (1.7) follows from (3.4) and (3.5).                               
+8                                              M. SUZUKI
+
+3.3. Proof of Corollary 1.1. Theorem 1.1 states that (1.7) is a necessary condition
+for the RH. Therefore, it suffices to show that (1.7) is a sufficient condition for the RH.
+    We suppose that equality (1.7) holds for all t ≥ t0 . Then −g(t) is nonnegative on
+[t0 , ∞), which implies that the RH is true by [6, Theorems 1.7 and 11.1].               
+3.4. Proof of Theorem 1.2. First, we show equation (1.9) assuming that the RH is
+true. For any φ ∈ Cc∞ (R), we have
+                                         X√              b
+                                                         φ(γ)   b
+                                                              − φ(0)
+                              cφ (z) =
+                              P                    mγ                Fγ (z)
+                                                              γ
+                                         γ∈Γ
+                          R +∞
+                b
+by (3.2), where φ(z) :=                izt dt. Therefore,
+                              −∞ φ(t) e
+                                                                            2
+                                                   X          b
+                                                              φ(γ)   b
+                                                                   − φ(0)
+                                cφ k2 2
+                               kP   L (R) =              mγ                                 (3.6)
+                                                                   γ
+                                                   γ∈Γ
+
+by Proposition 3.1. Applying
+                                             X (eiγt − 1)(e−iγu − 1)
+                               Gg (t, u) =
+                                               γ
+                                                                γ2
+
+in [6, (1.9)] to (1.8) and noting the symmetry γ 7→ −γ, we find that the right-hand side
+of (3.6) is equal to hφ, φiGg .
+   Conversely, we show that the RH is true assuming equality (1.9). We show that a
+contradiction arises if the RH is false. We take a non-real γ0 ∈ Γ. For any ǫ > 0, there
+exists ψ1 , ψ2 ∈ Cc∞ (R) such that ψ c1 (γ0 ) = i, ψ               c1 (γ)| ≤ ǫ|γ0 − γ|−1−δ for
+                                                   c2 (γ0 ) = −i, |ψ
+                           c
+every γ ∈ Γ \ {γ0 }, and |ψ2 (γ)| ≤ ǫ|γ0 − γ| −1−δ  for every γ ∈ Γ \ {γ0 } by [10, Lemma 1].
+We define ψ := ψ1 + ψ2 (6= 0) and φ := Dψ. Then, φ(0)   b = 0 by definition and hφ, φiG =
+                                                                                          g
+                                                         P               b
+                                                                   b ψ(γ̄)
+hψ, ψiW by (1.10). The right-hand side is equal to γ∈Γ mγ ψ(γ)                = −mγ0 + O(ǫ),
+       P            −1−δ
+since γ∈Γ mγ |γ|         < ∞. Therefore, hφ, φiGg is negative for a sufficiently small ǫ > 0,
+but it contradicts the non-negativity that follows from (1.9). Hence the RH is true. 
+
+                      4. Special values of the screw line St (z)
+   The screw line St (z) has the following unconditional relations with the screw function
+g(t). It is interesting that they are not a special case of equations obtained from the
+general theory of screw functions.
+Theorem 4.1. Let g(t) and Pt (z) be functions of (1.1) and (1.6), respectively. Then
+the following equations hold independently of the truth of the RH:
+                                   Pt (0) = −g(t),                                          (4.1)
+                                                      
+                                   1 Γ′ 1 y        1
+                 lim y Bt (iy) −           +      + log π = −g ′ (t),                       (4.2)
+               y→+∞                2Γ 4 2          2
+where we assume t 6= log n for any n ∈ N in (4.2).
+Proof. Equality (4.1) follows from (2.2), Proposition P        2.1, and (3.5), but it also follows
+directly from (1.1) and (1.6). In fact, by Φ(z, s, a) = ∞             n
+                                                                 n=0 z (n + a)
+                                                                               −s and (2.3),
+
+                 1h                                              i 1
+            lim     Φ(e−2t , 1, 1/4) − Φ(e−2t , 1, 21 ( 12 + iz)) = Φ(e−2t , 2, 1/4),
+            z→0 iz                                                   2
+                              ′        ′                           
+                          1 Γ 1          Γ 1 iz                    1     1
+                     lim               −          +           = − ψ1         ,
+                     z→0 iz Γ      4     Γ 4            2          2     4
+                                                                                       P
+where ψ1 (z) is the polygamma function of order one. The expansion ψ1 (w) = ∞             n=0 (w +
+  −2                                                                       ′
+n) gives ψ1 (1/4) = Φ(1, 2, 1/4). By Z(s) = Z(1−s), we have (Z /Z)(1/2) = 0. Hence,
+by taking the limit z → 0 in (1.6), we obtain the minus of (1.1).
+        THE SCREW LINE OF THE RIEMANN ZETA-FUNCTION AND ITS APPLICATIONS                                9
+
+  To show (4.2), we multiply (1.6) by y and substitute iy for z:
+                       4y(et/2 − 1) 4y(e−t/2 − 1) X Λ(n) −y(t−log n)
+          y Pt (iy) =                +               +       √ (e              − 1)
+                           1 + 2y         1 − 2y                 n
+                                                       n≤et
+                                      ′                                  
+                            −yt        Z 1           1           1 Γ′ 1 y
+                      − (e      − 1)        + y − log π +                 −
+                                       Z 2           2           2Γ 4 2
+                                              
+                          1 Γ′ 1        Γ′ 1 y
+                      +               −        −
+                          2 Γ 4         Γ 4 2
+                          1      h                                        i
+                      + e−t/2 Φ(e−2t , 1, 1/4) − Φ(e−2t , 1, 12 ( 21 − y)) .
+                          2
+Therefore, for positive t > 0,
+                                                
+                            1 Γ′ 1 y        1
+       lim y Bt (iy) −               +    + log π
+     y→+∞                   2Γ 4 2          2
+                              X Λ(n) 1  Γ′  1            
+                                                                     1
+            t/2     −t/2
+     = 2(e − e           )−        √ +               − log π + e−t/2 Φ(e−2t , 1, 1/4).
+                                t
+                                     n   2   Γ   4                   2
+                               n≤e
+
+The right-hand side equals to −g ′ (t) if t 6= log n by (1.1) and (d/dt)(e−t/2 Φ(e−2t , 2, 1/4)) =
+                                                      P
+−2e−t/2 Φ(e−2t , 2, 1/4) follows form Φ(z, s, a) = ∞          n       −s
+                                                         n=0 z (n + a) .                       
+
+Acknowledgments This work was supported by JSPS KAKENHI Grant Number
+JP17K05163 and JP23K03050. This work was also supported by the Research Insti-
+tute for Mathematical Sciences, an International Joint Usage/Research Center located
+in Kyoto University. The author would like to thank Shota Inoue for his comments on
+the first draft.
+
+                                            References
+ [1] E. Bombieri, Remarks on Weil’s quadratic functional in the theory of prime numbers. I, Atti Accad.
+     Naz. Lincei Cl. Sci. Fis. Mat. Natur. Rend. Lincei (9) Mat. Appl. 11 (2000), no. 3, 183–233 (2001).
+ [2] E. Bombieri, J. C. Lagarias, Complements to Li’s criterion for the Riemann hypothesis, J. Number
+     Theory 77 (1999), no. 2, 274–287.
+ [3] L. de Branges, Hilbert spaces of entire functions, Prentice-Hall, Inc., Englewood Cliffs, N.J. 1968.
+ [4] M. G. Kreı̆n, H. Langer, Continuation of hermitian positive definite functions and related questions,
+     Integral Equations Operator Theory 78 (2014), no. 1, 1–69.
+ [5] J. C. Lagarias, Hilbert spaces of entire functions and Dirichlet L-functions, Frontiers in number
+     theory, physics, and geometry. I, 365–377, Springer, Berlin, 2006.
+ [6] M. Suzuki, Aspects of the screw function corresponding to the Riemann zeta-function,
+     https://arxiv.org/abs/2206.03682.
+ [7] M. Suzuki, On the Hilbert space derived from the Weil distribution,
+     https://arxiv.org/abs/2301.00421.
+ [8] M. Suzuki, Li coefficients as norms of functions in a model space,
+     https://arxiv.org/abs/2301.05779.
+ [9] E. C. Titchmarsh, The theory of the Riemann zeta-function, Second edition, Edited and with a
+     preface by D. R. Heath-Brown , The Clarendon Press, Oxford University Press, New York, 1986.
+[10] H. Yoshida, On Hermitian forms attached to zeta functions, Zeta functions in geometry (Tokyo,
+     1990), 281–325, Adv. Stud. Pure Math., 21, Kinokuniya, Tokyo, 1992.
+

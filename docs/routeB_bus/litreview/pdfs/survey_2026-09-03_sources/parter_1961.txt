@@ -1,0 +1,1778 @@
+   EXTREME EIGENVALUESOF TOEPLITZ FORMS AND
+       APPLICATIONS TO ELLIPTIC DIFFERENCE
+                  EQUATIONSO)
+                                               BY
+                                   SEYMOUR V. PARTER
+     1. Introduction.   Because of their many applications, primarily in the
+theory of probability, there has been a renewed interest in the theory of
+Toeplitz forms (see [6]). Of particular interest has been the work of Szegö
+on the distribution of the eigenvalues of finite sections of Toeplitz forms. More
+recently Kac, Murdoch and Szegö [lO] obtained estimates on the asymptotic
+behaviour of the extreme eigenvalues of certain of these finite sections. Later,
+Widom [19] re-obtained these results and extended them, under suitable
+restrictions.
+     At the same time, recent interest in iterative methods of solving elliptic
+difference equations has been accompanied by the development of techniques
+for estimating the extreme eigenvalues of certain "block" matrices. For exam-
+ple, there are techniques using the theory of non-negative           matrices (see
+ [17; 18]), techniques using the classical theory of the direct product of two
+matrices (see [7; ll]) and the techniques (usually ascribed to Frankel [5],
+cf. [l; 2]) of separation of variables.
+     In a recent work [14] we studied a very special class of block matrices
+and obtained some partial results. These enabled us to obtain estimates on
+the rates of convergence of the "two-line" iterative methods of the Laplace
+and biharmonic difference equations in rectangular domains(2). In the case of
+Laplace's equation we obtained an exact asymptotic result. However, in the
+case of the biharmonic equation we obtained only a "one-sided" estimate.
+     The purpose of this report is two-fold. In §§2, 3, and 4 we extend the re-
+sults of Kac, Murdoch and Szegö, and Widom. We will make very strong
+use of Widom's results and technique. In §5 we discuss the application of the
+preceding results to the general problem of the extreme eigenvalues of "block"
+Toeplitz matrices. These include the matrices of elliptic difference equations
+     Presented to the Society, January 26, 1961; received by the editors October 18, 1960.
+     (') Some of these results were obtained while the author was at the Brookhaven National
+Laboratory, summer 1959.
+     (*) The "two-line" iterative methods for the Laplace and biharmonic difference equations
+were studied by R. S. Varga [18] at the same time. His approach is totally different from the one
+we investigated in [14]. His approach to the solution of the iteration equations is more general
+and probably preferable. Varga also estimated the rate of convergence in the Laplace case using
+the theory of non-negative matrices. That theory does not apply to the biharmonic case.
+                                              153
+154                              S. V. PARTER                                    [April
+
+(of any order) with constant coefficients in rectangular domains. In fact, every
+Hermitian     difference equation (i.e., one which may be represented       by a
+Hermitian matrix) with constant coefficients on a rectangular domain cor-
+responds to a special block Toeplitz matrix, a "two-dimensional"       Toeplitz
+matrix (see §9), and conversely.
+     Finally, we apply this method in several examples. In particular, we re-
+turn to the problem studied in [14] and give a complete discussion. With
+these results we are able to obtain another estimate for the rate of con-
+vergence of the two-line methods for the biharmonic difference equation.
+Loosely speaking, while the convergence may be faster than indicated in
+ [14], it is not much faster.
+    I should like to take this opportunity   to thank Professor M. Rosenblatt
+who suggested that the theory of the Toeplitz forms should be applicable to
+these problems.
+    Also I want to thank my friends at Indiana University who discussed this
+work with me. My special thanks goes to Mr. Ernest Davidson.
+    2. Preliminary results. Let f(9) be a real Lebesgue integrable function
+defined in [ —it, ir\. Let {C,} be the Fourier coefficients oif(9), i.e.
+
+
+                                f(9) ~ ¿ de"'.
+                                        —00
+
+
+
+
+   Definition     1. The matrix F„[f] = (C,_,) s, j = 0, 1, 2, •• -, « is called
+the «th finite section of the Toeplitz matrix (C,_y) associated with the func-
+tion/^).  We frequently will write F„ instead of F„[/].
+    We will be concerned with functions f(9) satisfying
+   Condition A. Let/(0)   be real, continuous    and periodic   with period   2ir. Let
+min/(0)=/(O)    =m and let 0 = 0 be the only value of 9 (mod 27r) for which
+this minimum is attained.
+     Condition A(a). Let/(0) be a function satisfying Condition A. Moreover,
+let/(0) have continuous derivatives of order 2a in some neighborhood of 9 = 0.
+Finally let/(2a)(0) =o-2>0 be the first nonvanishing derivative oif(9) at 9 = 0.
+     The assumption that the minimum of f(8) is achieved at 0 = 0 is unim-
+portant; the point 0 may be replaced by any 90. Since the Toeplitz matrix
+corresponding to any translate [f(9+90)] of f(9) has exactly the same eigen-
+values asf(9), it is easy to modify the results so that they hold in the more
+general case. Moreover, there is no loss in generality in assuming m = 0.
+     In §4 we turn to the case of functions f(9) satisfying
+     Condition B. Let f(6) be a real, continuous even function and periodic
+with period 27r. Let min/(0) =f(±9o)=m          and let ±00^0 be the only values
+of 0 (mod 27r) for which this minimum is attained.
+     Condition B(a). Let/(0) be a function satisfying Condition B. Moreover,
+let f(9) have continuous derivatives of order 2a in some neighborhood of
+1961]           EXTREME EIGENVALUES OF TOEPLITZ FORMS                                155
+
+6 = do (and a fortiori in some neighborhood of 6= —do). Finally let/<2a)( + 0o)
+ = (72>0 be the first nonvanishing derivative of f(8) at 8= +6o.
+     Of course all statements concerning the minimum of f(6) and correspond-
+ing statements about minimal eigenvalues of matrices may be suitably modi-
+fied to apply to the maximum of f(d) and the maximal eigenvalues of matrices.
+    We first develop a rough, but useful, estimate for Xi,„, the minimal eigen-
+value of £„. This estimate is obtained from the well-known characterization
+of the eigenvalues of a Hermitian matrix as solutions of a variational problem.
+    Lemma 1 (Weyl-Courant).       Let A and B be two Hermitian matrices, the
+second positive definite. We denote the eigenvalues of A with respect to B by
+Ao, Xi, • • • , Xn, ordered in nondecreasing order. Then X», v = 1, can be character-
+ized by the following extremum property
+                                                        (x Ax)
+(2.1a)                   X. =        Max          • Min —--,
+                                Ti.r,.r_i            * (x, Bx)
+where Y\, F2, • • • , F„_i is an arbitrary set of v —1 vectors and x runs over all
+vectors satisfying                       »
+                 ||*|| - 1,     (F*.*)«0.                        A = 1,2, • • -,v-    1.
+Furthermore, for v = 0 we have
+                                           ix, Ax)
+(2.1b)                            \o = Min--
+                                            x      ix, Bx)
+
+where x runs over all nonzero vectors.
+   Proof. See [3].
+    It follows from this lemma that if we have two Hermitian matrices £ and
+U such that (£*, x) èiUx, x) for all vectors x, then each eigenvalue of £ is
+less than or equal to the corresponding eigenvalue of U. In the case of
+Toeplitz matrices, we see that if we denote the eigenvalues of £„[/] by X„,„
+and denote the eigenvalues of Tn[g] by /¿„,„, then/(0) ^g(0) for all 6 implies
+X^nís/t»,» for all v and n.
+    Let X=ix¡) j = 0, 1, • • • , » be an (ra+ 1) dimensional vector. Let <pi&)
+ — 2~L"-oXje~iie. A direct computation together with Lemma 1 gives
+   Lemma 2.
+
+(2.2a)                 iX,TnX) =-f'fi8)\p\2d8,
+                                      2tJ-t
+
+(2.2b)                        \i,n= Min— f f(8)\p\2d8;
+                                        «       2irJ-r
+
+where
+156                                      S. V. PARTER                                           ÍApril
+
+
+(2.2c)                           *(0) = ¿ cy-«»
+
+and
+
+(2.2d)                    ¿|Q|2         = ^- f'U|2¿0=               1.
+                          ;-0                 2íT J -x
+
+     Lemma 3. Let f(8) satisfy Conditions A and A (a), but otherwise be an arbi-
+trary function.
+     Then there is a constant M>0 such that
+
+(2.3)                                \i.n^m         + M
+                                                          &
+      Proof. Let X = (xj) j = 0, 1, • • • , n + lhe             an eigenvector    associated with
+Xi,„ satisfying £|*j|2      = l. Let <b(8)= ¿Xj-e-*". Then by (2.2a) and (2.2b)
+
+(2.4)                                Kn = -f'f(e)\<t>\*de.
+      Since/(0)   satisfies Conditions        A and A(a), we have, for « sufficiently large
+                                                                1      1
+(2.5a)                 f(8) ^m+        A62",              -á        »á —>
+                                                               »       «
+and
+
+(2.5b)                 f(9) ^m+        A[ — ) ,           — £\e\è*;
+                                         \» /             «
+where
+                                   1            1
+                                A= —
+                                       2 (2a)!
+Hence
+
+            Xi.n^m + — ( (             62"\<t>\2de+(—)               f           \4>\*m\.
+                         2irlJ_n-i                        \«/       ^n-'sioisT         ;
+
+This gives
+
+°« K'im+A
+        (7)*- ÍC IB""- «'"]■
+                          I*l*
+      Consider the last term. By Schwarz's inequality
+                                     I 4>(B)\2
+                                             Ú n+ 1 < 3n,                                   for all d.
+1961]          EXTREME EIGENVALUES OF TOEPLITZ FORMS                                    157
+
+Hence
+
+
+
+
+and our result follows since 6<27r.
+   We now turn to the reverse inequality.
+    Lemma 4. Let fid) satisfy Condition A and A(a).                There exists a constant
+Jl7o>0 such that
+
+(2.7)                         \i,nûm+Mo
+                                                      &
+   Proof. Let 5 = 2(a+l)      and r= [n/s],           i.e. r is the largest integer in n/s.
+Then
+(2.8)                             n - s = rs g n.
+    Consider the function
+                                      Tsin (r + 1/2)81'
+
+
+It is easy to verify that g(0) may be written aß
+
+                                         Z -V»,                                   (see [21])
+
+and hence g(0) = \<f>o\2for some function,
+
+                                  Po(e)= E die-»:
+                                                3-0
+
+It is also easy to verify that
+
+(2.10)                     — f \i8)d8 m C,■i2r + l)-1
+                           2ir J -T
+
+where C, can be bounded from above and below by constants independent of
+r. We take Cr1(2r + l)-('-1)-g(0) = \q>\2 as our "test" function in (2.1b).
+Lemma 1 gives
+                             Al.ná-        rfi8)-\p\2d8.
+                                        2wJ-T
+
+Again, since fid) satisfies Conditions      A and A(a) there is an ?j>0 so that
+(2.11a)                           /(e) = m + A02a,                             -i¡ á 6 £ %
+where
+158                                                   S. V. PARTER                                                            [April
+
+                                                                      1
+                                                     A = 2-<t2.
+                                                                    (2a) I
+Also,/(0)    is bounded,             i.e., there is a constant                   L such that
+(2.11b)                                              |/(0) - m\ =L.
+Let t] be chosen and fixed, once and for all. Let » be so large that 2îr/(2r4-l)
+<?7. Thus
+                        A       /.2t/(2h-d                                A rn                                 L    CT
+(2.12)\i,núm+—                  \                62"\<p\2d6+ — I                            e2a\<p\2de+—            I       |<¿|2á0.
+                        7T J 0                                            T «/ 2r/(2r+l)                       T J ,
+
+Consider first the last term on the right in (2.12). From (2.11b) and the form
+of \<j>\2we find
+
+            ¿ r,            ,           Fe;1                i        r       i    i*-1               r    i     i*-1
+(2.13a) — I            <*>2¿0=-                                                             = Fi -                      .
+            TJ f ' '                         t        sin v/2 L2r + 1J                               L2r + 1J
+Since sin 0=0 and sin 0 = 20/x for O=0 = tt/2, we find
+             ^   /.2l/(2r+l)
+            — j                      62a\<t>\2d9
+            it Jo
+(2.13b)
+                                       s£ic-.r^.rjq-                                                           r_L_i-
+                                             t              L2a+ lj              L2r 4- lj                     |_2r4- lj
+Since j = 2a+2 and sin 0 = 20/tt for O=0=7r/2,
+
+
+(2.13c)     -I                      02«|*|W           = -                 ——                -x-                -•
+            T •/ 2T/(2r+l)                                      T     Lif    T    U               J irH^r+1)   C
+
+Hence
+
+
+                               T «/ 2r/(2r+l)                                    L¿f   -f    lj
+
+Finally, using (2.8), we find
+                                                 r      i       t«                          r i Ta
+                    Xl"= m+ uL27TTJ =m + M{-\ •
+   We restate Lemmas 3 and 4 as
+   Theorem          1. Letf(9) satisfy Conditions A and A (a). Let \i,nbe the minimal
+eigenvalue of F„[/]. FAew
+(2.14)                                            X,,„ = m + 0(n-2°)
+1961]            EXTREME EIGENVALUES OF TOEPLITZ FORMS                                 159
+
+where O cannot be replaced by o.
+    We now turn to the discussion of the technique and method developed by
+Widom in [19]. From Lemma 2 and the continuity of fid) we see that the
+eigenvalues X»,nmay be characterized by certain values 0,,„, where
+
+                                        X,,„ =/(<?,,„).
+Theorem 1 tells us that 0i,„ = O(l/w) and O cannot be replaced by o. The
+method of Widom hinges on the idea of estimating 0»,„ rather than X„,„. We
+will develop these ideas in the general case although we only give a detailed
+analysis of the case a = 2.
+    The case a=l     was studied by Kac, Murdoch and Szegö. Widom also
+studied the case a = 1 under the restriction that /(0) is even and /(0) has four
+continuous derivatives in the neighborhood of 0 = 0. The result of their works
+is
+      Theorem 2. Let fid) satisfy Conditions A and A(a) with a = l. Let X,,„ be
+the eigenvalues of Tn[f] arranged in nondecreasing order. Let 0,,„ be the cor-
+responding values of 0. Then, as w—><»,we have for fixed v, v= 1, 2, • • -,
+
+                   /     VT        \              1 /     VT V
+           X'n = j(-^i        + E>»)=      m + t(—¡^         )f"(0)   + o(m_2)
+                    \» + 2          /             2 \n + 2/
+where
+
+                                   E,,n = o
+                                                 7>
+That is
+
+                               8y.n=-^-+o(—).
+                                        n+2         \n/
+      Proof. See [6; 10 or 19].
+      We first reduce the problem       to the case of a smooth       even function fid).
+    Lemma 5. Let fid) satisfy Conditions A and A (a). To a given e<0 we can
+find two functions fid) and fid) satisfying the following conditions.
+
+                  fid) = m + (1 - cos 8)"[a + 6(1 - cos 8)a+l]-\
+                  fid) = m + (1 - cos g)'[c + dil - cos 8)],
+
+where a, b, c, d are positive constants;
+
+(2)                               /(*) Ú f(d) è ](8),                            for all 8.
+(3)          | /<««>(0) - 7(2a)(0) | < e,        | /(2o)(0) - /<2«>(0) | < e.
+160                                    S. V. PARTER                              [April
+
+    Proof. See [6, Chapter 5] or [10] where the proof is given for a= 1. The
+proof for general a follows the same lines with only the obvious modifications.
+    Following Widom, we now reduce the problem to the case of an even
+trigonometric     polynomial.
+
+      Lemma 6. Let f(9) be an arbitrary even function satisfying Conditions A and
+ A(a). Moreover, let f(9) have 2a + 2 continuous derivatives in some neighborhood
+ of 9 = 0. (Note: the functions J (9) and}(9) certainly satisfy this additional condi-
+ tion.) To a given small e>0 we can find two even trigonometric polynomials
+f±t(9) satisfying Conditions A and A(a) as well as the following conditions:
+
+(1)                                   /_(0)g/(0)a/+,(0),
+(2)                        |/±«(0)-/(0)|       <e,                           for allô,
+(3)                                   /±.(0) =m,f±:\0)     =a.
+    Proof. See [19, §2.10] where this is proven for a= 1. The proof for general
+a follows with only the obvious modifications.
+    The final elementary reduction is to the special case where
+     Condition A.l./(0) is an even trigonometric polynomial and all the complex
+roots of f(8)—m are simple.
+
+    Lemma 7. Let f(8) be an arbitrary even trigonometric polynomial satisfying
+Conditions A and A(a). Then, for sufficiently small e>0 there are two even trig-
+onometric polynomials g±t(6) which satisfy Conditions A, A(a), and A.l. More-
+over,
+
+(1)                                   g±A0)=m,g±:)(0)      = at,
+(2)                                    g-.(0) = f(6) = g+.(0),
+(3)                       | g±,(0) - f(0) | < e,                             for all 6.
+    Proof. Once more the proof follows the pattern given in [19].
+    Remark. Our reason for stating Lemmas 7 and 8 as separate results is
+simple enough: the proofs in [19] are distinct and it seems logically correct
+to emphasize this.
+    Consider such an even trigonometric polynomial.
+      Let
+                                               k
+(2.15)                              f(8) = £ C¡e»\                            Ck9*0,
+                                              i—k
+
+
+where, since/(0)    is even, C_y= C¡, j = 1, 2, • • • , k. Therefore, if f(8) =\ where
+X is real, then
+(2.15a)                         f(6) =f(-6)     =/(-ê)   =X
+1961]            EXTREME EIGENVALUES OF TOEPLITZ FORMS                             161
+
+also. We now assume/(0)       to be of the form (2.15) and to satisfy Conditions   A,
+A(a) and A.l.
+      Let
+
+(2.16)                      P(«;X)-i»|¿ci»'-xV>
+i.e., £(2) is the characteristic equation of the eigenvalue problem when that
+problem is considered as a difference equation (see [13]). If £(z; X) =0 then
+£(z-1;X) = 0as well.
+      The important   and basic result of Widom       [19] is
+     Lemma 8. There is an interval I: m<\<m+5             such that the roots d¡ of
+fid) —X and the corresponding roots p¡ = eie>of £(z; X) are simple for X££ More-
+over, X is an eigenvalue of T„ if and only if the roots p¡ satisfy
+                                  [pipí ■■■pkY+"+lu
+                       nn---Pk"    (Pi)     " (Pn) »<t
+
+where the summation extends over all combinations of A of the zeros p of £(z;X).
+      Proof. See [19, (2.17)].
+    The essence of the method used by Widom is that Lemma 8 may be used
+to reduce the problem for arbitrary/(0)   of the form (2.15) to a problem like
+that for the very simplest of such functions, namely
+                                  fai8) = (1 - cos 8)".
+While Lemma 8 is sufficient for most of our work, we will make use of the
+following alternative instead. Lemma 9 has the advantage of being naturally
+related to the theory of difference equations and simplifying some calcula-
+tions.
+   Lemma 9. There is an interval I: m <\<m+è          such that the roots d¿ of fid) —X
+and the corresponding roots p¡ = e'e> of £(z; X) are simple for XG£ Moreover, X is
+an eigenvalue of £„ if and only if the roots p¡ satisfy
+                                    Do = £+•£-    = 0,
+ where
+
+ rt  17ol        n    v r ±1 ±1         ±1i(n+2)/2 TT 1 **
+ (2.17a)         D+ = 2-, (Pi P2 • • • Pk \        11 (p. - Pt±S),
+
+
+ (2.i7b)         £_ = z (-i)'[pfpf • • •prr2,/2n u*1- Pt\
+ where the summations are taken over all choices of the sign and v = the number
+ of minus signs in the term.
+162                                         S. V. PARTER                                          [April
+
+    Proof. The interval / is obtained precisely as in [19].
+    If X is an eigenvalue of F„ and X= (X,) j=l,      2, • • • , « + 1 associated
+eigenvector, then the sequence (X,) satisfies
+
+(2.18)                                 2—1CjXT+i — \Xr,                        r = 1, 2, ■••,«+          1,
+                                      i-k
+
+where, of course: Xi = 0, / = 0 and j = n + l. In other words, an eigenvalue X
+and an eigenvector X are obtained if and only if we have a solution of the
+difference equation (2.18) for which
+                      Xi = 0,                                   j = 0, -1,-2,        ••-,-(*      -1),
+                      Xj = 0,                              j = «+2,           n + 3, ■ ■ ■,n + k+ 1.
+Since the p¿ are distinct,   every solution of (2.18) is given in the form
+                                              h
+                                 Xt = 2~2(«iPi+ ßiPi ),
+                                             i-l
+
+(see [8; 13]). Thus we have
+
+                                 £ aJPj + H ßiPi = °,
+                                j-l                 ;-l
+
+for the appropriate    values of r. Thus the determinant
+                                                   A B
+                                      H =                          0,
+                                                   C D
+where
+                                A = (A„) = (pí *+h),
+                                B = (hi)= (pT\
+                                C = (Cu) = (pí                    ),
+                                D = (di])= (Prw+\                                 i,j = 1,2,        ,k.
+If we multiply   the 5th column p,"(B+2)/2and the (s+£)th                        column by pZ(n+2)/2,
+we obtain
+                                                   Ao       Bo
+                             H = Ho                                    = 0,
+                                                   Bo       Ao
+where
+                                                      -((n+2)/2+t-l)
+                                       (A a) = Pi
+                                                      (<n+2)/2-l+i)
+                             Bo = (Bu) = pi
+1961]              EXTREME EIGENVALUES OF TOEPLITZ FORMS                                   163
+
+However, it is easy to see that
+                          Ho = det(.4o+      £o)-det(^0        - Bo).
+Upon expanding these determinants    by columns and using the sum formula
+as well as the well-known formula for a Vandermonde determinant we obtain
+                                  det(¿lo + Bo) = D+,
+                                  detiAo - Bo) = D-.
+      It should be noted that
+                 Ao+B0=     C1|cos((«+2)/2+/-                 1)0,| ,       i,j = 1,2, ■■■ ,k,
+              Ao- Bo = d\ sin((n + 2)/2 + / - 1)0,-1
+where G and C2 are constant factors.
+   Let us agree to order the simple zeros oí fid) —X as follows:
+                             01, 02, ■ • • , dk, 0_2, • • • , 0-
+
+where
+                                            8i = - 0_,
+(2.20)                                   0i >0
+                                     lm[0y] < 0,                             / = 2, 3, • • • , A
+and    +01, +02, • • • , +0<z, are the 2a zeros near 0 = 0. Then
+
+                                   | «"'I = \Pj\ > 1,                       /= 2, 3, • • ■,k.
+    The roots +0a+i, • • • , +0* are all bounded away from 0 for n sufficiently
+large. Hence, p„+i, P0+2, • • • , Pt, the roots of £(z; X) are greater in absolute
+value than some constant p> 1.
+      Let us multiply D0 by the quantity
+
+                      [Pa+ipa+2• • • p*]-<»+2>
+                                             I" n         (p. - p«)-1"]•
+                                                L a<t<t                 J
+      We can interpret    this as setting
+(2.21a)            G+ = [Pa+lPa+i ■ ■ ■p*h("+2>/2 ¡I           (P. - Pt)~1-D+
+                                                      a<«<<
+
+
+and
+(2.21b)            G_ = k+iPc+2 • • • p*h<"+2"2II (p. - Pt)-UD-
+                                                      a<t<t
+
+
+      Then, if
+
+(2.21c)                    G = G+G-, and Go= G+-G-,
+164                                       S. V. PARTER                                          [April
+
+where
+,,   „   n      r°     V    ( ±X ±X           ±l,(n+2)/2       -py      ±1      ±1
+(2.21d)         G+ = 2-, (Pi Pi • ■■Pa )                       11 (P. — Pt ),
+                                                           KiS"
+
+in oi„\
+(2.21e)         rG_ = 2^
+                      V f(-1)Wi (Pi
+                                  ±1P2
+                                     ±1 • • • Pa
+                                               ±K("+2)/2
+                                                 )                     y-j. (p,±i - Pt
+                                                                       11            ±i ),
+                                                                      «<fsa
+
+we find
+     Lemma 10. Le/«i<X<m+S.                 Lei ±0i, ±02l • ■ • , +0* be the roots off(9) —X.
+FAew X is an eigenvalue of Tn [/] if and only if
+(2.22a)                                        G = 0.
+     Moreover, if X is an eigenvalue of Tn
+
+(2.22b)      Go = 0(/+2)/2),      G+ - G°+= 0(p-ln+2)\                        G_ - ¿   = 0(p^+2)'\
+
+    Proof. The first statement follows from Lemma 9. The second from the
+observation that each term of G+ i+ or
+                                    or G_
+                                       G- for
+                                          for which
+                                              which the
+                                                    the choice
+                                                        choice of
+                                                               of p*+,
+                                                                  p*l¡ is not
+P:+,isO(M-<"+2)'2).
+    Remark.      We may, if we like, consider X, —0i, and all the zeros                          +9¡,
+j = 2, 3, ■ ■ ■ , k as functions of 0i. For any annulus
+
+                                       Fo     ,
+                                      -<          0i|. <-•Fi
+                                      M                    «
+
+in which the roots ±0> are distinct, all these functions are analytic functions
+of 0i. Hence G, G%, Gt, and Go are all analytic functions of 0i.
+    The line of attack is now clear. We must now study the zeros of Go (the
+zeros of G°+ and Gi) and obtain an estimate from below for |Go| away from
+these zeros. Then Rouché's theorem and Theorem 1 will enable us to claim
+that the zeros of G are essentially the zeros of Go. In the next section we will
+carry out this program for the case a = 2.
+    The form of Go justifies our earlier remark on the relationship  of the gen-
+eral problem to that for the function
+
+(2.23)                                fa(0) = (1 - cos 6)".
+    Let us pursue this line of thought a bit further. We may write f(9) in the
+form
+                                               i
+(2.24)                f(B) = m + ß(l - cos 6)° + }Z &Ü - cos 8)>.
+                                                                a+l
+
+Then, for « sufficiently       large, Theorem         1 shows that if X is an eigenvalue         of F„
+
+                           f*(0) =m + ßfa(6) =\            + 0(«-<2«+2>).
+1961]              EXTREME EIGENVALUES OF TOEPLITZ FORMS                               165
+
+Hence, for n large enough, the zeros of Go are like the zeros of G for the func-
+tion /*(0). However,       as we shall see, for/*(0)        we have a much stronger   form
+of Lemma 3. Then, given the appropriate estimate on Go we should be able
+to claim this stronger form of Lemma 3 for all functions/(0) satisfying Condi-
+tions A and A(a). We conjecture the truth of this stronger estimate. We now
+prove the above remark about the function /*(0). We require the well-known
+        Lemma 11. Let Cn be the matrix of order n given by
+
+                                  Ga = (Ö.-1,i + àn-i.j),
+i.e.,
+                                            0 1
+                                            10 1
+                                 C„ =
+                                                     10 1
+                                                       1 0.
+Then, the eigenvalues of Cn are pk = 2 cos 7tA/(« + 1), A = l, 2, ■ • • , n.
+        Proof. See [16].
+        Lemma 12. Let fid) be an even polynomial of degree k. Let X be the minimal
+eigenvalue of T„. Then
+
+                                    **/(—)■
+                                         \n + 2k)
+        Proof. We write/(0)   in its real form, i.e.
+                                            *
+                                   fid) = £¿y cosje.
+
+Consider      the matrix   F oí order n + 2k — l given by
+
+                                F= E ¿/[(l/2M„+»_i]>.
+                                      i=o
+
+One sees by direct computation   that one obtains Tn[f] from £ by deleting
+the first and last A—1 rows and columns. Thus by Lemmas 1 and 11
+
+                                   (X, FX\              (      r   \
+                           X > Min [—-)            =/(-).
+                                IWhAl,       X)      J\n+2k)
+Thus, if indeed it is sufficient to consider Go instead of G, we may consider
+the roots of the function Go obtained from/*(0). Hence we are led to the
+    Conjecture.    Let/(0) satisfy Conditions A and A (a). Let X be the mini-
+mal eigenvalue of £n[/].
+166                                 S. V. PARTER                                            [April
+
+
+                            tt\—L—+.(L)l
+                               L»+2a-l \»/J
+      3. The case a = 2. Let/(0)    be an even trigonometric              polynomial       of the
+form (2.15) satisfying Conditions A, A(a) with a = 2, and Condition A.l.
+Then/(0) —Xhas four roots near 0 = 0; two are real, say ±0, and two are pure
+imaginary numbers, say ±iß.
+    We compute G0, G°+and G°_ and discuss the roots of G0. By direct calcula-
+tions we obtain,
+            o      I    n+3            8       n+3                ß
+(3.1a)     G+ = Ci\ cos-•-       6 cos — sinh-             ß sinh —
+                     I      2         2              2            2
+                                                    «+ 3          ß         n+ 3             8)
+                                      + cosh-ß               cosh — sin-0              sin —> ,
+                                                     2            2            2            2)
+            o       i     »4-3         8      n+ 3                ß
+           G- = C2i
+                C2< sir
+                      sin-0        cos —■cosh-ß              sinh —
+                             2         2             2            2
+(3.1b)
+                                                «4-3             ß .       8       n+ 3
+                                           sinh-ß            cosh — sin — cos
+                                                     2           2         2           2     }■
+            Go = 2 {sin 0 sinh ß[cos(n + 3)0 cosh(« + 3)0 — l]
+(3.1c)
+                                   - sin(« + 3)8 sinh (n + 3)0[cos 8 cosh ß - l]},
+Consider    the functions
+
+(3.2a)              H+(t) = ctn /0-tanh tß + tan — 0-ctnh — ß,
+                                                         2            2
+                                                         1        1
+(3. 2b)             H-(t) = tan te ■ctnh tß - tan — 0 ctn — ß.
+                                                         2        2
+    G\ and G°_have zeros if and only if H+(t) and H-(t) respectively have zeros
+for / = (»4-3)/2. The function #+(/) =0 for 0 = /0 =ir/2. Hence G°+has no zeros
+for O<0=ir/(»+3).        Since
+
+                  H-(t) = — sec2 te- csch2 tß[0 sinh 2/0 - 0 sin 2/0]
+                            2
+and sin 0=0, 0 = sinh ß for 0, 0>O we find
+
+(3.3a)         H-(t) = — sec218-csch2/0{2/0 sinh 2/0 - 2/0 sin 2/0} > 0.
+                       4/
+      Comparing    H+ and i?_, we find that this argument             also gives
+(3.3b)                                H+(t) = 0.
+1961]            EXTREME EIGENVALUES OF TOEPLITZ FORMS                                                 167
+
+From this we conclude:
+   There are no roots of G°+ or G°_, and hence of Go, in the interval
+
+
+(3.4)                                      O<0<
+                                                         M+ 3
+
+Moreover, since sin 0/2-sinh /3/2>0 and tanh tß and ctnh tß are bounded,
+positive quantities, G°+ has one and only one zero in every interval
+                                      (2/ — l)x                  2/x
+(3.5a)                                w         ;     <0<-^—,                               /=1,2,     •••
+                                       n + 3                   n+ 3
+
+while G°- has one and only one zero in every interval
+
+                                       2/x                   2/ + 1
+(3.5b)                               ^<e<j!——T,                                        /=1,2,         •■•.
+                                      m+ 3                   (m + 3)
+
+    In order to study the zeros of G0 in greater detail we turn to an analysis of
+the function
+                                                    sin t8 ■sinh tß                                      ir
+(3.6)                               Hit) =-,                                                          t> —
+                                                1 — coste- cosh tß                                       8
+
+and its crossings with H(l).              As in the previous            discussion,   G0 has a root if
+and only if £f(«+3) =£f(l). Since
+                               iß sin te - 6 sinh tß) (cosh tß - cos W)
+(3. 6a)             Hit) =-,
+                                             (1 - cos id-cosh tß)2
+
+we conclude     (exactly as with H-it))               that
+(3.6b)                                           ¿(i) g 0.
+    Since   H(jir/6)=0        and     i/(l)>0         we may      conclude     that   the     roots   of Go
+which correspond         to roots of G°+ fall in the intervals
+
+                                      4/ - 1                      2/x
+(3.7a)                               —-x               < 0<
+                                     2(» + 3)                    w+ 3
+
+Moreover,     since iî(l)     =0(m2) and not o(m2) and for fixed /, /= 1, 2,
+
+                                                         4/ + 1 ß
+                                                       ih-^—-     = 0(1),
+                            <&')-
+
+the roots of Go corresponding             to roots of G_ fall in the intervals
+
+                                        2/x     4/ + 1
+(3.7b)                                -¿—<d<-^—T.
+                                      m+ 3         2
+168                                        S. V. PARTER                             [April
+
+   As was noted in §1, the roots 0 and ß are asymptotic                   to the roots of
+(1 —cos x)2=\, i.e.
+                                     1 -    cos 0 = X1'2,
+
+and
+                                     1 - cosh0 = - X1'2.
+
+An investigation      of this case shows that we have 0~0,          and we shall now use
+this relationship.
+    Having determined        that 8 = x/(n + 3) where x = 0(l)       we write
+                                                    x
+                                         0 = 0=
+                                                  «4-3
+and substitute      into the expressions      (3.1a) and (3.1b). A direct computation
+yields the following results.
+      The roots of G°+ are asymptotically          (to order 1/«) the roots of
+                                 (« + 3)0                (w + 3)0
+                          tan-               = — tanh
+                                     2                        2
+      The roots of G°_ are asymptotically          (to order 1/«) the roots of
+
+                                 (» 4- 3)0          (« 4- 3)0
+                          tan —-           = tanh-•
+                                      2                 2
+      Following    the course laid out in the previous        section we obtain
+      Theorem      3. Let f(6) be a function      which satisfies Conditions A and A(a)
+with a = 2. Let X„,„ be the eigenvalues of Tn[f] ordered in nondecreasing          order.
+Then for fixed v, l»=l, 2, • • • , we have, as n—»oo,
+
+
+(3'8a)                   X--4V(2v2(.+
+                                 +l)ir + Er / 1 \n
+                                       3) +°ÜJ-
+or, equivalently
+                                   1 i(2v + 1)t + EA i
+(3.8b)              X„n = m + -V                 '          \ ¡\0) + *(»-«).
+                               4! (          2(w + 3)       ;
+
+Moreover, the E, are determined from the equation
+
+                   ((2v + l)x + E\                          i(2v + 1)t 4- E.\
+(3.9)        tañí-J                         = (-1)' tanhÍ-J.
+In fact,
+1961J           EXTREME EIGENVALUES OF TOEPLITZ FORMS                                  169
+
+                  3x + £1                       7x + £3
+                  -=             2.3650,        -=               5.4978,
+                       4                               4
+                  5x + £2                       9x + £4
+                  -=             3.9266,        -=               7.0686.
+                       4                           4
+     Proof. Using Lemmas 5, 6 and 7 we see we need only consider even trigono-
+metric polynomials which also satisfy Condition A.l. The final result then
+follows from Lemma 10, the above estimates on the roots of Go and the form
+(3.1c) of Go which enables us to apply Rouché's theorem. The exact numeri-
+cal values are obtained from Jahnke and Emde [9, p. 31 ] where a thorough
+discussion of the roots of equation 3.9 is to be found.
+    4. The Conditions B and B(a). Consider a function /(0) which satisfies
+Conditions B and B(a). The argument of Lemma 4 may be repeated ver-
+batim at either of the points 0Oor —0O. Hence we obtain
+                                                       »2a
+                               Xi,„ á m + °®
+
+To obtain a lower estimate we proceed as in Lemma 3. Let X= (A¿) / = 0, 1,
+ • • • , m be the normalized eigenvector associated with the minimal eigen-
+value Xi,n. Since/(0) is even, £„ [f] is a real symmetric matrix and the X¡ are
+real. Hence, if g(0) = 2"-o Aye*'9, the function | g(0) |2 is even. Thus
+
+
+                 Xi,n
+                   = f f'f(8)Ig\*dß
+                                 = - f7(0)Ig\W.
+                           ¿T J —x                     X 0/ 0
+
+Let
+
+                 MP) = /(y           + 0o),     *(*) = i(y         + 0.);
+
+then
+                                    1 r1         , ,
+                            Xi,„ = —       /o(*)| h\2dp.
+                                   2x J -t
+We notice that /o(«p) is a function       satisfying       Conditions   A and A(a) while
+IA12satisfies
+                       Max I A|2 = Max \ g\2 = n+1.
+We may now repeat the argument            of Lemma 3 to obtain
+
+                              x,..ä-+0[(i)"].
+
+Hence we have proved the analogous theorem to Theorem                      1. Namely
+170                                            S. V. PARTER                                                   April
+
+      Theorem    4. Let f (fi) satisfy Conditions B and B(a). Let Xi,n be the minimal
+eigenvalue of Tn\f\. Then
+
+(4.1)                                      \i,n = m+O
+                                                             &
+where 0 cannot be replaced by o.
+    Proceeding exactly as in §1 we could now prove the appropriate analogs
+of Lemmas 5, 6 and 7. Indeed, if the expression (1—cos0)a is replaced (both
+in the statements      of the results and in the proofs as in Widom [19]) by
+ [l— cos(0 —0o)]° [l—cos(0+0o)]a,      the exact analogs hold. We may sum up
+these approximation      argument as follows:
+    // is sufficient to consider the case where f(8) is a trigonometric polynomial
+which satisfies Conditions B, B.(a) and the complex roots of f(9) —m are simple.
+    Furthermore     the argument of Lemma 9 depends only on the fact that all
+roots of /(0) —X are distinct. Hence an analog of Lemma 9 applies to this
+case as well. In fact, only the first sentence needs to be changed to allow for
+two intervals about ±0o.
+    Consider now the simple roots of f(9) —X. Exactly four of them will be
+real and these will occur in pairs; say +0i, +0a+i. Thus we may order these
+simple zeros of/(0) —X as follows:
+(4.2a)                            0i, 02, • • • , 0*, 0-1, 0-2, • • • , 0-t
+where
+(4.2b)                        0y=-0-y,
+(4.2c)                        0i = 0o+ ^i>O,                       0a+1= 0o - Pi > 0,
+(4.2d)                 /»(*/)< 0,                                                               j -3,4,    -..,*,
+(4.2e)                 the roots 0203 • • • 0= and                       0«+20«+3■ ■ ■B2a
+
+are the roots "near" 0O.If we now repeat the essential argument                                        of Lemma 10
+we obtain
+      Lemma 13. Let pj = eil>>and let
+                T+ =   [P2a+iP2a+2 • ■ ■ p*]-<"+2"2                n       (p. -    pl)-i-D+,
+                                                                  2o<«<<
+
+                F- = U+lP2a+2 • • • P*]-<"+2>/2II                          (P. - PÙ-'-D-,
+,.   ,    x                                                       2«<.«
+(fi.óa)          0     r,il            ±1           ±l-|(»+2)/2     yy        ±1        ±1
+                F+ = 2^ LPl P2 • • - P2aJ                           11 (P. - Pt ),
+                                                                  «<<S2a
+                p»     V^     /     ix'r    ±X ±J           ±li(n+î)/»        TT     , ±1         ±\
+                T- = ¿- ("I)               IPl P2 • • • P2aj                  11 (P. - Pt )•
+                                                                            •««la
+
+Let
+1961]           EXTREME EIGENVALUES OF TOEPLITZ FORMS                           171
+
+(4.3b)                     r = r+-r_     and r0 = r°-r°_.
+Let m<X<ra+5.         Then X is an eigenvalue   of Tn[f] if and only if
+(4.4)                                  r = 0.
+Moreover,   if X is an eigenvalue   of T„ [f]
+
+(4.5a)              r0 = Oip-in+2U\       T±-Tl     = Oip-(n+i)l\
+where p satisfies
+                             1 < M= | PyI i       j > 2a.
+    Hence we may once more concentrate on the zeros of T0 and apply
+Rouché's theorem after obtaining the appropriate estimate.
+    Let us now consider the case a=l.     By an argument just like the one
+of §1 we find that 0i and 0o+i are asymptotic      to the positive roots of
+ [l—cos(0—0o)] [l—cos(0+0o)] =X. Note that Theorem 4 implies that pi and
+pi are 0(1/m) and not o(1/m). Using this fact we obtain pi=pi + 0i\/n)2. By
+a direct, though tedious, calculation (in which we use the asymptotic rela-
+tionship pi = pi=p) we find
+
+(4.6a)                   T+ = C{sin(M + 3)P + sin p] sin 0O,
+(4.6b)                   r_ = C{ sin(M + 3)p - sin p\ sin 0O.
+   Thus, to order 1/m, V\ and T°_ have the same roots; namely irv/in+3).
+Thus we have the first order characterization of the minimal eigenvalues of
+f(9)-
+     Theorem 5. Let X»,„ be the eigenvalues of Tn[f] ordered in increasing order,
+i.e. we count multiple roots only once. Then for fixed v, v= 1, 2, • • ■ we have, as
+»—♦00
+
+
+(4.7)                       X,.»= / L + —+ o{—X\.
+Moreover, for each v there are two linearly independent eigenvectors corresponding
+to this asymptotic value.
+    Proof. It is only necessary to verify that we may apply Rouché's theorem
+in this case. This is apparent from the form of T°+ and T°_. Indeed all of the
+details have been carried out by Widom in [19].
+    5. Block Toeplitz matrices. A block Toeplitz matrix M is simply a matrix
+of the form (C,_r) where the Cj are themselves square matrices and Cf = C-i
+where C* is the adjoint of Cj. The corresponding function/(0) is then a matrix-
+valued function which is Hermitian. In the notation of the "direct product"
+(see [12, §7]) we write
+ 172                                  S. V. PARTER                                  [April
+
+
+ (5.1)         M = Ao® In+l + Z j Ci ® fn+l + Cj ® (Jn+i)'}
+                              ,-]
+where /„+i is the square matrix of order «4-1 given by Jn+i= (Si,j-i), i.e.
+                                         01-
+                                          01
+                                            0-
+                             Jn+1
+
+
+
+                                           0      -1
+                                                   0J
+The function /(0) is given by
+
+(5.2)                   /(9)~Í»+¿{C/+C*r''¡.
+                                   y-i
+Let/(0)   be of order N. Let X be any (« + 1)-^ dimensional        vector written     in
+"block" form, i.e.
+(5.3)                                 X=(Xk),                       k = 0, 1,
+where each Xk is itself an Af-vector. As in Lemma 2, if
+
+(5.3a)                           G(0) = £ Xjc-*'»
+                                            3-0
+
+we have
+
+(5.3b)               (X, Tn[f]X)- - f *G*(0)/(0)G(0)d0.
+                                        27T J_T
+
+    We now turn to the study of the minimal (or maximal) eigenvalues of
+Fn[f] where f(9) is an Hermitian-matrix valued function which is continuous
+and of period 27r.
+   Since f(8) is an Hermitian matrix for every value of 8 there is a function
+p(8) defined by
+(5.6)                  ;t(0) = minimum eigenvalue of/(0).
+
+Moreover,   there is an eigenvector    of norm 1, say v(8) = (v¡(9)), so that
+(5.7a)                          f(e)v(e) = p(e)v(e)
+and
+(5.7b)                        v*fv= p(6)v*v= p(8).
+1961]            EXTREME EIGENVALUES OF TOEPLITZ FORMS                                 173
+
+     If /¿(0) and vid) are continuous      we may immediately      conclude
+(5.8)                                   X ^ Min/¿(0)
+
+where X is any eigenvalue of £n[/]- Moreover, min X=»Min»/¿(0) as n—»°o.
+    We turn now to the case where /¿(0) and t/(0) are "nicely" behaved and
+/¿(0) satisfies Conditions A and A(a) or /¿(0) satisfies Conditions B and B(a).
+     We require certain estimates on behaviour of the functions |<p(0)|2 which
+provide the minimum in Lemma 2 in the scalar case.
+     Lemma 14. Let fid) be a real valued continuous function which satisfies Condi-
+tions A aMd A (a). Let A = (A;), j = 0, 1, ■ ■ • , n be the eigenvector of Tn[f]
+associated with the minimal eigenvalue Xi,„. Let n>0 be a fixed number such that
+(5.9a)                                  fie) = fir,)                     for77 = 0áx,
+(5.9b)                                  fi8) = fi—n)                for -x = 0 = - v
+Moreover we require that r\ be so small that there exists a constant A>0         such that
+(5.10)                              A62ag/(0) -m,                                M    = >7-
+Let <p(d)
+        = 2ZÏ-0AVJ<and E| A,| 2= 1. £AeM
+
+(5.11a)                       f          U|2d0 = o( —)
+                             •'«His«-                  \«/
+
+OMd
+
+(5.11b)                       f          |<p|2d0= o( — )                      for a =1,2.
+
+Finally
+
+(5.11c)                           f P<\<p\2de= o(— ) ,                        0 = 7 = 2a.
+
+     Proof. By Theorem 1
+
+                           f[f(e)-m]\p\2de = o(-\\
+Therefore
+
+                       f          [f(8)-m]\<b\2d0=o(-)a
+                      J vains*                               \n/
+or
+
+                     [/(*)-»]       f         \p\2d8=o(-)a.
+                                   J ksKIst                  \M/
+174                                       S. V. PARTER                                              [April
+
+Since [f(y)— m]~1= 0(1) we have verified (5.11a).
+      For a = 1 or 2 we know from Theorems                2 and 3 that the expression
+
+                                  J[f(6)          -»]■ \<p\2d8
+is independent of f(8) to order (l/»)2a.            Hence (5.11b) follows at once.
+     In the same way we find
+
+                  Oáf                 [/(0)- »]■U|2¿0= /i = 0 f—)".
+However, by the choice of r¡ we have
+
+          Ii=a[                   62a\<t>\2d6
+                                            = A (— )         *f                    0t|cs|2¿0.
+                    •'l/nSlilSï                     \»/        «'l/nslíls*
+
+Hence we may conclude
+
+(5.12a)                           f        ey\<t>\2de=
+                                                    o(—Y.
+Finally we use the fact that            |<p| 2 = « + l and obtain
+
+(5.12b)             r           ii
+                              0?|<¿|2¿0   (« +1) /1-) v+i =0-). /1 v
+                                        = ^—^
+                   J msi/n                    y + 1 \n/                      \n/
+Thus (5.11b) is proved by adding (5.12a) and (5.12b).
+     In precisely the same manner we obtain an analogous result for functions
+satisfying Conditions B and B(a).
+    Theorem     6. Let f(8) be a matrix-valued function which is Hermitian and
+periodic with period 2ir. Let p(8) be the minimal eigenvalue for every value of 8
+and v(8) be an associated normalized eigenvector so that (5.7a) and (5.7b) hold.
+Let p(9) satisfy Conditions A and A(a). Let v(9) have 2a continuous derivatives
+in a neighborhood of 9 = 0. Let Xi,„ be the minimal eigenvalue of Tn[f(9)]. Then
+
+(5.13a)                               Xi.n= p(0) + 0 (—Y.
+
+Furthermore,      if a = 1 we have
+
+(5.13b)Xi,n- ß (— + o (-\\                 = p(0)+ - Q              m(2)(0)
+                                                                         + °(t)                 ■
+Finally, if a = 2 we have
+                          74.73          7 1\\                1 74.73V
+(5.13c) Xi,„= p (— + o (-JJ = p(0)+ - [—-] m(4,(0).
+1961]             EXTREME EIGENVALUES OF TOEPLITZ FORMS                                       175
+
+   Proof. Let H(9) be the vector-valued                     trigonometric     polynomial   of the
+form
+                                                  2a
+(5.14)                               H(8) = £ Hie-»*
+                                               3-0
+
+which satisfies
+
+                           (-)       H(6)      = (-)          v(e)I       ,   k - 0, 1, - • •, 2a.
+                           \de/             9_o        \de/        l9_o
+One can easily verify that these N sets of linear equations                      always have a
+unique solution. Thus we have
+(5.15a)                          H*(0)-H(0) = 1,
+(5.15b)                      H*(6)f(6)H(6)= p(6) + r(B),
+where
+(5.15c)                                r(0) = o(e2a),                               for |0|   < Í
+for some 5 > 0.
+      Let g(0) be the scalar function       of the form
+
+                                     g(e)= Et^
+                                              y-o
+
+which satisfies
+
+(5.16a)
+                                     i r'i ,
+                                     —        \g\2de= 1
+                                     2ir J -t
+and
+                                               1       CT
+(5.16b)                 \i.n-2a(p)    = min—                p(8)\g\2de.
+                                            Q 2w J _x
+
+Let G(8)=H(8)g(8). Let
+
+                     /, = - fTG*f(e)Gde,
+(5.17)
+                     h = — f G*Gde
+                                = — f H*H-| g\*de.
+                           2t J -t                 2it J -x
+By (5.3b) and Lemma 1 we have
+                                               Ii
+                                         Xi.»= —
+                                                       I2
+176                                  S. V. PARTER                                  [April
+
+In virtue of the estimates    of the preceding lemma and Theorems            1, 2 and 3
+we immediately obtain
+                                   Right-hand side of (5.13)
+                         Xl,n ^-                                •
+                                               Ii
+However,    using (5.15a) and the preceding         lemma we readily verify that
+
+                                   It ^ 1    «O
+Hence we have one-half of our result.
+   The reverse inequality is trivial since
+                                   G*f(e)G= p(e)G*G
+for all 0. Hence
+
+                                                        Gdd
+                             Xi,
+
+                                         TÍ G*Gde
+                                         ¿ir J -T
+
+Since G*G is a positive scalar polynomial           (indeed a sum of terms of the form
+|g|2, where |g|2 are scalar polynomials)            the conclusion follows from Theo-
+rems 1, 2 and 3.
+   In exactly the same way one can prove the following result for the case
+when p(d) satisfies Conditions B and B(a).
+   Theorem      7. Let fid) be a matrix-valued function which is Hermitian          and
+periodic with period 2ir. Let /¿(0) aMd z»(0)be the minimal     eigenvalue and eigenvec-
+tor functions so that (5.7a) aMd (5.7b) hold. Let /¿(0) satisfy Conditions B aMd
+B(a). Let vid) have 2a continuous derivatives in a neighborhood ofd=d0.              Let
+Xi.» be the minimal eigenvalue of £»[/(0)]. £AeM
+
+(5.18a)                      Xi.» = pido) + 0 (—)          .
+
+Furthermore, if a = 1 we have
+
+(5.18b)                      Xi,„ = p(eo + — + o(—yj.
+
+      We close this section with a theorem on the continuity          of Xi,B.
+    Theorem 8. Let fid ; t) be a matrix-valued function of d which is Hermitian
+and periodic with period 2x. Let fid; t) be "smooth" in t, say, continuously
+differentiable for to = t = h. Suppose moreover that /¿(0; t), the minimal eigenvalue
+1961]            EXTREME EIGENVALUES OF TOEPLITZ FORMS                          177
+
+for every 8, and v(9), the corresponding normalized eigenvector are also "smooth"
+ in t. Finally suppose p(9; t) satisfies Condition A for to^tûh  and
+    (a) satisfies Condition A(l) for /o<2 = £i,
+   (b) satisfies Condition A(2) for t = to-
+Then
+
+
+<519)             '(t^t))4*1-*'^'®)
+for all t in [to, h].
+    Proof. Clearly Xi,„ is continuous in t. Since
+                                      Xl.n = p(e(t), t)
+
+9(t) must also be a continuous function of /. The theorem follows at once.
+    6. A special case. In our earlier work we sought to estimate the spectral
+norm of the following special block Toeplitz matrices.
+    Let An be the 2«X2« matrix of the form
+                                      0    R
+                                      R* 0       R
+
+ (6.1)                     An =
+
+                                                           ■ R
+                                                          R* 0
+ where R is a real 2X2 matrix. If R*R = RR* the problem is completely solved
+ by the methods of matrix direct-products. In that case all the eigenvalues of
+ An are given by
+
+
+ (6.2)             M. = 2 I X*I cos                          k - 1,2;* - 1,2,
+                                          » +1
+ where Xi and X2 are the eigenvalues of R.
+      There are three cases of interest.
+      (i) R has real and distinct eigenvalues Xi, X2.
+      (ii) R has one real eigenvalue X.
+      (iii) R has complex eigenvalues X, A.
+      The results of [14] were incomplete. We obtained a complete asymptotic
+ answer in Case (i) and a partial answer in Case (iii). We did not discuss Case
+ (ii). Actually one can obtain a complete asymptotic answer in Case (ii) by
+ precisely the same methods as in Case (i). However, for completeness we
+ shalljgive a complete discussion of the problem.
+     Let
+178                                        S. V. PARTER                                     [April
+
+
+(6.3)                                      , - íj     "\.
+Then
+                     r           2a cos 0                    (ô + c) cos 0 + Ub — c) sin 0~1
+(6.3a) f(0) =                                                                                    •
+                     L(ô + c) cos e - iQ) - c) sin 0                    2d cos 0             J
+and the eigenvalues of /(0) are given by
+(6.3b)                            pie) = ia + d) cos 0 + D,
+where
+(6.3c)                       £ = [Do cos2 0 + (6 - c)2]1'2,
+
+and
+(6.3d)                                  £o = (a - d)2 + 4ôc.
+      Let /¿m and pa be the minimal             and maximal       eigenvalues   of An=Tn[f]
+respectively.       Then
+(6-4)                          ||^n||    = max{ | pm\ , \ pM\ }.
+
+      Since ||^4n|| =||— An\\ we may assume
+(6.5a)                                     ia + d)-£ 0.
+    Since —Xif is the minimal eigenvalue              of — £»[/]=      Tn[— f] the results       of
+the previous section lead us to study
+(6.5b)                        pie) = ia + d) cos 0 - D
+and
+(6.5c)                        er(0) = - (a + d) cos 0 - D,
+which are the minimal eigenvalue functions for /(0) and —fid) respectively.
+Let us consider the separate cases.
+    Case if). Let p he the angle between the two eigenvectors of £. It was
+shown in [14 ] that
+(6.6a)                                  bn-iú\\An\\úbn+i
+where
+
+(6.6b)      bk= |Xi + Xi| cos-h                   | At - Xi| • cos2-+              £2   ,
+                                        A+l                      LA+1               J
+if
+(6.6c)                                        £ = ctn^.
+      Essentially    this same result is obtained          if we notice that
+1961]           EXTREME EIGENVALUES OF TOEPLITZ FORMS                                179
+
+                               |Xi + X2| = (a + d),
+                               |Xi-X2|        =(Doy>2,
+                                                (b-c)2
+                                           T2 = ---,
+                                                    Do
+and hence
+             p(9) = | Xi + X21 cos 0 - | Xi - X21• {cos20+ T2},
+             <r(0)= - | Xi 4- X21 cos 8 - | Xi - X21• {cos20 4- T2}.
+Moreover p(0+7r) satisfies Conditions A and A(l) while a(9) satisfies Condi-
+tions A and A(l). Finally the associated eigenvector functions are even
+analytic in 0. Thus, by Theorem 6
+
+(6.8)             pu = - pm = ||i4,,|| -       - o- (—j    + o(—\
+
+    Case (ii). If we apply the techniques         of [14] to this case we obtain the
+following.
+    There is an orthogonal    transformation       T such that
+                                                    rx on
+(6.9a)                       T*RT = T-'RT =\
+
+Then
+(6.9b)                          ßn-lu\\An\\       =0n+l
+where
+
+(6.9c)                    ßk= 2|X|         cos—^-4-       \a\.
+                                              k+ 1
+    If X 5^0 we obtain essentially    the same result by noting that
+                                  2 I Xl = (a + d),
+(6.10)                               ' '              "
+                                         a — (b — c).
+
+Thus we find
+                          p(6) = 2 I XI cos0 - | a | ,
+                           cr(0) = - 2 | X | cos 0 -      |a\.
+As in Case (i), p.(0+7r) and o-(0) both satisfy Conditions             A and A(l) and the
+eigenvectors are smooth. Hence, by Theorem 6
+
+(6.11)             || ¿«II = 2 | X| cos—— + | «| +o(—V
+                                           k+ 1                  \«/
+180                                      S. V. PARTER                                               [April
+
+      If X = 0 our results   on block Toeplitz              matrices    do not apply.          However,
+(6.11) still holds. In fact, in virtue of (6.9c) we have
+(6.12)                                    \\A„\\ = \a\                                          for all m.
+   Case (iii). Let X = 5 +it. Let £, f be the eigenvectors of £ associated with X
+and % respectively. Let r\ and rj be the corresponding eigenvectors of £*. Let
+
+(6.13)                                   r =
+                                                     (£,0
+                                                     (In)
+i.e. T is the absolute value of ctn of the "angle" between £ and |.
+      In [14] we obtained:
+If
+(6.14a)                                —'—          (l + r2) = l
+                                       52 +   t2
+
+then
+                 .                       x                  .r         x             T/2
+(6.14b)          "\\A»\\ = 2 5 cos-h
+                                  M+2                 2 ' /sin2-h
+                                                            'L    M+2               t2J    .
+
+      We readily find that
+                               2|«|       = ia + d),
+                                2\t\      =(-£„)1'2,
+(6.15)
+                                                            (6 - c)2
+                                       r2 = -         1-,
+                                                                 £o
+
+and thus
+                     /¿(0) = 2 | 51 cos 0 - 2 | 11 {sin2 0 + t2} 1/2,
+(6.15a)
+                     <r(0) = - 2 | 5 | cos 0 - 2 | /1 {sin2 0 + t2} »'*.
+However, it is not quite apparent             how these functions             behave.      Proceeding   in
+the obvious way, we find
+                                              íl                 I ¿ 1 cos 0 ")
+                     -iW'-2Si",{M+[»in.,                              + T.]4'
+                                              ill                I 11 cos 0     )
+                     ,(,).+2sin,{H-[si[;,;+r,]i„}.
+We now see that there are three cases of interest.
+       Case a.
+                                        s2
+                                                    (1 + t2) > 1.
+                                   s2 + t*
+1961]                 EXTREME EIGENVALUES OF TOEPLITZ FORMS                                           181
+
+In this case both p(9+ir) and a(9) satisfy Conditions A and A(l) and the
+corresponding eigenvectors are sufficiently smooth. Thus by Theorem 6
+
+
+                 Wl--.(•=) + .(i)\
+i.e.
+
+(6.16)       ||¿.||   = 2|*|     cos — 4- 2\t\               jsin2 — 4-t2|          + o (—J .
+
+       Case b.
+                                            s2
+                                      -(1                   + r2) = 1.
+                                       52 +       t2
+
+In this case both p(0+7r) and <r(0) satisfy Conditions A and A(2). Again the
+eigenvectors are sufficiently smooth and Theorem 6 enables us to conclude
+
+
+                           xtMt)4.
+i.e.
+                                     4.73
+                                      .73              . . T       /4.73\           "I1'2   71V
+(6.17)     \\An\\ = 2\s\       cos
+
+       Case c.
+
+                                                       (1 + r2) < 1.
+                                       s* + t
+
+Let
+                                              T        s2                l1'2
+(6.18a)                        0o= cos-i^—-^                  (1 4-r2)J         .
+
+Then p(04-7r) and <r(9) satisfy Conditions B and B(l) and the point 0o is the
+point at which a(9) assumes its minimum.
+    This time we use Theorem 7 to conclude that:
+                                                                                                1/2
+             Hi4.ll= 2|*| cos(öo+ —) + 2 | /1 isin2 ^0O+ —\ + A
+(6.18b)
+
+
+Roughly, we have
+182                                S. V. PARTER                                [April
+
+
+(6.18c)                         2 1 X | (1 + T2)1'2 - o(—\
+
+We remark that if RR* = R*R then £2, a and r2 are zero in Cases (i), (ii), and
+(iii) respectively and we obtain the same asymptotic results as given by (6.2).
+     7. The biharmonic difference equation. We will now apply the results of
+the preceding section and Theorem 8 to a problem in numerical analysis. In
+ [14] we were concerned with the finite-difference equations which arise when
+we consider the following boundary-value problem for the biharmonic oper-
+ator.
+     Let D be the rectangular domain given by
+(7.1a)                  D: 0 = x = £,          0 = y = M.
+Let u = u(x, y) he the solution of the problem
+(7. lb)                         AAm= h(x, y) in D
+
+with u and uv prescribed on the horizontal sides of D while u and uxx are pre-
+scribed on the vertical sides of D.
+     If we now write difference-equations to approximate  (7.1b) (in the usual
+way) choosing
+                                      £                M
+                                Ax = — :       Ay-
+                                      P
+we obtain a particular system of linear equations to solve.
+    It was shown in [14] that the "dominant" eigenvalue \r of the horizontal
+two-line simultaneous-displacement     (Richardson)  iterative method may be
+determined   as the spectral norm of a matrix of the form (6.1) where
+
+                                a — c/2
+                                 b- c           2    (62 -       c2)1'2
+(7.2)             £ =
+                                       1             a — c/2
+                        L    2 (Ô2 - c2)1'2           b+ c
+
+where n = 2/iq— 1) and
+                                                        - 20»
+                            -Í r[£ 2 + 20,],
+                                         2,
+                                                 c=                       L,
+                            K                                £
+
+(7.3)                            £ = 1 — 2dz cos — »
+                                                 £
+1961]                EXTREME EIGENVALUES OF TOEPLITZ FORMS                                                           183.
+
+Using the notation of §6 we have
+                              2 i       2       2i                     3 i   i                     4
+                        20„\l - ey\        4ey\l                               r       L i112
+(7.4)            p(e) = —--——       cos0 +     '                             '■ sin20+ —      .
+             .                L*+ e\                              L*+ e\ L                     49*J
+    The eigenvalues             of R are complex,
+
+                                            0*(20*- L)      2e\L
+(7.5)                                   X =-—          ± *-
+                                                     L< 4- 4f?t              ¿« + 404„
+and we must consider Case (iii) of §6. Moreover, we find the interesting                                           result
+that for any finite p we are in Case a and for p = oo Case h applies.
+    Letting t=l/p,              t0 = 0, /i=l/10               we may apply Theorem                     8. There is no
+difficulty       in verifying           that   the appropriate               "smoothness"          requirements       are
+satisfied.
+    Let
+                         2,         2          2,                       »i       i   r             L4i1/2
+                      20„I L - 20„I                                   40„| L | • sin2x 4--
+(7.6)     \(x) =-cos                                       x -\--.-
+                              L* + e\                                                    L\ + 9\
+    We have
+      (i) for any finite p, as q-+ <x>
+
+(7.7a)                                         x« = x(— + o(—\\
+
+and
+      (ii) for all p and p, q—»oo
+
+
+*•"                     ^+<7))-"^+'(t)>
+      We may write (7.7b) as follows. Let
+
+
+
+
+and
+
+(7.8b)                                                0 = ft
+                                                          \p*
+                                                              + ^)-
+                                                                q2/
+
+      Then
+««                        / 1 1                     1\              x4                         / 1           1\
+(7.9)        1 -p     + o[-+                        — ) = X«= 1--02                        + o[-+            —).
+                               \p\ql                 q6/                         2B\           \pY          T q>
+184                                               S. V. PARTER                                             .April
+
+        In practice p/q = 0(l)       and we may write
+                                                                           4
+
+(7.10)                            1-*<*«<1--Ír©2-
+
+   8. Elliptic difference equations. Consider the finite-difference equations
+which arise in connection with the following boundary-value      problem.
+   Let D be the rectangular domain given by
+(8.1a)                         D: 0 á x = L,                          0 g y = M.
+Let u = u(x, y) he the solution of the problem
+(8. lb)                  AUXX+ 2BUXV+ CUyu = h(x, y) in D,
+with m prescribed on the boundary                   of D and A, B, and C are constants                  satisfy-
+ing
+(8.1c)                            A > 0,                   AC-B2>0.
+        Choosing integers p and q and setting
+                                                   L                       M
+                                      Ax = — ,                   Ay = — >
+                                                   P                       q
+the "natural"      finite-difference        equations            are
+                 V„ — aiVr+l.,    +    t'r-l,.)        — c(Br,,+ i +      »r,.-l)
+
+
+(8.2)                     -—      Ô(»r+i,,+i           +   »r-l,.-l     — »r-l,t+l        — fr+i,,_i)
+
+
+                                                               = yn, 1 á r g p - 1, 1 á s t%q - 1,
+where v0,„ vp,„ vT,o, and vr,q are the given boundary                                   values   and
+                              ¿(Ay)2                        C(A*)2                        BAxAy
+                      a =-,                         c =-»                           6
+                                 D                               D                           D
+                                 hT.iAx)2iAy)2
+(8.2a)              yr,. = -
+                                            D
+                     D = 2[AiAy)2 + CiAx)2].
+Hence
+                                                   1
+(8.2b)                           a + c = —,                      ac-b2>0.
+
+        The matrix representation            of (8.2) may be written as
+
+(*)                                                MX = Y
+1961]           EXTREME EIGENVALUESOF TOEPLITZ FORMS                                    185
+
+where Misa block Toeplitz matrix. In fact this may be done in two ways.
+   Horizontal representation. We choose to number the unknowns as follows:
+                                 Vt, = -X"(p-l)(r-l)+.-l
+
+i.e. we count from left to right along horizontal          lines starting   at the bottom.
+Then (8.2) may be written in the form
+(8.3a)                              Tq-2[f]X = Y
+where f(9) is a Hermitian     matrix of order p —1 of the form
+(8.3b)                        f(e) = L + Aeie + A*e~ie
+with
+
+                        L = Ip-i — a(Jj,_i 4- Jp-i),
+(8.3c)                                 1          *
+                        i4 = — clp-i + — b(Jp-i —Jp-i)
+
+where Jp-i = (5,-,y_i) as in §5.
+   Vertical representation. We choose to number the unknowns as follows:
+(8-4)                           Vr,, = £(r_u+«,-i)(i-i)
+i.e., we count along vertical lines.
+     In this representation (8.2) may be written in the form
+(8.5a)                              Tp-2[h]t = v,
+
+where h(\f/) is a Hermitian    matrix of order q— 1 of the form
+(8.5b)                h(p) = R + Be<*+ B*e~1*
+with R = Iq-i-c(Jq-i+J*.1),
+
+(8.5c)                   B = - alt-i-è(/,_i                - J*-i).
+
+     Another interesting fact is this: both f (9) and h(9) are themselves scalar
+ Toeplitz matrices for every 0!!
+     The fact that (8.2) has two block Toeplitz representations and both func-
+tions are themselves Toeplitz matrices comes about because the operator in-
+volved is a two-dimensional Toeplitz matrix. Such matrices will be discussed
+more generally in §9.
+     We now turn to the problem of solving those equations and consider two
+iterative methods.
+   (1.) "Point" Richardson (simultaneous displacement). Choosing a "guess"
+Xo we iterate as follows :
+186                                   S. V. PARTER                                                 [April
+
+(8.6)                  *<*«>= - (TV-iM- /)A<»>+ F.
+This method converges if and only if
+
+(8.6a)                      \\Tt-i[f] - l\\ < 1
+and
+                            |j 7"fl_2[/] - £¡| = max          | X|
+
+where X is an eigenvalue of £„_2|/] —/= Tq-i[f— I].
+     In anticipation of applying the results of §5 we determine the eigenvalues
+oí fid) —I. This is easily done, indeed all the eigenvalues oi fid) —I are given
+by
+                              i                      -,       T5
+(8.7)     p.(0) = 2ccos0 + 2{a2 + 62sin20}1'2cos —,                       s = 1,2, ■ ■ ■, p -         1.
+                                                               P
+      Thus we must consider
+                                                                                X
+                  PÍ0) = 2c cos 0 - 2{ a2 + b2 sin2 0}1'2 cos
+                                                                                p
+
+and
+
+                °-(0) = -   Í2ccos0+         2{a2 + ó2 sin 0}1'2 cos— > ,
+
+which are the minimal eigenvalues oí fid)—I and I—fid) respectively.
+   Using (8.2b) it is not difficult to determine that both /¿(0) and cr(0) satisfy
+Conditions A and A(l). Thus, using the argument of Theorem 6,
+                       x               xô2                x          x              / 1   1\
+(8.7a)    Xb = 2c• cos —■+ 2a-cos-1-sin2                  — cos-1-              o I-1-)
+                       q               p         a        q          p              \p2   q2)
+
+for all sufficiently large p and q. Moreover since the eigenvalues are all distinct
+it is easy to verify that the corresponding eigenvectors are analytic in 0. Hence
+we may apply Theorem 6. Hence we may conclude: for fixed p
+
+         ||2v«M-/||
+(8.8)                             x          {                  x)       1/2         x    I-/ 1\
+                      = 2CCOS— +2<a2                 + b2sin2—V                cos-Ml-)
+
+    To get a more complete answer to our question we note that the eigen-
+values of £p_2[A] —I are the same as those of £9_2[/] —£
+    The eigenvalues of A—7 are found to be
+                                                                X5
+(8.9)     r.(0) = 2a-cos0+2{c2        + o2sin20}l'2cos          —»             5=1,2,
+1961]             EXTREME EIGENVALUES OF TOEPLITZ FORMS                                             187
+
+And in exactly     the same way as before we conclude:
+                           w               ir      b2        IT     T          / 1        1\
+(8. 9a)    Xa = 2c • cos-\-       2a • cos-1-sin2           — cos-1-       o I-1-I
+                           q               p        c        p       q         \p2        q2/
+
+for all sufficiently large p and q. Moreover for fixed q
+                                           1T           l            7r) lli         ir         7 1\2
+(8.10)     ||2Vi[A] -/||       = 2<zcos — + 2^c2 + o2sin2 — >                  cos —4-of—).
+
+Hence, for all p and q
+
+           M IM í . -[.(!)• + . (Z)'] + m¡„g (I)', Í (1)}
+(8.11)
+
+                               ((ïMt)>
+      We now consider another iterative approach.
+      (2.) "Horizontal line" Richardson. Let
+
+(8.12)                                 f(8)-L       = M(6).
+Again, choosing an initial "guess" Xo we iterate as follows:
+(8.13a)                Ti-2[L]X('+1^ = - 2V2[il/]X<»>+ F.
+It is useful to observe that if
+(8.13b)                           P(p) = (1 - 2a■cosp)It-i
+and
+(8.13c)                             -N(P) = h(P)-P(P),
+then using the vertical         representation      we may write (8.13a) as
+(8.14)                         2V,[P]{<»+»= 2V,[tf]{<">+ r,.
+      In this case, the iterative      procedure        converges   (see [4]) if and only if
+(8.15a)                                  max | x| < 1
+where X is a solution of the equation
+(8.15b)                            det(2V2[XL + M]) = 0
+or X (equivalently)     is a solution of
+(8.15c)                            det(rp_2[XP - N]) - 0.
+      Since this iterative      method is a "three block scheme" (see [4]) it is not
+188                                    S. V. PARTER                                          [April
+
+difficult to show that if X is a root of (8.15b) so is —X. Hence we restrict our-
+selves to positive X.
+     Our approach is now the following. Assuming X>0 we obtain the minimal
+eigenvalue of £,_2[X£ + M] (or £„_2[X£ —N]) as a function o/X. We then set
+that minimal eigenvalue equal to zero and solve for X. This value is the desired
+max |X| since the positive-definite       character  of £ shows that for X>0,
+det(£,_2[X£ + M]) is monotone increasing.
+     As before, we turn to eigenvalues of X£ + M and X£ —N. All the eigen-
+values of X£ —N are given by
+                                                .                 .           X5
+                 p,(0) = X(l - 2a-cos0)     - 2{c2 + 62sin20}1/2cos           — ,
+(8.16)                                                                     q
+                                                                      s = 1, 2, • • • , q - 1.
+    Once more we find distinct eigenvalues and the smoothness                       of the eigen-
+vector functions is assured. The minimal eigenvalue is
+
+                 pie) = X(l - 2a-cos0) - 2{c2 + b2 sin20} »'* cos —
+                                                                              1
+which satisfies Conditions A and A(l). Theorem              6 allows us to conclude          that
+the minimal eigenvalue a oí £P_2[X£ —N] is
+
+
+(8.17)     (7 = x(l     - 2a-cos —J-      2 jc2 + o2sin2—i            cos— + o (— J.
+
+Thus we may conclude: for fixed q
+
+(8.18)          xß = ^       + ^(^)}^°*w                      +. [Yiy-i.
+                                1 - 2a cos ir/p)                      L\p/J
+
+      It is important    to notice that   (8.18) implies
+
+(8.19)                         x„=1_0(i             + l).
+
+   All the eigenvalues       of X£ + M are also easily found. We obtain
+
+                                            ,                 ,          X5
+                (7,(0) = X - 2c cos 0-    2 XV + o2sin20 1/2cos —,
+(8.20)                                      '                             P
+                                                                      5 = 1, 2, •••,/»-         1.
+Once more eigenvalues are distinct and the minimal eigenvalue ¿¿(0) satisfies
+Conditions A and A(l). Thus we may apply Theorem 6 and obtain the
+minimal eigenvalue of £S_2[X£ + M]. Using (8.19) we have
+1961]              EXTREME EIGENVALUES OF TOEPLITZ FORMS                                    189
+
+
+           <r = x[l-2(a2-o2(l           + o(-i)2(Sin2^)1/2cos^]
+
+
+                — 2c cos-\-      oI — ) .
+                          q       \q/
+Thus we may conclude: for fixed p
+                                       2c cos (ir/q)
+                                                                                    f'(~j
+                   1 - 2[a2 + o2(l 4- 0(i/p)2)         sin2 (rc/q)]112 cos (rr/p)
+
+Finally,   we have, just as in the previous            case, as p and q—><»
+
+
+
+(8.22)
+           x«s
+             ' - iKv)'+°(í)l+
+                           Hi?©''¿(t)1
+               +
+                    •[(t+t)T '
+    Remarks. Since the "line" iterative methods are "three block schemes"
+(8.22) enables one to estimate the principle eigenvalues of several other itera-
+tive schemes. See [4; 14 or 11] for more details. If B = 0 we are in a well-
+studied case, and our results give the well-known results for that case. See
+[14] for more details.
+   It should be remarked that the estimates (8.10) and (8.22) are not really
+new results. It is easy to see that in fact, for the point iteration scheme we
+have
+                                                 X-A*2-Ay2
+(8.23)                            \R « 1--,
+
+where X is the minimal eigenvalue           of the equation
+(8.24)                     AUxx+2BUxy+CUyy                  + \U = 0
+with U=0 on the boundary of the rectangle.                    By a change of variables      X is
+seen to be the minimal eigenvalue of
+                                      AU + \U = 0
+with Z7= 0 on the boundary of a particular      parallelogram.  The estimates
+(8.7a) and (8.9a) are easily related to the lower estimates obtained for X by
+Steiner Symmetrization.   (See Pólya and Szegö [22].)
+    9. Remarks on two-dimensional             Toeplitz matrices. Let f(9, \p) be a real
+Lebesgue integrable       function defined for —7r=0, ^=7r. Let { C¡k} be the Four-
+ier coefficients of F(9, i/0, i.e.
+(9.1)                             F(9,P) ~ E We**.
+                                                 h.i
+190                               S. V. PARTER                                        [April
+
+    One may now regard £(0, p) as a function of 0 depending on a parameter p
+or as a function of p depending on a parameter 0. To distinguish these cases
+we define
+                           Aie) = Fie,p) for fixed p,
+(9.2a)
+                           Bip) = Fie, p) for fixed 0.
+That is,
+                           A(e)~2ZyÀW,
+(9.2b)
+                                 i
+                           B(p)~ E «*(*)«*',
+                                    k
+
+where
+                              y i ~ Z Cjkeik*.
+                                    k
+(9.2c)
+                              h ~ 2-, Ope*''.
+                                   }
+We observe that
+                                Tn[Aid)] = KP)
+and
+                                TN[BiP)] = fi8)
+are both matrix valued functions which are Hermitian and periodic with pe-
+riod 2x. Moreover, both are scalar Toeplitz matrices for all values of their argu-
+ments.
+    Consider now the two block Toeplitz matrices of order (m+ 1)(7V+1)
+(9.3a)                     m = TN[h] = TN[Tn(A)]
+and
+(9.3b)                     M = Tn[f] = Tn[TNiB)].
+      Let A be any vector of dimension (m+ 1)(A+1).             Let A = (A4), A= 0, 1, 2,
+ • • ■ , N+l   where the Xk are themselves      (m+1) vectors, say
+
+(9.4a)                            A* = (off),                          j = 0, l, • • • , n.
+Let GiP)= 2ZI-0Xke-**and
+                                        N   n
+                                                ft) -ikf -HI.
+(9.4b)                    A(0,P) = E E è e e~
+                                    y—ot-o
+
+Then
+1961]           EXTREME EIGENVALUESOF TOEPLITZ FORMS                              191
+
+
+(9.4c)      (X, mX)=— f G*hGdp= -                     f      f F(9,P) \h\2d0d*.
+                        2irJ-r                   4x2J_IJ_x
+
+A similar statement holds for the matrix M.
+    It is not difficult to verify the following statements.
+(5.1) There exists a permutation matrix P so that
+                                 P*mP = P-^P          = M.
+(5.2) If Xi,„ is the minimum eigenvalue           of m and M, then
+
+
+                  x1>n
+                     = min— f              f F(e,p) | h(e,p) \2mp
+                                 4x2 J -, J -r
+
+where h(9, p) is any function of the form (9.4b) and
+
+
+(9.5)                    -±-JT fT\h(8,P)\2dddp=l.
+
+(5.3) The matrices m and M correspond to two-dimensional difference equa-
+tions in the same sense that the one-dimensional (scalar) Toeplitz matrices
+correspond to ordinary difference equations. That is, if F(8, \p) is a trigono-
+metric polynomial the equations
+                                         mX = Y
+represent   a partial difference equation        in two variables of the form
+
+(°-6)                            E     E CikVr+ks+i= y,,.
+
+in a rectangular domain 0 = r = «, 0 = $ = ^.
+     Conversely, any difference equation of the form (9.6) may be represented
+by a matrix m or a matrix M which are related in this way and F(9, yp) will
+be a trigonometric     polynomial.
+     Remark. If one is dealing with a time-dependent    difference equation and
+vr,, represents the unknown function at time vAt while yr.« represents that
+function at time (v + l)At, the function F(8, i/0 is the "amplification"   in the
+von Neumann theory of Liability. See [15].
+     As an illustration of these facts one can turn to the difference equation
+(8.2). In this case
+               F(9, p) = 1 - 2c- cos 0 - 2a cos p + b sin 0 sin p.
+
+    At this time there is no general theory of such two-dimensional Toeplitz
+operators. However, the results of §8 show that one can apply the preceding
+theory to obtain some useful estimates.
+192                                         S. V. PARTER
+
+                                            References
+    1. R. J. Arms, L. D. Gates and B. Zondek, A methodof blockiteration, J. Soc. Indust. Appl.
+Math. vol. 4 (1956) pp. 220-229.
+     2. S. D. Conte and R. T. Dames, An alternating direction scheme for the biharmonic differ-
+ence equations, Math. Tables Aids Comput. vol. 12 (1958) pp. 198-205.
+     3. R. Courant and D. Hubert, Methods of mathematical physics, Vol. I. (English transla-
+tion) New York, Interscience, 1953.
+     4. B. Friedman, The iterative solution of elliptic difference equations, A.E.C. Research and
+Development Report NYO—7698, New York University, 1957.
+     5. Stanley P. Frankel, Convergence rates of iterative treatments of partial differential equations,
+Math. Tables Aids Comput. vol. 4 (1950) pp. 65-76.
+     6. U. Grenander    and G. Szegö, Toeplitz forms and their applications,      Berkeley, University
+of California Press, 1958.
+     7. J. Heller, Simultaneous,     successive and alternating    direction iteration schemes, J. Soc.
+Indust. Appl. Math. vol. 8 (1960) pp. 150-173.
+    8. F. B. Hildebrand, Introduction to numerical analysis, New York, McGraw-Hill, 1956.
+    9. E. Jahnke and F. Emde, Tables of functions with formulae and curves, New York,
+Dover Publications, 1943.
+     10. M. Kac, W. L. Murdoch, and G Szegö, On the eigenvalues of certain Hermitian forms,
+J. Rational Mech. Anal. vol. 2 (1953) pp. 767-800.
+     11. H. Keller, On some iterative methods for solving elliptic difference equations. Quart. Appl.
+Math. vol. 16 (1958) pp. 209-226.
+     12. C. C. MacDuffee,     The theory of matrices. Ergebnisse der Mathematik und ihrer Grenzge-
+biete, vol. 2, Berlin, Springer, 1933.
+     13. L. M. Milne-Thomson, The calculus of finite-differences, New York, Macmillan, 1933.
+     14. S. V. Parter, On "two-line" iterative methods for the Laplace and biharmonic difference
+equations, Numer. Math. vol. 1 (1959) pp. 240-252.
+     15. R. D. Richtmyer,     Difference methods for initial-value problems, New York, Interscience,
+1958.
+     16. D. E. Rutherford,     Some continuant determinants       arising in physics and chemistry. II,
+Proc. Roy. Soc. Edinburgh Sect. A. vol. 63 (1952) pp. 232-241.
+     17. Richard S. Varga, Iterative numerical analysis, Lecture Notes, Computation and Data
+Processing Center, University of Pittsburgh, 1959.
+     18.--,       Factorization and normalized iterative methods, Presented at the Symposium on
+Boundary Problems in Differential Equations at University of Wisconsin, April 1959, Westing-
+house Report W.A.P.D.-T. 1950.
+      19. H. Widom, On the eigenvalues of certain Hermitian        operators, Trans. Amer. Math. Soc.
+vol. 88 (1958) pp. 491-522.
+     20. D. Young,     Iterative   methods for solving partial    difference equations   of elliptic type,
+Trans. Amer. Math. Soc. vol. 76 (1954) pp. 92-111.
+    21. A. Zygmund, Trigonometrical series. New York, Dover, 1955.
+    22. G. Pólya and G. Szegö, Isoperimelric inequalities in mathematical physics, Annals of
+Mathematics Studies, No. 27, Princeton University Press, 1951.
+      Cornell University,
+          Ithaca, New York.
+      Brookhaven National Laboratory,
+          Upton, Long Island, New York
+

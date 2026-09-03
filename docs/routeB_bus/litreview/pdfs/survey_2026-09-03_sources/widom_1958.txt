@@ -1,0 +1,1484 @@
+      ON THE EIGENVALUES OF CERTAIN HERMITIAN
+                    OPERATORS
+                                                     BY
+                                       HAROLD WIDOM
+
+                               Chapter         I. Introduction
+     In recent years a considerable amount of work has been done on the in-
+vestigation of the largest eigenvalue of integral equations of the form
+
+(1.1)                          f P(x - y)4>(y)dy
+                                               = \d>(x),
+                              J -A
+
+where the kernel p(x) is real and even, for large values of the parameter A.
+    By a formal use of the Wiener-Hopf      technique Carrier [2; 3] obtained
+sharp estimates in the special cases of the kernels
+
+                                                /l      QO   s~1e~"ds,
+                                                       [x\
+
+
+which arises in the theory           of neutron              diffusion,   and a Hankel          function   of
+imaginary argument,
+                                1      to                    1 rx         e~iix
+                      p(x) = — iHo (ix) = — I                         -di,.
+                                2                           2x/_00    (1 + F)1'2
+
+In the case of this second kernel Carrier                     obtained,       for the largest   eigenvalue
+of (1.1),   the asymptotic     expression(')
+
+                                       t2            t(tt     + 2)
+                         X = 1-+-+                                        o(A~3).
+                                      &A2                    8A3
+
+     As for general kernels p(x), little has been proved but much has been
+suspected.    Bellman and Latter   [l] have obtained upper and lower bounds
+for the largest eigenvalue of (1.1) for quite general p, these bounds, how-
+ever, being rather weak for most interesting    kernels. More to the point is a
+conjecture     of Kac, Murdock,      and Szego [5]. Assume p(x) ^ 0 and
+fl«,(l+x2)p(x)dx<     oo. Denote the positive eigenvalues of (1.1) by
+     Presented to the Society, December 27, 1956, under the title Extreme eigenvalues of Toeplitz
+matrices; received by the editors January 12, 1957.
+     0) Professor Carrier has pointed out that in [3], the 10th line from the bottom of p. 20,
+the expression 1—ir/4(/3+a)2 should be replaced by l —v3/&(fl+a)t.
+
+                                                491
+492                                     HAROLD WIDOM                                    [July
+
+                                       ^l,A    ^   X2,A =         - " " •
+
+Then,   this conjecture      states,
+                                                      9     9 9
+
+                                Ma = M-+                                o(A~2)
+                                                      8A2
+
+as A—>co for fixed v, where M = fZ*p(x)dx and a2=f1„x2p(x)dx.       (For the
+basis of this conjecture, and a discussion of related problems, we refer the
+reader to the excellent introduction  of [5].) We shall prove a more precise
+result here, under slightly different hypotheses.   If we denote by P(£) the
+Fourier transform of p(x),
+
+                                                           e«*p(x)dx,
+                                                    -00
+
+
+then under certain        conditions
+                                              aW f       a I
+(1.2)                 \V.A = M - ——                  1 + — + o(A-*)
+                                               SA2 L     AJ
+where
+                            ^_ 1 /--j                F'(S)                  JA#.
+                                   x J_lF(£) - M                            {/ £ '
+(The methods employed in the proof of this result could be used to further
+extend the asymptotic     expansion of ~Ku,a,but further refinements do not seem
+to be especially interesting.)   Note that in this asymptotic expression the first
+two terms involve only M=F(0)        and <r2= —P"(0), and are local in that they
+depend only on the behavior of F(^) near £ = 0, while the next term is clearly
+nonlocal.
+     When F(£) = (1 +£2)-'/2 the integral involved is easy to evaluate, and we
+have agreement     with Carrier's  result, which seems to justify his formal
+method. (It should be pointed out that the function (1+I2)-1/2 does not
+satisfy the hypotheses under which our asymptotic     expression is obtained; in
+fact, we must assume 7"(£) =0(|£| ~2) at infinity. This, however,          is un-
+doubtedly just a deficiency in the method of proof, and not of the result it-
+self.) The case p(x) =ir~112 exp(—x2) is also worth noting. In this case we ob-
+tain
+                                          Tr2             7r3'2f(l/2)
+                     Ai,.*= 1--^r1                                          + o(A-z).
+                                        16A2                 1643
+This result might be compared with those obtained by Bellman and Latter,
+loc. cit., for the same kernel.
+    The discrete analog of (1.1), the Toeplitz matrices, will also be considered
+in this paper. If
+19581          EIGENVALUES OF CERTAIN HERMITIAN OPERATORS                                                  493
+
+
+                                     0) = E cje"'1
+                                                j =—00
+
+
+
+is real and even, we define the wth Toeplitz                   matrix          of /as
+
+(1.3)                              Tn = Tn(f) = (Cj-k)                                     j, k - 0, • • • , n.
+Denote   the eigenvalues     of Tn by
+
+(1.4)                         Xi,„ ^ X2,„^                 • ^ X„+i,„.
+It is proved in [5, Chapter III], that if f(6) achieves its maximum                                   at 0 = 0
+(and at that point only) and is sufficiently regular, then
+                                                <rW
+                              X„,„ = M-+                            o(n~2)
+                                                     2n2
+
+for fixed v as re—>oo,where M=f(0) and er2= —/"(0). This is the exact analog
+of the first two terms of the expansion (1.2). We shall prove the analog of all
+of (1.2), namely
+                                     ctW         T              a         "1
+                     X„,„ = M-1                          +-                    + o(n~3)
+                                   2(re+l)2L                  re+lj
+where
+                      a = — /      < —L±J.-2                  csc 8} cot — 8d8.
+                           TJ-Af(8)-M                                 )            2
+    The author wishes to express his appreciation   to Professor Mark Kac,
+who introduced the author to the problems considered here, and whose assist-
+ance during their solution was invaluable.
+
+                           Chapter    II. Toeplitz              matrices
+    2.1. We shall be concerned        with the class of functions/(d)                         satisfying   the
+following
+    Condition        A. Let f(8)   be continuous              and periodic              with period   2ir. Let
+maxf(8) =/(0) = M and let 6 = 0 be the only value of f?(mod 2ir) for which this
+maximum is reached. Moreover, we assume that f (6) is even, and has continuous
+derivatives up to the fourth order in some neighborhood of 6 = 0. Finally, let
+a2=-f"      (0)^0.
+    The main result      of the chapter    is
+
+    Theorem      2.1. Let f iff) satisfy Condition A, and denote the eigenvalues of the
+matrix   Tn by X„,„ [cf. (1.3)—(1.4) ]. Then                   as re—»oo we have, for fixed,                 v
+= 1,2, • • •,
+                                     crW         r              a
+494                                         HAROLD WIDOM                                          [July
+
+where
+                              i r"                i              vm - f(e)        i 1
+(2.1)           o = a(0=—        I csc2—01og-—cot2—                                 e dd.
+                             2-kJ —,   2     L 2a-2                               2 _
+     The assumption    that the maximum of f(8) is achieved at 6 = 0 is unim-
+portant;   the point 0 may be replaced by any Oo. Since the Toeplitz matrix
+corresponding    to any translate of f(9) has exactly the same eigenvalues as
+that corresponding    to /(0) itself, it is easy to modify the theorem so that it
+will hold in the more general case.
+     2.2. We shall first prove the main theorem for the case when f(8) is a
+trigonometric   polynomial and satisfies the additional
+    Condition  Ai. All the complex zeros off(6) —M are simple.
+    The result for general functions will then follow by fairly simple ap-
+proximation arguments.
+      Let
+
+(2.2)                                       f(6) = £^'',                                        ck^0
+                                                      j—k
+
+where,      since f(9) is even,        C-j = Cj (j=l,        ■ ■ ■ , k). Denote    by T the infinite
+matrix
+                                             (cp.v) = («*-«),                      P,q = o,i, ■•■ .
+Then if En is the matrix which takes the vector {x0, • • • , x„, xn+i, ■ ■ • } into
+{x0, • • • , xn, 0, • • • } we have Tn = EnTEn. The condition that {x0, • • • ,xn]
+be an eigenvector of Tn corresponding       to the eigenvalue X is that
+
+(2.3)                                         EnTX = \X
+where X is the infinite vector {x0, ■ • • , x„, 0, • • • }.
+    For any vector F= [y0, • • • , y„, yn+i, • • • j with Slyl                       2< °° we intro-
+duce the generating   function
+                                                            co
+
+                                             Fy(z) = X yiz'
+                                                            y-o
+
+regular inside the unit circle. We can then write (2.3) in the equivalent                        form
+
+                                  dr    r
+                              -         [FTx(z) - \Fx(z)]i=0          = 0,                  0 = r = n,
+                              dzr
+
+which, for convenience       we split into the two conditions
+
+                                  dT    r
+(2.4)                         -         [Ftx(z)       - XPx(a)]-o     = 0,           0^r^n-k,
+                              dzr
+1958]         EIGENVALUES OF CERTAIN HERMITIAN OPERATORS                                                                                    495
+
+                                  dT   r
+(2.5)                         -        [Ftx(z)                -\Fx(z)]I=o                = 0,                      re - k < r g re.
+                              dzr
+
+    Now (2.4) is equivalent to En-kTX=~KEn_kX                                                 which,            when     written            out,
+becomes the system of equations
+                                               r+k
+                                                   7.       Cr—pXp — AXf,                                                     U ^i    /     ^^ R,
+                                               P=a
+                                               r+k
+                                               /        d   t/j>—pJvp        /KJl'j'j                              fi   *^, /    -^   ft-      fcj
+                                           p=r—k
+
+or
+                       [r—1                                                                             r+k—I            -1
+
+                            (X — C0)xT—                            E            Cr-pXp — E                      Cr-pXp ,
+                                                            p=max(0,r-fc)                           p=r+l                —I
+
+                                                                                                                   0 ^ r ^ re - £.
+     As for (2.4), we calculate            FTx(z), obtaining
+         Ftx(z)   = coFx(z) + CizFx(z) + • • • + ckzkFx(z)
+                    + CiZ_1[Px(z)              — xo] + c2z~2[Fx(z)                            -     Xo -        xiz] +        • • •
+                    + ckz-k[Fx(z)              — Xo — XiZ — • • • — xk-izk].
+
+Thus if we introduce        the polynomial
+(2.7)   P(z) = P(z; X) = ckz2k+ • • • + c^1                                   + (c0 - X)z* + ciz*"1 +                            ■ ■ ■ + ck
+
+we have
+                                                                                                  t-i
+(2.8)              zk[FTX(z) - XFx(z)] = P(z)Fx(z)                                       -        £ Aqz"
+                                                                                                  8-0
+
+where we have set
+                                                               Q
+
+(2.9)                                      ^            = Z Cj.-4+tXp,                                             Og^i-1.
+                                                             p=0
+
+Now by (2.8), we see that (2.5) is equivalent                                      to
+
+                            dT Y            ^i    1
+                        -       P(z)Fx(z) - X) Aqz"                                               =0,              re < r ^ n + k.
+                         dzr L                                         5=0              X=o
+
+Since (2.4) is equivalent         to
+
+                        dT V           t,1                                          1
+                        —- P(z)Fx(z) - £ ^                                                    =0,                             0 g r g re,
+                         OZr L                                     «_0              _h=0
+496                                        HAROLD WIDOM                                         [July
+
+we see, noting    that    P(0)?^0,      that   (2.4) and (2.5) together      are equivalent       to
+(2.5) and
+                          dr V                      t,1  1
+(2.10)                   -\Fx(z)           - P(z)-1 £ Aqz"\   = 0,             re<r      = w + £.
+                          dzr L                     <i=o J*=o
+But since p?+1)(0)=         • • • = P£+*>(0) =0, (2.10) is equivalent           to
+                             ^n+p+l    r         t-1
+(2.11)                      ——             P(s)-> Z Aqz«         =0,           0|rgi-l.
+                            cfan+"+1L            9=0       -Lo
+
+     Recapitulating,     we have shown that {x0, • • • , x„] is an eigenvector                of Tn
+corresponding      to the eigenvalue X if and only if we have simultaneously                   (2.6)
+and (2.11), where the Aq in (2.11) are defined by (2.9). Note that (2.11)
+involves only the components         Xo, • • • , Xa_i, so that if x0, ■ • • , x,t_i satisfy
+(2.11) we can define xk, ■ • • , xn successively by means of (2.6) to obtain an
+eigenvector     {x0, • • • , x„}. Thus the multiplicity     of X is exactly the number
+of linearly independent solutions for {x0, • • • , xk-i] of (2.11) and (2.9). Now
+(2.9) gives an isomorphism between the set of all {^4o, • • • , -4*-i} and all
+ {Xo, • ■ • , Xi_i}. It follows that the multiplicity of X is the number of linearly
+independent solutions of (2.11) for the quantities ^4o, ■ • • , Ak-i.
+     In order to bring (2.11) to a workable form we must consider the zeros of
+P(z). Since, by (2.7) and (2.2),
+(2.12)                             P(e«; X) = «<"[/(*) - X],
+P(z) will have double zeros only if f(6) —X does. Now f'(0) has at most 2k
+zeros (mod 2tt) , say 6{, • • •, Oj (j g 2k). Then if A,-=f(6<), f(9) -X will have
+only simple    zeros as long as X^Xj           (i = l, • • • , j). Thus   if we choose    5>0     so
+small that    no Xj is contained       in the open interval      (M, M—8), P(z) will have
+only simple zero for \E(M,             17 —5).
+    That we may exclude the possibility          that X = 17 is easy. For if
+{xo, • • ■ , xn] is an eigenvector with ^21 xi\ 2~ 1 corresponding to the eigen-
+value X, and we set cp(9) = ^x^e''*, we have
+
+                     X= p,9=0
+                         E cp-qxpxq
+                                 =—      f Tf(8)| 0(0)\HB.
+                                    2ir J --,
+Since
+                                       - fT\d>(e)\2de= l,
+
+and f(9) = 17 at a single point only, it follows that X< M.
+      Let p run over the various zeros of P(z). Then we have
+
+                                   -L-s_l_
+                                      p(Z) r p'goos- p)
+1958]             EIGENVALUES OF CERTAIN HERMITIAN OPERATORS                                                                       497
+
+and (2.11) can be written
+                                        k-i       /                     i               \
+(2.13)                                   V T,p P'(p)Pn+»-«+2)
+                                         *T„V  -)Aq                                          = 0,                     0£p£k-l.
+
+   Now we see from (2.7) that the zeros of P(z) occur in reciprocal pairs, so
+we may replace each p in (2.13) by 1/p. Since P(z~1)=z2kP(z),     we see that
+(2.13) becomes
+                                          fc—1/               pik+n+P—q \
+
+
+
+
+   Hence we have shown                            that for X in a sufficiently small open interval
+(M, M — 5), the multiplicity                       of X is k minus the rank of the matrix
+                                                        /         p2k+n+P-q             \
+
+(2.14)                                                 (?-?W-)"                                                       *-f-».■■■*
+(Our substitution   of 1, • • • , k for 0, • • • , k — 1 as the range of p and q is
+clearly irrelevant since each entry of the matrix involves only p —q.)
+    2.3. Denote by D the determinant       of the matrix (2.14). Then we have
+                                                        2k+n+l—t(1)                                        2k+n+k-r    (k)
+
+            £=Esgnr(E^-V--(£--)
+                        r               \f                  ^'(pi)/                         Vfr ^(p*)/
+where r runs over all permutations of 1, • • • , k and each p, runs over all the
+zeros p of P(z). Changing the order of the summations,     we have
+
+                              -^        (Pi       • ' ' Pk)2k+"             T-y                   l-r(l)              fc-r(fc)
+
+                        Pi,-- -.Pk P'(Pl)             • ■ • P'(pk)          r
+
+Now
+                                          Z                       1-t(1)                 t-r(t)
+                                                      (sgn t)Pi                   • • • Pi
+                                              T
+
+
+
+is simply a Vandermonde                       determinant,                  whose value is
+
+                                          »-*         2-*          -1        tt     f              \
+                                        Pi P2               • • ■pt-i 11 \Ps — Pt),
+                                                                            s<t
+
+SO
+
+
+(2.15)            77=           2^      ^TT-3T-T                             P2P3 • • • Pk             11 (p. - p«).
+                            Pl.---.Pt   -^ (Pi)         • ' • P (Pk)                                   ,<t
+
+Since the factor JI(p>~Pt) in (2.15) will vanish if any two of thep,- are equal,
+we may assume the summation         is taken only over distinct sets of zeros
+Pi, ■ ■ ■ , Pk-
+498                                    HAROLD WIDOM                                                [July
+
+    Take any set 5 of k distinct p's, say 5= [pu • • ■ , pk], and let 23s be
+that part of the sum for which each ptES. Then if t is a permutation   of the
+integers 1, ■ ■ ■ , k the typical term of X]s is
+
+            (Pr(l) • • • Pr(t))*+"+1            2            Wn
+           —-"-—-"                      Pr(2)Pr(3)    ' • ' p"r(fc) H (pr (,) — Pr(())
+tr, ,s\    P UMd) ■ • • P (Pr(k))                                   »<(
+(2.16)
+                         =      IT „,, .             II (P»- Pt) (Sgn T)pT(2)Pr(3)
+                                                                                • • • j5r<*).
+                             L pes P (p) J L «<(                     J
+Again,
+
+                                  H    (Sgn 7")pr(2)Pr(3)       ■ • • Pr(k)
+                                   T
+
+
+
+is a Vandermonde         determinant       whose value is
+
+                                              II (p,- Pt).
+Therefore,     summing       (2.16) over r, we have
+
+
+                             LS =[n^][n(P.-pV.
+                                 L pes r \p) J L ,<t                          J
+
+Finally,     summing   over all choices of S, we obtain
+                                        (5i    • • • ok)k+n+1
+
+                              pi,- ■-.5* -^ iPi) ■ • ■ r {pk) ,<(
+
+where here the summation extends over all combinations of & of the zeros p.
+    2.4. We shall presently show that of the dk,k terms in the sum (2.17),
+all but two can be neglected. Before we do this, however, we have to examine
+more carefully the distribution of the p's.
+    The function f(9) —M has, by Condition A, the double zero 9 = 0 and no
+other real zeros (mod 2ir). Moreover, by Condition A, it has 2^ —2 distinct
+complex zeros (mod 27r)
+                                  *         *
+                                              0±2, • • • i 0±fc
+
+where 9*, ■ ■ ■ , 0* are the zeros in the lower half-plane,                       0*2, • • • , 0*t those
+in the upper half-plane.
+      If X< If but sufficiently close to M, f(9) —Xwill have zeros
+                                        9±h 9±i, ■ ■ • , 6±k
+where 0,-—»0*as X—>A7(j= ±2, • • • , ±k),                         9X is the positive      real zero of
+f(9)-\,      and 0_i=-!?i.
+    Correspondingly   [cf. (2.12)] P(z; M) has a double zero at z = l, and, off
+the unit circle, the 2& —2 distinct zeros
+1958]         EIGENVALUES OF CERTAIN HERMITIAN OPERATORS                                                 499
+
+                                P+2, • • • , P±k,           Pi = ei9>*               (j = ± 2, ■ ■ ■ , ±k)
+
+where p2, ■ ■ ■ , p* are of absolute value greater than 1, and p*2, • • • , p*k
+oi absolute value less than 1.
+    If \<M   but sufficiently close to M, P(z; X) will have zeros
+                         e±iH,       P+2, • • • , P±k,            Pi = &             (j = ± 2, ■ ■ ■ , +k)
+
+where Pj^>pJ as X—>M(j= ±2, ■ ■ ■, ±k).
+   Define
+
+(2.18)        Di=f'(8i)P'M---^
+                          (P2 ■ ■ • Pk)+n+1
+                                                               II
+                                                       .<*;».i_2,...,*
+                                                                            (P.-Pt)-2D.
+
+Then D\ is a sum of terms all but two of which, as we shall show, vanish ex-
+ponentially as re—>oo. Note that since min2sys* |p*| >1 we can find a con-
+stant p.>l so that
+(2.19)                          |py| ^p,            |p_y| ^1/p                              j = 2, ■■■,k,
+ior X sufficiently close to M.
+    Consider a term in the expansion of D\ by means of (2.17) in which either
+    (a) not all the zeros p2, ■ ■ ■ , pk are among the p,-,
+or
+     (b) at least one of the zeros p-2, ■ ■ • , p~k is among the p\.
+     The factor
+                       p'(p2) • • • p'(Pk)              n             (p. - p<)-2
+                                                  «<(;«, t—2, ■■■,k
+
+occurring   in (2.18) is clearly bounded.            We have, therefore,                to investigate   the
+behavior of
+
+                            /Pf-pA—                          J! {'Ps" ~ptY
+(2.20)               f'(8i)(---)                         —-
+                            \P2---P*/                    P'(pi)       • ■ • P'(pk)
+
+Under either    of the conditions        (a) or (b) above we have, by (2.19),
+                        I /pi    • • • Sk\k+n+1
+                          ( -             )            g M-(t+»+D          < M-n.
+                        I \ P2 • • • pk I
+The rest of (2.20), namely
+                                            II (A - h)2
+(2.21)                            f'(8i) —-,
+                                         P'(pi)     • • • P'(Pk)
+we shall show is bounded. Since each P'(pf)^0,    P'(pi) will be bounded away
+from 0 unless pi —e±iei. We consider three cases.
+    (a) Neither e±Wiis among the pt. Then (2.21) is bounded.
+500                                HAROLD WIDOM                                    [July
+
+      (|3) Either e<t>lor e~iBi is among the pi, but not both. In this case (2.21) is
+[cf. (2.12)]
+
+                                0(\J^L\)
+                                 \ I P'(e±Wl)I / = om.
+      (y) Both e±ie' are among the pi. Then
+
+          -LL.L-
+           p'(pi)■••p'U) = ol-r1   , ) = 0(\f'(6i) -1) - O(0r2),
+                             V|p'<y*>)|v
+since/"(0)^0.      But
+                       II (p. - p,)2 = o( I e"1 - e",<?112)
+                                                         = O(0t).
+
+Thus (2.21) is 0(1).
+     Collecting our results, we have shown that in the expansion of £>i by
+means of (2.17), the sum of those terms for which either (a) or (b) above hold
+is at most 0(p.~n) as re—>oo. There are just two remaining terms, namely that
+for which the pi are em, pi, ■ ■ ■ , pk and that for which the p* are e~iSl,
+Pi, ■ ■ ■ , pk. Keeping in mind that
+                             iP'(e±«i)   = ± e±i<*-i>»i/'(0i)
+we have, therefore,
+
+(2.22) Dt = ileiWOi f[ (ei("- p.)2- e-<(»+2)»i
+                                           J\ («-»i - P„)21+ OO*"").
+                   L         »=2                          >—2             J
+    2.5. In calculating   the zeros of 7>i we shall have to make use of the fact that
+the error term 0(p~") is negligible. However, it is clear that if 0i is of the order
+of p.-", then the "dominant"      term in (2.22) is no larger than the error term.
+To eliminate this difficulty we shall show that we may assume 0X is not too
+close to 0, or equivalently    that X=/(0i) is not too close to M.
+    Lemma. There exists a constant A >0 such that if\           is an eigenvalue of Tn,
+with re sufficiently large, we have \^M —An -2.
+    The proof is simply a refinement of the proof given in §2.2 that \^M.
+Let {xo, • • • ,x„| be an eigenvector corresponding to X, 23[*y| 2=1. Letting
+<p(0)= ^Xjeiie we have, as before,
+
+                              x = r-  f7(0)U(0)N-
+                                  2irJ -r
+For sufficiently   small 0, we have
+                                                 1
+                                   f(6) =: M-o-W                       [a2 = - /"(0)J.
+                                                 4
+1958]          EIGENVALUES OF CERTAIN HERMITIAN OPERATORS                                                      501
+
+and, by Condition A,
+                                                                             1
+                             max         f(8) = /(re-1) g M-■                     cr2re-2
+
+
+for sufficiently     large re. Thus
+
+
+     X< — f           ( M-cr202)               I d>(8)\2d8+ -~[M - -<j2n~2J f                          I <p(0)\2d8
+
+
+(2.23)                       = M - —( f                        82\ (t>(8)
+                                                                        |2 + «-2 f               | 0(9) |2ci0)
+
+                             = M - —\2-Kn-2 -                      f        (re"2- 82) | <p(0)|V0j.
+
+
+    Since, by Schwarz's           inequality,           \(p(6)\ 2^re + l <3re for all 0,
+
+                            /re
+                                    _ (re-2 - 02) | 4,(8) \2d8 ^ 4re-2,
+                                  -n_1
+
+
+so (2.23) gives
+
+                                                         <r2
+                                      X ^ M-(tt                   - 2)«-2.
+                                                         47T
+
+    2.6. It is convenient now to consider D and Z?i functions of the complex
+variable 6i. For <?isufficiently close to 0, \=f(6i)  is close to M, and the zeros
+p±2, • • ■ , p+k, being analytic functions of X [p*2, • • • , p*tare simple zeros of
+P(z; M)], are also analytic functions of #i. The remaining zeros e±iH are cer-
+tainly   analytic.   Thus   D, the determinant                   of the matrix         (2.14),   is analytic    in
+a region of the form 0 < | ^i| <5. Consequently    £>i is analytic in this same
+region. (Actually it follows from (2.22) that Di is bounded near 0i = O so it is
+regular in the entire disc |f?i| <5.)
+     We know from the lemma of §2.5 that Di is free of zeros in some region
+10i | ^Pre-1. We shall confine our attention to the ring
+
+                                  B        .        .      /           1\    T
+(2.24)                            — <          0,       <(jV + _) —
+                                   re                      \           2/    re
+
+where TVis arbitrarily large but fixed. We may clearly assume, and we do,
+that B<ir. It will be shown that Di(t?i) has exactly 2N zeros in the region
+(2.24), these being simple.
+    Define the polynomial
+502                                HAROLD VVIDOM                                     [July
+
+
+                                  Q(Z)= n—i(* - P.).
+Then the expressions Yl(e±i>l— p,)2 occurring in (2.22) will both be quite close
+to Q(l)2. In fact, since the p,(0i) are analytic near 0i = O, and p,(0) =p*, we
+have, for 0i in the region (2.24), p8=p* + 0(re-1). Clearly e±i>1= l+0(n-1),  so
+
+                       II (e±i91- P.)2= QW + 0(n-')
+                       s=2
+
+and we obtain from (2.22)
+(2.25)                Di=        - 2Q(1)2 sin (n + 2)0! + 0(n~Y).
+Thus if 0i is a zero of D\ we must have sin (re + 2)0i = O(w-1), which implies
+                                            VIC
+(2.26)                           0, =-r-otre-1),                    « = + 1, • • • , + N.
+                                       w+ 2
+    We have found all possible zeros, but it remains to be shown that these
+actually are zeros. Consider, for fixed v and small «>0, the circle Cv,t with
+center vT(n + 2)~l and radius e(re+2)-1. For a point 0i on C„,„
+
+                              0! =-+-«*,
+                                       re + 2        n+ 2
+we have
+            | -2Q(1)2 sin (n + 2)0i | = 2Q(1)21sin (ee**)\ > eQ(l)2
+for sufficiently small e. Since the term 0(n~x) in (2.25) is <tQ(l)2 for large
+enough re we may apply Rouche's theorem to conclude that Di has inside the
+circle C»,«exactly as many zeros, counting multiplicity, as —2()(l)2sin (« + 2)0i.
+This function, however, has the one zero 0i = wr(re + 2)-1 inside Cv,„ this being
+a simple zero. Consequently     7>i has exactly one zero inside C„,«, this being
+simple. Since €>0 is arbitrary we have shown that for each v there is exactly
+one zero satisfying (2.26), this being a simple zero. (The fact that the zeros
+0i are simple implies that the corresponding    eigenvalues X =/(0i) have multi-
+plicity one.)
+     To obtain a more exact expression for the zeros our evaluation             of
+Jj(e±i9i_ps)2 muS(- be more accurate. Setting p,=eie', we have
+                                     dp,              ddB
+                                     c#i              de
+But f(9s)=f(91) ( = X)so
+
+                           -^-/'(».)       =/'(0i)   = 0(| 0i |).
+                           U01
+1958]          EIGENVALUES OF CERTAIN HERMITIAN OPERATORS                           503
+
+Since f'(6s) is bounded       away from 0, we conclude
+
+                                    £ = o(|M>.
+Thus
+                  ps - p.*= p.(fli) - P.(0) = 0(| 0i |2) = 0(re"2),
+
+from which it follows that
+                          k
+                          IT (e±i91- P.) = <3(e±iSl)+ 0(n-2).
+                          »—2
+
+Since
+                0(«±«»)2- 00)2 + 20(l)C'(l)(e±«' - 1) + 0(n~2),
+(2.22) gives
+
+         Z>i= - 20/1)2 jsin (re + 2)0! + 2—-[sin         (re + 3)0! - sin (re + 2)0,]1
+
+(2.27)         +0(n~2)
+
+            = - 2Q(1)2 <sin (n + 2)0! + 2 -^—- cos (re + 2)0isin0iV          + 0(re~2).
+
+   Consider     now the function
+
+                                              (2'(1)
+                7?2(0i) = sin (re + 2)0i + 2-cos         (re + 2)0! sin 0,
+                                              0(1)
+on the circle C'u>twithcenteri;7r(re + 2)-1[i+p1(« + 2)-1]andradiusi,7re(w       + 2)-2,
+where /3 will be determined      shortly. For a point 0i on C'Vi„
+
+                                      w r         P + te**-\
+                                    re+ 2 L        re+ 2 J
+we have
+                       w        r          o/(i)i
+               *M«i)= —7-7(-!)" U + «* + 2"5~ + 0(»"2).
+                          «+ 2          L               0(f) J
+Thus if we set
+
+(2.28)
+                                              C'(i)
+                                    l3 = - 2-^-
+                                              0(1)
+we have
+504                                             HAROLD WIDOM                                                    [July
+
+
+                       | -2Q(l)2D2(8i) | = 2Q(1)2 -^-                             e + 0(n~2)
+                                                                         re + 2
+
+which, for sufficiently large re, will be larger than the term 0(n~2) appearing
+in (2.27). Again we apply Rouche's theorem to conclude that the functions
+Di and D2 have the same number of zeros inside Qe. But D2 is real on the
+real diameter of C'Viland has opposite signs at the end-points of this diam-
+eter. Thus D2 has a zero in C'Uit,and we have, for the zeros of Dlt the more
+exact formula
+                         wr /     /3 \
+                 0, = —— (1 + -—       ) + o(n-2),                                          v=   ±1,     ■■■, ±N,
+                      re + 2 \ re + 2 /
+where B is given by (2.28).
+      Since X =/(0i)    and f(6) is even we have, for the eigenvalues,
+                                    0   0   0    I—                 —i
+                                 a tv                         a
+            X„,„ = M-1                                 -\-+                    o(n~3),           v = 1, • • • , TV,
+                             2(re+ 1)2L                   re+lJ
+where we have set
+(2.29)                                                a = 2/3 - 2.
+      2.7. To evaluate       a, note that
+
+                                                0/(D _ ^              1
+                                                g(d "              i - p: '
+where pf runs over all the zeros of P(z; M) with absolute value greater than 1.
+Since these zeros are all simple                  we have
+         0/(1)         1 r              P'(z;M)               dz           1      r        P'(z;M)       dz
+         0(1) " 2-n-iJ]z]=R P(z;M)                        1-z             2ri J t,|_, P(z; M) 1 - z'
+where r is sufficiently close to (but greater                        than)        1 and R is sufficiently       (and
+arbitrarily) large. Clearly the first integral                       tends        to 0 as R—>oo, so
+                              0/(1)               1 r              P'(z;M)            dz
+(2.30)                    -±±±     =-    |                         _U—i-
+                             (3(1)    2«V|.|_                       P(a; Jf) 1 - z
+      We should like to transform                     this integral        to one on the real axis. Letting
+z = eie we find, from (2.12),
+                           rfftiJO-^i-Cioi                                            ^w_
+                             L                   P(s; M)                   J      /(0) - M
+It is clear, therefore,      that       the result of our change                  of variables       will be simpler
+if we modify the integrand                  in (2.30). Since
+1958]         EIGENVALUES OF CERTAIN HERMITIAN OPERATORS                                                    505
+
+                                       /dz
+                                               |,|_,     2(1 — Z)
+we may write (2.30) as
+                    0/(1)          1       r            P'(z;M)       - kz~1P(z;M)             dz
+                      Q(l) " 2viJU\=r                                P(z; M)              1- z '
+The integrand       has a double               pole at z=l.           It follows from (2.31) that,         for z
+near 1,
+                 P'(z; M) - kz~1P(z; M)                               4
+(2.32)           _1^^-1-1—-                                   =-+0(                \z-l    \).
+                                P(z; M)                           z2 - 1           '       '
+Since
+                                       C                       dz
+                                                       -=                      0
+                                    J|,,.r             (z2-l)(l-z)
+we may write
+            Q'(l)           1 r            fP'(z;M)            - kz~lP(z;M)                4        A dz
+              0(1) "" 2TtJ|J|_rL                              P(z;il7)                    32—1J Y^z '
+By (2.32) the integrand is now regular at z = l, but we have introduced at
+z= —1 a simple pole with residue 1. Now deforming the contour to the unit
+circle we have
+
+   " 0/(1)
+     0(1) " 12
+
+                1            r                         rP'(z;M)       - kz-*P(z;M)                  4   "1 dz
+            H-lim            I-•
+               2wi e-o J ui=i;iz+n>« L                               P(z; M)                    zl — 1 J 1 — z
+Finally,   introducing       the change of variable                    z = eie, we have, by (2.31),
+
+              o/d)          ii.                         r           r f'(e)                    -i de
+           -=-1-hm                                      I-2                             csc 0 -
+               0(1)         2      2-n-i.-m J|»is_.L/(0)                   - M                 J 1 - eie
+                            1       1 rr                      l T /'W                      1
+                       =-1-cot                              — 0-2                      csc 0 de.
+                            2      4tJ-*                      2 L/(0) - M                  J
+Integrating     by parts and recalling (2.28) and (2.29),
+                             l r       l       rif-/(0)      l -|
+                    a = — I       csc2 — 0 log-—        cot2 — 0 \d0.
+                            2wJ-r      2       L 2<r2        2 J
+    This completes          the proof of the main theorem                      in the special case.
+506                                 HAROLD WIDOM                                         [July
+
+    2.8. The general theorem will follow from the special case by means of
+approximation  arguments   which utilize the following
+    Lemma of Weyl-Courant.          Denote the eigenvalues of the nXn              Hermitian
+matrix T by Xi, • ■ • , X„ (ordered in nonincreasing order). Then
+
+                           X„ =       min         max (TX, X)
+                                    r1....r„_1      x
+
+where Y\, • ■ • , F„_i is an arbitrary        set of v—1 vectors and X runs over all vec-
+tors satisfying
+
+             \\X\\ = 1,    (Yu X) = (Yi, X)=                ■■■ = (Yv-U X) = 0.
+      For a proof of the lemma,       which is quite        simple,    we refer the reader   to
+either [4, pp. 26-27] or [5, pp. 786-787].
+    It follows from the lemma that if we have two Hermitian          matrices 7"
+and U such that (TX, X) ^(UX, X) for all vectors X, then each eigenvalue
+of T is less than or equal to the corresponding eigenvalue of U. In the case of
+Toeplitz matrices, we see that if we denote the eigenvalues of the reth Toeplitz
+matrix of a function / by X„,„(f) and those of the reth Toeplitz matrix of g
+by X„,„(g), then f(9) ^g(9) for all 9 implies X„,„(/)= A,,,»(g)for all v, re.
+   2.9. Assume f(9) is a trigonometric   polynomial satisfying Condition A,
+but not necessarily  Condition  Ai. If f(9) has degree one, it must satisfy
+Condition Ai, so we may assume the degree of f(9) is at least two.
+    For small nonzero e define
+
+                              /«(0) = f(e) + e(l - cos 0)2.
+Since as Im (0)—>oo, |/e(0)| —>co uniformly  for small e, we see that the zeros
+(mod 27r) of all fe(9) —17 lie in a bounded set. I claim that for e sufficiently
+small f,(9) —M will have, except for a double zero at 0 = 0, only simple zeros.
+For assume we could find a sequence of e's tending to 0, and for each e a
+nonzero multiple zero 9t ol ft(9) —M. Since the 9e are bounded we can find,
+by choosing a subsequence    if necessary, a 0o such that 9t—>0o.Then 0o is a
+zero of /(0) —17 of multiplicity         m = 2. Note that 0O^O, for otherwise 0 = 0
+would be a zero of f(9) —M of multiplicity               at least four.
+      We have
+                          1                                   i           i
+          f(0t) -   M = —/(m)(0o)(0e          - 0o)m + 0(| 06 - 0o|m+1).
+                        m\
+
+Since also
+                              ft(6t) =/(0.)      +«(1-      cos0e)2=      M
+we obtain
+1958]        EIGENVALUES OF CERTAIN HERMITIAN OPERATORS                                                  507
+
+                                                  m\(l - cos0o)2
+(2.33)                  (8e-8o)m-easc-»0.
+                                                       /(m,(0o)
+
+But since 6t is at least a double zero oi fc(8) —M, we have
+ 0 = f'<(8<)= f'(8t) + 2e sin 0,(1 - cos 0«)
+
+    =-—/<m)(0o)(0e              - 0c)"-1 + 2e sin 0,(1 - cos 0.) + 0( | 8t - 0O «),
+         (m — 1)\
+from which we may conclude                 that    (0<—0o)m-1= O(| t\) as e—>0, which contra-
+dicts (2.33).
+    Thus for sufficiently      small e^O, ft(6) will satisfy                   Condition     Ai. Moreover
+it is clear that/e(0)     will satisfy Condition A with/((0)                        = M and -f','(0) =cr2.
+Therefore   for sufficiently     small €5^0 we have
+                             o-Vv2 T        «(/) 1
+         X„,„(/<)=M-       ———         1 + -^-     + o(n~3),                               v = 1, 2, • • • .
+                           2(re + 1)2L     w + 1J
+    Now for e>0, f-e^f^ft,      so by the Weyl-Courant    Lemma X„,„(/_«)
+ ^X„,„(/) ^X„,„(/e). Hence we shall have proved the theorem for f(6) if we
+show a (/±6 )—>«(/) as e—>0. We have
+
+
+
+
+                                i      rT              i          r         (i-cos0)2n
+                             = — |           csc2 — 0 log             1 ± e-                 d8.
+                                2irJ-r                 2          I            M -f(8) J
+Since (1—cos 0) [M —f(6)]~r            is bounded,               say by c, we have, for sufficiently
+small e,
+                    i                  i           c        Cr         1
+                    | a(f±t) - a(f)\        ^ e— |               csc2 — 0(1 - cos 0)<70,
+                                                   ir J -n             2
+
+so a(/±«)—>«(/) as e—>0.
+    2.10. Now let/(0) be an arbitrary                      function    satisfying    Condition     A. Define
+
+                            g(8) = f(8)
+                                   •/w- + <72(1- cos0) - M
+                                                    (1 - cos 0)2
+
+Then g(8) is even and, since f(8) has four continuous derivatives near 0 = 0,
+continuous. Therefore given e>0 we can find even trigonometric   polynomials
+g±l(8) satisfying
+
+(2.34)                              g-t(8) 5i g(8) g gl(8),
+
+(2.35)                       \g±l(8) - g(8)\ <t                        for all 0.
+508                                 HAROLD WIDOM                                      [July
+
+Define
+                f±((9) = M - a2(l - cos 0) + (1 - cos 9)2g±l(0).
+Since
+                   /(0) = M - <t2(1 - cos 0) + (1 - cos 0)2g(0)
+we have, by (2.34) and (2.35),
+
+(2.36)                                 /_.(0) g/(0) £/.(*),
+
+(2.37)                       |/H(0) -/(0)|             ^(1    -cos0)2.
+   We conclude readily from (2.37) that for sufficiently small e the trigo-
+nometric polynomials f±e(9) will satisfy Condition  A with /±e(0) = M and
+-/£(0)    = -a2. Hence by §2.9
+                                 crW         T           a(f±f) 1
+(2.38)     X„,»(/±t) = M -                \ 1 + -^       + 0(«-3),        u = 1, 2, • • • .
+                               2(re + 1)' L     re + 1 J
+   Using (2.37) we may prove, as we did in §2.9, that a(f±t)—>«(/) as e—>0.
+Thus by (2.36), the Weyl-Courant Lemma, and (2.38) we conclude the result
+of the theorem for f(9).
+                       Chapter      III. Integral             equations
+    3.1. In this chapter we shall investigate     the behavior of the extreme
+eigenvalues X„,,i of the integral equation (1.1), where p(x)EL\.   Let P(£) be
+the (automatically   continuous)  Fourier transform of p(x):
+
+                                                       e^xp(x)dx.
+                                                 -OO
+
+
+
+We shall assume either of the following conditions:
+     Condition    B. Let P(£) be real and even, and 0(|£|~2) at infinity. Assume
+max P(£) = P(0) = M and let £ = 0 be the only value of £ for which this maximum
+is reached. Assume moreover that P(£) has continuous derivatives up to the
+second order in some neighborhood of £ = 0, and that ff2= —F"(0) 9^0.
+     Condition    B'. In addition to Condition B, let P(£) have continuous deriva-
+tives up to the fourth order in some neighborhood of £ = 0.
+     The main theorems of this chapter are:
+      Theorem   3.1. Assume P(£) satisfies Condition B. Then as A—><»we have,
+for fixed v = l, 2, ■ ■ ■,
+                                                 crV2u2
+
+                                                  8A2
+1958]          EIGENVALUES OF CERTAIN HERMITIAN OPERATORS                     509
+
+    Theorem     3.2. Assume F(£) satisfies Condition B'. Then as A-+&    we have,
+for fixed u = l, 2, • • • ,
+                                    crWr             a 1
+                      K->= M~l^l1               + -A]+ "U-'h
+where
+                                1 r °° 1    r 2 M - F(01
+                 a = a(F) = — I       — log-dt
+                                tt J_M i2   u2     e   J
+    3.2. We shall prove the theorems first under the assumption         that P(£)
+is a rational function (in which case Conditions B and B' coincide)     and satis-
+fies the additional conditions:
+    Condition     Bi. All poles of F(£) are simple.
+    Condition    B2. All zeros of F(£) —M, with the exception of the double zero
+at £ = 0, are simple.
+    By the Fourier inversion formula
+
+                               p(x) = -     I      e-**F(H)dZ,
+                                        2tr J _M
+
+the integral   equation   (1.1) may be written
+                      1 r°°                rA
+(3.1)                —|       e-'^Fffidt I e^(t>(y)dy= \d>(x).
+
+Ii we write
+
+                                  P(S)= P(Z)/Q(Z),
+where P(£) and 0(£) are polynomials   with no common factor, it is well
+known that (3.1) can be reduced to the differential equation written sym-
+bolically as
+
+(3.2)                     p(i-\d,(x) = XoYi-W).
+
+     The solution of (3.2) depends on the zeros of F(t-) —X. Now we may re-
+strict our attention to those X which lie in an arbitrarily small open interval
+(M, M—5). This is seen as follows. Let <p(x) be a solution of (3.1) normalized
+so that
+
+                                2tt j     | 4>(x)\2dx = 1.
+                                   J -A
+
+Then multiplying      (3.1) by <p(x) and integrating       we obtain
+510                                   HAROLD WIDOM                                            [July
+
+
+(3.3)                               X=J f°V({)|*({)|*#,
+                                         _M
+
+where we have set
+
+(3.4)                               *({) = f e^d>(x)dx
+                                                J -A
+
+and used Parseval's theorem. Since/"„|$(£)|  2c7£=l, it is clear by Condition
+B that X < M. Also, since each \V<A-^>Mas A—*oo, it is clear that nothing will
+be lost if we assume ~r\E(M, 17—5), where 5 is as small as we please.
+      Now for sufficiently small 5 and \E(M,                   17 —5), P(£)—X will have only
+simple zeros; for if we denote by {£'} the (finite) set of zeros of P'(£) we
+need only choose 5 so that none of the quantities      P(£') lie in (17, 17—5).
+Denoting the zeros of 77(£)—X by £i, • • • , £2, (where 2q is the degree of Q)
+the general solution of (3.2) may be written
+                                                      2?
+                                       <t>(x)
+                                            = X) eye'"*-
+                                              y-i
+If we substitute   this expression into (3.1), the integral can be calculated
+explicitly. Let the poles of P(£) in the upper half-plane be vi, ■ ■ ■ , nq; then
+the poles in the lower half-plane will be —vi, • • • , —t)q. Remembering      that
+|x| SA, (3.1) becomes
+               i          / ii       aeiAi'     \               q       /   2q Cje~iAti\
+(3.5) 0 = X) rkeiA"42Z -                            ) c"*"*1
+                                                           + X rkeu*l £ -                  Je*™*,
+              k=l         \   j=l   £/ +     Vk /              4-1      \ /—1 £/ — Vk /
+
+where   rk is the residue of P(£) at l- = r]k. Since the functions    e8'11, • • • , e*'**,
+e-'ii",■ ■ ■ , e-in"x are linearly independent,   (3.5) is equivalent   to the system
+of equations
+                                       22 Cj—-                = 0,                k = 1, ■■■,q,
+(3.6)                                  '-1          ^i + Vk
+
+                                       2~2Cj-                 =0,                 k = 1, • ■• , q.
+                                       y_i          ty — Vk
+
+    We shall change our notation slightly. The function F(£)— M has 2q —2
+complex zeros, q — 1 in the upper half-plane and q — 1 in the lower. Denote
+the zeros in the upper half-plane by £*. ' ■ • . £*! then the remaining complex
+zeros are —£*. • • • i —£*• By Condition            B, P(£) —X will have, for
+XG(M, 17 —5), two real zeros which we denote by £i and —£i, and 2q —2
+complex zeros +£2, • ■ • , ±£?, with £y—+£*as X—>17. Using this new notation
+for the zeros of P(£) —X we see that the multiplicity of X is the number of
+linearly independent   solutions of (3.6) for C\, • • • , cig, or equivalently 2q
+minus the rank of the matrix
+1958]       EIGENVALUES OF CERTAIN HERMITIAN OPERATORS                                        511
+
+           giA£l        g—iA£l            giAii         g—»Aj2          giA^q     g—iA^q
+
+
+          Si + 9i      —Si+ i/i       S2 + 91          —S2+91          la +171   —Sa + 9i
+
+
+           giAfl        g—i^Jl            g"^f2         g-iA.il         giAtq     g—iA£q
+
+   ?.     Sl+9a        ~ll+9a         ?2+9?            —?2+»73         S«+9a     "Sa+9a
+           g—iAJi         giA£i           g—i^$2         giA^i         g-iAZq      giA£q
+
+          ll — 9l      —ll _ 9l       I2 — 91          —12 — 1/1       l« — 9l   —I? — 91
+
+
+           0—iA£l         g*-^1           g—£A$2         giA&          Q—iA^q      giA\q
+
+
+         . ll — 9a     —ll — 9a I2 — 9a                —12— 9a         la — 9a   —la — 9a .
+   3.3. Denote       by D the determinant              of the matrix    (3.7), and write
+
+                                  £>,= DexphiA £ |yV
+Then we have
+            giAfl         g~iAh            gliAli           J           g2iX{4        J
+
+           Ii + 91     —Si+ 9i        I2 + 9i          —12+ 91         Se + 9i   —la+ 9i
+
+            giAli         g—iAti           g2£A£2           ^           g2iA£q        J
+
+           Ii + 9a —Ii + 9a I2 + 9a                     I2 + 9a        Sa + 9a    —Sa+ 9a
+  Di —
+            g—iA(i         giA(i                         g2iA&             J        g2iA(q
+
+           Si — 9l     _Sl — 9i           S2 — 9i      —S2 _9l         Ss — 9l   ~^q — 91
+
+
+            g—iAil         giAZi              J          g2iA{2            \        g2iA(q
+
+           Si — 9e —Si — 9a S2— 9a "~S2— 9a                            Sa _ 9a ~i<i _ 9e
+    Now for X close to M, the various                   £, (j = 2, • • • , 5) will be close to the
+corresponding £*. If we set
+
+                                   2p =       min      Im (£*) > 0,
+                                           1-2,...,a
+
+then for X sufficiently     close to M we shall have
+                                             Im (S,) ^ p,                         j = 2, • • • , q.
+Thus, in the expansion          of Di any term involving           e2iAi>is 0(e~iJ-"), so we may
+write
+512                                            HAROLD WIDOM                                             [July
+
+               eiA(i          e~'Ah                         I                              1
+           -              -                0       -            ■• •      0        -
+           Si+9i          —Si+9i                   —S2+ 91                         —Sa+ 9i
+
+               giAii          g-iAh                         1                              1
+           -              -                0       -            • ■■ 0             -
+           Si+9a          -Si+9a                   ~S2+9a                          ~Sa+9a       , n. ,. .
+ Di=                                                                                           +0(e-2A")
+           e-iAti             giAii        1                              I
+           --0                                                  •••-                       0
+           Si —9i         —Si—9i S2-91                             Sa-9i
+
+           g-Ufi              giAii        1                              1
+           --0                                                  ••• -                      0
+           li —9a         —Si- 9a S2—9a                                Sa-9a
+                 gU(l                 1                 1              giAii           I          I
+
+               Si+9i           —S2+91            —Sa+9i           —Si—9i S2-91                  Sa-9i
+
+
+                 giAii                1                 l              giAii           1          !
+
+                Ii + 9a        —l2+ 9a           ~la+9a           —li~ 9a I2—9a                 l«_9a
+                g-iAii                1                 1          g-iAii              1          1
+
+               —11+ 91         —S2+91            —Sa+ 9i           Si-9l           S2—9l        Sa"9l
+
+
+                g-iAii                1                 1          g-iAii              1          1
+
+               —Si+ 9a         —l2 + 9a          —la+ 9a           Si~ 9a          S2—9a        Sa-9a
+      + 0(e-2A")
+
+                                      11                           1           2
+                                 Si + 9l       —S2+91           —Sa+9i
+      = (_l)ae2,-X{,
+                                      I           1                1
+                                 Si + 9a       -S2+9a           ~la+9a
+
+                                      II                           1           2
+                                 Si-9i         S2—9i             Sa-9l
+      -(-l)"e~2iA^
+                                                                               + 0(<r2^).
+                                      11                           1
+                                 Si-9a         S2—9a             S«—9a
+1958]       EIGENVALUES OF CERTAIN HERMITIAN OPERATORS                                          513
+
+   The two determinants     obtained            are both cases of the Cauchy determinant
+                                                   1
+                                                ——r >                        /, * = i, • • •»«7,
+                                                a, + bk
+whose value is
+                              II (ay - ak)(bj - bk)
+                              i<k
+
+                                      II (fly+ h)
+                                          i,k
+
+(See, for example,   [6, pp. 87-88].)            The calculation     is therefore   finished.    If
+we set
+
+                                                 II    &-1?*)2
+                 Di = (-1). _*£!!_—-Du
+                                    II (ly- £*)2II toy- VkY
+                                  2s;<*                    isj'<*
+then
+                       Iltti + W*                           II tti - 6)*
+(3.8)    7?2 = e*"fc Jg.-e-iuii                             ™-1_             o(e-2A").
+                      II tt. + U*)J                         II tti " ^)2
+                      *£l                                   Ail
+
+    3.4. In calculating the zeros of 7J>2we shall have to know that the "error"
+term 0(e~2A") appearing in (3.8) is much smaller than the remaining "dom-
+inant" term. It is clear, however, that for 17—X of the order e-iA", or equiv-
+alently £i of the order e~iA", the dominant      term is roughly the same size
+as the error term. We eliminate this difficulty by showing that no eigenvalue
+can get nearly this close to M.
+   Lemma. There is a constant a>0                 such that if X is an eigenvalue of (1.1)
+with A sufficiently large, then \^M             —aA~2.
+   To prove the lemma, we shall use (3.3) more effectively                   than was done to
+show merely that X < 17. For sufficiently small £, we have
+
+                  F(0 = M - — o-2e                         [o-2= - F"(0)],
+                            4
+and, by Condition B,
+                             max           F(£) = F(A~l)
+                             msA-i
+                                                       1
+                                          < M-a2A~2
+                                                       4
+for sufficiently large A. Recalling that f-»\$(£)12cf£ = l we obtain from (3.3),
+514                                 HAROLD WIDOM                                                         [July
+
+
+  *= f        (M-cr2S2        J | #({) |2c7S
+                                           + (m-a2A~2j                               f          | 4>(S)
+                                                                                                      |2<fS
+
+(3.9)               = M-—o-2(
+                         4
+                               f e\HO\2d^+A~2Jf \HiA-l |$(S)|W)I
+                            \J-a-i
+
+                    = M-cr2f^-2-f                                  (4-2 - s2)| $(S)|W).
+
+Recalling   that 2irf*A\(p(x)\ 2dx = l and applying                      Schwarz's       inequality   to (3.4)
+we obtain |<£(£)12^A/ir for all £, so
+
+                        r      u-2 -12) i *(e i2<rs
+                                                 ^—a-2
+                       J -A—l                                              3lT
+and (3.9) gives
+
+                            X ^ M-<r2(                      1-)A-\
+                                          4             \         3tt/
+    3.5. It is convenient now to consider D, Di and D2 as functions of the
+complex variable £i. For £i sufficiently close to 0, X = P(£i) is close to M, and
+the zeros +£2, ■ ■ • , ±£9, being analytic functions of X( + £*,•••      , + £* are
+simple zeros of P(£) —M), are also analytic functions of £i. Thus D, the de-
+terminant   of the matrix (3.7) is analytic in some region |£i| <S, and £\ and
+D2 are analytic in the same region.
+      We know from the lemma of §3.4 that D2 is free of zeros in some region
+ ||i| =bA_1. We shall confine our attention to the ring
+                                b     .       .             (N+      1/2)tt
+(3..0)                        _<Ul|<___
+
+where TV is arbitrarily large but fixed, and we make certain that b<ir/2.
+We shall show that 772(|i) has exactly 2TVzeros in the region (3.10), these be-
+ing simple.
+    We note first that the quantities £* appearing in (3.8) may be replaced
+by I* without too much of an error. Since P(£*) = P(£i)(=X),
+
+                              F'(ik) ~        = P'(Si) = 0(A~1)
+                                     aSi
+for |i in the region (3.10), so d^k/d^i = 0(A~1). Therefore,                                since £*=£*(0),
+£k = $i*+0(A~2).   Thus if we introduce                 the rational          function
+
+                                                  n (s- &
+                                                  kil
+1958]        EIGENVALUES OF CERTAIN HERMITIAN OPERATORS                                       515
+
+we obtain from (3.8),
+(3.11)            Di = G(-kx)2e2iA^          - G(ti)2e-2iA^ + 0(A~2).
+    Since G( + £i) = G(0) +0(^4_1)        we obtain       for a first approximation
+(3.12)                  7?2 = 2iG(0)2 sin 24$, + 0(A~1).
+Thus if £i is a zero of 7?2 we must have sin 2A^,i = 0(A~l),              which implies
+
+(3.13)                           ^ = ^-+o(A-'),                         u = ± 1, ••-,       ±N.
+
+   We have located all possible zeros of 7?2 in the region (3.10), but it re-
+mains to be shown that these actually are zeros. Consider, for fixed u and
+small e>0, the circle C„,, with center vir/2A and radius e/2A. For a point £i
+on C„,e,
+                                           vir        e
+                                 {l   =   ^+^«*'
+
+
+we have
+                I 2iG(0)2 sin 2A^ | = 2G(0)21 sin (ee1*)| > «G(0)2
+for sufficiently small e. Since the term 0(-4_1) appearing in (3.12) is <eG(0)2
+for large enough A we may apply Rouche's theorem to conclude that inside
+C„,« the functions Di(i-i) and 2iG(0)2 sin 2A%\ have the same number of zeros,
+counting multiplicity.    The latter function, however, has the one zero £i
+ = vir/2A inside C„,e, this being a simple zero. Consequently    772 has exactly
+one zero, this being a simple one, inside Cv,e. Since e>0 was arbitrary,      we
+have shown that for each v there is exactly one zero of 7J>2satisfying (3.13),
+this being a simple zero. (The fact that the zeros £i are simple implies that
+the corresponding    eigenvalues X = P(£i) have multiplicity  one.)
+    To obtain the next order of approximation,     we note that
+                  0(±£i)2     = G(0)2 + 2G'(0)G(0)£1 + 0(| £i|2),
+so (3.11) becomes
+                        (               G'(0)            )
+(3.14)     Di = 2iG(0)2 < sin 2A^ + 2i -~— cos 2A£i sin M + 0(A~2).
+
+Consider   now the function
+                                        G'(0)
+(3.15)            ZMSi) = sin 2A$i + 2i-cos                    24£i sin ^
+                                        G(0)
+on the circle C„',( with center i>7r(2j4)~1[l+a:(2.4)-'1] and radius                  vire(2A)~2,
+where a will be determined shortly. For a point £i on C'Vil,
+516                                     HAROLD WIDOM                                                 [July
+
+                                     wr T  a + te^~\
+                                  S'"27L1 +-S-J'
+we have
+                         wr              (                              G'(0))
+              £3(Si) =--(-iy\a                + ee*+2i-——\                       +0(A~2).
+                         2A              {                              G(0) J
+Thus if we set
+                                                 G'(0)
+(3.16)                                  a = - 2i ——
+                                                 O(0)
+we have
+                                                     G'(0) ee<*
+(3.17)                Z>.tti)= (-1)»W«—J-f-
+                                      0(0)
+                                           —+
+                                            .4
+                                               0(4-2).
+Again we may apply Rouche's theorem to conclude from (3.14) that the func-
+tions D2 and D3 have the same number of zeros inside C'^t. Now since
+                                 G'(0)               t        l          « i
+                                 0(0)            it=2 S*                *=i 9a
+is purely imaginary, it is clear from (3.15) that D3 is real for real £i. Since, by
+(3.17), Dz has opposite signs at the ends of the real diameter of C'„tt, we see
+that D3, and so also D2, has a zero inside C'Vit.Therefore we have the following
+more exact expression for the zeros:
+                                   U7T l~                <X
+                          Si = —             1 + —                + o(A~2),          v = ± 1, ±2, • • • ,
+                                   2AL               2A_
+where a is given by (3.16).
+      Since X = F(£i) and P(|)     is even we have,                 for the eigenvalues,
+                                         <r27r2u2r                <x1
+                     X«^ = M ~ -T7T M + -7 + °(A~*)>                                        "=1.2,   ••••
+                                          842 L                   ^4J
+    3.6. To complete the proof of Theorem 3.2 in our special case, we have
+to evaluate a. Noting that the £* and nk in (3.18) are, respectively, the zeros
+and poles (all simple) of F(%)—M in the upper half-plane, (3.16) and (3.18)
+give
+                                         1 C              P'(S)           di,
+                                 a = — I             -                    —>
+                                         r Jc P(S) - M S
+where C is any contour, described in the positive direction, enclosing all the
+It and nk but not touching the real axis. Now the integrand has a pole at
+1958]         EIGENVALUES OF CERTAIN HERMITIAN OPERATORS                                    517
+
+£ = 0 with principal part 2£-2. Hence
+
+                                      |~ F'(Q           2-1 1
+                                      LP(£)- M          £J £
+is regular on the real axis. Moreover            /c£~2c££= 0. Therefore      we can write
+
+                            ..Iff               f'«» -1Y1,
+                                  t J c-LF(£) - 717 £ J £
+where C consists of the real axis from —R to P and the upper half of the
+circle with center £ = 0 and radius P. As P—> oo the integral over the second
+portion of C approaches zero, so
+
+
+                            a~ tr J-JlF($) - M                  £_l£ '
+Finally,   integration   by parts yields
+
+                               1 f       1 ,      f 2 M-F(£)-|
+
+   3.7. The general Theorems 3.1 and 3.2 will follow from the special case
+by use of approximations which utilize the following
+    Lemma of Weyl-Courant.                Denote the positive eigenvalues of the integral
+equation
+
+                     J p(x, y)4>(y)= X0(x),              p(x, y) = p(y, x)
+
+by Xi, X2, • ■ • (ordered in nonincreasing            order). Then
+
+                     X„ =      min      max     I I p(x, y)d>(x)qj(y)dxdy
+                            *l.*u-l       *     J J
+
+where '/'i(x), • • • , ^„_i(x) are arbitrary      and <p(x) runs over all functions    satisfy-
+ing
+
+           j | <p(x)\2dx = 1,            f fi(x)<p(x)dx= 0,              (i = 1, • • • , v - 1).
+
+    For a proof of this result, see [4, pp. 112-113].
+    It follows immediately      from the Weyl-Courant        Lemma that if we
+have a second symmetric         kernel pi(x,y) such that ffp(x,y)<f>(x)cp(y)dxdy
+g//pi(x,   y)4>(x)(p(y)dxdy for all d>, then each positive eigenvalue of the inte-
+gral equation with kernel p is less than or equal to the corresponding eigen-
+value of the integral equation with kernel pi. For the equations we are con-
+518                                      HAROLD WIDOM                                     [July
+
+cerned with, this may be interpreted     as follows: Let p(x) have the Fourier
+transform F(£) and pi(x) the Fourier transform Pi(£). Denote the positive eigen-
+values of
+
+                                /p(x        - y)4>(y)dy = Xc>(x)
+                                   -A
+
+by \iiA(F) ^\2,a(F)     ^ • • ■ , and those of
+
+                                 /Pi(x       - y)<p(y)dy = \d>(x)
+                                   -A
+
+by Xi,4(Pi)^X2,^(Pi)^           • • • . Then if P(£)gPi(£) for all £ we have \V,A(F)
+^v.a(Fi)     for all v, A.
+    3.8. Assume F(£) is rational and satisfies              Conditions     B and B1( but not
+necessarily B2. For small nonzero e define
+
+                                  P.(S)= P(S)+ eT-^.
+
+It is clear that    for sufficiently       small   e, Fe(£) will satisfy    Condition   B with
+P«(0)=7tf and -7%"(0)=cr2                and also Condition Bx. I claim that Pe(£) will
+also satisfy Condition B2. Assuming the contrary we can find a sequence of
+e's tending to zero and for each e a nonzero multiple zero £e of P<(£) —M.
+Since the £« are bounded (note that as £—»oo, Fe(£) —Tkf—»
+                                                         —Tkfuniformly in e)
+we can find, by choosing a subsequence if necessary, a point £o such that
+£«—>£o.Then £0 is a zero of P(£) —M of multiplicity   m~^2. Moreover £05^0,
+for otherwise £ = 0 would be a zero of F(£) —M of multiplicity at least four.
+From
+
+
+                                P. (I.) = P(l') + e —%- = M
+                                                    1 + I,
+and
+
+              F(|() = M + —- F<»>(f.)tt. - So)"1+ 0( | S, - So|m+1)
+                                 ml
+we conclude
+                                                      4
+                                                   m\£a
+(3.19)                 (S<-So)m-——                             e as e->0.
+                                            P(""(So)(l + &)
+Similarly    from P,' (£«) =0 we conclude          (££—£0)m_1= 0(| e|), which contradicts
+(3.19).
+      Thus   for sufficiently    small e, P<(£) will satisfy       all the conditions    under
+1958]        EIGENVALUES OF CERTAIN HERMITIAN OPERATORS                                           519
+
+which we have proved           Theorem     3.2. If, for sufficiently             small positive e, we
+define
+
+                                fc.t» =-2wJ f"_«, e~**F±t(m
+we have the Fourier      inversion     formula
+                                              r* 00
+
+                                 P±.(&= I ««*P±.(*)d»,
+and
+                               <rW    T      a(F±e) "I
+         X„.x(F±.) = M - —— 1 + -^                          + c(4-3),                 v = 1, 2, • • • .
+                          8.42 L   A                    j
+Now since P_t(£) ^P(£) ^P4(£) we have, by the Lemma of Weyl-Courant,
+X„,^(F_«) S\v,a(F) ^X„,^(F,). Therefore we shall have proved Theorem 3.2
+for F(£) if we show a(F±A—>a(F) as e—>0. We have
+
+
+            „(Fl.) - «(« - - j _ - log [_!+                       „_F(fl             \*
+Now [17— P(£)]_1 is 0(|£|-2)           near £ = 0 and bounded             at infinity, so for some
+constant c>0 we have
+                                 F(Q - F±.(Q ^ ^             c2
+                                     M - F(i)         = * 1 + £4 "
+Therefore   for sufficiently     small e
+                                                       2c C °°      di-
+                        \a(F±.)-a(F)\            =«-              T--7'
+                                                       7T J-oo    1 +     £4
+
+which shows at(F±t)^>a(F)         as e—>0.
+    3.9. If P(£) =P(£)/0(£)  is a rational function               satisfying       Condition   B but
+not necessarily Bi we introduce the functions
+
+
+                               F.(£)= P(£)/(e(£) + «7^—y
+By arguments similar to those used in §3.8 we can show that for sufficiently
+small (nonzero) e, F«(£) will satisfy Condition Bi, i.e., have only simple poles.
+Therefore we can apply the result of §3.8 to the functions P±«(£), with e>0,
+and, using the Weyl-Courant       Lemma, deduce Theorm 3.2 for the function
+F(£).
+    3.10. To rid ourselves finally of the assumption                      that    P(£) is a rational
+function, we need two simple lemmas.
+520                                      HAROLD WIDOM                                          [July
+
+    Lemma 1. Letf(x) be continuous and bounded in the half-open interval (0, 1 ].
+Then we can find a bounded sequence of polynomials \fn(x) ] such that fn(x)
+^/(x) in (0, 1 ] for each re, andfn(x)—>f(x) uniformly in every subinterval [8, 1 ].
+      If |/(x)| ^d throughout         (0, l], we define
+
+                                 f(x)                           on —, 1 ,
+
+
+                     gn(x) = \ f(x) + U(l          - rex)       on      — >— ,
+                                                                       L2re reJ
+
+
+
+
+Then      gn(x) is continuous     on [0, l], gn(x)^f(x)          in (0, l], and gn(x) =f(x)     on
+[l/re, l]. If we take as/„(x)           a polynomial      satisfying
+
+
+                       /n(x) - ( gn(x) +—)]<—                     on [0, 1],
+                                  \            re/1       2w
+
+the sequence       j/„(x)}   clearly has the required          properties.
+    Lemma 2. Let f(x) be continuous on [0, l] and 0(x) near x = 0. Then we
+can find a sequence of polynomials  {fn(x)} such that fn(x) ^/(x), /„(0) =0 for
+each re, and/n(x)—>/(x) uniformly on [0, l].
+      This is an immediate        consequence         of Lemma         1 applied   to the function
+f(x)/x.
+   We can now complete the proofs of the main theorems.
+   Proof of Theorem 3.1. To approximate P(£) by rational functions, we map
+(—oo, co) into the unit interval and approximate by polynomials.   Thus, we
+set x=(l+£2)-'        and define
+
+                                f(x) = P(|) = F((x-> - l)"2).
+Then/(x)    is continuous  on the unit interval  [0, l] and, since P(£) is twice
+continuously differentiable near £ = 0,/(x) is once continuously differentiable
+near x= 1. Thus the function
+                                              f(x) - M
+(3.20)                                g(x) =-V-+               M
+                                                   1 —x
+
+is continuous on [0, 1]. Moreover since f(x) = 0(x) near x = 0 (here we use
+the assumption  P(£) =0(|£|-2)   at infinity) we also have g(x)=0(x)   near
+x = 0. It follows from Lemma              2 that   for each e>0         we can find polynomials
+g±*(x) satisfying
+1958]          EIGENVALUES OF CERTAIN HERMITIAN OPERATORS                                              521
+
+                                             «±.(0) = 0,
+(3.21)                                       g-<(x) = g(x) = g.(x),
+                              I g(x) ~ g±,(x)| g e.
+Then if we define
+                               f±f(x) = Mx + (1 — x)g±t(x),
+f±t(x) are polynomials         satisfying
+
+                                              /±.(0) = 0
+                                              /_(*)         =/(x)      =/e(x),
+
+                                \f(x)-f±e(x)\               =e(l-x).
+Finally,    defining the rational       functions
+
+
+                                   '*•«-'*(itf)
+we have
+                                                weeiii-*,«o,
+                                               F_(0 = P({) = F.tt),
+(3.22)
+                                |P(£)-F±«(|)|                =e-^--
+                                                                     1 + £2
+
+    It follows from (3.22) that               for sufficiently           small e, P±e(£) will satisfy
+Condition      B with P±e(0)=17,            and so, using only the first order approxima-
+tion,
+                                                      F±,(0)rV
+                           \,,a(F±.)   = M +-——                        + o(A~2),         v=l,      2, ■■-.
+                                                            8A2
+
+Since, by (3.22), P±,(0)—>—a2 as e—>0, we may apply                                  the Weyl-Courant
+Lemma       to obtain
+                                                        2    2 2
+                              Ka(F)     = M - ^-                    A- o(A~2),           v = 1, 2, ■ ■ ■ .
+                                                       8A2
+
+    Proof of Theorem          3.2. We begin as in the proof of Theorem                          3.1 except
+that we define g(x) not by (3.20) but by
+                               f(x) - M + a2(l - x)/2         1
+(3.23)                  g(x) = J—-^-'J-               +M--a2.
+                                            (1 — x)2                             2
+
+Since F(%) is four times continuously  differentiable near £ = 0, f(x) is twice
+continuously  differentiable near x=l,    so g(x) is continuous     throughout
+522                                     HAROLD WIDOM
+
+[0, l]. Again, since f(x) = O(x) near x = 0, g(x)=0(x)                         near x = 0, so we can
+apply Lemma 2 to find polynomials g±t(x) satisfying                          the three conditions of
+(3.21), where now g(x) is defined by (3.23). Setting
+
+       f±t(x) = M - °—(1 - x) - (m - — A(l                         - x)2 + (1 - x)2g±e(x)
+
+we have
+
+                                                /±.(0) = 0,
+                                     /_.(*)    ^/(x)    £/.(*),
+                                \f(x)~f±<(x)\           fSe(l-x)2.
+Finally,    defining the rational       functions
+
+
+
+
+we have
+                                              P±.(S)E£i(-»,             «),
+(3 24)                           F~M)~ m ~ m)'
+                              I P(l) ~ P±.(l) | ^ eSV(l+ I2)2-
+   It follows from (3.24) that for sufficiently small e, F±e(£) will satisfy
+Condition B with F±e(0) = M and Fi'«(0) = -cr2 so by §3.9
+                               crW      T         a(F±t)-\
+           X„.x(F±«)
+                 = M - -j^-1^1 + —T-J + °^~3)>                                       u = 1,2, • • • .
+Now from (3.24) it follows, by an argument                        entirely    analogous    to that   at
+the end of §3.8, that a(F±l)-j>a(F)               as e—>0.Thus we may apply the Weyl-
+Courant     lemma to obtain          Theorem      3.2 for F(£).
+
+                                            Bibliography
+      1. R. Bellman and R. Latter,    On the integral equation \f{x) =flK(x      —y)f(y)dy, Proc. Amer.
+Math. Soc. vol. 3 (1952) pp. 884-891.
+     2. G. F. Carrier, On the asymptotic integration of integral equations, unpublished report to
+the Los Alamos Scientific Laboratory.
+     3. -,      Integral equation boundary layer problems, 50 Jahre Grenzschichtforschung,
+Festschrift (for Prandtl), 1954.
+     4. R. Courant and D. Hilbert, Methoden der mathematischen Physik, vol. 1, Berlin, 1931.
+      5. M. Kac, W. L. Murdock,       and G. Szegb, On the eigenvalues of certain hermitian forms,
+Journal of Rational Mechanics and Analysis vol. 2 (1953) pp. 767-800.
+      6. S. Kaczmarz   and H. Steinhaus,      Theorie der Orthogonalreihen,    Warszawa-Lwow,    1935.
+
+      Cornell   University,
+           Ithaca, N. Y.
+

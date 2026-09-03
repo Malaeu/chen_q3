@@ -1,0 +1,474 @@
+                                               A NOTE ON SOME POSITIVITY CONDITIONS RELATED TO
+                                                            ZETA AND L-FUNCTIONS
+
+
+                                                                       J. B. Conrey and Xian-Jin Li
+arXiv:math/9812166v1 [math.NT] 3 Dec 1998
+
+
+
+
+                                                                                1. Introduction
+                                               The theory of Hilbert spaces of entire functions [1] was developed by Louis de
+                                            Branges in the late 1950s and early 1960s. It is a generalization of the part of
+                                            Fourier analysis involving Fourier transforms and the Plancherel formula. In [2] de
+                                            Branges proposed an approach to the generalized Riemann hypothesis, that is, the
+                                            hypothesis that not only the Riemann zeta function ζ(s) but also all the Dirichlet L-
+                                            functions L(s, χ) with χ primitive have their nontrivial zeros lying on the critical line
+                                            ℜs = 1/2 (See Davenport [5]). In [2] de Branges mentioned that his approach to the
+                                            generalized Riemann hypothesis using Hilbert spaces of entire functions is related
+                                            to the Lax-Phillips theory of scattering [6]. In Appendix 2 to Section 7, [6] Lax and
+                                            Phillips explained the difficulty of approaching the Riemann hypothesis by using
+                                            the scattering theory. In this note, we shall indicate the difficulty of approaching
+                                            the Riemann hypothesis by using de Branges’ positivity conditions [2] [3] [4]. In
+                                            fact, we shall give examples showing that de Branges’ positivity conditions, which
+                                            imply the generalized Riemann hypothesis, are not satisfied by defining functions of
+                                            reproducing kernel Hilbert spaces associated with the Riemann zeta function ζ(s)
+                                            and the Dirichlet L-function L(s, χ4 ).
+
+                                                                2. Reproducing kernel Hilbert spaces
+                                               We first outline an important part of de Branges’ approach to the Riemann
+                                            hypothesis.
+                                               Let E(z) be an entire function satisfying |E(z̄)| < |E(z)| for z in the upper half-
+                                            plane. A Hilbert space of entire functions H(E) is the set of all entire functions
+                                            F (z) such that F (z)/E(z) is square integrable on the real axis and such that
+
+                                            (2.1)                          |F (z)|2 ⩽ kF k2H(E) K(z, z)
+
+                                            for all complex z, where the inner product of the space is given by
+                                                                                              Z ∞
+                                                                                                F (x)Ḡ(x)
+                                                                     hF (z), G(z)iH(E) =                2
+                                                                                                           dx
+                                                                                              −∞ |E(x)|
+
+                                              1991 Mathematics Subject Classification. 11M26.
+                                              Key words and phrases. Zeros of zeta and L-functions, Hilbert spaces of entire functions.
+                                              Research of both authors supported by the American Institute of Mathematics.
+
+                                                                                                                     Typeset by AMS-TEX
+                                                                                          1
+2                          J. B. CONREY AND XIAN-JIN LI
+
+for all elements F, G ∈ H(E) and where
+
+                                      E(z)Ē(w) − Ē(z̄)E(w̄)
+                          K(w, z) =
+                                           2πi(w̄ − z)
+is the reproducing kernel function of the space H(E), that is, the identity
+
+(2.2)                        F (w) = hF (z), K(w, z)iH(E)
+
+holds for every complex w and for every element F ∈ H(E). The identity (2.2) is
+obtained by using Cauchy’s integration formula in the upper half-plane (cf. [1]),
+and the condition (2.1) is made so that Cauchy’s formula applies to all functions in
+the space H(E).
+   The following two theorems are essentially due to de Branges (cf. [2] [3]).
+Theorem 1. Let E(z) be an entire function having no real zeros such that |E(z̄)| <
+|E(z)| for ℑz > 0, such that Ē(z̄) = ǫE(z −i) for a constant ǫ of absolute value one,
+and such that |E(x + iy)| is a strictly increasing function of y > 0 for each fixed real
+x. If ℜhF (z), F (z + i)iH(E) ⩾ 0 for every element F (z) ∈ H(E) with F (z + i) ∈
+H(E), then the zeros of E(z) lie on the line ℑz = −1/2, and ℜ{Ē ′ (w)E(w +
+i)/2πi} ⩾ 0 when w is a zero of E(z).
+Proof. Let w be a zero of E(z). Since Ē(z̄) = ǫE(z − i) with |ǫ| = 1, we have
+
+(2.3)              Ē(w + i)K(w, z + i) = −Ē(w − i)K(w + i, z)
+
+for all complex z. Since E(z) has no real zeros and since |E(z̄)| < |E(z)| for z in
+the upper half-plane, E(w + i) and E(w − i) are nonzero. It follows that K(w, z)
+is a nonzero element of H(E) such that K(w, z + i) belongs to the space. Assume
+that F (z) is an element in H(E) such that F (z + i) belongs to the space. Then, by
+(2.2) and (2.3), we have
+                 hF (z + i), K(w, z)iH(E) + hF (z), K(w, z + i)iH(E)
+(2.4)                 E(w + i) − E(w − i)
+                  =                       F (w + i).
+                           E(w + i)
+Define a new scalar product h·, ·i by
+
+            hF (z), G(z)i = hF (z + i), G(z)iH(E) + hF (z), G(z + i)iH(E)
+
+for all F, G ∈ H(E) such that F (z + i), G(z + i) ∈ H(E). Since, by assumption,
+ℜhF (z+i), F (z)iH(E) ⩾ 0 for every element F (z) ∈ H(E) such that F (z+i) ∈ H(E),
+we have hF (z), F (z)i ⩾ 0. Then, by (2.4) and the Schwarz inequality, we have
+                                                 2
+                E(w + i) − E(w − i)
+                                      F (w + i) = |hF (z), K(w, z)i|2
+                       E(w + i)
+(2.5)
+                ⩽ hF (z), F (z)ihK(w, z), K(w, z)i
+                = 4Re K(w, w + i)Re hF (z + i), F (z)iH(E) .
+                              ZETA AND L-FUNCTIONS                                    3
+
+   If K(w, w + i) 6= 0, then we must have ℑw = −1/2 because, otherwise, we have
+K(w, w + i) = 0 by the functional identity Ē(z̄) = ǫE(z − i).
+   Next, we assume that K(w, w + i) = 0. Then F (z) = K(w, z) is an element of
+H(E) such that F (w + i) = 0 and F (z + i) ∈ H(E). If F (z) is a nonzero element
+of H(E) having zero at a point z0 , it is easy to see by definition that F (z)/(z − z0 )
+belongs to H(E). Since F (z) is an entire function, by using Taylor’s expansion of
+F (z) at the point z0 , we see that F (z)/(z − z0 )n does not vanish at z0 for some
+positive integer n. By the repeated process of dividing out the factor z − z0 from
+F (z), we see that F (z)/(z − z0 )n belongs to H(E). If F (z + i) ∈ H(E), we also
+see that F (z + i)/(z + i − z0 )n ∈ H(E). Therefore, there exists a nonzero element
+F (z) ∈ H(E) such that F (w+i) 6= 0 and F (z+i) ∈ H(E). Hence, if K(w, w+i) = 0,
+then, by (2.5), we have
+                              E(w + i) − E(w − i) = 0.
+Since Ē(w̄) = ǫE(w − i), we have |E(w + i)| = |E(w̄)|. Note that ℜ(w + i) = ℜ(w̄).
+Since |E(x + iy) is a strictly increasing function of y on (0, ∞), we must have
+ℑ(w + i) = ℑ(w̄), and hence w + i = w̄. Therefore, we have ℑw = − 12 .
+   We have K(w, w + i) = Ē ′ (w)E(w + i)/2πi. Since F (z) = K(w, z) is an element
+of H(E) such that F (z + i) ∈ H(E), we have
+                    ℜK(w, w + i) = ℜhF (z + i), F (z)iH(E) ⩾ 0,
+that is, ℜ{Ē ′ (w)E(w + i)/2πi} ⩾ 0 when w is a zero of E(z).
+   This completes the proof of the theorem.
+   Let W (z) be a function analytic and having no zeros in the upper half-plane.
+Then a Hilbert space of analytic functions F (W ) is the set of all analytic functions
+F (z) in the upper half-plane, such that F (z)/W (z) can be written as a quotient of
+bounded analytic functions in the upper half-plane, has square integrable boundary
+values on the real axis, and satisfies the inequality
+                                              y +∞ log |F (t)/W (t)|dt
+                                               Z
+              log |F (x + iy)/W (x + iy)| ⩽
+                                              π −∞     (t − x)2 + y 2
+for y > 0. The inner product of F (W ) is given by
+                                           Z ∞
+                                                F (x)Ḡ(x)
+                      hF (z), G(z)iF(W ) =              2
+                                                           dx
+                                            −∞ |W (x)|
+
+for all F, G ∈ F (W ). The reproducing kernel function of F (W ) is given by the
+expression
+                                      W (z)W̄ (w)
+                            K(w, z) =              ,
+                                       2πi(w̄ − z)
+that is, for every complex w in the upper half-plane, we have
+(2.6)                       F (w) = hF (z), K(w, z)iF(W )
+for every element F ∈ F (W ). The identity (2.6) is obtained by using Cauchy’s
+integration formula in the upper half-plane (cf. [1]).
+4                           J. B. CONREY AND XIAN-JIN LI
+
+Theorem 2. Let W (z) be a function analytic and having no zeros in the upper half-
+plane. Let T be a linear transformation of F (W ) into itself which takes K(w, z)
+into K(w + i, z) for all complex w with ℑw > 0. Assume that
+
+                                ℜhF (z), T F (z)iF(W ) ⩾ 0
+
+for all F ∈ F (W ). Then W (z) has an analytic extension to the half-plane ℑz >
+−1/2, and W (z)/W (z + i) has a nonnegative real part in this half-plane.
+Proof. Let w1 , . . . , wr be points
+                              Pr in the upper half-plane, andP
+                                                             let c1 , . . . , cr be com-
+                                                               r
+plex numbers. If F (z) = α=1 cα K(wα , z), then T F (z) = β=1 cβ K(wβ + i, z).
+By assumption, we have
+      r
+      X
+             cα c̄β [K(wα , wβ + i) + K(wα + i, wβ )] = 2ℜhF (z), T F (z)iF(W ) ⩾ 0,
+     α,β=1
+
+
+that is, the expression K(w + i, z) + K(w, z + i) is positive-definite for w, z in the
+upper half-plane. This implies that ℜ{W (z)/W (z + i)} ⩾ 0 for z in the upper
+half-plane. Let
+                                     W (z) − W (z + i)
+                            B(z) =                     .
+                                     W (z) + W (z + i)
+Then B(z) is analytic and bounded by one in the upper half-plane. The positive-
+definiteness of K(w + i, z) + K(w, z + i) implies the positive-definiteness of the
+expression
+                                 1 − B(z)B̄(w)
+                                2πi(w̄ − z − i)
+for w, z in the upper half-plane.
+   Let H be the Hilbert space of analytic functions in the half-plane ℑz > −1/2,
+which has the expression L(w, z) = 1/2πi(w̄ − z − i) as its reproducing kernel
+function. The norm of an element F in the space H is given by
+                                    Z ∞
+                   hF (z), G(z)iH =     F (x − i/2)Ḡ(x − i/2)dx.
+                                        −∞
+
+  Let P be a transformation of H into itself, which takes L(w, z) into B̄(w)L(w, z).
+The positive-definiteness of the expression
+
+                                     1 − B(z)B̄(w)
+                                     2πi(w̄ − z − i)
+
+implies hP F (z), P F (z)iH ⩽ hF (z), F (z)iH for all elements F ∈ H which are linear
+combination of functions L(w, z) with ℑw > 0. Since L(w, z) is the reproducing
+kernel function of H, if F ∈ H is orthogonal to all elements L(w, z) with ℑw > 0,
+then
+                             F (w) = hF (z), L(w, z)iH = 0
+                             ZETA AND L-FUNCTIONS                                        5
+
+for ℑw > 0. Since F (z) is analytic for ℑz > −1/2, we must have F ≡ 0. There-
+fore, the set of elements L(w, z) with ℑw > 0 is dense in H. It follows that
+hP F (z), P F (z)iH ⩽ hF (z), F (z)iH for all elements F ∈ H. Thus, P is a bounded
+linear transformation of the Hilbert space H into itself, and therefore, the adjoint
+P ∗ of P exists.
+   Let α be a complex number with ℑα > −1/2, and let F (z) = L(α, z). Then
+F ∈ H, and hence P ∗ F (z) ∈ H. It follows that
+                                               Z ∞
+                         ∗                                               ᾱ − w − i
+        2πi(ᾱ − w − i)hP F (z), L(w, z)iH =           P ∗ F (x − i/2)              dx
+                                                  −∞                     x − 2i − w
+
+is an analytic function of w for ℑw > −1/2. Since
+
+  2πi(ᾱ − w − i)hP ∗ F (z), L(w, z)iH = 2πi(ᾱ − w − i)hF (z), P L(w, z)iH = B(w)
+
+for w in the upper half-plane, B(z) has an analytic extension to the half-plane
+ℑz > −1/2.
+   If F ∈ H and ℑw > 0, we have
+
+(2.7)                    B(w)F (w) = hP ∗ F (z), L(w, z)iH .
+
+Since both sides of (2.7) are analytic functions of w for ℑw > −1/2, the identity
+(2.7) remains true for all complex w with ℑw > −1/2 by analytic continuation.
+Since hP F (z), P F (z)iH ⩽ hF (z), F (z)iH for all F ∈ H, we have
+
+                |B(w)F (w)|2 = |hF (z), P L(w, z)iH|2
+                             ⩽ hF (z), F (z)iH hP L(w, z), P L(w, z)iH
+(2.8)
+                             ⩽ hF (z), F (z)iH hL(w, z), L(w, z)iH
+                             = hF (z), F (z)iH L(w, w).
+
+for ℑw > −1/2 and for all F ∈ H. In particular, if F (z) = L(w, z), then
+hF (z), F (z)iH = F (w), and hence (2.8) becomes |B(w)F (w)|2 ⩽ |F (w)|2 for ℑw >
+−1/2, that is, |B(w)| ⩽ 1 for ℑw > −1/2.
+   Therefore, we have proved that B(z) is analytic and bounded by one for ℑz >
+−1/2. It follows that W (z)/W (z + i) is analytic and has nonnegative real part in
+the half-plane ℑz > −1/2.
+   This completes the proof of the theorem.
+
+             3. Hilbert spaces associated with ζ(s) and L(s, χ4 )
+3.1. The Riemann zeta function. The Riemann zeta function ζ(s) is given by
+                                            ∞
+                                            X 1
+                                   ζ(s) =
+                                            n=1
+                                                  ns
+6                          J. B. CONREY AND XIAN-JIN LI
+
+for ℜs > 1. Let ξ(s) = s(s − 1)π −s/2 Γ( 2s )ζ(s). Then ξ(s) is an entire function, and
+satisfies the functional identity ξ(s) = ξ(1 − s). It is well-known (See Davenport
+[5]) that we have the infinite product formula
+                                        Y          s
+                                                      
+                                 ξ(s) =        1−
+                                                    ρ
+
+where the product is taken over all nontrivial zeros ρ of ζ(s) with ρ and 1 − ρ being
+paired together for the convergence of the product.
+   Let E(z) = ξ(1 − iz). Then the Riemann hypothesis is that the zeros of E(z) lie
+on the line ℑz = −1/2, and the functional identity ξ(s) = ξ(1 − s) can be written as
+Ē(z̄) = E(z − i). If ρ is a nontrivial zero of ζ(s), then 0 < ℜρ < 1, a result proved
+by Hadamard and de la Vallée Poussin independently in 1896. Since
+                                       2       Y (ℜρ + y)2 + (ℑρ − x)2
+                      2
+                           Y      iz
+                |E(z)| =       1−          =
+                                  ρ                         |ρ|2
+
+for z = x + iy, we see that |E(x − iy)| < |E(x + iy)| for y > 0, and that |E(x + iy)|
+is a strictly increasing function of y on (0, ∞) for each fixed real x.
+   In view of Theorem 1, it is natural to ask whether the Hilbert space of entire
+functions H(E) satisfies the condition that
+
+(3.1)                        ℜhF (z), F (z + i)iH(E) ⩾ 0
+
+for every element F (z) of H(E) such that F (z + i) ∈ H(E), because the nontrivial
+zeros of the Riemann zeta function ζ(s) would then lie on the critical line ℜs = 1/2
+under this condition. In the following, we give an example showing that condition
+(3.1) is unfortunately not true.
+   Let ρ = 1/2 + i111.0295355431696745 · · · be the 34th zero of the Riemann zeta
+function in the upper half-plane. By using MATHEMATICA, we compute that
+
+(3.2)       −ℜ{ξ ′ (ρ)ξ(1 + ρ)} = −5.389100507182945 · · · × 10−69 < 0.
+
+Write ρ = 1 − iw. Then E(w) = 0, and Ē ′ (w)E(w + i)/i = −ξ ′ (ρ)ξ(1 + ρ). Thus,
+(3.2) becomes
+                        ℜ{Ē ′ (w)E(w + i)/2πi} < 0.
+Therefore, by Theorem 1, we see that the Hilbert space of entire functions H(E)
+with E(z) = ξ(1 − iz) does not satisfy the condition (3.1).
+   Next, let W (z) = 1/ξ(1 − iz). Then W (z) is analytic in the upper half-plane,
+and is continuous and having no zeros in the closed upper half-plane. If the Hilbert
+space of analytic functions F (W ) satisfy the condition that
+
+(3.3)                          ℜhF (z), T F (z)iF(W ) ⩾ 0
+
+for all F ∈ F (W ), where T is the linear transformation of F (W ) into itself which
+takes K(w, z) = W (z)W̄ (w)/2πi(w̄ − z) into K(w + i, z) for all complex w with
+                             ZETA AND L-FUNCTIONS                                     7
+
+ℑw > 0, then the function W (z) would have analytic extension to the half-plane
+ℑz > −1/2 by Theorem 2, that is, the Riemann zeta function ζ(s) has no zeros for
+ℜs > 1/2. In the following, we give an example showing that the space F (W ) does
+not satisfy the condition (3.3).
+  By using MATHEMATICA, we compute that
+
+(3.4)            ℜ{ξ(1 + i282)/ξ(2 + i282)} = −0.000131957 < 0.
+
+Let w = −282. Then ℑw = 0 > −1/2. Since W (w) = 1/ξ(1 +i282) and W (w +i) =
+1/ξ(2 + i282), by (3.4) we have
+
+                              ℜ{W (w)/W (w + i)} < 0.
+
+Therefore, by Theorem 2, we see that the space F (W ) with W (z) = 1/ξ(1 − iz)
+does not satisfy the condition (3.3).
+3.2. The Dirichlet L-function L(s, χ4 ). Note that χ4 is the real primitive Dirich-
+let character (mod 4), which is given by
+                                           n−1
+                                        (−1) 2 ,    if n is odd;
+                         χ4 (n) =
+                                        0,          if n is even.
+
+The Dirichlet L-function L(s, χ4 ) is given by
+                                              ∞
+                                              X χ4 (n)
+                                L(s, χ4 ) =
+                                              n=1
+                                                     ns
+
+for ℜs > 0. Let ξ(s, χ4 ) = (4/π) 2 Γ( 1+s
+                                    s
+                                        2 )L(s, χ4 ). Then ξ(s, χ4 ) is an entire func-
+tion, and satisfies the functional identity
+
+(3.5)                        ξ(1 − s, χ4 ) = ǫ(χ4 )ξ(s, χ4 )
+
+where ǫ(χ4 ) is a constant of absolute value one (See Davenport [5]). Since χ4 is a
+real character, by the argument of section 12 of Davenport [5], we have the infinite
+product formula
+                                         √ Y         
+                                           π        s
+(3.6)                        ξ(s, χ4 ) =        1−
+                                          2         ρ
+
+where the product is taken over all nontrivial zeros of L(s, χ4 ) with ρ and 1 − ρ
+being put together.
+   Let Eχ4 (z) = ξ(1 − iz, χ4 ). Then the functional identity (3.5) can be written as
+
+                             Ēχ4 (z̄) = ǭ(χ4 )Eχ4 (z − i).
+
+By the product formula (3.6), we find that |Eχ4 (x + iy)| is a strictly increasing
+function of y > 0 for each fixed real x. Since the nontrivial zeros of L(s, χ4 ) lie
+8                          J. B. CONREY AND XIAN-JIN LI
+
+in the strip 0 < ℜs < 1 (See §14, Davenport [5]), we have |Eχ4 (z̄)| < |Eχ4 (z)| for
+ℑz > 0.
+   In view of Theorem 1, it is natural to ask whether the Hilbert space of entire
+functions H(Eχ4 ) satisfies the condition that
+
+(3.7)                        ℜhF (z), F (z + i)iH(Eχ4 ) ⩾ 0
+
+for every element F (z) of H(Eχ4 ) such that F (z + i) ∈ H(Eχ4 ), because the non-
+trivial zeros of the Dirichlet L-function L(s, χ4 ) would then lie on the critical line
+ℜs = 1/2 under this condition. In the following, we give an example showing that
+condition (3.7) is unfortunately not true.
+   Let ρ = 1/2 + i67.6369208635460683980549 · · · be a zero of L(s, χ4 ). By using
+MATHEMATICA, we compute that
+
+        −ℜ{ξ ′ (ρ, χ4 )ξ(1 + ρ, χ4 )} = −2.310349004993483456 · · · × 10−45 < 0.
+
+Write ρ = 1 − iw. Then Eχ4 (w) = 0, and E¯χ′ 4 (w)Eχ4 (w + i)/i = −ξ ′ (ρ, χ4 )ξ(1 +
+ρ, χ4 ). Thus, the above inequality becomes
+
+                           ℜ{E¯χ′ 4 (w)Eχ4 (w + i)/2πi} < 0.
+
+Therefore, by Theorem 1, we see that the Hilbert space of entire functions H(Eχ4 )
+with Eχ4 (z) = ξ(1 − iz, χ4 ) does not satisfy the condition (3.7).
+   Next, let Wχ4 (z) = 1/ξ(1 − iz, χ4 ). Then Wχ4 (z) is analytic in the upper half-
+plane, and is continuous and having no zeros in the closed upper half-plane. If the
+space F (Wχ4 ) satisfy the condition that
+
+(3.8)                         ℜhF (z), T F (z)iF(Wχ4 ) ⩾ 0
+
+for all F ∈ F (Wχ4 ), where T is the linear transformation of F (Wχ4 ) into itself
+which takes K(w, z) = Wχ4 (z)W̄χ4 (w)/2πi(w̄ − z) into K(w + i, z) for all complex
+w with ℑw > 0, then the function Wχ4 (z) would have analytic extension to the
+half-plane ℑz > −1/2 by Theorem 2, that is, the Dirichlet L-function L(s, χ4 ) has
+no zeros for ℜs > 1/2. In the following, we give an example showing that the space
+F (Wχ4 ) does not satisfy the condition (3.8).
+   By using MATHEMATICA, we compute that
+
+         ℜ{ξ(1 + i8714.2, χ4 )/ξ(2 + i8714.2, χ4 )} = −0.000422340607 < 0.
+
+Let w = −8714.2. Then ℑw = 0 > −1/2. Since Wχ4 (w) = 1/ξ(1 + i8714.2, χ4 ) and
+Wχ4 (w + i) = 1/ξ(2 + i8714.2, χ4 ), we have
+
+                            ℜ{Wχ4 (w)/Wχ4 (w + i)} < 0.
+
+Therefore, by Theorem 2, we see that the space F (Wχ4 ) with Wχ4 (z) = 1/ξ(1 −
+iz, χ4 ) does not satisfy the condition (3.8).
+                                ZETA AND L-FUNCTIONS                                          9
+
+                                     4. Conclusion
+   We have seen in section 3 the difficulty of approaching the generalized Riemann
+hypothesis by using de Branges type positivity conditions for reproducing kernel
+Hilbert spaces. It is possible that these positivity conditions are too strong for
+Hilbert spaces of entire functions associated with the Riemann zeta function and
+the Dirichlet L-functions.
+
+Remark. After he looked at the manuscript of this paper, Peter Sarnak gave a
+proof for the statement that the space F (W ) does not satisfy the condition (3.3)
+where W (z) = 1/ξ(1 − iz), and his argument involves no numberical calculations.
+For the convenience of readers, we sketch his proof here. Let F (s) = ξ(s)/ξ(s + 1).
+Assume that all logarithmic functions are defined by continuation from the point
+s = 2 at which their arguments are set to be zero. Then we have
+
+                           ℑ{log F (s)} = ℑ{log ζ(s)} + O(1)
+
+for ℜs > 1/2. Since the set of values of log ζ(s), 1/2 < ℜs < 2, is dense in the
+complex plane (See Chapter XI of Titchmarsh [7]), a complex number s0 exists
+with ℜs0 > 1/2 such that π/2 < ℑ{log F (s0 )} < π. Let z0 = i(s0 − 1). Then
+ℑz0 > −1/2 and ℜ{W (z0 )/W (z0 + i)} < 0, and hence by Theorem 2 the space
+F (W ) does not satisfy the condition (3.3). Let r be any positive integer. For any
+Dirichlet character χ modulo r, let
+                                              s+a   s+a
+                          ξ(s, χ) = (π/r)− 2 Γ(         )L(s, χ)
+                                                     2
+where L(s, χ) is the Dirichlet L-function and where a = 0 if χ(−1) = 1 and a = 1 if
+χ(−1) = −1. By using a similar argument, Peter Sarnak also proved that the space
+F (Wχ ) does not satisfy the condition (3.8) where Wχ (z) = 1/ξ(1 − iz, χ).
+
+                                       References
+1. L. de Branges, Hilbert Spaces of Entire Functions, Prentice-Hall, Englewood Cliffs, 1968.
+2. L. de Branges, The Riemann hypothesis for Hilbert spaces of entire functions, Bull. Amer.
+   Math. Soc. 15 (1986), 1–17.
+3. L. de Branges, The convergence of Euler products, J. Functional Analysis 107 (1992), 122–210.
+4. L. de Branges, A conjecture which implies the Riemann hypothesis, J. Functional Analysis
+   121 (1994), 117–184.
+5. H. Davenport, Multiplicative Number Theory, Second Edition, Revised by H. L. Montgomery,
+   Springer Verlag, New York, 1980.
+6. Peter D. Lax and Ralph S. Phillips, Scattering Theory for Automorphic Forms, Annals of
+   Mathematics Studies, no.87, Princeton University Press, Princeton, 1976.
+7. E. C. Titchmarsh, The Theory of the Riemann Zeta-Function, Second edition, Edited by D. R.
+   Heath-Brown, Oxford University Press, New York, 1986.
+
+                                         Appendix
+   Here is a list of MATHEMATICA instructions, which can be used to verify our
+calculations.
+10                        J. B. CONREY AND XIAN-JIN LI
+
+     xi[s ]:=s*(s-1)*Pi^ (-s/2)*Gamma[s/2]*Zeta[s]
+     f[ro ]:=Re[-xi’[ro]*xi[ro+1]]
+     g[t ]:=Re[xi[1+I*t]/xi[2+I*t]]
+     ro1=1/2+I*111.029535543169674524656
+     Zeta[ro1]
+     f[ro1]
+     g[282.]
+     Plot[g[t],{t,281.95,282.15}]
+     xi4[s ]:=(4*Pi)^ (-s/2)*Gamma[(s+1)/2]*(Zeta[s,1/4]-Zeta[s,3/4])
+     f4[ro ]:=Re[-xi4’[ro]*xi4[ro+1]]
+     g4[t ]:=Re[xi4[1+I*t]/xi4[2+I*t]]
+     ro2=1/2+I*67.6369208635460683980549
+     Zeta[ro2,1/4]-Zeta[ro2,3/4]
+     f4[ro2]
+     g4[8714.2]
+     Plot[g4[t],{t,8714.1,8714.4}]
+
+     American Institute of Mathematics, 360 Portage Avenue, Palo Alto, CA 94306
+     E-mail address: conrey@aimath.org, xianjin@math.Stanford.EDU
+
+  Current address for Xian-Jin Li: Department of Mathematics, Brigham Young
+University, Provo, Utah 84602 USA
+

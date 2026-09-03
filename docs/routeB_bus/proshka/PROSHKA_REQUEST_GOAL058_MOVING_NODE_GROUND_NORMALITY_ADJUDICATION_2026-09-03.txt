@@ -35,50 +35,60 @@ CURRENT VERIFIED FACTS
    hconv : TendstoLocallyUniformlyOn F centeredXi atTop centeredCriticalStrip.
 4. The production family must be
    selectedFerrersTrackedGroundTransformAt P (phi n) beta (hfloorAt n).
-5. The existing full compact tracking target is
-   A_k * sup_K kernel_k * sqrt(r_k) -> 0 for every compact K.
+5. Along the selected cofinal tail, the existing full compact tracking target
+   is A_n * sup_K kernel_n * sqrt(r_n) -> 0 for every compact K.
 6. At the reflected Proposition-59 lattice node, the source-ordered raw
-   transform samples one coefficient with magnitude sqrt(L_k).  The production
+   transform samples one coefficient with magnitude sqrt(L_n) on the selected
+   tail.  The production
    schedule m=N=k+2 has mesh 2*pi/log(m) -> 0 and radius
    2*pi*N/log(m) -> infinity, also after strict cofinal reindexing.
 
 PROPOSED WEAKER ROUTE
 
-Let
+Let k_n=phi(n) be the exact cofinal tail index used simultaneously by
 
-  A_k = norm(centeredXi(0) / rawFplus_k(0)),
-  r_k = selectedFerrersTrackedGroundResidualFloorRatio(P,beta,k),
-  L_k = logLength(index(k)).
+  F_n = selectedFerrersTrackedGroundTransformAt(P,k_n,beta,hfloorAt(n)),
+  A_n = norm(centeredXi(0) / rawFplus_(k_n)(0)),
+  r_n = selectedFerrersTrackedGroundResidualFloorRatio(P,beta,k_n),
+  L_n = logLength(index(k_n)),
+  N_n = index(k_n).N.
+
+Every rate, kernel and lattice node below is quantified only along this same
+tail.  No stronger all-k statement may be substituted.
 
 Replace full compact decay by:
 
   NORMALITY_BOUND:
-    for every compact K in the centered critical strip there exists M_K such
-    that for every k and every z in K, norm(F_k(z)) <= M_K;
+    for every compact K in the centered critical strip there exist n0 and M_K
+    such that for every n>=n0 and every z in K,
+    norm(F_n(z)) <= M_K;
 
   LATTICE_RATE:
-    A_k * sqrt(L_k) * sqrt(r_k) -> 0.
+    A_n * sqrt(L_n) * sqrt(r_n) -> 0.
 
-Together with the already proved trial-family convergence, the pointwise
-tracking inequality gives compact-local boundedness of the tracked ground
-family.  For every subsequence, Montel must give a further locally-uniformly
-convergent subsubsequence.  For every real x in a fixed nontrivial interval,
+NORMALITY_BOUND plus finite-head absorption supplies the all-index compact
+bound required by the existing Montel theorem: every omitted F_n is entire and
+continuous, hence bounded on each fixed compact, and finitely many bounds can
+be absorbed into one constant.  Thus for every subsequence Montel must give a
+further locally-uniformly convergent subsubsequence.  For every real x in a
+fixed nontrivial interval,
 choose production lattice nodes along that subsubsequence which converge to x.
-Local uniform convergence plus LATTICE_RATE should identify that cluster value
-with centeredXi(x).  The identity theorem should identify the cluster function
-on the whole centered critical strip.  The required final step is the standard
-universal unique-cluster argument: every subsequence has a subsubsequence with
-the same limit centeredXi, hence the original sequence converges locally
-uniformly to centeredXi.  Since every F_k is entire with only real zeros, the
-existing Hurwitz consumer should then finish the route conditionally on the
-still-open ground-family existence hypotheses.
+The pointwise tracking inequality at those nodes, LATTICE_RATE, the already
+proved trial-family convergence, and continuity of centeredXi should identify
+that cluster value with centeredXi(x).  The identity theorem should identify
+the cluster function on the whole centered critical strip.  The required final
+step is the standard universal unique-cluster argument: every subsequence has a
+subsubsequence with the same limit centeredXi, hence the original sequence
+converges locally uniformly to centeredXi.  Since every F_n is entire with only
+real zeros, the existing Hurwitz consumer should then finish the route
+conditionally on the still-open ground-family existence hypotheses.
 
 REGISTERED PREDICTION
 
 P_MOVING_NODE_STRICTLY_WEAKER_THAN_COMPACT_DECAY:
   probability: 0.70
   scoring_rule: CONFIRMED only if the implication is valid and direct ground
-    normality plus the lattice scalar rate does not assume the old scalar
+    normality plus the same-tail lattice scalar rate does not assume the old scalar
     compact-decay hypothesis; REFUTED if the implication fails or these new
     hypotheses are equivalent to the old scalar hypothesis on the production
     family; otherwise UNRESOLVED.
@@ -90,12 +100,12 @@ Check the moving-node Montel argument with moving points x_k, including the
 universal subsequence -> subsubsequence quantifiers, density on a common real
 interval, continuity of centeredXi, the exact analytic identity theorem, and
 the final unique-cluster implication for convergence of the original sequence.
-Identify any missing quantifier or circular use of F_k -> centeredXi.
+Identify any missing quantifier or circular use of F_n -> centeredXi.
 
 B2 TRUE WEAKENING
 Compare input hypotheses, not the desired functional conclusions.  Decide
-whether direct compact-local boundedness of F_k plus lattice
-sqrt(L_k) o(1) is genuinely weaker than the old scalar compact-decay hypothesis
+whether direct compact-local boundedness of F_n plus same-tail lattice
+sqrt(L_n) o(1) is genuinely weaker than the old scalar compact-decay hypothesis
 for this source-ordered finite transform, or whether a
 Bernstein/Paley-Wiener/sampling inequality with matching production hypotheses
 forces the old scalar rate back in.  State the exact theorem and hypotheses if
@@ -115,8 +125,8 @@ Do not accept a theorem whose hypotheses already contain locally-uniform
 convergence or the old compact o(1) target.
 
 B4 SOURCE-FAITHFUL LATTICE RATE ATTACK
-Determine the weakest sufficient decay statement for
-A_k*sqrt(L_k)*sqrt(r_k) -> 0 and whether current paper/source asymptotics can
+Determine the weakest sufficient decay statement along the same cofinal tail
+for A_n*sqrt(L_n)*sqrt(r_n) -> 0 and whether current paper/source asymptotics can
 supply it.  Preserve the exact residual divided by the true complement floor;
 do not substitute the W5 weighted residual or raw residual.  Search alternate
 terminology: cardinal interpolation stability, sampling on expanding

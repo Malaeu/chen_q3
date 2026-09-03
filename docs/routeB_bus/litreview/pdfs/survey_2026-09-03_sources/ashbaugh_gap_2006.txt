@@ -1,0 +1,371 @@
+                            The Fundamental Gap
+                                     Mark Ashbaugh
+                                       May 19, 2006
+
+
+    The second main problem to be focused on at the workshop is what we’ll refer to as
+the Fundamental Gap Problem, which is the problem of finding a sharp lower bound to
+the gap between the first two eigenvalues of a Schrödinger operator on a bounded convex
+domain with convex potential in terms of the diameter of the domain. We call the lowest
+eigenvalue gap, i.e., the gap between the first two eigenvalues, the fundamental gap. We
+shall describe two versions of this problem, one for the Laplacian alone and the other for
+Schrödinger operators. The second problem contains the first as a special case, but the first
+is of course of substantial interest in its own right, and may possibly be more tractable than
+the general problem.
+    In the first problem one just considers the Laplacian −∆ on a bounded convex do-
+main Ω with Dirichlet boundary conditions. This problem has a purely discrete spectrum,
+{λi (Ω)}∞ i=1 , with ∞ as its only point of accumulation. Listed in increasing order, with mul-
+tiplicities, we have
+                             0 < λ1 (Ω) < λ2 (Ω) ≤ λ3 (Ω) ≤ · · · → ∞.                      (1)
+The fundamental gap, Γ(Ω), is given simply as
+
+                                   Γ(Ω) = λ2 (Ω) − λ1 (Ω).                                 (2)
+
+When the domain Ω is clear we write Γ = λ2 − λ1 for short.
+    It was suggesteded by M. van den Berg in 1983 [8] that the fundamental gap Γ = λ2 − λ1
+of a convex domain is bounded below by 3π 2 /d2 , i.e., that
+
+                              Γ(Ω) = λ2 (Ω) − λ1 (Ω) ≥ 3π 2 /d2 ,                          (3)
+
+where d is the diameter of the domain (we note that van den Berg considered − 12 ∆ and so
+his lower bound contained an extra factor of 21 compared to (3)). If 3π 2 /d2 is indeed the
+best lower bound, then that would indicate that the saturating case is when the domain
+degenerates to a linear strip (a rectangular parallelepiped, with all dimensions but one going
+to 0). In one dimension the result is clear, since up to scalings there is only one convex
+domain in R (and the inequality respects scalings). The problem remains of interest in all
+dimensions n ≥ 2, and, indeed, while progress has been made toward obtaining bounds of
+the “right” general form, no one has as yet established a general bound with the conjectured
+optimal constant. Further details of the known results on this problem will be given below
+after we have outlined the more general problem for Schrödinger operators.
+
+
+                                              1
+   In the more general problem one considers the Schrödinger operator
+
+                                       H = −∆ + V (x)                                      (4)
+
+where V (x) is the potential, a multiplication operator, and x ∈ Ω ⊂ Rn . We again take Ω
+a bounded convex set, and now, to avoid double-well examples (see, e.g., Harrell [21, 22],
+Kirsch and Simon [29, 30], Kirsch [27, 28]), we take V to be a convex function on Ω. We also
+impose Dirichlet boundary conditions. Just as for −∆, the spectrum of H is purely discrete
+and can be described by {λi (Ω; V )}∞i=1 with ∞ the only point of accumulation. We have
+included Ω and V as arguments of λi to indicate the dependence of the eigenvalues on both
+the domain and the potential. As above, we choose to arrange the eigenvalues in increasing
+order, multiplicities included:
+
+                      0 < λ1 (Ω; V ) < λ2 (Ω; V ) ≤ λ3 (Ω; V ) ≤ · · · → ∞.                (5)
+
+In this setting, the conjecture now reads exactly as before (modulo including the dependence
+on V ):
+                           Γ(Ω; V ) = λ2 (Ω; V ) − λ1 (Ω; V ) ≥ 3π 2 /d2 .               (6)
+The conjecture for this case is that the inequality is saturated when the domain degenerates
+to a linear strip (a rectangular parallelepiped, with all dimensions but one going to 0) and
+with the potential going to a constant (the value of which is immaterial, and may be taken
+to be 0). Due to the inclusion of the potential, this problem is of interest (and nontrivial)
+in all dimensions n ≥ 1. We discuss more background to this problem and partial results
+below.
+    First, though, we give some motivation for why one would want to study the fundamental
+gap and why bounds for it are important. In the grand scheme of things, beyond studying
+the first eigenvalue of a differential operator, the most interesting object is the gap between
+the first two eigenvalues, i.e., the fundamental gap. Note, too, that in cases where the first
+eigenvalue is trivially 0 one often first focuses on the first nontrivial eigenvalue, but this
+is in reality just the fundamental gap, slightly disguised. The fundamental gap often has
+interesting physical implications, as well as mathematical ones. For example, in the setting
+of the heat equation, the gap controls the rate of “collapse” of any initial state toward a
+state dominated by the first eigenfunction. For similar reasons, the gap is also of central
+interest in statistical mechanics (cf. van den Berg’s work in [8], for example) and quantum
+field theory. In addition, from a numerical point of view, the gap can be used to control
+the rate of convergence of numerical methods of computation (for example, discretization or
+the finite element method leads to matrices as approximations to differential operators, and
+one’s ability to solve for the first eigenvalue and eigenvector of such matrices is controlled
+by the separation between the first eigenvalue and the rest of the spectrum, i.e., the first
+eigenvalue gap). There are also a variety of cases in analysis where the gap is important,
+e.g., in refinements of the Poincaré inequality, a priori estimates, etc.
+    Beyond the paper of van den Berg, the recent history of the Fundamental Gap Problem
+primarily stems from the 1985 paper of Singer, Wong, Yau, and Yau [43], who obtained the
+lower bound π 2 /4d2 in the case of the general Schrödinger problem (for all dimensions n).
+Soon after, Yu and Zhong (1986) [48] were able to improve this to π 2 /d2 , which provides a
+
+                                               2
+better, though presumably not sharp, constant. (We note that a key to the Singer, Wong,
+Yau, and Yau “breakthrough” for Schrödinger operators with convex potentials was the ear-
+lier fundamental work of Brascamp and Lieb [9, 10] proving log-concavity of the groundstate
+of such Schrödinger operators.) Further work in this vein includes that of F.-Y. Wang [45]
+(see also a precursor to this paper, [14]) and J. Ling [35].
+    Related work of Ashbaugh and Benguria [4, 5] suggested that the best bound of this form
+for the Schrödinger problem was likely 3π 2 /d2 in all dimensions, based on the example of
+a rectangular parallelepiped, with all dimensions but one very small and with the potential
+going to a constant. Indeed, even if you fix the domain Ω you can use the potential to get
+back to this example, by making the potential go to infinity off a rectangular parallelepiped
+which “parallels a diameter”, i.e., you take a parallelepiped having all dimensions but one
+tiny and with the last dimension being, essentially, the diameter d. This conjecture was made
+independently of the earlier observations of van den Berg.
+    The results established by Ashbaugh and Benguria include a one-dimensional result for
+Schrödinger operators with the sharp constant (3π 2 /d2 ) but under the assumption that the
+potential is symmetric and “single-well” (single-well means that the potential is first decreas-
+ing and then increasing), rather than for convex potentials. Of course this class includes the
+symmetric convex potentials, as well as a variety of nonconvex (but symmetric) potentials.
+Further work with single-well potentials in one dimension includes that of Horváth [24], who
+was able to eliminate the symmetry hypothesis of Ashbaugh and Benguria (the only remnant
+that survives is that the “transition point”, i.e., the bottom of the well, must be centered;
+there are non-convex counterexamples if this condition is not met). A variety of related work
+on eigenvalue gaps and ratios has been completed by researchers in Taiwan; we cite [26] and
+[25] as representative works. Several recent papers by Ross Pinsky [41, 40, 39] compare
+a variety of approaches to an array of one-dimensional gap problems, focusing mainly on
+probabilistic approaches. The forthcoming book by A. Henrot [23] provides a good survey
+of much of the work on the one-dimensional gap problem with an emphasis on analytic
+methods.
+    Ashbaugh and Benguria also established results in n dimensions with dimension-dependent
+constants (increasing with n) under the assumption that the domain Ω is a ball and the po-
+tential is radially-symmetric and convex (and also under somewhat weaker conditions that
+imply these). In this case the best constant in the lower bound is determined by the poten-
+tial which vanishes identically (and the constant is determined in terms of zeros of Bessel
+functions).
+    Later Lavine [32] was able to establish the sharp result for a Schrödinger operator with a
+convex potential in the one-dimensional case. Lavine’s approach has been extended to other
+one-dimensional cases, and, in particular, to the vibrating string; see, for example, [26], [25],
+[1], [31]. However, all the higher dimensional cases remain open in general.
+    Progress has occurred, however, for cases with symmetry. Thus, Burgess Davis [19]
+obtained the sharp constant 3π 2 /d2 for the case of the Laplacian on a bounded domain in R2
+under the condition that the domain be symmetric with respect to both the x and y axes and
+that it be convex in both x and y (“convex in x” means that the intersection of the domain
+with any line parallel to the x-axis is an interval; “convex in y” is defined analogously). Also,
+at about the same time, Bañuelos and Méndez-Hernández [7] obtained comparison results
+for integrated heat kernels of a Schrödinger operator acting on L2 functions on a bounded
+
+                                               3
+domain in R2 with the domain symmetric with respect to the y-axis and convex in x, and
+where the potential is assumed to be symmetric single-well in x for each y. This result
+gives, as corollaries, the Davis result given above and also the one-dimensional symmetric
+single-well result of Ashbaugh and Benguria. Further work in this area includes the papers
+of D. You [47] and C. Draghici [20].
+     If one gives up the convexity of the potential and also (possibly) of the domain, one can
+still obtain lower bounds to the fundamental gap, but the bounds must involve something
+about the potential, or more about the geometry of the domain, and not just its diameter.
+In particular, for double-well potentials the gap can be made arbitrarily small, and similarly
+for “dumbbell-shaped domains”. Various references on these matters include [21], [22], [16],
+[17], [29], [36], [30], [27], [28], [42], [18], [2], and [11] (but note that this list makes no claim to
+completeness, nor to identifying the earliest references; in fact, it is likely far from complete
+in either sense).
+     Generalizations (building on the work of Singer, Wong, Yau, and Yau and, most directly,
+on that of Yu and Zhong) have been made to domains in spheres in the work of Y. I. Lee
+and A. N. Wang [33], with later refinements by J. Ling [34] (see also his recent preprint [35]).
+Work for domains in general manifolds (and involving more than convexity hypotheses and
+a lower bound in terms of a “diameter”) includes that of K. Oden and coauthors (see, for
+example, [15], [37]), and F.-Y. Wang and coauthors [14], [45].
+     Although our focus has been on problems with Dirichlet boundary conditions, we also
+mention that for the Laplacian there are generally close analogies between results for the
+fundamental gap for Dirichlet problems and for the first nonzero Neumann eigenvalue (which,
+as mentioned above, can also be viewed as the fundamental gap of the Neumann problem).
+Thus, the early result of Payne and Weinberger [38] (also treated in Bandle [6], pp. 155–158)
+that the first nonzero Neumann eigenvalue of the Laplacian on a bounded convex domain is
+bounded below by π 2 /d2 is relevant to the present discussion. Further developments of this
+theme occur in the work of R. Smits [44]. Beyond that, R. Chen [12, 13] has considered the
+case of Neumann problems on general Riemannian manifolds.
+
+
+Beginner’s Guide
+For more background on this subject we suggest the following articles as being particularly
+useful:
+
+   • I. M. Singer, B. Wong, S.-T. Yau, and S. S.-T. Yau, An estimate of the gap of the first
+     two eigenvalues in the Schrödinger operator, Ann. Scuola Norm. Sup. Pisa Cl. Sci. (4)
+     12 (1985), 319–333.
+
+   • S.-T. Yau, Nonlinear Analysis in Geometry, Enseignement Math., Geneva, 1986.
+     [This also appeared as an article: Nonlinear analysis in geometry, Enseign. Math. 33
+     (1987), 109–158.]
+
+   • Q. H. Yu and J.-Q. Zhong, Lower bounds of the gap between the first and second
+     eigenvalues of the Schrödinger operator, Trans. Amer. Math. Soc. 294 (1986), 341–
+     349.
+
+                                                   4
+ • M. S. Ashbaugh and R. D. Benguria, Optimal lower bound for the gap between the first
+   two eigenvalues of one-dimensional Schrödinger operators with symmetric single-well
+   potentials, Proc. Amer. Math. Soc. 105 (1989), 419–424.
+ • R. Lavine, The eigenvalue gap for one-dimensional convex potentials, Proc. Amer.
+   Math. Soc. 121 (1994), 815–821.
+ • R. Bañuelos and P. J. Méndez-Hernández, Sharp inequalities for heat kernels of Schrödinger
+   operators and applications to spectral gaps, J. Funct. Anal. 176 (2000), 368–399.
+ • R. G. Smits, Spectral gaps and rates to equilibrium for diffusions in convex domains,
+   Mich. Math. J. 43 (1996), 141–157.
+ • A. Henrot, Extremum Problems for Eigenvalues of Elliptic Operators, 2006
+   (to appear).
+
+
+References
+  [1] S. Abramovich, On frequencies of strings and deformations of beams, Quart. Appl.
+      Math. 63 (2005), 291–299.
+  [2] S. Abramovich, The gap between the first two eigenvalues of a one-dimensional
+      Schrödinger operator with symmetrical potential, Proc. Amer. Math. Soc. 111
+      (1991), 451–453.
+  [3] M. S. Ashbaugh, “Open problems” section of “Some eigenvalue comparison results
+      for domains in Sn and for annular domains in Rn , pp. 2–11 of ESI - Workshop on
+      Geometrical Aspects of Spectral Theory, Matrei in East Tyrolia, Austria
+      July 5–12, 1999, L. Friedlander and T. Hoffmann–Ostenhof, editors, published
+      electronically as preprint #768 at http://www.esi.ac.at/ESI-Preprints.html (Octo-
+      ber 12, 1999).
+  [4] M. S. Ashbaugh and R. D. Benguria, Optimal lower bound for the gap between
+      the first two eigenvalues of one-dimensional Schrödinger operators with symmetric
+      single-well potentials, Proc. Amer. Math. Soc. 105 (1989), 419–424.
+  [5] M. S. Ashbaugh and R. D. Benguria, Optimal lower bounds for eigenvalue gaps
+      for Schrödinger operators with symmetric single-well potentials and related results,
+      Maximum Principles and Eigenvalue Problems in Partial Differential
+      Equations, P. W. Schaefer, editor, Pitman Research Notes in Mathematics Se-
+      ries, vol. 175, Longman Scientific and Technical, Harlow, Essex, United Kingdom,
+      1988, pp. 134–145.
+  [6] C. Bandle, Isoperimetric Inequalities and Applications, Pitman, Boston, 1980.
+  [7] R. Bañuelos and P. J. Méndez-Hernández, Sharp inequalities for heat kernels of
+      Schrödinger operators and applications to spectral gaps, J. Funct. Anal. 176 (2000),
+      368–399.
+
+                                            5
+ [8] M. van den Berg, On condensation in the free-Boson gas and the spectrum of the
+     Laplacian, J. Stat. Phys. 31 (1983), 623–637.
+
+ [9] H. J. Brascamp and E. H. Lieb, Some inequalities for Gaussian measures, Func-
+     tional Integration and Its Applications, A. M. Arthurs, editor, Oxford Univer-
+     sity Press, London, 1975, pp. 1–14.
+
+[10] H. J. Brascamp and E. H. Lieb, On extensions of the Brunn-Minkowski and Prékopa-
+     Leindler theorems, including inequalities for log concave functions, and with an ap-
+     plication to the diffusion equation, J. Funct. Anal. 22 (1976), 366–389.
+
+[11] R. M. Brown, P. D. Hislop, and A. Martinez, Lower bounds on the interaction
+     between cavities connected by a thin tube, Duke Math. J. 73 (1994), 163–176.
+
+[12] R. Chen, Neumann eigenvalue estimate on a compact Riemannian manifold, Proc.
+     Amer. Math. Soc. 108 (1990), 961–970.
+
+[13] R. Chen, Gap estimates of Schrödinger operator, Pac. J. Math. 178 (1997), 225–240.
+
+[14] M. F. Chen and F.-Y. Wang, General formula for lower bound of the first eigenvalue
+     on Riemannian manifolds, Sci. Sin. (A) 40 (1997), 384–394.
+
+[15] S.-Y. Cheng and K. Oden, Isoperimetric inequalities and the gap between the first
+     and second eigenvalues of an Euclidean domain, J. Geom. Anal. 7 (1997), 217–239.
+
+[16] E. B. Davies, Structural isomers, double wells, resonances, and Dirichlet decoupling,
+     Ann. Phys. 157 (1984), 166–182.
+
+[17] E. B. Davies, Double well Hamiltonians, Proc. London Math. Soc. 49 (1984), 193–
+     206.
+
+[18] E. B. Davies and M. M. H. Pang, The eigenvalue gap for second-order elliptic oper-
+     ators with Dirichlet boundary conditions, J. Diff. Eqs. 88 (1990), 46–70.
+
+[19] B. Davis, On the spectral gap for fixed membranes, Ark. Mat. 39 (2001), 65–74.
+
+[20] C. Draghici, Rearrangement inequalities with application to ratios of heat kernels,
+     Potential Anal. 22 (2005), 351–374.
+
+[21] E. M. Harrell, On the rate of asymptotic eigenvalue degeneracy, Commun. Math.
+     Phys. 60 (1978), 73–95.
+
+[22] E. M. Harrell, Double wells, Commun. Math. Phys. 75 (1980), 239–261.
+
+[23] A. Henrot, Extremum Problems for Eigenvalues of Elliptic Operators, 2006
+     (to appear).
+
+[24] M. Horváth, On the first two eigenvalues of Sturm-Liouville operators, Proc. Amer.
+     Math. Soc. 131 (2003), 1215–1224.
+
+
+                                          6
+[25] H.-K. Huang, Optimal estimates of the eigenvalue gap and eigenvalue ratio with
+     variational analysis, Masters thesis (unpublished), Department of Applied Mathe-
+     matics, National Sun Yat-sen University, Kaohsiung, Taiwan, Republic of China,
+     May, 2004 (51 pp.).
+
+[26] M.-J. Huang, On the eigenvalue ratio for vibrating strings, Proc. Amer. Math. Soc.
+     127 (1999), 1805–1813.
+
+[27] W. Kirsch, Estimates on the difference between succeeding eigenvalues and Lifshitz
+     tails for random Schrödinger operators, Stochastic Processes–Mathematics
+     and Physics, II (Bielefeld, 1985), Lect. Notes in Math. 1250, Springer, Berlin,
+     1987, pp. 138–151.
+
+[28] W. Kirsch, On the difference between eigenvalues of Sturm-Liouville operators and
+     the semiclassical limit, Differential Equations and Mathematical Physics
+     (Birmingham, Alabama, 1986), Lect. Notes in Math. 1285, Springer, Berlin,
+     1987, pp. 230–235.
+
+[29] W. Kirsch and B. Simon, Universal lower bounds on eigenvalue splittings for one-
+     dimensional Schrödinger operators, Commun. Math. Phys. 97 (1985), 453–460.
+
+[30] W. Kirsch and B. Simon, Comparison theorems for the gap of Schrödinger operators,
+     J. Funct. Anal. 75 (1987), 396–410.
+
+[31] M. Kiss, Eigenvalue ratios of vibrating strings, Acta Math. Hungar. 110 (2006),
+     253–259.
+
+[32] R. Lavine, The eigenvalue gap for one-dimensional convex potentials, Proc. Amer.
+     Math. Soc. 121 (1994), 815–821.
+
+[33] Y. I. Lee and A. N. Wang, Estimate of λ2 − λ1 on spheres, Chinese J. Math. 15
+     (1987), 95–97.
+
+[34] J. Ling, A lower bound for the gap between the first two eigenvalues of Schrödinger
+     operators on convex domains in Sn or Rn , Mich. Math. J. 40 (1993), 259–270.
+
+[35] J. Ling, Estimates on the lower bound of the first gap, 2005 preprint (available at
+     the Los Alamos archive).
+
+[36] S. Nakamura, A remark on eigenvalue splittings for one-dimensional double-well
+     Hamiltonians, Lett. Math. Phys. 11 (1986), 337–340.
+
+[37] K. Oden, C.-J. Sung, and J. Wang, Spectral gap estimates on compact manifolds,
+     Trans. Amer. Math. Soc. 351, (1999), 3533–3548.
+
+[38] L. E. Payne and H. F. Weinberger, An optimal Poincaré inequality for convex do-
+     mains, Arch. Rational Mech. Anal. 5 (1960), 286–292.
+
+
+
+                                          7
+[39] R. G. Pinsky, Comparison theorems for the spectral gap of diffusions on an interval
+     and their connection to corresponding results for one-dimensional Schrödinger oper-
+     ators, this paper can be found on the web at http://www.math.technion.ac.il/ pin-
+     sky/mypapers/speccom.ps (15 pp.).
+
+[40] R. G. Pinsky, Spectral gap and rate of convergence to equilibrium for a class of
+     conditioned Brownian motions, Stochastic Process. Appl. 115 (2005), 875–889.
+     [This paper can also be found on the web at http://www.math.technion.ac.il/ pin-
+     sky/mypapers/specgap.ps (18 pp.).]
+
+[41] R. G. Pinsky, Comparison theorems for the spectral gap of diffusion processes and
+     Schrödinger operators on an interval, J. London Math. Soc. (2) 72 (2005), 621–631.
+
+[42] M. H. Protter, Lower bounds for the spectrum of second order operators and sys-
+     tems of operators, Maximum Principles and Eigenvalue Problems in Partial
+     Differential Equations, P. W. Schaefer, editor, Pitman Research Notes in Math-
+     ematics Series, vol. 175, Longman Scientific and Technical, Harlow, Essex, United
+     Kingdom, 1988, pp. 82–93.
+
+[43] I. M. Singer, B. Wong, S.-T. Yau, and S. S.-T. Yau, An estimate of the gap of the
+     first two eigenvalues in the Schrödinger operator, Ann. Scuola Norm. Sup. Pisa Cl.
+     Sci. (4) 12 (1985), 319–333.
+
+[44] R. G. Smits, Spectral gaps and rates to equilibrium for diffusions in convex domains,
+     Mich. Math. J. 43 (1996), 141–157.
+
+[45] F.-Y. Wang, On estimation of the Dirichlet spectral gap, Arch. Math. 75 (2000),
+     450–455.
+
+[46] S.-T. Yau, Nonlinear Analysis in Geometry, Enseignement Math., Geneva, 1986
+     (this also appeared as an article Nonlinear analysis in geometry, Enseign. Math. 33
+     (1987), 109–158).
+
+[47] D. You, Sharp inequalities for ratios and partition functions of Schrödinger opera-
+     tors, Potential Anal. 18 (2003), 219–250.
+
+[48] Q. H. Yu and J.-Q. Zhong, Lower bounds of the gap between the first and second
+     eigenvalues of the Schrödinger operator, Trans. Amer. Math. Soc. 294 (1986), 341–
+     349.
+
+
+
+
+                                          8
+

@@ -1,0 +1,3482 @@
+      Prolate Spheroidal Wave Functions, 
+
+Fourier Analysis and Uncertainty — III: 
+
+The Dimension of the Space of 
+
+Essentially Time- and Band-Limited 
+
+Signals 
+
+By H. J. LANDAU and H. 0. POLLAK 
+
+(Manuscript received February 23, 19G2) 
+
+The purpose of this paper is to examine the mathematical truth in the 
+engineering intuition that there are approximately 2WT independent 
+signals &lt;pi of bandwidth W concentrated in an interval of length T. Roughly 
+speaking, the result is true for the best choice of the &lt;p, (prolate spheroidal 
+wave functions), but not for sampling functions (of the form sin t/t). 
+Some typical conclusions are: Let f(t), of total energy 1, be band-limited 
+to bandwidth W, and let 
+
+
+
+L 
+
+
+
+772 
+
+| f(t) | dt = I - er 
+
+'-772 
+
+
+
+Then 
+
+
+
+/» I [iWT] + !f 
+
+f(t) — Jl dn&lt;Pn 
+
+00 II 
+
+
+
+dt &lt; Cel 
+
+
+
+is 
+
+
+
+(a) true for all such f with N = 0, C = 12, if the &lt;p n are the prolate, 
+spheroidal wave functions; 
+
+(b) false for some such f for any finite constants N and. C if the &lt;p n are 
+sampling functions. 
+
+I. INTRODUCTION AND SUMMARY OF RESULTS 
+
+Intuitive considerations based primarily on the sampling theorem 
+have for a long time suggested that the space of signals "essentially" 
+limited in time to the interval | f ] = ^/2 and in frequency to ( — W,W) 
+cycles is "essentially" 2TT'7 , -dimensional. It is the object of the present 
+
+1295 
+
+
+
+1296 THE BELL SYSTEM TECHNICAL JOURNAL, JULY 19G2 
+
+paper to investigate this problem thoroughly. The first step in the proc- 
+ess is to see how the above statement may be made precise. The two 
+main difficulties to be overcome in even formulating some mathematical 
+problems in this area are contained in the two uses of "essentially" 
+above: What shall we mean by "essentially" limited in time and fre- 
+quency, and what can we mean by "essentially" 2JFT-dimensional? 
+
+Suppose that a function f(t) is actually band-limited. It is then an 
+analytic function of the complex variable t, and cannot vanish in | t \ &gt; 
+T/2 without vanishing identically. We will therefore think of f(t) as 
+approximately time-limited to \t\ ^ T/2 if a large fraction of its energy 
+is contained in that interval, that is, if 
+
+/ | fit) | 2 dt 
+
+(o.D liUga = i-4, 
+
+/ I/cor* 
+
+J— CO 
+
+where e T will, in much of our thinking, be small; e T shall be used as a 
+measure of the degree to which /(/) fails to be concentrated on the 
+interval \t\ ^ T/2. We will denote by E(e T ) the set of band-limited 
+functions /(0 satisfying (0.1) with the further normalization for con- 
+venience that 
+
+
+
+f I /(0 
+
+J — GO 
+
+
+
+dt = 1. 
+
+
+
+We should point out here that, by previous results, 1 T and e T are re- 
+lated: as e T becomes small, T must grow indefinitely. 
+
+We have now defined our set of functions; how can we speak pre- 
+cisely about its dimension? E(e T ) is certainly not finite-dimensional 
+for any e T &gt; 0, for there is no finite set of functions whose linear com- 
+binations exactly express each f(t) in E(e T ). We will, however, say 
+that E(e T ) is approximately N -dimensional if there exist A r linearly 
+independent functions &lt;p , • • • &lt;p N -i whose linear combinations approxi- 
+mate each/(&lt;) in E(e T ) to within a small fraction of its energy, that is, 
+if 
+
+
+
+dt &lt; 8 2 N , 
+
+
+
+/oo I AT-1 
+
+/CO - Z a&amp;i(t) 
+
+where we shall usually think of 8 N as small. Again, 5^ may be used as 
+a measure of the degree to which E(e T ) is JV-dimensional. 
+
+In the above definition of the approximate dimension of E(e T ), we 
+have complete freedom in choosing the "basis" functions &lt;po ■ ■ ■ &lt;pn-i 
+
+
+
+PROLATE SPHEROIDAL WAVE FUNCTIONS — III 1297 
+
+with which we will attempt to approximate f(t). There are two different 
+objectives we may have in choosing the &lt;pi . For real understanding of 
+the dimension of E(e T ) we must use the &lt;p t which best approximate 
+E(e T ), in the sense of making the error, represented by the left side of 
+(0.2), as small as it can possibly be over the whole set E(e T ). Alterna- 
+tively, for practical purposes, we may wish to use the simplest available 
+functions, and see how close we can come with them. Thus there is 
+considerable interest in pursuing two lines of investigation: 
+
+(i) Let us first try to identify the best functions ipi to use, that is 
+the functions which achieve 
+
+
+
+/» I N— 1 
+
+\f(t) — £ aapi(t) 
+...... &gt;,.,•■ °° o 
+
+
+
+iy-* /€*&lt;«io kjjj 
+
+
+
+dt. 
+
+
+
+Once we have found these best functions, what is the relation between 
+the number N of such functions, the measure of concentration c T , and 
+the achievable degree of approximation 8 N ? 
+
+(ii) If we pick for the ip's sampling functions, i.e., functions of the 
+form [sin ir(2Wt — r)]/[ir(2Wt — r)], what is now the relation between 
+AT, e r , and 8 N ? 
+
+It turns out that the answers to (i) and (ii) are rather different, 
+that is, the degree of approximation achievable by sampling functions 
+is in a very real sense poorer than the degree achievable by the best 
+basis functions. And yet the solutions of the two problems are, as we 
+shall see, remarkably intertwined. 
+
+In order to give a detailed picture of our results, it is necessary to 
+summarize some of the previous work on time- and band-limiting which 
+has appeared in Refs. 1 and 2. 
+
+The space £ 2 of square-integrable functions on ( — w , co ) forms a 
+Hilbert space in which the inner product (f,g) is defined by 
+
+(U) = [ f(0 §U) dt; 
+
+J— 00 
+
+the norm squared of/, || / || 2 , is defined by 
+
+ll/l| 2 = (/,/), 
+and is just the total energy. Two functions /and g are orthogonal if 
+
+(M = o. 
+
+To any closed subspace there corresponds a projection operation P, 
+which assigns to every function its orthogonal projection onto the 
+
+
+
+1298 THE BELL SYSTEM TECHNICAL JOURNAL, JULY 1962 
+
+subspace. Projections are characterized completely by the properties 
+
+P is self -adjoint, and 
+(0.4) 
+
+P 2 = P. 
+
+We single out for consideration two projection operators on the 
+space of square-integrable functions : time-limiting and band-limiting. 
+Time-limiting a function / produces a function Df which is / restricted 
+to III g T/2: 
+
+
+
+
+We shall write D T f if the specific interval is important to the discussion. 
+Band-limiting a function / produces a function Bf whose Fourier trans- 
+form agrees with the Fourier transform of / for | o&gt; | 5= 2tW, and van- 
+ishes for | a&gt; | &gt; 2irW. If 
+
+F(«) = f /(•) e~ iM ds, 
+
+J— co 
+
+Bf = t- / F(a&gt;) e iul da&gt;, 
+
+or, in terms of / directly, 
+
+Rr 1 f ., . sin 2*W(t - s) . 
+Bf = - I /(*) : ds - 
+
+T J— co I — S 
+
+The subspace of functions / in £ 2 which are already time-limited, 
+i.e. for which Df = f, will be called D, and similarly band-limited func- 
+tions, for which Bf = f, the subspace &lt;B. The observation made pre- 
+viously that a band-limited function which vanishes for 1 1 \ &gt; T/2 
+must vanish identically may now be phrased as 
+
+&lt;B PI © - {0}. 
+
+A major result in Ref. 1 was that there is actually a non-zero minimum 
+angle between the spaces (B and 3). 
+
+A doubly orthogonal system of band-limited functions \J/ n was in- 
+vestigated in Refs. 1 and 2, and a number of properties were derived. 
+The following are important to our development : 
+
+Given any T &gt; and any W &gt; 0, we can find a countably infinite 
+set of real functions $o(t), fait), fait), ■■• , and a set of real positive 
+
+
+
+PROLATE SPHEROIDAL WAVE FUNCTIONS — TIT 1299 
+
+numbers 
+
+A &gt; Xi &gt; X 2 &gt; 
+
+with the following properties: 
+
+(£) The \pi(t) are band-limited, orthonormal on the real line, and 
+complete in the space of square-integrable band-limited functions of 
+bandwidth W cycles. 
+
+fO, * * J 
+(**,*/) = \ hi = 0,1,2, .... 
+
+lM = J 
+
+(ii) In the interval -T/2 = t = T/2, the functions D^(0 are or- 
+thogonal and complete in the space of square-integrable functions van- 
+ishing for | 1 1 &gt; T/2. 
+
+f 0, i * j 
+(D+ it D+i) = t,j- 0,1,2,... . 
+
+[X&lt; ,i = 3 
+
+(Hi) For all values of t, real or complex, 
+
+Xfti = BD\Pi I = / +i(s) j- - ds . 
+
+\ J-T/2 T{t - S) / 
+
+We shall write X.-(jP) if the specific interval is important to the dis- 
+cussion. 
+
+We are now in a position to give an account of our results. We repeat 
+our basic definition : 
+E(e T ) is the set of functions f(t) f £"' such that 
+
+(i)/e « 
+
+(2) H/ll = 1 
+
+(3) ||0/ || f =1-4. 
+
+Let us turn to the approximate dimension of E(e T ). As we pointed 
+out above, the basis (y,!o which we wish to use is the one which mini- 
+mizes (0.3), that, is, which minimizes 
+
+N 2 
+
+max min / — zl a ifi 
+
+It seems reasonable that the best basis, for any given N, should be the 
+(N + 1 ) linearly independent most concentrated band-limited functions, 
+
+
+
+1300 
+
+
+
+THE BELL SYSTEM TECHNICAL JOURNAL, JULY 1962 
+
+
+
+and these are known, from previous work, to be \f/ , • • ■ ,^/n- Although 
+this seems to be harder to prove than one might expect, it is in fact 
+true, and is the subject of 
+
+Theorem 1 . For any fixed N, the functions \f/o , • • • , $n achieve the 
+minimum in 
+
+2 
+
+
+
+mm max mm 
+
+
+
+/ — £ CLUPi 
+
+
+
+Thus results on the approximation of E(e T ) by linear combinations of a 
+finite number of \f/{ are in fact best possible results on the approximate 
+dimension of E(e T ). 
+
+Theorems. Let f(t) 6 E(e T ). Then* 
+
+2 
+
+
+
+[2WT] 
+
+f ~ £ Untn 
+
+
+
+
+
+^ C\€ T 
+
+
+
+where the a n are the Fourier coefficients of f in its expansion in the \j/'s, 
+and Ci is independent off, e T , and 2WT, and may be taken as 12. 
+
+Theorem 3 shows that [2WT] + 1 of the best basis functions for 
+E(e T ) suffice to approximate a concentrated function to a degree pro- 
+portional to the "unconcentrated part" e 2 T of the energy. We shall see 
+that this is no longer the case when we use the simpler sampling func- 
+tions. 
+
+In Theorem 3, as we have said, Ci may be taken as 12. What does 
+it take to make Ci very close to 1, that is, to make the approximation 
+almost as good as the concentration? First of all, it is important to see 
+that roughly 2WT functions are not enough to do this, and this is the 
+subject of 
+
+Theorem 5. For any t T &lt; 0.915, there exists a function f 6 E(e T ) 
+such that 
+
+
+
+inf 
+
+
+
+[2HT]-2 
+
+
+
+^ CiW - R(WT)), 
+
+
+
+where C 2 &gt; 1 and R(WT) —&gt;0 as WT — &gt; ». Here C 2 may be taken as 
+1/0.915 and R(WT) as 2y/2e~ wWTl \ (If el &gt; 0.915, the right side 
+should be replaced by 1.) 
+
+By further analysis, this result may be strengthened so that it in- 
+cludes approximations by [2IFT] + N of the ^,- functions, where N 
+is any finite integer. 
+
+Theorem 8. For any given N and e 2 T &lt; 0.916, and for WT sufficiently 
+
+* [x] means the largest integer g x. 
+
+
+
+PROLATE SPHEROIDAL WAVE FUNCTIONS 
+
+
+
+III 
+
+
+
+1301 
+
+
+
+large, there will exist a function f € E(e T ) such that 
+
+
+
+inf 
+
+
+
+[2WT]+N 
+
+f- £ atft 
+
+
+
+
+
+*om 1 *-*^ 
+
+
+
+—rWT/2 
+
+
+
+)• 
+
+
+
+(If (t &gt; 0.916, the right side should be replaced by 1.) 
+Since, by Theorem 1, the ^,- are the best approximating functions in 
+1 1 1 ^ T/2, Theorems 7 and 8 hold, a fortiori, for any approximate 
+basis [pi). 
+
+What, then, does it take to bring the constant C of Theorem 3 arbi- 
+trarily close to 1? We do not know the best possible result, but there 
+is considerable information in the following theorem, due to C. E. 
+Shannon : 
+
+Theorem 4 ( Shannon) : Given any -q &gt; 0, there exist constants C 3 = C 3 ( 77) 
+and Ci = Ci(ij) so that for f £ E(e T ), 
+
+
+
+inf 
+
+
+
+[2WT] + C 3 los+ IWT+C4 
+
+f — 2 a$i 
+
+
+
+* (1 + vhl * 
+
+
+
+Thus a number of functions boundedly more than 2WT cannot suffice 
+for approximating/ 6 E(e T ) to within (1 + rj) t T , but a logarith- 
+mically growing extra number of terms does. 
+
+Let us now turn to approximating E(e T ) by sampling functions. 
+The first result is that [2TTT] + 1 sample functions will approximate/ 
+in energy roughly to within a constant times e r , that is, within a con- 
+stant times the square root of the un concentrated energy. The placement 
+of the sample points depends on 2WT, but of course not on the specific 
+function. 
+
+Theorem 2. Let f{t) 6 E(e T ). Then, if WT - [WT\ ^ h, 
+
+
+
+(a 
+
+
+
+\k\ZWT V'll / 
+
+
+
+k \ sin ir(2Wt - k) 
+
+
+
+ir(2Wt - k) 
+and if WT - [WT] &gt; -h, 
+
+k + A sin w(2Wt - k - \) K 
+
+
+
+^ ire T + e~, 
+
+
+
+(b) 
+
+
+
+/- £ / 
+
+\k+i\£WT 
+
+
+
+2W 
+
+
+
+r(2Wt - k - |) 
+
+
+
+^ 7T€r "T" f5 
+
+
+
+An estimate valid for all WT may be obtained by replacing WT in (a) 
+by WT + 1. 
+
+We note that the coefficients f(k/2W) and f(k + \/2W) are well- 
+known to be the Fourier coefficients in the sampling series expansion, 
+and hence the best constants to use. 
+
+
+
+* log + x = max (log x, 0). 
+
+
+
+1302 
+
+
+
+THE BELL SYSTEM TECHNICAL JOURNAL, JULY 1962 
+
+
+
+This theorem is, in one sense, quite satisfactory because ire T + e T 
+does go to as the unconcentrated part of the energy e 2 T goes to 0. 
+On the other hand, re T + «r approaches more slowly than e T itself. 
+That this estimate of the degree to which sampling functions approxi- 
+mate E(e T ) cannot be too much improved is established in 
+
+Theorem 10. Letf(t) 6 E(e T ). Then an estimate of the form 
+
+
+
+f- S / 
+
+\k\ £WT+N 
+
+
+
+k 
+2W 
+
+
+
+sin w(2Wt - k) 
+ir(2Wt - k) 
+
+
+
+= CtT 
+
+
+
+cannot be valid independently of e T no matter how large the constants C 
+and N are chosen. 
+
+Thus a sampling scries approximation using (2WT plus a constant) 
+terms will not approximate every concentrated function to a degree 
+proportional to the unconcentrated energy. As we have seen, this is 
+in direct contrast to the theorem previously quoted for approximation 
+with the best functions ^,. We also have the following negative result 
+for approximation by sampling series to within (1 + rj) e T : 
+
+Theorem 11. For every fi &lt; 1, there exists 8 &gt; 0, and e T such that 
+
+
+
+f- 
+
+
+
+\k\^WT+{WT)P 
+
+
+
+H2JF 
+
+
+
+sin ir(2Wt - k) 
+w(2Wt - k) 
+
+
+
+&gt; (1 + 5)e 2 r 
+
+
+
+for somef 6 E(e T )- 
+
+Once again, this is in direct contrast to the situation with the best 
+
+functions ypi as given in Theorem 4. 
+
+We supposed near the beginning that f(t) is actually band-limited. 
+Suppose that it is only almost band-limited, that is, that 
+
+
+
+(0.5) 
+
+
+
+/ 
+
+
+
+F(co) I 2 do&gt; 
+
+
+
+/_: 
+
+
+
+=1-^ 
+
+
+
+F(«) I 2 do&gt; 
+
+
+
+It is interesting that our approximation theorems are stable in the 
+sense that they continue to hold approximately for approximately band- 
+limited functions. A sample is the following 
+
+Theorem 12. If f(t) € £ 2 with \\f\\ = 1, and satisfies (0.1) and (0.5), 
+then for some constants a n we have 
+
+
+
+[2WT] 
+
+f- E a.*. 
+
+
+
+^ 12(*t + vw) 2 + ri 
+
+
+
+An analogous result (Theorem 13) holds for a sampling approximation 
+to/. 
+
+
+
+PROLATE SPHEROIDAL WAVE FUNCTIONS — III 1303 
+
+Before we proceed to the detailed exposition, let us mention one theo- 
+rem, required for the proof of Theorem 10, which is of interest in its 
+own right. 
+
+Theorem 9: When restricted to t &gt; 0, the sample functions centered at 
+the negative sample points are dense in £-(0, =c), but those centered at the 
+positive sample points are not dense in £ 2 (0, «), nor even in (B restricted 
+to t &gt; 0. Specifically, given any square-integrable f(t) we may find con- 
+stants N and a ( n ' v) which make 
+
+2 
+
+
+
+r\t(,\ V (-v) sin ir( 2Wt + n) 
+A \ f(t) ~h a " r (2WT 4- n) 
+
+
+
+dt 
+
+
+
+ir(2WT + n) 
+
+as small as desired, but there exists a band-limited g(t) for which 
+
+
+
+f K f t \ f i sm r(2Wt — n) 
+
+
+
+dt 
+
+
+
+w(2Wt - n) 
+cannot be made arbitrarily small regardless of the choice of N or b R . 
+
+
+
+I I . ACKNOWLEDGMENTS 
+
+The authors wish to acknowledge the many fruitful conversations 
+with C. E. Shannon, D. Slepian, and L. J. Wallen which have con- 
+tributed to the formulation of the present results. 
+
+III. DETAILED EXPOSITION 
+
+1. Given N functions &lt;p , &lt;p\ , ■ • • , vn-\ in £ 2 , let us denote by S% 
+the subspace spanned bv them. The quantity min \\f — J^o -1 a,&lt;p, ||' 
+
+K) 
+of (0.2) now represents the square of the distance p(f, S 9 ), measured 
+in £", of /from SJ. The number Sx in (0.2) may therefore be taken to 
+equal 
+
+5.v = sup p(f, Sj), 
+
+which, following the terminology of Ref. 4, we will call the deflection 
+of /i'(er) from S,p . 
+
+We will first identify, for given T and .V, that subspace of dimension 
+.V which best approximates E(e T ), in the sense of minimizing this 
+deflection. 
+
+Theorem 1 : Let T be given. Then, for every N, the subspace spanned 
+by the (orthonormal) functions \p , ■ ■ ■ , ^. v _i best approximates l'J(e T ), 
+in the sense that the deflection of E(e T ) from that subspace is smaller than 
+from any other subspace of dimension N . 
+
+
+
+1804 
+
+
+
+THE BELL SYSTEM TECHNICAL JOURNAL, JULY 1962 
+
+
+
+Proof: We first compute the deflection of E(e T ) from Sj. By definition, 
+/(Oisini5(6T)ifandonlyif/6 (B,with ||/|| 2 = 1 and || Df || 2 = 1 - t\ ; 
+thus, expanding / in the complete orthonormal system [fi]t, if and only 
+
+
+
+if 
+
+
+
+/ = £ atpi , with £ | «&lt;• | 2 = 1 and E X, ; | a, | 2 = 1 — t T . 
+
+
+
+Now by the orthonormality of the \f/i , 
+
+
+
+p 2 (f, gf) = min 
+
+
+
+/ - E &lt;*.* 
+
+
+
+2 «.v , »- 
+
+
+
+-El* 
+
+
+
+To find the deflection of E(e T ) from $J we therefore compute 
+
+sup p(f, Sj), 
+
+equivalently [sup E* I «* 1*1* subject to the conditions Eo I « 
+and So \i I «.- I 2 = 1 - 4 ^ Xo • We find 
+
+&lt; 1 - 4 ^ Xy 
+deflection of 
+
+
+
+= 1 
+
+
+
+(l.D 
+
+
+
+E(e T ) from *S£ 
+
+
+
+Xp — (1 — e T ) 
+
+Xn — Xv 
+
+
+
+I- 
+
+
+
+Xv &lt; 1 — fr = Xo 
+
+
+
+Next suppose that &lt;p , • • • , pw-i are any iV given functions in £ . 
+By the Pythagorean theorem, the distance of / € (B to any linear com- 
+bination of the tpi is no smaller than its distance to the same linear 
+combination of the functions B&lt;pi , hence we may assume &lt;pi 6 &lt;B. As 
+before, let S" be the subspace spanned by &lt;p a , • • • , ^jv_i , and denote 
+by P v the operation of projecting orthogonally onto S"; explicitly, 
+PJ is the element of Sj closest to /. In terms of P v , the quantity of 
+interest in (0.2) can therefore be written simply as 
+
+(1.2) P \fX) = \\f-PJf= ll/ll 2 -ll/VII 2 ; 
+
+the last equality in (1.2) follows from the orthogonality of P v f and 
+
+(/ " P«f). 
+
+Now assign to every / 6 03 the point in the x — y plane whose x and 
+2/ coordinates are || Df || 2 /ll / l| 2 and [|| / || 2 - || P v f || 2 ]/ll / l| 2 respectively; 
+denote by R T the set of points so obtained. The significance of this map 
+is that it sends every /in E(e T ) into the line x = 1 — 4 , with {/-coordi- 
+nate equaling p 2 (/,iSj); hence we see that 
+
+
+
+(1.3) 
+
+
+
+deflection of 2?(er) from »S£ = 
+
+
+
+up y~f . 
+'-r J 
+
+
+
+sup 
+
+
+
+PROLATE SPHKROIDAL WAVE FUNCTION'S — III 130") 
+
+By previous results, 1 the ^-coordinates of points in R T satisfy &lt; x ^ 
+
+\o ; x = Xo is achieved only by the functions k\f/ (t), with k any constant. 
+The ^-coordinates of points in R r satisfy 0£y£l;y— lis achieved 
+only by functions orthogonal to »Sj, equivalently to {p,-}o~ l . Therefore, 
+applying the Weyl-Courant lemma (Ref. 3, p. 238), we find 
+
+
+
+12 
+
+
+
+II Df „ 
+
+Slip X = SUp ,, . ,,, ^ Aff . 
+
+fM*&lt;)„ ll/l1 
+
+Since there exist infinitely-dimensional subspaces of (B over which 
+II ^/llVll/ll 2 is arbitrarily small (for example those spanned by yp m , 
+\f/ m+ i , ••■ for m sufficiently large), while Sj is finite-dimensional, there 
+are functions in those larger subspaces orthogonal to *S*J , and conse- 
+quently inf x = 0. 
+
+We show next that R T is convex, equivalently that if Pi and P 2 
+ure two points in R T , the line segment joining them is also contained 
+in R T . Let / be a line whose equation is ax + by = c. By definition 
+of R T , a function / f (B will be sent on a point of I if and only if 
+
+a||D/|| 2 -M[||/|| 2 - l|P,/" 2 
+
+
+
+
+
+
+= c. 
+
+
+
+equivalently, if and only if a(Df,Df) - b(PJ,P v f) = (c - b) (/,/), 
+or, using (0.4) and the fact that/ = Bf, if and only if 
+
+(1.4) ([aBDB - bP v ]f,f) = (c - b) (/,/). 
+
+An operator is completely continuous 3 if it transforms every bounded 
+sequence (i.e. a sequence of functions j/ n | for which ||/„ || ^ k with 
+some k) into a sequence which possesses a subsequence converging in £ 2 
+norm. Since B is a projection, || Bf n || ^ l|/ n |l S k. Writing /?/„(/) in 
+terms of its Fourier transform F„(w) we obtain 
+
+2tIF 
+
+I". / \ IMl I 
+
+
+
+BUt) = J- [ F n (u)e iat d* 
+
+'It J-2tw 
+
+
+
+whence Bfjt) is an entire function of the complex variable t. Since 
+a function and its Fourier transform have the same £ 2 norm, Schwarz's 
+inequality applied to this representation yields 
+
+(1.5) \BfM\ ^ c 1 e 2 " F|lm{ ' 11 HF.II S^" 1 " 1 , 
+
+so that the functions B/„(0 are uniformly bounded on any compact 
+sot of the /-plane. Consequently (Ref. 5, p. 171), they form a normal 
+family, and the sequence BJ'Jt) possesses a subsequence Bf„ k (t) con- 
+
+
+
+1306 THE BELL SYSTEM TECHNICAL JOURNAL, JULY 1962 
+
+verging uniformly on any compact set of the ^-planc, in particular on 
+the interval \t\ ^ T/2 of the real t-axis. Therefore, the functions 
+DBfn h (t) converge in £T norm as well, whence, since B is hounded, so 
+do the functions BDBf„ k . We have established the complete continuity 
+of BDB. Since S% is finite-dimensional, the projection P v is completely 
+continuous. By (0.4), both operators are self -adjoint. Consequently, 
+the operator A = aBDB — bP v , which takes (B into itself, is also 
+self-adjoint and completely continuous. Therefore 3 it has a set of ortho- 
+normal eigenf unctions 6 k (t) £ (B with corresponding eigenvalues fi k , 
+and every function/ 6 (B has an expansion of the form 
+
+
+
+(1.6) / = h, + Z 
+
+
+
+CXkV/c , 
+
+
+
+where Ah/ = or, equivalently, h f is orthogonal to all the d k . Using 
+this representation, condition (1.4) becomes 
+
+2 I a* |V* — (e — b)[\\ h f || 2 + 2 I «* I"] 0I * 
+
+00 
+
+(1.7) 2 I at \\C ~ b - m/,) + (C - b) || h/ f = 0. 
+
+i 
+
+We now argue that this set of functions is connected. For suppose that 
+/ = hf + 2 a kOk and g = h + ^ faOn, are each of the form (1.6) 
+and satisfy (1.7). For every ^ u ^ 1 define, for k = 0,1, • • • 
+
+yi u) = + \A I a, p + (1 - u) | ft |« e * , " B ™-* +(l -&gt;»^ &gt; 
+
+•u/i/ + (1 — w)J* 8 
+
+
+
+*■- ii x +(!-«)*: n Vwi| * /||,+(i -" )|1 *' 
+
+
+
+and set 
+
+
+
+r- = ft. + E t1 u) ^. 
+
+
+
+We see that ^4/i„ = 0, since ft,, is a linear combination of h; and h a , 
+so that /•„ is of the form (1.6); it is easily seen to satisfy (1.7). But as u 
+varies between 1 and 0, the functions /•„ trace a connected path in (B 
+between / and g. Consequently, those functions in (R which map into 
+the line / form a connected set in (B. Since the map from (B onto R T 
+is continuous, it takes this connected set into a connected set, that is 
+into a single segment of /. Thus, the intersection of R T with any line / 
+is a single segment, whence R T is convex. 
+
+Combined with the information already derived about the points in 
+
+
+
+PROLATE SPHEROIDAL WAVE FUNCTIONS — III 1307 
+
+R T , the convexity of R T implies that 
+
+SUp U = \, &lt; 1 - el ^ Xat 
+
+i= 1 — 1 7' 2 
+
+(1.8) \-l + e* 
+
+sup V ^ At r— - , Xjv £ 1 — er ^ Ao . 
+
+x=l— « 7 " Ao — Atf 
+
+Combined with ( 1.3) and (1.1 ), ( 1.8) implies that deflection of E(e T ) 
+from S" ^ deflection of A'(e T ) from S+. Theorem 1 is established. 
+
+We conclude from Theorem 1 that the quantity 5 K of (0.2), measur- 
+ing the degree to which E{t r ) is A"-dimensional, may be taken to be 
+equal to (1.1). Since, for X A - &lt; 1 — t\ , 
+
+Ao — (1 — ( r ) €t 
+
+
+
+Ao — A.v 1 — A.v 
+
+and, for A.v ^ 1 — e T , 
+
+
+
+~ 1 - A.v 
+we find 
+
+
+
+(1.9) 8 K &lt; 
+
+
+
+VAo — A. v ' 
+
+
+
+Thus to establish an inequality of the form 5 A ^ Ce r with C independent 
+of T, it is sufficient to show that A* ( T) is bounded uniformly away from 
+I independently of T. This will be done for /,• = [2ir7'| + 1 in Lemma 2, 
+and for k = [211'7'] — N, provided T is sufficiently large, in Theorem 8.1. 
+
+2. Lemma 1 . Let f is) be diffe re n liable on ( — v- ,»). Then for any inte- 
+gers m and n, m ^ n, and any ^ J ^ /, 
+
+f(m) + • • • + f(n) = f f(s) ds + a - 13) fin + 0) 
+
++ (\ - a) f(m - a) + f (s - [s] - h) f'(s) ds. 
+
+
+
+Proof: The standard form of the Euler Summation Formula (Ref. 6, p. 
+539) gives 
+
+f(m) + f(m + !) + ■■• +/(n) 
+
+= / f(s) ds + \f(n) + |/(i») + /" (s - [s] - |)/'(s) r?s. 
+
+
+
+1308 THE BELL SYSTEM TECHNICAL JOURNAL, JULY 1962 
+
+Our result then follows if 
+
+pm 
+
+= / /(a) ds + (i - «)/(« - a) - if(w) 
+
+
+
+VMS. /* 
+
+
+
+and if 
+
+
+
+= r /(s) &lt;fe + (* - 0) /(« + (3) - |/(n) 
+
+/n+0 
+(s- [«] - *)/'(«)&lt;&amp;- 
+
+Both follow immediately by partial integration on the last integrals, 
+where [s] = m — 1 and n respectively. Lemma I is established. 
+
+We are now in a position to prove 
+
+Theorem 2. Let g{t) € E(e T ). Then if WT - [WT] g J, 
+
+
+
+I k \ sin r(2Wt - k) '' 
+9 ~ JL 9\w 
+
+
+
+■ ' \k&amp;rr y \2WJ /.■■•-Mr/ 
+and if WT - [WT] &gt; h, 
+
+
+
+^ irtT + 
+
+
+
+t r 
+
+
+
+(b) 
+
+
+
+|fc+j|girr \ &amp;W 
+
+
+
+ft + ±\ sin 7r(2TH - fc - |) 
+
+
+
+jr(2PT&lt; - fc - j; 
+
+
+
+^ irer + «r- 
+
+
+
+An estimate valid for all WT may be obtained by replacing WT in (a) 
+by WT + 1. 
+
+Proof: Without loss of generality, we assume W = \ for convenience. 
+We apply Lemma I with = and/ replaced by | g | 2 . Then if a ^ 1, 
+
+| g\m) | + • • • + I g\n) \ = [ \ g\s) \ ds -f f | g\n) \ 
+
+• m—a 
+
++ (i - a) | ^(m - «) I + / (s - [s] - I) 2Re(gg') ds. 
+
+■ m—a 
+
+It follows that if $ £ a &lt; 1, 
+
+U 2 0) [+•••+ lff 2 (« - 1) I £ 
+
+
+
+(2.1) 
+
+
+
++ / (• - \s] - i) 2Re(gg') ds. 
+
+
+
+PROLATE SPHEROIDAL WAVE FUNCTIONS — III 1309 
+
+If ^ a &lt; |, we set/(s) = | r/V.s + f) | and a = a + §. Wc have 
+
+I r/ 2 (w + j) | + . . . + | ^ 2 (w + |) | 
+
+= / I 2 (s + f) | rfs + \ | ^(n + i) I 
+
+* HI — a 
+
++ Ci - «') | (f(m + | - «') | 
++ / , (* ~ W - I) 2Re(j7(s + $)g'(s + §)) rfs, 
+
+
+
+or 
+
+2 
+
+
+
+|^(to+ |)| + ... + \g\n + |) i 
+
+rn+l 
+
+= / ! 2 (u) \du + ±\ 2 O + i) I - a I o 2 (m - a) I 
+
+rn+l 
+
++ / (w - 1 - [w - i]) 2Rc(j7(m)^(m)) dw, 
+
+and 
+
+, /-n+i 
+
+I (m + |) | + • • • + | ^»(n - |) | £ / | p 2 ( M ) | rf w 
+
+(2.2) 
+
++ / (u - 1 - [u - i]) 2Re(g(u)g'(u)) du. 
+
+* m — a 
+
+If | ^ « &lt; 1, we may apply (2.1) to | g 2 (t) | and \g 2 (-t)\, and add 
+the results. We obtain 
+
+
+
+E ! o*(k) i ^ /i r /-'( s ) | ds 
+
+m £ | A- 1&lt; n .' 
+
+m-ag |»|gn 
+
++ / Ct-M- I) 2Re(^')rfs. 
+
+m-ag|«|g n 
+
+Now | 2(s - [s] - J) | ^ 1 ; hence 
+
+| / (s ~ [s] - J) 2Re(fl0') cfo £ / I &lt;/ | | g' \ ds 
+
+
+
+9\'dsA/\g\ 2 ds, 
+
+
+
+1310 THE BELL SYSTEM TECHNICAL JOURNAL, JULY 19G2 
+
+by the Schwarz inequality. But 
+
+/ i *' i a (Is &lt; L» i °' |2 
+
+
+
+ds 
+
+
+
+m-ag| S |g« 
+
+
+
+I g I rfs = jr 
+
+The last inequality holds because 
+
+ff (/) = |* ff(») e* 1 dx 
+
+g'{t) = I ixG(x)e ill dx 
+
+f \ g '( t ) \ 2 dt = 2tt / x 2 \G(x) |- dx 
+
+^ 2-ir- ir 1 f \G(x)\*dx 
+
+= S f \(l(0\ 2 dt. 
+
+
+
+Hence 
+
+£ | &lt;/ 2 (fc) | ^ /I 0°"( s ) I r/s + * 
+
+"Si* 1 *" — -*ws. 
+
+Now let n — &gt; °° ; the preceding equation becomes 
+
+
+
+/ | (? 2 (») I da\ 
+
+
+
+»-aSI«I£ 
+
+
+
+Furthermore, 
+
+
+
+^ | p 2 (fc) | ^ C2(m-a) + 7re 2 (m-a) ■ 
+
+
+
+A ... sin At - /■) 
+
+
+
+and the functions sin ir(t - fc)M« - fe) are orthonormal. Hence, 
+
+sin ir(t — k) 
+
+
+
+Z ff 2 (fc) = 
+
+
+
+m&lt;|*| 
+
+
+
+git) - E ff( fc ) -177 
+
+
+
+If we now set m = [T/2] + 1 and ro - a = 7 7 /2, then a ^ | if 
+
+T/2 - [T/2] ^ |, 
+
+and we obtain (a). . 
+
+Exactly the same argument, based on (2.2) rather than (2.1), gives 
+the result (b) for the case T/2 - [T/2] &gt; h. 
+
+
+
+PROLATE SPHEROIDAL WAVE FUNCTIONS — III 1311 
+
+If in (a), we use for [772] the integer m + 1, then 
+
+... v* r,\ SU1 7r( / — /,') I, 2 ^ .. 
+
+ff(0 - 2. .'A/') - 77 7—- ^ Cffet+I) + T€2( M+ l), 
+
+|t|im+l 7T( ( — A ) 
+
+and, since e„ is monotone decreasing in a, the last statement of Theorem 
+2 follows. 
+
+Corollary 2.1. Let g(t) f-_ E(e T ), and let W = \ for simplicity. If, in 
+addition, g(k) = 0, \k | ^ T/2, when T/2 - [T/2] ^ \, orifg(k + %) = 
+0,\k + h\ ^ T/2, when T/2 - [T/2] &gt; \, then 
+
+j| Dg || ^ 7rer . 
+
+Proof: This follows immediately from substitution into Theorem 2(a) 
+and (h) of the additional conditions on g(t). 
+
+Notice that the number of points at which g is required to vanish is 
+[T] + 1, except if T/2 - [T/2] = \, when it is one less. 
+
+Lemma 2. With the normalization of W = §, for any T &gt; 
+
+A m +,('/') ^ 0.915. 
+
+Proof: Let us consider a function of the form 
+
+[r]-)-i 
+
+(2.3) / = E a^M). 
+
+The series contains [7'] + 2 coefficients to be determined; it is therefore 
+possible to make/ vanish at the (at most) [T] + 1 integer or half- 
+integer points a k of Corollary 2.1 without having / vanish identically. 
+More precisely, we wish 
+
+[7'] + l 
+
+E «»*„(«*) = 0, k = 0,1, ••• ,[T). 
+
+The rank of the matrix !«/&gt;„( «/,)[, n = 0,1, ■ • • [7'] + I, k = 0, ■ ■ • , [7'], 
+is at most [T], and hence there exists a solution vector \a n \ not all of 
+whose elements vanish. We may then pick the a„ so that E | a„ \ 2 = 1. 
+Wc have thus found a function of the form (2.3) and of total energy 
+one, which vanishes at the [T] + 1 points of the Corollary 2. 1 . 
+We know for this function that 
+
+/[71 + I 
+l/P&lt;«- E i«..| 2 x H , 
+u 
+I r I g 7- / ■_&gt; 
+
+/• [71 + 1 
+
+/ \f\*dt = 1 - E \a n \ 2 K, 
+
+l'l&gt;r/2 
+
+[r]+i 
+
+= E (1 - X„) |a„| 2 . 
+
+
+
+1312 THE BKLL SYSTEM TECHNICAL JOURNAL, JULY 1962 
+
+
+
+Since the X„ are decreasing in n, we have, remembering E I a « I = 1, 
+
+
+
+El |2 x 
+
+I 0-n | A„ 
+
+
+
+/[7-1 + 1 
+
+
+
+(1 - X„) | a n | 2 by Corollary 2.1 , 
+
+
+
+^ 7rv 1 — X[T]-fi- 
+Therefore X m +i is bounded from 1, and is, in fact, no larger than the 
+root of the equation 
+
+X = 7l"\/l — - r &gt; 
+
+which is 
+
+
+
+-7T 2 + \V + 4tt 2 = 091 - 
+2 
+
+Lemma 2 is established. 
+
+3. Theorems. Let f(t) 6 E(e T ). Then 
+
+2 
+
+
+
+[2HT1 + 1 
+
+/ - E o»^ 
+
+
+
+^ 12 4, 
+
+
+
+w/iere Mc a„ arc Me Fourier coefficients off in its expansion in the functions 
+
+yp n ■ 
+
+Proof: The quantity defined in the theorem represents the square of 
+
+the distance from / € E(e T ) to the subspaee S l f WTl+1 spanned by the 
+
+functions fc, , with 0g»^ [2WT]. Thus, by definition, it does not 
+
+exceed 5 2 2 irr]+i, the square of the deflection of E(e T ) from S+ 
+
+Combining (1.9) and Lemma 2 now yields 
+
+2 
+
+
+
+[ 2 W T] 
+f ~ E *n+n 
+
+
+
+&lt; 
+
+
+
+6t 
+
+
+
+6t 
+
+
+
+; ^ 12 er 
+
+
+
+1 - \[2WT]+1 " 1 - ' 916 
+
+Theorem 3 is established. 
+
+4. Theorem 4 (Shannon). Given any 77 &gt; 0, toere egiM constants 
+C 3 = C 8 (i7) awrf C 4 = Ci(v) so that for f C A'fer), 
+
+[2n-r]+f3log + 2irr+r 4 2 
+
+inf / - E a.V'* ^ (1 + v)e~r- 
+
+Proof: Using properties (w) and (m) of the eigenf unctions ft , and 
+known results (Ref. 3, p. 242), we obtain 
+
+, N sin 2irW(t - s) ^ , t \, f,\ 
+
+Pl (t - s) = ,, \ ~ = 1* tiismtt)- 
+
+y r(t — 8) 
+
+
+
+PROLATE SPHEROIDAL WAVE FUNCTIONS — III 1313 
+
+Therefore 
+
+90 
+
+Pi(0) = E *&lt;*(*), and 
+
+u 
+
+(4.1) f pt(o) a = 2ii"7' = E ( ^"(0 a = E a,-- 
+
+J—T/i J -TI2 
+
+We now proceed to estimate E* A,"'. The functions \//, satisfy the 
+integral equation 
+
+\ifc(0 = I h(s)pi(t - s)ds. 
+
+J-T/-2 
+
+Then 
+
+x. f i:(t) dt = f f Pl (t - s)iM*)iM0 ds dt, 
+
+J-T/2 J-T/2 J-T/2 
+
+and if we sum on i, we ol)tain 
+
+Ex* 2 = / p,' J &lt;/ - «)&lt;fecfc 
+
+1 = •'-r/2 J-T/2 
+
+We now set 
+
+s' = 2s/T, t' = 21/T, c = rWT, and p(u) = sin cu/(wu). 
+
+Then 
+
+Ex, 2 = ( ! p -(t' - s')ds dt' 
+
+= [ ds [ P Hu)du. 
+Integration by parts, and the substitution cu = x, give 
+
+i=0 ir~ J X- IT- J [) X 
+
+
+
+Asymptotically for large c, this is easily seen to equal 
+-- ilogc 4- 0(1), 
+
+7T 71" 
+
+but we desire an actual lower bound. For r ^ ir/8, 
+
+°o r» i /• oo • 2 .-» /• 3 t / 4 • 2 . i /• 2 c -2 
+
+v-&gt; . 2 2c 4c / sin .r , 2 / sin :r , 2 / sin .r , 
+2^ a,- = — / — — aa: — — / dx / dx. 
+
+i = D 7T 7T" • , 2r .1" 71" -'o X IT J ZxU X 
+
+Therefore, 
+
+
+
+1314 THE BELL SYSTEM TECHNICAL JOURNAL, JULY 1962 
+
+± x,. a * _ *« f &lt;^ - 4 f* .„,. - ^ r (i - » c s ») s 
+
+£() 7T 7T- •'•Jr .1- 7T- •' 7T ' 3ir/4 X 
+
+
+
+since 
+
+Thus 
+(4.2) 
+
+
+
+./.; 
+
+
+
+' cos 2xdx 
+
+Sjt/4 -T 
+
+
+
+2c 2 9 1 . 2c 
+
+= - ~ " ~~ 7? 3 lo S s-77 » 
+
+X 7T" lb 7T" 07T/4 
+
+
+
+&gt; if C ^ TT'S 
+
+
+
+Ex/fe^-Wc- 
+
+
+
+for all c, since the inequality is trivially true for c &lt; tt/8. 
+
+Let us now introduce the following combinatorial problem. We con- 
+sider infinite sequences of non-negative numbers m such that 
+
+(a) L ^ mo^ mi£ ■•• , 
+
+(b) ^Mj = -1 &gt; a given positive constant, 
+
+
+
+(c) for a given integer m ^ A, fi m has a prescribed value, 
+
+and we seek to maximize E» m; over all such sequences. Clearly the 
+optimum {/*&gt;} will have m; = if./ &gt; m. 
+
+We claim that, with the possible exception of one m , all the others 
+in the optimum solution equal either 1 or ju« . For suppose they do not, 
+i.e. suppose [n„\ takes on two values a and /3 such that p m &lt; a &lt; &lt; 1. 
+If we now vary a and between the limits Mm and 1, keeping a + 
+a constant, and maximize a 2 + 2 , we find an end-point maximum. 
+In detail, if a + = s, then a 2 + 2 = 2 [(a - s/2) 2 + s 2 /4], which 
+is maximized at an end-point value of a. Thus, the maximizing sequence 
+{n n \™ can contain only one value which is neither 1 nor n„, . This odd 
+value is due to "breakage" in obtaining the exact total A. Let the 
+maximizing sequence have A- "IV, (m - k) "n m 's" and one value 
+a, n m &lt; a &lt; 1. Then 
+
+k 4- (m - k) ft m + a = A, 
+
+so that 
+
+A — a — mn„, 
+K = : • 
+
+
+
+PROLATE SPHEROIDAL WAVE FUNCTION'S 
+
+
+
+III 
+
+
+
+1315 
+
+
+
+Then 
+
+
+
+Z «' = 
+
+
+
+A — a — mn, n m — A 
+
+
+
++ a' 
+
+
+
+(4.3 
+
+
+
+1 — Mm 
+
+= {A — a ) ( 1 + jti m ) — mum + a". 
+
+This is the maximum achievable value of ^o /*/ under the conditions 
+(a), (b) and (c) above. But with A = 2c/w, and X„, given, m ^ 2c/tt, 
+the sequence of eigenvalues X&gt; satisfies the above conditions. It therefore 
+competes for the maximum, and hence 
+
+— - -5 log + c - 1 ^ Z X, 2 ^ — (1 + A,„ ) - m\ m . 
+
+■K IT- ip 7T 
+
+Thus, for any m ^ 2c/ v, 
+
+
+
+loe c 
+
+
+
++ 1 
+
+
+
+X m &lt; 
+
+
+
+7T- 
+
+
+
+2c 
+
+w 
+
+7T 
+
+
+
+For any given 77 &gt; 0, if 
+
+(4.4) „ * H£ + IH (!»£? + 1) 
+
+it follows that X,„ ^ 77 12. Then, by the reasoning of Theorem 3, 
+
+
+
+11,1 
+
+
+
+1 — 77 1 J 
+
+
+
+It" 77 ^ 11, this implies 
+
+
+
+inf 
+
+
+
+/- ta„f, : 2 ^ (1 + 77 )6t- 2 ; 
+
+
+
+larger values of 77 are covered by Theorem 3. Theorem 4 is proved. 
+Note: If only small values of 77 are of interest, the "12" in (4.4) is of 
+
+course unnecessarily large. 
+Lemma 3: With the normalization of II" = \, we have for any T &gt; 1 , 
+
+X[ri-i (T) ^ 0.085. 
+
+Proof: We begin, again, with Lemma 1. If we consider first the case 
+
+772 - [772] ^ £, we let/U) = | g'(s) |, and 
+
+(b) ro = -[£] - 1, « = - y - [I] , n = 0, = i. 
+
+
+
+1316 THE BELL SYSTEM TECHNICAL JOURNAL, JULY 1962 
+
+We obtain 
+
+772 
+
+|^(D|+ ••• \g*([T/2])\ g/ \g\s)\ds 
+
+r/2 
++ / (• - M - I) 2-Reigg') 
+
+
+
+and 
+
+i 
+
+ds 
+
+
+
+\g*(-[T/2])\ + ••• +|/(0)| ^ / \g\s) 
+
+-r/2 
+
+i 
+
++ / («-[«]- h) ZRe(gg) ds. 
+
+-r/2 
+
+Adding and applying the Schwarz inequality, we find, as in Theorem 2, 
+
+(4.5) £ UV) I ^ II A? II 2 + » II ^ INI* II- 
+
+|n|£[l72] 
+
+The Weyl-Courant lemma (Ref. 3, p. 238) asserts that 
+
+
+
+X„ = inf sup 
+
+.4,, tp±A n 
+
+
+
+Dip 
+
+
+
+\% 
+
+
+
+where A„ ranges over all w-dimensional subspaces of (B. If # n +i is an 
+( n + i (-dimensional subspace of (B, the orthogonal complement of 
+every .1,,'must have at least one vector in common with B n+ i . Thus 
+
+
+
+sup - S: mi '— — r 
+
+
+
+v&gt;x^„ || ^ || * £Bn+l II V II" 
+
+and since the right-hand side of the inequality is independent of A n , 
+the Weyl-Courant lemma implies 
+
+(4.6) K ^ uif ^ — r£-. 
+
+v€B n+ i \\&lt;P\\ 
+
+Now let B [T ] be the subspace of (B spanned by the [T] (orthonormal) 
+functions [sin rc(t - h)]/w(t - k), | ft | £ [T/2]. For g g £ m we have 
+
+11*11"- Z ltf(»)i 8 . 
+
+|n|g[T/2] 
+
+since g(») = when | n | &gt; [T/2], so that (4.5) yields 
+
+
+
+PROLATE SPHEROIDAL WAVE FUNCTIONS — III 1317 
+
+! &lt; II »Q II 8 , II Dg || 
+
+
+
+q\- II g II 
+
+Letting # vary in Z?[r] , and using (4.6), we now find 
+
+, ^ • t II &amp;9 II 2 i 'I &amp;9 'I • e II A&lt;7 l| 2 , • r II ^&lt;7 
+
+
+
+C€B|r| II Q II 119 11 0€fl|T) II 9 I]' U£B[T\ \\g\\ 
+
+^ A[ T ]_i + 7T V\[ 7 - ] _ 1 , 
+
+whence 
+
+Am-i ^ 0.085. 
+Similarly, if T/2 - [T/2] &lt; h, 
+
+E \g(n + i) I 2 ^ II J)? If + r || z&gt;0 1| Nil, 
+
+lH+jTsir/2] 
+
+and letting B [T ) be the suhspace of &lt;B spanned by the [jP] functions 
+[sin T(t - k - §)]/W(t - k - i)] with | fc + i | ^ [3T/2] we may 
+apply the identical argument to find X (T] _ 1 ;&gt; 0.085, as before. Lemma 3 
+is established. 
+Lemma 4-' For any WT &gt; 0, 
+
+Xo &gt; 1 — 2 V 2e 
+
+Proof: For convenience, let £2 = 2tTT', and normalize so that T = 2. 
+Consider the function /(t) whose Fourier Transform F(.r) is given by 
+
+
+
+iT "" if |*| ^12 
+
+
+
+F(*) = (Oir)* 
+
+if I a; I &gt; fl. 
+
+
+
+Then 
+
+
+
+r I /(0 | 2 A = 2ir f F 2 (.r) (fa; = 4 v^ f ' ° e - "' du. 
+
+j— 00 J-n •'0 
+
+On the other hand, 
+
+/(/) = / p(x ) cf.s xt dx 
+
+J- a 
+
+
+
+2 
+&gt; 
+
+
+
+1318 
+
+
+
+THE BELL SYSTEM TECHNICAL JOURNAL, JULY 1962 
+
+
+
+It is easy to check that the expression in brackets is non-negative for 
+/ = 1, and hence f or | t | ^ 1. In fact, 
+
+
+
+
+
+
+- u 2/2 
+
+
+
+(III, 
+
+
+
+and 
+
+
+
+&lt;;&lt;u) A/\&lt;r m - 
+
+
+
+- U 2/2 
+
+
+
+y/Ti 
+
+
+
+C 
+
+
+
+du 
+
+
+
+is non-negative since it equals at both 12 = and ft = &lt;» , and 
+
+\2Vft 2\/2/ 
+is positive for ft &lt; 2/tt and negative for il &gt; 2/v. Thus 
+
+Hence, from (4.7), 
+
+
+
+/ fit) (lo^v; r 2 du 
+
+
+
+- U 2/2 
+
+
+
+cfr/. 
+
+
+
+( Ao* /or ■/. 
+
+±s &gt; 1 - 2 i/2 / _ &lt;r" 2 ' 2 
+
+J— CO 
+
+
+
+£0 
+
+r 
+
+
+
+rfw 
+
+
+
+e aw 
+
+
+
+But 
+
+
+
+f &lt;T" 2/2 du &lt; Jl e- QI2 because 0(0) ^ 0, 
+and the expression in parentheses is bounded by y/% Thus 
+
+f AO dt 
+h &gt; 1 - 2 V2 e- 0/a . 
+
+Ao dt 
+
+But / € « by definition, and hence competes in the maximum problem 
+which defines X n . Hence 
+
+Ap = max 
+
+05 r 1 fa) r dt 
+
+J- X 
+
+Lemma 4 is established. 
+
+
+
+&gt; 1 - 2\/2 
+
+
+
+-fi/2 
+
+
+
+PROLATE SPHEROIDAL WAVE FUNCTIONS — III 
+
+
+
+1319 
+
+
+
+5. Theorem 5. For any t~ T &lt; 0.915, there exists a function f f E(e T ) 
+such that 
+
+
+
+inf 
+
+
+
+[2WT]—2 
+
+
+
+&gt; __L_ ( * _ 2V2e- rWm ). 
+~ 0.915 7 v J 
+
+
+
+(If *t ^ 0.915, the right-hand side of the inequality should be replaced- 
+byl.) 
+
+Proof: Theorem 5 asserts the existence of a lower bound for the deflec- 
+tion of E(e T ) from the subspace »S , Jf ,rr1-1 , spanned by the functions 
+\f/ k , with ^ k ^ [2WT] — 2. This deflection has already been calculated 
+in (1.1) and is easily seen to be assumed by a function in E(e T ). Thus 
+there exists/ £ E(t T ) such thai 
+
+
+
+inf 
+
+
+
+[2HT)-J 
+
+
+
+. f X - (1 - € 2 T )"| 
+
+- mm i. x — r~ — • 
+
+L Ao — A|2irr]-i J 
+
+
+
+By Lemma 3, \hwt]-i ^ 0.085; this ensures that when t 2 T ^ 0.915 
+the smaller of the terms is 1. For other values of t T , since 
+
+
+
+Xo &gt; 1 - 2-^/2 
+
+
+
+-iHT/2 
+
+
+
+by Lemma 4, and X &lt; 1, we find 
+
+and now the second of the bracketed terms is the smaller. Theorem 5 
+is established. 
+
+G. In £(—00,00) let D' denote the operation of projecting onto 
+[0,»], that is 
+
+
+
+D'f(t) = 
+
+
+
+t 
+
+
+
+
+
+
+
+t ^ 
+t &lt; 0. 
+
+
+
+Arguing as with DDD in the proof of Theorem 1 we see that D'BD', 
+which takes XT(0, =c ) into itself, is self-adjoint, positive, and bounded 
+by I (though no longer completely continuous). It therefore has a 
+spectrum' contained in the unit interval; we will show that its spectrum 
+consists of all g X ^ 1. 
+
+Theorem 6. The AT spectrum of the operator 
+
+D'BD'f = &gt; f" ™ ( lSUl /(,,) „„, , &amp; 0, 
+
+7r •'» .r — y 
+
+consists of all ^ X ^ /. 
+
+Proof: Theorem (*&gt; follows immediately as a special case of much more 
+
+
+
+1320 THE BELL SYSTEM TECHNICAL JOURNAL, JULY 19(12 
+
+general results of H. Widom 7 and M. Rosenblum (unpublished), which 
+determine the spectra in £ 2 of Wiener-Hopf equations with kernels 
+whose Fourier transforms are bounded. We include a separate proof 
+only because it is constructive. 
+
+By definition, X is in the spectrum of an operator A if and only if 
+for every t &gt; there exists &lt;p ( such that 
+
+(6 - 1} II » II &lt; " 
+
+We will prove the theorem by constructing functions which satisfy 
+(6.1) for any given &lt; X &lt; 1. The spectrum being a closed set, it 
+must then include all £ X £ 1, but by the introductory remarks it is 
+also contained in the closed unit interval, hence it consists of precisely 
+
+the points £ X £ 1. 
+
+Lemma 5: Let n &gt; be given. Then corresponding to any 8 &gt; Oiere 
+
+exists a function Hs(z) satisfying 
+
+a. Hs(z)is analytic in \z\ &lt; 1, continuous in \z\ ^ 1, 
+
+b. H s (0) = 0, 
+
+/"l/dW) + ffi(e-*) | 2 sin d dd 
+
+c ± F — &lt; 6 - 
+
+/ | //«(&lt;?*) | 2 sin 6 dd 
+
+Proof: Suppose &lt; a &lt; v/2. Denote in the z-plane by P, ,P a ,^3 ,^4 , 
+P 6 ,P 6 the points l/ a ,-e~ ia ,-\,0, and i respectively, and let 71,71 
+represent respectively the arcs PJ\ ,P 3 Pi of the unit circle. Let w = 
+P (z) be a conformal map of the upper half of the unit disc onto the 
+region in the w-plane defined by 1 &lt;\w\ &lt; q &lt; « , Im{w] &gt; 0, which 
+takes the points Pi ,P 2 ,l\ ,P 4 , onto w = l,w = q, w = -q, w = -1 
+respectively. The required map exists as soon as q is chosen appropriately 
+(for example, so as to make the extremal length of the family of curves 
+joining 71 to 72 in the upper semicircle equal to the extremal length of 
+the family of curves joining the two segments of the real axis in the 
+image domain), and it defines q uniquely. Now by reflection, P (z) is 
+extendable across the diameter of the unit circle to a map of | z \ &lt; 1 
+onto the domain \/q &lt; \ w \ &lt; q, Im[w\ &gt; 0, and satisfies 
+
+Po(e*)/V = Po(e-' e ) a &lt; d &lt; tt - a 
+
+I P (e") \ = q a &lt; 6 &lt; t - a 
+
+\/q &lt; I Po(e ie ) |, I Po(e' iB ) \ &lt; q e iB (E 71 , 7a • 
+
+
+
+PROLATE SPHEROIDAL WAVE FUNCTIONS — III 1321 
+
+Choose r so that y. = (f' 2r , and let P(z) = [ql\(z)\ T . Since P (z) is 
+bounded away from zero and infinity in | z | ^ 1, the function P(z) 
+is also analytic in | z \ &lt; 1, continuous in | z | ^ 1 (though no longer 
+necessarily univalent) and satisfies 
+
+nP(e ,e ) = P(c- ie ), a &lt; 6 &lt; 7T- a 
+
+| P(c ie ) j = 1/ M , a &lt; 6 &lt; 7T - a 
+
+m„ = min (1/ M ,1) &lt; | P(e ie ) |, | P(e~ ie ) \ &lt; max (1/ M ,1) - M M 
+
+e € Ti , 7-&gt; ■ 
+
+Next let w = Q(z) map the region defined by | z \ &lt; 1, Im{z} &gt; 0, 
+Rejz} &gt; onto itself, taking the points P 6 ,Pi ,P 2 onto w = 0, w = 1, 
+and iv = i respectively. Qiz) may be constructed from elementary maps 
+and is given explicitly by 
+
+A/ cos 2 a + ( -= J sin 2 a — 1 
+
+qHz)= » Vl •-' 
+
+
+
+A/ cos 2 a + I j— ,, j sin 2 a + 1 
+
+
+
+It may be extended by reflection to yield a map of | z \ &lt; 1 onto the 
+domain in the w-plane formed by cutting the unit circle along the 
+imaginary axis from i[s'm a/ (I + cos a)] to i and from — i[sin a/ (I -+- 
+cos a)] to —i. It satisfies 
+
+Q(0) = 0, 
+
+Qie'") = -Q(c~ ie ), a &lt; 6 &lt; t - a 
+
+\Q(e")\ - | «(«"*) | = 1, e*€71,7». 
+
+Now form H(z) = P(2)Q(z). We see that H(z) satisfies conditions 
+(a) and (b) of Lemma 5. Furthermore, by definition of H, 
+
+nH{e ,e ) + H(e- ie ) =0, a &lt; 6 &lt; tv - a 
+
+
+
+H(e ie ) | - - 1 | Q(e») I, 
+
+
+
+a &lt; &lt; 7r — a 
+
+
+
+
+
+
+Rp &lt; | Hie"') |, | tf (O | &lt; .1/, , c ,e 6 ti ,72 . 
+Thus 
+
+
+
+1322 
+
+
+
+(6.2) 
+
+
+
+(6.3) 
+
+
+
+THE BELL SYSTEM TECHNICAL JOURNAL, JULY 1962 
+
+(* l/iffCe*) + H (e~ ie ) | 2 sin d dd 
+
+m [ a + f I M //( e ' 6 ) + ff («"•) | 2 sin d dd 
+
+&lt; 2 (u + l) 2 Mj f sin 6 dd = 2( M + l)'Ml(l - cos a). 
+
+f I ff(« # ) | 2 sin ddd&gt; f " I H(c*) | 2 sin &lt;/0 
+
+= L /"" " | Q(e ie ) | 2 sin dd = - 2 P 2 | Q(e ie ) | 2 sin 5 dd. 
+
+
+
+Using the expression for Q(z) we find, for a &lt; B &lt; * — a, 
+
+
+
+iB\ |2 
+
+
+
+Q(e ) = 
+
+
+
+/ 
+
+
+
+COS" or 
+
+
+
+.2 „ 
+
+
+
+cos 2 9 sin 2 a 
+sin 2 d 
+
+
+
+- 1 
+
+
+
+/!/ cos 2 a 
+
+
+
+cos- sin- a 
+sin 2 d 
+
+
+
++ 1 
+
+
+
+/ , am 2 a , 
+
+1/ 
+
+
+
+l-^ a + l 
+
+
+
+sin 2 
+
+
+
+sin" 
+
+
+
+1 - 
+
+
+
+Sill' - a 
+
+
+
+sm 2 a | V sin 
+
+Introducing this into (6.3) yields 
+
+
+
+1 sin 2 « 
+= 4 sin 2 d ' 
+
+
+
+r , *&gt;. ,9 . , 1 . i , A + COSa\ 
+
+/ H(e ,e ) " sin d dd &gt; — sin a log ( — r- ) , 
+
+J„ l\i~ \ sin a / 
+
+whence, by (6.2), 
+
+f | ?H(e*) + ff(« _ ") I 2 sin d dd R 
+
+
+
+P | H(e«) 
+
+•In 
+
+
+
+sin tf0 
+
+
+
+log esc a ' 
+
+
+
+where 7C M depends only on m- Thus, if a is chosen sufficiently small, 
+H(z) satisfies the remaining condition (c). Lemma 5 is established. 
+
+We now pass to the construction of the functions &lt;p t of (6.1). Given 
+&lt; X &lt; 1 and e &gt; 0, set &lt; m = (1 - MA, choose 8 s0 sma11 that 
+that y/S/0 - VS) &lt; e, and let H t (z) = H(z) be the function of 
+Lemma 5 corresponding to 5. 
+
+Introduce the map u + iv = w = \{z + \/z), taking | z \ &lt; 1 onto 
+the w-plane slit along the real axis from w=-ltow=l, and in 
+
+
+
+PROLATE SPHEROIDAL WAVE FUNCTIONS 
+
+
+
+III 
+
+
+
+1323 
+
+
+
+that region define F(w) = H(z). The function F(w) is then analytic 
+except on the slit. If Fi(w) denotes F(w) in the upper half-plane, 
+Fi(iv) is continuous in the closed half plane v ^ 0. If v &gt; 0, 
+
+
+
+(6.4) £ 
+
+
+
+Fi(u + »») 
+
+
+
+9. Jr 
+
+
+
+1 J v v 
+
+
+
+H(z) 
+
+
+
+1 - 
+
+
+
+dz 
+
+
+
+where r„ is the curve in the upper half of the unit circle defined in 
+polar coordinates by (r — 1/r) sin 6 = 2v. Since H(0) = 0, the func- 
+tion [H(z)/z]\/l — 2 2 is analytic in | z \ &lt; 1, continuous in | z | ^ 1, 
+and by the maximum principle 
+
+H(z) 
+
+
+
+H(z) 
+
+
+
+vr- 
+
+
+
+^ sup 
+
+
+
+VT= 
+
+
+
+z- 
+
+
+
+^ sup \H(z) 
+
+1*1 = 1 
+
+
+
+By property (a) of Lemma o, H{z) is bounded in \z\ ^ 1, hence so 
+is the integrand on the right-hand side of (6.4). Since the curves r„ 
+have lengths bounded independently of v, it follows that 
+
+/•oo 
+
+/ | Fi(u + iv) | 2 du &lt; c, v &gt; 0. 
+
+•'-00 
+
+Consequently, by a theorem of Paley-Wiener, 8 Fi(w) coincides in 
+v ^ with the Fourier transform of a function ypi (t) £ £T which van- 
+ishes for t ^ 0. Letting F 2 (u&gt;) denote F(w) in the lower half plane, 
+the identical argument establishes that Fi{w) coincides in v ^ with 
+the Fourier transform of a function ^ 2 (0 6 &lt;£ 2 which vanishes for 
+&lt;^0.Letpi(0=(l/X) fc(0,«(0 = -(l/\)fa(t),and&lt;p(t) = Vl (t) + 
+pg(t)&gt; Then with x(w) the characteristic function of the interval — 1 ^ 
+u 2s 1, using the norm-preserving property of the Fourier transform, we 
+have 
+
+|| £DV - X^ || 2 = || (B - \)&lt;p2 - \&lt;pi || 2 
+
+= r|ix(«) -m^+fm 
+
+(6.5) = f | F x (u) - F 2 (u) | 2 du 
+
++ j_ I nF,(u) + Fx(tt) | 2 d« 
+
+= [' \»H(e") + #(0 | 2 sin 6 dd, 
+
+J ii 
+
+
+
+r/j/. 
+
+
+
+1324 THE BELL SYSTEM TECHNICAL JOURNAL, JULY 1962 
+
+while 
+
+ik II s ^ ii^r-^i^i 1 
+
+(6.6) - - £ | F 2 (u) | 2 rfu &gt; I £ | ft(«) | 2 du 
+
+= L /"* I F(e*) | 2 sin d dO. 
+
+X 2 ^o 
+
+
+
+Thus, combining (6.5) and (6.6), 
+
+[' | H(e*) | 2 sin 
+
+Jn 
+
+
+
+. „i f | vH{e a ) + //(e- ,fl ) | 2 sin d dd 
+
+(6 . 7 ) li^; -VII &lt;x ,jg &lt;x * 5 . 
+
+* " / | H(e*) | 2 sin d dd 
+
+'o 
+From (6.7), 
+
+(6.8) || D'ip || ^ || BD* II ^ X(l - V~S) || *&gt; ||, 
+and 
+
+(6.9) || D'BD'ip - X D'ip || = || D'(BD'&lt;p - \&lt;p) \\ ^ \\/l \\ &lt;p ||. 
+Setting &lt;p t = D'ip and combining (6.8) and (6.9) we obtain 
+
+|| D'BD'ip. - \&lt;p t ll/H ip t || ^ V'S/(1 - VS) &lt; e, 
+
+which is the required inequality (6.1). Theorem 6 is established. 
+
+7. Theorem 7. Given any subinterval &lt; a ^ x ^ /3 &lt; 1 of the unit 
+interval, there exists T such that for all T &gt; T , the operator BD T B 
+has an -eigenvalue contained in [a,0\. 
+
+Proof: Let X = |(a + 0) and choose e so small that 3e/(X — 3e) &lt; 
+(0 _ a )/2. Since &lt; X &lt; 1, by Theorem 6 there exists a function 
+ip £ £ 2 such that 
+
+|| D'BD'ip - \ip || 
+
+
+
+&lt;p 
+
+
+
+Since y&gt; and D'BD'ip are fixed functions in £ 2 , there exists T such that 
+for each T &gt; T 
+
+|| (D' - D T )ip\\- = f \ip(t)\ 2 dt &lt; e 2 \\ip\\ 2 
+
+
+
+PROLATE SPUR KOI DAL WAVE FUNCTIONS — III 1325 
+
+and 
+
+!! (D' - D T )BD'&lt;p II 2 = / I BD'&lt;p(t) | 2 dt &lt;*\\&lt;p II 2 . 
+j t 
+
+Using the inequality || D T B(D' - D t )&lt;p || ^ || (D' - D T )&lt;p || we then 
+find 
+
+|| D T BD T &lt;p - Xy|| 
+II &lt;P II 
+|| D'BD'y - \&lt;p - (D' - D T )BD'&lt;p - D T B(D' - D T )&lt;p | | 
+
+(7.1) || D'BD'y - Xy&gt; || || (£)' - D T )BD'&lt;p \\ 
+
+Ik II + II HI 
+
+L || D T B(D' - D T )&lt;p | | 
+Ik II 
+
+^ 3e. 
+
+Now from (7.1) we see 
+
+(7.2) || D T tp || ^ || 7^7?/),. v || ^ (X - 3«) || ? || 
+and 
+
+(7.3) || D T BD T tp - \D T tp || = || n T (D T BDT &lt;p - \&lt;p) \\ ^ 3e|| *&gt; || 
+so that, combining (7.2) and (7.3), 
+
+(7.4) || DtBD t &lt;p - \D T &lt;p H/ll D r p || ^ 3e/(X - 3e). 
+
+Now by property ii of the functions ^, , we may expand D T ip in a series 
+D t &lt;p = ^2a n &lt;p„ , where ^„ = D r \p„/VK(T). Inserting this into (7.4), 
+and using the fact (in) that the ^„(t) (which depend also on T) are 
+cigcnf unctions of BD T B, we find 
+
+3c V &gt; \\D T BD T¥ &gt;-\D T &lt;p j 2 = \ ] ^aJ\ n (T) - X)y n || 2 
+x - 3e / : WDnp II 2 II £ «»*&gt;» II 2 
+
+
+
+Sl«n| 2 Un(T) -X| 2 
+
+Z I a. I 2 
+
+^ inf |X„(T) - X| 2 . 
+
+We conclude that for every T &gt; 7' there exists an eigenvalue X„(T) 
+
+
+
+1326 THE BELL SYSTEM TECHNICAL JOURNAL, JULY 1962 
+
+of the operator BD T B with \\ n (T) -\\ ^ 3e/(X - 3e) &lt; (0 - a)/2, 
+or equivalently, since the X n (T) are all real, that a &lt; \„(T) &lt; 0. 
+Theorem 7 is established. 
+
+Corollary 7.1 The number of eigenvalues of the operator BD T B contained 
+in any subinterval J of the unit interval cannot remain bounded as T — » » . 
+Proo/: Given any integer N, subdivide ./ into N disjoint intervals J n . 
+By Theorem 7, for all T sufficiently large each J n will contain an eigen- 
+value of BD T B, hence ./ will contain at least N such eigenvalues. Since 
+N was arbitrary, Corollary 7.1 is established. 
+
+8. Theorem 8. Let any integer N and t T &lt; 0.916 be given. Then as 
+soon as WT is sufficiently large, there will exist a function f € E(e T ) 
+such that 
+
+
+
+inf 
+
+
+
+[2WT]+N 
+
+f- £ *#&lt; 
+
+o 
+
+
+
+&gt; l (A - 2 A./9 e~ wWTI *) 
+
+
+
+(// t% ^ 0.916, the right-hand side of the inequality should be replaced 
+
+byl.) 
+
+Proof: By Lemma 3, we have 
+
+X[2.rr]-i (2WT) ^ 0.085. 
+
+By Corollary 7.1, there exists a constant A- , depending only on JV, 
+such that for all WT &gt; fa the interval 0.084 ^ x ^ 0.085 will contain 
+at least N + 2 eigenvalues of BD T B. Hence 
+
+X [2irrl+ „ +1 (2WT) ^ 0.084 for WT &gt; fa . 
+
+Now the proof of Theorem 5, applied without change to \ 12WT )+n+i , 
+establishes Theorem 8. 
+
+Theorem 8.1 Let e r and any integer N be given. Then as soon as T is 
+sufficiently large 
+
+[2irrJ-.v 
+
+
+
+inf 
+
+
+
+n 
+
+
+
+^ 12 er , 
+
+
+
+for all f € E(e T ). 
+
+Proof: According to Lemma 2, 
+
+Xprq-ti (2W7 1 ) ^ 0.915. 
+
+By Corollary 7.1, there exists a constant fa, depending only on N, 
+such that for all WT &gt; fa the interval 0.915 g x ^ 0.916 will contain 
+at least N + 1 eigenvalues of BD T B. Hence, 
+
+\\twn-» (2WT) £ 0.916 for WT &gt; fa . 
+
+
+
+PROLATE SPHEROIDAL WAVE FUNCTIONS — III 1327 
+
+Applying now the proof of Theorem 3 to \[2wt]-n (2WT) establishes 
+Theorem 8.1. 
+
+9. Theorem 9. A. The restrictions to t &gt; of the functions 
+
+[sin ir(2Wt - n)]/(2Wt - n), 
+
+for n ^ —1, are dense in £~(0,x). 
+
+R. Their restrictions to t &lt; are not dense in £ 2 ( — =°,0), nor even 
+in &amp; restricted to I &lt;! 0. 
+
+Proof: Without loss of generality we may take W = \, to simplify 
+notation. We begin with part A. Let 
+
+t ^ 
+
+t &lt; 0. 
+The functions 
+
+sin ir (t — n) 
+
+
+
+
+&lt;P,,(t) m c(t) 
+
+
+
+t — n 
+
+
+
+all lie in £ 2 (0, »), so that their being dense in £ 2 (0,&lt;») is equivalent 
+to the statement that h(t) = is the only function in £ 2 (0,«&gt; ) which 
+is orthogonal to &lt;p n (t), n ^ —1 (Ref. 3, p. 72). We will prove A in 
+this form. 
+
+Accordingly, suppose that (A(0&gt;Pn(0) = 0» n = — 1 . Using the Parse- 
+val theorem, and letting x(") be the characteristic function of the in- 
+terval | m | ^ v, we find 
+
+o = (*(f),^(o) = [ C (OMo, sin ^; n) ] 
+
+(9.1) = (IKiOxiuW'") 
+
+= ( X (u)H(u),e inu ), n£ -1, 
+
+where H(u) is the inverse Fourier transform of c(t)h(t). The function 
+x(u)H(u) is in £ 2 (— 7r,ir) and may therefore be expanded there in a 
+Fourier series x(v)H(u) = |E*°=-&lt;» a*e**. By (9.1) the coefficients a* 
+vanish for A; ^ — 1, so that 
+
+(9.2) x(u)H(n) = X&gt;.e'* u ; 
+
+fc—0 
+
+also 
+
+(9.3) El ^ I 2 = ^ C \H(u) \ 2 du &lt; oo. 
+
+A:=0 ^7T J-t 
+
+
+
+1328 THE BELL SYSTEM TECHNICAL JOURNAL, JULY 1962 
+
+The function H(u) may be continued analytically into the upper half 
+of the w = u + iv plane by its denning formula 
+
+H(w) = f h(x)e iwx dx, 
+
+from which, by Parseval's theorem, 
+
+| H(u + iv) I 2 du &lt; A &lt; oo , v ^ . 
+
+00 
+
+Set (t(w) ■ jy-oa k e ikw ; the function G(w) is then also analytic in the 
+upper half-plane v &gt; 0, and is periodic there, with period 2t. We will 
+now show that (9.2) implies H(w) = G(w) for v &gt; 0, consequently 
+that H(w) is also periodic in v &gt; with period 27r. It then follows from 
+
+(9.4) that H(w) = 0, hence that h(x) = 0, which was to be proved. 
+We model our argument on one given by A. Beurling (unpublished). 
+
+Applying the Schwarz inequality to the defining expressions for H(w) 
+and G(w) we find 
+
+(9.5) | H(u + iv) |, | G(u + iv) | ^ k/Vv, &lt; v &lt; 2. 
+
+Next set F(w) = H(w) - G(w) in v &gt; 0. 
+
+Let &lt; e &lt; i, and in the to-plane denote by P t ,P ( ,P 2 ,Q&gt; ,Q ( ,Qi 
+the points tt.tt + ie,ir + t,-» + *, -* + »«,-* respectively. Let I\I\ 
+be the arcs made up of the line segments P\P 2 + PiQi + Q2Q1 and 
+P x P t + P e P € + Q«Qi respectively. Let #1 , R 2 be the rectangles | u \ &lt; 
+■k/2, I &lt; v &lt; i and | u \ &lt; v/2, -\ &lt; v &lt; -\ respectively, and R a 
+region which contains Ri and R 2 and whose closure does not intersect T. 
+
+Form the function 
+
+J{w) = / — . 
+
+J r i; — w 
+
+By (9.5), F(f) is integrable on T, so that J(w) is an analytic function of 
+w for w off T, in particular for w £ R. Now we rewrite 
+
+and estimate the second integral of (9.6). If w € Ri U # 2 and f 6 r. 
+we see that 1/ | f - w| &lt; £ &lt; « . Consequently 
+
+I r F(r) rfr = r gr) &lt;fr + r ?(« + *) 
+
+Jr t — W J p, p. 4- 0.0. f — W J-» 
+
+
+
+(9.7) 
+
+
+
+/p, f - U) Vp.+ Q.Qi f — W i-» tl + W — W 
+
+
+
+rill 
+
+
+
+^ £ ( I F(f) df I + B f \F(u + is) I dw . 
+
+
+
+PROLATE SPHEROIDAL WAVE FUNCTIONS — HI 1329 
+
+By virtue of (9.5), 
+
+
+
+:9.8) lim [ |F(f)rff|=0. 
+
+«-»0 J P l P,+ Q t Qi 
+
+
+
+Applying the Schwarz inequality to the remaining integral of (9.7), and 
+using the definition of F and the triangle inequality in £ 2 we find 
+
+^= /* | F(u + m) I du ^ jjT | F(u + u) \ 2 duJ 
+
+^ {[ \H(u + ie) - H(u) \*du\ 
+(9.9) ^ , 
+
++ 1/ |G(m) - G(u + fc) | 2 rfwl . 
+
+By definition of H(w), 
+
+H(u + &amp;) - //(m) = f h(t)[e- lt - lW'dt, 
+
+whence by Parseval's theorem 
+
+I | II (u + u) - H(u) | 2 du ^ [ | H(u + tc) - H(u) \ 2 du 
+(9.10) 
+
+= 2tt f |M0 I'K" - l\ 2 dt. 
+
+For each /, lim | /i(J) | 2 | 1 - e~" | 2 = 0, and | h(t) | 2 | 1 - e~" I 2 ^ 
+«-»o 
+
+4 | /i(/) | , which by assumption is an integrable function. Consequently 
+
+by the theorem on dominated convergence (Ref. 3, p. 37) applied to 
+
+the last integral of (9.10), 
+
+(9.1 1 ) lim f | H(u + ie) - H(u) I 2 du = 0. 
+
+Similarly from the definition of G(w) 
+
+G(u) - G(u + ie) = X&gt;*(1 - e~ ek )e iuk , 
+whence 
+
+f | G(m) - G(u + fc) | 2 dtt - 2tt f) | a* | 2 |1 - e" 1 * | 2 , 
+
+
+
+= 0. 
+
+
+
+1330 THE BELL SYSTEM TECHNICAL JOURNAL, JULY 1962 
+
+so that using (9.3) and arguing as above 
+
+(9.12) lim f | G(u) - G{u + u) | 2 du = 0. 
+
+«-o+ •'— * 
+
+Combining (9.12), (9.11), (9.2), (9.9), (9.8) and (9.7) we find that 
+uniformly for w € Ri U R 2 , 
+
+(9 , 3) lim i/ m* 
+
+e-.0+ \ J T, f — V) 
+
+Since r — I\ forms the boundary of the rectangle \u\ ^ t, e ^ v ^ 1, 
+in whose interior F is an analytic function, the first integral on the right- 
+hand side of (9.6) is equal to F(w) for w 6 Ri and to for w t Ri . 
+From (9.13) it follows that J(w), which is independent of e, must itself 
+coincide with F(w) for w 6 Ri and with for w 6 R2 ■ But if J(w) = 
+in 72 2 , it must be identically in its whole domain of analyticity, in par- 
+ticular in ft, hence also in Rx . We conclude that F(w) m in R x , hence 
+in its whole domain of analyticity v &gt; 0. Thus H(w) = G(w) in v &gt; 0, 
+whence, as we have already argued, part A of Theorem 9 follows. 
+
+We now pass to a proof of part B. We remark first that the restric- 
+tions of (B to t &lt; include the functions [sin ir(2Wt - n)]/(2Wt - n), 
+n fe 1, restricted to t &lt; 0. Replacing t by -t, we see that, by part A, 
+these are already dense in £ 2 ( - =0 ,0). Consequently to prove part B it is 
+enough to establish its first assertion. 
+
+We argue by contradiction. Accordingly, suppose that the restrictions 
+to * &lt; of the functions [sin ir(2Wt - n)]/(2Wt - n), for n g -1, are 
+dense in £ 2 (-°o,0). Then defining the function g(t)e£ 2 ( — °°,0) by 
+
+-1 ^ t ^ 
+
+t &lt; -1, 
+
+we could find a sequence of functions f„(t), each some linear combination 
+of the bin w(2Wt - n)]/(2Wt - n), n ^ -1, such that [f„(i)\ ap- 
+proaches git) in £ 2 ( — » ,0), i.e. such that 
+
+(9.14) I \g(t) -f n (t)fdt = e*-+0. 
+J— 00 
+
+The triangle inequality in £ 2 (- *&gt;,0) applied to (9.14) yields 
+
+(9.15) j[j/.(0 fdt 5i |[£ I g(t) \ 2 dtJ + V^} 2 = (1 + VT,f. 
+
+Now the functions /„(£) are all band-limited and/„(fc) = for k ^ 0. 
+Thus by Ref . 9 there exists a constant C\ such that 
+
+
+
+
+PROLATE SPHEROIDAL WAVE FUNCTIONS — III 
+
+
+
+1331 
+
+
+
+(9.16) 
+
+
+
+f \Ut)?dt^ C x f \/M 
+
+Jd J— oo 
+
+
+
+dt. 
+
+
+
+From (9.15) and (9.16) it follows that, as elements of £ 2 ( — cc , co ), the 
+functions /„(£) have uniformly bounded norms as soon as e„ &lt; 1. Ap- 
+plying (1.5), we conclude that the f n (t) are a uniformly bounded family 
+of analytic functions in the strip | Im{t] | &lt; 1 of the complex /-plane, 
+thus a normal family there (Ref. 5, p. 171). We may therefore extract 
+from the sequence if„(t)} a subsequence f„ k (t) converging (pointwise) 
+in the whole strip, uniformly on any compact subset of the strip, to an 
+analytic function f(t) ; from (9.14), 
+
+f(t) = g(t), t &lt; 0. 
+
+But g{t) vanishes on an interval without vanishing identically, and so 
+cannot coincide with an analytic function. We have reached a contradic- 
+tion, and part B follows. Theorem 9 is established. 
+
+10. Theorem 10: Letf(t) 6 E(t T ). Then an estimate of the form 
+
+
+
+mm 
+
+
+
+/ - E a k 
+
+IfclgBT+JV 
+
+
+
+sin ir(2Wt - k) 
+
+
+
+^Ce T 2 
+
+
+
+ir(2Wt - k) 
+
+cannot be valid independently of e T , no mailer how large the constants C 
+and N are chosen. 
+
+Proof: Without loss of generality we may take W = ^, to simplify no- 
+tation. 
+
+Any function / £ 03 has the (sampling series) expansion f(t) = 
+/ l-oe/(fc)[sin ir(t — k)]/[r(t — k)]. Since the functions 
+
+
+
+Vk 
+
+
+
+M = 
+
+
+
+(10.1) 
+
+
+
+sin ir(t — k) 
+ir(t - k) 
+
+
+
+are orthonormal, 
+
+
+
+min 
+
+
+
+/- 
+
+
+
+E «&lt;• Vfc 
+
+|A-|g(7-/2)+Ar 
+
+
+
+E |/(*) 
+
+|fc|&gt;(r/2)+AT 
+
+
+
+Now consider the function [sin r(t — N — l)]/[?r(£ — N — 1)] which 
+is in 03. By Theorem 9, we may approximate its restriction to t &gt; ar- 
+bitrarily closely in £ 2 (0,») by finite linear combinations of the func- 
+tions [sin t(1 — n)]/[ir(t — n)], n ^ — 1. That is, given 77 &gt; 0, there 
+exists constants a_i,...,a_ m (depending on 77) such that 
+
+
+
+/-mo\ f \ sin ir(t — N — 1) v^ sin w(t 
+
+(10.2) / 2^ a k j- — 
+
+•'0 I 7r(i — Jy — 1) k — 1 ir(t — 
+
+
+
+-k) 2 
+
+
+
+(I-*) 
+
+
+
+dt &lt; 77. 
+
+
+
+Let 
+
+
+
+(10.3) &lt;p v (t) ■■ 
+
+
+
+sin ir(t — N — 1 
+ir(t- N - 1) 
+
+
+
+- E 
+
+
+
+Oft 
+
+
+
+sin r(t — k) 
+*(t - k) 
+
+
+
+1332 THE BELL SYSTEM TECHNICAL JOURNAL, JULY 1962 
+
+
+
+the function &lt;p n £ CB, and || &lt;p n || 2 = 1 + E^-i | a k | 2 ^ 1. Since in par- 
+ticular &lt;p v is in £ 2 ( — oo , oo ) we may choose an integer T/2 so large that 
+
+
+
+(10.4) 
+Now set 
+
+
+
+[ \&lt;p n (t)\ 2 dt&lt;r,. 
+
+J— 00 
+
+
+
+II *&gt;-! II 
+
+
+
+We see that/ € &lt;B and ||/|| = 1. Furthermore, by (10.2) and (10.4), 
+
+
+
+I 
+
+
+
+\f(t)\ 2 dt 
+
+
+
+t \&lt;p v (t)\ 2 dt + f \&lt;p v (t) 
+
+J— oo •'O 
+
+
+
+dt 
+
+
+
+&lt; 
+
+
+
+2 V 
+
+
+
+2 ' 
+
+
+
+|&gt;r/2 " II ¥&gt;ij II II &lt;Pv 
+
+so that/ 6 #(«r), with t T = (y/Zv/W &lt;Pv II ); we observe that e T can be 
+made arbitrarily small by choosing 77 small, since || &lt;p v || ^ 1. By defini- 
+tion 
+
+
+
+£ i/a) 
+
+|fc|&gt;(T/2)+JV 
+
+
+
+= F 1 T2 rzu(*)i 2 + E i^n^A, 
+
+II Pi II !_*&gt;* *&lt;-r-JV J || &lt;Pr, II 
+
+
+
+whence by (10.1) 
+
+
+
+nun 
+
+
+
+/ - £ a*?* 
+
+l*lg(r/2)+AT 
+
+
+
+
+
+
+Since 17 may be arbitrarily small, Theorem 10 follows. 
+
+11. Theorem 11. For any /3 &lt; 1, there exists 8 &gt; and e r such that 
+
+V f ( k \ sin v{ - 2Wi ~ k) \ (l-i- 8) 2 
+
+/or somef 6 E(e T ). 
+
+Proof: We again take IF = i without loss of generality. We follow a 
+
+line of reasoning used in Ref. 9. 
+
+
+
+00 1 1 
+Let g(t) = sin vt £ -^ — — . 
+
+
+
+T^ n i+&lt; i + n 
+
+
+
+Then 
+
+
+
+Now if P, N &gt; 0, with P &gt; JV + 1, then 
+
+
+
+PROLATE SPHEROIDAL WAVE FUNCTIONS — III 1335 
+
+Proof: The decomposition 
+
+(12.1) f=Bf+(f-Bf) 
+
+expresses / as the sum of its components in (B and orthogonal to (B re- 
+spectively. The Pythagorean theorem then yields 1 = || / || 2 = || Bf || + 
+||/ - Bff, whe nce || / - Bf \\ = vw . Similarly, \\f - Df\\ = e T . 
+
+Let g = Bf/y/l - i? w , so that g £ (B and || g || - 1. We will apply 
+Theorem 3 to g; to do so, we must estimate its degree of concentration. 
+We first expand 
+
+|| Df - DBf || 2 = (Df- DBf,Df - DBf) 
+
+(12 ' 2) = || Df || 2 + || DBS II 2 " 2Re(Df,DBf). 
+
+Moreover, since || Df - Bf\\ ^ \f - Df || + ||/ - Bf || = e T + Vw , 
+we find 
+
+(12.3) (e T +Vw) 2 Z \\Df-Bf\\ 2 = \\Df\\ 2 +\\Bf\\ 2 -2Re(Df,Bf). 
+
+Since D is a projection, (Df,DBf) = (Df,Bf); hence subtracting (12.3) 
+from (12.2), 
+
+II DBf || 2 - || Bf || 2 £ || Df - DBf || 2 - (er + ifr)', 
+
+or 
+
+v2 
+
+
+
+% II 2 = 
+
+
+
+/;B/|| 2 ||B/|| 2 _ (e T +JJbO' 
+
+
+
+2 = 1 2 i 2 
+
+
+
+(12.4) l " " " 1 -"'" l ~ *■ 
+
+
+
+1 — Ifjp 
+
+
+
+- 2^ btfkW ^ 12 — 5 — • 
+
+o 1 — Vw 
+
+
+
+Consequently, by Theorem 3, there exist constants b k such that 
+(12.5) || g 
+
+Now from (12.1) 
+
+^r- ?w&gt;-(f- ?«*) + (vr^). 
+
+and the bracketed terms remain orthogonal. Thus, with 
+
+a* = -\/l - ir&amp;* &gt; 
+
+||/ - Z a A ^ || 2 ^ 12(e r + tj,,-) 2 + Vw- 
+
+
+
+
+
+1336 THE BELL SYSTEM TECHNICAL JOURNAL, JULY 1962 
+
+Theorem 12 is established. 
+
+We should point out that by letting g = Df/\/l — $ and working 
+with the functions D\p k , the roles of e and -n may be interchanged, to 
+yield the inequality 
+
+11/ - 'if c k D+ k || 2 ^ 12(«, + r,,) 2 + e?.. 
+
+o 
+
+13. Theorem 13: If f(t) 6 £ 2 with \\f\\ = 1, || Df || 2 = 2 - e 2 r , 
+
+2fen for some constants c k = c k (f), 
+
+... ^ sin 7r(2I-n - fc) ||2 . , , , 2 
+
+i a- i g irr+i w(2»ri — fc) 
+
++ 77W + 7r(e r + t?»' ) \/l — rjw. 
+
+Proof: We proceed as in Theorem 12, up to (12.4) but now apply The- 
+orem 2 instead of Theorem 3. Thus, for some constants b k , 
+
+■I V ? sin r(2Wt - fc) ||2 
+
+(13.1) " 2 
+
+
+
+^ 7T + 
+
+
+
+Vi - »i i-i? 
+
+
+
+Replacing (12.5) by (13.1) and applying without change the rest of 
+the proof of Theorem 12 establishes Theorem 13. 
+
+REFERENCES 
+
+1. Landau, H. J. and Pollak, H. O., Prolate Spheroidal Wave Functions, Fourier 
+
+Analysis, and Uncertainty— II, B. S.T.J. , 40, 1961, pp. 65-84. 
+
+2. Slepian, D. and Pollak, H. O., Prolate Spheroidal Wave Functions, Fourier 
+
+Analysis, and Uncertainty— I, B.S.T.J., 40, 1961, pp. 43-64. 
+
+3. Riesz, F. and Sz-Nagy, B., Functional Analysis, Frederick Ungar, New York, 
+
+N. Y., 1955. 
+
+4. Kolmogoroff, A., Annals of Mathematics, 37, 1936. pp. 107-110. 
+
+5. Ahlfors, L. V., Complex Analysis, McGraw-Hill, New York, N. Y., 1953. 
+
+6. Knopp, K., Theorie und Anwendung der Unendlichen Reihen, Springer, Berlin, 
+
+1947. 
+
+7. Widom, H., Inversion of Toeplitz Matrices, Illinois Journal of Mathematics, 
+
+1960, pp. 88-99. 
+
+8. Paley, R. E. A. C. and Wiener, N., Fourier Transforms in the Complex Domain, 
+
+Am. Math. Soc, 1934. 
+
+9. Pollak, H. O., Energy Distribution of Band-Limited Functions Whose Samples 
+
+on a Half-Line Vanish, Journal of Math. Anal, and Appl., 2, 1961, pp. 299- 
+332. 
+
+
+
+        

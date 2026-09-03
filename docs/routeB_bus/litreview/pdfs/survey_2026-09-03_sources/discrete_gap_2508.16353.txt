@@ -1,0 +1,951 @@
+                                            ON THE ASYMPTOTIC BEHAVIOR OF THE SPECTRAL GAP FOR
+                                                      DISCRETE SCHRÖDINGER OPERATORS
+
+                                                    MATTHIAS HOFMANN, JOACHIM KERNER, AND MAXIMILIAN PECHMANN
+
+                                                 Abstract. In this note we elaborate on the asymptotic behavior of the spectral gap of
+                                                 a class of discrete Schrödinger operators defined on a path graph in the limit of infinite
+                                                 volume. We confirm recent results and generalize them to a larger class of potentials using
+                                                 entirely different methods. Notably, we also resolve a conjecture previously proposed in this
+arXiv:2508.16353v2 [math.SP] 9 Jan 2026
+
+
+
+
+                                                 context. This then yields new insights into the rate at which the spectral gap tends to zero
+                                                 as the volume increases.
+
+
+
+
+                                                                                    1. Introduction
+                                          This paper is devoted to the investigation of the spectral gap of discrete Schrödinger opera-
+                                          tors. Here, the spectral gap refers to the difference between the lowest two eigenvalues. At
+                                          least in the continuous setting, related considerations have a long tradition: for example,
+                                          important results were obtained in [AB89] and then in [Lav94], solving the one-dimensional
+                                          version of the fundamental gap conjecture [AC11]. As a matter of fact, it turns out that it is
+                                          in general quite difficult to say something about how the gap changes under perturbations,
+                                          for instance, under the addition of some non-negative potential. Indeed, it might already
+                                          be difficult to infer the correct sign of the changes [Abr91]. This is certainly true as long
+                                          as the configuration space on which the operator is defined remains fixed; for example, one
+                                          could think of a Schrödinger operator defined on an interval of fixed length [AK20, ACH21].
+                                          However, as demonstrated recently [KT23, KT24], one is able to say more about the spec-
+                                          tral gap for a larger class of potentials if one is working with Schrödinger operators defined
+                                          on domains of increasing volume. Most importantly, in [KT24] the authors discussed an
+                                          interesting effect which was recently studied on the path graph [KY25] and which forms –
+                                          in some sense – the starting point of our investigations. More explicitly, it was shown that
+                                          the presence of (certain) compactly supported potentials drastically change the asymptotic
+                                          behavior of the spectral gap when compared to the asymptotic behavior of the gap of the
+                                          Laplacian without a potential. In other words, as soon as one adds such a non-negative
+                                          compactly supported potential to the Laplacian, the spectral gap converges strictly faster
+                                          to zero in the limit of infinite volume. This somewhat surprising effect is the result of an
+                                          effective degeneracy of the lowest two eigenvalues at infinite volume. It is important to note,
+                                          however, that this effect might disappear in higher dimensions or reappear as well, depend-
+                                          ing on the particular nature of the potential [KT23]. This also explains why the authors of
+                                          [KY25] focused on a specific discrete graph – the path graph: adding a compactly supported
+
+                                             Date: January 12, 2026.
+                                              M. Hofmann was supported by the Fundação para a Ciência e a Tecnologia (FCT), Portugal, within
+                                          the scope of the projects Spectral Optimal Partitions: geometric and numerical analysis, reference
+                                          2023.13921.PEX. .
+                                                                                              1
+2                        M. HOFMANN, J. KERNER, AND M. PECHMANN
+
+potential to the Laplacian then leads, at least on an intuitive level, to the mentioned (ap-
+proximate) degeneracy of the lowest two eigenvalues in the infinite-volume limit since the
+potential cuts the graph into two (approximately) congruent pieces.
+   Starting with the results of [KY25], we want to achieve two things with this paper: First,
+since the authors of [KY25] considered only a very specific potential localized on only one
+vertex, we generalize their main result [KY25, Theorem 6] to general non-negative and
+compactly supported potentials, while using entirely different proof techniques. Furthermore,
+we prove the conjecture put forward in [KY25, Section 4], which provides more information
+on how fast the spectral gap converges to zero. By doing this, we also provide some rigorous
+justification to the numerical results obtained in [KY25, Section 4].
+   For completeness, let us also mention that investigations of the spectral gap (or spectral
+properties) for Jacobi operators [Moe76, Tes00] and Schrödinger-type operators on graph-like
+structures such as combinatorial graphs [KLW21] and metric graphs [BK13, Kur24] are quite
+common. Regarding the discrete case, let us refer to [FCLP18, LS20, JMM22, BS24]; for the
+metric case, one may consult [KMN13, KKMM16, BL17, Roh17, BKKM17] and references
+therein.
+   Our paper is organized as follows: In Section 2 we introduce the basic setting and the class
+of Schrödinger operators considered. In Section 3 we then derive upper and lower bounds
+on the two lowest eigenvalues. Finally, in Sections 4 and 5, we use these estimates to prove
+our main results (Theorem 7 and Theorem 11) and hereby resolve a conjecture from [KY25,
+Section 4], see in particular Corollary 9 and Theorem 11. In the Appendix A, we derive
+auxiliary results that we use in Section 5.
+
+                                       2. The model
+Our configuration space is the path graph Gk = (Vk , Ek ) with vertex set Vk := {−k, −k +
+1, . . . , k} and hence with an odd number of vertices |Vk | = 2k + 1, k ∈ N = {1, 2, ...}.
+Except for the outer two vertices that have one neighbor each, it is readily clear that all
+other vertices have exactly two neighbors. This implies that the edge set is given by Ek =
+{{v, w} : v, w ∈ Vk with |v − w| = 1}.
+   In the following, we study operators defined on the finite-dimensional Hilbert space Hk =
+C , k ∈ N. The discrete (standard, unweighted) Laplacian Lk : C|Vk | → C|Vk | is defined via
+  |Vk |
+
+                              X
+                (Lk f )(v) :=   γw,v (f (v) − f (w)) , v ∈ Vk , f ∈ Hk , k ∈ N ,
+                         w∈Vk
+
+where γv,w = 1 for all v, w ∈ Vk with |v − w| = 1 and γv,w = 0 else. The associated quadratic
+form is given by
+                      1 X                             1 X
+           qk [f ] :=         γw,v |f (v) − f (w)|2 =         γw,v |∇v,w f |2 , f ∈ Hk ,
+                      2 v,w∈V                         2 v,w∈V
+                          k                             k
+
+
+where we defined ∇v,w f := f (v) − f (w). Since the Laplacian Lk is a self-adjoint (non-
+negative) operator on a finite-dimensional Hilbert space, its spectrum consists of (non-
+negative, real) eigenvalues only. Furthermore, inserting the vector 1 = (1, ..., 1)T ∈ Hk
+into qk [·] shows that the lowest eigenvalue of Lk , for all k ∈ N, is zero.
+   In a next step we construct a discrete Schrödinger operator by introducing a non-negative
+external potential with compact support. More explicitly, the quadratic form of our Schrödinger
+                   ON THE ASYMPTOTIC BEHAVIOR OF THE SPECTRAL GAP ...                               3
+
+operator shall be given by
+                                 1 X                       X
+                  qk,α [f ] :=           γw,v |∇v,w f |2 +     αj |f (j)|2 ,    f ∈ Hk ,         (1)
+                                 2 v,w∈V                   j∈J
+                                        k
+
+where α = (αj )j∈J and J ⊂ Z is a non-empty set independent of k; αj > 0, j ∈ J, represents
+the strength of the external potential localized at the j-th vertex. The associated self-adjoint
+operator then becomes                        X
+                              Hk,α := Lk +       αj δj , k ∈ N ,                             (2)
+                                                   j∈J
+where δj is such that (δj f )i := δij f (j), i ∈ Vk , δij referring to the Kronecker delta. As in the
+case for Lk , the operator Hk,α is, for all k ∈ N, non-negative and its spectrum consists of
+non-negative eigenvalues only. For all k ∈ N, we denote the eigenvalues of Hk,α by
+                          λ0 (Vk , α) < λ1 (Vk , α) ≤ ... ≤ λ|Vk |−1 (Vk , α) .
+We can now introduce the central object of interest in this paper, which is the spectral gap
+                                  Γ(Vk , α) := λ1 (Vk , α) − λ0 (Vk , α) .                       (3)
+Note that Γ(Vk , α) > 0 for each value of k ∈ N, since the ground state is non-degenerate;
+more on the spectral theory of graphs can be found in [Chu97, BH12, KLW21]. We denote
+by φk,α the normalized ground state of Hk,α , that is, the eigenvector corresponding to the
+lowest eigenvalue λ0 (Vk , α) with ∥φk,α ∥2Hk = kj=−k |φk,α (j)|2 = 1. Note that the ground
+                                                P
+state φk,α can be chosen to be strictly positive.
+  We set                                                   X
+                             e := min αj
+                             α                and     b :=
+                                                      α         αj
+                                       j∈J
+                                                                      j∈J
+and frequently use the identity, k ∈ N,
+                                                   k−1              k
+                        1 X                        X               X
+                                γw,v |∇v,w f |2 =      |∇j f |2 =      |∇j f |2
+                        2 v,w∈V                   j=−k            j=−k
+                                  k
+
+where ∇j f := f (j + 1) − f (j) and where we set f (k + 1) := f (k).
+  For the special case J = {0} with external potential αδ0 , α > 0, we write
+                                      Hk,α := Lk + αδ0 ,       k∈N,
+for the Hamiltonian, φk,α for its ground state, and Γ(Vk , α) for the spectral gap. It is
+important to mention that in this case, one has
+                                       λ1 (Vk , αδ0 ) = λ0 (Vk , ∞δ0 )                           (4)
+for all α ≥ 0 and all k ∈ N. Here, since the external potential is αδ0 , we write λ1 (Vk , αδ0 )
+for λ1 (Vk , α); similarly, λ0 (Vk , ∞δ0 ) is shorthand for the lowest eigenvalue of the Laplacian
+on the path graph with a Dirichlet condition at the zero vertex. In the same spirit, we use
+λ0 (Vk , αδ0 ) as shorthand for λ0 (Vk , α) in case of an external potential αδ0 . Later we shall
+also use that, see for example [BH12],
+                           λ0 (Vk , ∞δ0 ) = 2 − 2 cos (π/|Vk |) ,        k∈N,                    (5)
+thus, in particular,
+                                 λ0 (Vk , ∞δ0 ) = π 2 |Vk |−2 + O(|Vk |−4 ) .                    (6)
+4                         M. HOFMANN, J. KERNER, AND M. PECHMANN
+
+  We conclude this section with two remarks. The first is intended to clarify our notation
+used in this paper, while the second presents a physical intuition that motivated and guided
+our analysis.
+Remark 1. For two sequences (ak )k∈N , (bk )k∈N , ak ̸= 0 for all but finitely many k ∈ N, we
+use the notation bk ≲ ak iff there is a constant c > 0 such that |bk /ak | ≤ c for all but finitely
+many k ∈ N, and bk ∼ ak iff there are constants c, C > 0 such that c ≤ |bk /ak | ≤ C for all
+but finitely many k ∈ N.
+   Also, in the proofs and some statements we denote by (const.) positive constants that are
+independent of k and the potential strength α = (αj )j∈J , whenever their precise values are
+irrelevant. Note, however, that they could still depend on the support of the potential.
+Remark 2. We encourage the reader to keep the following physical intuition in mind, which
+also guided the development of this work. Our analysis focuses on the two lowest eigenvalues,
+both of which converge to zero as the size of the graph tends to infinity. In this low-energy
+regime, a particle occupying a quantum state corresponding to either eigenvalue has arbitrarily
+small kinetic energy. Consequently, any potential of fixed finite strength, informally, becomes
+effectively impenetrable to such a particle, and therefore behaves, in the limit, as if it were
+infinitely strong. This perspective helps to explain the appearance of quantities related to
+infinitely strong potentials in our results.
+
+                                     3. Spectral estimates
+In this section we provide upper and lower bounds for λ0 (Vk , α) as well as for λ1 (Vk , α). We
+start with a lower bound for λ0 (Vk , α). We set
+                   rmin := min{j ∈ J}           and        rmax := max{j ∈ J} ,
+and introduce
+                                         rmin
+                                     1   X
+                           ak,1 :=     −      |φk,α (j) − φk,α (rmin )|2 ,                     (7)
+                                     2 j=−k
+as well as
+                                       k
+                                  1   X
+                           ak,2 := −        |φk,α (j) − φk,α (rmax )|2 .                  (8)
+                                  2 j=r
+                                        max
+
+
+Note that 1 ≥ ak,1 + ak,2 ≥ 1 − kj=−k |φk,α (j)|2 = 0 due to monotonicity of the ground state
+                                 P
+
+outside of [rmin , rmax ].
+Theorem 3 (Lower bound ground state energy). Consider a Hamiltonian Hk,α with ground
+state energy λ0 (Vk , α). Then, for all k > max{|rmin |, |rmax |}/2, we have
+                                                                 
+                           1                                1
+          λ0 (Vk , α) ≥      − ak,1 λ0 (Vk+rmin , ∞δ0 ) +     − ak,2 λ0 (Vk−rmax , ∞δ0 )
+                           2                                2
+                             X                                                           (9)
+                           +     αj |φk,α (j)|2 .
+                             j∈J
+
+Moreover,
+                                                        α−1 k −1
+                              0 ≤ ak,1 + ak,2 ≤ (const.)e                                     (10)
+for all but finitely many k ∈ N.
+                      ON THE ASYMPTOTIC BEHAVIOR OF THE SPECTRAL GAP ...                                                       5
+
+Proof. In a first step we obtain, using the minmax-principle,
+                       X−1
+                      rmin                                            k
+                                                                      X
+                                                               2
+      λ0 (Vk , α) ≥            |∇j (φk,α − φk,α (rmin ))| +                    |∇j (φk,α − φk,α (rmax ))|2
+                       j=−k                                          j=rmax
+                              X
+                                                    2
+                          +         αj |φk,α (j)|
+                              j∈J
+                       rmin
+                       X
+                 ≥            |φk,α (j) − φk,α (rmin )|2 λ0 (Vk+rmin , ∞δ0 )
+                      j=−k
+                               k
+                               X                                                                X
+                          +             |φk,α (j) − φk,α (rmax )|2 λ0 (Vk−rmax , ∞δ0 ) +               αj |φk,α (j)|2 .
+                              j=rmax                                                            j∈J
+
+Using the definition of ak,1 , ak,2 then implies the lower bound (9).
+  We now proceed to prove (10): Since 2λ0 (Vk , α) ≤ λ0 (Vk+rmin , ∞δ0 ) + λ0 (Vk−rmax , ∞δ0 ),
+we conclude
+               X
+                   αj |φk,α (j)|2 ≤ ak,1 λ0 (Vk+rmin , ∞δ0 ) + ak,2 λ0 (Vk−rmax , ∞δ0 ) , (11)
+                 j∈J
+
+and
+              X                                                                         
+                                  e−1 ak,1 λ0 (Vk+rmin , ∞δ0 ) + ak,2 λ0 (Vk−rmax , ∞δ0 ) .
+                    |φk,α (j)|2 ≤ α                                                                                         (12)
+              j∈J
+
+Next, we observe that
+                k
+                X                            X−1
+                                            rmin                     k
+                                                                     X                         rX
+                                                                                                max
+                                    2                      2                            2
+         1=           |φk,α (j)| =                 |φk,α (j)| +                |φk,α (j)| +             |φk,α (j)|2
+              j=−k                          j=−k                   j=rmax +1                  j=rmin
+
+and therefore
+                  rX
+                   max                                      X−1
+                                                           rmin                                        k
+                                                                                                       X
+                                        2
+ ak,1 + ak,2 =            |φk,α (j)| + 2φk,α (rmin )                φk,α (j) + 2φk,α (rmax )                     φk,α (j)
+                 j=rmin                                    j=−k                                      j=rmax +1              (13)
+                       − |φk,α (rmin )|2 (k + rmin ) − |φk,α (rmax )|2 (k − rmax ) .
+                                   
+To simplify we set Θmax := max λ0 (Vk+rmin , ∞δ0 ), λ0 (Vk−rmax , ∞δ0 ) . Then, using (12) and
+Hölder’s inequality as well as a + b ≤ max{2a, 2b} for a, b > 0, we get
+                                      n                                      rX
+                                                                              max              o
+                                           −1/2               1/2 1/2 1/2                    2
+         ak,1 + ak,2 ≤ (const.) max α    e      (ak,1 + ak,2 ) Θmax k ,            |φk,α (j)| .
+                                                                                            j=rmin
+
+In order to estimate the last sum, we use that for all j ∈ {rmin , . . . , rmax }, since (a + b)2 ≤
+2a2 + 2b2 for a, b ∈ R and due to the eigenvalue equation on the form level,
+                                                  j−1
+                                                                                 !2
+                                                  X
+                  |φk,α (j)|2 ≤ |φk,α (rmin )| +        |φk,α (i + 1) − φk,α (i)|
+                                                 i=rmin                                        (14)
+                                     ≤ 2 max |φk,α (j)|2 + 2|rmax − rmin |λ0 (Vk , α) .
+                                             j∈J
+6                        M. HOFMANN, J. KERNER, AND M. PECHMANN
+
+Therefore, using again the inequalities a + b ≤ max{2a, 2b} for a, b > 0 and (12), we get
+                                                 n                  o
+                                                    −1
+                       ak,1 + ak,2 ≤ (const.) max αe Θmax k, Θmax                       (15)
+for all but finitely many k ∈ N. The claimed estimate (10) now follows by observing that
+Θmax ∼ k −2 .
+                                                                                      □
+Remark 4. Inspecting the proof of Theorem 3, in particular (11), we obtain the following
+estimate for the special case when J = {0}, that is, for Hk,α = Lk + αδ0 with α > 0: For all
+but finitely many k ∈ N,
+                                 φk,α (0) ≤ (const.)α−1 k −3/2 .                         (16)
+This can be regarded as a generalization of [KY25, Lemma 5]. Note here that φk,0 (0) =
+|Vk |−1/2 (that is for α = 0).
+  From a physics point of view, it is interesting to remark that the just mentioned estimate
+implies an upper bound on the potential energy of a particle described by Hk,α = Lk + αδ0
+with α > 0: More explicitly, the potential energy in the ground state is given by Epot (α) :=
+α|φk,α (0)|2 and we therefore obtain, for k ∈ N,
+                                   Epot (α) ≤ (const.)α−1 k −3 .
+The interesting point here is that the potential energy is of a lower order than the kinetic
+energy, which is of order k −2 .
+  In a next statement we prove an upper bound for the lowest eigenvalue λ0 (Vk , α). In order
+to formulate it, we introduce the two functions
+                      (
+                        −1/2
+                       Amin cos j + k + 12 π/(2(k + rmin ) + 1) , −k ≤ j ≤ rmin ,
+                                                              
+         l
+      f k,rmin (j) :=
+     cos
+                       0 else ,
+                      (                                                                  (17)
+                        −1/2
+                       Amax cos k − j + 12 π/(2(k − rmax ) + 1) , rmax ≤ j ≤ k ,
+                                                              
+         r
+     f k,rmax (j) :=
+     cos
+                       0 else .
+Here, Amax , Amin > 0 are such that both functions are normalized to 1/2. Also note that both
+functions are constructed using the well-known explicit form of the second eigenfunction to
+the Hamiltonian Hk,α = Lk + αδ0 . In particular, φk,∞ = cosf lk,0 + cos
+                                                                    f rk,0 where φk,∞ denotes
+the ground state of Hk,α for α = ∞.
+Theorem 5 (Upper bound ground state energy I). Consider a Hamiltonian Hk,α with ground
+state φk,α ∈ Hk corresponding to the ground-state energy λ0 (Vk , α). Then
+                           1                                                 
+             λ0 (Vk , α) ≤ (1 − bk ) λ0 (Vk+rmin , ∞δ0 ) + λ0 (Vk−rmax , ∞δ0 ) + bk c2k ,   (18)
+                           2
+where c2k := λ0 (Vk , ∞δ0 )/(2 + ϵ) for an arbitrary ϵ > 0 and with the sequence (bk )k∈N ,
+0 < bk ≤ 1 for all k ∈ N, such that
+                                                         
+                                                                    1/2
+     ψk (j) := (1 − bk )1/2 cos
+                             f lk,rmin (j) + cos
+                                             f rk,rmax (j) + α
+                                                             b−1/2 bk ck , j ∈ Vk , k ∈ N ,
+is normalized. Furthermore,
+                                                   α−1 k −1
+                                      bk ≥ (const.)b                                       (19)
+for all but finitely many k ∈ N.
+                   ON THE ASYMPTOTIC BEHAVIOR OF THE SPECTRAL GAP ...                             7
+
+Proof. We set b      b−1/2 ck and write
+               ck := α
+                                                          
+                          1/2      l              r            1/2
+       ψk (j) = (1 − bk )      cos
+                                f k,rmin (j) + cos
+                                               f k,rmax (j) + bk b ck ,      j ∈ Vk ,   k∈N.
+Calculating the norm of ψk gives the relation
+                                       k 
+                                       X                              
+                            1/2 1/2           l              r
+            bk = 2 (1 − bk ) bk b   ck    cos
+                                           f k,rmin (j) + cos                    c2k .
+                                                          f k,rmax (j) + |Vk |bk b             (20)
+                                        j=−k
+
+This equation can be solved explicitly for bk , yielding the desired sequence. Recall that
+(bk )k∈N is such that 0 < bk ≤ 1 for all k ∈ N and ∥ψk ∥Hk = 1 for all k ∈ N.
+   Employing the minmax-principle using ψk as a trial state then implies
+                                    1                                        
+             λ0 (Vk , α) ≤ (1 − bk ) λ0 (Vk+rmin , ∞δ0 ) + λ0 (Vk−rmax , ∞δ0 ) + bk c2k .
+                                    2
+   Lastly, we prove (19). Note that there exists a constant c > 0 such that
+                             k
+                             X
+                                    f lk,rmin (j) + cos
+                                                    f rk,rmax (j) ≥ ck 1/2
+                                                                 
+                                    cos                                                        (21)
+                             j=−k
+
+for all but finitely many k ∈ N. Let k ∈ N be sufficiently large such that (21) and cbα−1 k −1 ≤
+3/4 holds but otherwise arbitrary. Suppose that bk ≥ cb  α−1 k −1 ; then there is nothing left to
+                                                 −1 −1
+show in regard to (19). Thus, suppose bk < cb   α k ≤ 3/4. With (20) and (21) we conclude
+         1/2     1/2
+bk ≥ cbk b   ck k . Using (6) this then implies (19).                                          □
+   We conclude this section by providing upper and lower bounds for the second-lowest
+eigenvalue λ1 (Vk , α).
+Lemma 6 (Bounds on first excited state energy). For all but finitely many k ∈ N, one has
+                                         
+       λ0 (Vk , ∞δ0 ) ≤ λ1 (Vk , α) ≤ max λ0 (Vk+rmin , ∞δ0 ), λ0 (Vk−rmax , ∞δ0 ) .
+Proof. The lower bound is a direct consequence of λ1 (Vk , α)P ≥ λ1 (Vk , 0) = P    λ0 (Vk , ∞δ0 ).
+The upper bound follows from the operator inequality Lk + j∈J αj δj ≤ Lk + j∈J ∞δj in
+                         P
+combination with λ1 (Vk , j∈J ∞δj ) ≤ max{λ0 (Vk+rmin , ∞δ0 ), λ0 (Vk−rmax , ∞δ0 )}, which holds
+for all but finitely many k ∈ N.                                                                □
+
+                             4. Main results I: General Case
+In this section, we study properties of the sequence
+                                      |Vk |3 Γ(Vk , α) k∈N
+                                                      
+                                                                                               (22)
+and prove a conjecture regarding its limiting behavior as put forward in [KY25] (additional
+results will be provided in Section 5). By doing this and by considering potentials of compact
+support, we also generalize the main result of [KY25] – both – in terms of convergence speed
+and applicability to a broader class of potentials: more explicitly, we will show that
+                                  lim |Vk |2+η · Γ(Vk , α) = 0
+                                                          
+                                    k→∞
+for all 0 ≤ η < 1, as soon as the external potential is not the zero potential. Here, one
+should recall that limk→∞ (|Vk |2 · Γ(Vk , α)) = π 2 for α = 0; compare with [KY25]. In other
+words, as soon as there is a non-vanishing external potential of compact support, the spectral
+gap converges strictly faster to zero than in the absence of any potential. This might be
+8                           M. HOFMANN, J. KERNER, AND M. PECHMANN
+
+surprising at first, since the potential is supported on a smaller and smaller fraction of the
+configuration space in the limit of infinite volume. Consequently, this is a rather remarkable
+spectral effect.
+  We now state the first main result of this paper.
+Theorem
+P           7 (Asymptotic upper and lower bounds I). Consider a Hamiltonian Hk,α = Lk +
+  j∈J αj δj with compactly supported external potential and associated spectral gap Γ(Vk , α).
+Then, the following holds:
+ (i) There exists a constant C = C(α) > 0 such that
+                               |Vk |3 Γ(Vk , α) ≤ C     for all   k∈N.
+              P
+         b = j∈J αj is sufficiently small or if J = {0}, there exists a constant c = c(α) > 0
+ (ii) If α
+      such that
+                               |Vk |3 Γ(Vk , α) ≥ c for all k ∈ N .
+                                                          
+Proof. To simplify
+                     notation,  we   set Θ  max :=  max    λ0 (Vk+rmin , ∞δ0 ), λ0 (Vk−rmax , ∞δ0 ) and
+Θmin := min λ0 (Vk+rmin , ∞δ0 ), λ0 (Vk−rmax , ∞δ0 ) .
+  We start with (i): Theorem 3 and Lemma 6 immediately imply for all but finitely many
+k ∈ N,
+              |Vk |3 Γ(Vk , α) ≤ (const.)e α−1 k −1 Θmax |Vk |3 + (Θmax − Θmin ) |Vk |3 .            (23)
+Now, taking into account that Θmax ∼ k −2 and Θmax − Θmin ≲ k −3 completes the proof;
+recall here (5).
+  We now turn to (ii): Theorem 5 and Lemma 6 imply for all but finitely many k ∈ N,
+                                α−1 λ0 (Vk , ∞δ0 )k −1 |Vk |3 + (λ0 (Vk , ∞δ0 ) − Θmax ) |Vk |3 .
+     |Vk |3 Γ(Vk , α) ≥ (const.)b                                                                   (24)
+By direct calculation one has Θmax − λ0 (Vk , ∞δ0 ) ≲ k −3 . Note that the last term is negative
+whenever J ̸= {0} and it vanishes if and only if J = {0}. Therefore, taking (6) into account,
+            b has to be sufficiently small for J ̸= {0} in order to obtain a non-trivial lower
+we see that α
+bound. (6) also implies the statement.                                                        □
+Remark 8. We now offer a more detailed analysis and interpretation of the upper and lower
+bounds obtained in Theorem 7 and its proof.
+  (i) Regarding the upper bound (23): Note that the first term is of the form (const.)e        α−1
+      and consequently converges to zero when the potential strength converges to infinity in
+      the sense that αe → ∞. However, the last term is independent of the potential strength
+      and is non-zero if and only if rmax ̸= −rmin . Therefore, the entire upper bound is of the
+      form (const.)e α−1 and consequently converges to zero as α  e converges to infinity if and
+      only if rmax = −rmin .
+ (ii) Regarding the lower bound (24): The last term is negative whenever J ̸= {0} and it
+      vanishes if and only if J = {0}; note that, trivially, Γ(Vk , α) ≥ 0 for all k ∈ N.
+      Therefore, this lower bound is non-trivial if and only if αb is sufficiently small or if J =
+      {0}. Furthermore, the first term of this bound is of the form (const.)b α−1 . Consequently,
+      if and only if J = {0}, the entire lower bound is of the form (const.)b  α−1 and converges
+      to zero as the strength of the potential tends to infinity in the sense that α     b → ∞.
+      Note that the lower bound converges to ∞ as α̂ → 0. This refers to the case where we
+      approach the free Laplacian, for which the spectral gap vanishes in lower order.
+                  ON THE ASYMPTOTIC BEHAVIOR OF THE SPECTRAL GAP ...                               9
+
+(iii) The reason we end up with a trivial lower bound when J ̸= {0} and α      b is too large is the
+      lack of a sufficiently good lower bound for λ1 (Vk , α) in terms of λ0 (Vk+rmin , ∞δ0 ) and/or
+      λ0 (Vk−rmax , ∞δ0 ); compare with Lemma 6. Indeed, also from the physical point of view
+      outlined in Remark 2, it is reasonable to expect that the lower bound for λ1 (Vk , α) in
+      Lemma 6 is suboptimal for strong external potentials. Nevertheless, a corresponding
+      statement as in (ii) of Theorem 7 is expected for all potential strengths.
+   Next, for the convenience of the reader, we summarize our findings from Theorem 7 in the
+special case J = {0}, that is, when the potential is localized on the zero vertex in the middle
+of the path graph. In addition, we provide upper and lower bounds for the limit that are
+explicit in the coupling strength. This special case was discussed in [KY25] and originally
+motivated this paper, and Corollary 9 proves the conjecture that was put forward in [KY25,
+Section 4].
+Corollary 9 (Asymptotic upper and lower bounds II). Consider the Hamiltonian Hk,α =
+Lk +αδ0 with arbitrary α > 0 and associated spectral gap Γ(Vk , α). Then there exist constants
+c, C > 0 independent of k and α such that for all but finitely many k ∈ N,
+                                 c                      C
+                                   ≤ |Vk |3 Γ(Vk , α) ≤    .
+                                 α                      α
+Proof. At first, with Theorem 3 and (4) we conclude for all but finitely many k ∈ N,
+                       |Vk |3 Γ(Vk , α) ≤ (const.)α−1 k −1 λ0 (Vk , ∞δ0 )|Vk |3 .
+Secondly, Theorem 5 and again (4) imply
+                       |Vk |3 Γ(Vk , α) ≥ (const.)α−1 k −1 λ0 (Vk , ∞δ0 )|Vk |3
+for all but finitely many k ∈ N. In a final step, recall (6).
+                                                                                                  □
+   Let us remark that, in the continuous one-dimensional setting working with operators on
+an interval, a result similar to Corollary 9 was established in [KT24] for the special case of
+a symmetric step potential. On the other hand, in [Ker22], the authors could prove corre-
+sponding lower bounds for a larger class of symmetric and compactly supported potentials
+but those bounds are quartic in the length and do not, as conjectured in [KT24], involve the
+length to the power three.
+
+          5. Main results II: Convergence in the Special Case J = {0}
+We conclude this paper with a convergence result for the case J = {0}, that is, when
+                                   Hk,α := Lk + αδ0 ,       k∈N,
+with arbitrary α > 0. Recall that we denote the ground state of Hk,α by φk,α ∈ Hk ,
+and its two lowest eigenvalues by λ0 (Vk , αδ0 ) and λ1 (Vk , αδ0 ), respectively. Consequently,
+the corresponding spectral gap reads Γ(Vk , α) = λ1 (Vk , αδ0 ) − λ0 (Vk , αδ0 ). Using auxiliary
+results established in the appendix, we in particular show convergence of the sequence (22)
+in this special case. Note that this result provides us with a strengthening of Theorem 7 and
+Corollary 9 in this setting. We also remark that this convergence was suggested in [KY25,
+Section 4] based on numerical simulations.
+   Before stating in Lemma 10 a version of the upper bound on the ground-state energy that
+is useful for the setting discussed in this section, and subsequently our convergence result in
+10                          M. HOFMANN, J. KERNER, AND M. PECHMANN
+
+Theorem 11, let us recall the definitions of cos f lk,rmin (j) and cos
+                                                                   f rk,rmax (j) from (17), where we
+now have rmax = rmin = 0. Thus in particular,
+           f lk,0 (j) + cos
+                        f rk,0 (j) = (2/|Vk |)1/2 cos (k − |j| + 12 )π/|Vk | = φk,∞ (j)
+                                                                             
+           cos                                                                                  (25)
+for j ∈ Vk and all k ∈ N, see also (39) in the appendix. In addition, we write
+                                             ak := ak,1 + ak,2 ,
+with ak,1 and ak,2 from (7) and (8), respectively.
+Lemma 10 (Upper bound ground state energy II). Consider a Hamiltonian Hk,α , k ∈ N,
+with arbitrary α > 0. Then, for all but finitely many k ∈ N,
+                        λ0 (Vk , αδ0 ) ≤ (1 − βk )λ0 (Vk , ∞δ0 ) + α|φk,α (0)|2 ,              (26)
+where βk is such that 0 ≤ βk ≤ 1 and
+                  ψk (j) := (1 − βk )1/2 φk,∞ (j) + φk,α (0) ,          j ∈ Vk ,   k∈N,        (27)
+is normalized. Furthermore,
+                                      βk ≤ ak ≤ (const.)α−1 k −1                               (28)
+for all but finitely many k ∈ N.
+Proof. Relation (26) follows immediately by using the trial state (27) in combination with
+the minmax-principle. Calculating the norm of ψk gives
+                                                      k
+                                                      X
+                                     1/2
+                   βk = 2 (1 − βk )        φk,α (0)          φk,∞ (j) + (2k + 1)|φk,α (0)|2    (29)
+                                                      j=−k
+
+for each k ∈ N. Since the last term on the right-hand side converges to zero as k → ∞
+by (16), the existence of a solution follows by the intermediate-value theorem. The claimed
+upper bound on βk follows by comparing (26) with (9), and by subsequently taking (10) into
+account.                                                                                 □
+     We now establish the main result of this section.
+Theorem 11 (Convergence result). Consider the Hamiltonian Hk,α , k ∈ N, with arbitrary
+α > 0. Then
+                                                        8π 2
+                                 lim |Vk |3 Γ(Vk , α) =      .
+                                k→∞                      α
+Proof. Firstly, with Theorem 3 and Lemma 10, while also taking into account (4), we con-
+clude
+                   |Vk |3 Γ(Vk , α) + α|Vk |3 |φk,α (0)|2 − |Vk |3 ak λ0 (Vk , ∞δ0 ) ≤ 0
+and
+                   |Vk |3 Γ(Vk , α) + α|Vk |3 |φk,α (0)|2 − |Vk |3 βk λ0 (Vk , ∞δ0 ) ≥ 0 .
+We set
+                                ck := |Vk |3 Γ(Vk , α) + α|Vk |3 |φk,α (0)|2                   (30)
+for all but finitely many k ∈ N. Due to Corollary 9 we already know that ck > 0 for all
+k ∈ N. Furthermore, we conclude
+                          |Vk |3 λ0 (Vk , ∞δ0 )βk ≤ ck ≤ |Vk |3 λ0 (Vk , ∞δ0 )ak               (31)
+                      ON THE ASYMPTOTIC BEHAVIOR OF THE SPECTRAL GAP ...                                                     11
+
+for all but finitely many k ∈ N.
+   Next, using (6) we show that limk→∞ k(ak − βk ) = 0: Let k ∈ N be sufficiently large but
+otherwise arbitrary. Recall that ak ≥ βk , see (28). For J = {0}, (13) reads
+                                                 −1
+                                                 X                             k
+                                                                               X
+                              2
+          ak = |φk,α (0)| + 2φk,α (0)                   φk,α (j) + 2φk,α (0)           φk,α (j) − 2|φk,α (0)|2 k
+                                                 j=−k                           j=1
+                               k
+                               X
+             ≤ 2φk,α (0)             φk,α (j) ,
+                              j=−k
+
+and with (29) we have
+                                                                        k
+                                                                        X
+                                      βk ≥ 2 (1 − βk ) φk,α (0)              φk,∞ (j) .
+                                                                      j=−k
+
+Thus, we conclude
+                                            k                     k
+                                                                                   !                     k
+                                            X                     X                                      X
+  0 ≤ k(ak − βk ) ≤ 2φk,α (0)k                     φk,α (j) −           φk,∞ (j)       + 2kβk φk,α (0)          φk,∞ (j) .
+                                            j=−k                 j=−k                                    j=−k
+
+Using (28), Hölder’s inequality, and (16), one concludes that the second term on the right-
+hand side of the above inequality converges to zero. Regarding the first term on the right-
+hand side of the above inequality, the eigenvalue equation and a straightforward calculation,
+also using that φk,α and φk,∞ are symmetric about zero, imply
+                                   k
+                                   X                    k
+                                                        X
+               λ0 (Vk , αδ0 )            φk,α (j) =            (Lk φk,α ) (j) + αφk,α (0) = αφk,α (0)
+                                  j=−k                  j=−k
+
+as well as
+                    k
+                    X                      k
+                                           X
+   λ0 (Vk , ∞δ0 )          φk,∞ (j) = 2          (Lk φk,∞ ) (j) = 2(φk,∞ (1) − φk,∞ (0)) = 2φk,∞ (1) .                  (32)
+                    j=−k                   j=1
+
+Hence, we conclude
+                           k                   k
+                                                                 !
+                           X                   X
+        2φk,α (0)k                φk,α (j) −          φk,∞ (j)
+                           j=−k                j=−k
+
+      ≤2φk,α (0)kλ−1            −1
+                  0 (Vk , αδ0 )λ0 (Vk , ∞δ0 )
+          h                                                                               i
+         · λ0 (Vk , ∞δ0 ) αφk,α (0) − 2φk,∞ (1) + 2φk,∞ (1) λ0 (Vk , ∞δ0 ) − λ0 (Vk , αδ0 ) .
+
+Due to Proposition 18 of the appendix, the first term in the brackets is bounded from above
+by zero. Regarding the remaining term, we recall that λ0 (Vk , ∞δ0 ) − λ0 (Vk , αδ0 ) = Γ(Vk , α),
+and use Theorem 7, that λ0 (Vk , αδ0 ), λ0 (Vk , ∞δ0 ) ∼ k −2 , and (16). Also, note that φk,∞ (1) ≤
+(const.)k −3/2 by (32) and Hölder’s inequality. Overall, we obtain 0 ≤ k(ak − βk ) ≲ k −1 .
+  This now implies that
+                             lim ck − |Vk |3 λ0 (Vk , ∞δ0 )βk = 0 .
+                                                                 
+                                      k→∞
+12                               M. HOFMANN, J. KERNER, AND M. PECHMANN
+
+As a next step, we use (29) to first obtain
+       |Vk |3 λ0 (Vk , ∞δ0 )βk
+                                                      k
+                                                                                              !
+                                            1/2
+                                                      X
+            2
+                                                        φk,∞ (j) + |Vk |(2k + 1)|φk,α (0)|2
+                           
+     = |Vk | λ0 (Vk , ∞δ0 ) |Vk |2 (1 − βk ) φk,α (0)                                              .
+                                                                j=−k
+
+The last term in the large parenthesis converges to zero, see (16). For the remaining term,
+we have, with (6), (25), (28), (32), since cos(x) = − sin(x − π/2) for all x ∈ R, and with
+Taylor expansion of sin(x) about zero, as well as (37), Lemma 12, and Propositions 16 and
+17 from the appendix,
+                                                        k
+                                                        X
+         2 (1 − βk )1/2 |Vk |3 φk,α (0)λ0 (Vk , ∞δ0 )          φk,∞ (j)
+                                                        j=−k
+          √
+       = 4 2 (1 − βk )1/2 |Vk |5/2 k −1/2 (1 + o(1)) cos (k + 21 )π/κ0 cos((k − 1 + 12 )π/|Vk |)
+                                                                     
+                 1/2
+           2|Vk |
+       =               (1 − βk )1/2 |Vk |3 Γ(Vk , α) + o(1) .
+             k
+Similarly we obtain
+                                                    1                      2
+                           |Vk |3 |φk,α (0)|2 =         γk |Vk |3
+                                                                  Γ(Vk , α)   + o(1) ,
+                                                  16π 2
+                                       −2
+where γk := |Vk |∥vk,α ∥−2
+                        Hk (1 + o(1)) , k ∈ N, converges to 2, by Propositions 16 and 17.
+Thus,
+0 = lim ck − |Vk |3 λ0 (Vk , ∞δ0 )βk
+                                     
+    k→∞
+                                                   1/2                 !                       !
+            α                        2      2|V k |
+                γk |Vk |3 Γ(Vk , α) −                    (1 − βk )1/2 − 1 |Vk |3 Γ(Vk , α) + o(1) .
+                                   
+  = lim
+    k→∞   16π 2                               k
+
+     Lastly, we now conclude, also using (28),
+                      α                3
+                                                   2
+                          lim inf |V k |  Γ(Vk , α)   − lim inf |Vk |3 Γ(Vk , α) = 0
+                     8π 2 k→∞                             k→∞
+
+and therefore, since lim inf k→∞ |Vk |3 Γ(Vk , α) > 0 by Corollary 9,
+                                                                        8π 2
+                                        lim inf |Vk |3 Γ(Vk , α) =           .
+                                         k→∞                             α
+Similarly, lim supk→∞ |Vk | Γ(Vk , α) = 8π 2 /α, and thus in total
+                                  3
+
+
+                                                                       8π 2
+                                          lim |Vk |3 Γ(Vk , α) =            .
+                                         k→∞                            α
+                                                                                                       □
+  Finally, it is interesting to mention that the limit obtained in Theorem 11 is in agreement
+with the numerical results presented in [KY25], which were obtained for the cases α = 1 and
+α = 10.
+                   ON THE ASYMPTOTIC BEHAVIOR OF THE SPECTRAL GAP ...                                 13
+
+                                             References
+[AB89]   M. S. Ashbaugh and R. Benguria, Optimal lower bound for the gap between the first two eigen-
+         values of one-dimensional Schrödinger operators with symmetric single-well potentials, Proc.
+         Amer. Math. Soc. 105 (1989), no. 2, 419–424.
+[Abr91]  S. Abramovich, The gap between the first two eigenvalues of a one-dimensional Schrödinger
+         operator with symmetric potential, Proc. Amer. Math. Soc. 111 (1991), no. 2, 451–453.
+[AC11]   B. Andrews and J. Clutterbuck, Proof of the fundamental gap conjecture, J. Amer. Math. Soc.
+         24 (2011), no. 3, 899–916.
+[ACH21]  B. Andrews, J. Clutterbuck, and D. Hauer, The fundamental gap for a one-dimensional
+         Schrödinger operator with Robin boundary conditions, Proc. Amer. Math. Soc. 149 (2021),
+         no. 4, 1481–1493.
+[AK20]   M. S. Ashbaugh and D. Kielty, Spectral gaps of 1-d Robin Schrödinger operators with single-well
+         potentials, J. Math. Phys. 61 (2020), no. 9, 091507.
+[BH12]   A. E. Brouwer and W. H. Haemers, Spectra of graphs, Springer, New York, 2012.
+[BK13]   G. Berkolaiko and P. Kuchment, Introduction to quantum graphs, Mathematical Surveys and
+         Monographs, vol. 186, American Mathematical Society, Providence, RI, 2013.
+[BKKM17] G. Berkolaiko, J. B. Kennedy, P. Kurasov, and D. Mugnolo, Edge connectivity and the spectral
+         gap of combinatorial and quantum graphs, J. Phys. A 50 (2017), no. 36, 365201, 29.
+[BL17]   R. Band and G. Lévy, Quantum graphs which optimize the spectral gap, Ann. Henri Poincaré
+         18 (2017), no. 10, 3269–3323.
+[BS24]   J. Breuer and E. Seelig, Spectral Gaps for Jacobi Matrices on Graphs, arXiv:2402.07202 (2024).
+[Chu97]  F. R. K. Chung, Spectral Graph Theory, American Mathematical Society, 1997.
+[FCLP18] J. S. Fabila-Carrasco, F. Lledó, and O. Post, Spectral gaps and discrete magnetic Laplacians,
+         Linear Algebra Appl. 547 (2018), 183–216.
+[JMM22]  J. Jost, R. Mulas, and F. Münch, Spectral gap of the largest eigenvalue of the normalized graph
+         Laplacian, Commun. Math. Stat. 10 (2022), no. 3, 371–381.
+[Ker22]  J. Kerner, Lower bounds on the spectral gap of one-dimensional Schrödinger operators,
+         Arch. Math. 119 (2022), 613–622.
+[KKMM16] J. B. Kennedy, P. Kurasov, G. Malenová, and D. Mugnolo, On the spectral gap of a quantum
+         graph, Ann. Henri Poincaré 17 (2016), no. 9, 2439–2473.
+[KLW21]  M. Keller, D. Lenz, and R. K. Wojciechowski, Graphs and discrete Dirichlet spaces, Springer
+         Nature Switzerland AG, 2021.
+[KMN13] P. Kurasov, G. Malenová, and S. Naboko, Spectral gap for quantum graphs and their edge
+         connectivity, J. Phys. A 46 (2013), no. 27, 275309, 16.
+[KT23]   J. Kerner and M. Täufer, On the spectral gap of higher-dimensional Schrödinger operators on
+         large domains, Asymptot. Anal. 133 (2023), no. 1-2, 77–89.
+[KT24]   J. Kerner and M. Täufer, On the spectral gap of one-dimensional Schrödinger operators on large
+         intervals, Arch. Math. (Basel) 123 (2024), no. 6, 641–652.
+[Kur24]  P. Kurasov, Spectral geometry of graphs, Operator Theory: Advances and Applications, vol. 293,
+         Birkhäuser/Springer, Berlin, 2024.
+[KY25]   J. Kerner and P. Yatsyna, On the spectral gap of a discrete Schrödinger operator on the path
+         graph in the limit of large volume, Complex Anal. Oper. Theory 19 (2025), no. 5, Paper No.
+         115.
+[Lav94]  R. Lavine, The eigenvalue gap for one-dimensional convex potentials, Proc. Amer. Math. Soc.
+         121 (1994), no. 3, 815–821.
+[LS20]   D. Lenz and P. Stollmann, Universal lower bounds for Laplacians on weighted graphs, Anal-
+         ysis and geometry on graphs and manifolds, London Math. Soc. Lecture Note Ser., vol. 461,
+         Cambridge Univ. Press, Cambridge, 2020, pp. 156–171.
+[Moe76]  P. van Moerbeke, The spectrum of Jacobi matrices, Invent. Math. 37 (1976), no. 1, 45–81.
+[Roh17]  J. Rohleder, Eigenvalue estimates for the Laplacian on a metric tree, Proc. Amer. Math. Soc.
+         145 (2017), no. 5, 2119–2129.
+[Tes00]  G. Teschl, Jacobi operators and completely integrable nonlinear lattices, Math. Surv. Monogr.,
+         vol. 72, Providence, RI: American Mathematical Society, 2000 (English).
+14                          M. HOFMANN, J. KERNER, AND M. PECHMANN
+
+                                Appendix A. Auxiliary results
+In this appendix, we provide auxiliary results that we used to prove Theorem 11; the main
+result of the appendix is Proposition 18. We recall that Theorem 11 is concerned with the
+special case where J = {0}, meaning the external potential is localized at the zero vertex.
+Therefore, the results of the appendix are also concerned with this special case. Also recall
+that λ0 (Vk , αδ0 ) > 0 denotes the lowest eigenvalue of Hk,α = Lk + αδ0 , α > 0, and that
+|Vk | = 2k + 1. For convenience, we also write λ0 = λ0 (Vk , αδ0 ) in this appendix and assume
+k ∈ N to be sufficiently large so that λ0 < 2.
+  Let κ0 = κ0 (Vk , α) > 2 be such that
+                                        2 − 2 cos (π/κ0 ) = λ0 .                                       (33)
+Note that one may interpret κ0 as an effective half-period of the cosine, where the α =
+∞ case corresponds to κ0 (Vk , ∞) = |Vk | and the α = 0 case corresponds, informally, to
+κ0 (Vk , 0) = ∞. This behavior is consistent with the properties of the eigenfunctions in these
+limiting cases. In the next lemma, we discuss the relationship between κ0 and |Vk |, and also
+relate κ0 with the spectral gap Γ(Vk , α).
+Lemma 12. For all but finitely many k ∈ N, we have
+                                        1
+                  κ0 (Vk , α) = |Vk | + 2 |Vk |3 Γ(Vk , α) + O |Vk |−1 .
+                                                                      
+                                                                                                       (34)
+                                       2π
+Proof. Th Starting with (33) and using the equation cos(2x) = 1 − 2 sin2 (x) we conclude
+                                                           π/2
+                                     κ0 (Vk , α) =          √    
+                                                     arcsin λ0 /2
+for all but finitely many k ∈ N. In a next step we expand the arcsin about zero, as well as
+use that λ0 (Vk , αδ0 ) = λ1 (Vk , αδ0 ) − Γ(Vk , α) and λ1 (Vk , αδ0 ) = π 2 |Vk |−2 + O(|Vk |−4 ), see (4)
+and (6), to obtain
+                                                          |Vk |
+               κ0 (Vk , α) = p                                                          .
+                                 1 − π −2 |Vk |2 Γ(Vk , α) + O(|Vk |−2 ) + O (|Vk |−2 )
+                    √
+Finally, expanding 1 − x and of (1 − x)−1 about x = 0, we conclude
+                    κ0 (Vk , α) = |Vk | + (2π 2 )−1 |Vk |3 Γ(Vk , α) + O |Vk |−1 ,
+                                                                                
+
+for all but finitely many k ∈ N.                                                                         □
+     An immediate consequence of Corollary 9 and Lemma 12 is now the following result.
+Corollary 13. There exist C1 = C1 (α), C2 = C2 (α) > 0 such that for all but finitely many
+k ∈ N,
+                                     C1 ≤ κ0 (Vk , α) − |Vk | ≤ C2 .
+     Next, we introduce the auxiliary function
+                              uk,α (j) := cos (j + 21 )π/κ0 ,
+                                                           
+                                                                    j∈Z.
+For all j ∈ Z, using the equation cos(x + y) = cos(x) cos(y) − sin(x) sin(y), we then have
+          uk,α (j + 1) = cos (j + 12 )π/κ0 cos (π/κ0 ) − sin (j + 12 )π/κ0 sin (π/κ0 ) ,
+                                                                         
+                   ON THE ASYMPTOTIC BEHAVIOR OF THE SPECTRAL GAP ...                             15
+
+and
+          uk,α (j − 1) = cos (j + 21 )π/κ0 cos (π/κ0 ) + sin (j + 12 )π/κ0 sin (π/κ0 ) ,
+                                                                         
+
+and therefore
+      −uk,α (j − 1) + 2uk,α (j) − uk,α (j + 1) = (2 − 2 cos (π/κ0 )) uk,α (j) = λ0 uk,α (j) .   (35)
+Since uk,α (−1) = uk,α (0) (by direct computation) and by using the above equation for j = 0,
+we conclude
+                uk,α (0) − uk,α (1) = −uk,α (−1) + 2uk,α (0) − uk,α (1) = λ0 uk,α (0) .         (36)
+Now, choose A(j) such that φk,α (j) = A(j)vk,α (j) where φk,α is the eigenfunction to λ0
+and vk,α (j) := uk,α (k − |j|). Then, using the eigenvalue equation for φk,α as well as (35)
+and (36), one obtains that A(j) = A(j − 1) for j ∈ {1, . . . , k} and hence, also using that vk,α
+is symmetric about zero, A(j) = ∥vk,α ∥−1Hk , j ∈ Vk . Furthermore, from this one concludes
+that the (unique) eigenfunction of Hk,α to λ0 is given by
+         φk,α (j) = ∥vk,α ∥−1                     vk,α (j) = cos (k − |j| + 21 )π/κ0 .
+                                                                                     
+                           Hk vk,α (j) where                                                (37)
+Proposition 14. We have for all but finitely many k ∈ N,
+                                              π     1
+                     vk,α (1) − vk,α (0) =        −   |Vk |Γ(Vk , α) + O(|Vk |−3 ).
+                                             |Vk | 2π
+Proof. Using Lemma 12 and Corollary 13, which implies that |κ0 − 2k| is bounded from
+above by a constant, we obtain
+                                                                                    
+                                 1
+                                                     1
+                                                                      πk           π
+vk,α (1) − vk,α (0) = cos (k − 2 )π/κ0 − cos (k + 2 )π/κ0 = 2 sin            sin
+                                                                        κ0         2κ0
+                                                                                          
+                              κ0 − 2k π          π       
+                                                                     −2
+                                                                             π           −3
+                                                                                              
+                    = 2 cos               sin         = 2 1 + O |Vk |             + O |Vk |
+                                 κ0 2           2κ0                           2κ0
+                       π
+                          + O |Vk |−3 .
+                                      
+                    =
+                      κ0
+Since |Vk |2 Γ(Vk , α) ∼ k −1 by Corollary 9, we thus have
+                                                                        
+                                π         1                          −2
+                                                 2
+                                                                           + O |Vk |−3 ,
+                                                                                     
+        vk,α (1) − vk,α (0) =         1 − 2 |Vk | Γ(Vk , α) + O |Vk |
+                               |Vk |     2π
+for all but finitely many k ∈ N.                                                                  □
+  An immediate consequence of Proposition 14 is the following inequality.
+Corollary 15. There exists a C3 = C3 (α) > 0 such that for all but finitely many k ∈ N,
+                                 π                               C3
+                                      − (vk,α (1) − vk,α (0)) ≥        .
+                                |Vk |                           |Vk |2
+  We also have the following statement.
+Proposition 16. For all but finitely many k ∈ N, we have
+                                                         |Vk |
+                                          ∥vk,α ∥2Hk ≥         .                                (38)
+                                                          2
+16                            M. HOFMANN, J. KERNER, AND M. PECHMANN
+
+Proof. By Corollary 13 we have κ0 ≥ |Vk | for all but finitely many k ∈ N. Thus, using
+cos2 (x) = (1/2)(1 + cos(2x)), we conclude
+                           k
+                           X                                                k
+                                                                            X
+            ∥vk,α ∥2Hk =               2
+                                           (k − |j| + 21 )π/κ0                     cos2 ((k − |j| + 12 )π/|Vk |)
+                                                                    
+                                  cos                                   ≥
+                           j=−k                                             j=−k
+                                           k                                              k             
+                         |Vk | 1           X              |Vk | − 2|j|           |Vk | 1 X           2πj
+                       =      +        cos                             π       =      −        cos
+                          2     2 j=−k                        |Vk |               2     2 j=−k       |Vk |
+                                   k               
+                         |Vk | 1   X           j        |Vk |
+                       =      − Re    exp 2πi         =
+                          2    2 j=−k         |Vk |      2
+for all but finitely many k ∈ N.                                                                                     □
+     Proposition 16 is complemented by the following result.
+Proposition 17. For all but finitely many k ∈ N we have
+                                            |Vk |
+                               ∥vk,α ∥2Hk ≤       + ⌈C2 /2⌉ ,
+                                             2
+with C2 > 0 from Corollary 13.
+Proof. By Corollary 13 we have κ0 ≤ |Vk | + C2 , and similarly as in Proposition 16 we have,
+for all but finitely many k ∈ N,
+                      k
+                      X                        
+                2           2           1
+         ∥vk,α ∥Hk =     cos (k − |j| + 2 )π/κ0
+                       j=−k
+                           k+⌈C2 /2⌉              
+                              X                                                                    
+                                           cos2       k + ⌈C2 /2⌉ − |j| + 21 π/ 2(k + ⌈C2 /2⌉) + 1
+                                                                            
+                   ≤
+                       j=−(k+⌈C2 /2⌉)
+
+                   = k + ⌈C2 /2⌉ + 1/2 .
+                                                                                                                     □
+     Next, we define the function vk,∞ via
+                                    vk,∞ (j) = cos((k − |j| + 21 )π/|Vk |) ,
+and conclude φk,∞ (j) = vk,∞ (j)/∥vk,∞ ∥Hk (recall that φk,∞ is the ground-state eigenfunction
+to Hk,α for α = ∞). As computed in the proof of Proposition 17,
+                                            k
+                                            X                                |Vk |
+                        ∥vk,∞ ∥2Hk =             cos2 (k − |j| + 12 )π/|Vk | =      .
+                                            j=−k
+                                                                               2
+Hence, we have
+                           φk,∞ (j) = (2/|Vk |)1/2 cos (k − |j| + 21 )π/|Vk | .
+                                                                             
+                                                                                                                   (39)
+We now establish the main result of the appendix.
+Proposition 18. There exists a constant C4 = C4 (α) > 0 such that for all but finitely many
+k ∈ N, we have
+                                    2φk,∞ (1) − αφk,α (0) ≥ C4 |Vk |−5/2 .
+                  ON THE ASYMPTOTIC BEHAVIOR OF THE SPECTRAL GAP ...                              17
+
+Proof. Using Corollary 15 and Proposition 16 we obtain, for all but finitely many k,
+                                               21/2                      21/2 π
+                                                                                         
+                        vk,α (1) − vk,α (0)             π     C3                      C3
+  φk,α (1) − φk,α (0) =                     ≤               −         =           1−          .
+                             ∥vk,α ∥Hk        |Vk |1/2 |Vk | |Vk |2     |Vk |3/2     π|Vk |
+Using (39) then yields
+                φk,α (1) − φk,α (0) ≤ φk,∞ (1) − 21/2 C3 |Vk |−5/2 + O |Vk |−7/2 .
+                                                                                
+
+Since λ0 φk,α (0) ≲ |Vk |−7/2 , see also (16), there exists a constant C4 > 0 such that for all but
+finitely many k ∈ N,
+                                                        λ0           C4
+                   φk,∞ (1) − (φk,α (1) − φk,α (0)) − φk,α (0) ≥        |Vk |−5/2 .
+                                                        2             2
+Finally, employing the eigenvalue equation for φk,α and the fact that φk,α is symmetric about
+zero yields
+      2φk,∞ (1) − αφk,α (0) = 2φk,∞ (1) − 2(φk,α (1) − φk,α (0)) − λ0 φk,α (0) ≥ C4 |Vk |−5/2
+for all but finitely many k ∈ N.                                                                  □
+
+  Matthias Hofmann, Lehrgebiet Numerische Mathematik, Fakultät Mathematik und Infor-
+matik, FernUniversität in Hagen, 58084 Hagen, Germany
+  Email address: matthias.hofmann@fernuni-hagen.de
+
+   Joachim Kerner, Lehrgebiet Analysis, Fakultät Mathematik und Informatik, FernUniversität
+in Hagen, 58084 Hagen,Germany
+   Email address: joachim.kerner@fernuni-hagen.de
+
+  Maximilian Pechmann, Department of Mathematics, Tennessee Technological University,
+Cookeville, TN 38505, USA
+  Email address: mpechmann@tntech.edu
+

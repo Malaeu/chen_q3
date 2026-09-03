@@ -1,0 +1,264 @@
+proceedings of the
+american mathematical society
+Volume 105, Number 2, February 1989
+
+
+
+
+                 OPTIMAL LOWER BOUND FOR THE GAP
+                BETWEEN THE FIRST TWO EIGENVALUES
+            OF ONE-DIMENSIONAL SCHRÖDINGER OPERATORS
+              WITH SYMMETRIC SINGLE-WELL POTENTIALS
+
+                          MARK S. ASHBAUGH AND RAFAEL BENGURIA
+
+                                      (Communicated by George R. Sell)
+
+
+           Abstract.      We prove the optimal lower bound ¿2-^1      > 3n2/d2 for the
+           difference of the first two eigenvalues of a one-dimensional Schrödinger op-
+           erator -d2/dx2 + V'x) with a symmetric single-well potential on an inter-
+           val of length d and with Dirichlet boundary conditions. Equality holds if
+           and only if the potential is constant. More generally, we prove the inequality
+           ¿2[*/i]-^i[J/i]  > ^[^ol^it^o]     in the case where V\ and V0 are symmetric
+           and V\ - V0 is a single-well potential.
+
+
+
+                                           I. Introduction
+   General bounds on the gaps between consecutive eigenvalues of Schrödinger
+operators have been the object of considerable attention recently. The gap X2-
+Xx between the first two eigenvalues is of particular interest because it represents
+the first excitation energy. Singer, Wong, Yau, and Yau [8] proved the lower
+bound
+(1)                                         X2- Xx> n2/4d2
+for the eigenvalues of the operator H = -A + V(x) acting on L (il) with
+Dirichlet boundary conditions where il is a bounded convex subset of R" and
+F is a convex potential; the quantity d is the diameter of il. More recently,
+Yu and Zhong [9] improved estimate ( 1) to
+
+(2)                                         X2-Xx>n2/d2
+under the same hypotheses.
+   Received by the editors December 16, 1986.
+   1980 Mathematics Subject Classification (1985 Revision). Primary 34B25.
+    Key words and phrases. Schrödinger operators, eigenvalue gaps.
+    The first author was partially supported by grants from the Research Council of the Gradu-
+ate School, University of Missouri-Columbia and the Programa de las Naciones Unidas para el
+Desarrollo (PNUD grant CHI-84-005).
+   The second author was partially supported by the Departamento de Investigación y Bibliotecas
+de la Universidad de Chile (Grant E-2486-8612)and by FONDECYT grant 1238-86.
+                                                                         ©1989 American Mathematical Society
+                                                                          0002-9939/89 $1.00+ $.25 per page
+
+                                                    419
+420                    M. S. ASHBAUGH AND RAFAEL BENGURIA
+
+
+   In this note we derive the optimal bound
+(3)                           ■X2- Xx> Zn/d2
+for the one-dimensional case under the additional assumption that F is a sym-
+metric potential. In fact, we prove (3) under the assumption that F is a sym-
+metric "single-well" potential; by this we mean that V is first decreasing and
+then increasing on the interval in question (of course, for V symmetric the
+transition from decreasing to increasing must take place at the midpoint).
+   In addition to the articles cited above there are several other recent articles
+which present results which are in a sense complementary to our investigation.
+Whereas our results are specialized to the single-well case these other results
+are of most interest in the case of multiple-well potentials. The results in [5-7]
+provide general bounds on eigenvalue gaps; earlier work of Harrell [3, 4] and
+others investigated the behavior of gaps in the context of perturbation theory.
+
+                             II. The MAIN RESULTS
+                                                             1    1
+    We consider the two Schrödinger operators HQ = -d /dx + V0(x) and
+//, = -d2/dx2 + Vx(x), both acting on L2(0, n) with Dirichlet boundary con-
+ditions and with both VQ and Vx symmetric with respect to x = n/2 and
+in L iO.n). We work with the interval [0, n] here for convenience; our gen-
+eral results will follow trivially by rescaling. Let (Xx,ux) and (X2,u2) be the
+first two eigenpairs of Hx and let (px ,vx) and (p2 ,v2) be the corresponding
+quantities for H0 (here an eigenpair denotes an eigenvalue together with its
+associated eigenfunction).
+Definition 1. A potential function F is a single-well potential on the closed
+interval / if there is a eel   such that V is nonincreasing for x < c and is
+nondecreasing for x > c . The value c could be either endpoint of the interval
+/.
+Proposition 1. Let HQ and //, be as described above. IfVx-VQ          is a single-well
+potential, then
+
+(4)                             X2-Xx>ß2-nx
+with equality if and only if Vx- VQ is constant on [0, n].
+Proof. We consider the trial function (for «,)
+
+
+(5)                               u = (vx/v2)u2
+and use it in the Rayleigh-Ritz inequality Xx < (u , Hxu)/(u , u). The function
+u is in the domain of Hx since the zeros of u2 and v2 are at x = 0, n/2, and
+n, are all first-order, and hence all cancel. Henceforth, we shall assume that
+vx > 0 on (0,7z) and that u2 and v2 are positive on (0,7t/2) and negative
+on (n/2 , n). These can be accomplished by changes of sign as necessary.
+          FIRST TWO EIGENVALUESOF ONE-DIMENSIONALSCHRÖDINGER OPERATORS                         421
+
+
+      First we compute
+(6)
+     Hxu = ivx/v2)Hxu2 - 2u'2(vx/v2)' - u2(vx/v2)'
+          = X2u - 2u'2(vx/v2)' - u2[v2 v[ - vxv2 v2 - 2v\v2¿'v'2 + 2vxv2 J(^)"]
+          = X2u - (p2 - px)u-     2u'2(vx/v2)' + 2u2v2 v'2(vx/v2)'
+          = X2u - (p2 - px)u - 2v2(vx/v2)'(u2/v2).
+It follows that
+
+         Xx(u , u) < X2(u, u) - (p2 - px)(u , u) - 2 /                 uv2(vx/v2)'(u2/v2)'dx
+                                                                  Jo
+and hence
+                                           2        fn
+                X2-Xx >p2-px           + j—jj^           uv2(vx/v2)'(u2/v2)'dx.
+or
+                                           4  fn/2            ,      ,
+(1)            X2-Xx>p2-px             + j——r      uv2(vx/v2) (u2/v2) dx.
+                                         Ku • u) JO
+The result X2-Xx > p2- px will follow if we can show that the integral above
+is nonnegative. To show this, we first observe that by our assumptions u and
+v2 are both positive on (0,7r/2). Hence it remains to consider (vx/v2)' and
+(u2/v2)'. We compute
+
+                              ivx/v2)' = iv2v'x-vxv'2)/v22
+and
+                  iv2vx -vxv2)         =v2vx -vxv2
+                                       = v2(V0-ßx)vx-vx(V0-ß2)v2
+                                       = (p2 -px)vxv2 > 0               on(0,7r/2).
+Therefore,
+                                                             rx
+                         (vx/v2)' = (p2-px)v2/ vxv2dt>0
+                                            Jo
+and (vx/v2)' is seen to be positive on (0, n/2). Lastly, we consider
+
+                              (u2/v2)' = (v2u2 - u2v'2)/v\.
+From               ,     i       i.i            n        n
+                   (v2u2 - u2v2) — v2u2 - u2v2
+                                        = v2(Vx - X2)u2 - u2(V0 - n2)v2
+                                        = [(Vx-V0)-(X2-ß2)]u2v2
+it follows that
+                                        rx
+                   v2u2 - u2v'2 = /          [(Vx - V0) - (X2 - ß2)]u2v2dt.
+                              Jo
+Since the integral appearing here must vanish at x — n/2 and since Vx- V0
+422                   M. S. ASHBAUGH AND RAFAELBENGURIA
+
+is nonincreasing on (0, n/2) by assumption we must either have Vx - V0 =
+const. - X2- p2 or there must be a point x0 e (0, n/2) such that V{ - V0-
+(X2-ß2) > 0 on (0,x0) and Vl —VQ—(X2-p2) < 0 on (x0,n/2). In either case
+this shows that (u2/v2)' > 0 on (0, n/2) and the conclusion X2-Xx > p2- px
+follows. Moreover, (u2/v2)' > 0 on (0, n/2) unless Vl —VQ= const, and the
+case of equality is characterized as stated in the proposition. D
+Theorem 1. Let H - -d2/dx2 + V(x) be an operator on L2(a,b) with Dirichlet
+boundary conditions and suppose that V is a symmetric single-well potential.
+Then its first two eigenvalues satisfy
+
+(8)                         X2-Xx >3n2/(b-a)2
+
+with equality if and only if V = const.
+Proof. This follows directly from Proposition 1 by taking VQ= 0 and Vx= V
+and observing that then px = n2/(b - a)2 and p2 = 4n2/(b - a)2. D
+Remarks 1. From Theorem 1 it follows easily that if V is symmetric and convex
+                    2   2           '
+then X2-Xx > 3n /d wehre d is the length of the interval as stated in our In-
+troduction. Furthermore, we conjecture that the hypothesis that V is symmetric
+                                                                            2    2
+can be removed; i.e. that V convex is sufficient to insure X2 - X{ > 3n /d .
+Unfortunately, our method of proof above, which relies quite heavily on the
+symmetry hypothesis, seems unlikely to extend to this case.
+    On the other hand, we emphasize that a symmetric single-well potential need
+not be convex. Thus our theorem applies to a somewhat different class of poten-
+tials than do those of Singer, Wong, Yau, and Yau and of Yu and Zhong. The
+intersection of these classes is exactly the class of symmetric convex potentials.
+We know, however, that (8) cannot hold for all single-well potentials (consider
+the perturbation of V = 0 by a small well placed near one endpoint of the
+interval).                                                                    ■y
+    2. In the case of general dimension n with H = —A+V(x) acting on L (il)
+with Dirichlet boundary conditions where il is a bounded convex subset of R"
+and V is convex we conjecture the bounds
+
+(9)                X2-Xl>(X2-Xl)          rio=ball of same volume as Í2
+                                                      l"b=0
+and
+
+(10)                         X2-Xi>(X2-Xl)\v=0
+or even
+
+(11)        X2-X. >(X2-X.)      [^=[1   > (^2 — ^l)|     iio=ballof volume |fî| •
+                                 K,=0                             Io=0
+
+   3. The choice of u = v{u2/v2 as trial function for w, was motivated by
+the fact that this reduces exactly to ux in the case where V0 = Vx or, more
+        FIRST TWO EIGENVALUESOF ONE-DIMENSIONALSCHRÖDINGER OPERATORS            423
+
+generally, when V, —VQ= const. One might also observe that the integral in (7)
+reduces to 0 (as it must) in this case due to the factor (ux/v2)' in the integrand.
+   4. For nonnegative symmetric single-well potentials we now have the optimal
+inequalities
+
+(12)                         3n/d2 < X2- A, < 3/1,
+
+(see [1] for the second of these which actually holds whenever F is a nonnega-
+tive potential) with equality in both if and only if V = 0. While the conclusion
+        2   2
+X{ > n ¡d is well known the true utility of these results is that they provide
+tight bounds on X2- X{ particularly in cases where V is small. However, it
+might be noted that even for very large potentials (in an Lp sense, say) one
+can find potentials which come arbitrarily near to saturating either of the in-
+equalities above. Indeed, the first inequality is saturated by taking a constant
+potential and we can come arbitrarily close to saturating the second by tak-
+ing potentials which are concentrated near the endpoints of the interval [a ,b]
+(such potentials also come arbitrarily close to saturating the first inequality).
+    5. The investigations presented above also yield "single-barrier" results. In
+particular, if F is a symmetric single-barrier potential in one dimension and
+Dirichlet boundary conditions are in effect then it follows that X2-X{ < 3n ¡d2.
+Results of this type follow by reversing the roles of V0 and V{ in our Propo-
+sition 1.
+    Note added in proof (7/12/88). In the proof of Proposition 1 one should
+first restrict consideration to continuous potentials to insure that the various
+manipulations carried out there are justified. One can then regain the case
+of L potentials by using a limiting argument to show that the inequality (4)
+continues to hold in that more general setting.
+   In subsequent work we have discovered that the inequalities (9), (10), and
+(11) conjectured in Remark 2 cannot hold in general. However, in the important
+special case where il is a ball in R" and V is spherically symmetric (central),
+we have shown that the bound (10) does hold. In general, though, the best that
+might be hoped for if il is convex and F is a convex function on il is the
+bound X2-Xl > 3n /d where d is the diameter of il. Further discussion of
+these points and the result alluded to above will be contained in our forthcoming
+paper Lower bounds for gaps. II. The multi-dimensional case with a spherically
+symmetric single-well potential.
+   For discrete (difference equation) analogues of the one-dimensional results
+presented here, see our paper Some Eigenvalue Inequalities for a glass ofJacobi
+matrices. In addition, several of these results are summarized in our contri-
+bution to the volume Maximum Principles and Eigenvalue Problems in Partial
+Differential Equations, P. W. Schaefer, editor, Longman Press, to appear in
+1988.
+424                           M. S. ASHBAUGH AND RAFAEL BENGURIA
+
+
+                                               References
+  1. M. S. Ashbaugh and R. Bengurià, Best constant for the ratio of the first two eigenvalues of one-
+     dimensional Schrödinger operators with positive potentials, Proc. Amer. Math. Soc. 99 (1987),
+       598-599.
+  2. E. B. Davies, Structural isomers, double wells, resonances and Dirichlet decoupling, Ann.
+     Physics 157 (1984), 166-182.
+  3. E. Harrell, Double wells,Comm. Math. Phys. 75 (1980), 239-261.
+  4._,    On the rate of asymptotic eigenvalue degeneracy, Comm. Math. Phys. 60 (1978), 73-95.
+  5. W. Kirsch and B. Simon, Universal lower bounds on eigenvalue splittings for one-dimensional
+       Schrödinger operators, Comm. Math. Phys. 97 (1985), 453-460.
+  6. W. Kirsch and B. Simon, Comparison theorems for the gap of Schrödinger operators, J. Funct.
+       Anal. 75(1987), 396-410.
+  7. S. Nakamura, A remark on eigenvalue splittings for one-dimensional double-well Hamiltonians,
+       Lett. Math. Phys. 11 (1986), 337-340.
+  8. I. M. Singer, B. Wong, S.-T. Yau, and S. S.-T. Yau, An estimate of the gap of the first two
+     eigenvalues in the Schrödinger operator, Ann. Scuola Norm. Sup. Pisa Ser. 4 12 (1985), 319—
+       333.
+  9. Q. Yu and J.-Q. Zhong, Lower bounds on the gap between the first and second eigenvalues of
+       the Schrödinger operator, Trans. Amer. Math. Soc. 294 (1986), 341-349.
+
+      Department     of Mathematics,    University    of Missouri, Columbia, Missouri 65211
+      Departamento     de Física, Facultad      de Ciencias Físicas v Matemáticas,   Universidad   de
+Chile, Casilla     487/3, Santiago,    Chile
+

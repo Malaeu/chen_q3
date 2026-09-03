@@ -1,0 +1,312 @@
+proceedings of the
+american mathematical society
+Volume 121, Number 3, July 1994
+
+
+
+
+                          THE EIGENVALUE GAP
+                FOR ONE-DIMENSIONALCONVEXPOTENTIALS
+
+                                           RICHARD LAVINE
+
+                                  (Communicated by Palle E. T. Jorgensen)
+
+
+           Abstract.   For Schrödinger operators on an interval with convex potentials,
+           the gap between the two lowest eigenvalues is minimized when the potential is
+           constant.
+
+
+
+
+                                           1. Introduction
+   The Schrödinger operator -A + F(x) on a compact domain ÍJ c R" with
+Dirichlet or Neumann boundary conditions has discrete spectrum Ex < E2 <
+2s3 < • • • , for bounded V. The gap Y = E2 - Ex has attracted some interest.
+In [6], improving the result of [5], it was shown that if V and Q are convex,
+T > n2/d2, where d is the diameter of Q. In the one-dimensional case Q =
+[-a, a], Ashbaugh and Benguria [2, 3] showed that if F is a symmetric single
+well potential, i.e., V(x) = V(-x) and V is nondecreasing on [0, a], then
+
+
+
+
+and this is just the gap for V = const. They point out that nonsymmetric
+single wells can have smaller gaps but make the conjecture that among convex
+potentials on a convex domain the constant potentials minimize the gap. The
+above results are all for Dirichlet boundary conditions. Here we verify the
+one-dimensional conjecture for Dirichlet and Neumann boundary conditions.
+   One reason for our interest in this question is that the gap can be used to esti-
+mate the difference between a normalized solution u of the differential equation
+-u" + Vu = Eu and a multiple of the normalized ground state solution ux , for
+E close to Ex . If H is the Schrödinger operator on tL2([0, a]) with Neumann
+boundary conditions, then u is in the domain of (H - Ex)i, so, by spectral
+
+   Received by the editors October 12, 1992.
+   1991 Mathematics Subject Classification. Primary 34L15.
+   Key words and phrases. Schrödinger operator, eigenvalue gap.
+
+                                                                       ©1994 American Mathematical Society
+                                                                            0002-9939/94 $1.00+ $.25 per page
+
+                                                    815
+816                                     RICHARDLAVINE
+
+theory,
+
+      \\u-(u,     ux)ux\\2 < (E2 - Ex)~x \\(H-Ei)iu\
+
+           = (E2-EX)~X       [ (\u'\2 + (V-Ex)\u\2)dx
+                             Jo
+           = (E2 - Ex)~x | í\-u"        + (V - Ex)u)üdx + u'(a)ü(ä) - u'(0)ü(Öj\
+
+                 E - Ex + u'(a)u(a) - u'(0)u(0)
+                            E2-E
+   If the lowest Dirichlet and Neumann eigenvalues are close compared to
+E2-Ex, then this result implies that the eigenfunctions are close, so the above
+result implies a similar one for the Dirichlet case. (The Dirichlet and Neumann
+eigenvalues will be close if the boundary values of V are large compared to its
+minimum.)
+
+                                     2. Preliminaries
+   Suppose that V is continuous on [0, R], and let H be the selfadjoint op-
+erator on L2([0, R]) given by -d2/dx2 + V(x) with Dirichlet or Neumann
+boundary conditions. H has spectrum {Ex < E2 < ■■■}with corresponding
+normalized eigenfunctions «■ , u2, ... . Basic to our work is the observation
+[1, 2] that if ux and w2 are chosen positive near 0 so that ux > 0 on (0, R)
+and, for some xn e (0, R), u2> 0 on (0, xn) and u2 < 0 on (xn, R), then
+u2/ux is decreasing on (0, R). In fact
+
+                    ( MiTx)) = ui(x)~2[u'2(x)ux(x) - u2(x)u\(x)]
+                                    1     [x
+                              = 777^2/ (Ei - E2)ux(s)u2(s) ds < 0
+                                MiW Jo
+for 0 < x < Xn, and similarly
+
+
+
+
+for Xo < x < R. Thus we have points x± with
+                                   0 < x_ < xn < x+ < R
+and
+                u\ > u\   on (0, x_) U (x+, R),         u\ <u2   on (x_ , x+).
+Neither of these sets is empty, since ux and u2 are normalized.
+   We shall also need the standard formula for the derivative of E¡ when V
+is changed. If V(r, •) is a one-parameter family of continuous potentials,
+differentiable in sup norm topology, and Ej(x) is the jxh eigenvalue of the
+corresponding Schrödinger operator,
+
+                             <jm,j^Mix.
+          THE EIGENVALUEGAP FOR ONE-DIMENSIONAL
+                                              CONVEXPOTENTIALS               817
+
+Then, if Y(r) = E2(t) - Ex(r),
+
+(2.1)            ^r(T)    = £         |^(t,   x)(M2(x)2 - ux(x)2)dx.
+
+  The fact, proved in [1, 2], that among symmetric single well potentials the
+gap is minimized at constant V follows easily: If V is such a potential and
+V(r, x) = tV(x) , we have
+
+               ^r^=        /                  V(x)(u2(x)2-ux(x)2)dx
+                 "T       J(0,x-)U(x+,R)
+                                [X+
+                          +           V(x)(u2(x)2 -ux(x)2)dx
+                               •¡X-
+
+                         >o,
+because V(x) > V(x+) = V(x-) and u\ - u\ > 0 in the first integral and
+V(x) < V(x+) and u\ - u\ < 0 in the second. Equality holds only if V is
+constant.
+                                3. Convex potentials
+   If V is convex on [0, R], then it is continuous on (0, R) and the continuous
+extension to [0, R] defines the same Schrödinger operator, so we may take V
+continuous.
+Theorem 3.1. Let V be convex on [0, R], and let Ex and E2 be the first two
+eigenvalues for the Dirichlet [Neumann] Schrödinger operator -d2/dx2 + V on
+[0, R]. Then E2-Ex > To where Y0 is the gap for constant V for the Dirichlet
+[Neumann] operator with equality only if V is constant.
+   Thus, for the Dirichlet operator,
+                                                  3n2
+(3.1)                                 E2-Ex>^-,
+while, for the Neumann,
+
+(3.2)                                  E2 - Ex > ^      .
+   We first reduce to the linear case and then handle this case.
+Lemma 3.2. If V is convex but not linear, there is a linear potential with a
+smaller gap.
+Proof. If W is convex and not linear, the corresponding Dirichlet or Neumann
+Schrödinger operator has points x± , as in the previous section. If Lw is the
+linear function satisfying
+                            Lw(x±) = W(x±) ,
+then
+
+(3.3)             fR(W(x)-
+                  / (W(x)-Lw(x))(u2(xy-ux(xy)dx>0
+                 lo
+                 Jo
+                                                                       ,
+
+since both factors in the integrand are nonnegative on (0, x_) U (x+, R) and
+both are nonpositive on (x_ , x+) and at least one of these products is positive
+on some open set since W is not linear.
+818                                     RICHARD LAVINE
+
+   Define a one-parameter family of potentials
+                V(0,x) = V(x),
+(3.4)          dV
+               —(t,x) = LV(t,.)(x)-V(t,x),                     0<x<R.
+
+If Y(t) is the gap for V(t, x), then Y'(t) < 0 by (2.1) and (3.4). If
+                                   LV{t>.)(x)= a(t)x + b(t),
+then
+                 V(t, x) = £?-' V(x) + [ es-'(a(s)x + b(s)) ds ,
+                                              Jo
+so V(t, •) differs from a linear function by at most exp(-i)||F||00, and the
+eigenvalues of V(t, •) are correspondingly close to those of the linear poten-
+tial. D
+
+   So it is enough to show that for linear potentials the gap is minimized by the
+constant potential. First we note that the gap goes to infinity with the slope of
+the potential. We need only consider the case a > 0. If
+                      -u"(x)   + ax u(x) = Xu(x),         0 < x < R,
+then mq(x) = u(x/a)        satisfies
+            -u'â(x)     + Q_3ax ua(x) = a~2Xua(x),             0 < x < aR ,
+
+so a~2X is an eigenvalue for the potential a~3ax on [0, Ra] if and only if
+X is an eigenvalue for ax on [0, R]. Thus, writing Y(V, R) for the gap for
+potential V on [0, R], we find, taking a = aXf3, that
+                               Y(ax,R)     = a2'3Y(x,ax^R).
+As a -> oo , T(x, axl3R) -» T(x, oo) > 0. (The eigenvalues for [0, ax^R] are
+bounded below by those of [0, oo). On the other hand, because of the rapid
+decay of eigenfunctions under the infinite barrier, they can be modified to get
+good trial functions for the [0, ax^R] problem.) It follows that r(ax,        R) -> oo
+as a —►oo .
+   From this we see that there must be a gap minimizing potential
+                                                             Vq in the
+class of linear ones. We may assume that ^(x) = ax for a > 0. A linear
+perturbation cannot decrease the gap, so by (2.1)
+                               rR
+(3.5)                          /    x(w2(x)2-w,(x)2)(ix    = 0
+                       Jo
+if «i and w2 are the first two eigenfunctions for V0. (This appears unlikely
+if a > 0, since the expected value of potential energy should be higher for u2
+than for ux , but a proof of this seems elusive.) To show Vo = 0, we use the
+following results which are similar to those in [3].
+Lemma 3.3. If g is three times differentiable, g(0) = 0, and u is real and
+satisfies
+                 -u"(x) + V(x)u(x) = Xu(x),                0<x<R,
+            THE EIGENVALUEGAP FOR ONE-DIMENSIONAL
+                                                CONVEXPOTENTIALS               819
+
+with Dirichlet or Neumann boundary conditions at the endpoints, then
+        g(R)(u'(R)2 + (X- V(R))u(R)2) - g(0)[u'(0)2 + (X- V(0))u(0)2]
+                 1, ß,,~, ,~2    „H/n\„im2i
+               + ^[g"(R)u(R)2-g"(0)u(0)2]
+
+              : jf* ^2g'(x)(X- V(x))- g(x)V'(x) + ^-            u(x)2dx
+
+Proof. We have
+      g(R)[u'(R)2 + (X- V(R))u(R)2] - g(0)[u'(0)2 + (X- V(0))u(0)2]
+
+            =I      ^{g(x)[u'(x)2 + (X- V(x))u(x)2]}dx
+
+             = f {g'(x)[u'(x)2 + (X-V(x))u(x)2]-g(x)V'(x)u(x)2}dx
+               Jo
+and
+               fR
+        0= / (g'(x)u'(x)u(x))'dx
+           Jo
+               fR
+          = / {g"(x)u'(x)u(x)      + g'(x)[u'(x)2 + (V(x)-X)u(x)2]}dx
+            Jo
+          = j* \g'(x)[u'(x)2 + (V(x) - X)u(x)2] - i^lu(x)2}             dx
+
+              + ±[g"(R)u(R)2-g"(0)u(0)2].
+Combining these gives the result.     D
+  Now, taking g(x) = x and V = V0= ax, we get
+                                      rR
+(3.6)         R(u'(R)2 + (X- aR)u(R)2) =            (2X- 3ax)u(x)2 dx
+                                              Jo
+and, with g(x) = x2 ,
+                                            1 rR
+(3.7)       R(u'(R)2 + (X-aR)u(R)2)       = -    x(4X - 5ax)u(x)2dx .
+                                            R Jo
+So
+(3.8) 2X= (la + ^\       f xu(x)2-^-        f x2u(x)2dx+ (u(0)2- u(R)2)R~x.
+If we write                 rR                 rR
+                      (x) = / xu\(x)dx      = / xu2(x)dx ,
+                           Jo                 Jo
+we obtain
+          2(E2 -Ex)(l-     ^<x))    - R~l[u2(0)2 - u2(R)2 - ux(0)2 + ux(R)2]
+
+(3.9)            =-^JRx2(u2(x)2-ux(x)2)dx
+
+                 = ~T/    (x2-Ax-B)(uÁx)2-ux(x)2)dx.
+820                                       RICHARDLAVINE
+
+The right-hand side is negative if a > 0, by the argument for (3.3), choosing
+A and B, so the first factor vanishes at x± .
+   In the Dirichlet case, this gives (x) < R/2. The same is true in the Neumann
+case: Taking g = 1 in Lemma 3.3 gives
+                          uj(0)2 - Uj(R)2 = aEjx(l-             Ruj(R)2).
+By the differential equation and Neumann boundary condition, it is easy to see
+that «i is decreasing, so the right side of this equation is positive for j = I.
+Now (3.5) implies ux(R)2 < u2(R)2, so subtraction shows that the boundary
+term in (3.9) is positive.
+   We get a contradiction when a > 0 from the following:
+Lemma 3.4. Ifut>0     is the normalized ground state for the operator -d2/dx2+
+xx on tL2([0, R]) with Dirichlet or Neumann boundary condition, then, ifx>0,
+
+
+
+Proof. For t = 0 we have
+                                    I o
+                                          xuz(x)2dx     < —
+                                                            2
+
+
+
+                             o      I     xu0(x)2dx
+                                              z
+                                                        = T
+
+But, writing Ej(x) for the jxh eigenvalue of the operator in question and u¡
+for the jxW normalized eigenfunction (j > 1),
+
+         TxSo x\Mx)\2dx = £-2Ex(x)
+                                   = -J2(Ej(r)-Ex(x))~x\(uT,                txM,-)|2<0,
+                                       I+\
+using the standard formula for the second derivative of an eigenvalue [4].                       □
+
+Remarks. 1. It would be more satisfying to have an estimate of the gap that
+takes convexity into account in a quantitative way. A scaling argument similar
+to the one given above for linear potentials shows that T(k:2x2 , R) ~ 4k as
+K —>oo.
+   2. The class of convex potentials does not include all of the symmetric single
+well potentials treated in [1, 2]. It would be interesting to find a general class
+of potentials for which constant potentials minimize the gap.
+
+                                          References
+      1. M. Ashbaugh and R. Benguria, Optimal lower bound for the gap between the first two eigen-
+         values of one-dimensional Schrodinger operators with symmetric single-well potentials, Proc.
+        Amer.Math. Soc. 105 (1989),419-424.
+      2. _,      Optimal lower bounds for eigenvalue gaps for Schrodinger operators with symmetric
+         single-well potentials and related results, Maximum Principles and Eigenvalue Problems in
+         Partial Differential Equations (P. W. Schaefer, ed.), Pitman Res. Notes Math. Ser., vol.
+         175, Longman Sei. Tech., Harlow, 1988, pp. 134-145.
+      3. R. Lavine, Absolute continuity of Hamiltonian operators with repulsive potentials, Proc.
+        Amer. Math. Soc. 22 (1969), 55-60.
+      4. M. Reed and B. Simon, Methods of modern mathematical physics. IV, Academic Press, New
+        York, 1978.
+        THE EIGENVALUEGAP FOR ONE-DIMENSIONALCONVEXPOTENTIALS                                821
+
+ 5. I. M. Singer, B. Wong, S.-T. Yau, and S. S.-T. Yau, An estimate of the gap of the first two
+    eigenvalues in the Schrodinger operator, Ann. Scuola Norm. Sup. Pisa Cl. Sei. (4) 12 ( 1985),
+    319-333.
+ 6. Q. Yu and J.-Q. Zhong, Lower bounds of the gap between the first and second eigenvalues of
+    the Schrodinger operator, Trans. Amer. Math. Soc. 294 (1986), 341-349.
+
+Department   of Mathematics,     University of Rochester,      Rochester,   New York 14627
+

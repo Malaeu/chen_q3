@@ -1,0 +1,1504 @@
+                                             J ournal of
+                                                C lassical
+                                                & A nalysis
+                                           www.ele-math.com
+arXiv:1601.00699v3 [math.CA] 16 Mar 2017
+
+
+
+                                                 ASYMPTOTICS OF PROLATE SPHEROIDAL WAVE FUNCTIONS
+
+
+                                                                                     T. M. D UNSTER
+                                                                                Submitted to J. Classical. Anal.
+
+                                                Abstract. Uniform asymptotic approximations are  obtained for the prolate spheroidal wave func-
+                                                tions, for both the angular functions Psm
+                                                                                        n x, γ
+                                                                                               2 ( −1 < x < 1 ) and radial functions Psm x, γ 2
+                                                                                                                                         n
+                                                ( 1 < x < ∞ ). Here γ → ∞ , and the results are uniformly valid in the stated intervals, m and n
+                                                                                                                   −1
+                                                are integers, with m bounded and n satisfying 0 ≤ m ≤ n ≤ 2π γ (1 − δ ) , where δ ∈ (0,1)
+                                                is fixed. The results are obtained by an application of certain existing asymptotic solutions of
+                                                differential equations, and involve elementary, Bessel, and parabolic cylinder functions. An
+                                                asymptotic relationship between the prolate spheroidal equation separation parameter and the
+                                                other parameters is also obtained, and error bounds are available for all approximations.
+
+
+
+                                                                                     1. Introduction
+
+                                                 Separation of the wave equation in prolate spheroidal coordinates leads to the pro-
+                                           late spheroidal wave equation (PSWE)
+                                                                   2                     µ2
+                                                                                                            
+                                                                 2 d y      dy                    2       2
+                                                                                                            
+                                                           1−z          − 2z + λ −             +γ 1−z          y = 0,          (1.1)
+                                                                    dz2     dz          1 − z2
+                                           where λ and µ are separation constants, and γ is proportional to the frequency (see
+                                           [30] and [40]).
+                                                 Solutions of (1.1), the prolate spheroidal wave functions (PSWFs), are viewed
+                                           as depending on the parameters µ and γ from the equation, as well as an implicitly
+                                           defined parameter ν (which describes the behavior of solutions at infinity). This latter
+                                           parameter is the so-called characteristic exponent, and for details see [1, §8.1.1].
+                                                 The parameter λ is usually regarded as an eigenvalue admitting an eigensolution
+                                           that is bounded at both z = ±1 , which is equivalent to µ = m and ν = n being integers
+                                           (see [1] and [19]). Most of the literature focuses on PSWFs with these parameters being
+                                           integers, since this is the most useful case in practical applications. We shall assume
+                                           this as well throughout this paper.
+                                                 We consider the important case of γ → ∞ (which corresponds, for example, to
+                                           high-frequency scattering in acoustics). In this case it is known [1, p. 186] that λ →
+                                           −∞, and we shall assume this here. With the exception of §5, our results will be
+                                           uniformly valid for m bounded, n small or large, and specifically
+
+                                                                              0 ≤ m ≤ n ≤ 2π −1γ (1 − δ ) ,                                         (1.2)
+                                                Mathematics subject classification (2010): 33E10, 34E20, 41A60.
+                                                Keywords and phrases: Spheroidal wave functions; turning point theory; WKB methods; asymptotic
+                                           approximations.
+
+
+                                                                                               1
+where (here and throughout) δ ∈ (0, 1) is arbitrarily chosen.
+      Although we will consider the case z complex, our primary concern will be for z
+real (denoted by x), and in particular the so-called angular ( −1 < x < 1 ) and the radial
+( 1 < x < ∞) cases.
+      We shall apply several existing general asymptotic theories, each of which con-
+tains explicit error bounds. The large range of validity (1.2), along with error bounds,
+signifies a considerable improvement upon existing results. We will primarily be con-
+cerned with z real, but we shall use complex-valued argument results as needed to
+obtain our final results.
+      One of the principal difficulties in the asymptotic and numerical study of PSWFs
+is the determination of the eigenvalues, particularly for large value(s) of the other pa-
+rameters. We mention that an extensive the theory of PSWFs with arbitrary complex
+parameters µ and ν was developed in [19] and [20].
+      PSWFs were first studied by Niven [24] in heat conduction in spheroidal bod-
+ies, and were subsequently investigated by a number of authors (see [3], [12], [17],
+[33], [34], [36]). For certain values of the parameters PSWFs are eigenfunctions of
+the finite Fourier transform, and hence these functions play an important role in signal
+analysis. These band-limited functions are often encountered in physics, engineering,
+statistics; see [4], [32], [38], In [22] the PSWE is also shown to play a fundamental role
+in Laplace’s tidal equations. PSWFs also have important applications in fluid dynam-
+ics [13], geophysics and theoretical cosmological models [8], atomic and molecular
+physics [15], [28], and biophysics [6].
+      Despite being studied extensively over the decades there are significant gaps in the
+literature on the rigorous analysis of their asymptotic behavior, and their computation
+is non-trivial, particularly for large values of the parameters. The literature contains
+many asymptotic approximations and expansions (see [2], [7], [14], [21], [23], [31],
+[35], [40]), but most are heuristic, all parameters fixed except γ , and with little or no
+error analysis. For computational techniques see [11], [16], [18], [29], [37], [39].
+      We mention that in [9] rigorous results (with explicit error bounds) for more than
+one large parameter were derived for PSWFs, using a theory of a coalescing turning
+point and double pole [5], but not for the parameter range under consideration in this
+paper. Specifically, in comparison to the current paper in which λ < 0 , in [9] the case
+λ > 0 was assumed, which does not have many of the applications described above.
+      The PSWE (1.1) has regular singularities at z = ±1 , each with exponents ± 12 m.
+When γ = 0 the PSWE degenerates into the associated Legendre equation (regular
+singularities at z = ±1 and z = ∞), which for −1 < x < 1 has solutions the Ferrers
+              µ                                                              µ
+functions Pν (x) , and for complex z the associated Legendre functions Pν (z) .
+      The significant difference is that if γ 6= 0 the PSWE has an irregular singularity at
+infinity. In fact, one can show (from an algebraic form of Floquet’s theorem [1, §8.1.1])
+                                 µ (1)
+that there exists a solution Sν (z, γ ) (in the notation of [19]), with the property
+                            µ (1)                          µ (1)
+                                    ze pπ i , γ = e pνπ i Sν (z, γ ) ,
+                                               
+                           Sν                                                        (1.3)
+
+for any integer p . The LHS of (1.3) denotes the branch of the function after completing
+p negative half-circuits about z = ∞ (equivalently, p positive half-circuits about z =
+
+
+                                                2
+±1 ).
+      This solution can be expressed as an infinite series involving Bessel functions of
+the first kind. Specifically, for integral µ and ν we have from [1, §8.3]
+                                                      −m/2 m
+                                     π 1/2 z2 − 1
+                                           
+                         m(1)                               z
+                        Sn      (z, γ ) =                2)
+                                    2γ z         Am n (γ                            (1.4)
+                          ∞
+                        × ∑ am     2 J
+                                    
+                             n,k γ               ( γ
+                                       n+2k+(1/2) z),
+                             k=−k+
+
+where
+                                      k± =
+                                                1         
+                                                 2 (n ± m)     .                    (1.5)
+                                                                   m( j)
+    We parenthetically note that related solutions Sn (z, γ ) ( j = 3, 4 ) are defined
+below
+    In (1.4) the coefficients are defined by the three-term recurrence relation
+
+                        2           2
+                                       n m 2             2
+                                                             o m 2 
+                Am
+                           m                         m
+                  n,k γ an,k−1 γ + λn γ + Bn,k γ               an,k γ
+                                                                                 (1.6)
+                     m am        2 = 0,
+                                  
+                +Cn,k    n,k+1 γ
+
+where
+                           2
+                              (n − m + 2k − 1) (n − m + 2k) 2
+                    Am
+                     n,k γ    =                               γ ,                   (1.7)
+                                  (2n + 4k − 3) (2n + 4k − 1)
+               2 (n + 2k) (n + 2k + 1) + m2 − 1 2
+                                                
+       m    2
+      Bn,k γ =                                     γ − (n + 2k) (n + 2k + 1) ,      (1.8)
+                   (2n + 4k − 1) (2n + 4k + 3)
+and
+                          (n + m + 2k + 1) (n + m + 2k + 2) 2
+                   m
+                 Cn,k  γ2 =                                  γ .                    (1.9)
+                                 (2n + 4k + 3) (2n + 4k + 5)
+The normalising constant Am   2 is defined by
+                               
+                          n γ
+
+                                                ∞
+                              Am   2
+                                                ∑ + (−1)k amn,k γ 2 .
+                                                                          
+                               n γ     =                                          (1.10)
+                                            k=−k
+
+We also remark that the coefficients am        2 vanish for k ≤ −1 − k+ , where k+ is
+                                                
+                                         n,k γ
+defined by (1.5).
+     From (1.4), (1.10) and the well-known behavior of the Bessel function at infinity
+                                        µ (1)
+[25, Chap. 12, §1.2] we observe that Sν (z, γ ) has the important property
+
+                      cos γ z − 12 π (ν + 1)
+                                                     
+         µ (1)                                          1
+        Sν (z, γ ) =                              1+O          (z → ∞) ,        (1.11)
+                                γz                      z
+
+for |arg(z)| < π . With our assumption that ν = n = integer, all solutions of ((1.1)) are
+single-valued in the z-plane having a cut along the interval [−1, 1] .
+
+
+
+
+                                                     3
+                                                                  m( j)
+     Other fundamental solutions at infinity are given by Sn (z, γ ) ( j = 3, 4 ). These
+are defined by
+                                           1/2 z2 − 1−m/2 zm
+                                        π
+                                     
+                        m( j)
+                      Sn (z, γ ) = 2γ z                    2
+                                                    Am
+                                                             
+                                                      n γ                          (1.12)
+                            ∞
+                      × ∑ am           2 H ( j−2)
+                                        
+                                n,k  γ     n+2k+(1/2)
+                                                      (γ z),
+                           k=−k+
+         (1,2)
+where Hν (z) are the Hankel functions of the first and second kinds, respectively.
+                   m( j)
+    The solutions Sn (z, γ ) have the fundamental properties
+
+                                    eiγ z
+                                                
+                  m(3)                           1
+                Sn (z, γ ) = i−n−1          1+O          (z → ∞) ,            (1.13)
+                                     γz          z
+and
+                                          −iγ z
+                                                          
+                    m(4)             e                     1
+                   Sn (z, γ ) = in+1                  1+O         (z → ∞) ,          (1.14)
+                                          γz               z
+                                   m(3)
+for |arg (z)| < π . In particular Sn (z, γ ) is the unique solution that is recessive in the
+                           m(4)
+upper half plane, and Sn (z, γ ) is the unique solution that is recessive in the lower
+half plane.
+     An important connection formula, which comes directly from the corresponding
+one relating the J Bessel function to Hankel functions, is given by
+                                       n                          o
+                         m(1)             m(3)          m(4)
+                        Sn (z, γ ) = 12 Sn (z, γ ) + Sn (z, γ ) .                    (1.15)
+
+For n ≥ m ≥ 0 and −1 < x < 1 there is a solution Psm      2 defined in terms of
+                                                           
+                                                   n x, γ
+Ferrers functions by (see [1, §8.2])
+                                          ∞
+                      Psm      2
+                                          ∑ − (−1)k amn,k γ 2 P mn+2k (x).
+                                                            
+                        n x, γ     =                                                 (1.16)
+                                       k=−k
+
+This is the unique solution having the property of being recessive at x = 1 , and in
+particular has the property
+
+             Psm       2
+                           = Knm γ 2 (1 − x)m/2 {1 + O (1 − x)} x → 1− ,
+                                                                    
+                n x, γ                                                        (1.17)
+
+where Knm γ 2 is a constant given by
+               
+
+                         (−1)m ∞          (n + 2k + m)! m 2 
+                 Knm γ 2 = m/2   ∑   (−1)k              a    γ .                     (1.18)
+                          2 m! k=−k−       (n + 2k − m)! n,k
+
+From (1.16) and [27, eq. 14.7.17 ] we remark that Psm       2 also has the fundamental
+                                                             
+                                                     n x, γ
+property of also being bounded at x = −1 ; this is consequence of the characteristic
+exponent ν = n being an integer. In this case the function satisfies the normalisation
+condition             Z 1
+                                    2 2           2 (n + m)!
+                           Psm
+                                     
+                             n x, γ     dx =                    .               (1.19)
+                       −1                     (2n + 1) (n − m)!
+
+                                                  4
+As mentioned above, the separation constant λ = λnm γ 2 is regarded as an eigenvalue
+                                                        
+
+for the case m and n integers, and hence admits the eigensolution Psm        2 that is
+                                                                              
+                                                                      n x, γ
+bounded at x = ±1 .
+     For our purposes the PSWE (1.1) therefore takes the form
+                2                           m2
+                                                               
+              2 d y       dy      m 2                2       2
+                                                              
+          1−z        − 2z + λn γ −                +γ 1−z          y = 0.        (1.20)
+                 dz2      dz               1 − z2
+For x real and lying in (1, ∞) (the radial case) we have the following solution of (1.20)
+                                        ∞
+                      Psm      2
+                                        ∑ − (−1)k amn,k γ 2 Pn+2k
+                                                             m
+                                                         
+                        n x, γ     =                              (x),                (1.21)
+                                       k=−k
+
+which also defines Psm      2 for complex z; in this case Psm z, γ 2 is entire if m is
+                                                                    
+                     n z, γ                                    n
+                          1/2 m
+even, and if m odd 1 − z2      Psn z, γ 2 is entire.
+                                         
+
+     Now since m and n are integers, it is a straightforward to show from (1.21) that
+                                 πi 2
+                        Psm             = (−1)n Psm        2
+                                                            
+                            n ze , γ                 n z, γ ,                   (1.22)
+                                                       m(1)
+which is (unique) property of the Floquet solution Sn     (z, γ ) . Hence
+                      m(1)
+                     Sn (z, γ ) = (−1)n (n − m)!Vnm (γ ) Psm        2
+                                                                      
+                                                            n z, γ ,                  (1.23)
+                                                                         m(1)
+for some constant Vnm (γ ) , and hence from the known behavior of Sn (z, γ ) at infinity
+                                sin γ z − 12 π n
+                                                       
+            m     2
+                         m                               1
+         Psn z, γ = Vn (γ )                         1+O             (z → ∞) .          (1.24)
+                                       γz                 z
+An explicit expression, in terms of am         2                      m
+                                                 
+                                         n,k γ , for the constant Vn (γ ) can be obtained
+from (1.11), (1.21), (1.23), and letting z → ∞.
+     From [1, p. 171] we also note the recessive behavior
+               Psm      2
+                            = Knm γ 2 (z − 1)m/2 {1 + O (z − 1)} (z → 1) ,
+                                    
+                 n z, γ                                                                (1.25)
+where Knm γ 2 is given by (1.18).
+               
+
+     The plan of the paper is as follows. In §2 we obtain Liouville-Green approx-
+                m( j)
+imations for Sn (z, γ ) ( j = 3, 4) where z is complex, and use these to obtain an
+asymptotic approximation for the radial PSWF Psm              2 which is uniformly valid
+                                                       n x, γ
+                                                                           2
+in the interval 1 + δ ≤ x < ∞. In §3 the approximation for Psm
+                                                                             
+                                                                    n x, γ     is extended to
+1 < x < ∞ by applying the theory of differential equations having a simple pole, which
+involves the Bessel function  of the first kind. Also in this section an asymptotic rela-
+tionship involving λnm γ 2 and the parameters m and n is obtained, by matching the
+Liouville-Green and Bessel function approximations      at infinity.
+     In §4 the angular PSWF Psm            2 is approximated, with the intervals 1 − δ ≤
+                                            
+                                   n  x, γ                                                0
+x < 1 and 0 ≤ x ≤ 1 − δ0 considered separately (for some positive constant δ0 ). In
+the former interval the asymptotic approximation involves the modified Bessel function
+of the first kind, and in the latter interval the parabolic cylinder function is used. In
+§5 the approximation involving the parabolic cylinder function is simplified under the
+assumption n being bounded. Finally, in §6 we summarise the main results of the paper.
+
+                                              5
+                   2. Liouville-Green asymptotics: the radial case
+                                          1/2
+      Making the transformation w = z2 − 1     y in (1.20) we remove the first deriva-
+tive to obtain                (                            )
+                                     λnm γ 2
+                                             
+                       d 2w       2               m2 − 1
+                            = −γ + 2           +         2
+                                                             w.                  (2.1)
+                       dz2            z −1       (z2 − 1)
+Now, from [1, p. 186] it is known that for large γ , with m and n bounded, that
+                      λnm γ 2 = −γ 2 + 2 n − m + 12 γ + O (1) .
+                                                     
+                                                                                      (2.2)
+With this in mind we define a parameter σ by
+                              λnm γ 2 = −γ 2 1 − σ 2 ,
+                                                   
+                                                                                      (2.3)
+and throughout we shall assume that
+                                q
+                        0 ≤ σ = 1 + γ −2λnm (γ 2 ) ≤ σ0 < 1,                          (2.4)
+
+where σ0 is an arbitrary positive constant.
+    Next, from (2.3) we can express (2.1) in the form
+                               d2w  2                  
+                                 2
+                                   = γ f (σ , z) + g (z) w,                           (2.5)
+                               dz
+where
+                                       σ 2 − z2                   m2 − 1
+                         f (σ , z) =            ,       g (z) =
+                                                              2
+                                                                .                      (2.6)
+                                        z2 − 1        (z2 − 1)
+We observe for large γ the differential equation has turning points at z = ±σ , and on
+account of our assumption (2.4) these turning points lie in the interval (−1, 1) , they
+may coalesce with one another at z = 0 , but are bounded away from the      poles z = ±1 .
+     We shall construct Liouville-Green approximations for Psm       z, γ 2 , using the the-
+                                                                  n
+ory of [25, Chap. 10]. To this end, we introduce a new independent variable
+                                                 Z z 2      1/2
+                                                     t − σ2
+                        Z z
+                   ξ=       {− f (σ ,t)}1/2 dt =                    dt.                (2.7)
+                         1                        1   t2 − 1
+Branch cuts are suitably chosen so that 0 ≤ ξ < ∞ for 1 ≤ z < ∞.
+     The RHS of (2.7) can be expressed in terms of the elliptic integral of the second
+kind [27, eq. 19.2.5]
+                                         1/2        Z a  −2     1/2
+                               1 − b2t 2                  b − t2
+                          Z a
+               E (a; b) =                     dt = b                   dt.        (2.8)
+                           0    1 − t2                0    1 − t2
+Here b = σ −1 > 1 , and the branches of the square roots are such that integrand is
+positive for 0 ≤ t < b−1 and negative for 1 < t <
+                                                 ∞, and continuous elsewhere in the
+complex t -plane having a cut along the interval b−1 , 1 . We thus have
+
+                          ξ = σ E z; σ −1 − σ E 1; σ −1 .
+                                                         
+                                                                                (2.9)
+
+                                                    6
+Then with the new dependent variable W = {− f }1/4 w we obtain
+
+                                   d 2W  2          
+                                      2
+                                        = −γ + ψ (ξ ) W,                           (2.10)
+                                   dξ
+where
+                                        1 − σ 2 6z4 − 3 + σ 2 z2 − 2σ 2
+                                                                      
+                       m2 − 1
+        ψ (ξ ) =                     +                                    . (2.11)
+                (z2 − 1) (z2 − σ 2 )           4 (z2 − 1) (z2 − σ 2 )3
+
+We observe that ψ (ξ ) = O ξ −2 as ξ → ∞, but is unbounded at the singularities
+                                     
+
+z = ±1 , and also at the turning points z = ±σ .
+    From the definition of ξ we find that
+
+                           ξ = z − J (σ ) + O z−1
+                                                   
+                                                       (z → ∞) ,            (2.12)
+
+where                                         "        1/2         #
+                                           Z ∞  2
+                                                t − σ2
+                            J (σ ) = 1 −                       − 1 dt.             (2.13)
+                                           1     t2 − 1
+Note J (0) = 0 and J (1) = 1 . Now by Cauchy’s theorem
+                "
+           Z ∞  2         1/2    #             "           1/2    #
+                   t − σ2
+                                              Z ∞  2
+                                                     t − σ2
+    0 = Re                      − 1 dt = 2 Re                     − 1 dt.          (2.14)
+            −∞      t2 − 1                     0      t2 − 1
+
+Hence
+            "
+         Z ∞  2     1/2            #                  "        1/2       #
+              t − σ2
+                                                     Z 1  2
+                                                          t − σ2
+                                 − 1 dt = − Re                           − 1 dt,   (2.15)
+          1        t2 − 1                             0    t2 − 1
+
+and consequently from (2.13)
+                         "
+                      Z 1  2       1/2    #                  1/2
+                           t − σ2
+                                                   Z σ 2
+                                                       σ − t2
+      J (σ ) = 1 + Re                    − 1  dt =                  dt;            (2.16)
+                       0     t2 − 1                 0   1 − t2
+
+i.e.
+                                     J (σ ) = σ E σ ; σ −1 ,
+                                                          
+                                                                                   (2.17)
+for σ > 0 , in which E is the Elliptic integral of the second kind given by (2.8). Thus
+
+                     ξ = z − σ E σ ; σ −1 + O z−1
+                                                      
+                                                           (z → ∞) .               (2.18)
+
+We now apply Theorem 3.1 of [26], with u replaced by γ , and with ξ replaced by iξ .
+Then, by matching solutions that are recessive at z = ±i∞, we have from (1.13), (1.14)
+and (2.18)
+                m(3)                                      −1/4 iγ J(σ )
+               Sn (z, γ ) = i−1−n γ −1 z2 − 1 z2   − σ2
+                                               
+                                                                e
+                    iγξ
+                        p−1
+                               s As (ξ )                                        (2.19)
+               × e       ∑ (−i) γ s + ε p,1 (γ , ξ ) ,
+                        s=0
+
+
+                                                 7
+and                                                      −1/4 −iγ J(σ )
+                  m(4)
+                 Sn (z, γ ) = i1+n γ −1 z2 − 1 z2− σ 2
+                                              
+                                                               e
+                      −iγξ
+                           p−1
+                               s As (ξ )                                                            (2.20)
+                 × e        ∑ i γ s + ε p,2 (γ , ξ ) .
+                           s=0
+
+     The error terms ε p, j (γ , ξ ) ( j = 1, 2 ) are bounded by Olver’s theorem, and are
+O (γ −p ) in unbounded domains containing the real interval 1 + δ ≤ z < ∞ ( δ > 0 ).
+Here the coefficients are defined recursively by A0 (ξ ) = 1 and
+                                               Z
+                                ′
+             As+1 (ξ ) = − 21 As (ξ ) + 21          ψ (ξ ) As (ξ ) d ξ     (s = 0, 1, 2, · · ·) .   (2.21)
+
+Thus, from (1.15), (1.23), (2.17),
+                                 (2.19) and (2.20), we obtain the desired Liouville-
+Green expansion for Psm       2
+                       n x, γ . In particular, to leading order, we have
+
+                   (−1)n sin γξ + γσ E σ ; σ −1 − 21 nπ + O γ −1
+                                                                      
+          m     2
+        Psn x, γ =                                                        ,   (2.22)
+                           γ (n − m)!Vnm (γ ) [(x2 − 1) (x2 − σ 2 )]1/4
+as γ → ∞, uniformly for 1 + δ ≤ x < ∞. In order for this approximation    to be practi-
+cable, one requires an asymptotic approximation for λnm γ 2 as γ → ∞, and we shall
+                                                             
+
+discuss this in the next section. We also remark that (2.22) breaks down at the simple
+pole x = 1 , and in the next section we obtain asymptotic approximations that are valid
+at this pole.
+
+                  3. Bessel function approximations: the radial case
+
+     We now obtain approximations valid at the simple pole of f (σ , z) at z = 1 , using
+the asymptotic theory of [25, Chap. 12]. We consider z = x real and positive. The
+appropriate Liouville transformation is now given by
+                                    Z x                   2
+                          η = ξ2 =       {− f (σ ,t)}1/2 dt ,                       (3.1)
+                                                1
+
+along with
+                                           (                  )1/4
+                                               η x2 − σ 2
+                                    Ŵ =                              w,                             (3.2)
+                                                 x2 − 1
+which yields the new equation
+
+                           d 2Ŵ     γ 2 m2 − 1 ψ̂ (η )
+                                                       
+                                 = −    +      +          Ŵ .                                       (3.3)
+                           dη 2      4η   4η 2     η
+Here
+                               1 − 4m2           m2 − 1
+                         ψ̂ (η ) =      +
+                                 16η4     4 (x −1) (x2 − σ2 )
+                                               2
+                           1−σ 2   6x − 3 + σ 2 x2 − 2σ 2                                            (3.4)
+                         +                            3
+                                                              .
+                               16 (x2 − 1) (x2 − σ 2 )
+
+                                                      8
+This has the same main features of (2.5), namely a simple pole for the dominant term
+(for large γ ) and a double pole in another term. We note that x = 1 corresponds to
+η = 0.
+      The difference here is that non-dominant term ψ̂ (η ) is now analytic at η = 0 , i.e.
+x = 1 . Neglecting ψ̂ (η ) in (3.3) gives an equation solvable in terms of Bessel func-
+tions. We then find (by matching recessive solutions at x = 1 ) and applying theorem
+4.1 of [25, Chap. 12] (with u replaced by γ and ζ replaced by η )
+                                                                 1/4
+                                                     η
+                                          
+                     Psm      2 = cm (γ )
+                               
+                       n x, γ        n                                               (3.5)
+                                            (x2 − 1) (x2 − σ 2
+                                                               )
+                               1/2         −1   env Jm γη 1/2 ,
+                                  
+                     × Jm γη         +O γ
+
+as γ → ∞, uniformly for 1 < x < ∞. Olver’s theorem provides an asymptotic expansion
+in inverse powers of γ , but we present just the leading term here. The so-called envelope
+env of the J Bessel function is defined by [27, §2.8(iv)].
+      The constant of proportionality cm n (γ ) can be found by comparing both sides of
+(3.5) as x → 1 ( η → 0 ). Using
+                                                 n         o
+                   η = 2 1 − σ 2 (x − 1) + O (x − 1)2
+                                  
+                                                               (x → 1) ,              (3.6)
+
+along with (1.25), (2.3) and the behavior of the J Bessel function at the origin (e.g. [25,
+Chap. 12, §1]) we find that
+                                                      m/2
+                                             2
+                         cm                                   m!Knm γ 2 .
+                                                                       
+                          n (γ ) =    −                                              (3.7)
+                                          λnm (γ 2 )
+
+An asymptotic approximation for this constant is given by (4.46) below.
+     Next, from the well-known behavior of the J Bessel function at infinity (e.g. see
+[25, Chap. 12, §1]), we find from (3.5) that
+
+                         2 ∼ constant ×
+                                         2                −1/4
+               Psm                       x − 1 x2 − σ 2
+                                              
+                  n x, γ                                                             (3.8)
+               × cos γξ − 12 mπ − 14 π + O ξ −1        η = ξ2 → ∞ .
+                                                                
+
+However, from (2.22) we observe an alternative expression of the behavior of this func-
+tion. On comparing both, we deduce that
+
+                γσ E σ ; σ −1 = 2N + 12 n − 12 m + 41 π + O γ −1 ,
+                                                                
+                                                                                   (3.9)
+
+for some integer N , which we show is zero. Now, from (2.2) and (2.3) we have for
+fixed m and n that σ = O γ −1/2 as γ → ∞, and more precisely,
+                               
+
+
+                          σ 2 = 2 n − m + 12 γ −1 + O γ −2 .
+                                                         
+                                                                                    (3.10)
+
+Thus in this case, using (2.16) and (2.17) in the LHS of (3.9), we have
+                             −1 4
+               1     2
+                                     = 2N + 21 n − 21 m + 14 π + O γ −1 .
+                                                                      
+               4 πγσ + O γ σ                                                        (3.11)
+
+
+                                                9
+Inserting (3.10) into (3.11) we deduce that N = 0 , at least for fixed m and n ; a conti-
+nuity argument removes this restriction.
+     It is possible to extend (2.22) and (3.8) to asymptotic expansions, and consequently
+from (2.16) and (2.17) we arrive at
+                   Z σ 2     1/2                                    ∞
+                       σ − t2                                              κs
+                                                              
+                                                     1       1
+               γ                              dt ∼      n−m+     π + ∑ 2s+1 ,           (3.12)
+                    0      1 − t2                    2       2       s=0 γ
+
+for constants κs which can be determined in terms of the coefficients appearing in
+(2.19) and (2.20). From (2.4) we can
+                                    invert this expansion to provide a means of com-
+puting the eigenvalue λ = λnm γ 2 asymptotically in terms of m and n as γ → ∞.
+     Now, the elliptic integral on the LHS of (3.12) monotonically increases from 0 to
+1 as σ increases from 0 to 1. We therefore see that the condition (2.4) (along with our
+assumption that m is bounded) is equivalent to (1.2).
+
+   4. Bessel and parabolic cylinder function approximations: the angular case
+
+     Recall Psm        2 is the unique solution with the property of being recessive at
+                        
+                n x, γ
+x = ±1 . It is also uniquely determined by the property
+
+                           Psm        2
+                                          = (−1)m+n Psm       2
+                                                               
+                             n −x, γ                   n x, γ .                      (4.1)
+
+Thus, it suffices to approximate Psm        2 in the interval 0 ≤ x < 1 . We consider the
+                                             
+                                     n x, γ
+subintervals 0 ≤ x ≤ 1 − δ0 and 1 − δ0 ≤ x < 1 separately, where δ0 ∈ (0, 1 − σ0) is
+arbitrary; recall that σ0 is defined by (2.4). The significance of this choice is that the
+turning point x = σ is bounded away from the interval [1 − δ0, 1] .
+     For 1 − δ0 ≤ x < 1 we apply theorem 3.1 of [25, Chap. 12]. It can then be shown
+by utilising the recessive behavior at x = 1 ( η = 0 ) that
+                                                                                 1/4
+                                                       |η |
+                                                     
+                        Psm      2
+                                         = cm
+                                     
+                          n x, γ            n (γ )   2 ) (x2 − σ 2 )
+                                              (1 − x                                     (4.2)
+                                            
+                                                 1
+                                   1/2
+                        ×Im γ |η |        1+O          ,
+                                                 γ
+
+where Im (x) is the modified Bessel function, and cm n (γ ) is given by (3.7). Expansions
+and error bounds are obtainable from Olver’s theorem.
+      The interval 0 ≤ x ≤ 1 − δ0 is less straightforward. From (2.5) and (2.6) we ob-
+serve that equation has the turning point x = σ in this interval, and this coalesces with
+the other turning point x = −σ when σ → 0 . The appropriate asymptotic theory for
+this situation is provided by [26], and from eq. (2.3) of this reference the appropriate
+transformation is given by
+                                                                      1/2
+                               dζ                  σ 2 − x2
+                                          
+                                  =                                          .           (4.3)
+                               dx             (1 − x2) (α 2 − ζ 2 )
+
+
+
+                                                     10
+Upon integration, this yields the implicit relationship
+                                                                      Z x  2     1/2
+                                                                           σ − t2
+      Z ζ                1/2          Z x
+             α2 − τ2            dτ =         {− f (σ ,t)}1/2 dt =                                    dt.    (4.4)
+        −α                              −σ                                −σ        1 − t2
+
+The lower limits are selected to ensure that the turning point x = −σ is mapped to a
+new turning point at ζ = −α (see (4.10) below). From [26, eq. (2.5)] we find that α
+is given by
+                                              1/2
+                             2 σ σ 2 − t2
+                               Z 
+                                                        4
+                      α2 =                         dt = J (σ ) ,               (4.5)
+                             π −σ 1 − t 2               π
+which ensures that the original turning point x = σ is mapped to the turning point at
+ζ = α in the transformed equation.
+     By symmetry x = 0 is mapped to ζ = 0 , and so the lower limits in the integrals
+of (4.4) can be replaced by 0. Thus we have
+
+                               ζ
+                              
+                                                   1/2
+                  1 2
+                                  + 21 ζ α 2 − ζ 2      = σ E x; σ −1 ,
+                                                                     
+                  2 α arcsin                                                    (4.6)
+                               α
+
+for 0 ≤ x ≤ σ ( 0 ≤ ζ ≤ α ).
+     For σ ≤ x ≤ 1 − δ0 we have
+                                                                          Z x 2              1/2
+                                                                                    t − σ2
+             Z ζ                             Z x
+                    2       2 1/2                            1/2
+                                
+                   τ −α              dτ =          { f (σ ,t)}     dt =                              dt.    (4.7)
+              α                               σ                            σ         1 − t2
+
+Thus in this case
+                                     ζ
+                                     
+                                                         1/2
+             − 21 α 2 arccosh           + 21 ζ ζ 2 − α 2      = Im σ E x; σ −1
+                                                                              
+                                                                                                      .     (4.8)
+                                     α
+
+     With                                                            1/4
+                                                 σ 2 − x2
+                                         
+                                    W=                                         w,                           (4.9)
+                                             (α − ζ 2 ) (1 − x2)
+                                               2
+
+we transform (2.5) to the form
+
+                             d 2W  2 2
+                                  = γ ζ − α 2 + ψ (γ , α , ζ ) W,
+                                             
+                                2
+                                                                                                           (4.10)
+                             dζ
+
+where
+                                          1 − m2 α 2 − ζ 2
+                                                            
+                                                                  2α 2 + 3ζ 2
+                        ψ (γ , α , ζ ) =                       +
+                                                2      2   2              2 2
+                                       2(1 − 2x)(σ 4 − x )2 4(α2 − ζ 2)
+                                                                     2
+                                    2                                                                      (4.11)
+                           1−σ          α −ζ         6x − σ + 3 x − 2σ
+                        −                                                     .
+                                          4 (1 − x ) (σ 2 − x2 )3
+                                                    2
+
+To sharpen the subsequent error bounds it is possible to perturb the parameter by defin-
+ing a new parameter ω by α 2 = ω 2 + ψ (γ , α , 0) γ −2 , but we shall not pursue this here.
+
+
+                                                        11
+     From theorem I of [26], with u replaced by γ , we obtain two independent solu-
+tions of (4.10) given by
+                                                    p 
+                    w1 (γ , α , ζ ) = U − 12 γα 2 , ζ 2γ + ε1 (γ , α , ζ ) , (4.12)
+
+and                                                 p 
+                    w2 (γ , α , ζ ) = U − 12 γα 2 , ζ 2γ + ε2 (γ , α , ζ ) .                (4.13)
+
+Here U (a, x) and U (a, x) are the parabolic cylinder functions defined in [26, §5] √  and 
+[27, §12.2], and are linearly independent for a < 0 . The approximants U − 21 γα 2 , ζ 2γ
+                   √ 
+and U − 12 γα 2 , ζ 2γ satisfy the differential equation (4.10) with ψ (γ , α , ζ ) ≡ 0 .
+     The error terms are bounded by [26, §6], and in particular these show that
+                                                                   p 
+                 ε1 (γ , α , ζ ) = O γ −2/3 ln (γ ) envU − 12 γα 2 , ζ 2γ ,          (4.14)
+
+and                                                                p 
+                 ε2 (γ , α , ζ ) = O γ −2/3 ln (γ ) envU − 21 γα 2 , ζ 2γ ,                 (4.15)
+
+uniformly for 0 ≤ x ≤ 1 − δ0 . Here the envelope function env is defined for the
+parabolic cylinder functions by [27, eq. 14.15.23].
+     The parabolic cylinder function U has the unique recessive property
+                                                   2
+                         U − 21 a, x ∼ x(a−1)/2 e−x /4
+                                    
+                                                                    (x → ∞) ,               (4.16)
+
+whereas U is dominant, with the behavior
+                                                             2
+             U − 12 a, x ∼ (2/π )1/2 Γ 12 a + 12 x−(a+1)/2 ex /4
+                                               
+                                                                                (x → ∞) ;   (4.17)
+
+see [26, §5]. In addition, from [26, Eqs. (5.12) and (5.13)] and the definitions (4.12)
+and (4.13), we note that w1 (γ , α , ζ ) and w2 (γ , α , ζ ) are oscillatory in the ζ interval
+[0, α ], with comparable amplitudes and complementary phases of the argument.
+      Now, for negative x and ζ , we will also need the solution given in [26]
+                                                   p 
+                  w4 (γ , α , ζ ) = U − 21 γα 2 , −ζ 2γ + ε4 (γ , α , ζ ) .             (4.18)
+
+We remark that
+
+                     ε j (γ , α , 0) = ∂ ε j (γ , α , 0) /∂ ζ = 0     ( j = 2, 4) ,         (4.19)
+
+and hence
+                       w2 (γ , α , 0) = w4 (γ , α , 0) = U − 21 γα 2 , 0 ,
+                                                                        
+                                                                                            (4.20)
+as well as
+
+                                                              2γU ′ − 21 γα 2 , 0 .
+                                                             p                   
+         ∂ w2 (γ , α , 0) /∂ ζ = −∂ w4 (γ , α , 0) /∂ ζ =                                   (4.21)
+
+
+
+                                                 12
+The error bounds for ε4 (γ , α , ζ ) only apply for non-positive ζ . In order to extend
+the solution to positive values of ζ we use [26, Eqs. (6.23) and (6.24)] to obtain the
+connection formula
+                w4(γ , α , ζ ) = − sin 12 πγα2 + O γ −2/3 w2 (γ , α , ζ )
+                                                          
+                                                                                  (4.22)
+                + cos 21 πγα 2 + O γ −2/3 w1 (γ , α , ζ ) .
+      Now from (2.17), (3.9) and (4.5)
+                               1    2
+                                            n − m + 12 π + O γ −1 .
+                                                                
+                               2 πγα =                                                    (4.23)
+
+Bearing in mind that w1 (γ , α , ζ ) is exponentially small compared to w2 (γ , α , ζ ) in
+0 ≤ x ≤ 1 − δ0 (except near its zeros) we deduce from (4.22) and (4.23) that
+
+                      w2 (γ , α , ζ )− (−1)m+n w4 (γ , α , ζ ) = 2w2 (γ , α , ζ )
+                                                                                          (4.24)
+                      +O γ −2/3 {w1 (γ , α , ζ ) + w2 (γ , α , ζ )} .
+We next express
+                                             1/4
+                               α2 − ζ 2
+                     
+      Psm      2
+                 
+        n x, γ     =                                                                      (4.25)
+                        (σ 2 − x2 ) (1 −x2)
+                                                                m+n
+      × dn (γ ) w1 (γ , α , ζ ) + em
+         m                                                                         
+                                   n (γ ) w2 (γ , α , ζ ) − (−1)    w4 (γ , α , ζ ) ,
+
+and we shall determine the constant dnm (γ ) (as well as bounding em       n (γ )) by comparing
+both sides of this relationship at appropriate values of x .
+      To this end, firstly we assume that Psm  n x, γ
+                                                        2 is even, so that m + n is also even.
+
+Then, setting x = ζ = 0 in (4.25), and invoking (4.20), immediately yields
+                                           σ 1/2 Psm 0, γ 2 
+                                  m                     n
+                                dn (γ ) =                          .                       (4.26)
+                                            α       w1 (γ , α , 0)
+
+An asymptotic approximation for this constant, which does not involve Psm                   2
+                                                                                              
+                                                                                     n 0, γ , is
+given by (4.43) below.
+      Next, if we differentiate both sides of (4.25) and again set x = ζ = 0 we find
+                          ′                                   −1
+from the property Psm   n   0, γ 2 = 0 that emn (γ ) = O γ         , which is not sharp enough.
+Instead we match the parabolic cylinder and Bessel function approximations, and their
+derivatives, at the fixed point x = 1 − 21 δ0 (at which both the parabolic cylinder function
+and modified Bessel function approximations are valid). Using (4.2) (4.24) and (4.25),
+we therefore arrive at
+                         n           1/4                 √                        o
+                      W     ζ 2 − α2      U − 12 γα 2 , ζ 2γ , |η |1/4 Im γ |η |1/2
+ em            m
+   n (γ ) ∼ −dn (γ )      n                               √                        o , (4.27)
+                                      1/4
+                      W (ζ 2 − α 2 ) U − 12 γα 2 , ζ 2γ , |η |1/4 Im γ |η |1/2
+
+and
+                                1/2                  √                   √ 
+                       ζ 2 − α2     W U − 12 γα 2 , ζ 2γ ,U − 12 γα 2 , ζ 2γ
+  cm         m
+   n (γ ) ∼ dn (γ )      n                             √                        o . (4.28)
+                      W (ζ 2 − α 2 )1/4 U − 12 γα 2 , ζ 2γ , |η |1/4 Im γ |η |1/2
+
+
+                                                  13
+In both of these the Wronskians W are with respect to x , and evaluated at x = 1 − 12 δ0
+(with η and ζ corresponding to this value).
+     Next, from (4.7) and [27, Eqs. 12.10.3 - 12.10.6], we have the asymptotic approx-
+imations for large γ , fixed ζ ∈ (α , ∞) and fixed α > 0
+                                                  n R                    o
+                            γα 2 γα 2 /4 exp −γ σx { f (σ ,t)}1/2 dt
+       U − 21 γα 2 , ζ 2γ ∼
+                      p
+                                                                           ,     (4.29)
+                                  2e               {2γ (ζ 2 − α 2 )}1/4
+                                                 γα 2 /4
+                                           √γα 2
+                                                                    
+                       U′     − 21 γα 2 , ζ 2γ             ∼ − 21
+                                                       
+                                          n 2e                    o                                          (4.30)
+                                  1/4
+                  × 2γ ζ 2 − α 2       exp −γ σx { f (σ ,t)}1/2 dt ,
+                                            R
+
+                                               n                       o
+                               2 γα 2 /4 exp γ R x { f (σ ,t)}1/2 dt
+                               γα                  σ
+       U − 21 γα 2 , ζ 2γ ∼ 2
+                       p
+                                                                 1/4
+                                                                         ,                                   (4.31)
+                                  2e            {2γ (ζ 2 − α 2 )}
+and
+                                          2 γα 2 /4
+                    ′             √        γα                       1/4
+                   U − 12 γα 2 , ζ 2γ ∼                2γ ζ 2 − α 2
+                                                      
+                        n R                  2eo                                                             (4.32)
+                             x          1/2
+                   × exp γ σ { f (σ ,t)} dt .
+
+      These, along with
+                                                                       Z1                
+                     1/4                1/2                  −1/2                       1/2
+              |η |         Im γ |η |              ∼ (2πγ )           exp γ   { f (σ ,t)} dt ,                (4.33)
+                                                                              x
+  n                    o
+ d |η |1/4 Im γ |η |1/2                        γ 1/2  x2 − σ 2 1/2                    Z 1                  
+                                        ∼−                                            exp γ    { f (σ ,t)}1/2 dt ,
+              dx                                  2π                1 − x2                    x
+                                                                                                             (4.34)
+and
+                                                                              1/2
+                                        dζ                 x2 − σ 2
+                                                  
+                                           =                                            ,                    (4.35)
+                                        dx            (1 − x2) (ζ 2 − α 2 )
+can be used to simplify (4.27) and (4.28). In particular, we find that
+                                                    m+n
+                     em
+                            
+                      n (γ ) w2 (γ , α , ζ ) − (−1)
+                                                  √    w4 (γ , α , ζ )                                      (4.36)
+                                           1    2
+                     = o (1) AenvU − 2 γα , ζ 2γ ,
+
+where the o (1) term is exponentially small as γ → ∞ for x ∈ [0, 1 − δ0] . In addition,
+we obtain the useful result
+                                        γα 2 /4           1/4
+                                 γα 2                  π2
+                                                                       Z1                
+                                                                                       1/2
+      cm         m
+       n (γ ) ∼ dn (γ )                                             exp −γ  { f (σ ,t)} dt .                 (4.37)
+                                  2e                   2γ                         σ
+
+
+
+
+                                                               14
+From (4.14) and (4.25) - (4.36), for m + n even, m bounded and n satisfying (1.2), we
+arrive at our desired result
+                                     (                            )1/4
+                                  2              2    2      2
+                                                               
+                         Ps  0, γ              σ    α   −  ζ
+        Psm      2 =
+                  
+          n x, γ                                                               (4.38)
+                       U − 12 γα 2 , 0    α 2 (σ 2 − x2 ) (1 − x2)
+                                       
+                 1   2  √              −2/3
+                                                                1  2 √
+                                                                        
+        × U − 2 γα , ζ 2γ + O γ               ln (γ ) envU − 2 γα , ζ 2γ ,
+as γ → ∞, uniformly for 0 ≤ x ≤ 1 − δ0 .
+     From [26, §5] we note that
+                                                                 
+                                            1 2 1         1 2     1
+     U − 12 γα 2 , 0 = π −1/22(γα −1)/4 Γ
+                                2
+                                              γα +    sin   γα π + π ,                   (4.39)
+                                            4      4      4       4
+as well as
+                                                                                
+       ′                          −1/2     (γα 2 +1)/4     1 2 3         1 2     3
+           − 12 γα 2 , 0
+                       
+   U                       = −π          2             Γ     γα +    sin   γα π + π .    (4.40)
+                                                           4      4      4       4
+Thus, on referring to (4.23), we observe that the RHS of (4.39) is bounded away from
+zero for large γ when m + n is even, and likewise for the RHS of (4.40) when m + n is
+odd (see (4.42) below).
+     For the case Psm       2 odd, equivalently m + n odd, we differentiate both sides
+                              
+                     n x, γ
+of (4.25) with respect to ζ , and then
+                                      set x = ζ = 0 . As a result, using (4.3) and (4.21),
+along with the fact that Psm
+                           n 0, γ
+                                   2
+                                       = 0 , we obtain
+                                       α 1/2 Psm ′ 0, γ 2 
+                                                     n
+                          dnm (γ ) =                                 .               (4.41)
+                                        σ      ∂ w1 (γ , α , 0) /∂ ζ
+Thus, again from (4.36), we conclude for m + n odd, m bounded and n satisfying (1.2),
+that
+                                        (                                 )1/4
+                         Psm  ′ 0, γ 2             α2 α2 − ζ 2
+                                                                  
+          m      2
+                           n
+        Psn x, γ = ′
+                        U − 21 γα 2 , 0     4γ 2 σ 2 (σ 2 − x2 ) (1 − x2)                 (4.42)
+                                        
+                 1    2   √             −2/3
+                                                                   1   2   √ 
+        × U − 2 γα , ζ 2γ + O γ                ln (γ ) envU − 2 γα , ζ 2γ ,
+as γ → ∞, uniformly for 0 ≤ x ≤ 1 − δ . In this U ′ − 12 γα 2 , 0 is given by (4.40).
+                                                                        
+
+     We now show that the proportionality constants             in (4.38) and (4.42) can be re-
+placed by one that does not involve Psm               2 or Psm ′ 0, γ 2 . Specifically, from
+                                                        
+                                              n 0, γ              n
+(1.19), (4.2), (4.25), (4.36) and (4.37) we have (for both the even and odd cases) that
+                                                                   1/2
+                                                (n + m)!
+                         dnm (γ ) ∼                                       ,               (4.43)
+                                        (2n + 1) (n − m)!pm  n (γ )
+as γ → ∞, again with m bounded and n satisfying (1.2). Here
+                  "                              1/2
+                                 α2 − ζ 2                              √ 
+                          
+                    R 1−δ
+        m
+       pn ( γ ) = 0 0          2      2        2
+                                                      U 2 − 12 γα 2 , ζ 2γ dx
+                             (σ − x ) (1 − x )
+                                               1/2                  #                  (4.44)
+                                   η
+                        
+                   1             |   |                        1/2
+                                                                  
+       +qm                                         Im2 γ |η |
+                 R
+          n (γ ) 1−δ0                                               dx ,
+                          (1 − x2) (x2 − σ 2 )
+
+
+                                                    15
+in which
+                               γα 2 /2         1/2
+                        γα 2                π2
+                                                              Z 1                  
+        qm
+         n (γ ) =                                       exp −2γ     { f (σ ,t)}1/2 dt .                     (4.45)
+                         2e                 2γ                         σ
+
+Note also, from (4.37), that under the same conditions
+                                                                                1/2
+                                                 (n + m)!qmn (γ )
+                                        
+                           cm
+                            n (γ ) ∼                                                   .                    (4.46)
+                                             (2n + 1) (n − m)!pmn (γ )
+
+
+                               5. Fixed m and n : the angular case
+
+      For fixed m and n we can simplify the results of the previous section, by applying
+the theory of [10]. To this end we observe that (2.1) can be expressed in the form
+                                "                             #
+                        d 2w       γ 2 x2   aγ       m2 − 1
+                             =            −      +              w,                 (5.1)
+                        dx2       1 − x2 1 − x2 (1 − x2)2
+
+where
+                           a = λ γ −1 + γ = 2 n − m + 21 + O γ −1 ,
+                                                                
+                                                                                                                (5.2)
+        −1
+           
+the O γ      term being valid for fixed m and n and γ → ∞. In particular, a is bounded.
+     Equation (5.1) is characterised as having a pair of almost coalescent turning points
+near x = 0 . The appropriate Liouville transformation in this case is given by
+                                     Z x
+                          1 2                     t                              1/2
+                            ρ =                             dt = 1 − 1 − x2                .                    (5.3)
+                          2           0 (1 − t 2 )1/2
+
+                                                                                               √
+Note x = 0 corresponds to ρ = 0 , and x = 1 corresponds to ρ =                                  2 . Then with
+
+                                                         x1/2
+                                       W=                              w,                                       (5.4)
+                                                  ρ 1/2 (1 − x2)1/4
+
+we obtain
+                           d 2W  2 2                           
+                              2
+                                = γ ρ − γ a + γζ φ (ρ ) + χ (ρ ) W,                                             (5.5)
+                           dρ
+where
+                                                               aρ
+                                             φ (ρ ) = −            ,                                            (5.6)
+                                                              4−ζ2
+and
+                                   ρ 2 4m2 − 1
+                                              
+                                                              7ρ 2 − 40           4m2
+                    χ (ρ ) =                            +                   +             .                     (5.7)
+                                     (2 − ρ )    2 2                2 2
+                                                            4 (4 − ρ )          (4 − ρ 2)
+We remark that χ (ρ ) = O√ (1) as γ → ∞, and this function is analytic at ρ = 0 ( x = 0 ),
+but is not analytic at ρ = 2 ( x = 1 ).
+
+
+
+                                                         16
+                                                                            √ 
+   Our approximants are again the parabolic cylinder functions U − 21 a, ρ 2γ and
+           √
+U − 12 a, ρ 2γ (c.f. (4.12) and (4.13)). In this form they are solutions of
+              
+
+
+                                     d 2W  2 2      
+                                        2
+                                          = γ ρ − γ a W.                              (5.8)
+                                     dρ
+
+On comparing this equation with (5.5) we note the extra “large” term γζ φ (ρ ). On
+account of this discrepancy we perturb the independent variable, thus taking as approx-
+imants
+                                            −1/2
+                                                            p 
+                     U1 = 1 + γ −1Φ′ (ρ )        U − 21 a, ρ̂ 2γ ,
+                          
+                                                                                  (5.9)
+
+and
+                                          −1/2
+                                                          p 
+                     U2 = 1 + γ −1Φ′ (ρ )      U − 21 a, ρ̂ 2γ ,
+                         
+                                                                                     (5.10)
+
+where
+                                       ρ̂ = ρ + γ −1 Φ (ρ ) ,                        (5.11)
+in which
+                                                       a ln 1 − 41 ρ 2
+                                         Z ρ                           
+                                 1
+                       Φ (ρ ) =             φ (v) dv =                   .           (5.12)
+                                2ρ        0                  4ρ
+In [10] it is shown that U j satisfy the differential equation
+
+                       d 2U  2 2
+                            = γ ρ − γ a + γρφ (ρ ) + g (γ , ρ ) U,         (5.13)
+                       dρ 2
+                                                     h √          i
+where g (γ , ρ ) = O (1) as γ → ∞, uniformly for ρ ∈ 0, 2 − δ . Thus (5.13) is the
+appropriate comparison equation to (5.5).
+    Following [10] we then define
+
+                      ŵ j (γ , ρ ) = U j (γ , ρ ) + ε̂ j (γ , ρ )   ( j = 1, 2) ,   (5.14)
+
+as exact solutions of (5.5). Explicit error bounds are furnished in [10], and from these
+it follows that                                                 p 
+                    ε̂1 (γ , ρ ) = O γ −1 ln (γ ) envU − 21 a, ρ̂ 2γ ,
+                                                 
+                                                                                  (5.15)
+
+uniformly for 0 ≤ x ≤ 1 − δ0 , andsimilarly for ε̂2 (γ , ρ ).
+     Let us assume that Psm  n x, γ
+                                      2
+                                          (and hence m + n) is even. Similarly to (4.25) we
+write
+                 Psm      2 = ρ 1/2 x−1/2 1 − x2 −1/4
+                                                        
+                    n x, γ                                                            (5.16)
+                 × dˆnm (γ ) ŵ1 (γ , ρ ) + êm
+                                                                                  
+                                              n (γ ) {ŵ2 (γ , ρ ) − ŵ4 (γ , ρ )} ,
+
+where ŵ4 (γ , ρ ) is the solution (involving U) given by eq. (110) of [10]. By matching
+at x = ρ = 0 we find
+                                              Psm        2
+                                                           
+                                     ˆm         n 0, γ
+                                    dn (γ ) =                .                    (5.17)
+                                               ŵ1 (γ , 0)
+
+
+
+                                                   17
+Analogously to the proof of (4.36) it can be shown that
+                                                                                p 
+             êm
+               n ( γ ) { ŵ2 (γ , ρ ) − ŵ4 (γ , ρ )} = o (1) ÂenvU   − 1
+                                                                         2 a, ρ̂  2γ ,   (5.18)
+
+where o (1) is exponentially small for 0 ≤ x ≤ 1 − δ0 as γ → ∞. Consequently, we
+arrive at our desired result
+                           Psm       2  1/2
+                                       
+                  m     2      n 0, γ    ρ               −1/4
+               Psn x, γ =        1
+                                                 1 − x2
+                             U − a, 0 x                                   (5.19)
+                             √ 2                                √ 
+               × U − 21 a, ρ̂ 2γ + O γ −1 ln (γ ) envU − 12 a, ρ̂ 2γ ,
+                                                
+
+as γ → ∞, uniformly for 0 ≤  x ≤ 1 − δ0 .
+     For the case Psm
+                    n x, γ 2 being odd we likewise obtain, under the same conditions,
+
+
+                         Psm    ′ 0, γ 2 
+                                              ρ 1/2
+                                                 
+                 m    2        n                             −1/4
+              Psn x, γ = ′         1
+                                                      1 − x2
+                                             2γ x                             (5.20)
+                                         
+                             U − a, 0
+                     1     √ 2           −1
+                                                             1    √ 
+              × U − 2 a, ρ̂ 2γ + O γ ln (γ ) envU − 2 a, ρ̂ 2γ .
+
+                                            6. Summary
+
+     For reference we collect the principal results of the paper. All results are uni-
+formly valid for γ → ∞, m and n integers, m bounded, and n satisfying 0 ≤ m ≤ n ≤
+2π −1γ (1 − δ ) where p
+                      δ ∈ (0, 1) is fixed.
+     We define σ = 1 + γ −2λnm (γ 2 ) and assume 0 ≤ σ ≤ σ0 < 1 for an arbitrary
+fixed positive σ0 . We further define variables ξ = ξ (x) and ζ = ζ (x) by
+                                    Z x 2         1/2
+                                           t − σ2
+                                ξ=                      dt,                      (6.1)
+                                      1     t2 − 1
+and                                                                     !1/2
+                                                             t2 − σ 2
+                         Z ζ                           Z x
+                                 2      2 1/2
+                                τ −α            dτ =                           dt,        (6.2)
+                          α                             σ     1 − t2
+where                               ( Z          1/2 )1/2
+                                     1 σ σ 2 − t2
+                               α =2                   dt    .                             (6.3)
+                                     π 0  1 − t2
+Then, using the definition above for σ , a uniform asymptotic relationship between
+λnm γ 2 and the parameters m, n and γ is given implicitly by the relation
+       
+
+                    Z σ 2     1/2
+                        σ − t2
+                                                                    
+                                                   1        1         1
+                γ                           dt =       n−m+     π +O     .                (6.4)
+                     0         1 − t2              2        2         γ
+      The following approximation holds for the radial PSWF
+                                              1/2
+                          (n + m)!qm
+                                   n (γ )
+                    
+                2 =
+                                                    2               −1/4
+      Psm                                            x − 1 x2 − σ 2
+                                                         
+        n  x, γ                         m                                                 (6.5)
+                                − m)!pn (γ)
+                      (2n + 1) (n
+      ×ξ 1/2 Jm (γξ ) + O γ −1 env Jm (γξ ) ,
+             
+
+
+                                                   18
+this being uniformly valid for 1 < x < ∞. Here Jm is the Bessel function of the first
+kind, envJm is defined by [27, §2.8(iv)], and the constants pm                  m
+                                                                    n (γ ) and qn (γ ) are given
+by                   "                               1/2
+                                     α2 − ζ 2                               √ 
+                              
+                       R 1−δ0
+            m
+           pn (γ ) = 0             2     2         2
+                                                           U 2 − 12 γα 2 , ζ 2γ dx
+                                 (σ − x ) (1 − x )
+                                                  1/2                   #                 (6.6)
+              m
+                    R 1                1                     2
+           +qn (γ ) 1−δ0                                |ξ |Im (γ |ξ |) dx ,
+                              (1 − x2) (x2 − σ 2 )
+and
+                                  γα 2 /2         1/2     (                      1/2    )
+                           γα 2                π2
+                                                                     Z 1 2
+                                                                          t − σ2
+                       
+           qm
+            n (γ ) =                                       exp −2γ                         dt .       (6.7)
+                            2e                 2γ                     σ    1 − t2
+In (6.6) δ0 ∈ (0, 1 − σ0) is arbitrarily chosen, Im is the modified Bessel function of the
+first kind, and U is the parabolic cylinder function (see [26, §5]).
+      In terms of the modified Bessel function, we have for the radial PSWF
+                                                1/2
+                            (n + m)!qm n (γ )
+                     
+         m       2
+                                                                          −1/4
+                                                         1 − x2 x2 − σ 2
+                                                             
+       Psn x, γ =                           m                                        (6.8)
+             1/2
+                        (2n
+                          + 1) (n −
+                                   −1
+                                       n (γ )
+                                      m)!p
+       × |ξ | Im (γ |ξ |) 1 + O γ         ,
+
+uniformly for 1 − δ0 ≤ x < 1 .
+     Finally, in terms of the parabolic cylinder function, the asymptotic approximation
+                                               1/2                        1/4
+                                                           α2 − ζ 2
+                    
+                            (n + m)!
+       Psm      2 =
+                 
+         n x, γ                                                                                       (6.9)
+                      (2n
+                       √ +1) (n − m)!p
+                                        m (γ )
+                                        n             (σ 2 − x2 ) (1√− x2)
+                 1  2              −2/3 ln (γ ) envU − 21 γα 2 , ζ 2γ ,
+                                              
+       × U − 2 γα , ζ 2γ + O γ
+
+holds uniformly for 0 ≤ x ≤ 1 − δ0 , where envU is defined by [27, eq. 14.15.23].
+
+                                          Acknowledgement
+
+      I thank the referee for a number helpful suggestions.
+
+                                               REFERENCES
+
+  [1] F. M. A RSCOTT, Periodic differential equations. An introduction to Mathieu, Lamé, and allied func-
+      tions, International Series of Monographs in Pure and Applied Mathematics, 66 (A Pergamon Press
+      Book The Macmillan Co., New York 1964 x + 284 pp.)
+  [2] B. E. BARROWES , K. O’N EILL , T. M. G RZEGORCZYK AND J. A. K ONG, On the asymptotic ex-
+      pansion of the spheroidal wave function and its eigenvalues for complex size parameter, Stud. Appl.
+      Math., 113, 3 (2004), 271–301.
+  [3] C. J. B OUWKAMP , On spheroidal wave functions of order zero, J. Math. Phys. Mass. Inst. Tech., 26
+      (1947), 79–92.
+  [4] J. P. B OYD, Prolate spheroidal wavefunctions as an alternative to Chebyshev and Legendre polyno-
+      mials for spectral element and pseudospectral algorithms, J. Comput. Phys., 199, 2 (2004), 688–716.
+  [5] W. G .C. B OYD AND T. M. D UNSTER, Uniform asymptotic solutions of a class of second-order
+      linear differential equations having a turning point and a regular singularity, with an application to
+      Legendre functions, SIAM J. Math. Anal., 17, 2 (1986), 422–450.
+
+
+                                                       19
+ [6] J. R. C LAYCOMB AND J ONATHAN Q UOC P. T RAN, Introductory Biophysics: Perspectives on the
+     Living State, Jones & Bartlett Publishers, 2010.
+ [7] J. DES C LOIZEAUX AND M. L. M EHTA, Some asymptotic expressions for prolate spheroidal functions
+     and for the eigenvalues of differential and integral equations of which they are solutions, J. Math.
+     Phys., 13 (1972), 1745–1754.
+ [8] F. A. D AHLEN AND F. J. S IMONS , Spectral estimation on a sphere in geophysics and cosmology,
+     Geophys. J. Int., 174, 3 (2008), 774–807.
+ [9] T. M. D UNSTER, Uniform asymptotic expansions for prolate spheroidal functions with large param-
+     eters, SIAM J. Math. Anal., 17, 6 (1986), 1495–1524.
+[10] T. M. D UNSTER, Simplified asymptotic solutions of differential equations having double turning
+     points, with an application to Legendre functions, Stud. Appl. Math., 127, 3 (2011), 250–283.
+[11] P. E. FALLOON, Theory and Computation of Spheroidal Harmonics with General Complex Parame-
+     ters, Masters Thesis, The University of Western Australia, 2001.
+[12] C. F LAMMER, Spheroidal Wave Functions, Stanford, CA: Stanford University Press, 1956.
+[13] J. B. J ONES -O LIVEIRA, Transient analytic and numerical results for the fluid–solid interaction of
+     prolate spheroidal shells, J. Acoust. Soc. Amer., 99, 1 (1996), 392–407.
+[14] J. B. J ONES -O LIVEIRA AND H. R. F ISCHER, Absolute and uniform convergence of alternate forms
+     of the prolate spheroidal radial wave functions, (English summary) Adv. in Appl. Math., 29 (2002),
+     311–327.
+[15] T. K ERESELIDZE , Z. S. M ACHAVARIANI AND G. C HKADUA, Explicit spheroidal wave functions of
+     the hydrogen atom, The European Physical Journal D, 63, 1 (2011), 81–87.
+[16] S. N. K HONINA , S. G. V OLOTOVSKI Ĭ AND V. A. S O ĬFER, A method for computing the eigenvalues
+     of prolate spheroidal functions of zero order, (Russian) Dokl. Akad. Nauk., 376 (2001), 30–32.
+[17] I. V. K OMAROV, L. I. P ONOMAREV AND S. Y. S LAVYANOV, Spheroidal and Coulomb Spheroidal
+     Functions, (Russian) Nauka, Moscow, 1976.
+[18] L.W. L I , M. S. L EONG , T. S. Y EO , P. S. K OOI , AND K.Y. TAN, Computations of spheroidal har-
+     monics with complex arguments: A review with an algorithm, Phys. Rev. E, 58, 5 (1998), 6792–6806.
+[19] J. M EIXNER AND F. W. S CH ÄFKE ,, Mathieusche Funktionen und Sphäroidfunktionen., Springer-
+     Verlag, Berlin, 1954 (In German).
+[20] J. M EIXNER , F. W. S CH ÄFKE AND G. W OLF , Mathieu Functions and Spheroidal Functions and
+     Their Mathematical Foundations: Further Studies, Lecture Notes in Mathematics, 837, Springer-
+     Verlag, Berlin-New York, 1980.
+[21] J. W. M ILES , Asymptotic approximations for prolate spheroidal wave functions, Studies in Appl.
+     Math., 54 (1975), 315–349.
+[22] D. M ÜLLER , B. G. K ELLY AND J. J. O’B RIEN, Spheroidal eigenfunctions of the tidal equation,
+     Phys. Rev. Lett., 73, 11 (1994), 1557–1560.
+[23] H. J. W. M ÜLLER, Asymptotic expansions of prolate spheroidal wave functions and their character-
+     istic numbers, J. Reine Angew. Math., 212 (1963), 26–48.
+[24] C. N IVEN, On the Conduction of Heat in Ellipsoids of Revolution, Phil. Trans. R. Soc. Lond., 171
+     (1880), 117–151.
+[25] F. W. J. O LVER, Asymptotics and Special Functions, Academic Press, New York, 1974. Reprinted by
+     AK Peters, Wellesley, 1997.
+[26] F. W. J. O LVER, Second–order linear differential equations with two turning points, Philos. Trans.
+     Roy. Soc. London Ser. A, 278 (1975), 137–174.
+[27] F. W. J. O LVER , D. W. L OZIER , R. B OISVERT, C. W. C LARK , ( EDS .), NIST Handbook of Mathe-
+     matical Functions, Cambridge University Press, Cambridge, 2010. Available at http://dlmf.nist.gov/
+[28] M. K. O NG, A closed form solution of the s –wave Bethe–Goldstone equation with an infinite repulsive
+     core, J. Math. Phys., 27, 4 (1986), 1154–1158.
+[29] S. S CHMUTZHARD , T. H RYCAK AND H. G. F EICHTINGER, A numerical study of the Legendre–
+     Galerkin method for the evaluation of the prolate spheroidal wave functions, Numer. Algorithms, 68
+     (2015) 691–710.
+[30] B. D. S LEEMAN, Integral representations associated with high–frequency non–symmetric scattering
+     by prolate spheroids, Quart. J. Mech. and Applied Math., 22 (1969), 405–426.
+[31] D. S LEPIAN, Some asymptotic expansions for prolate spheroidal wave functions, J. Math. Phys., 44
+     (1965), 99–140.
+
+
+
+
+                                                  20
+[32] D. S LEPIAN, Some comments on Fourier analysis, uncertainty, and modeling, SIAM Rev., 25, 3
+     (1983), 379–393.
+[33] J. A. S TRATTON , P. M. M ORSE , L. J. C HU AND R. A. H UTNER, Elliptic Cylinder and Spheroidal
+     Wave Functions, John Wiley and Sons, New York, 1941.
+[34] J. A. S TRATTON , P. M. M ORSE , L. J. C HU , J. D. C. L ITTLE AND F. J. C ORGBATO, Spheroidal
+     Wave Functions, John Wiley & Sons, Inc., New York, NY, 1956.
+[35] W. S TREIFER, Uniform asymptotic expansions for prolate spheroidal wave functions, J. Math. and
+     Phys., 47 (1968), 407–415.
+[36] M. J. O. S TRUTT, LameÃsche, MathieÃusche und verwandte Funktionen in Physik und Technik,
+     Ergebnisse der Mathematik und ihrer Grenzgebiete, 1, 3 (1932), Verlag Julius Springer, Berlin (In
+     German).
+[37] W. J. T HOMPSON, Spheroidal Wave Functions, Comput. Sci. Eng., 1, 3 (1999), 84–87.
+[38] G. G. WALTER AND X. S HEN, Periodic prolate spheroidal wavelets, Numer. Funct. Anal. Optim., 26
+     (2005), 953–976.
+[39] G. G. WALTER AND T. S OLESKI , A new friendly method of computing prolate spheroidal wave func-
+     tions and wavelets, Appl. Comput. Harmon. Anal., 19 (2005), 432–443.
+[40] H. X IAO AND V. ROKHLIN, High-frequency asymptotic expansions for certain prolate spheroidal
+     wave functions, J. Fourier Anal. Appl., 9 (2003), 575–596.
+
+
+
+T. M. Dunster, Department of Mathematics and Statistics, 5500 Campanile Drive, San Diego State University,
+San Diego, CA 92182-7720, USA
+e-mail: mdunster@mail.sdsu.edu
+
+
+
+
+                                                  21
+

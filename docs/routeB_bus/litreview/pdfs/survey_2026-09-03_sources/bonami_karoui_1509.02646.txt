@@ -1,0 +1,1230 @@
+                                                     Spectral Decay of Time and Frequency Limiting Operator.
+
+
+                                                                           Aline Bonami a and Abderrazek Karoui b 1
+
+
+                                          a
+                                            Fédération Denis-Poisson, MAPMO-UMR 7349, Department of Mathematics, University of Orléans, 45067
+                                          Orléans Cedex 2, France.
+                                          b
+                                            University of Carthage, Department of Mathematics, Faculty of Sciences of Bizerte, Tunisia.
+arXiv:1509.02646v1 [math.CA] 9 Sep 2015
+
+
+
+
+                                          Emails: aline.bonami@univ-orleans.fr ( A. Bonami), abderrazek.karoui@fsb.rnu.tn (A. Karoui)
+
+                                          Abstract— For fixed c, the Prolate Spheroidal Wave Functions (PSWFs) ψn,c form a basis with
+                                          remarkable properties for the space of band-limited functions with bandwidth c. They have been
+                                          largely studied and used after the seminal work of D. Slepian, H. Landau and H. Pollack. Many of
+                                          the PSWFs applications rely heavily of the behavior and the decay rate of the eigenvalues (λn (c))n≥0
+                                          of the time and frequency limiting operator, which we denote by Qc . Hence, the issue of the ac-
+                                          curate estimation of the spectrum of this operator has attracted a considerable interest, both in
+                                          numerical and theoretical studies. In this work, we give an explicit integral approximation formula
+                                          for these eigenvalues. This approximation holds true starting from the plunge region where the
+                                          spectrum of Qc starts to have a fast decay. As a consequence of our explicit approximation formula,
+                                          we give a precise description of the super-exponential decay rate of the λn (c). Also, we mention
+                                          that the described approximation scheme provides us with fairly accurate approximations of the
+                                          λn (c) with low computational load, even for very large values of the parameters c and n. Finally,
+                                          we provide the reader with some numerical examples that illustrate the different results of this work.
+
+                                          2010 Mathematics Subject Classification. Primary 42C10, 65L70. Secondary 41A60, 65L15.
+                                          Key words and phrases. Prolate spheroidal wave functions, eigenvalues and eigenfunctions approxi-
+                                          mations, asymptotic estimates.
+
+
+
+                                          1     Introduction
+                                          For a given value c > 0, called the bandwidth, PSWFs (ψn,c (·))n≥0 constitute an orthonormal basis
+                                          of L2 ([−1, +1]), an orthogonal
+                                                               n          system of L2 (R) and an
+                                                                                                o orthogonal basis of the Paley-Wiener space
+                                          Bc , given by Bc = f ∈ L2 (R), Support fb ⊂ [−c, c] . Here, fb denotes the Fourier transform of
+                                                                                                                     c
+                                          f . They are eigenfunctions of the compact integral operators Fc and Qc = 2π Fc∗ Fc , defined on
+                                            2
+                                          L ([−1, 1]) by
+                                                                           Z 1                                       Z 1
+                                                                                                                        sin c(x − y)
+                                                            Fc (f )(x) =         ei c x y f (y) dy,   Qc (f )(x) =                   f (y) dy.            (1)
+                                                                            −1                                        −1 π(x − y)
+
+                                          Since the operator Fc commutes with the Sturm-Liouville operator Lc ,
+                                                                                                  
+                                                                                  d             dψ
+                                                                      Lc (ψ) = −      (1 − x2 )      + c2 x2 ψ,                                           (2)
+                                                                                 dx             dx
+                                             1 Corresponding author,
+
+                                          This work was supported in part by the French-Tunisian CMCU 10G 1503 project and the Tunisian DGRST research
+                                          grants 05UR 15-02 and UR 13ES47. Part of this work was done while the first author was visiting the Faculty of
+                                          Sciences of Bizerte, University of Carthage. The two authors have also benefited from the program “Research in pairs
+                                          ” of the CIRM, Luminy, France.
+
+
+
+                                                                                                       1
+PSWFs (ψn,c (·))n≥0 are also eigenfunctions of Lc . They are ordered in such a way that the cor-
+responding eigenvalues of Lc , called χn (c), are strictly increasing. Functions ψn,c are restrictions
+to the interval [−1, +1] of real analytic functions on the whole real line and eigenvalues χn (c) are
+values of λ such that the equation Lc ψ = λψ has a non zero bounded solution on the whole interval.
+     PSWFs have been introduced by D. Slepian, H. Landau and H. Pollak [10, 16, 17, 18] in relation
+with signal processing. For a detailed review on properties, numerical computations, asymptotic
+results and first applications of the PSWFs, the reader is referred to recent books on the subject,
+[6], [13].
+     By Plancherel identity, PSWFs are normalized so that
+                      Z 1                     Z
+                                    2                                1
+                          |ψn,c (x)| dx = 1,      |ψn,c (x)|2 dx =        , n ≥ 0.                 (3)
+                       −1                       R                  λn (c)
+
+Here, (λn (c))n is the infinite sequence of the eigenvalues of Qc , also arranged in the decreasing order
+1 > λ0 (c) > λ1 (c) > · · · > λn (c) > · · · . We call µn (c) the eigenvalues of Fc . They are given by
+                                                          r
+                                                        n   2π
+                                              µn (c) = i       λn (c).
+                                                             c
+Also, we adopt the sign normalization of the PSWFs,
+                                                         0
+                        ψn,c (0) > 0 for even n,        ψn,c (0) > 0, for odd n.                     (4)
+
+   One of the main issues that we discuss here is the decay rate of the eigenvalues λn (c). This decay
+rate plays a crucial role in most of the various concrete applications of the PSWFs. In this direction,
+one knows their asymptotic behaviour for c fixed, which has been given in 1964 by Widom, see [19].
+                                                        2n+1
+                                                 ec
+                                  λn (c) ∼                     = λW
+                                                                  n (c).                            (5)
+                                              4(n + 21 )
+This gives the exact decay for n large enough, but one would like to have a more precise information
+in terms of uniformity of this behaviour, both in n and c. On the other hand, Landau has considered
+the value of the smallest integer n such that λn (c) ≤ 1/2 in [9]. More precisely, if we note c∗n the
+unique value of c such that λn (c) = 1/2, then he proves that
+                              π                π                                1
+                                (n − 1) ≤ c∗n ≤ (n + 1)           λn (c∗n ) =     .                  (6)
+                              2                2                                2
+So, for c fixed, we almost know when λn (c) passes through the value 1/2. Landau and Widom have
+also described the asymptotic behaviour, when c tends to ∞, of the distribution of the eigenvalues
+λn (c).
+    The search for more precise estimates of the λn (c) has attracted a considerable interest, both in
+numerical and theoretical studies. We try here to give approximate values for λn (c) for c ≤ c∗n , with
+some uniformity in the quality of approximation. We rely on the exact formula for the eigenvalues
+λn (c), given by integrating the following differential equation, see [5],
+                                                        2|ψn,τ (1)|2
+                                      ∂τ ln λn (τ ) =                .                               (7)
+                                                             τ
+over the interval (c, c∗n ). This is different from the classical way to estimate the λn (c), via equa-
+tion (39), where the integration is rather done on the interval (0, c), see for example [15, 17, 20].
+Consequently, we are mainly interested in the behavior, as well as in accurate and fast schemes of
+approximation, of the λn (c), given by the formula
+                                                     Z c∗n               !
+                                          1                (ψn,τ (1))2
+                                λn (c) = exp −2                        dτ .                         (8)
+                                          2           c        τ
+
+
+                                                    2
+    We use our recent works [1, 2] to estimate the value ψn,τ (1). In the first paper it is proved
+that |ψn,τ (1)| ≤ 2χn (τ )1/4 , which is not sufficient to find a sharp estimate for all values c. The
+approximation given in the second paper leads to a second estimate of ψn,τ (1), valid for πn     2 − c
+larger than some multiple of ln n. Based on this second estimate, we define λn (c) as
+                                                                                   f
+                                                                                
+                                             2      1 Z 1
+                                 1
+                       fn (c) = exp −     π   (n + 2 )                 1
+                       λ                                          
+                                                                             2
+                                                                               dt .                (9)
+                                 2               2      Φ     2c
+                                                                 1
+                                                                     t(E(t))
+                                                                 π(n+       )
+                                                                        2
+
+
+Here E is the elliptic integral of the second kind given by (13) and the function Φ is the inverse of
+                     t
+the function t 7→ E(t) . We prove that λ fn (c) is comparable with λn (c) up to some power of n. This
+is stated in the following theorem, which is the main result of this paper.
+Theorem 1. There exist three constants δ1 ≥ 1, δ2 , δ3 , ≥ 0 such that, for n ≥ 3 and c ≤ πn
+                                                                                           2 ,
+                                               δ3                           −δ3
+                                           c            λ
+                                                        fn (c)              c
+                          δ1−1 n−δ2                   ≤        ≤ δ1 n δ2
+                                                                                    .                (10)
+                                          c+1           λn (c)             c+1
+   Let us explain, roughly speaking, why Legendre elliptic integrals are involved here. The Sturm-
+Liouville equation Lc ψ = χn (c)ψ can be rewritten as
+
+                                             2x                 1 − qx2
+                                 ψ 00 −           ψ 0
+                                                      + χ n (c)         ψ = 0,
+                                           1 − x2               1 − x2
+with q = c2 /χn (c). Under the assumptions on n and c, the value q may be seen as a parameter. We
+assume that q < 1 and proceed to a WKB approximation of the solution ψn,c , but not directly: the
+equation is transformed into its normal form U 00 +(χn +θ)U = 0 through the Liouville transformation
+given  by the change of functions ψ = [(1 − x2 )(1 − qx2 )]−1/4 U and the change of variable x 7→
+R x q 1−qt2
+ 0    1−t2 dt. We recognize in this change of variable the incomplete Legendre elliptic integral of
+the second kind, while the L2 −norm of the factor [(1 − x2 )(1 − qx2 )]−1/4 can be written in terms of
+the complete Legendre elliptic integral of the first kind. This has been exploited by many authors
+(for instance [4], [20], [11]). We refer to our recent work [2] for the approximation of |ψn,c (1)|2 in
+terms of Legendre elliptic integrals, which is central here and leads to the formula (9).
+    Let us come back to the present paper. When n tends to ∞ with c fixed, we recover the
+asymptotic behavior given by Widom and, as a corollary, we have the following, which may be seen
+as a kind of quantitative Widom’s Theorem.
+Corollary 1. Let m > 0 be a positive real number and let     √ M > m, ε > 0 be given. Then there
+exists a constant A(ε, m, M ) such that, for all m ≤ c ≤ M n and all n, we have the inequality
+                                                                   2n+1
+                                                    εn      ec
+                              λn (c) ≤ A(ε, m, M )e                       .                    (11)
+                                                         4(n + 21 )
+
+   We can give an explicit constant A(ε, m, M ). Also, we will show that asymptotically, λ       bn (c) =
+2λ
+ en (c) is equivalent to Widom’s asymptotic formula (5).
+   The fact that we recover Widom’s asymptotic behavior is already a good test of validity but we
+can go further numerically. In fact we recover the exact equivalent given by Widom up to the factor
+1/2, which justifies the approximation of λn (c) by λ
+                                                    cn (c) = 2λ
+                                                              fn (c) instead of λ
+                                                                                fn (c), at least for large
+values of n.
+Remark 1. Numerical experiments show that the approximation         r of λn (c) by λn (c) = 2λn (c) is
+                                                                                    c          f
+                                                                     2π c
+surprisingly accurate. It is striking that the values of |c
+                                                          µn (c)| =     λn (c) coincide with the values
+                                                                      c
+
+                                                          3
+of |µn (c)| that have been computed in[14], with relative errors that are less than 3%. Numerical tests
+indicate that this relative error bound holds true as soon as |µn (c)| ≤ 0.15. Moreover, the smaller
+the value of |µn (c)|, the smaller is the corresponding relative error. For example, for c = 10π and
+                                                             |c
+                                                              µn (c) − µn (c)|
+n = 90, we have found that |µn (c)| ≈ 8.64288E − 57 and                        ≈ 7.71E − 05.
+                                                                  |µn (c)|
+
+   We try to explain the factor 2 in the expression of λ
+                                                       cn (c), which is of course very small compared
+to the accumulated errors in the theoretical approach. Let us mention that another method to
+approximate the values λn (c) has been used by Osipov in [12]. The estimates given in his paper
+are of different nature and do not propose such a simple and accurate formula. In addition, he
+mainly considers values of n such that πn
+                                        2 − c is smaller than some multiple of ln c. At this moment
+both works may be seen complementary. But we underline the fact that numerical tests validate
+the accuracy of the approximant (9) even when c is close to the critical value, while our theoretical
+approach is not sufficient to do it.
+    This work is organized as follows. In Section 2, we list some estimates of the PSWFs and
+their associated eigenvalues χn (c). In Section 3, we prove a sharp exponential decay rate of the
+eigenvalues λn (c) associated with the integral operator Qc . In Section 4, we provide the reader with
+some numerical examples that illustrate the different results of this work.
+    We will systematically skip the parameter c in χn (c) and ψn,c , when there is no doubt on the
+value of the bandwidth. We then note q = c2 /χn and skip both parameters n and c when their
+values are obvious from the context.
+
+
+2    Estimates of PSWFs and eigenvalues χn (c).
+Here we first list some classical as well as some recent results on PSWFs and their eigenvalues χn ,
+then we push forward the methods and adapt them to our study. We systematically use the same
+notations as in [2]. It is well known that the eigenvalues χn satisfy the classical inequalities
+
+                                    n(n + 1) ≤ χn ≤ n(n + 1) + c2 .                                 (12)
+
+Next, we recall the Legendre elliptic integral of the first and second kind, that are given respectively,
+by
+                    Z 1                                      Z 1r
+                                  dt                                1 − k 2 t2
+           K(k) =                             ,     E(k) =                     dt, 0 ≤ k ≤ 1.       (13)
+                                                                     1 − t2
+                        p
+                                 2        2
+                          (1 − t )(1 − k t )2
+                     0                                        0
+                                                    2
+Osipov has proved in [11] that the condition q = χcn < 1 is fulfilled when c < πn
+                                                                                2 , while it is not when
+c > π(n+1)
+       2   . This is part of the following statement, which gives precise lower and upper bounds of
+              √       c
+the quantity q = √ , see [2].
+                      χn
+Lemma 1. For all c > 0 and n ≥ 2 we have
+                                                   
+                                   2c        c       2c
+                            Φ              <√    <Φ     ,                                           (14)
+                                π(n + 1)      χn     πn
+                                             k
+where Φ is the inverse of the function k 7→ E(k) = Ψ(k), 0 ≤ k ≤ 1.
+
+   We refer to [2] for the proof of the previous lemma, but we add some comments. The inequalities
+(14) are equivalent to the fact that
+
+                                       πn   √    π(n + 1)
+                                        √ < χn <     √ .                                            (15)
+                                     2E( q)      2E( q)
+
+                                                   4
+The left hand side is due to Osipov [11]. Note that Φ(0) = 0 and Φ(1) = 1. Also, we should mention
+that
+                                     E(x) − xE0 (x)     K(x)
+                        0 ≤ Ψ0 (x) =            2
+                                                    =          , 0 ≤ x < 1,                   (16)
+                                         (E(x))        (E(x))2
+                                      (E(Φ(x)))2   (E(0))2  π
+                       0 ≤ Φ0 (x) =              ≤         = ,         0 ≤ x < 1.               (17)
+                                       K(Φ(x))      K(0)    2
+                                                                2    1
+Hence, Φ is an increasing function on [0, 1]. Moreover, since     ≤      ≤ 1, then we have
+                                                                π   E(x)
+                                           2x
+                                              ≤ Ψ(x) ≤ x.
+                                           π
+Applying the function Φ to the previous inequalities, one gets
+                                                   πx
+                                      x ≤ Φ(x) ≤      ,   0 ≤ x ≤ 1.                            (18)
+                                                    2
+    We will use bounds for ψn,c given in [2], which have been established under the condition that
+       √
+(1 − q) χn > κ ≥ 4. We leave some flexibility for the choice of the constant κ and do not restrict to
+the choice κ = 4 as in [2]. We will only need estimates at 1, which we give in the following lemma
+with a slightly different form compared to [2].
+Lemma 2. Let n ≥ 3. We assume that the condition
+                                         p
+                                  (1 − q) χn (c) > κ                                            (19)
+
+is satisfied for some κ ≥ 4. Then, there exists a constant δ(κ) (independent of c and n) such that
+one has the following bounds for (ψn,c (1))2 .
+         √                                    √
+       π χn                                π χn                                  √    −1
+           √ (1 − δ(κ) εn ) ≤ (ψn (1))2 ≤      √ (1 + δ(κ) εn ) ,   εn = ((1 − q) χn ) .      (20)
+     2K( q)                               2K( q)
+
+   We refer to [2], Theorem 2, for the proof. Explicit values for the constant δ(κ) can also be
+deduced from [2]. We can choose
+                                                                   √
+                                                                                 
+                         η                          β                       −1
+            δ(κ) = η 2 +      ,    η = C(κ)                      +   2α(1 + ακ   )         (21)
+                          κ                   1 + (1 − κ−1 β)1/2
+                                √
+with C(κ)−1 = (1 − κ−1 β)1/2 − 2ακ−1 (1 + ακ−1 ), α = 1.5, β = 0.35.
+
+   In any case, we see that the theoretical values of δ(κ) are larger than 4.73. We find approxi-
+matively δ(4) ≈ 77.2, δ(12) ≈ 7.6. Numerical tests (see Example 1 in Section 4) indicate that the
+numerical quantities δ(κ), for which one has equality in (21), are much smaller.
+   In [1], we have proved that
+
+                                                                       π(n + 1)
+                        |A| = |ψn,c (1)|χn (c)−1/4 ≤ 2      for c ≤             .               (22)
+                                                                          2
+So in particular the right hand side bound of (20) is not accurate when κ is small. Lemma 2 expresses
+the fact that, under some condition depending on a parameter κ, we have
+                                           p
+                                      2   π χn (τ )              πτ
+                            (ψn,τ (1)) ≈     p         = p          p      .                     (23)
+                                         2K( q(τ ))      2 q(τ )K( q(τ ))
+
+
+                                                    5
+The
+  pprevious formula for the approximation of the quantity ψn,c (1) still requires the approximation
+of q(τ ). For this last quantity, we already have the double inequalities (14). We may write
+                                                                 
+                                p         p                2τ
+                                  q(τ ) ≈ qe(τ ) = Φ                .                          (24)
+                                                       π(n + 1/2)
+
+An error bound of the previous approximation formula is given in [2] by
+                                     p      p           c
+                                    | q(c) − qe(c)| ≤ √ p .                                                       (25)
+                                                     2 χn χ
+                                                          en
+                                                                                           p
+Also, in [2], we have given an explicit formula for the approximation of                       χn (c) together with its
+associated error,
+                           p          p                c             2c
+                             χn (c) ≈ χ  en (c) =          , n ≥ ,                                              (26)
+                                                 Φ      2c           π
+                                                            π(n+1/2)
+                                      p          p            1
+                                         χn (c) − χen (c) ≤ .                                 (27)
+                                                              2
+We should mention that in [2], we have further improved the error bounds (25) and (27) in the case
+of large values of n. The improved asymptotic error bounds are given as follows,
+              p        p              cκ             p          p               κ
+             | q(c) − qe(c)| ≤            p ,       | χ en (c) − χn (c)| ≤         √ ,        (28)
+                                (1 − q)χn χ  en                            (1 − q)  χn
+
+for some constant κ. Numerical evidence indicates that in practice, the actual error of the approxi-
+mation scheme (24) is much smaller than the previous theoretical error bound, see example 2 of the
+numerical results section.
+
+   We need to translate Condition (19) in terms of the parameters n, c, which can be done by using
+[Proposition 4, [2]], where the following inequality has been given. For n ≥ 2 and q < 1,
+                                                              −1
+                                           √     (n − 2c
+                                                       π)−e
+                                    (1 − q) χn ≥                 ,                                                (29)
+                                                    log n + 5
+A further improvement of the previous inequality is given by the following lemma.
+Lemma 3. Let n ≥ 3, q < 1 and κ ≥ 4. Then one of the following conditions,
+
+                                                c ≤ n − κ,                                                        (30)
+                                        πn      κ
+                                           − c > (ln(n) + 9),                                                     (31)
+                                         2      4
+implies the inequality (19), that is,           p
+                                         (1 − q) χn (c) > κ.
+Moreover, if we assume that c > n+1                     πn      κ
+                                 2 , then the condition 2 − c > 4 (ln(n) + 6) is sufficient.
+               2c
+Proof. Let γ = πn . It follows from (15) that
+                                                             √
+                                                    √      E( q) − 1
+                                    1−γ <1−             q+     √     .                                            (32)
+                                                            E( q)
+
+We claim that                                                                      
+                                                2       1             1
+                            E(x) − 1 ≤ (1 − x )           ln                    + ln 2 .                          (33)
+                                                        4          1 − x2
+
+                                                        6
+Let us assume this and go on with the proof. It follows that
+                                                          √        
+                                 1−q     1        1       E( q)
+                        1−γ <      √       ln           +     √ + ln 2 .                          (34)
+                                E( q) 4         1−q       1+ q
+We then use the elementary inequality, valid for 0 < s < 1,
+                                     s ln(1/s) ≤ 1/n + s ln(n/e).
+It implies that                                                     √        
+                                1     1−q              1           E( q)
+                     1−γ−         √ <   √                ln(n/e) +    √ + ln 2 .
+                             4nE( q)  E( q)            4           1+ q
+We use also (15) to conclude that
+                                        √          πn
+                                 (1 − q) χn ≥       √ (1 − q) > κ,                                (35)
+                                                 2E( q)
+whenever                                                √        
+                           πn              1           E( q)          1
+                              −c>κ           ln(n/e) +    √ + ln 2 +    .
+                            2              4           1+ q          4n
+                                                                                       √
+                                                                                     E( q)
+This is the case, in particular, when πn         κ
+                                       2 − c > 4 (ln(n) + 9), using the fact that 1+ q ≤ 2 .
+                                                                                      √      π
+                                                                                   √
+    The condition c ≥ n+1                    1
+                         2 implies that q > π . Then, by using the value of E( π
+                                                                                     −1 ), the constant
+
+9 in (31) can be replaced by 6. It remains to prove (33). We write
+                                             Z 1
+                                                              1              t dt
+                      E(x) − 1 ≤ (1 − x2 )         √              √        √                       (36)
+                                                           2 2      1 − t ) 1 − t2
+                                                                         2
+                                              0 ( 1−x t +
+                                     Z 1
+                                                   ds
+                                 =                              .                                  (37)
+                                               2     2 2 1
+                                      0 (1 − x + s x ) 2 + s
+                                                                         √
+We cut the last integral into two parts. For the first one, from 1 − x2 to 1, we replace the
+denominator
+    √         by 2s and find the logarithmic term. For the second one, we replace the denominator
+by 1 − x2 + s and find ln 2.
+    We will need another inequality of the same type:
+                                            2c             √
+                                      1−       ≤ 2(1 − q)K( q).                                   (38)
+                                            πn
+This is a consequence of (32), using the fact that E(x) − 1 ≤ (1 − x2 )K(x), which comes directly
+from (36).
+
+
+3     Sharp decay estimates of eigenvalues λn (c).
+In this section, we use some of the estimates we have given in the previous section and we prove a
+sharp super-exponential decay rate of the eigenvalues (λn (c))n . We first recall that these λn (c) are
+governed by the following differential equation, see [5] or the more recent reference [20],
+                                                       2|ψn,c (1)|2
+                                      ∂c ln λn (c) =                .                             (39)
+                                                            c
+As a consequence, for fixed n there exists a unique value of c for which λn (c) = 1/2. We denote this
+value of c by c∗n . We know from [9] that it can be bounded below and above, namely
+                          π                π                                   1
+                            (n − 1) ≤ c∗n ≤ (n + 1)         with λn (c∗n ) =     .                (40)
+                          2                2                                   2
+
+                                                   7
+By combining (39) and (40), one gets
+                                                          Z c∗n                       !
+                                       1                          (ψn,τ (1))2
+                               λn (c) = exp −2                                dτ          .           (41)
+                                       2                   c          τ
+
+Let us recall the following definition.
+                                                                                             
+                                           2     1 Z 1
+                        fn (c) = 1 exp − π (n + 2 ) 
+                        λ                                                      
+                                                                                      1
+                                                                                            dt .     (42)
+                                 2            2      Φ               2c            t(E(t))2
+                                                                   π(n+ 1 )
+                                                                        2
+
+
+   Our main result is the following theorem.
+Theorem 2. There exist three constants δ1 ≥ 1, δ2 , δ3 , ≥ 0 such that, for n ≥ 3 and c ≤ πn
+                                                                                           2 ,
+                                               δ3                           −δ3
+                                           c            λ
+                                                        fn (c)              c
+                          δ1−1 n−δ2                   ≤        ≤ δ1 n δ2
+                                                                                    ,                 (43)
+                                          c+1           λn (c)             c+1
+                 c
+    The factor c+1  can be replaced by 1 when c > 1 and replaced by c when c < 1. We have written
+the formula this way to avoid to have to distinguish between the two cases, c ≥ 1 and 0 < c < 1. It
+is simpler to write equivalent inequalities for logarithms, which is done in the following proposition.
+We keep the same notations for constants, which are of course not the same. We note ln+ (x) the
+positive part of the Logarithm, that is, ln+ (x) = max(0, ln(x)). The following theorem is required
+in the proof of the main Theorem 2.
+Theorem 3. There exist three non negative constants δ1 , δ2 , δ3 such that, for n ≥ 3 and c ≤ πn
+                                                                                               2 , we
+have            Z c∗n
+                      (ψn,τ (1))2      π 2 (n + 21 ) 1
+                                                    Z
+                                                                     1
+                                  dτ =                        
+                                                                         2
+                                                                           dt + E,               (44)
+                 c         τ                 4       Φ   2c
+                                                             1
+                                                                  t(E(t))
+                                                                    π(n+       )
+                                                                           2
+
+with
+                                      |E| ≤ δ1 + δ2 ln(n) + δ3 ln+ (1/c).                             (45)
+    Let us make some comments before starting the proof. At this moment the three constants are
+not sufficiently small and cannot be used reasonably to obtain numerical values. But they can be
+computed and are not that enormous. There is no hope, of course, to have found an exact formula
+for λn (c) and (42) gives only an approximation. But these theoretical approximation errors may be
+seen as a kind of theoretical validation of the quality of approximation of the λn (c), which we test
+numerically in Section 4.
+    It has been observed by many authors, and predicted by the work of Landau and Widom [10],
+that for fixed c the eigenvalues λn (c) decrease first exponentially in some interval starting at [ 2c
+                                                                                                    π ]+1
+with length a multiple of ln(c), then super-exponentially as in the asymptotic behavior given by
+Widom. This is what one observes in Formula (42), but the error terms do not allow to observe the
+decay rate at the plunge region. In fact the tools that we use, that is, the lower and upper bounds
+for ψn,τ (1)2 , are only valid for c∗n − τ sufficiently large in terms of ln(n).
+    We try to have small constants at each step but are certainly far from the best possible. We give
+an explicit bound for E in (66). The following notations will be used frequently in the sequel. We
+define
+                                                   Z b
+                                                       (ψn,τ (1))2
+                                      I(a, b) =                    dτ.                                 (46)
+                                                     a      τ
+                                                    π2 1
+                                                       Z
+                                                                   1
+                                       J (y) =                         dt                              (47)
+                                                    4 Φ( π ) t(E(t))2
+                                                           2y
+
+
+
+
+                                                          8
+    We should mention that the proofs of Theorems 2 and Theorem 3, require many steps, so we
+start by giving a sketch of these proofs.
+Sketch of the proof of Theorem 3. We want to prove that
+                                                         
+                                   ∗         1       c
+                             I(c, cn ) ≈ (n + )J            .
+                                             2     n + 12
+
+For this purpose, we use the approximation of ψn,τ (1), given by Formula (23). This is valid under
+a condition involving the parameter κ, and may be rewritten as c < cκn for some cκn that is close to
+c∗n by Lemma 3. We deduce from Formula (23) that
+                                                 Z cκn
+                                                                      πdτ
+                                  I(c, cκn ) ≈                   p       p       .
+                                                    c           2 q(τ )K( q(τ ))
+Then Lemma 1 will be interpreted as the fact that
+                                                                         
+                   p         p                 2τ                   2τ
+                      q(τ )K( q(τ )) ≈ Φ                 K ◦ Φ                .
+                                            π(n + 21 )           π(n + 21 )
+
+It is then elementary to relate the new integral with the function J and finally find that
+                                                               
+                                         κ         1        c
+                                   I(c, cn ) ≈ (n + )J            .
+                                                   2     n + 12
+
+It remains to bound the tails of the integrals I(cκn , c∗n ), which we can do because the two values are
+sufficiently close.
+    Let us start the proof itself. We need a set of intermediate results that can be classified into
+three main steps. The first step will concern the properties of the function J . In the second step, we
+give bounds of the tails of the integrals. Finally, in the third step, we use the results of the previous
+two steps and complete the proofs of Theorems 2 and 3.
+First step: Properties of J .
+   For an integer l ≥ 1, we define
+                                                 Z πl
+                                           π       2                          dτ
+                                  Jl (c) =                           2τ
+                                                                                   2τ
+                                                                                         .         (48)
+                                           2        c           Φ    πl       K◦Φ   πl
+
+As it has been seen in the sketch, these integrals are clearly involved in the proof. We first see that
+they are related with J .
+Lemma 4. We have the identity
+                                              Jl (c) = lJ (c/l).                                    (49)
+Proof. We consider the substitution
+                                                       
+                                                 2τ                            πl
+                                     s=Φ                    ,         τ=          Ψ(s).             (50)
+                                                 πl                            2
+                                            K(x)
+We have already seen in (16) that Ψ0 (x) = (E(x))2 . Hence, we have
+
+
+                                              Z 1
+                                                               ds
+                                 Jl (c) = l                          = lJ (c/l).
+                                                  2c
+                                               Φ( πl )      s(E(s))2
+
+
+
+
+                                                                 9
+    The following proposition gives us upper and lower bounds, as well as the asymptotic behavior
+of J .
+
+Proposition 1. For x ∈ (0, π/2), one has the upper and lower bounds
+
+                                                   π2  π 
+                                    
+                                     1
+                               ln+       ≤ J (x) ≤    ln      .                                                                        (51)
+                                     x              4     2x
+
+Moreover, one can write
+                                                          Z 1
+                                                π2
+                                                                                                      
+                                                                         dt                        4
+                                      J (x) =                                 2
+                                                                                = ln                       + E 0,                      (52)
+                                                4             Φ(2x/π) t(E(t))                     ex
+               2   2
+with |E 0 | ≤ π 8x .
+Proof. The first inequalities are an easy consequence of the bounds below and above of Φ, given by
+(18). Let us prove (52). We first write, for 0 < y < 1,
+                                Z 1                                           Z y π2
+                           π2            dt                                        4 − E(t)2
+                                               + ln(y) = ∆ −                                 dt = ∆ − I1 (y).                          (53)
+                           4     y    t(E(t))2                                 0   t(E(t))2
+
+Here                                                                 Z 1 π2
+                                                                          4 − E(t)2
+                                                       ∆=                           dt.
+                                                                      0   t(E(t))2
+It is probably well-known that                                               
+                                                                             4
+                                                                     ∆ = ln                                                            (54)
+                                                                             e
+but we did not find any reference. We will see it as a corollary of Widom’s Theorem. The integral
+                      2 2
+I1 (y) is bounded by π 8y . This is a consequence of the elementary inequalities
+                                                                                       Z 1
+                                                    π          π                              t2 dt     πs2
+                                 1 ≤ E(s) ≤           ,          − E(s) ≤ s2                 √        =     .
+                                                    2          2                        0      1 − t2    4
+
+Let us now fix y = Φ(2x/π). At this point we have proved that
+
+                                                            π2 y2
+                                       
+                                        x
+                               0 ≤ ln      − E 0 = I1 (y) ≤       .
+                                        y                    8
+
+From the inequalities
+
+                          2y     2x      y     2y      y2       2y
+                             ≤      =       ≤     (1 − )−1 ≤       (1 + y 2 ),
+                          π       π    E(y)    π       2         π
+                       
+it follows that 0 ≤ ln xy + y 2 . This concludes the proof of the proposition.
+
+  This proposition leads to the following corollary, where we recognize the equivalent given by
+Widom.
+Corollary 2. We have the double inequality
+                                       2n+1             2    c2
+                                                                                                          2n+1        2    c2
+                   1          ec                    − π4                           1            ec                  + π4
+                                                              n+ 1                                                          n+ 1
+                                                e                2    ≤λ
+                                                                       fn (c) ≤                                     e          2   .   (55)
+                   2       4(n + 12 )                                              2         4(n + 12 )
+
+
+                                                                          10
+                      fn (c) = 1 exp (−(2n + 1)J (c/(n + 1/2))) and use (52) with x = c .
+Proof. Just note that λ
+                               2                                                     n+1/2
+
+    Let us go back to quantities Jl . It is a straightforward consequence of (49) that the quantity
+Jl (c) increases with l. The next lemma gives reverse inequalities.
+Lemma 5. We have the inequalities
+
+                π2                   π3                         π2      π(n + 12 )     π3
+                                                                                
+                        π(n + 1)
+     Jn+1 (c) −    ln              −    ≤ Jn+ 12 (c) ≤ Jn (c) −    ln                +    .       (56)
+                8          2c        16                         8          2c          16
+
+Proof. We will only prove one of the inequalities, the other one being identical. Elementary compu-
+tations give
+                                                                                 
+                                                                             2c
+                                      1
+                                         
+                                              c
+                                                  
+                                                       π 2
+                                                               1      Φ         1
+                                                                          π(n+ 2 )
+               Jn+1 (c) − Jn+ 21 (c) ≤ J             +     (n + ) ln             .
+                                      2    n+1          4      2      Φ      2c
+                                                                                 π(n+1)
+
+
+We use (51) for the first term. The second one is bounded by
+                                                          
+                                            2c            2c
+                             π2     1 Φ π(n+ 12 ) − Φ π(n+1)     π3
+                                (n + )                       ≤    .
+                              4     2        Φ     2c            16
+                                                        π(n+1)
+
+                                                                        x
+Indeed, this is a consequence of the fact that Φ0 (x) ≤ π/2 and             ≤ 1, for 0 < x ≤ 1.
+                                                                       Φ(x)
+
+Second step: tails of the integrals.
+   We fix some constant κ ≥ 4 (for instance κ = 12) and we assume that n ≥ 2κ + 1. Then, we
+know from Lemma 3, that the condition (19), that is,
+                                                    √
+                                             (1 − q) χn > κ,
+
+is satisfied for c < n+1
+                      2 . Next, if we define
+                                                                  
+                                             πn κ              n+1
+                                cκn = max       − (ln(n) + 6),                                    (57)
+                                              2  4              2
+
+then, we have the following lemma.
+Lemma 6. For n ≥ 2κ + 1, we have the inequality
+
+                                    I(cκn , c∗n ) ≤ πκ ln(n) + 6πκ + 2π 2 .                       (58)
+                                             p              π
+Proof. Recall that |ψn,c (1)| ≤ 2χ1/4
+                                  n   and        χn (c) ≤     (n + 1), see [11]. Hence, we have
+                                                            2
+                                                     p
+                                   |ψn,τ (1)|2 ≤ 4    χn (τ ) ≤ 2π(n + 1).
+
+Consequently, one gets
+                  Z c∗n                                       π
+                          (ψn,τ (1))2                           + κ4 (ln(n) + 6)
+                                                                                
+                                      dτ   ≤ 2π(n + 1) ln 1 + 2                    .
+                   cκ
+                    n
+                              τ                                        cκn
+
+We conclude by using the fact that cκn ≥ n+1
+                                          2 .
+
+
+                                                       11
+    We conclude directly the proof of Theorem 3 in the case where n ≥ 2κ + 1 and c < cκn . It suffices
+to combine the results of Proposition 1 and the previous lemma, and get the desired inequalities
+           π2
+                                                                 
+                                                     1       c
+         −    (κ ln(n) + 6πκ + π) ≤ I(c, c∗n ) − (n + )J            ≤ πκ ln(n) + 6πκ + 2π 2      (59)
+           16                                        2     n + 12
+    We also conclude that Theorem 3 and Theorem 2 still hold for the finite number of missing values
+of n, that is, n ≤ 2κ + 1. There is no problem to have upper bounds and lower bounds that do not
+depend on c for c < 1. From Corollary 2, we have a precise estimate in terms of c2n+1 for λ   fn (c).
+The same is given for λn (c) by the following lemma.
+Lemma 7. Assume that n ≥ 1 is fixed and let 0 < c < 1. Then, there exist two constants δ(n), δ 0 (n)
+such that
+                             δ(n) c2n+1 ≤ λn (c) ≤ δ 0 (n) c2n+1 .                            (60)
+Proof. We first note that I(1, c∗n ) ≤ I(1, π(n+1)
+                                                2  ). We recall that on this interval, we have the
+inequality |ψn,τ (1)| ≤ 4 2 . So I(1, cn ) ≤ 2π(n + 1) ln( π(n+1)
+                     2      π(n+1)           ∗
+                                                                    2   ). Inside the integral defining
+I(c, 1), we use the following inequality, that may be found in [2],
+                                           r
+                                                 1         τ2           τ2
+                               |ψn,τ (1)| − n +    ≤p                 ≤    .                       (61)
+                                                 2      3(n + 1/2)       2
+
+So I(c, 1) − (n + 12 ) ln 1c ≤ 1, from which we conclude.
+                            
+
+  It remains to prove Theorem 2 and Theorem 3 when c > cκn and n ≥ 2κ + 1.
+Third step: Proofs of Theorems 2 and 3.
+  We fix κ > 4. Because of the previous steps, we will only need to study the cases
+                                                                            
+                                                    πn κ                n+1
+                n ≥ 2κ + 1         c < cκn = max        − (ln(n) + 6),         .
+                                                     2    4               2
+In view of (44), we want to bound the quantity
+                                                             
+                                                   1       c
+                              E = I(c, c∗n ) − n +    J           .
+                                                   2     n + 21
+We have already given a bound to a first error term
+                                         E1 = I(c, c∗n ) − I(c, cκn ).
+Because of (58), we know that
+                                     0 ≤ E1 ≤ πκ ln(n) + 6πκ + 2π 2 .                             (62)
+Next, the conditions on κ allow us to use the double inequalities (20). Namely,
+              2       π   p                                      δ(κ)
+    (ψn,τ (1)) =       √     χn (τ ) + R(τ ), |R(τ )| ≤               p      , 0 ≤ τ ≤ cκn .      (63)
+                  2K( q)                                (1 − q(τ ))K( q(τ ))
+This leads to a second error,
+                                                           Z cκn
+                                                  π                         dτ
+                                E2 = I(c, cκn ) −                  p          p       ,
+                                                       2    c          q(τ )K( q(τ ))
+which is bounded as follows,
+                                               Z cκn
+                                                                  1        dτ
+                                |E2 | ≤ δ(κ)                        p         .
+                                                c      (1 − q(τ ))K( q(τ )) τ
+We then use the following lemma.
+
+
+                                                            12
+Lemma 8. We have the inequality
+                                                                        
+                                                πκ                1    3πκ
+                             |E2 | ≤ 2δ(κ) (1 +    ) ln(n) + ln+     +       .                         (64)
+                                                 4                c     2
+Proof. By (38), we know that
+                                                       p             2τ
+                                         2(1 − q(τ ))K( q(τ )) ≥ 1 −    .
+                                                                     πn
+So we have the inequality
+                                          κ
+                                     Z 2c n
+                                                                                          !!
+                                       πn        ds               n               1
+                     |E2 | ≤ 2δ(κ)                     ≤ 2δ(κ) ln     + ln          2cκ        ,
+                                      2c
+                                      πn
+                                              (1 − s)s             c           1 − πnn
+and we conclude at once.
+  It remains to consider the main term, that is,
+                                    Z κ p                   Z κ
+                            κ     π cn       χn (τ ) dτ   π cn        dτ
+                 Imain (c, cn ) =           p           =       p        p      .                      (65)
+                                  2 c K( q(τ )) τ         2 c    q(τ )K( q(τ ))
+                                         p          p
+We use the monotonicity properties of q(τ )K( q(τ )) , namely
+                                                                             
+                2τ                    2τ         p        p           2τ           2τ
+         Φ               K◦Φ                  ≤ q(τ )K( q(τ )) ≤ Φ         K◦Φ        .
+             π(n + 1)              π(n + 1)                           πn           πn
+It follows that
+                                 Jn (c) − Jn (cκn ) ≤ Imain (c, cκn ) ≤ Jn+1 (c).
+So the last error,
+                                                                                      
+                                                                            1       c
+                  E3 = Imain (c, cκn ) − Jn+ 12 (c) = Imain (c, cκn ) − n +    J           ,
+                                                                            2     n + 21
+satisfies the inequalities
+                          Jn (c) − Jn+ 21 (c) − Jn (cκn ) ≤ E3 ≤ Jn+1 (c) − Jn+ 12 (c).
+
+It remains to use (51) and (56) to conclude. We finally find that
+                                                                                π2      π(n + 21 )      π3
+                                                                                              
+                                           πκ                    1     3πκ
+|E| ≤ πκ ln(n) + 6πκ + 2π 2 + 2δ(κ) (1 +        ) ln(n) + ln+        +        +    ln                +     .
+                                             4                   c       2      8          2c           16
+                                                                                                       (66)
+So we can take the following values for δ1 , δ2 , δ3 , that have been given in Theorem 3.
+                                       δ1     =   22 + 3πκ(2 + δ(κ))
+                                                  π2                    πκ
+                                       δ2     =      + πκ + 2δ(κ)(1 +      )
+                                                   8                     4
+                                                  π2             πκ
+                                       δ3     =      + 2δ(κ)(1 +     ).
+                                                   8              4
+This concludes the proofs of Theorem 3 and Theorem 2.
+   Note that when κ = 12 we find δ2 ≈ 200. We could have improved the sizes of the previous
+constants at each step, but not significantly. Numerical experiments indicate that in practice, these
+constants are much smaller.
+
+   From Theorem 3 and Corollary 2 we get the following corollary:
+
+
+                                                         13
+Corollary 3. There exist three constants δ1 ≥ 1, δ2 , δ3 , ≥ 0 such that, for n ≥ 3 and c ≤ πn
+                                                                                             2 ,
+                                               2n+1                                          2n+1
+                           −1          ec                                              ec
+                 A(n, c)                                 ≤ λn (c) ≤ A(n, c)                             .   (67)
+                                    2(2n + 1)                                       2(2n + 1)
+
+with                                                                 −δ3
+                                                                c              π 2 c2
+                                      A(n, c) = δ1 nδ2                       e+ 4 n .
+                                                               c+1
+    Widom’s Theorem says that A(n, c) can be replaced by a quantity that tends to 1 for n tending
+to ∞. We cannot give such an asymptotic behavior at this moment, but we can estimate errors for
+fixed c and n, which he does not. Remark that we have used the fact that ∆ = ln(4/e), see (54),
+without proving it or giving a reference. This is a consequence of the asymptotic behavior found by
+Widom, which cannot be valid at the same time as (67) if e/4 is replaced by another constant. This
+implies in particular Theorem 1. It may be useful to give also the following corollaries.
+Corollary 4. There exist constants a > 0 and δ ≥ 1 such that, for c ≥ 1 and n > 1.35 c, we have
+
+                                                   λn (c) ≤ δe−an .                                         (68)
+                                                                                    2 2
+Proof. The constant 1.35 has been chosen so that 2 ln( 4n     π c
+                                                       ec ) > 4n2 , which is the case when n >
+1.35 c.
+   One has as well a critical super-exponential decay rate given by the following lemma.
+Corollary 5. For any 0 ≤ a < 4e , there exists a constant Ma such that for any c ≥ 1, we have
+
+                                       λn (c) ≤ e−2n log( c ) ,
+                                                               an
+                                                                       ∀ n ≥ cMa .
+
+Moreover, for any b > 4e , there exists a constant Mb such that for any c ≥ 1, we have
+
+                                       λn (c) > e−2n log( c ) ,
+                                                               bn
+                                                                       ∀ n ≥ cMb .
+
+    The above corollary is a precise answer to Boyd’s question on the super-exponential decay rate
+of the λn (c), see [3].
+
+Final discussion and comments:
+
+We should mention that one of the problems of our method of approximation of the eigenvalues
+                                                     √
+λn (c) is the fact that it cannot be good for (1 − q) χn too close to 0, while our technique of proof
+starts from the writing of ln(λn (c) as an integral from c to c∗n . We have seen that asymptotically,
+for c fixed and n tending to ∞, we recover up to a factor of 1/2, the asymptotic behavior given by
+Widom, see Corollary 2. The asymptotics for n fixed and c tending to 0 is also well-known, see for
+example [20]. It may be written as
+                                                                     2n+1
+                                                            ec
+                                          λn (c) ∼                            Wn
+                                                         4(n + 12 )
+
+with Wn that does not depend on c and tends to 1 when n tends to ∞. Because of this, we propose
+also the approximation of λn (c) given by
+                                                      Z 1                !
+                                            π2      1               dt
+                    λn (c) = 2λn (c) = exp − (n + )
+                     c         f                                           .               (69)
+                                             2      2 Φ( π(n+1/2)
+                                                            2c    tE(t)2
+
+
+                                                            14
+Note that either one of λfn (c) or λ
+                                   cn (c) can be used to get the precise super-exponential decay rate of
+the λn (c). Moreover, both formulae can be tested for the approximation of the λn (c). Nonetheless,
+numerical experiments show that the approximation by λ      cn (c) is surprisingly good for c, n large. For
+                                                                    √
+smaller values (and in particular for small values of (1 − q) χn ), the approximation by λ         fn (c) is
+better.
+    At this moment, we do not have a theoretical justification of this, apart from the asymptotic
+behavior of λn (c). A tentative proof may start by writing λn (c) with an integral from 0 to c, instead
+of an integral from c to c∗n . Unfortunately, the singularity at 0 of the integral makes estimates
+difficult and the idea of starting at c∗n instead of 0 has been central here in order to benefit from the
+estimates on ψn (1).
+    We do not give a formal proof but rather some heuristic arguments. Heuristically , for c0 < c,
+we have                                                            2c
+                                                          Z Φ( π(n+1/2)  )
+                                             π2
+                                        
+                                 λn (c)                                      dt
+                            ln        0
+                                           ≈    (n + 1/2)                       2
+                                                                                  .
+                                 λn (c )      2                  2c0
+                                                           Φ( π(n+1/2) )   tE(t)
+Also, because of the asymptotic behavior of λn (c0 ) for c0 very close to 0 and n large enough, we have
+that                                                     Z 1
+                                          π2
+                                     
+                                1                                          dt
+                         ln        0
+                                        ≈    (n +  1/2)                       2
+                                                                                .
+                              λn (c )     2                      2c 0
+                                                           Φ( π(n+1/2) ) tE(t)
+
+As a consequence of these two approximations, we have
+                                                       Z 1
+                                          π2
+                                     
+                                 1                                      dt
+                          ln            ≈    (n + 1/2)                     2
+                               λn (c)     2                   2c
+                                                        Φ( π(n+1/2) ) tE(t)
+                                                                                             p
+as long as the approximation of the values of |ψn (1)| are valid. That is, as long as (1 − q) χn (c)
+is not too small. The approximation λn (c) by λ cn (c) has been tested for different values of n and
+                                                                                               λn (c)
+c in the examples 3 and 4, below. From these simulations, we can think that the quantity
+                                                                                               λ
+                                                                                               fn (c)
+increases from 1 to 2 when n goes from the beginning of the plunge region to infinity.
+
+
+4     Numerical results
+In this section, we illustrate the results of the previous sections by various numerical examples.
+
+Example 1: In this first example, we illustrate the fact that the actual values of the constants κ
+and δ(κ), given by (19) and (20), respectively, are much smaller than the theoretical values given
+in the proof of Lemma 2. We are interested in these values for n ≥ 2c/π. For this purpose, we
+have considered the values of c = mπ, m = 10, 20, 30, 40. We have used Flammer’s method and
+computed highly accurate values of χn (c) and ψn,c (1). Then, we have computed the smallest value
+of κ, denoted by κc and ensuring the bounds (20). Also, we have computed the corresponding values
+δ(κc ) so that (ψn,c (1))2 is equal to its upper bound given in (20). It turns out that κc , the critical
+value of κ, is obtained for n−th eigenvalues χn (c) with n = nc = [2c/π]. Also, by considering various
+consecutive values of nc ≤ n ≤ nc + 40 and by computing the corresponding values of κ and δ(κ),
+we found that the max δ(κ) is of the same size as κc . Table 1 shows the values of the critical values
+κc and δ(κc ) for the different values of the bandwidth c. Also, we give the values of max δ(κ).
+
+
+
+                                                                                √      p
+Example 2: In this example, we illustrate our approximations of the quantity q by qe, given by
+formula (24). The accuracy of this approximation is critical for proving the exact super-exponential
+
+
+                                                    15
+                               c     nc      κc    δ(κc )   max δ(κ).
+                              10 π   20    0.447   0.058     0.091
+                              20 π   40    0.413   0.051     0.084
+                              30 π   60    0.394   0.047     0.080
+                              40 π   80    0.335   0.025     0.048
+
+              Table 1: Critical values of κ, δ(κ) and max δ(κ) for different values of c.
+
+
+decay rate of the λn (c) by our formula (42). For this purpose we have considered different values of
+the bandwidth c and computed the previous approximations for different values of n. These approx-
+imations are then compared with highly accurate counterparts obtained by the use of Flammer’s
+method. The obtained numerical results are given by Table 2.
+
+
+                                                p              √
+                               c      n          qe                q
+
+                               10     6    0.995012670      0.99486271
+                                     10    0.782942846      0.78302833
+                                     15    0.585651991      0.58583492
+
+                               25    16     0.99062205      0.98924622
+                                     20     0.90491661      0.90471915
+                                     25     0.79783057      0.79783979
+
+                               50    33     0.99501269      0.99430098
+                                     40     0.91050626      0.91045325
+                                     50     0.80287160      0.80287326
+
+                              100     64    0.99705417      0.99669712
+                                      80    0.91330250      0.91328853
+                                     100    0.80540660      0.80540692
+
+                      Table 2: Illustrations of the approximation formula (24).
+
+
+
+
+Example 3: In this example, we compare the explicit formula given by (69) to compute highly
+accurate values of λn (c). For this purpose, we have considered the values of c = 10π, 20π, 30π and
+computed λn (c) by using the method given in [7]. Then, we have implemented formula (69) in
+a Maple computing software code. Figure 1 (a), (b), (c) show the graph of ln(λn (c)) versus the
+graph of ln(λbn (c)), and ln(λW (c)), for the different values of c and n. Here, λW (c) is the Widom’s
+                              n                                                       n
+asymptotic approximation of λn (c),!given by (5). Also, we have plotted in Figure 2, the graphs of the
+                              λ
+                              cn (c)
+corresponding values of ln             . These figures illustrate the surprising precision of the explicit
+                              λn (c)
+formula (69) for computing approximate values of the λn (c) which is numerically valid whenever
+q < 1. In particular, the numerical results illustrated by Figure 2, indicate that at least for moderate
+values of c, and q < 1, the approximations of λn (c), by either λ   fn (c) or λ
+                                                                              cn (c) are equal to λn (c) up
+to a small multiplicative constant.
+
+
+                                                    16
+Figure 1: Graphs of ln(λcn (c)) (boxes), ln(λW (c)) (circles) and ln(λn (c)) (red line) with c = 10π for
+                                             n
+(a), c = 20π for (b) and c = 30π for (c).
+
+
+
+
+                                b        
+                                 λn (c)
+       Figure 2: Graphs of ln    λn (c)       with c = 10π for (a), c = 20π for (b) and c = 30π for (c).
+
+
+Example 4: In this example, we illustrate the accuracy of the approximation scheme (69) in the
+cases where the bandwidth c has relatively large or very large values. For this purpose,
+                                                                                      q we have
+borrowed some data given in Table 3 of [14], concerning the computation of |µn (c)| = 2π    c λn (c).
+Note that in [14] and in the present work, the roles of λn and µn have been reversed. The data
+provided by Osipov and Rokhlin are obtained by the highly accurate numerical method for the
+computation of the λn (c) developed by the authors and described in [14]. These data are considered
+q references values and are used for comparison purpose. Table 3 gives the values of |b
+as                                                                                         µn (c)| =
+   2π b
+   c  λn (c), versus the corresponding references values. The numerical results of Table 3 indicate
+that the accuracy of formula (69) is not affected by the large values of c. Also, to check the validity
+condition of our explicit approximation formula of the λn (c), for each couple (c, n),
+                                                                                    p we have provided
+                                                    √
+the corresponding approximations of q and (1 − q) χn , given by qe and (1 − qe) χ      en . Note that for
+                                                  √
+moderate and large values of the quantity (1 − q) χn , a satisfactory approximation of this latter is
+
+
+
+
+                                                         17
+                                   p
+given by the approximation (1 − qe) χen . In fact, from (25) and (27), we have
+                     √             p                        p          √                p
+              (1 − q) χn − (1 − qe) χen      ≤    (1 − q)       en −
+                                                                χ          χn + |q − qe| χen
+                                                  1           √   p     c   3 qe
+                                             ≤      (1 − qe) + q − qe √    ≤ − .
+                                                  2                   2 χn  2 2
+
+
+                                                         p
+                 c         n          qe         (1 − qe) χen         |b
+                                                                       µn |               |µn |
+                250       179     0.924218        19.707014       0.18948E-07        0.18854E − 07
+                          184     0.903501        25.380432       0.16196E-09        0.16130E − 09
+                          188     0.886848        30.038563       0.30609E-11        0.30500E − 11
+                1000      659     0.981782        18.386116       0.38402E-07        0.38241E − 07
+                          665     0.976303        23.983045       0.44139E-09        0.43991E − 09
+                          671     0.970675        29.764638       0.42935E-11        0.42815E − 11
+               16000     10213    0.998985        16.244476       0.56758E-07        0.56568E − 07
+                         10222    0.998614        22.190912       0.52955E-09        0.52821E − 09
+                         10231    0.998232        28.312611       0.42989E-11        0.42902E − 11
+               128000   81518     0.999881        15.293549       0.42532E-07        0.42408E − 07
+                         81529    0.999834        21.234778       0.39992E-09        0.39906E − 09
+                         81539    0.999791        26.766672       0.51858E-11        0.51768E − 11
+                 106    636652    0.999986        13.738235       0.51646E-07        0.51504E − 07
+                        636665    0.999980        19.666621       0.49076E-09        0.48980E − 09
+                        636677    0.999975        25.260364       0.60652E-11        0.60558E − 11
+
+         Table 3: Illustrations of the approximation formula (69) for large values of c, n.
+
+
+Acknowledgement: The authors thank very much the anonymous referee for the valuable com-
+ments and suggestions that helped them to improve the revised version of this work. Special thanks
+of the second author go to Laboratory MAPMO of the University of Orléans where part of this work
+has been done while he was a visitor there.
+
+
+References
+   [1] A. Bonami and A. Karoui, Uniform bounds of prolate spheroidal wave functions and eigen-
+       values decay, C. R. Math. Acad. Sci. Paris. Ser. I, 352 (2014), 229–234.
+   [2] A. Bonami and A. Karoui, Uniform approximation and explicit estimates of the Prolate
+       Spheroidal Wave Functions, Constr. Approx., DOI: 10.1007/s00365-015-9295-1, (2015), avail-
+       able at http://arxiv.org/abs/1405.3676.
+
+   [3] J. P. Boyd, Approximation of an analytic function on a finite real interval by a bandlim-
+       ited function and conjectures on properties of prolate spheroidal functions, Appl. Comput.
+       Harmon. Anal. 25, No.2, (2003), 168–176.
+   [4] Y. M. Dunster, Uniform asymptotic expansions for prolate spheroidal functions with large
+       parameters, SIAM J. Math. Anal., 17 No. 6, (1986), 1495–1524.
+
+   [5] W.H.J. Fuchs, On the eigenvalues of an integral equation arising in the theory of band-limited
+       signals. J. Math. Anal. Appl., 9 (1964), 317-330.
+
+
+
+                                                   18
+ [6] J. A. Hogan and J. D. Lakey, Duration and Bandwidth Limiting: Prolate Functions, Sampling,
+     and Applications, Applied and Numerical Harmonic Analysis Series, Birkhäser, Springer, New
+     York, London, 2013.
+ [7] A. Karoui and T. Moumni, New efficient methods of computing the prolate spheroidal wave
+     functions and their corresponding eigenvalues, Appl. Comput. Harmon. Anal. 24, No.3,
+     (2008), 269–289.
+ [8] H. J. Landau, The eigenvalue behavior of certain convolution equations, Trans. Amer. Math.
+     Soc., 115, (1965), 242–256.
+ [9] H. J. Landau and H. O. Pollak, Prolate spheroidal wave functions, Fourier analysis and
+     uncertainty-III. The dimension of space of essentially time-and band-limited signals, Bell
+     System Tech. J. 41, (1962), 1295–1336.
+
+[10] H. J. Landau and H. Widom, Eigenvalue distribution of time and frequency limiting, J. Math.
+     Anal. Appl., 77, (1980), 469–481.
+[11] A. Osipov, Certain inequalities involving prolate spheroidal wave functions and associated
+     quantities, Appl. Comput. Harmon. Anal., 35, (2013), 359–393.
+[12] A. Osipov, Certain upper bounds on the eigenvalues associated with prolate spheroidal wave
+     functions, Appl. Comput. Harmon. Anal., 35, (2013), 309–340.
+[13] A. Osipov, V. Rokhlin and H. Xiao, Prolate spheroidal wave functions of order zero. Mathe-
+     matical tools for bandlimited approximation, Applied Mathematical Sciences, 187, Springer,
+     New York, 2013.
+
+[14] A. Osipov and V. Rokhlin, On the evaluation of prolate spheroidal wave functions and asso-
+     ciated quadrature rules, Appl. Comput. Harmon. Anal., 36, (2014), 108–142.
+[15] V. Rokhlin and H. Xiao, Approximate formulae for certain prolate spheroidal wave functions
+     valid for large values of both order and band-limit, Appl. Comput. Harmon. Anal. 22, (2007),
+     105–123.
+
+[16] D. Slepian and H. O. Pollak, Prolate spheroidal wave functions, Fourier analysis and uncer-
+     tainty I, Bell System Tech. J. 40 (1961), 43–64.
+[17] D. Slepian, Prolate spheroidal wave functions, Fourier analysis and uncertainty–IV: Exten-
+     sions to many dimensions; generalized prolate spheroidal functions, Bell System Tech. J. 43
+     (1964), 3009–3057.
+
+[18] D. Slepian, Some Asymptotic Expansions for Prolate Spheroidal Wave Functions, J. Math.
+     Phys., 44, No. 2, (1965), 99–140.
+[19] H. Widom, Asymptotic behavior of the eigenvalues of certain integral equations. II. Arc.
+     Rational Mech. Anal., 17 (1964), 215–229.
+
+
+[20] H. Xiao, V. Rokhlin and N. Yarvin, Prolate spheroidal wave functions, quadrature and inter-
+     polation, Inverse Problems, 17, (2001), 805–838.
+
+
+
+
+                                              19
+

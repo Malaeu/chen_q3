@@ -1,0 +1,1053 @@
+                                             PROOF OF THE FUNDAMENTAL GAP CONJECTURE
+
+                                                             BEN ANDREWS AND JULIE CLUTTERBUCK
+
+
+                                                  Abstract. We prove the Fundamental Gap Conjecture, which states
+                                                  that the difference between the first two Dirichlet eigenvalues (the spec-
+                                                  tral gap) of a Schrödinger operator with convex potential and Dirichlet
+arXiv:1006.1686v2 [math.SP] 11 Jan 2011
+
+
+
+
+                                                  boundary data on a convex domain is bounded below by the spectral gap
+                                                  on an interval of the same diameter with zero potential. More generally,
+                                                  for an arbitrary smooth potential in higher dimensions, our proof gives
+                                                  both a sharp lower bound for the spectral gap and a sharp modulus of
+                                                  concavity for the logarithm of the first eigenfunction, in terms of the
+                                                  diameter of the domain and a modulus of convexity for the potential.
+
+
+
+
+                                                                           1. Introduction
+                                             We consider Schrödinger operators of the form −∆ + V with Dirichlet
+                                          boundary conditions on a compact convex domain Ω in Rn . The diame-
+                                          ter of Ω is given by D = supx,y∈Ω |y − x|. We assume the potential V is
+                                          semiconvex (i.e. V + c|x|2 is convex for some c). Such an operator has an
+                                          increasing sequence of eigenvalues λ0 < λ1 ≤ λ2 ≤ . . . and corresponding
+                                          eigenfunctions {φi }i≥0 which vanish on ∂Ω and satisfy the equation
+                                          (1)                            ∆φi − V φi + λi φi = 0.
+                                             The difference between the first two eigenvalues, λ1 − λ0 , is called the fun-
+                                          damental gap. It is of importance for several reasons: In quantum mechanics
+                                          it represents the ‘excitation energy’ required to reach the first excited state
+                                          from the ground state; it thus determines the stability of the ground state
+                                          and so is also important in statistical mechanics and quantum field the-
+                                          ory. The spectral gap also determines the rate at which positive solutions
+                                          of the heat equation approach the first eigenspace, and it is through this
+                                          characterization that we will prove the conjecture of the title.
+                                             It was observed by Michael van den Berg [vdB] that for many convex
+                                          domains λ1 − λ0 ≥ 3π 2 /D 2 . This was also independently suggested by
+                                          Ashbaugh and Benguria [AB] and Yau [Y2].
+                                          Gap Conjecture. Let Ω ⊂ Rn be a bounded convex domain of diameter D,
+                                          and V a weakly convex potential. Then the eigenvalues of the Schrödinger
+                                          operator satisfy
+                                                                                3π 2
+                                                                      λ2 − λ1 ≥ 2 .
+                                                                                D
+
+                                             2010 Mathematics Subject Classification. Primary 35P15, 35J10; Secondary 35K05,
+                                          58J35.
+                                             Key words and phrases. Parabolic equation, Eigenvalue estimate, spectral gap.
+                                             Research supported by Discovery Grant DP0985802 of the Australian Research Council.
+                                                                                      1
+2                  BEN ANDREWS AND JULIE CLUTTERBUCK
+
+
+  In one dimension, the conjecture is settled. If Ω is an interval of length
+D, the eigenvalue equation (1) becomes a boundary value problem for an
+ODE: The eigenfunctions φ̃i satisfy φ̃i (±D/2) = 0 and
+(2)                 φ̃′′i − Ṽ φ̃i + µi φ̃i = 0 in (−D/2, D/2).
+For convenience we normalize these to have φ̃′i (D/2) = −1.
+    Ashbaugh and Benguria [AB] proved the conjecture under slightly differ-
+ent assumptions: They considered symmetric single-well potentials, so that
+Ṽ (x) = Ṽ (−x), and Ṽ is non-decreasing on [0, D/2].
+Theorem 1.1 (Ashbaugh–Benguria). If n = 1 and Ṽ is symmetric and
+single-well, then the eigenvalue gap satisfies
+                                         3π 2
+                                λ1 − λ0 ≥     ,
+                                          D2
+with equality attained when Ṽ is constant.
+   Later, Horváth [Ho] partly removed the symmetry assumption, allowing Ṽ
+to be a single-well potential with minimum at the mid-point of the interval.
+The conjecture itself (with Ṽ convex) was proved by Lavine in 1994 [La].
+Theorem 1.2 (Lavine). The Gap Conjecture holds for n = 1.
+   In higher dimensions, the conjecture has been proved for some highly
+symmetric cases: Bañuelos–Méndez-Hernández [BMH] (for V ≡ 0), Davis
+[D] and Bañuelos–Kröger [BK] proved it for Ω ⊂ R2 symmetric with respect
+to x and y axes, and convex in both x and y.
+   Non-optimal lower bounds have also been obtained: In an influential pa-
+per, Singer, Wong, Yau and Yau [SWYY] used gradient estimates similar to
+those developed by Li [Li] and Li–Yau [LY], together with the log-concavity
+of the first eigenfunction (proved for convex potentials by Brascamp and Lieb
+[BL], and also by different methods in [Ko] and in [SWYY]) to show the gap
+              π2                                         π2
+is at least 4D  2 . Yu and Zhong [YZ] improved this to D 2 , following the work
+of Zhong and Yang [ZY] which similarly improved Li and Yau’s estimate
+for the first nontrivial eigenvalue on a compact manifold [LY]. Many other
+authors have used probabilistic arguments (including [BL] and [BK]). Such
+methods were used by Smits [S] to recover the estimate of Yu and Zhong.
+It seems that any further improvement requires an improved estimate on
+the log-concavity of the first eigenfunction. Efforts in this direction have in-
+cluded work by Yau [Y3] and Ling [L], who prove gap estimates depending
+explicitly on an upper bound for D 2 (ln φ0 ). The problem of non-convex po-
+tentials has been studied by Yau [Y1]. There is also considerable literature
+on potentials with double wells, including examples with arbitrarily small
+spectral gap (see for example [Ha]).
+   We should point out here that fundamental gap for the Neumann problem
+(with zero potential) is simply the first nontrivial eigenvalue. A lower bound
+for this on a convex domain was proved by Payne and Weinberger [PW].
+Zhong and Yang [ZY] later reproduced the same result as a special case,
+using rather different methods.
+   We refer to the excellent survey by Ashbaugh [A] for further discussion
+of the fundamental gap conjecture and its history.
+               PROOF OF THE FUNDAMENTAL GAP CONJECTURE                           3
+
+
+   Our proof of the gap conjecture combines two ingredients, both of which
+involve analysis of the heat equation: The first ingredient is a method for
+estimating the modulus of continuity of solutions of parabolic equations
+which was developed in our earlier papers [AC1, AC2]. In this paper we say
+that a function η on R+ is a modulus of continuity for a function f on Ω if
+                                                      
+                                               |y − x|
+(3)                     |f (y) − f (x)| ≤ 2η
+                                                  2
+
+for all x, y ∈ Ω. Here the factors of 2 are for later convenience. In [AC2,
+Theorem 4.1] we proved that if u is any smooth solution of the heat equation
+with Neumann boundary data on a convex domain Ω of diameter D in Rn ,
+then u(., t) has modulus of continuity ϕ(., t), where ϕ is the solution to the
+one-dimensional heat equation on [−D/2, D/2] with Neumann boundary
+data and initial data ϕ(z, 0) = 12 osc u(., 0)sgn(z). The proof of this uses a
+maximum principle argument applied to a function of 2n spatial variables,
+and crucially exploits the full 2n × 2n matrix of second derivatives. In
+that paper we were mostly concerned with the short-time application of this
+estimate to deduce Lipschitz bounds on u, but the estimate is also useful for
+                                              π2
+large t: One can show that |ϕ(x, t)| ≤ Ce− D2 t , so the oscillation of u decays
+at an exponential rate, with exponent at least π 2 /D 2 . But if we choose u to
+be the first nontrivial eigenfunction for the Neumann problem on Ω, then
+u(x, t) = u(x, 0)e−λt , where λ is the corresponding eigenvalue. It follows
+           π2
+that λ ≥ D   2 , and we recover the sharp estimate of Zhong and Yang [ZY], at
+least in the case of convex domains in Rn . In a separate work we will apply
+this method to more general eigenvalue estimates on manifolds.
+   As might be expected from the proof in [SWYY], a second ingredient is
+required to apply this technique to the gap conjecture: The log-concavity of
+the first eigenfunction φ0 . If we apply the method above using only the log-
+                                                          π2
+concavity of φ0 , then we recover the estimate λ1 −λ0 ≥ D   2 , which is precisely
+the estimate of Yu and Zhong [YZ]. As noted above, it is clear that we must
+use something stronger than log-concavity to obtain a sharp result. Previous
+work [Y3, L] produces stronger results assuming positive lower bounds on
+the Hessian of log φ0 , but such estimates cannot yield sharp results.
+   In trying to apply the modulus of continuity argument above, we are led
+to a log-concavity condition involving differences of derivatives of log φ0 .
+   We first introduce the relevant notions in a general context: If ω is a real
+function of a positive real variable, and X is a vector field on a domain Ω,
+we say ω is a modulus of expansion for X if for every y 6= x in Ω we have
+                                                           
+                                      y−x           |y − x|
+(4)                 (X(y) − X(x)) ·          ≥ 2ω              .
+                                     |y − x|           2
+
+The factors of 2 are for later convenience. The name reflects the fact that a
+modulus of expansion implies a rate of increase of distances under the flow
+of X. We say ω is a modulus of contraction for X if the sign is reversed (that
+is, −ω is a modulus of expansion for −X). If f is a semi-convex function
+on a domain Ω, we say ω is a modulus of convexity for f if ω is a modulus
+of expansion for the gradient vector field ∇f of f , and ω is a modulus of
+4                   BEN ANDREWS AND JULIE CLUTTERBUCK
+
+
+concavity for f if ω is a modulus of contraction for ∇f . Note f is concave
+(convex) if and only if zero is a modulus of concavity (convexity) for f .
+   Our log-concavity estimates amount to an explicit modulus of concavity
+for log φ0 . Precisely, we assume that the potential Ṽ is even, and that the
+potential V in equation (1) is ‘more convex’ than Ṽ , in the sense that for
+any y 6= x in Ω we have
+                                                           
+                                    (y − x)       ′ |y − x|
+(5)             (∇V (y) − ∇V (x)) ·         ≥ 2Ṽ             .
+                                    |y − x|             2
+That is, we assume that Ṽ ′ is a modulus of convexity for V . Under this
+assumption we prove in Theorem 1.5 that the first eigenfunction φ0 in (1) is
+‘more log-concave’ than the first eigenfunction φ̃0 in (2), in the sense that
+                                              y−x
+(6)          (∇ ln φ0 (y) − ∇ ln φ0 (x)) ·           ≤ 2(ln φ̃0 )′ z= |y−x|
+                                             |y − x|                    2
+
+
+for every y 6= x in Ω. That is, we prove that (log φ̃0 )′ is a modulus of
+concavity for log φ0 . Note that if V is convex, then the inequality (5) holds
+                                                                             
+with Ṽ = 0, and the modulus of concavity in (6) becomes − D  π
+                                                                tan π|y−x|
+                                                                         D    .
+We will now list the main results.
+Theorem 1.3. If V and Ṽ are related by (5), then the spectral gap for
+−∆ + V on a convex domain Ω is bounded below by the spectral gap of the
+                            d2
+one dimensional operator − dx 2 + Ṽ on [−D/2, D/2].
+
+
+    If V is convex , the gap conjecture follows since we can choose Ṽ = 0:
+Corollary 1.4. If V is weakly convex, then the spectral gap has the bound
+                                          3π 2
+                                 λ1 − λ0 ≥     .
+                                          D2
+  In particular this applies for zero potential. The key step in proving the
+gap conjecture is a sharp log-concavity estimate for the first eigenfunction:
+Theorem 1.5. Let φ0 be the first eigenfunction of (1). If the potential V
+satisfies condition (5), then the log-concavity estimate (6) holds for every
+y 6= x in Ω.
+     Let us note a special case of this result which can be stated rather more
+elegantly: Suppose Ṽ ′ is also a modulus of convexity for Ṽ . It then fol-
+lows from Theorem 1.5 applied with n = 1 and V = Ṽ that (log φ̃0 )′ is
+a (sharp) modulus of concavity for log φ̃0 . This happens, for example, if
+Ṽ has non-negative third derivatives for positive arguments: In that case
+Ṽ ′ (b) − Ṽ ′ (a) ≥ Ṽ ′ ( b−a      ′  b−a       ′ b−a
+                              2 ) − Ṽ (− 2 ) = 2Ṽ ( 2 ), so that Ṽ has (sharp)
+modulus of convexity Ṽ ′ . It also happens if Ṽ is the optimal choice defined
+by 2Ṽ ′ (z/2) = sup{(∇V (x + ze) − ∇V (x)) · e : x, x + ze ∈ Ω, kek = 1}.
+Thus in these cases we have:
+Corollary 1.6. Under the conditions above, if the modulus of convexity of
+V is bounded below by the modulus of convexity of Ṽ , then the modulus of
+concavity of log φ0 is bounded above by the modulus of concavity of log φ̃0 .
+              PROOF OF THE FUNDAMENTAL GAP CONJECTURE                        5
+
+
+   Throughout the computations we assume that Ω has smooth boundary
+and is uniformly convex (so the principal curvatures of ∂Ω have a positive
+lower bound), and that V is smooth. The results for the general case of
+convex Ω and semiconvex V follow using a straightforward approximation
+argument (see for example [HP] and [He, Th 2.3.17]).
+   The paper is arranged as follows: In Section 2 we prove a general modulus
+of continuity estimate for solutions of Neumann heat equations with drift. In
+Section 3 we use this to prove Theorem 1.3, assuming the result of Theorem
+1.5. The proof of the modulus of continuity estimate provides a model for the
+more involved log-concavity estimate, which we prove in Section 4. Finally,
+in Section 5 we discuss some examples and extensions of our results.
+
+      2. Modulus of continuity for heat equation with drift
+   We prove here a generalization of [AC2, Theorem 4.1], which controls the
+modulus of continuity of solutions of a Neumann heat equation with drift,
+in terms of the modulus of contraction of the drift velocity:
+Theorem 2.1. Let Ω be a strictly convex domain of diameter D with smooth
+boundary in Rn , and X a time-dependent vector field on Ω. Suppose v :
+Ω × R+ → R is a smooth solution of the equation
+                      ∂v
+(7)                       = ∆v + X · ∇v in Ω × R+ ;
+                      ∂t
+                     Dν v = 0 in ∂Ω × R+ .
+Suppose that
+    1. X(., t) has modulus of contraction ω(., t) for each t ≥ 0, where ω :
+       [0, D/2] × R+ → R is smooth;
+    2. v(., 0) has modulus of continuity ϕ0 , where ϕ0 : [0, D/2] → R is
+       smooth with ϕ0 (0) = 0 and ϕ′0 (z) > 0 for 0 ≤ z ≤ D/2;
+    3. ϕ : [0, D/2] × R+ → R satisfies
+        (i). ϕ(z, 0) = ϕ0 (z) for each z ∈ [0, D/2];
+       (ii). ∂ϕ      ′′     ′
+             ∂t ≥ ϕ + ωϕ on [0, D/2] × R+ ;
+      (iii). ϕ′ > 0 on [0, D/2] × R+ ;
+      (iv). ϕ(0, t) ≥ 0 for each t ≥ 0.
+Then ϕ(., t) is a modulus of continuity for v(., t) for each t ≥ 0.
+Proof. The only difference from the situation in [AC2] is the drift term in
+7. For any ε ≥ 0, define a function Zε on Ω̄ × Ω̄ × R+ by
+                                                             
+                                                   |y − x|
+           Zε (y, x, t) = v(y, t) − v(x, t) − 2ϕ           , t − εet .
+                                                      2
+By assumption Zε (x, y, 0) ≤ −ε for every x 6= y in Ω, and Zε (x, x, t) ≤ −ε
+for every x ∈ Ω and t ≥ 0. We will prove for any ε > 0 that Zε is negative
+on Ω × Ω × R+ . If this is not true, then there exists a first time t0 > 0 and
+points x 6= y ∈ Ω̄ such that Zε (x, y, t0 ) = 0.
+   We consider two possibilities: If y ∈ ∂Ω, then we have
+                                    (y − x)            (y − x)
+        Dνy Zε = Dνy v(y, t) − ϕ′           · νy = −ϕ′         · νy < 0,
+                                    |y − x|            |y − x|
+6                  BEN ANDREWS AND JULIE CLUTTERBUCK
+
+
+where νy is the outward unit normal at y, and we used the Neumann con-
+                                                   y−x
+dition, strict convexity of Ω (which implies |y−x|      · νy > 0), and assumption
+3(iii). This implies Zε (x, y − sνy , t0 ) > 0 for s small, contradicting the fact
+that Zε ≤ 0 on Ω̄ × Ω̄ × [0, t0 ]. The case where x ∈ ∂Ω is similar.
+   The second possibility is that x and y are in the interior of Ω. Then all
+first spatial derivatives of Zε (in x and y) at (x, y, t0 ) vanish, and the full
+2n × 2n matrix of second derivatives is non-positive. In particular we choose
+                                     y−x
+an orthonormal basis with en = |y−x|       , and will use the inequalities
+
+          ∂2
+              Zε (x + sen , y − sen , t0 ) s=0 ≤ 0; and
+          ∂s2
+            ∂2
+               Zε (x + sei , y + sei , t0 ) s=0 ≤ 0 for i = 1, . . . , n − 1.
+           ∂s2
+   We compute these inequalities in terms of v: The vanishing of first deriva-
+tives implies ∇v(y) = ∇v(x) = ϕ′ en . Along the path (x + sei , y + sei ) the
+distance |y − x| is constant, so
+               d2
+          0≥       Zε (x + sei , y + sei , t0 ) = Di Di v(y) − Di Di v(x).
+               ds2
+                                   d                   d      2
+Along (x + sen , y − sen ) we have ds |y − x| = −2 and ds 2 |y − x| = 0, so
+
+
+        d2
+     0≥    Zε (x + sen , y − sen , t0 ) = Dn Dn v(y) − Dn Dn v(x) − 2ϕ′′ .
+       ds2
+Summing the first inequality over i = 1, . . . , n − 1 and adding the last gives
+                          0 ≥ ∆v(y) − ∆v(x) − 2ϕ′′ .
+Finally we compute the time derivative of Zε at (x, y, t0 ):
+            ∂
+               Zε = ∆v(y) + X(y) · ∇v(y)
+            ∂t
+                    − ∆v(x) − X(x) · ∇v(x) − 2ϕt − εet
+                                               y−x
+                  ≤ 2ϕ′′ + ϕ′ (X(y) − X(x)) ·         − 2ϕt − εet
+                                              |y − x|
+                  < 2ϕ′′ + 2ωϕ′ − 2ϕt
+                  ≤ 0,
+where we used the modulus of contraction of X, and the non-negativity of
+ϕ′ , as well as the differential inequality for ϕ assumed in the Theorem. But
+this strict inequality is impossible since this is the first time where Zε ≥ 0.
+This contradiction proves that Zε < 0 for every ε > 0, and therefore Z0 ≤ 0
+which is the claim of the Theorem.                                           
+
+      3. Improved log-concavity implies the gap conjecture
+   We will deduce Theorem 1.3 by applying Theorem 2.1 in the case where v
+is a ratio of solutions to the parabolic equation corresponding to the operator
+∆ + V . We control the modulus of continuity of such a ratio assuming a
+modulus of concavity for the logarithm of the denominator:
+               PROOF OF THE FUNDAMENTAL GAP CONJECTURE                         7
+
+
+Proposition 3.1. Let u1 and u0 be two smooth solutions to the parabolic
+Schrödinger equation
+                         ∂u
+(8)                         = ∆u − V u on Ω × R+ ;
+                         ∂t
+                          u = 0 on ∂Ω × R+ ,
+on a bounded strictly convex domain Ω with smooth boundary in Rn , with
+u0 positive on the interior of Ω. Let v(x, t) = uu01 (x,t)
+                                                     (x,t)
+                                                           . Then v is smooth on
+Ω × R+ , and satisfies the following Neumann heat equation with drift:
+               ∂v
+(9)               − ∆v − 2∇ log u0 · ∇v = 0      on Ω × [0, ∞);
+               ∂t
+                                   Dν v = 0      on ∂Ω × [0, ∞).
+Proof. The argument is essentially that of [Y3, Lemma 1.1] and [SWYY,
+Appendix A]: Both u0 and u1 are smooth on Ω̄ × [0, ∞), and u0 has negative
+derivative in the normal direction ν. It follows that v extends to Ω̄ as a
+smooth function (see [SWYY, Section 6]). We compute directly:
+                              
+                    ∂v    ∂ u1
+                        =
+                     ∂t   ∂t u0
+                          ∆u1 − V u1 − v(∆u0 − V u0 )
+                        =
+                                       u0
+(10)                    = ∆v + 2∇ log u0 · ∇v.
+At any point in ∂Ω we have ∂v ∂t and ∆v bounded, ∇u0 = −cν with c > 0,
+and u0 = 0, so it follows from (10) that Dν v = 0.                  
+  We now establish the fundamental gap conjecture, assuming Theorem 1.5:
+Proposition 3.2. Inequality (6) implies Theorem 1.3.
+Proof. We use the strategy discussed in the introduction to deduce the eigen-
+value bound from an exponentially decaying modulus of continuity bound,
+which we deduce from Theorem 2.1 and Proposition 3.1.
+   Suppose that u1 is any smooth solution of (8), and let u0 be the solution
+of (8) with initial data φ0 . Let v = uu01 be the corresponding solution of (9).
+The drift velocity X = 2∇ log u0 in equation (9) has modulus of contraction
+2(log φ̃0 )′ , by the estimate (6).
+                                                                         −µ1 t
+   Roughly speaking the strategy is to apply Theorem 2.1 with ϕ = C ee−µ0 t φ̃φ̃1
+                                                                                0
+(that is, a ratio of particular solutions for the corresponding one-dimensional
+heat equation) and ω = 2(log φ̃0 )′ . Condition 2 of Theorem 2.1 holds for
+sufficiently large C, since v(., 0) is smooth, and so has bounded gradient
+and satisfies |v(y, 0) − v(x, 0)| ≤ K|y − x| for some large K, while φ̃φ̃1 is
+                                                                            0
+positive on (0, D/2) and has positive gradient at z = 0, so is bounded below
+by cz for some small c > 0. The conditions 3(i)–(iv) also hold, except that
+ϕ′ (D/2, t) = 0 and ω is not smooth at D/2. We handle these complications
+below by making slight adjustments to ϕ and ω.
+   For small ε > 0 we construct a smooth function ωε ≥ ω and corresponding
+functions ϕε,ε̃ as follows: We first replace the Dirichlet eigenfunction φ̃0 by
+8                      BEN ANDREWS AND JULIE CLUTTERBUCK
+
+
+a Robin eigenfunction φ̃0,ε with eigenvalue µ0,ε < µ0 defined by
+(11)              (φ̃0,ε )′′ − Ṽ φ̃0,ε + µ0,ε φ̃0,ε = 0 on [0, D/2];
+                               φ̃0,ε (D/2) = ε; φ̃′0,ε (D/2) = −1;
+                                φ̃′0,ε (0) = 0;    φ̃0,ε > 0 on [0, D/2].
+We also replace φ̃1 by φ̃1,ε̃ with eigenvalue µ1,ε̃ defined by
+(12)             (φ̃1,ε̃ )′′ − Ṽ φ̃1,ε̃ + µ1,ε̃ φ̃1,ε̃ = 0 on [0, D/2];
+                               φ̃1,ε̃ (D/2) = ε̃; φ̃′1,ε̃ (D/2) = −1;
+                                φ̃1,ε̃ (0) = 0; φ̃1,ε̃ > 0         on (0, D/2].
+These may be constructed using the Prüfer transformation: If φ′′ = (Ṽ −µ)φ,
+then q = arctan(φ′ /φ) satisfies a first order ODE. Inverting this process we
+let q(z, q0 , µ) be the solution of
+                   ∂q
+(13)                  − (Ṽ − µ) cos2 q + sin2 q = 0 |z| ≤ D/2;
+                   ∂z
+                                     q(0, q0 , µ) = q0 .
+The ODE comparison theorem implies q is strictly increasing in q0 for all z,
+and strictly decreasing in µ for z > 0. The choice µ = µ0 and q0 = 0 cor-
+responds to φ̃0 , and so q(D/2, 0, µ0 ) = −π/2 and q(z, 0, µ0 ) ∈ (−π/2, π/2)
+for 0 < z < D/2. Similarly, µ = µ1 and q0 = π/2 corresponds to φ̃1 , and so
+q(D/2, π/2, µ1 ) = −π/2 and q(z, π/2, µ1 ) ∈ (−π/2, π/2) for 0 < z < D/2.
+   Since q(D/2, 0, µ) is strictly decreasing in µ and q(D/2, 0, µ0 ) = −π/2,
+for small ε > 0 there exists a unique µ0,ε < µ0 such that q(D/2, 0, µ0,ε ) =
+arctan ε − π/2 and q(z, 0, µ0,ε ) ∈ (−π/2, π/2) for 0 < z < D/2. The
+                                                                     corre-
+                                              R D/2
+sponding eigenfunction φ̃0,ε (z) = ε exp − z tan q(s, 0, µ0,ε ) ds satisfies
+conditions (11). We have (log φ̃0,ε )′ (z) = tan q(z, 0, µ0,ε ) > tan q(z, 0, µ0 ) =
+(log φ̃0 )′ (z) for z ∈ (0, D/2], since µ was decreased. Thus ωε := 2(log φ̃0,ε )′
+is smooth and ωε ≥ ω, so ωε is a modulus of contraction for X.
+   The eigenfunction φ̃1,ε̃ satisfying (12) is similarly produced by decreasing
+µ below µ1 with q0 = π/2.
+   Observe that (log φ̃1,ε )′ (z) = q(z, π/2, µ1,ε ) satisfies the same ODE (13)
+as (log φ̃0,ε )′ (z) = q(z, 0, µ0,ε ) with larger µ, and they are equal at z = D/2.
+By ODE comparison, (log φ̃1,ε )′ (z) > (log φ̃0,ε )′ (z) for 0 ≤ z < D/2, and
+hence if ε̃ > ε > 0 then (log φ̃1,ε̃ )′ (z) > (log φ̃0,ε )′ (z) for 0 ≤ z ≤ D/2.
+   For any ε̃ > ε > 0 we define a smooth function ϕε,ε̃ by
+                                              e−µ1,ε̃ t φ̃1,ε̃
+                                    ϕε,ε̃ =                    .
+                                              e−µ0,ε t φ̃0,ε
+Since ϕε,ε̃ is a ratio of solutions of the heat equation, we have
+               ∂
+                  ϕε,ε̃ = ϕ′′ε,ε̃ + 2(log φ̃0,ε )′ ϕ′ε,ε̃ = ϕ′′ε,ε̃ + ωε ϕ′ε,ε̃ .
+               ∂t
+The monotonicity requirement 3(iii) is satisfied, since
+                                                         
+         ϕ′ε,ε̃ = ϕε,ε̃ (log φ̃1,ε̃ )′ − (log φ̃0,ε )′ > 0 on [0, D/2].
+               PROOF OF THE FUNDAMENTAL GAP CONJECTURE                                        9
+
+
+Hence Theorem 2.1 applies to prove that Cϕε,ε̃(., t) is a modulus of conti-
+nuity for v for t > 0 if it is so at t = 0. Sending ε̃ to ε and then sending ε
+to zero, we have that ϕε,ε̃ converges uniformly to ϕ, so the same conclusion
+holds for ϕ. In particular, for sufficiently large C we have
+         osc v(., t) ≤ 2C sup{ϕ(z, t) : z ∈ [0, D/2]} = 2Ce−(µ1 −µ0 )t .
+Applying this with u1 = φ1 e−λ1 t gives v = e−(λ1 −λ0 )t φφ10 , and hence
+                                          φ1
+                       e−(λ1 −λ0 )t osc      ≤ 2Ce−(µ1 −µ0 )t
+                                          φ0
+for all t ≥ 0, which implies λ1 − λ0 ≥ µ1 − µ0 . This proves Theorem 1.3. 
+
+          4. Improved log-concavity of the ground state
+  In this section we prove the log-concavity result, Theorem 1.5. We will
+deduce this from the following statement about log-concavity for arbitrary
+positive solutions of the parabolic equation (8):
+Theorem 4.1. Let Ω be a uniformly convex open domain with diameter
+D in Rn , and assume that Ṽ ′ is a modulus of convexity for the potential
+V on Ω. Let u0 be a smooth function on Ω̄ which is positive on Ω and
+has u0 = 0 and ∇u0 6= 0 on ∂Ω, and suppose ψ0 : [0, D/2] → R is a
+Lipschitz continuous modulus of concavity for log u0 . Let u : Ω × R+ → R
+be the solution of the Dirichlet problem (8) with initial data u0 , and let
+ψ ∈ C 0 ([0, D/2] × R+ ) ∩ C ∞ ([0, D/2] × (0, ∞)) be a solution of
+                  ∂ψ
+                                                             
+                     ≥ ψ ′′ + 2ψψ ′ − Ṽ ′ on [0, D/2] × R+ 
+                  ∂t
+                                                             
+                                                             
+(14)                      ψ(., 0) = ψ0 (.)                   
+                                                             
+                              ψ(0, t) = 0
+                                                             
+
+Then ψ(., t) is a modulus of concavity for log u(., t) for each t ≥ 0.
+  Note that we impose no boundary condition on ψ at (D/2, t).
+
+Proof. The statement we must prove is the following:
+                                                                                  
+                                                    y−x               |y − x|
+ Z(x, y, t) := (∇ log u(y, t) − ∇ log u(x, t)) ·           − 2ψ               ,t       ≤ 0.
+                                                   |y − x|               2
+for all x 6= y ∈ Ω and t ≥ 0. By assumption this holds for t = 0. We will
+prove this by showing negativity of a function Zε on Ω̂ × [0, T ] for any ε > 0
+and T ∈ (0, ∞), where Ω̂ = (Ω × Ω) \ {y = x} ⊂ R2n , and Zε is defined by
+ Zε (x, y, t) = Z(x, y, t) − εeCt
+                                                                          
+                                            y−x                 |y − x|
+             = (∇ log u(y) − ∇ log u(x)) ·         − 2ψ                 , t − εeCt ,
+                                           |y − x|                 2
+for some suitably large C to be chosen (independent of ε), where we have
+suppressed the t dependence of u. By the Hopf boundary point lemma,
+Dν u(x, t) < 0 for every x ∈ ∂Ω and every t ≥ 0. The following Lemmas
+control the behaviour of Z near the boundary:
+10                  BEN ANDREWS AND JULIE CLUTTERBUCK
+
+
+Lemma 4.2. Let u be as in Theorem 4.1, and T < ∞. Then there exists
+r1 > 0 such that D 2 log u (x,t) < 0 whenever d(x, ∂Ω) < r1 and t ∈ [0, T ],
+and N ∈ R such that D 2 log u (x,t) (v, v) ≤ N |v|2 for all x ∈ Ω and t ∈ [0, T ].
+
+Proof. We first construct UT . Let α = inf ∂Ω×[0,T ] |Du| > 0, and let K be a
+bound for D 2 u, so that |D 2 u(v, v)| ≤ K|v|2 at every point in Ω̄×[0, T ] and for
+all v ∈ Rn . If x0 ∈ ∂Ω then Du(x0 ) = −|Du(x0 )|ν(x0 ), and D 2 u x0 (v, v) =
+h(v, v)Du x0 (ν(x0 )) for v tangent to ∂Ω, where h is the second fundamental
+form of ∂Ω at x0 . Uniform convexity implies h(v, v) ≥ κ|v|2 for some κ > 0.
+                                Du(x)
+The gradient direction e = |Du(x)|      is smooth near x0 , as is the projection
+π ⊥ : w 7→ (w · e)e and the orthogonal projection π = Id − π ⊥ . At x0 we
+have D 2 u(πw, πw) ≤ −ακ|πw|2 . Therefore there exists r0 > 0 depending
+on α and K such that for x ∈ Br0 (x0 ) ∩ Ω and t ∈ [0, T ] we have
+                                   ακ
+              D 2 u x (πw, πw) ≤ − |πw|2 for any w ∈ Rn ;
+                                    2
+                                 |Du(x0 )|
+                       |Du(x)| ≥           ; and
+                                     2
+                      0 < u(x) ≤ 2|Du(x0 )||x − x0 |.
+Therefore in this set and for any w we have,
+            D 2 u(w, w) = D 2 u(πw + π ⊥ w, πw + π ⊥ w)
+                            1
+                        ≤ − ακ|πw|2 + 2K|πw||π ⊥ w| + K|π ⊥ w|2
+                            2
+                            1                  4K 2 ⊥ 2
+                        ≤ − ακ|πw|2 + (K +          )|π w| .
+                            4                   ακ
+Since (Du(w))2 = |Du|2 |π ⊥ w|2 ≥ |Du(x
+                                      4
+                                        0 )|α
+                                              |π ⊥ w|2 and u ≤ 2|Du(x0 )||x−x0 |,
+                                                   (Du(w))2
+                                                             
+           2                 1     2
+         D log u x (w, w) =      D u(w, w) −
+                             u                          u
+                                                           4K 2 ⊥ 2
+                                
+                             1     1
+                          ≤      − ακ|πw|2 + (K +              )|π w|
+                             u     4                        ακ
+                                                         
+                                        α          ⊥ 2
+                                  −              |π w|
+                                    8|x − x0 |
+                          <0
+                                 n                    o
+                                            α2 κ
+provided |x − x0 | < r1 = min r0 , 8(Kακ+4K        2 ) . the Lemma holds with
+
+N = max{0, sup{D 2 log u(z, t)(v, v) : |v| = 1, t ∈ [0, T ], d(z, ∂Ω) ≥ r1 }},
+since {z ∈ Ω : d(z, ∂Ω) ≥ r1 } is compact.                                  
+Lemma 4.3. Let u be as in Theorem 4.1, and let ψ be continuous on
+[0, D/2] × R+ and locally Lipschitz in the first argument, with ψ(0, t) = 0 for
+each t. Then for any T < ∞ and β > 0 there exists an open set Uβ,T ⊂ R2n
+containing ∂ Ω̂ such that Z(x, y, t) < β for all t ∈ [0, T ] and (x, y) ∈ Uβ,T ∩ Ω̂.
+Proof. Since ψ is Lipschitz in the first argument there exists P such that
+|ψ(z, t)| ≤ P z for all z ∈ [0, D/2] and t ∈ [0, T ].
+                 PROOF OF THE FUNDAMENTAL GAP CONJECTURE                           11
+
+
+    We construct Uβ,T of the form ∪(x0 ,y0 )∈∂ Ω̂ Br(x0 ,y0 ) (x0 , y0 ). To do this
+ we must find r(x0 , y0 ) > 0 for any (x0 , y0 ) ∈ ∂ Ω̂ such that Z < β for
+ (x, y) ∈ Br(x0 ,y0 ) (x0 , y0 ). We consider several cases for (x0 , y0 ):
+Case 1: x0 = y0 ∈ Ω. We have by Lemma 4.2
+                                                                          
+                                                  y−x           |y − x|
+  Z(x, y, t) = (∇ log u(y, t) − ∇ log u(x, t)) ·         − 2ψ           ,t
+                                                 |y − x|           2
+                       Z 1                                                         
+                  1           2                                          |y − x|
+             =             D log u (1−s)x+sy (y − x, y − x) ds − 2ψ              ,t
+               |y − x| 0                                                     2
+             ≤ (N + P )|y − x|
+
+        so Z < β provided (x, y) ∈ Br (x0 , x0 ) with r < 2(Nβ+P ) .
+Case 2: x0 ∈ ∂Ω, y0 ∈ Ω. In this case u(y0 ) > 0, so there exists r2 > 0
+        and L > 0 such that |D log u(y)| ≤ L for |y − y0 | < r2 . Let α0 =
+        |Du(x0 )| > 0 and γ = − |yy00 −x
+                                      −x0 | · ν(x0 ) (this is positive by strict
+                                         0
+
+
+          convexity). Then Du(x0 ) = −α0 ν(x0 ), so Du(x0 ) · |yy00 −x
+                                                                    −x0
+                                                                       0|
+                                                                          = γα0 . In
+                             y−x
+          addition, Du(x) · |y−x| is smooth in x and y near (x0 , y0 ). Therefore
+                   y−x
+         Du(x) · |y−x|   ≥ 21 γα0 and 0 < u(x) ≤ 2α0 |x − x0 | for x, y ∈ Ω with
+         max{|y − y0 |, |x − x0 |} < r3 , for some r3 ∈ (0, r2 ]. This implies
+                                                                              
+                                                      y−x           |y − x|
+      Z(x, y, t) = (∇ log u(y, t) − ∇ log u(x, t)) ·         − 2ψ           ,t
+                                                     |y − x|           2
+                            γ
+                 ≤L−               + PD
+                        4|x − x0 |
+                                                                       γ
+        so Z < 0 provided |y − y0 | < r3 and |x − x0 | < min{r3 , 4(L+P   D) }.
+Case 3: x0 ∈ Ω, y0 ∈ ∂Ω. This is similar to case 2.
+Case 4: x0 , y0 ∈ ∂Ω, x0 6= y0 . Here both x and y can be handled in the same
+        way as x in case 2.
+Case 5: x0 = y0 ∈ ∂Ω. Then letting zs = (1 − s)x + sy we write as in case 1
+                         Z 1                                               
+                     1          2                                |y − x|
+    Z(x, y, t) =             D log u zs (y − x, y − x) ds − 2ψ           ,t
+                  |y − x| 0                                         2
+
+          The first term is negative for max{|x − x0 |, |y − x0 |} < r1 bynLemmao
+          4.2, so Z(x, y, t) < β provided max{|x− x0 |, |y − x0 |} < min r1 , Pβ .
+                                                                                   
+
+    Now we proceed with the proof of Theorem 4.1. Fix T < ∞ and ε > 0.
+ By assumption we have Zε (x, y, 0) ≤ −εeCt < 0 for all x 6= y in Ω. Off
+ the compact set (Ω̂ \ Uε/2,T ) × [0, T ] we have Zε ≤ − 12 ε, by Lemma 4.3.
+ Therefore if Zε is not negative on Ω̂ × [0, T ] then there exists a first time
+ t0 > 0 and points (x, y) ∈ Ω̂ \ Uε/2,T such that Zε < 0 on Ω̂ × [0, t0 ), but
+ Zε (x, y, t0 ) = 0. In particular x and y are in the interior of Ω, and y 6= x.
+                                                             y−x
+ We choose an orthonormal basis {ei } for Rn with en = |y−x|      , and note the
+12                  BEN ANDREWS AND JULIE CLUTTERBUCK
+
+
+following: The first spatial derivatives of Zε in x and y vanish, so
+
+
+               ∂
+            0=    Zε (x + sei , y, t0 ) s=0 , 1 ≤ i < n
+               ∂s
+                                      Di log u(y) − Di log u(x)
+(15a)        = −Di Dn log u(x) −                                ;    and
+                                                |y − x|
+               ∂
+            0=    Zε (x, y + sei , t0 ) s=0 , 1 ≤ i < n
+               ∂s
+                                   Di log u(y) − Di log u(x)
+(15b)        = Di Dn log u(y) +                              ;
+                                              |y − x|
+
+
+while
+
+
+               ∂
+(15c)       0=    Zε (x + sen , y, t0 ) s=0 = −Dn Dn log u(x) + ψ ′ ;
+               ∂s
+               ∂
+(15d)       0=    Zε (x, y + sen , t0 ) s=0 = Dn Dn log u(y) − ψ ′ .
+               ∂s
+
+
+The second derivative of Zε (., ., t0 ) along any path is non-positive at (x, y).
+In particular y − x is constant along (x + sei , y + sei ) for 1 ≤ i < n, so
+
+
+                       ∂2
+                    0≥     Zε (x + sei , y + sei , t0 ) s=0
+                       ∂s2
+(16a)                = Di Di Dn log u(y) − Di Di Dn log u(x).
+
+
+                                             y−x            d
+Along the path (x + sen , y − sen ) we have |y−x| constant, ds |y − x| = −2,
+    d   2
+and ds 2 |y − x| = 0. This gives
+
+
+
+
+                   ∂2
+               0≥      Zε (x + sen , y − sen , t0 ) s=0
+                   ∂s2
+(16b)            = Dn Dn Dn log u(y) − Dn Dn Dn log u(x) − 2ψ ′′ .
+
+
+
+Finally, since Zε (x, y, t) < Zε (x, y, t0 ) for t < t0 , we have ∂Z
+                                                                   ∂t (x, y, t0 ) ≥ 0.
+                                                                     ε
+
+           ∂                                2
+We have ∂t log u = ∆ log u + |D log u| − V by (8), and differentiation gives
+
+
+              ∂
+                 ∇ log u = ∆∇ log u + 2Dk log uDk ∇ log u − ∇V.
+              ∂t
+                 PROOF OF THE FUNDAMENTAL GAP CONJECTURE                        13
+
+
+This gives the following inequality:
+        ∂
+     0≤   Zε
+       ∂t
+       
+      = ∆∇ log u(y) + 2Dk log uDk ∇ log u(y) − ∇V (y)
+                                                        
+                                                            y−x
+         − ∆∇ log u(x) − 2Dk log uDk ∇ log u(x) + ∇V (x) ·
+                                                           |y − x|
+           ∂ψ
+        −2    − CεeCt
+           ∂t
+      = Dn Dn Dn log u(y) − Dn Dn Dn log u(x)
+              n−1
+              X
+          +         (Di Di Dn log u(y) − Di Di Dn log u(x))
+              i=1
+          + 2 (Dn log u(y)Dn Dn log u(y) − Dn log u(x)Dn Dn log u(x))
+                n−2
+                X
+          +2          (Di log u(y)Di Dn log u(y) − Di log u(x)Di Dn log u(x))
+                i=1
+                                      y−x       ∂ψ
+          − (∇V (y) − ∇V (x)) ·              −2    − CεeCt
+                                     |y − x|    ∂t
+In the first line we use the second derivative inequality (16b), and in the
+second we use (16a). In the third line we rewrite the second derivatives of
+log u using (15c) and (15d), while in the fourth we use (15a) and (15b). In
+the last line we use the modulus of convexity assumption (5). This yields
+    0 ≤ 2ψ ′′ + 2ψ ′ (Dn log u(y) − Dn log u(x))
+                       n−1
+                 2 X                                           ∂ψ
+        −             |Di log u(y) − Di log u(x)|2 − 2Ṽ ′ − 2    − CεeCt .
+              |y − x|                                          ∂t
+                       i=1
+                                              ∂ψ
+      ≤ 2ψ ′′ + 2ψ ′ (2ψ + εeCt ) − 2Ṽ ′ − 2    − CεeCt
+                                            ∂t
+              ′′        ′    ′    ∂ψ
+      < 2 ψ + 2ψψ − Ṽ −                ≤ 0.
+                                  ∂t
+Here the second inequality is obtained by discarding the negative term in-
+volving Di log u, and using Zε = Dn log u(y) − Dn log u(y) − 2ψ − εeCt = 0.
+The last inequality is from equation (14), and the strict inequality is pro-
+duced by choosing C > 2 sup[0,D/2]×[0,T ] ψ ′ (this is independent of ε as re-
+quired). The result contradicts the assumption that Zε does not remain
+negative. Therefore Zε < 0 on Ω̂ × [0, T ] for every ε > 0 and every T < ∞.
+It follows that Z ≤ 0 on Ω̂ × R+ , and the Theorem is proved.               
+
+  We next consider the long term behaviour of solutions of (14):
+Corollary 4.4. Under the conditions of Theorem (4.1), there exists a smooth
+function ψ : [0, D/2) × R+ , decreasing in the second argument, such that
+                                                                    
+                                            y−x           |y − x|
+           (∇ ln u(y, t) − ∇ ln u(x, t)) ·         ≤ 2ψ           ,t
+                                           |y − x|           2
+14                     BEN ANDREWS AND JULIE CLUTTERBUCK
+
+
+for all x, y ∈ Ω with x 6= y and all t ≥ 0, and limt→∞ ψ(z, t) = (log φ̃0 )′ (z)
+for every z ∈ [0, D/2).
+Proof. We construct a sequence of functions ψk satisfying the assumptions
+of Theorem 4.1 and decreasing monotonically towards the (non-smooth)
+function ψ as k → ∞. These are constructed by solving the equality case of
+(14) with ψ(D/2, t) = −k for suitable initial data.
+   The first step is to construct suitable initial functions ψk,0 . To do this
+we observe that there are many stationary solutions, corresponding to solu-
+tions of the eigenvalue equation via the Prüfer transformation: Stationary
+solutions satisfy 0 = ψ ′′ + 2ψψ ′ − Ṽ ′ = (ψ ′ + ψ 2 − Ṽ )′ , and hence
+
+(17)                               ψ ′ + ψ 2 = Ṽ − µ
+                                            R of (17) satisfying ψ L (0) = 0
+for some µ. We consider solutions ψµL and ψk,µ                        µ
+      R
+and ψk,µ (D/2) = −k. These relate to the Robin eigenfunctions φ̃0,ε satis-
+fying equation (11) which were constructed in the proof of Proposition 3.2,
+with ε = 1/k: In particular ψµL0,1/k = ψk,µ
+                                         R
+                                           0,1/k
+                                                 = (log φ̃0,1/k )′ . The ODE
+comparison theorem applied to equation (17) implies that ψµL is strictly
+decreasing in µ for 0 < z ≤ D/2, and ψk,µ      R is strictly increasing in µ
+
+for 0 ≤ z < D/2. In particular, ψk,µ   R > (log φ̃         ′
+                                                    0,1/k ) for µ > µ0,1/k and
+0 ≤ z < D/2, and ψµL > (log φ̃0,1/k )′ for µ < µ0,1/k and 0 < z ≤ D/2. ODE
+comparison also gives upper bounds: If λ2+ ≥ sup Ṽ − µ and λ2− ≥ µ − inf Ṽ
+then
+        ψµL (z) ≤ λ+ tanh(λ+ z);         and
+                                                                                 
+                                                            π                 k
+        R           λ− tan(λ− (D/2 − z)) − k          D     2 + arctan       λ−
+       ψk,µ (z) ≤        k
+                                             , if z >   −                             .
+                    1 + λ− tan(λ− (D/2 − z))          2           λ−
+                                                                          +
+The upper and lower bounds imply existence of a supersolution ψk,s            =
+     L            R
+min{ψµ0,1/k −s , ψk,µ0,1/k +s } for any s ≥ 0. Comparison gives lower bounds on
+these for large s: For s > max{µ0,1/k − inf Ṽ , sup Ṽ − µ0,1/k },
+                          
+                          λ̃+ tanh(λ̃+ z),         0 ≤ z ≤ z0 ;
+                  +
+(18)            ψk,s (z) ≥ λ̃− tan(λ̃− (D/2−z))−k , z ≤ z ≤ D
+                           1+ k tan(λ̃− (D/2−z))    0         2
+                                   λ̃−
+
+                q                           q
+where λ̃+ =     s + inf Ṽ − µ0,1/k , λ̃− = s + µ0,1/k − sup Ṽ , and we take
+                            
+            −1 π
+z0 > D
+     2 − λ̃ −   2 + arctan     k
+                              λ̃
+                                      to make the two cases equal.
+                                   −
+
+
+Lemma 4.5. For u0 as in Theorem 4.1, for each k there exists s(k) ≥ 0
+           +
+such that ψk,s is a modulus of concavity for log u0 .
+
+Proof. By Lemma 4.2, we have for all (y, x) ∈ Ω̂
+                                                                                         
+                                  y−x                                 λ1 |y − x|
+ (∇ log u0 (y) − ∇ log u0 (x)) ·         ≤ N |y − x| ≤ 2λ1 tanh                               ,
+                                 |y − x|                                   2
+               PROOF OF THE FUNDAMENTAL GAP CONJECTURE                          15
+
+
+where λ1 is such that N D ≤ 2λ1 tanh(λ1 D/2). Now apply Lemma 4.3 with
+ψ(z) = − 6kz                                   2
+          D and β = k to find an open set U ⊂ R containing ∂ Ω̂ such that
+
+                                              y−x       6k|y − x|
+           (∇ log u0 (y) − ∇ log u0 (x)) ·           ≤−           +k
+                                             |y − x|       D
+for (x, y) ∈ Ω̂ ∩ U . In particular there exists δ > 0 such that U contains all
+points (x, y) ∈ Ω̂ with |y − x| ≥ D − δ. Decreasing δ so that δ < D/3 if
+necessary, we have that for all (x, y) ∈ Ω̂ with |y − x| ≥ D − δ,
+                                       y−x       6k(D − δ)
+    (∇ log u0 (y) − ∇ log u0 (x)) ·           ≤−             +k
+                                      |y − x|         D
+                                              ≤ −2k
+                                                                     
+                                                              D−|y−x|
+                                                 λ2 tan λ2        2       −k
+                                              ≤2
+                                                  1 + λk2 tan(λ2 ( D−|y−x|
+                                                                      2    ))
+                                                               
+                                           π                k
+                             D−|y−x|       2
+                                             +arctan       λ2
+for any λ2 > 0, provided        2    <         λ2     . We choose λ2 so large
+                 
+     π            k
+that 2 + arctan λ2 < δλ2 . Then by (18) we have for all (x, y) ∈ Ω̂
+                                                                   
+                                            y−x        +    |y − x|
+           (∇ log u0 (y) − ∇ log u0 (x)) ·         ≤ ψk,s
+                                           |y − x|             2
+provided s ≥ max{λ21 + µ0,1/k − inf Ṽ , λ22 + sup Ṽ − µ0,1/k }.               
+
+  Now we proceed to construct the solutions ψk : We define
+                           +
+       s(k) = inf{s ≥ 0 : ψk,s is a modulus of concavity for log u0 }.
+Then we choose the initial data as follows:
+                                n              o
+                                   +
+                    ψk,0 = min ψj,s(j)  : 1≤j≤k .
+
+Note that ψk,0 is pointwise non-increasing in k. Now define ψk (z, t) by
+              ∂ψk
+                                                               
+                   = ψk′′ + 2ψk ψk′ − Ṽ ′ on [0, D/2] × (0, ∞)
+                                                               
+               ∂t
+                                                               
+                                                               
+                                                               
+                                                               
+(19)                  ψ k (., 0) =  ψ k,0 (.)
+                              ψk (0, t) = 0                    
+                                                               
+                                                               
+                                                               
+                                                               
+                               ψk (D/2, t) = −k.
+                                                               
+
+The solution ψk remains between the supersolution ψk,0 and the subsolu-
+tion (log φ̃0,1/k )′ , and is decreasing in t and in k. The inequality ∂ψ
+                                                                        ∂t ≤ 0
+                                                                          k
+
+                          ′                             ′
+implies bounds on ψk (since the barriers bound ψk at the endpoints), and
+it follows that ψk exists and is Lipschitz in the first argument and contin-
+uous on [0, D/2] × R+ , and smooth on [0, D/2] × (0, ∞). By the strong
+maximum principle, ψk (z, t) is strictly decreasing in t on (0, D/2) × R+
+unless ψk = (log φ̃0,1/k )′ . It follows that for each k, ψk (., t) converges
+in C ∞ to (log φ̃0,1/k )′ as t → ∞. By Theorem 4.1, ψk,t is a modulus
+of concavity for log u(., t) for each t > 0 and each k ∈ N, and therefore
+16                  BEN ANDREWS AND JULIE CLUTTERBUCK
+
+
+ψ(., t) = limk→∞ ψk (., t) = mink∈N ψk (., t) is also. Since ψk is bounded in-
+dependent of k in C q for every q on compact subsets of [0, D/2) × (0, ∞), ψ
+is a smooth solution of
+               ∂ψ
+                                                               
+                   = ψ ′′ + 2ψψ ′ − Ṽ ′ on [0, D/2) × (0, ∞)
+               ∂t
+                                                               
+                                                               
+                                                               
+(20)                        ψ(0, t) = 0
+                                                               
+                           lim ψ(z, t) = −∞,
+                                                               
+                                                               
+                                                               
+                          z→D/2
+
+and ψ(., t) converges in C ∞ to (log φ̃0 )′ as t → ∞ on compact subsets of
+[0, D/2). This completes the proof.                                     
+Proof of Theorem 1.5. Theorem 1.5 follows by applying Corollary 4.4 to the
+particular solution u(x, t) = φ0 (x)e−λ1 t of (8). In this case ∇ log u is inde-
+pendent of t. Therefore ψ(., t) is a modulus of concavity for log u0 for every
+t, and hence (log φ̃0 )′ = inf t≥0 ψ(., t) is also.                           
+
+                       5. Examples and extensions
+   When V is convex, Theorem 1.3 gives Corollary 1.4, since then 0 is a
+modulus of convexity for V , so we     can choose πṼ2 = 0 and the first 2πz  two
+eigenfunctions are φ̃0 (z) = cos πz D   with   µ 0 =  D2
+                                                           , and φ̃1 (z) = cos  D
+             2                                       3π 2
+with µ1 = 4π
+           D2
+               , and hence  λ 1 − λ 0 ≥ µ 1 − µ 0  = D3
+                                                          .
+   A positive lower bound on the Hessian of the potential implies stronger
+estimates on the gap since a particular modulus of convexity follows:
+                                            Z 1
+                         y−x          1
+  (DV (y) − DV (x)) ·           =               D 2 V (1−s)x+sy (y − x, y − x) ds
+                        |y − x|    |y − x| 0
+                                                               
+                                                    ′ |y − x|
+                                ≥ K|y − x| = 2Ṽ
+                                                             2
+where Ṽ (z) = K2 z 2 is the harmonic oscillator potential. Thus the funda-
+mental gap on Ω is bounded below by that of the harmonic oscillator on the
+interval [−D/2, D/2]. This provides a sharp version of [Y3, Theorem 1.2].
+The result also extends to entire domains: Suppose V is a potential on Rn
+with D 2 V ≥ Kδij . Then the eigenvalues λi on BR (0) converge to those on
+Rn , so the fundamental gap for this potential on R√n is no less than that of
+the one-dimensional harmonic oscillator, which is 2K.   P Equality   will hold
+in the limit of potentials of the form V = K2 x21 + n ni=2 x2i as n → ∞.
+                                                                
+   Our result also gives useful consequences for non-convex potentials: Con-
+sider a one-dimensional potential Ṽ which is even and has non-negative third
+derivatives. A useful example is the double-well potential Ṽ (z) = −az 2 +bz 4
+with a, b > 0. Now consider higher-dimensional potentials of the form
+                                                n
+                                                X
+                           V (x) = Ṽ (|x|) + c   x2i .
+                                                i=2
+
+For large c these are double well potentials which agree with Ṽ along the
+x1 axis. One can check directly that Ṽ ′ is a modulus of convexity for V for
+any c ≥ 0, and it follows that the fundamental gap for such a potential on
+a convex domain Ω of diameter D is bounded below by that of Ṽ on the
+               PROOF OF THE FUNDAMENTAL GAP CONJECTURE                                   17
+
+
+interval [−D/2, D/2]. Again, the result is sharp, with equality holding in
+the limit as c → ∞ in the case where Ω contains the interval (−D/2, D/2).
+   An extension of our methods yields sharp results for domains in constant
+curvature spaces, implying that the spectral gap for a convex domain with
+convex potential is at least as large as the gap for a one-dimensional com-
+parison problem (Equation (1) in [Kr] with Dirichlet boundary conditions),
+with equality in the limit of domains which are small neighbourhoods of a
+geodesic segment. We will provide the details elsewhere.
+
+
+
+                                    References
+[AC1]   Ben Andrews and Julie Clutterbuck, Lipschitz bounds for solutions of quasilinear
+        parabolic equations in one space variable, J. Differential Equations 246 (2009),
+        no. 11, 4268–4283.
+[AC2]            , Time-interior gradient estimates for quasilinear parabolic equations, In-
+        diana Univ. Math. J. 58 (2009), no. 1, 351–380.
+[A]     Mark S. Ashbaugh, The Fundamental Gap (2006), available at
+        http://www.aimath.org/WWN/loweigenvalues/.
+[AB]    Mark S. Ashbaugh and Rafael Benguria, Optimal lower bound for the gap between
+        the first two eigenvalues of one-dimensional Schrödinger operators with symmet-
+        ric single-well potentials, Proc. Amer. Math. Soc. 105 (1989), no. 2, 419–424.
+[BK]    Rodrigo Bañuelos and Pawel Kröger, Gradient estimates for the ground state
+        Schrödinger eigenfunction and applications, Comm. Math. Phys. 224 (2001),
+        no. 2, 545–550.
+[BMH]   Rodrigo Bañuelos and Pedro J. Méndez-Hernández, Sharp inequalities for heat
+        kernels of Schrödinger operators and applications to spectral gaps, J. Funct. Anal.
+        176 (2000), no. 2, 368–399.
+[vdB]   M. van den Berg, On condensation in the free-boson gas and the spectrum of the
+        Laplacian, J. Statist. Phys. 31 (1983), no. 3, 623–637.
+[BL]    Herm Jan Brascamp and Elliott H. Lieb, On extensions of the Brunn-Minkowski
+        and Prékopa-Leindler theorems, including inequalities for log concave functions,
+        and with an application to the diffusion equation, J. Functional Analysis 22
+        (1976), no. 4, 366–389.
+[D]     Burgess Davis, On the spectral gap for fixed membranes, Ark. Mat. 39 (2001),
+        no. 1, 65–74.
+[GT]    David Gilbarg and Neil S. Trudinger, Elliptic partial differential equations of
+        second order, Classics in Mathematics, Springer-Verlag, Berlin, 2001. Reprint of
+        the 1998 edition.
+[Ha]    Evans M. Harrell, Double wells, Comm. Math. Phys. 75 (1980), no. 3, 239–261.
+[He]    Antoine Henrot, Extremum problems for eigenvalues of elliptic operators, Fron-
+        tiers in Mathematics, Birkhäuser Verlag, Basel, 2006.
+[HP]    Antoine Henrot and Michel Pierre, Variation et optimisation de formes: Une
+        analyse géométrique, Mathématiques & Applications (Berlin), vol. 48, Springer,
+        Berlin, 2005.
+[Ho]    Miklós Horváth, On the first two eigenvalues of Sturm-Liouville operators, Proc.
+        Amer. Math. Soc. 131 (2003), no. 4, 1215–1224 (electronic).
+[Ko]    Nicholas J. Korevaar, Convex solutions to nonlinear elliptic and parabolic bound-
+        ary value problems, Indiana Univ. Math. J. 32 (1983), no. 4, 603–614.
+[Kr]    Pawel Kröger, On the spectral gap for compact manifolds, J. Differential Geom.
+        36 (1992), no. 2, 315–330.
+[La]    Richard Lavine, The eigenvalue gap for one-dimensional convex potentials, Proc.
+        Amer. Math. Soc. 121 (1994), no. 3, 815–821.
+[Li]    Peter Li, A lower bound for the first eigenvalue of the Laplacian on a compact
+        manifold, Indiana Univ. Math. J. 28 (1979), no. 6, 1013–1019.
+18                   BEN ANDREWS AND JULIE CLUTTERBUCK
+
+
+[LY]   Peter Li and Shing Tung Yau, Estimates of eigenvalues of a compact Riemannian
+       manifold, Geometry of the Laplace operator, Proc. Sympos. Pure Math., XXXVI,
+       Amer. Math. Soc., Providence, R.I., 1980, pp. 205–239.
+[L]    Jun Ling, Estimates on the lower bound of the first gap, Comm. Anal. Geom. 16
+       (2008), no. 3, 539–563.
+[PW]   L. E. Payne and H. F. Weinberger, An optimal Poincaré inequality for convex
+       domains, Arch. Rational Mech. Anal. 5 (1960), 286–292 (1960).
+[SWYY] I. M. Singer, Bun Wong, Shing-Tung Yau, and Stephen S.-T. Yau, An estimate
+       of the gap of the first two eigenvalues in the Schrödinger operator, Ann. Scuola
+       Norm. Sup. Pisa Cl. Sci. (4) 12 (1985), no. 2, 319–333.
+[S]    Robert G. Smits, Spectral gaps and rates to equilibrium for diffusions in convex
+       domains, Michigan Math. J. 43 (1996), no. 1, 141–157.
+[Y1]   Shing-Tung Yau, Gap of the first two eigenvalues of the Schrödinger operator
+       with nonconvex potential, Mat. Contemp. 35 (2008), 267–285.
+[Y2]           , Nonlinear analysis in geometry, Monographies de L’Enseignement
+       Mathématique, vol. 33, L’Enseignement Mathématique, Geneva, 1986. Série des
+       Conférences de l’Union Mathématique Internationale, 8.
+[Y3]           , An estimate of the gap of the first two eigenvalues in the Schrödinger
+       operator, Lectures on partial differential equations, New Stud. Adv. Math., vol. 2,
+       Int. Press, Somerville, MA, 2003, pp. 223–235.
+[YZ]   Qi Huang Yu and Jia Qing Zhong, Lower bounds of the gap between the first and
+       second eigenvalues of the Schrödinger operator, Trans. Amer. Math. Soc. 294
+       (1986), no. 1, 341–349.
+[ZY]   Jia Qing Zhong and Hong Cang Yang, On the estimate of the first eigenvalue of
+       a compact Riemannian manifold, Sci. Sinica Ser. A 27 (1984), no. 12, 1265–1273.
+
+   Centre for Mathematics and its Applications, Australian National Univer-
+sity, A.C.T. 0200, Australia
+   E-mail address: Ben.Andrews@maths.anu.edu.au
+
+   Centre for Mathematics and its Applications, Australian National Univer-
+sity, A.C.T. 0200, Australia
+   E-mail address: Julie.Clutterbuck@maths.anu.edu.au
+

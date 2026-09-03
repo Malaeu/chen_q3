@@ -1,0 +1,2058 @@
+      Prolate Spheroidal Wave Functions, 
+Fourier Analysis and Uncertainty — II 
+
+By H. J. LANDAU and H. O. POLLAK 
+
+(Manuscript received July 6, 1960) 
+
+The theory developed in the preceding paper 1 is applied to a number of 
+questions about timelimited and bandlimited signals. In particular, if a 
+finite-energy signal is given, the possible proportions of its energy in a 
+finite lime interval and a finite frequency band are found, as well as the 
+signals which do the best job of simultaneous time and frequency concen- 
+tration. 
+
+I. INTRODUCTION AND SUMMARY 
+
+It is a common experience in the communications field that one can- 
+not simultaneously confine a function f(t) and its Fourier transform 
+F(u) too severely. The most familiar statement of this phenomenon is 
+the Heisenberg uncertainly principle: If we measure the time-spread T 
+of f(t) by 
+
+f (t-t ) 2 \f(t)\ 2 dt 
+7* = J 
+
+
+
+[W 
+
+
+
+dt 
+and the frequency-spread £2 of F(u) by 
+
+f ( W - W „) 2 |F(») 
+
+J— oo 
+
+
+
+f/co 
+
+
+
+$r = 
+
+
+
+f \F(u)\~du 
+
+
+
+then, for any choice of t and « , QT ^ \. Thus T and 12 cannot, for 
+any Fourier transform pair, be both small. Equality will hold if /(/) 
+[and hence F(u)] are gaussian, and to and w are chosen as the means 
+of |/(0 | 2 and | F(o)) f (in this case both zero). This result, while 
+
+65 
+
+
+
+66 THE BELL SYSTEM TECHNICAL JOURNAL, JANUARY 1961 
+
+demonstrating that our experience with timelimiting and bandlimiting 
+is indeed related to mathematical truth, does not succeed in providing 
+a very good understanding of what is really happening. We should like 
+to know just how close one can come to simultaneous limiting in both 
+time and frequency, and what the price is that one has to pay. We need 
+a sharper measure of the concentrations of f(t) and F(u) than that 
+afforded by the above variances of \f(t) | and | F(u) \ , a measure 
+which, if possible, will depend on the behavior of f(t) in a given finite 
+time interval, and of F(o)) in a given finite frequency band. 
+
+An early attempt to meet this need was made by L. A. MacColl, 
+who around 1940 proved the following previously unpublished form 
+of the uncertainty principle: 
+
+If 
+
+
+
+/ 
+
+
+
+1/(0 I 2 d* 
+
+
+
+£&gt; } 
+
+
+
+= a\ 
+
+
+
+&lt;lt 
+
+
+
+and 
+
+
+
+| F(v) | d 
+
+j_ | F(u) | (lo&gt; 
+
+
+
+CO 
+
+= «2, 
+
+
+
+then 
+
+
+
+SIT &gt; 2x&lt;W. (1) 
+
+
+
+This theorem does indeed emphasize the behavior of f(t) and F(o}) in 
+given finite intervals. The quantity «i , representing the proportion 
+of the total energy of f(t) which is in the time-interval (to , to -\- T), is 
+especially satisfying as a measure of the spread of f(t); on the other 
+hand, a-i has no immediate physical interpretation. A further difficulty 
+with (1) is that there are no functions for which equality can be 
+achieved, although in practice the estimate is quite good. 
+
+A more useful form of the uncertainty principle would replace the 
+above measure a 2 by the proportion of energy of F(u) in a frequency 
+band, that is, by a definition similar to that of ai . This is done in the 
+present paper. We shall see that if 
+
+
+
+PROLATE SPHEROIDAL WAVE FUNCTIONS — II 67 
+
+.*0+T/2 
+
+
+
+[ 1/(0 r* 
+
+Jt -Tll 
+
+f \f(t)Ut 
+
+J — -y. 
+
+
+
+= a 
+
+
+
+and 
+
+
+
+\F(co)\ 2 
+
+J-Q 
+
+
+
+
+
+
+do) 
+
+
+
+dca 
+
+
+
+then 
+
+
+
+OT ^ *(a,j8), 
+
+
+
+where *(a,/3) will be found explicitly, the inequality will be sharp and 
+functions yielding equality will be given. The optimal functions f(t) 
+will always be real if, as in the above statement, the frequency band 
+is centered at zero. The same inequality holds if the frequency band 
+under study is not centered at zero, but then the optimal functions are, 
+in general, complex-valued. 
+
+The simplest special case of our result arises if /3 = 1, so that all 
+of F(u) is contained in | « | ^ £2, and f («) = for | w | &gt; fi. The 
+question "if a is given, what is the minimum 127 1 ?" can now be re- 
+phrased "if ftT is given, what is the maximum a?" Let us introduce 
+the following notation: The square norm of / is the total energy of /: 
+
+
+
+/f = ("ifiOfdl. 
+
+J— 00 
+
+
+
+Timelimiling a function / produces a function Df which is / restricted 
+
+to | J | ^ 772: 
+
+Df = If if |i I ^ r/2 
+
+' ' \0 if 1 1 1 &gt; T/2. 
+
+Bandlimiting a function / produces a function J5/ whose Fourier trans- 
+form agrees with the Fourier transform of / for | co | ^ Q, and vanishes 
+for I co I &gt; £2: 
+
+
+
+Bf = ±- [° F(»)e iut aw. 
+
+
+
+68 THE BELL SYSTEM TECHNICAL JOURNAL, JANUARY 1961 
+
+By writing 
+
+F(a) = f f(s)e- iat ds, 
+
+J— 00 
+
+we see that an alternative expression for Bf is given by 
+
+i r sinno^ ds 
+
+IT J-oo t — S 
+
+It was shown in the preceding paper that if a function is band- 
+limited and then timelimited its energy must be reduced by at least a 
+factor X , where Xo it the largest eigenvalue of the integral equation 
+
+xfd) = i r fW sin ° (&lt; - s) &amp;. (2) 
+
+7T J-r/2 t — S 
+
+If, in particular, a function is already bandlimited (/ = Bf), then by 
+this result || Df || ^ X . This, now, is just the special case of the 
+uncertainty principle which we have been seeking: If /3 = 1, then 
+
+a ^ Vx^. 
+
+In the sequel, we shall take a longer look at this formula and its 
+significance; let us, however, state the full result for all values of a 
+and 13: 
+
+Theorem: There is a function / such that || / || = 1, || Df \\ = a and 
+I) Bf || = /3, under the following conditions, and only under the follow- 
+ing conditions: 
+
+1. If a = 0, when £ /S &lt; 1. 
+
+2. If &lt; a &lt; Vh&gt; , when 0^/3^1. 
+
+3. If \/Xo ^ a &lt; 1, when cos -1 a + cos -1 /3 ^ cos -1 VXo • 
+
+4. If a = 1, when &lt; ^ V^ . 
+
+The body of the present paper will cover the following sequence of 
+topics: Section II will develop the properties of timelimited and band- 
+limited functions, and the geometric interpretation of these properties, 
+which we require. Section III contains the proof of the quoted theorem, 
+a discussion of the "best" functions, and a number of pertinent graphs 
+and numerical examples. Section IV indicates possible extensions of the 
+theory, and includes the interesting result that if a timelimited function 
+d and a bandlimited function b are given, it is always possible to find a 
+"smallest" function / so that Df = d and Bf = b. Finally, Section V 
+gives applications of the preceding theory to filter theory, data trans- 
+mission and antenna theory. 
+
+
+
+PROLATE SPHEROIDAL WAVE FUNCTIONS — II 69 
+
+II. SPACES OF TIMELIMITED FUNCTIONS AND BANDLIMITED FUNCTIONS 
+
+We are concerned, in the present paper, with the collection of func- 
+tions f(t) which are square-integrable on (— °°,°°). These form a 
+Hilbert space, denoted by £ 2 , in which the inner product (f,g) is de- 
+fined by 
+
+
+
+(/,&lt;/) = f f(t)g(t) dt, 
+
+«f — .rfi 
+
+
+
+and || / || 2 = (/,/) as usual. 
+
+The collection of timelimited functions forms a linear subspace D 
+of £ 2 so that if /i and / 2 are timelimited, so is afi + 6/2 . Furthermore, £&gt; 
+is complete, which means that if we have a sequence of functions {/„} , 
+/„ € 3} and if || /„ - f m || -* 0, then there is a function / £ £&gt; such that 
+
+II/-MI-0. 
+
+Exactly the same statements may be made about bandhmited func- 
+tions; they form a complete linear subspace (B of £ 2 . The latter state- 
+ment follows from the earlier one through the Parseval relation for 
+Fourier transforms: If F and G are the Fourier transforms of/ and g 
+respectively, then 
+
+f f(t)gTt)dt - i- ( F(co)G^T) d*. 
+
+We shall call two functions / and g orthogonal if 
+
+&lt;J,9) = 0. 
+
+Notice that Df and / - Df are orthogonal, since each one vanishes 
+where the other one does not; by the Parseval relation, Bf and / — Bf 
+are also orthogonal. 
+
+The inner product permits us to define the angle between two func- 
+tions/and g as follows: By the Schwarz inequality, we know that 
+
+I (/,(?) I ^ 11/ INI ff II; 
+
+
+
+since 
+
+
+
+we know that 
+
+
+
+Re(/,&lt;7) I ^ I U,g) I , 
+
+
+
+= I!/MUII 
+
+
+
+We may thus define the angle B{j,g) between the functions / and g by 
+
+
+
+70 THE BELL SYSTEM TECHNICAL JOURNAL, JANUARY 1961 
+
+*(/,) = cos- 1 *•«*&gt; 
+
+
+
+f\\ -11*11 
+
+The extreme values and ir for 6(f,g) can be reached only if / and g 
+are proportional (so that equality holds in the Schwarz inequality) 
+and (f,g) is real. 
+
+Suppose now that / £ (B and g 6 3), and that neither function 
+vanishes identically. What can we say about the angle between them? 
+The angle can vanish only if for some constant k, f = kg. But since (B 
+and 3) are linear spaces, this would mean that / is both timelimited and 
+bandlimited, and this is known to be impossible, f If, then, the angle 
+cannot vanish, can it be arbitrarily small? This is the key question 
+which shall occupy us for some time. Let us consider, first of all, a 
+fixed function/ £ 03, and an arbitrary g £ 33. We know that 6{f,g) can- 
+not vanish; is 9(f,g) bounded away from zero? If there is a greatest 
+lower bound for &amp;{f,g), is it assumed for some particular functions 
+g £ 2D? In this case, the answers are quite simple, and are given by the 
+following : 
+
+Lemma 1: If / £ (35 is given, then 
+
+inf B(f,g) &gt; 0. 
+
+This infimum equals 
+
+_-x II 2&gt;f II 
+
+
+
+cos 
+
+
+
+/ 
+
+
+
+and is assumed by g = kDf for any positive constant k. 
+Proof: If g is any function in 3D, then 
+
+ReCfo) ^ I (M I - I W,o) I 
+
+since 
+
+f = f-Df+Df and (/ - Df,g) = 0. 
+But 
+
+\(Df,g)\ ^ lliyiHIf II, 
+
+t For then 
+
+fit) = / F(a) e** 1 dco, 
+J- a 
+
+since / £ &lt;B, would be an analytic function of the complex variable t whose 
+vanishing for | t \ &gt; T would imply /^ 0. 
+
+
+
+PROLATE SPHEROIDAL WAVE FUNCTIONS — II 71 
+
+so that 
+
+Re(/,&lt;7) . || Df || _ Re(/,Z)/) 
+
+
+
+&lt; 
+
+
+
+11/11 ■ [Iff II ~ 11/11 11/11 • \\Df\\ 
+Since cos is monotone decreasing in (0,ir), it follows that 
+
+e(f,g) ^ e(f,Df) 
+
+for any g £ 20, with equality whenever g and D/ are proportional. This 
+proves the lemma. 
+
+We proceed now to the case of arbitrary / £ (B and # £ 20. Let us 
+say, for convenience, if 
+
+inf 6(f,g) 
+
+is actually assumed by specific functions, that the spaces (B and 20 form 
+a least angle. We now have the following: 
+
+Theorem 1: There exists a least angle between (B and 20. This angle 
+equals cos -1 \/\ , and is assumed by ^ € &lt;B and D\J/ £ 20, where X 
+is the largest eigenvalue of (2), and i^o the corresponding eigenf unc- 
+tion. 
+
+Proof: By the preceding lemma, 
+
+II T)f II 
+min 8 (f,g) = cos -1 ,. /., , 
+
+
+
+0€D 
+
+so that 
+
+
+
+inf d(f,g) = inf cos -1 \^J- (3) 
+
+
+
+/6CB /G(B II / 
+
+o6D 
+
+
+
+and the infimum on the left of (3) will actually be assumed if the in- 
+fimum on the right is. It was shown in the preceding paper 1 that any 
+/ 6 &lt;B may be expanded in a series, convergent in L mean, of the 
+eigenf unctions \f/ n of (2), 
+
+
+
+Then 
+
+
+
+/ = E a n + n . 
+
+n=0 
+
+/H 2 = El a- 
+
+
+
+72 THE BELL SYSTEM TECHNICAL JOURNAL, JANUARY 1901 
+
+since 
+
+CO 
+
+Df = £ a n D4, n , 
+
+n=0 
+
+it follows from the properties of \D^/ n ) that 
+
+II Df || 2 = E I a* | 2 *« • 
+Thus 
+
+
+
+-i II Df || 
+
+COS "■■ j ' -' = COS 
+
+
+
+\ Z I a. | 2 / " 
+
+
+
+Since it was shown in the preceding paper 1 that X„ &lt; X , if n ^ 1 , 
+it follows that 
+
+/S I fl " | 2 X »\ 
+
+is achieved if a n = for n ^ 1, so that the minimum possible value of 
+
+-i II Df || 
+cos w , 
+
+namely cos -1 \/Xo , is actually assumed if / = ^o , and g = D\f/ ■ The 
+theorem is proved. 
+
+We have thus found that the two subspaces (B and 3) of £ 2 , which 
+have no functions except in common, actually have a minimum angle 
+between them, so that, in fact, a timelimited function and a band- 
+limited function cannot even be very close together. With the aid of 
+this result, as we shall see, the uncertainty principle which we are 
+seeking will follow. 
+
+In preparation for the coming theorems, we must consider one 
+further aspect of the spaces (B and 33. How close do (B and © together 
+come to filling up all of £ 2 ? The two specific questions which concern 
+us are the following: (i) if {/„},/„ = b n + d„ is a Cauchy sequencef of 
+functions in (B + SD, what can the limiting function / look like; and (ii) 
+do there exist functions / € £ 2 orthogonal to both (B and 3D (i.e., to 
+every function in (B and 33)? The answers to these questions are the 
+subjects of the subsequent two lemmas. 
+
+Lemma 2: If {/„} is a Cauchy sequence of functions of the form/„ = 
+
+t A Cauchy sequence of functions is a sequence such that II /■ — /« || — * , s &lt;&gt; 
+that, by the completeness of Hilbert space, there exists a limiting function / 
+such that || / - /„ || -» 0. 
+
+
+
+PROLATE SPHEROIDAL WAVE FUNCTIONS — II 73 
+
+d n + b n where d n € 33 and b„ 6 &lt;3J for each n, then the limiting function 
+/ is itself of the form d + b, where d 6 © and b G (B. 
+Proof: For each /„ = &lt;/„ + &amp; n , we may also write 
+
+/„ = (6„ - D6„) + (Db n + d„). 
+
+Here D6„ + d n € 3D, while &amp;„ - -D6„ _L 3). It now follows from the 
+fact that the /„ form a Cauchy sequence that the functions b„ — Db„ 
+do; for 
+
+II J™ /"» II 
+
+|| b„ - Db n - (6m - Db m ) || 2 + || Dbn + d B + Db „, + d M || 2 , 
+so that 
+
+|| b n ~ Dbn ~ (b m ~ Db m ) || g || /„ " /. || . 
+
+But now, since {&amp;„ — Db,,} forms a Cauchy sequence, so does \b„} itself. 
+For 
+
+|| b n ~ b m || 2 = || X&gt;(&amp;« " &amp;„,) || 2 + || (b n - b m ) - D(bn - &amp;„,) || 2 , 
+
+and by Lemma 1, 
+
+|| D(b n - b m ) || :g VXo || b lt - b m || , 
+so that 
+
+|| h __ J II* &lt; 11 fen ~ £&amp;„ - (b m ~ Db m ) ff 
+
+O n Om = 
+
+
+
+1 - Xo 
+
+Since \b„] is now a Cauchy sequence, there is a function b 6 (B such 
+that 
+
+|| b - b„ || -♦ 0. 
+
+Thus \f„\ and {b n \ both converge in norm, and hence so does (f/„), and 
+to a limiting function d € 3) for which 
+
+/ = b + d. 
+
+We have thus shown that taking a limit of sums of functions from 
+(B and 33 gives us nothing new, but only, once again, a sum of functions 
+in &lt;B and 33. We may abbreviate this by saying simply that (B + 33 is 
+closed. 
+
+Lemma S: There are infinitely many functions in £ 2 which are orthog- 
+onal to (B + 33. 
+
+
+
+74 THE BELL SYSTEM TECHNICAL JOURNAL, JANUARY 1961 
+
+Proof: The functions 
+
+(l if T/2 + n £ 1 1 1 £ T/2 + n + 1 _ 
+
+" " \0 elsewhere n - U, 1, J, • 
+
+are instances of functions noi in (B + 3D, since the portion of /„ in 
+1 1 1 &gt; jT/2 is not a piece of a bandlimited function. Lemma 2 permits 
+us to write the best approximation to /„ from (B + 3D in the form 
+h n + d„ , where b n £ (B and d n £ 3D; then 
+
+/»* = /. " K ~ d n 
+
+are distinct functions in £ 2 which are orthogonal to (B + SD. 
+
+There are in fact, in some sense "many more" functions in £ — ($&gt; — 
+3D than in (B&gt; -f- 3D; we do not know, however, of any really convenient 
+representation for such functions. 
+
+III. THE UNCERTAINTY PRINCIPLE 
+
+We begin by restating the theorem announced in Section I. 
+
+Theorem 2: There is a function/ 6 £&gt; such that |[ / [| = 1, |f Df \\ = a 
+and || Bf || = /3, under the following conditions, and only under the 
+following conditions : 
+
+when £ &lt; 1. 
+
+when £ j9 £ 1. 
+
+when cos _1 a + cos -1 /3 ^ cos _1 \/Xo . 
+
+when &lt; ^ \/\ . 
+
+Proof: Let g be the family of functions / d £ with || / || = 1 and 
+|| Df || = a, and let us, for each case of a, determine 
+
+sup jS = sup || Bf || . 
+
+We shall also show, in each case, that any value of /3 less than the 
+supremum can be realized by an appropriate function. Whether or 
+not the supremum itself can be realized will vary from case to case. 
+
+Case 1. a — 0. If a = 0, the family 9 can contain no function with 
+/3 = 1. For if / € S with /3 = 1 we must have/ € (B, whence /is ana- 
+lytic and vanishes for | t \ &lt; T/2 only if / = 0. This is a contradiction. 
+
+To show that 8 contains functions with values of /3 arbitrarily close 
+to 1 we set 
+
+,. - *" ~ gfe 
+
+
+
+1. 
+
+
+If a = 0, 
+
+
+2. 
+
+
+If &lt; a &lt; VXo 
+
+
+3. 
+
+
+If VX^ £ a &lt; 1, 
+
+
+4. 
+
+
+If a - 1, 
+
+
+
+PROLATE SPHENOIDAL WAVE FUNCTIONS — II 75 
+
+where X„ and \f/„ are respectively an eigenvalue and corresponding eigen- 
+fu nction o f (2). We observe that /* f g and that /3 = || Bf* || = 
+y/\ — X„ . Since there exist eigenvalues X„ arbitrarily small, there 
+exist functions in g with values of /3 arbitrarily close to 1. 
+
+To find functions in g with values of £ between those already covered, 
+we consider e ,p f*(l), which belongs to g since || e' p '/* || = ||/* || = 1 
+and || D e ip 'f* \\ = || Df* \\ = a. For we find 
+
+
+
+/3 = \\Be ipl f* || = If |F*(co)| 2 rfo&gt; 
+
+
+
+-p-U 
+
+
+
+where F* is the Fourier transform of /*. This quantity is continuous in 
+p and approaches zero as p — &gt; °o , since F* 6 £ ; thus g contains func- 
+tions with all smaller values of /3, except possibly /3 = 0. 
+
+A function / in g for which = must have the property that 
+Df = Bf = 0; the existence of such functions was demonstrated in 
+Lemma 3. 
+
+This completes the proof in Case 1 ; if we reverse B and D in the 
+preceding arguments, we find that /3 = is possible if and only if 
+^ a &lt; 1 ; thus the minimum )3 in Cases 2 and 3 has also been estab- 
+lished. 
+
+Case #. &lt; a &lt; \Z\ a • Since X„ — »0asn — &gt; oo, we can find an eigen- 
+value X„ &lt; a. Let \f/ n be the corresponding eigenf unction, and consider 
+
+,* = \/or ~ X„\fro + VXo - a 2 f„ , . 
+
+VXo - X„ 
+
+We have/* € &lt;B, and ||/* || = || Bf* || = 1, while a simple computation 
+shows that || Df* || = a. This, then, covers the case /3 = 1; by picking 
+e ,p '/*, as in Case 1, we may obtain any &lt; /? &lt; 1, and /3 = is covered 
+by the remark immediately preceding Case 2. 
+
+Cases 3 and 4. \/\ ^ a ^ 1. For a function / £ g, let us find the 
+closest point to / on the plane spanned by Df and Bf; we then can 
+write 
+
+/ = XDf + y.Bf + &lt;/, (6) 
+
+with g orthogonal to both Df and Bf. Taking the inner product of (6) 
+successively with /, Df, Bf and g, and using the fact that / £ g, we 
+obtain 
+
+1 = Xa 2 + m/3 2 + (g,f), 
+
+a 2 = Xa 2 + n(Bf,Df), 
+
+/3 2 = \(Df,Bf) + M/3 2 , 
+
+(/•tf) = Cf7,&lt;7) - 
+
+
+
+76 THE BELL SYSTEM TECHNICAL JOURNAL, JANUARY 1961 
+
+By eliminating (g,f), A and n from the above equations we find, for 
+a$ ^ 0, 
+
+
+
+? - 2 Re (Dffif) = -a 2 + (l - L^f^) 
+
+
+
+^-^T)- 
+
+
+
+(7) 
+
+
+
+We next set 
+
+
+
+(Df,Bf) = 
+
+Re IIS/ II -11*/ || 
+
+The angle is that formed between Df 6 £&gt; and B/ 6 (B so that, by 
+Theorem 1, 
+
+^ cos -1 VTo . (8) 
+
+Since 
+
+a p cos = Re(Df,Bf) =g | (D/,J5/) | ^ a/3, 
+
+we have 
+
+1 (Dm) ,2 
+
+a 2 /3 : 
+
+
+
+0^ 1-U^gZi ^ i _ cos ^. ( 9 ) 
+
+
+
+Introducing into (7), completing the square on the left-hand side, 
+and applying (9) we obtain 
+
+(0 - a cos 0) 2 ^ (1 - a 2 ) sin 2 0, (10) 
+
+with equality if and only if g = and (Df,Bf) is real. From (10) we 
+find immediately 
+
+/3 ^ COS(0 - COS~a), 
+
+whence by (8) 
+
+/3 ^ cos(eos _1 VXo — cos -1 **), (11) 
+
+or 
+
+cos _1 a + cos _I /3 ^ cos -1 -\/ao • 
+Equality in (11) is attained for the function 
+
+/* = Ph + qDh, (12) 
+
+with 
+
+
+
+. /I - « 2 
+
+
+
+PROLATE SPHEROIDAL WAVE FUNCTIONS — II 
+
+
+
+77 
+
+
+
+and 
+
+
+
+(13; 
+
+
+
+VXo 
+
+
+
+1 - a 2 
+1 - Xo' 
+
+
+
+since /* satisfies all the conditions for equality in the above sequence 
+of inequalities; the constants p and q are chosen so that / (E 9- As in 
+Case 1, all smaller values of /3, except possibly for /3 = 0, are attainable 
+by the functions e" l f*(t) with suitable values of p, and, by the argu- 
+ment above, the family g contains functions with /3 = as well, except 
+when cos _1 a = 0. Thus, in Case 3, Q is made up of functions for which 
+/3 takes on all values for which 
+
+cos _1 a + cos _1 /3 ^ cos -1 \Ao • 
+
+If, however, a = 1, we must exclude /3 = 0, so that we obtain in Case 4 
+
+&lt; &lt; Vx • 
+
+The result of Theorem 2 is illustrated in Fig. 1, which shows the 
+permissible region in the (a 2 ,/3 2 ) plane for various values of c = SlT/2. 
+
+
+
+/3 2 0.5 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+AT = 1 
+
+
+
+
+2\ 
+
+
+\ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+V 
+
+
+
+
+
+
+
+
+
+
+AT=0 
+
+
+
+
+
+
+
+
+
+
+s. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+( 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+AT = 
+
+9 
+6.25 
+
+
+
+0.2 
+0.1 
+
+
+
+O O.I 0.2 0.3 0.4 O.S 0.6 0.7 0.8 0.0 1.0 
+
+a 2 
+
+
+
+Fig. 1 — ■ Possible combinations of a 2 and /3 s for different SlT . 
+
+
+
+78 
+
+
+
+THE BELL SYSTEM TECHNICAL JOURNAL, JANUARY 1961 
+
+
+
+For each value of c, this region is bounded by the line segments 
+
+
+
+a 
+
+
+= 
+
+
+for 
+
+
+o g /r &lt; i, 
+
+
+(? 
+
+
+= 
+
+
+for 
+
+
+^ a &lt; 1, 
+
+
+OL~ 
+
+
+= 1 
+
+
+for 
+
+
+&lt; /3 2 ;g X (c), 
+
+
+ft 
+
+
+= 1 
+
+
+for 
+
+
+&lt; a ^ X (c), 
+
+
+
+and the curve cos -1 a + cos -1 /3 = cos -1 \/Xo(c), which is labeled by 
+the appropriate value of c. 
+
+An interesting phenomenon is brought up by the line a 2 + /3 2 = 1, 
+which is labeled with c = 0. This labeling agrees with Theorem 2 in 
+the following way: 
+
+If a + /3 2 ^ 1, then cos -l a + cos -1 /? ^ x/2, which automatically 
+exceeds cos - vXo for any c, no matter how small. In physical terms, 
+this observation states that if the proportions of energy of f(t) in 
+I £ | = T/2, and of F(a) in | co | ^ ft, add up to less than the total 
+energy of f(t), then we have really put no restraint on and T, and 
+an arbitrarily small QT product will still permit this distribution of 
+energy. It is only when a + /3 2 &gt; 1, so that the energies in | t \ &lt; 
+T/2 and in | « | &lt; ft add up to more than the total energy, that a 
+nonzero lower bound on SIT is implied. 
+
+Fig. 2 gives a detailed plot of what is essentially the top (or the 
+right) edge of Fig. 1. We plot X (c), the maximum of a if /3 2 = 1, 
+against c. We note that X (c) — &gt; 1 quite rapidly as c —* °o ; the approach 
+is exponential, but the exact rate has not been proved. Fig. 2 also gives, 
+
+
+
+
+
+
+
+1 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*&amp; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+FOR f ( 
+
+
+SIN At 
+
+
+
+
+
+
+
+
+t 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+23456789 
+
+nT 
+
+
+
+Fig. 2 — Possible a 2 if /3 2 = 1. 
+
+
+
+PROLATE SPHEROIDAL WAVE FUNCTIONS — II 
+
+
+
+79 
+
+
+
+for comparison, the proportion of energy 
+
+/«) siniu 
+
+
+
+in I t\ &lt; 
+
+
+
+T/2 for the function 
+
+
+
+t 
+
+
+
+which has sometimes been "intuitively" considered as the bandlimited 
+function which is as concentrated in time as possible. For small X , 
+it appears, /(/) is indeed essentially as good as the optimal function; 
+if, however, we wish to achieve a proportion of energy like 92 per cent, 
+we see that SIT = 4.5 suffices, while use of (sin Slt)/t would require 
+SIT = 8.5. For a proportion of 99 per cent, the minimal SIT is 6.25, 
+while (sin Sit) /I would require a value of SIT of about 30. 
+
+Let us consider one more numerical example. If values of a" = 0.977 and 
+3 1 = 0.90 are desired, what are the minimum SIT, and the corresponding 
+optimal function? From cos -1 a + cos _1 /3 = cos - vAo we find X = 
+0.88, so that SIT = 4, or c = 2. If, now, ^ (0 is the first eigenfunction 
+corresponding to c = 2, then, by (12) and (13), the optimal function 
+(see Fig. 3) is 0.578^ + 0.405Zty • It is thus not a continuous function 
+of t but has jumps at I = ±T/2; this is characteristic of all of our 
+optimization problems except for the special case /3 =1. 
+
+A note on previous work in the direction of Theorem 2. The con- 
+nection between the extremum problem for /3 2 = 1 and the largest 
+eigenvalue of (2) was noted by Chalk 2 and Gurevich, both of whom 
+found the appearance of the optimal function without analytic solution 
+
+
+
+0.9 
+
+0.8 
+
+0.7 
+
+0.6 
+
+0.5 
+f(t) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+| 
+
+
+
+
+
+
+1 
+
+
+■ i 
+
+
+
+
+
+
+
+
+
+
+0.2 
+
+0.1 
+
+
+
+-0.1 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\ 1 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Fig. .3 — Plot of optimal /(/) for a 2 = 0.977, 2 = 0.96, T/2 = 1 . 
+
+
+
+80 THE BELL SYSTEM TECHNICAL JOURNAL, JANUARY 10(')1 
+
+of the integral equation; the latter also plotted the largest eigenvalue. 
+The set of eigenfunctions was recognized in this context by Ville and 
+Bouzitat, 4 who also performed a lot of numerical work. Finally Fuchs 
+has stated, without proof, a theorem equivalent to Theorem 2. He 
+considers n-dimensional spaces and Fourier transforms, and two 
+arbitrary subsets of finite measure in the time- and frequency-spaces 
+respectively. His proof, however, which we have been privileged to see, 
+is quite different, and is not directed towards the properties of (B and 
+20 which have been our chief concern. Our present method is capable 
+of broad generalization; some thoughts in this direction are given in 
+the next section. 
+
+IV. EXTENSIONS OF THE THEORY 
+
+It is quite natural for us to ask what the real essentials of the study 
+up to this point have been, and under what circumstances results 
+similar to Theorems 1 and 2 could be obtained. Such an investigation 
+will be reported in a separate paper; 6 we should, however, note what 
+some of the results are. For the relevant language, we refer the reader 
+to Ref. 6. 
+
+We have a Hilbert space £ 2 , and two subspaces (B and 2D. The key 
+property we require is that (B and 20 form a nonzero minimum angle; 
+the latter property is equivalent to requiring that 
+
+II BDBf || 
+sup jj ,| &lt; 1. 
+
+/€£» II J II 
+
+It now follows that (B + 2D is closed, and we can again study the region 
+of possible values of || Bf || and || Df || if || / || = 1. We do not, however, 
+obtain eigenfunctions analogous to j^„} unless the operator BDB is 
+completely continuous. If, for example, £ is the space of square- 
+integrable functions with respect to Lebesgue measure over w-dimen- 
+sional Euclidean space R n , if 2D is the subspace of functions vanishing 
+outside of a bounded subset of R n of positive measure, and if (B is the 
+subspace of functions whose Fourier transforms vanish outside of an- 
+other bounded subset of R" of positive measure, then BDB is com- 
+pletely continuous, and the full theory applies. 
+
+As an example of a theorem which is again true in the general situa- 
+tion, but is of interest also for timelimited and bandlimited functions, 
+let us prove 
+
+Theorem 3: Let an arbitrary function d £ 2D, and another function 
+b £ (B, be given. Then there exists an infinite collection S of functions 
+/ G &lt;£ 2 such that if / € S, then Df = d and Bf = b. There is a unique 
+
+
+
+PROLATE SPHEROIDAL WAVE FUNCTIONS — II 81 
+
+/o 6 S of least energy, and there is a unique /i € S fl (&lt;B + 3D) ; fur- 
+thermore, /o = .A . 
+
+Proof: Let. us consider the function 
+
+/* = E (1 " B)(DB) n d + E (1 - D){BD) m b. (14) 
+
+
+
+The first sum, for example, means 
+
+d - Bd + DBd - BDBd + DBDBd - BDBDBd + • • • . 
+
+Since, for any g, || DBg \\ &lt; vTo || g II and || BDg \\ ^ Va~o II g || , 
+we know that the two series denned on the right side of (14) con- 
+verge in norm, with their sum defined as the function f* £ £ . 
+Furthermore, since/* is defined as a limit of functions in (R + 2D, it is, 
+by Lemma 2, itself in (R + 2D. So we may write 
+
+/* = d* + b*, 
+
+where rf* 6 2D and 6* 6 (B. 
+
+Let us next compute Df* and Bf*. We have 
+
+00 00 
+
+Df* = E (1 - DB)(DB) m d + E (A - D)(BD) m b; 
+
+
+
+all of the second series, and all but the first half of the first term of the 
+first series, vanish. Hence Df* = d, and similarly Bf* = b. We have 
+thus shown that/* £ 5 D ((B + 3D); we can complete the proof that 
+/* = /i if we can show that £ ("I ((B + 3D) contains no other function. 
+Suppose that/, = d, + b f , i" = 1,2 are both in S fl (&lt;B + 2D). Then 
+
+d = Dfr = di + D&amp;! = rf 2 + £6 2 = -D/2 (15) 
+
+
+
+and 
+so that 
+
+
+
+b = B^ = Bdi + h= Bdo + &amp; 2 = B/s 
+
+
+
+DBd! + D&amp;, = DBr/, + Db» . (16) 
+
+Hence, by subtracting (16) from (15), we have 
+
+(1 - DB)di = (1 - DB)d 2 , 
+or 
+
+(d, _ d 2 ) = DJJ(di - d 8 ). 
+
+Since, however, || DBg || ^ \Ao II II for any 0, we must have 
+rfi — rf 2 = 0, so that di = rf 2 . Similarly, 6i = ba , so that f\ = / 2 , and 
+thus/* is the unique member of S H ((B + 2D). 
+
+Now suppose .r is any other member of S. We may write 
+
+
+
+82 THE BELL SYSTEM TECHNICAL JOURNAL, JANUARY 1901 
+
+X = f* + &lt;p, 
+
+and since Dx = Df* = d and Bx = Bf* = b, it follows that 
+
+Dp = B&lt;p = 0. 
+But 
+
+II all 1 = ll/*H 2 + II v II 2 + 2 Re(/V), 
+
+and 
+
+/* = ,/* + 6* while &lt;? _L 30 + (B. 
+Hence 
+
+(/*,*&gt;) = o, 
+and 
+
+y*ir = ii/* 11" + imi 2 ^ ii r ii 2 , 
+
+with equality if and only if ^ vanishes. Thus/* is also the unique mem- 
+ber of S of minimum norm. An infinite number of other members of &amp; 
+may be formed by adding to /* any of the functions orthogonal to 
+(3J + 30 whose existence is guaranteed by Lemma 3. 
+Note: If d = £ OtD^t an d &amp; = £ M'rf i then 
+
+/* V 1 °»" — ^'' n / _i_ V ki — a » A f , 
+
+
+
+so that, in particular, 
+
+
+
+/*n*vr^ (l|d|l + l16 
+
+
+
+V. APPLICATIONS 
+
+
+
+5. r .^Filter Theory 
+
+Suppose we wish a filter to have an impulse response f(t) which 
+vanishes for t &gt; T. Such a filter clearly cannot be strictly bandpass; 
+but how would we select the filter so that as much of the impulse re- 
+sponse as possible is contained in | co | &lt; ft for some given ft? Suppose, 
+by this, we mean to choose f(t) so that 
+
+f | F(a) | 2 du 
+
+
+
+f 
+
+
+
+F(w) I 2 do&gt; 
+
+
+
+. PROLATE SPHEROIDAL WAVE FUNCTIONS — II 83 
+
+is as large as possible, where 
+
+F( u ) = f f(t) e-*" dt 
+is the Fourier transform of jit). Then the best choice is 
+
+fit) =+ Q (t + ?,c), 
+
+where c = QT/2, and \f/ is the prolate spheroidal function of the 
+present and the preceding papers. 
+
+If, instead of requiring /(f) to vanish outside of (0,T), we ask that 
+both 
+
+
+
+/ 
+
+
+
+| F(u&gt;) | 2 rfto = jS 2 
+
+
+
+and 
+
+
+
+f + [ \f(t)fdt = a 
+
+be small while the total energy of the impulse response is fixed at unity, 
+then Theorem 2 above gives the complete region of possible (a,p) 
+values. 
+
+5.2 Data Transmission 
+
+When we choose a combination of pulse shape and transmission 
+characteristic for a broadband data transmission system, we are in- 
+terested in minimizing both the tail of a pulse outside its time slot and 
+its spectrum outside of an assigned frequency band. Once again, it is 
+not possible to make both of these "spillovers" in time and frequency 
+arbitrarily small; the above theory gives some information on inter- 
+channel and intersymbol interference. For a theory which is more 
+nearly complete, however, the relation between timelimiting and pass- 
+bandlimiting (i.e., to S2i ^ | w | ^ ^2) needs to be better understood; 
+while our general results apply, the identity of the optimal function 
+^0 is not known in the case that B is projection of the transform into 
+such a passband. 
+
+5.3 Antenna Theory 
+
+Let us consider a horizontal (s,t) plane from which the strip \ t \ &lt; a 
+of width 2a, to be called the aperture, has been removed. If the illumi- 
+nation across the aperture is independent of s, then the amplitude of 
+the field across the aperture may be represented by a function f(t) of 
+
+
+
+84 THE BELL SYSTEM TECHNICAL JOURNAL, JANUARY 1961 
+
+one variable, where \ t\ &lt; a. If we consider the resultant pattern of 
+radiation in a distant parallel horizontal plane, then the field at a large 
+distance from the aperture is proportional to 
+
+
+
+[ a f(t)e 1lu dt = F(u) 
+
+J— a 
+
+
+
+where u = k sin 6, k = 2w/X, 6 is an angle measured from the vertical 
+through the center of the aperture, and X is the wavelength. The Q of 
+the antenna is then defined (equivalent to the definition of Woodward 
+and Lawson; 7 it is given explicitly by Kb vacs and Solyman 8 ) as 
+
+
+
+Q = 
+
+This may be rewritten as 
+
+
+
+f |F(u)| 2 du 
+
+J\u\&gt;k 
+
+[ \F(u)\ 2 du 
+
+
+
+f \f(x)\*dx 
+
+Q = .±=1 _ l } 
+
+P | Bf(x) | 2 dx 
+
+V — QQ 
+
+
+
+where B means limiting the Fourier transform of / to \ u\ 2g k. Thus 
+by the previous theory, 
+
+Q ^ r - l, 
+
+Ao 
+
+where X = \ (ak/2) is the first eigenvalue of (2) as defined in this 
+and the preceding paper. We thus have an absolute lower bound on the 
+Q which can be obtained for given a and A;. 
+
+REFERENCES 
+
+1. Slepian, D. and Pollak, H. O., this issue, p. 43. 
+
+2. Chalk, J. H. H., The Optimum Pulse-Shape for Pulse Communication, Proc. 
+
+I.E.E., 87, 1950, p. 88. 
+
+3. Gurevich, M. S.. Signals of Finite Duration, Containing a Maximal Part of 
+
+Their Energy in a Given Bandwidth, Radiotechnika: Elektronika, 3, 1956, 
+p. 313. 
+
+4. Ville, J. A. and Bouzitat, J., Note sur un signal de durde finie et d'energie filtrde 
+
+maximum, Cables &amp; Trans., 11, 1957, p. 102. 
+
+5. Fuchs, W. H. J., On the Magnitude of Fourier Transforms, Proc. Int. Math. 
+
+Cong., Amsterdam, September 1954. 
+
+6. Landau, H. J. and Pollak, H. O., Subspaces Forming a Nonzero Angle, with 
+
+Applications to Fourier Analysis, to be published. 
+
+7. Woodward, P. M. and Lawson, J. D., The Theoretical Precision with Which 
+
+an Arbitrary Radiation Pattern May Be Obtained from a Source of Finite 
+Size, J.I.E.E., 95, pt. Ill, 1948, p. 363. 
+
+8. Kovacs, R. and Solyman, L., Theory of Aperture Aerials Based on the Prop- 
+
+erties of Entire Functions of Exponential Type, Acta Phys. Budapest, 6, 
+1956, p. 161. 
+
+
+
+        

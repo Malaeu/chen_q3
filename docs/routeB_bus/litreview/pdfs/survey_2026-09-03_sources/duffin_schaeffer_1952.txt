@@ -1,0 +1,1253 @@
+        A CLASS OF NONHARMONIC FOURIER SERIESC)
+                                                     BY
+                             R. J. DUFFIN AND A. C. SCHAEFFER
+     1. Introduction. A sequence {X„},» = 0, +1, ±2, ■ ■ ■ , of real or complex
+numbers we shall say has uniform density 1 if there are constants L and 5 such
+that |X„ —n\ ^L and |\„— Xm| 2ïô>0 for n^m.          This is a more restrictive
+notion than density, for, considering only those Xn for which w>0, it is clear
+that a sequence of uniform density 1 has a density as defined by Pólya equal
+to 1, but the converse is not true. Sequences of uniform density d are defined
+in a later part of the present paper for any d>0. If /(z) is an entire function
+of exponential     type y, Q^y<w,   that is,
+
+
+uniformly in all directions as |z|—><», then/(z)          is completely   determined
+by its values at any sequence of uniform density 1. Some properties of entire
+functions of exponential     type extend in a natural way from a sequence of
+uniform density to all points of the real axis or of a strip parallel to the real
+axis. For example, the authors have shown [6] that if an entire function of
+exponential type y, 0^7<x,       is uniformly bounded at a sequence of uniform
+density 1, then it is uniformly bounded on the entire real axis. It also has a
+bound in every strip parallel to the real axis. This result was applied to ques-
+tions concerning the coefficients of power series.
+     In the present paper a further property of sequences of uniform density
+is proved. It is shown that if /(z) is an entire function of exponential          type
+y, 0^7<x,     belonging to Lí(— », <x>)on the real axis and ¡X„} is a sequence
+of uniform density 1, then the ratio { ^n |/(X„)| 2}//-»|/(x)|        2¿xhas positive
+upper and lower bounds independent         of the function. An essentially equiva-
+lent statement is that if g(¿)G¿2(—7, 7) where 0<7<7r,             and {X„} is a se-
+quence of uniform density 1, then there are positive constants              A and B
+independent    of the function g(t) such that
+
+                                         -I           g(t)e*»'dt
+(1)                           A ¿-■                                 è B.
+                                              r \g(t)\2dt
+                                              J -y
+
+      Presented   to the International    Congress of Mathematicians,   August 31, 1950; received by
+the editors August 1, 1951.
+     (') Part of the work on this paper was done while the authors were at Purdue University,
+and another part while they were under contracts with the Office of Naval Research, the Office
+of Ordnance Research, and the Flight Research Laboratory.
+
+                                                     341
+342                   R. J. DUFFIN AND A. C. SCHAEFFER                        [March
+
+There are other sequences for which this inequality is true; we shall say
+that a sequence of functions {exp (i\„t)} is a frame over the interval ( —7, 7)
+if there are positive constants A and B such that (1) is true for all g(t)
+G¿2(—7, 7). If 7=tt      and X„= w, then -4=5 = 1 is Parseval's relation. The
+proof that a constant B exists is quite direct, the proof of the existence of A in
+case {X„} is a sequence of uniform density 1 and 0 < 7 < it is one of the central
+results of the present paper.
+     It was shown by Paley and Wiener [9], who initiated much of the work
+in nonharmonic     Fourier series, that if X„ is real and |X„ —n\ <ir~2, in which
+case the condition    |X„— Xm| _5>0      for n^m is^utomatically    satisfied, then
+ {exp (iXnx)\ is closed over (—x, it). Boas [l] pointed out that their results
+imply that (1) is true in this case with 7=7r. Duffin and Eachus [5] showed
+that this inequality is true in the case 7 =7r if X„ are real or complex numbers
+satisfying |X„ —n\ iS0.22 • • • . In the present paper it is shown that (1) is
+true in the case7=7r     if {X„} is a sequence such that ] Re (X„) —n\ ^0.22 • • •
+and the imaginary part of X„ is uniformly bounded. Boas [3] has considered
+problems analogous to some of these for Lp spaces.
+     If relation (1) is true, then the sequence of functions       {exp (i\J)}     is
+clearly complete over (—7, 7); that is, if g(/)£Z<2(—7, 7), then the set of
+relations
+
+
+                                  f g(l)e*»'dt= 0
+                                 J --,
+imply that g{t) vanishes almost everywhere in (—7, 7). A proof of complete-
+ness in a more general case than any mentioned above was given by Levinson
+ [8]. Levinson's result, without stating the most general form, shows that if
+the points lie in a strip parallel to the real axis and if | Re (X„) —n\ ^a< 1/4,
+then the set of functions {exp (ikj)} are complete in {—if, ir). On the other
+hand, completeness is a less strong conclusion than the frame condition. We
+shall show, for example, that if {X„} is a sequence of uniform density 1, then
+the sequence of functions {exp (îX„/)} for which «>0 form a complete set
+in any interval (—7, 7) where 0<7<tt,         but they do not constitute a frame
+in any such interval.
+     Relation (1) gives the set of functions {exp (i\nt)} properties quite similar
+to an orthonormal      set such as {exp (int)} in Hubert space. However, the
+situation is more complicated      because the set {exp (iXj)} is highly over-
+complete on an interval of length less than 2ir. Most of the previous study of
+nonharmonic     Fourier series has been for the exactly complete case; that is,
+the case in which the sequence of functions is complete but becomes incom-
+plete by the omission of any one of them. It has therefore seemed worth-
+while to give in detail some of the elementary relationships between moment
+sequences, expansion coefficients, etc. It is shown that these relations are
+1952]            A CLASS OF NONHARMONIC FOURIER SERIES                                         343
+
+consequences    of well known       properties          of positive   definite   transformations
+in Hubert space.
+     These considerations    give information   only about mean convergence of
+the series. However, combining properties of mean convergence with prop-
+erties of the Dirichlet kernel gives conditions for pointwise convergence.   It
+results that nonharmonic        Fourier series have to a large extent the same
+convergence      and summability    properties as ordinary Fourier series.
+   2. Fourier frames. We begin the proofs by making the following more
+precise definitions.
+     Definition.     A sequence {X„} of real or complex numbers has uniform
+density d, d>0, if there are constants L and 5 such that
+                                                    n
+(2)                                      x-"7           ^ L,             n = 0, ±1, ±2,
+
+(3)                                     | X„ - \m | ^ S > 0,                               n ^ m.
+   Definition.    A set of functions {exp (í'X„¿)} is a frame over an interval
+(— 7i 7) if there exist positive constants A and B which depend exclusively
+on 7 and the set of functions    {exp (iknt)\ such that
+                                    1       i ri
+                                   ,1T „    | J-y
+(4)                       A ^-:-g                                      B
+
+                                          I
+                                              1
+                                                    g(t) \>dt
+                                              1
+
+for every function g(/)£Z<2(— 7, 7).
+     In the case of a frame, we shall suppose in part 2, except where the con-
+trary is stated, that the index n runs through all positive and negative
+integers and zero; however, we do not suppose that the X„ are distinct. The
+following theorem is to be proved.
+
+     Theorem I. If {X„| is a sequence of uniform density d, then the set of func-
+tions {exp (i\nt)} is a frame over the interval (—7, 7) where 0 <y <ird.
+
+      The following   equivalent    theorem         is also to be proved.
+
+     Theorem   I'. Let \ X„} be a sequence of uniform density d and let 0 <y <ird.
+Iff(z) is an entire function of exponential type y such that /(x)£Z,2(— », 00),
+then
+                                         E|/(Xn)|2
+(5)                           A ^ —^-^                          B.
+
+                                        l         f(x) \2dx
+
+Here A and B are positive constants which depend exclusively on y and {X;[j
+344                    R. J. DUFFIN AND A. C. SCHAEFFER                         [March
+
+     It will be shown that either of these theorems implies the other, and that
+any set of positive constants A and B which suffices in (4) or (5) also suffices
+in the other inequality. It will be clear from the sequel that the constant B
+exists under conditions much milder than are necessary to infer the existence
+of A. The proof of these theorems depends on several lemmas. The following
+lemma is a now classical result of Paley and Wiener [9].
+   Lemma I. If /(z) is an entire function of exponential type y and if f(x)
+£L2(— °°, <*>),then there is a function g(í)G¿2(—7, 7) such that
+
+
+(6)                         m-^fjtà-*
+    It is clear in this lemma that g(t) is the Fourier transform of f(x), that is,
+the Fourier transform of f(x) vanishes almost everywhere outside (—7, 7),
+and so Plancherel's     theorem states that
+
+
+(7)                        r \f{x)\Hx=f' \g{t)\Ht
+From these relations   it follows that if f(z) is an entire function   of exponential
+type 7 such that /(#)£Z*(—        cc, °°), then
+
+(8)               i/(*+*yi*(—)            «7,"{T"i/(*)h**} •
+Differentiating   (6) k times we also have
+                                      1     /•?
+                                   (2tt)1'2J_/
+so, by Plancherel's    theorem,
+
+                        r \f^(x)\*dx= r 1g(t)\wkdt
+
+                                  ^72kfy\g(t)\2dt.
+Thus,
+
+(9)                     f \f^(x)\2dx ^ 72*f |/(x)N*
+
+for every entire function /(z) of exponential   type 7.
+    From Lemma I it clearly follows that Theorem I and Theorem I' are
+equivalent.  More generally, a set of functions   {exp (i\nt)} is a frame over
+(— 7i 7) if and only if there exist positive constants A and B such that
+1952]                   A CLASS OF NONHARMONIC FOURIER SERIES                                          345
+
+                                                   El/(x„)|2
+(10)                                     A ^ —^-                   g B
+                                                       f{x) \2dx
+                                               £
+for      every    entire      function     /(z)     of exponential          type     y   satisfying   f(x)
+GL2(-        », °°).
+   Results similar to Lemma II were obtained                           by Plancherel     and Pólya    [10]
+and by Boas [2] under different conditions.
+   Lemma II. Let {exp (iX„/)} be a frame over the interval (—7, 7). // M is
+any constant and {/*„} is a sequence satisfying \ßn— X„| ¿M, then there is a
+number C=C(M,                7, {Xn}) such that
+
+                                              El/GO I2
+                                              —-<c
+                                              Z|/(Xn)|2      -
+                                              n
+
+
+for every entire function /(z) of exponential              type 7.
+    Proof. It is clearly sufficient to prove this lemma under the additional
+hypothesis that /(x)£Z2( — «>, °°). Let {exp(îXm/)} be a frame over (—7, 7)
+such that inequality (10) is satisfied, and, if M is a given positive number, let
+ {p„} be a sequence such that |X„ —pn\ ^M. It is to be shown that if /(z) is
+an entire function of exponential      type 7 belonging to L2( — œ, 00) on the
+real axis and p is a given positive number, then
+
+(ii)                            El/GO -/(Xn)|2^rEI/(xn)|2
+                                 n                                 n
+
+where
+
+(12)                                 T = — (e^iS - lX^V - 1).
+                                          A
+If/(z)     satisfies    these conditions,         then Taylor's        theorem     shows that
+
+                             /GO- /(x„)= E ^~                      G*.- xo*.
+Multiplying            and   dividing     the last series term wise by pk, we have                    from
+Cauchy's inequality
+
+                  I/GO- /(x.)I2^ j E -^^}                                 { E —}.
+The second sum on the right side of this inequality is exp (M2p2) — 1. The
+function f(k)(z) is an entire function of exponential type 7, and, according to
+346                       R. J. DUFFIN AND A. C. SCHAEFFER                                              [March
+
+inequality  (9), it belongs to class L2(— »,                       oo) on the real axis. Then              the
+function /c4)(z) satisfies inequality (10), so
+
+            Z I /<fc)(Xn)
+                       \2 ^ B \                   | /<*>(*)\*dx ^ By2" I              | f{x) \2dx.
+                n                         " —oo                               J —oo
+
+Since the function/(z)         also satisfies        (10), it is clear that           the last expression
+is equal to or less than            \By2k/A\        Z|/(X«)|2>       and inequality              (11) follows.
+Then   Minkowski's       inequality           shows that
+
+           ( £ I/go 1*)""s ( EI /(*»)l2)1/2+(rE I/(xj l2)1'",
+so the lemma follows with C=(l + ri/2)2.
+    Lemma II shows that the constant B of Theorems I, I' exists. For in the
+case d = 1 it is well known that the sequence of functions eint is a frame
+over ( —7, 7) where 0<7^ir.   Since |X„ —«| ^L, the existence of B follows
+from Lemma II. The case d¿¿l may be reduced to the case d= 1 by a change
+of variables.
+   The following result shows that the                            set of points    {X„} such              that
+{exp (iXj)} is a frame over a fixed interval                      is in a sense an open set.
+    Lemma III. Let {exp (i\nt)} be a frame over ( —7, 7). There is a 5i>0
+such that {exp (inJ)} is a frame over the same interval whenever |ju„ —X»| =5i.
+
+   Proof. Let/(z) be an entire function of exponential type 7 such that/(x)
+£I<2(— 00, 00), and let {exp (t\„t)} be a frame over ( —7, 7). Then/(z)
+satisfies inequality     (11) where \p„— X„| =Af, and T is defined by (12) with
+p and M any positive       numbers.           From (11) and Minkowski's                inequality      we see
+that
+           (Vl/J                          /                \l/2       /                   \l/2
+                    Z|/0\n)|2J ^ZI/GOl2]                           +(^£|/(Xn)|2j                  .
+Now let di = M=l/p         and choose p so large that                     Z'<l/4.      Then      inequalities
+(10) and (13) show that
+                           A
+                           4   «j
+                                    f"f/(*){y*áZl/wl2.
+                                    —00                    «
+
+
+
+Lemma II completes the proof.
+   The above method is similar to that used by Duffin and Eachus [5] to
+show that {exp (ip„t)} is a frame over { —w, it) if \ßn —n\ = Af<(log 2)/ir.
+To obtain this result let X„=m, 7=7t, p —(y/M)112. Then since in this case
+B=A,    we see from (12) that r=(e^-l)2,                          so T<i      if M<(log          2)/tt. From
+(10) and (13) it is seen that {exp (ip„t)} is a frame over (—ir, «■) if |/x„ —n\
+= M<(log 2)/7T. Theorem II will serve to strengthen this result by showing
+1952]               A CLASS OF NONHARMONIC FOURIER SERIES                                 347
+
+that     {exp (ipj)}        is a frame over (— ir, w) if there are constants       ß and M
+such that \l(pn)\ uß, | Re (ju„)-»|              ^Af<(log     2)/tt.
+    The proof of the existence of the positive constant A in Theorem I de-
+pends on several lemmas. The following result has previously   been proved
+by the authors [6].
+    Lemma IV. If f(z) is an entire function of exponential                 type y and    {X„|
+is a sequence of uniform density d, d>y/ir, then
+                             | f(x 4- iy) | g JfíTl.l sup | /(X„) |
+where the constant          M is independent     of f(z).
+    The following lemma is closely related to results of Bourgin    [4] and
+Ibragimov [7]; however, these authors were not concerned with sequences of
+uniform density. It is stated in a more general form than needed because of
+its intrinsic   interest.
+
+     Lemma V. Let A2 be the closed subspace of L2(--ir, ir) generated by the set
+of functions 1, eiB, e2ie, • • • . If f(z) is an entire function of exponential type
+y such that /<n)(0)^0,     w = 0, 1, 2, ■ • • , and the sequence {X„} has uniform
+density d, d>y/ir,    then the set of functions f(\neie), n = 0, ±1, +2, • • • , is
+complete in Az.
+       Proof. Let
+
+(14)                               F(z) = f*f(ze<°)g*(6)dd
+where g(0)CzA2, that is,
+                                                       N
+                                    g(6) = l.i.m. Ec^"*
+
+with ¿j| c,\2 < =o. Here and elsewhere the * represents the complex conjugate.
+Since /(z) is an entire function of exponential  type y, it is clear that F{z) is
+also. Under the hypothesis
+
+                ^(x„)= f f{\ne»)g*(e)de
+                                     = o,                              n = 0, ±1, ±2,
+
+it is to be shown that g(d) =0 almost everywhere. Since FÇKn) =0, Lemma IV
+shows that F(z) vanishes identically. Then differentiating   (14) we have
+
+                                FC*)(0) = I fci(0)eikeg*(e)dd
+                                        = /'/
+for ¿ = 0, 1, 2, ■ • • . Since /W(0)^0,            the lemma follows.
+       Lemma VI. Given R satisfying             0<R<w,      let p{z) be regular in the circle
+348                   R. J. DUFFIN AND A. C. SCHAEFFER                                        [March
+
+\z\ =i? and let {X„} be a sequence of uniform density 1. For each positive
+number h there is an integer N and a finite set of numbers a_.y, ö-at+i, • • • ,
+ao, • • • i fljv such that
+                                       N                   oo
+(15)                         p{z) - Z <ineiX»*=
+                                              Z bkzk
+                                      -If                 ¡fc=0
+
+and
+                                                    h
+(16)                                   |»*|S-rri                   \an\^N.
+                                                    R"
+Moreover, given h, R, p(z), L, 5, the same N suffices for all sequences satisfying
+
+(17)            | X. - » J á L,             | X„- Xm| è 5 > 0 for n ^ m.
+    Proof, the function/(z)    =eiÄS satisfies the conditions of Lemma V with
+7 = i?<ir, so the set of functions {exp (tX„ Reie)} is complete in ^42- It is well
+known that closure and completeness are equivalent in A2 so there is a finite
+set of numbers a_M, a-M+u • • • , aM such that if
+                                                          M
+                           r{Reie) = p(Reie) - Z «»e*"**"
+
+then
+
+
+(18)                      kDHÉ^n                                  s7'
+The Taylor's   series of r(z) about     the origin
+                                              M                    oo
+                        t(z) = ¿(z) - Z a«eiXnZ
+                                              = Z ¿*2*
+                                              -Af                 t=0
+
+converges in |z| <R. Then making use of Cauchy's                         integral   representation
+of bk we have from (18) and Schwarz's inequality
+
+                       i i     [i r                       fa             A
+                                  ¿irl J |,|_B
+                                         i               Z*+1           2i2*
+Let fln = 0 for | ra| > M. Then choosing a sufficiently large integer N, the first
+part of the lemma follows.
+    The proof of the second part of the lemma is by contradiction.            Let
+h, R, p(z), L, 5 be fixed and suppose there is no N which suffices for all
+sequences {X„} satisfying (17). Then there are sequences {X^1'}, {Xá2)}, • • • ,
+ {X?}s • • • such that the least integer N-N(J)       for which (15) and (16) are
+true for some a%\ if1 satisfies
+1952]              A CLASS OF NONHARMONIC FOURIER SERIES                                                349
+
+                                                     N(j) > j.
+From relation (17) it is clear that there is a subset of the sequences {X^},
+which by a renumbering we suppose is the entire set, which converges to a
+limit sequence {X^0)},
+
+                                              limXi" = \l0),                     n = 0 ± 1, + 2, • • •.
+
+The sequence {X®} satisfies (17) and so has uniform density 1. Then,                                     by
+what has been shown, there is an N0 and a set of numbers 0$' such that
+             1 1     /• » I                   N0                 „           2   >i 1/2      L
+             Í- f \p(Re«)
+                       - g «T exp«fc«*/) »\                                               á I'
+                                               | aT | £ IT«,          « = 0, ±1, ±2, • • • , ± iV„.
+The finite sum
+
+                                        S      (0)
+                                       E «n exp (¿X„ jRei9)
+                                       -JV0
+
+is a continuous     function     of the 2-/V0+ l variables            X„, so for sufficiently        large j
+             Í 1     r *I                     JV°                           » 2 1 1/2
+             ^— j             ¿>(i?eifl)- E «n ' exp ffX; i?e' ) M                        g A.
+             (.2ir J _T |                     _at0                                j
+
+This gives a contradiction since N = N0 suffices in (15) and (16) for all large j.
+    Proof of Theorem I. It has been shown that the constant B of inequality
+(4) exists. To show the existence of the positive constant A, it is sufficient
+to consider the case d=i,     0<7<ir.  Given the sequence {X„} of uniform
+density 1, let
+
+(19)                                          XT - Xn+„- w.
+Then for each positive and negative integer v the sequence {Xi"*} is of uni-
+form density 1 with the same bounds L, ô as the given sequence,
+
+                     | X„ — »I S ¿i                     I X» — Xm | ^ 8 > 0                      for n 9e m.
+In Lemma VI define p(z), R, h by
+                                               1                             1
+                  p(z) - 1,         Ä = — (7 + r),                   * - —■ (Ä - y).
+                                               2                            ZK
+Then the lemma asserts that for suitable                     a%\ b%\ N we have
+                                   N                                   oo
+(20)                          1— E          fl»' exp (i\* x) = E 6* *
+                                  n=-AT                               4=0
+350                      R. J. DUFFIN AND A. C. SCHAEFFER                                              [March
+
+where
+
+(21)                            ft* ]á       — >               a«    = #!
+
+and the same constant           N suffices for j»= 0, +1,             +2,       • • • . If we define
+                                                              00
+
+(22)                            ^,(x) = e¡>*- eivxY,bVx ,
+                                                              4=0
+
+it follows from (19) and (20) that
+
+(23)                        \l/„(x) = Z            an exp (i\n+,x).
+                                             n—N
+
+      Writing
+                                                         00
+
+(24)                                  r»(aO ««"»Zft» *,,
+we have
+                                      ftf»    = e'"* - f(l,)(x).
+It is to be shown that Çw(x) has in some sense a small average value, and
+it will follow that i}/,tx) has some average behavior similar to eivx. In the re-
+mainder of the proof of Theorem I we shall use the notation
+                                                                                                 1/2
+         (*>g)=—-          I <t>(x)g(x)dx, \\g\\= <—-Í                            |g(x)|2d*>
+                    ¿X    J-y                                        \¿1T J-y                !
+
+Given a function g(^)G-i-2(—7, 7), define g(x)=0    in the part of (— ir, ir)
+that lies outside (—7, 7). Then Parseval's relation takes the form
+
+
+                                      yi2 = zi(^.g)i2-
+                                                   —00
+
+
+
+Since R>y,      inequality (21) shows that the series (24) converges                        uniformly in
+—7^x^7;         hence after multiplying (24) by g(x) and integrating                        termwise we
+obtain
+
+                                 (f    1g) - JL ** (< 1 * gi-
+
+lí this series is multiplied          and divided        termwise      by (Ry)kl2, then          Cauchy's
+inequality and (21) show that
+
+                I (fw,g)|2^ Ä2{z(~Y)- ZI («^ **«)|»*-v-».
+                                       { i-^o \-K / )         fc=o
+1952]                A CLASS OF NONHARMONIC FOURIER SERIES                                                      351
+
+Then making         use of Parseval's               relation,      we have
+
+               E I (fw, g)I2^ -^-                            E E I («•".xkg)VR-ky~k
+              »=-»                              R — 7 *=0 »=-oo
+
+                                                    AIR      "     ||x*g||2
+                                                22 - 7 *=o Ä*Y*
+In the last series the integration     defining ||x*g|| need only be carried                                   over
+(— 7. 7)i so ||**4?||=7*||g||- Thus, recalling the definition of A, we have
+
+(25)                                    E l(r('\*)MyiV4.
+                                       »"=—00
+
+
+
+   Since ein=\pr{x)+^y>(x), we have                              {ehx, g)=(\¡/„         g) + (f("\   g), and   then
+Minkowski's inequality shows that
+         /    °°                \l/2            /   00                \l/2          /   00             \l/2
+
+         (^El(^,g)|2j                     ^EI(^«)|2J                            + (EI (f('\g)\2) ■
+The left side of this inequality is equal to ||g|| by Parseval's theorem, and the
+second of the two terms on the right we have shown in (25) is dominated by
+lkll/2.Thus
+(26)                                    ¿|(^l)My|V4.
+                                        —00
+
+
+
+Now substituting           in (23), we have
+                                                         N
+                                 GrV.g) = E añ (« * , g),
+                                                     n=-iV
+
+so Cauchy's        inequality    and the estimate                   of a» given in (21) shows that
+
+                          I «-„ g) |2 á (2¿V+ 1)JV2£                           I (*ix"+"*.
+                                                                                        g) |2.
+                                                                  n=-Af
+
+
+If the last inequality is summed on v from — °° to °°, then in the double sum-
+mation the sum n-\-v runs through each integer precisely 2N-\-\ times.
+Thus
+                     00                                                   00
+
+(27)                ¿2 I (*.. g) I 2 ^ (2/V+ l)2tf2 E                            I (*iXt*>
+                                                                                        g) I2-
+                    —00                                              k=—ao
+
+
+If we combine (26) and (27, Theorem I follows; and with ¿ = 1 we have
+^4 =l/{4A/2(2Ar+l)2}.  The magnitude of N is not determined by the previous
+argument so this is not an estimate of A.
+    As previously remarked, Theorem I is equivalent to Theorem I'. How-
+352                        R. J. DUFFIN AND A. C. SCHAEFFER                                     [March
+
+ever, the conditions of Theorem I' are unnecessarily   restrictive because it is
+not necessary to suppose that f(x)Ç.L2(— oo, so). If {X„}, 7, d satisfy the
+conditions of Theorem I', then every entire function/(z)     of exponential type
+7 satisfies inequality (5). If either of f2«,\f(x)\ 2dx, Z|/(^»)|2                   is finite, then
+the other is also and (5) holds. For if /"«, \f(x) \ 2dx < <x>,then inequality (5)
+follows from Theorem      I', so suppose that Z|/(^*)|       2< °°- Then /(z) is
+bounded at the points z=X„, so Lemma IV shows that /(z) is bounded on
+the entire real axis. The function
+                                                            sin ez
+                                        Ft(z) = /(z)-
+                                                              ez
+
+where 0<e<(7rd —7)/2 is an entire function of exponential type (7rd+7)/2
+and F((ï)GL2(-«i1   ce). By Theorem I' it follows that there are positive
+constants        AA=A((y+ird)/2),          BA = B((y+ird)/2)             such that
+
+                                   At¿ £ I"■(>■>!■
+                                                <«
+                                           /_: F,(x) \2dx
+Letting     € approach     zero, the constants             4A, BA may be supposed         fixed since
+Ft{z) remains of type (7rd-f-7)/2. It then follows that the limit /(z) of F,(z)
+also satisfies this inequality.  Thus f(x)QL2(— °o, °o), so Theorem I' shows
+that/(z)   satisfies inequality (5).
+    This remark leads to a strengthening of Theorem I. Without attempting a
+complete analogy to the stronger form of Theorem I', let {X„}, 7 satisfy the
+conditions of Theorem I with d = i. Thus 0<7<ir        and {X„} has uniform
+density 1. Let G(t) be a function of bounded variation over (—7, 7). If
+                                   1 °° i ry
+                                   —Z II e^'dGit) < »,
+                                   2ir _oo I J _y
+
+then      G(t)    is essentially     the    indefinite        integral    of a function     of class
+Li{— °°, °°), and
+                                       1 °° I /*T
+                                                            >dG(t)
+                                      ¿1C -X\J      -y
+                            A <,                                         á B.
+                                                     \G'{t)\2dt
+                                            £ -1
+This follows from Lemma I and the stronger                         form of Theorem   I' since
+
+
+                                   m - Ti^/./"*«
+is an entire function of exponential                     type 7.
+1952]              A CLASS OF NONHARMONIC FOURIER SERIES                                       353
+
+   Not every frame over an interval (—7, 7) can be strengthened     in the
+same manner to Stieltjes integrals. This is shown by the example in which
+7=7T, X„ = w, and G(t)=Q for —7r</<7r, G(—ir)=l,                           G(7r) = l. For in this
+case, although   [eini] is a frame over ( —ir, it), we see that                   G{t) is not ab-
+solutely continuous but
+
+
+                                          I      eintdG{t) = 0,
+
+     Let {X„} be a sequence of uniform density 1, and let 0<7<ir.
+                                                                           n = 0, ±1, ±2,
+
+                                                                          Over the
+interval ( —7, 7), the set of functions      {exp (i\Ht)}, n = 0, ±1, +2, • • • ,
+is a frame, and is therefore complete. The subset of functions         {exp (i\nt)}
+for which ra>0 is complete over (—7, 7) according to a result of Levinson
+ [8, p. 3], but it is nota frame over this interval. For letg(i) =eialwhere a>0.
+Then
+                               1         Cy               / 2 \1/2 sin y(a + z)
+(28)             /(,).__!                     e«"e»<dt = (-)           \
+                            (27r)1/2J_T                   \t/          a + z
+
+Now fly\g(.t)\     2dt is a positive constant           independent   of a, but
+         00                    2    °°
+                                          sin y(a + X„)           2     "          1
+         EI/(x»)|2 = -E                        a + X„
+                                                                ^ — e^L E
+                                                                               a + X„|2
+        n=l                    T   n=l
+
+and this approaches         zero as a—>•<». Thus there is no positive constant            A such
+that (4) is satisfied.
+     We shall say that a set of functions {exp (i\J)} is an exact frame over
+an interval / if it is a frame over / but fails to be a frame over / by the
+removal of any function of the set. This use of exact is analogous to that of
+Paley and Wiener in the case of exactly complete sets. If {exp (*X„/)} is a
+frame over I but is not an exact frame over i", then we say it is an over-
+complete frame over I.
+     If {X„} is a set of uniform density 1 and 0<7<ir,      then, according to
+Theorem I, the set of functions {exp (tKj)} is a frame over ( —7, 7). This
+set of functions is an overcomplete frame over ( —7, 7), indeed if any finite
+number of the functions are deleted the remaining functions are a frame over
+(~ 7i 7)- This follows from the fact that if a finite number of the Xn are de-
+leted, the remaining X„ may be reindexed so as to satisfy inequalities     (2),
+(3) with the bound L replaced by a larger number.
+     Lemma VII. If {exp (i\nt)} is a frame over (—7, 7) but fails to be a frame
+ over this interval by the removal of some function of the set, then it fails to be a
+frame over (—7, 7) by the removal of any function of the set.
+    Proof. Suppose that there are positive constants                   A, B such that       for all
+g(t) G¿2(-7,7),
+354                    R. J. DUFFIN AND A. C. SCHAEFFER                                           [March
+
+
+
+
+                         A ^-—---
+                                  f^li"
+                                  ¿IT    n   \J —
+                                                     e*«lg{t)dt
+                                                                        ^ B
+                                                    g{t)\2dt
+                                          */-T
+
+but that if X„, is omitted there are no such A, B. The failure must be in A
+rather than B. Then there is a sequence of functions gt(t), fe= l, 2, 3, • • -,
+whose Fourier transforms    we write /i(z),
+
+
+(29)                      tyy.^j^y,
+which are normalized     by the relation
+
+                       r ¡/*(*)\*dx= r \g,:(t)\2dt
+                                                =i
+                       J —00                       ■» —t
+
+and such that
+
+                    Z|/*(X»)|2 = A                     ZlA(Xn)|2^Y"
+Clearly/*(Xn)  tends to zero as &—>«>for each n^m, but |/*(Xm)| has a lower
+bound equal to or greater than ^41/2>0 as k—♦<*. Now /¿(z) is an entire
+function of exponential type y, and, according to (8), it satisfies
+
+                               | /*(* + if) I = (tA)1'2 i#,                           ¿ = 1, 2, 3, • ■• .
+The sequence of entire functions being uniformly dominated,   there is a sub-
+sequence which converges to a limit/(z),   and uniformly in every bounded
+domain. Thus /(z) is an entire function of exponential  type y and
+
+                                 /tY/2                          r°\
+            [/(*+ *j)| ^ Í —) e71"1,                            I     |/(*)N* ^ 1.
+
+Now/(X„)=0      for n^tn,    and/(Xm) ;¿0, in particular,                      /(z)   does not vanish
+identically. Therefore, if j is any integer and
+                                                 z — Xm
+                                  F(z) = --f(z),
+                                                 z — \j
+
+then F(z) is a not identically          vanishing      entire       function     of exponential     type
+y. It is readily shown that F(x) £Z,2( — °°, °°) and F(\n)—0 for w^j.                                Ac-
+cording to Lemma I there is a function G(t)^L2(—y,   7) such that
+1952]            A CLASS OF NONHARMONIC FOURIER SERIES                                                  355
+
+G(t) is not equivalent         to zero in (—7, 7), but
+                                         11     c G(t)e**'dt = 0,
+                                        -                                                          »#*,
+
+so the lemma follows.
+
+  Theorem      II. Let \„=an+ißn                where an and              ßn are real   and   \ßn\ ^ß   for
+some constant ß. If the set of functions {exp (iaj)} is a frame over an interval
+(—7, 7), then {exp (i\„t)} is a frame over the same interval.
+    Proof. Let /(z) be an entire function of exponential type 7 such that f(x)
+£Z,2(— », «s). According to Hadamard's        factorization theorem it may be
+written in the form
+
+
+(30)                             zoo= zv^fn                1- —\zh>
+                                                   r_l \           Zy /
+
+where Zi, z2, z3, • • • are the zeros of/(z) other than at the origin. Now/(z)
+satisfies inequality   (8), so Carleman's   formula [ll] written for the upper
+half-plane and for the lower half-plane in turn shows that E lm (I/O >s
+an absolutely convergent series. If
+
+                                              I/«» = py+ tqy
+where p, and qv are real, Hadamard's                  formula             may be written      in the form
+
+(31)                     /(z) = zke<-c+id)*+b
+                                           IJ( 1 - — \"''
+                                                    ,=1 \                z, /
+
+where c and d are real,
+
+                         c = Re (a),               d = Im (a) + J2 <?»•
+
+This product converges uniformly in every bounded domain since (30) does
+and ^_q, is an absolutely convergent series.
+    We are going to define a sequence {X^1'} and an entire function/i(z) of
+exponential type 7 belonging to Z,2(— », ») on the real axis such that
+
+(32)                     Xl1}= an + ißn\                    I ß? I g 0/2,
+and
+
+                               El/iO^f                         El/(xn)f
+(33)                     —-g                         êi ■
+
+                         /00    -00
+                                      Ihi*) \*dx              I
+                                                            •' y»-0000
+                                                                          f{x) \2dx
+356                    R. J. DUFFIN AND A. C. SCHAEFFER                                      [March
+
+There are two cases to consider, ¿ = 0 and d<0. Suppose first that ¿^0. Now
+form from the given function /(z) another entire function whose zeros are
+obtained by reflecting in the real axis those zeros of /(z) that lie in the lower
+half-plane. Let
+                                             if Im (zy) = 0,
+                                             if Im (zy) < 0
+and define
+
+(34)                    /A(z) = zke^+u)z+i
+                                                    tá'rih
+Then /A(z) is an entire function      of exponential            type satisfying
+
+(35)                               |/A(*)|        = |/(*)|.
+To show this we note that the zeros of /(z) that lie in the lower half-plane
+may be reflected in the real axis one at a time. Thus, if m is any positive
+integer, the function
+
+              fm(z)= 8»<<*h.o»«
+                           n(i - 4V'z n (i -—)ep'*
+                                    y=l \           Zy /      y=m+l \         Zy /
+
+has the same modulus on the real axis as/(x), and it is an entire function of
+exponential type y since the ratio/„(z)//(z)    tends to 1 as z tends to infinity
+in any direction. Thus, /„(z) is dominated        by the right side of (8) for
+»i = l, 2, 3, • ■ -, and hence its limit/A(z) is dominated by the right side of
+(8). The product (34) defining /A(z) converges uniformly in every bounded
+domain. If we compare (31) and (34), it is clear that
+
+                            \f*(x+iy)\ú\f(x+iy)\,                                            yfcO.
+Since ¿ = 0, we see also that
+
+                            | fA(x +iy)\^\            f(x - iy)\,                            y^ 0.
+       Now define a new sequence     {Xa} by reflecting in the real axis those points
+of {X„} that lie in the lower half-plane. Let
+                             a '    (\n      if
+                                             if     Im (X„) = 0,
+                            "-" k if Im (X„) < 0.
+Then, according    to the inequalities      stated         in the preceding     paragraph,
+
+                                   |/V)| ^|/(x„)|.
+   The points X„ were assumed to lie in a strip of width 2/3 which is sym-
+metric about the real axis. The points X£ lie in a strip of width ß which lies
+1952]                A CLASS OF NONHARMONIC FOURIER SERIES                                      357
+
+in the upper half-plane. We now translate the points X£ to obtain a new
+sequence which lies in a strip of width ß symmetric about the real axis. Let
+
+                       xT = K- iß/2,                  Ms) = /(a + iß/2).
+Then the points XÍ,1'lie in the strip \y\ Sß/2 and
+
+                             \fiQ?)\-I/96I á|/(X„)|.
+Also, according       to Lemma       I, there is a function            gA(t)^L2(~7,    7) such that
+                                                 1        Pf
+                              /¿(a) =-                    I g*(t)ei¡"dt
+                                              {2vyi2J-y
+and, by (35),
+
+                     f"|/(*)|v*= f"|/A(*)N*=fT|«w*-
+Thus, writing gi(/) = ga(t)e~ß'12, we see that
+                                               1       /•'
+                             /i(i)    =-—             I        gx{t)eiztdt.
+                             J               (2ry'2J-y
+Hence
+
+
+           J
+               r 1/»(*)
+               —00
+                     i»«**
+                        = f 1gà(<)
+                                i*«-**a<
+                                    è #-*»
+                                         r 1/(*)i2á*.
+                                     »^ —7                                    */ —OS
+
+
+The sequence X^1'and the function /i(z) thus defined satisfy (32) and (33)-
+   If d<0, we reflect in the real axis the zeros of/(z) and the points that lie
+in the upper half-plane. Then after a translation        we obtain a sequence
+ {X^1'} and an entire function/i(z)   satisfying (32) and (33).
+     The above process may be iterated. If /(z) is an entire function of ex-
+ponential type 7 which belongs to Z*( — °°, °° ) on the real axis, then for
+k = i, 2, 3, ■ ■ • there is a sequence {X*} and an entire function fk(z) of
+exponential type 7 which belongs to L%(— », ») on the real axis such that
+
+(36)                     Xi"' = an + ßlk\                    \ß(nk)\£ß/2k,
+
+and
+
+                          zi/*(xr)i2                              zi/(xn)i2
+(37)                    —-                           = e2^ —^~
+                         f°\fk(x)\2dx                             f \f{x)\2dx
+358                    R. J. DUFFIN AND A. C. SCHAEFFER                                          [March
+
+The constant     exp i2ßy)        is here written              in place of exp (7/3+7/3/2+          • • •
++7/3/2*-*).
+    Suppose now that {exp (j'a.f)} is a frame over ( —7, 7). According to
+Lemma III there is a Si>0 such that the set of functions {exp iifij)} is a
+frame whenever       |jun —a„\ =Si. Let k be so large that /3/2*<ôi.        Then
+ {exp (tX*'/)} is a frame over ( —7, 7), and the left side of (37) therefore has
+a positive lower bound A'. Thus
+
+                                              E|/(Xn)|2
+                                  A'e-2ßy = _JL-
+
+                                                    /.:
+                                                              700N*
+Since |Xn —a»I =/3, Lemma II asserts that the right side of (37) has a finite
+upper bound. It follows that the set of functions {exp (iXn<)} is a frame over
+(-7.   7.)-
+   3. Abstract frames. For two vectors u and v of Hubert space, let (w, v)
+= (», u)* be the complex scalar product which defines the norm \\u\\ —(w, u)1'2.
+We define a frame to be an infinite sequence                      of nonzero   vectors   <f>x,
+                                                                                            <£2,$3, • • •
+such that for an arbitrary vector »,
+
+(38)                       ¿MM El (».*.)M^IHK  n
+
+
+Here A and B are positive constants called bounds of the frame. The numbers
+a„ = (», 0„), » = 1, 2, • • • , are called the moment sequence of the vector »
+relative to the frame. Since a frame is clearly a complete set, the finite linear
+combinations of the <f>„are everywhere dense. For the space -L2(0, 1) the scalar
+product is defined as (w, ») =/¡¡uix)v*(x)dx.
+     If {$„} is a frame and {c„¡ is a sequence of numbers such that Elc»l2
+< 00, then     Ecn0n   converges         and
+
+
+(39)                                Z^ Cn4>n
+                                     1
+                                                     á£E
+For if
+
+                                          Vic= E C»<^n.                                  k = 1' "0 = 0,
+                                                     n=l
+
+then for k^j     we have from Schwarz'                     inequality   and the frame condition,
+                                                      h
+                             »*      »ill2= E C„(0„,Vk—Vj)
+                                                   n=)+l
+
+
+
+                         ^{E             IcA^iBWv.-v^
+1952]             A CLASS OF NONHARMONIC FOURIER SERIES                                       359
+
+Hence
+                                                           k
+                              ||»*- »/II*
+                                        á B Z I¿„I2,
+and (39) follows.
+      This shows that a linear transformation                  5 is defined by the relation
+                                             OO
+
+(40)                              Sv = Z (».*")**•
+                                         n=l
+
+The transformation      5 is self-adjoint,         and, if we make use of (38), it follows
+that
+(41)                           A\\v\\2 ¿ (Sv,v) ^ B\\v\\2.
+This states that 5 is positive definite with positive upper and lower bounds.
+Hence the inverse 5_1 exists as a self-adjoint  transformation, and
+(42)                         -B-1IM|2
+                                    = (S~lv,v) è A-^vW2.
+    Lemma VIII. Let {<j>H}be a frame and let v be an arbitrary                 vector. Then there
+exists a moment sequence {ßn} such that
+                                                  00
+
+
+(43)                                  « = Z ft.*»
+                                           i
+and
+                                             00
+
+(44)                         #~lIMIa
+                                  = ZI ft I2= ^-1MI2-
+                                     i
+U {bn\ is any other sequence such that v= Z"                         bn<j>„,then {b„} is not the
+moment sequence of any vector, and
+
+(45)                  ZIM2=          Z|ft»|2 + Z I 6«-ft |2.
+                       ill
+
+    Proof. The first part of the lemma follows from the preceding discussion
+when we write v = Su, ßn = (u, *„). To prove (45) there is no loss of generality
+in supposing     Zl^»|2<°°-     Then 0=v —v=^l(bn     —ßn)<f>„, so, with v=Su,
+ßn = (u, <f>n),we have 0= Z(^» —ft»)ft» and (45) follows. The uniqueness         of
+the transformation     5_1 shows that {b„} is not a moment sequence.
+    Now define a new sequence        {$,} by 0„ = 5_1#n. Then {<#,} is a frame
+with the positive bounds A-1, B~l. For if v is any vector and u = S~lv, then
+
+       Z I (».*«)I2= Z I (Su,<¡>'n)
+                               I2= Z I («,*-)I2= (Su,u) = (S-\ v)
+        n                n                             n
+
+
+so the result follows from (42). If v is any vector, then it may be expanded                   by
+360                         R. J. DUFFIN AND A. C. SCHAEFFER                                             [March
+
+conjugate frames in the form
+
+(46)                           v = Z (».*»)*»= Z (*.*»)*»•
+                                       n                         n
+
+The following result also gives a method of finding the expansion                                  coefficients
+ßn by a rapidly converging process of successive approximations.
+    Theorem III. Let {<£„}be a frame,andlet                          ç>= 2/ (A-\-B). If v is an arbitrary
+vector, define
+                                J)fl) = ï-           p Z     (»I *»)*»,
+
+
+                             „<*+!)
+                                 = „<*)- p Z (»(*\*«)*»,                                                * ÊÎ1.
+
+Let*
+                     „(*>        .            (1)      (2)                  <*-l>       .
+                     ft     = P(» + V               + V      +•••+»                 , *»),
+                                M
+
+
+                          »*= Z ft *»•,<*>    ,
+
+
+                               n-1
+
+Then
+
+(47)                                 ||. - »J g (j^)*IM|.
+      Proof. The transformation               T = I—pS satisfies
+
+                                             I (Tv, v) I g ö||^||2,
+                                                                                                      5 + ^
+Since     T is self-adjoint,         ||Tv\\ úd\\v\\.         Thus     ||flu)|| a0|H|,        and   in general,
+||j;<«||ât9*||ï;||. Adding the relations *<*+»-i><*>--pSo<*> for k = 0, 1, • • • ,
+w —1, we see that         v<-m)—v= —vm. Thus                 ||i>„ —1/|| =||ü(m)|| = 0m||i>||.
+    A frame which fails to be a frame on the removal of any one of its vectors
+is termed an exact frame. It is not difficult to show by an example that the
+abstract analogue of Lemma VII is false.
+    Lemma IX. The removal of a vector from a frame leaves either a frame or an
+incomplete set.
+   Proof. Suppose         that <f>m
+                                  is removed               from the frame           {<p„}. As a special case
+of (43) we may write
+
+(48)                                              *, = Z ft»*»
+where (t>'m
+          = S~l(¡>mand ßn = (</>4>
+                                 *»)•
+      liftai,    then
+1952]             A CLASS OF NONHARMONIC FOURIER SERIES                                 361
+
+                                 4* = (1 - ßm^^ßn*»
+where E' indicates       the omission    of the wth term. Thus        if » is an arbitrary
+vector, then
+
+                I(»,*.)|»¡if í - ßm|-2{E' Ift.IM{E' I(*-,0 IM
+so
+              EI (v,*„)|2^ {i +11 - ft»h2E'lft.IME'l iv,<t>n)|2.
+It follows that the subset of {<£„} with n^m              is a frame, for in place of (38)
+wehave^'||»||2^       E'l (*».0»)| 2á-B|M|2 where
+
+
+                                 " i + |i-/3m|-2E'lft.|2
+       Now suppose    that   in (48) we have /3m=l.          We show in this case that
+{<i>n},n^m,     is incomplete.    Since/3m = l, we obtain
+                                        0 = E'AA.
+and this may be written
+
+                                      0 = E ßntn
+where ß'n= ßn if n^m,        Ä, = 0. But 0= E0</>n so relation           (45) with 6n = 0
+shows that
+
+                                     2EI¿l|2 = o.
+Thus /3„ = 0 for n^m.     Now ßn = i<j>'m,<f>„)where 4>¡n= S~1<j>m,and the vector
+</>4is therefore orthogonal  to all vectors of the set \<t>n\, n^m. Thus
+
+(49)                                 i<t>'m,4>n) = 8mn.
+
+    Lemma X. If {<j>n\is an exact frame, then {<£„) and {</>¿},where <f>¡,
+                                                                        —5_1<^„,
+are biorthogonal. Any sequence of numbers {c„} such that El c»l 2< °° î5 ^e
+moment sequence of some vector with respect to {<¡>n},and
+
+(so)                    ¿EkMIIE^nll                 ;g3Ekl2.
+    Proof. If {</>„}is an exact frame, then (49) is true for all m as well as
+for all » so {</>„}and {<j>'„}are biorthogonal.   Given the sequence {c„}, accord-
+ing to (39) the vector », » = E^^«-       has finite norm. Then
+
+                                 C„ = (», <t>'n)= (w, 4>n)
+
+where u = S~1v, so {cn} is the moment           sequence     of the vector u. Then (50)
+follows from (44).
+    Paley and Wiener have also given á Hubert space development of their
+theory. It is of interest to show the precise relationship with the present
+362                   R. J. DUFFIN AND A. C. SCHAEFFER                         [March
+
+theory. Their theory concerns an infinite sequence of vectors fi,f2, ■ ■ ■which
+is close to a complete orthonormal sequence fa, fa, ■ • ■. By "close" is meant
+that for any sequence of complex numbers {c„},
+
+(5i)                      ||Zc„(/»-*»)ll2= e2ZU»l2
+where 9, O<0<1,    is a constant independent  of {c„\. An arbitrary vector v
+may be represented    as v= Zc»^n and it may be shown that (51) implies
+that the sequence {/„} satisfies the frame condition (38). This was first
+pointed out by Boas [l]. Applying the triangle inequality to (51) gives
+
+(52)        (i -0)2Zkl2       = ||Z¿„/»||2á (i + 0)2Zkl2.
+ Hence {/„} fails to be complete on the removal of any one of the/„. Thus
+  {/„} is an exact frame.
+      Conversely suppose that {<p„} is an exact frame. Let/„ = 2(.B1/2-f-.<41/2)~1<pn
+ where A and B are the upper and lower bounds of the sequence {<£„}. Then
+ (50) may be expressed in the form (52) with e=(B1i2-A1'2)/(B1i2+A1'2).           It
+ was shown by Duffin and Eachus [5] that relation (52) for a complete set
+  {/„} implies the existence of a complete orthonormal set [fat} satisfying (51).
+ Thus the theory of Paley and Wiener and the theory of exact frames are equivalent.
+      The following theorem gives a new example of an exact frame. The proof
+ is omitted. Let {X„| be a sequence of uniform density d such that for some posi-
+tive constant r, {X„} and {X„+r} are the same set of points. Then the set of
+functions {exp (i\nt)} is an exact frame over ( —trd, wd).
+      4. Pointwise convergence.    Let {X„} be a sequence of uniform density
+ 1 and suppose that g(x)Ç.L2( —ir, ir). Then Theorem          I and Lemma VIII
+ together imply that corresponding       to each positive constant y, 0<y<ir,
+there exist expansion coefficients cn such that Zlc»l 2< °° and
+                                               If
+                             g(x) = l.i.m. Z cHe°"x,                  - 7 á it á 7.
+                                      JV-»w   -If
+
+We shall show that indeed the limit in the mean Z-jv c» exP (*Xn#) exists
+over the larger interval ( —tt, tt), defining a function g(x) in the latter interval.
+It is also to be shown that the nonharmonic       Fourier series actually converges
+to g(x) at a given point of ( —ir, ir) if and only if the ordinary Fourier series of
+g(x) converges to g(x) at this point. A similar statement          could be made for
+summability.    Among all sequences {c„} corresponding           to the same g(x) in
+(—7, 7) there exists a unique sequence which minimizes Zl c»l 2>according
+to Lemma VIII. Whether or not {c„} is this minimizing sequence does not
+effect the convergence of the nonharmonic        Fourier series.
+     Paley and Wiener have also obtained convergence             properties for their
+class of nonharmonic    Fourier series. Theorem IV is a generalization       of their
+result and has a sharper conclusion. The proof is along different lines than
+1952]            A CLASS OF NONHARMONIC FOURIER SERIES                                                         363
+
+that of these authors. The convergence theory of Paley and Wiener has been
+generalized along different lines by Levinson    [Sj.
+    In order to investigate the convergence of the nonharmonic Fourier series,
+we write
+                                                                         00    i*(X„    -     «)***
+                   pi\nz     —    ginx.gi(\n—n)x       —       g   niE
+                                                                                         k\
+and we recall that since {X„} is a sequence of uniform density                                        1, |X„ —n\ is
+bounded. Thus, in the notation of Theorem IV below,
+                                                 ¡V                       N
+                             gNix) = E                CneX"x=            E         Cntnix)
+                                              —Ñ                         -N
+
+are the partial sums of the nonharmonic                             Fourier series of gix).
+   Theorem IV. Let \bk} be a sequence of positive constants such that ^¿° b^k
+< =c, and write
+                                                                   00
+
+
+(53)                                    tn(x) = ?•»£*,»**
+                                                                   *=o
+
+where \ b„k\ Se*, n =0,          +1,     +2, • • ■ . If {cn\ is any set of complex numbers
+such that 231 Cn|2 < °°, then
+                                                               N
+(54)                                     grf(x) = E c„f„(x)
+                                                           n=-N
+
+converges in mean to a function gix) of class L2(— ir, ir). If {an} are the Fourier
+coefficients of gix) over (—ir, ir), then
+                                                           N
+(55)                  <f>NÍx)= (ir2 - x2) X) (c*tn(x) - aneinx)
+                                                        -N
+
+converges uniformly        to zero for —ir^x^w.
+       Proof. We have
+                                             N                                oo
+
+                           gNix) = E                  C»fn(¡0= E^*(*)*''
+                                          n=-JV                           *=0
+
+where
+                                                           N
+(56)                                ypffk(x) =          E          cnbnkeinx.
+                                                       n—N
+
+Then
+                                                       s
+                             ||^Art(*)||J =            E           \ cnb„k\ ûcbk
+364                     R. J. DUFFIN AND A. C. SCHAEFFER                        [March
+
+where c2= E-»       I c"l2- It is clear that
+(57)                             ^kix)        = l.i.m. ipNkix)
+
+
+exists and that
+
+                        fr*(*)|| á ch,                ypkix) ~ E cnbnkeinx.
+
+Then
+
+                     E *¥*(*) ^ E ||*Y*00||
+                     t=íi
+                                         á E *****
+                                              /;=/*                     /i=M
+
+
+so it follows that Eo *V*(*0 converges in mean to some function of class
+Lii —ir, ir). We define this function as g(x) and show that g(x) has the prop-
+erties given in the statement   of the theorem. Thus
+
+                              gix) = l.i.m. E *¥*(*)•
+                                              »->« t=o
+
+Then
+
+             ||«(«)
+                  - g*ix)\\
+                        ^ E IkGM«)- <M*»II
+                                    k~0
+
+
+                                è E **||***(*)- **(*)|| á ¿ r*cft*.
+
+But H^ivifc(x)—^(x)||—>0     as iV—>oo for each fixed A so it follows that
+
+                                  gix) = l.i.m. gjr(*).
+                                                      jit-mo
+
+
+   To investigate    the question        of convergence              we write
+                                       sin (N + 1/2) m
+                              DN{u) =-i-—L-
+                                           sin (m/2)
+for the Dirichlet kernel. Now (56), (57) show that
+                                         00
+
+
+                            M*) = E **(**(*).
+                                          JM* - 0).
+Now define /^(x)    by the relation
+                                                                00
+
+              M«) = GjW-
+                       Ar(*- 0) = E (*¥*(<).
+                                          ¿M*- 0).
+                                                               t=0
+
+Then/jv(x)   is the A^h partial sum of the Fourier series of gix) over (— w, ir) so
+1952]              A CLASS OF NONHARMONIC FOURIER SERIES                                     365
+
+              M«)      = (t2 - x2)(gN(x) - fN(x))
+
+                       = — Z f V2 - x2)(xk- t*)fa(t)DN(x
+                                                       - t)dt
+(58)
+
+                       = (t2 - =c2)Z (fa(t), (** - t*)DN(x - t)).
+                                     4=0
+
+We now show that         there is a constant        A independent         of k such that
+
+                               (tt2- ^X**-/*)!
+(59)                                                           ^Av\           X   = TT, It   = TT.
+                                 sin ((» - 0/2)
+By a change of variables,      this is equivalent         to the relation
+
+                              (1 -    x2)(x" -      t")
+                                                              < Ai             * ¿ l, U = i.
+                               sin (v(x - t)/2)
+
+Clearly it is sufficient to take x^O, in which case (x —t)/2 lies in the interval
+( — 1/2, 1). But u(u — l)/sin iru is bounded when u lies in this interval, so it is
+sufficient to show that
+                                           (1 -   x)(xk   -    th)
+                               h=
+                                        (x - t)(2 + t - x)
+is bounded by 4 for -lá/^l,     0gx = l. If -1^/^-1/2,      then Ä
+ á4(l-x)/(2-H-x)=4. If -l/2<igl,     then Ag2(l-x)(x*-/*)/(íc-í)
+= 2(l-x)(xk-1+txk-2+          ■ ■ ■ +tk~1)^2.
+     From(59) we see that
+        I (fa-(t), (^ - x2)(xk - tk)DN(x -t))\è                 ¿t*||*.(0||
+so
+
+
+(60)        Z I «-*('). (t2 - x2)(xk - tk)DN(x - t))\ = Ac Z *kbk.
+            k~M
+
+Given e, é > 0, choose M so large that
+
+                                      Ac^£irkbk<          —
+                                           k~M             3
+
+It is clear that
+                                  M-l
+                         (r2 - *2)Z (**W. (** - C)Dn(x - t))
+                                     *=o
+
+tends to zero as x—>±ir, so there is a positive number ô = 5(e) such that this
+sum is bounded by e/3 in the intervals ( —ir, —7T+ S) and (tt —ô, tt). If x lies
+366                          R. J. DUFFIN AND A. C. SCHAEFFER
+
+in the interval      —ir + o ^x^ir          —8 and k=0,        1, 2, • • • , M—Í, then
+                                                           xk — tk
+                                      Hkix, t) = —
+                                                      sin ((* - 0/2)
+is a continuous          function    of x and t, —ir^t^ir.           Then
+
+  (**(/), (** - tk)DNix - t)) = — f                   tkit)Hkix,     t) sin [N + —)(*-              t)dt,
+                                             2x J_T                           \         2/
+
+and a simple extension               of the Riemann-Lebesgue    lemma shows that this
+tends to zero uniformly              in x, \x\ ^x —5, as N tends toward infinity. Thus
+choose N so large that
+
+                         i*2 - x2) E (**(0, (** - ñDsix                - i)) < —
+                                     fr=0                                      3
+for 1*1 <7T—5. Then
+                                              I (pNix)I < e,                             - i á ï á ir,
+and the theorem           follows.
+                                              References
+      1. R. P. Boas, Jr., A trigonometric moment problem, J. London Math. Soc. vol. 14 (1939)
+pp. 242-244.
+    2. -,        Entire functions bounded on a line, Duke Math J. vol. 6 (1940) pp. 148-149.
+    3. -,        A general moment problem, Amer. J. Math. vol. 63 (1941) pp. 361-370.
+    4. D. G. Bourgin, A class of sequences of functions, Trans. Amer. Math. Soc. vol. 60 (1946)
+pp. 478-518.
+      5. R. J. Duffin and J. J. Eachus,      Some notes on an expansion      theorem of Paley and Wiener,
+Bull. Amer. Math. Soc. vol. 48 (1942) pp. 850-855.
+      6. R. J. Duffin and A. C. Schaeffer,      Power series with bounded coefficients, Amer. J. Math,
+vol. 67 (1945) pp. 141-154.
+      7. I. Ibragimov,     On the completeness of systems of analytic functions,         Bull. Acad.     Sei.
+URSS. Sér. Math. vol. 13 (1949) pp. 45-54.
+      8. N. Levinson, Gap and density theorems, Amer. Math. Soc. Colloquium              Publications,   vol.
+26, 1940, chaps. I and IV.
+      9. R. E. A. C. Paley and N. Wiener,          Fourier transforms       in the complex domain, Amer.
+Math. Soc. Colloquium Publications, vol. 19, 1934, chaps. I and VII.
+      10. M. Plancherel      and G. Pólya,     Functions    entières et intégrales   de Fourier   multiples,
+Comment. Math. Helv. vol. 10 (1937-1938) pp. 110-163.
+      11. E. C. Titchmarsh, The theory of functions, Oxford, 1932, chap. III.
+      Carnegie Institute    of Technology,
+          Pittsburgh,   Pa.
+      University of Wisconsin,
+          Madison, Wis.
+

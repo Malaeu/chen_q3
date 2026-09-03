@@ -1,0 +1,1238 @@
+      Prolate  Spheroidal  Wave  Functions, 
+Fourier  Analysis  and  Uncertainty  —  I 
+
+By  D.  SLEPIAN  and  II.  O.  POLLAK 
+
+(Manuscript  received  August  1,  1960) 
+
+A  complete  set  of  bandlimited  functions  is  described  which  possesses  the 
+curious  property  of  being  orthogonal  over  a  given  finite  interval  as  well  as 
+over  ( —  °° ,  °°  ) .  Properties  of  the  functions  are  derived  and  several  appli- 
+cations to  the  representation  of  signals  are  made. 
+
+I.  INTRODUCTION 
+
+It  is  pointed  out  in  this  paper  that  the  eigenfunctions  of  the  finite 
+Fourier  transform  are  certain  prolate  spheroidal  wave  functions.  These 
+eigenfunctions  properly  extended  possess  properties  that  make  them 
+ideally  suited  for  the  study  of  certain  questions  regarding  the  relation- 
+ship between  functions  and  their  Fourier  transforms.  Here  we  shall 
+study  the  functions  in  some  detail  and  present  some  applications  to  the 
+representation  of  bandlimited  functions.  The  property  that  we  shall  be 
+most  concerned  with  is  the  orthogonality  of  the  functions  over  two  dif- 
+ferent intervals.  The  paper1  by  Landau  and  Pollak  which  follows  draws 
+on  this  material,  establishes  other  properties  of  the  functions  and  pro- 
+vides further  examples  of  their  application. 
+
+After  some  definitions  contained  in  the  next  section,  we  proceed  to 
+state  without  proof  in  Section  III  our  main  results.  Certain  applications 
+of  these  results  are  then  given  in  Section  IV.  The  remaining  sections  of 
+the  paper  are  devoted  to  establishing  the  results  already  stated. 
+
+II.  NOTATION 
+
+In  what  follows,  we  denote  by  £002  the  class  of  all  complex  valued  func- 
+tions f(t)  denned  on  the  real  line  and  integrable  in  absolute  square. 
+We  adopt  the  notation 
+
+11/(0  IL'-fj/COl1*  (i) 
+
+43 
+
+
+44  THE   BELL   SYSTEM    TECHNICAL   JOURNAL,    JANUARY    1901 
+
+and  refer  to  ||/(0  ||M*  as  the  total  energy  of  f(t)  and  refer  to  ||/(0  \\a2 
+as  the  energy  off(t)  in  the  interval  (—A, A).  In  an  analogous  manner,  we 
+denote  by  £A  the  class  of  all  complex  valued  functions  f(t)  defined  for 
+— A  ^  t  ^  A  and  integrable  in  absolute  square  in  the  interval  ( —  A, A). 
+Functions  in  £„"  possess  Fourier  transforms.  Upper  and  lower  case 
+versions  of  a  letter  will  always  denote  a  Fourier  pair.  We  write,  for  ex- 
+ample, 
+
+/(*)  =^  f  FM**  dec,  (2) 
+
+F(»)  -    f f(t)e~iut  dt.  (3) 
+
+J— 00 
+
+We  refer  to  t  as  time,  w  as  angular  frequency  and  o)/2r  as  frequency.  The 
+functions  F(u)  are  also  integrable  in  absolute  square.  In  this  notation 
+ParsevaPs  theorem  is 
+
+lj{t)W)dt  =  ^  JTf(«)S5)  &amp;»&gt;  (4) 
+
+We  denote  by  (B  the  subclass  of  £MZ  consisting  of  those  functions, 
+f(t),  whose  Fourier  transforms,  F(o&gt;),  vanish  if  |  oi  |  &gt;  ft.  Here  ft  = 
+27I-1F  is  a  positive  real  number  fixed  throughout  this  paper.  Every  mem- 
+ber, f(t),  of  (B  can  be  written  as  a  finite  Fourier  transform  of  a  func- 
+tion integrable  in  absolute  square: 
+
+fit)  =1  (*¥{»)*"&amp;*  (5) 
+
+Zir  J— a 
+
+Functions  in  (B  are  called  bandlimited  and  (B  will  be  referred  to  as  the 
+class  of  bandlimited  functions.  It  follows  from  (5)  that  members  of  (B 
+are  entire  functions  of  the  complex  variable  t. 
+
+From  any  function  f(t)  in  &amp;J  we  can  obtain  a  function,  Bf(t),  con- 
+tained in  (B  by  the  rule 
+
+Bf(t)  =  i-  f    F{w)eM  du,  (6) 
+
+Zir  J-a 
+
+where  F(&lt;a)  is  given  by  (3).  We  call  Bf(t)  the  bandlimited  version  of 
+f(t).  We  regard  B  as  an  operator  whose  effect  on  a  function  in  £,J  is  to 
+produce  its  bandlimited  version.  In  electrical  engineering  terms,  Bf(t) 
+results  from  passing  f(t)  through  an  ideal  low-pass  filter  with  angular 
+cutoff  frequency  ft. 
+
+We  denote  by  3D  the  subclass  of  functions,  f(t),  of  £,J  each  of  which 
+vanishes  for  \t\&gt;  T/2.  Here  T  is  a  positive  real  number  fixed  through- 
+
+
+P UO LATE    SPHEROIDAL   WAVE    FUNCTIONS I  45 
+
+out  this  paper.  Members  of  3D  are  called  timelimited  and  £&gt;  will  be  re- 
+ferred to  as  the  class  of  timelimited  functions. 
+
+From  any  function /(f)  in  £&gt;J  we  can  obtain  a  function  Df(t)  contained 
+in  30  by  the  rule 
+
+\t\£T/2 
+
+(7) 
+1 1 1  &gt;  T/2. 
+
+We  call  Df(t)  the  timelimited  version  of  f{t).  We  regard  D  as  an  operator 
+whose  effect  on  a  function  of  &amp;J  is  to  produce  its  timelimited  version. 
+
+We  shall  use  the  notation  f(t)  €  5  to  mean  that  the  function  f(t) 
+belongs  to  the  class  5  of  functions. 
+
+III.    RESULTS 
+
+The  statements  made  below  are  proved  in  Sections  V  and  VI. 
+Given  any  T  &gt;  0  and  any  ft  &gt;  0,  we  can  find  a  countably  infinite  set 
+of  real  functions  M0,M0,M0,-  •  ■  and  a  set  of  real  positive  numbers 
+
+Xo  &gt;  Xi  &gt;  X2  &gt;  •  •  •  (8) 
+
+with  the  following  properties: 
+
+i.  The  4/i(t)  are  bandlimited,  orthonormal  on  the  real  line  and  com- 
+plete in  (B: 
+
+*0)to(0  *  -  (?'      \*L\      *,i  =  o,i,2, ....      (9) 
+
+ii.  In  the  interval  -T/2  ^  t  ^  T/2,  the  fy(t)  are  orthogonal  and 
+complete  in  £Tn'- 
+
+.772  (Q  i    -,£    j 
+
+fi(t)fj(t)dt  =  {'  .  _.        i,j  =  0,1,2,.-..     (10) 
+
+J— T/2  {hi  )  *    —    J 
+
+iii.  For  all  values  of  t,  real  or  complex, 
+
+x,^,)  =  r sin "(( -  «&gt;  *«  ,/s,   ,•  =  o,  i, 2, ... .  (id 
+
+J-r/2       x(£  —  S) 
+
+Further  properties  of  the  i£'s  are  given  in  Sections  V  and  VI. 
+
+The  notation  used  above  conceals  the  fact  that  both  the  ^'s  and  the 
+X's  are  functions  of  the  product  ftT.  When  it  is  necessary  to  make  this 
+dependence  explicit,  we  write  X,  =  X,(c),  ypi(t)  =  \pi(c,t),  i  =  0,1,2,-  •  •, 
+where  2c  =  QT. 
+
+Some  values  of  X,(c)  are  given  in  Table  I.  It  is  to  be  noted  that  for  a 
+fixed  value  of  c  the  X,  fall  off  to  zero  rapidly  with  increasing  i  once  i  has 
+
+
+£ 
+
+
+I 
+
+
+46 
+
+
+THE    BELL   SYSTEM    TECHNICAL    JOURNAL,    JANUARY    19G1 
+
+
+Table  I — Values 
+
+OF   X„(c) 
+
+LB(C)    X    10-"' 
+
+(O 
+
+c  =  0.5 
+
+c  =  1.0 
+
+c  =  2.0 
+
+c  =  4.0 
+
+c  =  8.0 
+
+L 
+
+P 
+
+L 
+
+P 
+
+L 
+
+P 
+1 
+
+L 
+
+P 
+
+L 
+
+P 
+
+0 
+
+3.0969 
+
+1 
+
+5.7258 
+
+1 
+
+8.8056 
+
+9.9589 
+
+1 
+
+1.0000 
+
+0 
+
+1 
+
+8.5811 
+
+3 
+
+6.2791 
+
+2 
+
+3.5564 
+
+1 
+
+9.1211 
+
+1 
+
+9.9988 
+
+1 
+
+2 
+
+3.9175 
+
+5 
+
+1.2375 
+
+3 
+
+3.5868 
+
+2 
+
+5.1905 
+
+1 
+
+9.9700 
+
+1 
+
+3 
+
+7.2114 
+
+8 
+
+9.2010 
+
+6 
+
+1.1522 
+
+3 
+
+1.1021 
+
+1 
+
+9.6055 
+
+1 
+
+4 
+
+7.2714 
+
+11 
+
+3.7179 
+
+8 
+
+1.8882 
+
+5 
+
+8.8279 
+
+3 
+
+7.4790 
+
+1 
+
+5 
+
+4.6378 
+
+14 
+
+9.4914 
+
+11 
+
+1.9359 
+
+7 
+
+3.8129 
+
+4 
+
+3.2028 
+
+1 
+
+6 
+
+2.0413 
+
+17 
+
+1.6716 
+
+13 
+
+1.3661 
+
+9 
+
+1.0951 
+
+5 
+
+6.0784 
+
+2 
+
+7 
+
+6.5766 
+
+21 
+
+2.1544 
+
+16 
+
+7.0489 
+
+12 
+
+2.2786 
+
+7 
+
+6.1263 
+
+3 
+
+8 
+
+1.6183 
+
+24 
+
+2.1207 
+
+1!) 
+
+2.7768 
+
+14 
+
+3.6066 
+
+9 
+
+4.1825 
+
+4 
+
+exceeded  (2/ir)c.  (The  significance  of  this  will  be  discussed  in  detail  in 
+a  later  paper.)  Because  of  (9)  and  (10),  namely  ||  ^,-  H^,2  =  1,  ||  ^,  ||7./22 
+=  Xj ,  a  small  value  of  A;  implies  that  \ff{(t)  will  have  most  of  its  energy 
+outside  the  interval  (  —  T/2,T/2)  whereas  a  value  of  A,  near  1  implies 
+that  4n(t)  will  be  concentrated  largely  in  (-T/2,T/2).  This  behavior 
+of  the  i^'s  can  be  clearly  seen  in  Figs.  1  through  5.  Figs.  1  through  4 
+show  \J/Q(c,t),  \l/i(c,t),  faicjt)  and  fo(c,t)  for  several  different  values  of  c. 
+For  c  =  0.5,  or  (2/ir)c  —  0.3183,  as  shown  on  Fig.  1,  \f/2  and  \p3  are  prac- 
+tically zero  in  the  interval  (-T/2,T/2).  For  c  =  4,  or  (2/t)c  =  2.546, 
+as  shown  on  Fig.  4,  \f/0  is  largely  concentrated  in  the  interval  ( —  T/2, 
+T/2).  Fig.  5  compares  \f/o(c,t)  for  several  different  values  of  c. 
+
+
+IV.    SOME   APPLICATIONS 
+
+4.1  Extrapolation  of  a  Bandlimited  Function 
+
+It  is  sometimes  desired  to  extrapolate  a  bandlimited  function  known 
+only  on  the  interval  (  —  T/2, T/2)  to  values  outside  this  interval.  Since 
+any  /  £  ®  is  an  entire  function,  this  extrapolation  can  be  done  exactly 
+in  principle.  One  could,  for  example,  calculate  successive  derivatives  of 
+/at'some  point  in  (  —  T/2, T/2)  and  form  a  Taylor  series  representation 
+which  would  converge  everywhere.  In  practice,  however,  such  a  Taylor 
+series  would  necessarily  be  truncated  and  the  resultant  approximation 
+to  f(t)  would  be  a  polynomial  which  for  sufficiently  large  values  of 
+1 1 1  would  give  a  very  poor  approximation  to  /.  This  approximation  is 
+not,  of  course,  bandlimited. 
+
+The  functions  \{/i  provide  an  alternative  approach.  Since  /  6  (B,  we 
+can  write,  from  i.,  for  all  t 
+
+
+fit)  -  1^(0, 
+
+
+(12) 
+
+
+PROLATE   SPHEROIDAL   WAVE   FUNCTIONS  —  I 
+
+
+47 
+
+
+0 
+•— 
+
+
+N\ 
+
+
+\ 
+
+\ 
+\ 
+
+\ 
+_L_ 
+
+V 
+
+
+48  THE    BELL    SYSTEM    TECHNICAL  JOURNAL,    JANUARY    19fil 
+
+
+h     * 
+
+
+bJ3 
+
+
+PROLATE   SPHEROIDAL  WAVE  FUNCTIONS  —  I 
+
+
+49 
+
+
+p 
+
+
+fcJD 
+
+
+50  THE    BELL   SYSTEM    TECHNICAL   JOURNAL,    JANUARY    19G1 
+
+
+PROLATE    SPHEROIDAL    WAVE    FUNCTIONS  —  I 
+
+
+51 
+
+
+/I 
+
+o 
+
+O 
+
+ID 
+i/l 
+
+O 
+
+in 
+
+o 
+
+* 
+1/1 
+
+1*1 
+o 
+
+fl 
+
+1/1  / 
+d  / 
+
+II  /        / 
+ul       / 
+
+o 
+
+\ 
+
+in 
+
+11  / 
+
+^ 
+
+) 
+
+o 
+
+ii 
+
+u 
+
+■n 
+
+u 
+o 
+
+a. 
+
+
+(13) 
+
+
+52  THE   BELL  SYSTEM   TECHNICAL   JOURNAL,    JANUARY    1961 
+
+where 
+
+On    =     f     f(t)+n(t)  dt, 
+
+Za,r=  ff(ty-dt 
+
+0  J-x 
+
+and  the  convergence  in  (12)  is  in  the  mean  square  sense 
+lim   f    1/(0  -  E&lt;Mfr„(ol  dt  =  0. 
+
+JV-.00    J-oo   L  J 
+
+Multiply  (12)  by  \f/j(t),  integrate  and  use  (10).  There  results 
+
+1    fT'2 
+
+On    =  V    \         f(t)+„(t)  dt.  (14) 
+
+The  coefficients  in  (12)  can  be  determined  by  (14)  from  values  of  f(t)  in 
+the  interval  (-T/2,T/2). 
+The  above  result  suggests  approximating  f(t)  for  all  t  by 
+
+fN{t)  =  Ea.rt.(0  (15) 
+
+0 
+
+with  the  a„  given  by  (14).  The  approximation  (15)  is  itself  bandlimited. 
+The  mean  squared  error  is 
+
+f  [/(*)  -  JAOfdt  =   Za,,2  (1G) 
+
+J—  ao  JV+1 
+
+and  by  (13)  can  be  made  as  small  as  desired  by  making  iV  sufficiently 
+large.  In  the  sense  of  (16),  the  extrapolation  remains  good  for  all  t. 
+The  error  in  the  fit  of  fN  to/  in  ( - T/2,T/2)  is  given  by 
+
+,  Til 
+
+(/-  fsfdt   =    EonV  (17) 
+
+J-T/2  N+l 
+
+As  the  X„  approach  zero  rapidly  for  sufficiently  large  n,  it  may  happen 
+that  (17)  is  small  for  values  of  N  for  which  (16)  is  still  large.  The  fit  of 
+fN  inside  the  interval  should  not  be  taken  as  an  indication  of  the  fit  else- 
+where. 
+
+4.2  Approximation  in  an  Interval  by  a  Bandlimited  Function 
+
+Suppose  now/(0  &lt;E  £T/22  is  known  in  the  interval  (—T/2,T/2)  but 
+/  is  not  necessarily  a  piece  of  a  bandlimited   unction.  From  i.  above  it 
+
+
+PROLATE   SPHEROIDAL  WAVE   FUNCTIONS — I  53 
+
+follows  that  fit)  may  still  be  represented  by  (12)  with  a's  given  by  (14), 
+but  this  representation  is  valid  now  only  for  \t\  ^  T/2.  If  indeed  /  is 
+not  a  piece  of  a  bandlimited  function,  the  series  (12)  will  certainly  not 
+converge  in  mean  square  over  the  whole  real  line. 
+
+The  foregoing  suggests  the  utility  of  finite  sums  of  the  form  (15)  as 
+approximants  to  bandlimited  functions  having  a  prescribed  form  in  the 
+interval  (  —  T/2,T/2).  The  conditions  of  bandlimitation  and  prescribed 
+form  in  (  —  T/2,T/2)  are,  of  course,  in  general  incompatible  (unless  in- 
+deed, the  prescribed  form  is  a  piece  of  a  bandlimited  function).  How- 
+ever, finite  sums  of  the  form  (15)  taken  for  all  t  with  a's  computed  by 
+(14)  permit  approximations  by  bandlimited  functions  to  a  prescribed 
+/  €  £  r/22-  We  are  assured  by  ii.  that  the  approximation  can  be  made  as 
+good  as  desired  in  the  sense  that  the  right  side  of  (17)  approaches  zero 
+for  large  N.  We  have,  however, 
+
+
+f  fs\t)  di  =  £  aj 
+
+J-oo  0 
+
+
+and,  if/  is  not  a  piece  of  a  bandlimited  function,  ]5£  a„2  grows  without 
+bound  for  increasing  iV.  Thus,  in  approximating  a  piece  of  a  nonband- 
+limited  function  by  a  bandlimited  function,  we  exchange  goodness  of 
+fit  in  (  —  T/2,T/2)  with  wildness  of  behavior  outside  this  interval. 
+
+We  now  impose  an  energy  restriction.  Given  /  6  £772  •  What  g  6  (B 
+with  prescribed  energy  ||  g  \\J  =  E  minimizes  \\f  —  g  \\t/2  ?  Let 
+
+/=  E«fc*.(0.         |t|  £  T/2, 
+
+g  =  EW.(0,        -«  &lt;  t  &lt;  °°- 
+Then  a  simple  argument  gives 
+
+,  an\n 
+
+On    = 
+
+
+where  y.  is  the  unique  positive  number  which  satisfies 
+
+2\  2 
+
+
+(/I   +   Xn)2' 
+
+
+If  the  constraint  on  g  is  that  the  energy  outside  (  —  T/2,T/2)  is  pre- 
+scribed, ||  g  ||  J  —  |!  g  ||  t/2  =  E',  rather  than  the  total  energy,  the 
+result  is 
+
+°"       M(l-X„)  +  X„' 
+
+
+54  THE    BELL   SYSTEM   TECHNICAL   JOURNAL,    JANUARY    1961 
+
+where  y.  (again  positive)  is  chosen  to  satisfy 
+
+
+«  2\  2 
+an  An 
+
+
+■pi  __  y» »"  ^n 
+
+~  ^[M(l  -  A.)  +X„]2' 
+
+
+4.3  Some  Extremal  Properties  of  \p0(t) 
+
+The  ^'s  possess  a  number  of  interesting  extremal  properties.  The  most 
+important  of  these,  the  fact  that  f0  has  the  largest  energy  in  ( —  T/2,T/2) 
+of  all  function  in  (B  of  unit  total  energy,  is  discussed  in  detail  by  Landau 
+and  Pollak.1  We  comment  here  on  two  other  extremal  properties  of  \f/0 . 
+
+Let  f(t)  €  £.J  have  total  energy  E  =  \\f  \\J.  The  timelimited  ver- 
+sion of  f(t)  has  total  energy  ED  =  ||  Df  \\J  =  \\f  ||r/22  ^  E.  Since  Df 
+cannot  be  bandlimited,  its  Fourier  transform  has  nonvanishing  energy 
+in  |  «  |  &gt;  ft.  The  bandlimited  version  of  Df,  namely  BDf,  will  therefore 
+have  total  energy  EBd  &lt;  ED  ^  E.  The  operation  BD  transforms  a 
+member  of  £,J  into  a  member  of  (B  with  smaller  total  energy.  Which 
+members  of  £„2  lose  the  smallest  fraction  of  their  energy  under  such  a 
+transformation?  That  is,  for  which  /  €  £j  is  y.  =  \\  BDf  \\J/\\f  \\J  a 
+maximum? 
+
+The  answer  to  this  question,  unique  except  for  an  arbitrary  multi- 
+plicative constant,  is  D\f/0(t).  This  may  be  seen  as  follows.  From  (3),  (6) 
+and  the  definition  (7)  of  D, 
+
+BDf {t)  m  i-  f    due'*1  f      dsf(s)e-iu' 
+
+Z-K   J- it  J-T/2 
+
+(18) 
+=   /       pu(t  -  s)f(s)  ds, 
+
+J-TI2 
+
+
+r/j 
+
+-r/2 
+
+where  we  have  written 
+
+,   s        sin  Qr         1     fa   .      iuT  ,      v 
+
+p&lt;At)  =  =  —        du  e    .  (19) 
+
+ITT  ZTT  J-il 
+
+Note  that  pn(r)  is  an  even  function  of  r  and  that  from  (19)  and  Parse- 
+val's  theorem  (4)  it  follows  that 
+
+/     pn(t  -  u)pu(u  —  s)  du  =  pu(t  —  s).  (20) 
+
+J—  00 
+
+Therefore, 
+
+
+PROLATE    SPHEROIDAL    WAVE    FUNCTIONS  —  I  55 
+
+\\BDf(u)\\J  =   f    (lit  [BDf(u)][BDf(u)} 
+
+J—  00 
+
+/»  .  r/2  /.  T/2 
+
+du  /      dt         dsPa(t  -  u)pa(u  -  s)f(t)f(s)     (21) 
+oo  J- T/2  •*- T/2 
+
+Zr/2         /•  r/2 
+tft  /       f/sp„(f  -  s)f(t)f(s). 
+T/2  J-T/2 
+
+Here  we  have  used  (20)  and  the  fact  that  pa  is  real  and  even. 
+
+Since  from  (21)  we  see  that  ||  BDf  \\J  depends  only  on  values  of  /  in 
+( —  T/2,T/2),  it  follows  that  y.  is  equal  to  the  maximum  of 
+
+fr/2          *  T/2 
+dt  \       dsPa(t  -  s)f(t)f(s) 
+T/2  J-T/2 
+
+9 ITTn     2  rr/2 
+
+II  J 'I T'2  \f(t)\dt 
+
+J— T/2 
+
+over  all/  €  £t/22.  It  is  well  known  that  the  solution  to  this  problem  is 
+v  =  X0 ,  where  X0  is  the  largest  eigenvalue  of  the  integral  equation 
+
+r  T/2 
+
+X/(0  =  pa(t  -  s)f(s)  ds,        |  1 1  £  T/2,  (22) 
+
+J-T/2 
+
+and  that  v  attains  the  value  A0  for  /  equal  to  a  corresponding  eigenfunc- 
+tion.  We  shall  see  later  that  ^0  is  such  an  eigenf unction.  Thus/  agrees 
+with  ^o  in  (-  T/2, T/2)  and  so  D^0  is  a  function  in  £,J  for  which  n 
+attains  its  maximum  value  Ao . 
+
+We  now  ask  which/  €  (B  as  opposed  to/  €  £oo2  maximizes  n.  That  is, 
+which  bandlimited  function  loses  the  least  (fractional)  energy  when  first 
+timelimited  then  bandlimited?  The  answer  is  ^o  and  the  corresponding 
+value  of  n  is  Xo2. 
+
+To  see  this,  introduce  the  representation  (5)  for  /  £  (B  into  the  nu- 
+merator [as  given  by  (21)]  of  m-  There  results 
+
+\\BDf\\J  =  ~        dta        da  F(u)F{&lt;S)K{ufif)t 
+
+4ir  J-si       J-a 
+
+where  we  have  set 
+
+/T/2  -T/2 
+
+dt  dt'  pn(«  -  t')eiat  e~iu  '  . 
+
+T/2         J-T/2 
+
+To  transform  this  expression  further,  introduce  the  representation  (19) 
+to  obtain 
+
+
+56  THE    BELL   SYSTEM    TECHNICAL   JOURNAL,    JANUARY    1961 
+
+.a  e  Til  p  T/2 
+
+
+K{u&gt;,J)  =  ±  /     dw"  \       dt  e^-^  /       dt'  e-11'^'-^ 
+
+6TT   J- a  J-T/2  J- 772 
+
+=  2ir   f     da)" Pt'2\u  —  o)")pt/2\0)     —  to  ) 
+J-a 
+
+=  2tpt/2     (w,cu  ). 
+
+By  Parseval's  theorem,  (4),  the  denominator  of  p  can  be  written  as 
+
+ll/IU2  =  i/V(co)|2^. 
+
+Our  task,  then,  is  to  maximize 
+
+/a  »a 
+
+da)  J      dui  pr/2      (10,(1)  )  F  (a)  F  (a) 
+
+
+1/       II  '-  Iff.'  .  \       {■'■  I 
+
+do) 
+
+
+[    |F(«) 
+
+
+over  all  F  £  £n2.  The  solution  to  this  problem  is  /x  =  p0 ,  where  p0  is 
+the  largest  eigenvalue  of  the  integral  equation 
+
+-a 
+
+XF(co)  =    /     PTl2i2)Uu')F(a)  dJ. 
+J-a 
+
+Now  pr/2(2) («,«')  is  the  first  iterate  of  pr/2(w  —  a/).  Therefore,  p0  is  the 
+square  of  the  largest  eigenvalue  of  the  integral  equation 
+
+fa 
+
+XF(co)   =    /      pr/2(w  —  to  )F(co  )  do)  . 
+J-a 
+
+A  change  of  variables  reduces  this  equation  to  the  form  of  (22)  whence 
+it  is  seen  that  p  =  X02  and  that  F(u))  =  ^(tdT/^ft)  for  |  co  |  f£  fi.  From 
+(29),  which  will  be  established  later,  it  follows  that/(0  =  ^o(0- 
+
+4.4  Problems  Concerning  Bandlimited  Noise 
+
+Much  of  the  theory  of  detection,  parameter  estimation  and  predic- 
+tion of  signals  in  noise  when  observations  are  made  in  a  finite  time  is 
+based  on  the  Karhunen-Loeve  representation  of  the  noise.  (See  Ref.  2 
+for  such  a  treatment  of  these  problems.)  This  representation  involves 
+expansions  in  terms  of  the  eigenf unction  solutions  of  a  certain  integral 
+equation.  When  the  noise  in  question  is  second  order  stationary  and  with 
+angular  frequency  spectral  density  uniform  in  (—  £2,ft)  and  zero  else- 
+where (bandlimited  white  noise),  the  integral  equation  in  question  is 
+identical  with  (19),  (22).  The  function  ^,  and  eigenvalues  Xi  thus  play 
+an  important  role  in  numerous  questions  concerning  bandlimited  white 
+
+
+PROLATE    SPHEROIDAL   WAVE    FUNCTIONS  —  I  57 
+
+noise  observed  for  a  finite  time.  Their  role  in  this  connection  has  been 
+pointed  out  previously  in  Ref.  3. 
+
+V.   THE  PROLATE  SPHEROIDAL   WAVE  FUNCTION 
+
+The  functions  fc(c,t)  are  scaled  versions  of  certain  of  the  angular 
+prolate  spheroidal  wave  functions.  A  number  of  books4'5,6,  treat  the 
+prolate  spheroidal  wave  functions  in  detail.  We  will  draw  freely  from 
+this  literature.  We  adopt  the  notation*  of  Flammer.4 
+
+When  c  is  real,  the  differential  equation 
+
+(1  _&lt;•)*?_  2* +(x-«Y)«-0  (23) 
+
+at-  at 
+
+has  continuous  solutions  in  the  closed  t  interval  [—1,1]  only  for  certain 
+discrete  real  positive  values  0  &lt;  xo(c)  &lt;  Xi(c)  &lt;  x«(&lt;0  &lt;  •  •  •  of  the 
+parameter  x-  Corresponding  to  each  eigenvalue  Xn(c),  n  =  0,1,2,  •  •  • 
+there  is  a  unique  solution  S0n(c,t)  such  that  S0n(c,0)  =  P„(0)  where 
+Pn(t)  is  the  nth  Legendre  polynomial.  The  functions  S0n(c,t)  are  called 
+angular  prolate  spheroidal  functions.  They  are  real  for  real  t,  are  continu- 
+ous functions  of  c  for  c  ^  0,  and  can  be  extended  to  be  entire  functions 
+of  the  complex  variable  t.  They  are  orthogonal  in  (  —  1,1)  and  are  com- 
+plete in  £j2.  S0n(c,t)  has  exactly  n  zeros  in  ( -1,1),  reduces  to  P„(t)  uni- 
+formly in  [—1,1]  as  c  — &gt;  0,  and  is  even  or  odd  according  as  n  is  even  or 
+odd,  n  =  0,1,2,  •  •  •  .  The  eigenvalues  xn(c)  are  continuous  functions 
+of  c'and  x»(0)  =  n(n  +  1),  n  =  0,1,2, 
+
+A  second  set  of  solutions  R0n(l)(c,t),  n  =  0,1,  ••■  ,  called  radial  prolate 
+spheroidal  functions,  which  differ  from  the  angular  functions  only  by  a 
+real  scale  factor, 
+
+R0n{1)(c,t)  =  kn(c)S0n(c,t), 
+
+are  of  use  in  many  applications.  These  radial  functions  are  normalized 
+so  that 
+
+
+flo„(1)(c,0  -»  -cos  [at  -  J(n  +  l)ir] 
+ct 
+
+
+as  t  — *  oo . 
+
+The  equations 
+
+
+^  [Ro^UVfSonict)  =   f  Sin;,(*       *}  S0n(c,s)  ds,  (24) 
+
+t  J-i     ir{t  —  S) 
+
+2inR0nW(c,l)S0n(c,t)  =  f_  eict,S0n(c,s)  ds        n  =  0,  1,2,  ■  •  •       (25) 
+
+*  The  reader  should  he  cautioned  that  various  authors  disagree  not  only  on 
+notation  for  these  functions,  hut  also  in  their  method  of  normalization. 
+
+
+58  THE    BELL   SYSTEM    TECHNICAL   JOURNAL,    JANUARY    1961 
+
+are  both  special  cases  of  more  general  integral  relations  satisfied  by 
+prolate  spheroidal  functions  that  can  be  found  in  the  literature.  They 
+are  valid  for  all  t,  real  or  complex. 
+
+Equation  (24)  shows  that  S0n(c,t)  is  a  solution  of  the  integral  equa- 
+tion 
+
+V(0  =  I  Pc(t  -  s)f(s)  da,        \t\£l  (26) 
+
+corresponding  to  the  eigenvalue 
+
+Xn(c)  =  21  [Rj^icDf,        n  =  0, 1,2,  •  •  ■  .  (27) 
+
+
+TV 
+
+
+Here  pc{r)  is  given  by  (19).  Indeed,  the  completeness  of  the  S0n  in  £i2 
+assures  us  that  the  quantities  (27)  are  the  only  eigenvalues  of  (26)  and 
+that  if  these  quantities  are  distinct,  the  Son  are  (apart  from  multipli- 
+cative constants)  the  unique  £*  solutions  of  (26).  If  several  of  the  quan- 
+tities (27)  are  equal  for  different  values  of  n,  then  linear  combinations 
+of  the  corresponding  SQn  will  also  satisfy  (26).  Within  the  sense  of  this 
+degeneracy,  then,  the  *So„  are  unique  solutions  of  (26).  In  Section  VI 
+we  shall  see,  indeed,  that  this  degeneracy  does  not  occur. 
+
+Equation  (19)  and  Bochner's  theorem  (Ref.  8,  Theorem  23,  p.  95) 
+show  that  the  kernel  of  (26)  is  positive  definite.  The  quantities  (27) 
+are  therefore  strictly  positive.  Set 
+
+
+k,(c)]2  =  f_  [San(c,t)f  dt. 
+
+
+We  now  finally  define 
+
+
+iMc*)  =  ^x;(c&gt;  S0n(c,2t/T).  (28) 
+
+un(c) 
+
+Properties  ii.  of  Section  III  now  follow  directly  from  definitions  and 
+the  orthonormality  and  completeness  of  the  S0n  in  (  —  1,1). 
+
+A  change  of  variables  and  the  definitions  (27)  and  (28)  convert  (24) 
+into  (11).  A  change  of  variables  converts  (25)  into 
+
+t"flfto„(1)(c,l)  Uc,0  =  i  f "  eiu'+n(c,a,T/2Q)  rfco,  (29) 
+
+T  ATX  J-0 
+
+which  shows  \f/n  6  (B.  Indeed,  since  the  function  ^n(c,co7'/2S2)  are  com- 
+plete in  —  fi  ^  w  ^  12,  Parse val's  theorem  shows  that  the  ifrn(t)  are 
+complete  in  (B.  The  remaining  assertion  of  i.  of  Section  III,  namely  (9), 
+
+
+PROLATE    SPHEROIDAL    WAVE   FUNCTIONS  —  I  59 
+
+follows  from  a  computation.  From  (11)  we  have 
+
+l       .»         .Tli  i.r/8 
+
+=  — -  /     dt  I       ds  pa(t  -  s)ti(s)   /        dupa(t  -  u)fc(u) 
+
+X,\j    J-oo  J-T/2  J-TI2 
+
+i  f*"/2  -T/2  *&lt;* 
+
+=  /        du  I       ds  yf/i(s)\f/j(u)    I     dt  pa(u  —  t)pa(t  —  s) 
+
+KiKj  J-t/2        J-rli  J-* 
+
+1  »T/2  /.T/2 
+
+=  —  /       du  tj(u)  dspju  -  s)Ms) 
+
+X,Xj    J-Tll  J-T/2 
+
+i   cT'2  (°&gt;      *■*$ 
+
+=  ~  \       duto(u)fi(u)  « 
+
+\j    J-T/2  ^1,  I    =    J 
+
+Here  we  have  used  (20)  and  (10). 
+
+All  properties  of  the  ^'s  asserted  in  Section  III  have  now  been  estab- 
+lished except  for  (8).  To  this  end  we  devote  the  next  section.* 
+
+VI.    NONDEGENERACY  AND    ORDERING    OF   THE   EIGENVALUES    OF  (26) 
+
+We  have  seen  that  the  So„(c,t)  are  solutions  of  (26)  with  eigenvalues 
+given  by  (27).  We  show  now  that  we  cannot  have  two  distinct  S0n 
+belonging  to  the  same  eigenvalue  X  if  c  &gt;  0. 
+
+Let  fi(t)  and  f2(t)  be  two  linearly  independent  solutions  of  (26)  for 
+the  same  X,  c  t±  0.  Then 
+
+X/i(0  =  f\c(t-  s)h(s)ds,  (30) 
+
+X/[(0  -  [Pc(t  -  s)h(s)  ds,  (31) 
+
+X/i(0  -  j\:(t-s)Ms)ds,  (32) 
+
+X/i(0  =  [  Rett  -  s)fM  ds  (33) 
+
+
+*  Ville  and  Bouzitat9  recognized  (independently  of  the  earlier  Ref.  3)  that  the 
+solutions  of  the  integral  equation  (11)  are  prolate  spheroidal  functions.  They 
+assert  that  the  eigenvalues  X„  are  ordered  as  in  (8)  when  \pn  is  identified  with  Son 
+but  no  proof  of  this  fact  appears  in  their  paper  or  apparently  elsewhere  in  the 
+literature. 
+
+
+60  THE    BELL   SYSTEM    TECHNICAL   JOURNAL,    JANUARY    1961 
+
+and 
+
+X/f  (0  =  [  P"(t  -  •)/«(•)  ds.  (34) 
+
+Assume  now  that  /i  is  even  and  /2  is  odd.  Integrate  (31)  by  parts  to 
+obtain 
+
+x/i(0  =  /i(i)[p„(-i  -  o  -  Pod  -  01  + 1  pod  -  s)fl(s)  ds. 
+
+Multiply  this  equation  by  f2(t)  and  integrate  to  obtain 
+\[  fMfMA  =  X/i(l)[/a(-D  -/i(l)] 
+
++  ]_dt  J_d8  Pe(t  -  s)f[(s)f2(t). 
+
+Now  multiply  (33)  by/i(0,  integrate  and  subtract  the  result  from  (35). 
+One  finds  Vi(0lfi(-1)  -  /s(l)]  =  0,  or 
+
+/i(l)/2(l)  =  0,        /xeven,    /a  odd.  (36) 
+
+Assume  now  that/i(0  and/2(0  are  of  the  same  parity,  i.e.,  both  even 
+or  both  odd.  Multiply  (32)  by  fc(t),  multiply  (34)  by/i(&lt;),  subtract 
+and  integrate.  There  results 
+
+x  £  dt{j"h  -  f"h)  =  x  /|  ta|  (/;/2  -  yf/i) 
+
+=  2xr/f(D/i(i)  -/2(i)/,(D]  =  o 
+
+or 
+
+/i(l)/2(l)  -  /2(l)/i(l),        /i  and/2  of  same  parity.  (37) 
+
+For  any  two  linearly  independent  solutions  of  (26)  belonging  to  the 
+same  eigenvalue  we  must  have  either  (36)  or  (37)  hold.  But  we  shall 
+show  that  both  of  these  conditions  are  impossible  for  two  different  S 
+functions,  say  Son(c,t)  and  Som(c,t).  From  the  differential  equation  (23), 
+we  see  that 
+
+2Sl(l)  =  (Xn  -  c2)S0n(l).  (38) 
+
+If  aS0„(1)  vanishes,  then  so  does  S0n(l).  But  differentiating  (23)  shows 
+
+
+PROLATE    SPHEROIDAL   WAVE   FUNCTIONS  —  I  Gl 
+
+that  if  &amp;on(l)  and  £o„(l)  vanish  so  does  jSo„(1).  Repeated  differentiation 
+(which  is  possible  since  the  S0n  are  entire)  shows  that  if  S0n(l)  =  0, 
+then  Son(t)  =  0.  Therefore  condition  (36)  cannot  hold.  On  the  other 
+hand,  since  S0n(l)  ^  0,  S0m(l)  ^  0,  (37)  can  be  written 
+
+SL(D  m  SL(1) 
+
+s0m(i)     50.(1) 
+
+or 
+
+Xm  ~  c*  =  Xn  ~  c  (39) 
+
+from  (38).  However,  it  is  known  that  the  eigenvalues  of  the  differential 
+equation  (23)  are  nondegenerate  if  c  is  real,  so  that  (39)  cannot  hold  if 
+m  ^  n.  The  eigenvalues  (27)  are  thus  seen  to  be  distinct. 
+
+By  their  definition,  the  S0n  functions  are  indexed  so  that  the  eigen- 
+values of  the  differential  equation  (23)  xo  &lt;  Xi  &lt;  X2  &lt;  •  •  •  are  mono- 
+tone increasing  functions  of  their  index.  We  have  defined  \j/n  in  terms  of 
+the  aS0„  by  (28)  and  have  labeled  the  corresponding  eigenvalue  of  (26) 
+X„  by  (27).  There  remains  the  task  of  proving  that  the  X„  are  ordered  as 
+in  (8). 
+
+Our  argument  makes  use  of  the  fact  (just  demonstrated)  that  for  all 
+real  c  ^  0  the  X„(c)  are  nondegenerate  and  the  fact  (see  for  example 
+Ref.  10,  vol.  I,  p.  128)  that  the  eigenfunctions  and  eigenvalues  of  (26) 
+are  continuous  functions  of  its  kernel.  Thus  if  we  can  prove  that  for 
+some  c  &gt;  0, 
+
+A0(c)  &gt;  Xx(c)  &gt;  X2(c) 
+
+then  continuity  and  nondegeneracy  of  the  X's  allows  us  to  assert  this 
+ordering  for  all  positive  c. 
+
+We  now  establish  this  ordering  for  c  sufficiently  near  zero.  Let  \f/n  and 
+^n+i  be  successive  eigenfunctions  of  (26),  c  ^  0.  Then 
+
+\nfn(t)    =    j_     p'cit   ~   S)lfin(s)  (Is, 
+km+lti+M    =     I      Pc(t   -   s)&lt;A„+iCs)  ds. 
+
+Multiply  the  first  of  these  equations  by  X»+i^*+i(0&gt;  multiply  the  second 
+by  \„yf/„(t),  add  the  results  and  integrate  to  obtain 
+
+
+62  THE    BELL   SYSTEM    TECHNICAL   JOURNAL,    JANUARY    1901 
+
+K^n+1  J       (lA«^»+l   +   ^n+Vpn)  dt 
+
+=  K+i  f  dt  £  dsp'dt  -  sty»+1(0ik(s) 
+
++  Xn  /  rf'  j[  **('  "  »)*»&lt;')*»+i(«) 
+=  (X„  -  X»+1)  £  $  f_  dsp'dt  -  s)+M)+n+1(s) 
+
+=     (An    ~    \»+l)X»+l   f     *«(0*i+l(O  * 
+
+
+or 
+
+
+A  A,,,  A     !    1  +^ .  (40) 
+
+J_    fnfn+ldt] 
+
+Now  as  c  — &gt;  0,  ypn  — »  P„(t),  the  nth  Legendre  polynomial,  and  ^„  — ► 
+P„(t).  The  denominator  of  the  fraction  in  (40)  approaches 
+
+j  nP »+i  dt  =  1  „L  n+i  /    /  „+i/  „  «£  =  2 
+
+i  -l       J-1 
+
+since  the  integral  on  the  right  vanishes  and  P„(l )  =  1.  The  numerator 
+approaches 
+
+f_  P'nPn+1  dt  =  0. 
+
+By  making  c  sufficiently  small,  therefore,  the  fraction  on  the  right  of 
+(40)  is  of  absolute  value  less  than  unity  and  X„  —  A„+i  = 
+A„[l  +  0(1)]  ^  0.  Since  for  c  ^0  the  X„  are  all  distinct  and  positive, 
+the  ordering  (8)  must  hold.  The  limiting  eigenvalues  for  c  — &gt;  0  are 
+
+0    =    Ao    =    Ai    =    A2   =     "  •  *    . 
+VII.    COMMENTS 
+
+It  is  worth  pointing  out  that  the  basic  importance  of  the  \{/n  for  the 
+study  of  the  relation  between  functions  and  their  Fourier  transforms 
+stems  from  (25),  which  shows  that  the  *S0n  are  eigenfunctions  of  the  finite 
+Fourier  transform  kernel.  Indeed,  many  of  the  important  properties  of 
+the  ^'s  (i.  and  ii.  of  Section  III,  for  example)  follow  directly  from  (25) 
+
+
+PROLATE    SPHEROIDAL   WAVE    FUNCTIONS — I  63 
+
+or  its  first  iterate  (24),  without  explicit  use  of  (23)  or  recognition  of  the 
+S0n  as  angular  prolate  spheroidal  wave  functions. 
+
+In  the  interests  of  simplicity  of  presentation,  we  have  not  put  forth 
+the  theme  of  this  work  in  its  most  general  form.  We  here  make  just  one 
+comment  in  this  direction  and  leave  other  generalizations  to  the  in- 
+terested reader.  The  curious  orthogonality  over  two  different  pointsets 
+of  the  analytically  continued  solution  of  (22)  will  hold  whenever  (20) 
+is  true  and  the  solutions  are  in  £„'.  For  example,  if  the  kernel  p(t)  of 
+(22)  is  even  and  has  a  Fourier  transform  constant  on  intervals  and  zero 
+elsewhere,  e.g.,  pi(r)  =  ph(t)  cos  or,  a  &gt;  il,  then  the  double  ortho- 
+gonality maintains.  The  eigenfunctions  for  the  bandpass  kernel  pi(r) 
+do  not  seem  to  be  expressible  in  terms  of  well-studied  functions.  Com- 
+putations in  this  case  indicate  the  existence  of  degenerate  eigenvalues. 
+
+REFERENCES 
+
+1.  Landau,  H.  J.  and  Pollnk,  H.  ().,  this  issue,  pp.  65-84. 
+
+2  Davenport,  W.  B.  and  Root,  W.  L.,  Random  Signals  and  Noise,  McGraw-Hill, 
+
+New  York,  1958.  r  ^T  .        __ 
+
+3  Slepian    D.,  Estimation  of  Signal  Parameters  in  the  Presence  of  Noise,  1Kb 
+
+Trans.,  PGIT-3,  1954,  pp.  68-89.        . 
+
+4  Flammer,  C,  Spheroidal  Wave  Functions,  Stanford  University  Press,  Stan- 
+
+ford, Calif.,  1957.  t.    ,      t   t^    _         ,„.,.,,. 
+
+5.  Stratton,  J.  A.,  Morse,  P.  M.,  Chu,  L.  J.,  Little,  J.  D.  C.  and  Corbato   I-  .J., 
+
+Spheroidal  Wave  Functions,  The  Technology  Press  of  M.I.T.,  Cambridge, 
+Mass.,  and  John  Wiley  and  Sons,  New  York,  1956. 
+
+6.  Meixner,  J.  and  Schiifke,  F.  W.,  Mathieusche  Funktwnen  una  Spharoidfunk- 
+
+tionen,  Julius  Springer,  Berlin,  1954.  . 
+
+7.  Morse,  P.  M.  and  Feshbach,  H.,  Methods  of  Theoretical  Physics,  Mcuraw-riill, 
+
+New  York,  1953.  ,-»»•.  •       o      .• 
+
+8.  Bochner,  S.,  Lectures  on  Fourier  Integrals,  Annals  of  Mathematics  .Studies 
+
+No.  42',  Princeton  University  Press,  Princeton,  N.  J.,  1959. 
+9    Ville    J    A     and  Bouzitat,  J.,  Note  sur  un  signal  de  durfc  finie  et  d'cnergie 
+
+filt'ree  maximum,  Cables  &amp;  Trans.,  11,  1957,  pp.  102-127. 
+10.  Courant,  R.,  and  Ililbcrt,  D.,  Methoden  der  Mathematischen  Physik,  Julius 
+Springer,  Berlin,  1931. 
+
+
+        
