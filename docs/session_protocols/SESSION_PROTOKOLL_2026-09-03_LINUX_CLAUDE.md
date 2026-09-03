@@ -131,3 +131,15 @@ E-CLOSED ⇔ alternierende Gitter-Summe = Input A mit Gewichten. C2/C3/C4/C5 tot
 - Tools tried: PySR (Julia SIGSEGV, dropped), gplearn (n² + junk, dropped), s7_table.py (kept, registered).
 - My own bugs: TOOLS.yaml colon broke the parser (fixed `PUSHED`); stale m=163 watcher via self-matching pgrep (stopped; vahta.sh lesson).
 - Open: intake Probe 11 + re-derivations; compare with judge's living-chat answer; batch `REQ-2026-09-04-ENERGYFLOOR` (odd floor reopening, S7 correction, E2 contraction reading).
+
+## Addendum (2026-09-03 late evening → 04, machine clock ≈23:30 CEST) — zero route opened
+
+- Verified by five channels: energy identity (MAIN) exact but empty; odd floor collapsed (my own recomputation
+  confirms Probe 11; judge's living-chat "1e4" was a relay of the agent's S8).
+- Probe 12 (by hand, rule 13): real zeros distinguish the ground row from the Xi row (Xi row has genuine complex
+  zeros, Newton-verified); F_ground(gamma_j) = C_j * lambda_1; C_1 * L -> ~205 (five cells); excess zeros escape
+  (41/59/95 vs 1.3 x_N); kappa_k -> kappa_Xi at 1/L^2. ERRATUM: 2e-8 zero offsets were root-finder artifacts.
+- Lean: Proposition59ReciprocalModeWeightedShell.lean (H1/H3) KERNEL_GREEN, verified.
+- Tools: conventions.py + CONVENTION_CARD; s7_table.py; xi_row_zeros.py; vahta.sh. Rules 11-13 in project CLAUDE.md;
+  «Friction first» and «agent output unverified until checked» in ~/.claude/CLAUDE.md; backlog file.
+- Open: QUASIEIGEN verdict (vahta armed); then bind DRAFT ZEROPIN (five ropes listed); Lean uniqueness gap (rope e).
