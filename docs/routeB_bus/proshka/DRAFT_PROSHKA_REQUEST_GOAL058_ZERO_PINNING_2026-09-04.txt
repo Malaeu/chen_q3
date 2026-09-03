@@ -27,8 +27,11 @@ INTAKE (Probe 12, observer by hand, precommit ADDENDUM 13/14, output phase5_code
   6. Observer's own list of ropes for the zero route (to be scored, not assumed): (a) low zeros converge to gamma_j;
      (b) the EXCESS numerator zeros (m=13: 62.9, 81.7, 134.5, 430.5 beyond the tracked gamma_j) escape every compact
      (2N numerator zeros vs N(x_N) ~ m zeta zeros below x_N = 2 pi m/L: density matches only asymptotically);
+     MEASURED: tracked zeros (|z - gamma_j| < 0.05) number 6, 12, 26 on m = 13, 23, 43, reaching 1.3 x_N; the smallest
+     untracked zero is 41.0, 59.4, 95.0 -> escapes with the window (three cells, diagnostic);
      (c) the Hadamard factor e^{a z^2}: the envelope |F| <= e^{kappa|z|^2} is order 2, so uniqueness needs kappa_k ->
      kappa_Xi = sum 1/gamma_j^2 = 0.02310 (numerics 0.0259 -> 0.0245 on m = 13..163; Lean has only boundedness);
+     MEASURED: (kappa_k - kappa_Xi) L^2 = 0.018, 0.031, 0.038, 0.041, 0.036 -> decay ~ 1/L^2, same rate as W_k;
      (d) unconditionality of (a) (not-RH branch); (e) Lean: Mathlib has no Hadamard factorization / uniqueness for
      real-zero even entire functions -- name the finite-product route (as in 926c1865) or the exact missing lemma.
 
