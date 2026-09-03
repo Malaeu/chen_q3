@@ -65,3 +65,26 @@ plain print + `\r`, only when `sys.stdout.isatty()`.
 
 No Lean. No route promotion. No RH claim. `PX_RH_CLAIM: NOT_MADE`. Numbers are
 diagnostic; a numerical PASS is not a theorem about the ∀m quantifier.
+
+## ADDENDUM (2026-09-03, after Probe 1 partial rows m ≤ 83 were seen; before any κ was computed) — Probe 4, normalized curvature
+
+Source: Proshka verdict `TRY_GROUND_REALZERO_CURVATURE_VITALI_WITH_PRODUCTION_RATE_REPAIR`
+(owner-relayed chat paste, 2026-09-03), which registered BEFORE any run:
+`P_CURVATURE_SOURCE_1` p=0.65: "exact normalized curvature remains bounded or stabilizes
+on the production schedule even if the old exponential moment ratio grows."
+Observer's independent check of the formula (sympy, 2026-09-03): K_n''(0) = −2L/x_n²,
+K_0''(0) = −L³/12, functional norm² = 1/144 + 1/180 = 1/80.
+
+Definition (per cell, from the λ₁ eigenvector ξ in ±N indexing, Σξ_n² = 1):
+  F(0)   = √L · ξ_0
+  F''(0) = −L^{5/2} · [ ξ_0/12 + (1/(2π²)) · Σ_{n≠0, |n|≤N} ξ_n / n² ]
+  κ      = −F''(0) / (2 F(0)) = (L²/2) · [ 1/12 + (1/(2π² ξ_0)) · Σ_{n≠0} ξ_n/n² ]
+  κ_forced_lower = (L²/(4π²)) · Σ_{j>N} 1/j²   (forced lattice zeros |j|>N)
+Reference scale: Σ_γ 1/γ² over zeta zeros ≈ 0.0231 (report κ/0.0231 descriptively).
+Also report the bracket [·] itself and its relative cancellation (bracket·12).
+
+Frozen rule for `P_CURVATURE_SOURCE_1` on the schedule m = N ∈ {13,23,43,83,163}:
+- CONFIRMED: κ_m > 0 for every m and max κ_m / min κ_m ≤ 2 over the schedule.
+- REFUTED: κ_m grows monotonically with κ_163/κ_13 ≥ 10, or κ_m < 0 for some m
+  (a negative κ contradicts the real-zero product and is a STOP: `KAPPA_NEGATIVE`).
+- else UNRESOLVED. N-check pairs are descriptive.
