@@ -167,3 +167,12 @@ acceptance is 1e-8 relative on grid doubling, and κ needs the ground row to ~1e
 Rule: for cells whose only record is above 300 dps, Probes 3 and 4 run at 240 dps working
 precision on the ball-rounded row; the report records `working_dps=240 (record 900)`.
 Thresholds unchanged. This is a cost decision, not a data decision.
+
+## AMENDMENT 6 (2026-09-03 15:00, before any m=163 Probe 3 value existed) — quadrature tolerance and progress reporting
+
+The piecewise `acb.integral` in Probe 3 was integrating every piece to 10^-(dps+5) (245 digits
+at 240 dps) while the verdict consumes a 1e-8 relative grid-doubling change. Rule: each piece is
+integrated to 10^-40 (env `EDGE_LEDGER_QUAD_TOL_DIGITS`, default 40), i.e. 32 orders beyond the
+acceptance criterion. Thresholds unchanged; this is a cost decision. The script now prints one
+progress line per minute (stage, pieces done/total, rate, ETA) to stderr, per the project's
+Python rule; runs are launched with a log file so the observer can read progress.

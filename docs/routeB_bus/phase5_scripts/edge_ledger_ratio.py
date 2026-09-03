@@ -65,6 +65,7 @@ path below.
 from __future__ import annotations
 
 import json
+import os
 import random
 import sys
 import time
@@ -92,7 +93,55 @@ DPS_SCHEDULE: list[int] = [120, 240]
 IMAG_REL_TOL = 1e-30  # frozen, precommit Probe 3 wording ("verify ... < 1e-30 relative")
 QUAD_GRID_REL_TOL = 1e-8  # frozen, precommit + task wording ("doubling the grid ... < 1e-8")
 FD_HF_SIG_DIGITS = 6  # frozen, precommit Probe 2 wording
-GRID_POINTS_PER_HALF_OSC = 64  # frozen, task wording ("... >= 64 points per mode oscillation length L/(2N)")
+GRID_POINTS_PER_HALF_OSC_DEFAULT = 64  # frozen, task wording ("... >= 64 points per mode oscillation length L/(2N)")
+# Operational escape hatch (coordinator, 2026-09-03, 30-min budget instruction):
+# "if m=163 still exceeds it at 240 dps, halve the quadrature grid density
+# once, flag QUADRATURE_GRID_REDUCED". Since a single acb.integral call
+# cannot be preempted mid-flight, this is applied as a deliberate rerun
+# choice (env var), not an automatic in-process timeout; whichever value was
+# actually used is recorded per cell either way.
+GRID_POINTS_PER_HALF_OSC = int(
+    os.environ.get("EDGE_LEDGER_GRID_POINTS_PER_HALF_OSC", GRID_POINTS_PER_HALF_OSC_DEFAULT)
+)
+QUADRATURE_GRID_REDUCED = GRID_POINTS_PER_HALF_OSC < GRID_POINTS_PER_HALF_OSC_DEFAULT
+
+# --- Progress / ETA reporting (project rule: sparse lines in logs, bar only on a TTY) ---
+import time as _time
+_PROGRESS_T0 = _time.time()
+_PROGRESS_LAST = 0.0
+PROGRESS_EVERY_S = float(os.environ.get("EDGE_LEDGER_PROGRESS_EVERY_S", "60"))
+
+def _fmt_s(x: float) -> str:
+    x = max(0.0, x)
+    return f"{int(x // 60)}m{int(x % 60):02d}s"
+
+def progress(stage: str, done: int, total: int, force: bool = False) -> None:
+    """One line at most every PROGRESS_EVERY_S seconds: stage, percent, rate, ETA."""
+    global _PROGRESS_LAST
+    now = _time.time()
+    if not force and now - _PROGRESS_LAST < PROGRESS_EVERY_S:
+        return
+    _PROGRESS_LAST = now
+    el = now - _PROGRESS_T0
+    frac = done / total if total else 0.0
+    rate = done / el if el > 0 else 0.0
+    eta = (total - done) / rate if rate > 0 else float("inf")
+    line = (f"[progress {_time.strftime('%H:%M:%S')}] {stage} {done}/{total} ({100*frac:5.1f}%) "
+            f"elapsed {_fmt_s(el)} rate {rate*60:.1f}/min ETA {_fmt_s(eta) if eta != float('inf') else '?'}")
+    print(line, file=sys.stderr, flush=True)
+
+# Quadrature tolerance: the acceptance criterion is a 1e-8 relative change on grid
+# doubling, so integrating each piece to 10^-(dps+5) is pure cost (precommit
+# AMENDMENT 6, 2026-09-03). Digits below are far beyond what the verdict consumes.
+QUAD_TOL_DIGITS = int(os.environ.get("EDGE_LEDGER_QUAD_TOL_DIGITS", "40"))
+
+# AMENDMENT 5 (2026-09-03 13:48, precommit): working-precision cap for
+# Probes 3/4 on cells whose only ledger record is above this dps (m=163,
+# dps=900). See RecordArb's docstring. Probe 2 is unaffected -- it never
+# recomputes anything from xi in arb, only reads the ledger's own
+# already-computed float values.
+WORKING_DPS_CAP_THRESHOLD = 300
+WORKING_DPS_FALLBACK = 240
 
 # Probe 4 (ADDENDUM 2026-09-03, P_CURVATURE_SOURCE_1), all frozen there.
 CURVATURE_REF = 0.0231  # Sum_gamma 1/gamma^2 over zeta zeros, descriptive reference scale only
@@ -179,7 +228,21 @@ def flatten_schedule(schedule_rows: list[dict[str, Any]]) -> list[dict[str, Any]
     flat: list[dict[str, Any]] = []
     for row in schedule_rows:
         m, N, role = row["m"], row["N"], row["role"]
-        insuff = row.get("insufficient_precision_flags", [])
+        raw_insuff = row.get("insufficient_precision_flags", [])
+        # edge_ledger_build.py writes a descriptive STRING here (observed:
+        # "NOT_EVALUATED_ONLY_ONE_PRECISION_RUN", at m=163 with only dps=900
+        # run) instead of the usual list, when a cell only has ONE precision
+        # and the normal 120-vs-240 cross-check literally cannot run. list()
+        # on a string would silently shred it into single characters and
+        # corrupt every downstream "field in insufficient_precision_flags"
+        # check -- guard against that explicitly.
+        single_precision_only = len(row.get("precision", {})) < 2
+        if isinstance(raw_insuff, str):
+            insuff = []
+            insuff_reason = raw_insuff
+        else:
+            insuff = list(raw_insuff)
+            insuff_reason = None
         for dps_str, cell in row["precision"].items():
             missing = REQUIRED_CELL_KEYS - set(cell)
             if missing:
@@ -207,10 +270,24 @@ def flatten_schedule(schedule_rows: list[dict[str, Any]]) -> list[dict[str, Any]
                     "dlambda2_dL_hf": parse_bounds(cell["dlambda2_dL_hf"]),
                     "hf_fd_agree_1": bool(cell["dlambda1_dL_hf_fd_agree_6sig"]),
                     "hf_fd_agree_2": bool(cell["dlambda2_dL_hf_fd_agree_6sig"]),
-                    "insufficient_precision_flags": list(insuff),
+                    "insufficient_precision_flags": insuff,
+                    "insufficient_precision_reason": insuff_reason,
+                    "single_precision_only": single_precision_only,
                 }
             )
     return flat
+
+
+def dps_groups(records: list[dict[str, Any]]) -> dict[tuple[int, int], dict[int, dict[str, Any]]]:
+    """Group flat records by (m, N) -> {dps: record}. Used everywhere a
+    verdict function needs "the highest-precision record available for this
+    (m,N)" instead of assuming a fixed global dps=240 -- edge_ledger_build.py
+    escalates precision per-cell (observed: m=163 shipped as a single dps=900
+    run, not the usual 120/240 pair) rather than using one fixed schedule."""
+    groups: dict[tuple[int, int], dict[int, dict[str, Any]]] = {}
+    for r in records:
+        groups.setdefault((r["m"], r["N"]), {})[r["dps"]] = r
+    return groups
 
 
 def load_ledger() -> list[dict[str, Any]] | None:
@@ -222,6 +299,30 @@ def load_ledger() -> list[dict[str, Any]] | None:
             f"edge_ledger.json: no top-level 'schedule' key -- schema mismatch vs {BUILDER_PATH}"
         )
     return flatten_schedule(payload["schedule"])
+
+
+ONLY_CELLS_ENV = "EDGE_LEDGER_ONLY_CELLS"
+
+
+def parse_only_cells() -> set[tuple[int, int]] | None:
+    """EDGE_LEDGER_ONLY_CELLS="163:163" or "163:163,43:86" (comma-separated
+    m:N pairs; N defaults to m if omitted, e.g. "163"). Coordinator-requested
+    escape hatch (2026-09-03) for recomputing one slow cell (m=163 at
+    reduced grid density) without repeating every other cell. None means
+    "not set" -- normal full-ledger behaviour, unchanged."""
+    val = os.environ.get(ONLY_CELLS_ENV)
+    if not val:
+        return None
+    pairs: set[tuple[int, int]] = set()
+    for part in val.split(","):
+        part = part.strip()
+        if not part:
+            continue
+        m_str, _, n_str = part.partition(":")
+        m_val = int(m_str)
+        n_val = int(n_str) if n_str else m_val
+        pairs.add((m_val, n_val))
+    return pairs
 
 
 def make_synthetic_schedule_row(m: int = 13, N: int = 13, dps_list: tuple[int, ...] = (120, 240),
@@ -279,12 +380,33 @@ def make_synthetic_schedule_row(m: int = 13, N: int = 13, dps_list: tuple[int, .
 # --------------------------------------------------------------------------
 
 class RecordArb:
-    """Precomputed arb/acb quantities for one (m, N, dps) ledger record."""
+    """Precomputed arb/acb quantities for one (m, N, dps) ledger record.
+
+    AMENDMENT 5 (2026-09-03 13:48, precommit): a cell whose only ledger
+    record is above WORKING_DPS_CAP_THRESHOLD dps (observed: m=163, dps=900,
+    inverse-iteration eigenpair) does not need Probe 3's quadrature or
+    Probe 4's curvature functional run at that native precision -- the grid-
+    doubling acceptance is 1e-8 relative and kappa needs ~1e-12 relative, both
+    far below what 900 dps buys. Such cells run at WORKING_DPS_FALLBACK (240)
+    dps working precision instead, on the SAME xi decimal strings: since
+    those strings already carry ~900 accurate digits, parsing them fresh at
+    ctx.dps=240(+guard) is exactly "the ball-rounded ground row" the
+    amendment asks for, not a re-derivation. `self.dps` below is this WORKING
+    precision (what all arb ops in this class actually run at);
+    `self.record_dps` is the ledger row's own native dps, kept for the
+    report. This is a cost decision, not a data decision -- thresholds are
+    unchanged."""
 
     def __init__(self, rec: dict[str, Any]) -> None:
         self.m = int(rec["m"])
         self.N = int(rec["N"])
-        self.dps = int(rec["dps"])
+        self.record_dps = int(rec["dps"])
+        if self.record_dps > WORKING_DPS_CAP_THRESHOLD:
+            self.dps = WORKING_DPS_FALLBACK
+            self.working_dps_note = f"working_dps={WORKING_DPS_FALLBACK} (record {self.record_dps})"
+        else:
+            self.dps = self.record_dps
+            self.working_dps_note = None
         ctx.dps = self.dps + 15  # guard digits, mirrors phase1 convention
         self.pi = arb.pi()
         self.L = arb(self.m).log()
@@ -295,7 +417,7 @@ class RecordArb:
             raise SystemExit(
                 f"record m={self.m} N={self.N}: xi has {len(xi_strs)} entries, expected {2*self.N+1}"
             )
-        self.xi = [arb(s) for s in xi_strs]  # index i -> n = i - N
+        self.xi = [arb(s) for s in xi_strs]  # index i -> n = i - N, parsed at the WORKING dps
         self.xi0 = self.xi[self.N]
         self.xi_float = [float(v.mid()) for v in self.xi]
         self.two_pi_over_L = (2 * self.pi) / self.L
@@ -373,6 +495,17 @@ class RecordArb:
         kappa_forced_lower = (self.L * self.L / (4 * pi2)) * tail_sum
         bracket_f = float(bracket.mid())
         kappa_f = float(kappa.mid())
+        # Certified sign, on the arb ball itself (rigorous interval
+        # arithmetic), not on the floating midpoint: bool(kappa < 0) /
+        # bool(kappa > 0) are True only when the WHOLE ball lies on that
+        # side of zero; if neither holds the ball straddles (or touches)
+        # zero and the sign is not certified either way.
+        if bool(kappa < 0):
+            certified_sign = "negative"
+        elif bool(kappa > 0):
+            certified_sign = "positive"
+        else:
+            certified_sign = "uncertain"
         return {
             "S": float(S.mid()),
             "bracket": bracket_f,
@@ -380,6 +513,9 @@ class RecordArb:
             "F0": float(F0.mid()),
             "Fpp0": float(Fpp0.mid()),
             "kappa": kappa_f,
+            "kappa_ball_lower": float(kappa.lower().mid()),
+            "kappa_ball_upper": float(kappa.upper().mid()),
+            "kappa_certified_sign": certified_sign,
             "kappa_forced_lower": float(kappa_forced_lower.mid()),
             "kappa_over_ref": kappa_f / CURVATURE_REF,
         }
@@ -424,11 +560,16 @@ def integrate_M(rec: RecordArb, breakpoints: list[float], sigmas: list[float]) -
     """Piecewise-analytic acb.integral of |q_m(t)| e^{sigma|t|} for each
     sigma, given a breakpoint set that separates sign-definite (and
     branch-of-|t|-definite, since 0.0 is always a breakpoint) regions."""
-    rel_tol = arb(10) ** -(rec.dps + 5)
-    abs_tol = arb(10) ** -(rec.dps + 5)
+    tol_digits = min(rec.dps + 5, QUAD_TOL_DIGITS)
+    rel_tol = arb(10) ** -tol_digits
+    abs_tol = arb(10) ** -tol_digits
     totals: dict[float, complex] = {s: 0j for s in sigmas}
     bp_arb = [arb(repr(t)) for t in breakpoints]
-    for a, b in zip(bp_arb[:-1], bp_arb[1:]):
+    n_pieces = len(bp_arb) - 1
+    stage = f"m={rec.m} N={rec.N} dps={rec.dps} pieces({len(sigmas)} sigmas each)"
+    progress(stage, 0, n_pieces, force=True)
+    for piece_idx, (a, b) in enumerate(zip(bp_arb[:-1], bp_arb[1:]), 1):
+        progress(stage, piece_idx, n_pieces)
         if b <= a:
             continue
         mid = (a + b) / 2
@@ -466,8 +607,13 @@ def probe3_for_record(rec_dict: dict[str, Any]) -> dict[str, Any]:
     bps1, npts1 = float_scan_breakpoints(rec, GRID_POINTS_PER_HALF_OSC)
     bps2, npts2 = float_scan_breakpoints(rec, 2 * GRID_POINTS_PER_HALF_OSC)
 
+    print(f"[progress {_time.strftime('%H:%M:%S')}] cell m={m} N={N} dps={dps}: grid pass 1/2, "
+          f"{len(bps1)-1} pieces x {len(SIGMAS)} sigmas", file=sys.stderr, flush=True)
     M1 = integrate_M(rec, bps1, SIGMAS)
+    print(f"[progress {_time.strftime('%H:%M:%S')}] cell m={m} N={N} dps={dps}: grid pass 2/2, "
+          f"{len(bps2)-1} pieces x {len(SIGMAS)} sigmas", file=sys.stderr, flush=True)
     M2 = integrate_M(rec, bps2, SIGMAS)
+    print(f"[progress {_time.strftime('%H:%M:%S')}] cell m={m} N={N} dps={dps}: done", file=sys.stderr, flush=True)
 
     denom = float(rec.L.sqrt().mid()) * abs(float(rec.xi0.mid()))
     sigma_table = {}
@@ -498,11 +644,16 @@ def probe3_for_record(rec_dict: dict[str, Any]) -> dict[str, Any]:
         "m": m,
         "N": N,
         "dps": dps,
+        "record_dps": rec.record_dps,
+        "working_dps_note": rec.working_dps_note,
         "L": rec.L_float,
         "xi0": float(rec.xi0.mid()),
         "imag_check_flags": imag_flags,
         "quadrature_grid_flags": grid_flags,
         "sigma_table": sigma_table,
+        "single_precision_only": rec_dict.get("single_precision_only", False),
+        "grid_points_per_half_osc_used": GRID_POINTS_PER_HALF_OSC,
+        "quadrature_grid_reduced": QUADRATURE_GRID_REDUCED,
     }
 
 
@@ -519,7 +670,10 @@ def probe4_for_record(rec_dict: dict[str, Any]) -> dict[str, Any]:
         "m": rec.m,
         "N": rec.N,
         "dps": rec.dps,
+        "record_dps": rec.record_dps,
+        "working_dps_note": rec.working_dps_note,
         "L": rec.L_float,
+        "single_precision_only": rec_dict.get("single_precision_only", False),
         **curv,
     }
 
@@ -578,6 +732,8 @@ def probe2_for_record(rec: dict[str, Any]) -> dict[str, Any]:
         "insufficient_precision_lambda1": insuff_lambda1,
         "insufficient_precision_lambda2": insuff_lambda2,
         "insufficient_precision_flags": insuff,
+        "insufficient_precision_reason": rec.get("insufficient_precision_reason"),
+        "single_precision_only": rec.get("single_precision_only", False),
         "sign_dgap_dL_hf": (1 if dgap_dL_hf > 0 else (-1 if dgap_dL_hf < 0 else 0)),
         "sign_dgap_dL_fd": (1 if dgap_dL_fd > 0 else (-1 if dgap_dL_fd < 0 else 0)),
     }
@@ -593,9 +749,20 @@ def probe2_verdict(records: list[dict[str, Any]]) -> tuple[str, dict[str, Any]]:
     is positive at every cell, so c_m = -(dlambda1/dL)/edge_sq < 0
     everywhere) is itself a REFUTED result for
     P_FUCHS_IDENTITY_NUMERICALLY_HOLDS -- not merely "sign changes across the
-    schedule" or "ratio >= 100" as the pre-amendment text read literally."""
-    hi_dps = max(DPS_SCHEDULE)
-    schedule = [r for r in records if r["N"] == r["m"] and r["m"] in SCHEDULE_M and r["dps"] == hi_dps]
+    schedule" or "ratio >= 100" as the pre-amendment text read literally.
+    Per-m precision: edge_ledger_build.py escalates precision per cell
+    rather than using one fixed dps pair (observed: m=163 shipped as a
+    single dps=900 run, not the usual 120/240) -- so the record used for
+    each m is whichever dps is HIGHEST for that specific (m,N), not a
+    globally fixed max(DPS_SCHEDULE)."""
+    schedule_pairs = {(r["m"], r["N"]) for r in records if r["N"] == r["m"] and r["m"] in SCHEDULE_M}
+    groups = dps_groups([r for r in records if (r["m"], r["N"]) in schedule_pairs])
+    schedule = []
+    dps_used_by_m: dict[int, int] = {}
+    for (m, N), by_dps in groups.items():
+        hi = max(by_dps)
+        schedule.append(by_dps[hi])
+        dps_used_by_m[m] = hi
 
     hf_fd_mismatch_m = sorted({
         r["m"] for r in schedule if r["hf_fd_mismatch_lambda1"] or r["hf_fd_mismatch_lambda2"]
@@ -603,7 +770,7 @@ def probe2_verdict(records: list[dict[str, Any]]) -> tuple[str, dict[str, Any]]:
 
     insufficient_m = [r["m"] for r in schedule if r["insufficient_precision_lambda1"]]
     detail: dict[str, Any] = {
-        "dps_used": hi_dps,
+        "dps_used_by_m": dps_used_by_m,
         "schedule_c_m": {r["m"]: r["c_m_hf"] for r in schedule},
         "insufficient_precision_m": insufficient_m,
         "hf_fd_mismatch_m": hf_fd_mismatch_m,
@@ -685,46 +852,82 @@ def probe3_verdict(sigma40_by_mn: dict[tuple[int, int], dict[str, Any]]) -> tupl
 
 
 def probe4_verdict(records4: list[dict[str, Any]]) -> tuple[str, dict[str, Any]]:
-    """P_CURVATURE_SOURCE_1, frozen in the precommit ADDENDUM:
+    """P_CURVATURE_SOURCE_1, frozen in the precommit ADDENDUM, sign-check
+    order hardened per independent review (2026-09-03, "hygiene change"):
+    the KAPPA_NEGATIVE stop is evaluated on the CERTIFIED arb ball, never
+    on the floating midpoint, and only after the dps-120/240 consistency
+    check, in this fixed order per schedule cell m:
+      (1) sig_agree(kappa_120, kappa_240): disagreement -> INSUFFICIENT_PRECISION
+          for that m; no sign verdict is drawn from it at all.
+      (2) else, on the higher-precision cell's kappa ball: if the ball
+          contains zero (kappa_certified_sign == "uncertain") ->
+          KAPPA_SIGN_UNCERTIFIED for that m; recorded, NOT a stop.
+      (3) else, only a ball strictly below zero (kappa_certified_sign ==
+          "negative") triggers the global KAPPA_NEGATIVE stop; strictly
+          above zero ("positive") is the only case entering the schedule
+          aggregation below.
+    Frozen rule once the schedule aggregation is reached:
     - CONFIRMED: kappa_m > 0 for every m and max/min <= 2 over the schedule.
-    - REFUTED: kappa_m grows monotonically with kappa_163/kappa_13 >= 10,
-      or kappa_m < 0 for some m (implemented as the KAPPA_NEGATIVE stop below,
-      per the addendum's own parenthetical).
+    - REFUTED: kappa_m grows monotonically with kappa_163/kappa_13 >= 10.
     - else UNRESOLVED.
-    A dps=120 vs dps=240 move on kappa_m (same 8-sig-digit sig_agree()
-    convention used throughout this script) excludes that m from the
-    schedule, exactly as Probe 2/3 do."""
-    lo_dps, hi_dps = min(DPS_SCHEDULE), max(DPS_SCHEDULE)
+    Per-m precision: as in probe2_verdict, the record used for each m is
+    whichever dps is HIGHEST for that (m,N) (edge_ledger_build.py escalates
+    precision per cell; m=163 observed as a single dps=900 run). Step (1)'s
+    cross-precision check compares against the next-highest dps for that
+    SAME (m,N) when a second one exists; a row with only one precision
+    available (single_precision_only) has no comparison to make and is
+    passed straight to step (2), not flagged insufficient."""
+    schedule_pairs = {(r["m"], r["N"]) for r in records4 if r["N"] == r["m"] and r["m"] in SCHEDULE_M}
+    groups = dps_groups([r for r in records4 if (r["m"], r["N"]) in schedule_pairs])
+    schedule = []
+    dps_used_by_m: dict[int, int] = {}
+    for (m, N), by_dps in groups.items():
+        hi = max(by_dps)
+        schedule.append(by_dps[hi])
+        dps_used_by_m[m] = hi
 
-    negative_hits = [
-        {"m": r["m"], "dps": r["dps"], "kappa": r["kappa"]}
-        for r in records4
-        if r["N"] == r["m"] and r["m"] in SCHEDULE_M and r["kappa"] < 0
-    ]
-    if negative_hits:
-        return "KAPPA_NEGATIVE", {"negative_hits": negative_hits}
-
-    by_mn_dps = {(r["m"], r["N"], r["dps"]): r for r in records4}
-    schedule = [
-        r for r in records4
-        if r["N"] == r["m"] and r["m"] in SCHEDULE_M and r["dps"] == hi_dps
-    ]
-
+    # (1) precision check, first, before any sign is looked at.
     insufficient_m = []
-    kept = []
+    precision_checked = []
     for r in schedule:
         m = r["m"]
-        lo = by_mn_dps.get((m, m, lo_dps))
-        if lo is not None and not sig_agree(lo["kappa"], r["kappa"]):
-            insufficient_m.append(m)
-            continue
-        kept.append(r)
+        by_dps = groups[(m, m)]
+        dps_sorted = sorted(by_dps)
+        if len(dps_sorted) >= 2 and not r.get("single_precision_only", False):
+            lo = by_dps[dps_sorted[-2]]
+            if not sig_agree(lo["kappa"], r["kappa"]):
+                insufficient_m.append(m)
+                continue
+        precision_checked.append(r)
 
+    # (2) certified-sign classification, on the arb ball (kappa_certified_sign
+    # was computed in RecordArb.curvature() via bool(kappa < 0)/bool(kappa > 0)
+    # on the ball itself, not on kappa's float midpoint).
+    uncertified_m = [r["m"] for r in precision_checked if r["kappa_certified_sign"] == "uncertain"]
+    negative_hits = [
+        {
+            "m": r["m"], "dps": r["dps"], "kappa": r["kappa"],
+            "kappa_ball_lower": r["kappa_ball_lower"], "kappa_ball_upper": r["kappa_ball_upper"],
+        }
+        for r in precision_checked if r["kappa_certified_sign"] == "negative"
+    ]
+
+    # (3) only a certified-negative ball, on a cell that already passed the
+    # precision check, stops.
+    if negative_hits:
+        return "KAPPA_NEGATIVE", {
+            "negative_hits": negative_hits,
+            "insufficient_precision_m": insufficient_m,
+            "uncertified_m": uncertified_m,
+        }
+
+    kept = [r for r in precision_checked if r["kappa_certified_sign"] == "positive"]
     have_all = {r["m"] for r in kept} == set(SCHEDULE_M)
     detail: dict[str, Any] = {
-        "dps_used": hi_dps,
+        "dps_used_by_m": dps_used_by_m,
         "schedule_kappa_m": {r["m"]: r["kappa"] for r in schedule},
         "insufficient_precision_m": insufficient_m,
+        "uncertified_m": uncertified_m,
         "have_full_schedule": have_all,
     }
     if not kept:
@@ -845,12 +1048,20 @@ def write_report(
     lines.append("")
     lines.append("## sigma-table (Probe 3), all records")
     lines.append("")
+    if any(r.get("working_dps_note") for r in probe3_records):
+        lines.append(
+            "Note (AMENDMENT 5): a `dps` value with `(record N)` means Probe 3 ran at the "
+            "capped working precision shown, on a ledger row whose only record is at the "
+            "higher native precision N."
+        )
+        lines.append("")
     lines.append("| m | N | dps | sigma | numerator | denominator | ratio | grid_converged |")
     lines.append("|---|---|-----|-------|-----------|-------------|-------|-----------------|")
     for rec in probe3_records:
+        dps_disp = f"{rec['dps']} (record {rec['record_dps']})" if rec.get("working_dps_note") else str(rec['dps'])
         for sigma_str, cell in rec["sigma_table"].items():
             lines.append(
-                f"| {rec['m']} | {rec['N']} | {rec['dps']} | {sigma_str} | "
+                f"| {rec['m']} | {rec['N']} | {dps_disp} | {sigma_str} | "
                 f"{cell['numerator_grid2']:.10g} | {cell['denominator']:.10g} | "
                 f"{cell['ratio']:.10g} | {cell['grid_converged']} |"
             )
@@ -869,14 +1080,27 @@ def write_report(
     lines.append("## Probe 4 (kappa) per-record")
     lines.append("")
     lines.append(
-        "| m | N | dps | bracket | bracket*12 | kappa | kappa_forced_lower | kappa/0.0231 |"
+        "| m | N | dps | bracket | bracket*12 | kappa | kappa ball [lower, upper] | "
+        "certified sign | kappa_forced_lower | kappa/0.0231 |"
     )
-    lines.append("|---|---|-----|---------|------------|-------|---------------------|--------------|")
+    lines.append("|---|---|-----|---------|------------|-------|---------------------------|"
+                  "----------------|---------------------|--------------|")
     for rec in probe4_records:
+        dps_disp = f"{rec['dps']} (record {rec['record_dps']})" if rec.get("working_dps_note") else str(rec['dps'])
         lines.append(
-            f"| {rec['m']} | {rec['N']} | {rec['dps']} | {rec['bracket']:.10g} | "
+            f"| {rec['m']} | {rec['N']} | {dps_disp} | {rec['bracket']:.10g} | "
             f"{rec['bracket_times_12']:.10g} | {rec['kappa']:.10g} | "
+            f"[{rec['kappa_ball_lower']:.10g}, {rec['kappa_ball_upper']:.10g}] | "
+            f"{rec['kappa_certified_sign']} | "
             f"{rec['kappa_forced_lower']:.10g} | {rec['kappa_over_ref']:.10g} |"
+        )
+    if any(r.get("quadrature_grid_reduced") for r in probe3_records):
+        lines.append("")
+        lines.append(
+            f"**QUADRATURE_GRID_REDUCED**: this run used "
+            f"{probe3_records[0]['grid_points_per_half_osc_used']} grid points per half-oscillation "
+            f"(frozen default {GRID_POINTS_PER_HALF_OSC_DEFAULT}), applied uniformly, per the "
+            "coordinator's 30-minute time-budget instruction."
         )
     out_md.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
@@ -896,8 +1120,10 @@ def relabel_if_incomplete(verdict_tuple: tuple[str, dict[str, Any]]) -> tuple[st
     return label, detail
 
 
-def run(records: list[dict[str, Any]], test_mode: bool) -> None:
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
+def compute_all_probes(records: list[dict[str, Any]]) -> tuple[list, list, list]:
+    """Run Probe 2/3/4 per-record computation over exactly the given ledger
+    records (no verdict aggregation, no I/O). Shared by the full run() and
+    the EDGE_LEDGER_ONLY_CELLS partial-rerun path."""
     probe3_records = []
     for i, rec in enumerate(records):
         progress(f"probe3 record {i+1}/{len(records)} m={rec['m']} N={rec['N']} dps={rec['dps']}")
@@ -911,7 +1137,66 @@ def run(records: list[dict[str, Any]], test_mode: bool) -> None:
         progress(f"probe4 record {i+1}/{len(records)} m={rec['m']} N={rec['N']} dps={rec['dps']}")
         probe4_records.append(probe4_for_record(rec))
     progress_done()
+    return probe3_records, probe2_records, probe4_records
 
+
+def run(records: list[dict[str, Any]], test_mode: bool) -> None:
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    probe3_records, probe2_records, probe4_records = compute_all_probes(records)
+    finalize_and_report(probe3_records, probe2_records, probe4_records, test_mode)
+
+
+def _merge_by_key(existing: list[dict[str, Any]] | None, new: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Merge new per-record results into an existing list from a prior run's
+    JSON, keyed by (m, N, dps) -- new entries replace old ones at the same
+    key, everything else from `existing` is kept untouched."""
+    by_key: dict[tuple[int, int, int], dict[str, Any]] = {}
+    for item in existing or []:
+        by_key[(item["m"], item["N"], item["dps"])] = item
+    for item in new:
+        by_key[(item["m"], item["N"], item["dps"])] = item
+    return list(by_key.values())
+
+
+def run_partial(records: list[dict[str, Any]], only_cells: set[tuple[int, int]]) -> None:
+    """EDGE_LEDGER_ONLY_CELLS path (coordinator, 2026-09-03): recompute only
+    the given (m,N) cells and merge their per-record results into whatever
+    out/edge_ledger_ratio.json already holds for every other cell, instead
+    of recomputing the whole ledger. Verdicts are then recomputed on the
+    FULL merged set, exactly as a normal run() would."""
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    subset = [r for r in records if (r["m"], r["N"]) in only_cells]
+    if not subset:
+        raise SystemExit(f"{ONLY_CELLS_ENV}={only_cells}: matched no records in the ledger")
+    print(f"{ONLY_CELLS_ENV} active: recomputing only {sorted(only_cells)} "
+          f"({len(subset)} dps-record(s): {sorted((r['m'], r['N'], r['dps']) for r in subset)}), "
+          f"grid_points_per_half_osc={GRID_POINTS_PER_HALF_OSC} "
+          f"(reduced={QUADRATURE_GRID_REDUCED}); merging into existing output.")
+
+    existing: dict[str, Any] | None = None
+    if OUT_JSON.exists():
+        try:
+            existing = json.loads(OUT_JSON.read_text(encoding="utf-8"))
+        except Exception as exc:
+            print(f"WARNING: could not parse existing {OUT_JSON} ({exc}); starting from empty state.")
+            existing = None
+
+    probe3_new, probe2_new, probe4_new = compute_all_probes(subset)
+
+    probe3_records = _merge_by_key(existing.get("probe3_records") if existing else None, probe3_new)
+    probe2_records = _merge_by_key(existing.get("probe2_records") if existing else None, probe2_new)
+    probe4_records = _merge_by_key(existing.get("probe4_records") if existing else None, probe4_new)
+
+    finalize_and_report(probe3_records, probe2_records, probe4_records, test_mode=False)
+
+
+def finalize_and_report(
+    probe3_records: list[dict[str, Any]],
+    probe2_records: list[dict[str, Any]],
+    probe4_records: list[dict[str, Any]],
+    test_mode: bool,
+) -> None:
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
     # HF_FD_MISMATCH (precommit AMENDMENT 2, 2026-09-03 12:25): a Probe-2-ONLY
     # per-cell flag, recorded in the JSON/report, no longer a stop for
     # anything -- Probe 2's own verdict is instead the sign/stability rule
@@ -930,21 +1215,27 @@ def run(records: list[dict[str, Any]], test_mode: bool) -> None:
         print("A negative curvature contradicts the real-zero product (precommit ADDENDUM). "
               "Probe 4 verdict only; Probe 2/3 unaffected.")
 
-    hi_dps = max(DPS_SCHEDULE)
+    # Per-(m,N) highest available dps -- edge_ledger_build.py escalates
+    # precision per cell rather than a globally fixed 120/240 pair (observed:
+    # m=163 shipped as a single dps=900 run). A row with only one precision
+    # (single_precision_only) has nothing to compare against and is passed
+    # through with insufficient_precision=None (not applicable), not skipped.
     by_mn_dps = {(r["m"], r["N"], r["dps"]): r for r in probe3_records}
     mn_pairs = sorted({(r["m"], r["N"]) for r in probe3_records})
     sigma40_by_mn: dict[tuple[int, int], dict[str, Any]] = {}
     for (m, N) in mn_pairs:
-        available_dps = sorted(dps for dps in DPS_SCHEDULE if (m, N, dps) in by_mn_dps)
-        if hi_dps not in available_dps:
-            continue  # no high-precision cell for this (m,N); nothing to report at sigma=0.40
-        cell = dict(by_mn_dps[(m, N, hi_dps)]["sigma_table"][str(SIGMA_MAIN)])
+        available_dps = sorted({r["dps"] for r in probe3_records if r["m"] == m and r["N"] == N})
+        if not available_dps:
+            continue
+        hi_dps_mn = available_dps[-1]
+        cell = dict(by_mn_dps[(m, N, hi_dps_mn)]["sigma_table"][str(SIGMA_MAIN)])
+        cell["dps_used"] = hi_dps_mn
         if len(available_dps) >= 2:
-            lo_dps = available_dps[0]
-            lo_ratio = by_mn_dps[(m, N, lo_dps)]["sigma_table"][str(SIGMA_MAIN)]["ratio"]
+            lo_dps_mn = available_dps[-2]
+            lo_ratio = by_mn_dps[(m, N, lo_dps_mn)]["sigma_table"][str(SIGMA_MAIN)]["ratio"]
             hi_ratio = cell["ratio"]
             cell["insufficient_precision"] = not sig_agree(lo_ratio, hi_ratio)
-            cell["dps_compared"] = [lo_dps, hi_dps]
+            cell["dps_compared"] = [lo_dps_mn, hi_dps_mn]
         else:
             cell["insufficient_precision"] = None  # only one precision available; not comparable
             cell["dps_compared"] = available_dps
@@ -993,7 +1284,9 @@ def run(records: list[dict[str, Any]], test_mode: bool) -> None:
     print(f"\nkappa table (Probe 4):")
     for rec in probe4_records:
         print(f"  m={rec['m']:<4} N={rec['N']:<4} dps={rec['dps']:<4} kappa={rec['kappa']:.10g} "
-              f"bracket*12={rec['bracket_times_12']:.10g} kappa/0.0231={rec['kappa_over_ref']:.10g}")
+              f"ball=[{rec['kappa_ball_lower']:.6g},{rec['kappa_ball_upper']:.6g}] "
+              f"sign={rec['kappa_certified_sign']:<9} bracket*12={rec['bracket_times_12']:.10g} "
+              f"kappa/0.0231={rec['kappa_over_ref']:.10g}")
     for rec in probe3_records:
         if rec["imag_check_flags"]:
             print(f"  WARNING imag-part check flagged for m={rec['m']} N={rec['N']}: {rec['imag_check_flags']}")
@@ -1006,7 +1299,11 @@ def run(records: list[dict[str, Any]], test_mode: bool) -> None:
 def main() -> None:
     records = load_ledger()
     if records is not None:
-        run(records, test_mode=False)
+        only_cells = parse_only_cells()
+        if only_cells:
+            run_partial(records, only_cells)
+        else:
+            run(records, test_mode=False)
         return
 
     print(f"{LEDGER_PATH} not found.")
