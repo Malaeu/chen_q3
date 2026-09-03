@@ -1,0 +1,95 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-03-SHELLSEARCH
+BOUNDARY_ID: GOAL058_SHELL_SEARCH_SOURCE_TO_LATTICE_ATOM
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-03-SHELLSEARCH (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub).
+DATE: 2026-09-03
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+SOURCE_BASE_COMMIT: 0673693e
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: PROPOSITION59_CCM_FINITE_BOTTOM_GROUND_FAMILY
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_SHELL_SEARCH_ONLY
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SHELL_SEARCH_SOURCE_TO_LATTICE_ATOM_2026-09-03.md
+AUTHOR: Linux-Claude (observer), on owner instruction; delivery by GitHub locator
+PARENT_VERDICTS: f788d2fa (LATTICEWALL), 3dc82357 (NEWMECH), 926c1865 (CURVBRIDGE)
+RELATION_TO_PREFLIGHT: parallel to GOAL058_NORMALIZED_XI_LATTICE_EIGEN_EQUATION_PREFLIGHT (your CHEAPEST_NEXT_ACTION); this request does not replace it.
+
+OWNER'S FRAME (2026-09-03, verbatim in substance)
+
+  A wall is an object. Its irreducible core is an ATOM: the simplest object our arsenal can
+  measure in every direction, with typed inputs and outputs. A SHELL is a theorem whose
+  hypotheses are ALREADY-PROVEN, recognized steps and whose conclusion is the atom's input,
+  so that another shell can be attached and the chain closes fastest. This request asks you
+  to FIND shells, not to prove them. The observer has written his own candidate blind and
+  sealed it by commit before this request was written; after your answer the two lists are
+  compared for synergy. Your answer must not be biased toward any candidate; none is named here.
+
+THE ATOM (after f788d2fa; two components)
+
+  Objects: production schedule m = N = k+2, L = log m, x_n = 2 pi n/L; even bottom row xi of the
+  CCM finite Weil matrix; F_k its P59 transform; f_k(x_n) = F_k(x_n)/F_k(0) = (-1)^n xi_n/xi_0
+  (exact sampling); Delta_n = f_k(x_n) - Xi(x_n)/Xi(0).
+  Component N (normality): W_k = sum_{n<=N} |Delta_n|/n^2 = O(L^-2). Numerics: W_k L^2 = 0.2..0.3.
+  Component I (identification): for every X > 0, sup_{n <= X L/(2 pi)} |Delta_n| -> 0.
+  Numerics: sup_n |Delta_n| L^2 = 0.25..0.58 on m = 13..163.
+  Downstream: N gives local uniform boundedness of F_k/F_k(0) (Lean bridge 926c1865); N + I +
+  real zeros give the consumer by Vitali/Hurwitz.
+
+THE SOURCE'S PROVIDES (what is already proven; shells may only consume these or recognized theorems)
+
+  S1 K~ xi = lambda_1 xi, xi even, simple (per-cell certified; cofinal simple-even ground OPEN).
+  S2 Real zeros of F_k (CCM Thm 5.10; Lean conditional on the finite spectral hypotheses).
+  S3 Exact node sampling F(x_n) = sqrt(L)(-1)^n xi_n, F(0) = sqrt(L) xi_0 (Lean).
+  S4 Displacement/Loewner structure X K - K X = beta eta^T - eta beta^T; W02 = 2 C C^T - 2 S S^T (Lean).
+  S5 kappa_k = -F''(0)/(2F(0)) = sum rho^-2 + tail >= 0; envelope |F(z)| <= |F(0)| e^{kappa|z|^2} (Lean).
+  S6 Alternating identity kappa = 2 sum (-1)^n (f_k(x_n)-1)/x_n^2 + T, |T| <= L^2/(2 pi^2 (N+1)^2) (paper, f788d2fa).
+  S7 CCM Lemma 7.3: continuum trial transform -> Xi, rate O(lambda^-1/2) + outer tail; NO crosswalk to the finite trial (f788d2fa).
+  S8 Projective node transfer ground -> trial exact with sqrt(L); one rate |A| L^{5/2} sqrt(p) = O(1) (f788d2fa).
+  S9 Explicit formula: K~ is the Weil quadratic form on the window (CCM by construction; Weil 1952, Bombieri 2000).
+  Dead shapes (do not resurrect): absolute gap / complement floor; ||(D-lambda_1)^-1||; R1 dual annihilator;
+  bordered secular slope; pole/Arch-Prime split; odd-sector floor; C5 as bound; W as weakest; W alone as I;
+  abstract identification; de Branges chain; not-RH dichotomy as constraint; Lemma 7.3 as ground supplier.
+
+QUESTIONS
+
+Q1 SHELL LIST. Name every typed theorem H you can find of the form
+     (inputs among S1-S9 and RECOGNIZED theorems with source locators) => (component N, or I, or both)
+   that is not a dead shape. For each H give: exact statement; input list with status
+   PROVEN_IN_LITERATURE (locator) / PROVEN_IN_PROJECT (Lean name) / OPEN; mechanism in <= 5 lines;
+   first failure point; the not-RH circularity test (does any input or step hold only under RH?
+   a shell that needs RH anywhere is circular and must be marked so); kill-power/cost of its
+   first decisive test. Include shells that are classical under other names (Laguerre-Polya,
+   Loewner/displacement, Euler-Boole alternating quadrature, explicit-formula localization
+   Yoshida 1992 / Bombieri 2000 / Suzuki 2026, Krein strings, Weyl-Titchmarsh, prolate concentration)
+   and 2024-2026 tools if you know them, with locators.
+Q2 RANK the shells by (number of OPEN inputs, then cost of the first OPEN input). State whether a
+   shell with ZERO open inputs exists (i.e. the atom already follows from proven facts). If the
+   best shell has exactly one open input, name that input as the NEW atom candidate and say
+   whether it is smaller than the current one (P59_XI_LATTICE_LOW_MODE_STABILITY_IDENTITY).
+Q3 CCM's IMPLIED SHELL. Section 8 of arXiv:2511.22755 says the remaining step is that the trial
+   approximates the true ground well enough to transfer convergence of zeros. Write the shell
+   CCM implicitly assume as a typed theorem in the project's objects, with its inputs' status.
+   Is it one of your Q1 shells, or weaker/stronger than them?
+Q4 COMPOSITION. For the top-ranked shell, write the full chain source -> shell -> atom -> Lean
+   bridge -> consumer as a list of typed steps with status per step, so that the number of open
+   steps is a number, not a phrase.
+Q5 Score without editing: P_A_SHELL_WITH_ZERO_OPEN_INPUTS_EXISTS 0.10;
+   P_BEST_SHELL_HAS_ONE_OPEN_INPUT 0.55; P_JUDGE_TOP_SHELL_MATCHES_OBSERVER_SEALED 0.35
+   (the observer's sealed candidate is at docs/routeB_bus/sealed/OBSERVER_SEALED_SHELL_CANDIDATE_2026-09-03.md
+   in the same commit; do NOT read it before writing Q1-Q4; read it only to score this line and
+   say in one sentence whether it coincides with, is dominated by, or is disjoint from your top shell).
+
+REQUIRED VERDICT
+  1. repeat REQUEST_ID, BOUNDARY_ID, request commit, Git blob, SHA-256; six-field phase key unchanged;
+  2. Q1-Q4 with exact typed statements and locators; a ranked list;
+  3. score the three predictions without editing probabilities;
+  4. Lean-ready vs new analytic separation; no Lean edit, no numerical run, no route promotion,
+     no RH claim; write only the expected verdict document.
