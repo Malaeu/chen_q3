@@ -373,6 +373,24 @@ tool_families:
         notes: Run as a harness background task. Never pgrep its own pattern (field lesson 2026-09-03).
         last_verified: 2026-09-03
 
+      - id: conventions
+        classification: MANUAL
+        status: ENABLED
+        audience: [CLAUDE_CODE, CODEX, HUMAN]
+        mode: READ_ONLY
+        path: docs/routeB_bus/phase5_codex/conventions.py
+        invoke: .venv/bin/python docs/routeB_bus/phase5_codex/conventions.py --m 13 --dps 60
+        trigger: Whenever two reports disagree on a basis, a sqrt2, a sign of R, or a pairing factor; before writing any new identity.
+        writes: false
+        approval: NONE
+        authority: ELEMENTARY_CHANGE_OF_BASIS_CHECKS_FULL_EVEN_ODD_R_PARITY_NOT_A_CERTIFICATE
+        records_to: stdout
+        note: >-
+          Card with the exact maps -- docs/routeB_bus/CONVENTION_CARD_GOAL058.md.
+          Written by the orchestrator 2026-09-04 after the blind re-derivation and the
+          energy preflight used different blocks for the same norm.
+        last_verified: 2026-09-04
+
       - id: s7-table
         classification: MANUAL
         status: ENABLED
