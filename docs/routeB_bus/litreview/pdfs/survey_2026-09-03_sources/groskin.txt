@@ -1,0 +1,876 @@
+                                                A finite Guinand–Weil dictionary and archimedean tail order
+                                                           for the truncated Weil quadratic form
+                                                                                         Akiva Groskin
+
+                                                                                            July 2026
+
+
+                                                                                             Abstract
+                                                    The Connes–van Suijlekom and Connes–Consani–Moscovici truncations of the Weil quadratic
+                                                form, at a prime cutoff c > 1 and frequency band N , produce finite Galerkin matrices whose
+arXiv:2607.02828v3 [math.NT] 14 Aug 2026
+
+
+
+
+                                                spectra are the finite-rank window on Weil positivity. We prove two exact finite theorems about
+                                                this truncation. First, every real even Galerkin coefficient vector v determines, in closed form,
+                                                a band-limited Guinand–Weil test function gv with
+                                                                                                      ∗
+                                                                                                      X
+                                                                                   ⟨v, Q∞ v⟩ =                 gv (z),
+                                                                                                 ζ(1/2+iz)=0
+
+                                                zeros counted with multiplicity, Q∞ the cutoff-free truncated matrix: every value of the trun-
+                                                cated form is an exact sum over the nontrivial zeros of ζ. The construction factors through
+                                                an exact source quotient of dimension 2N + 1 and admits a non-collapsing pole-neutral sub-
+                                                family. Second, beyond the Galerkin band the omitted archimedean tail is a totally positive
+                                                Cauchy–Stieltjes increment. This yields a two-sided certification rule with an explicit budget
+                                                BT ∼ (2N +1)ρ log T /(π 2 T ), where T is the archimedean cutoff and ρ = 2π/ log c: finite-cutoff
+                                                positivity certifies cutoff-free positivity, a finite-cutoff eigenvalue below −BT certifies a cutoff-
+                                                free negative, and a negative eigenvalue in the band [−BT , 0) certifies nothing. Resolving a
+                                                spectral scale of 10−59 at c = 100 by brute cutoff would require T of order 1063 ; a cutoff-free
+                                                interval LDLT factorization resolves it directly. The dictionary is verified over the first 512
+                                                zeros of ζ and by three independent computational routes; all scripts and artifacts ship with the
+                                                paper.
+
+
+                                           1    Introduction
+                                           The Riemann–Weil explicit formula relates the nontrivial zeros of ζ(s) to prime, pole, and
+                                           archimedean terms, and Weil positivity, the positivity of the associated quadratic form on a
+                                           suitable class of test functions, is equivalent to the Riemann hypothesis [29, 20, 4, 30]. In Connes’s
+                                           program the Weil form is the central object of a spectral attack on the zeros [6, 8, 9, 7], and
+                                           recent work of Connes–van Suijlekom [11] and Connes–Consani–Moscovici [10] turns the form into
+                                           concrete finite objects: for a prime cutoff c > 1 and a band N , an explicit (2N +1) × (2N +1)
+                                           Galerkin matrix whose deep spectrum is the finite-rank window on Weil positivity. Suzuki’s
+                                           screw-function framework [27] gives a parallel continuous-variable treatment of the same form.
+                                               This note isolates the part of the truncated structure that is exact at every finite level, and
+                                           proves a finite-cutoff order theorem that governs what finite numerics can and cannot certify about
+                                           it. The two results are independent theorems about the same object, and together they turn the
+                                           truncated matrix into a calibrated instrument: its values are exact zero sums, and its finite-cutoff
+                                           spectra carry explicit certification bounds.
+
+                                                                                                  1
+   First result. A real even coefficient vector v ∈ RN +1 canonically determines a chain
+
+                                   v 7−→ Tv 7−→ Kv 7−→ gbv 7−→ gv ,
+
+ending in an entire, band-limited Guinand–Weil test function gv , and for this induced test function
+the cutoff-free truncated form evaluates the zero side of the explicit formula exactly (Theorem 2.5):
+every entry of the Connes–van Suijlekom/Connes–Consani–Moscovici matrix, and every quadratic
+value ⟨v, Q∞ v⟩, is an exact finite-form sum over the nontrivial zeros of ζ. The same calculation
+shows that all finite signed source distributions act through an exact quotient of dimension 2N +
+1 (Corollary 2.4), and that the pole term can be switched off on a non-collapsing subfamily of
+dimension N − s − 1 (Corollary 2.7), which is the finite analogue of working orthogonally to the
+pole in Weil’s criterion. No limit in N and no archimedean cutoff enters the dictionary: the
+coefficient vector is transported to one compactly supported test function before any numerical
+quadrature exists.
+    Second result. For the archimedean term, finite computations must truncate an integral at some
+cutoff T . Theorem 3.2 proves that past the Galerkin band the omitted tail is a rank-two-density
+Cauchy–Stieltjes Gram increment: for T2 > T1 > max(ρN, 7) the matrix increment Qarch,T2 −
+Qarch,T1 is positive definite, and in the natural frequency order it is strictly totally positive. The
+consequence (Corollary 3.3) is a two-sided decision rule with an explicit, elementary budget BT :
+
+                                                              (2N +1)ρ      T      
+       λj (Qtot                   tot
+            T ) < λj (Q∞ ) ≤ λj (QT ) + BT ,           BT =              log    + 1   (1 + o(1)).
+                                                                π2T          2π
+Finite-T positivity therefore certifies cutoff-free positivity, a finite-T eigenvalue below −BT certifies
+a cutoff-free negative, and a negative eigenvalue inside the band [−BT , 0) certifies nothing. Since BT
+decays only like log T /T , each doubling of T buys about one binary digit: deep spectral scales are
+unreachable by brute cutoff, and the correct finite instrument at depth is the cutoff-free assembly
+itself.
+    The second theorem is motivated by a correction to an earlier finite-cutoff computation of
+the author [19]: at (c, N, T ) = (100, 200, 800) a fixed archimedean cutoff produced deep negative
+eigenvalues that are controlled by the omitted tail, not by the cutoff-free form. Andrews’s indepen-
+dent reproduction and Silva’s quadrature-sensitivity and exact-entry analyses made the cutoff-free
+treatment explicit [2, 16, 12]; the tail-order theorem is the finite algebraic rule behind that phe-
+nomenology, and Section 3 quantifies it: certifying the sign of a 10−59 -scale eigenvalue at c = 100
+through the cutoff would require T ≈ 8 · 1062 , while a cutoff-free interval LDLT factorization of the
+same matrix certifies n− = 0 directly.
+    Relation to prior work. The zero-sum identity of Theorem 2.5 is the Weil explicit formula
+applied to the induced test function; the autocorrelation mechanism g = f ∗ f˜ goes back to Weil
+[29], finite-dimensional restrictions of the Weil form were studied by Yoshida [30], and the divided-
+difference structure of the truncated matrix is Proposition 4.1 of Connes–van Suijlekom [11]. The
+contribution here is the exact closed-form transport: the explicit chain v 7→ gv with its inverse-
+free calculus (Lemma 2.3), the identification of the assembled matrix with the Connes–Consani–
+Moscovici closed forms at entry level (Lemma 2.1), the exact 2N +1 source quotient, the pole-
+neutral family, and the tail-order theorem with its strict total positivity and explicit budget. Band-
+limited test functions are a standard device in explicit-formula analysis (see for instance [5] and the
+literature cited there); what is used here is the exact match between that class and the finite Connes–
+van Suijlekom/Connes–Consani–Moscovici data. The total-positivity input is classical Cauchy-
+kernel theory [22, 26, 3], and Silva records adjacent Loewner, Herglotz, and operator-monotone
+structure for the prime and pole pieces [13, 14, 15, 17].
+
+                                                   2
+   All numerical statements in this paper are backed by a released verification package (Section 4)
+containing exact symbolic audits, interval-arithmetic certificates computed with Arb [21], and a
+three-route confirmation of the dictionary identity, including a sum over the first 512 zeros of ζ.
+
+
+2     The finite dictionary
+2.1   From coefficient vectors to test functions
+Fix c > 1, put
+                                                   L             2π
+                                L = log c,       ∆=   ,     ρ=       ,
+                                                   2π             L
+and fix N ≥ 0. A real even-sector Galerkin vector v = (v0 , . . . , vN ) is embedded into symmetric
+full coefficients by
+                                                     vk
+                            u0 = v0 ,    uk = u−k = √      (1 ≤ k ≤ N ),
+                                                        2
+which is the isometric even-sector embedding used by Connes–van Suijlekom and Connes–Consani–
+Moscovici. Let
+                                               XN
+                                      Tv (t) =      um e2πimt
+                                                 m=−N
+
+and define the Volterra sine-chord kernel
+                                                Z ω
+                                 Kv (ω) = 2           Tv (t) Tv (ω − t) dt.
+                                                 0
+
+The induced Fourier weight and test function are
+                       (                                                   Z ∆
+                        πKv (1 − |ξ|/∆), |ξ| ≤ ∆,
+             gbv (ξ) =                                          gv (z) =           gbv (ξ)e2πizξ dξ.
+                        0,                |ξ| > ∆,                            −∆
+
+The weight is even, hence gv is even.
+   For a C 1 source function ψ on R, let Qψ denote the finite divided-difference matrix on indices
+IN = {−N, . . . , N }:
+                                          ψ(m) − ψ(n) , m ̸= n,
+                                         
+
+                               (Qψ )mn =      m−n
+                                          ′
+                                           ψ (m),          m = n,
+exactly the structure of [11, Prop. 4.1], and write
+                                                     N
+                                                     X
+                                  ⟨v, Qψ v⟩ =              um un (Qψ )mn
+                                                m,n=−N
+
+for the even-sector contraction. The three source functions of the truncated Weil form are
+                                                   
+      (c)        1 X Λ(q)                      log q
+     ψp (x) = −             √ sin 2πx 1 −                ,                                             (1)
+                 π            q                  L
+                   q=pa ≤c
+
+               1 L
+                 Z                             y 
+      ψ0 (x) =       2 cosh(y/2) sin 2πx 1 −          dy,                                              (2)
+               π 0                              L
+                   Z T                                        Z L 
+                1                                                           y 
+    ψR,T (x) = 2         h+ (r) S(r, x, L) dr,   S(r, x, L) =    sin 2πx 1 −      cos(ry) dy,          (3)
+               2π −T                                           0             L
+
+
+                                                       3
+where throughout
+                                    h+ (r) = Re ψΓ 14 + ir2 − log π.
+                                                           
+
+We set
+         (c)
+      Qprime := Qψ(c) ,      Qpole := Qψ0 ,         Qarch,T := QψR,T ,     Qarch,∞ := lim Qarch,T ,
+                     p                                                                  T →∞
+
+the last limit existing entrywise (Lemma 2.1), and define the cutoff-free truncated Weil matrix
+                                              (c)
+                                   Q∞ := Qprime + Qpole + Qarch,∞ .                                   (4)
+
+Lemma 2.1 (Entry identification). The limit defining Qarch,∞ exists entrywise, and Q∞ is the
+Connes–Consani–Moscovici Galerkin matrix of the Weil quadratic form: in the notation of [10,
+Eqs. (3.10)–(3.11), (3.16)],
+
+               ⟨v, Q∞ v⟩ = W0,2 (Fv ) − WR (Fv ) − Wp (Fv ),       Fv (x) = q(fv , fv )(log x),
+
+where fv is the trigonometric polynomial with coefficient vector u on the interval of length L.
+                 (c)
+In particular −Qprime , Qpole , and −Qarch,∞ are the prime, pole, and archimedean blocks of the
+Connes–Consani–Moscovici assembly.
+
+Proof. Each block is the divided-difference matrix of its source in the sense of [11, Prop. 4.1].
+For the prime block, (1) is the source of the non-archimedean functional [10, Eq. (3.16)], so the
+identification is definitional. For the pole block, direct evaluation of (2) (as in Corollary 2.7 below)
+                                                                                                   √
+gives ψ0 (n) = Cc n/(n2 +β 2 ) and ψ0′ (n) = Cc (β 2 −n2 )/(n2 +β 2 )2 with β = L/(4π) and Cc = L( c+
+  √                                                                     √      √
+1/ c−2)/(2π 2 ), so that, using β 2 = L2 /(16π 2 ) and 16π 2 Cc = 8L( c+1/ c−2) = 32L sinh2 (L/4),
+
+                                                         32L sinh2 (L/4) L2 − 16π 2 mn
+                                                                                          
+                                      β 2 − mn
+                (Qpole )mn = Cc 2                      =                                    ,
+                                 (m + β 2 )(n2 + β 2 )    (L2 + 16π 2 m2 )(L2 + 16π 2 n2 )
+
+which is the pole matrix of [10, Lemma 4.1] verbatim. For the archimedean block, h+ is the
+standard archimedean density of the explicit formula for the completed zeta function, i.e. the
+density of WR in [10, Sec. 3] and [8, Eq. (153)]; the entrywise T -limit exists because at integer
+nodes S(r, n, L) = O(r−2 ) and ∂x S(r, x, L)|x=n = O(r−2 ) uniformly on IN (both are computed in
+closed form in the proof of Theorem 3.2) while h+ (r) = O(log r). The released package additionally
+verifies the identification numerically: the closed-form Connes–Consani–Moscovici assembly and
+the source assembly (4) agree on generic (not pole- or moment-neutral) vectors to the working tail
+bound, e.g. to 2.0 · 10−10 at (c, N ) = (29, 6) and to 2.1 · 10−15 at (c, N ) = (13, 4) (Section 4).
+
+Lemma 2.2 (Admissibility). For every finite vector v, the induced function gv is an admissible
+Guinand–Weil test function: it is entire of exponential type at most L, its Fourier transform is
+compactly supported in [−∆, ∆], and
+
+                                   gv (z) = O (1 + | Re z|)−2
+                                                              
+
+
+uniformly on every fixed horizontal strip. Consequently gv lies in the class for which the Guinand–
+Weil explicit formula holds with absolutely convergent zero sum [4, Sec. 2]: even, entire of finite
+exponential type, gbv continuous of compact support, and decay O((1 + |z|)−1−δ ) on horizontal strips
+with δ = 1.
+
+
+
+                                                       4
+Proof. The Volterra convolution of finite exponential polynomials is entire in ω. Hence gbv is com-
+pactly supported, continuous, piecewise smooth, and vanishes at ±∆; the zero extension of (bgv )′ has
+bounded variation. The Paley–Wiener bound and the displayed decay follow by two integrations
+by parts, the second in the Stieltjes sense [25, 23]. The Riemann–von Mangoldt local zero count
+N (t + 1) − N (t) = O(log t) then gives absolute convergence of the zero sum [28, Ch. 9].
+
+Lemma 2.3 (Finite source calculus). Let
+                                                        α
+                                         ψα,ω (x) =       sin(2πωx).
+                                                        π
+For the finite divided-difference matrix attached to this source,
+
+                                          ⟨v, Qα,ω v⟩ = αKv (ω).
+
+Consequently, if µ is a finite signed Borel measure on [0, 1] and
+                                             Z
+                                           1
+                                  ψµ (x) =         sin(2πωx) dµ(ω),
+                                           π [0,1]
+then                                               Z
+                                    ⟨v, Qµ v⟩ =                Kv (ω) dµ(ω).
+                                                       [0,1]
+
+Proof. For m ̸= n,
+                                             α(sin(2πωm) − sin(2πωn))
+                               (Qα,ω )mn =                            ,
+                                                     π(m − n)
+and the diagonal entry is
+                                    (Qα,ω )mm = 2αω cos(2πωm).
+On the other hand
+                                          N
+                                          X                            Z ω
+                                                               2πinω
+                            Kv (ω) = 2            um un e                    e2πi(m−n)t dt.
+                                         m,n=−N                         0
+
+For m ̸= n the real part of the summand is
+                                            sin(2πωm) − sin(2πωn)
+                                    um un                         ,
+                                                   π(m − n)
+while for m = n it is 2u2m ω cos(2πωm). The imaginary parts cancel in pairs under the even
+symmetry u−k = uk . Multiplying by α gives the identity. For a finite signed measure, each single-
+frequency entry is continuous and bounded on [0, 1]; on the diagonal,
+                                           Z
+                                 ′
+                                ψµ (x) = 2   ω cos(2πωx) dµ(ω).
+                                               [0,1]
+
+The finite double sum may therefore be interchanged with the source integral.
+
+Corollary 2.4 (Finite source quotient). At level N , the finite source-to-form map µ 7→ Qµ factors
+exactly through the 2N + 1 coordinates
+                  Z         Z                 Z
+                     ω dµ,     sin(2πkω) dµ,     ω cos(2πkω) dµ (1 ≤ k ≤ N ),
+
+and the induced map on these coordinates is injective: two finite signed sources produce the same
+level-N matrix if and only if all 2N + 1 coordinates agree.
+
+                                                         5
+Proof. After polarization, the Volterra kernels are generated by K1,1 = 2ω, K1,cos(2πkt) =
+sin(2πkω)/(πk), and
+                                                                 sin(2πkω)
+                            Kcos(2πkt),cos(2πkt) = ω cos(2πkω) +            ;
+                                                                    2πk
+product-to-sum gives the mixed cases, and only frequencies 0, 1, . . . , N occur. Linear independence
+follows from the exponential-polynomial family e2πikω and ωe2πikω . Inspecting the entries (0, 0),
+(k, 0), and (k, k) recovers the displayed coordinates, so the quotient is exact in both directions.
+
+2.2   The dictionary theorem
+Theorem 2.5 (Finite Guinand–Weil dictionary). For fixed c > 1, N ≥ 0, and every real even
+finite Galerkin vector v ∈ RN +1 ,
+                        X
+           ⟨v, Q∞ v⟩ =      gv (z), Zζ∗ = {z ∈ C : 1/2 + iz is a nontrivial zero of ζ},
+                       z∈Zζ∗
+
+with multiplicity. Equivalently,
+                                                              Z
+                          1 X Λ(q)     log q                  1
+            ⟨v, Q∞ v⟩ = −      √ gbv           + 2gv (i/2) +      h+ (r)gv (r) dr.
+                          π  a
+                                q       2π                   2π R
+                               q=p ≤c
+                                                                                  √
+Proof. Lemma 2.3 applied to the prime source (1), whose measure places mass −Λ(q)/ q at ωq =
+1 − log q/L, gives
+                                                                           
+                        (c)          1 X Λ(q)            1 X Λ(q)     log q
+                   ⟨v, Qprime v⟩ = −     √ πKv (ωq ) = −      √ gbv           ,
+                                     π     q             π      q      2π
+                                        q≤c                    q≤c
+
+using gbv (ξ) = πKv (1−ξ/∆) and log q/(2π) = ∆(1−ωq ). Applied to the pole source, whose measure
+is the push-forward of 2 cosh(y/2) L dy under ω = 1 − y/L, it gives
+                              Z 1             L(1 − ω)       Z ∆
+            ⟨v, Qpole v⟩ = 2L     Kv (ω) cosh             dω =     gbv (ξ) 2e−πξ dξ = 2gv (i/2),
+                               0                  2             −∆
+
+where the middle equality is the substitution ξ = ∆(1 − ω) together with π∆ = L/2, gbv (ξ) =
+πKv (1 − ξ/∆), and the evenness of gbv (which converts 2 cosh(πξ) into 2e−πξ under the integral),
+and the last equality is e2πi(i/2)ξ = e−πξ . Applied inside the compact finite-T archimedean integral,
+                          Z T         Z L                                    Z T
+                       1                                                    1
+     ⟨v, Qarch,T v⟩ =          h+ (r)        Kv (1 − y/L) cos(ry) dy dr =          h+ (r)gv (r) dr,
+                      2π −T             0                                  2π −T
+where the inner integral is gv (r) by the same substitution ξ = ∆(1 − y/L) and evenness of gbv .
+Lemma 2.2 and h+ (r) = O(log(2 + |r|)) [24] allow T → ∞ by dominated convergence. Thus the
+assembly (4) equals the displayed prime, pole, and archimedean source expression.
+    The Guinand–Weil explicit formula in the normalization of Connes, Bombieri, and Connes–
+Consani–Moscovici [20, 29, 6, 4, 10] states, for every test function in the class of Lemma 2.2,
+                                                                     Z
+              X              1 X Λ(q)         log q                  1
+                  gv (z) = −         √ gbv            + 2gv (i/2) +      h+ (r)gv (r) dr.
+                ∗
+                             π q=pa q          2π                   2π R
+              z∈Zζ
+
+Since supp gbv ⊂ [−∆, ∆] = [−L/(2π), L/(2π)], prime powers q > c satisfy log q/(2π) > ∆ and do
+not contribute. This identifies the finite form with the zero side.
+
+                                                  6
+Remark 2.6 (What is new here). Once gv is known to be admissible, the displayed identity
+is the explicit formula applied to gv ; in that sense the zero-sum representation is the clas-
+sical mechanism of Weil [29], in the finite-rank setting studied by Yoshida [30] and built by
+Connes–van Suijlekom/Connes–Consani–Moscovici. The content of Theorem 2.5 is the exact
+closed-form transport v 7→ gv and its calculus: the truncated matrix is not merely positive-
+semidefinite-approximating data, but evaluates exact zero sums for an explicitly parametrized
+(N +1)-dimensional family of band-limited test functions, with the source dependence factoring
+through the exact 2N +1-dimensional quotient of Corollary 2.4. This is the finite, inverse-free
+part of the correspondence between coefficient vectors and test functions; no claim is made about
+realizing arbitrary Guinand–Weil test functions this way.
+
+Corollary 2.7 (Pole-neutral source survival). Let β = L/(4π) and, for s ≥ 0, put
+
+                        Hs (N ) = {v : M0 (v) = M2 (v) = · · · = M2s (v) = 0},
+
+where
+                                   N                           N
+                                √ X                         √ X
+                   M0 (v) = v0 + 2   vk ,          M2j (v) = 2   k 2j vk     (j ≥ 1).
+                                     k=1                        k=1
+
+Define the pole-neutral hyperplane
+                                                   N
+                                        (                       )
+                                             v0 √ X vk
+                             PN (c) =      v: 2+ 2            =0 .
+                                             β       k2 + β 2
+                                                        k=1
+
+If N ≥ s + 2, then
+                              dim(Hs (N ) ∩ PN (c)) = N − s − 1 > 0.
+Every nonzero vector in this space produces a nonzero test function gv with gv (i/2) = 0, and gv = gw
+implies v = w or v = −w. On this family the dictionary of Theorem 2.5 has no pole term.
+
+Proof. Direct evaluation of the pole source (2) at integer frequencies, and of its x-derivative at
+integer frequencies, gives
+                                                                    √        √
+                        n         ′          β 2 − n2             L( c + 1/ c − 2)
+         ψ0 (n) = Cc 2      ,   ψ0 (n) = Cc 2           ,   Cc =                     > 0.
+                     n + β2                 (n + β 2 )2                  2π 2
+
+Both evaluations are needed: off-diagonal entries of Qpole use only the integer values ψ0 (n), but the
+diagonal entries are ψ0′ (n), and value agreement at integers alone would not determine them (the
+diagonal involves all Fourier components of the source; see [11, Sec. 4.2]). With both identities,
+Qpole is exactly Cc times the divided-difference matrix of f (x) = x/(x 2   2
+ ′                                         1         −1             −1
+                                                                        +β ), including the diagonal
+f (n). From the partial fractions f (x) = 2 (x − iβ) + (x + iβ) , the divided difference is
+
+                                f (m) − f (n)        β 2 − mn
+                                              =                        ,
+                                   m−n          (m2 + β 2 )(n2 + β 2 )
+
+with the m = n limit f ′ (m); contracting against the even embedding, and using                  2
+                                                                                        P
+                                                                                        m um m/(m +
+β 2 ) = 0 by symmetry,
+
+                                                        N
+                                                                  !2
+                                           2   v0 √ X vk
+                     ⟨v, Qpole v⟩ = Cc β          + 2                  = 2gv (i/2).
+                                               β2     k2 + β 2
+                                                        k=1
+
+
+                                                    7
+                              P
+                    M     2   n≤M gv (γn )     raw residual     tail-corrected residual
+                    32   0.049967509 . . .     −9.1 · 10−7             −1.6 · 10−7
+                    64   0.049968326 . . .     −8.8 · 10−8             −9.4 · 10−9
+                   128   0.049968406 . . .     −7.9 · 10−9             −1.0 · 10−9
+                   256   0.049968413 . . .     −6.5 · 10−10            −8.3 · 10−11
+                   512   0.049968414 . . .     −4.7 · 10−11            −5.4 · 10−12
+
+Table 1: Zero-side partial sums for the worked example (c = 13, N = 4, pole-neutral v; γn
+= ordinate of the n-th nontrivial zero, γ512 = 826.90 . . .). The limit is the closed-form matrix
+contraction ⟨v, Q∞ v⟩; residuals are signed.
+
+Thus PN (c) is exactly the pole-neutral row.
+    The row defining PN (c) is independent of the moment rows when N ≥ s + 1: otherwise there
+would be a polynomial P of degree at most s with P (k 2 ) = 1/(k 2 + β 2 ) for 0 ≤ k ≤ N ; then
+(x + β 2 )P (x) − 1, of degree at most s + 1, would vanish at the N + 1 ≥ s + 2 distinct points k 2 ,
+forcing it to vanish identically, which is impossible. The dimension formula follows.
+    Finally, Kv = 2(Tv ∗ Tv ) in the Volterra convolution algebra of analytic germs at 0. This algebra
+is an integral domain: if ϕ, χ have lowest nonvanishing orders j, k, the lowest coefficient of ϕ ∗ χ
+is a nonzero beta-integral multiple of the product of lowest coefficients. Hence Kv ≡ 0 implies
+Tv = 0, so v = 0. If gv = gw , Fourier injectivity gives Kv = Kw on [0, 1], hence as germs; then
+(Tv − Tw ) ∗ (Tv + Tw ) = 0, so Tv = ±Tw and v = ±w.
+
+2.3   A worked example over the first 512 zeros
+
+           √ N = 4, and the pole- and moment-neutral vector v ∈ H0 (4)∩P4 (13) with (v2 , v3 , v4 ) =
+Take c = 13,
+(1, 0, −3)/ 2 and (v0 , v1 ) determined by the two linear conditions; numerically
+                     v = (−0.0859452, 1.4749860, 0.7071068, 0, −2.1213203).
+The chain v 7→ Tv 7→ Kv 7→ gbv 7→ gv for this vector is displayed in Figure 1. The cutoff-free
+contraction, computed from the closed-form Connes–Consani–Moscovici assembly at 40 digits, is
+                              ⟨v, Q∞ v⟩ = 0.049968414571096979730 . . . ,
+and Theorem 2.5 asserts that this number is the sum of gv over the nontrivial zeros; since every
+zero
+  P in the range used (and far beyond γ512 ) is known to lie on the critical line, the zero side is
+2 n≥1 gv (γn ) over the ordinates. Table 1 shows the partial sums against the first 512 zeros: the
+raw residual falls to −4.7 · 10−11 , and correcting the remainder by the archimedean tail integral of
+Section 3 (the smooth zero-density approximation to the missing zeros) leaves −5.4 · 10−12 . The
+same package verifies the identity on a generic, non-neutral vector at (c, N ) = (29, 6), where the
+two sides of Lemma 2.1 agree to 2.0 · 10−10 , and on its pole-neutral counterpart, where the pole
+term vanishes to 9 · 10−41 while the prime and archimedean terms are of order one: the pole really
+is switched off, not merely small.
+
+
+3     Archimedean tail order
+Recall ρ = 2π/L and IN = {−N, . . . , N }. For T > ρN , set aT = T /ρ and define
+                                       1                         1
+                         pT (n) =          ,      qT (n) =               (n ∈ IN ).
+                                    aT − n                    aT + n
+
+                                                    8
+                        coefficients vk                                                     Volterra kernel Kv (ω)
+                                                                 15
+
+   1
+                                                                 10
+
+   0                                                              5
+
+
+ −1                                                               0
+
+
+                                                                 −5
+ −2
+
+       0         1             2            3            4            0.0             0.2         0.4          0.6             0.8        1.0
+                               k                                                                          ω
+
+                weight gv̂ (ξ), supp ⊂ [−Δ, Δ]                                        test function gv (r) with zeros of ζ
+                                                                              gv (γn )
+  40
+                                                                  6
+                                                                                             0.025
+  20
+                                                                  4                          0.000
+
+                                                                                            −0.025
+   0
+                                                                  2
+                                                                                                         20               40               60
+
+−20                                                               0
+        −0.4     −0.2         0.0         0.2      0.4                0          10          20           30         40              50    60
+                               ξ                                                                          r
+
+
+Figure 1: The finite dictionary at c = 13, N = 4 for the worked example, read in row order.
+Top row: the coefficient vector v; the Volterra kernel Kv on [0, 1]. Bottom row: the compactly
+supported Fourier weight gbv on [−∆, ∆]; the induced entire test function gv on [0, 60] with the first
+ordinates γn marked (inset: the small tail oscillation that carries the zero sum). By Theorem 2.5
+the quadratic value ⟨v, Q∞ v⟩ equals twice the sum of the marked values (continued over all zeros).
+
+
+Lemma 3.1 (The archimedean density). The function h+ is strictly increasing on (0, ∞), with
+                                    ∞
+                               t    X            k + 1/4                      1    13
+                     h′+ (t) =                                2           ≤     +                       (t > 0).
+                               2                                              t   10 t2
+                                                                  
+                                    k=0   (k + 1/4)2 + (t/2)2
+
+Interval evaluation in Arb [21] gives h+ (7) = 0.10717967 . . . > 0, so h+ (t) > 0 for t ≥ 7; combined
+with the derivative bound,
+                                   h+ (t) ≤ log t − 58   (t ≥ 7).
+
+Proof. Differentiating the partial-fraction expansion of Re ψΓ (1/4 + it/2) term by term gives the
+displayed series, which is positive for t > 0; monotonicity and, with the certified value h+ (7) > 0,
+positivity on [7, ∞) follow. For the upper bound, put u = t/2 and gu (x) = (x + 1/4)/ (x + 1/4)2 +
+  2                                                          √
+u2 . The function s 7→ s/(s2 + u2 )2 increases up to s = u/ 3 and decreases thereafter, so gu is
+unimodal in x ≥ 0 and
+                  Z ∞
+   X                                       s              1             9          1        9
+       gu (k) ≤       gu (x) dx + max 2       2 2
+                                                  =     2
+                                                                  + √         ≤      2
+                                                                                       + √        ,
+                   0              s>0 (s + u )      2(u + 1/16) 16 3 u     3      2u     16 3 u3
+   k≥0
+
+
+                                                             9
+                                             √                      √
+whence h′+ (t) = u k gu (k) ≤ 1/(2u) + 9/(16 3 u2 ) = 1/t + (9/(4 3))/t2 ≤ 1/t + 13/(10t2 ).
+                    P
+Integrating from 7 to t,
+                             t  13  1 1                              
+        h+ (t) ≤ h+ (7) + log +       −    ≤ log t + h+ (7) + 13
+                                                              70 − log 7  ≤ log t − 1.65,
+                             7 10 7     t
+using the certified h+ (7) < 0.1072.
+
+Theorem 3.2 (Archimedean tail order). Let T2 > T1 > max(ρN, 7). Then
+
+                                       ∆T1 ,T2 := Qarch,T2 − Qarch,T1
+
+has the exact representation
+                                       Z T2
+                                 1                      sin2 (LT /2)
+                                                                     pT ptT + qT qTt dT.
+                                                                                    
+                       ∆T1 ,T2 = 2            h+ (T )
+                                π       T1                    ρ
+
+Consequently ∆T1 ,T2 is positive definite on the full complex finite frequency space indexed by IN ,
+and hence on the real even subspace. Moreover, in the natural order −N < · · · < N , every minor
+of ∆T1 ,T2 with increasing row and column sets is strictly positive.
+
+Proof. Since the finite-T archimedean integrand is even in r,
+                                  d               1
+                                    ψarch,T (x) = 2 h+ (T ) S(T, x, L).
+                                 dT              π
+At an integer node n ∈ IN , direct integration gives
+
+                                       2ρn sin2 (LT /2)   2 sin2 (LT /2)    n
+                       S(T, n, L) =        2     2 2
+                                                        =                 2      ,
+                                         T −ρ n                  ρ       aT − n2
+
+and for the diagonal entries, differentiating under the integral sign and integrating by parts,
+                      Z L 
+                                    y              y                2 sin2 (LT /2) a2T + n2
+  ∂x S(T, x, L)     =      2π 1 −       cos 2πn 1 −        cos(T y) dy =                            ,
+                x=n    0            L                 L                         ρ      (a2T − n2 )2
+
+which is exactly the derivative at x = n of the closed form x 7→ (2 sin2 (LT /2)/ρ) x/(a2T − x2 ).
+This matters because the diagonal entries of a divided-difference matrix are derivatives of the true
+source, not of an integer-node surrogate; here the two agree. The divided difference of x/(a2 − x2 )
+is                                                                
+                              1         1                  1
+                                                 +                   ,
+                              2 (a − m)(a − n) (a + m)(a + n)
+with the same formula in the diagonal limit, so
+
+                                   sin2 (LT /2)
+                                                                                   
+          d                                              1                1
+            (Qarch,T )mn = h+ (T )                                +                   ,
+         dT                            π2ρ        (aT − m)(aT − n) (aT + m)(aT + n)
+
+which is the displayed rank-two density.
+   For positive definiteness, suppose x ∈ CIN and x∗ ∆T1 ,T2 x = 0. The integrand is a sum of two
+absolute squares with the strictly positive scalar factor h+ (T ) sin2 (LT /2) off a discrete set, so by
+continuity                                 X xn
+                                                       =0
+                                                a−n
+                                                n∈IN
+
+
+                                                         10
+for all a = T /ρ in (T1 /ρ, T2 /ρ). This rational function has simple poles at the nodes n ∈ IN unless
+it vanishes identically; taking residues gives every xn = 0.
+    It remains to prove the minor statement. Put A = T1 /ρ and B = T2 /ρ. After the change of
+variables T = ρa, the same representation is
+                                           Z
+                                                                 1
+                          ∆T1 ,T2 (m, n) =                               dν(s),
+                                            [−B,−A]∪[A,B] (s − m)(s − n)
+
+where ν is the push-forward of π −2 h+ (ρa) sin2 (πa) da to both s = a and s = −a: a nonnegative
+measure with positive mass on every nonempty open subinterval. For increasing row nodes x1 <
+· · · < xk and column nodes y1 < · · · < yk in IN , Andréief’s identity [1, 18] gives
+                                              Z                   k                 k     k
+                                         1                     1                   1          Y
+             det[∆T1 ,T2 (xi , yj )] =            det                     det                   dν(sℓ ).
+                                         k!                 sℓ − xi i,ℓ=1       sℓ − yj j,ℓ=1
+                                                                                            ℓ=1
+
+On ordered distinct support points s1 < · · · < sk , the Cauchy determinant formula [22, Ch. 1] gives
+                                     k        Q                 Q
+                                                 i<j (xi − xj )    ℓ<r (sr − sℓ )
+                            
+                                 1
+                        det                 =           Q                         .
+                              sℓ − xi i,ℓ=1               i,ℓ (sℓ − xi )
+
+All nodes xi lie strictly between the two support intervals, so if ℓ− of the sℓ lie in [−B, −A] the
+sign of this determinant is (−1)k(k−1)/2+kℓ− , depending only on k and ℓ− . The same holds for the
+yj determinant with the same sℓ , hence the same ℓ− , so the two signs cancel and the integrand
+is nonnegative, and positive on a set of positive ν ⊗k measure. The integral is therefore strictly
+positive. This is the classical Cauchy total-positivity mechanism [22, 26, 3], applied to the finite
+archimedean tail representation above.
+
+Corollary 3.3 (A two-sided finite certification rule). On the full finite frequency space CIN , let
+                                                     Z ∞
+      tot    (c)                                  1             sin2 (Lr/2)
+                                                                             ∥pr ∥22 + ∥qr ∥22 dr.
+                                                                                              
+    QT = Qprime + Qpole + Qarch,T ,        BT = 2        h+ (r)
+                                                 π T                  ρ
+For T > max(ρN, 7):
+  (i) Q∞ − Qtot                 tot
+            T ≻ 0 and 0 ⪯ Q∞ − QT ⪯ BT I, hence
+
+                        λj (Qtot                   tot
+                             T ) < λj (Q∞ ) ≤ λj (QT ) + BT                     (1 ≤ j ≤ 2N + 1),
+     and the eigenvalues λj (Qtot
+                              T ) increase strictly to λj (Q∞ ) as T ↑ ∞.
+
+ (ii) Decision rule. λj (Qtot                                   tot
+                          T ) ≥ 0 certifies λj (Q∞ ) > 0; λj (QT ) < −BT certifies λj (Q∞ ) < 0; a
+      negative eigenvalue in the band [−BT , 0) certifies nothing about the cutoff-free sign.
+(iii) Explicit budget. For N ≥ 1,
+                                                                        
+                                      2(2N +1)ρ    log T    1       T
+                              BT    ≤                    +    log          ,
+                                         π2       T − ρN   ρN     T − ρN
+     and, as T → ∞ with (c, N ) fixed,
+                                                  (2N +1)ρ      T      
+                                    BT =                     log    + 1   (1 + o(1)).
+                                                    π2 T         2π
+     In particular B2T /BT → 21 : each doubling of the archimedean cutoff lowers the certification
+     floor by one binary digit.
+
+                                                                11
+The corresponding restricted statements hold on the real even subspace.
+
+Proof. (i) Integrate Theorem 3.2 from T to infinity. The improper integral converges entrywise
+because pr (n), qr (n) = O(r−1 ) uniformly for n ∈ IN while h+ (r) = O(log r); strict positivity
+follows by restricting to any compact window, and the trace of the positive tail is BT , so the
+tail is bounded above by BT I. The eigenvalue inequalities and monotonicity follow from Weyl
+monotonicity. (ii) is immediate from (i). (iii) For the explicit bound, use sin2 ≤ 1, the envelope
+h+ (r) ≤ log r of Lemma 3.1, and ∥pr ∥22 + ∥qr ∥22 ≤ 2(2N +1)ρ2 /(r − ρN )2 , then integrate
+                      Z ∞
+                           log r         log T     1      T
+                                 2
+                                   dr =        + log              (b = ρN < T ).
+                       T (r − b)        T −b b          T −b
+
+For the asymptotic form, ∥pr ∥22 + ∥qr ∥22 = 2(2N +1)ρ2 r−2 (1 + O(N ρ/r)), h+ (r) = log(r/2π) + o(1)
+[24], and the oscillatory part of sin2 = 21 − 12 cos(Lr) contributes         O(T −2 log T ) after one
+                                                                 1 ∞
+integration by parts; the remaining smooth integral is 2 T log(r/2π) 2(2N +1)ρ r−2 dr =
+                                                                  R
+
+(2N +1)ρ (log(T /2π) + 1)/T up to the stated relative error.
+
+The T = 800 correction scale. For c = 100, N = 200, T = 800, the released package gives
+ρN = 272.875270768 . . . < 800, a certified dyadic interval budget B800 < 0.897 (the interval
+certificate bounds sin2 (Lr/2) ≤ 1 and h+ (r) ≤ log r, roughly doubling the exact value 0.4203,
+against which the asymptotic form of (iii) predicts 0.4051; the closed-form bound of (iii) gives
+the weaker 1.58), and entrywise tail bound 3.18 · 10−3 . A separate cutoff-free Arb interval LDLT
+certificate at the same (c, N ), at 9000 bits, gives n+ = 401 and n− = 0. Thus the finite-T negative
+eigenvalues that motivated this paper sat deep inside the inconclusive band of the decision rule and
+were tail artifacts, while the cutoff-free matrix is certified positive. The asymptotic of (iii) makes
+the obstruction quantitative: driving BT below a spectral scale of 10−59 at (c, N ) = (100, 200)
+would require T ≈ 8 · 1062 . Deep spectral scales are not reachable through the archimedean cutoff;
+they are reachable through the cutoff-free closed forms.
+
+
+4    Verification and scope
+The released package records exact integer or symbolic audits for the single-frequency identity,
+the 2N +1 source quotient through N = 30, and the pole-neutral support corollary, including
+the diagonal derivative identity of Corollary 2.7. The pole-neutral audit checks 3311 pole-square
+entries, 18 moment-independence determinant cases, and 45 dimension instances of the formula
+dim = N − s − 1. The archimedean audits include an Arb interval certification of h+ (7) > 0,
+a three-route derivative bridge for the rank-two density (symbolic residual 0; direct-kernel error
+9.5 · 10−125 ), strict-total-positivity smoke tests with zero bad minors for N = 2, 3 (251 and 3431
+minors), the c = 100, N = 200, T = 800 interval tail budget quoted above, and the cutoff-free
+Arb LDLT certificate with n− = 0 at 9000 bits, whose generating script ships with the package.
+The dictionary itself is confirmed by three independent routes: the closed-form Connes–Consani–
+Moscovici assembly, the source-side evaluation of Theorem 2.5, and the zero-side sum of Table 1;
+on a generic vector at (c, N ) = (29, 6) the first two routes agree to 2.0 · 10−10 , and all displayed
+constants are generated by scripts included in the package. These checks guard constants and signs;
+they are not proof substitutes.
+    The limitations are explicit. The dictionary is one-way, from finite Galerkin vectors into the
+Guinand–Weil class; no inverse map from arbitrary test functions is claimed. Strict observability
+and strict total positivity concern the isolated post-band archimedean increment, not the full Weil
+
+
+                                                 12
+                   monotone eigenvalue flow, c = 13, N = 4 (even sector)                           certified gap vs. budget: the log T/T law
+
+                         λj (QTtot )
+             0.4         λj (Q∞ )
+
+
+             0.3
+eigenvalue
+
+
+
+
+                                             0                                        10−1
+             0.2
+                                        −10−10
+                                                                                                   max [λj (Q∞ ) − λj (QTtot )]
+                                                                                                     j
+             0.1                        −10−6
+                                                                λmin , symlog                      tail budget BT
+                                        −10−2
+                                                                                                                T
+             0.0                                 101      102             103
+                                                                                                   (2N+1)ρ (log 2π + 1)/(π 2 T)
+
+                   101                           102                       103               101                           102                 103
+                                       archimedean cutoff T                                                     archimedean cutoff T
+
+
+Figure 2: The tail order in action at c = 13, N = 4. Left: the eigenvalues of Qtot
+                                                                                 T increase strictly to
+those of Q∞ (dashed lines) as the cutoff T grows; by Corollary 3.3 every gap is at most BT . Inset
+(λmin , symmetric log scale): at small T the finite-cutoff matrix has genuinely negative eigenvalues
+(−1.9·10−2 at T = 11, −5.3·10−7 at T = 14, −3.9·10−10 at T = 18), each far inside its inconclusive
+band (−BT , 0); the cutoff-free limit is +9.7 · 10−15 . Right: the largest gap maxj [λj (Q∞ ) − λj (Qtot
+                                                                                                     T )]
+against the budget BT and its asymptotic form (2N +1)ρ(log(T /2π) + 1)/(π 2 T ); the log T /T decay
+is the one-binary-digit-per-doubling law.
+
+
+block or the prime block. The paper does not prove RH, Weil positivity, a prime-location bound, a
+next-prime theorem, or a factoring result. The finite source quotient is the coordinate handoff for
+a follow-up finite event-calculus study; no event-recovery theorem is used here.
+
+Use of AI tools. Language-model tools were used as a drafting and verification-tooling assistant
+under the author’s direction; the author takes sole responsibility for all mathematics, computations,
+and text.
+
+Data and code availability. The verification package (scripts, JSON artifacts, checksums, and
+the figure generators) accompanies this paper as ancillary files and is maintained at https://
+github.com/akivag613/connes-cvs- under papers/2 guinand weil dictionary tail order/;
+a checksummed archive is deposited on Zenodo (concept DOI 10.5281/zenodo.21124802).
+
+
+References
+   [1] C. Andréief. Note sur une relation entre les intégrales définies des produits des fonctions. Mémoires de
+       la Société des Sciences Physiques et Naturelles de Bordeaux, 2:1–14, 1886.
+   [2] Ronnie Andrews, Jr. Independent reproduction and convergence analysis of the CCM zeta spectral
+       triple, June 2026. Zenodo record 20427500. URL: https://zenodo.org/records/20427500,
+       doi:10.5281/zenodo.20427500.
+   [3] Marco Bertola, Michael Gekhtman, and Jacek Szmigielski. Cauchy biorthogonal polynomials. Journal
+       of Approximation Theory, 162(4):832–867, 2010. arXiv:0904.2602,
+       doi:10.1016/j.jat.2009.09.008.
+
+
+
+
+                                                                                 13
+ [4] Enrico Bombieri. Remarks on Weil’s quadratic functional in the theory of prime numbers. I.
+     Rendiconti Lincei. Matematica e Applicazioni, 11(3):183–233, 2000. URL:
+     https://eudml.org/doc/252338.
+ [5] Andrés Chirre and Blas Molero Ravines. Explicit conditional bounds for ζ(s) at the edge of the
+     critical strip. arXiv:2602.06199, 2026. arXiv:2602.06199.
+ [6] Alain Connes. Trace formula in noncommutative geometry and the zeros of the Riemann zeta
+     function. Selecta Mathematica (New Series), 5(1):29–106, 1999. doi:10.1007/s000290050042.
+ [7] Alain Connes. The Riemann hypothesis: Past, present and a letter through time. arXiv:2602.04022,
+     2026. arXiv:2602.04022.
+ [8] Alain Connes and Caterina Consani. Weil positivity and trace formula, the archimedean place. Selecta
+     Mathematica (New Series), 27(4):77, 2021. arXiv:2006.13771, doi:10.1007/s00029-021-00689-4.
+ [9] Alain Connes and Caterina Consani. Spectral triples and zeta-cycles. L’Enseignement Mathématique,
+     69(1-2):93–148, 2023. arXiv:2106.01715, doi:10.4171/LEM/1049.
+[10] Alain Connes, Caterina Consani, and Henri Moscovici. Zeta spectral triples. In Applications of
+     Noncommutative Geometry to Gauge Theories, Field Theories, and Quantum Space-Time, EMS Series
+     of Lectures in Mathematics, pages 39–76. EMS Press, 2026. arXiv:2511.22755,
+     doi:10.4171/elm/37/3.
+[11] Alain Connes and Walter D. van Suijlekom. Quadratic forms, real zeros and echoes of the spectral
+     action. Communications in Mathematical Physics, 406(12):312, 2025. arXiv:2511.23257,
+     doi:10.1007/s00220-025-05493-1.
+[12] Breno Wilson de Andrade Silva. Exact archimedean entries for truncated Weil forms: Closed-form
+     implementation, a precision-stable library defect, and corrected deep spectra, June 2026. Zenodo
+     record 20671635. URL: https://zenodo.org/records/20671635, doi:10.5281/zenodo.20671635.
+[13] Breno Wilson de Andrade Silva. A Loewner divided-difference formula for the prime contribution in
+     the localized Weil quadratic form, and a parity sign law, June 2026. Zenodo record 20710075. URL:
+     https://zenodo.org/records/20710075, doi:10.5281/zenodo.20710075.
+[14] Breno Wilson de Andrade Silva. A Loewner/operator-monotone framework for the even-simplicity
+     problem in the CCM spectral triple, June 2026. Zenodo record 20737111. URL:
+     https://zenodo.org/records/20737111, doi:10.5281/zenodo.20737111.
+[15] Breno Wilson de Andrade Silva. The pole term is the only obstruction to Perron structure in the
+     localized Weil quadratic form, June 2026. Zenodo record 20682834. URL:
+     https://zenodo.org/records/20682834, doi:10.5281/zenodo.20682834.
+[16] Breno Wilson de Andrade Silva. Quadrature sensitivity of deep spectra of truncated Weil forms, with
+     corrections to two recent computational notes, June 2026. Zenodo record 20650146. URL:
+     https://zenodo.org/records/20650146, doi:10.5281/zenodo.20650146.
+[17] Breno Wilson de Andrade Silva. A scalar Herglotz criterion for the even-simplicity hypothesis in the
+     localized Weil quadratic form, June 2026. Zenodo record 20694588. URL:
+     https://zenodo.org/records/20694588, doi:10.5281/zenodo.20694588.
+[18] Peter J. Forrester. Meet Andréief, Bordeaux 1886, and Andreev, Kharkov 1882–1883. Random
+     Matrices: Theory and Applications, 8(2):1930001, 2019. arXiv:1806.10411,
+     doi:10.1142/S2010326319300018.
+[19] Akiva Groskin. High-precision approximation of Riemann zeros via the truncated Weil form.
+     arXiv:2605.20224, 2026. arXiv:2605.20224, doi:10.5281/zenodo.19546514.
+[20] A. P. Guinand. A summation formula in the theory of prime numbers. Proceedings of the London
+     Mathematical Society, 50(1):107–119, 1948. doi:10.1112/plms/s2-50.2.107.
+
+
+
+                                                    14
+[21] Fredrik Johansson. Arb: Efficient arbitrary-precision midpoint-radius interval arithmetic. IEEE
+     Transactions on Computers, 66(8):1281–1292, 2017. doi:10.1109/TC.2017.2690633.
+[22] Samuel Karlin. Total Positivity, Volume I. Stanford University Press, Stanford, CA, 1968.
+[23] Yitzhak Katznelson. An Introduction to Harmonic Analysis. Cambridge University Press, Cambridge,
+     third edition, 2004. doi:10.1017/CBO9781139165372.
+[24] NIST Digital Library of Mathematical Functions. Asymptotic expansions for the logarithmic
+     derivative of the gamma function. DLMF Section 5.11, formula 5.11.2, accessed 2026-06-25. URL:
+     https://dlmf.nist.gov/5.11.E2.
+[25] Walter Rudin. Real and Complex Analysis. McGraw-Hill, New York, third edition, 1987.
+[26] Thomas Simon. Total positivity of a Cauchy kernel. Journal of Approximation Theory, 184:238–258,
+     2014. arXiv:1305.1173, doi:10.1016/j.jat.2014.05.014.
+[27] Masatoshi Suzuki. Weil’s quadratic form via the screw function. arXiv:2606.09096, 2026.
+     arXiv:2606.09096.
+[28] E. C. Titchmarsh. The Theory of the Riemann Zeta-Function. Clarendon Press, Oxford, second
+     edition, 1986. Revised by D. R. Heath-Brown.
+[29] André Weil. Sur les “formules explicites” de la théorie des nombres premiers. Meddelanden från Lunds
+     Universitets Matematiska Seminarium (Comm. Sém. Math. Univ. Lund), Tome
+     Supplémentaire:252–265, 1952. Volume dedicated to Marcel Riesz.
+[30] Hiroyuki Yoshida. On hermitian forms attached to zeta functions. In Zeta Functions in Geometry,
+     volume 21 of Advanced Studies in Pure Mathematics, pages 281–325. Kinokuniya, Tokyo, 1992.
+     doi:10.2969/aspm/02110281.
+
+
+
+
+                                                    15
+

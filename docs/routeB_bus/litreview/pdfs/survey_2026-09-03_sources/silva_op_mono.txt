@@ -1,0 +1,261 @@
+    A Loewner/operator-monotone framework for the even-simplicity
+       problem in the Connes–Consani–Moscovici spectral triple
+                                              Breno Andrade
+
+                                               June 17, 2026
+
+
+                                                  Abstract
+          The Connes–Consani–Moscovici “Zeta Spectral Triples” program (arXiv:2511.22755) uses
+      the hypothesis (Def. 5.3, Thm. 5.10) that the lowest spectral value of the truncated Weil
+      quadratic form is simple and has an even eigenvector (“even-simplicity”). We observe that
+      the truncated Weil matrix is, verbatim, the Loewner (divided-difference) matrix of an odd func-
+      tion ψ(k) = k h(k 2 ), and that its parity sectors are themselves Loewner matrices of the functions
+      h and Φ(ξ) = ξh(ξ) in the variable ξ = k 2 (the sector identities are algebraic, and were confirmed
+      numerically to 10−121 in the Galerkin implementation). This gives a precise Loewner/operator-
+      monotone framework for the even-simplicity problem. In the generic case where h is globally
+      operator monotone, Loewner’s theorem and the Bhatia–Sano conditional-definiteness theorem
+      imply even ground-state ordering. The arithmetic Weil matrices lie instead in a doubly-critical
+      finite-node regime; that is kept as the remaining open core. No claim toward the Riemann
+      Hypothesis, nor a proof of the arithmetic even-simplicity hypothesis, is made.
+
+
+1     The Weil matrix is a Loewner matrix
+Fix c > 1, L = log c, and basis size N . The Connes–van Suijlekom Galerkin matrix Q (CvS,
+arXiv:2511.23257, Prop. 4.1) on the symmetric index set {−N, . . . , N } is, with ψ the truncated
+Weil functional value and ψ ′ its derivative,
+                                    ψ(m) − ψ(n)
+                        Q[m, n] =               (m ̸= n),           Q[n, n] = ψ ′ (n),                      (1)
+                                      m−n
+i.e. Q is the Loewner matrix of ψ. The functional value decomposes as ψ = ψprime + ψpole + ψarch ,
+with ψprime (x) = − π1 n Λ(n)
+                           √ sin(2πx ωn ), ωn = 1 − log n , and likewise ψpole a continuous sine
+                      P
+                             n                          L
+superposition; ψ is odd: ψ(−k) = −ψ(k).
+
+
+2     Parity sectors as Loewner matrices of h and ξh
+               √ √
+Set h(ξ) := ψ( ξ)/ ξ (even in k, a function of ξ = k 2 ); note h(0) = ψ ′ (0) by L’Hôpital. Writing
+D[k, l] = Q[k, l], X[k, l] = Q[k, −l] for k, l ≥ 1, the even (γ = +1) and odd (γ = −1) sectors are
+D ± X.
+                                                                      f (ξi ) − f (ξj )
+Proposition 1 (sector Loewner identities). With Lf [i, j] =                             the Loewner matrix in
+                                                                          ξi − ξj
+ξ = k2 ,
+
+     D − X = 2 diag(k) Lh diag(k)        (odd),      D + X = 2 LΦ , Φ(ξ) = ξh(ξ)          (even, k ≥ 1),
+
+                                                      1
+and the full even sector (including the constant mode k = 0) is the Loewner
+                                                                        √     matrix of Φ on the nodes
+{0, ξ1 , . . . , ξN }, with Φ(0) = 0. The constant-mode coupling is bk = 2 h(k) and Q[0, 0] = h(0).
+                                             ψ(k) ± ψ(l)      kψ(k) ∓ lψ(l)
+The proof is the divided-difference identity                =               · (sign data), using ψ odd;
+                                                   k∓l           k 2 − l2
+the two combinations collapse to Loewner matrices of Φ√= ξh and of h (weighted by diag(k)) re-
+spectively. In √
+               the orthonormal
+                        √       even basis {e0 , (ek +e−k )/ 2} the even sector equals Ds Lfull
+                                                                                            Φ Ds with
+                                   full
+Ds = diag(1, 2, . . . , 2) and LΦ the Loewner matrix of Φ on {0, ξ1 , . . . , ξN }; since congruence
+preserves inertia, all sign/ordering statements below transfer verbatim.
+
+
+3    A generic operator-monotone ordering theorem
+By Löwner’s theorem, Lh ⪰ 0 (for all nodes) iff h is operator monotone on (0, ∞); and then Φ = ξh
+is operator convex with Φ(0) = 0 (Bhatia, Matrix Analysis Thm. V.2.9; Bhatia–Sano, Math. Ann.
+344 (2009)). For a fixed truncation, Proposition 1 identifies positivity of the odd sector with
+positivity of the finite Loewner matrix Lh on the nodes {12 , . . . , N 2 }. If this finite-node positivity
+holds for all node sets, Loewner’s theorem identifies it with global operator monotonicity of h. The
+next theorem treats this global, generic regime.
+
+Theorem 1 (generic operator-monotone even ordering). Assume that h is operator monotone on
+(0, ∞) and admits the required boundary value h(0) = limξ→0+ h(ξ) at 0. Then the Loewner matrix
+(1) of ψ(k) = k h(k 2 ) satisfies λeven
+                                   0    ≤ 0 ≤ λodd
+                                               0 . In particular the lowest spectral value is attained
+in the even sector. This proves even ordering in the generic operator-monotone regime; it does not
+by itself prove simplicity.
+
+Proof. Since h is operator monotone, Lh ⪰ 0 (Löwner), so by Proposition 1 the odd sector Modd =
+2 diag(k)Lh diag(k) is positive semidefinite: λodd
+                                               0   ≥ 0. Since h is operator monotone, the function
+Φ(ξ) = ξh(ξ) is operator convex with Φ(0) = 0 (Bhatia, Matrix Analysis, Thm. V.2.9; no sign
+condition on h is required, e.g. h(ξ) = −1/(ξ + s) is admissible). By Bhatia–Sano (Math. Ann.
+344 (2009)), the Loewner matrix Lfull
+                                    Φ of the operator-convex   Φ on {0, ξ1 , . . . , ξN } is conditionally
+                       full
+                                                     P
+negative definite: ⟨LΦ v, v⟩ ≤ 0 for every v with i vi = 0. Being negative semidefinite on a
+subspace of codimension one, LfullΦ has at most one positive eigenvalue. By Proposition 1 the
+orthonormal even sector is the congruence Meven = Ds Lfull  Φ Ds with Ds ≻ 0; since congruence
+preserves inertia, Meven likewise has at most one positive eigenvalue, so λeven
+                                                                             0       = λmin (Meven ) ≤ 0.
+(Note Meven is itself not conditionally negative definite — the congruence does not preserve that
+property — only the inertia, which is what is used.) Combining, λeven
+                                                                    0   ≤ 0 ≤ λodd   0 .
+                                                                                                  √
+Numerical check. In tests with more than twenty operator-monotone
+                                                             P                 examples (e.g. ξ + c,
+log(ξ + c), −1/(ξ + c), ξ/(ξ + s), and random sums c0 +         wi ξ/(ξ + si )), every case satisfied
+λeven
+  0   < 0 ≤ λ odd , as Theorem 1 asserts.
+              0
+Remark 1 (the arithmetic case is not covered). Theorem 1 requires global operator monotonicity of
+h, i.e. positivity of Lh for arbitrary node sets. The arithmetic finite matrices considered in the Weil
+truncations are different: numerically, Lh ⪰ 0 holds only in the prescribed nodes {k 2 } and only
+marginally, while the even-sector matrix is also positive semidefinite. (Indeed the arithmetic h is
+not even pointwise monotone in ξ — its values oscillate, e.g. h decreases between adjacent nodes at
+c = 5 — so it is genuinely not operator monotone; what is special is that Lh is nonetheless positive,
+marginally, on the specific nodes {k 2 }.) Thus the arithmetic regime is not the generic operator-
+monotone regime of Theorem 1: it has λeven    0    > 0 (numerically +10−17 , +10−59 , +10−177 at c =
+5, 13, 53), the hypothesis of Theorem 1 fails, and the ordering λeven
+                                                                    0    < λodd
+                                                                            0   becomes a comparison
+
+                                                    2
+of two exponentially small positive numbers. This “doubly-critical” regime (Meven , Modd both
+critically PSD = Weil positivity at the tested truncations) is the regime relevant to the CCM
+even-simplicity hypothesis, and is the open content below.
+
+Conjecture 1 (doubly-critical even-simplicity). For the arithmetic ψ, in the regime where both
+sectors are positive semidefinite, λeven
+                                    0    < λodd
+                                            0 . Equivalently: the prime contribution, which renders
+both Lh and LΦ critically PSD, orders the two critical near-null eigenvalues with the even one below.
+
+    The conjecture is equivalent to an explicit scalar inequality, which provides a concrete target
+for a proof.
+
+Proposition 2 (bordered Herglotz criterion). In the orthonormal even basis write
+
+                         h(0) bT                √
+                                 
+                Meven =              ,     bk = 2 h(k), A = D + X = 2LΦ
+                           b    A
+
+(Proposition 1; A is the even block on the non-constant modes), and set λo = λ0 (Modd ). Assume
+λo < λ0 (A) — the odd ground lies below the bottom of the non-constant even block — so that
+A − λo I ≻ 0. Define, for λ < λ0 (A),
+
+                                 ϕ(λ) = h(0) − λ − bT (A − λI)−1 b.
+
+Then ϕ is strictly decreasing, its unique zero below λ0 (A) equals λ0 (Meven ), and
+
+                λ0 (Meven ) < λo ⇐⇒ ϕ(λo ) < 0 ⇐⇒ bT (A − λo I)−1 b > h(0) − λo .
+
+Thus, in the doubly-critical regime, Conjecture 1 is equivalent to the scalar inequality bT (A −
+λo I)−1 b > h(0) − λo .
+
+Proof. For λ < λ0 (A) the block A − λI is positive definite, so by Haynsworth inertia additivity
+the inertia of Meven − λI equals that of A − λI (all positive) plus the sign of its Schur complement
+ϕ(λ) = (h(0) − λ) − bT (A − λI)−1 b. Hence Meven − λI has a negative eigenvalue iff ϕ(λ) < 0. Since
+ϕ′ (λ) = −1 − bT (A − λI)−2 b < 0, ϕ is strictly decreasing on (−∞, λ0 (A)) and has a unique zero λ∗
+there, which is therefore the smallest eigenvalue λ0 (Meven ). Evaluating at λ = λo gives the stated
+equivalences.
+
+The arithmetic data realise this criterion at the very edge. At c = 5, 13, 53 the hypothesis λo <
+λ0 (A) holds; the left side bT (A − λo I)−1 b agrees with h(0) to 12.8, 52.8, 170.5 significant digits
+respectively; and the inequality bT (A − λo I)−1 b > h(0) − λo holds only by the exponentially small
+margin −ϕ(λo ) = 2.4 × 10−14 , 1.1 × 10−54 , 8.8 × 10−173 (equivalently, the even-simplicity gap
+λo − λ0 (Meven ) = 1.1 × 10−14 , 3.3 × 10−55 , 1.7 × 10−173 ). This is the precise form taken by the
+remaining open problem.
+
+
+4    Relation to the CCM hypothesis and outlook
+For an operator-monotone h the even Weil sector is genuinely indefinite, and Theorem 1 establishes
+the ordering λeven
+                 0    ≤ 0 ≤ λodd0  unconditionally, through the Bhatia–Sano conditional negative
+definiteness of the Loewner matrix LfullΦ (whose inertia, though not the conditional definiteness
+itself, passes to the orthonormal Meven by congruence).
+    The arithmetic Weil matrices lie outside this regime: both sectors are then critically positive
+(Weil positivity), λeven
+                     0   , λodd
+                            0   → 0+ with λeven
+                                           0    < λodd
+                                                    0  (ratios ∼ 10−3 to 10−5 across c = 5, 13, 53).
+
+                                                  3
+Since λeven
+        0    > 0, the reduction “λeven
+                                   0   ≤ 0” no longer applies, and the ordering becomes a comparison
+of two exponentially small positive quantities. Explicit variational competitors — for instance the
+scaled odd ground diag(k)ψodd — fail by the critical margin, their Rayleigh quotient exceeding
+λodd
+  0   by a factor ∼ 103 ; the true even ground is spread over many modes, so a proof must be non-
+variational, controlling the negative (t < 0) Nevanlinna-measure weighting of the even sector against
+the positive weighting of the odd. This doubly-critical regime is the even-simplicity hypothesis itself
+(CCM, Def. 5.3), which Connes–Consani–Moscovici, and Suzuki (for small a only), leave open.
+    It is useful to separate three layers. Positivity of either sector is equivalent to global positivity
+of the corresponding Loewner matrix, hence to operator monotonicity of h (respectively of Φ);
+by Yoshida’s criterion odd positivity already implies the Riemann Hypothesis, so establishing the
+global Pick property of the arithmetic h is not a shortcut but a reformulation of that problem. The
+even ordering for operator-monotone h is, by contrast, settled by Theorem 1, in the regime where
+the even sector is indefinite. The remaining target is Conjecture 1: the ordering λeven   0    < λodd
+                                                                                                  0    in
+the doubly-critical regime, which is arithmetic-dependent — the prime term brings both Loewner
+matrices to the positive-semidefinite boundary, and without it the ground state is odd — and which,
+by Proposition 2, is the explicit scalar inequality bT (A − λo I)−1 b > h(0) − λo . This is the natural
+object to study independently of the full Riemann Hypothesis; possible non-variational routes are
+de Branges / Krein-string asymptotics of the two critical near-null eigenvalues in Suzuki’s screw-
+function realisation (Appendix A), the analysis of the signed spectral density of ψ (negative prime
+atoms together with the positive pole/archimedean continuum over ω ∈ (0, 1)) and the parity of
+the explicit-formula cancellation, and the secular relation δe < δo between the two sector gaps,
+observed numerically but not yet proved.
+    Finally, the contribution of the present note is the bridge itself: the CCM, CvS and Bombieri
+formulations of even-simplicity work in the Weil-form basis and make no contact with operator-
+monotone functions, whereas the object is in fact a Loewner matrix and the hypothesis an operator-
+monotone ordering, which brings the Löwner–Donoghue–Bhatia–Sano theory to bear.
+
+
+A     The Suzuki screw-function bridge
+Independently of the above, the discrete CvS/CCM truncation used here is congruent to the con-
+tinuum framework of Suzuki (arXiv:2606.09096,
+                                      √         §8) up to an explicit rank-one boundary term. In
+the orthonormal Fourier basis eiωn x / L (ωn = 2πn/L, a = L/2), writing D = i d/dx = diag(−ωn )
+                                                                                         x2 +y 2
+and Ka = (−∆N )−1 the inverse Neumann Laplacian on [−a,ha] (Suzuki’s kerneli N (x, y) = 4a −
+|x−y|                                                                       m+n
+                                                         a2
+      a
+  2 + 6 ), one has, for m, n ̸= 0, the closed form Kmn = π 2
+                                                                 δmn
+                                                                  n2
+                                                                     + (−1)
+                                                                         mn       and hence
+
+                              D Ka D = I + |w⟩⟨w|,          wn = (−1)n ,                             (2)
+verified numerically to ∥DKa D − (I + w ⊗ w)∥ < 3 × 10−36 . The rank-one excess wn = (−1)n
+is even (invariant under n 7→ −n) and is precisely the boundary evaluation v 7→ v(±a) (the
+Dirichlet condition H01 that Suzuki imposes via L20 ). Thus Suzuki’s generalised eigenvalue problem
+Ga u = λKa u equals our ordinary problem modified by an even rank-one term, localising the
+periodic-vs-Dirichlet discrepancy entirely in the even sector. However, because Suzuki works in L20 ,
+he removes the constant mode ξ = 0 — exactly the node that carries part of even-simplicity (§4)
+— so this bridge, though exact, does not by itself transport the ordering.
+
+
+References
+[1] A. Connes, C. Consani, H. Moscovici, Zeta Spectral Triples, arXiv:2511.22755 (2025).
+
+                                                   4
+[2] A. Connes, W. D. van Suijlekom, Quadratic Forms, Real Zeros and Echoes of the Spectral
+    Action, arXiv:2511.23257 (2025).
+
+[3] M. Suzuki, Weil’s quadratic form via the screw function, arXiv:2606.09096 (2026).
+
+[4] R. Bhatia, Matrix Analysis, Graduate Texts in Mathematics 169, Springer, 1997.
+
+[5] R. Bhatia and T. Sano, Loewner matrices and operator convexity, Math. Ann. 344 (2009),
+    703–716.
+
+[6] F. Hiai and T. Sano, Loewner matrices of matrix convex and monotone functions, J. Math. Soc.
+    Japan 64 (2012), no. 2, 343–364.
+
+
+
+
+                                               5
+

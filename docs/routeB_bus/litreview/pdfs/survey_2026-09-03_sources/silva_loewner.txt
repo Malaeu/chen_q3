@@ -1,0 +1,238 @@
+A Loewner divided-difference formula for the prime contribution
+  in the localized Weil quadratic form, and a parity sign law
+                                           Breno Andrade
+                                             ArqueOps
+                                       breno@arqueops.com.br
+
+                                           June 15, 2026
+
+
+                                              Abstract
+         In the localized/truncated Weil quadratic form of Connes–Consani–Moscovici
+     (arXiv:2511.22755) and Connes–van Suijlekom (arXiv:2511.23257), the prime contribution
+     enters the Galerkin matrix as a divided difference (Loewner matrix) of an explicit oscillatory
+     symbol. We record two consequences. First (Proposition 1), for any test vector v the prime
+     quadratic form admits an exact closed Loewner representation in terms of the Fourier symbol
+     Wv and the arithmetic frequencies ωq = 1 − log q/ log c. The identity is exact; we validate it
+     numerically at c = 5, 13, 53 to working precision. Second, parity of the symbol fixes the sign
+     structure: for the even vector C = cosh(x/2) the symbol WC is real and positive, and we
+     prove (Lemma 3, with an explicit Galerkin-truncation bound) that the prime contribution
+     in C is non-positive term by term (strict for q < c) — the primes cooperate. For the odd
+     vector S = sinh(x/2) the symbol WS is purely imaginary and sign-changing, so the per-prime
+     contributions have mixed sign and the positivity of ⟨S, P S⟩ holds only as a sum in which
+     the large primes outweigh the small ones — the primes compete. We make no claim about
+     even-simplicity or the Riemann Hypothesis; rather, the odd sector is reduced to one explicit
+     term-by-term competition inequality, tied to the odd-sector positivity problem.
+
+
+1    Setup: the prime piece as a Loewner matrix
+Let c ≥ 2, L = log c, a = L/2. We use the Galerkin discretization of the localized Weil form
+of [1, 2] in the trigonometric basis {ek (t) = exp(2πikt/L)}|k|≤N on (−a, a), in the closed-form
+assembly of [5, 4]. The matrix entries are the divided differences of a generating function
+ψ = ψpr + ψpole + ψar ,
+
+                                 ψ(m) − ψ(n)
+                    Q[m, n] =                     (m ̸= n),           Q[n, n] = ψ ′ (n),              (1)
+                                   m−n
+with the prime piece
+
+                                 1 X Λ(q)                                        log q
+                   ψpr (x) = −        √ sin 2πx ωq ,                    ωq = 1 −         ,            (2)
+                                 π  k
+                                       q                                             L
+                                  q=p ≤c
+
+Λ the von Mangoldt function. Let P denote the prime piece of Q: the Loewner (divided-difference)
+matrix of ψpr . For v = (vn )|n|≤N write its Fourier symbol
+                                                   X
+                                       Wv (β) =           vn eiβn .                                   (3)
+                                                  |n|≤N
+
+
+
+
+                                                   1
+2    The Loewner formula
+Proposition 1. For every v ∈ C2N +1 ,
+                            X Λ(q) Z 1 h                               i
+              ⟨v, P v⟩ = −2    √ ωq   Re Wv (−2πωq t) Wv (2πωq (1 − t)) dt.                                  (4)
+                             k
+                                q   0
+                              q=p ≤c
+
+                             P Λ(q)
+Proof. By (2), P = − π1
+                                                                             
+                               q
+                                    √
+                                        q               sin(αq m) − sin(αq n) /(m − n) and
+                                            Pq where Pq [m, n] =
+                                                                 R1
+αq = 2πωq . The divided difference of a smooth f is f (m)−f (n)
+                                                                = 0 f ′ n + t(m − n) dt; for
+                                                                                    
+                                                       m−n
+f = sin(α·), f ′ = α cos(α·), whence
+                                                   Z 1
+                                                                                
+                             Pq [m, n] = αq               cos αq (tm + (1 − t)n) dt.
+                                                      0
+                                            P                                                       
+Summing against v̄m vn and using                m,n v̄m vn cos α(tm+(1−t)n)
+                                                                     = Re Wv (−αt) Wv (α(1−t))
+                                                                                      R1
+(factor the exponential and recognize the two symbol evaluations) gives ⟨v, Pq v⟩ = αq 0 Re[ · · · ] dt.
+Collecting the weights − π1 · Λ(q)
+                              √ and αq = 2πωq yields (4).
+                                q
+
+Remark 2 (numerical validation). Assembling P as the difference of the full and prime-free closed-
+form matrices and comparing ⟨v, P v⟩ against the right-hand side of (4) (Simpson quadrature in
+t), the ratio is 1.00001, 1.00003, 1.00004 for v = C at c = 5, 13, 53 and 1.0024, 0.9923, 0.9916 for
+v = S, the residual being the quadrature error.
+
+
+3    The even symbol: cooperation, and a term-by-term sign law
+Let C = cosh(x/2). Its Galerkin coefficients have the closed form
+
+                                        sinh(L/4)           1
+                                   Cn =    √       · 1            2
+                                                                     > 0,                           (5)
+                                              L      4 + (2πn/L)
+                                         Ra
+obtained by the elementary integral −a eµx e−2πinx/L dx = 2 sinh(µL/2)/(µ − 2πin/L) with µ =
+± 21 (the coefficients are positive and even, decaying like n−2 ;P
+                                                                 validated against the assembly routine
+to 10−41 ). The full symbol is, by the Poisson summation n eiβn /(b2 + n2 ) = (π/b) cosh(b(π −
+β))/ sinh(πb) with b = L/4π,
+                         √            L             β                                        √
+              WC (β) =       L cosh              1−        ,       β ∈ [0, 2π],       min WC =       L.      (6)
+                                            4         π                                β
+
+                                                                                                 sinh(L/4) L
+Lemma 3 (positivity of the truncated even symbol). For every N > N0 :=                                       one
+                                                                                                     2π 2
+has WC,N (β) > 0 for all β, where WC,N (β) = |n|≤N Cn eiβn .
+                                            P
+
+Proof. The discarded tail is bounded uniformly:
+                              X                  2 sinh(L/4)  L 2 X 1      2 sinh(L/4)  L 2 1
+       ∥WC − WC,N ∥∞ ≤               Cn ≤             √                    <      √               ,
+                                                        L     2π        n2          L     2π N
+                             |n|>N                                  n>N
+
+                                                                                 √
+using 14 + (2πn/L)2 > (2πn/L)2 and               n−2 < 1/N . With minβ WC = L from (6),
+                                         P
+            √                               n>N
+WC,N (β) ≥ L− 2 sinh(L/4)
+                   √
+                     L
+                            L 2
+                          ( 2π ) /N , which is > 0 exactly when N > sinh(L/4)L/(2π 2 ) = N0 .
+
+    N0 grows only like c1/4 log c (N0 = 0.09, 0.23, 0.96, 5.2 at c = 13, 53, 103 , 105 ); the regime of
+interest N ≫ N0 always holds, and numerically WC,N > 0 already at N = 1 for c up to 105 .
+
+                                                               2
+Corollary 4 (even sign law). For c > 2 and N > N0 , the prime contribution in C is non-positive
+term by term and the total sum is strictly negative:
+                           X Λ(q) Z 1
+           ⟨C, PN C⟩ = −2      √ ωq        WC,N (2πωq t) WC,N (2πωq (1 − t)) dt < 0.
+                                 q       0
+                           q≤c         |                 {z                   }
+                                                                  >0
+
+Proof. C is even, so Cn is real and even and WC,N is real and even; hence WC,N (−2πωt) =
+WC,N (2πωt) and the integrand of (4) is WC,N (2πωt) WC,N (2πω(1 − t)), positive by Lemma 3.
+Each summand carries the global − sign; it is strictly negative when ωq > 0 and zero only in the
+endpoint case q = c. For c > 2 there is at least one nonzero prime-power term, so the total is
+strict.
+
+    Equivalently: every prime power pushes the Rayleigh quotient of C in the same (negative)
+direction. The primes cooperate, which is why the even Perron eigenvalue −2∥C∥2 has a robust,
+cancellation-free sign.
+
+
+4    The odd symbol: competition
+Let S = sinh(x/2). The same elementary integral gives the purely imaginary, odd coefficients
+
+                                         4π sinh(L/4)         n
+                              Sn = i           √      · 1          2
+                                                                     ,                          (7)
+                                             L L        4 + (2πn/L)
+
+so that WS (β) = i g(β) with g real, odd, and sign-changing (numerically g changes sign ∼ N times
+across [0, 2π]). Writing WS = ig in (4), the integrand becomes Re[ig(−2πωt) ig(2πω(1 − t))] =
+g(2πωt) g(2πω(1 − t)), so
+                                   X Λ(q) Z 1
+                     ⟨S, PN S⟩ = 2      √ ωq       g(2πωq t) g(2πωq (1 − t)) dt.               (8)
+                                          q      0
+                                   q≤c
+
+Remark 5. It is not true that “WS imaginary ⇒ the integrand is negative”; WS imaginary only
+makes the integrand real, and its sign is governed by the oscillations of g. For ωq small (large
+q, since ωq = 1 − log q/ log c → 0 as q → c) both arguments stay near 0 where g > 0, so the
+term is positive; for ωq near 1 (small q) the factor g changes sign and the term can be negative.
+Numerically (at c = 53) the prime powers q ∈ {2, 3, 4} contribute negatively and q ∈ {5, . . . , 47}
+                                                     √
+positively; the transition is near ωq = 21 , i.e. q ≈ c.
+    Thus the per-prime contributions in the odd sector have mixed sign. Let
+                                         Z 1
+                                 Λ(q)
+                      Iq (S) := 2 √ ωq       g(2πωq t) g(2πωq (1 − t)) dt.
+                                   q      0
+
+Then                                            X                       X
+                      ⟨S, PN S⟩ > 0 ⇐⇒                     Iq (S) >                |Iq (S)|.    (9)
+                                              q:Iq (S)>0              q:Iq (S)<0
+
+The primes compete; in the numerical examples, positivity means that the positive contributions
+outweigh the negative ones.
+
+
+5    Conclusion
+Parity of the test vector controls the sign mechanism of the prime piece through its Fourier
+symbol:
+
+                                                    3
+  sector                 symbol                        prime contribution
+  even (C = cosh x2 )    WC real, > 0                  non-positive term by term; strict in total
+                                                       (cooperation)
+  odd (S = sinh x2 )     WS imaginary, oscillating     mixed sign; positive only as a sum (com-
+                                                       petition)
+
+The Loewner representation (4) turns the prime piece of the localized Weil form into an explicit
+object in the arithmetic frequencies ωq = 1 − log q/ log c; the even sign law (Corollary 4) is
+elementary and unconditional, while the odd sector is reduced to the single term-by-term
+competition inequality (9). This inequality is the prime-side form of the odd-sector positivity
+problem in this model. In the continuum Weil setting it is RH-adjacent in the Yoshida sense. We
+make no claim toward it here. The value of the present note is the explicit, reusable representation
+and the clean separation of the two sectors into cooperation versus arithmetic competition.
+
+
+References
+[1] A. Connes, C. Consani, H. Moscovici, Zeta spectral triples, arXiv:2511.22755 (2025).
+
+[2] A. Connes, W. van Suijlekom, Quadratic forms, real zeros and echoes of the spectral action,
+    Comm. Math. Phys. 406:312 (2025).
+
+[3] M. Suzuki, Weil’s quadratic form via the screw function, arXiv:2606.09096 (2026).
+
+[4] B. Andrade, The pole term is the only obstruction to Perron structure in the localized Weil
+    quadratic form, Zenodo, DOI 10.5281/zenodo.20682834 (2026).
+
+[5] B. Andrade, Exact archimedean entries for truncated Weil forms, Zenodo, DOI 10.5281/zen-
+    odo.20671635 (2026).
+
+[6] B. Andrade, A scalar Herglotz criterion for the even-simplicity hypothesis in the localized
+    Weil quadratic form, Zenodo, DOI 10.5281/zenodo.20694588 (2026).
+
+[7] E. Bombieri, A variational approach to the explicit formula, Comm. Pure Appl. Math. 56
+    (2003) 1151–1164.
+
+
+
+
+                                                 4
+

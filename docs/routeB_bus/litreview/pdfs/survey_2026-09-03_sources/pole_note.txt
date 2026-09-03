@@ -1,0 +1,467 @@
+The pole term is the only obstruction to Perron structure
+          in the localized Weil quadratic form:
+a rank-two splitting and a scalar criterion for the bottom
+                        eigenvalue
+                                      Breno Andrade
+                                         ArqueOps
+                                   breno@arqueops.com.br
+
+                                       June 13, 2026
+
+
+                                          Abstract
+     Let Aa be the self-adjoint operator on L2 (−a, a) associated with the localized Weil
+quadratic form QaW of Connes–Consani–Moscovici (arXiv:2511.22755) and Suzuki (arXiv:2606.09096),
+realized through the screw function g of the Riemann zeta function. The missing analytic
+step in the CCM strategy toward RH — as stated by Connes (arXiv:2602.04022, §6.6) — is
+that the smallest eigenvalue of the (truncated) Weil form be simple with even eigenfunction.
+Suzuki proved this for the continuum operator for sufficiently small a; we first locate the
+obstruction to extending the classical positivity argument: the smooth off-diagonal kernel
+of Aa is −g ′′ (t) = 2 cosh(t/2) − e−t/2 /(1 − e−2t ), which violates the Beurling–Deny sign
+condition precisely for |t| > t∗ where t∗ = 0.28119957 . . ., so the classical route is confined to
+a ≤ t∗ /2 ≈ 0.1406.
+     The main observation of this note is that the violating term 2 cosh x−y      2   is exactly the
+pole term W0,2 of the explicit formula — an explicit rank-two operator (we verify the
+kernel identity to 10−301 ) — and that it splits by parity as +2 |C⟩⟨C| on the even sector
+(C(x) = cosh x2 > 0) and −2 |S⟩⟨S| on the odd sector (S(x) = sinh x2 ). Consequently the
+pole-free part A ea := Aa − W0,2 (in CCM notation: −WR − P Wp , the archimedean-plus-
+                                                                      p
+primes part) has nonpositive off-diagonal kernel for all a > 0: the sign barrier was entirely
+produced by the poles of ζ. An explicit form identity (Proposition 3, verified to machine
+precision) exhibits A  ea as a positive jump Dirichlet form plus a lower-bounded potential;
+by Beurling–Deny, irreducibility and Perron–Frobenius this yields, with no restriction on
+a, a simple, strictly positive and even ground state for A    ea (Theorem 1). This removes the
+“sufficiently small a” restriction under which the same conclusion was obtained for the full
+Aa in [4].
+     Since the pole term is rank one per parity sector, the spectral problem for Aa on the even
+sector reduces to a one-dimensional Krein analysis: the eigenvalues solve 1 + 2 ⟨C, (A        eeven
+                                                                                               a    −
+   −1                                                                even       −1
+λ) C⟩ = 0 and the ground eigenfunction is proportional to (Aa − λ0 ) C. In particular,
+                                                                    e
+even-simplicity of Aa is equivalent to the pointwise positivity of this single explicit function
+(Aeeven
+   a    − λ0 )−1 C. High-precision computations (with all special functions validated against
+their defining series; cf. our note DOI 10.5281/zenodo.20671635) verify the full mechanism at
+λ2 = c = 53: A  eeven
+                 a    has exactly one negative eigenvalue (−11.0863 . . ., the pole direction), a
+positive deep ladder, ⟨C, (A eeven
+                              a    )−1 C⟩ = − 12 + O(λ0 ), and (A
+                                                                eeven
+                                                                  a   − λ0 )−1 C is strictly positive,
+with the sign-change count obeying the numerically observed nodal identity (§5) across the
+first spectral gap at every tested λ. The general-a positivity of (A eeven
+                                                                       a   − λ0 )−1 C remains open;
+we reduce it to a renormalized nodal identity for the screw-function/Krein-string realization
+under a nonlocal rank-one perturbation, isolate why no existing oscillation theorem yields it
+directly, and leave that lemma to a sequel. The contributions of this note are: the rank-two
+splitting identifying the poles of ζ as the sole obstruction; the unconditional Perron theorem
+
+
+
+                                              1
+       for the pole-free part (all a); and the exact reduction of the CCM even-simplicity hypothesis
+       to one scalar-resolvent/nodal question. No claim about the Riemann Hypothesis is made.
+
+
+1      Setting
+We adopt the framework of [4] (equivalent, by the isometry x = t + a, L = 2a = log c, to the
+matrix framework of [1]). The screw function of ζ is, for t > 0,
+                        X Λ(n)               t               1                           
+            t/2 −t/2                                 1                 1    −t/2    −2t    1
+g(t) = −4 e +e       −2 +      √   (t−log n)− ψ( 4 )−log π − Φ(1, 2, 4 )−e       Φ(e , 2, 4 ) ,
+                             t
+                                 n             2                 4
+                                n≤e
+                                                                                                          (1)
+with Φ the Hurwitz–Lerch function, and the quadratic form is QaW (v) =                               ′′ (x −
+                                                                                        RR
+                                                                                         (−a,a)2 (−g
+y)) v(y)v(x) dx dy on a suitable domain [4, §2.5]; Aa is the associated self-adjoint operator, with
+discrete spectrum bounded below [1, Thm. 3.6]. All parity statements refer to the involution
+v(x) 7→ v(−x), which commutes with Aa .
+
+
+2      The splitting
+Proposition 1 (Smooth kernel in closed form). For t ̸= 0, away from the prime jumps,
+                                                            t     e−|t|/2
+                                       −g ′′ (t) = 2 cosh     −            .                             (2)
+                                                            2   1 − e−2|t|
+Proof. The second derivative of the first term of (1) is −2 cosh(t/2), the linear terms drop,
+the prime sum contributes only the jumps, and for the last term the defining series gives
+                                       −(2k+ 1 )t
+1 −t/2
+       Φ(e−2t , 2, 14 ) = 14 k≥0 e (k+ 1 )22 , whose second derivative telescopes, since (2k + 12 )2 =
+                            P
+4e
+                                           4
+        1 2                 −(2k+ 12 )t      e−t/2
+                 P
+ 2(k + 4 ) , to k≥0 e                   = 1−e   −2t . (We verified (2) against second differences of (1) to
+
+10−19 at dps = 50.)
+               e −|t|/2   1
+    Note that 1−e−2|t| = 2|t| +O(1) as t → 0: the attractive singular part of the kernel is contained
+
+in the second term. The first term is positive; the sign of −g ′′ on (0, ∞) changes exactly once, at
+                                                                     ∗         −t∗ /2
+                              t∗ = 0.28119957 . . . ,         2 cosh t2 = 1−e
+                                                                           e
+                                                                             −2t∗ .
+
+For 2a ≤ t∗ the full kernel satisfies the Beurling–Deny sign condition; this is the precise extent
+of the classical positivity-improving regime used (in rescaled form) in [4, §5], and explains the
+“sufficiently small a” restriction there.
+Proposition 2 (The violating term is the pole term, and is rank two). Let R be the integral
+operator on L2 (−a, a) with kernel 2 cosh x−y
+                                           2 . Then:
+    (i) R = W0,2 , the pole contribution of the explicit formula (in the basis of [1, Lemma 4.1] its
+                          2        2       2
+                     sinh (L/4) (L −16π mn)
+       matrix is 32L
+                  (L2 +16π 2 m2 )(L2 +16π 2 n2 )
+                                                 ; we verified the identity entrywise to 10−301 at dps =
+       300).
+ (ii) With C(x) = cosh x2 and S(x) = sinh x2 ,
+                                     x−y
+                                  2 cosh   = 2 C(x)C(y) − 2 S(x)S(y),
+                                       2
+       so R = 2|C⟩⟨C| − 2|S⟩⟨S|: a positive rank-one operator with strictly positive vector on the
+       even sector, and a negative rank-one operator on the odd sector.
+Proof. (ii) is the addition formula cosh(u − v) = cosh u cosh v − sinh u sinh v. (i) follows since
+W0,2 (F ) = Fb(i/2) + Fb(−i/2) [1, (3.11)] is evaluation at the poles s = 0, 1, whose kernel is
+e(x−y)/2 + e−(x−y)/2 .
+
+                                                        2
+3       Perron structure of the pole-free part, for all a
+Define Aea := Aa − R. By Proposition 2(i), in the notation of [1] this is exactly the archimedean-
+                        P
+plus-primes part −WR − p Wp of the Weil form. By Propositions 1–2, its off-diagonal kernel
+is
+
+          e−|t|/2       X         Λ(n)                            
+    −              −              √    δ(t − log n) + δ(t + log n) ≤ 0          for all t ̸= 0, all a > 0.
+        1 − e−2|t|             2a
+                                    n
+                       2≤n≤e
+
+
+   We first record the explicit form identity that makes the Dirichlet-form structure of A  ea
+                           1
+unconditional. Write A = 2 (log 2π + C0 ) with C0 the Euler constant (so 2A + 1 = log 2π + C0 ),
+                e−|t|/2                           1
+and let J(t) =      −2|t|
+                          > 0, r1′′ (t) = J(t) −      (bounded, with r1′′ (0+ ) = 41 ).
+               1−e                               2|t|
+Proposition 3 (Form identity for the pole-free part). For every v ∈ Cc∞ (−a, a),
+                  ZZ
+                1
+    ⟨Aa v, v⟩ = 2
+     e                  J(x − y) |v(x) − v(y)|2 dx dy
+                         (−a,a)2
+                                         Z a−log n                              Z a
+                         X        Λ(n)                                2
+                   +              √                  v(x + log n) − v(x) dx +         κa (x) |v(x)|2 dx,      (3)
+                               2a
+                                    n     −a                                     −a
+                       2≤n≤e
+
+where the potential is bounded below,
+                                                                                           Z a
+                                                         Λ(n)X
+κa (x) = − 21 log(a2 − x2 ) − (2A + 1) − m1 (x) −         √ wn (x),             m1 (x) =         r1′′ (x − y) dy,
+                                                       2a
+                                                           n                                −a
+                                                 2≤n≤e
+
+wn (x) = 1[−a, a−log n] (x) + 1[−a+log n, a] (x).
+
+Proof. By Proposition 2, A     ea = Aa − R has, away from the diagonal, smooth kernel −g ′′ (t) −
+       t
+2 cosh 2 = −J(t) (the 2 cosh cancels) together with the prime jumps; here J(t) = 2|t|     1
+                                                                                             + r1′′ (t) by
+definition of r1′′ . We treat the three pieces in turn, for v ∈ Cc∞ (−a, a), regularising the diagonal
+by |x − y| > ε and letting ε → 0 at the end.
+                                   1
+    (1) The singular part − 2|x−y|     . Using the polarisation identity 2 Re v(x)v(y) = |v(x)|2 +
+|v(y)|2 − |v(x) − v(y)|2 and the symmetry of the kernel,
+
+                                                 |v(x) − v(y)|2 1 a
+  ZZ                                    ZZ                          Z          Z
+                                                                                          dy 
+                     1
+              − 2|x−y|    v(y)v(x) = 14                         −2      |v(x)|2 |x−y|>ε              dx.
+     |x−y|>ε                              |x−y|>ε    |x − y|         −a                  |x − y|
+                                                                                       y∈(−a,a)
+
+
+The inner integral equals log (a−x)(a+x)
+                                      ε2
+                                              = log(a2 − x2 ) − 2 log ε. The first ( 14 ) term converges to
+      |v(x)−v(y)| 2
+1
+                    as ε → 0 up to the same −2 log ε · 12 ∥v∥2 that the diagonal term carries (write
+  RR
+4         |x−y|
+1                     −1              2    1                  −1           2
+  RR                                         RR
+4   |x−y|>ε |x − y| |v(x) − v(y)| = 4          |x−y|>ε |x − y| (2|v(x)| − 2 Re v(x)v(y)) and use the
+bound |v(x) − v(y)|2 ≤ ∥v ′ ∥2∞ |x − y|2 near the diagonal); the divergent − log ε pieces cancel,
+leaving
+                                     |v(x) − v(y)|2 1 a
+                           ZZ                             Z
+                         1
+                         4                            −2      log(a2 − x2 ) |v(x)|2 ,
+                             (−a,a)2     |x  − y|          −a
+                                                                    1
+                                                                        (log |z| + C0 )|v̂(z)|2 dz [4, (2.6)].
+                                                                      R
+which is Suzuki’s La (v) [4, (2.3)]; in Fourier form La (v) = 2π
+    (2) The bounded remainder −r1′′ . Since r1′′ is bounded and even, the same polarisation gives
+  ZZ                                        ZZ                                     Z a
+            ′′                           1        ′′                     2
+       (−r1 (x − y))v(y)v(x) dx dy =            r1 (x − y)|v(x) − v(y)| dx dy −           m1 (x)|v(x)|2 dx,
+                                         2                                            −a
+
+
+
+                                                         3
+                  Ra
+with m1 (x) = −a r1′′ (x − y) dy. This combines with (1), promoting 2|x−y|       1
+                                                                                    to J(x − y) =
+   1      ′′                                  1                         2
+                                                RR
+2|x−y| + r1 (x − y) in the jump form, i.e. to 2    J(x − y)|v(x) − v(y)| , while −m1 enters κa . The
+overall additive constant −(2A + 1)∥v∥2 , 2A + 1 = log 2π + C0 , comes from the −4(et/2 + e−t/2 − 2)
+and digamma terms of (1) via the asymptotics of g at 0 [4, (2.2)].
+                                                                           Ra
+    (3) The prime jumps. The δ’s in −g ′′ at t = ± log n contribute Λ(n)
+                                                                       √
+                                                                         n −a
+                                                                                v(x + log n) + v(x −
+      
+log n) v(x) (restricted to where the arguments lie in (−a, a)). Polarising, Re v(x ± log n)v(x) =
+1        2 + 1 |v(x ± log n)|2 − 1 |v(x ± log n) − v(x)|2 , which gives the finite-range jump form
+2 |v(x)|     2                   2
+Λ(n) a−log n
+               |v(x + log n) − v(x)|2 plus the diagonal multiplier − Λ(n)
+     R
+ √                                                                     √ wn (x) entering κa , where
+   n −a                                                                 n
+wn = 1[−a,a−log n] + 1[−a+log n,a] counts the admissible endpoints. The kernel 2 cosh x−y
+                                                                                        2 of R is
+bounded on the compact interval, so R is Hilbert–Schmidt and contributes no singular term.
+    Collecting (1)–(3) gives (3). Finally − 21 log(a2 − x2 ) → +∞ as x → ±a while m1 , the wn and
+−(2A + 1) are bounded, so κa is bounded below on (−a, a). The identity, established on the core
+Cc∞ (−a, a), extends to D(A ea ) = D(Aa ) by continuity in the form norm, both sides being closed
+quadratic forms. We verified (3) numerically to machine precision (relative error ≤ 2.5 × 10−15 ,
+limited by quadrature) for even, odd and Gaussian test functions at c = 5 and c = 13.
+
+Theorem 1 (Unconditional Perron structure for the pole-free part). For every a > 0 the lowest
+eigenvalue of Aea is simple, and its eigenfunction can be chosen strictly positive a.e. on (−a, a);
+in particular it is even.
+
+Proof. Since the kernel 2 cosh x−y2 of R is bounded on the compact interval, R is a bounded (indeed
+Hilbert–Schmidt) self-adjoint operator; hence A    ea = Aa − R is self-adjoint, lower semibounded,
+with the same form domain as the operator Aa constructed in [4, Thm. 1.1], [1, Thm. 3.6], and
+with compact resolvent. We argue in four steps.
+     (1)R Aea is a Dirichlet form plus a lower-bounded potential. By Proposition 3, ⟨A     ea v, v⟩ =
+E(v)+ κa |v|2 , where E is the symmetric pure-jump form with strictly positive kernel J(x−y) > 0
+together with the finitely many positive prime-jump forms. For every normal contraction ϕ
+(i.e. ϕ(0) = 0, |ϕ(s) − ϕ(t)| ≤ |s − t|) one has |ϕ(v(x)) − ϕ(v(y))| ≤ |v(x) − v(y)|, whence
+E(ϕ ◦ v) ≤ E(v): E satisfies the Beurling–Deny criterion and is a (regular) Dirichlet form [5,
+Ex. 1.2.1, Thm. 3.2.1]. The potential κa is bounded below (Proposition 3), hence a form-bounded
+perturbation of relative bound 0.
+     (2) The semigroup is positivity preserving and irreducible. By Beurling–Deny, e−tE is positivity
+preserving;   the bounded-below potential is absorbed by the Feynman–Kac formula (e−tAa f )(x) =
+                                                                                          e
+    − R t κ (X ) ds     
+Ex e 0 a s f (Xt ) for the jump process X generated by E, with a strictly positive, a.e. finite
+weight. The form is irreducible: since J(x − y) > 0 for every x ̸= y in (−a, a), no measurable
+set B with 0 < |B| < 2a satisfies E(1B u, 1B c u) = 0 [5, Thm. 1.6.1]; equivalently there is no
+nontrivial e−tAa -invariant set.
+                  e
+
+     (3) Perron–Frobenius. An irreducible, positivity-preserving, self-adjoint semigroup with
+compact resolvent is positivity improving, so by the Perron–Frobenius theorem [6, Thm. XIII.43–
+44] the lowest eigenvalue λ e0 = inf spec A
+                                          ea is simple and its eigenfunction φ
+                                                                             e0 may be taken strictly
+positive a.e.
+     (4) Parity. The reflection (J v)(x) = v(−x) commutes with A         ea (the kernel −g ′′ is even,
+R is even, the interval is symmetric). Then J φ     e0 > 0 is also a ground state, so by simplicity
+Jφ e0 = ±φ  e0 ; both being positive forces the + sign, i.e. φ
+                                                             e0 is even.
+
+    This removes the “sufficiently small a” restriction of [4, §5]: that bound came from using the
+full kernel −g ′′ , which violates the sign condition for a > t∗ /2; after subtracting the rank-two
+pole term, the sign condition holds for every a.
+    Numerically (validated implementation, dps = 300): at c = e2a = 53 the matrix model for
+  even
+Aa has exactly one negative eigenvalue λ
+ e                                            e0 = −11.0863 . . . (the pole direction), and its deep
+
+
+
+                                                  4
+                    e1 = +7.85 · 10−153 , . . . ); its ground eigenfunction has no sign change. The
+ladder is positive (λ
+same pattern is observed at all computed cutoffs.
+
+
+4     Krein reduction of the even-simplicity hypothesis
+                         eeven + 2|C⟩⟨C| with C > 0 pointwise. Rank-one perturbation theory
+On the even sector, Aa = A a
+gives immediately:
+                             eeven − λ)−1 C⟩.
+Corollary 1. Let G(λ) = ⟨C, (A a
+
+    (i) The eigenvalues of Aa |even not in σ(Aeeven
+                                               a    ) are the solutions of 1 + 2G(λ) = 0, and the
+        eigenfunction at such λ is proportional to (Aeeven
+                                                      a    − λ)−1 C.
+
+ (ii) By interlacing, the bottom eigenvalue λ0 of Aa |even lies in [λ
+                                                                    e0 , λ
+                                                                         e1 ]; it is > 0 if and only if
+      1 + 2G(0) ≤ 0 (with G increasing between its poles).
+
+(iii) The CCM even-simplicity hypothesis for Aa is equivalent to: λ0 (Aa |even ) < λ0 (Aa |odd ) and
+       eeven − λ0 )−1 C has constant sign.
+      (A a
+
+    Thus, within this rank-one perturbation framework, the bottom of the even Weil form is
+compressed into one scalar function of one variable, built from an operator with unconditional
+Perron structure and one explicit positive vector. The verified numbers at c = 53: G(0) = − 12 + δ
+with 1 + 2G(0) = −8.7 · 10−161 < 0 (consistent with λ0 = +1.0808 · 10−192 ); at c = 5, where
+the working precision resolves all scales, 1 + 2G(0) = −7.4 · 10−18 against λ0 = +1.005 · 10−17 —
+the secular deficit reproduces the Weil bottom at the correct scale. The vector (Aeeven
+                                                                                   a    − λ0 )−1 C
+is strictly positive (no sign change on a 500-point grid) at c = 5 and c = 53 (dps = 300), in
+agreement with the directly computed ground states, which are strictly positive with the full
+Sturm node pattern (0, 2, 4/1, 3) at c = 2, 3, 5, 13, 29, 53.
+
+
+5     The nodal reformulation and the remaining lemma
+Corollary 1(iii) reduces even-simplicity to the single question: is φ0 := (Aeeven − λ0 )−1 C of
+                                                                             a
+constant sign? We record what is settled and isolate precisely what is not.
+
+What is unconditional. For λ < λ         e0 the operator Aeeven
+                                                           a     is positivity improving (Theorem 1),
+                −1       ∞    −t  even
+      even                 λt   A                                          eeven − λ)−1 C > 0 strictly:
+                      R
+    ea − λ) =
+so (A                   0 e e          dt is positivity improving and (A
+                                 e
+                                  a
+                                                                            a
+nodeless. As λ increases through λ   e0 the function uλ := (Aeeven
+                                                               a    − λ)−1 C passes through −∞ · φ  e0
+and emerges strictly negative, still nodeless. The eigenfunction we need is φ0 = uλ0 at the secular
+root λ0 ∈ (λ
+           e0 , λ
+                e1 ).
+
+The nodal identity (numerically observed). Writing Z(0,a) (f ) for the number of interior
+sign changes of an even function f on the half interval, our computations give, at c = 5 and
+c = 13 (dps resolving the spectral ladder):
+                         
+                Z(0,a) uλ = #{eigenvalues of Aa |even < λ}     (λ ∈ (λ
+                                                                     e0 , λ
+                                                                          e1 )),
+
+i.e. uλ is nodeless for every λ ≤ λ0 and acquires its first (symmetric pair of) zeros only above
+λ0 ; the sign-change count on (−a, a) is even at every λ, as parity demands. In particular φ0 is
+nodeless, hence (being even and an eigenfunction) strictly of one sign, giving even-simplicity.
+This is verified to the grid resolution at all tested λ across the first gap.
+
+
+
+
+                                                  5
+What must still be proved. The displayed nodal identity is the one missing lemma. It is not a
+corollary of the available oscillation theory, for three reasons we have checked against the primary
+sources: (a) renormalized oscillation theorems (Gesztesy–Simon–Teschl [7]; Remling–Scarbrough
+[8]) count zeros of homogeneous solutions of (A  eeven − λ)u = 0, not of the inhomogeneous resolvent
+                                                   a
+vector uλ = (A  eeven − λ)−1 C; (b) relative oscillation theory (Krüger–Teschl [9]) requires the
+                  a
+perturbation to be a local coefficient change, whereas Aa |even − A    eeven
+                                                                        a    = 2|C⟩⟨C| is nonlocal of
+                 even
+rank one; (c) Aa is a nonlocal integral operator, not a Sturm–Liouville or Dirac differential
+                e
+operator. Two soft routes are moreover excluded: the nonlocal maximum principle does not
+forbid a tangency of uλ (the source P    term −2⟨C, uλ ⟩C is sign-definite negative), and the jump
+kernel J(t) = e  −|t|/2 /(1 − e −2|t| ) = k≥0 e−(2k+1/2)|t| is not totally positive (its 2 × 2 minors
+change sign), so a Karlin variation-diminishing argument on J alone fails. The natural route is
+the screw-function/Krein-string realization ([4, §8], via the inverse Neumann Laplacian N (x, y) =
+x2 +y 2  |x−y|
+  4a −      2  + a6 ) together with a renormalized oscillation identity adapted to the nonlocal
+rank-one perturbation 2|C⟩⟨C|, exploiting C > 0; this is left to a sequel.
+Remark 1. The difficulty is structural, not a matter of estimate size: λ0 lies above the single
+                       eeven
+negative eigenvalue of Aa    and exponentially close to its deep positive ladder (the near-resonances
+are the prolate structure of [1, §8]), so φ0 is a hyper-fine cancellation across the whole spectrum
+rather than a perturbation of any single mode. Concretely, the naive split of −g ′′ at t∗ produces a
+sign-violating part whose norm equals the spectral gap of the sign-good part to within a percent
+at every cutoff (∥K+ ∥/γ0 → 1.01 for c = 2, . . . , 53); the bottom of the Weil form is critically
+tuned, consistent with its arithmetic meaning. This is why no soft norm bound decides the sign
+and the nodal/oscillation route is the appropriate one.
+Remark 2. Suzuki’s unconditional Theorem 1.5 [4] and the CCM determinant theory [1, Thm. 5.10]
+both concern reality of zeros of associated entire functions; the present reduction addresses the
+complementary hypothesis (even-simplicity) those results either bypass or assume. The splitting
+also isolates why the problem is hard: the poles of ζ, not the primes, carry the entire obstruction
+to classical positivity.
+
+Data and code availability
+All computations use closed-form archimedean entries validated against the defining integrals,
+with the Hurwitz–Lerch function evaluated by its defining series and, near the singular endpoint,
+by the small-parameter expansion in Suzuki; both regimes are cross-validated against each other
+and against the defining integrals (the library defect documented in mpmath issue #1099 and
+DOI 10.5281/zenodo.20671635 makes independent validation essential in exactly the parameter
+range required here). Scripts available from the author.
+
+
+References
+[1] A. Connes, C. Consani, H. Moscovici, Zeta spectral triples, arXiv:2511.22755 (2025).
+
+[2] A. Connes, The Riemann Hypothesis:            Past, Present and a Letter Through Time,
+    arXiv:2602.04022 (2026).
+
+[3] A. Connes, W. van Suijlekom, Quadratic forms, real zeros and echoes of the spectral action,
+    Comm. Math. Phys. 406:312 (2025).
+
+[4] M. Suzuki, Weil’s quadratic form via the screw function, arXiv:2606.09096 (2026).
+
+[5] M. Fukushima, Y. Oshima, M. Takeda, Dirichlet forms and symmetric Markov processes, 2nd
+    ed., De Gruyter (2011).
+
+
+
+                                                 6
+[6] M. Reed, B. Simon, Methods of Modern Mathematical Physics IV: Analysis of Operators,
+    Academic Press (1978).
+
+[7] F. Gesztesy, B. Simon, G. Teschl, Zeros of the Wronskian and renormalized oscillation theory,
+    Amer. J. Math. 118 (1996) 571–594.
+
+[8] C. Remling, K. Scarbrough, Oscillation theory and semibounded canonical systems, J. Spectral
+    Theory 10 (2020) 1333–1359.
+
+[9] H. Krüger, G. Teschl, Relative oscillation theory, weighted zeros of the Wronskian, and the
+    spectral shift function, Comm. Math. Phys. 287 (2009) 613–640.
+
+[10] B. Andrade, Exact archimedean entries for truncated Weil forms, Zenodo, DOI 10.5281/zen-
+    odo.20671635 (2026).
+
+[11] B. Andrade, Quadrature sensitivity of deep spectra of truncated Weil forms, Zenodo, DOI
+    10.5281/zenodo.20650146 (2026).
+
+
+
+
+                                               7
+

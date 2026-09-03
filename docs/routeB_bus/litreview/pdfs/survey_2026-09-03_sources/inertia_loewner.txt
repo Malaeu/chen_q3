@@ -1,0 +1,544 @@
+                                                            Inertia of Loewner Matrices
+
+
+                                               Rajendra Bhatia1 , Shmuel Friedland2 , Tanvi Jain3
+                                                        1
+                                                      Indian Statistical Institute, New Delhi 110016, India
+arXiv:1501.01505v1 [math.CA] 7 Jan 2015
+
+
+
+
+                                                                          rbh@isid.ac.in
+                                          2
+                                            Department of Mathematics, Statistics and Computer Science, University of
+                                                        Illinois at Chicago, Chicago, 60607-7045, USA
+                                                                        friedlan@uic.edu
+                                                    3
+                                                      Indian Statistical Institute, New Delhi 110016, India
+                                                                         tanvi@isid.ac.in
+
+                                                                                  Abstract
+                                                    Given positive numbers p1 < p2 < · · · < pn , and a real number r let
+                                                Lr be the n × n matrix with its i, j entry equal to (pri − prj )/(pi − pj ). A
+                                                well-known theorem of C. Loewner says that Lr is positive definite when
+                                                0 < r < 1. In contrast, R. Bhatia and J. Holbrook, (Indiana Univ. Math.
+                                                J, 49 (2000) 1153-1173) showed that when 1 < r < 2, the matrix Lr has
+                                                only one positive eigenvalue, and made a conjecture about the signatures
+                                                of eigenvalues of Lr for other r. That conjecture is proved in this paper.
+
+
+
+
+                                          AMS Subject Classifications : 15A48, 47B34.
+                                          Keywords : Loewner Matrix, inertia, positive definite matrix, conditionally
+                                          positive definite matrix, Sylvester’s law, Vandermonde matrix.
+
+
+                                          1     Introduction
+                                          Let f be a real-valued C 1 function on (0, ∞). Let p1 < p2 < · · · < pn be any n
+                                          points in (0, ∞). The n × n matrix
+                                                                                                          n
+                                                                                         f (pi ) − f (pj )
+                                                               Lf (p1 , . . . , pn ) =                                 (1)
+                                                                                             pi − pj        i,j=1
+
+                                          is called a Loewner matrix associated with f. It is understood that when i = j,
+                                          the quotient in (1) represents the limiting value f 0 (pi ). Of particular interest to
+                                          us are the functions f (t) = tr , r ∈ R. In this case we write Lr for Lf (p1 , . . . , pn ),
+                                          where the roles of n and p1 , . . . pn can be inferred from the context. Thus Lr is
+                                          the n × n matrix
+                                                                                   pi − prj n
+                                                                                  r       
+                                                                          Lr =                   .                                (2)
+                                                                                   pi − pj i,j=1
+                                             Loewner matrices are important in several contexts, of which we mention
+                                          two that led to the present study. (The reader may see Section 4.1 of [12] for an
+
+
+                                                                                       1
+excellent discussion of both these aspects of Loewner matrices.) The function
+f on (0, ∞) induces, via the usual functional calculus, a matrix function f (A)
+on the space of positive definite matrices. Let Df (A) be the Fréchet derivative
+of this function.This is a linear map on the space of Hermitian matrices. The
+Daleckii-Krein formula describes the action of this map in terms of Loewner
+matrices. Choose an orthonormal basis in which A = diag(p1 , . . . , pn ). Then
+the formula says that for every Hermitian X
+
+                          Df (A)(X) = Lf (p1 , . . . , pn ) ◦ X,                      (3)
+where A ◦ B stands for the entrywise product [aij bij ] of A and B.
+    The function f is said to be operator monotone on (0, ∞) if A ≥ B > 0
+implies f (A) ≥ f (B). (As usual A ≥ 0 means A is positive semidefinite.) A
+fundamental theorem due to Charles Loewner says that f is operator monotone
+if and only if all Loewner matrices associated with f (for every n and for every
+choice p1 , . . . , pn ) are positive semidefinite. Another basic fact, again proved first
+by Loewner, says that f (t) = tr is operator monotone if and only if 0 ≤ r ≤ 1.
+See [1] Chapter V.
+    Combining these various facts with some well-kown theorems on positive
+linear maps [2] one can see that if f is operator monotone, then the norm of
+Df (A) obeys the relations
+
+                        kDf (A)k = kDf (A)(I)k = kf 0 (A)k,                           (4)
+
+and is therefore readily computable. In particular, for the function f (t) = tr if
+we write DAr for Df (A), then (4) gives
+
+                        kDAr k = krAr−1 k,       for 0 ≤ r ≤ 1.                       (5)
+
+This was first noted in [3], and used to derive perturbation bounds for the
+operator absolute value. Then in [8] Bhatia and Sinha showed that the relation
+(5) holds√also for −∞ √  < r < 0 and for 2 ≤ r < ∞ but, mysteriously, not for
+1 < r < 2. The case 2 ≤ r < 2, left open in this paper, was resolved in [4]
+by Bhatia and Holbrook, who showed that here again the relation (5) is valid.
+    One ingredient of the proof in [4] is their Proposition 2.1 which says that
+when 1 < r < 2, the n × n matrix Lr has just one positive eigenvalue. We have
+remarked earlier that when 0 < r < 1, the matrix Lr is positive semidefinite
+and therefore, none of its eigenvalues is negative. This contrast as r moves
+from (0, 1) to (1, 2) is intriguing, and raises the natural question about the
+behaviour of eigenvalues of Lr for other values of r. Bhatia and Holbrook [4]
+made a conjecture about this behaviour and established a small part of it: they
+settled the cases r = 1, 2, . . . , n − 1 apart from 0 < r < 1 and 1 < r < 2 already
+mentioned. The main goal of this paper is to prove this conjecture in full. This
+is our Theorem 1.1.
+    Let A be an n × n Hermitian matrix. The inertia of A is the triple
+
+                             In(A) = (π(A), ζ(A), ν(A)),
+
+
+                                            2
+where π(A) is the number of positive eigenvalues of A, ζ(A) is the number
+of zero eigenvalues of A, and ν(A) the number of negative eigenvalues of A.
+Theorem 1.1 describes the inertia of Lr as r varies over R. It is easy to see that
+the inertia of L−r is the opposite of the inertia of Lr ; i.e. π(L−r ) = ν(Lr ) and
+ν(L−r ) = π(Lr ). So we confine ourselves to the case r > 0.
+Theorem 1.1. Let p1 < p2 < · · · < pn and r be any positive real numbers and
+let Lr be the matrix defined in (2). Then
+  (i) Lr is singular if and only if r = 1, 2, . . . , n − 1.
+ (ii) At the points r = 1, 2, . . . , n, the inertia of Lr is given as follows:
+
+                            r = 2k ⇒ In (Lr ) = (k, n − r, k),
+
+      and
+                        r = 2k − 1 ⇒ In (Lr ) = (k, n − r, k − 1).
+
+(iii) If 0 < r < n and r is not an integer, then
+
+                           brc = 2k ⇒ In (Lr ) = (n − k, 0, k)
+
+      and
+                         brc = 2k − 1 ⇒ In (Lr ) = (k, 0, n − k).
+
+ (iv) If r > n − 1,    then In (Lr ) = In (Ln ).
+ (v) Every nonzero eigenvalue of Lr is simple.
+    It is helpful to illustrate the theorem by a picture. Figure 1 is a diagram
+of the (scaled) eigenvalues of a 6 × 6 matrix Lr when pi are fixed and r varies.
+Some of the eigenvalues are very close to zero. To be able to distinguish between
+them the vertical scale has been expanded.
+
+
+
+    We have already mentioned that for 0 < r < 1, statement (iii) of Theorem
+1.1 follows from Loewner’s theorem, and for 1 < r < 2 it was established in [4].
+The case 2 < r < 3 was accomplished by Bhatia and Sano in [7]. We briefly
+explain this work.
+    Let H1 be the space
+                          (                       n
+                                                          )
+                                                  X
+                    H1 = x = (x1 , . . . , xn ) :   xi = 0 .                (6)
+                                                    i=1
+
+An n × n Hermitian matrix A is said to be conditionally positive definite if
+hx, Axi ≥ 0 for all x ∈ H1 , and if −A has this property, then we say that A is
+conditionally negative definite. Since dimH1 = n−1, a nonsingular conditionally
+positive definite matrix which is not positive definite has inertia (n − 1, 0, 1).
+
+
+                                            3
+                           Eigenvalues of Lr ; n = 6, 0 ≤ r ≤ 10
+
+
+
+
+         0     1     2     3       4        5        6         7   8   9   10
+
+
+
+
+                                       Figure 1:
+
+
+    In [7] it was shown that when 1 < r < 2, the matrix Lr is nonsingular
+and conditionally negative definite. It follows that In (Lr ) = (1, 0, n − 1), a
+fact established earlier in [4]. It was also shown in [7] that when 2 < r < 3,
+the matrix Lr is nonsingular and conditionally positive definite. From this it
+follows that In (Lr ) = (n − 1, 0, 1).
+    More generally, Bhatia and Sano [7] showed that f on (0, ∞) is operator
+convex if and only if all Loewner matrices Lf are conditionally negative defi-
+nite. This is a characterisation analogous to Loewner’s for operator monotone
+functions. It is well-known that f (t) = tr is operator convex for 1 ≤ r ≤ 2.
+    The proof of Theorem 1.1 is given in Section 2. We also indicate how the
+proofs for the parts already given in [4] and [7] can be considerably simplified.
+The inertia of the matrix [(pi + pj )r ] has been studied by Bhatia and Jain in
+[5]. Some ideas in our proofs are similar to the ones used there.
+
+
+2    Proofs and Remarks
+Let X be an n × n nonsingular matrix. The transformation A 7→ X ∗ AX on
+Hermitian matrices is called a congruence. The Sylvester Law of Inertia says
+that
+                  In (X ∗ AX) = In A for all X ∈ GL(n).                  (7)
+
+
+                                             4
+Let D be the diagonal matrix
+
+                                D = diag (p1 , . . . , pn ).                      (8)
+
+Then for every r
+                                L−r = −D−r Lr D−r .                               (9)
+Hence by Sylvester’s Law
+
+                    In Lr = (i1 , i2 , i3 ) ⇔ In L−r = (i3 , i2 , i1 ).          (10)
+
+Thus all statements about In Lr for r > 0 give information about In L−r as
+well.
+   Make the substitution pi = e2xi , xi ∈ R. A simple calculation shows that
+                           rxi
+                                 sinh r(xi − xj ) erxj
+                                                       
+                            e
+                     Lr =                                .
+                            exi sinh(xi − xj ) exj
+In other words,
+                                     Lr = ∆L
+                                           e r ∆,                                (11)
+where ∆ = diag (e(r−1)x1 , . . . , e(r−1)xn ), and
+                                                      
+                              e r = sinh r(xi − xj ) .
+                              L                                                  (12)
+                                        sinh(xi − xj )
+
+By Sylvester’s Law In Lr = In L    e r . Several properties of Lr can be studied via
+Lr , and vice versa. This has been a very effective tool in deriving operator
+e
+inequalities; see, the work of Bhatia and Parthasarathy [6] and that of Hiai and
+Kosaki [9, 10, 11, 14].
+    When n = 2 we have
+                                                 sinh r(x1 −x2 )
+                            "                                    #
+                                       r          sinh(x1 −x2 )
+                       L
+                       er =
+                               sinh r(x1 −x2 )                     .
+                                sinh(x1 −x2 )           r
+                       2
+So det Le r = r2 − sinh 2r(x1 −x2 ) . Thus det L
+                                               e r is positive for 0 < r < 1, zero for
+                    sinh (x1 −x2 )
+r = 1, and negative for r > 1. One eigenvalue of L         e r is always positive, and
+this shows that the second eigenvalue is positive, zero, or negative depending
+on whether 0 < r < 1, r = 1, or r > 1, respectively. This establishes Theorem
+1.1 in the simplest case n = 2.
+    An interesting corollary can be deduced at this stage. According to the two
+theorems of Loewner mentioned in Section 1, f is operator monotone if and only
+if all Loewner matrices Lf are positive semidefinite, and f (t) = tr is operator
+monotone if and only if 0 ≤ r ≤ 1. Consequently, if r > 1, then there exists an
+n, and positive numbers p1 , . . . , pn such that the associated Loewner matrix (2)
+is not positive definite. We can assert more:
+Proposition 2.1. Let r > 1. Then for every n ≥ 2, and for every choice of
+p1 , . . . , pn , the matrix Lr defined in (2) has at least one negative eigenvalue.
+
+
+                                             5
+Proof Consider the 2 × 2 top left submatrix of Lr . This is a Loewner matrix.
+By Theorem 1.1 it has one negative eigenvalue. So, by Cauchy’s interlacing
+principle, the n × n matrix Lr has at least one negative eigenvalue.       
+    The Sylvester Law has a generalisation that is useful for us. Let n ≥ r, and
+let A be an r × r Hermitian matrix and X an r × n matrix of rank r. Then
+
+                         In X ∗ AX = In A + (0, n − r, 0).                       (13)
+A proof of this may be found in [5]. This permits a simple transparent proof of
+Part (ii) of Theorem 1.1. (This part has already been proved in [4].) When r is
+a positive integer we have
+
+                  Lr = pr−1 + pr−2  pj + · · · + pjr−1 = W ∗ V W,
+                                                     
+                         i      i
+
+where W is the r × n Vandermonde matrix
+                                                                    
+                             1     1    ...                       1
+                          p1     p 2   . ..                    pn 
+                     W = ·
+                                                                     ,
+                                   ·    ···                       · 
+                           pr−1
+                            1    pr−1
+                                  2     ···                    pnr−1
+
+and V is the r × r antidiagonal matrix with all entries 1 on its sinister diagonal
+and all its other entries equal to 0. If r = 2k, the matrix V has k of its eigenvalues
+equal to 1, and the other k equal to −1. If r = 2k − 1, then k of its eigenvalues
+are equal to 1, and k − 1 are equal to −1. So, statement (ii) of Theorem 1.1
+follows from the generalised Sylvester’s Law (13). Next we prove statement (i).
+    Let c1 , c2 , . . . , cn be real numbers, not all of which are zero. Let f be the
+function on (0, ∞) defined as
+                                         n
+                                         X          xr − prj
+                               f (x) =         cj            .                   (14)
+                                         j=1
+                                                    x − pj
+
+Theorem 2.2. Let r be a positive real number not equal to 1, 2, . . . , n − 1. Then
+the function f defined in (14) has at most n − 1 zeros in (0, ∞).
+
+Proof Let r1 < r2 < · · · < rm , and let a1 , . . . , am be real numbers not all of
+which are zero. Then the function
+                                          m
+                                          X
+                                 g(x) =             aj xrj ,                     (15)
+                                           j=1
+
+has at most m − 1 zeros in (0, ∞). This is a well-known fact, and can be found
+in e.g., [16], p.46.
+    Now let f be the function defined in (14) and let
+                                               n
+                                               Y
+                             g(x) = f (x)            (x − pj ).                  (16)
+                                               j=1
+
+
+                                           6
+Then g can be expressed in the form (15) with m = 2n and
+
+             {r1 , . . . , r2n } = {0, 1, . . . , n − 1, r, r + 1, . . . , r + n − 1} .
+
+Further, we have g(x) = xr h1 (x) − h2 (x), where
+                        n
+                        X          Y                    n
+                                                        X        Y
+             h1 (x) =         ci    (x − pj ), h2 (x) =   ci pri  (x − pj ).
+                        i=1        j6=i                         i=1    j6=i
+
+Both h1 and h2 are Lagrange interpolation polynomials of degree at most n − 1.
+Since not all ci are zero, neither of these polynomials is identically zero. So, if
+r 6= 1, 2, . . . , n − 1, then g is not the zero function.
+    Hence the function g defined by (16) has at most 2n − 1 zeros in (0, ∞). Of
+these, n zeros occur at x = pj , 1 ≤ j ≤ n. So f has at most n − 1 zeros in (0, ∞).
+
+
+Corollary 2.3. Let r be a positive real number different from 1, 2, . . . , n − 1.
+Then the matrix Lr defined in (2) is nonsingular.
+
+Proof The matrix Lr is singular if and only if there exists a nonzero vector
+c = (c1 , . . . , cn ) such that Lr (c) = 0. In other words there exist real numbers
+c1 , . . . , cn , not all zero, such that
+                                          n
+                                          X          pri − prj
+                                                cj             =0
+                                          j=1
+                                                     pi − pj
+
+for i = 1, 2, . . . , n. But then the function f (x) in (14) would have n zeros, viz.,
+x = p1 , . . . , pn . That is not possible.                                        
+    We have proved Part (i) of Theorem 1.1. Part (iv) follows from this. If the
+inertia of Lr were to change at some point r0 > n−1, then one of the eigenvalues
+has to change sign at r0 . This is ruled out as Lr is nonsingular for all r > n − 1.
+    Our argument shows that if p1 < p2 < · · · < pn and hq1 < q2i < · · · < qn are
+                                                            pr −q r
+two n-tuples of positive real numbers, then the matrix pii −qjj is nonsingular
+for every positive r different from 1, 2, . . . , n − 1.
+    An n × n real matrix A is said to be strictly sign-regular (SSR for short) if
+for every 1 ≤ k ≤ n, all k × k sub-determinants of A are nonzero and have the
+same sign. If this is true for every 1 ≤ k ≤ r for some r < n, then we say that A
+is in the class SSRr . Sign-regular matrices and kernels are studied extensively
+in [15].
+    We have noted above that if r is any positive real number and kh is anyi
+                                                                            pr −q r
+positive integer not greater than r, then every k × k matrix of the form pii −qjj
+is nonsingular. Let Lr be an n × n Loewner matrix. Let r 6= 1, 2, . . . , n − 1.
+Using a homotopy argument one can see that all k×k sub-determinants of Lr are
+nonzero and have the same sign. Thus Lr is an SSR matrix. If r = 1, 2, . . . , n−1,
+
+
+                                                       7
+then the same argument shows that for k ≤ r all k × k sub-determinants of Lr
+are nonzero and have the same sign. In other words, Lr is an SSRr matrix.
+     Let A be any matrix with eigenvalues λ1 , λ2 , · · · , λn arranged so that |λ1 | ≥
+|λ2 | ≥ · · · ≥ |λn |. The Perron theorem tells us that if A is entrywise positive,
+then λ1 > 0 and λ1 is a simple eigenvalue of A. (See[13], p. 526). Applying this
+to successive exterior powers, we see that all eigenvalues of an SSR matrix are
+simple, and the r nonzero eigenvalues of an SSRr matrix of rank r are simple.
+This proves Part (v) of Theorem 1.1.
+     We now turn to proving Part (iii). Using the identity
+
+          pri − prj   pr−1
+                       i   (pi − pj ) + pi (pr−2
+                                             i    − pr−2
+                                                     j   )pj + (pi − pj )pr−1
+                                                                          j
+                    =
+          pi − pj                              pi − pj
+
+we see that for every r ∈ R,
+
+                        Lr = Dr−1 E + DLr−2 D + EDr−1 ,                           (17)
+
+where D is the diagonal matrix in (8) and E is the n × n matrix with all its
+entries equal to one.
+   By Loewner’s Theorem Lr is positive definite for 0 < r < 1, and because of
+(10) it is negative definite for −1 < r < 0. Now suppose 1 < r < 2. Let x be any
+nonzero vector in the space H1 defined in (6). Note that this (n−1)-dimensional
+space is the kernel of the matrix E. Using (17) we have
+
+            hx, Lr xi = hx, Dr−1 Exi + hx, DLr−2 Dxi + hx, EDr−1 xi.
+
+The first and the third term on the right hand side are zero because Ex = 0.
+So,
+                            hx, Lr xi = hy, Lr−2 yi,
+where y = Dx. The last inner product is negative because Lr−2 < 0. Thus
+hx, Lr xi < 0 for all x ∈ H1 . In other words, Lr is conditionally negative definite
+if 1 < r < 2. The same argument shows that Lr is conditionally positive definite
+if 2 < r < 3 (because in this case Lr−2 is positive definite). This was proved in
+[7] by more elaborate arguments. In particular, we have
+
+                        In Lr = (1, 0, n − 1), if 1 < r < 2,                      (18)
+and
+                        In Lr = (n − 1, 0, 1), if 2 < r < 3.                      (19)
+We note here that if n = 3, then because of Part (iv) already proved we have
+In Lr = (2, 0, 1) for all r > 2. So the theorem is completely proved for n = 3.
+   Let n > 3 and suppose 3 < r < 4. Now consider the space
+                                n X              X           o
+                      H2 =        x:     xi = 0,    pi xi = 0
+                           = {x : Ex = 0, EDx = 0} .
+
+
+                                          8
+This space is of dimension n − 2, being the orthogonal complement of the span
+of the vectors e = (1, 1, . . . 1) and p = (p1 , p2 , . . . , pn ). Let x ∈ H2 . Again using
+the relation (17) we see that
+
+                                 hx, Lr xi = hy, Lr−2 yi,
+
+where y = Dx. Since EDx = 0, y is in H1 , and since 1 < r − 2 < 2, we have
+hx, Lr xi < 0. This is true for all x ∈ H2 . So, by the minmax principle Lr has at
+least n − 2 negative eigenvalues. The case n = 3 of the theorem already proved
+shows that Lr has a 3 × 3 principal submatrix with two positive eigenvalues. So,
+by Cauchy’s interlacing principle, Lr has at least two positive eigenvalues. Thus
+Lr has exactly two positive and n − 2 negative eigenvalues. In other words,
+
+                          In Lr = (2, 0, n − 2) for 3 < r < 4.                         (20)
+
+    At this stage note that the Theorem is completely proved for n = 4. Now
+let n > 4, and consider the case 4 < r < 5. Arguing as before hx, Lr xi > 0 for
+all x ∈ H2 . So Lr has at least n − 2 positive eigenvalues. It also has a 4 × 4
+principal submatrix with two negative eigenvalues. Hence
+
+                         In Lr = (n − 2, 0, 2) for 4 < r < 5.                          (21)
+
+The argument can be continued, introducing the space
+                     n X              X            X           o
+           H3 =        x:     xi = 0,   pi xi = 0,   p2i xi = 0
+                       x : Ex = 0, EDx = 0, ED2 x = 0
+                     
+                =
+
+at the next stage. Using this we can prove statement (iii) for 5 < r < 6 and
+6 < r < 7. It is clear now how to complete the proof.
+    All parts of Theorem 1.1 have now been established.                    
+
+   We end this section with a few questions.
+
+   1. Let f (z) be the complex function defined as
+                                             z
+                                             pi − pzj
+                                                      
+                                f (z) = det             .
+                                             pi − pj
+
+      Our analysis has shown that f has zeros at z = 0, ±1, ±2, . . . , ±n − 1;
+      these zeros have multiplicities n, n − 1, . . . , 1, respectively; and these are
+      the only real zeros of f. It might be of interest to find what other zeros f
+      has in the complex plane.
+   2. When n = 3, calculations show that
+
+                         det L3 = −(p1 − p2 )2 (p1 − p3 )2 (p2 − p3 )2 ,
+
+
+
+                                             9
+     and
+
+            det L4   =   −2(p1 − p2 )2 (p1 − p3 )2 (p2 − p3 )2
+                         {(p1 + p2 + p3 )(p1 p2 + p1 p3 + p2 p3 ) + p1 p2 p3 } .
+
+     It might be of interest to find formulas for the determinants of the matrices
+     Lm for integers m.
+
+  3. Two of the authors have studied the matrix Pr = [(pi + pj )r ] in [5]. It
+     turns out that In Pr = In Lr+1 for all r > 0. Why should this be so, and
+     are there other interesting connections between these two matrix families?
+
+Acknowledgements. The work of R. Bhatia is supported by a J. C. Bose
+National Fellowship, of S. Friedland by the NSF grant DMS-1216393, and of T.
+Jain by a SERB Women Excellence Award. The authors thank John Holbrook,
+Roger Horn, Olga Holtz and Lek-Heng Lim for illuminating discussions. The
+completion of this work was facilitated by the workshop “Positivity, graphical
+models and modeling of complex multivariate dependencies” at the American
+Institute of Mathematics in October 2014. The authors thank the organisers
+and the participants of this workshop.
+
+
+References
+ [1] R. Bhatia, Matrix Analysis, Springer, 1997.
+
+ [2] R. Bhatia, Positive Definite Matrices, Princeton Univ. Press, 2007.
+
+ [3] R. Bhatia, First and second order perturbation bounds for the operator
+     absolute value, Linear Algebra Appl., 208 (1994) 367-376.
+
+ [4] R. Bhatia and J. A. Holbrook, Fréchet derivatives of the power function,
+     Indiana Univ. Math. J., 49(2000) 1155-1173.
+
+ [5] R. Bhatia and T. Jain, Inertia of the matrix [(pi + pj )r ] , to appear in J.
+     Spectral Theory.
+
+ [6] R. Bhatia and K. R. Parthasarathy, Positive definite functions and operator
+     inequalities, Bull. London Math. Soc., 32 (2000) 214-228.
+
+ [7] R. Bhatia and T. Sano, Loewner matrices and operator convexity, Math.
+     Ann., 344 (2009) 703-716.
+
+ [8] R. Bhatia and K. B. Sinha, Variation of real powers of positive operators,
+     Indiana Univ. Math. J., 43 (1994) 913-925.
+
+
+                                        10
+ [9] F. Hiai and H. Kosaki, Comparison of various means for operators, J.
+     Funct. Anal., 163 (1999) 300-323.
+
+[10] F. Hiai and H. Kosaki, Means for matrices and comparison of their norms,
+     Indiana Univ. Math. J., 48 (1999) 899-936.
+
+[11] F. Hiai and H. Kosaki, Means of Hilbert Space Operators, Springer 2003.
+
+[12] R. A. Horn, The Hadamard product. Matrix theory and applications, Proc.
+     Sympos. Appl. Math., 40 (1989) 87-169.
+
+[13] R. A. Horn and C. R. Johnson, Matrix Analysis, Second edition, Cambridge
+     Univ. Press, 2013.
+
+[14] H. Kosaki, Arithmetic-geometric mean and related inequalities for opera-
+     tors, J. Funct. Anal., 156 (1998) 429-451.
+
+[15] S. Karlin, Total Positivity, Stanford University Press, 1968.
+
+[16] G. Pólya and G. Szegö, Problems and Theorems in Analysis, Volume II,
+     4th ed., Springer, 1971.
+
+
+
+
+                                       11
+

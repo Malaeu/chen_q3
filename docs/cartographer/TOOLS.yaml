@@ -1505,7 +1505,7 @@ tool_families:
       prime-set); no substitute construction. DIAGNOSTIC_NEVER_A_PROOF,
       PX_RH_CLAIM NOT_MADE, no route promotion.
     front_door: edge-ledger-build
-    coverage: [docs/routeB_bus/phase5_scripts/edge_ledger_build.py, docs/routeB_bus/phase5_scripts/edge_ledger_fuchs.py, docs/routeB_bus/phase5_scripts/edge_ledger_ratio.py, docs/routeB_bus/phase5_scripts/edge_ledger_relritz.py, docs/routeB_bus/phase5_scripts/edge_ledger_dualcert.py]
+    coverage: [docs/routeB_bus/phase5_scripts/edge_ledger_build.py, docs/routeB_bus/phase5_scripts/edge_ledger_fuchs.py, docs/routeB_bus/phase5_scripts/edge_ledger_ratio.py, docs/routeB_bus/phase5_scripts/edge_ledger_relritz.py, docs/routeB_bus/phase5_scripts/edge_ledger_dualcert.py, docs/routeB_bus/phase5_scripts/edge_ledger_schur.py]
     tools:
       - id: edge-ledger-build
         classification: MANUAL
@@ -1717,6 +1717,82 @@ tool_families:
           pperp cross-check agreed to 6 sig figs at every cell. m=83 took
           ~36s wall time at dps=360 (well inside the 30-minute budget); m=163
           was not attempted (excluded by the precommit).
+        last_verified: 2026-09-03
+
+      - id: edge-ledger-schur
+        classification: MANUAL
+        status: ENABLED
+        audience: [CODEX, CLAUDE_CODE, HUMAN]
+        mode: WRITES_DERIVED
+        path: docs/routeB_bus/phase5_scripts/edge_ledger_schur.py
+        invoke: .venv/bin/python docs/routeB_bus/phase5_scripts/edge_ledger_schur.py
+        trigger: >-
+          Explicit Goal 058 Probe 6 (center Schur-pairing sign structure,
+          ADDENDUM 4 of PRECOMMIT_2026-09-03_edge_ledger_probes.md, judge
+          attack R2 P59_CURVATURE_CENTER_SCHUR_STIELTJES) request only; not
+          part of any automatic startup or goal-close event. Independent of
+          edge-ledger-build's JSON checkpoint (rebuilds its own even blocks
+          via the imported CCMArbBuilder) and reuses
+          edge_ledger_dualcert.robust_full_eig/build_ell_even/compute_full_eig
+          (imported, never copied) for the Q-side full spectrum and the
+          ell_N basis mapping already validated by Probe 5.
+        writes: true
+        approval: TASK_SCOPED_OUTPUT_UNDER_docs_routeB_bus_phase5_scripts_out
+        authority: FINITE_EVEN_SECTOR_CENTER_SCHUR_RESIDUE_DIAGNOSTIC_NOT_A_CERTIFICATE_NOT_RH
+        records_to: [docs/routeB_bus/phase5_scripts/out/edge_ledger_schur.json, docs/routeB_bus/phase5_scripts/out/edge_ledger_schur.md]
+        note: >-
+          For m=N in {13,23,43,83} (163 excluded, no full spectrum), splits
+          the even block Q (dim N+1) at the central n=0 coordinate into
+          scalar a=Q[0,0], vector b=Q[1:,0] and principal submatrix
+          D=Q[1:,1:] (dim N), full-spectrum eigendecomposes D via the same
+          python-flint acb_mat.eig(right=True) + escalating-precision
+          fallback edge_ledger_dualcert uses for Q (m=83 needed dps=360
+          effective, base 240; if D's own isolation ever needs MORE
+          precision than Q's, the Q-side lambda1/xi_0 are re-derived at the
+          higher precision so the whole cell shares one working precision --
+          not triggered on this run, all cells reconciled at bump 0).
+          Residues r_j=<c,w_j><w_j,b> (c = ell_N's n!=0 part in the SAME
+          even-basis coordinates Probe 5 validated) are certified +/-/0 via
+          arb ball comparisons (bool(r>0)/bool(r<0), else 'uncertain');
+          S_+, S_-, minority_mass=min(S_+,S_-)/(S_++S_-) computed from the
+          certified buckets only. Sanity gate: 1/12-f(lambda1) must equal
+          Probe 5's a_1/xi_0 (recomputed bit-for-bit via the same
+          robust_full_eig call, not just numerically close) to >=8
+          significant digits, else the script stops with
+          SCHUR_SANITY_MISMATCH. Interlacing check is a DOCUMENTED COARSE
+          PROXY only: one evaluation of f at each gap midpoint
+          (mu_j+mu_{j+1})/2, sign sequence and adjacent-transition count
+          reported -- this does not scan for a zero crossing inside each
+          gap and is not a certified interlacing proof. Loewner check is
+          descriptive: monotonicity of CCMArbBuilder's own alpha_1..alpha_N
+          sequence (the antisymmetric coefficient CCM Lemma 5.1's b_i
+          refers to), read directly off the same CCMArbBuilder instance
+          used to build Q (no re-derivation). Verdict for
+          P_SCHUR_RESIDUES_ONE_SIGN (p=0.35) by the frozen ADDENDUM-4 rule
+          (CONFIRMED: minority_mass<=1e-6 at every cell; REFUTED:
+          minority_mass>=0.05 at every cell; else UNRESOLVED).
+        validation: >-
+          Run 2026-09-03: sanity check (1/12-f(lambda1) vs Probe 5's
+          a_1/xi_0, recomputed via the identical robust_full_eig call)
+          agreed to >=11 significant digits at all four cells, past the
+          8-digit gate. minority_mass = 0 (exactly, all residues certified
+          positive) at m=13,23; 4.32e-6 at m=43; 5.74e-6 at m=83 -- just
+          above the 1e-6 CONFIRMED threshold at the two larger cells, so the
+          schedule as a whole is UNRESOLVED under the frozen rule despite
+          being visibly close to one-sign (S_- is 5-6 orders of magnitude
+          below S_+ at every cell where it is nonzero at all). Loewner
+          check: CCMArbBuilder's alpha_n sequence is genuinely
+          NOT monotone at m=13 (alpha_1=0.24955, alpha_2=0.24850 -- a dip --
+          then strictly increasing n=2..13 back up toward ~0.25) but
+          strictly DECREASING across the whole range 1..N at m=23,43,83
+          (verified directly, e.g. m=23: 0.2619, 0.2539, 0.2523, 0.2517,
+          0.2513, ...) -- recorded as found, not yet explained; a plausible
+          reading is that L=log(13)~2.56 is small enough that finite-window
+          corrections dominate near n=1-2 before the same asymptotic decay
+          pattern the larger cells show over their whole range takes hold,
+          but this is not verified. m=83 took ~48s wall time at dps=360
+          (well inside the 30-minute budget); m=163 not attempted (excluded
+          by the precommit).
         last_verified: 2026-09-03
 
 dynamic_queries:

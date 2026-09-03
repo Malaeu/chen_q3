@@ -1,0 +1,343 @@
+    A scalar Herglotz criterion for the even-simplicity hypothesis
+                in the localized Weil quadratic form
+                                            Breno Andrade
+                                               ArqueOps
+                                         breno@arqueops.com.br
+
+                                             June 14, 2026
+
+
+                                                 Abstract
+          The strategy of Connes–Consani–Moscovici (arXiv:2511.22755) and Connes–van Suijlekom
+      (arXiv:2511.23257) toward the Riemann Hypothesis rests on a structural hypothesis on the
+      truncated/localized Weil quadratic form QW : that its smallest eigenvalue be simple with even
+      eigenvector (even-simplicity, CCM Def. 5.3). In those works even-simplicity is assumed and
+      verified only numerically; Suzuki (arXiv:2606.09096) proves it for the continuum operator only
+      in the small-interval limit. We give an exact reduction of this hypothesis to a single scalar
+      inequality between two Herglotz functions. Writing the pole term of the explicit formula as
+      the rank-two operator W0,2 = 2|C⟩⟨C| − 2|S⟩⟨S| (C(x) = cosh x2 even, S(x) = sinh x2 odd),
+      the parity decomposition turns each sector into a rank-one perturbation of the pole-free
+      operator: Aeven = Be + 2|C⟩⟨C| on the even sector and Aodd = Bo − 2|S⟩⟨S| on the odd
+      sector, where Be has a single negative eigenvalue (the Perron ground of the pole-free part)
+      and Bo > 0. The two sector ground states are the smallest roots of the rank-one secular
+      equations me (λ) := ⟨C, (Be − λ)−1 C⟩ = − 21 and mo (λ) := ⟨S, (Bo − λ)−1 S⟩ = + 12 . Our main
+      result (Theorem 4) is that even-simplicity is equivalent to the pole-localization condition
+      λeven
+        0    < λ0 (Bo ) together with
+                                             mo λeven
+                                                       1
+                                                   0    < 2,
+      i.e. ⟨S, (Bo − λeven
+                       0   )−1 S⟩ < 12 , a single comparison of two resolvent forms at one energy. We
+      verify the full chain (the rank-one sign structure, both secular equations, the pole-localization
+      condition, and the criterion) to machine precision for c = λ2 ∈ {5, 13, 53}. This isolates the
+      CCM hypothesis as one explicit scalar inequality and identifies it as the precise residual; we
+      make no claim of proving even-simplicity itself, and no claim about the Riemann Hypothesis.
+
+
+1    Introduction
+The Connes–Consani–Moscovici (CCM) program [1] constructs, from the Weil quadratic form
+QNW λ of the explicit formula, self-adjoint operators whose spectra approximate the nontrivial
+zeros of ζ. A pivotal ingredient, made precise in the companion paper of Connes–van Suijlekom
+[2], is the following structural property of the truncated form.
+Definition 1 ([1], Def. 5.3). A real symmetric operator T commuting with a Z/2-grading γ
+is even-simple if its smallest eigenvalue is simple and the corresponding eigenvector ξ satisfies
+γξ = ξ.
+    The CvS theorem is conditional: if the bottom of the spectrum is a simple eigenvalue
+with even eigenvector, then the Fourier–Mellin zeros of that eigenvector lie on the critical line.
+Even-simplicity is therefore the analytic hypothesis on which the spectral realization rests. In
+[1] it is “assumed simple”
+                      √ √  and “assumed
+                                √         even” (Thm. 1.1) and checked only numerically ([1],
+§6, at N = 120, λ = 12, 13, 14). Suzuki [3], working with the continuum operator Aa on
+L2 (−a, a) obtained from the screw function of ζ, proves even-simplicity only for sufficiently small
+
+                                                     1
+a ([3], Thm. 1.4, via the a → 0+ asymptotics), and explicitly leaves the ordering of the even and
+odd sector bottoms, λa = min(λ+       −
+                                 a , λa ), undetermined for general a ([3], §4.5). For the regime
+relevant to the zeta-approximation (a → ∞, equivalently large cutoff c = λ2 ), even-simplicity is
+open.
+
+Result. We do not prove even-simplicity. We reduce it, exactly, to a single scalar inequality.
+The grading γ is the parity involution (Jv)(x) = v(−x); the operator splits as A = Aeven ⊕ Aodd
+over the even and odd subspaces, and
+                                    λ0 (A) = min λeven , λodd
+                                                              
+                                                  0       0     ,
+so the global ground state is even (and simple) precisely when λeven0    < λodd
+                                                                             0 . The pole term of
+the explicit formula is, on each sector, a rank-one perturbation of the pole-free operator; the two
+sector bottoms are then the smallest roots of rank-one secular (Weinstein–Aronszajn) equations
+built from two Herglotz functions, and the ordering becomes a single comparison of resolvent
+forms (Theorem 4). The point is structural: the difficulty of even-simplicity is concentrated in
+one explicit scalar inequality, replacing the nodal/positivity-improving formulation (Appendix A)
+which does not survive for large a.
+
+
+2      Setting and parity decomposition
+We adopt the continuum operator framework of [3]. The finite matrices QN  W λ of [1], used below for
+numerical validation with L = 2a = log c, carry the same parity and rank-one pole algebra after
+projection, but the theorem below is stated at the operator level. Let A denote the localized Weil
+operator, self-adjoint and lower-bounded with discrete spectrum [1, Thm. 3.6]. The reflection
+(Jv)(x) = v(−x) commutes with A; write H = He ⊕ Ho for the even (Jv = v) and odd (Jv = −v)
+subspaces and A = Aeven ⊕ Aodd .
+
+The pole term. In [4] the pole contribution W0,2 of the explicit formula (evaluation of Fb at
+the poles s = 0, 1) is identified as the integral operator R with kernel 2 cosh x−y
+                                                                                 2 , and split by
+parity via the addition formula:
+            2 cosh x−y
+                    2 = 2 C(x)C(y) − 2 S(x)S(y),        C(x) = cosh x2 , S(x) = sinh x2 ,       (1)
+so R = 2|C⟩⟨C| − 2|S⟩⟨S| with C even   Pand S odd. Let A := A − R be the pole-free part
+                                                           e
+(archimedean-plus-primes part −WR − p Wp in CCM notation), and Be , Bo its even and odd
+sector restrictions.
+    Since C is even and S is odd, |S⟩⟨S| annihilates He and |C⟩⟨C| annihilates Ho ; hence the
+rank-two R acts as a rank-one operator on each sector and
+                         Aeven = Be + 2|C⟩⟨C|,       Aodd = Bo − 2|S⟩⟨S|.                       (2)
+We verified (2) to machine precision (§5): the even-sector difference Aeven − Be equals 2|C⟩⟨C|
+and the odd-sector difference Aodd −Bo equals −2|S⟩⟨S| (a rank-one negative operator, confirmed:
+Aodd − Bo has a single nonzero eigenvalue).
+
+Structural facts. The pole-free operator A    e is, by [4, Thm.], a positive jump Dirichlet form
+plus a lower-bounded potential, with positivity-improving semigroup; its ground state is simple,
+strictly positive, hence even. Consequently:
+                                        e e (the Perron ground), with a positive ladder above it,
+    Be has a single negative eigenvalue λ 0
+                                              Bo > 0.
+                                                                                           (3)
+We use (3) as the standing structural input; it holds at every computed c (§5; e.g. at c = 53,
+e e = −11.0864 . . . and λ0 (Bo ) = 4.5 × 10−166 > 0).
+λ 0
+
+
+                                                 2
+3     The rank-one secular equations
+For a self-adjoint B and g ∈ R, the eigenvalues of B + g|v⟩⟨v| lying outside σ(B) are exactly the
+solutions of 1 + g ⟨v, (B − λ)−1 v⟩ = 0, with eigenvector proportional to (B − λ)−1 v (Weinstein–
+Aronszajn / Sherman–Morrison). Define the two Herglotz functions
+
+                   me (λ) := ⟨C, (Be − λ)−1 C⟩,         mo (λ) := ⟨S, (Bo − λ)−1 S⟩.              (4)
+
+Each is a real Herglotz (Nevanlinna) function of λ: strictly increasing between consecutive
+poles, with simple poles at the eigenvalues of Be (resp. Bo ) and positive residues |⟨ψk , C⟩|2 (resp.
+|⟨ψk , S⟩|2 ).
+
+Proposition 2 (Sector secular equations). With g = +2, v = C on the even sector and
+g = −2, v = S on the odd sector, (2) gives:
+
+    (i) λeven
+         0    , the smallest eigenvalue of Aeven , is the smallest root of 1 + 2 me (λ) = 0, i.e.
+        me (λ) = − 12 , lying in the first gap (λ
+                                                e e, λ
+                                                  0
+                                                     e e ) of Be ;
+                                                      1
+
+ (ii) λodd
+       0 , the smallest eigenvalue of A
+                                            odd , is the smallest root of      1 − 2 mo (λ) = 0, i.e.
+      mo (λ) = + 12 , lying below λ0 (Bo ).
+
+Proof. (i) From (Be + 2|C⟩⟨C| − λ) v = 0 with λ ∈     / σ(Be ) one gets v = −2⟨C, v⟩(Be − λ)−1 C;
+pairing with C yields 1 = −2me (λ). Since Be has a single negative eigenvalue λ      e e < 0 and
+                                                                                      0
+the positive perturbation +2|C⟩⟨C| raises the bottom into the first gap, me runs from −∞
+to +∞ across (λ  e e, λ
+                      e e ) and the root there is unique. (ii) From (Bo − 2|S⟩⟨S| − λ) v = 0 one
+                   0   1
+gets v = 2⟨S, v⟩(Bo − λ)−1 S, hence 1 = 2mo (λ). Since Bo > 0 and the negative perturbation
+−2|S⟩⟨S| lowers the bottom below λ0 (Bo ), and mo is increasing from 0+ (as λ → −∞) to +∞
+(as λ → λ0 (Bo )− ), the root is unique in (−∞, λ0 (Bo )).
+
+Remark 3 (Sectoral simplicity). Both roots are simple eigenvalues of their sectors: me , mo are
+strictly increasing where evaluated (positive residues), so each secular equation has a transversal
+(hence simple) crossing, and the corresponding eigenvector (Be − λeven
+                                                                    0    )−1 C, resp. (Bo − λodd −1
+                                                                                             0 ) S,
+                                    even
+is one-dimensional. In particular λ0 is a simple eigenvalue of A      even .
+
+
+4     The Herglotz criterion
+Theorem 4. Assume the structural facts (3). Then the localized Weil operator A is even-simple
+if and only if the even bottom lies below the first pole of the odd Herglotz function and the scalar
+odd-sector resolvent criterion holds:
+                                          λeven
+                                            0    < λ0 (Bo )                                      (5)
+and
+                      mo λeven                          S, (Bo − λeven )−1 S < 21 .
+                                1
+                          0     <2 ,         i.e.                 0                               (6)
+
+Here λeven
+       0   is determined by me (λeven
+                                  0   ) = − 12 (Proposition 2(i)). Equivalently, under (5), A is
+even-simple iff Aodd − λeven
+                        0    > 0 on the odd sector.
+
+Proof. Since A = Aeven ⊕ Aodd , the bottom of A is min(λeven 0   , λodd
+                                                                    0 ), attained in the even (resp.
+odd) sector. By Definition 1 and Remark 3, A is even-simple iff λeven0    < λodd
+                                                                              0   (the strict ordering
+makes the global bottom uniquely the even one, which is simple in its sector and even by
+construction; equality would make the bottom non-simple, and the reverse inequality would make
+the eigenvector odd).
+   Write µ := λeven
+                 0    . If A is even-simple, then µ < λodd0    ≤ λ0 (Bo ), so (5) holds. Conversely,
+once (5) holds, the inequality λ0 > µ is equivalent to Aodd > µ on Ho , i.e. Aodd − µ =
+                                    odd
+
+(Bo − µ) − 2|S⟩⟨S| is positive definite. By (5), Bo − µ > 0 and its inverse (Bo − µ)−1 is a bounded
+
+                                                    3
+positive operator. For a positive operator P and a vector w, P − 2|w⟩⟨w| > 0 if and only if
+2⟨w, P −1 w⟩ < 1 (the rank-one criterion: with P 1/2 , P −2|w⟩⟨w| > 0 ⇔ I −2|P −1/2 w⟩⟨P −1/2 w| >
+0 ⇔ 2∥P −1/2 w∥2 < 1). Taking P = Bo − µ, w = S:
+
+                  Aodd − µ > 0 ⇐⇒ 2⟨S, (Bo − µ)−1 S⟩ < 1 ⇐⇒ mo (µ) < 12 .
+
+Thus λodd
+       0   > µ = λeven
+                     0   ⇔ mo (λeven
+                                   0   ) < 12 , which is (6). (The boundary case mo (µ) = 12
+corresponds to λodd
+                0   = λeven
+                       0    , a degenerate, non-simple bottom.)
+
+Remark 5. Both inputs are explicit and computable: me , mo are resolvent quadratic forms of
+the pole-free sector operators against the elementary vectors C = cosh x2 , S = sinh x2 . The
+criterion compares them at a single energy λeven
+                                              0  , itself the solution of a scalar Herglotz equation.
+Condition (5) is the precise requirement that λeven
+                                                  0     lie below the first pole of mo , so that the
+rank-one positivity criterion can be applied with Bo − λeven
+                                                           0   > 0; it is automatically necessary for
+even-simplicity and holds at every computed c.
+
+
+5    Numerical anatomy of the criterion
+The following is computational evidence for the structural inputs and the criterion, not a proof.
+All quantities are computed from the closed-form archimedean entries of [1] §4.3, with the Hurwitz–
+Lerch function evaluated by its defining series (mpmath issue #1099; cf. [5]), at dps = 150–300,
+in the finite model QNW λ , N = 80–120.
+
+
+                                               c=5           c = 13           c = 53
+            ∥Aeven − Be − 2|C⟩⟨C|∥          6.1 × 10−151   6.5 × 10−201    7.5 × 10−301
+            ∥Aodd − Bo + 2|S⟩⟨S|∥           6.1 × 10−151   6.5 × 10−201    3.3 × 10−300
+            e e (one neg. eig. of Be )
+            λ                                 −3.3343         −5.8510       −11.0864
+              0
+            λ0 (Bo ) > 0                    7.1 × 10−10     1.6 × 10−48    4.5 × 10−166
+            me (λeven
+                  0   ) (target − 12 )        −0.5000         −0.5000        −0.5000
+                                  1
+            mo (λodd
+                  0 ) (target + 2 )           +0.5000         +0.5000        +0.5000
+            λeven
+              0                             1.05 × 10−17   3.72 × 10−59   1.04 × 10−177
+            λodd
+              0                             1.06 × 10−14   3.34 × 10−55   1.72 × 10−173
+            λeven
+              0   < λ0 (Bo ) (5)                 yes            yes             yes
+            mo (λeven
+                  0   ) < 12 (6)                 yes            yes             yes
+            even-simple (λeven
+                             0   < λodd
+                                      0 )        yes            yes             yes
+
+    The rank-one sign structure (2) holds to the working precision (rows 1–2; the odd difference
+Aodd − B                                                      −151 ). Both secular equations hold at
+          o is confirmed rank one, its second eigenvalue ∼ 10
+the respective sector bottoms (rows 5–6). The pole-localization condition (5) and the criterion (6)
+hold, in agreement with the directly computed ordering λeven0    < λodd
+                                                                      0 , at every c. We emphasize
+                            1
+that mo (λ0 ) falls below 2 only by a quantity of the order of λodd
+           even
+                                                                   0   − λeven
+                                                                          0    (both sector bottoms
+        +
+are ≈ 0 , the Weil positivity scale): the criterion is satisfied, but critically tightly, which is
+consistent with the arithmetic meaning of the Weil bottom.
+
+
+6    Relation to the CCM hypothesis and outlook
+Theorem 4 reduces the even-simplicity hypothesis of [1, 2] — assumed there and verified only
+numerically — to pole-localization plus the single scalar inequality (6). The reduction is exact
+and uses only the parity decomposition, the rank-one structure of the pole term, and the Herglotz
+character of the two sector resolvent forms. It replaces the nodal/positivity formulation (the
+ground state of A being one-signed), which requires the full operator to be positivity-improving
+
+                                                  4
+and therefore holds only for small a (Appendix A), by a statement that does not: the criterion is
+about the odd-sector resolvent form mo evaluated at the even ground energy, and is meaningful
+for every a.
+    The remaining task is to prove (6) for all c (equivalently all a). This is a uniform bound
+on a single Herglotz resolvent form at an energy λeven
+                                                   0   → 0+ , and is the precise residual of the
+CCM strategy at this step. The Herglotz/Weyl m-function framework that produces (6) is the
+same one used to control the parity-separated prolate spectral determinants in [6]; pursuing the
+uniform bound within that framework is the natural next step. We make no claim of proving (6),
+even-simplicity, or the Riemann Hypothesis.
+
+
+A      Why the nodal/positivity route is not the right formulation
+A natural attempt proves even-simplicity by showing the ground state of A is nodeless (one-
+signed), whence even (a nodeless eigenfunction of a parity-commuting operator is even). This is
+Suzuki’s route [3], valid for small a via positivity improving. It does not extend, and we record
+why, since the obstructions motivate the sector formulation of the main text.
+
+    1. A is not positivity-improving for large a. The smooth off-diagonal kernel is −g ′′ (t) =
+                    e−|t|/2                           ∗                                ∗
+       2 cosh 2t − 1−e −2|t| , which changes sign at t = 0.281199 . . . [4]; for 2a > t it is not sign-
+
+       definite, so A has no positivity-improving semigroup. Directly, Aeven = Be + 2|C⟩⟨C| adds
+       the positive off-diagonal kernel 2C(x)C(y) > 0 to the operator, breaking the sign condition;
+       the resolvent (Aeven − µ)−1 has negative entries for all µ.
+
+    2. The cross-energy/inertia route is self-defeating. Writing the even ground φ0 = (Be −
+       λeven
+        0    )−1 C and assuming it changes sign, the index-one inertia of Be − λeven
+                                                                                0    forces the total
+                                                                +
+       nodal cross-energy to satisfy δtot ≤ α(2α + 1) (α = ⟨C, φ0 ⟩); every form-positivity estimate
+       (Cauchy–Schwarz, ground-state representation, Picone) gives this same upper direction,
+       while a contradiction would need the reverse lower bound, which is generically false (the
+       upper bound is strict).
+
+    3. Reflection positivity does not apply. It yields a ground state in a positive cone (nodelessness),
+       not in the even parity sector, and the relevant reflection acts on a doubled Hilbert space;
+       moreover the pole kernel 2 cosh x−y 2 is rank-two indefinite.
+
+The sector formulation of §2–4 bypasses all three: it never asks for one-signedness, only for the
+ordering of two sector bottoms, which the rank-one Herglotz criterion (6) captures exactly.
+
+
+References
+[1] A. Connes, C. Consani, H. Moscovici, Zeta spectral triples, arXiv:2511.22755 (2025).
+
+[2] A. Connes, W. van Suijlekom, Quadratic forms, real zeros and echoes of the spectral action,
+    Comm. Math. Phys. 406:312 (2025).
+
+[3] M. Suzuki, Weil’s quadratic form via the screw function, arXiv:2606.09096 (2026).
+
+[4] B. Andrade, The pole term is the only obstruction to Perron structure in the localized Weil
+    quadratic form, Zenodo, DOI 10.5281/zenodo.20682834 (2026).
+
+[5] B. Andrade, Exact archimedean entries for truncated Weil forms, Zenodo, DOI 10.5281/zen-
+    odo.20671635 (2026).
+
+[6] B. Andrade, Simple zeros and parity interlacing for the negative Connes–Moscovici prolate
+    spectrum, arXiv (2026).
+
+                                                   5
+[7] M. Reed, B. Simon, Methods of Modern Mathematical Physics IV, Academic Press (1978).
+
+
+
+
+                                            6
+
