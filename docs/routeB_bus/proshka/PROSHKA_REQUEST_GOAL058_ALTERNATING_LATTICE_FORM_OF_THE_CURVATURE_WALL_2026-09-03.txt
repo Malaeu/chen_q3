@@ -1,0 +1,116 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-03-LATTICEWALL
+BOUNDARY_ID: GOAL058_ALTERNATING_LATTICE_FORM_OF_THE_CURVATURE_WALL
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-03-LATTICEWALL (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub).
+DATE: 2026-09-03
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+SOURCE_BASE_COMMIT: f13939ae0220dda2acf5bbcbf87273f31ba6dbef
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: PROPOSITION59_CCM_FINITE_BOTTOM_GROUND_FAMILY
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_ADJUDICATION_ONLY
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_ALTERNATING_LATTICE_FORM_OF_THE_CURVATURE_WALL_2026-09-03.md
+AUTHOR: Linux-Claude (observer), on owner instruction; delivery by GitHub locator (owner is remote, no attachment)
+PARENT_VERDICTS: 926c1865 (CURVBRIDGE), 3dc82357 (NEWMECH)
+
+INTAKE SINCE 3dc82357 (all on origin/rh_clean)
+
+  1. Lean: docs/... q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean
+     is KERNEL_GREEN on all seven steps of your CODEX DIRECTIVE (926c1865): 33 declarations,
+     axioms only propext/Classical.choice/Quot.sound, checked by the observer in the main
+     checkout. Main theorems: proposition59_curvature_coercion (kappa real),
+     proposition59Curvature_nonneg, proposition59Curvature_eq_root_sum_add_tail,
+     proposition59_compact_envelope (‖F z‖ ≤ ‖F 0‖ exp(κ‖z‖²) for EVERY z),
+     proposition59_curvature_closed_form, proposition59_normalized_bound_on_ball. No Hadamard,
+     no order predicate; the Euler tail is only bounded (finite partial products + le_of_tendsto),
+     the inequality extended from {Im z ≠ 0} to all z by continuity. Plants A-D pass.
+     Deviation from your fact list: Real.prod_one_add_le_exp_sum is a Finset lemma, the root
+     product is a Multiset; replaced by a four-line induction on Real.add_one_le_exp.
+     Residual: P59_EULER_TAIL_LIMIT_API_GAP only at removable nodes in step 4b, blocking nothing
+     in §2.1. Report: docs/routeB_bus/CLAUDE_AGENT_REPORT_2026-09-03_GOAL058_P59_EXPLICIT_PRODUCT_CURVATURE_BRIDGE.md
+  2. C5 preflight (docs/routeB_bus/AGENT_REPORT_2026-09-03_GOAL058_RECIPROCAL_MODE_ODD_GRAM_PREFLIGHT.md):
+     C5_RECIPROCAL_COMMUTATOR_ONLY_RENAMES_CURVATURE. Items 1-5 confirmed (centre contributes
+     nothing to the restricted commutator; parity; kappa = (L²/4π²)E exact; Rb expanded). Item 6:
+     the odd coboundary exists exactly, s = r/2 + R x with x = ξ/ξ_0 the ground row, and
+     <r,s> + tail = E identically, so E_k = Σ_{n≤N}(1 + 2ξ_n/ξ_0)/n² + Σ_{n>N}1/n² (E-CLOSED).
+  3. Probe 8 (precommit addendum 9, docs/routeB_bus/phase5_codex/out/odd_gram.md): your identities
+     hold to working precision; but μ_odd,min = 6.4e-28, 1.5e-48, 3.7e-87, 2.9e-158 on m = 13..83
+     (ratio to even λ₂ ~ 1e-3..2e-4): the odd sector has its own near-null direction collapsing
+     like λ₂; T2 ≈ T3 ≈ 1/μ_odd cancel; E_k = 0.155, 0.105, 0.072, 0.051. Both observer
+     predictions REFUTED (P_ODD_SECTOR_FLOOR_NONCOLLAPSING 0.55, P_E_TERMS_NOT_GAP_INFLATED 0.50).
+  4. Observer's rewrite of E-CLOSED (paper, to be verified by you): with f_k(x_n) := F_k(x_n)/F_k(0)
+     = (−1)^n ξ_n/ξ_0 and Σ_{n≥1}(1 + 2(−1)^n)/n² = 0,
+       κ_k = 2 Σ_{n=1}^{N} (−1)^n (f_k(x_n) − 1)/x_n²  −  (L²/(2π²)) Σ_{n>N} (−1)^n/n²,  x_n = 2πn/L.
+     With f := centeredXi/centeredXi(0) and Δ_n := f_k(x_n) − f(x_n):
+       κ_k = S_Ξ,k + S_Δ,k + tail,  S_Ξ,k = 2Σ_{n≤N}(−1)^n (f(x_n)−1)/x_n²  (an alternating Riemann
+       sum for g = (f−1)/x² with step 2π/L, converging to −g(0) = κ_Ξ = 0.0231),
+       |S_Δ,k| ≤ (L²/(2π²)) Σ_{n≤N} |Δ_n|/n² ≤ (L²/12) sup_n |Δ_n|.
+     Hence sup_k κ_k < ∞ follows from the WEIGHTED LATTICE ERROR W_k := Σ_{n≤N}|Δ_n|/n² = O(L^{-2}),
+     a fortiori from sup_{n≤N}|Δ_n| = O(1/log² m). Wall B (normality) and Input A (identification)
+     become ONE statement: the normalized ground transform tracks Ξ/Ξ(0) at the lattice nodes with
+     a polylogarithmic weighted error.
+  5. Probe 9 (precommit addendum 10, docs/routeB_bus/phase5_codex/out/lattice_error.md):
+     centeredXi(z) = riemannXi(1/2 + iz) (ClassicalXiInterface.lean), Ξ in arb via the classical
+     completed zeta; κ_Ξ = −Ξ''(0)/(2Ξ(0)) = 0.02310499312 (Taylor coefficients from acb_series).
+       m=N   W_k·L²   sup|Δ_n|·L²   n*    S_Ξ        S_Δ        κ_k (= Probe 4 to ≥ 15 digits)
+       13    0.1950   0.2542        3     0.024016   0.002791   0.02589627
+       23    0.2805   0.4508        3     0.023555   0.003158   0.02626302
+       43    0.3032   0.5579        4     0.023294   0.002738   0.02584306
+       83    0.2772   0.5849        4     0.023176   0.002063   0.02516807
+       163   0.2248   0.5479        5     0.023130   0.001415   0.02451950
+     Verdicts by the frozen rules: P_WEIGHTED_LATTICE_ERROR_POLYLOG (0.65) CONFIRMED;
+     P_SUP_LATTICE_ERROR_POLYLOG (0.45) CONFIRMED — both an order of magnitude inside the gate
+     and flat in m. The alternating form is exact (κ check to ≥ 15 digits on every cell).
+     Reading: the wall is numerically  sup_{n≤N} |F_k(x_n)/F_k(0) − Ξ(x_n)/Ξ(0)| ≤ 0.6/log² m,
+     with the largest error at low modes n* = 3..5.
+
+QUESTIONS
+
+Q1 Verify item 4 exactly: the identity, the tail term, the alternating-sum limit, and the
+   inequality. State the exact typed theorem (Lean-ready) "κ_k ≤ S_Ξ,k + (L²/(2π²)) W_k + tail"
+   and whether S_Ξ,k is uniformly bounded in k (it depends only on Ξ and the lattice; prove or
+   bound it: an alternating Riemann sum of a C² function with step 2π/L).
+Q2 Is "W_k = O(L^{-2})" the weakest sufficient statement for the curvature wall, and does it
+   simultaneously discharge Input A (moving-node identification needs f_k(x_n) → f(x) at fixed
+   x; W_k → 0 with weights 1/n² gives it at every fixed n, hence at x_n → 0 only — state exactly
+   what Input A still needs beyond W_k, e.g. Δ_n → 0 for n ~ xL/(2π) at fixed x, i.e. an
+   UNWEIGHTED lattice error on a growing index range).
+Q3 Source supplier for Δ_n. Decompose Δ_n = (f_k − f_trial)(x_n) + (f_trial − f)(x_n): the second
+   term is CCM Lemma 7.3 (trial transform → Ξ locally uniformly on closed substrips) — what
+   RATE in λ does Lemma 7.3 give at real points, is it O(L^{-2}) uniformly on |x| ≤ X, and does
+   it hold at the lattice scale x_n with n ≤ N? The first term is the ground-trial transfer at
+   the nodes: |f_k(x_n) − f_trial(x_n)| ≤ (transform amplification at x_n) · phase-aligned row
+   distance ≤ C·√L·√(2p_k)/|F_k(0)|·... — write the exact inequality in the project's objects
+   (A_k, p_k, the node sampling identity F(x_n) = √L(−1)^n v_n which makes the node transfer
+   EXACT with amplification √L, no kernel sup) and state the resulting sufficient condition
+   on p_k for W_k = O(L^{-2}). Compare with your C1 one-rate J_k = |A_k| L^{5/2} √p_k.
+Q4 Given Probe 9's numbers, is the wall now "prove W_k = O(L^{-2}) from the source" and what is
+   the cheapest noncircular attack on it (the ground row's low-mode profile against Ξ's samples;
+   the exact eigen-equation (K − λ₁)ξ = 0 written at low modes as a recurrence for ξ_n/ξ_0)?
+Q5 Score without editing: your P_C5_ODD_COBBOUNDARY_EXISTS 0.45; observer's P_ODD_SECTOR_FLOOR_
+   NONCOLLAPSING 0.55, P_E_TERMS_NOT_GAP_INFLATED 0.50, P_WEIGHTED_LATTICE_ERROR_POLYLOG 0.65,
+   P_SUP_LATTICE_ERROR_POLYLOG 0.45.
+
+REGISTERED PREDICTIONS (K6, observer, before your answer)
+  P_ALTERNATING_FORM_EXACT: 0.90 — item 4 is exact as written (identity + tail).
+  P_WEIGHTED_ERROR_IS_WEAKEST_SUFFICIENT: 0.60 — W_k = O(L^{-2}) is the weakest statement that
+    closes normality, and Input A needs an additional unweighted node error on a growing range.
+  P_NODE_TRANSFER_EXACT_SQRT_L: 0.70 — the ground-trial node transfer is exact with amplification
+    √L (no kernel sup), giving the sufficient condition |A_k|·L^{5/2}·√p_k = O(1) for W_k = O(L^{-2}).
+
+REQUIRED VERDICT
+  1. repeat REQUEST_ID, BOUNDARY_ID, request commit, Git blob, SHA-256; six-field phase key unchanged;
+  2. Q1-Q4 with exact statements; the ranked next action with falsifier;
+  3. score every prediction listed (Q5 and the three new ones) without editing probabilities;
+  4. Lean-ready vs new analytic separation; a CODEX DIRECTIVE if a Lean-ready item exists
+     (the alternating form and the inequality of Q1 are candidates);
+  5. no Lean edit, no numerical run, no route promotion, no RH claim; write only the expected
+     verdict document.
