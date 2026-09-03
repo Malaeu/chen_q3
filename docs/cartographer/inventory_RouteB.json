@@ -1,39 +1,19 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 379,
-  "declarations": 4179,
-  "in_docs": 2073,
-  "in_lemma_db": 4091,
-  "orphans": 40,
-  "uncatalogued": 40,
+  "files_scanned": 381,
+  "declarations": 4202,
+  "in_docs": 2087,
+  "in_lemma_db": 4182,
+  "orphans": 9,
+  "uncatalogued": 9,
   "orphan_files_top": [
     [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersEvenSectorArchPrimeReduction.lean",
-      14
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenFiniteHeadCrosswalk.lean",
-      11
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+      "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59EntireTransform.lean",
       8
     ],
     [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceEvenNonzeroTailCarrier.lean",
-      4
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersTrackedGroundTransform.lean",
-      1
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058DirectGroundZeroEscape.lean",
-      1
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
+      "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058CurvatureArithmetic.lean",
       1
     ]
   ],
@@ -2064,7 +2044,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceCommutator.lean",
       "line": 347,
       "signature": "theorem ccmBetaFinite_unique (mProject N : ℕ) (hm : 2 ≤ mProject) (hN : 1 ≤ N) (β : CCMModeFinite N → ℝ) (hβ0 : β (ccmCenterFinite N) = 0) (hstruct : ∀ i j, i ≠ j → ccmWeilMatFinite mProject N i j = (β i - β j) / ((ccmModeFinite N i : ℝ) - (ccmModeFinite N j : ℝ))) : β = ccmBetaFinite mProject N",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -15905,7 +15885,7 @@
       "line": 19,
       "signature": "theorem selectedFerrersPreAnchorIndex_no_tailCutoff_between_fixed_and_N (k : ℕ) : ¬ ∃ R : ℕ, sourceWeilEvenTailCutoff (selectedFerrersPreAnchorIndex k) ≤ R ∧ R ≤ (selectedFerrersPreAnchorIndex k).N",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -15915,7 +15895,7 @@
       "line": 30,
       "signature": "theorem sourceW02AmbientContinuousSesquilinearForm_norm_lower (i : PairIndex) : 2 * L_m i ≤ ‖sourceW02AmbientContinuousSesquilinearForm i‖",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -15925,7 +15905,7 @@
       "line": 78,
       "signature": "theorem selectedFerrersPreAnchorIndex_N_lt_sourceWeilEvenTailCutoff (k : ℕ) : (selectedFerrersPreAnchorIndex k).N < sourceWeilEvenTailCutoff (selectedFerrersPreAnchorIndex k)",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -15935,7 +15915,7 @@
       "line": 146,
       "signature": "theorem selectedFerrersPreAnchorIndex_not_cutoff_le_N (k : ℕ) : ¬ sourceWeilEvenTailCutoff (selectedFerrersPreAnchorIndex k) ≤ (selectedFerrersPreAnchorIndex k).N",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -17555,7 +17535,7 @@
       "line": 28,
       "signature": "def ccmEvenPositiveFinite (N : ℕ) (r : Fin N) : CCMModeFinite N",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -17565,8 +17545,8 @@
       "line": 31,
       "signature": "private theorem ccmEvenPositiveFinite_inj (N : ℕ) (r s : Fin N) : ccmEvenPositiveFinite N r = ccmEvenPositiveFinite N s ↔ r = s",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -17575,8 +17555,8 @@
       "line": 42,
       "signature": "private theorem ccmEvenPositiveFinite_ne_center (N : ℕ) (r : Fin N) : ccmEvenPositiveFinite N r ≠ ccmCenterFinite N",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -17585,8 +17565,8 @@
       "line": 50,
       "signature": "private theorem ccmEvenPositiveFinite_ne_neg (N : ℕ) (r s : Fin N) : ccmEvenPositiveFinite N r ≠ ccmNegFinite N (ccmEvenPositiveFinite N s)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -17595,8 +17575,8 @@
       "line": 59,
       "signature": "private theorem ccmEvenNegativeFinite_inj (N : ℕ) (r s : Fin N) : ccmNegFinite N (ccmEvenPositiveFinite N r) = ccmNegFinite N (ccmEvenPositiveFinite N s) ↔ r = s",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -17605,8 +17585,8 @@
       "line": 73,
       "signature": "private theorem ccmEvenNegativeFinite_ne_pos (N : ℕ) (r s : Fin N) : ccmNegFinite N (ccmEvenPositiveFinite N r) ≠ ccmEvenPositiveFinite N s",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -17615,8 +17595,8 @@
       "line": 79,
       "signature": "private theorem ccmEvenNegativeFinite_ne_center (N : ℕ) (r : Fin N) : ccmNegFinite N (ccmEvenPositiveFinite N r) ≠ ccmCenterFinite N",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -17625,8 +17605,8 @@
       "line": 87,
       "signature": "private theorem ccmEvenNegFinite_involutive (N : ℕ) (j : CCMModeFinite N) : ccmNegFinite N (ccmNegFinite N j) = j",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -17635,8 +17615,8 @@
       "line": 95,
       "signature": "noncomputable def ccmEvenPairVector (N : ℕ) (r : Fin N) : CCMModeFinite N → ℂ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -17645,7 +17625,7 @@
       "line": 105,
       "signature": "noncomputable def ccmEvenCoefficientEmbedding (N : ℕ) (c0 : ℂ) (c : Fin N → ℂ) : CCMModeFinite N → ℂ",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -17655,7 +17635,7 @@
       "line": 113,
       "signature": "theorem ccmEvenCoefficientEmbedding_reflection_even (N : ℕ) (c0 : ℂ) (c : Fin N → ℂ) : ∀ j, ccmEvenCoefficientEmbedding N c0 c (ccmNegFinite N j) = ccmEvenCoefficientEmbedding N c0 c j",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -17665,8 +17645,8 @@
       "line": 168,
       "signature": "private theorem ccmEvenCoefficientEmbedding_center (N : ℕ) (c0 : ℂ) (c : Fin N → ℂ) : ccmEvenCoefficientEmbedding N c0 c (ccmCenterFinite N) = c0",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -17675,8 +17655,8 @@
       "line": 185,
       "signature": "private theorem ccmEvenCoefficientEmbedding_positive (N : ℕ) (c0 : ℂ) (c : Fin N → ℂ) (r : Fin N) : ccmEvenCoefficientEmbedding N c0 c (ccmEvenPositiveFinite N r) = c r * (((Real.sqrt 2 : ℝ) : ℂ)⁻¹)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -17685,8 +17665,8 @@
       "line": 194,
       "signature": "private theorem ccmEvenCoefficientEmbedding_negative (N : ℕ) (c0 : ℂ) (c : Fin N → ℂ) (r : Fin N) : ccmEvenCoefficientEmbedding N c0 c (ccmNegFinite N (ccmEvenPositiveFinite N r)) = c r * (((Real.sqrt 2 : ℝ) : ℂ)⁻¹)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -17695,7 +17675,7 @@
       "line": 205,
       "signature": "theorem ccmEvenCoefficientEmbedding_reconstruct (N : ℕ) (x : CCMModeFinite N → ℂ) (hx : ∀ j, x (ccmNegFinite N j) = x j) : ccmEvenCoefficientEmbedding N (x (ccmCenterFinite N)) (fun r => (((Real.sqrt 2 : ℝ) : ℂ)) * x (ccmEvenPositiveFinite N r)) = x",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -17705,7 +17685,7 @@
       "line": 258,
       "signature": "theorem ccmFiniteSynthesis_evenCoefficientEmbedding (i : PairIndex) (c0 : ℂ) (c : Fin i.N → ℂ) : ccmFiniteSynthesis i (ccmEvenCoefficientEmbedding i.N c0 c) = sourceWeilGraphAmbient i (sourceWeilGraphEvenHeadSynthesis i c0 c)",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -17715,7 +17695,7 @@
       "line": 299,
       "signature": "theorem ccmFiniteSynthesis_eq_sourceWeilGraphAmbient_evenHead_of_reflection (i : PairIndex) (x : CCMModeFinite i.N → ℂ) (hx : ∀ j, x (ccmNegFinite i.N j) = x j) : ccmFiniteSynthesis i x = sourceWeilGraphAmbient i (sourceWeilGraphEvenHeadSynthesis i (x (ccmCenterFinite i.N)) (fun r => (((Real.sqrt 2 : ℝ) : ℂ)) * x (ccmEvenPositiveFinite i.N r)))",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -17725,7 +17705,7 @@
       "line": 313,
       "signature": "theorem ccmFiniteSynthesis_eq_sourceWeilGraphAmbient_evenHead_of_mulVec_eq (i : PairIndex) (x : CCMModeFinite i.N → ℂ) (hx : ccmComplexReflectionMatrix i.N *ᵥ x = x) : ccmFiniteSynthesis i x = sourceWeilGraphAmbient i (sourceWeilGraphEvenHeadSynthesis i (x (ccmCenterFinite i.N)) (fun r => (((Real.sqrt 2 : ℝ) : ℂ)) * x (ccmEvenPositiveFinite i.N r)))",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -17735,7 +17715,7 @@
       "line": 334,
       "signature": "theorem ccmFiniteSynthesis_reflectionEven_orthogonal_evenNonzeroTail (i : PairIndex) (x : CCMModeFinite i.N → ℂ) (hx : ccmComplexReflectionMatrix i.N *ᵥ x = x) (y : SourceWeilGraphEvenNonzeroTailCarrier i i.N) : inner ℂ (ccmFiniteSynthesis i x) (sourceWeilGraphAmbient i (y : SourceWeilGraphCarrier i)) = 0",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -17745,7 +17725,7 @@
       "line": 29,
       "signature": "theorem sourceWeilGraphAmbient_evenNonzeroMode_orthonormal (i : PairIndex) : Orthonormal ℂ (fun n : ℕ => sourceWeilGraphAmbient i (sourceWeilGraphEvenNonzeroMode i n))",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -17755,7 +17735,7 @@
       "line": 72,
       "signature": "noncomputable def sourceWeilGraphEvenNonzeroLowBandSynthesis (i : PairIndex) {R : ℕ} (c : Fin R → ℂ) : SourceWeilGraphCarrier i",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -17765,7 +17745,7 @@
       "line": 78,
       "signature": "noncomputable def sourceWeilGraphEvenHeadSynthesis (i : PairIndex) {R : ℕ} (c0 : ℂ) (c : Fin R → ℂ) : SourceWeilGraphCarrier i",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -17775,7 +17755,7 @@
       "line": 84,
       "signature": "@[simp] theorem sourceWeilGraphAmbient_evenNonzeroLowBandSynthesis (i : PairIndex) {R : ℕ} (c : Fin R → ℂ) : sourceWeilGraphAmbient i (sourceWeilGraphEvenNonzeroLowBandSynthesis i c) = ∑ n : Fin R, c n • (((Real.sqrt 2 : ℝ) : ℂ)⁻¹ • (V_n_m i (n.val + 1 : ℕ) + V_n_m i (-((n.val + 1 : ℕ) : ℤ))))",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -17785,7 +17765,7 @@
       "line": 98,
       "signature": "@[simp] theorem sourceWeilGraphAmbient_evenHeadSynthesis (i : PairIndex) {R : ℕ} (c0 : ℂ) (c : Fin R → ℂ) : sourceWeilGraphAmbient i (sourceWeilGraphEvenHeadSynthesis i c0 c) = c0 • V_n_m i 0 + ∑ n : Fin R, c n • (((Real.sqrt 2 : ℝ) : ℂ)⁻¹ • (V_n_m i (n.val + 1 : ℕ) + V_n_m i (-((n.val + 1 : ℕ) : ℤ))))",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -17795,7 +17775,7 @@
       "line": 113,
       "signature": "theorem sourceWeilGraphEvenNonzeroLowBandSynthesis_orthogonal_tail (i : PairIndex) (R : ℕ) (c : Fin R → ℂ) (x : SourceWeilGraphEvenNonzeroTailCarrier i R) : inner ℂ (sourceWeilGraphAmbient i (sourceWeilGraphEvenNonzeroLowBandSynthesis i c)) (sourceWeilGraphAmbient i (x : SourceWeilGraphCarrier i)) = 0",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -17805,7 +17785,7 @@
       "line": 152,
       "signature": "theorem sourceWeilGraphEvenHeadSynthesis_orthogonal_tail (i : PairIndex) (R : ℕ) (c0 : ℂ) (c : Fin R → ℂ) (x : SourceWeilGraphEvenNonzeroTailCarrier i R) : inner ℂ (sourceWeilGraphAmbient i (sourceWeilGraphEvenHeadSynthesis i c0 c)) (sourceWeilGraphAmbient i (x : SourceWeilGraphCarrier i)) = 0",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -17815,7 +17795,7 @@
       "line": 26,
       "signature": "noncomputable def sourceWeilGraphEvenZeroMode (i : PairIndex) : SourceWeilGraphCarrier i",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -17825,8 +17805,8 @@
       "line": 33,
       "signature": "noncomputable def sourceWeilGraphEvenNonzeroMode (i : PairIndex) (n : ℕ) : SourceWeilGraphCarrier i",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -17835,7 +17815,7 @@
       "line": 42,
       "signature": "noncomputable def sourceWeilGraphEvenNonzeroTail (i : PairIndex) (R : ℕ) : Submodule ℂ (SourceWeilGraphCarrier i)",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -17845,7 +17825,7 @@
       "line": 47,
       "signature": "abbrev SourceWeilGraphEvenNonzeroTailCarrier (i : PairIndex) (R : ℕ)",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -17855,8 +17835,8 @@
       "line": 50,
       "signature": "noncomputable instance sourceWeilGraphEvenNonzeroTailCompleteSpace (i : PairIndex) (R : ℕ) : CompleteSpace (SourceWeilGraphEvenNonzeroTailCarrier i R)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "instance",
@@ -17865,8 +17845,8 @@
       "line": 58,
       "signature": "instance sourceWeilGraphEvenNonzeroTailInnerProductSpace (i : PairIndex) (R : ℕ) : InnerProductSpace ℂ (SourceWeilGraphEvenNonzeroTailCarrier i R)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "instance",
@@ -17875,8 +17855,8 @@
       "line": 63,
       "signature": "noncomputable instance sourceWeilGraphEvenNonzeroTailHasOrthogonalProjection (i : PairIndex) (R : ℕ) : (sourceWeilGraphEvenNonzeroTail i R).HasOrthogonalProjection",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -17885,7 +17865,7 @@
       "line": 69,
       "signature": "@[simp] theorem sourceWeilGraphAmbient_evenZeroMode (i : PairIndex) : sourceWeilGraphAmbient i (sourceWeilGraphEvenZeroMode i) = V_n_m i 0",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -17895,7 +17875,7 @@
       "line": 75,
       "signature": "@[simp] theorem sourceWeilGraphAmbient_evenNonzeroMode (i : PairIndex) (n : ℕ) : sourceWeilGraphAmbient i (sourceWeilGraphEvenNonzeroMode i n) = ((Real.sqrt 2 : ℝ) : ℂ)⁻¹ • (V_n_m i (n + 1 : ℕ) + V_n_m i (-((n + 1 : ℕ) : ℤ)))",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -17905,7 +17885,7 @@
       "line": 86,
       "signature": "theorem sourceWeilGraphEvenNonzeroTailAlgebraic_low_fourier_vanish (i : PairIndex) (R : ℕ) (x : SourceWeilGraphCarrier i) (hx : x ∈ Submodule.span ℂ (Set.range (fun k : ℕ => sourceWeilGraphEvenNonzeroMode i (R + k)))) (n : ℤ) (hn : n.natAbs ≤ R) : inner ℂ (V_n_m i n) (sourceWeilGraphAmbient i x) = 0",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -17915,7 +17895,7 @@
       "line": 123,
       "signature": "theorem sourceWeilGraphEvenNonzeroTail_low_fourier_vanish (i : PairIndex) (R : ℕ) (x : SourceWeilGraphEvenNonzeroTailCarrier i R) (n : ℤ) (hn : n.natAbs ≤ R) : inner ℂ (V_n_m i n) (sourceWeilGraphAmbient i (x : SourceWeilGraphCarrier i)) = 0",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -17925,7 +17905,7 @@
       "line": 156,
       "signature": "theorem sourceWeilGraphEvenZeroMode_orthogonal_nonzeroTail (i : PairIndex) (R : ℕ) (x : SourceWeilGraphEvenNonzeroTailCarrier i R) : inner ℂ (sourceWeilGraphAmbient i (sourceWeilGraphEvenZeroMode i)) (sourceWeilGraphAmbient i (x : SourceWeilGraphCarrier i)) = 0",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -19165,8 +19145,8 @@
       "line": 30,
       "signature": "abbrev sourceWeilEvenTailHighTarget (i : PairIndex) : ℝ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "abbrev",
@@ -19175,8 +19155,8 @@
       "line": 34,
       "signature": "abbrev sourceWeilEvenTailBandRadius (i : PairIndex) : ℝ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "abbrev",
@@ -19185,7 +19165,7 @@
       "line": 38,
       "signature": "abbrev sourceWeilEvenTailCutoff (i : PairIndex) : ℕ",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -19195,7 +19175,7 @@
       "line": 43,
       "signature": "noncomputable def sourceWeilEvenAmbientMode (i : PairIndex) (k : ℕ) : H_m i",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -19205,7 +19185,7 @@
       "line": 47,
       "signature": "theorem sourceWeilEvenAmbientMode_orthonormal (i : PairIndex) : Orthonormal ℂ (sourceWeilEvenAmbientMode i)",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -19215,8 +19195,8 @@
       "line": 53,
       "signature": "noncomputable def sourceWeilEvenFourierModeFunction (i : PairIndex) (k : ℕ) (t : ℝ) : ℂ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -19225,7 +19205,7 @@
       "line": 61,
       "signature": "theorem coeFn_sourceLogWindowFourierL2Isometry_apply_evenAmbientMode (i : PairIndex) (k : ℕ) : ((sourceLogWindowFourierL2Isometry i (sourceWeilEvenAmbientMode i k) : MeasureTheory.Lp ℂ 2 (MeasureTheory.volume : MeasureTheory.Measure ℝ)) : ℝ → ℂ) =ᵐ[MeasureTheory.volume] sourceWeilEvenFourierModeFunction i k",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -19235,7 +19215,7 @@
       "line": 104,
       "signature": "theorem norm_sourceWeilEvenAmbientModeFourier_le_lowBand_inv (i : PairIndex) (k : ℕ) (T t : ℝ) (hT : 0 ≤ T) (hk : 2 * L_m i * (T + 1) ≤ (k + 1 : ℝ)) (ht : |t| ≤ T) : ‖sourceWeilEvenFourierModeFunction i k t‖ ≤ 4 * Real.sqrt (L_m i) / (Real.pi * (k + 1 : ℝ))",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -19245,7 +19225,7 @@
       "line": 152,
       "signature": "noncomputable def sourceWeilEvenFourierFinsuppShift (i : PairIndex) (R : ℕ) (c : ℕ →₀ ℂ) (t : ℝ) : ℂ",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -19255,7 +19235,7 @@
       "line": 157,
       "signature": "noncomputable def sourceWeilEvenAmbientFinsuppShift (i : PairIndex) (R : ℕ) (c : ℕ →₀ ℂ) : H_m i",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -19265,8 +19245,8 @@
       "line": 162,
       "signature": "noncomputable def sourceWeilEvenGraphFinsuppShift (i : PairIndex) (R : ℕ) (c : ℕ →₀ ℂ) : SourceWeilGraphCarrier i",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -19275,8 +19255,8 @@
       "line": 167,
       "signature": "theorem sourceWeilGraphAmbient_evenGraphFinsuppShift (i : PairIndex) (R : ℕ) (c : ℕ →₀ ℂ) : sourceWeilGraphAmbient i (sourceWeilEvenGraphFinsuppShift i R c) = sourceWeilEvenAmbientFinsuppShift i R c",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -19285,7 +19265,7 @@
       "line": 180,
       "signature": "theorem norm_sourceWeilEvenAmbientFinsuppShift_sq (i : PairIndex) (R : ℕ) (c : ℕ →₀ ℂ) : ‖sourceWeilEvenAmbientFinsuppShift i R c‖ ^ 2 = ∑ k ∈ c.support, ‖c k‖ ^ 2",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -19295,8 +19275,8 @@
       "line": 208,
       "signature": "theorem coeFn_sourceLogWindowFourierL2Isometry_apply_evenAmbientFinsuppShift (i : PairIndex) (R : ℕ) (c : ℕ →₀ ℂ) : ((sourceLogWindowFourierL2Isometry i (sourceWeilEvenAmbientFinsuppShift i R c) : MeasureTheory.Lp ℂ 2 (MeasureTheory.volume : MeasureTheory.Measure ℝ)) : ℝ → ℂ) =ᵐ[MeasureTheory.volume] sourceWeilEvenFourierFinsuppShift i R c",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -19305,7 +19285,7 @@
       "line": 280,
       "signature": "theorem norm_sourceWeilEvenFourierFinsuppShift_sq_le (i : PairIndex) (R : ℕ) (c : ℕ →₀ ℂ) (t : ℝ) : ‖sourceWeilEvenFourierFinsuppShift i R c t‖ ^ 2 ≤ (∑ k ∈ c.support, ‖c k‖ ^ 2) * ∑ k ∈ c.support, ‖sourceWeilEvenFourierModeFunction i (R + k) t‖ ^ 2",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -19315,7 +19295,7 @@
       "line": 316,
       "signature": "theorem norm_sourceWeilEvenFourierFinsuppShift_sq_le_lowBand (i : PairIndex) (R : ℕ) (c : ℕ →₀ ℂ) (T t : ℝ) (hR : 0 < R) (hT : 0 ≤ T) (hcut : 2 * L_m i * (T + 1) ≤ (R + 1 : ℝ)) (ht : |t| ≤ T) : ‖sourceWeilEvenFourierFinsuppShift i R c t‖ ^ 2 ≤ (∑ k ∈ c.support, ‖c k‖ ^ 2) * ((4 * Real.sqrt (L_m i) / Real.pi) ^ 2 * (1 / (R : ℝ)))",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -19325,7 +19305,7 @@
       "line": 355,
       "signature": "theorem integral_norm_sourceWeilEvenFourierFinsuppShift_sq_le_lowBand (i : PairIndex) (R : ℕ) (c : ℕ →₀ ℂ) (T : ℝ) (hR : 0 < R) (hT : 0 ≤ T) (hcut : 2 * L_m i * (T + 1) ≤ (R + 1 : ℝ)) : (∫ t in Set.Icc (-T) T, ‖sourceWeilEvenFourierFinsuppShift i R c t‖ ^ 2) ≤ ((2 * T) * ((4 * Real.sqrt (L_m i) / Real.pi) ^ 2 * (1 / (R : ℝ)))) * ‖sourceWeilEvenAmbientFinsuppShift i R c‖ ^ 2",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -19335,7 +19315,7 @@
       "line": 414,
       "signature": "theorem sourceArchimedeanSesquilinearForm_re_self_lower_evenGraphFinsuppShift (i : PairIndex) (c : ℕ →₀ ℂ) : (sourceWeilEvenTailHighTarget i - 1 / 2) * ‖sourceWeilEvenAmbientFinsuppShift i (sourceWeilEvenTailCutoff i) c‖ ^ 2 ≤ (sourceArchimedeanSesquilinearForm i (sourceWeilGraphDomain i (sourceWeilEvenGraphFinsuppShift i (sourceWeilEvenTailCutoff i) c)) (sourceWeilGraphDomain i (sourceWeilEvenGraphFinsuppShift i (sourceWeilEvenTailCutoff i) c))).re",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -19345,7 +19325,7 @@
       "line": 549,
       "signature": "theorem sourceArchPrimeSesquilinearForm_re_self_lower_evenGraphFinsuppShift (i : PairIndex) (c : ℕ →₀ ℂ) : (‖sourceW02AmbientContinuousSesquilinearForm i‖ + 1 / 2) * ‖sourceWeilEvenAmbientFinsuppShift i (sourceWeilEvenTailCutoff i) c‖ ^ 2 ≤ (sourceArchPrimeSesquilinearForm i (sourceWeilGraphDomain i (sourceWeilEvenGraphFinsuppShift i (sourceWeilEvenTailCutoff i) c)) (sourceWeilGraphDomain i (sourceWeilEvenGraphFinsuppShift i (sourceWeilEvenTailCutoff i) c))).re",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -19355,7 +19335,7 @@
       "line": 592,
       "signature": "theorem sourceWeilSesquilinearForm_re_self_lower_evenGraphFinsuppShift (i : PairIndex) (c : ℕ →₀ ℂ) : (1 / 2 : ℝ) * ‖sourceWeilEvenAmbientFinsuppShift i (sourceWeilEvenTailCutoff i) c‖ ^ 2 ≤ (sourceWeilSesquilinearForm i (sourceWeilGraphDomain i (sourceWeilEvenGraphFinsuppShift i (sourceWeilEvenTailCutoff i) c)) (sourceWeilGraphDomain i (sourceWeilEvenGraphFinsuppShift i (sourceWeilEvenTailCutoff i) c))).re",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -19365,8 +19345,8 @@
       "line": 650,
       "signature": "def SourceWeilEvenTailAlgebraicCoercive (i : PairIndex) (R : ℕ) (mu : ℝ) : Prop",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -19375,8 +19355,8 @@
       "line": 661,
       "signature": "def SourceWeilEvenTailAmbientCoercive (i : PairIndex) (R : ℕ) (mu : ℝ) : Prop",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -19385,7 +19365,7 @@
       "line": 670,
       "signature": "theorem sourceWeilEvenTailAlgebraicCoercive_explicit (i : PairIndex) : SourceWeilEvenTailAlgebraicCoercive i (sourceWeilEvenTailCutoff i) (1 / 2)",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -19395,7 +19375,7 @@
       "line": 683,
       "signature": "theorem sourceWeilEvenTailAmbientCoercive_explicit (i : PairIndex) : SourceWeilEvenTailAmbientCoercive i (sourceWeilEvenTailCutoff i) (1 / 2)",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -19765,7 +19745,7 @@
       "line": 170,
       "signature": "theorem sourceWeilGraphTailAmbientCoercive_of_algebraic (i : PairIndex) (generator : ℕ → SourceWeilGraphCarrier i) (mu : ℝ) (h : ∀ x : SourceWeilGraphCarrier i, x ∈ Submodule.span ℂ (Set.range generator) → mu * ‖sourceWeilGraphAmbient i x‖ ^ 2 ≤ (sourceWeilSesquilinearForm i (sourceWeilGraphDomain i x) (sourceWeilGraphDomain i x)).re) : ∀ x : (Submodule.span ℂ (Set.range generator)).topologicalClosure, mu * ‖sourceWeilGraphAmbient i (x : SourceWeilGraphCarrier i)‖ ^ 2 ≤ (sourceWeilSesquilinearForm i (sourceWeilGraphDomain i (x : SourceWeilGraphCarrier i)) (sourceWeilGraphDomain i (x : SourceWeilGraphCarrier i))).re",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -27675,8 +27655,8 @@
       "line": 36,
       "signature": "private noncomputable def w02EvenCoordinate (L : ℝ) (n : ℤ) : ℂ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -27685,8 +27665,8 @@
       "line": 41,
       "signature": "private noncomputable def w02OddCoordinate (L : ℝ) (n : ℤ) : ℂ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -27695,8 +27675,8 @@
       "line": 46,
       "signature": "private theorem ccmW02Entry_eq_rankTwoCoordinates (L : ℝ) (hL : 0 < L) (n r : ℤ) : (Q3.RouteB.ccmW02Entry L n r : ℂ) = ((32 * L * Real.sinh (L / 4) ^ 2 : ℝ) : ℂ) * (w02EvenCoordinate L n * w02EvenCoordinate L r - w02OddCoordinate L n * w02OddCoordinate L r)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -27705,8 +27685,8 @@
       "line": 62,
       "signature": "private theorem w02OddCoordinate_neg (L : ℝ) (n : ℤ) : w02OddCoordinate L (-n) = -w02OddCoordinate L n",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -27715,8 +27695,8 @@
       "line": 69,
       "signature": "private theorem w02OddCoordinate_dotProduct_eq_zero_of_even (N : ℕ) (L : ℝ) (x : CCMModeFinite N → ℂ) (hx : ∀ j, x (ccmNegFinite N j) = x j) : (fun j => w02OddCoordinate L (ccmModeFinite N j)) ⬝ᵥ x = 0",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -27725,8 +27705,8 @@
       "line": 100,
       "signature": "private theorem w02OddCoordinate_dotProduct_eq_zero_of_reflection_even (N : ℕ) (L : ℝ) (x : CCMModeFinite N → ℂ) (hx : ccmComplexReflectionMatrix N *ᵥ x = x) : (fun j => w02OddCoordinate L (ccmModeFinite N j)) ⬝ᵥ x = 0",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -27735,8 +27715,8 @@
       "line": 112,
       "signature": "private theorem ccmW02Matrix_mulVec_eq_even_rankOne_of_reflection_even (i : PairIndex) (x : CCMModeFinite i.N → ℂ) (hx : ccmComplexReflectionMatrix i.N *ᵥ x = x) : (fun j k => (Q3.RouteB.ccmW02Entry (L_m i) (ccmModeFinite i.N j) (ccmModeFinite i.N k) : ℂ)) *ᵥ x = fun j => ((32 * L_m i * Real.sinh (L_m i / 4) ^ 2 : ℝ) : ℂ) * w02EvenCoordinate (L_m i) (ccmModeFinite i.N j) * ((fun k => w02EvenCoordinate (L_m i) (ccmModeFinite i.N k)) ⬝ᵥ x)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -27745,8 +27725,8 @@
       "line": 152,
       "signature": "@[simp] private theorem star_w02EvenCoordinate (L : ℝ) (n : ℤ) : star (w02EvenCoordinate L n) = w02EvenCoordinate L n",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -27755,8 +27735,8 @@
       "line": 157,
       "signature": "private theorem star_dot_evenCoordinate_eq_star_dotProduct (N : ℕ) (L : ℝ) (x : CCMModeFinite N → ℂ) : star x ⬝ᵥ (fun j => w02EvenCoordinate L (ccmModeFinite N j)) = star ((fun j => w02EvenCoordinate L (ccmModeFinite N j)) ⬝ᵥ x)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -27765,8 +27745,8 @@
       "line": 182,
       "signature": "private theorem ccmW02Quadratic_eq_even_rankOne_of_reflection_even (i : PairIndex) (x : CCMModeFinite i.N → ℂ) (hx : ccmComplexReflectionMatrix i.N *ᵥ x = x) : star x ⬝ᵥ ((fun j k => (Q3.RouteB.ccmW02Entry (L_m i) (ccmModeFinite i.N j) (ccmModeFinite i.N k) : ℂ)) *ᵥ x) = ((32 * L_m i * Real.sinh (L_m i / 4) ^ 2 : ℝ) : ℂ) * star ((fun j => w02EvenCoordinate (L_m i) (ccmModeFinite i.N j)) ⬝ᵥ x) * ((fun j => w02EvenCoordinate (L_m i) (ccmModeFinite i.N j)) ⬝ᵥ x)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -27775,7 +27755,7 @@
       "line": 235,
       "signature": "theorem ccmW02Quadratic_re_nonneg_of_reflection_even (i : PairIndex) (x : CCMModeFinite i.N → ℂ) (hx : ccmComplexReflectionMatrix i.N *ᵥ x = x) : 0 ≤ (star x ⬝ᵥ ((fun j k => (Q3.RouteB.ccmW02Entry (L_m i) (ccmModeFinite i.N j) (ccmModeFinite i.N k) : ℂ)) *ᵥ x)).re",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -27785,8 +27765,8 @@
       "line": 261,
       "signature": "private theorem sourceW02AmbientContinuousSesquilinearForm_apply_ccmFiniteSynthesis_eq_quadratic (i : PairIndex) (x : CCMModeFinite i.N → ℂ) : sourceW02AmbientContinuousSesquilinearForm i (ccmFiniteSynthesis i x) (ccmFiniteSynthesis i x) = star x ⬝ᵥ ((fun j k => (Q3.RouteB.ccmW02Entry (L_m i) (ccmModeFinite i.N j) (ccmModeFinite i.N k) : ℂ)) *ᵥ x)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -27795,8 +27775,8 @@
       "line": 279,
       "signature": "private theorem sourceWeilSesquilinearForm_apply_ccmFiniteSynthesis_eq_quadratic (i : PairIndex) (x : CCMModeFinite i.N → ℂ) : sourceWeilSesquilinearForm i (ccmFiniteShiftedFormDomainSynthesis i x) (ccmFiniteShiftedFormDomainSynthesis i x) = star x ⬝ᵥ (sourceCCMFiniteMatrix i *ᵥ x)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -27805,8 +27785,8 @@
       "line": 296,
       "signature": "private theorem sourceCCMFiniteMatrix_quadratic_eq_w02_add_archPrime (i : PairIndex) (x : CCMModeFinite i.N → ℂ) : star x ⬝ᵥ (sourceCCMFiniteMatrix i *ᵥ x) = star x ⬝ᵥ ((fun j k => (Q3.RouteB.ccmW02Entry (L_m i) (ccmModeFinite i.N j) (ccmModeFinite i.N k) : ℂ)) *ᵥ x) + sourceArchPrimeSesquilinearForm i (ccmFiniteShiftedFormDomainSynthesis i x) (ccmFiniteShiftedFormDomainSynthesis i x)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -27815,8 +27795,8 @@
       "line": 311,
       "signature": "private theorem sourceCCMFiniteMatrix_shifted_quadratic_eq_w02_add_archPrime_shifted (i : PairIndex) (x : CCMModeFinite i.N → ℂ) (mu : ℂ) : star x ⬝ᵥ ((sourceCCMFiniteMatrix i - mu • (1 : Matrix (CCMModeFinite i.N) (CCMModeFinite i.N) ℂ)) *ᵥ x) = (star x ⬝ᵥ ((fun j k => (Q3.RouteB.ccmW02Entry (L_m i) (ccmModeFinite i.N j) (ccmModeFinite i.N k) : ℂ)) *ᵥ x) + (sourceArchPrimeSesquilinearForm i (ccmFiniteShiftedFormDomainSynthesis i x) (ccmFiniteShiftedFormDomainSynthesis i x) - mu * (star x ⬝ᵥ x)))",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -27825,7 +27805,7 @@
       "line": 330,
       "signature": "theorem sourceCCMFiniteMatrix_shifted_floor_of_archPrimeShifted_floor_even (i : PairIndex) (x : CCMModeFinite i.N → ℂ) (mu : ℂ) (beta : ℝ) (hx : ccmComplexReflectionMatrix i.N *ᵥ x = x) (hfloor : beta * (star x ⬝ᵥ x).re ≤ (sourceArchPrimeSesquilinearForm i (ccmFiniteShiftedFormDomainSynthesis i x) (ccmFiniteShiftedFormDomainSynthesis i x) - mu * (star x ⬝ᵥ x)).re) : beta * (star x ⬝ᵥ x).re ≤ (star x ⬝ᵥ ((sourceCCMFiniteMatrix i - mu • (1 : Matrix (CCMModeFinite i.N) (CCMModeFinite i.N) ℂ)) *ᵥ x)).re",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -27835,7 +27815,7 @@
       "line": 353,
       "signature": "private theorem selectedFerrersArchPrimeShifted_zero_reachability_plant (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData) (k : ℕ) (beta : ℝ) : ∃ x : CCMModeFinite ((selectedFerrersCofinalSourceData P).index k).N → ℂ, ccmComplexReflectionMatrix ((selectedFerrersCofinalSourceData P).index k).N *ᵥ x = x ∧ star ((2⁻¹ : ℂ) • (selectedFerrersFiniteCCMRow P k + ccmComplexReflectionMatrix ((selectedFerrersCofinalSourceData P).index k).N *ᵥ selectedFerrersFiniteCCMRow P k)) ⬝ᵥ x = 0 ∧ beta * (star x ⬝ᵥ x).re ≤ (sourceArchPrimeSesquilinearForm ((selectedFerrersCofinalSourceData P).index k) (ccmFiniteShiftedFormDomainSynthesis ((selectedFerrersCofinalSourceData P).index k) x) (ccmFiniteShiftedFormDomainSynthesis ((selectedFerrersCofinalSourceData P).index k) x) - (((selectedFerrersFiniteCCMRayleigh P k : ℝ) : ℂ) * (star x ⬝ᵥ x))).re",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -27845,7 +27825,7 @@
       "line": 379,
       "signature": "theorem selectedFerrersFiniteCCMEvenSectorFloor_eventually_of_archPrimeShifted (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData) (beta : ℝ) (harchPrime : ∀ᶠ k in Filter.atTop, ∀ x, ccmComplexReflectionMatrix ((selectedFerrersCofinalSourceData P).index k).N *ᵥ x = x → star ((2⁻¹ : ℂ) • (selectedFerrersFiniteCCMRow P k + ccmComplexReflectionMatrix ((selectedFerrersCofinalSourceData P).index k).N *ᵥ selectedFerrersFiniteCCMRow P k)) ⬝ᵥ x = 0 → beta * (star x ⬝ᵥ x).re ≤ (sourceArchPrimeSesquilinearForm ((selectedFerrersCofinalSourceData P).index k) (ccmFiniteShiftedFormDomainSynthesis ((selectedFerrersCofinalSourceData P).index k) x) (ccmFiniteShiftedFormDomainSynthesis ((selectedFerrersCofinalSourceData P).index k) x) - (((selectedFerrersFiniteCCMRayleigh P k : ℝ) : ℂ) * (star x ⬝ᵥ x))).re) : ∀ᶠ k in Filter.atTop, ∀ x, ccmComplexReflectionMatrix ((selectedFerrersCofinalSourceData P).index k).N *ᵥ x = x → star ((2⁻¹ : ℂ) • (selectedFerrersFiniteCCMRow P k + ccmComplexReflectionMatrix ((selectedFerrersCofinalSourceData P).index k).N *ᵥ selectedFerrersFiniteCCMRow P k)) ⬝ᵥ x = 0 → beta * (star x ⬝ᵥ x).re ≤ (star x ⬝ᵥ ((sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k) - ((selectedFerrersFiniteCCMRayleigh P k : ℝ) : ℂ) • (1 : Matrix _ _ ℂ)) *ᵥ x)).re",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -32705,8 +32685,8 @@
       "line": 761,
       "signature": "theorem differentiable_selectedFerrersTrackedGroundTransformAt (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData) (k : ℕ) (beta : ℝ) (hfloorAt : complexTrialComplementFloor (sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k)) (selectedFerrersFiniteCCMRow P k) ((selectedFerrersFiniteCCMRayleigh P k : ℝ) : ℂ) beta) : Differentiable ℂ (selectedFerrersTrackedGroundTransformAt P k beta hfloorAt)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -35170,13 +35150,53 @@
     },
     {
       "kind": "theorem",
+      "name": "goal058_schedule_log_sq_div_tendsto_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058CurvatureArithmetic.lean",
+      "line": 19,
+      "signature": "theorem goal058_schedule_log_sq_div_tendsto_zero : Tendsto (fun k : ℕ => (Real.log (k + 2 : ℝ)) ^ 2 / (k + 2 : ℝ)) atTop (𝓝 0)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "telescoping_reciprocal_tail_hasSum",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058CurvatureArithmetic.lean",
+      "line": 27,
+      "signature": "private theorem telescoping_reciprocal_tail_hasSum (N : ℕ) (hN : 0 < N) : HasSum (fun k : ℕ => 1 / ((N + k : ℕ) : ℝ) - 1 / ((N + k + 1 : ℕ) : ℝ)) (1 / (N : ℝ))",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "one_div_nat_sq_tail_le_one_div",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058CurvatureArithmetic.lean",
+      "line": 58,
+      "signature": "theorem one_div_nat_sq_tail_le_one_div (N : ℕ) (hN : 0 < N) : (∑' k : ℕ, 1 / (((N + k + 1 : ℕ) : ℝ) ^ 2)) ≤ 1 / (N : ℝ)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "forcedZeroCurvatureTail_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058CurvatureArithmetic.lean",
+      "line": 103,
+      "signature": "theorem forcedZeroCurvatureTail_le (L : ℝ) (N : ℕ) (hN : 0 < N) : (L ^ 2 / (4 * Real.pi ^ 2)) * (∑' k : ℕ, 1 / (((N + k + 1 : ℕ) : ℝ) ^ 2)) ≤ L ^ 2 / (4 * Real.pi ^ 2 * (N : ℝ))",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
       "name": "rh_of_real_zero_family_tendsto_centeredXi",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058DirectGroundZeroEscape.lean",
       "line": 27,
       "signature": "theorem rh_of_real_zero_family_tendsto_centeredXi (F : ℕ → ℂ → ℂ) (hzeros : ∀ k, ZerosRealOn Set.univ (F k)) (hentire : ∀ k, Differentiable ℂ (F k)) (hconv : TendstoLocallyUniformlyOn F centeredXi Filter.atTop centeredCriticalStrip) : Q3.RH",
-      "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -35685,8 +35705,8 @@
       "line": 70,
       "signature": "theorem differentiable_sourceOrderedCCMRawTransform (L : ℝ) (N : ℕ) (q : CCMModeFinite N → ℂ) : Differentiable ℂ (sourceOrderedCCMRawTransform L N q)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -38210,9 +38230,159 @@
     },
     {
       "kind": "theorem",
+      "name": "iteratedDeriv_dslope_second_at_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59EntireTransform.lean",
+      "line": 217,
+      "signature": "private theorem iteratedDeriv_dslope_second_at_zero (f : ℂ → ℂ) (hf : AnalyticAt ℂ f 0) : iteratedDeriv 2 (dslope f 0) 0 = iteratedDeriv 3 f 0 / 3",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59PoleKernel_secondDerivative_zero_of_ne",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59EntireTransform.lean",
+      "line": 236,
+      "signature": "private theorem proposition59PoleKernel_secondDerivative_zero_of_ne {L : ℝ} {k : ℤ} (hL : 0 < L) (hk : k ≠ 0) : iteratedDeriv 2 (proposition59PoleKernel L k) 0 = -(2 * (L : ℂ)) / proposition59Pole L k ^ 2",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59PoleKernel_secondDerivative_zero_mode",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59EntireTransform.lean",
+      "line": 282,
+      "signature": "private theorem proposition59PoleKernel_secondDerivative_zero_mode (L : ℝ) : iteratedDeriv 2 (proposition59PoleKernel L 0) 0 = -((L : ℂ) ^ 3) / 12",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "proposition59SecondJetCoefficient",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59EntireTransform.lean",
+      "line": 314,
+      "signature": "def proposition59SecondJetCoefficient (k : ℤ) : ℂ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59PoleKernel_secondDerivative_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59EntireTransform.lean",
+      "line": 318,
+      "signature": "theorem proposition59PoleKernel_secondDerivative_zero {L : ℝ} (hL : 0 < L) (k : ℤ) : iteratedDeriv 2 (proposition59PoleKernel L k) 0 = -((L : ℂ) ^ 3) * proposition59SecondJetCoefficient k",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "iteratedDeriv_two_finset_sum",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59EntireTransform.lean",
+      "line": 334,
+      "signature": "private theorem iteratedDeriv_two_finset_sum {ι : Type*} (S : Finset ι) (f : ι → ℂ → ℂ) (hf : ∀ i ∈ S, ContDiffAt ℂ 2 (f i) 0) : iteratedDeriv 2 (fun z ↦ ∑ i ∈ S, f i z) 0 = ∑ i ∈ S, iteratedDeriv 2 (f i) 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59RawTransform_secondDerivative_zero_as_sum",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59EntireTransform.lean",
+      "line": 353,
+      "signature": "private theorem proposition59RawTransform_secondDerivative_zero_as_sum {L : ℝ} (hL : 0 < L) (S : Finset ℤ) (v : ℤ → ℂ) : iteratedDeriv 2 (proposition59RawTransform L S v) 0 = (Real.sqrt L : ℂ)⁻¹ * ∑ k ∈ S, v k * (-((L : ℂ) ^ 3) * proposition59SecondJetCoefficient k)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59RawTransform_secondDerivative_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59EntireTransform.lean",
+      "line": 380,
+      "signature": "theorem proposition59RawTransform_secondDerivative_zero {L : ℝ} (hL : 0 < L) (N : ℕ) (v : ℤ → ℂ) : iteratedDeriv 2 (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v) 0 = -((L : ℂ) ^ 2 * (Real.sqrt L : ℂ)) * (v 0 / 12 + (1 / (2 * (Real.pi : ℂ) ^ 2)) * ∑ k ∈ (Finset.Icc (-(N : ℤ)) (N : ℤ)).erase 0, v k / (k : ℂ) ^ 2)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "lemma",
+      "name": "sum_Icc_symmetric",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59EntireTransform.lean",
+      "line": 425,
+      "signature": "private lemma sum_Icc_symmetric {M : Type*} [AddCommMonoid M] (N : ℕ) (g : ℤ → M) : ∑ k ∈ Finset.Icc (-(N : ℤ)) (N : ℤ), g k = g 0 + ∑ k ∈ Finset.Icc 1 N, (g k + g (-k))",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59SecondJetCoefficient_norm_sq_nat",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59EntireTransform.lean",
+      "line": 449,
+      "signature": "private theorem proposition59SecondJetCoefficient_norm_sq_nat (k : ℕ) (hk : 0 < k) : ‖proposition59SecondJetCoefficient (k : ℤ)‖ ^ 2 = 1 / (4 * Real.pi ^ 4 * (k : ℝ) ^ 4)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59SecondJetFunctional_norm_sq_le_one_div_eighty",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59EntireTransform.lean",
+      "line": 461,
+      "signature": "theorem proposition59SecondJetFunctional_norm_sq_le_one_div_eighty (N : ℕ) : ∑ k ∈ Finset.Icc (-(N : ℤ)) (N : ℤ), ‖proposition59SecondJetCoefficient k‖ ^ 2 ≤ (1 / 80 : ℝ)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "proposition59SecondJetFunctional",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59EntireTransform.lean",
+      "line": 508,
+      "signature": "def proposition59SecondJetFunctional (N : ℕ) (v : ℤ → ℂ) : ℂ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59SecondJetFunctional_norm_le_one_div_sqrt_eighty",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59EntireTransform.lean",
+      "line": 512,
+      "signature": "theorem proposition59SecondJetFunctional_norm_le_one_div_sqrt_eighty (N : ℕ) (v : ℤ → ℂ) : ‖proposition59SecondJetFunctional N v‖ ≤ (1 / Real.sqrt 80) * Real.sqrt (∑ k ∈ Finset.Icc (-(N : ℤ)) (N : ℤ), ‖v k‖ ^ 2)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59RawTransform_secondDerivative_zero_eq_functional",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59EntireTransform.lean",
+      "line": 543,
+      "signature": "private theorem proposition59RawTransform_secondDerivative_zero_eq_functional {L : ℝ} (hL : 0 < L) (N : ℕ) (v : ℤ → ℂ) : iteratedDeriv 2 (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v) 0 = -((L : ℂ) ^ 2 * (Real.sqrt L : ℂ)) * proposition59SecondJetFunctional N v",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59RawTransform_secondDerivative_sub_norm_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59EntireTransform.lean",
+      "line": 571,
+      "signature": "theorem proposition59RawTransform_secondDerivative_sub_norm_le {L : ℝ} (hL : 0 < L) (N : ℕ) (xi q : ℤ → ℂ) : ‖iteratedDeriv 2 (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) xi) 0 - iteratedDeriv 2 (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) q) 0‖ ≤ (L ^ 2 * Real.sqrt L / Real.sqrt 80) * Real.sqrt (∑ k ∈ Finset.Icc (-(N : ℤ)) (N : ℤ), ‖xi k - q k‖ ^ 2)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
       "name": "proposition59RawTransform_eq_quotient_sum",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59EntireTransform.lean",
-      "line": 219,
+      "line": 613,
       "signature": "theorem proposition59RawTransform_eq_quotient_sum {L : ℝ} (hL : L ≠ 0) (S : Finset ℤ) (xi : ℤ → ℂ) {z : ℂ} (hz : ∀ k ∈ S, z ≠ proposition59Pole L k) : proposition59RawTransform L S xi z = ((Real.sqrt L : ℂ)⁻¹) * ∑ k ∈ S, xi k * (proposition59Numerator L z / (z - proposition59Pole L k))",
       "in_docs": false,
       "in_lemma_db": true,
@@ -38222,7 +38392,7 @@
       "kind": "theorem",
       "name": "proposition59RawTransform_eq_paper_formula",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59EntireTransform.lean",
-      "line": 236,
+      "line": 630,
       "signature": "theorem proposition59RawTransform_eq_paper_formula {L : ℝ} (hL : L ≠ 0) (S : Finset ℤ) (xi : ℤ → ℂ) {z : ℂ} (hz : ∀ k ∈ S, z ≠ proposition59Pole L k) : proposition59RawTransform L S xi z = ((Real.sqrt L : ℂ)⁻¹) * proposition59Numerator L z * ∑ k ∈ S, xi k / (z - proposition59Pole L k)",
       "in_docs": true,
       "in_lemma_db": true,
@@ -38354,7 +38524,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59GroundLagrangeZeroSetBridge.lean",
       "line": 329,
       "signature": "theorem differentiable_proposition59CCMTransform (L : ℝ) (N : ℕ) (xi : CCMModeFinite N → ℝ) : Differentiable ℂ (proposition59CCMTransform L N xi)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -39056,6 +39226,46 @@
       "signature": "theorem finiteFplusCenteredIntegral_eq_proposition59RawTransform_neg {L : ℝ} (hL : L ≠ 0) (S : Finset ℤ) (c : ℤ → ℂ) (z : ℂ) : finiteFplusCenteredIntegral L S c z = proposition59RawTransform L S c (-z)",
       "in_docs": false,
       "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "euclidean_inner_toLp_eq_star_dotProduct",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/RelativeRitzFinite.lean",
+      "line": 20,
+      "signature": "private theorem euclidean_inner_toLp_eq_star_dotProduct {ι : Type*} [Fintype ι] (u v : ι → ℂ) : inner ℂ (WithLp.toLp 2 u) (WithLp.toLp 2 v) = star u ⬝ᵥ v",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "euclidean_norm_sq_toLp_eq_star_dotProduct_re",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/RelativeRitzFinite.lean",
+      "line": 25,
+      "signature": "private theorem euclidean_norm_sq_toLp_eq_star_dotProduct_re {ι : Type*} [Fintype ι] (u : ι → ℂ) : ‖WithLp.toLp 2 u‖ ^ 2 = (star u ⬝ᵥ u).re",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "hermitian_star_dotProduct_mulVec",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/RelativeRitzFinite.lean",
+      "line": 31,
+      "signature": "private theorem hermitian_star_dotProduct_mulVec {ι : Type*} [Fintype ι] (K : Matrix ι ι ℂ) (hK : K.IsHermitian) (u v : ι → ℂ) : star u ⬝ᵥ (K *ᵥ v) = star (K *ᵥ u) ⬝ᵥ v",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "hermitian_relative_ritz_projective_defect_le_rayleigh_excess_div_gap",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/RelativeRitzFinite.lean",
+      "line": 47,
+      "signature": "theorem hermitian_relative_ritz_projective_defect_le_rayleigh_excess_div_gap {ι : Type*} [Fintype ι] [DecidableEq ι] (K : Matrix ι ι ℂ) (xi q : ι → ℂ) (lambda1 lambda2 : ℝ) (hK : K.IsHermitian) (hxi_eig : K *ᵥ xi = (lambda1 : ℂ) • xi) (hxi_unit : star xi ⬝ᵥ xi = 1) (_hlambda1 : 0 < lambda1) (hgap : lambda1 < lambda2) (horthogonal_floor : ∀ u : ι → ℂ, star xi ⬝ᵥ u = 0 → lambda2 * (star u ⬝ᵥ u).re ≤ (star u ⬝ᵥ (K *ᵥ u)).re) (hq_unit : star q ⬝ᵥ q = 1) : 1 - ‖star xi ⬝ᵥ q‖ ^ 2 ≤ ((star q ⬝ᵥ (K *ᵥ q)).re - lambda1) / (lambda2 - lambda1)",
+      "in_docs": true,
+      "in_lemma_db": false,
       "orphan": false
     },
     {

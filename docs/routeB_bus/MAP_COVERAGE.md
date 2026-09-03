@@ -4,7 +4,7 @@
 `python3 docs/cartographer/map_coverage.py`. Рукописная карта — `MAP.md`, она
 описывает узлы маршрута; это приложение описывает **файлы**, и оно полное.
 
-Всего файлов: **379** · упомянуто в `MAP.md`: **25** · вне карты: **354** · без описания в шапке: **0**
+Всего файлов: **381** · упомянуто в `MAP.md`: **25** · вне карты: **356** · без описания в шапке: **0**
 
 «вне карты» не значит «лишний»: значит, что обходом карты файл не находится.
 Именно так 2026-08-11 был построен заново мост `ker ↔ eigenspace`, стоявший в
@@ -306,6 +306,7 @@
 | `G6N1SturmWeightedEnergyIdentity` | — | STURM_ENERGY_NODE, part A (verdict 4c0e13ba, node 1) | 0 |
 | `GammaSoftZeroFree` | — | The SOFT completion factor.  For a positive real scale `lambda`, the | 0 |
 | `GenericZeroTransfer` | — | A quantitative open-mapping replacement for the one-disk Rouché step. | 0 |
+| `Goal058CurvatureArithmetic` | — | Goal 058 curvature arithmetic | 0 |
 | `Goal058DirectGroundZeroEscape` | — | Goal 058 — direct tracked-ground ZeroEscape consumer | 0 |
 | `Goal058OrientedSmoothModelMass` | — | The exact finite-parameter mass of the smooth oriented source model from | 0 |
 | `Goal058PolarizedVolterra` | — | первая декларация: `goal058ModeFrequency` | 0 |
@@ -368,6 +369,7 @@
 | `RankOneCorrectionQuotientIntertwining` | — | The canonical equivalence from the full-radical quotient to the | 0 |
 | `RankOneCorrectionWeightedSymmetry` | карта | Source Lemma 5.4 rank-one correction | 0 |
 | `RawIntegralRhsCrosswalk` | — | Exact raw-integral / Proposition-5.9 crosswalk | 0 |
+| `RelativeRitzFinite` | — | Finite relative Ritz bound | 0 |
 | `S2GaugeNonvanishing` | карта | S2 gauge: the zero-free multiplier relating `riemannZeta` and `riemannXi` | 0 |
 | `SafeBoundsToSquareEnvelope` | — | Contract-v2 SAFE upper/lower bounds plus an independently supplied | 0 |
 | `SafeBridgeFalsifiers` | — | The scalar values realized by `A = diag(0,1)` and | 0 |
