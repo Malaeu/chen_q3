@@ -14,6 +14,19 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-03-NEWMECH · Goal 058: new mechanism for the curvature wall (C1 second jet at 0, C2 dichotomy, C3 relative gap, C4 de Branges chain, C5 judge's own) · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_NEW_MECHANISM_FOR_CURVATURE_WALL_2026-09-03.txt`
+- Boundary: `GOAL058_NEW_MECHANISM_FOR_CURVATURE_WALL`
+- Call class: `DELEGATED_STRATEGIC_REVIEW` (new-mathematics search; dead shapes listed in the payload)
+- Registered predictions: `P_C1_TWO_JET_TRANSPORT_IS_NONCIRCULAR p=0.60`, `P_C3_RELATIVE_GAP_IS_THE_REAL_OBSTRUCTION p=0.65`, `P_C4_DE_BRANGES_CHAIN_VIABLE p=0.25`, `P_C2_DICHOTOMY_YIELDS_CONSTRAINT p=0.30`, `P_JUDGE_PROPOSES_BETTER_C5 p=0.40`
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `e72cf4958626248244cd9dbd641767a101a50f0f` / `7993` / `119` /
+  `3cff2f5b9648fdc3a7042dc66c61b40ea4ccc8c9d6556bc5cf6bd30adac4720f` /
+  `a483fb5504457d9ae539e8b717b55be26fa03f17` / `yes`
+- Delivery: owner pastes the canonical short instruction into the living phase chat with the .txt attached byte-exact
+
 ## REQ-2026-09-03-CURVBRIDGE · Goal 058: PROVE the explicit-product curvature bridge; adjudicate the Hilbert–Schmidt representation · ANSWERED
 
 - `STATUS: ANSWERED`
