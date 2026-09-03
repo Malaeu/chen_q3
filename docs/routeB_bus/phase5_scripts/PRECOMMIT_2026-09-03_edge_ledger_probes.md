@@ -201,3 +201,26 @@ leading `1/12`: `|1/12 − S_pole| ≤ 0.5·(1/12)` at every cell m = N ∈ {13,
 - else UNRESOLVED (mixed). Descriptive: `(1/12 − S_pole)·L²` per cell.
 Executor: Codex (owner's numerics channel), script under `docs/routeB_bus/phase5_codex/`.
 DIAGNOSTIC_NEVER_A_PROOF.
+
+## ADDENDUM 9 (2026-09-03 night, after verdict 3dc82357, before any odd-sector number existed) — Probe 8, reciprocal-mode odd-Gram defect and the odd-sector floor
+
+Judge's C5 (verdict 3dc82357 §6): on the noncentral modes n ≠ 0 (±N row indexing, NOT the
+folded even basis), X = diag(n), R = X⁻¹, η = 1, r = Rη (r_n = 1/n, odd), β = X b,
+D R − R D = b rᵀ − r bᵀ, A = (D − λ₁)⁻¹ with λ₁ the even bottom eigenvalue of K,
+parity ⇒ ⟨r, A b⟩ = 0, Schur root ⟨b, A b⟩ = a₀ − λ₁, and
+  κ = (L²/(4π²))·E,  E = ½‖r‖² − ⟨r, A(Rb)⟩ + (a₀ − λ₁)⟨r, A r⟩ + Σ_{n>N} 1/n².
+Definitions per cell (m = N ∈ {13,23,43,83}, arb 240 dps, 360 for 83), all on the full
+(2N)-dimensional noncentral block D (both parities), b the central column, a₀ = K_00:
+  T1 = ½‖r‖²,  T2 = ⟨r, A(Rb)⟩,  T3 = (a₀−λ₁)⟨r, A r⟩,  T4 = Σ_{n>N} 1/n²,  E = T1 − T2 + T3 + T4;
+  checks: ⟨r, A b⟩ (must be 0 to working precision), ⟨b, A b⟩ − (a₀−λ₁) (must be 0),
+  commutator residual ‖DR − RD − (brᵀ − rbᵀ)‖ (must be 0 to working precision),
+  sanity κ_probe4 = (L²/4π²)E to ≥ 8 digits (STOP `ODD_GRAM_SANITY_MISMATCH` otherwise);
+  odd sector: smallest eigenvalue μ_odd,min of the odd block of D (and of K restricted to
+  odd modes), and the even second eigenvalue λ₂ for comparison; ratio μ_odd,min/λ₂.
+Predictions (K6, observer):
+  `P_ODD_SECTOR_FLOOR_NONCOLLAPSING` p=0.55 — μ_odd,min(83)/μ_odd,min(13) ≥ 1e-6 (no
+    super-exponential collapse in the odd sector, unlike λ₂ even: 2.8e-25 → 1.3e-154).
+  `P_E_TERMS_NOT_GAP_INFLATED` p=0.50 — max(|T2|, |T3|)·L² ≤ 10 at every cell (no 1/λ₂-scale
+    cancellation inside E, unlike Probe 7's split).
+- CONFIRMED / REFUTED per prediction by the stated inequality at every cell; else UNRESOLVED.
+Executor: observer's numerics channel. DIAGNOSTIC_NEVER_A_PROOF.
