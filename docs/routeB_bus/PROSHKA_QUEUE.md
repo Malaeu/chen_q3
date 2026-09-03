@@ -14,9 +14,10 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-03-SCHURLOEWNER · Goal 058 curvature: Schur/Loewner secular identity, Input-A geometry · OPEN
+## REQ-2026-09-03-SCHURLOEWNER · Goal 058 curvature: Schur/Loewner secular identity, Input-A geometry · IN_REVIEW
 
-- `STATUS: OPEN`
+- `STATUS: IN_REVIEW`
+- Delivery observed 2026-09-03 ~15:15 CEST: owner pasted the canonical instruction with the .txt attached in living chat `6a8c3e2a-df50-83eb-b53d-dd4cc46f646f`; judge accepted the attachment.
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_CURVATURE_SCHUR_LOEWNER_SECULAR_ADJUDICATION_2026-09-03.txt`
 - Boundary: `GOAL058_CURVATURE_SCHUR_LOEWNER_SECULAR_ADJUDICATION`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
