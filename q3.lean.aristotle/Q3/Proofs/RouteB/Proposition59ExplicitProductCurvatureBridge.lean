@@ -1414,4 +1414,70 @@ theorem proposition59_normalized_bound_on_ball
 #print axioms proposition59_compact_envelope
 #print axioms proposition59_normalized_bound_on_ball
 
+/-! ### Step 4b, off the real axis
+
+The judge's normalized Euler-tail product, in the form that is available
+without a locally uniform product limit: off the real axis (hence off the whole
+pole lattice) the tail partial products converge to `F z / F 0` divided by the
+positive-root product.  At a removable node this statement is *not* claimed;
+that is the `P59_EULER_TAIL_LIMIT_API_GAP`. -/
+theorem proposition59_normalized_euler_tail_product
+    {L : ℝ} (hL : 0 < L) (N : ℕ) (v : ℤ → ℝ) (hv : ∀ k : ℤ, v (-k) = v k)
+    (hv0 : v 0 ≠ 0)
+    (hzeros : ZerosRealOn Set.univ
+      (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ))
+        (fun k => (v k : ℂ))))
+    {z : ℂ} (hzim : z.im ≠ 0) :
+    Filter.Tendsto
+      (fun n : ℕ =>
+        ((positiveRootMultiset (proposition59CauchyNumerator L
+            (Finset.Icc (-(N : ℤ)) (N : ℤ)) (fun k => (v k : ℂ)))).map
+          (fun ρ : ℝ => 1 - z ^ 2 / (ρ : ℂ) ^ 2)).prod *
+        ∏ j ∈ Finset.Ico N n,
+          (1 - ((proposition59Pole L ((j : ℤ) + 1)) ^ 2)⁻¹ * z ^ 2))
+      Filter.atTop
+      (𝓝 (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ))
+            (fun k => (v k : ℂ)) z /
+          proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ))
+            (fun k => (v k : ℂ)) 0)) := by
+  have hv0C : ((v 0 : ℝ) : ℂ) ≠ 0 := by exact_mod_cast hv0
+  have hvC : ∀ k : ℤ, ((v (-k) : ℝ) : ℂ) = ((v k : ℝ) : ℂ) := fun k => by rw [hv k]
+  have hLC : (L : ℂ) ≠ 0 := by exact_mod_cast hL.ne'
+  have hz0 : z ≠ 0 := fun h => hzim (by rw [h]; simp)
+  set vC : ℤ → ℂ := fun k => (v k : ℂ) with hvCdef
+  set Fe : ℂ → ℂ :=
+    proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) vC with hFedef
+  set Ap : Polynomial ℂ :=
+    quadProductPoly (proposition59IncludedCoefficients L N) with hApdef
+  set Qprod : ℂ :=
+    ((positiveRootMultiset (proposition59CauchyNumerator L
+        (Finset.Icc (-(N : ℤ)) (N : ℤ)) vC)).map
+      (fun ρ : ℝ => 1 - z ^ 2 / (ρ : ℂ) ^ 2)).prod with hQprodDef
+  have hAne : Ap.eval z ≠ 0 := proposition59IncludedPoly_eval_ne_zero hL N hzim
+  have hF0 : Fe 0 ≠ 0 :=
+    (proposition59RawTransform_at_zero_ne_zero_iff hL N _).mpr hv0C
+  have hid := proposition59_explicit_product_identity hL N vC hvC hv0C hzeros z
+  rw [proposition59IncludedFactors_eq_eval hL N z] at hid
+  have htail : Filter.Tendsto
+      (fun n : ℕ => ∏ j ∈ Finset.Ico N n,
+        (1 - ((proposition59Pole L ((j : ℤ) + 1)) ^ 2)⁻¹ * z ^ 2))
+      Filter.atTop
+      (𝓝 ((Ap.eval z)⁻¹ * ((L : ℂ)⁻¹ * proposition59PoleKernel L 0 z))) := by
+    refine ((proposition59_euler_tendsto hL hz0).const_mul (Ap.eval z)⁻¹).congr' ?_
+    filter_upwards [Filter.eventually_ge_atTop N] with n hn
+    rw [← Finset.prod_range_mul_prod_Ico _ hn, prod_range_eq_includedPoly,
+      inv_mul_cancel_left₀ hAne]
+  have hlim : Qprod * ((Ap.eval z)⁻¹ * ((L : ℂ)⁻¹ * proposition59PoleKernel L 0 z))
+      = Fe z / Fe 0 := by
+    have hFez : Fe z =
+        Fe 0 * Qprod * (proposition59PoleKernel L 0 z / (L : ℂ)) / Ap.eval z := by
+      rw [eq_div_iff hAne]
+      exact hid
+    rw [hFez]
+    field_simp
+  rw [← hlim]
+  exact htail.const_mul Qprod
+
+#print axioms proposition59_normalized_euler_tail_product
+
 end Q3.RouteB
