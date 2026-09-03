@@ -3501,3 +3501,34 @@ reciprocal-mode displacement. С `X = diag(n)`, `R = X⁻¹`, `η = 1`, `r = Rη
 **Следующий ход:** read-only preflight `GOAL058_RECIPROCAL_MODE_ODD_GRAM_SOURCE_PREFLIGHT`
 (судья, K6 `P_C5_ODD_COBBOUNDARY_EXISTS` 0.45); численный зонд 8 по нечётному сектору
 (прекоммит, наш канал).
+
+## 2026-09-03 (ночь) — мост «кривизна → ограниченность» для P59 KERNEL_GREEN; C5 закрыт preflight-ом и зондом 8
+
+**Что произошло.** `Proposition59ExplicitProductCurvatureBridge.lean` (1483 строки, агент
+Linux-Claude на Opus, коммиты `f962c1e3…d96c17d8` после `5293a75f…de108de0`): все семь
+шагов директивы `926c1865` kernel-green, 33 декларации, только `propext`,
+`Classical.choice`, `Quot.sound`, проверено наблюдателем в главном checkout. Главные
+теоремы: `proposition59_curvature_coercion` (κ вещественна), `proposition59Curvature_nonneg`,
+`proposition59Curvature_eq_root_sum_add_tail`, `proposition59_compact_envelope`
+(`‖F z‖ ≤ ‖F 0‖·exp(κ‖z‖²)` для ВСЕХ z), `proposition59_curvature_closed_form`,
+`proposition59_normalized_bound_on_ball`. Без Адамара, без предиката порядка: хвост Эйлера
+только ОЦЕНЕН, не отождествлён; неравенство продолжено по непрерывности с плотного
+множества на узлы. Планты A–D пройдены. Единственный остаток `P59_EULER_TAIL_LIMIT_API_GAP`
+сужен до шага 4b в узлах и ничего в §2.1 не блокирует. Отклонение от списка судьи:
+`Real.prod_one_add_le_exp_sum` не использован (лемма для `Finset`, корни — `Multiset`),
+заменён четырёхстрочной индукцией `norm_quadProduct_le_exp`.
+
+Параллельно: preflight C5 (Opus) вернул `C5_RECIPROCAL_COMMUTATOR_ONLY_RENAMES_CURVATURE`
+(кограница существует, но строится из ground-вектора; `E_k = Σ_{n≤N}(1+2ξ_n/ξ₀)/n² + хвост`
+тождественно, E-CLOSED); зонд 8 опроверг обе посылки C5 численно: нечётный сектор
+схлопывается как чётная `λ₂` (`μ_odd,min = 6e-28 … 3e-158`), `T2`, `T3` порядка `1/μ_odd`.
+Наблюдатель: E-CLOSED переписывается в `κ_k = 2Σ_{n≤N}(−1)^n(F_k(x_n)/F_k(0) − 1)/x_n² + O(L²/N²)`
+— знакопеременная решёточная сумма Римана для `(f−1)/x²`, то есть стена B есть вход A с
+весами `(−1)^n/x_n²`. Наблюдение, не теорема.
+
+**Что закрыто:** `P59_SPECIFIC_CURVATURE_TO_LOCAL_BOUNDEDNESS` в Lean; `CODEX_ITEM_5_MATHLIB_GAP_NAMED`;
+C5 как механизм. **Что открыто:** поставщик `p_k` для C1 (единственная живая ветвь);
+`P59_EULER_TAIL_LIMIT_API_GAP` (только косметика 4b).
+
+**Следующий ход:** батч Прошке: E-CLOSED + знакопеременная форма как окончательная запись
+стены, судьбы `P_C5_ODD_COBBOUNDARY_EXISTS 0.45` и двух K6 зонда 8, некруговой поставщик `p_k`.

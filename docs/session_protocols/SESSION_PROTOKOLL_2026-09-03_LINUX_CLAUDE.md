@@ -87,3 +87,22 @@ Fortschrittszeilen mit ETA im Log.
 
 **Offen:** Verdikt SCHURLOEWNER; Desktop/Mythos-Note zu R2; Fable-Launcher-Kosten (API-Schlüssel,
 Desktop-Domäne); Mathlib-Lücke Hadamard-Faktorisierung (Codex Item 5).
+
+## Nachtrag 21:00 — Abend und Nacht
+
+**Erledigt:** Verdikte CURVRITZ `0c0a2b37`, SCHURLOEWNER `d7c7df36`, CURVBRIDGE `926c1865`,
+NEWMECH `3dc82357` intake (Queue ANSWERED, Gabeln im Progress_Log). Codex-Branch second-jet
+(`e6fdf040`) und bordered-secular (`4a037556`) kernel-geprüft und eingegliedert; Codex-Preflight
+Part A `ONLY_RENAMES_CURVATURE` und Probe 7 aus seinem Worktree geborgen (Codex-App fiel mit
+404 aus). Eigene Agenten: Probe 7 verifiziert (`ca738943`), Probe 8 (`1df448d1`, beide K6
+REFUTED), C5-Preflight (`c009536f`, ONLY_RENAMES), Lean-Brücke P59 vollständig
+(`Proposition59ExplicitProductCurvatureBridge.lean`, 7/7 Schritte, 33 Deklarationen,
+Standardaxiome, selbst geprüft). Karte `ROUTEB_NEW_ROAD…html` auf Abendstand gebracht.
+Kosten-Lehren im Memory `subagent-orchestration-cost`; Ratio-Skript mit Fortschritt/ETA,
+Toleranz 1e-40, Rauschnullstellen-Filter (Amendments 6–7).
+
+**Geprüft:** Wand = `sup_k κ_k < ∞` ⇔ Profil der niedrigen Moden des Ground-Vektors;
+E-CLOSED ⇔ alternierende Gitter-Summe = Input A mit Gewichten. C2/C3/C4/C5 tot, C1 lebt.
+
+**Offen:** Lieferant für `p_k` (C1); Batch an Proshka (E-CLOSED, Prediction-Scoring);
+`P59_EULER_TAIL_LIMIT_API_GAP` an den Knoten (kosmetisch); Fable-Launcher-Kosten (Codex).
