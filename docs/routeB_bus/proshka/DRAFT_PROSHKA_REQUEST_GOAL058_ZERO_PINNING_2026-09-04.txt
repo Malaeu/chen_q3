@@ -18,6 +18,12 @@ INTAKE (Probe 12, observer by hand, precommit ADDENDUM 13/14, output phase5_code
      The ground transform vanishes at the zeta zeros to order lambda_1 ~ 10^{-1.9 m} itself (NOT sqrt(lambda_1)); the zero
      displacement rho_j - gamma_j ~ F(gamma_j)/F'(gamma_j) ~ 1e-26 already at m = 13 (an earlier 2e-8 figure was a root-finder
      artifact; corrected). Meanwhile node values track Xi only as 1/log^2 m (Probe 9).
+  5. S9 distinguishing test (five cells): C_1(m)*L = 148.5, 182.1, 196.7, 201.1, 204.2 on m = 13..163 -> monotone, converging
+     (~205-210); C_1*sqrt(L) is not monotone. So F_k(gamma_1) ~ l_1 * lambda_1 / L is a LAW for the first zero (reading A);
+     C_2/C_1 = -141, -124, -103, -85, -72 (decreasing): no law isolated for j >= 2 yet. Also: F_Xirow(gamma_1) = 1e-10
+     (interpolation error of the sampled Xi) while F_ground(gamma_1) = 8e-29: the ground row's polylog deviation Delta from
+     the Xi samples is exactly the correction that annihilates the interpolation error at the zeta zeros, to lambda_1 accuracy.
+     Reading: the ground row is "the Nyquist interpolant tuned to vanish at the zeros of Xi" (candidate identity for Q2).
 
 QUESTIONS
 Q1 IDENTIFICATION THROUGH ZEROS. The consumer needs local-uniform convergence F_k/F_k(0) -> centeredXi/centeredXi(0). Given
