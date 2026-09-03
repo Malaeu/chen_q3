@@ -14,9 +14,15 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-04-ZEROPIN · Goal 058: identification through ZEROS — ground transform vanishes at gamma_j to order lambda_1 (S9, C_1·L → 205), real zeros distinguish ground row from Xi row, excess zeros escape, kappa → kappa_Xi; five ropes; not-RH branch · OPEN
+## REQ-2026-09-04-ZEROPIN · Goal 058: identification through ZEROS — ground transform vanishes at gamma_j to order lambda_1 (S9, C_1·L → 205), real zeros distinguish ground row from Xi row, excess zeros escape, kappa → kappa_Xi; five ropes; not-RH branch · ANSWERED
 
-- `STATUS: OPEN`
+- `STATUS: ANSWERED`
+- Verdict: `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_GROUND_TRANSFORM_ZERO_PINNING_AND_REAL_ZERO_IDENTIFICATION_2026-09-04.md` · commit `1529837d` · blob `35bd7a8d2a3fb7fcd8d5ce8b68928577f31a262e`
+- Operative class: `TRY_P59_COMPLETE_ZERO_DIVISOR_TIGHTNESS_AND_TARGET_CROSSWALK` · Q1: identification from bounded kappa + real zeros + LOW-zero convergence REJECTED (kill plant: P(z) vs P(z)(1+eps z^4) share real zeros, anchor, second jet, parity, order; differ) — COMPLETE divisor equality is load-bearing; missing: local zero-count convergence with multiplicity, excess-zero tightness on every compact, escaping reciprocal-square mass -> 0, target crosswalk; second jet pins exp(a z^2) only after complete divisor equality; Robin plant excluded (different divisor) · Q2: no unconditional zero supplier available (Groskin, CCM 5.10/7.3/§8 NOT_PROVED for ground zeros -> Xi); S9 candidate source identity `P59_ZETA_ZERO_EVALUATION_RANGE_IDENTITY`: e(gamma) = K b(gamma), F_ground(gamma) = lambda_1 <b, xi>, required: b bounded on gamma-compacts · Q3: Hurwitz contradiction needs a COMPLETE zero supplier; low on-line zero convergence is compatible with not-RH; zero route = representation of the open bridge (ground -> trial), not a closure · Q4: Hadamard NOT required; finite-product route; first Lean target `QUAD_PRODUCT_TAIL_SUB_ONE_EXP_BOUND`
+- Kills: partial zero set + second jet as Xi-uniqueness; small-energy pointwise pinning (do not reopen); Lemma 7.3 as ground supplier
+- Predictions: P_ZERO_IDENTIFICATION_CLOSES_INPUT_A REFUTED_AS_STATED; P_EXCESS_ZEROS_ESCAPE UNRESOLVED; P_KAPPA_CONVERGES UNRESOLVED; P_S9_IS_SOURCE_IDENTITY UNRESOLVED_ADVERSE; P_ZERO_SUPPLIER_UNCONDITIONAL REFUTED_AS_AVAILABLE_IMPORT; P_JUDGE_NAMES_ZERO_ROUTE_AS_PRIMARY REFUTED
+- Next: R2 range identity test by hand (DONE 2026-09-04: PASSES, |K^-1 e(gamma_1)| ~ 58 vs 1e86 at t = 15; addendum 15 extension running); Lean quad-product tail bound (agent); paper preflight on the identity (agent)
+- Intake 2026-09-04 by Linux-Claude.
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_ZERO_PINNING_2026-09-04.txt`
 - Boundary: `GOAL058_GROUND_TRANSFORM_ZERO_PINNING_AND_REAL_ZERO_IDENTIFICATION`
 - Call class: `DELEGATED_STRATEGIC_REVIEW` (complementary to 9b822624's selector modulus; zero route, not value route)
