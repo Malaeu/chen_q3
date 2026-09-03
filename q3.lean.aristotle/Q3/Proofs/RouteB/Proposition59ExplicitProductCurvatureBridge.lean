@@ -863,4 +863,185 @@ theorem proposition59_secondDerivative_zero_from_product
 #print axioms proposition59RootFactors_eq_eval
 #print axioms proposition59_secondDerivative_zero_from_product
 
+/-! ## Step 6 — `P59_CURVATURE_ZERO_SUM`: the real curvature scalar
+
+The tail `∑_{k>N} k⁻²` is a genuine `tsum`, evaluated by `hasSum_zeta_two`.
+No infinite product is formed anywhere. -/
+
+private theorem multiset_sum_nonneg {s : Multiset ℝ} (h : ∀ x ∈ s, 0 ≤ x) :
+    0 ≤ s.sum := by
+  induction s using Multiset.induction_on with
+  | empty => simp
+  | cons a t ih =>
+      rw [Multiset.sum_cons]
+      exact add_nonneg (h a (Multiset.mem_cons_self a t))
+        (ih fun x hx => h x (Multiset.mem_cons_of_mem hx))
+
+private theorem ofReal_multiset_sum (s : Multiset ℝ) :
+    ((s.sum : ℝ) : ℂ) = (s.map (fun x : ℝ => (x : ℂ))).sum := by
+  induction s using Multiset.induction_on with
+  | empty => simp
+  | cons a t ih => simp [ih]
+
+/-- `∑_{k=1}^{N} k⁻²`. -/
+noncomputable def proposition59HeadZetaTwo (N : ℕ) : ℝ :=
+  ∑ k ∈ Finset.Icc 1 N, (1 : ℝ) / (k : ℝ) ^ 2
+
+/-- `∑_{k>N} k⁻²`, as a `tsum`. -/
+noncomputable def proposition59TailZetaTwo (N : ℕ) : ℝ :=
+  ∑' n : ℕ, (1 : ℝ) / ((n : ℝ) + N + 1) ^ 2
+
+theorem proposition59TailZetaTwo_hasSum (N : ℕ) :
+    HasSum (fun n : ℕ => (1 : ℝ) / ((n : ℝ) + N + 1) ^ 2)
+      (Real.pi ^ 2 / 6 - proposition59HeadZetaTwo N) := by
+  have hrange : Finset.range (N + 1) = insert 0 (Finset.Icc 1 N) := by
+    ext a
+    simp only [Finset.mem_range, Finset.mem_insert, Finset.mem_Icc]
+    omega
+  have hhead : ∑ i ∈ Finset.range (N + 1), (1 : ℝ) / (i : ℝ) ^ 2 =
+      proposition59HeadZetaTwo N := by
+    rw [hrange, Finset.sum_insert (by simp), proposition59HeadZetaTwo]
+    norm_num
+  have hbase := (hasSum_nat_add_iff' (f := fun n : ℕ => (1 : ℝ) / (n : ℝ) ^ 2)
+    (N + 1)).mpr hasSum_zeta_two
+  rw [hhead] at hbase
+  refine hbase.congr_fun fun n => ?_
+  push_cast
+  ring_nf
+
+theorem proposition59TailZetaTwo_eq (N : ℕ) :
+    proposition59TailZetaTwo N = Real.pi ^ 2 / 6 - proposition59HeadZetaTwo N :=
+  (proposition59TailZetaTwo_hasSum N).tsum_eq
+
+theorem proposition59TailZetaTwo_nonneg (N : ℕ) :
+    0 ≤ proposition59TailZetaTwo N :=
+  tsum_nonneg fun n => by positivity
+
+/-- The real curvature scalar `κ_F` of the judge's §2.1.  It is a **real**
+number by construction; nothing complex is ever ordered. -/
+noncomputable def proposition59Curvature (L : ℝ) (N : ℕ) (v : ℤ → ℝ) : ℝ :=
+  ((positiveRootMultiset (proposition59CauchyNumerator L
+      (Finset.Icc (-(N : ℤ)) (N : ℤ)) (fun k => (v k : ℂ)))).map
+    (fun ρ : ℝ => 1 / ρ ^ 2)).sum
+  + L ^ 2 / (4 * Real.pi ^ 2) * proposition59TailZetaTwo N
+
+theorem proposition59Curvature_nonneg (L : ℝ) (N : ℕ) (v : ℤ → ℝ) :
+    0 ≤ proposition59Curvature L N v := by
+  refine add_nonneg (multiset_sum_nonneg ?_) ?_
+  · intro x hx
+    obtain ⟨ρ, hρ, rfl⟩ := Multiset.mem_map.mp hx
+    positivity
+  · exact mul_nonneg (by positivity) (proposition59TailZetaTwo_nonneg N)
+
+private theorem proposition59RootCoefficients_sum_ofReal
+    (L : ℝ) (N : ℕ) (v : ℤ → ℝ) :
+    (proposition59RootCoefficients L N (fun k => (v k : ℂ))).sum =
+      ((((positiveRootMultiset (proposition59CauchyNumerator L
+          (Finset.Icc (-(N : ℤ)) (N : ℤ)) (fun k => (v k : ℂ)))).map
+        (fun ρ : ℝ => 1 / ρ ^ 2)).sum : ℝ) : ℂ) := by
+  rw [ofReal_multiset_sum, proposition59RootCoefficients, Multiset.map_map]
+  refine congrArg Multiset.sum (Multiset.map_congr rfl fun ρ _ => ?_)
+  simp
+
+private theorem proposition59IncludedCoefficients_sum_eq
+    {L : ℝ} (hL : 0 < L) (N : ℕ) :
+    (proposition59IncludedCoefficients L N).sum =
+      (L : ℂ) ^ 2 / (4 * (Real.pi : ℂ) ^ 2) *
+        ((proposition59HeadZetaTwo N : ℝ) : ℂ) := by
+  have hLC : (L : ℂ) ≠ 0 := by exact_mod_cast hL.ne'
+  have hpi : (Real.pi : ℂ) ≠ 0 := by exact_mod_cast Real.pi_ne_zero
+  have hsum : (proposition59IncludedCoefficients L N).sum =
+      ∑ k ∈ Finset.Icc 1 N, ((proposition59Pole L (k : ℤ)) ^ 2)⁻¹ := rfl
+  rw [hsum, proposition59HeadZetaTwo, Complex.ofReal_sum, Finset.mul_sum]
+  refine Finset.sum_congr rfl fun k hk => ?_
+  have hk1 : 1 ≤ k := (Finset.mem_Icc.mp hk).1
+  have hkC : (k : ℂ) ≠ 0 := by
+    exact_mod_cast Nat.cast_ne_zero.mpr (by omega : k ≠ 0)
+  have hcast : ((((1 : ℝ) / (k : ℝ) ^ 2 : ℝ)) : ℂ) = 1 / (k : ℂ) ^ 2 := by
+    push_cast
+    ring
+  rw [hcast, proposition59Pole]
+  push_cast
+  field_simp
+  ring
+
+#print axioms proposition59TailZetaTwo_hasSum
+#print axioms proposition59Curvature_nonneg
+
+/-- `P59_CURVATURE_SECOND_JET_REAL` + `P59_CURVATURE_ZERO_SUM`: the curvature
+coercion identity.  `κ_F` is a real number; the quotient on the left is complex
+and is *equal to its coercion*, never ordered against it. -/
+theorem proposition59_curvature_coercion
+    {L : ℝ} (hL : 0 < L) (N : ℕ) (v : ℤ → ℝ) (hv : ∀ k : ℤ, v (-k) = v k)
+    (hv0 : v 0 ≠ 0)
+    (hzeros : ZerosRealOn Set.univ
+      (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ))
+        (fun k => (v k : ℂ)))) :
+    -(iteratedDeriv 2
+        (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ))
+          (fun k => (v k : ℂ))) 0) /
+        (2 * proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ))
+          (fun k => (v k : ℂ)) 0) =
+      ((proposition59Curvature L N v : ℝ) : ℂ) := by
+  have hpi : (Real.pi : ℂ) ≠ 0 := by exact_mod_cast Real.pi_ne_zero
+  have hLC : (L : ℂ) ≠ 0 := by exact_mod_cast hL.ne'
+  have hv0C : ((v 0 : ℝ) : ℂ) ≠ 0 := by exact_mod_cast hv0
+  have hvC : ∀ k : ℤ, ((v (-k) : ℝ) : ℂ) = ((v k : ℝ) : ℂ) := fun k => by rw [hv k]
+  have hF0 : proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ))
+      (fun k => (v k : ℂ)) 0 ≠ 0 :=
+    (proposition59RawTransform_at_zero_ne_zero_iff hL N _).mpr hv0C
+  have hkappa : proposition59Curvature L N v =
+      ((positiveRootMultiset (proposition59CauchyNumerator L
+          (Finset.Icc (-(N : ℤ)) (N : ℤ)) (fun k => (v k : ℂ)))).map
+        (fun ρ : ℝ => 1 / ρ ^ 2)).sum
+      + L ^ 2 / (4 * Real.pi ^ 2) *
+          (Real.pi ^ 2 / 6 - proposition59HeadZetaTwo N) := by
+    rw [proposition59Curvature, proposition59TailZetaTwo_eq]
+  rw [proposition59_secondDerivative_zero_from_product hL N
+      (fun k => (v k : ℂ)) hvC hv0C hzeros,
+    proposition59RootCoefficients_sum_ofReal,
+    proposition59IncludedCoefficients_sum_eq hL, hkappa]
+  push_cast
+  field_simp
+  ring
+
+/-- The fourth boxed formula of the judge's §2.1: `κ_F` in closed form on the
+coefficient row, obtained from the *existing* exact second jet. -/
+theorem proposition59_curvature_closed_form
+    {L : ℝ} (hL : 0 < L) (N : ℕ) (v : ℤ → ℝ) (hv : ∀ k : ℤ, v (-k) = v k)
+    (hv0 : v 0 ≠ 0)
+    (hzeros : ZerosRealOn Set.univ
+      (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ))
+        (fun k => (v k : ℂ)))) :
+    ((proposition59Curvature L N v : ℝ) : ℂ) =
+      (L : ℂ) ^ 2 / 2 *
+        (1 / 12 + 1 / (2 * (Real.pi : ℂ) ^ 2 * ((v 0 : ℝ) : ℂ)) *
+          ∑ k ∈ (Finset.Icc (-(N : ℤ)) (N : ℤ)).erase 0,
+            ((v k : ℝ) : ℂ) / (k : ℂ) ^ 2) := by
+  have hpi : (Real.pi : ℂ) ≠ 0 := by exact_mod_cast Real.pi_ne_zero
+  have hLC : (L : ℂ) ≠ 0 := by exact_mod_cast hL.ne'
+  have hv0C : ((v 0 : ℝ) : ℂ) ≠ 0 := by exact_mod_cast hv0
+  have hsqrt : (Real.sqrt L : ℂ) ≠ 0 := by
+    exact_mod_cast Real.sqrt_ne_zero'.mpr hL
+  have h0 : (0 : ℤ) ∈ Finset.Icc (-(N : ℤ)) (N : ℤ) := by simp
+  rw [← proposition59_curvature_coercion hL N v hv hv0 hzeros,
+    proposition59RawTransform_secondDerivative_zero hL N (fun k => (v k : ℂ)),
+    proposition59RawTransform_at_zero_eq_sqrt hL _ (fun k => (v k : ℂ)) h0]
+  field_simp
+
+#print axioms proposition59_curvature_coercion
+#print axioms proposition59_curvature_closed_form
+
+/-- The judge's second bullet, on the nose: `κ_F` is the positive-root sum plus
+the scaled `∑_{k>N} k⁻²` tail. -/
+theorem proposition59Curvature_eq_root_sum_add_tail (L : ℝ) (N : ℕ) (v : ℤ → ℝ) :
+    proposition59Curvature L N v =
+      ((positiveRootMultiset (proposition59CauchyNumerator L
+          (Finset.Icc (-(N : ℤ)) (N : ℤ)) (fun k => (v k : ℂ)))).map
+        (fun ρ : ℝ => 1 / ρ ^ 2)).sum
+      + L ^ 2 / (4 * Real.pi ^ 2) * ∑' n : ℕ, (1 : ℝ) / ((n : ℝ) + N + 1) ^ 2 :=
+  rfl
+
+#print axioms proposition59Curvature_eq_root_sum_add_tail
+
 end Q3.RouteB
