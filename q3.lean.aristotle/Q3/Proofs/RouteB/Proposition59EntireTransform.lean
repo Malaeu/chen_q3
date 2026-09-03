@@ -214,6 +214,214 @@ theorem differentiable_proposition59RawTransform
   intro k hk
   exact (differentiable_proposition59PoleKernel L k).const_mul (xi k)
 
+private theorem iteratedDeriv_dslope_second_at_zero (f : ℂ → ℂ)
+    (hf : AnalyticAt ℂ f 0) :
+    iteratedDeriv 2 (dslope f 0) 0 = iteratedDeriv 3 f 0 / 3 := by
+  let p : FormalMultilinearSeries ℂ ℂ ℂ :=
+    FormalMultilinearSeries.ofScalars ℂ
+      (fun n ↦ iteratedDeriv n f 0 / (n.factorial : ℂ))
+  have hp : HasFPowerSeriesAt f p 0 := by
+    simpa [p] using hf.hasFPowerSeriesAt
+  obtain ⟨r, hq⟩ := hp.has_fpower_series_dslope_fslope
+  have H := hq.factorial_smul (1 : ℂ) 2
+  have H' : iteratedDeriv 2 (dslope f 0) 0 =
+      2 * (iteratedDeriv 3 f 0 / 6) := by
+    simpa [FormalMultilinearSeries.apply_eq_prod_smul_coeff,
+      FormalMultilinearSeries.coeff_fslope,
+      FormalMultilinearSeries.coeff_ofScalars, p,
+      iteratedFDeriv_apply_eq_iteratedDeriv_mul_prod] using H.symm
+  rw [H']
+  ring
+
+private theorem proposition59PoleKernel_secondDerivative_zero_of_ne
+    {L : ℝ} {k : ℤ} (hL : 0 < L) (hk : k ≠ 0) :
+    iteratedDeriv 2 (proposition59PoleKernel L k) 0 =
+      -(2 * (L : ℂ)) / proposition59Pole L k ^ 2 := by
+  have ha : proposition59Pole L k ≠ 0 := by
+    unfold proposition59Pole
+    have hLC : (L : ℂ) ≠ 0 := by exact_mod_cast hL.ne'
+    have hkC : (k : ℂ) ≠ 0 := by exact_mod_cast hk
+    have hpi : (Real.pi : ℂ) ≠ 0 := by exact_mod_cast Real.pi_ne_zero
+    exact div_ne_zero (mul_ne_zero (mul_ne_zero (by norm_num) hkC) hpi) hLC
+  let q1 : ℂ → ℂ := fun z ↦
+    (((L : ℂ) * Complex.cos (z * (L : ℂ) / 2)) *
+      (z - proposition59Pole L k) - proposition59Numerator L z) /
+        (z - proposition59Pole L k) ^ 2
+  have hderiv : deriv (proposition59PoleKernel L k) =ᶠ[𝓝 0] q1 := by
+    filter_upwards [eventually_ne_nhds ha.symm] with z hz
+    have heq : proposition59PoleKernel L k =ᶠ[𝓝 z]
+        (fun w ↦ proposition59Numerator L w /
+          (w - proposition59Pole L k)) := by
+      filter_upwards [eventually_ne_nhds hz] with w hw
+      exact proposition59PoleKernel_eq_quotient hL.ne' k hw
+    rw [heq.deriv_eq]
+    simpa [q1, Function.id_def] using ((hasDerivAt_proposition59Numerator L z).div
+      ((hasDerivAt_id z).sub_const (proposition59Pole L k))
+      (sub_ne_zero.mpr hz)).deriv
+  have hq1 : HasDerivAt q1 (-(2 * (L : ℂ)) / proposition59Pole L k ^ 2) 0 := by
+    dsimp [q1]
+    have harg : HasDerivAt (fun z : ℂ ↦ z * (L : ℂ) / 2) ((L : ℂ) / 2) 0 :=
+      by simpa using ((hasDerivAt_id 0).mul_const (L : ℂ)).div_const 2
+    have hcos : HasDerivAt
+        (fun z : ℂ ↦ (L : ℂ) * Complex.cos (z * (L : ℂ) / 2)) 0 0 := by
+      have hc := (Complex.hasDerivAt_cos
+        (0 * (L : ℂ) / 2)).comp (0 : ℂ) harg
+      simpa using hc.const_mul (L : ℂ)
+    have hsub : HasDerivAt
+        (fun z : ℂ ↦ z - proposition59Pole L k) 1 0 :=
+      (hasDerivAt_id 0).sub_const _
+    have hnum := (hcos.mul hsub).sub (hasDerivAt_proposition59Numerator L 0)
+    have hden := hsub.pow 2
+    convert hnum.div hden (by simpa using pow_ne_zero 2 (neg_ne_zero.mpr ha)) using 1 <;>
+      simp [proposition59Numerator] <;> field_simp [ha]
+  rw [show iteratedDeriv 2 (proposition59PoleKernel L k) 0 =
+      deriv (deriv (proposition59PoleKernel L k)) 0 by
+        simp [iteratedDeriv_succ]]
+  rw [hderiv.deriv_eq, hq1.deriv]
+
+private theorem proposition59PoleKernel_secondDerivative_zero_mode (L : ℝ) :
+    iteratedDeriv 2 (proposition59PoleKernel L 0) 0 =
+      -((L : ℂ) ^ 3) / 12 := by
+  have hnum : AnalyticAt ℂ (proposition59Numerator L) 0 := by
+    have hcd : ContDiffAt ℂ ⊤ (proposition59Numerator L) 0 := by
+      unfold proposition59Numerator
+      fun_prop
+    exact hcd.analyticAt
+  rw [show proposition59PoleKernel L 0 = dslope (proposition59Numerator L) 0 by
+    simp [proposition59PoleKernel, proposition59Pole]]
+  rw [iteratedDeriv_dslope_second_at_zero _ hnum]
+  have hfun : proposition59Numerator L =
+      fun z : ℂ ↦ 2 * Complex.sin (((L : ℂ) / 2) * z) := by
+    funext z
+    simp [proposition59Numerator]
+    congr 2
+    ring
+  rw [hfun]
+  have hf : ContDiffAt ℂ 3
+      (fun z : ℂ ↦ Complex.sin (((L : ℂ) / 2) * z)) 0 := by
+    fun_prop
+  rw [iteratedDeriv_const_mul hf]
+  rw [show iteratedDeriv 3 (fun z : ℂ ↦ Complex.sin (((L : ℂ) / 2) * z)) =
+      fun z ↦ ((L : ℂ) / 2) ^ 3 *
+        iteratedDeriv 3 Complex.sin (((L : ℂ) / 2) * z) by
+          exact iteratedDeriv_comp_const_mul Complex.contDiff_sin ((L : ℂ) / 2)]
+  rw [Complex.iteratedDeriv_odd_sin 1]
+  simp
+  ring
+
+/-- The coefficient of a Proposition-5.9 mode in its normalized second jet at
+the origin. -/
+def proposition59SecondJetCoefficient (k : ℤ) : ℂ :=
+  if k = 0 then 1 / 12
+  else 1 / (2 * (Real.pi : ℂ) ^ 2 * (k : ℂ) ^ 2)
+
+theorem proposition59PoleKernel_secondDerivative_zero
+    {L : ℝ} (hL : 0 < L) (k : ℤ) :
+    iteratedDeriv 2 (proposition59PoleKernel L k) 0 =
+      -((L : ℂ) ^ 3) * proposition59SecondJetCoefficient k := by
+  by_cases hk : k = 0
+  · subst k
+    rw [proposition59PoleKernel_secondDerivative_zero_mode]
+    simp [proposition59SecondJetCoefficient]
+    ring
+  · rw [proposition59PoleKernel_secondDerivative_zero_of_ne hL hk]
+    simp [proposition59SecondJetCoefficient, hk, proposition59Pole]
+    have hkC : (k : ℂ) ≠ 0 := by exact_mod_cast hk
+    have hLC : (L : ℂ) ≠ 0 := by exact_mod_cast hL.ne'
+    have hpi : (Real.pi : ℂ) ≠ 0 := by exact_mod_cast Real.pi_ne_zero
+    field_simp [hkC, hLC, hpi]
+
+private theorem iteratedDeriv_two_finset_sum
+    {ι : Type*} (S : Finset ι) (f : ι → ℂ → ℂ)
+    (hf : ∀ i ∈ S, ContDiffAt ℂ 2 (f i) 0) :
+    iteratedDeriv 2 (fun z ↦ ∑ i ∈ S, f i z) 0 =
+      ∑ i ∈ S, iteratedDeriv 2 (f i) 0 := by
+  classical
+  induction S using Finset.induction_on with
+  | empty => simp [iteratedDeriv_const]
+  | @insert a S ha ih =>
+      simp only [Finset.mem_insert] at hf
+      rw [show (fun z ↦ ∑ i ∈ insert a S, f i z) =
+          (f a + fun z ↦ ∑ i ∈ S, f i z) by
+            funext z
+            simp [ha]]
+      rw [iteratedDeriv_add (hf a (Or.inl rfl))
+        (ContDiffAt.sum fun i hi ↦ hf i (Or.inr hi))]
+      rw [ih (fun i hi ↦ hf i (Or.inr hi))]
+      simp [ha]
+
+private theorem proposition59RawTransform_secondDerivative_zero_as_sum
+    {L : ℝ} (hL : 0 < L) (S : Finset ℤ) (v : ℤ → ℂ) :
+    iteratedDeriv 2 (proposition59RawTransform L S v) 0 =
+      (Real.sqrt L : ℂ)⁻¹ *
+        ∑ k ∈ S, v k *
+          (-((L : ℂ) ^ 3) * proposition59SecondJetCoefficient k) := by
+  unfold proposition59RawTransform
+  rw [iteratedDeriv_const_mul]
+  · congr 1
+    rw [iteratedDeriv_two_finset_sum]
+    · apply Finset.sum_congr rfl
+      intro k hk
+      rw [iteratedDeriv_const_mul]
+      · rw [proposition59PoleKernel_secondDerivative_zero hL]
+      · exact (differentiable_proposition59PoleKernel L k).contDiff.contDiffAt.of_le le_top
+    · intro k hk
+      have hker : ContDiffAt ℂ 2 (proposition59PoleKernel L k) 0 :=
+        (differentiable_proposition59PoleKernel L k).contDiff.contDiffAt.of_le le_top
+      simpa [smul_eq_mul] using hker.const_smul (v k)
+  · apply ContDiffAt.sum
+    intro k hk
+    have hker : ContDiffAt ℂ 2 (proposition59PoleKernel L k) 0 :=
+      (differentiable_proposition59PoleKernel L k).contDiff.contDiffAt.of_le le_top
+    simpa [smul_eq_mul] using hker.const_smul (v k)
+
+/-- The exact second jet at the origin of the finite Proposition-5.9 raw
+transform on the symmetric lattice window. -/
+theorem proposition59RawTransform_secondDerivative_zero
+    {L : ℝ} (hL : 0 < L) (N : ℕ) (v : ℤ → ℂ) :
+    iteratedDeriv 2
+        (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v) 0 =
+      -((L : ℂ) ^ 2 * (Real.sqrt L : ℂ)) *
+        (v 0 / 12 + (1 / (2 * (Real.pi : ℂ) ^ 2)) *
+          ∑ k ∈ (Finset.Icc (-(N : ℤ)) (N : ℤ)).erase 0,
+            v k / (k : ℂ) ^ 2) := by
+  let S : Finset ℤ := Finset.Icc (-(N : ℤ)) (N : ℤ)
+  have h0 : (0 : ℤ) ∈ S := by simp [S]
+  rw [proposition59RawTransform_secondDerivative_zero_as_sum hL]
+  have hcoeff :
+      ∑ k ∈ S, v k * proposition59SecondJetCoefficient k =
+        v 0 / 12 + (1 / (2 * (Real.pi : ℂ) ^ 2)) *
+          ∑ k ∈ S.erase 0, v k / (k : ℂ) ^ 2 := by
+    rw [← Finset.add_sum_erase S _ h0]
+    simp only [proposition59SecondJetCoefficient, if_pos]
+    rw [show v 0 * (1 / 12) = v 0 / 12 by ring]
+    congr 1
+    rw [Finset.mul_sum]
+    apply Finset.sum_congr rfl
+    intro k hk
+    have hk0 : k ≠ 0 := by
+      exact fun h ↦ by subst k; simpa using hk
+    simp [hk0]
+    field_simp
+  rw [show (∑ k ∈ S, v k *
+      (-((L : ℂ) ^ 3) * proposition59SecondJetCoefficient k)) =
+      -((L : ℂ) ^ 3) *
+        ∑ k ∈ S, v k * proposition59SecondJetCoefficient k by
+          rw [Finset.mul_sum]
+          apply Finset.sum_congr rfl
+          intro k hk
+          ring]
+  rw [hcoeff]
+  have hsqrt : (Real.sqrt L : ℂ) ≠ 0 := by
+    exact_mod_cast Real.sqrt_ne_zero'.mpr hL
+  have hsq : (Real.sqrt L : ℂ) * (Real.sqrt L : ℂ) = (L : ℂ) := by
+    exact_mod_cast Real.mul_self_sqrt hL.le
+  have hscale : (Real.sqrt L : ℂ)⁻¹ * (-((L : ℂ) ^ 3)) =
+      -((L : ℂ) ^ 2 * (Real.sqrt L : ℂ)) := by
+    rw [← hsq]
+    field_simp [hsqrt]
+  rw [← mul_assoc, hscale]
+
 /-- On points avoiding the finite pole lattice, the removable definition is
 definitionally the quotient formula from Proposition 5.9. -/
 theorem proposition59RawTransform_eq_quotient_sum
@@ -259,6 +467,8 @@ theorem proposition59RawTransform_eq_paper_formula
 #print axioms proposition59RawTransform_at_zero
 #print axioms proposition59RawTransform_at_zero_eq_sqrt
 #print axioms differentiable_proposition59RawTransform
+#print axioms proposition59PoleKernel_secondDerivative_zero
+#print axioms proposition59RawTransform_secondDerivative_zero
 #print axioms proposition59RawTransform_eq_quotient_sum
 #print axioms proposition59RawTransform_eq_paper_formula
 
