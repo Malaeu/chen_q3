@@ -1480,4 +1480,102 @@ theorem proposition59_normalized_euler_tail_product
 
 #print axioms proposition59_normalized_euler_tail_product
 
+/-! ## Step 8 — `P59_QUAD_PRODUCT_TAIL_SUB_ONE_EXP_BOUND`
+
+Judge directive `FORMALIZE_QUAD_PRODUCT_TAIL_SUB_ONE_EXP_BOUND`
+(`PROSHKA_VERDICT_GOAL058_GROUND_TRANSFORM_ZERO_PINNING_AND_REAL_ZERO_IDENTIFICATION_2026-09-04.md`).
+
+The tail-minus-one estimate for the finite quadratic product.  It is the
+`- 1` companion of `norm_quadProduct_le_exp` above: instead of bounding the
+product itself it bounds its distance to `1`, so that an empty tail is scored
+as `0` and not as `1`.  Everything is finite: the proof is a multiset
+induction with the telescoping split
+`(1 + w) * P - 1 = (P - 1) + w * P`, followed by the same finite
+`Real.add_one_le_exp` step already used for `norm_quadProduct_le_exp`.  No
+infinite product, no Hadamard/Weierstrass factorization, no entire-function
+order predicate enters. -/
+
+/-- `P59_QUAD_PRODUCT_TAIL_SUB_ONE_EXP_BOUND`: for a multiset of nonnegative
+coefficients `c` the finite quadratic product `∏ (1 - a z²)` differs from `1`
+by at most `exp (‖z‖² * Σ a) - 1`.  Nonnegativity of the coefficients is
+essential (see the plant below): with a negative coefficient the right-hand
+side turns negative while the left-hand side stays positive. -/
+theorem norm_quadProduct_sub_one_le_exp_sub_one
+    (c : Multiset ℝ) (hc : ∀ a ∈ c, 0 ≤ a) (z : ℂ) :
+    ‖(c.map (fun a : ℝ => 1 - (a : ℂ) * z ^ 2)).prod - 1‖
+      ≤ Real.exp (‖z‖ ^ 2 * c.sum) - 1 := by
+  revert hc
+  induction c using Multiset.induction_on with
+  | empty => intro _; simp
+  | cons a t ih =>
+      intro hc
+      have hnn : (0 : ℝ) ≤ a := hc a (Multiset.mem_cons_self a t)
+      have ht : ∀ b ∈ t, (0 : ℝ) ≤ b := fun b hb => hc b (Multiset.mem_cons_of_mem hb)
+      have IH := ih ht
+      set P : ℂ := (t.map (fun a : ℝ => 1 - (a : ℂ) * z ^ 2)).prod with hP
+      set S : ℝ := ‖z‖ ^ 2 * t.sum with hS
+      have hPnorm : ‖P‖ ≤ Real.exp S := by
+        have h := norm_sub_norm_le P (1 : ℂ)
+        simp only [norm_one] at h
+        linarith
+      have hcoef : ‖((a : ℂ) * z ^ 2)‖ = a * ‖z‖ ^ 2 := by
+        rw [norm_mul, norm_pow]
+        simp [abs_of_nonneg hnn]
+      have hexp : 1 + a * ‖z‖ ^ 2 ≤ Real.exp (a * ‖z‖ ^ 2) := by
+        have := Real.add_one_le_exp (a * ‖z‖ ^ 2)
+        linarith
+      have hEpos : (0 : ℝ) < Real.exp S := Real.exp_pos _
+      have hnormnn : (0 : ℝ) ≤ a * ‖z‖ ^ 2 := mul_nonneg hnn (sq_nonneg _)
+      rw [Multiset.map_cons, Multiset.prod_cons, Multiset.sum_cons]
+      have heq : (1 - (a : ℂ) * z ^ 2) * P - 1 = (P - 1) - ((a : ℂ) * z ^ 2) * P := by
+        ring
+      calc ‖(1 - (a : ℂ) * z ^ 2) * P - 1‖
+          = ‖(P - 1) - ((a : ℂ) * z ^ 2) * P‖ := by rw [heq]
+        _ ≤ ‖P - 1‖ + ‖((a : ℂ) * z ^ 2) * P‖ := norm_sub_le _ _
+        _ = ‖P - 1‖ + a * ‖z‖ ^ 2 * ‖P‖ := by rw [norm_mul, hcoef]
+        _ ≤ (Real.exp S - 1) + a * ‖z‖ ^ 2 * Real.exp S := by
+            have := mul_le_mul_of_nonneg_left hPnorm hnormnn
+            linarith
+        _ ≤ Real.exp (a * ‖z‖ ^ 2) * Real.exp S - 1 := by nlinarith
+        _ = Real.exp (‖z‖ ^ 2 * (a + t.sum)) - 1 := by
+            rw [← Real.exp_add, hS]
+            ring_nf
+
+#print axioms norm_quadProduct_sub_one_le_exp_sub_one
+
+/-! ### Plants for `P59_QUAD_PRODUCT_TAIL_SUB_ONE_EXP_BOUND` -/
+
+/-- Plant A: the empty tail is scored as `0 ≤ 0` — both sides vanish, so the
+bound carries no spurious constant. -/
+example (z : ℂ) :
+    ‖(((0 : Multiset ℝ).map (fun a : ℝ => 1 - (a : ℂ) * z ^ 2)).prod - 1)‖ = 0
+      ∧ Real.exp (‖z‖ ^ 2 * (0 : Multiset ℝ).sum) - 1 = 0 := by
+  constructor <;> simp
+
+/-- Plant B: a singleton tail exposes the scale `a * ‖z‖ ^ 2` on the left. -/
+example (a : ℝ) (ha : 0 ≤ a) (z : ℂ) :
+    a * ‖z‖ ^ 2 ≤ Real.exp (‖z‖ ^ 2 * a) - 1 := by
+  have h := norm_quadProduct_sub_one_le_exp_sub_one {a} (by simpa using ha) z
+  simpa [norm_mul, abs_of_nonneg ha] using h
+
+/-- Plant C: the nonnegativity hypothesis is essential, not decorative.  For
+the singleton `{-1}` at `z = 1` the conclusion of the theorem is *false*: the
+left-hand side is `1` while the right-hand side is `exp (-1) - 1 < 0`.  Hence
+`norm_quadProduct_sub_one_le_exp_sub_one` cannot be restated without `hc`
+(or without replacing `c.sum` by a sum of absolute values). -/
+example : ¬ (‖(({-1} : Multiset ℝ).map (fun a : ℝ => 1 - (a : ℂ) * (1 : ℂ) ^ 2)).prod - 1‖
+      ≤ Real.exp (‖(1 : ℂ)‖ ^ 2 * ({-1} : Multiset ℝ).sum) - 1) := by
+  have h : Real.exp ((-1 : ℝ)) < 1 := by
+    rw [Real.exp_lt_one_iff]; norm_num
+  simp only [Multiset.map_singleton, Multiset.prod_singleton, Multiset.sum_singleton]
+  push_cast
+  norm_num
+  linarith
+
+/-- Plant D: at `z = 0` the bound degenerates to `0 ≤ 0` for every tail. -/
+example (c : Multiset ℝ) :
+    ‖((c.map (fun a : ℝ => 1 - (a : ℂ) * (0 : ℂ) ^ 2)).prod - 1)‖ = 0
+      ∧ Real.exp (‖(0 : ℂ)‖ ^ 2 * c.sum) - 1 = 0 := by
+  constructor <;> simp
+
 end Q3.RouteB
