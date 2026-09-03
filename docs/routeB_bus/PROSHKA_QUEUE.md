@@ -14,6 +14,19 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-03-CURVBRIDGE · Goal 058: PROVE the explicit-product curvature bridge; adjudicate the Hilbert–Schmidt representation · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_CURVATURE_BRIDGE_PROOF_AND_HS_REPRESENTATION_2026-09-03.txt`
+- Boundary: `GOAL058_CURVATURE_BRIDGE_PROOF_AND_HS_REPRESENTATION`
+- Call class: `DELEGATED_PROOF_AND_REPRESENTATION_REVIEW` (proof task: closes Codex item 5 `MATHLIB_GAP_NAMED` without Hadamard; plus third representation κ = ‖(D_log)⁻¹‖²_HS)
+- Registered predictions: `P_EXPLICIT_PRODUCT_BRIDGE_PROOF p=0.85`, `P_HS_REPRESENTATION_EXACT p=0.80`, `P_HS_ATTACK_FOUND p=0.25`
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `1f2f03b2b0eb2e67358d0c135afaf801bd5bcb16` / `8133` / `121` /
+  `9c6c154ac75331e849bae9a820fe289832f7a717bee5e2a924ccd7d7e83cc271` /
+  `b7f7dd4995e531d02fc80cae6b47a8da38bdbe79` / `yes`
+- Delivery: owner pastes the canonical short instruction into the living phase chat with the .txt attached byte-exact
+
 ## REQ-2026-09-03-SCHURLOEWNER · Goal 058 curvature: Schur/Loewner secular identity, Input-A geometry · ANSWERED
 
 - `STATUS: ANSWERED`
