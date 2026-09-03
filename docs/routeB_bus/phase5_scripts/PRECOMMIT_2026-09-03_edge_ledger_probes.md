@@ -224,3 +224,24 @@ Predictions (K6, observer):
     cancellation inside E, unlike Probe 7's split).
 - CONFIRMED / REFUTED per prediction by the stated inequality at every cell; else UNRESOLVED.
 Executor: observer's numerics channel. DIAGNOSTIC_NEVER_A_PROOF.
+
+## ADDENDUM 10 (2026-09-03 21:20, before any Δ_n was computed) — Probe 9, lattice error against Ξ and the alternating curvature form
+
+Observer's rewrite of E-CLOSED (verdict 3dc82357 §6 + agent preflight): with
+f_k(x_n) := F_k(x_n)/F_k(0) = (−1)^n ξ_n/ξ_0 (exact P59 sampling, even row) and the arithmetic
+identity Σ_{n≥1} (1 + 2(−1)^n)/n² = π²/6 − π²/6 = 0,
+  κ_k = 2 Σ_{n=1}^{N} (−1)^n (f_k(x_n) − 1)/x_n²  −  (L²/(2π²)) Σ_{n>N} (−1)^n/n²,   x_n = 2πn/L.
+Let f(x) := centeredXi(x)/centeredXi(0) (= Ξ(x)/Ξ(0) in the centered coordinate, Ξ(x) = ξ(1/2+ix)
+with ξ(s) = ½ s(s−1) π^{−s/2} Γ(s/2) ζ(s)), Δ_n := f_k(x_n) − f(x_n). Then
+  κ_k = 2 Σ_{n≤N} (−1)^n (f(x_n) − 1)/x_n² + 2 Σ_{n≤N} (−1)^n Δ_n/x_n² + tail,
+and |2 Σ (−1)^n Δ_n/x_n²| ≤ (L²/(2π²)) Σ_{n≤N} |Δ_n|/n² ≤ (L²/12) sup_n |Δ_n|.
+Definitions per cell (m = N ∈ {13,23,43,83,163}, ξ from the ledger, Ξ in arb at 60 dps):
+  f_k(x_n), f(x_n), Δ_n for n = 1..N;  W_k := Σ_{n≤N} |Δ_n|/n²;  W_k·L²;  sup_n |Δ_n|·L²;
+  S_Ξ := 2 Σ_{n≤N} (−1)^n (f(x_n) − 1)/x_n² (the Ξ-part) and the check κ_k = S_Ξ + S_Δ + tail to ≥ 8 digits
+  (STOP `ALTERNATING_FORM_MISMATCH` otherwise); also the reference κ_Ξ := −Ξ''(0)/(2Ξ(0)) in arb.
+Predictions (K6, observer):
+  `P_WEIGHTED_LATTICE_ERROR_POLYLOG` p=0.65 — W_k·L² ≤ 10 at every cell (weighted lattice
+    error already at the 1/L² scale on the production schedule).
+  `P_SUP_LATTICE_ERROR_POLYLOG` p=0.45 — sup_{n≤N}|Δ_n|·L² ≤ 10 at every cell.
+- CONFIRMED / REFUTED per prediction by the inequality at every cell; else UNRESOLVED.
+DIAGNOSTIC_NEVER_A_PROOF.
