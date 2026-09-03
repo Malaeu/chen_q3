@@ -332,3 +332,14 @@ Predictions (K6, observer, registered before the run):
   `P_RANGE_IDENTITY_HIGHER_ZEROS` p=0.55 — `‖b(γ_j)‖₂ ≤ 10⁶` for j = 2, 3 at every cell (bounded on compacts, growth in j allowed).
   `P_RANGE_IDENTITY_SEES_THE_LINE` p=0.60 — `‖b(γ₁ + 0.1i)‖₂ ≥ 10⁴·‖b(γ₁)‖₂` at m = 43 (off-line point is NOT in the good range).
 Executor: observer by hand (rule 13). DIAGNOSTIC_NEVER_A_PROOF.
+
+## ADDENDUM 16 (2026-09-04, RECORDED AFTER the run — observation, not a precommitted prediction) — Probe 14, Rouché winding lock ground vs Ξ on disks and thin rectangles
+
+Objects: unit ground vector (raw c), F_g(z)/F_g(0) with the exact anchor F_g(0) = √L·c_0; Ξ(z)/Ξ(0) via `lattice_error.centered_xi`;
+boundary sampled at 144 (disk) / 368 (rectangle) points at 60 dps; ratio r(z) = |F_g/F_g(0) − Ξ/Ξ(0)| / |Ξ/Ξ(0)|; lock HOLDS iff max r < 1.
+Results (m = 13, 23, 43): DISK |z| = R FAILS everywhere, worst at z = iR: 1.18, 2.21, 3.77 (m=13, R = 18, 23, 28); 1.63, 3.58, 7.70 (m=23)
+— type mismatch on the imaginary axis (F_g type L/2, Ξ maximal type). RECTANGLE [−R, R]×[−h, h], h ∈ {0.5, 1, 2}: HOLDS everywhere; worst
+at the real end (±R, h): R=18: 0.658/0.664/0.597; R=28: 0.971/0.946/0.897 (m = 13/23/43), nearly independent of h.
+Follow-up predictions (registered now, before any further run): `P_RECT_LOCK_R28_IMPROVES` p=0.70 — max r at R=28, h=1 is < 0.85 at m=83
+and < 0.80 at m=163; `P_RECT_LOCK_R40_FAILS_AT_M13` p=0.60 — at R=40 the rectangle lock fails for m=13 (relative error at the end
+exceeds 1 because Ξ(40) is tiny) and holds for m=163. Executor: observer by hand. DIAGNOSTIC_NEVER_A_PROOF.

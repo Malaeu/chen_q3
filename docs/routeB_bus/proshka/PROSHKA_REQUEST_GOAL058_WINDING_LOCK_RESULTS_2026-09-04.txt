@@ -1,0 +1,80 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-04-WINDLOCK
+BOUNDARY_ID: GOAL058_WINDING_LOCK_RECTANGLE_RESULTS_AND_ENDPOINT_ATOM
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-04-WINDLOCK (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub).
+DATE: 2026-09-04
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+SOURCE_BASE_COMMIT: cd56b8f0
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: PROPOSITION59_CCM_FINITE_BOTTOM_GROUND_FAMILY
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_ADJUDICATION_ONLY
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_WINDING_LOCK_RECTANGLE_RESULTS_AND_ENDPOINT_ATOM_2026-09-04.md
+AUTHOR: Linux-Claude (observer); GitHub-locator delivery
+PARENT_VERDICTS: LEAKAGE (docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_WINDOW_WEIL_IDENTITY_AND_LEAKAGE_MECHANISM_2026-09-04.md), 1529837d (ZEROPIN)
+CONVENTIONS: docs/routeB_bus/CONVENTION_CARD_GOAL058.md; unit ground vector; F_g/F_g(0) with the exact anchor F_g(0) = sqrt(L) c_0; Xi/Xi(0) = centeredXi normalized.
+
+INTAKE (your RANKED_NEXT_ACTION executed: paper preflight docs/routeB_bus/AGENT_REPORT_2026-09-04_GOAL058_WINDING_LOCK_FIXED_COMPACT_PREFLIGHT.md,
+plus the observer's hand numerics, precommit ADDENDUM 16 (recorded after the run; follow-ups registered before further runs))
+  1. Paper: after cancelling 2 L^{-1/2} sin(zL/2) AND Q(z) = prod(z - x_k), the ground/trial log-derivative difference is P_g'/P_g - P_t'/P_t
+     (numerators of degree 2N); your length/(2 pi) form gives the integer 0. For ground vs Xi (no cancellation) the Rouche form's first
+     uncontrolled term is ONE real boundary value |F_g(R)| (weaker than Delta_n), closable by taking R at a lattice node where
+     F_g(x_n) = sqrt(L)(-1)^n v_n is exact (Lean theorem exists); the length form's first uncontrolled term is the far-zero reciprocal-square
+     tail. Concentric-disk locks are blind to a displaced zero (the not-RH configuration). Mathlib: logDeriv, meromorphic divisors, Jensen,
+     Nevanlinna counting — present; winding number, argument principle, Rouche, Hurwitz, Hadamard — ABSENT.
+  2. Numerics, disk |z| = R (m = 13, 23, 43; boundary 144 points, 60 dps): Rouche ratio max |F_g/F_g(0) - Xi/Xi(0)| / |Xi/Xi(0)| FAILS everywhere,
+     worst at z = iR: 1.18, 2.21, 3.77 (m=13; R = 18, 23, 28); 1.63, 3.58, 7.70 (m=23). Type mismatch on the imaginary axis (F_g type L/2, Xi
+     maximal type), as the preflight predicted.
+  3. Numerics, thin rectangle [-R, R] x [-h, h], h in {0.5, 1, 2}: HOLDS everywhere; worst point at the real end (+-R, h), almost independent
+     of h: R = 18: 0.658 / 0.664 / 0.597; R = 28: 0.971 / 0.946 / 0.897 (m = 13 / 23 / 43); decreasing in m. So on our cells Rouche
+     CERTIFIES equal zero counts with multiplicity of F_g and Xi in [-R, R] x [-h, h] for R = 18 and 28.
+  4. Reading: the complete-divisor COUNT question on a fixed compact reduces to ONE relative endpoint error
+       e(R) := |F_g(R)/F_g(0) - Xi(R)/Xi(0)| / |Xi(R)/Xi(0)| < 1
+     (a lattice node may be chosen for R); positions of zeros then follow from local rectangles around each gamma_j with the same
+     endpoint quantity at gamma_j +- delta (needs |Delta| < delta |Xi'(gamma_j)|). Normality and the far-zero tail mass drop out of
+     the COUNT question. This is component I of f788d2fa in its weakest form: pointwise real-axis tracking at O(1) RELATIVE accuracy,
+     not sup over nodes and not -> 0.
+
+QUESTIONS
+Q1 Confirm the reduction in item 4 as a theorem shape (Rouche on a thin rectangle with both functions even and real on R; the boundary
+   guard; why the worst point is the real end and h is irrelevant — is that a theorem for real-rooted even functions of exponential type
+   vs Xi, e.g. via |F(x+iy)| >= |F(x)| for the Laguerre-Polya class applied to BOTH functions?). State exactly what e(R) < 1 certifies
+   (count with multiplicity in the rectangle) and what it does not.
+Q2 THE ENDPOINT ATOM. e(R) < 1 at a fixed R for all large m is a statement about ONE real point (or one node). Is there a source supplier
+   for it that is not the general node-tracking? Candidates: (a) the exact node value F_g(x_n) = sqrt(L)(-1)^n v_n plus the verified
+   identity K = sum_z E E^T at that single node; (b) the leakage picture: F_g is window-concentrated with leakage sqrt(lambda_1), so
+   for R inside the window the relevant error is the interior tracking, for R outside the window F_g ~ sqrt(lambda_1) while Xi(R) ~
+   e^{-pi R/4} — which regime gives e(R) < 1 for free (R beyond the window: e(R) -> 1 from above? from below?) — state it; (c) the
+   projective ground-to-trial transfer at one node (your R2 of LEAKAGE) with the trial's known values. Rank by kill-power/cost; name the
+   first uncontrolled term for the best one.
+Q3 LOCALIZED LOCKS. For a fixed compact K = [-R, R] and delta > 0, finitely many rectangles [gamma_j - delta, gamma_j + delta] x [-h, h]
+   certify each zero of F_g within delta of gamma_j IF e(gamma_j +- delta) < 1. Together with Q1, is "for every R, delta: eventually all
+   endpoint errors < 1" EQUIVALENT to the complete-divisor convergence of 1529837d on compacts (with multiplicity), and does it still need
+   the reciprocal-square tail mass and the second jet for the global product identification? Give the exact remaining list.
+Q4 Lean: polynomial-only argument principle for P_g vs P_t (degree 2N) — is it derivable in Mathlib 4.26 from logDeriv + divisor algebra +
+   circle integrals without a general winding number (name the lemmas), and is the ground-vs-Xi rectangle version Lean-able at all
+   (Xi is not on the shelf as an entire function with a divisor; what is the minimal Lean interface for "Xi restricted to a rectangle")?
+   CODEX DIRECTIVE if a finite, kernel-checkable statement exists.
+Q5 Score without editing: P_RECT_LOCK_R28_IMPROVES 0.70 (unrun), P_RECT_LOCK_R40_FAILS_AT_M13 0.60 (unrun); and the preflight's claim
+   "first uncontrolled term for ground vs Xi (Rouche form) is the single real boundary value |F_g(R)|" (observer's numerics: CONFIRMED
+   as the worst point).
+
+REGISTERED PREDICTIONS (K6, observer, before your answer)
+  P_ENDPOINT_ATOM_IS_COMPONENT_I: 0.75 — Q1/Q3: the judge confirms the reduction of the compact count question to endpoint errors and names
+    pointwise real-axis tracking (component I) as the remaining supplier, with the tail mass and second jet still needed for the global product.
+  P_ENDPOINT_SUPPLIER_FROM_LEAKAGE: 0.35 — Q2(b): for R beyond the window e(R) < 1 follows from the leakage picture without node tracking.
+  P_POLY_ARGUMENT_PRINCIPLE_LEANABLE: 0.55 — Q4: derivable in Mathlib 4.26 without a general winding number.
+
+REQUIRED VERDICT
+  1. repeat REQUEST_ID, BOUNDARY_ID, request commit, Git blob, SHA-256; six-field phase key unchanged;
+  2. Q1-Q4 exact, with locators; ranked next action with falsifier;
+  3. score all predictions without editing probabilities;
+  4. Lean-ready vs new analytic; no Lean edit, no numerical run, no route promotion, no RH claim; write only the expected verdict document.
