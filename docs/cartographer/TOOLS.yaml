@@ -2019,6 +2019,104 @@ tool_families:
           broadening as L grows rather than staying pinned at n=1.
         last_verified: 2026-09-03
 
+      - id: lattice-equation
+        classification: MANUAL
+        status: ENABLED
+        audience: [CODEX, CLAUDE_CODE, HUMAN]
+        mode: WRITES_DERIVED
+        path: docs/routeB_bus/phase5_codex/lattice_equation.py
+        invoke: .venv/bin/python docs/routeB_bus/phase5_codex/lattice_equation.py
+        trigger: >-
+          Explicit Goal 058 Probe 10 (normalized-xi lattice eigen-equation:
+          identities LATTICE-1/2, term sizes, arch/prime diagonal defect;
+          ADDENDUM 11 of PRECOMMIT_2026-09-03_edge_ledger_probes.md, with the
+          mathematics transcribed from
+          AGENT_REPORT_2026-09-04_GOAL058_NORMALIZED_XI_LATTICE_EIGEN_EQUATION_PREFLIGHT.md
+          sections 1/3/6/8/9) request only; not part of any automatic startup
+          or goal-close event. Imports CCMArbBuilder (whose even_block() is
+          Phase 1's parity_blocks even sector), compute_eig_data and
+          inverse_iteration_ground from
+          docs/routeB_bus/phase5_scripts/edge_ledger_build.py -- imported,
+          never copied, never modified. An optional positional argument
+          restricts the run to a comma-separated subset of cells, e.g.
+          "163", for reruns of a single cell.
+        writes: true
+        approval: TASK_SCOPED_OUTPUT_UNDER_docs_routeB_bus_phase5_codex_out
+        authority: FINITE_EVEN_SECTOR_LATTICE_EQUATION_DIAGNOSTIC_NOT_A_CERTIFICATE_NOT_RH
+        records_to: [docs/routeB_bus/phase5_codex/out/lattice_equation.json, docs/routeB_bus/phase5_codex/out/lattice_equation.md]
+        note: >-
+          For m=N in {13,23,43,83,163} at dps 240/240/240/360/900 (the ledger's
+          own per-cell precision; the m=163 setting is
+          edge_ledger_build.LARGE_N_PRECISIONS), modes n=1..8 and cuts
+          n0 in {floor(L), floor(L^2)}: builds the even block, takes the ground
+          eigenpair by flint full-spectrum isolation for N<=100 and by precond
+          inverse iteration above it (edge_ledger_build's own
+          resolve_eigenpair rule), sets y_n = xi~_n/xi~_0 with y_0 = 1 and
+          mu = (K~ y)_0, and checks the two boxed identities of the preflight
+          report as what section 3 says they are -- UNCONDITIONAL algebraic
+          rewrites of R(y)_n = (K~y)_n - mu y_n, valid for every y with
+          y_0 = 1, no eigenvector hypothesis. Reports (i) the relative
+          residuals of LATTICE-1 and LATTICE-2 (STOP LATTICE_IDENTITY_MISMATCH
+          above 1e-30 relative, reported and never silently repaired), plus
+          the separate eigen residual |R(y)_n|; (ii) the four terms of
+          LATTICE-2 -- D_n y_n, kappa_n Shat,
+          sqrt2[W_R(0,0)+Prime(0,0)+a_n+mu], Omega_n^ap -- with Omega_n^ap
+          split at each cut into head (j<=n0) and tail rho_n(n0) (the section-6
+          remainder, which is exactly that tail since a_j = (J_j+P_j)/(pi j));
+          (iii) the ratios |rho_n(n0)|/|D_n y_n| and |kappa_n Shat|/|D_n y_n|;
+          (iv) min and max of |D_n| over n<=8; (v) Shat against -1/(sqrt2 L^2);
+          (vi) the tail masses sum_{j>n0}|y_j|/j^2 and sum_{j>n0} y_j/j^2;
+          (vii) x_n against the pole-only shape -d_n/(2 L^2) (report S4). Also
+          re-derives the source dictionary against the builder itself
+          (p_n vs w02(n,0), a_n vs -(wr+prime)(n,0), b_n vs tau(n,0), the
+          tau(0,0) center identity, the squared-node Loewner form (star)
+          K~_{nj} = 2(B_n-B_j)/(n^2-j^2), the rank-one pole collapse
+          Omega_n^pole = -kappa_n sum_{j!=n} y_j/d_j and the diagonal
+          cancellation W02(n,n)-W02(n,0) = -kappa_n/d_n). Residual magnitudes
+          are carried in arb and reported as decimal strings, not floats: at
+          dps 360 and 900 they land near 1e-352 and 1e-892, which would
+          underflow an IEEE double to a misleading exact zero. Verdicts for
+          P_LATTICE_IDENTITIES_EXACT (p=0.90), P_TAIL_COUPLING_IS_LEADING
+          (p=0.60), P_DIAGONAL_DEFECT_NONDEGENERATE (p=0.60) and P_SHAT_SHARP
+          (p=0.50) by the frozen ADDENDUM-11 inequalities at every cell.
+        validation: >-
+          Run 2026-09-04 (146s wall for all five cells; m=163 alone 137s, well
+          inside the 30-minute budget, so no cell was left pending). Every
+          source-dictionary check and both identities reproduce the builder's
+          own matrix to working precision at every cell: worst LATTICE-1
+          relative residual 1.6e-233 (m=23, dps 240), 2.7e-352 (m=83, dps 360),
+          9.6e-892 (m=163, dps 900); LATTICE-2 is another 3-4 orders tighter.
+          No LATTICE_IDENTITY_MISMATCH -- sections 1/3/6 of the preflight
+          report are algebraically correct against the production builder.
+          P_LATTICE_IDENTITIES_EXACT: CONFIRMED.
+          P_DIAGONAL_DEFECT_NONDEGENERATE: CONFIRMED -- min/max |D_n| over
+          n<=8 is 2.75e-2, 1.51e-2, 5.35e-2, 2.30e-2, 2.84e-2 along the
+          schedule (gate 1e-3, no decay from m=13 to m=163), and min_{n<=8}|D_n|
+          itself roughly doubles (6.27e-2 to 1.17e-1); the object the judge's
+          2x2 plant sets to zero is not collapsing on these cells.
+          P_TAIL_COUPLING_IS_LEADING: REFUTED -- at n0=floor(L) the ratio
+          |rho_n|/|D_n y_n| for n=1..3 is at most 0.254 (m=43) and shrinks
+          along the schedule (m=163: 5.7e-3, 2.3e-2, 6.1e-2); it crosses 1
+          only around n ~ floor(L)+2, so at the low modes the j>n0 coupling is
+          a genuine remainder, not the leading term.
+          P_SHAT_SHARP: REFUTED at every cell (relative deviation 1.94, 1.91,
+          1.87, 1.83, 1.78 against the 0.5 gate). The reason is recorded in
+          the report's Observations section: sum_j y_j/d_j is nearly
+          L-independent (-6.37e-3 to -6.05e-3 across the whole schedule) while
+          1/(sqrt2 L^2) falls from 1.07e-1 to 2.73e-2, so Shat is carried by
+          its additive constant and comes out POSITIVE and close to
+          +1/(sqrt2 L^2). This refutes the frozen ADDENDUM-11 target and also
+          the preflight's own S6 reading (which wanted Shat near 0);
+          correspondingly |kappa_n Shat|/|D_n y_n| at n=1 falls 13.7 -> 2.86
+          along the schedule rather than being e^{L/2}-sized, most of
+          kappa_n Shat being cancelled by sqrt2[W_R(0,0)+Prime(0,0)+a_n+mu].
+          Distinguishing measurement (vii) for S4 comes out as reading (A):
+          -d_n/(2L^2) at n=1 is -12.5 (m=13) to -3.54 (m=163) while x_1 is
+          -0.856 to -0.963, so the pole-only shape does not track x_n on this
+          schedule (8 pi^2/L^2 stays between 12.0 and 3.04, the -1/2 term
+          never dominating).
+        last_verified: 2026-09-04
+
 dynamic_queries:
   knowledge_counts: >-
     sqlite3 -readonly q3.lean.aristotle/aristotle_db/knowledge.db
