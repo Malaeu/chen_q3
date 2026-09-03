@@ -1579,7 +1579,24 @@ tool_families:
           stop for anything; Probe 2's own verdict is the sign/stability
           rule, amended so a consistently negative c_m across the whole
           usable schedule is itself REFUTED (observed at m=13,23,43: dlambda1/dL
-          positive at every cell => c_m < 0 everywhere => REFUTED).
+          positive at every cell => c_m < 0 everywhere => REFUTED). Probe 4
+          sign hygiene (independent review, 2026-09-03): KAPPA_NEGATIVE is
+          evaluated on the CERTIFIED arb ball (bool(kappa<0)/bool(kappa>0)),
+          never the float midpoint, and only after the precision check: (1)
+          dps disagreement -> that m is insufficient-precision, no sign
+          verdict drawn; (2) a ball straddling zero -> KAPPA_SIGN_UNCERTIFIED,
+          non-stopping; (3) only a certified-negative ball on a
+          precision-agreed cell stops. Per-cell precision escalation:
+          edge_ledger_build.py does NOT always ship the 120/240 pair -- m=163
+          shipped as a single dps=900 run with
+          insufficient_precision_flags="NOT_EVALUATED_ONLY_ONE_PRECISION_RUN"
+          (a STRING, not the usual list; flatten_schedule() guards against
+          list()-shredding it into characters). Every schedule-selection path
+          (Probe 2/3/4) now picks the HIGHEST dps available per (m,N)
+          individually via dps_groups(), not a global max(DPS_SCHEDULE); a
+          single_precision_only cell is passed straight through (no
+          comparison possible) rather than being silently dropped from the
+          schedule or spuriously flagged insufficient.
         validation: >-
           Run once against the real (partial) ledger 2026-09-03 ~12:28
           (m=13,23,43 present, m=83/163 and both N-check pairs still missing):
