@@ -358,6 +358,21 @@ tool_families:
         records_to: [knowledge.db, qmd://q3_docs/, q3.lean.aristotle/.qmd_cache/semantic_index_receipt.json]
         last_verified: 2026-08-13
 
+      - id: vahta
+        classification: OPERATIONAL
+        status: ENABLED
+        audience: [CLAUDE_CODE, HUMAN]
+        mode: READ_ONLY
+        path: specs_docs/vahta.sh
+        invoke: specs_docs/vahta.sh --path <EXPECTED_VERDICT_PATH> --delay 900   # or --ahead
+        trigger: Immediately after a request is delivered to the judge, or whenever the body waits on origin.
+        writes: false
+        approval: NONE
+        authority: ORIGIN_WATCH_THAT_EXITS_ON_EVENT_PROCESS_EXIT_IS_THE_WAKEUP
+        records_to: stdout (NEW_ON_ORIGIN / ORIGIN_AHEAD / TIMEOUT)
+        notes: Run as a harness background task. Never pgrep its own pattern (field lesson 2026-09-03).
+        last_verified: 2026-09-03
+
       - id: migration-census
         classification: MANUAL
         status: ENABLED

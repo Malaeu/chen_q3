@@ -179,3 +179,11 @@ WantedBy=timers.target
 CLOSES: CODEX_HAS_NO_SELF_WAKEUP
 OPENS:  []
 ```
+
+## 5. Скрипт (добавлено 2026-09-03)
+
+Вахта Linux-тела теперь одна строка: `specs_docs/vahta.sh --path <EXPECTED_VERDICT_PATH> --delay 900`
+(режим «файл появился на origin») или `specs_docs/vahta.sh --ahead` (режим «origin обогнал HEAD»,
+§3). Скрипт завершается в момент события, и его завершение есть пинок harness'у. Он никогда не
+ищет себя через `pgrep`: полевой урок 03.09 — `while pgrep -f "<pattern>"` внутри цикла находит
+собственную оболочку цикла и не завершается никогда. Зарегистрирован в `TOOLS.yaml` как `vahta`.
