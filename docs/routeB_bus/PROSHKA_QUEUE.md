@@ -14,9 +14,10 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-03-NEWMECH · Goal 058: new mechanism for the curvature wall (C1 second jet at 0, C2 dichotomy, C3 relative gap, C4 de Branges chain, C5 judge's own) · OPEN
+## REQ-2026-09-03-NEWMECH · Goal 058: new mechanism for the curvature wall (C1 second jet at 0, C2 dichotomy, C3 relative gap, C4 de Branges chain, C5 judge's own) · IN_REVIEW
 
-- `STATUS: OPEN`
+- `STATUS: IN_REVIEW`
+- Delivery observed 2026-09-03 ~17:50 CEST: owner pasted the canonical instruction with the .txt attached in living chat `6a8c3e2a-df50-83eb-b53d-dd4cc46f646f`; judge accepted.
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_NEW_MECHANISM_FOR_CURVATURE_WALL_2026-09-03.txt`
 - Boundary: `GOAL058_NEW_MECHANISM_FOR_CURVATURE_WALL`
 - Call class: `DELEGATED_STRATEGIC_REVIEW` (new-mathematics search; dead shapes listed in the payload)
