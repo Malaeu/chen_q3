@@ -113,4 +113,101 @@ theorem proposition59CauchyNumerator_eval_at_lattice_eq_zero_iff
 #print axioms proposition59CauchyNumerator_eval_at_lattice
 #print axioms proposition59CauchyNumerator_eval_at_lattice_eq_zero_iff
 
+/-! ## Step 2 — numerator root ⟹ transform root
+(`P59_NUMERATOR_ROOT_IMP_TRANSFORM_ROOT`)
+
+The included-lattice branch is mandatory.  The sine numerator is never
+cancelled against the Cauchy denominator globally: at an included node the
+argument goes through the exact removable sampling value
+`F(x_j) = √L (−1)^j v_j` instead. -/
+
+/-- The exact removable-node sampling value of the raw transform. -/
+theorem proposition59RawTransform_at_lattice
+    {L : ℝ} (hL : 0 < L) (S : Finset ℤ) (v : ℤ → ℂ) {j : ℤ} (hj : j ∈ S) :
+    proposition59RawTransform L S v (proposition59Pole L j) =
+      (Real.sqrt L : ℂ) * (j.negOnePow : ℂ) * v j := by
+  have hsqrt : (Real.sqrt L : ℂ) ≠ 0 := by
+    exact_mod_cast Real.sqrt_ne_zero'.mpr hL
+  have hsq : (Real.sqrt L : ℂ) * (Real.sqrt L : ℂ) = (L : ℂ) := by
+    exact_mod_cast Real.mul_self_sqrt hL.le
+  unfold proposition59RawTransform
+  rw [proposition59PoleKernel_sum_at_lattice hL.ne' S v hj, ← hsq]
+  field_simp
+
+/-- `P59_NUMERATOR_ROOT_IMP_TRANSFORM_ROOT`: every root of the finite Cauchy
+numerator, including one that coincides with an included lattice point, is a
+root of the raw transform. -/
+theorem proposition59_numerator_root_imp_transform_root
+    {L : ℝ} (hL : 0 < L) (S : Finset ℤ) (v : ℤ → ℂ) {z : ℂ}
+    (hroot : (proposition59CauchyNumerator L S v).eval z = 0) :
+    proposition59RawTransform L S v z = 0 := by
+  classical
+  by_cases hlat : ∃ j ∈ S, z = proposition59Pole L j
+  · obtain ⟨j, hj, rfl⟩ := hlat
+    have hvj : v j = 0 :=
+      (proposition59CauchyNumerator_eval_at_lattice_eq_zero_iff
+        hL.ne' S v hj).mp hroot
+    rw [proposition59RawTransform_at_lattice hL S v hj, hvj, mul_zero]
+  · have hz : ∀ k ∈ S, z ≠ proposition59Pole L k := by
+      intro k hk hkz
+      exact hlat ⟨k, hk, hkz⟩
+    rw [proposition59RawTransform_eq_paper_formula hL.ne' S v hz,
+      proposition59_finite_cauchy_numerator_identity L S v hz, hroot,
+      zero_div, mul_zero]
+
+/-- Consequence of `ZerosRealOn`: every complex root of the finite Cauchy
+numerator is real. -/
+theorem proposition59CauchyNumerator_roots_real
+    {L : ℝ} (hL : 0 < L) (S : Finset ℤ) (v : ℤ → ℂ)
+    (hzeros : ZerosRealOn Set.univ (proposition59RawTransform L S v))
+    {z : ℂ} (hroot : (proposition59CauchyNumerator L S v).eval z = 0) :
+    z.im = 0 :=
+  hzeros z (Set.mem_univ _)
+    (proposition59_numerator_root_imp_transform_root hL S v hroot)
+
+/-! ### Mandatory plants A and B (judge)
+
+Plant A: `N = 1`, `v 0 = 1`, `v (±1) = 0`.  The two included lattice factors
+`(z ∓ x_1)` must be produced by the finite numerator `P_N` itself.
+
+Plant B: `N = 1`, `v (-1) = v 0 = v 1 = 1`.  The included lattice values of the
+raw transform are nonzero, so they must not survive as sine zeros. -/
+
+/-- Plant A: the finite numerator of the row `v = δ_0` on `I_1` is exactly the
+pair of included lattice factors. -/
+example (L : ℝ) (z : ℂ) :
+    (proposition59CauchyNumerator L ({-1, 0, 1} : Finset ℤ)
+        (fun k => if k = 0 then (1 : ℂ) else 0)).eval z =
+      (z - proposition59Pole L (-1)) * (z - proposition59Pole L 1) := by
+  have herase : ({-1, 0, 1} : Finset ℤ).erase 0 = {-1, 1} := by decide
+  simp [proposition59CauchyNumerator_eval, herase,
+    Finset.prod_pair (show (-1 : ℤ) ≠ 1 by decide)]
+
+/-- Plant A, second half: those two included lattice points really are roots of
+`P_N`, hence roots of the transform. -/
+example {L : ℝ} (hL : 0 < L) :
+    proposition59RawTransform L ({-1, 0, 1} : Finset ℤ)
+        (fun k => if k = 0 then (1 : ℂ) else 0)
+        (proposition59Pole L 1) = 0 := by
+  refine proposition59_numerator_root_imp_transform_root hL _ _ ?_
+  have herase : ({-1, 0, 1} : Finset ℤ).erase 0 = {-1, 1} := by decide
+  simp [proposition59CauchyNumerator_eval, herase,
+    Finset.prod_pair (show (-1 : ℤ) ≠ 1 by decide)]
+
+/-- Plant B: on the constant row every included lattice value is nonzero. -/
+example {L : ℝ} (hL : 0 < L) {j : ℤ} (hj : j ∈ ({-1, 0, 1} : Finset ℤ)) :
+    proposition59RawTransform L ({-1, 0, 1} : Finset ℤ) (fun _ => (1 : ℂ))
+        (proposition59Pole L j) ≠ 0 := by
+  rw [proposition59RawTransform_at_lattice hL _ _ hj]
+  have hsqrt : (Real.sqrt L : ℂ) ≠ 0 := by
+    exact_mod_cast Real.sqrt_ne_zero'.mpr hL
+  have hsign : ((j.negOnePow : ℂ)) ≠ 0 := by
+    rw [Int.cast_negOnePow ℂ j]
+    exact zpow_ne_zero _ (by norm_num)
+  simpa using mul_ne_zero hsqrt hsign
+
+#print axioms proposition59RawTransform_at_lattice
+#print axioms proposition59_numerator_root_imp_transform_root
+#print axioms proposition59CauchyNumerator_roots_real
+
 end Q3.RouteB
