@@ -14,6 +14,18 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-03-KILLPLAN · Mythos three-stage fastest-kill plan, paper adjudication · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_MYTHOS_THREE_STAGE_FASTEST_KILL_PLAN_2026-09-03.txt`
+- Boundary: `MYTHOS_THREE_STAGE_FASTEST_KILL_PLAN_PAPER_ADJUDICATION`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Registered prediction: `P_STEP1_NO_UNIQUENESS p=0.75 (2026-09-02, PENDING)`
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `34e9850a9c7fdb0e9274414b99f0f395b67169c6` / `8445` / `105` /
+  `d662317312585319e3c4989a7096e1f1949eeb39dbf8ced755499368fe46e04d` /
+  `d504063a932e33f42fb444835729eded49f9e8b8` / `yes`.
+
 ## REQ-2026-08-30-G3SATZ9WALL · Goal 058 G3 Satz-9 library-wall next action · ANSWERED
 
 - `STATUS: ANSWERED`
