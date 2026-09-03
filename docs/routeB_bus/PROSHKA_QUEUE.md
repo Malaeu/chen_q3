@@ -14,9 +14,10 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-03-CURVBRIDGE · Goal 058: PROVE the explicit-product curvature bridge; adjudicate the Hilbert–Schmidt representation · OPEN
+## REQ-2026-09-03-CURVBRIDGE · Goal 058: PROVE the explicit-product curvature bridge; adjudicate the Hilbert–Schmidt representation · IN_REVIEW
 
-- `STATUS: OPEN`
+- `STATUS: IN_REVIEW`
+- Delivery observed 2026-09-03 ~16:05 CEST: owner pasted the canonical instruction with the .txt attached in living chat `6a8c3e2a-df50-83eb-b53d-dd4cc46f646f`; judge accepted.
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_CURVATURE_BRIDGE_PROOF_AND_HS_REPRESENTATION_2026-09-03.txt`
 - Boundary: `GOAL058_CURVATURE_BRIDGE_PROOF_AND_HS_REPRESENTATION`
 - Call class: `DELEGATED_STRATEGIC_REVIEW` (proof task: closes Codex item 5 `MATHLIB_GAP_NAMED` without Hadamard; plus third representation κ = ‖(D_log)⁻¹‖²_HS)
