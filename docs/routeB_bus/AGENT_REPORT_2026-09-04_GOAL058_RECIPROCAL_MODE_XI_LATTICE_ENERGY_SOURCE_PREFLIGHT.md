@@ -19,7 +19,7 @@ LEAN_EDIT_PERFORMED: false
 NUMERICAL_RUN_PERFORMED: false
 ```
 
-**One line.** The identity asked for **exists, is exact, uses no inverse anywhere, and its right
+**One line (see §12.7–12.10: S7 and S8 are corrected/refuted; the chain itself is unchanged).** The identity asked for **exists, is exact, uses no inverse anywhere, and its right
 side is built only from source entries and the Ξ-sample residual** — it is (MAIN-P) in §3:
 `Σ_{n≤N} D_n|Δ_n|²/n² − 32π²A_L(Σ_{n≤N}Δ_n/d_n)² + 2⟨Δ,L[a]Δ⟩ = −Σ_n Δ_n𝓡(y)_n/n² + (ν−λ₁)Σ_n Δ_n(1−y_n)/n²`
 — but its left side is not the target: it is the odd-sector quadratic form `⟨RΔ,(D−λ₁)RΔ⟩`, whose
@@ -757,3 +757,162 @@ target up to a computable constant and a factor 2".
 Unchanged: `P59_XI_LATTICE_EQUATION_REIMPORTS_DENSE_TAIL_OR_GAP`, GAP half. E1 is inert, E2
 replaces a wrong route to the same conclusion with a correct one, E3 is a trend correction that
 makes the measured price worse, E4 strengthens the fixed-point argument.
+
+### 12.7 E5 — S7's "disjoint parts" framing is FALSE (coordinator's correction, accepted)
+
+Wrong lines, §10 S7 and §6 ("two new facts"): *"`D_n` and `32π²A_L n²/d_n²`, built from disjoint
+parts of the source (von Mangoldt sum + archimedean integral versus the `W02` pole), yet their
+ratio is 0.9982 … 1.0000."*
+
+**Accepted and checked.** From the builder, `W02(n,n) = A_L(L²−16π²n²)/d_n² = p_n − 32π²A_Ln²/d_n²`
+exactly (verified above, B3), and `a_n = b_n − p_n` **by definition**. Hence, with `P_n` the pole
+diagonal `32π²A_L n²/d_n²`,
+
+```
+D_n − P_n = −W_ℝ(n,n) − Prime(n,n) − a_n − P_n
+          = −W_ℝ(n,n) − Prime(n,n) − b_n + p_n − P_n
+          = W02(n,n) − W_ℝ(n,n) − Prime(n,n) − b_n
+          = τ(n,n) − τ(n,0) = δ_n        (λ₁ dropped, |μ−λ₁| ≤ 1e-231)
+```
+
+— which is my own §3.3 definition of `δ_n`. So `D_n ≈ P_n` is not an agreement between two
+independently built objects; it is the single statement `δ_n` **is small**, written backwards.
+`D_n` is not pole-free: it carries the pole through `a_n = b_n − p_n`. **S7 as written is a
+rewriting of a definition, not a coincidence and not a new identity, and it must not be reported
+as one.** The "two new facts" of the final message reduce to one (S8, itself corrected in §12.8).
+
+The derived reading **"`b_n` constant in `n` to `~10⁻⁴`" is also false**: the committed table
+`out/s7_table.csv` gives `b_n` varying by `4.35e-2 … 3.03e+00` over `n ≤ 8` across
+`m = 13…600`. What produced my false reading was pushing the PSD Cauchy–Schwarz
+`|G_{nm}| ≤ √(δ_nδ_m)` to the conclusion "therefore `b_n − b_m ≈ 0`", when the correct conclusion
+is the one below.
+
+**Corrected content of S7 — what is actually true.** With `δ_n := τ(n,n) − τ(n,0)`:
+
+1. `δ_n > 0` on all 588 windows `m = 13…600` (coordinator, arb, 1e-61).
+2. `δ_n ≈ n²·δ_1(m)` at low `n`, and `δ_1(m)·L² ∈ [4.6e-4, 5.2e-3]` with no trend in `L`.
+3. Equivalently — and this is the source statement, replacing "constant" — **`b_n` is affine in
+   `n²` at low modes**: `G_{nm} = 2nm(b_n−b_m)/(n²−m²)` together with `δ_n = δ_1 n²` forces
+   `b_n = b_1 + (δ_1/2)(n²−1)`. Measured `(b_n−b_1)/[(δ_1/2)(n²−1)]` at `m = 163`:
+   `1.021, 1.058, 1.115, 1.199, 1.323, 1.511, 1.818` for `n = 2…8` — affine in `n²` to 2 % at
+   `n = 2`, 12 % at `n = 4`, 82 % at `n = 8`. At `m = 600`: `1.012 … 1.346`. The *variation* of
+   `b_n` is `O(1)`; its low-mode *curvature in `n²`* is `δ_1/2 ≈ c/(2L²)`.
+4. `b_n = B + γ/(σ+n²)` (the pole's own shape) is **excluded**: fitting `γ, σ` to
+   `b_2−b_1, b_3−b_1` at `m = 163` gives `σ = −147 < 0`. So the arch/prime part cancels the pole's
+   `1/(σ+n²)` shape and leaves a different low-mode law.
+
+### 12.8 E6 — S8 is REFUTED: the odd sector is collapsed too
+
+Checking E5 forced me to look at the odd block itself, and it overturns S8 and every number
+derived from it.
+
+Building `G_{nm}` (the odd block of `D`, `λ₁` dropped) from the committed `s7_table.csv`
+(`δ_n` on the diagonal, `2nm(b_n−b_m)/(n²−m²)` off it) and diagonalising it in double precision
+over `n = 1…12`:
+
+| m | spectrum of the odd block on `n ≤ 12` (descending) |
+|---:|---|
+| 13 | 3.141, 2.715, 2.061, 1.342, 3.07e-2, 5.07e-4, 1.75e-6, 8.33e-10, 4.21e-13, ~0, ~0, ~0 |
+| 83 | 4.447, 7.04e-2, 7.97e-4, 3.03e-6, 6.73e-9, 3.40e-12, ~0 … |
+| 163 | 4.460, 1.88e-2, 3.05e-5, 4.88e-8, 7.76e-11, 2.10e-14, ~0 … |
+| 600 | 1.90e-1, 1.35e-3, 1.35e-6, 7.36e-10, 2.31e-13, ~0 … |
+
+The block is PSD (consistent with interlacing) and its eigenvalues **decay geometrically**, by a
+factor `≈ 1.6e-3` per mode at `m = 163` (`1e-2 … 1e-3` across the cells): it is numerically
+singular after about six modes, and the Cauchy–Schwarz `|G_{nm}| ≤ √(δ_nδ_m)` is saturated to
+`0.999979` at `(1,2)` for the same reason.
+
+**Therefore:**
+
+- **S8 is refuted.** The odd-sector floor is **not** `≈ min_n δ_n ≈ 10⁻⁴`. The diagonal is only a
+  crude Rayleigh upper bound; the actual `λ_min` is geometrically collapsed. Extrapolating the
+  measured ratio over `N` modes lands at the same order as the even block's known
+  `λ₁ ≈ 10^{−1.9m}` (which is a per-mode ratio `10^{−1.9} ≈ 1.3e-2`, inside the measured band).
+- **Every price quoted in §5, §12.3 and §12.4 is wrong** — `1/δ ≈ 10⁴`, `1/μ_min = 571…29600`, and
+  the "`10⁴`, not `10^{300}`" headline. The true price for coercivity on the left of (MAIN-P) is
+  `1/λ_min(G)`, which is collapsed, not `10⁴`. The correct reading is the harsher one: **C5's odd
+  sector avoids the second *even* eigenvalue, but it does not avoid collapse.**
+- **The verdict of attempt (d) is unchanged and now overdetermined**: no contraction, reading (A).
+- **The obstruction is now stated at the right level.** The left side of (MAIN-P) is a quadratic
+  form whose spectrum decays geometrically, i.e. whose effective rank at any working precision is
+  `O(log(1/ε))`. Such a form controls a handful of scalar functionals of `Δ` and is blind to the
+  rest of the `N`-dimensional space. **A numerically-low-rank form cannot bound a norm.** That,
+  not the plant's `D₁ = 0` and not the `1/λ₂` of the even sector, is why the identity does not
+  close.
+
+**Mechanism, named but not proved here.** `G = 2X·L[b]·X` with `L[b]` the Loewner
+(divided-difference) matrix of `b` at the nodes `u = n²` (§3.2). Loewner/Cauchy matrices of a
+function analytic near the node set are classically numerically low rank — the pole part is
+*exactly* rank one (§3.3), so the observed decay is governed by the arch/prime part. If this is a
+theorem for the CCM source column, then **the entire floor/coercivity family is dead structurally,
+not accidentally**, and the same mechanism explains the even block's `λ₁ ≈ 10^{−1.9m}` — the
+number the whole front has been treating as a mystery. This is the highest-value open question
+this preflight produced. Literature entry point for the ledger: Beckermann–Townsend type
+singular-value bounds for matrices of low displacement rank (Zolotarev), and the classical
+numerical-rank theory of Cauchy/Loewner matrices. **Not verified against primary sources here:
+`relay, not verified`.**
+
+### 12.9 E7 — the interlacing step assumes an OPEN obligation
+
+§3.3 (INEQ), §5 and §8 item 5 use `(D − λ₁) ⪰ 0` "by Cauchy interlacing". Interlacing gives
+`λ_min(K_full) ≤ λ_min(D)`; the step therefore needs `λ₁ = λ_min(K_full)`, i.e. that the bottom
+eigenvalue of the **full raw** matrix is the even one. The builder never constructs the odd block
+(`edge_ledger_build.py` builds `even_block` only, B9), so the production `λ₁, λ₂` are the two
+smallest **even** eigenvalues, and `COFINAL_SIMPLE_EVEN_FINITE_GROUND` is listed as `OPEN_ANALYTIC`
+in the shell verdict. **The assumption is unproved and must be carried as a hypothesis.**
+
+The numbers above are consistent with it (the odd block came out PSD), but they cannot settle it:
+both `λ_min(D^{odd})` and `λ₁` are below double-precision resolution. **Cheap decisive probe, one
+line in the builder** (`odd[i,j] = k(i,j) − k(i,−j)`, `i,j ≥ 1`) **plus one `two_smallest_eigs`
+call in arb**: compare `λ_min(D^{odd})` with `λ₁(even)`. If `λ_min(D^{odd}) < λ₁`, the finite
+ground state is not even and `COFINAL_SIMPLE_EVEN_FINITE_GROUND` fails at these cells — which
+would be the single most consequential fact available on this front, since CCM Thm 5.10 is applied
+to the even ground. This probe now ranks above `ρ_stab` in §9.
+
+### 12.10 Net effect on the report
+
+| Item | Status after §12.7–12.9 |
+|---|---|
+| (COB), (MAIN), (MAIN-P), RAW-LATTICE-1, odd-block normal form | **unchanged**, re-derived and numerically confirmed (§12.1) |
+| §3.3 (INEQ) | **conditional** on simple-even for the full raw carrier (E7) |
+| §5 `q_pole` deduction | wrong (E2); superseded twice — final reading: geometric collapse (E6) |
+| §5 / §12.3 constants `1/δ ≈ 10⁴`, `1/μ_min = 571…29600` | **wrong** (E6); true price is `1/λ_min(G)`, collapsed |
+| §6 (U1) pole rank-one / fixed point | unchanged |
+| §6 (U1') "odd floor `≈1.4e-4`" | **corrected**: `δ_n` is an upper Rayleigh bound only; the floor is collapsed |
+| §8 item 5 `ccmOddSector_psd_of_interlacing` | **withdraw as unconditional**; restate with the simple-even hypothesis explicit |
+| §10 S7 | **replaced** by §12.7 items 1–4 |
+| §10 S8 | **refuted**, replaced by §12.8 |
+| §9 numerical companion | reordered: the odd-block bottom eigenvalue (E7) is now the first probe |
+| Code | **unchanged** |
+
+### 12.11 Independent confirmation, and the decisive number (probe 11, relay)
+
+`docs/routeB_bus/phase5_codex/out/odd_floor.md` (concurrent agent, ADDENDUM 12) tests the chain
+against the builder's own odd block, independently of this report's dictionary:
+
+- **identity** `|LHS_direct − RHS_direct|/|LHS_direct| = 2.3e-215, 1.2e-202, 3.9e-179, 1.3e-252,
+  3.6e-182` on `m = 13…163`; **dictionary** (report's `δ_n`/Loewner formulas vs the matrix
+  product) `1.2e-216 … 4.0e-471`; structural defects — odd off-diagonal vs
+  `2nm(b_n−b_m)/(n²−m²)`, `δ_n` vs `D_n − 32π²A_L n²/d_n²`, `𝓡(y)` and `ν` vs their source
+  forms — all `≤ 1.7e-231`. **(COB), (MAIN), (MAIN-P) and the §3.2 normal form are confirmed
+  exactly, by an independent route.** §12.1's conclusion stands.
+
+- **And the value of the form is the whole story.** Probe 11's term table gives
+  `Q := ½⟨RΔ,(D−λ₁)RΔ⟩ = 1.03e-19, 7.74e-31, 2.23e-46, 4.06e-77, 2.56e-134` while its
+  constituents are all of size `10⁻⁴`–`10⁻⁶`: `Σδ_nΔ²/n² = +4.70e-07` against
+  `2⟨Δ,L[b]Δ⟩ = −4.70e-07`, and `ΣD_nΔ²/n² = 6.32e-05`, `32π²A_L(ΣΔ/d)² = 3.92e-06`,
+  `2⟨Δ,L[a]Δ⟩ = −5.93e-05` at `m = 163`. The right side cancels the same way
+  (`+1.91e-69` against `−1.91e-69`).
+
+  **So (MAIN-P) is an exact identity between terms of size `10⁻⁴` whose value is `10⁻¹³⁴`, and
+  the cancellation depth grows along the schedule (`≈ 10^{−0.7m}`).** To extract `‖RΔ‖²` from it
+  one would have to know every term to 130+ significant digits — i.e. the identity carries no
+  usable information about the error row, for the same reason the wall card's records 5–7 do
+  ("сокращение живёт между расходящимися частями"). This is the sharpest available statement of
+  the failure, it is measured rather than argued, and it supersedes the plant argument (§7), the
+  `q_pole` argument (§5, wrong), the `1/μ_min` argument (§12.3, wrong) and the diagonal-floor
+  argument (§12.8's first half): **the form on the left of (MAIN-P) is numerically low rank AND
+  evaluates to `10⁻¹³⁴` on the very vector the atom is about.**
+
+  Code unchanged; this makes the GAP reading final rather than provisional.
+

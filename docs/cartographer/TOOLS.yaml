@@ -391,6 +391,24 @@ tool_families:
           energy preflight used different blocks for the same norm.
         last_verified: 2026-09-04
 
+      - id: odd-floor
+        classification: MANUAL
+        status: ENABLED
+        audience: [CLAUDE_CODE, HUMAN]
+        mode: WRITES_DERIVED
+        path: docs/routeB_bus/phase5_codex/odd_floor.py
+        invoke: .venv/bin/python docs/routeB_bus/phase5_codex/odd_floor.py
+        trigger: Probe 11 (precommit ADDENDUM 12) only; explicit Goal 058 diagnostic request.
+        writes: true
+        approval: TASK_SCOPED_OUTPUT_UNDER_docs_routeB_bus_phase5_codex_out
+        authority: FINITE_CELL_ODD_BLOCK_AND_ENERGY_IDENTITY_DIAGNOSTIC_NOT_A_CERTIFICATE_NOT_RH
+        records_to: [docs/routeB_bus/phase5_codex/out/odd_floor.json, docs/routeB_bus/phase5_codex/out/odd_floor.md]
+        note: >-
+          Non-circular check of the energy identity MAIN (LHS from eigenvector and odd block,
+          RHS from residual mat-vec); odd-block lambda_min; q_ap; rho_stab. Registered by the
+          orchestrator 2026-09-04 (agents do not edit the registry).
+        last_verified: 2026-09-04
+
       - id: s7-table
         classification: MANUAL
         status: ENABLED
