@@ -175,3 +175,10 @@ E-CLOSED ⇔ alternierende Gitter-Summe = Input A mit Gewichten. C2/C3/C4/C5 tot
 - Publication plan extended (items 5–9). Background tasks killed thrice by the harness (backlog C3/C4).
 - State at close: no agents running; queue has no OPEN request; next analytic step is the boundary supplier (judge/Mythos
   territory, not an Opus agent at night). PX_RH_CLAIM: NOT_MADE.
+
+## Addendum (2026-09-04 morning) — ONESHAPE verdict, Probe 17, OVERLAP bound
+
+- ONESHAPE verdict: exact anchored eigenbasis identity; Probe 17 by hand: four extractors of a agree within 2 %; remainder 3-8 %;
+  CORRECTION to the judge: anchor product d1*ell1 flat (0.93→0.90), raw d2 decays (d2*L^2 → -0.5). Atom: <y,u2> = O(1/L^2).
+- OVERLAP request bound with the new bind_request.py (first live use, READY). Line given to owner.
+- External-input triage rule recorded (rule 14 + memory). formal-math percolation: comparator pattern to extend (comparator-lite exists).
