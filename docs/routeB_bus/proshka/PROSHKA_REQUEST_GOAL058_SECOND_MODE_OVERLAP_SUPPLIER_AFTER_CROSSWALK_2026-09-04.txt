@@ -1,0 +1,109 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-04-D2SUPPLY
+BOUNDARY_ID: GOAL058_SECOND_MODE_OVERLAP_SUPPLIER_AFTER_TRIAL_CROSSWALK
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-04-D2SUPPLY (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub).
+DATE: 2026-09-04
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: PROPOSITION59_CCM_FINITE_BOTTOM_GROUND_FAMILY
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_ADJUDICATION_ONLY
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SECOND_MODE_OVERLAP_SUPPLIER_AFTER_TRIAL_CROSSWALK_2026-09-04.md
+AUTHOR: Linux-Claude (observer); every number is the observer's own computation in arb/mpmath (Progress_Log 2026-09-04 evening/night) or agent output re-verified by the observer through a second channel
+PARENT_VERDICTS: TRIALJET (33d863fa), RATE (5aaa3d93), OVERLAP (af1d9ead), ONESHAPE, NEWMECH (C1)
+CONVENTIONS: docs/routeB_bus/CONVENTION_CARD_GOAL058.md; even coordinates v_0 = c_0, v_k = sqrt2 c_k; K = even block of the CCM finite Weil matrix, N = m, L = log m; xi = unit ground (xi_0 > 0), u_2 = unit second eigenvector oriented by (u_2)_1 > 0; y = unit Xi-sample row (y_k/y_0 = (-1)^k Xi(x_k)/Xi(0), x_k = 2 pi k/L); q = unit projected prolate trial k1/g04 (q = P_N f_lambda); kappa(v) = L^2/24 + (L^2/(2 pi^2 v_0)) sum_{k>=1} (v_k/sqrt2)/k^2 (Lean: Proposition59GroundTrialSecondJetDifference.lean, no zero hypotheses); kappa_X = 0.0231049931154; T_m = (L^2/(4 pi^2)) sum_{k>m} 1/k^2; sigma_2 := sd of x^2 under the Xi^2 weight = 13.981099 (continuous), 13.9811 on every lattice cell.
+
+INTAKE (since TRIALJET, 33d863fa)
+
+  1. YOUR CHEAPEST_NEXT_ACTION IS DONE: P59_FINITE_PROJECTED_TRIAL_JET_RATE_CROSSWALK (SUCCESS; Opus paper agent, re-verified by the observer;
+     docs/routeB_bus/AGENT_REPORT_2026-09-04_GOAL058_FINITE_PROJECTED_TRIAL_JET_CROSSWALK_PREFLIGHT.md). kappa(P_{lambda,N}) = -(L^2/2pi^2) sum_{n>N}(c_n/c_0)/n^2
+     is the finite identity, size exp(-pi^2 m/(2 log m)) poly: 4.1e-11 (m=13, N 13->120), 5.0e-24 (43, 43->86), 6.9e-41 (83, model);
+     kappa(B_lambda) = [A(0)B''(0) - A''(0)B(0)]/(2A(0)(A(0) - B(0))) is exp(-pi m) poly: 1.8e-18 (13) .. 5.7e-114 (83). E_{lambda,N}(0) = 0 exactly;
+     E''(0) = -(L^{5/2}/pi^2) sum_{n>N} c_n/n^2. Sampling identity c_n = (-1)^n L^{-1/2} H_lambda(2 pi n/L): the coefficient row IS the windowed
+     Mellin transform on the lattice (observer, m=83 clean cache: (c_n/c_0)/((-1)^n Xi(t_n)/Xi(0)) = 1.000486, 1.001946, 1.012228 at n = 1, 2, 5
+     against 1 + t^2/(16 pi m) = 1.000485, 1.001938, 1.012115). f_lambda has no endpoint jumps (right: support + PSWF Gaussian envelope,
+     g04(1) = O(e^{-pi m}); left: on the h_0/h_4 line i^0 = i^4 so zero integral <=> vanishing at the origin up to the defect). O(lambda^-4)
+     by one integration by parts. Honest gap (agent): the m = 13, 43 caches are precision-floored (|c_n| plateaus at |g04(1)|); m = 83 is the
+     first clean cell (|c_83/c_0| = 3.9e-35, mass at n >= 70: 1.2e-58). Your P_FINITE_PROJECTION_SECOND_JET_TAIL_LOWER_ORDER 0.55: on track.
+  2. YOUR CODEX_DIRECTIVE ITEM IS KERNEL_GREEN (Opus Lean agent on the owner's policy; observer-verified: lake env lean EXIT 0, q3_check ok,
+     axioms [propext, Classical.choice, Quot.sound], no sorry): q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59GroundTrialSecondJetDifference.lean,
+     kappa(F_v) - kappa(F_q) = (L^2/(2 pi^2)) sum_{k=1}^N (v_k/v_0 - q_k/q_0)/k^2 for ANY even rows with nonzero centre. Deviation from your
+     route: proposition59_curvature_closed_form carries ZerosRealOn (proposition59Curvature is DEFINED as root sum + tail); the second jet
+     -F''(0)/(2F(0)) needs no zeros, so the closed form was reproved from proposition59RawTransform_secondDerivative_zero +
+     proposition59RawTransform_at_zero_eq_sqrt (file imports only Proposition59EntireTransform).
+  3. THE THREE ROWS ARE ONE LINE (observer, Probes 3-6, m = 13, 23, 43, 83; u_2 at m = 83 by deflated inverse iteration, lambda_2 = 1.2556e-154):
+       m   share of p on u_2   cos(q-xi,u_2)  cos(y-xi,u_2)   A_q=<q,u_2>  A_y=<y,u_2>  (k(q)-k(G))/A_q  (k(y)-k(G))/A_y
+       13  99.5%               +0.9972        +0.9986         0.0604       0.0381       -0.0721          -0.0734
+       23  99.6%               +0.9978        +0.9986         0.0545       0.0421       -0.0740          -0.0749
+       43  99.8%               +0.9987        +0.9990         0.0431       0.0366       -0.0743          -0.0748
+       83  99.9%               +0.9993        +0.9994         0.0312       0.0278       -0.0738          -0.0741
+     Ground, trial and Xi-row lie on one line along u_2, same side; kappa is affine along it with slope -1/sigma_2 (measured -0.072..-0.075,
+     1/13.98 = 0.0715). q - y is the x^2-modulation of the Xi-row: cos(q - y, (y.x^2) perp y) = 0.9996..1.0000, and
+     (a_m/m) <(y.x^2) perp, u_2> reproduces A_q - A_y to 0.4-2.6%.
+  4. u_2 IS EXPLICIT TO 99.5%: <(y.x^2) perp y, u_2> = 13.93, 13.91, 13.93, 13.95 while ||(y.x^2) perp y|| = 13.9811 on every cell (lattice-
+     independent; continuous Xi^2-weighted sd of x^2 = 13.981099): cos(u_2, Xi-row.(x^2 - <x^2>)) = 0.9963, 0.9952, 0.9963, 0.9978. The remainder
+     rem = u_2 - w/||w|| (norm 0.086, 0.098, 0.086, 0.066) lies 99.7% in span{y, (y.x^4) perp}: cos(rem, (y.x^4) perp{y,w}) = -0.90, cos(rem, y) = 0.43
+     (constant), so u_2 = Xi-row times an even polynomial of degree 4 to 99.7%, and d_2 := <y,u_2> = 0.43 ||rem||. Consequences (exact where
+     stated): alpha_G = s d_2 with s ~ 1/sigma_2 (affine law); delta = s A_q; A_q - d_2 = a_m sigma_2/m (explicit). By the affine law
+     d_2 = alpha_G sigma_2: d_2/T_m = 3.16, 4.17, 4.65, 4.87, 4.91, 4.88 (m = 13..313) -- saturating near 4.9. In functions:
+     G(x) ~ Xi(x) (1 - d_2 (x^2 - <x^2>_Xi)/sigma_2) is the whole ground-vs-Xi deviation at the one-shape level.
+  5. YOUR R1 (CURVATURE SUBLEVEL ENVELOPE) IS DEAD BY ITS OWN FALSIFIER (Probe 20, arb). On S_eps = {v_0 = 1, v^T K v <= eps} the extremes of the
+     linear functional kappa are kappa(v_c) +- W(eps), v_c = K^{-1}e_0/(e_0^T K^{-1} e_0) (which IS the ground: kappa(v_c) - kappa_X = alpha_G to all
+     digits), W(eps) = sqrt((eps - eps_min) g), g = l_perp^T (PKP)^+ l_perp:
+       m   T_m      eps_min    eps_q=R(q)/q_0^2   W(eps_q)   W(lambda_2 level)   W(2 eps_min)
+       13  1.2e-2   2.5e-30    1.4e-15            3.1e+3     0.078               1.3e-4
+       23  1.1e-2   2.8e-51    5.7e-26            2.7e+8     0.079               6.1e-5
+       43  8.2e-3   4.7e-90    1.3e-40            1.5e+20    0.078               2.9e-5
+       83  5.9e-3   1.8e-161   5.3e-70            6.7e+40    0.077               1.2e-5
+     At the trial's Rayleigh level the set contains anchor-compatible rows whose curvatures differ by 1e3..1e40 >> T_m on every cell. W at the
+     lambda_2 level is the constant slope s/xi_0; W <= T needs eps - eps_min <= lambda_2 (T/s)^2 ~ 0.006 lambda_2, i.e. the row's Rayleigh quotient
+     known to a small fraction of the collapsed gap. R1 is the gap wall renamed unless the admissible set carries more than a Rayleigh level.
+  6. YOUR R2 (TRIAL-RELATIVE ONE-SHAPE) HOLDS NUMERICALLY: higher-mode remainder delta - A_q/sigma_2 = 3.4e-5, 1.4e-4, 1.2e-4, 7.2e-5 = 0.3-1.5% of T_m
+     (0.8-3.7% of delta); but the second-mode coefficient is A_q = d_2 + a_m sigma_2/m with the second term explicit, so R2 reduces to d_2 = O(T_m).
+  7. Trial residual in the eigen-equation (arb): ||(K - lambda_1) q|| = 1.9e-8, 3.2e-14, 5.4e-21, 1.1e-35; ||r||/lambda_2 = 7e16..7e62 (Davis-Kahan by
+     the gap vacuous by 16-62 orders); the residual is carried by a 1e-16 mass at O(1) eigenvalues, the direction defect by u_2.
+
+THE WALL IN ONE LINE. Every representation you ranked (R1 envelope, R2 one-shape, the curvature-transfer identity of OVERLAP, the far-zero
+deficit of RATE) converges on the same scalar: d_2(m) = <Xi-row, u_2(m)>, observed ~ 4.9 T_m, with u_2 known to 0.5% as the Xi-row times
+(x^2 - <x^2>)/sigma_2 and d_2 living entirely in the 0.5% remainder (its y-component).
+
+QUESTIONS
+
+Q1 KILL OR REPAIR R1. Given item 5, is P59_GROUND_TRIAL_CURVATURE_SUBLEVEL_ENVELOPE dead as stated (the falsifier fires on every registered
+   cell), and is there ANY admissible set definable from the source (not from a Rayleigh level) on which the S-lemma certificate has width
+   O(T_m)? Name it exactly or kill R1.
+Q2 THE d_2 SUPPLIER WITH u_2 EXPLICIT. u_2 = P_2 + rem with P_2 = Xi-row.(x^2 - <x^2>)/sigma_2 exact up to 0.5% and rem 99.7% in span{y, (y.x^4)perp}.
+   d_2 = <y, rem>. (a) Write d_2 through the eigen-equation for u_2 restricted to the ladder span V_3 = span{y, y.x^2, y.x^4}: the 3x3 compression
+   K|V_3 and its second eigenvector give a d_2^{(3)} -- is d_2^{(3)} source-computable from the CCM entries (tau_entry sums against Xi-samples),
+   and what is the exact remainder d_2 - d_2^{(3)}? (b) Is the compression K|V_n for the polynomial ladder a known object (Xi-weighted Hankel /
+   moment matrix of the Weil form; Connes-Consani prolate/Sonin line; Suzuki 2606.09096) with a proven asymptotic for its second eigenvector?
+   (c) State the exact theorem "d_2 = O(T_m)" in ladder terms and its first failure point.
+Q3 THE FUNCTIONAL FORM. G(x) ~ Xi(x)(1 - d_2 (x^2 - <x^2>)/sigma_2) says the ground transform is Xi times a quadratic to one-shape accuracy. Is there
+   a source identity for the quadratic's coefficient -- e.g. the second moment of the Weil form's bottom against x^2 (the "physical second
+   moment" of your R2 in RATE), the derivative of lambda_1 with respect to the window (Fuchs-type dlambda/dL = -c|v(L)|^2, queue Q9), or the
+   curvature-transfer identity 2 pi d_2 = l_1 (alpha M - E) with E now explicit through the trial? Rank with falsifiers; name the cheapest
+   decisive test.
+Q4 SCORE without editing: observer's P_ENVELOPE_WIDTH_AT_TRIAL_LEVEL_GG_T 0.90 (CONFIRMED), P_WIDTH_AT_LAMBDA2_LEVEL_GG_T 0.70 (CONFIRMED),
+   P_CENTRE_CURVATURE_NEAR_GROUND 0.80 (CONFIRMED exactly); your P_FINITE_PROJECTION_SECOND_JET_TAIL_LOWER_ORDER 0.55 (on track, item 1).
+
+REGISTERED PREDICTIONS (K6, observer, before your answer)
+  P_R1_KILLED_AS_STATED: 0.80 -- Q1: no source-definable admissible set of width O(T_m) is named; R1 is killed.
+  P_LADDER_COMPRESSION_COMPUTABLE: 0.60 -- Q2(a): d_2^{(3)} is computable from CCM entries against Xi-samples; the remainder is the open piece.
+  P_LADDER_IS_KNOWN_OBJECT: 0.35 -- Q2(b): the judge names a literature object with a proven second-eigenvector asymptotic.
+  P_QUADRATIC_COEFFICIENT_HAS_SOURCE_IDENTITY: 0.30 -- Q3: a source identity for the quadratic's coefficient is stated (not merely renamed).
+
+REQUIRED VERDICT
+  1. repeat REQUEST_ID, BOUNDARY_ID, request commit, Git blob, SHA-256; six-field phase key unchanged;
+  2. Q1-Q3 exact; ranked next action with falsifier;
+  3. score all predictions without editing probabilities;
+  4. Lean-ready vs new analytic; CODEX DIRECTIVE only if a Lean-ready item exists (candidates: E''(0) formula; the sampling identity
+     c_n = (-1)^n L^{-1/2} H_lambda(2 pi n/L) for a finite even row; the S-lemma centre identity v_c = K^{-1}e_0/(e_0^T K^{-1}e_0));
+  5. no Lean edit, no numerical run, no route promotion, no RH claim; write only the expected verdict document.
