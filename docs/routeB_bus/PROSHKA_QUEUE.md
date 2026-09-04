@@ -14,15 +14,21 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## LOGDERIV+R2 · Goal 058: R1 killed by preflight; R2 alive by Probe 19 (trial second jet = κ_X − (1/16π)/m; ground−trial = 0.38 T) · OPEN (intake for next batch, not sent)
+## REQ-2026-09-04-TRIALJET · Goal 058: R1 dead, R2 alive; trial second jet exact kappa(k_lambda) = kappa_X - 1/(16 pi m) + 13/(256 pi^2 m^2); wall = one scalar delta_m = kappa(G) - kappa(k_lambda) ~ 0.38 T_m · OPEN
 
-- Preflight (Opus, read-only): `docs/routeB_bus/AGENT_REPORT_2026-09-04_GOAL058_IMAGINARY_AXIS_LOG_DERIVATIVE_TAIL_MATCH_PREFLIGHT.md` · code `P59_LOG_DERIVATIVE_ONLY_RENAMES_CURVATURE` · judge's prediction 0.35 REFUTED; observer's `P_R1_ONLY_RENAMES` 0.70 confirmed.
-- Observer's hand probe (Progress_Log 2026-09-04 noon, before the agent): `D(y) = S_G(y) − S_X(y)` is FLAT in y: `D/α = 1.00` for `y ≤ 5` on m = 13..83; `0.98` at y = 20 (m=83); sign flip only at `y ≳ x_N`. The `1/(ρ²+y²)` weight suppresses nothing below the window scale.
-- Verified by the observer (mpmath, independent construction, m=13, 12 digits): root-free `S_G(y) = (1/2y)[(L/2)coth(yL/2) + 𝓡'/𝓡]`, `𝓡(y) = c₀/y + 2y Σ_{k=1}^{N} c_k/(x_k²+y²)` (c_k = FULL mode coefficients, c_k = v_k/√2); `κ_X = ½[−8 + ¼ψ'(1/4) + (ζ'/ζ)'(1/2)] = 0.0231049931154` (unconditional, no zero location); `S_X(1/2) = Σ_ρ 1/ρ = 1 + γ_E/2 − ½log 4π = 0.0230957089661`.
-- Agent's obstruction (paper, verified only at the level of the numbers above): below the spectral gap `S_G − S_X = α_m + O(y²c₄)`, so any `y_m → 0` budget IS a bound on `α_m`; at `y ≍ x_N` `|D| = O(T_m)` comes free by triangle inequality (root block `≤ N/x_N² = T_m`, target `(π/2)T_m`) and carries no information about y = 0; `S_X` is a Stieltjes transform of a positive measure ⟺ RH, so Herglotz/Loewner interpolation is unavailable on the target side.
-- Gap restated (both sides source-explicit scalars): `(L²/2)[1/12 + (1/2π²v₀)Σ_{k≠0} v_k/k²] → ½(log ξ)''(1/2)` at rate `O(L²/m)` — a statement about the CCM bottom eigenvector alone.
-- R2 probed by the observer (Probe 19, `docs/routeB_bus/phase5_codex/r2_second_jet.py`, Progress_Log 2026-09-04 day): ALIVE. Trial piece `κ(q_m) − κ_X = −a_m/m`, `a_∞ = 0.019892 ≈ 1/(16π)` (real-axis factor `1 + a_m x²/m` to 3 digits); ground piece `δ_m = κ(G) − κ(q) = 0.353, 0.381, 0.389 · T_m` on m = 13, 23, 43 and `≈ 0.073√p_m`; on all six cells `(α_G + a_∞/m)/T = 0.350..0.389`. Relative Ritz is vacuous on N = m (`R(q)/λ₁ ≥ 5e14`). Derived (agent, `docs/routeB_bus/AGENT_REPORT_2026-09-04_GOAL058_TRIAL_SECOND_JET_CONSTANT_DERIVATION.md`, DERIVED_EXACT; observer's blind test on `b` passed): `κ(q_m) = κ_X − 1/(16πm) + 13/(256π²m²) + …`, ζ cancels identically in `Φ_m` (purely archimedean, one `h_8` admixture, `PW_λ = λ²H + ∂(x²∂)` exact); Lemma 7.3 gives NO rate, Lemma 7.2 gives `O(λ⁻²)`. Question (i) becomes: confirm the ζ-cancellation identity and the `h_8` first-order computation (paper check); (ii) the remaining atom `|δ_m| ≤ C T_m` — is there a source supplier for the ground–trial node error `ξ_k/ξ_0 − q_k/q_0` weighted by `1/k²` that does not pass through `p_m` or a gap?
-- Question for the next batch (superseded in part by the R2 probe above): with R1 dead and R2 (physical second moment) untested, what is the ranked next representation? Candidates from the observer: (a) R2 as `κ(G) = ½‖D_log^{-1}‖²`-type trace against the finite window (already killed as an HS norm — say exactly what R2 adds); (b) the eigenvector statement above attacked via the Xi-row (κ(Xi-row) = κ_X to 1e-11) and the anchored two-mode form `G − X = aψ₂ + R` with `2πd₂ = ℓ₁(αM − E)`.
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_TRIAL_SECOND_JET_EXACT_AND_GROUND_TRIAL_GAP_2026-09-04.txt`
+- Boundary: `GOAL058_TRIAL_SECOND_JET_EXACT_AND_GROUND_TRIAL_JET_GAP`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: LOGDERIV preflight (R1 killed), Probe 19 (4 production cells + bonus), trial-constant derivation (DERIVED_EXACT, blind test passed), m=163 real-rootedness
+- Registered predictions: P_ZETA_CANCELLATION_CONFIRMED 0.85; P_H8_FIRST_ORDER_CONFIRMED 0.75; P_DELTA_HAS_GAPFREE_SUPPLIER 0.30; P_DELTA_ATOM_IS_RENAMING 0.35
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `0c371b5f67383759fcf5bd579953e3783cfe974a` / `10163` / `97` /
+  `a4ece72bae1a7227a03cfe3936a9a635ba8a4e7f1fe9058806d199b956008864` /
+  `22e2c22e79fbcf489c77b746bb6f90405fcf9d23` / `yes`
+
+---
 
 ## REQ-2026-09-04-RATE · Goal 058: curvature rate re-read — alpha = kappa(G)-kappa_Xi ~ 0.35 L^2/(4 pi^2 m) (m=313 discriminator), alpha = T_tail - Def exactly; atom = far-zero deficit Def <= (1-c) T_tail; window-scale winding lock · ANSWERED
 
