@@ -1,0 +1,117 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-04-SIGNFREE
+BOUNDARY_ID: GOAL058_SIGNFREE_RITZ_INSIDE_CCM_UNIFORM_ERROR_ATOM
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-04-SIGNFREE (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub).
+DATE: 2026-09-04
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: PROPOSITION59_CCM_FINITE_BOTTOM_GROUND_FAMILY
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_ADJUDICATION_ONLY
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SIGNFREE_RITZ_INSIDE_CCM_UNIFORM_ERROR_ATOM_2026-09-04.md
+AUTHOR: Linux-Claude (observer); mechanism phase, closure format; every number is the observer's own arb computation or verified by a second channel
+PARENT_VERDICTS: FULLCHAIN (660a072c), D2SUPPLY (87e123ea), TRIALJET (33d863fa), NEWMECH (C3 conditional lemma), living-chat conditional ruling "QUARANTINE_R3_WIDE_SCHEDULE_UNTIL_CCM_NONCIRCULARITY_AUDIT" (relay)
+BASE_TIP: 0f58282e
+
+0. WHAT THIS BATCH ASKS (mechanism phase; closure format: two admissible answers)
+ Your conditional ruling asked for the weaker statement INSIDE eps_inf <= C that is still sufficient for the G3 consumer
+ (sup_K |F_ground - F_trial| -> 0 on one precommitted schedule) but does NOT pass through positivity of mu_lambda on all windows.
+ The observer names one candidate below (the SIGN-FREE Ritz form). Two admissible answers:
+ (A) WEAKER_STATEMENT_ACCEPTED: the sign-free premise is strictly weaker than RH (name what it does and does not imply), the compact
+     transfer is LEAN-READY, and the chain to the consumer is typed step by step with FIRST_FAILURE and a supplier landscape for the premise.
+ (B) STILL_RH_EQUIVALENT: a proof (or a cited theorem) that the sign-free premise on ANY admissible schedule already implies
+     mu_lambda >= 0 for all lambda (hence RH), naming the exact step where the sign re-enters.
+ A bare next-step answer is rejected.
+
+1. SHELF (read-only, sha256 prefix 16 at BASE_TIP 0f58282e)
+ docs/Progress_Log.md                                                       05452bba9bd60748
+ docs/routeB_bus/WALL_OBJECT_CARD_2026-09-03.md                             829a7fc3f0c9b26c
+ docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_FULL_CLOSURE_CHAIN_2026-09-04.md   9583f789e076095c
+ docs/routeB_bus/AGENT_REPORT_2026-09-05_GOAL058_WIDE_SCHEDULE_R3_CHAIN_PREFLIGHT.md b9980a90d1d1db4e
+ q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean          ed97148bc451f4ca
+ q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59GroundTrialSecondJetDifference.lean 5cf775957a0074f7
+ docs/routeB_bus/litreview/pdfs/2511.22755.pdf (CCM)                           c98d89f7fc999d03
+
+2. SOURCE-LOCK AUDIT DONE (observer, pdftotext of the CCM PDF; line numbers of the text layer)
+ (1) Cor. 3.7 (l.557-558): mu_lambda = "the largest lower bound of the spectrum of A_lambda" (bottom of the semilocal Weil form on
+     L^2([1/lambda, lambda], d*u)); a minimizer phi exists. (2) (3.27) (l.561): lambda > lambda' => mu_lambda <= mu_lambda', for lambda > 1,
+     proved via the piecewise-smooth core and nu <= mu_lambda <=> Q(f,f) >= nu ||f||^2 on supports in [1/lambda, lambda].
+ (3) Cor. 3.7 (l.559): "Note that we cannot assert that mu_lambda >= 0." No bound on mu_lambda in either direction anywhere in the paper.
+ (4) Cor. 3.8 (l.573): "If the limit when lambda -> infinity of the decreasing function mu_lambda is equal to 0 then RH holds."
+ (5) Prop. 3.4 (l.414-421): "the lower bound of Q_W_lambda is the limit, when N -> infinity, of the smallest eigenvalue of the restriction of
+     Q_W_lambda to the linear span E_N of the functions V_k with |k| <= N" — our saturation lambda1(m,N) -> lambda1(m,inf) IS mu_lambda at lambda^2 = m.
+ Consequence (verified chain): eps_inf(m) := lim_N R(q_{m,N})/lambda1(m,N) <= C cofinally => mu_lambda >= R/C > 0 cofinally => (3.27) mu_lambda > 0 for
+ all lambda => with R(q_lambda) -> 0, lim mu_lambda = 0 => RH by Cor. 3.8. Hence R3 as "eps_inf <= C" is CCM_UNIFORM_ERROR_RH_ATOM (your renaming accepted).
+
+3. NUMBERS (arb; FINITE_CELL only; none certifies a cofinal statement)
+ Saturation of the bottom (Prop. 3.4 in numbers): lambda1(m,N) saturates at N* ~ 4.6m, 6.3m, ~8m for m = 13, 23, 43:
+   mu at lambda^2 = 13, 23, 43: 3.484e-59 (N=120), 1.828e-112 (N=160), 2.620e-220 (N=340; agent's Figure-4-law prediction 10^-219.5 = 3.2e-220).
+   Decades per unit m: 5.33 (13->23), 5.40 (23->43); Fuchs exponent 4 pi / ln 10 = 5.46. At N = m the slope is 2.10: N = m never measures mu.
+ Saturated wide cells (clean caches; trial generator MAX_DEGREE 600, PACKET_DPS 220, quad 512 — the earlier MAX_DEGREE 180 caches were
+ floored at |c_n| ~ 1e-43 and are NOT usable for R(q) beyond N ~ 90 at m = 23):
+   cell      lambda1     lambda2     R(q)       eps=R/l1  (R-l1)/(l2-l1)  p=1-<xi,q>^2  delta=k(G)-k(q)  E_K0=sup_K0|f_G-f_q|
+   (13,120)  3.484e-59   1.312e-51   4.720e-59  1.355     9.42e-9         4.69e-9       -4.6e-6          4.8e-6
+   (23,160)  1.828e-112  9.297e-104  2.427e-112 1.328     6.45e-10        4.78e-10      -1.5e-6          (not yet computed)
+ eps_inf(13) = 1.35, eps_inf(23) = 1.33 (m = 43 pending: units (43,320) and the precommitted N = 8m cell (43,344)).
+ Where the trial's excess energy sits on (13,120) (full eig, 121 pairs): off-ground MASS 100.00% on u_2; ENERGY R - lambda1 = 1.236e-59 splits
+   49.8% on u_2 (lambda2 p), 22.5% u_3, 6.2% u_4, 27.7% on the top of the spectrum (mass 7e-13% of p). So p ~ (R-l1)/(2 (l2-l1)); the sign-free
+   Ritz bound is tight within 2x (13,120) and 1.35x (23,160). No separate "source tail" (B_lambda, E_{lambda,N}) is visible in the spectral split.
+ On N = m cells (Probe 23) the compact defect on K0 equals |delta_m| within 5% (4.5e-3 -> 2.4e-3, ratios 0.79, 0.72 per step); on (13,120) it is 4.8e-6.
+
+4. THE CANDIDATE WEAKER STATEMENT (observer)
+ For ANY real symmetric K with eigenpairs (lambda_j, u_j), lambda_1 <= lambda_2 <= ..., and any unit q (spectral decomposition, no sign):
+   (lambda_2 - lambda_1) * p <= sum_j (lambda_j - lambda_1) <q,u_j>^2 = R(q) - lambda_1,   p := 1 - <q,u_1>^2.                          (SF)
+ Hence p_m -> 0 on a schedule iff-ish  (R(q_m) - lambda_1(m)) / (lambda_2(m) - lambda_1(m)) -> 0.                                    (SF-rate)
+ Since R(q) <= lambda_2 by many orders (1e-59 vs 1e-51; 1e-112 vs 1e-104) the premise (SF-rate) is equivalent to
+   lambda_1(m) >= R(q_m) - o(lambda_2(m)),  i.e. essentially   lambda_1(m) >= -o(lambda_2(m)):                                       (P-)
+ the bottom may be NEGATIVE, as long as it is not below zero by a non-vanishing fraction of the second eigenvalue. (P-) does not imply
+ mu_lambda >= 0, so the (3.27)+Cor.3.8 chain to RH does not fire from (P-) alone. Under RH, (P-) holds trivially (lambda_1 > 0). Under not-RH,
+ Bombieri/Yoshida give lambda_1 < 0 for large windows; (P-) then asks whether the negative part is o(lambda_2) — unknown to us.
+ Compact transfer (the judge's S7, previously typed NEW-MATH): the anchored P59 map is bounded from l^2 to C(K): for the raw transform
+   |F_v(z)| = |L^{-1/2} sum_n c_n 2 sin(zL/2)/(z - x_n)| <= ||c||_2 * (sum_n |2 sin(zL/2)/(z - x_n)|^2 / L)^{1/2} =: ||c||_2 C(K,L),  C(K,L) = poly(L),
+ and F_v(0) = sqrt(L) v_0; with v_0, q_0 bounded below (numerically 0.3..0.95) the anchored difference obeys
+   sup_K |F_xi/F_xi(0) - F_q/F_q(0)| <= C'(K,L) ||xi - q||_2 <= C'(K,L) sqrt(2 p).
+ Since p decays super-exponentially on saturated cells while C' grows polynomially in L = log m, (SF-rate) => the consumer. Claimed LEAN-READY
+ (Cauchy-Schwarz on the explicit kernel + anchor lower bound); please audit the anchor step (a lower bound on |xi_0| is a source statement).
+
+QUESTIONS
+Q1 Is (P-) strictly weaker than RH? State exactly what (P-) on one admissible schedule implies and does not imply (in particular: does
+   lambda_1(m) >= -o(lambda_2(m)) on a cofinal family, combined with (3.27) or any other CCM inequality, force mu_lambda >= 0?). If a hidden
+   sign re-enters, name the exact step (answer (B)). Note: in (SF) the denominator lambda_2 - lambda_1 is always >= 0; no positivity is used.
+Q2 Type the chain (P-) => (SF-rate) => p_m -> 0 => compact consumer, each step THEOREM / LEAN-READY / CONDITIONAL / NEW-MATH with FIRST_FAILURE;
+   in particular audit the compact-transfer claim above and the anchor lower bound |xi_0(m)| >= c > 0 (is it a source statement, e.g. from the
+   sampling identity F_xi(0) = sqrt(L) xi_0 and the ground's window concentration?).
+Q3 Supplier landscape for (P-) (the only NEW-MATH step if Q1 = weaker): (a) an unconditional lower bound of the form lambda_1(m) >= -e^{-c m}
+   or >= -o(lambda_2) for the CCM finite/continuum bottom — is anything of this kind known (Bombieri 2000 "Remarks on Weil's quadratic
+   functional", Yoshida 1992, Connes-Consani semilocal positivity 2106.01715/2310.18423, Suzuki 2606.09096), or does every known result have the
+   form "mu >= 0 iff RH"? (b) the dichotomy form: under not-RH, is the negative part of the bottom on [1/lambda, lambda] of size >= c lambda_2(lambda)
+   (then (P-) fails and the route fails honestly) or can it be super-exponentially smaller than lambda_2 (then (P-) is genuinely weaker)?
+   (c) what does the trial energy R(q_lambda) -> 0 need (Figure 4 is a plot; is Q_W(k_lambda) <= e^{-4 pi lambda^2 + O(log lambda)} a theorem in CCM or
+   elsewhere)? Rank with falsifiers; cheapest decisive test on existing caches.
+Q4 SCORE without editing: observer's P_EPS_INF_BOUNDED_BY_2 0.55 (two of three m confirmed: 1.35, 1.33), P_NSTAR_GROWS_FASTER_THAN_LINEAR 0.65
+   (CONFIRMED: 4.6, 6.3, ~8), P_CCM_HAS_NO_LOWER_BOUND_ON_BOTTOM 0.75 (CONFIRMED, none in either direction), P_ROOF_ACCEPTS_N_OF_M 0.60
+   (CONFIRMED: PairCofinal = m -> inf and N -> inf independently), P_MAXDEG600_FLOOR_BELOW_1E-100 0.75 (CONFIRMED); judge/living-chat
+   P_WIDE43_PROJECTIVE_ERROR_LE_1E_7 0.67 (pending), P_WIDE_RESIDUAL_HAS_SOURCE_TAIL_EXPLANATION 0.58 (UNRESOLVED, leaning refuted: no separate
+   tail in the spectral split), P_CURVATURE_ROUTE_BEATS_WIDE_SCHEDULE_AFTER_PROBES 0.27 (open).
+
+REGISTERED PREDICTIONS (K6, observer, before your answer)
+  P_SIGNFREE_PREMISE_STRICTLY_WEAKER_THAN_RH: 0.55 -- Q1 answer (A): (P-) does not force mu >= 0.
+  P_COMPACT_TRANSFER_LEAN_READY: 0.75 -- Q2: the Cauchy-Schwarz transfer with anchor bound is typed LEAN-READY (anchor bound CONDITIONAL at worst).
+  P_JUDGE_NAMES_UNCONDITIONAL_LOWER_BOUND: 0.15 -- Q3(a): a cited theorem gives lambda_1 >= -o(lambda_2) or similar without RH.
+  P_NOT_RH_NEGATIVE_PART_IS_LARGE: 0.50 -- Q3(b): the judge argues the negative part under not-RH is >= c lambda_2 (route fails honestly).
+
+REQUIRED VERDICT
+  1. repeat REQUEST_ID, BOUNDARY_ID, request commit, Git blob, SHA-256; six-field phase key unchanged;
+  2. answer (A) or (B) with the typed chain; Q1-Q3 exact; ranked next action with falsifier;
+  3. score all predictions without editing probabilities;
+  4. Lean-ready vs new analytic; CODEX DIRECTIVE only if a Lean-ready item exists (candidates: (SF) for real symmetric matrices;
+     the P59 compact-transfer inequality with explicit C(K,L));
+  5. no Lean edit, no numerical run, no route promotion, no RH claim; write only the expected verdict document.
