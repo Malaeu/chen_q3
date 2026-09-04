@@ -14,6 +14,22 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-04-SIGNFREE · REQ-2026-09-04-SIGNFREE · Goal 058: the weaker statement inside eps_inf <= C — sign-free Ritz (P-): lambda_1 >= -o(lambda_2) suffices for the compact consumer without positivity on all windows; source-lock audit of CCM Cor 3.7/(3.27)/Cor 3.8/Prop 3.4 attached; eps_inf(13) = 1.35, eps_inf(23) = 1.33 · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SIGNFREE_RITZ_INSIDE_UNIFORM_ERROR_2026-09-04.txt`
+- Boundary: `GOAL058_SIGNFREE_RITZ_INSIDE_CCM_UNIFORM_ERROR_ATOM`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: R3 preflight (agent) + observer's CCM source-lock audit; saturation scans m=13,23,43; clean (23,160) cache; (13,120) spectral split of the trial's excess energy; Probe 23 compact defect; judge's conditional ruling (R3 quarantined)
+- Registered predictions: P_SIGNFREE_PREMISE_STRICTLY_WEAKER_THAN_RH 0.55; P_COMPACT_TRANSFER_LEAN_READY 0.75; P_JUDGE_NAMES_UNCONDITIONAL_LOWER_BOUND 0.15; P_NOT_RH_NEGATIVE_PART_IS_LARGE 0.50
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `f7f6b91cdec7f8362a858f7a7974f685d24e78db` / `11666` / `117` /
+  `a7e2c3f27e709870ba805f523df40e99a7a1c3e18c0ac0efb534318f67e9e4d1` /
+  `416596d51d30d8511ee9afe732e54a891af98fd9` / `yes`
+
+---
+
 ## REQ-2026-09-04-FULLCHAIN · REQ-2026-09-04-FULLCHAIN · Goal 058: full closure chain or irreducible atom (FULL_CHAIN | IRREDUCIBLE_ATOM; schedule N(m) free; Probe 22 attached) · ANSWERED
 
 - `STATUS: ANSWERED`
