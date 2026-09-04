@@ -182,3 +182,10 @@ E-CLOSED ⇔ alternierende Gitter-Summe = Input A mit Gewichten. C2/C3/C4/C5 tot
   CORRECTION to the judge: anchor product d1*ell1 flat (0.93→0.90), raw d2 decays (d2*L^2 → -0.5). Atom: <y,u2> = O(1/L^2).
 - OVERLAP request bound with the new bind_request.py (first live use, READY). Line given to owner.
 - External-input triage rule recorded (rule 14 + memory). formal-math percolation: comparator pattern to extend (comparator-lite exists).
+
+## Addendum (2026-09-04 morning, after OVERLAP) — the wall is one scalar
+
+- OVERLAP verdict intaken; Probe 18 (five cells): exact curvature-transfer identity to 1e-15; M stable; E/(alpha M) 0.07 -> 0.037;
+  d2/alpha = -13.8 (2 %). Atom: alpha_m = kappa(G_m) - kappa_Xi = O(1/L^2) — the curvature of 03.09, now as a rate.
+- Lean agent: Proposition59AnchoredSecondModeOverlap.lean (five finite identities, judge directive). Paper agent: transfer-remainder preflight.
+- Tools: bind_request.py first live use OK. Rule 14 (external input triage) added.
