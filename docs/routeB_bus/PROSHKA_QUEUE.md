@@ -14,11 +14,21 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## ENVELOPE · Goal 058: R1 of TRIALJET — curvature sublevel envelope on the low-Rayleigh set; one-shape data along u2 · OPEN (candidate for the next batch, not sent)
+## REQ-2026-09-04-D2SUPPLY · Goal 058: after the trial crosswalk -- R1 envelope dead by its falsifier (S-lemma width 3e3..7e40), R2 holds but reduces to d2; u2 explicit to 99.5% (Xi-row x (x^2 - <x^2>)/sigma_2, sigma_2 = 13.98); supplier for d2 = <Xi-row,u2> = O(T_m) · OPEN
 
-- After TRIALJET (33d863fa): trial jet crosswalk SUCCESS (agent + observer), finite identity Lean-green, so the wall is `delta_m = kappa(G_m) - kappa(q_m)` with both rows source-explicit. Judge's Rank 1: `P59_GROUND_TRIAL_CURVATURE_SUBLEVEL_ENVELOPE` — bound the cross-multiplied anchored curvature functional on the exact low-Rayleigh set containing G and q without estimating their distance; discriminator: a source-specific dual/S-lemma certificate with both signs before any spectral inverse.
-- Our data for it: the whole ground-trial-Xi-row geometry is one direction u2 with kappa affine along it (slope -1/sigma_2, sigma_2 = 13.98 an Xi-invariant); u2 is the second ladder step Xi-row·(x^2 - <x^2>) to 99.5%; the trial's Rayleigh quotient is 5e14..3e49 lambda_1 while its direction defect is 1e-3 — the low-Rayleigh set at the trial's level is huge, so the envelope must use more than the Rayleigh level (which set exactly?).
-- Questions to draft: (i) exact definition of the admissible set and the functional for R1 with our u2 data; (ii) does the affine-along-u2 structure make the S-lemma certificate rank-one (then it IS the d2 wall) or does the envelope bound kappa without d2; (iii) Lean-ready pieces: E''(0) formula, kappa(P) identity (done), sampling identity c_n = (-1)^n L^-1/2 H(2 pi n/L).
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SECOND_MODE_OVERLAP_SUPPLIER_AFTER_CROSSWALK_2026-09-04.txt`
+- Boundary: `GOAL058_SECOND_MODE_OVERLAP_SUPPLIER_AFTER_TRIAL_CROSSWALK`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: crosswalk preflight SUCCESS; Lean GroundTrialSecondJetDifference KERNEL_GREEN; Probes 3-6 (one line along u2, sigma_2 invariant, ladder decomposition of u2); Probe 20 (S-lemma envelope); R2 remainder; residual table
+- Registered predictions: P_R1_KILLED_AS_STATED 0.80; P_LADDER_COMPRESSION_COMPUTABLE 0.60; P_LADDER_IS_KNOWN_OBJECT 0.35; P_QUADRATIC_COEFFICIENT_HAS_SOURCE_IDENTITY 0.30
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `1f41e4cbe20a672ed0b4c0b0c46da1c4e43aca3c` / `11695` / `109` /
+  `38da3012f2a5578af69adbe37a3ee7ad77f77e68bd64bcd8ecbb9c967db0fd2a` /
+  `d0f6875cc15998a1504e825032f8406b250e31d0` / `yes`
+
+---
 
 ## REQ-2026-09-04-TRIALJET · Goal 058: R1 dead, R2 alive; trial second jet exact kappa(k_lambda) = kappa_X - 1/(16 pi m) + 13/(256 pi^2 m^2); wall = one scalar delta_m = kappa(G) - kappa(k_lambda) ~ 0.38 T_m · ANSWERED
 
