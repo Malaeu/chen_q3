@@ -14,10 +14,15 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-04-RATE · Goal 058: curvature rate re-read — alpha = kappa(G)-kappa_Xi ~ 0.35 L^2/(4 pi^2 m) (m=313 discriminator), alpha = T_tail - Def exactly; atom = far-zero deficit Def <= (1-c) T_tail; window-scale winding lock · IN_REVIEW
+## REQ-2026-09-04-RATE · Goal 058: curvature rate re-read — alpha = kappa(G)-kappa_Xi ~ 0.35 L^2/(4 pi^2 m) (m=313 discriminator), alpha = T_tail - Def exactly; atom = far-zero deficit Def <= (1-c) T_tail; window-scale winding lock · ANSWERED
 
-- `STATUS: IN_REVIEW`
-- Delivery observed 2026-09-04 (late morning): owner pasted the one-line GitHub-locator instruction; judge accepted and is working.
+- `STATUS: ANSWERED`
+- Verdict: `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_CURVATURE_RATE_L2_OVER_M_AND_FAR_ZERO_DEFICIT_2026-09-04.md` · commit `5aaa3d93` · blob `8632ff4213b5222f28610f81c630497206237185`
+- Operative class: `TRY_UNCONDITIONAL_SCALAR_CURVATURE_RATE` · Q1: alpha = T - Def EXACT (definition lock; Lean-verified definitions); T ~ L^2/(4 pi^2 m) with two-sided bounds; DIRECTION REPAIR: 'Def <= (1-c)T' gives alpha >= cT (a LOWER bound), not convergence; the rate atom is |alpha| <= C T (Def in a band (1-C)T..(1+C)T); alpha/T -> 0.35 is FIT_NOT_LAW; compact identification needs in addition: nonzero transfer moment, remainder o(alpha), coherent profile, combined remainder -> 0 · Q2: kappa_Xi as sum of 1/gamma^2 over REAL gamma is RH-CONDITIONAL (killed as unconditional); one-sided count N_G >= N_Xi gives an upper bound on Def = lower bound on alpha (wrong direction); real-rootedness + degree do NOT give a lower window count (plant: all roots can sit beyond R); Def is not only an inside-window mismatch; 0.35 is a finite diagnostic · Q3: window-scale Rouche: Xi boundary ~ poly(R) 10^{-3.2 m/L} vs ground boundary ~ 10^{-0.95 m}: G/X -> 0 on the boundary, relative error -> 1, no uniform margin · Q4: alpha and Delta(x) re-read as L^2/m CANDIDATES (not proved); a(m), d_2 conditionally; W, sup|Delta_n|, reciprocal energy NOT re-read from alpha (signed vs absolute); conditional profile scales W = O(L/m), sup = O(L^2/m), energy = O(L^3/m^2)
+- Kills: Def <= (1-c)T as alpha-upper supplier; kappa_Xi as positive real gamma sum unconditionally; real-rooted degree -> growing-window lower count; signed curvature moment as absolute profile controller
+- Predictions: P_E_OVER_ALPHA_M_DECREASES REFUTED_AS_STATED; P_M_STABLE_NONZERO CONFIRMED; P_D2_OVER_ALPHA_STABLE CONFIRMED; unregistered all-night 1/L^2 reading REFUTED (not scored); P_ALPHA_EQ_TTAIL_MINUS_DEF_EXACT CONFIRMED_WITH_DEFINITION_LOCK; P_DEF_IS_INSIDE_WINDOW_MISMATCH REFUTED; P_ONE_SIDED_COUNT_IS_SOURCE REFUTED; P_JUDGE_REREADS_ALL_L2_LAWS REFUTED_AS_UNIVERSAL
+- Next (judge): PRIMARY TRY_P59_IMAGINARY_AXIS_LOG_DERIVATIVE_TAIL_MATCH (see verdict)
+- Intake 2026-09-04 by Linux-Claude. Real-rootedness now verified numerically on m = 13, 23, 43, 83, 163 (units q3-zeros83/163).
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_CURVATURE_RATE_FAR_ZEROS_2026-09-04.txt`
 - Boundary: `GOAL058_CURVATURE_RATE_L2_OVER_M_AND_FAR_ZERO_DEFICIT`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
