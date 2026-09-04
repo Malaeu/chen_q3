@@ -427,3 +427,11 @@ eigenpairs; map back; compare λ̃₁/λ₁, λ̃₂/λ₂, and d₂^{(n)} = ⟨
 Predictions: `P_LADDER3_D2_WITHIN_20PCT` 0.50 (n = 3 gives d₂ within 20 % on all cells); `P_LADDER_GROUND_RAYLEIGH_LT_10_LAMBDA1` 0.40 (λ̃₁ < 10λ₁ at n = 3);
 `P_LADDER_CONVERGES_BY_N8` 0.60 (n = 8 gives d₂ within 5 %). DIAGNOSTIC_NEVER_A_PROOF.
 Fates (Probe 21): all three REFUTED — λ̃₁/λ₁ = 8.7e6..5.8e79 at n = 3; d₂⁽³⁾/d₂ = 0.59, 0.27, 0.14, 0.07; d₂⁽⁸⁾/d₂ = 0.87..0.23.
+
+## Addendum 24 — Probe 23: judge's CACHE_DISCRIMINATOR of FULLCHAIN (660a072c): direct compact P59 ground/trial error on K0 (2026-09-04 night)
+
+E_cell := sup_{z ∈ K0} |F_G(z)/F_G(0) − F_q(z)/F_q(0)|, K0 = {|Re z| ≤ 1, |Im z| ≤ 1/4}, grid 41×11, arb 60 dps, cells (13,13),(23,23),(43,43),(83,83),(13,120).
+Judge's adverse rule (frozen): COMPACT_DEFECT_NONDECAY if E_43 ≥ 0.90·E_23 and E_83 ≥ 0.90·E_43 (kills the N=m compact-decay representation only).
+Observer predictions: `P_COMPACT_DEFECT_NONDECAY` 0.35 (one-shape amplitude A_q decays 0.79, 0.72 per step); `P_E_SCALES_LIKE_A_q` 0.70 (E/A_q within 2× across N=m cells);
+`P_E_13_120_BELOW_1E-4` 0.85. S3 TWO_RATE_FAILURE (D or R at 83 ≥ 1.25× at 43): from Probe 21, D^(3) 0.62→0.33, R^(3) 3.83→4.37 → NOT triggered.
+Fates (Probe 23): P_COMPACT_DEFECT_NONDECAY REFUTED (0.79, 0.72); P_E_SCALES_LIKE_A_q CONFIRMED (0.075–0.077); P_E_13_120_BELOW_1E-4 CONFIRMED (4.8e-6). E ≈ |δ| on K0.
