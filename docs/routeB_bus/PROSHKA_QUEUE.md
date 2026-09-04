@@ -14,6 +14,22 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-04-RATE · Goal 058: curvature rate re-read — alpha = kappa(G)-kappa_Xi ~ 0.35 L^2/(4 pi^2 m) (m=313 discriminator), alpha = T_tail - Def exactly; atom = far-zero deficit Def <= (1-c) T_tail; window-scale winding lock · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_CURVATURE_RATE_FAR_ZEROS_2026-09-04.txt`
+- Boundary: `GOAL058_CURVATURE_RATE_L2_OVER_M_AND_FAR_ZERO_DEFICIT`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: transfer preflight (agent) verified: E tautological, alpha = T_tail - Def; m=313 cell: alpha L^2 falls 17 %, alpha m/L^2 and alpha/T_tail flat 1 %; five Lean identities green
+- Registered predictions: P_ALPHA_EQ_TTAIL_MINUS_DEF_EXACT 0.85, P_DEF_IS_INSIDE_WINDOW_MISMATCH 0.55, P_ONE_SIDED_COUNT_IS_SOURCE 0.35, P_JUDGE_REREADS_ALL_L2_LAWS 0.75
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `a7da5095f66b679c224feca9a032520b7a4b8312` / `7710` / `80` /
+  `cc1f2f82d3ed52ff12848bc510b67bdd1eaeeaa63f6db8fbcf1e498a14b10ed2` /
+  `20ddd7b41bfba5c53cb1bf40564adb5d04ce0a77` / `yes`
+
+---
+
 ## REQ-2026-09-04-OVERLAP · Goal 058: second-mode overlap d2 = <y,u2> = O(1/L^2) as the atom in pure l^2; anchor product flat (correction to ONESHAPE); Euler-Maclaurin mechanism without a gap · ANSWERED
 
 - `STATUS: ANSWERED`
