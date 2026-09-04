@@ -358,6 +358,23 @@ tool_families:
         records_to: [knowledge.db, qmd://q3_docs/, q3.lean.aristotle/.qmd_cache/semantic_index_receipt.json]
         last_verified: 2026-08-13
 
+      - id: bind-request
+        classification: OPERATIONAL
+        status: ENABLED
+        audience: [CLAUDE_CODE, HUMAN]
+        mode: WRITES_DERIVED
+        path: orchestrator/bind_request.py
+        invoke: python3 orchestrator/bind_request.py <request.txt> --title "<queue title>" --predictions "<list>" --intake "<text>"
+        trigger: Every judge request, right after the .txt is written; replaces the ad-hoc heredocs.
+        writes: true
+        approval: NONE
+        authority: QUEUE_ENTRY_PLUS_REVIEW_PLAN_BINDING_PLUS_DELIVERY_LINE
+        records_to: [docs/routeB_bus/PROSHKA_QUEUE.md, stdout]
+        note: >-
+          Uses str.format with named fields (no bare-substring replace); refuses to commit the queue
+          unless review-plan says REVIEW_DISPATCH_READY. Born 2026-09-04 after two mangling bugs.
+        last_verified: 2026-09-04
+
       - id: vahta
         classification: OPERATIONAL
         status: ENABLED
