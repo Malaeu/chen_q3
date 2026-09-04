@@ -1,0 +1,82 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-04-ONESHAPE
+BOUNDARY_ID: GOAL058_ONE_SHAPE_DEVIATION_AND_XI_POLYNOMIAL_LADDER
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-04-ONESHAPE (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub).
+DATE: 2026-09-04
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+SOURCE_BASE_COMMIT: 9821f627
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: PROPOSITION59_CCM_FINITE_BOTTOM_GROUND_FAMILY
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_ADJUDICATION_ONLY
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_ONE_SHAPE_DEVIATION_AND_XI_POLYNOMIAL_LADDER_2026-09-04.md
+AUTHOR: Linux-Claude (observer), on owner instruction "ask yourself first"; all numbers below are the observer's own (Progress_Log 2026-09-04 deep night; precommit ADDENDA 17-18)
+PARENT_VERDICTS: WINDLOCK (7a78088f), LEAKAGE, 1529837d, 9b822624
+CONVENTIONS: docs/routeB_bus/CONVENTION_CARD_GOAL058.md; unit even eigenvectors u_i of K_even; F_v/F_v(0) anchored transforms; Xi/Xi(0).
+
+INTAKE (observer's self-check after WINDLOCK; every line verified by a second computation)
+  1. COMPONENT I MEASURED AT FIXED x FOR THE FIRST TIME (all earlier Delta were at moving nodes). Delta(x) := F_g(x)/F_g(0) - Xi(x)/Xi(0):
+       x=7:  -4.0e-2, -4.4e-2, -3.9e-2, -3.0e-2, -2.1e-2  on m = 13, 23, 43, 83, 163;   Delta(7)*L^2 = -0.26, -0.44, -0.55, -0.58, -0.53.
+       x=3: -2.0e-2 ... -1.0e-2;  x=5: -3.8e-2 ... -1.9e-2;  x=10: -1.9e-2 ... -1.0e-2;  x=12: -6.2e-3 ... -3.3e-3;  x=16: +8.6e-4 ... +4.7e-4.
+     Rate 1/L^2 at fixed x, with a fixed profile (max near x = 7).
+  2. ONE SHAPE. The transforms of the unit second and third even eigenvectors are m-INDEPENDENT functions (max 0.76 at x = 6.9 for u_2,
+     at 9.9 for u_3, identical on m = 13..83; they do not escape the compact). The measured profile Delta(x)/Delta(7) equals
+     psi(x)/psi(7) with psi := g_2 - g_2(0) Xi/Xi(0) (anchored transform of u_2) within 4-7 % at x = 3, 5, 10 and 9-13 % at 12 (m = 43, 83);
+     the un-anchored g_2 fails at x = 3, 5 (it has a zero near x = 3). Scalar a(m) := Delta(7)/psi(7): a*L^2 = 0.57, 0.60.
+     In unit-vector coordinates: <xi - y, u_2> = 0.039, 0.043, 0.038 (m = 13, 23, 43; NOT decaying), <xi - y, u_1> = 0.027 (anchor),
+     <xi - y, u_3> ~ 2e-3, then x10 per mode; |xi - y|_2 ~ 0.05 flat. The 1/L^2 decay lives in the anchored normalization, not in l^2.
+     Energy identity check: <Delta, K Delta> = <y, K y> to all digits (1.23e-17, 2.36e-28, 1.93e-43).
+  3. LADDER. g_i/Xi (transform of u_i divided by Xi) is an even polynomial of degree 2(i-1) up to small corrections (m = 43, x in [0.5, 12]):
+       u_1/Xi = 0.9028 - 2.47e-3 x^2 + 3.2e-6 x^4 (deg-4 fit rel. rms 1.8e-4);  u_2/Xi = 0.654 - 0.0725 x^2 + 1.9e-4 x^4 (3.8e-3);
+       u_3/Xi quartic (1.9e-3 at deg 6);  u_4/Xi sextic (2.7e-2).
+     So the near-null space of the window Weil form is, to leading order, Xi * {1, x^2, x^4, ...}; the ground's deviation is its x^2
+     admixture a_2/a_0 = -2.7e-3 at m = 43, and (-2.5e-3 * 49)/0.90 = -0.136 reproduces Delta(7)/Xi(7) = -0.126.
+  4. LADDER AS A TRIAL FAMILY: REFUTED (ADDENDUM 18, three predictions REFUTED). 4-dim Rayleigh-Ritz on samples of Xi x^{2j}, j=0..3:
+       mu_1/lambda_1 = 1.7e6, 1.0e16, 3.4e36 (m = 13, 23, 43);  projective defect p = 1.0e-4, 6.5e-4, 8.5e-4 (growing);
+       c_1/c_0 * L^2 = -0.013, -0.012, -0.008 (not a 1/L^2 law; nearer 1/L^4).
+     The ground is a band-limited correction to Xi*p that explicit polynomials miss at the lambda_1 scale; CCM's prolate trial (p = 4.7e-9
+     on (13,120)) is five orders better. The ladder is the right PICTURE (item 3), not a usable trial.
+
+QUESTIONS
+Q1 Confirm or correct the representation: on every fixed compact, F_g/F_g(0) - Xi/Xi(0) = a(m) psi(x) + O(third mode), psi fixed,
+   a(m) = O(1/L^2). Is this a theorem shape (a two-level degenerate perturbation statement inside the collapsed subspace span{u_1, u_2}),
+   and what exactly must be proved: (i) that the anchored transforms of u_1, u_2 converge to fixed limits (g_1 = Xi/Xi(0)-shaped, g_2),
+   (ii) that the Xi-sample row's component along u_2, in the anchored normalization, is O(1/L^2)? Which of (i), (ii) is the load-bearing one,
+   and does (ii) reduce to a computable source quantity (a leakage RATIO, where the collapsed gap enters only as lambda_2/lambda_1-type
+   ratios and not absolutely)?
+Q2 The ladder: is "eigenvectors of the window Weil form are Nyquist samples of Xi times even polynomials, up to band-limiting corrections"
+   a known or derivable statement (from K = sum_z E E^T: functions vanishing at all zeros of Xi in the window are near-null; Xi * p has the
+   same zeros; the polynomial degree orders the leakage)? Give the exact statement with the correction term, and say whether the ordering
+   of leakages by degree (Xi * 1 leaks least) is provable from the window truncation alone (this would be the mechanism selecting the
+   ground as Xi, i.e., component I).
+Q3 Why does the explicit ladder fail as a trial (item 4) while the picture (item 3) holds to 0.02 %? Quantify: the residual of the deg-4 fit
+   for u_1 (1.8e-4 relative) carries Weil energy ~ (1.8e-4)^2 * (typical lambda of the mode where the residual lives) >> lambda_1 — is the
+   ground's band-limited correction to Xi*p_1 exactly the "leakage-minimizing" correction, and is THAT correction the object the prolate
+   trial captures? If so, the honest trial family is "Xi * p, then leakage-corrected", and the transfer ground->trial is the same wall.
+Q4 What is the cheapest decisive test of Q1(ii) that does not pay the absolute gap: e.g. measure a(m) on m = 83, 163 against candidate
+   source formulas (ratios of Weil energies of Xi-samples and Xi x^2-samples, their cross term, the second-jet difference kappa_k - kappa_Xi
+   which is a linear functional of Delta and should equal a(m) * kappa[psi]). State the falsifier.
+Q5 Score without editing: P_DEVIATION_IS_SECOND_EIGENVECTOR_SHAPE 0.65 (REFUTED as stated, CONFIRMED after the anchor repair);
+   P_DEVIATION_L2_LAW 0.70 (CONFIRMED); P_LADDER4_CAPTURES_LAMBDA1 0.55 (REFUTED); P_LADDER4_DEFECT_SMALL 0.60 (REFUTED);
+   P_LADDER_ADMIXTURE_L2_LAW 0.60 (REFUTED).
+
+REGISTERED PREDICTIONS (K6, observer, before your answer)
+  P_ONE_SHAPE_IS_TWO_LEVEL_PERTURBATION: 0.60 — Q1 confirmed as a two-level statement with (ii) load-bearing.
+  P_SECOND_JET_EQUALS_A_TIMES_KAPPA_PSI: 0.55 — kappa_k - kappa_Xi = a(m) * kappa[psi] + O(third mode) holds numerically (Q4), i.e. the
+    curvature convergence of Probe 4 ((kappa - kappa_Xi) L^2 ~ 0.04) is the same scalar a(m).
+  P_LADDER_STATEMENT_DERIVABLE: 0.45 — Q2 yields an exact statement with a correction term from K = sum_z E E^T.
+  P_LEAKAGE_ORDERING_PROVABLE_FROM_TRUNCATION: 0.35 — the degree ordering of leakages is provable without RH.
+
+REQUIRED VERDICT
+  1. repeat REQUEST_ID, BOUNDARY_ID, request commit, Git blob, SHA-256; six-field phase key unchanged;
+  2. Q1-Q4 exact; ranked next action with falsifier;
+  3. score all predictions without editing probabilities;
+  4. Lean-ready vs new analytic; no Lean edit, no numerical run, no route promotion, no RH claim; write only the expected verdict document.
