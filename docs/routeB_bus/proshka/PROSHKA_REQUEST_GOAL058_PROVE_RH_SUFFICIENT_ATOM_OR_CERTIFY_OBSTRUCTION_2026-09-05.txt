@@ -1,0 +1,95 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-05-PROVE
+BOUNDARY_ID: GOAL058_PROVE_RH_SUFFICIENT_ATOM_OR_CERTIFY_OBSTRUCTION
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-05-PROVE (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub). Reasoning effort: maximum available.
+DATE: 2026-09-05
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: PROPOSITION59_CCM_FINITE_BOTTOM_GROUND_FAMILY
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_MATHEMATICS_PROOF_ATTEMPT
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_PROVE_RH_SUFFICIENT_ATOM_OR_CERTIFY_OBSTRUCTION_2026-09-05.md
+AUTHOR: Linux-Claude (observer) on the owner's instruction "enough bookkeeping: prove it via the Weil criterion and what we built, or find the proof"; every number is the observer's own arb computation or verified by a second channel
+PARENT_VERDICTS: SIGNFREE (0cee3192), FULLCHAIN (660a072c), D2SUPPLY (87e123ea), TRIALJET (33d863fa), living-chat conditional ruling (R3 quarantined; "if the premise is proved, RH is proved")
+BASE_TIP: 9b586a0b
+
+0. GOAL, BOUNDARIES, AUTONOMY, DEFINITION OF DONE
+ GOAL. Produce, with maximal effort and full autonomy over the route, either
+ (A) PROOF: a complete proof, on the shelf below plus the literature you can verify, of an RH-sufficient statement on the CCM family
+     — the canonical target is CCM_UNIFORM_ERROR_RH_ATOM: "mu_lambda >= 0 for all lambda > 1" (equivalently lim_{lambda->inf} mu_lambda = 0,
+     CCM Cor. 3.8; equivalently eps_inf(m) <= C cofinally, SIGNFREE Q1.1), or ANY other statement you can prove that the shelf's roof
+     (Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi with its explicit premises) or the Weil criterion consumes to RH;
+     every step typed THEOREM (path+sha or citation with theorem number) / LEAN-READY / NEW (proved HERE, with the full argument written out);
+     no numerical fit, no RH-conditional input anywhere (EPISTEMIC FIREWALL), no "finite computation" without the bridging lemma; or
+ (B) OBSTRUCTION: a theorem-shaped certificate of impossibility for every mechanism class available on the shelf and in the cited literature,
+     in the style of Zhu 2608.24827 Thm 1.4 + Lemma 3.2 (which proves that every POINTWISE-ENVELOPE certificate must resolve frequencies up to
+     T_1(L) = 2 pi e^{A_L}, A_L = (4+o(1)) e^L, hence is computationally void beyond log-support ~ 3.2, i.e. m ~ 24.5): name the exact
+     property of the Weil form that each class cannot see, and the minimal new idea class (K8 jump-target) that is NOT excluded.
+ A third answer (a next step, a re-ranking, a new wrapper) is REJECTED. Definition of done: (A) with every step written, or (B) with the
+ impossibility argument written for each class. Stop when one of them is complete. You decide the route; you may use any part of the shelf,
+ any schedule N(m) >= m, any sector; you may NOT import RH, a zero-free region beyond what is proved, GRH, or a numerical constant as a premise.
+
+1. SHELF (read-only, sha256 prefix 16 at BASE_TIP 9b586a0b)
+ docs/Progress_Log.md                                                       06f8f373784d6cce
+ docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SIGNFREE_RITZ_INSIDE_CCM_UNIFORM_ERROR_ATOM_2026-09-04.md   c590d51aeeecf043
+ docs/routeB_bus/litreview/XUEFENGZHU20_USAGE_CARDS.md                      93612e49bd774e34
+ docs/routeB_bus/litreview/pdfs/2608.24827.pdf (Zhu)                         70332e428dd7ab82
+ docs/routeB_bus/litreview/pdfs/2511.22755.pdf (CCM)                         c98d89f7fc999d03
+ q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean (26 thms, no positivity in the head)   c9c592d0894d28f9
+ q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean        ed97148bc451f4ca
+ q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59GroundTrialSecondJetDifference.lean   5cf775957a0074f7
+ q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean   25fafa05007ce970
+ (plus the roof and the D0/Proposition59 tree; the capability catalogue via ./ask.sh is the authority on what is kernel-green)
+
+2. WHAT IS ESTABLISHED (verified; do not re-derive)
+ - CCM 2511.22755: Prop. 3.3 lower semiboundedness (coarse explicit form mu_lambda >= a_min - 2(lambda - 1/lambda) - 2 sum_{n<=lambda^2} Lambda(n)/sqrt n);
+   Prop. 3.4 finite-N Ritz limit; Cor. 3.7 mu_lambda = bottom, "we cannot assert mu_lambda >= 0"; (3.27) lambda > lambda' => mu_lambda <= mu_lambda';
+   Cor. 3.8 lim mu_lambda = 0 => RH; CCM name their two missing steps (simple-even bottom; rigorous closeness of k_lambda to xi_lambda).
+ - SIGNFREE Q1.1: the second level is bounded ABOVE uniformly in the window (min-max on a fixed 2-dim smooth test space), hence any
+   lambda_1 >= -o(lambda_2) is lambda_1 >= -o(1), hence (3.27) mu >= 0 everywhere => RH. Q1.2 (REC): fixed smooth tests are recovered on any
+   diagonal N >= m with error C_f sqrt(m)(1+L)^2 (L/N)^2. Q1.4: under not-RH the negative part of the bottom is >= c/M of the second level.
+ - Zhu 2608.24827 (same object: L_Zhu = (log m)/2, T* = 2 pi m): certified positivity up to m = 4.95 (Thm 1.2 + Cor. 6.3), simple-even ground at
+   one scale (Thm 6.2), the one-stroke reduction (Thm 1.1) = a worked instance of the finite-certificate principle; the barrier Thm 1.4 + Lemma 3.2
+   for pointwise-envelope certificates; unconditional UPPER bounds down to 3.2e-283 (L = 2); the Landau-Widom law -ln lambda* = 2 pi^2 N(T*)/ln N(T*)
+   with a fitted constant; under RH lambda*(L) <= exp(-L e^L) (Thm 1.3, conditional).
+ - Our finite objects (arb, FINITE_CELL): saturated even-block bottoms lambda_1(m,inf) = 3.484e-59, 1.828e-112, ~2.6e-220 at m = 13, 23, 43 (saturation
+   N* ~ 4.6m, 6.3m, ~8m); the trial k_lambda is a Ritz vector there (eps = R(q)/lambda_1 = 1.35, 1.33; p = 4.7e-9, 4.8e-10); the sign-free Ritz
+   inequality certified with enclosures; the compact defect on K0 = |delta_m|; kernel norm C_N(K,L) = sqrt(sinh(sigma L)/sigma) exactly;
+   Zhu's law reproduces our bottoms: k(m) = -ln lambda_1 ln N(2 pi m)/N(2 pi m) = 19.51, 20.13 (m = 13, 23) against 2 pi^2 = 19.74.
+ - The one-shape geometry on N = m: ground, trial and Xi-row lie on one line along u_2 = Xi-row (x^2 - <x^2>)/sigma_2 (sigma_2 = 13.98 an Xi-invariant);
+   kappa affine along it; the trial's second jet kappa(k_lambda) = kappa_X - 1/(16 pi m) - 13/(256 pi^2 m^2) + ... (zeta cancels identically in the
+   unwindowed main term; finite-projection and lower-window tails exponentially small).
+
+3. KILLED (do not re-propose without a NEW invariant; each with numbers on the shelf)
+ imaginary-axis log-derivative; Rayleigh sublevel envelope; raw Xi-ladder V3/V4 as supplier; window derivative of lambda_1; zero counting;
+ weighted Davis-Kahan; relative Ritz on N = m; (P-) lambda_1 >= -o(lambda_2) as weaker than RH; poly(L) kernel constant; p -> 0 => compact decay
+ without an anchor budget; sampling as anchor lower bound; pointwise-envelope certificates beyond m ~ 24.5 (Zhu Thm 1.4); C2 dichotomy; C3 as a
+ single unconditional mechanism; C4 de Branges chain without a common HB generator; the Feshbach y-component as the single sufficient atom.
+
+4. WHAT A PROOF MUST BYPASS (state explicitly where your route does it)
+ (i) Zhu's frequency barrier T_1(L) for pointwise envelopes of the Weil symbol; (ii) the collapsed spectral gap (lambda_2/lambda_1 ~ 1e7..1e10 but
+ lambda_2 itself ~ 1e-51..1e-210); (iii) the sign: every lower bound on the bottom that tends to zero is RH; (iv) the non-exhaustive finite family:
+ positivity of the finite even blocks on ONE schedule does not obviously exhaust the test functions (SIGNFREE Q1.2 gives fixed-test recovery on
+ diagonals N >= m — use it or improve it); (v) the two CCM missing steps (simple-even; trial-to-ground closeness) if your route goes through the
+ spectral program rather than through the Weil criterion directly.
+
+5. REGISTERED PREDICTIONS (K6, observer, before your answer)
+  P_JUDGE_RETURNS_OBSTRUCTION: 0.85 -- answer (B).
+  P_OBSTRUCTION_NAMES_A_NEW_IDEA_CLASS_NOT_EXCLUDED: 0.60 -- (B) ends with a concrete K8 jump-target, not "all classes excluded".
+  P_PROOF_ATTEMPT_CONTAINS_HIDDEN_RH_INPUT: 0.10 -- an (A) answer is offered but a step imports RH/GRH/zero-free region.
+  P_ANSWER_USES_ZHU_BARRIER_AS_LOAD_BEARING: 0.70 -- Thm 1.4/Lemma 3.2 appears as a load-bearing step of the obstruction.
+
+REQUIRED VERDICT
+  1. repeat REQUEST_ID, BOUNDARY_ID, request commit, Git blob, SHA-256; six-field phase key unchanged;
+  2. (A) or (B) in full; no third answer;
+  3. score all predictions without editing probabilities;
+  4. Lean-ready vs new analytic; CODEX DIRECTIVE only for a finite, sign-free, RH-free item;
+  5. no Lean edit, no numerical run, no route promotion, no RH claim; write only the expected verdict document.
