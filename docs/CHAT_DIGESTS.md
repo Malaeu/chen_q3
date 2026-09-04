@@ -945,3 +945,27 @@ X-MCP недоступен (transport error ×2), x.com отдаёт 402; сод
 покрытия), наш объект — форма Вейля на окне и сходимость дна к Ξ. Единственная точка касания —
 «ИИ-сгенерированное доказательство без независимой проверки» как прецедент для нашего протокола
 (аксиома «вывод агента ложен, пока не проверен»). Статус: ПРОЧИТАНО, НЕ РЕЛЕВАНТНО, не перепроверять.
+
+## 2026-09-04 — проверка: anthropics/formal-math/percolation (θ(p_c)=0 на ℤ^d для всех d ≥ 2, Lean 4) — для математики RH не релевантно, для ИНФРАСТРУКТУРЫ ключевое
+
+**Что это.** Justin Leder (август 2026), `github.com/anthropics/formal-math/tree/main/percolation`: Lean-формализация
+`θ(p_c) = 0` для решёточной перколяции во всех размерностях `d ≥ 2` — случаи `3 ≤ d ≤ 10` были ОТКРЫТЫ. Маршрут:
+редукция Козмы–Ницана 2024 (их гипотеза 3 ⇒ θ(p_c)=0), гипотеза 3 доказана через новую «conditioned slack
+hierarchy». 251 Lean-файл, 97 574 строки, Lean 4.32 / Mathlib pinned. Провенанс дословно: «written by an AI system
+(Anthropic's Claude models) working under my direction; no human wrote or edited the Lean code»; рецензии людей нет;
+«mechanical checking does not cover whether the formal statements express the intended mathematics».
+**Математика.** Перколяция, корреляционные неравенства Харриса/vdBHK/четырёх функций. К форме Вейля, нулям Ξ и
+Route B отношения не имеет. Не поставщик.
+**Инфраструктура — ровно наш «comparator gap» (память `comparator-gap`):**
+- `Challenge.lean` — файл-заявка ТОЛЬКО на Mathlib: определения + формулировки с двумя намеренными `sorry`;
+- `Solution.lean` — те же теоремы, доказанные из библиотеки; `comparator.json` — какие имена сравнивать, разрешённые аксиомы
+  `[propext, Quot.sound, Classical.choice]`, `enable_nanoda: true` (независимое ядро nanoda переигрывает);
+- `AUDIT.md` — воспроизводимые команды, число `sorry` (2, только в Challenge), 0 `axiom`, `#print axioms` для 7 теорем, время;
+- `formalization.yaml` v0.4 — метаданные реестра Palomar; CI `comparator-check.sh` с пинами comparator/lean4export/nanoda/landrun;
+- `summary.pdf` — гид с «Statements to audit»: что читатель обязан проверить глазами (что Challenge говорит то, что задумано).
+**Что взять себе (CLOSES `comparator-gap`):** сделать для Route B ту же раскладку: `Challenge.lean` с потребителем
+`rh_of_real_zero_family_tendsto_centeredXi` и конечными теоремами (P59-мост, знакопеременная кривизна, оболочки, плант,
+полиномиальный принцип аргумента) только на Mathlib-определениях; `Solution.lean`; `comparator.json`; `AUDIT.md`;
+`formalization.yaml`. Это превращает «72 axiom-объявления никем не сверяются» в машинную проверку. Наш toolchain 4.26
+против их 4.32 — проверить совместимость comparator/nanoda с 4.26 или поднять пин.
+**Статус:** ПРОЧИТАНО; математика — не релевантно; инфраструктура — задача на завтра (Codex/агент), не ночь.
