@@ -1,9 +1,9 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 391,
-  "declarations": 4496,
-  "in_docs": 2347,
+  "files_scanned": 392,
+  "declarations": 4523,
+  "in_docs": 2374,
   "in_lemma_db": 4182,
   "orphans": 48,
   "uncatalogued": 48,
@@ -44944,6 +44944,276 @@
       "signature": "theorem rayleigh_excess_le_two_mul_residual_sq_div_gap {alpha etaSq gap : ℝ} (halpha : 0 ≤ alpha) (hgap : 0 < gap) (hhalf : 2 * alpha ≤ gap) (hmain : alpha * (gap - alpha) ≤ etaSq) : alpha ≤ 2 * etaSq / gap",
       "in_docs": true,
       "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "weil_pole_difference_of_squares",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/WeilGramMinusShift.lean",
+      "line": 73,
+      "signature": "theorem weil_pole_difference_of_squares (A B : ℂ) : 2 * (A * conj B).re = 2 * ‖(A + B) / 2‖ ^ 2 - 2 * ‖(A - B) / 2‖ ^ 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "weil_pole_difference_of_squares_cosh_sinh",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/WeilGramMinusShift.lean",
+      "line": 86,
+      "signature": "theorem weil_pole_difference_of_squares_cosh_sinh (C S : ℂ) : 2 * ‖C‖ ^ 2 - 2 * ‖S‖ ^ 2 = 2 * ((C + S) * conj (C - S)).re",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "rankOneStar",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/WeilGramMinusShift.lean",
+      "line": 97,
+      "signature": "def rankOneStar (v : n → ℂ) : Matrix n n ℂ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "weilShiftMatrix",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/WeilGramMinusShift.lean",
+      "line": 101,
+      "signature": "def weilShiftMatrix (Γ : Matrix n n ℂ) (cL : ℝ) (β : n → ℂ) : Matrix n n ℂ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "rankOneStar_posSemidef",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/WeilGramMinusShift.lean",
+      "line": 105,
+      "signature": "theorem rankOneStar_posSemidef (v : n → ℂ) : (rankOneStar v).PosSemidef",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "quadForm_rankOneStar",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/WeilGramMinusShift.lean",
+      "line": 109,
+      "signature": "theorem quadForm_rankOneStar (v c : n → ℂ) : star c ⬝ᵥ (rankOneStar v *ᵥ c) = conj (star v ⬝ᵥ c) * (star v ⬝ᵥ c)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "dotProduct_star_self",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/WeilGramMinusShift.lean",
+      "line": 125,
+      "signature": "theorem dotProduct_star_self (c : n → ℂ) : star c ⬝ᵥ c = ((∑ i, ‖c i‖ ^ 2 : ℝ) : ℂ)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "conj_mul_self_ofReal",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/WeilGramMinusShift.lean",
+      "line": 131,
+      "signature": "theorem conj_mul_self_ofReal (z : ℂ) : conj z * z = ((‖z‖ ^ 2 : ℝ) : ℂ)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "weilShiftMatrix_quadForm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/WeilGramMinusShift.lean",
+      "line": 140,
+      "signature": "theorem weilShiftMatrix_quadForm (Γ : Matrix n n ℂ) (cL : ℝ) (β c : n → ℂ) : star c ⬝ᵥ (weilShiftMatrix Γ cL β *ᵥ c) = star c ⬝ᵥ (Γ *ᵥ c) - (cL : ℂ) * (star c ⬝ᵥ c) - 2 * (conj (star β ⬝ᵥ c) * (star β ⬝ᵥ c))",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "weilShiftMatrix_re_quadForm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/WeilGramMinusShift.lean",
+      "line": 152,
+      "signature": "theorem weilShiftMatrix_re_quadForm (Γ : Matrix n n ℂ) (cL : ℝ) (β c : n → ℂ) : (star c ⬝ᵥ (weilShiftMatrix Γ cL β *ᵥ c)).re = (star c ⬝ᵥ (Γ *ᵥ c)).re - cL * (∑ i, ‖c i‖ ^ 2) - 2 * ‖star β ⬝ᵥ c‖ ^ 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "weilShiftMatrix_add_shift",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/WeilGramMinusShift.lean",
+      "line": 163,
+      "signature": "theorem weilShiftMatrix_add_shift (Γ : Matrix n n ℂ) (cL : ℝ) (β : n → ℂ) : weilShiftMatrix Γ cL β + (cL : ℂ) • (1 : Matrix n n ℂ) + (2 : ℂ) • rankOneStar β = Γ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "weilShiftMatrix_add_shift_posSemidef",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/WeilGramMinusShift.lean",
+      "line": 172,
+      "signature": "theorem weilShiftMatrix_add_shift_posSemidef {Γ : Matrix n n ℂ} (hΓ : Γ.PosSemidef) (cL : ℝ) (β : n → ℂ) : (weilShiftMatrix Γ cL β + (cL : ℂ) • (1 : Matrix n n ℂ) + (2 : ℂ) • rankOneStar β).PosSemidef",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "norm_dotProduct_star_sq_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/WeilGramMinusShift.lean",
+      "line": 183,
+      "signature": "theorem norm_dotProduct_star_sq_le (v c : n → ℂ) : ‖star v ⬝ᵥ c‖ ^ 2 ≤ (∑ i, ‖v i‖ ^ 2) * (∑ i, ‖c i‖ ^ 2)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "weilShiftMatrix_re_lower_bound",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/WeilGramMinusShift.lean",
+      "line": 204,
+      "signature": "theorem weilShiftMatrix_re_lower_bound {Γ : Matrix n n ℂ} (hΓ : Γ.PosSemidef) (cL : ℝ) (β c : n → ℂ) : -((cL + 2 * ∑ i, ‖β i‖ ^ 2) * ∑ i, ‖c i‖ ^ 2) ≤ (star c ⬝ᵥ (weilShiftMatrix Γ cL β *ᵥ c)).re",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "smul_one_isHermitian",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/WeilGramMinusShift.lean",
+      "line": 218,
+      "signature": "theorem smul_one_isHermitian (cL : ℝ) : ((cL : ℂ) • (1 : Matrix n n ℂ)).IsHermitian",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "weilShiftMatrix_isHermitian",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/WeilGramMinusShift.lean",
+      "line": 225,
+      "signature": "theorem weilShiftMatrix_isHermitian {Γ : Matrix n n ℂ} (hΓ : Γ.IsHermitian) (cL : ℝ) (β : n → ℂ) : (weilShiftMatrix Γ cL β).IsHermitian",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "weilShiftMatrix_posSemidef_iff",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/WeilGramMinusShift.lean",
+      "line": 239,
+      "signature": "theorem weilShiftMatrix_posSemidef_iff {Γ : Matrix n n ℂ} (hΓ : Γ.IsHermitian) (cL : ℝ) (β : n → ℂ) : (weilShiftMatrix Γ cL β).PosSemidef ↔ ∀ c : n → ℂ, (cL : ℂ) * (star c ⬝ᵥ c) + 2 * (conj (star β ⬝ᵥ c) * (star β ⬝ᵥ c)) ≤ star c ⬝ᵥ (Γ *ᵥ c)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "weilShiftMatrix_plant_gamma_posSemidef",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/WeilGramMinusShift.lean",
+      "line": 260,
+      "signature": "theorem weilShiftMatrix_plant_gamma_posSemidef : (Matrix.diagonal ![(0 : ℂ), 2]).PosSemidef",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "weilShiftMatrix_plant_eq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/WeilGramMinusShift.lean",
+      "line": 268,
+      "signature": "theorem weilShiftMatrix_plant_eq : weilShiftMatrix (Matrix.diagonal ![(0 : ℂ), 2]) 1 (0 : Fin 2 → ℂ) = Matrix.diagonal ![(-1 : ℂ), 1]",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "weilShiftMatrix_plant_negative",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/WeilGramMinusShift.lean",
+      "line": 278,
+      "signature": "theorem weilShiftMatrix_plant_negative : ∃ c : Fin 2 → ℂ, (star c ⬝ᵥ (weilShiftMatrix (Matrix.diagonal ![(0 : ℂ), 2]) 1 (0 : Fin 2 → ℂ) *ᵥ c)).re < 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "weilShiftMatrix_plant_not_posSemidef",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/WeilGramMinusShift.lean",
+      "line": 289,
+      "signature": "theorem weilShiftMatrix_plant_not_posSemidef : ¬ (weilShiftMatrix (Matrix.diagonal ![(0 : ℂ), 2]) 1 (0 : Fin 2 → ℂ)).PosSemidef",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "weilShiftMatrix_plant",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/WeilGramMinusShift.lean",
+      "line": 296,
+      "signature": "theorem weilShiftMatrix_plant : (Matrix.diagonal ![(0 : ℂ), 2]).PosSemidef ∧ ¬ (weilShiftMatrix (Matrix.diagonal ![(0 : ℂ), 2]) 1 (0 : Fin 2 → ℂ)).PosSemidef",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "posSemidef_gramMatrix",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/WeilGramMinusShift.lean",
+      "line": 310,
+      "signature": "theorem posSemidef_gramMatrix {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℂ E] (v : n → E) : (Matrix.of fun j k => ⟪v j, v k⟫_ℂ).PosSemidef",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "posSemidef_conjTranspose_mul_self'",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/WeilGramMinusShift.lean",
+      "line": 338,
+      "signature": "theorem posSemidef_conjTranspose_mul_self' {m : Type*} [Fintype m] (G : Matrix m n ℂ) : (Gᴴ * G).PosSemidef",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "posSemidef_weighted_sum",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/WeilGramMinusShift.lean",
+      "line": 348,
+      "signature": "theorem posSemidef_weighted_sum {ι : Type*} (s : Finset ι) (w : ι → ℝ) (M : ι → Matrix n n ℂ) (hw : ∀ i ∈ s, 0 ≤ w i) (hM : ∀ i ∈ s, (M i).PosSemidef) : (∑ i ∈ s, (w i : ℂ) • M i).PosSemidef",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "weilGamma_posSemidef",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/WeilGramMinusShift.lean",
+      "line": 361,
+      "signature": "theorem weilGamma_posSemidef {ι : Type*} (s : Finset ι) (w : ι → ℝ) (D : ι → Matrix n n ℂ) (hw : ∀ i ∈ s, 0 ≤ w i) (hD : ∀ i ∈ s, (D i).PosSemidef) (α : n → ℂ) : ((∑ i ∈ s, (w i : ℂ) • D i) + (2 : ℂ) • rankOneStar α).PosSemidef",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "weil_translation_gram_minus_shift",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/WeilGramMinusShift.lean",
+      "line": 382,
+      "signature": "theorem weil_translation_gram_minus_shift {Γ : Matrix n n ℂ} (hΓ : Γ.PosSemidef) (cL : ℝ) (β : n → ℂ) : (∀ c : n → ℂ, star c ⬝ᵥ (weilShiftMatrix Γ cL β *ᵥ c) = star c ⬝ᵥ (Γ *ᵥ c) - (cL : ℂ) * (star c ⬝ᵥ c) - 2 * (conj (star β ⬝ᵥ c) * (star β ⬝ᵥ c))) ∧ (weilShiftMatrix Γ cL β + (cL : ℂ) • (1 : Matrix n n ℂ) + (2 : ℂ) • rankOneStar β).PosSemidef ∧ (∀ c : n → ℂ, -((cL + 2 * ∑ i, ‖β i‖ ^ 2) * ∑ i, ‖c i‖ ^ 2) ≤ (star c ⬝ᵥ (weilShiftMatrix Γ cL β *ᵥ c)).re)",
+      "in_docs": true,
+      "in_lemma_db": false,
       "orphan": false
     },
     {

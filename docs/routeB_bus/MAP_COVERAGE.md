@@ -4,7 +4,7 @@
 `python3 docs/cartographer/map_coverage.py`. Рукописная карта — `MAP.md`, она
 описывает узлы маршрута; это приложение описывает **файлы**, и оно полное.
 
-Всего файлов: **391** · упомянуто в `MAP.md`: **25** · вне карты: **366** · без описания в шапке: **0**
+Всего файлов: **392** · упомянуто в `MAP.md`: **25** · вне карты: **367** · без описания в шапке: **0**
 
 «вне карты» не значит «лишний»: значит, что обходом карты файл не находится.
 Именно так 2026-08-11 был построен заново мост `ker ↔ eigenspace`, стоявший в
@@ -401,6 +401,7 @@
 | `WeightedProjectiveEvaluationTransfer` | — | A compact evaluation envelope weighted by the square-root projective | 0 |
 | `WeightedRayleighProjectiveDefect` | — | первая декларация: `weighted_projective_defect_mul_gap_le_rayleigh_excess` | 0 |
 | `WeightedSpectralTempleCore` | — | A probability-weighted spectral mean is nonnegative after shifting the | 0 |
+| `WeilGramMinusShift` | — | Finite quadratic algebra behind the Weil "Gram minus shift" assembly | 0 |
 | `WindowEndpointBridge` | — | Changing a finite positive window from closed to open endpoints does not | 0 |
 | `ZeroEscapeLogic` | — | Every zero of `f` in `S` is real. -/ | 0 |
 
