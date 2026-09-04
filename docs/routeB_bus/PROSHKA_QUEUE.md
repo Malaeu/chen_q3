@@ -14,6 +14,22 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-04-OVERLAP · Goal 058: second-mode overlap d2 = <y,u2> = O(1/L^2) as the atom in pure l^2; anchor product flat (correction to ONESHAPE); Euler-Maclaurin mechanism without a gap · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SECOND_MODE_OVERLAP_2026-09-04.txt`
+- Boundary: `GOAL058_SECOND_MODE_OVERLAP_OF_THE_XI_ROW`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: Probe 17 (addendum 19, all four CONFIRMED): four extractors agree within 2 %; exact all-mode identity; remainder 7.8 -> 3.2 %; d1*ell1 flat 0.93 -> 0.90; d2*L^2 -> -0.5
+- Registered predictions: P_D2_IS_SAME_PARAMETER_AS_C2 0.55, P_EULER_MACLAURIN_GIVES_L2 0.40, P_JUDGE_KEEPS_ONE_SHAPE_AS_PRIMARY 0.65
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `e359b38f960bf8c0a76d7dd4ad314aefc5416888` / `6777` / `73` /
+  `e2477429a0e35e87d75f4ca2d98eb10a41380fe21eddf8f4309593c7883e036e` /
+  `d0a4859699d2ab1b83efc2a2ea32d01dd9291214` / `yes`
+
+---
+
 ## REQ-2026-09-04-ONESHAPE · Goal 058: component I measured at fixed x (rate 1/L², ONE shape = anchored u₂ transform); eigenvector ladder u_i ≈ Xi·poly_{2(i−1)}; ladder as trial refuted (μ₁/λ₁ up to 1e36) · ANSWERED
 
 - `STATUS: ANSWERED`
