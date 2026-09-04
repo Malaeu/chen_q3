@@ -1,0 +1,97 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-04-TRIALJET
+BOUNDARY_ID: GOAL058_TRIAL_SECOND_JET_EXACT_AND_GROUND_TRIAL_JET_GAP
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-04-TRIALJET (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub).
+DATE: 2026-09-04
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: PROPOSITION59_CCM_FINITE_BOTTOM_GROUND_FAMILY
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_ADJUDICATION_ONLY
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_TRIAL_SECOND_JET_EXACT_AND_GROUND_TRIAL_JET_GAP_2026-09-04.md
+AUTHOR: Linux-Claude (observer); every number below is the observer's own computation or was re-verified by the observer through a second channel (Progress_Log 2026-09-04 day)
+PARENT_VERDICTS: RATE (5aaa3d93), OVERLAP (af1d9ead), NEWMECH (C1 DEVELOP), CURVBRIDGE (926c1865)
+CONVENTIONS: docs/routeB_bus/CONVENTION_CARD_GOAL058.md; kappa(v) = -F_v''(0)/(2 F_v(0)) = (L^2/2)[1/12 + (1/(pi^2 c_0)) sum_{k>=1} c_k/k^2] for ANY even mode vector (FULL coefficients c_k = v_k/sqrt2); kappa_X = (1/2)(log xi)''(1/2) = (1/2)[-8 + psi'(1/4)/4 + (zeta'/zeta)'(1/2)] = 0.0231049931154 (unconditional closed form, verified against S_X(1e-4)); T_m = (L^2/(4 pi^2)) sum_{k>m} 1/k^2; m = lambda^2, L = log m, c = 2 pi m (prolate parameter).
+
+INTAKE (since RATE, 5aaa3d93)
+
+  1. YOUR R1 (imaginary-axis log derivative) IS DEAD. Preflight (Opus, read-only, docs/routeB_bus/AGENT_REPORT_2026-09-04_GOAL058_IMAGINARY_AXIS_LOG_DERIVATIVE_TAIL_MATCH_PREFLIGHT.md):
+     P59_LOG_DERIVATIVE_ONLY_RENAMES_CURVATURE; your P_LOG_DERIVATIVE_EXPOSES_SOURCE_TAIL_BEFORE_GAP 0.35 REFUTED. Observer's hand probe first:
+     D(y) = S_G(y) - S_X(y) is FLAT in y below the window scale: D/alpha = 1.00 for y <= 5 on m = 13..83, 0.98 at y = 20 (m = 83);
+     sign flip only at y >~ x_N (m = 13: D(200) = -1.02 alpha). Any y_m -> 0 budget is a bound on alpha_m itself; at y ~ x_N |D| = O(T_m)
+     comes free by the triangle inequality (root block <= N/x_N^2 = T_m; target (pi/2) T_m) and carries nothing to y = 0. S_X is a Stieltjes
+     transform of a positive measure iff RH, so Herglotz/Loewner interpolation in y is unavailable on the target side.
+     Kept (verified by the observer, mpmath, m = 13, 12 digits): root-free S_G(y) = (1/(2y))[(L/2) coth(yL/2) + R'/R], R(y) = c_0/y + 2y sum_{k=1}^{N} c_k/(x_k^2 + y^2);
+     S_X(1/2) = sum_rho 1/rho = 1 + gamma_E/2 - (1/2) log(4 pi).
+  2. YOUR R2 (physical second moment / two-observable) IS ALIVE, probed by the observer (Probe 19, docs/routeB_bus/phase5_codex/r2_second_jet.py;
+     trial q = projected prolate k1/g04 = the paper's k_lambda, from portable_k_coeffs caches; (83,83) regenerated with MAX_DEGREE = 600):
+       cell     T_m        alpha_G=k(G)-k_X  alpha_q=k(q)-k_X  delta=k(G)-k(q)  delta/T  alpha_q*m  p=1-<xi,q>^2  delta/sqrt(p)
+       (13,13)  1.234e-2   +2.791e-3         -1.562e-3         +4.353e-3        0.353    -0.0203    3.66e-3       0.072
+       (23,23)  1.059e-2   +3.158e-3         -0.875e-3         +4.033e-3        0.381    -0.0201    2.98e-3       0.074
+       (43,43)  8.236e-3   +2.738e-3         -0.466e-3         +3.204e-3        0.389    -0.0200    1.86e-3       0.074
+       (83,83)  5.922e-3   +2.063e-3         -0.240e-3         +2.304e-3        0.389    -0.0200    9.75e-4       0.074
+       (13,120) 1.383e-3   -1.567e-3         -1.562e-3         -4.6e-6          -0.003   -0.0203    4.69e-9       --
+     On the real axis F_q(x)/F_q(0) = (Xi(x)/Xi(0)) (1 + a_m x^2/m + O(x^4)) with a_m = 0.020307, 0.020123, 0.020016, 0.019957 (m = 13..83),
+     uniform to three digits on x in [0.05, 8]. Decomposition alpha_G = delta + alpha_q reproduces (alpha_G + a_inf/m)/T_m = 0.350, 0.380,
+     0.389, 0.389, 0.381, 0.373 on m = 13, 23, 43, 83, 163, 313: your "alpha/T -> 0.35" is 0.38 T_m (ground-trial) minus 1/(16 pi m) (trial-Xi).
+     Relative Ritz is VACUOUS on N = m: R(q)/lambda_1 = 5e14, 2e25, 3e49 (relritz ledger), yet p ~ 1e-3 -- the trial is a good direction
+     for a reason that is not the Rayleigh quotient. Observer predictions: P_TRIAL_JET_WITHIN_T 0.35 CONFIRMED, P_GROUND_TRIAL_JET_GAP_WITHIN_T
+     0.40 CONFIRMED, P_TRIAL_JET_WORSE_THAN_GROUND 0.65 REFUTED.
+  3. THE TRIAL CONSTANT IS DERIVED EXACTLY (Opus paper agent, docs/routeB_bus/AGENT_REPORT_2026-09-04_GOAL058_TRIAL_SECOND_JET_CONSTANT_DERIVATION.md,
+     code TRIAL_JET_CONSTANT_DERIVED_EXACT). Chain: F_q(z) = M(k_lambda)(-iz) exactly (the lambda^{+-iz} cancel since L/2 = log lambda);
+     M(E(f))(s) = zeta(s + 1/2) M(f)(s + 1/2) and M(h)(w) zeta(w) = xi(w)/4, so zeta CANCELS IDENTICALLY in Phi_m := [F_q/F_q(0)]/[Xi/Xi(0)]:
+     the factor is purely archimedean. PW_lambda = lambda^2 H + d_x(x^2 d_x) exactly, eps = 1/m a genuine perturbation parameter; V = (S^2 - 1)/4
+     couples n <-> n +- 4; the h_0 <-> h_4 mixing cancels inside the vanishing-integral plane; the whole first order is ONE h_8 admixture
+     with amplitude sqrt(105)/(-16 pi). Result: kappa(k_lambda) = kappa_X - 1/(16 pi m) + 13/(256 pi^2 m^2) + O(m^-3); [z^4]Phi_m = 1/(512 pi^2 m^2);
+     Phi_m(iy) real, = 1 - y^2/(16 pi m) + O(m^-2). Lemma 7.3 gives NO rate (lost twice in its proof); Lemma 7.2 gives O(lambda^-2).
+     Code g04 = k_lambda line by line (c = 2 pi lambda^2, vanishing-integral condition, E with support cut); k_lambda is a summation (Eisenstein)
+     map, not a kernel x cutoff and not a convolution.
+     OBSERVER'S BLIND TEST (second channel, real-axis a_m not given to the agent): b_m = m(a_m - 1/(16 pi)) = 0.005364, 0.005265, 0.005209, 0.005178;
+     extrapolation from m = 23, 43 gives b = 0.005143 vs the agent's blind 13/(256 pi^2) = 0.005145; a_83 measured 0.0199568 vs formula 0.0199564;
+     quartic at m = 13, x = 8: measured 0.1052, quadratic 0.09997, quadratic + quartic 0.10477. PASSED. The zeta-cancellation identity itself is
+     paper-read, not symbolically re-derived by the observer.
+  4. Real-rootedness of the ground verified on all five production cells (m = 163: 326 real roots). The WALL AFTER THIS INTAKE IS ONE SCALAR:
+     delta_m = kappa(G_m) - kappa(k_lambda) = (L^2/(2 pi^2)) sum_{k>=1} (xi_k/xi_0 - q_k/q_0)/k^2, with q source-explicit and its jet known exactly;
+     observed delta_m = 0.353, 0.381, 0.389, 0.389 T_m and delta_m = 0.073 sqrt(p_m) (four cells).
+
+QUESTIONS
+
+Q1 VERIFY THE DERIVATION (paper). (a) F_q(z) = M(k_lambda)(-iz) exactly for the P59 transform of the g04 mode vector; (b) the zeta cancellation
+   in Phi_m (state the exact identity and its domain; is Phi_m entire?); (c) PW_lambda = lambda^2 H + d_x(x^2 d_x) with no remainder and the
+   single-h_8 first order giving a_inf = 1/(16 pi) and b = 13/(256 pi^2). Name the first error if any. Lean-ready or paper?
+Q2 THE TRIAL'S TWO-JET RATE AS A THEOREM. State the exact theorem "kappa(k_lambda) = kappa_X - 1/(16 pi lambda^2) + O(lambda^-4)" with hypotheses
+   (which prolate facts, which Mellin facts, no RH), and whether it repairs Lemma 7.3's missing rate at the 2-jet (and at every fixed z?).
+   Is Phi_m(z) -> 1 locally uniformly with rate O(|z|^2/m) provable from the same chain?
+Q3 THE REMAINING SCALAR delta_m. With the trial explicit, delta_m = (L^2/(2 pi^2)) sum_k (xi_k/xi_0 - q_k/q_0)/k^2 is a 1/k^2-weighted, signed,
+   anchored node error between the ground row and k_lambda's coefficients. (a) Is |delta_m| <= C T_m the same wall as |alpha_m| <= C T_m
+   (only renamed), or does the explicit trial change the supplier landscape? (b) Relative Ritz is vacuous on N = m (R(q)/lambda_1 >= 5e14)
+   while p ~ 1e-3 and delta = 0.073 sqrt(p): name the mechanism that makes k_lambda a good DIRECTION on the production window without being
+   a Rayleigh vector, and whether it is a source statement (e.g. both transforms approximate Xi on the window; k_lambda is the E-image of a
+   prolate; the ground's transform is window-concentrated with leakage sqrt(lambda_1)). (c) The cheapest noncircular supplier for delta_m:
+   candidates -- the anchored eigen-equation (K - lambda_1) xi = 0 tested against q (residual r = (K - lambda_1) q, ||r|| vs delta); the
+   two-mode form G - X = a psi_2 + R with X replaced by the explicit trial transform; a 1/k^2-weighted Davis-Kahan on the quasi-eigenvector q
+   (needs only a RELATIVE statement at the 1/k^2 weight, not the full gap). Rank with falsifiers.
+Q4 SCORE without editing: your P_LOG_DERIVATIVE_EXPOSES_SOURCE_TAIL_BEFORE_GAP 0.35 (REFUTED); observer's P_R1_ONLY_RENAMES 0.70 (CONFIRMED),
+   P_TRIAL_JET_WITHIN_T 0.35 (CONFIRMED), P_GROUND_TRIAL_JET_GAP_WITHIN_T 0.40 (CONFIRMED), P_TRIAL_JET_WORSE_THAN_GROUND 0.65 (REFUTED).
+
+REGISTERED PREDICTIONS (K6, observer, before your answer)
+  P_ZETA_CANCELLATION_CONFIRMED: 0.85 -- Q1(b) holds exactly as stated.
+  P_H8_FIRST_ORDER_CONFIRMED: 0.75 -- Q1(c): a_inf = 1/(16 pi) via the single h_8 admixture is confirmed; b may need a correction.
+  P_DELTA_HAS_GAPFREE_SUPPLIER: 0.30 -- Q3(c): the judge names a supplier for delta_m that passes through neither p_m nor a spectral gap.
+  P_DELTA_ATOM_IS_RENAMING: 0.35 -- Q3(a): the judge rules |delta| <= C T the same wall as |alpha| <= C T with the trial term a known constant.
+
+REQUIRED VERDICT
+  1. repeat REQUEST_ID, BOUNDARY_ID, request commit, Git blob, SHA-256; six-field phase key unchanged;
+  2. Q1-Q3 exact; ranked next action with falsifier;
+  3. score all predictions without editing probabilities;
+  4. Lean-ready vs new analytic; a CODEX DIRECTIVE only if a Lean-ready item exists (the finite identity kappa(v) for any even vector,
+     kappa_X closed form via Mathlib's Gamma/zeta API, the root-free S_G(y) are candidates);
+  5. no Lean edit, no numerical run, no route promotion, no RH claim; write only the expected verdict document.
