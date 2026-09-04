@@ -419,3 +419,11 @@ Levels: ε_q = R(q)/q_0² (trial), ε = λ₂ (second eigenvalue, anchor-scaled)
 Predictions: `P_ENVELOPE_WIDTH_AT_TRIAL_LEVEL_GG_T` 0.90 (W(ε_q) ≥ 10·T on every cell); `P_WIDTH_AT_LAMBDA2_LEVEL_GG_T` 0.70;
 `P_CENTRE_CURVATURE_NEAR_GROUND` 0.80 (|κ(v_c) − κ(G)| ≤ T). DIAGNOSTIC_NEVER_A_PROOF.
 Fates (night): all three CONFIRMED — W(ε_q) = 3e3..7e40, W(λ₂ level) = 0.078 const, centre = ground exactly. R1 dead as a Rayleigh sublevel.
+
+## Addendum 23 — Probe 21: ladder compression K|V_n, V_n = span{y⊙x^{2j}, j < n} (Q2(a) of D2SUPPLY, run while the judge thinks; 2026-09-04 night)
+
+Object: orthonormal basis of V_n from the Xi-sample row y and its even-polynomial modulations; compress K (even block); take the two lowest
+eigenpairs; map back; compare λ̃₁/λ₁, λ̃₂/λ₂, and d₂^{(n)} = ⟨y, ũ₂⟩ with the true d₂ = ⟨y,u₂⟩ = 0.0381, 0.0421, 0.0366, 0.0278 (m = 13..83).
+Predictions: `P_LADDER3_D2_WITHIN_20PCT` 0.50 (n = 3 gives d₂ within 20 % on all cells); `P_LADDER_GROUND_RAYLEIGH_LT_10_LAMBDA1` 0.40 (λ̃₁ < 10λ₁ at n = 3);
+`P_LADDER_CONVERGES_BY_N8` 0.60 (n = 8 gives d₂ within 5 %). DIAGNOSTIC_NEVER_A_PROOF.
+Fates (Probe 21): all three REFUTED — λ̃₁/λ₁ = 8.7e6..5.8e79 at n = 3; d₂⁽³⁾/d₂ = 0.59, 0.27, 0.14, 0.07; d₂⁽⁸⁾/d₂ = 0.87..0.23.
