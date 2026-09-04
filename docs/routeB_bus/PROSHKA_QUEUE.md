@@ -14,6 +14,22 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-04-ONEd4439898e03c8ec44d75a1e842fab51ce35efc8fb5e7c7cb53c3ca2e5c84f355PE · Goal 058: component I measured at fixed x (rate 1/L², ONE shape = anchored u₂ transform); eigenvector ladder u_i ≈ Xi·poly_{2(i−1)}; ladder as trial refuted (μ₁/λ₁ up to 1e36) · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_ONE_d4439898e03c8ec44d75a1e842fab51ce35efc8fb5e7c7cb53c3ca2e5c84f355PE_DEVIATION_2026-09-04.txt`
+- Boundary: `GOAL058_ONE_d4439898e03c8ec44d75a1e842fab51ce35efc8fb5e7c7cb53c3ca2e5c84f355PE_DEVIATION_AND_XI_POLYNOMIAL_LADDER`
+- Call class: `DELEGATED_STRATEGIC_REVIEW` (observer's self-check on the owner's instruction "ask yourself first")
+- Intake carried: fixed-x Δ table m = 13..163; u₂/u₃ transforms m-independent; profile match with anchored ψ; ladder fits; Rayleigh–Ritz ladder trial (addendum 18) refuted
+- Registered predictions: `P_ONE_d4439898e03c8ec44d75a1e842fab51ce35efc8fb5e7c7cb53c3ca2e5c84f355PE_IS_TWO_LEVEL_PERTURBATION 0.60`, `P_SECOND_JET_EQUALS_A_TIMES_KAPPA_PSI 0.55`, `P_LADDER_STATEMENT_DERIVABLE 0.45`, `P_LEAKAGE_ORDERING_PROVABLE_FROM_TRUNCATION 0.35`
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / d4439898e03c8ec44d75a1e842fab51ce35efc8fb5e7c7cb53c3ca2e5c84f355-256 / Git blob / Final LF:
+  `202080c29cfc85d6623935c8dafec0c8b3499040` / `7610` / `82` /
+  `d4439898e03c8ec44d75a1e842fab51ce35efc8fb5e7c7cb53c3ca2e5c84f355` /
+  `4b9285303d992a256f33c0c57e92d2e2a9209bda` / `yes`
+
+---
+
 ## REQ-2026-09-04-WINDLOCK · Goal 058: winding lock results — disk fails (imaginary axis), thin rectangle holds on all cells; the compact count question reduces to ONE relative endpoint error e(R) < 1 (component I, weakest form); localized locks; polynomial argument principle in Lean · ANSWERED
 
 - `STATUS: ANSWERED`
