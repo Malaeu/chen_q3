@@ -343,3 +343,28 @@ at the real end (±R, h): R=18: 0.658/0.664/0.597; R=28: 0.971/0.946/0.897 (m = 
 Follow-up predictions (registered now, before any further run): `P_RECT_LOCK_R28_IMPROVES` p=0.70 — max r at R=28, h=1 is < 0.85 at m=83
 and < 0.80 at m=163; `P_RECT_LOCK_R40_FAILS_AT_M13` p=0.60 — at R=40 the rectangle lock fails for m=13 (relative error at the end
 exceeds 1 because Ξ(40) is tiny) and holds for m=163. Executor: observer by hand. DIAGNOSTIC_NEVER_A_PROOF.
+
+## ADDENDUM 17 (2026-09-04, after the fixed-x table, BEFORE the profile comparison) — Probe 15, one-shape law for the ground-minus-Xi deviation
+
+Observed: at fixed x ∈ {3,5,7,10,12,16}, Δ(x) := F_g(x)/F_g(0) − Ξ(x)/Ξ(0) satisfies Δ(x)·L² → ≈ −0.55·φ(x) with φ(7) = 1,
+φ(3) ≈ 0.5, φ(5) ≈ 0.94, φ(10) ≈ 0.49 (m = 43, 83, 163); transforms of the unit second/third even eigenvectors u₂, u₃ are
+m-independent functions with max 0.76 at x = 6.9 (u₂) and 9.9 (u₃).
+Prediction (K6, observer, registered before the comparison):
+  `P_DEVIATION_IS_SECOND_EIGENVECTOR_SHAPE` p=0.65 — the normalized profile Δ(x)/Δ(7) agrees with F_{u₂}(x)/F_{u₂}(7) within 15 %
+    at x ∈ {3, 5, 10, 12} for m = 43 and 83 (sign of u₂ chosen so that F_{u₂}(7) has the sign of Δ(7)).
+  `P_DEVIATION_L2_LAW` p=0.70 — Δ(7)·L² ∈ [−0.65, −0.45] at m = 83 and 163 (already observed: −0.58, −0.53; registered for the record).
+Executor: observer by hand. DIAGNOSTIC_NEVER_A_PROOF.
+
+## ADDENDUM 18 (2026-09-04, BEFORE the run) — Probe 16, the Xi-polynomial ladder as a trial family (Rayleigh–Ritz)
+
+Observed (m=43): transforms of the first four even eigenvectors divided by Ξ are even polynomials of degree 2(i−1) up to
+0.02 % / 0.4 % / 0.2 % / 3 % (deg 4/4/6/6 fits). Hypothesis: the near-null space of the window Weil form is spanned by
+Nyquist samples of Ξ(x)·x^{2j}, j = 0..k−1, and the ground's identification is the admixture a₂/a₀ → 0.
+Test: v_j := even-coordinate samples of Ξ(x)·x^{2j}/Ξ(0), j = 0..3; Gram G_ij = ⟨v_i,v_j⟩, Weil W_ij = ⟨v_i,K v_j⟩;
+generalized eigenproblem W c = μ G c; report μ_1/λ₁, projective defect p = 1 − ⟨ξ, v_c⟩²/(‖ξ‖²‖v_c‖²) of the ladder ground
+v_c = Σ c_j v_j against the true ground ξ, and the admixture ratios c_1/c_0 (×L²), c_2/c_0.
+Predictions (K6, observer, registered before the run):
+  `P_LADDER4_CAPTURES_LAMBDA1` p=0.55 — μ_1/λ₁ ∈ [1, 10] at m = 13, 23, 43 (the 4-dim ladder reproduces λ₁ within one order).
+  `P_LADDER4_DEFECT_SMALL` p=0.60 — p ≤ 1e-4 at every cell (ladder ground within 1 % of the true ground in angle).
+  `P_LADDER_ADMIXTURE_L2_LAW` p=0.60 — (c_1/c_0)·L² ∈ [−0.08, −0.02] at every cell (matches −0.0025·L² ≈ −0.035 at m=43).
+Executor: observer by hand. DIAGNOSTIC_NEVER_A_PROOF.
