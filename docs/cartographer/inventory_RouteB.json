@@ -1,16 +1,36 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 381,
-  "declarations": 4202,
-  "in_docs": 2087,
+  "files_scanned": 388,
+  "declarations": 4422,
+  "in_docs": 2275,
   "in_lemma_db": 4182,
-  "orphans": 9,
-  "uncatalogued": 9,
+  "orphans": 45,
+  "uncatalogued": 45,
   "orphan_files_top": [
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      16
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058CurvatureBorderedSecular.lean",
+      10
+    ],
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59EntireTransform.lean",
       8
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      4
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      4
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/P59SingleEndpointAtomCounterexample.lean",
+      2
     ],
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058CurvatureArithmetic.lean",
@@ -4944,7 +4964,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/ClassicalXiInterface.lean",
       "line": 34,
       "signature": "theorem differentiable_centeredXi : Differentiable ℂ centeredXi",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -4954,7 +4974,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/ClassicalXiInterface.lean",
       "line": 39,
       "signature": "@[simp] theorem riemannXi_zero : riemannXi 0 = 1 / 2",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -35189,6 +35209,236 @@
       "orphan": false
     },
     {
+      "kind": "def",
+      "name": "ccmPoleCosVector",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058CurvatureBorderedSecular.lean",
+      "line": 18,
+      "signature": "noncomputable def ccmPoleCosVector (L : ℝ) (n : ℤ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "ccmPoleSinVector",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058CurvatureBorderedSecular.lean",
+      "line": 23,
+      "signature": "noncomputable def ccmPoleSinVector (L : ℝ) (n : ℤ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmW02Entry_rank_two_factorization",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058CurvatureBorderedSecular.lean",
+      "line": 28,
+      "signature": "theorem ccmW02Entry_rank_two_factorization {L : ℝ} (hL : 0 ≤ L) (n m : ℤ) : ccmW02Entry L n m = 2 * ccmPoleCosVector L n * ccmPoleCosVector L m - 2 * ccmPoleSinVector L n * ccmPoleSinVector L m",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmW02Matrix_rank_two_factorization",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058CurvatureBorderedSecular.lean",
+      "line": 41,
+      "signature": "theorem ccmW02Matrix_rank_two_factorization {ι : Type*} [Fintype ι] {L : ℝ} (hL : 0 ≤ L) (mode : ι → ℤ) : (fun i j : ι => ccmW02Entry L (mode i) (mode j)) = (2 : ℝ) • Matrix.vecMulVec (fun i => ccmPoleCosVector L (mode i)) (fun i => ccmPoleCosVector L (mode i)) - (2 : ℝ) • Matrix.vecMulVec (fun i => ccmPoleSinVector L (mode i)) (fun i => ccmPoleSinVector L (mode i))",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "ccmCenterRow",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058CurvatureBorderedSecular.lean",
+      "line": 54,
+      "signature": "def ccmCenterRow {n : Type*} (b : n → ℝ) : Matrix (Fin 1) n ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "ccmCenterCol",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058CurvatureBorderedSecular.lean",
+      "line": 58,
+      "signature": "def ccmCenterCol {n : Type*} (b : n → ℝ) : Matrix n (Fin 1) ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "det_ccmCenterBlock",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058CurvatureBorderedSecular.lean",
+      "line": 62,
+      "signature": "theorem det_ccmCenterBlock {n : Type*} [Fintype n] [DecidableEq n] (a : ℝ) (b : n → ℝ) (D : Matrix n n ℝ) [Invertible D] : det (Matrix.fromBlocks !![a] (ccmCenterRow b) (ccmCenterCol b) D) = det D * (a - dotProduct b ((⅟ D) *ᵥ b))",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "det_ccmCenterBlock_shifted",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058CurvatureBorderedSecular.lean",
+      "line": 78,
+      "signature": "theorem det_ccmCenterBlock_shifted {n : Type*} [Fintype n] [DecidableEq n] (a₀ z : ℝ) (b : n → ℝ) (D : Matrix n n ℝ) [Invertible (D - z • (1 : Matrix n n ℝ))] : det (Matrix.fromBlocks !![a₀ - z] (ccmCenterRow b) (ccmCenterCol b) (D - z • (1 : Matrix n n ℝ))) = det (D - z • (1 : Matrix n n ℝ)) * (a₀ - z - dotProduct b ((⅟ (D - z • (1 : Matrix n n ℝ))) *ᵥ b))",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "ccmBorderedDeformation",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058CurvatureBorderedSecular.lean",
+      "line": 89,
+      "signature": "noncomputable def ccmBorderedDeformation {n : Type*} [Fintype n] [DecidableEq n] (a₀ z t : ℝ) (b c : n → ℝ) (D : Matrix n n ℝ) : Matrix (Fin 1 ⊕ n) (Fin 1 ⊕ n) ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "ccmBorderedPhi",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058CurvatureBorderedSecular.lean",
+      "line": 98,
+      "signature": "noncomputable def ccmBorderedPhi {n : Type*} [Fintype n] (a₀ z : ℝ) (b c : n → ℝ) (R : Matrix n n ℝ) (t : ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "det_ccmBorderedDeformation_div",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058CurvatureBorderedSecular.lean",
+      "line": 104,
+      "signature": "theorem det_ccmBorderedDeformation_div {n : Type*} [Fintype n] [DecidableEq n] (a₀ z t : ℝ) (b c : n → ℝ) (D : Matrix n n ℝ) [Invertible (D - z • (1 : Matrix n n ℝ))] (hdet : det (D - z • (1 : Matrix n n ℝ)) ≠ 0) : det (ccmBorderedDeformation a₀ z t b c D) / det (D - z • (1 : Matrix n n ℝ)) = ccmBorderedPhi a₀ z b c (⅟ (D - z • (1 : Matrix n n ℝ))) t",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmInvOf_isSymm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058CurvatureBorderedSecular.lean",
+      "line": 117,
+      "signature": "theorem ccmInvOf_isSymm {n : Type*} [Fintype n] [DecidableEq n] (D : Matrix n n ℝ) [Invertible D] (hD : D.IsSymm) : (⅟ D).IsSymm",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "dotProduct_mulVec_comm_of_isSymm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058CurvatureBorderedSecular.lean",
+      "line": 126,
+      "signature": "theorem dotProduct_mulVec_comm_of_isSymm {n : Type*} [Fintype n] (b c : n → ℝ) (R : Matrix n n ℝ) (hR : R.IsSymm) : dotProduct b (R *ᵥ c) = dotProduct c (R *ᵥ b)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmBorderedPhi_hasDerivAt_raw",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058CurvatureBorderedSecular.lean",
+      "line": 140,
+      "signature": "theorem ccmBorderedPhi_hasDerivAt_raw {n : Type*} [Fintype n] (a₀ z : ℝ) (b c : n → ℝ) (R : Matrix n n ℝ) : HasDerivAt (ccmBorderedPhi a₀ z b c R) (1 / 6 - (dotProduct c (R *ᵥ b) + dotProduct b (R *ᵥ c))) 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmBorderedPhi_hasDerivAt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058CurvatureBorderedSecular.lean",
+      "line": 160,
+      "signature": "theorem ccmBorderedPhi_hasDerivAt {n : Type*} [Fintype n] (a₀ z : ℝ) (b c : n → ℝ) (R : Matrix n n ℝ) (hR : R.IsSymm) : HasDerivAt (ccmBorderedPhi a₀ z b c R) (1 / 6 - 2 * dotProduct c (R *ᵥ b)) 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "curvature_pairing_eq_half_borderedPhi_deriv",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058CurvatureBorderedSecular.lean",
+      "line": 170,
+      "signature": "theorem curvature_pairing_eq_half_borderedPhi_deriv {n : Type*} [Fintype n] (a₀ z : ℝ) (b c : n → ℝ) (R : Matrix n n ℝ) (hR : R.IsSymm) : 1 / 12 - dotProduct c (R *ᵥ b) = (1 / 2 : ℝ) * deriv (ccmBorderedPhi a₀ z b c R) 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "finiteOddInterpolant",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058CurvatureBorderedSecular.lean",
+      "line": 179,
+      "signature": "noncomputable def finiteOddInterpolant {ι : Type*} [DecidableEq ι] (s : Finset ι) (x β : ι → ℝ) : Polynomial ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "finiteOddInterpolant_spec",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058CurvatureBorderedSecular.lean",
+      "line": 185,
+      "signature": "theorem finiteOddInterpolant_spec {ι : Type*} [DecidableEq ι] (s : Finset ι) (x β : ι → ℝ) (hinj : Set.InjOn (fun i => x i ^ 2) s) {i : ι} (hi : i ∈ s) (hxi : x i ≠ 0) : β i = x i * Polynomial.eval (x i ^ 2) (finiteOddInterpolant s x β)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "ccmOddSymbol",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058CurvatureBorderedSecular.lean",
+      "line": 195,
+      "signature": "noncomputable def ccmOddSymbol (h : Polynomial ℝ) (x : ℝ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "ccmEvenSectorSymbol",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058CurvatureBorderedSecular.lean",
+      "line": 199,
+      "signature": "noncomputable def ccmEvenSectorSymbol (h : Polynomial ℝ) (u : ℝ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmOddSymbol_neg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058CurvatureBorderedSecular.lean",
+      "line": 202,
+      "signature": "@[simp] theorem ccmOddSymbol_neg (h : Polynomial ℝ) (x : ℝ) : ccmOddSymbol h (-x) = -ccmOddSymbol h x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ccm_evenSector_dividedDifference",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058CurvatureBorderedSecular.lean",
+      "line": 207,
+      "signature": "theorem ccm_evenSector_dividedDifference (h : Polynomial ℝ) {x y : ℝ} (hxy : x ≠ y) (hxny : x ≠ -y) : (ccmOddSymbol h x - ccmOddSymbol h y) / (x - y) + (ccmOddSymbol h x - ccmOddSymbol h (-y)) / (x + y) = 2 * (ccmEvenSectorSymbol h (x ^ 2) - ccmEvenSectorSymbol h (y ^ 2)) / (x ^ 2 - y ^ 2)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ccm_oddSector_dividedDifference",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058CurvatureBorderedSecular.lean",
+      "line": 226,
+      "signature": "theorem ccm_oddSector_dividedDifference (h : Polynomial ℝ) {x y : ℝ} (hxy : x ≠ y) (hxny : x ≠ -y) : (ccmOddSymbol h x - ccmOddSymbol h y) / (x - y) - (ccmOddSymbol h x - ccmOddSymbol h (-y)) / (x + y) = 2 * x * y * (h.eval (x ^ 2) - h.eval (y ^ 2)) / (x ^ 2 - y ^ 2)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
       "kind": "theorem",
       "name": "rh_of_real_zero_family_tendsto_centeredXi",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058DirectGroundZeroEscape.lean",
@@ -37269,6 +37519,206 @@
       "orphan": false
     },
     {
+      "kind": "def",
+      "name": "plant",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SingleEndpointAtomCounterexample.lean",
+      "line": 54,
+      "signature": "def plant (a b : ℝ) : ℂ → ℂ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "target",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SingleEndpointAtomCounterexample.lean",
+      "line": 58,
+      "signature": "def target : ℂ → ℂ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "target_apply",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SingleEndpointAtomCounterexample.lean",
+      "line": 62,
+      "signature": "@[simp] theorem target_apply (z : ℂ) : target z = 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "target_ne_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SingleEndpointAtomCounterexample.lean",
+      "line": 64,
+      "signature": "theorem target_ne_zero (z : ℂ) : target z ≠ 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "target_no_zeros",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SingleEndpointAtomCounterexample.lean",
+      "line": 67,
+      "signature": "theorem target_no_zeros : ∀ z : ℂ, target z ≠ 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "plant_even",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SingleEndpointAtomCounterexample.lean",
+      "line": 69,
+      "signature": "theorem plant_even (a b : ℝ) (z : ℂ) : plant a b (-z) = plant a b z",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "plant_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SingleEndpointAtomCounterexample.lean",
+      "line": 74,
+      "signature": "@[simp] theorem plant_zero (a b : ℝ) : plant a b 0 = 1",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "plant_anchor_eq_target",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SingleEndpointAtomCounterexample.lean",
+      "line": 77,
+      "signature": "theorem plant_anchor_eq_target (a b : ℝ) : plant a b 0 = target 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "plant_at_a",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SingleEndpointAtomCounterexample.lean",
+      "line": 81,
+      "signature": "theorem plant_at_a {a : ℝ} (b : ℝ) (ha : a ≠ 0) : plant a b (a : ℂ) = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "plant_at_b",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SingleEndpointAtomCounterexample.lean",
+      "line": 86,
+      "signature": "theorem plant_at_b (a : ℝ) {b : ℝ} (hb : b ≠ 0) : plant a b (b : ℂ) = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "plant_at_neg_a",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SingleEndpointAtomCounterexample.lean",
+      "line": 91,
+      "signature": "theorem plant_at_neg_a {a : ℝ} (b : ℝ) (ha : a ≠ 0) : plant a b ((-a : ℝ) : ℂ) = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "plant_at_neg_b",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SingleEndpointAtomCounterexample.lean",
+      "line": 96,
+      "signature": "theorem plant_at_neg_b (a : ℝ) {b : ℝ} (hb : b ≠ 0) : plant a b ((-b : ℝ) : ℂ) = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "plant_at_endpoint",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SingleEndpointAtomCounterexample.lean",
+      "line": 102,
+      "signature": "theorem plant_at_endpoint {R a b : ℝ} (ha : a ≠ 0) (hb : b ≠ 0) (hab : a ^ 2 + b ^ 2 = R ^ 2) : plant a b (R : ℂ) = 1",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "plant_endpoint_error_eq_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SingleEndpointAtomCounterexample.lean",
+      "line": 115,
+      "signature": "theorem plant_endpoint_error_eq_zero {R a b : ℝ} (ha : a ≠ 0) (hb : b ≠ 0) (hab : a ^ 2 + b ^ 2 = R ^ 2) : ‖plant a b (R : ℂ) - target (R : ℂ)‖ / ‖target (R : ℂ)‖ = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sqrt_leg_spec",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SingleEndpointAtomCounterexample.lean",
+      "line": 124,
+      "signature": "theorem sqrt_leg_spec {R a : ℝ} (hR : 0 < R) (ha : 0 < a) (haR : a < R) : 0 < Real.sqrt (R ^ 2 - a ^ 2) ∧ Real.sqrt (R ^ 2 - a ^ 2) < R ∧ a ^ 2 + Real.sqrt (R ^ 2 - a ^ 2) ^ 2 = R ^ 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sqrt_leg_pythagorean",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SingleEndpointAtomCounterexample.lean",
+      "line": 134,
+      "signature": "theorem sqrt_leg_pythagorean {R : ℝ} (hR : 0 < R) : Real.sqrt (R ^ 2 - (3 * R / 5) ^ 2) = 4 * R / 5",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "card_four_roots",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SingleEndpointAtomCounterexample.lean",
+      "line": 141,
+      "signature": "theorem card_four_roots {a b : ℝ} (ha : 0 < a) (hb : 0 < b) (hab : a ≠ b) : ({a, -a, b, -b} : Finset ℝ).card = 4",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "real_mem_thin_rectangle",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SingleEndpointAtomCounterexample.lean",
+      "line": 159,
+      "signature": "theorem real_mem_thin_rectangle {R h x : ℝ} (hx : |x| < R) (hh : 0 < h) : ((x : ℂ)).re ∈ Set.Ioo (-R) R ∧ ((x : ℂ)).im ∈ Set.Ioo (-h) h",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "single_endpoint_atom_counterexample",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SingleEndpointAtomCounterexample.lean",
+      "line": 183,
+      "signature": "theorem single_endpoint_atom_counterexample {R : ℝ} (hR : 0 < R) : ∃ (F X : ℂ → ℂ) (S : Finset ℝ), F 0 = X 0 ∧ F (R : ℂ) = X (R : ℂ) ∧ ‖F (R : ℂ) - X (R : ℂ)‖ / ‖X (R : ℂ)‖ = 0 ∧ (∀ z : ℂ, X z ≠ 0) ∧ 4 ≤ S.card ∧ (∀ x ∈ S, F (x : ℂ) = 0 ∧ |x| < R)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "endpoint_agreement_does_not_control_zero_count",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SingleEndpointAtomCounterexample.lean",
+      "line": 223,
+      "signature": "theorem endpoint_agreement_does_not_control_zero_count {R : ℝ} (hR : 0 < R) : ¬ ∀ F X : ℂ → ℂ, F 0 = X 0 → F (R : ℂ) = X (R : ℂ) → (∀ z : ℂ, X z ≠ 0) → ∀ x : ℝ, |x| < R → F (x : ℂ) ≠ 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
       "kind": "theorem",
       "name": "true_gap_lower_of_endpoint_perturbation_budget",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/PerturbativeTrueGapLower.lean",
@@ -37406,6 +37856,96 @@
       "signature": "theorem phase_alignment_tendsto_zero_of_projective_defect {ι : Type*} {l : Filter ι} [NeBot l] (u v : ι → E) (hu : ∀ᶠ i in l, ‖u i‖ = 1) (hv : ∀ᶠ i in l, ‖v i‖ = 1) (hdefect : Tendsto (fun i => 1 - ‖inner ℂ (u i) (v i)‖ ^ 2) l (𝓝 0)) : Tendsto (fun i => ‖alignmentPhase (inner ℂ (u i) (v i)) • u i - v i‖) l (𝓝 0)",
       "in_docs": false,
       "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "differentiable_linear_prod",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/PolynomialCircleRootCount.lean",
+      "line": 52,
+      "signature": "theorem differentiable_linear_prod (t : Multiset ℂ) : Differentiable ℂ fun z : ℂ => (t.map (fun a => z - a)).prod",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "linear_prod_ne_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/PolynomialCircleRootCount.lean",
+      "line": 61,
+      "signature": "theorem linear_prod_ne_zero {t : Multiset ℂ} {z : ℂ} (h : ∀ a ∈ t, z - a ≠ 0) : (t.map (fun a => z - a)).prod ≠ 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "logDeriv_linear_prod",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/PolynomialCircleRootCount.lean",
+      "line": 70,
+      "signature": "theorem logDeriv_linear_prod : ∀ (t : Multiset ℂ) (z : ℂ), (∀ a ∈ t, z - a ≠ 0) → logDeriv (fun w : ℂ => (t.map (fun a => w - a)).prod) z = (t.map (fun a => (z - a)⁻¹)).sum",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "logDeriv_polynomial_eq_sum",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/PolynomialCircleRootCount.lean",
+      "line": 99,
+      "signature": "theorem logDeriv_polynomial_eq_sum {p : Polynomial ℂ} (hp : p ≠ 0) {z : ℂ} (hz : p.eval z ≠ 0) : (Polynomial.derivative p).eval z / p.eval z = (p.roots.map (fun a => (z - a)⁻¹)).sum",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "circleIntegral_inv_sub_of_outside",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/PolynomialCircleRootCount.lean",
+      "line": 123,
+      "signature": "theorem circleIntegral_inv_sub_of_outside {c a : ℂ} {r : ℝ} (hr : 0 < r) (ha : r < dist a c) : (∮ z in C(c, r), (z - a)⁻¹) = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "circleIntegrable_inv_sum",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/PolynomialCircleRootCount.lean",
+      "line": 140,
+      "signature": "theorem circleIntegrable_inv_sum (c : ℂ) (r : ℝ) (hr : 0 < r) : ∀ t : Multiset ℂ, (∀ a ∈ t, a ∉ sphere c r) → CircleIntegrable (fun z : ℂ => (t.map (fun a => (z - a)⁻¹)).sum) c r",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "circleIntegral_inv_sum",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/PolynomialCircleRootCount.lean",
+      "line": 161,
+      "signature": "theorem circleIntegral_inv_sum (c : ℂ) (r : ℝ) (hr : 0 < r) : ∀ t : Multiset ℂ, (∀ a ∈ t, a ∉ sphere c r) → (∮ z in C(c, r), (t.map (fun a => (z - a)⁻¹)).sum) = 2 * (Real.pi : ℂ) * Complex.I * ((t.filter (fun a => dist a c < r)).card : ℂ)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "circleIntegral_logDeriv_eq_root_count",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/PolynomialCircleRootCount.lean",
+      "line": 213,
+      "signature": "theorem circleIntegral_logDeriv_eq_root_count {p : Polynomial ℂ} (hp : p ≠ 0) {c : ℂ} {r : ℝ} (hr : 0 < r) (hcirc : ∀ z ∈ sphere c r, p.eval z ≠ 0) : (∮ z in C(c, r), (Polynomial.derivative p).eval z / p.eval z) = 2 * (Real.pi : ℂ) * Complex.I * ((p.roots.filter (fun a => dist a c < r)).card : ℂ)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "circleIntegral_logDeriv_eq_zero_of_no_root",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/PolynomialCircleRootCount.lean",
+      "line": 230,
+      "signature": "theorem circleIntegral_logDeriv_eq_zero_of_no_root {p : Polynomial ℂ} (hp : p ≠ 0) {c : ℂ} {r : ℝ} (hr : 0 < r) (hno : ∀ a ∈ p.roots, r < dist a c) : (∮ z in C(c, r), (Polynomial.derivative p).eval z / p.eval z) = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
       "orphan": false
     },
     {
@@ -38049,6 +38589,846 @@
       "orphan": false
     },
     {
+      "kind": "theorem",
+      "name": "hasSum_even_zeta_two",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 30,
+      "signature": "theorem hasSum_even_zeta_two : HasSum (fun n : ℕ => if Even n then (1 : ℝ) / (n : ℝ) ^ 2 else 0) (Real.pi ^ 2 / 24)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "hasSum_alternating_zeta_two",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 64,
+      "signature": "theorem hasSum_alternating_zeta_two : HasSum (fun n : ℕ => (-1 : ℝ) ^ n / (n : ℝ) ^ 2) (-(Real.pi ^ 2 / 12))",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "hasSum_alternating_eta_two_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 83,
+      "signature": "theorem hasSum_alternating_eta_two_zero : HasSum (fun n : ℕ => (1 + 2 * (-1 : ℝ) ^ n) / (n : ℝ) ^ 2) 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59RawTransform_normalized_at_lattice",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 107,
+      "signature": "theorem proposition59RawTransform_normalized_at_lattice {L : ℝ} (hL : 0 < L) (S : Finset ℤ) (v : ℤ → ℂ) (h0 : 0 ∈ S) (hv0 : v 0 ≠ 0) {j : ℤ} (hj : j ∈ S) : proposition59RawTransform L S v (proposition59Pole L j) / proposition59RawTransform L S v 0 = (j.negOnePow : ℂ) * v j / v 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "proposition59NormalizedSample",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 121,
+      "signature": "def proposition59NormalizedSample (v : ℤ → ℝ) (n : ℕ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_normalizedSample_eq_ratio",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 125,
+      "signature": "theorem proposition59_normalizedSample_eq_ratio {L : ℝ} (hL : 0 < L) (S : Finset ℤ) (v : ℤ → ℝ) (h0 : 0 ∈ S) (hv0 : v 0 ≠ 0) {n : ℕ} (hn : (n : ℤ) ∈ S) : proposition59RawTransform L S (fun k => (v k : ℂ)) (proposition59Pole L (n : ℤ)) / proposition59RawTransform L S (fun k => (v k : ℂ)) 0 = ((proposition59NormalizedSample v n : ℝ) : ℂ)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "proposition59RealPole",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 148,
+      "signature": "def proposition59RealPole (L : ℝ) (n : ℕ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59RealPole_ofReal",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 150,
+      "signature": "theorem proposition59RealPole_ofReal (L : ℝ) (n : ℕ) : ((proposition59RealPole L n : ℝ) : ℂ) = proposition59Pole L (n : ℤ)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "proposition59AlternatingHeadZetaTwo",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 157,
+      "signature": "def proposition59AlternatingHeadZetaTwo (N : ℕ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "proposition59AlternatingTailZetaTwo",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 161,
+      "signature": "def proposition59AlternatingTailZetaTwo (N : ℕ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59AlternatingTailZetaTwo_hasSum",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 164,
+      "signature": "theorem proposition59AlternatingTailZetaTwo_hasSum (N : ℕ) : HasSum (fun k : ℕ => (-1 : ℝ) ^ (k + N + 1) / ((k : ℝ) + N + 1) ^ 2) (-(Real.pi ^ 2 / 12) - proposition59AlternatingHeadZetaTwo N)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59AlternatingTailZetaTwo_eq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 182,
+      "signature": "theorem proposition59AlternatingTailZetaTwo_eq (N : ℕ) : proposition59AlternatingTailZetaTwo N = -(Real.pi ^ 2 / 12) - proposition59AlternatingHeadZetaTwo N",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "sum_erase_zero_Icc_symm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 189,
+      "signature": "private theorem sum_erase_zero_Icc_symm (N : ℕ) (g : ℤ → ℝ) : ∑ k ∈ (Finset.Icc (-(N : ℤ)) (N : ℤ)).erase 0, g k = ∑ k ∈ Finset.Icc 1 N, (g (k : ℤ) + g (-(k : ℤ)))",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_curvature_closed_form_real",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 217,
+      "signature": "theorem proposition59_curvature_closed_form_real {L : ℝ} (hL : 0 < L) (N : ℕ) (v : ℤ → ℝ) (hv : ∀ k : ℤ, v (-k) = v k) (hv0 : v 0 ≠ 0) (hzeros : ZerosRealOn Set.univ (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) (fun k => (v k : ℂ)))) : proposition59Curvature L N v = L ^ 2 / 2 * (1 / 12 + 1 / (2 * Real.pi ^ 2 * v 0) * ∑ k ∈ (Finset.Icc (-(N : ℤ)) (N : ℤ)).erase 0, v k / (k : ℝ) ^ 2)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_curvature_closed_form_positive_modes",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 233,
+      "signature": "theorem proposition59_curvature_closed_form_positive_modes {L : ℝ} (hL : 0 < L) (N : ℕ) (v : ℤ → ℝ) (hv : ∀ k : ℤ, v (-k) = v k) (hv0 : v 0 ≠ 0) (hzeros : ZerosRealOn Set.univ (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) (fun k => (v k : ℂ)))) : proposition59Curvature L N v = L ^ 2 / 24 + L ^ 2 / (2 * Real.pi ^ 2 * v 0) * ∑ n ∈ Finset.Icc 1 N, v (n : ℤ) / (n : ℝ) ^ 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_alternating_curvature_identity",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 256,
+      "signature": "theorem proposition59_alternating_curvature_identity {L : ℝ} (hL : 0 < L) (N : ℕ) (v : ℤ → ℝ) (hv : ∀ k : ℤ, v (-k) = v k) (hv0 : v 0 ≠ 0) (hzeros : ZerosRealOn Set.univ (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) (fun k => (v k : ℂ)))) : proposition59Curvature L N v = 2 * ∑ n ∈ Finset.Icc 1 N, (-1 : ℝ) ^ n * (proposition59NormalizedSample v n - 1) / proposition59RealPole L n ^ 2 - L ^ 2 / (2 * Real.pi ^ 2) * proposition59AlternatingTailZetaTwo N",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_tail_weights_antitone",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 303,
+      "signature": "private theorem proposition59_tail_weights_antitone (N : ℕ) : Antitone (fun k : ℕ => 1 / ((k : ℝ) + N + 1) ^ 2)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_alternating_tail_abs_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 313,
+      "signature": "theorem proposition59_alternating_tail_abs_le (N : ℕ) : |proposition59AlternatingTailZetaTwo N| ≤ 1 / ((N : ℝ) + 1) ^ 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "proposition59ScaledAlternatingTail",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 332,
+      "signature": "def proposition59ScaledAlternatingTail (L : ℝ) (N : ℕ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_scaled_alternating_tail_abs_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 336,
+      "signature": "theorem proposition59_scaled_alternating_tail_abs_le (L : ℝ) (N : ℕ) : |proposition59ScaledAlternatingTail L N| ≤ L ^ 2 / (2 * Real.pi ^ 2 * ((N : ℝ) + 1) ^ 2)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "proposition59LatticeError",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 361,
+      "signature": "def proposition59LatticeError (v : ℤ → ℝ) (f : ℝ → ℝ) (L : ℝ) (n : ℕ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "proposition59WeightedLatticeError",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 365,
+      "signature": "def proposition59WeightedLatticeError (v : ℤ → ℝ) (f : ℝ → ℝ) (L : ℝ) (N : ℕ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "proposition59TrialHead",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 370,
+      "signature": "def proposition59TrialHead (f : ℝ → ℝ) (L : ℝ) (N : ℕ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_alternating_head_split",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 377,
+      "signature": "theorem proposition59_alternating_head_split {L : ℝ} (hL : 0 < L) (N : ℕ) (v : ℤ → ℝ) (f : ℝ → ℝ) : 2 * ∑ n ∈ Finset.Icc 1 N, (-1 : ℝ) ^ n * (proposition59NormalizedSample v n - 1) / proposition59RealPole L n ^ 2 = proposition59TrialHead f L N + L ^ 2 / (2 * Real.pi ^ 2) * ∑ n ∈ Finset.Icc 1 N, (-1 : ℝ) ^ n * proposition59LatticeError v f L n / (n : ℝ) ^ 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_weighted_curvature_inequality",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 398,
+      "signature": "theorem proposition59_weighted_curvature_inequality {L : ℝ} (hL : 0 < L) (N : ℕ) (v : ℤ → ℝ) (hv : ∀ k : ℤ, v (-k) = v k) (hv0 : v 0 ≠ 0) (hzeros : ZerosRealOn Set.univ (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) (fun k => (v k : ℂ)))) (f : ℝ → ℝ) : proposition59Curvature L N v ≤ proposition59TrialHead f L N + L ^ 2 / (2 * Real.pi ^ 2) * proposition59WeightedLatticeError v f L N + |proposition59ScaledAlternatingTail L N|",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "proposition59NormalizedSampleZ",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 456,
+      "signature": "def proposition59NormalizedSampleZ (v : ℤ → ℝ) (k : ℤ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59NormalizedSampleZ_natCast",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 459,
+      "signature": "theorem proposition59NormalizedSampleZ_natCast (v : ℤ → ℝ) (n : ℕ) : proposition59NormalizedSampleZ v (n : ℤ) = proposition59NormalizedSample v n",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_normalizedSampleZ_eq_ratio",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 465,
+      "signature": "theorem proposition59_normalizedSampleZ_eq_ratio {L : ℝ} (hL : 0 < L) (S : Finset ℤ) (v : ℤ → ℝ) (h0 : 0 ∈ S) (hv0 : v 0 ≠ 0) {k : ℤ} (hk : k ∈ S) : proposition59RawTransform L S (fun j => (v j : ℂ)) (proposition59Pole L k) / proposition59RawTransform L S (fun j => (v j : ℂ)) 0 = ((proposition59NormalizedSampleZ v k : ℝ) : ℂ)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "proposition59AnchorOverlap",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 478,
+      "signature": "def proposition59AnchorOverlap (v q : ℤ → ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "proposition59ProjectiveResidual",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 481,
+      "signature": "def proposition59ProjectiveResidual (v q : ℤ → ℝ) (k : ℤ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "proposition59ProjectiveDefect",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 485,
+      "signature": "def proposition59ProjectiveDefect (v q : ℤ → ℝ) (N : ℕ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "proposition59SymmetricNodeError",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 489,
+      "signature": "def proposition59SymmetricNodeError (v q : ℤ → ℝ) (N : ℕ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59ProjectiveResidual_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 494,
+      "signature": "theorem proposition59ProjectiveResidual_zero (v q : ℤ → ℝ) (hq0 : q 0 ≠ 0) : proposition59ProjectiveResidual v q 0 = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59ProjectiveResidual_neg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 500,
+      "signature": "theorem proposition59ProjectiveResidual_neg (v q : ℤ → ℝ) (hv : ∀ k : ℤ, v (-k) = v k) (hq : ∀ k : ℤ, q (-k) = q k) (k : ℤ) : proposition59ProjectiveResidual v q (-k) = proposition59ProjectiveResidual v q k",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59NormalizedSampleZ_sub",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 506,
+      "signature": "theorem proposition59NormalizedSampleZ_sub (v q : ℤ → ℝ) (hv0 : v 0 ≠ 0) (hq0 : q 0 ≠ 0) (k : ℤ) : proposition59NormalizedSampleZ v k - proposition59NormalizedSampleZ q k = ((k.negOnePow : ℤ) : ℝ) * proposition59ProjectiveResidual v q k / v 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "abs_cast_negOnePow",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 514,
+      "signature": "private theorem abs_cast_negOnePow (k : ℤ) : |((k.negOnePow : ℤ) : ℝ)| = 1",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59ProjectiveDefect_eq_two_mul",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 519,
+      "signature": "theorem proposition59ProjectiveDefect_eq_two_mul (v q : ℤ → ℝ) (hv : ∀ k : ℤ, v (-k) = v k) (hq : ∀ k : ℤ, q (-k) = q k) (hq0 : q 0 ≠ 0) (N : ℕ) : proposition59ProjectiveDefect v q N = 2 * ∑ n ∈ Finset.Icc 1 N, proposition59ProjectiveResidual v q (n : ℤ) ^ 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59SymmetricNodeError_eq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 537,
+      "signature": "theorem proposition59SymmetricNodeError_eq (v q : ℤ → ℝ) (hv : ∀ k : ℤ, v (-k) = v k) (hq : ∀ k : ℤ, q (-k) = q k) (hv0 : v 0 ≠ 0) (hq0 : q 0 ≠ 0) (N : ℕ) : proposition59SymmetricNodeError v q N = 2 / |v 0| * ∑ n ∈ Finset.Icc 1 N, |proposition59ProjectiveResidual v q (n : ℤ)| / (n : ℝ) ^ 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "head_zeta_four_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 567,
+      "signature": "private theorem head_zeta_four_le (N : ℕ) : ∑ n ∈ Finset.Icc 1 N, (1 : ℝ) / (n : ℝ) ^ 4 ≤ Real.pi ^ 4 / 90",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sqrt_zeta_four_const",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 571,
+      "signature": "private theorem sqrt_zeta_four_const : Real.sqrt (Real.pi ^ 4 / 90) = Real.pi ^ 2 / Real.sqrt 90",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "weighted_cauchy_schwarz",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 578,
+      "signature": "private theorem weighted_cauchy_schwarz (N : ℕ) (r : ℕ → ℝ) : ∑ n ∈ Finset.Icc 1 N, |r n| / (n : ℝ) ^ 2 ≤ Real.pi ^ 2 / Real.sqrt 90 * Real.sqrt (∑ n ∈ Finset.Icc 1 N, r n ^ 2)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sqrt_ninety_split",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 601,
+      "signature": "private theorem sqrt_ninety_split : Real.sqrt 90 = Real.sqrt 45 * Real.sqrt 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "projective_constant",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 605,
+      "signature": "private theorem projective_constant : 2 * (Real.pi ^ 2 / Real.sqrt 90) = Real.pi ^ 2 / Real.sqrt 45 * Real.sqrt 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_projective_node_inequality_row",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 615,
+      "signature": "theorem proposition59_projective_node_inequality_row (N : ℕ) (v q : ℤ → ℝ) (hv : ∀ k : ℤ, v (-k) = v k) (hq : ∀ k : ℤ, q (-k) = q k) (hv0 : v 0 ≠ 0) (hq0 : q 0 ≠ 0) : proposition59SymmetricNodeError v q N ≤ Real.pi ^ 2 / Real.sqrt 45 * Real.sqrt (proposition59ProjectiveDefect v q N) / |v 0|",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59RawTransform_norm_at_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 670,
+      "signature": "theorem proposition59RawTransform_norm_at_zero {L : ℝ} (hL : 0 < L) (S : Finset ℤ) (v : ℤ → ℝ) (h0 : 0 ∈ S) : ‖proposition59RawTransform L S (fun k => (v k : ℂ)) 0‖ = Real.sqrt L * |v 0|",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_projective_node_inequality",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AlternatingLatticeCurvature.lean",
+      "line": 680,
+      "signature": "theorem proposition59_projective_node_inequality {L : ℝ} (hL : 0 < L) (N : ℕ) (v q : ℤ → ℝ) (hv : ∀ k : ℤ, v (-k) = v k) (hq : ∀ k : ℤ, q (-k) = q k) (hv0 : v 0 ≠ 0) (hq0 : q 0 ≠ 0) : proposition59SymmetricNodeError v q N ≤ Real.pi ^ 2 / Real.sqrt 45 * Real.sqrt (L * proposition59ProjectiveDefect v q N) / ‖proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) (fun j => (v j : ℂ)) 0‖",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sum_Icc_symm_split",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 46,
+      "signature": "private theorem sum_Icc_symm_split (N : ℕ) (g : ℤ → ℝ) : ∑ k ∈ Finset.Icc (-(N : ℤ)) (N : ℤ), g k = g 0 + ∑ n ∈ Finset.Icc 1 N, (g (n : ℤ) + g (-(n : ℤ)))",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "proposition59FullPairing",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 78,
+      "signature": "def proposition59FullPairing (N : ℕ) (v w : ℤ → ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "proposition59EvenCoord",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 82,
+      "signature": "def proposition59EvenCoord (c : ℤ → ℝ) (n : ℕ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_even_coords_pairing",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 88,
+      "signature": "theorem proposition59_even_coords_pairing (N : ℕ) (c e : ℤ → ℝ) (hc : ∀ k : ℤ, c (-k) = c k) (he : ∀ k : ℤ, e (-k) = e k) : ∑ n ∈ Finset.Icc 0 N, proposition59EvenCoord c n * proposition59EvenCoord e n = proposition59FullPairing N c e",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "proposition59RealTransform",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 118,
+      "signature": "def proposition59RealTransform (L : ℝ) (N : ℕ) (v : ℤ → ℝ) (x : ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "proposition59Anchor",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 123,
+      "signature": "def proposition59Anchor (L : ℝ) (v : ℤ → ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59RealPole_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 125,
+      "signature": "theorem proposition59RealPole_zero (L : ℝ) : proposition59RealPole L 0 = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59RealTransform_at_realPole",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 130,
+      "signature": "theorem proposition59RealTransform_at_realPole {L : ℝ} (hL : 0 < L) (N : ℕ) (v : ℤ → ℝ) {n : ℕ} (hn : n ≤ N) : proposition59RealTransform L N v (proposition59RealPole L n) = Real.sqrt L * (-1 : ℝ) ^ n * v (n : ℤ)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59RealTransform_at_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 149,
+      "signature": "theorem proposition59RealTransform_at_zero {L : ℝ} (hL : 0 < L) (N : ℕ) (v : ℤ → ℝ) : proposition59RealTransform L N v 0 = proposition59Anchor L v",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "proposition59LatticeTrace",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 161,
+      "signature": "def proposition59LatticeTrace (L : ℝ) (N : ℕ) (f : ℝ → ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59LatticeTrace_add",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 164,
+      "signature": "theorem proposition59LatticeTrace_add (L : ℝ) (N : ℕ) (f g : ℝ → ℝ) : proposition59LatticeTrace L N (fun x => f x + g x) = proposition59LatticeTrace L N f + proposition59LatticeTrace L N g",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59LatticeTrace_sub",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 171,
+      "signature": "theorem proposition59LatticeTrace_sub (L : ℝ) (N : ℕ) (f g : ℝ → ℝ) : proposition59LatticeTrace L N (fun x => f x - g x) = proposition59LatticeTrace L N f - proposition59LatticeTrace L N g",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59LatticeTrace_const_mul",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 178,
+      "signature": "theorem proposition59LatticeTrace_const_mul (L : ℝ) (N : ℕ) (c : ℝ) (f : ℝ → ℝ) : proposition59LatticeTrace L N (fun x => c * f x) = c * proposition59LatticeTrace L N f",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59LatticeTrace_congr_nodes",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 187,
+      "signature": "theorem proposition59LatticeTrace_congr_nodes (L : ℝ) (N : ℕ) (f g : ℝ → ℝ) (h0 : f 0 = g 0) (hnode : ∀ n ∈ Finset.Icc 1 N, f (proposition59RealPole L n) = g (proposition59RealPole L n)) : proposition59LatticeTrace L N f = proposition59LatticeTrace L N g",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_real_even_lattice_pairing",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 202,
+      "signature": "theorem proposition59_real_even_lattice_pairing {L : ℝ} (hL : 0 < L) (N : ℕ) (v w : ℤ → ℝ) (hv : ∀ k : ℤ, v (-k) = v k) (hw : ∀ k : ℤ, w (-k) = w k) : proposition59LatticeTrace L N (fun x => proposition59RealTransform L N v x * proposition59RealTransform L N w x) = 2 * Real.pi * proposition59FullPairing N v w",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59RawTransform_of_sum",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 252,
+      "signature": "theorem proposition59RawTransform_of_sum (L : ℝ) (S : Finset ℤ) (T : Finset ℕ) (d : ℕ → ℂ) (u : ℕ → ℤ → ℂ) (z : ℂ) : proposition59RawTransform L S (fun k => ∑ j ∈ T, d j * u j k) z = ∑ j ∈ T, d j * proposition59RawTransform L S (u j) z",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59RealTransform_of_sum",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 271,
+      "signature": "theorem proposition59RealTransform_of_sum (L : ℝ) (N K : ℕ) (u : ℕ → ℤ → ℝ) (d : ℕ → ℝ) (y : ℤ → ℝ) (hy : ∀ k : ℤ, y k = ∑ j ∈ Finset.Icc 1 K, d j * u j k) (x : ℝ) : proposition59RealTransform L N y x = ∑ j ∈ Finset.Icc 1 K, d j * proposition59RealTransform L N (u j) x",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59Anchor_of_sum",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 288,
+      "signature": "theorem proposition59Anchor_of_sum (L : ℝ) (K : ℕ) (u : ℕ → ℤ → ℝ) (d : ℕ → ℝ) (y : ℤ → ℝ) (hy : ∀ k : ℤ, y k = ∑ j ∈ Finset.Icc 1 K, d j * u j k) : proposition59Anchor L y = ∑ j ∈ Finset.Icc 1 K, d j * proposition59Anchor L (u j)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "proposition59AnchoredDefect",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 298,
+      "signature": "def proposition59AnchoredDefect (L : ℝ) (N : ℕ) (v : ℤ → ℝ) (X : ℝ → ℝ) : ℝ → ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_anchor_residual_term_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 303,
+      "signature": "theorem proposition59_anchor_residual_term_zero (L : ℝ) (K : ℕ) (u : ℕ → ℤ → ℝ) (d : ℕ → ℝ) (y : ℤ → ℝ) (hK : 1 ≤ K) (hy : ∀ k : ℤ, y k = ∑ j ∈ Finset.Icc 1 K, d j * u j k) : proposition59Anchor L y - d 1 * proposition59Anchor L (u 1) - ∑ j ∈ Finset.Icc 2 K, d j * proposition59Anchor L (u j) = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_anchoredDefect_of_sum",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 319,
+      "signature": "theorem proposition59_anchoredDefect_of_sum (L : ℝ) (N K : ℕ) (u : ℕ → ℤ → ℝ) (d : ℕ → ℝ) (y : ℤ → ℝ) (X : ℝ → ℝ) (hy : ∀ k : ℤ, y k = ∑ j ∈ Finset.Icc 1 K, d j * u j k) (x : ℝ) : proposition59AnchoredDefect L N y X x = ∑ j ∈ Finset.Icc 1 K, d j * proposition59AnchoredDefect L N (u j) X x",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_anchored_eigenbasis_decomposition",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 333,
+      "signature": "theorem proposition59_anchored_eigenbasis_decomposition {L : ℝ} (N K : ℕ) (u : ℕ → ℤ → ℝ) (d : ℕ → ℝ) (y : ℤ → ℝ) (X : ℝ → ℝ) (hK : 1 ≤ K) (hℓ : proposition59Anchor L (u 1) ≠ 0) (hy : ∀ k : ℤ, y k = ∑ j ∈ Finset.Icc 1 K, d j * u j k) (x : ℝ) : d 1 * proposition59Anchor L (u 1) * (proposition59RealTransform L N (u 1) x / proposition59Anchor L (u 1) - X x) = proposition59AnchoredDefect L N y X x - ∑ j ∈ Finset.Icc 2 K, d j * proposition59AnchoredDefect L N (u j) X x",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_anchored_two_mode_form",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 357,
+      "signature": "theorem proposition59_anchored_two_mode_form {L : ℝ} (N K : ℕ) (u : ℕ → ℤ → ℝ) (d : ℕ → ℝ) (y : ℤ → ℝ) (X : ℝ → ℝ) (hK : 2 ≤ K) (hℓ : proposition59Anchor L (u 1) ≠ 0) (hd : d 1 ≠ 0) (hy : ∀ k : ℤ, y k = ∑ j ∈ Finset.Icc 1 K, d j * u j k) (x : ℝ) : proposition59RealTransform L N (u 1) x / proposition59Anchor L (u 1) - X x = (-(d 2) / (d 1 * proposition59Anchor L (u 1))) * proposition59AnchoredDefect L N (u 2) X x + (proposition59AnchoredDefect L N y X x - ∑ j ∈ Finset.Icc 3 K, d j * proposition59AnchoredDefect L N (u j) X x) / (d 1 * proposition59Anchor L (u 1))",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "proposition59XiSampleRow",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 389,
+      "signature": "def proposition59XiSampleRow (L : ℝ) (u₁ : ℤ → ℝ) (X : ℝ → ℝ) (k : ℤ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59XiSampleRow_even",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 392,
+      "signature": "theorem proposition59XiSampleRow_even (L : ℝ) (u₁ : ℤ → ℝ) (X : ℝ → ℝ) (k : ℤ) : proposition59XiSampleRow L u₁ X (-k) = proposition59XiSampleRow L u₁ X k",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59XiSampleRow_at_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 398,
+      "signature": "theorem proposition59XiSampleRow_at_zero (L : ℝ) (u₁ : ℤ → ℝ) (X : ℝ → ℝ) (hX : X 0 = 1) : proposition59XiSampleRow L u₁ X 0 = u₁ 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59RealTransform_xiSampleRow_at_realPole",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 406,
+      "signature": "theorem proposition59RealTransform_xiSampleRow_at_realPole {L : ℝ} (hL : 0 < L) (N : ℕ) (u₁ : ℤ → ℝ) (X : ℝ → ℝ) {n : ℕ} (hn : n ≤ N) : proposition59RealTransform L N (proposition59XiSampleRow L u₁ X) (proposition59RealPole L n) = proposition59Anchor L u₁ * X (proposition59RealPole L n)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59RealTransform_xiSampleRow_at_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 423,
+      "signature": "theorem proposition59RealTransform_xiSampleRow_at_zero {L : ℝ} (hL : 0 < L) (N : ℕ) (u₁ : ℤ → ℝ) (X : ℝ → ℝ) : proposition59RealTransform L N (proposition59XiSampleRow L u₁ X) 0 = proposition59Anchor L u₁ * X 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_second_mode_overlap_lattice",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 433,
+      "signature": "theorem proposition59_second_mode_overlap_lattice {L : ℝ} (hL : 0 < L) (N : ℕ) (u₁ u₂ : ℤ → ℝ) (X : ℝ → ℝ) (h₂ : ∀ k : ℤ, u₂ (-k) = u₂ k) : 2 * Real.pi * proposition59FullPairing N (proposition59XiSampleRow L u₁ X) u₂ = proposition59Anchor L u₁ * proposition59LatticeTrace L N (fun x => X x * proposition59RealTransform L N u₂ x)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "proposition59JetRemainder",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 454,
+      "signature": "def proposition59JetRemainder (G X : ℝ → ℝ) (α : ℝ) : ℝ → ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "proposition59Kappa",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 459,
+      "signature": "def proposition59Kappa (f : ℝ → ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59JetRemainder_at_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 462,
+      "signature": "theorem proposition59JetRemainder_at_zero (G X : ℝ → ℝ) (α : ℝ) (h : G 0 = X 0) : proposition59JetRemainder G X α 0 = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "iteratedDeriv_two_sq_mul",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 469,
+      "signature": "private theorem iteratedDeriv_two_sq_mul (X : ℝ → ℝ) (hX : ContDiff ℝ 2 X) : iteratedDeriv 2 (fun x : ℝ => x ^ 2 * X x) 0 = 2 * X 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59JetRemainder_secondJet_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 504,
+      "signature": "theorem proposition59JetRemainder_secondJet_zero (G X : ℝ → ℝ) (hG : ContDiff ℝ 2 G) (hX : ContDiff ℝ 2 X) (hX0 : X 0 = 1) : proposition59Kappa (proposition59JetRemainder G X (proposition59Kappa G - proposition59Kappa X)) = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_curvature_transfer_split",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 533,
+      "signature": "theorem proposition59_curvature_transfer_split (L : ℝ) (N : ℕ) (G X F₂ : ℝ → ℝ) (α : ℝ) : proposition59LatticeTrace L N (fun x => X x * F₂ x) = α * proposition59LatticeTrace L N (fun x => x ^ 2 * X x * F₂ x) - proposition59LatticeTrace L N (fun x => proposition59JetRemainder G X α x * F₂ x) + proposition59LatticeTrace L N (fun x => G x * F₂ x)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_ground_second_mode_trace_orthogonality",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 553,
+      "signature": "theorem proposition59_ground_second_mode_trace_orthogonality {L : ℝ} (hL : 0 < L) (N : ℕ) (u₁ u₂ : ℤ → ℝ) (h₁ : ∀ k : ℤ, u₁ (-k) = u₁ k) (h₂ : ∀ k : ℤ, u₂ (-k) = u₂ k) (hℓ : proposition59Anchor L u₁ ≠ 0) (horth : proposition59FullPairing N u₁ u₂ = 0) : proposition59LatticeTrace L N (fun x => proposition59RealTransform L N u₁ x / proposition59Anchor L u₁ * proposition59RealTransform L N u₂ x) = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_second_mode_curvature_transfer",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 578,
+      "signature": "theorem proposition59_second_mode_curvature_transfer {L : ℝ} (hL : 0 < L) (N : ℕ) (u₁ u₂ : ℤ → ℝ) (X : ℝ → ℝ) (α : ℝ) (h₁ : ∀ k : ℤ, u₁ (-k) = u₁ k) (h₂ : ∀ k : ℤ, u₂ (-k) = u₂ k) (hℓ : proposition59Anchor L u₁ ≠ 0) (horth : proposition59FullPairing N u₁ u₂ = 0) : 2 * Real.pi * proposition59FullPairing N (proposition59XiSampleRow L u₁ X) u₂ = proposition59Anchor L u₁ * (α * proposition59LatticeTrace L N (fun x => x ^ 2 * X x * proposition59RealTransform L N u₂ x) - proposition59LatticeTrace L N (fun x => proposition59JetRemainder (fun t => proposition59RealTransform L N u₁ t / proposition59Anchor L u₁) X α x * proposition59RealTransform L N u₂ x))",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_second_jet_two_mode_ledger",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59AnchoredSecondModeOverlap.lean",
+      "line": 608,
+      "signature": "theorem proposition59_second_jet_two_mode_ledger (G X ψ R : ℝ → ℝ) (a : ℝ) (hG : ContDiffAt ℝ 2 G 0) (hX : ContDiffAt ℝ 2 X 0) (hψ : ContDiffAt ℝ 2 ψ 0) (hR : ContDiffAt ℝ 2 R 0) (hdecomp : (fun x => G x - X x) = fun x => a * ψ x + R x) : proposition59Kappa G - proposition59Kappa X = a * proposition59Kappa ψ + proposition59Kappa R",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
       "kind": "def",
       "name": "proposition59Pole",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59EntireTransform.lean",
@@ -38400,6 +39780,736 @@
     },
     {
       "kind": "def",
+      "name": "proposition59CauchyDenominator",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 29,
+      "signature": "def proposition59CauchyDenominator (L : ℝ) (S : Finset ℤ) : Polynomial ℂ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "proposition59CauchyNumerator",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 34,
+      "signature": "def proposition59CauchyNumerator (L : ℝ) (S : Finset ℤ) (v : ℤ → ℂ) : Polynomial ℂ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59CauchyDenominator_eval",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 39,
+      "signature": "@[simp] theorem proposition59CauchyDenominator_eval (L : ℝ) (S : Finset ℤ) (z : ℂ) : (proposition59CauchyDenominator L S).eval z = ∏ k ∈ S, (z - proposition59Pole L k)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59CauchyNumerator_eval",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 45,
+      "signature": "@[simp] theorem proposition59CauchyNumerator_eval (L : ℝ) (S : Finset ℤ) (v : ℤ → ℂ) (z : ℂ) : (proposition59CauchyNumerator L S v).eval z = ∑ k ∈ S, v k * ∏ j ∈ S.erase k, (z - proposition59Pole L j)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59CauchyDenominator_eval_ne_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 52,
+      "signature": "theorem proposition59CauchyDenominator_eval_ne_zero (L : ℝ) (S : Finset ℤ) {z : ℂ} (hz : ∀ k ∈ S, z ≠ proposition59Pole L k) : (proposition59CauchyDenominator L S).eval z ≠ 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_finite_cauchy_numerator_identity",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 61,
+      "signature": "theorem proposition59_finite_cauchy_numerator_identity (L : ℝ) (S : Finset ℤ) (v : ℤ → ℂ) {z : ℂ} (hz : ∀ k ∈ S, z ≠ proposition59Pole L k) : ∑ k ∈ S, v k / (z - proposition59Pole L k) = (proposition59CauchyNumerator L S v).eval z / (proposition59CauchyDenominator L S).eval z",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59CauchyNumerator_eval_at_lattice",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 87,
+      "signature": "theorem proposition59CauchyNumerator_eval_at_lattice (L : ℝ) (S : Finset ℤ) (v : ℤ → ℂ) {j : ℤ} (hj : j ∈ S) : (proposition59CauchyNumerator L S v).eval (proposition59Pole L j) = v j * ∏ k ∈ S.erase j, (proposition59Pole L j - proposition59Pole L k)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59CauchyNumerator_eval_at_lattice_eq_zero_iff",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 101,
+      "signature": "theorem proposition59CauchyNumerator_eval_at_lattice_eq_zero_iff {L : ℝ} (hL : L ≠ 0) (S : Finset ℤ) (v : ℤ → ℂ) {j : ℤ} (hj : j ∈ S) : (proposition59CauchyNumerator L S v).eval (proposition59Pole L j) = 0 ↔ v j = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59RawTransform_at_lattice",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 125,
+      "signature": "theorem proposition59RawTransform_at_lattice {L : ℝ} (hL : 0 < L) (S : Finset ℤ) (v : ℤ → ℂ) {j : ℤ} (hj : j ∈ S) : proposition59RawTransform L S v (proposition59Pole L j) = (Real.sqrt L : ℂ) * (j.negOnePow : ℂ) * v j",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_numerator_root_imp_transform_root",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 140,
+      "signature": "theorem proposition59_numerator_root_imp_transform_root {L : ℝ} (hL : 0 < L) (S : Finset ℤ) (v : ℤ → ℂ) {z : ℂ} (hroot : (proposition59CauchyNumerator L S v).eval z = 0) : proposition59RawTransform L S v z = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59CauchyNumerator_roots_real",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 160,
+      "signature": "theorem proposition59CauchyNumerator_roots_real {L : ℝ} (hL : 0 < L) (S : Finset ℤ) (v : ℤ → ℂ) (hzeros : ZerosRealOn Set.univ (proposition59RawTransform L S v)) {z : ℂ} (hroot : (proposition59CauchyNumerator L S v).eval z = 0) : z.im = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "rootMultiplicity_neg_of_even",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 221,
+      "signature": "private theorem rootMultiplicity_neg_of_even {p : ℂ[X]} (hp : p ≠ 0) (heven : p.comp (-X) = p) (a : ℂ) : p.rootMultiplicity (-a) = p.rootMultiplicity a",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "roots_map_neg_of_even",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 243,
+      "signature": "private theorem roots_map_neg_of_even {p : ℂ[X]} (hp : p ≠ 0) (heven : p.comp (-X) = p) : p.roots.map (fun r => -r) = p.roots",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "positiveRootMultiset",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 257,
+      "signature": "noncomputable def positiveRootMultiset (p : ℂ[X]) : Multiset ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "positiveRootMultiset_pos",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 260,
+      "signature": "theorem positiveRootMultiset_pos {p : ℂ[X]} {ρ : ℝ} (hρ : ρ ∈ positiveRootMultiset p) : 0 < ρ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "eval_div_eval_zero_eq_prod_positiveRootMultiset",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 270,
+      "signature": "theorem eval_div_eval_zero_eq_prod_positiveRootMultiset {p : ℂ[X]} (hp0 : p.eval 0 ≠ 0) (heven : ∀ z : ℂ, p.eval (-z) = p.eval z) (hreal : ∀ z : ℂ, p.eval z = 0 → z.im = 0) (z : ℂ) : p.eval z / p.eval 0 = ((positiveRootMultiset p).map (fun ρ : ℝ => 1 - z ^ 2 / (ρ : ℂ) ^ 2)).prod",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59Pole_neg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 345,
+      "signature": "theorem proposition59Pole_neg (L : ℝ) (k : ℤ) : proposition59Pole L (-k) = -proposition59Pole L k",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "card_Icc_symm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 350,
+      "signature": "theorem card_Icc_symm (N : ℕ) : (Finset.Icc (-(N : ℤ)) (N : ℤ)).card = 2 * N + 1",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59CauchyNumerator_eval_neg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 357,
+      "signature": "theorem proposition59CauchyNumerator_eval_neg (L : ℝ) (N : ℕ) {v : ℤ → ℂ} (hv : ∀ k : ℤ, v (-k) = v k) (z : ℂ) : (proposition59CauchyNumerator L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v).eval (-z) = (proposition59CauchyNumerator L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v).eval z",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59CauchyNumerator_eval_zero_ne_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 404,
+      "signature": "theorem proposition59CauchyNumerator_eval_zero_ne_zero {L : ℝ} (hL : L ≠ 0) (N : ℕ) (v : ℤ → ℂ) (hv0 : v 0 ≠ 0) : (proposition59CauchyNumerator L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v).eval 0 ≠ 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59CauchyNumerator_normalized_product",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 416,
+      "signature": "theorem proposition59CauchyNumerator_normalized_product {L : ℝ} (hL : 0 < L) (N : ℕ) (v : ℤ → ℂ) (hv : ∀ k : ℤ, v (-k) = v k) (hv0 : v 0 ≠ 0) (hzeros : ZerosRealOn Set.univ (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v)) (z : ℂ) : (proposition59CauchyNumerator L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v).eval z / (proposition59CauchyNumerator L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v).eval 0 = ((positiveRootMultiset (proposition59CauchyNumerator L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v)).map (fun ρ : ℝ => 1 - z ^ 2 / (ρ : ℂ) ^ 2)).prod",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59CauchyDenominator_eq_included_factors",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 445,
+      "signature": "theorem proposition59CauchyDenominator_eq_included_factors {L : ℝ} (hL : L ≠ 0) (N : ℕ) (v : ℤ → ℂ) (z : ℂ) : v 0 * (proposition59CauchyDenominator L (Finset.Icc (-(N : ℤ)) (N : ℤ))).eval z = z * (proposition59CauchyNumerator L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v).eval 0 * ∏ k ∈ (Finset.Icc (-(N : ℤ)) (N : ℤ)).erase 0, (1 - z / proposition59Pole L k)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_included_factor_product_identity",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 480,
+      "signature": "theorem proposition59_included_factor_product_identity {L : ℝ} (hL : 0 < L) (N : ℕ) (v : ℤ → ℂ) (hv0 : v 0 ≠ 0) (z : ℂ) : proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v z * ∏ k ∈ (Finset.Icc (-(N : ℤ)) (N : ℤ)).erase 0, (1 - z / proposition59Pole L k) = proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v 0 * ((proposition59CauchyNumerator L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v).eval z / (proposition59CauchyNumerator L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v).eval 0) * (proposition59PoleKernel L 0 z / (L : ℂ))",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_explicit_product_identity",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 558,
+      "signature": "theorem proposition59_explicit_product_identity {L : ℝ} (hL : 0 < L) (N : ℕ) (v : ℤ → ℂ) (hv : ∀ k : ℤ, v (-k) = v k) (hv0 : v 0 ≠ 0) (hzeros : ZerosRealOn Set.univ (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v)) (z : ℂ) : proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v z * ∏ k ∈ (Finset.Icc (-(N : ℤ)) (N : ℤ)).erase 0, (1 - z / proposition59Pole L k) = proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v 0 * ((positiveRootMultiset (proposition59CauchyNumerator L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v)).map (fun ρ : ℝ => 1 - z ^ 2 / (ρ : ℂ) ^ 2)).prod * (proposition59PoleKernel L 0 z / (L : ℂ))",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59RawTransform_at_zero_ne_zero_iff",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 579,
+      "signature": "theorem proposition59RawTransform_at_zero_ne_zero_iff {L : ℝ} (hL : 0 < L) (N : ℕ) (v : ℤ → ℂ) : proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v 0 ≠ 0 ↔ v 0 ≠ 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "iteratedDeriv_two_eq_deriv_deriv",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 601,
+      "signature": "private theorem iteratedDeriv_two_eq_deriv_deriv (h : ℂ → ℂ) (z : ℂ) : iteratedDeriv 2 h z = deriv (deriv h) z",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "iteratedDeriv_two_mul_of_differentiable",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 605,
+      "signature": "private theorem iteratedDeriv_two_mul_of_differentiable {f g : ℂ → ℂ} (hf : Differentiable ℂ f) (hg : Differentiable ℂ g) (z : ℂ) : iteratedDeriv 2 (fun w => f w * g w) z = iteratedDeriv 2 f z * g z + 2 * (deriv f z * deriv g z) + f z * iteratedDeriv 2 g z",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "polyEval_deriv_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 632,
+      "signature": "private theorem polyEval_deriv_zero (p : Polynomial ℂ) : deriv (fun z : ℂ => p.eval z) 0 = p.coeff 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "polyEval_iteratedDeriv_two_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 637,
+      "signature": "private theorem polyEval_iteratedDeriv_two_zero (p : Polynomial ℂ) : iteratedDeriv 2 (fun z : ℂ => p.eval z) 0 = 2 * p.coeff 2",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "quadProductPoly",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 648,
+      "signature": "noncomputable def quadProductPoly (c : Multiset ℂ) : Polynomial ℂ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "quadProductPoly_eval",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 651,
+      "signature": "@[simp] theorem quadProductPoly_eval (c : Multiset ℂ) (z : ℂ) : (quadProductPoly c).eval z = (c.map (fun a => 1 - a * z ^ 2)).prod",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "quadProductPoly_coeff_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 655,
+      "signature": "theorem quadProductPoly_coeff_zero (c : Multiset ℂ) : (quadProductPoly c).coeff 0 = 1",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "quadProductPoly_coeff_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 660,
+      "signature": "theorem quadProductPoly_coeff_one (c : Multiset ℂ) : (quadProductPoly c).coeff 1 = 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "quadProductPoly_coeff_two",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 673,
+      "signature": "theorem quadProductPoly_coeff_two (c : Multiset ℂ) : (quadProductPoly c).coeff 2 = -c.sum",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "prod_erase_zero_Icc_symm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 687,
+      "signature": "theorem prod_erase_zero_Icc_symm {M : Type*} [CommMonoid M] (N : ℕ) (g : ℤ → M) : ∏ k ∈ (Finset.Icc (-(N : ℤ)) (N : ℤ)).erase 0, g k = ∏ k ∈ Finset.Icc 1 N, (g (k : ℤ) * g (-(k : ℤ)))",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "proposition59IncludedCoefficients",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 721,
+      "signature": "noncomputable def proposition59IncludedCoefficients (L : ℝ) (N : ℕ) : Multiset ℂ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "proposition59RootCoefficients",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 725,
+      "signature": "noncomputable def proposition59RootCoefficients (L : ℝ) (N : ℕ) (v : ℤ → ℂ) : Multiset ℂ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59IncludedFactors_eq_eval",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 731,
+      "signature": "theorem proposition59IncludedFactors_eq_eval {L : ℝ} (hL : 0 < L) (N : ℕ) (z : ℂ) : ∏ k ∈ (Finset.Icc (-(N : ℤ)) (N : ℤ)).erase 0, (1 - z / proposition59Pole L k) = (quadProductPoly (proposition59IncludedCoefficients L N)).eval z",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59RootFactors_eq_eval",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 755,
+      "signature": "theorem proposition59RootFactors_eq_eval (L : ℝ) (N : ℕ) (v : ℤ → ℂ) (z : ℂ) : ((positiveRootMultiset (proposition59CauchyNumerator L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v)).map (fun ρ : ℝ => 1 - z ^ 2 / (ρ : ℂ) ^ 2)).prod = (quadProductPoly (proposition59RootCoefficients L N v)).eval z",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59Sinc_at_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 767,
+      "signature": "private theorem proposition59Sinc_at_zero {L : ℝ} (hL : 0 < L) : (L : ℂ)⁻¹ * proposition59PoleKernel L 0 0 = 1",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59Sinc_secondDeriv",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 776,
+      "signature": "private theorem proposition59Sinc_secondDeriv {L : ℝ} (hL : 0 < L) : iteratedDeriv 2 (fun z : ℂ => (L : ℂ)⁻¹ * proposition59PoleKernel L 0 z) 0 = -((L : ℂ) ^ 2) / 12",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_secondDerivative_zero_from_product",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 793,
+      "signature": "theorem proposition59_secondDerivative_zero_from_product {L : ℝ} (hL : 0 < L) (N : ℕ) (v : ℤ → ℂ) (hv : ∀ k : ℤ, v (-k) = v k) (hv0 : v 0 ≠ 0) (hzeros : ZerosRealOn Set.univ (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v)) : iteratedDeriv 2 (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v) 0 = proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v 0 * (-2 * (proposition59RootCoefficients L N v).sum - (L : ℂ) ^ 2 / 12 + 2 * (proposition59IncludedCoefficients L N).sum)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "multiset_sum_nonneg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 871,
+      "signature": "private theorem multiset_sum_nonneg {s : Multiset ℝ} (h : ∀ x ∈ s, 0 ≤ x) : 0 ≤ s.sum",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ofReal_multiset_sum",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 880,
+      "signature": "private theorem ofReal_multiset_sum (s : Multiset ℝ) : ((s.sum : ℝ) : ℂ) = (s.map (fun x : ℝ => (x : ℂ))).sum",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "proposition59HeadZetaTwo",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 887,
+      "signature": "noncomputable def proposition59HeadZetaTwo (N : ℕ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "proposition59TailZetaTwo",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 891,
+      "signature": "noncomputable def proposition59TailZetaTwo (N : ℕ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59TailZetaTwo_hasSum",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 894,
+      "signature": "theorem proposition59TailZetaTwo_hasSum (N : ℕ) : HasSum (fun n : ℕ => (1 : ℝ) / ((n : ℝ) + N + 1) ^ 2) (Real.pi ^ 2 / 6 - proposition59HeadZetaTwo N)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59TailZetaTwo_eq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 912,
+      "signature": "theorem proposition59TailZetaTwo_eq (N : ℕ) : proposition59TailZetaTwo N = Real.pi ^ 2 / 6 - proposition59HeadZetaTwo N",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59TailZetaTwo_nonneg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 916,
+      "signature": "theorem proposition59TailZetaTwo_nonneg (N : ℕ) : 0 ≤ proposition59TailZetaTwo N",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "proposition59Curvature",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 922,
+      "signature": "noncomputable def proposition59Curvature (L : ℝ) (N : ℕ) (v : ℤ → ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59Curvature_nonneg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 928,
+      "signature": "theorem proposition59Curvature_nonneg (L : ℝ) (N : ℕ) (v : ℤ → ℝ) : 0 ≤ proposition59Curvature L N v",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59RootCoefficients_sum_ofReal",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 936,
+      "signature": "private theorem proposition59RootCoefficients_sum_ofReal (L : ℝ) (N : ℕ) (v : ℤ → ℝ) : (proposition59RootCoefficients L N (fun k => (v k : ℂ))).sum = ((((positiveRootMultiset (proposition59CauchyNumerator L (Finset.Icc (-(N : ℤ)) (N : ℤ)) (fun k => (v k : ℂ)))).map (fun ρ : ℝ => 1 / ρ ^ 2)).sum : ℝ) : ℂ)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59IncludedCoefficients_sum_eq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 946,
+      "signature": "private theorem proposition59IncludedCoefficients_sum_eq {L : ℝ} (hL : 0 < L) (N : ℕ) : (proposition59IncludedCoefficients L N).sum = (L : ℂ) ^ 2 / (4 * (Real.pi : ℂ) ^ 2) * ((proposition59HeadZetaTwo N : ℝ) : ℂ)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_curvature_coercion",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 974,
+      "signature": "theorem proposition59_curvature_coercion {L : ℝ} (hL : 0 < L) (N : ℕ) (v : ℤ → ℝ) (hv : ∀ k : ℤ, v (-k) = v k) (hv0 : v 0 ≠ 0) (hzeros : ZerosRealOn Set.univ (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) (fun k => (v k : ℂ)))) : -(iteratedDeriv 2 (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) (fun k => (v k : ℂ))) 0) / (2 * proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) (fun k => (v k : ℂ)) 0) = ((proposition59Curvature L N v : ℝ) : ℂ)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_curvature_closed_form",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 1010,
+      "signature": "theorem proposition59_curvature_closed_form {L : ℝ} (hL : 0 < L) (N : ℕ) (v : ℤ → ℝ) (hv : ∀ k : ℤ, v (-k) = v k) (hv0 : v 0 ≠ 0) (hzeros : ZerosRealOn Set.univ (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) (fun k => (v k : ℂ)))) : ((proposition59Curvature L N v : ℝ) : ℂ) = (L : ℂ) ^ 2 / 2 * (1 / 12 + 1 / (2 * (Real.pi : ℂ) ^ 2 * ((v 0 : ℝ) : ℂ)) * ∑ k ∈ (Finset.Icc (-(N : ℤ)) (N : ℤ)).erase 0, ((v k : ℝ) : ℂ) / (k : ℂ) ^ 2)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59Curvature_eq_root_sum_add_tail",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 1037,
+      "signature": "theorem proposition59Curvature_eq_root_sum_add_tail (L : ℝ) (N : ℕ) (v : ℤ → ℝ) : proposition59Curvature L N v = ((positiveRootMultiset (proposition59CauchyNumerator L (Finset.Icc (-(N : ℤ)) (N : ℤ)) (fun k => (v k : ℂ)))).map (fun ρ : ℝ => 1 / ρ ^ 2)).sum + L ^ 2 / (4 * Real.pi ^ 2) * ∑' n : ℕ, (1 : ℝ) / ((n : ℝ) + N + 1) ^ 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "norm_quadProduct_le_exp",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 1054,
+      "signature": "private theorem norm_quadProduct_le_exp (c : Multiset ℂ) (z : ℂ) : ‖(c.map (fun a : ℂ => 1 - a * z ^ 2)).prod‖ ≤ Real.exp (‖z‖ ^ 2 * (c.map (fun a : ℂ => ‖a‖)).sum)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_euler_tendsto",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 1077,
+      "signature": "private theorem proposition59_euler_tendsto {L : ℝ} (hL : 0 < L) {z : ℂ} (hz : z ≠ 0) : Filter.Tendsto (fun n : ℕ => ∏ j ∈ Finset.range n, (1 - ((proposition59Pole L ((j : ℤ) + 1)) ^ 2)⁻¹ * z ^ 2)) Filter.atTop (𝓝 ((L : ℂ)⁻¹ * proposition59PoleKernel L 0 z))",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "prod_range_succ_eq_prod_Icc",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 1127,
+      "signature": "private theorem prod_range_succ_eq_prod_Icc {M : Type*} [CommMonoid M] (N : ℕ) (f : ℕ → M) : ∏ j ∈ Finset.range N, f (j + 1) = ∏ k ∈ Finset.Icc 1 N, f k",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59Pole_ofReal",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 1136,
+      "signature": "theorem proposition59Pole_ofReal (L : ℝ) (k : ℤ) : proposition59Pole L k = ((2 * (k : ℝ) * Real.pi / L : ℝ) : ℂ)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59Pole_im",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 1140,
+      "signature": "private theorem proposition59Pole_im (L : ℝ) (k : ℤ) : (proposition59Pole L k).im = 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "norm_pole_sq_inv",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 1145,
+      "signature": "private theorem norm_pole_sq_inv (L : ℝ) (k : ℤ) : ‖((proposition59Pole L k) ^ 2)⁻¹‖ = ((2 * (k : ℝ) * Real.pi / L) ^ 2)⁻¹",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "prod_range_eq_includedPoly",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 1151,
+      "signature": "private theorem prod_range_eq_includedPoly (L : ℝ) (N : ℕ) (z : ℂ) : ∏ j ∈ Finset.range N, (1 - ((proposition59Pole L ((j : ℤ) + 1)) ^ 2)⁻¹ * z ^ 2) = (quadProductPoly (proposition59IncludedCoefficients L N)).eval z",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "sum_Ico_norm_pole_sq_inv_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 1167,
+      "signature": "private theorem sum_Ico_norm_pole_sq_inv_le {L : ℝ} (hL : 0 < L) (N n : ℕ) : ∑ j ∈ Finset.Ico N n, ‖((proposition59Pole L ((j : ℤ) + 1)) ^ 2)⁻¹‖ ≤ L ^ 2 / (4 * Real.pi ^ 2) * proposition59TailZetaTwo N",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "norm_prod_one_sub_le_exp",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 1197,
+      "signature": "private theorem norm_prod_one_sub_le_exp {ι : Type*} (s : Finset ι) (c : ι → ℂ) (z : ℂ) : ‖∏ i ∈ s, (1 - c i * z ^ 2)‖ ≤ Real.exp (‖z‖ ^ 2 * ∑ i ∈ s, ‖c i‖)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59RootCoefficients_norm_sum",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 1207,
+      "signature": "private theorem proposition59RootCoefficients_norm_sum (L : ℝ) (N : ℕ) (v : ℤ → ℝ) : ((proposition59RootCoefficients L N (fun k => (v k : ℂ))).map (fun a : ℂ => ‖a‖)).sum = ((positiveRootMultiset (proposition59CauchyNumerator L (Finset.Icc (-(N : ℤ)) (N : ℤ)) (fun k => (v k : ℂ)))).map (fun ρ : ℝ => 1 / ρ ^ 2)).sum",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59IncludedPoly_eval_ne_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 1220,
+      "signature": "private theorem proposition59IncludedPoly_eval_ne_zero {L : ℝ} (hL : 0 < L) (N : ℕ) {z : ℂ} (hzim : z.im ≠ 0) : (quadProductPoly (proposition59IncludedCoefficients L N)).eval z ≠ 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_compact_envelope_offAxis",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 1247,
+      "signature": "private theorem proposition59_compact_envelope_offAxis {L : ℝ} (hL : 0 < L) (N : ℕ) (v : ℤ → ℝ) (hv : ∀ k : ℤ, v (-k) = v k) (hv0 : v 0 ≠ 0) (hzeros : ZerosRealOn Set.univ (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) (fun k => (v k : ℂ)))) {z : ℂ} (hzim : z.im ≠ 0) : ‖proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) (fun k => (v k : ℂ)) z‖ ≤ ‖proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) (fun k => (v k : ℂ)) 0‖ * Real.exp (proposition59Curvature L N v * ‖z‖ ^ 2)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "dense_im_ne_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 1330,
+      "signature": "private theorem dense_im_ne_zero : Dense {w : ℂ | w.im ≠ 0}",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_compact_envelope",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 1355,
+      "signature": "theorem proposition59_compact_envelope {L : ℝ} (hL : 0 < L) (N : ℕ) (v : ℤ → ℝ) (hv : ∀ k : ℤ, v (-k) = v k) (hv0 : v 0 ≠ 0) (hzeros : ZerosRealOn Set.univ (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) (fun k => (v k : ℂ)))) (z : ℂ) : ‖proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) (fun k => (v k : ℂ)) z‖ ≤ ‖proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) (fun k => (v k : ℂ)) 0‖ * Real.exp (proposition59Curvature L N v * ‖z‖ ^ 2)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_normalized_bound_on_ball",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 1387,
+      "signature": "theorem proposition59_normalized_bound_on_ball {L : ℝ} (hL : 0 < L) (N : ℕ) (v : ℤ → ℝ) (hv : ∀ k : ℤ, v (-k) = v k) (hv0 : v 0 ≠ 0) (hzeros : ZerosRealOn Set.univ (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) (fun k => (v k : ℂ)))) {Cst R : ℝ} (hC : proposition59Curvature L N v ≤ Cst) (hR : 0 ≤ R) {z : ℂ} (hz : ‖z‖ ≤ R) : ‖proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) (fun k => (v k : ℂ)) z‖ / ‖proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) (fun k => (v k : ℂ)) 0‖ ≤ Real.exp (Cst * R ^ 2)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_normalized_euler_tail_product",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 1424,
+      "signature": "theorem proposition59_normalized_euler_tail_product {L : ℝ} (hL : 0 < L) (N : ℕ) (v : ℤ → ℝ) (hv : ∀ k : ℤ, v (-k) = v k) (hv0 : v 0 ≠ 0) (hzeros : ZerosRealOn Set.univ (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) (fun k => (v k : ℂ)))) {z : ℂ} (hzim : z.im ≠ 0) : Filter.Tendsto (fun n : ℕ => ((positiveRootMultiset (proposition59CauchyNumerator L (Finset.Icc (-(N : ℤ)) (N : ℤ)) (fun k => (v k : ℂ)))).map (fun ρ : ℝ => 1 - z ^ 2 / (ρ : ℂ) ^ 2)).prod * ∏ j ∈ Finset.Ico N n, (1 - ((proposition59Pole L ((j : ℤ) + 1)) ^ 2)⁻¹ * z ^ 2)) Filter.atTop (𝓝 (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) (fun k => (v k : ℂ)) z / proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) (fun k => (v k : ℂ)) 0))",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "norm_quadProduct_sub_one_le_exp_sub_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
+      "line": 1503,
+      "signature": "theorem norm_quadProduct_sub_one_le_exp_sub_one (c : Multiset ℝ) (hc : ∀ a ∈ c, 0 ≤ a) (z : ℂ) : ‖(c.map (fun a : ℝ => 1 - (a : ℂ) * z ^ 2)).prod - 1‖ ≤ Real.exp (‖z‖ ^ 2 * c.sum) - 1",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
       "name": "ccmModeFiniteEquivIcc",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59GroundLagrangeZeroSetBridge.lean",
       "line": 30,
@@ -38494,7 +40604,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59GroundLagrangeZeroSetBridge.lean",
       "line": 201,
       "signature": "private theorem proposition59_denominator_coordinate {L : ℝ} (hL : L ≠ 0) (n : ℤ) (z : ℂ) : z - proposition59Pole L (-n) = (2 * (Real.pi : ℂ) / (L : ℂ)) * ((n : ℂ) - (-(L : ℂ) * z / (2 * (Real.pi : ℂ))))",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -38636,6 +40746,116 @@
       "signature": "theorem proposition59PoleKernel_normSq_closedForm_tendsto_realAxis {L : ℝ} (hL : 0 < L) : Tendsto (fun y : ℝ => L ^ 2 * (Real.sinh (L * y) / (L * y))) (nhdsWithin 0 ({0} : Set ℝ)ᶜ) (nhds (L ^ 2))",
       "in_docs": true,
       "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "proposition59ReciprocalEnergySq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ReciprocalModeWeightedShell.lean",
+      "line": 54,
+      "signature": "def proposition59ReciprocalEnergySq (Δ : ℕ → ℝ) (N : ℕ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "proposition59ReciprocalWeightedError",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ReciprocalModeWeightedShell.lean",
+      "line": 58,
+      "signature": "def proposition59ReciprocalWeightedError (Δ : ℕ → ℝ) (N : ℕ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59WeightedLatticeError_eq_reciprocal",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ReciprocalModeWeightedShell.lean",
+      "line": 63,
+      "signature": "theorem proposition59WeightedLatticeError_eq_reciprocal (v : ℤ → ℝ) (f : ℝ → ℝ) (L : ℝ) (N : ℕ) : proposition59WeightedLatticeError v f L N = proposition59ReciprocalWeightedError (proposition59LatticeError v f L) N",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "head_zeta_two_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ReciprocalModeWeightedShell.lean",
+      "line": 73,
+      "signature": "private theorem head_zeta_two_le (N : ℕ) : ∑ n ∈ Finset.Icc 1 N, (1 : ℝ) / (n : ℝ) ^ 2 ≤ Real.pi ^ 2 / 6",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sqrt_zeta_two_const",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ReciprocalModeWeightedShell.lean",
+      "line": 78,
+      "signature": "private theorem sqrt_zeta_two_const : Real.sqrt (Real.pi ^ 2 / 6) = Real.pi / Real.sqrt 6",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sqrt_energy_const",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ReciprocalModeWeightedShell.lean",
+      "line": 83,
+      "signature": "private theorem sqrt_energy_const {C L : ℝ} (hC : 0 ≤ C) (hL : 0 < L) : Real.sqrt (C / L ^ 4) = Real.sqrt C / L ^ 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "reciprocal_energy_to_weighted_error",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ReciprocalModeWeightedShell.lean",
+      "line": 94,
+      "signature": "theorem reciprocal_energy_to_weighted_error (Δ : ℕ → ℝ) {N : ℕ} (hN : 1 ≤ N) {C L : ℝ} (hC : 0 ≤ C) (hL : 0 < L) (hE : proposition59ReciprocalEnergySq Δ N ≤ C / L ^ 4) : proposition59ReciprocalWeightedError Δ N ≤ Real.pi / Real.sqrt 6 * Real.sqrt C / L ^ 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "reciprocal_energy_to_node_sup",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ReciprocalModeWeightedShell.lean",
+      "line": 144,
+      "signature": "theorem reciprocal_energy_to_node_sup (Δ : ℕ → ℝ) {N : ℕ} (hN : 1 ≤ N) {C L : ℝ} (hC : 0 ≤ C) (hL : 0 < L) (hE : proposition59ReciprocalEnergySq Δ N ≤ C / L ^ 4) {n : ℕ} (hn1 : 1 ≤ n) (hnN : n ≤ N) : |Δ n| ≤ (n : ℝ) * Real.sqrt C / L ^ 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "reciprocal_energy_to_node_sup_at_radius",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ReciprocalModeWeightedShell.lean",
+      "line": 167,
+      "signature": "theorem reciprocal_energy_to_node_sup_at_radius (Δ : ℕ → ℝ) {N : ℕ} (hN : 1 ≤ N) {C L X : ℝ} (hC : 0 ≤ C) (hL : 0 < L) (hX : 0 < X) (hE : proposition59ReciprocalEnergySq Δ N ≤ C / L ^ 4) {n : ℕ} (hn1 : 1 ≤ n) (hnN : n ≤ N) (hnX : (n : ℝ) ≤ X * L / (2 * Real.pi)) : |Δ n| ≤ X * Real.sqrt C / (2 * Real.pi * L)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sup_error_to_weighted_error",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ReciprocalModeWeightedShell.lean",
+      "line": 198,
+      "signature": "theorem sup_error_to_weighted_error (Δ : ℕ → ℝ) {N : ℕ} (hN : 1 ≤ N) {C L : ℝ} (hC : 0 ≤ C) (hL : 0 < L) (hsup : ∀ n : ℕ, 1 ≤ n → n ≤ N → |Δ n| ≤ C / L ^ 2) : proposition59ReciprocalWeightedError Δ N ≤ Real.pi ^ 2 / 6 * (C / L ^ 2)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "reciprocal_energy_to_curvature_bound",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ReciprocalModeWeightedShell.lean",
+      "line": 234,
+      "signature": "theorem reciprocal_energy_to_curvature_bound {L : ℝ} (hL : 0 < L) {N : ℕ} (hN : 1 ≤ N) (v : ℤ → ℝ) (hv : ∀ k : ℤ, v (-k) = v k) (hv0 : v 0 ≠ 0) (hzeros : ZerosRealOn Set.univ (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) (fun k => (v k : ℂ)))) (f : ℝ → ℝ) {C : ℝ} (hC : 0 ≤ C) (hE : proposition59ReciprocalEnergySq (proposition59LatticeError v f L) N ≤ C / L ^ 4) : proposition59Curvature L N v ≤ proposition59TrialHead f L N + L ^ 2 / (2 * Real.pi ^ 2) * (Real.pi / Real.sqrt 6 * Real.sqrt C / L ^ 2) + |proposition59ScaledAlternatingTail L N|",
+      "in_docs": true,
+      "in_lemma_db": false,
       "orphan": false
     },
     {
@@ -38924,7 +41144,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/RankOneCorrectionLagrangePolynomial.lean",
       "line": 47,
       "signature": "theorem sourceLagrangePolynomial_charpoly_factor {n : Type*} [Fintype n] [DecidableEq n] (lam xi : n → ℝ) (hnormalized : (1 : n → ℝ) ⬝ᵥ xi = 1) : Polynomial.C ((-1 : ℝ) ^ Fintype.card n) * (rankOneCorrection (Matrix.diagonal lam) xi (1 : n → ℝ)).charpoly = -Polynomial.X * sourceLagrangePolynomial lam xi",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
