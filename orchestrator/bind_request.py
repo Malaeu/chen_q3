@@ -19,7 +19,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 QUEUE = ROOT / "docs/routeB_bus/PROSHKA_QUEUE.md"
-TRAILER = "\n\nCo-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01N8cwEvtbQ33okoggUqWKqK"
+TRAILER = ""  # owner rule (global CLAUDE.md): no AI attributions, signatures or co-author lines in commits — ever
 
 def sh(*a, check=True):
     return subprocess.run(a, cwd=ROOT, text=True, capture_output=True, check=check).stdout.strip()
