@@ -14,9 +14,11 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-04-SIGNFREE · REQ-2026-09-04-SIGNFREE · Goal 058: the weaker statement inside eps_inf <= C — sign-free Ritz (P-): lambda_1 >= -o(lambda_2) suffices for the compact consumer without positivity on all windows; source-lock audit of CCM Cor 3.7/(3.27)/Cor 3.8/Prop 3.4 attached; eps_inf(13) = 1.35, eps_inf(23) = 1.33 · OPEN
+## REQ-2026-09-04-SIGNFREE · REQ-2026-09-04-SIGNFREE · Goal 058: the weaker statement inside eps_inf <= C — sign-free Ritz (P-): lambda_1 >= -o(lambda_2) suffices for the compact consumer without positivity on all windows; source-lock audit of CCM Cor 3.7/(3.27)/Cor 3.8/Prop 3.4 attached; eps_inf(13) = 1.35, eps_inf(23) = 1.33 · ANSWERED
 
-- `STATUS: OPEN`
+- `STATUS: ANSWERED`
+- Verdict: `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SIGNFREE_RITZ_INSIDE_CCM_UNIFORM_ERROR_ATOM_2026-09-04.md` · commit `0cee3192` · blob `8c80d444564ef0bc1492ef862d20229d59be5ceb`
+- Operative class: `KILL_PMINUS_AS_STRICTLY_WEAKER_THAN_RH` (answer B) · (SF) accepted sign-free, LEAN-READY · (P-) lambda_1 >= -o(lambda_2) is RH-EQUIVALENT on the CCM family and every wide N(m) >= m: the second level is bounded ABOVE uniformly in the window (min-max on a fixed 2-dim smooth test space), so o(lambda_2) = o(1); with (3.27) all windows nonnegative => RH; finite bridge (REC): fixed smooth tests recovered on the diagonal N >= m with error C_f sqrt(m)(1+L)^2 (L/N)^2 -> 0; under not-RH a fixed negative witness persists, (-b)/s >= c/M · kills: poly(L) kernel constant (true bound sqrt(sinh(sigma L)/sigma) ~ m^{sigma/2}); p -> 0 <=> eta -> 0 (only =>); p -> 0 => compact decay (pole-kernel counterexample); sampling as anchor lower bound; 'CCM has no lower bound' (Prop 3.3 semiboundedness, coarse explicit form) · Q3: no unconditional -o(nu_2) bound in the cited literature; 2608.24827 surfaced (fixed-window certificates, unchecked); Q_W(k_lambda) <= e^{-4 pi lambda^2} is not a theorem · ranked: (1) audit the cached sign-free/anchor ledger, (2) exact anchored error functional, (3) full weighted budget · Codex directive: P59SignFreeRitz.lean (SF with plants) · route score 4 · Observer's ledger after the verdict: (SF) certified PASS on (13,120) and (23,160) (6.2e-60, 1.6e-113 margins), anchor guard OK, kernel norm equals the Bessel bound to 4 digits
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SIGNFREE_RITZ_INSIDE_UNIFORM_ERROR_2026-09-04.txt`
 - Boundary: `GOAL058_SIGNFREE_RITZ_INSIDE_CCM_UNIFORM_ERROR_ATOM`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
