@@ -460,6 +460,24 @@ tool_families:
           of delta_n's definition (Progress_Log 2026-09-04 03:10).
         last_verified: 2026-09-04
 
+      - id: r2-second-jet
+        classification: MANUAL
+        status: ENABLED
+        audience: [CLAUDE_CODE, HUMAN]
+        mode: READS_ONLY
+        path: docs/routeB_bus/phase5_codex/r2_second_jet.py
+        invoke: .venv/bin/python docs/routeB_bus/phase5_codex/r2_second_jet.py
+        trigger: "Probe 19 (judge's R2): exact second jet kappa(v) of ground, CCM prolate trial and Xi on the cached trial cells; prints a table."
+        writes: false
+        approval: NONE_READ_ONLY
+        authority: FINITE_CELL_SECOND_JET_DIAGNOSTIC_NOT_A_CERTIFICATE_NOT_RH
+        records_to: [docs/Progress_Log.md]
+        note: >-
+          Written and run by the orchestrator 2026-09-04 on the owner's word ("R2 своими зондами").
+          Found kappa(q_m) = kappa_X - a_m/m with a_inf = 0.019892 ~ 1/(16 pi) and delta = kappa(G) - kappa(q) = 0.38 T_m.
+          Needs the trial caches portable_k_coeffs_lambda_sq_{m}_N_{N}.json (m = 13, 23, 43; 83 via unit q3-trial83).
+        last_verified: 2026-09-04
+
       - id: migration-census
         classification: MANUAL
         status: ENABLED

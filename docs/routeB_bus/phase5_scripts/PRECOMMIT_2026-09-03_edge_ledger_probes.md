@@ -395,3 +395,17 @@ Predictions (K6, observer, registered before the run):
   `P_E_OVER_ALPHA_M_DECREASES` p=0.55 — E/(αM) decreases monotonically over m = 13, 23, 43, 83 and is < 0.3 at m = 83.
   `P_D2_OVER_ALPHA_STABLE` p=0.60 — d_2/α varies by < ×1.3 over m = 13..83 (same parameter).
 Executor: observer by hand. DIAGNOSTIC_NEVER_A_PROOF.
+
+## Addendum 21 — Probe 19: R2 of the RATE verdict, second jet ground vs CCM trial vs Ξ (2026-09-04, owner: «давай R2 своими зондами»)
+
+Object (judge R2): compare the exact ground `G_m` and the CCM projected prolate trial `q` (portable_k_coeffs caches,
+cells (13,13), (23,23), (43,43), bonus (13,120)) at the centre and in the second jet, anchored at `c_0`; then the
+trial-to-Ξ two-jet (CCM Lemma 7.3, paper). Quantities: `κ(v) = (L²/2)[1/12 + (1/(π²c_0))Σ_{k≥1} c_k/k²]` (exact,
+full coefficients) for `v = ξ` and `v = q`; `δ_m = κ(G) − κ(q)`; `α_q = κ(q) − κ_X`; `α_G = κ(G) − κ_X`; anchored
+row error `sup_n |ξ_n/ξ_0 − q_n/q_0|`, weighted `Σ|Δr_n|/n²`; projective defect `p = 1 − ⟨ξ,q⟩²`. Target of R2:
+both `δ_m` and `α_q` are `O(T_m)`.
+Predictions (before the numbers): `P_TRIAL_JET_WITHIN_T` (|α_q| ≤ 3T on all cells) 0.35; `P_GROUND_TRIAL_JET_GAP_WITHIN_T`
+(|δ_m| ≤ T) 0.40; `P_TRIAL_JET_WORSE_THAN_GROUND` (|α_q| > |α_G| on every cell) 0.65.
+Script: `docs/routeB_bus/phase5_codex/r2_second_jet.py`. DIAGNOSTIC_NEVER_A_PROOF.
+Fates (2026-09-04): P_TRIAL_JET_WITHIN_T CONFIRMED (|α_q|/T = 0.127, 0.083, 0.057); P_GROUND_TRIAL_JET_GAP_WITHIN_T CONFIRMED
+(δ/T = 0.353, 0.381, 0.389); P_TRIAL_JET_WORSE_THAN_GROUND REFUTED. New law: κ(q_m) = κ_X − a_m/m, a_∞ = 0.019892 ≈ 1/(16π).
