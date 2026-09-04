@@ -368,3 +368,17 @@ Predictions (K6, observer, registered before the run):
   `P_LADDER4_DEFECT_SMALL` p=0.60 — p ≤ 1e-4 at every cell (ladder ground within 1 % of the true ground in angle).
   `P_LADDER_ADMIXTURE_L2_LAW` p=0.60 — (c_1/c_0)·L² ∈ [−0.08, −0.02] at every cell (matches −0.0025·L² ≈ −0.035 at m=43).
 Executor: observer by hand. DIAGNOSTIC_NEVER_A_PROOF.
+
+## ADDENDUM 19 (2026-09-04, BEFORE the run) — Probe 17, judge's exact anchored eigenbasis decomposition (verdict ONESHAPE, rank-1 action, cost 1/10)
+
+Objects (verdict ONESHAPE §Q1/Q4): eigenbasis {u_j} of K_even (unit), Xi-sample row y (even coords, y_0 = ξ_0-normalized as before),
+d_j = ⟨y,u_j⟩; anchors ℓ(u) = F_u(0) = √L·u_0 (exact); X = Ξ/Ξ(0); ψ_j(x) = F_{u_j}(x) − ℓ(u_j)·X(x); G = F_{u_1}/ℓ(u_1);
+a_spec := −d_2/(d_1 ℓ(u_1)); endpoint a_7 := Δ(7)/ψ_2(7) with Δ = G − X; second jet a_κ := (κ(G) − κ(X))/κ(ψ_2), κ(f) = −f''(0)/2
+(finite differences at 60 dps); least squares a_LS on x ∈ {3,5,7,10,12}; exact all-mode remainder R = Δ − a_spec ψ_2 evaluated at
+x ∈ {3,5,7,10,12} and its ratio to Δ.
+Predictions (K6, observer, registered before the run):
+  `P_A_SPEC_MATCHES_A7` p=0.65 — |a_spec/a_7 − 1| ≤ 0.15 at m = 43 and 83.
+  `P_A_KAPPA_MATCHES_A7` p=0.50 — |a_κ/a_7 − 1| ≤ 0.25 at m = 43 and 83.
+  `P_REMAINDER_SMALL` p=0.55 — max_x |R(x)|/|Δ(x)| over {3,5,7,10} ≤ 0.15 at m = 43 and 83.
+  `P_A_SPEC_L2_STABILIZES` p=0.60 — a_spec·L² at m = 13, 23, 43, 83 varies by < ×1.5 between m = 43 and 83.
+Executor: observer by hand. DIAGNOSTIC_NEVER_A_PROOF.

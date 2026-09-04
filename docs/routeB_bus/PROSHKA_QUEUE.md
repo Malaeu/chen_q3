@@ -14,10 +14,15 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-04-ONESHAPE · Goal 058: component I measured at fixed x (rate 1/L², ONE shape = anchored u₂ transform); eigenvector ladder u_i ≈ Xi·poly_{2(i−1)}; ladder as trial refuted (μ₁/λ₁ up to 1e36) · IN_REVIEW
+## REQ-2026-09-04-ONESHAPE · Goal 058: component I measured at fixed x (rate 1/L², ONE shape = anchored u₂ transform); eigenvector ladder u_i ≈ Xi·poly_{2(i−1)}; ladder as trial refuted (μ₁/λ₁ up to 1e36) · ANSWERED
 
-- `STATUS: IN_REVIEW`
-- Delivery observed 2026-09-04: owner pasted the one-line GitHub-locator instruction; judge accepted and is working.
+- `STATUS: ANSWERED`
+- Verdict: `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_ONE_SHAPE_DEVIATION_AND_XI_POLYNOMIAL_LADDER_2026-09-04.md` · commit `2b11781f` · blob `31e4e55f9a1833562eb241fceef56dfd0f3f540c`
+- Operative class: `RUN_P59_ANCHORED_ONE_SHAPE_FUNCTIONAL_DISCRIMINATOR` · Q1: repaired to the EXACT anchored eigenbasis identity d1*ell1*(G-X) = e - sum_{j>=2} d_j psi_j; two-mode form a = -d2/(d1 ell1), remainder R; load-bearing: a = O(L^-2) AND compact higher-mode/interpolation remainder o(1); 'u1 -> X' may not be assumed; relative-Ritz option = optional upper bound, collapsed scale moves into epsilon · Q2: exact ladder identity T(S(p)) = X p + r (yes); smallness of the correction and degree ordering from truncation alone (no; 2-dim Gram plant reverses the order) · Q3: picture norm != Rayleigh norm; Feshbach block correction; prolate trial capture = the surviving ground-to-trial wall · Q4: run a_spec vs a_7 vs a_kappa vs a_LS on existing cells, exact all-mode remainder, falsifiers
+- Kills: raw Xi-polynomial ladder as current trial (reopen only with a source-defined band-limit correction); leakage degree ordering from truncation alone (Gram plant)
+- Predictions: P_DEVIATION_IS_SECOND_EIGENVECTOR_SHAPE REFUTED_AS_UNANCHORED (anchored successor supported); P_DEVIATION_L2_LAW CONFIRMED (not proved); ladder trio REFUTED; P_ONE_SHAPE_IS_TWO_LEVEL_PERTURBATION PARTIALLY_REFUTED; P_SECOND_JET_EQUALS_A_TIMES_KAPPA_PSI CONFIRMED_AS_EXACT_LINEAR_CONSEQUENCE_WITH_REMAINDER; P_LADDER_STATEMENT_DERIVABLE CONFIRMED_ONLY_IN_EXACT_FORM; P_LEAKAGE_ORDERING REFUTED; judge registered P_ANCHOR_RATIO_EXPLAINS_L2 0.72
+- Probe 17 (observer, addendum 19, DONE): a_spec/a_7/a_LS agree within 2 % on m=13..163; a_kappa within 5 % (m=43,83); exact all-mode identity holds; remainder 7.8 -> 3.2 %; a*L^2 = 0.28, 0.46, 0.57, 0.61, 0.56. CORRECTION to the judge: d1*ell1 = 0.93 .. 0.90 is FLAT (does not grow like L^2); the raw d2 = <y,u2> itself decays: d2*L^2 = -0.26, -0.43, -0.53, -0.56, -0.51
+- Intake 2026-09-04 by Linux-Claude.
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_ONE_SHAPE_DEVIATION_2026-09-04.txt`
 - Boundary: `GOAL058_ONE_SHAPE_DEVIATION_AND_XI_POLYNOMIAL_LADDER`
 - Call class: `DELEGATED_STRATEGIC_REVIEW` (observer's self-check on the owner's instruction "ask yourself first")
