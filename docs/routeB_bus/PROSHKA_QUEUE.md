@@ -14,6 +14,22 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-04-WEILPROOF · REQ-2026-09-04-WEILPROOF · Goal 058: direct Weil positivity proof construction on the literal CCM form (W / C / F), drafted by the judge on the owner's word; proof candidate, partial with precise remainder, or refuted attempt · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DIRECT_WEIL_SOURCE_PROOF_2026-09-04.txt`
+- Boundary: `GOAL058_DIRECT_WEIL_SOURCE_PROOF_CONSTRUCTION`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: judge's own draft (a23dc64d, receipt verified by the observer); shelf: SIGNFREE verdict, CCMFiniteWeilSourceMatrix.lean, FULLCHAIN verdict, CC 2106.01715, system prompt v2; PROVE (e058bff0) superseded
+- Registered predictions: P_RESULT_PARTIAL_WITH_REMAINDER 0.80; P_NEW_LEMMA_PROVED 0.45; P_PROOF_CANDIDATE_COMPLETE 0.03; P_ATTEMPT_REFUTED_WITH_COUNTEREXAMPLE 0.15
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `a9f3adb3bba5c8f43e7ba281b58972dbeceea72f` / `18460` / `144` /
+  `00222547fda6b6e2a3c88d25ecae56c302c623c4c0093cec75e995887f26f434` /
+  `6f60ccbee0d64461ca423e1ecb75c7242abfc7c6` / `yes`
+
+---
+
 ## REQ-2026-09-05-PROVE · REQ-2026-09-05-PROVE · Goal 058: prove an RH-sufficient statement on the CCM family via the Weil criterion and the shelf, or certify the obstruction theorem-shaped (Zhu Thm 1.4 style); no third answer · SUPERSEDED_BY_WEILPROOF (the judge drafted its own proof-construction request REQ-2026-09-04-WEILPROOF at a23dc64d on the owner's word; PROVE stands only if it was already delivered)
 
 - `STATUS: OPEN`
