@@ -435,3 +435,10 @@ Judge's adverse rule (frozen): COMPACT_DEFECT_NONDECAY if E_43 ≥ 0.90·E_23 an
 Observer predictions: `P_COMPACT_DEFECT_NONDECAY` 0.35 (one-shape amplitude A_q decays 0.79, 0.72 per step); `P_E_SCALES_LIKE_A_q` 0.70 (E/A_q within 2× across N=m cells);
 `P_E_13_120_BELOW_1E-4` 0.85. S3 TWO_RATE_FAILURE (D or R at 83 ≥ 1.25× at 43): from Probe 21, D^(3) 0.62→0.33, R^(3) 3.83→4.37 → NOT triggered.
 Fates (Probe 23): P_COMPACT_DEFECT_NONDECAY REFUTED (0.79, 0.72); P_E_SCALES_LIKE_A_q CONFIRMED (0.075–0.077); P_E_13_120_BELOW_1E-4 CONFIRMED (4.8e-6). E ≈ |δ| on K0.
+
+## Addendum 25 — Probe 24: the WEILPROOF split on the actual ground (2026-09-05 01:30)
+
+Object: (9) `𝒬(g) = 𝒥(g) − d_A‖g‖² + 𝒮(g)` evaluated on the unit ground vector ξ of the even block (full coefficients), m = 13, 23, 43 (N = m).
+Since `𝒬(ξ) = λ₁ ≈ 0`: `𝒥(ξ) + 𝒮(ξ) = d_A + λ₁`. Question: who carries the sign on the minimizer — the translation energy `𝒥` or the Chebyshev
+correction `𝒮`? Predictions: `P_S_SHARE_GE_HALF` 0.55 (`𝒮(ξ)/d_A ≥ 0.5` on all three cells); `P_J_ALONE_BELOW_dA` 0.80 (`𝒥(ξ) < d_A`, i.e. the mean
+form is negative on the ground, consistent with (NEG)); `P_SHARES_STABLE_IN_m` 0.50 (`𝒮/d_A` varies < 20 % across m).
