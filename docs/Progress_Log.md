@@ -5018,3 +5018,15 @@ REFERENCES: `XUEFENGZHU-2026` → HAVE. DIAGNOSTIC.
 Ξ определяется простыми до 59 с точностью 1e-22: `C_∞(t)` спадает сверхэкспоненциально (Фурье-образ `Ξ²`), поэтому вклад `Δ(t)` при `t > 4`
 исчезает. Это объясняет, почему CCM-матрица «видит» так мало простых, и почему дно принимает форму Ξ. Кандидат в PUBLICATION_PLAN.
 DIAGNOSTIC_NEVER_A_PROOF. PX_RH_CLAIM: NOT_MADE.
+
+## 2026-09-05 (02:40) — Lean: `WeilGramMinusShift.lean` KERNEL_GREEN (две LEAN-READY головы вердикта WEILPROOF), одиннадцатый файл фронта
+
+Opus-агент (14 мин), проверено мной: `lake env lean` EXIT 0 без вывода, `q3_check ok`, все 25 теорем на `[propext, Classical.choice, Quot.sound]`,
+`sorry/admit/exact?` = 0. Содержание (пространство имён `Q3.RouteB`, над ℂ, `Matrix.PosSemidef`): `weil_pole_difference_of_squares`
+(`2Re(A·B̄) = 2|(A+B)/2|² − 2|(A−B)/2|²`, с прочтением через `C_L, S_L`); `weil_translation_gram_minus_shift` для `K := Γ − c_L·1 − 2ββ*`, `Γ ⪰ 0`:
+(a) квадратичная форма, (b) `K + c_L·1 + 2ββ* ⪰ 0`, (c) `λ_min(K) ≥ −(c_L + 2‖β‖²)` через доказанный дискретный Коши–Шварц, (d) плант
+`Γ = diag(0,2), c_L = 1, β = 0 ⇒ K = diag(−1,1)`, не PSD (свидетель `![1,0]`), (e) `K ⪰ 0 ↔ (GAP-GRAM)` (переформулировка открытого вопроса в Lean,
+не сужение), (f) PSD Грама `⟪v_j, v_k⟫` (в Mathlib нет `gramMatrix` — доказано), PSD неотрицательной конечной суммы, `weilGamma_posSemidef`.
+Не заявлено: `K ⪰ 0`; интегральная `Γ` (только конечная взвешенная сумма); кроссволк к буквальным entries CCM — предсказание судьи о (8) остаётся
+PENDING как Lean-факт (численно PASS у меня). Невакуумность `PosSemidef` над ℂ закреплена плантом с обеих сторон. Второй канал агента: numpy,
+9 проверок, 400 экземпляров. Отчёт: `docs/routeB_bus/CLAUDE_AGENT_REPORT_2026-09-05_GOAL058_WEIL_GRAM_MINUS_SHIFT.md`.
