@@ -14,6 +14,22 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-05-PROVE · REQ-2026-09-05-PROVE · Goal 058: prove an RH-sufficient statement on the CCM family via the Weil criterion and the shelf, or certify the obstruction theorem-shaped (Zhu Thm 1.4 style); no third answer · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_PROVE_RH_SUFFICIENT_ATOM_OR_CERTIFY_OBSTRUCTION_2026-09-05.txt`
+- Boundary: `GOAL058_PROVE_RH_SUFFICIENT_ATOM_OR_CERTIFY_OBSTRUCTION`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: SIGNFREE verdict; Zhu 2608.24827 triage (same object; Landau-Widom law verified on our bottoms; frontier m=4.95; barrier Thm 1.4); P59SignFreeRitz.lean KERNEL_GREEN; saturated bottoms m=13,23,43
+- Registered predictions: P_JUDGE_RETURNS_OBSTRUCTION 0.85; P_OBSTRUCTION_NAMES_A_NEW_IDEA_CLASS_NOT_EXCLUDED 0.60; P_PROOF_ATTEMPT_CONTAINS_HIDDEN_RH_INPUT 0.10; P_ANSWER_USES_ZHU_BARRIER_AS_LOAD_BEARING 0.70
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `e058bff0f8ed219741e34258e52dd64e82a1b2df` / `9213` / `95` /
+  `24f13879656bc5ad46227267fe5d59817a6fc34000f4ac162e05b60db3aa35c4` /
+  `73cbd71937b24b8808544aa975265dab66585085` / `yes`
+
+---
+
 ## REQ-2026-09-04-SIGNFREE · REQ-2026-09-04-SIGNFREE · Goal 058: the weaker statement inside eps_inf <= C — sign-free Ritz (P-): lambda_1 >= -o(lambda_2) suffices for the compact consumer without positivity on all windows; source-lock audit of CCM Cor 3.7/(3.27)/Cor 3.8/Prop 3.4 attached; eps_inf(13) = 1.35, eps_inf(23) = 1.33 · ANSWERED
 
 - `STATUS: ANSWERED`
