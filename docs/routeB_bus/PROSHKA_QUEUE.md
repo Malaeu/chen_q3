@@ -14,10 +14,15 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-04-OVERLAP · Goal 058: second-mode overlap d2 = <y,u2> = O(1/L^2) as the atom in pure l^2; anchor product flat (correction to ONESHAPE); Euler-Maclaurin mechanism without a gap · IN_REVIEW
+## REQ-2026-09-04-OVERLAP · Goal 058: second-mode overlap d2 = <y,u2> = O(1/L^2) as the atom in pure l^2; anchor product flat (correction to ONESHAPE); Euler-Maclaurin mechanism without a gap · ANSWERED
 
-- `STATUS: IN_REVIEW`
-- Delivery observed 2026-09-04 (morning): owner pasted the one-line GitHub-locator instruction; judge accepted and is working.
+- `STATUS: ANSWERED`
+- Verdict: `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SECOND_MODE_OVERLAP_OF_THE_XI_ROW_2026-09-04.md` · commit `af1d9ead` · blob `a991607f49b03e9161723ca3ba36de917b223fd7`
+- Operative class: `TRY_GAP_FREE_SECOND_MODE_OVERLAP` · Q1: pure-l2 atom confirmed: d2 = <y,u2> = O(L^-2) + combined interpolation/higher-mode remainder H = o(L^-2) + psi2 -> psi; first-order and convergence-only theorem shapes stated; mode guard (simple lambda_2, u2[0] > 0 or spectral projection) · Q2: EXACT gap-free lattice pairing Tr_m(F_v F_w) = 2 pi <v,w>; 2 pi d2 = ell1 Tr_m(X F2); exact orthogonality Tr_m(G F2) = 0; curvature-transfer identity d2 = (ell1/2pi)(alpha M - E), alpha = kappa(G) - kappa(X), M = Tr(z^2 X F2), B = G - X + alpha z^2 X, E = Tr(B F2); pure Nyquist Euler-Maclaurin as the L^-2 source KILLED (aliasing is superalgebraic; the L^-2 must come from an m-dependent profile/band-limit correction) · Q3: selected test RUN_EXACT_SECOND_MODE_CURVATURE_TRANSFER_LEDGER (M stable nonzero, E/(alpha M) -> 0); one cell outside [0.4,0.8] does NOT kill the route · Q4: five finite identities Lean-ready (CODEX DIRECTIVE: Proposition59AnchoredSecondModeOverlap.lean); new analytic: selection coherence, profile limit, overlap O(L^-2), combined tail, Poisson-trapezoid crosswalk
+- Kills: higher-mode tail alone as remainder supplier; pure-grid Euler-Maclaurin; one-cell outlier as cofinal falsifier
+- Predictions: P_ANCHOR_RATIO_EXPLAINS_L2 CONFIRMED_WITH_MECHANISM_CORRECTION; addendum-19 quartet CONFIRMED; P_D2_IS_SAME_PARAMETER_AS_C2 UNRESOLVED_WITH_EXACT_REMAINDER_IDENTITY; P_EULER_MACLAURIN_GIVES_L2 REFUTED_AS_PURE_NYQUIST; P_JUDGE_KEEPS_ONE_SHAPE_AS_PRIMARY CONFIRMED_WITH_MECHANISM_REPAIR
+- Probe 18 (observer, addendum 20, DONE): identity residual 1e-15/1e-16 on m = 13..83; M = -102.3, -102.5, -102.2, -101.7 (stable); E/(alpha M) = 0.048, 0.070, 0.066, 0.052 (small, no trend); d2/alpha = -14.0, -13.8, -13.7, -13.8 (same parameter to 2 %); alpha*L^2 = 0.018, 0.031, 0.039, 0.040
+- Intake 2026-09-04 by Linux-Claude.
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SECOND_MODE_OVERLAP_2026-09-04.txt`
 - Boundary: `GOAL058_SECOND_MODE_OVERLAP_OF_THE_XI_ROW`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`

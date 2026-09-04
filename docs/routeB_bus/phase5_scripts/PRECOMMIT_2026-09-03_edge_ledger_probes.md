@@ -382,3 +382,16 @@ Predictions (K6, observer, registered before the run):
   `P_REMAINDER_SMALL` p=0.55 — max_x |R(x)|/|Δ(x)| over {3,5,7,10} ≤ 0.15 at m = 43 and 83.
   `P_A_SPEC_L2_STABILIZES` p=0.60 — a_spec·L² at m = 13, 23, 43, 83 varies by < ×1.5 between m = 43 and 83.
 Executor: observer by hand. DIAGNOSTIC_NEVER_A_PROOF.
+
+## ADDENDUM 20 (2026-09-04, BEFORE the run) — Probe 18, judge's exact second-mode curvature-transfer ledger (verdict OVERLAP, Q3 selected test)
+
+Objects (verdict OVERLAP §Q2/Q3): lattice trace Tr_m(f) = h(f(0) + 2Σ_{n=1}^{N} f(x_n)), h = 2π/L, x_n = 2πn/L; unit even eigenvectors
+u_1, u_2 (u_j[0] > 0); G = F_{u_1}/ℓ_1, F_2 = F_{u_2}, X = Ξ/Ξ(0); κ(G) from the EXACT second-jet formula
+κ = (L²/2)[1/12 + (1/(2π² v_0)) Σ_{n≠0} v_n/n²] (raw coefficients v of u_1), κ(X) = 0.0231049931 (Σ 1/γ²) by high-precision
+finite differences; α = κ(G) − κ(X); B = G − X + α z² X; M = Tr_m(z² X F_2); E = Tr_m(B F_2); d_2 = ⟨y,u_2⟩ as in Probe 17.
+Gate: identity residual |2π d_2/ℓ_1 − (α M − E)| / |α M| ≤ 1e-8 with 60-dps lattice sums (STOP `TRANSFER_IDENTITY_MISMATCH` otherwise).
+Predictions (K6, observer, registered before the run):
+  `P_M_STABLE_NONZERO` p=0.65 — M_m keeps one sign and varies by < ×1.5 over m = 13..83.
+  `P_E_OVER_ALPHA_M_DECREASES` p=0.55 — E/(αM) decreases monotonically over m = 13, 23, 43, 83 and is < 0.3 at m = 83.
+  `P_D2_OVER_ALPHA_STABLE` p=0.60 — d_2/α varies by < ×1.3 over m = 13..83 (same parameter).
+Executor: observer by hand. DIAGNOSTIC_NEVER_A_PROOF.
