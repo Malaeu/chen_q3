@@ -14,6 +14,22 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-04-FULLCHAIN · REQ-2026-09-04-FULLCHAIN · Goal 058: full closure chain or irreducible atom (FULL_CHAIN | IRREDUCIBLE_ATOM; schedule N(m) free; Probe 22 attached) · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_FULL_CLOSURE_CHAIN_2026-09-04.txt`
+- Boundary: `GOAL058_FULL_CLOSURE_CHAIN`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: Verdict → docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_FULL_CLOSURE_CHAIN_2026-09-04.md; score §6 fates in Progress_Log; if IRREDUCIBLE_ATOM: bookkeeping phase CLOSED, next batch = mechanism only; if FULL_CHAIN: Lean-ready steps → agent queue in judge's order
+- Registered predictions: P_JUDGE_RETURNS_IRREDUCIBLE_ATOM 0.70; P_ATOM_IS_FESHBACH_Y_COMPONENT_OR_E_M 0.55; P_JUDGE_BUILDS_CHAIN_ON_WIDE_SCHEDULE 0.30; P_CHAIN_HAS_ZERO_NEW_MATH_STEPS 0.10
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `e5dbeb36909fba032bf932b1eaa285931400c8d3` / `7966` / `122` /
+  `e0af075c863132a686ad7f1b83c86d7e429886c2c3897b004a5a83f5c3399c53` /
+  `b4a589788118b2c064efb5bad3e6d931e4b96c33` / `yes`
+
+---
+
 ## REQ-2026-09-04-D2SUPPLY · Goal 058: after the trial crosswalk -- R1 envelope dead by its falsifier (S-lemma width 3e3..7e40), R2 holds but reduces to d2; u2 explicit to 99.5% (Xi-row x (x^2 - <x^2>)/sigma_2, sigma_2 = 13.98); supplier for d2 = <Xi-row,u2> = O(T_m) · ANSWERED
 
 - `STATUS: ANSWERED`
