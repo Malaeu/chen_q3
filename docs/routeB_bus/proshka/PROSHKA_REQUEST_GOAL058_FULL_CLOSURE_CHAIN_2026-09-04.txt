@@ -1,0 +1,122 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-04-FULLCHAIN
+BOUNDARY_ID: GOAL058_FULL_CLOSURE_CHAIN
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-04-FULLCHAIN (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub).
+DATE: 2026-09-04
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: PROPOSITION59_CCM_FINITE_BOTTOM_GROUND_FAMILY
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_ADJUDICATION_ONLY
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_FULL_CLOSURE_CHAIN_2026-09-04.md
+AUTHOR: Mythos (observer), text relayed byte-exact by the owner; executor Linux-Claude (header, §1 executor line, §3 Probe 22 table)
+PARENT_VERDICTS: D2SUPPLY (87e123ea), TRIALJET (33d863fa), RATE (5aaa3d93), OVERLAP (af1d9ead), NEWMECH
+
+REQ-2026-09-04-FULLCHAIN · Goal 058 · FULL CLOSURE CHAIN, not a next step
+Author: Mythos (observer). Executor channel: Linux-Claude. Owner: per-action.
+Repo: github.com/Malaeu/chen_q3 · branch rh_clean · base tip 4fdf279.
+Status frozen: CHALLENGER / NOT_RH · BUS_010 VOID · PX_RH_CLAIM: NOT_MADE.
+
+0. WHAT THIS BATCH ASKS
+Every batch so far asked for the next shell. This one asks for the WHOLE
+chain: from the kernel-green shelf below to a CLOSED Goal 058 wall, every
+step written out, typed, and with its own falsifier. Two admissible
+outputs, nothing in between:
+ (A) FULL_CHAIN — a finite ordered list of steps S1..Sk such that
+     S1..Sk ⊢ |d_2(m)| ≤ C·T_m cofinally (or the equivalent ground→Xi
+     rate the roof consumes), each step typed
+     THEOREM(in tree, path+sha) / LEAN-READY(finite identity, no zero
+     hypotheses) / CONDITIONAL(on exactly what) / NEW-MATH(named atom).
+     The chain closes iff every step is THEOREM or LEAN-READY. If any
+     step is NEW-MATH, name it and go to (B) for that step only.
+ (B) IRREDUCIBLE_ATOM — the single statement that no reordering of the
+     shelf proves, with: its exact quantifier form, the minimal missing
+     identity/symmetry that would prove it (K8 jump-target), and the
+     cheapest discriminator that would refute the atom itself.
+Both outputs close the bookkeeping phase. A third "next step" answer is
+REJECTED.
+
+1. SHELF (read-only inputs, sha256 prefix 16, at base tip 4fdf279)
+ docs/Progress_Log.md                                   61def678373a23b3
+ docs/routeB_bus/WALL_OBJECT_CARD_2026-09-03.md         eaca49df8f26f7fa
+ docs/routeB_bus/PROSHKA_QUEUE.md                       d8cb2033c67dee63
+ docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SECOND_MODE_OVERLAP_
+   SUPPLIER_AFTER_TRIAL_CROSSWALK_2026-09-04.md (87e123e) ce96aa2849577d94
+ docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_TRIAL_SECOND_JET_EXACT_
+   AND_GROUND_TRIAL_JET_GAP_2026-09-04.md                6e914b1c1a3c85ac
+ q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean
+   (26 thms, 0 sorry)                                    ed97148bc451f4ca
+ q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59GroundTrialSecondJetDifference.lean
+                                                         5cf775957a0074f7
+ q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean
+   (33 decls)                                            25fafa05007ce970
+ docs/session_protocols/SESSION_PROTOKOLL_2026-09-04_LINUX_CLAUDE.md
+                                                         85fc7194a2ac52bc
+ docs/Progress_Log.md after Probe 22 (commit c76a443c)   d6b6b8d149b91f7c
+
+2. STATE OF THE WALL (measured, N = m schedule)
+ convergence ⇒ bounded curvature (Lean) ⇒ one scalar alpha_G =
+ kappa(ground) − kappa_X ⇒ alpha_G = delta_m + alpha_q;
+ trial piece EXACT: kappa(q_m) = kappa_X − 1/(16πm) − 13/(256π²m²)+…;
+ ground−trial: delta_m ≈ 0.38·T_m (0.353, 0.381, 0.389; m=13,23,43);
+ delta_m = <e0, second-mode overlap>, d_2/T_m → ≈4.9 (m=13..313), all d_2>0;
+ u_2 = Xi·(x²−<x²>) on 99.5 %, d_2 lives in the 0.5 % remainder;
+ T_m = 1.234e-2, 1.059e-2, 8.236e-3 (m=13,23,43), decreasing.
+ KILLED with numbers (do not re-propose): imaginary-axis logderiv,
+ Rayleigh sublevel envelope R1, raw ladder V3/V4 as supplier
+ (D^(3)→0, R^(3)→d_2/T), window-derivative of lambda_1, zero counting,
+ weighted Davis–Kahan, SELECTED_FERRERS_WEIGHTED_RESIDUAL_SOURCE_RATE,
+ relative Ritz on N=m (R(q)/lambda_1 = 5e14, 2e25, 3e49), C2, C4,
+ C3 as unconditional single mechanism.
+ Current atom: P59_LADDER_FESHBACH_Y_COMPONENT_O_T_M.
+ Runner-up: curvature transport 2π d_2 = ℓ_1(αM − E), target E_m = O(T_m),
+ guard E_m ≠ E_{λ,N}.
+
+3. ONE INPUT YOU MAY CHANGE: THE SCHEDULE
+ N = m was our choice, not a theorem. On (13,120): delta = −4.6e-6,
+ p = 1−<xi,q>² = 4.7e-9, ground ≡ trial to 5e-9, curvature exactly
+ known. ONE cell — not a law.
+ Probe 22 (executor, arb; cached cells with N >= 4m; T_{m,N} = (L^2/4pi^2) sum_{k>N} 1/k^2; kappa_X = 0.0231049931154):
+ | cell | lambda1 | lambda2 | R(q) | R(q)/lambda1 | (R-l1)/(l2-l1) | sin^2(G,q)=p | delta=k(G)-k(q) | T_{m,N} | delta/T | note |
+ | (13,120) | 3.484e-59 | 1.312e-51 | 4.720e-59 | 1.355e+00 | 9.421e-09 | 4.692e-09 | -5.00e-06 | 1.383e-03 | -0.0036 | certified; saturated (N=9.2m) |
+ | (23,110) | 4.340e-109 | 8.124e-101 | 6.460e-84 | 1.488e+25 | 7.952e+16 | 1.773e-07 | +2.91e-05 | 2.253e-03 | +0.0129 | NOT saturated (N=4.8m); R(q) floored by quadrature order 192 (plateau 6e-84 from N=90) |
+ Fates (Mythos, frozen): P_WIDE_RAYLEIGH_RATIO_LE_10 0.35 CONFIRMED on (13,120), NOT_MEASURABLE on (23,110); P_WIDE_DK_RATIO_LE_1e-6 0.45 CONFIRMED on (13,120), NOT_MEASURABLE on (23,110); P_SECOND_WIDE_CELL_DELTA_LE_1e-5 0.60 REFUTED on the available second cell (unsaturated).
+ Also measured at m=13 (Progress_Log, Probe 22): lambda1(13,N) saturates between N=60 and 120 (1.0e-58 -> 3.5e-59); eps=R(q_N)/lambda1 crosses from 2.4e7 (N=40) to 1.12 (N=60); p <= (eps-1)/(g-1) holds at every N; alpha_G -> alpha_q to 3e-6 for N >= 60. At m=23, lambda1 is not yet saturated at N=110 (a quad-512 cache to N=160 is being generated).
+ You may build the chain on any schedule N(m) ≥ m, but then the chain
+ must contain the step that the roof (rh_of_canonical_strip_slots,
+ sameCofinalGuard) accepts that schedule, and the step that replaces
+ the curvature wall by the gap statement (C3-conditional lemma) with
+ its own supplier — no free lunch: state what hardness moves and where.
+
+4. REQUIRED FORMAT OF THE ANSWER
+ For each step S_i: (a) statement with explicit quantifiers;
+ (b) type; (c) inputs (which S_j, which shelf file); (d) what
+ structure it carries and drops (K3); (e) FIRST_FAILURE — the exact
+ place it breaks if it breaks; (f) discriminator computable on
+ existing caches (m=13,23,43,83; (13,120)) with a pre-registered
+ number. Then: FULL_CHAIN or IRREDUCIBLE_ATOM, one line. Then your
+ own K6 register: p(FULL_CHAIN exists on the current shelf),
+ p(atom is NEW-MATH beyond CCM §7 Lemma 7.2/7.3), p(schedule change
+ moves the wall to fewer hiding places).
+
+5. FORBIDDEN
+ Any RH claim; any step whose input is RH-conditional entering the
+ concluding chain (EPISTEMIC FIREWALL); "it is a finite computation"
+ without the bridging lemma (K7); reproposing items in §2-KILLED
+ without a new invariant; a bare next-step answer.
+
+6. OBSERVER PRE-REGISTRATION (Mythos, before verdict)
+ P_JUDGE_RETURNS_IRREDUCIBLE_ATOM        p=0.70
+ P_ATOM_IS_FESHBACH_Y_COMPONENT_OR_E_M   p=0.55
+ P_JUDGE_BUILDS_CHAIN_ON_WIDE_SCHEDULE   p=0.30
+ P_CHAIN_HAS_ZERO_NEW_MATH_STEPS         p=0.10
+ Fates scored in Progress_Log after verdict intake; wording frozen.
+DIAGNOSTIC_NEVER_A_PROOF.
