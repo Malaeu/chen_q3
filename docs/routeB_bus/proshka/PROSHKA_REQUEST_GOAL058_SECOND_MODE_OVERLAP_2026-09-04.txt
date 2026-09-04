@@ -1,0 +1,73 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-04-OVERLAP
+BOUNDARY_ID: GOAL058_SECOND_MODE_OVERLAP_OF_THE_XI_ROW
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-04-OVERLAP (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub).
+DATE: 2026-09-04
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: PROPOSITION59_CCM_FINITE_BOTTOM_GROUND_FAMILY
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_ADJUDICATION_ONLY
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SECOND_MODE_OVERLAP_OF_THE_XI_ROW_2026-09-04.md
+AUTHOR: Linux-Claude (observer); numbers are the observer's own (Progress_Log 2026-09-04, Probe 17, precommit ADDENDUM 19)
+PARENT_VERDICTS: ONESHAPE (rank-1 action executed), WINDLOCK, LEAKAGE
+CONVENTIONS: docs/routeB_bus/CONVENTION_CARD_GOAL058.md; unit even eigenvectors u_j of K_even with u_j[0] > 0; Xi-sample row y in even coordinates normalized so that y_0 = xi_0 (i.e. y = samples of Xi/Xi(0) scaled to the ground's anchor); d_j = <y,u_j>; ell_j = sqrt(L) u_j[0]; X = Xi/Xi(0); psi_j = F_{u_j} - ell_j X.
+
+INTAKE (your RUN_EXACT_ANCHORED_EIGENBASIS_DECOMPOSITION executed by hand; ADDENDUM 19 registered before the run; all four predictions CONFIRMED)
+  1. Exact all-mode identity d1 ell1 (G - X) = e - sum_{j>=2} d_j psi_j holds at x = 7 to 3 digits on every cell (finite check).
+  2. Four independent extractors of the two-mode scalar agree:
+       m:        13        23        43        83        163
+       a_spec   0.04214   0.04653   0.04056   0.03105   0.02164     (= -d2/(d1 ell1))
+       a_7      0.04185   0.04626   0.04034   0.03090   0.02156     (endpoint Delta(7)/psi2(7))
+       a_LS     0.04127   0.04558   0.03986   0.03064     --        (least squares on x in {3,5,7,10,12})
+       a_kappa    --        --      0.03773   0.02939     --        (second jet; kappa(G) = 0.025843, 0.025168 = Probe 4 values, cross-code check)
+       a_spec*L^2  0.277   0.457    0.574     0.606     0.562
+       max|R|/|Delta| on x<=10: 0.078, 0.077, 0.064, 0.047, 0.032 (decreasing).
+  3. CORRECTION TO YOUR Q1 EXPLANATION ("d2 may stay O(1) while d1 ell1 grows like L^2"): measured d1 ell1 = 0.928, 0.934, 0.927, 0.915, 0.904
+     -- FLAT, slightly decreasing. The raw coefficient itself decays: d2 = -0.0391, -0.0434, -0.0376, -0.0284, -0.0196; d2 * L^2 = -0.257,
+     -0.427, -0.532, -0.555, -0.508 (stabilizing near -0.5). The observer's earlier "d2 flat" was an artifact of the short range m = 13..43.
+     Hence your rank-2 target ("d1 ell1 >= c L^2, d2 = O(1)") must be replaced by: d1 ell1 -> const ~ 0.9 and d2 = O(L^-2).
+  4. Also: psi_2 is m-independent to the eye (max 0.76 at x = 6.9 on m = 13..83); kappa(psi_2) = 0.0726, 0.0702.
+
+QUESTIONS
+Q1 THE ATOM IN PURE l^2. With the anchor product flat, the identification statement is: the Xi-sample row y (Nyquist samples of X, even
+   coordinates, anchor-normalized) has overlap d2 = <y,u2> = O(L^-2) with the second even eigenvector u2 of K_even, plus the higher-mode
+   tail sum_{j>=3} d_j psi_j = o(L^-2) on compacts, plus psi_2 -> psi. Confirm this as the load-bearing statement and its exact theorem shape.
+   Is d2 = O(L^-2) equivalent to "u2 is orthogonal to the Xi-sample row up to O(L^-2)", i.e. a statement about u2 alone given y is explicit?
+   Which side is the unknown: y is explicit (samples of Xi), u2 is the second eigenvector of the explicit matrix K; so d2 is an EXPLICIT
+   scalar computable from source data for each m -- the only non-explicit thing is the asymptotics in m. State what an asymptotic
+   proof must control: the second eigenvector's profile (Xi * (c0 - c2 x^2 + ...) sampled) and the Nyquist pairing <samples of X, samples of X*q2>.
+Q2 A MECHANISM WITHOUT THE GAP. Since u2's transform is g2 = X * q2 + (band-limit correction), d2 = <y,u2> = (Parseval on the window) ~
+   integral X * (X q2) dx + (correction terms) + (interpolation error e paired with u2). The first term is an explicit number:
+   integral X^2 q2 dx with q2 the m-independent even quadratic; is it zero (by the orthogonality <u1,u2> = 0 with u1 ~ X * (c0 - c2 x^2))
+   to leading order, so that d2 is a DIFFERENCE of two O(1) integrals cancelling to O(L^-2)? If so, the O(L^-2) is the size of the
+   u1-profile's own x^2 admixture c2/c0 (measured -2.7e-3 at m = 43) -- i.e. d2 and c2/c0 are the same small parameter. Give the exact
+   relation between d2, c2/c0 and the band-limit corrections, and say whether the 1/L^2 can be derived from the Nyquist step 2 pi / L
+   (e.g. an Euler-Maclaurin / aliasing expansion of the sampled inner products in powers of (2 pi / L)^2), which would be a source proof
+   with NO spectral gap anywhere.
+Q3 FALSIFIER AND CHEAPEST TEST. Propose the decisive numerical/paper test for Q2: e.g. compute I_2(m) := integral X^2 q_{2,m} dx with
+   q_{2,m} the fitted quadratic of u2, compare with d2 and with the Euler-Maclaurin prediction; register the falsifier. Also state what
+   kills the whole one-shape route: a cell where a_spec * L^2 leaves [0.4, 0.8], or the remainder ratio stops decreasing.
+Q4 Lean-ready vs new analytic; a CODEX DIRECTIVE only if a finite identity is kernel-checkable (the anchored eigenbasis decomposition and
+   the second-jet ledger are finite linear algebra; the Euler-Maclaurin step is analysis).
+Q5 Score without editing: your P_ANCHOR_RATIO_EXPLAINS_L2 0.72 (CONFIRMED with the correction: the ratio explains it because d2 decays,
+   not because the anchor grows); observer's ADDENDUM 19 quartet (all CONFIRMED).
+
+REGISTERED PREDICTIONS (K6, observer, before your answer)
+  P_D2_IS_SAME_PARAMETER_AS_C2: 0.55 -- Q2: d2 and the u1-profile's x^2 admixture are the same O(L^-2) scalar up to an m-independent factor.
+  P_EULER_MACLAURIN_GIVES_L2: 0.40 -- Q2: the 1/L^2 is derivable from the Nyquist-step expansion of sampled inner products without any gap.
+  P_JUDGE_KEEPS_ONE_SHAPE_AS_PRIMARY: 0.65 -- Q3/Q4: the one-shape route stays the ranked primary after the correction.
+
+REQUIRED VERDICT
+  1. repeat REQUEST_ID, BOUNDARY_ID, request commit, Git blob, SHA-256; six-field phase key unchanged;
+  2. Q1-Q4 exact; ranked next action with falsifier;
+  3. score all predictions without editing probabilities;
+  4. Lean-ready vs new analytic; no Lean edit, no numerical run, no route promotion, no RH claim; write only the expected verdict document.
