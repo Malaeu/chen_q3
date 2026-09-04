@@ -3,7 +3,7 @@
 
 kappa(v) = -F_v''(0)/(2F_v(0)) = (L^2/2)[1/12 + (1/(pi^2 c_0)) sum_{k>=1} c_k/k^2] for ANY even mode vector c
 (full coefficients c_k, c_{-k} = c_k); exact from the P59 transform's Taylor expansion at 0.
-Cells: trial caches (13,13),(23,23),(43,43) + bonus (13,120). DIAGNOSTIC_NEVER_A_PROOF.
+Cells: trial caches (13,13),(23,23),(43,43),(83,83; MAX_DEGREE=600 regenerated 2026-09-04) + bonus (13,120). DIAGNOSTIC_NEVER_A_PROOF.
 Usage: .venv/bin/python docs/routeB_bus/phase5_codex/r2_second_jet.py
 """
 from __future__ import annotations
@@ -40,7 +40,7 @@ def ground_full(m: int, N: int, dps: int) -> tuple[dict[int, float], float]:
 def main() -> int:
     print("| cell | L | T_m | kappa(G) | kappa(q) | alpha_G=kG-kX | alpha_q=kq-kX | delta=kG-kq | alpha_q/T | delta/T | p=1-<xi,q>^2 | sup|dr_n| | sum|dr_n|/n^2 |")
     print("|---|---|---|---|---|---|---|---|---|---|---|---|---|")
-    for m, N, dps in ((13, 13, 220), (23, 23, 320), (43, 43, 460), (13, 120, 240)):
+    for m, N, dps in ((13, 13, 220), (23, 23, 320), (43, 43, 460), (83, 83, 700), (13, 120, 240)):
         c, L = ground_full(m, N, dps)
         proj, meta = q_projected_exact_even(m, N)
         norm = math.sqrt(float(sum(x * x for x in proj)))

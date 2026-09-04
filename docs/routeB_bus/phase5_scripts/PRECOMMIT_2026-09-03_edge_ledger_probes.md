@@ -409,3 +409,4 @@ Predictions (before the numbers): `P_TRIAL_JET_WITHIN_T` (|α_q| ≤ 3T on all c
 Script: `docs/routeB_bus/phase5_codex/r2_second_jet.py`. DIAGNOSTIC_NEVER_A_PROOF.
 Fates (2026-09-04): P_TRIAL_JET_WITHIN_T CONFIRMED (|α_q|/T = 0.127, 0.083, 0.057); P_GROUND_TRIAL_JET_GAP_WITHIN_T CONFIRMED
 (δ/T = 0.353, 0.381, 0.389); P_TRIAL_JET_WORSE_THAN_GROUND REFUTED. New law: κ(q_m) = κ_X − a_m/m, a_∞ = 0.019892 ≈ 1/(16π).
+m=83 added (16:50): δ/T = 0.389, α_q·m = −0.01996, a_83 = 0.0199568 vs derived 0.0199564. Laws hold on four production cells.
