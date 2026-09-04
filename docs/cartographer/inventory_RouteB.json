@@ -1,12 +1,12 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 389,
-  "declarations": 4427,
-  "in_docs": 2280,
+  "files_scanned": 390,
+  "declarations": 4463,
+  "in_docs": 2314,
   "in_lemma_db": 4182,
-  "orphans": 45,
-  "uncatalogued": 45,
+  "orphans": 47,
+  "uncatalogued": 47,
   "orphan_files_top": [
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
@@ -30,6 +30,10 @@
     ],
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/P59SingleEndpointAtomCounterexample.lean",
+      2
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean",
       2
     ],
     [
@@ -37714,6 +37718,366 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SingleEndpointAtomCounterexample.lean",
       "line": 223,
       "signature": "theorem endpoint_agreement_does_not_control_zero_count {R : ℝ} (hR : 0 < R) : ¬ ∀ F X : ℂ → ℂ, F 0 = X 0 → F (R : ℂ) = X (R : ℂ) → (∀ z : ℂ, X z ≠ 0) → ∀ x : ℝ, |x| < R → F (x : ℂ) ≠ 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "ladderProj",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean",
+      "line": 56,
+      "signature": "def ladderProj {n : ℕ} (B : Matrix (Fin n) (Fin 3) ℝ) : Matrix (Fin n) (Fin n) ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "ladderComplement",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean",
+      "line": 60,
+      "signature": "def ladderComplement {n : ℕ} (B : Matrix (Fin n) (Fin 3) ℝ) : Matrix (Fin n) (Fin n) ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ladderProj_isSymm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean",
+      "line": 65,
+      "signature": "theorem ladderProj_isSymm (B : Matrix (Fin n) (Fin 3) ℝ) : (ladderProj B).IsSymm",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ladderProj_mul_self",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean",
+      "line": 69,
+      "signature": "theorem ladderProj_mul_self (B : Matrix (Fin n) (Fin 3) ℝ) (hB : Bᵀ * B = 1) : ladderProj B * ladderProj B = ladderProj B",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ladderComplement_isSymm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean",
+      "line": 74,
+      "signature": "theorem ladderComplement_isSymm (B : Matrix (Fin n) (Fin 3) ℝ) : (ladderComplement B).IsSymm",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ladderComplement_mul_self",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean",
+      "line": 79,
+      "signature": "theorem ladderComplement_mul_self (B : Matrix (Fin n) (Fin 3) ℝ) (hB : Bᵀ * B = 1) : ladderComplement B * ladderComplement B = ladderComplement B",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ladderProj_mul_ladderComplement",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean",
+      "line": 86,
+      "signature": "theorem ladderProj_mul_ladderComplement (B : Matrix (Fin n) (Fin 3) ℝ) (hB : Bᵀ * B = 1) : ladderProj B * ladderComplement B = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ladderComplement_mul_ladderProj",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean",
+      "line": 91,
+      "signature": "theorem ladderComplement_mul_ladderProj (B : Matrix (Fin n) (Fin 3) ℝ) (hB : Bᵀ * B = 1) : ladderComplement B * ladderProj B = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ladderProj_add_ladderComplement",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean",
+      "line": 97,
+      "signature": "theorem ladderProj_add_ladderComplement (B : Matrix (Fin n) (Fin 3) ℝ) : ladderProj B + ladderComplement B = 1",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "ladderBlockA",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean",
+      "line": 105,
+      "signature": "def ladderBlockA (K : Matrix (Fin n) (Fin n) ℝ) (B : Matrix (Fin n) (Fin 3) ℝ) : Matrix (Fin 3) (Fin 3) ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "ladderBlockC",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean",
+      "line": 110,
+      "signature": "def ladderBlockC (K : Matrix (Fin n) (Fin n) ℝ) (B : Matrix (Fin n) (Fin 3) ℝ) : Matrix (Fin 3) (Fin n) ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "ladderBlockD",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean",
+      "line": 115,
+      "signature": "def ladderBlockD (K : Matrix (Fin n) (Fin n) ℝ) (B : Matrix (Fin n) (Fin 3) ℝ) : Matrix (Fin n) (Fin n) ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ladderBlockA_isSymm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean",
+      "line": 119,
+      "signature": "theorem ladderBlockA_isSymm (K : Matrix (Fin n) (Fin n) ℝ) (B : Matrix (Fin n) (Fin 3) ℝ) (hK : K.IsSymm) : (ladderBlockA K B).IsSymm",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ladderBlockD_isSymm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean",
+      "line": 125,
+      "signature": "theorem ladderBlockD_isSymm (K : Matrix (Fin n) (Fin n) ℝ) (B : Matrix (Fin n) (Fin 3) ℝ) (hK : K.IsSymm) : (ladderBlockD K B).IsSymm",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ladderBlockC_transpose",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean",
+      "line": 132,
+      "signature": "theorem ladderBlockC_transpose (K : Matrix (Fin n) (Fin n) ℝ) (B : Matrix (Fin n) (Fin 3) ℝ) (hK : K.IsSymm) : (ladderBlockC K B)ᵀ = ladderComplement B * K * B",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ladder_head_rowSum",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean",
+      "line": 142,
+      "signature": "private theorem ladder_head_rowSum (K : Matrix (Fin n) (Fin n) ℝ) (B : Matrix (Fin n) (Fin 3) ℝ) (hB : Bᵀ * B = 1) : ladderBlockA K B * Bᵀ + ladderBlockC K B * ladderComplement B = Bᵀ * K",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ladder_tail_rowSum",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean",
+      "line": 155,
+      "signature": "private theorem ladder_tail_rowSum (K : Matrix (Fin n) (Fin n) ℝ) (B : Matrix (Fin n) (Fin 3) ℝ) (hB : Bᵀ * B = 1) (hK : K.IsSymm) : (ladderBlockC K B)ᵀ * Bᵀ + ladderBlockD K B * ladderComplement B = ladderComplement B * K",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ladder_projected_eigen_equation_head",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean",
+      "line": 173,
+      "signature": "theorem ladder_projected_eigen_equation_head (K : Matrix (Fin n) (Fin n) ℝ) (B : Matrix (Fin n) (Fin 3) ℝ) (hB : Bᵀ * B = 1) (lam : ℝ) (u : Fin n → ℝ) (hu : K *ᵥ u = lam • u) : (ladderBlockA K B - lam • 1) *ᵥ (Bᵀ *ᵥ u) + ladderBlockC K B *ᵥ (ladderComplement B *ᵥ u) = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ladder_projected_eigen_equation_tail",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean",
+      "line": 187,
+      "signature": "theorem ladder_projected_eigen_equation_tail (K : Matrix (Fin n) (Fin n) ℝ) (B : Matrix (Fin n) (Fin 3) ℝ) (hB : Bᵀ * B = 1) (hK : K.IsSymm) (lam : ℝ) (u : Fin n → ℝ) (hu : K *ᵥ u = lam • u) : (ladderBlockC K B)ᵀ *ᵥ (Bᵀ *ᵥ u) + (ladderBlockD K B - lam • 1) *ᵥ (ladderComplement B *ᵥ u) = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "ladderE0",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean",
+      "line": 203,
+      "signature": "def ladderE0 : Fin 3 → ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "ladderNorm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean",
+      "line": 206,
+      "signature": "def ladderNorm (v : Fin 3 → ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ladderNorm_nonneg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean",
+      "line": 208,
+      "signature": "theorem ladderNorm_nonneg (v : Fin 3 → ℝ) : 0 ≤ ladderNorm v",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ladderE0_dotProduct",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean",
+      "line": 210,
+      "signature": "theorem ladderE0_dotProduct (v : Fin 3 → ℝ) : ladderE0 ⬝ᵥ v = v 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "abs_ladderE0_dotProduct_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean",
+      "line": 215,
+      "signature": "theorem abs_ladderE0_dotProduct_le (v : Fin 3 → ℝ) : |ladderE0 ⬝ᵥ v| ≤ ladderNorm v",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ladder_d2_eq_ladderRow_overlap",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean",
+      "line": 229,
+      "signature": "theorem ladder_d2_eq_ladderRow_overlap (B : Matrix (Fin n) (Fin 3) ℝ) (u : Fin n → ℝ) : ladderE0 ⬝ᵥ (Bᵀ *ᵥ u) = (B *ᵥ ladderE0) ⬝ᵥ u",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ladder_d2_exact_remainder",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean",
+      "line": 236,
+      "signature": "theorem ladder_d2_exact_remainder (p z : Fin 3 → ℝ) : ladderE0 ⬝ᵥ p - ladderE0 ⬝ᵥ z = ladderE0 ⬝ᵥ (p - z)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ladder_d2_exact_remainder_normalized",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean",
+      "line": 242,
+      "signature": "theorem ladder_d2_exact_remainder_normalized (p z p' : Fin 3 → ℝ) (s : ℝ) (hs : s = ladderNorm p) (hs0 : s ≠ 0) (hp' : p' = s⁻¹ • p) : ladderE0 ⬝ᵥ p - ladderE0 ⬝ᵥ z = (s - 1) * (ladderE0 ⬝ᵥ z) + s * (ladderE0 ⬝ᵥ (p' - z))",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ladder_d2_remainder_bound",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean",
+      "line": 255,
+      "signature": "theorem ladder_d2_remainder_bound (p z p' : Fin 3 → ℝ) (s : ℝ) (hs : s = ladderNorm p) (hs0 : s ≠ 0) (hp' : p' = s⁻¹ • p) : |ladderE0 ⬝ᵥ p - ladderE0 ⬝ᵥ z| ≤ |1 - s| * |ladderE0 ⬝ᵥ z| + s * ladderNorm (p' - z)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ladder_feshbach_hypothesis_of_blockInverse",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean",
+      "line": 275,
+      "signature": "theorem ladder_feshbach_hypothesis_of_blockInverse (K : Matrix (Fin n) (Fin n) ℝ) (B : Matrix (Fin n) (Fin 3) ℝ) (lam : ℝ) (G : Matrix (Fin n) (Fin n) ℝ) (hG : G * (ladderBlockD K B - lam • 1) * ladderComplement B = ladderComplement B) (u : Fin n → ℝ) : G *ᵥ ((ladderBlockD K B - lam • 1) *ᵥ (ladderComplement B *ᵥ u)) = ladderComplement B *ᵥ u",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ladder_feshbach_tail_eq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean",
+      "line": 286,
+      "signature": "theorem ladder_feshbach_tail_eq (K : Matrix (Fin n) (Fin n) ℝ) (B : Matrix (Fin n) (Fin 3) ℝ) (hB : Bᵀ * B = 1) (hK : K.IsSymm) (lam : ℝ) (u : Fin n → ℝ) (hu : K *ᵥ u = lam • u) (G : Matrix (Fin n) (Fin n) ℝ) (hG : G *ᵥ ((ladderBlockD K B - lam • 1) *ᵥ (ladderComplement B *ᵥ u)) = ladderComplement B *ᵥ u) : ladderComplement B *ᵥ u = -((G * (ladderBlockC K B)ᵀ) *ᵥ (Bᵀ *ᵥ u))",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ladder_feshbach_effective_equation",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean",
+      "line": 302,
+      "signature": "theorem ladder_feshbach_effective_equation (K : Matrix (Fin n) (Fin n) ℝ) (B : Matrix (Fin n) (Fin 3) ℝ) (hB : Bᵀ * B = 1) (hK : K.IsSymm) (lam : ℝ) (u : Fin n → ℝ) (hu : K *ᵥ u = lam • u) (G : Matrix (Fin n) (Fin n) ℝ) (hG : G *ᵥ ((ladderBlockD K B - lam • 1) *ᵥ (ladderComplement B *ᵥ u)) = ladderComplement B *ᵥ u) : (ladderBlockA K B - ladderBlockC K B * G * (ladderBlockC K B)ᵀ - lam • 1) *ᵥ (Bᵀ *ᵥ u) = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "directionalPlantVector",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean",
+      "line": 327,
+      "signature": "def directionalPlantVector (b y : Fin n → ℝ) (θ : ℝ) : Fin n → ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "directionalPlantVector_self",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean",
+      "line": 330,
+      "signature": "theorem directionalPlantVector_self (b y : Fin n → ℝ) (hb : b ⬝ᵥ b = 1) (hy : y ⬝ᵥ y = 1) (hby : b ⬝ᵥ y = 0) (θ : ℝ) (hθ : θ ^ 2 ≤ 1) : directionalPlantVector b y θ ⬝ᵥ directionalPlantVector b y θ = 1",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "directionalPlantVector_dotProduct_left",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean",
+      "line": 342,
+      "signature": "theorem directionalPlantVector_dotProduct_left (b y : Fin n → ℝ) (hb : b ⬝ᵥ b = 1) (hby : b ⬝ᵥ y = 0) (θ : ℝ) : directionalPlantVector b y θ ⬝ᵥ b = Real.sqrt (1 - θ ^ 2)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "directionalPlantVector_dotProduct_right",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean",
+      "line": 349,
+      "signature": "theorem directionalPlantVector_dotProduct_right (b y : Fin n → ℝ) (hy : y ⬝ᵥ y = 1) (hby : b ⬝ᵥ y = 0) (θ : ℝ) : y ⬝ᵥ directionalPlantVector b y θ = θ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "directionalPlantVector_tendsto",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean",
+      "line": 359,
+      "signature": "theorem directionalPlantVector_tendsto (b y : Fin n → ℝ) (hb : b ⬝ᵥ b = 1) (hby : b ⬝ᵥ y = 0) : Filter.Tendsto (fun θ : ℝ => directionalPlantVector b y θ ⬝ᵥ b) (nhds 0) (nhds 1)",
       "in_docs": true,
       "in_lemma_db": false,
       "orphan": false
