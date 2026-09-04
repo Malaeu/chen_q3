@@ -1,9 +1,9 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 388,
-  "declarations": 4422,
-  "in_docs": 2275,
+  "files_scanned": 389,
+  "declarations": 4427,
+  "in_docs": 2280,
   "in_lemma_db": 4182,
   "orphans": 45,
   "uncatalogued": 45,
@@ -40646,6 +40646,56 @@
       "signature": "theorem Proposition59GroundLagrangeZeroSetBridge {ι : Type*} [Fintype ι] [DecidableEq ι] (mProject N : ℕ) (epsilon : ℝ) (xi : CCMModeFinite N → ℝ) (hm : 2 ≤ mProject) (hN : 1 ≤ N) (heig : Matrix.mulVec (ccmWeilMatFinite mProject N) xi = epsilon • xi) (hnormalized : ccmEtaFinite N ⬝ᵥ xi = 1) (hbottom : ∀ x : CCMModeFinite N → ℝ, epsilon * (x ⬝ᵥ x) ≤ x ⬝ᵥ Matrix.mulVec (ccmWeilMatFinite mProject N) x) (hsimple : Module.finrank ℝ ((ccmWeilOpFinite mProject N).eigenspace epsilon) = 1) (b : Module.Basis ι ℝ ((CCMModeFinite N → ℝ) ⧸ LinearMap.ker (Matrix.toBilin' (ccmShiftedWeilMatFinite mProject N epsilon)))) : ZerosRealOn Set.univ (proposition59CCMTransform (ccmL mProject) N xi)",
       "in_docs": true,
       "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sum_erase_zero_Icc_symm_complex",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59GroundTrialSecondJetDifference.lean",
+      "line": 52,
+      "signature": "private theorem sum_erase_zero_Icc_symm_complex (N : ℕ) (g : ℤ → ℂ) : ∑ k ∈ (Finset.Icc (-(N : ℤ)) (N : ℤ)).erase 0, g k = ∑ k ∈ Finset.Icc 1 N, (g (k : ℤ) + g (-(k : ℤ)))",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59SecondJetCurvature_closed_form",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59GroundTrialSecondJetDifference.lean",
+      "line": 87,
+      "signature": "theorem proposition59SecondJetCurvature_closed_form {L : ℝ} (hL : 0 < L) (N : ℕ) (v : ℤ → ℂ) (hv0 : v 0 ≠ 0) : -(iteratedDeriv 2 (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v) 0) / (2 * proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v 0) = (L : ℂ) ^ 2 / 2 * (1 / 12 + 1 / (2 * (Real.pi : ℂ) ^ 2 * v 0) * ∑ k ∈ (Finset.Icc (-(N : ℤ)) (N : ℤ)).erase 0, v k / (k : ℂ) ^ 2)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59SecondJetCurvature_positive_modes",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59GroundTrialSecondJetDifference.lean",
+      "line": 105,
+      "signature": "theorem proposition59SecondJetCurvature_positive_modes {L : ℝ} (hL : 0 < L) (N : ℕ) (v : ℤ → ℂ) (hv : ∀ k : ℤ, v (-k) = v k) (hv0 : v 0 ≠ 0) : -(iteratedDeriv 2 (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v) 0) / (2 * proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v 0) = (L : ℂ) ^ 2 / 24 + (L : ℂ) ^ 2 / (2 * (Real.pi : ℂ) ^ 2 * v 0) * ∑ n ∈ Finset.Icc 1 N, v (n : ℤ) / (n : ℂ) ^ 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_ground_trial_second_jet_difference",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59GroundTrialSecondJetDifference.lean",
+      "line": 136,
+      "signature": "theorem proposition59_ground_trial_second_jet_difference {L : ℝ} (hL : 0 < L) (N : ℕ) (v q : ℤ → ℂ) (hv : ∀ k : ℤ, v (-k) = v k) (hq : ∀ k : ℤ, q (-k) = q k) (hv0 : v 0 ≠ 0) (hq0 : q 0 ≠ 0) : (-(iteratedDeriv 2 (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v) 0) / (2 * proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) v 0)) - (-(iteratedDeriv 2 (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) q) 0) / (2 * proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) q 0)) = (L : ℂ) ^ 2 / (2 * (Real.pi : ℂ) ^ 2) * ∑ k ∈ Finset.Icc 1 N, (v (k : ℤ) / v 0 - q (k : ℤ) / q 0) / (k : ℂ) ^ 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_ground_trial_second_jet_difference_real",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59GroundTrialSecondJetDifference.lean",
+      "line": 164,
+      "signature": "theorem proposition59_ground_trial_second_jet_difference_real {L : ℝ} (hL : 0 < L) (N : ℕ) (v q : ℤ → ℝ) (hv : ∀ k : ℤ, v (-k) = v k) (hq : ∀ k : ℤ, q (-k) = q k) (hv0 : v 0 ≠ 0) (hq0 : q 0 ≠ 0) : (-(iteratedDeriv 2 (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) (fun k => (v k : ℂ))) 0) / (2 * proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) (fun k => (v k : ℂ)) 0)) - (-(iteratedDeriv 2 (proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) (fun k => (q k : ℂ))) 0) / (2 * proposition59RawTransform L (Finset.Icc (-(N : ℤ)) (N : ℤ)) (fun k => (q k : ℂ)) 0)) = ((L ^ 2 / (2 * Real.pi ^ 2) * ∑ k ∈ Finset.Icc 1 N, (v (k : ℤ) / v 0 - q (k : ℤ) / q 0) / (k : ℝ) ^ 2 : ℝ) : ℂ)",
+      "in_docs": true,
+      "in_lemma_db": false,
       "orphan": false
     },
     {

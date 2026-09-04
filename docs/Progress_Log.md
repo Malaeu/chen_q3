@@ -4475,3 +4475,16 @@ R4 weighted Davis–Kahan убит как generic. Следующее: paper-п�
 Прогноз (мой, до агентов): `P_FINITE_PROJECTION_SECOND_JET_TAIL_LOWER_ORDER` судьи 0.55 — я ставлю 0.85 на SUCCESS для
 `E_{λ,N}` (экспоненциально мал), 0.55 для `B_λ` (нижнее окно `u < 1/λ`: `h_λ` там мала, но оценка через две производные
 не очевидна). DIAGNOSTIC_NEVER_A_PROOF. PX_RH_CLAIM: NOT_MADE.
+
+## 2026-09-04 (вечер) — Lean: `Proposition59GroundTrialSecondJetDifference.lean` KERNEL_GREEN, сильнее директивы
+
+Opus-агент (6.5 мин), проверено мной: `lake env lean` EXIT 0 без ошибок, `q3_check ok`, аксиомы обеих главных теорем
+`[propext, Classical.choice, Quot.sound]`, `sorry/admit/exact?` = 0. Доказано для ЛЮБОЙ чётной строки с ненулевым центром
+(без гипотез о нулях, без спектра): `κ(F_v) − κ(F_q) = (L²/(2π²))Σ_{k=1}^N (v_k/v_0 − q_k/q_0)/k²`, плюс замкнутая форма
+`κ = (L²/2)(1/12 + (1/(2π²v₀))Σ_{k≠0} v_k/k²)` и её вариант по положительным модам. Находка агента: указанный судьёй маршрут через
+`proposition59_curvature_closed_form` заблокирован его же запретами — та лемма несёт `ZerosRealOn`, потому что `proposition59Curvature`
+ОПРЕДЕЛЕНА как сумма по корням + хвост; сама величина `−F''(0)/(2F(0))` нулей не требует, и агент передоказал форму в три строки
+из `proposition59RawTransform_secondDerivative_zero` + `proposition59RawTransform_at_zero_eq_sqrt`. Файл импортирует только
+`Proposition59EntireTransform`. Второй канал агента: контурные интегралы против строк, 2.3e-41. Отчёт:
+`docs/routeB_bus/CLAUDE_AGENT_REPORT_2026-09-04_GOAL058_P59_GROUND_TRIAL_SECOND_JET_DIFFERENCE.md`. Мигратор перезапущен после
+появления файла (дрейф 388/389 закрыт; второй прогон шёл дольше 3 мин — записать в backlog как трение).

@@ -4,7 +4,7 @@
 `python3 docs/cartographer/map_coverage.py`. Рукописная карта — `MAP.md`, она
 описывает узлы маршрута; это приложение описывает **файлы**, и оно полное.
 
-Всего файлов: **381** · упомянуто в `MAP.md`: **25** · вне карты: **356** · без описания в шапке: **0**
+Всего файлов: **389** · упомянуто в `MAP.md`: **25** · вне карты: **364** · без описания в шапке: **0**
 
 «вне карты» не значит «лишний»: значит, что обходом карты файл не находится.
 Именно так 2026-08-11 был построен заново мост `ker ↔ eigenspace`, стоявший в
@@ -307,6 +307,7 @@
 | `GammaSoftZeroFree` | — | The SOFT completion factor.  For a positive real scale `lambda`, the | 0 |
 | `GenericZeroTransfer` | — | A quantitative open-mapping replacement for the one-disk Rouché step. | 0 |
 | `Goal058CurvatureArithmetic` | — | Goal 058 curvature arithmetic | 0 |
+| `Goal058CurvatureBorderedSecular` | — | Goal 058 bordered secular bookkeeping | 0 |
 | `Goal058DirectGroundZeroEscape` | — | Goal 058 — direct tracked-ground ZeroEscape consumer | 0 |
 | `Goal058OrientedSmoothModelMass` | — | The exact finite-parameter mass of the smooth oriented source model from | 0 |
 | `Goal058PolarizedVolterra` | — | первая декларация: `goal058ModeFrequency` | 0 |
@@ -334,8 +335,10 @@
 | `MuntzV3/SymmetricTrialCrosswalk` | — | The positive-half representative of a symmetric source trial.  All Muntz | 0 |
 | `MuntzV3/Unconditional` | — | T5 with the v3 Mellin-analyticity hypothesis discharged by the compact | 0 |
 | `NormalizedTrackingRateTransfer` | — | Exact algebraic normalization identity. The arbitrary parameter later named | 0 |
+| `P59SingleEndpointAtomCounterexample` | — | P59 single-endpoint atom — the kill plant | 0 |
 | `PerturbativeTrueGapLower` | — | If the lower true endpoint can move upward by `errLow`, the upper true | 0 |
 | `PhaseAlignmentRateTransfer` | — | первая декларация: `alignmentPhase` | 0 |
+| `PolynomialCircleRootCount` | — | Polynomial circle argument principle | 0 |
 | `PosDefSelfAdjointRealSpectrum` | карта | A complex matrix that is self-adjoint for a positive-definite Hermitian | 0 |
 | `PosDefSelfAdjointRealSpectrumConsumer` | — | The abstract M1 similarity theorem feeds the existing Hermitian | 0 |
 | `PosDefSelfAdjointRealSpectrumRealConsumer` | — | Positive definiteness survives the canonical scalar extension | 0 |
@@ -349,9 +352,14 @@
 | `ProlateSourceCommutation` | — | The first derivative of the finite-Fourier kernel in its first real | 0 |
 | `ProlateSourceEigenTransport` | — | The finite Fourier action preserves every pointwise eigenspace of the | 0 |
 | `ProlateSourceRegularity` | — | The source Fourier kernel with the repository convention | 0 |
+| `Proposition59AlternatingLatticeCurvature` | — | Proposition 5.9 — the alternating lattice form of the curvature | 0 |
+| `Proposition59AnchoredSecondModeOverlap` | — | Proposition 5.9 — the anchored second-mode overlap: finite identities only | 0 |
 | `Proposition59EntireTransform` | — | The apparent pole `2*pi*k/L` in Proposition 5.9. -/ | 0 |
+| `Proposition59ExplicitProductCurvatureBridge` | — | Proposition 5.9 explicit-product curvature bridge | 0 |
 | `Proposition59GroundLagrangeZeroSetBridge` | — | Proposition 5.9 ground/Lagrange zero-set bridge | 0 |
+| `Proposition59GroundTrialSecondJetDifference` | — | Proposition 5.9 — the ground/trial second-jet difference identity | 0 |
 | `Proposition59PoleKernelNorm` | — | первая декларация: `scratch_summable_int_shift_normSq_inv` | 0 |
+| `Proposition59ReciprocalModeWeightedShell` | — | Proposition 5.9 — the reciprocal-mode weighted `L²` shell | 0 |
 | `QuadraticDivisorTransfer` | — | The final divisor step of `SOFT_2_QuadraticDivisorTransfer`. | 0 |
 | `QuotientByRadicalPosDefMatrix` | — | Choosing coordinates on the quotient by the full radical turns the | 0 |
 | `QuotientByRadicalRealZeroConsumer` | — | первая декларация: `zerosRealOn_of_quotientByRadical_charpoly_mul` | 0 |
