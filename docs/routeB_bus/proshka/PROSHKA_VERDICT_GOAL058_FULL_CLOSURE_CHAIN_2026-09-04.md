@@ -1,89 +1,171 @@
 # STATUS: IRREDUCIBLE_ATOM
 ```yaml
 PRIMARY: IRREDUCIBLE_ATOM
+PRIMARY_COUNT: 1
+OPERATIVE_CODE: FINITE_GROUND_TRANSFORM_TO_CCM_TRIAL_LOCALLY_UNIFORM
+
 REQUEST_ID: REQ-2026-09-04-FULLCHAIN
 BOUNDARY_ID: GOAL058_FULL_CLOSURE_CHAIN
-OPERATIVE_CODE: P59_LADDER_FESHBACH_Y_COMPONENT_O_T_M
 
 REQUEST_LOCK:
   COMMIT: e5dbeb36909fba032bf932b1eaa285931400c8d3
   PATH: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_FULL_CLOSURE_CHAIN_2026-09-04.txt
   GIT_BLOB: b4a589788118b2c064efb5bad3e6d931e4b96c33
-  EXPECTED_SHA256: e0af075c863132a686ad7f1b83c86d7e429886c2c3897b004a5a83f5c3399c53
-  EXPECTED_BYTES: 7966
-  EXPECTED_LINES: 122
+  SHA256: e0af075c863132a686ad7f1b83c86d7e429886c2c3897b004a5a83f5c3399c53
+  BYTES: 7966
+  LINES: 122
+  FINAL_LF: true
   GIT_BLOB_MATCH: true
-  SHA256_RECOMPUTED_OUTSIDE_CONNECTOR: false
-  NOTE: GitHub returned the exact requested blob. The connector does not expose its bytes to the hashing runtime, so the supplied SHA-256 is source-locked but not independently recomputed by this judge.
+  SHA256_RECOMPUTED_FROM_FETCHED_UTF8_BYTES: true
+  BYTE_COUNT_RECOMPUTED: true
+  LINE_COUNT_RECOMPUTED: true
 
+EVIDENCE_BOUNDARY:
+  EVIDENCE_CUTOFF: e5dbeb36909fba032bf932b1eaa285931400c8d3
+  POST_REQUEST_RESULTS_USED: false
+  REVIEW_BOUNDARY: PAPER_ADJUDICATION_ONLY
+  LEAN_EDIT_PERFORMED: false
+  NUMERICAL_RUN_PERFORMED: false
+
+READJUDICATION:
+  OWNER_REQUESTED_SECOND_PASS: true
+  PRIOR_VERDICT_BLOB: 1e92ef4825f366f14bfec35a567098f2906216d2
+  PRIOR_OPERATIVE_CODE: P59_LADDER_FESHBACH_Y_COMPONENT_O_T_M
+  PRIOR_CODE_STATUS: DEMOTED_TO_REPRESENTATION_SPECIFIC_SUBPROBLEM
+  CORRECTION_REASON:
+    - the prior atom bounds only d2-d2_3
+    - the shelf separately leaves d2_3=O(T) unproved
+    - a wide admissible schedule need not use the raw 3x3 ladder
+    - K8A requires the weakest unchanged consumer interface
+
+OUTPUT_CLASS: IRREDUCIBLE_ATOM
 FULL_CHAIN_ON_CURRENT_SHELF: false
 BOOKKEEPING_PHASE: CLOSED_BY_ATOM
 
 ATOM:
-  NAME: P59_LADDER_FESHBACH_Y_COMPONENT_O_T_M
+  NAME: FiniteGroundTransformToCCMTrialLocallyUniform
+  CATALOG_STATUS: PLACEHOLDER_MAIN_G3_WALL
   SCOPE: COFINAL_FAMILY
   VERIFIER: CONDITIONAL
   EXACT_QUANTIFIER_FORM: >-
-    For one precommitted roof-admissible cofinal schedule N(m)>=m, there exist
-    C>=0 and m0 such that for every m>=m0, with u_2 the coherently selected
-    unit second-even source eigenvector, B the source Xi-polynomial ladder,
-    p=B^*u_2, and z2_3 the coherently selected second vector of A=B^*KB,
-    abs(<e0,p-z2_3>) <= C*T_{m,N(m)}. If the second mode is not simple, replace
-    the selected vector by the isolated second-even spectral projection and
-    bound its y_m/e0 component.
+    There exists one precommitted schedule N : Nat -> Nat with N(m) >= m
+    whose path i_m=(m,N(m)) is accepted by the production sameCofinalGuard,
+    such that, for the exact eta/anchor-normalized Proposition-59 transform
+    F_ground(m,N(m)) of the actual finite bottom ground row and the exact
+    normalized projected Ferrers-trial transform F_trial(m,N(m)), for every
+    compact K contained in the open centered critical strip and every eps>0,
+    there exists m0 such that for every m>=m0,
+      sup_{z in K} abs(F_ground(m,N(m),z)-F_trial(m,N(m),z)) < eps.
+  LEAN_SHAPE: >-
+    TendstoLocallyUniformlyOn
+      (fun m z => F_ground (m,N m) z - F_trial (m,N m) z)
+      (fun _ => 0) atTop centeredCriticalStrip.
+  WEAKEST_SOURCE_RATE_INTERFACE: >-
+    For every compact K, the exact P59 compact-evaluation norm of the
+    bottom-spectral-complement component of the source trial, including the
+    literal phase/anchor normalization correction, tends to zero on the same
+    schedule. No free error function or free compact-rate premise is allowed.
   MINIMAL_MISSING_IDENTITY: >-
-    A source-specific cancellation/complement identity that removes the raw
-    inverse-gap scale from the e0 component of C(D-lambda_2 I)^(-1)C^*.
-    Equivalently: an exact scalar Phi_{m,N} for <e0,p-z2_3> with a cofinal
-    O(T_{m,N}) bound proved before any operator-norm estimate.
+    A source-defined factorization
+      F_ground - F_trial = E_source
+    on the same finite carrier and normalization, together with a bound
+      sup_K |E_source| <= epsilon_m(K), epsilon_m(K)->0,
+    where E_source is computed from K_{m,N}, its bottom spectral projector,
+    and the literal Ferrers trial before any inverse-gap operator-norm bound.
   EXACT_REFUTER: >-
-    A proved cofinal subsequence m_j with
-    abs(<e0,p-z2_3>)/T_{m_j,N(m_j)} -> infinity. No finite cache can logically
-    refute an existential cofinal Big-O statement.
+    A compact K, eps>0, and a cofinal subsequence m_j for every admissible
+    precommitted schedule under test such that
+      sup_K |F_ground(m_j,N(m_j))-F_trial(m_j,N(m_j))| >= eps.
+    Finite caches alone cannot refute the existential cofinal theorem.
   CACHE_DISCRIMINATOR: >-
-    Compute R_m^(n)=abs(d2_m-d2_m^(n))/T_m for nested ladders n=3,4,8 on
-    m=13,23,43,83 and repeat at wider N where cached. Pre-register adverse
-    threshold: every available n has R_83^(n)>=1.25*R_43^(n), with stable sign
-    under precision/N. This kills the representation, not the Big-O theorem.
+    On K0={z: |Re z|<=1, |Im z|<=1/4}, compute the anchored P59 difference
+    directly from the cached ground and trial rows at (13,13),(23,23),
+    (43,43),(83,83),(13,120). Pre-register COMPACT_DEFECT_NONDECAY if the
+    precision-stable values at N=m obey E_43>=0.90*E_23 and
+    E_83>=0.90*E_43. This kills the N=m compact-decay representation only,
+    not the existential schedule atom.
+
+WHY_NOT_PRIOR_ATOM:
+  EXACT_IDENTITY: d2 = d2_3 + inner(e0,p-z2_3)
+  MISSING_RATE_1: abs(d2_3) <= C0*T
+  MISSING_RATE_2: abs(inner(e0,p-z2_3)) <= C1*T
+  SHELF_PROVES_RATE_1: false
+  SHELF_PROVES_RATE_2: false
+  CONSEQUENCE: >-
+    Proving only the Feshbach y-component rate does not prove d2=O(T), hence
+    it does not close the requested chain. The D2 shelf explicitly records
+    P59_COMPRESSED_SECOND_RITZ_VECTOR_ASYMPTOTIC as a second failure point.
+  FESHBACH_ATOM_RETAINED_AS: CANDIDATE_REPRESENTATION
+  CURVATURE_E_M_RETAINED_AS: CANDIDATE_REPRESENTATION
 
 SCHEDULE_AUDIT:
-  N_EQUALS_M: NOT_A_THEOREM
-  WIDE_SIGNAL_13_120: STRONG_FINITE_EVIDENCE
-  WIDE_COFINAL_CHAIN_ON_SHELF: false
-  HARDNESS_MOVES_TO: >-
-    sameCofinalGuard plus a source-specific cofinal saturation/complement-gap
-    theorem converting wide-cell Rayleigh success into projective tracking.
+  N_EQUALS_M: ONE_REPRESENTATION_NOT_A_THEOREM
+  WIDE_13_120: STRONG_FINITE_EVIDENCE
+  WIDE_FULL_CHAIN_ON_REQUEST_SHELF: false
+  WIDE_MISSING_SUPPLIER: >-
+    A source-specific cofinal saturation/projective-rate theorem for a
+    precommitted roof-admissible N(m); sameCofinalGuard bookkeeping alone
+    supplies no spectral rate.
+  SECOND_WIDE_CELL_AT_REQUEST_CUTOFF: UNSATURATED_AND_INSTRUMENT_FLOORED
+  HARDNESS_REMOVED_BY_SCHEDULE_CHANGE: false
+  HARDNESS_MOVED_TO_FEWER_HIDING_PLACES: plausible_not_proved
+
+CANDIDATE_REPRESENTATIONS:
+  R1_SECOND_MODE_FULL_OVERLAP:
+    target: P59_SECOND_MODE_OVERLAP_O_L_MINUS_2
+    requirement: >-
+      Bound the full multiplicity-safe second-even spectral projection of
+      the Xi row, not only one Feshbach summand, and control the combined
+      higher-mode/profile remainder needed by the compact consumer.
+    kill_power: 9/10
+    estimated_cost: 8/10
+  R2_CURVATURE_TRANSFER:
+    target: >-
+      Use 2*pi*d2=ell1*(alpha*M-E), but solve the identity noncircularly:
+      control the transfer denominator/moment and the full ground-side
+      remainder without assuming alpha=O(T), which is rate-equivalent to d2.
+    kill_power: 9/10
+    estimated_cost: 7/10
+  R3_WIDE_SCHEDULE_PROJECTIVE_RATE:
+    target: >-
+      Precommit N(m), prove sameCofinalGuard and a source-specific cofinal
+      Rayleigh-saturation/complement-gap estimate whose compact evaluation
+      product tends to zero.
+    kill_power: 10/10
+    estimated_cost: 9/10
 
 OBSERVER_PREDICTION_FATES:
   P_JUDGE_RETURNS_IRREDUCIBLE_ATOM_0_70: CONFIRMED
-  P_ATOM_IS_FESHBACH_Y_COMPONENT_OR_E_M_0_55: CONFIRMED
-  P_JUDGE_BUILDS_CHAIN_ON_WIDE_SCHEDULE_0_30: REFUTED
+  P_ATOM_IS_FESHBACH_Y_COMPONENT_OR_E_M_0_55: >-
+    REFUTED_AS_THE_OPERATIVE_ATOM; CONFIRMED_ONLY_AS_TWO_REPRESENTATIONS
+  P_JUDGE_BUILDS_CHAIN_ON_WIDE_SCHEDULE_0_30: REFUTED_AT_REQUEST_CUTOFF
   P_CHAIN_HAS_ZERO_NEW_MATH_STEPS_0_10: REFUTED
 
 JUDGE_K6_REGISTER:
-  P_FULL_CHAIN_EXISTS_ON_CURRENT_SHELF: 0.08
-  P_ATOM_IS_NEW_MATH_BEYOND_CCM_SECTION_7_LEMMA_7_2_7_3: 0.90
-  P_SCHEDULE_CHANGE_MOVES_WALL_TO_FEWER_HIDING_PLACES: 0.65
+  P_FULL_CHAIN_EXISTS_ON_CURRENT_SHELF: 0.03
+  P_ATOM_IS_NEW_MATH_BEYOND_CCM_SECTION_7_LEMMA_7_2_7_3: 0.97
+  P_SCHEDULE_CHANGE_MOVES_WALL_TO_FEWER_HIDING_PLACES: 0.72
 
 K8A:
   DOWNSTREAM_CONSUMER: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
-  ACTUAL_CONSUMER_REQUIREMENT: same normalized finite-ground family converges locally uniformly to centeredXi
+  ACTUAL_CONSUMER_REQUIREMENT: >-
+    The same normalized finite-ground family converges locally uniformly to
+    centeredXi after the already separated trial-to-Xi leg.
   ORIGINAL_REQUESTED_OBJECT: abs(d2_m)<=C*T_m cofinally
-  ORIGINAL_OBJECT_IS: UNKNOWN
-  KNOWN_WEAKER_INTERFACES:
-    - direct same-family compact transform error tending to zero
-    - curvature remainder E_m=O(T_m) with independently controlled transfer moment
-    - wide-schedule projective tracking with independently proved cofinal gap supplier
+  ORIGINAL_OBJECT_IS: NOT_NECESSARY
+  KNOWN_WEAKER_INTERFACE: FiniteGroundTransformToCCMTrialLocallyUniform
   FAILURE_TYPE: NO_DERIVATION
   EPISTEMIC_STATUS: RESEARCH_DEBT
-  NOVELTY_AXIS: source-specific second-even Feshbach cancellation
+  NOVELTY_AXIS: source-specific cofinal bottom-spectral selection in compact P59 norm
 
 CLOSES:
   - FULLCHAIN_BOOKKEEPING_SEARCH
 OPENS: []
+
 PROGRESS_CLASS: REPRESENTATION_PROGRESS
 COGNITIVE_OPERATOR: MINIMAL_LEMMA
 ROUTE_SCORE: 5
+
 ROUTE: CHALLENGER_NOT_RH
 BUS_010: VOID
 PX_RH_CLAIM: NOT_MADE
@@ -92,93 +174,183 @@ RH_CLAIM: false
 
 ## ROUTE MAP
 
-### S1 — exact finite ground/trial second-jet difference
+### S1 — exact finite P59 second-jet dictionary
 
-**(a)** For every `L>0`, `N`, and real even rows `v,q` with nonzero centre,
+**(a) Statement.** For every `L>0`, `N`, and even real rows `v,q` with
+`v(0)q(0)≠0`,
 \[
-\kappa(F_v)-\kappa(F_q)=\frac{L^2}{2\pi^2}\sum_{k=1}^N\frac{v_k/v_0-q_k/q_0}{k^2}.
+ \kappa(F_v)-\kappa(F_q)
+ =\frac{L^2}{2\pi^2}\sum_{k=1}^{N}
+   \frac{v_k/v_0-q_k/q_0}{k^2}.
 \]
-**(b)** `THEOREM`: `Proposition59GroundTrialSecondJetDifference.lean`, `proposition59_ground_trial_second_jet_difference_real`.
-**(c)** Inputs: exact Proposition-59 zero/second jets.
-**(d)** Preserves finite carrier, evenness, centre normalization and transform convention; drops spectral and asymptotic information.
-**(e) FIRST_FAILURE:** the identity supplies no cofinal bound on the normalized coefficient difference.
-**(f) Discriminator:** certified recomputation of measured `delta_m`; disjoint enclosures give `SECOND_JET_OBJECT_MISMATCH`.
+
+**(b) Type.** `THEOREM`:
+`q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59GroundTrialSecondJetDifference.lean`,
+Git blob `7cbd0dc6742266e2193e25f22fc4146f47da65a7`,
+theorem `proposition59_ground_trial_second_jet_difference_real`.
+
+**(c) Inputs.** Exact Proposition-59 value and second derivative at zero.
+
+**(d) K3 cargo.** Preserves the finite carrier, coordinate
+`-Lz/(2π)`, evenness and centre normalization. Drops all spectral selection,
+compact topology and cofinal-rate information.
+
+**(e) FIRST_FAILURE.** An equality of second jets does not control the whole
+function on any compact and supplies no bound on its right-hand side.
+
+**(f) Discriminator.** Recompute both sides with certified intervals.
+Pre-registered failure number: relative residual `>10^-30` is
+`SECOND_JET_OBJECT_OR_NORMALIZATION_MISMATCH`.
 
 ### S2 — exact ladder/Feshbach block algebra
 
-**(a)** For finite symmetric `K`, orthonormal `B`, exact eigenpair `Ku=lambda u`, `p=B^T u`, `r=Qu`:
+**(a) Statement.** For every finite symmetric `K`, orthonormal ladder synthesis
+`B`, and exact eigenpair `Ku=λu`, with `p=Bᵀu` and `r=Qu`,
 \[
-(A-\lambda I)p+Cr=0,\quad C^Tp+(D-\lambda I)r=0,
+ (A-\lambda I)p+Cr=0,\qquad
+ C^\mathsf Tp+(D-\lambda I)r=0.
 \]
-and under the exact complement inverse,
+Under the exact complement inverse,
 \[
-r=-(D-\lambda I)^{-1}C^Tp,
-\quad [A-C(D-\lambda I)^{-1}C^T]p=\lambda p.
+ r=-(D-\lambda I)^{-1}C^\mathsf Tp,\qquad
+ [A-C(D-\lambda I)^{-1}C^\mathsf T]p=\lambda p.
 \]
-**(b)** `THEOREM`: `P59XiLadderFeshbachRemainder.lean`.
-**(c)** Source finite matrix/eigenpair and ladder synthesis.
-**(d)** Preserves exact complement feedback; explicitly drops the false identification of the raw Ritz vector with the true in-ladder component.
-**(e) FIRST_FAILURE:** generic operator-norm control pays the inverse complement gap; no shelf theorem supplies scalar cancellation.
-**(f) Discriminator:** nested V3/V4/V8 remainder ratios. Raw-ladder closure is adverse if the normalized remainder does not decrease under nesting.
 
-### S3 — exact scalar remainder
+**(b) Type.** `THEOREM`:
+`q3.lean.aristotle/Q3/Proofs/RouteB/P59XiLadderFeshbachRemainder.lean`,
+Git blob `96a7b56eaa4377a890847df6b8dac40dc7046933`.
 
-**(a)**
+**(c) Inputs.** The source finite CCM matrix, its exact eigenpair and an
+orthonormal source-defined ladder.
+
+**(d) K3 cargo.** Preserves the full complement feedback and finite carrier.
+Drops no modes. It does not identify the true in-ladder vector with a raw Ritz
+vector and supplies no estimate on the inverse or its scalar component.
+
+**(e) FIRST_FAILURE.** Any generic operator-norm estimate pays the inverse
+complement gap. The shelf contains no source cancellation removing that scale.
+
+**(f) Discriminator.** Check the two projected equations and the reconstructed
+Feshbach equation. Pre-registered failure number: normalized residual
+`>10^-30` is `FESHBACH_OBJECT_OR_ORIENTATION_MISMATCH`.
+
+### S3 — audit of the proposed `d₂` reduction
+
+**(a) Statement.**
 \[
-d_{2,m,N}-d^{(3)}_{2,m,N}=\langle e_0,p_{m,N}-z^{(3)}_{2,m,N}\rangle.
+ d_{2,m,N}
+ =d^{(3)}_{2,m,N}
+ +\langle e_0,p_{m,N}-z^{(3)}_{2,m,N}\rangle .
 \]
-**(b)** `THEOREM`: `ladder_d2_exact_remainder` plus normalized/bounded companions.
-**(c)** S2 and coherent source second-mode orientation/projection.
-**(d)** Preserves the exact scalar overlap; supplies no smallness.
-**(e) FIRST_FAILURE:** 99.5% directional accuracy does not control `d2`; the directional plant already proves that failure mode.
-**(f) Discriminator:** pre-register `FESHBACH_REMAINDER_DOMINANT` if `abs(d2-d2^(3))>=0.75*abs(d2)` on at least three cached cells. Diagnostic only.
 
-### S4 — cofinal Feshbach y-component rate
+**(b) Type.** `THEOREM` for the equality; both asymptotic bounds below are
+`NEW-MATH`:
+\[
+ |d^{(3)}_{2,m,N(m)}|\le C_0T_{m,N(m)},\qquad
+ |\langle e_0,p-z^{(3)}_2\rangle|\le C_1T_{m,N(m)}.
+\]
 
-**(a)** `ATOM.EXACT_QUANTIFIER_FORM` above.
-**(b)** `NEW-MATH`: `P59_LADDER_FESHBACH_Y_COMPONENT_O_T_M`.
-**(c)** S1-S3, source CCM blocks, one precommitted roof-admissible schedule, no RH-conditional input.
-**(d)** Must preserve source family, normalization, second-even selector/projection, finite carrier and schedule. It may change representation to a scalar complement functional; it may not replace the true complement by a raw 3x3 surrogate or assume a uniform absolute gap.
-**(e) FIRST_FAILURE:** every generic bound of the Feshbach self-energy by operator norm reopens the collapsed gap. The missing structure is cancellation in the `e0/y_m` component.
-**(f) Discriminator:** use `ATOM.CACHE_DISCRIMINATOR`; exact refutation requires `ATOM.EXACT_REFUTER`.
+**(c) Inputs.** S2, coherent second-mode selection or its spectral-projection
+replacement, and the exact Xi-polynomial ladder.
 
-No reordering of S1-S3 creates S4: S1-S3 are identities, while S4 is a quantitative cofinal estimate. The D2 adjudication already isolates this missing term and finds no cited second-eigenvector asymptotic for this exact object.
+**(d) K3 cargo.** Preserves the exact scalar overlap and separates raw
+compression from complement feedback. It drops neither term; deleting either
+one is a false proof.
 
-## SCHEDULE ESCAPE AUDIT
+**(e) FIRST_FAILURE.** The previous verdict promoted only the second bound.
+The first is separately unproved on the shelf. Hence that atom was not
+consumer-sufficient.
 
-Probe 22 materially changes the diagnosis at `(13,120)`: there the trial is an excellent ground proxy. It does not create `FULL_CHAIN`. A wide schedule requires two new cofinal suppliers: the roof/sameCofinalGuard schedule crosswalk and a source-specific saturation/complement-gap theorem. The `(23,110)` row is explicitly unsaturated and its Rayleigh value is quadrature-floor limited, so it cannot certify or kill a wide-schedule law.
+**(f) Discriminator.** Compute
+`D_m=|d2_3|/T` and `R_m=|d2-d2_3|/T`.
+Pre-register `TWO_RATE_FAILURE` if either ratio at `m=83` is at least
+`1.25` times its value at `m=43`, with coherent orientation and precision
+stability. This rejects the frozen decomposition, not the cofinal theorem.
+
+### S4 — unchanged consumer interface
+
+**(a) Statement.** `ATOM.EXACT_QUANTIFIER_FORM`.
+
+**(b) Type.** `NEW-MATH`:
+`FiniteGroundTransformToCCMTrialLocallyUniform`.
+
+**(c) Inputs.** The exact source bottom-ground transform and projected Ferrers
+trial transform on one common schedule. S1–S3 may be used, but are not mandatory
+and do not define the atom.
+
+**(d) K3 cargo.** Carries the same source object, anchor normalization, finite
+carrier, coordinate, topology and cofinal path into the downstream trial-to-Xi
+limit. It drops no mode and introduces no post-hoc schedule.
+
+**(e) FIRST_FAILURE.** The shelf contains identities and finite diagnostics,
+but no source-specific cofinal estimate in the compact P59 norm. Reordering
+identities cannot manufacture a limit.
+
+**(f) Discriminator.** `ATOM.CACHE_DISCRIMINATOR`. Exact refutation requires
+`ATOM.EXACT_REFUTER`.
 
 ## IRREDUCIBLE_ATOM
 
-**IRREDUCIBLE_ATOM — `P59_LADDER_FESHBACH_Y_COMPONENT_O_T_M`.**
+**IRREDUCIBLE_ATOM — `FiniteGroundTransformToCCMTrialLocallyUniform`.**
 
-The weakest jump-target is a scalar cancellation theorem for the `y_m/e0` Feshbach correction. An equivalent representation is the curvature-transfer remainder `E_m=O(T_m)` in `2*pi*d2=ell1*(alpha*M-E)`, provided the transfer moment is independently controlled. Neither is supplied by CCM §7 Lemma 7.2/7.3.
+The former `P59_LADDER_FESHBACH_Y_COMPONENT_O_T_M` is retained as one possible
+mechanism, not as the irreducible atom. It is too narrow: even a proof of that
+rate leaves the raw compressed second-coordinate rate unproved, and a wide
+schedule can attack the unchanged consumer without using the frozen 3×3 ladder.
 
 ## FINAL PROPOSAL
 
-Close the bookkeeping phase. Do not generate another wrapper around S1-S3. The next phase is mechanism-only.
+Close the bookkeeping phase at the unchanged G3 consumer. Do not write another
+wrapper and do not declare either `d₂=O(T)` or the Feshbach subterm necessary.
 
-Pre-register before mechanism work:
-```yaml
-P_FESHBACH_E0_HAS_SOURCE_CANCELLATION_BEYOND_OPERATOR_NORM: 0.42
-P_CURVATURE_E_M_REPRESENTATION_BEATS_RAW_RESOLVENT: 0.58
-```
+The cheapest belief-changing test is the direct compact P59 ground/trial
+difference on `K0` from the already cached rows. It tests what the roof consumes,
+not a proxy. If it rejects `N=m`, compare the same functional at `(13,120)`; this
+classifies whether width removes finite truncation error. It still cannot certify
+a cofinal wide schedule.
+
+Future mechanism work must choose one registered representation above. The
+current preference is R1 only if it attacks the **full** second-mode projection;
+otherwise R2 is cleaner than a raw inverse-gap Feshbach estimate.
 
 ## STRONGEST ATTACK
 
-The strongest objection is `(13,120)`: perhaps the atom is an `N=m` artifact. That remains possible. But one saturated cell does not prove a cofinal schedule, and the second wide cell is unsaturated. Thus wide `N(m)` is a candidate re-representation, not a chain on the current shelf.
+A reviewer can object that `FiniteGroundTransformToCCMTrialLocallyUniform` is a
+wall name, not an indivisible theorem. Correct: “irreducible” here is relative
+to the frozen shelf. The point is not that no finer decomposition exists. The
+point is that every surviving decomposition needs a new source-specific
+cofinal estimate, while the shelf supplies only exact identities.
 
-If the scalar Feshbach route stalls, retain exactly two re-representations:
-
-1. **Curvature transport:** prove `E_m=O(T_m)` with independent transfer-moment control. Kill-power 9/10; estimated proof cost 7/10.
-2. **Wide-schedule ground graph:** precommit `N(m)`, prove sameCofinalGuard plus source-specific saturation/complement-gap control, then derive projective tracking. Kill-power 10/10; estimated proof cost 9/10.
+The stronger objection is the saturated cell `(13,120)`. It shows the atom may
+be easy on a wide schedule. It does not put the theorem on the shelf: one cell
+does not provide `sameCofinalGuard`, a cofinal saturation law, or a compact
+evaluation rate. The second wide cell in the request is explicitly unsaturated
+and instrument-limited.
 
 ## META CLOSEOUT
 
-- **What became smaller?** Goal 058 bookkeeping collapsed to one scalar cofinal rate: the `e0/y_m` component of the Feshbach correction.
-- **What was killed?** Reordering the current exact identities as a complete rate proof; Probe 22 as a self-sufficient wide-schedule proof.
-- **What must not be tried again?** Raw V3/V4 as supplier; Rayleigh-only sublevel envelopes; generic inverse-gap operator-norm bounds; any §2-killed mechanism without a new invariant.
-- **Current smallest named gap:** `P59_LADDER_FESHBACH_Y_COMPONENT_O_T_M`.
-- **Next cheapest decisive test:** nested-ladder scalar remainder ledger on existing caches, with the pre-registered adverse threshold above.
-- **Prediction fates:** observer predictions scored in the YAML header; no retroactive repair.
-- **Memory entry:** exact finite identities do not create a cofinal rate; the unresolved information is one source-specific scalar complement cancellation.
+- **What became smaller?** The target is the exact G3 compact consumer, with
+  all representation-specific subterms demoted below it.
+- **What was killed?** The claim that the Feshbach y-component alone is the
+  single sufficient atom.
+- **What must not be tried again?** Proving only one summand of `d₂`; treating
+  a finite wide cell as a cofinal law; generic inverse-gap operator norms.
+- **Current smallest named gap?**
+  `FiniteGroundTransformToCCMTrialLocallyUniform`.
+- **Next cheapest decisive test?** Direct compact P59 error on `K0`, using
+  existing cached ground/trial rows and the registered `0.90` nondecay rule.
+- **Prior predictions?** Scored in the YAML without retroactive repair.
+- **Memory entry?**
+```yaml
+iteration:
+  target: REQ-2026-09-04-FULLCHAIN
+  status: PROGRESS
+  failed_strategy: representation-specific Feshbach subterm promoted as atom
+  cognitive_operator_used: MINIMAL_LEMMA
+  new_gap_name: FiniteGroundTransformToCCMTrialLocallyUniform
+  invariant_learned: atom must be sufficient for the unchanged consumer across admissible schedules
+  forbidden_future_move: close only one decomposition summand and call the wall closed
+  next_decisive_test: direct compact P59 ground/trial error ledger on K0
+  progress_class: REPRESENTATION_PROGRESS
+  route_score: 5
+```
