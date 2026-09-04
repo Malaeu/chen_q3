@@ -410,3 +410,12 @@ Script: `docs/routeB_bus/phase5_codex/r2_second_jet.py`. DIAGNOSTIC_NEVER_A_PROO
 Fates (2026-09-04): P_TRIAL_JET_WITHIN_T CONFIRMED (|α_q|/T = 0.127, 0.083, 0.057); P_GROUND_TRIAL_JET_GAP_WITHIN_T CONFIRMED
 (δ/T = 0.353, 0.381, 0.389); P_TRIAL_JET_WORSE_THAN_GROUND REFUTED. New law: κ(q_m) = κ_X − a_m/m, a_∞ = 0.019892 ≈ 1/(16π).
 m=83 added (16:50): δ/T = 0.389, α_q·m = −0.01996, a_83 = 0.0199568 vs derived 0.0199564. Laws hold on four production cells.
+
+## Addendum 22 — Probe 20: S-lemma envelope of the curvature functional on the Rayleigh sublevel set (judge's R1, TRIALJET) (2026-09-04 night)
+
+Object: `S_ε = {v even, v_0 = 1, vᵀKv ≤ ε}` (even block K); `κ(v) = L²/24 + (L²/2π²)Σ_{k≥1} (v_k/√2)/k²` linear on the anchor plane.
+Closed form: centre `v_c = K⁻¹e_0/(e_0ᵀK⁻¹e_0)`, `ε_min = 1/(e_0ᵀK⁻¹e_0)`, half-width `W(ε) = √((ε − ε_min)·g)`, `g = ℓ⊥ᵀ(PKP)⁺ℓ⊥`.
+Levels: ε_q = R(q)/q_0² (trial), ε = λ₂ (second eigenvalue, anchor-scaled), ε = 2ε_min. Compare W with T_m and with |δ_m|.
+Predictions: `P_ENVELOPE_WIDTH_AT_TRIAL_LEVEL_GG_T` 0.90 (W(ε_q) ≥ 10·T on every cell); `P_WIDTH_AT_LAMBDA2_LEVEL_GG_T` 0.70;
+`P_CENTRE_CURVATURE_NEAR_GROUND` 0.80 (|κ(v_c) − κ(G)| ≤ T). DIAGNOSTIC_NEVER_A_PROOF.
+Fates (night): all three CONFIRMED — W(ε_q) = 3e3..7e40, W(λ₂ level) = 0.078 const, centre = ground exactly. R1 dead as a Rayleigh sublevel.
