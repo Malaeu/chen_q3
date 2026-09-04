@@ -963,7 +963,8 @@ Route B отношения не имеет. Не поставщик.
 - `AUDIT.md` — воспроизводимые команды, число `sorry` (2, только в Challenge), 0 `axiom`, `#print axioms` для 7 теорем, время;
 - `formalization.yaml` v0.4 — метаданные реестра Palomar; CI `comparator-check.sh` с пинами comparator/lean4export/nanoda/landrun;
 - `summary.pdf` — гид с «Statements to audit»: что читатель обязан проверить глазами (что Challenge говорит то, что задумано).
-**Что взять себе (CLOSES `comparator-gap`):** сделать для Route B ту же раскладку: `Challenge.lean` с потребителем
+**Полка (спрошено после первого варианта записи):** `comparator-lite` уже существует (`docs/cartographer/comparator/`, `fit.py`, пилот 12.08: Challenge PASS / Solution PASS / SolutionR6 REJECT) — локальный type-fit без внешнего comparator и без nanoda. Поэтому не «взять с нуля», а ДОРАСТИТЬ:
+**Что дорастить (CLOSES `comparator-gap`):** для Route B та же раскладка: `Challenge.lean` с потребителем
 `rh_of_real_zero_family_tendsto_centeredXi` и конечными теоремами (P59-мост, знакопеременная кривизна, оболочки, плант,
 полиномиальный принцип аргумента) только на Mathlib-определениях; `Solution.lean`; `comparator.json`; `AUDIT.md`;
 `formalization.yaml`. Это превращает «72 axiom-объявления никем не сверяются» в машинную проверку. Наш toolchain 4.26
