@@ -1,0 +1,39 @@
+# SESSION_PROTOKOLL 2026-09-05 (ночь 04→05.09) — Linux-Claude, Goal 058
+
+## Kontext
+Продолжение 2026-09-04. Судья на GPT-6 Astra. Формат батчей: закрытие (FULL_CHAIN | IRREDUCIBLE_ATOM) и доказательство (WEILPROOF) — оба в проектном CLAUDE.md.
+
+## Erledigt
+1. FULLCHAIN (660a072c): IRREDUCIBLE_ATOM = потребитель G3; фаза бухгалтерии закрыта. Probe 23: компактный дефект на K0 = |δ_m|.
+2. R3 (широкие окна): префлайт + мой аудит по тексту CCM (Cor 3.7, (3.27), Cor 3.8, Prop 3.4): посылка `ε_∞ ≤ C` ⇒ RH. Судья: R3 на карантине.
+3. SIGNFREE (0cee3192): `(P−)` RH-эквивалентно (второй уровень ограничен сверху); три моих утверждения убиты; Lean `P59SignFreeRitz.lean` зелёный.
+4. Чжу 2608.24827: карточка, разбор в CHAT_DIGESTS; закон Ландау–Видома воспроизводит наши дна; фронт сертификатов m = 4.95; барьер Thm 1.4.
+5. WEILPROOF (b8b0dc95, запрос написан судьёй): PARTIAL_PROOF_WITH_PRECISE_REMAINDER — точные разложения (1),(2)(3),(5),(8),(9), контрпример (NEG),
+   восстановление фиксированного теста (REC); стена = (GAP-ARITH)/(GAP-GRAM). Тождества проверены мной на 4e-18. Lean `WeilGramMinusShift.lean` зелёный.
+6. Probe 24: расклад (9) на дне m-независим (доля 𝒮 0.60); на Ξ-строке `𝒥_∞ = 0.5706416`, `𝒮_∞ = 0.801542`, сумма = d_A (5e-11) — явная формула на
+   каноническом тесте; поправка Чебышёва на Ξ несётся простыми ≤ 59.
+7. Насыщение m=43: `λ₁(43,460) = 1.73e-220`, тренд к полосе Чжу. Кэши (43,320), (43,344) при MAX_DEGREE 900 ещё считаются (юниты).
+8. Правила: батч закрытия и батч доказательства в CLAUDE.md; no-commit-trailers (нарушено 04.09, исправлено); вахта через Monitor.
+
+## Geprüft
+Все Lean-файлы — мной (lake env lean, q3_check, аксиомы). Тождества вердикта — mpmath против буквальной матрицы. Константа трала — слепой тест.
+
+## Versendet
+FULLCHAIN, SIGNFREE, PROVE (superseded), WEILPROOF (текст судьи, связан мной) — владелец вставлял. Все отвечены, кроме PROVE.
+
+## Offen — nächste Schritte
+- Батч XIDEV (очередь, OPEN): тождество `𝒥_∞ + 𝒮_∞ = d_A` из явной формулы; (GAP-ARITH) вокруг Ξ до второго порядка; контроль `𝒮(g)` через спад Фурье-образа.
+- Второй проход WEILPROOF из нового чата судьи может перезаписать файл вердикта — сверить с b8b0dc95.
+- Кэши (43,320), (43,344): `ε_∞(43)`, `p(43,344)` (предсказание живого чата `≤ 1e-7`, 0.67); скан насыщения m=43 до N ≈ 600 для полосы Чжу.
+- Lean-кроссволк (8) к буквальным entries CCM (предсказание судьи 0.85 — PENDING как Lean).
+
+## Wichtige Fakten
+`d_A = γ + log 8π + π/2 − 4 = 1.372178`; `c_A = 5.372178`; `𝒥_∞(Ξ) = 0.5706416`; `𝒮_∞(Ξ) = 0.801542`; `µ` при λ² = 13, 23: 3.484e-59, 1.828e-112;
+11 Lean-файлов фронта KERNEL_GREEN; route score 4.
+
+## Dateien
+- /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/Progress_Log.md
+- /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_DIRECT_WEIL_SOURCE_PROOF_2026-09-04.md
+- /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/WALL_OBJECT_CARD_2026-09-03.md
+- /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/q3.lean.aristotle/Q3/Proofs/RouteB/WeilGramMinusShift.lean
+- /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean
