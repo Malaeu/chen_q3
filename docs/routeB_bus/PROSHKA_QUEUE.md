@@ -14,9 +14,10 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-04-OVERLAP · Goal 058: second-mode overlap d2 = <y,u2> = O(1/L^2) as the atom in pure l^2; anchor product flat (correction to ONESHAPE); Euler-Maclaurin mechanism without a gap · OPEN
+## REQ-2026-09-04-OVERLAP · Goal 058: second-mode overlap d2 = <y,u2> = O(1/L^2) as the atom in pure l^2; anchor product flat (correction to ONESHAPE); Euler-Maclaurin mechanism without a gap · IN_REVIEW
 
-- `STATUS: OPEN`
+- `STATUS: IN_REVIEW`
+- Delivery observed 2026-09-04 (morning): owner pasted the one-line GitHub-locator instruction; judge accepted and is working.
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SECOND_MODE_OVERLAP_2026-09-04.txt`
 - Boundary: `GOAL058_SECOND_MODE_OVERLAP_OF_THE_XI_ROW`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
