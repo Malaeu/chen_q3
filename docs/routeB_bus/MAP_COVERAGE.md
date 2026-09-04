@@ -4,7 +4,7 @@
 `python3 docs/cartographer/map_coverage.py`. Рукописная карта — `MAP.md`, она
 описывает узлы маршрута; это приложение описывает **файлы**, и оно полное.
 
-Всего файлов: **390** · упомянуто в `MAP.md`: **25** · вне карты: **365** · без описания в шапке: **0**
+Всего файлов: **391** · упомянуто в `MAP.md`: **25** · вне карты: **366** · без описания в шапке: **0**
 
 «вне карты» не значит «лишний»: значит, что обходом карты файл не находится.
 Именно так 2026-08-11 был построен заново мост `ker ↔ eigenspace`, стоявший в
@@ -335,6 +335,7 @@
 | `MuntzV3/SymmetricTrialCrosswalk` | — | The positive-half representative of a symmetric source trial.  All Muntz | 0 |
 | `MuntzV3/Unconditional` | — | T5 with the v3 Mellin-analyticity hypothesis discharged by the compact | 0 |
 | `NormalizedTrackingRateTransfer` | — | Exact algebraic normalization identity. The arbitrary parameter later named | 0 |
+| `P59SignFreeRitz` | — | P59 sign-free Ritz inequality (GOAL058, REQ-2026-09-04-SIGNFREE) | 0 |
 | `P59SingleEndpointAtomCounterexample` | — | P59 single-endpoint atom — the kill plant | 0 |
 | `P59XiLadderFeshbachRemainder` | — | Goal 058 · P59 · exact Xi-ladder compression, block equations, Feshbach remainder | 0 |
 | `PerturbativeTrueGapLower` | — | If the lower true endpoint can move upward by `errLow`, the upper true | 0 |

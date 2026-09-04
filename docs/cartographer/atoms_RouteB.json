@@ -796,7 +796,7 @@
  },
  {
   "atom": "abs_of_nonneg",
-  "n_files": 82,
+  "n_files": 83,
   "files": [
    "CCMFiniteWeilLogBounds.lean",
    "D0Mode4ClassicalCarrierFromFiniteLimit.lean",
@@ -871,6 +871,7 @@
    "MuntzV3/R6BoundaryCellBridge.lean",
    "MuntzV3/RminusExactClass.lean",
    "MuntzV3/RplusExactClass.lean",
+   "P59SignFreeRitz.lean",
    "P59XiLadderFeshbachRemainder.lean",
    "ProlateModeRegularity.lean",
    "ProlateSourceRegularity.lean",
@@ -969,7 +970,7 @@
  },
  {
   "atom": "mul_comm",
-  "n_files": 78,
+  "n_files": 79,
   "files": [
    "AbstractCoboundaryLedger.lean",
    "CCMComplexTrialReflectionContaminationFloor.lean",
@@ -1036,6 +1037,7 @@
    "MuntzV3/R6BoundaryCellBridge.lean",
    "MuntzV3/RminusExactClass.lean",
    "MuntzV3/RplusExactClass.lean",
+   "P59SignFreeRitz.lean",
    "PhaseAlignmentRateTransfer.lean",
    "ProlateFiniteFourierNonvanishing.lean",
    "ProlateSourceRegularity.lean",
@@ -1049,6 +1051,88 @@
    "TwoSidedNormalizedBControl.lean",
    "WeightedRayleighProjectiveDefect.lean",
    "WindowEndpointBridge.lean"
+  ]
+ },
+ {
+  "atom": "sq_nonneg",
+  "n_files": 76,
+  "files": [
+   "CCMComplexTrialReflectionContaminationFloor.lean",
+   "CCMProposition59ComplexTrialComplementRayleigh.lean",
+   "CCMProposition59ComplexTrialResidualTracking.lean",
+   "CofinalSourceResidualGapTransformTailBudget.lean",
+   "D0HermitianNegativeIndexDrop.lean",
+   "D0HilbertBasisWeightedTail.lean",
+   "D0Mode4BackwardTailFiniteTailPosDef.lean",
+   "D0Mode4ClassicalCarrierHeadUpper.lean",
+   "D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean",
+   "D0Mode4FerrersEndpointFlux.lean",
+   "D0Mode4FerrersInteriorRegularity.lean",
+   "D0Mode4FerrersProlateDifferentialEquation.lean",
+   "D0Mode4HermitianNegativeCountStability.lean",
+   "D0Mode4JacobiHermitianTailRow.lean",
+   "D0Mode4JacobiMatchedNormalizedCoefficientRow.lean",
+   "D0Mode4JacobiTailContraction.lean",
+   "D0Mode4OrdinaryLegendreIntervalBound.lean",
+   "D0Mode4PSWFTailCoefficientSquareSummable.lean",
+   "D0PstarExactArchSymbolLogDomination.lean",
+   "D0PstarExactArchSymbolLowerBound.lean",
+   "D0PstarExplicitCCMLimitFourier.lean",
+   "D0PstarFirstOrderProjectionTailReceiver.lean",
+   "D0PstarPhysicalFourierEnergyControl.lean",
+   "D0PstarShiftedArchModeDomain.lean",
+   "D0PstarSourceArchHighFrequencyLowerBound.lean",
+   "D0PstarSourceArchHyperbolicKernel.lean",
+   "D0PstarSourceArchKernelModeProductL1.lean",
+   "D0PstarSourceCCMOddMassReflectionDefect.lean",
+   "D0PstarSourceLowBandModeDecay.lean",
+   "D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+   "D0PstarSourceWeilOddTailExplicitCoercivity.lean",
+   "D0PstarSourceWeilOddTailGraphOperator.lean",
+   "D0PstarSourceWeilOddTargetFloorSchurReduction.lean",
+   "D0PstarVModeLogWeightedL2.lean",
+   "G6N1ExplicitCCMLimitBeyondSourceWindowTail.lean",
+   "G6N1ExplicitCCMLimitMellinNormalization.lean",
+   "G6N1ExplicitCCMLimitMellinOuterTail.lean",
+   "G6N1ExplicitHDerivativeCombBudget.lean",
+   "G6N1FuchsSelectedEigenvalueDefectRate.lean",
+   "G6N1SelectedFerrersAbelPoissonL2.lean",
+   "G6N1SelectedFerrersCenterCoefficientFloor.lean",
+   "G6N1SelectedFerrersClosedSubstripMellinConvergence.lean",
+   "G6N1SelectedFerrersCommutatorResidualDefect.lean",
+   "G6N1SelectedFerrersDirectCylinderRate.lean",
+   "G6N1SelectedFerrersEdgeTopFluxConsumer.lean",
+   "G6N1SelectedFerrersFiniteCCMResidualSourceActionSplit.lean",
+   "G6N1SelectedFerrersFiniteCCMResidualVariance.lean",
+   "G6N1SelectedFerrersFixedKShiftedRootEnergy.lean",
+   "G6N1SelectedFerrersN2SourceScaledTailRate.lean",
+   "G6N1SelectedFerrersOddMassDecay.lean",
+   "G6N1SelectedFerrersOuterPolynomialDecay.lean",
+   "G6N1SelectedFerrersPacketVariation.lean",
+   "G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+   "G6N1SelectedFerrersPreAnchorDataInhabitant.lean",
+   "G6N1SelectedFerrersQuantitativeShiftedRootEnergy.lean",
+   "G6N1SelectedFerrersScaleBandwidthClosure.lean",
+   "G6N1SelectedFerrersTrialNormalizerClosure.lean",
+   "G6N1SelectedFerrersW5EndpointValueRate.lean",
+   "G6N1SelectedFerrersW5JumpSeamRate.lean",
+   "G6N1SelectedFerrersW5L1MassRate.lean",
+   "G6N1SelectedFerrersW5RateAssembly.lean",
+   "G6N1SelectedFerrersWeightedResidualComplementFloor.lean",
+   "G6N1SelectedFerrersZeroMassCylinderPacket.lean",
+   "G6N1SpheroidalCrosswalkForward.lean",
+   "G6N1SturmDefectTruncatedEnergy.lean",
+   "G6N1SturmWeightedConsumerNonTopRate.lean",
+   "H2aPenaltyCoercivity.lean",
+   "HermitianUnitMinimumEigenpair.lean",
+   "P59SignFreeRitz.lean",
+   "ProlateActualModeMuntzRegularity.lean",
+   "Proposition59AlternatingLatticeCurvature.lean",
+   "Proposition59EntireTransform.lean",
+   "Proposition59ExplicitProductCurvatureBridge.lean",
+   "Proposition59ReciprocalModeWeightedShell.lean",
+   "SpheroidalSourceHighMode.lean",
+   "SpheroidalSourceMain.lean"
   ]
  },
  {
@@ -1133,89 +1217,8 @@
   ]
  },
  {
-  "atom": "sq_nonneg",
-  "n_files": 75,
-  "files": [
-   "CCMComplexTrialReflectionContaminationFloor.lean",
-   "CCMProposition59ComplexTrialComplementRayleigh.lean",
-   "CCMProposition59ComplexTrialResidualTracking.lean",
-   "CofinalSourceResidualGapTransformTailBudget.lean",
-   "D0HermitianNegativeIndexDrop.lean",
-   "D0HilbertBasisWeightedTail.lean",
-   "D0Mode4BackwardTailFiniteTailPosDef.lean",
-   "D0Mode4ClassicalCarrierHeadUpper.lean",
-   "D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean",
-   "D0Mode4FerrersEndpointFlux.lean",
-   "D0Mode4FerrersInteriorRegularity.lean",
-   "D0Mode4FerrersProlateDifferentialEquation.lean",
-   "D0Mode4HermitianNegativeCountStability.lean",
-   "D0Mode4JacobiHermitianTailRow.lean",
-   "D0Mode4JacobiMatchedNormalizedCoefficientRow.lean",
-   "D0Mode4JacobiTailContraction.lean",
-   "D0Mode4OrdinaryLegendreIntervalBound.lean",
-   "D0Mode4PSWFTailCoefficientSquareSummable.lean",
-   "D0PstarExactArchSymbolLogDomination.lean",
-   "D0PstarExactArchSymbolLowerBound.lean",
-   "D0PstarExplicitCCMLimitFourier.lean",
-   "D0PstarFirstOrderProjectionTailReceiver.lean",
-   "D0PstarPhysicalFourierEnergyControl.lean",
-   "D0PstarShiftedArchModeDomain.lean",
-   "D0PstarSourceArchHighFrequencyLowerBound.lean",
-   "D0PstarSourceArchHyperbolicKernel.lean",
-   "D0PstarSourceArchKernelModeProductL1.lean",
-   "D0PstarSourceCCMOddMassReflectionDefect.lean",
-   "D0PstarSourceLowBandModeDecay.lean",
-   "D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
-   "D0PstarSourceWeilOddTailExplicitCoercivity.lean",
-   "D0PstarSourceWeilOddTailGraphOperator.lean",
-   "D0PstarSourceWeilOddTargetFloorSchurReduction.lean",
-   "D0PstarVModeLogWeightedL2.lean",
-   "G6N1ExplicitCCMLimitBeyondSourceWindowTail.lean",
-   "G6N1ExplicitCCMLimitMellinNormalization.lean",
-   "G6N1ExplicitCCMLimitMellinOuterTail.lean",
-   "G6N1ExplicitHDerivativeCombBudget.lean",
-   "G6N1FuchsSelectedEigenvalueDefectRate.lean",
-   "G6N1SelectedFerrersAbelPoissonL2.lean",
-   "G6N1SelectedFerrersCenterCoefficientFloor.lean",
-   "G6N1SelectedFerrersClosedSubstripMellinConvergence.lean",
-   "G6N1SelectedFerrersCommutatorResidualDefect.lean",
-   "G6N1SelectedFerrersDirectCylinderRate.lean",
-   "G6N1SelectedFerrersEdgeTopFluxConsumer.lean",
-   "G6N1SelectedFerrersFiniteCCMResidualSourceActionSplit.lean",
-   "G6N1SelectedFerrersFiniteCCMResidualVariance.lean",
-   "G6N1SelectedFerrersFixedKShiftedRootEnergy.lean",
-   "G6N1SelectedFerrersN2SourceScaledTailRate.lean",
-   "G6N1SelectedFerrersOddMassDecay.lean",
-   "G6N1SelectedFerrersOuterPolynomialDecay.lean",
-   "G6N1SelectedFerrersPacketVariation.lean",
-   "G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
-   "G6N1SelectedFerrersPreAnchorDataInhabitant.lean",
-   "G6N1SelectedFerrersQuantitativeShiftedRootEnergy.lean",
-   "G6N1SelectedFerrersScaleBandwidthClosure.lean",
-   "G6N1SelectedFerrersTrialNormalizerClosure.lean",
-   "G6N1SelectedFerrersW5EndpointValueRate.lean",
-   "G6N1SelectedFerrersW5JumpSeamRate.lean",
-   "G6N1SelectedFerrersW5L1MassRate.lean",
-   "G6N1SelectedFerrersW5RateAssembly.lean",
-   "G6N1SelectedFerrersWeightedResidualComplementFloor.lean",
-   "G6N1SelectedFerrersZeroMassCylinderPacket.lean",
-   "G6N1SpheroidalCrosswalkForward.lean",
-   "G6N1SturmDefectTruncatedEnergy.lean",
-   "G6N1SturmWeightedConsumerNonTopRate.lean",
-   "H2aPenaltyCoercivity.lean",
-   "HermitianUnitMinimumEigenpair.lean",
-   "ProlateActualModeMuntzRegularity.lean",
-   "Proposition59AlternatingLatticeCurvature.lean",
-   "Proposition59EntireTransform.lean",
-   "Proposition59ExplicitProductCurvatureBridge.lean",
-   "Proposition59ReciprocalModeWeightedShell.lean",
-   "SpheroidalSourceHighMode.lean",
-   "SpheroidalSourceMain.lean"
-  ]
- },
- {
   "atom": "norm_nonneg",
-  "n_files": 74,
+  "n_files": 75,
   "files": [
    "AmbientResidualEnvelopeTransfer.lean",
    "CCMComplexTrialReflectionContaminationFloor.lean",
@@ -1287,10 +1290,90 @@
    "MuntzV3/EStarMellinAbsolutePayload.lean",
    "MuntzV3/R6BoundaryCellBridge.lean",
    "NormalizedTrackingRateTransfer.lean",
+   "P59SignFreeRitz.lean",
    "PhaseAlignmentRateTransfer.lean",
    "ProlateSourceRegularity.lean",
    "Proposition59ExplicitProductCurvatureBridge.lean",
    "WeightedProjectiveEvaluationTransfer.lean"
+  ]
+ },
+ {
+  "atom": "lt_of_lt_of_le",
+  "n_files": 73,
+  "files": [
+   "CCMFiniteWeilLogBounds.lean",
+   "D0CanonicalApproximation.lean",
+   "D0KTrialStage1.lean",
+   "D0LogWindowMeasureTransport.lean",
+   "D0LogWindowVNMCompletenessBridge.lean",
+   "D0Mode4BackwardTailFiniteSchurCrosswalk.lean",
+   "D0Mode4BackwardTailFiniteTailPosDef.lean",
+   "D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+   "D0Mode4DLMF3035EvenL2ToFiniteLimitSpectrum.lean",
+   "D0Mode4FerrersProlateDifferentialEquation.lean",
+   "D0Mode4FerrersSingularEndpointRegularity.lean",
+   "D0Mode4HermitianNegativeCountStability.lean",
+   "D0Mode4HermitianSchurTailEnvelopes.lean",
+   "D0Mode4JacobiMatchedNormalizedCoefficientRow.lean",
+   "D0Mode4JacobiRightTailContinuity.lean",
+   "D0Mode4JacobiRightTailMonotonicity.lean",
+   "D0Mode4JacobiRootFunction.lean",
+   "D0Mode4JacobiSchurContinuant.lean",
+   "D0Mode4JacobiTailContraction.lean",
+   "D0Mode4SchurHermitianSymmetrization.lean",
+   "D0Mode4SchurRootQuadraticCrossing.lean",
+   "D0PstarActualProlateEStarMemLp.lean",
+   "D0PstarExactArchSymbolLogDomination.lean",
+   "D0PstarExactArchSymbolLowerBound.lean",
+   "D0PstarExplicitCCMLimitFourier.lean",
+   "D0PstarFullMellinGwinCrosswalk.lean",
+   "D0PstarInversionCoefficientCrosswalk.lean",
+   "D0PstarMuntzGalerkinResidualCrosswalk.lean",
+   "D0PstarProjectedMellinCoordinate.lean",
+   "D0PstarSourceArchDiagonalRegularizerEndpointLedger.lean",
+   "D0PstarSourceArchHighFrequencyLowerBound.lean",
+   "D0PstarSourceLogWindowFourierIntegralCrosswalk.lean",
+   "D0PstarSourceLowBandModeDecay.lean",
+   "D0PstarSourcePrimeModePairing.lean",
+   "D0PstarW02EndpointFunctionals.lean",
+   "D0SubcriticalWeightedRateIntegral.lean",
+   "G6N1CenterNormalizedSatz9RateTransfer.lean",
+   "G6N1CylinderTransportL1Budget.lean",
+   "G6N1ExplicitCCMLimitMellinNormalization.lean",
+   "G6N1ExplicitCCMLimitMellinOuterTail.lean",
+   "G6N1ExplicitHDerivativeCombBudget.lean",
+   "G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+   "G6N1SelectedFerrersAbelPoissonL2.lean",
+   "G6N1SelectedFerrersCenterCoefficientFloor.lean",
+   "G6N1SelectedFerrersClosedSubstripMellinConvergence.lean",
+   "G6N1SelectedFerrersFiniteAssetBank.lean",
+   "G6N1SelectedFerrersFiniteCCMResidualSourceActionSplit.lean",
+   "G6N1SelectedFerrersFixedKShiftedRootEnergy.lean",
+   "G6N1SelectedFerrersMidpointDeltaEnvelope.lean",
+   "G6N1SelectedFerrersN2CompactDecayAssembly.lean",
+   "G6N1SelectedFerrersOddMassDecay.lean",
+   "G6N1SelectedFerrersPacketVariation.lean",
+   "G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+   "G6N1SelectedFerrersPreAnchorDataInhabitant.lean",
+   "G6N1SelectedFerrersTrialNormalizerClosure.lean",
+   "G6N1SelectedFerrersW5DerivativeBudgetRate.lean",
+   "G6N1SelectedFerrersW5EndpointValueRate.lean",
+   "G6N1SelectedFerrersW5JumpSeamRate.lean",
+   "G6N1SelectedFerrersW5L1MassRate.lean",
+   "G6N1SelectedFerrersW5RateAssembly.lean",
+   "G6N1SelectedFerrersWeightedResidualComplementFloor.lean",
+   "G6N1SpheroidalCrosswalkForward.lean",
+   "G6N1SturmWeightedConsumerNonTopRate.lean",
+   "G6N1SturmWeightedEnergyIdentity.lean",
+   "MontelNormalFamilies.lean",
+   "MuntzV3/GwinExactClass.lean",
+   "MuntzV3/HabsExactClass.lean",
+   "MuntzV3/RminusExactClass.lean",
+   "MuntzV3/RplusExactClass.lean",
+   "P59SignFreeRitz.lean",
+   "P59SingleEndpointAtomCounterexample.lean",
+   "SpheroidalSourceHighMode.lean",
+   "SpheroidalSourceMain.lean"
   ]
  },
  {
@@ -1373,84 +1456,6 @@
   ]
  },
  {
-  "atom": "lt_of_lt_of_le",
-  "n_files": 72,
-  "files": [
-   "CCMFiniteWeilLogBounds.lean",
-   "D0CanonicalApproximation.lean",
-   "D0KTrialStage1.lean",
-   "D0LogWindowMeasureTransport.lean",
-   "D0LogWindowVNMCompletenessBridge.lean",
-   "D0Mode4BackwardTailFiniteSchurCrosswalk.lean",
-   "D0Mode4BackwardTailFiniteTailPosDef.lean",
-   "D0Mode4ClassicalCarrierFromFiniteLimit.lean",
-   "D0Mode4DLMF3035EvenL2ToFiniteLimitSpectrum.lean",
-   "D0Mode4FerrersProlateDifferentialEquation.lean",
-   "D0Mode4FerrersSingularEndpointRegularity.lean",
-   "D0Mode4HermitianNegativeCountStability.lean",
-   "D0Mode4HermitianSchurTailEnvelopes.lean",
-   "D0Mode4JacobiMatchedNormalizedCoefficientRow.lean",
-   "D0Mode4JacobiRightTailContinuity.lean",
-   "D0Mode4JacobiRightTailMonotonicity.lean",
-   "D0Mode4JacobiRootFunction.lean",
-   "D0Mode4JacobiSchurContinuant.lean",
-   "D0Mode4JacobiTailContraction.lean",
-   "D0Mode4SchurHermitianSymmetrization.lean",
-   "D0Mode4SchurRootQuadraticCrossing.lean",
-   "D0PstarActualProlateEStarMemLp.lean",
-   "D0PstarExactArchSymbolLogDomination.lean",
-   "D0PstarExactArchSymbolLowerBound.lean",
-   "D0PstarExplicitCCMLimitFourier.lean",
-   "D0PstarFullMellinGwinCrosswalk.lean",
-   "D0PstarInversionCoefficientCrosswalk.lean",
-   "D0PstarMuntzGalerkinResidualCrosswalk.lean",
-   "D0PstarProjectedMellinCoordinate.lean",
-   "D0PstarSourceArchDiagonalRegularizerEndpointLedger.lean",
-   "D0PstarSourceArchHighFrequencyLowerBound.lean",
-   "D0PstarSourceLogWindowFourierIntegralCrosswalk.lean",
-   "D0PstarSourceLowBandModeDecay.lean",
-   "D0PstarSourcePrimeModePairing.lean",
-   "D0PstarW02EndpointFunctionals.lean",
-   "D0SubcriticalWeightedRateIntegral.lean",
-   "G6N1CenterNormalizedSatz9RateTransfer.lean",
-   "G6N1CylinderTransportL1Budget.lean",
-   "G6N1ExplicitCCMLimitMellinNormalization.lean",
-   "G6N1ExplicitCCMLimitMellinOuterTail.lean",
-   "G6N1ExplicitHDerivativeCombBudget.lean",
-   "G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
-   "G6N1SelectedFerrersAbelPoissonL2.lean",
-   "G6N1SelectedFerrersCenterCoefficientFloor.lean",
-   "G6N1SelectedFerrersClosedSubstripMellinConvergence.lean",
-   "G6N1SelectedFerrersFiniteAssetBank.lean",
-   "G6N1SelectedFerrersFiniteCCMResidualSourceActionSplit.lean",
-   "G6N1SelectedFerrersFixedKShiftedRootEnergy.lean",
-   "G6N1SelectedFerrersMidpointDeltaEnvelope.lean",
-   "G6N1SelectedFerrersN2CompactDecayAssembly.lean",
-   "G6N1SelectedFerrersOddMassDecay.lean",
-   "G6N1SelectedFerrersPacketVariation.lean",
-   "G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
-   "G6N1SelectedFerrersPreAnchorDataInhabitant.lean",
-   "G6N1SelectedFerrersTrialNormalizerClosure.lean",
-   "G6N1SelectedFerrersW5DerivativeBudgetRate.lean",
-   "G6N1SelectedFerrersW5EndpointValueRate.lean",
-   "G6N1SelectedFerrersW5JumpSeamRate.lean",
-   "G6N1SelectedFerrersW5L1MassRate.lean",
-   "G6N1SelectedFerrersW5RateAssembly.lean",
-   "G6N1SelectedFerrersWeightedResidualComplementFloor.lean",
-   "G6N1SpheroidalCrosswalkForward.lean",
-   "G6N1SturmWeightedConsumerNonTopRate.lean",
-   "G6N1SturmWeightedEnergyIdentity.lean",
-   "MontelNormalFamilies.lean",
-   "MuntzV3/GwinExactClass.lean",
-   "MuntzV3/HabsExactClass.lean",
-   "MuntzV3/RminusExactClass.lean",
-   "MuntzV3/RplusExactClass.lean",
-   "P59SingleEndpointAtomCounterexample.lean",
-   "SpheroidalSourceHighMode.lean",
-   "SpheroidalSourceMain.lean"
-  ]
- },
- {
   "atom": "mul_zero",
   "n_files": 71,
   "files": [
@@ -1529,7 +1534,7 @@
  },
  {
   "atom": "mul_le_mul_of_nonneg_right",
-  "n_files": 69,
+  "n_files": 70,
   "files": [
    "CCMComplexTrialReflectionContaminationFloor.lean",
    "CCMProposition59ComplexTrialComplementSpectral.lean",
@@ -1593,6 +1598,7 @@
    "MuntzV3/R6BoundaryCellBridge.lean",
    "MuntzV3/RminusExactClass.lean",
    "MuntzV3/RplusExactClass.lean",
+   "P59SignFreeRitz.lean",
    "Proposition59AlternatingLatticeCurvature.lean",
    "Proposition59EntireTransform.lean",
    "Proposition59ExplicitProductCurvatureBridge.lean",
@@ -1604,7 +1610,7 @@
  },
  {
   "atom": "Finset.sum_congr",
-  "n_files": 66,
+  "n_files": 67,
   "files": [
    "CCMFiniteWeilCell13N2ClassCrosswalk.lean",
    "CCMFiniteWeilCenterSpectralNormalForm.lean",
@@ -1660,6 +1666,7 @@
    "Goal058PolarizedVolterra.lean",
    "H2aPenaltyCoercivity.lean",
    "LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
+   "P59SignFreeRitz.lean",
    "Proposition59AlternatingLatticeCurvature.lean",
    "Proposition59AnchoredSecondModeOverlap.lean",
    "Proposition59EntireTransform.lean",
@@ -1819,7 +1826,7 @@
  },
  {
   "atom": "Finset.mul_sum",
-  "n_files": 61,
+  "n_files": 62,
   "files": [
    "CCMComplexTrialReflectionContaminationFloor.lean",
    "CCMFiniteWeilCenterSpectralNormalForm.lean",
@@ -1870,6 +1877,7 @@
    "HermitianUnitMinimumEigenpair.lean",
    "LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
    "MuntzV3/R6BoundaryCellBridge.lean",
+   "P59SignFreeRitz.lean",
    "Proposition59AlternatingLatticeCurvature.lean",
    "Proposition59AnchoredSecondModeOverlap.lean",
    "Proposition59EntireTransform.lean",
@@ -1882,6 +1890,73 @@
    "RelativeRitzFinite.lean",
    "WeightedRayleighProjectiveDefect.lean",
    "WeightedSpectralTempleCore.lean"
+  ]
+ },
+ {
+  "atom": "ne_of_gt",
+  "n_files": 61,
+  "files": [
+   "CCMFiniteWeilCell13N2NonintegralConstantNormalForm.lean",
+   "CCMFiniteWeilCell13N2PrimeKernelNormalForm.lean",
+   "CCMFiniteWeilCell13N2W02NormalForm.lean",
+   "CCMFiniteWeilSourceMatrix.lean",
+   "CCMFiniteWeilSourceMatrixN1.lean",
+   "CenteredXiZeroNonzero.lean",
+   "D0KTrialStage1.lean",
+   "D0KTrialStage3.lean",
+   "D0LogWindowMeasureTransport.lean",
+   "D0LogWindowVNMCompletenessBridge.lean",
+   "D0Mode4ClassicalCarrierToDLMF3035EvenL2.lean",
+   "D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean",
+   "D0Mode4DLMF3035EvenL2ToFiniteLimitSpectrum.lean",
+   "D0Mode4FerrersEndpointFlux.lean",
+   "D0Mode4FerrersSturmComparison.lean",
+   "D0Mode4JacobiHermitianTailRow.lean",
+   "D0Mode4JacobiHermitianTailUniqueness.lean",
+   "D0Mode4JacobiMatchedNormalizedCoefficientRow.lean",
+   "D0Mode4LegendreHermitianCoordinateScale.lean",
+   "D0Mode4PSWFLegendreCanonicalIdentification.lean",
+   "D0Mode4PSWFTailCoefficientSquareSummable.lean",
+   "D0Mode4SchurRootInertiaLabel.lean",
+   "D0ModeZeroFourSelectedFerrersPhysicalProlate.lean",
+   "D0PstarActualProlateEStarMemLp.lean",
+   "D0PstarExactArchSymbolLogDomination.lean",
+   "D0PstarExplicitCCMLimitFourier.lean",
+   "D0PstarMuntzGalerkinResidualCrosswalk.lean",
+   "D0PstarSourceArchDiagonalCCMWRCrosswalk.lean",
+   "D0PstarSourceArchDiagonalRegularizerEndpointLedger.lean",
+   "D0PstarSourceArchHyperbolicKernel.lean",
+   "D0PstarSourceLogWindowFourierIntegralCrosswalk.lean",
+   "D0PstarSourceLowBandModeDecay.lean",
+   "D0PstarSourceWeilOddFormPullback13.lean",
+   "D0PstarVModeLogWeightedL2.lean",
+   "D0PstarW02EndpointFunctionals.lean",
+   "EStarWindowedMellinCrosswalk.lean",
+   "G6N1ExplicitCCMLimitMellinNormalization.lean",
+   "G6N1FuchsProjectOperatorIntertwining.lean",
+   "G6N1FuchsSelectedEigenvalueDefectRate.lean",
+   "G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
+   "G6N1SelectedFerrersAbelPoissonL2.lean",
+   "G6N1SelectedFerrersCenterCoefficientFloor.lean",
+   "G6N1SelectedFerrersClosedSubstripMellinConvergence.lean",
+   "G6N1SelectedFerrersMidpointDeltaEnvelope.lean",
+   "G6N1SelectedFerrersN2CompactDecayAssembly.lean",
+   "G6N1SelectedFerrersOddMassDecay.lean",
+   "G6N1SelectedFerrersPreAnchorDataInhabitant.lean",
+   "G6N1SelectedFerrersTrialNormalizerClosure.lean",
+   "G6N1SelectedFerrersW5DerivativeBudgetRate.lean",
+   "G6N1SelectedFerrersW5EndpointValueRate.lean",
+   "G6N1SelectedFerrersW5L1MassRate.lean",
+   "G6N1SelectedFerrersW5RateAssembly.lean",
+   "G6N1SelectedFerrersZeroMassCylinderPacket.lean",
+   "G6N1SpheroidalCrosswalkForward.lean",
+   "G6N1SpheroidalSourcePhysicalLift.lean",
+   "H2aPenaltyCoercivity.lean",
+   "MuntzV3/R6BoundaryCellBridge.lean",
+   "P59SignFreeRitz.lean",
+   "Proposition59EntireTransform.lean",
+   "Proposition59GroundLagrangeZeroSetBridge.lean",
+   "SpheroidalSourceMain.lean"
   ]
  },
  {
@@ -1948,72 +2023,6 @@
    "SpheroidalSourceHighMode.lean",
    "SpheroidalSourceSpectrum.lean",
    "TwoSidedNormalizedBControl.lean"
-  ]
- },
- {
-  "atom": "ne_of_gt",
-  "n_files": 60,
-  "files": [
-   "CCMFiniteWeilCell13N2NonintegralConstantNormalForm.lean",
-   "CCMFiniteWeilCell13N2PrimeKernelNormalForm.lean",
-   "CCMFiniteWeilCell13N2W02NormalForm.lean",
-   "CCMFiniteWeilSourceMatrix.lean",
-   "CCMFiniteWeilSourceMatrixN1.lean",
-   "CenteredXiZeroNonzero.lean",
-   "D0KTrialStage1.lean",
-   "D0KTrialStage3.lean",
-   "D0LogWindowMeasureTransport.lean",
-   "D0LogWindowVNMCompletenessBridge.lean",
-   "D0Mode4ClassicalCarrierToDLMF3035EvenL2.lean",
-   "D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean",
-   "D0Mode4DLMF3035EvenL2ToFiniteLimitSpectrum.lean",
-   "D0Mode4FerrersEndpointFlux.lean",
-   "D0Mode4FerrersSturmComparison.lean",
-   "D0Mode4JacobiHermitianTailRow.lean",
-   "D0Mode4JacobiHermitianTailUniqueness.lean",
-   "D0Mode4JacobiMatchedNormalizedCoefficientRow.lean",
-   "D0Mode4LegendreHermitianCoordinateScale.lean",
-   "D0Mode4PSWFLegendreCanonicalIdentification.lean",
-   "D0Mode4PSWFTailCoefficientSquareSummable.lean",
-   "D0Mode4SchurRootInertiaLabel.lean",
-   "D0ModeZeroFourSelectedFerrersPhysicalProlate.lean",
-   "D0PstarActualProlateEStarMemLp.lean",
-   "D0PstarExactArchSymbolLogDomination.lean",
-   "D0PstarExplicitCCMLimitFourier.lean",
-   "D0PstarMuntzGalerkinResidualCrosswalk.lean",
-   "D0PstarSourceArchDiagonalCCMWRCrosswalk.lean",
-   "D0PstarSourceArchDiagonalRegularizerEndpointLedger.lean",
-   "D0PstarSourceArchHyperbolicKernel.lean",
-   "D0PstarSourceLogWindowFourierIntegralCrosswalk.lean",
-   "D0PstarSourceLowBandModeDecay.lean",
-   "D0PstarSourceWeilOddFormPullback13.lean",
-   "D0PstarVModeLogWeightedL2.lean",
-   "D0PstarW02EndpointFunctionals.lean",
-   "EStarWindowedMellinCrosswalk.lean",
-   "G6N1ExplicitCCMLimitMellinNormalization.lean",
-   "G6N1FuchsProjectOperatorIntertwining.lean",
-   "G6N1FuchsSelectedEigenvalueDefectRate.lean",
-   "G6N1PreAnchorLimitZeroModeAndSelectedShell.lean",
-   "G6N1SelectedFerrersAbelPoissonL2.lean",
-   "G6N1SelectedFerrersCenterCoefficientFloor.lean",
-   "G6N1SelectedFerrersClosedSubstripMellinConvergence.lean",
-   "G6N1SelectedFerrersMidpointDeltaEnvelope.lean",
-   "G6N1SelectedFerrersN2CompactDecayAssembly.lean",
-   "G6N1SelectedFerrersOddMassDecay.lean",
-   "G6N1SelectedFerrersPreAnchorDataInhabitant.lean",
-   "G6N1SelectedFerrersTrialNormalizerClosure.lean",
-   "G6N1SelectedFerrersW5DerivativeBudgetRate.lean",
-   "G6N1SelectedFerrersW5EndpointValueRate.lean",
-   "G6N1SelectedFerrersW5L1MassRate.lean",
-   "G6N1SelectedFerrersW5RateAssembly.lean",
-   "G6N1SelectedFerrersZeroMassCylinderPacket.lean",
-   "G6N1SpheroidalCrosswalkForward.lean",
-   "G6N1SpheroidalSourcePhysicalLift.lean",
-   "H2aPenaltyCoercivity.lean",
-   "MuntzV3/R6BoundaryCellBridge.lean",
-   "Proposition59EntireTransform.lean",
-   "Proposition59GroundLagrangeZeroSetBridge.lean",
-   "SpheroidalSourceMain.lean"
   ]
  },
  {
@@ -2335,7 +2344,7 @@
  },
  {
   "atom": "Real.sq_sqrt",
-  "n_files": 54,
+  "n_files": 55,
   "files": [
    "CCMComplexTrialReflectionContaminationFloor.lean",
    "D0LogWindowMeasureTransport.lean",
@@ -2386,6 +2395,7 @@
    "G6N1SturmDefectTruncatedEnergy.lean",
    "G6N1SturmWeightedConsumerNonTopRate.lean",
    "Goal058CurvatureBorderedSecular.lean",
+   "P59SignFreeRitz.lean",
    "P59SingleEndpointAtomCounterexample.lean",
    "ProlateActualModeMuntzRegularity.lean",
    "SafeBoundsToSquareEnvelope.lean",
@@ -3319,6 +3329,49 @@
   ]
  },
  {
+  "atom": "le_div_iff",
+  "n_files": 37,
+  "files": [
+   "CCMProposition59ComplexTrialResidualTracking.lean",
+   "D0Mode4FerrersPhysicalFourierEigenTransport.lean",
+   "D0Mode4FerrersSingularEndpointRegularity.lean",
+   "D0Mode4OrdinaryLegendreIntervalBound.lean",
+   "D0PstarPhysicalFourierEnergyControl.lean",
+   "D0PstarSelectedFerrersEvenTailCutoffObstruction.lean",
+   "D0PstarSourceLowBandModeDecay.lean",
+   "D0PstarVModeLogWeightedL2.lean",
+   "EStarWindowedMellinCrosswalk.lean",
+   "G6N1ExplicitCCMLimitBeyondSourceWindowTail.lean",
+   "G6N1ExplicitCCMLimitMellinNormalization.lean",
+   "G6N1ExplicitCCMLimitMellinOuterTail.lean",
+   "G6N1ExplicitHDerivativeCombBudget.lean",
+   "G6N1SelectedFerrersCenterCoefficientFloor.lean",
+   "G6N1SelectedFerrersClosedSubstripMellinConvergence.lean",
+   "G6N1SelectedFerrersCommutatorResidualDefect.lean",
+   "G6N1SelectedFerrersEdgeTopFluxConsumer.lean",
+   "G6N1SelectedFerrersFiniteCCMResidualSourceActionSplit.lean",
+   "G6N1SelectedFerrersOddMassDecay.lean",
+   "G6N1SelectedFerrersOuterPolynomialDecay.lean",
+   "G6N1SelectedFerrersPacketVariation.lean",
+   "G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+   "G6N1SelectedFerrersQuantitativeShiftedRootEnergy.lean",
+   "G6N1SelectedFerrersScaleBandwidthClosure.lean",
+   "G6N1SelectedFerrersW5DerivativeBudgetRate.lean",
+   "G6N1SelectedFerrersW5EndpointValueRate.lean",
+   "G6N1SelectedFerrersW5JumpSeamRate.lean",
+   "G6N1SelectedFerrersW5L1MassRate.lean",
+   "G6N1SelectedFerrersW5RateAssembly.lean",
+   "G6N1SelectedFerrersWeightedResidualComplementFloor.lean",
+   "G6N1SpheroidalSourcePhysicalLift.lean",
+   "G6N1SturmDefectTruncatedEnergy.lean",
+   "G6N1SturmWeightedConsumerNonTopRate.lean",
+   "P59SignFreeRitz.lean",
+   "RelativeRitzFinite.lean",
+   "WeightedRayleighProjectiveDefect.lean",
+   "WeightedSpectralTempleCore.lean"
+  ]
+ },
+ {
   "atom": "zero_mul",
   "n_files": 37,
   "files": [
@@ -3401,48 +3454,6 @@
    "Proposition59EntireTransform.lean",
    "Proposition59ExplicitProductCurvatureBridge.lean",
    "SpheroidalSourceHighMode.lean"
-  ]
- },
- {
-  "atom": "le_div_iff",
-  "n_files": 36,
-  "files": [
-   "CCMProposition59ComplexTrialResidualTracking.lean",
-   "D0Mode4FerrersPhysicalFourierEigenTransport.lean",
-   "D0Mode4FerrersSingularEndpointRegularity.lean",
-   "D0Mode4OrdinaryLegendreIntervalBound.lean",
-   "D0PstarPhysicalFourierEnergyControl.lean",
-   "D0PstarSelectedFerrersEvenTailCutoffObstruction.lean",
-   "D0PstarSourceLowBandModeDecay.lean",
-   "D0PstarVModeLogWeightedL2.lean",
-   "EStarWindowedMellinCrosswalk.lean",
-   "G6N1ExplicitCCMLimitBeyondSourceWindowTail.lean",
-   "G6N1ExplicitCCMLimitMellinNormalization.lean",
-   "G6N1ExplicitCCMLimitMellinOuterTail.lean",
-   "G6N1ExplicitHDerivativeCombBudget.lean",
-   "G6N1SelectedFerrersCenterCoefficientFloor.lean",
-   "G6N1SelectedFerrersClosedSubstripMellinConvergence.lean",
-   "G6N1SelectedFerrersCommutatorResidualDefect.lean",
-   "G6N1SelectedFerrersEdgeTopFluxConsumer.lean",
-   "G6N1SelectedFerrersFiniteCCMResidualSourceActionSplit.lean",
-   "G6N1SelectedFerrersOddMassDecay.lean",
-   "G6N1SelectedFerrersOuterPolynomialDecay.lean",
-   "G6N1SelectedFerrersPacketVariation.lean",
-   "G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
-   "G6N1SelectedFerrersQuantitativeShiftedRootEnergy.lean",
-   "G6N1SelectedFerrersScaleBandwidthClosure.lean",
-   "G6N1SelectedFerrersW5DerivativeBudgetRate.lean",
-   "G6N1SelectedFerrersW5EndpointValueRate.lean",
-   "G6N1SelectedFerrersW5JumpSeamRate.lean",
-   "G6N1SelectedFerrersW5L1MassRate.lean",
-   "G6N1SelectedFerrersW5RateAssembly.lean",
-   "G6N1SelectedFerrersWeightedResidualComplementFloor.lean",
-   "G6N1SpheroidalSourcePhysicalLift.lean",
-   "G6N1SturmDefectTruncatedEnergy.lean",
-   "G6N1SturmWeightedConsumerNonTopRate.lean",
-   "RelativeRitzFinite.lean",
-   "WeightedRayleighProjectiveDefect.lean",
-   "WeightedSpectralTempleCore.lean"
   ]
  },
  {
@@ -4218,6 +4229,38 @@
   ]
  },
  {
+  "atom": "le_of_lt",
+  "n_files": 26,
+  "files": [
+   "CCMProposition59ComplexTrialComplementRayleigh.lean",
+   "D0Mode4FerrersCoefficientExtraction.lean",
+   "D0Mode4FerrersEndpointFlux.lean",
+   "D0PstarExactArchSymbolLogDomination.lean",
+   "D0PstarSourceModeCosineCCMQKernel.lean",
+   "D0PstarSourceW02ModePairing.lean",
+   "D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+   "D0PstarSourceWeilOddTailExplicitCoercivity.lean",
+   "G6N1CenterNormalizedSatz9RateTransfer.lean",
+   "G6N1CutoffLocalOrderedEnumerationLock.lean",
+   "G6N1ExplicitCCMLimitBeyondSourceWindowTail.lean",
+   "G6N1ExplicitCCMLimitMellinNormalization.lean",
+   "G6N1ExplicitCCMLimitMellinOuterTail.lean",
+   "G6N1SelectedFerrersCenterCoefficientFloor.lean",
+   "G6N1SelectedFerrersClosedSubstripMellinConvergence.lean",
+   "G6N1SelectedFerrersFiniteCCMResidualSourceActionSplit.lean",
+   "G6N1SelectedFerrersOddMassDecay.lean",
+   "G6N1SelectedFerrersOuterPolynomialDecay.lean",
+   "G6N1SelectedFerrersPacketVariation.lean",
+   "G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+   "G6N1SelectedFerrersW5JumpSeamRate.lean",
+   "G6N1SpheroidalCharacteristicRange.lean",
+   "G6N1SpheroidalCrosswalkForward.lean",
+   "P59SignFreeRitz.lean",
+   "SpheroidalSourceMain.lean",
+   "SpheroidalSourceSpectrum.lean"
+  ]
+ },
+ {
   "atom": "lt_of_le_of_ne",
   "n_files": 26,
   "files": [
@@ -4278,6 +4321,37 @@
    "ProlateActualModeMuntzRegularity.lean",
    "ProlateSourceCommutation.lean",
    "SpheroidalSourceMain.lean"
+  ]
+ },
+ {
+  "atom": "Finset.sum_sub_distrib",
+  "n_files": 25,
+  "files": [
+   "CCMFiniteWeilSourceCommutator.lean",
+   "CCMProposition59ComplexHermitianConnector.lean",
+   "CenteredXiZeroNonzero.lean",
+   "D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+   "D0PstarOddTailDividedDifference13.lean",
+   "D0PstarSourceWeilFiniteFormCCMWeilCrosswalk.lean",
+   "D0PstarSourceWeilOddFormPullback13.lean",
+   "D0ScaledJacobiForcedReceiver.lean",
+   "G6N1ExplicitCCMLimitBeyondSourceWindowTail.lean",
+   "G6N1ExplicitHDerivativeCombBudget.lean",
+   "G6N1SelectedFerrersCommutatorResidualDefect.lean",
+   "G6N1SelectedFerrersEvenSectorArchPrimeReduction.lean",
+   "G6N1SelectedFerrersHilbertPairing.lean",
+   "G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+   "G6N1SelectedFerrersTrialNormalizerClosure.lean",
+   "G6N1SelectedFerrersW5RateAssembly.lean",
+   "LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
+   "MuntzV3/R6BoundaryCellBridge.lean",
+   "P59SignFreeRitz.lean",
+   "Proposition59AlternatingLatticeCurvature.lean",
+   "Proposition59AnchoredSecondModeOverlap.lean",
+   "Proposition59EntireTransform.lean",
+   "Proposition59GroundTrialSecondJetDifference.lean",
+   "RankOneCorrectionLagrangeIdentity.lean",
+   "WeightedSpectralTempleCore.lean"
   ]
  },
  {
@@ -4343,37 +4417,6 @@
   ]
  },
  {
-  "atom": "le_of_lt",
-  "n_files": 25,
-  "files": [
-   "CCMProposition59ComplexTrialComplementRayleigh.lean",
-   "D0Mode4FerrersCoefficientExtraction.lean",
-   "D0Mode4FerrersEndpointFlux.lean",
-   "D0PstarExactArchSymbolLogDomination.lean",
-   "D0PstarSourceModeCosineCCMQKernel.lean",
-   "D0PstarSourceW02ModePairing.lean",
-   "D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
-   "D0PstarSourceWeilOddTailExplicitCoercivity.lean",
-   "G6N1CenterNormalizedSatz9RateTransfer.lean",
-   "G6N1CutoffLocalOrderedEnumerationLock.lean",
-   "G6N1ExplicitCCMLimitBeyondSourceWindowTail.lean",
-   "G6N1ExplicitCCMLimitMellinNormalization.lean",
-   "G6N1ExplicitCCMLimitMellinOuterTail.lean",
-   "G6N1SelectedFerrersCenterCoefficientFloor.lean",
-   "G6N1SelectedFerrersClosedSubstripMellinConvergence.lean",
-   "G6N1SelectedFerrersFiniteCCMResidualSourceActionSplit.lean",
-   "G6N1SelectedFerrersOddMassDecay.lean",
-   "G6N1SelectedFerrersOuterPolynomialDecay.lean",
-   "G6N1SelectedFerrersPacketVariation.lean",
-   "G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
-   "G6N1SelectedFerrersW5JumpSeamRate.lean",
-   "G6N1SpheroidalCharacteristicRange.lean",
-   "G6N1SpheroidalCrosswalkForward.lean",
-   "SpheroidalSourceMain.lean",
-   "SpheroidalSourceSpectrum.lean"
-  ]
- },
- {
   "atom": "volume.restrict",
   "n_files": 25,
   "files": [
@@ -4402,36 +4445,6 @@
    "MuntzV3/EStarMellinAbsolutePayload.lean",
    "MuntzV3/R6BoundaryCellBridge.lean",
    "ProlateSourceCommutation.lean"
-  ]
- },
- {
-  "atom": "Finset.sum_sub_distrib",
-  "n_files": 24,
-  "files": [
-   "CCMFiniteWeilSourceCommutator.lean",
-   "CCMProposition59ComplexHermitianConnector.lean",
-   "CenteredXiZeroNonzero.lean",
-   "D0Mode4FiniteEvenLegendreQuadraticForm.lean",
-   "D0PstarOddTailDividedDifference13.lean",
-   "D0PstarSourceWeilFiniteFormCCMWeilCrosswalk.lean",
-   "D0PstarSourceWeilOddFormPullback13.lean",
-   "D0ScaledJacobiForcedReceiver.lean",
-   "G6N1ExplicitCCMLimitBeyondSourceWindowTail.lean",
-   "G6N1ExplicitHDerivativeCombBudget.lean",
-   "G6N1SelectedFerrersCommutatorResidualDefect.lean",
-   "G6N1SelectedFerrersEvenSectorArchPrimeReduction.lean",
-   "G6N1SelectedFerrersHilbertPairing.lean",
-   "G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
-   "G6N1SelectedFerrersTrialNormalizerClosure.lean",
-   "G6N1SelectedFerrersW5RateAssembly.lean",
-   "LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
-   "MuntzV3/R6BoundaryCellBridge.lean",
-   "Proposition59AlternatingLatticeCurvature.lean",
-   "Proposition59AnchoredSecondModeOverlap.lean",
-   "Proposition59EntireTransform.lean",
-   "Proposition59GroundTrialSecondJetDifference.lean",
-   "RankOneCorrectionLagrangeIdentity.lean",
-   "WeightedSpectralTempleCore.lean"
   ]
  },
  {
@@ -4522,6 +4535,35 @@
    "S2GaugeNonvanishing.lean",
    "SpheroidalSourceMain.lean",
    "ZeroEscapeLogic.lean"
+  ]
+ },
+ {
+  "atom": "Finset.sum_le_sum",
+  "n_files": 23,
+  "files": [
+   "D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+   "D0PstarSourceCCMOddMassReflectionDefect.lean",
+   "G6N1ExplicitHDerivativeCombBudget.lean",
+   "G6N1SelectedFerrersAbelPoissonL2.lean",
+   "G6N1SelectedFerrersCommutatorResidualDefect.lean",
+   "G6N1SelectedFerrersEStarWindowMainError.lean",
+   "G6N1SelectedFerrersEdgeTopFluxConsumer.lean",
+   "G6N1SelectedFerrersOddMassDecay.lean",
+   "G6N1SelectedFerrersPacketVariation.lean",
+   "G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+   "G6N1SelectedFerrersTrialNormalizerClosure.lean",
+   "G6N1SelectedFerrersW5RateAssembly.lean",
+   "G6N1SturmWeightedConsumerNonTopRate.lean",
+   "H2aPenaltyCoercivity.lean",
+   "HermitianUnitMinimumEigenpair.lean",
+   "MuntzV3/GwinExactClass.lean",
+   "MuntzV3/RminusExactClass.lean",
+   "MuntzV3/RplusExactClass.lean",
+   "P59SignFreeRitz.lean",
+   "Proposition59AlternatingLatticeCurvature.lean",
+   "Proposition59ReciprocalModeWeightedShell.lean",
+   "WeightedRayleighProjectiveDefect.lean",
+   "WeightedSpectralTempleCore.lean"
   ]
  },
  {
@@ -4667,6 +4709,35 @@
    "ProlateSourceCommutation.lean",
    "ProlateSourceEigenTransport.lean",
    "ProlateSourceRegularity.lean"
+  ]
+ },
+ {
+  "atom": "map_smul",
+  "n_files": 23,
+  "files": [
+   "CCMFiniteWeilParity.lean",
+   "D0PstarArchSesquilinearFormFiniteRestriction.lean",
+   "D0PstarPrimeAmbientSesquilinearForm.lean",
+   "D0PstarShiftedArchFormDomain.lean",
+   "D0PstarShiftedArchSesquilinearForm.lean",
+   "D0PstarSourceEvenNonzeroLowBandAssembly.lean",
+   "D0PstarSourceEvenNonzeroTailCarrier.lean",
+   "D0PstarSourceLowBandModeDecay.lean",
+   "D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
+   "D0PstarSourceWeilFiniteFourierLedger.lean",
+   "D0PstarSourceWeilOddFormPullback13.lean",
+   "D0PstarSourceWeilOddTailCoercivityClosure.lean",
+   "D0PstarSourceWeilOddTailExplicitCoercivity.lean",
+   "D0PstarSourceWeilOddTargetFloorSchurMatrixGeneric.lean",
+   "D0PstarSourceWeilOddTargetFloorSchurMatrixReceiver.lean",
+   "D0PstarW02RankTwoForm.lean",
+   "G6N1SelectedFerrersCenterCoefficientFloor.lean",
+   "G6N1SelectedFerrersFiniteCCMResidualSourceActionSplit.lean",
+   "G6N1SelectedFerrersFiniteCCMResidualVariance.lean",
+   "G6N1SelectedFerrersN2SourceScaledTailRate.lean",
+   "P59SignFreeRitz.lean",
+   "SimpleEvenGroundSectorCriterion.lean",
+   "SoftL2Round13Integration.lean"
   ]
  },
  {
@@ -4839,34 +4910,6 @@
    "Proposition59GroundLagrangeZeroSetBridge.lean",
    "Proposition59GroundTrialSecondJetDifference.lean",
    "Proposition59ReciprocalModeWeightedShell.lean"
-  ]
- },
- {
-  "atom": "Finset.sum_le_sum",
-  "n_files": 22,
-  "files": [
-   "D0Mode4ClassicalCarrierFromFiniteLimit.lean",
-   "D0PstarSourceCCMOddMassReflectionDefect.lean",
-   "G6N1ExplicitHDerivativeCombBudget.lean",
-   "G6N1SelectedFerrersAbelPoissonL2.lean",
-   "G6N1SelectedFerrersCommutatorResidualDefect.lean",
-   "G6N1SelectedFerrersEStarWindowMainError.lean",
-   "G6N1SelectedFerrersEdgeTopFluxConsumer.lean",
-   "G6N1SelectedFerrersOddMassDecay.lean",
-   "G6N1SelectedFerrersPacketVariation.lean",
-   "G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
-   "G6N1SelectedFerrersTrialNormalizerClosure.lean",
-   "G6N1SelectedFerrersW5RateAssembly.lean",
-   "G6N1SturmWeightedConsumerNonTopRate.lean",
-   "H2aPenaltyCoercivity.lean",
-   "HermitianUnitMinimumEigenpair.lean",
-   "MuntzV3/GwinExactClass.lean",
-   "MuntzV3/RminusExactClass.lean",
-   "MuntzV3/RplusExactClass.lean",
-   "Proposition59AlternatingLatticeCurvature.lean",
-   "Proposition59ReciprocalModeWeightedShell.lean",
-   "WeightedRayleighProjectiveDefect.lean",
-   "WeightedSpectralTempleCore.lean"
   ]
  },
  {
@@ -5063,34 +5106,6 @@
    "LiteralCCMComplementFloorConstruction.lean",
    "P59XiLadderFeshbachRemainder.lean",
    "RelativeRitzFinite.lean"
-  ]
- },
- {
-  "atom": "map_smul",
-  "n_files": 22,
-  "files": [
-   "CCMFiniteWeilParity.lean",
-   "D0PstarArchSesquilinearFormFiniteRestriction.lean",
-   "D0PstarPrimeAmbientSesquilinearForm.lean",
-   "D0PstarShiftedArchFormDomain.lean",
-   "D0PstarShiftedArchSesquilinearForm.lean",
-   "D0PstarSourceEvenNonzeroLowBandAssembly.lean",
-   "D0PstarSourceEvenNonzeroTailCarrier.lean",
-   "D0PstarSourceLowBandModeDecay.lean",
-   "D0PstarSourceWeilEvenTailExplicitCoercivity.lean",
-   "D0PstarSourceWeilFiniteFourierLedger.lean",
-   "D0PstarSourceWeilOddFormPullback13.lean",
-   "D0PstarSourceWeilOddTailCoercivityClosure.lean",
-   "D0PstarSourceWeilOddTailExplicitCoercivity.lean",
-   "D0PstarSourceWeilOddTargetFloorSchurMatrixGeneric.lean",
-   "D0PstarSourceWeilOddTargetFloorSchurMatrixReceiver.lean",
-   "D0PstarW02RankTwoForm.lean",
-   "G6N1SelectedFerrersCenterCoefficientFloor.lean",
-   "G6N1SelectedFerrersFiniteCCMResidualSourceActionSplit.lean",
-   "G6N1SelectedFerrersFiniteCCMResidualVariance.lean",
-   "G6N1SelectedFerrersN2SourceScaledTailRate.lean",
-   "SimpleEvenGroundSectorCriterion.lean",
-   "SoftL2Round13Integration.lean"
   ]
  },
  {
@@ -5364,6 +5379,32 @@
   ]
  },
  {
+  "atom": "Finset.mem_univ",
+  "n_files": 20,
+  "files": [
+   "AbstractCoboundaryLedger.lean",
+   "CCMProposition59ComplexTrialComplementRayleigh.lean",
+   "CCMProposition59ComplexTrialComplementSpectral.lean",
+   "D0Mode4BackwardTailFiniteTailPosDef.lean",
+   "D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+   "D0Mode4ClassicalCarrierToDLMF3035EvenL2.lean",
+   "D0Mode4DLMF3035EvenL2ToFiniteLimitSpectrum.lean",
+   "D0Mode4HermitianNegativeCountStability.lean",
+   "D0Mode4SchurInertiaOrientation.lean",
+   "G6N1SelectedFerrersCommutatorResidualDefect.lean",
+   "G6N1SelectedFerrersFiniteAssetBank.lean",
+   "G6N1SelectedFerrersGroundParityRealification.lean",
+   "G6N1SelectedFerrersH2aSourceQuantities.lean",
+   "G6N1SelectedFerrersTrackedGroundTransform.lean",
+   "Goal058PolarizedVolterra.lean",
+   "P59SignFreeRitz.lean",
+   "P59XiLadderFeshbachRemainder.lean",
+   "Proposition59GroundLagrangeZeroSetBridge.lean",
+   "RankOneCorrectionLagrangeIdentity.lean",
+   "WeightedRayleighProjectiveDefect.lean"
+  ]
+ },
+ {
   "atom": "Real.exp_le_exp.mpr",
   "n_files": 20,
   "files": [
@@ -5494,6 +5535,32 @@
   ]
  },
  {
+  "atom": "fin_cases",
+  "n_files": 20,
+  "files": [
+   "AbstractCoboundaryLedger.lean",
+   "CCMComplexTrialReflectionContaminationFloor.lean",
+   "CCMFiniteWeilCell13N2SevenClassLayout.lean",
+   "CCMFiniteWeilSourceMatrixN1.lean",
+   "CCMProposition59ComplexHermitianConnector.lean",
+   "CCMProposition59ComplexTrialComplementFloor.lean",
+   "CCMProposition59ComplexTrialLineFeshbach.lean",
+   "CCMProposition59SourceTrialFeshbachPreflight.lean",
+   "CenteredXiZeroNonzero.lean",
+   "CofinalFixedShiftLiteralComplementFloor.lean",
+   "D0Mode4ClassicalCarrierHeadUpper.lean",
+   "D0Mode4HermitianNegativeCountStability.lean",
+   "G6N1SelectedFerrersBetaMomentOddMass.lean",
+   "G6N1SelectedFerrersCommutatorResidualDefect.lean",
+   "G6N1SelectedFerrersFiniteCCMResidualSourceActionSplit.lean",
+   "G6N1SelectedFerrersFiniteCCMResidualVariance.lean",
+   "G6N1SelectedFerrersH2aSourceQuantities.lean",
+   "G6N1SelectedFerrersOddMassDecay.lean",
+   "LiteralCCMComplementFloorConstruction.lean",
+   "P59SignFreeRitz.lean"
+  ]
+ },
+ {
   "atom": "map_mul",
   "n_files": 20,
   "files": [
@@ -5569,31 +5636,6 @@
    "G6N1SelectedFerrersMidpointDeltaEnvelope.lean",
    "G6N1SelectedFerrersN2CompactDecayAssembly.lean",
    "G6N1SelectedFerrersPreAnchorDataInhabitant.lean"
-  ]
- },
- {
-  "atom": "Finset.mem_univ",
-  "n_files": 19,
-  "files": [
-   "AbstractCoboundaryLedger.lean",
-   "CCMProposition59ComplexTrialComplementRayleigh.lean",
-   "CCMProposition59ComplexTrialComplementSpectral.lean",
-   "D0Mode4BackwardTailFiniteTailPosDef.lean",
-   "D0Mode4ClassicalCarrierFromFiniteLimit.lean",
-   "D0Mode4ClassicalCarrierToDLMF3035EvenL2.lean",
-   "D0Mode4DLMF3035EvenL2ToFiniteLimitSpectrum.lean",
-   "D0Mode4HermitianNegativeCountStability.lean",
-   "D0Mode4SchurInertiaOrientation.lean",
-   "G6N1SelectedFerrersCommutatorResidualDefect.lean",
-   "G6N1SelectedFerrersFiniteAssetBank.lean",
-   "G6N1SelectedFerrersGroundParityRealification.lean",
-   "G6N1SelectedFerrersH2aSourceQuantities.lean",
-   "G6N1SelectedFerrersTrackedGroundTransform.lean",
-   "Goal058PolarizedVolterra.lean",
-   "P59XiLadderFeshbachRemainder.lean",
-   "Proposition59GroundLagrangeZeroSetBridge.lean",
-   "RankOneCorrectionLagrangeIdentity.lean",
-   "WeightedRayleighProjectiveDefect.lean"
   ]
  },
  {
@@ -5694,31 +5736,6 @@
    "GenericZeroTransfer.lean",
    "MuntzV3/R6BoundaryCellBridge.lean",
    "SectorIsolationRadius.lean"
-  ]
- },
- {
-  "atom": "fin_cases",
-  "n_files": 19,
-  "files": [
-   "AbstractCoboundaryLedger.lean",
-   "CCMComplexTrialReflectionContaminationFloor.lean",
-   "CCMFiniteWeilCell13N2SevenClassLayout.lean",
-   "CCMFiniteWeilSourceMatrixN1.lean",
-   "CCMProposition59ComplexHermitianConnector.lean",
-   "CCMProposition59ComplexTrialComplementFloor.lean",
-   "CCMProposition59ComplexTrialLineFeshbach.lean",
-   "CCMProposition59SourceTrialFeshbachPreflight.lean",
-   "CenteredXiZeroNonzero.lean",
-   "CofinalFixedShiftLiteralComplementFloor.lean",
-   "D0Mode4ClassicalCarrierHeadUpper.lean",
-   "D0Mode4HermitianNegativeCountStability.lean",
-   "G6N1SelectedFerrersBetaMomentOddMass.lean",
-   "G6N1SelectedFerrersCommutatorResidualDefect.lean",
-   "G6N1SelectedFerrersFiniteCCMResidualSourceActionSplit.lean",
-   "G6N1SelectedFerrersFiniteCCMResidualVariance.lean",
-   "G6N1SelectedFerrersH2aSourceQuantities.lean",
-   "G6N1SelectedFerrersOddMassDecay.lean",
-   "LiteralCCMComplementFloorConstruction.lean"
   ]
  },
  {
@@ -6065,6 +6082,30 @@
   ]
  },
  {
+  "atom": "map_sum",
+  "n_files": 18,
+  "files": [
+   "CCMProposition59ComplexHermitianConnector.lean",
+   "D0PstarArchSesquilinearFormFiniteRestriction.lean",
+   "D0PstarPrimeAmbientSesquilinearForm.lean",
+   "D0PstarSourceEvenNonzeroLowBandAssembly.lean",
+   "D0PstarSourceLogWindowFourierIntegralCrosswalk.lean",
+   "D0PstarSourceWeilFiniteFourierLedger.lean",
+   "D0PstarSourceWeilOddTargetFloorSchurMatrixGeneric.lean",
+   "D0PstarSourceWeilOddTargetFloorSchurMatrixReceiver.lean",
+   "D0PstarW02RankTwoForm.lean",
+   "G6N1SelectedFerrersEvenSectorArchPrimeReduction.lean",
+   "G6N1SelectedFerrersFiniteAssetBank.lean",
+   "G6N1SelectedFerrersFiniteCCMResidualVariance.lean",
+   "G6N1SelectedFerrersGroundParityRealification.lean",
+   "G6N1SelectedFerrersH2aSourceQuantities.lean",
+   "G6N1SelectedFerrersHilbertPairing.lean",
+   "G6N1SelectedFerrersTrackedGroundTransform.lean",
+   "Goal058PolarizedVolterra.lean",
+   "P59SignFreeRitz.lean"
+  ]
+ },
+ {
   "atom": "norm_sum_le",
   "n_files": 18,
   "files": [
@@ -6206,6 +6247,29 @@
   ]
  },
  {
+  "atom": "Finset.univ",
+  "n_files": 17,
+  "files": [
+   "D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+   "D0Mode4HermitianNegativeCountStability.lean",
+   "D0PstarSourceCCMOddMassReflectionDefect.lean",
+   "D0PstarSourceEvenFiniteHeadCrosswalk.lean",
+   "D0PstarSourceWeilFiniteFourierLedger.lean",
+   "D0PstarSourceWeilOddFormPullback13.lean",
+   "G6N1SelectedFerrersBetaMomentOddMass.lean",
+   "G6N1SelectedFerrersCommutatorResidualDefect.lean",
+   "G6N1SelectedFerrersFiniteCCMResidualVariance.lean",
+   "G6N1SelectedFerrersH2aSourceQuantities.lean",
+   "Goal058CurvatureBorderedSecular.lean",
+   "Goal058PolarizedVolterra.lean",
+   "P59SignFreeRitz.lean",
+   "P59XiLadderFeshbachRemainder.lean",
+   "Proposition59GroundLagrangeZeroSetBridge.lean",
+   "RankOneCorrectionLagrangeIdentity.lean",
+   "WeightedRayleighProjectiveDefect.lean"
+  ]
+ },
+ {
   "atom": "MeasureTheory.integral_const_mul",
   "n_files": 17,
   "files": [
@@ -6252,6 +6316,29 @@
   ]
  },
  {
+  "atom": "Real.sqrt_sq",
+  "n_files": 17,
+  "files": [
+   "CCMComplexTrialReflectionContaminationFloor.lean",
+   "D0PstarSourceWeilFormCoreTopology.lean",
+   "G6N1SelectedFerrersCenterCoefficientFloor.lean",
+   "G6N1SelectedFerrersFiniteAssetBank.lean",
+   "G6N1SelectedFerrersFirstOrderBudgetApplication.lean",
+   "G6N1SelectedFerrersMidpointDeltaEnvelope.lean",
+   "G6N1SelectedFerrersN2SourceScaledTailRate.lean",
+   "G6N1SelectedFerrersOuterPolynomialDecay.lean",
+   "G6N1SelectedFerrersTrialNormalizerClosure.lean",
+   "G6N1SelectedFerrersW5RateAssembly.lean",
+   "G6N1SelectedFerrersWeightedResidualComplementFloor.lean",
+   "G6N1SturmWeightedConsumerNonTopRate.lean",
+   "P59SignFreeRitz.lean",
+   "P59SingleEndpointAtomCounterexample.lean",
+   "PhaseAlignmentRateTransfer.lean",
+   "Proposition59AlternatingLatticeCurvature.lean",
+   "Proposition59ReciprocalModeWeightedShell.lean"
+  ]
+ },
+ {
   "atom": "continuous_const",
   "n_files": 17,
   "files": [
@@ -6272,6 +6359,29 @@
    "MuntzV3/RminusExactClass.lean",
    "MuntzV3/RplusExactClass.lean",
    "PolynomialCircleRootCount.lean"
+  ]
+ },
+ {
+  "atom": "div_le_one",
+  "n_files": 17,
+  "files": [
+   "D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+   "D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean",
+   "D0Mode4FerrersPhysicalFourierEigenTransport.lean",
+   "D0Mode4JacobiHermitianTailRow.lean",
+   "G6N1ExplicitCCMLimitBeyondSourceWindowTail.lean",
+   "G6N1SelectedFerrersCenterCoefficientFloor.lean",
+   "G6N1SelectedFerrersEdgeTopFluxConsumer.lean",
+   "G6N1SelectedFerrersN2CompactDecayAssembly.lean",
+   "G6N1SelectedFerrersOuterPolynomialDecay.lean",
+   "G6N1SelectedFerrersPacketVariation.lean",
+   "G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+   "G6N1SelectedFerrersTrialNormalizerClosure.lean",
+   "G6N1SelectedFerrersW5RateAssembly.lean",
+   "G6N1SturmDefectTruncatedEnergy.lean",
+   "G6N1SturmWeightedConsumerNonTopRate.lean",
+   "P59SignFreeRitz.lean",
+   "SpheroidalSourceHighMode.lean"
   ]
  },
  {
@@ -6318,29 +6428,6 @@
    "MuntzV3/RminusExactClass.lean",
    "MuntzV3/RplusExactClass.lean",
    "MuntzV3/SymmetricTrialCrosswalk.lean"
-  ]
- },
- {
-  "atom": "map_sum",
-  "n_files": 17,
-  "files": [
-   "CCMProposition59ComplexHermitianConnector.lean",
-   "D0PstarArchSesquilinearFormFiniteRestriction.lean",
-   "D0PstarPrimeAmbientSesquilinearForm.lean",
-   "D0PstarSourceEvenNonzeroLowBandAssembly.lean",
-   "D0PstarSourceLogWindowFourierIntegralCrosswalk.lean",
-   "D0PstarSourceWeilFiniteFourierLedger.lean",
-   "D0PstarSourceWeilOddTargetFloorSchurMatrixGeneric.lean",
-   "D0PstarSourceWeilOddTargetFloorSchurMatrixReceiver.lean",
-   "D0PstarW02RankTwoForm.lean",
-   "G6N1SelectedFerrersEvenSectorArchPrimeReduction.lean",
-   "G6N1SelectedFerrersFiniteAssetBank.lean",
-   "G6N1SelectedFerrersFiniteCCMResidualVariance.lean",
-   "G6N1SelectedFerrersGroundParityRealification.lean",
-   "G6N1SelectedFerrersH2aSourceQuantities.lean",
-   "G6N1SelectedFerrersHilbertPairing.lean",
-   "G6N1SelectedFerrersTrackedGroundTransform.lean",
-   "Goal058PolarizedVolterra.lean"
   ]
  },
  {
@@ -6477,28 +6564,6 @@
    "Proposition59GroundLagrangeZeroSetBridge.lean",
    "RankOneCorrectionLagrangeIdentity.lean",
    "RawIntegralRhsCrosswalk.lean"
-  ]
- },
- {
-  "atom": "Finset.univ",
-  "n_files": 16,
-  "files": [
-   "D0Mode4FiniteEvenLegendreQuadraticForm.lean",
-   "D0Mode4HermitianNegativeCountStability.lean",
-   "D0PstarSourceCCMOddMassReflectionDefect.lean",
-   "D0PstarSourceEvenFiniteHeadCrosswalk.lean",
-   "D0PstarSourceWeilFiniteFourierLedger.lean",
-   "D0PstarSourceWeilOddFormPullback13.lean",
-   "G6N1SelectedFerrersBetaMomentOddMass.lean",
-   "G6N1SelectedFerrersCommutatorResidualDefect.lean",
-   "G6N1SelectedFerrersFiniteCCMResidualVariance.lean",
-   "G6N1SelectedFerrersH2aSourceQuantities.lean",
-   "Goal058CurvatureBorderedSecular.lean",
-   "Goal058PolarizedVolterra.lean",
-   "P59XiLadderFeshbachRemainder.lean",
-   "Proposition59GroundLagrangeZeroSetBridge.lean",
-   "RankOneCorrectionLagrangeIdentity.lean",
-   "WeightedRayleighProjectiveDefect.lean"
   ]
  },
  {
@@ -6656,28 +6721,6 @@
   ]
  },
  {
-  "atom": "Real.sqrt_sq",
-  "n_files": 16,
-  "files": [
-   "CCMComplexTrialReflectionContaminationFloor.lean",
-   "D0PstarSourceWeilFormCoreTopology.lean",
-   "G6N1SelectedFerrersCenterCoefficientFloor.lean",
-   "G6N1SelectedFerrersFiniteAssetBank.lean",
-   "G6N1SelectedFerrersFirstOrderBudgetApplication.lean",
-   "G6N1SelectedFerrersMidpointDeltaEnvelope.lean",
-   "G6N1SelectedFerrersN2SourceScaledTailRate.lean",
-   "G6N1SelectedFerrersOuterPolynomialDecay.lean",
-   "G6N1SelectedFerrersTrialNormalizerClosure.lean",
-   "G6N1SelectedFerrersW5RateAssembly.lean",
-   "G6N1SelectedFerrersWeightedResidualComplementFloor.lean",
-   "G6N1SturmWeightedConsumerNonTopRate.lean",
-   "P59SingleEndpointAtomCounterexample.lean",
-   "PhaseAlignmentRateTransfer.lean",
-   "Proposition59AlternatingLatticeCurvature.lean",
-   "Proposition59ReciprocalModeWeightedShell.lean"
-  ]
- },
- {
   "atom": "Set.indicator_of_notMem",
   "n_files": 16,
   "files": [
@@ -6719,28 +6762,6 @@
    "G6N1SelectedFerrersW5RateAssembly.lean",
    "G6N1SturmDefectTruncatedEnergy.lean",
    "SpheroidalSourceMain.lean"
-  ]
- },
- {
-  "atom": "div_le_one",
-  "n_files": 16,
-  "files": [
-   "D0Mode4ClassicalCarrierFromFiniteLimit.lean",
-   "D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean",
-   "D0Mode4FerrersPhysicalFourierEigenTransport.lean",
-   "D0Mode4JacobiHermitianTailRow.lean",
-   "G6N1ExplicitCCMLimitBeyondSourceWindowTail.lean",
-   "G6N1SelectedFerrersCenterCoefficientFloor.lean",
-   "G6N1SelectedFerrersEdgeTopFluxConsumer.lean",
-   "G6N1SelectedFerrersN2CompactDecayAssembly.lean",
-   "G6N1SelectedFerrersOuterPolynomialDecay.lean",
-   "G6N1SelectedFerrersPacketVariation.lean",
-   "G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
-   "G6N1SelectedFerrersTrialNormalizerClosure.lean",
-   "G6N1SelectedFerrersW5RateAssembly.lean",
-   "G6N1SturmDefectTruncatedEnergy.lean",
-   "G6N1SturmWeightedConsumerNonTopRate.lean",
-   "SpheroidalSourceHighMode.lean"
   ]
  },
  {
@@ -7253,6 +7274,26 @@
   ]
  },
  {
+  "atom": "Fin.ext",
+  "n_files": 14,
+  "files": [
+   "CCMFiniteWeilShiftedRankOne.lean",
+   "CCMFiniteWeilSourceCommutator.lean",
+   "D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+   "D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+   "D0PstarCCMFiniteRieszOperator.lean",
+   "D0PstarCCMFiniteSourceResidual.lean",
+   "D0PstarSourceCCMOddMassReflectionDefect.lean",
+   "D0PstarSourceEvenFiniteHeadCrosswalk.lean",
+   "D0PstarSourceWeilOddFormPullback13.lean",
+   "G6N1SelectedFerrersFiniteCCMResidualVariance.lean",
+   "G6N1SelectedFerrersFiniteCCMSourceRow.lean",
+   "G6N1SelectedFerrersH2aSourceQuantities.lean",
+   "P59SignFreeRitz.lean",
+   "Proposition59GroundLagrangeZeroSetBridge.lean"
+  ]
+ },
+ {
   "atom": "Finset.sum_comm",
   "n_files": 14,
   "files": [
@@ -7588,25 +7629,6 @@
    "G6N1SelectedFerrersOuterPolynomialDecay.lean",
    "G6N1SelectedFerrersTrialNormalizerClosure.lean",
    "G6N1SelectedFerrersW5RateAssembly.lean"
-  ]
- },
- {
-  "atom": "Fin.ext",
-  "n_files": 13,
-  "files": [
-   "CCMFiniteWeilShiftedRankOne.lean",
-   "CCMFiniteWeilSourceCommutator.lean",
-   "D0Mode4ClassicalCarrierFromFiniteLimit.lean",
-   "D0Mode4FiniteEvenLegendreQuadraticForm.lean",
-   "D0PstarCCMFiniteRieszOperator.lean",
-   "D0PstarCCMFiniteSourceResidual.lean",
-   "D0PstarSourceCCMOddMassReflectionDefect.lean",
-   "D0PstarSourceEvenFiniteHeadCrosswalk.lean",
-   "D0PstarSourceWeilOddFormPullback13.lean",
-   "G6N1SelectedFerrersFiniteCCMResidualVariance.lean",
-   "G6N1SelectedFerrersFiniteCCMSourceRow.lean",
-   "G6N1SelectedFerrersH2aSourceQuantities.lean",
-   "Proposition59GroundLagrangeZeroSetBridge.lean"
   ]
  },
  {
@@ -8006,6 +8028,44 @@
    "MuntzV3/MellinConvergentSqrtTail.lean",
    "MuntzV3/RminusExactClass.lean",
    "MuntzV3/RplusExactClass.lean"
+  ]
+ },
+ {
+  "atom": "smul_smul",
+  "n_files": 13,
+  "files": [
+   "AbstractCoboundaryLedger.lean",
+   "CCMFiniteWeilEtaNonzero.lean",
+   "D0PstarCCMFiniteSourceResidual.lean",
+   "D0PstarOddTailDividedDifference13.lean",
+   "D0PstarSourceEvenFiniteHeadCrosswalk.lean",
+   "D0PstarSourceWeilOddFormPullback13.lean",
+   "D0PstarSourceWeilOddTailResidual.lean",
+   "G6N1FuchsProjectOperatorIntertwining.lean",
+   "G6N1SelectedFerrersGroundParityRealification.lean",
+   "H2aPenaltyCoercivity.lean",
+   "NormalizedTrackingRateTransfer.lean",
+   "P59SignFreeRitz.lean",
+   "P59XiLadderFeshbachRemainder.lean"
+  ]
+ },
+ {
+  "atom": "zero_lt_one",
+  "n_files": 13,
+  "files": [
+   "D0Mode4JacobiMatchedNormalizedCoefficientRow.lean",
+   "D0PstarSourceArchDiagonalCCMWRCrosswalk.lean",
+   "D0PstarSourceArchDiagonalRegularizerEndpointLedger.lean",
+   "D0PstarSourcePrimeModePairing.lean",
+   "D0PstarVModeLogWeightedL2.lean",
+   "G6N1ExplicitCCMLimitMellinNormalization.lean",
+   "G6N1SelectedFerrersClosedSubstripMellinConvergence.lean",
+   "MuntzV3/GwinExactClass.lean",
+   "MuntzV3/HabsExactClass.lean",
+   "MuntzV3/R6BoundaryCellBridge.lean",
+   "MuntzV3/RminusExactClass.lean",
+   "MuntzV3/RplusExactClass.lean",
+   "P59SignFreeRitz.lean"
   ]
  },
  {
@@ -8531,24 +8591,6 @@
   ]
  },
  {
-  "atom": "smul_smul",
-  "n_files": 12,
-  "files": [
-   "AbstractCoboundaryLedger.lean",
-   "CCMFiniteWeilEtaNonzero.lean",
-   "D0PstarCCMFiniteSourceResidual.lean",
-   "D0PstarOddTailDividedDifference13.lean",
-   "D0PstarSourceEvenFiniteHeadCrosswalk.lean",
-   "D0PstarSourceWeilOddFormPullback13.lean",
-   "D0PstarSourceWeilOddTailResidual.lean",
-   "G6N1FuchsProjectOperatorIntertwining.lean",
-   "G6N1SelectedFerrersGroundParityRealification.lean",
-   "H2aPenaltyCoercivity.lean",
-   "NormalizedTrackingRateTransfer.lean",
-   "P59XiLadderFeshbachRemainder.lean"
-  ]
- },
- {
   "atom": "starRingEnd_apply",
   "n_files": 12,
   "files": [
@@ -8618,24 +8660,6 @@
    "G6N1SelectedFerrersOddMassDecay.lean",
    "G6N1SelectedFerrersPreAnchorDataInhabitant.lean",
    "G6N1SelectedFerrersTrialNormalizerClosure.lean"
-  ]
- },
- {
-  "atom": "zero_lt_one",
-  "n_files": 12,
-  "files": [
-   "D0Mode4JacobiMatchedNormalizedCoefficientRow.lean",
-   "D0PstarSourceArchDiagonalCCMWRCrosswalk.lean",
-   "D0PstarSourceArchDiagonalRegularizerEndpointLedger.lean",
-   "D0PstarSourcePrimeModePairing.lean",
-   "D0PstarVModeLogWeightedL2.lean",
-   "G6N1ExplicitCCMLimitMellinNormalization.lean",
-   "G6N1SelectedFerrersClosedSubstripMellinConvergence.lean",
-   "MuntzV3/GwinExactClass.lean",
-   "MuntzV3/HabsExactClass.lean",
-   "MuntzV3/R6BoundaryCellBridge.lean",
-   "MuntzV3/RminusExactClass.lean",
-   "MuntzV3/RplusExactClass.lean"
   ]
  },
  {
@@ -9115,6 +9139,23 @@
   ]
  },
  {
+  "atom": "simp_all",
+  "n_files": 11,
+  "files": [
+   "CCMFiniteWeilSourceMatrixN1.lean",
+   "CCMProposition59ComplexTrialComplementRayleigh.lean",
+   "CCMProposition59ComplexTrialComplementSpectral.lean",
+   "D0HermitianNegativeIndexDrop.lean",
+   "D0HilbertBasisWeightedTail.lean",
+   "D0Mode4HermitianNegativeCountStability.lean",
+   "H2aPenaltyCoercivity.lean",
+   "HermitianUnitMinimumEigenpair.lean",
+   "MontelCenteredCriticalStrip.lean",
+   "MontelNormalFamilies.lean",
+   "P59SignFreeRitz.lean"
+  ]
+ },
+ {
   "atom": "split_ifs",
   "n_files": 11,
   "files": [
@@ -9454,6 +9495,22 @@
   ]
  },
  {
+  "atom": "div_lt_iff",
+  "n_files": 10,
+  "files": [
+   "G6N1ExplicitHDerivativeCombBudget.lean",
+   "G6N1SelectedFerrersAbelPoissonL2.lean",
+   "G6N1SelectedFerrersEdgeTopFluxConsumer.lean",
+   "G6N1SpheroidalSourcePhysicalLift.lean",
+   "G6N1SturmWeightedConsumerNonTopRate.lean",
+   "MontelCenteredCriticalStrip.lean",
+   "MontelNormalFamilies.lean",
+   "MuntzV3/RminusExactClass.lean",
+   "P59SignFreeRitz.lean",
+   "SpheroidalSourceMain.lean"
+  ]
+ },
+ {
   "atom": "dotProduct_add",
   "n_files": 10,
   "files": [
@@ -9611,22 +9668,6 @@
    "HermitianUnitMinimumEigenpair.lean",
    "LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail.lean",
    "RelativeRitzFinite.lean"
-  ]
- },
- {
-  "atom": "simp_all",
-  "n_files": 10,
-  "files": [
-   "CCMFiniteWeilSourceMatrixN1.lean",
-   "CCMProposition59ComplexTrialComplementRayleigh.lean",
-   "CCMProposition59ComplexTrialComplementSpectral.lean",
-   "D0HermitianNegativeIndexDrop.lean",
-   "D0HilbertBasisWeightedTail.lean",
-   "D0Mode4HermitianNegativeCountStability.lean",
-   "H2aPenaltyCoercivity.lean",
-   "HermitianUnitMinimumEigenpair.lean",
-   "MontelCenteredCriticalStrip.lean",
-   "MontelNormalFamilies.lean"
   ]
  },
  {
@@ -9960,21 +10001,6 @@
    "D0PstarSourceModeCosineCCMQKernel.lean",
    "D0PstarVModeLogWeightedL2.lean",
    "G6N1SelectedFerrersFixedKShiftedRootEnergy.lean"
-  ]
- },
- {
-  "atom": "div_lt_iff",
-  "n_files": 9,
-  "files": [
-   "G6N1ExplicitHDerivativeCombBudget.lean",
-   "G6N1SelectedFerrersAbelPoissonL2.lean",
-   "G6N1SelectedFerrersEdgeTopFluxConsumer.lean",
-   "G6N1SpheroidalSourcePhysicalLift.lean",
-   "G6N1SturmWeightedConsumerNonTopRate.lean",
-   "MontelCenteredCriticalStrip.lean",
-   "MontelNormalFamilies.lean",
-   "MuntzV3/RminusExactClass.lean",
-   "SpheroidalSourceMain.lean"
   ]
  },
  {
@@ -10377,6 +10403,20 @@
   ]
  },
  {
+  "atom": "Fin.sum_univ_two",
+  "n_files": 8,
+  "files": [
+   "AbstractCoboundaryLedger.lean",
+   "G6N1SelectedFerrersCenterCoefficientFloor.lean",
+   "G6N1SelectedFerrersCommutatorResidualDefect.lean",
+   "G6N1SelectedFerrersFiniteCCMResidualSourceActionSplit.lean",
+   "G6N1SelectedFerrersFiniteCCMSourceRow.lean",
+   "G6N1SelectedFerrersH2aSourceQuantities.lean",
+   "G6N1SelectedFerrersOddMassDecay.lean",
+   "P59SignFreeRitz.lean"
+  ]
+ },
+ {
   "atom": "Finset.sum_Icc_succ_top",
   "n_files": 8,
   "files": [
@@ -10766,6 +10806,20 @@
    "G6N1SelectedFerrersOddMassDecay.lean",
    "G6N1SelectedFerrersW5L1MassRate.lean",
    "SpheroidalSourceMain.lean"
+  ]
+ },
+ {
+  "atom": "conv_lhs",
+  "n_files": 8,
+  "files": [
+   "CCMComplexTrialReflectionContaminationFloor.lean",
+   "G6N1SelectedFerrersFiniteAssetBank.lean",
+   "G6N1SelectedFerrersHilbertPairing.lean",
+   "H2aPenaltyCoercivity.lean",
+   "HermitianUnitMinimumEigenpair.lean",
+   "P59SignFreeRitz.lean",
+   "Proposition59ExplicitProductCurvatureBridge.lean",
+   "SpheroidalSourceHighMode.lean"
   ]
  },
  {
@@ -11238,16 +11292,16 @@
   ]
  },
  {
-  "atom": "Fin.sum_univ_two",
+  "atom": "Fin.sum_univ_three",
   "n_files": 7,
   "files": [
    "AbstractCoboundaryLedger.lean",
-   "G6N1SelectedFerrersCenterCoefficientFloor.lean",
-   "G6N1SelectedFerrersCommutatorResidualDefect.lean",
+   "CCMComplexTrialReflectionContaminationFloor.lean",
+   "G6N1SelectedFerrersBetaMomentOddMass.lean",
    "G6N1SelectedFerrersFiniteCCMResidualSourceActionSplit.lean",
-   "G6N1SelectedFerrersFiniteCCMSourceRow.lean",
+   "G6N1SelectedFerrersFiniteCCMResidualVariance.lean",
    "G6N1SelectedFerrersH2aSourceQuantities.lean",
-   "G6N1SelectedFerrersOddMassDecay.lean"
+   "P59SignFreeRitz.lean"
   ]
  },
  {
@@ -11690,19 +11744,6 @@
    "G6N1SelectedFerrersClosedSubstripMellinConvergence.lean",
    "G6N1SelectedFerrersFiniteCCMResidualSourceActionSplit.lean",
    "G6N1SelectedFerrersOddMassDecay.lean"
-  ]
- },
- {
-  "atom": "conv_lhs",
-  "n_files": 7,
-  "files": [
-   "CCMComplexTrialReflectionContaminationFloor.lean",
-   "G6N1SelectedFerrersFiniteAssetBank.lean",
-   "G6N1SelectedFerrersHilbertPairing.lean",
-   "H2aPenaltyCoercivity.lean",
-   "HermitianUnitMinimumEigenpair.lean",
-   "Proposition59ExplicitProductCurvatureBridge.lean",
-   "SpheroidalSourceHighMode.lean"
   ]
  },
  {
@@ -12162,18 +12203,6 @@
   ]
  },
  {
-  "atom": "Fin.sum_univ_three",
-  "n_files": 6,
-  "files": [
-   "AbstractCoboundaryLedger.lean",
-   "CCMComplexTrialReflectionContaminationFloor.lean",
-   "G6N1SelectedFerrersBetaMomentOddMass.lean",
-   "G6N1SelectedFerrersFiniteCCMResidualSourceActionSplit.lean",
-   "G6N1SelectedFerrersFiniteCCMResidualVariance.lean",
-   "G6N1SelectedFerrersH2aSourceQuantities.lean"
-  ]
- },
- {
   "atom": "Finset.card_le_card",
   "n_files": 6,
   "files": [
@@ -12207,6 +12236,18 @@
    "G6N1SelectedFerrersFiniteAssetBank.lean",
    "G6N1SelectedFerrersGroundParityRealification.lean",
    "G6N1SelectedFerrersTrackedGroundTransform.lean"
+  ]
+ },
+ {
+  "atom": "Finset.univ.erase",
+  "n_files": 6,
+  "files": [
+   "D0Mode4ClassicalCarrierFromFiniteLimit.lean",
+   "G6N1SelectedFerrersCommutatorResidualDefect.lean",
+   "Goal058PolarizedVolterra.lean",
+   "P59SignFreeRitz.lean",
+   "RankOneCorrectionLagrangeIdentity.lean",
+   "WeightedRayleighProjectiveDefect.lean"
   ]
  },
  {
@@ -12762,6 +12803,18 @@
   ]
  },
  {
+  "atom": "inner_add_right",
+  "n_files": 6,
+  "files": [
+   "CCMComplexTrialReflectionContaminationFloor.lean",
+   "D0PstarSourceEvenNonzeroLowBandAssembly.lean",
+   "D0PstarSourceEvenNonzeroTailCarrier.lean",
+   "D0PstarSourceWeilOddTailCoercivityClosure.lean",
+   "D0PstarSourceWeilOddTargetFloorSchurReduction.lean",
+   "P59SignFreeRitz.lean"
+  ]
+ },
+ {
   "atom": "inner_conj_symm",
   "n_files": 6,
   "files": [
@@ -12771,6 +12824,18 @@
    "D0PstarShiftedArchSesquilinearForm.lean",
    "D0PstarSourceEvenNonzeroLowBandAssembly.lean",
    "D0PstarSourceWeilOddTargetFloorSchurReduction.lean"
+  ]
+ },
+ {
+  "atom": "inner_sum",
+  "n_files": 6,
+  "files": [
+   "D0HilbertBasisWeightedTail.lean",
+   "D0PstarSourceEvenNonzeroLowBandAssembly.lean",
+   "D0PstarSourceWeilOddFormPullback13.lean",
+   "G6N1SelectedFerrersCenterCoefficientFloor.lean",
+   "G6N1SelectedFerrersOddMassDecay.lean",
+   "P59SignFreeRitz.lean"
   ]
  },
  {
@@ -13047,6 +13112,18 @@
    "D0PstarSourceLogWindowFourierL2Isometry.lean",
    "D0PstarSourceLowBandModeDecay.lean",
    "D0PstarSourceWeilOddFormPullback13.lean"
+  ]
+ },
+ {
+  "atom": "orthonormal_iff_ite.mp",
+  "n_files": 6,
+  "files": [
+   "D0LogWindowVNMCompletenessBridge.lean",
+   "D0PstarSourceEvenNonzeroLowBandAssembly.lean",
+   "D0PstarSourceLowBandModeDecay.lean",
+   "G6N1SelectedFerrersCenterCoefficientFloor.lean",
+   "G6N1SelectedFerrersOddMassDecay.lean",
+   "P59SignFreeRitz.lean"
   ]
  },
  {
@@ -13432,17 +13509,6 @@
    "G6N1SelectedFerrersEvenSectorArchPrimeReduction.lean",
    "G6N1SelectedFerrersHilbertPairing.lean",
    "Goal058PolarizedVolterra.lean"
-  ]
- },
- {
-  "atom": "Finset.univ.erase",
-  "n_files": 5,
-  "files": [
-   "D0Mode4ClassicalCarrierFromFiniteLimit.lean",
-   "G6N1SelectedFerrersCommutatorResidualDefect.lean",
-   "Goal058PolarizedVolterra.lean",
-   "RankOneCorrectionLagrangeIdentity.lean",
-   "WeightedRayleighProjectiveDefect.lean"
   ]
  },
  {
@@ -14194,28 +14260,6 @@
   ]
  },
  {
-  "atom": "inner_add_right",
-  "n_files": 5,
-  "files": [
-   "CCMComplexTrialReflectionContaminationFloor.lean",
-   "D0PstarSourceEvenNonzeroLowBandAssembly.lean",
-   "D0PstarSourceEvenNonzeroTailCarrier.lean",
-   "D0PstarSourceWeilOddTailCoercivityClosure.lean",
-   "D0PstarSourceWeilOddTargetFloorSchurReduction.lean"
-  ]
- },
- {
-  "atom": "inner_sum",
-  "n_files": 5,
-  "files": [
-   "D0HilbertBasisWeightedTail.lean",
-   "D0PstarSourceEvenNonzeroLowBandAssembly.lean",
-   "D0PstarSourceWeilOddFormPullback13.lean",
-   "G6N1SelectedFerrersCenterCoefficientFloor.lean",
-   "G6N1SelectedFerrersOddMassDecay.lean"
-  ]
- },
- {
   "atom": "integral_mul_const",
   "n_files": 5,
   "files": [
@@ -14433,17 +14477,6 @@
    "MuntzV3/HabsExactClass.lean",
    "PolynomialCircleRootCount.lean",
    "Proposition59ExplicitProductCurvatureBridge.lean"
-  ]
- },
- {
-  "atom": "orthonormal_iff_ite.mp",
-  "n_files": 5,
-  "files": [
-   "D0LogWindowVNMCompletenessBridge.lean",
-   "D0PstarSourceEvenNonzeroLowBandAssembly.lean",
-   "D0PstarSourceLowBandModeDecay.lean",
-   "G6N1SelectedFerrersCenterCoefficientFloor.lean",
-   "G6N1SelectedFerrersOddMassDecay.lean"
   ]
  },
  {
@@ -14864,6 +14897,16 @@
   ]
  },
  {
+  "atom": "Finset.ne_of_mem_erase",
+  "n_files": 4,
+  "files": [
+   "G6N1SelectedFerrersCommutatorResidualDefect.lean",
+   "Goal058PolarizedVolterra.lean",
+   "P59SignFreeRitz.lean",
+   "WeightedRayleighProjectiveDefect.lean"
+  ]
+ },
+ {
   "atom": "Finset.smul_sum",
   "n_files": 4,
   "files": [
@@ -14974,6 +15017,16 @@
   ]
  },
  {
+  "atom": "Matrix.cons_val_two",
+  "n_files": 4,
+  "files": [
+   "AbstractCoboundaryLedger.lean",
+   "G6N1SelectedFerrersFiniteCCMResidualSourceActionSplit.lean",
+   "G6N1SelectedFerrersFiniteCCMResidualVariance.lean",
+   "P59SignFreeRitz.lean"
+  ]
+ },
+ {
   "atom": "Matrix.fromBlocks",
   "n_files": 4,
   "files": [
@@ -14981,6 +15034,16 @@
    "D0Mode4BackwardTailFiniteSchurCrosswalk.lean",
    "D0Mode4FiniteBlockInertiaAdditivity.lean",
    "RankOneCorrectionQuotientCharpoly.lean"
+  ]
+ },
+ {
+  "atom": "Matrix.head_cons",
+  "n_files": 4,
+  "files": [
+   "G6N1SelectedFerrersFiniteCCMResidualSourceActionSplit.lean",
+   "G6N1SelectedFerrersFiniteCCMResidualVariance.lean",
+   "G6N1SelectedFerrersOddMassDecay.lean",
+   "P59SignFreeRitz.lean"
   ]
  },
  {
@@ -16656,6 +16719,15 @@
   ]
  },
  {
+  "atom": "Fin.ext_iff",
+  "n_files": 3,
+  "files": [
+   "D0Mode4DLMFFullFiniteSpectrumCrosswalk.lean",
+   "D0Mode4FiniteEvenLegendreQuadraticForm.lean",
+   "P59SignFreeRitz.lean"
+  ]
+ },
+ {
   "atom": "Fin.succAbove",
   "n_files": 3,
   "files": [
@@ -16671,6 +16743,15 @@
    "D0PstarFirstOrderProjectionTailReceiver.lean",
    "G6N1ExplicitHDerivativeCombBudget.lean",
    "G6N1SelectedFerrersN2SourceScaledTailRate.lean"
+  ]
+ },
+ {
+  "atom": "Finset.add_sum_erase",
+  "n_files": 3,
+  "files": [
+   "G6N1SelectedFerrersCommutatorResidualDefect.lean",
+   "P59SignFreeRitz.lean",
+   "Proposition59EntireTransform.lean"
   ]
  },
  {
@@ -16707,15 +16788,6 @@
    "Proposition59ExplicitProductCurvatureBridge.lean",
    "Proposition59GroundLagrangeZeroSetBridge.lean",
    "RankOneCorrectionLagrangeIdentity.lean"
-  ]
- },
- {
-  "atom": "Finset.ne_of_mem_erase",
-  "n_files": 3,
-  "files": [
-   "G6N1SelectedFerrersCommutatorResidualDefect.lean",
-   "Goal058PolarizedVolterra.lean",
-   "WeightedRayleighProjectiveDefect.lean"
   ]
  },
  {
@@ -16899,12 +16971,21 @@
   ]
  },
  {
-  "atom": "Matrix.cons_val_two",
+  "atom": "Matrix.cons_val_one",
   "n_files": 3,
   "files": [
    "AbstractCoboundaryLedger.lean",
-   "G6N1SelectedFerrersFiniteCCMResidualSourceActionSplit.lean",
-   "G6N1SelectedFerrersFiniteCCMResidualVariance.lean"
+   "G6N1SelectedFerrersOddMassDecay.lean",
+   "P59SignFreeRitz.lean"
+  ]
+ },
+ {
+  "atom": "Matrix.cons_val_zero",
+  "n_files": 3,
+  "files": [
+   "AbstractCoboundaryLedger.lean",
+   "G6N1SelectedFerrersOddMassDecay.lean",
+   "P59SignFreeRitz.lean"
   ]
  },
  {
@@ -16953,15 +17034,6 @@
   ]
  },
  {
-  "atom": "Matrix.head_cons",
-  "n_files": 3,
-  "files": [
-   "G6N1SelectedFerrersFiniteCCMResidualSourceActionSplit.lean",
-   "G6N1SelectedFerrersFiniteCCMResidualVariance.lean",
-   "G6N1SelectedFerrersOddMassDecay.lean"
-  ]
- },
- {
   "atom": "Matrix.mulVec_neg",
   "n_files": 3,
   "files": [
@@ -16995,6 +17067,15 @@
    "CCMProposition59ComplexTrialComplementRayleigh.lean",
    "CCMProposition59ComplexTrialComplementSpectral.lean",
    "RelativeRitzFinite.lean"
+  ]
+ },
+ {
+  "atom": "Matrix.tail_cons",
+  "n_files": 3,
+  "files": [
+   "G6N1SelectedFerrersFiniteCCMResidualSourceActionSplit.lean",
+   "G6N1SelectedFerrersFiniteCCMResidualVariance.lean",
+   "P59SignFreeRitz.lean"
   ]
  },
  {
@@ -19973,14 +20054,6 @@
   ]
  },
  {
-  "atom": "Fin.ext_iff",
-  "n_files": 2,
-  "files": [
-   "D0Mode4DLMFFullFiniteSpectrumCrosswalk.lean",
-   "D0Mode4FiniteEvenLegendreQuadraticForm.lean"
-  ]
- },
- {
   "atom": "Fin.val_rev",
   "n_files": 2,
   "files": [
@@ -19994,14 +20067,6 @@
   "files": [
    "D0Mode4ClassicalCarrierToDLMF3035EvenL2.lean",
    "D0Mode4DLMF3035EvenL2ToFiniteLimitSpectrum.lean"
-  ]
- },
- {
-  "atom": "Finset.add_sum_erase",
-  "n_files": 2,
-  "files": [
-   "G6N1SelectedFerrersCommutatorResidualDefect.lean",
-   "Proposition59EntireTransform.lean"
   ]
  },
  {
@@ -20573,22 +20638,6 @@
   ]
  },
  {
-  "atom": "Matrix.cons_val_one",
-  "n_files": 2,
-  "files": [
-   "AbstractCoboundaryLedger.lean",
-   "G6N1SelectedFerrersOddMassDecay.lean"
-  ]
- },
- {
-  "atom": "Matrix.cons_val_zero",
-  "n_files": 2,
-  "files": [
-   "AbstractCoboundaryLedger.lean",
-   "G6N1SelectedFerrersOddMassDecay.lean"
-  ]
- },
- {
   "atom": "Matrix.diagonal_mul",
   "n_files": 2,
   "files": [
@@ -20682,14 +20731,6 @@
   "files": [
    "G6N1SelectedFerrersGroundParityRealification.lean",
    "G6N1SelectedFerrersH2aSourceQuantities.lean"
-  ]
- },
- {
-  "atom": "Matrix.tail_cons",
-  "n_files": 2,
-  "files": [
-   "G6N1SelectedFerrersFiniteCCMResidualSourceActionSplit.lean",
-   "G6N1SelectedFerrersFiniteCCMResidualVariance.lean"
   ]
  },
  {
@@ -26780,6 +26821,13 @@
   ]
  },
  {
+  "atom": "EuclideanSpace.basisFun",
+  "n_files": 1,
+  "files": [
+   "P59SignFreeRitz.lean"
+  ]
+ },
+ {
   "atom": "EuclideanSpace.inner_eq_star_dotProduct",
   "n_files": 1,
   "files": [
@@ -26987,6 +27035,13 @@
   "n_files": 1,
   "files": [
    "D0Mode4ClassicalCarrierFromFiniteLimit.lean"
+  ]
+ },
+ {
+  "atom": "Fin.le_def",
+  "n_files": 1,
+  "files": [
+   "P59SignFreeRitz.lean"
   ]
  },
  {
@@ -29552,6 +29607,13 @@
   ]
  },
  {
+  "atom": "Module.Basis.constr_basis",
+  "n_files": 1,
+  "files": [
+   "P59SignFreeRitz.lean"
+  ]
+ },
+ {
   "atom": "Module.Basis.ofVectorSpace",
   "n_files": 1,
   "files": [
@@ -30172,6 +30234,13 @@
   "n_files": 1,
   "files": [
    "D0PstarSourceLogWindowFourierL2Isometry.lean"
+  ]
+ },
+ {
+  "atom": "OrthonormalBasis.coe_toBasis",
+  "n_files": 1,
+  "files": [
+   "P59SignFreeRitz.lean"
   ]
  },
  {
@@ -32874,6 +32943,20 @@
   "n_files": 1,
   "files": [
    "D0HilbertBasisWeightedTail.lean"
+  ]
+ },
+ {
+  "atom": "b.sum_inner_mul_inner",
+  "n_files": 1,
+  "files": [
+   "P59SignFreeRitz.lean"
+  ]
+ },
+ {
+  "atom": "b.sum_repr'",
+  "n_files": 1,
+  "files": [
+   "P59SignFreeRitz.lean"
   ]
  },
  {
@@ -42978,6 +43061,13 @@
   ]
  },
  {
+  "atom": "norm_sub_pow_two_real",
+  "n_files": 1,
+  "files": [
+   "P59SignFreeRitz.lean"
+  ]
+ },
+ {
   "atom": "norm_sub_sq",
   "n_files": 1,
   "files": [
@@ -43437,6 +43527,34 @@
   "n_files": 1,
   "files": [
    "D0PstarSourceWeilOddTargetFloorSchurReceiver.lean"
+  ]
+ },
+ {
+  "atom": "real_inner_comm",
+  "n_files": 1,
+  "files": [
+   "P59SignFreeRitz.lean"
+  ]
+ },
+ {
+  "atom": "real_inner_le_norm",
+  "n_files": 1,
+  "files": [
+   "P59SignFreeRitz.lean"
+  ]
+ },
+ {
+  "atom": "real_inner_self_eq_norm_sq",
+  "n_files": 1,
+  "files": [
+   "P59SignFreeRitz.lean"
+  ]
+ },
+ {
+  "atom": "real_inner_smul_right",
+  "n_files": 1,
+  "files": [
+   "P59SignFreeRitz.lean"
   ]
  },
  {

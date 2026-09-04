@@ -1,12 +1,12 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 390,
-  "declarations": 4463,
-  "in_docs": 2314,
+  "files_scanned": 391,
+  "declarations": 4496,
+  "in_docs": 2347,
   "in_lemma_db": 4182,
-  "orphans": 47,
-  "uncatalogued": 47,
+  "orphans": 48,
+  "uncatalogued": 48,
   "orphan_files_top": [
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59ExplicitProductCurvatureBridge.lean",
@@ -38,6 +38,10 @@
     ],
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058CurvatureArithmetic.lean",
+      1
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean",
       1
     ]
   ],
@@ -4578,7 +4582,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CanonicalRHRouteSkeleton.lean",
       "line": 80,
       "signature": "@[simp] theorem sameCofinalGuard_s2Sequence {Index : Type*} (C : CanonicalApproximation Index) (H2aAt S1At : Index → Prop) (hH2a : SlotH2a C H2aAt) (hS1 : SlotS1 C S1At) : (sameCofinalGuard C H2aAt S1At hH2a hS1).s2Sequence = fun k => C.parent (C.extract k)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -37520,6 +37524,336 @@
       "signature": "theorem detector_decay_does_not_imply_relative_decay : Tendsto lowerProductB atTop (𝓝 0) ∧ ¬ Tendsto (fun n : ℕ => |lowerProductB n|⁻¹ * lowerProductB n) atTop (𝓝 0)",
       "in_docs": true,
       "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "gap_mul_defect_le_weighted_excess_sum",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean",
+      "line": 57,
+      "signature": "theorem gap_mul_defect_le_weighted_excess_sum {ι : Type*} [Fintype ι] [DecidableEq ι] (lam w : ι → ℝ) (j₁ : ι) (l2 : ℝ) (hlam : ∀ j, j ≠ j₁ → l2 ≤ lam j) (hw : ∀ j, 0 ≤ w j) (hsum : ∑ j, w j = 1) : (l2 - lam j₁) * (1 - w j₁) ≤ ∑ j, (lam j - lam j₁) * w j",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sum_sq_inner_eq_norm_sq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean",
+      "line": 87,
+      "signature": "theorem sum_sq_inner_eq_norm_sq {ι : Type*} [Fintype ι] (b : OrthonormalBasis ι ℝ E) (q : E) : ∑ j, ⟪b j, q⟫ ^ 2 = ‖q‖ ^ 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "rayleigh_eq_weighted_eigenvalue_sum",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean",
+      "line": 100,
+      "signature": "theorem rayleigh_eq_weighted_eigenvalue_sum {ι : Type*} [Fintype ι] (b : OrthonormalBasis ι ℝ E) (K : E →ₗ[ℝ] E) (lam : ι → ℝ) (hK : ∀ j, K (b j) = lam j • b j) (q : E) : ⟪q, K q⟫ = ∑ j, lam j * ⟪b j, q⟫ ^ 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "one_le_of_ne_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean",
+      "line": 119,
+      "signature": "private theorem one_le_of_ne_zero (j : Fin (n + 2)) (hj : j ≠ 0) : (1 : Fin (n + 2)) ≤ j",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "signFreeRitz_rayleighExcess_eq_weighted_sum",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean",
+      "line": 130,
+      "signature": "theorem signFreeRitz_rayleighExcess_eq_weighted_sum (b : OrthonormalBasis (Fin (n + 2)) ℝ E) (K : E →ₗ[ℝ] E) (lam : Fin (n + 2) → ℝ) (hK : ∀ j, K (b j) = lam j • b j) (q : E) (hq : ‖q‖ = 1) : ⟪q, K q⟫ - lam 0 = ∑ j, (lam j - lam 0) * ⟪b j, q⟫ ^ 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "signFreeRitz_gap_mul_projectiveDefect_le_rayleighExcess",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean",
+      "line": 149,
+      "signature": "theorem signFreeRitz_gap_mul_projectiveDefect_le_rayleighExcess (b : OrthonormalBasis (Fin (n + 2)) ℝ E) (K : E →ₗ[ℝ] E) (lam : Fin (n + 2) → ℝ) (hK : ∀ j, K (b j) = lam j • b j) (hmono : Monotone lam) (q : E) (hq : ‖q‖ = 1) : (lam 1 - lam 0) * (1 - ⟪b 0, q⟫ ^ 2) ≤ ⟪q, K q⟫ - lam 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "signFreeRitz_projectiveDefect_le_rayleighExcess_div_gap",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean",
+      "line": 163,
+      "signature": "theorem signFreeRitz_projectiveDefect_le_rayleighExcess_div_gap (b : OrthonormalBasis (Fin (n + 2)) ℝ E) (K : E →ₗ[ℝ] E) (lam : Fin (n + 2) → ℝ) (hK : ∀ j, K (b j) = lam j • b j) (hmono : Monotone lam) (q : E) (hq : ‖q‖ = 1) (hgap : 0 < lam 1 - lam 0) : 1 - ⟪b 0, q⟫ ^ 2 ≤ (⟪q, K q⟫ - lam 0) / (lam 1 - lam 0)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "signFreeRitz_zero_gap_control",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean",
+      "line": 175,
+      "signature": "theorem signFreeRitz_zero_gap_control (b : OrthonormalBasis (Fin (n + 2)) ℝ E) (K : E →ₗ[ℝ] E) (lam : Fin (n + 2) → ℝ) (hK : ∀ j, K (b j) = lam j • b j) (hmono : Monotone lam) (q : E) (hq : ‖q‖ = 1) (hzero : lam 1 = lam 0) : (lam 1 - lam 0) * (1 - ⟪b 0, q⟫ ^ 2) ≤ ⟪q, K q⟫ - lam 0 ∧ 0 ≤ ⟪q, K q⟫ - lam 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "signFreeRitz_dist_sq_eq_two_mul_one_sub_sqrt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean",
+      "line": 191,
+      "signature": "theorem signFreeRitz_dist_sq_eq_two_mul_one_sub_sqrt (x q : E) (hx : ‖x‖ = 1) (hq : ‖q‖ = 1) (halign : 0 ≤ ⟪x, q⟫) : ‖x - q‖ ^ 2 = 2 * (1 - Real.sqrt (1 - (1 - ⟪x, q⟫ ^ 2)))",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "signFreeRitz_dist_sq_le_two_mul_projectiveDefect",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean",
+      "line": 202,
+      "signature": "theorem signFreeRitz_dist_sq_le_two_mul_projectiveDefect (x q : E) (hx : ‖x‖ = 1) (hq : ‖q‖ = 1) (halign : 0 ≤ ⟪x, q⟫) : ‖x - q‖ ^ 2 ≤ 2 * (1 - ⟪x, q⟫ ^ 2)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "signFreeRitz_eigenvector_dist_sq_le_two_mul_projectiveDefect",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean",
+      "line": 213,
+      "signature": "theorem signFreeRitz_eigenvector_dist_sq_le_two_mul_projectiveDefect (b : OrthonormalBasis (Fin (n + 2)) ℝ E) (q : E) (hq : ‖q‖ = 1) (halign : 0 ≤ ⟪b 0, q⟫) : ‖b 0 - q‖ ^ 2 ≤ 2 * (1 - ⟪b 0, q⟫ ^ 2)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "diagOp",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean",
+      "line": 225,
+      "signature": "def diagOp {m : ℕ} (lam : Fin m → ℝ) : EuclideanSpace ℝ (Fin m) →ₗ[ℝ] EuclideanSpace ℝ (Fin m)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "diagOp_apply_basisFun",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean",
+      "line": 230,
+      "signature": "@[simp] theorem diagOp_apply_basisFun {m : ℕ} (lam : Fin m → ℝ) (j : Fin m) : diagOp lam (EuclideanSpace.basisFun (Fin m) ℝ j) = lam j • EuclideanSpace.basisFun (Fin m) ℝ j",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "inner_basisFun_basisFun",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean",
+      "line": 237,
+      "signature": "theorem inner_basisFun_basisFun {m : ℕ} (i j : Fin m) : ⟪EuclideanSpace.basisFun (Fin m) ℝ i, EuclideanSpace.basisFun (Fin m) ℝ j⟫ = if i = j then 1 else 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "plantNegBottomLam",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean",
+      "line": 245,
+      "signature": "def plantNegBottomLam : Fin 2 → ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "plantNegBottomTrial",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean",
+      "line": 248,
+      "signature": "def plantNegBottomTrial (t : ℝ) : EuclideanSpace ℝ (Fin 2)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "plantNegBottomLam_monotone",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean",
+      "line": 252,
+      "signature": "theorem plantNegBottomLam_monotone : Monotone plantNegBottomLam",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "plantNegBottom_eigen",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean",
+      "line": 257,
+      "signature": "theorem plantNegBottom_eigen (j : Fin 2) : diagOp plantNegBottomLam (EuclideanSpace.basisFun (Fin 2) ℝ j) = plantNegBottomLam j • EuclideanSpace.basisFun (Fin 2) ℝ j",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "plantNegBottom_inner_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean",
+      "line": 262,
+      "signature": "theorem plantNegBottom_inner_zero (t : ℝ) : ⟪EuclideanSpace.basisFun (Fin 2) ℝ 0, plantNegBottomTrial t⟫ = Real.sqrt (1 - t ^ 2)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "plantNegBottom_inner_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean",
+      "line": 269,
+      "signature": "theorem plantNegBottom_inner_one (t : ℝ) : ⟪EuclideanSpace.basisFun (Fin 2) ℝ 1, plantNegBottomTrial t⟫ = t",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "plantNegBottom_norm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean",
+      "line": 275,
+      "signature": "theorem plantNegBottom_norm (t : ℝ) (ht0 : 0 ≤ t) (ht1 : t ≤ 1) : ‖plantNegBottomTrial t‖ = 1",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "plantNegBottom_equality_control",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean",
+      "line": 289,
+      "signature": "theorem plantNegBottom_equality_control (t : ℝ) (ht0 : 0 ≤ t) (ht1 : t ≤ 1) : plantNegBottomLam 0 = -2 ∧ plantNegBottomLam 1 = -1 ∧ ‖plantNegBottomTrial t‖ = 1 ∧ 1 - ⟪EuclideanSpace.basisFun (Fin 2) ℝ 0, plantNegBottomTrial t⟫ ^ 2 = t ^ 2 ∧ ⟪plantNegBottomTrial t, diagOp plantNegBottomLam (plantNegBottomTrial t)⟫ - plantNegBottomLam 0 = t ^ 2 ∧ (plantNegBottomLam 1 - plantNegBottomLam 0) * (1 - ⟪EuclideanSpace.basisFun (Fin 2) ℝ 0, plantNegBottomTrial t⟫ ^ 2) = ⟪plantNegBottomTrial t, diagOp plantNegBottomLam (plantNegBottomTrial t)⟫ - plantNegBottomLam 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "plantNegBottom_signFree_instance",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean",
+      "line": 322,
+      "signature": "theorem plantNegBottom_signFree_instance (t : ℝ) (ht0 : 0 ≤ t) (ht1 : t ≤ 1) : (plantNegBottomLam 1 - plantNegBottomLam 0) * (1 - ⟪EuclideanSpace.basisFun (Fin 2) ℝ 0, plantNegBottomTrial t⟫ ^ 2) ≤ ⟪plantNegBottomTrial t, diagOp plantNegBottomLam (plantNegBottomTrial t)⟫ - plantNegBottomLam 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "plantThreeLevelLam",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean",
+      "line": 335,
+      "signature": "def plantThreeLevelLam (m : ℝ) : Fin 3 → ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "plantThreeLevelTrial",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean",
+      "line": 338,
+      "signature": "def plantThreeLevelTrial (m : ℝ) : EuclideanSpace ℝ (Fin 3)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "plantThreeLevelLam_monotone",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean",
+      "line": 342,
+      "signature": "theorem plantThreeLevelLam_monotone {m : ℝ} (hm : 1 ≤ m) : Monotone (plantThreeLevelLam m)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "plantThreeLevel_eigen",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean",
+      "line": 352,
+      "signature": "theorem plantThreeLevel_eigen (m : ℝ) (j : Fin 3) : diagOp (plantThreeLevelLam m) (EuclideanSpace.basisFun (Fin 3) ℝ j) = plantThreeLevelLam m j • EuclideanSpace.basisFun (Fin 3) ℝ j",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "plantThreeLevel_inner_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean",
+      "line": 357,
+      "signature": "theorem plantThreeLevel_inner_zero (m : ℝ) : ⟪EuclideanSpace.basisFun (Fin 3) ℝ 0, plantThreeLevelTrial m⟫ = Real.sqrt (1 - (1 / m) ^ 2)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "plantThreeLevel_inner_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean",
+      "line": 364,
+      "signature": "theorem plantThreeLevel_inner_one (m : ℝ) : ⟪EuclideanSpace.basisFun (Fin 3) ℝ 1, plantThreeLevelTrial m⟫ = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "plantThreeLevel_inner_two",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean",
+      "line": 370,
+      "signature": "theorem plantThreeLevel_inner_two (m : ℝ) : ⟪EuclideanSpace.basisFun (Fin 3) ℝ 2, plantThreeLevelTrial m⟫ = 1 / m",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "plantThreeLevel_norm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean",
+      "line": 376,
+      "signature": "theorem plantThreeLevel_norm {m : ℝ} (hm : 1 ≤ m) : ‖plantThreeLevelTrial m‖ = 1",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "plantThreeLevel_defect_small_ratio_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean",
+      "line": 395,
+      "signature": "theorem plantThreeLevel_defect_small_ratio_one {m : ℝ} (hm : 1 ≤ m) : ‖plantThreeLevelTrial m‖ = 1 ∧ 1 - ⟪EuclideanSpace.basisFun (Fin 3) ℝ 0, plantThreeLevelTrial m⟫ ^ 2 = 1 / m ^ 2 ∧ (⟪plantThreeLevelTrial m, diagOp (plantThreeLevelLam m) (plantThreeLevelTrial m)⟫ - plantThreeLevelLam m 0) / (plantThreeLevelLam m 1 - plantThreeLevelLam m 0) = 1 ∧ (plantThreeLevelLam m 1 - plantThreeLevelLam m 0) * (1 - ⟪EuclideanSpace.basisFun (Fin 3) ℝ 0, plantThreeLevelTrial m⟫ ^ 2) ≤ ⟪plantThreeLevelTrial m, diagOp (plantThreeLevelLam m) (plantThreeLevelTrial m)⟫ - plantThreeLevelLam m 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "plantThreeLevel_defect_arbitrarily_small_ratio_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean",
+      "line": 445,
+      "signature": "theorem plantThreeLevel_defect_arbitrarily_small_ratio_one {ε : ℝ} (hε : 0 < ε) : ∃ m : ℝ, 1 ≤ m ∧ 1 - ⟪EuclideanSpace.basisFun (Fin 3) ℝ 0, plantThreeLevelTrial m⟫ ^ 2 < ε ∧ (⟪plantThreeLevelTrial m, diagOp (plantThreeLevelLam m) (plantThreeLevelTrial m)⟫ - plantThreeLevelLam m 0) / (plantThreeLevelLam m 1 - plantThreeLevelLam m 0) = 1",
+      "in_docs": true,
+      "in_lemma_db": false,
       "orphan": false
     },
     {
