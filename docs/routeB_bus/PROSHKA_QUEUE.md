@@ -16,7 +16,7 @@ safety confirmation остаётся внешней границей. Судья
 
 ## REQ-2026-09-04-FULLCHAIN · REQ-2026-09-04-FULLCHAIN · Goal 058: full closure chain or irreducible atom (FULL_CHAIN | IRREDUCIBLE_ATOM; schedule N(m) free; Probe 22 attached) · OPEN
 
-- `STATUS: OPEN`
+- `STATUS: OPEN` (PRELIMINARY verdict from a fast model at `20b9ddb6`, IRREDUCIBLE_ATOM = P59_LADDER_FESHBACH_Y_COMPONENT_O_T_M, observer-assessed as consistent but thin — Progress_Log 2026-09-04 20:35; the full judge verdict is pending and will supersede the file at EXPECTED_VERDICT_PATH)
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_FULL_CLOSURE_CHAIN_2026-09-04.txt`
 - Boundary: `GOAL058_FULL_CLOSURE_CHAIN`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
