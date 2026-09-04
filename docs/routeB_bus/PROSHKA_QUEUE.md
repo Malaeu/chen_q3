@@ -14,9 +14,10 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-04-RATE · Goal 058: curvature rate re-read — alpha = kappa(G)-kappa_Xi ~ 0.35 L^2/(4 pi^2 m) (m=313 discriminator), alpha = T_tail - Def exactly; atom = far-zero deficit Def <= (1-c) T_tail; window-scale winding lock · OPEN
+## REQ-2026-09-04-RATE · Goal 058: curvature rate re-read — alpha = kappa(G)-kappa_Xi ~ 0.35 L^2/(4 pi^2 m) (m=313 discriminator), alpha = T_tail - Def exactly; atom = far-zero deficit Def <= (1-c) T_tail; window-scale winding lock · IN_REVIEW
 
-- `STATUS: OPEN`
+- `STATUS: IN_REVIEW`
+- Delivery observed 2026-09-04 (late morning): owner pasted the one-line GitHub-locator instruction; judge accepted and is working.
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_CURVATURE_RATE_FAR_ZEROS_2026-09-04.txt`
 - Boundary: `GOAL058_CURVATURE_RATE_L2_OVER_M_AND_FAR_ZERO_DEFICIT`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
