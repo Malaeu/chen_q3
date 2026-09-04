@@ -14,7 +14,7 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-05-PROVE · REQ-2026-09-05-PROVE · Goal 058: prove an RH-sufficient statement on the CCM family via the Weil criterion and the shelf, or certify the obstruction theorem-shaped (Zhu Thm 1.4 style); no third answer · OPEN
+## REQ-2026-09-05-PROVE · REQ-2026-09-05-PROVE · Goal 058: prove an RH-sufficient statement on the CCM family via the Weil criterion and the shelf, or certify the obstruction theorem-shaped (Zhu Thm 1.4 style); no third answer · SUPERSEDED_BY_WEILPROOF (the judge drafted its own proof-construction request REQ-2026-09-04-WEILPROOF at a23dc64d on the owner's word; PROVE stands only if it was already delivered)
 
 - `STATUS: OPEN`
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_PROVE_RH_SUFFICIENT_ATOM_OR_CERTIFY_OBSTRUCTION_2026-09-05.txt`
