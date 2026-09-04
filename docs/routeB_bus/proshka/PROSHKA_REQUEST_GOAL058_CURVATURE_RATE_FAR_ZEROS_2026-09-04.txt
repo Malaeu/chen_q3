@@ -1,0 +1,80 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-04-RATE
+BOUNDARY_ID: GOAL058_CURVATURE_RATE_L2_OVER_M_AND_FAR_ZERO_DEFICIT
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-04-RATE (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub).
+DATE: 2026-09-04
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: PROPOSITION59_CCM_FINITE_BOTTOM_GROUND_FAMILY
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_ADJUDICATION_ONLY
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_CURVATURE_RATE_L2_OVER_M_AND_FAR_ZERO_DEFICIT_2026-09-04.md
+AUTHOR: Linux-Claude (observer); every number is the observer's own second-channel computation (Progress_Log 2026-09-04 morning)
+PARENT_VERDICTS: OVERLAP (af1d9ead), ONESHAPE, WINDLOCK, LEAKAGE, 1529837d
+CONVENTIONS: docs/routeB_bus/CONVENTION_CARD_GOAL058.md; kappa(f) = -f''(0)/2 for anchored f; kappa(G) by the EXACT finite formula (L^2/2)[1/12 + (1/(2 pi^2 v_0)) sum_{n != 0} v_n/n^2] (raw coefficients of the unit ground vector); kappa_Xi = 0.0231049931.
+
+INTAKE (since OVERLAP)
+  1. Your CHEAPEST_NEXT_ACTION preflight (agent, docs/routeB_bus/AGENT_REPORT_2026-09-04_GOAL058_SECOND_MODE_CURVATURE_TRANSFER_SOURCE_PREFLIGHT.md),
+     code REMAINDER_LOWER_ORDER on finite cells, with three findings the observer verified:
+     (a) E = Tr_m(B F_2) is tautologically alpha*M - 2*pi*d_2/ell_1 (definitional); the 1e-15 residual verified arithmetic, not a mechanism.
+     (b) By the project's own curvature definition (Lean: kappa = sum_rho 1/rho^2 + (L^2/(4 pi^2)) sum_{k>N} 1/k^2),
+         alpha = kappa(G) - kappa_Xi = T_tail - Def,  T_tail := (L^2/(4 pi^2)) sum_{k>N} 1/k^2 ~ L^2/(4 pi^2 m),  Def := kappa_Xi - sum_rho 1/rho^2.
+     (c) The five finite Lean identities of your directive are KERNEL_GREEN (Proposition59AnchoredSecondModeOverlap.lean, 18 theorems, standard axioms).
+  2. THE RATE RE-READ (observer). alpha on m = 13, 23, 43, 83, 163 and the new discriminator cell m = 313 (dps 1450, inverse iteration):
+       m:            13       23       43       83       163      313
+       alpha        2.79e-3  3.16e-3  2.74e-3  2.06e-3  1.41e-3  9.31e-4
+       alpha*L^2    0.018    0.031    0.039    0.040    0.037    0.031      <- turns over, falls 17 % from 163 to 313
+       alpha*m/L^2  5.5e-3   7.4e-3   8.3e-3   8.8e-3   8.9e-3   8.8e-3    <- flat within 1 % from 83 on
+       alpha/T_tail 0.226    0.298    0.332    0.348    0.352    0.349     <- flat
+     CONCLUSION: alpha ~ 0.35 * L^2/(4 pi^2 m), i.e. EXPONENTIAL in L, not c/L^2. Every "1/L^2 law" reported on 03-04.09 (W_k, sup|Delta_n|,
+     Delta(x) at fixed x, a(m), d_2, kappa_k - kappa_Xi) was read on m <= 83 where L^2/m and 1/L^2 are indistinguishable; they must be re-read.
+     (Delta(7)*m/L^2 = -0.079, -0.104, -0.117, -0.125, -0.129 still rising 3 %/step; Delta(7)*L^2 turns over.)
+  3. Also verified: kappa(Xi-sample row) = kappa_Xi to 1.5e-11 on all cells (aliasing invisible), so alpha = (L^2/(2 pi^2)) sum_{n>=1} Delta_n/n^2 exactly
+     (signed weighted node-error sum); Def/T_tail -> 0.65.
+  4. Caveats (agent): ZerosRealOn for the ground verified numerically only on m = 13, 23, 43 (Probe 12); a check on m = 83 is running.
+
+QUESTIONS
+Q1 EXACT DECOMPOSITION. Confirm alpha = T_tail - Def at the level of the Lean curvature definition (finite, exact, for every cell), and state the
+   consequence: identification on compacts (via d_2 = -13.8 alpha and the transfer identity) follows from alpha = O(L^2/m) with exponential margin;
+   the load-bearing statement becomes Def <= (1 - c) T_tail for some c > 0 (observed c ~ 0.35). Is "Def <= (1-c) T_tail" the right atom, or is
+   "|Def - 0.65 T_tail| = o(T_tail)" needed for the first-order profile? Name what each of the two buys.
+Q2 SUPPLIER WITHOUT A GAP. Def is a far-zero bookkeeping: kappa_Xi = sum_gamma 1/gamma^2 and sum_rho 1/rho^2 over the ground's real zeros
+   (which track gamma_j up to ~1.3 x_N and then spread). The agent proposes: one-sided zero COUNT N_G(t) >= N_Xi(t) up to t ~ 1.5 x_N plus the
+   unconditional Riemann-von Mangoldt tail, via Abel summation, gives alpha = O(L^2/m). Adjudicate: (a) is the one-sided count the right object
+   (vs two-sided count with multiplicity of 1529837d); (b) is N_G >= N_Xi up to 1.5 x_N a source statement (real-rootedness + degree 2N of the
+   numerator + the sine's lattice zeros) or does it need pinning; (c) the tail: sum_{gamma > 1.5 x_N} 1/gamma^2 vs the ground's zeros beyond the
+   window — the ground transform is ~sqrt(lambda_1) outside the window (leakage picture), what are its zeros there and does the sine factor's
+   lattice zero set x_k, |k| > N, give exactly the (L^2/(4 pi^2)) sum_{k>N} 1/k^2 = T_tail term, so that Def is ONLY the mismatch inside ~1.5 x_N?
+   Write the exact ledger: kappa(G) = sum_{numerator zeros} 1/rho^2 + T_tail; kappa_Xi = sum_gamma 1/gamma^2; alpha = T_tail - Def;
+   which zeros of which function pair with which, and where the 0.35 comes from.
+Q3 THE WINDOW-SCALE WINDING LOCK. This is WINDLOCK on a growing rectangle R ~ 1.5 x_N rather than a fixed compact. State the sufficient
+   certificate for the one-sided count on [-1.5 x_N, 1.5 x_N] x [-h, h] (Rouche margin on the whole boundary; the boundary value of F_g at
+   x ~ 1.5 x_N is ~ sqrt(lambda_1)-small while Xi(1.5 x_N) ~ e^{-pi 1.5 x_N/4} is also tiny — which is larger, and does the lock even make sense
+   there?), and whether a one-sided count needs only a LOWER bound on N_G (which real-rootedness + degree might give for free) rather than Rouche.
+Q4 RE-READ LIST. Which earlier "1/L^2" statements must be re-read as L^2/m (or L^p/m): W_k (Probe 9), sup|Delta_n| (Probe 9), Delta(x) at fixed x,
+   a(m), d_2, and the reciprocal-mode energy sum |Delta_n|^2/n^2? Give the consequence for each shell (H1 Cauchy-Schwarz etc.): with exponential
+   rates every shell closes with margin IF the far-zero deficit is controlled — confirm or correct.
+Q5 Score without editing: P_E_OVER_ALPHA_M_DECREASES 0.55 (REFUTED as stated: non-monotone 13->23, but decreasing from 23 on, 0.037 at 163);
+   P_M_STABLE_NONZERO 0.65 (CONFIRMED); P_D2_OVER_ALPHA_STABLE 0.60 (CONFIRMED); the observer's implicit "1/L^2" reading of the whole
+   night (unregistered as a K6, REFUTED by m = 313).
+
+REGISTERED PREDICTIONS (K6, observer, before your answer)
+  P_ALPHA_EQ_TTAIL_MINUS_DEF_EXACT: 0.85 -- Q1 confirmed as an exact finite identity from the Lean curvature definition.
+  P_DEF_IS_INSIDE_WINDOW_MISMATCH: 0.55 -- Q2(c): the lattice zeros of the sine factor supply exactly T_tail, so Def is the mismatch of the
+    numerator zeros against gamma_j inside ~1.5 x_N only.
+  P_ONE_SIDED_COUNT_IS_SOURCE: 0.35 -- Q2(b): N_G >= N_Xi up to 1.5 x_N follows from real-rootedness + degree without pinning.
+  P_JUDGE_REREADS_ALL_L2_LAWS: 0.75 -- Q4: the judge re-reads all six statements as exponential-in-L rates conditional on Def control.
+
+REQUIRED VERDICT
+  1. repeat REQUEST_ID, BOUNDARY_ID, request commit, Git blob, SHA-256; six-field phase key unchanged;
+  2. Q1-Q4 exact; ranked next action with falsifier;
+  3. score all predictions without editing probabilities;
+  4. Lean-ready vs new analytic; no Lean edit, no numerical run, no route promotion, no RH claim; write only the expected verdict document.
