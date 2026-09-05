@@ -41,13 +41,13 @@ done
 
 # ── определить тип источника и вытянуть метаданные ────────────────────────────
 ARXIV=""; DOI=""; URL=""
-if [[ "$SRC" =~ ^[0-9]{4}\.[0-9]{4,5}(v[0-9]+)?$ ]]; then
-  ARXIV="$SRC"
+if [[ "$SRC" =~ ^[0-9]{4}\.[0-9]{4,5}(v[0-9]+)?$ ]] || [[ "$SRC" =~ ^[a-z-]+(\.[A-Z]{2})?/[0-9]{7}(v[0-9]+)?$ ]]; then
+  ARXIV="$SRC"   # new-style 2401.12345 or old-style math/0412039 (2026-09-06)
 elif [[ "$SRC" =~ ^10\. ]]; then
   DOI="$SRC"
 elif [[ "$SRC" =~ ^https?:// ]]; then
   URL="$SRC"
-  [[ "$SRC" =~ arxiv\.org/(abs|pdf)/([0-9]{4}\.[0-9]{4,5}) ]] && ARXIV="${BASH_REMATCH[2]}"
+  [[ "$SRC" =~ arxiv\.org/(abs|pdf)/([0-9]{4}\.[0-9]{4,5}|[a-z-]+/[0-9]{7}) ]] && ARXIV="${BASH_REMATCH[2]}"
   [[ "$SRC" =~ zenodo\.org/records?/([0-9]+) ]] && DOI="10.5281/zenodo.${BASH_REMATCH[1]}"
 else
   echo "не распознан источник: $SRC"; exit 2
@@ -120,7 +120,7 @@ fi
 
 # ── скачать PDF ───────────────────────────────────────────────────────────────
 if [ -n "$ARXIV" ]; then
-  FNAME="${ARXIV}.pdf"; DL="https://arxiv.org/pdf/${ARXIV}"
+  FNAME="${ARXIV//\//_}.pdf"; DL="https://arxiv.org/pdf/${ARXIV}"   # old-style ids contain a slash
 elif [ -n "$DOI" ]; then
   SLUG="$(printf '%s' "$AUTHOR" | cut -d, -f1 | tr '[:upper:] ' '[:lower:]_')_$(printf '%s' "$DOI" | tr '/.' '__')"
   FNAME="${SLUG}.pdf"
