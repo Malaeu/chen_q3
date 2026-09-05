@@ -1,0 +1,40 @@
+\section{What cannot be a proof, and what remains}\label{sec:ledger}
+
+We list the proof shapes excluded by theorems in this paper, with the reason. Each entry was, at some point, a live plan.
+
+\begin{enumerate}[leftmargin=2em,itemsep=2pt]
+\item \textbf{Separate estimates of the three parts of \eqref{eq:Q}.} The archimedean constant $b(L)$ of a window tends to $-\infty$
+ with its length, and the prime part alone is not nonnegative; the mean-prime surrogate $\Lam(n)\to1$ makes $\Q$ strictly negative on
+ explicit tests. Only the coupled form has a chance.
+\item \textbf{Local sum-of-squares certificates} (finite stencils, edges, second differences, prime rectangles, any diameter, any
+ cardinality): \Cref{thm:nominorant}, \Cref{cor:noCSS}. The obstruction is the translated radical, and it persists for continuous
+ families of stencils.
+\item \textbf{A uniform margin on a dense family:} \Cref{prop:trade}.
+\item \textbf{Pointwise majorisation of the negative part} (absolute Schur with any weight): \Cref{prop:schur}.
+\item \textbf{Plane-wave positivity as a sufficient condition:} the two-frequency kernel is not diagonal; and without RH the
+ zero-side squares are complex (\Cref{sec:gs}).
+\item \textbf{Finite-window premises} (bounded relative error, $\lambda_1\ge-o(\lambda_2)$, positivity of all computed bottoms):
+ RH-equivalent or upper bounds only (\Cref{sec:windows}).
+\item \textbf{Deformation along the de Bruijn--Newman flow.} In the logarithmic variable the flow is $f_0\mapsto e^{tx^2/4}f_0$
+ (\Cref{thm:FPhi}); for $t\ne0$ there is no Euler product, hence no prime side, and the known results go the other way:
+ $\Lambda\ge0$ \cite{RodgersTao2018} says that RH, if true, has no margin.
+\item \textbf{Import from other equivalents.} Among the equivalents surveyed in \cite{Broughan2023}, the unconditional partial results
+ (Nicolas' oscillation theorems \cite{Nicolas1983}, $\Lambda\ge0$, $\Lambda\le0.22$ \cite{Polymath15}, hyperbolicity of Jensen
+ polynomials for $d\le8$ \cite{GORZ2019}) either point in the barely-true direction or concern only the archimedean moments of
+ $f_0$; none sees the prime atoms inside a quadratic form (cf.\ \cite{Farmer2020}).
+\end{enumerate}
+
+Two external facts corroborate the zero-margin picture from outside our construction: $\Lambda\ge0$ and Nicolas' theorem that
+his inequality, if RH fails, holds and fails infinitely often. Both say that no equivalent of RH comes with a uniform positive margin.
+
+\begin{problem}\label{prob:DOM}
+Prove \eqref{eq:DOM}. Equivalently, find a representation of $\Q(f_0s)$ as a manifestly nonnegative expression whose every positive
+factor annihilates the entire translated radical $\{U_qf_0\}_{q\in\R}$ and all $\Xi$-multiples $\{f_0*h\}$.
+\end{problem}
+
+Two representations are not excluded by the results above. (R1) A \emph{nonlocal} positive factorisation acting on $f_0s$ (a global
+integral, as in \Cref{ex:control}), with its annihilation of the radical proved before its sign is estimated; the object to audit is
+the full two-frequency kernel, not its diagonal. (R2) Cutoff-dependent finite Gram certificates $K_m+e_mI\succeq0$ with an
+independently proved allowance $e_m\ge0$, $e_m\to0$, and a proved recovery of every fixed test from the windows; such a family is
+not a fixed positive-series identity and escapes \Cref{cor:noCSS}, but its universal quantifier over $m$ cannot be supplied by
+any finite list of cells.

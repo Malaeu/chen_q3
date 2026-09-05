@@ -1,0 +1,113 @@
+\section{No local certificate: the obstruction theorem}\label{sec:obstruction}
+
+A natural strategy for proving \eqref{eq:DOM} is a \emph{certificate}: an identity or inequality
+$\Q(f_0s)\ge\int W(x)\,|(Ss)(x)|^2dx$ with an explicit nonnegative weight $W$ and an explicit finite difference
+stencil $S$, possibly summed over a family of stencils, chosen so that the right-hand side visibly pays the negative
+part of $\nu$. On finite graphs this is exactly how positive semidefinite matrices with zero row sums are
+certified (sums of squares of zero-mean stencils). The theorem of this section says that for the Weil form no such
+representation exists: every nonnegative finite-stencil minorant of $\Q(f_0\,\cdot)$ is zero. The reason is not
+the negative density but the radical.
+
+\begin{lemma}[compact witnesses]\label{lem:budget}
+Fix smooth cutoffs $0\le\chi_R\le1$, $\chi_R=1$ on $[-R,R]$, $\chi_R=0$ off $[-R-1,R+1]$, $|\chi_R'|\le c_\chi$.
+For $q\in\R$ and $R\ge1$ let $r_q=f_0(\cdot-q)/f_0$ and $s_{q,R}=\chi_R\,r_q\in C_c^\infty$. Then, with $a_q=\frac\pi2e^{-2|q|}$,
+\begin{equation}\label{eq:budget}
+ |\Q(f_0s_{q,R})|\le C_{\Xf}\,C_q^2\,e^{-2a_qe^{2R}},\qquad
+ C_q^2=\frac{\frac{35}{3}A_0^2+\frac43(A_1^2+c_\chi^2A_0^2)}{2a_q}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+$f_0s_{q,R}=U_qf_0-e_R$ with $e_R=(1-\chi_R)U_qf_0$. By \Cref{prop:radical}, $\Q(U_qf_0-e_R)=\Q(e_R)$, and
+$|\Q(e_R)|\le C_{\Xf}\|e_R\|_{\Xf}^2$. The envelope of \Cref{thm:FPhi} shifted by $q$ bounds $e_R$ and $e_R'$ by
+$A_je^{-a_qe^{2|x|}}$ outside $[-R,R]$; integrating gives $\|e^{|x|}e_R\|_2^2\le\frac{A_0^2}{2a_q}e^{-2a_qe^{2R}}$ and
+$\|e_R'\|_2^2\le\frac{A_1^2+c_\chi^2A_0^2}{a_q}e^{-2a_qe^{2R}}$. Finally
+$\D(u)\le\frac23\|u'\|_2^2+\frac{32}3\|u\|_2^2$ for $u\in H^1$, from $\|\Delta_tu\|_2\le\min(t\|u'\|_2,2\|u\|_2)$ and
+$a(t)\le\frac4{3t}$ on $(0,1]$, $a(t)\le\frac43e^{-t/2}$ on $[1,\infty)$.
+\end{proof}
+
+\begin{lemma}[independence of translates]\label{lem:indep}
+Let $f\in L^1(\R)$ be continuous with $\int f\ne0$. If $p_1,\dots,p_k$ are distinct and
+$\sum_\ell d_\ell f(p_\ell-q)=0$ for all $q\in\mathbb Q$, then all $d_\ell=0$.
+\end{lemma}
+\begin{proof}
+By continuity the identity holds for all real $q$; Fourier transform in $q$ gives $\widehat f(-\xi)\sum_\ell d_\ell e^{-i\xi p_\ell}=0$.
+Since $\widehat f(0)=\int f\ne0$, the exponential polynomial vanishes on an interval around $0$; its derivatives of order
+$0,\dots,k-1$ at $0$ give $\sum_\ell d_\ell p_\ell^j=0$, and the Vandermonde determinant $\prod_{i<j}(p_j-p_i)\ne0$ forces $d=0$.
+\end{proof}
+
+\begin{theorem}[no positive finite-stencil minorant]\label{thm:nominorant}
+Let $(Ss)(x)=\sum_{\ell=1}^kc_\ell\,s(x+\tau_\ell)$ with distinct shifts $\tau_\ell$ and a nonzero real coefficient
+vector, and let $W\ge0$ be measurable and finite. If
+\[
+ \int W(x)\,|(Ss)(x)|^2\,dx\;\le\;\Q(f_0s)\qquad\text{for all }s\in C_c^\infty(\R;\C),
+\]
+then $W=0$ almost everywhere. No bound on $k$, on the diameter of the stencil, or the condition $\sum c_\ell=0$ is needed.
+\end{theorem}
+\begin{proof}
+Apply the hypothesis to $s_{q,R}$ for rational $q$. By \eqref{eq:budget} the right-hand side tends to $0$, so
+$\int W|Ss_{q,R}|^2\to0$. For fixed $x$ all $k$ sample points lie in $[-R,R]$ for $R$ large, where $Ss_{q,R}=Sr_q$; Fatou gives
+$\int W|Sr_q|^2=0$ for each rational $q$. Off one null set, every $x$ with $W(x)>0$ satisfies
+$\sum_\ell\frac{c_\ell}{f_0(x+\tau_\ell)}f_0(x+\tau_\ell-q)=0$ for all $q\in\mathbb Q$; \Cref{lem:indep} with
+$p_\ell=x+\tau_\ell$ and $f=f_0$ (positive, so $\int f_0>0$) forces $c_\ell=0$, a contradiction. Hence $W=0$ a.e.
+\end{proof}
+
+The noncompact ratio $r_q$ is never inserted into the hypothesis; only the compact $s_{q,R}$ are, and the limit is taken
+on the certificate side. Nothing about the sign of $\Q$ or the location of zeros enters.
+
+\begin{corollary}[no sum-of-squares representation]\label{cor:noCSS}
+There is no countable family of finite stencils $S_j$ and weights $W_j\ge0$ with
+$\Q(f_0s)=\sum_j\int W_j|S_js|^2dx$ for all $s\in C_c^\infty$. The same holds for measurable families
+$\int_J\!\int W(j,x)|S_js(x)|^2dx\,d\mu(j)$ over a $\sigma$-finite parameter space with finitely many sample points per $j$.
+\end{corollary}
+\begin{proof}
+Each nonnegative summand is a minorant, hence zero by \Cref{thm:nominorant}, so $\Q(f_0\,\cdot)$ would vanish identically.
+But it does not: for a nonnegative bump $g$ with $\|g\|_2=1$ supported in an interval of length
+$\ell\le\min\{\tfrac12,\tfrac12\log2,\exp(-e^{1/2}(c_A+1))\}$ the prime correlations vanish, the pole term is positive,
+$\|\Delta_tg\|_2^2=2$ for $\ell\le t\le1$ and $a(t)\ge e^{-1/2}/(2t)$ there, so $\Q(g)\ge e^{-1/2}\log(1/\ell)-c_A\ge1$.
+For the measurable version, Fatou and the countable set of rational $q$ give the equations a.e.\ in $(j,x)$, and
+\Cref{lem:indep} applies pointwise.
+\end{proof}
+
+Quantitatively, if a proposed summand has $W>0$ on a set of positive measure, there are a rational $q$, a bounded set $E$
+and $\eta=\int_EW|Sr_q|^2>0$ such that for $R$ large (explicitly $e^{2R}>(2a_q)^{-1}\log(1+2C_{\Xf}C_q^2/\eta)$ and $R$
+covering $E+\{\tau_\ell\}$)
+\begin{equation}\label{eq:certkill}
+ \Q(f_0s_{q,R})-\int W|Ss_{q,R}|^2\le-\eta/2<0 .
+\end{equation}
+This is a strict negative \emph{certificate margin}; it is not a negative value of $\Q$.
+
+\begin{example}[the obstruction is not a sign statement]\label{ex:control}
+Let $F(x)=e^{-(x-1)^2}+e^{-(x+1)^2}$, $\omega=\pi/2$, and $\Q_*(g)=|\int g(x)e^{-i\omega x}dx|^2\ge0$. Since
+$\widehat F(\omega)=2\cos\omega\cdot\widehat{e^{-x^2}}(\omega)=0$, all translates of $F$ lie in the radical of $\Q_*$, $F>0$ is
+integrable, and the argument above applies verbatim: the manifestly nonnegative, nonzero form $\Q_*(F\,\cdot)$ admits no
+positive finite-stencil minorant either. Its positive factor is a global integral, not a finite sample.
+\end{example}
+
+\begin{remark}[finite graphs]
+For a real symmetric matrix $M$ with $M\mathbf 1=0$, positive semidefiniteness is equivalent to $M=\sum\lambda_iu_iu_i^{\!\top}$
+with $\lambda_i\ge0$ and $u_i\perp\mathbf 1$ (spectral theorem). The continuum statement fails because the ratio form has far
+more null functions than constants, and by \Cref{lem:indep} their restrictions to any finite set of points span all sample
+values. Two-point edge squares are an even narrower cone: $(1,-2,1)(1,-2,1)^{\!\top}$ is PSD with zero row sums but has a
+positive $(1,3)$ entry, so it is not a positive combination of edge squares.
+\end{remark}
+
+\subsection{Two further impossibilities}\label{sec:trade}
+
+\begin{proposition}[no uniform margin on a dense family]\label{prop:trade}
+Let $(g_j)$ be a family of tests whose span is dense in $\Xf$ modulo the radical. There is no $\delta>0$ with
+$\Q(g)\ge\delta\|g\|_{\Xf}^2$ on the span of the $g_j$ unless the form itself is coercive on $\Xf/\operatorname{rad}$;
+and it is not, since $\Q(U_qf_0-e_R)\to0$ while $\|U_qf_0-e_R\|_{\Xf}\to\|f_0\|_{\Xf}>0$ modulo constants.
+\end{proposition}
+Consequently a proof of \eqref{eq:DOM} cannot proceed by establishing a fixed positive margin on a dense family and passing
+to the limit: density kills the margin. The finite windows illustrate this: $\lambda_1(m,N)\to0$ super-exponentially in
+$\sqrt m$ (\Cref{sec:windows}).
+
+\begin{proposition}[no absolute Schur bound]\label{prop:schur}
+Write $\Q(f_0s)=\iint T(x,x')\overline{s(x)}s(x')\,dx\,dx'$ with the (distributional) kernel of the second variation around $f_0$.
+For every positive weight $w$ the Schur test $\sup_x w(x)^{-1}\int|T(x,x')|w(x')dx'<\infty$ fails: the diagonal of $|T|$ carries the
+ultraviolet part $\int_0^\eps b_+(t)\,dt\sim\frac12\log(1/\eps)$, which diverges, while the usable energy is
+$\int_0^\delta b_+E_s=\frac{\delta^2}4\int f_0^2|s'|^2+o(\delta^2)$.
+\end{proposition}
+The divergence is a statement about $|T|$, not about $T$; the form is finite on every test because the differences
+$|s(x)-s(x')|^2$ vanish to second order on the diagonal. It rules out the class of proofs that bound the negative part
+pointwise by a positive majorant.

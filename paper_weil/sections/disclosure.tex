@@ -1,0 +1,29 @@
+\section{Formalisation, provenance and tool disclosure}\label{sec:disclosure}
+
+\paragraph{Machine-checked part.} The finite algebra behind \Cref{sec:windows} and the finite heads of \Cref{sec:obstruction} are
+formalised in Lean~4 (toolchain \texttt{v4.26.0}) against Mathlib \cite{Mathlib} (tag \texttt{v4.26.0}, revision \texttt{2df2f0150c27}).
+\Cref{app:lean} lists the twelve files, their declaration counts, and the statements they cover. Every file compiles with
+\texttt{\#print axioms} reporting only \texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}; no project axiom is used.
+What is formalised is exactly what is finite: curvature identities and the explicit product bound for finite transforms, lattice
+identities, second-mode overlap, the sign-free Ritz bookkeeping, the decomposition $K=\Gamma-c_LI-2\beta\beta^*$ of the window
+matrix, the von Mangoldt divisibility energy, and the finite obstructions (tradeoff, eigen-tradeoff, Schur, signed-PSD plant).
+The analytic statements (\Cref{thm:FPhi,prop:radical,thm:GS,thm:nominorant}) are paper theorems; the explicit formula \eqref{eq:EF}
+is imported from the literature and is not a project axiom.
+
+\paragraph{Numerical part.} All finite-window quantities were computed in interval arithmetic (\texttt{arb}, 220--300 decimal digits) with the mode truncation chosen from the required relative precision $\approx\sqrt{\lambda_1}$; float
+evaluations were used only for figures. The identities \eqref{eq:EF} on $f_0$ and on plane waves, the masses \eqref{eq:masses} and the
+constants in \Cref{app:constants} were computed with \texttt{mpmath} at 30--50 digits, with the first $3000$ zeros of $\zeta$ where
+zeros enter.
+
+\paragraph{Use of automated reasoning tools.} Following the Leiden Declaration on AI and Mathematics as summarised in
+\cite[\S8]{TERENCETAO-2026}, we disclose that large language models were used throughout: as adversarial reviewers of proof
+sketches, as drafters of Lean code that was then checked by the kernel, and as literature scouts whose every claim was verified against
+the primary source or discarded. Several of the proofs in \Cref{sec:obstruction}, in particular \Cref{lem:budget,thm:nominorant},
+were first written by such a reviewer in response to a formally specified request and were then independently re-derived from the
+definitions by a second, blind agent and checked numerically by the author. Predictions about the outcome of each such round were
+registered before the round and are kept in the project log; the author's own predictions were wrong more than once (for instance,
+a probability of $0.40$ was assigned to \Cref{thm:nominorant} before it was proved). Credit and responsibility for every statement here
+remain with the author.
+
+\paragraph{Relation to earlier work of the author.} The preprint \cite{Malamutmann2025} attempted to prove positivity of the same form by
+separate archimedean and prime estimates on a wide cone of tests. Item~1 of \Cref{sec:ledger} shows why that cannot work; the present paper supersedes it.

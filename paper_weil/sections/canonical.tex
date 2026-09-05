@@ -1,0 +1,53 @@
+\section{The canonical test and the radical}\label{sec:canonical}
+
+\begin{definition}\label{def:f0}
+Let $h(u)=(\pi^2u^4-\tfrac32\pi u^2)\,e^{-\pi u^2}$ and
+\begin{equation}\label{eq:Phi}
+ \Phi(x)=4\,e^{x/2}\sum_{n\ge1}h(ne^{x}),\qquad A=\|\Phi\|_2,\qquad f_0=\Phi/A .
+\end{equation}
+\end{definition}
+
+\begin{theorem}\label{thm:FPhi}
+$\Phi$ is even, real-analytic, strictly positive, satisfies $|\Phi^{(j)}(x)|\le A_je^{-\frac{\pi}{2}e^{2|x|}}$ for
+$j=0,1$ with explicit $A_j$, and
+\[
+ \widehat\Phi(z)=\Xi(z)\qquad(z\in\C).
+\]
+\end{theorem}
+\begin{proof}
+With $\theta(y)=\sum_{n\ge1}e^{-\pi n^2y}$, Riemann's representation
+$\xi(s)=\tfrac12-\tfrac{s(1-s)}{2}\int_1^\infty\bigl(y^{s/2}+y^{(1-s)/2}\bigr)\frac{\theta(y)}{y}\,dy$
+and two integrations by parts give the classical formula $\Xi(z)=\int_{\R}\Phi_P(u)\cos(zu)\,du$ with P\'olya's
+$\Phi_P(u)=\sum_n(2\pi^2n^4e^{9u}-3\pi n^2e^{5u})e^{-\pi n^2e^{4u}}$. Substituting $u=x/2$ gives
+$\Phi(x)=2\Phi_P(x/2)$, hence $\widehat\Phi(z)=\Xi(z)$; the same substitution shows that the
+de Bruijn--Newman function $H_t$ of \cite{RodgersTao2018,Polymath15} equals $\tfrac18\widehat{(e^{tx^2/4}\Phi)}(z/2)$.
+Evenness of $\Phi$ is the functional equation, written as $E(u)=E(1/u)$ for $E(h)(u)=\sqrt u\sum_nh(nu)$.
+Positivity: each summand $h(ne^x)$ is positive for $ne^x>\sqrt{3/(2\pi)}$, and for $x\le 0$ evenness reduces to
+$x\ge0$ where at most the $n=1$ term can be negative and is dominated by the Gaussian tail (an explicit check is in
+\Cref{app:constants}). The envelope with $a_*=\pi/2$ is the $n=1$ term of the Gaussian series with the polynomial
+prefactor absorbed into $A_j$.
+\end{proof}
+
+The normalising constant is $A=0.565466013092$ (\Cref{app:constants}); $\widehat{f_0}=\Xi/A$ and $\int f_0=\Xi(0)/A=0.8791346724$.
+The factor $4$ and the argument $e^{x}$ (instead of $e^{x/2}$) are the scale in which \eqref{eq:Phi} matches the test
+written in \cite[(7.1)]{CCM-ZST-2025}; we record the substitution because the two normalisations are easy to confuse.
+
+\begin{proposition}[radical]\label{prop:radical}
+$\B(f_0,v)=0$ for all $v\in\Xf$. More generally, $U_qf_0\in\operatorname{rad}\B$ for every $q\in\R$, and
+$f_0*h\in\operatorname{rad}\B$ for every $h\in C_c^\infty$. In particular the radical of $\B$ is infinite-dimensional.
+\end{proposition}
+\begin{proof}
+By \eqref{eq:EF} polarised, $\B(g,v)=\sum_{z\in Z(\Xi)}\overline{\widehat g(\bar z)}\,\widehat v(z)$. For $g=f_0*h$ one has
+$\widehat g=\Xi\,\widehat h/A$, which vanishes on $Z(\Xi)$ whatever the location of the zeros; $U_qf_0=f_0*\delta_q$ is the limiting
+case, and also follows directly from translation invariance of every term of \eqref{eq:Q}: $H$, $\D$ and the correlations
+$C_g$ are translation invariant, and $A_\pm(U_qg)=e^{\pm q/2}A_\pm(g)$ leaves the product $A_+\overline{A_-}$ unchanged.
+Density of $C_c^\infty$ in $\Xf$ and the bound $C_{\Xf}$ extend the identity to $v\in\Xf$. Linear independence of finitely
+many translates of the positive integrable function $f_0$ (\Cref{lem:indep}) gives infinite dimension.
+\end{proof}
+
+\begin{remark}
+Suzuki \cite{Suzuki2025} studies the Hilbert space obtained from $\B$ by quotienting out the radical, under RH, and identifies it
+with a de Branges space; \Cref{prop:radical} describes the radical itself, unconditionally, as the closed span of the $\Xi$-multiples
+$\{f_0*h\}$. Numerically, $\Q(f_0)$ computed from \eqref{eq:Q} with the primes up to $3000$ is $1.8\cdot10^{-10}$ on a fine grid, and
+$\Q(U_qf_0)=\Q(f_0)$ to all printed digits for $q\in\{0.5,-1,2\}$.
+\end{remark}

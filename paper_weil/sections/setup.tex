@@ -1,0 +1,49 @@
+\section{The Weil form in the logarithmic variable}\label{sec:setup}
+
+Throughout, $x=\log u$ is the logarithmic variable on the multiplicative group, tests are complex-valued, and
+\[
+ \widehat g(z)=\int_{\R} g(x)\,e^{-izx}\,dx,\qquad (U_qg)(x)=g(x-q).
+\]
+We write $\Xi(z)=\xi(\tfrac12+iz)$ for the centred Riemann $\Xi$ function, $\Lam$ for the von Mangoldt function,
+$w_n=\Lam(n)/\sqrt n$, and $Z(\Xi)$ for the multiset of zeros of $\Xi$.
+
+\begin{definition}[source form]\label{def:Q}
+For $g\in C_c^\infty(\R;\C)$ put $H(g)=\|g\|_2^2$, $C_g(t)=\Re\int\overline{g(x)}\,g(x+t)\,dx$, $A_\pm(g)=\int g(x)e^{\pm x/2}dx$,
+\[
+ a(t)=\frac{e^{-t/2}}{1-e^{-2t}},\qquad c_A=\gamma+\log 8\pi+\frac{\pi}{2},\qquad
+ \D(g)=\int_0^\infty a(t)\,\|g(\cdot+t)-g\|_2^2\,dt ,
+\]
+and
+\begin{equation}\label{eq:Q}
+ \Q(g)=\D(g)-c_A\,H(g)+2\Re\bigl(A_+(g)\overline{A_-(g)}\bigr)-2\sum_{n\ge2}w_n\,C_g(\log n).
+\end{equation}
+$\B(g,v)$ denotes the Hermitian polarisation of $\Q$ (antilinear in the first slot).
+\end{definition}
+
+The three groups of terms are the archimedean part (the translation energy $\D$ and the constant $c_A$), the pole
+part, and the prime part. In this normalisation the explicit formula of Weil \cite{Weil1952} reads
+\begin{equation}\label{eq:EF}
+ \Q(g)=\sum_{z\in Z(\Xi)}\widehat g(z)\,\overline{\widehat g(\bar z)}\qquad(g\in C_c^\infty),
+\end{equation}
+so that $\Q(g)=\sum_z|\widehat g(z)|^2$ under the Riemann hypothesis. Weil's criterion \cite{Weil1952,BOMBIERI-WEILQF-2000}
+is the statement that RH holds if and only if $\Q(g)\ge0$ for all $g\in C_c^\infty(\R;\C)$. We use \eqref{eq:EF} only
+through two consequences that do not depend on where the zeros lie: every $g$ with $\widehat g$ vanishing on $Z(\Xi)$
+is in the radical of $\B$, and the identity can be evaluated numerically on any given test. All statements
+below that use \eqref{eq:EF} are marked as such; everything else is proved from \eqref{eq:Q} alone.
+
+\paragraph{Control space.} The natural completion is the space $\Xf$ with
+\[
+ \|g\|_{\Xf}^2=\|e^{|x|}g\|_2^2+\D(g),\qquad |\B(g,v)|\le C_{\Xf}\|g\|_{\Xf}\|v\|_{\Xf},\qquad C_{\Xf}=|c_A|+14 .
+\]
+The bound follows from Cauchy--Schwarz on the translation energy, $|C_{g,v}(t)|\le e^{-|t|}\|e^{|x|}g\|_2\|e^{|x|}v\|_2$,
+and the convergent majorant $\sum_n\log n\,n^{-3/2}$. Translations act boundedly on $\Xf$, with
+$\|e^{|x|}U_qg\|_2\le e^{|q|}\|e^{|x|}g\|_2$.
+
+\paragraph{Finite windows.} Restricting $\Q$ to tests supported in $[-\tfrac12\log m,\tfrac12\log m]$ and expanding in
+the prolate basis of Connes--Consani--Moscovici \cite{CCM-ZST-2025} produces the finite matrices $K(m,N)$ studied there
+(and, in additive coordinates, in \cite{XUEFENGZHU-2026}). Two facts from \cite{CCM-ZST-2025} fix the logical status of
+everything finite in this paper: the bottom $\lambda_1(m,N)$ of $K(m,N)$ is an \emph{upper} bound for the infimum
+$\mu_\lambda$ of $\Q$ on the window (their Prop.~3.4), and $\mu_\lambda\ge0$ for all $\lambda$ is equivalent to RH
+(their Cor.~3.8, via the monotonicity $\lambda>\lambda'\Rightarrow\mu_\lambda\le\mu_{\lambda'}$). Positivity of $\Q$ on
+small windows is a theorem \cite{YOSHIDA-HERMITIAN-1992,BOMBIERI-WEILQF-2000,CC-WEILPOS-2020}; the proved range stops at
+support length $\log 2$, before the first prime atom enters.

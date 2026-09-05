@@ -1,0 +1,46 @@
+\section{Introduction}\label{sec:intro}
+
+Weil's criterion \cite{Weil1952} states that the Riemann hypothesis is equivalent to the positivity of an explicit
+Hermitian form $\Q$ on compactly supported test functions on the multiplicative group. The form has three parts, an
+archimedean one, a pole term and a sum over primes, and positivity is known only for tests supported in a short window:
+Yoshida \cite{YOSHIDA-HERMITIAN-1992} and Bombieri \cite{BOMBIERI-WEILQF-2000} for small supports, Connes and Consani
+\cite{CC-WEILPOS-2020} for the archimedean place, and the finite window matrices of Connes, Consani and Moscovici
+\cite{CCM-ZST-2025}, whose bottoms are upper bounds for the infimum of $\Q$ on a window and whose positivity for all windows
+is again RH. Bombieri already observed that the number of negative eigenvalues of finite truncations counts the zeros off the
+line \cite{BOMBIERI-WEILQF-2000}; the spectral approach thus relocates the problem without reducing it.
+
+This paper is about the shape of that problem. We fix one test function, the canonical test $f_0$ whose Fourier transform is
+$\Xi$ itself (\Cref{sec:canonical}). It is strictly positive, it lies in the radical of $\Q$ together with all its translates
+and all its convolutions, and dividing every test by it turns the Weil form into a Dirichlet form with a signed jump kernel
+(\Cref{thm:GS}):
+\[
+ \Q(f_0s)=\frac12\iint f_0(x)f_0(x')\,|s(x)-s(x')|^2\,d\nu(|x-x'|)\,dx\,dx',
+\]
+where the measure $\nu$ is completely explicit: a continuous density that is positive for $|x-x'|<\log\rho$, with $\rho$ the plastic
+number, negative beyond, and positive atoms $\Lam(n)/\sqrt n$ at the prime-power distances $\log n$. The Riemann hypothesis is the
+statement that this form is nonnegative for every compact smooth $s$ (\Cref{cor:DOM}): one inequality between the primes and a
+negative density, with no spectral unknowns. The construction follows the ground-state representation of Frank and Seiringer
+\cite{FrankSeiringer2008}, with the radical vector in the role of the ground state; the novelty is that for the Weil form the
+ground state is known in closed form and its Fourier transform is the object whose zeros are in question.
+
+The main theorem is negative. A natural way to prove positivity of such a form is a certificate: an identity or lower bound by a
+manifestly nonnegative expression built from finite difference stencils with nonnegative weights, as one certifies positive
+semidefinite matrices with zero row sums on finite graphs. \Cref{thm:nominorant} shows that every such minorant of $\Q(f_0\,\cdot)$
+is zero, with no restriction on the size, diameter or number of stencils, and \Cref{cor:noCSS} that no sum-of-squares representation
+exists. The mechanism is the radical: compact truncations of the translated canonical test have vanishing form value, and finitely many
+translates of a positive integrable function are linearly independent, so every stencil would have to annihilate all sample values.
+The obstruction is not a sign statement (\Cref{ex:control}), and it is accompanied by two further impossibilities: no uniform margin on a
+dense family (\Cref{prop:trade}) and no pointwise majorisation of the negative part (\Cref{prop:schur}).
+
+The remaining sections record what the finite windows do and do not show (\Cref{sec:windows}), including an exact second-jet formula
+for the prolate trial of \cite{CCM-ZST-2025} and the agreement of certified window bottoms with the decay law of \cite{XUEFENGZHU-2026};
+a ledger of excluded proof shapes with the theorem that excludes each (\Cref{sec:ledger}); the precise open problem and the two
+representations it leaves open; and the provenance of every statement, including which parts are machine-checked in Lean~4 and how
+automated reasoning tools were used (\Cref{sec:disclosure}). Nothing in this paper is a step toward RH in the sense of a new
+inequality; its content is the exact location of the difficulty and the proof that a class of attacks on it cannot succeed.
+
+\paragraph{Priority.} The Weil form as a quadratic functional with finite truncations is Bombieri's \cite{BOMBIERI-WEILQF-2000}; the
+window matrices and the trial vector are from \cite{CCM-ZST-2025}; the Hilbert space obtained by quotienting the radical under RH is
+studied by Suzuki \cite{Suzuki2025}; positive operators attached to the Weil distribution appear in \cite{Li2024}. To our knowledge the
+signed-measure ground-state form \eqref{eq:GS}, the identification of the radical with the $\Xi$-multiples, and the obstruction
+\Cref{thm:nominorant} have not appeared before; we would be grateful for references.

@@ -1,0 +1,36 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}\usepackage[T1]{fontenc}\usepackage{lmodern}\usepackage{microtype}
+\usepackage[english]{babel}
+\usepackage{amsmath,amsthm,amssymb,mathtools}
+\usepackage{graphicx,booktabs,enumitem,xcolor}
+\usepackage[margin=27mm]{geometry}
+\usepackage{hyperref}\usepackage[nameinlink,capitalize,noabbrev]{cleveref}
+\hypersetup{colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black,
+  pdftitle={Weil positivity around the canonical test},pdfauthor={Eugen Malamutmann}}
+\setlength{\emergencystretch}{2em}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}\newtheorem{definition}[theorem]{Definition}\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}\newtheorem{problem}[theorem]{Open problem}
+\newcommand{\R}{\mathbb R}\newcommand{\C}{\mathbb C}\newcommand{\Q}{\mathcal Q}\newcommand{\B}{\mathcal B}
+\newcommand{\D}{\mathcal D}\newcommand{\Xf}{\mathcal X}\DeclareMathOperator{\supp}{supp}
+\newcommand{\Lam}{\Lambda}\newcommand{\eps}{\varepsilon}
+\title{Weil positivity around the canonical test:\\ a signed-Laplacian form, its radical,\\ and an obstruction to local certificates}
+\author{Eugen Malamutmann\\ \small University of Duisburg--Essen}
+\date{September 2026 \quad (draft)}
+\begin{document}\maketitle
+\begin{abstract}\input{sections/abstract}\end{abstract}
+\input{sections/intro}
+\input{sections/setup}
+\input{sections/canonical}
+\input{sections/groundstate}
+\input{sections/obstruction}
+\input{sections/windows}
+\input{sections/ledger}
+\input{sections/disclosure}
+\appendix
+\input{sections/app_constants}
+\input{sections/app_lean}
+\bibliographystyle{plain}\bibliography{references}
+\end{document}

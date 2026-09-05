@@ -1,0 +1,22 @@
+\section{Lean files}\label{app:lean}
+All files live in \texttt{Q3/Proofs/RouteB/} of the project repository; all report axioms
+\texttt{[propext, Classical.choice, Quot.sound]}.
+\begin{center}\small
+\begin{tabular}{@{}lrrl@{}}\toprule
+file & lines & decls & content\\ \midrule
+Proposition59ExplicitProductCurvatureBridge & 1581 & 46 & curvature $\Rightarrow$ $|F(z)|\le|F(0)|e^{\kappa|z|^2}$ for finite transforms with real zeros\\
+Proposition59AlternatingLatticeCurvature & 740 & 39 & lattice curvature identity, tail bound $|T|\le L^2/(2\pi^2(N+1)^2)$\\
+Proposition59ReciprocalModeWeightedShell & 277 & 9 & reciprocal-mode shell identities\\
+P59SingleEndpointAtomCounterexample & 247 & 18 & one-endpoint plant (identification by lattice values fails)\\
+PolynomialCircleRootCount & 259 & 9 & argument principle for polynomials on the circle\\
+Proposition59AnchoredSecondModeOverlap & 653 & 36 & $\mathrm{Tr}_m(F_vF_w)=2\pi\langle v,w\rangle$, anchored second-mode ledger\\
+Proposition59GroundTrialSecondJetDifference & 195 & 4 & difference of second jets, no zero hypothesis\\
+P59XiLadderFeshbachRemainder & 407 & 35 & Feshbach remainder of the $\Xi$ ladder\\
+P59SignFreeRitz & 464 & 32 & sign-free Ritz bookkeeping inside a uniform error\\
+WeilGramMinusShift & 395 & 27 & $K=\Gamma-c_LI-2\beta\beta^*$ with PSD Gram $\Gamma$\\
+MangoldtDivisibilityEnergy & 452 & 33 & $\sum_{d\mid n}\Lam(d)=\log n$ as an energy identity (DIV)\\
+DomfmFiniteObstructions & 847 & 48 & finite tradeoff, eigen-tradeoff, Schur, signed-PSD and comparison plants\\
+\bottomrule\end{tabular}\end{center}
+The finite heads named in \Cref{sec:obstruction} (path identity, rectangle identity, translated radical, cutoff budget, independence
+of translates, no-minorant) are specified with Lean-ready statements in the project but are \emph{not} yet compiled; they are
+listed here as paper theorems.

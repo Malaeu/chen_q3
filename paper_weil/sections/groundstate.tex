@@ -1,0 +1,72 @@
+\section{The ground-state representation}\label{sec:gs}
+
+Since $f_0>0$, every compact smooth test is of the form $g=f_0\,s$ with $s=g/f_0\in C_c^\infty$. The following identity is the
+Weil-form analogue of the ground-state representation used by Frank and Seiringer for fractional Hardy inequalities
+\cite{FrankSeiringer2008}: the radical vector $f_0$ plays the role of the ground state, and the form becomes a
+Dirichlet form of a \emph{signed} jump kernel.
+
+\begin{theorem}[ground-state form]\label{thm:GS}
+For $s\in C_c^\infty(\R;\C)$ let $E_s(t)=\int f_0(x)f_0(x+t)\,|s(x+t)-s(x)|^2\,dx$. Then
+\begin{equation}\label{eq:GS}
+ \Q(f_0s)=\int_0^\infty b(t)\,E_s(t)\,dt+\sum_{n\ge2}w_n\,E_s(\log n)
+        =\frac12\iint f_0(x)f_0(x')\,|s(x)-s(x')|^2\,d\nu(|x-x'|)\,dx\,dx',
+\end{equation}
+where
+\begin{equation}\label{eq:nu}
+ d\nu(t)=b(t)\,dt+\sum_{n\ge2}w_n\,\delta_{\log n},\qquad
+ b(t)=a(t)-2\cosh\tfrac t2=\frac{e^{-5t/2}}{1-e^{-2t}}-e^{t/2}.
+\end{equation}
+\end{theorem}
+\begin{proof}
+Subtract $\Re\B(f_0,f_0|s|^2)=0$ (\Cref{prop:radical}) from $\Q(f_0s)$ and expand each translation term with
+$|a-b|^2=|a|^2+|b|^2-2\Re\bar ab$. The diagonal terms $-c_AH$ and the pole terms are absorbed exactly: the pole product
+contributes $-\int(e^{t/2}+e^{-t/2})\,\cdot$ on the difference side, which turns $a(t)$ into $b(t)$. All integrals converge:
+$E_s(t)=O(t^2)$ at $0$, and $f_0(x)f_0(x+t)$ decays super-exponentially in $t$ for fixed compact $\supp s$.
+\end{proof}
+
+\begin{lemma}[sign of the density]\label{lem:plastic}
+$b(t)>0$ if and only if $e^{t}<\rho$, where $\rho=1.324717957\ldots$ is the plastic number, the real root of $\rho^3=\rho+1$.
+Thus $t_0=\log\rho=0.2811995743$, and every prime atom $\log n\ge\log2=0.693>t_0$ lies in the region where the continuous density is negative.
+\end{lemma}
+\begin{proof}
+With $y=e^{t}$, $b=0\iff e^{-3t}=1-e^{-2t}\iff y^{-3}=1-y^{-2}\iff y^3-y=1$.
+\end{proof}
+
+\Cref{fig:nu} shows the measure. The positive density is integrable near $0$ only against $E_s(t)=O(t^2)$, and the negative
+part and the atoms have finite mass against the autocorrelation $C_0(t)=\int f_0(x)f_0(x+t)dx$:
+\begin{equation}\label{eq:masses}
+ N_-=\int_{t_0}^\infty b_-(t)\,C_0(t)\,dt=0.083642,\qquad \sum_{n\ge2}w_nC_0(\log n)=0.037599,\qquad
+ \int_\eps^{t_0}b_+C_0\,dt=1.13\,\log_{10}(1/\eps)+O(1).
+\end{equation}
+The prime atoms weigh less than half of the negative mass; what has to pay for $b_-$ is the interaction between the
+ultraviolet positive part and the differences $|s(x)-s(x')|^2$, jointly, not a comparison of masses.
+
+\begin{figure}[t]\centering\includegraphics[width=.8\linewidth]{figures/fig1_signed_measure.pdf}
+\caption{The signed measure $\nu$ of \eqref{eq:nu}: continuous density $b(t)$ with its unique sign change at
+$t_0=\log\rho$ (plastic number), and the prime atoms $w_n=\Lam(n)/\sqrt n$ at $t=\log n$, all in the negative region.}\label{fig:nu}\end{figure}
+
+\begin{figure}[t]\centering\includegraphics[width=.95\linewidth]{figures/fig2_canonical_test.pdf}
+\caption{The canonical test $f_0=\Phi/\|\Phi\|_2$ of \eqref{eq:Phi} and its Fourier transform $\Xi/\|\Phi\|_2$.}\label{fig:f0}\end{figure}
+
+\begin{corollary}[RH as one inequality]\label{cor:DOM}
+The Riemann hypothesis is equivalent to
+\begin{equation}\label{eq:DOM}
+ \sum_{n\ge2}\frac{\Lam(n)}{\sqrt n}\,E_s(\log n)+\int_0^{t_0}b(t)E_s(t)\,dt\;\ge\;\int_{t_0}^\infty|b(t)|\,E_s(t)\,dt
+ \qquad\text{for all }s\in C_c^\infty(\R;\C).
+\end{equation}
+\end{corollary}
+\begin{proof}
+$g\mapsto s=g/f_0$ is a bijection of $C_c^\infty$ onto itself; apply Weil's criterion and \Cref{thm:GS}.
+\end{proof}
+
+\paragraph{Plane waves.} For $s=e^{i\xi x}$ (not compact, but in the super-exponential class where \eqref{eq:GS} extends),
+$E_s(t)=2(1-\cos\xi t)C_0(t)$ and \eqref{eq:GS} gives the symbol $\sigma(\xi)=\int2(1-\cos\xi t)C_0(t)\,d\nu(t)$. By \eqref{eq:EF},
+$\Q(f_0e^{i\xi x})=A^{-2}\sum_{z\in Z(\Xi)}\Xi(z-\xi)\,\overline{\Xi(\bar z-\xi)}$; we verified the two sides agree to $10^{-13}$ for
+$\xi\le20$ using the first $3000$ zeros. The squares are complex for a non-real zero, so no sign of $\sigma$ follows without RH; and
+non-negativity of $\sigma$ would in any case be a statement about the diagonal of the two-frequency kernel only.
+
+\paragraph{Invariants of $\Xi$.} On the canonical test the archimedean decomposition of \eqref{eq:Q} splits as
+$\Q(f_0)=\mathcal J_\infty-d_A+\mathcal S_\infty$ with $d_A=c_A-4=1.3721834192$, $\mathcal J_\infty=0.5706416$ (the part of $\D$
+with the pole correction) and $\mathcal S_\infty=0.801542$ (the Chebyshev deviation term $\Delta(t)=\psi(e^t)-(e^t-1)$, carried by the
+primes $\le59$ to $10^{-22}$), and $\mathcal J_\infty+\mathcal S_\infty=d_A$ to $5\cdot10^{-11}$. This is the explicit formula on
+$f_0$, unconditional because $\widehat{f_0}$ vanishes on every zero.
