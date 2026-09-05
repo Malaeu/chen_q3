@@ -14,9 +14,11 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-05-XIDEV · REQ-2026-09-05-XIDEV · Goal 058: Weil positivity around the canonical Xi test — L1 identity Q(f_Xi) = 0 (J_inf + S_inf = d_A, verified 5e-11), L2 first variation, L3 second variation in (9) coordinates, L4 finite prime reduction at fixed smoothness, L5 assembly; publication-shaped with Lean heads · OPEN
+## REQ-2026-09-05-XIDEV · REQ-2026-09-05-XIDEV · Goal 058: Weil positivity around the canonical Xi test — L1 identity Q(f_Xi) = 0 (J_inf + S_inf = d_A, verified 5e-11), L2 first variation, L3 second variation in (9) coordinates, L4 finite prime reduction at fixed smoothness, L5 assembly; publication-shaped with Lean heads · ANSWERED
 
-- `STATUS: OPEN`
+- `STATUS: ANSWERED`
+- Verdict: `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_WEIL_POSITIVITY_AROUND_XI_PROOF_2026-09-05.md` · commit `2aa9dfc9` · blob `136aceb3cbbabcdfa425459562b803b67c548b48`
+- RESULT `PARTIAL_PROOF_WITH_PRECISE_REMAINDER` · L1 PROVED: canonical test Phi = 4E(h)(e^x) with F Phi = Xi (scale-4 repair of CCM (7.1); observer-verified at z = 0, 1, 3 to 8 digits), f0 = Phi/||Phi|| positive even super-exponentially decaying, Q(f0) = 0 by the explicit formula, (CAN-EQ) J + S = d_A · L2 PROVED: f0 is a radical vector B(f0, v) = 0 for all v in X; Q(f0 + a v) = |a|^2 Q(v) · L3: exact ground-state transform (GS) Q(f0 r) = int b E_r + sum w_n E_r(log n) with E_r >= 0 and SIGNED b = k - e^{t/2}; (NEG-MEASURE) nu(I) <= -(43/168) log(8/7) on [log 7/5, log 8/5] (verified: -0.0739); (DOM) open; plant radical != minimum · L4 PROVED: dense super-exponential class E_a (the observer's 'Xi^2 finite exponential type' was FALSE), (CORR), signed finite-prime cutoff (SP) with the boundary term 2 Delta(T) P^{-1/2} C_g(T), (TAIL-S), (CERT), (PCUT) · L5: first remaining inequality (FM); conditional assembly (FM) => W => RH · Lean boundary: Mathlib Poisson/Schwartz/completedRiemannZeta0; explicit formula = PAPER import · fates: L1 0.75 CONFIRMED, L2 0.60 CONFIRMED, L3 0.20 not realized, L4 0.35 CONFIRMED, PARTIAL 0.85 CONFIRMED · judge's audit predictions 0.88/0.84/0.78/0.88 PENDING (audit agent running) · observer: d_A = 1.372183419 (my printed 1.372178 was wrong digits); (GS) numerically confirmed after removing the grid bias -5.67e-4 H
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_WEIL_POSITIVITY_AROUND_XI_PROOF_2026-09-05.txt`
 - Boundary: `GOAL058_WEIL_POSITIVITY_AROUND_XI_PROOF_CONSTRUCTION`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
