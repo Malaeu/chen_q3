@@ -19,3 +19,11 @@ Any report that uses a symbol below in another sense is wrong until it says so.
 | `λ₁, λ₂` | eigenvalues of the EVEN block (the builder never builds the odd block) | `λ_min(K_FULL)` = min over both blocks: OPEN whether it is the even `λ₁` (E7) |
 
 Rule: a new report names its basis in the first line, or it is not read.
+
+## Дополнение 2026-09-06 (Probe 27): трансформ вектора в комплексной точке
+Базис builder'а — моды `e^{2πinx/L}` на `[0, L]` (CCM §4, `U_n` на `L²([0,L])`), не на центрированном окне. Центрированный трансформ донного вектора
+(FULL-коэффициенты `c_0 = v_0`, `c_n = v_n/√2`): `F_v(z) = 2 sin(zL/2) · [c_0/z + Σ_{n≥1} c_n (1/(z − 2πn/L) + 1/(z + 2πn/L))]` — БЕЗ множителя `(−1)^n`
+(он поглощён сдвигом окна на L/2). Проверки: `F_v(0) = L c_0`; `F_v(2πk/L)/F_v(0) = c_k/c_0 · (−1)^k`… нет: с этой формулой `F_v(2πk/L)/F_v(0) = (−1)^k c_k/c_0`
+получается из `sin(zL/2 − πk)`-предела — совпадает с картой `f_k(x_n) = (−1)^n x_n`; второй джет `−F''(0)/(2F(0)) = (L²/2)[1/12 + (1/(π²c_0))Σ c_n/n²]` =
+`kappa_full` из `r2_second_jet.py` дословно. Формула с лишним `(−1)^n` даёт `F(0.1)/F(0) = 0.99387` против `Ξ(0.1)/Ξ(0) = 0.99977` — ложное расхождение
+6e-4 (поймано на первой строке зонда, 2026-09-06).
