@@ -38,20 +38,35 @@ Since $\widehat f(0)=\int f\ne0$, the exponential polynomial vanishes on an inte
 $0,\dots,k-1$ at $0$ give $\sum_\ell d_\ell p_\ell^j=0$, and the Vandermonde determinant $\prod_{i<j}(p_j-p_i)\ne0$ forces $d=0$.
 \end{proof}
 
+The theorem is best stated in the generality in which it is proved, and in which it is formalised (\Cref{app:lean}): nothing
+about the Weil form enters except the two facts that $f_0$ is a positive integrable function and that its cutoffs have vanishing
+form value.
+
 \begin{theorem}[no positive finite-stencil minorant]\label{thm:nominorant}
-Let $(Ss)(x)=\sum_{\ell=1}^kc_\ell\,s(x+\tau_\ell)$ with distinct shifts $\tau_\ell$ and a nonzero real coefficient
-vector, and let $W\ge0$ be measurable and finite. If
+Let $f>0$ be continuous and integrable on $\R$, let $\chi_R$ be measurable cutoffs with $\chi_R=1$ on $[-R,R]$, let
+$\Q_0:(\R\to\C)\to\R$ be any functional with
 \[
- \int W(x)\,|(Ss)(x)|^2\,dx\;\le\;\Q(f_0s)\qquad\text{for all }s\in C_c^\infty(\R;\C),
+ \Q_0\bigl(f\,\chi_R\,f(\cdot-q)/f\bigr)\longrightarrow0\quad(R\to\infty)\qquad\text{for every }q\in\mathbb Q .
 \]
-then $W=0$ almost everywhere. No bound on $k$, on the diameter of the stencil, or the condition $\sum c_\ell=0$ is needed.
+Let $(Ss)(x)=\sum_{\ell=1}^kc_\ell\,s(x+\tau_\ell)$ with distinct shifts $\tau_\ell$ and a nonzero real coefficient
+vector, and let $W\ge0$ be measurable. If $\int W\,|S(\chi_Rf(\cdot-q)/f)|^2\,dx\le\Q_0(f\chi_Rf(\cdot-q)/f)$ for all $q\in\mathbb Q$ and
+$R\ge1$, then $W=0$ almost everywhere. No bound on $k$, on the diameter of the stencil, or the condition $\sum c_\ell=0$ is needed.
 \end{theorem}
 \begin{proof}
-Apply the hypothesis to $s_{q,R}$ for rational $q$. By \eqref{eq:budget} the right-hand side tends to $0$, so
-$\int W|Ss_{q,R}|^2\to0$. For fixed $x$ all $k$ sample points lie in $[-R,R]$ for $R$ large, where $Ss_{q,R}=Sr_q$; Fatou gives
-$\int W|Sr_q|^2=0$ for each rational $q$. Off one null set, every $x$ with $W(x)>0$ satisfies
-$\sum_\ell\frac{c_\ell}{f_0(x+\tau_\ell)}f_0(x+\tau_\ell-q)=0$ for all $q\in\mathbb Q$; \Cref{lem:indep} with
-$p_\ell=x+\tau_\ell$ and $f=f_0$ (positive, so $\int f_0>0$) forces $c_\ell=0$, a contradiction. Hence $W=0$ a.e.
+Fix $q\in\mathbb Q$ and write $s_R=\chi_Rf(\cdot-q)/f$, $r=f(\cdot-q)/f$. The hypotheses give $\int W|Ss_R|^2\to0$ along $R=1,2,\dots$.
+For fixed $x$ all $k$ sample points $x+\tau_\ell$ lie in $[-R,R]$ once $R\ge|x|+\max|\tau_\ell|$, where $Ss_R(x)=Sr(x)$; the integrands
+$W|Ss_R|^2$ are nonnegative and converge pointwise to $W|Sr|^2$, so Fatou's lemma gives $\int W|Sr|^2=0$. Hence for each rational $q$
+there is a null set $N_q$ off which $W(x)=0$ or $Sr(x)=0$. Off the null set $\bigcup_qN_q$, every $x$ with $W(x)>0$ satisfies
+$\sum_\ell\frac{c_\ell}{f(x+\tau_\ell)}f(x+\tau_\ell-q)=0$ for all $q\in\mathbb Q$; \Cref{lem:indep} with $p_\ell=x+\tau_\ell$ and
+$d_\ell=c_\ell/f(x+\tau_\ell)$ (and $\int f>0$) forces $c=0$, a contradiction. Hence $W=0$ a.e.
+\end{proof}
+
+\begin{corollary}[Weil form]\label{cor:nominorantWeil}
+Let $S$, $W$ be as in \Cref{thm:nominorant}. If $\int W|Ss|^2\,dx\le\Q(f_0s)$ for all $s\in C_c^\infty(\R;\C)$, then $W=0$ a.e.
+\end{corollary}
+\begin{proof}
+Take $f=f_0$, $\Q_0=\Q$, and smooth $\chi_R$ as in \Cref{lem:budget}; the hypothesis of the theorem on the functional is \eqref{eq:budget},
+and the minorant hypothesis is a special case of the one assumed here, since $s_{q,R}\in C_c^\infty$.
 \end{proof}
 
 The noncompact ratio $r_q$ is never inserted into the hypothesis; only the compact $s_{q,R}$ are, and the limit is taken
@@ -59,17 +74,21 @@ on the certificate side. Nothing about the sign of $\Q$ or the location of zeros
 
 \begin{corollary}[no sum-of-squares representation]\label{cor:noCSS}
 There is no countable family of finite stencils $S_j$ and weights $W_j\ge0$ with
-$\Q(f_0s)=\sum_j\int W_j|S_js|^2dx$ for all $s\in C_c^\infty$. The same holds for measurable families
-$\int_J\!\int W(j,x)|S_js(x)|^2dx\,d\mu(j)$ over a $\sigma$-finite parameter space with finitely many sample points per $j$.
+$\Q(f_0s)=\sum_j\int W_j|S_js|^2dx$ for all $s\in C_c^\infty$.
 \end{corollary}
 \begin{proof}
-Each nonnegative summand is a minorant, hence zero by \Cref{thm:nominorant}, so $\Q(f_0\,\cdot)$ would vanish identically.
+Each nonnegative summand is a minorant, hence zero by \Cref{cor:nominorantWeil}, so $\Q(f_0\,\cdot)$ would vanish identically.
 But it does not: for a nonnegative bump $g$ with $\|g\|_2=1$ supported in an interval of length
 $\ell\le\min\{\tfrac12,\tfrac12\log2,\exp(-e^{1/2}(c_A+1))\}$ the prime correlations vanish, the pole term is positive,
 $\|\Delta_tg\|_2^2=2$ for $\ell\le t\le1$ and $a(t)\ge e^{-1/2}/(2t)$ there, so $\Q(g)\ge e^{-1/2}\log(1/\ell)-c_A\ge1$.
-For the measurable version, Fatou and the countable set of rational $q$ give the equations a.e.\ in $(j,x)$, and
-\Cref{lem:indep} applies pointwise.
 \end{proof}
+
+\begin{remark}
+The same conclusion holds for families $\int_J\!\int W(j,x)|S_js(x)|^2dx\,d\mu(j)$ over a $\sigma$-finite parameter space with jointly
+measurable data and finitely many sample points per $j$: by Tonelli the total is a nonnegative integral over $(j,x)$, Fatou and the countable
+set of rational $q$ give $W(j,x)=0$ or $S_jr_q(x)=0$ for a.e.\ $(j,x)$ simultaneously for all $q$, and \Cref{lem:indep} applies pointwise.
+We do not use this extension and leave the measure-theoretic details to the reader.
+\end{remark}
 
 Quantitatively, if a proposed summand has $W>0$ on a set of positive measure, there are a rational $q$, a bounded set $E$
 and $\eta=\int_EW|Sr_q|^2>0$ such that for $R$ large (explicitly $e^{2R}>(2a_q)^{-1}\log(1+2C_{\Xf}C_q^2/\eta)$ and $R$
@@ -94,23 +113,24 @@ values. Two-point edge squares are an even narrower cone: $(1,-2,1)(1,-2,1)^{\!\
 positive $(1,3)$ entry, so it is not a positive combination of edge squares.
 \end{remark}
 
-\subsection{Two further impossibilities}\label{sec:trade}
+\subsection{Two further remarks on proof shapes}\label{sec:trade}
 
 \begin{proposition}[no uniform margin on a dense family]\label{prop:trade}
-Let $(g_j)$ be a family of tests whose span is dense in $\Xf$ modulo the radical. There is no $\delta>0$ with
-$\Q(g)\ge\delta\|g\|_{\Xf}^2$ on the span of the $g_j$ unless the form itself is coercive on $\Xf/\operatorname{rad}$;
-and it is not, since $\Q(U_qf_0-e_R)\to0$ while $\|U_qf_0-e_R\|_{\Xf}\to\|f_0\|_{\Xf}>0$ modulo constants.
+Let $\mathcal F\subset\Xf$ be a family whose linear span is dense in $\Xf$. Then there is no $\delta>0$ with
+$\Q(g)\ge\delta\|g\|_{\Xf}^2$ for all $g$ in the span of $\mathcal F$.
 \end{proposition}
-Consequently a proof of \eqref{eq:DOM} cannot proceed by establishing a fixed positive margin on a dense family and passing
-to the limit: density kills the margin. The finite windows illustrate this: $\lambda_1(m,N)\to0$ super-exponentially in
-$\sqrt m$ (\Cref{sec:windows}).
+\begin{proof}
+$\Q$ and $\|\cdot\|_{\Xf}^2$ are continuous on $\Xf$ (\Cref{sec:setup}), so the inequality would extend to all of $\Xf$; but
+$\Q(f_0)=0$ and $\|f_0\|_{\Xf}>0$ (\Cref{prop:radical}).
+\end{proof}
+The consequence for proof design is that positivity of $\Q$ cannot be established by proving a fixed $\Xf$-margin on a dense family
+of tests and passing to the limit: any margin that survives densification is a coercivity statement, and the form is not coercive. The
+finite windows show the same thing quantitatively: $\lambda_1(m,N)$ decays exponentially in $m$ (\Cref{sec:windows}).
 
-\begin{proposition}[no absolute Schur bound]\label{prop:schur}
-Write $\Q(f_0s)=\iint T(x,x')\overline{s(x)}s(x')\,dx\,dx'$ with the (distributional) kernel of the second variation around $f_0$.
-For every positive weight $w$ the Schur test $\sup_x w(x)^{-1}\int|T(x,x')|w(x')dx'<\infty$ fails: the diagonal of $|T|$ carries the
-ultraviolet part $\int_0^\eps b_+(t)\,dt\sim\frac12\log(1/\eps)$, which diverges, while the usable energy is
-$\int_0^\delta b_+E_s=\frac{\delta^2}4\int f_0^2|s'|^2+o(\delta^2)$.
-\end{proposition}
-The divergence is a statement about $|T|$, not about $T$; the form is finite on every test because the differences
-$|s(x)-s(x')|^2$ vanish to second order on the diagonal. It rules out the class of proofs that bound the negative part
-pointwise by a positive majorant.
+\begin{remark}[pointwise majorisation]\label{rem:schur}
+A second proof shape is to bound the negative part of the kernel of $\Q(f_0\,\cdot)$ pointwise by a positive majorant built from the positive
+part. We record, without a theorem, why we do not expect this to work: the positive density $b_+(t)\sim\frac1{2t}$ is not integrable at $t=0$
+against the autocorrelation, while its usable energy against a fixed test is only $\int_0^\delta b_+E_s\,dt=\frac{\delta^2}4\int f_0^2|s'|^2+o(\delta^2)$;
+the positive part therefore cannot be transported to the negative region $t>t_0$ by any $s$-independent pointwise comparison. A precise
+impossibility statement would have to specify the class of majorants, and we do not pursue it here.
+\end{remark}

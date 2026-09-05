@@ -8,11 +8,20 @@
 \hypersetup{colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black,
   pdftitle={Weil positivity around the canonical test},pdfauthor={Eugen Malamutmann}}
 \setlength{\emergencystretch}{2em}
+\usepackage{aliascnt}
 \theoremstyle{plain}
-\newtheorem{theorem}{Theorem}[section]\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{lemma}[theorem]{Lemma}\newtheorem{corollary}[theorem]{Corollary}
-\theoremstyle{definition}\newtheorem{definition}[theorem]{Definition}\newtheorem{remark}[theorem]{Remark}
-\newtheorem{example}[theorem]{Example}\newtheorem{problem}[theorem]{Open problem}
+\newtheorem{theorem}{Theorem}[section]
+\newaliascnt{proposition}{theorem}\newtheorem{proposition}[proposition]{Proposition}\aliascntresetthe{proposition}
+\newaliascnt{lemma}{theorem}\newtheorem{lemma}[lemma]{Lemma}\aliascntresetthe{lemma}
+\newaliascnt{corollary}{theorem}\newtheorem{corollary}[corollary]{Corollary}\aliascntresetthe{corollary}
+\theoremstyle{definition}
+\newaliascnt{definition}{theorem}\newtheorem{definition}[definition]{Definition}\aliascntresetthe{definition}
+\newaliascnt{remark}{theorem}\newtheorem{remark}[remark]{Remark}\aliascntresetthe{remark}
+\newaliascnt{example}{theorem}\newtheorem{example}[example]{Example}\aliascntresetthe{example}
+\newaliascnt{problem}{theorem}\newtheorem{problem}[problem]{Open problem}\aliascntresetthe{problem}
+\crefname{proposition}{Proposition}{Propositions}\crefname{lemma}{Lemma}{Lemmas}\crefname{corollary}{Corollary}{Corollaries}
+\crefname{definition}{Definition}{Definitions}\crefname{remark}{Remark}{Remarks}\crefname{example}{Example}{Examples}\crefname{problem}{Open problem}{Open problems}
+\newcommand{\pl}{\rho_{\mathrm{p}}}
 \newcommand{\R}{\mathbb R}\newcommand{\C}{\mathbb C}\newcommand{\Q}{\mathcal Q}\newcommand{\B}{\mathcal B}
 \newcommand{\D}{\mathcal D}\newcommand{\Xf}{\mathcal X}\DeclareMathOperator{\supp}{supp}
 \newcommand{\Lam}{\Lambda}\newcommand{\eps}{\varepsilon}

@@ -1,14 +1,14 @@
 Weil's criterion expresses the Riemann hypothesis as the positivity of an explicit Hermitian form $\Q$ on compactly supported
 tests on the multiplicative group. We fix Riemann's function $\Phi$, whose Fourier transform is the Riemann $\Xi$ function, in the normalisation of
 Connes--Consani--Moscovici, and show that $f_0=\Phi/\|\Phi\|_2$, all its translates and all its convolutions lie in the radical of
-$\Q$ on the natural enlarged test class. Dividing by $f_0$
-gives a ground-state representation (in the sense of Frank--Seiringer) of Suzuki's signed distributional kernel as a Dirichlet form,
-$\Q(f_0s)=\tfrac12\iint f_0(x)f_0(x')|s(x)-s(x')|^2\,d\nu(|x-x'|)$, with an explicit measure $\nu$: a density that changes sign
-exactly at $\log\rho$, $\rho$ the plastic number, and positive atoms $\Lambda(n)/\sqrt n$ at the prime-power distances. The Riemann
-hypothesis becomes one inequality between the prime atoms and the negative density. We prove that this inequality admits no local
-certificate: every nonnegative minorant of $\Q(f_0\,\cdot)$ by weighted squares of finite difference stencils vanishes identically,
-for stencils of any size and diameter, and no sum-of-squares representation exists. The obstruction is the infinite-dimensional
-radical, not the sign of the kernel. We also show that no uniform margin on a dense family of tests and no pointwise majorisation of
-the negative part can exist, record what certified finite-window computations (Connes--Consani--Moscovici matrices up to $10^{-220}$)
-do and do not show, including an exact second-jet formula for the prolate trial, and state the open problem in its reduced form.
-The finite algebra is formalised in Lean~4 against Mathlib; the use of automated reasoning tools is disclosed.
+$\Q$ on the natural enlarged test class. Dividing by $f_0$ gives a ground-state representation (in the sense of Frank--Seiringer) of Suzuki's
+signed distributional kernel as a Dirichlet form, $\Q(f_0s)=\tfrac12\iint f_0(x)f_0(x')|s(x)-s(x')|^2\,d\tilde\nu(x-x')\,dx'$, with an explicit
+measure: a density that changes sign exactly at $\log\pl$, $\pl$ the plastic number, and positive atoms $\Lambda(n)/\sqrt n$ at the prime-power
+distances. The Riemann hypothesis becomes one explicit inequality with three terms: the prime atoms and the short-range positive density against
+the long-range negative density. We prove that this inequality admits no local certificate: for any positive integrable function in the radical
+of a functional with the cutoff property, every nonnegative minorant by weighted squares of finite difference stencils vanishes identically,
+for stencils of any size and diameter; for the Weil form no sum-of-squares representation exists. The obstruction is the infinite-dimensional
+radical, not the sign of the kernel, and it shows that the known nonlocal (Sonin-space) positivity cannot be localised. We also note that no
+uniform margin on a dense family of tests can exist, record what certified finite-window computations (Connes--Consani--Moscovici matrices
+with bottoms down to $10^{-220}$) do and do not show, and state the open problem in its reduced form. The core of the obstruction theorem and the
+finite algebra of the window computations are formalised in Lean~4 against Mathlib; the use of automated reasoning tools is disclosed.

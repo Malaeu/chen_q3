@@ -5,17 +5,24 @@ quantity & value & definition / check\\ \midrule
 $A=\|\Phi\|_2$ & $0.565466013092$ & \eqref{eq:Phi}; $\|f_0\|_2=1.000000000000$\\
 $\int f_0=\Xi(0)/A$ & $0.8791346724$ & $\Xi(0)=\xi(\tfrac12)=0.4971207782$\\
 $c_A=\gamma+\log8\pi+\pi/2$ & $5.3721834192$ & \eqref{eq:Q}\\
-$d_A=c_A-4$ & $1.3721834192$ & $=\mathcal J_\infty+\mathcal S_\infty$ to $5\cdot10^{-11}$\\
-$\mathcal J_\infty,\ \mathcal S_\infty$ & $0.5706416,\ 0.801542$ & on $f_0$\\
-$\rho$ (plastic number) & $1.3247179572$ & $\rho^3=\rho+1$\\
-$t_0=\log\rho$ & $0.2811995743$ & $b(t_0)=0$ to $10^{-31}$\\
+$\pl$ (plastic number) & $1.3247179572$ & $\pl^3=\pl+1$\\
+$t_0=\log\pl$ & $0.2811995743$ & $b(t_0)=0$ to $10^{-31}$\\
 $\min_{[\log1.4,\log1.6]}|b|$ & $0.302847$ & $\ge43/168$\\
 $N_-$ & $0.083642$ & \eqref{eq:masses}\\
 $\sum_nw_nC_0(\log n)$ & $0.037599$ & \eqref{eq:masses}\\
 $\kappa_\Xi$ & $0.0231049931$ & $\tfrac12(\log\xi)''(\tfrac12)$\\
 $1/(16\pi),\ 13/(256\pi^2)$ & $0.0198944,\ 0.0051452$ & \eqref{eq:trialjet}; measured $0.019892,\ 0.005143$\\
 $\sup_{(0,1]}t\,a(t)$ & $0.701463$ & $\le4/3$ (\Cref{lem:budget})\\
-$\Q(f_0)$ numerically & $1.8\cdot10^{-10}$ & grid evaluation of \eqref{eq:Q}, primes $\le3000$\\
+$\Q(f_0)$ numerically & $1.0\cdot10^{-15}$ & evaluation of \eqref{eq:Q}, primes $\le3000$\\
+$M_0,\ M_1$ & $23.910,\ 325.43$ & envelope constants, see below\\
+$c_\chi$ & $2$ & cutoff slope bound; a smooth step on $[R,R+1]$ with $|\chi'|\le2$ exists\\
 \bottomrule\end{tabular}\end{center}
-Positivity of $\Phi$ on $[0,\infty)$: the $n=1$ term $h(e^x)$ is negative only for $e^x<\sqrt{3/(2\pi)}=0.691$, i.e.\ never for $x\ge0$;
-for $x<0$ use evenness. Hence every term of \eqref{eq:Phi} is positive on $[0,\infty)$ and $\Phi>0$ everywhere.
+Positivity of $\Phi$ on $[0,\infty)$: $h(u)<0$ only for $u<\sqrt{3/(2\pi)}=0.691$, so for $x\ge0$ every term $h(ne^x)$ of \eqref{eq:Phi} is positive;
+for $x<0$ use evenness. Hence $\Phi>0$ everywhere.
+
+Envelope constants. Writing $\Phi(x)=4e^{x/2}\sum_n p_0(ne^x\cdot ne^x)\ldots$ is cumbersome; instead put $P_0(y)=4y^2-6y$ so that
+$4e^{x/2}h(\sqrt y)=e^{x/2}P_0(\pi y)e^{-\pi y}/\ldots$; the clean statement is that $\Phi^{(j)}(x)$ is a finite sum of terms $e^{x/2}P_j(\pi n^2e^{2x})e^{-\pi n^2e^{2x}}$
+with $P_0(y)=4y^2-6y$ and $P_{j+1}(y)=\tfrac12P_j(y)+2y\bigl(P_j'(y)-P_j(y)\bigr)$, so $P_1(y)=-8y^3+30y^2-15y$. Bounding each monomial by its maximum
+against half of the Gaussian, $|y^re^{-y/2}|\le(2r/e)^r$, and summing the $n\ge2$ terms geometrically gives
+$|\Phi^{(j)}(x)|\le AM_j\,e^{-\frac\pi2e^{2|x|}}$ with $M_j=\frac{\pi^{-1/4}}{A(1-e^{-3\pi/2})}\sum_r|P_{j,r}|\bigl(2(r+\tfrac14)/e\bigr)^{r+1/4}$, i.e.\
+$M_0=23.910$, $M_1=325.43$.
