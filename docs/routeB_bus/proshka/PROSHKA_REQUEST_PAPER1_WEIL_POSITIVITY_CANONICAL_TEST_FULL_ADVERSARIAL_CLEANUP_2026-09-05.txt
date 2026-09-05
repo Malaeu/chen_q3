@@ -1,7 +1,7 @@
 STATUS: REQUEST
 REQUEST_ID: REQ-2026-09-05-PAPERCLEAN
 BOUNDARY_ID: PAPER1_WEIL_POSITIVITY_CANONICAL_TEST_FULL_ADVERSARIAL_CLEANUP
-CALL_CLASS: DELEGATED_ADVERSARIAL_REVIEW_OF_OUTBOUND_ARTIFACT
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
 CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-05-PAPERCLEAN (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub). Full hostile referee pass over the paper draft v3 listed in section 1, with verbatim replacement text for every defect; maximum reasoning effort.
 DATE: 2026-09-05
 REPO: Malaeu/chen_q3
