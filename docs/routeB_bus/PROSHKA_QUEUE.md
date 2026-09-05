@@ -14,6 +14,22 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-05-DOMFM · REQ-2026-09-05-DOMFM · Goal 058: (DOM)/(FM) at zero margin — margin-density tradeoff lemma (dense families cannot have a uniform margin; kills OPEN-OVERLAP-with-margin and the 2025 closure), explicit canonical-weighted kernel T for D(s) = Q(f_0 s), FM on the Fejer x heat dictionary · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DOM_FM_ZERO_MARGIN_AND_TRADEOFF_LEMMA_2026-09-05.txt`
+- Boundary: `GOAL058_DOM_FM_AT_ZERO_MARGIN_WITH_MARGIN_DENSITY_TRADEOFF`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: XIDEV verdict + independent audit (all four SURVIVE); Probe 25 on three cells (90 configurations); 2025 paper crosswalk; Lean MangoldtDivisibilityEnergy
+- Registered predictions: P_D1_TRADEOFF_PROVED_AND_TYPED_LEAN_READY 0.90; P_D2_EXPLICIT_KERNEL_T_WRITTEN 0.70; P_D2_POSITIVITY_TEST_IDENTIFIED 0.30; P_D3_ZERO_MARGIN_REDUCES_TO_GAP_GRAM 0.80; P_RESULT_COMPLETE 0.02; P_RESULT_PARTIAL 0.88; P_RESULT_REFUTED 0.10
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `554ce54ea0b72a07e4064aec14ec36a55642b60c` / `8166` / `82` /
+  `afbc2a4eb7ed290f7c125f11e89b13905a7b13955e98ae9a4e0f88d84dd288ca` /
+  `f4721b32ce4e0d9e865ded689a05ac6cffd9935c` / `yes`
+
+---
+
 ## REQ-2026-09-05-XIDEV · REQ-2026-09-05-XIDEV · Goal 058: Weil positivity around the canonical Xi test — L1 identity Q(f_Xi) = 0 (J_inf + S_inf = d_A, verified 5e-11), L2 first variation, L3 second variation in (9) coordinates, L4 finite prime reduction at fixed smoothness, L5 assembly; publication-shaped with Lean heads · ANSWERED
 
 - `STATUS: ANSWERED`
