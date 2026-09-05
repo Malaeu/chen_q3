@@ -15,7 +15,7 @@ Every formulation we touched in 2026-09-04/06 is the same statement. None is a s
 | Sondow–Dumitrescu | ∂_y|Ξ(x+iy)|² ≥ 0, 0 < y < ½; Ŵ_y ≥ 0 | 2010 | CHAT_DIGESTS W_y |
 | Rouché cover | ∀ rectangle D ⊂ S∖ℝ ∃ real-zero model F_j with sup_∂D|Ξ−F_j|/|F_j| < 1 | Hurwitz/ZeroEscape; supplier = Route B convergence | judge TRY_ADAPTIVE_CONTOUR |
 | CCM windows | µ_λ ≥ 0 ∀λ | CCM Cor 3.8 via (3.27) | Goal 058, three years |
-| Hermite–Biehler / de Branges | Ξ in Laguerre–Pólya class | classical | Suzuki 2025 |
+| Hermite–Biehler / de Branges | Ξ in Laguerre–Pólya class | classical | Suzuki 2025; the de Branges space that exists unconditionally is E(z) = ξ(1−iz) (shift h = ½), and Conrey–Li refuted de Branges's sufficient conditions for exactly that space (Lagarias math/0601653 §6) |
 | Jensen / Laguerre | all J^{d,n} hyperbolic; all Laguerre–Turán inequalities | Pólya 1927 | Williams filter (Farmer: not a route) |
 
 ## 2. Why every inequality technique dies
@@ -53,6 +53,10 @@ Only after 1–5 does a candidate get a number on the caches or a batch to the j
 - R2 (COUPLED/ZG): cutoff-dependent Gram certificates K_m + e_m I ⪰ 0 with e_m → 0 and proved recovery — no rule for e_m exists.
 - The frame reading of WEILPROOF (i): K = Γ − c_L I − 2ββ*, i.e. the prime atoms and short shifts form a frame whose optimal lower bound is c_L.
   Frame theory (Beurling–Landau density, Kadec) gives bounds with slack — fails §4.5 unless an identity appears.
+- Read 2026-09-06 (card JEFFREYCLAGA_USAGE_CARDS.md): Lagarias–Suzuki 2006 and Lagarias 2006 get zeros on the line for two-term shift combinations
+  F(s+c) ± F(s−c) by per-zero dominance whose only input is the zero-free line Re s = 1 (shift c ≥ ¼, h ≥ ½); modularity/Hecke inessential
+  (Maass–Selberg used only for the constant term a₀). Transfer to Q(f₀s): none — the mechanism takes zero locations as input (fails §4.2) and is
+  indifferent to plants (fails §4.3). Extra discriminator gained: any two-term dominance representation has rigid unit zero spacing, not GUE (Lagarias Thm 4.1).
 - Measured tonight (Probe 27): the ground transform's axis remainder is R_ax ≈ e^{−9.42 m}, far below √λ₁; the Rouché certificate of window m
   covers heights up to ≈ 11.6 m. Diagnostic; it locates the failure, it is not a mechanism.
 
