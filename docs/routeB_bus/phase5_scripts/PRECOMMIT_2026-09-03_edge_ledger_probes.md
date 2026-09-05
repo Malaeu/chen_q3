@@ -450,3 +450,11 @@ uniform grid of spacing Δ; width parameter t, hat B = 4√(2t). Fourier coeffic
 λ_min(VᵀKV, VᵀV) with K the literal full CCM matrix; dist of two fixed tests (the Xi-row y and a centred Gaussian) to span V.
 Predictions: `P_NO_OVERLAP_REGIME` 0.60 (on m = 13 no (Δ, t) has both λ_min ≥ 1e-2 and dist(y, V)/‖y‖ ≤ 1e-2); `P_MARGIN_DECAYS_WITH_WIDTH` 0.85
 (λ_min decreases monotonically as t grows at fixed Δ); `P_NARROW_MARGIN_ORDER_ONE` 0.70 (for t ≤ 0.01 and Δ ≥ L/8, λ_min ≥ 0.1). DIAGNOSTIC_NEVER_A_PROOF.
+
+## Addendum 27 — Probe 26: the canonical-weighted kernel as a signed graph Laplacian; plane-wave symbol vs the zero side (2026-09-05)
+
+From (GS), expanding |s(x+t) − s(x)|²: D(s) = Q(f₀s) = ½∬ f₀(x)f₀(x′) ν(|x − x′|) |s(x) − s(x′)|² dx dx′ with dν = b(t)dt + Σw_nδ_{log n} — a graph Laplacian with SIGNED
+weight. b(t) = √u(1/(u³−u) − 1), u = e^t: b > 0 iff u³ − u < 1, i.e. u < ρ = 1.324718 (plastic number), t₀ = log ρ = 0.28120. For the plane-wave modulation
+s = e^{iξx}: σ(ξ) := D(e^{iξx}) = ∫2(1 − cos ξt) C₀(t) dν(t), C₀ = autocorrelation of f₀ (= Fourier transform of Ξ²/∫Ξ²). Zero side: F(f₀e^{iξx})(z) = Ξ(z−ξ)/A ⇒
+σ(ξ) = Σ_γ Ξ(γ−ξ)²/A² under RH (real zeros, multiplicities). Predictions: `P_SIGMA_NONNEG_ON_GRID` 0.95 (σ(ξ) ≥ 0 for ξ ∈ [0, 40]); `P_TWO_SIDES_AGREE_1E-6`
+0.80 (geometric vs zero side agree to 1e-6 relative for ξ ≤ 20); `P_SIGMA_MIN_NEAR_GAMMA1` 0.5 (σ minimal near ξ ≈ 14.13). DIAGNOSTIC_NEVER_A_PROOF.
