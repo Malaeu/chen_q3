@@ -1,0 +1,99 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-05-PAPERCLEAN
+BOUNDARY_ID: PAPER1_WEIL_POSITIVITY_CANONICAL_TEST_FULL_ADVERSARIAL_CLEANUP
+CALL_CLASS: DELEGATED_ADVERSARIAL_REVIEW_OF_OUTBOUND_ARTIFACT
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-05-PAPERCLEAN (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub). Full hostile referee pass over the paper draft v3 listed in section 1, with verbatim replacement text for every defect; maximum reasoning effort.
+DATE: 2026-09-05
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: PAPER1_STRUCTURE_PAPER_WEIL_POSITIVITY
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_ADVERSARIAL_REVIEW_OF_MANUSCRIPT_TEXT_AND_PROOFS
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_PAPER1_WEIL_POSITIVITY_CANONICAL_TEST_FULL_ADVERSARIAL_CLEANUP_2026-09-05.md
+AUTHOR: Linux-Claude (observer) on the owner's word ("batch for Proshka, let him do the clean-up"); the owner is the sole author of the paper
+PARENT_VERDICTS: COUPLED (6b103bd1), DOMFM (002ad66e), XIDEV (2aa9dfc9), WEILPROOF (b8b0dc95, 8e4f2329), FULLCHAIN (660a072c)
+BASE_TIP: 0f9c7cbc
+
+0. TASK
+ The paper "Weil positivity around the canonical test: a signed-Laplacian form, its radical, and an obstruction to local certificates" (17 pp.,
+ draft v3) is the publishable unit of Goal 058. It claims nothing about RH. It is your material: Theorem 4.1 is your (GS) of XIDEV, Theorem 5.3 is
+ your C3.4 of COUPLED, Lemma 5.1 is your C3.2, Proposition 5.9 is the corrected form of your TRADE, Remark 5.10 is your SCHUR-KILL demoted to a
+ remark because the observer could not restate it as a theorem. Two rounds of a hostile referee (Opus, blind to the project) and one style pass have
+ been applied; their reports are in section 1. Your task is the CLEAN-UP before the owner's read-through and arXiv: (a) find every remaining
+ mathematical defect, overclaim, unfair attribution, undefined symbol, and inconsistency between abstract, introduction, body, appendices and the
+ Lean file; (b) for EVERY defect give the replacement text VERBATIM (LaTeX, ready to paste, same macros as the source), not advice; (c) decide
+ whether the paper is ready for arXiv math.NT as it stands after your replacements. You may also propose deletions (quote the deleted span).
+
+1. OBJECT (all at BASE_TIP 0f9c7cbc; git blob prefix 12 / sha256 prefix 16). Read the .tex sources; the PDF is git-LFS and may not fetch.
+ paper_weil/main.tex                         84864c116067 / 1cbf5a963e741e4e   (preamble, theorem environments via aliascnt, section order)
+ paper_weil/sections/abstract.tex            2e67d282a916 / 88e26212ccc0396f
+ paper_weil/sections/intro.tex               6da9b2e3f9a1 / f99170e17f4ed1a1
+ paper_weil/sections/setup.tex               65d4bf83b0a6 / 35101c42d73ca35b   (form (Q), (EF), control space X, C_X, finite windows)
+ paper_weil/sections/canonical.tex           0cfad4b74514 / 27faf371ef7ba712   (Def 3.1, Thm 3.2, Lemma 3.3 cutoff norms, Prop 3.4 radical, Rem 3.5)
+ paper_weil/sections/groundstate.tex         41528b832796 / 6cff9d8b9395707f   (Thm 4.1 (GS), Lemma 4.2 plastic, Cor 4.3 (DOM), plane waves)
+ paper_weil/sections/obstruction.tex         fe98a4b5dd30 / ebd749425140ba3c   (Lemma 5.1 budget, Lemma 5.2 indep, Thm 5.3 general, Cor 5.4 Weil, Cor 5.5 no CSS, Rem 5.6, Ex 5.7 control, Prop 5.9 margin, Rem 5.10 Schur)
+ paper_weil/sections/windows.tex             8b57cc12de09 / 2aa53af423afaf5c   (bottoms, prolate trial, conjectural second jet (10), Table 1, firewall)
+ paper_weil/sections/ledger.tex              7728a254411a / 6c326df2a6e61f56   (excluded proof shapes, open problem, R1/R2)
+ paper_weil/sections/disclosure.tex          c412aed6d40f / 16e85c3540d3a0ab   (Lean, numerics, LLM disclosure per Leiden Declaration, relation to the 2025 preprint)
+ paper_weil/sections/app_constants.tex       07c500d4991d / 1e56dfe79fce1d08
+ paper_weil/sections/app_lean.tex            007d2ea8e07c / 2c4dee20bf68c707
+ paper_weil/references.bib                   3c6f2b760315 / 4f2cc30cad56903e   (24 entries)
+ q3.lean.aristotle/Q3/Proofs/RouteB/NoFiniteStencilMinorant.lean   e6fd9dc2f713 / 130d9c20367161f3   (KERNEL_GREEN, 5 theorems, standard axioms; H1/H2 of no_positive_finite_stencil_minorant must match Thm 5.3)
+ Referee round 1: docs/routeB_bus/AGENT_REPORT_2026-09-05_PAPER_REFEREE_ROUND1.md ;  round 2: docs/routeB_bus/AGENT_REPORT_2026-09-05_PAPER_REFEREE_ROUND2.md
+ Style pass changelog: paper_weil/style_pass/STYLE_CHANGELOG.md ;  novelty pass: docs/routeB_bus/AGENT_REPORT_2026-09-05_PAPER_NOVELTY_PASS.md
+
+2. WHAT THE PAPER CLAIMS AS NEW (check each against the literature you know; kill any that is not)
+ N1. The ground-state substitution g = f_0 s applied to Suzuki's signed distributional kernel (2606.09096 §2.5; 2301.00421 §3.5), giving
+     Q(f_0 s) = ∫ b E_s + Σ w_n E_s(log n) with the closed form b(t) = a(t) − 2cosh(t/2) = e^{-5t/2}/(1−e^{-2t}) − e^{t/2} and the sign change
+     exactly at the plastic number (Lemma 4.2). The kernel itself and "screw function ⟺ RH" (Krein–Langer) are attributed to Suzuki; the test to
+     Riemann in CCM's normalisation (2511.22755 Lemma 7.1); the log-variable form to Freedman 2606.29555 eq. (1).
+ N2. The radical of the Weil form on the enlarged class X contains all translates U_q f_0 and all Xi-multiples f_0 * h (Prop 3.4), stated against
+     Suzuki's positive definiteness on C_c^∞ under RH and Bombieri's Lemma 10 (non-degenerate truncations).
+ N3. Theorem 5.3 (general no-positive-finite-stencil-minorant) and Cor 5.4/5.5 for the Weil form, stated against Connes 2602.04022 Thm 7.1
+     (the nonlocal Sonin minorant, which the theorem shows cannot be localised) and Bombieri's Introduction (iii) (linear independence of x^{-rho}).
+ N4. Proposition 5.9 (no fixed X-margin on a dense family) — trivial but load-bearing for the ledger.
+ N5. The extension of (EF) off C_c^∞ to f_0 by cutoffs (proof of Prop 3.4, using Lemma 3.3 with the j ≤ 2 envelope M_2 = 6011.8 and |χ''| ≤ 8).
+
+3. WHAT THE PAPER DOES NOT CLAIM (verify that no sentence contradicts this)
+ No proof step toward RH; (10) is a conjectural expansion with a heuristic derivation and numerical support (a_m measured on m = 13, 23, 43, 83;
+ least squares (0.019891, 0.00540) against (1/(16π), 13/(256π²)) = (0.019894, 0.005145)); all finite-window numbers are DIAGNOSTIC and labelled as
+ upper bounds for μ_λ (CCM Prop 3.4); Remark 5.10 (Schur) is not a theorem; the Lean file formalises Thm 5.3's core with the budget (Lemma 5.1) as
+ hypothesis H1, and the twelve window files are a companion computation, not statements of the paper.
+
+4. REQUIRED CHECKS (each with a verdict SURVIVES / FIX / DELETE and, for FIX, the verbatim replacement)
+ K1. Every proof line by line: Thm 3.2 (Riemann representation, factor bookkeeping Ξ(z) = 4∫Φ_P cos(2zu), H_0 = Ξ(·/2)/8, positivity, envelope with
+     P_j recursion and M_j), Lemma 3.3 (the three cutoff bounds; the L¹(e^{|x|/2}) weight; the H¹ bound on D), Prop 3.4 (source side via C_X; zero side
+     via two integrations by parts, Σ_z|z|^{-2} < ∞, boundedness of v̂ on the strip; translates via polarised invariance; f_0*h via shifted envelope),
+     Thm 4.1 (the pole step now written symmetrically: 2Re A_+(f_0 s) conj A_-(f_0 s) − Re[conj A_+(f_0) A_-(f_0|s|²) + conj A_-(f_0) A_+(f_0|s|²)]
+     = −∫(e^{t/2}+e^{-t/2})E_s ; the H-cancellation; w_n not 2w_n), Lemma 5.1 (C_q² = 150 925/(2a_q) with c_χ = 2), Lemma 5.2, Thm 5.3, Cor 5.4,
+     Cor 5.5 (the ℓ-bump bound ≥ 1), Ex 5.7, Prop 5.9.
+ K2. Statement of Weil's criterion and of (EF) in this normalisation: quantifiers, conjugations, which argument is barred, the class of tests; is the
+     citation to Bombieri §2 "transported to the logarithmic variable and polarised" an honest description of what is used?
+ K3. Attribution and priority paragraph: fair to Riemann, Bombieri, Yoshida, Connes–Consani, CCM, Connes–Moscovici, Suzuki (2023, 2026), Li, Frank–Seiringer,
+     Zhu, Freedman, Groskin, Rodgers–Tao, Polymath15, GORZ, Farmer, Nicolas, Broughan? Anything you know to be prior art for N1–N5 that is missing?
+     Is citing the two unrefereed 2026 preprints (Freedman, Groskin) appropriate as done?
+ K4. The Lean/disclosure section: does the description of no_positive_finite_stencil_minorant (H1, H2, conclusion) match Thm 5.3 exactly? Is the
+     Leiden-Declaration disclosure adequate and not overclaiming? Is "the author checked them numerically" true for every proof named there?
+ K5. Notation and consistency: ρ_p (plastic) vs ρ (zeros), M_j, A vs A_±, S (stencil) vs Sonin S, b(t) vs the fit constant b, dν̃, E_s vs E(h),
+     "cell"/"window"/"bottom"/"bottom vector"/"prolate trial" (glossary in the style changelog); abstract vs intro vs body claims.
+ K6. Journal placement: name the realistic tier (e.g. Research in Number Theory / Experimental Mathematics / J. Number Theory / a functional-analysis
+     venue) and the first sentence a referee of that journal would reject; say whether the ledger (§7) and the disclosure (§8) help or hurt there.
+
+5. FORBIDDEN
+ Any RH claim or "close to RH" language; strengthening a hedge; adding a citation you have not verified exists; editing the Lean file (you may
+ propose Lean-ready heads for the remaining paper lemmas 3.3 and 5.1 if cheap); numerical runs beyond what a check requires.
+
+6. REGISTERED PREDICTIONS (K6, observer; frozen)
+  P_CLEAN_NO_CRITICAL: 0.75 -- no CRITICAL finding (no false theorem, no unrepairable proof) remains in v3.
+  P_CLEAN_HIGH_LE_2: 0.55 -- at most two HIGH findings.
+  P_CLEAN_PRIORITY_HIT: 0.35 -- you name prior art for one of N1–N5 that the novelty pass missed.
+  P_CLEAN_ARXIV_READY_AFTER_FIXES: 0.60 -- your verdict is READY_AFTER_LISTED_FIXES rather than NOT_READY.
+  P_CLEAN_LEMMA_3_3_OR_4_1_FIX: 0.45 -- you require a fix in Lemma 3.3 or in the proof of Theorem 4.1 (the two places rewritten most recently).
+
+7. REQUIRED VERDICT: header with RESULT ∈ {READY_AS_IS, READY_AFTER_LISTED_FIXES, NOT_READY} and the usual YAML; a severity table
+ (CRITICAL/HIGH/MEDIUM/LOW/WORDING | file:approximate line or theorem | finding | verbatim replacement); K1–K6 in full; score the predictions
+ without editing them; register your own for independent checks; write only the expected verdict document.
