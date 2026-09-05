@@ -1,9 +1,9 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 392,
-  "declarations": 4523,
-  "in_docs": 2374,
+  "files_scanned": 393,
+  "declarations": 4556,
+  "in_docs": 2407,
   "in_lemma_db": 4182,
   "orphans": 48,
   "uncatalogued": 48,
@@ -36364,6 +36364,336 @@
       "signature": "theorem goal058FixedShiftMutation_no_positive_floor (beta : ℝ) (hbeta : 0 < beta) : ¬ complexTrialComplementFloor goal058FixedShiftMutationK goal058FixedShiftMutationQ 1 beta",
       "in_docs": true,
       "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "divPairs",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MangoldtDivisibilityEnergy.lean",
+      "line": 68,
+      "signature": "def divPairs (M : ℕ) : Finset (ℕ × ℕ)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "divisorPairs",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MangoldtDivisibilityEnergy.lean",
+      "line": 72,
+      "signature": "def divisorPairs (M : ℕ) : Finset (ℕ × ℕ)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "lemma",
+      "name": "mem_divPairs",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MangoldtDivisibilityEnergy.lean",
+      "line": 75,
+      "signature": "lemma mem_divPairs {M : ℕ} {p : ℕ × ℕ} : p ∈ divPairs M ↔ 1 ≤ p.1 ∧ 2 ≤ p.2 ∧ p.1 * p.2 ≤ M",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "lemma",
+      "name": "mem_divisorPairs",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MangoldtDivisibilityEnergy.lean",
+      "line": 92,
+      "signature": "lemma mem_divisorPairs {M : ℕ} {p : ℕ × ℕ} : p ∈ divisorPairs M ↔ 1 ≤ p.1 ∧ p.1 ≤ M ∧ 2 ≤ p.2 ∧ p.2 ∣ p.1",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "B",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MangoldtDivisibilityEnergy.lean",
+      "line": 104,
+      "signature": "def B (M n : ℕ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "diagWeight",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MangoldtDivisibilityEnergy.lean",
+      "line": 108,
+      "signature": "def diagWeight (M n : ℕ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "primeForm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MangoldtDivisibilityEnergy.lean",
+      "line": 111,
+      "signature": "def primeForm (M : ℕ) (c : ℕ → ℂ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "energy",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MangoldtDivisibilityEnergy.lean",
+      "line": 117,
+      "signature": "def energy (M : ℕ) (c : ℕ → ℂ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "lemma",
+      "name": "norm_sub_div_ofReal_sq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MangoldtDivisibilityEnergy.lean",
+      "line": 120,
+      "signature": "lemma norm_sub_div_ofReal_sq (A z : ℂ) (s : ℝ) (hs : s ≠ 0) : ‖A - z / (s : ℂ)‖ ^ 2 = ‖A‖ ^ 2 + ‖z‖ ^ 2 / s ^ 2 - 2 * (((starRingEnd ℂ) z * A).re) / s",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "lemma",
+      "name": "sum_divPairs_curry",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MangoldtDivisibilityEnergy.lean",
+      "line": 131,
+      "signature": "lemma sum_divPairs_curry (M : ℕ) (f : ℕ → ℕ → ℝ) : ∑ p ∈ divPairs M, f p.1 p.2 = ∑ n ∈ Finset.Icc 1 M, ∑ d ∈ (Finset.Icc 2 M).filter (fun d => n * d ≤ M), f n d",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "lemma",
+      "name": "sum_divisorPairs_curry",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MangoldtDivisibilityEnergy.lean",
+      "line": 139,
+      "signature": "lemma sum_divisorPairs_curry (M : ℕ) (f : ℕ → ℕ → ℝ) : ∑ p ∈ divisorPairs M, f p.1 p.2 = ∑ j ∈ Finset.Icc 1 M, ∑ d ∈ (Finset.Icc 2 M).filter (fun d => d ∣ j), f j d",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "lemma",
+      "name": "sum_divPairs_reindex",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MangoldtDivisibilityEnergy.lean",
+      "line": 147,
+      "signature": "lemma sum_divPairs_reindex (M : ℕ) (g : ℕ → ℕ → ℝ) : ∑ p ∈ divPairs M, g (p.1 * p.2) p.2 = ∑ p ∈ divisorPairs M, g p.1 p.2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "lemma",
+      "name": "sum_vonMangoldt_ge_two",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MangoldtDivisibilityEnergy.lean",
+      "line": 174,
+      "signature": "lemma sum_vonMangoldt_ge_two (M j : ℕ) (hj : 1 ≤ j) (hjM : j ≤ M) : ∑ d ∈ (Finset.Icc 2 M).filter (fun d => d ∣ j), vonMangoldt d = Real.log j",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mangoldt_divisibility_energy_identity",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MangoldtDivisibilityEnergy.lean",
+      "line": 196,
+      "signature": "theorem mangoldt_divisibility_energy_identity (M : ℕ) (c : ℕ → ℂ) : (∑ n ∈ Finset.Icc 1 M, diagWeight M n * ‖c n‖ ^ 2) - primeForm M c = energy M c",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "energy_nonneg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MangoldtDivisibilityEnergy.lean",
+      "line": 237,
+      "signature": "theorem energy_nonneg (M : ℕ) (c : ℕ → ℂ) : 0 ≤ energy M c",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "primeForm_le_diag",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MangoldtDivisibilityEnergy.lean",
+      "line": 241,
+      "signature": "theorem primeForm_le_diag (M : ℕ) (c : ℕ → ℂ) : primeForm M c ≤ ∑ n ∈ Finset.Icc 1 M, diagWeight M n * ‖c n‖ ^ 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "primeForm_le_max",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MangoldtDivisibilityEnergy.lean",
+      "line": 248,
+      "signature": "theorem primeForm_le_max (M : ℕ) (c : ℕ → ℂ) (A : ℝ) (hA : ∀ n ∈ Finset.Icc 1 M, diagWeight M n ≤ A) : primeForm M c ≤ A * ∑ n ∈ Finset.Icc 1 M, ‖c n‖ ^ 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "plantVec",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MangoldtDivisibilityEnergy.lean",
+      "line": 259,
+      "signature": "def plantVec : ℕ → ℂ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "lemma",
+      "name": "divPairs_two",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MangoldtDivisibilityEnergy.lean",
+      "line": 261,
+      "signature": "lemma divPairs_two : divPairs 2 = {(1, 2)}",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "lemma",
+      "name": "plant_energy_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MangoldtDivisibilityEnergy.lean",
+      "line": 278,
+      "signature": "lemma plant_energy_zero : energy 2 plantVec = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "lemma",
+      "name": "plant_primeForm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MangoldtDivisibilityEnergy.lean",
+      "line": 282,
+      "signature": "lemma plant_primeForm : primeForm 2 plantVec = Real.log 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "plant_identity_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MangoldtDivisibilityEnergy.lean",
+      "line": 296,
+      "signature": "theorem plant_identity_zero : (∑ n ∈ Finset.Icc 1 2, diagWeight 2 n * ‖plantVec n‖ ^ 2) - primeForm 2 plantVec = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "plant_doubled_edge_eq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MangoldtDivisibilityEnergy.lean",
+      "line": 300,
+      "signature": "theorem plant_doubled_edge_eq : (∑ n ∈ Finset.Icc 1 2, diagWeight 2 n * ‖plantVec n‖ ^ 2) - 2 * primeForm 2 plantVec = -Real.log 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "plant_doubled_edge_neg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MangoldtDivisibilityEnergy.lean",
+      "line": 307,
+      "signature": "theorem plant_doubled_edge_neg : (∑ n ∈ Finset.Icc 1 2, diagWeight 2 n * ‖plantVec n‖ ^ 2) - 2 * primeForm 2 plantVec < 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "lemma",
+      "name": "sum_divisorPairs_swap",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MangoldtDivisibilityEnergy.lean",
+      "line": 314,
+      "signature": "lemma sum_divisorPairs_swap (N : ℕ) (f : ℕ → ℕ → ℝ) : ∑ p ∈ divisorPairs N, f p.1 p.2 = ∑ d ∈ Finset.Icc 2 N, ∑ j ∈ (Finset.Icc 1 N).filter (fun j => d ∣ j), f j d",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "lemma",
+      "name": "card_multiples",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MangoldtDivisibilityEnergy.lean",
+      "line": 322,
+      "signature": "lemma card_multiples (N d : ℕ) : ((Finset.Icc 1 N).filter (fun j => d ∣ j)).card = N / d",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "lemma",
+      "name": "sum_log_eq_sum_floor",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MangoldtDivisibilityEnergy.lean",
+      "line": 329,
+      "signature": "lemma sum_log_eq_sum_floor (N : ℕ) : ∑ j ∈ Finset.Icc 1 N, Real.log j = ∑ d ∈ Finset.Icc 2 N, vonMangoldt d * ((N / d : ℕ) : ℝ)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "lemma",
+      "name": "B_one_eq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MangoldtDivisibilityEnergy.lean",
+      "line": 345,
+      "signature": "lemma B_one_eq (N : ℕ) : B N 1 = ∑ d ∈ Finset.Icc 2 N, vonMangoldt d / d",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "lemma",
+      "name": "psi_natCast",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MangoldtDivisibilityEnergy.lean",
+      "line": 352,
+      "signature": "lemma psi_natCast (N : ℕ) : Chebyshev.psi N = ∑ d ∈ Finset.Icc 2 N, vonMangoldt d",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "lemma",
+      "name": "B_one_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MangoldtDivisibilityEnergy.lean",
+      "line": 371,
+      "signature": "lemma B_one_le (N : ℕ) (hN : 1 ≤ N) : B N 1 ≤ Real.log N + (Real.log 4 + 4)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "lemma",
+      "name": "B_eq_div",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MangoldtDivisibilityEnergy.lean",
+      "line": 411,
+      "signature": "lemma B_eq_div (M n : ℕ) (hn : 1 ≤ n) : B M n = B (M / n) 1",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "lemma",
+      "name": "diagWeight_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MangoldtDivisibilityEnergy.lean",
+      "line": 425,
+      "signature": "lemma diagWeight_le (M n : ℕ) (hn : 1 ≤ n) (hnM : n ≤ M) : diagWeight M n ≤ Real.log M + (Real.log 4 + 4)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "primeForm_le_log",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MangoldtDivisibilityEnergy.lean",
+      "line": 442,
+      "signature": "theorem primeForm_le_log (M : ℕ) (c : ℕ → ℂ) : primeForm M c ≤ (Real.log M + (Real.log 4 + 4)) * ∑ n ∈ Finset.Icc 1 M, ‖c n‖ ^ 2",
+      "in_docs": true,
+      "in_lemma_db": false,
       "orphan": false
     },
     {

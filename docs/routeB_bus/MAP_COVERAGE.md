@@ -4,7 +4,7 @@
 `python3 docs/cartographer/map_coverage.py`. Рукописная карта — `MAP.md`, она
 описывает узлы маршрута; это приложение описывает **файлы**, и оно полное.
 
-Всего файлов: **392** · упомянуто в `MAP.md`: **25** · вне карты: **367** · без описания в шапке: **0**
+Всего файлов: **393** · упомянуто в `MAP.md`: **25** · вне карты: **368** · без описания в шапке: **0**
 
 «вне карты» не значит «лишний»: значит, что обходом карты файл не находится.
 Именно так 2026-08-11 был построен заново мост `ker ↔ eigenspace`, стоявший в
@@ -316,6 +316,7 @@
 | `HermitianUnitMinimumEigenpair` | — | Unit minimum eigenpair for a finite complex Hermitian matrix | 0 |
 | `LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail` | карта | Literal CCM cofinal residual/floor envelope and transform tail | 0 |
 | `LiteralCCMComplementFloorConstruction` | карта | Literal CCM complement-floor construction by fixed-shift transport | 0 |
+| `MangoldtDivisibilityEnergy` | — | Λ-divisibility energy identity (judge's `mangoldt_divisibility_energy_identity`) | 0 |
 | `MatrixBilinFormRadical` | — | The left radical of the bilinear form represented by `Q` is the kernel | 0 |
 | `MatrixBilinRadicalQuotientEquiv` | — | The equality between the full bilinear radical and the calibration line | 0 |
 | `MontelCenteredCriticalStrip` | — | The open centered critical strip is preconnected. -/ | 0 |
