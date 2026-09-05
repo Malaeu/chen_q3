@@ -1,0 +1,103 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-05-XIDEV
+BOUNDARY_ID: GOAL058_WEIL_POSITIVITY_AROUND_XI_PROOF_CONSTRUCTION
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-05-XIDEV (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub). Perform the proof-construction task; maximum reasoning effort.
+DATE: 2026-09-05
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: PROPOSITION59_CCM_FINITE_BOTTOM_GROUND_FAMILY
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_PROOF_CONSTRUCTION_AND_ADVERSARIAL_REVIEW
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_WEIL_POSITIVITY_AROUND_XI_PROOF_2026-09-05.md
+AUTHOR: Linux-Claude (observer) on the owner's instruction: "we need a publishable, community-checkable, Lean-realized result — a real closure; prepare the batch for that"; format = the judge's own proof-construction rules (REQ-2026-09-04-WEILPROOF); every number is the observer's own computation (arb/mpmath) unless marked
+PARENT_VERDICTS: WEILPROOF (b8b0dc95, PARTIAL_PROOF_WITH_PRECISE_REMAINDER), SIGNFREE (0cee3192), FULLCHAIN (660a072c)
+BASE_TIP: 76316257
+
+0. OWNER'S TASK (binding wording)
+ Continue the proof construction of Weil positivity started in WEILPROOF, now centred on the canonical test. The deliverable must be
+ publication-shaped: a sequence of lemmas with complete proofs, each with scope/verifier tags and a Lean-ready theorem head, so that
+ (a) a referee can check it, (b) an Opus Lean agent can formalize each lemma against the Lean tree, (c) the final statement plugs into the
+ published Weil criterion (Connes-Consani 2106.01715 (1.1)-(1.2)) with no free premise. RESULT codes as in WEILPROOF:
+ PAPER_PROOF_CANDIDATE_COMPLETE / PARTIAL_PROOF_WITH_PRECISE_REMAINDER / ATTEMPT_REFUTED_WITH_EXACT_COUNTEREXAMPLE. A bare next step, a
+ re-ranking, a new atom name, or "it is equivalent to RH" as a stopping reason are REJECTED. If a mechanism fails, find the exact wrong
+ inequality, try to repair it, keep what is proved. Do not use RH, W, C, F, (P-) or any zero-free region as a premise. Numbers below are
+ FINITE_CELL evidence and choose the mechanism; they never replace a proof.
+
+1. SHELF (sha256 prefix 16 at BASE_TIP 76316257; all Lean files KERNEL_GREEN, axioms [propext, Classical.choice, Quot.sound])
+ docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_DIRECT_WEIL_SOURCE_PROOF_2026-09-04.md   adac65cdd6381821
+ docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DIRECT_WEIL_SOURCE_PROOF_2026-09-04.txt    6f60ccbee0d64461 (git blob; your rules 0-7 apply verbatim)
+ docs/Progress_Log.md                                                                       ad91aec4d38804a2
+ q3.lean.aristotle/Q3/Proofs/RouteB/WeilGramMinusShift.lean (25 thms: pole difference of squares; K = Gamma - c_L I - 2 beta beta*; K PSD <-> GAP-GRAM)   65ca4b3429b51614
+ q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean (26 thms)                            c9c592d0894d28f9
+ q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrix.lean (literal matrix)             282dc31c9bc558ae
+ docs/routeB_bus/litreview/pdfs/2511.22755.pdf (CCM)  c98d89f7fc999d03 · docs/routeB_bus/litreview/pdfs/2608.24827.pdf (Zhu)  70332e428dd7ab82
+
+2. WHAT WEILPROOF ESTABLISHED (PAPER; the observer verified (1), (2)(3), (9) and formula (6) numerically to 4e-18 against the literal CCM matrix on (13, N=6), random complex vector)
+ Q(g) = J(g) - d_A ||g||^2 + S(g),  J(g) = int_0^inf k(t) ||tau_t g - g||^2 dt,  k(t) = e^{-5t/2}/(1 - e^{-2t}),  d_A = gamma + log(8 pi) + pi/2 - 4 = 1.372178,
+ S(g) = 2 int_0^L Delta(t) e^{-t/2} (C_g'(t) - C_g(t)/2) dt,  Delta(t) = psi(e^t) - (e^t - 1),  C_g(t) = Re int conj(g(x)) g(x+t) dx.      (9)
+ (NEG): with Delta = 0 the form is strictly negative on dilated tests. (5): Q(g) >= b(L)||g||^2 with b(L) -> -inf. (8): K = Gamma - c_L I - 2 beta beta*.
+ Open: (GAP-ARITH) J(g) + S(g) >= (d_A - r_j)||g||^2 cofinally, or (GAP-GRAM).
+
+3. NEW FINITE_CELL FACTS (observer, 2026-09-05; Progress_Log 02:05 and 02:20)
+ (a) On the unit even-block ground xi_m (N = m), the split (9) is m-independent: J(xi) = 0.5405, 0.5372, 0.5415, 0.5484 and S(xi) = 0.8316, 0.8349, 0.8306,
+     0.8238 for m = 13, 23, 43, 83; J + S - d_A = lambda_1 within 1e-11; the Chebyshev share S/d_A = 0.606, 0.609, 0.605, 0.600. Without S the mean
+     form J - d_A on the minimizer is -0.83 < 0: (NEG) on the minimizer itself.
+ (b) On the exact Xi-sample row y_m (y_k/y_0 = (-1)^k Xi(2 pi k/L)/Xi(0)): J(y) = 0.570642 at m = 43 AND m = 83 (six digits): an m-independent invariant.
+ (c) Continuum (profile autocorrelation C_inf(t) = int Xi(x)^2 cos(xt) dx / int Xi^2, i.e. the Fourier transform of Xi^2):
+       J_inf = int_0^inf k(t)(2 - 2 C_inf(t)) dt = 0.5706416,   S_inf = 2 int_0^inf Delta(t) e^{-t/2}(C_inf' - C_inf/2) dt = 0.801542,
+       J_inf + S_inf - d_A = -5.5e-11.   The Chebyshev correction on Xi is carried by primes <= 59: the tail of S_inf over t in [log 59, log 3000]
+       is -1.0e-22 (C_inf decays super-exponentially).
+ Reading (observer): (c) is the explicit formula on the canonical test f_Xi with f_Xi-hat proportional to Xi: its Weil form is a sum over zeros
+ of |f-hat(rho)|^2-type terms, and Xi vanishes at every zero, so Q(f_Xi) = 0 unconditionally (no RH). In the (9) coordinates (GAP-ARITH) is an
+ EQUALITY on f_Xi; the open inequality lives on deviations from f_Xi.
+ (d) On the wide schedule (N ~ 8m) the ground equals the trial to p = 4.7e-9, 4.8e-10, 5.3e-11 (m = 13, 23, 43; the last on the precommitted cell
+     (43,344)); saturated bottoms mu(13) = 3.484e-59, mu(23) = 1.828e-112, mu(43) ~ 1.7e-220 (Zhu's Landau-Widom law reproduces them).
+
+4. THE CHAIN TO BUILD (one chain, lemmas with full proofs; each lemma gets scope, verifier, and a Lean-ready head)
+ L1 (canonical test identity). Define f_Xi by f_Xi-hat = Xi (state the exact transform convention of (9) and the normalization so that
+     ||f_Xi|| = 1). Prove Q(f_Xi) = 0 from the explicit formula (Weil/Guinand; CCM (3.5)-(3.11); the zero side), unconditionally, and derive
+     J_inf(Xi) + S_inf(Xi) = d_A as a consequence; state J_inf and S_inf as explicit convergent integrals and confirm the numbers in 3(c).
+     If the canonical test is not compactly supported, say exactly how it enters the form (form domain, limit of truncations P_{L,N} f_Xi with
+     the WEILPROOF (REC) budget) — no hand-waving at the window edge.
+ L2 (first variation). For g = f_Xi + eps v (v in the form domain, any complex v), show Q(f_Xi + eps v) = 2 eps Re B(f_Xi, v) + eps^2 Q(v) with the
+     bilinear form B; prove B(f_Xi, v) = 0 for every v (the canonical test is a null vector of the form — the zero-side reading) or state exactly
+     what B(f_Xi, v) is if it is not zero. This is the exact statement "f_Xi is a critical point of the Weil form".
+ L3 (second variation in the (9) coordinates). Write Q(v) = J(v) - d_A||v||^2 + S(v) for the deviation v and decompose S(v) by the (9) mechanism:
+     S(v) = S_arch-like part + Chebyshev part; identify which piece of (GAP-ARITH) for v is already positive and which carries the sign.
+     Concretely: for v orthogonal to f_Xi in the form-domain inner product, is there an exact identity for J(v) + S(v) - d_A||v||^2 that isolates
+     the sum over zeros (zero-side) as a manifestly nonnegative-under-RH but SIGNED-in-general quantity — the question is whether (9) gives a
+     geometric-side representation of that sign that can be estimated WITHOUT the zeros.
+ L4 (arithmetic control at fixed smoothness). Prove a bound for S(g) that keeps the sign information: using the super-exponential decay of the
+     Fourier transform of the test's autocorrelation for g in a fixed smoothness class (e.g. g whose C_g is the Fourier transform of an entire
+     function of order 1 and finite type, as for Xi^2), show that S(g) is determined by primes up to an explicit P(g) with an explicit tail bound;
+     then (GAP-ARITH) for such g reduces to a FINITE prime sum inequality — state it exactly (this is the K7 bridging lemma; the finite inequality
+     is then a certificate object, cf. Zhu Thm 1.1). Say precisely which g are covered and whether the class is dense in the form domain
+     (if it is, positivity on the class + continuity of the form gives W).
+ L5 (assembly). W from L1-L4, or the exact first remaining inequality in the L3/L4 objects, with explicit domain, budget and what a numerical
+     one-sided certificate would have to enclose.
+
+5. FORBIDDEN (WEILPROOF rules 5 verbatim) plus: no "Q(f_Xi) = 0 because RH"; no replacing Delta by its mean (killed by NEG); no operator-norm bound
+ through the spectral gap; no claim of density without a proof; no numerical value as a step.
+
+6. REQUIRED VERDICT
+ 1. header with REQUEST_ID, boundary, request lock, RESULT code, CLOSES/OPENS; 2. the lemmas L1-L5 with complete proofs and Lean-ready heads
+ (name the Mathlib objects you rely on: explicit formula is NOT in Mathlib — say what is, e.g. Poisson summation, Mellin/Fourier on Schwartz,
+ zeta functional equation, and what must be imported as a PAPER theorem with a locator); 3. score the observer's predictions below without
+ editing; 4. register your own predictions for the independent checks you require; 5. no Lean edit, no numerical run, no RH claim; write only the
+ expected verdict document.
+
+REGISTERED PREDICTIONS (K6, observer)
+  P_L1_CANONICAL_IDENTITY_PROVED: 0.75 -- L1 is proved as an unconditional theorem (explicit formula, zero side vanishes).
+  P_L2_FIRST_VARIATION_VANISHES: 0.60 -- B(f_Xi, v) = 0 for all v is proved.
+  P_L3_GIVES_GEOMETRIC_SIGN_REPRESENTATION: 0.20 -- the second variation gets a geometric-side representation with a controllable sign.
+  P_L4_FINITE_PRIME_REDUCTION_PROVED: 0.35 -- for an explicit dense class the arithmetic part reduces to a finite prime-sum inequality with an
+     explicit tail bound.
+  P_RESULT_COMPLETE: 0.03; P_RESULT_PARTIAL: 0.85; P_RESULT_REFUTED: 0.12.
