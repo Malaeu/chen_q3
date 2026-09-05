@@ -1,0 +1,91 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-05-COUPLED
+BOUNDARY_ID: GOAL058_COUPLED_SIGNED_SQUARE_CERTIFICATE_FOR_THE_CANONICAL_KERNEL
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-05-COUPLED (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub). Proof-construction task; maximum reasoning effort; your R1 direction from DOMFM.
+DATE: 2026-09-05
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: PROPOSITION59_CCM_FINITE_BOTTOM_GROUND_FAMILY
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_PROOF_CONSTRUCTION_AND_ADVERSARIAL_REVIEW
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_COUPLED_SIGNED_SQUARE_CERTIFICATE_FOR_THE_CANONICAL_KERNEL_2026-09-05.md
+AUTHOR: Linux-Claude (observer) on the owner's word; the owner's aim is a publishable, Lean-realizable closure; your WEILPROOF rules 0-7 apply verbatim
+PARENT_VERDICTS: DOMFM (002ad66e), XIDEV (2aa9dfc9), WEILPROOF (b8b0dc95, 8e4f2329), SIGNFREE (0cee3192)
+BASE_TIP: e4a3bad2
+
+0. TASK
+ Your own selected direction R1 (DOMFM): prove (DOM) by a COUPLED SIGNED-SQUARE certificate for the canonical kernel — an exact identity that writes
+ D(s) = Q(f_0 s) = ½∬ f_0(x)f_0(x')ν(|x−x'|)|s(x)−s(x')|² dx dx'  (dν = b(t)dt + Σ_n w_n δ_{log n}, b = k − e^{t/2}, b > 0 iff e^t < ρ = 1.3247, the plastic number)
+ as a sum of squares of coupled differences of s with nonnegative coefficients built from f_0, b_+, and the prime atoms, so that the negative continuous
+ part b_- is paid by identities of the (SIGNED-PSD) type 2|s₁−s₂|² + 2|s₂−s₃|² − |s₁−s₃|² = |s₁−2s₂+s₃|², not by absolute values. Three admissible outcomes:
+ PAPER_PROOF_CANDIDATE_COMPLETE (the identity exists and is proved: W follows), PARTIAL_PROOF_WITH_PRECISE_REMAINDER (an identity that pays part of b_-;
+ the exact unpaid remainder as a quadratic form with its sign undecided), ATTEMPT_REFUTED_WITH_EXACT_COUNTEREXAMPLE (a theorem that no certificate of the
+ specified class exists — like SCHUR-KILL, with the exact obstruction). A bare next step or a new name is REJECTED. No RH/W/C/F/(P-)/(DOM) as premises.
+
+1. SHELF (sha256 prefix 16 at BASE_TIP e4a3bad2; 13 Lean files of the front KERNEL_GREEN)
+ docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_DOM_FM_ZERO_MARGIN_AND_TRADEOFF_LEMMA_2026-09-05.md   8a5d326180c96633
+ docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_WEIL_POSITIVITY_AROUND_XI_PROOF_2026-09-05.md   93db2de635782191
+ q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean (39 thms: TRADE, EIG-TRADE, finite absolute-Schur impossibility + sufficiency, SIGNED-PSD, COMP-GAP)   e10adef2417e0e93
+ docs/Progress_Log.md   7e3c747dd4c8adea
+
+2. ESTABLISHED (PAPER, independently audited unless noted)
+ f_0 = 4E(h)(e^x)/A, F f_0 = Xi/A (scale-4 repair; verified to 8-14 digits); B(f_0, v) = 0 for all v in X; (GS)/(SECOND) exact; (KERNEL): T = d_ε δ − J_ε with
+ log-divergent raw degree d_ε(x) = f_0(x)² log(1/ε) + O(1) — so ANY certificate must work with differences, never with a pointwise diagonal; (SCHUR-KILL):
+ Σ(d_ε − a_ε) = −4N_- < 0, no positive diagonal absolute-Schur weight; (SIGNED-PSD) plant; (FOURIER) two-frequency kernel M(η, ξ) — not a multiplier.
+ Observer numbers (mpmath, C_0 = autocorrelation of f_0 = Fourier transform of Xi²/∫Xi²): negative mass N_- = ∫_{t_0}^∞ b_-(t)C_0(t)dt = 0.083642 (t_0 = log ρ = 0.28120);
+ prime atoms Σ w_n C_0(log n) = 0.037599 (2.2× SMALLER than N_-); positive continuous part ∫_ε^{t_0} b C_0 = 0.1747, 1.1587, 2.2941 at ε = 0.1, 0.01, 0.001
+ (+1.13 per decade = (log 10)/2). So in degree terms the primes alone cannot pay b_-; the short-range positive part pays, via E_s(t) = O(t²).
+ Plane-wave symbol (exact): σ(ξ) = D(e^{iξx}) = ∫2(1−cos ξt)C_0(t)dν(t) = Σ_γ Xi(γ−ξ)²/A² — verified to 1e-13..1e-18 at ξ = 0.5..20, all ≥ 0 and increasing:
+ the modulation directions are positive by the zero side; the geometric side must reproduce that sign without zeros.
+
+3. THE CERTIFICATE CLASS TO BUILD (exact definitions; anything outside it must be declared)
+ A coupled signed-square certificate is a finite or countable family of linear "stencils" S_j acting on s — finite linear combinations of values
+ s(x + τ_{j,1}), …, s(x + τ_{j,k}) with real coefficients summing to zero (zero-mean stencils, so constants are annihilated as in D2.1) — together with
+ nonnegative weights W_j(x) ≥ 0 built from f_0 (products f_0(x + τ)f_0(x + τ') and the like) such that
+   D(s) = Σ_j ∫ W_j(x) |(S_j s)(x)|² dx      for all compact smooth s.                                             (CSS)
+ (SIGNED-PSD) is the k = 3 instance: stencil s₁ − 2s₂ + s₃ pays the negative edge (1,3). For the canonical kernel the negative edges are ALL pairs at
+ distance t > t_0 = 0.2812 (continuous density b_-(t)) and the positive edges are the pairs at distance t < t_0 (b_+) and the prime pairs at distance
+ log n (weights w_n = Λ(n)/√n), all with the canonical weight f_0(x)f_0(x + t).
+ Questions in order:
+ C1. Second-difference stencils along the continuum: for a pair at distance t = t_1 + t_2 with both t_1, t_2 < t_0, the identity
+     |s(x+t) − s(x)|² ≤ 2|s(x+t_1) − s(x)|² + 2|s(x+t) − s(x+t_1)|² is the k=3 mechanism; write the exact continuous version: express ∫∫ b_-(t) f_0f_0 |Δ_t s|²
+     as ∫∫ over splittings and determine whether the available positive mass b_+ (weighted by the f_0 products at the split points) can absorb it —
+     an inequality between explicit positive functions of t, with f_0-weights; state it and decide it (the test is quantitative: b_+ mass near 0
+     diverges like 1/(2t), so splitting a long negative edge into many short positive edges gains a logarithm; is it enough against the fixed N_-?
+     Note the k=3 identity has a cost factor 2 per split — the geometric series of costs vs the log gain: compute the balance exactly).
+ C2. Prime atoms as stencils: the atoms at distances log n with weights w_n couple to the continuum through log n = log m + log(n/m): a stencil
+     s(x) − s(x + log m) − s(x + log n) + s(x + log(mn)) (multiplicative "rectangle") has zero mean; its square pairs the atom at log(mn) with atoms at log m,
+     log n and the continuous edge at log(n/m)... Write the exact multiplicative-rectangle identity and its weight structure; does the von Mangoldt
+     divisibility identity (DIV) — Σ a_n|c_n|² − P_M(c) = ΣΛ(d)|c_{nd} − c_n/√d|² — reappear as the atom-only part of (CSS)? (In the log-integer packet
+     basis it is exactly a coupled-square identity; here it must be transported to the continuum with the f_0 weights.)
+ C3. Obstruction theorem, if C1–C2 fail: characterize exactly which quadratic forms of type ½∬ f_0f_0 ν(|x−x'|)|Δs|² admit a (CSS) representation with
+     stencils of bounded support (this is a signed-graph "sum of squares" problem; for finite graphs, PSD ⟺ SOS in the Laplacian class is classical for
+     rank-one-per-edge stencils, but with zero-mean stencils of size k ≥ 3 the class is the cone of "Laplacian-like" PSD matrices with row sums zero — is
+     EVERY PSD zero-row-sum matrix a nonnegative combination of squares of zero-mean stencils? Yes: any PSD zero-row-sum matrix M = Σ λ_i u_i u_i^*
+     with u_i ⊥ (1,…,1), each u_i is a zero-mean stencil — so (CSS) is EQUIVALENT to positivity, with stencils = eigenvectors: NOT a proof method unless
+     the stencils are EXPLICIT and independent of the spectrum. State this precisely: the content of (CSS) is the explicit construction, and the question is
+     whether explicit local stencils (bounded support in x, coefficients from f_0/b/primes only) suffice — give the exact obstruction or the construction.)
+ C4. Assembly: if (CSS) is proved with explicit stencils, then W and RH via the published criterion; if PARTIAL, the exact unpaid quadratic form
+     R(s) = D(s) − Σ_j∫W_j|S_js|² with its sign undecided, its Fourier kernel and its plane-wave symbol (which must be ≥ 0 by section 2 — a consistency check).
+
+4. FORBIDDEN: absolute values per edge with any positive weight (dead: SCHUR-KILL); pointwise diagonal dominance (dead: UV-DIAG); uniform margin on a
+ dense family (dead: TRADE); arbitrary nonnegative functions in place of E_s; spectral stencils (eigenvectors of the form) presented as explicit;
+ any numerical value as a proof step; RH-conditional inputs.
+
+5. REGISTERED PREDICTIONS (K6, observer)
+  P_C1_SPLITTING_BALANCE_COMPUTED: 0.75 -- the exact log-gain vs factor-2-cost balance for splitting negative edges is written and decided.
+  P_C1_SPLITTING_SUFFICES: 0.15 -- the splitting mechanism alone pays b_- (would be a proof).
+  P_C2_MULTIPLICATIVE_RECTANGLE_IDENTITY_PROVED: 0.55 -- (DIV) reappears as the atom part of (CSS) via multiplicative rectangles with f_0 weights.
+  P_C3_LOCAL_STENCIL_OBSTRUCTION_THEOREM: 0.40 -- a theorem that bounded-support explicit stencils cannot suffice (or a precise class where they do).
+  P_RESULT_COMPLETE: 0.03; P_RESULT_PARTIAL: 0.80; P_RESULT_REFUTED: 0.17.
+
+6. REQUIRED VERDICT: header with RESULT code and CLOSES/OPENS; C1-C4 with complete proofs and Lean-ready heads; score the predictions without editing;
+ register your own for independent checks; no Lean edit, no numerical run, no RH claim; write only the expected verdict document.
