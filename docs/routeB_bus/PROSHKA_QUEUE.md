@@ -14,9 +14,11 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-05-DOMFM · REQ-2026-09-05-DOMFM · Goal 058: (DOM)/(FM) at zero margin — margin-density tradeoff lemma (dense families cannot have a uniform margin; kills OPEN-OVERLAP-with-margin and the 2025 closure), explicit canonical-weighted kernel T for D(s) = Q(f_0 s), FM on the Fejer x heat dictionary · OPEN
+## REQ-2026-09-05-DOMFM · REQ-2026-09-05-DOMFM · Goal 058: (DOM)/(FM) at zero margin — margin-density tradeoff lemma (dense families cannot have a uniform margin; kills OPEN-OVERLAP-with-margin and the 2025 closure), explicit canonical-weighted kernel T for D(s) = Q(f_0 s), FM on the Fejer x heat dictionary · ANSWERED
 
-- `STATUS: OPEN`
+- `STATUS: ANSWERED`
+- Verdict: `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_DOM_FM_ZERO_MARGIN_AND_TRADEOFF_LEMMA_2026-09-05.md` · commit `002ad66e` · blob `d1a8c9091bfabd14730b72065058355e803afa7b`
+- RESULT PARTIAL · D1 (TRADE) lambda_min(K|V) <= R(y) + 2Md with guards (p != 0, operator norm), (EIG-TRADE) quadratic error for eigenvectors, (FORM-TRADE)/(MARGIN-KILL): no uniform margin on an X-form-dense family (bare L2 density insufficient: plant); (LEGACY-PLANT) explicit atom refutes the 2025 broad-cone positivity as transcribed · D2 (SECOND) exactly quadratic; (KERNEL) cutoff kernel; (UV-DIAG) raw diagonal diverges like log(1/eps); (FOURIER) two-frequency kernel, not a multiplier; (SCHUR-KILL) NO positive diagonal weight gives an absolute-Schur certificate (integrated degree defect -4 N_- < 0); (SIGNED-PSD) plant: PSD form with a negative edge — obstruction != negativity · D3 (REC-FORM) X-norm recovery by CCM modes; (COMP-GAP) compression = inequality on range Z only; D3.3 W <=> zero-margin lower errors on any recovering family · D4 (ZG), (DOM) <=> W, (ENC)/(FM) · direction: coupled signed certificates (R1), full Gram-minus-shift lower certificates (R2) · fates: D1 0.90, kernel 0.70, test 0.30, D3 0.80 all CONFIRMED; PARTIAL 0.88 CONFIRMED · observer: SIGNED-PSD checked symbolically; masses N_- = 0.0836, primes 0.0376, positive continuous part ~ log(1/eps)
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DOM_FM_ZERO_MARGIN_AND_TRADEOFF_LEMMA_2026-09-05.txt`
 - Boundary: `GOAL058_DOM_FM_AT_ZERO_MARGIN_WITH_MARGIN_DENSITY_TRADEOFF`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
