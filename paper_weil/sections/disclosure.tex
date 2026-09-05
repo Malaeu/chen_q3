@@ -2,12 +2,14 @@
 
 \paragraph{Machine-checked part.} The finite algebra behind \Cref{sec:windows} and the finite heads of \Cref{sec:obstruction} are
 formalised in Lean~4 (toolchain \texttt{v4.26.0}) against Mathlib \cite{Mathlib} (tag \texttt{v4.26.0}, revision \texttt{2df2f0150c27}).
-\Cref{app:lean} lists the twelve files, their declaration counts, and the statements they cover. Every file compiles with
+\Cref{app:lean} lists the thirteen files, their declaration counts, and the statements they cover; the last of them formalises the
+core of the obstruction theorem (\Cref{lem:indep} and the Fatou--independence argument of \Cref{thm:nominorant}) with the cutoff
+budget of \Cref{lem:budget} as an explicit hypothesis. Every file compiles with
 \texttt{\#print axioms} reporting only \texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}; no project axiom is used.
 What is formalised is exactly what is finite: curvature identities and the explicit product bound for finite transforms, lattice
 identities, second-mode overlap, the sign-free Ritz bookkeeping, the decomposition $K=\Gamma-c_LI-2\beta\beta^*$ of the window
 matrix, the von Mangoldt divisibility energy, and the finite obstructions (tradeoff, eigen-tradeoff, Schur, signed-PSD plant).
-The analytic statements (\Cref{thm:FPhi,prop:radical,thm:GS,thm:nominorant}) are paper theorems; the explicit formula \eqref{eq:EF}
+The analytic statements (\Cref{thm:FPhi,prop:radical,thm:GS,lem:budget}) are paper theorems; the explicit formula \eqref{eq:EF}
 is imported from the literature and is not a project axiom.
 
 \paragraph{Numerical part.} All finite-window quantities were computed in interval arithmetic (\texttt{arb}, 220--300 decimal digits) with the mode truncation chosen from the required relative precision $\approx\sqrt{\lambda_1}$; float

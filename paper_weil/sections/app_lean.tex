@@ -16,7 +16,16 @@ file & lines & decls & content\\ \midrule
 \texttt{WeilGramMinusShift} & 395 & 27 & $K=\Gamma-c_LI-2\beta\beta^*$ with PSD Gram $\Gamma$\\
 \texttt{MangoldtDivisibilityEnergy} & 452 & 33 & $\sum_{d\mid n}\Lam(d)=\log n$ as an energy identity (DIV)\\
 \texttt{DomfmFiniteObstructions} & 847 & 48 & finite tradeoff, eigen-tradeoff, Schur, signed-PSD and comparison plants\\
+\texttt{NoFiniteStencilMinorant} & 621 & 5 thms & \Cref{lem:indep} and \Cref{thm:nominorant} in abstract form (below)\\
 \bottomrule\end{tabular}\end{center}
-The finite heads named in \Cref{sec:obstruction} (path identity, rectangle identity, translated radical, cutoff budget, independence
-of translates, no-minorant) are specified with Lean-ready statements in the project but are \emph{not} yet compiled; they are
-listed here as paper theorems.
+\paragraph{The obstruction theorem in Lean.} The file \texttt{NoFiniteStencilMinorant.lean} proves, with no reference to $\zeta$:
+\texttt{independence\_of\_translates} (\Cref{lem:indep}: $f$ continuous, integrable, $\int f\ne0$, $p$ injective, $\sum_\ell d_\ell f(p_\ell-q)=0$
+for all $q\in\mathbb Q$ $\Rightarrow d=0$; the proof samples the exponential polynomial at $k$ points of a small interval instead of
+differentiating, then applies \texttt{Matrix.det\_vandermonde}); \texttt{stencil\_energy\_limit\_eq\_zero} (the Fatou step for one rational
+$q$); and \texttt{no\_positive\_finite\_stencil\_minorant}, whose hypotheses are: $f$ continuous, integrable and positive; an arbitrary
+function $Q:(\R\to\C)\to\R$; measurable cutoffs $\chi_R$ with $\chi_R=1$ on $[-R,R]$; an injective stencil with $c\ne0$; a measurable
+$W\ge0$; (H1) $Q(f\,\chi_Rr_q)\to0$ as $R\to\infty$ for every rational $q$; (H2) $\int W|S(\chi_Rr_q)|^2\le Q(f\chi_Rr_q)$ for all
+rational $q$ and $R\ge1$. Conclusion: $W=0$ a.e. A fifth theorem exhibits a model satisfying all hypotheses, so they are consistent.
+The analytic input (H1) is \Cref{lem:budget}, a paper lemma; (H2) is implied by the hypothesis of \Cref{thm:nominorant}. All five
+declarations report axioms \texttt{[propext, Classical.choice, Quot.sound]}. The remaining finite heads of \Cref{sec:obstruction}
+(path and rectangle identities, translated radical, cutoff budget) are not formalised.
