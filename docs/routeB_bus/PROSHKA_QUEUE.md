@@ -14,6 +14,22 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-05-COUPLED · REQ-2026-09-05-COUPLED · Goal 058: coupled signed-square certificate (CSS) for the canonical kernel — pay b_- by second-difference stencils (SIGNED-PSD pattern) and multiplicative prime rectangles; exact splitting balance; obstruction theorem for local explicit stencils · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_COUPLED_SIGNED_SQUARES_FOR_CANONICAL_KERNEL_2026-09-05.txt`
+- Boundary: `GOAL058_COUPLED_SIGNED_SQUARE_CERTIFICATE_FOR_THE_CANONICAL_KERNEL`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: DOMFM verdict + Lean DomfmFiniteObstructions (13th file); Probe 26 (signed Laplacian, plastic-number sign change, plane-wave symbol = zero side to 1e-13); masses N_- = 0.0836, primes 0.0376, positive part log-divergent
+- Registered predictions: P_C1_SPLITTING_BALANCE_COMPUTED 0.75; P_C1_SPLITTING_SUFFICES 0.15; P_C2_MULTIPLICATIVE_RECTANGLE_IDENTITY_PROVED 0.55; P_C3_LOCAL_STENCIL_OBSTRUCTION_THEOREM 0.40; P_RESULT_COMPLETE 0.03; P_RESULT_PARTIAL 0.80; P_RESULT_REFUTED 0.17
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `7f141f59db0a94b4b6208ae108f6b0b53eba38e5` / `9827` / `91` /
+  `2882115e67f5abcb24f4ee18bd5a00d3fd9f78af1d7de3b688e452deb33aa617` /
+  `9b7cdf9e09482bb35c2f3c67fad106d533572510` / `yes`
+
+---
+
 ## REQ-2026-09-05-DOMFM · REQ-2026-09-05-DOMFM · Goal 058: (DOM)/(FM) at zero margin — margin-density tradeoff lemma (dense families cannot have a uniform margin; kills OPEN-OVERLAP-with-margin and the 2025 closure), explicit canonical-weighted kernel T for D(s) = Q(f_0 s), FM on the Fejer x heat dictionary · ANSWERED
 
 - `STATUS: ANSWERED`
