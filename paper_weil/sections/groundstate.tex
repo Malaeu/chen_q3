@@ -1,9 +1,12 @@
 \section{The ground-state representation}\label{sec:gs}
 
-Since $f_0>0$, every compact smooth test is of the form $g=f_0\,s$ with $s=g/f_0\in C_c^\infty$. The following identity is the
-Weil-form analogue of the ground-state representation used by Frank and Seiringer for fractional Hardy inequalities
-\cite{FrankSeiringer2008}: the radical vector $f_0$ plays the role of the ground state, and the form becomes a
-Dirichlet form of a \emph{signed} jump kernel.
+Since $f_0>0$, every compact smooth test is of the form $g=f_0\,s$ with $s=g/f_0\in C_c^\infty$. Suzuki
+\cite[\S2.5]{Suzuki2026} writes the Weil form on $(-a,a)$ as $\iint(-g'')(x-y)\,v(y)v(x)\,dx\,dy$ with an explicit even screw function $g$
+whose second derivative carries the prime atoms $\Lam(n)/\sqrt n$ at $\pm\log n$ and an archimedean density with a
+$\tfrac12\mathrm{Pf}(1/|t|)$ singularity; the following identity is the ground-state version of that kernel in the sense of Frank and
+Seiringer \cite{FrankSeiringer2008}: the radical vector $f_0$ plays the role of the ground state, and the form becomes a
+Dirichlet form of a \emph{signed} jump kernel acting on differences of the ratio $s$. Unlike a Hardy-type ground state, $f_0$ is a
+zero mode of an indefinite form, and $\nu$ is not a positive L\'evy measure; that is exactly where the difficulty sits.
 
 \begin{theorem}[ground-state form]\label{thm:GS}
 For $s\in C_c^\infty(\R;\C)$ let $E_s(t)=\int f_0(x)f_0(x+t)\,|s(x+t)-s(x)|^2\,dx$. Then
@@ -24,6 +27,9 @@ contributes $-\int(e^{t/2}+e^{-t/2})\,\cdot$ on the difference side, which turns
 $E_s(t)=O(t^2)$ at $0$, and $f_0(x)f_0(x+t)$ decays super-exponentially in $t$ for fixed compact $\supp s$.
 \end{proof}
 
+The density $b$ is an elementary evaluation of the archimedean part in this normalisation; its closed form and the location of its sign
+change appear to be new.
+
 \begin{lemma}[sign of the density]\label{lem:plastic}
 $b(t)>0$ if and only if $e^{t}<\rho$, where $\rho=1.324717957\ldots$ is the plastic number, the real root of $\rho^3=\rho+1$.
 Thus $t_0=\log\rho=0.2811995743$, and every prime atom $\log n\ge\log2=0.693>t_0$ lies in the region where the continuous density is negative.
@@ -35,8 +41,10 @@ With $y=e^{t}$, $b=0\iff e^{-3t}=1-e^{-2t}\iff y^{-3}=1-y^{-2}\iff y^3-y=1$.
 \Cref{fig:nu} shows the measure. The positive density is integrable near $0$ only against $E_s(t)=O(t^2)$, and the negative
 part and the atoms have finite mass against the autocorrelation $C_0(t)=\int f_0(x)f_0(x+t)dx$:
 \begin{equation}\label{eq:masses}
- N_-=\int_{t_0}^\infty b_-(t)\,C_0(t)\,dt=0.083642,\qquad \sum_{n\ge2}w_nC_0(\log n)=0.037599,\qquad
- \int_\eps^{t_0}b_+C_0\,dt=1.13\,\log_{10}(1/\eps)+O(1).
+\begin{aligned}
+ N_-&=\int_{t_0}^\infty b_-(t)\,C_0(t)\,dt=0.083642,\qquad \sum_{n\ge2}w_nC_0(\log n)=0.037599,\\
+ \int_\eps^{t_0}b_+(t)\,C_0(t)\,dt&=1.13\,\log_{10}(1/\eps)+O(1)\qquad(\eps\downarrow0).
+\end{aligned}
 \end{equation}
 The prime atoms weigh less than half of the negative mass; what has to pay for $b_-$ is the interaction between the
 ultraviolet positive part and the differences $|s(x)-s(x')|^2$, jointly, not a comparison of masses.

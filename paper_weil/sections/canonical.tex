@@ -1,7 +1,8 @@
 \section{The canonical test and the radical}\label{sec:canonical}
 
-\begin{definition}\label{def:f0}
-Let $h(u)=(\pi^2u^4-\tfrac32\pi u^2)\,e^{-\pi u^2}$ and
+\begin{definition}[Riemann's function, CCM normalisation]\label{def:f0}
+Let $h(u)=(\pi^2u^4-\tfrac32\pi u^2)\,e^{-\pi u^2}=\tfrac\pi2u^2(2\pi u^2-3)e^{-\pi u^2}$, the function of
+\cite[(7.1)]{CCM-ZST-2025}, and
 \begin{equation}\label{eq:Phi}
  \Phi(x)=4\,e^{x/2}\sum_{n\ge1}h(ne^{x}),\qquad A=\|\Phi\|_2,\qquad f_0=\Phi/A .
 \end{equation}
@@ -28,9 +29,11 @@ $x\ge0$ where at most the $n=1$ term can be negative and is dominated by the Gau
 prefactor absorbed into $A_j$.
 \end{proof}
 
-The normalising constant is $A=0.565466013092$ (\Cref{app:constants}); $\widehat{f_0}=\Xi/A$ and $\int f_0=\Xi(0)/A=0.8791346724$.
-The factor $4$ and the argument $e^{x}$ (instead of $e^{x/2}$) are the scale in which \eqref{eq:Phi} matches the test
-written in \cite[(7.1)]{CCM-ZST-2025}; we record the substitution because the two normalisations are easy to confuse.
+\Cref{thm:FPhi} is \cite[Lemma 7.1]{CCM-ZST-2025} in the logarithmic variable: with $E(f)(u)=u^{1/2}\sum_nf(nu)$ as in
+\cite[(7.2)]{CCM-ZST-2025}, $\Phi(x)=4E(h)(e^x)$, and CCM attribute the observation that $\Xi$ is the Fourier transform of $E(h)$ to
+Riemann \cite{Riemann1859}; the expanded form of $\Phi$ is also eq.~(1) of the preprint \cite{Freedman2026}. We record the factor $4$ and the
+argument $e^{x}$ because the multiplicative and additive normalisations are easy to confuse. The normalising constant is
+$A=0.565466013092$ (\Cref{app:constants}); $\widehat{f_0}=\Xi/A$ and $\int f_0=\Xi(0)/A=0.8791346724$.
 
 \begin{proposition}[radical]\label{prop:radical}
 $\B(f_0,v)=0$ for all $v\in\Xf$. More generally, $U_qf_0\in\operatorname{rad}\B$ for every $q\in\R$, and
@@ -45,9 +48,13 @@ Density of $C_c^\infty$ in $\Xf$ and the bound $C_{\Xf}$ extend the identity to 
 many translates of the positive integrable function $f_0$ (\Cref{lem:indep}) gives infinite dimension.
 \end{proof}
 
-\begin{remark}
-Suzuki \cite{Suzuki2025} studies the Hilbert space obtained from $\B$ by quotienting out the radical, under RH, and identifies it
-with a de Branges space; \Cref{prop:radical} describes the radical itself, unconditionally, as the closed span of the $\Xi$-multiples
-$\{f_0*h\}$. Numerically, $\Q(f_0)$ computed from \eqref{eq:Q} with the primes up to $3000$ is $1.8\cdot10^{-10}$ on a fine grid, and
+\begin{remark}[why the class must be enlarged]
+Under RH the Weil form is positive \emph{definite} on $C_c^\infty(\R)$ \cite[\S1]{Suzuki2025}, and every finite truncation of Bombieri
+is non-degenerate when the zeros are simple \cite[Lemma 10]{BOMBIERI-WEILQF-2000}. \Cref{prop:radical} does not contradict this: $f_0$,
+its translates and the $\Xi$-multiples $f_0*h$ are not compactly supported. On the class $\Xf$ the radical is the closed span of the
+$\Xi$-multiples, unconditionally, and Suzuki's Hilbert space \cite{Suzuki2025} is the quotient by it; under RH the form is
+therefore strictly positive on every nonzero compact test $f_0s$, and \eqref{eq:DOM} below holds with strict inequality.
+In the finite picture of \cite[\S5.2]{CCM-ZST-2025} the radical is one-dimensional, $\ker T=\C\xi$, and their trial $k_\lambda$ is the
+finite-window version of $f_0$. Numerically, $\Q(f_0)$ computed from \eqref{eq:Q} with the primes up to $3000$ is $1.8\cdot10^{-10}$ on a fine grid, and
 $\Q(U_qf_0)=\Q(f_0)$ to all printed digits for $q\in\{0.5,-1,2\}$.
 \end{remark}

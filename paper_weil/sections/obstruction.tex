@@ -4,9 +4,12 @@ A natural strategy for proving \eqref{eq:DOM} is a \emph{certificate}: an identi
 $\Q(f_0s)\ge\int W(x)\,|(Ss)(x)|^2dx$ with an explicit nonnegative weight $W$ and an explicit finite difference
 stencil $S$, possibly summed over a family of stencils, chosen so that the right-hand side visibly pays the negative
 part of $\nu$. On finite graphs this is exactly how positive semidefinite matrices with zero row sums are
-certified (sums of squares of zero-mean stencils). The theorem of this section says that for the Weil form no such
-representation exists: every nonnegative finite-stencil minorant of $\Q(f_0\,\cdot)$ is zero. The reason is not
-the negative density but the radical.
+certified (sums of squares of zero-mean stencils). The one positive minorant of the Weil form that is known unconditionally is
+nonlocal: for $g$ supported in $[2^{-1/2},2^{1/2}]$ with $\widehat g$ vanishing at $2i$ and $0$, compression to Sonin's space gives
+$W_\infty(g*g^*)\ge\operatorname{Tr}(\vartheta(g)S\vartheta(g)^*)$ \cite[Thm.~7.1]{Connes2026}. The theorem of this section says
+that no such minorant can be local: every nonnegative finite-stencil minorant of $\Q(f_0\,\cdot)$ is zero. The reason is not
+the negative density but the radical, through the linear independence of translates, a special case of the independence question
+raised by Bombieri \cite[Introduction, (iii)]{BOMBIERI-WEILQF-2000}.
 
 \begin{lemma}[compact witnesses]\label{lem:budget}
 Fix smooth cutoffs $0\le\chi_R\le1$, $\chi_R=1$ on $[-R,R]$, $\chi_R=0$ off $[-R-1,R+1]$, $|\chi_R'|\le c_\chi$.

@@ -9,21 +9,29 @@ Yoshida \cite{YOSHIDA-HERMITIAN-1992} and Bombieri \cite{BOMBIERI-WEILQF-2000} f
 is again RH. Bombieri already observed that the number of negative eigenvalues of finite truncations counts the zeros off the
 line \cite{BOMBIERI-WEILQF-2000}; the spectral approach thus relocates the problem without reducing it.
 
-This paper is about the shape of that problem. We fix one test function, the canonical test $f_0$ whose Fourier transform is
-$\Xi$ itself (\Cref{sec:canonical}). It is strictly positive, it lies in the radical of $\Q$ together with all its translates
-and all its convolutions, and dividing every test by it turns the Weil form into a Dirichlet form with a signed jump kernel
-(\Cref{thm:GS}):
+This paper is about the shape of that problem. We fix one test function: Riemann's function $\Phi$, whose Fourier transform is
+$\Xi$ itself \cite{Riemann1859}, in the normalisation of \cite[Lemma 7.1]{CCM-ZST-2025}, where its scaled versions serve as
+the ``educated guess'' for the bottom vectors of the window matrices. Normalised, $f_0=\Phi/\|\Phi\|_2$ is strictly positive and
+lies in the radical of $\Q$ together with all its translates and all its convolutions (\Cref{prop:radical}); this is the reason
+the compactly supported class, on which the form is positive definite under RH \cite{Suzuki2025}, has to be enlarged.
+Dividing every test by $f_0$ turns the Weil form into a Dirichlet form with a signed jump kernel (\Cref{thm:GS}):
 \[
  \Q(f_0s)=\frac12\iint f_0(x)f_0(x')\,|s(x)-s(x')|^2\,d\nu(|x-x'|)\,dx\,dx',
 \]
 where the measure $\nu$ is completely explicit: a continuous density that is positive for $|x-x'|<\log\rho$, with $\rho$ the plastic
-number, negative beyond, and positive atoms $\Lam(n)/\sqrt n$ at the prime-power distances $\log n$. The Riemann hypothesis is the
-statement that this form is nonnegative for every compact smooth $s$ (\Cref{cor:DOM}): one inequality between the primes and a
-negative density, with no spectral unknowns. The construction follows the ground-state representation of Frank and Seiringer
-\cite{FrankSeiringer2008}, with the radical vector in the role of the ground state; the novelty is that for the Weil form the
-ground state is known in closed form and its Fourier transform is the object whose zeros are in question.
+number, negative beyond, and positive atoms $\Lam(n)/\sqrt n$ at the prime-power distances $\log n$. The signed kernel itself is
+not new: Suzuki writes the Weil form as $\iint(-g'')(x-y)\,v(y)v(x)$ with the same prime atoms and an archimedean density with a
+$\tfrac12\,\mathrm{Pf}(1/|t|)$ singularity \cite[\S2.5]{Suzuki2026}, \cite[\S3.5]{Suzuki2025}, and the statement ``$g$ is a screw
+function in the sense of Krein--Langer if and only if RH holds'' \cite{Suzuki2026} is the conditional-positivity form of Weil's
+criterion. What is new here is the substitution $g=f_0s$: it is the ground-state representation of Frank and Seiringer
+\cite{FrankSeiringer2008}, applied to a signed L\'evy-type measure with a radical zero mode instead of a genuine ground state, and
+it produces the closed form of the density, its sign change at the plastic number, and the differences $|s(x)-s(x')|^2$ that the
+obstruction theorem needs. The Riemann hypothesis is then the statement that this form is nonnegative for every compact smooth $s$
+(\Cref{cor:DOM}): one inequality between the primes and a negative density, with no spectral unknowns.
 
-The main theorem is negative. A natural way to prove positivity of such a form is a certificate: an identity or lower bound by a
+The main theorem is negative. The only unconditional positivity mechanism known for the Weil form is nonlocal: compression to
+Sonin's space gives, for short supports, a minorant $W_\infty(g*g^*)\ge\operatorname{Tr}(\vartheta(g)S\vartheta(g)^*)$
+\cite[Thm.~7.1]{Connes2026}, \cite{CC-WEILPOS-2020}. A natural way to go further is a local certificate: an identity or lower bound by a
 manifestly nonnegative expression built from finite difference stencils with nonnegative weights, as one certifies positive
 semidefinite matrices with zero row sums on finite graphs. \Cref{thm:nominorant} shows that every such minorant of $\Q(f_0\,\cdot)$
 is zero, with no restriction on the size, diameter or number of stencils, and \Cref{cor:noCSS} that no sum-of-squares representation
@@ -39,8 +47,12 @@ representations it leaves open; and the provenance of every statement, including
 automated reasoning tools were used (\Cref{sec:disclosure}). Nothing in this paper is a step toward RH in the sense of a new
 inequality; its content is the exact location of the difficulty and the proof that a class of attacks on it cannot succeed.
 
-\paragraph{Priority.} The Weil form as a quadratic functional with finite truncations is Bombieri's \cite{BOMBIERI-WEILQF-2000}; the
-window matrices and the trial vector are from \cite{CCM-ZST-2025}; the Hilbert space obtained by quotienting the radical under RH is
-studied by Suzuki \cite{Suzuki2025}; positive operators attached to the Weil distribution appear in \cite{Li2024}. To our knowledge the
-signed-measure ground-state form \eqref{eq:GS}, the identification of the radical with the $\Xi$-multiples, and the obstruction
-\Cref{thm:nominorant} have not appeared before; we would be grateful for references.
+\paragraph{Priority.} The test function and $\widehat\Phi=\Xi$ are Riemann's \cite{Riemann1859}, in the form of
+\cite[(7.1)--(7.2), Lemma 7.1]{CCM-ZST-2025}; the same logarithmic-variable expansion appears in the preprint \cite{Freedman2026}.
+The Weil form as a quadratic functional with finite truncations, their non-degeneracy for simple zeros (his Lemma~10), and the
+question of linear independence of the functions $x^{-\rho}$ are Bombieri's \cite{BOMBIERI-WEILQF-2000}; the window matrices and the
+prolate trial are from \cite{CCM-ZST-2025}, with finite dictionaries in the preprints \cite{Groskin2026,Freedman2026}; the signed
+distributional kernel and the screw-function form of the criterion are Suzuki's \cite{Suzuki2025,Suzuki2026}; positive operators
+attached to the Weil distribution appear in \cite{Li2024}. To our knowledge the ground-state substitution \eqref{eq:GS} with its
+explicit density and sign change, the description of the radical on the enlarged class, the obstruction \Cref{thm:nominorant} with its
+corollaries, and the impossibilities of \Cref{sec:trade} have not appeared before; we would be grateful for references.
