@@ -472,6 +472,7 @@ tool_families:
         approval: EXACT_OUTPUT_SCOPE
         authority: FINITE_CELL_ROUCHE_DIAGNOSTIC_NOT_A_CERTIFICATE_NOT_RH
         records_to: [docs/routeB_bus/phase5_codex/out/ground_<m>_<N>.json, docs/Progress_Log.md]
+        last_verified: 2026-09-06
         note: >-
           Results 2026-09-06: T_cert(13) in [140,160), T_cert(23) in [260,280), T_cert(43) in [520,540); far-side law Q(T)=1-exp(-a_m T^2/m);
           axis remainder ln(1/R_ax) ~ 9.7 m. Two false runs (float64 coefficients; arb dps 320 for m=43) are logged with root causes.
