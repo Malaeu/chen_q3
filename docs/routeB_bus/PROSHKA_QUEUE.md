@@ -14,9 +14,9 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-05-COUPLED · REQ-2026-09-05-COUPLED · Goal 058: coupled signed-square certificate (CSS) for the canonical kernel — pay b_- by second-difference stencils (SIGNED-PSD pattern) and multiplicative prime rectangles; exact splitting balance; obstruction theorem for local explicit stencils · OPEN
+## REQ-2026-09-05-COUPLED · REQ-2026-09-05-COUPLED · Goal 058: coupled signed-square certificate (CSS) for the canonical kernel — pay b_- by second-difference stencils (SIGNED-PSD pattern) and multiplicative prime rectangles; exact splitting balance; obstruction theorem for local explicit stencils · ANSWERED
 
-- `STATUS: OPEN`
+- `STATUS: ANSWERED` — verdict `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_COUPLED_SIGNED_SQUARE_CERTIFICATE_FOR_THE_CANONICAL_KERNEL_2026-09-05.md`, commit `6b103bd1`, blob `1d9982d98cdf410e311fc305b46a020c4bc9685a`, SHA-256 prefix `e51a0e6327e93f31`; RESULT `ATTEMPT_REFUTED_WITH_EXACT_COUNTEREXAMPLE`, class `KILL_COUPLED_FINITE_STENCIL_CSS` (THEOREM_SHAPE, MATHEMATICALLY_DEAD); C1–C4 all closed; observer finite-identity check (PATH N=2..4, RECT, DIV-POT symbolic; I ⊂ (t₀,2t₀), B₋ ≥ 43/168 on I, ℓ-bound, c_A) PASSED 2026-09-05; predictions: P_C3 0.40 → CONFIRMED (observer too low), P_RESULT_PARTIAL 0.80 → REFUTED, P_RESULT_REFUTED 0.17 → CONFIRMED
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_COUPLED_SIGNED_SQUARES_FOR_CANONICAL_KERNEL_2026-09-05.txt`
 - Boundary: `GOAL058_COUPLED_SIGNED_SQUARE_CERTIFICATE_FOR_THE_CANONICAL_KERNEL`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
