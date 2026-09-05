@@ -33,9 +33,8 @@ against \eqref{eq:EF} numerically on the canonical test of \Cref{sec:canonical} 
 $g\in C_c^\infty(\R;\C)$. Statements that use \eqref{eq:EF} are marked as such; everything else is proved from \eqref{eq:Q} alone.
 
 \paragraph{Control space.} Let $\Xf$ be the completion of $C_c^\infty(\R;\C)$ for the norm
-$\|g\|_{\Xf}^2=\|e^{|x|}g\|_2^2+\D(g)$, so that $C_c^\infty$ is dense in $\Xf$ by construction. Every function used below that is not
-compactly supported ($f_0$, its translates and $\Xi$-multiples, the products $f_0|s|^2$) has $e^{|x|}g\in L^2$, $\D(g)<\infty$, and is the
-$\Xf$-limit of its smooth cutoffs; this is checked where it is used (\Cref{lem:cutoffnorm}). Each term
+$\|g\|_{\Xf}^2=\|e^{|x|}g\|_2^2+\D(g)$; concretely, $\Xf$ is the space of measurable $g$ with $e^{|x|}g\in L^2$ and $\D(g)<\infty$
+(the two conditions are preserved under the mollifications and cutoffs that approximate such $g$ by $C_c^\infty$ functions). Each term
 of \eqref{eq:Q} is bounded on $\Xf$: $|\D(g,v)|\le\D(g)^{1/2}\D(v)^{1/2}$ by Cauchy--Schwarz; $|c_A|\,|\langle g,v\rangle|\le|c_A|\,\|g\|_{\Xf}\|v\|_{\Xf}$;
 $|A_\pm(g)|\le\|e^{|x|}g\|_2\,\|e^{\pm x/2-|x|}\|_2=\tfrac2{\sqrt3}\|e^{|x|}g\|_2$, so the pole term is bounded by $\tfrac83\|g\|_{\Xf}\|v\|_{\Xf}$;
 and $|C_{g,v}(t)|\le e^{-|t|}\|e^{|x|}g\|_2\|e^{|x|}v\|_2$ with $\sum_n\log n\,n^{-3/2}=-\zeta'(3/2)=3.9325$ bounds the prime part by
@@ -46,9 +45,9 @@ $7.87\,\|g\|_{\Xf}\|v\|_{\Xf}$. Altogether
 and $\B$ extends by continuity to $\Xf$. Translations act boundedly on $\Xf$, with $\|e^{|x|}U_qg\|_2\le e^{|q|}\|e^{|x|}g\|_2$.
 
 \paragraph{Finite windows.} Restricting $\Q$ to tests supported in $[-\tfrac12\log m,\tfrac12\log m]$ and expanding in
-the prolate basis of Connes--Consani--Moscovici \cite{CCM-ZST-2025} produces the finite matrices $K(m,N)$ studied there, and, in additive
-coordinates, in \cite{XUEFENGZHU-2026}; the prolate operator and its relation to the zeros is the subject of \cite{ConnesMoscovici2021}.
-A \emph{cell} is one evaluated pair $(m,N)$: a window of length $\log m$ with $N$ prolate modes. Two facts from \cite{CCM-ZST-2025} fix the logical status of
+the prolate basis of Connes--Consani--Moscovici \cite{CCM-ZST-2025} produces the finite matrices $K(m,N)$ studied there,
+and, in additive coordinates, in \cite{XUEFENGZHU-2026}; the prolate operator and its relation to the zeros is the
+subject of \cite{ConnesMoscovici2021}. Two facts from \cite{CCM-ZST-2025} fix the logical status of
 everything finite in this paper: the bottom $\lambda_1(m,N)$ of $K(m,N)$ is an \emph{upper} bound for the infimum
 $\mu_\lambda$ of $\Q$ on the window (their Prop.~3.4), and $\mu_\lambda\ge0$ for all $\lambda$ is equivalent to RH
 (their Cor.~3.8, via the monotonicity $\lambda>\lambda'\Rightarrow\mu_\lambda\le\mu_{\lambda'}$). Positivity of $\Q$ on

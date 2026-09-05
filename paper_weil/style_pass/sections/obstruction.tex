@@ -12,17 +12,20 @@ the negative density but the radical, through the linear independence of transla
 raised by Bombieri \cite[Introduction, (iii)]{BOMBIERI-WEILQF-2000}.
 
 \begin{lemma}[compact witnesses]\label{lem:budget}
-With the cutoffs of \Cref{lem:cutoffnorm}, for $q\in\R$ and $R\ge1$ let $r_q=f_0(\cdot-q)/f_0$ and $s_{q,R}=\chi_R\,r_q\in C_c^\infty$. Then,
-with $a_q=\frac\pi2e^{-2|q|}$,
+Fix smooth cutoffs $0\le\chi_R\le1$, $\chi_R=1$ on $[-R,R]$, $\chi_R=0$ off $[-R-1,R+1]$, $|\chi_R'|\le c_\chi$.
+For $q\in\R$ and $R\ge1$ let $r_q=f_0(\cdot-q)/f_0$ and $s_{q,R}=\chi_R\,r_q\in C_c^\infty$. Then, with $a_q=\frac\pi2e^{-2|q|}$,
 \begin{equation}\label{eq:budget}
  |\Q(f_0s_{q,R})|\le C_{\Xf}\,C_q^2\,e^{-2a_qe^{2R}},\qquad
- C_q^2=\frac{\frac{35}{3}M_0^2+\frac43(M_1^2+c_\chi^2M_0^2)}{2a_q}=\frac{150\,925}{2a_q}\ (c_\chi=2).
+ C_q^2=\frac{\frac{35}{3}A_0^2+\frac43(A_1^2+c_\chi^2A_0^2)}{2a_q}.
 \end{equation}
 \end{lemma}
 \begin{proof}
 $f_0s_{q,R}=U_qf_0-e_R$ with $e_R=(1-\chi_R)U_qf_0$. By \Cref{prop:radical}, $\Q(U_qf_0-e_R)=\Q(e_R)$, and
-$|\Q(e_R)|\le C_{\Xf}\|e_R\|_{\Xf}^2$. Insert the three bounds of \Cref{lem:cutoffnorm}: $\|e_R\|_{\Xf}^2\le\|e^{|x|}e_R\|_2^2+\frac23\|e_R'\|_2^2+\frac{32}3\|e_R\|_2^2$,
-and $\|e_R\|_2\le\|e^{|x|}e_R\|_2$; collecting the constants gives $C_q^2$.
+$|\Q(e_R)|\le C_{\Xf}\|e_R\|_{\Xf}^2$. The envelope of \Cref{thm:FPhi} shifted by $q$ bounds $e_R$ and $e_R'$ by
+$A_je^{-a_qe^{2|x|}}$ outside $[-R,R]$; integrating gives $\|e^{|x|}e_R\|_2^2\le\frac{A_0^2}{2a_q}e^{-2a_qe^{2R}}$ and
+$\|e_R'\|_2^2\le\frac{A_1^2+c_\chi^2A_0^2}{a_q}e^{-2a_qe^{2R}}$. Finally
+$\D(u)\le\frac23\|u'\|_2^2+\frac{32}3\|u\|_2^2$ for $u\in H^1$, from $\|\Delta_tu\|_2\le\min(t\|u'\|_2,2\|u\|_2)$ and
+$a(t)\le\frac4{3t}$ on $(0,1]$, $a(t)\le\frac43e^{-t/2}$ on $[1,\infty)$.
 \end{proof}
 
 \begin{lemma}[independence of translates]\label{lem:indep}
@@ -122,8 +125,7 @@ $\Q(f_0)=0$ and $\|f_0\|_{\Xf}>0$ (\Cref{prop:radical}).
 \end{proof}
 For proof design this means that positivity of $\Q$ cannot be established by proving a fixed $\Xf$-margin on a dense family
 of tests and passing to the limit: any margin that survives densification is a coercivity statement, and the form is not coercive. The
-finite windows show the same thing quantitatively: the saturated bottoms of \Cref{sec:windows} satisfy $\log_{10}\lambda_1/m=-4.50,-4.86,-5.11$ for
-$m=13,23,43$.
+finite windows show the same thing quantitatively: $\lambda_1(m,N)$ decays exponentially in $m$ (\Cref{sec:windows}).
 
 \begin{remark}[pointwise majorisation]\label{rem:schur}
 A second proof shape is to bound the negative part of the kernel of $\Q(f_0\,\cdot)$ pointwise by a positive majorant built from the positive

@@ -5,7 +5,7 @@ All files live in \texttt{Q3/Proofs/RouteB/} of the project repository; all repo
 \begin{tabular}{@{}p{6.9cm}rrp{5.0cm}@{}}\toprule
 file & lines & decls & content\\ \midrule
 \texttt{Proposition59ExplicitProductCurvatureBridge} & 1581 & 46 & curvature $\Rightarrow$ $|F(z)|\le|F(0)|e^{\kappa|z|^2}$ for finite transforms with real zeros\\
-\texttt{Proposition59AlternatingLatticeCurvature} & 740 & 39 & lattice curvature identity and an explicit tail bound for the alternating lattice sum\\
+\texttt{Proposition59AlternatingLatticeCurvature} & 740 & 39 & lattice curvature identity, tail bound $|T|\le L^2/(2\pi^2(N+1)^2)$\\
 \texttt{Proposition59ReciprocalModeWeightedShell} & 277 & 9 & reciprocal-mode shell identities\\
 \texttt{P59SingleEndpointAtomCounterexample} & 247 & 18 & one-endpoint plant (identification by lattice values fails)\\
 \texttt{PolynomialCircleRootCount} & 259 & 9 & argument principle for polynomials on the circle\\
@@ -16,10 +16,10 @@ file & lines & decls & content\\ \midrule
 \texttt{WeilGramMinusShift} & 395 & 27 & $K=\Gamma-c_LI-2\beta\beta^*$ with PSD Gram $\Gamma$\\
 \texttt{MangoldtDivisibilityEnergy} & 452 & 33 & $\sum_{d\mid n}\Lam(d)=\log n$ as an energy identity (DIV)\\
 \texttt{DomfmFiniteObstructions} & 847 & 48 & finite tradeoff, eigen-tradeoff, Schur, signed-PSD and comparison plants\\
-\texttt{NoFiniteStencilMinorant} & 621 & 5 & \Cref{lem:indep} and \Cref{thm:nominorant} in abstract form (below)\\
+\texttt{NoFiniteStencilMinorant} & 621 & 5 thms & \Cref{lem:indep} and \Cref{thm:nominorant} in abstract form (below)\\
 \bottomrule\end{tabular}\end{center}
 \paragraph{The obstruction theorem in Lean.} The file \texttt{NoFiniteStencilMinorant.lean} proves, with no reference to $\zeta$:
-\texttt{independence\_of\_translates} and its pointwise form \texttt{independence\_of\_translates\_apply} (\Cref{lem:indep}: $f$ continuous, integrable, $\int f\ne0$, $p$ injective, $\sum_\ell d_\ell f(p_\ell-q)=0$
+\texttt{independence\_of\_translates} (\Cref{lem:indep}: $f$ continuous, integrable, $\int f\ne0$, $p$ injective, $\sum_\ell d_\ell f(p_\ell-q)=0$
 for all $q\in\mathbb Q$ $\Rightarrow d=0$; the proof samples the exponential polynomial at $k$ points of a small interval instead of
 differentiating, then applies \texttt{Matrix.det\_vandermonde}); \texttt{stencil\_energy\_limit\_eq\_zero} (the Fatou step for one rational
 $q$); and \texttt{no\_positive\_finite\_stencil\_minorant}, whose hypotheses are: $f$ continuous, integrable and positive; an arbitrary

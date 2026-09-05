@@ -16,7 +16,7 @@ lies in the radical of $\Q$ together with all its translates and all its convolu
 the compactly supported class, on which the form is positive definite under RH \cite{Suzuki2025}, has to be enlarged.
 Dividing every test by $f_0$ turns the Weil form into a Dirichlet form with a signed jump kernel (\Cref{thm:GS}):
 \[
- \Q(f_0s)=\frac12\int_{\R}dx\int_{\R}f_0(x)f_0(x+t)\,|s(x+t)-s(x)|^2\,d\tilde\nu(t),
+ \Q(f_0s)=\frac12\iint f_0(x)f_0(x')\,|s(x)-s(x')|^2\,d\nu(|x-x'|)\,dx\,dx',
 \]
 where the measure $\nu$ is completely explicit: a continuous density that is positive for $|x-x'|<\log\pl$, with $\pl$ the plastic
 number, negative beyond, and positive atoms $\Lam(n)/\sqrt n$ at the prime-power distances $\log n$. The signed distributional kernel itself is
@@ -37,18 +37,19 @@ semidefinite matrices with zero row sums on finite graphs. \Cref{thm:nominorant}
 is zero, with no restriction on the size, diameter or number of stencils, and \Cref{cor:noCSS} that no sum-of-squares representation
 exists. The mechanism is the radical: compact truncations of the translated canonical test have vanishing form value, and finitely many
 translates of a positive integrable function are linearly independent, so every stencil would have to annihilate all sample values.
-The obstruction is not a sign statement (\Cref{ex:control}); it holds for any positive integrable function whose smooth cutoffs have vanishing form value under any functional, and the Weil form is a corollary. A simple companion statement excludes uniform margins on dense families (\Cref{prop:trade}).
+The obstruction is not a sign statement (\Cref{ex:control}); it holds for any positive integrable function in the radical of any functional
+with the cutoff property, and the Weil form is a corollary. A simple companion statement excludes uniform margins on dense families (\Cref{prop:trade}).
 
-The remaining sections record what the finite windows do and do not show (\Cref{sec:windows}), including a conjectural second-jet expansion
+The remaining sections record what the finite windows do and do not show (\Cref{sec:windows}), including an exact second-jet formula
 for the prolate trial of \cite{CCM-ZST-2025} and the agreement of certified window bottoms with the decay law of \cite{XUEFENGZHU-2026}.
-They also record a ledger of excluded proof shapes with the theorem that excludes each (\Cref{sec:ledger}), the precise open problem and the two
-representations it leaves open, and the provenance of every statement: which statements are machine-checked in Lean~4 (the core of the
-obstruction theorem is) and how automated reasoning tools were used (\Cref{sec:disclosure}). Nothing in this paper is a step toward RH in the sense of a new
+They also record a ledger of excluded proof shapes with the theorem that excludes each (\Cref{sec:ledger}), the precise open
+problem and the two representations it leaves open, and the provenance of every statement: which statements are machine-checked
+in Lean~4 (the core of the obstruction theorem is) and how automated reasoning tools were used (\Cref{sec:disclosure}). Nothing in this paper is a step toward RH in the sense of a new
 inequality; its content is the exact location of the difficulty and the proof that a class of attacks on it cannot succeed.
 
 \paragraph{Priority.} The test function and $\widehat\Phi=\Xi$ are Riemann's \cite{Riemann1859}, in the form of
 \cite[(7.1)--(7.2), Lemma 7.1]{CCM-ZST-2025}; the same logarithmic-variable expansion appears in the preprint \cite{Freedman2026}.
-The Weil form as a quadratic functional with finite truncations, their nondegeneracy for simple zeros (his Lemma~10), and the
+The Weil form as a quadratic functional with finite truncations, their non-degeneracy for simple zeros (his Lemma~10), and the
 question of linear independence of the functions $x^{-\rho}$, $\rho$ ranging over the zeros, are Bombieri's \cite{BOMBIERI-WEILQF-2000}; the window matrices and the
 prolate trial are from \cite{CCM-ZST-2025}, with finite dictionaries in the preprints \cite{Groskin2026,Freedman2026}; the signed
 distributional kernel and the screw-function form of the criterion are Suzuki's \cite{Suzuki2025,Suzuki2026}; positive operators

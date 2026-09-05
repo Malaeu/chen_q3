@@ -1,7 +1,7 @@
 \section{Formalisation, provenance and tool disclosure}\label{sec:disclosure}
 
-\paragraph{Machine-checked part.} The core of \Cref{thm:nominorant}, and the finite algebra of the companion window computations
-summarised in \Cref{sec:windows} (identities used by the interval-arithmetic code, not statements of this paper), are formalised in Lean~4 (toolchain \texttt{v4.26.0}) against Mathlib \cite{Mathlib} (tag \texttt{v4.26.0}, revision \texttt{2df2f0150c27}).
+\paragraph{Machine-checked part.} The finite algebra behind \Cref{sec:windows} and the core of \Cref{thm:nominorant} are
+formalised in Lean~4 (toolchain \texttt{v4.26.0}) against Mathlib \cite{Mathlib} (tag \texttt{v4.26.0}, revision \texttt{2df2f0150c27}).
 \Cref{app:lean} lists the thirteen files, their declaration counts, and the statements they cover; the last of them formalises the
 core of the obstruction theorem (\Cref{lem:indep} and the Fatou--independence argument of \Cref{thm:nominorant}) with the cutoff
 budget of \Cref{lem:budget} as an explicit hypothesis. Every file compiles with
@@ -20,9 +20,9 @@ zeros enter.
 \paragraph{Use of automated reasoning tools.} Following the Leiden Declaration on AI and Mathematics as summarised in
 \cite[\S8]{TERENCETAO-2026}, we disclose that large language models were used throughout: as adversarial reviewers of proof
 sketches, as drafters of Lean code that was then checked by the kernel, and as literature scouts whose every claim was verified against
-the primary source or discarded. Such a reviewer first wrote several of the proofs in \Cref{sec:obstruction}, in particular \Cref{lem:budget,thm:nominorant}, in response to a
-formally specified request. A second, blind agent then re-derived them independently from the definitions, and the author checked them
-numerically. Predictions about the outcome of each such round were
+the primary source or discarded. Such a reviewer first wrote several of the proofs in \Cref{sec:obstruction}, in particular \Cref{lem:budget,thm:nominorant},
+in response to a formally specified request. A second, blind agent then re-derived them independently from the definitions,
+and the author checked them numerically. Predictions about the outcome of each such round were
 registered before the round and are kept in the project log; the author's own predictions were wrong more than once (for instance,
 a probability of $0.40$ was assigned to \Cref{thm:nominorant} before it was proved). Credit and responsibility for every statement here
 remain with the author.

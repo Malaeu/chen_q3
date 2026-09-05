@@ -10,7 +10,7 @@ Let $h(u)=(\pi^2u^4-\tfrac32\pi u^2)\,e^{-\pi u^2}=\tfrac\pi2u^2(2\pi u^2-3)e^{-
 
 \begin{theorem}\label{thm:FPhi}
 $\Phi$ is even, real-analytic, strictly positive, satisfies $|\Phi^{(j)}(x)|\le AM_je^{-\frac{\pi}{2}e^{2|x|}}$ for
-$j=0,1,2$ with $M_0=23.910$, $M_1=325.43$, $M_2=6011.8$ (\Cref{app:constants}), and
+$j=0,1$ with $M_0=23.910$, $M_1=325.43$ (\Cref{app:constants}), and
 \[
  \widehat\Phi(z)=\Xi(z)\qquad(z\in\C).
 \]
@@ -35,47 +35,28 @@ Riemann \cite{Riemann1859}; the expanded form of $\Phi$ is also eq.~(1) of the p
 argument $e^{x}$ because the multiplicative and additive normalisations are easy to confuse. The normalising constant is
 $A=0.565466013092$ (\Cref{app:constants}); $\widehat{f_0}=\Xi/A$ and $\int f_0=\Xi(0)/A=0.8791346724$.
 
-\begin{lemma}[cutoff norms]\label{lem:cutoffnorm}
-Fix smooth cutoffs $0\le\chi_R\le1$ with $\chi_R=1$ on $[-R,R]$, $\chi_R=0$ off $[-R-1,R+1]$, $|\chi_R'|\le c_\chi$, $|\chi_R''|\le c_\chi'$
-($c_\chi=2$, $c_\chi'=8$ are admissible). For $q\in\R$ let $e_R=(1-\chi_R)U_qf_0$ and $a_q=\frac\pi2e^{-2|q|}$. Then
-\[
- \|e^{|x|}e_R\|_2^2\le\frac{M_0^2}{2a_q}e^{-2a_qe^{2R}},\qquad
- \|e_R'\|_2^2\le\frac{M_1^2+c_\chi^2M_0^2}{a_q}e^{-2a_qe^{2R}},\qquad
- \|e_R''\|_{L^1(e^{|x|/2}dx)}\le\frac{M_2+2c_\chi M_1+c_\chi'M_0}{a_q}\,e^{-a_qe^{2R}},
-\]
-and $\D(u)\le\frac23\|u'\|_2^2+\frac{32}3\|u\|_2^2$ for $u\in H^1$. In particular $\|e_R\|_{\Xf}\to0$ and $\|e_R''\|_{L^1(e^{|x|/2}dx)}\to0$
-as $R\to\infty$, and $U_qf_0\in\Xf$.
-\end{lemma}
-\begin{proof}
-From $|x-q|\ge|x|-|q|$ the envelope of \Cref{thm:FPhi} gives $|(U_qf_0)^{(j)}(x)|\le M_je^{-a_qe^{2|x|}}$. The three bounds follow by
-integrating $e^{2|x|}e^{-2a_qe^{2|x|}}$ and $e^{|x|/2}e^{-a_qe^{2|x|}}$ over $|x|\ge R$ (both are dominated by the substitution $y=e^{2|x|}$), after expanding
-$e_R''=(1-\chi_R)(U_qf_0)''-2\chi_R'(U_qf_0)'-\chi_R''U_qf_0$. The $H^1$ bound on $\D$ uses $\|\Delta_tu\|_2\le\min(t\|u'\|_2,2\|u\|_2)$
-together with $a(t)\le\frac4{3t}$ on $(0,1]$ and $a(t)\le\frac43e^{-t/2}$ on $[1,\infty)$.
-\end{proof}
-
 \begin{proposition}[radical; uses \eqref{eq:EF}]\label{prop:radical}
 $\B(f_0,v)=0$ for all $v\in\Xf$. More generally, $U_qf_0\in\operatorname{rad}\B$ for every $q\in\R$, and
 $f_0*h\in\operatorname{rad}\B$ for every $h\in C_c^\infty$. In particular the radical of $\B$ is infinite-dimensional.
 \end{proposition}
 \begin{proof}
-$f_0$ is not compactly supported, so \eqref{eq:EF} is applied to the cutoffs $g_R=\chi_Rf_0$ of \Cref{lem:cutoffnorm} (with $q=0$) and the limit
-$R\to\infty$ is taken on both sides. Fix $v\in C_c^\infty$. On the source side, $|\B(g_R,v)-\B(f_0,v)|\le C_{\Xf}\|e_R\|_{\Xf}\|v\|_{\Xf}\to0$
-by \Cref{lem:cutoffnorm}. On the zero side, $\widehat{g_R}-\widehat{f_0}=-\widehat{e_R}$, and two integrations by parts give
-$|\widehat{e_R}(z)|\le\|e_R''\|_{L^1(e^{|x|/2}dx)}\,|z|^{-2}$ on the strip $|\Im z|\le\tfrac12$ containing $Z(\Xi)$, because $|e^{-izx}|\le e^{|x|/2}$ there.
-Since $\widehat v$ is bounded on that strip ($v$ has compact support), $\sum_{z\in Z(\Xi)}|z|^{-2}<\infty$, and $\|e_R''\|_{L^1(e^{|x|/2}dx)}\to0$
-by \Cref{lem:cutoffnorm}, the zero-side sum for $g_R$ converges to $\sum_z\overline{\Xi(\bar z)}\widehat v(z)/A=0$, because $\widehat{f_0}=\Xi/A$
-vanishes at every zero, wherever it lies. Hence $\B(f_0,v)=0$ for $v\in C_c^\infty$, and by density of $C_c^\infty$ in $\Xf$ and the bound
-$C_{\Xf}$ for all $v\in\Xf$. For the translates: polarising the
+$f_0$ is not compactly supported, so \eqref{eq:EF} is applied to the cutoffs $g_R=\chi_Rf_0$ of \Cref{lem:budget} and the limit
+$R\to\infty$ is taken on both sides. Fix $v\in C_c^\infty$. On the source side, $|\B(g_R,v)-\B(f_0,v)|\le C_{\Xf}\|(1-\chi_R)f_0\|_{\Xf}\|v\|_{\Xf}\to0$
+by the norm estimate $\|(1-\chi_R)f_0\|_{\Xf}^2\le C_0^2e^{-\pi e^{2R}}$ established in the proof of \Cref{lem:budget} (that estimate uses only the
+envelope of \Cref{thm:FPhi}, not this proposition). On the zero side, $\widehat{g_R}-\widehat{f_0}=\widehat{e_R}$ with $e_R=(1-\chi_R)f_0$, and
+$|\widehat{e_R}(z)|\le\|e_R''\|_{L^1(e^{|x|/2}dx)}\,|z|^{-2}$ on the strip $|\Im z|\le\tfrac12$ containing $Z(\Xi)$; since $\widehat v$ is
+bounded on that strip ($v$ has compact support) and $\sum_{z\in Z(\Xi)}|z|^{-2}<\infty$, the zero-side sum for $g_R$ converges to
+$\sum_z\overline{\Xi(\bar z)}\widehat v(z)/A=0$, because $\widehat{f_0}=\Xi/A$ vanishes at every zero, wherever it lies. Hence
+$\B(f_0,v)=0$ for $v\in C_c^\infty$, and by density and the bound $C_{\Xf}$ for all $v\in\Xf$. For the translates: polarising the
 translation invariance of every term of \eqref{eq:Q} ($H$, $\D$ and $C_g$ are invariant, and $A_\pm(U_qg)=e^{\pm q/2}A_\pm(g)$ leaves
-$A_+\overline{A_-}$ unchanged) gives $\B(U_qg,U_qv)=\B(g,v)$, hence $\B(U_qf_0,v)=\B(f_0,U_{-q}v)=0$. For $f_0*h$ with $h\in C_c^\infty$ the same cutoff argument applies: $f_0*h$ and its first two derivatives obey the envelope of \Cref{thm:FPhi}
-with constants multiplied by $\|h\|_1e^{2\,\mathrm{diam}\supp h}$ (shift the envelope by the support of $h$), so \Cref{lem:cutoffnorm} holds for it
-verbatim, and $\widehat{f_0*h}=\Xi\,\widehat h/A$ also vanishes on $Z(\Xi)$. Finally, finitely many translates of the
+$A_+\overline{A_-}$ unchanged) gives $\B(U_qg,U_qv)=\B(g,v)$, hence $\B(U_qf_0,v)=\B(f_0,U_{-q}v)=0$. For $f_0*h$ the same cutoff
+argument applies with $\widehat{f_0*h}=\Xi\,\widehat h/A$, which also vanishes on $Z(\Xi)$. Finally, finitely many translates of the
 positive integrable function $f_0$ are linearly independent (\Cref{lem:indep}), so the radical is infinite-dimensional.
 \end{proof}
 
 \begin{remark}[why the class must be enlarged]
 Under RH the Weil form is positive \emph{definite} on $C_c^\infty(\R)$ \cite[\S1]{Suzuki2025}, and every finite truncation of Bombieri
-is nondegenerate when the zeros are simple \cite[Lemma 10]{BOMBIERI-WEILQF-2000}. \Cref{prop:radical} does not contradict this: $f_0$,
+is non-degenerate when the zeros are simple \cite[Lemma 10]{BOMBIERI-WEILQF-2000}. \Cref{prop:radical} does not contradict this: $f_0$,
 its translates and the $\Xi$-multiples $f_0*h$ are not compactly supported. On the class $\Xf$ the radical contains the closed span of the
 $\Xi$-multiples, unconditionally, and Suzuki's Hilbert space \cite{Suzuki2025} is the quotient by the radical; under RH the form is
 therefore strictly positive on every nonzero compact test $f_0s$, and \eqref{eq:DOM} below holds with strict inequality.
