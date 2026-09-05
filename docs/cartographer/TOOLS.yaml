@@ -464,7 +464,7 @@ tool_families:
         classification: MANUAL
         status: ENABLED
         audience: [CLAUDE_CODE, HUMAN]
-        mode: READS_ONLY
+        mode: READ_ONLY
         path: docs/routeB_bus/phase5_codex/r2_second_jet.py
         invoke: .venv/bin/python docs/routeB_bus/phase5_codex/r2_second_jet.py
         trigger: "Probe 19 (judge's R2): exact second jet kappa(v) of ground, CCM prolate trial and Xi on the cached trial cells; prints a table."
