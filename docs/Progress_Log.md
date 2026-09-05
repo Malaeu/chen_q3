@@ -5101,3 +5101,13 @@ negative C on ker(Q)» (`:5564`: primary `−A−P` на `ker Q` — 13 отри
 плотности. Что взять со старой полки: (a) LP/dual-witness как класс K8 для (OPEN-OVERLAP)/(GAP-GRAM) — дуальный сертификат положительности на
 конусе пакетов (Cohn–Elkies), (b) интервальные PSD-сертификаты Track B на малых K как образец «finite certificate principle», (c) пилот
 `Step33` как машину для конечных сертификатов, если судья выпишет конечную матрицу. DIAGNOSTIC_NEVER_A_PROOF.
+
+## 2026-09-05 (утро) — Lean: `MangoldtDivisibilityEnergy.lean` KERNEL_GREEN (тождество (DIV) второго прохода), двенадцатый файл фронта
+
+Opus-агент (16 мин), проверено мной: `lake env lean` EXIT 0 без вывода, `q3_check ok`, все 26 теорем/лемм на `[propext, Classical.choice, Quot.sound]`
+(пространство имён `Q3.RouteB.MangoldtDivisibilityEnergy`), `sorry/admit/exact?/axiom` = 0. `mangoldt_divisibility_energy_identity` для ЛЮБОГО `M`
+(гипотеза `M ≥ 2` не нужна) и любого `c : ℕ → ℂ`: `Σ_{n≤M} diagWeight M n·‖c n‖² − primeForm M c = energy M c ≥ 0`; плант `M = 2, c = (1, 1/√2)`:
+энергия 0, `primeForm = log 2`, с удвоенным ребром `−log 2 < 0`. Сверх задания — цепочка §4 через Mathlib `Chebyshev.psi_le_const_mul_self`:
+`B(N) ≤ log N + (log 4 + 4)` (константа 5.386 вместо `4 log 2 = 2.773` у судьи — его биномиальный ход ψ ≤ 4N log 2 в Mathlib отсутствует; шаг Лежандра
+`Σ log j = Σ Λ(d)⌊N/d⌋` доказан в файле) и `primeForm M c ≤ (log M + log 4 + 4)‖c‖²`. Второй канал агента: numpy 1.4e-15; скан `N ≤ 3000` совместим с
+`4 log 2`. Отчёт: `docs/routeB_bus/CLAUDE_AGENT_REPORT_2026-09-05_GOAL058_MANGOLDT_DIVISIBILITY_ENERGY.md`.
