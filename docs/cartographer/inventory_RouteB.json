@@ -1,9 +1,9 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 393,
-  "declarations": 4556,
-  "in_docs": 2407,
+  "files_scanned": 394,
+  "declarations": 4603,
+  "in_docs": 2454,
   "in_lemma_db": 4182,
   "orphans": 48,
   "uncatalogued": 48,
@@ -22174,6 +22174,476 @@
       "signature": "theorem zerosRealOn_of_eq_smul {S : Set ℂ} {f g : ℂ → ℂ} {c : ℂ} (hc : c ≠ 0) (hval : ∀ z ∈ S, g z = c * f z) (hf : ZerosRealOn S f) : ZerosRealOn S g",
       "in_docs": true,
       "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "re_le_norm_complex",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 85,
+      "signature": "theorem re_le_norm_complex (z : ℂ) : z.re ≤ ‖z‖",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "abs_re_le_norm_complex",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 88,
+      "signature": "theorem abs_re_le_norm_complex (z : ℂ) : |z.re| ≤ ‖z‖",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "inner_self_ofReal",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 97,
+      "signature": "theorem inner_self_ofReal (x : E) : ⟪x, x⟫_ℂ = ((‖x‖ ^ 2 : ℝ) : ℂ)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "rayleigh",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 106,
+      "signature": "def rayleigh (T : E →L[ℂ] E) (x : E) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "rayleigh_of_norm_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 109,
+      "signature": "theorem rayleigh_of_norm_one (T : E →L[ℂ] E) {x : E} (hx : ‖x‖ = 1) : rayleigh T x = (⟪x, T x⟫_ℂ).re",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "rayleigh_real_smul",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 114,
+      "signature": "theorem rayleigh_real_smul (T : E →L[ℂ] E) (x : E) {r : ℝ} (hr : r ≠ 0) : rayleigh T ((r : ℂ) • x) = rayleigh T x",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "re_inner_sub_map_add",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 132,
+      "signature": "theorem re_inner_sub_map_add (T : E →L[ℂ] E) (hT : (T : E →ₗ[ℂ] E).IsSymmetric) (u v : E) : (⟪v - u, T (v + u)⟫_ℂ).re = (⟪v, T v⟫_ℂ).re - (⟪u, T u⟫_ℂ).re",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "neg_opNorm_le_rayleigh",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 147,
+      "signature": "theorem neg_opNorm_le_rayleigh (T : E →L[ℂ] E) {x : E} (hx : ‖x‖ = 1) : -‖T‖ ≤ rayleigh T x",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "rayleigh_le_of_projection_witness",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 171,
+      "signature": "theorem rayleigh_le_of_projection_witness (T : E →L[ℂ] E) (hT : (T : E →ₗ[ℂ] E).IsSymmetric) {V : Submodule ℂ E} {y p : E} (hy : y ≠ 0) (hp : p ≠ 0) (hpV : p ∈ V) (horth : ∀ v ∈ V, ⟪v, y - p⟫_ℂ = 0) : rayleigh T p ≤ rayleigh T y + 2 * ‖T‖ * (‖y - p‖ / ‖y‖)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "projection_defect_lt_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 242,
+      "signature": "theorem projection_defect_lt_one {V : Submodule ℂ E} {y p : E} (hy : y ≠ 0) (hp : p ≠ 0) (hpV : p ∈ V) (horth : ∀ v ∈ V, ⟪v, y - p⟫_ℂ = 0) : ‖y - p‖ / ‖y‖ < 1",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "norm_proj_sq_eq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 257,
+      "signature": "theorem norm_proj_sq_eq {V : Submodule ℂ E} {y p : E} (hpV : p ∈ V) (horth : ∀ v ∈ V, ⟪v, y - p⟫_ℂ = 0) : ‖y‖ ^ 2 = ‖p‖ ^ 2 + ‖y - p‖ ^ 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "domfm_projected_rayleigh_attained_on_unit",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 268,
+      "signature": "theorem domfm_projected_rayleigh_attained_on_unit (T : E →L[ℂ] E) {V : Submodule ℂ E} {p : E} (hp : p ≠ 0) (hpV : p ∈ V) : ∃ w ∈ V, ‖w‖ = 1 ∧ rayleigh T w = rayleigh T p",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "domfm_restricted_min_le_projected_rayleigh",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 282,
+      "signature": "theorem domfm_restricted_min_le_projected_rayleigh (T : E →L[ℂ] E) {V : Submodule ℂ E} {p : E} (hp : p ≠ 0) (hpV : p ∈ V) : sInf (rayleigh T '' {w : E | w ∈ V ∧ ‖w‖ = 1}) ≤ rayleigh T p",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "eigenvector_projection_quadratic_error",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 300,
+      "signature": "theorem eigenvector_projection_quadratic_error (T : E →L[ℂ] E) (hT : (T : E →ₗ[ℂ] E).IsSymmetric) {V : Submodule ℂ E} {y p : E} {lam : ℝ} (hy : y ≠ 0) (hp : p ≠ 0) (hpV : p ∈ V) (horth : ∀ v ∈ V, ⟪v, y - p⟫_ℂ = 0) (hev : T y = (lam : ℂ) • y) : rayleigh T p - lam = (⟪y - p, T (y - p) - (lam : ℂ) • (y - p)⟫_ℂ).re / ‖p‖ ^ 2 ∧ |rayleigh T p - lam| ≤ (‖T‖ + |lam|) * (‖y - p‖ / ‖y‖) ^ 2 / (1 - (‖y - p‖ / ‖y‖) ^ 2)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "toEuclideanCLM_coeff",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 388,
+      "signature": "theorem toEuclideanCLM_coeff (K : Matrix (Fin n) (Fin n) ℂ) (x : EuclideanSpace ℂ (Fin n)) (i : Fin n) : (Matrix.toEuclideanCLM (𝕜",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "isSymmetric_of_isHermitian",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 393,
+      "signature": "theorem isSymmetric_of_isHermitian {K : Matrix (Fin n) (Fin n) ℂ} (hK : K.IsHermitian) {Kop : EuclideanSpace ℂ (Fin n) →L[ℂ] EuclideanSpace ℂ (Fin n)} (hKop : ∀ (x : EuclideanSpace ℂ (Fin n)) (i : Fin n), Kop x i = ∑ j, K i j * x j) : ((Kop : EuclideanSpace ℂ (Fin n) →ₗ[ℂ] EuclideanSpace ℂ (Fin n))).IsSymmetric",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "domfm_projected_rayleigh_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 427,
+      "signature": "theorem domfm_projected_rayleigh_le {K : Matrix (Fin n) (Fin n) ℂ} (hK : K.IsHermitian) {Kop : EuclideanSpace ℂ (Fin n) →L[ℂ] EuclideanSpace ℂ (Fin n)} (hKop : ∀ (x : EuclideanSpace ℂ (Fin n)) (i : Fin n), Kop x i = ∑ j, K i j * x j) {V : Submodule ℂ (EuclideanSpace ℂ (Fin n))} {y p : EuclideanSpace ℂ (Fin n)} (hy : y ≠ 0) (hp : p ≠ 0) (hpV : p ∈ V) (horth : ∀ v ∈ V, ⟪v, y - p⟫_ℂ = 0) : rayleigh Kop p ≤ rayleigh Kop y + 2 * ‖Kop‖ * (‖y - p‖ / ‖y‖)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "domfm_restricted_min_le_projected_rayleigh_matrix",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 439,
+      "signature": "theorem domfm_restricted_min_le_projected_rayleigh_matrix (Kop : EuclideanSpace ℂ (Fin n) →L[ℂ] EuclideanSpace ℂ (Fin n)) {V : Submodule ℂ (EuclideanSpace ℂ (Fin n))} {p : EuclideanSpace ℂ (Fin n)} (hp : p ≠ 0) (hpV : p ∈ V) : sInf (rayleigh Kop '' {w : EuclideanSpace ℂ (Fin n) | w ∈ V ∧ ‖w‖ = 1}) ≤ rayleigh Kop p",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "domfm_eigenvector_projection_quadratic_error",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 448,
+      "signature": "theorem domfm_eigenvector_projection_quadratic_error {K : Matrix (Fin n) (Fin n) ℂ} (hK : K.IsHermitian) {Kop : EuclideanSpace ℂ (Fin n) →L[ℂ] EuclideanSpace ℂ (Fin n)} (hKop : ∀ (x : EuclideanSpace ℂ (Fin n)) (i : Fin n), Kop x i = ∑ j, K i j * x j) {V : Submodule ℂ (EuclideanSpace ℂ (Fin n))} {y p : EuclideanSpace ℂ (Fin n)} {lam : ℝ} (hy : y ≠ 0) (hp : p ≠ 0) (hpV : p ∈ V) (horth : ∀ v ∈ V, ⟪v, y - p⟫_ℂ = 0) (hev : Kop y = (lam : ℂ) • y) : rayleigh Kop p - lam = (⟪y - p, Kop (y - p) - (lam : ℂ) • (y - p)⟫_ℂ).re / ‖p‖ ^ 2 ∧ |rayleigh Kop p - lam| ≤ (‖Kop‖ + |lam|) * (‖y - p‖ / ‖y‖) ^ 2 / (1 - (‖y - p‖ / ‖y‖) ^ 2)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "signedDegree",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 473,
+      "signature": "def signedDegree (J : Matrix (Fin n) (Fin n) ℝ) (i : Fin n) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "absoluteDegree",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 476,
+      "signature": "def absoluteDegree (J : Matrix (Fin n) (Fin n) ℝ) (i : Fin n) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "IsAbsoluteSchurWeight",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 480,
+      "signature": "def IsAbsoluteSchurWeight (J : Matrix (Fin n) (Fin n) ℝ) (q : Fin n → ℝ) : Prop",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "signedForm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 486,
+      "signature": "def signedForm (J : Matrix (Fin n) (Fin n) ℝ) (s : Fin n → ℂ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "signedForm_eq_offDiagonal",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 491,
+      "signature": "theorem signedForm_eq_offDiagonal (J : Matrix (Fin n) (Fin n) ℝ) (hdiag : ∀ i, J i i = 0) (s : Fin n → ℂ) : signedForm J s = (∑ i, signedDegree J i * ‖s i‖ ^ 2) - ∑ i, ∑ j ∈ Finset.univ.erase i, J i j * (conj (s i) * s j).re",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "two_le_ratio_add_ratio",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 503,
+      "signature": "theorem two_le_ratio_add_ratio {a b : ℝ} (ha : 0 < a) (hb : 0 < b) : (2 : ℝ) ≤ b / a + a / b",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "schur_sum_swap",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 509,
+      "signature": "theorem schur_sum_swap (J : Matrix (Fin n) (Fin n) ℝ) (hsymm : ∀ i j, J i j = J j i) (q : Fin n → ℝ) : ∑ i, ∑ j, |J i j| * (q j / q i) = ∑ i, ∑ j, |J i j| * (q i / q j)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "domfm_no_positive_absolute_schur_weight",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 525,
+      "signature": "theorem domfm_no_positive_absolute_schur_weight (J : Matrix (Fin n) (Fin n) ℝ) (hsymm : ∀ i j, J i j = J j i) (hdefect : ∑ i, (signedDegree J i - absoluteDegree J i) < 0) : ¬ ∃ q : Fin n → ℝ, IsAbsoluteSchurWeight J q",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "domfm_absolute_schur_sufficient",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 565,
+      "signature": "theorem domfm_absolute_schur_sufficient (J : Matrix (Fin n) (Fin n) ℝ) (hsymm : ∀ i j, J i j = J j i) {q : Fin n → ℝ} (hq : IsAbsoluteSchurWeight J q) (s : Fin n → ℂ) : 0 ≤ signedForm J s",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "plantJ3",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 640,
+      "signature": "def plantJ3 : Matrix (Fin 3) (Fin 3) ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "plantLaplacian3",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 643,
+      "signature": "def plantLaplacian3 : Matrix (Fin 3) (Fin 3) ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "plantJ3_symm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 646,
+      "signature": "theorem plantJ3_symm : ∀ i j, plantJ3 i j = plantJ3 j i",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "plantJ3_diag",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 651,
+      "signature": "theorem plantJ3_diag : ∀ i, plantJ3 i i = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "plantJ3_negative_edge",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 657,
+      "signature": "theorem plantJ3_negative_edge : plantJ3 0 2 < 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "plantLaplacian3_eq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 660,
+      "signature": "theorem plantLaplacian3_eq : plantLaplacian3 = Matrix.diagonal (signedDegree plantJ3) - plantJ3",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "plantLaplacian3_row_sums",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 668,
+      "signature": "theorem plantLaplacian3_row_sums (i : Fin 3) : ∑ j, plantLaplacian3 i j = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "domfm_signed_three_vertex_identity",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 675,
+      "signature": "theorem domfm_signed_three_vertex_identity (s1 s2 s3 : ℂ) : 2 * ‖s1 - s2‖ ^ 2 + 2 * ‖s2 - s3‖ ^ 2 - ‖s1 - s3‖ ^ 2 = ‖s1 - 2 * s2 + s3‖ ^ 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "plantJ3_signedForm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 684,
+      "signature": "theorem plantJ3_signedForm (s : Fin 3 → ℂ) : signedForm plantJ3 s = ‖s 0 - 2 * s 1 + s 2‖ ^ 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "plantJ3_signedForm_nonneg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 695,
+      "signature": "theorem plantJ3_signedForm_nonneg (s : Fin 3 → ℂ) : 0 ≤ signedForm plantJ3 s",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "plantJ3_defect",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 701,
+      "signature": "theorem plantJ3_defect : ∑ i, (signedDegree plantJ3 i - absoluteDegree plantJ3 i) = -4",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "domfm_signed_three_vertex_psd_plant",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 718,
+      "signature": "theorem domfm_signed_three_vertex_psd_plant : (∀ s1 s2 s3 : ℂ, 2 * ‖s1 - s2‖ ^ 2 + 2 * ‖s2 - s3‖ ^ 2 - ‖s1 - s3‖ ^ 2 = ‖s1 - 2 * s2 + s3‖ ^ 2) ∧ plantLaplacian3 = Matrix.diagonal (signedDegree plantJ3) - plantJ3 ∧ (∀ i, ∑ j, plantLaplacian3 i j = 0) ∧ plantJ3 0 2 < 0 ∧ (∑ i, (signedDegree plantJ3 i - absoluteDegree plantJ3 i)) < 0 ∧ (¬ ∃ q : Fin 3 → ℝ, IsAbsoluteSchurWeight plantJ3 q) ∧ (∀ s : Fin 3 → ℂ, 0 ≤ signedForm plantJ3 s)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "conjTranspose_rankOneStar_mul",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 744,
+      "signature": "theorem conjTranspose_rankOneStar_mul (β : n → ℂ) (Z : Matrix n k ℂ) : Zᴴ * Q3.RouteB.rankOneStar β * Z = Q3.RouteB.rankOneStar (Zᴴ *ᵥ β)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "domfm_compressed_gram_minus_shift",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 775,
+      "signature": "theorem domfm_compressed_gram_minus_shift (Γ : Matrix n n ℂ) (cL e : ℝ) (β : n → ℂ) (Z : Matrix n k ℂ) : Zᴴ * Q3.RouteB.weilShiftMatrix Γ cL β * Z + (e : ℂ) • (Zᴴ * Z) = Zᴴ * Γ * Z - ((cL - e : ℝ) : ℂ) • (Zᴴ * Z) - (2 : ℂ) • Q3.RouteB.rankOneStar (Zᴴ *ᵥ β)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "domfm_compressed_gram_minus_shift_posSemidef_iff",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 795,
+      "signature": "theorem domfm_compressed_gram_minus_shift_posSemidef_iff (Γ : Matrix n n ℂ) (cL e : ℝ) (β : n → ℂ) (Z : Matrix n k ℂ) : (Zᴴ * Q3.RouteB.weilShiftMatrix Γ cL β * Z + (e : ℂ) • (Zᴴ * Z)).PosSemidef ↔ (Zᴴ * Γ * Z - ((cL - e : ℝ) : ℂ) • (Zᴴ * Z) - (2 : ℂ) • Q3.RouteB.rankOneStar (Zᴴ *ᵥ β)).PosSemidef",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "domfm_compressed_gram_minus_shift_isometry",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 806,
+      "signature": "theorem domfm_compressed_gram_minus_shift_isometry (Γ : Matrix n n ℂ) (cL e : ℝ) (β : n → ℂ) (Z : Matrix n k ℂ) (hZ : Zᴴ * Z = (1 : Matrix k k ℂ)) : Zᴴ * Q3.RouteB.weilShiftMatrix Γ cL β * Z + (e : ℂ) • (Zᴴ * Z) = Q3.RouteB.weilShiftMatrix (Zᴴ * Γ * Z) (cL - e) (Zᴴ *ᵥ β)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "plantZ",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 816,
+      "signature": "def plantZ : Matrix (Fin 2) (Fin 1) ℂ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "plantZ_compression_eq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 818,
+      "signature": "theorem plantZ_compression_eq : plantZᴴ * (Matrix.diagonal ![(-1 : ℂ), 1]) * plantZ = (1 : Matrix (Fin 1) (Fin 1) ℂ)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "domfm_proper_compression_negative_complement_plant",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/DomfmFiniteObstructions.lean",
+      "line": 834,
+      "signature": "theorem domfm_proper_compression_negative_complement_plant : Q3.RouteB.weilShiftMatrix (Matrix.diagonal ![(0 : ℂ), 2]) 1 (0 : Fin 2 → ℂ) = Matrix.diagonal ![(-1 : ℂ), 1] ∧ (plantZᴴ * (Matrix.diagonal ![(-1 : ℂ), 1]) * plantZ).PosSemidef ∧ ¬ (Matrix.diagonal ![(-1 : ℂ), 1]).PosSemidef",
+      "in_docs": true,
+      "in_lemma_db": false,
       "orphan": false
     },
     {

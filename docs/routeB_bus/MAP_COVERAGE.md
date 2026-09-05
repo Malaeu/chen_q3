@@ -4,7 +4,7 @@
 `python3 docs/cartographer/map_coverage.py`. Рукописная карта — `MAP.md`, она
 описывает узлы маршрута; это приложение описывает **файлы**, и оно полное.
 
-Всего файлов: **393** · упомянуто в `MAP.md`: **25** · вне карты: **368** · без описания в шапке: **0**
+Всего файлов: **394** · упомянуто в `MAP.md`: **25** · вне карты: **369** · без описания в шапке: **0**
 
 «вне карты» не значит «лишний»: значит, что обходом карты файл не находится.
 Именно так 2026-08-11 был построен заново мост `ker ↔ eigenspace`, стоявший в
@@ -223,6 +223,7 @@
 | `D0StripMontelRefinement` | — | Strip-local Montel compactness produces a nonzero cluster after its strict | 0 |
 | `D0SubcriticalWeightedRateIntegral` | — | The subcritical weighted integral of the derived pointwise rate | 0 |
 | `D0ZerosRealOnScalarTransfer` | — | Zeros-real transfers along a nonzero scalar and along pointwise equality | 0 |
+| `DomfmFiniteObstructions` | — | DOM/FM finite obstructions: trade-off, absolute-Schur kill, compression gap | 0 |
 | `DoubleCompletionStripMismatch` | — | первая декларация: `normalizedDoubleCompletedXi` | 0 |
 | `EStarWindowedMellinCrosswalk` | — | Finite-window Mellin crosswalk for the D0 starred packet | 0 |
 | `EntirePhaseNormalization` | — | A finite linear combination of candidate entire summands. -/ | 0 |
