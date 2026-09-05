@@ -19,6 +19,22 @@ safety confirmation остаётся внешней границей. Судья
 - After WEILPROOF (b8b0dc95): Probe 24 — on the ground the split (9) is m-independent (S share 0.600-0.609, m = 13..83); on the exact Xi-row J = 0.570642 at m = 43 and 83 (6 digits); continuum: J_inf = 0.5706416, S_inf = 0.801542, J_inf + S_inf = d_A to 5e-11; the Chebyshev correction on Xi is carried by primes <= 59 (tail 1e-22).
 - Questions: (i) prove J_inf(Xi) + S_inf(Xi) = d_A from the explicit formula (Weil form of the canonical test f with f-hat ∝ Xi vanishes on the zeros, unconditionally) — is it exactly CCM's mechanism for the trial? (ii) expand (GAP-ARITH) around Xi: for g = Xi·(1 + ε v) write J(g) − J(Xi) and S(g) − S(Xi) to second order; the first order vanishes (Xi is a critical point?) and the second-order form is the Weil matrix in deviation coordinates — does (9) give it an explicit positive/negative ledger (translation energy of v against the Chebyshev bilinear form on (Xi, v))? (iii) why does the Chebyshev correction see only small primes on Xi (super-exponential decay of the Fourier transform of Xi^2) — and does that bound the arithmetic part for ALL g of a given smoothness (a source-specific |S(g)| control at fixed L that is not (10))?
 
+## REQ-2026-09-05-XIDEV · REQ-2026-09-05-XIDEV · Goal 058: Weil positivity around the canonical Xi test — L1 identity Q(f_Xi) = 0 (J_inf + S_inf = d_A, verified 5e-11), L2 first variation, L3 second variation in (9) coordinates, L4 finite prime reduction at fixed smoothness, L5 assembly; publication-shaped with Lean heads · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_WEIL_POSITIVITY_AROUND_XI_PROOF_2026-09-05.txt`
+- Boundary: `GOAL058_WEIL_POSITIVITY_AROUND_XI_PROOF_CONSTRUCTION`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: WEILPROOF verdict + observer's numerical verification (4e-18); Probe 24 (split m-independent on the ground; Xi-row invariant J = 0.570642; continuum J_inf + S_inf = d_A to 5e-11; Chebyshev correction carried by primes <= 59); wide m=43 cells p = 7e-12 / 5e-11; Lean WeilGramMinusShift.lean and P59SignFreeRitz.lean
+- Registered predictions: P_L1_CANONICAL_IDENTITY_PROVED 0.75; P_L2_FIRST_VARIATION_VANISHES 0.60; P_L3_GIVES_GEOMETRIC_SIGN_REPRESENTATION 0.20; P_L4_FINITE_PRIME_REDUCTION_PROVED 0.35; P_RESULT_COMPLETE 0.03; P_RESULT_PARTIAL 0.85; P_RESULT_REFUTED 0.12
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `23274aeabab544039ea21b2e8aac4158adce6fa4` / `10357` / `103` /
+  `63351d81f3ae6460adfae98265832a804cb3cfc1f1003f148b6a780a5e2c8cdc` /
+  `5aaa29bf7cbe5aaf711223715ed8c10c969ed06e` / `yes`
+
+---
+
 ## REQ-2026-09-04-WEILPROOF · REQ-2026-09-04-WEILPROOF · Goal 058: direct Weil positivity proof construction on the literal CCM form (W / C / F), drafted by the judge on the owner's word; proof candidate, partial with precise remainder, or refuted attempt · ANSWERED
 
 - `STATUS: ANSWERED`
