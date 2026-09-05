@@ -42,7 +42,8 @@ $f_0*h\in\operatorname{rad}\B$ for every $h\in C_c^\infty$. In particular the ra
 \begin{proof}
 $f_0$ is not compactly supported, so \eqref{eq:EF} is applied to the cutoffs $g_R=\chi_Rf_0$ of \Cref{lem:budget} and the limit
 $R\to\infty$ is taken on both sides. Fix $v\in C_c^\infty$. On the source side, $|\B(g_R,v)-\B(f_0,v)|\le C_{\Xf}\|(1-\chi_R)f_0\|_{\Xf}\|v\|_{\Xf}\to0$
-by the bound in \Cref{lem:budget}. On the zero side, $\widehat{g_R}-\widehat{f_0}=\widehat{e_R}$ with $e_R=(1-\chi_R)f_0$, and
+by the norm estimate $\|(1-\chi_R)f_0\|_{\Xf}^2\le C_0^2e^{-\pi e^{2R}}$ established in the proof of \Cref{lem:budget} (that estimate uses only the
+envelope of \Cref{thm:FPhi}, not this proposition). On the zero side, $\widehat{g_R}-\widehat{f_0}=\widehat{e_R}$ with $e_R=(1-\chi_R)f_0$, and
 $|\widehat{e_R}(z)|\le\|e_R''\|_{L^1(e^{|x|/2}dx)}\,|z|^{-2}$ on the strip $|\Im z|\le\tfrac12$ containing $Z(\Xi)$; since $\widehat v$ is
 bounded on that strip ($v$ has compact support) and $\sum_{z\in Z(\Xi)}|z|^{-2}<\infty$, the zero-side sum for $g_R$ converges to
 $\sum_z\overline{\Xi(\bar z)}\widehat v(z)/A=0$, because $\widehat{f_0}=\Xi/A$ vanishes at every zero, wherever it lies. Hence
