@@ -442,3 +442,11 @@ Object: (9) `𝒬(g) = 𝒥(g) − d_A‖g‖² + 𝒮(g)` evaluated on the unit
 Since `𝒬(ξ) = λ₁ ≈ 0`: `𝒥(ξ) + 𝒮(ξ) = d_A + λ₁`. Question: who carries the sign on the minimizer — the translation energy `𝒥` or the Chebyshev
 correction `𝒮`? Predictions: `P_S_SHARE_GE_HALF` 0.55 (`𝒮(ξ)/d_A ≥ 0.5` on all three cells); `P_J_ALONE_BELOW_dA` 0.80 (`𝒥(ξ) < d_A`, i.e. the mean
 form is negative on the ground, consistent with (NEG)); `P_SHARES_STABLE_IN_m` 0.50 (`𝒮/d_A` varies < 20 % across m).
+
+## Addendum 26 — Probe 25: Fejér×heat dictionary (2025 paper, Thm 6.2 atoms) on the literal CCM matrix — positivity margin vs density (2026-09-05)
+
+Atoms in the log variable on the window [−L/2, L/2]: g_k(x) = Λ_B(x − x_k)·ρ_t(x − x_k), Λ_B(u) = (1 − |u|/B)_+, ρ_t Gaussian of variance 2t, centres x_k on a
+uniform grid of spacing Δ; width parameter t, hat B = 4√(2t). Fourier coefficients c^{(k)} in the CCM mode basis (arb quadrature); V = [c^{(k)}];
+λ_min(VᵀKV, VᵀV) with K the literal full CCM matrix; dist of two fixed tests (the Xi-row y and a centred Gaussian) to span V.
+Predictions: `P_NO_OVERLAP_REGIME` 0.60 (on m = 13 no (Δ, t) has both λ_min ≥ 1e-2 and dist(y, V)/‖y‖ ≤ 1e-2); `P_MARGIN_DECAYS_WITH_WIDTH` 0.85
+(λ_min decreases monotonically as t grows at fixed Δ); `P_NARROW_MARGIN_ORDER_ONE` 0.70 (for t ≤ 0.01 and Δ ≥ L/8, λ_min ≥ 0.1). DIAGNOSTIC_NEVER_A_PROOF.
