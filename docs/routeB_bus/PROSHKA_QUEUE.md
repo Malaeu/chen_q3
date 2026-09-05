@@ -14,6 +14,22 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-05-PAPERCLEAN · REQ-2026-09-05-PAPERCLEAN · Paper 1 (Weil positivity around the canonical test, draft v3): full adversarial clean-up by the judge — every remaining defect with verbatim replacement text; attribution/priority check; Lean-statement match; arXiv readiness · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_PAPER1_WEIL_POSITIVITY_CANONICAL_TEST_FULL_ADVERSARIAL_CLEANUP_2026-09-05.txt`
+- Boundary: `PAPER1_WEIL_POSITIVITY_CANONICAL_TEST_FULL_ADVERSARIAL_CLEANUP`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: Paper v3 at 0f9c7cbc (17 pp.); referee rounds 1-2 (Opus, blind) and style pass applied; Lean NoFiniteStencilMinorant.lean KERNEL_GREEN; novelty pass: test = Riemann/CCM Lemma 7.1, signed kernel = Suzuki 2606.09096; owner's word: 'batch for Proshka, let him do the clean-up'
+- Registered predictions: P_CLEAN_NO_CRITICAL 0.75; P_CLEAN_HIGH_LE_2 0.55; P_CLEAN_PRIORITY_HIT 0.35; P_CLEAN_ARXIV_READY_AFTER_FIXES 0.60; P_CLEAN_LEMMA_3_3_OR_4_1_FIX 0.45
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `586d6edd5fc1c248fb324041703d7778d6c08aee` / `10526` / `99` /
+  `138450097079acbb45641cc4bb4f7c3c422c119d423764a9167efded88f04ebe` /
+  `b9a62d0a4f556ad17983028d784dad214c30fa84` / `yes`
+
+---
+
 ## REQ-2026-09-05-COUPLED · REQ-2026-09-05-COUPLED · Goal 058: coupled signed-square certificate (CSS) for the canonical kernel — pay b_- by second-difference stencils (SIGNED-PSD pattern) and multiplicative prime rectangles; exact splitting balance; obstruction theorem for local explicit stencils · ANSWERED
 
 - `STATUS: ANSWERED` — verdict `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_COUPLED_SIGNED_SQUARE_CERTIFICATE_FOR_THE_CANONICAL_KERNEL_2026-09-05.md`, commit `6b103bd1`, blob `1d9982d98cdf410e311fc305b46a020c4bc9685a`, SHA-256 prefix `e51a0e6327e93f31`; RESULT `ATTEMPT_REFUTED_WITH_EXACT_COUNTEREXAMPLE`, class `KILL_COUPLED_FINITE_STENCIL_CSS` (THEOREM_SHAPE, MATHEMATICALLY_DEAD); C1–C4 all closed; observer finite-identity check (PATH N=2..4, RECT, DIV-POT symbolic; I ⊂ (t₀,2t₀), B₋ ≥ 43/168 on I, ℓ-bound, c_A) PASSED 2026-09-05; predictions: P_C3 0.40 → CONFIRMED (observer too low), P_RESULT_PARTIAL 0.80 → REFUTED, P_RESULT_REFUTED 0.17 → CONFIRMED; independent Opus audit of C3.1–C3.6 (blind pre-derivation 4/4, all SURVIVE) — `docs/routeB_bus/AGENT_REPORT_2026-09-05_GOAL058_COUPLED_C3_INDEPENDENT_AUDIT.md`; judge's four P_COUPLED_* predictions realized at agent+observer level
