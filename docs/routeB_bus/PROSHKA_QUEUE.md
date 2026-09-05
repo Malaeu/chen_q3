@@ -14,11 +14,6 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## XIDEV · Goal 058: (GAP-ARITH) around Xi — the (9) split is an identity on the canonical test and a quadratic form on deviations · OPEN (candidate for the next batch, not sent)
-
-- After WEILPROOF (b8b0dc95): Probe 24 — on the ground the split (9) is m-independent (S share 0.600-0.609, m = 13..83); on the exact Xi-row J = 0.570642 at m = 43 and 83 (6 digits); continuum: J_inf = 0.5706416, S_inf = 0.801542, J_inf + S_inf = d_A to 5e-11; the Chebyshev correction on Xi is carried by primes <= 59 (tail 1e-22).
-- Questions: (i) prove J_inf(Xi) + S_inf(Xi) = d_A from the explicit formula (Weil form of the canonical test f with f-hat ∝ Xi vanishes on the zeros, unconditionally) — is it exactly CCM's mechanism for the trial? (ii) expand (GAP-ARITH) around Xi: for g = Xi·(1 + ε v) write J(g) − J(Xi) and S(g) − S(Xi) to second order; the first order vanishes (Xi is a critical point?) and the second-order form is the Weil matrix in deviation coordinates — does (9) give it an explicit positive/negative ledger (translation energy of v against the Chebyshev bilinear form on (Xi, v))? (iii) why does the Chebyshev correction see only small primes on Xi (super-exponential decay of the Fourier transform of Xi^2) — and does that bound the arithmetic part for ALL g of a given smoothness (a source-specific |S(g)| control at fixed L that is not (10))?
-
 ## REQ-2026-09-05-XIDEV · REQ-2026-09-05-XIDEV · Goal 058: Weil positivity around the canonical Xi test — L1 identity Q(f_Xi) = 0 (J_inf + S_inf = d_A, verified 5e-11), L2 first variation, L3 second variation in (9) coordinates, L4 finite prime reduction at fixed smoothness, L5 assembly; publication-shaped with Lean heads · OPEN
 
 - `STATUS: OPEN`
