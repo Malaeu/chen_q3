@@ -1,22 +1,31 @@
 \section{No local certificate: the obstruction theorem}\label{sec:obstruction}
 
-A natural strategy for proving \eqref{eq:DOM} is a \emph{certificate}: an identity or inequality
-$\Q(f_0s)\ge\int W(x)\,|(Ss)(x)|^2dx$ with an explicit nonnegative weight $W$ and an explicit finite difference
-stencil $S$, possibly summed over a family of stencils, chosen so that the right-hand side visibly pays the negative
-part of $\nu$. On finite graphs this is exactly how positive semidefinite matrices with zero row sums are
-certified (sums of squares of zero-mean stencils). The one positive minorant of the Weil form that is known unconditionally is
-nonlocal: for $g$ supported in $[2^{-1/2},2^{1/2}]$ with $\widehat g$ vanishing at $2i$ and $0$, compression to Sonin's space gives
-$W_\infty(g*g^*)\ge\operatorname{Tr}(\vartheta(g)S\vartheta(g)^*)$ \cite[Thm.~7.1]{Connes2026}. The theorem of this section says
-that no such minorant can be local: every nonnegative finite-stencil minorant of $\Q(f_0\,\cdot)$ is zero. The reason is not
-the negative density but the radical, through the linear independence of translates, a special case of the independence question
-raised by Bombieri \cite[Introduction, (iii)]{BOMBIERI-WEILQF-2000}.
+We consider minorants
+$\int W(x)|(Ss)(x)|^2dx\le\Q(f_0s)$ imposed for every
+$s\in C_c^\infty(\R;\C)$, where $S$ is one fixed finite sampling
+stencil and $W$ is measurable and nonnegative. The conclusion below
+also excludes countable sums of such nonnegative energies.
+It does not exclude nonlocal positive factors or local inequalities
+on a smaller class of tests.
+
+In particular, the Sonin-space minorant of
+\cite[Theorem 7.1]{Connes2026} is stated with restricted support and
+additional transform conditions. The translated cutoff profiles used
+in this section are not confined to that class. Our theorem therefore
+neither contradicts that result nor proves that it cannot be localized.
+The finite translate-independence argument below is self-contained;
+it is not a solution of Bombieri's different, infinite zero-indexed
+linear-independence question.
 
 \begin{lemma}[compact witnesses]\label{lem:budget}
 With the cutoffs of \Cref{lem:cutoffnorm}, for $q\in\R$ and $R\ge1$ let $r_q=f_0(\cdot-q)/f_0$ and $s_{q,R}=\chi_R\,r_q\in C_c^\infty$. Then,
 with $a_q=\frac\pi2e^{-2|q|}$,
 \begin{equation}\label{eq:budget}
- |\Q(f_0s_{q,R})|\le C_{\Xf}\,C_q^2\,e^{-2a_qe^{2R}},\qquad
- C_q^2=\frac{\frac{35}{3}M_0^2+\frac43(M_1^2+c_\chi^2M_0^2)}{2a_q}=\frac{150\,925}{2a_q}\ (c_\chi=2).
+ |\Q(f_0s_{q,R})|
+ \le C_{\Xf}C_q^2e^{-2a_qe^{2R}},\qquad
+ C_q^2=
+ \frac{\frac{35}{3}M_0^2+\frac43(M_1^2+c_\chi^2M_0^2)}{2a_q},
+ \quad c_\chi=2.
 \end{equation}
 \end{lemma}
 \begin{proof}
@@ -69,7 +78,7 @@ and the minorant hypothesis is a special case of the one assumed here, since $s_
 We never insert the noncompact ratio $r_q$ into the hypothesis; only the compact $s_{q,R}$ enter, and the limit is taken
 on the certificate side. Nothing about the sign of $\Q$ or the location of zeros enters.
 
-\begin{corollary}[no sum-of-squares representation]\label{cor:noCSS}
+\begin{corollary}[no countable finite-stencil sum of squares]\label{cor:noCSS}
 There is no countable family of finite stencils $S_j$ and weights $W_j\ge0$ with
 $\Q(f_0s)=\sum_j\int W_j|S_js|^2dx$ for all $s\in C_c^\infty$.
 \end{corollary}
@@ -79,17 +88,28 @@ But it does not: for a nonnegative bump $g$ with $\|g\|_2=1$ supported in an int
 $\ell\le\min\{\tfrac12,\tfrac12\log2,\exp(-e^{1/2}(c_A+1))\}$ the prime correlations vanish, the pole term is positive,
 $\|\Delta_tg\|_2^2=2$ for $\ell\le t\le1$ and $a(t)\ge e^{-1/2}/(2t)$ there, so $\Q(g)\ge e^{-1/2}\log(1/\ell)-c_A\ge1$.
 \end{proof}
+This conclusion concerns the displayed class of nonnegative
+finite-stencil energies. It is not a prohibition of nonlocal
+sum-of-squares representations; \Cref{ex:control} illustrates the
+distinction.
 
 \begin{remark}
-The same conclusion holds for families $\int_J\!\int W(j,x)|S_js(x)|^2dx\,d\mu(j)$ over a $\sigma$-finite parameter space with jointly
-measurable data and finitely many sample points per $j$: by Tonelli the total is a nonnegative integral over $(j,x)$, Fatou and the countable
-set of rational $q$ give $W(j,x)=0$ or $S_jr_q(x)=0$ for a.e.\ $(j,x)$ simultaneously for all $q$, and \Cref{lem:indep} applies pointwise.
-We do not use this extension and leave the measure-theoretic details to the reader.
+The countable-family conclusion needs no uniform bound on stencil
+size or diameter: each nonnegative summand is separately a minorant.
+An integral over an uncountable parameter space would require joint
+measurability and a measurable specification of the nonzero stencils
+and their distinct sample points. We make no such extension here.
 \end{remark}
 
-Quantitatively, if a proposed summand has $W>0$ on a set of positive measure, there are a rational $q$, a bounded set $E$
-and $\eta=\int_EW|Sr_q|^2>0$ such that for $R$ large (explicitly $e^{2R}>(2a_q)^{-1}\log(1+2C_{\Xf}C_q^2/\eta)$ and $R$
-covering $E+\{\tau_\ell\}$)
+Quantitatively, suppose a proposed nonzero stencil has $W>0$ on a
+set of positive measure. The translate-independence argument implies
+that for some rational $q$, $W|Sr_q|^2$ is positive on a set of
+positive measure. By restricting this set to a bounded subset and
+to a finite level of the integrand, choose a bounded measurable $E$
+with $0<\eta:=\int_EW|Sr_q|^2dx<\infty$.
+For $R$ covering $E+\{\tau_\ell\}$ the stencil has stabilized there.
+If also
+$e^{2R}>(2a_q)^{-1}\log(1+2C_{\Xf}C_q^2/\eta)$, then
 \begin{equation}\label{eq:certkill}
  \Q(f_0s_{q,R})-\int W|Ss_{q,R}|^2\le-\eta/2<0 .
 \end{equation}
@@ -125,10 +145,17 @@ of tests and passing to the limit: any margin that survives densification is a c
 finite windows show the same thing quantitatively: the saturated bottoms of \Cref{sec:windows} satisfy $\log_{10}\lambda_1/m=-4.50,-4.86,-5.11$ for
 $m=13,23,43$.
 
-\begin{remark}[pointwise majorisation]\label{rem:schur}
-A second proof shape is to bound the negative part of the kernel of $\Q(f_0\,\cdot)$ pointwise by a positive majorant built from the positive
-part. We record, without a theorem, why we do not expect this to work: the positive density $b_+(t)\sim\frac1{2t}$ is not integrable at $t=0$
-against the autocorrelation, while its usable energy against a fixed test is only $\int_0^\delta b_+E_s\,dt=\frac{\delta^2}4\int f_0^2|s'|^2+o(\delta^2)$;
-the positive part therefore cannot be transported to the negative region $t>t_0$ by any $s$-independent pointwise comparison. A precise
-impossibility statement would have to specify the class of majorants, and we do not pursue it here.
+\begin{remark}[pointwise comparisons]\label{rem:schur}
+For a fixed compact smooth $s$, Taylor expansion and dominated
+convergence give
+\[
+ E_s(t)=t^2\int f_0(x)^2|s'(x)|^2dx+o(t^2),\qquad
+ \int_0^\delta b_+(t)E_s(t)dt
+   =\frac{\delta^2}{4}\int f_0^2|s'|^2+o(\delta^2).
+\]
+Thus the infinite scalar mass of $b_+$ at zero cannot simply be
+counted as an infinite positive energy for a fixed test. This
+observation is not a theorem excluding all Schur-type or
+pointwise-majorization arguments. Any such impossibility claim would
+have to specify and analyze a class of comparison operators.
 \end{remark}

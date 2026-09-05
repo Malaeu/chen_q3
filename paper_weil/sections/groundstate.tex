@@ -1,24 +1,34 @@
 \section{The ground-state representation}\label{sec:gs}
 
-Since $f_0>0$, every compact smooth test is of the form $g=f_0\,s$ with $s=g/f_0\in C_c^\infty$. Suzuki
-\cite[\S2.5]{Suzuki2026} writes the Weil form on $(-a,a)$ as $\iint(-g'')(x-y)\,v(y)v(x)\,dx\,dy$ with an explicit even screw function $g$
-whose second derivative carries the prime atoms $\Lam(n)/\sqrt n$ at $\pm\log n$ and an archimedean density with a
-$\tfrac12\mathrm{Pf}(1/|t|)$ singularity. The following identity is the ground-state version of that kernel in the sense of Frank and
-Seiringer \cite{FrankSeiringer2008}: the radical vector $f_0$ plays the role of the ground state, and the form becomes a
-Dirichlet form of a \emph{signed} jump kernel acting on differences of the ratio $s$. Unlike a Hardy-type ground state, $f_0$ is a
-zero mode of an indefinite form, and $\nu$ is not a positive L\'evy measure; that is exactly where the difficulty sits.
+Since $f_0>0$, every compact smooth test is uniquely $g=f_0s$ with
+$s\in C_c^\infty$. Suzuki describes the Weil form by the
+distributional kernel $-g_{\rm scr}''(x-y)$
+\cite[\S3.5]{Suzuki2023Screw}\cite[\S2.5]{Suzuki2026}; for complex
+tests the associated double pairing includes
+$\overline{v(x)}v(y)$. The following calculation is a ground-state
+substitution in the algebraic sense of
+\cite{FrankSeiringer2008}. Here $f_0$ is a radical vector and the
+sign of the original form is not assumed. The result is a signed
+difference-form identity, not a claim that the resulting form is a
+nonnegative Markovian Dirichlet form.
 
 \begin{theorem}[ground-state form]\label{thm:GS}
 For $s\in C_c^\infty(\R;\C)$ let $E_s(t)=\int f_0(x)f_0(x+t)\,|s(x+t)-s(x)|^2\,dx$. Then
 \begin{equation}\label{eq:GS}
  \Q(f_0s)=\int_0^\infty b(t)\,E_s(t)\,dt+\sum_{n\ge2}w_n\,E_s(\log n)
-        =\frac12\int_{\R}\!dx\int_{\R}f_0(x)f_0(x+t)\,|s(x+t)-s(x)|^2\,d\tilde\nu(t),
+        =\frac12\int_{\R}\!dx\int_{\R\setminus\{0\}}f_0(x)f_0(x+t)\,|s(x+t)-s(x)|^2\,d\tilde\nu(t),
 \end{equation}
 where $\tilde\nu$ is the even extension to $\R$ of the signed measure
 \begin{equation}\label{eq:nu}
  d\nu(t)=b(t)\,dt+\sum_{n\ge2}w_n\,\delta_{\log n}\quad(t>0),\qquad
  b(t)=a(t)-2\cosh\tfrac t2=\frac{e^{-5t/2}}{1-e^{-2t}}-e^{t/2}.
 \end{equation}
+Here $\nu$ is a signed Radon measure on $(0,\infty)$ and
+$\tilde\nu$ is its reflected extension on $\R\setminus\{0\}$.
+The displayed integral means the sum of the density integral and the
+atomic series; after multiplication by the difference energy it is
+absolutely convergent. No locally finite extension of the positive
+part through $t=0$ is asserted.
 \end{theorem}
 \begin{proof}
 Subtract $\Re\B(f_0,f_0|s|^2)=0$ (\Cref{prop:radical}; $f_0|s|^2\in\Xf$) from $\Q(f_0s)$. In the translation energy,
@@ -28,13 +38,21 @@ into $w_nE_s(\log n)$ (the two directions $\pm\log n$ of the correlation togethe
 $H$-terms cancel exactly. The pole terms give $2\Re A_+(f_0s)\overline{A_-(f_0s)}-\Re\bigl[\overline{A_+(f_0)}A_-(f_0|s|^2)+\overline{A_-(f_0)}A_+(f_0|s|^2)\bigr]$
 (the polarised pole term is symmetric in the two functionals; $A_+(f_0)=A_-(f_0)$ since $f_0$ is even, but $|s|^2$ need not be), which equals
 $-\int_0^\infty(e^{t/2}+e^{-t/2})E_s(t)\,dt$ after writing each product as a double integral in $(x,x')$ and symmetrising in $t=x'-x$; this is what turns
-$a(t)$ into $b(t)=a(t)-2\cosh(t/2)$. All integrals converge: $E_s(t)=O(t^2)$ at $0$, and $f_0(x)f_0(x+t)$ decays
-super-exponentially in $t$ for fixed compact $\supp s$. We also verified \eqref{eq:GS} numerically on a nontrivial $s$: the residual
-between the two sides is $1.3\cdot10^{-12}$, while the alternatives $a-\cosh(t/2)$ and $a-2$ miss by $10^{-2}$ and $5\cdot10^{-4}$.
+$a(t)$ into $b(t)=a(t)-2\cosh(t/2)$. For convergence, $E_s(t)=O(t^2)$ at zero. If
+$C_0(t)=\int f_0(x)f_0(x+t)dx$, then
+$E_s(t)\le4\|s\|_\infty^2C_0(t)$ and
+$C_0(t)\le e^{-|t|}\|e^{|x|}f_0\|_2^2$.
+These bounds control the growing negative density and the atomic
+series, since $\sum_n\Lam(n)n^{-3/2}<\infty$.
+Thus all subtractions and symmetrisations above are justified.
 \end{proof}
 
-The density $b$ is an elementary evaluation of the archimedean part in this normalisation; its closed form and the location of its sign
-change appear to be new.
+The density is already determined by differentiating Suzuki's explicit
+screw function \cite[(1.3)]{Suzuki2026}: away from zero, the second
+derivative of its Lerch-series term is $a(t)$, the pole contribution
+is $-2\cosh(t/2)$, and the prime hinges give the atoms $w_n$.
+The following sign calculation is an elementary observation about
+that known density, rather than a claim of a new distributional kernel.
 
 \begin{lemma}[sign of the density]\label{lem:plastic}
 $b(t)>0$ if and only if $e^{t}<\pl$, where $\pl=1.324717957\ldots$ is the plastic number, the real root of $\pl^3=\pl+1$.
@@ -42,18 +60,27 @@ Thus $t_0=\log\pl=0.2811995743$, and every prime atom $\log n\ge\log2=0.693>t_0$
 \end{lemma}
 \begin{proof}
 With $y=e^{t}$, $b=0\iff e^{-3t}=1-e^{-2t}\iff y^{-3}=1-y^{-2}\iff y^3-y=1$.
+For $y>1$, $y^3-y-1$ is strictly increasing, is negative at $1$ and
+tends to infinity. Since $b(t)$ has the opposite sign to this cubic,
+the asserted strict sign alternatives follow.
 \end{proof}
 
-\Cref{fig:nu} shows the measure. The positive density is integrable near $0$ only against $E_s(t)=O(t^2)$, and the negative
-part and the atoms have finite mass against the autocorrelation $C_0(t)=\int f_0(x)f_0(x+t)dx$:
+Put $b_+(t)=\max(b(t),0)$, $b_-(t)=\max(-b(t),0)$ and
+$C_0(t)=\int f_0(x)f_0(x+t)dx$. \Cref{fig:nu,fig:f0} illustrate
+the density and canonical test. The negative part and atoms are
+integrable against $C_0$, whereas the positive part has logarithmically
+infinite mass at zero. In the following display the finite decimal
+values are reported numerical approximations, not certified bounds;
+the logarithmic coefficient is exact.
 \begin{equation}\label{eq:masses}
 \begin{aligned}
- N_-&=\int_{t_0}^\infty b_-(t)\,C_0(t)\,dt=0.083642,\qquad \sum_{n\ge2}w_nC_0(\log n)=0.037599,\\
+ N_-&=\int_{t_0}^\infty b_-(t)\,C_0(t)\,dt\approx0.083642,\qquad \sum_{n\ge2}w_nC_0(\log n)\approx0.037599,\\
  \int_\eps^{t_0}b_+(t)\,C_0(t)\,dt&=\tfrac12\log(1/\eps)+O(1)=1.1513\,\log_{10}(1/\eps)+O(1)\qquad(\eps\downarrow0).
 \end{aligned}
 \end{equation}
-The prime atoms weigh less than half of the negative mass; what has to pay for $b_-$ is the interaction between the
-ultraviolet positive part and the differences $|s(x)-s(x')|^2$, jointly, not a comparison of masses.
+These reported masses do not decide \eqref{eq:DOM}, whose integrands
+also contain the test-dependent differences. In particular, comparing
+scalar masses cannot replace an inequality for every profile $s$.
 
 \begin{figure}[t]\centering\includegraphics[width=.8\linewidth]{figures/fig1_signed_measure.pdf}
 \caption{The signed measure $\nu$ of \eqref{eq:nu}: continuous density $b(t)$ with its unique sign change at
@@ -73,8 +100,20 @@ The Riemann hypothesis is equivalent to
 $g\mapsto s=g/f_0$ is a bijection of $C_c^\infty$ onto itself; apply Weil's criterion and \Cref{thm:GS}.
 \end{proof}
 
-\paragraph{Plane waves.} For $s=e^{i\xi x}$ (not compact, but in the super-exponential class where \eqref{eq:GS} extends),
-$E_s(t)=2(1-\cos\xi t)C_0(t)$ and \eqref{eq:GS} gives the symbol $\sigma(\xi)=\int2(1-\cos\xi t)C_0(t)\,d\nu(t)$. By \eqref{eq:EF},
-$\Q(f_0e^{i\xi x})=A^{-2}\sum_{z\in Z(\Xi)}\Xi(z-\xi)\,\overline{\Xi(\bar z-\xi)}$; we verified numerically that the two sides agree to $10^{-13}$ for
-$\xi\le20$ using the first $3000$ zeros (this again uses \eqref{eq:EF}, extended as in the proof of \Cref{prop:radical}). The squares are complex for a non-real zero, so no sign of $\sigma$ follows without RH.
-Nonnegativity of $\sigma$ would in any case be a statement about the diagonal of the two-frequency kernel only.
+\paragraph{Plane waves.}
+For a fixed real $\xi$ take $s(x)=e^{i\xi x}$. Although $s$ is not
+compactly supported, $f_0s$ and its first two derivatives obey the
+same type of super-exponential estimates, so cutoffs extend both
+\eqref{eq:GS} and \eqref{eq:EF} to this test. Thus
+\[
+ E_s(t)=2(1-\cos(\xi t))C_0(t),\qquad
+ \sigma(\xi)=\Q(f_0e^{i\xi x})
+ =A^{-2}\sum_{z\in Z(\Xi)}
+      \overline{\Xi(\bar z-\xi)}\Xi(z-\xi).
+\]
+The sum is over the full zero multiset. For nonreal zeros its terms
+are not nonnegative absolute squares. A computation using a finite
+list of known zeros is a truncated diagnostic, not a verification of
+the full identity or its sign. Even nonnegativity of every
+$\sigma(\xi)$ would check only the diagonal of the two-frequency
+kernel, not positivity of all its finite quadratic combinations.

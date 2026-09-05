@@ -1,31 +1,49 @@
 \section{Formalisation, provenance and tool disclosure}\label{sec:disclosure}
 
-\paragraph{Machine-checked part.} The core of \Cref{thm:nominorant}, and the finite algebra of the companion window computations
-summarised in \Cref{sec:windows} (identities used by the interval-arithmetic code, not statements of this paper), are formalised in Lean~4 (toolchain \texttt{v4.26.0}) against Mathlib \cite{Mathlib} (tag \texttt{v4.26.0}, revision \texttt{2df2f0150c27}).
-\Cref{app:lean} lists the thirteen files, their declaration counts, and the statements they cover; the last of them formalises the
-core of the obstruction theorem (\Cref{lem:indep} and the Fatou--independence argument of \Cref{thm:nominorant}) with the cutoff
-budget of \Cref{lem:budget} as an explicit hypothesis. Every file compiles with
-\texttt{\#print axioms} reporting only \texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}; no project axiom is used.
-What is formalised is exactly what is finite: curvature identities and the explicit product bound for finite transforms, lattice
-identities, second-mode overlap, the sign-free Ritz bookkeeping, the decomposition $K=\Gamma-c_LI-2\beta\beta^*$ of the window
-matrix, the von Mangoldt divisibility energy, and the finite obstructions (tradeoff, eigen-tradeoff, Schur, signed-PSD plant).
-The analytic statements (\Cref{thm:FPhi,prop:radical,thm:GS,lem:budget}) are paper theorems; the explicit formula \eqref{eq:EF}
-is imported from the literature and is not a project axiom.
+\paragraph{Machine-checked part.}
+The file \texttt{NoFiniteStencilMinorant.lean} formalises the abstract
+translate-independence and Fatou argument underlying
+\Cref{thm:nominorant}. The concrete vanishing cutoff budget is an
+explicit hypothesis of that theorem, not a formalised theorem about
+the Weil form. \Cref{app:lean} states the interface precisely,
+including the positive-part convention in the Lean inequality.
+The recorded toolchain is Lean~4 \texttt{v4.26.0} with the project's
+pinned Mathlib dependency \cite{Mathlib}; the five printed exports
+are reported to have only \texttt{propext},
+\texttt{Classical.choice} and \texttt{Quot.sound} as axioms.
+This does not constitute a formalisation of
+\Cref{thm:FPhi,lem:cutoffnorm,prop:radical,thm:GS,lem:budget}.
+Those are paper arguments, with the explicit formula imported from
+the literature. Other repository files concerning finite transforms
+and matrices are companion work, not additional machine-checked
+proofs of this paper's analytic statements.
 
-\paragraph{Numerical part.} All finite-window quantities were computed in interval arithmetic (\texttt{arb}, 220--300 decimal digits) with the mode truncation chosen from the required relative precision $\approx\sqrt{\lambda_1}$; float
-evaluations were used only for figures. The identities \eqref{eq:EF} on $f_0$ and on plane waves, the masses \eqref{eq:masses} and the
-constants in \Cref{app:constants} were computed with \texttt{mpmath} at 30--50 digits, with the first $3000$ zeros of $\zeta$ where
-zeros enter.
+\paragraph{Numerical part.}
+The tables and figures reproduce reported computations, including
+calculations using \texttt{arb} and \texttt{mpmath}. The use of an
+interval-arithmetic library is distinguished from an end-to-end
+certificate for a particular quantity. Such a certificate must
+include input and truncation bounds as well as output intervals.
+No omitted-tail certificate for the entire set of numerical claims
+is supplied here, so the numerical material is diagnostic and is not
+used to prove a theorem. Sums over a finite list of known zeta zeros
+are not identified with complete zero-side sums.
 
-\paragraph{Use of automated reasoning tools.} Following the Leiden Declaration on AI and Mathematics as summarised in
-\cite[\S8]{TERENCETAO-2026}, we disclose that large language models were used throughout: as adversarial reviewers of proof
-sketches, as drafters of Lean code that was then checked by the kernel, and as literature scouts whose every claim was verified against
-the primary source or discarded. Such a reviewer first wrote several of the proofs in \Cref{sec:obstruction}, in particular \Cref{lem:budget,thm:nominorant}, in response to a
-formally specified request. A second, blind agent then re-derived them independently from the definitions, and the author checked them
-numerically. Predictions about the outcome of each such round were
-registered before the round and are kept in the project log; the author's own predictions were wrong more than once (for instance,
-a probability of $0.40$ was assigned to \Cref{thm:nominorant} before it was proved). Credit and responsibility for every statement here
-remain with the author.
+\paragraph{Automated tools and responsibility.}
+Large language models assisted with draft arguments, literature
+searches, adversarial review and Lean proof scripts. Separate review
+passes exposed errors and led to revisions. Numerical checks of
+specific formulas and kernel checking of formal proofs are different
+forms of validation; neither establishes all the unformalised
+analytic claims. This disclosure follows the transparency and
+responsibility principles of the Leiden Declaration
+\cite{LeidenDeclaration2026}. The author is solely responsible for
+the mathematical claims, the source attributions and the final text;
+a model's output or another model's agreement is not a proof.
 
-\paragraph{Relation to earlier work of the author.} The preprint \cite{Malamutmann2025} attempted to prove positivity of the same form by
-separate archimedean and prime estimates on a wide cone of tests. Item~1 of \Cref{sec:ledger} shows why that cannot work; the present paper supersedes it.
+\paragraph{Relation to earlier work.}
+No asserted proof of RH in the author's earlier work is a dependency
+of this paper. The present structural results neither verify such a
+proof nor show that every separate-estimate approach is impossible.
+They stand only on the definitions, cited results and proofs given
+here.

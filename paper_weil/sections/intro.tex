@@ -1,57 +1,79 @@
 \section{Introduction}\label{sec:intro}
 
-Weil's criterion \cite{Weil1952} states that the Riemann hypothesis is equivalent to the positivity of an explicit
-Hermitian form $\Q$ on compactly supported test functions on the multiplicative group. The form has three parts, an
-archimedean one, a pole term and a sum over primes, and positivity is known only for tests supported in a short window:
-Yoshida \cite{YOSHIDA-HERMITIAN-1992} and Bombieri \cite{BOMBIERI-WEILQF-2000} for small supports, Connes and Consani
-\cite{CC-WEILPOS-2020} for the archimedean place, and the finite window matrices of Connes, Consani and Moscovici (CCM)
-\cite{CCM-ZST-2025}, whose bottoms are upper bounds for the infimum of $\Q$ on a window and whose positivity for all windows
-is again RH. Bombieri already observed that the number of negative eigenvalues of finite truncations counts the zeros off the
-line \cite{BOMBIERI-WEILQF-2000}; the spectral approach thus relocates the problem without reducing it.
+Weil's criterion relates the Riemann hypothesis to nonnegativity of a
+Hermitian form on compactly supported smooth tests
+\cite{Weil1952,BOMBIERI-WEILQF-2000}. We use its logarithmic-variable
+version, with archimedean, pole and prime contributions. Localized forms
+and their variational properties occur in the work of Yoshida,
+Bombieri, Connes--Consani and Connes--Consani--Moscovici
+\cite{YOSHIDA-HERMITIAN-1992,BOMBIERI-WEILQF-2000,CC-WEILPOS-2020,CCM-ZST-2025}.
+The finite CCM matrices are Fourier compressions of a windowed form;
+they are not matrices in a prolate eigenfunction basis. Their lowest
+eigenvalues give upper bounds for the corresponding full-window
+Rayleigh infimum. A finite list of positive upper bounds establishes no
+global positivity statement.
 
-This paper is about the shape of that problem. We fix one test function: Riemann's function $\Phi$, whose Fourier transform is
-$\Xi$ itself \cite{Riemann1859}, in the normalisation of \cite[Lemma 7.1]{CCM-ZST-2025}, where its scaled versions serve as
-the ``educated guess'' for the bottom vectors of the window matrices. Normalised, $f_0=\Phi/\|\Phi\|_2$ is strictly positive and
-lies in the radical of $\Q$ together with all its translates and all its convolutions (\Cref{prop:radical}); this is the reason
-the compactly supported class, on which the form is positive definite under RH \cite{Suzuki2025}, has to be enlarged.
-Dividing every test by $f_0$ turns the Weil form into a Dirichlet form with a signed jump kernel (\Cref{thm:GS}):
+We fix Riemann's function $\Phi$, in the convention
+$\widehat\Phi=\Xi$, and put $f_0=\Phi/\|\Phi\|_2$
+\cite{Riemann1859,CCM-ZST-2025}. The function $f_0$ is smooth and strictly
+positive. We specify a completion $\Xf$ on which the Weil form extends
+continuously and prove that all translates of $f_0$, and all $f_0*h$ with
+$h\in C_c^\infty$, belong to its radical (\Cref{prop:radical}). The cutoff
+argument is essential: the explicit formula is not initially being
+applied to a compactly supported canonical test.
+
+The substitution $g=f_0s$ yields
 \[
- \Q(f_0s)=\frac12\int_{\R}dx\int_{\R}f_0(x)f_0(x+t)\,|s(x+t)-s(x)|^2\,d\tilde\nu(t),
+ \Q(f_0s)=\int_0^\infty b(t)E_s(t)\,dt
+          +\sum_{n\ge2}\frac{\Lam(n)}{\sqrt n}E_s(\log n),
+ \qquad
+ E_s(t)=\int_{\R}f_0(x)f_0(x+t)|s(x+t)-s(x)|^2dx.
 \]
-where the measure $\nu$ is completely explicit: a continuous density that is positive for $|x-x'|<\log\pl$, with $\pl$ the plastic
-number, negative beyond, and positive atoms $\Lam(n)/\sqrt n$ at the prime-power distances $\log n$. The signed distributional kernel itself is
-not new: Suzuki writes the Weil form as $\iint(-g'')(x-y)\,v(y)v(x)$ with the same prime atoms and an archimedean density with a
-$\tfrac12\,\mathrm{Pf}(1/|t|)$ singularity \cite[\S2.5]{Suzuki2026}, \cite[\S3.5]{Suzuki2025}, and the statement ``$g$ is a screw
-function in the sense of Krein--Langer if and only if RH holds'' \cite{Suzuki2026} is the conditional-positivity form of Weil's
-criterion. What is new here is the substitution $g=f_0s$: it is the ground-state representation of Frank and Seiringer
-\cite{FrankSeiringer2008}, applied to a signed L\'evy-type measure with a radical zero mode instead of a genuine ground state, and
-it produces the closed form of the density, its sign change at the plastic number, and the differences $|s(x)-s(x')|^2$ that the
-obstruction theorem needs. The Riemann hypothesis is then the statement that this form is nonnegative for every compact smooth $s$
-(\Cref{cor:DOM}): one inequality between the primes and a negative density, with no spectral unknowns.
+This is a signed difference-form representation, not an assertion of the
+positivity or Markov property of a Dirichlet form. The distributional
+kernel is already present in Suzuki's screw-function formulas
+\cite[\S3.5]{Suzuki2023Screw}\cite[\S2.5]{Suzuki2026}. Ground-state
+representations are a classical method, including the nonlocal versions
+of Frank and Seiringer \cite{FrankSeiringer2008}. Here we verify the
+substitution for a radical vector of a form whose sign is not assumed.
+The elementary expression for $b(t)$ follows from the known kernel;
+its zero is characterized by the plastic-number equation.
+\Cref{cor:DOM} records the resulting three-term positivity inequality.
 
-The main theorem is negative. The only unconditional positivity mechanism known for the Weil form is nonlocal: compression to
-Sonin's space gives, for short supports, a minorant $W_\infty(g*g^*)\ge\operatorname{Tr}(\vartheta(g)S\vartheta(g)^*)$
-\cite[Thm.~7.1]{Connes2026}, \cite{CC-WEILPOS-2020}. A natural way to go further is a local certificate: an identity or lower bound by a
-manifestly nonnegative expression built from finite difference stencils with nonnegative weights, as one certifies positive
-semidefinite matrices with zero row sums on finite graphs. \Cref{thm:nominorant} shows that every such minorant of $\Q(f_0\,\cdot)$
-is zero, with no restriction on the size, diameter or number of stencils, and \Cref{cor:noCSS} that no sum-of-squares representation
-exists. The mechanism is the radical: compact truncations of the translated canonical test have vanishing form value, and finitely many
-translates of a positive integrable function are linearly independent, so every stencil would have to annihilate all sample values.
-The obstruction is not a sign statement (\Cref{ex:control}); it holds for any positive integrable function whose smooth cutoffs have vanishing form value under any functional, and the Weil form is a corollary. A simple companion statement excludes uniform margins on dense families (\Cref{prop:trade}).
+The main result is \Cref{thm:nominorant}. A fixed nonzero finite sampling
+stencil, with a measurable nonnegative weight, cannot minorize
+$\Q(f_0s)$ for every compact smooth profile $s$. The proof uses compact
+cutoffs of $f_0(\cdot-q)/f_0$, Fatou's lemma, countably many rational
+translations and finite translate independence. It applies to an
+arbitrary functional with the specified vanishing cutoff values; the
+Weil form is a concrete instance. \Cref{cor:noCSS} excludes countable
+sums of these finite-stencil energies, not arbitrary sums of squares.
+\Cref{ex:control} shows why the obstruction does not imply that the
+underlying form has a negative direction.
 
-The remaining sections record what the finite windows do and do not show (\Cref{sec:windows}), including a conjectural second-jet expansion
-for the prolate trial of \cite{CCM-ZST-2025} and the agreement of certified window bottoms with the decay law of \cite{XUEFENGZHU-2026}.
-They also record a ledger of excluded proof shapes with the theorem that excludes each (\Cref{sec:ledger}), the precise open problem and the two
-representations it leaves open, and the provenance of every statement: which statements are machine-checked in Lean~4 (the core of the
-obstruction theorem is) and how automated reasoning tools were used (\Cref{sec:disclosure}). Nothing in this paper is a step toward RH in the sense of a new
-inequality; its content is the exact location of the difficulty and the proof that a class of attacks on it cannot succeed.
+The quantifier over all compact profiles matters. The known Sonin-space
+minorant is imposed on a different, restricted support and moment class
+\cite{Connes2026,CC-WEILPOS-2020}; our result does not rule out estimates
+on that class. Similarly, \Cref{prop:trade} concerns a fixed margin in
+the ambient $\Xf$ norm and says nothing about coercivity in a quotient
+norm. The short ledger in \Cref{sec:ledger} keeps these boundaries
+explicit. \Cref{sec:windows} reports finite computations and a
+conjectural trial-jet expansion, without using them in any proof.
+\Cref{sec:disclosure,app:lean} delimit the formalised result and describe
+the use of automated tools. No positivity estimate establishing RH is
+claimed.
 
-\paragraph{Priority.} The test function and $\widehat\Phi=\Xi$ are Riemann's \cite{Riemann1859}, in the form of
-\cite[(7.1)--(7.2), Lemma 7.1]{CCM-ZST-2025}; the same logarithmic-variable expansion appears in the preprint \cite{Freedman2026}.
-The Weil form as a quadratic functional with finite truncations, their nondegeneracy for simple zeros (his Lemma~10), and the
-question of linear independence of the functions $x^{-\rho}$, $\rho$ ranging over the zeros, are Bombieri's \cite{BOMBIERI-WEILQF-2000}; the window matrices and the
-prolate trial are from \cite{CCM-ZST-2025}, with finite dictionaries in the preprints \cite{Groskin2026,Freedman2026}; the signed
-distributional kernel and the screw-function form of the criterion are Suzuki's \cite{Suzuki2025,Suzuki2026}; positive operators
-attached to the Weil distribution appear in \cite{Li2024}. To our knowledge the ground-state substitution \eqref{eq:GS} with its
-explicit density and sign change, the description of the radical on the enlarged class, the obstruction \Cref{thm:nominorant} with its
-corollaries, and \Cref{prop:trade} have not appeared before; we would be grateful for references.
+\paragraph{Attribution and scope of the contribution.}
+The canonical Fourier representation is classical; the CCM notation
+makes its relation to the prolate trial explicit. The same logarithmic
+expansion is also recorded in the unrefereed preprint
+\cite{Freedman2026}. The signed kernel belongs to the existing
+Weil--Suzuki framework, and the ground-state algebra is not a new
+general method. The concrete weighted-domain verification and the
+global finite-stencil obstruction are the statements developed here.
+We have not found the latter in this precise formulation in the sources
+cited, but make no exhaustive priority claim. The no-margin proposition
+is included as an elementary consequence, not as a separate major
+novelty. Related positive-operator and finite-dictionary constructions
+\cite{Li2024,Groskin2026} are not inputs asserting positivity of this
+Weil form.

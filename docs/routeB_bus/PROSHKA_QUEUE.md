@@ -14,9 +14,9 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-05-PAPERCLEAN · REQ-2026-09-05-PAPERCLEAN · Paper 1 (Weil positivity around the canonical test, draft v3): full adversarial clean-up by the judge — every remaining defect with verbatim replacement text; attribution/priority check; Lean-statement match; arXiv readiness · OPEN
+## REQ-2026-09-05-PAPERCLEAN · REQ-2026-09-05-PAPERCLEAN · Paper 1 (Weil positivity around the canonical test, draft v3): full adversarial clean-up by the judge — every remaining defect with verbatim replacement text; attribution/priority check; Lean-statement match; arXiv readiness · ANSWERED
 
-- `STATUS: OPEN`
+- `STATUS: ANSWERED` — verdict `docs/routeB_bus/proshka/PROSHKA_VERDICT_PAPER1_WEIL_POSITIVITY_CANONICAL_TEST_FULL_ADVERSARIAL_CLEANUP_2026-09-05.md`, commit `da9236c8`; RESULT `READY_AFTER_LISTED_FIXES` (v3 as submitted NOT_READY); 0 CRITICAL / 9 HIGH / 7 MEDIUM / 3 LOW / 1 WORDING; core SURVIVES (Riemann normalisation, cutoff argument, radical containment after convolution-envelope repair, GS identity, finite-stencil obstruction, countable SOS obstruction, no fixed X-margin); NOT_ESTABLISHED and removed: no arbitrary SOS, no localisation of Sonin minorant, indefiniteness of Q; b(t) = prior-art component (differentiate Suzuki (1.3)); all P01–P13 replacements applied verbatim 2026-09-05 (observer), build clean 16 pp.; predictions: NO_CRITICAL 0.75 CONFIRMED, HIGH_LE_2 0.55 REFUTED (9), PRIORITY_HIT 0.35 CONFIRMED_WITH_SCOPE, ARXIV_READY_AFTER_FIXES 0.60 CONFIRMED, LEMMA_3_3_OR_4_1_FIX 0.45 CONFIRMED
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_PAPER1_WEIL_POSITIVITY_CANONICAL_TEST_FULL_ADVERSARIAL_CLEANUP_2026-09-05.txt`
 - Boundary: `PAPER1_WEIL_POSITIVITY_CANONICAL_TEST_FULL_ADVERSARIAL_CLEANUP`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`

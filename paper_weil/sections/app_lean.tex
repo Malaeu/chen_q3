@@ -1,31 +1,53 @@
-\section{Lean files}\label{app:lean}
-All files live in \texttt{Q3/Proofs/RouteB/} of the project repository; all report axioms
+\section{The formalised abstract interface}\label{app:lean}
+
+The relevant source is \texttt{NoFiniteStencilMinorant.lean} in
+\texttt{Q3/Proofs/RouteB/}, in repository \texttt{Malaeu/chen\_q3},
+at the manuscript source revision \texttt{0f9c7cbc81bb}.
+Its Git blob begins \texttt{e6fd9dc2f713}.
+The following five exports are printed in the file's axiom audit:
+\begin{itemize}[leftmargin=2em]
+\item \texttt{independence\_of\_translates};
+\item \texttt{independence\_of\_translates\_apply};
+\item \texttt{stencil\_energy\_limit\_eq\_zero};
+\item \texttt{no\_positive\_finite\_stencil\_minorant};
+\item \texttt{no\_positive\_finite\_stencil\_minorant\_hypotheses\_satisfiable}.
+\end{itemize}
+Five is the number of these audited exports, not the number of all
+helper declarations. The proof includes real and complex analysis,
+Fourier integrals, Fatou's lemma and almost-everywhere reasoning as
+well as finite Vandermonde algebra.
+
+In the principal theorem, $f:\R\to\R$ is continuous, integrable and
+strictly positive; $Q:(\R\to\C)\to\R$ is arbitrary; the cutoffs are
+measurable and equal to $1$ on $[-R,R]$; the real coefficient stencil
+is nonzero and its shifts are distinct. The weight $W$ takes values
+in the extended nonnegative reals. With
+$r_q(x)=f(x-q)/f(x)$, the hypotheses are:
+\[
+ \text{(H1)}\quad Q(f\chi_Rr_q)\longrightarrow0
+       \quad\text{for every rational }q,
+\]
+\[
+ \text{(H2)}\quad
+ \int W|S(\chi_Rr_q)|^2
+       \le\max\{Q(f\chi_Rr_q),0\}
+       \quad(q\in\mathbb Q,\ R\ge1),
+\]
+where the integral and inequality in (H2) are represented in
+$[0,\infty]$. In Lean the right-hand side is
+\texttt{ENNReal.ofReal}. The conclusion is $W=0$ almost everywhere.
+The real-valued minorant inequality in \Cref{thm:nominorant} implies
+this formal hypothesis, but is not literally the same expression.
+For the concrete Weil application (H1) is supplied by the paper
+proof of \Cref{lem:budget}, not by this Lean file.
+
+The independence result allows complex coefficients and proves the
+finite exponential-polynomial step by sampling and a Vandermonde
+matrix. The nonvacuity export uses a Gaussian, the zero functional
+and zero weight; it is not a nonzero Weil certificate. The recorded
+axiom profiles of the five exports are
 \texttt{[propext, Classical.choice, Quot.sound]}.
-\begin{center}\scriptsize
-\begin{tabular}{@{}p{6.9cm}rrp{5.0cm}@{}}\toprule
-file & lines & decls & content\\ \midrule
-\texttt{Proposition59ExplicitProductCurvatureBridge} & 1581 & 46 & curvature $\Rightarrow$ $|F(z)|\le|F(0)|e^{\kappa|z|^2}$ for finite transforms with real zeros\\
-\texttt{Proposition59AlternatingLatticeCurvature} & 740 & 39 & lattice curvature identity and an explicit tail bound for the alternating lattice sum\\
-\texttt{Proposition59ReciprocalModeWeightedShell} & 277 & 9 & reciprocal-mode shell identities\\
-\texttt{P59SingleEndpointAtomCounterexample} & 247 & 18 & one-endpoint plant (identification by lattice values fails)\\
-\texttt{PolynomialCircleRootCount} & 259 & 9 & argument principle for polynomials on the circle\\
-\texttt{Proposition59AnchoredSecondModeOverlap} & 653 & 36 & $\mathrm{Tr}_m(F_vF_w)=2\pi\langle v,w\rangle$, anchored second-mode ledger\\
-\texttt{Proposition59GroundTrialSecondJetDifference} & 195 & 4 & difference of second jets, no zero hypothesis\\
-\texttt{P59XiLadderFeshbachRemainder} & 407 & 35 & Feshbach remainder of the $\Xi$ ladder\\
-\texttt{P59SignFreeRitz} & 464 & 32 & sign-free Ritz bookkeeping inside a uniform error\\
-\texttt{WeilGramMinusShift} & 395 & 27 & $K=\Gamma-c_LI-2\beta\beta^*$ with PSD Gram $\Gamma$\\
-\texttt{MangoldtDivisibilityEnergy} & 452 & 33 & $\sum_{d\mid n}\Lam(d)=\log n$ as an energy identity (DIV)\\
-\texttt{DomfmFiniteObstructions} & 847 & 48 & finite tradeoff, eigen-tradeoff, Schur, signed-PSD and comparison plants\\
-\texttt{NoFiniteStencilMinorant} & 621 & 5 & \Cref{lem:indep} and \Cref{thm:nominorant} in abstract form (below)\\
-\bottomrule\end{tabular}\end{center}
-\paragraph{The obstruction theorem in Lean.} The file \texttt{NoFiniteStencilMinorant.lean} proves, with no reference to $\zeta$:
-\texttt{independence\_of\_translates} and its pointwise form \texttt{independence\_of\_translates\_apply} (\Cref{lem:indep}: $f$ continuous, integrable, $\int f\ne0$, $p$ injective, $\sum_\ell d_\ell f(p_\ell-q)=0$
-for all $q\in\mathbb Q$ $\Rightarrow d=0$; the proof samples the exponential polynomial at $k$ points of a small interval instead of
-differentiating, then applies \texttt{Matrix.det\_vandermonde}); \texttt{stencil\_energy\_limit\_eq\_zero} (the Fatou step for one rational
-$q$); and \texttt{no\_positive\_finite\_stencil\_minorant}, whose hypotheses are: $f$ continuous, integrable and positive; an arbitrary
-function $Q:(\R\to\C)\to\R$; measurable cutoffs $\chi_R$ with $\chi_R=1$ on $[-R,R]$; an injective stencil with $c\ne0$; a measurable
-$W\ge0$; (H1) $Q(f\,\chi_Rr_q)\to0$ as $R\to\infty$ for every rational $q$; (H2) $\int W|S(\chi_Rr_q)|^2\le Q(f\chi_Rr_q)$ for all
-rational $q$ and $R\ge1$. Conclusion: $W=0$ a.e. A fifth theorem exhibits a model satisfying all hypotheses, so they are consistent.
-The analytic input (H1) is \Cref{lem:budget}, a paper lemma; (H2) is implied by the hypothesis of \Cref{thm:nominorant}. All five
-declarations report axioms \texttt{[propext, Classical.choice, Quot.sound]}. The remaining finite heads of \Cref{sec:obstruction}
-(path and rectangle identities, translated radical, cutoff budget) are not formalised.
+No claim is made that the explicit formula, the canonical analytic
+test, its concrete cutoff budget or the ground-state identity has
+been formalised by these exports. Companion matrix and transform
+files are outside this paper's formal theorem claim.

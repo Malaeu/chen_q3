@@ -1,14 +1,20 @@
-Weil's criterion expresses the Riemann hypothesis as the positivity of an explicit Hermitian form $\Q$ on compactly supported
-tests on the multiplicative group. We fix Riemann's function $\Phi$, whose Fourier transform is the Riemann $\Xi$ function, in the normalisation of
-Connes--Consani--Moscovici, and show that $f_0=\Phi/\|\Phi\|_2$, all its translates and its convolutions with compact smooth functions lie in the radical of
-$\Q$ on the natural enlarged test class. Dividing by $f_0$ gives a ground-state representation (in the sense of Frank--Seiringer) of Suzuki's
-signed distributional kernel as a Dirichlet form, $\Q(f_0s)=\tfrac12\int dx\int f_0(x)f_0(x+t)|s(x+t)-s(x)|^2\,d\tilde\nu(t)$, with an explicit
-measure: a density that changes sign exactly at $\log\pl$, $\pl$ the plastic number, and positive atoms $\Lambda(n)/\sqrt n$ at the prime-power
-distances. The Riemann hypothesis becomes one explicit inequality with three terms: the prime atoms and the short-range positive density against
-the long-range negative density. We prove that this inequality admits no local certificate: for any positive integrable function in the radical
-whose smooth cutoffs have vanishing value under a functional, every nonnegative minorant by weighted squares of finite difference stencils vanishes identically,
-for stencils of any size and diameter; for the Weil form no sum-of-squares representation exists. The obstruction is the infinite-dimensional
-radical, not the sign of the kernel, and it shows that the known nonlocal (Sonin-space) positivity cannot be localised. We also prove that no
-uniform margin on a dense family of tests can exist, record what certified finite-window computations (Connes--Consani--Moscovici matrices
-with bottoms down to $10^{-220}$) do and do not show, and state the open problem in its reduced form. The core of the obstruction theorem and the
-finite algebra of the window computations are formalised in Lean~4 against Mathlib; we disclose how automated reasoning tools were used.
+We study the Weil form on compact smooth tests and on a specified weighted
+completion that contains Riemann's canonical function. If $f_0$ is the
+$L^2$-normalisation of the function whose Fourier transform is $\Xi$, then
+$f_0$, its translates and its convolutions with compact smooth functions
+belong to the radical of the extended form. The substitution $g=f_0s$
+gives a signed difference-form identity: its continuous density changes
+sign at the logarithm of the plastic number, and its discrete terms occur
+at prime-power distances. This identity rewrites Weil's positivity
+criterion without proving its positivity. Our main result is an abstract
+obstruction: a nonnegative weighted square of a nonzero finite sampling
+stencil cannot be a minorant on the full compact test class when the
+translated ratio cutoffs have vanishing form value. Consequently, the
+Weil form in these ratio coordinates has no countable representation by
+such nonnegative finite-stencil energies. The conclusion does not exclude
+nonlocal factors or estimates on a restricted support class. We also
+record the elementary obstruction to a fixed coercive margin in the
+ambient weighted norm. The abstract Fatou--translate-independence core
+has a Lean~4 formalisation; the concrete analytic input and the signed
+representation are proved on paper. Finite-window computations are
+reported only as diagnostics.

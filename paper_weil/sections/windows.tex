@@ -1,53 +1,112 @@
-\section{Finite windows: what the numbers say and what they cannot say}\label{sec:windows}
+\section{Finite windows: diagnostics and their limits}\label{sec:windows}
 
-\begin{figure}[t]\centering\includegraphics[width=.8\linewidth]{figures/fig3_window_bottoms.pdf}
-\caption{Bottom eigenvalue $\lambda_1(m,N)$ of the finite window matrix $K(m,N)$ of \cite{CCM-ZST-2025} as a function of the
-number of modes $N$, for three windows $m=\lambda^2$. Each curve saturates at $N^*\approx4.6m,\,6.3m,\,8m$; the saturated values are
-$3.48\cdot10^{-59}$, $1.8\cdot10^{-112}$, $1.7\cdot10^{-220}$. All entries are interval-arithmetic certified (\texttt{arb}, 220--300 digits).}
-\label{fig:bottoms}\end{figure}
+The following numbers reproduce reported high-precision computations.
+They are not used in the analytic proofs. We do not supply here
+end-to-end enclosures for matrix entries, omitted source tails,
+eigenvalue isolation and every derived statistic. Accordingly all
+printed numerical values in this section are interpreted as
+approximations, not as certified bounds on a continuum infimum.
 
-\paragraph{Bottoms.} The bottom $\lambda_1(m,N)$ of the CCM window matrix is an upper bound for $\mu_\lambda=\inf\Q$ on the window
-(\Cref{sec:setup}). \Cref{fig:bottoms} shows its dependence on the number of prolate modes for three windows; it saturates at
-$N^*(m)\approx4.6m,\,6.3m,\,8m$ for $m=13,23,43$, with $N^*/m$ growing. The saturated bottom at $m=43$, $1.7\cdot10^{-220}$, lies within $20\%$ of the value $10^{-219.5}$ predicted before the computation from the
-Landau--Widom decay law fitted by Zhu \cite{XUEFENGZHU-2026} on the same object in additive coordinates ($L_{\mathrm{Zhu}}=\tfrac12\log m$). We
-record this as a consistency check between two independent implementations, not as evidence about $\mu_\lambda$ beyond the computed cells: a positive bottom on finitely many windows is an upper
-bound for finitely many infima. Positivity of \emph{all} $\mu_\lambda$ is RH.
+\begin{figure}[t]\centering
+\includegraphics[width=.8\linewidth]{figures/fig3_window_bottoms.pdf}
+\caption{Reported smallest eigenvalues of finite CCM compressions as
+the Fourier cutoff $N$ increases, at $m=\lambda^2=13,23,43$.
+The full carrier has $2N+1$ modes. The apparent finite-cutoff
+stabilization is a numerical observation, not a proof of equality
+with the continuum bottom.}\label{fig:bottoms}
+\end{figure}
 
-\paragraph{The prolate trial.} CCM \cite[\S7]{CCM-ZST-2025} propose the prolate packet $k_\lambda$ (with $c=2\pi\lambda^2$, $m=\lambda^2$)
-as a trial vector. Its normalised transform is the Mellin transform of $k_\lambda$; numerically its ratio to $\Xi/\Xi(0)$ is a smooth even function of $z$ whose
-Taylor coefficient at $0$ we measure below. Define the curvature $\kappa(v)=-\frac{F_v''(0)}{2F_v(0)}$ of the transform $F_v$ of a test $v$,
-so that $\kappa_\Xi=\tfrac12(\log\xi)''(\tfrac12)=\tfrac12\bigl[-8+\tfrac14\psi'(\tfrac14)+(\zeta'/\zeta)'(\tfrac12)\bigr]=0.0231049931$.
-A formal expansion of the archimedean factor in powers of $1/m$ suggests
+\paragraph{Finite bottoms.}
+For the full compression $K(m,N)$, let $\lambda_1(m,N)$ be its least
+eigenvalue. It is an upper bound for the normalized window infimum
+$\mu_\lambda$ (\Cref{sec:setup}). The records associated with
+\Cref{fig:bottoms} report stabilization near
+$N^*/m\approx4.6,6.3,8$ and values approximately
+$3.48\cdot10^{-59},1.8\cdot10^{-112},1.7\cdot10^{-220}$.
+This does not prove convergence along a varying-window schedule or
+provide a lower enclosure for $\mu_\lambda$.
+The last printed value is about $46\%$ below $10^{-219.5}$, so it
+does not support a claimed agreement within $20\%$.
+No cross-implementation identity or asymptotic decay law is inferred
+from this comparison.
+
+\paragraph{Which trial is measured.}
+The continuum prolate packet $k_\lambda$ of
+\cite[\S7]{CCM-ZST-2025} is distinct from its finite projection.
+Write $q_{m,N}$ for the unit coefficient row of the projected packet
+in the same Fourier basis as $K(m,N)$, and $\xi_{m,N}$ for the unit
+lowest row used in the finite computation. All overlaps below refer
+to these two finite rows. For a row $v$ with $F_v(0)\ne0$, define
+$\kappa(v)=-F_v''(0)/(2F_v(0))$ using its finite P59 transform.
+We use
+\[
+ \kappa_\Xi=\tfrac12(\log\xi)''(\tfrac12)
+ =\tfrac12\left[-8+\tfrac14\psi_{\rm d}'(\tfrac14)
+                  +(\zeta'/\zeta)'(\tfrac12)\right]
+ \approx0.0231049931,
+\]
+where $\psi_{\rm d}$ is the digamma function.
+A formal continuum perturbation calculation suggests, for the
+measured diagonal $N=m$, the conjecture
 \begin{equation}\label{eq:trialjet}
- \kappa(k_\lambda)=\kappa_\Xi-\frac{1}{16\pi m}-\frac{13}{256\pi^2m^2}+O(m^{-3}).
+ \kappa(q_{m,m})=\kappa_\Xi-\frac1{16\pi m}
+                     -\frac{13}{256\pi^2m^2}+O(m^{-3}).
 \end{equation}
-We do not prove \eqref{eq:trialjet} here and present it as a numerical observation with a heuristic derivation. On the certified cells the
-measured $a_m=m(\kappa_\Xi-\kappa(k_\lambda))$ is $0.020307,\,0.020123,\,0.020016,\,0.019957$ for $m=13,23,43,83$ (the $(83,83)$ cell was
-computed for $a_m$ only and is not in \Cref{tab:jet}); the two-point extrapolation
-from $m=23,43$ gives $a_\infty=0.019893$ against $1/(16\pi)=0.019894$, and the least-squares fit $a_\infty+b/m$ through all four cells gives
-$(0.019891,\,0.00540)$ against $(0.019894,\,0.005145)$, i.e.\ the leading constant to four digits and the second coefficient to $5\%$
-(\Cref{fig:jet}). \Cref{tab:jet} records the cells. On the saturated windows the bottom vector coincides with the trial to
-$p=1-\langle\xi_1,k_\lambda\rangle^2\approx5\cdot10^{-9}$ ($m=13$) and $5\cdot10^{-10}$ ($m=23$); on the production schedule $N=m$ the
-curvature difference $\delta_m=\kappa(\xi_1)-\kappa(k_\lambda)$ is a stable fraction of the lattice tail
-$T_m=\frac{L^2}{4\pi^2}\sum_{k>N}k^{-2}$, $L=\log m$, while on the wide window it vanishes with the difference of the vectors.
+We do not prove this expansion or the finite-projection error bound
+needed to obtain it from a continuum calculation. A ratio to
+$\Xi(z)/\Xi(0)$ is interpreted only near the nonzero anchor, not
+across an unproved cancellation of all zeros of $\Xi$.
+
+The reported values of
+$a_m=m(\kappa_\Xi-\kappa(q_{m,m}))$ are
+$0.020307,0.020123,0.020016,0.019957$ at $m=13,23,43,83$.
+A least-squares fit $a_\infty+\beta_{\rm fit}/m$ gives approximately
+$(0.019891,0.00540)$, compared with the proposed
+$(1/(16\pi),13/(256\pi^2))\approx(0.019894,0.005145)$.
+The discrepancy in the second coefficient is about $5\%$.
+These rounded observations do not establish either coefficient or
+the stated remainder. The $m=83$ datum concerns the trial coefficient
+only and is not a row of \Cref{tab:jet}.
 
 \begin{table}[t]\centering\small
 \begin{tabular}{@{}rrrrrrr@{}}\toprule
-$(m,N)$ & $T_m$ & $\kappa(\xi_1)-\kappa_\Xi$ & $\kappa(k_\lambda)-\kappa_\Xi$ & $\delta_m$ & $\delta_m/T_m$ & $1-\langle\xi_1,k_\lambda\rangle^2$\\ \midrule
+$(m,N)$ & $T_{m,N}$ & $\kappa(\xi)-\kappa_\Xi$
+ & $\kappa(q)-\kappa_\Xi$ & $\delta_{m,N}$
+ & $\delta_{m,N}/T_{m,N}$ & $p_{m,N}$\\ \midrule
 (13,13) & $1.234\cdot10^{-2}$ & $+2.791\cdot10^{-3}$ & $-1.562\cdot10^{-3}$ & $+4.353\cdot10^{-3}$ & 0.353 & $3.66\cdot10^{-3}$\\
 (23,23) & $1.059\cdot10^{-2}$ & $+3.158\cdot10^{-3}$ & $-0.875\cdot10^{-3}$ & $+4.033\cdot10^{-3}$ & 0.381 & $2.98\cdot10^{-3}$\\
 (43,43) & $8.236\cdot10^{-3}$ & $+2.738\cdot10^{-3}$ & $-0.466\cdot10^{-3}$ & $+3.204\cdot10^{-3}$ & 0.389 & $1.86\cdot10^{-3}$\\
 (13,120) & $1.383\cdot10^{-3}$ & $-1.567\cdot10^{-3}$ & $-1.562\cdot10^{-3}$ & $-4.6\cdot10^{-6}$ & $-0.003$ & $4.69\cdot10^{-9}$\\
 \bottomrule\end{tabular}
-\caption{Curvatures of the bottom vector $\xi_1$ and of the prolate trial $k_\lambda$ on certified cells (interval arithmetic). On the production
-schedule $N=m$ (first three rows) $\delta_m/T_m$ is a stable fraction, $0.35$--$0.39$; on the saturated wide window (last row) the bottom vector is the
-trial and $\delta_m$ vanishes.}\label{tab:jet}\end{table}
+\caption{Reported rounded diagnostics, with
+$\delta_{m,N}=\kappa(\xi_{m,N})-\kappa(q_{m,N})$,
+$p_{m,N}=1-|\langle\xi_{m,N},q_{m,N}\rangle|^2$ and
+$T_{m,N}=L^2(4\pi^2)^{-1}\sum_{k>N}k^{-2}$.
+Rows with small nonzero $p$ are closely aligned directions, not equal
+vectors. Small nonzero $\delta$ is not a vanishing theorem. Entries
+are rounded separately.}\label{tab:jet}
+\end{table}
 
-\begin{figure}[t]\centering\includegraphics[width=.6\linewidth]{figures/fig4_trial_jet.pdf}
-\caption{The trial second-jet constant $a_m$ against $1/m$ and the prediction \eqref{eq:trialjet}.}\label{fig:jet}\end{figure}
+\begin{figure}[t]\centering
+\includegraphics[width=.6\linewidth]{figures/fig4_trial_jet.pdf}
+\caption{Reported finite-trial second-jet coefficient $a_m$ against
+$1/m$, compared with the conjectural expansion \eqref{eq:trialjet}.}
+\label{fig:jet}\end{figure}
 
-\paragraph{What the wide windows cannot give.} It is tempting to read the saturation as a mechanism: if the bottom vector converges
-to the trial with bounded relative error $\eps_\infty=\|\xi_1-k_\lambda\|_2/\sqrt{\lambda_1}$ (Euclidean norm of the coefficient vectors in the
-prolate basis) on the wide schedule ($\eps_\infty=1.35,1.33$ on the saturated cells $(13,120)$, $(23,160)$), one would like to conclude $\mu_\lambda>0$ along the sequence. But $\mu_\lambda>0$ cofinally implies $\mu_\lambda\ge0$ for all
-$\lambda$ by the monotonicity of \cite{CCM-ZST-2025}, which is RH. Every premise of this kind is the conclusion in disguise. The numbers of this section are diagnostics for the location of the difficulty, not steps toward
-its removal.
+\paragraph{The relative statistic and the positivity boundary.}
+On cells where $\lambda_1(m,N)>0$, the reported values approximately
+$1.35$ and $1.33$ refer to
+\[
+ \frac{R_{m,N}(q_{m,N})}{\lambda_1(m,N)},\qquad
+ R_{m,N}(q)=\frac{\langle q,K(m,N)q\rangle}{\langle q,q\rangle},
+\]
+at $(13,120)$ and $(23,160)$. They do not refer to
+$\|\xi-q\|_2/\sqrt{\lambda_1}$, and they are not denoted by a
+continuum-limit subscript. A ratio inequality cannot be multiplied
+by an unknown-sign denominator to infer positivity.
+If nonnegativity of the true window bottoms were independently
+proved cofinally, CCM's monotonicity would imply nonnegativity on
+every fixed smaller window and hence the Weil criterion. Proving
+such a premise would be legitimate; assuming it would not be a
+proof. The finite observations here establish neither that premise
+nor a continuum saturation estimate.
