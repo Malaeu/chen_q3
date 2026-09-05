@@ -5344,3 +5344,12 @@ P_COUPLED_FINITE_STENCIL_NO_GO_SURVIVES 0.90, P_COUPLED_SPLITTING_JACOBIAN_SURVI
 P_COUPLED_RECTANGLE_DIV_REPAIR_SURVIVES 0.94 (мой sympy: RECT, DIV-POT точные; DIV-PLANT число 0.0595) — все события произошли на уровне
 агент+наблюдатель. Отчёт: `docs/routeB_bus/AGENT_REPORT_2026-09-05_GOAL058_COUPLED_C3_INDEPENDENT_AUDIT.md`. Статус C3.4: PAPER, дважды проверен
 (судья + независимый вывод), в Lean не формализован — и по ночному решению не формализуется, пока не появится механизм, которому это служит.
+
+## 2026-09-05 (утро 06.09) — два дефекта инструментов, найдены по ходу ответа владельцу, починены первыми
+
+1. `./ask.sh` печатал «ПОИСК НЕПОЛОН — semantic-index freshness validation failed» на каждый запрос: приёмник индекса от 03.09 (`source_commit 7e4c60d1`),
+   корпус ушёл вперёд на ~40 коммитов (`SEMANTIC_INDEX_CORPUS_STALE`). Корень: перестройку индекса никто не дёргал после вечера 03.09; ask.sh по контракту
+   только читает. Починка: `./orchestrator/spine.py --refresh --reason semantic-index-refresh` (3 мин 42 с), повторная валидация PASS.
+   Правило себе: после каждого дня с десятком коммитов в `docs/` — перестройка индекса, иначе полка молчит и «у нас этого нет» снова становится догадкой.
+2. Тот же прогон показал `TOOL_MANIFEST_INVALID: writer bind-request has no approval gate`: запись `bind-request` в `TOOLS.yaml` (моя, 03.09) имела
+   `writes: true` при `approval: NONE`, что валидатор манифеста запрещает. Починка: `approval: EXACT_WRITE_SCOPE` (пишет ровно PROSHKA_QUEUE.md).

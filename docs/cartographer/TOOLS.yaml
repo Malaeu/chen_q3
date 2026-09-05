@@ -367,7 +367,7 @@ tool_families:
         invoke: python3 orchestrator/bind_request.py <request.txt> --title "<queue title>" --predictions "<list>" --intake "<text>"
         trigger: Every judge request, right after the .txt is written; replaces the ad-hoc heredocs.
         writes: true
-        approval: NONE
+        approval: EXACT_WRITE_SCOPE
         authority: QUEUE_ENTRY_PLUS_REVIEW_PLAN_BINDING_PLUS_DELIVERY_LINE
         records_to: [docs/routeB_bus/PROSHKA_QUEUE.md, stdout]
         note: >-
