@@ -37,3 +37,11 @@ FULLCHAIN, SIGNFREE, PROVE (superseded), WEILPROOF (текст судьи, св�
 - /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/WALL_OBJECT_CARD_2026-09-03.md
 - /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/q3.lean.aristotle/Q3/Proofs/RouteB/WeilGramMinusShift.lean
 - /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/q3.lean.aristotle/Q3/Proofs/RouteB/P59SignFreeRitz.lean
+
+## Дополнение (день 05.09)
+- Второй проход WEILPROOF (8e4f2329): (DIV), (B), (PACKET-POS) на узких пакетах, (REC-FAIL); Lean `MangoldtDivisibilityEnergy.lean` зелёный (12-й файл).
+- XIDEV (2aa9dfc9): L1 (канонический тест, масштаб 4 к CCM (7.1)), L2 (радикал), L3 (GS) знаковая, L4 (конечный сертификат по простым), L5 (FM);
+  независимый аудит агента: все четыре предсказания судьи SURVIVE; `d_A = 1.3721834192` (моя печать 1.372178 была ошибкой).
+- Полка: ранние сертификаты Q3 (A-линия, ошибка конуса, Prime-препятствие, Step33, Track B LP) = объекты судьи; статья 2025 (кроссволк агента):
+  константы замыкания не переживают подстановки; словарь Фейер×тепло переиспользуем для (OPEN-OVERLAP).
+- Открыто: батч по (DOM)/(FM) на словаре Фейер×тепло; Lean-головы XIDEV (аналитика: Schwartz, явная формула — PAPER-импорт).
