@@ -805,7 +805,7 @@ Replace its displayed definition of C_q by the exact expression, with no numeric
  |\Q(f_0s_{q,R})|
  \le C_{\Xf}C_q^2e^{-2a_qe^{2R}},\qquad
  C_q^2=
- \frac{\frac{35}{3}M_0^2+rac43(M_1^2+c_\chi^2M_0^2)}{2a_q},
+ \frac{\frac{35}{3}M_0^2+\frac43(M_1^2+c_\chi^2M_0^2)}{2a_q},
  \quad c_\chi=2.
 \end{equation}
 ```
@@ -1249,7 +1249,7 @@ The replacements remove the unsupported use of the old author preprint and the b
 
 ## 5. Remaining checks, non-overclaim boundary, and one directive
 
-All required text-level defects above have replacements. In P07b, use the ordinary LaTeX numerator exactly as stated: the string is `(35/3)M_0^2+(4/3)(M_1^2+c_chi^2 M_0^2)`; do not preserve the old decimal equality. This review has not built the patched source. A source build and visual check are ordinary integration gates, not additional mathematical assumptions.
+All required text-level defects above have replacements. In P07b, use the ordinary LaTeX numerator exactly as stated: the string is `(35/3)M_0^2+(4/3)(M_1^2+c_chi^2 M0^2)`; do not preserve the old decimal equality. This review has not built the patched source. A source build and visual check are ordinary integration gates, not additional mathematical assumptions.
 
 **One directive:** apply P01-P13 to a working copy of the pinned paper, preserving theorem labels and the owner's sole authorship; build; read the paper once with the severity table; return only the changed source list, build output, unresolved-reference report, and a check that every displayed finite number is now labeled diagnostic unless accompanied by its actual enclosure. Do not edit the Lean source or reopen the RH route.
 
@@ -1334,3 +1334,85 @@ Primary texts checked for load-bearing external facts include CCM, arXiv:2511.22
 The original Bombieri and Yoshida complete scans, all numerical certificates, the thirteen-file build as a whole, and the manuscript's figure assets were not independently reverified. These limits are reflected in the replacements rather than hidden by an unconditional endorsement.
 
 Only the expected new verdict path is written, on rh_clean with a [Proshka] commit prefix. The request hash was independently recomputed from the fetched UTF-8 text, including its final LF. Read the verdict back at the returned commit and compare the changed-file list before intake. Its own commit SHA is returned in the delivery receipt, not embedded recursively in this file. The source manuscript, previous reports, queue, route state and Lean files remain untouched by this adjudication.
+
+## 9. Dated integration addendum — 2026-09-05, before delivery
+
+This addendum completes the literal application of F02, F04, F17 and F20 after reading the replacement anchors back against v3. The earlier verdict, probabilities and finding classification stand. Apply P14 in addition to P01-P13. These clauses specify deletions that must not survive a partial edit; they do not introduce a new analytic hypothesis or change the readiness decision.
+
+### P14a — replace the entire (eq:masses) display
+
+The old second equality `=1.1513 log_10(1/eps)+O(1)` is not an exact asymptotic: a nonzero error in the logarithmic coefficient cannot be absorbed into O(1). This is another instance of F02, not a new counted root cause. Replace the whole equation environment by:
+
+```latex
+\begin{equation}\label{eq:masses}
+\begin{aligned}
+ N_-&=\int_{t_0}^\infty b_-(t)C_0(t)dt\approx0.083642,\qquad
+ \sum_{n\ge2}w_nC_0(\log n)\approx0.037599,\\
+ \int_\eps^{t_0}b_+(t)C_0(t)dt
+ &=\tfrac12\log(1/\eps)+O(1)
+  =\frac{\log10}{2}\log_{10}(1/\eps)+O(1)
+   \qquad(\eps\downarrow0).
+\end{aligned}
+\end{equation}
+```
+
+The coefficient is exactly `(log 10)/2`; its optional numerical evaluation is only approximately 1.1512925465. Similarly, in Lemma 4.2 replace the sentence beginning `Thus t_0=...` by:
+
+```latex
+Thus $t_0=\log\pl\approx0.2811995743$. Since $1<\pl<2$,
+every prime-power distance $\log n\ge\log2$ lies strictly beyond
+$t_0$, where the continuous density is negative.
+```
+
+### P14b — remove the residual full-line measure wording
+
+P06b's insertion must not coexist with the old sentence `where tilde nu is the even extension to R of the signed measure`. Replace that sentence, immediately before (eq:nu), by:
+
+```latex
+where $\tilde\nu$ is obtained by reflection from the following
+signed Radon measure on $(0,\infty)$:
+```
+
+Keep P06b's punctured-line integral and its absolute-convergence definition. This resolves F04 without asserting a signed measure with locally finite mass at the origin.
+
+### P14c — the hypothesis concerns all rational translates
+
+Replace the paragraph immediately before Theorem 5.3, beginning `The theorem is best stated in the generality`, by:
+
+```latex
+The theorem is stated in an abstract form. Its analytic input is a
+positive continuous integrable function together with vanishing
+functional values on compact cutoffs of every rational translate.
+No positivity or quadratic-form property of the functional is
+assumed. The formal version uses a slightly weaker positive-part
+minorant hypothesis, as explained in \Cref{app:lean}.
+```
+
+In Example 5.7, immediately before its final sentence `Its positive factor is a global integral`, insert:
+
+```latex
+For each fixed $q$, dominated convergence gives
+$\int\chi_R(x)F(x-q)e^{-i\omega x}dx
+ \to e^{-i\omega q}\widehat F(\omega)=0$.
+Thus its translated cutoff values satisfy the hypothesis of
+\Cref{thm:nominorant}.
+```
+
+### P14d — do not re-import the discarded coercivity/finite-window comparison
+
+Replace the full paragraph following the proof of Proposition 5.9, beginning `For proof design this means`, by:
+
+```latex
+This excludes a fixed positive margin in the specified ambient
+$\Xf$ norm on a dense span. It does not exclude coercivity in a
+quotient norm, a margin depending on the window, or a sequence of
+vanishing error bounds. Finite eigenvalue observations are not used
+in this argument and are not a quantitative version of its
+$\Xf$-norm conclusion.
+```
+
+The title and proof of Proposition 5.9 remain unchanged. No conclusion about a quotient or about the sign of the Weil form is added.
+
+### Integration consistency note
+
+The actual v3 preamble defines the `problem` environment and all macros used by these replacements. Existing cross-referenced theorem labels were checked against `groundstate.tex` and `obstruction.tex`; the new `prob:DOM` in the fully replaced ledger is a new local label. Keep `sec:gs` on the unchanged groundstate section. All previous prediction probabilities and fates remain exactly as registered above; the added clauses are part of the required patch set for READY_AFTER_LISTED_FIXES.
