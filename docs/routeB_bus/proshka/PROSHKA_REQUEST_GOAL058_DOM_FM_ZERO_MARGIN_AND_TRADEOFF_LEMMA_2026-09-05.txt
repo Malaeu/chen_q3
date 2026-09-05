@@ -1,0 +1,82 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-05-DOMFM
+BOUNDARY_ID: GOAL058_DOM_FM_AT_ZERO_MARGIN_WITH_MARGIN_DENSITY_TRADEOFF
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-05-DOMFM (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub). Proof-construction task; maximum reasoning effort.
+DATE: 2026-09-05
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: PROPOSITION59_CCM_FINITE_BOTTOM_GROUND_FAMILY
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_PROOF_CONSTRUCTION_AND_ADVERSARIAL_REVIEW
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_DOM_FM_ZERO_MARGIN_AND_TRADEOFF_LEMMA_2026-09-05.md
+AUTHOR: Linux-Claude (observer); proof-attempt format (your WEILPROOF rules 0-7 apply verbatim); every number is the observer's arb/numpy computation on the literal CCM matrix or agent output re-verified by the observer
+PARENT_VERDICTS: XIDEV (2aa9dfc9; independent audit: all four of your predictions SURVIVE), WEILPROOF (b8b0dc95) and its continuation (8e4f2329), SIGNFREE (0cee3192)
+BASE_TIP: 149f6af5
+
+0. TASK (owner: publication-shaped, Lean-realizable; no third answer)
+ Attack the sign at ZERO margin, where XIDEV left it: (DOM) on the canonical-weighted differences, equivalently (FM) with a test-dependent cutoff.
+ Do not attempt a dense family with a uniform positive margin: it is impossible by the tradeoff lemma in section 2 (state and prove it first;
+ it is trivial and it retires a theorem shape, including the 2025 closure of the project's own paper). RESULT codes: PAPER_PROOF_CANDIDATE_COMPLETE /
+ PARTIAL_PROOF_WITH_PRECISE_REMAINDER / ATTEMPT_REFUTED_WITH_EXACT_COUNTEREXAMPLE. Lemmas with complete proofs; each with scope/verifier and a
+ Lean-ready head. If a mechanism fails, name the exact wrong inequality and keep what is proved. No RH, W, C, F, (P-), (DOM), (FM) as premises.
+
+1. SHELF (sha256 prefix 16 at BASE_TIP 149f6af5; 12 Lean files of the front KERNEL_GREEN on [propext, Classical.choice, Quot.sound])
+ docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_WEIL_POSITIVITY_AROUND_XI_PROOF_2026-09-05.md   93db2de635782191
+ docs/routeB_bus/AGENT_REPORT_2026-09-05_GOAL058_XIDEV_INDEPENDENT_AUDIT.md (independent re-derivation of L1-L4 from CCM/CC; all SURVIVE)   b2914990a93020bf
+ docs/routeB_bus/proshka/PROSHKA_VERDICT_WEILPROOF_CONTINUATION_ARITHMETIC_PACKETS_AND_DENSITY_2026-09-05.md   c3d682730194a117
+ docs/routeB_bus/phase5_codex/overlap_dictionary.py (Probe 25)   19909b0d11ac1108
+ docs/Progress_Log.md   f84064ed2e39ff0d
+ q3.lean.aristotle/Q3/Proofs/RouteB/MangoldtDivisibilityEnergy.lean ((DIV), (B) with Mathlib's constant)   b88e05747c715212
+ q3.lean.aristotle/Q3/Proofs/RouteB/WeilGramMinusShift.lean   65ca4b3429b51614
+ docs/routeB_bus/litreview/MALAMUTMANN2025_Q3_USAGE_CARD.md (the project's 2025 paper; Fejér×heat dictionary Thm 6.2)   a507457f114f42f2
+
+2. THE MARGIN-DENSITY TRADEOFF (observer; trivial; prove and type it; it fixes the target)
+ For any finite-dimensional subspace V of the form domain and the Xi-row y (or the ground xi, or the canonical f_0 after projection), with d = dist(y, V)/||y||:
+   lambda_min(Q|_V) <= Q(P_V y)/||P_V y||^2 <= R(y) + 2||Q|| d + ||Q|| d^2,   R(y) = Q(y)/||y||^2.
+ R(y) is 8e-21, 1e-36, 1e-78 on m = 13, 23, 43 (the Xi-row's Weil energy), hence any family dense enough to approximate y to accuracy d has a
+ positivity margin at most O(d). Probe 25 (Fejér×heat atoms Lambda_B(x-x_k) rho_t(x-x_k) on a uniform grid, compressed on the literal full CCM matrix
+ K_{m,m}, three cells, 90 configurations): measured (lambda_min, dist(y,V)) pairs follow the law: m=13: (0.12, 0.78), (3e-3, 0.23), (1e-4, 3e-2), (2e-11, 1.3e-2),
+ (0, 7e-7); m=23: (7.6e-2, 0.86), (1.5e-4, 9.7e-2), (1.3e-11, 3.9e-3); m=43: (8.4e-2, 0.93), (1.3e-4, 0.21), (5.3e-6, 7.7e-3), (1.1e-8, 2.5e-3).
+ Two consequences to state as theorems: (i) OPEN-OVERLAP "dense family with uniform margin c > 0" is impossible (theorem shape dead); (ii) the
+ 2025 paper's closure (dense Fejér×heat cone + lambda_min(T_M[P_A] - T_P) >= c_0*/2 > 0 uniformly) is contradictory independently of its constants.
+ The only live form is zero margin: lambda_min(Q|_V) >= -e_V with e_V -> 0 along a dense family — i.e. (FM) — or (DOM) directly.
+ Numerical content of (FM) at zero margin: on all 90 configurations and three cells NO negative lambda_min beyond double zero (>= -2e-15).
+
+3. WHAT XIDEV ESTABLISHED (PAPER, independently audited): f_0 = 4E(h)(e^x)/A with F f_0 = Xi/A (scale-4 repair of CCM (7.1)); B(f_0, v) = 0 for all v in X;
+ (GS) Q(f_0 r) = int_0^inf b(t) E_r(t) dt + sum_n w_n E_r(log n), E_r(t) = int f_0(x) f_0(x+t) |r(x+t) - r(x)|^2 dx >= 0, b = k - e^{t/2} signed with
+ nu([log 7/5, log 8/5]) <= -(43/168) log(8/7); (DOM): sum_n w_n E_r(log n) + int b_+ E_r >= int b_- E_r for all compact smooth r; the dense class E_a;
+ (SP)/(TAIL-S)/(CERT)/(PCUT); (FM). Plant: radical != minimum.
+
+4. THE CHAIN TO BUILD
+ D1 (tradeoff lemma) as in section 2, with a Lean head over finite matrices (K symmetric, V a subspace, y a vector): lambda_min(V^T K V, V^T V) <= (y^T K y)/||y||^2 + 2||K|| d + ||K|| d^2.
+ D2 (DOM at second order). For r = 1 + eps s, s in C_c^inf, E_r(t) = eps^2 int f_0(x) f_0(x+t) |s(x+t) - s(x)|^2 dx + O(eps^3)? — exact: E_r is exactly quadratic in s
+    (no higher order), so (DOM) is a statement about the quadratic form D(s) := int b(t) E_s(t) dt + sum w_n E_s(log n) >= 0 on all compact smooth s (this is
+    Q(f_0 s) >= 0 by (GS)). Write D(s) in the Fourier variable: E_s(t) = int f_0(x) f_0(x+t) |s(x+t) - s(x)|^2 dx; expand |s(x+t) - s(x)|^2 and express D(s) as
+    <s, T s> with an explicit kernel T(x, x') built from f_0, b and the prime atoms. Is T (the "canonical-weighted Weil operator") positive? Equivalent to W, but the
+    kernel is explicit: give its exact form, its diagonal (the "b_- versus w_n + b_+" balance pointwise), and the first inequality that would prove T >= 0:
+    e.g. a Schur test with the weight f_0, or diagonal dominance in a basis adapted to f_0 (Hermite-type functions times f_0?). Name the first place it fails.
+ D3 (FM on a concrete dense family with zero margin). Take the Fejér×heat dictionary (or the CCM Fourier modes themselves) and the literal finite matrix;
+    prove or refute: lambda_min(V_M^T K V_M, V_M^T V_M) >= -e_M with e_M -> 0 as the family exhausts, for the family that recovers fixed tests (A1' + (REC));
+    identify which finite object controls e_M — this is (GAP-GRAM) again; say exactly what is new when V_M is the dictionary rather than the full mode span.
+ D4 (assembly / first remaining inequality) with explicit objects, domain and budget; what an interval certificate must enclose.
+
+5. FORBIDDEN: WEILPROOF rules 5; plus: dense family with uniform margin (dead by D1); replacing E_r by arbitrary nonnegative functions; dropping b_-;
+ any numerical value as a step; any spectral-gap operator norm.
+
+6. REQUIRED VERDICT: header with RESULT code and CLOSES/OPENS; D1-D4 with complete proofs and Lean heads; score the observer's predictions without editing;
+ register your own for independent checks; no Lean edit, no numerical run, no RH claim; write only the expected verdict document.
+
+REGISTERED PREDICTIONS (K6, observer)
+  P_D1_TRADEOFF_PROVED_AND_TYPED_LEAN_READY: 0.90
+  P_D2_EXPLICIT_KERNEL_T_WRITTEN: 0.70 -- the canonical-weighted operator T is written explicitly with its diagonal balance.
+  P_D2_POSITIVITY_TEST_IDENTIFIED: 0.30 -- a concrete positivity test (Schur/diagonal dominance) is named with its first failure point.
+  P_D3_ZERO_MARGIN_REDUCES_TO_GAP_GRAM: 0.80 -- D3 is shown equivalent to (GAP-GRAM) with nothing new from the dictionary.
+  P_RESULT_COMPLETE: 0.02; P_RESULT_PARTIAL: 0.88; P_RESULT_REFUTED: 0.10.
