@@ -128,6 +128,7 @@ Only after 1–5 does a candidate get a number on the caches or a batch to the j
   the sign of (8) on the class is now the positivity of ONE compact operator 𝒯 (11) on the moment-null subspace of L²(I). The semilocal angle inverse is gone:
   k₂ = |1 − re^{−iaξ}|²⟨w_ξ, G⁻¹w_ξ⟩ with the Euler Gram G ∈ [(1−r)², (1+r)²]. True k₂ ≥ 0; our negative band was the truncation (dropped modes, tail constant 1).
   Plant: 𝔪_♯ = 𝔪 − δ_M exactly. Smallest theorem so far: classwide minorant identity; a finite certificate needs the ledger (38) with the rigorous tail (31)–(32).
+  Second judge (57a35797, independent): same decisions; adds 𝔪 = F + Σ C_n, C_n ≥ 0 with explicit tail — the sign as a sum of positives (rule 18). Both versions: 0.0035 is a diagnostic, not a certificate.
 
 ## 6. Standing rule
 
