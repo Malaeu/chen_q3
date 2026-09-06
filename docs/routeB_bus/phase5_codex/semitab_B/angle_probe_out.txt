@@ -1,0 +1,9 @@
+N=  512 arch Umax=16.0 dimP=na counts>1e-2,1e-3,1e-6,1e-8: 4,5,7,8  |alpha| at n=5,10,20,30,40,60: 0.0001 nan nan nan nan nan
+N=  512 semi Umax=16.0 dimP=na counts>1e-2,1e-3,1e-6,1e-8: 20,21,25,26  |alpha| at n=5,10,20,30,40,60: 0.4739 0.3911 0.0026 nan nan nan
+N= 1024 arch Umax=22.6 dimP=na counts>1e-2,1e-3,1e-6,1e-8: 4,5,7,8  |alpha| at n=5,10,20,30,40,60: 0.0001 nan nan nan nan nan
+N= 1024 semi Umax=22.6 dimP=na counts>1e-2,1e-3,1e-6,1e-8: 27,27,31,34  |alpha| at n=5,10,20,30,40,60: 0.4609 0.3624 0.2168 0.0000 nan nan
+N= 2048 arch Umax=32.0 dimP=na counts>1e-2,1e-3,1e-6,1e-8: 4,5,7,8  |alpha| at n=5,10,20,30,40,60: 0.0001 nan nan nan nan nan
+N= 2048 semi Umax=32.0 dimP=na counts>1e-2,1e-3,1e-6,1e-8: 36,37,41,43  |alpha| at n=5,10,20,30,40,60: 0.4463 0.3411 0.2499 0.2458 0.0000 nan
+N= 4096 arch Umax=45.3 dimP=na counts>1e-2,1e-3,1e-6,1e-8: 4,5,7,8  |alpha| at n=5,10,20,30,40,60: 0.0001 nan nan nan nan nan
+N= 4096 semi Umax=45.3 dimP=na counts>1e-2,1e-3,1e-6,1e-8: 46,49,54,57  |alpha| at n=5,10,20,30,40,60: 0.4395 0.3294 0.2462 0.2149 0.1090 nan
+EXIT 0
