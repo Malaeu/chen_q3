@@ -14,6 +14,22 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-07-SCALARFLOOR · Scalar floor lemma d_S <= 2Re(gamma t_S); semilocal conditioning (two near-unit angles); plant by test; smallest theorem · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SCALAR_FLOOR_AND_SEMILOCAL_CONDITIONING_2026-09-07.txt`
+- Boundary: `GOAL058_SCALAR_FLOOR_LEMMA_AND_SEMILOCAL_CONDITIONING`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: Evaluator of (6) built: d_inf exact, d_2 above xi~16; floor lemma verified; m(h)=+0.0134 (frozen), +0.024..0.026 (h_2,h_4); two judges receive the same line
+- Registered predictions: FLOOR_LEMMA_THEOREM 0.85; SCALAR_CONDITION_ON_CLASS 0.30; SCALAR_CONDITION_ON_SUBCLASS 0.50; TWO_UNIT_ANGLES_SOURCE_FEATURE 0.65; STABLE_REPRESENTATION 0.50; K2_NEGATIVE_IS_TRUNCATION 0.80; PLANT_TEST_DEPENDENCE_EXPECTED 0.60; SMALLEST_THEOREM_IS_FINITE_TEST 0.70
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `9a61c748c465c94cda3f35d754bd00b08cb75e36` / `14243` / `111` /
+  `727572551491e9a4374172c24ba1c2b7d16224f8f0263bc0bcd97a5ac5d3cbc7` /
+  `fbfc4ce550a5716a77415b589cfd33d4631a919b` / `yes`
+
+---
+
 ## REQ-2026-09-06-RESONANCE · Reservoir resonance: amplitude law of k_2 - q/2pi, scaling with the prime, shaping h · ANSWERED
 
 - `STATUS: ANSWERED` — verdict `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_RESERVOIR_RESONANCE_AND_PRIME_SCALING_2026-09-06.md`, commit `5549cceb`, 810 lines (a second judge session may add another version; captures kept); Q1a PROVED: exact arithmetic symbol k_S = q_S/2π + d_S with q_S = q_∞ − 2Σ_p a_pΣ_j r_p^j cos(j a_p ξ) (Lemma 1, (4)); leading periodic term k_p − k_∞ = −(log p/π)Σ_j p^{−j/2}cos(jξ log p) + O_p(|ξ|^{−1/2}) (Thm 4, (16)–(17)) — first harmonic amplitude a_p r_p/π; d_∞ = O(ξ^{−2}), ∫d_∞ = 0 (no global k_∞ ≤ q_∞/2π); Mellin/resolvent evaluator (6),(10)–(14) with explicit tails; Q1c: exact phase marginal — pushforward of |ĥ|² to the circle is Haar for supp h shorter than a (Lemma 5, (20)); 𝔪(h) = −∫W_h d_2 (21): the atom w is EXACTLY reproduced by the first Euler harmonic (∫(1−cos θ)g_2 = w) — the whole sign is the nonperiodic angle density d_2: R-SIGN ∫W_h d_2 ≤ 0 open; Q2 REFUTED: no log p advantage — ν_{log p}(h_T) → −w_p on the high-modulation family (25)–(27), the prime-uniform C·p^{−1/2} bound is false; Q3a PROVED: dip mass fraction = (β − sin β)/π exactly (28), minus-phase fraction in the leading positive bands = ¼ − 1/(π√2) (29); all-odd-lattice zeros force h = 0; Q3b: notch polynomial P = 2 + z − z²: P(−1) = 0, atom (log2/3)(1 − 1/√2) > 0 (31), max a r² under the notch (33), but the leading reservoir penalty equals the atom for every P (34) — favourable full reservoir needs (35), unproved; (36): false-factor plant refutes whole-class survival (𝔪_♯(h_T) → −δ_M); predictions: AMPLITUDE_NONDECREASING CONFIRMED (harmonics persist), PRIME_SCALING_RP REFUTED, UNCERTAINTY_NOGO PARTIAL (dips proved), LOBE_POLYNOMIAL_HELPS CONFIRMED as written, RESONANCE_ALWAYS_ADVERSE UNRESOLVED (R-INC); observer's K2 on the fine arrays: first cosine coefficient over complete periods −0.134/−0.146/−0.152 at X = 20/60/120 vs target −0.156, falls off at X ≥ 200 (carrier limit, as warned); (28) confirmed to 3 digits; (31) exact
