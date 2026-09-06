@@ -95,8 +95,16 @@ Only after 1–5 does a candidate get a number on the caches or a batch to the j
   compact, not Hilbert–Schmidt (lacunary kernel), in every Schatten class q > 2 — no nonzero plateau, no 1/n tail; but after a smooth compact test all
   pieces of the split are ordinary trace class (Theorem 4 closes the trace-domain gap). R1 is retained as (R1−): for h ∈ C_c^∞(−δ₀, δ₀) pole-null,
   n(A₋h) ≤ L₂(A₋h) at T = W = 1 — an infinite-dimensional class; first unproved inequality (8): n₀ − ν_a ≤ A₀ + J_a + w. Plant: the false local factor
-  shifts e(v₋) by δ_M = 0.02087; survival of the sign needs margin > δ_M. Next: reconcile the base function h between the two implementations (K2),
-  then the one-sided packet matrix (10) on 𝒞₋^{00}.
+  shifts e(v₋) by δ_M = 0.02087; survival of the sign needs margin > δ_M. K2 done: implementation B's test values exact, A's void.
+  **PHASEPROOF (4a29f389, 2026-09-06):** (8) neither proved nor refuted. The remaining sign is now one explicit integral identity (12):
+  𝔪(h) = L₂(v₋) − n₂(v₋) = w + H⁻¹∫(1 − cos aξ)|ĥ(ξ)|²(q_∞(ξ)/2π − k_2(ξ))dξ ≥ 0 on the pole-null class 𝓗₀₀(I) = (∂² − ¼)C_c^∞(I) (exact bijection),
+  with k_2 the spectral density of the semilocal Sonin range (source-defined, from prolate data and the Euler multiplier) and q_∞ the archimedean
+  multiplier; the equality is proved, the sign is RESEARCH_DEBT. Killed: the CCM q-series Jacobi matrix as our Gram G (indefinite vs positive);
+  projection-free inversion (factor 9 plant); the source-linear one-copy crosswalk «HS-square of the two-thirds matrix = one Weil value» (second-difference
+  plant); the transfer of J_a > 0 to complex tests. Correct crosswalk to the two-thirds method: tensor square (30) and the polarized matrix split
+  W = N_S − E_S + Π (33) with a height tail; the off-diagonal prime moment is spread over quadratic and mixed terms (34) — Hardy–Littlewood necessity not
+  proved either way. Next prime: S = {∞, 2, 3} needs the whole new projector and a mixed 2×2 condition (27) beyond the two two-lobe inequalities.
+  Judge's single bounded test: certified two-generator packet (15)–(19) with a SEPARATE carrier error, or CARRIER_OR_COMPLEMENT_ERROR_UNRESOLVED.
 - **Policy note (judge §8, recorded, not adopted by the observer alone):** the judge holds that §4.1 («an RH-equivalent target is filed away without
   investigation») is not mathematically justified — equivalence says nothing about accessibility to a method; circularity is using the equivalent as a
   premise, not reaching it as a conclusion; «only identities reach zero margin» is not a theorem. Adopted by the owner 2026-09-06: rule 15 rewritten — the discriminator is «brings a new object (positive-by-construction or zero-independent computable part + exact remainder)», not RH-equivalence; §4.2–4.5 stay mandatory.
