@@ -81,7 +81,7 @@ Only after 1–5 does a candidate get a number on the caches or a batch to the j
   blocks, which pair-of-projections theory does not supply. The judge rejects «coordinate again» for this candidate: there is structural gain.
 - **Policy note (judge §8, recorded, not adopted by the observer alone):** the judge holds that §4.1 («an RH-equivalent target is filed away without
   investigation») is not mathematically justified — equivalence says nothing about accessibility to a method; circularity is using the equivalent as a
-  premise, not reaching it as a conclusion; «only identities reach zero margin» is not a theorem. Owner's rule 15 stands until the owner rules.
+  premise, not reaching it as a conclusion; «only identities reach zero margin» is not a theorem. Adopted by the owner 2026-09-06: rule 15 rewritten — the discriminator is «brings a new object (positive-by-construction or zero-independent computable part + exact remainder)», not RH-equivalence; §4.2–4.5 stay mandatory.
 - R1 (COUPLED): a nonlocal positive factor on f₀s with proved annihilation of the radical — no candidate formula exists beyond the two named above.
 - R2 (COUPLED/ZG): cutoff-dependent Gram certificates K_m + e_m I ⪰ 0 with e_m → 0 and proved recovery — no rule for e_m exists.
 - The frame reading of WEILPROOF (i): K = Γ − c_L I − 2ββ*, i.e. the prime atoms and short shifts form a frame whose optimal lower bound is c_L.
