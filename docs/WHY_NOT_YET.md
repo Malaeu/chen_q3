@@ -84,8 +84,11 @@ Only after 1–5 does a candidate get a number on the caches or a batch to the j
   finite packet, not proved on the frozen-cutoff log-3 class. Proved: sign on high-modulation packets at large Sonin cutoff (12); E > 0 on wide bumps
   (17); translation invariance (15); explicit pole-null two-bump falsifiers (14). Q2: the 1999 window-minus-image construction is not specializable by
   the finite-Euler map (no two-sided window; W_Λ S_S = 0); C99 Lemma 3 already computes a harmonic-measure limit — the exact comparison to prove is
-  e^{iγx−|σ||x|} vs cosh(σx). Q3: atom allocation still open; a calibrated finite contrast (25) is specified. Observer's finite table (two independent
-  implementations) running on the judge's falsifiers.
+  e^{iγx−|σ||x|} vs cosh(σx). Q3: atom allocation still open; a calibrated finite contrast (25) is specified.
+  **Table (two independent implementations, 2026-09-06, `SEMILOCAL_SIGN_TABLE_COMPARISON_2026-09-06.md`):** (24) is FALSE on the support-matched class —
+  E_S > 0 on every positive bump and on the canonical cutoffs; E_S < 0 robustly only on antisymmetric two-bump combinations across log 2 (the sign is a
+  phase property through the prime 2, the one lead); the bare Sonin trace is neither minorant nor majorant; the judge's falsifier v₊ is UNRESOLVED at the
+  accuracy reached; both implementations see a non-decaying semilocal angle spectrum (D_S may not be trace class). Diagnostic, not a proof.
 - **Policy note (judge §8, recorded, not adopted by the observer alone):** the judge holds that §4.1 («an RH-equivalent target is filed away without
   investigation») is not mathematically justified — equivalence says nothing about accessibility to a method; circularity is using the equivalent as a
   premise, not reaching it as a conclusion; «only identities reach zero margin» is not a theorem. Adopted by the owner 2026-09-06: rule 15 rewritten — the discriminator is «brings a new object (positive-by-construction or zero-independent computable part + exact remainder)», not RH-equivalence; §4.2–4.5 stay mandatory.
