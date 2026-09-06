@@ -14,6 +14,22 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-06-SECONDEXPR · REQ-2026-09-06-SECONDEXPR · Goal 058: the SECOND EXPRESSION — construct a nonlocal operator T with Q(f_0 s) = ‖Ts‖² (written without zeros, annihilating the whole radical), under the WHY_NOT_YET §4 filter, plants and the Lagarias discriminator; three result codes; «this is RH» rejected · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SECOND_EXPRESSION_NONLOCAL_POSITIVE_FACTOR_2026-09-06.txt`
+- Boundary: `GOAL058_SECOND_EXPRESSION_NONLOCAL_POSITIVE_FACTOR`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: COUPLED verdict (R1 named, not attempted); PAPERCLEAN; WHY_NOT_YET.md (nine coordinates, zero-margin facts, filter); Probe 27 laws (Q(T) archimedean factor; ln(1/R_ax)=9.7m; T_cert~12m); Lagarias–Suzuki card (two-term dominance = zero-free line only; GUE-rigidity discriminator); owner's word: «Пишем батч Прошке»
+- Registered predictions: P_SE_COMPLETE 0.02; P_SE_PARTIAL_WITH_NEW_REMAINDER 0.45; P_SE_CLASS_REFUTED 0.40; P_SE_YOSHIDA_REPRODUCED 0.70; P_SE_PLANT_CAUGHT 0.80
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `76602859b88cecf4f36e888e7c209930b2da30fd` / `9961` / `96` /
+  `d804c31ee94265a17d1b2db285f4680563e7cf1863b60ae38f1eff357ffe87a2` /
+  `769b607d1637b41fe6a1bd0cf15367d884b5aac0` / `yes`
+
+---
+
 ## REQ-2026-09-05-PAPERCLEAN · REQ-2026-09-05-PAPERCLEAN · Paper 1 (Weil positivity around the canonical test, draft v3): full adversarial clean-up by the judge — every remaining defect with verbatim replacement text; attribution/priority check; Lean-statement match; arXiv readiness · ANSWERED
 
 - `STATUS: ANSWERED` — verdict `docs/routeB_bus/proshka/PROSHKA_VERDICT_PAPER1_WEIL_POSITIVITY_CANONICAL_TEST_FULL_ADVERSARIAL_CLEANUP_2026-09-05.md`, commit `da9236c8`; RESULT `READY_AFTER_LISTED_FIXES` (v3 as submitted NOT_READY); 0 CRITICAL / 9 HIGH / 7 MEDIUM / 3 LOW / 1 WORDING; core SURVIVES (Riemann normalisation, cutoff argument, radical containment after convolution-envelope repair, GS identity, finite-stencil obstruction, countable SOS obstruction, no fixed X-margin); NOT_ESTABLISHED and removed: no arbitrary SOS, no localisation of Sonin minorant, indefiniteness of Q; b(t) = prior-art component (differentiate Suzuki (1.3)); all P01–P13 replacements applied verbatim 2026-09-05 (observer), build clean 16 pp.; predictions: NO_CRITICAL 0.75 CONFIRMED, HIGH_LE_2 0.55 REFUTED (9), PRIORITY_HIT 0.35 CONFIRMED_WITH_SCOPE, ARXIV_READY_AFTER_FIXES 0.60 CONFIRMED, LEMMA_3_3_OR_4_1_FIX 0.45 CONFIRMED
