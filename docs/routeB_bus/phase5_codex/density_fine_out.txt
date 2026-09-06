@@ -1,0 +1,9 @@
+Parseval: H from |hhat|^2 grid = 1.524055e+08  vs exact 1.643423e8  (ratio 0.92737)
+L2(v-) = w + (1/2piH)∫(1-cos a xi)|hhat|^2 q  = 3.575961   (mpmath exact 3.927236)
+N=4096 (33s): n2(v-) via k_semi = 3.217221 (B diag 3.5877)  n_inf(v-) via k_arch = 2.992223   m(h) = L2 - n2 = +0.3587 (B diag +0.340)
+  local maxima of k_semi (xi<80): [14.75 22.   24.25 30.5  33.5  39.   41.   42.75 47.75 50.   52.   56.75
+ 59.   61.25 65.75 68.   70.25 74.75 77.75 79.5 ]
+  odd multiples of pi/log2: [ 4.53 13.6  22.66 31.73 40.79 49.86 58.92 67.99 77.05]
+  zeros of (1-cos a xi) at 2pi k/log2: [ 9.06 18.13 27.19 36.26 45.32 54.39 63.45 72.52]
+  split of the (12) integral: positive part +0.1015, negative part -0.2329, w = 0.4901
+EXIT 0
