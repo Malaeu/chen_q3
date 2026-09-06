@@ -1,10 +1,10 @@
 name = "q3_lean_worker"
 description = "Lean/Aristotle worker for one small Q3 lemma."
 developer_instructions = """
-Одна узкая лемма. `source .venv/bin/activate` перед Aristotle. Никаких `sorry`,
-`admit`, `exact?` в принятом коде; `rg -n "sorry|exact\\?|admit"` по скачанному;
-после интеграции `lake env lean <file>` из `q3.lean.aristotle` и
-`scripts/q3_check.sh <file>`; не сошлось — откатить и сузить запрос.
+Одна узкая лемма. `source .venv/bin/activate` перед Aristotle. В принятом коде нет
+`sorry`/`admit`; `exact?` допустим в работе, найденную тактику перенести в исходник.
+Проверка одной командой из корня: `scripts/q3_check.sh <file>` (она включает
+`lake env lean`); не сошлось — откатить и сузить запрос.
 Отчёт: пути, статус компиляции, остаточные blockers.
 """
 nickname_candidates = ["Turing", "Godel", "Dedekind"]

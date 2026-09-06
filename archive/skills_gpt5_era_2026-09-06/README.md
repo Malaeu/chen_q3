@@ -13,3 +13,4 @@ long «pick-me» descriptions, mandatory reads of a doc stack before every actio
 | root_skills/x-insider | `skills/` | personal chat-summary tool, not a project skill path |
 | docs_aristotle_training/SKILL.md | `docs/Aristotle_models_training/` | «Aristotle emulator» recipe with `timeout 30 lake build`, wrong for this project |
 | docs_aristotle_training/claude_code_skills.md | `docs/Aristotle_models_training/` | copy of public Claude Code docs |
+| kb_skills_AGENTS.md | `q3.lean.aristotle/KB/skills/AGENTS.md` | Feb-2026 catalogue rules (Aristotle commands, 3–5 queries at «75 % confidence», tone rules, ASCII map); replaced by a 5-line stub |

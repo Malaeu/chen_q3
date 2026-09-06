@@ -53,9 +53,12 @@ for target in "${normalized_targets[@]}"; do
   lake env lean "$target"
 
   echo "scan $target"
-  if rg -n 'sorry|exact\?|admit' "$target"; then
+  if rg -n 'sorry|admit' "$target"; then
     echo "hole marker found in $target" >&2
     exit 1
+  fi
+  if rg -n 'exact\?' "$target"; then
+    echo "warning: exact? is a library search, not a hole; move the found tactic into the source before acceptance ($target)" >&2
   fi
 
   if git -C "$ROOT" diff -- "$Q3_ROOT/$target" | rg -n '^\+.*\baxiom\b'; then
