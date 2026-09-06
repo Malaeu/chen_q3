@@ -14,6 +14,22 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-06-SEMITABLE · Sign table to the judge: phase class across log 2, trace class of D_S, what R1 is now · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SEMILOCAL_TABLE_PHASE_CLASS_2026-09-06.txt`
+- Boundary: `GOAL058_SEMILOCAL_TABLE_PHASE_CLASS_AND_TRACE_DOMAIN`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: Two-implementation sign table done: (24) false on the class; robust E_S<0 only on antisymmetric two-bump tests; pole-null triple unresolved; non-decaying semilocal angles
+- Registered predictions: PHASE_CLASS_IS_RANGE_OF_I_MINUS_U 0.45; PHASE_CLASS_SURVIVES_PLANT 0.55; D_S_NOT_TRACE_CLASS 0.60; ANGLES_ACCUMULATE_AT_ZERO_SLOWLY 0.50; R1_RESTATED_ON_PHASE_CLASS 0.50; R1_CLOSED 0.30
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `1cf04954049cc0e9817d4d5e9723ae7a66ac7b69` / `12101` / `109` /
+  `4733b97580cbcd93e72c80828dbe5cc5c50a2a3ad32598de6a33d562b9fbd5cd` /
+  `4cb0d9b8ecb28d124f90946a47986eaf8f29ce86` / `yes`
+
+---
+
 ## REQ-2026-09-06-SEMISIGN · Semilocal split: sign mechanism of E_S, 1999 window-minus-image obstruction, prime allocation · ANSWERED
 
 - `STATUS: ANSWERED` — verdict `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SEMILOCAL_SIGN_MECHANISM_2026-09-06.md`, commit `59aabc18`; Q1 PARTIAL_WITH_PRECISE_REMAINDER: exact weighted angle criterion (4) e = Σ a_n(‖T_v e_n⁺‖² − ‖T_v e_n⁻‖²) − ℓ‖v‖²; one-sided inverse series 0 < R_d ≤ G⁻¹ ≤ R_d + ε_d, q = 2√2/3 (7); finite-test-space matrix certificate (10); sign theorem on high-modulation packets at large Sonin cutoff (12); wide-bump E > 0 theorem (17); translation invariance (15); pole-null two-bump falsifiers (14); frozen-cutoff log-3 class NOT proved; Q2 OBSTRUCTION_NAMED: condition (a) of C99 Thm 5 = r_Λ(h) → 0, inclusion alone does not compute it; C99 Lemma 3 computes a harmonic-measure limit (my «nothing beyond Poisson» refuted); finite-Euler J_S does not preserve a two-sided window; W_Λ S_S = 0 (19); Q3 COMPUTATION_SPECIFIED: total singular dictionary (20)–(22), first projection derivative (23), calibrated atom contrast (25)–(27); source corrections: CCM23 Def 4.5/Thm 4.6 not a commuting-prolate theorem; C99 Thm 5 printed first for positive characteristic; predictions: MECHANISM_NAMED CONFIRMED_FINITE_CLASS_ONLY, R2_OBSTRUCTION_IS_RH CONFIRMED with scope repair, SIGN_HOLDS_ON_TABLE PENDING, PRIMES_IN_SONIN_TRACE UNRESOLVED; judge's forecasts on our table registered (§8)
