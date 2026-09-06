@@ -105,6 +105,12 @@ Only after 1–5 does a candidate get a number on the caches or a batch to the j
   W = N_S − E_S + Π (33) with a height tail; the off-diagonal prime moment is spread over quadratic and mixed terms (34) — Hardy–Littlewood necessity not
   proved either way. Next prime: S = {∞, 2, 3} needs the whole new projector and a mixed 2×2 condition (27) beyond the two two-lobe inequalities.
   Judge's single bounded test: certified two-generator packet (15)–(19) with a SEPARATE carrier error, or CARRIER_OR_COMPLEMENT_ERROR_UNRESOLVED.
+  **RESONANCE (5549cceb):** the Sonin density has the exact symbol k_S = q_S/2π + d_S: its periodic part reproduces the prime atoms EXACTLY (first Euler
+  harmonic amplitude log p/(π√p); ∫(1 − cos θ)g_p = w_p), so «reservoir vs atom» cancels at the symbol level and the whole sign of the phase class is the
+  nonperiodic angle density d_S = O(|ξ|^{−1/2}): R-SIGN ∫W_h d_2 ≤ 0 on the pole-null short class — open. No log p advantage (uniform C·p^{−1/2} refuted).
+  The phase marginal of a short test is Haar (shaping cannot move mass between phases; dip fraction (β − sin β)/π exact). Lobe polynomials can notch the
+  peak with a positive atom (2 + z − z²), but the leading reservoir penalty equals the atom for every polynomial. Observer's fine arrays confirm the
+  amplitude law (first cosine coefficient → −0.156) within the carrier's valid range. Next: source-exact evaluator of d_2 by Mellin integrals (no carrier).
 - **Policy note (judge §8, recorded, not adopted by the observer alone):** the judge holds that §4.1 («an RH-equivalent target is filed away without
   investigation») is not mathematically justified — equivalence says nothing about accessibility to a method; circularity is using the equivalent as a
   premise, not reaching it as a conclusion; «only identities reach zero margin» is not a theorem. Adopted by the owner 2026-09-06: rule 15 rewritten — the discriminator is «brings a new object (positive-by-construction or zero-independent computable part + exact remainder)», not RH-equivalence; §4.2–4.5 stay mandatory.
