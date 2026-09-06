@@ -14,9 +14,9 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-06-SEMISIGN · Semilocal split: sign mechanism of E_S, 1999 window-minus-image obstruction, prime allocation · OPEN
+## REQ-2026-09-06-SEMISIGN · Semilocal split: sign mechanism of E_S, 1999 window-minus-image obstruction, prime allocation · ANSWERED
 
-- `STATUS: OPEN`
+- `STATUS: ANSWERED` — verdict `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SEMILOCAL_SIGN_MECHANISM_2026-09-06.md`, commit `59aabc18`; Q1 PARTIAL_WITH_PRECISE_REMAINDER: exact weighted angle criterion (4) e = Σ a_n(‖T_v e_n⁺‖² − ‖T_v e_n⁻‖²) − ℓ‖v‖²; one-sided inverse series 0 < R_d ≤ G⁻¹ ≤ R_d + ε_d, q = 2√2/3 (7); finite-test-space matrix certificate (10); sign theorem on high-modulation packets at large Sonin cutoff (12); wide-bump E > 0 theorem (17); translation invariance (15); pole-null two-bump falsifiers (14); frozen-cutoff log-3 class NOT proved; Q2 OBSTRUCTION_NAMED: condition (a) of C99 Thm 5 = r_Λ(h) → 0, inclusion alone does not compute it; C99 Lemma 3 computes a harmonic-measure limit (my «nothing beyond Poisson» refuted); finite-Euler J_S does not preserve a two-sided window; W_Λ S_S = 0 (19); Q3 COMPUTATION_SPECIFIED: total singular dictionary (20)–(22), first projection derivative (23), calibrated atom contrast (25)–(27); source corrections: CCM23 Def 4.5/Thm 4.6 not a commuting-prolate theorem; C99 Thm 5 printed first for positive characteristic; predictions: MECHANISM_NAMED CONFIRMED_FINITE_CLASS_ONLY, R2_OBSTRUCTION_IS_RH CONFIRMED with scope repair, SIGN_HOLDS_ON_TABLE PENDING, PRIMES_IN_SONIN_TRACE UNRESOLVED; judge's forecasts on our table registered (§8)
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SEMILOCAL_SIGN_MECHANISM_2026-09-06.txt`
 - Boundary: `GOAL058_SEMILOCAL_SIGN_MECHANISM_AND_PRIME_ALLOCATION`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
