@@ -1,0 +1,109 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-06-SEMITABLE
+BOUNDARY_ID: GOAL058_SEMILOCAL_TABLE_PHASE_CLASS_AND_TRACE_DOMAIN
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-06-SEMITABLE (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub). The observer's finite sign table (two independent implementations) is on the shelf; score your §8 forecasts against it, then answer three questions: the class selected by the relative phase across log 2, the trace-class status of D_S under a non-decaying semilocal angle spectrum, and what R1 is now; maximum reasoning effort; cite the arXiv versions listed in the shelf.
+DATE: 2026-09-06
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SECOND_EXPRESSION
+SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_PROOF_CONSTRUCTION_AND_ADVERSARIAL_REVIEW
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SEMILOCAL_TABLE_PHASE_CLASS_2026-09-06.md
+AUTHOR: Linux-Claude (observer) on the owner's word («A»)
+PARENT_VERDICTS: SEMISIGN (59aabc18; independent check d25cf67ac3f66c71: no error, notes N1–N4), SEMILOCAL (3242ada9), OPENSGN (9a7a3a9c), COUPLED (6b103bd1), WEILPROOF (b8b0dc95)
+BASE_TIP: see bind line
+
+0. THE TABLE (two independent implementations, DIAGNOSTIC_NEVER_A_PROOF; read the COMPARISON first, then A and B)
+ Setup: S = {∞, 2}, λ = 1 (T = W = 1, ℓ = 0), your objects (3)–(9), (11); E and N computed by separate code paths; L_S by quadrature (two paths, 1e−12);
+ both machines passed the known-answer checks (Slepian λ_n(2π) to 1e−14 (A) / 1e−7 (B); Halmos plant −3/5 exact; ‖B_S‖ ∈ [a_S, b_S]; Q(v_R) = 0 to 1e−15;
+ P_02 = 2|C|² − 2|S|² to machine precision). A: self-dual DCT-I physical carrier, N = 3200, Richardson in δ, both F_S variants (src = JFJ⁻¹ and a polar
+ regularisation), exact spectral route for the archimedean pair. B: physical DCT-I carrier, N = 8192, F_S via the halving operator, Sonin projector from
+ subspaces, error bars from translation defect + symmetrisation.
+ AGREED BY BOTH: (i) E_S > 0 on every single smooth bump in the window (b = 0.05…0.5), on shifted copies, on two-bump (+), and on the canonical cutoffs
+ v_R (E ≈ +1.5); (ii) E_S < 0 ROBUSTLY on the antisymmetric two-bump tests h_b(x − a/2) − h_b(x + a/2), a = log 2: A −0.043…−0.081 (both variants, all
+ three λ), B −0.042/−0.056; (iii) Q(v_R) − N_S(k_R) < 0 on canonical cutoffs (A −4.57e−4, B −1.45e−3): your (21) reproduced twice; (iv) wide bump b = 3:
+ E > N > 0 (your (17)); (v) CC20 theorem control (S = {∞}, ∫v = A₊ = A₋ = 0, supp ⊂ [−a/2, a/2]): the theorem is respected by the reliable route in both
+ (A: exact spectral E_∞ < 0 on all six, E/N ∈ [−0.198, −0.014]; B: Q ≥ N_∞ with margin 0.02–0.47 on all eight); (vi) the DIRECT block-trace E is unreliable
+ on rough tests in both (B: +0.03…+0.10 where the theorem forces ≤ −0.02…−0.47; A: carrier flips sign on the four roughest theorem tests) — cause: the
+ ζ_n tails ~1/u cut at U_max; (vii) the semilocal angle spectrum does NOT decay: A plateau ≈ 0.4 with 69–78 blocks |α_n| > 1e−6 at λ = 1 (vs 7 for F_∞),
+ B 41 blocks with tail 0.655, 0.580, 0.477, 0.446, …; (viii) N_S is tiny on narrow smooth bumps (≈ 4e−4…8e−4 at b = 0.2) against E_S ≈ 0.4–0.5;
+ (ix) an irreducible semilocal model error from truncating the half-line (A: ‖JFJ⁻¹ − VFV*‖ = 0.43 not decaying; B: ‖WᵀW − I‖ = 0.249).
+ NOT AGREED — UNRESOLVED: your pole-null triple v₊, v₋, v_i (14). A: absolute carrier error 0.77–1.1 on this class, semilocal sign UNRESOLVED, archimedean
+ exact E_∞ = −0.0046 (all three, i.e. ≈ 0 within 0.2% of N_∞ ≈ 3.6). B: claims resolution from Q − N_S with bar ≈ 1e−2 (v₊ E = +0.022, v₋ −0.340,
+ v_i −0.159) — the observer does NOT accept B's bar on a class where B's own direct E was off by 0.5, and the two machines do not agree on L_S of the
+ same-named tests (A 2.04/3.02/2.53, B 2.95/3.93/3.44: different constructions of w). Also unresolved: h_b e^{i10x}.
+
+1. SCORING OF YOUR §8 FORECASTS (SEMISIGN) — do it yourself against the table, the observer's reading is:
+ P_WIDE_BUMP_E_POSITIVE_FOR_B3_4_6 (0.99): CONFIRMED at b = 3 in both; b = 4, 6 not representable on A, confirmed on B.
+ P_NARROW_SINGLE_BUMP_E_POSITIVE (0.65): CONFIRMED in both; exact guard (equal values at ±a/2) holds (A bit-identical, B to 0.1% for N).
+ P_CANONICAL_CUTOFF_R1/R2_E_POSITIVE (0.85/0.90): CONFIRMED in both (E ≈ +1.50 (A), +1.56 (B)).
+ P_POLE_NULL_TWO_BUMP_FALSIFIER_RATIO (0.40, 0 < E/N < ¼ for v₊): UNRESOLVED (A: 0.16 ± 0.25; B: 0.0074 with a bar the observer rejects).
+ P_FALSIFIER_RANKS_ABOVE_PHASE_CONTROLS (0.55): UNRESOLVED for the same reason; note both machines put v₊ above v₋ and v_i in E/N.
+ Observer's P_SIGN_HOLDS_ON_TABLE (0.45): REFUTED — (24) fails on 21 of 26 tests (B) / on all positive bumps (A).
+
+2. QUESTION 1 — THE PHASE CLASS
+ The only robust E_S < 0 directions are antisymmetric combinations across log 2: h(x − a/2) − h(x + a/2). Symmetric ones (+) give E_S > 0; the three
+ pole-null tests differ ONLY in the relative phase (+, −, i) and have identical ‖v‖ and 𝒟(v). In your dictionary (SEMILOCAL (13)–(14)) the prime-2 term
+ is −2w₂C_v(log 2) with C_v(a) = +½ / −½ / 0 for +/−/i. So the sign of E_S tracks the sign of the prime-2 correlation with the OPPOSITE orientation:
+ negative correlation (antisymmetric) ⇒ E_S < 0 ⇒ Q ≥ N_S. (a) Is there a named subspace here: the −1 eigenspace of the shift-reflection
+ v ↦ v(x + a)… on the window, or the odd part under x ↦ −x composed with the shift by a, or the range of (I − U_a) on tests supported in [−a/2, a/2]
+ (i.e. B_S-type images)? Write the exact class 𝒞₋ suggested by the table, in your objects, and its relation to B_S = I − 2^{−1/2}U_a of Lemma 1.
+ (b) On 𝒞₋, is E_S ≤ 0 provable? Note that the prime term is POSITIVE on 𝒞₋ (L_S larger), so the wanted inequality N_S ≤ L_S is EASIER there; give the
+ mechanism or the first unproved inequality with objects and budget. (c) The complementary fact: on symmetric tests the Sonin trace is three orders of
+ magnitude too small (N_S ≈ 4e−4 vs E_S ≈ 0.4 at b = 0.2). Explain from the projector (11) why N_S collapses on narrow smooth bumps inside the window
+ (is it the position cutoff λ = 1 killing everything supported in x ≤ 0, so that N_S only sees the part of ϑ(k) leaking past the cutoff?), and whether a
+ different cutoff placement (T ≠ W, or λ < 1) makes the split non-vacuous on the symmetric class. (d) Kill test: build the plant — the same construction
+ with the prime 2 replaced by the false local factor of SEMILOCAL (22)–(23) — and say whether the phase class 𝒞₋ is still distinguished; if the sign on 𝒞₋
+ survives the plant, the class is archimedean, not arithmetic.
+
+3. QUESTION 2 — TRACE CLASS OF D_S
+ Both machines see a non-decaying semilocal angle spectrum (plateau ≈ 0.4, 40–78 blocks; the archimedean one has 7). Your split (4)–(9) and Lemma 1 of
+ SEMISIGN rest on «the ordinary smooth-test trace-class realization used for the parent split» (checker's note N1: imported, not proved). (a) Prove or
+ refute: for S = {∞, p}, the angle operator P_λ F_S P_λ is compact but NOT Hilbert–Schmidt / NOT trace class (Σα_n² or Σ|α_n| diverges), i.e. D_S is not
+ trace class and Tr(ϑ(f)D_S) needs a regularisation. Use the explicit multiplier of F_S (Lemma 1) and the structure of the pair. (b) If D_S is not trace
+ class: which of (4)–(9), (3) of SEMISIGN, and the identity L_S = N_S − E_S survive in a regularised sense, and which regularisation is forced by the
+ source trace formula (22) (the trace there is over L²(Y_S)^{K_S} with ϑ(f), f ∈ C_c^∞ — is ϑ(f)(I − P − Q) trace class by itself, and does the split
+ into S_S and D_S preserve that)? (c) Quantitative: the observed plateau ≈ 0.4 — predict the asymptotics of α_n for the semilocal pair (do the angles
+ accumulate at a nonzero value, at 0 with 1/n decay, or at 0 faster) and the number of blocks above 1e−6 as a function of λ and of the carrier length;
+ the observer will check it numerically on the existing machines.
+
+4. QUESTION 3 — WHAT IS R1 NOW
+ Given: (24) is false on the class; the bare Sonin trace is neither minorant nor majorant; the sign lives in the phase across log 2; the pole-null
+ falsifier is undecided. State R1 as a proof target again, with its class, its quantifiers, and what a proof would give (a Thm-7.1-type inequality on
+ which support? with which constraints?), or declare it CLOSED as a route and say what replaces it (R2 of SEMILOCAL; the calibrated atom contrast (25);
+ something else). «This is RH» is not an answer; «the class is empty» must come with a proof.
+
+5. SHELF (sha256 prefix 16 at BASE_TIP; arXiv versions on disk in docs/routeB_bus/litreview/pdfs/)
+ 6668972843ca2f92  docs/routeB_bus/SEMILOCAL_SIGN_TABLE_COMPARISON_2026-09-06.md   (READ FIRST: agreed / unresolved / what the table decides)
+ a2f8a588ef211b16  docs/routeB_bus/SEMILOCAL_SIGN_TABLE_A_2026-09-06.md            (394 lines; both F_S variants; exact spectral archimedean route)
+ 981f048352a53b0b  docs/routeB_bus/SEMILOCAL_SIGN_TABLE_B_2026-09-06.md            (635 lines; §10 is the corrected reading from Q − N_S)
+ scripts and raw JSON: docs/routeB_bus/phase5_codex/semitab_A/, semitab_B/
+ d25cf67ac3f66c71  docs/routeB_bus/SEMISIGN_INDEPENDENT_CHECK_2026-09-06.md         (notes N1–N4: trace domain imported; certificate degree ≈ 131; (12) sign is archimedean)
+ fd52a7b2cd01ca54  PROSHKA_VERDICT_GOAL058_SEMILOCAL_SIGN_MECHANISM_2026-09-06.md · ece45e22518a1395  PROSHKA_VERDICT_GOAL058_SEMILOCAL_SONIN_SECOND_EXPRESSION_2026-09-06.md
+ caefc700370547e7  docs/WHY_NOT_YET.md
+ PDFs: 2006.13771v1 (24 Jun 2020) · 2106.01715v1 (3 Jun 2021) · 2310.18423v2 (4 May 2024) · 2602.04022v1 (3 Feb 2026) · math/9811068v1 (10 Nov 1998)
+
+6. REGISTERED PREDICTIONS (K6, observer; frozen)
+  P_PHASE_CLASS_IS_RANGE_OF_I_MINUS_U: 0.45 — the class 𝒞₋ is (up to closure) the image of tests under (I − U_a)-type operators, i.e. B_S-images with the
+     prime weight, and E_S ≤ 0 on it follows from a single Halmos-block sign.
+  P_PHASE_CLASS_SURVIVES_PLANT: 0.55 — the sign on 𝒞₋ survives the false-local-factor plant (class is archimedean, not arithmetic).
+  P_D_S_NOT_TRACE_CLASS: 0.60 — for S = {∞, p} the angle operator is compact but not trace class; the split needs regularisation.
+  P_ANGLES_ACCUMULATE_AT_ZERO_SLOWLY: 0.50 — α_n → 0 like a power of 1/n (no nonzero accumulation point); the plateau is a finite-carrier effect.
+  P_R1_RESTATED_ON_PHASE_CLASS: 0.50 — you restate R1 on 𝒞₋ (not CLOSED).
+  P_R1_CLOSED: 0.30 — you close R1 and move to R2 / atom contrast.
+
+7. KILLED / FORBIDDEN: everything in SEMILOCAL and SEMISIGN «must not recur»; RH-conditional inputs; numerics as proof steps; treating the table as a theorem;
+ asserting the sign of v₊ from either machine alone; the bare fixed-S minorant.
+
+8. REQUIRED VERDICT: header with RESULT per question ∈ {PROVED_ON_CLASS, PARTIAL_WITH_PRECISE_REMAINDER, OBSTRUCTION_NAMED, COMPUTATION_SPECIFIED,
+ CLOSED} and CLOSES/OPENS; §1 scoring of your own forecasts (no editing of probabilities); Q1(a)–(d), Q2(a)–(c), Q3 in full with proofs where claimed;
+ the numerical prediction of Q2(c) explicit enough for a script; register your own predictions; the cheapest decisive check (K2); no Lean edit, no
+ numerical run, no RH claim; write only the verdict.
