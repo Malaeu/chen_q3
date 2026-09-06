@@ -1,0 +1,96 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-06-SECONDEXPR
+BOUNDARY_ID: GOAL058_SECOND_EXPRESSION_NONLOCAL_POSITIVE_FACTOR
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-06-SECONDEXPR (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub). Proof-construction task in your WEILPROOF rules 0-10; maximum reasoning effort; your own R1 of COUPLED, now attempted, not named.
+DATE: 2026-09-06
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SECOND_EXPRESSION
+SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_PROOF_CONSTRUCTION_AND_ADVERSARIAL_REVIEW
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SECOND_EXPRESSION_NONLOCAL_POSITIVE_FACTOR_2026-09-06.md
+AUTHOR: Linux-Claude (observer) on the owner's word («Пишем батч Прошке»); the owner's aim: «нам нужно найти одно доказуемое из миллиарда — второе тождество для той же величины, как у Вейля индекс Ходжа»
+PARENT_VERDICTS: COUPLED (6b103bd1), PAPERCLEAN (da9236c8), DOMFM (002ad66e), XIDEV (2aa9dfc9), WEILPROOF (b8b0dc95, 8e4f2329), FULLCHAIN (660a072c)
+BASE_TIP: 93171b35
+
+0. TASK
+ Construct the SECOND EXPRESSION. For the canonical test f_0 = Φ/‖Φ‖ (Ff_0 = Ξ/A) and compact smooth complex s, the Weil form is
+   Q(f_0 s) = ∫_0^∞ b(t) E_s(t) dt + Σ_{n≥2} (Λ(n)/√n) E_s(log n),   E_s(t) = ∫ f_0(x) f_0(x+t) |s(x+t) − s(x)|² dx,
+   b(t) = e^{−5t/2}/(1 − e^{−2t}) − e^{t/2} (sign change at the plastic number), radical ⊇ {U_q f_0} ∪ {f_0 * h}.
+ Produce a linear operator T (explicit; nonlocal is allowed and expected) with
+   (SE)   Q(f_0 s) = ‖T s‖²_H   for all s ∈ C_c^∞,   H a concrete Hilbert space,
+ such that T is defined WITHOUT reference to the zeros of Ξ and without assuming their reality, and such that T annihilates the whole radical
+ (T(U_q f_0 / f_0 · χ_R) → 0 as R → ∞ for every q; T(f_0 * h / f_0 · χ_R) → 0). Weil's criterion then gives RH. This is your R1 of COUPLED; the
+ request is to ATTEMPT it, not to name it. Three admissible outcomes (your WEILPROOF codes): PROOF_CANDIDATE_COMPLETE (T constructed, (SE) proved,
+ radical annihilation proved); PARTIAL_WITH_PRECISE_REMAINDER (T constructed for an explicit part, the exact unpaid quadratic form R(s) = Q(f_0 s) − ‖Ts‖²
+ with its kernel and its sign undecided, and the FIRST inequality that would close it, with objects/domain/budget); ATTEMPT_REFUTED_WITH_EXACT_COUNTEREXAMPLE
+ (a theorem that no T of the class you specify exists — with the class stated exactly and the obstruction identified, as in COUPLED C3.4).
+ A fourth answer «this is RH» is REJECTED: (SE) ⟺ RH is known (Douglas factorisation / Weil); the task is the formula and the proof, not the equivalence.
+
+1. ADMISSION FILTER (docs/WHY_NOT_YET.md §4, sha256 f9a7c9ab32fbf138) — every candidate T must pass, in order, before any estimate:
+ F1 NOT A COORDINATE: T is not obtained from a known RH-equivalent (Li, Lagarias/Herglotz, Sondow–Dumitrescu/W_y, Rouché cover, de Branges/Hermite–Biehler,
+    Jensen/Laguerre, CCM windows, Lagarias two-term dominance) by a dictionary; if it is, say so and stop.
+ F2 SECOND-EXPRESSION SHAPE: ‖Ts‖² is manifestly ≥ 0, written without zeros; T nonlocal; T kills the whole translated radical (Theorem 5.3 of the paper,
+    Lean-checked core in NoFiniteStencilMinorant.lean sha 130d9c20367161f3: no fixed finite-stencil T exists).
+ F3 PLANTS: the same construction applied to (1+16z²)cos 8z and to B(z)(2+cos 4z) (both with nonreal zeros in the strip) and to the mean-prime surrogate
+    Λ(n) → 1 (NEG, WEILPROOF) must FAIL to give ≥ 0. State where it fails for each. A T that "works" on a plant is dead.
+ F4 YOSHIDA WINDOW: for tests supported in a window shorter than log 2, ‖Ts‖² must reproduce the proved positivity (Yoshida 1992; Bombieri 2000 §12)
+    with its known margin; show the reduction.
+ F5 EXACT CONSTANT: T carries c_A = γ + log 8π + π/2 (or d_A = c_A − 4) exactly; no free «C».
+ F6 (Lagarias discriminator, card sha 72c6975e843f5645): if T is built from a two-term shift combination F(s+c) ± F(s−c), its zero statistics are rigid
+    unit spacing (Lagarias 2006 Thm 4.1), contradicting GUE — such T is a coordinate; reject.
+
+2. SHELF (sha256 prefix 16 at BASE_TIP 93171b35)
+ docs/WHY_NOT_YET.md   f9a7c9ab32fbf138   (one statement / nine coordinates; zero-margin facts; missing second identity; filter)
+ paper_weil/sections/setup.tex        faefd45b3ad905ba   (form (Q), (EF), control space X, C_X = |c_A|+14)
+ paper_weil/sections/groundstate.tex  bcf3e6f57d971158   (Theorem 4.1 (GS), Lemma 4.2 plastic number, Cor 4.3 (DOM))
+ paper_weil/sections/obstruction.tex  b06d0a4ec1cb6f06   (Lemma 5.1 budget, 5.2 independence, Thm 5.3 general no-minorant, Cor 5.4/5.5, Prop 5.9)
+ PROSHKA_VERDICT_GOAL058_COUPLED_..._2026-09-05.md   e51a0e6327e93f31   (C3.4; R1/R2 named; SIGNED-ZERO correction)
+ PROSHKA_VERDICT_GOAL058_DIRECT_WEIL_SOURCE_PROOF_2026-09-04.md   adac65cdd6381821   (K = Γ − c_L I − 2ββ*; 𝒬 = 𝒥 − d_A‖g‖² + 𝒮; NEG; PACKET-POS)
+ PROSHKA_VERDICT_GOAL058_WEIL_POSITIVITY_AROUND_XI_PROOF_2026-09-05.md   93db2de635782191   ((GS), radical, envelope)
+ PROSHKA_VERDICT_PAPER1_..._CLEANUP_2026-09-05.md   8f819b4adafbc948   (scope corrections: no-SOS ≠ no-finite-stencil-SOS; Sonin minorant restricted class)
+ q3.lean.aristotle/Q3/Proofs/RouteB/NoFiniteStencilMinorant.lean   130d9c20367161f3   (KERNEL_GREEN: independence of translates; Fatou; no positive finite-stencil minorant)
+ docs/routeB_bus/phase5_codex/rouche_tcert.py   03ea5f9933fa9705   (Probe 27)
+
+3. STATE OF THE WALL, WITH NUMBERS (all DIAGNOSTIC)
+ - Margin exactly zero: E_-/E_+ → 1 on translated cutoffs of f_0 (Prop 5.9); ∂_y|Ξ|²/|Ξ|² → 0 between zeros as y → 0 (0.002 at y = 0.02); Λ ≥ 0 (Rodgers–Tao).
+ - Probe 27 (2026-09-06, arb, three cells): the ground transform F_m of window m satisfies, on the far side of any rectangle, Q(T) = 1 − exp(−a_m T²/m)
+   with a_m → 1/(16π) (the archimedean factor of the prolate trial) to 1 %; its axis remainder obeys ln(1/R_ax) ≈ 9.7·m (three cells within bins:
+   T_cert(13) ∈ [140,160), T_cert(23) ∈ [260,280), T_cert(43) ∈ [520,540)); the Rouché certificate of window m covers heights ≈ 12 m. F_m vanishes at every
+   zeta zero to the leakage scale (|F(γ_k)/F(0)| = 5e-20 … 3e-30 at m = 13). Reading: same-family axis convergence at rate e^{−9.7 m} — the Route B
+   supplier measured, not proved; with normality it would be RH. Not a mechanism.
+ - Masses on f_0: N_- = 0.083642, prime atoms 0.037599, positive part ½log(1/ε) — masses do not decide (DOM).
+ - Plane-wave symbol: Q(f_0 e^{iξx}) = A^{-2} Σ_z conj(Ξ(z̄−ξ)) Ξ(z−ξ); complex squares without RH (SIGNED-ZERO).
+
+4. KILLED (do not propose again without a new invariant): local finite-stencil SOS of any size/diameter (C3.4); uniform margin on dense families (TRADE, Prop 5.9);
+ absolute Schur with any weight (SCHUR-KILL; demoted to remark but the strategy is dead by UV divergence); mean-prime surrogate (NEG); separate estimates of the
+ three parts; plane-wave diagonal positivity as sufficient; Fourier-positivity of finite theta truncations (kink d_M > 0 ⇒ negative tail; living chat 2026-09-06);
+ two-term shift dominance with h < ½ (Lagarias: needs β = ½); every coordinate in WHY_NOT_YET §1.
+
+5. WHAT YOU ARE ALLOWED TO CHANGE: the Hilbert space H (any concrete space: L² of a product space, a direct integral over frequencies, a space over
+ primes × ℝ, a Krein-space completion of E_+ with E_- as a contraction — Douglas: (SE) ⟺ E_- ≤ E_+ ⟺ D_- = C D_+ with ‖C‖ ≤ 1; if you use C, GIVE ITS FORMULA
+ and prove the bound; on the radical C must be an isometry, and the informative tests are the compact ones of the Yoshida window, not the cutoffs).
+ State where the difficulty moves after your choice.
+
+6. FORBIDDEN: RH-conditional inputs; «by positivity there exists T» (circular); numerical values as proof steps; renaming (a new symbol for the unpaid
+ remainder is not a result); any T that is a coordinate under F1/F6; treating finite-window bottoms as certificates.
+
+7. REGISTERED PREDICTIONS (K6, observer; frozen)
+  P_SE_COMPLETE: 0.02 — (SE) constructed and proved.
+  P_SE_PARTIAL_WITH_NEW_REMAINDER: 0.45 — a nonlocal T paying an explicit part of E_- (beyond the Yoshida window), with the remainder's kernel written.
+  P_SE_CLASS_REFUTED: 0.40 — a theorem that a stated natural class of nonlocal T (e.g. all T diagonal in frequency; all T of Sonin-compression type on the
+    full class) cannot satisfy (SE); with the exact obstruction.
+  P_SE_YOSHIDA_REPRODUCED: 0.70 — whatever T is produced reproduces the proved short-support positivity with its margin (F4 passes).
+  P_SE_PLANT_CAUGHT: 0.80 — the judge exhibits, for at least one candidate, the exact place where a plant would pass and therefore rejects it (F3 works).
+
+8. REQUIRED VERDICT: header with RESULT code and CLOSES/OPENS; the candidate T with formula, H, and the proof of (SE) or the exact remainder R(s);
+ F1–F6 answered for every candidate considered (including rejected ones, with one line each); score the predictions without editing; register your own for
+ independent checks; Lean-ready heads only for finite/algebraic parts; no Lean edit, no numerical run, no RH claim; write only the expected verdict document.
