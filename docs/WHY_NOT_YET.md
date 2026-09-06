@@ -79,6 +79,13 @@ Only after 1–5 does a candidate get a number on the caches or a batch to the j
   (22) lacks the pole term P_02 of the full form; Connes 1999's S_Λ is a window projection, not Sonin; the finite-Euler image is not the global E(f).
   What remains is one inequality in explicit source data: E_S(k⋆k*) ≤ 0 (or ≤ P_02) on a support-matched class — the sign of the integrated Halmos
   blocks, which pair-of-projections theory does not supply. The judge rejects «coordinate again» for this candidate: there is structural gain.
+  **SEMISIGN (59aabc18, 2026-09-06):** the sign is now an explicit weighted comparison e_λ(v) = Σ_n a_n(‖T_v e_n⁺‖² − ‖T_v e_n⁻‖²) − ℓ‖v‖², with
+  a proved one-sided inverse series for the Sonin Gram (q = 2√2/3 at p = 2) giving a finite-test-space matrix certificate (10) — checkable on a
+  finite packet, not proved on the frozen-cutoff log-3 class. Proved: sign on high-modulation packets at large Sonin cutoff (12); E > 0 on wide bumps
+  (17); translation invariance (15); explicit pole-null two-bump falsifiers (14). Q2: the 1999 window-minus-image construction is not specializable by
+  the finite-Euler map (no two-sided window; W_Λ S_S = 0); C99 Lemma 3 already computes a harmonic-measure limit — the exact comparison to prove is
+  e^{iγx−|σ||x|} vs cosh(σx). Q3: atom allocation still open; a calibrated finite contrast (25) is specified. Observer's finite table (two independent
+  implementations) running on the judge's falsifiers.
 - **Policy note (judge §8, recorded, not adopted by the observer alone):** the judge holds that §4.1 («an RH-equivalent target is filed away without
   investigation») is not mathematically justified — equivalence says nothing about accessibility to a method; circularity is using the equivalent as a
   premise, not reaching it as a conclusion; «only identities reach zero margin» is not a theorem. Adopted by the owner 2026-09-06: rule 15 rewritten — the discriminator is «brings a new object (positive-by-construction or zero-independent computable part + exact remainder)», not RH-equivalence; §4.2–4.5 stay mandatory.
