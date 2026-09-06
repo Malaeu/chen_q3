@@ -14,6 +14,22 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-06-RESONANCE · Reservoir resonance: amplitude law of k_2 - q/2pi, scaling with the prime, shaping h · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_RESERVOIR_RESONANCE_AND_PRIME_SCALING_2026-09-06.txt`
+- Boundary: `GOAL058_RESERVOIR_RESONANCE_AMPLITUDE_AND_PRIME_SCALING`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: PHASEPROOF intaken; density map of (12) done: Sonin density resonates with cos(xi log 2) in phase with the lobe weight; cosine law (7) confirmed by B's three values
+- Registered predictions: AMPLITUDE_NONDECREASING 0.50; RESONANCE_ALWAYS_ADVERSE 0.60; PRIME_SCALING_RP 0.55; UNCERTAINTY_NOGO 0.65; LOBE_POLYNOMIAL_HELPS 0.30
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `3aa3a3430a09710861ebd65a304b75ff1a817732` / `11016` / `94` /
+  `1893d5e08e8f10430c0247964f43a3b273afb4514868ab8e5ed4e85e99c05692` /
+  `afc7271739fa067a9ee81ee8d91cb6b5022c2e1c` / `yes`
+
+---
+
 ## REQ-2026-09-06-PHASEPROOF · Prove (8) on the phase class; crosswalk of the Sonin energy to the two-thirds residual · ANSWERED
 
 - `STATUS: ANSWERED` — verdict `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_PHASE_CLASS_INEQUALITY_AND_MOLLIFIER_CROSSWALK_2026-09-06.md`, commit `4a29f389`, 888 lines; Q1 PARTIAL: (8) neither proved nor refuted; delivered: exact bijection η ↦ (∂² − ¼)η onto the pole-null class (Lemma 1); variance identity n₀ − ν_a = ‖(I − U_a)Z‖²/(2H) (5); explicit spectral kernel k_2(ξ) with ν_a = H⁻¹∫cos(aξ)|ĥ|²k_2 (8b); cancellation-preserving sandwich (10); FIRST UNRESOLVED SIGN (12): 𝔪(h) = w + H⁻¹∫(1 − cos aξ)|ĥ|²(q_∞/2π − k_2)dξ ≥ 0 on 𝒉_00(I); cutoff-leakage identity (13a); plants: projection-free inverse (13) factor 9; J_a < 0 for odd h; false factor δ_M exact (20), M_p with log p > a + 2δ gives Q = 2log p‖v‖² (21): restricted-class detection limit; DH: OBJECT_CROSSWALK_MISSING; NoFiniteStencil does not apply automatically to the restricted class; three-lobe extension S = {∞,2,3}: matrix D (24)–(27), prime power 4 must be kept, mixed condition (27) necessary; Q1b: CCM q-series Jacobi ≠ G (indefinite unbounded vs positive bounded) — REFUTED; runnable packet spec (15)–(19) with separate carrier error; Q2: HS-square of the two-thirds matrix is a TENSOR-square (30), source-linear one-copy crosswalk REFUTED by second difference (31); correct dictionary = polarized matrix split W = N_S − E_S + Π (33); off-diagonal prime moment distributed through quadratic/mixed terms (34), not one piece of E; Hardy–Littlewood necessity not proved; request repairs: my (8) lower-bound sign reversed in Q1(a); my R(ψ_MT) had an extra ½ ((37) proves R = ½ + (1/√2)cot(1/√2) = 1.32748); predictions: NU_A_KERNEL CONFIRMED (spectral), CCM_IS_GRAM REFUTED, 8_PROVED / SUBCLASS REFUTED as batch output, CROSSWALK_A source-linear REFUTED, DH and HL UNRESOLVED; directive: certified two-generator packet (15)–(19) with carrier error, or CARRIER_OR_COMPLEMENT_ERROR_UNRESOLVED; route_score 3
