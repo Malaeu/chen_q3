@@ -1,0 +1,71 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-06-OPENSGN
+BOUNDARY_ID: GOAL058_OPEN_SIGNED_TIME_KERNEL_IDENTITY
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-06-OPENSGN (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub). Proof-construction task in your WEILPROOF rules 0-10 on the single identity (OPEN) you named in SECONDEXPR-B; maximum reasoning effort.
+DATE: 2026-09-06
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SECOND_EXPRESSION
+SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_PROOF_CONSTRUCTION_AND_ADVERSARIAL_REVIEW
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_OPEN_SIGNED_TIME_KERNEL_IDENTITY_2026-09-06.md
+AUTHOR: Linux-Claude (observer) on the owner's word («Да!! Го»)
+PARENT_VERDICTS: SECONDEXPR-B (b1efb9e1 + readback 5aeecbc8), COUPLED (6b103bd1), XIDEV (2aa9dfc9), WEILPROOF (b8b0dc95)
+BASE_TIP: see bind line
+
+0. THE ONE IDENTITY (your (OPEN), SECONDEXPR-B §8, with the readback budget of §10)
+ Objects, all explicit and zero-free (SECONDEXPR-B §3, §8): the signed-time Volterra data a_t(r) = sgn(t)·1_{(min(0,t),max(0,t))}(r), b_t(r) = g′(t−r)a_t(r),
+ A_t = F_-a_t, B_t = F_-b_t; the bounded real-axis multipliers ω = X²/(X²+X′²), η = XX′/(X²+X′²); V_sgn(t,u) = (1/π)∫[ω(B_t conj B_u − A_t conj A_u) +
+ iη(A_t conj B_u − B_t conj A_u)]dx; K_norm^{sgn}(t,u) = |t| + |u| − |t−u| + V_sgn(t,u); the arithmetic distribution T = −g_ξ″ =
+ −½Pf(1/|t|) − (γ_E + log 2π)δ_0 − Σ_{n≥2} w_n(δ_{log n} + δ_{−log n}) + r_*(t)dt, r_*(t) = 2cosh(t/2) − a(|t|) + 1/(2|t|), r_*(0) = 7/4 (17).
+ TASK: prove, in D′(ℝ²),   (OPEN)   ∂_t∂_u V_sgn(t,u) = T(t−u) − 2δ(t−u),   without RH and without the RH orthonormal basis (Prop. 4.1 of Suzuki),
+ i.e. evaluate the ω- and η-weighted Fourier products in V_sgn to ALL terms on the right: the finite part, the δ_0 constant, every prime atom, and r_*.
+ Three admissible outcomes: PROOF_CANDIDATE_COMPLETE (⇒ ⟨ψ,ψ⟩_W = π^{-1}‖P̂^{sgn}_{Dψ}‖² ≥ 0 on C_c^∞ ⇒ Weil ⇒ RH — state the assembly, do not skip it);
+ PARTIAL_WITH_PRECISE_REMAINDER (the terms of the right side that ARE reproduced from V_sgn with complete proofs — e.g. the finite part and the δ_0 constant
+ from the ω-part, or the prime atoms from the η-part — and the EXACT unreproduced distribution with domain and local budget); ATTEMPT_REFUTED_WITH_EXACT_
+ COUNTEREXAMPLE (a theorem that the ω/η-weighted evaluation cannot produce a named term without the real-zero input — name the term and the step).
+ «This is RH» and «by Theorem 1.4 it suffices» are REJECTED. The printed even-time object is dead (SECONDEXPR-B Lemmas 1–2); only the signed object is in scope.
+
+1. REQUIRED STRUCTURE OF THE ATTEMPT
+ (a) Reduce ∂_t∂_u of each of the three integrals in V_sgn to explicit kernels: ∂_t A_t = sgn-oriented boundary terms (e^{-ixt}), ∂_t B_t = g′(0⁺)-type boundary
+     + g″ convolution; write ∂_t∂_u V_sgn = ∫[ω(…) + iη(…)]dx as an explicit distribution in (t,u) before any evaluation.
+ (b) Identify the translation-invariant part: which terms depend only on t−u, and prove the ω-part yields the archimedean finite part −½Pf(1/|t−u|) + regular,
+     or state exactly what it yields instead.
+ (c) The prime atoms: g″ carries −Σ w_n(δ_{±log n}); show whether the η-part transports them to the right side with coefficient exactly one, or produces
+     an extra multiplier (ω, η are NOT constant); if an extra multiplier appears, that is the remainder — write it.
+ (d) Plants (SECONDEXPR-B §7): apply the identical construction to H₁ = (1+16z²)cos 8z and H₂ = B(z)(2 + cos 4z) with their own g_H and P^H; the analogue of
+     (OPEN) must FAIL there on the explicit tests with Q_H(v) = −2; name the term of (OPEN) whose proof would silently use real zeros.
+ (e) Radical: (27) is proved for the signed object; confirm that your evaluation is consistent with it (∂_t∂_u V_sgn paired with χ_R f₀(·−q) profiles).
+ (f) Constants: keep 1/π, c_A, c_0 = γ_E + log 4π, δ_0 coefficient −(γ_E + log 2π) distinct (SECONDEXPR-B §5 dictionary).
+
+2. SHELF (sha256 prefix 16 at BASE_TIP)
+ PROSHKA_VERDICT_GOAL058_SECOND_EXPRESSION_SUZUKI_KERNEL_IDENTITY_2026-09-06.md  (see bind line for sha; §§3–8 are the source of every object above)
+ docs/WHY_NOT_YET.md (first candidate killed as printed; repair and (OPEN) recorded) · paper_weil/sections/{setup,groundstate,obstruction}.tex
+ q3.lean.aristotle/Q3/Proofs/RouteB/NoFiniteStencilMinorant.lean (KERNEL_GREEN) · Suzuki arXiv:2301.00421v3 (source; the even-time sentence verified by the
+ observer in the PDF: «For negative t, we set S_t(z) := S_{−t}(z)»; also P_t)
+
+3. KILLED (no re-proposal): the printed even-time identity; finite-stencil SOS; uniform margin on dense families; absolute Schur; mean-prime surrogate;
+ separate estimates; plane-wave diagonal; theta-truncation Fourier positivity; two-term dominance h < ½; any coordinate of WHY_NOT_YET §1.
+
+4. FORBIDDEN: RH-conditional inputs (Prop. 4.1 orthonormality; reality of zeros; contour closure using contractivity of Θ in a half-plane unless proved
+ independently); numerical values as proof steps; renaming the remainder; substituting the printed even object back in.
+
+5. REGISTERED PREDICTIONS (K6, observer; frozen)
+  P_OPEN_COMPLETE: 0.02 — (OPEN) proved without RH.
+  P_OPEN_FINITE_PART_REPRODUCED: 0.45 — the archimedean finite part and the δ_0 constant are obtained from the ω-part with complete proof.
+  P_OPEN_PRIME_ATOMS_REPRODUCED: 0.25 — the prime atoms with coefficient exactly one are obtained from V_sgn without RH.
+  P_OPEN_EXTRA_MULTIPLIER_IS_THE_REMAINDER: 0.55 — the exact remainder is an explicit ω/η-weighted correction to the prime atoms (non-constant multiplier), i.e.
+     the difficulty moves into «why the weights average to one on the real axis».
+  P_OPEN_PLANT_NAMES_THE_STEP: 0.80 — the plants identify the single step whose proof would use real zeros.
+
+6. REQUIRED VERDICT: header with RESULT code and CLOSES/OPENS; 1(a)–(f) in full; the proved part of (OPEN) with complete proofs; the exact remainder as a
+ distribution with budget; score the predictions without editing; register your own for independent checks; no Lean edit, no numerical run, no RH claim;
+ write only the expected verdict document.
