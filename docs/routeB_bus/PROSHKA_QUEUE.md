@@ -14,9 +14,9 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-06-SEMITABLE · Sign table to the judge: phase class across log 2, trace class of D_S, what R1 is now · OPEN
+## REQ-2026-09-06-SEMITABLE · Sign table to the judge: phase class across log 2, trace class of D_S, what R1 is now · ANSWERED
 
-- `STATUS: OPEN`
+- `STATUS: ANSWERED` — verdict `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SEMILOCAL_TABLE_PHASE_CLASS_2026-09-06.md`, commit `10c9c987`; Q1 PARTIAL: phase class = anti-diagonal two-lobe space 𝒞₋ = {U_{a/2}h − U_{−a/2}h} (−1 eigenspace of the lobe swap, NOT range of I−U on the line, NOT weighted B-images); pole-null iff h pole-null (3); exact mixed phase form e(v_θ) = n₀ − A₀ + (ν_a + J_a(h) + w)cos θ (7) with three phase terms (Sonin cross term, archimedean J_a > 0 (5), prime w); first unproved inequality (8) n₀ − ν_a ≤ A₀ + J_a + w; correction: D(v_θ) is NOT phase-independent (my/B's claim false); plant (13)–(14): e_sharp(v₋) = e(v₋) + δ_M, δ_M = 2a(cosh(a/4) − 1); Q2 PROVED: Theorem 3 — one-prime angle operator compact, NOT Hilbert–Schmidt (lacunary kernel (18) + Riemann–Lebesgue), in every Schatten class q > 2; Theorem 4 — T_f(I−P−Q), T_f S_p, T_f D_S trace class for every smooth compact test (closes N1); s_n → 0 with critical threshold n^{−1/2} (22): no nonzero plateau, no 1/n tail; Lemma 5: tested trace difference = exact prime atoms (21); Q3 PARTIAL: R1 retained as (R1−): ∀h ∈ C_c^∞(−δ₀, δ₀), A±(h) = 0 ⇒ n(A₋h) ≤ L₂(A₋h); scoring repairs: SIGN_HOLDS_ON_TABLE is UNRESOLVED not REFUTED (raw bumps ≠ pole-null class); predictions: D_S_NOT_TRACE_CLASS CONFIRMED (bare), regularisation inference REFUTED; ANGLES_AT_ZERO_SLOWLY CONFIRMED in scope; R1_RESTATED CONFIRMED; R1_CLOSED REFUTED; PHASE_CLASS_IS_RANGE_OF_I_MINUS_U REFUTED as compound; K2: reconcile the base function h of the pole-null triple between A and B
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SEMILOCAL_TABLE_PHASE_CLASS_2026-09-06.txt`
 - Boundary: `GOAL058_SEMILOCAL_TABLE_PHASE_CLASS_AND_TRACE_DOMAIN`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
