@@ -49,11 +49,13 @@ Only after 1–5 does a candidate get a number on the caches or a batch to the j
 
 ## 5. What is live under the filter (2026-09-06)
 
-- **THE named candidate (judge, living chat 2026-09-06; verified in the PDF):** Suzuki 2301.00421, Theorem 1.4: RH ⟺ ‖P̂_{Dψ}‖² = π⟨ψ,ψ⟩_W, with P̂
-  and S_t explicit and unconditional (Prop. 1.2) and the kernel identity (1/π)⟨S_t,S_u⟩ = G_{g_ξ}(t,u) (Thm 4.2) proved only under RH via an RH basis.
-  Work item: prove the kernel identity without RH (∂_t∂_u K_norm = −g_ξ″(t−u) distributionally). Batch REQ-2026-09-06-SECONDEXPR-B. The compass 𝒞 = −Θ_ξ
-  (Suzuki (1.4)) — the circle branch is this object, not a separate route.
-
+- **First named candidate — KILLED as printed (verdict SECONDEXPR-B, b1efb9e1, 2026-09-06):** Suzuki 2301.00421 defines S_t := S_{−t} and P_t := P_{−t}
+  for t < 0 (verified in the PDF). Then P̂_{Dψ} ≡ 0 for every even test while Q(ψ_L) ≥ 2‖ψ_L‖² > 0 on a narrow even bump: the printed Theorem 1.4 is
+  inconsistent with the printed definitions (a source defect, not a statement about RH). The judge retracted his endorsement. What survives, zero-free:
+  the Volterra identity (11), the bounded-multiplier L² representation (13)–(14), the free Gram kernel (16), the exact remainder (18). A signed-time
+  repair (25) is proposed (not author-confirmed); for it the radical-cutoff check (27) is proved unconditionally, and the remaining target is exact:
+  (OPEN) ∂_t∂_u V_sgn(t,u) = T(t−u) − 2δ(t−u), T = −g_ξ″ from (17). Plants: Q_H(v) = −2 on explicit tests — the forbidden step is replacing the crossed
+  conjugate-zero pairing by a diagonal Parseval metric ((4.5)/(4.9) without real zeros). The compass 𝒞 = −Θ_ξ remains a correct dictionary, not a proof.
 - **Second named candidate (Connes card 2026-09-06, locators verified):** the semilocal trace identity, Connes 2602.04022 eq. (22),
   −Σ_{v∈S}W_v(f) = log(TW)f(1) + Trace(ϑ(f)(1 − P_T^S − P̂_W^S)), carries the primes and is unconditional; the archimedean analogue (CC 2006.13771 Thm 4.7 (83))
   splits as nonnegative HS trace of the Sonin compression minus an explicit prolate remainder. Open question, written by nobody: does (22) admit the same
