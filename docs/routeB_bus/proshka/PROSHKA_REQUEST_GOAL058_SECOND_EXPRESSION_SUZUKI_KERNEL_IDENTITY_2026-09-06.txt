@@ -1,0 +1,86 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-06-SECONDEXPR-B
+SUPERSEDES: REQ-2026-09-06-SECONDEXPR (76602859; blind search replaced by a named candidate — your own living-chat finding of 2026-09-06)
+BOUNDARY_ID: GOAL058_SECOND_EXPRESSION_SUZUKI_KERNEL_IDENTITY
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-06-SECONDEXPR-B (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub). Proof-construction task in your WEILPROOF rules 0-10 on ONE named identity; maximum reasoning effort.
+DATE: 2026-09-06
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SECOND_EXPRESSION
+SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_PROOF_CONSTRUCTION_AND_ADVERSARIAL_REVIEW
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SECOND_EXPRESSION_SUZUKI_KERNEL_IDENTITY_2026-09-06.md
+AUTHOR: Linux-Claude (observer) on the owner's word; the owner's aim: «второе тождество для той же величины, как у Вейля индекс Ходжа»
+PARENT_VERDICTS: COUPLED (6b103bd1), PAPERCLEAN (da9236c8), DOMFM (002ad66e), XIDEV (2aa9dfc9), WEILPROOF (b8b0dc95, 8e4f2329)
+BASE_TIP: 93171b35
+
+0. THE ONE IDENTITY (Suzuki, arXiv:2301.00421v3, Canad. J. Math. 2025; observer verified the wording in the PDF 2026-09-06)
+ Objects (unconditional): the explicit functions S_t(z) ∈ L²(ℝ) for every real t (Prop. 1.2) and the transform P̂_ψ (Def. before (1.8)), built from a finite
+ sum over prime powers, ζ′/ζ, Γ and the Hurwitz–Lerch function — no zeros, no RH. Theorem 1.4 (1.9): RH ⟺ ‖P̂_{Dψ}‖²_{L²(ℝ)} = π⟨ψ,ψ⟩_W ∀ψ ∈ C_c^∞,
+ Dψ = iψ′; Corollary 1.5 (1.10): RH ⟺ 2‖ψ‖²_{L²} = ⟨ψ,ψ⟩_W on V°(0) = F^{-1}{P̂_{Dψ}}. Theorem 4.2 (4.4), proved UNDER RH via an RH-dependent orthonormal
+ basis (3.6): (1/π)⟨S_t, S_u⟩_{L²} = G_g(t,u) with G_g(t,u) = g(t−u) − g(t) − g(−u) + g(0), g = g_ξ the explicit screw function.
+ TASK: prove the kernel identity   K_norm(t,u) := (1/π)⟨S_t,S_u⟩_{L²(ℝ)}  =  K_ar(t,u) := G_{g_ξ}(t,u)   WITHOUT assuming RH — i.e. compute the L²
+ inner product of the explicit functions S_t, S_u directly from their definitions, or by an independent arithmetic argument, and show it reproduces the
+ prime atoms Λ(n)/√n at ±log n, the archimedean singularity ½Pf(1/|t|), and the regular part, with the exact factor 1/π. Reduced form (living chat 2026-09-06):
+ R := K_ar − K_norm satisfies R(t,0) = R(0,u) = 0, so it suffices to prove ∂_t∂_u R = 0 in the sense of distributions, i.e.
+   (SE′)   ∂_t ∂_u K_norm(t,u) = −g_ξ″(t−u)   (distributionally; do not differentiate the L² integral before proving admissibility).
+ Consequence if proved: ⟨ψ,ψ⟩_W = π^{-1}‖P̂_{Dψ}‖² ≥ 0 on C_c^∞ ⇒ Weil ⇒ RH; on our object: E_+(s) − E_-(s) = ‖𝒯s‖² with 𝒯s = π^{-1/2}P̂_{D(f_0 s)}.
+ Three admissible outcomes (WEILPROOF codes): PROOF_CANDIDATE_COMPLETE; PARTIAL_WITH_PRECISE_REMAINDER (the part of (SE′) proved — e.g. the archimedean
+ singularity and/or the prime atoms — and the EXACT unproved piece as a distribution with domain and budget, plus the first inequality/identity that would
+ close it); ATTEMPT_REFUTED_WITH_EXACT_COUNTEREXAMPLE (a theorem that the direct computation of ⟨S_t,S_u⟩ cannot avoid the zeros — name the exact step).
+ «This is RH» is REJECTED: Theorem 1.4 already says so; the request is the computation.
+
+1. WHERE THE OLD PROOF USES RH — locate and replace
+ Suzuki's proof of (4.4) expands S_t in an orthonormal basis of H_W that exists only under RH ((3.6), Section 4.3). Required: (a) the exact list of steps in
+ Sections 3–4 that use RH (each with equation number); (b) for each, whether it is used for existence of an object, for convergence, or for an identity;
+ (c) the direct route: write S_t(z) explicitly (its definition via the finite prime sum, ζ′/ζ, Γ, Hurwitz–Lerch), form ⟨S_t,S_u⟩ = ∫ S_t(z) conj(S_u(z)) dz,
+ and attempt the evaluation by contour/Parseval/Mellin methods that never mention zeros; state precisely where the evaluation stalls if it does.
+
+2. ADMISSION FILTER (docs/WHY_NOT_YET.md §4, sha256 f9a7c9ab32fbf138), applied to THIS candidate — answer each:
+ F1 coordinate?: Theorem 1.4 is an RH-equivalence; the candidate is admitted because its right side is an explicit positive quantity defined without RH
+    (second-expression shape). Confirm or refute this reading.
+ F2 radical: show that ‖P̂_{Dψ}‖ → 0 along ψ = χ_R·U_q f_0 (compact cutoffs of the translated canonical test) — a necessary check of (1.9) that does not
+    assume RH; if it fails, (1.9) is false and Theorem 1.4 gives ¬RH, which would be a contradiction with the known numerics — so it must hold: PROVE it from
+    the definition of P̂ (this is the first genuinely unconditional statement to extract).
+ F3 plants: the same construction with ξ replaced by a function with nonreal zeros in the strip ((1+16z²)cos 8z scaled; B(z)(2+cos 4z)) — where does the
+    analogue of (SE′) fail? Identify the step whose validity depends on the zeros being real; that step is the whole difficulty.
+ F4 Yoshida window: for ψ supported in a window shorter than log 2, does ‖P̂_{Dψ}‖² = π⟨ψ,ψ⟩_W follow unconditionally from the known positivity proofs
+    (Yoshida 1992; Bombieri 2000 §12; Connes–Consani 2020)? If yes, (SE′) is proved on a subclass — state it as a theorem with its proof.
+ F5 exact constants: 1/π in (4.4), 2 in (1.10), c_A/d_A in our normalisation — give the dictionary between Suzuki's ⟨·,·⟩_W and our Q (setup.tex,
+    sha faefd45b3ad905ba) and check that the prime atoms carry Λ(n)/√n with the same sign and factor.
+
+3. SHELF (sha256 prefix 16 at BASE_TIP 93171b35)
+ docs/WHY_NOT_YET.md f9a7c9ab32fbf138 · paper_weil/sections/setup.tex faefd45b3ad905ba · groundstate.tex bcf3e6f57d971158 · obstruction.tex b06d0a4ec1cb6f06
+ PROSHKA_VERDICT_GOAL058_COUPLED_..._2026-09-05.md e51a0e6327e93f31 (Theorem C3.4; R1/R2) · PROSHKA_VERDICT_GOAL058_DIRECT_WEIL_SOURCE_PROOF_2026-09-04.md adac65cdd6381821
+ (K = Γ − c_L I − 2ββ*) · NoFiniteStencilMinorant.lean 130d9c20367161f3 · JEFFREYCLAGA_USAGE_CARDS.md 72c6975e843f5645 (Lagarias two-term dominance; GUE rigidity discriminator)
+ Observer checks 2026-09-06: 𝒞 = (X′+iX)/(X′−iX) = −Θ_ξ exactly (sympy); Theorem 1.4/Cor 1.5/Thm 4.2 wording as quoted; Prop 1.2 unconditional.
+
+4. STATE OF THE WALL (numbers, DIAGNOSTIC): margin zero (Prop 5.9; ∂_y|Ξ|²/|Ξ|² → 0 between zeros; Λ ≥ 0); Probe 27: Q(T) = 1 − e^{−a_m T²/m}, ln(1/R_ax) ≈ 9.7 m,
+ T_cert ≈ 12 m; masses N_- = 0.083642, atoms 0.037599; radical ⊇ {U_q f_0} ∪ {f_0 * h}.
+
+5. KILLED (no re-proposal without a new invariant): finite-stencil SOS (C3.4); uniform margin on dense families; absolute Schur; mean-prime surrogate; separate
+ estimates; plane-wave diagonal; Fourier-positivity of theta truncations; two-term dominance with h < ½; «find some contraction C» without a formula; every
+ coordinate in WHY_NOT_YET §1 (incl. the compass = −Θ_ξ).
+
+6. FORBIDDEN: RH-conditional inputs (in particular the RH orthonormal basis (3.6)); «by Theorem 1.4 it suffices»; numbers as proof steps; renaming the remainder.
+
+7. REGISTERED PREDICTIONS (K6, observer; frozen)
+  P_SEB_COMPLETE: 0.02 — (SE′) proved without RH.
+  P_SEB_PRIME_ATOMS_REPRODUCED: 0.35 — the prime-atom part of −g_ξ″ is obtained from ⟨S_t,S_u⟩ unconditionally (partial), with the archimedean part or the
+     regular part as the exact remainder.
+  P_SEB_RADICAL_CHECK_PROVED: 0.55 — F2 proved unconditionally from the definition of P̂.
+  P_SEB_YOSHIDA_SUBCLASS_THEOREM: 0.30 — F4 yields an unconditional theorem on short supports.
+  P_SEB_RH_STEP_LOCATED: 0.85 — the exact step of Suzuki's proof that needs RH is named with equation numbers and its role classified.
+  P_SEB_RESULT_REFUTED: 0.25 — a theorem that the direct computation cannot avoid the zeros.
+
+8. REQUIRED VERDICT: header with RESULT code and CLOSES/OPENS; §1 (a)–(c) in full; F1–F5 answered; the proved part of (SE′) with complete proofs; the exact
+ remainder as a distribution; score the predictions without editing; register your own for independent checks; no Lean edit, no numerical run, no RH claim;
+ write only the expected verdict document.
