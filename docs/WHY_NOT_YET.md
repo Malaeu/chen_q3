@@ -72,6 +72,16 @@ Only after 1–5 does a candidate get a number on the caches or a batch to the j
   splits as nonnegative HS trace of the Sonin compression minus an explicit prolate remainder. Open question, written by nobody: does (22) admit the same
   splitting with the semilocal Sonin projection? CC 2106.01715 shows the archimedean part alone dies at L = log 2 and the prime 2 restores it — any second
   expression must carry the primes (our §4.4 seen from the other side). Bost–Connes contributes nothing here (ζ as partition function on Re β > 1).
+- **Second candidate, computed (verdict SEMILOCAL, 3242ada9, 2026-09-06, SECOND_EXPRESSION_CANDIDATE):** the semilocal splitting exists explicitly:
+  −Σ_{v∈S}W_v = N_S − E_S with N_S = Tr(ϑ(k)S_S) ≥ 0 (semilocal Sonin projection S_S = B_S S_∞ G_S^{-1} S_∞ B_S*, infinite-dimensional, prime-dependent)
+  and E_S = pair-angle trace distribution − log(TW)δ_1; c_A recovered exactly. It does NOT pass the radical clause as a bare minorant: for fixed S, T, W
+  the canonical cutoffs give Q(v_R) − N_S(k_R) ≤ −ε_h/8 < 0 (strict counterexample), and L_S itself is negative on wide bumps. Object corrections:
+  (22) lacks the pole term P_02 of the full form; Connes 1999's S_Λ is a window projection, not Sonin; the finite-Euler image is not the global E(f).
+  What remains is one inequality in explicit source data: E_S(k⋆k*) ≤ 0 (or ≤ P_02) on a support-matched class — the sign of the integrated Halmos
+  blocks, which pair-of-projections theory does not supply. The judge rejects «coordinate again» for this candidate: there is structural gain.
+- **Policy note (judge §8, recorded, not adopted by the observer alone):** the judge holds that §4.1 («an RH-equivalent target is filed away without
+  investigation») is not mathematically justified — equivalence says nothing about accessibility to a method; circularity is using the equivalent as a
+  premise, not reaching it as a conclusion; «only identities reach zero margin» is not a theorem. Owner's rule 15 stands until the owner rules.
 - R1 (COUPLED): a nonlocal positive factor on f₀s with proved annihilation of the radical — no candidate formula exists beyond the two named above.
 - R2 (COUPLED/ZG): cutoff-dependent Gram certificates K_m + e_m I ⪰ 0 with e_m → 0 and proved recovery — no rule for e_m exists.
 - The frame reading of WEILPROOF (i): K = Γ − c_L I − 2ββ*, i.e. the prime atoms and short shifts form a frame whose optimal lower bound is c_L.

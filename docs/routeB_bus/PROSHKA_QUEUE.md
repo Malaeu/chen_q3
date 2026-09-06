@@ -14,9 +14,9 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-06-SEMILOCAL · Semilocal Sonin splitting of Connes (22): second expression or coordinate again · OPEN
+## REQ-2026-09-06-SEMILOCAL · Semilocal Sonin splitting of Connes (22): second expression or coordinate again · ANSWERED
 
-- `STATUS: OPEN`
+- `STATUS: ANSWERED` — verdict `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SEMILOCAL_SONIN_SECOND_EXPRESSION_2026-09-06.md`, commit `3242ada9`; RESULT `SECOND_EXPRESSION_CANDIDATE` (answer A with scope repairs; global-radical filter NOT passed): explicit splitting L_S = N_S − E_S with N_S = Tr(ϑ(k)S_S) ≥ 0 and E_S = pair-angle trace distribution + cutoff contact −log(TW)δ_1 ((3)–(9)); Sonin projector S_S = B_S S_∞ G_S^{-1} S_∞ B_S* with a_S² ≤ G_S ≤ b_S² (11)–(12); semilocal Sonin infinite-dimensional; prime shells (13); c_A recovered exactly (Lemma 5); KILLED: bare fixed-S Sonin trace as a global minorant — strict counterexample Q(v_R) − N_S(k_R) ≤ −ε_h/8 (Lemma 9) and L_S negative on wide bumps (Lemma 6); object corrections: (22) lacks the pole term P_02; C99 S_Λ is a window projection, not Sonin; finite-Euler image ≠ global E; §8: judge rejects the policy «RH-equivalent target is filed away» as not mathematically justified; survives: R1 prove E_S(k⋆k*) ≤ 0 (or ≤ P_02) on a declared class with support-matched S; R2 varying global window-minus-image projections (C99 (23)); predictions: SPLIT_EXISTS CONFIRMED (trace-distribution form), CONSTANT_MATCHES CONFIRMED, COORDINATE_AGAIN REFUTED, PRIMES_IN_REMAINDER / PAST_LOG2 NOT_ESTABLISHED, RADICAL_KILLED_BY_SONIN ambiguous (true for finite-Euler image, false globally)
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SEMILOCAL_SONIN_SECOND_EXPRESSION_2026-09-06.txt`
 - Boundary: `GOAL058_SEMILOCAL_SONIN_SECOND_EXPRESSION`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
