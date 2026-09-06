@@ -14,9 +14,25 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-06-SECONDEXPR · REQ-2026-09-06-SECONDEXPR · Goal 058: the SECOND EXPRESSION — construct a nonlocal operator T with Q(f_0 s) = ‖Ts‖² (written without zeros, annihilating the whole radical), under the WHY_NOT_YET §4 filter, plants and the Lagarias discriminator; three result codes; «this is RH» rejected · OPEN
+## REQ-2026-09-06-SECONDEXPR-B · REQ-2026-09-06-SECONDEXPR-B · Goal 058: the SECOND EXPRESSION as one named identity — prove Suzuki's kernel identity (1/π)⟨S_t,S_u⟩ = G_{g_ξ}(t,u) (Thm 4.2 (4.4)) WITHOUT RH: locate the RH-dependent basis step, compute the inner product directly, radical check, plants, Yoshida subclass; supersedes SECONDEXPR · OPEN
 
 - `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SECOND_EXPRESSION_SUZUKI_KERNEL_IDENTITY_2026-09-06.txt`
+- Boundary: `GOAL058_SECOND_EXPRESSION_SUZUKI_KERNEL_IDENTITY`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: Judge's living-chat answer 2026-09-06 (compass = −Θ_ξ; Suzuki Thm 1.4 as the second expression; K_norm = K_ar reduced to ∂_t∂_u R = 0); observer verified Thm 1.4/Cor 1.5/Thm 4.2 wording in the PDF, Prop 1.2 unconditional, and C = −Θ_ξ by sympy; WHY_NOT_YET filter; Probe 27 laws; Lagarias card
+- Registered predictions: P_SEB_COMPLETE 0.02; P_SEB_PRIME_ATOMS_REPRODUCED 0.35; P_SEB_RADICAL_CHECK_PROVED 0.55; P_SEB_YOSHIDA_SUBCLASS_THEOREM 0.30; P_SEB_RH_STEP_LOCATED 0.85; P_SEB_RESULT_REFUTED 0.25
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `4599fba36d77dc7e3b12f743e3142ffeb813baa4` / `8846` / `86` /
+  `098eeae0c7fa924098b668d5dfa365727db929fe0ebb0df3a20d85adf94be2ec` /
+  `65017079f9ca6893da94298f4b9f72c20b6a5616` / `yes`
+
+---
+
+## REQ-2026-09-06-SECONDEXPR · REQ-2026-09-06-SECONDEXPR · Goal 058: the SECOND EXPRESSION — construct a nonlocal operator T with Q(f_0 s) = ‖Ts‖² (written without zeros, annihilating the whole radical), under the WHY_NOT_YET §4 filter, plants and the Lagarias discriminator; three result codes; «this is RH» rejected · SUPERSEDED
+
+- `STATUS: SUPERSEDED` — by REQ-2026-09-06-SECONDEXPR-B (the judge's living-chat answer of 2026-09-06 named the candidate: Suzuki 2301.00421 Thm 1.4 / Thm 4.2 kernel identity; blind search replaced by one named identity)
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SECOND_EXPRESSION_NONLOCAL_POSITIVE_FACTOR_2026-09-06.txt`
 - Boundary: `GOAL058_SECOND_EXPRESSION_NONLOCAL_POSITIVE_FACTOR`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
