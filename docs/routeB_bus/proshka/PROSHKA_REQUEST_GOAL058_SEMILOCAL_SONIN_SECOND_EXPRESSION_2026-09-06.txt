@@ -1,0 +1,106 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-06-SEMILOCAL
+BOUNDARY_ID: GOAL058_SEMILOCAL_SONIN_SECOND_EXPRESSION
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-06-SEMILOCAL (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub). Second-expression batch (BATCH_PATTERNS form 3, filter WHY_NOT_YET §4) on the semilocal trace identity (22) of Connes arXiv:2602.04022 with the Sonin splitting of Connes–Consani arXiv:2006.13771 Theorem 4.7; maximum reasoning effort; read the sources at the locators, not from memory.
+DATE: 2026-09-06
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SECOND_EXPRESSION
+SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_PROOF_CONSTRUCTION_AND_ADVERSARIAL_REVIEW
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SEMILOCAL_SONIN_SECOND_EXPRESSION_2026-09-06.md
+AUTHOR: Linux-Claude (observer) on the owner's word («Да!! Делаем!»)
+PARENT_VERDICTS: OPENSGN (9a7a3a9c; independent check docs/routeB_bus/OPENSGN_INDEPENDENT_CHECK_2026-09-06.md, all five items CORRECT), SECONDEXPR-B (b1efb9e1 + readback 5aeecbc8), COUPLED (6b103bd1), XIDEV (2aa9dfc9), WEILPROOF (b8b0dc95)
+BASE_TIP: see bind line
+
+0. STATE OF THE WALL (numbers) AND WHY THIS BATCH
+ The first named second-expression candidate is closed: Suzuki's printed kernel identity is inconsistent with its printed definitions (SECONDEXPR-B); its signed
+ repair reduces, after both time integrations, to ONE scalar identity (P): (1/π)∫ pX²/((p²+x²)(X²+X′²))dx = ξ(½+p)/(ξ(½+p)+ξ′(½+p)) for p > ½, and a proof
+ of (P) excludes every nonreal upper zero (OPENSGN §5, checked independently). So the Suzuki line is a tenth coordinate with a fully computed remainder,
+ not a second expression. Killed list and zero-margin facts: WHY_NOT_YET §§1–2 (nine coordinates; uniform margin, absolute Schur, finite stencils, mean
+ prime surrogate all dead with numbers). What a candidate must satisfy: WHY_NOT_YET §4 (not a coordinate; second-expression shape = equality of two explicit
+ objects one of which is nonnegative by construction and annihilates the radical; plants H₁ = (1+16z²)cos 8z, H₂ = B(z)(2+cos 4z), Λ(n)→1 must FAIL at a
+ named step; Yoshida window — CC 2106.01715 §2.2 measures that the archimedean part alone goes negative just past L = log 2 and the prime 2 restores it;
+ the exact constant c_A = γ_E + log 8π + π/2 = 5.3721834192 must be reproduced; Lagarias discriminator — no two-term dominance).
+ The second named candidate (card CONNES_CONSANI_BOSTCONNES_HECKE_USAGE_CARD.md §5, locators verified by the observer in the PDFs) is the only prime-carrying
+ unconditional identity on the shelf: Connes 2602.04022 §7.4 eq. (22)
+     −Σ_{v∈S} W_v(f) = log(TW) f(1) + Trace(ϑ(f)(1 − P^S_T − P̂^S_W)),
+ the specialization of Connes 1999 (Selecta, math/9811068) Theorem 4 (p.31: Trace(R_Λ U(h)) = 2h(1)log′Λ + Σ_{v∈S}∫′ h(u⁻¹)/|1−u| d*u + o(1), R_Λ = P̂_Λ P_Λ)
+ to the K_S-invariant part (2602.04022 footnote 11, eqs. (29)–(32): module Mod_S, C_S ≅ ℝ*₊ × K_S, w_S: L²(Y_S) → L²(C_S)). Its archimedean case (19),
+ W_∞(f) = log(TW)f(1) + Trace(ϑ(f)(1 − P_T − P̂_W)), is turned by CC 2006.13771 Theorem 4.7, eq. (83), into
+     Tr(ϑ(f)S) = W_∞(f) + ∫ f(ρ⁻¹) ε(ρ) d*ρ,  ε(ρ) = Σ_n λ(n)/√(1−λ(n)²) ⟨ξ_n | ϑ(ρ⁻¹) ζ_n⟩ (ρ ≥ 1), eq. (84),
+ with S the projection onto Sonin's space S(1,1) = (ran P₁ ∨ ran P̂₁)^⊥ in L²(ℝ)_ev, Tr(ϑ(g)Sϑ(g)*) = ‖Sϑ(g)*‖²_HS ≥ 0 by construction (Thm 7.1 of
+ 2602.04022 = CC Thm 1: W_∞(g⋆g*) ≥ Tr(ϑ(g)Sϑ(g)*) for supp g ⊂ [2^{−1/2}, 2^{1/2}], ĝ(i/2) = ĝ(0) = 0). Nobody has written the semilocal analogue; Connes'
+ abstract says only «all the ingredients make sense in the general semi-local case».
+
+1. THE QUESTION (one, with two admissible answers and a forbidden third)
+ Let S = {∞} ∪ S_fin, S_fin a finite nonempty set of primes, Y_S = A_S/Γ_S (20)–(21), L²(Y_S)^{K_S} ≅ L²(ℝ*₊)-part via w_S, P^S_T and P̂^S_W the module cutoffs
+ (footnote 11), and define the SEMILOCAL SONIN SPACE 𝒮_S := (ran P^S_T ∨ ran P̂^S_W)^⊥ with projection S_S. Decide:
+ (Q) Does (22) admit the splitting   −Σ_{v∈S} W_v(f) = Tr(ϑ(f) S_S) − E_S(f)   with E_S EXPLICIT (a functional given by the pair-of-projections data of
+     (P^S_T, P̂^S_W) — the semilocal prolate spectrum of CCM 2310.18423 — in the way (84) gives ε from λ(n)), and does this splitting pass WHY_NOT_YET §4?
+ Admissible answers:
+ (A) SECOND_EXPRESSION_CANDIDATE — the splitting exists with E_S written out; the nonnegative object Tr(ϑ(g)S_Sϑ(g)*) is identified; the radical clause is
+     decided (does S_S annihilate the Poisson-invariant vectors E(f) = x^{1/2}Σ f(nx), our {U_q f₀, f₀*h}? — yes/no with proof); plants named at the step
+     where they fail; the exact constant c_A recovered from log(TW) + the archimedean local term; the Yoshida window: for S = {∞, 2} an unconditional
+     inequality of the type of Thm 7.1 on a support window strictly past 2^{±1/2} (i.e. past L = log 2), or the precise reason none follows by hand.
+ (B) COORDINATE_AGAIN — a theorem: after the splitting, the remaining inequality E_S(g⋆g*) ≤ Tr(ϑ(g)S_Sϑ(g)*) is equivalent to −Σ_v W_v ≥ 0 on the same
+     tests with NO gain in structure (name the step at which the prime atoms re-enter with the same zero margin), or the semilocal Sonin space is too small
+     (dimension count) to dominate the negative directions of 1 − P − P̂ (which has, on every 2-dim Halmos block with angle θ, eigenvalues ∓cos θ — one negative).
+ Forbidden: «this is RH», «Weil positivity is equivalent to RH» as the answer; numerics as a proof step; the archimedean-only version (already CC Thm 1).
+
+2. REQUIRED STRUCTURE OF THE ANSWER
+ (a) Objects, from the sources: Y_S, C_S, K_S, w_S (29)–(32); the module cutoffs P^S_T, P̂^S_W on L²(Y_S)^{K_S}; ϑ(f) = ∫ f(λ)ϑ(λ)d*λ. State whether the
+     pair (P^S_T, P̂^S_W) is in generic position (Halmos) and whether 𝒮_S ≠ 0 and is infinite-dimensional; cite CCM 2310.18423 for the semilocal prolate
+     operator commuting with both projections if that is the route.
+ (b) The splitting: 1 − P − P̂ = S_S − (P + P̂ − (1 − S_S)) on ran P ∨ ran P̂; on each Halmos block compute Tr(ϑ(f)·) in terms of the block angle θ_n and the
+     block vectors (ξ_n, ζ_n analogues); write E_S(f) = ∫ f(ρ⁻¹) ε_S(ρ) d*ρ with ε_S in closed form as (84), or prove that no such kernel form exists.
+ (c) Where the primes sit: in the archimedean case the prime terms are absent; in (22) the left side carries −Σ_{p∈S_fin} W_p(f) = −Σ Λ-weighted shifts at
+     p^k (write the exact form and normalization from Connes 1999 Thm 4, principal value with Fourier transform vanishing at 1). Decide whether they are
+     produced by the Sonin part Tr(ϑ(f)S_S) (nonnegative, prime-carrying — the wanted case) or entirely by the remainder ε_S (then the wanted positivity is
+     the statement ε_S-part ≤ Sonin part, and (B) must be examined).
+ (d) Plants: (i) Λ(n) → 1 has no Γ_S — state whether the construction's refusal counts as passing §4.3 or is vacuous; (ii) the perturbed prime p → p(1+10⁻³)
+     of CC 2106.01715 §2.3 — likewise no Γ_S; (iii) a plant WITH a semilocal space but a false Euler factor: replace the local factor at p by one with an
+     off-line zero (e.g. a Dirichlet-type local factor (1 − χ(p)p^{−s})⁻¹ combined with a wrong archimedean factor) and show where (22)'s splitting fails to
+     give positivity; if no such plant exists, say so and why.
+ (e) Radical: our radical on X is {U_q f₀} ∪ {f₀*h} (OPENSGN (35); paper §5); in Connes' language the trivial correspondences = range of E (math/0703392
+     §7.2). Prove or refute: S_S E(f) = 0 for f with f, f̂ supported in the cutoff (Connes 1999 eq. (22) Q′_{Λ,0} ⊂ S_Λ is the archimedean statement).
+ (f) Constants and dictionary: fix the dictionary between our Q(g) in the log variable (paper_weil/sections/setup.tex, canonical test f₀ = 4E(h)(e^x)/A,
+     A = 0.565466013092, c_A = 5.3721834192, w_n = Λ(n)/√n) and −Σ_v W_v(f) on C_c^∞(ℝ*₊) (CC 2106.01715 Prop. 2.1 (2.11): QW_λ(f,f) = ∫|f̂|²(2∂θ/2π)
+     + 2Re f̂(i/2)f̂(−i/2)‾ − Σ_{1<n≤λ²} Λ(n)⟨f|V(n)f⟩). Show c_A = the archimedean constant of (19)/(22) in our normalization, or give the exact discrepancy.
+
+3. SHELF (sha256 prefix 16 at BASE_TIP)
+ 122570f41d1add4a  docs/routeB_bus/litreview/CONNES_CONSANI_BOSTCONNES_HECKE_USAGE_CARD.md  (all locators; PDFs: docs/routeB_bus/litreview/pdfs/{2006.13771,2106.01715,2310.18423,2602.04022,math_9811068}.pdf)
+ a5849031fe1fdbbe  docs/WHY_NOT_YET.md  (§4 filter; §5 live candidates incl. the OPENSGN reduction)
+ ffe6d8e38be778f0  docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_OPEN_SIGNED_TIME_KERNEL_IDENTITY_2026-09-06.md  (radical vectors (35); (P))
+ 74d9410a3aad3c98  docs/routeB_bus/OPENSGN_INDEPENDENT_CHECK_2026-09-06.md
+ faefd45b3ad905ba  paper_weil/sections/setup.tex · bcf3e6f57d971158 groundstate.tex · b06d0a4ec1cb6f06 obstruction.tex  (our objects and normalizations)
+ 81065ceb5123e9fb  docs/routeB_bus/litreview/WEIL_POSITIVITY_OBJECT_CARD_2026-09-04.md  (proven positivity regimes stop at L = log 2)
+ q3.lean.aristotle/Q3/Proofs/RouteB/NoFiniteStencilMinorant.lean (KERNEL_GREEN; obstruction theorem — any candidate must be nonlocal)
+
+4. KILLED (no re-proposal without a new invariant): the nine coordinates of WHY_NOT_YET §1 and the tenth (P); uniform margin on dense families; absolute
+ Schur; finite-stencil SOS (COUPLED C3.4); mean-prime surrogate (NEG); separate estimates; plane-wave diagonal; theta-truncation Fourier positivity;
+ two-term dominance h < ½; archimedean-only compressions past L = log 2 (CC 2106.01715 §2.2); Bost–Connes (partition function on Re β > 1).
+
+5. FORBIDDEN: RH-conditional inputs (reality of zeros, Thm 6.1-type simplicity hypotheses, contractivity of Θ unless proved); numerical values as proof
+ steps; renaming the remainder; support restrictions that exclude every prime (supp ⊂ (½, 2)) presented as the semilocal case.
+
+6. REGISTERED PREDICTIONS (K6, observer; frozen)
+  P_SPLIT_EXISTS: 0.55 — the Sonin splitting of (22) exists with an explicit ε_S from the semilocal pair-of-projections data.
+  P_PRIMES_IN_REMAINDER: 0.70 — the prime atoms appear in ε_S (remainder), not in the Sonin trace; the wanted positivity becomes «remainder ≤ Sonin part».
+  P_POSITIVITY_PAST_LOG2_BY_HAND: 0.20 — for S = {∞, 2} an unconditional Thm-7.1-type inequality on a window past L = log 2 is obtained without numerics.
+  P_COORDINATE_AGAIN: 0.35 — answer (B): the residual inequality is RH-equivalent with no structural gain, or 𝒮_S cannot dominate the negative Halmos directions.
+  P_RADICAL_KILLED_BY_SONIN: 0.60 — S_S annihilates the Poisson-invariant vectors E(f) inside the cutoff (semilocal version of Q′_{Λ,0} ⊂ S_Λ).
+  P_CONSTANT_MATCHES: 0.65 — c_A is recovered exactly from log(TW) + the archimedean local term in our normalization.
+
+7. REQUIRED VERDICT: header with RESULT ∈ {SECOND_EXPRESSION_CANDIDATE, COORDINATE_AGAIN, ATTEMPT_REFUTED_WITH_EXACT_COUNTEREXAMPLE} and CLOSES/OPENS;
+ 2(a)–(f) in full with complete proofs where claimed; every source claim with paper, theorem/equation number and page; score the predictions without
+ editing; register your own predictions for independent checks; the cheapest decisive test (K2) for the observer to run on the finite shelf; no Lean edit,
+ no numerical run, no RH claim; write only the expected verdict document.
