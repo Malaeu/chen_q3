@@ -32,6 +32,8 @@ FIELD = re.compile(
     re.MULTILINE | re.DOTALL,
 )
 
+SKIPPED: list[str] = []
+
 REQUIRED_FIELDS = (
     "fork",
     "selected",
@@ -86,10 +88,15 @@ def parse_entries(path: Path = SRC) -> list[dict[str, str | None]]:
                 fields[key] = _compact(field_match.group("value"))
         missing = [key for key in REQUIRED_FIELDS if not fields.get(key)]
         if missing:
-            raise ValueError(
-                f"Progress_Log entry {match.group('date')} {match.group('title')!r} "
-                f"is missing fields: {', '.join(missing)}"
+            # Recording debt (RECORDING_RULES): the entry is a fork heading written as prose.
+            # It is skipped, not fatal: one unstructured entry must not block the migration
+            # of every structured one (observed 2026-09-06: the 2026-09-03 curvature fork
+            # blocked all later entries). The debt is printed so it stays visible.
+            SKIPPED.append(
+                f"{match.group('date')} {_compact(match.group('title'))!r}: "
+                f"missing {', '.join(missing)}"
             )
+            continue
         title = _compact(match.group("title"))
         digest = hashlib.sha256(chunk.encode("utf-8")).hexdigest()
         entry_id = (
@@ -196,6 +203,8 @@ def main() -> int:
     finally:
         conn.close()
     print(f"migrated {len(rows)} branch decisions into {args.db}")
+    for line in SKIPPED:
+        print(f"RECORDING DEBT (skipped, add the 8 fields): {line}")
     return 0
 
 
