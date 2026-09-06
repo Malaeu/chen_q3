@@ -1,4 +1,4 @@
-# Note to the author of arXiv:2301.00421 — FINAL DRAFT (not sent; owner sends or approves sending)
+# Note to the author of arXiv:2301.00421 — SENT 2026-09-06 (Gmail, on the owner's word; message id 1a0757fbffc2d59f)
 
 Verification trail: judge (SECONDEXPR-B, b1efb9e1) → observer (verbatim PDF check, Progress_Log 2026-09-06) → blind agent re-derivation from the
 paper's (3.3) (AGENT_REPORT_2026-09-06_SECONDEXPR_B_INDEPENDENT_CHECK.md). Person-name gates: name and e-mail from the paper itself (arXiv v3, last page:

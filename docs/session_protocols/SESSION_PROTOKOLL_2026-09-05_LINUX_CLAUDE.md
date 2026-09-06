@@ -80,3 +80,8 @@ FULLCHAIN, SIGNFREE, PROVE (superseded), WEILPROOF (текст судьи, св�
 - Батч REQ-2026-09-05-PAPERCLEAN → вердикт `da9236c8` READY_AFTER_LISTED_FIXES (0 CRIT / 9 HIGH); все P01–P13 применены дословно; v4 = `paper_weil/main.pdf` (16 стр., `241244b5`).
 - Четыре мои содержательные ошибки, пропущенные двумя раундами Opus: оболочка свёртки, базис CCM (Фурье-моды), рэлеевское отношение под именем ε_∞, «неограничена снизу».
 - Независимая проверка патчей судьи: CORRECT по всем пунктам. Открыто: вычитка владельца v4, решение по arXiv (email/лицензия), пакет для загрузки.
+
+## Дополнение (06.09, утро) — SECONDEXPR-B, письмо Suzuki, OPENSGN
+- Вердикт SECONDEXPR-B: буквальное тождество Suzuki убито дефектом определения (S_t := S_{−t}); проверено мной по PDF и слепым агентом; ремонт (25), (27), (OPEN).
+- Versendet: письмо Suzuki (msuzuki@math.sci.isct.ac.jp), id 1a0757fbffc2d59f, текст в `paper_weil/ERRATUM_NOTE_SUZUKI_DRAFT.md`. Endorsement — отдельно, после ответа.
+- Батч OPENSGN привязан (`90aaa56a`), вахта стоит. Аудит skills/AGENTS применён (архив, SESSION_ENTRY-маршрутизатор, q3_check exact? → warning).
