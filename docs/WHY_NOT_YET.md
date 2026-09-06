@@ -56,6 +56,17 @@ Only after 1–5 does a candidate get a number on the caches or a batch to the j
   repair (25) is proposed (not author-confirmed); for it the radical-cutoff check (27) is proved unconditionally, and the remaining target is exact:
   (OPEN) ∂_t∂_u V_sgn(t,u) = T(t−u) − 2δ(t−u), T = −g_ξ″ from (17). Plants: Q_H(v) = −2 on explicit tests — the forbidden step is replacing the crossed
   conjugate-zero pairing by a diagonal Parseval metric ((4.5)/(4.9) without real zeros). The compass 𝒞 = −Θ_ξ remains a correct dictionary, not a proof.
+  **Reduced (verdict OPENSGN, 9a7a3a9c, 2026-09-06, PARTIAL):** both time integrations of (OPEN) are evaluated (double Laplace in both sign quadrants,
+  signed Volterra derivative with the logarithmic endpoint, exact prime shift operators). Falsifier: the η-part (η = Im of X/(X−iX′) on the axis) has
+  zero double Laplace transform on equal positive parameters, so «ω carries the archimedean part, η carries the prime atoms» is impossible; all
+  arithmetic sits in the Poisson average of ω = X²/(X²+X′²). Lemma 7 (proved): (OPEN) ⟺ one scalar identity
+  (P) (1/π)∫_ℝ pX(x)²/((p²+x²)(X²+X′²)) dx = ξ(½+p)/(ξ(½+p)+ξ′(½+p)), p > ½.
+  (P) is not proved, and a proof of (P) would exclude every nonreal upper zero (a zero p₀ of ξ(½+p) in Re p > 0 forces m·h(p₀)Ω(p₀) = 0 with Re Ω > 0).
+  So the signed Suzuki candidate is a coordinate after all — but with the whole remaining computation done and the wall in one line: (P) says the
+  Poisson reconstruction of the bounded boundary function v = X/(X−iX′), |v| ≤ 1, equals the meromorphic continuation F/(F+F′); RH = v has no poles
+  inside. Plants (H₁ with the zero p₀ = ¼) fail exactly at this Poisson-reconstruction step, as §4.3 demands. Radical consistency (35) holds.
+  Toy calibration X(z) = z (Ω_p = p/(p+1), J_pq = 1/(p+1) − 1/(q+1)) checked numerically by the observer. Judge's directive: independent check of
+  (17)–(18), the p = q cancellation, the Hilbert step (27)–(29) — running.
 - **Second named candidate (Connes card 2026-09-06, locators verified):** the semilocal trace identity, Connes 2602.04022 eq. (22),
   −Σ_{v∈S}W_v(f) = log(TW)f(1) + Trace(ϑ(f)(1 − P_T^S − P̂_W^S)), carries the primes and is unconditional; the archimedean analogue (CC 2006.13771 Thm 4.7 (83))
   splits as nonnegative HS trace of the Sonin compression minus an explicit prolate remainder. Open question, written by nobody: does (22) admit the same
