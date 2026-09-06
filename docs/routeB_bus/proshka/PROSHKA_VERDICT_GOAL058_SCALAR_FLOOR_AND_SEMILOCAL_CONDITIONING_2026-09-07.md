@@ -792,3 +792,155 @@ PUBLICATION_HANDOFF:
 ```
 
 Only this verdict document is to be published. Request bytes, prior verdicts, scripts, predictions, queue and route state remain untouched. New derivations have verifier **PAPER** and await independent review. A successful hash/readback receipt does not change that verifier.
+
+## 11. Independent second-pass addendum — 2026-09-07
+
+```yaml
+ADDENDUM_KIND: APPEND_ONLY_SECOND_PASS
+OPERATIVE_CLASS: TRY_SCALAR_FLOOR_SQUARE_IDENTITY_AND_EULER_GRAM_CERTIFICATION
+REQUEST_ID: REQ-2026-09-07-SCALARFLOOR
+PRESERVED_BASE_BLOB: 9a96b510e7b35e30ffea982b4f14497b6d82584c
+REQUEST_SHA256_RECOMPUTED_THIS_PASS: 727572551491e9a4374172c24ba1c2b7d16224f8f0263bc0bcd97a5ac5d3cbc7
+REQUEST_GIT_BLOB_RECOMPUTED_THIS_PASS: fbfc4ce550a5716a77415b589cfd33d4631a919b
+REQUEST_BYTES: 14243
+REQUEST_LINES: 111
+REQUEST_FINAL_LF: true
+RESULT:
+  Q1a: PROVED_ON_CLASS
+  Q1b: PARTIAL_WITH_PRECISE_REMAINDER
+  Q1c: PROVED_ON_CLASS
+  Q2a: PARTIAL_WITH_PRECISE_REMAINDER
+  Q2b: PROVED_ON_CLASS
+  Q2c: PARTIAL_WITH_PRECISE_REMAINDER
+  Q3: PARTIAL_WITH_PRECISE_REMAINDER
+  Q4: COMPUTATION_SPECIFIED
+ADDITIONAL_RESULT: MONOTONE_INVERSE_FREE_POSITIVE_CORRECTION_HIERARCHY
+CLOSES_ANALYTIC_RH_SUPPLIERS: []
+OPENS: []
+SCOPE: ABSTRACT
+VERIFIER: PAPER
+NUMERICAL_RUN_PERFORMED: false
+LEAN_EDIT_PERFORMED: false
+BLIND_SECOND_REVIEW_CLAIM: false
+PREDICTIONS_OR_PRIOR_TEXT_REWRITTEN: false
+RH_CLAIM: false
+```
+
+The existing verdict is retained in full. This pass independently fetched and rehashed the controlling request, read the pinned evaluator report, PROGRESS, `evald.py`, `prod_op.py`, `prod_t.py`, and `final.py`, and checked the projection algebra and the Euler-Gram construction. The existing verdict's title was seen at intake; its full text was read before this closeout. This is therefore a separate mathematical recheck, not a blinded replication. The first verdict's source-reading and verification declarations above describe that first pass, not additional actions claimed for this one. No empirical table or post-request computation is used as a mathematical premise.
+
+The primary crosswalk was checked against CCM arXiv:2310.18423v2, (57)--(59) and Theorem 4.6, including PDF pages 22--23. Those statements supply the multiplier and bounded invertible Sonin map, not the scalar sign. The requested CC20 and C26 versions were opened for their trace conventions. No new result from math/9811068v1 is imported. The attached historical route summaries are not evidence for this request.
+
+### 11.1 Rechecked decisions for all four questions
+
+**Q1.** The floor theorem and the stronger square identity (4)--(8) are correct on the stated tested trace domain. The real/imaginary proof (7) is preferable to expanding the generalized Mellin wave itself in an unproved absolutely summable eigenseries. In particular the exact lower bound is `m >= F`; a positive floating-point value of `F` is a separate claim requiring an enclosure. The whole-class scalar sign (9) remains unproved. The additional hierarchy below provides a weaker sufficient condition without requiring that scalar sign separately.
+
+**Q2.** The fixed-cutoff operator cannot have the alleged exact limiting eigenvalues ±1. The source signed-gap transfer (15), concentration-gap transfer (16), and threshold-count statement (17) survive rechecking. The data still do not certify a two-mode count at a stated threshold. The representation (18)--(22) removes the semilocal angle denominator with explicit source constants, while retaining the archimedean evaluation-vector error. Small low-frequency mass is a weighted error allowance, never exact irrelevance.
+
+**Q3.** Equation (27), not two zero infima, is the correct class statement. The planted and true margins differ by exactly `-delta_M`. The high-modulation family proves eventual detection of this fixed arithmetic mutation under the retained source remainder theorem. None of the three individual reported outcomes has a source-valid interval certificate. In particular a certified scalar *lower* floor would not certify the frozen-test plant *upper* inequality.
+
+**Q4.** The inverse-free finite certificate specification is sound; the claimed value `m(h_4) >= 0.0035` is not presently a theorem. The explicit constant 256 in (31) is valid by the displayed dyadic proof: at most four stationary dyadic intervals occur, and the quoted sum of constants is below 256. The tail errors (32)--(38) must still be evaluated with directed bounds. The zero-extended polynomial profiles require the regularity and strict-support repair already stated in §7.2.
+
+All four determinations are **PAPER**, not `LEAN` or `ARB_INTERVAL`. The strict positive point (24) does not determine the sign on an interval, and observed vanishing at precision 1e-16 does not establish an exact spectral gap in a density.
+
+### 11.2 Theorem 5: a monotone polynomial hierarchy for the positive correction
+
+This is an additional derivation, not a numerical test. It preserves the same source, test class, cutoff, and normalization. Fix a frequency and abbreviate the objects of (7) by `A,u,gamma,X,Y`. Put
+\[
+ H_-=(I-A)/2,\qquad H_+=(I+A)/2,
+\]
+\[
+ c_d(\xi)=\sum_{j=0}^{d}
+ \left(\langle X,H_-^jX\rangle+
+       \langle Y,H_+^jY\rangle\right),\qquad d=0,1,2,\ldots .
+ \tag{40}
+\]
+These `H_±` are positive contractions, not orthogonal projections. Then
+\[
+ \boxed{\|u\|^2=c_0\le c_1\le\cdots\le\ell_S-d_S,
+       \qquad c_d\longrightarrow\ell_S-d_S.}             \tag{41}
+\]
+In particular, for the same phase test,
+\[
+ \boxed{\mathcal F(h)+\int W_hc_d\le\mathfrak m(h),
+ \qquad \mathcal F(h)+\int W_hc_d\uparrow\mathfrak m(h).} \tag{42}
+\]
+[ABSTRACT][PAPER]
+
+**Proof.** Since `||A||<1`, both `H_±` have norm less than one. The convergent geometric identities are
+\[
+ 2(I+A)^{-1}=\sum_{j\ge0}H_-^j,\qquad
+ 2(I-A)^{-1}=\sum_{j\ge0}H_+^j.
+\]
+Each summand is positive. Apply (7) to obtain (41). The correction is integrable on each specified test; the bounds (12) and the source Mellin estimates provide a majorant. Monotone convergence proves (42). Neither a numerical lower bound for `1-||A||` nor an approximate eigenbasis is needed to establish any finite lower bound. QED.
+
+For evaluation without a half-phase branch, (40) has the equivalent polynomial expression
+\[
+ c_d=\frac12\sum_{j=0}^{d}\left[
+ \langle u,(H_-^j+H_+^j)u\rangle+
+ \Re\{\gamma\langle u,(H_-^j-H_+^j)\bar u\rangle\}\right].
+ \tag{43}
+\]
+Its first two levels are
+\[
+ c_0=\|u\|^2,\qquad
+ c_1=\tfrac32\|u\|^2-\tfrac12\Re\{\gamma\langle u,A\bar u\rangle\}.
+ \tag{44}
+\]
+Thus the first strengthening already retains the scalar-vector quantity `||u_S(xi)||^2`, without any operator inverse. Higher levels use only finite powers of the actual compressed Fourier operator. This does not authorize using powers of a different clipped operator.
+
+There is also a one-sided frequency cutoff. Define
+\[
+ F_{d,X}(h)=\mathcal F(h)+\int_{|\xi|\le X}W_h(\xi)c_d(\xi)\,d\xi.
+\tag{45}
+\]
+Then `F_{d,X} <= m`; it increases when either cutoff increases. In particular, the omitted **positive correction tail** need not be estimated to obtain a lower certificate. The scalar floor's own full-frequency tail still must be paid. This distinguishes the two tails that were combined in the report's claimed total error.
+
+If a fixed true test has `m(h)>0`, there exist finite `d` and `X` with `F_{d,X}(h)>0`. Indeed first use (42), then monotone convergence in `X`. This is completeness of this hierarchy for a strictly positive individual test, not a proof that the selected test is positive and not a bound on the required depth. For a finite packet the unnormalized matrices obey the same Loewner monotonicity. Strict positivity of the true packet implies positivity at some finite depth/cutoff by finite-dimensional norm convergence; semidefinite boundary cases do not inherit a finite-depth conclusion.
+
+### 11.3 Error price for the polynomial lower bound
+
+Let `A_hat` be a real self-adjoint approximation with a **proved** error `||A_hat-A|| <= eta`. Do not clip or rescale it, even if an approximate eigenvalue is outside `[-1,1]`. For fixed exact `u,gamma`, telescoping powers gives
+\[
+ \boxed{|c_d(A,u)-c_d(A_{\rm hat},u)|
+ \le\frac{\eta}{2}\|u\|^2
+          \sum_{j=1}^{d}j(1+\eta/2)^{j-1}.}              \tag{46}
+\]
+**Proof.** Each exact `H_±` has norm at most one, each approximate one at most `1+eta/2`, and their difference has norm at most `eta/2`. The identity
+`R^j-S^j = sum_{k=0}^{j-1} R^k(R-S)S^(j-1-k)`
+bounds each power difference. Apply the quadratic-form bound separately to `X,Y` and use `||X||^2+||Y||^2=||u||^2`. QED. [ABSTRACT][PAPER]
+
+If `||u-u_hat||<=epsilon_u`, an additional bound, using the exact operator first, is
+\[
+ (d+1)(2\|u_{\rm hat}\|\epsilon_u+\epsilon_u^2).
+ \tag{47}
+\]
+Then apply (46) with `u_hat`. Enclose the phase through (43), and retain the scalar, normalization, quadrature and frequency-tail errors from §7.3. These estimates have no semilocal angle-gap denominator. They do not claim uniform efficiency when the polynomial degree increases, and an empirical `J` difference is not the proved `eta` used here.
+
+This explains why the source overshoot is not fixed by dropping modes: a polynomial approximation can be used with its **full error price**, whereas an unpriced spectral deletion has no source order. For a lower certificate one can simply set `d=0` initially, which removes the approximate operator from the correction and keeps only the Mellin-vector norm. The pure scalar certificate corresponds to omitting all correction levels.
+
+### 11.4 A source-free false-inference check, and the remaining source sign
+
+Peak alignment alone is insufficient even after exact periodization. Consider the auxiliary multiplier `ell_test(xi)=exp(-xi^2)>0`. For every nonzero admissible compact smooth `h`,
+`-int W_h ell_test < 0`, although the phase marginal is exactly the one in (10) and the weight still vanishes at the Euler harmonic lattice. This is a direct counterexample to inferring a floor sign from the marginal and the lobe zeros alone. It is **not** a counterexample for the literal `ell_2`.
+
+The first source-specific inequality remains (9), or the weaker sufficient condition
+\[
+ F_{d,X}(h)\ge0
+\]
+with certified errors and the same test. If the scalar floor is negative, (42) shows precisely what must compensate it. No scalar-sign conclusion for the whole class or an unconditional positive infinite-dimensional subclass is added by this pass.
+
+The reported tail replacement beyond 600 is one-sided only when it omits the exact nonnegative correction. It could support a **lower** result after all remaining source errors are certified. It cannot support a two-sided error bar or a planted **upper** result. `prod_op.py` changes the retained eigenmodes, while `prod_t.py` sets a previously unspecified constant to one; these are concrete reasons the supplied full margins do not yet satisfy that qualification.
+
+### 11.5 Scoring, next action and verification boundary
+
+The observer's eight probabilities and their base-verdict scores are preserved. This pass confirms the PAPER floor identity and source-specific stable representation; it does not upgrade either missing scalar-class event or the numerical margins. The compound prediction of two zero infima remains refuted by the exact shift. The prior PHASEPROOF positive-margin event remains unresolved at its complete-enclosure threshold. The four RESONANCE source/algebra results retain their paper status, not certification by observed slopes.
+
+The base verdict's prospective checks are now assessed by this second reading as follows: `P_SF_SQUARE_AND_PACKET_IDENTITY_SURVIVES` (0.97), `P_SF_BSTAR_GAP_AND_GRAM_TRANSFER_SURVIVES` (0.90), and `P_SF_EXPLICIT_J_MAJORANT_SURVIVES` (0.91) pass this **paper recheck** with their stated domains and constants. This is not a Lean/interval gate and is not labelled a blinded third-party review. `P_SF_H4_SCALAR_CERTIFICATE_POSITIVE` (0.75) remains pending: no such run occurred.
+
+New prospective registration: `P_SF_POLYNOMIAL_LOWER_HIERARCHY_SURVIVES`, probability **0.97**, event: a subsequent independent reviewer accepts (40)--(47) with the same source and error direction. Fate: **PENDING**. It predicts acceptance of this new derivation, not that the scalar sign is true.
+
+The existing single next-task directive in §9 stays in force: certify the inverse-free scalar floor for the exact `h_4` profile with all errors. The hierarchy is an optional weaker representation for a later bounded transaction, not a replacement that silently rescores the pure-scalar forecast. No new numerical execution, Lean task, queue entry, or route promotion is authorized here.
+
+**Consumer-first boundary.** The hierarchy is `NOT_NECESSARY` for the global Weil consumer. It reaches a specific test, or a declared finite packet, only through a genuine lower endpoint. The whole-class sign and the global all-test extension remain `RESEARCH_DEBT`; reopen them with a source inequality or certified counterexample, not with additional favourable rows. The additive proof result is the monotone hierarchy and its gap-free finite-degree error bound. It does not close an analytic RH supplier.
+
+**Publication handoff.** Append this section to the existing expected verdict path on `rh_clean`, leaving its old bytes and predictions unchanged. Confirm a one-file, zero-deletion diff and read back the new blob. The receipt changes publication status only. No Lean axiom profile or kernel success is claimed.
