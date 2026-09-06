@@ -1,10 +1,10 @@
 # Q3 Codex bootstrap
 
-Canonical executor behavior: `docs/CODEX_CONTROL.md`.
+Canonical executor behavior: `docs/CODEX_CONTROL.md`. Entry: `SESSION_ENTRY.md`
+(one command, `python3 orchestrator/workflow_runtime.py plan`; the control is
+consulted by section when its gate fires, not re-read in full).
 
-Read that file completely, then enter through `SESSION_ENTRY.md`, before any
-project action. If the control is missing, unreadable, non-`ACTIVE`, or
-duplicated, stop with:
+If the control is missing, unreadable, non-`ACTIVE`, or duplicated, stop with:
 
 `CODEX_CONTROL_UNAVAILABLE_OR_AMBIGUOUS`
 

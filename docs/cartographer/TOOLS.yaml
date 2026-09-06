@@ -1614,9 +1614,9 @@ tool_families:
   generator_and_skill_discovery:
     summary: Family registration covers task-specific helpers without pretending every historical generator is live.
     front_door: task-specific-generators
-    coverage: [orchestrator/**/*.py, scripts/**/*.py, q3.lean.aristotle/scripts/**/*.py, specs_docs/**/*.sh, .agents/skills/**/SKILL.md, ~/.codex/skills/**/SKILL.md]
+    coverage: [orchestrator/**/*.py, scripts/**/*.py, q3.lean.aristotle/scripts/**/*.py, specs_docs/**/*.sh, ~/.codex/skills/**/SKILL.md]
     selection_rule: A family match permits inspection, not execution. Read the task-local source, --help, write paths, and applicable skill before calling it.
-    inventory_command: rg --files orchestrator scripts q3.lean.aristotle/scripts specs_docs .agents/skills
+    inventory_command: rg --files orchestrator scripts q3.lean.aristotle/scripts specs_docs
     codex_skills: Runtime skill registry is authoritative for availability; this manifest records only Q3 routing and hazards.
     tools:
       - id: task-specific-generators
@@ -2246,7 +2246,7 @@ dynamic_queries:
     sqlite3 -readonly q3.lean.aristotle/aristotle_db/knowledge.db
     "SELECT chain,status,count(*) FROM assembly GROUP BY chain,status ORDER BY chain,status;"
   tool_file_census: >-
-    find orchestrator scripts q3.lean.aristotle/scripts specs_docs .agents/skills -type f
+    find orchestrator scripts q3.lean.aristotle/scripts specs_docs -type f
     \( -name '*.py' -o -name '*.sh' -o -name 'SKILL.md' \)
   routeb_state: >-
     python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb_status.py --check
@@ -2295,15 +2295,16 @@ known_hazards:
     failure_mode: Importing these rules into Codex recreates a hidden second policy layer.
 
   - id: stale-step32-step33-skills
-    status: BROKEN
+    status: RETIRED
     audience: [CODEX]
     mode: READ_ONLY
-    paths: [.agents/skills/q3-step32-lean/SKILL.md, .agents/skills/q3-psdpd-step33-bootstrap/SKILL.md]
+    paths: [archive/skills_gpt5_era_2026-09-06/agents_skills/q3-step32-lean/SKILL.md, archive/skills_gpt5_era_2026-09-06/agents_skills/q3-psdpd-step33-bootstrap/SKILL.md]
     trigger: NEVER_FOR_ROUTE_B
     writes: false
     approval: NONE
     authority: NONE
     failure_mode: Route into the dormant June Step33 contour and its stale monitor.
+    note: Archived 2026-09-06 with the other GPT-5-era skills (see archive/skills_gpt5_era_2026-09-06/README.md); no project skill directory remains; SESSION_ENTRY.md is the one router.
 
   - id: zero-byte-sqlite-decoys
     status: BROKEN

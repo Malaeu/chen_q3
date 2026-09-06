@@ -36,8 +36,6 @@ PATTERNS = {
 }
 
 ACTIVE_CLEAN_PATHS = (
-    ".agents/skills/routeb-conductor/SKILL.md",
-    ".claude/skills/routeb-conductor/SKILL.md",
     "docs/HEAVY_BUILD_RUNBOOK.md",
     "docs/routeB_bus/phase4_scripts/glower_beta_cocycle_check.py",
     "docs/routeB_bus/phase4_scripts/glower_gram_form_check.py",
