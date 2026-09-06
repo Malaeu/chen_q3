@@ -14,6 +14,22 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-06-SEMILOCAL · Semilocal Sonin splitting of Connes (22): second expression or coordinate again · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SEMILOCAL_SONIN_SECOND_EXPRESSION_2026-09-06.txt`
+- Boundary: `GOAL058_SEMILOCAL_SONIN_SECOND_EXPRESSION`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: OPENSGN closed the Suzuki line as a coordinate (P); second candidate from the Connes card §5
+- Registered predictions: SPLIT_EXISTS 0.55; PRIMES_IN_REMAINDER 0.70; POSITIVITY_PAST_LOG2_BY_HAND 0.20; COORDINATE_AGAIN 0.35; RADICAL_KILLED_BY_SONIN 0.60; CONSTANT_MATCHES 0.65
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `c7d1320eef42a55a7159230c0cc96d9722046c85` / `12182` / `106` /
+  `ee693f5ea54b176164125a1ff8712fb25c645fba4bb623e5d6b734508e044811` /
+  `011b259908a6abb734dcbf80e5fd94bee5795a6e` / `yes`
+
+---
+
 ## REQ-2026-09-06-OPENSGN · REQ-2026-09-06-OPENSGN · Goal 058: prove the signed-time kernel identity (OPEN) ∂_t∂_u V_sgn = T(t−u) − 2δ(t−u) without RH — reproduce finite part, δ_0 constant, prime atoms and r_* from the ω/η-weighted Fourier products; plants; radical consistency · ANSWERED
 
 - `STATUS: ANSWERED` — verdict `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_OPEN_SIGNED_TIME_KERNEL_IDENTITY_2026-09-06.md`, commit `9a7a3a9c`; RESULT `PARTIAL_WITH_PRECISE_REMAINDER`: both time integrations evaluated (double Laplace in both sign quadrants), signed Volterra derivative with logarithmic endpoint, explicit prime shift operators; falsifier: the η-part has zero double Laplace transform on equal positive parameters ⇒ «ω = archimedean, η = primes» impossible; Lemma 7: (OPEN) ⟺ K_N = K_A ⟺ scalar Poisson identity (P): (1/π)∫pX²/((p²+x²)(X²+X′²))dx = ξ(½+p)/(ξ(½+p)+ξ′(½+p)) ∀p>½ — not proved; a proof of (P) would exclude nonreal upper zeros (§5); plants fail at Poisson reconstruction; radical consistency (35); predictions: PLANT_NAMES_THE_STEP 0.80 CONFIRMED, others NOT_ESTABLISHED/REFUTED
