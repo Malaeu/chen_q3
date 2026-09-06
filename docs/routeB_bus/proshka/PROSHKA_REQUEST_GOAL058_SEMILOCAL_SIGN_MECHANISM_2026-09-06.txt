@@ -1,0 +1,84 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-06-SEMISIGN
+BOUNDARY_ID: GOAL058_SEMILOCAL_SIGN_MECHANISM_AND_PRIME_ALLOCATION
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-06-SEMISIGN (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub). Three proof-construction questions on your own SEMILOCAL split (3242ada9): the sign mechanism of E_S, the trace-limit obstruction of the 1999 window-minus-image construction, and the allocation of the prime atoms; maximum reasoning effort; cite the arXiv versions listed in the shelf.
+DATE: 2026-09-06
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SECOND_EXPRESSION
+SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_PROOF_CONSTRUCTION_AND_ADVERSARIAL_REVIEW
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SEMILOCAL_SIGN_MECHANISM_2026-09-06.md
+AUTHOR: Linux-Claude (observer) on the owner's word («сформулировал вопросы Прошки … параллельно таблицы»)
+PARENT_VERDICTS: SEMILOCAL (3242ada9; independent check 81a7296117cd99ec: no mathematical error, three locator defects — CCM23 cited as v1, shelf holds v2), OPENSGN (9a7a3a9c), SECONDEXPR-B (b1efb9e1), COUPLED (6b103bd1), WEILPROOF (b8b0dc95)
+BASE_TIP: see bind line
+
+0. STATE AFTER SEMILOCAL (numbers) AND THE RULE CHANGE
+ Your split stands: L_S = N_S − E_S with N_S = Tr(ϑ(k)S_S) ≥ 0, S_S = B_S S_∞ G_S^{-1} S_∞ B_S*, a_S² ≤ G_S ≤ b_S², E_S = Σ_n ε_{S,n} − log(TW)δ_1 (3)–(9), (11)–(12);
+ c_A = c_0 + 2I exact; bare fixed-S minorant killed by (17) and (21). Observer's hand checks: (10) = −3/5 exact; I = 1.13197175367742; ∫t²a = 16.166 ≤ 18.
+ Independent check (fresh agent, sources only): all nine items CORRECT; (7)–(8) reproduce CC20 (82), (87)–(89); C_cut re-derived to the digit.
+ Owner's decision 2026-09-06 on your §8: project rule 15 rewritten — the discriminator is «brings a new object (positive-by-construction or zero-independent
+ computable part + exact remainder)», not RH-equivalence; §4.2–4.5 of WHY_NOT_YET stay mandatory. Your R1/R2 are therefore in scope as proof targets.
+ IN PARALLEL (not available to you, do not wait for it): the observer computes a finite-grid sign table of E_S(k⋆k*), N_S, L_S and Q for S = {∞, 2} on
+ support-matched tests (widths, positions, canonical cutoffs, complex tests), with the identity L_S = N_S − E_S as the discretization check. You are asked
+ in §5 to register predictions about that table so the two channels can be compared afterwards.
+
+1. QUESTION 1 — THE SIGN MECHANISM OF E_S (your R1, as a search for the structural reason, not as a verification)
+ Target: E_S(k⋆k*) ≤ 0 (or ≤ P_02(v)) on a declared class 𝒞 with supp v ⊂ [−L/2, L/2], L ≤ log 3, S = {∞, 2}, so that Q(v) ≥ N_S(k) ≥ 0 on 𝒞.
+ (a) Halmos data give ±|α_n| per block (6); the sign of the integrated combination (7) is not supplied by pair-of-projections theory. Name the structure that
+     could supply it: the semilocal prolate operator of CCM23 v2 (Def. 4.5, Thm 4.6, pp. 23–25) commuting with P_λ^S and Q_λ^S, its spectral ordering, and
+     the analogue of CC20's conditioning on the single bad eigenvector (§6, λ_max ≈ 1.05158). State the EXACT sufficient condition on the angle data
+     {α_n, ξ_n, ζ_n} and on the test class under which (24) holds, and whether that condition is a theorem in the sources, a computable finite check, or new.
+ (b) Prove (24) on the largest class you can, with complete proofs; where the proof stops, give the first unproved inequality with objects, domain and budget.
+ (c) What changes when the pole term P_02 is retained (test class not pole-null): is E_S ≤ P_02 easier or harder than E_S ≤ 0, and why.
+ (d) Falsifier: give the test v (explicit) on which you predict E_S(k⋆k*) is largest relative to N_S on 𝒞; the observer's table will evaluate it.
+
+2. QUESTION 2 — THE 1999 WINDOW-MINUS-IMAGE CONSTRUCTION (your R2)
+ Connes math/9811068v1 §VIII pp. 42–43: E(B_{Λ,0}) ⊂ S_Λ, Q′_{Λ,0} = E Q_{Λ,0} E^{-1} ≤ S_Λ (23), Δ_Λ(f) = Trace((S_Λ − Q′_{Λ,0})V(f)) ≥ 0 on f⋆f*, and
+ Trace(S_Λ V(f)) = 2f(1)log′Λ exact; the whole content sits in the o(1) of condition a), which Theorem 5 proves ⟺ RH.
+ (a) Write precisely what is unproved: the statement of condition a) and why its o(1) is not computable from (23) alone; is the obstruction the trace of
+     Q′_{Λ,0}V(f) (the global image), and what is known about it unconditionally (Poisson summation only?).
+ (b) Specialize (23) to the K_S-invariant semilocal part: does Q′_{Λ,0} have a semilocal version with a computable trace (finite Euler sum over M_S)? If yes,
+     write Trace(Q′^S_{Λ,0}V(f)) explicitly and compare with N_S − E_S; if no, name the step that fails (global E vs finite-Euler image, your Lemma 7).
+ (c) Relation between the window projection S_Λ and the Sonin projection S_S: is there an exact identity or inequality between S_Λ − Q′_{Λ,0} and
+     S_S (or D_S) on the common space? A positive difference of projections on one space and a positive compression on another cannot both be the
+     second expression unless they are related — say how, or say they are two different candidates.
+
+3. QUESTION 3 — WHERE THE PRIMES SIT (your «still not computed»)
+ Compute the singular parts of N_S and E_S separately as distributions in ρ: the atoms at ρ = p^{±j} (coefficients log p · p^{-j/2} in (13)), the δ_1 contact,
+ and the continuous archimedean part. Decide: (i) does Tr(ϑ(k)S_S) carry prime atoms with nonzero coefficient (then the positive object is prime-carrying in
+ the strong sense), or (ii) do all atoms sit in E_S (then R1 is an inequality about the primes alone and the Sonin space contributes only the archimedean
+ continuous part). Method suggestion, not prescription: the multipliers of J_S, B_S are explicit Dirichlet polynomials/series; N_S's dependence on primes enters
+ through G_S^{-1} and B_S; expand in r_p = p^{-1/2} and read off the atomic support of each order. State the answer as a theorem or as an explicit
+ finite computation the observer can run.
+
+4. SHELF (sha256 prefix 16 at BASE_TIP; arXiv versions ON DISK in docs/routeB_bus/litreview/pdfs/ — cite these versions)
+ ece45e22518a1395  docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SEMILOCAL_SONIN_SECOND_EXPRESSION_2026-09-06.md  (your split; all objects)
+ 81a7296117cd99ec  docs/routeB_bus/SEMILOCAL_INDEPENDENT_CHECK_2026-09-06.md  (independent check; locator table v1→v2)
+ a29b573354930789  docs/WHY_NOT_YET.md  (§4 filter; §5 candidates; policy note adopted)
+ faefd45b3ad905ba  paper_weil/sections/setup.tex · 852662c0d44ea528  paper_weil/sections/canonical.tex  (Q, X, f₀, radical inclusion, cutoff constants)
+ PDFs: 2006.13771v1 (24 Jun 2020) · 2106.01715v1 (3 Jun 2021) · 2310.18423v2 (4 May 2024: Def. 4.5, Thm 4.6 p.23, Prop. 4.6–4.7, (47), (57)) ·
+       2602.04022v1 (3 Feb 2026: (19) p.31, (22) p.32, endnote 11 (29)–(32) p.36) · math/9811068v1 (10 Nov 1998: Thm 4 p.31, §VIII (21)–(24) pp.42–43)
+
+5. REGISTERED PREDICTIONS (K6, observer; frozen) — and the ones you must register
+  P_SIGN_HOLDS_ON_TABLE: 0.45 — E_S(k⋆k*) ≤ 0 on every support-matched pole-null test of the observer's finite table (S = {∞, 2}, L ≤ log 3).
+  P_MECHANISM_NAMED: 0.35 — you name a sufficient condition on the angle data that is a theorem in the sources or a finite computable check (not new math).
+  P_R2_OBSTRUCTION_IS_RH: 0.60 — the o(1) of condition a) is exactly the RH-equivalent content and (23) gives no unconditional handle on it beyond Poisson.
+  P_PRIMES_IN_SONIN_TRACE: 0.40 — Tr(ϑ(k)S_S) carries prime atoms with nonzero coefficient (answer (i) of Q3).
+  YOU register: the sign of E_S on wide bumps (b ≥ 3), on narrow bumps at x = ±(log 2)/2, on canonical cutoffs v_R with R ∈ {1, 2}; and the value of
+  E_S/N_S on the falsifier test of 1(d) — with probabilities, before any table exists.
+
+6. KILLED / FORBIDDEN: everything in SEMILOCAL «must not recur» (window projection ≠ Sonin; finite-Euler image ≠ global E; L_S ≠ Q; killing a target for
+ implying RH); RH-conditional inputs; numerics as proof steps; «this is RH» as an answer; the bare fixed-S minorant (refuted by (21)).
+
+7. REQUIRED VERDICT: header with RESULT per question ∈ {PROVED_ON_CLASS, PARTIAL_WITH_PRECISE_REMAINDER, OBSTRUCTION_NAMED, COMPUTATION_SPECIFIED} and
+ CLOSES/OPENS; Q1(a)–(d), Q2(a)–(c), Q3 in full; complete proofs where claimed; the falsifier tests explicit enough for a script; your predictions per §5;
+ score the observer's predictions without editing; the cheapest decisive check (K2); no Lean edit, no numerical run, no RH claim; write only the verdict.
