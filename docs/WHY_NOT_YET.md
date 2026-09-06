@@ -124,6 +124,10 @@ Only after 1–5 does a candidate get a number on the caches or a batch to the j
   indifferent to plants (fails §4.3). Extra discriminator gained: any two-term dominance representation has rigid unit zero spacing, not GUE (Lagarias Thm 4.1).
 - Measured tonight (Probe 27): the ground transform's axis remainder is R_ax ≈ e^{−9.42 m}, far below √λ₁; the Rouché certificate of window m
   covers heights up to ≈ 11.6 m. Diagnostic; it locates the failure, it is not a mechanism.
+  **SCALARFLOOR (7333a9ab, first of two):** the floor is an exact square — D + D² = PQ + QP for the two source projections, so 𝔪(h) = 𝓕(h) + ‖T_v D₂‖²_HS;
+  the sign of (8) on the class is now the positivity of ONE compact operator 𝒯 (11) on the moment-null subspace of L²(I). The semilocal angle inverse is gone:
+  k₂ = |1 − re^{−iaξ}|²⟨w_ξ, G⁻¹w_ξ⟩ with the Euler Gram G ∈ [(1−r)², (1+r)²]. True k₂ ≥ 0; our negative band was the truncation (dropped modes, tail constant 1).
+  Plant: 𝔪_♯ = 𝔪 − δ_M exactly. Smallest theorem so far: classwide minorant identity; a finite certificate needs the ledger (38) with the rigorous tail (31)–(32).
 
 ## 6. Standing rule
 

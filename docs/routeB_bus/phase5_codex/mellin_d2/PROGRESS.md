@@ -184,3 +184,12 @@
 - M_N crosses delta_M at N=2 (h_2) and N=5 (h_4) for BOTH J=7 and J=8; never for the frozen h
   (it saturates at its own limit +0.013627). J-spread of M_N is flat in N (2e-4..4e-4), as predicted.
 - D2_REPORT.md now 331 lines (sections 0-8).
+
+## 2026-09-07 — tail constant fixed (SCALARFLOOR verdict + independent check)
+`prod_t.py::tail_bound` used the parent's (13) with the shape constant set to 1. The constant is false: at xi = 0 the
+ratio |J| sqrt(beta)/(1 + log beta) tends to Gamma(1/2)cos(pi/4) = 1.2533 (1.33 at beta_56), and the stored bound
+3.499e-8 was 0.75x the true truncation error 4.64e-8 (summation j = 56..89 and asymptotics agree). Replaced by the
+verdict's proved uniform (32) with C = 256: eps_55 = 8.96e-6, floor error 4*pi*eps_55 = 1.13e-4. The t tables are
+unchanged (exact closed forms); only the `tail` column of the npz was recomputed. All floors reported in
+D2_SOURCE_EXACT_EVALUATOR_REPORT carry an extra -1.13e-4 budget; none changes sign (0.0035 -> 0.0034, 0.0019 -> 0.0018).
+Still NOT a certificate: dropped modes in prod_op.py (|lam| >= 1 - 1e-12) remain; the certificate route is inverse-free (verdict (38)).
