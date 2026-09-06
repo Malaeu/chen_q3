@@ -632,3 +632,22 @@ Independently check the **negative-time convention** against the pinned PDF and 
 - **What remains open:** (OPEN), the exact weighted Fourier calculation for the signed-time object. No universal no-method theorem and no RH conclusion is claimed.
 - **What must not recur:** quote a theorem number while overlooking an incompatible definition; identify positivity with a prescribed isometry; claim finite verified zeros refute the possibility of not-RH; score a different event as the frozen prediction's success.
 - **Repository action:** only this verdict at EXPECTED_VERDICT_PATH. The request, paper, Lean files, skills, prior verdicts and shared state remain untouched. The commit and file digest are returned separately after readback; the file cannot contain its own commit identifier recursively.
+
+## 10. Readback clarification — 2026-09-06 (append-only)
+
+Two local clarifications to the first committed text, without changing its source finding, counterexample, or prediction fates:
+
+1. In the §2 table, the cross-reference in the (3.6) row should point to equation **(26)**, not (19).
+2. In §8, the phrase about the same distributional budget as §4 applies to the **full signed discrepancy**
+   `R_sgn = T(t-u) - partial_t partial_u K_norm^{sgn}`.
+   Precisely, for zeta supported in [-T0,T0]^2,
+   \[
+   |\langle R_{\rm sgn},\zeta\rangle|
+   \le(4G(2T_0)+N(T_0)^2/\pi)\|\partial_t\partial_u\zeta\|_1.
+   \]
+   For the derivative of V_sgn alone the directly justified budget is instead
+   \[
+   |\langle\partial_t\partial_u V_{\rm sgn},\zeta\rangle|
+   \le(N(T_0)^2/\pi+2T_0)\|\partial_t\partial_u\zeta\|_1,
+   \]
+   because `0 <= |t|+|u|-|t-u| <= 2T0` on that square. No bound for V_sgn alone by the former constant is asserted. The proof of (27) and the unproved identity (OPEN) are unchanged.
