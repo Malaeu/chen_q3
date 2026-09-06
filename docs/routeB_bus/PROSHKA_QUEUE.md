@@ -14,9 +14,9 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-06-OPENSGN · REQ-2026-09-06-OPENSGN · Goal 058: prove the signed-time kernel identity (OPEN) ∂_t∂_u V_sgn = T(t−u) − 2δ(t−u) without RH — reproduce finite part, δ_0 constant, prime atoms and r_* from the ω/η-weighted Fourier products; plants; radical consistency · OPEN
+## REQ-2026-09-06-OPENSGN · REQ-2026-09-06-OPENSGN · Goal 058: prove the signed-time kernel identity (OPEN) ∂_t∂_u V_sgn = T(t−u) − 2δ(t−u) without RH — reproduce finite part, δ_0 constant, prime atoms and r_* from the ω/η-weighted Fourier products; plants; radical consistency · ANSWERED
 
-- `STATUS: OPEN`
+- `STATUS: ANSWERED` — verdict `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_OPEN_SIGNED_TIME_KERNEL_IDENTITY_2026-09-06.md`, commit `9a7a3a9c`; RESULT `PARTIAL_WITH_PRECISE_REMAINDER`: both time integrations evaluated (double Laplace in both sign quadrants), signed Volterra derivative with logarithmic endpoint, explicit prime shift operators; falsifier: the η-part has zero double Laplace transform on equal positive parameters ⇒ «ω = archimedean, η = primes» impossible; Lemma 7: (OPEN) ⟺ K_N = K_A ⟺ scalar Poisson identity (P): (1/π)∫pX²/((p²+x²)(X²+X′²))dx = ξ(½+p)/(ξ(½+p)+ξ′(½+p)) ∀p>½ — not proved; a proof of (P) would exclude nonreal upper zeros (§5); plants fail at Poisson reconstruction; radical consistency (35); predictions: PLANT_NAMES_THE_STEP 0.80 CONFIRMED, others NOT_ESTABLISHED/REFUTED
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_OPEN_SIGNED_TIME_KERNEL_IDENTITY_2026-09-06.txt`
 - Boundary: `GOAL058_OPEN_SIGNED_TIME_KERNEL_IDENTITY`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
