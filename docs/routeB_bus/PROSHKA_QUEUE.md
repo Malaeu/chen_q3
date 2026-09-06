@@ -14,9 +14,9 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-06-SECONDEXPR-B · REQ-2026-09-06-SECONDEXPR-B · Goal 058: the SECOND EXPRESSION as one named identity — prove Suzuki's kernel identity (1/π)⟨S_t,S_u⟩ = G_{g_ξ}(t,u) (Thm 4.2 (4.4)) WITHOUT RH: locate the RH-dependent basis step, compute the inner product directly, radical check, plants, Yoshida subclass; supersedes SECONDEXPR · OPEN
+## REQ-2026-09-06-SECONDEXPR-B · REQ-2026-09-06-SECONDEXPR-B · Goal 058: the SECOND EXPRESSION as one named identity — prove Suzuki's kernel identity (1/π)⟨S_t,S_u⟩ = G_{g_ξ}(t,u) (Thm 4.2 (4.4)) WITHOUT RH: locate the RH-dependent basis step, compute the inner product directly, radical check, plants, Yoshida subclass; supersedes SECONDEXPR · ANSWERED
 
-- `STATUS: OPEN`
+- `STATUS: ANSWERED` — verdict `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SECOND_EXPRESSION_SUZUKI_KERNEL_IDENTITY_2026-09-06.md`, commit `b1efb9e1`; RESULT `ATTEMPT_REFUTED_WITH_EXACT_COUNTEREXAMPLE` (KILL_LITERAL_EVEN_TIME_SUZUKI_KERNEL_IDENTITY): the printed rule S_t := S_{−t} for t<0 (arXiv v3 line «For negative t, we set S_t(z) := S_{−t}(z)», also P_t; observer verified in the PDF) makes P̂_{Dψ} = 0 for every even test, while Q(ψ_L) ≥ 2‖ψ_L‖² > 0 for a narrow even bump ⇒ literal Thm 1.4/(4.4) inconsistent as printed; judge retracts his living-chat endorsement; root-free Volterra identity (11), bounded-multiplier L² representation (13)–(14), free Gram kernel (16), exact distributional remainder (18) with nonzero witness; signed-time repair (25) proposed (not author-confirmed) with unconditional radical-cutoff check (27); remaining target (OPEN): ∂_t∂_u V_sgn = T(t−u) − 2δ(t−u); plants give Q = −2 (23)/(24); predictions: RH_STEP_LOCATED 0.85 CONFIRMED; COMPLETE 0.02, RADICAL_CHECK 0.55, YOSHIDA 0.30 REFUTED (literal); PRIME_ATOMS 0.35, RESULT_REFUTED 0.25 NOT_ESTABLISHED
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SECOND_EXPRESSION_SUZUKI_KERNEL_IDENTITY_2026-09-06.txt`
 - Boundary: `GOAL058_SECOND_EXPRESSION_SUZUKI_KERNEL_IDENTITY`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
