@@ -89,6 +89,14 @@ Only after 1–5 does a candidate get a number on the caches or a batch to the j
   E_S > 0 on every positive bump and on the canonical cutoffs; E_S < 0 robustly only on antisymmetric two-bump combinations across log 2 (the sign is a
   phase property through the prime 2, the one lead); the bare Sonin trace is neither minorant nor majorant; the judge's falsifier v₊ is UNRESOLVED at the
   accuracy reached; both implementations see a non-decaying semilocal angle spectrum (D_S may not be trace class). Diagnostic, not a proof.
+  **SEMITABLE (10c9c987, 2026-09-06):** the phase class is exact — the anti-diagonal two-lobe space 𝒞₋ = {U_{a/2}h − U_{−a/2}h}, pole-null iff h is;
+  the exact mixed phase form e(v_θ) = n₀ − A₀ + (ν_a + J_a(h) + w)cos θ has THREE phase terms (Sonin cross term, archimedean J_a > 0, prime w), so the sign
+  is not the prime alone; the archimedean energy is NOT phase-independent (correction of the table's reading). Rigorous: the one-prime angle operator is
+  compact, not Hilbert–Schmidt (lacunary kernel), in every Schatten class q > 2 — no nonzero plateau, no 1/n tail; but after a smooth compact test all
+  pieces of the split are ordinary trace class (Theorem 4 closes the trace-domain gap). R1 is retained as (R1−): for h ∈ C_c^∞(−δ₀, δ₀) pole-null,
+  n(A₋h) ≤ L₂(A₋h) at T = W = 1 — an infinite-dimensional class; first unproved inequality (8): n₀ − ν_a ≤ A₀ + J_a + w. Plant: the false local factor
+  shifts e(v₋) by δ_M = 0.02087; survival of the sign needs margin > δ_M. Next: reconcile the base function h between the two implementations (K2),
+  then the one-sided packet matrix (10) on 𝒞₋^{00}.
 - **Policy note (judge §8, recorded, not adopted by the observer alone):** the judge holds that §4.1 («an RH-equivalent target is filed away without
   investigation») is not mathematically justified — equivalence says nothing about accessibility to a method; circularity is using the equivalent as a
   premise, not reaching it as a conclusion; «only identities reach zero margin» is not a theorem. Adopted by the owner 2026-09-06: rule 15 rewritten — the discriminator is «brings a new object (positive-by-construction or zero-independent computable part + exact remainder)», not RH-equivalence; §4.2–4.5 stay mandatory.
