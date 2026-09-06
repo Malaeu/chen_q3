@@ -49,6 +49,11 @@ Only after 1–5 does a candidate get a number on the caches or a batch to the j
 
 ## 5. What is live under the filter (2026-09-06)
 
+- **THE named candidate (judge, living chat 2026-09-06; verified in the PDF):** Suzuki 2301.00421, Theorem 1.4: RH ⟺ ‖P̂_{Dψ}‖² = π⟨ψ,ψ⟩_W, with P̂
+  and S_t explicit and unconditional (Prop. 1.2) and the kernel identity (1/π)⟨S_t,S_u⟩ = G_{g_ξ}(t,u) (Thm 4.2) proved only under RH via an RH basis.
+  Work item: prove the kernel identity without RH (∂_t∂_u K_norm = −g_ξ″(t−u) distributionally). Batch REQ-2026-09-06-SECONDEXPR-B. The compass 𝒞 = −Θ_ξ
+  (Suzuki (1.4)) — the circle branch is this object, not a separate route.
+
 - R1 (COUPLED): a nonlocal positive factor on f₀s with proved annihilation of the radical — no candidate formula exists.
 - R2 (COUPLED/ZG): cutoff-dependent Gram certificates K_m + e_m I ⪰ 0 with e_m → 0 and proved recovery — no rule for e_m exists.
 - The frame reading of WEILPROOF (i): K = Γ − c_L I − 2ββ*, i.e. the prime atoms and short shifts form a frame whose optimal lower bound is c_L.
