@@ -1,0 +1,111 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-07-SCALARFLOOR
+BOUNDARY_ID: GOAL058_SCALAR_FLOOR_LEMMA_AND_SEMILOCAL_CONDITIONING
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-07-SCALARFLOOR (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub). Your Mellin/resolvent evaluator (RESONANCE (6),(10)–(14)) has been built and run; d_∞ is verified to 8 digits by two discretizations, d_2 is computable only above ξ ≈ 16 because the semilocal pair has TWO near-unit angles, and a one-sided floor lemma reduces the phase sign to an explicit scalar. Four questions: prove/refute the floor lemma and the scalar sufficient condition; explain and stabilize the conditioning; interpret the false-factor plant outcomes; state the smallest provable theorem. Maximum reasoning effort. This request goes to two independent judge sessions; both write to the same EXPECTED_VERDICT_PATH; the observer captures every version.
+DATE: 2026-09-07
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SECOND_EXPRESSION
+SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_PROOF_CONSTRUCTION_AND_ADVERSARIAL_REVIEW
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SCALAR_FLOOR_AND_SEMILOCAL_CONDITIONING_2026-09-07.md
+AUTHOR: Linux-Claude (observer) on the owner's word («напишем заново с новой информацией; закину двум разным прошкам»)
+PARENT_VERDICTS: RESONANCE (5549cceb; independent check 811e836b666549df: all 11 items CORRECT), PHASEPROOF (4a29f389 + uploaded second version ab149d121da10eb9, with the full-residual Galerkin sandwich Lemma 5), SEMITABLE (10c9c987), SEMISIGN (59aabc18), SEMILOCAL (3242ada9)
+BASE_TIP: see bind line
+
+0. WHAT WAS COMPUTED (source-exact evaluator of your (6),(10)–(14); report 29c5f28a4c6f4ed2; scripts docs/routeB_bus/phase5_codex/mellin_d2/; PROGRESS dcd275cff1d86010)
+ Scalars: I(β,ξ) by the incomplete-gamma closed form = exact power series to 1e−42; |I|√β → √(π/2) exactly (Lemma 3 regime); t_S summed to j ≤ 55 (tail 3.5e−8);
+ |γ_S| = 1 to 1e−12; (γ′/γ)/i = q_S to 5e−11. Operator: A_∞ by Nyström: eigenvalues +0.99997137627, −0.97948473467, +0.52408589623, … whose SQUARES are the Slepian
+ numbers (so the parent's «eigenvalues α_n» are ±√ of the prolate concentrations; α_∞ = 0.99997138, 1/(1−α²) = 17466); an independent Legendre–Galerkin
+ compression reproduces d_∞ to 8 digits. d_∞: k_∞ = 0 (1e−16) for ξ ≤ 2; d_∞ξ² → −7.3; ∫₀^X d_∞ = 7.32/X ⇒ ∫d_∞ = 0 confirmed; carrier B's k_arch matches k_∞ on
+ [16,120] to 1.3e−4 and fails above 300 (order of limits, as your §2.4 says). d_2 (J = 6/7/8, N = 1610/3220/6440, no rescaling): Thm 4 exponent −0.48…−0.49;
+ first cosine coefficient over 44 periods −0.1521 → −0.1560; d_2 NOT one-signed (negative at 57% of grid points); |t_2(ξ)| is a Poisson kernel in ξ log 2 peaking
+ at ξ ≡ 0 mod 2π/log 2 with height 1/(1−r) = 3.41× the mean (phases −ξ(log 2π + j log 2) form an arithmetic progression) — d_2 is spiky at the Euler harmonics.
+ CONDITIONING (structural): the truncated multiplier m^{(J)} is not unimodular, sup|m^{(J)} − m| = (1+r)r^{J+1} exactly; the top Nyström eigenvalues of A_2^{(J)}:
+ λ₀ → −1 (−0.9911, −1.0039, −1.0064, −1.0047, −1.0018 at J = 4..8) and λ₁ → +1 (0.830, 0.893, 0.934, 0.960, 0.976; geometric limit 1.0024): the semilocal pair has TWO
+ near-unit angles where the archimedean has one; any operator error η enters d_S as η/(1−λ²) ⇒ pointwise d_2 below ξ ≈ 16 is NOT computable by (6) at attainable
+ precision (J-spread 1.2e−2 there; 1e−3 above 120). Symptom: k_2 = q_2/2π + d_2 comes out NEGATIVE near ξ ≈ 8 (−0.014, stable across J) — a density cannot be negative.
+ The near-unit modes are dormant for ξ ≳ 16 (their share of |b_n|² ≤ 1e−4), so the INTEGRATED sign quantities converge (J-spread 2e−4).
+ FLOOR LEMMA (agent's derivation, verified by the observer on random real symmetric contractions to 1e−12): in the eigenbasis of A_S (real symmetric), with
+ c_n = ⟨ψ_n, f_ξ⟩, u_n = λ_n c_n, t_S = Σλ_n c̄_n², (6) becomes d_S = 2Re{γ_S t_S} + Σ_n (2λ_n²/(1−λ_n²))[λ_n Re{γ_S c̄_n²} − |c_n|²], and every mode term is ≤ 0
+ because |Re{γc̄²}| ≤ |c|² and |λ_n| ≤ 1. Hence pointwise d_S(ξ) ≤ 2Re{γ_S(ξ)t_S(ξ)} and 𝔪(h) = −∫W_h d_S ≥ −∫W_h 2Re{γ_S t_S} =: floor(h) — a SUFFICIENT
+ condition for your (12)/(R-SIGN) on a test h that involves only the explicit scalar t_S (Mellin integrals), no operator inverse, no conditioning. Moreover the
+ mode part is a nonnegative Hermitian form in the test (c_n(ξ) is test-independent), so on any finite packet the floor matrix is a PSD-minorant of the exact one.
+ SIGN NUMBERS (𝔪 = −∫W_h d_2; tail closed by the analytic |ĥ|² to ξ = 3000, W-mass deficit 4.4e−5 for the frozen h; J-spread ≈ 2e−4; operator part beyond 600 =
+ leading term only): frozen h = (∂² − ¼)η_{δ₀}: 𝔪 = +0.013454 (J = 8) / +0.013276 (J = 7), floor +0.001973 — vs δ_M = 0.020866: 𝔪 < δ_M, the false local factor
+ FLIPS the sign on this test; polynomial pole-null tests η_k = N_k(1 − (x/δ₀)²)^k, h_k = (∂² − ¼)η_k: k = 2: 𝔪 = +0.025790 / +0.026090, floor +0.003687, margin over
+ δ_M +0.0049 (its tail beyond 3000 is only 98.95% closed: ±3e−3); k = 4: 𝔪 = +0.024253 / +0.024606, floor +0.003509, margin +0.0034, tail closed (4e−7), 98.6% of its
+ W-mass below ξ = 150 where d_2 is converged — the cleanest number. The carrier diagnostic +0.34/+0.36 is REPRODUCED by the pipeline on the carrier's own rows and
+ is therefore carrier error (rms k_semi − k_2 = 1.1e−2 on [16,120], 0.17 on [300,600]; 74% of the frozen W-mass lies above 120): your P_PHASEPROOF_SOURCE_PACKET_
+ MINUS_MARGIN_POSITIVE (0.70) is CONFIRMED as a sign (+0.0134 ± 2e−4 with a rigorous floor +0.0020), 27× smaller than the diagnostic it was registered against.
+ Scoring of your RESONANCE registrations: R_PERIODIZATION_SURVIVES — CONFIRMED (Lemma 5 checked to 1e−6); R_SOURCE_REMAINDER_DECAYS — CONFIRMED numerically
+ (exponents −2 and −½); R_PEAK_NOTCH_AND_POSITIVE_ATOM — CONFIRMED (exact); R_LOG_GAIN_FAILS — CONFIRMED (independent check).
+
+1. QUESTION 1 — THE FLOOR LEMMA AND THE SCALAR CONDITION
+ (a) Prove or refute, as a theorem about the true operator: d_S(ξ) ≤ 2Re{γ_S(ξ) t_S(ξ)} for all ξ (state exactly what it needs: A_S real symmetric contraction with
+     ‖A_S‖ < 1, γ unimodular, the eigen-expansion convergence Σλ²|c|² = ‖u_S‖² < ∞, and the validity of (6)). Then the packet statement: the mode part is a PSD
+     Hermitian form on any finite test packet.
+ (b) The scalar sufficient condition for (R-SIGN) on a test: F(h) := −∫W_h(ξ)·2Re{γ_2(ξ)t_2(ξ)}dξ ≥ 0. t_2 is explicit: t_2(ξ) = (1/π)Σ_{j≥−1} c_j J(β_j, −ξ), J(β,ξ) =
+     ∫₀¹(−log v)v^{−1/2+iξ}cos(βv)dv (closed form via incomplete gamma: ∫₀¹v^{s−1}e^{±iβv}dv = (∓iβ)^{−s}γ(s, ∓iβ), J = −∂_s I). Structure to exploit: |t_2| peaks at
+     ξ ≡ 0 mod 2π/log 2 EXACTLY where the minus-phase weight (1 − cos aξ) VANISHES (Lemma 5 marginal). Prove F(h) ≥ 0 on the largest class you can (all pole-null h with
+     support in I? all h with support in an interval shorter than a? a frequency-localized subclass?), or exhibit an h in the class with F(h) < 0 (then the floor is
+     not sufficient there and the mode part must be used). Give the first unproved inequality if partial.
+ (c) Is there a matching UPPER bound d_S ≥ 2Re{γt} − (explicit) that, together with (a), brackets 𝔪(h) between two scalar integrals?
+
+2. QUESTION 2 — THE SEMILOCAL CONDITIONING
+ (a) Explain from the source why the semilocal pair (P_1, Q_1) for S = {∞,2} has two angles tending to ±1 (λ₀ → −1, λ₁ → +1) while the archimedean pair has one
+     (+0.99997): is the second near-common direction the image under the Euler factor of the first (B_S maps the near-common Slepian direction to another
+     near-common one), and does the count grow with |S| (one per prime? — this bears on the non-Hilbert–Schmidt Theorem 3 and on the «two near-unit angles»
+     as a source feature vs truncation artefact)? Give the exact statement and, if possible, the limiting values.
+ (b) Give a STABLE representation of d_S that avoids 1/(1 − λ_n²) on the near-unit modes (e.g. separate the two near-unit directions exactly and treat them by a
+     resolvent identity at a shifted point, or express d_S through (I + A)^{−1} and (I − A)^{−1} acting on smooth vectors only), with an error that is NOT amplified
+     by (1−λ²)^{−1}; or prove that no such representation exists and the pointwise d_S near ξ ≈ 8 is genuinely delicate.
+ (c) k_2(ξ) < 0 near ξ ≈ 8 in the evaluator: a density ‖S e_ξ‖² cannot be negative. Which term of (6) is wrong there under truncation, and what is the true sign of
+     d_2 on [5, 16] (needed: the frozen-h W-mass below 16 is only 0.05%, so the sign integrals do not depend on it — confirm this insensitivity is exact).
+
+3. QUESTION 3 — THE FALSE-FACTOR PLANT, TEST BY TEST
+ On the frozen h the plant flips the sign (𝔪 = 0.0134 < δ_M = 0.0209); on h_2, h_4 it survives with margins 0.005, 0.003. Your (36) says whole-class survival is refuted
+ via h_T (𝔪(h_T) → 0). Interpret: is the test-dependence of survival the expected signature of an identifying mechanism (the mechanism «sees» the false factor on
+ some tests and not others), and what class-level statement about the plant can be proved (e.g. inf over the class of 𝔪 = 0 for both the true and the planted
+ source ⇒ the plant is detected only on tests with 𝔪 < δ_M — is that a theorem?). Also: the margins 0.003–0.005 are close to the J-spread 2e−4 × 10; are they
+ real or within the unresolved operator error (give the criterion).
+
+4. QUESTION 4 — THE SMALLEST THEOREM
+ State the smallest theorem now provable from the shelf, with exact hypotheses, in the form «for every h in CLASS: 𝔪(h) ≥ floor(h) ≥ 0», or «for the specific h_4:
+ 𝔪(h_4) ≥ 0.0035 with error E from the enclosure»; say what is PAPER, what is CONDITIONAL (on (6)), and what would make it a finite certificate (which enclosure of
+ t_2 and of the Mellin integrals; the incomplete-gamma closed form is exact, so the only errors are quadrature in ξ and the j-tail 3.5e−8). If (b) of Q1 is proved on a
+ class, this becomes the first prime-carrying positivity theorem past the archimedean window for that class — state it that way only if it is true.
+
+5. SHELF (sha256 prefix 16 at BASE_TIP; arXiv versions on disk)
+ 29c5f28a4c6f4ed2  docs/routeB_bus/D2_SOURCE_EXACT_EVALUATOR_REPORT_2026-09-06.md  (all numbers above; error budget; three sentences)
+ dcd275cff1d86010  docs/routeB_bus/phase5_codex/mellin_d2/PROGRESS.md  (§7 follow-up numbers: tail to 3000, h_2, h_4)  · scripts in the same directory (core.py, dens.py, evald.py, galerkin.py, prod_op.py, prod_t.py, s5.py, s5b.py, valid45.py, final.py, README.md); arrays d_inf.npz, d_two.npz
+ 1024864bcf3e4ea3  docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_RESERVOIR_RESONANCE_AND_PRIME_SCALING_2026-09-06.md  · 811e836b666549df  RESONANCE_INDEPENDENT_CHECK_2026-09-06.md
+ ab149d121da10eb9  docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_PHASE_CLASS_INEQUALITY_AND_MOLLIFIER_CROSSWALK_2026-09-06_UPLOADED_VERSION.md  (your second PHASEPROOF: Lemma 5 full-residual sandwich, D_F = FG²F ≠ (FGF)²; plant n = 4/3 checked by the observer)
+ 398bf5a5547e4f2a  docs/Progress_Log.md  (entries 2026-09-06/07: the observer's mode-lemma check; the carrier validation against d_∞)
+ PDFs as before: 2006.13771v1, 2310.18423v2, 2602.04022v1, math/9811068v1
+
+6. KILLED / FORBIDDEN: everything in the five parent verdicts «must not recur»; RH-conditional inputs; the diagnostic numbers as proof steps (they are DIAGNOSTIC);
+ rescaling the truncated operator; «this is RH».
+
+7. REGISTERED PREDICTIONS (K6, observer; frozen)
+  P_FLOOR_LEMMA_THEOREM: 0.85 — d_S ≤ 2Re{γ_S t_S} is proved as a theorem about the true operator (under (6)).
+  P_SCALAR_CONDITION_ON_CLASS: 0.30 — F(h) ≥ 0 is proved for ALL pole-null h supported in I (the whole (R1−) class).
+  P_SCALAR_CONDITION_ON_SUBCLASS: 0.50 — proved on an explicit infinite-dimensional subclass (e.g. frequency-localized or high-modulation).
+  P_TWO_UNIT_ANGLES_SOURCE_FEATURE: 0.65 — the second near-unit angle is a source feature (Euler image of the Slepian direction), not a truncation artefact; count grows with |S|.
+  P_STABLE_REPRESENTATION: 0.50 — a representation of d_S without (1−λ²)^{−1} amplification on the near-unit modes is given.
+  P_K2_NEGATIVE_IS_TRUNCATION: 0.80 — k_2 < 0 near ξ ≈ 8 is a truncation/conditioning artefact; the true k_2 ≥ 0 there.
+  P_PLANT_TEST_DEPENDENCE_EXPECTED: 0.60 — the judge states that test-dependent survival is the expected behaviour and gives a class-level theorem (inf = 0 for both sources).
+  P_SMALLEST_THEOREM_IS_FINITE_TEST: 0.70 — the smallest theorem stated is a finite-test certificate (h_4), not a class statement.
+
+8. REQUIRED VERDICT: header with RESULT per question ∈ {PROVED_ON_CLASS, PARTIAL_WITH_PRECISE_REMAINDER, OBSTRUCTION_NAMED, COMPUTATION_SPECIFIED,
+ ATTEMPT_REFUTED_WITH_EXACT_COUNTEREXAMPLE} and CLOSES/OPENS; Q1(a)–(c), Q2(a)–(c), Q3, Q4 in full; proofs where claimed; score the observer's predictions without
+ editing; score your own RESONANCE/PHASEPROOF registrations as listed; register new ones; the cheapest decisive check; no Lean edit, no numerical run, no RH claim;
+ write only the verdict.
