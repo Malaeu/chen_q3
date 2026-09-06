@@ -1,0 +1,96 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-06-PHASEPROOF
+BOUNDARY_ID: GOAL058_PHASE_CLASS_INEQUALITY_8_AND_MOLLIFIER_CROSSWALK
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-06-PHASEPROOF (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub). Proof-attempt batch (WEILPROOF rules 0-10) on your own (R1−)/(8) from SEMITABLE, plus one crosswalk question linking the semilocal split to the pair-correlation/mollifier residual of the 2026 two-thirds theorem; maximum reasoning effort; cite arXiv versions as listed.
+DATE: 2026-09-06
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SECOND_EXPRESSION
+SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_PROOF_CONSTRUCTION_AND_ADVERSARIAL_REVIEW
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_PHASE_CLASS_INEQUALITY_AND_MOLLIFIER_CROSSWALK_2026-09-06.md
+AUTHOR: Linux-Claude (observer) on the owner's word («Делай бач»)
+PARENT_VERDICTS: SEMITABLE (10c9c987; independent check d13d68bf18bd970c: all nine items CORRECT), SEMISIGN (59aabc18), SEMILOCAL (3242ada9), OPENSGN (9a7a3a9c), WEILPROOF (b8b0dc95)
+BASE_TIP: see bind line
+
+0. STATE (numbers) AND THE OWNER'S FRAME
+ Your (R1−): S = {∞, 2}, T = W = 1, δ₀ = (log 3 − log 2)/8; ∀h ∈ C_c^∞(−δ₀, δ₀; ℂ) with A₊(h) = A₋(h) = 0: n(A₋h) ≤ L₂(A₋h), A₋h = U_{a/2}h − U_{−a/2}h, a = log 2.
+ Real-even slice = (8): n₀ − ν_a ≤ A₀ + J_a(h) + w, w = a/√2, with n(v_θ) = n₀ + ν_a cos θ, L₂(v_θ) = A₀ − (J_a + w)cos θ (your (6)–(7)).
+ Your K2 done by the observer (mpmath, 302b8982d4f6620f): for h = (∂² − ¼)η_{δ₀}: H = 1.6434e8, A±(h) = 7.6e−22, J_a(h) = 4.596e−7 > 0 (j = 0 term vanishes, j = 1 term
+ 6.38; the observer's first value 4.108e−7 was a series truncation, corrected by the checker), 𝒟(h)/H = 8.809290018, L₂(v₊/v₋/v_i) = 2.946977/3.927236/3.437107
+ — implementation B's values exact to 7 digits; implementation A's pole-null rows were under-resolved quadrature (𝒟 − c_A = 2.53 wrong) and are void.
+ Diagnostic values (B only, N = 8192, no certified enclosure — NOT premises): n(v₊) = 2.969, n(v₋) = 3.588, n(v_i) = 3.278; e_true(v₊) = +0.022, e_true(v₋) =
+ −0.340, e_true(v_i) = −0.159; so on the diagnostic the minus phase satisfies (8) with margin ≈ 0.34 and the plus phase violates Q ≥ n by ≈ 0.02; from the
+ three values: n₀ ≈ 3.278, ν_a ≈ −0.309 (n(v₊) − n(v₋) = 2ν_a = −0.619), A₀ ≈ 3.437, J_a + w ≈ 0.490 — the diagnostic (8) reads 3.587 ≤ 3.927.
+ The owner's frame (recorded as method 2026-09-06): where the standard computation shows zeros — here the zero blocks of D_S, i.e. the common kernel of
+ (P_λ, Q_λ) = Sonin's space — look for the incompressible positive quantity living there (N_S) and put its energy on the side of the inequality that needs it.
+ The question below is whether that energy suffices on the phase class, and whether the same energy is the off-diagonal residual of the pair-correlation method.
+
+1. QUESTION 1 — PROVE (8) / (R1−) (proof-attempt batch; WEILPROOF rules: equivalence to a strong target is not circularity; own prior derivations are
+   PAPER_DERIVATION_TO_RECHECK; falsifier for every representation; three result codes)
+ (a) Attack the exact mixed form: bound the Sonin cross term ν_a = H⁻¹ Re⟨U_{a/2}Z, U_{−a/2}Z⟩_HS, Z = T_h S_{2,1}, from below by −(n₀ − A₀ − J_a − w) on the
+     class. Tools you own: the explicit projector S_S = B S_∞ G⁻¹ S_∞ B* with a_S² ≤ G ≤ b_S²; the one-sided series (7)/(9) of SEMISIGN; T_h commutes with B;
+     the archimedean Sonin projector is explicit (prolate data, CC20 §4). Note ν_a is a cross term between two translates of the SAME test through the Sonin
+     compression — is there an exact formula for ⟨U_c Z, U_{−c} Z⟩_HS in terms of the angle data and the multiplier of h (the translates differ by U_a, and
+     B = I − rU_a; write U_a through B: U_a = (I − B)/r)? If ν_a can be written as a quadratic form in h with an explicit kernel, state it.
+ (b) Where the proof stops: the first unproved inequality with objects, domain, budget. If the stop is a finite computation, specify it so the observer can run
+     it with the exact-arithmetic supplier: CCM arXiv:2403.01247v1 (on the shelf) — moment problem / Jacobi matrix for S = {∞, p}, coefficients in ℤ[1/√2] at
+     p = 2 — is this literally our G = P₀B*BP₀ and its inverse, and does it give n₀, ν_a in exact arithmetic (killing the carrier error that split A and B)?
+ (c) Plants (mandatory): (i) the false local factor (SEMILOCAL (22)–(23), SEMITABLE (13)–(14)): e_sharp(v₋) = e(v₋) + δ_M, δ_M = 0.020866 — say whether
+     your proof of (8), if any, survives it and why (if it survives, the mechanism is archimedean); (ii) the Davenport–Heilbronn plant: the 2026 two-thirds
+     method is «insensitive to o(N) off-line zeros and holds for Davenport–Heilbronn and Epstein zeta functions» (Anthropic paper §1.4) — does your split
+     N_S − E_S exist for a Davenport–Heilbronn-type function (no Euler product), and if it does, does (8) fail there? A mechanism that cannot tell ζ from
+     Davenport–Heilbronn is a counting mechanism, not an identifying one (WHY_NOT_YET §4.3).
+ (d) Extension map: if (8) holds on 𝒞₋ for S = {∞, 2}, what is the exact statement for S = {∞, 2, 3} on windows up to log 5 (two-lobe classes across
+     log 2 and log 3, and the three-lobe class), and what breaks first: the cross terms between different primes ⟨U_{log 2}·, U_{log 3}·⟩ (pairs of primes —
+     the same place where the two-thirds method stops at X ≤ T needing Hardy–Littlewood), or the Sonin energy itself?
+
+2. QUESTION 2 — CROSSWALK TO THE TWO-THIRDS RESIDUAL
+ Anthropic/Claude, 11 Aug 2026 (pdf on the shelf as arXiv:2608.13637 Alpöge–Furman, and Lamzouri arXiv:2609.02882v1): Weil's Hermitian form W restricted to
+ d ~ N(T, 2T) modulated copies of a window ψ ⇒ G̃ = P + Q (on-line zeros: rank-one positive; off-line pairs: signature (1,1), Bombieri 2000); rank–trace
+ inequality rank P₁ ≥ 2tr P₁ + 4tr Q′ − 4b − ‖P₁ + Q′‖²_HS; ‖G̃‖²_HS = (R(ψ) + o(1))N by Montgomery's unconditional prime-side second moment (BGSTB 2024);
+ chain N₀ˢ ≥ (2 − R(ψ))N; ceiling: «for X ≫ T the off-diagonal prime sum is no longer dominated by the diagonal, and its evaluation would require
+ information on prime pairs (Hardy–Littlewood)»; «RH itself is out of reach of the mechanism».
+ (a) Is ‖G̃‖²_HS (the HS square of the compressed Weil form on the modulated window family) expressible as our Q on an explicit test, i.e. is the
+     two-thirds «residual» R(ψ)N − (something) a value of the Weil quadratic form Q(v) for a window-built v? If yes, write v and the dictionary (their
+     window ψ on [T, 2T] ↔ our log-variable test; their bandwidth-one ↔ our support diameter ≤ log T?).
+ (b) Does the semilocal split apply to their compressed matrix: G̃ = N_S-part − E_S-part with S = primes ≤ T? Then their off-diagonal prime sum beyond X = T
+     would be a piece of E_S. State whether the Sonin compression can bound that piece WITHOUT Hardy–Littlewood (that would be the first unconditional
+     control of the off-diagonal residual), or name the step where the Sonin projector needs the same prime-pair input.
+ (c) Cheapest decisive test (K2) for the crosswalk on the finite shelf: a number computable from our machines and from their explicit R(ψ₀) = 4/3, R(ψ_MT)
+     = c_MT⁻¹ = 0.5 + 0.5cot(1/√2)/√2 … (their §5), whose agreement or disagreement decides whether (a) holds.
+
+3. SHELF (sha256 prefix 16 at BASE_TIP; arXiv versions on disk)
+ 0054743f1847e2c7  docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SEMILOCAL_TABLE_PHASE_CLASS_2026-09-06.md  (your (R1−), (6)–(8), (13)–(14), Theorems 3–4)
+ d13d68bf18bd970c  docs/routeB_bus/SEMITABLE_INDEPENDENT_CHECK_2026-09-06.md  (all CORRECT; J_a(h) = 4.5961877e−7; δ_M = 0.0208661771)
+ 6668972843ca2f92  docs/routeB_bus/SEMILOCAL_SIGN_TABLE_COMPARISON_2026-09-06.md  · tables A/B in the same directory; 302b8982d4f6620f h_reconcile_out.txt
+ b00d7014bb4f6035  docs/routeB_bus/litreview/SWEEP_C_FRESH_TOOLS_FOR_INEQUALITY_8_2026-09-06.md  (no supplier for ν_a in print 2021–2026; CCM q-series as exact arithmetic)
+ 9bc61cf07be5e1df  docs/routeB_bus/litreview/LAMZOURI_HILBERT_SIMPLE_ZEROS_2026_USAGE_CARDS.md  (our 03.09 card: Prop 2.1 = Gram–Schmidt/Bessel in L²(−λ, λ); counting, not identifying)
+ b082fceec9e6f655  docs/CHAT_DIGESTS.md  (entries 2026-09-06: 40% vs 67%; Nyman–Beurling/Burnol/BCF; the owner's frame)
+ PDFs: docs/routeB_bus/litreview/pdfs/{2608.13637,2609.02882,2403.01247,2006.13771,2310.18423,2602.04022}.pdf; Anthropic primary pdf: https://www-cdn.anthropic.com/95c246936988e43127bc6b2ceb7077c1dad2d68e.pdf (17 pp., Aug 11 2026); Lean: github.com/anthropics/zeta-23-lean
+ Lean (ours, KERNEL_GREEN): NoFiniteStencilMinorant.lean (no positive finite-stencil minorant) — any proof of (8) must be nonlocal.
+
+4. KILLED / FORBIDDEN: everything in SEMILOCAL/SEMISIGN/SEMITABLE «must not recur»; RH-conditional inputs (reality of zeros; Hardy–Littlewood; pair
+ correlation beyond support 1); numerics as proof steps (B's values are diagnostics); the bare fixed-S minorant on all tests (refuted); «this is RH».
+
+5. REGISTERED PREDICTIONS (K6, observer; frozen)
+  P_8_PROVED_ON_CLASS: 0.20 — (8) proved on the whole (R1−) class at T = W = 1.
+  P_8_PROVED_ON_SUBCLASS: 0.30 — proved on an explicit infinite-dimensional subclass (e.g. h with a spectral-gap or frequency condition).
+  P_NU_A_HAS_EXPLICIT_KERNEL: 0.55 — ν_a is written as an explicit quadratic form in h (kernel from angle data and the Euler multiplier).
+  P_CCM_QSERIES_IS_OUR_GRAM: 0.60 — CCM 2403.01247's Jacobi matrix is literally G = P₀B*BP₀ at p = 2 (exact arithmetic for n₀, ν_a).
+  P_DH_PLANT_KILLS_IDENTIFYING_CLAIM: 0.50 — the split exists for Davenport–Heilbronn-type functions and (8) does not fail there ⇒ the phase mechanism is counting-type.
+  P_CROSSWALK_A_YES: 0.35 — ‖G̃‖²_HS of the two-thirds method is a value of our Q on an explicit window-built test.
+  P_CROSSWALK_B_NEEDS_HL: 0.70 — the Sonin projector needs the same prime-pair input where their method needs Hardy–Littlewood.
+
+6. REQUIRED VERDICT: header with RESULT per question ∈ {PROOF_CANDIDATE_COMPLETE, PARTIAL_WITH_PRECISE_REMAINDER, ATTEMPT_REFUTED_WITH_EXACT_COUNTEREXAMPLE,
+ COMPUTATION_SPECIFIED, OBSTRUCTION_NAMED} and CLOSES/OPENS; Q1(a)–(d), Q2(a)–(c) in full; complete proofs where claimed; the finite computation of 1(b)
+ explicit enough for a script; both plants evaluated; score the observer's predictions without editing; register your own; the cheapest decisive check; no
+ Lean edit, no numerical run, no RH claim; write only the verdict.
