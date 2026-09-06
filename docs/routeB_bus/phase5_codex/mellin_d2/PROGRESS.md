@@ -173,3 +173,14 @@
 - W-mass coverage: k=4 reaches 100.000% by xi=600 (deficit 4e-7) -> essentially no tail term;
   bump 99.9993% by 3000; k=2 only 98.95% by 3000 (|hhat_2|^2 ~ xi^-2), so k=2 keeps a
   tail uncertainty ~0.0659 * sup_{>3000}|d_2| ~ 3e-3, comparable to its own margin.
+
+## 03:20 — sections 7 and 8 written
+- Analytic hhat matches the array to 1e-11; extension to xi=3000 leaves a 0.0007% mass deficit
+  (bump) / 4e-7 (h_4) / 1.05% (h_2). Cheap v-grid validated against the production run to 7e-17.
+- m(h): bump +0.013628, h_2 +0.026895, h_4 +0.024253 (J=8); spreads +1.8e-4 / -3.0e-4 / -3.5e-4.
+  vs delta_M = 0.020866: bump BELOW (-0.00724), h_2 ABOVE (+0.00603), h_4 ABOVE (+0.00339).
+- Judge's inverse-free representation VERIFIED independently: d = ell - sum_n(<x,Tx^n x>+<y,Ty^n y>)
+  matches the (6) assembly to 7.8e-15 on all 2401 points; all terms >= 0; Sx[0]+Sy[0]=||u||^2 to 6e-17.
+- M_N crosses delta_M at N=2 (h_2) and N=5 (h_4) for BOTH J=7 and J=8; never for the frozen h
+  (it saturates at its own limit +0.013627). J-spread of M_N is flat in N (2e-4..4e-4), as predicted.
+- D2_REPORT.md now 331 lines (sections 0-8).

@@ -206,3 +206,131 @@ stable across J); the semilocal `A_2` appears to have **two** angles running to 
 place has one, which is exactly what makes (6) ill-conditioned at small xi; and `|t_2|` is a Poisson
 kernel in `xi log 2` peaking at `xi = 0 mod 9.0647`, so `d_2` is spiky (99th percentile 0.097 against a
 median 0.003 on [400,600]) — the peaks are the fixed Euler harmonics, resolved but only barely by a 0.25 grid.
+
+---
+
+## 7. Closing the |xi| > 600 gap, and two better-localized pole-null tests
+
+### 7.1 The frozen test, from its analytic definition
+
+`eta(x) = exp(-1/(1-(x/d0)^2))` on `|x|<d0`, `d0 = (log3-log2)/8 = 0.05068313851352056`, normalized
+to `int eta = 1`; `h = (d^2 - 1/4) eta`, so `hhat(xi) = -(xi^2 + 1/4) etahat(xi)`.
+**This reproduces the diagnostic array's `|hhat|^2` row on all of [0,600] to 1e-11 relative**
+(median ratio 1.0000000000, min 0.99999999998, max 1.0000000000042) — the array is exactly this h,
+so the analytic continuation past 600 is legitimate. `H = (1/pi) int_0^X |hhat|^2` reaches
+`0.99999293 x 1.6434228127646e8` at X = 3000, confirming the quoted H independently.
+
+Grid extended to `xi = 600.5(0.5)3000`: `t_2` from the same closed forms (`J_u = 55`), operator part
+from the same `J = 8` Nystrom with a coarser v-grid (20457 nodes); **the coarse grid reproduces the
+production run on the overlap [400,600] to 7e-17 in `<u,Zu>` and 3e-17 in `<u,AZ ubar>`**.
+Phase-marginal mass now `2 int_0^3000 W_h = 6.283140` against Lemma 5's `2pi = 6.283185`:
+**deficit 4.6e-5 = 0.0007%** (target was < 0.1%). With `sup|d_2| = 0.1645` on [2500,3000] the residual
+tail bound is **7.5e-6** — the S5 tail term of section 5 is closed.
+
+### 7.2 Results for the three tests
+
+`delta_M = 0.020866` is the false-local-factor margin; the factor survives iff `m(h) > delta_M`.
+`FLOOR` is `-int W_h 2Re(gamma_2 t_2)` over the full range — it uses only the exactly evaluated
+scalars (10) and (2), no operator at all, and is a rigorous lower bound by §8.1.
+
+| test | 2 int W (2pi = 6.283185) | m(h), J=8 | J=7 | spread | FLOOR | tail bound | m - delta_M |
+|---|---|---|---|---|---|---|---|
+| frozen h (C^inf bump) | 6.283140 (deficit 4.6e-5) | **+0.013628** | +0.013450 | +1.8e-4 | +0.001973 | 7.5e-6 | **-0.007238** |
+| h_2 = (d^2-1/4)eta_2 | 6.217308 (deficit 6.6e-2) | **+0.026895** | +0.027195 | -3.0e-4 | +0.003687 | 1.1e-2 | **+0.006029** |
+| h_4 = (d^2-1/4)eta_4 | 6.283185 (deficit 4e-7) | **+0.024253** | +0.024606 | -3.5e-4 | +0.003509 | 7.2e-9 | **+0.003387** |
+
+`eta_k = N_k (1-(x/d0)^2)^k` with `int eta_k = 1`; `etahat_k` in closed form via
+`int_{-1}^{1}(1-t^2)^k e^{-iwt} dt = sqrt(pi) Gamma(k+1)(2/w)^{k+1/2} J_{k+1/2}(w)`;
+`H_2 = ||h_2||^2 = 6.7284982340e7`, `H_4 = 1.7785336975e8` computed exactly by Gauss-Legendre in x.
+Lemma 5 is then an independent check on both: `int W_k -> 2pi` to 4e-7 (k=4) and to 1.05% at
+X=3000 (k=2 — its `|hhat_2|^2 ~ xi^-2` tail needs X ~ 4e4 to reach 99.9%).
+
+Localization (fraction of W-mass): below xi=150 — 0.378 (bump), 0.798 (h_2), **0.986 (h_4)**;
+below xi=600 — 0.927, 0.958, **1.000**. Below xi=16, where d_2 is ill-conditioned, all three carry
+**less than 0.13%**, so the near-unit-angle obstruction of §4 is irrelevant to every sign integral here.
+
+**Reading.** `h_4` is the clean case: 100.000% of its phase marginal is inside the computed range, the
+tail term is 7e-9, and the only error is the operator truncation, +-3.5e-4. Its `m(h_4) = +0.02425`
+exceeds `delta_M` by `+0.00339`, i.e. by ten spreads. `h_2` gives a larger `m` but keeps a 1.05% mass
+deficit worth up to 1.1e-2, so its margin is not certified by this range alone. The frozen `h` gives
+`m = +0.01363`, **below** `delta_M`: on the frozen test the false factor is not killed by this margin,
+while both polynomial pole-null tests do exceed it.
+
+---
+
+## 8. Monotone lower bounds: the inverse-free representation
+
+### 8.1 Derivation (checkable line by line)
+
+Facts used: (F1) `A = A_S` is real symmetric with a real orthonormal eigenbasis `psi_n`, `A psi_n = lam_n psi_n`
+(its kernel `K(uv)` is real and symmetric); (F2) `|lam_n| <= ||A_S|| <= sup|m_S| = 1` for the TRUE
+operator, since `A_S = E^* C_{m_S} R E` with `|m_S| = 1`; (F3) `|gamma_S(xi)| = 1` (verdict (2), checked
+to 1e-12); (F4) `Z = (I-A^2)^{-1}` is diagonal in that basis with entries `1/(1-lam_n^2) > 0`.
+
+Write `gamma_S = e^{i phi}` and put `z := e^{-i phi/2} u_S(xi) = x + i y` with `x, y` real
+(the branch of the square root is irrelevant: it only flips `z -> -z`). Then, since the first slot is
+antilinear, `gamma <u, A Z ubar> = e^{i phi} e^{-i phi} <z, A Z zbar> = <z, A Z zbar>` and
+`<u,Zu> = <z,Zz>`. For a real symmetric `W`, `<x+iy, W(x+iy)> = <x,Wx>+<y,Wy>` (cross terms cancel)
+and `Re<x+iy, W(x-iy)> = <x,Wx> - <y,Wy>`. Hence (6) becomes
+
+```
+d_S = 2Re{gamma t_S} + 2[<x,AZx> - <y,AZy>] - 2[<x,Zx> + <y,Zy>]
+    = 2Re{gamma t_S} - 2<x,(I-A)Z x> - 2<y,(I+A)Z y>
+    = 2Re{gamma t_S} - 2<x,(I+A)^{-1} x> - 2<y,(I-A)^{-1} y>,
+```
+using `(I-A)(I-A^2)^{-1} = (I+A)^{-1}` and `(I+A)(I-A^2)^{-1} = (I-A)^{-1}`.
+With `T_x := (I-A)/2` and `T_y := (I+A)/2` — both positive semidefinite by (F2), with norm
+`<= (1+||A||)/2 <= 1` — one has `2(I+A)^{-1} = (I-T_x)^{-1} = sum_{n>=0} T_x^n` and
+`2(I-A)^{-1} = sum_{n>=0} T_y^n`, so
+
+```
+d_S(xi) = ell(xi) - sum_{n>=0} [ <x,T_x^n x> + <y,T_y^n y> ],     ell := 2Re{gamma_S t_S},
+```
+**every summand >= 0** (a power of a PSD operator is PSD), and the `n=0` term is `||x||^2+||y||^2 = ||u_S||^2`.
+Since `W_h >= 0`, integrating gives `m(h) = B_0(h) + sum_{n>=0} C_n(h)` with
+`B_0 = -int W_h ell` and `C_n = int W_h (<x,T_x^n x> + <y,T_y^n y>) >= 0`, so
+
+```
+M_N(h) := B_0 + sum_{n<=N} C_n     is increasing in N and  M_N <= m(h)  for every N.
+```
+No inverse and no `1/(1-lam^2)` appears: an operator error enters only through powers of operators of
+norm <= 1, i.e. **linearly**, not amplified. In the eigenbasis
+`<x,T_x^n x> = sum_m x_m^2 ((1-lam_m)/2)^n` and `<y,T_y^n y> = sum_m y_m^2 ((1+lam_m)/2)^n`, which is
+how it is evaluated (`prod_modes.py`). The `|lam|>=1` truncation artifact is simply excluded, which
+only lowers the bound — the safe direction.
+
+**Independent numerical check.** Recomputing `d_2` as `ell - sum_n(...)` (closed-form total) and
+comparing with the §4 assembly `2Re{gamma(t+mix)} - 2 quad` on all 2401 grid points, J=7:
+max difference **7.8e-15**, rms 1.7e-16 against a typical `|d_2|` of 2.2e-2. All `Sx, Sy >= 0`;
+all partial sums `<=` total; `Sx[0]+Sy[0] = ||u_2||^2` to 5.6e-17. Fraction of the mode total
+captured by `n <= N` at xi = 16 / 120 / 600: 0.277 / 0.487 / 0.519 (N=0), 0.958 / 0.997 / 1.000 (N=10).
+
+### 8.2 The bounds
+
+`C_0 = int W_h ||u_2||^2`: +0.005386 (bump), +0.010137 (h_2), +0.009685 (h_4) at J=8
+(J=7: +0.005330, +0.010365, +0.009928). Contribution of `|xi|>600`, taken in full (all n, legitimate
+because every term there is >= 0): +0.000174 (bump), +0.001105 (h_2), +0.000000 (h_4).
+
+| N | bump M_N | frac | h_2 M_N | frac | > d_M | h_4 M_N | frac | > d_M |
+|---|---|---|---|---|---|---|---|---|
+| 0 | +0.007533 | 0.553 | +0.014930 | 0.555 | no | +0.013194 | 0.544 | no |
+| 1 | +0.010243 | 0.752 | +0.020044 | 0.745 | no | +0.018071 | 0.745 | no |
+| 2 | +0.011672 | 0.856 | **+0.022792** | 0.847 | **YES** | +0.020655 | 0.852 | no |
+| 5 | +0.013166 | 0.966 | +0.025824 | 0.960 | YES | **+0.023392** | 0.965 | **YES** |
+| 10 | +0.013556 | 0.995 | +0.026714 | 0.993 | YES | +0.024120 | 0.995 | YES |
+| 20 | +0.013620 | 0.999 | +0.026876 | 0.999 | YES | +0.024239 | 0.999 | YES |
+| 50 | +0.013626 | 1.000 | +0.026890 | 1.000 | YES | +0.024249 | 1.000 | YES |
+| 100 | +0.013627 | 1.000 | +0.026892 | 1.000 | YES | +0.024251 | 1.000 | YES |
+| 200 | +0.013627 | 1.000 | +0.026894 | 1.000 | YES | +0.024252 | 1.000 | YES |
+
+(J=8; "frac" = `M_N / m(h)`; `d_M = delta_M = 0.020866`.) The J=7 vs J=8 spread of `M_N` is
+**+5.6e-5 … +1.8e-4 (bump), -2.3e-4 … -3.7e-4 (h_2), -2.4e-4 … -4.0e-4 (h_4)** — flat in N, as the
+derivation predicts (no amplification), and an order below the h_4 margin.
+
+**Crossings.** `M_N > delta_M` for both J = 7 and J = 8 first at **N = 2 for h_2** and **N = 5 for h_4**
+(for h_4 at N = 2 the two J's straddle the threshold: +0.020655 / +0.021055). For the frozen `h`,
+`M_N` saturates at +0.013627 and **never** reaches `delta_M`; since `M_N` increases to `m(h)` and
+`m(h) = +0.013628`, this is not a failure of the bound but the correct verdict for that test.
+
+`B_0` alone (exact scalars, no operator at all) is +0.001973 / +0.003687 / +0.003509; adding only
+`C_0 = int W_h ||u_2||^2` already recovers 54-56% of `m(h)` in every case, and `N = 5` recovers 96-97%.
