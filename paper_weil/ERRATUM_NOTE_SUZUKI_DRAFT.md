@@ -1,7 +1,8 @@
 # Draft note to the author of arXiv:2301.00421 (DRAFT — not sent; owner decides; salutation/address to be filled by the owner)
 
-Status 2026-09-06: the inconsistency below was found by the judge (verdict SECONDEXPR-B) and verified by the observer in the arXiv v3 PDF
-(7 Nov 2025). An independent agent check of the two lemmas is running. Send only after that check and after the owner's read-through.
+Status 2026-09-06: the inconsistency below was found by the judge (verdict SECONDEXPR-B), verified by the observer in the arXiv v3 PDF
+(7 Nov 2025), and independently re-derived by a blind agent from the paper's own explicit formula (3.3) (report
+docs/routeB_bus/AGENT_REPORT_2026-09-06_SECONDEXPR_B_INDEPENDENT_CHECK.md). Ready for the owner's decision; not sent.
 Person-name gates: the addressee is the author of the paper under discussion (name from the primary source; active 2025); affiliation and
 e-mail are deliberately not filled in here.
 
