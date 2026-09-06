@@ -1,0 +1,94 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-06-RESONANCE
+BOUNDARY_ID: GOAL058_RESERVOIR_RESONANCE_AMPLITUDE_AND_PRIME_SCALING
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-06-RESONANCE (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub). Your remainder identity (12) has been mapped numerically: the Sonin density k_2 oscillates around q_∞/2π with period 2π/log 2 in phase with the two-lobe weight, so the sign on the phase class is carried by the prime atom w, not by the reservoir. Three questions: the amplitude law of k_2 − q_∞/2π; the scaling of the reservoir cross term versus the atom w_p for p = 3, 5, 7; and whether the shape of h can move the weight onto the positive bands within the support window (uncertainty no-go or construction). Maximum reasoning effort; cite versions as listed.
+DATE: 2026-09-06
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SECOND_EXPRESSION
+SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_PROOF_CONSTRUCTION_AND_ADVERSARIAL_REVIEW
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_RESERVOIR_RESONANCE_AND_PRIME_SCALING_2026-09-06.md
+AUTHOR: Linux-Claude (observer) on the owner's word («Ок го»)
+PARENT_VERDICTS: PHASEPROOF (4a29f389; independent check pending at bind time), SEMITABLE (10c9c987), SEMISIGN (59aabc18), SEMILOCAL (3242ada9)
+BASE_TIP: see bind line
+
+0. WHAT WAS MEASURED (diagnostic, carrier error NOT certified; DIAGNOSTIC_NEVER_A_PROOF)
+ Machine: implementation B's physical DCT-I carrier (N = 2048/4096, λ = 1, S = {∞, 2}), Sonin projector S built from the subspace pair; the density
+ k_2(ξ) := ⟨e_ξ, S e_ξ⟩ with e_ξ the log-plane wave (2π)^{−1/2}e^{iξx} restricted to the carrier (your Lemma 3 density, finite-carrier version); the
+ archimedean multiplier q_∞(ξ)/2π = (Re ψ(¼ + iξ/2) − log π)/2π (checked earlier = 2∫a_∞(1 − cos ξt)dt − c_A to 12 digits). Files: 1069961b568a670b density_map_out.txt
+ (coarse grid, two N), 8a54507bb56079ad density_fine_out.txt (ξ ∈ [0, 600] step 0.25, N = 4096), 40d8e1fdf5056ed7 density_fine.py, arrays density_fine_N4096.npy.
+ Findings: (i) archimedean density k_∞ sits just BELOW q_∞/2π for ξ ≳ 16 (gap 0.01 → 0.001), stable in N; (ii) semilocal k_2 OSCILLATES around q_∞/2π with
+ period 2π/log 2 = 9.06: maxima in doublets/triplets around odd multiples of π/log 2 (13.6, 22.7, 31.7, 40.8, …), minima at multiples of 2π/log 2 (18.1,
+ 27.2, 36.3, 63.5, 72.5); excess k_2 − q_∞/2π up to +0.09 at the peaks, deficit −0.15 … −0.23 at the dips (values at N = 4096: ξ = 22: +0.081, 30: +0.082,
+ 40: +0.078, 96: +0.093, 112: +0.086, 160: +0.071; dips: 18: −0.154, 28: −0.149, 36: −0.229, 64: −0.226, 72: −0.236); (iii) the two-lobe weight of the minus
+ phase (1 − cos aξ) is maximal exactly at the peaks and zero at the dips; (iv) split of the integral in (12) for h = (∂² − ¼)η_{δ₀} at N = 4096: positive
+ part +0.1015, negative part −0.2329, atom w = +0.4901 ⇒ 𝔪 = +0.359 (B's direct diagnostic +0.340; L₂ via q on the grid 3.576 vs exact 3.927 and n₂ via k_2
+ 3.217 vs B 3.588 — both 7–9% low from the |ĥ|² tail beyond ξ = 600, the difference nearly unaffected); (v) carrier drift: n₂(v₋) via k_2 = 3.148 / 3.341 /
+ (B: 3.588) at N = 2048 / 4096 / 8192 — the density is NOT converged in N; the oscillation pattern and its phase are stable across N.
+ Your cosine law (7) is CONFIRMED by B's three independent values: with n₀ = 3.278, A₀ = 3.437, ν_a = −0.309, w = 0.490, formula (7) gives e = +0.022 /
+ −0.159 / −0.340 at θ = 0 / π/2 / π against B's +0.0219 / −0.1588 / −0.3396. Consequences: the reservoir cross term ν_a < 0 favours the plus phase, the atom w
+ favours the minus phase; both sit in the same cos θ; the sign window is θ ∈ (28.5°, 331.5°); the reservoir's NET contribution on the minus phase is −0.13
+ (it hurts), the atom carries the sign. A «phase rotation» proposal (owner/Flash: shift the lobe phase by π/2 to null the weight on the reservoir peaks) is
+ therefore already inside the class and cannot help: nulling the weight at the peaks means θ = 0, which flips the atom to −w.
+ Atom values: w_p = log p/√p = 0.490 (2), 0.634 (3), 0.720 (5), 0.735 (7), 0.723 (11), 0.711 (13), 0.459 (101), 0.218 (1009): it GROWS up to p = 7.
+
+1. QUESTION 1 — THE AMPLITUDE LAW OF k_2 − q_∞/2π (one prime, S = {∞, 2}, λ = 1)
+ (a) From your Lemma 3 (k_2 = Σ|𝓕Φ_j|², Φ_j = BP₀G^{−1/2}b_j) and the explicit Euler multiplier, derive the structure of k_2(ξ) − k_∞(ξ): is it, to leading
+     order, c(ξ)·cos(ξ log 2 + φ) with an explicit c(ξ), and what is the law of c(ξ) as ξ → ∞ (constant? growing? decaying?) — a theorem, or an exact
+     integral representation from which the observer can read the law. Note k_∞ ≈ q_∞/2π − small for ξ ≳ 16 (finding (i)): state whether k_∞ ≤ q_∞/2π holds
+     exactly (it would follow from e_∞ ≤ 0 on ALL of C_c^∞ if that held — it does not; so what is the exact relation of k_∞ to q_∞/2π?).
+ (b) Is the doublet/triplet fine structure around odd multiples of π/log 2 a carrier artefact or a source feature (the multiplier (1 − r e^{−iξa})/(1 − r e^{iξa})
+     has unimodular phase 2·arg(1 − r e^{iξa}); its derivative peaks near ξa = π mod 2π — is that the mechanism)?
+ (c) Consequence for (12): write the integral in (12) as ∫(1 − cos aξ)|ĥ|²·[(q_∞/2π − k_∞) − (k_2 − k_∞)]dξ and bound each piece for h ∈ 𝓗₀₀(I); is
+     ∫(1 − cos aξ)|ĥ|²(k_2 − k_∞)dξ ≥ 0 for every h in the class (the resonance is always adverse), or can the shape of ĥ make it negative?
+
+2. QUESTION 2 — SCALING WITH THE PRIME: S = {∞, p}, p = 3, 5, 7, at λ = 1
+ For the two-lobe class across log p (lobes at ±(log p)/2, support diameter log p + 2δ with the next prime power excluded — state the window constraint for
+ each p: for p = 3 the diameter must stay below log 4 to keep 2² out and the prime 2 itself is inside the window at log 2 < log 3 — so S must contain 2 as
+ well: S = {∞, 2, 3}, and the cross terms between the shifts log 2 and log 3 enter (your (24)–(27))). Write the analogue of (7) for the lobe pair across
+ log p in the presence of the other primes ≤ e^{diameter}, and answer: does the reservoir cross term at shift log p, ν_{log p}, scale like the resonance
+ amplitude c(ξ) sampled at the frequencies where |ĥ|² lives, or like something smaller (the Euler factor r_p = p^{−1/2} multiplies the shift U_{log p} in
+ B_S, so the p-oscillation in k_2 should have amplitude ∝ r_p — is the reservoir's resonance for prime p of size ~ p^{−1/2} while the atom is log p/√p?).
+ If yes, the atom wins by a factor log p for every prime and the phase class survives for all p — state this as a theorem candidate with its exact hypotheses;
+ if no, name the term that grows.
+
+3. QUESTION 3 — SHAPING h: CAN THE WEIGHT BE MOVED ONTO THE POSITIVE BANDS?
+ The positive bands of q_∞/2π − k_2 sit near multiples of 2π/log 2 (width ≈ 2–3 in ξ), where the minus-phase weight (1 − cos aξ) vanishes; the plus-phase
+ weight (1 + cos aξ) is maximal there but costs the atom. (a) Is there an uncertainty-type no-go: h supported in (−δ, δ) with δ ≤ δ₀ = 0.0507 has |ĥ|² spread
+ over Δξ ≳ 1/δ ≈ 20 ≫ band width, so no h in the class can concentrate on the positive bands — make this quantitative (a Bernstein/Paley–Wiener bound on the
+ fraction of ∫(1 − cos aξ)|ĥ|² that can sit on the dips), or show a construction (e.g. h with ĥ having zeros at the peak frequencies (2k+1)π/log 2 — a
+ finite-codimension condition, allowed by your Lemma 1 remark) and compute what it gains. (b) Multi-lobe classes: with lobes at 0, log 2, 2log 2 (three lobes,
+ diameter 2log 2 + 2δ < log 5 requires including 3 and 4 = 2²) the weight becomes |1 − e^{iξa} + e^{2iξa}|²-type polynomials in e^{iξa} — can a lobe
+ polynomial P(e^{iξa}) be chosen so that |P|² vanishes at ξa = π (the peaks) while the arithmetic side keeps a positive atom combination? State the exact
+ arithmetic side for a general lobe polynomial (atoms at all differences of lobe positions) and whether any P makes both the reservoir term and the atom
+ term favourable.
+
+4. SHELF (sha256 prefix 16 at BASE_TIP)
+ 99e3d62110f735ee  docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_PHASE_CLASS_INEQUALITY_AND_MOLLIFIER_CROSSWALK_2026-09-06.md  (your (12), Lemma 3, (24)–(27))
+ 1069961b568a670b  docs/routeB_bus/phase5_codex/density_map_out.txt · 8a54507bb56079ad density_fine_out.txt · 40d8e1fdf5056ed7 density_fine.py · density_fine_N4096.npy (arrays: ξ, q/2π, k_∞, k_2, |ĥ|²)
+ 981f048352a53b0b  docs/routeB_bus/SEMILOCAL_SIGN_TABLE_B_2026-09-06.md  (machine; §10 values used above)
+ dddbe86ce3cbe8a1  docs/CHAT_DIGESTS.md  (entry «поворот фазы»: the (7) check and the w_p table)
+ PDFs as before: 2006.13771v1, 2310.18423v2, 2403.01247v1, 2602.04022v1, math/9811068v1
+
+5. KILLED / FORBIDDEN: everything in the four parent verdicts «must not recur»; RH-conditional inputs; the diagnostic numbers as proof steps; «this is RH».
+
+6. REGISTERED PREDICTIONS (K6, observer; frozen)
+  P_AMPLITUDE_NONDECREASING: 0.50 — c(ξ) (amplitude of the cos(ξ log 2) oscillation of k_2 − k_∞) does not decay as ξ → ∞ (source feature, not carrier).
+  P_RESONANCE_ALWAYS_ADVERSE: 0.60 — ∫(1 − cos aξ)|ĥ|²(k_2 − k_∞) ≥ 0 for every h in the class (reservoir net adverse on the minus phase).
+  P_PRIME_SCALING_RP: 0.55 — the reservoir cross term at shift log p scales like p^{−1/2}·(bounded), so the atom log p/√p wins by log p for every p.
+  P_UNCERTAINTY_NOGO: 0.65 — no h in the class can put more than a bounded fraction of its weight on the positive bands (quantitative no-go).
+  P_LOBE_POLYNOMIAL_HELPS: 0.30 — a lobe polynomial with |P|² vanishing at the peaks keeps a favourable atom combination.
+
+7. REQUIRED VERDICT: header with RESULT per question ∈ {PROVED_ON_CLASS, PARTIAL_WITH_PRECISE_REMAINDER, OBSTRUCTION_NAMED, COMPUTATION_SPECIFIED,
+ ATTEMPT_REFUTED_WITH_EXACT_COUNTEREXAMPLE} and CLOSES/OPENS; Q1(a)–(c), Q2, Q3(a)–(b) in full; proofs where claimed; explicit formulas the observer can
+ evaluate on the existing machine; score the observer's predictions without editing; register your own; the cheapest decisive check; no Lean edit, no
+ numerical run, no RH claim; write only the verdict.
