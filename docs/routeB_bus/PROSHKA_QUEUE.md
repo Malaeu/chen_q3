@@ -14,6 +14,22 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-06-OPENSGN · REQ-2026-09-06-OPENSGN · Goal 058: prove the signed-time kernel identity (OPEN) ∂_t∂_u V_sgn = T(t−u) − 2δ(t−u) without RH — reproduce finite part, δ_0 constant, prime atoms and r_* from the ω/η-weighted Fourier products; plants; radical consistency · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_OPEN_SIGNED_TIME_KERNEL_IDENTITY_2026-09-06.txt`
+- Boundary: `GOAL058_OPEN_SIGNED_TIME_KERNEL_IDENTITY`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: SECONDEXPR-B verdict (literal Suzuki identity killed by the printed even-time rule, verified by the observer in the PDF; signed repair (25), radical check (27), exact target (OPEN)); readback §10 budget; owner's word «Да!! Го»
+- Registered predictions: P_OPEN_COMPLETE 0.02; P_OPEN_FINITE_PART_REPRODUCED 0.45; P_OPEN_PRIME_ATOMS_REPRODUCED 0.25; P_OPEN_EXTRA_MULTIPLIER_IS_THE_REMAINDER 0.55; P_OPEN_PLANT_NAMES_THE_STEP 0.80
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `90aaa56a0dbfdd1e86887329dc97f75ae2aa12fc` / `6882` / `71` /
+  `d01fd4bf054a73c9ace3d9db63a8a33cbd78189fd51227d8fced57a64754bc5f` /
+  `0d4143ec66be997ad0dbdf550f3d65e4e59c28bf` / `yes`
+
+---
+
 ## REQ-2026-09-06-SECONDEXPR-B · REQ-2026-09-06-SECONDEXPR-B · Goal 058: the SECOND EXPRESSION as one named identity — prove Suzuki's kernel identity (1/π)⟨S_t,S_u⟩ = G_{g_ξ}(t,u) (Thm 4.2 (4.4)) WITHOUT RH: locate the RH-dependent basis step, compute the inner product directly, radical check, plants, Yoshida subclass; supersedes SECONDEXPR · ANSWERED
 
 - `STATUS: ANSWERED` — verdict `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SECOND_EXPRESSION_SUZUKI_KERNEL_IDENTITY_2026-09-06.md`, commit `b1efb9e1`; RESULT `ATTEMPT_REFUTED_WITH_EXACT_COUNTEREXAMPLE` (KILL_LITERAL_EVEN_TIME_SUZUKI_KERNEL_IDENTITY): the printed rule S_t := S_{−t} for t<0 (arXiv v3 line «For negative t, we set S_t(z) := S_{−t}(z)», also P_t; observer verified in the PDF) makes P̂_{Dψ} = 0 for every even test, while Q(ψ_L) ≥ 2‖ψ_L‖² > 0 for a narrow even bump ⇒ literal Thm 1.4/(4.4) inconsistent as printed; judge retracts his living-chat endorsement; root-free Volterra identity (11), bounded-multiplier L² representation (13)–(14), free Gram kernel (16), exact distributional remainder (18) with nonzero witness; signed-time repair (25) proposed (not author-confirmed) with unconditional radical-cutoff check (27); remaining target (OPEN): ∂_t∂_u V_sgn = T(t−u) − 2δ(t−u); plants give Q = −2 (23)/(24); predictions: RH_STEP_LOCATED 0.85 CONFIRMED; COMPLETE 0.02, RADICAL_CHECK 0.55, YOSHIDA 0.30 REFUTED (literal); PRIME_ATOMS 0.35, RESULT_REFUTED 0.25 NOT_ESTABLISHED
