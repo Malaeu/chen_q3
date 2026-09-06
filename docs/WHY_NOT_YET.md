@@ -54,7 +54,12 @@ Only after 1–5 does a candidate get a number on the caches or a batch to the j
   Work item: prove the kernel identity without RH (∂_t∂_u K_norm = −g_ξ″(t−u) distributionally). Batch REQ-2026-09-06-SECONDEXPR-B. The compass 𝒞 = −Θ_ξ
   (Suzuki (1.4)) — the circle branch is this object, not a separate route.
 
-- R1 (COUPLED): a nonlocal positive factor on f₀s with proved annihilation of the radical — no candidate formula exists.
+- **Second named candidate (Connes card 2026-09-06, locators verified):** the semilocal trace identity, Connes 2602.04022 eq. (22),
+  −Σ_{v∈S}W_v(f) = log(TW)f(1) + Trace(ϑ(f)(1 − P_T^S − P̂_W^S)), carries the primes and is unconditional; the archimedean analogue (CC 2006.13771 Thm 4.7 (83))
+  splits as nonnegative HS trace of the Sonin compression minus an explicit prolate remainder. Open question, written by nobody: does (22) admit the same
+  splitting with the semilocal Sonin projection? CC 2106.01715 shows the archimedean part alone dies at L = log 2 and the prime 2 restores it — any second
+  expression must carry the primes (our §4.4 seen from the other side). Bost–Connes contributes nothing here (ζ as partition function on Re β > 1).
+- R1 (COUPLED): a nonlocal positive factor on f₀s with proved annihilation of the radical — no candidate formula exists beyond the two named above.
 - R2 (COUPLED/ZG): cutoff-dependent Gram certificates K_m + e_m I ⪰ 0 with e_m → 0 and proved recovery — no rule for e_m exists.
 - The frame reading of WEILPROOF (i): K = Γ − c_L I − 2ββ*, i.e. the prime atoms and short shifts form a frame whose optimal lower bound is c_L.
   Frame theory (Beurling–Landau density, Kadec) gives bounds with slack — fails §4.5 unless an identity appears.
