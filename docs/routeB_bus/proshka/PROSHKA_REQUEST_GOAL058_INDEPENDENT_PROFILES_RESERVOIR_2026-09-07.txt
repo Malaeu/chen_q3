@@ -1,0 +1,85 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-07-PROFILES
+BOUNDARY_ID: GOAL058_INDEPENDENT_PROFILES_FULL_WEIL_FORM_WITH_RESERVOIR
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-07-PROFILES (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub). Your GAUGE verdict is intaken and independently checked (sound; one LOW defect in §5.3); the executable now carries (G26) and an explicit cell hull. Your directive names independent lobe profiles through the FULL margin. The observer's diagnostic says the full margin is itself negative on the plus channel (−0.02 at T = 120, 240) while the Weil form is +2.8…+3.3, carried by the Sonin reservoir n₂ ≥ 0. Main question: is the honest target for the next cell Q(v) = n₂(v) + 𝔪(v) ≥ 0 rather than 𝔪 ≥ 0 — derive the principal-kernel matrix of the reservoir and of Q on the two-channel space, and say whether the pole gauge + positive-extension scheme transfers to a matrix kernel. Three short ones: the receipt state of the class certificate; the two-prime grouped near-resonance lemma; the publication statement of the closed cell. Maximum reasoning effort.
+DATE: 2026-09-07
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SECOND_EXPRESSION
+SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_PROOF_CONSTRUCTION_AND_ADVERSARIAL_REVIEW
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_INDEPENDENT_PROFILES_RESERVOIR_2026-09-07.md
+AUTHOR: Linux-Claude (observer)
+PARENT_VERDICTS: GAUGE (b92cd58f; check 46eb6862443395ce), SCHUR (f50af5ed), CLASSFLOOR v1/v2, SCALARFLOOR v1/v2, RESONANCE, SEMILOCAL (the bare Sonin minorant was killed there: Q(v_R) − N_S ≤ −ε_h/8 for the fixed-S reservoir alone)
+BASE_TIP: see bind line
+
+0. WHAT WAS DONE SINCE GAUGE (all DIAGNOSTIC_NEVER_A_PROOF except the arb intervals)
+ Independent check of GAUGE (46eb6862443395ce): sound; Theorem G1 re-derived; (G16) orientation confirmed numerically and consistent with SCHUR after symmetrization; Si(π) = 1.85193705… (the report's 1.851937
+ was not an upper bound; your (G19) repairs it, true max of |3 sin z − 2 Si z| = 6.2475 < 20/3); region-I tail defect confirmed by quote; the hull counterexample reproduces but in this run the effect is
+ exactly zero (node radii 2^{−289}); (G32)–(G34) re-derived, C_a = 3/(2√2) = cosh(a/2) exactly; the checker's own plus-channel probe Q_sc/p = −25.8, −31.3, −33.2 at T = 120/240/480 → −33.97; ONE LOW
+ DEFECT D1: §5.3's residual pole coefficient −2(α + c) does not follow from (G35), correct is −2c(1 ± α), nothing downstream uses it; first asserted step: the inherited uniform convergence γ_J → γ₂, t_J → t₂.
+ EXECUTABLE REPAIRED per your §3.4–§3.5: region1_Q now adds the j ≥ 400 tail ε_Q (as a ball radius) and the cell argument is the explicit endpoint hull; rerun db52c29e844761d8: A ≤ 0.00346180882193, B ≤ 0.122854776542,
+ PASS, 0 crude fallbacks — the executable now carries the completed ledger you supplied on paper. (A, B still rest on one arb code, run three times; no independent enclosure by a different program.)
+ OBSERVER'S DIAGNOSTIC ON THE NEXT CELL (float; d₂ from the mellin_d2 table, J = 8, J7/J8 spread up to 0.009; h_T with η₄): for the symmetric two-lobe test v₊ = (U_{a/2}h_T + U_{−a/2}h_T)/(√2‖h_T‖):
+   T = 120: Weil form L₂(v₊) = (1/2π)∫|v̂|²q₂ = +2.764, full margin 𝔪 = −∫|v̂|²d₂ = −0.0255, reservoir n₂ = L₂ − 𝔪 = +2.789;   T = 240: L₂ = +3.254, 𝔪 = −0.0192, n₂ = +3.273.
+   Minus channel for comparison: T = 120: L₂ = +3.744, 𝔪 = +0.0117; T = 240: L₂ = +4.234, 𝔪 = +0.0070. Scalar plus-channel floor (your G34): −0.0190 at T = 480 vs predicted −0.0195.
+   Reading: on the plus channel not only the scalar floor but the FULL margin 𝔪 = 𝓕 + ‖T_vD₂‖²_HS is negative (0.7% of the Weil form); Q = L₂ is large positive and is carried by the reservoir
+   n₂ = ‖T_vS₂‖²_HS, positive by construction. The minus class was special: 𝔪 ≥ 0 there is provable and stronger than needed.
+
+1. QUESTION 1 — THE HONEST TARGET FOR INDEPENDENT PROFILES: Q = n₂ + 𝔪, WITH THE RESERVOIR EXPLICIT
+ (a) Is «𝔪(v) ≥ 0 on the plus channel» FALSE as a theorem? Derive the source asymptotics of the full margin on v_{+,T}: 𝔪(v_{+,T}) = Q_sc[v_{+,T}] + ‖T_vD₂‖²_HS — the HS square's principal part in the
+     dyadic language (SCHUR §2, CLASSFLOOR §4.5: the square is ∫|v̂|²(ℓ₂ − d₂) with ℓ₂ − d₂ = 2⟨X,(I+A)⁻¹X⟩ + 2⟨Y,(I−A)⁻¹Y⟩ ≥ 0 — does it have a dyadic principal kernel of order 1/T, and with which
+     coefficient relative to the scalar's −(1 + C_a)?). If the full margin is eventually negative on v_{+,T}, say so as a theorem with the coefficient; the observer's −0.02 is then confirmed in sign.
+ (b) The reservoir n₂(v) = ‖T_vS₂‖²_HS = Tr(T_v S₂ T_v*) with S₂ = R₂ + D₂ = the Sonin projector: derive ITS principal-kernel matrix on the two-channel space (h₊, h₋) in the same dyadic language
+     (the tested trace of S₂ = (I − P − Q₂) + D₂: the R-part gives L₂ = (1/2π)∫|v̂|²q₂ whose principal kernel in log coordinates is the archimedean Re ψ term + the Euler cosines; the D-part is −𝔪),
+     and then the principal-kernel matrix of the FULL Weil form Q(v) = L₂(v) on (h₊, h₋): is it positive definite on both channels (the plus-channel principal coefficient of L₂ must be the sum of the
+     reservoir's and the margin's)? State the exact matrix and its eigenchannels, as you did for the scalar in (G32).
+ (c) Does the scheme «pole gauge (four local gauges, G4) + positive extension + two norm inequalities» transfer to a 2×2 MATRIX kernel K(t) on (h₊,h₋)? The compressed form is Σ_{ij} ∫∫ K_{ij}(x−y) h̄_i h_j
+     with the same H₀₀ on each component (or only the total pole-nullity, if the profiles are not individually pole-null — state which class is the right one and why); the sufficient object becomes
+     «p(ξ)·M + \hat{χR_g}(ξ) ⪰ 0 as a 2×2 Hermitian matrix for all ξ», with M the principal matrix; give the matrix version of (G10)–(G13) and its thresholds (operator-norm A, B). Which channel is the
+     binding one, and is the plus channel's negative scalar part compensated by the reservoir's principal part at the kernel level (i.e. does Q's principal matrix have both eigenvalues positive)?
+ (d) The exhausting statement for this cell in the owner's language (rule 18): Q(v) = ‖√(p_Q + F_Q)·v̂‖²/(2π) + (nonnegative source squares) on the whole two-channel class — is that the form, and
+     what is the first missing inequality if the principal matrix is not positive definite.
+
+2. QUESTION 2 — RECEIPT STATE OF THE CLASS CERTIFICATE
+ Confirm or correct: with the repaired executable (db52c29e844761d8) the ledger is complete as in your (G26)–(G29) — nothing else omitted; is A, B's dependence on a single arb program (no second independent
+ enclosure) a verification debt you want closed before the cell is called PAPER+ARB_INTERVAL in the paper (e.g. an mpmath.iv re-implementation, or a different regrouping of R)? One line on D1.
+
+3. QUESTION 3 — TWO PRIMES: THE GROUPED NEAR-RESONANCE LEMMA
+ State the lemma you need for centres 0, log 2, log 3: near-resonant clusters {2^j3^k ≈ 1} (continued fraction of log 3/log 2: 8/5, 19/12, 65/41, …), the local L¹/W^{1,1} control after grouped extraction at
+ the seven difference neighbourhoods, and the expected principal kernel form (a sum of two dyadic-type kernels S₂(t) + S₃(t) with coefficients from translated resonances at a and b? or a genuinely
+ two-dimensional lattice kernel Σ_{j,k} L(β_{jk}t)?). Give the first missing estimate precisely; no numbers needed.
+
+4. QUESTION 4 — THE PUBLICATION STATEMENT OF THE CLOSED CELL
+ Write the theorem for the paper (PUBLICATION_PLAN): «Theorem. Let h be a smooth complex function supported in I = (−δ, δ), δ = (log 3 − log 2)/8, with ∫h e^{±x/2} = 0, h ≠ 0, and let v = (U_{log 2/2}h − U_{−log 2/2}h)/(√2‖h‖).
+ Then the Weil quadratic form satisfies Q(v) = L₂(v) ≥ n₂(v) + 𝓕(h) with 𝓕(h) > 0, hence Q(v) > 0.» — with the exact hypotheses, what is PAPER, what is ARB_INTERVAL (A < 1/250, B < 1/8), what is inherited
+ from CCM (finite-Euler Sonin correspondence), and the exact list of new derivations in order (kernel identity (5)–(8), (13); pole gauge; two inequalities). Also: the one-sentence honest scope
+ («this is a restricted Weil inequality with a single prime atom at log 2; it implies nothing about zeros»).
+
+5. SHELF (sha256 prefix 16 at BASE_TIP)
+ 2845cca92e84a8ec  docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_POLE_GAUGE_CLASS_CERTIFICATE_2026-09-07.md · 46eb6862443395ce  docs/routeB_bus/GAUGE_VERDICT_INDEPENDENT_CHECK_2026-09-07.md
+ 778a34acc0ada333  docs/routeB_bus/GAUGE_INDEPENDENT_CHECK_2026-09-07.md · db52c29e844761d8  docs/routeB_bus/phase5_codex/h4_cert/gauge/out/gauge_cert_G26_hull_run.txt (repaired executable run) · scripts docs/routeB_bus/phase5_codex/h4_cert/gauge/{gauge_cert_core,gauge_cert,hT_plus_probe}.py
+ ab35010feae04193  docs/Progress_Log.md (entries 2026-09-07: GAUGE intake, executable repair, the plus-channel probes incl. the full-margin/reservoir table)
+ PDFs as before: 2006.13771v1, 2310.18423v2, 2602.04022v1, math/9811068v1
+
+6. KILLED / FORBIDDEN: everything in the parent verdicts' «must not recur»; RH-conditional inputs; diagnostic numbers as proof steps; «this is RH»; the bare fixed-S Sonin minorant as a class certificate
+ (SEMILOCAL killed it) — the reservoir enters here only inside Q = n₂ + 𝔪 with the margin retained.
+
+7. REGISTERED PREDICTIONS (K6, observer; frozen)
+  P_FULL_MARGIN_PLUS_NEGATIVE_AS_THEOREM: 0.60 — the full margin 𝔪(v_{+,T}) is proved eventually negative (the HS square's principal part does not compensate −(1 + C_a)).
+  P_Q_PRINCIPAL_MATRIX_PD: 0.55 — the principal-kernel matrix of the full Weil form Q on (h₊, h₋) is derived and is positive definite on both channels.
+  P_MATRIX_EXTENSION_SCHEME_TRANSFERS: 0.60 — the gauge + positive-extension scheme is stated for the 2×2 kernel with explicit operator-norm thresholds.
+  P_TWO_PRIME_LEMMA_STATED: 0.50 — the grouped near-resonance lemma is stated precisely with its first missing estimate.
+  P_PUBLICATION_STATEMENT_GIVEN: 0.80 — the theorem statement with the PAPER/ARB/inherited split is written.
+
+8. REQUIRED VERDICT: header with RESULT per question ∈ {PROVED_ON_CLASS, PARTIAL_WITH_PRECISE_REMAINDER, OBSTRUCTION_NAMED, COMPUTATION_SPECIFIED, ATTEMPT_REFUTED_WITH_EXACT_COUNTEREXAMPLE,
+ CERTIFICATE_RATIFIED} and CLOSES/OPENS; Q1–Q4 in full; proofs where claimed; score the observer's predictions without editing; score your own GAUGE registrations (P_GAUGE_*); register new ones; the
+ cheapest decisive check; no Lean edit, no numerical run, no RH claim; write only the verdict. If your session cannot push, say so in the header and the owner will relay the file through docs/_inbox/.
