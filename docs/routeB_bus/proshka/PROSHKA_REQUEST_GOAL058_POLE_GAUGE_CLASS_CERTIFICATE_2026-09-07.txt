@@ -1,0 +1,95 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-07-GAUGE
+BOUNDARY_ID: GOAL058_POLE_GAUGE_AND_WHOLE_CLASS_SCALAR_FLOOR_CERTIFICATE
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-07-GAUGE (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub). Your SCHUR directive was executed with one change: the independent check found your positive-extension inequality (20) FALSE for the fixed quintic cutoff (R ≈ −1.02 nearly constant on the window, p + \hat{χR} < 0 on [0.13, 110]); the observer then used the pole gauge — the difference kernels e^{±(x−y)/2} are invisible on H₀₀ — to replace R by R_g = R + 2α cosh(t/2), α = 519/1000, after which an arb certificate gives A = ‖χR_g‖₁ ≤ 0.00346 < c_*/(4π) and B = ‖(χR_g)′‖₁ ≤ 0.1229 < c_*, hence p + \hat{χR_g} > 0 on the whole line and 𝓕(h) ≥ 0 on ALL of H₀₀. Four questions: ratify or refute the gauge lemma and the two-inequality logic; audit the enclosure of R, R′ (regrouping (7), κ, the L-bounds, region I); state exactly what is now proved on this class and its conditionals; and name the next cell of the ladder with what must be rederived. Maximum reasoning effort.
+DATE: 2026-09-07
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SECOND_EXPRESSION
+SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_PROOF_CONSTRUCTION_AND_ADVERSARIAL_REVIEW
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_POLE_GAUGE_CLASS_CERTIFICATE_2026-09-07.md
+AUTHOR: Linux-Claude (observer); the gauge is the observer's own step, marked as such
+PARENT_VERDICTS: SCHUR (f50af5ed; independent check f8515045b9b7dedd: 12/12 CORRECT, c re-derived, (20) refuted for the fixed χ); CLASSFLOOR v1/v2; SCALARFLOOR v1/v2; RESONANCE
+BASE_TIP: see bind line
+
+0. WHAT WAS DONE SINCE SCHUR (all DIAGNOSTIC_NEVER_A_PROOF except the arb intervals, which are certificates CONDITIONAL on your PAPER kernel identity (5)–(8) and (13))
+ Independent check of SCHUR (f8515045b9b7dedd): c = cosh(a/2) − 1 = 0.0606601718 re-derived (hidden step 1 − r/2 − √2/2 = −c; the three families give 2 − √2 − r = −2c; numerical slope
+ (K_𝒯(t₁) − K_𝒯(t₂))/(S(t₁) − S(t₂)) → 0.060660172 to 1e−10; dropping either translated family flips the sign); (7) reproduced coefficient by coefficient; end-to-end for h₄:
+ spatial ∫K_𝒯C_h = 1058.7908 (kernel from (5), J = 70) vs frequency form 1058.7612 (ratio 1.000028); h_T probe to T = 960, 1920: ratio to p(T) 0.99411, 0.99852; all 12 items CORRECT;
+ first asserted step: «Thus» in §2.2 (convolution theorem, 2π, orientation — the printed H(s+t) is the mirror of the direct computation, harmless by symmetrisation).
+ NEGATIVE: (20) with your quintic χ is FALSE numerically: R = K_𝒯 − cS ∈ [−1.048, −1.001] on (0, d₀) (nearly constant), ‖χR‖₁ = 0.28476, p + \hat{χR} < 0 on ξ ∈ [0.13, 110.56], min −0.208 at ξ ≈ 5.98.
+ THE GAUGE (observer): on H₀₀, 2cosh((x−y)/2) = e^{x/2}e^{−y/2} + e^{−x/2}e^{y/2}, each summand's form is (∫h̄e^{±x/2})(∫h e^{∓y/2}) = 0. So K_𝒯 and K_𝒯 + 2α cosh(t/2) define the same form on H₀₀
+ for every α — exact algebra, no approximation — and (13) holds with R_g = R + 2α cosh(t/2) (gauge before the cutoff; χ ≡ 1 on I − I since 2δ = 0.10137 < d₀ = 0.17329). Float sweep:
+ α = 0.521 gives ‖χR_g‖₁ = 0.0025 (113× smaller), p + \hat{χR_g} > 0 on [0.05, 5000], robust for α ∈ [0.505, 0.535].
+ CERTIFICATE (report 14b0cb1be3a3ecc1; scripts docs/routeB_bus/phase5_codex/h4_cert/gauge/gauge_cert_core.py, gauge_cert.py; arb 300 bits; 233 s one core; reproduced by the observer to all printed digits):
+   α = 519/1000 frozen before the run. Two scalar inequalities cover the line: |F| ≤ A := ‖χR_g‖₁ and p ≥ c_*/(2π + |ξ|) ≥ c_*/(4π) on |ξ| ≤ 2π; |F| ≤ B/|ξ|, B := ‖(χR_g)′‖₁ (one IBP, no boundary
+   terms) and p ≥ c_*/|ξ| on |ξ| ≥ 2π (your (12)); the half-lines meet at 2π — no compact band, no J, D_J, e_J needed.
+   A ≤ 0.00346180830291 vs c_*/(4π) = 0.0210232135207 (ratio 0.1647, PASS); B ≤ 0.122854776540 vs c_* = 0.264185492606 (ratio 0.4650, PASS). Region I [0, 1e−3]: closed-form integration of pointwise
+   bounds on |q_b′| (ball evaluation of Q′ near 0 is useless: bL′ terms of size b cancel); region II [1e−3, d₀]: 2579 cells, relative half-width 0.001, adaptive J_q, J_N = 24, κ = (e^{−d₀} − ½)/2 = 0.17045,
+   per-pair bounds 1.83350·2^{−n} (value) and 32.89735·2^{−n} (derivative), 2n + 3 pairs at max index n; the L-series threshold lowered from 12 to 4 (interval dependency at |z| ~ 10).
+   R built from the regrouping (7) (log singularities cancel only in the limit), with the re-derived bounds |L| ≤ min(1, 4/|z|), |L′| ≤ min(|z|/9, 5/z²), |L″| ≤ min(1/9, (1 + 6.7038/|z|)/z²), |q_b| ≤ 5.91/b,
+   |q_b′(t) − q_b′(−t)| ≤ 4.76/(b|t|) + 25.4/(bt²).
+   Verification by other channels: gauge lemma on random moment-null h: added form 3e−38 vs ‖h‖² ~ 0.2; R(2δ) = −1.030388, R(1e−6) = −1.048136 (checker −1.03039, −1.04814); (7) vs (5) to 2e−12;
+   h₄ through (13) with and without the gauge: 0.0035088 = the ratified scalar floor; ‖χR‖₁ = 0.284761 (checker 0.28476). Float diagnostic margin: min (p + F)/p = 0.808 at ξ = 27.3.
+   INDEPENDENT CHECK of the certificate (fresh agent, 778a34acc0ada333): justified conditional on (13); the gauge lemma exact; the two-inequality logic correct and conservative by 2 (on |ξ| ≤ 2π actually p = c(log(2π/|ξ|) + a) ≥ ca = c_*/(2π));
+   κ = (e^{−d₀} − ½)/2 is a valid AND sharp lower bound over all nonresonant pairs incl. those near ±a (attained at i = j − 2, t = d₀); all constants verified numerically with 6–38× slack; region II encloses R, R′ on the whole cell ball (no Lipschitz transfer);
+   no float in A, B; A, B recomputed by a DIFFERENT method (direct double series (5), numpy, 24 000 nodes): 0.002390 and 0.07774 — the rigorous bounds are 1.45× and 1.58× above the true values; h₄ through (13g) = 0.0035088;
+   three immaterial defects: (a) a fictitious series-tail radius 2^{−900} in _Lseries (true first omitted term 7e−162 at |z| = 4; harmless at 300 bits because the rounding radius 1.7e−89 dominates) — REPAIRED to the true tail bound 2t_N and rerun: A ≤ 0.00346180882191 (was …830291), B unchanged, PASS; (b) the gauge term's derivative (1.3e−10) was missing in A_I — added; (c) a ball-semantics comparison at the node 2δ — conservative, left.
+   What is proved (checker): 𝓕(h) ≥ 0 for the CLOSED subspace H₀₀ ⊂ L²(I) (both moments zero), not only smooth tests; dependence only on δ and a = log 2; no hidden dependence on χ or α.
+   RESULT CODE: GAUGE_SOURCE_POSITIVE_EXTENSION_CERTIFIED. What it proves (given (5)–(8), (13)): p + \hat{χR_g} ≥ 0 on ℝ ⇒ ‖h‖²𝓕(h) = (1/2π)‖√(p + F)ĥ‖² ≥ 0 for every h ∈ H₀₀ supported in I —
+   your (24), WHOLE_CLASS_SCALAR_POSITIVITY — and with (2) 𝔪(h) ≥ 0 on the entire pole-null minus class with prime 2. What it does not prove: anything outside H₀₀/I/p = 2; I + K_rel beyond (20); RH.
+
+1. QUESTION 1 — RATIFY OR REFUTE THE GAUGE AND THE TWO-INEQUALITY LOGIC
+ (a) The pole-gauge lemma: is the class of invisible difference kernels exactly span{e^{t/2}, e^{−t/2}} (as functions of t = x − y), or is there more freedom (kernels K(x,y) not of difference type whose
+     compression to H₀₀ vanishes: u(x)e(y) + e(x)u(y) with e ∈ span{e^{±x/2}} — these change (13)'s multiplier picture; can they enlarge the margin or are they irrelevant for a translation-invariant p?);
+ (b) the logic: p ≥ c_*/(2π + |ξ|) for ALL ξ (from (10)–(12)); |F| ≤ B/|ξ| for χR_g ∈ W^{1,1}_c; the two half-lines meeting at 2π; are the thresholds A < c_*/(4π), B < c_* exactly right? (observer: on |ξ| ≤ 2π
+     in fact p ≥ ca = c_*/(2π), so the A-threshold could be doubled);
+ (c) does (13) with the gauged kernel hold for the closed subspace H₀₀ ⊂ L²(I) (both moments zero) or only for smooth tests — and does 𝔪(h) ≥ 0 then follow for every h in the source class of RESONANCE/CLASSFLOOR
+     (smooth pole-null tests in I) — state the exact theorem with hypotheses, as a PAPER statement conditional only on your (5)–(8), (13).
+
+2. QUESTION 2 — AUDIT THE ENCLOSURE
+ The regrouping (7) as the computational definition of R; the bounds on L, L′, L″ and on q_b, q_b′; κ = (e^{−d₀} − ½)/2 versus your κ = e^{−a−d₀}(1 − e^{d₀}/2) — is the code's κ a valid lower bound for
+ |β_i − β_j e^{±t}|/max(β_i, β_j) over all nonresonant pairs including those near the translates ±a?; the per-pair bounds and the 2n + 3 count; J_N = 24 tail; region I closed forms; region II Lipschitz
+ transfer (value ball ± sup|R′|·half-width — is sup|R′| enclosed on the cell?). Give the first exact defect if any; otherwise CERTIFICATE_RATIFIED with the scope of §1(c).
+
+3. QUESTION 3 — WHAT THIS CLOSES IN YOUR LEDGER
+ Rescore: WHOLE_CLASS_SCALAR_POSITIVITY, WHOLE_CLASS_FULL_MARGIN_POSITIVITY (via (2)), SIGNED_SCHUR_COMPLEMENT_NONNEGATIVE (the scalar Schur complement is now nonnegative on this class), I + K_rel ⪰ 0 (19),
+ P_SCHUR_* registrations, and the frozen PHASEPROOF event P_PHASEPROOF_SOURCE_PACKET_MINUS_MARGIN_POSITIVE (0.70) for the exact eta bump (it is in H₀₀ after the inward regularity extension — does the class
+ result close it?). State what remains RESEARCH_DEBT for THIS cell (the Lean/kernel status of (5)–(8), (13); the first asserted «Thus»).
+
+4. QUESTION 4 — THE NEXT CELL OF THE LADDER
+ From SCHUR §8: (i) independent lobe profiles v = U_{a/2}h₊ + U_{−a/2}h₋ (cross terms, same source pair); (ii) three lobes at 0, log 2, log 3 (both primes; two-index Mellin series; the dyadic resonance
+ separation does not transfer verbatim); (iii) full classes with pole terms and the 2×2 anchor Schur statement. For each: does the pole gauge and the dyadic principal-kernel method transfer, what is the
+ principal kernel and its coefficient (is it again cosh(·) − 1 type from translated resonances?), and what is the cheapest decisive computation. Which cell would you take first for the fastest path to
+ the full Weil criterion, and why.
+
+5. SHELF (sha256 prefix 16 at BASE_TIP)
+ 14b0cb1be3a3ecc1  docs/routeB_bus/GAUGE_POSITIVE_EXTENSION_CERTIFICATE_REPORT_2026-09-07.md · scripts docs/routeB_bus/phase5_codex/h4_cert/gauge/{gauge_cert_core,gauge_cert,gauge_test,item8_ext}.py · out/gauge_cert_agent_run.txt, out/gauge_cert_observer_rerun.txt
+ f8515045b9b7dedd  docs/routeB_bus/SCHUR_INDEPENDENT_CHECK_2026-09-07.md
+ c7482ec7a9425e12  docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SIGNED_SCHUR_COMPLEMENT_2026-09-07.md
+ 778a34acc0ada333  docs/routeB_bus/GAUGE_INDEPENDENT_CHECK_2026-09-07.md (independent check of the certificate; filled at bind)
+ 247745f69ba1e3ce  docs/Progress_Log.md (entries 2026-09-07: SCHUR intake, the gauge finding, the certificate)
+ PDFs as before: 2006.13771v1, 2310.18423v2, 2602.04022v1, math/9811068v1
+
+6. KILLED / FORBIDDEN: everything in the parent verdicts' «must not recur»; RH-conditional inputs; diagnostic numbers as proof steps; «this is RH»; inferring anything beyond H₀₀/I/p = 2 from this cell.
+
+7. REGISTERED PREDICTIONS (K6, observer; frozen)
+  P_GAUGE_LEMMA_RATIFIED: 0.90 — the pole-gauge lemma and gauged (13) are ratified as written.
+  P_TWO_INEQUALITY_LOGIC_RATIFIED: 0.85 — the A/B half-line logic is ratified (possibly with a doubled A-threshold).
+  P_ENCLOSURE_RATIFIED: 0.70 — no defect in the R, R′ enclosure (κ, L-bounds, region I) at the level of the ledger.
+  P_CLASS_THEOREM_STATED: 0.80 — an exact PAPER theorem «𝔪(h) ≥ 0 for all smooth pole-null h in I» conditional only on (5)–(8), (13) is stated.
+  P_PHASEPROOF_EVENT_CLOSED: 0.60 — the frozen bump event is closed by the class result.
+  P_NEXT_CELL_IS_INDEPENDENT_PROFILES: 0.55 — the judge picks (i) as the first next cell.
+
+8. REQUIRED VERDICT: header with RESULT per question ∈ {CERTIFICATE_RATIFIED, CERTIFICATE_REFUTED, PROVED_ON_CLASS, PARTIAL_WITH_PRECISE_REMAINDER, OBSTRUCTION_NAMED, COMPUTATION_SPECIFIED,
+ ATTEMPT_REFUTED_WITH_EXACT_COUNTEREXAMPLE} and CLOSES/OPENS; Q1–Q4 in full; proofs where claimed; score the observer's predictions without editing; score your own SCHUR registrations (P_SCHUR_*);
+ register new ones; the cheapest decisive check; no Lean edit, no numerical run, no RH claim; write only the verdict. If your session cannot push, say so in the header and the owner will relay the file through docs/_inbox/.
