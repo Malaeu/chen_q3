@@ -46,9 +46,11 @@ def overlap(k,l,sig,delta):
     prod=Pn.polymul(pk,pls); ip=Pn.polyint(prod)
     return delta*(Pn.polyval(hi,ip)-Pn.polyval(lo,ip))
 
-def build(xs,K,h=0.02,XI=20000.0,verbose=True,no_offsets=False):
+def build(xs,K,h=0.02,XI=20000.0,verbose=True,no_offsets=False,delta=None):
     t0=time.time()
-    a=np.log(2); b=np.log(3); delta=(b-a)/8; ell=2*delta
+    a=np.log(2); b=np.log(3)
+    if delta is None: delta=(b-a)/8
+    ell=2*delta
     m=len(xs); N=m*K
     cA=np.euler_gamma+np.log(8*np.pi)+np.pi/2
     xi=np.arange(0,XI+h,h); xi[0]=1e-12
@@ -79,10 +81,17 @@ def build(xs,K,h=0.02,XI=20000.0,verbose=True,no_offsets=False):
     if verbose: print('  arch %.1fs'%(time.time()-t0),flush=True)
     G=np.zeros((N,N))
     for i in range(m):
-        for k in range(K): G[i*K+k,i*K+k]=2*delta/(2*k+1)
+        for j in range(m):
+            sig=xs[j]-xs[i]
+            if abs(sig)>=ell: continue
+            for k in range(K):
+                for l in range(K):
+                    G[i*K+k,j*K+l]=overlap(k,l,sig,delta)
     # primes: Prime(f,g) = - sum_n w_n [<f,U_{log n} g> + <f,U_{-log n} g>]
     P=np.zeros((N,N)); atoms=[]
     nmax=int(np.exp(xs[-1]-xs[0]+ell))+2
+    PRL=[p for p in range(2,nmax+2) if all(p%q for q in range(2,int(p**0.5)+1))]
+    global PR; PR=PRL
     for n in range(2,nmax+1):
         lam=Lam(n)
         if lam==0: continue
@@ -150,13 +159,15 @@ def analyse(R,label):
 if __name__=='__main__':
     ap=argparse.ArgumentParser(); ap.add_argument('--set',default='6'); ap.add_argument('--K',type=int,default=4)
     ap.add_argument('--h',type=float,default=0.02); ap.add_argument('--XI',type=float,default=20000.0)
-    ap.add_argument('--no-offsets',action='store_true'); ap.add_argument('--out',default='/home/chirurgie/.claude/jobs/4b35770d/tmp/six_centre')
+    ap.add_argument('--no-offsets',action='store_true'); ap.add_argument('--width',default='fixed',help='fixed | lin | sqrt : delta = delta0*(logP/log3)^pow'); ap.add_argument('--K0',type=int,default=0); ap.add_argument('--out',default='/home/chirurgie/.claude/jobs/4b35770d/tmp/six_centre')
     a=ap.parse_args()
     sets={'3':[2,3],'4':[2,3,5],'5':[2,3,5,7],'6':[2,3,5,7,11],'7':[2,3,5,7,11,13],'8':[2,3,5,7,11,13,17],'10':[2,3,5,7,11,13,17,19,23],'12':[2,3,5,7,11,13,17,19,23,29,31],'14':[2,3,5,7,11,13,17,19,23,29,31,37,41],'16':[2,3,5,7,11,13,17,19,23,29,31,37,41,43,47]}
     xs=[0.0]+[np.log(p) for p in sets[a.set]]
-    R=build(xs,a.K,a.h,a.XI,no_offsets=a.no_offsets)
-    res=analyse(R,f'centres={a.set} K={a.K} h={a.h} XI={a.XI}')
-    fn=f"{a.out}/sc_{a.set}_K{a.K}_h{a.h}_XI{int(a.XI)}{'_nooff' if a.no_offsets else ''}.json"
+    d0=(np.log(3)-np.log(2))/8; n=xs[-1]; n0=np.log(3)
+    delta={'fixed':d0,'lin':d0*n/n0,'sqrt':d0*np.sqrt(n/n0)}[a.width]
+    R=build(xs,a.K,a.h,a.XI,no_offsets=a.no_offsets,delta=delta)
+    res=analyse(R,f'centres={a.set} K={a.K} h={a.h} XI={a.XI} width={a.width} delta={delta:.5f}')
+    fn=f"{a.out}/sc_{a.set}_K{a.K}_h{a.h}_XI{int(a.XI)}{'_nooff' if a.no_offsets else ''}{'' if a.width=='fixed' else '_'+a.width}.json"
     json.dump(res,open(fn,'w'),indent=1,default=str)
     np.savez(fn.replace('.json','.npz'),**{k:v for k,v in R.items() if isinstance(v,np.ndarray)})
     for k,v in res.items():

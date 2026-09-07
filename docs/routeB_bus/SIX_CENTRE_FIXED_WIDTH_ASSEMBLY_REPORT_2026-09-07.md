@@ -67,3 +67,29 @@ above the numerical error (≤ 1e−6 on floors), but nothing here is an enclosu
 ±δ: they lie in the form domain (𝒟 finite: ∫A(t)·t dt converges) but not in C_c^∞; the floors are those of the
 closure of the class. A finite-subspace minimum is an UPPER bound on the class infimum; the K = 4 → 6 change
 (2.4e−4) indicates convergence.
+
+## Addendum: the width does not save the floor (owner's «ок го», 2026-09-07 night)
+Same assembly, lobe half-width growing with the support: δ = δ₀·(n/n₀)^γ, n = log P, n₀ = log 3, δ₀ = (log 3 − log 2)/8.
+Gram now carries cross terms (lobes overlap once 2δ exceeds a gap between centres; the class is then a span of
+overlapping functions, still legitimate). Regression: fixed width reproduces 0.5366 at six centres.
+
+| P | δ fixed | floor fixed | δ ∝ √n | floor √n | δ ∝ n | floor lin |
+|---:|---:|---:|---:|---:|---:|---:|
+| 3 | 0.0507 | 0.966 | 0.0507 | 0.967 | 0.0507 | 0.967 |
+| 11 | 0.0507 | 0.537 | 0.0749 | 0.240 | 0.1106 | 0.0366 |
+| 23 | 0.0507 | 0.184 | 0.0856 | 0.0400 | 0.1447 | 0.0064 |
+| 47 | 0.0507 | 0.073 | 0.0949 | 0.0069 | 0.1776 | 0.0008 |
+
+Readings.
+1. Wider lobes make it WORSE, and faster: the archimedean energy per lobe is ~ log(1/δ) + β and shrinks with the
+   width, while the prime coupling norm grows with P regardless. All three curves tend to 0⁺; none crosses zero
+   (RH; the unconstrained minimum at P = 47, δ ∝ n, is +1.6e−4, five orders above the numerical error).
+2. THE ROOM FOR INEQUALITIES CLOSES. At P = 47 with δ ∝ n the class floor is 8e−4 per unit norm: a compensation
+   estimate that loses 0.1% of ‖f‖² anywhere would go falsely negative. Every all-n mechanism of the shape
+   «positive form ≥ C·‖f‖²-bounded negative form» with a lossy constant (U1's budget loses 4×, INVARIANT's 6×)
+   is therefore dead as P grows. What can survive is a representation with equality up to terms that vanish
+   (owner's rule 18 in its strict form: B₀ + Σ C_k with the C_k summing to the exact value), or a domination that
+   is relative, direction by direction — INVARIANT's own escape clause in §5. This is the numerical content of the
+   owner's «single vortex»: at large P only an identity has room.
+3. The atom itself has slack here: S_n(1/n) ⪰ 0 asks Q ≥ −(1/n)‖f‖²; at P = 47, n ≈ 3.9, the floor +8e−4 is
+   0.26 above the requirement. The regulariser is not what is hard; the exact sign of the un-regularised head is.
