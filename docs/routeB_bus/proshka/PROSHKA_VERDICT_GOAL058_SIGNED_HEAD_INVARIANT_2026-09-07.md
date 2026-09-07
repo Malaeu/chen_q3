@@ -476,9 +476,9 @@ Keep [C, (C12)--(C16)] literally. On \(H_n=L^2(-n,n)\), \(V_n\) spans the unifor
  S_n(\epsilon)=A_n+\epsilon G_n-E_n^*(B_n+\epsilon I)^{-1}E_n.
                                                                \tag{27}
 \]
-Here \(\(G_n\) is the physical head Gram. \(A_n\) includes all pole terms. The cutoffs in [C] are an existence construction, not the proposed next computation.
+Here \(G_n\) is the physical head Gram. \(A_n\) includes all pole terms. The cutoffs in [C] are an existence construction, not the proposed next computation.
 
-The core step flagged by [CC] can be made explicit. Let \(\mathscr W\) have norm
+The core step flagged by [CC] can be made explicit. Let \(\mathscr W\) have squared norm
 \(\int\log(2+|\xi|)|\widehat f(\xi)|^2d\xi\). For a supported \(f\in\mathscr W\), the dilation
 \(f_r(x)=r^{-1/2}f(x/r)\), \(1/2<r<1\), has strictly interior support. Dilation is uniformly bounded in this norm since
 \(\log(2+|\xi|/r)\le C\log(2+|\xi|)\); it is strongly continuous at 1 by approximation by compactly supported continuous Fourier functions. Convolve \(f_r\) with a smooth approximate identity of support radius less than \(n(1-r)\). Its Fourier multiplier is uniformly bounded and tends pointwise to 1, so dominated convergence gives convergence in \(\mathscr W\). The result is in \(C_c^\infty(-n,n)\).
