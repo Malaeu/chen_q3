@@ -14,6 +14,22 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-07-CHAIN · FULL CHAIN from the closed cells (C1 minus class, C2 independent profiles) to the terminal Weil consumer: the break, the replacement, the finite structure, the atom · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_FULL_CHAIN_TO_WEIL_2026-09-07.txt`
+- Boundary: `GOAL058_FULL_CHAIN_FROM_THE_CLOSED_CELL_TO_THE_TERMINAL_WEIL_CONSUMER`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: PROFILES intaken (Theorem P1 hand-checked); GAUGE cell theorem (P35) written; P1 audit running; section 9 PROSHKA'S OWN LINE first used here
+- Registered predictions: BREAK_IS_PRIME_SUM 0.55; REPLACEMENT_IS_RESERVOIR_MINORANT 0.45; CHAIN_HAS_FINITE_STRUCTURE_NAMED 0.35; ATOM_NAMED_WITH_TEST 0.60; STOP_LIST_INCLUDES_MARGIN_SIGN 0.70
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `90451f79641c8b293fe3f14b03d8ec111a3f6f88` / `10030` / `70` /
+  `4cebbf31d1d823b4f4bc595f6ac439a68321ec03ab573a1140130d51113d7472` /
+  `c8a0ae92c40551ca5fec6020de710beb9f73870f` / `yes`
+
+---
+
 ## REQ-2026-09-07-PROFILES · Independent profiles: Q = n2 + m with the reservoir explicit; matrix gauge/extension scheme; two-prime lemma; publication statement of the closed cell · ANSWERED
 
 - `STATUS: ANSWERED` — verdict `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_INDEPENDENT_PROFILES_RESERVOIR_2026-09-07.md`, commit `4cf74164`, 718 lines; the observer's instrument addendum was read and applied (plus full-margin numbers withdrawn as sign evidence). HEADLINE — Theorem P1 (PAPER, new): Q(v) ≥ ‖v‖²/100 for EVERY v = U_{a/2}h₁ + U_{−a/2}h₂ with smooth h₁, h₂ supported in I and only the TWO TOTAL pole moments zero (P4) — independent profiles, both phase channels, all mixed pairings; proof direct from the geometric Weil formula: the two global moment equations bound the local means ‖m‖² < (d/25)H (P17, d = 13/125), the archimedean energy on short supports via ∫₀^d‖U_th − h‖² = 2dH − |m|² (P18), the cross-lobe archimedean cost ≤ J_dH, the prime cost ≤ wH, rational ledger (P25): bracket = 29/1500 > 1/100; positive representation (P26) — every term nonnegative by construction (rule 18) without postulating Q ≥ 0; no numerical certificate, no gauge kernel, no margin sign used; Q1(a) NOT DELIVERED: the plus-channel full-margin sign stays UNRESOLVED — (P9) 𝔪(v_{+,T})/p(T) = 𝒞_T − (1 + C_a)/c + o(1) with 𝒞_T ≥ 0 the correction square's ratio, no coefficient; only |𝔪| = O(T^{−1/2}); Q1(b) PROVED: the full Weil form and the reservoir have the SAME LOGARITHMIC principal order — Q(v_{±,T}) = log(T/2π) ∓ w + o(1) = n₂(v_{±,T}) + o(1) (P13)–(P15); assigning Q the decaying dyadic multiplier p is a category error (order mismatch); Q1(c) PROVED as interface: matrix gauges (P27) only on H₀₀ ⊕ H₀₀; for the total-null class only lifted physical kernels are invisible; matrix two-norm thresholds A_M < μc_*/(4π), B_M < μc_* (P28)–(P29); no positive matrix extension for Q constructed (not needed: P1 is direct); Q2 CERTIFICATE_RATIFIED with the repaired executable (A < 1/250, B < 1/8); D1 of the checker REFUTED: it conflated the profile gauge (on 𝓕(h): +2αR_h/H) with a physical gauge on Q_sc[v]; GAUGE's −2(α + c)R_h/H stands (P31); Q3 PARTIAL: two-prime Lemma P2 (all-resonance local extraction at every log-ratio root, shell tails Σ(n+2)⁵e^{−n}, W^{1,1} remainder Σ(n+2)⁴e^{−n/2}) PROVED as convergence; the signed compression (P34) not proved; the principal object is neither S₂ + S₃ nor the lattice sum; for the FULL Weil form on three lobes the cheaper route is the direct energy/moment argument with the 2×3 moment matrix's 1-dim kernel; Q4 PROVED: publication theorem (P35) for the GAUGE cell with the six-step PAPER/ARB/inherited dependency order and the scope sentence; Theorem P1 as a separate proposition. Predictions: FULL_MARGIN_PLUS_NEGATIVE NOT_DELIVERED (unresolved), Q_PRINCIPAL_MATRIX_PD CONFIRMED (log order), MATRIX_EXTENSION CONFIRMED as interface, TWO_PRIME_LEMMA CONFIRMED with all resonances, PUBLICATION_STATEMENT CONFIRMED. DIRECTIVE: PROFILES_DIRECT_TWO_LOBE_WEIL_COERCIVITY_PAPER_AUDIT — independent audit of P1/(P26) before any new packet. Observer hand checks: see log. Independent agent check launched.
