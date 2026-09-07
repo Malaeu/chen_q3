@@ -70,8 +70,10 @@ def _panel(idx):
     gm = g1 if g1 > g2 else g2
     base = _G['wfac'] * _G['hpref'] * 2 * gm * _G['Tb']
     basem = _G['wfac'] * _G['hpref']
-    return (float(base.abs_upper().str(20, radius=False)),
-            float(basem.abs_upper().str(20, radius=False)))
+    # RECEIPT REPAIR (CLASSFLOOR v2 §1.6): return the outward upper endpoints as 40-digit decimal strings
+    # (rounding error <= 1e-39 relative, covered by the (1 + 2^-50) pad applied by the caller), never floats.
+    return (base.abs_upper().str(40, radius=False),
+            basem.abs_upper().str(40, radius=False))
 
 
 def sweep(X, WID, NCC, NP, rhos):
@@ -107,5 +109,15 @@ if __name__ == '__main__':
     rhos = [float(x) for x in sys.argv[5:]] or [3.0, 3.2, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9]
     print(f"post-hoc E_quad sweep: X={X} WID={WID} NCC={NCC} J0={evalf.J0}")
     out = sweep(X, WID, NCC, NP, rhos)
-    best = min(out, key=lambda r: float(out[r][0].str(10, radius=False)))
+    best = min(out, key=lambda r: float(out[r][0].str(10, radius=False)))   # selection only; values stay balls
     print(f"\nBEST rho = {best}   Ebase = {out[best][0].str(12)}   Ebasem = {out[best][1].str(12)}")
+    # RECEIPT: full balls and 60-digit outward upper endpoints (the assembly must import THESE, not printed midpoints)
+    import os
+    os.makedirs('out', exist_ok=True)
+    with open('out/equad_receipt.txt', 'w') as f:
+        f.write(f"rho {best}\n")
+        f.write(f"Ebase_ball {out[best][0].str(60)}\n")
+        f.write(f"Ebasem_ball {out[best][1].str(60)}\n")
+        f.write(f"Ebase_upper60 {out[best][0].abs_upper().str(60, radius=False)}\n")
+        f.write(f"Ebasem_upper60 {out[best][1].abs_upper().str(60, radius=False)}\n")
+    print("receipt written: out/equad_receipt.txt")

@@ -156,7 +156,22 @@ def rayleigh(F, H, c):
     return num / den
 
 
-def main(path, X, J0, ebase=EBASE_DEF, ebasem=EBASEM_DEF):
+def _receipt():
+    """RECEIPT REPAIR (CLASSFLOOR v2 §1.6): import the 60-digit outward upper endpoints written by packequad.py.
+    The (1 + 2^-40) pad then covers the 60-digit decimal rounding by ~1e47 ulps. Falls back to the old 12-digit
+    literals ONLY if no receipt exists (and says so)."""
+    import os
+    fn = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'out', 'equad_receipt.txt')
+    if not os.path.exists(fn):
+        print("WARNING: no out/equad_receipt.txt — using 12-digit literals (NOT an outward receipt)")
+        return EBASE_DEF, EBASEM_DEF
+    kv = dict(line.split(None, 1) for line in open(fn) if line.strip())
+    print(f"receipt: rho={kv['rho'].strip()}  Ebase_upper60={kv['Ebase_upper60'].strip()}  Ebasem_upper60={kv['Ebasem_upper60'].strip()}")
+    return kv['Ebase_upper60'].strip(), kv['Ebasem_upper60'].strip()
+
+def main(path, X, J0, ebase=None, ebasem=None):
+    if ebase is None or ebasem is None:
+        ebase, ebasem = _receipt()
     txt = open(path).read()
     ctx.prec = PREC
     d, A = packarb.profiles(PREC)
