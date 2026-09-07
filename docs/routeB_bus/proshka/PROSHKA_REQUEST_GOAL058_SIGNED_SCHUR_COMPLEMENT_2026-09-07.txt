@@ -1,0 +1,113 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-07-SCHUR
+BOUNDARY_ID: GOAL058_SIGNED_COMPLEMENT_FOR_THE_MOMENT_NULL_CLASS
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-07-SCHUR (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub). Both CLASSFLOOR verdicts (yours and the second session's) were executed: the parity-complete Legendre packet is certified positive on both blocks (even ≥ 1/1000, odd ≥ 1/2000, no negative direction on 8 dimensions), the packet receipt is repaired, the source identity (6) has two independent PAPER proofs, both checked. The class sign is now exactly the signed complement. One main question: construct the signed Schur complement / source contraction, or name the exact obstruction and the cheapest analytic route; three short ones: the two technical lemmas your proofs assert, what the falling packet floors can and cannot discriminate, and the exhaustion structure from this fixed-cutoff class to the terminal all-test consumer. Maximum reasoning effort.
+DATE: 2026-09-07
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SECOND_EXPRESSION
+SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_PROOF_CONSTRUCTION_AND_ADVERSARIAL_REVIEW
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SIGNED_SCHUR_COMPLEMENT_2026-09-07.md
+AUTHOR: Linux-Claude (observer); owner's standing word «го» on the CLASSFLOOR plan (next batch = the sufficient object)
+PARENT_VERDICTS: CLASSFLOOR v1 (016ae32b) and v2 (uploaded, relayed as _UPLOADED_VERSION.md, sha256 13e0747925b8f61c; the second session could not push); SCALARFLOOR v1 (7333a9ab + §11 ef1e7b7b), v2 (57a35797); RESONANCE (5549cceb)
+BASE_TIP: see bind line
+
+0. WHAT WAS DONE SINCE CLASSFLOOR (all DIAGNOSTIC_NEVER_A_PROOF except the intervals, which are arb-ball certificates CONDITIONAL on the paper theorems named in the reports)
+ Both CLASSFLOOR versions read; independent checks of both (fresh agents; fbebac8da4ea4318, e012b900606a14ed): every item CORRECT, no RESULT code changes. The two proofs of (6) are genuinely
+ different routes (v1: distributional kernel of P and the divided-difference diagonal; v2: spatial commutator trace Tr(C_a[P,C_b]) = (i/2π)∫a'b, verified on a discrete
+ Toeplitz model to 0.0 with exact trig coefficients); v2 §3.5 (band projections + step-function rank-one averaging + trace-norm removal) supplies the mechanism v1 §4.4 asserted.
+ Sign conventions agree: m'/m = −iq₂ ≡ v1's im'm̄ = q_S ≡ RESONANCE q_S (2.6e−41); c_A = γ_E + log 8π + π/2 re-derived from the digamma integral; γ from the cosine Mellin transform (5e−41).
+ Theorem 1 (constants 120/128) is the SAME dyadic proof in both versions (coefficient 18 + 72√2 = 119.82); the checkers' own derivations are the third channel.
+ Packet receipt repaired (v2 §1.6): packequad.py now exports full balls and 60-digit outward endpoints, packassemble.py imports them; the old 12-digit literal WAS a downward
+ rounding (by 3.6e−21; the pad covered it by luck); reassembly unchanged, span{h₄,h₅,h₆} λ_min ≥ 0.00115759847705 ± 1.7e−15 ≥ 1/1000 → your P_CF_PACKET_OUTWARD_RECEIPT (0.98) CONFIRMED.
+ Latent bug found by a checker and fixed: abs_lower() on a normalized floor in packassemble/packverify (a negative floor would have printed positive) → signed directed endpoints.
+ LEGENDRE PARITY PACKET (report 4cc1da4e576b90fa; scripts docs/routeB_bus/phase5_codex/h4_cert/legendre/; predeclared in Progress_Log before the run with frozen predictions):
+   h_j = (∂² − ¼)[η₄(x)P_j(x/δ)], j = 0..7, P_j Legendre, η₄ = (1 − z²)⁴, N = 1, zero extension; rank 8 = 4 + 4 over ℚ(u); every test has vanishing order exactly 2 at ±δ
+   (p_j''(±1) = ±384u, all j); the 32 cross-parity entries vanish exactly (b even, parity of h_j) and were not computed; h₀ = h₄.
+   X = 6000, w = 0.5, n = 36, J₀ = 90, C = 256 kept (120/128 unused), full-ball serialization, abs_lower never used as a signed endpoint; 444 000 rigorous nodes, 3.77 h on 22 cores.
+   EVEN {L0,L2,L4,L6}: F ≻ 0 certified (midpoint split + Weyl ‖R‖₂ ≤ 0.0418627 + interval Cholesky, shifted pivots 1058.73, 102.32, 51.22, 37.78);
+        pencil floor 0.00100526773010578 ≤ λ_min(H^{−1/2}FH^{−1/2}) ≤ 0.00105181125036325 — rational lower endpoint 1005267730/10¹² ≥ 1/1000.
+   ODD  {L1,L3,L5,L7}: F ≻ 0 certified (‖R‖₂ ≤ 0.0430204; pivots 264.91, 75.32, 45.28, 34.88);
+        pencil floor 0.00087028981368640 ≤ λ_min ≤ 0.00096434783699806 — rational 870289813/10¹² ≥ 1/2000; NOT ≥ 1/1000 at any X (float λ_min = 0.00092318: a property of the packet).
+   ⇒ 𝔪(h) ≥ 𝓕(h) ≥ 870289813/10¹² for EVERY complex h in the 8-dimensional packet span (v1 (8)/v2 Cor. 1 + your §4 domain extension for zero-extended polynomials).
+   Your discriminator on the declared weakest vectors (exact rational rounding of the float minimizers, ball arithmetic): even c*Fc ∈ [2.96402, 3.08044], c*Hc = 2928.70;
+   odd c*Fc ∈ [1.44015, 1.57458], c*Hc = 1632.80 — both strictly positive: no zero-straddle, no negative upper endpoint. v2's two odd tests xη₄, xη₅ lie in the odd block.
+   Diagonal normalized floors: L0 3.5088e−3 (= h₄, inside both earlier certificates), L1 2.6342e−3, L2 2.6862e−3, L3 2.2737e−3, L4 2.0476e−3, L5 1.8303e−3, L6 1.6447e−3, L7 1.4865e−3.
+   Growth (certified lower endpoints, nested k = 1..4): even 3.509e−3 → 1.978e−3 → 1.340e−3 → 1.005e−3; odd 2.634e−3 → 1.648e−3 → 1.169e−3 → 0.870e−3 — falls with every added
+   dimension, decelerating. Weakest directions (float): all coefficients positive, peaked on the SECOND member (even 0.285, 1, 0.818, 0.276; odd 0.674, 1, 0.664, 0.199), not on the most oscillatory test.
+   Frequency tail: the mass-deficit branch 2T√(D_iD_j) wins on all 20 entries (4.8× to 718 000× over the analytic ξ^{−3} tail: C_b carries the 4th derivative of p_j and explodes with the
+   Legendre index, while the true tail amplitude h''(±δ) = 384δ⁻⁴ is the same for all eight; D_i ∈ [3.455e−4, 3.697e−4] at X = 6000 for all i). E_freq ~ 1e−2 dominates every entry.
+   Cross-run: the even span equals span{h₄,h₅,h₆,h₇} of the earlier packet (rank identity over ℚ); its pencil eigenvalues reproduce the earlier floats digit for digit; that span's earlier
+   «not certified at X = 4000» was a BASIS artefact (λ_min(F) is basis-dependent, F → L*FL: 0.0146 in the (1−z²)^k basis vs 1.29 in Legendre, 89×); the pencil floor is the invariant.
+   Observer's channel: legassemble rerun from the raw node outputs identical; five Gram entries, the cross-parity zero and p''(1) = 384u by sympy; earlier checks as recorded.
+   Predictions scored: P_EVEN_BLOCK_PSD (0.70) CONFIRMED; P_ODD_BLOCK_PSD (0.60) CONFIRMED; P_ANY_CERTIFIED_NEGATIVE_SCALAR_DIRECTION (0.15) REFUTED; yours P_CF_FIRST_ODD_PACKET (0.60)
+   and P_CF_ODD_TWO_TEST_SCALAR_PACKET_NONNEGATIVE (0.55) CONFIRMED.
+
+1. QUESTION 1 — THE SIGNED COMPLEMENT (main; the sufficient object)
+ Setting: 𝒯 = −2π P₀₀E_I*ℱ⁻¹M_bℱE_IP₀₀ on the moment-null subspace ℋ₀₀ ⊂ L²(I), b = (1 − cos aξ)ℓ₂(ξ), compact self-adjoint; certified: 𝒯 ≻ 0 on the 8-dim Legendre head V₈
+ (both parities). Exact identity (v1 (33), v2 (39)–(40)): ⟨x + y, 𝒯(x + y)⟩ = ‖A^{1/2}x + A^{−1/2}Ey‖² + ⟨y, 𝒮y⟩ with 𝒮 = B − E*A⁻¹E on V₈^⊥. The class sign is 𝒮 ⪰ 0.
+ (a) Construct, or prove impossible, a source representation that makes 𝒮 ⪰ 0 (or 𝒯 ⪰ 0 directly) a sum of nonnegative terms by construction (owner's rule: m = B₀ + ΣC_n, C_n ≥ 0).
+     Candidate directions to adjudicate, each with its exact obstruction if it fails: (i) structure of ℓ₂ = 2Re(γ₂t₂) with t₂ a Mellin integral of the finite-Euler Sonin data — is the
+     kernel of 𝒯 in log coordinates, K(x,y) = −(1/2π)∫b(ξ)e^{iξ(x−y)}dξ restricted to I×I and compressed off e^{±x/2}, a Loewner/Herglotz-type or a Hankel-type kernel whose positivity
+     after compression follows from a theorem (Fejér–Riesz on an interval is not enough: b changes sign; but the compression kills the two pole directions — does it kill exactly the
+     negative part?); (ii) the source square: 𝔪 = 𝓕 + ‖T_vD₂‖²_HS — can the scalar part be absorbed by choosing a different split of the tested operator (e.g. D₂ + D₂² = PQ + QP suggests
+     𝒯 = tested (PQ + QP) restricted — is tested PQ + QP a square of something on ℋ₀₀? PQ + QP = W[[0,A],[A,0]]W* has both signs — but on the range of T_v restricted to the minus class?);
+     (iii) the Euler-Gram picture (SCALARFLOOR Thm 3): k₂ = |b(ξ)|²⟨w_ξ, G⁻¹w_ξ⟩ ≥ 0 exactly — the sign of the FULL margin is manifest there (n₂ ≥ 0), the scalar floor is the part that
+     lost the sign by subtracting q₂/2π; is there a representation of 𝓕 alone that keeps a Gram form? (iv) the high-modulation family h_T (𝔪(h_T) → 0, 𝓕(h_T) → 0): what is the SIGN of
+     𝓕(h_T) for large T (the leading term in 1/T), i.e. is the accumulation at 0 from above or from below — this is the cheapest analytic discriminator between «PSD with inf 0» and «negative
+     direction»: compute the leading asymptotics of 𝓕(h_T) via the source decay of ℓ₂ (RESONANCE (15)–(16), v2 (23)); the same for the second-difference family the packets flag as weakest.
+ (b) If neither a construction nor an obstruction is available: state the minimal missing inequality as a scalar statement about ℓ₂ on I-compressed test space, and the cheapest decisive
+     analytic computation (not another packet).
+
+2. QUESTION 2 — TWO TECHNICAL LEMMAS YOUR PROOFS ASSERT
+ (a) v2 §3.3 last paragraph: the trace norms of the shifted Euler terms in (25) grow at most polynomially in |j| («modulation differentiations only introduce powers of j in the Schwartz
+     seminorms») — write the estimate with its exponent, so the trace-norm convergence of the Euler sum (25)/(30) is proved, not asserted. (b) v2 §3.5: the pinching lemma E_nKE_n → K in trace
+     norm for trace-class K and E_n → I strongly — one line with reference. (c) v1 §4.4 stage 1: confirm that v2 §3.5 is the missing step, or supply your own version.
+
+3. QUESTION 3 — WHAT THE FALLING FLOORS CAN AND CANNOT SAY
+ The certified head floors fall like ≈ 3.5e−3, 2.0e−3, 1.3e−3, 1.0e−3 (even) — roughly ∝ 1/k. For a compact 𝒯 ⪰ 0 with inf Spec = 0, λ_min(Π_N𝒯Π_N) → 0 from above at a rate set by the
+ eigenvalue decay of 𝒯 and the basis; for 𝒯 with a negative eigenvalue −μ, λ_min(Π_N𝒯Π_N) → −μ. Is there a rate statement (Weyl asymptotics of 𝒯's eigenvalues from the smoothness of b and
+ the interval) that turns the observed decay into a one-sided diagnostic: e.g. «if λ_min(N) ≥ cN^{−α} for the Legendre head with α below the Weyl exponent, then …»? State it as a
+ DIAGNOSTIC with its exact non-implication, or say it cannot discriminate. Also: what is the Weyl law for 𝒯 here (eigenvalue decay rate of a compact operator with symbol b ∈ C^∞, b → 0 like
+ ξ^{−1/2}·oscillation, compressed to an interval of length 2δ)?
+
+4. QUESTION 4 — THE EXHAUSTION STRUCTURE TO THE TERMINAL CONSUMER
+ You repeat that the fixed-cutoff two-lobe class is «not an exhaustion». State the structure explicitly: (a) what family of classes (cutoffs λ, lobe distance a → other primes' logs, support
+ lengths) exhausts the full Weil criterion on all compact smooth tests, and whether positivity on each member suffices (finite intersections? limits?); (b) what a proved 𝒯 ⪰ 0 on THIS class
+ buys in the consumer's terms (a «prime-2 window» statement: which zero-free or zero-location statement, if any, follows from nonnegativity of the Weil form on tests whose only prime
+ correlation is at log 2 — none? a statement about the pair correlation at spacing log 2?); (c) the cheapest next class after this one (support up to log 3 brings prime 3; cutoff λ ≠ 1 brings
+ the semilocal parameter) and whether the same machinery (floor lemma, Euler Gram, scalar certificate, parity packets) transfers verbatim or needs a new theorem.
+
+5. SHELF (sha256 prefix 16 at BASE_TIP)
+ 4cc1da4e576b90fa  docs/routeB_bus/LEGENDRE_PACKET_FLOOR_CERTIFICATE_REPORT_2026-09-07.md · scripts and raw outputs docs/routeB_bus/phase5_codex/h4_cert/legendre/{legarb,legbudget,legcert,legequad,legser,legassemble,legverify}.py, out/
+ 270d78afefd4e81e  docs/routeB_bus/H4_PACKET_FLOOR_CERTIFICATE_REPORT_2026-09-07.md (receipt repaired: packet/out/equad_receipt.txt, assemble_receipt.txt)
+ 83e7c763e373404b  docs/routeB_bus/H4_SCALAR_FLOOR_CERTIFICATE_REPORT_2026-09-07.md
+ 26976eb269b156ff  docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_CLASS_FLOOR_REPRESENTATION_2026-09-07.md (v1) · 13e0747925b8f61c  ..._UPLOADED_VERSION.md (v2)
+ fbebac8da4ea4318  docs/routeB_bus/CLASSFLOOR_INDEPENDENT_CHECK_2026-09-07.md · e012b900606a14ed  docs/routeB_bus/CLASSFLOOR_V2_INDEPENDENT_CHECK_2026-09-07.md
+ 268e7c949629c411  docs/Progress_Log.md (entries 2026-09-07: both CLASSFLOOR versions, receipt repair, Legendre packet predeclaration and result)
+ PDFs as before: 2006.13771v1, 2310.18423v2, 2602.04022v1, math/9811068v1
+
+6. KILLED / FORBIDDEN: everything in the parent verdicts' «must not recur»; RH-conditional inputs; diagnostic numbers as proof steps; inferring PSD from a positive head plus an unsigned
+ tail (your own counterexample); inferring the class infimum from falling packet floors; «this is RH».
+
+7. REGISTERED PREDICTIONS (K6, observer; frozen)
+  P_SIGNED_COMPLEMENT_CONSTRUCTED: 0.15 — a source representation with 𝒮 ⪰ 0 (or 𝒯 ⪰ 0) as a sum of nonnegative terms is given and survives a first read.
+  P_STRUCTURAL_ROUTE_NAMED: 0.50 — a specific theorem-shaped route (kernel class + compression theorem) is named with its exact missing inequality.
+  P_HIGH_MODULATION_SIGN_FROM_ABOVE: 0.55 — the leading asymptotics of 𝓕(h_T) is computed and is positive (accumulation at 0 from above).
+  P_TWO_LEMMAS_WRITTEN: 0.85 — Q2(a),(b) are written out with exponents/references.
+  P_FLOOR_DECAY_DIAGNOSTIC: 0.40 — a one-sided rate diagnostic (Weyl law vs observed 1/k) is stated as usable.
+  P_EXHAUSTION_STRUCTURE_GIVEN: 0.60 — Q4(a)–(c) answered with a definite family and a definite «what it buys».
+
+8. REQUIRED VERDICT: header with RESULT per question ∈ {PROVED_ON_CLASS, PARTIAL_WITH_PRECISE_REMAINDER, OBSTRUCTION_NAMED, COMPUTATION_SPECIFIED,
+ ATTEMPT_REFUTED_WITH_EXACT_COUNTEREXAMPLE} and CLOSES/OPENS; Q1–Q4 in full; proofs where claimed; score the observer's predictions without editing; score your own CLASSFLOOR
+ registrations (P_CF_*) as listed; register new ones; the cheapest decisive check; no Lean edit, no numerical run, no RH claim; write only the verdict. If your session cannot push,
+ say so in the header and the owner will relay the file through docs/_inbox/.
