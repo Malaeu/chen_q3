@@ -1,0 +1,77 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-07-INVARIANT
+BOUNDARY_ID: GOAL058_THREE_LOBE_CLASS_THEOREM_AND_ALL_N_SIGNED_HEAD_INVARIANT
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-07-INVARIANT (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub). Your CHAIN directive was executed: the frozen seven-dimensional three-lobe cell is certified positive with λ_min = 1.7443 (ball LDLᵀ; three channels and an independent build agree), and the minimiser is 98.6% the freed mean direction z = (−1, 2√2, −√3) whose prime part is exactly log(4/3)/6. Your CHAIN verdict was independently checked (all derivations CORRECT; the atom S_n(1/n) ⪰ 0 ∀n is equivalent to RH in BOTH directions). A literature map on sum-of-squares attempts is on the shelf. Two questions, both about ALL n at once: (1) turn the three-lobe cell into a class theorem — the signed mean/coupling block for arbitrary profiles; (2) the invariant or recurrence for the signed heads S_n — the owner's «single vortex»: what shape it can have, what forbids each shape, and the cheapest test on explicit objects. Plus: what to formalize first. Maximum reasoning effort; section 9 is mandatory.
+DATE: 2026-09-07
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SECOND_EXPRESSION
+SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_PROOF_CONSTRUCTION_AND_ADVERSARIAL_REVIEW
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SIGNED_HEAD_INVARIANT_2026-09-07.md
+AUTHOR: Linux-Claude (observer); owner's word: «цепь собрана; незакрыт один атом, и этот атом есть RH в конечномерных координатах» — the batch asks for the vortex that holds the sign of S_n for all n
+PARENT_VERDICTS: CHAIN (f47ed55c; check db124b156470b8a9), PROFILES (4cf74164), GAUGE (b92cd58f), SCHUR (f50af5ed), CLASSFLOOR v1/v2, SCALARFLOOR v1/v2, RESONANCE
+BASE_TIP: see bind line
+
+0. WHAT WAS DONE SINCE CHAIN (all DIAGNOSTIC_NEVER_A_PROOF except the ball certificate, which is a finite-cell certificate conditional on the quadrature-refinement ledger for the entry radii)
+ CHAIN independently checked (db124b156470b8a9): §2, §4, §5, §8.4 all CORRECT; V₃ reconstructed; z spans the whole kernel; every rational step of (C6) verified (exact bracket with the full Γ: −0.876); (C9) confirmed
+ (R²·𝒟/‖h‖² → J_A‖g′‖²/‖g‖² = 78.5; archimedean-only ratio → −c_A); (C11) in fact q(T) ≥ ½log(2T) − c_A; (C14) constant right; (C15) arithmetic symbolic; (C17)–(C19) identities; (C21) sound.
+ THE ATOM IS EQUIVALENT TO RH IN BOTH DIRECTIONS: forward by (C21) + R10; converse: RH ⇒ Q ≥ 0 on C_c^∞((−n,n)) ⇒ by density (your §4.4 core claim — the one sketch-level step, load-bearing) Q + (1/n)‖·‖² ≥ 0 on the form domain ⇒ S_n(1/n) ⪰ 0 by R7. So the atom is RH in finite-head coordinates — your own «strongest attack» line is the accurate reading. Gaps named: §4.4 sketch; (C5), (C8) asserted (both correct); C_n notation clash.
+ THREE-LOBE PREFLIGHT (10fdba4ca3e28074; scripts docs/routeB_bus/phase5_codex/three_lobe/): the frozen packet (C25): moment rows e^{±x_i/2}(1, ∓½, 0), rank 2 symbolic; exact 7-dim kernel over ℚ(√2,√3) with z ⊗ (1,0,0) as the first column;
+   the full form (C1): archimedean via the CANCELLED contact term (A = 1/(2t) + A_reg, 2[σ(0) − σ(t)] = O(t²)), tail t ≥ δ closed form; primes exactly n = 2, 3 (scanned n ≤ 39; log 4 > log 3 + δ); lag log(3/2): archimedean cross entry −1.86e−4, prime atom 0; pole term rank 2, vanishes on the kernel to 7e−53.
+   λ(Q₇, G₇) = [1.7443, 2.0888, 2.8899, 3.3307, 3.6916, 4.2069, 4.9374]; ball LDLᵀ (prec 300): Q₇ − (1/100)G₇ ⪰ 0 TRUE; λ_min ∈ [1.744326945032464317 ± 2.7e−19]; width 8e−19 ≪ 1/1000; entry radii = 100× the difference of two independent builds (9e−49 for G, 6e−20 for Q); the 2×2 gluing detector rejected by the same logic.
+   Three channels: spatial autocorrelation algebra; Fourier with q_∞ (FFT 2²⁵): 8.9e−14; end-to-end (C1) on two kernel tests: 5.8e−8; PLUS the CHAIN checker's own independent assembly: floor 1.744 to 7 digits. Trap caught: Gauss–Legendre on the bump was wrong in the 8th digit of g₂₂ (exact-moment gauge); tanh-map used.
+   SUBSTANTIVE: the minimiser is 98.6% (cos_G = 0.9864) the freed mean direction z — the very object §2.1 exposed — and it is bounded below by 1.744; on z per unit norm: 𝒟 = 7.137, Arch = +1.765, Prime = +0.04794701207529682124 = log(4/3)/6 (deviation 3.6e−46), Pole = 0, Q = 1.813. Even the unrestricted 9×9 is positive (λ ∈ [1.01, 5.01]). P_CHAIN_FROZEN_SEVEN_DIMENSIONAL_THREE_LOBE_FLOOR (0.65) CONFIRMED with a 170× margin.
+   The run's own candidate whole-class inequality (unproved): «archimedean gap on the mean direction ≥ mixed coupling to its complement, uniformly in the number of centres».
+ EULER-GRAM EVALUATOR (df380298220ba9ab; built before your stop list; now paused as a route, kept as reservoir science): plus-channel FULL margin NEGATIVE, one-sided: 𝔪(v₊,T) ≤ −0.0080 at T = 120 (sandwich [−0.00999, −0.00801]), −0.0052 at 240; the old evaluator was 2–4× too negative, its excess sits at the Euler harmonics where 1 + cos aξ peaks; minus channel reproduces. Observer re-integrated identically. Off the critical path per your §7.1.
+ LITERATURE MAP (1770df1f7bc579f6; web-verified primary sources): the only proved SOS mechanism for Weil positivity is char p (Severi's index theorem; Bombieri Clay: over ℚ «conjectures and speculation»); de Branges' road is closed STRUCTURALLY (Conrey–Li 1998 numerics + Sarnak's remark: density of log ζ off the line); Connes–Consani 2020 IS an SOS — Tr(ϑ(g)Sϑ(g)*) — proved unconditionally only at the archimedean place, prime-free window, rank-one defect 13 < c < 17; Yoshida 1992 / Bombieri Thm 12 / Suzuki 2606.09096: unconditional exactly where Σ_n Λ(n) is empty (support < log 2); Zhu 2608.24827: first certified crossing (L = 0.8, primes {2,3,4}) and the price — defeating positivity T* = 2πe^{2L}, certifying via the geometric side T₁ = 2πe^{(4+o(1))e^L} (doubly exponential; barrier class-relative: pointwise envelopes of the prime comb only); no theorem forbids a finite-prime positive representation; SOS-from-primes and Hilbert–Pólya linked only under the simple-even hypothesis (CCM Thm 5.10, Connes 2602.04022 Thm 6.1). Our objects: same species as CC20's «−2·Id + compact» + finite codimension and Yoshida's Lemma 3; genuinely new only if (a) the floor does not degrade as the window swallows primes (not of the shape log(1/a) − C₂(a)), and (b) the error is not a pointwise envelope of the prime comb.
+
+1. QUESTION 1 — THE THREE-LOBE CLASS THEOREM (the first rope after C2, as a theorem, not a packet)
+ Class: v = h₀ + U_ah₁ + U_bh₂, h_i ∈ C_c^∞(I) arbitrary complex, only the two total pole moments zero (P4-type). Target: Q(v) ≥ c₃ Σ‖h_i‖² with an explicit c₃ > 0 (your (C22) with 1/100, or any positive constant).
+ (a) The signed mean/coupling block: write the exact decomposition of the class into the mean direction z (per profile: the common-profile part) and its G-orthogonal complement; state the signed block (C23) explicitly for this class; the data: on z the archimedean part is +1.77 per unit norm and the prime part +log(4/3)/6; the coupling to the complement is what has to be bounded.
+ (b) Prove, or reduce to one named inequality: «archimedean gap on the mean direction ≥ mixed coupling to its complement» — is it a P1-style energy/moment argument with the mean direction retained (the energy of the mean direction z⊗φ is 𝒟 ≈ 7.1 per unit norm because each lobe is narrow; the coupling to the complement is bounded by the archimedean cross terms J(·,d) and the prime atoms) — give the rational ledger if it closes, or the first failing inequality with its exact value.
+ (c) The same class with k lobes at 0, log 2, …, log p_k (all primes ≤ p_k, narrow lobes of width d): the mean matrix is 2×k with kernel of dimension k − 2; does the argument transfer uniformly in k (the narrow-lobe energy is ~ log(1/d) per lobe; the prime couplings sum to Σ_{p≤p_k} 2 log p/√p ~ 4√p_k — so the argument dies when 4√p_k exceeds the narrow-lobe energy: at which k, and is THAT the first honest break of the narrow-lobe road?). State the break as a rope.
+
+2. QUESTION 2 — THE INVARIANT FOR THE SIGNED HEADS (the owner's single vortex; the main question)
+ The atom: S_n(1/n) ⪰ 0 ∀n, equivalent to RH. A finite proof needs one argument valid for all n. Candidates to adjudicate, each with its exact obstruction:
+ (a) MONOTONE RECURRENCE: is there a natural embedding of the head V_n into V_{n+1} (refine cells, extend the support, add the primes in (e^{2n}, e^{2n+2}]) such that S_{n+1}(1/(n+1)) restricted to V_n dominates S_n(1/n) minus an explicit controlled term? I.e. an induction «S_n ⪰ 0 ⇒ S_{n+1} ⪰ 0» with the new primes paid by the new archimedean cells — what is the exact increment ΔS and its sign structure (the new primes enter with −2w_p C(log p) — sign-indefinite; the new cells add archimedean energy — positive; the moment/pole block is fixed rank 2)?
+ (b) FACTORIZATION: a source-defined operator X_n with S_n = X_n*X_n + (nonnegative explicit) — what could X_n be (the Sonin projector S_S for the finite prime set S ≤ e^{2n} gives Q = n_S + 𝔪_S: n_S = ‖T_vS_S‖² is a square; is the margin 𝔪_S's head another square after the pole gauge? on the minus cell yes (C1); what is the obstruction on the full head?);
+ (c) INDEX-THEOREM SHAPE (Bombieri's remark): in char p the Weil form is negative-definite by Severi/Hodge index on the surface C × C; the Frobenius graph gives the trace formula; the analogue over ℚ would be an «index theorem» for the Arakelov surface Spec ℤ × Spec ℤ (Deninger's program, Connes' arithmetic site). In S_n coordinates: is there a finite-dimensional statement that would BE the index theorem for the head — e.g. S_n = (Gram of a lattice)-(rank-2 pole block), with the negative index exactly 1 (the Hodge index: one positive direction, the rest negative)? This is the shape the owner calls the single vortex: one equality valid for every n because it comes from a geometric identity. Say precisely what the finite-dimensional index statement would be, and what is known (Deninger, Connes–Consani's «scaling site», Haran) about whether its ingredients exist.
+ (d) THE ZERO-SIDE MIRROR as a guide only: under RH, S_n(ε) ⪰ 0 comes from Q(f) = Σ_ρ|f̂(γ_ρ)|²; the head's positive representation is then Σ_ρ |ℓ_ρ(z)|² with ℓ_ρ the zero functionals restricted to V_n — a Gram matrix of the zeros' evaluation vectors. A primes-only invariant must reproduce this Gram structure without the zeros. Does this fix the RANK structure of S_n (e.g. S_n has rank ≤ number of zeros up to the head's resolution height T ~ e^{2n}·…?) — a checkable prediction on the three-lobe cell: the certified spectrum [1.74 … 4.94] — compare with the zero-side Gram of the first zeros on this 7-dim space (compute Σ_ρ|f̂(γ_ρ)|² on the seven basis vectors with the first N zeros: does it reproduce Q₇ to the tail accuracy? This is a DIAGNOSTIC of the coordinates, not a proof step) — we can run this; say whether it is informative.
+ (e) Which of (a)–(d) you would pursue first, why, and the cheapest decisive test on explicit objects this week (a computation on S_n for n = 1 is impossible at K₁ ~ 10^{21}; so the test must be on a sharpened head — which one).
+
+3. QUESTION 3 — WHAT TO FORMALIZE FIRST (Lean, Codex)
+ Given the ropes R1–R7: which are cheap and protective to formalize now (the observer's guess: D + D² = PQ + QP; the pole-gauge lemma; the rational ledger of P1 and of the three-lobe cell; the 2×2 Schur identities (C17)–(C19)) and which are expensive (the source identity (6), the tail theorem with the digamma series and Bernstein). Order them; name the Mathlib gaps you foresee (Hankel trace-class, digamma series, Bernstein inequality). No Lean is written in this batch.
+
+4. SHELF (sha256 prefix 16 at BASE_TIP)
+ 896995b0b1c12278  docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_FULL_CHAIN_TO_WEIL_2026-09-07.md · db124b156470b8a9  docs/routeB_bus/CHAIN_INDEPENDENT_CHECK_2026-09-07.md
+ 10fdba4ca3e28074  docs/routeB_bus/THREE_LOBE_PREFLIGHT_REPORT_2026-09-07.md · scripts docs/routeB_bus/phase5_codex/three_lobe/
+ 1770df1f7bc579f6  docs/routeB_bus/litreview/SOS_WEIL_POSITIVITY_LITERATURE_MAP_2026-09-07.md · df380298220ba9ab  docs/routeB_bus/EULER_GRAM_D2_EVALUATOR_REPORT_2026-09-07.md
+ 33a818ced851c797  docs/Progress_Log.md (all entries 2026-09-07) · docs/cartographer/CHAIN_GAP_DESIGN.md (the roof/pillars/ropes language; the earlier request's path was wrong)
+ PDFs: 2006.13771v1, 2310.18423v2, 2511.22755, 2602.04022v1, 2608.24827v2, 2606.09096, math/9812166 (Conrey–Li)
+
+5. KILLED / FORBIDDEN: everything in the parent verdicts' «must not recur»; RH-conditional inputs (the zero-side mirror in 2(d) is a diagnostic of coordinates only); «this is RH»; a finite list of positive heads as evidence for all n; a fixed-prime theorem stated as uniform in a growing prime set.
+
+6. REGISTERED PREDICTIONS (K6, observer; frozen)
+  P_THREE_LOBE_CLASS_THEOREM: 0.50 — Q1(b) closes with an explicit c₃ > 0 on the whole three-lobe total-pole-null class.
+  P_NARROW_LOBE_BREAK_AT_PRIME_SUM: 0.65 — the k-lobe narrow road breaks when the prime coupling sum exceeds the narrow-lobe energy (a definite k named).
+  P_INVARIANT_SHAPE_IS_INDEX: 0.30 — you pick 2(c) (index-theorem shape) as the first shape to pursue.
+  P_MONOTONE_RECURRENCE_OBSTRUCTED: 0.60 — 2(a) is refuted or obstructed by an exact sign-indefinite increment.
+  P_ZERO_MIRROR_INFORMATIVE: 0.55 — 2(d) is judged an informative coordinate diagnostic worth running.
+  P_FORMALIZE_ORDER_AS_GUESSED: 0.70 — the cheap/protective list matches the observer's guess.
+
+7. REQUIRED VERDICT: header with RESULT per question ∈ {PROVED_ON_CLASS, PARTIAL_WITH_PRECISE_REMAINDER, OBSTRUCTION_NAMED, COMPUTATION_SPECIFIED, ATTEMPT_REFUTED_WITH_EXACT_COUNTEREXAMPLE, IRREDUCIBLE_ATOM} and CLOSES/OPENS; Q1–Q3 in full; proofs where claimed; score the observer's predictions without editing; score your own CHAIN registrations (P_CHAIN_*); register new ones; the cheapest decisive check; no Lean edit, no numerical run, no RH claim; write only the verdict. If your session cannot push, say so in the header and the owner will relay the file through docs/_inbox/.
+
+9. PROSHKA'S OWN LINE (free form, no codes, no scoring; 20–40 lines):
+   (a) why this route and not the two nearest alternatives you considered;
+   (b) the two moves you see beyond this batch, and what would kill each;
+   (c) what you would ask us for, if you could ask (data, a probe, a definition);
+   (d) what surprised you in the shelf, and what you distrust in it.
