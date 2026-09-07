@@ -95,7 +95,9 @@ def main():
         tot = arb(0)
         ells = []
         for sg in (1, -1):
+            ctx.prec = 12000
             z = sg * xi
+            ctx.prec = PREC
             t2_, g2_, _ = evalf.t2_and_gamma(z, C, PREC)
             ctx.prec = PREC
             ell = 2 * (g2_ * t2_).real

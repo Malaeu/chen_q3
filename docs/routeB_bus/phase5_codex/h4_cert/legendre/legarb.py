@@ -298,6 +298,23 @@ def pole_moments(d, A, prec, idx=range(8)):
     return out
 
 
+def span_identity_report():
+    """The EVEN Legendre block spans exactly the earlier packet's span4 = span{h4,h5,h6,h7}:
+    both equal eta_4 * span{1, z^2, z^4, z^6}.  Checked as a rank identity over Q."""
+    import sympy as sp
+    z = sp.symbols('z')
+    eta4 = (1 - z ** 2) ** 4
+    ev = [sp.expand(eta4 * sp.legendre(j, z)) for j in (0, 2, 4, 6)]
+    od = [sp.expand(eta4 * sp.legendre(j, z)) for j in (1, 3, 5, 7)]
+    old = [sp.expand((1 - z ** 2) ** k) for k in (4, 5, 6, 7)]
+
+    def rk(ps, deg=16):
+        return sp.Matrix([[sp.Poly(p, z).coeff_monomial(z ** n) for n in range(deg)]
+                          for p in ps]).rank()
+    return {"even_block": rk(ev), "old_eta4_eta7": rk(old), "union_even_old": rk(ev + old),
+            "odd_block": rk(od), "union_even_odd": rk(ev + od)}
+
+
 if __name__ == '__main__':
     PR = 400
     ctx.prec = PR
@@ -331,6 +348,7 @@ if __name__ == '__main__':
         print(f"  {NAMES[j]}  t<2 all zero: {z01}   p''(+-1) = {t2}")
 
     print("\nSYMBOLIC RANK over Q(u):", rank_report())
+    print("SPAN IDENTITY (even block vs the earlier packet's span4):", span_identity_report())
 
     print("\npole moments int h e^{+-x/2} dx (arb, must contain 0):")
     PM = pole_moments(d, A, PR)

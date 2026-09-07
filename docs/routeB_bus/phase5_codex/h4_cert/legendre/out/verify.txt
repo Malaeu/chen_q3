@@ -1,0 +1,49 @@
+============================================================================================================
+V2. h_0 = h_4  (P_0 = 1): this run's L0 row vs the ratified packet's h4 row
+   I_compact[L0,L0]     = [1058.7767974790 +/- 1.68e-11]   packet I_compact[h4,h4]   = [1058.7767974790 +/- 1.68e-11]   overlap=True  |diff| <= [3.353e-11 +/- 4.34e-15]
+   MASS[L0]             = [1895953.9715004 +/- 1.04e-8]   packet MASS[h4]           = [1895953.9715004 +/- 1.04e-8]   overlap=True  |diff| <= [2.065e-8 +/- 2.29e-12]
+
+   F_00/H_00 = [3.50874906507669e-03, 3.50881666236092e-03]
+   packet h4 diagonal      = [0.0035085369, 0.0035090288]   contained: True
+   h4 scalar certificate   = [0.0034393623002774739205, 0.0035782034198665259817]   contained: True
+
+============================================================================================================
+V3. SECOND QUADRATURE, band [0,1000], different node set (w=0.4, n=28 vs w=0.5, n=36)
+   L0,L0      main=[1058.7766950548 +/- 3.38e-11]  xcheck=[1058.7766950548 +/- 3.40e-11]  |diff|<=[6.773e-11 +/- 9.22e-16]  ok=True
+   L0,L2      main=[-642.8290048344 +/- 5.96e-11]  xcheck=[-642.8290048344 +/- 5.98e-11]  |diff|<=[1.928e-11 +/- 9.55e-16]  ok=True
+   L0,L4      main=[533.9391537702 +/- 4.05e-11]  xcheck=[533.9391537702 +/- 4.06e-11]  |diff|<=[2.108e-11 +/- 4.41e-15]  ok=True
+   L0,L6      main=[-353.9481194739 +/- 5.23e-11]  xcheck=[-353.9481194739 +/- 5.25e-11]  |diff|<=[1.047e-10 +/- 2.52e-14]  ok=True
+   L1,L1      main=[264.95282327491 +/- 8.71e-12]  xcheck=[264.95282327491 +/- 8.81e-12]  |diff|<=[1.750e-11 +/- 4.17e-15]  ok=True
+   L1,L3      main=[-366.6055721155 +/- 5.98e-11]  xcheck=[-366.6055721155 +/- 5.99e-11]  |diff|<=[1.956e-11 +/- 3.42e-15]  ok=True
+   L1,L5      main=[355.08313107745 +/- 5.78e-12]  xcheck=[355.08313107745 +/- 5.95e-12]  |diff|<=[1.171e-11 +/- 3.94e-15]  ok=True
+   L1,L7      main=[-245.65808231731 +/- 8.22e-12]  xcheck=[-245.65808231731 +/- 8.37e-12]  |diff|<=[1.658e-11 +/- 3.02e-15]  ok=True
+   L2,L2      main=[492.6663004447 +/- 5.16e-11]  xcheck=[492.6663004447 +/- 5.17e-11]  |diff|<=[1.032e-10 +/- 1.06e-14]  ok=True
+   L2,L4      main=[-540.35424466227 +/- 8.07e-12]  xcheck=[-540.35424466227 +/- 8.29e-12]  |diff|<=[1.634e-11 +/- 6.98e-16]  ok=True
+   L2,L6      main=[475.5518971199 +/- 4.00e-11]  xcheck=[475.5518971199 +/- 4.03e-11]  |diff|<=[2.021e-11 +/- 6.83e-16]  ok=True
+   L3,L3      main=[582.6994979669 +/- 3.45e-11]  xcheck=[582.6994979669 +/- 3.48e-11]  |diff|<=[6.925e-11 +/- 3.17e-15]  ok=True
+   L3,L5      main=[-682.8537911551 +/- 3.46e-11]  xcheck=[-682.8537911551 +/- 3.49e-11]  |diff|<=[6.936e-11 +/- 1.59e-15]  ok=True
+   L3,L7      main=[592.0677965204 +/- 5.06e-11]  xcheck=[592.0677965204 +/- 5.10e-11]  |diff|<=[2.144e-11 +/- 1.39e-15]  ok=True
+   L4,L4      main=[777.2090744749 +/- 5.97e-11]  xcheck=[777.2090744749 +/- 6.01e-11]  |diff|<=[1.197e-10 +/- 3.39e-14]  ok=True
+   L4,L6      main=[-883.1638965598 +/- 6.23e-11]  xcheck=[-883.1638965598 +/- 6.28e-11]  |diff|<=[1.250e-10 +/- 1.29e-14]  ok=True
+   L5,L5      main=[1007.9765245210 +/- 6.51e-11]  xcheck=[1007.9765245210 +/- 6.59e-11]  |diff|<=[1.310e-10 +/- 2.56e-14]  ok=True
+   L5,L7      main=[-1119.9951813523 +/- 2.30e-11]  xcheck=[-1119.9951813523 +/- 2.38e-11]  |diff|<=[4.676e-11 +/- 1.93e-15]  ok=True
+   L6,L6      main=[1283.2235032435 +/- 6.96e-11]  xcheck=[1283.2235032435 +/- 7.05e-11]  |diff|<=[1.400e-10 +/- 3.10e-14]  ok=True
+   L7,L7      main=[1602.4909516129 +/- 5.63e-11]  xcheck=[1602.4909516129 +/- 5.76e-11]  |diff|<=[1.139e-10 +/- 3.37e-15]  ok=True
+   ALL OVERLAP: True
+
+============================================================================================================
+V4. CROSS-PARITY ENTRIES VANISH EXACTLY (integrand odd; b = w_a ell_2 real and even)
+   xi =      3.7:  |ell_2(xi) - ell_2(-xi)| <= [2.538e-43 +/- 3.66e-47]    integrand(+xi) + integrand(-xi) = [+/- 2.62e-45]
+   xi =     41.3:  |ell_2(xi) - ell_2(-xi)| <= [2.921e-62 +/- 4.43e-66]    integrand(+xi) + integrand(-xi) = [+/- 3.67e-59]
+   xi =    377.9:  |ell_2(xi) - ell_2(-xi)| <= [6.016e-54 +/- 1.55e-58]    integrand(+xi) + integrand(-xi) = [+/- 1.36e-53]
+   xi =   1913.1:  |ell_2(xi) - ell_2(-xi)| <= [3.148e-88 +/- 7.19e-93]    integrand(+xi) + integrand(-xi) = [+/- 1.26e-93]
+   worst |sum| = [2.61477e-45 +/- 4.35e-51]  (exact cancellation; the cross-parity entries were never computed)
+   parity of the eight profiles (g_j even/odd in xi):
+      L0: even   (expected even)
+      L1: odd   (expected odd)
+      L2: even   (expected even)
+      L3: odd   (expected odd)
+      L4: even   (expected even)
+      L5: odd   (expected odd)
+      L6: even   (expected even)
+      L7: odd   (expected odd)

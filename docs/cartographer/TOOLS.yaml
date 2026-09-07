@@ -455,6 +455,28 @@ tool_families:
           Main run 4365 s on 22 cores. Reproduced by the observer (packassemble rerun identical; H entries by sympy).
         last_verified: 2026-09-07
 
+      - id: legendre-parity-packet-certificate
+        classification: MANUAL
+        status: ENABLED
+        audience: [CLAUDE_CODE, HUMAN]
+        mode: WRITES_DERIVED
+        path: docs/routeB_bus/phase5_codex/h4_cert/legendre/
+        invoke: bash docs/routeB_bus/phase5_codex/h4_cert/legendre/run.sh   # legcert (bands) -> legequad -> legassemble -> legverify
+        trigger: Parity-complete scalar packet h_j = (d^2 - 1/4)[eta_4 P_j], even/odd blocks certified separately; CLASSFLOOR directive (both judges).
+        writes: true
+        approval: TASK_SCOPED_OUTPUT_UNDER_docs_routeB_bus_phase5_codex_h4_cert_legendre_out
+        authority: ARB_BALL_INTERVAL_MATRICES_ON_TWO_4DIM_PARITY_BLOCKS_CONDITIONAL_ON_PAPER_THEOREMS_NOT_CLASS_NOT_RH
+        records_to: [docs/routeB_bus/LEGENDRE_PACKET_FLOOR_CERTIFICATE_REPORT_2026-09-07.md, docs/routeB_bus/phase5_codex/h4_cert/legendre/out/]
+        note: >-
+          Serialization per NOTES.md: full balls + verified upward-rounded decimals (legser.dec_lower/dec_upper/rat_lower),
+          abs_lower never used as a signed endpoint. Transform evaluator by IBP recursion for |c| > 48 (different algorithm
+          from packet/). Result 2026-09-07 (X = 6000): EVEN lambda_min in [1.00527e-3, 1.05181e-3] >= 1/1000; ODD in
+          [8.70290e-4, 9.64348e-4] >= 1/2000 (not 1/1000 at any X: float 9.23e-4). No negative direction. Even span =
+          span{h4,h5,h6,h7} of the earlier packet, certified here at X = 4000 (basis conditioning artefact resolved).
+          3.77 h wall on 22 cores. Reproduced by the observer (legassemble rerun identical; five Gram entries and the
+          vanishing order p''(1) = 384 u by sympy).
+        last_verified: 2026-09-07
+
       - id: odd-floor
         classification: MANUAL
         status: ENABLED
