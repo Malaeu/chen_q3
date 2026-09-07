@@ -5,7 +5,7 @@
 schema: q3_tool_manifest.v2
 
 meta:
-  updated: 2026-09-02
+  updated: 2026-09-07
   owner: OWNER
   canonical: docs/cartographer/TOOLS.yaml
   observer_copy: machine-local codex_specs/TOOLS.yaml if present
@@ -407,6 +407,31 @@ tool_families:
           Written by the orchestrator 2026-09-04 after the blind re-derivation and the
           energy preflight used different blocks for the same norm.
         last_verified: 2026-09-04
+
+      - id: h4-scalar-floor-certificate
+        classification: MANUAL
+        status: ENABLED
+        audience: [CLAUDE_CODE, HUMAN]
+        mode: WRITES_DERIVED
+        path: docs/routeB_bus/phase5_codex/h4_cert/
+        invoke: >-
+          .venv/bin/python docs/routeB_bus/phase5_codex/h4_cert/budget.py;
+          .venv/bin/python docs/routeB_bus/phase5_codex/h4_cert/cert.py 2000 0.5 32 3.0 22 out.txt;
+          .venv/bin/python docs/routeB_bus/phase5_codex/h4_cert/assemble.py out.txt 2000 90;
+          .venv/bin/python docs/routeB_bus/phase5_codex/h4_cert/verify.py all
+        trigger: Re-certification of the inverse-free scalar floor F(h) for a fixed pole-null polynomial test; SCALARFLOOR verdict §9 directive.
+        writes: true
+        approval: TASK_SCOPED_OUTPUT_UNDER_docs_routeB_bus_phase5_codex_h4_cert_out
+        authority: ARB_BALL_INTERVAL_FOR_ONE_TEST_CONDITIONAL_ON_PAPER_THEOREMS_RESONANCE_6_SCALARFLOOR_THM1_THM4_NOT_CLASS_NOT_RH
+        records_to: [docs/routeB_bus/H4_SCALAR_FLOOR_CERTIFICATE_REPORT_2026-09-07.md, docs/routeB_bus/phase5_codex/h4_cert/out/]
+        note: >-
+          python-flint 0.8 ball arithmetic end to end (arb until print). Ledger (38): compact CC quadrature
+          with Bernstein-ellipse error, Euler tail (32) with C=256, uniform |t_2| <= 13.937, transform tail
+          |h^| <= B3/xi^3 + B4/xi^4. Result 2026-09-07: F(h_4) in [0.00343936, 0.00357820], code
+          SCALARFLOOR_H4_SOURCE_LOWER_CERTIFIED (target 1/500). Main run 1082 s on 22 cores. Reproduced by
+          the observer from the raw node output; hand checks of T, B3, H, ledger arithmetic; agent's B4 and
+          E_quad are more conservative than the observer's own bounds.
+        last_verified: 2026-09-07
 
       - id: odd-floor
         classification: MANUAL
