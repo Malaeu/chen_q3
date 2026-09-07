@@ -51,7 +51,7 @@ def main():
         Fb = [[arb(F0[i][j].mid(), RF[i][j]) for j in idx] for i in idx]
         ub = PA.rayleigh(Fb, PA.sub(Hm, idx), c).abs_upper()
         lam = lams[tag.split()[0]]
-        lo = "NOT CERTIFIED" if lam is None else lam.abs_lower().str(12, radius=False)
+        lo = "NOT CERTIFIED" if lam is None else (lam.mid() - lam.rad()).str(12)
         print(f"     certified bracket:  {lo}  <=  lambda_min  <=  {ub.str(12, radius=False)}")
 
     print("\n" + "=" * 104)
@@ -75,7 +75,7 @@ def main():
     print("C. h4 DIAGONAL vs the earlier scalar certificate")
     i4 = NAMES.index("h4")
     q = arb(F0[i4][i4].mid(), RF[i4][i4]) / Hm[i4][i4]
-    lo = (q.mid() - q.rad()).abs_lower(); hi = (q.mid() + q.rad()).abs_upper()
+    lo = q.mid() - q.rad(); lo = lo.mid() - lo.rad(); hi = q.mid() + q.rad(); hi = hi.mid() + hi.rad()   # signed directed endpoints
     L0 = arb("0.0034393623002774739205"); U0 = arb("0.0035782034198665259817")
     print(f"  packet F_44/H_44 = [{lo.str(18, radius=False)}, {hi.str(18, radius=False)}]")
     print(f"  h4 certificate   = [{L0.str(18)}, {U0.str(18)}]")

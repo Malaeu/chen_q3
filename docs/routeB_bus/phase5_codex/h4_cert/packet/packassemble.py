@@ -235,7 +235,7 @@ def main(path, X, J0, ebase=EBASE_DEF, ebasem=EBASEM_DEF):
     print("\n-- diagonal normalized floors F_ii/H_ii --")
     for i in range(ND):
         q = arb(F0[i][i].mid(), RF[i][i]) / Hm[i][i]
-        lo = (q.mid() - q.rad()).abs_lower(); hi_ = (q.mid() + q.rad()).abs_upper()
+        lo = q.mid() - q.rad(); lo = lo.mid() - lo.rad(); hi_ = q.mid() + q.rad(); hi_ = hi_.mid() + hi_.rad()   # signed directed endpoints (not abs_lower: CLASSFLOOR §2.5)
         print(f"  {NAMES[i]:5s} [{lo.str(14, radius=False)}, {hi_.str(14, radius=False)}]"
               f"   >= 1/500: {bool(lo > arb(1)/500)}   >= 1/1000: {bool(lo > arb(1)/1000)}")
 
@@ -299,7 +299,7 @@ def main(path, X, J0, ebase=EBASE_DEF, ebasem=EBASEM_DEF):
         if lam is None:
             print(f"  {tag}: NOT CERTIFIED (F itself not certifiably PD at this error budget)")
         else:
-            print(f"  {tag}: lambda_min >= {lam.abs_lower().str(12, radius=False)}"
+            print(f"  {tag}: lambda_min >= {(lam.mid() - lam.rad()).str(12)}"
                   f"    >= 1/1000: {bool(lam > arb(1)/1000)}"
                   f"    >= 1/2000: {bool(lam > arb(1)/2000)}")
     return (F0, RF, Hm, H0, RH, out)
