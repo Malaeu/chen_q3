@@ -497,6 +497,26 @@ tool_families:
           No ell_2 evaluation needed: the kernel series converges like 2^-j.
         last_verified: 2026-09-07
 
+      - id: euler-gram-d2-evaluator
+        classification: MANUAL
+        status: ENABLED
+        audience: [CLAUDE_CODE, HUMAN]
+        mode: WRITES_DERIVED
+        path: docs/routeB_bus/phase5_codex/euler_gram/
+        invoke: .venv/bin/python docs/routeB_bus/phase5_codex/euler_gram/prod2.py <lo> <hi> <over> <U> <h> <out.npz>   # then margin.py / analyse.py
+        trigger: Semilocal Sonin density k_2 without the semilocal angle inverse (SCALARFLOOR Thm 3 / CLASSFLOOR (18)-(22)) in the Mellin variable; margins on any two-lobe channel.
+        writes: true
+        approval: TASK_SCOPED_OUTPUT_UNDER_docs_routeB_bus_phase5_codex_euler_gram_out
+        authority: FLOAT_GALERKIN_WITH_RESIDUAL_SANDWICH_STRUCTURALLY_ONE_SIDED_LOWER_BOUND_ON_K2_DIAGNOSTIC_NOT_A_CERTIFICATE
+        records_to: [docs/routeB_bus/EULER_GRAM_D2_EVALUATOR_REPORT_2026-09-07.md, docs/routeB_bus/phase5_codex/euler_gram/out/]
+        note: >-
+          Replaces the retained-mode mellin_d2 evaluator where it failed (plus channel: weight 1+cos a xi peaks at the
+          Euler harmonics where the truncated-multiplier error sits). k_2 >= |b|^2 sup over an explicit finite-dim
+          subspace: a lower bound on k_2, hence an UPPER bound on the margin m. Result 2026-09-07: m(v_+,T) in
+          [-0.00999,-0.00801] at T=120, [-0.00725,-0.00523] at T=240 — NEGATIVE; minus channel reproduces the old
+          converged values. Observer re-integrated both channels from out/k2_G.npz: identical intervals.
+        last_verified: 2026-09-07
+
       - id: odd-floor
         classification: MANUAL
         status: ENABLED
