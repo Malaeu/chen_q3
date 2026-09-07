@@ -130,7 +130,8 @@ Only after 1–5 does a candidate get a number on the caches or a batch to the j
   Plant: 𝔪_♯ = 𝔪 − δ_M exactly. Smallest theorem so far: classwide minorant identity; a finite certificate needs the ledger (38) with the rigorous tail (31)–(32).
   Second judge (57a35797, independent): same decisions; adds 𝔪 = F + Σ C_n, C_n ≥ 0 with explicit tail — the sign as a sum of positives (rule 18). Both versions: 0.0035 is a diagnostic, not a certificate.
   CERTIFIED 2026-09-07 (h4_cert, arb balls): 𝓕(h₄) ∈ [0.0034394, 0.0035782]; 𝔪(h₄) ≥ 1/500 on that one test, conditional on RESONANCE (6), Thm 1, Thm 4 (C=256). One test, not the class.
-  PACKET 2026-09-07: F ≻ 0 on span{h₄,h₅,h₆}, pencil floor λ_min ∈ [0.0011576, 0.0013784]: 𝔪 ≥ 0.00116 on a 3-dim subspace; the floor drops as the packet grows (0.00134 → 0.00103 → 0.00078 float), as the class infimum 0 demands.
+  PACKET 2026-09-07: F ≻ 0 on span{h₄,h₅,h₆}, pencil floor λ_min ∈ [0.0011576, 0.0013784]: 𝔪 ≥ 0.00116 on a 3-dim subspace; the floor drops as the packet grows (0.00134 → 0.00103 → 0.00078 float), (the judge: inf Spec 𝒯 ≤ 0 by compactness, = 0 only if PSD — do not presume).
+  CLASSFLOOR (016ae32b): both certificates RATIFIED; RESONANCE (6) now has a PAPER proof at fixed cutoff (smoothing before trace, Hankel nuclearity, divided-difference trace); explicit positive neighbourhood 𝔪 > 1/1000 for ‖h − h₄/√H₄‖ ≤ 1e−6 (27); the sufficient object = source contraction (28) or signed Schur complement (33); next: parity-complete 8-test packet with the signed witness gate.
 
 ## 6. Standing rule
 
