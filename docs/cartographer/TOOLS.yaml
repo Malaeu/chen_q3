@@ -433,6 +433,28 @@ tool_families:
           E_quad are more conservative than the observer's own bounds.
         last_verified: 2026-09-07
 
+      - id: h4-packet-floor-certificate
+        classification: MANUAL
+        status: ENABLED
+        audience: [CLAUDE_CODE, HUMAN]
+        mode: WRITES_DERIVED
+        path: docs/routeB_bus/phase5_codex/h4_cert/packet/
+        invoke: bash docs/routeB_bus/phase5_codex/h4_cert/packet/run.sh   # packcert -> packequad -> packassemble -> packverify
+        trigger: Packet (Gram) floor matrix F_ij = -int w conj(h^_i) h^_j ell_2 for a list of pole-null polynomial tests; certified lambda_min of the pencil (F, H) on the span.
+        writes: true
+        approval: TASK_SCOPED_OUTPUT_UNDER_docs_routeB_bus_phase5_codex_h4_cert_packet_out
+        authority: ARB_BALL_INTERVAL_MATRIX_ON_A_FINITE_SPAN_CONDITIONAL_ON_PAPER_THEOREMS_NOT_CLASS_NOT_RH
+        records_to: [docs/routeB_bus/H4_PACKET_FLOOR_CERTIFICATE_REPORT_2026-09-07.md, docs/routeB_bus/phase5_codex/h4_cert/packet/out/]
+        note: >-
+          ell_2 evaluated once per node and shared by all pairs (15 entries cost ~ one scalar). Frequency tail:
+          min(analytic transform tail with the true vanishing order m = k-2, mass-deficit branch 2T sqrt(D_i D_j)).
+          Bernstein-ellipse quadrature bound re-optimized post hoc in rho (rule is rho-independent). Positivity by
+          midpoint split + Weyl + interval Cholesky (plain interval Cholesky is too lossy: F nearly singular in
+          absolute units). Result 2026-09-07: span{h4,h5,h6} (the requested packet has rank 3: h5 = h4 - h4z exactly)
+          lambda_min in [0.0011576, 0.0013784]; span with h7 added NOT certified at X = 4000 (needs X ~ 5900).
+          Main run 4365 s on 22 cores. Reproduced by the observer (packassemble rerun identical; H entries by sympy).
+        last_verified: 2026-09-07
+
       - id: odd-floor
         classification: MANUAL
         status: ENABLED

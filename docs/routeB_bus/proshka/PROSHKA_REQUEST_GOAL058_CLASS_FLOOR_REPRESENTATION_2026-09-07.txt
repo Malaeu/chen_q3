@@ -1,0 +1,101 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-07-CLASSFLOOR
+BOUNDARY_ID: GOAL058_CERTIFICATE_RATIFICATION_AND_CLASS_FLOOR_REPRESENTATION
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-07-CLASSFLOOR (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub). Your SCALARFLOOR directive was executed: an inverse-free arb-ball certificate gives F(h_4) in [0.0034393623, 0.0035782034], code SCALARFLOOR_H4_SOURCE_LOWER_CERTIFIED, and a 4-test packet certificate (see §0). Four questions: ratify or refute the certificate ledger; independently check Theorem 4's constant 256 (both tail rows rest on it); close the analytic domain of the source identity RESONANCE (6) (the load-bearing conditional); and give the representation that turns the class sign into a sum of positive terms — the sufficient object. Maximum reasoning effort.
+DATE: 2026-09-07
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SECOND_EXPRESSION
+SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_PROOF_CONSTRUCTION_AND_ADVERSARIAL_REVIEW
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_CLASS_FLOOR_REPRESENTATION_2026-09-07.md
+AUTHOR: Linux-Claude (observer) on the owner's word («Ок го»)
+PARENT_VERDICTS: SCALARFLOOR v1 (7333a9ab + addendum ef1e7b7b §11 Theorem 5), SCALARFLOOR v2 INDEPENDENT (57a35797), RESONANCE (5549cceb), PHASEPROOF (4a29f389 + uploaded version), SEMITABLE, SEMISIGN, SEMILOCAL
+BASE_TIP: see bind line
+
+0. WHAT WAS DONE SINCE SCALARFLOOR (all DIAGNOSTIC_NEVER_A_PROOF except the intervals, which are numerical certificates CONDITIONAL on the named paper theorems)
+ Independent check of v1 (fresh agent, 11/11 CORRECT): the tail constant 1 in prod_t.py is FALSE, not merely unproved — |J(β,0)|√β/(1+log β) → Γ(½)cos(π/4) = 1.2533
+ (asymptotics J(β,0) ~ β^{−1/2}[1.2533 log β + 4.43], checked by the observer), so the stored 3.50e−8 tail was 0.75× the true truncation error 4.64e−8 at ξ = 0; fixed to (32) with C = 256.
+ Theorem 5 (addendum) checked: (40) ≡ (43) to 7e−15, c_1 = (44) exactly, monotone; c_200 within 5e−5 of ℓ − d at ‖A‖ = 0.9 (geometric tail ρ = 0.95).
+ CERTIFICATE h_4 (report 83e7c763e373404b; scripts docs/routeB_bus/phase5_codex/h4_cert/; python-flint 0.8 balls end to end, no float on the certificate path):
+   exact test h_4 = η_4'' − η_4/4, η_4 = (1 − (x/δ)²)^4, N_4 = 1, δ = (log 3 − log 2)/8, H_4 = 301750.44686019244778 by (35); moments exactly zero (two integrations by parts; arb 6e−116);
+   F(h_4) = −∫ W_h ℓ_2 dξ ∈ [0.0034393623002774739205, 0.0035782034198665259817]  ⇒  m(h_4) ≥ L_F ≥ 1/500 by Theorem 1 (6), with no semilocal inverse and no dropped mode.
+   Ledger (38): compact |ξ| ≤ 2000 by composite Clenshaw–Curtis (4000 panels × 33 nodes; 132 000 rigorous node evaluations, 1082 s on 22 cores):
+   [0.0035087828600720 ± 3.5e−17]; E_quad ≤ 1.75e−5 by the Bernstein-ellipse bound (ρ = 3, n = 32; Trefethen ATAP Thm 8.2), the integrand analytic on |Im ξ| < ½
+   (ĥ, 1 − cos aξ entire; J(β,−ξ) analytic for Im ξ > −½; γ_2 has its nearest singularities at Im ξ = ±½: pole of Γ(¼ + iξ/2), zero of b(ξ)); per-panel M enclosed
+   (Σ M = 1.6e10, crude but free since ρ^{−32} = 5e−16); Euler tail J_0 = 90 by your (32) with C = 256: 4πε_90 ≤ 9.5e−10; frequency tail X = 2000: 2Tμ_X ≤ 5.2e−5 with TWO
+   ingredients stronger than (34)/(37): (i) uniform |t_2(ξ)| ≤ T := (1/2π)[4 + Σ_{j≥0} min(4, 256 β_j^{−1/2}(1 + log β_j))] = 13.9371 (the 4 is ∫_0^1(−log v)v^{−1/2}dv;
+   21× below T_* = 299.7), (ii) |ĥ_4(ξ)| ≤ B_3/|ξ|³ + B_4/ξ⁴ by three integrations by parts (h_4, h_4' vanish at ±δ; B_3 = 2|h_4''(δ)| = 1.164e8, B_4 = 2|h_4'''(δ)| + ‖h_4''''‖_1 = 8.04e10),
+   μ_X ≤ (4/H)[B_3²/(5X⁵) + 2B_3B_4/(6X⁶) + B_4²/(7X⁷)] = 1.86e−6. J(β,−ξ): exact alternating series (s = ½ − iξ, precision 1.44β + 460 bits, nodes at 12 000 bits — at 400-bit
+   nodes the e^β amplification of the node radius gave widths 1e+43, caught by the balls) for small β; for large β the derived expansion J = β^{−s}Γ(s)[(log β − ψ(s))cos(πs/2)
+   + (π/2)sin(πs/2)] + R_β(s), R_β by k-fold integration by parts of ∫_1^∞ (log v)v^{s−1}cos(βv)dv with the remainder |E_k| ≤ β^{−k}[|P_k|/(k − ½)² + |Q_k|/(k − ½)],
+   P_m = Π_{i<m}(s − 1 − i), Q_{m+1} = (s − 1 − m)Q_m + P_m; the two representations overlap 20/20 on β = 2π2^{9..12}, ξ ∈ {0, 50, 250, 900, 1999}.
+   Verification by other channels: ∫_{|ξ|≤2000} W_h = 2π − 2.86e−7 with the deficit inside [0, μ_X]; ℓ_2 against the foreign mpmath evaluator (mellin_d2, incomplete gamma)
+   agrees to 1e−8 at six frequencies; a second quadrature with a different node set (w = 0.4, n = 24, 125 000 nodes) reproduces the compact value in every printed digit;
+   the observer reproduced the ledger assembly from the raw node output, reran verify.py, and hand-checked T, H_4, B_3 (exact) — the agent's B_4 (8.04e10) and E_quad are
+   more conservative than the observer's own (5.46e10; 8.7e−6). The independent diagnostic of the previous day (mellin_d2 chain) gave 0.003509 — same object.
+ PACKET CERTIFICATE (report and numbers filled at bind time — see the line PACKET_RESULT below): tests η_4, η_5, η_6, z²η_4 (z = x/δ), h_k = η_k'' − η_k/4; the unnormalized
+   floor matrix F_ij = −∫ w_a ĥ_i ĥ_j ℓ_2 (your (8) / Corollary 1) as interval matrix, positivity certificate, and the certified λ_min of the pencil (F, H) on the 4-dimensional span.
+ PACKET_RESULT: [filled at bind]
+
+1. QUESTION 1 — RATIFY OR REFUTE THE CERTIFICATE
+ Audit the ledger as a proof object: (a) the two new tail ingredients — the uniform |t_2| ≤ 13.937 via min(4, (31)) termwise, and the transform tail |ĥ| ≤ B_3/|ξ|³ + B_4/ξ⁴ with its
+ μ_X integral; (b) the quadrature error: Bernstein-ellipse bound for composite Clenshaw–Curtis (ATAP 8.2) with the analyticity strip |Im ξ| < ½ — confirm the analyticity claims for
+ J(β,−ξ), γ_2 and the M-enclosure logic; (c) the large-β expansion of J and its remainder bound; (d) the derived quantity: is «m(h_4) ≥ L_F» a THEOREM given RESONANCE (6), Thm 1, Thm 4 —
+ name precisely the paper inputs it consumes and any hidden one. Score P_SF_H4_SCALAR_CERTIFICATE_POSITIVE (0.75) and v2's P_SF_FROZEN_FULL_SCALAR_CERT_POSITIVE (0.70, not run: say
+ what the h_4 result implies for it, if anything). Same for the packet certificate: does F ⪰ 0 on the packet prove m ≥ 0 on the span with the certified λ_min as the floor?
+
+2. QUESTION 2 — THEOREM 4 (31): THE CONSTANT 256
+ Both tail rows and the uniform T rest on |J(β,ξ)| ≤ 256 β^{−1/2}(1 + log β). Recheck the dyadic proof independently (stationary intervals |ξ| ∈ [B/2, 4B]: at most four; second-derivative
+ bound; the 0 < y < 1 piece). The observed ratio |J|√β/(1 + log β) is at most 3.92 on β ≤ 10⁶, ξ ≤ 3000 (max at β = 1, ξ = 0) and tends to 1.2533 at ξ = 0. If the proof stands, say so; if a
+ uniform C ≤ 8 is provable by the same argument with care, give it (not needed for h_4; it matters for tests with heavier tails and for larger prime sets).
+
+3. QUESTION 3 — THE SOURCE IDENTITY (6): CLOSE ITS ANALYTIC DOMAIN
+ Everything above is conditional on RESONANCE Lemma 2 (6): d_S = ℓ_S + (mode correction), ℓ_S = 2Re(γ_S t_S), with the generalized Mellin wave f_ξ ∉ L²(0,1), the tested trace domain
+ supplied by the half-line commutator/Hankel argument, and the continuous representatives. v1 §2 proved (7) assuming (6); v2 flagged «CONDITIONAL on source identification». Give the
+ complete PAPER proof of (6) on the pole-null minus class at cutoff λ = 1 — the tested trace identity n_S(v) − L_S(v) = Tr(T_v D_S T_v*), the identification of the cross term with
+ ∫|v̂|² ℓ_S, and the domain of t_S as a Mellin integral — or state the exact missing step and whether it can fail (which would make the certificate a number attached to a false
+ identity). This is the load-bearing rope; treat it as the main question.
+
+4. QUESTION 4 — THE CLASS: THE SUFFICIENT OBJECT
+ The class sign is T ≥ 0 for the compact operator T = −2π P_00 E_I* F^{−1} M_{(1−cos aξ)ℓ_2} F E_I P_00 on the moment-null subspace of L²(I) (v1 (11), v2 (10)). Theorem 1 already writes the
+ whole margin as m(h) = F(h) + ‖T_v D_2‖²_HS: the operator part is a square, the scalar part is not. The owner's rule («the sign is never a difference; find m = B_0 + Σ C_n with C_n ≥ 0»)
+ and his reading of Deligne (the object is necessary, the theorem about it — purity — is the second step; we need the SUFFICIENT object) ask for: a representation of F(h), or of the
+ whole m(h), as a square or a sum of squares by construction, on the class — e.g. an explicit factorization of the tested operator, a Fejér–Riesz-type factorization of the multiplier
+ (1 − cos aξ)ℓ_2 restricted to the moment-null compression, or a Loewner/Herglotz representation of ℓ_2 that exposes its sign structure. Give the representation, or the obstruction
+ (why no such representation can exist for ℓ_2 as it stands, e.g. because ℓ_2 changes sign and the compression does not kill the negative part), or the precise intermediate object.
+ Also: what is the cheapest decisive test that separates «T ≥ 0» from «T has a negative direction» — a certified finite packet with a growing basis plus a complement bound (which
+ complement theorem, with what constants), or a direct spectral enclosure of T on a Legendre/prolate basis of the moment-null space? State it as a computation we can run this week.
+
+5. SHELF (sha256 prefix 16 at BASE_TIP; recomputed at bind)
+ 83e7c763e373404b  docs/routeB_bus/H4_SCALAR_FLOOR_CERTIFICATE_REPORT_2026-09-07.md  · scripts docs/routeB_bus/phase5_codex/h4_cert/{h4arb,evalf,cert,budget,assemble,verify}.py · raw out/main.txt, out/xcheck.txt
+ [PACKET_SHA]  docs/routeB_bus/H4_PACKET_FLOOR_CERTIFICATE_REPORT_2026-09-07.md  · scripts docs/routeB_bus/phase5_codex/h4_cert/packet/
+ 3617ac66e614f883  docs/routeB_bus/SCALARFLOOR_INDEPENDENT_CHECK_2026-09-07.md  (11/11 CORRECT; tail constant 1 refuted numerically)
+ dde3dd7c7ec10e6b  docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SCALAR_FLOOR_AND_SEMILOCAL_CONDITIONING_2026-09-07.md  (v1 + addendum §11)
+ 810362aa281c6047  docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SCALAR_FLOOR_AND_SEMILOCAL_CONDITIONING_2026-09-07_INDEPENDENT_66cc75a1.md  (v2)
+ 1024864bcf3e4ea3  docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_RESERVOIR_RESONANCE_AND_PRIME_SCALING_2026-09-06.md
+ [LOG_SHA]  docs/Progress_Log.md  (entries 2026-09-07: intake of both versions and the addendum; the certificate; the packet)
+ PDFs as before: 2006.13771v1, 2310.18423v2, 2602.04022v1, math/9811068v1
+
+6. KILLED / FORBIDDEN: everything in the parent verdicts' «must not recur»; RH-conditional inputs; diagnostic numbers as proof steps; rescaling or clipping the truncated operator;
+ a J-spread as an error bound; «this is RH».
+
+7. REGISTERED PREDICTIONS (K6, observer; frozen before the packet result was seen)
+  P_CERT_RATIFIED: 0.80 — the h_4 ledger is ratified as a valid certificate of m(h_4) ≥ 1/500 given (6), Thm 1, Thm 4, with at most WORDING-level repairs.
+  P_THM4_256_SURVIVES: 0.90 — the dyadic proof of (31) stands as written.
+  P_SOURCE_IDENTITY_6_CLOSED: 0.45 — a complete PAPER proof of (6) on the class at λ = 1 is given in this verdict.
+  P_PACKET_PSD_CERTIFIED: 0.85 — F ⪰ 0 is certified on the 4-test packet with λ_min of the pencil > 1/1000.
+  P_CLASS_SUM_OF_SQUARES: 0.25 — a representation of F(h) or m(h) as a sum of squares by construction is given on the whole class.
+  P_CLASS_DECISIVE_TEST_IS_FINITE_PACKET_PLUS_COMPLEMENT: 0.60 — the cheapest decisive test named is a growing certified packet plus an explicit complement bound.
+
+8. REQUIRED VERDICT: header with RESULT per question ∈ {PROVED_ON_CLASS, PARTIAL_WITH_PRECISE_REMAINDER, OBSTRUCTION_NAMED, COMPUTATION_SPECIFIED,
+ ATTEMPT_REFUTED_WITH_EXACT_COUNTEREXAMPLE, CERTIFICATE_RATIFIED, CERTIFICATE_REFUTED} and CLOSES/OPENS; Q1–Q4 in full; proofs where claimed; score the observer's predictions without
+ editing; score your own SCALARFLOOR registrations (P_SF_*); register new ones; the cheapest decisive check; no Lean edit, no numerical run, no RH claim; write only the verdict.
