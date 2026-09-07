@@ -536,7 +536,7 @@ tool_families:
         mode: WRITES_DERIVED
         path: docs/routeB_bus/phase5_codex/three_lobe/
         invoke: .venv/bin/python docs/routeB_bus/phase5_codex/three_lobe/tl_report.py   # tl_build -> tl_kernel -> tl_analyze -> tl_certify
-        trigger: The CHAIN directive CHAIN_SIGNED_NULL_MEAN_TRANSFER_PREFLIGHT: full Weil form (C1) on the frozen nine-generator three-lobe packet, exact 7-dim total-pole-null kernel with the mean direction z = (-1, 2 sqrt2, -sqrt3).
+        trigger: "The CHAIN directive CHAIN_SIGNED_NULL_MEAN_TRANSFER_PREFLIGHT: full Weil form (C1) on the frozen nine-generator three-lobe packet, exact 7-dim total-pole-null kernel with the mean direction z = (-1, 2 sqrt2, -sqrt3)."
         writes: true
         approval: TASK_SCOPED_OUTPUT_UNDER_docs_routeB_bus_phase5_codex_three_lobe
         authority: BALL_LDLT_CERTIFICATE_ON_ONE_FROZEN_7DIM_CELL_ENTRY_RADII_FROM_A_QUADRATURE_REFINEMENT_LEDGER_NOT_A_CLASS_THEOREM_NOT_RH
