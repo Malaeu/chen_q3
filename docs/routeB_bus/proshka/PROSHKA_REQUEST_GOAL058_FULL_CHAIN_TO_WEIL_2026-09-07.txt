@@ -1,0 +1,70 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-07-CHAIN
+BOUNDARY_ID: GOAL058_FULL_CHAIN_FROM_THE_CLOSED_CELL_TO_THE_TERMINAL_WEIL_CONSUMER
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-07-CHAIN (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub). This is a FULL_CHAIN batch, not a next-step batch. You proposed the direct energy/moment argument (Theorem P1) as the next cell and said three lobes come after. The owner's question, verbatim in spirit: «the direct argument will inevitably break as the support grows and the primes multiply — you see that; so how does YOUR chain go from the closed cell all the way to the terminal consumer, the published Weil criterion on all compact smooth tests? Not the height at which it breaks — the chain.» Write the whole chain: every rope, its status, the cell where the direct argument breaks and by which mechanism, what replaces it there, and the irreducible atom. Maximum reasoning effort; this is the batch where you strain, not where we ask trivia.
+DATE: 2026-09-07
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SECOND_EXPRESSION
+SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_PROOF_CONSTRUCTION_AND_ADVERSARIAL_REVIEW
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_FULL_CHAIN_TO_WEIL_2026-09-07.md
+AUTHOR: Linux-Claude (observer) on the owner's word («мне надо знать, как он собирается; у него есть цепочка до RH — каким образом все другие шаги складываются»)
+PARENT_VERDICTS: PROFILES (4cf74164), GAUGE (b92cd58f), SCHUR (f50af5ed), CLASSFLOOR v1/v2, SCALARFLOOR v1/v2, RESONANCE, SEMILOCAL, and the WEILPROOF rules (docs/BATCH_PATTERNS.md, proof-attempt batch: rules 1–10)
+BASE_TIP: see bind line
+
+0. WHERE WE STAND (all proved items are PAPER unless marked; nothing is Lean; PX_RH_CLAIM NOT_MADE)
+ Closed cells (support union (a/2 + I) ∪ (−a/2 + I), a = log 2, I = (−δ, δ), δ = (log 3 − log 2)/8, cutoff 1, prime set {∞, 2}):
+   C1 (minus class, GAUGE): Q(v_h) = n₂ + 𝓕(h) + ‖T_vD₂‖²_HS with 𝓕 ≥ 𝒫[h]/(2‖h‖²) > 0 — the Weil form exceeds the Sonin reservoir; PAPER + ARB_INTERVAL (A < 1/250, B < 1/8), conditional on SCHUR (5)–(8), (13).
+   C2 (independent profiles, PROFILES Theorem P1): Q(v) ≥ ‖v‖²/100 with only the two total pole moments zero; direct energy/moment proof, rational ledger 29/1500; PAPER, audit running.
+ Open on these cells: the plus-channel full-margin sign (P9) — a scientific question, not a gate. Two primes: Lemma P2 (all-resonance extraction, convergence) proved, sign (P34) open.
+ Your own statements of the boundary: «the fixed union of two intervals does not exhaust all supports»; «a valid terminal exhaustion must include all mixed pairings, all active prime powers, and full pole handling» (PROFILES §9); exhausting family 𝒟_R = C_c^∞((−R, R)) with primes up to e^{2R} (SCHUR (30)).
+ The observer's reading of P1 (to be corrected by you if wrong): on supports of length ~0.1 the archimedean energy 𝒟 dominates c_A + the single atom w with margin; the difficulty of the Weil criterion lives on long supports where the energy no longer covers the atoms; the direct argument must break at some support length / prime count, and the reservoir minorant (C1-type) or the all-resonance kernels must return there.
+
+1. QUESTION 1 — THE CHAIN, ROPE BY ROPE (the only question that matters)
+ Write the complete chain from C1/C2 to the terminal consumer, in the owner's language (roof = the published Weil criterion on all compact smooth tests ⟺ RH; pillars = the exhausting family of test classes; ropes = the theorems that hold each pillar), as a numbered list of ropes R1, R2, …, each with: (i) the exact statement; (ii) status ∈ {PROVED_PAPER, PROVED_PAPER_PLUS_ARB, OPEN_WITH_MECHANISM_NAMED, OPEN_NO_MECHANISM}; (iii) the mechanism you would use; (iv) what would kill it. The chain must satisfy WEILPROOF rules 1–10 (no RH-equivalent premise anywhere; every step a theorem about explicit objects; falsifiers named).
+ In particular:
+ (a) THE BREAK: at which cell does the direct energy/moment argument (P1) stop working — say it as a rope, not a height: which term of the geometric Weil formula (P2) first defeats the energy: the number of active prime powers (Σ_n Λ(n)/√n over n ≤ e^{2R} grows like e^{R}), the loss of the moment control (the 2×k moment matrix's kernel grows), or the archimedean energy per unit norm ceasing to grow (the Poincaré constant of the support ~ 1/R²)? Give the mechanism and the order of R at which it happens (as an analytic statement, e.g. «the bracket becomes negative when Σ_{p ≤ e^{2R}} 2 log p/√p exceeds the energy floor ~ log(1/R)», with the actual expressions).
+ (b) WHAT REPLACES IT: after the break, which object carries the sign? Your candidates so far: the reservoir minorant Q ≥ n₂ + 𝓕 with 𝓕 ≥ 0 proved by a positive kernel + gauge + norm inequalities (C1 machinery, generalized to prime sets S and supports R); the all-resonance grouped kernels (P32)–(P34) for two primes and beyond; the Euler-Gram representation of k_S; something else (e.g. the CCM finite-Euler exhaustion, the Sonin space of growing S). Say which one YOU believe scales to all R and all S, and why — and what its first missing theorem is (this is the irreducible atom if there is one).
+ (c) THE QUANTIFIER: how the roof is reached from the pillars: positivity on each 𝒟_R with all primes ≤ e^{2R} suffices (SCHUR (30)); is there a way to pass R → ∞ with uniform control, or is the roof a union of infinitely many cells each needing its own certificate (then the chain is infinite and something must make it finite: a monotonicity in R, an induction on primes, a representation whose positivity is manifest for every R at once)? Name the structure that makes the chain FINITE, or say it is not known — that would be the atom.
+ (d) THE ATOM: name the single statement which, if proved, closes the chain (IRREDUCIBLE_ATOM in the BATCH_PATTERNS sense), and the cheapest decisive test of whether it is true (a computation we can run this week, on explicit objects).
+
+2. QUESTION 2 — THE FIRST THREE ROPES AFTER C2, CONCRETELY
+ R_next1: three lobes 0, log 2, log 3 by the direct argument (2×3 moment matrix, one-dimensional kernel): state the theorem you expect and its rational bracket structure; R_next2: the first cell where the direct argument fails (from 1(a)) and the first theorem needed there; R_next3: the first cell where two primes' near-resonances matter (P34). For each: cost, kill-power, the falsifier.
+
+3. QUESTION 3 — WHAT WE SHOULD STOP DOING
+ Given the chain: which of our current activities are off the chain (the plus-channel margin sign? the Euler-Gram evaluator? more packets? the scalar-floor refinements?) and which are on it. Be blunt.
+
+4. QUESTION 4 — PUBLICATION CUT
+ Where in the chain is the first publishable unit (a paper that stands alone: C1 + C2 + the two-prime lemma? or C1 alone?), and what its title claim is, in one sentence, with the honest scope.
+
+5. SHELF (sha256 prefix 16 at BASE_TIP)
+ d41d936fbe38b261  docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_INDEPENDENT_PROFILES_RESERVOIR_2026-09-07.md
+ d86f3fa0d8c27e51  docs/WHY_NOT_YET.md (§5 state of all cells; §4 filter) · 68accbeafcbcbd89  docs/Progress_Log.md (2026-09-07 entries)
+ docs/BATCH_PATTERNS.md (FULL_CHAIN | IRREDUCIBLE_ATOM forms; WEILPROOF rules 1–10; section 9 below) · docs/METHOD_ROOF_TO_ATOM.md (the owner's method) · docs/CHAIN_GAP_DESIGN.md (roof/pillars/ropes language)
+ PDFs as before: 2006.13771v1, 2310.18423v2, 2602.04022v1, math/9811068v1
+
+6. KILLED / FORBIDDEN: everything in the parent verdicts' «must not recur»; RH-conditional inputs anywhere in the chain; «this is RH» as an answer; a chain that ends in «and then positivity on all tests» without the finite structure of 1(c).
+
+7. REGISTERED PREDICTIONS (K6, observer; frozen)
+  P_BREAK_IS_PRIME_SUM: 0.55 — the break in 1(a) is the growth of the prime-power sum over active n, not the loss of moment control or of the Poincaré constant.
+  P_REPLACEMENT_IS_RESERVOIR_MINORANT: 0.45 — the object you name in 1(b) as scaling to all R, S is the reservoir minorant (C1 machinery generalized).
+  P_CHAIN_HAS_FINITE_STRUCTURE_NAMED: 0.35 — a structure making the chain finite (1(c)) is named as a theorem shape, not as «unknown».
+  P_ATOM_NAMED_WITH_TEST: 0.60 — a single irreducible atom and a this-week decisive test are named.
+  P_STOP_LIST_INCLUDES_MARGIN_SIGN: 0.70 — the plus-channel margin sign is on your stop list.
+
+8. REQUIRED VERDICT: header with RESULT per question ∈ {FULL_CHAIN, PARTIAL_CHAIN_WITH_NAMED_GAPS, IRREDUCIBLE_ATOM, OBSTRUCTION_NAMED, COMPUTATION_SPECIFIED} and CLOSES/OPENS; Q1–Q4 in full; the rope list as a table; score the observer's predictions without editing; score your own PROFILES registrations; register new ones; no Lean edit, no numerical run, no RH claim; write only the verdict. If your session cannot push, say so in the header and the owner will relay the file through docs/_inbox/.
+
+9. PROSHKA'S OWN LINE (free form, no codes, no scoring; 20–40 lines):
+   (a) why this route and not the two nearest alternatives you considered;
+   (b) the two moves you see beyond this batch, and what would kill each;
+   (c) what you would ask us for, if you could ask (data, a probe, a definition);
+   (d) what surprised you in the shelf, and what you distrust in it.
