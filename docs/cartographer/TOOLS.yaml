@@ -477,6 +477,26 @@ tool_families:
           vanishing order p''(1) = 384 u by sympy).
         last_verified: 2026-09-07
 
+      - id: gauge-positive-extension-certificate
+        classification: MANUAL
+        status: ENABLED
+        audience: [CLAUDE_CODE, HUMAN]
+        mode: WRITES_DERIVED
+        path: docs/routeB_bus/phase5_codex/h4_cert/gauge/
+        invoke: PHI=0.001 JN=24 .venv/bin/python docs/routeB_bus/phase5_codex/h4_cert/gauge/gauge_cert.py   # 233 s, one core
+        trigger: Class-level scalar-floor certificate via the SCHUR kernel identity + pole gauge (observer 2026-09-07); rerun after any change of delta, a, the Euler factor or the cutoff chi.
+        writes: true
+        approval: TASK_SCOPED_OUTPUT_UNDER_docs_routeB_bus_phase5_codex_h4_cert_gauge_out
+        authority: ARB_BALL_CERTIFICATE_OF_TWO_SCALAR_INEQUALITIES_CONDITIONAL_ON_SCHUR_KERNEL_IDENTITY_5_TO_8_AND_13_PAPER_NOT_RH
+        records_to: [docs/routeB_bus/GAUGE_POSITIVE_EXTENSION_CERTIFICATE_REPORT_2026-09-07.md, docs/routeB_bus/phase5_codex/h4_cert/gauge/out/]
+        note: >-
+          Certifies A = ||chi R_g||_1 < c_*/(4 pi) and B = ||(chi R_g)'||_1 < c_* with R_g = R + 2 alpha cosh(t/2),
+          alpha = 519/1000 (pole gauge: e^{+-(x-y)/2} are invisible on H_00). Then p + FT(chi R_g) > 0 on the whole
+          line, so F(h) >= 0 for every h in H_00 supported in I (whole class, not a packet). Result 2026-09-07:
+          A <= 0.0034618 (16.5% of threshold), B <= 0.12285 (46.5%). Reproduced by the observer to all printed digits.
+          No ell_2 evaluation needed: the kernel series converges like 2^-j.
+        last_verified: 2026-09-07
+
       - id: odd-floor
         classification: MANUAL
         status: ENABLED
