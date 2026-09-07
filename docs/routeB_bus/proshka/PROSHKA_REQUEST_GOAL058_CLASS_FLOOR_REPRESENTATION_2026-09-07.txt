@@ -44,7 +44,14 @@ BASE_TIP: see bind line
    more conservative than the observer's own (5.46e10; 8.7e−6). The independent diagnostic of the previous day (mellin_d2 chain) gave 0.003509 — same object.
  PACKET CERTIFICATE (report and numbers filled at bind time — see the line PACKET_RESULT below): tests η_4, η_5, η_6, z²η_4 (z = x/δ), h_k = η_k'' − η_k/4; the unnormalized
    floor matrix F_ij = −∫ w_a ĥ_i ĥ_j ℓ_2 (your (8) / Corollary 1) as interval matrix, positivity certificate, and the certified λ_min of the pencil (F, H) on the 4-dimensional span.
- PACKET_RESULT: [filled at bind]
+ PACKET_RESULT: the requested packet has RANK 3 — (1 − z²)⁵ = (1 − z²)⁴ − z²(1 − z²)⁴, so h_5 = h_4 − h_4z exactly (observer's ordering error, caught by the agent; sympy-checked); certified on span{h_4,h_5,h_6}
+   (= the requested span): F ≻ 0 and λ_min(H^{−1/2}FH^{−1/2}) ∈ [0.00115759847705, 0.00137842121694], so m(h) ≥ 0.00116 for EVERY h in that 3-dimensional span; h_4 diagonal [0.0035085369, 0.0035090288]
+   (inside the scalar certificate, 282× tighter); span{h_4,h_5,h_6,h_7} NOT certified at X = 4000 (‖R‖₂ = 0.0744 > λ_min(F_4) = 0.0146, one cell E_freq(h_4,h_4) dominates; needs X ≈ 5900).
+   New bound ingredients (agent, observer-checked): mass-deficit frequency tail |R_freq^{ij}| ≤ 2T√(D_iD_j), D_i = 2πH_i − ∫_{|ξ|≤X} w|ĥ_i|² (5–12× sharper than the analytic tail; the mass check
+   becomes load-bearing); post-hoc ρ-optimized Bernstein bound with the semi-minor axis as the distance to the singularities (1023×); positivity by midpoint split + Weyl λ_min(F) ≥ λ_min(F_0) − ‖R‖₂
+   + interval Cholesky (plain interval Cholesky fails: F nearly singular in absolute units, λ_min(F_3) = 0.50 vs entries ~1.5e3 because H_3 is ill-conditioned). Diagnostic: the weakest direction is the
+   alternating second difference +0.46h_4 − h_5 + 0.55h_6; the floor drops monotonically as the packet grows (0.00134 → 0.00103 → 0.00078 float), as inf = 0 on the class demands.
+   Run: 296 000 rigorous nodes, 4365 s on 22 cores; reproduced by the observer from the raw output (packassemble rerun identical; H entries by sympy).
 
 1. QUESTION 1 — RATIFY OR REFUTE THE CERTIFICATE
  Audit the ledger as a proof object: (a) the two new tail ingredients — the uniform |t_2| ≤ 13.937 via min(4, (31)) termwise, and the transform tail |ĥ| ≤ B_3/|ξ|³ + B_4/ξ⁴ with its
@@ -77,12 +84,12 @@ BASE_TIP: see bind line
 
 5. SHELF (sha256 prefix 16 at BASE_TIP; recomputed at bind)
  83e7c763e373404b  docs/routeB_bus/H4_SCALAR_FLOOR_CERTIFICATE_REPORT_2026-09-07.md  · scripts docs/routeB_bus/phase5_codex/h4_cert/{h4arb,evalf,cert,budget,assemble,verify}.py · raw out/main.txt, out/xcheck.txt
- [PACKET_SHA]  docs/routeB_bus/H4_PACKET_FLOOR_CERTIFICATE_REPORT_2026-09-07.md  · scripts docs/routeB_bus/phase5_codex/h4_cert/packet/
+ 270d78afefd4e81e  docs/routeB_bus/H4_PACKET_FLOOR_CERTIFICATE_REPORT_2026-09-07.md  · scripts docs/routeB_bus/phase5_codex/h4_cert/packet/
  3617ac66e614f883  docs/routeB_bus/SCALARFLOOR_INDEPENDENT_CHECK_2026-09-07.md  (11/11 CORRECT; tail constant 1 refuted numerically)
  dde3dd7c7ec10e6b  docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SCALAR_FLOOR_AND_SEMILOCAL_CONDITIONING_2026-09-07.md  (v1 + addendum §11)
  810362aa281c6047  docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SCALAR_FLOOR_AND_SEMILOCAL_CONDITIONING_2026-09-07_INDEPENDENT_66cc75a1.md  (v2)
  1024864bcf3e4ea3  docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_RESERVOIR_RESONANCE_AND_PRIME_SCALING_2026-09-06.md
- [LOG_SHA]  docs/Progress_Log.md  (entries 2026-09-07: intake of both versions and the addendum; the certificate; the packet)
+ aa5f0d5a22f1096f  docs/Progress_Log.md  (entries 2026-09-07: intake of both versions and the addendum; the certificate; the packet)
  PDFs as before: 2006.13771v1, 2310.18423v2, 2602.04022v1, math/9811068v1
 
 6. KILLED / FORBIDDEN: everything in the parent verdicts' «must not recur»; RH-conditional inputs; diagnostic numbers as proof steps; rescaling or clipping the truncated operator;
