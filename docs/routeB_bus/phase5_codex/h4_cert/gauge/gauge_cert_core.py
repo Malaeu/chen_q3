@@ -54,9 +54,19 @@ def _Lseries(z):
             tp = coef*arb(2*n)*(z**(2*n-1))
             if n % 2: tp = -tp
             Lp = Lp + tp
-    # tail: |term_n| decreasing geometrically once (2n+1)(2n+2) > |z|^2 ; with N=70, |z|<=12 it is < 2^-1000
-    e = arb(0, arb(2)**-900)
-    return L+e, Lp+e
+    # tail (repaired after the independent check, 2026-09-07): the terms t_n = |z|^{2n}/((2n)!(2n+1)^2) decrease with
+    # ratio <= |z|^2/((2N+1)(2N+2)) <= 1/2 for |z| <= 4, N = 70, so the omitted tail is <= 2 * t_N (and <= 2 * 2N t_N/|z|
+    # for the derivative series); the previous fictitious 2^-900 was smaller than the true tail (7e-162 at |z| = 4).
+    za = z.abs_upper()
+    assert za <= 4, "series branch only for |z| <= 4"
+    N = _NSER
+    fN = arb(1)
+    for k in range(1, 2*N+1):
+        fN = fN*k
+    tN = (za**(2*N))/(fN*arb(2*N+1)**2)
+    e  = arb(0, (2*tN).upper())
+    ep = arb(0, (2*arb(2*N)*(za**(2*N-1))/(fN*arb(2*N+1)**2)).upper())
+    return L+e, Lp+ep
 
 _ZBIG = arb(10)**8
 def Lpair(z):

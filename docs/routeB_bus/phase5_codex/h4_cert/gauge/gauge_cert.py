@@ -96,7 +96,7 @@ for k in range(len(nodes)-1):
     rows.append((flt(tl), flt(tr), Jq, R.str(14), Rp.str(14), flt(aI), flt(bI)))
 el = time.time()-t0
 
-A_I = 2*t2*(arb(Rg_at_t2) + V1)             # |R_g| <= |R_g(t2)| + int|R'| on [0,t2]
+A_I = 2*t2*(arb(Rg_at_t2) + V1 + alpha*t2*(t2/2).sinh())   # |R_g| <= |R_g(t2)| + int|R_g'| on [0,t2]; the gauge term's derivative added (check defect b)
 Aup = arb((A_I + Asum).upper()); Bup = arb((B_I + Bsum).upper())
 thrA = cstar/(4*pi); thrB = cstar
 okA = Aup < thrA; okB = Bup < thrB
