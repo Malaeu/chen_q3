@@ -133,6 +133,7 @@ Only after 1–5 does a candidate get a number on the caches or a batch to the j
   PACKET 2026-09-07: F ≻ 0 on span{h₄,h₅,h₆}, pencil floor λ_min ∈ [0.0011576, 0.0013784]: 𝔪 ≥ 0.00116 on a 3-dim subspace; the floor drops as the packet grows (0.00134 → 0.00103 → 0.00078 float), (the judge: inf Spec 𝒯 ≤ 0 by compactness, = 0 only if PSD — do not presume).
   CLASSFLOOR (016ae32b): both certificates RATIFIED; RESONANCE (6) now has a PAPER proof at fixed cutoff (smoothing before trace, Hankel nuclearity, divided-difference trace); explicit positive neighbourhood 𝔪 > 1/1000 for ‖h − h₄/√H₄‖ ≤ 1e−6 (27); the sufficient object = source contraction (28) or signed Schur complement (33); next: parity-complete 8-test packet with the signed witness gate.
   LEGENDRE PACKET 2026-09-07 (X = 6000): both parity blocks F ≻ 0; even λ_min ∈ [1.0053e−3, 1.0518e−3], odd ∈ [8.7029e−4, 9.6435e−4]; no negative direction on 8 dims; the floor falls with every added dimension. The class now needs the SIGNED complement (Schur kernel) — no packet decides it.
+  SCHUR (f50af5ed): the kernel of 𝒯 is c·S(t) + R(t), c = cosh(a/2) − 1 > 0, S positive definite (dyadic log kernel), R ∈ W^{1,1}: 𝓕 = ⟨h,(I + K_rel)h⟩ in the principal energy, K_rel compact — the class obstruction is FINITE negative inertia; 𝓕(h_T) → 0 from above (proved); sufficient scalar object (20): p + \hat{χR} ≥ 0 on the line. Exhaustion: pole-null two-lobe classes never exhaust; the terminal consumer needs full classes with pole terms and all primes up to e^{2R}.
 
 ## 6. Standing rule
 
