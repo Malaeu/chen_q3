@@ -48,6 +48,10 @@ def region1_Q():
         if t2 > s2:
             I = I + arb('13.917')/b*(t2/s2).log() + arb('10.933')/b*(1/s2 - 1/t2)
         tot = tot + 2*I                      # |w_b| <= |q'(t)|+|q'(-t)|
+    # GAUGE verdict (G26): the omitted dyadic tail j >= 400 of int_0^{t2}|w_b|, via SCHUR (8) ||q_b||_{W^{1,1}} <= 2048 b^{-1/2}:
+    # eps_Q <= (2048/sqrt(2 pi)) * 2^{-200} / (1 - 2^{-1/2}) < 2^{-188}; added as a ball radius (positive majorant, never dropped).
+    epsQ = (arb(2048)/(2*pi).sqrt()) * arb(2)**(-200) / (1 - 1/arb(2).sqrt())
+    tot = tot + arb(0, epsQ.upper())
     return tot
 tb1 = arb(0, t2.upper())                     # the ball [-t2, t2]
 G1, Gp1 = GG(tb1, KK)
@@ -81,7 +85,10 @@ Rg_at_t2 = None
 t0 = time.time()
 for k in range(len(nodes)-1):
     tl, tr = nodes[k], nodes[k+1]
-    tb = arb(((tl+tr)/2).mid(), ((tr-tl)/2).upper()); w = tr - tl
+    # GAUGE verdict §3.5: explicit endpoint hull (the midpoint/half-width constructor does not contain the outer hull for
+    # arbitrary endpoint balls). lo/hi are the outer endpoints of the node balls; tb encloses [lo, hi] by construction.
+    lo = tl.mid() - tl.rad(); hi = tr.mid() + tr.rad()
+    tb = arb((lo + hi)/2) + arb(0, ((hi - lo)/2).upper()); w = arb((hi - lo).upper())
     Jq = 8
     while (arb(2)**(-Jq)/(2*pi)*(arb('4.76')/tl + arb('25.4')/(tl*tl))) > arb(10)**-9:
         Jq += 4
