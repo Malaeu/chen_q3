@@ -32,19 +32,15 @@ def Lam(n):
     return 0.0
 
 def overlap(k,l,sig,delta):
-    """int P_k(y/delta) P_l((y-sig)/delta) dy over the support overlap (exact)."""
+    """int P_k(y/delta) P_l((y-sig)/delta) dy over the support overlap (exact: Gauss-Legendre with k+l+8 nodes, legval is stable)."""
     s=sig/delta
     if abs(s)>=2: return 0.0
     lo,hi=max(-1,-1+s),min(1,1+s)
+    n=k+l+8
+    x,w=np.polynomial.legendre.leggauss(n)
+    u=0.5*(hi-lo)*x+0.5*(hi+lo); wu=0.5*(hi-lo)*w
     ck=np.zeros(k+1); ck[k]=1; cl=np.zeros(l+1); cl[l]=1
-    pk=Lg.leg2poly(ck); pl=Lg.leg2poly(cl)           # power basis in u
-    # P_l(u - s): shift
-    pls=np.zeros(l+1)
-    for j,c in enumerate(pl):
-        # (u - s)^j
-        pls[:j+1]+=c*np.array([math.comb(j,i)*(-s)**(j-i) for i in range(j+1)])
-    prod=Pn.polymul(pk,pls); ip=Pn.polyint(prod)
-    return delta*(Pn.polyval(hi,ip)-Pn.polyval(lo,ip))
+    return delta*np.sum(wu*Lg.legval(u,ck)*Lg.legval(u-s,cl))
 
 def build(xs,K,h=0.02,XI=20000.0,verbose=True,no_offsets=False,delta=None):
     t0=time.time()
