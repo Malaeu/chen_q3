@@ -4139,3 +4139,9 @@ K6: `P_ABS_GAP_COLLAPSES` p=0.80; `P_FUCHS_IDENTITY_NUMERICALLY_HOLDS` p=0.55.
 С числами батч Q8+Q9 уходит одним запросом.
 
 ---
+
+
+## OWNER-DIRECT (Прошка А, 2026-09-08 evening) — HODGE TRANSPLANT TEST
+- `STATUS: SENT_BY_OWNER_IN_CHAT` — no repository request file; the prompt (owner's chat text, recorded in CHAT_DIGESTS 2026-09-08 «Hodge transplant») asks: strip one standard proof of the Hodge index theorem to the minimal axioms needed only for the sign on the primitive complement; for each axiom find the exact analogue, or prove its absence, for the Weil form after removing the pole (1,1) plane and the radical 𝒩; no geometric interpretation required; then test canonical-system/Suzuki/de Branges machinery for the missing axiom; output table Hodge ingredient → RH analogue → status → exact missing lemma. Vortex redefined operationally: the mechanism that forbids embedding a hyperbolic (1,1) block (an off-line zero pair) into the primitive quotient.
+- Delivery: Прошка А cannot push; the verdict arrives through docs/_inbox/ (relay protocol, clear inbox in the same commit). Parallel to SCREW + SIGNATURE (Прошка).
+- Observer's prior note (to be checked against the verdict): the minimal sign source in every char-p proof is a NONNEGATIVE COUNT (h⁰ ≥ 0 via Riemann–Roch + Serre duality; or point counts in Bombieri–Stepanov); the «???» cell is a Riemann–Roch-type identity over ℚ relating a tautologically nonnegative quantity to Q — which is exactly what KERNEL showed is missing (a norm with the right kernel exists trivially; the identity with nonnegative remainder is RH). Second note: by Suzuki Thm 1.5 the hyperbolic block cannot appear on any window [−a, a] (all zeros of W(a,θ;z) real, unconditionally); it can only be born in the limit a → ∞ — so the rigidity question is about the limit process, not about any finite window.
