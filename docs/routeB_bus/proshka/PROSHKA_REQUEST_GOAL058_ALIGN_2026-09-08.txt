@@ -1,0 +1,74 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-08-ALIGN
+BOUNDARY_ID: GOAL058_PRIME_ALIGNMENT_CAP_ON_FIXED_WIDTH_STAR_CLASSES_AND_EXHAUSTION
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-08-ALIGN (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub). COMPENSATE was independently checked (Theorem 4 stands; endpoint payment, 47/6000, 6-dim head, two-witness obstruction all CORRECT; only the §4.2 closure is a sketch); your WIDTH supplement is accepted (inclusion lemma, budgeted losses admissible). Your directional ratio ρ = sup 𝒩/𝒫 was computed on the fixed-width prime-star classes: 0.846 (P=3) → 0.927 (11) → 0.975 (23) → 0.990 (47), and the mechanism is now visible in the data: the pole constraints stop capping the prime part (sup over the pole kernel → ‖w‖), but the prime-maximising direction pays an archimedean gap 𝒟 − c_A ≈ 3.3 > its prime part 2.45, so alignment with the star costs energy. This batch asks for that mechanism as a theorem: a source-defined inequality prime(f) ≤ 𝒟(f) − c_A‖f‖² on pole-null tests of the fixed-width prime-star class for ALL P (class Weil positivity on a growing prime set), or the exact direction where alignment is free; whether ρ_P → 1 is forced by unconditional facts (then every proof must be exact in the limit); and whether shifted prime-lattice classes exhaust the test space (then this class problem IS the atom in another coordinate). Maximum reasoning effort; section 9 is mandatory.
+DATE: 2026-09-08
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SECOND_EXPRESSION
+SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_PROOF_CONSTRUCTION_AND_ADVERSARIAL_REVIEW
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_ALIGN_2026-09-08.md
+AUTHOR: Linux-Claude (observer); owner's word «го» on: «доказать верхнюю оценку простой части на классе с полюсными моментами и энергией, ниже нормы звезды, ту, что видна в таблице»
+PARENT_VERDICTS: COMPENSATE (8868b50c; check 4c7610beba92cb95), WIDTH supplement (1fe80df4), INVARIANT (49d773bf/cc3c661f; check 25baedaf56253565), U1 (11f06035; check 9a48a50bc4fb8194), CHAIN (f47ed55c), PROFILES, GAUGE, SCHUR, CLASSFLOOR, SCALARFLOOR
+BASE_TIP: see bind line
+
+0. WHAT WAS DONE SINCE COMPENSATE (all DIAGNOSTIC_NEVER_A_PROOF except the paper audit)
+ AUDIT OF COMPENSATE (4c7610beba92cb95, fresh agent, 19 min): Theorem 4 STANDS; no incorrect inequality. Re-derived from (1): coverage by exhaustive scan m ≤ 39 (5 stars + 3 offsets, shifts u for 2/5 and −v₀ for 3; strips in h₁₁ disjoint, q₊ + q₋ = 0.0204 < ℓ); (22) as exact integer inequalities; Lemma 1: t²(−A′) ≥ 0.5 on (0, ℓ] (need 9/20), min Ω/V_∂ = 1.0000094 (need 0.9); Lemma 2 minima 1.077/0.668 vs 1.062/0.631; Theorem 3 factors 1.82 and 1.22 (need ≤ 2), the 2 of 2Re consumed by 2ab ≤ a² + b², each strip mass paid once, 18 adversarial profiles worst ratio 0.80; ‖𝕆‖ = 0.8707954 = √(w₂² + w₅²) (R*R = s₊²P_left + w₄²P_right); overlap-fraction falsifier ratio 1.0000 vs proposed 0.244; β₀ = 0.5417839; ‖w‖ = 1.4913944; A″ symbolic, table and row sums 40/81/94/150/167/70 reproduced, direct 2D quadrature 0.63 of bound (26); (29): 8 independent generators, rank 2, head dim 6. OWN CHANNEL: a real-space assembly (regional + β₀ + Ω, and K_s) matches our Fourier-symbol instrument to 1.2e−7 / 2.4e−8 — the instrument now has two independent channels. Slice floor 0.955339 (K=6), 0.954586 (K=8); without offsets 0.9834. P=31 witness, P=13 budget (‖w‖ = 1.6524), (34) (ratio → 0.973 at 10⁶), Theorem 5 (0 offset violations, (37) holds P ≤ 10⁴, ‖w‖ < 0.8 log P to 2·10⁵), Theorem 6 (J_A = 16.166, K_g), three §7 repairs: all CORRECT. Only asserted step: §4.2 closure (core, constraint restoration, head generators in the operator domain). Tight: ‖w‖ < 3/2 (0.57%), q₋/ℓ < 1/7 (0.87%), e^{ℓ/2} < 20/19 (0.06%), √(47/6) < 14/5 (0.04%); true budget margin 0.0414, the ledger eats 81%. Registrations: all three survive (≈ 0.97/0.92/0.97).
+ WIDTH SUPPLEMENT (1fe80df4) ACCEPTED: inclusion lemma (W1) — the observer should have written it before running; (W3) — losses are admissible when they fit the budget uniformly; interface Q ≥ −ε_n‖f‖² with ε_n → 0 admissible; radius after centering (log P + 2δ)/2.
+ THE DIRECTIONAL RATIO ρ_P = sup 𝒩/𝒫 (your (42)/(W6)) ON THE FIXED-WIDTH PRIME-STAR CLASSES (centres {0} ∪ {log p ≤ P}, half-width δ = (log 3 − log 2)/8, Legendre degrees < 4, both total pole moments imposed, physical Gram with cross terms once lobes overlap at P ≥ 31; 𝒫 = 𝒟 + 2|M_c|², 𝒩 = c_A‖·‖² + signed prime part + 2|M_s|²):
+   P=3: ρ = 0.8464; on the extremal direction per unit norm 𝒟 = 6.306, c_A = 5.372, prime = −0.034, pole 0.
+   P=11: ρ = 0.9273; 𝒟 = 7.383, prime = +1.475.  P=23: ρ = 0.9750; 𝒟 = 7.374, prime = +1.818.  P=47: ρ = 0.9897; 𝒟 = 7.286, prime = +1.839.
+   ρ → 1 from below, monotonically; the tight direction is NOT the mean sector: it carries the full narrow-lobe energy 𝒟 ≈ 7.3 and its prime part saturates near 1.84.
+ THE ALIGNMENT TABLE (same classes, per unit physical norm):
+   P |  ‖w‖ star norm | sup prime/G unconstrained | sup prime/G on the pole kernel | prime on the ρ-extremal | 𝒟 − c_A on the prime-maximiser of the kernel
+   3 |  0.8016 | 0.8016 | 0.8016 | −0.034 | 3.061
+   11 | 1.4914 | 1.6011 | 1.5709 | 1.475 | 2.741
+   23 | 2.0215 | 2.4032 | 2.0524 | 1.818 | 2.727
+   47 | 2.4881 | 3.5673 | 2.4518 | 1.839 | 3.259
+   Readings (data, not theorems): (i) the unconstrained sup exceeds ‖w‖ from P = 11 on (offsets; from P = 31 the Gram cross terms) — ‖w‖ is not the cap; (ii) the pole constraints cap the prime part at ≈ ‖w‖ and no better as P grows — the constraints alone do NOT stop alignment at large P; (iii) what stops it is ENERGY: the prime-maximising direction of the pole kernel pays 𝒟 − c_A ≈ 3.3 > its prime part 2.45, while the ρ-extremal balances prime 1.84 against a gap 1.91. So Q ≥ 0 on these classes is the statement «aligning a pole-null test with the prime star costs at least as much archimedean gap as the prime part it gains». That is the object this batch asks you to prove or break.
+ Shelf: report d38e1cf2f74e17ef (docs/routeB_bus/SIX_CENTRE_FIXED_WIDTH_ASSEMBLY_REPORT_2026-09-07.md, addenda 1–2), raw docs/routeB_bus/phase5_codex/six_centre/out/, script sc_build.py (two-channel gauged).
+
+1. QUESTION 1 — THE ALIGNMENT CAP AS A THEOREM (the main question)
+ Class 𝒞_P: f = Σ_{p ∈ {1} ∪ primes ≤ P} U_{log p} h_p, h_p ∈ C_c^∞(−δ, δ) arbitrary complex, δ = (log 3 − log 2)/8 FIXED, M_±(f) = 0. (For P ≥ 31 lobes overlap; use the physical norm ‖f‖², as in your §5.1.)
+ (a) MECHANISM. Identify from source data the quantity that grows with alignment: on the star, prime(f) = 2Re Σ_p w_p⟨h_1, T_{0} h_p⟩ + offsets; maximising it forces h_1 ∥ Σ w_p h_p in L² — what source energy does that alignment cost? Candidates: the shared centre lobe h_1 enters every star edge but its energy 𝒟(h_1) − c_A‖h_1‖² is paid once (so the star can be «free» in L²), versus the total-moment constraints, versus the regional/endpoint energy induced by the specific shape the maximiser must take. Say which one is the actual cap, with the inequality that expresses it.
+ (b) THEOREM OR WITNESS. Prove Q(f) ≥ 0 on 𝒞_P for every P (a uniform-in-P sign, not a positive constant — the data say the floor → 0⁺), by the mechanism of (a); or give the exact direction along which alignment is free (prime part ≥ 𝒟 − c_A) with a negative upper witness. The data forbid a proof through ‖w‖ (Mertens): ‖w‖ → ∞ while 𝒟 − c_A stays bounded on narrow lobes; the proof must use that the prime part on ADMISSIBLE tests saturates (1.84 at P = 47 against ‖w‖ = 2.49). If neither, state the exact first missing inequality between named source quantities.
+ (c) WHAT IS PROVED IF (b) CLOSES. Class Weil positivity on a growing prime set at fixed width: by your Theorem 5 caveat this does not exhaust tests. Say precisely what it would add beyond Theorem 5 (which needed shrinking width 1/(16P)): fixed width means the star correlations are FULL (overlap 1), not excluded — the first uniform-in-P theorem where the primes are actually present.
+
+2. QUESTION 2 — IS ρ_P → 1 FORCED?
+ (a) Show whether ρ_P → 1 (equivalently inf Q/‖f‖² → 0 on 𝒞_P) follows from unconditional facts (e.g. the existence of near-null tests: for the Weil form, tests f with f̂ concentrated near a zero γ give Q(f)/‖f‖² small — under RH Q(f) = Σ_ρ|f̂(γ_ρ)|², but unconditionally? give the argument or its obstruction), or whether the fixed-width class could in principle keep a positive floor. If forced: then any all-P proof must be exact in the limit and every lossy budget must shrink with P — say what that imposes on (42)'s proof shape (your (W3) principle made quantitative).
+ (b) The extremal direction of ρ_P: what is it structurally (which lobes, which Legendre degrees, sign pattern)? Our data: not the mean sector, full lobe energy. Predict its limit shape as P → ∞ from source data, and what the limiting Q-null test would be.
+
+3. QUESTION 3 — EXHAUSTION BY SHIFTED PRIME-LATTICE CLASSES
+ Let 𝒞(x₀, ℓ, P) be the class with lobes at x₀ + log m for integers m ≤ P (all m, not only primes — composite centres see atoms through Λ), width ℓ, total pole moments zero. (a) Is ⋃_{x₀, ℓ, P} 𝒞(x₀, ℓ, P) dense in the form domain of Q (so that Q ≥ 0 on all these classes ⟺ Weil positivity ⟺ RH)? A test supported away from the lattice at narrow width has no prime correlations and is trivially positive; wide tests are not unions of lobes — say whether an exhausting family of lobe-classes exists and what its width law must be (your Theorem 5 says shrinking width kills the star; fixed width collides at P = 31; growing width overlaps). (b) If yes: the ALIGN theorem for the general lattice class IS the atom in lobe coordinates — say what changes in Q1 when composite centres and overlapping lobes are admitted (Gram cross terms; atoms 4, 8, 9 acting; the prime part on overlapping lobes). If no: name the tests that no lobe-class reaches and what other coordinate they need.
+
+4. SHELF (sha256 prefix 16 at BASE_TIP)
+ d7286b7f99c6db0a  docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_COMPENSATE_2026-09-07.md · 4c7610beba92cb95  docs/routeB_bus/COMPENSATE_INDEPENDENT_CHECK_2026-09-08.md
+ 4da3e352c4868a05  docs/routeB_bus/proshka/PROSHKA_SUPPLEMENT_GOAL058_COMPENSATE_WIDTH_2026-09-08.md · d38e1cf2f74e17ef  docs/routeB_bus/SIX_CENTRE_FIXED_WIDTH_ASSEMBLY_REPORT_2026-09-07.md
+ cf16ab4e5968df5a  docs/Progress_Log.md (entries 2026-09-07/08) · the U1 and INVARIANT verdicts and their checks as in COMPENSATE's header
+ PDFs: 2006.13771v1, 2602.04022v1, 2608.24827v2, 2606.09096
+
+5. KILLED / FORBIDDEN: everything in the parent verdicts' «must not recur»; RH-conditional inputs as premises (the zero-side reading in Q2(a) is to be marked conditional where it is); «this is RH»; a finite table as a class lower bound (your own rule); a proof through the star norm ‖w‖ alone; a positive-constant floor claim on 𝒞_P (the data refute it); Theorem 5's shrinking width as a substitute for fixed width; choosing δ_n from an unknown minimum; a sign as a difference of two close numbers (owner's rule 18).
+
+6. REGISTERED PREDICTIONS (K6, observer; frozen)
+  P_ALIGN_MECHANISM_NAMED: 0.70 — Q1(a) names one source quantity (not ‖w‖, not the pole constraints alone) that provably grows with star alignment, with an inequality.
+  P_ALIGN_CAP_PROVED_ALL_P: 0.30 — Q1(b) proves Q ≥ 0 on 𝒞_P for every P at fixed width.
+  P_RHO_TO_ONE_FORCED: 0.60 — Q2(a) shows ρ_P → 1 (floor → 0) is forced by unconditional facts or by a construction.
+  P_EXTREMAL_NOT_MEAN: 0.85 — Q2(b) confirms the extremal direction is not the constant-profile sector and describes it structurally.
+  P_LATTICE_CLASSES_EXHAUST: 0.50 — Q3(a) answers YES with an explicit width law, making the lobe-class problem equivalent to the atom.
+
+7. REQUIRED VERDICT: header with RESULT per question ∈ {PROVED_ON_CLASS, PARTIAL_WITH_PRECISE_REMAINDER, OBSTRUCTION_NAMED, COMPUTATION_SPECIFIED, ATTEMPT_REFUTED_WITH_EXACT_COUNTEREXAMPLE, IRREDUCIBLE_ATOM} and CLOSES/OPENS; Q1–Q3 in full; proofs where claimed, rational ledger in an appendix; score the observer's predictions without editing; score your own COMPENSATE registrations against the audit (4c7610beba92cb95); register new ones; the cheapest decisive check; no Lean edit, no numerical run, no RH claim; write only the verdict.
+
+9. PROSHKA'S OWN LINE (free form, no codes, no scoring; 20–40 lines):
+   (a) why this route and not the two nearest alternatives you considered;
+   (b) the two moves you see beyond this batch, and what would kill each;
+   (c) what you would ask us for, if you could ask (data, a probe, a definition);
+   (d) what surprised you in the alignment table, and what you distrust in it.
