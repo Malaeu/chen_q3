@@ -93,3 +93,17 @@ Readings.
    owner's «single vortex»: at large P only an identity has room.
 3. The atom itself has slack here: S_n(1/n) ⪰ 0 asks Q ≥ −(1/n)‖f‖²; at P = 47, n ≈ 3.9, the floor +8e−4 is
    0.26 above the requirement. The regulariser is not what is hard; the exact sign of the un-regularised head is.
+
+## Addendum 2: the directional ratio ρ = sup 𝒩/𝒫 (COMPENSATE (42), WIDTH supplement (W6)), fixed width, K = 4
+𝒫 = 𝒟 + 2|M_c|², 𝒩 = c_A‖f‖² + (signed prime part) + 2|M_s|², on the constraint kernel; Q ≥ 0 ⟺ ρ ≤ 1.
+| P | ρ | on the extremal direction, per unit norm: 𝒟 | c_A | prime part | pole |
+|---:|---:|---:|---:|---:|---:|
+| 3 | 0.8464 | 6.306 | 5.372 | −0.034 | 0 |
+| 11 | 0.9273 | 7.383 | 5.372 | +1.475 | 0 |
+| 23 | 0.9750 | 7.374 | 5.372 | +1.818 | 0 |
+| 47 | 0.9897 | 7.286 | 5.372 | +1.839 | 0 |
+Reading. The tight direction is not the mean sector: it carries the full narrow-lobe energy 𝒟 ≈ 7.3, and the prime
+part on it saturates near 1.84 while c_A + primes approaches 𝒟 from below. In these coordinates the all-n statement is
+«the signed prime part on admissible tests never exceeds the archimedean gap 𝒟 − c_A on the same test» (pole terms
+vanish on the kernel). The prime part on the extremal direction (1.84 at P = 47) is far below the star norm
+‖w‖ (≈ 2.6): the constraints and the energy forbid full alignment with the star. DIAGNOSTIC_NEVER_A_PROOF.
