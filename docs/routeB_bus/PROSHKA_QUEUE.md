@@ -14,6 +14,22 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-08-HODGE · HODGE — bound form of the owner's Hodge transplant test: strip one Hodge index proof to the minimal sign axioms, transplant table for (Q, H, pole plane, N), can Suzuki/de Branges realise the missing axiom (for Proshka A) · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_HODGE_2026-09-08.txt`
+- Boundary: `GOAL058_HODGE_TRANSPLANT_TEST_MINIMAL_SIGN_LEMMA_AND_ITS_ARITHMETIC_ANALOGUE`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: see request
+- Registered predictions: HODGE_MINIMAL_IS_COUNT 0.65; TABLE_CELL_EMPTY 0.80; RR_ANALOGUE_IS_EXPLICIT_FORMULA_WITHOUT_COUNT 0.75; SUZUKI_REALISES_ONLY_WINDOW 0.70; DEPENDENCY_STRIPPING_NAMES_ONE_LEMMA 0.60
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `9c930d61e383cb480dfd6fdf589fe2648b888c14` / `11840` / `62` /
+  `fd3beb9e101c491905807bbb7d71e76ea71e77375700e0f4d54dec9e240865da` /
+  `594f1ed041370d8c4fe521e7d9b7de9f2089dfec` / `yes`
+
+---
+
 ## REQ-2026-09-08-SCREW · SCREW — is our quotient H/N Suzuki's H_W / de Branges space (signed extension after our erratum); the first prime a = 1/2 log 2 in the a -> inf limit (Cor. 1.6); the null family and lambda_a -> 0; DDF-type basis of the quotient from window real-zero bricks; one decisive computation · OPEN
 
 - `STATUS: OPEN`
