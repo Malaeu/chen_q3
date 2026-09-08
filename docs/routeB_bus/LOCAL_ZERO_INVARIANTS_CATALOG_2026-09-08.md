@@ -63,3 +63,9 @@ property of the whole test family, never as one number. Observer's paper lemma, 
 DH instrument: DEFERRED, not cancelled. Its genuine use is as a test bed for a PROPOSED square X (KERNEL (K1)-type or
 any future one): evaluate ‖X h_λ‖² at a real off-line zero of the DH function, where ζ offers no such zero. It is
 worth building the day a candidate X exists; today none does.
+
+## E. Corrections from Prošhka's SIGNATURE/CLOSURE supplement (d6243e9f, 2026-09-08)
+- Multiplicity is a WEIGHT, not a dimension: the pair block is m_λ[[0,1],[1,0]] of inertia (1,1) for every m; sig(Q̄) = (∞, r) with r = number of DISTINCT off-line j-orbits (SC4)–(SC5); an off-line quartet gives (2,2). Rows 9 and 13 above are to be read with this count.
+- The pole summand P has signature (1,1) as a summand, but is NOT an intrinsic hyperbolic plane of the full Q: Q[Φ] = 0 while P[Φ] = 2|ξ(1)|² > 0 (SC10)–(SC11). The fibre-class analogy is a picture, not a theorem.
+- Window index n₋(a) is finite, nondecreasing, and sup_a n₋(a) = r (SC13): negative directions are visible on a FINITE window; RH ⟺ n₋(a) = 0 ∀a. My «the wrong limit is born only at infinity» holds only for nonzero locally uniform limits of the real-zero bricks, not for the inertia of the form.
+- Under ¬RH what must fail is target IDENTIFICATION (Rouché defect (SC26)), not convergence as such.
