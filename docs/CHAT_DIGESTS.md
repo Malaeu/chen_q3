@@ -1638,3 +1638,31 @@ sup‖θ‖_∞ < ∞, ‖∇θ(t)‖_∞ → ∞, limsup‖ω(t)‖_∞ = ∞ �
 существует по отдельности; единого «паспорта нуля» нет. Поправка: цитируемая статья «A Didactic Coefficientwise Prime–Zero Dictionary for log ζ» (2026) на arXiv не найдена (три запроса
 к API) — вероятная галлюцинация быстрой модели; источник запросить. Новое для полки: Moriya 2607.04316 (непроверено). Главный вывод: (1)+(2)+(3) пусто; c₀(ρ) = ½ предшварциана = скорость
 нуля в потоке dBN — один объект в трёх литературах. Локаторы в litreview/VORTEX_INVARIANT_LITERATURE_GAP_2026-09-08.md.
+
+**OpenAI: «решение» Навье–Стокса (пост 08.09.2026 17:20 UTC, https://x.com/OpenAI/status/2097374640582668336; владелец 09.09 «читай»).** Разбор по правилу 14, первоисточники прочитаны.
+ЧТО: статья «Finite time blowup for Navier–Stokes», OpenAI, 166 стр., https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf. Theorem 1.1: ∀ν>0 ∃ сила
+f ∈ C_c^∞(ℝ³×(0,∞)), компакт K, гладкие u,p на ℝ³×[0,1), u(·,0)=0, supp ⊂ K, sup_t‖u‖_{L²}<∞, limsup_{t↑1}‖u(t)‖_∞=∞. Это альтернатива (C) Феффермана; Cor. 10.6 даёт (D) на 𝕋³.
+Бессиловая задача (A)/(B) не тронута; у Тао (03.09) консенсус: ответ отрицателен и без силы, но это не доказано. МЕХАНИЗМ: самоподобное ядро ℓ_r≍τ^{1/2}, ℓ_z≍τ^{1/2−h}, 0<h<1/100;
+u_θ,u_z≍τ^{−1/2−h}, энергия ядра ≍τ^{1/2−3h}→0; Re_θ≍τ^{−h}→∞, Re_r=O(1). Сила определена как невязка R(u,p); невязка фона = −div(кольцевого напряжения) + остаток, исчезающий до
+всякого порядка в особой точке (Prop. 5.5, (5.41)); напряжение поставляют усреднённые квадратичные произведения осцилляторных импульсов двух семейств (точные волны Крейка–Криминале,
+Prop. 7.5); последовательные поправки (Prop. 9.6); тепловая внешность с нулевой невязкой; срезка (Prop. 10.1). Генеалогия по их же тексту: Córdoba–Martínez-Zoroa (forced Euler,
+слои), CMZ–Zheng (гиподиссипативный NS), Tao (усреднённый NS), Albritton–Brué–Colombo (сила сингулярна при t=0). Доказательство ПОЛНОСТЬЮ аналитическое: в тексте 0 упоминаний
+numerical / interval arithmetic / computer-assisted; рецепт Тао 03.09 с численным остатком (шаги b, d) не понадобился. Процесса в статье нет (0 упоминаний agent / Codex / GPT): о
+процессе только пресса — Euler ≈100 агентов × 50 ч, NS 10 000 агентов × 88 ч, +17 ч формализация, ≈5·10⁶ сообщений, ≈$2M (Quanta, Fortune 08.09). LEAN: github.com/openai/NavierStokesAndEuler,
+коммит 8937a8f4 (08.09, Boris Alexeev), Lean 4.34.0-rc2, 616 276 строк, 5 `sorry` — все в ComparatorChallenges (намеренные заглушки эталона), аксиомы только propext/Classical.choice/
+Quot.sound; formalization.yaml v0.4: review «self-assessed», automation «GPT-6 Astra / Codex». Эталон Comparator = google-deepmind/formal-conjectures Millenium/NavierStokes.lean
+(коммит 8bf45ed7). У НАС НЕ СОБРАНО: `lake build` здесь не запускался, ядро не прогнано (память text-check-is-not-kernel-check); всё выше — чтение текста и yaml. СПОР: Alpöge–Buckmaster
+(Euler 15.08, Lean 22.08, Boussinesq); заявление Бакмастера о доступе к сессиям Codex и о давлении (Fortune, TechCrunch 08.09); Bubeck отрицает; Clay (Bridson): «deliberately unhurried …
+absolutely rigorous». Тао: тред 03.09 (6 постов, гипотетический сценарий «решение без процесса контаминирует задачу»; предсказание «крупнейший Lean-артефакт» подтвердилось: 616k строк)
++ уточнение 05.09.
+ЧТО ЭТО ДЛЯ НАС: (a) механизм — ∃-конструкция с силой, назначенной как невязка; у нас ∀-неравенство (O1); вердикт 08.09 по Alpöge–Buckmaster не меняется, пространство препятствий
+(docs/OBSTRUCTION_SPACE_2026-09-08.md) не меняется. (b) форма переносится и подтверждена в третий раз: «точный кусок + остаток, исчезающий до всякого порядка + бюджет только на ошибки»
+— правило 18; наш кандидат этой формы — SCALARFLOOR теорема 1. (c) ИНФРАСТРУКТУРА, берём: раскладка Comparator (Challenge из Formal Conjectures / Solution / json с permitted_axioms и
+nanoda / formalization.yaml). Formal Conjectures УЖЕ содержит эталон RH: Millenium/RiemannHypothesis.lean, `theorem riemannHypothesis : RiemannHypothesis` (тип Mathlib: ∀ s, ζ s = 0 →
+¬тривиальный → s ≠ 1 → Re s = ½). Наша крыша `rh_of_canonical_slots` заканчивается `Q3.RH` (Q3/Basic/Defs.lean:177: ∀ s, ζ s = 0 → 0 < Re s < 1 → Re s = ½) — мост Q3.RH → Mathlib
+`RiemannHypothesis` ОТСУТСТВУЕТ (нужны: нет нулей при Re ≥ 1 — `riemannZeta_ne_zero_of_one_le_re`; нули при Re ≤ 0 тривиальны — функциональное уравнение). CLOSES: comparator-gap
+(память 11.08) закрывается копированием раскладки. OPENS: тулчейн 4.26 → 4.34 для Comparator rev; лемма-мост. Это и есть механический смысл гейта PX_RH_CLAIM: заявка = Comparator-прогон
+против чужого эталона, не наш текст. (d) масштаб: задача с формой «поиск анзаца» пала под 10⁴ агентов за 88 ч; O1 такой формы не имеет (ранг 1, не перебор), поэтому событие ранг не меняет,
+но цену ширины (канал Мифос) переоценивает: перебор дешевле, чем мы считали 03.09.
+Кандидат (правило 19): собрать ComparatorChallenges/RH.lean из Formal Conjectures + мост Q3.RH → RiemannHypothesis как Lean-узел; вероятность, что мост стоит < 1 дня Codex — 0.8; зонд —
+`./ask.sh riemannZeta_ne_zero_of_one_le_re` и `./ask.sh trivial zeros functional equation` до постановки задачи.
