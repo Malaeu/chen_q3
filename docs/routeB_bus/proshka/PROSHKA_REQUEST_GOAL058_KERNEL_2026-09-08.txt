@@ -1,0 +1,68 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-08-KERNEL
+BOUNDARY_ID: GOAL058_SOURCE_SQUARE_WITH_THE_ZERO_IDEAL_AS_KERNEL
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-08-KERNEL (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub). ALIGN was independently checked and ACCEPTED (theta normalisation to 7e−32, Q(g_k) = 0 by two channels, prime part unbounded, fixed-width cover). Your near-null family was then run through our Theorem-1 (SCALARFLOOR) instrument: on g₀…g₃ the Sonin square n₂ = 0.0025…0.037 > 0 and the scalar floor 𝓕 = −0.41…−0.98 per unit norm while Q = 0 — so every reservoir minorant Q ≥ ‖T_f S_S‖² with a FINITE prime set S is false on the null family by exactly n_S(g_k), unconditionally; the plus-channel −0.008 is the same phenomenon; the gauge scan is cancelled. This batch asks the object question that follows: does a SOURCE-DEFINED square X (archimedean symbol + Euler product, no zeros as input) exist with ker X = {f : f̂ divisible by Ξ} — the exact requirement any all-n representation Q = ‖Xf‖² + R, R ≥ 0, must satisfy — and if so what R is; or is every such square identity equivalent to RH by construction (Connes' global trace formula), so that the primes-side SOS road is a coordinate change and not a mechanism. Read the first sources (Connes 1999 Selecta; CC20; CCM23; Connes 2602.04022) on exactly this point. Maximum reasoning effort; section 9 is mandatory.
+DATE: 2026-09-08
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SECOND_EXPRESSION
+SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_PROOF_CONSTRUCTION_AND_ADVERSARIAL_REVIEW
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_KERNEL_2026-09-08.md
+AUTHOR: Linux-Claude (observer); owner's «Go» on: «квадрат на стороне простых, чьё ядро есть идеал нулей»
+PARENT_VERDICTS: ALIGN (be442fbe; check 66ced8b60c9d17ac), COMPENSATE (8868b50c; check 4c7610beba92cb95) + WIDTH supplement (1fe80df4), INVARIANT, U1, CHAIN, PROFILES, GAUGE, SCHUR, CLASSFLOOR, SCALARFLOOR (Theorem 1: 𝔪 = 𝓕 + ‖T_vD₂‖²_HS), RESONANCE
+BASE_TIP: see bind line
+
+0. WHAT WAS DONE SINCE ALIGN (all DIAGNOSTIC_NEVER_A_PROOF except the paper audit)
+ AUDIT OF ALIGN (66ced8b60c9d17ac, fresh agent, 26 min): ACCEPTED, no incorrect equation. (A7) symbolic; (A8) exact (perfect star alignment at constant single-profile energy; h = (∂²−¼)η is pole-null since (∂²−¼)e^{±x/2} = 0); (A9) exact; zero-synthesis obstruction real (log 31 − log 29 = 0.0667 < 2δ). (A23) at 9 values of z incl. the first zero: |LHS − RHS| ≤ 7.4e−32, doubling the factor breaks it; Φ even to 1e−52; pole moments of g₀…g₄ ≤ 3e−30. Q(g_k) = 0 by TWO independent channels (archimedean from the Ξ/digamma symbol, primes from theta-series x-space autocorrelations): Q(g₀) = 6.9e−16 relative; k = 1…4 likewise; the signed explicit formula verified on a generic test (9e−12) and the pole term's sign/factor (9e−9). (A34): Π/‖g_k‖² = −0.017, 0.165, 0.289, 0.481, 0.947, 1.43, 1.99, 2.63, 3.28, 3.96 up to k = 256 — passes 1.84 near k ≈ 48. Cover: m₀ = 79, 1/79 ≤ δ/4 with 1% slack. (A25) ledger reproduced (∫t²A = 16.166; Σ log m/m^{3/2} = 3.10 < 6). §7.2 log-norm equivalence [0.59, 2.18]; (A38) exact. Only asserted step: the RH leg of (A21) via CC20 App. C Prop. 1 (155) (could not be opened by the checker); the first equivalence «Q ≥ 0 on every 𝒞_P ⟺ Q ≥ 0 on H₀₀^c» fully derived. Near-null family unconditional (both factors of each summand vanish at every zero regardless of its real part). Φ(2) = 1e−69: the family can never become a numerical negative witness. All three registrations survive.
+ NEAR-NULL PROBE OF THEOREM 1 (27c76795992d239d; owner's «Go»; Euler-Gram grids k₂^lo/k₂^hi and ℓ₂ from the shelf, |ĝ_k|² = ξ^{2k}(ξ²+¼)²Ξ² by mpmath; the instrument reproduces Q(g_k) = 0 to 1e−16): per unit ‖g‖², all pole-null hence gauge-invariant:
+   k | L₂ ({∞,2}-semilocal form) | n₂ = ‖T_gS₂‖² (Sonin square) | 𝔪 = L₂ − n₂ | 𝓕 = −∫|ĝ|²ℓ₂ | ‖T_gD₂‖²_HS = 𝔪 − 𝓕
+   0 | +0.0790 | +0.0025 | +0.0765 | −0.408 | +0.485
+   1 | −0.0450 | +0.0071 | −0.0521 | −0.688 | +0.636
+   2 | −0.1348 | +0.0172 | −0.1519 | −0.916 | +0.764
+   3 | −0.1001 | +0.0375 | −0.1375 | −0.976 | +0.838
+   Readings: (i) the finite-S Sonin square does not annihilate the null family (k_S ≥ 0 is a density, cannot vanish where Ξ ≠ 0), so Q ≥ ‖T_fS_S‖² fails on g_k by exactly n_S(g_k) > 0 — unconditional; the plus-channel −0.008 (T·|𝔪| ≈ 1) is the same phenomenon on a narrow test approaching a null direction; (ii) the scalar floor is negative by O(1), not by a gauge defect; (iii) the requirement on any all-n representation Q = ‖Xf‖² + R with R ≥ 0 on pole-null tests: X g_k = 0 ∀k, i.e. ker X ⊇ 𝒩 := {f : F(z) = ∫f e^{zx} vanishes at every zero of ξ}; a square built from a finite prime set sees no zeros and cannot have this kernel. Side fact: L₂ < 0 on g₁…g₃ (wide tests; the missing primes ≥ 3 compensate) — no theorem contradicted.
+ Standing facts from the chain: the atom S_n(1/n) ⪰ 0 ∀n ⟺ RH; the lobe classes 𝒞_P exhaust pole-null tests (ALIGN); minimal missing = (A14) I − T_P ⪰ 0; literature map (1770df1f7bc579f6): the only proved SOS is char p; CC20's square is archimedean-local; de Branges closed structurally.
+
+1. QUESTION 1 — DOES A SOURCE-DEFINED SQUARE WITH THE ZERO IDEAL AS KERNEL EXIST? (the object question)
+ Define the null ideal 𝒩 = {f ∈ H₀₀^c-closure : F_f(z) vanishes at every nontrivial zero of ξ} (equivalently f̂ is divisible by Ξ in the appropriate space; g_k ∈ 𝒩). Under RH, 𝒩 = rad Q. Unconditionally 𝒩 ⊆ {Q(f) = 0}.
+ (a) Is there an operator X defined from SOURCE data only — the archimedean symbol a(ξ), the shifts U_{log m} with weights Λ(m)/√m, the pole functionals, the full Euler product as an analytic object (not its zeros) — with ker X = 𝒩 exactly, and a bounded/closable identity Q(f) = ‖Xf‖² + R(f) on the form domain? Candidates to adjudicate: (i) the full adelic/«all places» Sonin projector of Connes (the cutoff at every place: is its Sonin space's spectral realization of the zeros — Connes 1999 — an X with this kernel, and is the identity Q = ‖T_fS‖² + R exactly Connes' global trace formula, whose validity is equivalent to RH?); (ii) the prolate/Sonin operator of CCM23 (Connes–Consani–Moscovici, «zeta zeros and prolate wave operators» 2310.18423 and the finite-Euler intertwining you cited in SCALARFLOOR): what is proved unconditionally about its spectrum vs the zeros, and does its square annihilate 𝒩?; (iii) the Weil form's own Gram/Cholesky on an exhausting family (X = S_n^{1/2} — unavailable before positivity, as you said); (iv) division: f ↦ F_f/ξ — meromorphic unless f ∈ 𝒩; is there a source-side regularisation making «the part of f not divisible by Ξ» a positive quantity (a projection onto 𝒩^⊥ in a source-defined inner product)?
+ (b) If such an X exists unconditionally: what is R? Say whether R ≥ 0 is then RH, or weaker, or whether R has a source sign. If R ≥ 0 ⟺ RH, then the SOS road has produced a coordinate change; say so plainly.
+ (c) If no such X can exist without RH: prove the obstruction — e.g. any source-defined positive form P with P(g_k) = 0 ∀k factors through the quotient by 𝒩, and defining that quotient from source data is equivalent to locating the zeros (RH-equivalent). Give the exact statement and its first source.
+
+2. QUESTION 2 — THE NULL FAMILY AS THE DISCRIMINATOR OF REPRESENTATIONS
+ For each candidate square that has appeared in this project — the finite-S Sonin square n_S (SCALARFLOOR), the HS square ‖T_fD_S‖² (Theorem 1), the CC20 archimedean square Tr(ϑ(g)Sϑ(g)*), the pole square 2|M_c|² (COMPENSATE (34)), the regional Legendre energies and the endpoint energy (U1/COMPENSATE), the prime-difference squares w_m‖U_{log m}f − f‖² (COMPENSATE (40)) — state whether it vanishes on 𝒩. Our data say n₂ and the HS square do not. Characterise the positive source forms that DO vanish on 𝒩: is the set {P ≥ 0 source-defined : P|_𝒩 = 0} nontrivial at all without RH?
+
+3. QUESTION 3 — CONSEQUENCE FOR (A14) AND THE ATOM
+ If Q1(c) holds (no unconditional source X with kernel 𝒩), then every all-n mechanism of the shape «positive square + nonnegative remainder» is RH-equivalent as a statement, and the only remaining proof shapes are (i) a direct inequality I − T_P ⪰ 0 by an argument that does not pass through a square (what could it be: compactness + a limiting identity on the null family? a maximum principle for the Rayleigh quotient? Lagarias–Li-type coefficient positivity translated into (A14)?), or (ii) the char-p analogy made literal (Deninger/Connes–Consani scaling site) — say which of these has any known partial result, with locators, and which you would pursue. If Q1(a) holds (X exists), give the cheapest decisive test of R on our lobe classes (we can evaluate any source-defined form on 𝒞_P in seconds).
+
+4. SHELF (sha256 prefix 16 at BASE_TIP)
+ f6edb6d03bf719a8  docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_ALIGN_2026-09-08.md · 66ced8b60c9d17ac  docs/routeB_bus/ALIGN_INDEPENDENT_CHECK_2026-09-08.md
+ 27c76795992d239d  docs/routeB_bus/NEAR_NULL_PROBE_OF_THE_SONIN_FLOOR_2026-09-08.md · 1770df1f7bc579f6  docs/routeB_bus/litreview/SOS_WEIL_POSITIVITY_LITERATURE_MAP_2026-09-07.md
+ 86ff04e7f67d64f0  docs/Progress_Log.md · SCALARFLOOR verdict Theorem 1 (§ «Exact square remainder») · COMPENSATE (32),(34),(40)–(41) · ALIGN (A11)–(A14), (A22)–(A28)
+ PDFs: 2006.13771v1 (CC20), 2310.18423v2 (CCM23), 2602.04022v1 (Connes 2026), math/9811068 (Connes 1999 Selecta, trace formula), 2608.24827v2
+
+5. KILLED / FORBIDDEN: everything in the parent verdicts' «must not recur»; RH-conditional inputs as premises (the zero-side Gram Σ_ρ|f̂(γ_ρ)|² may be named as the conditional X but not used); «this is RH»; a finite-S reservoir as an all-n square (dead by the probe); X = S_n^{1/2}; a positive form asserted to vanish on 𝒩 without proof; a sign as a difference of two close numbers (rule 18); claiming a trace formula's validity without its exact hypothesis and locator.
+
+6. REGISTERED PREDICTIONS (K6, observer; frozen)
+  P_KERNEL_X_EXISTS_UNCONDITIONALLY: 0.35 — Q1(a) exhibits a source-defined X with ker X = 𝒩 exactly, without RH, with a proved identity Q = ‖Xf‖² + R.
+  P_SQUARE_IDENTITY_IS_RH: 0.70 — Q1(b)/(c): any square identity with kernel 𝒩 and R ≥ 0 is RH-equivalent as a statement (Connes' global trace formula or its analogue), so the SOS road is a coordinate change.
+  P_CC20_SQUARE_POSITIVE_ON_NULL: 0.85 — Q2: the CC20 archimedean square does not vanish on 𝒩 (it is positive on g_k).
+  P_NO_SOURCE_FORM_VANISHES_ON_NULL: 0.55 — Q2: the set of nontrivial source-defined positive forms vanishing on 𝒩 is empty without RH (or Прошка proves it must be built from ξ's zeros).
+  P_DIRECT_ROUTE_NAMED: 0.50 — Q3: a non-square proof shape for (A14) with at least one known partial result and locator is named.
+
+7. REQUIRED VERDICT: header with RESULT per question ∈ {PROVED_ON_CLASS, PARTIAL_WITH_PRECISE_REMAINDER, OBSTRUCTION_NAMED, COMPUTATION_SPECIFIED, ATTEMPT_REFUTED_WITH_EXACT_COUNTEREXAMPLE, IRREDUCIBLE_ATOM} and CLOSES/OPENS; Q1–Q3 in full; first sources read and quoted with locators (theorem numbers, equations), every claim about a paper marked as read or relay; proofs where claimed; score the observer's predictions without editing; score your own ALIGN registrations against the audit (66ced8b60c9d17ac); register new ones; the cheapest decisive check; no Lean edit, no numerical run, no RH claim; write only the verdict.
+
+9. PROSHKA'S OWN LINE (free form, no codes, no scoring; 20–40 lines):
+   (a) why this route and not the two nearest alternatives you considered;
+   (b) the two moves you see beyond this batch, and what would kill each;
+   (c) what you would ask us for, if you could ask (data, a probe, a definition);
+   (d) what surprised you in the near-null probe, and what you distrust in it.
