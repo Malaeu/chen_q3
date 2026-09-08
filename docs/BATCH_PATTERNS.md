@@ -62,3 +62,18 @@ REQUEST_ID = REQ-<дата>-<ОДНОСЛОВНОЕ ИМЯ>: SCALARFLOOR, RESONA
 Строгость не меняется: коды, предсказания и директива остаются в разделе 8. Раздел 9 — место, где Прошка говорит с нами как Прошка. Наблюдатель переносит
 (b) и (c) в `PROSHKA_QUEUE.md` как кандидатов следующего батча, (d) — в журнал как симптомы. Слово владельца: «чтобы он ещё и записал туда для нас небольшие
 разъяснения, почему он именно так думает». В чате Прошка называется Прошкой (вторая сессия — Прошка А), не «судьёй».
+
+**Раздел 10 в каждом запросе — «RESEARCH LOG» (владелец, 2026-09-08, после KERNEL).** Прошка за батч читает 10–15 источников и отбрасывает ветки; в вердикт попадают
+только выжившие. Отброшенное пропадает вместе с чатом, и мы не можем к нему вернуться. Поэтому с первого запроса после REQ-2026-09-08-KERNEL в каждый запрос входит
+раздел без кодов, текст дословно:
+
+```
+10. RESEARCH LOG (append to the verdict; no scoring):
+   (a) every source consulted this batch: locator (arXiv/DOI/URL + theorem/equation), one line: what was taken or why rejected; mark READ vs RELAY;
+   (b) every branch you tried and abandoned, one line each: the candidate, the first inequality or fact that killed it;
+   (c) intermediate identities or computations that failed but might serve another question, with their exact statement.
+```
+
+Наблюдатель переносит (a) в `litreview/REFERENCES.md` (строка реестра, статус NEEDS_CARDS, если PDF ещё не на полке) и в `CHAT_DIGESTS.md`, (b) — в `knowledge.db`
+как kills (`kb_migrate_verdicts.py`), (c) — в `PROSHKA_QUEUE.md` как кандидатов. Цена: +30–60 строк вердикта. Слово владельца: «чтобы он это всё складывал, куда-то
+дать, чтобы потом в нашу базу знаний вкачивать».
