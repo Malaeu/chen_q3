@@ -14,6 +14,22 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-08-ALIGN · ALIGN — the prime-alignment cap on fixed-width prime-star classes as a theorem (mechanism: alignment costs archimedean gap), is rho_P -> 1 forced, do shifted prime-lattice classes exhaust the test space · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_ALIGN_2026-09-08.txt`
+- Boundary: `GOAL058_PRIME_ALIGNMENT_CAP_ON_FIXED_WIDTH_STAR_CLASSES_AND_EXHAUSTION`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: see request
+- Registered predictions: ALIGN_MECHANISM_NAMED 0.70; ALIGN_CAP_PROVED_ALL_P 0.30; RHO_TO_ONE_FORCED 0.60; EXTREMAL_NOT_MEAN 0.85; LATTICE_CLASSES_EXHAUST 0.50
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `55ed9f8e863bd1c5fb01509b63d8b6695882cfeb` / `13766` / `74` /
+  `53bed85907edfaefaf8da6bdf23ab56f131e072cb21e0db4cccd3f2c05f8d6a1` /
+  `666a6b959b6832a552de9fd6e5aff18db4b87dd5` / `yes`
+
+---
+
 ## REQ-2026-09-07-COMPENSATE · COMPENSATE — compensation inequality on the first offset geometry {0,log2,log3,log5,log7,log11} at full width; the all-n rule as one source-defined inequality (rule 18); trace identity (32) prove or route around; repairs · OPEN
 
 - `STATUS: ANSWERED` — verdict `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_COMPENSATE_2026-09-07.md`, commit `8868b50c`, 831 lines; PARTIAL_WITH_PRECISE_REMAINDER. NEW: all three offsets paid by the ENDPOINT energy Ω ≥ (9/10)V_∂ (Theorem 3, no mean/pole conditions); Theorem 4: Q ≥ (47/6000)H on the slice «all six ordinary means zero + total moments» at full width; exact head is 6-dim (constants + moment representers), remaining inequality = Schur (30) with residual certificate (31), coefficient 6000/41 at c = 1/1000. KILLED (theorem shape): overlap-fraction norm bound (‖𝕆‖ = √(w₂²+w₅²) = 0.871); product-norm coercivity from P = 31 (support collision); full-space scalar compensation with one δ (Theorem 6, two witnesses). Theorem 5: thin star width 1/(16P) has floor (2/15)log P + 209/240 (PNT) but does not exhaust tests. Q2: minimal missing inequality (42) 𝒩_n ≤ 𝒫_n on the harmonic lifts; positive series (40)–(41) with signed n-dependent base. Q3: (ii). Q4: repairs done. Observer hand checks: all ledger items hold (guards (22) at 0.3% and 0.14%; ‖w‖ = 1.4914 < 1.5). Machine on the Theorem 4 slice: 0.955 at six centres ≫ 47/6000. Independent check DONE (`docs/routeB_bus/COMPENSATE_INDEPENDENT_CHECK_2026-09-08.md`): Theorem 4 STANDS, no incorrect inequality; Lemma 1 min Ω/V_∂ = 1.0000094; ‖𝕆‖ = 0.8707954 reproduced; real-space assembly matches sc_build's Fourier blocks to 1e−7 (second instrument channel); slice floor 0.9553 (K=6) / 0.9546 (K=8); only asserted step = §4.2 closure sketch; tight: ‖w‖ < 3/2 (0.57%). Addendum WIDTH to be pasted by the owner.
