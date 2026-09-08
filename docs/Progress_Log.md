@@ -6901,3 +6901,19 @@ F_a(2i) = 20.04 при a = 3 — анти-нормальность верна. (
 (аналитика, не RH), O5 ремонт области (бухгалтерия), O6 словарь форма↔оператор (утверждён), O7 субквадратичный счёт над ℚ (поставщик). **Ранг: 1 существенное + 3 технических + 2
 поставщика.** Таблица D — эффект преобразований на ранг: фактор и покрытие дали −1 каждый (сделано); квадрат Рисса, жёсткость, Ходж, поток — 0 на O1; канонические системы: 0 или +2, если
 O3 не доказано слабее O1. Единственный кандидат на строгое уменьшение: доказать O3 с фиксированным source-gauge, не доказывая O1 (HYPERBOLICITY (ii) / CLOSURE Q2).
+
+**2026-09-09, ночь. Comparator как механизм PX_RH_CLAIM (владелец: «Ок, собираем» после разбора OpenAI Navier–Stokes, CHAT_DIGESTS 09.09).** Развилка: гейт PX_RH_CLAIM получает
+механический смысл — прогон `leanprover/comparator` против ЧУЖОГО эталона утверждения, а не наш текст. Эталон: `google-deepmind/formal-conjectures` `Millenium/RiemannHypothesis.lean`,
+`riemannHypothesis : RiemannHypothesis` (тип Mathlib). Раскладка скопирована у `openai/NavierStokesAndEuler` (ComparatorChallenges/) и `anthropics/zeta-23-lean` (comparator/):
+`q3.lean.aristotle/comparator/{Challenge,Solution,PrintAxioms}.lean`, `config-bridge.json`, `config-rh.json`, `README.md`; два `[[lean_lib]]` в `lakefile.toml`. **Найденная дырка и её закрытие:**
+крыша `rh_of_canonical_slots` кончается `Q3.RH` (полоса 0 < Re s < 1), эталон Mathlib квантифицирует все нетривиальные нули при s ≠ 1; моста не было. Написан и скомпилирован
+`Q3/Proofs/RouteB/MathlibRiemannHypothesisBridge.lean`: `riemannZeta_eq_zero_re_nonpos_trivial` (нуль с Re s ≤ 0 тривиален; через `riemannZeta_one_sub`, `riemannZeta_ne_zero_of_one_le_re`,
+`Complex.Gamma_ne_zero`, `Complex.cos_eq_zero_iff`), `rh_iff_mathlib : Q3.RH ↔ RiemannHypothesis`, `riemannHypothesis_of_rh`. `#print axioms`: [propext, Classical.choice, Quot.sound].
+**Прогон Comparator (config-bridge.json, теорема `Q3Comparator.rh_strip_iff_riemannHypothesis`): «Your solution is okay!»** — совпадение утверждений, белый список аксиом, воспроизведение
+ядром Lean; 3 м 47 с. Оговорка: Solution был скомпилирован ранее в этой же сессии (прогон 2 упал на версии формата), так что допущение 2 README Comparator («Solution не компилировался
+прежде») на этом прогоне формально не выполнено; для финального прогона PX_RH_CLAIM протокол — свежий клон. **Три инструментальных дефекта, починены первыми:** (1) clang из любого
+тулчейна elan падает (`undefined symbol … LLVM_19.1`) — LD_LIBRARY_PATH этой машины подставляет системную libLLVM; обход `env -u LD_LIBRARY_PATH` при линковке exe (память
+elan-clang-ld-library-path-trap); (2) comparator v4.27.0 читает только формат экспорта 2.0.0, lean4export с v4.20.0 пишет 3.1.0 — взят comparator v4.28.0 (парсер из lean4export);
+(3) landrun 0.1.18 съедает `--` lean4export, потому что comparator до v4.34 не ставит `--` перед командой — патч в одну строку в локальном клоне, порядок аргументов, не проверка. Инструменты:
+`/mnt/hdd01/Soft/GitHub/lean-comparator-4.28`, `lean-lean4export` (v4.26.0), `lean-landrun` (0.1.18; ядро даёт Landlock ABI v8, best-effort), `lean-nanoda` (branch debug). Реестр:
+`TOOLS.yaml` → `comparator-rh`. CLOSES: comparator-gap (память 11.08). OPENS: ничего нового; `config-rh.json` падает по построению, пока `PX_RH_CLAIM: NOT_MADE`.

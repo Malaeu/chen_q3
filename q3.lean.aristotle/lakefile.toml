@@ -34,3 +34,12 @@ roots = ["A3_FLOOR_v20_bounds_core"]
 [[lean_lib]]
 name = "A3_FLOOR_v22_stage4_floor"
 roots = ["A3_FLOOR_v22_stage4_floor"]
+
+# leanprover/comparator layout (trusted Challenge / untrusted Solution); see comparator/README.md
+[[lean_lib]]
+name = "Challenge"
+srcDir = "comparator"
+
+[[lean_lib]]
+name = "Solution"
+srcDir = "comparator"

@@ -1288,6 +1288,38 @@ tool_families:
         records_to: docs/routeB_bus/MAP_COVERAGE.md
         last_verified: 2026-08-11
 
+      - id: comparator-rh
+        classification: MANUAL
+        status: ENABLED
+        audience: [CODEX, CLAUDE_CODE, HUMAN]
+        mode: READ_ONLY
+        path: q3.lean.aristotle/comparator/
+        invoke: >-
+          cd q3.lean.aristotle && PATH=/mnt/hdd01/Soft/GitHub/lean-landrun/bin:/mnt/hdd01/Soft/GitHub/lean-lean4export/.lake/build/bin:/mnt/hdd01/Soft/GitHub/lean-nanoda/target/release:$PATH
+          env -u LD_LIBRARY_PATH lake env /mnt/hdd01/Soft/GitHub/lean-comparator-4.28/.lake/build/bin/comparator comparator/config-bridge.json
+        alternatives:
+          - "comparator/config-rh.json: the PX_RH_CLAIM run (theorem RiemannHypothesis.riemannHypothesis); fails while PX_RH_CLAIM is NOT_MADE"
+          - "quick check without comparator: lake build Solution && lake env lean comparator/PrintAxioms.lean"
+        trigger: "any claim that the roof is closed; any change to Q3.RH, Q3.rh_iff_mathlib or the Challenge file"
+        writes: false
+        approval: NONE
+        authority: LEAN_FRO_COMPARATOR_STATEMENT_EQUALITY_AXIOM_WHITELIST_KERNEL_REPLAY
+        records_to: stdout
+        last_verified: "2026-09-09: tools built; first run of config-bridge.json see comparator/README.md"
+        why: >-
+          The trusted statement of RH is not ours: Challenge.lean carries the Formal Conjectures /
+          Clay statement in Mathlib's own type RiemannHypothesis. The project roof ends in Q3.RH
+          (strip form); Q3.rh_iff_mathlib is the bridge. PX_RH_CLAIM becomes a mechanical event:
+          config-rh.json prints "Your solution is okay!".
+        pattern_borrowed_from: >-
+          openai/NavierStokesAndEuler ComparatorChallenges/ (2026-09-08) and anthropics/zeta-23-lean
+          comparator/ (Apache-2.0): trusted Challenge copied from google-deepmind/formal-conjectures,
+          untrusted Solution, json with permitted_axioms and nanoda.
+        machine_trap: >-
+          LD_LIBRARY_PATH on this host contains /usr/lib/x86_64-linux-gnu/, so the clang bundled with
+          every elan toolchain loads the system libLLVM.so.19.1 and dies (undefined symbol, LLVM_19.1).
+          Every lake build that links an executable needs env -u LD_LIBRARY_PATH. .olean builds are unaffected.
+
       - id: comparator-lite
         classification: MANUAL
         status: ENABLED
