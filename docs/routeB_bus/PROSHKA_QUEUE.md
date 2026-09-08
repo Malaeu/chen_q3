@@ -14,6 +14,22 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-08-SCREW · SCREW — is our quotient H/N Suzuki's H_W / de Branges space (signed extension after our erratum); the first prime a = 1/2 log 2 in the a -> inf limit (Cor. 1.6); the null family and lambda_a -> 0; DDF-type basis of the quotient from window real-zero bricks; one decisive computation · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SCREW_2026-09-08.txt`
+- Boundary: `GOAL058_ZERO_SIDE_QUOTIENT_VERSUS_SUZUKI_CANONICAL_SYSTEMS`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: see request
+- Registered predictions: SPACES_COINCIDE 0.45; FIRST_PRIME_KINK 0.60; LAMBDA_A_TO_ZERO 0.70; DDF_SHADOW 0.75; ONE_COMPUTATION_NAMED 0.80
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `a367e9e88249b356c33774dc6ce182224c5fc72c` / `15403` / `69` /
+  `c42687ae54f7b0f35095fd28b8d29cd220771d1c0ff29ab45810e26fe1ea75f2` /
+  `daeba713543f9a012303ede37a03f6759bc5ef55` / `yes`
+
+---
+
 ## REQ-2026-09-08-KERNEL · KERNEL — does a source-defined square X with ker X = the zero ideal exist (Connes adelic Sonin / CCM23 prolate / division), what is R, or is every such identity RH-equivalent (SOS road = coordinate change); the null family as discriminator of all project squares; consequence for (A14) · OPEN
 
 - `STATUS: ANSWERED` — verdict `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_KERNEL_2026-09-08.md`, commit `a97ad1bf`, 725 lines; Q1/Q2 PROVED, Q3 PARTIAL. A source-defined square with exactly the pointwise zero ideal as kernel EXISTS without RH: Riesz representative A of Q in the explicit positive metric 𝒲 + 𝒟 on the pole-null completion ℋ, ‖A‖ ≤ 65/3, X = A/√22, R = ⟨f,(A − A²/22)f⟩; ker A = 𝒩_pt (K23) via separating tests with integral division; R ≥ 0 ⟺ Q ≥ 0 ⟺ RH (K12–K13): a coordinate change with an explicit kernel, not a payment. Killed: the impossibility framing; «any correct-kernel square has RH-equivalent remainder» (K5); fixed finite-S Sonin global minorant (strict compact witness (K30)); ordinary-L² detectors (translates of g₀ dense, (K25)). Q2: only the pole square and A²/22 vanish on 𝒩; all others (Sonin, HS D_S, CC20, Legendre, endpoint, prime differences) do not. Q3: route = signed head with proved complement; non-square footholds = Suzuki 2606.09096 Thms 1.1/1.3/1.4 (READ). First sources read with locators (Connes 1999, CC20 incl. App. C (155), CCM23, Connes 2026, Suzuki). Predictions: X_EXISTS confirmed; SQUARE_IDENTITY_IS_RH partial; CC20 confirmed; NO_SOURCE_FORM refuted; DIRECT_ROUTE confirmed. Independent check DONE (`docs/routeB_bus/KERNEL_INDEPENDENT_CHECK_2026-09-08.md`): ACCEPTED, no incorrect equation; CC20 App. C Prop. C.1 (155) READ (ALIGN's citation debt closed); (K16) to 34–41 digits; ker A = 𝒩_pt stands without RH; (K13) an equivalence, not a proof; tight: 65/3 vs 22 (1.5%).
