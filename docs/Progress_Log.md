@@ -6779,3 +6779,8 @@ T_j v = e^x, v₋(x) = v₊(−x), собрать W_j по (1.11), изолир�
 равномерного спада, запрошенную проверяющим KERNEL. Предсказания: SPACES_COINCIDE ОПРОВЕРГНУТО; FIRST_PRIME_KINK частично; LAMBDA_A_TO_ZERO не установлено; DDF_SHADOW частично;
 ONE_COMPUTATION подтверждено. Регистрации KERNEL: две подтверждены, третья частично ((K31)/(K33) не проверены). Новые: FIRST_PRIME_SHIFT_AUDIT 0.94; QUOTIENT_AND_LIMIT_DICHOTOMY_AUDIT
 0.88; SOURCE_SHIFT_SEPARATED 0.70. Раздел 10 RESEARCH LOG впервые: 9 отброшенных ветвей, 7 формул для других вопросов.
+
+**Баг, починен первым (HODGE):** Прошка А отказал fail-closed: коммит 9c930d61 из строки доставки не существует на origin (HTTP 404). Корень: `bind_request.py` печатал хеш коммита запроса
+ДО `git rebase origin/rh_clean`, а rebase перед пушем переписал его (на origin запрос лежит в 1c9cf37e с тем же блобом 594f1ed0; SCREW/KERNEL повезло — без rebase). Исправление: после
+пуша хеш пересчитывается как коммит, несущий файл запроса, с двумя assert (блоб не изменился; коммит есть на origin). Транспортный вердикт Прошки А перемещён (git mv, байты те же) в
+`proshka/PROSHKA_TRANSPORT_FINDING_GOAL058_HODGE_2026-09-08.md`, чтобы освободить EXPECTED_VERDICT_PATH. Правило себе: строка доставки = хеш ПОСЛЕ пуша, проверенный `rev-list origin`.

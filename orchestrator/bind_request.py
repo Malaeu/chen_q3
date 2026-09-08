@@ -78,6 +78,10 @@ def main() -> int:
     sh("git", "add", str(QUEUE.relative_to(ROOT))); sh("git", "commit", "-q", "-m", f"[Linux-Claude][rh_clean][Proshka-bind] Bind {rid}" + TRAILER)
     if not a.no_push:
         sh("git", "fetch", "-q", "origin", "rh_clean"); sh("git", "rebase", "-q", "--autostash", "origin/rh_clean"); sh("git", "push", "-q", "origin", "rh_clean")
+        # the rebase may rewrite the request commit: re-resolve the commit that carries the request file AS PUSHED
+        commit = sh("git", "log", "-1", "--format=%H", "--", rel)
+        assert sh("git", "rev-parse", f"{commit}:{rel}") == blob, "request blob changed across rebase"
+        assert commit in sh("git", "rev-list", "origin/rh_clean"), "request commit not on origin after push"
     print(f"\nLINE: Adjudicate {rid}. Authoritative byte-exact payload: {rel} at commit {commit} (blob {blob}, SHA-256 {sha}, {nlines} lines, {nbytes} bytes) on Malaeu/chen_q3 rh_clean; fetch it from GitHub and verify the hash. Follow its required response schema and return exactly the requested verdict, committed at EXPECTED_VERDICT_PATH.")
     return 0
 
