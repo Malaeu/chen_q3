@@ -14,6 +14,22 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-08-KERNEL · KERNEL — does a source-defined square X with ker X = the zero ideal exist (Connes adelic Sonin / CCM23 prolate / division), what is R, or is every such identity RH-equivalent (SOS road = coordinate change); the null family as discriminator of all project squares; consequence for (A14) · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_KERNEL_2026-09-08.txt`
+- Boundary: `GOAL058_SOURCE_SQUARE_WITH_THE_ZERO_IDEAL_AS_KERNEL`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: see request
+- Registered predictions: KERNEL_X_EXISTS_UNCONDITIONALLY 0.35; SQUARE_IDENTITY_IS_RH 0.70; CC20_SQUARE_POSITIVE_ON_NULL 0.85; NO_SOURCE_FORM_VANISHES_ON_NULL 0.55; DIRECT_ROUTE_NAMED 0.50
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `bb2a33369e7efbeb96312177e57678967370aa21` / `12832` / `68` /
+  `deb9d2dca71b6531ef0432a1f56faf2fcb9c9a6e619cae5bee12b420b87266bb` /
+  `81ac0016210a61c2171f2c9fbe187d3066205b37` / `yes`
+
+---
+
 ## REQ-2026-09-08-ALIGN · ALIGN — the prime-alignment cap on fixed-width prime-star classes as a theorem (mechanism: alignment costs archimedean gap), is rho_P -> 1 forced, do shifted prime-lattice classes exhaust the test space · OPEN
 
 - `STATUS: ANSWERED` — verdict `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_ALIGN_2026-09-08.md`, commit `be442fbe`, 732 lines; PARTIAL; Q1c/Q3 PROVED_ON_CLASS. NEW: fixed-width prime-centred classes EXHAUST all compact pole-null tests up to translation (PNT log-gaps; explicit integer law (A19)); with CC20 Prop C.1: Q ≥ 0 on every 𝒞_P ⟺ Q ≥ 0 on H₀₀^c ⟺ RH (A21) — the class problem IS the atom in lobe coordinates. UNCONDITIONAL near-null family g_k = (∂²−¼)∂^kΦ, ∫Φe^{zx} = ξ(½+z): Q(g_k) = 0 by the signed explicit formula (transform vanishes at ALL zeros), cutoffs give Q/‖f‖² → 0 ⇒ no uniform positive floor on 𝒞_P; lim β_P ≤ 0, lim ρ_P ≥ 1; equality ⟺ sign. Π(g_k)/‖g_k‖² → ∞: bounded prime saturation refuted. Observer's alignment mechanism killed by (A8) (perfect alignment at constant energy); profile coordinates redundant after overlap. First unpaid: I − T_P ⪰ 0 (A14). COMPENSATE §4.2 domain sketch completed (§7). Predictions: LATTICE_CLASSES_EXHAUST CONFIRMED; the other four not achieved/unresolved. Independent check DONE (`docs/routeB_bus/ALIGN_INDEPENDENT_CHECK_2026-09-08.md`): ACCEPTED, no incorrect equation; (A23) to 7e−32 at 9 points; Q(g_k) = 0 by two independent channels (6.9e−16 relative); (A34) growth to k = 256 (passes 1.84 at k ≈ 48); cover m₀ = 79 (1% slack); only asserted step = the RH leg of (A21) via CC20 App. C Prop. 1; near-null family unconditional.
