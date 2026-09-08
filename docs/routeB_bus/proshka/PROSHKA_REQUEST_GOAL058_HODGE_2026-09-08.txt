@@ -1,0 +1,62 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-08-HODGE
+BOUNDARY_ID: GOAL058_HODGE_TRANSPLANT_TEST_MINIMAL_SIGN_LEMMA_AND_ITS_ARITHMETIC_ANALOGUE
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-08-HODGE (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub). This is the bound form of the owner's HODGE TRANSPLANT TEST (chat, 2026-09-08). Objects are pinned below with locators: the Weil form Q on its domain ℋ (KERNEL (K6)–(K7)), the pole (1,1) plane, the radical 𝒩 = 𝒩_pt (KERNEL (K23), independently checked). Task: strip one standard proof of the Hodge index theorem for surfaces to the minimal set of axioms needed ONLY for the sign on the primitive complement; for each axiom find its exact analogue for Q after removing the pole plane and 𝒩, or prove its absence; no geometric interpretation required; then test the canonical-system / Suzuki / de Branges machinery for the missing axiom. Output: a table Hodge ingredient → RH analogue → status → exact missing lemma. Sections 9 and 10 are mandatory. Maximum reasoning effort. This request is answered by Prošhka A; if the session cannot push, say so in the header and the owner relays the file through docs/_inbox/.
+DATE: 2026-09-08
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SECOND_EXPRESSION
+SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_PROOF_CONSTRUCTION_AND_ADVERSARIAL_REVIEW
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_HODGE_2026-09-08.md
+AUTHOR: Linux-Claude (observer), binding the owner's chat prompt verbatim in substance; owner's word: «разобрать доказательство Ходжа на детали и выяснить, какая ровно деталь делает знак неизбежным; искать арифметический заменитель именно этой детали»
+PARENT_VERDICTS: KERNEL (a97ad1bf; check 02c7dc09a4b26ae4), ALIGN (be442fbe; check 66ced8b60c9d17ac), COMPENSATE (8868b50c; check 4c7610beba92cb95), INVARIANT, U1, CHAIN; parallel batch SCREW (REQ-2026-09-08-SCREW, a367e9e8) with addenda SIGNATURE, HYPERBOLICITY, CLOSURE — read them, do not duplicate them
+BASE_TIP: see bind line
+
+0. PINNED DEFINITIONS (all at the request commit; do not reconstruct from chat)
+ THE WEIL FORM. Q(f,g) = 𝒟(f,g) − c_A⟨f,g⟩ − Σ_{m≥2} w_m{⟨f,U_{log m}g⟩ + ⟨f,U_{−log m}g⟩} + conj(M₊(f))M₋(g) + conj(M₋(f))M₊(g), with 𝒟(f,g) = ∫₀^∞ A₀(t)⟨U_tf − f, U_tg − g⟩dt, A₀(t) = e^{−t/2}/(1 − e^{−2t}), c_A = γ_E + log(8π) + π/2, w_m = Λ(m)/√m, U_tf(x) = f(x − t), M_±(f) = ∫f e^{±x/2}, inner products antilinear in the first slot. Locator: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_KERNEL_2026-09-08.md (K6); identical to CHAIN (C1) and COMPENSATE (1). Signed explicit formula (unconditional): Q(f,g) = Σ_{λ ∈ Z_c} m_λ conj(F_f(jλ)) F_g(λ), F_f(z) = ∫f e^{zx}, Λ_ξ(z) = ξ(½ + z), jλ = −conj(λ) — KERNEL (K16), verified to 34–41 digits by the KERNEL checker (docs/routeB_bus/KERNEL_INDEPENDENT_CHECK_2026-09-08.md).
+ THE DOMAIN. ℰ = {f ∈ L²(ℝ) : 𝒲[f] + 𝒟[f] < ∞}, 𝒲[f] = ∫e^{2|x|}|f|², ‖f‖²_ℰ = 𝒲 + 𝒟; ℋ = ker M₊ ∩ ker M₋ ⊂ ℰ (the pole-null completion); compact smooth pole-null tests are dense in ℋ (KERNEL §2.2); |Q(f,g)| ≤ (65/3)‖f‖_ℰ‖g‖_ℰ (K9). Locator: KERNEL (K7)–(K9). Consumer: CC20 (arXiv:2006.13771v1) Appendix C, Proposition C.1, (155): RH ⟺ the sign of the form on the pole-null ideal (READ by the KERNEL checker).
+ THE POLE (1,1) PLANE. On the full space ℰ the pole term is the rank-2 Hermitian form P(f) = 2Re{M₊(f)conj(M₋(f))} = 2|M_c(f)|² − 2|M_s(f)|², M_c = ∫f cosh(x/2), M_s = ∫f sinh(x/2); signature exactly (1,1). Removing it = restricting to ℋ = ker M₊ ∩ ker M₋ (both moments, not one). Analogy proposed by the owner: the two poles s = 0, 1 ↔ the two fibre classes F₁, F₂ of C × C spanning the hyperbolic plane in NS; M₊ = M₋ = 0 ↔ D·F_i = 0.
+ THE RADICAL. 𝒩 = 𝒩_pt = {f ∈ ℋ : F_f(λ) = 0 for every distinct zero λ of Λ_ξ} = rad(Q|_ℋ) = ker A, where A is the Riesz representative of Q in the ℋ-metric (‖A‖ ≤ 65/3). Proved without RH and without simplicity of zeros: KERNEL (K23) via the separating tests h_λ = (∂²−¼)J_λ^rΦ (K19)–(K22), Φ the theta function with F_Φ = Λ_ξ (ALIGN (A22)–(A24)); independently checked. The pointwise ideal, not the multiplicity/divisibility ideal (KERNEL §1.1). Analogy: 𝒩 ↔ numerically trivial classes.
+ THE PRIMITIVE QUOTIENT AND ITS SIGNATURE. V_prim := ℋ/𝒩 with the induced nondegenerate form Q̄. From (K16): each on-line zero contributes a positive direction; each off-line pair (λ, jλ) a hyperbolic (1,1) block (KERNEL (K23a): Q[u] = −2m_λ); hence sig(Q̄) = (#on-line + #off-line pairs, #off-line pairs) with multiplicity; ind₊ = ∞ always; RH ⟺ ind₋(Q̄) = 0. (Observer's dictionary in SCREW addendum SIGNATURE — confirm or correct.) Hodge: on NS(C × C) the form has signature (1, ρ−1); after removing the hyperbolic plane of F₁, F₂ the primitive part is negative definite — the sign that proves RH for curves (D = graph of Frobenius, Δ the diagonal).
+ CONVENTIONS. Weil's original criterion has the opposite overall sign (Σ_v W_v ≤ 0 in CC20 (155)); in our convention RH ⟺ Q ≥ 0 on ℋ. Davenport–Heilbronn: any argument ignoring the Euler product cannot prove RH (series with functional equation and no Euler product have off-line zeros) — the primes must enter at least once; say where.
+
+1. QUESTION 1 — DEPENDENCY STRIPPING OF ONE HODGE INDEX PROOF
+ Take ONE standard proof of the Hodge index theorem for a smooth projective surface (e.g. Hartshorne V.1.9 via Riemann–Roch and Serre duality; or the Castelnuovo–Severi inequality route used by Weil for C × C; or the Hodge-theoretic one via primitive cohomology and the Hodge–Riemann bilinear relations). Strip it to the minimal list of axioms that produce the SIGN on the primitive complement: for each axiom, its exact statement, and which of them is the one that makes the sign inevitable (the observer's prior, to be checked, not assumed: a tautologically nonnegative COUNT — h⁰ ≥ 0 through Riemann–Roch + Serre duality; in Bombieri–Stepanov, the number of points ≥ 0). Say whether the Hodge–Riemann relations version has a different minimal ingredient (a positive-definite Hermitian form on primitive classes coming from the Kähler structure).
+2. QUESTION 2 — THE TRANSPLANT TABLE
+ For each axiom of Q1: its exact analogue for (Q, ℋ, pole plane, 𝒩) as pinned in §0, or a proof of absence. No geometric interpretation required; an analytic or spectral object is admissible. Output the table: Hodge ingredient → RH analogue → status (EXISTS with locator / ABSENT with proof / UNKNOWN) → exact missing lemma. Mandatory rows: the hyperbolic plane (pole plane, exists); numerically trivial classes (𝒩, exists); ampleness / positivity of the reference class (candidate: the pole functionals? the archimedean energy 𝒟? the positive metric 𝒲 + 𝒟 of KERNEL (K7)?); Riemann–Roch (candidate: the explicit formula (K16) — but it is an identity without a nonnegative count; say what would be the count); Serre duality (candidate: the functional equation / the involution j); the Hodge index cell itself (???).
+3. QUESTION 3 — CAN THE CANONICAL-SYSTEM / SUZUKI / DE BRANGES MACHINERY REALISE THE MISSING AXIOM
+ Given the ??? cell from Q2: does the de Branges / canonical-system structure (Suzuki 2606.09096: Friedrichs operator A_a on [−a, a], canonical systems W(a,θ;z) with real zeros for every a, the conjectural limit Cor. 1.6; H_W of 2301.00421 with the SIGNED extension after our erratum) supply it — in particular whether Suzuki's real-rootedness on windows is the analogue of Hodge–Riemann on a finite-dimensional primitive piece, and whether its failure to pass to a → ∞ is exactly the absent axiom. Coordinate with SCREW: do not repeat its Q2; answer only «does this machinery realise the missing Hodge axiom, yes/no/which part».
+
+4. SHELF (sha256 prefix 16 at BASE_TIP)
+ KERNEL verdict and check; ALIGN verdict and check; SCREW request a367e9e8 and addenda SIGNATURE (43090561), HYPERBOLICITY (ceecda70), CLOSURE (00dc8e84); docs/routeB_bus/litreview/SOS_WEIL_POSITIVITY_LITERATURE_MAP_2026-09-07.md (1770df1f7bc579f6); docs/CHAT_DIGESTS.md entries 2026-09-08 (owner's frame, hyperbolicity translation, closure). PDFs: 2006.13771v1, 2310.18423v2, 2602.04022v1, 2606.09096, 2206.03682, math/9811068.
+
+5. KILLED / FORBIDDEN: everything in the parent verdicts' «must not recur»; RH-conditional inputs as premises (Suzuki §7 is under RH); «this is RH»; a positive form asserted without proof; a finite window's positivity presented as the primitive sign; treating the real-rootedness of W(a,θ;z) as the sign of A_a (observer's own corrected error, SCREW addendum HYPERBOLICITY); a sign as a difference of two close numbers (rule 18); an argument that never uses the Euler product (Davenport–Heilbronn).
+
+6. REGISTERED PREDICTIONS (K6, observer; frozen)
+  P_HODGE_MINIMAL_IS_COUNT: 0.65 — Q1: the minimal sign-producing ingredient in the chosen proof is a tautologically nonnegative count/dimension via Riemann–Roch + duality.
+  P_TABLE_CELL_EMPTY: 0.80 — Q2: the Hodge-index cell has status ABSENT or UNKNOWN; no existing arithmetic object fills it.
+  P_RR_ANALOGUE_IS_EXPLICIT_FORMULA_WITHOUT_COUNT: 0.75 — Q2: the Riemann–Roch row is filled by the explicit formula (K16) with the explicit remark that it lacks the nonnegative count.
+  P_SUZUKI_REALISES_ONLY_WINDOW: 0.70 — Q3: the canonical-system machinery realises the analogue on finite windows only; the a → ∞ passage is the absent axiom.
+  P_DEPENDENCY_STRIPPING_NAMES_ONE_LEMMA: 0.60 — the verdict ends with ONE exact missing lemma stated in the language of §0 objects.
+
+7. REQUIRED VERDICT: header with RESULT per question ∈ {PROVED_ON_CLASS, PARTIAL_WITH_PRECISE_REMAINDER, OBSTRUCTION_NAMED, COMPUTATION_SPECIFIED, ATTEMPT_REFUTED_WITH_EXACT_COUNTEREXAMPLE, IRREDUCIBLE_ATOM} and CLOSES/OPENS; Q1–Q3 in full; the table of Q2; first sources READ with locators (theorem/equation numbers), every claim about a paper marked READ or RELAY; score the observer's predictions without editing; register new ones; the cheapest decisive check; no Lean edit, no numerical run, no RH claim; write only the verdict.
+
+9. PROSHKA'S OWN LINE (free form, no codes, no scoring; 20–40 lines):
+   (a) why this route and not the two nearest alternatives you considered;
+   (b) the two moves you see beyond this batch, and what would kill each;
+   (c) what you would ask us for, if you could ask (data, a probe, a definition);
+   (d) what surprised you in the owner's frame, and what you distrust in it.
+
+10. RESEARCH LOG (append to the verdict; no scoring):
+   (a) every source consulted this batch: locator (arXiv/DOI/URL + theorem/equation), one line: what was taken or why rejected; mark READ vs RELAY;
+   (b) every branch you tried and abandoned, one line each: the candidate, the first inequality or fact that killed it;
+   (c) intermediate identities or computations that failed but might serve another question, with their exact statement.
