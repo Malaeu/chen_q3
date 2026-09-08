@@ -39,3 +39,27 @@ CANDIDATE (p = 0.5 that it survives a fresh check): row 10 is a correct, exact, 
 PROBE (cheapest decisive, hours): the Davenport–Heilbronn control. The DH function has a functional equation, no Euler product, and known off-line zeros. Build its signed «Weil form» Q_DH from its explicit formula (Dirichlet-coefficient side + archimedean), its theta-type null test Φ_DH, the separating tests h_λ, and compute r_DH(λ) at (i) an on-line zero, (ii) an off-line zero. ЕСЛИ_A: r > 0 at (i), r = 0 at (ii) to precision — row 10 is honest, and the catalogue's «flip = signature» conclusion is verified on a function where the flip actually happens; the same code then measures how any proposed square X of ours behaves at a real off-line zero. ЕСЛИ_B: r_DH ≠ 0 at (ii) or ≤ 0 at (i) — a bookkeeping error in the catalogue (conjugation/j-convention), to be found before anything else.
 
 Locators: KERNEL (K16), (K19)–(K23a) and its check; ALIGN (A22)–(A28) and its check; SCREW (S24) and its check; Davenport–Heilbronn 1936 (Titchmarsh §10.25); Landau/Littlewood Ω-theorems (Ingham ch. V); Li 1997 / Bombieri–Lagarias 1999 (relay, from the literature map); de Bruijn–Newman: Rodgers–Tao 1801.05914 (shelf).
+
+## D. Executed on the owner's «го» (2026-09-08): the decisive step turned out to be a lemma, not a run
+Before building the Davenport–Heilbronn instrument I asked what number it would decide. Its stated purpose — «r_DH > 0 on
+an on-line zero, = 0 on an off-line zero» — is a tautology of the definition of h_λ (its transform vanishes at every
+other zero by construction), and the conjugation bookkeeping it would exercise is already verified on ζ by the KERNEL
+checker ((K16) to 34–41 digits, (K20)–(K22) to 1e−17). A run would have confirmed arithmetic, not decided anything.
+The substantive claim of §B.2 («no λ-free prime-side scalar flips exactly at the line») is instead a five-line lemma:
+
+**Lemma (no exact flip for zero-moment invariants).** Let f be entire with f(−z̄) = conj f(z) (equivalently f real on
+the imaginary axis), and let S_f(λ) := f(λ) + f(jλ) be the contribution of the j-orbit of a centred zero λ to the
+zero-moment Σ_ρ f(ρ − ½). Then (i) S_f(λ) = 2 Re f(λ) is REAL for every λ, on or off the line — no reality or phase
+flip is possible; (ii) S_f is real-analytic in Re λ, so its sign cannot change exactly at Re λ = 0 unless S_f(iβ) = 0
+for the on-line value, i.e. f(iβ) = 0; (iii) if S_f vanishes at every on-line point iβ then f ≡ 0 on iℝ, hence f ≡ 0.
+Proof: (i) f(jλ) = f(−λ̄) = conj f(λ); (ii) analyticity of f; (iii) identity theorem. ∎
+Consequence: every prime-side representable invariant of the form Σ_ρ f(ρ) (moments, Li coefficients, smoothed counts,
+ψ-oscillation amplitudes, which are Σ_ρ x^ρ/ρ) is blind to the line pointwise; the only way such invariants see the
+line is through a FAMILY (Li ∀n, Weil ∀ tests), where «some member changes sign» is a discrete event. The exact-flip
+invariants (rows 5, 8, 9, 10, 11, 13) are all statements «λ = jλ» in disguise and need λ or Ξ. This is the owner's
+«imprint»: it is real, it is the local signature of the Weil form, and it is visible from the prime side only as a
+property of the whole test family, never as one number. Observer's paper lemma, UNVERIFIED by a second channel.
+
+DH instrument: DEFERRED, not cancelled. Its genuine use is as a test bed for a PROPOSED square X (KERNEL (K1)-type or
+any future one): evaluate ‖X h_λ‖² at a real off-line zero of the DH function, where ζ offers no such zero. It is
+worth building the day a candidate X exists; today none does.
