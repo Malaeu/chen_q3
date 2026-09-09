@@ -146,3 +146,30 @@ here. (ii) The Schur trial p − y is an upper bound tight to 4 digits (s₀/(1+
 The signed cancellation D24: b*C⁻¹b eats r to relative accuracy 1 − b*C⁻¹b/r ≈ λ₁(1+‖y‖²)/r ≈ (λ₁/T)·(T/R) — i.e. exactly the T-scale, since
 λ₁ ≍ T² and R ≍ T. The response y has mass ‖y‖² ≈ 1–3 % (= E/(1−E) of D37) and lives above λ₂. So the unpaid inequality D24 is, in these
 coordinates, «b*C⁻¹b = r(1 − O(T))» with the O(T) explicit — the numbers say the source pays it; the proof does not exist yet.
+
+## Prošhka's one-direction inequality (5) and span trials, tested on the saved matrices — 09.09 (`one_direction_margin.py`)
+Prošhka's chat answer to point 5 (saved as PROSHKA_SUPPLEMENT_GOAL058_DISTANCE_SCHUR_POINT5_2026-09-09.md, relay): the D24 target is
+(4) J_a(z_a) := 2Re Q(z_a,p_a) − Q[z_a] ≥ r_a − M e^{νa}T(a)² for ONE constructed even z_a ⊥ p_a; one-direction version (5)
+|Q(d,p)|² ≥ Q[d](r − ε) on span{p, d}; the cancellation is carried by the full coupled expression (6), not the prime part; cofinal
+complement positivity is NOT a free lemma (his Proposition: it implies Q ≥ 0 on all compact smooth tests). Test: directions d = cut-offs
+of the radical family g_k = (∂² − ¼)∂^kΦ (exact theta derivatives), x²Φ, x⁴Φ, G-orthogonalised against p; q(d) = Rayleigh(p − (B/u)d);
+nested spans with the scalar Schur solve on the span. q/λ₁ = 1 means the trial pays the T² rate exactly.
+| a | T | λ₁ | g₀ alone | g₂ alone | x²Φ alone | span g₀–g₄ | span g₀–g₈ | span g₀–g₁₂ | span all 9 | min eig C (g₀–g₁₂) |
+|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| 0.35 | 2.36e-02 | 1.19e-03 | 1.28 | 1.48 | 1.99 | 1 | 1 | 1 | 1 | 2.3e-12 |
+| 0.40 | 9.02e-03 | 1.82e-04 | 1.39 | 2.26 | 3.61 | 1.04 | 1.01 | 1.01 | 1 | 1.5e-11 |
+| 0.45 | 2.99e-03 | 1.62e-05 | 4.84 | 19.8 | 16.8 | 1.08 | 1.04 | 1.01 | 1.01 | 4.3e-10 |
+| 0.50 | 8.49e-04 | 9.38e-07 | 47.6 | 504 | 183 | 1.23 | 1.05 | 1.02 | 1.01 | 2.3e-08 |
+| 0.55 | 2.03e-04 | 5.37e-08 | 129 | 3.88e+03 | 2.34e+03 | 1.96 | 1.05 | 1.04 | 1.01 | 3.8e-08 |
+| 0.60 | 4.00e-05 | 1.64e-09 | 555 | 1.09e+04 | 3.17e+04 | 7.71 | 1.33 | 1.12 | 1.1 | 3.9e-08 |
+| 0.65 | 6.40e-06 | 4.06e-11 | 3.18e+03 | 3.79e+04 | 2.02e+05 | 32.7 | 1.88 | 1.08 | 1.02 | 7.2e-08 |
+| 0.70 | 8.12e-07 | 4.37e-13 | 2.25e+04 | 1.83e+05 | 2.91e+06 | 162 | 8.72 | 1.6 | 1.28 | 1.4e-07 |Findings. (i) **No fixed source direction pays (5) cofinally**: the best single direction (cut g₀) recovers only 1 − J/r ≈ 1–7 % of r and its residual
+quotient runs from 1.3λ₁ (a = 0.35) to 2·10⁴λ₁ (a = 0.70); x²Φ is worse. (ii) **The cut radical family does, if it grows with a**: the span of
+{cut g₀, …, g₁₂} (7 even members) gives q/λ₁ = 1.00 → 1.08 (a ≤ 0.65) and 1.6 at 0.70; with 3 members the ratio is 162 at 0.70, with 5 it is 8.7.
+Roughly one more pair of derivatives per Δa ≈ 0.1. (iii) Reading (observer): for a radical d, Q(d_cut, p) = Q(d_out, Φ_out)/N_a exactly (D7),
+so the determinant (5) is a statement about TAILS only — |Q(d_out, Φ_out)|² ≥ Q[d_cut]·(Q[Φ_out] − εN_a²) — and the trial class that pays it
+is the window projection of a growing initial segment of the radical family, i.e. z_a = Schur response inside span{cut g_{2k} : k ≤ m(a)} with
+m(a) slowly increasing. That is the «source formula for z_a» Prošhka asked for, as a hypothesis with numbers; the cofinal proof and the growth
+law m(a) are the open items. (iv) Conditioning: the cut g_k for large k are nearly collinear in Q-metric; columns are G-normalised; the min
+eigenvalue of the span form is positive except where float64 conditioning fails (flagged rows), never a mathematical negative direction
+(λ₁ > 0 on these windows). DIAGNOSTIC_NEVER_A_PROOF.
