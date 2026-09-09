@@ -131,3 +131,34 @@ A useful rigorous transfer inequality is available. For e=1_(-a,a)v, L=2a, |v|<=
 For 0<t<L, the translation difference is bounded by 2t*u^2+(L-t)t^2*b^2; for t>=L it is bounded by 2L*u^2. Integration against A_0(t), using A_0(t)<=1+1/(2t) inside and A_0(t)<=exp(-t/2)/(1-exp(-2L)) outside, proves the displayed bound, including the endpoint jumps. At a=7/10 the coefficients are less than 11.998213 and exactly 0.5488, respectively.
 
 Conditional method test: if a certified full-source endpoint derivative discrepancy is at least 9e-6, every valid b is at least 9e-6. This sufficient estimator then has B>=0.5488*(9e-6)^2=4.44528e-11; using e=sqrt(B) and ||f_poly||_E>=||f_poly||_2>1 in S41 returns an uncertainty budget greater than 2.9e-4, far larger than the polynomial scalar gap. The grid has NOT established that certified premise. This is a statement about the output of the sufficient estimator, NOT a lower bound on the actual E error, and does not reject the source trial or its T-squared budget. The next numerical choice is to obtain a sharper certified approximation of the same frozen source candidate, not increase precision of the already enclosed old polynomial. S40 remains UNRESOLVED until source energy/transfer is enclosed. Cofinal rates, the lambda denominator, the 1.5 forecast and the lower sign remain OPEN.
+
+## Full-source strong margin at a=7/10 (finite frozen candidate)
+
+This follow-up evaluates the same seven exact binary64 coefficients y recorded above, with full-source physical normalizers. It replaces the unresolved source-transfer step, not the source coefficients. The tested budget is precisely S40: M_diag=1, nu_diag=0, epsilon=T(7/10)^2. A finite failure at this budget does not reject a cofinal T-squared law, another coefficient row, or a larger constant.
+
+For U,V in {P_0,g_0,...,g_12}, exact rational polynomial products for each ordered n,m<=8 are integrated by upper incomplete gamma differences. Only K_(s,d) is cached, where s=n^2+m^2 and K_(s,d)=(pi*s)^(-1/2)[Gamma(d+1/2,pi*s)-Gamma(d+1/2,pi*s*exp(2a))]. The pair-specific polynomial U(n^2*z/s)V(m^2*z/s) is never cached merely by s. The finite moments are enlarged by 2a(H_U B_V+H_V B_U+B_U B_V). Both precisions 256/384 validate positive I0 and all seven rho_j^2=w_j-v_j^2/I0. Thus alpha_j=v_j/I0 and rho_j are true physical source quantities, not quadrature normalizers.
+
+The analytic interior profile is F=(1/N_a+sum_j y_j alpha_j/rho_j)Phi-sum_j(y_j/rho_j)g_(2j). Its physical zero extension is not holomorphic. On the Bernstein ellipse with parameter 2 scaled by a=7/10, |Re z|<=7/8 and |Im z|<=21/40. Set kappa=pi*exp(-7/4)*cos(21/20)>0 and Z=pi*exp(7/4). Each derivative polynomial of degree at most 16 is bounded using
+
+S_k <= sum_(n=1)^31 n^(2k)exp(-kappa*n^2) + 32^(2k)exp(-1024*kappa)/(1-r),
+r=(33/32)^32 exp(-65*kappa)<1.
+
+All constants, coefficient absolute values, normalizers and sums use outward Arb bounds. This gives sup_ellipse |F| <= 4.837e28. Lobatto interpolation at degree d has u_trunc<=4M*2^(-d) and b_trunc<=(4M/a)(d^2+4d+6)*2^(-d). Degree 192 is the first tested degree in {128,160,192,224,256,320} for which the resulting truncation-only E bound is below 1e-20.
+
+The interpolation nodes include continuous interior endpoint limits. At 512 bits, the DCT-I synthesis halves both endpoint coefficients. Exact dyadic midpoints define a real polynomial; tiny odd coefficients need not vanish and no parity assumption is used in its energy calculation. If eta_k encloses each coefficient error, u_round=sum eta_k and b_round=sum k^2 eta_k/a. These errors include node evaluation, physical normalizer intervals, full theta-series tails and arithmetic rounding. The full u,b are the sums of truncation and synthesis contributions, followed by the E-norm bound already proved above.
+
+Autocorrelation is computed exactly: if A(u)=p(a-u), B(u)=p(-a+u), convolve i!A_i and j!B_j, then divide coefficient k by (k+1)! and multiply by s^(k+1). This gives R(2a-s), by the Beta integral. The same full-form formula as in the frozen-polynomial follow-up retains the prime-power atoms 2,3,4 and both pole moments. Independent 4096-bit/M384 and 4608-bit/M416 enclosures overlap.
+
+| quantity | outward summary |
+|---|---:|
+| u_round | <1.479e-69 |
+| b_round | <2.603e-65 |
+| full E error e | <1.228e-24 |
+| S41 full-form transfer uncertainty | <1.541e-22 |
+| Q of exact degree-192 polynomial | 7.047049731459960737e-13, full ball in data |
+| true T(a)^2 | 6.589865655707739776e-13, full ball in data |
+| strong source margin | approximately -4.57184076e-14 |
+
+The S41 error uses ||p||_E <= sqrt(exp(2a)||p||_2^2+D[p]) and 22e(2||p||_E+e). The complete margin ball has strictly negative upper endpoint with more than tenfold separation from its total absolute uncertainty. Conclusion, after component review: ELSE_B for this single fixed candidate and M_diag=1, nu_diag=0. No sign of the window eigenvalue, resolved lambda denominator, cofinal schedule, lower-sign theorem, or RH proof follows. The normalized ratio is not substituted for this unnormalized test. Budget sensitivity, evaluated after the frozen test: Q[f]/T(a)^2 lies between 1.069376842 and 1.069376844. Thus the failure at M_diag=1 is modest; M=1.07 would cover this one window. This post-hoc observation is not a new frozen success, a uniform constant, or a cofinal result.
+
+All exact coefficients, input hashes, full interval strings, reproduction scripts and the higher-precision recheck are embedded in the companion JSON under `full_source_margin_followup`. Original provisional producer labels are retained as provenance; the assembly review records whether the finite conclusion is admitted.
