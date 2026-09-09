@@ -14,9 +14,9 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-09-SCHUR · Goal058 radical-cut degree law, tail determinant and arithmetic remainder · IN_REVIEW
+## REQ-2026-09-09-SCHUR · Goal058 radical-cut degree law, tail determinant and arithmetic remainder · ANSWERED
 
-- `STATUS: IN_REVIEW`
+- `STATUS: ANSWERED` — `PARTIAL_WITH_PRECISE_REMAINDER`; original verdict in commit `b454c35ecfd009d21c35f6a971a2b279d5cd0394`: `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SCHUR_2026-09-09.md`. Request/boundary binding and all ten pinned shelf hashes verified. Independent paper review converged for S1-S18b and sections 3-8; cofinal T² rate, lower sign and full numerical error enclosure remain OPEN. Intake snapshot: `docs/routeB_bus/SCHUR_INTAKE_RECEIPT_2026-09-09.md`.
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SCHUR_2026-09-09.txt`
 - Boundary: `GOAL058_RADICAL_TRIAL_SCHUR_T_SQUARED_SUPPLIER`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
@@ -28,7 +28,7 @@ safety confirmation остаётся внешней границей. Судья
   `4c082be285b9d38df78d8e9ef50771798db1469492ed0ab22602ab7520ab418f` /
   `2b3dab1d1eb6cda458bb0d12a96cf8209660f271` / `yes`
 - Delivery receipt: 2026-09-09 10:59 Europe/Berlin; canonical conversation `6a8c3e2a-df50-83eb-b53d-dd4cc46f646f`; exact SCHUR file tile, sent locator message and `Pro-Denkvorgang` observed through browser UI. Published branch at `993ae9cdbbae6576692a9f71eb71a969ff67036a`.
-- Watch: `/tmp/q3_schur_vahta_20260909.log`; Codex heartbeat `schur`, every 10 minutes.
+- Watch stopped: producer completed without push; original attachment received and hash-checked locally, then published by Codex. Service `q3-schur-watch-20260909.service` stopped; heartbeat `schur` PAUSED. No pending producer run for this request.
 
 ---
 
