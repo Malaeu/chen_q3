@@ -359,7 +359,7 @@ tool_families:
         last_verified: 2026-08-13
 
       - id: bind-request
-        classification: OPERATIONAL
+        classification: MANUAL
         status: ENABLED
         audience: [CLAUDE_CODE, HUMAN]
         mode: WRITES_DERIVED
@@ -376,7 +376,7 @@ tool_families:
         last_verified: 2026-09-04
 
       - id: vahta
-        classification: OPERATIONAL
+        classification: MANUAL
         status: ENABLED
         audience: [CLAUDE_CODE, HUMAN]
         mode: READ_ONLY
@@ -520,6 +520,7 @@ tool_families:
       - id: six-centre-assembly
         classification: MANUAL
         status: ENABLED
+        last_verified: "2026-09-09: floors 0.9674536916 (set 3 K4), 0.9663482407 (set 3 K6) reproduced after the adjacent-block tail fix"
         audience: [CLAUDE_CODE, HUMAN]
         mode: WRITES_DERIVED
         path: docs/routeB_bus/phase5_codex/six_centre/
