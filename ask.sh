@@ -283,7 +283,7 @@ OUT="$(rg -in -F --max-count 2 -g '*.lean' "$FIRST_TERM" \
 RC=$?
 [ -d q3.lean.aristotle/Q3/Proofs/RouteB/ ] || SEARCH_FAILURES+=("RouteB Lean: required root missing")
 [ "$RC" -eq 0 ] || [ "$RC" -eq 1 ] || SEARCH_FAILURES+=("RouteB Lean: fixed-string search failed (code $RC)")
-OUT="$(printf '%s\n' "$OUT" | utf8_head_chars 160 | head -6)"
+OUT="$(printf '%s\n' "$OUT" | utf8_head_chars 160 | sed -n '1,6p')"
 if [ -n "$OUT" ]; then
   hdr "LEAN — на диске сейчас"
   printf '%s\n' "$OUT"
