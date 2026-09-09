@@ -39,7 +39,9 @@ def tail(a):
 
 grid = [float(v) for v in sys.argv[1].split(',')] if len(sys.argv) > 1 else [0.35,0.40,0.45,0.50,0.55,0.60,0.65,0.70,0.75,0.80]
 K = int(sys.argv[2]) if len(sys.argv) > 2 else 36
+TAG = sys.argv[3] if len(sys.argv) > 3 else ''
 out = {}
+mats = {}   # 2026-09-09, Proshka DISTANCE §9(c): keep Q, G, eigenpairs and the cut-Phi coefficients per a
 for a in grid:
     t0 = time.time()
     R = build([0.0], K, delta=a, verbose=False)
@@ -49,11 +51,13 @@ for a in grid:
     ray = float(c@Q@c/(c@G@c))
     v0 = V[:,0]; ov = float(abs(v0@G@c)/np.sqrt((v0@G@v0)*(c@G@c)))
     T = tail(a)
+    mats[f'{a:.2f}'] = dict(Q=Q, G=G, ev=ev, V=V, c=c)
     out[f'{a:.2f}'] = dict(a=a, K=K, lam1=float(ev[0]), lam2=float(ev[1]), lam3=float(ev[2]),
                            rayleigh_cutPhi=ray, tail_mass=T, overlap_ground_cutPhi=ov,
                            atoms=[n for n,_,_ in R['atoms']], secs=time.time()-t0)
     print(f"a={a:.2f} K={K} lam1={ev[0]:.4e} lam2={ev[1]:.4e} R(cutPhi)={ray:.4e} T={T:.4e} lam1/T={ev[0]/T:.4f} R/T={ray/T:.4f} ov={ov:.4f} atoms={out[f'{a:.2f}']['atoms']} {time.time()-t0:.0f}s", flush=True)
-json.dump(out, open(f'/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/phase5_codex/six_centre/out/window_derivative_K{K}.json','w'), indent=1)
+json.dump(out, open(f'/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/phase5_codex/six_centre/out/window_derivative_K{K}{TAG}.json','w'), indent=1)
+np.savez_compressed(f'/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/phase5_codex/six_centre/out/window_derivative_K{K}{TAG}_matrices.npz', **{f'{k}_{m}': v for k, d in mats.items() for m, v in d.items()})
 # finite-difference log-derivatives
 keys = sorted(out, key=float)
 print("\n a      dlog(lam1)/da   dlog(R)/da   dlog(T)/da   -2pi e^{2a}")

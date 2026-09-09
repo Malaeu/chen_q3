@@ -31,8 +31,10 @@ with a linear term: 2.09·log T − 0.84·a + 1.43. The prefactor c = λ₁/T² 
 ## Readings
 1. **ЕСЛИ_B, and sharper than either branch anticipated.** The window floor is NOT «how much of Φ sticks out»
    (that is R ≈ T, the cut-off theta test). The window finds a better combination: the first-order tail cancels and
-   **λ_a ≍ T(a)²** up to a slowly varying factor, i.e. λ_a ≈ c·e^{−2πe^{2a}}·(poly) — the exponent of the double
-   exponential DOUBLES. The ground vector stays 99–99.9 % cut-off Φ (overlap 0.986 → 0.998); the correction is small in
+   **λ_a ≍ T(a)²** up to a slowly varying factor — the exponent of the double exponential DOUBLES.
+   [CORRECTED 09.09 after DISTANCE (D15), verified numerically: T(a) ~ (2π³/I)e^{7a}e^{−2πe^{2a}} (ratio 0.86 → 0.95 on
+   a = 0.5 → 1.0), so T² ~ e^{−4πe^{2a}}. The first version of this line wrote e^{−2πe^{2a}} for T², inheriting the 08.09
+   probe's wrong «e^{−πe^{2a}}» for T; Φ² ~ e^{9x}e^{−2πe^{2x}}.] The ground vector stays 99–99.9 % cut-off Φ (overlap 0.986 → 0.998); the correction is small in
    norm but removes the whole first-order energy.
 2. **Exact reformulation behind the number (observer's; unconditional for w in the (K16) class, see caveat).** Write
    Φ = v_in + v_out with v_in = Φ·1_{(−a,a)}, v_out = Φ·1_{|x|>a}. F_Φ vanishes at every zero (F_Φ = ξ(½+z)), so by the
@@ -49,8 +51,8 @@ with a linear term: 2.09·log T − 0.84·a + 1.43. The prefactor c = λ₁/T² 
    the closure and the numerics see the projected version (the K-stability to a = 0.65 is the evidence it survives).
 3. **Certification wall, recomputed.** Extrapolating c ≈ 0.61–0.66 from a = 0.70/0.75 gives λ_{0.8} ≈ 2.1–2.3e−17.
    Zhu's certified floor at a = 0.8 is 8.9e−18: **his certificate is sharp to a factor ≈ 2.5**, not loose by 5–9 orders
-   as the 08.09 estimate (T ≈ 6e−9) suggested. And L = 1.19 would need λ ≈ e^{−2π e^{2.38}} ≈ e^{−68} ≈ 10^{−30}:
-   a double exponential with a doubled exponent — the withdrawn claim was two hundred bits away from its own floor.
+   as the 08.09 estimate (T ≈ 6e−9) suggested. And L = 1.19 would need λ ~ T² ~ e^{−4π e^{2.38}} ≈ e^{−136} ≈ 10^{−59} [CORRECTED 09.09, was e^{−68}]:
+   the withdrawn claim was ~450 bits away from its own floor.
 4. **Numerical limits.** K = 24 is K-limited from a = 0.70 (10× off). K = 48 reproduces K = 36: 4.00e−11 vs 4.06e−11
    (a = 0.65), 4.27e−13 vs 4.37e−13 (0.70), 4.23e−15 vs 3.87e−15 (0.75, 9 %); so K = 36 is trusted to a = 0.70 and
    to ±10 % at 0.75; a = 0.80 is roundoff (−4e−16). No sign
@@ -98,3 +100,33 @@ basis vector — the Legendre closure of Q(Φ,·) = 0 holds numerically), and th
 holds to 2e−10 (a = 0.5), 3e−7 (0.6) and 3e−3 (0.7); the ABSOLUTE error is ≈ 1e−15 at every a (roundoff on a form of
 scale 0.14), so at a = 0.75, where λ = 3.9e−15, the check reaches its floor (16 %). Raw:
 `out/window_identity_K36_corrected_a0.5_0.6.json`, `…_a0.7_0.75.json`. The T² law and the distance reading now stand on two channels.
+
+## Prošhka's verdict (DISTANCE, c71fd48c) and its next_decisive_test D37 — executed 09.09 from the cache alone
+Verdict header: OVERALL PARTIAL_WITH_PRECISE_REMAINDER; Q1 PROVED_ON_CLASS (D7–D10: the affine identity holds on the full
+ℰ-closure V_a = {f ∈ ℰ : f = 0 a.e. outside (−a,a)}, sharp cuts included, for EVERY radical element); Q2: the literal
+«positive Q-distance» reading is dead (D11–D13: the unnormalised infimum is 0 under RH — w = v_in reconstructs Φ — or −∞;
+the displayed (D1) with its denominator is the normalised Rayleigh problem, and that is the only surviving object);
+projection mechanism dead (D19: Q(h, v_out + w_a) = −λ_a⟨h, v_in − w_a⟩, a constrained eigenproblem); unconditional upper
+bound proved only at polynomial×T (D17), the normalised T² rate neither proved nor refuted (D24 is the unpaid inequality:
+Schur response); Q3: explicit off-line window a₀(λ) = 1 + 4 log max{1, 3000B/r} with λ_a ≤ −(r/D)e^{δ(a−1)/2} (D25–D33);
+D14 finite lower bound on every window (so «−∞ on a finite window» is dead too); D36 unconditional coercivity for 2a < log 2.
+Exponent correction D15 accepted (above). Independent check: DISTANCE_INDEPENDENT_CHECK_2026-09-09.md (agent, pending at
+time of writing).
+D37 (cache-only; input blob 021d8e401d81dec35070bccf0b526d6750a325ed): E = 1 − c², μ⊥ = (R − λ₁c²)/E, H = μ⊥/λ₂.
+| a | E | μ⊥ | λ₂ | H | pass |
+|---:|---:|---:|---:|---:|---|
+| 0.35 | 2.78e−2 | 8.29e−1 | 6.55e−2 | 12.7 | no |
+| 0.40 | 2.62e−2 | 3.48e−1 | 1.47e−2 | 23.6 | no |
+| 0.45 | 2.20e−2 | 1.31e−1 | 2.41e−3 | 54.3 | no |
+| 0.50 | 1.83e−2 | 3.85e−2 | 1.95e−4 | 197 | yes |
+| 0.55 | 1.41e−2 | 1.93e−2 | 1.44e−5 | 1341 | yes |
+| 0.60 | 1.11e−2 | 4.99e−3 | 6.05e−7 | 8242 | yes |
+| 0.65 | 8.58e−3 | 9.78e−4 | 1.88e−8 | 51964 | yes |
+| 0.70 | 6.79e−3 | 1.89e−4 | 2.74e−10 | 688124 | yes |
+Registered threshold (E > 1e−8, λ₂ > 0, H ≥ 100 at a = 0.60, 0.65, 0.70): **PASSES**, by 2–4 orders. ЕСЛИ_A of the verdict:
+the removed correction is high-energy relative to the first excited mode (its Rayleigh value μ⊥ sits 10³–10⁶ above λ₂,
+and 10⁶–10⁹ above λ₁); the source-directional Schur response D22–D24 is the next proof target, not the lowest-gap norm.
+Observer's reading of the same numbers: μ⊥ ≈ R (the cut-Φ energy is carried almost entirely by the component orthogonal
+to the ground), so the ground state absorbs the tail's first-order energy into a direction whose own energy is ~R/E ≈
+30·T — the cancellation is between a mass-2 % direction with energy 30T and the tail's energy T; that is the object D24
+must bound.
