@@ -162,3 +162,31 @@ Autocorrelation is computed exactly: if A(u)=p(a-u), B(u)=p(-a+u), convolve i!A_
 The S41 error uses ||p||_E <= sqrt(exp(2a)||p||_2^2+D[p]) and 22e(2||p||_E+e). The complete margin ball has strictly negative upper endpoint with more than tenfold separation from its total absolute uncertainty. Conclusion, after component review: ELSE_B for this single fixed candidate and M_diag=1, nu_diag=0. No sign of the window eigenvalue, resolved lambda denominator, cofinal schedule, lower-sign theorem, or RH proof follows. The normalized ratio is not substituted for this unnormalized test. Budget sensitivity, evaluated after the frozen test: Q[f]/T(a)^2 lies between 1.069376842 and 1.069376844. Thus the failure at M_diag=1 is modest; M=1.07 would cover this one window. This post-hoc observation is not a new frozen success, a uniform constant, or a cofinal result.
 
 All exact coefficients, input hashes, full interval strings, reproduction scripts and the higher-precision recheck are embedded in the companion JSON under `full_source_margin_followup`. Original provisional producer labels are retained as provenance; the assembly review records whether the finite conclusion is admitted.
+
+## Positive tail-reference comparison at the same finite window
+
+The next comparison requested in SCHUR Section 9 is now evaluated at a=7/10,m=6. It retains the published frozen signed source and its physical normalizers, and separately minimizes the positive tail form B_a from S9. This compares two different coefficient choices; it does not identify the reference minimizer with a signed-Q optimizer.
+
+For U,V in (Phi,g0,...,g12), the matrix is
+
+H(U,V)=I_2(U,V)+(16a+16)I_0(U,V)+3exp(-4a)I_0(U',V')+12exp(-2a)U(a)V(a),
+I_gamma(U,V)=2 integral_a^infinity exp(gamma*x)U(x)V(x) dx.
+
+Finite n,m<=8 contributions use S(z)=P_U(n^2*z/s)P_V(m^2*z/s), s=n^2+m^2, and K(s,d,gamma)=(pi*s)^(-(gamma+1)/2)Gamma(d+(gamma+1)/2,pi*s*exp(2a)). Only K is cached; S is rebuilt for each ordered pair. The factor 2 for the two tails cancels the Jacobian factor 1/2. The Phi-Phi gamma=0 control agrees with the independently computed finite theta tail mass.
+
+The omitted series is included, not inferred small from the term count. For a degree-d profile polynomial, c_U=2d+1/2, beta_U=162pi-c_U>0, and the previously established B_U(0) give |R_U(x)|<=B_U(0)exp(-beta_U*x). The finite profile obeys |U_8(x)|<=Hbar_U exp(c_U*x), with Hbar_U=sum_(n=1)^8 sum_k |u_k|(pi*n^2)^k. Integrating the two mixed terms and the tail product gives an explicit bound with denominators beta_V-c_U-gamma, beta_U-c_V-gamma, and beta_U+beta_V-gamma, all strictly positive here. Endpoint values are enlarged by B_U(0)exp(-beta_U*a) before products are taken. All operations are outward Arb arithmetic.
+
+For ell=(1,alpha_0,...,alpha_6), the rigorous solve gives Z=ell^T H^-1 ell, B_H=1/Z and theta_H=H^-1ell/Z. All leading principal minors are interval-positive. The unchanged signed candidate has theta_y=(N_a A0,-N_a y_j/rho_j), ell^T theta_y=1 and B_y=theta_y^T H theta_y. Two precisions, 256 and 384 bits, give overlapping matrix entries and reported scalars.
+
+| quantity | rounded value; full intervals in data |
+|---|---:|
+| minimum B_H | 3.931797412246448274e-11 |
+| B_y for the published signed row | 2.384968930795830427e-10 |
+| (B_y-B_H)/B_H | 5.06584897626546 |
+| minimum positive-reference bound 22 B_H/(N_a^2 T^2) | 16420.4321288621 |
+| positive-reference bound for the signed row 22 B_y/(N_a^2 T^2) | 99603.8614186945 |
+| actual Q[f_y]/T^2, from the earlier full-source certificate | approximately 1.069376843 |
+
+The frozen prediction `minimum positive-reference bound / T^2 > 10` is confirmed. At this fixed degree/window, even the best S9 positive-reference bound does not certify budgets M=1 or M=1.07. This is failure of this sufficient bound, not proof that Q of theta_H violates either budget: its signed energy has not been computed. The much larger B_y-based bound than the certified signed energy of the same row quantifies the loss incurred by the positive majorant. No conclusion about all degrees, a cofinal growth law, a spectral lower bound, or RH follows.
+
+The requested correction norm is also available without new quadrature: the source L2 error is at most its certified E error. Hence ||f_y||_2^2 lies in the polynomial norm squared plus/minus e(2||p||_2+e), giving ||z_y||_2^2 approximately 0.0067727374858188194. The weak margin T^2||f_y||_2^2-Q[f_y] is also strictly negative (approximately -4.1255264e-14). This derived check does not replace the frozen unnormalized S40 test.
