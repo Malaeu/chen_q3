@@ -14,6 +14,22 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-09-BRIDGE · BRIDGE: exact obstruction between positive tail construction and signed target · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_BRIDGE_2026-09-09.txt`
+- Boundary: `GOAL058_RADICAL_TRIAL_SCHUR_T_SQUARED_SUPPLIER`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: SCHUR independently checked; finite S40 and reference comparison retained; owner go required before delivery
+- Registered predictions: P1-P4, frozen in section 6
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `b968f9443d5491778ab5e65c75c4ad7d64ba0b14` / `9774` / `83` /
+  `cee5ce05956d744b2e3c3d4275c9c510990bb25d0745bb2ad349b5728219fce8` /
+  `3fffbc70ca538cf86959b348890f4a4966b3515f` / `yes`
+
+---
+
 ## REQ-2026-09-09-SCHUR · Goal058 radical-cut degree law, tail determinant and arithmetic remainder · ANSWERED
 
 - `STATUS: ANSWERED` — `PARTIAL_WITH_PRECISE_REMAINDER`; original verdict in commit `b454c35ecfd009d21c35f6a971a2b279d5cd0394`: `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SCHUR_2026-09-09.md`. Request/boundary binding and all ten pinned shelf hashes verified. Independent paper review converged for S1-S18b and sections 3-8; cofinal T² rate, lower sign and full numerical error enclosure remain OPEN. Intake snapshot: `docs/routeB_bus/SCHUR_INTAKE_RECEIPT_2026-09-09.md`.
