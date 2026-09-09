@@ -40,11 +40,13 @@ def tail(a):
 grid = [float(v) for v in sys.argv[1].split(',')] if len(sys.argv) > 1 else [0.35,0.40,0.45,0.50,0.55,0.60,0.65,0.70,0.75,0.80]
 K = int(sys.argv[2]) if len(sys.argv) > 2 else 36
 TAG = sys.argv[3] if len(sys.argv) > 3 else ''
+H = float(sys.argv[4]) if len(sys.argv) > 4 else 0.02
+XI = float(sys.argv[5]) if len(sys.argv) > 5 else 20000.0
 out = {}
 mats = {}   # 2026-09-09, Proshka DISTANCE §9(c): keep Q, G, eigenpairs and the cut-Phi coefficients per a
 for a in grid:
     t0 = time.time()
-    R = build([0.0], K, delta=a, verbose=False)
+    R = build([0.0], K, h=H, XI=XI, delta=a, verbose=False)
     Q, G = R['Q'], R['G']
     ev, V = sla.eigh(Q, G)
     c = coeffs(a, K)
@@ -52,7 +54,7 @@ for a in grid:
     v0 = V[:,0]; ov = float(abs(v0@G@c)/np.sqrt((v0@G@v0)*(c@G@c)))
     T = tail(a)
     mats[f'{a:.2f}'] = dict(Q=Q, G=G, ev=ev, V=V, c=c)
-    out[f'{a:.2f}'] = dict(a=a, K=K, lam1=float(ev[0]), lam2=float(ev[1]), lam3=float(ev[2]),
+    out[f'{a:.2f}'] = dict(a=a, K=K, h=H, XI=XI, lam1=float(ev[0]), lam2=float(ev[1]), lam3=float(ev[2]),
                            rayleigh_cutPhi=ray, tail_mass=T, overlap_ground_cutPhi=ov,
                            atoms=[n for n,_,_ in R['atoms']], secs=time.time()-t0)
     print(f"a={a:.2f} K={K} lam1={ev[0]:.4e} lam2={ev[1]:.4e} R(cutPhi)={ray:.4e} T={T:.4e} lam1/T={ev[0]/T:.4f} R/T={ray/T:.4f} ov={ov:.4f} atoms={out[f'{a:.2f}']['atoms']} {time.time()-t0:.0f}s", flush=True)

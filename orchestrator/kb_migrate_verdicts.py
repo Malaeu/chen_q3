@@ -109,12 +109,44 @@ def reconcile_projection(conn, live_names: set[str]) -> tuple[int, int]:
 def parse_iteration(text):
     m = re.search(r"^iteration:\s*\n(.*?)(?=\n```|\n#{1,3} |\Z)", text, re.S | re.M)
     if not m:
-        return None
+        return parse_strategy_memory(text)
     block = m.group(1)
     out = {}
     for fm in re.finditer(r"^\s{2,}(\w+):\s*(.+?)\s*$", block, re.M):
         out[fm.group(1)] = fm.group(2).strip()
     return out or None
+
+
+def parse_strategy_memory(text):
+    """Read explicit semicolon fields, never infer strategy memory from prose."""
+    matches = re.findall(r"^Strategy memory: ([^\n]+)$", text, re.M)
+    if len(matches) != 1:
+        return None
+    field_names = {
+        "target": "target",
+        "status": "status",
+        "failed_strategy": "failed_strategy",
+        "operator": "cognitive_operator_used",
+        "invariant": "invariant_learned",
+        "forbidden_future_move": "forbidden_future_move",
+        "next_test": "next_decisive_test",
+    }
+    out = {}
+    parts = matches[0].split(";")
+    for index, part in enumerate(parts):
+        key, separator, value = part.strip().partition("=")
+        if not separator or key not in field_names or field_names[key] in out:
+            return None
+        # The final next_test sentence may be followed by unrelated commentary.
+        if key == "next_test":
+            if index != len(parts) - 1:
+                return None
+            value = value.split(". ", 1)[0].removesuffix(".")
+        value = value.strip()
+        if not value:
+            return None
+        out[field_names[key]] = value
+    return out if len(out) == len(field_names) else None
 
 
 def parse_closes_opens(text):

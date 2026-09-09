@@ -1,0 +1,146 @@
+{
+  "authority": "DIAGNOSTIC_NEVER_A_PROOF",
+  "prediction": {
+    "a": 0.75,
+    "K": 48,
+    "span": "g0-g12 even derivatives only",
+    "q_over_lambda1": 1.5,
+    "frozen_before_launch": true
+  },
+  "scripts_sha256": {
+    "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/phase5_codex/six_centre/window_derivative.py": "bd9e5ebdc658ec28857bdc7a6a6f503940f5500579dc131c035cd4fce2dedd4e",
+    "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/phase5_codex/six_centre/one_direction_margin.py": "7740b952bd86394e80b1da734a368e3aeaabaaa89392a8d8fec97eff383af2d3",
+    "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/phase5_codex/six_centre/sc_build.py": "e52f96dff9c04d76963d285ce9055d21f95cc0a340b9c9b3bde67a5bed7db6dc",
+    "/tmp/q3_probe_review/compare_probe.py": "f7762f427f9fb1909308eb4e001488a543e46c0e289662ec364dc2d87ba53fc6"
+  },
+  "commands": [
+    {
+      "K": 36,
+      "mode": "base",
+      "build": [
+        "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/.venv/bin/python",
+        "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/phase5_codex/six_centre/window_derivative.py",
+        "0.70,0.75,0.80",
+        "36",
+        "_codex_radical_20260909_base",
+        "0.02",
+        "20000"
+      ],
+      "margin": [
+        "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/.venv/bin/python",
+        "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/phase5_codex/six_centre/one_direction_margin.py",
+        "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/phase5_codex/six_centre/out/window_derivative_K36_codex_radical_20260909_base_matrices.npz"
+      ],
+      "log": "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/phase5_codex/six_centre/out/window_derivative_K36_codex_radical_20260909_base.log"
+    },
+    {
+      "K": 36,
+      "mode": "h",
+      "build": [
+        "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/.venv/bin/python",
+        "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/phase5_codex/six_centre/window_derivative.py",
+        "0.70,0.75,0.80",
+        "36",
+        "_codex_radical_20260909_h",
+        "0.01",
+        "20000"
+      ],
+      "margin": [
+        "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/.venv/bin/python",
+        "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/phase5_codex/six_centre/one_direction_margin.py",
+        "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/phase5_codex/six_centre/out/window_derivative_K36_codex_radical_20260909_h_matrices.npz"
+      ],
+      "log": "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/phase5_codex/six_centre/out/window_derivative_K36_codex_radical_20260909_h.log"
+    },
+    {
+      "K": 36,
+      "mode": "xi",
+      "build": [
+        "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/.venv/bin/python",
+        "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/phase5_codex/six_centre/window_derivative.py",
+        "0.70,0.75,0.80",
+        "36",
+        "_codex_radical_20260909_xi",
+        "0.02",
+        "40000"
+      ],
+      "margin": [
+        "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/.venv/bin/python",
+        "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/phase5_codex/six_centre/one_direction_margin.py",
+        "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/phase5_codex/six_centre/out/window_derivative_K36_codex_radical_20260909_xi_matrices.npz"
+      ],
+      "log": "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/phase5_codex/six_centre/out/window_derivative_K36_codex_radical_20260909_xi.log"
+    },
+    {
+      "K": 48,
+      "mode": "base",
+      "build": [
+        "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/.venv/bin/python",
+        "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/phase5_codex/six_centre/window_derivative.py",
+        "0.70,0.75,0.80",
+        "48",
+        "_codex_radical_20260909_base",
+        "0.02",
+        "20000"
+      ],
+      "margin": [
+        "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/.venv/bin/python",
+        "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/phase5_codex/six_centre/one_direction_margin.py",
+        "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/phase5_codex/six_centre/out/window_derivative_K48_codex_radical_20260909_base_matrices.npz"
+      ],
+      "log": "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/phase5_codex/six_centre/out/window_derivative_K48_codex_radical_20260909_base.log"
+    },
+    {
+      "K": 48,
+      "mode": "h",
+      "build": [
+        "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/.venv/bin/python",
+        "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/phase5_codex/six_centre/window_derivative.py",
+        "0.70,0.75,0.80",
+        "48",
+        "_codex_radical_20260909_h",
+        "0.01",
+        "20000"
+      ],
+      "margin": [
+        "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/.venv/bin/python",
+        "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/phase5_codex/six_centre/one_direction_margin.py",
+        "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/phase5_codex/six_centre/out/window_derivative_K48_codex_radical_20260909_h_matrices.npz"
+      ],
+      "log": "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/phase5_codex/six_centre/out/window_derivative_K48_codex_radical_20260909_h.log"
+    },
+    {
+      "K": 48,
+      "mode": "xi",
+      "build": [
+        "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/.venv/bin/python",
+        "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/phase5_codex/six_centre/window_derivative.py",
+        "0.70,0.75,0.80",
+        "48",
+        "_codex_radical_20260909_xi",
+        "0.02",
+        "40000"
+      ],
+      "margin": [
+        "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/.venv/bin/python",
+        "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/phase5_codex/six_centre/one_direction_margin.py",
+        "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/phase5_codex/six_centre/out/window_derivative_K48_codex_radical_20260909_xi_matrices.npz"
+      ],
+      "log": "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/phase5_codex/six_centre/out/window_derivative_K48_codex_radical_20260909_xi.log"
+    }
+  ],
+  "comparison": [
+    "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/.venv/bin/python",
+    "/tmp/q3_probe_review/compare_probe.py",
+    "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/phase5_codex/six_centre/out",
+    "_codex_radical_20260909",
+    "/tmp/q3_probe_review/comparison.json"
+  ],
+  "execution": "Sequential background jobs; each log must end in EXIT=<code>; wait with until grep. No concurrent builders. Check all candidate hashes after application, before launching.",
+  "thresholds": {
+    "condition_times_eps_max": 0.001,
+    "solve_relative_residual_max": 1e-10,
+    "gram_gauge_max": 0.001
+  },
+  "scales": "floating_scale=eps*max(1,||L^-1 Q L^-T||2); q_scale=max(floating_scale,|q_direct-q_cancel|). E_builder=max(individual normalized Q differences), diagnostic only, no coupled bound."
+}

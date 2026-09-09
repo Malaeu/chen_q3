@@ -1806,6 +1806,40 @@ tool_families:
         records_to: selected task-local output
         last_verified: 2026-08-09
 
+  radical_window_probe:
+    summary: Explicitly requested finite radical-shell diagnostics, never a proof or rigorous error enclosure.
+    front_door: radical-window-derivative
+    coverage: [docs/routeB_bus/phase5_codex/six_centre/window_derivative.py, docs/routeB_bus/phase5_codex/six_centre/one_direction_margin.py]
+    tools:
+      - id: radical-window-derivative
+        classification: MANUAL
+        status: ENABLED
+        audience: [CODEX, CLAUDE_CODE, HUMAN]
+        mode: WRITES_DERIVED
+        path: docs/routeB_bus/phase5_codex/six_centre/window_derivative.py
+        invoke: .venv/bin/python docs/routeB_bus/phase5_codex/six_centre/window_derivative.py <comma-separated-grid> <K> <tag> [h] [XI]
+        trigger: Explicit finite window probe with frozen settings and prediction.
+        writes: true
+        approval: TASK_SCOPED_OUTPUT
+        authority: DIAGNOSTIC_NEVER_A_PROOF
+        records_to: docs/routeB_bus/phase5_codex/six_centre/out/window_derivative_K*.json and *_matrices.npz
+        note: Uses sc_build.py as a dependency; defaults h=0.02 and XI=20000. Stores Q, G, eigenpairs and cut-Phi coefficients. No rigorous builder error budget. Cross-run gauge aggregation requires its separately frozen experiment manifest.
+        last_verified: 2026-09-09
+      - id: radical-one-direction-margin
+        classification: MANUAL
+        status: ENABLED
+        audience: [CODEX, CLAUDE_CODE, HUMAN]
+        mode: WRITES_DERIVED
+        path: docs/routeB_bus/phase5_codex/six_centre/one_direction_margin.py
+        invoke: .venv/bin/python docs/routeB_bus/phase5_codex/six_centre/one_direction_margin.py <matrices.npz>
+        trigger: Saved matrices from an explicitly requested radical window probe.
+        writes: true
+        approval: TASK_SCOPED_OUTPUT
+        authority: DIAGNOSTIC_NEVER_A_PROOF
+        records_to: sibling *_one_direction.json
+        note: K comes from Q.shape. Even shell rows include direct/cancellation quotients, floating scales, condition numbers and solve residuals; none is a certified error bound.
+        last_verified: 2026-09-09
+
   goal058_edge_ledger_probes:
     summary: >-
       Diagnostic-only Goal 058 edge-ledger data builders (Probes 1-3 of

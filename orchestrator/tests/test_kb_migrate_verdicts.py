@@ -223,3 +223,31 @@ class ClosesOpensTests(unittest.TestCase):
         closes, opens_, lean, thm = kb_migrate_verdicts.parse_closes_opens(text)
         self.assertEqual(closes, [])
         self.assertEqual(opens_, ["FIRST_INPUT", "SECOND_INPUT"])
+
+
+class StrategyMemoryTests(unittest.TestCase):
+    DISTANCE = 'Strategy memory: target=window-floor/T-squared mechanism; status=PROGRESS; failed_strategy=unconstrained radical distance; operator=REPRESENTATION_SHIFT; invariant=Q plus fixed physical norm on the same support; forbidden_future_move=drop denominator then infer a floor; next_test=cached correction spectral centroid. No new supplier is manufactured merely to justify another wrapper.'
+
+    def test_explicit_distance_fields_map_to_iteration_schema(self) -> None:
+        self.assertEqual(kb_migrate_verdicts.parse_iteration(self.DISTANCE), {
+            "target": "window-floor/T-squared mechanism",
+            "status": "PROGRESS",
+            "failed_strategy": "unconstrained radical distance",
+            "cognitive_operator_used": "REPRESENTATION_SHIFT",
+            "invariant_learned": "Q plus fixed physical norm on the same support",
+            "forbidden_future_move": "drop denominator then infer a floor",
+            "next_decisive_test": "cached correction spectral centroid",
+        })
+        self.assertEqual(kb_migrate_verdicts.parse_verdict_kill(self.DISTANCE), (None, None))
+
+    def test_malformed_or_unstructured_memory_is_not_imported(self) -> None:
+        for text in (
+            "Strategy memory: target=example; status=PROGRESS",
+            self.DISTANCE.replace("operator=", "unknown="),
+            self.DISTANCE.replace("operator=", "target="),
+            self.DISTANCE.replace("status=PROGRESS", "status="),
+            "The " + self.DISTANCE,
+            self.DISTANCE + "\n" + self.DISTANCE,
+        ):
+            with self.subTest(text=text):
+                self.assertIsNone(kb_migrate_verdicts.parse_iteration(text))

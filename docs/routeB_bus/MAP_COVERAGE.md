@@ -4,7 +4,7 @@
 `python3 docs/cartographer/map_coverage.py`. Рукописная карта — `MAP.md`, она
 описывает узлы маршрута; это приложение описывает **файлы**, и оно полное.
 
-Всего файлов: **394** · упомянуто в `MAP.md`: **25** · вне карты: **369** · без описания в шапке: **0**
+Всего файлов: **396** · упомянуто в `MAP.md`: **25** · вне карты: **371** · без описания в шапке: **0**
 
 «вне карты» не значит «лишний»: значит, что обходом карты файл не находится.
 Именно так 2026-08-11 был построен заново мост `ker ↔ eigenspace`, стоявший в
@@ -318,6 +318,7 @@
 | `LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail` | карта | Literal CCM cofinal residual/floor envelope and transform tail | 0 |
 | `LiteralCCMComplementFloorConstruction` | карта | Literal CCM complement-floor construction by fixed-shift transport | 0 |
 | `MangoldtDivisibilityEnergy` | — | Λ-divisibility energy identity (judge's `mangoldt_divisibility_energy_identity`) | 0 |
+| `MathlibRiemannHypothesisBridge` | — | Bridge: project `Q3.RH` ⟷ Mathlib `RiemannHypothesis` | 0 |
 | `MatrixBilinFormRadical` | — | The left radical of the bilinear form represented by `Q` is the kernel | 0 |
 | `MatrixBilinRadicalQuotientEquiv` | — | The equality between the full bilinear radical and the calibration line | 0 |
 | `MontelCenteredCriticalStrip` | — | The open centered critical strip is preconnected. -/ | 0 |
@@ -336,6 +337,7 @@
 | `MuntzV3/RplusExactClass` | — | The right tail is entire under the exact measurable/Icc-zero/Ico-Lipschitz v3 class. -/ | 0 |
 | `MuntzV3/SymmetricTrialCrosswalk` | — | The positive-half representative of a symmetric source trial.  All Muntz | 0 |
 | `MuntzV3/Unconditional` | — | T5 with the v3 Mellin-analyticity hypothesis discharged by the compact | 0 |
+| `NoFiniteStencilMinorant` | — | No positive finite-stencil minorant | 0 |
 | `NormalizedTrackingRateTransfer` | — | Exact algebraic normalization identity. The arbitrary parameter later named | 0 |
 | `P59SignFreeRitz` | — | P59 sign-free Ritz inequality (GOAL058, REQ-2026-09-04-SIGNFREE) | 0 |
 | `P59SingleEndpointAtomCounterexample` | — | P59 single-endpoint atom — the kill plant | 0 |

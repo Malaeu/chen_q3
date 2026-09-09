@@ -6966,3 +6966,14 @@ out/window_derivative_K36_vec_{matrices.npz,schur.json}.
 Проверка старта Codex показала FATAL `STARTUP_TOOL_MANIFEST_INVALID`, стоявший с 2026-09-03 (все 12 версий TOOLS.yaml с 05.09 невалидны): записи `bind-request` и `vahta` несли
 classification `OPERATIONAL` (нет в словаре), `six-centre-assembly` — без `last_verified`. Починено (b60742ca); `plan` → HOLD `NODE_REGISTRY_EXACT_EDGE_REQUIRED` (штатно).
 Урок: перед коммитом TOOLS.yaml гонять не только `yaml.safe_load`, а `python3 orchestrator/workflow_runtime.py plan` и смотреть `fatal_errors`.
+
+## 2026-09-09 — radical-shell ratios require a source error budget
+
+**Развилка:** interpret K48 radical-shell quotients as a degree law, or first pay the builder uncertainty.
+**Выбрали:** preserve all raw data and mark every row UNRESOLVED under the frozen conservative matrix-gauge screen; keep SCHUR as a proof-construction request.
+**Почему:** at a=.75 the seven-member baseline quotient is 2.6155 for K36 and 3.4517 for K48; the frozen prediction was 1.5. The absolute floating scales are 1.03e-15 and 1.15e-15. Individual normalized cutoff matrix differences are 9.07e-6 and 3.80e-5, not rigorous bounds and not ground-direction errors. They cannot certify the tiny denominator. At a=.80 lambda itself is below the floating scale.
+**Что отвергли и почему:** extrapolating m(a) from three rounded windows or scoring the prediction as confirmed/refuted; neither has a resolved error budget. Increasing K does not cure binary64 source assembly.
+**Техника:** six background jobs / eighteen matrix builds, K36/48, h and XI separately refined; physical Gram orthogonality; direct and cancellation Rayleigh quotients; independent orthonormal-coordinate recheck and 70-digit eigensolve of saved rounded matrices. DISTANCE migration fixed at the explicit Strategy memory parser, 12 tests pass. Five literature reading cards close the manual registry debt without theorem admission.
+**Следующий ход:** complete startup refresh, then deliver the reviewed SCHUR request when its exact publication is permitted; numerical reentry needs a source/projected error enclosure at a=.75.
+**Адреса:** docs/routeB_bus/RADICAL_SHELL_STABILITY_2026-09-09.md; docs/routeB_bus/phase5_codex/six_centre/out/radical_shell_stability_20260909.json; docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SCHUR_2026-09-09.txt; request e11338a3, binding 22a3b598.
+**Чей вердикт и аргумент:** observer decision from saved matrices; independent checks confirm finite arithmetic only. No new Proshka verdict, no Lean admission, PX_RH_CLAIM: NOT_MADE.

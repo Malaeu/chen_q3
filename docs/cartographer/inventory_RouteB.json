@@ -1,9 +1,9 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 394,
-  "declarations": 4603,
-  "in_docs": 2454,
+  "files_scanned": 396,
+  "declarations": 4625,
+  "in_docs": 2476,
   "in_lemma_db": 4182,
   "orphans": 48,
   "uncatalogued": 48,
@@ -37168,6 +37168,36 @@
     },
     {
       "kind": "theorem",
+      "name": "riemannZeta_eq_zero_re_nonpos_trivial",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MathlibRiemannHypothesisBridge.lean",
+      "line": 25,
+      "signature": "theorem riemannZeta_eq_zero_re_nonpos_trivial {s : ℂ} (hs : s.re ≤ 0) (hz : riemannZeta s = 0) : ∃ n : ℕ, s = -2 * (n + 1)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "rh_iff_mathlib",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MathlibRiemannHypothesisBridge.lean",
+      "line": 86,
+      "signature": "theorem rh_iff_mathlib : Q3.RH ↔ RiemannHypothesis",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "riemannHypothesis_of_rh",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MathlibRiemannHypothesisBridge.lean",
+      "line": 108,
+      "signature": "theorem riemannHypothesis_of_rh (h : Q3.RH) : RiemannHypothesis",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
       "name": "matrixToBilin_ker_eq_transposeMulVec_ker",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MatrixBilinFormRadical.lean",
       "line": 14,
@@ -38234,6 +38264,196 @@
       "signature": "theorem continued_window_identity_pole_value_unconditional_mellin (h : ℝ → ℂ) (b : ℝ) (K : NNReal) (hmeas : Measurable h) (hsupp : ∀ u, u ∉ Set.Icc (0 : ℝ) b → h u = 0) (hlip : LipschitzOnWith K h (Set.Ico 0 b)) (hmass : ∫ u in Set.Ioi (0 : ℝ), h u = 0) (Λ : ℝ) (hG : AnalyticOnNhd ℂ (Gwin h Λ) shiftedHalfPlane) (hRm : AnalyticOnNhd ℂ (Rminus h Λ) shiftedHalfPlane) (hRp : AnalyticOnNhd ℂ (Rplus h Λ) shiftedHalfPlane) (habs : ∀ s : ℂ, 1 / 2 < s.re → Gwin h Λ s = riemannZeta (s + 1 / 2) * Mellin h (s + 1 / 2) - Rminus h Λ s - Rplus h Λ s) : Gwin h Λ (1 / 2) = deriv (Mellin h) 1 - Rminus h Λ (1 / 2) - Rplus h Λ (1 / 2)",
       "in_docs": true,
       "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "cexpI",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/NoFiniteStencilMinorant.lean",
+      "line": 132,
+      "signature": "def cexpI (r : ℝ) : ℂ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "lemma",
+      "name": "cexpI_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/NoFiniteStencilMinorant.lean",
+      "line": 134,
+      "signature": "@[simp] lemma cexpI_zero : cexpI 0 = 1",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "lemma",
+      "name": "cexpI_add",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/NoFiniteStencilMinorant.lean",
+      "line": 136,
+      "signature": "lemma cexpI_add (a b : ℝ) : cexpI (a + b) = cexpI a * cexpI b",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "lemma",
+      "name": "norm_cexpI",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/NoFiniteStencilMinorant.lean",
+      "line": 139,
+      "signature": "lemma norm_cexpI (r : ℝ) : ‖cexpI r‖ = 1",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "lemma",
+      "name": "continuous_cexpI",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/NoFiniteStencilMinorant.lean",
+      "line": 141,
+      "signature": "lemma continuous_cexpI : Continuous cexpI",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "lemma",
+      "name": "cexpI_natMul",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/NoFiniteStencilMinorant.lean",
+      "line": 145,
+      "signature": "lemma cexpI_natMul (n : ℕ) (r : ℝ) : cexpI ((n : ℝ) * r) = cexpI r ^ n",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "fourierPhase",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/NoFiniteStencilMinorant.lean",
+      "line": 156,
+      "signature": "def fourierPhase (f : ℝ → ℝ) (ξ : ℝ) : ℂ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "lemma",
+      "name": "fourierPhase_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/NoFiniteStencilMinorant.lean",
+      "line": 158,
+      "signature": "lemma fourierPhase_zero (f : ℝ → ℝ) : fourierPhase f 0 = ((∫ u : ℝ, f u : ℝ) : ℂ)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "lemma",
+      "name": "continuous_fourierPhase",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/NoFiniteStencilMinorant.lean",
+      "line": 162,
+      "signature": "lemma continuous_fourierPhase (f : ℝ → ℝ) (hf : Integrable f) : Continuous (fourierPhase f)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "lemma",
+      "name": "integral_translate_phase",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/NoFiniteStencilMinorant.lean",
+      "line": 180,
+      "signature": "lemma integral_translate_phase (f : ℝ → ℝ) (a ξ : ℝ) : (∫ t : ℝ, (f (a - t) : ℂ) * cexpI (ξ * t)) = cexpI (ξ * a) * fourierPhase f ξ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "independence_of_translates",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/NoFiniteStencilMinorant.lean",
+      "line": 204,
+      "signature": "theorem independence_of_translates (f : ℝ → ℝ) (hf_cont : Continuous f) (hf_int : Integrable f) (hf_mass : (∫ x : ℝ, f x) ≠ 0) {k : ℕ} {p : Fin k → ℝ} (hp : Function.Injective p) {d : Fin k → ℂ} (h : ∀ q : ℚ, ∑ l, d l * (f (p l - (q : ℝ)) : ℂ) = 0) : d = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "independence_of_translates_apply",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/NoFiniteStencilMinorant.lean",
+      "line": 381,
+      "signature": "theorem independence_of_translates_apply (f : ℝ → ℝ) (hf_cont : Continuous f) (hf_int : Integrable f) (hf_mass : (∫ x : ℝ, f x) ≠ 0) {k : ℕ} {p : Fin k → ℝ} (hp : Function.Injective p) {d : Fin k → ℂ} (h : ∀ q : ℚ, ∑ l, d l * (f (p l - (q : ℝ)) : ℂ) = 0) : ∀ l, d l = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "stencil",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/NoFiniteStencilMinorant.lean",
+      "line": 393,
+      "signature": "def stencil (f : ℝ → ℝ) (χ : ℝ → ℝ → ℝ) (q R x : ℝ) : ℂ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "lemma",
+      "name": "measurable_stencil_shift",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/NoFiniteStencilMinorant.lean",
+      "line": 396,
+      "signature": "lemma measurable_stencil_shift {f : ℝ → ℝ} (hf : Continuous f) {χ : ℝ → ℝ → ℝ} {R : ℝ} (hχ : Measurable (χ R)) (q a : ℝ) : Measurable (fun x : ℝ => stencil f χ q R (x + a))",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "lemma",
+      "name": "measurable_ratio_shift",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/NoFiniteStencilMinorant.lean",
+      "line": 406,
+      "signature": "lemma measurable_ratio_shift {f : ℝ → ℝ} (hf : Continuous f) (q a : ℝ) : Measurable (fun x : ℝ => ((f (x + a - q) / f (x + a) : ℝ) : ℂ))",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "lemma",
+      "name": "integral_ne_zero_of_pos",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/NoFiniteStencilMinorant.lean",
+      "line": 414,
+      "signature": "lemma integral_ne_zero_of_pos {f : ℝ → ℝ} (hf_int : Integrable f) (hf_pos : ∀ x, 0 < f x) : (∫ x : ℝ, f x) ≠ 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "lemma",
+      "name": "stencil_energy_limit_eq_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/NoFiniteStencilMinorant.lean",
+      "line": 437,
+      "signature": "lemma stencil_energy_limit_eq_zero (f : ℝ → ℝ) (hf_cont : Continuous f) (Q : (ℝ → ℂ) → ℝ) (χ : ℝ → ℝ → ℝ) (hχ_meas : ∀ R : ℝ, Measurable (χ R)) (hχ_one : ∀ R x : ℝ, |x| ≤ R → χ R x = 1) {k : ℕ} (τ : Fin k → ℝ) (c : Fin k → ℝ) (W : ℝ → ℝ≥0∞) (hW : Measurable W) (q : ℚ) (H1 : Tendsto (fun R : ℝ => Q (fun x => (f x : ℂ) * stencil f χ (q : ℝ) R x)) atTop (𝓝 0)) (H2 : ∀ R : ℝ, 1 ≤ R → (∫⁻ x : ℝ, W x * ‖∑ l, (c l : ℂ) * stencil f χ (q : ℝ) R (x + τ l)‖ₑ ^ 2) ≤ ENNReal.ofReal (Q (fun x => (f x : ℂ) * stencil f χ (q : ℝ) R x))) : (∫⁻ x : ℝ, W x * ‖∑ l, (c l : ℂ) * ((f (x + τ l - (q : ℝ)) / f (x + τ l) : ℝ) : ℂ)‖ₑ ^ 2) = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "no_positive_finite_stencil_minorant",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/NoFiniteStencilMinorant.lean",
+      "line": 508,
+      "signature": "theorem no_positive_finite_stencil_minorant (f : ℝ → ℝ) (hf_cont : Continuous f) (hf_int : Integrable f) (hf_pos : ∀ x, 0 < f x) (Q : (ℝ → ℂ) → ℝ) (χ : ℝ → ℝ → ℝ) (hχ_meas : ∀ R, Measurable (χ R)) (hχ_one : ∀ R x : ℝ, |x| ≤ R → χ R x = 1) {k : ℕ} {τ : Fin k → ℝ} (hτ : Function.Injective τ) {c : Fin k → ℝ} (hc : c ≠ 0) (W : ℝ → ℝ≥0∞) (hW : Measurable W) (H1 : ∀ q : ℚ, Tendsto (fun R : ℝ => Q (fun x => (f x : ℂ) * stencil f χ (q : ℝ) R x)) atTop (𝓝 0)) (H2 : ∀ (q : ℚ) (R : ℝ), 1 ≤ R → (∫⁻ x : ℝ, W x * ‖∑ l, (c l : ℂ) * stencil f χ (q : ℝ) R (x + τ l)‖ₑ ^ 2) ≤ ENNReal.ofReal (Q (fun x => (f x : ℂ) * stencil f χ (q : ℝ) R x))) : ∀ᵐ x : ℝ ∂(volume : Measure ℝ), W x = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "no_positive_finite_stencil_minorant_hypotheses_satisfiable",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/NoFiniteStencilMinorant.lean",
+      "line": 588,
+      "signature": "theorem no_positive_finite_stencil_minorant_hypotheses_satisfiable : ∃ (f : ℝ → ℝ) (Q : (ℝ → ℂ) → ℝ) (χ : ℝ → ℝ → ℝ) (τ : Fin 1 → ℝ) (c : Fin 1 → ℝ) (W : ℝ → ℝ≥0∞), Continuous f ∧ Integrable f ∧ (∀ x, 0 < f x) ∧ (∀ R : ℝ, Measurable (χ R)) ∧ (∀ R x : ℝ, |x| ≤ R → χ R x = 1) ∧ Function.Injective τ ∧ c ≠ 0 ∧ Measurable W ∧ (∀ q : ℚ, Tendsto (fun R : ℝ => Q (fun x => (f x : ℂ) * stencil f χ (q : ℝ) R x)) atTop (𝓝 0)) ∧ (∀ (q : ℚ) (R : ℝ), 1 ≤ R → (∫⁻ x : ℝ, W x * ‖∑ l, (c l : ℂ) * stencil f χ (q : ℝ) R (x + τ l)‖ₑ ^ 2) ≤ ENNReal.ofReal (Q (fun x => (f x : ℂ) * stencil f χ (q : ℝ) R x)))",
+      "in_docs": true,
+      "in_lemma_db": false,
       "orphan": false
     },
     {

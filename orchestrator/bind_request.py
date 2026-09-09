@@ -52,12 +52,17 @@ def main() -> int:
     ap.add_argument("request"); ap.add_argument("--title", required=True)
     ap.add_argument("--predictions", default="see request"); ap.add_argument("--intake", default="see request")
     ap.add_argument("--status", default="OPEN"); ap.add_argument("--no-push", action="store_true")
+    ap.add_argument("--commit-prefix", help="Override the prefix for both request and binding commits")
     a = ap.parse_args()
+    if a.commit_prefix is not None and (not a.commit_prefix.strip() or "\n" in a.commit_prefix or "\r" in a.commit_prefix):
+        ap.error("--commit-prefix must be a nonempty single line")
+    request_prefix = a.commit_prefix or "[Linux-Claude][rh_clean][Goal058]"
+    bind_prefix = a.commit_prefix or "[Linux-Claude][rh_clean][Proshka-bind]"
     req = (ROOT / a.request).resolve(); rel = str(req.relative_to(ROOT))
     txt = req.read_text(encoding="utf-8")
     rid, boundary, call = header(txt, "REQUEST_ID"), header(txt, "BOUNDARY_ID"), header(txt, "CALL_CLASS")
     if sh("git", "status", "--porcelain", "--", rel):
-        sh("git", "add", rel); sh("git", "commit", "-q", "-m", f"[Linux-Claude][rh_clean][Goal058] Request {rid}" + TRAILER)
+        sh("git", "add", rel); sh("git", "commit", "-q", "-m", f"{request_prefix} Request {rid}" + TRAILER)
     commit = sh("git", "rev-parse", "HEAD"); blob = sh("git", "rev-parse", f"HEAD:{rel}")
     data = req.read_bytes(); sha = hashlib.sha256(data).hexdigest()
     nbytes, nlines, lf = len(data), data.count(b"\n"), "yes" if data.endswith(b"\n") else "NO"
@@ -75,7 +80,7 @@ def main() -> int:
     print("review-plan:", st.get("status"), st.get("holds"))
     if st.get("status") != "REVIEW_DISPATCH_READY":
         print("HOLD — queue edited but NOT committed; fix and rerun."); return 2
-    sh("git", "add", str(QUEUE.relative_to(ROOT))); sh("git", "commit", "-q", "-m", f"[Linux-Claude][rh_clean][Proshka-bind] Bind {rid}" + TRAILER)
+    sh("git", "add", str(QUEUE.relative_to(ROOT))); sh("git", "commit", "-q", "-m", f"{bind_prefix} Bind {rid}" + TRAILER)
     if not a.no_push:
         sh("git", "fetch", "-q", "origin", "rh_clean"); sh("git", "rebase", "-q", "--autostash", "origin/rh_clean"); sh("git", "push", "-q", "origin", "rh_clean")
         # the rebase may rewrite the request commit: re-resolve the commit that carries the request file AS PUSHED
