@@ -1,0 +1,90 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-09-DISTANCE
+BOUNDARY_ID: GOAL058_WINDOW_FLOOR_AS_Q_DISTANCE_OF_THE_THETA_TAIL
+CALL_CLASS: DELEGATED_PROOF_ATTEMPT
+CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-09-DISTANCE (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub). New object since HODGE: the window floor λ_a is the Q-distance² of the theta null test's TAIL to the window space, and numerically λ_a ≍ T(a)² (square of the tail mass), not T(a). Prove the identity on the right class, prove or refute the T² law (upper bound unconditionally, lower bound under RH), name the mechanism of the first-order cancellation, and say what the off-line alternative does to the same distance. Proof batch: rules (1)–(10) of BATCH_PATTERNS apply.
+DATE: 2026-09-09
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SECOND_EXPRESSION
+SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_PROOF_CONSTRUCTION_AND_ADVERSARIAL_REVIEW
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_DISTANCE_2026-09-09.md
+AUTHOR: Linux-Claude (observer); owner's «Ok go» on the derivative probe and «закинь ему этот батч» (2026-09-09)
+PARENT_VERDICTS: HODGE (58ee384b; check ACCEPTED), SCREW (b1e76e52) + SIGNATURE/CLOSURE supplement (d6243e9f; check ACCEPTED), KERNEL (a97ad1bf), ALIGN (be442fbe), COMPENSATE (8868b50c), and their «must not recur» lists
+BASE_TIP: see bind line
+
+0. WHAT WAS DONE SINCE HODGE (all DIAGNOSTIC_NEVER_A_PROOF unless marked)
+ WINDOW GROUND STATE (08.09, d0798b72a3377bae): single window (−a,a), Legendre degrees < K, full Q (Arch + primes + pole), λ_a = min eigenvalue of (Q, G). a = 0.3: even, simple, gap 0.215 (your Thm 1.4 reproduced). a ≥ 0.5: the ground vector is the cut-off theta test Φ·1_(−a,a) (overlap 0.99–0.998), cluster degenerate.
+ OBSTRUCTION SPACE (08.09, 697bfd2ea7c4c694): rank of the live problem = 1 essential (the sign on the quotient; eight equivalent records) + 3 technical + 2 supplier. Your named gap SOURCE_PRIMITIVE_NULL_RIGIDITY (Q[f] = 0 ⇒ Af = 0) is the equality-case form of the same O1.
+ DERIVATIVE PROBE (09.09, 9f224297955b2903; raw c681983cb3b0c13c): with Φ(x) = Σ_n (2π²n⁴e^{9x/2} − 3πn²e^{5x/2})e^{−πn²e^{2x}} (F_Φ(it) = Ξ(t), Q[Φ] = 0), T(a) = ∫_{|x|>a}Φ²/∫Φ², R(a) = Rayleigh of Φ·1_(−a,a):
+   a     λ_a        T          λ_a/T²   R/T    d log λ_a/da : d log T/da
+   0.35  1.194e−3   2.363e−2   2.14     1.02   −37.7 : −19.2
+   0.50  9.38e−7    8.49e−4    1.30     0.83   −57.2 : −28.6
+   0.60  1.64e−9    4.00e−5    1.03     1.38   −74.0 : −36.7
+   0.70  4.37e−13   8.12e−7    0.66     1.58   −94.5 : −46.4
+   K = 24/36/48 agree to a = 0.70 (9 % at 0.75); a = 0.80 is roundoff. Least squares on [0.35, 0.70]: log λ_a = 2.11·log T + 1.22. So λ_a ≍ T(a)² up to a slowly varying factor, while the plain cut-off gives Q ≈ T. The window kills the FIRST order of the tail.
+ IDENTITY CHECK (09.09, 90a1febeb4d60272): three contiguous blocks (centres −2a, 0, 2a) put the tail into the basis; Q[v_out + w] (tail blocks) vs λ_a‖v_in − w‖² (centre block, w = v_in − f_ground): 0.5 % (a = 0.35), 1.7 % (0.40), 8 % (0.45); blind below λ ~ 1e−6 because the three-block Φ is a null vector of the discretised Q only to ~1e−5 (cross-centre archimedean tails beyond XI = 20000 uncorrected; single-block Q is corrected). Also Q[v_out]/‖Φ‖² ≈ T confirmed.
+ CERTIFICATION WALL, RECOMPUTED: extrapolation gives λ_{0.8} ≈ 2.1–2.3e−17 against Zhu's certified 8.9e−18 at a = 0.8 — his floor is sharp to a factor ≈ 2.5 (08.09 we said «5–9 orders loose» from T; that was the first-order estimate). a = 1.19 would need ≈ e^{−2πe^{2.38}} ≈ 1e−30.
+ INFRASTRUCTURE (PAPER-level, kernel-checked): Comparator layout for PX_RH_CLAIM built and run; bridge Q3.RH ↔ Mathlib RiemannHypothesis accepted by leanprover/comparator («Your solution is okay!»). Not part of this batch.
+
+1. THE OBJECT (observer's reformulation; prove or correct it)
+ Write Φ = v_in + v_out, v_in = Φ·1_(−a,a), v_out = Φ·1_{|x|>a}. Let W_a = C_c^∞(−a,a) (or its closure in ℰ = {𝒲 + 𝒟 < ∞} of KERNEL (K6)–(K7)). Since F_Φ(z) = ξ(½+z) vanishes at every zero, the signed explicit formula (K16) gives Q(Φ, w) = 0 for every admissible w — with or without RH. Then for f ∈ W_a and w := v_in − f ∈ W_a:
+     Q[f] = Q[v_in − w] = Q[Φ − v_out − w] = Q[v_out + w],
+ hence
+     λ_a := inf_{f∈W_a} Q[f]/‖f‖² = inf_{w∈W_a} Q[v_out + w] / ‖v_in − w‖².                          (D1)
+ Reading: the window floor is the Q-distance² of the theta TAIL to the window space, normalised by the cut mass. Under RH, Q ⪰ 0 on ℋ and (D1) is a genuine (semi)distance; the numerics say W_a approximates the tail in Q-metric to relative error ~√T: Q[v_out] ≈ T‖Φ‖² and inf_w Q[v_out + w] ≈ c·T²‖Φ‖². Under ¬RH the infimum is −∞ for a beyond some a₀ (SCREW dichotomy, SIGNATURE n₋(a)).
+ QUESTION 1 — the identity on the right class. (a) For which w is Q(Φ, w) = 0 a theorem: state the class (KERNEL (K16) is proved for compact smooth g and f in the core; v_out and the Legendre windows are not smooth at ±a) and prove (D1) on the ℰ-closure of C_c^∞(−a,a), or give the exact obstruction. (b) Is v_out itself in the domain of Q (it decays like e^{−πe^{2|x|}}; 𝒲-finite trivially; 𝒟-finite?) — say precisely. (c) Does (D1) survive replacing Φ by any element of the radical 𝒩 (g_k = (∂²−¼)∂^kΦ of ALIGN), giving a FAMILY of distance representations of the same λ_a? If yes, the best of them is the object.
+
+2. QUESTION 2 — THE T² LAW (upper bound unconditional, lower bound under RH)
+ (a) UPPER (unconditional): prove inf_{w∈W_a} Q[v_out + w] ≤ C(a)·T(a)²·‖Φ‖² with C polynomial in e^{a} (not exponential in e^{2a}). Candidate mechanism: w* = −(the part of v_out that W_a can reach in Q-metric); since Q(u,u′) = Σ_λ m_λ conj(F_u(jλ))F_{u′}(λ) sees only values at zeros, and F_{v_out} is entire of exponential type > a with tiny mass, a window function matching F_{v_out} at the zeros to first order exists (Paley–Wiener / Beurling–Malliavin density of the zero set against type a — cite exactly). Write the proof or the first inequality that fails. Note: an unconditional upper bound of this form is the THEOREM behind «Zhu's certificate is sharp» and behind the wall e^{−2πe^{2a}}: it bounds every future certificate from above.
+ (b) LOWER (under RH): is inf_{w∈W_a} Q[v_out + w] ≥ c(a)·T(a)²·‖Φ‖² with c polynomial? This is a lower bound on the distance from a fixed vector to a subspace in a Hilbert space whose norm is a sum over the zeros — a statement about how well type-a entire functions can interpolate a fixed function on the zero set. If it is a known extremal problem (Beurling–Malliavin, de Branges spaces of type a, Suzuki's H_W restricted to (−a,a)), name it with locator. If the honest answer is «λ_a ≥ 0 only, no rate», say so and name what a rate would require.
+ (c) THE MECHANISM: identify w* (the minimiser) analytically. Numerically w* is small (‖w*‖² ≈ 1–3 % of ‖v_in‖²) but removes all first-order energy. Guess to test: w* is the Q-orthogonal projection of −v_out onto W_a; give F_{w*} at the zeros, or the integral equation for w* (Suzuki's screw-function kernel g of (1.3) restricted to (−a,a) is the natural candidate: (D1) is a minimisation of ⟨G_a(·),·⟩ with a fixed inhomogeneity). Is the pair (v_out, w*) the «first-contact» pair of HODGE H17?
+
+3. QUESTION 3 — WHAT THE OFF-LINE ALTERNATIVE DOES TO THE SAME DISTANCE (rule 18: sign as a sum, not a difference)
+ Under (K16), for u = v_out + w:  Q[u] = Σ_{Re λ = 0} m_λ |F_u(λ)|² + Σ_{off-line pairs} 2 Re( conj F_u(jλ) F_u(λ) ).  The first sum is nonnegative by construction; the second is the whole sign problem.
+ (a) Quantify the dichotomy at the level of (D1): if a zero ρ = ½ + δ + iγ is off the line (δ ≠ 0), give an explicit a₀(δ, γ) beyond which inf_w Q[v_out + w] < 0, with the rate (SCREW (S22)/SIGNATURE gave λ_∞ = −∞ and finite n₋(a); here we ask for the a at which the off-line pair term beats the on-line T² term: an explicit «distinguishing window»). This is DIAGNOSTIC (it presupposes an off-line zero), but it converts the sign question into a comparison of two explicit rates: e^{−2πe^{2a}}·poly against the growth of the off-line pair term in a.
+ (b) Is there a representation of inf_w Q[v_out + w] as B₀(a) + Σ_n C_n(a) with all C_n ≥ 0 unconditionally (rule 18), with the RH-content isolated in a single explicit term? If the off-line pair term is that term, write it as an explicit function of (δ, γ, a) for u = u*.
+ (c) FINITE_CERTIFICATE frame: does the T² law give a coercive tail (λ_a ≥ −ε(a) unconditionally with ε explicit and → 0?) — or is the unconditional side exactly empty (λ_a can be −∞-ish for large a under ¬RH), so that windows carry no coercivity at all? Say which, with the inequality.
+
+4. SHELF (sha256 prefix 16 at BASE_TIP)
+ 9f224297955b2903  docs/routeB_bus/WINDOW_TAIL_DERIVATIVE_PROBE_2026-09-09.md   ·  d0798b72a3377bae  docs/routeB_bus/WINDOW_GROUND_STATE_PROBE_2026-09-08.md
+ c681983cb3b0c13c  …/six_centre/out/window_derivative_K36.json  ·  90a1febeb4d60272  …/out/window_identity_K36.json  ·  0a761f7f8f765e59  window_derivative.py  ·  97e0507e8e1a564c  window_identity_check.py  ·  84e6fd2c1195175b  sc_build.py
+ e1ece1bf75a929d1  PROSHKA_VERDICT_GOAL058_HODGE_2026-09-08.md  ·  80dbb8ac5f9b8569  PROSHKA_VERDICT_GOAL058_SCREW_2026-09-08.md  ·  b693b9416a226879  PROSHKA_SUPPLEMENT_GOAL058_SCREW_SIGNATURE_CLOSURE_2026-09-08.md  ·  e91899971d56423c  PROSHKA_VERDICT_GOAL058_KERNEL_2026-09-08.md
+ 697bfd2ea7c4c694  docs/OBSTRUCTION_SPACE_2026-09-08.md  ·  e2ea2f82801e0e5e  docs/routeB_bus/litreview/SUZUKI_SCREW_USAGE_CARDS.md
+ PDFs on the shelf: 2606.09096 (v1), 2206.03682, 2006.13771v1 (CC20), 2310.18423v2 (CCM23); fetch 2301.00421v3 and the Zhu certificate paper yourself and cite by the version you read.
+ Conventions: Q as in KERNEL (K6): Q(f,g) = 𝒟(f,g) − c_A⟨f,g⟩ − Σ_m w_m{⟨f,U_{log m}g⟩ + ⟨f,U_{−log m}g⟩} + conj(M₊f)M₋g + conj(M₋f)M₊g; F_f(z) = ∫ f(x)e^{zx}dx; jλ = −conj λ; window = support in (−a,a) (half-width a; Suzuki's a).
+
+5. KILLED / FORBIDDEN
+ «this is RH» as an answer; λ_a > 0 ∀a or Q ⪰ 0 as a premise anywhere except where marked «under RH»; the numerics of §0 as a proof of anything (they are a hypothesis generator; the exponent 2.11 is a fit, not a theorem); Legendre-discretisation artefacts presented as properties of Q; re-proposing the killed scalar compensation, finite-S reservoirs, or «squares as a mechanism» (OBSTRUCTION_SPACE table A); rewording debts from SCREW carried forward: (S16) needs L/2 < a ≤ L; §2.2 floor needs δ < 0.0856; the form-to-operator dictionary ⟨f, A_a f⟩ = Q[f] on C_c^∞(−a,a) is ASSERTED, not derived — if you use it, derive it or mark it.
+
+6. REGISTERED PREDICTIONS (observer; frozen)
+  P_IDENTITY_ON_CLOSURE: 0.85 — Q1(a): (D1) is proved for w in the ℰ-closure of C_c^∞(−a,a) with v_out in the domain; no relocation of zeros.
+  P_FAMILY: 0.60 — Q1(c): (D1) holds with every element of 𝒩 in place of Φ; the g_k give a family of representations.
+  P_UPPER_T2: 0.55 — Q2(a): an unconditional upper bound C(a)·T² with C polynomial in e^a is proved (or reduced to one named classical interpolation lemma).
+  P_LOWER_T2_UNDER_RH: 0.30 — Q2(b): a lower bound with a rate is proved under RH; 0.55 that the honest answer is «no rate, only ≥ 0».
+  P_MECHANISM_NAMED: 0.60 — Q2(c): w* is identified as a Q-orthogonal projection with an explicit integral equation (screw kernel on (−a,a)).
+  P_OFFLINE_WINDOW: 0.50 — Q3(a): an explicit a₀(δ,γ) with rate is written.
+  P_COERCIVE_EMPTY: 0.70 — Q3(c): windows carry no unconditional coercivity; the unconditional side of (D1) is empty.
+
+7. REQUIRED VERDICT: header with RESULT per question ∈ {PROVED_ON_CLASS, PARTIAL_WITH_PRECISE_REMAINDER, OBSTRUCTION_NAMED, COMPUTATION_SPECIFIED, ATTEMPT_REFUTED_WITH_EXACT_COUNTEREXAMPLE, IRREDUCIBLE_ATOM} and CLOSES/OPENS; Q1–Q3 in full with proofs or the first failing inequality; every source with locator; every use of RH marked «under RH» at the line where it enters; a scoring of §6 against the outcome.
+
+8. DIRECTIVE: end with next_decisive_test — one computation or one lemma, with both branches (ЕСЛИ_A / ЕСЛИ_B) stated as actions, and a number we can pre-register on the existing caches (K = 36, a ≤ 0.70).
+
+9. PROSHKA'S OWN LINE (free form, no codes, no scoring; 20–40 lines):
+   (a) why this route and not the two nearest alternatives you considered;
+   (b) the two moves you see beyond this batch, and what would kill each;
+   (c) what you would ask us for, if you could ask (data, a probe, a definition);
+   (d) what surprised you in the shelf (the T² law, the sharpness of Zhu, the distance reading), and what you distrust in it.
+
+10. RESEARCH LOG (append to the verdict; no scoring):
+   (a) every source consulted this batch: locator (arXiv/DOI/URL + theorem/equation), one line: what was taken or why rejected; mark READ vs RELAY;
+   (b) every branch you tried and abandoned, one line each: the candidate, the first inequality or fact that killed it;
+   (c) intermediate identities or computations that failed but might serve another question, with their exact statement.
