@@ -14,6 +14,22 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-09-DISTANCE · DISTANCE: window floor as the Q-distance of the theta tail; T^2 law · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DISTANCE_2026-09-09.txt`
+- Boundary: `GOAL058_WINDOW_FLOOR_AS_Q_DISTANCE_OF_THE_THETA_TAIL`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: see request
+- Registered predictions: see request
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `19054597ea92cd6d696f087a4676345ef067813f` / `14066` / `90` /
+  `9fbe548d4826ea7770897d512e2017c993002a36ef5484a4ac71dbde2c565ffd` /
+  `5ba3cb9ce440e3b3c4e1004f1aefc5b518de2e32` / `yes`
+
+---
+
 ## REQ-2026-09-08-HODGE · HODGE — bound form of the owner's Hodge transplant test: strip one Hodge index proof to the minimal sign axioms, transplant table for (Q, H, pole plane, N), can Suzuki/de Branges realise the missing axiom (for Proshka A) · OPEN
 
 - `STATUS: OPEN`
