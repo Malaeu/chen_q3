@@ -1,7 +1,7 @@
 STATUS: REQUEST
 REQUEST_ID: REQ-2026-09-09-DISTANCE
 BOUNDARY_ID: GOAL058_WINDOW_FLOOR_AS_Q_DISTANCE_OF_THE_THETA_TAIL
-CALL_CLASS: DELEGATED_PROOF_ATTEMPT
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
 CANONICAL_SHORT_INSTRUCTION: Adjudicate REQ-2026-09-09-DISTANCE (the committed .txt at the stated commit/blob/SHA-256 is the authoritative byte-exact payload; fetch it from GitHub). New object since HODGE: the window floor λ_a is the Q-distance² of the theta null test's TAIL to the window space, and numerically λ_a ≍ T(a)² (square of the tail mass), not T(a). Prove the identity on the right class, prove or refute the T² law (upper bound unconditionally, lower bound under RH), name the mechanism of the first-order cancellation, and say what the off-line alternative does to the same distance. Proof batch: rules (1)–(10) of BATCH_PATTERNS apply.
 DATE: 2026-09-09
 REPO: Malaeu/chen_q3
