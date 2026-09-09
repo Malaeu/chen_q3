@@ -6960,3 +6960,9 @@ out/window_derivative_K36_vec_{matrices.npz,schur.json}.
 8.7 — число нужных членов растёт с a. Прочтение: для радикального d Q(d_cut, p) = Q(d_out, Φ_out)/N — детерминант (5) есть утверждение о хвостах; класс пробных векторов —
 проекция растущего начального отрезка семейства g_{2k} на окно. Кандидат для батча SCHUR: закон роста m(a) и доказательство (4) на этом классе. Вахта --ahead снята (ответ
 без файла).
+**2026-09-09 ~05:20. Codex как второе тело + найденный дефект чинится первым.** По слову владельца («сделать Codex лошадкой, которая работает как ты») написан
+`docs/CODEX_AS_SECOND_BODY.md` (144 строки): список файлов восстановления по порядку, правила 1–19 сжато, метод одного оборота, протокол с Прошкой через его браузер, коммиты,
+снимок состояния, строка запуска. Цепь исполнителя (`AGENTS.md` → `CODEX_CONTROL.md`) не тронута; защёлка BEHAVIOR_BODY_MULTIROLE проверяет только YAML-шапку CODEX_CONTROL.
+Проверка старта Codex показала FATAL `STARTUP_TOOL_MANIFEST_INVALID`, стоявший с 2026-09-03 (все 12 версий TOOLS.yaml с 05.09 невалидны): записи `bind-request` и `vahta` несли
+classification `OPERATIONAL` (нет в словаре), `six-centre-assembly` — без `last_verified`. Починено (b60742ca); `plan` → HOLD `NODE_REGISTRY_EXACT_EDGE_REQUIRED` (штатно).
+Урок: перед коммитом TOOLS.yaml гонять не только `yaml.safe_load`, а `python3 orchestrator/workflow_runtime.py plan` и смотреть `fatal_errors`.
