@@ -130,3 +130,19 @@ Observer's reading of the same numbers: μ⊥ ≈ R (the cut-Φ energy is carrie
 to the ground), so the ground state absorbs the tail's first-order energy into a direction whose own energy is ~R/E ≈
 30·T — the cancellation is between a mass-2 % direction with energy 30T and the tail's energy T; that is the object D24
 must bound.
+
+## Schur response (Prošhka D22–D24, his §9(c) ask), evaluated from the saved matrices — 09.09
+`schur_response.py` on `out/window_derivative_K36_vec_matrices.npz` (Q, G, eigenpairs, cut-Φ coefficients per a; K = 36). p = v_in/‖v_in‖_G,
+complement = G-orthogonal complement of p, r = Q[p], b = Q(·,p), C = Q|complement, y = C⁻¹b, s₀ = r − b*C⁻¹b. Independent of the eigen routine
+(Cholesky + QR + solve), the eigenvalue enters only in the secular check.
+| a | r = Q[p] | b*C⁻¹b | s₀ = r − b*C⁻¹b | ‖y‖²_G | s₀/(1+‖y‖²) | λ₁ (eig) | min spec C | D23 residual | 1 − b*C⁻¹b/r |
+|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| 0.35 | 2.42e−2 | 2.30e−2 | 1.23e−3 | 2.85e−2 | 1.1938e−3 | 1.1937e−3 | 6.55e−2 | 2e−16 | 5.1e−2 |
+| 0.50 | 7.04e−4 | 7.03e−4 | 9.56e−7 | 1.86e−2 | 9.3823e−7 | 9.3823e−7 | 1.95e−4 | 1e−16 | 1.4e−3 |
+| 0.60 | 5.52e−5 | 5.52e−5 | 1.66e−9 | 1.12e−2 | 1.6398e−9 | 1.6398e−9 | 6.05e−7 | 6e−18 | 3.0e−5 |
+| 0.70 | 1.28e−6 | 1.28e−6 | 4.41e−13 | 6.83e−3 | 4.3752e−13 | 4.3676e−13 | 2.74e−10 | 8e−16 | 3.4e−7 |
+Findings. (i) C ≻ 0 on every window, min spec C = λ₂ (the complement's bottom is the first excited mode), so C⁻¹ is legitimate and D22 is exact
+here. (ii) The Schur trial p − y is an upper bound tight to 4 digits (s₀/(1+‖y‖²) vs λ₁), and the secular equation D23 holds to roundoff. (iii)
+The signed cancellation D24: b*C⁻¹b eats r to relative accuracy 1 − b*C⁻¹b/r ≈ λ₁(1+‖y‖²)/r ≈ (λ₁/T)·(T/R) — i.e. exactly the T-scale, since
+λ₁ ≍ T² and R ≍ T. The response y has mass ‖y‖² ≈ 1–3 % (= E/(1−E) of D37) and lives above λ₂. So the unpaid inequality D24 is, in these
+coordinates, «b*C⁻¹b = r(1 − O(T))» with the O(T) explicit — the numbers say the source pays it; the proof does not exist yet.
