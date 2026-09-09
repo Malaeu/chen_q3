@@ -43,3 +43,8 @@
 - /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/Progress_Log.md
 - /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/cartographer/TOOLS.yaml
 - /home/chirurgie/.claude/jobs/4b35770d/tmp/comparator_run3.log (успешный прогон), comparator_run4.log (nanoda)
+
+## Nachtrag (после «Ok go»)
+- Зонд производной пола окна: λ_a ≍ T(a)² (показатель 2.11), K = 24/36/48 согласованы до a = 0.70; переформулировка λ_a = min_w Q[v_out + w]/‖v_in − w‖² (Q-расстояние хвоста Φ до окна); прямая проверка тремя блоками держится при a ≤ 0.45, слепнет ниже λ ~ 1e−6. Чжу 8.9e−18 при 0.8 точен до ×2.5. Отчёт: /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/WINDOW_TAIL_DERIVATIVE_PROBE_2026-09-09.md. Скрипты: phase5_codex/six_centre/window_derivative.py, window_identity_check.py.
+- Ловушка повторена дважды: `pkill -f`/`grep` по шаблону, который есть в собственной командной строке, убивает свою же оболочку (exit 144). Правило памяти vahta-primary-wakeup подтверждено.
+- Открыто: нижняя оценка Q-расстояния хвоста до окна — кандидат для батча Прошке; XI-коррекция кросс-центровых хвостов Arch в sc_build (чтобы проверять тождество ниже 1e−6).
