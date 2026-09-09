@@ -81,3 +81,53 @@ Displayed shortened midpoints are not the endpoints of these narrow balls; exact
 Constant and linear polynomial controls were checked against independent high-precision direct quadrature of the full form. The linear endpoint derivative is h_+'(2a-)=-49/100. The quadrature comparisons are diagnostics; the rigorous radius comes from Arb operations and the explicit outer-mode remainder. Increasing arithmetic precision fixes cancellation in this polynomial calculation; it does not pay theta normalization, derivative-series or projection errors.
 
 The next decisive source margin remains OPEN. In particular, no conclusion about T(0.70)^2-Q[f_source] follows until both T and the source-to-polynomial transfer are enclosed. No finite-candidate failure, cofinal degree law, or lower-sign claim is scored here. The lambda denominator and frozen 1.5 forecast remain UNRESOLVED.
+
+
+## True theta normalization and source-profile discriminator
+
+At the same exact a=7/10, the true theta tail fraction and physical cut norm are now enclosed independently of the window builder. With I(a)=2 integral_a^infinity Phi(x)^2 dx, the quantities are T=I(a)/I(0) and N_a=sqrt(I(0)-I(a)). No projected Gram norm is substituted for N_a.
+
+| quantity | value, rounded for display | interpretation |
+|---|---:|---|
+| true T(a)^2 | 6.589865655707739776e-13 | interval-certified theta mass ratio |
+| true N_a | 0.2827328917872553244 | interval-certified physical cut norm |
+| T(a)^2-Q[f_poly] | -4.564313787875736310e-14 | polynomial scalar difference only; NOT the source margin S40 |
+
+Full outward intervals, not shortened decimal centers, are retained in the companion data. The T-squared enclosure has radius below 6e-117 at 384 bits; the N_a enclosure has radius below 1.4e-107. Independent 256-bit balls overlap these enclosures and pass their absolute-width checks. The separately computed 100-digit truncated-source physical norm agrees in its displayed digits; that quadrature agreement is diagnostic only.
+
+For reproducibility, set z=pi*n^2*exp(2x) and P_0(z)=2z^2-3z. Then Phi_n^(r)(x)=exp(x/2-z)P_r(z), with P_(r+1)=(1/2-2z)P_r+2z P'_r. For r<=15, deg(P_r)=r+2<=17. If P_r=sum_k c_(r,k)z^k and rho=(10/9)^34 exp(-19pi), then
+
+B_r = exp(-81pi)/(1-rho) * sum_k |c_(r,k)|(81pi)^k
+
+bounds the absolute derivative tail n>=9 uniformly on x>=0. Indeed z^(k+1/4)exp(-z) decreases for z>=81pi>17+1/4, and successive n terms have ratio at most rho<1. This also gives uniform termwise differentiation on compact subintervals of the positive half-line. The estimate concerns right derivatives at zero; full-source evenness is a separate theta identity. In particular B_0<3.985e-106, B_14<4.954e-68 and B_15<2.678e-65.
+
+The mass calculation uses the finite n,m<=8 expansion. With c=pi(n^2+m^2) and v=exp(2a), each ordered pair contributes
+
+4*pi^4*n^4*m^4*c^(-9/2)*Gamma(9/2,c*v)
+-6*pi^3*(n^4*m^2+n^2*m^4)*c^(-7/2)*Gamma(7/2,c*v)
++9*pi^2*n^2*m^2*c^(-5/2)*Gamma(5/2,c*v).
+
+Here Gamma(s,z) is the unregularized upper incomplete gamma function. The factor 2 for the two physical tails cancels dx=dv/(2v). Let H_0=sum_(n=1)^8 exp(-pi*n^2)[2(pi*n^2)^2+3pi*n^2], alpha=2pi-9/2 and beta=162pi-9/2. The bounds |Phi_8(x)|<=H_0 exp(-alpha*x), |Phi-Phi_8|<=B_0 exp(-beta*x) yield the explicit mass remainder
+
+E(a)=4 H_0 B_0 exp(-(alpha+beta)a)/(alpha+beta) + B_0^2 exp(-2 beta a)/beta.
+
+The finite mass balls are enlarged by this bound before division or square roots. The implementation checks positivity of total, tail and inside masses and 0<T<1. Thus this follow-up pays the theta normalization and T-squared threshold errors, but does not pay the source-trial projection error.
+
+The intended next source candidate is fixed by the seven numerical response coefficients y_j, each stored as exact binary64 bytes and float.hex in the companion data. These coefficients are never recomputed from source integrals. For the full Phi, define p=1_I Phi/N_a, h_j=1_I g_(2j)-<p,1_I g_(2j)>p, d_j=h_j/||h_j||_2 and f_src=p-sum_(j=0)^6 y_j d_j. This is a fixed admissible choice, not a claim of exact source stationarity or a positive Schur optimizer. The old frozen polynomial remains a separate object. Any refined polynomial used for transfer must approximate this same f_src, preserving y_j and exact physical normalizations.
+
+A deterministic 33-point diagnostic compared the old polynomial with the n<=8 source surrogate using physical quadrature normalizations at 80 decimal digits. Both observed maxima occurred at the interior endpoint a-minus:
+
+| observed quantity | magnitude | status |
+|---|---:|---|
+| profile discrepancy | 1.05507027975187e-8 | observed at x=a, not a supremum upper bound |
+| interior derivative discrepancy | 9.75035263627430e-6 | observed at x=a-minus, not an E-norm estimate |
+
+The selected maxima were recomputed at 100 digits, agreeing in the shown digits. Values at the support boundary mean limits of the interior profiles, not the arbitrary point value of a zero-extended L2 function. The exact-source derivative at zero uses full-source evenness. The diagnostic does not enclose quadrature or the seven direction normalizers; the separately proved theta-tail estimate does not turn this grid into a source certificate.
+
+A useful rigorous transfer inequality is available. For e=1_(-a,a)v, L=2a, |v|<=u and |v'|<=b throughout the closed interval, including one-sided endpoint limits,
+
+||e||_E^2 <= [L exp(L)+L^2+L+4L exp(-L/2)/(1-exp(-2L))]u^2 + (L^4+L^3)b^2/12.
+
+For 0<t<L, the translation difference is bounded by 2t*u^2+(L-t)t^2*b^2; for t>=L it is bounded by 2L*u^2. Integration against A_0(t), using A_0(t)<=1+1/(2t) inside and A_0(t)<=exp(-t/2)/(1-exp(-2L)) outside, proves the displayed bound, including the endpoint jumps. At a=7/10 the coefficients are less than 11.998213 and exactly 0.5488, respectively.
+
+Conditional method test: if a certified full-source endpoint derivative discrepancy is at least 9e-6, every valid b is at least 9e-6. This sufficient estimator then has B>=0.5488*(9e-6)^2=4.44528e-11; using e=sqrt(B) and ||f_poly||_E>=||f_poly||_2>1 in S41 returns an uncertainty budget greater than 2.9e-4, far larger than the polynomial scalar gap. The grid has NOT established that certified premise. This is a statement about the output of the sufficient estimator, NOT a lower bound on the actual E error, and does not reject the source trial or its T-squared budget. The next numerical choice is to obtain a sharper certified approximation of the same frozen source candidate, not increase precision of the already enclosed old polynomial. S40 remains UNRESOLVED until source energy/transfer is enclosed. Cofinal rates, the lambda denominator, the 1.5 forecast and the lower sign remain OPEN.
