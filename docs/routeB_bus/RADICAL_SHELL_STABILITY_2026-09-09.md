@@ -59,3 +59,25 @@ Retain SCHUR as an analytical proof-construction batch: fixed degree schedule, f
 - /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/phase5_codex/six_centre/out/radical_shell_stability_20260909_manifest.json
 - Matrix, eigenpair and margin outputs: /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/phase5_codex/six_centre/out/window_derivative_K{36,48}_codex_radical_20260909_{base,h,xi}*
 - Reproduction scripts are embedded byte-for-byte with hashes in the companion JSON; the original frozen manifest is retained unchanged.
+
+
+## Exact frozen-polynomial follow-up
+
+This follow-up encloses the full form of one explicitly frozen polynomial; it does not certify the theta-source trial, its projection error, a window eigenvalue, the numerical ratio forecast, or RH. The polynomial has exact dyadic Legendre coefficients and is zero outside the exact interval (-7/10,7/10). The earlier builder used binary64 a=0.70; this parameter distinction is explicit and no source-transfer equality is asserted.
+
+The K36 span_g0-12 coefficient vector is reconstructed with the literal vectorized orthogonalization and einsum normalization from one_direction_margin.py. Its raw little-endian binary64 SHA256 is `0da2212a2cf7c9ac5cd627571d3e2adba14806b75cb9644028cde56bee385e7b`. This identity is an enforced precondition, not inferred from a nearby Rayleigh value. A previous per-column reconstruction was a different vector and is excluded from this follow-up. The companion data preserves its historical diagnostic separately.
+
+For p of degree 35, rational arithmetic constructs R_+(t)=integral from t-a to a of p(x)p(x-t), N=integral p^2, and h_+=N-R_+. The exact degree of h_+ is 71. The identities h_+(0)=0, R_+(2a)=0, h_+(2a)=N and the vanishing derivative of order 72 are checked exactly. The full form uses one-sided endpoint derivatives, Hurwitz zeta sums and an explicit geometric outer-mode remainder, all evaluated with Arb. The only prime-power atoms are 2,3,4, with Lambda(4)=log(2); both pole moments are retained. The strict inequalities log(4)<2a<log(5) are checked with intervals.
+
+| precision bits | outer modes | full Q, midpoint (rounded for display) | rigorous absolute radius below | result |
+|---:|---:|---:|---:|---|
+| 256 | 24 | unresolved | 1.19e37 | too wide |
+| 384 | 48 | unresolved | 0.0590 | too wide |
+| 640 | 96 | 7.046297034495313407e-13 | 4.59e-78 | controlled polynomial enclosure |
+| 768 | 128 | 7.046297034495313407e-13 | 3.67e-117 | controlled polynomial enclosure |
+
+Displayed shortened midpoints are not the endpoints of these narrow balls; exact ball strings and outward endpoints are in the companion data. Both high-precision enclosures overlap, and their radii are below 1e-20. The exact rational norm has decimal approximation 1.0067727374858177. Q/N is approximately 6.998895353574841299e-13; its full enclosure is retained in the companion data.
+
+Constant and linear polynomial controls were checked against independent high-precision direct quadrature of the full form. The linear endpoint derivative is h_+'(2a-)=-49/100. The quadrature comparisons are diagnostics; the rigorous radius comes from Arb operations and the explicit outer-mode remainder. Increasing arithmetic precision fixes cancellation in this polynomial calculation; it does not pay theta normalization, derivative-series or projection errors.
+
+The next decisive source margin remains OPEN. In particular, no conclusion about T(0.70)^2-Q[f_source] follows until both T and the source-to-polynomial transfer are enclosed. No finite-candidate failure, cofinal degree law, or lower-sign claim is scored here. The lambda denominator and frozen 1.5 forecast remain UNRESOLVED.

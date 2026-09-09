@@ -1218,5 +1218,1205 @@
       "sha256": "796e911a0994c1da1e04a6a2c527d18942dfecdeb512f5553a9024e8436cca16",
       "text": "import json\nimport numpy as np\nimport scipy.linalg as la\nfrom numpy.polynomial import Polynomial, legendre as leg\nfrom pathlib import Path\nroot=Path('/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/phase5_codex/six_centre/out')\nstem=root/'window_derivative_K48_codex_radical_20260909_base'\nz=np.load(str(stem)+'_matrices.npz'); old=json.loads(Path(str(stem)+'_one_direction.json').read_text())\na='0.70'; Q=z[a+'_Q'];G=z[a+'_G'];c=z[a+'_c'];K=len(c)\nx,w=leg.leggauss(K+40);y=np.exp(2*abs(float(a)*x))\ndef deriv(k):\n    f=np.zeros(len(x))\n    for n in range(1,9):\n        for alpha,coef in [(4.5,2*np.pi**2*n**4),(2.5,-3*np.pi*n*n)]:\n            pol=Polynomial([coef])\n            for j in range(k):\n                pol=Polynomial([0,2])*pol.deriv()+Polynomial([alpha,-2*np.pi*n*n])*pol\n            f+=pol(y)*np.exp(alpha*abs(float(a)*x)-np.pi*n*n*y)\n    return f\np=c/np.sqrt(c@G@c);V=leg.legvander(x,K-1)\nL=la.cholesky(G,lower=True);Li=la.solve_triangular(L,np.eye(K),lower=True);A=Li@Q@Li.T\nprint('floating_scale_independent',np.finfo(float).eps*max(1,la.svdvals(A)[0]))\nprint('floor_recorded',old[a]['floating_scale'])\nfor end in [4,8,12]:\n    D=np.stack([((2*np.arange(K)+1)/2)*(V.T@(w*(deriv(k+2)-.25*deriv(k)))) for k in range(0,end+1,2)],axis=1)\n    D-=np.outer(p,p@G@D);D/=np.sqrt(np.diag(D.T@G@D))\n    C=D.T@Q@D;b=D.T@Q@p;t=p-D@la.solve(C,b)\n    q=t@Q@t/(t@G@t)\n    # Independent G-orthonormal basis for the same computed span.\n    U,R=la.qr(L.T@D,mode='economic');B=la.solve_triangular(L.T,U,lower=False)\n    tq=p-B@la.solve(B.T@Q@B,B.T@Q@p)\n    qq=tq@Q@tq/(tq@G@tq)\n    s=old[a]['dirs'][f'span_g0-{end}']\n    print('span',end,'dimension',D.shape[1],'rank',np.linalg.matrix_rank(L.T@D),'q_direct',q,'ratio',q/z[a+'_ev'][0], 'q_QR',qq,'ratio_QR',qq/z[a+'_ev'][0], 'saved_q_direct',s['q_direct'],'abs_delta',abs(q-s['q_direct']))\n"
     }
+  },
+  "exact_frozen_polynomial_followup": {
+    "scope": "EXACT_DYADIC_POLYNOMIAL_ONLY_NOT_THETA_TRANSFER",
+    "script_sha256": "50a68ed0a550d284fa78c5f795e3dc24c1862731aea854ee4f841d61ad193429",
+    "result_sha256": "a61615d15728eb06762cb4ef4ca62a24edac9ddb9d55d7d1b77668c544c5f5a7",
+    "script_utf8": "#!/usr/bin/env python3\n\"\"\"Certified interval evaluation of the full Q form for one frozen dyadic polynomial.\n\nThis is a /tmp-only diagnostic prototype.  The frozen polynomial is reconstructed\nfrom the K=36, a=0.70 cached finite matrix using the current one_direction_margin\ndefinitions, then every binary64 Legendre coefficient is treated as its exact\ndyadic rational value.  It is not a certificate for the theta trial, a source\nmatrix, a window eigenvalue, or RH.\n\"\"\"\n\nfrom __future__ import annotations\n\nimport hashlib\nimport json\nimport math\nimport sys\nfrom fractions import Fraction\nfrom pathlib import Path\n\nimport numpy as np\nfrom flint import arb, ctx, fmpq, fmpq_poly\nfrom numpy.polynomial import legendre as legendre\nfrom scipy.integrate import quad\n\n\nREPO = Path(\"/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean\")\nSOURCE_NPZ = REPO / \"docs/routeB_bus/phase5_codex/six_centre/out/window_derivative_K36_codex_radical_20260909_base_matrices.npz\"\nSOURCE_ONE_DIRECTION = REPO / \"docs/routeB_bus/phase5_codex/six_centre/out/window_derivative_K36_codex_radical_20260909_base_one_direction.json\"\nOUT = Path(\"/tmp/q3_schur_polynomial_interval_result_source_identity.json\")\nLEGACY_OUT = Path(\"/tmp/q3_schur_polynomial_interval_result.json\")\nEXPECTED_FROZEN_TRIAL_SHA256 = \"0da2212a2cf7c9ac5cd627571d3e2adba14806b75cb9644028cde56bee385e7b\"\nA = fmpq(7, 10)\nL = 2 * A\n\n\ndef die(message: str) -> None:\n    raise RuntimeError(message)\n\n\ndef fmpq_from_float(value: float) -> fmpq:\n    \"\"\"The exact dyadic rational represented by one finite binary64 value.\"\"\"\n    if not math.isfinite(float(value)):\n        die(\"frozen coefficient is not a finite binary64 value\")\n    value_as_fraction = Fraction.from_float(float(value))\n    return fmpq(value_as_fraction.numerator, value_as_fraction.denominator)\n\n\ndef fmpq_to_float(value: fmpq) -> float:\n    \"\"\"Diagnostic-only conversion; the certified path stays in fmpq/Arb.\"\"\"\n    return float(value.numer()) / float(value.denom())\n\n\ndef poly_zero() -> fmpq_poly:\n    return fmpq_poly([0])\n\n\ndef poly_is_zero(poly: fmpq_poly) -> bool:\n    return all(coefficient == 0 for coefficient in poly.coeffs())\n\n\ndef derivative_at(poly: fmpq_poly, order: int, point: fmpq) -> fmpq:\n    derivative = poly\n    for _ in range(order):\n        derivative = derivative.derivative()\n    return derivative(point)\n\n\ndef nth_derivative(poly: fmpq_poly, order: int) -> fmpq_poly:\n    derivative = poly\n    for _ in range(order):\n        derivative = derivative.derivative()\n    return derivative\n\n\ndef legendre_to_x(coefficients: np.ndarray) -> fmpq_poly:\n    \"\"\"Build sum c_k P_k(x/a), exactly, in the physical x coordinate.\"\"\"\n    x = fmpq_poly([0, 1])\n    u = x / A\n    basis = [fmpq_poly([1])]\n    if len(coefficients) > 1:\n        basis.append(u)\n    for degree in range(1, len(coefficients) - 1):\n        basis.append(((2 * degree + 1) * u * basis[-1] - degree * basis[-2]) / (degree + 1))\n    polynomial = poly_zero()\n    for coefficient, legendre_poly in zip(coefficients, basis, strict=True):\n        polynomial += fmpq_from_float(float(coefficient)) * legendre_poly\n    return polynomial\n\n\ndef polynomial_from_power_coefficients(coefficients: list[fmpq]) -> fmpq_poly:\n    return fmpq_poly(coefficients)\n\n\ndef build_rplus(polynomial: fmpq_poly) -> tuple[fmpq, fmpq_poly, fmpq_poly]:\n    \"\"\"Return N, R_+(t), h_+(t) exactly for the zero-extended polynomial.\"\"\"\n    coefficients = list(polynomial.coeffs())\n    degree = polynomial.degree()\n    antiderivative = (polynomial * polynomial).integral()\n    norm = antiderivative(A) - antiderivative(-A)\n\n    t = fmpq_poly([0, 1])\n    shifted_lower = t - A\n    t_powers = [fmpq_poly([1])]\n    for _ in range(degree):\n        t_powers.append(t_powers[-1] * t)\n    endpoint_integrals = [poly_zero()]\n    for power in range(1, 2 * degree + 2):\n        endpoint_integrals.append((fmpq_poly([A**power]) - shifted_lower**power) / power)\n\n    rplus = poly_zero()\n    for i, coefficient_i in enumerate(coefficients):\n        for j, coefficient_j in enumerate(coefficients):\n            for x_power in range(j + 1):\n                t_power = j - x_power\n                scale = coefficient_i * coefficient_j * math.comb(j, x_power) * ((-1) ** t_power)\n                rplus += scale * t_powers[t_power] * endpoint_integrals[i + x_power + 1]\n\n    hplus = fmpq_poly([norm]) - rplus\n    return norm, rplus, hplus\n\n\ndef check_exact_geometry(polynomial: fmpq_poly, norm: fmpq, rplus: fmpq_poly, hplus: fmpq_poly) -> dict[str, object]:\n    d_h = hplus.degree()\n    if polynomial.degree() < 0:\n        die(\"zero polynomial has no prototype geometry\")\n    if hplus(0) != 0:\n        die(\"exact invariant h_+(0)=0 failed\")\n    if rplus(L) != 0 or hplus(L) != norm:\n        die(\"exact endpoint invariant at L failed\")\n    if not poly_is_zero(nth_derivative(hplus, d_h + 1)):\n        die(\"h_+ derivative order d_h+1 is not identically zero\")\n    if d_h > 2 * polynomial.degree() + 1:\n        die(\"unexpected degree bound failure for h_+\")\n    return {\n        \"degree_p\": polynomial.degree(),\n        \"degree_hplus\": d_h,\n        \"N_exact\": str(norm),\n        \"hplus_at_0_exact\": str(hplus(0)),\n        \"rplus_at_L_exact\": str(rplus(L)),\n        \"hplus_at_L_exact\": str(hplus(L)),\n        \"one_sided_jets_0plus_exact\": [str(derivative_at(hplus, j, fmpq(0))) for j in range(1, d_h + 1)],\n        \"one_sided_jets_Lminus_exact\": [str(derivative_at(hplus, j, L)) for j in range(1, d_h + 1)],\n    }\n\n\ndef arb_poly_eval(polynomial: fmpq_poly, point: arb) -> arb:\n    result = arb(0)\n    for coefficient in reversed(list(polynomial.coeffs())):\n        result = result * point + arb(coefficient)\n    return result\n\n\ndef add_error(ball: arb, error: arb) -> arb:\n    \"\"\"Enlarge an Arb ball by a nonnegative absolute error bound.\"\"\"\n    return arb(ball.mid(), ball.rad() + abs(error))\n\n\ndef ball_record(ball: arb) -> dict[str, str]:\n    return {\n        \"ball\": str(ball),\n        \"mid\": str(ball.mid()),\n        \"radius\": str(ball.rad()),\n        \"lower\": str(ball.lower()),\n        \"upper\": str(ball.upper()),\n    }\n\n\ndef public_data(value):\n    \"\"\"Remove live Arb objects before writing the provenance/result JSON.\"\"\"\n    if isinstance(value, dict):\n        return {key: public_data(item) for key, item in value.items() if not key.startswith(\"_\")}\n    if isinstance(value, list):\n        return [public_data(item) for item in value]\n    return value\n\n\ndef exp_moment(polynomial: fmpq_poly, sign: int) -> arb:\n    \"\"\"Exact polynomial-antiderivative formula for int p(x) exp(sign*x/2) dx.\"\"\"\n    s = fmpq(sign, 2)\n    total = arb(0)\n    for degree, coefficient in enumerate(polynomial.coeffs()):\n        def antiderivative_at(endpoint: fmpq) -> arb:\n            endpoint_arb = arb(endpoint)\n            series = arb(0)\n            for q in range(degree + 1):\n                factor = fmpq(((-1) ** q) * math.factorial(degree), math.factorial(degree - q)) / (s ** (q + 1))\n                series += arb(factor) * endpoint_arb ** (degree - q)\n            return (arb(s * endpoint)).exp() * series\n\n        total += arb(coefficient) * (antiderivative_at(A) - antiderivative_at(-A))\n    return total\n\n\ndef dirichlet_enclosure(hplus: fmpq_poly, precision_bits: int, tail_terms: int) -> tuple[arb, arb, dict[str, object]]:\n    \"\"\"Evaluate D with exact one-sided polynomial jets and an explicit outer-mode tail.\"\"\"\n    if tail_terms < 1:\n        die(\"tail_terms must be positive\")\n    ctx.prec = precision_bits\n    d_h = hplus.degree()\n    jets_zero = [derivative_at(hplus, j, fmpq(0)) for j in range(1, d_h + 1)]\n    jets_l = [derivative_at(hplus, j, L) for j in range(1, d_h + 1)]\n    quarter = arb(fmpq(1, 4))\n    first_sum = arb(0)\n    for j, jet in enumerate(jets_zero, start=1):\n        first_sum += arb(jet) * arb(j + 1).zeta(quarter) / (arb(2) ** (j + 1))\n\n    endpoint_sum = arb(0)\n    for n in range(tail_terms):\n        beta = arb(fmpq(4 * n + 1, 2))\n        jet_sum = arb(0)\n        for j, jet in enumerate(jets_l, start=1):\n            jet_sum += arb(jet) / (beta ** (j + 1))\n        endpoint_sum += (-beta * arb(L)).exp() * jet_sum\n\n    central = 2 * first_sum - 2 * endpoint_sum\n    beta_m = arb(fmpq(4 * tail_terms + 1, 2))\n    absolute_jet_sum = arb(0)\n    for j, jet in enumerate(jets_l, start=1):\n        absolute_jet_sum += arb(abs(jet)) / (beta_m ** (j + 1))\n    tail_bound = 2 * (-beta_m * arb(L)).exp() * absolute_jet_sum / (1 - (-2 * arb(L)).exp())\n    return add_error(central, tail_bound), tail_bound, {\n        \"precision_bits\": precision_bits,\n        \"tail_terms\": tail_terms,\n        \"d_h\": d_h,\n        \"central_without_outer_tail\": ball_record(central),\n        \"outer_mode_tail_bound\": ball_record(tail_bound),\n    }\n\n\ndef full_q_enclosure(polynomial: fmpq_poly, norm: fmpq, rplus: fmpq_poly, hplus: fmpq_poly, precision_bits: int, tail_terms: int) -> dict[str, object]:\n    ctx.prec = precision_bits\n    dirichlet, tail_bound, dirichlet_meta = dirichlet_enclosure(hplus, precision_bits, tail_terms)\n    c_a = arb.const_euler() + (arb(8) * arb.pi()).log() + arb.pi() / 2\n    arch_constant = -c_a * arb(norm)\n\n    cutoff_checks = {\n        \"log4_lt_L\": bool(arb(4).log() < arb(L)),\n        \"L_lt_log5\": bool(arb(L) < arb(5).log()),\n        \"L_exact\": str(L),\n    }\n    if not all(cutoff_checks[key] for key in (\"log4_lt_L\", \"L_lt_log5\")):\n        die(\"certified prime cutoff log(4)<L<log(5) failed\")\n\n    prime = arb(0)\n    prime_atoms: list[dict[str, object]] = []\n    for n, prime_base in ((2, 2), (3, 3), (4, 2)):\n        log_n = arb(n).log()\n        r_value = arb_poly_eval(rplus, log_n)\n        lambda_n = arb(prime_base).log()\n        contribution = -2 * lambda_n * r_value / arb(n).sqrt()\n        prime += contribution\n        prime_atoms.append({\"n\": n, \"Lambda\": \"log(2)\" if n == 4 else f\"log({n})\", \"R_log_n\": ball_record(r_value), \"contribution\": ball_record(contribution)})\n\n    moment_plus = exp_moment(polynomial, +1)\n    moment_minus = exp_moment(polynomial, -1)\n    pole = 2 * moment_plus * moment_minus\n    q_value = dirichlet + arch_constant + prime + pole\n    q_over_norm = q_value / arb(norm)\n    components = [dirichlet, arch_constant, prime, pole]\n    q_mid_abs = max(abs(float(q_value.mid())), sys.float_info.min)\n    cancellation = sum(float(component.abs_upper()) for component in components) / q_mid_abs\n    effective_bits = precision_bits - math.log2(max(1.0, cancellation))\n    controlled = float(q_value.rad()) < 1.0e-20 and effective_bits >= 80.0\n    return {\n        \"_dirichlet_ball\": dirichlet,\n        \"_q_ball\": q_value,\n        \"precision_bits\": precision_bits,\n        \"tail_terms\": tail_terms,\n        \"dirichlet\": ball_record(dirichlet),\n        \"dirichlet_outer_tail_bound\": ball_record(tail_bound),\n        \"minus_cA_N\": ball_record(arch_constant),\n        \"prime_sum_2_3_4\": ball_record(prime),\n        \"prime_atoms\": prime_atoms,\n        \"Mplus\": ball_record(moment_plus),\n        \"Mminus\": ball_record(moment_minus),\n        \"pole_rank_two\": ball_record(pole),\n        \"Q_exact_dyadic_polynomial_enclosure\": ball_record(q_value),\n        \"Q_over_N_exact_dyadic_polynomial_enclosure\": ball_record(q_over_norm),\n        \"cancellation_ratio_estimate\": cancellation,\n        \"effective_bits_estimate\": effective_bits,\n        \"controlled\": controlled,\n        \"dirichlet_metadata\": dirichlet_meta,\n        \"prime_cutoff_certificate\": cutoff_checks,\n    }\n\n\ndef phi_deriv(x: np.ndarray, order: int, terms: int = 8) -> np.ndarray:\n    \"\"\"Copied algebraically from current one_direction_margin.py for frozen-vector reconstruction only.\"\"\"\n    x = np.abs(np.asarray(x, float))\n    y = np.exp(2 * x)\n    result = np.zeros_like(x)\n    for n in range(1, terms + 1):\n        for alpha, initial in ((4.5, 2 * np.pi**2 * n**4), (2.5, -3 * np.pi * n**2)):\n            polynomial = np.array([initial])\n            for _ in range(order):\n                derivative = np.polynomial.polynomial.polyder(polynomial) if len(polynomial) > 1 else np.array([0.0])\n                term_one = np.concatenate([[0.0], 2 * derivative])\n                term_two = alpha * polynomial\n                term_three = np.concatenate([[0.0], -2 * np.pi * n * n * polynomial])\n                length = max(len(term_one), len(term_two), len(term_three))\n                polynomial = np.zeros(length)\n                for term in (term_one, term_two, term_three):\n                    polynomial[: len(term)] += term\n            result += np.polynomial.polynomial.polyval(y, polynomial) * np.exp(alpha * x) * np.exp(-np.pi * n * n * y)\n    return result\n\n\ndef reconstruct_frozen_trial() -> tuple[np.ndarray, dict[str, object]]:\n    \"\"\"Reproduce the source span_g0-12 floating-point operation order exactly.\"\"\"\n    archive = np.load(SOURCE_NPZ)\n    q_matrix = archive[\"0.70_Q\"]\n    g_matrix = archive[\"0.70_G\"]\n    cut_phi = archive[\"0.70_c\"]\n    k = q_matrix.shape[0]\n    if q_matrix.shape != (36, 36) or g_matrix.shape != (36, 36) or cut_phi.shape != (36,):\n        die(\"unexpected K36 cached-matrix shapes\")\n    a_float = 0.70\n    p0 = cut_phi / np.sqrt(cut_phi @ g_matrix @ cut_phi)\n\n    def coefficients_for(function):\n        nodes, weights = np.polynomial.legendre.leggauss(k + 40)\n        values = function(a_float * nodes)\n        return np.array([(2 * index + 1) / 2 * np.sum(weights * values * legendre.legval(nodes, np.eye(k)[index])) for index in range(k)])\n\n    def g_even(index: int):\n        return lambda x: phi_deriv(x, index + 2) - 0.25 * phi_deriv(x, index)\n\n    direction_matrix = np.column_stack([coefficients_for(g_even(index)) for index in (0, 2, 4, 6, 8, 10, 12)])\n    # Literal source operation order from one_direction_margin.py.  Its bulk\n    # einsum reduction is intentionally not replaced with a columnwise matmul:\n    # close Rayleigh diagnostics do not establish a bit-identical trial vector.\n    direction_matrix = direction_matrix - np.outer(p0, p0 @ g_matrix @ direction_matrix)\n    direction_matrix = direction_matrix / np.sqrt(np.einsum(\"ij,jk,ki->i\", direction_matrix.T, g_matrix, direction_matrix))[None, :]\n    c_matrix = direction_matrix.T @ q_matrix @ direction_matrix\n    b_vector = direction_matrix.T @ q_matrix @ p0\n    response = np.linalg.solve(c_matrix, b_vector)\n    trial = np.ascontiguousarray((p0 - direction_matrix @ response).astype(\"<f8\"))\n    frozen_trial_sha256 = hashlib.sha256(trial.tobytes()).hexdigest()\n    if frozen_trial_sha256 != EXPECTED_FROZEN_TRIAL_SHA256:\n        die(\"exact source-operation reconstruction did not match the pinned frozen-trial SHA-256\")\n    cached_rayleigh = float(trial @ q_matrix @ trial / (trial @ g_matrix @ trial))\n    with SOURCE_ONE_DIRECTION.open(encoding=\"utf-8\") as handle:\n        prior = json.load(handle)\n    expected = prior[\"0.70\"][\"dirs\"][\"span_g0-12\"][\"q_direct\"]\n    return trial, {\n        \"cached_matrix_sha256\": hashlib.sha256(SOURCE_NPZ.read_bytes()).hexdigest(),\n        \"cached_one_direction_sha256\": hashlib.sha256(SOURCE_ONE_DIRECTION.read_bytes()).hexdigest(),\n        \"source_cut_phi_binary64_sha256\": hashlib.sha256(np.ascontiguousarray(cut_phi.astype(\"<f8\")).tobytes()).hexdigest(),\n        \"frozen_trial_binary64_sha256\": frozen_trial_sha256,\n        \"frozen_trial_expected_binary64_sha256\": EXPECTED_FROZEN_TRIAL_SHA256,\n        \"frozen_trial_identity_matches_expected\": True,\n        \"frozen_trial_binary64_hex\": [float(value).hex() for value in trial],\n        \"frozen_trial_cached_matrix_rayleigh_diagnostic_only\": cached_rayleigh,\n        \"source_reported_cached_matrix_rayleigh_diagnostic_only\": expected,\n        \"cached_matrix_rayleigh_difference_diagnostic_only\": cached_rayleigh - expected,\n        \"reconstruction_contract\": \"literal bulk Dm projection and einsum('ij,jk,ki->i', Dm.T, G, Dm) normalization from one_direction_margin.py\",\n        \"legacy_nonidentical_result_path\": str(LEGACY_OUT) if LEGACY_OUT.exists() else None,\n        \"basis\": \"sum_k c_k P_k(x/a), standard Legendre P_k, physical x in [-a,a]\",\n        \"a_exact\": str(A),\n        \"K\": k,\n        \"m\": 6,\n        \"members\": [\"g0\", \"g2\", \"g4\", \"g6\", \"g8\", \"g10\", \"g12\"],\n    }\n\n\ndef direct_rminus(polynomial: fmpq_poly, t: float) -> float:\n    coefficients = [fmpq_to_float(coefficient) for coefficient in polynomial.coeffs()]\n    a_float = fmpq_to_float(A)\n\n    def evaluate(x: float) -> float:\n        return sum(coefficient * x**index for index, coefficient in enumerate(coefficients))\n\n    return quad(lambda x: evaluate(x) * evaluate(x + t), -a_float, a_float - t, epsabs=1e-11, epsrel=1e-11, limit=300)[0]\n\n\ndef direct_dirichlet(polynomial: fmpq_poly, norm: fmpq, hplus: fmpq_poly) -> float:\n    coefficients = [fmpq_to_float(coefficient) for coefficient in hplus.coeffs()]\n    norm_float = fmpq_to_float(norm)\n    l_float = fmpq_to_float(L)\n    hprime_zero = fmpq_to_float(derivative_at(hplus, 1, fmpq(0)))\n\n    def h_value(t: float) -> float:\n        return sum(coefficient * t**index for index, coefficient in enumerate(coefficients))\n\n    def a0(t: float) -> float:\n        return math.exp(-t / 2) / (-math.expm1(-2 * t))\n\n    def inside_integrand(t: float) -> float:\n        if t == 0:\n            return hprime_zero\n        return 2 * h_value(t) * a0(t)\n\n    def outside_integrand(t: float) -> float:\n        return 2 * norm_float * a0(t)\n\n    return quad(inside_integrand, 0.0, l_float, epsabs=1e-11, epsrel=1e-11, limit=500)[0] + quad(outside_integrand, l_float, 60.0, epsabs=1e-11, epsrel=1e-11, limit=500)[0]\n\n\ndef run_control(name: str, polynomial: fmpq_poly, expected_d_h: int) -> dict[str, object]:\n    norm, rplus, hplus = build_rplus(polynomial)\n    geometry = check_exact_geometry(polynomial, norm, rplus, hplus)\n    if geometry[\"degree_hplus\"] != expected_d_h:\n        die(f\"{name}: expected d_h={expected_d_h}, got {geometry['degree_hplus']}\")\n    enclosure = full_q_enclosure(polynomial, norm, rplus, hplus, 256, 24)\n    dirichlet_mid = float(enclosure[\"_dirichlet_ball\"].mid())\n    direct = direct_dirichlet(polynomial, norm, hplus)\n    symmetry_errors = []\n    for fraction in (0.2, 0.5, 0.9):\n        t_float = fraction * fmpq_to_float(L)\n        exact_positive = fmpq_to_float(rplus(fmpq(int(fraction * 10), 10) * L))\n        symmetry_errors.append(abs(exact_positive - direct_rminus(polynomial, t_float)))\n    if abs(dirichlet_mid - direct) > 1e-9 * max(1.0, abs(direct)):\n        die(f\"{name}: direct Dirichlet control disagrees with the jet formula\")\n    if max(symmetry_errors) > 1e-9:\n        die(f\"{name}: autocorrelation symmetry control failed\")\n    if name == \"constant\" and geometry[\"one_sided_jets_0plus_exact\"][0] != \"1\":\n        die(\"constant control did not retain h_+'(0+)=1\")\n    if name == \"linear\" and geometry[\"one_sided_jets_Lminus_exact\"][0] != \"-49/100\":\n        die(\"linear control did not retain h_+'(L-)=-49/100\")\n    return {\n        \"geometry\": geometry,\n        \"dirichlet_arb_mid\": dirichlet_mid,\n        \"dirichlet_direct_quadrature_diagnostic_only\": direct,\n        \"dirichlet_absolute_difference\": abs(dirichlet_mid - direct),\n        \"symmetry_absolute_errors\": symmetry_errors,\n        \"full_q\": public_data(enclosure),\n    }\n\n\ndef balls_overlap(left: dict[str, object], right: dict[str, object]) -> bool:\n    return left[\"_q_ball\"].overlaps(right[\"_q_ball\"])\n\n\ndef main() -> int:\n    old_precision = ctx.prec\n    try:\n        controls = {\n            \"constant\": run_control(\"constant\", polynomial_from_power_coefficients([fmpq(1)]), 1),\n            \"linear\": run_control(\"linear\", polynomial_from_power_coefficients([fmpq(0), fmpq(1)]), 3),\n        }\n        frozen_coefficients, provenance = reconstruct_frozen_trial()\n        polynomial = legendre_to_x(frozen_coefficients)\n        norm, rplus, hplus = build_rplus(polynomial)\n        geometry = check_exact_geometry(polynomial, norm, rplus, hplus)\n        settings = [(256, 24), (384, 48), (640, 96), (768, 128)]\n        evaluations = [full_q_enclosure(polynomial, norm, rplus, hplus, precision, tail_terms) for precision, tail_terms in settings]\n        adjacent_overlaps = [balls_overlap(left, right) for left, right in zip(evaluations, evaluations[1:])]\n        overlap = all(adjacent_overlaps)\n        high_precision_overlap = balls_overlap(evaluations[-2], evaluations[-1])\n        narrow = all(evaluation[\"controlled\"] for evaluation in evaluations)\n        high_precision_narrow = all(evaluation[\"controlled\"] for evaluation in evaluations[-2:])\n        result = {\n            \"status\": \"COMPLETE_EXACT_DYADIC_POLYNOMIAL_ONLY\" if high_precision_overlap and high_precision_narrow else \"STOP_UNCONTROLLED_OR_NONOVERLAPPING\",\n            \"scope\": {\n                \"object\": \"one frozen real exact-dyadic K36 a=7/10 m=6 Legendre polynomial, zero extended outside [-a,a]\",\n                \"not_a_source_certificate\": True,\n                \"not_a_theta_transfer\": True,\n                \"not_an_RH_claim\": True,\n                \"no_window_eigenvalue_comparison\": True,\n            },\n            \"controls\": controls,\n            \"frozen_provenance\": provenance,\n            \"exact_geometry\": geometry,\n            \"evaluations\": [public_data(evaluation) for evaluation in evaluations],\n            \"overlapping_enclosures\": overlap,\n            \"adjacent_enclosure_overlaps\": adjacent_overlaps,\n            \"high_precision_enclosure_overlap\": high_precision_overlap,\n            \"narrowness_target_abs_radius_lt_1e-20\": narrow,\n            \"high_precision_narrowness_target_abs_radius_lt_1e-20\": high_precision_narrow,\n            \"low_precision_results_preserved_separately\": str(LEGACY_OUT) if LEGACY_OUT.exists() else None,\n        }\n        OUT.write_text(json.dumps(result, indent=2, sort_keys=True) + \"\\n\", encoding=\"utf-8\")\n        print(f\"RESULT={result['status']}\")\n        print(f\"OUT={OUT}\")\n        print(f\"TRIAL_SHA256={provenance['frozen_trial_binary64_sha256']}\")\n        print(f\"D_H={geometry['degree_hplus']}\")\n        print(f\"OVERLAP_ALL={overlap} OVERLAP_HIGH={high_precision_overlap} NARROW_ALL={narrow} NARROW_HIGH={high_precision_narrow}\")\n        for evaluation in evaluations:\n            print(f\"precision={evaluation['precision_bits']} M={evaluation['tail_terms']} Q={evaluation['Q_exact_dyadic_polynomial_enclosure']['ball']} Q_over_N={evaluation['Q_over_N_exact_dyadic_polynomial_enclosure']['ball']} tail={evaluation['dirichlet_outer_tail_bound']['ball']} controlled={evaluation['controlled']}\")\n        return 0 if result[\"status\"] == \"COMPLETE_EXACT_DYADIC_POLYNOMIAL_ONLY\" else 2\n    except Exception as error:\n        failure = {\"status\": \"FAILED\", \"error_type\": type(error).__name__, \"error\": str(error)}\n        OUT.write_text(json.dumps(failure, indent=2, sort_keys=True) + \"\\n\", encoding=\"utf-8\")\n        print(f\"RESULT=FAILED error={type(error).__name__}: {error}\", file=sys.stderr)\n        return 1\n    finally:\n        ctx.prec = old_precision\n\n\nif __name__ == \"__main__\":\n    raise SystemExit(main())\n",
+    "result": {
+      "adjacent_enclosure_overlaps": [
+        true,
+        true,
+        true
+      ],
+      "controls": {
+        "constant": {
+          "dirichlet_absolute_difference": 5.240252676230739e-13,
+          "dirichlet_arb_mid": 4.616132139039903,
+          "dirichlet_direct_quadrature_diagnostic_only": 4.616132139039379,
+          "full_q": {
+            "Mminus": {
+              "ball": "[1.428758917749087627831149925817987929304934940429887972768562150842232274806 +/- 5.20e-76]",
+              "lower": "[1.428758917749087627831149925817987929304934940429887972768562150842232274805 +/- 4.65e-76]",
+              "mid": "[1.428758917749087627831149925817987929304934940429887972768562150842232274806 +/- 4.50e-76]",
+              "radius": "[7.036053418418437411680498644437550872954356422721043432312733211907155603514e-77 +/- 2.28e-154]",
+              "upper": "[1.428758917749087627831149925817987929304934940429887972768562150842232274806 +/- 3.63e-76]"
+            },
+            "Mplus": {
+              "ball": "[1.428758917749087627831149925817987929304934940429887972768562150842232274806 +/- 5.20e-76]",
+              "lower": "[1.428758917749087627831149925817987929304934940429887972768562150842232274805 +/- 4.65e-76]",
+              "mid": "[1.428758917749087627831149925817987929304934940429887972768562150842232274806 +/- 4.50e-76]",
+              "radius": "[7.036053418418437411680498644437550872954356422721043432312733211907155603514e-77 +/- 2.28e-154]",
+              "upper": "[1.428758917749087627831149925817987929304934940429887972768562150842232274806 +/- 3.63e-76]"
+            },
+            "Q_exact_dyadic_polynomial_enclosure": {
+              "ball": "[0.09305031795510980703907178418964 +/- 5.99e-33]",
+              "lower": "[0.09305031795510980703907178418963401560065406588679465532902976157443441852547 +/- 3.76e-78]",
+              "mid": "[0.09305031795510980703907178418963695458835266164854129094413435266626663972929 +/- 3.54e-78]",
+              "radius": "[2.938987698595761746635615104591091832221203819778387945284940370276050014553e-33 +/- 6.86e-111]",
+              "upper": "[0.09305031795510980703907178418963989357605125741028792655923894375809886093311 +/- 3.32e-78]"
+            },
+            "Q_over_N_exact_dyadic_polynomial_enclosure": {
+              "ball": "[0.06646451282507843359933698870688 +/- 5.64e-33]",
+              "lower": "[0.06646451282507843359933698870688143968270377990925677240682125262762372212850 +/- 2.19e-78]",
+              "mid": "[0.06646451282507843359933698870688353899167660673102699011925657507285767090806 +/- 8.99e-79]",
+              "radius": "[2.099308972826821770217712435322445233948779563079677904792306629075393509254e-33 +/- 1.01e-109]",
+              "upper": "[0.06646451282507843359933698870688563830064943355279720783169189751809161968762 +/- 3.98e-78]"
+            },
+            "cancellation_ratio_estimate": 185.97058581425944,
+            "controlled": true,
+            "dirichlet": {
+              "ball": "[4.61613213903990269999448414398452 +/- 7.89e-33]",
+              "lower": "[4.616132139039902699994484143984512112221444000934920132783381120459476514208 +/- 1.12e-77]",
+              "mid": "[4.616132139039902699994484143984515051209133987118901956722401956156749002167 +/- 1.21e-76]",
+              "radius": "[2.938987689986183981823939020835697272487959109192458574395627468600622478334e-33 +/- 1.17e-109]",
+              "upper": "[4.616132139039902699994484143984517990196823973302883780661422791854021490126 +/- 2.30e-76]"
+            },
+            "dirichlet_metadata": {
+              "central_without_outer_tail": {
+                "ball": "[4.61613213903990269999448414398451505120913398711890195672240195615674900217 +/- 3.96e-75]",
+                "lower": "[4.616132139039902699994484143984515051209133987118901956722401956156749002166 +/- 1.50e-77]",
+                "mid": "[4.616132139039902699994484143984515051209133987118901956722401956156749002167 +/- 1.21e-76]",
+                "radius": "[1.072310298649672510712360084700120375878627866919827576186920633217239092565e-75 +/- 1.71e-151]",
+                "upper": "[4.616132139039902699994484143984515051209133987118901956722401956156749002168 +/- 2.26e-76]"
+              },
+              "d_h": 1,
+              "outer_mode_tail_bound": {
+                "ball": "[2.93898768574591894009256886738358683596477928556255393230030905665134591470e-33 +/- 5.92e-108]",
+                "lower": "[2.938987685745918940092568867383586835964779285562553932300309056651345914694e-33 +/- 1.54e-109]",
+                "mid": "[2.938987685745918940092568867383586835964779285562553932300309056651345914700e-33 +/- 3.47e-110]",
+                "radius": "[5.879875249123736558366451654613423545498671194692570088205362380432624943926e-108 +/- 3.21e-184]",
+                "upper": "[2.938987685745918940092568867383586835964779285562553932300309056651345914706e-33 +/- 8.42e-110]"
+              },
+              "precision_bits": 256,
+              "tail_terms": 24
+            },
+            "dirichlet_outer_tail_bound": {
+              "ball": "[2.93898768574591894009256886738358683596477928556255393230030905665134591470e-33 +/- 5.92e-108]",
+              "lower": "[2.938987685745918940092568867383586835964779285562553932300309056651345914694e-33 +/- 1.54e-109]",
+              "mid": "[2.938987685745918940092568867383586835964779285562553932300309056651345914700e-33 +/- 3.47e-110]",
+              "radius": "[5.879875249123736558366451654613423545498671194692570088205362380432624943926e-108 +/- 3.21e-184]",
+              "upper": "[2.938987685745918940092568867383586835964779285562553932300309056651345914706e-33 +/- 8.42e-110]"
+            },
+            "effective_bits_estimate": 248.4610693558579,
+            "minus_cA_N": {
+              "ball": "[-7.521056786915931815126140496429639204620354952272975380436463683387532392000 +/- 7.43e-76]",
+              "lower": "[-7.521056786915931815126140496429639204620354952272975380436463683387532392001 +/- 1.97e-76]",
+              "mid": "[-7.521056786915931815126140496429639204620354952272975380436463683387532392000 +/- 4.59e-76]",
+              "radius": "[2.844376925019470296521636486301612812230060020797205443670805531856960218440e-76 +/- 2.65e-152]",
+              "upper": "[-7.521056786915931815126140496429639204620354952272975380436463683387532392000 +/- 1.13e-76]"
+            },
+            "pole_rank_two": {
+              "ball": "[4.082704090095088290634795855844753853801676478861468588989606383176198967454 +/- 5.18e-76]",
+              "lower": "[4.082704090095088290634795855844753853801676478861468588989606383176198967454 +/- 4.37e-76]",
+              "mid": "[4.082704090095088290634795855844753853801676478861468588989606383176198967454 +/- 4.68e-77]",
+              "radius": "[4.712023138185073380413442126773566722294475167711589144844123462666746648358e-76 +/- 3.59e-152]",
+              "upper": "[4.082704090095088290634795855844753853801676478861468588989606383176198967455 +/- 4.70e-76]"
+            },
+            "precision_bits": 256,
+            "prime_atoms": [
+              {
+                "Lambda": "log(2)",
+                "R_log_n": {
+                  "ball": "[0.7068528194400546905827678785418234319244998656397447458793199905066063780303 +/- 1.94e-77]",
+                  "lower": "[0.7068528194400546905827678785418234319244998656397447458793199905066063780303 +/- 2.49e-77]",
+                  "mid": "[0.7068528194400546905827678785418234319244998656397447458793199905066063780303 +/- 1.02e-78]",
+                  "radius": "[1.835185821174792976312117844681930017281955682822947032589176254402330587612e-77 +/- 2.43e-153]",
+                  "upper": "[0.7068528194400546905827678785418234319244998656397447458793199905066063780303 +/- 2.70e-77]"
+                },
+                "contribution": {
+                  "ball": "[-0.6928982324898162143127948927330668730975758469799690407150845588792799686908 +/- 7.20e-77]",
+                  "lower": "[-0.6928982324898162143127948927330668730975758469799690407150845588792799686908 +/- 1.36e-77]",
+                  "mid": "[-0.6928982324898162143127948927330668730975758469799690407150845588792799686908 +/- 2.97e-77]",
+                  "radius": "[4.227470122605812075197632970436360398986227235684405819459356428349541531639e-77 +/- 4.72e-154]",
+                  "upper": "[-0.6928982324898162143127948927330668730975758469799690407150845588792799686907 +/- 2.72e-77]"
+                },
+                "n": 2
+              },
+              {
+                "Lambda": "log(3)",
+                "R_log_n": {
+                  "ball": "[0.3013877113318903086047547630774742953525094421772505482653056663625057067814 +/- 4.13e-77]",
+                  "lower": "[0.3013877113318903086047547630774742953525094421772505482653056663625057067814 +/- 4.56e-77]",
+                  "mid": "[0.3013877113318903086047547630774742953525094421772505482653056663625057067814 +/- 6.67e-78]",
+                  "radius": "[3.454467434906671823824613040467540262125622567295461507096038456033456039024e-77 +/- 6.40e-154]",
+                  "upper": "[0.3013877113318903086047547630774742953525094421772505482653056663625057067814 +/- 3.22e-77]"
+                },
+                "contribution": {
+                  "ball": "[-0.382330866826612570301352909088808620859932720163618651581101998356448662963 +/- 2.95e-76]",
+                  "lower": "[-0.3823308668266125703013529090888086208599327201636186515811019983564486629628 +/- 3.29e-77]",
+                  "mid": "[-0.3823308668266125703013529090888086208599327201636186515811019983564486629628 +/- 3.20e-77]",
+                  "radius": "[6.295101470425466921893306790934254426608672547435749422434051620697088561506e-77 +/- 1.88e-153]",
+                  "upper": "[-0.3823308668266125703013529090888086208599327201636186515811019983564486629627 +/- 3.28e-78]"
+                },
+                "n": 3
+              },
+              {
+                "Lambda": "log(2)",
+                "R_log_n": {
+                  "ball": "[0.0137056388801093811655357570836468638489997312794894917586399810132127560606 +/- 2.50e-77]",
+                  "lower": "[0.01370563888010938116553575708364686384899973127948949175863998101321275606059 +/- 4.10e-78]",
+                  "mid": "[0.01370563888010938116553575708364686384899973127948949175863998101321275606061 +/- 4.53e-78]",
+                  "radius": "[1.943137928113473534129447242966935011920905687378400549901972547779437985151e-77 +/- 2.88e-153]",
+                  "upper": "[0.01370563888010938116553575708364686384899973127948949175863998101321275606063 +/- 4.96e-78]"
+                },
+                "contribution": {
+                  "ball": "[-0.0095000249475205838499199173881172518445942849152661820352237460434203062379 +/- 1.38e-77]",
+                  "lower": "[-0.009500024947520583849919917388117251844594284915266182035223746043420306237914 +/- 2.35e-79]",
+                  "mid": "[-0.009500024947520583849919917388117251844594284915266182035223746043420306237900 +/- 1.38e-79]",
+                  "radius": "[1.361854147192773357399475539818369721949452179814229852371519675212009992701e-77 +/- 2.28e-153]",
+                  "upper": "[-0.009500024947520583849919917388117251844594284915266182035223746043420306237887 +/- 4.92e-79]"
+                },
+                "n": 4
+              }
+            ],
+            "prime_cutoff_certificate": {
+              "L_exact": "7/5",
+              "L_lt_log5": true,
+              "log4_lt_L": true
+            },
+            "prime_sum_2_3_4": {
+              "ball": "[-1.084729124263949368464067719209992745802102852058853874331410303279148937891 +/- 5.69e-76]",
+              "lower": "[-1.084729124263949368464067719209992745802102852058853874331410303279148937892 +/- 4.30e-76]",
+              "mid": "[-1.084729124263949368464067719209992745802102852058853874331410303279148937891 +/- 4.16e-76]",
+              "radius": "[1.533889316869627719147999219398283459283036331946937212481768764630908646599e-76 +/- 8.56e-154]",
+              "upper": "[-1.084729124263949368464067719209992745802102852058853874331410303279148937891 +/- 2.60e-76]"
+            },
+            "tail_terms": 24
+          },
+          "geometry": {
+            "N_exact": "7/5",
+            "degree_hplus": 1,
+            "degree_p": 0,
+            "hplus_at_0_exact": "0",
+            "hplus_at_L_exact": "7/5",
+            "one_sided_jets_0plus_exact": [
+              "1"
+            ],
+            "one_sided_jets_Lminus_exact": [
+              "1"
+            ],
+            "rplus_at_L_exact": "0"
+          },
+          "symmetry_absolute_errors": [
+            2.220446049250313e-16,
+            0.0,
+            1.1102230246251565e-16
+          ]
+        },
+        "linear": {
+          "dirichlet_absolute_difference": 8.570921750106208e-14,
+          "dirichlet_arb_mid": 1.1280898861385702,
+          "dirichlet_direct_quadrature_diagnostic_only": 1.1280898861384845,
+          "full_q": {
+            "Mminus": {
+              "ball": "[-0.115740058138583700013003053723075402819942114479258419787859295539670900264 +/- 4.89e-76]",
+              "lower": "[-0.1157400581385837000130030537230754028199421144792584197878592955396709002642 +/- 3.23e-77]",
+              "mid": "[-0.1157400581385837000130030537230754028199421144792584197878592955396709002638 +/- 3.97e-77]",
+              "radius": "[3.277437923405110551671691585090860177277658421847660077398398455516849105510e-76 +/- 1.14e-152]",
+              "upper": "[-0.1157400581385837000130030537230754028199421144792584197878592955396709002635 +/- 1.15e-77]"
+            },
+            "Mplus": {
+              "ball": "[0.115740058138583700013003053723075402819942114479258419787859295539670900264 +/- 4.89e-76]",
+              "lower": "[0.1157400581385837000130030537230754028199421144792584197878592955396709002635 +/- 1.15e-77]",
+              "mid": "[0.1157400581385837000130030537230754028199421144792584197878592955396709002638 +/- 3.97e-77]",
+              "radius": "[3.277437923405110551671691585090860177277658421847660077398398455516849105510e-76 +/- 1.14e-152]",
+              "upper": "[0.1157400581385837000130030537230754028199421144792584197878592955396709002642 +/- 3.23e-77]"
+            },
+            "Q_exact_dyadic_polynomial_enclosure": {
+              "ball": "[0.04426888107890222480213028513644 +/- 5.03e-33]",
+              "lower": "[0.04426888107890222480213028513643497622209659444402237879445479912038672862084 +/- 3.41e-78]",
+              "mid": "[0.04426888107890222480213028513643650241226400833602602420182105438890292417468 +/- 4.45e-79]",
+              "radius": "[1.526190167413892003645407366255268516195553836155054128692222363029851184280e-33 +/- 4.50e-109]",
+              "upper": "[0.04426888107890222480213028513643802860243142222802966960918730965741911972852 +/- 4.29e-78]"
+            },
+            "Q_over_N_exact_dyadic_polynomial_enclosure": {
+              "ball": "[0.1935956898494266390763715093430 +/- 2.35e-32]",
+              "lower": "[0.1935956898494266390763715093430100999947325581910241863728652918030082061369 +/- 2.78e-79]",
+              "mid": "[0.1935956898494266390763715093430167743976457759615758515601647978425736387022 +/- 1.14e-77]",
+              "radius": "[6.674402913217770551665187299506039565432565288954992901503755677733442652766e-33 +/- 8.41e-110]",
+              "upper": "[0.1935956898494266390763715093430234488005589937321275167474643038821390712675 +/- 2.24e-77]"
+            },
+            "cancellation_ratio_estimate": 57.70939796625378,
+            "controlled": true,
+            "dirichlet": {
+              "ball": "[1.12808988613857023916399254397724 +/- 4.81e-33]",
+              "lower": "[1.128089886138570239163992543977235195186182082892685974315357606370287556243 +/- 3.94e-76]",
+              "mid": "[1.128089886138570239163992543977236721376345191995807213884681983941523885174 +/- 8.70e-77]",
+              "radius": "[1.526190163109103121239569324377571236328931480862089443247565912192137416170e-33 +/- 1.13e-109]",
+              "upper": "[1.128089886138570239163992543977238247566508301098928453454006361512760214106 +/- 4.33e-76]"
+            },
+            "dirichlet_metadata": {
+              "central_without_outer_tail": {
+                "ball": "[1.1280898861385702391639925439772367213763451919958072138846819839415238852 +/- 3.46e-74]",
+                "lower": "[1.128089886138570239163992543977236721376345191995807213884681983941523885165 +/- 4.34e-76]",
+                "mid": "[1.128089886138570239163992543977236721376345191995807213884681983941523885174 +/- 8.70e-77]",
+                "radius": "[8.640197923161913764893084461182294090810687057824547238191084090667078313128e-75 +/- 2.30e-152]",
+                "upper": "[1.128089886138570239163992543977236721376345191995807213884681983941523885183 +/- 2.60e-76]"
+              },
+              "d_h": 3,
+              "outer_mode_tail_bound": {
+                "ball": "[1.52619016074305637161034035622540962019261039824120460609614550471772161257e-33 +/- 4.39e-108]",
+                "lower": "[1.526190160743056371610340356225409620192610398241204606096145504717721612568e-33 +/- 1.90e-109]",
+                "mid": "[1.526190160743056371610340356225409620192610398241204606096145504717721612571e-33 +/- 2.90e-109]",
+                "radius": "[3.095560157319124184515631774630951374170884987419796703413834239418203199915e-108 +/- 3.05e-184]",
+                "upper": "[1.526190160743056371610340356225409620192610398241204606096145504717721612574e-33 +/- 3.91e-109]"
+              },
+              "precision_bits": 256,
+              "tail_terms": 24
+            },
+            "dirichlet_outer_tail_bound": {
+              "ball": "[1.52619016074305637161034035622540962019261039824120460609614550471772161257e-33 +/- 4.39e-108]",
+              "lower": "[1.526190160743056371610340356225409620192610398241204606096145504717721612568e-33 +/- 1.90e-109]",
+              "mid": "[1.526190160743056371610340356225409620192610398241204606096145504717721612571e-33 +/- 2.90e-109]",
+              "radius": "[3.095560157319124184515631774630951374170884987419796703413834239418203199915e-108 +/- 3.05e-184]",
+              "upper": "[1.526190160743056371610340356225409620192610398241204606096145504717721612574e-33 +/- 3.91e-109]"
+            },
+            "effective_bits_estimate": 250.1492656244523,
+            "minus_cA_N": {
+              "ball": "[-1.228439275196268863137269614416841070087991308871252645471289068286630290693 +/- 4.50e-76]",
+              "lower": "[-1.228439275196268863137269614416841070087991308871252645471289068286630290693 +/- 4.52e-76]",
+              "mid": "[-1.228439275196268863137269614416841070087991308871252645471289068286630290693 +/- 4.01e-76]",
+              "radius": "[4.888894371298984292246181416114078856282110300551931877050417428721958669032e-77 +/- 2.64e-153]",
+              "upper": "[-1.228439275196268863137269614416841070087991308871252645471289068286630290693 +/- 3.49e-76]"
+            },
+            "pole_rank_two": {
+              "ball": "[-0.026791522115845469947849180586931497428322273165250455443509853940288194264 +/- 5.52e-76]",
+              "lower": "[-0.02679152211584546994784918058693149742832227316525045544350985394028819426375 +/- 2.98e-78]",
+              "mid": "[-0.02679152211584546994784918058693149742832227316525045544350985394028819426360 +/- 7.62e-79]",
+              "radius": "[1.520022234265995954024990924053885474295167689067355543528268893058748389505e-76 +/- 4.51e-152]",
+              "upper": "[-0.02679152211584546994784918058693149742832227316525045544350985394028819426345 +/- 1.46e-78]"
+            },
+            "precision_bits": 256,
+            "prime_atoms": [
+              {
+                "Lambda": "log(2)",
+                "R_log_n": {
+                  "ball": "[-0.0554713431428849549946348090792180943309739849450906324539312308144541206645 +/- 4.32e-77]",
+                  "lower": "[-0.05547134314288495499463480907921809433097398494509063245393123081445412066449 +/- 2.99e-78]",
+                  "mid": "[-0.05547134314288495499463480907921809433097398494509063245393123081445412066447 +/- 1.90e-78]",
+                  "radius": "[1.506461126989595059325402111398261798287320975802414594135911955349993930784e-77 +/- 9.94e-154]",
+                  "upper": "[-0.05547134314288495499463480907921809433097398494509063245393123081445412066446 +/- 3.22e-78]"
+                },
+                "contribution": {
+                  "ball": "[0.0543762358449511316958762376921184823366492589038287372236017245868113080548 +/- 1.77e-77]",
+                  "lower": "[0.05437623584495113169587623769211848233664925890382873722360172458681130805478 +/- 3.56e-78]",
+                  "mid": "[0.05437623584495113169587623769211848233664925890382873722360172458681130805480 +/- 8.25e-79]",
+                  "radius": "[1.681935821938481006761117770107789867902122565577941344280239568404134055563e-77 +/- 4.46e-153]",
+                  "upper": "[0.05437623584495113169587623769211848233664925890382873722360172458681130805482 +/- 1.91e-78]"
+                },
+                "n": 2
+              },
+              {
+                "Lambda": "log(3)",
+                "R_log_n": {
+                  "ball": "[-0.0886585280900558615161992374390495075162310607691609044731091122103227901509 +/- 5.94e-77]",
+                  "lower": "[-0.08865852809005586151619923743904950751623106076916090447310911221032279015091 +/- 3.08e-78]",
+                  "mid": "[-0.08865852809005586151619923743904950751623106076916090447310911221032279015088 +/- 3.64e-78]",
+                  "radius": "[3.574347114831530409159102044349642145103626527950930159086950258313286286735e-77 +/- 2.67e-155]",
+                  "upper": "[-0.08865852809005586151619923743904950751623106076916090447310911221032279015084 +/- 3.40e-79]"
+                },
+                "contribution": {
+                  "ball": "[0.1124693894998098874570238581345755978439940010453246320226139756232062968527 +/- 6.58e-77]",
+                  "lower": "[0.1124693894998098874570238581345755978439940010453246320226139756232062968526 +/- 3.41e-77]",
+                  "mid": "[0.1124693894998098874570238581345755978439940010453246320226139756232062968527 +/- 1.52e-77]",
+                  "radius": "[5.055963596939463441338841462961629246041432029647599943678757487657977542023e-77 +/- 3.36e-153]",
+                  "upper": "[0.1124693894998098874570238581345755978439940010453246320226139756232062968527 +/- 3.56e-77]"
+                },
+                "n": 3
+              },
+              {
+                "Lambda": "log(2)",
+                "R_log_n": {
+                  "ball": "[-0.0065847009635070969370827022133723111724881512082412791833172852717223833915 +/- 7.39e-77]",
+                  "lower": "[-0.006584700963507096937082702213372311172488151208241279183317285271722383391574 +/- 4.76e-80]",
+                  "mid": "[-0.006584700963507096937082702213372311172488151208241279183317285271722383391546 +/- 4.77e-80]",
+                  "radius": "[2.794121969509194901848993196507351591946307576677486504225788712102922488485e-77 +/- 1.67e-153]",
+                  "upper": "[-0.006584700963507096937082702213372311172488151208241279183317285271722383391518 +/- 4.78e-80]"
+                },
+                "contribution": {
+                  "ball": "[0.0045641669076852995703564403362782683715891384275685419857222924642799190501 +/- 3.03e-77]",
+                  "lower": "[0.004564166907685299570356440336278268371589138427568541985722292464279919050091 +/- 2.93e-79]",
+                  "mid": "[0.004564166907685299570356440336278268371589138427568541985722292464279919050111 +/- 2.09e-79]",
+                  "radius": "[1.944195612857498997118847622654243781952313678032143019212470873932650106182e-77 +/- 2.36e-153]",
+                  "upper": "[0.004564166907685299570356440336278268371589138427568541985722292464279919050130 +/- 2.91e-79]"
+                },
+                "n": 4
+              }
+            ],
+            "prime_cutoff_certificate": {
+              "L_exact": "7/5",
+              "L_lt_log5": true,
+              "log4_lt_L": true
+            },
+            "prime_sum_2_3_4": {
+              "ball": "[0.171409792252446318723256536162972348552232398376721911231937992674297523958 +/- 4.98e-76]",
+              "lower": "[0.1714097922524463187232565361629723485522323983767219112319379926742975239575 +/- 6.13e-79]",
+              "mid": "[0.1714097922524463187232565361629723485522323983767219112319379926742975239576 +/- 6.56e-78]",
+              "radius": "[9.113903478793506636993232891884753524970501923760921806052488705452220270564e-77 +/- 4.49e-153]",
+              "upper": "[0.1714097922524463187232565361629723485522323983767219112319379926742975239577 +/- 1.38e-77]"
+            },
+            "tail_terms": 24
+          },
+          "geometry": {
+            "N_exact": "343/1500",
+            "degree_hplus": 3,
+            "degree_p": 1,
+            "hplus_at_0_exact": "0",
+            "hplus_at_L_exact": "343/1500",
+            "one_sided_jets_0plus_exact": [
+              "49/100",
+              "0",
+              "-1"
+            ],
+            "one_sided_jets_Lminus_exact": [
+              "-49/100",
+              "-7/5",
+              "-1"
+            ],
+            "rplus_at_L_exact": "0"
+          },
+          "symmetry_absolute_errors": [
+            1.3877787807814457e-17,
+            1.3877787807814457e-17,
+            3.469446951953614e-17
+          ]
+        }
+      },
+      "evaluations": [
+        {
+          "Mminus": {
+            "ball": "[0.8340654727080949609 +/- 3.58e-20]",
+            "lower": "[0.8340654727080949608642697160252215770141595825116398360308037586382000647017 +/- 3.06e-78]",
+            "mid": "[0.8340654727080949608771027486077574308640296891454239369096182966874551986574 +/- 3.64e-77]",
+            "radius": "[1.283303258253585384987010663378410087881453804925513395573943853378295898438e-20 +/- 5.00e-96]",
+            "upper": "[0.8340654727080949608899357811902932847138997957792080377884328347367103326132 +/- 2.42e-77]"
+          },
+          "Mplus": {
+            "ball": "[0.8340654727080949591 +/- 4.54e-20]",
+            "lower": "[0.8340654727080949590546037774319968605332197415263209258168974424978303713299 +/- 4.21e-77]",
+            "mid": "[0.8340654727080949590674368100145327143830898481601050266957119805470855052856 +/- 2.63e-78]",
+            "radius": "[1.283303258253585384987010663378410087881453804925513395573943853378295898438e-20 +/- 5.00e-96]",
+            "upper": "[0.8340654727080949590802698425970685682329599547938891275745265185963406392413 +/- 3.69e-77]"
+          },
+          "Q_exact_dyadic_polynomial_enclosure": {
+            "ball": "[+/- 1.19e+37]",
+            "lower": "[-10558258184998406400340427296169000964.04917668206288646057025003066300085940 +/- 1.14e-39]",
+            "mid": "[664613997892457936451903530140172283.9508233179371135394297499693369991405989 +/- 2.17e-41]",
+            "radius": "11222872182890864336792330826309173248.00000000000000000000000000000000000000",
+            "upper": "[11887486180783322273244234356449345531.95082331793711353942974996933699914060 +/- 1.05e-39]"
+          },
+          "Q_over_N_exact_dyadic_polynomial_enclosure": {
+            "ball": "[+/- 1.19e+37]",
+            "lower": "-10487230998910635764312486474483236864.00000000000000000000000000000000000000",
+            "mid": "660143023936013914201951255513792512.0000000000000000000000000000000000000000",
+            "radius": "11147374022846649678514437729997029376.00000000000000000000000000000000000000",
+            "upper": "11807517046782663592716388985510821888.00000000000000000000000000000000000000"
+          },
+          "cancellation_ratio_estimate": 17.886301070451736,
+          "controlled": false,
+          "dirichlet": {
+            "ball": "[+/- 1.19e+37]",
+            "lower": "-10558258066156162628943920905853075456.00000000000000000000000000000000000000",
+            "mid": "664613997892457936451903530140172288.0000000000000000000000000000000000000000",
+            "radius": "11222872064048620565395824435993247744.00000000000000000000000000000000000000",
+            "upper": "11887486061941078501847727966133420032.00000000000000000000000000000000000000"
+          },
+          "dirichlet_metadata": {
+            "central_without_outer_tail": {
+              "ball": "[+/- 1.19e+37]",
+              "lower": "-10558258026542081371811752109081100288.00000000000000000000000000000000000000",
+              "mid": "664613997892457936451903530140172288.0000000000000000000000000000000000000000",
+              "radius": "11222872024434539308263655639221272576.00000000000000000000000000000000000000",
+              "upper": "11887486022326997244715559169361444864.00000000000000000000000000000000000000"
+            },
+            "d_h": 71,
+            "outer_mode_tail_bound": {
+              "ball": "[2.20028565284618984989869838500342859868003503350639047020892738125224088458e-34 +/- 6.96e-109]",
+              "lower": "[2.200285652846189849898698385003428598680035033506390470208927381252240884573e-34 +/- 2.73e-111]",
+              "mid": "[2.200285652846189849898698385003428598680035033506390470208927381252240884579e-34 +/- 8.49e-111]",
+              "radius": "[5.865990302573729100537503688154763822857535384205845003585913658733290631984e-109 +/- 5.40e-186]",
+              "upper": "[2.200285652846189849898698385003428598680035033506390470208927381252240884585e-34 +/- 1.97e-110]"
+            },
+            "precision_bits": 256,
+            "tail_terms": 24
+          },
+          "dirichlet_outer_tail_bound": {
+            "ball": "[2.20028565284618984989869838500342859868003503350639047020892738125224088458e-34 +/- 6.96e-109]",
+            "lower": "[2.200285652846189849898698385003428598680035033506390470208927381252240884573e-34 +/- 2.73e-111]",
+            "mid": "[2.200285652846189849898698385003428598680035033506390470208927381252240884579e-34 +/- 8.49e-111]",
+            "radius": "[5.865990302573729100537503688154763822857535384205845003585913658733290631984e-109 +/- 5.40e-186]",
+            "upper": "[2.200285652846189849898698385003428598680035033506390470208927381252240884585e-34 +/- 1.97e-110]"
+          },
+          "effective_bits_estimate": 251.83921683963845,
+          "minus_cA_N": {
+            "ball": "[-5.408567807249743900812664457134088520018500455560238582960675421116531780895 +/- 3.55e-76]",
+            "lower": "[-5.408567807249743900812664457134088520018500455560238582960675421116531780895 +/- 3.82e-76]",
+            "mid": "[-5.408567807249743900812664457134088520018500455560238582960675421116531780895 +/- 1.05e-76]",
+            "radius": "[2.500139655520692714314802799061751824161328715390350865866644525002980668451e-76 +/- 1.83e-152]",
+            "upper": "[-5.408567807249743900812664457134088520018500455560238582960675421116531780895 +/- 1.72e-76]"
+          },
+          "pole_rank_two": {
+            "ball": "[1.3913304255275557970 +/- 8.60e-20]",
+            "lower": "[1.391330425527555797000351788467942869116206536668691927102232067496551963891 +/- 3.95e-76]",
+            "mid": "[1.391330425527555797043166146246204879759203543687278554760206542410778412054 +/- 4.49e-78]",
+            "radius": "4.281435777826201064299700701858662765797447491422644816339015960693359375000e-20",
+            "upper": "[1.391330425527555797085980504024466890402200550705865182418181017325004860217 +/- 3.86e-76]"
+          },
+          "precision_bits": 256,
+          "prime_atoms": [
+            {
+              "Lambda": "log(2)",
+              "R_log_n": {
+                "ball": "[0.0325561821531631862744425226838053226006906337082846624275834044504221 +/- 5.84e-71]",
+                "lower": "[0.03255618215316318627444252268380532260069063370828466242758340445042204163665 +/- 2.08e-79]",
+                "mid": "[0.03255618215316318627444252268380532260069063370828466242758340445042209985915 +/- 3.26e-78]",
+                "radius": "[5.822249654557884892931867986368658424664705297760922387099743093249657783943e-71 +/- 2.51e-147]",
+                "upper": "[0.03255618215316318627444252268380532260069063370828466242758340445042215808164 +/- 3.70e-78]"
+              },
+              "contribution": {
+                "ball": "[-0.0319134626758835942741389728938880030531087222924179704404765641441312 +/- 7.10e-71]",
+                "lower": "[-0.03191346267588359427413897289388800305310872229241797044047656414413127090353 +/- 3.97e-78]",
+                "mid": "[-0.03191346267588359427413897289388800305310872229241797044047656414413121382958 +/- 4.82e-78]",
+                "radius": "[5.707394914479371324891792093197037997535424541620435769278000971580041401605e-71 +/- 2.07e-148]",
+                "upper": "[-0.03191346267588359427413897289388800305310872229241797044047656414413115675564 +/- 4.33e-78]"
+              },
+              "n": 2
+            },
+            {
+              "Lambda": "log(3)",
+              "R_log_n": {
+                "ball": "[2.03675798830776839362993267841281831247629429833321394522975e-5 +/- 3.35e-65]",
+                "lower": "[2.036757988307768393629932678412818312476294298333213945229746654324361505762e-5 +/- 6.45e-83]",
+                "mid": "[2.036757988307768393629932678412818312476294298333213945229747315665830219164e-5 +/- 1.61e-82]",
+                "radius": "[6.613414687134019904338960219879387399894983835833873756734568657705233164606e-66 +/- 3.35e-142]",
+                "upper": "[2.036757988307768393629932678412818312476294298333213945229747977007298932566e-5 +/- 2.56e-82]"
+              },
+              "contribution": {
+                "ball": "[-2.58376641749739320524268789586654648905961615947766331413301e-5 +/- 5.19e-65]",
+                "lower": "[-2.583766417497393205242687895866546489059616159477663314133006493120907597528e-5 +/- 4.77e-82]",
+                "mid": "[-2.583766417497393205242687895866546489059616159477663314133005654151337777443e-5 +/- 4.94e-81]",
+                "radius": "[8.389695698200844585690785372456904173401365179778773123176260032044495830550e-66 +/- 6.38e-144]",
+                "upper": "[-2.583766417497393205242687895866546489059616159477663314133004815181767957359e-5 +/- 3.53e-82]"
+              },
+              "n": 3
+            },
+            {
+              "Lambda": "log(2)",
+              "R_log_n": {
+                "ball": "[9.2301983258949329709887156508401216600050079128323e-13 +/- 2.92e-63]",
+                "lower": "[9.230198325894932970988715650840121660005007912832270808908007966595094955558e-13 +/- 2.04e-89]",
+                "mid": "[9.230198325894932970988715650840121660005007912832295251425518907387757652221e-13 +/- 3.31e-89]",
+                "radius": "[2.444251751094079266269666312699147610031796823888590323100594050000127577934e-63 +/- 4.91e-139]",
+                "upper": "[9.230198325894932970988715650840121660005007912832319693943029848180420348884e-13 +/- 4.58e-89]"
+              },
+              "contribution": {
+                "ball": "[-6.3978859456032000227055062381691120783654184822469e-13 +/- 4.86e-63]",
+                "lower": "[-6.397885945603200022705506238169112078365418482246948554455478734793683925122e-13 +/- 3.29e-89]",
+                "mid": "[-6.397885945603200022705506238169112078365418482246931612193278041905306524947e-13 +/- 1.06e-89]",
+                "radius": "[1.694226220069288837740017522347937947897801623162168323923127115653152407242e-63 +/- 4.23e-139]",
+                "upper": "[-6.397885945603200022705506238169112078365418482246914669931077349016929124772e-13 +/- 1.19e-89]"
+              },
+              "n": 4
+            }
+          ],
+          "prime_cutoff_certificate": {
+            "L_exact": "7/5",
+            "L_lt_log5": true,
+            "log4_lt_L": true
+          },
+          "prime_sum_2_3_4": {
+            "ball": "[-0.03193930034069835680075171977511721914181622966184928892184259 +/- 4.35e-63]",
+            "lower": "[-0.03193930034069835680075171977511721914181622966184928892184258906450803121509 +/- 4.87e-78]",
+            "mid": "[-0.03193930034069835680075171977511721914181622966184928892184258736189205501155 +/- 2.79e-79]",
+            "radius": "[1.702615976203535409573513307288091369578203993404855503377231488583234166568e-63 +/- 3.01e-139]",
+            "upper": "[-0.03193930034069835680075171977511721914181622966184928892184258565927607880801 +/- 4.32e-78]"
+          },
+          "tail_terms": 24
+        },
+        {
+          "Mminus": {
+            "ball": "[0.8340654727080949608781002059208769061890961054114852566498 +/- 6.10e-59]",
+            "lower": "[0.8340654727080949608781002059208769061890961054114852566497390767222946734407897980565553824160554321744327918397176 +/- 2.85e-116]",
+            "mid": "[0.8340654727080949608781002059208769061890961054114852566497701143402221438200697012735724326006738592636293384233354 +/- 4.28e-116]",
+            "radius": "[3.103761792747037927990321701705018461842708919654658361787119684801049245927122180096682940675995917655378659084864e-59 +/- 4.11e-174]",
+            "upper": "[0.8340654727080949608781002059208769061890961054114852566498011519581496141993496044905894827852922863528258850069533 +/- 1.40e-116]"
+          },
+          "Mplus": {
+            "ball": "[0.8340654727080949590684342670648142652539150550076298701809 +/- 6.41e-59]",
+            "lower": "[0.8340654727080949590684342670648142652539150550076298701809019419373026696903417261599634498653457447245333676847901 +/- 4.77e-116]",
+            "mid": "[0.8340654727080949590684342670648142652539150550076298701809329795552301400696216293769805000499641718137299142684079 +/- 2.36e-116]",
+            "radius": "[3.103761792747037927990321701705018461842708919654658361787119684801049245927122180096682940675995917655378659084864e-59 +/- 4.11e-174]",
+            "upper": "[0.8340654727080949590684342670648142652539150550076298701809640171731576104489015325939975502345825989029264608520258 +/- 5.24e-117]"
+          },
+          "Q_exact_dyadic_polynomial_enclosure": {
+            "ball": "[+/- 0.0590]",
+            "lower": "[-0.05188166564001868560354334602995636890978861859746809078617251656638632957384748965158210543314642342096426067813609 +/- 1.10e-117]",
+            "mid": "[0.003557692937113539433077747720043631090211381402531909213827483433613670426152510348417894566853576579035739321863911 +/- 9.19e-119]",
+            "radius": "0.05543935857713222503662109375000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "upper": "[0.05899705151424576446969884147004363109021138140253190921382748343361367042615251034841789456685357657903573932186391 +/- 1.10e-117]"
+          },
+          "Q_over_N_exact_dyadic_polynomial_enclosure": {
+            "ball": "[+/- 0.0587]",
+            "lower": "-0.05153264888213016092777252197265625000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "mid": "0.003533759707352146506309509277343750000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "radius": "0.05506640858948230743408203125000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "upper": "0.05860016829683445394039154052734375000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "cancellation_ratio_estimate": 3075.0296497871036,
+          "controlled": false,
+          "dirichlet": {
+            "ball": "[4e+0 +/- 0.109]",
+            "lower": "3.997295016655698418617248535156250000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "mid": "4.052734375000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "radius": "0.05543935834430158138275146484375000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "upper": "4.108173733344301581382751464843750000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "dirichlet_metadata": {
+            "central_without_outer_tail": {
+              "ball": "[4e+0 +/- 0.109]",
+              "lower": "3.997295016772113740444183349609375000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "mid": "4.052734375000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "radius": "0.05543935822788625955581665039062500000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "upper": "4.108173733227886259555816650390625000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+            },
+            "d_h": 71,
+            "outer_mode_tail_bound": {
+              "ball": "[5.3237782942774737910636946131522386482714636733856483751401681919094387808862951399896327026346323750258455637031e-71 +/- 7.76e-184]",
+              "lower": "[5.323778294277473791063694613152238648271463673385648375140168191909438780886295139989632702634632375025845563703031e-71 +/- 2.51e-186]",
+              "mid": "[5.323778294277473791063694613152238648271463673385648375140168191909438780886295139989632702634632375025845563703104e-71 +/- 4.28e-186]",
+              "radius": "[7.310909733524140884151715310171882148819554270242255237940112492394691024656735936024256016599723693504972776517339e-184 +/- 4.16e-299]",
+              "upper": "[5.323778294277473791063694613152238648271463673385648375140168191909438780886295139989632702634632375025845563703178e-71 +/- 3.96e-186]"
+            },
+            "precision_bits": 384,
+            "tail_terms": 48
+          },
+          "dirichlet_outer_tail_bound": {
+            "ball": "[5.3237782942774737910636946131522386482714636733856483751401681919094387808862951399896327026346323750258455637031e-71 +/- 7.76e-184]",
+            "lower": "[5.323778294277473791063694613152238648271463673385648375140168191909438780886295139989632702634632375025845563703031e-71 +/- 2.51e-186]",
+            "mid": "[5.323778294277473791063694613152238648271463673385648375140168191909438780886295139989632702634632375025845563703104e-71 +/- 4.28e-186]",
+            "radius": "[7.310909733524140884151715310171882148819554270242255237940112492394691024656735936024256016599723693504972776517339e-184 +/- 4.16e-299]",
+            "upper": "[5.323778294277473791063694613152238648271463673385648375140168191909438780886295139989632702634632375025845563703178e-71 +/- 3.96e-186]"
+          },
+          "effective_bits_estimate": 372.4136153941886,
+          "minus_cA_N": {
+            "ball": "[-5.40856780724974390081266445713408852001850045556023858296067542111653178089519430003289603660096795439507884265726 +/- 3.06e-114]",
+            "lower": "[-5.408567807249743900812664457134088520018500455560238582960675421116531780895194300032896036600967954395078842657259 +/- 1.02e-115]",
+            "mid": "[-5.408567807249743900812664457134088520018500455560238582960675421116531780895194300032896036600967954395078842657258 +/- 1.17e-115]",
+            "radius": "[9.391370236564421771192977516610293048319289223537911598752385959450470029511361676818692837931353060463377665009349e-115 +/- 4.92e-230]",
+            "upper": "[-5.408567807249743900812664457134088520018500455560238582960675421116531780895194300032896036600967954395078842657257 +/- 1.32e-115]"
+          },
+          "pole_rank_two": {
+            "ball": "[1.391330425527555797046493924629249370250528066624619781096 +/- 4.50e-58]",
+            "lower": "[1.391330425527555797046493924629249370250528066624619781096241942265475379013991232025612905975596919760291084144866 +/- 5.72e-116]",
+            "mid": "[1.391330425527555797046493924629249370250528066624619781096345491887975246153885258177565916288723359536917177431932 +/- 3.69e-115]",
+            "radius": "[1.035496224998671398940261519530103131264397766260932870655743025237945816176864974516673186203534402636522833074230e-58 +/- 2.92e-173]",
+            "upper": "[1.391330425527555797046493924629249370250528066624619781096449041510475113293779284329518926601849799313543270718997 +/- 2.06e-115]"
+          },
+          "precision_bits": 384,
+          "prime_atoms": [
+            {
+              "Lambda": "log(2)",
+              "R_log_n": {
+                "ball": "[0.032556182153163186274442522683805322600690633708284662427583404450422100196826441237515193930934262896208840 +/- 6.32e-109]",
+                "lower": "[0.03255618215316318627444252268380532260069063370828466242758340445042210019682644123751519393093426289620883936804783 +/- 1.63e-117]",
+                "mid": "[0.03255618215316318627444252268380532260069063370828466242758340445042210019682644123751519393093426289620883954105172 +/- 3.98e-117]",
+                "radius": "[1.730038840001697451669117698532650198959826304659076993719136062995598844206975155559717168300162729691816092423294e-109 +/- 4.83e-224]",
+                "upper": "[0.03255618215316318627444252268380532260069063370828466242758340445042210019682644123751519393093426289620883971405560 +/- 4.22e-118]"
+              },
+              "contribution": {
+                "ball": "[-0.031913462675883594274138972893888003053108722292417970440476564144131214160598599971494656095010986976997569 +/- 2.04e-109]",
+                "lower": "[-0.03191346267588359427413897289388800305310872229241797044047656414413121416059859997149465609501098697699756913526174 +/- 1.24e-117]",
+                "mid": "[-0.03191346267588359427413897289388800305310872229241797044047656414413121416059859997149465609501098697699756896567068 +/- 1.31e-117]",
+                "radius": "[1.695910592837139366182590033234515397409961110056236347292506432308604085724977103605579446945684316141062021629763e-109 +/- 4.19e-224]",
+                "upper": "[-0.03191346267588359427413897289388800305310872229241797044047656414413121416059859997149465609501098697699756879607962 +/- 1.39e-117]"
+              },
+              "n": 2
+            },
+            {
+              "Lambda": "log(3)",
+              "R_log_n": {
+                "ball": "[2.03675798830776839362993267841281831247629429833321394522974731286594988245784049620813203024113723e-5 +/- 5.08e-104]",
+                "lower": "[2.036757988307768393629932678412818312476294298333213945229747312865949882457840496208132030241137231178230726731268e-5 +/- 2.49e-120]",
+                "mid": "[2.036757988307768393629932678412818312476294298333213945229747312865949882457840496208132030241137233127405986924689e-5 +/- 3.62e-120]",
+                "radius": "[1.949175260193421113657374904588689425799422949177772855143384007386673827002698675214881471820333988751365702048035e-104 +/- 3.75e-219]",
+                "upper": "[2.036757988307768393629932678412818312476294298333213945229747312865949882457840496208132030241137235076581247118110e-5 +/- 4.76e-120]"
+              },
+              "contribution": {
+                "ball": "[-2.58376641749739320524268789586654648905961615947766331413300565059949976343066981606678152502593726e-5 +/- 5.08e-104]",
+                "lower": "[-2.583766417497393205242687895866546489059616159477663314133005650599499763430669816066781525025937259869334205582813e-5 +/- 2.66e-121]",
+                "mid": "[-2.583766417497393205242687895866546489059616159477663314133005650599499763430669816066781525025937257396634698030445e-5 +/- 4.49e-120]",
+                "radius": "[2.472699507552368474990683221023458674044019565978190372168073797667736993533259615188446082083392595411875879000245e-104 +/- 4.74e-219]",
+                "upper": "[-2.583766417497393205242687895866546489059616159477663314133005650599499763430669816066781525025937254923935190478076e-5 +/- 7.66e-121]"
+              },
+              "n": 3
+            },
+            {
+              "Lambda": "log(2)",
+              "R_log_n": {
+                "ball": "[9.2301983258949329709887156508401216600050079128322949047929017123577105421624493424875936e-13 +/- 8.85e-102]",
+                "lower": "[9.230198325894932970988715650840121660005007912832294904792901712357710542162449342487593541888266645632555625796698e-13 +/- 9.25e-129]",
+                "mid": "[9.230198325894932970988715650840121660005007912832294904792901712357710542162449342487593615164832801926398920743634e-13 +/- 1.05e-128]",
+                "radius": "[7.327656615629384329494693619630751739898481303194716991062747712051208949365084613881943786784934130145316563869143e-102 +/- 1.78e-217]",
+                "upper": "[9.230198325894932970988715650840121660005007912832294904792901712357710542162449342487593688441398958220242215690570e-13 +/- 3.01e-128]"
+              },
+              "contribution": {
+                "ball": "[-6.3978859456032000227055062381691120783654184822469313719258567430554112659666121064058221e-13 +/- 8.32e-102]",
+                "lower": "[-6.397885945603200022705506238169112078365418482246931371925856743055411265966612106405822183102046993183085333485052e-13 +/- 1.72e-129]",
+                "mid": "[-6.397885945603200022705506238169112078365418482246931371925856743055411265966612106405822132310601401588573759632954e-13 +/- 1.14e-128]",
+                "radius": "[5.079144559159451157385209790363194480673494016849618203081294076011821668306190260539845759591728463325739980344729e-102 +/- 4.52e-217]",
+                "upper": "[-6.397885945603200022705506238169112078365418482246931371925856743055411265966612106405822081519155809994062185780856e-13 +/- 2.10e-128]"
+              },
+              "n": 4
+            }
+          ],
+          "prime_cutoff_certificate": {
+            "L_exact": "7/5",
+            "L_lt_log5": true,
+            "log4_lt_L": true
+          },
+          "prime_sum_2_3_4": {
+            "ball": "[-0.03193930034069835680075171977511721914181622966184928892184258733782979483253844779625198512090182856 +/- 7.91e-102]",
+            "lower": "[-0.03193930034069835680075171977511721914181622966184928892184258733782979483253844779625198512090182856790646718896449 +/- 4.46e-117]",
+            "mid": "[-0.03193930034069835680075171977511721914181622966184928892184258733782979483253844779625198512090182856280259545280984 +/- 1.93e-118]",
+            "radius": "[5.103871736154645740920852946855509229347295648826399253377506103510902864687212561396716511887526903998476376077090e-102 +/- 2.07e-217]",
+            "upper": "[-0.03193930034069835680075171977511721914181622966184928892184258733782979483253844779625198512090182855769872371665519 +/- 4.07e-117]"
+          },
+          "tail_terms": 48
+        },
+        {
+          "Mminus": {
+            "ball": "[0.834065472708094960878100205920876906189096105411485256649774760382283422951594710515226565719330092304471228747225518765540963043978391 +/- 7.08e-136]",
+            "lower": "[0.834065472708094960878100205920876906189096105411485256649774760382283422951594710515226565719330092304471228747225518765540963043978390292954242610817101555759623167106892005485258088264223019 +/- 4.72e-193]",
+            "mid": "[0.834065472708094960878100205920876906189096105411485256649774760382283422951594710515226565719330092304471228747225518765540963043978390580785748741907474006068239266243766590929875816826039506 +/- 4.59e-193]",
+            "radius": "[2.87831506131090372450308616099136874585444617728561816487930402361075164233421555332595042531666578642796472262884624037203626765796134357715238260578230017063274250700155991951062644420093029e-136 +/- 3.58e-328]",
+            "upper": "[0.834065472708094960878100205920876906189096105411485256649774760382283422951594710515226565719330092304471228747225518765540963043978390868617254872997846456376855365380641176374493545387855994 +/- 3.90e-193]"
+          },
+          "Mplus": {
+            "ball": "[0.834065472708094959068434267064814265253915055007629870180937625590551003746834427602819452459010176717093501939293983941090463122542952 +/- 6.39e-136]",
+            "lower": "[0.834065472708094959068434267064814265253915055007629870180937625590551003746834427602819452459010176717093501939293983941090463122542951361682649127527119968321855835464781209317311392194299689 +/- 2.88e-194]",
+            "mid": "[0.834065472708094959068434267064814265253915055007629870180937625590551003746834427602819452459010176717093501939293983941090463122542951649514155258617492418630471934601655794761929120756116177 +/- 9.84e-194]",
+            "radius": "[2.87831506131090372450308616099136874585444617728561816487930402361075164233421555332595042531666578642796472262884624037203626765796134357715238260578230017063274250700155991951062644420093029e-136 +/- 3.58e-328]",
+            "upper": "[0.834065472708094959068434267064814265253915055007629870180937625590551003746834427602819452459010176717093501939293983941090463122542951937345661389707864868939088033738530380206546849317932665 +/- 1.68e-193]"
+          },
+          "Q_exact_dyadic_polynomial_enclosure": {
+            "ball": "[7.0462970344953134070145934743024449465147323885337574960321118663e-13 +/- 4.59e-78]",
+            "lower": "[7.04629703449531340701459347430244494651473238853375749603211186632798984975764428822924296999291939293133721178917307747254733920422135096923562398697388661721203270042104443479459487642832878e-13 +/- 4.06e-205]",
+            "mid": "[7.04629703449531340701459347430244494651473238853375749603211186633690597375983406623531554938060355221078948462105490882548779105840770638249126226415238206575610534716176414332309299490154817e-13 +/- 2.71e-205]",
+            "radius": "[8.91612400218977800607257938768415927945227283188183135294045185418635541325563827717849544854407264674071970852849811847321938323704206956919941550339559700293422517790049158792342609558545519e-79 +/- 3.34e-271]",
+            "upper": "[7.04629703449531340701459347430244494651473238853375749603211186634582209776202384424138812876828771149024175745293674017842824291259406179574690054133087751430017799390248385185159111337476755e-13 +/- 5.32e-206]"
+          },
+          "Q_over_N_exact_dyadic_polynomial_enclosure": {
+            "ball": "[6.9988953535748412988818669630609109327968511511381221790706759725e-13 +/- 5.42e-78]",
+            "lower": "[6.99889535357484129888186696306091093279685115113812217907067597253640461750655374811479415807705234866941931232612979346398549779654528849457604141443970580136609635131537568137338326505245918e-13 +/- 1.14e-205]",
+            "mid": "[6.99889535357484129888186696306091093279685115113812217907067597254526089637619983724306498129415294175396256725909012176709537072038908352004062761744438785619028907739022683918412976316640270e-13 +/- 2.17e-205]",
+            "radius": "[8.85627886964608912827082321710059308454325493296032830310987292384379502546458620300468205482419272607485115781074649811394351670247702559372218970002379437437650295541179124025887858806527220e-79 +/- 2.88e-271]",
+            "upper": "[6.99889535357484129888186696306091093279685115113812217907067597255411717524584592637133580451125353483850582219205045007020524364423287854550521382044906991101448180346507799699487626128034621e-13 +/- 4.54e-205]"
+          },
+          "cancellation_ratio_estimate": 15442173615323.523,
+          "controlled": true,
+          "dirichlet": {
+            "ball": "[4.04917668206359109027037178362065782825721886309211956402501039191416118648187 +/- 5.51e-78]",
+            "lower": "[4.04917668206359109027037178362065782825721886309211956402501039191416118648187372460159962472398145967315117342175692360816719467802698113465409787199703127021743417284395362799411307829163276 +/- 9.59e-194]",
+            "mid": "[4.04917668206359109027037178362065782825721886309211956402501039191416118648187461621399582217241529503349764578129934407844365756461443563075577712650155715742048399275919592307218376792718014 +/- 1.13e-192]",
+            "radius": "[8.91612396197448433835360346472359542420470276462886587454496101679254504525887203049819915242295078070689635547381030021165903445717048031260011825159643556383359657704305162306823717699444387e-79 +/- 1.09e-271]",
+            "upper": "[4.04917668206359109027037178362065782825721886309211956402501039191416118648187550782639201962084913039384411814084176454872012045120189012685745638100608304462353381267443821815025445756272752 +/- 2.16e-192]"
+          },
+          "dirichlet_metadata": {
+            "central_without_outer_tail": {
+              "ball": "[4.04917668206359109027037178362065782825721886309211956402501039191416118648187 +/- 5.51e-78]",
+              "lower": "[4.04917668206359109027037178362065782825721886309211956402501039191416118648187372460160163548866484562194732144994968598667055732630090090919596756251543110852976818765875968408741476945928549 +/- 4.49e-192]",
+              "mid": "[4.04917668206359109027037178362065782825721886309211956402501039191416118648187461621399582217241529503349764578129934407844365756461443563075577712650155715742048399275919592307218376792718014 +/- 1.13e-192]",
+              "radius": "[8.91612394186683750449411550324331349658091773100238313534721559809563986126048890715805100436238984768998467894646639108087886006723468568430046962569685484428328227661433164064064271769893821e-79 +/- 3.29e-271]",
+              "upper": "[4.04917668206359109027037178362065782825721886309211956402501039191416118648187550782639000885616574444504797011264900217021675780292797035231558669048768320631119979785963216205695276639507479 +/- 2.24e-192]"
+            },
+            "d_h": 71,
+            "outer_mode_tail_bound": {
+              "ball": "[3.76253907118179977811036266547706506064352653975958316755592181993529137585509428810361372441393929219282390523193022779141181492520345513001752312032798528210155331830385511566003559911946e-132 +/- 4.98e-321]",
+              "lower": "[3.76253907118179977811036266547706506064352653975958316755592181993529137585509428810361372441393929219282390523193022779141181492520345513001752312032798528210155331830385511566003559911945503e-132 +/- 3.64e-324]",
+              "mid": "[3.76253907118179977811036266547706506064352653975958316755592181993529137585509428810361372441393929219282390523193022779141181492520345513001752312032798528210155331830385511566003559911945587e-132 +/- 4.93e-324]",
+              "radius": "[8.48186538791511558381555178469228439493397409834732410625440814586644776951674579987994243729398860640293062854650938713494321493370410424425120582117369752620699166277352616976063666050879059e-322 +/- 1.39e-514]",
+              "upper": "[3.76253907118179977811036266547706506064352653975958316755592181993529137585509428810361372441393929219282390523193022779141181492520345513001752312032798528210155331830385511566003559911945672e-132 +/- 3.49e-324]"
+            },
+            "precision_bits": 640,
+            "tail_terms": 96
+          },
+          "dirichlet_outer_tail_bound": {
+            "ball": "[3.76253907118179977811036266547706506064352653975958316755592181993529137585509428810361372441393929219282390523193022779141181492520345513001752312032798528210155331830385511566003559911946e-132 +/- 4.98e-321]",
+            "lower": "[3.76253907118179977811036266547706506064352653975958316755592181993529137585509428810361372441393929219282390523193022779141181492520345513001752312032798528210155331830385511566003559911945503e-132 +/- 3.64e-324]",
+            "mid": "[3.76253907118179977811036266547706506064352653975958316755592181993529137585509428810361372441393929219282390523193022779141181492520345513001752312032798528210155331830385511566003559911945587e-132 +/- 4.93e-324]",
+            "radius": "[8.48186538791511558381555178469228439493397409834732410625440814586644776951674579987994243729398860640293062854650938713494321493370410424425120582117369752620699166277352616976063666050879059e-322 +/- 1.39e-514]",
+            "upper": "[3.76253907118179977811036266547706506064352653975958316755592181993529137585509428810361372441393929219282390523193022779141181492520345513001752312032798528210155331830385511566003559911945672e-132 +/- 3.49e-324]"
+          },
+          "effective_bits_estimate": 596.1880589281499,
+          "minus_cA_N": {
+            "ball": "[-5.40856780724974390081266445713408852001850045556023858296067542111653178089519430003289603660096795439507884265725834287037385332978673873197157737012639030119128012707064618843442735071620986 +/- 8.96e-192]",
+            "lower": "[-5.40856780724974390081266445713408852001850045556023858296067542111653178089519430003289603660096795439507884265725834287037385332978673873197157737012639030119128012707064618843442735071620987 +/- 2.97e-192]",
+            "mid": "[-5.40856780724974390081266445713408852001850045556023858296067542111653178089519430003289603660096795439507884265725834287037385332978673873197157737012639030119128012707064618843442735071620986 +/- 1.73e-192]",
+            "radius": "[7.22787101847682378267746557102817072207794769538411895319105218813701469139101835379168763232010276750013589782035259966302323561252605244497542349268942472008305100989093190708504393931881942e-192 +/- 4.00e-384]",
+            "upper": "[-5.40856780724974390081266445713408852001850045556023858296067542111653178089519430003289603660096795439507884265725834287037385332978673873197157737012639030119128012707064618843442735071620985 +/- 4.97e-193]"
+          },
+          "pole_rank_two": {
+            "ball": "[1.39133042552755579704649392462924937025052806662461978109636099228980360043249182221252818295607801947992504464239312370329217090663365 +/- 5.60e-135]",
+            "lower": "[1.39133042552755579704649392462924937025052806662461978109636099228980360043249182221252818295607801947992504464239312370329217090663365367820491190008561898251056204444604025286858715694572579 +/- 3.29e-192]",
+            "mid": "[1.39133042552755579704649392462924937025052806662461978109636099228980360043249182221252818295607801947992504464239312370329217090663365463848620287611844908039994459239801678093431143163237074 +/- 3.50e-192]",
+            "radius": "[9.60281290976032830097889382547951976528065724274686644956784311432105019880981818024392858758338886472407785274682968154205545152298945561230945148843735797980574836815982118198035814677394834e-136 +/- 4.96e-328]",
+            "upper": "[1.39133042552755579704649392462924937025052806662461978109636099228980360043249182221252818295607801947992504464239312370329217090663365559876749385215127917828932714034999330900003570631901570 +/- 2.83e-193]"
+          },
+          "precision_bits": 640,
+          "prime_atoms": [
+            {
+              "Lambda": "log(2)",
+              "R_log_n": {
+                "ball": "[0.03255618215316318627444252268380532260069063370828466242758340445042210019682644123751519393093426289620883954408596885271637771634436337159856783787197299677584888276536640871596268089 +/- 6.33e-186]",
+                "lower": "[0.0325561821531631862744425226838053226006906337082846624275834044504221001968264412375151939309342628962088395440859688527163777163443633715985678378719729967758488827653664087159626808836769031 +/- 2.77e-194]",
+                "mid": "[0.0325561821531631862744425226838053226006906337082846624275834044504221001968264412375151939309342628962088395440859688527163777163443633715985678378719729967758488827653664087159626808856339017 +/- 3.30e-194]",
+                "radius": "[1.95699852917282690240894410231324495919420242630192349117699215977611288591329036510397766864788551475679188262682661530921876950694114307309634388757859288773211898422551548567537990560506461e-186 +/- 1.98e-378]",
+                "upper": "[0.0325561821531631862744425226838053226006906337082846624275834044504221001968264412375151939309342628962088395440859688527163777163443633715985678378719729967758488827653664087159626808875909002 +/- 6.50e-195]"
+              },
+              "contribution": {
+                "ball": "[-0.03191346267588359427413897289388800305310872229241797044047656414413121416059859997149465609501098697699756896864503064053894591315625705301389487804784507873739609083190035085707897662 +/- 3.21e-186]",
+                "lower": "[-0.0319134626758835942741389728938880030531087222924179704404765641441312141605985999714946560950109869769975689686450306405389459131562570530138948780478450787373960908319003508570789766232052417 +/- 1.53e-194]",
+                "mid": "[-0.0319134626758835942741389728938880030531087222924179704404765641441312141605985999714946560950109869769975689686450306405389459131562570530138948780478450787373960908319003508570789766212868486 +/- 3.73e-194]",
+                "radius": "[1.91839307808055685634011129420269992786865317194659863051894401918900128993931644933877083608205747425292760173135533801263173619102625229779210855767411625355517408248102808202003362578551494e-186 +/- 2.13e-378]",
+                "upper": "[-0.0319134626758835942741389728938880030531087222924179704404765641441312141605985999714946560950109869769975689686450306405389459131562570530138948780478450787373960908319003508570789766193684556 +/- 4.09e-194]"
+              },
+              "n": 2
+            },
+            {
+              "Lambda": "log(3)",
+              "R_log_n": {
+                "ball": "[2.0367579883077683936299326784128183124762942983332139452297473128659498824578404962081320302411372332504175584663394724840124045602325779613893354777182318921865238074351724568e-5 +/- 3.64e-181]",
+                "lower": "[2.03675798830776839362993267841281831247629429833321394522974731286594988245784049620813203024113723325041755846633947248401240456023257796138933547771823189218652380743517245680415260648495910e-5 +/- 4.08e-197]",
+                "mid": "[2.03675798830776839362993267841281831247629429833321394522974731286594988245784049620813203024113723325041755846633947248401240456023257796138933547771823189218652380743517245682022670910554753e-5 +/- 1.03e-197]",
+                "radius": "[1.60741026205884249003744031619910021690411655156010527779334212596530442494806001549692907026399622576099287034654437561104580306139791675461213685085992107098345716952570026933195154864395077e-181 +/- 1.80e-373]",
+                "upper": "[2.03675798830776839362993267841281831247629429833321394522974731286594988245784049620813203024113723325041755846633947248401240456023257796138933547771823189218652380743517245683630081172613595e-5 +/- 3.88e-197]"
+              },
+              "contribution": {
+                "ball": "[-2.5837664174973932052426878958665464890596161594776633141330056505994997634306698160667815250259372575526832709595324348972229442243852259898321634870843525142142424575047389450e-5 +/- 4.36e-181]",
+                "lower": "[-2.58376641749739320524268789586654648905961615947766331413300565059949976343066981606678152502593725755268327095953243489722294422438522598983216348708435251421424245750473894499724426760883929e-5 +/- 2.63e-197]",
+                "mid": "[-2.58376641749739320524268789586654648905961615947766331413300565059949976343066981606678152502593725755268327095953243489722294422438522598983216348708435251421424245750473894497685286072002223e-5 +/- 1.21e-197]",
+                "radius": "[2.03914068888170614259660347939956223102064915720804970407856329996403328837914065849970803884747480683995346645809318829244029077000783225307458219501092164407536723591080771129462546393438367e-181 +/- 2.74e-373]",
+                "upper": "[-2.58376641749739320524268789586654648905961615947766331413300565059949976343066981606678152502593725755268327095953243489722294422438522598983216348708435251421424245750473894495646145383120517e-5 +/- 2.23e-198]"
+              },
+              "n": 3
+            },
+            {
+              "Lambda": "log(2)",
+              "R_log_n": {
+                "ball": "[9.23019832589493297098871565084012166000500791283229490479290171235771054216244934248759362384454017970937538352436668908463226416126715990225537017702496339223275399e-13 +/- 1.28e-178]",
+                "lower": "[9.23019832589493297098871565084012166000500791283229490479290171235771054216244934248759362384454017970937538352436668908463226416126715990225537017702496339223275398872461376669919735440013104e-13 +/- 4.03e-205]",
+                "mid": "[9.23019832589493297098871565084012166000500791283229490479290171235771054216244934248759362384454017970937538352436668908463226416126715990225537017702496339223275398954533802820847746272819509e-13 +/- 6.46e-206]",
+                "radius": "[8.20724261509280108328064045329067270550053080298202055228716359492225606842989491098903421296893077118066291093441059052467838182355178788592067998425165336313611917861023372732804767708301302e-179 +/- 2.12e-371]",
+                "upper": "[9.23019832589493297098871565084012166000500791283229490479290171235771054216244934248759362384454017970937538352436668908463226416126715990225537017702496339223275399036606228971775757105625913e-13 +/- 4.69e-205]"
+              },
+              "contribution": {
+                "ball": "[-6.397885945603200022705506238169112078365418482246931371925856743055411265966612106405822138326916098584199980119515079803018528907686621726508881401949866235155067908e-13 +/- 7.99e-179]",
+                "lower": "[-6.39788594560320002270550623816911207836541848224693137192585674305541126596661210640582213832691609858419998011951507980301852890768662172650888140194986623515506790879815550154150107064831493e-13 +/- 7.26e-206]",
+                "mid": "[-6.39788594560320002270550623816911207836541848224693137192585674305541126596661210640582213832691609858419998011951507980301852890768662172650888140194986623515506790822927279114668347654904818e-13 +/- 1.47e-205]",
+                "radius": "[5.68882710394817594099266752185805425031244367060491712084260283778495980389578014818731271194655927421517191041502670569135084841565751407382692085282745035688715251107899039436137291663158052e-179 +/- 7.49e-372]",
+                "upper": "[-6.39788594560320002270550623816911207836541848224693137192585674305541126596661210640582213832691609858419998011951507980301852890768662172650888140194986623515506790766039008075186588244978143e-13 +/- 3.65e-205]"
+              },
+              "n": 4
+            }
+          ],
+          "prime_cutoff_certificate": {
+            "L_exact": "7/5",
+            "L_lt_log5": true,
+            "log4_lt_L": true
+          },
+          "prime_sum_2_3_4": {
+            "ball": "[-0.031939300340698356800751719775117219141816229661849288921842587337829794832538447796251985120901828563405787411213045962899869650578802758164561861855366810402733219879990905037 +/- 4.09e-178]",
+            "lower": "[-0.0319393003406983568007517197751172191418162296618492889218425873378297948325384477962519851209018285634057874112130459628998696505788027581645618618553668104027332198799909050374087646161455874 +/- 8.81e-196]",
+            "mid": "[-0.0319393003406983568007517197751172191418162296618492889218425873378297948325384477962519851209018285634057874112130459628998696505788027581645618618553668104027332198799909050373516724290087172 +/- 4.52e-195]",
+            "radius": "[5.70921871368701946091920749108881456859909903582562973878750880243567675127558304804389214903766610650386054071575244986583303639240922589561956451116074342806277935015557824315305100463675423e-179 +/- 4.80e-371]",
+            "upper": "[-0.0319393003406983568007517197751172191418162296618492889218425873378297948325384477962519851209018285634057874112130459628998696505788027581645618618553668104027332198799909050372945802418718470 +/- 9.91e-195]"
+          },
+          "tail_terms": 96
+        },
+        {
+          "Mminus": {
+            "ball": "[0.834065472708094960878100205920876906189096105411485256649774760382283422951594710515226565719330092304471228747225518765540963043978390594202544364144969246070332843521793271 +/- 9.70e-175]",
+            "lower": "[0.83406547270809496087810020592087690618909610541148525664977476038228342295159471051522656571933009230447122874722551876554096304397839059420254436414496924607033284352179327003058316310494471010005287033943331083860685119321519437 +/- 3.14e-231]",
+            "mid": "[0.83406547270809496087810020592087690618909610541148525664977476038228342295159471051522656571933009230447122874722551876554096304397839059420254436414496924607033284352179327081906242492358727662065512577433290724934193085970259723 +/- 8.79e-232]",
+            "radius": "[7.8847926181864256652060225543489959641073507966648740286401556101332495569791292325924346376353742360800931045410908365812484668742628219442131370823315174993002454023011978187418489272219097001695558375954986411006132790246751997e-175 +/- 8.55e-406]",
+            "upper": "[0.83406547270809496087810020592087690618909610541148525664977476038228342295159471051522656571933009230447122874722551876554096304397839059420254436414496924607033284352179327160754168674222984314125738120923250366007701052619000009 +/- 4.90e-231]"
+          },
+          "Mplus": {
+            "ball": "[0.83406547270809495906843426706481426525391505500762987018093762559055100374683442760281945245901017671709350193929398394109046312254295166293089936875049222547354933985519867 +/- 5.34e-174]",
+            "lower": "[0.83406547270809495906843426706481426525391505500762987018093762559055100374683442760281945245901017671709350193929398394109046312254295166293089936875049222547354933985519866466685947070979120954212090347712223362386869677026586545 +/- 1.53e-231]",
+            "mid": "[0.83406547270809495906843426706481426525391505500762987018093762559055100374683442760281945245901017671709350193929398394109046312254295166293089936875049222547354933985519866545533873252843377606272315891202183003460377643675326831 +/- 2.49e-231]",
+            "radius": "[7.8847926181864256652060225543489959641073507966648740286401556101332495569791292325924346376353742360800931045410908365812484668742628219442131370823315174993002454023011978187418489272219097001695558375954986411006132790246751997e-175 +/- 8.55e-406]",
+            "upper": "[0.83406547270809495906843426706481426525391505500762987018093762559055100374683442760281945245901017671709350193929398394109046312254295166293089936875049222547354933985519866624381799434707634258332541434692142644533885610324067118 +/- 3.50e-231]"
+          },
+          "Q_exact_dyadic_polynomial_enclosure": {
+            "ball": "[7.0462970344953134070145934743024449465147323885337574960321118663343983475052588325055922858161603588822e-13 +/- 3.67e-117]",
+            "lower": "[7.0462970344953134070145934743024449465147323885337574960321118663343983475052588325055922858161603588821685932977735098174513213070019073193948303315940150641417628181460480596881764846190040238328311487355620457406197104337375382e-13 +/- 4.46e-243]",
+            "mid": "[7.0462970344953134070145934743024449465147323885337574960321118663343983475052588325055922858161603588822026199377245320816534098472527327842654059867194720448013238535807922602512741318116969518324415201937397950704700635043859740e-13 +/- 2.54e-243]",
+            "radius": "[3.4026639951022264202088540250825464870575655125456980659561035434744200563097647192692927999610371458177749329850353070648435730014198649719495556993562478494630481217538012376622883926885750769795851018127504685983111680796010877e-117 +/- 1.14e-347]",
+            "upper": "[7.0462970344953134070145934743024449465147323885337574960321118663343983475052588325055922858161603588822366465776755543458554983875035582491359816418449290254608848890155364608143717790043898798320518916519175444003204165750344097e-13 +/- 4.63e-244]"
+          },
+          "Q_over_N_exact_dyadic_polynomial_enclosure": {
+            "ball": "[6.9988953535748412988818669630609109327968511511381221790706759725427701393720996885525079776204746540954e-13 +/- 6.32e-117]",
+            "lower": "[6.9988953535748412988818669630609109327968511511381221790706759725427701393720996885525079776204746540953368711239773936707391574605478842229083624293615873323073543628827999909681592503754046773299611192970303477325562676889805258e-13 +/- 4.43e-243]",
+            "mid": "[6.9988953535748412988818669630609109327968511511381221790706759725427701393720996885525079776204746540953706693767329621343656583118999399385871005251691404838517684002444340240727140669308152242522062319886506625220925663765836499e-13 +/- 2.52e-243]",
+            "radius": "[3.3798252755568463626500851352055715678738095807553151544414037361634033104554816555410546922245112691620314789536298687603124169342728754853484585598374377263780392969826603950189972995763307014954847683026323366735729017681029060e-117 +/- 2.21e-348]",
+            "upper": "[6.9988953535748412988818669630609109327968511511381221790706759725427701393720996885525079776204746540954044676294885305979921591632519956542658386209766936353961824376060680571772688834862257711744513446802709773116288650641867741e-13 +/- 5.56e-244]"
+          },
+          "cancellation_ratio_estimate": 15442173615323.523,
+          "controlled": true,
+          "dirichlet": {
+            "ball": "[4.04917668206359109027037178362065782825721886309211956402501039191416118648187436545137036464904232270714120146196649 +/- 8.02e-117]",
+            "lower": "[4.0491766820635910902703717836206578282572188630921195640250103919141611864818743654513703646490423227071412014619664819893113530611388934705023772868359097604118395279778324393281320588531012040545633441639243245592685835287310331 +/- 3.60e-230]",
+            "mid": "[4.0491766820635910902703717836206578282572188630921195640250103919141611864818743654513703646490423227071412014619664853919753245269400521478728036265196448260837511812247750507608656714387987222155954937914114030144180816344934367 +/- 6.54e-231]",
+            "radius": "[3.4026639714658011586773704263396837350656719116532469426114327336125856975181610321496274870784551494981057624036294079708831998363146623413810112930920995910807819352154951752200837861307623427683134093639628242718039512816197024e-117 +/- 4.18e-347]",
+            "upper": "[4.0491766820635910902703717836206578282572188630921195640250103919141611864818743654513703646490423227071412014619664887946392959927412108252432299662033798917556628344717176621935992840244962403766276434188984814695675797402558403 +/- 2.29e-230]"
+          },
+          "dirichlet_metadata": {
+            "central_without_outer_tail": {
+              "ball": "[4.04917668206359109027037178362065782825721886309211956402501039191416118648187436545137036464904232270714120146196649 +/- 8.02e-117]",
+              "lower": "[4.0491766820635910902703717836206578282572188630921195640250103919141611864818743654513703646490423227071412014619664819893113648793515242362441766582672857563586399742033941116635369897702805998564069039965807658502667433633163238 +/- 3.30e-230]",
+              "mid": "[4.0491766820635910902703717836206578282572188630921195640250103919141611864818743654513703646490423227071412014619664853919753245269400521478728036265196448260837511812247750507608656714387987222155954937914114030144180816344934367 +/- 6.54e-231]",
+              "radius": "[3.4026639596475885279116286269682523590697251112070213809390973286816685181223591885897948306371641513382711771129264584239030132537620610260967390899600254618896488419463421439989814828518559756626775631395690021085503428826290098e-117 +/- 6.89e-348]",
+              "upper": "[4.0491766820635910902703717836206578282572188630921195640250103919141611864818743654513703646490423227071412014619664887946392841745285800595014305947720038958088623882461559898581943531073168445747840835862420401785694199056705496 +/- 2.00e-230]"
+            },
+            "d_h": 71,
+            "outer_mode_tail_bound": {
+              "ball": "[1.46589177110854092234908118521935082780721644388901343073358979169361996471947758897726463094765222193064713349283085543524797791097053845862543267587517263624427202574374573235721015701366392511718553885160400829974049465506759e-171 +/- 2.57e-399]",
+              "lower": "[1.4658917711085409223490811852193508278072164438890134307335897916936199647194775889772646309476522219306471334928308554352479779109705384586254326758751726362442720257437457323572101570136639251171855388516040082997404946550675904e-171 +/- 3.41e-401]",
+              "mid": "[1.4658917711085409223490811852193508278072164438890134307335897916936199647194775889772646309476522219306471334928308554352479779109705384586254326758751726362442720257437457323572101570136639251171855388516040082997404946550675915e-171 +/- 2.12e-402]",
+              "radius": "[1.0669913992543655901410560416239276048610323016488406534422512834250382082956678826038817459182502027374854613688244473223062949875646196745513775152380015606175430733442757818883735476021054212542015585110345941849598055352692878e-399 +/- 2.11e-629]",
+              "upper": "[1.4658917711085409223490811852193508278072164438890134307335897916936199647194775889772646309476522219306471334928308554352479779109705384586254326758751726362442720257437457323572101570136639251171855388516040082997404946550675926e-171 +/- 2.99e-401]"
+            },
+            "precision_bits": 768,
+            "tail_terms": 128
+          },
+          "dirichlet_outer_tail_bound": {
+            "ball": "[1.46589177110854092234908118521935082780721644388901343073358979169361996471947758897726463094765222193064713349283085543524797791097053845862543267587517263624427202574374573235721015701366392511718553885160400829974049465506759e-171 +/- 2.57e-399]",
+            "lower": "[1.4658917711085409223490811852193508278072164438890134307335897916936199647194775889772646309476522219306471334928308554352479779109705384586254326758751726362442720257437457323572101570136639251171855388516040082997404946550675904e-171 +/- 3.41e-401]",
+            "mid": "[1.4658917711085409223490811852193508278072164438890134307335897916936199647194775889772646309476522219306471334928308554352479779109705384586254326758751726362442720257437457323572101570136639251171855388516040082997404946550675915e-171 +/- 2.12e-402]",
+            "radius": "[1.0669913992543655901410560416239276048610323016488406534422512834250382082956678826038817459182502027374854613688244473223062949875646196745513775152380015606175430733442757818883735476021054212542015585110345941849598055352692878e-399 +/- 2.11e-629]",
+            "upper": "[1.4658917711085409223490811852193508278072164438890134307335897916936199647194775889772646309476522219306471334928308554352479779109705384586254326758751726362442720257437457323572101570136639251171855388516040082997404946550675926e-171 +/- 2.99e-401]"
+          },
+          "effective_bits_estimate": 724.1880589281499,
+          "minus_cA_N": {
+            "ball": "[-5.4085678072497439008126644571340885200185004555602385829606754211165317808951943000328960366009679543950788426572583428703738533297867387319715773701263903011912801270706461884344273507162098633742396481610400030368748854788835676 +/- 4.32e-230]",
+            "lower": "[-5.4085678072497439008126644571340885200185004555602385829606754211165317808951943000328960366009679543950788426572583428703738533297867387319715773701263903011912801270706461884344273507162098633742396481610400030368748854788835676 +/- 6.47e-231]",
+            "mid": "[-5.4085678072497439008126644571340885200185004555602385829606754211165317808951943000328960366009679543950788426572583428703738533297867387319715773701263903011912801270706461884344273507162098633742396481610400030368748854788835676 +/- 2.71e-230]",
+            "radius": "[1.6053300844726701191200648675435066982210131634306227366659591000610302396133811089389135797587957653213285157144122440347401598291967466842824836960615226866644200727286891806339519308378627696165791904271092349882092596088499380e-230 +/- 3.47e-460]",
+            "upper": "[-5.4085678072497439008126644571340885200185004555602385829606754211165317808951943000328960366009679543950788426572583428703738533297867387319715773701263903011912801270706461884344273507162098633742396481610400030368748854788835676 +/- 4.77e-230]"
+          },
+          "pole_rank_two": {
+            "ball": "[1.39133042552755579704649392462924937025052806662461978109636099228980360043249182221252818295607801947992504464239312370329217090663365468324806087874053882610893411293034218 +/- 7.54e-174]",
+            "lower": "[1.3913304255275557970464939246292493702505280666246197810963609922898036004324918222125281829560780194799250446423931237032921709066336546832480608787405388261089341129303421724656988131297607032857966940231628710682047724377506003 +/- 6.54e-231]",
+            "mid": "[1.3913304255275557970464939246292493702505280666246197810963609922898036004324918222125281829560780194799250446423931237032921709066336546832480608787405388261089341129303421750962721422758976530656922383190445527350055429116068440 +/- 3.52e-230]",
+            "radius": "[2.6305733291461369497798955442958816816668007704738562436583525772326087987194419481033158715654536348370503067387147937409890242066453382526105826465760128755958959363670420384104093340234624602526213177859648984173323932426449215e-174 +/- 2.88e-404]",
+            "upper": "[1.3913304255275557970464939246292493702505280666246197810963609922898036004324918222125281829560780194799250446423931237032921709066336546832480608787405388261089341129303421777268454714220346028455877826149262344018063133854630876 +/- 2.33e-230]"
+          },
+          "precision_bits": 768,
+          "prime_atoms": [
+            {
+              "Lambda": "log(2)",
+              "R_log_n": {
+                "ball": "[0.03255618215316318627444252268380532260069063370828466242758340445042210019682644123751519393093426289620883954408596885271637771634436337159856783787197299677584888276536640871596268088566070134137981499820281167443633117532 +/- 6.16e-225]",
+                "lower": "[0.032556182153163186274442522683805322600690633708284662427583404450422100196826441237515193930934262896208839544085968852716377716344363371598567837871972996775848882765366408715962680885660701341379814998202811674436331175314620634 +/- 5.32e-233]",
+                "mid": "[0.032556182153163186274442522683805322600690633708284662427583404450422100196826441237515193930934262896208839544085968852716377716344363371598567837871972996775848882765366408715962680885660701341379814998202811674436331175320389172 +/- 2.64e-232]",
+                "radius": "[5.7685382102235424496666532671220853051459777313625264473811462729791002602883065725223090932566693424531876369718726417491634130458961555408105373100429974194034244550491141098808103917362123465776732606622859143334190974255273928e-225 +/- 4.55e-455]",
+                "upper": "[0.032556182153163186274442522683805322600690633708284662427583404450422100196826441237515193930934262896208839544085968852716377716344363371598567837871972996775848882765366408715962680885660701341379814998202811674436331175326157710 +/- 4.74e-232]"
+              },
+              "contribution": {
+                "ball": "[-0.03191346267588359427413897289388800305310872229241797044047656414413121416059859997149465609501098697699756896864503064053894591315625705301389487804784507873739609083190035085707897662131311924800608872306240543676250089651 +/- 8.70e-225]",
+                "lower": "[-0.031913462675883594274138972893888003053108722292417970440476564144131214160598599971494656095010986976997568968645030640538945913156257053013894878047845078737396090831900350857078976621313119248006088723062405436762500896512612979 +/- 1.79e-232]",
+                "mid": "[-0.031913462675883594274138972893888003053108722292417970440476564144131214160598599971494656095010986976997568968645030640538945913156257053013894878047845078737396090831900350857078976621313119248006088723062405436762500896506958236 +/- 2.18e-232]",
+                "radius": "[5.6547430387687670452414538595017399787664466574875692676135881397000742418356272627627173369104334432951664520208762843295256157992659341876101374900710958792750859817331414885179719956843201413584550765446163152210500289282886471e-225 +/- 3.81e-455]",
+                "upper": "[-0.031913462675883594274138972893888003053108722292417970440476564144131214160598599971494656095010986976997568968645030640538945913156257053013894878047845078737396090831900350857078976621313119248006088723062405436762500896501303493 +/- 2.57e-232]"
+              },
+              "n": 2
+            },
+            {
+              "Lambda": "log(3)",
+              "R_log_n": {
+                "ball": "[2.0367579883077683936299326784128183124762942983332139452297473128659498824578404962081320302411372332504175584663394724840124045602325779613893354777182318921865238074351724568210015502397396917667228792525899820140e-5 +/- 7.82e-220]",
+                "lower": "[2.0367579883077683936299326784128183124762942983332139452297473128659498824578404962081320302411372332504175584663394724840124045602325779613893354777182318921865238074351724568210015502397396917667228792525899820139830830479442762e-5 +/- 2.83e-235]",
+                "mid": "[2.0367579883077683936299326784128183124762942983332139452297473128659498824578404962081320302411372332504175584663394724840124045602325779613893354777182318921865238074351724568210015502397396917667228792525899820140306397298543632e-5 +/- 3.36e-235]",
+                "radius": "[4.7556681910087061854090769416063281484879515475441916158453665070422771637372633182514942251738070107971207346429380221017997894727539258328767462114799323513025491589090156637632214482215573432391929436627405820410952547512385432e-220 +/- 2.83e-450]",
+                "upper": "[2.0367579883077683936299326784128183124762942983332139452297473128659498824578404962081320302411372332504175584663394724840124045602325779613893354777182318921865238074351724568210015502397396917667228792525899820140781964117644503e-5 +/- 4.57e-236]"
+              },
+              "contribution": {
+                "ball": "[-2.583766417497393205242687895866546489059616159477663314133005650599499763430669816066781525025937257552683270959532434897222944224385225989832163487084352514214242457504738944977835799556143678426543655113765404689e-5 +/- 2.14e-219]",
+                "lower": "[-2.5837664174973932052426878958665464890596161594776633141330056505994997634306698160667815250259372575526832709595324348972229442243852259898321634870843525142142424575047389449778357995561436784265436551137654046889072494769987626e-5 +/- 4.78e-235]",
+                "mid": "[-2.5837664174973932052426878958665464890596161594776633141330056505994997634306698160667815250259372575526832709595324348972229442243852259898321634870843525142142424575047389449778357995561436784265436551137654046888469196614050528e-5 +/- 1.64e-235]",
+                "radius": "[6.0329815593709864087742437081365889646810608321200438315525597822398610479629841215562885743180363534999828101193198486665533685022595363639881331889506866558577415407472620680787502784152819495263920791890779595539375890035673703e-220 +/- 1.11e-450]",
+                "upper": "[-2.5837664174973932052426878958665464890596161594776633141330056505994997634306698160667815250259372575526832709595324348972229442243852259898321634870843525142142424575047389449778357995561436784265436551137654046887865898458113429e-5 +/- 1.97e-235]"
+              },
+              "n": 3
+            },
+            {
+              "Lambda": "log(2)",
+              "R_log_n": {
+                "ball": "[9.23019832589493297098871565084012166000500791283229490479290171235771054216244934248759362384454017970937538352436668908463226416126715990225537017702496339223275398955545873644635498119515748615256810505e-13 +/- 4.37e-217]",
+                "lower": "[9.2301983258949329709887156508401216600050079128322949047929017123577105421624493424875936238445401797093753835243666890846322641612671599022553701770249633922327539895554587364463549811951574861525681050456368519654833954722306713e-13 +/- 3.07e-243]",
+                "mid": "[9.2301983258949329709887156508401216600050079128322949047929017123577105421624493424875936238445401797093753835243666890846322641612671599022553701770249633922327539895554587364463549811951574861525681050480318969508837643671307070e-13 +/- 2.33e-243]",
+                "radius": "[2.3950449854003688949000356926197124643454035170262270722145088947521176414396468449015754294583821778794282244096738220069720041632084766155641552778557050949055813494614913968062645714691827871371515375386103386411949378729959086e-217 +/- 7.74e-448]",
+                "upper": "[9.2301983258949329709887156508401216600050079128322949047929017123577105421624493424875936238445401797093753835243666890846322641612671599022553701770249633922327539895554587364463549811951574861525681050504269419362841332620307427e-13 +/- 1.59e-243]"
+              },
+              "contribution": {
+                "ball": "[-6.39788594560320002270550623816911207836541848224693137192585674305541126596661210640582213832691609858419998011951507980301852890768662172650888140194986623515506790823628793152703809076560094619165469720e-13 +/- 1.91e-217]",
+                "lower": "[-6.3978859456032000227055062381691120783654184822469313719258567430554112659666121064058221383269160985841999801195150798030185289076866217265088814019498662351550679082362879315270380907656009461916546972014173387486076588558048967e-13 +/- 1.47e-243]",
+                "mid": "[-6.3978859456032000227055062381691120783654184822469313719258567430554112659666121064058221383269160985841999801195150798030185289076866217265088814019498662351550679082362879315270380907656009461916546971997572200609379325069992202e-13 +/- 6.92e-244]",
+                "radius": "[1.6601186876697263488056764784117759734294346324655243814020544483037974277798820192044458874841861205285267896095074102083250614189235170918755598593456502969892152043963323001515370827485443047737945615255640503607974772809534231e-217 +/- 4.33e-447]",
+                "upper": "[-6.3978859456032000227055062381691120783654184822469313719258567430554112659666121064058221383269160985841999801195150798030185289076866217265088814019498662351550679082362879315270380907656009461916546971980971013732682061581935437e-13 +/- 2.86e-243]"
+              },
+              "n": 4
+            }
+          ],
+          "prime_cutoff_certificate": {
+            "L_exact": "7/5",
+            "L_lt_log5": true,
+            "log4_lt_L": true
+          },
+          "prime_sum_2_3_4": {
+            "ball": "[-0.031939300340698356800751719775117219141816229661849288921842587337829794832538447796251985120901828563405787411213045962899869650578802758164561861855366810402733219879990905037352383772461384493866914254232708560529 +/- 5.32e-217]",
+            "lower": "[-0.031939300340698356800751719775117219141816229661849288921842587337829794832538447796251985120901828563405787411213045962899869650578802758164561861855366810402733219879990905037352383772461384493866914254232708560529531702882521195 +/- 4.45e-232]",
+            "mid": "[-0.031939300340698356800751719775117219141816229661849288921842587337829794832538447796251985120901828563405787411213045962899869650578802758164561861855366810402733219879990905037352383772461384493866914254232708560529365087709666080 +/- 4.42e-232]",
+            "radius": "[1.6661517285511499777812265036945340651647621514732255581055625506884031744020354591404862238942532561856342320390130245896582133547717033470629928784110675759290066856216300759775264855649713797556034219315383177319985957478732762e-217 +/- 4.90e-447]",
+            "upper": "[-0.031939300340698356800751719775117219141816229661849288921842587337829794832538447796251985120901828563405787411213045962899869650578802758164561861855366810402733219879990905037352383772461384493866914254232708560529198472536810965 +/- 4.40e-232]"
+          },
+          "tail_terms": 128
+        }
+      ],
+      "exact_geometry": {
+        "N_exact": "35458129948716696302522932281421676312251875527951503208455287728069342555913952797737037701/35219596864795108639483477887676188751591161583153713349807472604636632924258065578983424000",
+        "degree_hplus": 71,
+        "degree_p": 35,
+        "hplus_at_0_exact": "0",
+        "hplus_at_L_exact": "35458129948716696302522932281421676312251875527951503208455287728069342555913952797737037701/35219596864795108639483477887676188751591161583153713349807472604636632924258065578983424000",
+        "one_sided_jets_0plus_exact": [
+          "12379305018270438060130218875140869213958586711747290553/1684996666696914987166688442938726917102321526408785780068975640576",
+          "18943974757273148737124634733502882307152376895252640779501220071405/1474372083359800613770852387571386052464531335607687557560353685504",
+          "-496808176377669566519097767154554012331502546340840879038075/20641209167037208592791933425999404734503438698507625805844951597056",
+          "-8329027988050358070312515163610696920375371066775027951794496516757125/18061058021157557518692941747749479142690508861194172580114332647424",
+          "-976612236761943494060570604934619065917405641183738550426217321875/252854812296205805261701184468492707997667124056718416121600657063936",
+          "5760352697120594943679166326082949244621376736781674054530236683821671875/221247960759180079603988536409931119497958733549628614106400574930944",
+          "-130042904946520126640444415895420251581968365227932460386640916984609375/774367862657130278613959877434758918242855567423700149372402012258304",
+          "-380248838225976258147184675245776177253847880473542669091185077688134765625/193591965664282569653489969358689729560713891855925037343100503064576",
+          "-9790656558992684139685749909931201815281360536829162521498946072692177734375/2710287519299955975148859571021656213849994485982950522803407042904064",
+          "375745620692692365908530229221239548239000942184600754020143270849324658203125/592875394846865369563813031160987296779686293808770426863245290635264",
+          "-1526961160955163925350912091254016216082537821673899474910267627534251286865234375/33201022111424460695573529745015288619662432453291143904341736275574784",
+          "126237790817348343224481620840129304092361665826153015587973512802369455650634765625/29050894347496403108626838526888377542204628396629750916299019241127936",
+          "-9522107675670089493912545523004576640720076836497190826711445469927189395660400390625/25419532554059352720048483711027330349429049847051032051761641835986944",
+          "1477256640504008039347005814747302521293974352747751475037278224464232762823394775390625/50839065108118705440096967422054660698858099694102064103523283671973888",
+          "-91128973497928005562115295643627255605561180524918641458993387467880600107456817626953125/44484181969603867260084846494297828111500837232339306090582873212977152",
+          "183165936932660470696635739058141939803091442963296772295258761357968343395931243896484375/1390130686550120851877651452946807128484401163510603315330714787905536",
+          "-19304373199189423862515100408952874055707379290996043419978654654204736286429564914703369140625/2491114190297816566564751403680678374244046885011001141072640899926720512",
+          "3184811143368559197592475895393639293388036725178982067958867515042700280887880290699005126953125/7629037207787063235104551173772077521122393585346190994534962756025581568",
+          "-4405184315738739609214496265617036426019719865225378659606124833072583913977184193900585174560546875/213613041818037770582927432865618170591427020389693347846978957168716283904",
+          "87351336631762523699836668523268274679989510034944481974005310801771206447793750524790287017822265625/93455705795391524630030751878707949633749321420490839683053293761313374208",
+          "-14529275897515905131607224927156445272598518378468647351774684284930317438610076093452394008636474609375/373822823181566098520123007514831798534997285681963358732213175045253496832",
+          "60588290101057734028631105460057365024169171333425232435964444534637308715260105322292745113372802734375/40886871285483792025638453946934727964765328121464742361335816020574601216",
+          "-59229363494339579117782763056756320621492515728277535386176692190657189043780965964969913661479949951171875/1144832395993546176717876710514172383013429187401012786117402848576088834048",
+          "236236603824363677667709878252470044679145951670130975799773788532717114767602450027090869843959808349609375/143104049499193272089734588814271547876678648425126598264675356072011104256",
+          "-2692986445346996408375222488565851810579801786508374178639158264288459694003688757121500745303928852081298828125/56096787403683762659175958815194446767658030182649626519752739580228352868352",
+          "2222015342630466677891503952630430331902266883752772042850909578659512233510993872278908505104482173919677734375/1753024606365117583099248712974826461489313443207800828742273111882136027136",
+          "-20776736405184468692462581703758284311167200756295585155533059435288995077745852443537560826609842479228973388671875/687185645695126092574905495486131972903810869737457924866971059857797322637312",
+          "13898257892964561254573389976465936016228735340676882629345814209810206258998945312255575037444941699504852294921875/21474551427972690392965796733941624153244089679295560152092845620556166332416",
+          "-3704573744791108701566745853921073846166253037112999347551916556633384407068853256090226289147394709289073944091796875/300643719991617665501521154275182738145417255510137842129299838687786328653824",
+          "3873392459963176589177886417569532654777201094346300899920587224573725361581348368213255103785195387899875640869140625/18790232499476104093845072142198921134088578469383615133081239917986645540864",
+          "-10968470000012951487207147906148866221534625529968810138351737274568521269833068027762568040569531149230897426605224609375/3682885569897316402393634139870988542281361379999188566083923023925382526009344",
+          "4167602453307618881123915474303893883448484532670637904933961652100334510766902595228002200778064434416592121124267578125/115090174059291137574801066870968391946292543124974642690122594497668203937792",
+          "-1144487109109188142434187582383423405052024714445873748835071168876680574280801228612033542057555678184144198894500732421875/3222524873660151852094429872387114974496191207499289995323432645934709710258176",
+          "130428920924432733993751250162381590593203305470057564503674053968889169825861780936292686853130362578667700290679931640625/50351951150939872688975466756048671476502987617176406176928635092729839222784",
+          "-893727674889049694750564839353503515412982998671968231764590954157470159593337976314211766354533801859361119568347930908203125/78951859404673720376313531873484316875156684583732604885424099825400387901325312",
+          "0",
+          "129258126364198442886360511680438496933370921315351712067003281765894344644291493903339719860668861883823410607874393463134765625/483580138853626537304920382725091440860334693075362204923222611430577375895617536",
+          "0",
+          "-97645105978548611765933056979866269364934339587161487958491242555085470436782913183795644598671396323652516002766788005828857421875/11847713401913850163970549376764740301078199980346374020618953980049145709442629632",
+          "0",
+          "-56253567427119279149719337103939237394881830717623666115477048512707635904351853774340540767049148893619303635205142199993133544921875/20733498453349237786948461409338295526886849965606154536083169465086004991524601856",
+          "0",
+          "49216543206675090645508969815838814693191055819813435336736684780456767338075823665916023747398839381705926143695251084864139556884765625/31748169506691020361264831533049265025545489009834424133377353243412945143272046592",
+          "0",
+          "-142967594743206658175738415753376924407876134918966239279567628903693064526867194981967056350286669653482096720154004287905991077423095703125/3111320611655719995403953490238827972503457922963773565070980617854468624040660566016",
+          "0",
+          "-50296802072109365962613517684658947342229681923356486406649867518071927484288075870490239355518684675021374996806144963557017035782337188720703125/38113677492782569943698430255425642663167359556306226172119512568717240644498091933696",
+          "0",
+          "3010462073710487804069769919179163256837181987488498177761260423501358557269580440513398193632222310257476848016633397264740779064595699310302734375/1191052421649455310740575945482051333223979986134569567878734767772413770140565372928",
+          "0",
+          "-50382503563075154832955167794232346287485716403005175867585040727080081421416910200398159573684265751703849497110387911646967040724121034145355224609375/14590392165205827556572055332155128831993754830148477206514500905212068684221925818368",
+          "0",
+          "351923444142404056302039844764748370996326973408411026504351307013526088259434922649239374369482232582042024904181269640002227561126346699893474578857421875/89366152011885693784003838909450164095961748334659422889901318044423920690859295637504",
+          "0",
+          "-1063428107845264320277724753315605225696200692302845576740713381377824068067653198358565307534108533813192905041107865111993380224930660915561020374298095703125/273683840536399937213511756660191127543882854274894482600322786511048257115756592889856",
+          "0",
+          "12763429943050431757961218849656595026489034487250456812467891761132088627273689326654389545622228663128919959850762384247734038122956690131104551255702972412109375/3831573767509599120989164593242675785614359959848522756404519011154675599620592300457984",
+          "0",
+          "-230422609091084743876088395216033705915163904223976705602855886397010683772556551355255104430866992287638603075080662096219019131793093180249343276955187320709228515625/93873557303985178464234532534445556747551819016288807531910715773289552190704511361220608",
+          "0",
+          "249633203732338290372222648482039502075696249316012028137093412598170541764107913237224903767718642100718103739142874403816166665147358028065127655281685292720794677734375/164278725281974062312410431935279724308215683278505413180843752603256716333732894882136064",
+          "0",
+          "-1531564983599169836126645011278902193900741437397464755354951085793460732057672036775114633753041227456803201321993384193883314475467284643261933752000913955271244049072265625/2012414384704182263327027791207176622775642120161691311465335969389894775088227962306166784",
+          "0",
+          "127498807332101426071978630965634865300166642546350008402710986631636839352071478935358687513237339523374425149714413847855577502786081876828827574854585691355168819427490234375/440215646654039870102787329326569886232171713785369974383042243304039482050549866754473984",
+          "0",
+          "-803795710091468928084504503006899803927518091588385534014700381692882861272107253475340681868791579925879555981765710336282561493963762168542264152648613162455148994922637939453125/10785283343023976817518289568500962212688206987741564372384534960948967310238471735484612608",
+          "0",
+          "11479702387944099393663372499194796855703437274329043512509742787454051330524010904064607043190694712313077670706224017157852675894143287100256090038641332284896634519100189208984375/1179640365643247464416062921554792742012772639284233603229558511353793299557332846068629504",
+          "0",
+          "-43744630983526431263667823399303670174296112350069621615786288582447763215885047469167289761391922357501104123295063405276201910255873261945680496864952147006988525390625/57802377916519125756387083156184844358625859324927446558248367056335871678309309457362845696"
+        ],
+        "one_sided_jets_Lminus_exact": [
+          "12379305018270438060065983541939321165226115527443782215/1684996666696914987166688442938726917102321526408785780068975640576",
+          "-9655016838490287942240375996447823747422771438259418752885/2948744166719601227541704775142772104929062671215375115120707371008",
+          "14563706127769436921531658006947881649777778810255530929624825/20641209167037208592791933425999404734503438698507625805844951597056",
+          "-3916407829537084899781470986467649314247773266409350435220470375/36122116042315115037385883495498958285381017722388345160228665294848",
+          "2684706002788052676253715631683842500457492985665597090479787441875/252854812296205805261701184468492707997667124056718416121600657063936",
+          "-212186049989743862897605082330170800288365029555821089561946033796875/221247960759180079603988536409931119497958733549628614106400574930944",
+          "40639118937390060185922180983573189537564865331900979118434813387109375/774367862657130278613959877434758918242855567423700149372402012258304",
+          "-840760565901800697180449665214507049445384857271612890712249594763671875/387183931328565139306979938717379459121427783711850074686201006129152",
+          "980219364539702259913883739981570435075577486726678917035354138443998046875/2710287519299955975148859571021656213849994485982950522803407042904064",
+          "280490425113259773977527278075192132887836617474950963781272275930683603515625/4743003158774922956510504249287898374237490350470163414905962325082112",
+          "56143778163186370407554901359485362918347352836638082179395964458146048583984375/4743003158774922956510504249287898374237490350470163414905962325082112",
+          "56647651220572537330756097700415720988943157016553618564164966347254274090576171875/29050894347496403108626838526888377542204628396629750916299019241127936",
+          "29412984872024001515661919659517334548560576844640867389492634962779588427423095703125/101678130216237410880193934844109321397716199388204128207046567343947776",
+          "1987789528419646424301193800587521403105775146981696295678123274105300163992034912109375/50839065108118705440096967422054660698858099694102064103523283671973888",
+          "1728561526162086879902674693872159467406263151240003935246548735371684187179673004150390625/355873455756830938080678771954382624892006697858714448724662985703817216",
+          "1390068805385711199424733123526901469530091403092757953205221808581212823526307125091552734375/2491114190297816566564751403680678374244046885011001141072640899926720512",
+          "1038494467133619283371609509872151543069584017288733455598409592961952641609112542018890380859375/17437799332084715965953259825764748619708328195077007987508486299487043584",
+          "25835650394203950696101907172998456393922710159537506534987312654661165828253628673076629638671875/4359449833021178991488314956441187154927082048769251996877121574871760896",
+          "117820471705601263655970585787043133441218500950838036022311718921095239750384673834200382232666015625/213613041818037770582927432865618170591427020389693347846978957168716283904",
+          "17993785770482602103269370511092060106441500507763518277697369820432296534434119574252455234527587890625/373822823181566098520123007514831798534997285681963358732213175045253496832",
+          "1475769201304966159375472010845688259042421220025932776160173289422212960612518921685594975948333740234375/373822823181566098520123007514831798534997285681963358732213175045253496832",
+          "49862126155146502085300588499114506505744895543283610683767765804102933222582659006114067733287811279296875/163547485141935168102553815787738911859061312485858969445343264082298404864",
+          "12712456688770930875603383646862874017747618230515989810102416097678068445747268776357060731947422027587890625/572416197996773088358938355257086191506714593700506393058701424288044417024",
+          "12246403551089059971181179320787871635464939171498425981719768391926275654979082378011007945485413074493408203125/8013826771954823237025136973599206681094004311807089502821819940032621838336",
+          "113863182591135085196041275065688308307506618423989621839627308380654046797025836844500964856036007404327392578125/1144832395993546176717876710514172383013429187401012786117402848576088834048",
+          "601727257871339226866264095296700900605370883221472985566564681817298804762581209649974584767208434641361236572265625/98169377956446584653557927926590281843401552819636846409567294265399617519616",
+          "246042901850297014915608408131501317173998984985113943906261819808069256871268247284662881148116779513657093048095703125/687185645695126092574905495486131972903810869737457924866971059857797322637312",
+          "852110861160465223246879715593166942591603853619068091947552416112075736855338671196765041883490397594869136810302734375/42949102855945380785931593467883248306488179358591120304185691241112332664832",
+          "44822859254514613081700886570785497570521629802474931641666545413233280160434537812380325665348190232180058956146240234375/42949102855945380785931593467883248306488179358591120304185691241112332664832",
+          "27434202917516801792467045045467456046383427333000644738923979221168642262157278907569690769260157665121369063854217529296875/526126509985330914627662019981569791754480197142741223726274717703626075144192",
+          "9118169255257151832263756341909671929844863899555175065868380012674405041259410331205912149704444811723078601062297821044921875/3682885569897316402393634139870988542281361379999188566083923023925382526009344",
+          "360127083039445370001187283884189814923155161105193630948134898228113900042041327158667497068678135428854147903621196746826171875/3222524873660151852094429872387114974496191207499289995323432645934709710258176",
+          "108202169127618125048044008275112530614737485538611646236892426642648158147882261849545813928123762619537956197746098041534423828125/22557674115621062964661009106709804821473338452495029967264028521542967971807232",
+          "2208553440672687852617310635984127514207572241046547808386522481589303025872494789695073857611324454300602155853994190692901611328125/11278837057810531482330504553354902410736669226247514983632014260771483985903616",
+          "85756464285453991726880720397915777860632633651323185373919834803831138327645202810844335799454755032965977079584263265132904052734375/11278837057810531482330504553354902410736669226247514983632014260771483985903616",
+          "9699651879186886937633423947347833053898898242375642405032090024327043929082272562519771200337832768713795985604519955813884735107421875/34541438489544752664637170194649388632881049505383014637373043673612669706829824",
+          "1192473887460074034019572675947919235366700396168123003751498850005465903843020199741007627619422543497370514842259581200778484344482421875/120895034713406634326230095681272860215083673268840551230805652857644343973904384",
+          "79658477574562546594916934606421841699719483487322811180577265998450522316894805630459992070355627140364036876007958198897540569305419921875/241790069426813268652460191362545720430167346537681102461611305715288687947808768",
+          "123932559776770142027240124208503687205515957898592399007476011081365864502825620407879595912572091799594123746857121659559197723865509033203125/11847713401913850163970549376764740301078199980346374020618953980049145709442629632",
+          "6543623496078839098342383959214585140625659844629063325144377342234918583262389340494231797239235979390251867548755626557976938784122467041015625/20733498453349237786948461409338295526886849965606154536083169465086004991524601856",
+          "187516569206508969182468697269442314028840132315767979853291798329393474675515518405865204040771751633157539455094564573300885967910289764404296875/20733498453349237786948461409338295526886849965606154536083169465086004991524601856",
+          "2231557004193218127910904715086518570047192613355095533797368168663997975222474936002078521527270277339807939106730572120795841328799724578857421875/9070905573340291531789951866585504293012996859952692609536386640975127183792013312",
+          "201524650406961530459399204340952798903332114729649818587823611639255877356326191528571116519332385858422514030709127297313898452557623386383056640625/31748169506691020361264831533049265025545489009834424133377353243412945143272046592",
+          "68993809185620852655351526520529398418279564113092941743207846613594872600916269925992920684706706421113610801361846203150207657017745077610015869140625/444474373093674285057707641462689710357636846137681937867282945407781232005808652288",
+          "11182693046966877933135829354970705915800640027975163384769891713679579539292957613080749445288798677290014415603138664412341540810302831232547760009765625/3111320611655719995403953490238827972503457922963773565070980617854468624040660566016",
+          "428575257415826985855502148768995945059200751287148297019531711362750858827667133752736796100868263426422980921968664824728278972543193958699703216552734375/5444811070397509991956918607917948951881051365186603738874216081245320092071155990528",
+          "62061684771593734730632091465007637790520258547723123209492354896689620208166787728067726593353878555814394547765262015459608591072537819854915142059326171875/38113677492782569943698430255425642663167359556306226172119512568717240644498091933696",
+          "37844525006970598945566108228595484763205116420852542218224218514133220219035978882116024697033933761523927226541526465386500177601192262955009937286376953125/1191052421649455310740575945482051333223979986134569567878734767772413770140565372928",
+          "695430592389595912259786834074687613739281612616698910030234690501107334286615166641099572120114660242986599705668820069204283385033704689703881740570068359375/1191052421649455310740575945482051333223979986134569567878734767772413770140565372928",
+          "53625593754885810639182974576936052216047256982530916585249696105846329513692526517291936865160981984041169606644376514903438391002055141143500804901123046875/5317198310935068351520428328044872023321339223815042713744351641841132902413238272",
+          "85146246408055911722739565606239763152559866562778094238766571530253269503499308266922297351145337320714084878058875468891109061786437450791709125041961669921875/521085434471636698449001976148397458285491243933874185946946460900431024436497350656",
+          "63254321798747884982610762049608668842323472301703794570080873815948265110587037049074256243883109251832177018054285921899206057705811190317035652697086334228515625/25533186289110198224001096831271475455989070952759835111400376584121120197388370182144",
+          "6264603506053557363385055618097950230570431570285088768877925789560159893802077543426976930014042530354438250053046144592253270666493136786812101490795612335205078125/178732304023771387568007677818900328191923496669318845779802636088847841381718591275008",
+          "36074432207706916571054664009639869671073777719928242308644831056113985308929902834936963980741380254990017796835053857048051205447247724578119232319295406341552734375/78195383010399982061003359045768893583966529792826995028663653288870930604501883682816",
+          "1540503901631921677209046264807011228402801664167903346111670191878100885695481871911800556096957730562711505928272651010750029197671207015218897140584886074066162109375/273683840536399937213511756660191127543882854274894482600322786511048257115756592889856",
+          "101173163267460096938121308439388388941452998957600901115271451310731717981202451798433285483988044236391794758225119429666141561419134831112387473694980144500732421875/1595824143069387389000068551954467215999316934547489694462523536507570012336773136384",
+          "2513660943186377146917130607647966057998612650310138091891767920356804225913551574983363530448644292751870118680338031457112258726209474968271706529776565730571746826171875/3831573767509599120989164593242675785614359959848522756404519011154675599620592300457984",
+          "83167971176191571818987947708143408030005308743815108394470266374795976945932889197313813342951780545987006879470391904328341138911105667741452407426550053060054779052734375/13410508186283596923462076076349365249650259859469829647415816539041364598672073051602944",
+          "4994165277878169530905348626529347354137963063572327286741447081764740179686102891488161018870085106953830063820601379854857354293937686529059050144496723078191280364990234375/93873557303985178464234532534445556747551819016288807531910715773289552190704511361220608",
+          "9641654969969344888646173785112130757694138350899727504268575949604594395704007366007265219078086064602873655350063761464150199445338924875148478577102650888264179229736328125/23468389325996294616058633133611389186887954754072201882977678943322388047676127840305152",
+          "464606419846596958452857942305126743269392557828344574348657778851970436340408586992977895926195166234663050679318696319118279599010641785217234911442574230022728443145751953125/164278725281974062312410431935279724308215683278505413180843752603256716333732894882136064",
+          "4928990311219548841632425029331500209327976023865127684379984241717332437195596419713868242571765041131431367753366103216839291200243827577309740917144154082052409648895263671875/287487769243454609046718255886739517539377445737384473066476567055699253584032566043738112",
+          "181364936823348010209110533418949273257754763306866483694235419796438556266830277452289969015045642760933102120630246145842786412377697718122104841853570178500376641750335693359375/2012414384704182263327027791207176622775642120161691311465335969389894775088227962306166784",
+          "790965003338026200570125253697726316428136677661349858706252257259961757460768460171840686818310277223635672034735654650018671608260423071257161353742048959247767925262451171875/1965248422562677991530300577350758420679338007970401671352867157607319116297097619439616",
+          "46692611407871242671477509923947617277017065433488977894462202016672783342652876154982183989937664646893677140592317054255515862848735313649084499587615937343798577785491943359375/31443974761002847864484809237612134730869408127526426741645874521717105860753561911033856",
+          "6696449751046929325278871952674429032528328545430236658913992065526019763159161231738401893422106826981000874555588242862641522932894001091629065935961762079386971890926361083984375/1540754763289139545359755652642994601812600998248794910340647851564138187176924533640658944",
+          "102054337685886355132827271767031405144183087350117305360850406247863158909737368007082157325035420579345089468131590783754928335290522507686032660512154279786045663058757781982421875/10785283343023976817518289568500962212688206987741564372384534960948967310238471735484612608",
+          "4591880955177523105116059595861215628085643433277819282037630262657311768773384500923933790483026772152534023156202937252145616855243244968341753686758011099300347268581390380859375/337040104469499275547446549015655069146506468366923886637016717529655228444952241733894144",
+          "3279914967983778428869629134448435285495843200264445025789354684291924458500674842514368383497517533290814237788306855735824792750296503732014563592400691049988381564617156982421875/337040104469499275547446549015655069146506468366923886637016717529655228444952241733894144",
+          "-8748926196705286252733564679860734034859222470013924323157257716489552643177009493833457952278384471500220824659012681055240382051174652389136099372990429401397705078125/8257482559502732250912440450883549194089408474989635222606909579476553096901329922480406528",
+          "-43744630983526431263667823399303670174296112350069621615786288582447763215885047469167289761391922357501104123295063405276201910255873261945680496864952147006988525390625/57802377916519125756387083156184844358625859324927446558248367056335871678309309457362845696"
+        ],
+        "rplus_at_L_exact": "0"
+      },
+      "frozen_provenance": {
+        "K": 36,
+        "a_exact": "7/10",
+        "basis": "sum_k c_k P_k(x/a), standard Legendre P_k, physical x in [-a,a]",
+        "cached_matrix_rayleigh_difference_diagnostic_only": 0.0,
+        "cached_matrix_sha256": "e17c3af4606a75be1e0b7fb39b9ea5a16bf9e03530c9b53981a8c32a735b430a",
+        "cached_one_direction_sha256": "295111c5ab211e1241ebad362c519a8bc263152a68a3b513cfa58440cde1d8d6",
+        "frozen_trial_binary64_hex": [
+          "0x1.2faccbe3e5ac2p-1",
+          "-0x1.909e24702ad58p-58",
+          "-0x1.28d15717a01c5p+0",
+          "-0x1.c8e0b7eb78581p-57",
+          "0x1.bf83f2eaab1c8p-1",
+          "0x1.f365601bf0254p-58",
+          "-0x1.a19cee8de500bp-2",
+          "0x1.71c5f09af1f68p-57",
+          "0x1.d9920b2b45e5ep-4",
+          "0x1.2596ac76eef62p-58",
+          "-0x1.c836e50d0ace4p-7",
+          "-0x1.7cf930dcd9dd2p-56",
+          "-0x1.914d7c1a783a0p-9",
+          "0x1.6bdae064670a8p-61",
+          "0x1.eefa1745f04c8p-10",
+          "0x1.79f176d9593e2p-54",
+          "-0x1.112f698623d59p-11",
+          "0x1.61a2685a39329p-56",
+          "0x1.22a4733112384p-13",
+          "-0x1.d168a2ce6d853p-57",
+          "-0x1.ac525a50232c1p-15",
+          "-0x1.202424d798a88p-53",
+          "0x1.65449058912d5p-16",
+          "-0x1.57c08d90a1573p-57",
+          "-0x1.0f6755ea08e02p-17",
+          "0x1.0a7729b908550p-56",
+          "0x1.569610918c222p-19",
+          "0x1.d68027094f70ap-57",
+          "-0x1.34f5868215737p-21",
+          "-0x1.86fd2eae31a43p-56",
+          "0x1.0089eab133d51p-25",
+          "0x1.e05dba8bc5031p-56",
+          "0x1.c689e1492f08fp-25",
+          "-0x1.6153a441334ecp-57",
+          "-0x1.289433babed99p-25",
+          "-0x1.c27642c622345p-54"
+        ],
+        "frozen_trial_binary64_sha256": "0da2212a2cf7c9ac5cd627571d3e2adba14806b75cb9644028cde56bee385e7b",
+        "frozen_trial_cached_matrix_rayleigh_diagnostic_only": 6.990704313112117e-13,
+        "frozen_trial_expected_binary64_sha256": "0da2212a2cf7c9ac5cd627571d3e2adba14806b75cb9644028cde56bee385e7b",
+        "frozen_trial_identity_matches_expected": true,
+        "legacy_nonidentical_result_path": "/tmp/q3_schur_polynomial_interval_result.json",
+        "m": 6,
+        "members": [
+          "g0",
+          "g2",
+          "g4",
+          "g6",
+          "g8",
+          "g10",
+          "g12"
+        ],
+        "reconstruction_contract": "literal bulk Dm projection and einsum('ij,jk,ki->i', Dm.T, G, Dm) normalization from one_direction_margin.py",
+        "source_cut_phi_binary64_sha256": "3791c88fa01debe10c8b22ed1ed87e863400b4f369c57b928cbd79c9903212c4",
+        "source_reported_cached_matrix_rayleigh_diagnostic_only": 6.990704313112117e-13
+      },
+      "high_precision_enclosure_overlap": true,
+      "high_precision_narrowness_target_abs_radius_lt_1e-20": true,
+      "low_precision_results_preserved_separately": "/tmp/q3_schur_polynomial_interval_result.json",
+      "narrowness_target_abs_radius_lt_1e-20": false,
+      "overlapping_enclosures": true,
+      "scope": {
+        "no_window_eigenvalue_comparison": true,
+        "not_a_source_certificate": true,
+        "not_a_theta_transfer": true,
+        "not_an_RH_claim": true,
+        "object": "one frozen real exact-dyadic K36 a=7/10 m=6 Legendre polynomial, zero extended outside [-a,a]"
+      },
+      "status": "COMPLETE_EXACT_DYADIC_POLYNOMIAL_ONLY"
+    }
   }
 }
