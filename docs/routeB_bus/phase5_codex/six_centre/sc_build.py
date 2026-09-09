@@ -59,10 +59,17 @@ def build(xs,K,h=0.02,XI=20000.0,verbose=True,no_offsets=False,delta=None):
             base[(k,l)]=J[k]*J[l]*Om*w
     Arch=np.zeros((N,N))
     tail_c={}
+    # Tail beyond XI of int j_k(xi d) j_l(xi d) Omega(xi) e^{i xi D}: j_k j_l ~ [cos((k-l)pi/2) - cos(2 xi d - (k+l)pi/2)]/(2 xi^2 d^2).
+    # Non-oscillatory pieces survive only for D = 0 (first term) and |D| = 2 delta (second term beats against e^{i xi D});
+    # the |D| = 2 delta case is the adjacent-block tail (~6e-5 at XI = 20000) that was uncorrected until 2026-09-09.
+    tail_int=quad(lambda z: 1/(2*(z*delta)**2)*(np.real(digamma(0.25+1j*z/2))-np.log(np.pi)),XI,1e9,limit=200)[0]
+    tail_adj={}
     for k in range(K):
         for l in range(K):
             c=np.cos((k-l)*np.pi/2)
-            tail_c[(k,l)]=2*quad(lambda z: c/(2*(z*delta)**2)*(np.real(digamma(0.25+1j*z/2))-np.log(np.pi)),XI,1e9,limit=200)[0] if abs(c)>1e-12 else 0.0
+            tail_c[(k,l)]=2*c*tail_int if abs(c)>1e-12 else 0.0
+            phi=(k+l)*np.pi/2
+            tail_adj[(k,l)]=(-0.5*np.cos(phi)*2*tail_int, -0.5*np.sin(phi)*2*tail_int)   # (re part for k+l even, im part x sgn(D) for k+l odd)
     for i in range(m):
         for j in range(m):
             D=xs[i]-xs[j]; cosD=np.cos(xi*D); sinD=np.sin(xi*D)
@@ -72,6 +79,9 @@ def build(xs,K,h=0.02,XI=20000.0,verbose=True,no_offsets=False,delta=None):
                     re=np.sum(bs*cosD)*(1+s); im=np.sum(bs*sinD)*(1-s)
                     val=(2*delta**2/np.pi)*(1j**k)*((-1j)**l)*(re+1j*im)
                     if abs(D)<1e-14: val+=(2*delta**2/np.pi)*(1j**k)*((-1j)**l)*tail_c[(k,l)]
+                    elif abs(abs(D)-2*delta)<1e-12:
+                        tr,ti=tail_adj[(k,l)]
+                        val+=(2*delta**2/np.pi)*(1j**k)*((-1j)**l)*(tr if s==1 else 1j*np.sign(D)*ti)
                     Arch[i*K+k,j*K+l]=np.real(val)
     Arch=(Arch+Arch.T)/2
     if verbose: print('  arch %.1fs'%(time.time()-t0),flush=True)

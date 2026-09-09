@@ -81,3 +81,17 @@ with the ratio (build residual of Q(Φ,·)) / λ_a: the three-block build repres
 (cross-centre archimedean tails beyond XI = 20000 are not corrected; single-block Q is), so below λ ~ 1e−6 the check is
 blind, not failed. The T² law itself rests on the single-block eigenvalue, which does not involve Φ and is K-stable.
 Q[v_out]/‖Φ‖² ≈ T is confirmed independently (first-order energy of the tail = its mass). Scale of Q: 0.13.
+
+## Direct check, second pass (2026-09-09, after the adjacent-block tail correction in sc_build.py)
+The ~1e−5 residual had a cause, and it was ours: for blocks at shift |D| = 2δ the product j_k(ξδ)j_l(ξδ)·e^{iξD} has a
+NON-oscillatory tail −½cos((k+l)π/2)/(2ξ²δ²) (and ½sgn(D)sin((k+l)π/2)/(2ξ²δ²) for the imaginary part) beyond XI, of size
+≈ 6e−5 at XI = 20000; only the D = 0 tail had been corrected. Fixed in `sc_build.py` (regressions unchanged: set 3 K4
+0.9674536916, set 3 K6 0.9663482407; no earlier multi-centre set has adjacent blocks at exactly 2δ, so no earlier number moves).
+| a | λ_a | Q[v_out + w] | λ_a‖v_in − w‖² | rel. err | Q[Φ]/‖Φ‖² | max_j |Q(Φ, e_j)| |
+|---:|---:|---:|---:|---:|---:|---:|
+| 0.50 | 9.3823e−7 | 9.3823e−7 | 9.3823e−7 | 2.0e−10 | −2.4e−16 | 8.3e−16 |
+| 0.60 | 1.6398e−9 | 1.6398e−9 | 1.6398e−9 | 3.4e−7 | −1.2e−15 | 3.7e−16 |
+Verdict: **ЕСЛИ_A at machine precision.** Φ is a null vector of the discretised Q to 1e−16 (Q(Φ, e_j) = 0 for every window
+basis vector — the Legendre closure of Q(Φ,·) = 0 holds numerically), and the identity λ_a = Q[v_out + w]/‖v_in − w‖²
+holds to 2e−10 (a = 0.5) and 3e−7 (a = 0.6; λ itself is 1.6e−9, so this is 1e−16 absolute). Raw:
+`out/window_identity_K36_corrected_a0.5_0.6.json`. The T² law and the distance reading now stand on two channels.
