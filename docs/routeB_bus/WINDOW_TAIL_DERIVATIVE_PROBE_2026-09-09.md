@@ -91,7 +91,10 @@ NON-oscillatory tail −½cos((k+l)π/2)/(2ξ²δ²) (and ½sgn(D)sin((k+l)π/2)
 |---:|---:|---:|---:|---:|---:|---:|
 | 0.50 | 9.3823e−7 | 9.3823e−7 | 9.3823e−7 | 2.0e−10 | −2.4e−16 | 8.3e−16 |
 | 0.60 | 1.6398e−9 | 1.6398e−9 | 1.6398e−9 | 3.4e−7 | −1.2e−15 | 3.7e−16 |
+| 0.70 | 4.3676e−13 | 4.3822e−13 | 4.3676e−13 | 3.3e−3 | −1.5e−15 | 3.8e−15 |
+| 0.75 | 3.87e−15 | 4.48e−15 | 3.87e−15 | 16 % | −7.5e−17 | 1.7e−14 |
 Verdict: **ЕСЛИ_A at machine precision.** Φ is a null vector of the discretised Q to 1e−16 (Q(Φ, e_j) = 0 for every window
 basis vector — the Legendre closure of Q(Φ,·) = 0 holds numerically), and the identity λ_a = Q[v_out + w]/‖v_in − w‖²
-holds to 2e−10 (a = 0.5) and 3e−7 (a = 0.6; λ itself is 1.6e−9, so this is 1e−16 absolute). Raw:
-`out/window_identity_K36_corrected_a0.5_0.6.json`. The T² law and the distance reading now stand on two channels.
+holds to 2e−10 (a = 0.5), 3e−7 (0.6) and 3e−3 (0.7); the ABSOLUTE error is ≈ 1e−15 at every a (roundoff on a form of
+scale 0.14), so at a = 0.75, where λ = 3.9e−15, the check reaches its floor (16 %). Raw:
+`out/window_identity_K36_corrected_a0.5_0.6.json`, `…_a0.7_0.75.json`. The T² law and the distance reading now stand on two channels.
