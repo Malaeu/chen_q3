@@ -36,3 +36,22 @@ Source lower sign and upper T-squared rate are distinct obligations. No Lean edi
 
 ## Follow-up audit
 User requested immediate bug fixes and simplification. Binder now isolates path commits, rejects duplicate/invalid status before mutation, restores queue on failed review, uses the canonical writer lock, and omits automatic rebase and unpublished delivery lines. Regression tests: orchestrator/tests/test_bind_request.py; combined binder/migrator suite: 14 tests passed. Changes remain local and uncommitted. Frozen request and numerical evidence unchanged. Previous publication rejection is resolved; no policy was weakened. Binder repairs await their own commit.
+
+## Current resume — observer brief section 4 (supersedes earlier open-status paragraphs)
+
+Kontext / Aufgabe: Owner requests verifiable RH work under project rules, currently the three tasks in docs/Codex/BRIEF_2026-09-09_OBSERVER_REVIEW_OF_CODEX_DAY.md section 4. After every context compression first read docs/CODEX_AS_SECOND_BODY.md section 0 and the latest SESSION_PROTOKOLL, not a stale goal description. Do not repeat completed startup repair, K36/K48 shell experiments or SCHUR delivery/intake. One independent checker per verdict; long computations run in background with logs.
+
+Erledigt / Geprueft: Fresh read-only SCHUR audit completed: 43 displays, 38 VERIFIED at stated scope, 5 unpaid PLAUSIBLE targets, 0 WRONG. Accepted as finite partial derivation only; first incorrect assertion none found. Report committed as 952bb521. Parent separately recomputed the exact rational S18b constant upper bound 1765750.8252791446 <1800000 and the null-decoupled strong margin -1/2. This proves neither the cofinal T-squared estimate nor lower sign.
+
+Offen / next: Journal updates and BRIDGE request publication are in progress. BRIDGE asks for the exact S15/S26/S26b obstruction with FULL_CHAIN or IRREDUCIBLE_ATOM; delivery is expressly NOT authorized until the owner's go. No new Proshka send and no new watch for this unsent request. Do not mistake the old SCHUR watch paragraph above for a currently pending producer result.
+
+Wichtige Fakten: The finite full-source S40 certificate already resolves the fixed row at a=.7,m=6,M=1,nu=0: margin about -4.57184076e-14 with transfer uncertainty <1.541e-22. Positive-reference bound ratio 16420.4321288621 versus actual signed row Q/T^2 about1.069376843. Stop numerical escalation of this same test. Production theorem admission remains HOLD NODE_REGISTRY_EXACT_EDGE_REQUIRED; no production Lean or RH admission occurred.
+
+Scratch checkpoint: /tmp/q3_satz9_finite_upper_assembly.lean compiled successfully (log /tmp/q3_upper_assembly_parent.log); final combined artifact is not independently reviewed or admitted. Older component reviews do not count as a full SCHUR verdict audit. This scratch work is paused under the current observer task.
+
+Dateien:
+- /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/SCHUR_INDEPENDENT_CHECK_2026-09-09.md
+- /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_BRIDGE_2026-09-09.txt
+- /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/Progress_Log.md
+- /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/CHAT_DIGESTS.md
+- /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/PROSHKA_QUEUE.md

@@ -30,6 +30,12 @@ safety confirmation остаётся внешней границей. Судья
 - Delivery receipt: 2026-09-09 10:59 Europe/Berlin; canonical conversation `6a8c3e2a-df50-83eb-b53d-dd4cc46f646f`; exact SCHUR file tile, sent locator message and `Pro-Denkvorgang` observed through browser UI. Published branch at `993ae9cdbbae6576692a9f71eb71a969ff67036a`.
 - Watch stopped: producer completed without push; original attachment received and hash-checked locally, then published by Codex. Service `q3-schur-watch-20260909.service` stopped; heartbeat `schur` PAUSED. No pending producer run for this request.
 
+### SCHUR follow-up candidates from verdict §9(b)(c) and §10(c) · NOT SENT
+
+- **Frozen signed-margin discriminator (§9(b)(c)).** For a separately immutable source row, record its physical coefficient row, physical Gram data, absolute source/projection errors, and correction norm before testing the unnormalized strong margin. The §9(c) correction norm is already available for the published row, `||z_y||_2^2 ≈ 0.0067727374858188194`; no new calculation is requested by this candidate. The completed `a=0.70, m=6, M=1, nu=0` S40 check is `ЕСЛИ_B` / `ELSE_B` only for that row/budget; it does not dispatch or settle another row.
+- **Signed cancellation versus positive-tail majorant (§9(b)).** Ask whether a source-defined schedule can retain a quantitatively useful signed/positive gap after the finite comparison. At `a=0.70, m=6`, the best positive-reference bound is `16420.4321288621` while the signed row has certified `Q[f_y]/T²` about `1.069376843`; this records finite loss of the sufficient majorant, not a cofinal law.
+- **Sharp-cut arithmetic ledger (§10(c)).** Reuse the exact `S35`–`S38` Stieltjes/autocorrelation identity, including its moving-boundary trace and full main-term budget, for a named question about the signed `D_psi` integral. A generic absolute prime-counting estimate is not a substitute for the required budget. Candidate only; no `REQ`, no `OPEN` status, and no delivery.
+
 ---
 
 ## REQ-2026-09-09-DISTANCE · DISTANCE: window floor as the Q-distance of the theta tail; T^2 law · OPEN

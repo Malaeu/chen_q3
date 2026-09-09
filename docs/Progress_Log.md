@@ -6967,13 +6967,48 @@ out/window_derivative_K36_vec_{matrices.npz,schur.json}.
 classification `OPERATIONAL` (нет в словаре), `six-centre-assembly` — без `last_verified`. Починено (b60742ca); `plan` → HOLD `NODE_REGISTRY_EXACT_EDGE_REQUIRED` (штатно).
 Урок: перед коммитом TOOLS.yaml гонять не только `yaml.safe_load`, а `python3 orchestrator/workflow_runtime.py plan` и смотреть `fatal_errors`.
 
+## 2026-09-09 — SCHUR request, delivery, and receipt
+
+**Развилка:** оставить ответ SCHUR только в личном чате или принять его как проверяемый артефакт с точной привязкой запроса.
+**Выбрали:** принять байты как `PARTIAL_WITH_PRECISE_REMAINDER`, без перевода частичных конечных выводов в кофинальный закон или знак.
+**Почему:** `REQUEST_ID: REQ-2026-09-09-SCHUR`; `BOUNDARY_ID: GOAL058_RADICAL_TRIAL_SCHUR_T_SQUARED_SUPPLIER`; request commit `e11338a3a9132c88895b565d74ce189503d1c642`, blob `2b3dab1d1eb6cda458bb0d12a96cf8209660f271`, SHA-256 `4c082be285b9d38df78d8e9ef50771798db1469492ed0ab22602ab7520ab418f`, 13,296 bytes, 89 lines, final LF. Delivery receipt: 2026-09-09 10:59 Europe/Berlin, conversation `6a8c3e2a-df50-83eb-b53d-dd4cc46f646f`; published original verdict commit `b454c35ecfd009d21c35f6a971a2b279d5cd0394`. Intake recomputed verdict SHA-256 `7717cb8106b543339909d734f0128f2e45d3d8df33bf384ff0c2476fa4e38cab` and all ten pinned shelf-file blob/SHA pairs.
+**Что отвергли и почему:** считать доставку, байтовую привязку или конечные диагностики доказательством кофинальной `T²`-оценки либо нижнего знака; приём это не даёт.
+**Техника:** source-locked request/response receipt; полная проверка request/verdict bytes и десяти полочных объектов; исходный вердикт сохранён без переписывания.
+**Следующий ход:** сохранить весь явно открытый долг: кофинальные `S15`, `S26`, `S26b`, `S37`/`S38`, пригодный абсолютный тест `S39` и поставщик нижнего знака; фиксированные конечные тесты остаются различителями, не закрытием. Новый пакет Прошке не отправлен.
+**Адреса:** docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SCHUR_2026-09-09.txt; docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SCHUR_2026-09-09.md; docs/routeB_bus/SCHUR_INTAKE_RECEIPT_2026-09-09.md; docs/routeB_bus/SCHUR_INDEPENDENT_CHECK_2026-09-09.md (`952bb521`).
+**Чей вердикт и аргумент:** Прошка: `Q1/Q2/Q3/OVERALL = PARTIAL_WITH_PRECISE_REMAINDER`; приём Codex подтвердил идентичность и происхождение байтов. Независимый read-only audit: `38 VERIFIED`, `5 PLAUSIBLE` неоплаченных целей, `0 WRONG`, `FIRST INCORRECT ASSERTION: NONE FOUND`, `ACCEPTED` только как конечная частичная paper derivation. `PX_RH_CLAIM: NOT_MADE`.
+
 ## 2026-09-09 — radical-shell ratios require a source error budget
 
-**Развилка:** interpret K48 radical-shell quotients as a degree law, or first pay the builder uncertainty.
-**Выбрали:** preserve all raw data and mark every row UNRESOLVED under the frozen conservative matrix-gauge screen; keep SCHUR as a proof-construction request.
-**Почему:** at a=.75 the seven-member baseline quotient is 2.6155 for K36 and 3.4517 for K48; the frozen prediction was 1.5. The absolute floating scales are 1.03e-15 and 1.15e-15. Individual normalized cutoff matrix differences are 9.07e-6 and 3.80e-5, not rigorous bounds and not ground-direction errors. They cannot certify the tiny denominator. At a=.80 lambda itself is below the floating scale.
-**Что отвергли и почему:** extrapolating m(a) from three rounded windows or scoring the prediction as confirmed/refuted; neither has a resolved error budget. Increasing K does not cure binary64 source assembly.
-**Техника:** six background jobs / eighteen matrix builds, K36/48, h and XI separately refined; physical Gram orthogonality; direct and cancellation Rayleigh quotients; independent orthonormal-coordinate recheck and 70-digit eigensolve of saved rounded matrices. DISTANCE migration fixed at the explicit Strategy memory parser, 12 tests pass. Five literature reading cards close the manual registry debt without theorem admission.
-**Следующий ход:** complete startup refresh, then deliver the reviewed SCHUR request when its exact publication is permitted; numerical reentry needs a source/projected error enclosure at a=.75.
-**Адреса:** docs/routeB_bus/RADICAL_SHELL_STABILITY_2026-09-09.md; docs/routeB_bus/phase5_codex/six_centre/out/radical_shell_stability_20260909.json; docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SCHUR_2026-09-09.txt; request e11338a3, binding 22a3b598.
-**Чей вердикт и аргумент:** observer decision from saved matrices; independent checks confirm finite arithmetic only. No new Proshka verdict, no Lean admission, PX_RH_CLAIM: NOT_MADE.
+**Развилка:** истолковать отношения radical-shell K36/K48 как закон степени либо сначала оплатить неопределённость построителя.
+**Выбрали:** сохранить все сырые данные и пометить каждую строку `UNRESOLVED` по замороженному консервативному экрану матричной шкалы; оставить SCHUR аналитическим запросом о построении доказательства.
+**Почему:** полная базовая таблица такова; все строки выше `a = 0.70` остаются `UNRESOLVED`, как и строки при `a = 0.70`.
+
+| a | even shell | q/lambda1 K36 | q/lambda1 K48 | absolute scale K36 | absolute scale K48 | final status |
+|---|---|---:|---:|---:|---:|---|
+| 0.70 | span_g0-4 | 161.71238 | 165.25329 | 1.044991e-15 | 1.172725e-15 | UNRESOLVED / UNRESOLVED |
+| 0.70 | span_g0-8 | 8.721609 | 8.9125695 | 1.044991e-15 | 1.172725e-15 | UNRESOLVED / UNRESOLVED |
+| 0.70 | span_g0-12 | 1.6006434 | 1.6358137 | 1.044991e-15 | 1.172725e-15 | UNRESOLVED / UNRESOLVED |
+| 0.75 | span_g0-4 | 907.60883 | 1204.2256 | 1.026565e-15 | 1.151714e-15 | UNRESOLVED / UNRESOLVED |
+| 0.75 | span_g0-8 | 21.442116 | 28.452567 | 1.026565e-15 | 1.151714e-15 | UNRESOLVED / UNRESOLVED |
+| 0.75 | span_g0-12 | 2.6154958 | 3.4516623 | 1.026565e-15 | 1.151714e-15 | UNRESOLVED / UNRESOLVED |
+| 0.80 | span_g0-4 | -220.35027 | -98.226977 | 1.010191e-15 | 1.135609e-15 | UNRESOLVED / UNRESOLVED |
+| 0.80 | span_g0-8 | -1.4166724 | -0.61947426 | 1.010191e-15 | 1.135609e-15 | UNRESOLVED / UNRESOLVED |
+| 0.80 | span_g0-12 | 1.9307688 | 0.86902792 | 1.010191e-15 | 1.135609e-15 | UNRESOLVED / UNRESOLVED |
+
+**Что отвергли и почему:** экстраполировать `m(a)` из трёх округлённых окон или оценить предсказание `1.5` как подтверждённое/опровергнутое. При `a = 0.75` семь членов дают 2.6154958 (K36) и 3.4516623 (K48), но отсутствует сертифицированный полный бюджет ошибки; при `a = 0.80` округлённые собственные значения лежат ниже плавающей шкалы. Увеличение K не исправляет binary64 source assembly.
+**Техника:** шесть фоновых задач / восемнадцать матричных сборок, K36/48, отдельные уточнения h и XI; физическая Gram-ортогональность; direct/cancellation Rayleigh quotients; независимая перепроверка в Gram-ортонормированных координатах и 70-значное решение собственных значений сохранённой округлённой K48-матрицы. Разности построителей — эмпирические шкалы, не сертифицированные границы и не ошибки в направлении ground state.
+**Следующий ход:** численно возвращаться только после source/projected error enclosure; аналитически — хвостовой детерминант SCHUR и сцепленный арифметический остаток.
+**Адреса:** docs/routeB_bus/RADICAL_SHELL_STABILITY_2026-09-09.md; docs/routeB_bus/phase5_codex/six_centre/out/radical_shell_stability_20260909.json.
+**Чей вердикт и аргумент:** решение наблюдателя по сохранённым матрицам; независимые перепроверки подтверждают только конечную арифметику. Ни Lean admission, ни кофинальный закон, ни `PX_RH_CLAIM` не следуют.
+
+## 2026-09-09 — S40 full-source margin and positive-tail comparison
+
+**Развилка:** для одной замороженной строки решить S40 интервальным полным source calculation либо продолжить неразрешённые отношения `q/lambda1`.
+**Выбрали:** проверять только замороженные `a = 7/10`, `m = 6`, `M_diag = 1`, `nu_diag = 0`; результат `ЕСЛИ_B` / `ELSE_B` относится только к этой строке и этому бюджету.
+**Почему:** `T(a)^2 = 6.589865655707739776e-13`, `Q[f] = 7.047049731459960737e-13`, сильный source margin приблизительно `-4.57184076e-14`; полный S41 transfer uncertainty `< 1.541e-22`, так что верхний конец шара строго отрицателен с запасом более десятикратной суммарной неопределённости. Сравнение положительного хвостового эталона при том же окне: minimum `B_H = 3.931797412246448274e-11`, bound `22 B_H/(N_a² T²) = 16420.4321288621`; для опубликованной signed row `B_y = 2.384968930795830427e-10`, bound `99603.8614186945`, тогда как сертифицированное `Q[f_y]/T²` приблизительно `1.069376843`.
+**Что отвергли и почему:** вывод о кофинальной `T²`-оценке, ином коэффициентном ряде, нижнем знаке, спектральной нижней оценке или RH. Постфактум `M = 1.07` покрывает лишь это окно и не является замороженным успехом. Положительный эталон не доказывает, что его signed energy нарушает какой-либо бюджет.
+**Техника:** outward Arb intervals; физические source normalizers; exact degree-192 polynomial interpolation и S41 перенос; prime powers 2, 3, 4 и оба pole moments сохранены. Положительная матрица `H` решалась с интервально-положительными главными минорами; signed оптимизатор с её минимизатором не отождествлялся.
+**Следующий ход:** S40 для этой строки остановлен; остаются кофинальные `S15`, `S26`, `S26b`, `S37`/`S38`, пригодный абсолютный тест `S39`, поставщик нижнего знака и иной отдельно замороженный кандидат с тем же полным бюджетом.
+**Адреса:** docs/routeB_bus/RADICAL_SHELL_STABILITY_2026-09-09.md; docs/routeB_bus/phase5_codex/six_centre/out/radical_shell_stability_20260909.json (`full_source_margin_followup`).
+**Чей вердикт и аргумент:** конечный интервальный отчёт даёт `ЕСЛИ_B` / `ELSE_B` для `M_diag = 1`, `nu_diag = 0`, не для семейства окон. `PX_RH_CLAIM: NOT_MADE`.
