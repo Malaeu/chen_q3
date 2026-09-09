@@ -1,0 +1,83 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-09-BRIDGE
+BOUNDARY_ID: GOAL058_RADICAL_TRIAL_SCHUR_T_SQUARED_SUPPLIER
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Resolve the quantitative obstruction between SCHUR S15 and S26; return FULL_CHAIN or IRREDUCIBLE_ATOM, with exact scope and proofs.
+DATE: 2026-09-09
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SECOND_EXPRESSION
+SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_PROOF_CONSTRUCTION_AND_ADVERSARIAL_REVIEW
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_BRIDGE_2026-09-09.md
+BASE_TIP: 952bb52113fe3ff6881c905e7c8557846cfe96df
+
+0. SCOPE AND PINNED SHELF
+SOURCE_BASE: 952bb52113fe3ff6881c905e7c8557846cfe96df
+Every shelf row below is pinned to SOURCE_BASE. Verify bytes before using it. Prior paper arguments are PAPER_DERIVATION_TO_RECHECK, not axioms. The independent report accepts finite derivations and S18b, not cofinal targets. Its local primary Suzuki source is v1; its explicit version limitation must remain visible. No external source is silently upgraded.
+docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SCHUR_2026-09-09.md | sha256 7717cb8106b543339909d734f0128f2e45d3d8df33bf384ff0c2476fa4e38cab | blob 84c1ae8791f5124cf676426cfc927898e052d61e
+docs/routeB_bus/SCHUR_INDEPENDENT_CHECK_2026-09-09.md | sha256 b4f643aa4e253c0beefc2c7d992621bd9ecdfc852e362bad3039610546cccb7f | blob 7f8e725913a097df48e24d48e781f760bfe9a8c9
+docs/routeB_bus/RADICAL_SHELL_STABILITY_2026-09-09.md | sha256 81b2cfdb8fa2fa15a0968e85d36b76f27f8e2990f975083280b4c2044ef19758 | blob fa696f6159e5472a21cfa754a3570e279585af52
+docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SCHUR_2026-09-09.txt | sha256 4c082be285b9d38df78d8e9ef50771798db1469492ed0ab22602ab7520ab418f | blob 2b3dab1d1eb6cda458bb0d12a96cf8209660f271
+docs/BATCH_PATTERNS.md | sha256 cded6dfd5950fd8dd230ad770ff0cf4a50a5bea9b2d5e91601b8eaa76120903b | blob cb63bab5fbff3d39bf63c0b0f081a2264e004f2b
+
+1. EXACT QUESTION
+Use the original E-domain, full signed Weil form Q, theta source Phi, T(a)=||1_out Phi||^2/||Phi||^2, N_a^2=||1_in Phi||^2, p_a=1_in Phi/N_a and the exact source directions d_j from SCHUR S7. The source shell is S_{m,a}=span(d_0,...,d_m), not a rounded Legendre surrogate.
+The always-positive tail reference H and ell define Z=ell*H^-1 ell and c_B through S11-S14. S15 asks:
+exists M>0, nu>=0, a_*>0, m:[a_*,infinity)->Z_{>=0}, forall a>=a_*:
+Z_{m(a),a} >= 22/[M exp(nu a) T(a)^2 N_a^2].
+On a positive finite signed block C, set c_Q=C^-1 s/N_a and delta=tau-s*C^-1 s. S26 asks delta <= M exp(nu a) T(a)^2 N_a^2 along the proposed cofinal construction. For c_B the actual quantity is delta+N_a^2(c_B-c_Q)*C(c_B-c_Q), as in S26b.
+Where precisely does proving S15 encounter the unpaid S26 mechanism? Give the exact implication diagram, state whether necessity/reverse implication is proved, disproved in an abstract model only, or still unknown for the theta source. Do not infer strict logical strength on the theta family merely from a sufficient majorant being numerically wasteful. Quantify the loss and identify the minimum missing uniform estimate.
+
+2. THE ONE MUTABLE INPUT
+You may change only the cofinal degree schedule m(a); constants M,nu,a_* are existential witnesses to report. Keep Q, E, Phi, the direction family, physical normalization and the affine strong target fixed. If a proposed repair needs another representation or direction family, locate exactly where it exceeds this scope and what additional atom it requires; do not silently adopt it. Do not assume C>0 cofinally: classify negative and singular windows using S3.4, retaining the decoupled-null obstruction.
+
+3. TWO TERMINAL ANSWERS; NO THIRD
+FULL_CHAIN: give a finite dependency chain closing the stated cofinal upper-rate supplier from the shelf and independently proved inputs. For every step give exact quantifiers, domain, normalization, inputs, what is preserved/lost, proof and type THEOREM (path+sha) / LEAN-READY (proved finite identity) / CONDITIONAL (exact premise) / NEW-MATH (named atom). FULL_CHAIN is valid only when every required step is THEOREM or LEAN-READY with its actual proof; unsupported cofinal estimates cannot be labelled finite identities.
+IRREDUCIBLE_ATOM: give ONE precise remaining quantified assertion, a derivation locating it in the fixed source family, the missing identity or estimate, and the cheapest discriminating test aimed at that atom. This means irreducible relative to the demonstrated shelf reductions, not a metamathematical impossibility theorem. Attempt a proof or a source-compatible obstruction and record FIRST_FAILURE. A renamed S15/S26 with no analysis of the cancellation loss is not an answer.
+No third terminal answer, generic next step, unsupported equivalence or claim that the problem is impossible because it is related to RH. Honest unresolved mathematics belongs inside IRREDUCIBLE_ATOM with the exact missing premise.
+
+4. EXISTING DISCRIMINATORS; DO NOT REPEAT THEM
+At a=0.7,m=6 the frozen full-source row has Q/T^2 in [1.069376842,1.069376844]; T^2=6.589865655707739776e-13, strong margin approximately -4.57184076e-14, transfer uncertainty <1.541e-22. M=1,nu=0 fails for this row only; M=1.07 covers this single window, not a cofinal family.
+For the same window and shell, minimum positive-reference cost B_H=3.931797412246448274e-11 and 22 B_H/(N_a^2 T^2)=16420.4321288621. The fixed signed row has B_y=2.384968930795830427e-10 and reference-bound ratio 99603.8614186945, versus actual signed ratio about 1.069376843. These are different functionals/coefficient choices; Q of the reference minimizer was not computed. Use the pinned report's full qualifications. This finite comparison demonstrates loss of this sufficient estimate, not failure at all degrees.
+K36/K48 shell data above a=0.70 are UNRESOLVED; forecast 1.5 at a=.75 remains UNRESOLVED. No more high-precision rounding of the same scalar is requested.
+
+5. KILLED ROUTES AND FALSIFIERS
+Do not recycle without a new invariant: null direction => strong affine budget (exact margin -1/2 in SCHUR section 3.4); prime-only Schur recovery (b_A=b_P=1 gives full recovery zero); finite inverse existence => cofinal inverse growth; positive physical Gram => positive signed C; normalized quotient => unnormalized affine budget; one-window M=1 failure => cofinal T^2 refutation. Retain all mixed, prime-power and pole terms. An upper estimate tending to zero never supplies the missing lower sign.
+If using an abstract countermodel, specify precisely which theta identities it satisfies and which it lacks. It cannot refute the theta-source target by analogy.
+
+6. FROZEN PREDICTIONS
+P1 (p=0.90): S15 implies the c_B strong budget and, on positive blocks, S26; the reverse requires an additional uniform comparison unavailable on the shelf.
+P2 (p=0.85): the first unpaid quantitative input is a uniform approximation/cancellation estimate, not finite invertibility or rank.
+P3 (p=0.95): the finite ratio 16420.4321288621 does not refute existence of a cofinal degree schedule.
+P4 (p=0.90): this batch does not produce a lower-sign supplier. Numerical discriminator frozen from existing evidence: minimum reference-bound ratio at a=.7,m=6 >10. It is already resolved by the report; do not launch another run to score it.
+Score each prediction CONFIRMED / REFUTED / UNRESOLVED with exact evidence. Predictions are not premises.
+
+7. PROOF AND INTEGRITY BOUNDARIES
+Preserve all source conventions. No RH-conditional premise in an unconditional chain, no fabricated source reading or commit, no numerical observation as theorem. Report source versions actually read and every missing verification. No Lean, goal registry, route status or RH-claim changes are authorized. Write only the requested verdict. If GitHub writing is unavailable, return the complete downloadable Markdown with SHA256, bytes and lines, explicitly NOT_COMMITTED/NOT_PUSHED; do not wait for a transport you cannot execute.
+
+8. RESPONSE SCHEMA
+REQUEST_ID: REQ-2026-09-09-BRIDGE
+RESULT: FULL_CHAIN | IRREDUCIBLE_ATOM
+VERIFIER: PAPER
+PX_RH_CLAIM: NOT_MADE
+Include the exact implication diagram S15/S26/S26b, proof attempts, FIRST_FAILURE, one next_decisive_test with objects, threshold and interpretation, prediction scores and the actual commit/push status. The terminal code answers only this upper-rate mechanism question, not RH. If FULL_CHAIN, list the independently checkable obligations ready for subsequent formalization. If IRREDUCIBLE_ATOM, give the single quantified atom and why the established shelf steps leave it unpaid.
+
+9. PROSHKA'S OWN LINE (free form, no codes, no scoring; 20–40 lines):
+   (a) why this route and not the two nearest alternatives you considered;
+   (b) the two moves you see beyond this batch, and what would kill each;
+   (c) what you would ask us for, if you could ask (data, a probe, a definition);
+   (d) what surprised you in the shelf, and what you distrust in it.
+
+10. RESEARCH LOG (append to the verdict; no scoring):
+   (a) every source consulted this batch: locator (arXiv/DOI/URL + theorem/equation), one line: what was taken or why rejected; mark READ vs RELAY;
+   (b) every branch you tried and abandoned, one line each: the candidate, the first inequality or fact that killed it;
+   (c) intermediate identities or computations that failed but might serve another question, with their exact statement.
+
