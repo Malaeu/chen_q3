@@ -1,0 +1,89 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-09-SCHUR
+BOUNDARY_ID: GOAL058_RADICAL_TRIAL_SCHUR_T_SQUARED_SUPPLIER
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Prove or precisely delimit the full-source T-squared upper-rate supplier on growing spans of cut radical derivatives. Answer exactly three questions: degree law m(a), the recovered-energy inequality via a tail determinant, and the coupled arithmetic remainder. Follow the proof-batch rules in docs/BATCH_PATTERNS.md.
+DATE: 2026-09-09
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SECOND_EXPRESSION
+SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_PROOF_CONSTRUCTION_AND_ADVERSARIAL_REVIEW
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SCHUR_2026-09-09.md
+BASE_TIP: e4fa8439f2dd98b3b7192cbb4dbe06d102425be8
+
+0. EXACT SCOPE AND SOURCE STATUS
+This is a proof batch, not a request to rename the unpaid scalar. The requested upper-rate supplier does not establish the lower sign. The unchanged sign blocker is an unconditional all-large-window lower envelope lambda_a >= -epsilon(a), epsilon(a) -> 0. Do not claim it from an upper bound.
+DISTANCE (original verdict commit c71fd48c) and its independent check are on the shelf. Its retained identities are D7-D10, D15, D20-D24; D24 remains unpaid. The point-5 supplement is RELAY: chat text pasted by the owner, not a verdict committed by its speaker and not independently verified as a theorem. Recheck every equation from it that you use; classify prior paper calculations PAPER_DERIVATION_TO_RECHECK. No Lean result or interval certification is supplied by the numerical experiments.
+
+1. IMMUTABLE SHELF
+All following paths resolve at BASE_TIP, not moving rh_clean. SHA-256 values are complete; verify at least the first 16 hexadecimal digits and report READ versus RELAY. Request delivery pins the request separately. Do not substitute an earlier SCHUR request dated 2026-09-07.
+cded6dfd5950fd8dd230ad770ff0cf4a50a5bea9b2d5e91601b8eaa76120903b  docs/BATCH_PATTERNS.md
+2ad89fd43395242af8de2ed61383dd481057ae079cbd109aa32443e25edf1c5c  docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_DISTANCE_2026-09-09.md
+a54961ff784e6f1272a4b30cd4140ee320499101187bb7b95ea35c96b3d3f43d  docs/routeB_bus/DISTANCE_INDEPENDENT_CHECK_2026-09-09.md
+3db1149291635de9dbca9148c778a8cef904ddac2e930a3b846b117a8bca4393  docs/routeB_bus/proshka/PROSHKA_SUPPLEMENT_GOAL058_DISTANCE_SCHUR_POINT5_2026-09-09.md
+7027bf2b5323f183b2e8af298230d68685c423fb31e4585d571f002626e80f04  docs/routeB_bus/proshka/PROSHKA_ADDENDUM_GOAL058_DISTANCE_SCHUR_2026-09-09.md
+3807727e0eb78dd7208003753f1c7e97a9f424b7c069a0c45d58dcee972ad123  docs/routeB_bus/WINDOW_TAIL_DERIVATIVE_PROBE_2026-09-09.md
+667899c1bcf620be3c662daad8a1073d3964b16bc15564ed0e7331fc8e7756ca  docs/routeB_bus/phase5_codex/six_centre/one_direction_margin.py
+545b47b24175b6e04b458da1b06bb827f7c52f162a10437d1d866ef647a73f3c  docs/routeB_bus/phase5_codex/six_centre/window_derivative.py
+e52f96dff9c04d76963d285ce9055d21f95cc0a340b9c9b3bde67a5bed7db6dc  docs/routeB_bus/phase5_codex/six_centre/sc_build.py
+e91899971d56423cea42cfb8ba0c1a1f8a8980b90ac3990f69273a1dfdf1cca5  docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_KERNEL_2026-09-08.md
+No external article is imported as a theorem in this packet. For any article you consult, record the exact version, theorem/equation and READ/RELAY status; check its hypotheses and source normalization.
+
+2. OBJECTS, INVARIANTS, AND WHAT WAS KILLED
+Use the full form Q of DISTANCE D2 on E of D3, including archimedean, every prime-power and both pole terms, with antilinear-first inner product. V_a is the E-closure of C_c^infinity(-a,a). Phi is the theta series with coefficients 2 pi^2 and 3 pi; F_Phi(z)=xi(1/2+z)/2, not xi. Put v_i=1_(-a,a)Phi, t_a=Phi-v_i, N_a=||v_i||_2, p_a=v_i/N_a, T(a)=||t_a||_2^2/||Phi||_2^2. T^2 has exponential part exp(-4 pi exp(2a)), not exp(-2 pi exp(2a)).
+K_a={h in V_a:<p_a,h>_2=0}, r_a=Q[p_a], J_a(z)=2 Re Q(z,p_a)-Q[z]. The exact identity Q[p_a-z]=r_a-J_a(z) uses z in K_a and ||p_a-z||_2^2=1+||z||_2^2.
+Define g_k=(partial_x^2-1/4)partial_x^k Phi. Verify global radical membership and sharp-cut domain for the chosen family. The spans labelled g0-g4, g0-g8, g0-g12 contain respectively 3, 5, 7 EVEN members only. Define d_{k,a}=(I-p_a<p_a,.>_2)(1_(-a,a)g_{2k}) and S_{m,a}=span{d_{k,a}:0<=k<=m}; m=6 means highest derivative index 12. The numerical Legendre projection is a finite approximation to this source class, not its definition. Preserve physical G-orthogonality in coefficient coordinates.
+Killed, with exact controls: unnormalized ordinary tail distance is 0 under positivity (D11-D13), not the positive window floor; a fixed-window normalized floor is finite (D14), not minus infinity; radical geometry alone allows floors T and T^4 (D18), not a forced T^2 law. The scalar falsifier C=1,b_A=b_P=1,b_R=0 gives total recovered energy 0, prime-only energy 1. Do not resurrect prime-only forcing or discard the mixed terms. Cofinal complement positivity already implies the global sign by approximation with p_a; it cannot be an inverse-existence preliminary assumption. A failed trial rejects its direction and budget, not the actual-source upper-rate law.
+
+3. NUMERICAL WALL AND PROSPECTIVE STATUS
+Existing K=36 diagnostics: q/lambda_1 for seven even radical members is about 1.00 to 1.08 through a=0.65 and 1.6 at a=0.70; at a=0.70 the three-member span gives 162 and five-member span 8.7. D37 gives H=8242,51964,688124 at a=0.60,0.65,0.70, threshold >=100. The normalized full response at a=0.70 is 4.3752e-13 versus eigenvalue 4.3676e-13. These are float diagnostics, not interval bounds.
+The owner requested K=48 at a=0.70,0.75,0.80 against K=36, with builder-error budgets and a row-wise absolute rounding floor. That run is PENDING in this candidate: no new outcome is asserted here. The old builder settings XI=20000 and Simpson h=0.02 plus analytic adjacent-block tail correction are settings, not a rigorous total error enclosure. Ratios whose denominator is not resolved above total uncertainty must remain UNRESOLVED. Precision loss must not be scored as a mechanism failure. Three nearby windows alone cannot identify a cofinal law m(a).
+
+4. Q1 — A SOURCE-DEFINED DEGREE LAW m(a)
+Construct an explicit even trial z_a in S_{m(a),a} on a cofinal range and derive a sufficient integer-valued degree schedule m:[a_*,infinity)->Z_{>=0}, including rounding rules for real-valued bounds, under the quantified construction contract of Q2. Compare the proposed scales m(a)~c exp(2a) and m(a)~c a only where justified. Give coefficient construction from source quantities, not from an unknown ground vector; distinguish a sufficient upper bound for required degree from a minimal or asymptotically sharp law. The only input you may vary is the degree schedule m(a); keep Q, physical norm, support and g_k fixed. State where the difficulty moves if you enlarge m. If you cannot prove the schedule, expose the first coefficient/tail bound with full quantifiers and a falsifier on existing caches, not a fit promoted to a theorem.
+
+5. Q2 — PROVE (4) THROUGH THE FULL TAIL DETERMINANT
+Target: there exist M>0, nu>=0, a_*>0, an integer-valued degree schedule m:[a_*,infinity)->Z_{>=0}, and one deterministic source-defined construction a |-> z_a in S_{m(a),a}, all fixed before the universal a, such that for every a>=a_*
+J_a(z_a) >= r_a - epsilon_a, epsilon_a=M exp(nu a)T(a)^2.
+This yields the normalized upper bound without any assumption that the full complement is positive. If the restricted class contains a nonpositive nonzero direction, that direction already gives lambda_a<=0; handle this branch without forcing an inverse.
+For one direction choose a GLOBAL radical combination d_a whose cut d_cut is orthogonal to p_a. This may require subtracting a multiple of Phi BEFORE cutting; the raw cut of a single g_k is not automatically orthogonal. Put d_out=d_a-d_cut. Derive, with the actual domain and conjugation convention,
+Q(d_cut,p_a)=Q(d_out,t_a)/N_a and r_a=Q[t_a]/N_a^2.
+On Q[d_cut]>0 the sufficient determinant target is
+|Q(d_out,t_a)|^2 >= Q[d_cut](Q[t_a]-epsilon_a N_a^2).
+Prove it for a cofinal source construction or identify the first precise remainder that you cannot bound. Preserve full infinite prime sums in tail pairings, though window-window pairings are finite through exp(2a). Distinguish (4)'s unnormalized sufficient inequality from a small normalized quotient: a small quotient alone does not imply (4) when ||z_a|| is large. For a multi-direction response derive the corresponding finite Gram identity and its rank/invertibility conditions; do not assume full-complement positivity on growing windows.
+
+6. Q3 — PAY THE COUPLED ARITHMETIC REMAINDER (8)-(9)
+For the source-defined f_a=p_a-z_a from Q1-Q2 give its explicit autocorrelation R_f(t)=Re<f,U_t f> and k_a(x)=x^(-1/2)R_f(log x), X=exp(2a). Define psi(x)=sum_{m<=x}Lambda(m), D_psi(x)=psi(x)-(x-1). Derive with endpoint and regularity conditions
+Q[f_a]=A[f_a]+R_pole[f_a]-2 integral_1^X k_a(x) dx+2 integral_1^X D_psi(x) k_a'(x) dx.
+Here A includes the -c_A mass term and R_pole denotes the pole form; do not reuse R_f for it. For piecewise smooth cuts justify absolute continuity of the autocorrelation and integration by parts, or retain the Stieltjes identity. Keep all prime powers and mixed source contributions. Prove the signed arithmetic bound at epsilon_a times the physical norm; to prove the stronger Q2 inequality pay epsilon_a itself. State explicitly which of these two budgets is achieved.
+An absolute envelope for D_psi is useful only if the entire main term plus 2 integral E_psi|k_a'| fits the stated budget. A prime-number asymptotic without this quantitative ledger is not an answer. If the exact-source bound is still open, give the first unpaid signed integral with explicit k_a and domain and preserve every proved identity. Do not assume a result equivalent to the global sign as a premise.
+
+7. FROZEN OBSERVER PREDICTIONS
+These forecasts concern this forthcoming proof response and are frozen before it, not numerical certificates. Score only these events, with unchanged definitions.
+P_DEGREE_UNPAID = 0.70: Q1 will not produce a proved cofinal degree law with fixed constants; an explicit coefficient or tail inequality will remain.
+P_DETERMINANT_INTERFACE = 0.90: the orthogonalized global-radical tail determinant interface will survive source/domain recheck, without establishing its cofinal inequality.
+P_ARITHMETIC_REMAINDER = 0.80: Q3 will derive an explicit source k_a or coefficient formula and still leave the signed D_psi integral unpaid at the requested T^2 budget.
+P_UPPER_NOT_SIGN = 0.99: no upper-rate conclusion in this batch alone supplies the all-support lower sign.
+NUMERICAL_FORECAST: the observer publicly froze q/lambda_1=1.5 for a=0.75, K=48, span g0-g12 before the run. Score only if the denominator and quotient are resolved relative to their errors; otherwise UNRESOLVED, not refuted.
+
+8. REQUIRED RESPONSE AND BOUNDARIES
+Return RESULT Q1, Q2, Q3 and OVERALL using PROOF_CANDIDATE_COMPLETE / PARTIAL_WITH_PRECISE_REMAINDER / ATTEMPT_REFUTED_WITH_EXACT_COUNTEREXAMPLE. Each question must contain the exact quantified claim, proof or first unpaid inequality, input paths/versions, preserved and lost structure, FIRST_FAILURE, and the cheapest falsifier with a pre-registered numerical threshold. Scope every result ABSTRACT / FINITE_CELL / COFINAL_FAMILY and PAPER / verified computation; prior paper reasoning is not an axiom. A label such as irreducible atom without an attempted proof and precise remainder does not answer this proof batch. Give frozen prediction fates, then one next_decisive_test with ЕСЛИ_A / ЕСЛИ_B. No route promotion, Lean admission, RH conclusion, queue/state edit, or new numerical run is authorized. The only requested repository artifact is EXPECTED_VERDICT_PATH; preserve exact source locks and return its delivery hashes. The owner has delegated delivery timing and content to the observer; local review and immutable binding precede delivery.
+
+9. PROSHKA'S OWN LINE (free form, no codes, no scoring; 20–40 lines):
+   (a) why this route and not the two nearest alternatives you considered;
+   (b) the two moves you see beyond this batch, and what would kill each;
+   (c) what you would ask us for, if you could ask (data, a probe, a definition);
+   (d) what surprised you in the shelf, and what you distrust in it.
+
+10. RESEARCH LOG (append to the verdict; no scoring):
+   (a) every source consulted this batch: locator (arXiv/DOI/URL + theorem/equation), one line: what was taken or why rejected; mark READ vs RELAY;
+   (b) every branch you tried and abandoned, one line each: the candidate, the first inequality or fact that killed it;
+   (c) intermediate identities or computations that failed but might serve another question, with their exact statement.
