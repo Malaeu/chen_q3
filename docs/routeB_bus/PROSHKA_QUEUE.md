@@ -14,6 +14,22 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-09-SCHUR · Goal058 radical-cut degree law, tail determinant and arithmetic remainder · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SCHUR_2026-09-09.txt`
+- Boundary: `GOAL058_RADICAL_TRIAL_SCHUR_T_SQUARED_SUPPLIER`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: see request
+- Registered predictions: see request
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `e11338a3a9132c88895b565d74ce189503d1c642` / `13296` / `89` /
+  `4c082be285b9d38df78d8e9ef50771798db1469492ed0ab22602ab7520ab418f` /
+  `2b3dab1d1eb6cda458bb0d12a96cf8209660f271` / `yes`
+
+---
+
 ## REQ-2026-09-09-DISTANCE · DISTANCE: window floor as the Q-distance of the theta tail; T^2 law · OPEN
 
 - `STATUS: OPEN`
