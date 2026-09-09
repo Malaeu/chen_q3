@@ -14,9 +14,9 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-09-SCHUR · Goal058 radical-cut degree law, tail determinant and arithmetic remainder · OPEN
+## REQ-2026-09-09-SCHUR · Goal058 radical-cut degree law, tail determinant and arithmetic remainder · IN_REVIEW
 
-- `STATUS: OPEN`
+- `STATUS: IN_REVIEW`
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SCHUR_2026-09-09.txt`
 - Boundary: `GOAL058_RADICAL_TRIAL_SCHUR_T_SQUARED_SUPPLIER`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
@@ -27,6 +27,8 @@ safety confirmation остаётся внешней границей. Судья
   `e11338a3a9132c88895b565d74ce189503d1c642` / `13296` / `89` /
   `4c082be285b9d38df78d8e9ef50771798db1469492ed0ab22602ab7520ab418f` /
   `2b3dab1d1eb6cda458bb0d12a96cf8209660f271` / `yes`
+- Delivery receipt: 2026-09-09 10:59 Europe/Berlin; canonical conversation `6a8c3e2a-df50-83eb-b53d-dd4cc46f646f`; exact SCHUR file tile, sent locator message and `Pro-Denkvorgang` observed through browser UI. Published branch at `993ae9cdbbae6576692a9f71eb71a969ff67036a`.
+- Watch: `/tmp/q3_schur_vahta_20260909.log`; Codex heartbeat `schur`, every 10 minutes.
 
 ---
 

@@ -16,10 +16,10 @@ Derived inventory, atoms and map coverage regenerated. Semantic refresh complete
 Migrator: 12 unit tests pass. Binder prefix mock tests pass. Numerical plan: two consecutive clean/wording-only review passes. Frozen prediction q/lambda1(.75,K48,even g0..g12)=1.5; manifest SHA256 92592e8037f57aff9cd71aa1dd3441cdc59ed906510dfebde03d356ecf6af3a0.
 
 ## Versendet
-Nothing sent to Proshka yet. Push of the two SCHUR commits was rejected by automatic approval review pending exact-payload approval.
+Published e11338a3, 22a3b598 and 993ae9cd to origin/rh_clean after renewed owner instruction and successful automatic approval review. At 10:59 Europe/Berlin, delivered the exact SCHUR attachment plus locator in canonical chat 6a8c3e2a-df50-83eb-b53d-dd4cc46f646f; observed file tile, sent message and natural Pro reasoning start.
 
 ## Offen
-All six background numerical jobs completed EXIT=0; the comparison retains all18 rows as UNRESOLVED under the conservative empirical builder-gauge screen. Five literature cards are present and the registry reports FRESH. Final semantic refresh and session_start completed EXIT=0; no source discrepancies remain. Maintenance files are the reviewed local candidate; publication remains separate from successful validation. SCHUR dispatch awaits allowed publication. No rigorous builder enclosure exists in sc_build; individual mesh/cutoff differences are diagnostic only.
+All six background numerical jobs completed EXIT=0; the comparison retains all18 rows as UNRESOLVED under the conservative empirical builder-gauge screen. Five literature cards are present and the registry reports FRESH. Final semantic refresh and session_start completed EXIT=0; no source discrepancies remain. Maintenance files are the reviewed local candidate; publication remains separate from successful validation. SCHUR is IN_REVIEW; background vahta log /tmp/q3_schur_vahta_20260909.log and 10-minute heartbeat schur are active. No rigorous builder enclosure exists in sc_build; individual mesh/cutoff differences are diagnostic only.
 
 ## Wichtige Fakten
 Source lower sign and upper T-squared rate are distinct obligations. No Lean edits, no RH claim. User preference saved via explicit requested memory update.
@@ -33,3 +33,6 @@ Source lower sign and upper T-squared rate are distinct obligations. No Lean edi
 
 - /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/RADICAL_SHELL_STABILITY_2026-09-09.md
 - /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/litreview/LOEWNER_FIVE_SOURCES_2026_USAGE_CARDS.md
+
+## Follow-up audit
+User requested immediate bug fixes and simplification. Binder now isolates path commits, rejects duplicate/invalid status before mutation, restores queue on failed review, uses the canonical writer lock, and omits automatic rebase and unpublished delivery lines. Regression tests: orchestrator/tests/test_bind_request.py; combined binder/migrator suite: 14 tests passed. Changes remain local and uncommitted. Frozen request and numerical evidence unchanged. Previous publication rejection is resolved; no policy was weakened. Binder repairs await their own commit.
