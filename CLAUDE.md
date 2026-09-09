@@ -71,6 +71,9 @@ docs/PUBLICATION_PLAN.md         как пишется статья: день X,
 docs/routeB_bus/MAP.md           карта Route B
 docs/CHAT_DIGESTS.md             откуда взялись идеи, включая снятые
 docs/routeB_bus/PROSHKA_QUEUE.md накопительная очередь к судье
+docs/CODEX_AS_SECOND_BODY.md      загрузчик для Codex как второго тела: файлы
+                                 для восстановления памяти, правила, метод, тон,
+                                 протокол с Прошкой (владелец 09.09)
 ```
 
 Правило реестра: инструмент без записи в `TOOLS.yaml` считается несуществующим.
