@@ -5,6 +5,7 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 import yaml
 
@@ -128,7 +129,8 @@ class SessionBriefingPlants(unittest.TestCase):
         self.assertFalse(tools["research-debt-challenge"]["writes"])
         self.assertFalse(tools["roof-port-supplier-ledger"]["writes"])
 
-    def test_battle_brief_is_the_first_session_surface(self) -> None:
+    @mock.patch.object(roof_port_ledger, "_phase_binding", return_value={"status": "BOUND_TO_ROOF"})
+    def test_battle_brief_is_the_first_session_surface(self, _binding) -> None:
         assembly = session_briefing.proof_loop.assembly_snapshot(
             session_briefing.REPO / session_briefing.ASSEMBLY_DB
         )
@@ -269,14 +271,98 @@ class SessionBriefingPlants(unittest.TestCase):
         self.assertIn(research_dependency_projection.OUTPUT.as_posix(), selected)
 
     def test_rank_prefers_even_high_unlock_unknown_over_satz9_high(self) -> None:
-        registry = session_briefing.validate_registry(session_briefing.REPO)
-        ranked = session_briefing.ranked_debts(
-            registry["debts"], dt.date(2026, 8, 30)
-        )
+        rows = [
+            {
+                "id": "G3_SATZ9_FUCHS_DIRECT_LEAN_FORMALIZATION",
+                "status": "KILLED_RECHECKABLE",
+                "last_external_check": "2026-08-30",
+                "unlock_value": "HIGH",
+                "estimated_difficulty": "HIGH",
+            },
+            {
+                "id": "SELECTED_FERRERS_EVEN_SECTOR_FLOOR_CURRENT_SOURCE_SHELF",
+                "status": "KILLED_RECHECKABLE",
+                "last_external_check": "2026-08-30",
+                "unlock_value": "HIGH",
+                "estimated_difficulty": "UNKNOWN",
+            },
+        ]
+        ranked = session_briefing.ranked_debts(rows, dt.date(2026, 8, 30))
         self.assertEqual(
             ranked[0]["id"],
             "SELECTED_FERRERS_EVEN_SECTOR_FLOOR_CURRENT_SOURCE_SHELF",
         )
+
+    def test_other_phase_renders_hold_only_with_strict_valid_active_runtime(self) -> None:
+        repo = session_briefing.REPO
+        with mock.patch.object(roof_port_ledger, "_phase_binding", return_value={
+            "status": "TERMINAL_CONSUMER_MISMATCH",
+            "terminal_consumer_id": "PAPER_CONSUMER",
+        }):
+            roof = roof_port_ledger.build(repo, repo / session_briefing.ASSEMBLY_DB)
+        self.assertEqual(roof["integrity_reasons"], ["ACTIVE_PHASE_TERMINAL_CONSUMER_MISMATCH"])
+        runtime_path = repo / roof_port_ledger.CHANNEL_RUNTIME
+        runtime = session_briefing.load_json(runtime_path)
+        runtime["active_proshka_phase"]["phase_key"]["terminal_consumer_id"] = "PAPER_CONSUMER"
+        valid = json.dumps(runtime)
+        read_text = Path.read_text
+        payload = valid
+
+        def read(path, *args, **kwargs):
+            if path == runtime_path:
+                if payload is None:
+                    raise FileNotFoundError(path)
+                return payload
+            return read_text(path, *args, **kwargs)
+
+        with (
+            mock.patch.object(roof_port_ledger, "build", return_value=roof),
+            mock.patch.object(Path, "read_text", read),
+        ):
+            rendered = session_briefing.render_briefing(repo)
+        self.assertIn("route blocker: ACTIVE_PHASE_TERMINAL_CONSUMER_MISMATCH", rendered)
+        self.assertIn("next joint: BLOCKED", rendered)
+        self.assertIn("7 direct proof inputs · INVALID", rendered)
+        self.assertIn("active paper phase binding: NOT_BOUND_TO_THIS_ROOF", rendered)
+        self.assertIn("terminal consumer: PAPER_CONSUMER", rendered)
+        self.assertEqual(roof["integrity_status"], "INVALID")
+        self.assertEqual(roof["port_summary"]["jointly_bound"], 0)
+
+        runtime["active_proshka_phase"]["status"] = "CLOSED"
+        inactive = json.dumps(runtime)
+        runtime["active_proshka_phase"]["status"] = "ACTIVE"
+        runtime["active_proshka_phase"]["phase_key"]["terminal_consumer_id"] = "CHANGED_CONSUMER"
+        changed_consumer = json.dumps(runtime)
+        duplicate = '{"schema":"ignored",' + valid[1:]
+        for payload in (
+            None, "{", "[]", '{"schema":"broken"}', duplicate, inactive, changed_consumer,
+        ):
+            with (
+                self.subTest(payload=payload),
+                mock.patch.object(roof_port_ledger, "build", return_value=roof),
+                mock.patch.object(Path, "read_text", read),
+                self.assertRaisesRegex(
+                    session_briefing.SessionBriefingError, "ROOF_PORT_LEDGER_INVALID"
+                ),
+            ):
+                session_briefing.render_briefing(repo)
+
+    def test_other_phase_never_hides_source_or_axiom_failure(self) -> None:
+        repo = session_briefing.REPO
+        roof = roof_port_ledger.build(repo, repo / session_briefing.ASSEMBLY_DB)
+        for reason in (
+            "ROOF_SOURCE_NOT_HEAD_LOCKED", "ROOF_SIGNATURE_DRIFT", "ROOF_AXIOM_RECEIPT_DRIFT",
+        ):
+            invalid = dict(roof, integrity_status="INVALID", integrity_reasons=[
+                "ACTIVE_PHASE_TERMINAL_CONSUMER_MISMATCH", reason,
+            ])
+            with (
+                self.subTest(reason=reason),
+                mock.patch.object(roof_port_ledger, "build", return_value=invalid),
+                self.assertRaisesRegex(session_briefing.SessionBriefingError, reason),
+            ):
+                session_briefing.render_briefing(repo)
+
 
 
 if __name__ == "__main__":

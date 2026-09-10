@@ -508,11 +508,31 @@ def render_briefing(
     chain = proof_loop.goal_assembly_chain(selected_goal_path)
     assembly = proof_loop.assembly_snapshot(repo / ASSEMBLY_DB, chain=chain)
     roof_ledger = roof_port_ledger.build(repo, repo / ASSEMBLY_DB)
+    phase_binding_hold = None
     if roof_ledger["integrity_status"] != "HEAD_LOCKED":
-        raise SessionBriefingError(
-            "ROOF_PORT_LEDGER_INVALID:" + ",".join(roof_ledger["integrity_reasons"])
-        )
-    route_holds = []
+        reasons = roof_ledger["integrity_reasons"]
+        if reasons == ["ACTIVE_PHASE_TERMINAL_CONSUMER_MISMATCH"]:
+            # A valid analytical phase can target another consumer. Display its
+            # briefing hold; do not recast it as corrupt proof-source bytes.
+            from orchestrator import spine
+
+            try:
+                runtime = spine.validate_runtime(load_json(repo / roof_port_ledger.CHANNEL_RUNTIME))
+                phase = runtime["active_proshka_phase"]
+                terminal = phase["phase_key"]["terminal_consumer_id"]
+                if (
+                    phase.get("status") == "ACTIVE"
+                    and terminal != roof_port_ledger.ROOF_THEOREM
+                    and terminal == roof_ledger["active_phase_binding"]["terminal_consumer_id"]
+                ):
+                    phase_binding_hold = reasons[0]
+            except (SessionBriefingError, ValueError, KeyError, TypeError):
+                pass
+        if phase_binding_hold is None:
+            raise SessionBriefingError(
+                "ROOF_PORT_LEDGER_INVALID:" + ",".join(reasons)
+            )
+    route_holds = [phase_binding_hold] if phase_binding_hold else []
     if isinstance(route.get("status"), str) and route["status"].startswith("HOLD"):
         route_holds.append(route["status"])
     if drift:
@@ -541,6 +561,10 @@ def render_briefing(
         f"  state dependency root: {route.get('dependency_root') or '—'}",
         f"  state stage/status: {route.get('stage_id') or '—'} / {route.get('status') or '—'}",
     ]
+    if phase_binding_hold:
+        terminal = roof_ledger["active_phase_binding"]["terminal_consumer_id"]
+        lines.append("  active paper phase binding: NOT_BOUND_TO_THIS_ROOF")
+        lines.append(f"    terminal consumer: {terminal}")
     if candidate:
         lines.append(f"  later named root: {candidate} (not selected by execution state)")
     lines.extend(["", "WHAT CHANGED since previous session checkpoint"])

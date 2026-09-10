@@ -14,9 +14,9 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-10-SATURATION · SATURATION: source mechanism for the affine T-squared budget after exact shell density · OPEN
+## REQ-2026-09-10-SATURATION · SATURATION: source mechanism for the affine T-squared budget after exact shell density · IN_REVIEW
 
-- `STATUS: OPEN`
+- `STATUS: IN_REVIEW`
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SATURATION_2026-09-10.txt`
 - Boundary: `GOAL058_FULL_WINDOW_AFFINE_SATURATION_AFTER_DENSITY`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
@@ -29,6 +29,10 @@ safety confirmation остаётся внешней границей. Судья
   `8233ea0deab7eb8b7f5f0f4ef862e09636c698e8` / `yes`
 
 ---
+- Delivery observed 2026-09-10 11:24 +0200: exact .txt tile, unchanged binder line, sent message `58d935a7-3635-4236-ae56-4ed39e530147`, and natural `Pro-Denkvorgang` (6 Pro). Same BRIDGE chat: https://chatgpt.com/g/g-p-69ad65d9bcfc8191a6931ea6f2c78f13-rh-marz-2026/c/6aa24f25-0934-83eb-9151-3565fc4b3379
+- Watch: app heartbeat `saturation`, ACTIVE / 10 minutes, expected path `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SATURATION_2026-09-10.md`; baseline `e989991769cdba31f52dfbfe9bb71b3c6918dee9` independently checked without that path. Stop/delete on the actual candidate verdict or observed completed no-push response, then intake; an unrelated commit is not an answer.
+- Intake prepared: verify request/boundary, pinned request bytes, ancestry and verdict hash; read the complete file; one fresh terra/xhigh checker for L1-L5, actual cofinal source estimate, singular/indefinite branches and original-shell transfer. Parent rechecks the decisive step. Do not rerun accepted f_y/f_B or K36/K48 rows. Record phase2/global47 with the actual adjudicated pin only after receiving the verdict; current runtime phase1/global46 records accepted BRIDGE.
+
 
 ## REQ-2026-09-09-BRIDGE · BRIDGE: exact obstruction between positive tail construction and signed target · ANSWERED
 
