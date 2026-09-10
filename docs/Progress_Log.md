@@ -7158,3 +7158,14 @@ Request `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_CONTACT_2026-09-10.txt`
 **Следующий ход:** assess uniform boundary constants and actual signed recovery relative to the low energies; no repeated whole-cross estimate, automatic precision escalation or renamed L29 request.
 **Адреса:** docs/routeB_bus/COLLAR_INDEPENDENT_CHECK_2026-09-10.md additional source-boundary derivation; https://arxiv.org/html/2401.18033v2 Theorem1.1; reviewed scratch f96c0785fea67a5cf302f2c53d1327385578652575c2bde78bd4268a5c84911f.
 **Чей вердикт и аргумент:** parent derivation and boundary_bootstrap_check two CLEAN passes. F*F<=2d C_a²(H²+H+.5)I=O_a(d log²(1/d)), with no rank factor; inverse recovery O_a(d log(1/d)) is absolute only. All complex modes, multiplicities, primes and poles retained. No lower sign, first-contact exclusion, Lean admission or RH claim.
+
+## 2026-09-10 — Uniform boundary response reaches linear scale, signed leading margin remains
+
+**Развилка:** improve the complete low-source response using the accepted logarithmic boundary theorem or keep a nonuniform per-vector estimate.
+**Выбрали:** fixed-interval closed graph estimate and exact unitary scaling for b in[a/2,a].
+**Почему:** the graph norm controls u and L_Delta u without inverting a low eigenvalue; the single bounded quotient map supplies uniform endpoint decay. Full L18 near/far integration then yields rank-free F*F=O_a(d log(1/d)), full inverse recovery O_a(d), and one-feedback uncertainty O_a(d/log²(1/d)).
+**Что отвергли и почему:** assuming an explicit numerical graph constant, a limiting boundary amplitude or a sign from big-O notation. At hypothetical contact only mu_min(b)<=O_a(d) follows; this is not a counterexample or a strict margin.
+**Техника:** closed-graph theorem on fixed J, primary scaling Lemma A.3 with +2log b, elementary logarithmic-weight comparison and full signed source before absolute bound. Two separate CLEAN terra/xhigh passes; parent scalar/domain checks.
+**Следующий ход:** formulate a genuine full-source signed leading-response proof question for Proshka using the now subleading one-feedback error; require actual profile/energy comparison, preserve multiplicity and both parities, no repeated norm improvement or renamed L29.
+**Адреса:** docs/routeB_bus/COLLAR_INDEPENDENT_CHECK_2026-09-10.md uniform-boundary extension; exact reviewed scratch4ceefdbff4eb24df2ab6601ef6a614e9060290a78642691837f0eba58ab0d891; https://arxiv.org/html/2401.18033v2 Theorem1.1 and Lemma A.3.
+**Чей вердикт и аргумент:** parent derivation and boundary_bootstrap_check CLEAN/CLEAN. r_d=log(1/d)-gamma-log(pi)+o(1), bounded kappa, complete feedback error is smaller than d, but signed main coefficient remains unknown. L29, lower sign and RH open; no Lean admission or numerical campaign.

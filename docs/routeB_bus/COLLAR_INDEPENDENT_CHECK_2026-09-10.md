@@ -108,3 +108,49 @@ Exact constant check: substitution z=exp(-2t) gives 2 integral_epsilon^infty alp
 For the actual COLLAR b=a-d,0<d<a, set k_a=sup_{0<=t<=2a}|alpha(t)-1/(2t)| (continuous at0). Define H_a(d)=.5log(2a/d)+2a k_a+s_a+4a cosh(a). For u=sum z_j phi_j in the complete low subspace, step2 gives ||u||infty<=C_a||z||2. In each L18 column combination, the arch integral is bounded by ||u||infty[.5log((2b+ds)/(ds))+2b k_a], which is <=||u||infty[.5log(2a/d)+.5log(1/s)+2a k_a]. Prime and full pole contributions are bounded by s_a||u||infty and4a cosh(a)||u||infty. Thus |(Fz)^plus/minus(s)|<=sqrt(d) C_a||z||2[H_a(d)+.5log(1/s)]. Integrating both sides and using integrals_0^1 log(1/s)=1, log(1/s)^2=2 gives
 F*F <= eta_a(d)I, eta_a(d)=2d C_a^2[H_a(d)^2+H_a(d)+.5]=O_a(d log^2(1/d)).
 This is a bound on the whole low projector, not r times a per-column estimate. Unlike ||J||, ||J*P_b|| tends to0 uniformly for this family. L19 then gives F*D^(-1)F<=eta_a(d)/(r_d-kappa_a,d) I=O_a(d log(1/d)). These absolute bounds do not compare with mu_min(b), so they do not prove L29 or justify a scalar-floor substitution as a final proof. The external boundary theorem is not needed for this weaker explicit bound. The potential improvement to O(d) recovery from log-boundary decay requires a uniform boundary constant and remains UNPROVED here.
+
+
+---
+
+## Uniform-boundary extension accepted 2026-09-10
+
+Two separate read-only boundary_bootstrap_check terra/xhigh passes: CLEAN/CLEAN, no findings. Exact reviewed draft SHA2564ceefdbff4eb24df2ab6601ef6a614e9060290a78642691837f0eba58ab0d891; only status changed below. Candidate wording is historical. Acceptance is at stated fixed-a paper scope, not a computed constant or L29 proof. Parent independently checked scaling against primary Lemma A.3, the singular-integral primitive and r_d asymptotic.
+
+# Uniform boundary constants and full response: candidate extension
+Status: ACCEPTED_AT_STATED_PAPER_SCOPE. New extension of accepted c968d91b COLLAR appendix, not a repeat of its audit. Imported primary theorem arxiv2401.18033v2 Theorem1.1. All complex low modes and both parities retained. No L29/RH claim.
+
+1. Fixed-domain graph estimate.
+Let J=(-1,1), L=L_Delta,J with the self-adjoint Dirichlet realization on H(J) from the accepted appendix. Put X={v in D(L):v and Lv belong to Linfty(J)}, with zero extension and norm ||v||X=||v||infty+||Lv||infty. X is Banach: a Cauchy sequence converges in the two Linfty components, hence in L2 on the bounded interval, and closedness of L identifies the limit as (v,Lv). Theorem1.1 applied to real/imaginary parts says Wv=v/sqrt(ell(dist(.,partial J))) belongs to Linfty(J) for every v in X, with ell(t)=1/|ln(min(t,.1))|. W is linear with closed graph: convergence in X implies v_n->v in Linfty, and Wv_n->g in Linfty implies v_n->g sqrt(ell(dist)) there, hence Wv=g almost everywhere. The closed graph theorem therefore gives a single finite C_J such that ||Wv||infty<=C_J||v||X. No explicit numerical C_J is claimed.
+
+2. Uniform scaling for a/2<=b<=a.
+Use the accepted uniform all-low-projector constant C_a, so ||u||infty and ||A_bu||infty<=C_a||u||2 for u in ran 1_(0,1](A_b). Define
+V_a=|log(2pi)|+2 integral_0^{2a}|k(t)|dt+2s_a+4a cosh(a),
+M_a=max(|log(a/2)|,|log a|).
+The accepted decomposition A_b=.5L_Delta,b+V_b gives ||V_b||infty->infty<=V_a, hence ||L_Delta,b u||infty<=2C_a(1+V_a)||u||2.
+For v(t)=sqrt(b)u(bt), the exact scaling identity is
+L_Delta,J v(t)=sqrt(b)(L_Delta,b u)(bt)+2log(b)v(t).
+It follows on smooth tests from symbol2log|xi| and then on the form/operator domain by scaling. Therefore ||v||X<=sqrt(a) C_a(3+2V_a+2M_a)||u||2.
+For all t>0 and b in[a/2,a], write L0(t)=max(log(1/t),log10). The 1-Lipschitz max map gives L0(t)<=L0(t/b)+|log b|, so ell(t/b)/ell(t)<=1+M_a/log10. Combining with b^(-1/2)<=sqrt(2/a) gives
+|u(x)|<=K_a||u||2 sqrt(ell(dist(x,partial I_b))),
+K_a=sqrt(2)C_J C_a(3+2V_a+2M_a)sqrt(1+M_a/log10).
+This is uniform in b and in the entire normalized low subspace, with no rank or inverse-eigenvalue factor. Constants depend on fixed a; no cofinal a-uniformity is asserted.
+
+3. Explicit collar response with uniform boundary input.
+Let b=a-d and 0<d<tau_a=min(a/2,.1), so b>=a/2 and d<.1. Put k_a=sup_[0,2a]|k|, and
+B_a=K_a/2+C_a[.5log(2a/tau_a)+2a k_a+s_a+4a cosh(a)].
+For u=sum z_j phi_j, the singular part in either L18 profile has factor.5 integral_0^{2b}|u(b-t)|/(ds+t)dt. For t<tau_a<=b, distance to nearest endpoint equals t, so |u(b-t)|<=K_a||z||/sqrt(log(1/t)). With v=ds<tau_a,
+integral_0^{tau_a}dt/((v+t)sqrt(log(1/t)))<=1/sqrt(log(1/v))+2sqrt(log(1/v))<=1+2sqrt(log(1/v)).
+The integral over[tau_a,2b] is bounded by C_a||z||log(2a/tau_a); the regular alpha correction by2a k_a C_a||z||; all primes bys_a C_a||z||; full poles by4a cosh(a) C_a||z||. Thus
+|(Fz)^plus/minus(s)|<=sqrt(d)||z||[K_a sqrt(log(1/(ds)))+B_a].
+Using (x+y)^2<=2x^2+2y^2 and integral_0^1 log(1/s)ds=1 gives the whole-matrix bound
+F*F<=eta_a^sharp(d) I,
+eta_a^sharp(d)=4d[K_a^2(log(1/d)+1)+B_a^2]=O_a(d log(1/d)).
+No sum over basis columns or factor dim(P_b) is used.
+
+4. Full inverse recovery and feedback error.
+For admissible COLLAR L16,L19 splits, F*D^(-1)F<=eta_a^sharp(d)/(r_d-kappa_a,d) I.
+Since r_d=log(1/d)-gamma-log(pi)+o(1), kappa_a,d=O_a(1), this is O_a(d). Also Y*Y<=eta_a^sharp(d)/r_d I=O_a(d), q_a,d=O_a(1/log(1/d)), and the complete one-feedback uncertainty e1Y*Y is O_a(d/log^2(1/d)). The exact scalar asymptotic follows from the accepted alpha integral, c_d=2 integral_d^infty alpha-c_A and r_d=c_d+log2.
+These are norm/matrix-order estimates with constants at fixed a. They are not an interval certificate and do not give signs of signed leading coefficients.
+
+5. Stop/next boundary.
+This pays uniform boundary constants and improves the absolute full low response. L29 still needs a STRICT comparison against M. At a hypothetical actual contact, S has a null z, so the exact identity only yields z*M z=z*F*D^-1F z=O_a(d)||z||^2 and hence mu_min(b)<=O_a(d). This does not exhibit contact or refute its exclusion. No proof of a positive gap in the leading order, no Hadamard formula, and no limit of normalized boundary traces is asserted. A further global question must identify a new signed source constraint at that order, not just rename L29 or increase feedback order.

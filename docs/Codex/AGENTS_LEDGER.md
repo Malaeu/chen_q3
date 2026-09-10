@@ -99,3 +99,7 @@ gaussian_space_review / source_transfer_bound · DONE · prior scratch component
 2026-09-10 · boundary_bootstrap_check · gpt-5.6-terra/xhigh · sole replacement audit of /tmp/q3_collar_boundary_bootstrap_draft.md after missing handle · expected15min · result=first incorrect assertion and exact-source audit · RUNNING; no descendants; agents-watch already ACTIVE.
 
 2026-09-10 · boundary_bootstrap_check · DONE; two CLEAN passes on f96c0785 scratch, accepted exact appendix with mechanical status change. No live agents; agents-watch deletion follows.
+
+2026-09-10 · boundary_bootstrap_check · gpt-5.6-terra/xhigh · new uniform graph/scaling boundary estimate and O(d) full recovery audit · expected15min · result=first incorrect assertion/two clean passes · RUNNING; no descendants.
+
+2026-09-10 · boundary_bootstrap_check · DONE; uniform-boundary draft4ceefdbf two CLEAN passes, exact appendix accepted. No live agents; delete agents-watch.

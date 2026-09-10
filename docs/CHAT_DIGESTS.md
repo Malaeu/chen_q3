@@ -1742,3 +1742,7 @@ Verdict d254ce1f and independent report6e1ef345 establish prime-channel isometry
 ## Full-source boundary bootstrap — 2026-09-10
 
 The accepted COLLAR appendix now supplies boundedness for the entire low spectral subspace via absolute convolution domination, not an odd positive-semigroup assumption. Exact A_b=.5L_Delta-log(2pi)I-K_b-prime_shifts+two_poles; the imported primary boundary theorem applies after bounded RHS/domain checks. Full low response has explicit rank-free O_a(d log²(1/d)) norm-square bound, despite nonvanishing whole-cross norm. Two clean independent passes. The relative comparison against mu_min(b), hence L29, is still unpaid; no new Proshka message or numerical campaign.
+
+## Uniform boundary response — 2026-09-10
+
+Accepted uniform extension of the COLLAR appendix uses the closed graph theorem on a fixed interval, then scaling +2log b. The entire low projector has one boundary constant for b in[a/2,a]. Exact L18 integration improves F*F to O_a(d log(1/d)), full inverse recovery to O_a(d), and complete one-feedback error to O_a(d/log²(1/d)). Constants are qualitative, not numerical certificates. Two clean checks. The remaining task is signed leading response versus low energies; more absolute norm bounds alone are not a proof of L29. Prepare a substantive Proshka proof batch with this new source input, not a restated strictness target.
