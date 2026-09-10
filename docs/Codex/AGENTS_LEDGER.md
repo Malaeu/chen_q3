@@ -63,3 +63,17 @@ gaussian_space_review / source_transfer_bound · DONE · prior scratch component
 
 2026-09-10T13:01+02:00 · shell_density_audit · DONE; CONTACT exact payload two clean passes, no findings; agents-watch DELETED. No live child agents.
 2026-09-10T13:01+02:00 · contact · app heartbeat /10min · exact verdict path docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_CONTACT_2026-09-10.md · baseline2eb2399ae8a4ef2305716a14c4f22a666ac1431c path absent · ACTIVE after observed message8f4339c9-b173-4795-a098-3e01dd8aa1e8 and Pro-Denkvorgang. Intake prepared in queue/GOAL; no numerical jobs.
+
+2026-09-10T13:33+02:00 · contact · DELETED; exact verdict00bae61477f2ab4a386dd1f0048bcd03359d89ba fetched and FF merged, one path only, bindings/ancestry/hash checked; whole729-line file read.
+2026-09-10T13:33+02:00 · contact_verdict_check · gpt-5.6-terra/xhigh · fresh read-only full CONTACT C1-C25 audit, especially endpoint removal, collar injectivity, sharp split and compact sign classifier · expected25min · result=display-by-display classifications, first incorrect assertion, reproducible decisive checks · RUNNING; no descendants.
+
+2026-09-10 · contact_verdict_check · full C1-C25 audit DONE; no mathematical error found, later live HTML is RELAY/unverified. Final exact-report confirmation pending; same checker reserved.
+2026-09-10 · index_refresh_review · gpt-5.6-terra/xhigh · bounded read-only review of remaining refresh cost after72c59971, retain all freshness/plant semantics · expected10min · result=one minimal defensible fix or leave code · RUNNING; no descendants. Existing agents-watch20min remains active.
+
+2026-09-10 · index_refresh_review · DONE; no new minimal code change recommended, remaining full latency documented with source/timings. contact_verdict_check alone RUNNING on exact parent report confirmation, expected8min, same checker/no descendants.
+
+2026-09-10 · contact_verdict_check · DONE; full C1-C25 audit, exact report WORDING-only then CLEAN. C22 UNPROVED; HTML excluded as RELAY. No running child agents; agents-watch can be deleted.
+
+2026-09-10 · index_refresh_review · gpt-5.6-terra/xhigh · bounded review of six current-day journal records skipped by canonical field parser; source-only metadata repair, no math/code change · expected5min · result=two on-target passes and all six projected IDs · RUNNING; no descendants.
+
+2026-09-10 · index_refresh_review · DONE; two clean bounded journal-format passes, all six previously skipped current-day entries selected, content preserved. No running agents; agents-watch DELETED.

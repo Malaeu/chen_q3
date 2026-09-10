@@ -14,9 +14,9 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-10-CONTACT · CONTACT: first-contact source kernel exclusion after exact exterior-defect triage · IN_REVIEW
+## REQ-2026-09-10-CONTACT · CONTACT: first-contact source kernel exclusion after exact exterior-defect triage · ANSWERED
 
-- `STATUS: IN_REVIEW`
+- `STATUS: ANSWERED`
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_CONTACT_2026-09-10.txt`
 - Boundary: `GOAL058_FIRST_CONTACT_SOURCE_KERNEL_EXTERIOR_RIGIDITY`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
@@ -33,6 +33,10 @@ safety confirmation остаётся внешней границей. Судья
 - Independent review: one native terra/xhigh checker, two consecutive clean plan/artifact passes on SHA256 `d2abcb9164c5a84ab6fe383dbb7a9aab38d8cf2958465182b9b6af120260f9db`; no unresolved findings. Parent independently rehashed all eight shelf pins, checked seven phase headers and verbatim sections9/10. Runtime review-plan REVIEW_DISPATCH_READY, no holds; published binding `2eb2399ae8a4ef2305716a14c4f22a666ac1431c` matched the remote.
 - Watch: app heartbeat `contact`, ACTIVE /10min, exact expected path `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_CONTACT_2026-09-10.md`; baseline `2eb2399ae8a4ef2305716a14c4f22a666ac1431c` lacks that path. Delete on candidate verdict or observed completed no-push response; an unrelated commit does not qualify. No live agents or numerical jobs.
 - Intake prepared: read the complete immutable file; verify REQUEST_ID, BOUNDARY_ID, ancestry from binding and request, request/verdict bytes and hashes. One fresh terra/xhigh checker, no descendants; parent independently checks the decisive proof. Audit Q1 form domain/closure, attained bottom and continuity; Q2 actual arithmetic restriction on exterior defect, local/global kernel distinction; Q3 all complex tests and both parity sectors. Do not accept H17 merely as a reformulation or accept a lower sign from upper T-squared bounds. Record the actual adjudicated verdict as phase3/global48 only after intake; current runtime phase2/global47 is accepted SATURATION. No rerun of E1-E5, SATURATION or finite numerical rows while waiting.
+
+- Received and independently accepted 2026-09-10 at PARTIAL paper scope: verdict00bae61477f2ab4a386dd1f0048bcd03359d89ba, blobdc30c38e5832859e3b84cebaddcf5779545bdd58, SHA2563475f7e1d9c11bf2ff259f1d10b967d0fdbbf7c1e68219fcd9c4ab3fcb5dd034,52815bytes/729lines/finalLF; only expected path changed, full ancestry and all eight shelf pins checked. Full report: `docs/routeB_bus/CONTACT_INDEPENDENT_CHECK_2026-09-10.md`. One fresh terra/xhigh audit, parent symbolic/proof checks, exact-report WORDING-only then CLEAN. Later HTML remains RELAY/unverified and is excluded from independent source support; local June-v1 PDF verified.
+- Current status supersedes historical waiting lines above: contact watch DELETED; audit completed; actual review event phase3/global48. C1-C21/C23-C25 independently verified at stated hypotheses, C22 UNPROVED. P1-P3 CONFIRMED. No source-kernel exclusion, lower sign, Lean admission or RH claim.
+- Candidates from verdict sections9/10, NOT SENT: (a) a source-specific coupled inverse estimate for Delta=1-||K||² retaining the core response; (b) an obstruction to the exact norm-one equality system from the two-sided arithmetic defect. Before another batch, identify a genuinely new source input on the shelf. Automatic radical tails, small collar mass and negative enlargement are already insufficient; stop an absolute-majorant subattempt when it only returns C23>=1. Full operator remainder required for any finite compression. No old scalar/numerical rerun.
 
 ## REQ-2026-09-10-SATURATION · SATURATION: source mechanism for the affine T-squared budget after exact shell density · ANSWERED
 

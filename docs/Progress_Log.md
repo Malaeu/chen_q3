@@ -7038,11 +7038,15 @@ Reproduction and complete intervals: docs/routeB_bus/phase5_codex/six_centre/out
 
 ## 2026-09-10 — Fixed-window derivative-shell completeness
 
-**Branch:** seek a new source-family transfer before another reformulation of BRIDGE's saturation atom.
-**Chosen:** prove fixed-window E-density of the exact cut even theta derivatives, then project onto p-orthogonal tests. A compactly supported annihilating distribution would have an analytic convolution vanishing to all orders, hence vanish by Fourier uniqueness. Endpoint jumps are controlled by an explicit C1-to-E cut bound and inward taper estimate.
+**Развилка:** seek a new source-family transfer before another reformulation of BRIDGE's saturation atom.
+**Выбрали:** prove fixed-window E-density of the exact cut even theta derivatives, then project onto p-orthogonal tests. A compactly supported annihilating distribution would have an analytic convolution vanishing to all orders, hence vanish by Fourier uniqueness. Endpoint jumps are controlled by an explicit C1-to-E cut bound and inward taper estimate.
 **Result:** independently checked paper L1–L5 in docs/routeB_bus/RADICAL_SHELL_DENSITY_2026-09-10.md. D_infinity=N_a² inf_{f in V_a_even,<p,f>=1}Q[f]. For unrestricted m(a), a full-space affine trial at budget b(a)>0 transfers to a finite exact shell at budget2b(a); no uniform degree rate is needed for this implication.
-**Rejected:** local density is not global radical density, exterior density, a cofinal T² bound, a coefficient bound or a lower sign. Analytic continuation alone did not prove the old quantitative atom; the complete annihilator argument proves the family transfer only.
-**Next:** SATURATION should attack an actual construction in the now-available full even affine space, or a source-specific operator/kernel estimate, with its first unpaid inequality. Do not repeat either finite f_y/f_B scalar. Two independent WORDING-only passes; B2/B17 locator fixed. RH remains unproved.
+**Что отвергли и почему:** local density is not global radical density, exterior density, a cofinal T² bound, a coefficient bound or a lower sign. Analytic continuation alone did not prove the old quantitative atom; the complete annihilator argument proves the family transfer only.
+**Следующий ход:** SATURATION should attack an actual construction in the now-available full even affine space, or a source-specific operator/kernel estimate, with its first unpaid inequality. Do not repeat either finite f_y/f_B scalar. Two independent WORDING-only passes; B2/B17 locator fixed. RH remains unproved.
+**Почему:** the complete annihilator argument supplies fixed-window family transfer without a cofinal energy claim; unrestricted degree lets the error be chosen after the full-space trial.
+**Техника:** sharp-cut C1-to-E control, inward taper, holomorphic convolution and Fourier uniqueness; independent paper audit.
+**Адреса:** docs/routeB_bus/RADICAL_SHELL_DENSITY_2026-09-10.md L1-L5; BRIDGE B17-B18.
+**Чей вердикт и аргумент:** parent construction and shell_density_audit, two WORDING-only passes; vanishing analytic convolution forces the annihilator to vanish, proving density, not an energy rate.
 
 ## 2026-09-10 — Exact phase transport restored; SATURATION delivered
 
@@ -7051,31 +7055,62 @@ The old CHANNEL_RUNTIME chat/key did not match the already owner-requested BRIDG
 Root cause prevention: review-plan checked a chat handle but omitted the six-field key and PHASE_ID. All seven fields now must be unique and match the runtime. 118 scoped tests passed; two clean native plan/artifact passes, then two final request checks. Production HOLD NODE_REGISTRY_EXACT_EDGE_REQUIRED remains; PX_RH_CLAIM NOT_MADE.
 
 SATURATION request6d8f7fac, bindinge9899917, SHA256211cf7e894c59c289ee017e8e20b16ee4766335bd9a7c79a9c2a0c0613c85c79; five shelf pins and mandatory sections9/10 verified. Delivered11:24+02 to BRIDGE chat6aa24f25..., message58d935a7-3635-4236-ae56-4ed39e530147, attachment+Pro-Denkvorgang observed. Watch saturation10min is active on the precise verdict path; no duplicate send or numerical rerun. The analytic choice is now the full-window affine T² source bound after proved fixed-window shell density, not another finite degree test. On success transfer back through L1–L5/B18; on partial answer isolate its new first failed source inequality. No cofinal rate or lower sign is claimed.
+**Развилка:** repair the honestly observed owner-requested BRIDGE transition or mutate only its current pointer.
+**Выбрали:** fixed evidence/preimage, archived predecessor, explicit late recording, then exact SATURATION delivery.
+**Почему:** the conversation changed before recording; replay must preserve historical counters and cannot claim a prior phase closure.
+**Что отвергли и почему:** pointer-only repair was rejected HIGH because it silently misattributes the old phase and calls.
+**Техника:** compare-and-swap transition writer, seven-header validation,118 scoped tests and two clean review passes.
+**Следующий ход:** wait for exact SATURATION verdict then independent intake, as the historical delivery above records.
+**Адреса:** commits a3220fad/d89888ff; orchestrator/spine.py; orchestrator/workflow_runtime.py; docs/routeB_bus/PROSHKA_QUEUE.md.
+**Чей вердикт и аргумент:** phase_record_review and parent evidence check; late recording preserves the actual chronology without asserting a proof or prior closure.
 
 ## 2026-09-10 — Cofinal affine T-squared upper supplier accepted on paper
 
-**Branch:** SATURATION after local exact-shell completeness: require an actual uniform source construction, not another infimum identity.
-**Chosen:** calibrated order8 Bessel window, its Fourier reflection and exact Poisson radical. Value and mass cancel before theta summation. The full-form radical transfers the interior energy to the exponentially small exterior; the physical affine denominator tends to2sqrt(I).
+**Развилка:** SATURATION after local exact-shell completeness: require an actual uniform source construction, not another infimum identity.
+**Выбрали:** calibrated order8 Bessel window, its Fourier reflection and exact Poisson radical. Value and mass cancel before theta summation. The full-form radical transfers the interior energy to the exponentially small exterior; the physical affine denominator tends to2sqrt(I).
 **Result:** independently accepted A1-A40 at verdict1436242e. For all real a>=a0, |Q[f_a]|<=K exp(57a)T², K=1408*pi²*I*Dstar²/k0⁴. Original-shell witnesses use some finite m(a) and bound2K exp(57a)T²; no degree-growth rate or numerical a0 claimed. Parent whole-domain A22 proof and exact169 coefficient controls are in SATURATION_INDEPENDENT_CHECK_2026-09-10.md; constants2864/195<16 and71-14=57 independently checked.
-**Rejected:** uncalibrated positive self-Fourier kernel fails E-membership by its growing tail; merely using a resolvent identity supplies no rate. Neither local density nor these selected upper energies supplies the lower sign. S15 for the former positive-reference minimizer remains open and is not required by this construction.
-**Why:** two explicit Fourier bands cover the complete exterior with a fixed constant; Poisson/Mellin preserves the original signed source form, all prime powers and both poles. No RH or positivity assumption enters.
+**Что отвергли и почему:** uncalibrated positive self-Fourier kernel fails E-membership by its growing tail; merely using a resolvent identity supplies no rate. Neither local density nor these selected upper energies supplies the lower sign. S15 for the former positive-reference minimizer remains open and is not required by this construction.
+**Почему:** two explicit Fourier bands cover the complete exterior with a fixed constant; Poisson/Mellin preserves the original signed source form, all prime powers and both poles. No RH or positivity assumption enters.
 **Prediction:** Codex P4, probability0.75 for a partial outcome, REFUTED after independent acceptance. P1-P3 CONFIRMED; old numerical predictions untouched.
-**Next:** all-test lower-sign supplier remains the true obstacle; check existing sign-route kills before choosing a new mechanism or dispatch. Do not repeat A22, f_y/f_B or K36/K48; do not promote a production Lean node without its exact edge.
-**Evidence/authority:** one fresh native terra/xhigh checker, all displays VERIFIED, no first incorrect assertion, two final clean report passes; request/boundary/ancestry and all five source hashes checked. saturation watch removed; review event phase2/global47. PAPER only; no Lean gate, production HOLD unchanged, PX_RH_CLAIM NOT_MADE.
+**Следующий ход:** all-test lower-sign supplier remains the true obstacle; check existing sign-route kills before choosing a new mechanism or dispatch. Do not repeat A22, f_y/f_B or K36/K48; do not promote a production Lean node without its exact edge.
+**Чей вердикт и аргумент:** one fresh native terra/xhigh checker, all displays VERIFIED, no first incorrect assertion, two final clean report passes; request/boundary/ancestry and all five source hashes checked. saturation watch removed; review event phase2/global47. PAPER only; no Lean gate, production HOLD unchanged, PX_RH_CLAIM NOT_MADE.
+**Техника:** calibrated Bessel/Fourier construction, Poisson/Mellin radical, full-source tail transfer, exact-shell E-projection; independent whole-domain A22 and coefficient checks.
+**Адреса:** docs/routeB_bus/SATURATION_INDEPENDENT_CHECK_2026-09-10.md; verdict1436242e A1-A40.
 
 ## 2026-09-10 — First-contact exterior equation after SATURATION
 
-**Branch:** choose a source-specific lower-sign mechanism after the accepted upper-rate proof.
-**Chosen:** expose the exact exterior defect E1-E3 of a compact-window zero mode, then ask for an actual local-to-global source argument. One pole cancels the j=0 archimedean term; the other pole, all remaining moments and every contributing prime-power shift remain.
-**Why:** the positive-Phi ground-state representation is already XIDEV GS/DOM with a proved negative-measure interval; it is not new. Bessel-radical exterior orthogonality E4 is automatic from local nullity and global radical membership, so SATURATION adds no independent sign condition through that route.
-**Rejected:** one-window inference from small radical tails plus interior completeness to global positivity. E5 has norm<=sqrt2, radical(1,epsilon,0), vanishing local compression and tail epsilon, yet exterior coupling epsilon and a vector of energy -2. It is not a theta counterexample or a fixed-form cofinal family.
-**Technique:** exact separated-support polarization and geometric-series pole cancellation; symbolic parent check and one native terra/xhigh checker, two clean final passes.
-**Next:** a proof-construction question on the literal first-contact window equation and exterior defect, with domain and both parity sectors preserved; no duplicate DOM or upper-energy batch. No new request has been sent.
-**Addresses:** docs/routeB_bus/FIRST_CONTACT_EXTERIOR_2026-09-10.md E1-E5; SCREW_HYPERBOLICITY_HODGE H16-H17; XIDEV GS/DOM; SATURATION A5/A28/A37.
-**Verdict and argument:** parent source derivation independently checked; E4 is exactly B(r_out,v)=B(r,v)-B(r_in,v)=0, not a new inequality. Lower sign and RH remain open; production HOLD unchanged.
+**Развилка:** choose a source-specific lower-sign mechanism after the accepted upper-rate proof.
+**Выбрали:** expose the exact exterior defect E1-E3 of a compact-window zero mode, then ask for an actual local-to-global source argument. One pole cancels the j=0 archimedean term; the other pole, all remaining moments and every contributing prime-power shift remain.
+**Почему:** the positive-Phi ground-state representation is already XIDEV GS/DOM with a proved negative-measure interval; it is not new. Bessel-radical exterior orthogonality E4 is automatic from local nullity and global radical membership, so SATURATION adds no independent sign condition through that route.
+**Что отвергли и почему:** one-window inference from small radical tails plus interior completeness to global positivity. E5 has norm<=sqrt2, radical(1,epsilon,0), vanishing local compression and tail epsilon, yet exterior coupling epsilon and a vector of energy -2. It is not a theta counterexample or a fixed-form cofinal family.
+**Техника:** exact separated-support polarization and geometric-series pole cancellation; symbolic parent check and one native terra/xhigh checker, two clean final passes.
+**Следующий ход:** a proof-construction question on the literal first-contact window equation and exterior defect, with domain and both parity sectors preserved; no duplicate DOM or upper-energy batch. No new request has been sent.
+**Адреса:** docs/routeB_bus/FIRST_CONTACT_EXTERIOR_2026-09-10.md E1-E5; SCREW_HYPERBOLICITY_HODGE H16-H17; XIDEV GS/DOM; SATURATION A5/A28/A37.
+**Чей вердикт и аргумент:** parent source derivation independently checked; E4 is exactly B(r_out,v)=B(r,v)-B(r_in,v)=0, not a new inequality. Lower sign and RH remain open; production HOLD unchanged.
 
 ## 2026-09-10 — CONTACT source-exclusion proof batch delivered
 
 After checked FIRST_CONTACT_EXTERIOR E1-E5, CONTACT asks for the actual first-contact kernel exclusion from the full arithmetic form, with domain/attainment/continuity paid separately and both complex parity sectors preserved. D20 is the established operator lineage; D36 gives the small-window anchor without importing the historical0.8 certificate. E4 is automatic, and E5 only rejects a generic one-window shortcut. Predictions frozen: P1=.90 source audit survives; P2=.95 tail relations alone insufficient; P3=.80 precise partial with a new proved lemma/refutation. Two clean native review passes; eight pinned shelf hashes independently checked.
 
 Request `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_CONTACT_2026-09-10.txt` at4bf7ce2a65c380c6107ba204c75697029fdb8c2f, published binding2eb2399ae8a4ef2305716a14c4f22a666ac1431c. Delivered12:59+02 with exact file/line, message8f4339c9-b173-4795-a098-3e01dd8aa1e8 and natural Pro-Denkvorgang in same chat6aa24f25. Watch contact ACTIVE10min on `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_CONTACT_2026-09-10.md`, baseline path absent. No new numerical or Lean work. ELSE_A: independently verify an actual source exclusion and its all-test consumer. ELSE_B: preserve new proved lemmas, identify first unpaid source step and use only its decisive test. RH remains unproved; PX_RH_CLAIM NOT_MADE.
+**Развилка:** seek an actual source exclusion after accepted upper-rate work or repeat an automatic radical-tail identity.
+**Выбрали:** the three-question CONTACT proof-construction batch with exact pinned shelf and all-complex consumer.
+**Почему:** E1-E3 expose the unobserved exterior arithmetic defect; E4 supplies no new restriction.
+**Что отвергли и почему:** E5 rejects only a generic one-window shortcut; neither old upper trials nor automatic tails establish lower sign.
+**Техника:** eight shelf hashes, seven phase headers and exact attachment/line/message checked; two clean request reviews.
+**Следующий ход:** receive and independently audit the exact verdict, as the historical dispatch above records; accepted intake is the following entry.
+**Адреса:** docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_CONTACT_2026-09-10.txt; request4bf7ce2a; binding2eb2399a; FIRST_CONTACT_EXTERIOR E1-E5.
+**Чей вердикт и аргумент:** parent and shell_density_audit confirmed the request; the exterior source equation names a missing mechanism without claiming its proof.
+
+## 2026-09-10 — CONTACT partial paper intake: coupled collar response is the remaining object
+
+**Развилка:** full-source first-contact exclusion after SATURATION's accepted upper rate.
+**Выбрали:** accept the independently proved domain/continuity and collar coupling lemmas, retain their exact unproved source inequality.
+**Result:** CONTACT00bae614, C1-C21/C23-C25 verified at their stated hypotheses; a0=exp(-20)/2 gives lambda(a0)>2. C17 proves injectivity only under two-sided collar vanishing; C18 constructs negative energy in every larger window from a local kernel. C21 gives the compact normalized-coupling sign classifier. C22, strict ||K||<1 at hypothetical first contact, remains UNPROVED.
+**Что отвергли и почему:** immediate crossing as contradiction to first contact; small collar mass as zero; large collar diagonal as dominance without the core inverse. The estimate ||K||²<=M_a²/(lambda_b eta) necessarily has right side>=1 at contact and supplies no strictness.
+**Почему:** full mixed archimedean/prime-power/two-pole recovery must be retained before an inverse-norm bound. Parent independently checked half-Carleman coefficient -1/2, Carleman norm pi, C18 quotient -22q/(484+q), sharp cuts, compact equality case and two-term operator remainder.
+**Prediction:** P1-P3 CONFIRMED. No old numerical forecast rescored.
+**Следующий ход:** bounded shelf investigation of a source-specific equality obstruction or coupled inverse estimate C25. New names for C22, automatic Bessel tails and old finite positive windows are not new work. No new dispatch or numerical campaign.
+**Чей вердикт и аргумент:** CONTACT_INDEPENDENT_CHECK_2026-09-10.md; full fresh terra/xhigh audit and parent proof, exact-report WORDING-only then CLEAN. All eight shelf hashes checked; late HTML excluded as RELAY, local June-v1 source verified. Queue ANSWERED; review event phase3/global48; watchers ended. Lower sign/RH unproved, production HOLD unchanged.
+**Техника:** complete independent paper audit plus parent symbolic constants, physical support denominator, sharp-cut and compact-norm attainment checks.
+**Адреса:** docs/routeB_bus/CONTACT_INDEPENDENT_CHECK_2026-09-10.md; verdict00bae614 C1-C25; /tmp/q3_contact_parent_exact_checks.log.
