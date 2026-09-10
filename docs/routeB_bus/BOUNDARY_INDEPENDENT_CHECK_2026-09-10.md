@@ -103,3 +103,74 @@ Next examine the actual N12 signed strip-mean energy deficit against M, retainin
 Review receipt: same boundary_verdict_check independently accepted N6-N19 at the stated partial paper scope and reproduced the parent complex control. First report pass MEDIUM premature merge claim and WORDING undefined projector fixed; then two separate CLEAN confirmations on c20dd15d16eed41fd513da462d03cd148983dda73aec066365c47302fd3c5dfc (18980bytes/103LF). Only candidate status and this receipt mechanically finalized. Original787line acceptance remains unchanged. N24 remains UNPROVED.
 
 Publication integration receipt: merge823a98edff3fb2d502a79446ef20b0333cbb5d8f has exactly parents6fd8633a4774bba6e721ee1562386b57334a676a and afac5cbd4ce0baa644f62f6c095350b4fc78bd33. Both verdict hashes/blob pairs and ancestry of all three local receipts were verified after the merge. Canonical path holds the700line remote edition; _BOUNDARY_BROWSER path preserves the787line browser edition. This receipt reports local integration only; remote equality is verified at final publication. Producer trailing Markdown spaces are intentionally preserved as original bytes.
+
+
+# Finite compression and the withdrawn logarithmic trace supplier
+
+Status: ACCEPTED_AT_STATED_PAPER_SCOPE. Task continuation from BOUNDARY N12/N17/N24; no source-sign, first-contact exclusion, Lean admission or RH claim. This note does not rerun accepted N6-N19 or an old numerical campaign.
+
+## Source and novelty boundary
+
+Base commit30ebfd9a5a2670a6b59ea1f796ba09baa73a513a. The exact full form and its supported logarithmic form domain V_a are CONTACT C1-C5, translation covariance C3, dilation continuity C10 (docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_CONTACT_2026-09-10.md). BOUNDARY N12/N17 identify the actual source rows and variance; N24 is still unproved (canonical700line edition). BOUNDARY section8.2 proposes a weak finite-displacement route, without endpoint traces. The old C10 already bounds the archimedean change under dilation; D1 below writes the complete signed prime/pole increment and D2 states exactly what hypothetical contact implies. It is an explicit source identity, not an independently paid sign inequality.
+
+Shelf queries: ask.sh 'BOUNDARY N12 signed strip mean core energy variance' HITS at current corpus; 'finite dilation source energy virial Pohozaev' HITS only broad local candidates, zero semantic-index candidate at that query/corpus hash. No theorem-absence conclusion is drawn. Registered literature_discovery initial broad query was INCOMPLETE because of candidate cap; narrowed quoted queries returned CANDIDATES without provider errors. The apparently fitting arXiv2411.15985v2 supplier is withdrawn as recorded below.
+
+## D1. Complete finite compression identity
+
+Use U_t f(x)=f(x-t), alpha(t)=exp(-t/2)/(1-exp(-2t)), w_n=Lambda(n)/sqrt(n), c_A=gamma+log(8pi)+pi/2 and the antilinear-first form CONTACT C1. For a>0, f in V_a, and 0<r<=1, put T_r f(x)=r^(-1/2)f(x/r). Define
+
+C_f(t)=<f,U_t f>, J_f(t)=||U_t f-f||_2^2,
+M_{+,r}(f)=int exp(r*x/2)f(x)dx, M_{-,r}(f)=int exp(-r*x/2)f(x)dx.
+
+Then T_r f belongs to V_{ra}, has the same physical norm, and
+
+Delta_r(f):=Q[T_r f]-Q[f]
+ = int_0^infinity [r*alpha(r*t)-alpha(t)] J_f(t)dt
+   -2 sum_{2<=n<exp(2a)} w_n Re[C_f(log(n)/r)-C_f(log(n))]
+   +2 Re[r*conj(M_{+,r}(f))*M_{-,r}(f)-conj(M_{+,1}(f))*M_{-,1}(f)].       (D1)
+
+Both pole moments, every prime power and all mixed behavior of a complex f remain. The single finite prime set is valid because f has width2a and r<=1; endpoint overlap has measure zero. Terms no longer overlapping after compression vanish through C_f, not by an arithmetic cutoff approximation. The -c_A term cancels by norm preservation.
+
+Proof: U_t T_r=T_r U_{t/r}. In the nonnegative arch energy change variables t=r*s separately in each finite energy integral. Subtracting the resulting integrable terms gives D1. The difference kernel is bounded near0 (alpha(t)=1/(2t)+1/4+O(t)) and integrable at infinity, so its pairing with J_f<=4||f||_2^2 is also absolutely convergent without an unproved derivative of f. The same change of variables gives C_{T_r f}(t)=C_f(t/r) and M_{+,1}(T_r f)=sqrt(r)M_{+,r}(f), likewise for minus. Dilation preserves the supported logarithmic domain by the Fourier-weight comparison in CONTACT C4-C5. Thus no H1 domain, differentiable eigenbranch, normalized endpoint trace, or fractional-order interchange is used.
+
+## D2. What actual first contact says, and what it does not
+
+Suppose a is a first contact: Q is nonnegative on V_a, its nonzero null vector v is in V_a, and the bottom lambda_b is strictly positive for every0<b<a. All statements below are conditional on these premises; no actual source contact is exhibited. Positivity and polarization give B(v,h)=0 for all h in V_a. Since T_r v is in V_{ra} subset V_a,
+
+Delta_r(v)=Q[T_r v]=Q[T_r v-v] >= lambda_{ra}||v||_2^2 >0,  0<r<1.       (D2)
+
+An independently proved actual-source inequality Delta_r(v)<=0 for at least one such r for each nonzero hypothetical contact vector would therefore exclude contact. This alternative would feed the same all-test consumer, but is NOT a proof of N24 nor a cheaper established interface. D1 alone supplies no sign: the prime terms sample the actual autocorrelation at different shifts; a positive-definite autocorrelation need not be monotone. The pole cross-product has no fixed sign for all complex/parity sectors. No worst-eigenvalue denominator or discarded variance is used. If the only remaining argument is to differentiate r at1 or claim Q[T_r v-v]=o(1-r) from form convergence, stop: that step is not supplied.
+
+## D3. An infinite-dimensional control for that stopping condition
+
+Consider, only as a model, Q_0[f]=.5*E_Delta[f]+kappa*||f||_2^2 on the same zero-extension logarithmic domain of an interval. Its angular symbol is log|xi|+kappa. Compact resolvent and semiboundedness give a lowest eigenvalue lambda_0(1) on(-1,1). Exact Fourier scaling gives lambda_0(a)=lambda_0(1)-log(a), hence first contact a_*=exp(lambda_0(1)). A unit null eigenfunction v there has, for every0<r<1,
+
+Q_0[T_r v]=-log(r)=Q_0[T_r v-v]>0.                                    (D3)
+
+Thus form convergence of inward dilations does not imply an o(1-r) energy defect; here the quotient tends to1. At r=1/2,3/4,9/10 the exact increments are log2,log(4/3),log(10/9), approximately.693147180559945309,.287682072451780927,.105360515657826301. This model retains the true infinite-dimensional logarithmic boundary geometry; it omits the full arithmetic/pole perturbation. It refutes a domain/regularity-only shortcut, NOT the theta-source sign. A source-specific proof must use the retained terms in D1.
+
+## D4. Primary-source withdrawal and a failed interchange
+
+Primary version record https://arxiv.org/abs/2411.15985, inspected10.09.2026, says v2 was withdrawn26.04.2025: 'This paper has been withdrawn by the authors due to a crucial error in Proof of Pohozaev identity'. Its metadata abstract still claims that identity. The v2 HTML/PDF endpoints and export PDF returned404; the primary record explains the missing artifact. Therefore arXiv2411.15985v2 is NOT an admissible theorem supplier. This is a source-specific exclusion, not a claim that no corrected logarithmic Pohozaev theorem exists elsewhere.
+
+Historical v1 was retrieved from https://arxiv.org/pdf/2411.15985v1:493152bytes, SHA2564014c39019b0f31d29a7daac06f17d5ad654ca390b8abe26c44e5c53131d5319. Read Theorem2.3 onp7 and its proof onpp17-19; p7/p18 visually checked. Theorem2.3 itself assumes a finite limit u(t)^2 log(delta(t)^(-2)); N4 only bounds this quantity and does not supply its limit. Corollary3.8 onp19 invokes [25, Theorem1.1] and Theorem2.3; the displayed boundary envelope alone does not discharge Theorem2.3(i) (see also the already accepted oscillating-envelope control in BOUNDARY6.3).
+
+The displayed p18 exchange of the small fractional order s and boundary limit is not justified by a bounded logarithmic trace. Explicitly let u(t)=1/sqrt(log(1/t)) near0, with a smooth compact taper away from0, and L=log(1/t). It is bounded, has bounded variation, and therefore finite logarithmic form energy: ||U_hu-u||_2^2<=2||u||_infty TV(u)|h| near h=0. Its logarithmic squared trace is2. Nevertheless the p18 boundary expression is
+
+u(t)^2 [t^(-2s)-1]/(2s) = [exp(2sL)-1]/(2sL).
+
+For fixed L then s->0 this tends to1; for fixed s>0 then L->infinity it tends to+infinity. The two iterated limits differ. This example diagnoses the proposed inference from the boundary envelope/trace condition; it is NOT claimed to solve the complete hypotheses(ii)-(iii) of that theorem or to refute every possible corrected identity. Separately, p18 removes a mollifier from a test pairing without an identity justifying that removal; no such step is used in D1-D3. The authors' withdrawal is authoritative; the specific p18 criticism is our independent local check, not an attribution of their precise reason.
+
+The later paper https://arxiv.org/html/2504.18907v3 was also inspected at the Pohozaev mentions:1488430bytes/SHA25640fc9e34081ad6a94069b06e912e4c8b8185db82f80d005178286e9ce8036f40. Its text there compares known fractional/Laplacian nonexistence results and cites a fractional identity; those inspected passages do not supply the missing logarithmic-source theorem. No full-paper audit or exhaustive absence claim is made.
+
+## Disposition and next discriminating task
+
+New paid item is the exact complete finite-compression ledger D1-D2; D3 gives a true logarithmic-domain negative control for a proposed zero-derivative shortcut. The trace supplier2411.15985v2 is withdrawn and excluded. N24 and the invisible-strip-mean branch BND23 remain open. Do not send a renamed BOUNDARY request merely because D1 exists; no signed comparison has been proved.
+
+Next bounded question: retain the finite differences of all actual prime autocorrelations and both scaled moments in D1, and seek an independently signed estimate using the literal local null equation. Success is a source-specific sign contradiction with full quantifiers, or a new identity that actually constrains those signed differences; repeating dilation continuity, taking an uncontrolled derivative, or bounding only norms is a stop. No numerical campaign, precision escalation or normalized trace premise follows from this note.
+
+### Finite-compression independent review receipt
+
+Exact reviewed candidate: SHA2568050e50835848dc79922c12d1cc44fad37dac537cb6d0205a27081e3ae8a451c,9199bytes/63LF/finalLF. One reused boundary_verdict_check terra/xhigh audited only the new D1-D4. Pass1 mathematical FIRST_INCORRECT_ASSERTION NONE_FOUND, two LOW (parent prompt line count; historical scratch mistaken for canonical target) and WORDING Corollary3.8 attribution. Count63 and actual canonical target resolved both LOW; attribution corrected. Separate pass2 CLEAN and pass3 CLEAN on the same hash. Only status mechanically finalized on append; the prior canonical report prefix and both original verdicts remain unchanged. No new mathematical call or phase event.
+
+Parent channel: primary arXiv record re-read and v1 bytes independently matched (493152; SHA2564014c39019b0f31d29a7daac06f17d5ad654ca390b8abe26c44e5c53131d5319). Actual v1 pages7,17-19 checked. Separate exact integration for f(x)=(1+i*x)1_[-4/5,4/5], r=3/4 gives norm728/375; C_(T_r f)(t)-C_f(t/r)=0 on0<=t<=2ra and both scaled pole moment differences0. Expansion alpha(t)=1/(2t)+1/4-t/48+O(t²). These are algebra/provenance controls; the all-domain proof is independently audited. No finite control proves the source sign.

@@ -123,3 +123,7 @@ gaussian_space_review / source_transfer_bound · DONE · prior scratch component
 2026-09-10 · boundary_bootstrap_check · gpt-5.6-terra/xhigh · bounded integration regression: manual same-source knowledge rows mistaken for migrator components; plan/code review only · RUNNING expected10min, no descendants. agents-watch20min ACTIVE. Semantic refresh already passed; no repeat refresh unless indexed bytes change.
 
 2026-09-10 · boundary_bootstrap_check · DONE; integration false ownership corrected, plan CLEAN/CLEAN, artifact LOW new E501 fixed then CLEAN/CLEAN on ac2bec0e/a4962e60. Parent live455dryrun0/session_start0/ask HITS0; DB unchanged. agents-watch DELETED. No live agents, verdict watches or numerical jobs.
+
+2026-09-10T18:56+02:00 · boundary_verdict_check · gpt-5.6-terra/xhigh · bounded new finite-compression D1-D4 audit, not repeated BOUNDARY intake; exact draft2acbc040 · RUNNING, expected15min, read-only/no descendants · result=first invalid assertion, domains/signs/source provenance, two clean passes. agents-watch20min required.
+
+2026-09-10 · boundary_verdict_check · DONE; new D1-D4 draft8050e508 accepted at narrow PAPER scope after LOW count/target clarification, WORDING attribution correction, then CLEAN/CLEAN. Original verdict audits not repeated. No live agents; agents-watch deletion follows.

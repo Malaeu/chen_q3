@@ -37,6 +37,8 @@ safety confirmation остаётся внешней границей. Судья
 - Second edition of the SAME request: remote afac5cbd4ce0baa644f62f6c095350b4fc78bd33,51765bytes/700LF/finalLF/SHA25656044adb5e724564166254fb54fe25f2fe9f01e4111486cad86d56b3d48b52a3/blob eaff501e3ecad01228aa5660c515a9ea93f055a9. Same checker independently accepted N6-N19 at partial PAPER scope; report MEDIUM premature-merge/WORDING projector fixed then CLEAN/CLEAN. New uniform continuity, o(sqrt(d)) mean-zero response and full signed d(1-1/c)beta*beta+o(d/c) expansion; N24 UNPROVED. Merge823a98ed preserves both original histories and both byte strings; browser edition now in PROSHKA_VERDICT_GOAL058_BOUNDARY_BROWSER_2026-09-10.md. No second phase/global call count.
 - Next: actual N12 signed strip-mean/core-energy comparison above full N17 variance, retaining browser BND23/BND24 invisible-mean branch. Stop at mu_min denominators, absolute little-o, positive/simple-ground assumptions or zero-means-implies-zero-strips. Remote N24 and browser two strict gates remain unpaid; no automatic renamed request or numerical campaign.
 
+- Finite-displacement follow-up independently accepted: report D1-D4 appendix gives exact full-source compression, conditional contact identity and genuine logarithmic-domain control -log(r). arXiv2411.15985v2 is withdrawn and excluded as trace supplier; no source-sign theorem follows. Two clean checks on8050e508 (9199bytes/63LF). Next test only a new actual-source signed constraint beyond D2; stop at tautological null pairing, norm-only bounds or uncontrolled derivatives. No new request, phase count, numerical campaign or watch.
+
 ---
 
 ## REQ-2026-09-10-COLLAR · COLLAR: prove full source coupled contraction after reflected-prime obstruction · ANSWERED
