@@ -1,0 +1,81 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-10-FLOW
+BOUNDARY_ID: GOAL058_FULL_SOURCE_LOCATION_DEPENDENT_PATH_ALLOCATION
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Construct an actual location-dependent allocation of the full signed source into positive continuous and prime resources, using the new central certificate and exact failed tail laws; prove the all-test sign or return a new precise source obstruction after a concrete repair.
+DATE: 2026-09-10
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SECOND_EXPRESSION
+SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_PROOF_CONSTRUCTION_AND_ADVERSARIAL_REVIEW
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_FLOW_2026-09-10.md
+BASE_TIP: a05a3b6d333b9fdabb04d49cd5c963a31084b173
+
+0. NEW INPUT AND PINNED SHELF
+SOURCE_BASE: a05a3b6d333b9fdabb04d49cd5c963a31084b173
+Continue the SAME living BRIDGE/SATURATION/CONTACT/COLLAR/BOUNDARY chat6aa24f25-0934-83eb-9151-3565fc4b3379 and unchanged six-field phase. New mathematical input: an actual sufficient central source allocation and two proved tail-resource obstructions. This is not another request to rename the old Schur sign. The terminal consumer remains unconditional Q>=0 on every complex compact smooth test. All four shelf SHA/blob pairs were independently recomputed by Codex at SOURCE_BASE:
+docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_WEIL_POSITIVITY_AROUND_XI_PROOF_2026-09-05.md | sha256 93db2de6357821918211a8033b2c8f34e7f684320a25e5623e1f24d33ed58fe9 | blob 136aceb3cbbabcdfa425459562b803b67c548b48 | 46207 bytes
+docs/routeB_bus/BOUNDARY_INDEPENDENT_CHECK_2026-09-10.md | sha256 b30d024c5a7e73806653300ebf30b37b1718cb25fa00ae612bd44d3b1e6cd6c5 | blob 6f5ddbad0d91d3f4a8bb7e5734838b55f10a4226 | 121953 bytes
+docs/routeB_bus/phase5_codex/out/three_edge_central_20260910.json | sha256 c193163d562dfc5eedcc5a462932c879533364f52af86c9e47182c8d2f193db2 | blob f18fc6d374a6dc891f488625035c79756318e999 | 708850 bytes
+docs/BATCH_PATTERNS.md | sha256 cded6dfd5950fd8dd230ad770ff0cf4a50a5bea9b2d5e91601b8eaa76120903b | blob cb63bab5fbff3d39bf63c0b0f081a2264e004f2b | 11341 bytes
+Read the canonical source at CAN,L2(RAD),L3a(GS),L3b(DOM), and the new report D14-D26, especially D20-D26 with evidence/acceptance receipts. Earlier report sections use a different representation and need not be re-audited. The708850-byte bundle binds16 exact artifacts: interval evaluator, rational leaf bounds and coverage. Check its hashes/coverage if relying on D23; do not repeat the closed16-minute adaptive search. A fresh rigorous reconstruction is allowed if a real defect requires it; disclose exactly what is verified. Previous Proshka/Codex derivations remain PAPER_DERIVATION_TO_RECHECK, not axioms. No external theorem/PDF is silently imported by this request.
+
+1. EXACT SOURCE AND ORIGINAL CONSUMER
+Use physical dx and all complex tests. Canonical f0=Phi/A, A=||Phi||2>0. For x>=0, Phi(x)=exp(x/2) sum_(k>=1)(4pi^2 k^4 exp(4x)-6pi k^2 exp(2x)) exp(-pi k^2 exp(2x)); extend evenly. CAN/L2 gives f0>0, full super-exponential derivative decay and B(f0,v)=0 on its declared domain, independently of source sign. A radical is not an assumed minimum.
+Original Q(g)=int_0^infty alpha(t)||g(.+t)-g||2^2 dt-c_A||g||2^2+2Re(M_+(g)conj(M_-(g)))-2sum_(n>=2)w_n Re int conj(g(x))g(x+log n)dx, with alpha(t)=exp(-t/2)/(1-exp(-2t)), c_A=gamma+log(8pi)+pi/2, M_+/-=int g(x)exp(+/-x/2)dx, w_n=Lambda(n)/sqrt(n). Keep all prime powers and both poles.
+For r in C+C_c^infty(R;C), let c_t(x)=f0(x)f0(x+t), E_r(t)=int c_t(x)|r(x+t)-r(x)|^2 dx. Exact GS: Q(f0r)=int_0^infty b(t)E_r(t)dt+sum_(n>=2)w_n E_r(log n), b(t)=exp(-t/2)/(exp(2t)-1)-exp(t/2)=alpha(t)-exp(-t/2)-exp(t/2). BOTH poles and the scalar diagonal are retained through the radical subtraction. Terms converge separately; r=g/f0 covers every original compact smooth g. Let tau solve exp(3tau)-exp(tau)=1. P=(0,tau) and N=(tau,infty) are the positive/negative continuous supports. Set j(u)=u^3 b_+(u) for u>0, zero otherwise. Prime atoms remain a separate positive resource, including at lengths in N.
+Final target DOM: int_N int b_-(t)c_t(x)|r(x+t)-r(x)|^2 dxdt <= int_P int b(u)c_u(y)|r(y+u)-r(y)|^2 dydu +sum_(n>=2)int w_n c_(log n)(y)|r(y+log n)-r(y)|^2 dy, for EVERY compact smooth complex r. A finite interval or a particular path certificate is not substituted for this target.
+
+2. Q1 — AUDIT THE NEW CENTRAL SUPPLIER AND EXACT RESIDUAL RESOURCE
+Keep I=[log(7/5),log(8/5)],R=1/8. D20-D23 pay the ENTIRE negative block t in I,|x+t/2|<=R. Set L=j*j,Z=j*j*j. Probability on ordered s1,s2,s3>0 with sum t is j(s1)j(s2)j(s3)/Z(t), NO3!; all lengths lie in P almost surely. For K=b_-(t)c_t(x), physical charges Ai=K*t/s_i satisfy the complex telescoping inequality. Exact normalized receiving density:
+rho_c(y,u)=u^2/c_u(y) int_I b_-(t)*t/Z(t) {L(t-u)[c_t(y)1_(|y+t/2|<=R)+c_t(y-t+u)1_(|y-t/2+u|<=R)]+int_0^(t-u)j(v)j(t-u-v)c_t(y-v)1_(|y-v+t/2|<=R)dv}dt.
+All three inverse Jacobians are1; u^2=j(u)/(u*b(u)). D23 certifies sup rho_c <=340263072827858175414912363711278527325/340282366920938463463374607431768211456=.999943299756449705...<1 on2493 exact regions[195+889+1409]. Complete theta remainder, whole interval range cells, full L/Z normalizers, boundary indicators and exact rational coverage are retained; primes are unused. Audit the derivation and evidence, not just the decimal.
+If accepted, remaining positive measure on unoriented receiving edges(y,y+u),u>0 is C_res(dy,du)=1_P(u)b(u)c_u(y)(1-rho_c(y,u))dydu+sum_(n>=2)w_n c_(log n)(y)dy delta_(log n)(du). Remaining demand is D_rem(dx,dt)=1_N(t)b_-(t)c_t(x)1_((t notin I) OR |x+t/2|>R)dxdt. Establish the exact composition implication. All other negative lengths and both physical tails remain; rho_c<1 alone does not prove full sign.
+
+3. Q2 — MAIN PROOF ATTEMPT: ACTUAL LOCATION-DEPENDENT ALLOCATION
+Spend most effort constructing a source-specific supplier that pays D_rem from C_res. The unpaid tails on the SAME I are a legitimate entry, but carry the entire global remainder explicitly. One eligible route: a measurable probability mu_(x,t) on finite paths v0=x,...,vk=x+t, with nonzero edge lengths in P or {log n:Lambda(n)>0}, either orientation, and finite nonnegative per-unit-demand coefficients a_i(x,t,path) such that |r(x+t)-r(x)|^2<=sum_i a_i|r(v_i)-r(v_(i-1))|^2 for all complex vertex values. The condition sum_i1/a_i<=1 is sufficient by Cauchy-Schwarz; do not call it necessary for repeated-vertex systems without proof. Push a_i D_rem mu_(x,t) to (min(v_(i-1),v_i),abs(v_i-v_(i-1))) and prove the TOTAL Gamma<=C_res as measures, retaining every preimage/Jacobian and shared continuous/prime usage. Source responsibility must integrate to one; hidden source-dependent reweighting changes the law.
+This is a SUFFICIENT interface, not asserted necessary for DOM/RH. A different signed/source proof of the same consumer is allowed. Do not return only an abstract max-flow slogan, an unevaluated inverse, or the tautology Gamma<=C_res: give an actual density/flow/transform and prove its full resource bounds. Location dependence, more steps and other prime powers are genuine freedoms. No fixed density, inward direction, path length count or simple-ground hypothesis is part of the final goal. Replacing the central construction requires replacing its proof while paying the entire unchanged central block, not silently freeing its used resource.
+If a construction fails, derive a NEW strict necessary capacity/dual-price violation for a precisely quantified nontrivial class, then attempt one concrete repair. For nonnegative edge prices h, derive the appropriate path-cost infimum, measure and finiteness conditions; finite-dimensional strong duality is not automatically a theorem on this noncompact continuum/atomic space. A passing necessary condition is not a feasible allocation; failure of a sufficient path certificate is not negative Q. Preserve proved supply and give the FIRST_FAILURE formula. No blind degree/precision/grid escalation.
+
+4. Q3 — GLOBAL TRANSFER OR PRECISE UNPAID FORM; NEGATIVE CONTROL
+Transfer the ACTUAL Q2 object to DOM for every compact smooth complex r and every original g, paying measurability, convergence and Tonelli/Fubini. If only local/truncated, write the complete UNPAID signed form, including t outside I, unbounded x, all prime powers and any error. Lower envelopes tending to zero on every fixed original test are allowed only with that limit proved. Paying only I is PARTIAL. A general allocation obstruction does not refute RH; state its class and the first original-source consequence truly established.
+Codex's pre-dispatch exact rational control: three vertices, positive edges01 and12 of conductance1, negative edge02 of weight d. For r=(0,1/2,1), Q_*(r)=1/2-d, giving1/4,0,-1/4 at d=1/4,1/2,3/4. Constants are radical in every case. The only simple positive path has effective conductance1/2. Price1 on each positive edge gives capacity2 and mandatory demand-price4d: strict failure3>2 at d=3/4 and equality2=2 at d=1/2. Preserve both negative and equality cases. This is an algebraic control, not the theta source; identify the additional proved source fact doing the work.
+If incomplete, return one next_decisive_test on the genuinely NEW remainder: objects, quantifiers, terminal observable and stop condition. No D23/D26 rerun or another fixed-law resistance-fraction fit.
+
+5. CLOSED ATTEMPTS AND PRECISE LIMITS
+D12-D13 refute uniform fixed half-jump theta comparison, even after integration on moving smooth tests. D14-D16 reject the old inward prime/q/q construction and uniform averaging. D17-D19 exclude EVERY central two-positive-continuous-step resource certificate on the SAME I,R>=1/8, arbitrary probability/unequal coefficients and ALL positive continuous lengths: hinge price(u-4/25)_+^2 yields certified demand/capacity[1.33056,1.73757]>1. Three steps and central prime paths are outside that class; D23 actually pays the central block.
+D24: deterministic inward path x,x-q,x-2q,x+t, q=(log2-t)/2 in the right tail, reflected left, has receiving Jacobian2. Each short multiplier is forced<=b(q)/2. Prime-zero ratio[1.70290,1.70292]>1 at the unchanged join persists on an open tail set, even with arbitrary prime capacity.
+D25-D26: fixed random inward law mu_t(s)=j(s)j(d-s)/L(d), d=log2-t, with path x,x-s,x-d,x+t, also fails when joined to D23. Path-value tests force each physical short charge>=K, irrespective of source/path-dependent unequal coefficients or prime allowance. Both inverse Jacobians are1, yielding mandatory load M=M_R(y,u)+M_R(-y-u,u), where
+M_R(y,u)=u^3/c_u(y) int_I b_-(t)j(log2-t-u)/L(log2-t)[c_t(y+u)1_(y+u+t/2>R)+c_t(y+log2-t)1_(y+log2-t/2>R)]dt.
+At u=3/20,m=y+u/2=9/40,66 complete interior t cells give central lower.82225581369995 and short lower.20129873929272; their exact summed lower87074391471455588272897529228706152477/85070591730234615865843651857942052864>1.02355>1. Full L/Z/theta remain; only nonnegative terms are discarded. Strict indicators extend the violation to an open set. Exact code/log embedded; two CLEAN review passes and literal replay. Independently regrouped same-oracle lower1.02355205909>1 is reviewer tool output only, not a second saved certificate. This stops coefficient/resistance tuning for THAT fixed law plus retained central allocation, not arbitrary location-dependent probabilities or integrated proofs.
+Do not redo BRIDGE/SATURATION upper rates, radical shells, old first-contact prerequisites or absolute-scale Schur estimates. A radical, positive auxiliary matrix or passing necessary total budget does not supply the sign. No source eigenvalue campaign or new software framework is requested.
+
+6. FROZEN PREDICTIONS
+P1(p=.90): D20-D26 survives narrow source/normalization recheck at its stated central-supplier and fixed-law-obstruction scopes; full sign does not follow from that input alone.
+P2(p=.80): changing pathwise coefficients cannot rescue the fixed inward-prime product law; a successful repair must alter an actual freedom excluded by D25-D26 or use a different proof framework. This does not predict failure of every position-independent law.
+P3(p=.75): PARTIAL_WITH_PRECISE_REMAINDER with at least one new proved source-allocation relation, actual extra paid region or strict class-wide obstruction beyond D24-D26. Try to refute this by proving the global consumer. Predictions are not premises or stopping rules. Score CONFIRMED/REFUTED/UNRESOLVED with exact locators; no unrequested numerical forecast.
+
+7. SOURCE AND WRITE BOUNDARIES
+Use pinned bytes and original normalizations; mark READ versus RELAY and disclose incomplete hash/proof checks. Write only EXPECTED_VERDICT_PATH as complete UTF-8 Markdown. No old-verdict, Lean, queue, runtime, registry or RH-claim edits. Ordinary commit/non-force push to existing rh_clean is authorized if supported, preserving concurrent changes. Otherwise immediately return the COMPLETE downloadable file with external byte/line/final-LF/SHA256/Git-blob receipt and explicit NOT_COMMITTED/NOT_PUSHED; do not leave a watch awaiting a push you cannot perform. A chat summary is not the verdict. No self-referential hash inside the hashed file.
+
+8. RESPONSE SCHEMA
+REQUEST_ID and BOUNDARY_ID; one TRY_*/KILL_*/RUN_* directive; RESULT for Q1,Q2,Q3,OVERALL from PROOF_CANDIDATE_COMPLETE / PARTIAL_WITH_PRECISE_REMAINDER / ATTEMPT_REFUTED_WITH_EXACT_COUNTEREXAMPLE; VERIFIER:PAPER; CENTRAL_SUPPLIER_VERIFIED true/false; NEW_SOURCE_ALLOCATION_PROVED true/false with EXACT_PAID_DOMAIN; GLOBAL_REMAINDER_PAID true/false; LOWER_SIGN_PROVED true/false; PX_RH_CLAIM:NOT_MADE. Full proofs/dependencies, FIRST_FAILURE for each incomplete question, scope of each refutation, provenance limits, prediction scores and one next_decisive_test. Q1 may be complete at its narrow scope; Q3/OVERALL complete requires the original unconditional all-test conclusion, not a finite subinterval or equivalent-condition restatement. External receipt gives final bytes/hashes and real commit/push status.
+
+9. PROSHKA'S OWN LINE (free form, no codes, no scoring; 20–40 lines):
+   (a) why this route and not the two nearest alternatives you considered;
+   (b) the two moves you see beyond this batch, and what would kill each;
+   (c) what you would ask us for, if you could ask (data, a probe, a definition);
+   (d) what surprised you in the shelf, and what you distrust in it.
+
+10. RESEARCH LOG (append to the verdict; no scoring):
+   (a) every source consulted this batch: locator (arXiv/DOI/URL + theorem/equation), one line: what was taken or why rejected; mark READ vs RELAY;
+   (b) every branch you tried and abandoned, one line each: the candidate, the first inequality or fact that killed it;
+   (c) intermediate identities or computations that failed but might serve another question, with their exact statement.
