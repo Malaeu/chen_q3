@@ -1,6 +1,6 @@
-# STATUS: TRY_BOUNDARY_MEAN_CENTERED_SOURCE_RESPONSE
+# STATUS: TRY_BOUNDARY_SIGNED_MEAN_RESPONSE
 ```yaml
-OPERATIVE_CLASS: TRY_BOUNDARY_MEAN_CENTERED_SOURCE_RESPONSE
+OPERATIVE_CLASS: TRY_BOUNDARY_SIGNED_MEAN_RESPONSE
 PRIMARY_COUNT: 1
 REQUEST_ID: REQ-2026-09-10-BOUNDARY
 BOUNDARY_ID: GOAL058_SIGNED_BOUNDARY_LOW_ENERGY_COMPARISON
@@ -10,9 +10,6 @@ RESULT:
   Q3: PARTIAL_WITH_PRECISE_REMAINDER
   OVERALL: PARTIAL_WITH_PRECISE_REMAINDER
 VERIFIER: PAPER
-SCOPE: ABSTRACT
-ALL_CONTACT_TARGET_SCOPE: COFINAL_FAMILY
-ALL_CONTACT_TARGET_VERIFIER: CONDITIONAL
 UNIFORM_BOUNDARY_INPUT_VERIFIED: true
 SIGNED_SOURCE_COMPARISON_PROVED: false
 LOWER_SIGN_PROVED: false
@@ -20,768 +17,684 @@ INDEPENDENT_CHECK_OF_NEW_LEMMAS: PENDING
 LEAN_VERIFIED: false
 PX_RH_CLAIM: NOT_MADE
 REQUEST_LOCK:
-  REPOSITORY: Malaeu/chen_q3
-  BRANCH: rh_clean
   COMMIT: b574857250e2c0e136bb04cfddd906ea1b3aee8f
-  PATH: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_BOUNDARY_2026-09-10.txt
   BLOB: a1c4f3c77013823562e13f86ad7a342e42f16669
   SHA256: 1988f386d36cc16925ddf14d1d67e83c94ab3af1b50a36cd70586a1a5c40a589
   BYTES: 13190
   LINES: 74
   FINAL_LF: true
-  ATTACHMENT_HASHES_RECOMPUTED: true
+  LOCAL_HASHES_RECOMPUTED: true
   EXACT_COMMIT_CONNECTOR_BLOB_MATCH: true
 SOURCE_BASE: a443424e10a119ded80aca6ddc664b23eaf854fb
 BOOTSTRAP_BLOB: eba04b799176c9e6a1d5f7fc4061280cfbf96ad4
 CANONICAL_COLLAR:
   COMMIT: d254ce1f1baae6329fc01f20cf2df52a482048ea
   BLOB: 77ba2a24022b5a8993316018db8919e0a15a24a7
-  DECLARED_SHA256: 03b9e2ed966dec1d776cf768970992731913f830a087faf0d8f51c35e9cfc51b
-  BYTES: 58946
-  LINES: 786
-  OLD_UNCOMMITTED_COLLAR_SUBSTITUTED: false
-SHELF_VERIFICATION:
-  PINNED_BLOB_METADATA_MATCHES: 5
-  FULL_SHA256_AND_BLOB_RECOMPUTATIONS_MATCH: 3
-  FRESH_FULL_HASH_INCOMPLETE: [canonical_COLLAR, CONTACT_independent_check]
-  EXTERNAL_V2_STATEMENT_AND_PROOF_READ: true
-  EXTERNAL_RAW_HTML_SHA256_RECOMPUTED: false
+  SHA256: 03b9e2ed966dec1d776cf768970992731913f830a087faf0d8f51c35e9cfc51b
+  ALTERNATIVE_LOCAL_COLLAR_USED_AS_SOURCE: false
+SHELF_CHECKS:
+  CONNECTOR_BLOB_PINS_MATCH: 5
+  FULL_SHA256_RECOMPUTED_MATCH: 2
+  FULL_SHA256_NOT_RECOMPUTED: [canonical_COLLAR, COLLAR_INDEPENDENT_CHECK, CONTACT_INDEPENDENT_CHECK]
+  COMPLETE_BYTE_VERIFICATION_CLAIMED: false
+NEW_PAPER_RESULTS:
+  ALL_LOW_ZERO_EXTENSION_EQUICONTINUITY: proved
+  EXPLICIT_TWO_SIGNED_BOUNDARY_MEAN_ROWS: proved
+  MEAN_ZERO_RESPONSE_NORM: o_a_sqrt_d
+  EXACT_SIGNED_MEAN_VARIANCE_IDENTITY: proved
+  CONSTANT_CHANNEL_CORRECTION_LIMIT: identity_matrix_2
+  FULL_RESPONSE_EXPANSION: d_times_1_minus_1_over_c_times_beta_star_beta_plus_o_a_d_over_c
+  NORMALIZED_ENDPOINT_TRACE_LIMIT: not_assumed_not_proved
+  CORE_ENERGY_VS_BOUNDARY_MEAN_STRICTNESS: not_proved
+FIRST_FAILURE:
+  Q1: NONE_IN_THE_STATED_PAPER_DERIVATION
+  Q2_INITIAL: no_signed_lower_comparison_of_M_with_d_beta_star_beta
+  Q2_AFTER_REPAIR: no_strict_source_boundary_mean_energy_deficit_above_the_positive_variance_remainder
+  Q3: unconditional_transfer_requires_the_unproved_Q2_inequality
+PREDICTION_FATES:
+  P1: CONFIRMED
+  P2: CONFIRMED
+  P3: CONFIRMED
+  P_BOUNDARY_MEAN_REPRESENTATION_078: CONFIRMED
 PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
 ROUTE_ID: RouteB_TwoLevelSpectralLadder
 FRONT_ID: GOAL058_SECOND_EXPRESSION
 SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
 TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
 CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
-NEW_PAPER_LEMMAS:
-  EXACT_SIGNED_AVERAGED_RESPONSE: section_3_1
-  WHOLE_LOW_SPACE_CENTERED_RESPONSE_BOUND: section_3_2
-  RANK_TWO_LEADING_RESPONSE_WITH_EXPLICIT_ERROR: section_3_4
-  EXACT_CENTERED_AND_TWO_MEAN_ELIMINATION: section_4_2
-  KERNEL_OF_CENTERED_MARGIN_EQUALS_ZERO_STRIP_MEANS: section_4_3
-FIRST_INCORRECT_ASSERTION_IN_USED_BOUNDARY_INPUT: NONE_FOUND
-FIRST_FAILURE:
-  Q1: NONE_FOR_STATED_FIXED_A_INPUT_AND_D_DEPENDENT_RELATION
-  Q2_INITIAL: no_source_lower_comparison_of_M_with_the_rank_two_leading_response
-  Q2_REPAIR: centered_recovery_is_not_proved_strictly_below_M
-  Q2_SUBSEQUENT: even_after_centered_strictness_the_exact_two_mean_matrix_needs_a_signed_comparison
-  Q3: the_two_signed_source_gates_are_not_discharged_for_every_hypothetical_contact
-PREDICTION_FATES:
-  P1: CONFIRMED
-  P2: CONFIRMED
-  P3: CONFIRMED
-NEXT_DECISIVE_TEST: CENTERED_BOUNDARY_RECOVERY_RELATIVE_GAP
 EXECUTION:
-  NUMERICAL_SOURCE_CAMPAIGN: NOT_RUN
-  OLD_FINITE_ROWS_RERUN: false
-  EXACT_ALGEBRA_CONTROLS: PERFORMED
-  LEAN_EDIT: false
+  NEW_SOURCE_NUMERICAL_CAMPAIGN: false
+  EXACT_SYMBOLIC_ALGEBRA_CONTROL: true
   LEAN_GATE: NOT_RUN
-  QUEUE_RUNTIME_REGISTRY_EDIT: false
+  LEAN_QUEUE_REGISTRY_STATE_EDITS: false
 PUBLICATION:
-  AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
   EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_BOUNDARY_2026-09-10.md
-  COMMIT_STATUS: NOT_COMMITTED
-  PUSH_STATUS: NOT_PUSHED
-  BLOCKER: no_write_action_exposed_and_git_DNS_resolution_failed
-  FINAL_HASH_BYTES_LINES_AND_LOCAL_GIT_BLOB: external_delivery_receipt
+  AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+  BRANCH: rh_clean
+  COMMIT_PUSH_BLOB_AND_FILE_HASH: external_delivery_receipt
 HONESTY_STATE: CHALLENGER_NOT_RH
-BUS_010: VOID
 ROUTE_PROMOTION: false
+BUS_010: VOID
 ```
 
-## 0. Decision and evidence boundary
+## 0. Decision and source integrity
 
-**The leading response can be made explicit without a normalized endpoint limit or a differentiable eigenbasis. It is a rank-at-most-two matrix of signed, averaged source responses. That does not yet prove the signed comparison.** An exact repair then eliminates the centered collar profiles, rather than discarding them. It identifies the first remaining obstruction with a null mode whose integrals over both thin physical strips vanish. Neither the boundary estimate nor the earlier exterior-collar injectivity excludes that event. [ABSTRACT][PAPER]
+**The boundary input survives. The signed comparison with the core energies is not proved.** This batch obtains more than another absolute scale: two explicit, full-source boundary averages determine the first two response terms. Their exact correction has a negative sign in the recovered energy, and the remaining variance is a positive square with a complete bound. None of this establishes the required lower bound for the actual core energies. [ABSTRACT][PAPER]
 
-For each fixed a, with all admissibility conditions below and d decreasing to zero, the new calculation proves
+For every fixed admissible outer window, with the definitions below,
 \[
-F^*D^{-1}F=\frac d{c_d}\Gamma_d^*\Gamma_d+\mathsf E^{\rm av}_{a,d},
-\qquad \|\mathsf E^{\rm av}_{a,d}\|=O_a\!\left(\frac d{\log(1/d)}\right)=o_a(d).
+F^*D^{-1}F
+=d\beta^*\beta-\frac d{c_d}\beta^*\mathcal A_\partial\beta
++\mathcal Z^*D^{-1}\mathcal Z,
+\qquad \mathcal A_\partial\longrightarrow I_2,
+\qquad \mathcal Z^*D^{-1}\mathcal Z=o_a(d/c_d).
+\tag{N0}
 \]
-The two rows of Gamma are explicit averages of the complete archimedean, prime and two-pole forcing. This is not an assertion that M/d or either normalized endpoint trace has a limit. Section 4 retains the error exactly before making any further sign claim. [ABSTRACT][PAPER] (fixed a; all sufficiently small d)
+This is an operator identity and a fixed-a estimate for the **entire** low spectral space. The matrix beta depends on d; neither beta nor M/d is asserted to converge. The full high-core inverse remains in D and in the displayed correction. [ABSTRACT][PAPER]
 
-**What remains unproved:** strict positivity of the centered low-energy margin, followed by its exact two-mean Schur matrix. No nonzero contact mode is exhibited, and no actual-source negative energy is obtained here. The all-test lower sign remains open. [COFINAL_FAMILY][CONDITIONAL]
+### 0.1 Immutable shelf and verification limitations
 
-### 0.1 Byte locks and actual reading
+All five repository paths in this table are read at SOURCE_BASE. READ means the indicated text was inspected; independent-check conclusions are not additional axioms. The new arguments are rederived below.
 
-All repository rows in this table are at SOURCE_BASE. SHA values marked declared are the request's bindings, not claims of a fresh full-file hash computation. Matching GitHub blob metadata is distinguished from independently recomputing that blob from all content bytes.
-
-| Key | Exact repository path | SHA-256 | Git blob | This batch |
+| Key | Exact repository path | Pinned SHA-256 | Pinned Git blob | This continued batch |
 |---|---|---|---|---|
-| C | `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_CONTACT_2026-09-10.md` | `3475f7e1d9c11bf2ff259f1d10b967d0fdbbf7c1e68219fcd9c4ab3fcb5dd034` | `dc30c38e5832859e3b84cebaddcf5779545bdd58` | Full local bytes rehashed: 52815 bytes, 729 lines; connector pin matched. READ relevant C1-C8, C19-C21; no repeat of the closed prerequisite campaign. |
-| L | `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_COLLAR_2026-09-10.md` | `03b9e2ed966dec1d776cf768970992731913f830a087faf0d8f51c35e9cfc51b` | `77ba2a24022b5a8993316018db8919e0a15a24a7` | Canonical pinned passages L4-L29 freshly READ, including overlapping retrieval after truncation. Blob metadata matched; fresh full SHA recomputation NOT completed. |
-| I | `docs/routeB_bus/COLLAR_INDEPENDENT_CHECK_2026-09-10.md` | `08a0aedc5e2c32b26dcff0ba94e19432a9ce9770e9bf07cb5d051069359255e4` | `fbac9618c618e23af4b43a1dea7ceddd092a5129` | READ full, including both newest appendices; staged exact text rehashed: 20784 bytes, 156 lines; both hashes match. |
-| CI | `docs/routeB_bus/CONTACT_INDEPENDENT_CHECK_2026-09-10.md` | `d3865192de724c857413385eb58b7baa8a0811b0457857c292260c046d451879` | `af682a509363ddcf1f21bcb584b7a4e6f21c6c22` | READ fresh provenance/result scope, lines 1-32. Blob metadata matched; fresh full SHA recomputation NOT completed. Its audit is report evidence, not an axiom. |
-| BP | `docs/BATCH_PATTERNS.md` | `cded6dfd5950fd8dd230ad770ff0cf4a50a5bea9b2d5e91601b8eaa76120903b` | `cb63bab5fbff3d39bf63c0b0f081a2264e004f2b` | READ full at the requested outside-routeB path; 11341 bytes, 79 lines; both hashes recomputed and match. |
+| C | `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_CONTACT_2026-09-10.md` | `3475f7e1d9c11bf2ff259f1d10b967d0fdbbf7c1e68219fcd9c4ab3fcb5dd034` | `dc30c38e5832859e3b84cebaddcf5779545bdd58` | READ C1-C8/C19-C25 as used; local full bytes rehashed and both hashes match; 52815 bytes,729 lines |
+| L | `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_COLLAR_2026-09-10.md` | `03b9e2ed966dec1d776cf768970992731913f830a087faf0d8f51c35e9cfc51b` | `77ba2a24022b5a8993316018db8919e0a15a24a7` | READ canonical L4-L29 and applicable context through pinned connector reads; blob matches; full SHA not recomputed |
+| I | `docs/routeB_bus/COLLAR_INDEPENDENT_CHECK_2026-09-10.md` | `08a0aedc5e2c32b26dcff0ba94e19432a9ce9770e9bf07cb5d051069359255e4` | `fbac9618c618e23af4b43a1dea7ceddd092a5129` | READ audit and both new boundary appendices; blob matches; full SHA not recomputed |
+| J | `docs/routeB_bus/CONTACT_INDEPENDENT_CHECK_2026-09-10.md` | `d3865192de724c857413385eb58b7baa8a0811b0457857c292260c046d451879` | `af682a509363ddcf1f21bcb584b7a4e6f21c6c22` | READ applicable operator qualifications, odd obstruction and provenance; blob matches; full SHA not recomputed |
+| P | `docs/BATCH_PATTERNS.md` | `cded6dfd5950fd8dd230ad770ff0cf4a50a5bea9b2d5e91601b8eaa76120903b` | `cb63bab5fbff3d39bf63c0b0f081a2264e004f2b` | READ full; reconstructed content rehashed, both hashes match; 11341 bytes,79 lines |
 
-The attached request was read completely and independently checked for SHA-256, Git blob, bytes, lines and final LF. Its computed blob matches the exact-commit connector response. **Three of five shelf full-hash checks are complete; two are explicitly incomplete.** No mismatch was observed. The older local 54755-byte COLLAR, SHA `41c760d4f4c3cae22b17415adf4734a55210d503f731f15d5497ae34dbc9062a`, is not used as the canonical L-source and is not overwritten.
+**The requested independent full-byte verification is incomplete for three shelf files.** A matching connector blob is not a claim to have independently computed SHA-256. Raw HTTP acquisition failed; no unobserved byte check is credited. The authoritative request itself was read completely, independently hashed, counted, and matched to its exact-commit connector blob.
 
-### 0.2 External import and delivery limits
+The local alternative COLLAR, SHA `41c760d4f4c3cae22b17415adf4734a55210d503f731f15d5497ae34dbc9062a`, was hashed only to identify and quarantine it. Its 54755-byte/763-line text is not the accepted 58946-byte/786-line source L. No historical file is overwritten.
 
-**[H] READ:** V. Hernández-Santamaría, L. F. López Ríos, A. Saldaña, *Optimal boundary regularity and a Hopf-type lemma for Dirichlet problems involving the logarithmic Laplacian*, arXiv:2401.18033v2, HTML header 03 Jul 2024, `https://arxiv.org/html/2401.18033v2`. Theorem 1.1, (1.2), (1.14)-(1.19), the Theorem 1.1 proof in section 4, and Lemma A.3 with its proof were inspected. The imported implication is: bounded weak solution and bounded right-hand side on an exterior-sphere domain give continuous zero extension and square-root-logarithmic boundary decay. Its proof treats both signs. The source operator's hypotheses are checked in section 2. No Hopf positivity conclusion is imported.
+### 0.2 External theorem actually read
 
-The rendered exact-version text was available. The raw HTML was not acquired and hashed independently, so equality with the parent's 1227643-byte HTML and SHA `2f75d6d6cbb231facf481271b3f673bc2340e3cdde962730f86947e2b37209f3` is **not claimed**. No PDF was used in this batch. The paper's barrier, weak maximum principle and earlier continuity dependencies were not all re-proved here. This is a version-checked theorem import, not a new independent proof of that entire paper.
+[H] is Hernandez-Santamaria, Lopez Rios and Saldana, *Optimal boundary regularity and a Hopf-type lemma for Dirichlet problems involving the logarithmic Laplacian*, **arXiv:2401.18033v2**, HTML `https://arxiv.org/html/2401.18033v2`: Theorem 1.1, (1.2), (1.15)-(1.19), its proof in section 4, and Lemma A.3. Its bounded weak-solution theorem applies to the interval and is used separately on real and imaginary parts. Its proof compares a barrier with both signs of the solution. Hopf Theorem 1.4 is not imported.
 
-The GitHub tool discovery returned no usable create/update/commit/push action. Plugin discovery returned the installed GitHub integration, not another write route. A read-only Git connectivity check exited 128 with `Could not resolve host: github.com`. The expected verdict path returned Not Found when checked. This artifact is therefore **NOT_COMMITTED / NOT_PUSHED**, with complete local bytes and an external receipt. No prior session's write receipt is substituted for a current operation.
+This is an identified published theorem, not a claim to have re-proved every cited barrier and continuity dependency. The fetched HTML's raw bytes were not hashed against the parent's historical 1227643-byte SHA `2f75d6d6cbb231facf481271b3f673bc2340e3cdde962730f86947e2b37209f3`. No HTML/PDF identity or Suzuki-version upgrade is claimed. No PDF was used in this batch.
 
-## 1. Locked source and the exact reduced operator
+## 1. Q1: narrow audit of the boundary input
 
-All operator identities in sections 1-4 carry [ABSTRACT][PAPER] at their displayed hypotheses. The conditional all-contact implications are separately marked. The first-contact hypotheses are used for a contradiction-proof analysis, not claimed to be realized by the source.
+Every proved assertion in sections 1-5 is [ABSTRACT][PAPER], with **fixed-a** constants. An invocation under hypothetical contact is conditional only on the stated local premises, not on RH. A limit as d decreases is never a uniform-in-a assertion.
 
-Use physical L2 inner products antilinear in the first variable, zero extensions and
+### 1.1 Objects and domains
+
+Retain the antilinear-first form C1:
 \[
 \begin{split}
 B(f,g)={}&\int_0^\infty\alpha(t)\langle U_tf-f,U_tg-g\rangle_2dt-c_A\langle f,g\rangle_2\\
 &-\sum_{n\ge2}w_n\{\langle f,U_{\log n}g\rangle_2+\langle f,U_{-\log n}g\rangle_2\}\\
-&+\overline{M_+(f)}M_-(g)+\overline{M_-(f)}M_+(g),\qquad Q[f]=B(f,f),
-\end{split}                                                    \tag{BND1}
+&+\overline{M_+(f)}M_-(g)+\overline{M_-(f)}M_+(g),
+\end{split}
+\tag{N1}
 \]
-where alpha, c_A, w_n and M_plus/minus have the request's literal values. The control norm is \(\|f\|_E^2=\int e^{2|x|}|f|^2+\mathcal D[f]\). The window space V_b is its supported logarithmic form domain; it is not H1_0. On each window B is a bounded L2 perturbation of the positive translation form. The already proved C1-C11 give the corresponding closed semibounded A_b, compact resolvent, continuous attained bottom, and positive anchor \(a_0=e^{-20}/2\). The full-source continuity bound is 22. These prerequisites are retained, not inferred from this batch's estimates.
+where alpha, c_A, w_n and the two moments have exactly the values in the request. Q[f]=B(f,f). V_b is the logarithmic finite-energy zero-extension space; it is not replaced by an H1 boundary space. The physical L2 form operator is A_b. The positive whole-line translation-energy operator will instead be denoted by script D. These two operators are not identified.
 
-Fix a>0. Let N=ceil(exp(2a))-1, and take 0<d<d_geom(a) exactly as in L4, also d<min(a/2,1/10). Set b=a-d. Under the contact premises require d<a-a0 and L16. L4's integer separation removes only the identically zero prime overlaps inside the two collars; it leaves every nonzero prime channel in the cross operator J. The two collars are (-a,-b) and (b,a), including all four cut boundaries. For the reductions involving A_H and D, assume A_b>0 and L16; these are precisely the hypotheses supplied by the hypothetical contact branch. The boundary-input audit in section 2 does not require positivity of A_b.
+CONTACT supplies the compact-resolvent and first-contact prerequisites. For the present estimates only their precise consequences are used: fixed-support compact embedding of the form domain, the full bounded perturbation A_b=script D_b+B_b, and the complete finite-rank spectral projector P_b=1_(0,1](A_b). We retain every low eigenspace, its multiplicity, and both parities. No differentiable eigenbasis or transported spectral branch is selected.
 
-Transport their physical L2 space to \(\mathscr H=L^2(0,1)\oplus L^2(0,1)\) by
+### 1.2 Uniform boundedness without positive source dynamics
+
+Put s_a=sum_(2<=n<exp(2a)) w_n. The absolute value of the bounded source perturbation is dominated by convolution with
 \[
-(U_dw)_\sigma(s)=\sqrt d\,w(\sigma(b+ds)),\qquad \sigma\in\{+1,-1\}.
+\nu_a=c_A\delta_0+\sum_nw_n(\delta_{\log n}+\delta_{-\log n})
++2\cosh(a)\mathbf1_{[-2a,2a]}(t)dt,
+\quad N_a^{\rm bd}=c_A+2s_a+8a\cosh a.
 \]
-Let L be the universal zero-extension operator associated to
+The diagonal coefficient is positive; the two-pole kernel is 2cosh((x-y)/2). This is an **absolute domination**, not positivity preservation of exp(-t A_b).
+
+For completeness, the needed domination for the positive part-form follows by resolvents. Given nonnegative supported f, compare u=(script D_b+lambda)^(-1)f and v=(script D+lambda)^(-1)f. Test the difference with (u-v)_+. The logarithmic jump form has the lattice property, the test vanishes outside I_b, and its energy is bounded above by zero. Thus u<=v. Resolvent iteration gives the part-semigroup domination. Complex input is controlled by its absolute value.
+
+Dominate each bounded-perturbation insertion in the Dyson series by nu_a and discard intermediate support restrictions. Convolution commutes with the whole-line positive semigroup. Its angular-frequency symbol m satisfies m>=0 and m(xi)>=.5 log(2|xi|) for |xi|>=1, by C4/L17. Plancherel therefore bounds the whole-line L2-to-Linfty norm at time 2 by sqrt(5/(4pi)). The Dyson sum costs exp(2N_a^bd). On the entire low space, exp(2A_b) has norm at most exp(2), so
 \[
-\mathfrak l[f]=\int_0^1\frac{\|f(\cdot+t)-f\|_2^2}{2t}dt,
-\qquad L_2=L\oplus L,
+\|u\|_\infty,\ \|A_bu\|_\infty\le C_a\|u\|_2,
+\qquad C_a=e^{2(N_a^{\rm bd}+1)}\sqrt{5/(4\pi)}.
+\tag{N2}
 \]
-and retain the canonical definitions
+This proof has no factor dim(P_b), no inverse low eigenvalue, and no sign assumption on a source eigenfunction. It leaves the reflected-prime obstruction intact.
+
+### 1.3 Domain matching and a uniform boundary constant
+
+Set k(t)=alpha(t)-1/(2t), with its smooth extension k(0)=1/4. The exact source decomposition is
 \[
-\begin{gathered}
-c=c_d=2\int_d^\infty\alpha(t)dt-c_A,\quad R=cI+L_2,\quad r_d=c+\log2,\\
-U_dC_{a,b}U_d^{-1}=R+E,\quad
-\|E\|\le\varepsilon_C=d[4k_a+\alpha(2b)+4\cosh a],\\
-P=\mathbf1_{(0,1]}(A_b),\quad A_H=A_b|_{P^\perp}\ge I,\quad J_H=(I-P)J,\\
-T_H=U_dJ_H^*A_H^{-1}J_HU_d^{-1},\quad 0\le T_H\le j_a(d)I,\\
-\mathscr B=E-T_H,\quad \kappa=\varepsilon_C+j_a(d),\quad
-D=R+\mathscr B\ge m_dI,\quad m_d=r_d-\kappa>0,\quad q=\kappa/r_d\le1/2.
-\end{gathered}                                                   \tag{BND2}
+A_b=\tfrac12 L_{\Delta,b}-\log(2\pi)I-K_b-\text{prime shifts}+\text{two poles},
+\quad K_b(x,y)=k(|x-y|).
+\tag{N3}
 \]
-Here k_a and j_a(d) are the exact source constants from L7-L8. In particular j_a(d)=O_a(1). Bounded perturbations preserve the universal collar operator domain. No high-core mode is omitted from T_H.
+To check the constant, the difference of the kernels gives
+c_0=2 int_0^1 k+2 int_1^infinity alpha+gamma=-log2-psi(1/4), hence c_0-c_A=-log(2pi). In dimension one the convention in [H] has c_1=1 and rho_1=-2gamma. The two forms have the same logarithmic domain since their singular kernels agree and the remaining fixed-window kernels are L2-bounded. The identity on the smooth core extends in the common form norm; bounded perturbation then identifies the operator domains.
 
-Choose an orthonormal basis phi_j of the complete finite-dimensional P-space, with every eigenvalue mu_j in (0,1], all multiplicities and both parity sectors. Put \(\mathsf M=\operatorname{diag}(\mu_j)\), \(u_z=\sum_jz_j\phi_j\), and \(Fz=U_dJ^*u_z\). The maps below act on this entire space at each b. We never differentiate a basis or discard a low branch when the cutoff changes rank.
+Consequently u in P_b has bounded u and bounded L_Delta,b u. Apply [H] as identified in section 0.2. To make its constant uniform, use the Banach graph space X={v in D(L_Delta,(-1,1)): v,L_Delta v in Linfty}, norm ||v||infty+||L_Delta v||infty. The map v to v/sqrt(ell(dist)) is defined everywhere by that theorem and has closed graph: convergence of v and of its weighted quotient in Linfty identifies the latter limit almost everywhere. The closed graph theorem supplies one finite C_J.
 
-L20-L23 give, with Y=R^(-1/2)F and T=R^(-1/2)mathscrB R^(-1/2),
+Here ell(t)=1/max(log(1/t),log10). Exact unitary scaling v(t)=sqrt(b)u(bt) gives
 \[
-\begin{gathered}
-\mathsf S=\mathsf M-F^*D^{-1}F,\qquad
-\mathsf G_1=Y^*(I-T)Y,\\
-\mathsf R_1=Y^*T^2(I+T)^{-1}Y,\quad
-0\preceq\mathsf R_1\preceq e_1Y^*Y,\quad e_1=q^2/(1-q),\\
-\mathsf S=\mathsf M-\mathsf G_1-\mathsf R_1,
-\qquad \mathsf L_1=\mathsf M-\mathsf G_1-e_1Y^*Y\preceq\mathsf S.
-\end{gathered}                                                   \tag{BND3}
+L_{\Delta,(-1,1)}v(t)=\sqrt b(L_{\Delta,b}u)(bt)+2\log(b)v(t).
 \]
-The positive remainder follows from the scalar identity (1+t)^(-1)-(1-t)=t^2/(1+t) on |t|<1 and self-adjoint functional calculus. Expanding G1 retains the negative E correction and the **positive** high-core recovery F*R^(-1)T_H R^(-1)F. Thus an upper bound on an omitted absolute piece cannot change the signed comparison into a proved theorem.
-
-## 2. Q1: narrow recheck of the uniform boundary input
-
-Inputs: I's two accepted appendices, C1-C8, L17-L19, and the exact external theorem [H] specified in section 0.2. The following local transfer is rederived here. No new source-semigroup positivity, normalized endpoint limit, or cofinal-in-a constant is introduced.
-
-### 2.1 Boundedness of the entire low space without rank or inverse-gap loss
-
-Write A_b=mathcalD_b+B_b, where mathcalD_b is the positive translation-form operator. The finite positive convolution measure
+This agrees with [H, Lemma A.3], and also follows from the angular symbol 2log|xi|. Define
 \[
-\nu_a=c_A\delta_0+\sum_{2\le n\le N}w_n(\delta_{\log n}+\delta_{-\log n})
-+2\cosh(a)\mathbf1_{[-2a,2a]}(t)dt
+V_a^{\rm bd}=|\log(2\pi)|+2\int_0^{2a}|k(t)|dt+2s_a+4a\cosh a,
+\quad m_a=\max(|\log(a/2)|,|\log a|).
 \]
-has mass \(n_a=c_A+2s_a+8a\cosh a\), and dominates |B_bf| pointwise after zero extension. This is an **absolute-value bound**, not positivity of B_b or its semigroup.
-
-For completeness, the positive translation semigroup dominates its supported part. For a nonnegative supported right-hand side compare the whole-line and supported positive resolvents. The positive part of their difference belongs to the supported form domain: the jump-form lattice inequality preserves finite energy and it vanishes outside I_b. Testing the subtracted equations with that positive part gives zero or negative energy for a nonnegative coercive form, so the part is zero. Resolvent iteration gives domination of the semigroups; modulus domination handles complex inputs.
-
-Now use the bounded-perturbation Dyson expansion. Replace each B_b insertion by nu_a convolution and each supported translation semigroup by its whole-line positive counterpart. Convolution operators commute, so the n-th term is bounded by t^n/n! times the whole-line semigroup followed by nu_a to the n-fold convolution power. Summing gives absolute domination by a convolution operator of mass exp(t n_a).
-
-The whole-line multiplier is exp(-t m(xi)), with m>=0 and m(xi)>=log(2|xi|)/2 for |xi|>=1, as in C4/L17. Plancherel and Cauchy-Schwarz imply
+The Lipschitz bound for max(log(1/t),log10) compares the physical and scaled boundary weights. Combining it with (N2) gives, uniformly a/2<=b<=a,
 \[
-\|e^{-t\mathcal D}\|_{2\to\infty}^2
-\le\frac{2+2^{1-t}/(t-1)}{2\pi},\quad t>1.
+|u(x)|\le K_a\|u\|_2\sqrt{\operatorname{ell}(\operatorname{dist}(x,\partial I_b))},
+\quad
+K_a=\sqrt2 C_JC_a(3+2V_a^{\rm bd}+2m_a)\sqrt{1+m_a/\log10}.
+\tag{N4}
 \]
-At t=2 this is 5/(4pi). For u in ran P, write u=exp(-2A_b)exp(2A_b)u. Spectral calculus on (0,1] costs at most e^2. Applying the same argument to A_bu gives
+Real and imaginary parts, then linearity of the weighted map, cover every complex vector. These constants are finite, not numerical certificates.
+
+### 1.4 Rechecked full-response budget
+
+Let tau=min(a/2,.1), k_a=sup_[0,2a]|k| and
 \[
-\boxed{\|u\|_\infty,\ \|A_bu\|_\infty\le C_a\|u\|_2,
-\qquad C_a=e^{2(n_a+1)}\sqrt{5/(4\pi)}.}              \tag{BND4}
+B_a^{\rm bd}=K_a/2+C_a[\tfrac12\log(2a/\tau)+2ak_a+s_a+4a\cosh a].
 \]
-This works on the whole projector, not on individual normalized eigenfunctions followed by a dimension factor. The odd reflected-prime obstruction is compatible with this absolute domination.
-
-### 2.2 Domain match and uniform boundary constant
-
-In one dimension [H] uses c_1=1, rho_1=-2gamma. Separate alpha(t)=1/(2t)+k(t) on compact tests. Direct subtraction from its integral formula gives
+Integrating the same-side singularity in L18 uses
+int_0^tau dt/((v+t)sqrt(log(1/t)))<=1+2sqrt(log(1/v)), for 0<v<tau. The far regular, prime, and pole terms retain their full bounds. Thus each of the two profiles is bounded by sqrt(d)||z||[K_a sqrt(log(1/(ds)))+B_a^bd]. Integrating both profiles proves
 \[
-A_b=\tfrac12L_{\Delta,b}-\log(2\pi)I-K_b-\text{both prime shifts}+\text{both poles},
-\quad K_bu(x)=\int_{-b}^bk(|x-y|)u(y)dy.              \tag{BND5}
+F^*F\preceq\eta^\sharp_a(d)I,
+\quad \eta^\sharp_a(d)=4d[K_a^2(\log(1/d)+1)+(B_a^{\rm bd})^2].
+\tag{N5}
 \]
-To check the scalar, the subtraction first gives c0-c_A, with
-c0=2 int_0^1 k+2 int_1^infinity alpha+gamma. Substitution z=exp(-2t) yields
-2 int_epsilon^infinity alpha=-log(2epsilon)-gamma-psi(1/4)+o(1).
-Hence c0=-log2-psi(1/4)=gamma+pi/2+2log2, and c0-c_A=-log(2pi).
+With the canonical L16/L19 denominators this gives recovery O_a(d), Y*Y=O_a(d), and e_1Y*Y=O_a(d/log(1/d)^2). The first-contact reduction and these source budgets survive the narrow audit. The rest of Q1 requires an actual signed response relation; sections 2-5 supply it.
 
-Both form norms have the same near-zero 1/|x-y| energy. Away from zero the difference on fixed support is L2 bounded. Therefore their closed form domains agree; their operators differ by a bounded self-adjoint perturbation. This proves the required operator-domain match, not merely equality on an unspecified pointwise class.
+## 2. A new uniform modulus for all low zero extensions
 
-Here is why the non-numerical boundary constant can be uniform in b. On J=(-1,1), let
-X={v in D(L_Delta,J): v and L_Delta,J v belong to Linfty}, with the sum of the two Linfty norms. It is Banach by closedness of the operator and Linfty convergence implying L2 convergence on J. Theorem 1.1 makes the multiplication map v -> v/sqrt(ell(dist(.,partial J))) defined on every X. This map has closed graph: convergence in X and convergence of the weighted outputs identify the same almost-everywhere limit. The closed graph theorem gives a finite operator bound C_J. Real and imaginary parts can be treated separately with their fixed constant absorbed into C_J.
+The bounded boundary weight alone supplies no normalized endpoint trace. We instead prove enough uniform continuity to control how a prime-shifted low mode varies across a shrinking collar.
 
-Let \(\ell(t)=1/|\log\min(t,1/10)|\), and define
+### 2.1 An integrable resolvent kernel for the positive archimedean operator
+
+The exact nonnegative decomposition
 \[
-\begin{gathered}
-V_a=|\log(2\pi)|+2\int_0^{2a}|k(t)|dt+2s_a+4a\cosh a,\\
-M_a^{\log}=\max\{|\log(a/2)|,|\log a|\},\\
-K_a=\sqrt2 C_JC_a(3+2V_a+2M_a^{\log})
-\sqrt{1+M_a^{\log}/\log10}.
-\end{gathered}
+\alpha(t)=\frac{e^{-t/2}}{2t}+n(t),\qquad n(t)\ge0,\qquad
+2\int_0^\infty n(t)dt<\infty
+\tag{N6}
 \]
-The bounded potential in (BND5) has Linfty operator norm at most V_a. For v(t)=sqrt(b)u(bt), the exact scaling is
-L_Delta,J v=sqrt(b)(L_Delta,b u)(bt)+2log(b)v.
-It holds on the weak domain, either by change of variables or [H, Lemma A.3]. Using (BND4) gives ||v||_X<=sqrt(a)C_a(3+2V_a+2M_a^log)||u||_2 for a/2<=b<=a. The elementary maximum-function inequality for log(1/t) and log10 gives ell(t/b)/ell(t)<=1+M_a^log/log10. Consequently
-\[
-\boxed{|u(x)|\le K_a\|u\|_2\sqrt{\ell(\operatorname{dist}(x,\partial I_b))},
-\quad a/2\le b\le a,\quad u\in\operatorname{ran}P_b.} \tag{BND6}
-\]
-These solutions have continuous zero extensions. This proof supplies neither the limit of u(b-t)/sqrt(ell(t)) nor a derivative with respect to b. The constant C_J, and hence K_a, is finite but not numerically evaluated.
+follows from 1-e^(-2t)<=2t, n(t)->1/2 at zero, and exponential decay at infinity. The first term has symbol
+m_0(xi)=.5log(1+4xi^2), obtained by differentiating the elementary cosine integral with respect to xi and fixing its value at zero.
 
-### 2.3 Whole response and complete feedback scale
+For every time s>0, (1+4xi^2)^(-s/2) is the characteristic transform of the convolution of a Gamma(s/2,rate 1/2) density and its reflection. This follows directly by integrating t^(s/2-1)exp(-(1/2+i xi)t), dividing by its gamma normalization, and multiplying by the reflected transform. The remaining finite positive measure n(|t|)dt has the compound-Poisson convolution semigroup. The product therefore has a probability density p_s in L1 for every s>0. Its multiplier is exactly exp(-s m), not that of the full source A_b.
 
-Let tau_a=min(a/2,1/10) and
+It follows by Tonelli that
 \[
-B_a^{\rm bd}=K_a/2+C_a[\tfrac12\log(2a/\tau_a)+2ak_a+s_a+4a\cosh a],
-\quad \eta_d=4d[K_a^2(\ell_d+1)+(B_a^{\rm bd})^2],\quad \ell_d=\log(1/d).
+G=\int_0^\infty e^{-s}p_s\,ds\in L^1(\mathbb R),\quad \|G\|_1=1,
+\quad (\mathscr D+1)^{-1}f=G*f,
+\quad \|G(\cdot+h)-G\|_1\longrightarrow0.
+\tag{N7}
 \]
-In either signed source column, integrate its singular part in distance t from the adjacent endpoint. For 0<v<tau_a, splitting at v gives
-\[
-\int_0^{\tau_a}\frac{dt}{(v+t)\sqrt{\log(1/t)}}
-\le\frac1{\sqrt{\log(1/v)}}+2\sqrt{\log(1/v)}
-\le1+2\sqrt{\log(1/v)}.
-\]
-The remaining archimedean kernel, finite prime shifts and two poles are bounded using (BND4). The full sum therefore satisfies
-\[
-|(Fz)^\sigma(s)|\le\sqrt d\|z\|[K_a\sqrt{\log(1/(ds))}+B_a^{\rm bd}],
-\qquad F^*F\preceq\eta_d I.                           \tag{BND7}
-\]
-Integration uses int_0^1 log(1/s)=1 and bounds the whole vector u_z directly. It introduces no rank factor.
+These statements can first be checked on L2 by the multiplier integral, then on bounded data by the L1 convolution. They make no claim about positivity of a full Weil resolvent.
 
-The same scalar integral as in section 2.2 gives r_d=ell_d-gamma-log(pi)+o(1), while kappa=O_a(1). Hence (BND2)-(BND3) imply
-\[
-F^*D^{-1}F\preceq\eta_d/m_d\,I=O_a(d)I,\qquad
-Y^*Y\preceq\eta_d/r_d\,I=O_a(d)I,\qquad
-e_1Y^*Y=O_a(d/\ell_d^2)I.                            \tag{BND8}
-\]
-This completes the narrow audit of the supplied input. The new source relation required by Q1 is proved next; (BND8) alone is not the Q2 signed comparison.
+### 2.2 Localization without differentiating a low eigenfunction
 
-## 3. An actual signed leading response without endpoint limits
-
-This section derives new fixed-a source lemmas. They hold on the complete low projector for every sufficiently small admissible d, not just on a selected eigenfunction. Inputs are (BND4)-(BND8), the literal L18 columns and the universal collar form L11. No new external theorem is used.
-
-### 3.1 Exact averaged source rows
-
-Let \(\iota:\mathbb C^2\to\mathscr H\) send (z_plus,z_minus) to the two constant profiles. It is an isometry. Set \(\Pi=\iota\iota^*\), \(\Pi_\circ=I-\Pi\), and define
+Fix 0<delta<min(a/4,.1). Choose smooth cutoffs chi_(b,delta), equal to one at distance at least delta from both endpoints, zero at distance at most delta/2, with Lipschitz constant at most C_chi/delta and values in [0,1]. For bounded u in P_b, the distributional commutator is
 \[
-\Gamma_d=d^{-1/2}\iota^*F,\qquad F_\circ=\Pi_\circ F,
-\qquad F=\sqrt d\,\iota\Gamma_d+F_\circ,\quad\iota^*F_\circ=0. \tag{BND9}
+\mathscr D(\chi u)-\chi\mathscr D u
+=\int_{\mathbb R}\alpha(|x-y|)(\chi(x)-\chi(y))u(y)dy.
+\tag{N8}
 \]
-The two rows of Gamma are **averaged exterior forcing**, not assumed boundary traces of u. Here is their literal source formula. For sigma=+1 or -1 put
-\[
-\begin{gathered}
-\bar\alpha_d(t)=\frac1d\int_0^d\alpha(t+v)dv,\qquad
-\bar u_{n,d}^\sigma=\frac1d\int_0^d u(\sigma(b+v-\log n))dv,\\
-p_\pm^\sigma(b,d)=e^{\pm\sigma b/2}\int_0^1e^{\pm\sigma ds/2}ds.
-\end{gathered}
-\]
-For every u=u_z in the low space, direct integration of L18 gives
-\[
-\boxed{\begin{split}
-(\Gamma_d z)_\sigma={}&-\int_0^{2b}\bar\alpha_d(t)u(\sigma(b-t))dt
--\sum_{n=2}^{N}w_n\bar u_{n,d}^\sigma\\
-&+p_+^\sigma(b,d)M_-(u)+p_-^\sigma(b,d)M_+(u).
-\end{split}}                                                       \tag{BND10}
-\]
-All averages are finite. For the singular part, the double integral of 1/(t+v) over a bounded positive rectangle is finite; boundedness of u justifies Fubini. The regular kernel is bounded, the prime sum finite, and the pole moments finite. Thus no interchange requires a pointwise equation at an endpoint. The formula remains valid with the continuous zero representative provided by (BND6).
+Prove it first for truncated jump kernels and smooth approximants. Its absolute bound is
+2 C_a||u||_2 int_0^infinity alpha(t) min(1,C_chi t/delta)dt, which is finite. Dominated convergence proves (N8) in distributions. No pointwise differentiability or Dini hypothesis on u was used.
 
-Reflection of the source interchanges the two output rows. On an even input they agree; on an odd input they differ by sign. This identifies at most one mean channel per parity, but it neither restricts the dimension of an eigenspace nor discards either sector. The products Gamma*Gamma are formed only after summing all signed terms in (BND10), including their mixed products.
+On I_b, script D u=A_bu-B_bu is bounded by (N2) and the bounded perturbation estimate. Multiplying this weak equation by chi is legitimate because chi is supported strictly inside I_b. The commutator is bounded and decays exponentially outside a fixed larger interval. Thus f=(script D+1)(chi u) belongs to L2 and Linfty, with ||f||infty<=H_(a,delta)||u||_2 uniformly in b. The form characterization of the operator domain identifies chi u=(script D+1)^(-1)f. Equation (N7) gives
+\[
+\|(\chi u)(\cdot+h)-\chi u\|_\infty
+\le H_{a,\delta}\|G(\cdot+h)-G\|_1\|u\|_2.
+\]
+The removed boundary strips have supremum at most K_a||u||_2/sqrt(log(1/delta)) by (N4). Consequently the continuous zero extensions satisfy
+\[
+\omega_a(h):=\sup_{\substack{a/2\le b\le a\,,\ u\in P_bL^2\,,\ \|u\|_2\le1}}
+\ \sup_{|t|\le h}\|u(\cdot+t)-u\|_\infty\longrightarrow0.
+\tag{N9}
+\]
+Indeed the upper bound is 2K_a/sqrt(log(1/delta)) plus H_(a,delta) sup_(|t|<=h)||G(.+t)-G||_1. First fix delta small, then take h small. This proves a common modulus for the **whole** family, not continuity separately for an arbitrarily changing list of eigenvectors. It is a qualitative modulus with an explicit defining bound, not a claimed power law.
 
-### 3.2 The centered response is smaller on the entire low space
+## 3. The actual signed boundary averages
 
-Define explicit fixed-a constants
-\[
-O_a=4ak_a+2s_a+8a\cosh a,
-\qquad \omega_a=2C_a^2(O_a^2+O_a+1/2).
-\]
-Then
-\[
-\boxed{F_\circ^*F_\circ\preceq d\omega_a I.}           \tag{BND11}
-\]
-**Proof.** Write \(r_\sigma(s)=(Fz)_\sigma(s)/\sqrt d\). Compare it with r_sigma(1), which is evaluated at positive distance d from the core; the latter evaluation is well-defined. For its singular archimedean term,
-\[
-0\le\int_0^{2b}\left(\frac1{t+ds}-\frac1{t+d}\right)dt
-=\log(1/s)+\log\frac{2b+ds}{2b+d}\le\log(1/s).
-\]
-Its contribution to the difference has modulus at most C_a||z|| log(1/s)/2. The two regular-kernel integrals together cost at most 4ak_a C_a||z||. The two prime sums cost at most 2s_a C_a||z||. Each complete pole response has modulus at most 4a cosh(a) C_a||z||, so their difference costs at most 8a cosh(a) C_a||z||. These bounds keep both poles and all prime channels, irrespective of the input's phase or parity. Therefore
-\[
-|r_\sigma(s)-r_\sigma(1)|
-\le C_a\|z\|[O_a+\tfrac12\log(1/s)].
-\]
-The constant projection is the best L2 approximation by constants. Its squared error is consequently at most the squared distance to r_sigma(1). Integrate, use int log(1/s)=1 and int log(1/s)^2=2, sum the two channels and multiply by d. This gives exactly (BND11). The estimate is for u_z as a whole; no sum of separate eigenfunction bounds is introduced. QED.
+### 3.1 Canonical split and a fixed two-dimensional profile space
 
-The estimate does not say ||J|| tends to zero. Its domain is the bounded complete low source space, followed by removal of the two mean profiles. The singular corner and reflected prime term remain in the exact operator and in omega_a.
-
-### 3.3 Only the two constant profiles admit the required scalar inverse approximation
-
-The universal form has the exact decomposition
+Take the canonical L4/L16 split: b=a-d, c=c_d>0, r_d=c+log2, kappa=epsilon_C+j_a(d), q=kappa/r_d<=1/2. Write
 \[
-\mathfrak l[f]=\tfrac12\int_{0<x<y<1}\frac{|f(y)-f(x)|^2}{y-x}\,dxdy
-+\int_0^1 V(s)|f(s)|^2ds,\qquad V(s)=-\tfrac12\log[s(1-s)].
+\mathscr H=L^2(0,1)\oplus L^2(0,1),\quad
+D=cI+L_2+E-T_H\ge(r_d-\kappa)I,
+\quad \mathsf M=\operatorname{diag}(\mu_j).
 \]
-The constant profile 1 has finite form energy. Polarizing against it cancels the regional term and gives L1=V in L2, hence 1 is in the **operator** domain. Direct elementary integration gives
-\[
-\langle1,L1\rangle=\int_0^1V=1,
-\qquad \|L1\|_2^2=2-\pi^2/12<2.
-\]
-For the second identity one may integrate the convergent power series for log(1-s) against log(s): int log(s)log(1-s)=2-pi^2/6. Thus
-\[
-\iota^*L_2\iota=I_2,\qquad \|L_2\iota\|\le\sqrt2.   \tag{BND12}
-\]
-In particular the constant-channel diagonal is c+1, **not** c+log2. The latter is only a lower bound for the whole universal operator.
+L_2, E, and T_H are precisely canonical L9-L19. In particular T_H contains the complete core sector above 1; its floor 1 is proved by the spectral cutoff, not guessed from a gap. No other low modes are eliminated.
 
-Since mathscrB is bounded, constants also belong to D(D). Applying D^(-1) to D iota=c iota+(L2+mathscrB)iota yields the exact restricted identity
+Let iota:C^2->H be the isometry iota(q_+,q_-)=(q_+1,q_-1). Let Pi=iota iota*. Define
 \[
-D^{-1}\iota-c^{-1}\iota
-=-c^{-1}D^{-1}(L_2+\mathscr B)\iota,
-\qquad
-\|D^{-1}\iota-c^{-1}\iota\|
-\le\delta_d^{\rm inv}:=\frac{\sqrt2+\kappa}{c\,m_d}.  \tag{BND13}
+\boxed{\beta=(dc)^{-1/2}\iota^*F,\qquad H=(I-\Pi)F,\qquad
+F=\sqrt{dc}\,\iota\beta+H,\quad\iota^*H=0.}
+\tag{N10}
 \]
-This is O_a(ell_d^(-2)). It is a statement on two fixed profiles with a proved graph bound. It makes **no** assertion that ||I-cD^(-1)|| tends to zero on the infinite-dimensional collar. The latter relative scalarization is still prohibited by canonical L14.
-
-### 3.4 Full leading response, signed error and leading cancellation
-
-Define the exact Hermitian matrix
+The symbol H here denotes the mean-zero column operator only; it is not a high-core spectral projection. Its domain is the same complete low coefficient space C^r as F. By (N5),
 \[
-\mathsf E^{\rm av}_{a,d}=F^*D^{-1}F-\frac d c\Gamma_d^*\Gamma_d.
+\|\beta\|\le B_0(d):=\sqrt{\eta^\sharp_a(d)/(dc)}=O_a(1).
+\tag{N11}
 \]
-Equations (BND7), (BND9), (BND11) and (BND13) prove
+This finite-dimensional profile split does not assert that the resolvent preserves physical orthogonality.
+
+### 3.2 Formula for both rows, including every source sign
+
+For u=u_z=sum_j z_j phi_j, zero extended, put N=ceil(exp(2a))-1. The row beta_+(u) is exactly
+\[
+\begin{split}
+\frac1{d\sqrt c}\bigg[&-\int_{-b}^b u(y)\int_b^a\alpha(x-y)dx\,dy
+-\sum_{n=2}^{N}w_n\int_{b-\log n}^{a-\log n}u(t)dt\\
+&+2(e^{a/2}-e^{b/2})M_-(u)
++2(e^{-b/2}-e^{-a/2})M_+(u)\bigg].
+\end{split}
+\tag{N12+}
+\]
+The other row beta_-(u) is exactly
+\[
+\begin{split}
+\frac1{d\sqrt c}\bigg[&-\int_{-b}^b u(y)\int_{-a}^{-b}\alpha(y-x)dx\,dy
+-\sum_{n=2}^{N}w_n\int_{-a+\log n}^{-b+\log n}u(t)dt\\
+&+2(e^{-b/2}-e^{-a/2})M_-(u)
++2(e^{a/2}-e^{b/2})M_+(u)\bigg].
+\end{split}
+\tag{N12-}
+\]
+These follow by integrating L18 in the rescaled variable and substituting x=b+ds or x=-b-ds. Fubini is licensed by the integrable logarithmic singularity against bounded u; alternatively its absolute integral is bounded directly by (N5)'s profile estimate. Every prime power is kept. The integer endpoint excluded by N has zero overlap, exactly as in L4. Both pole coefficients have been integrated, not declared zero.
+
+These are signed **strip averages**, not limiting endpoint traces. The singular contribution contains the logarithm log((t+d)/t), while the prime terms sample actual interior strips. Products beta*beta include the mixed archimedean, arithmetic, and pole products. For an odd vector the reflection changes the appropriate row sign; working with two rows retains this automatically.
+
+### 3.3 The mean-zero part is smaller than sqrt(d)
+
+For 0<d<tau^2, let ell_d=log(1/d), k'_a=sup_[0,2a]|k'|. The latter is finite because the singularity was removed in k. Compare the plus singular profile with its value at s=1. Write g(t)=u(b-t). The difference involves
+\[
+\int_0^{2b}g(t)\left(\frac1{t+ds}-\frac1{t+d}\right)dt.
+\]
+For 0<t<d, (N4) and the nonnegative kernel difference bound its magnitude by K_a||z|| log(1/s)/sqrt(ell_d). For d<t<tau, split at sqrt(d); the bound is
+K_a||z||[sqrt(2)/sqrt(ell_d)+sqrt(d)/sqrt(log(1/tau))]. For t>=tau it is at most C_a||z||d/tau. These estimates use t as the actual distance to the nearer endpoint only where t<tau<=b.
+
+The regular archimedean part varies by at most 2a C_a d k'_a||z||. The two-pole part varies by at most 2a C_a d e^a||z||. Every shifted source value varies by at most omega_a(d)||z||, so the **full** prime contribution varies by at most s_a omega_a(d)||z||. The negative sign of that contribution was not changed; absolute values are used only to bound this variation, after retaining its mean in (N12).
+
+Since ||log(1/s)||_(L2(0,1))=sqrt(2), both components yield
+\[
+\boxed{\|H\|\le\sqrt d\,h_a(d),\qquad h_a(d)\longrightarrow0,}
+\tag{N13}
+\]
+where one sufficient explicit expression is
+\[
+\begin{split}
+h_a(d)=\sqrt2\bigg[&\frac{\sqrt2K_a}{\sqrt{\ell_d}}
++\frac{K_a\sqrt d}{2\sqrt{\log(1/\tau)}}+\frac{C_ad}{2\tau}\\
+&+2aC_ad(k'_a+e^a)+s_a\omega_a(d)\bigg].
+\end{split}
+\]
+Projection onto the mean-zero subspace contracts the norm of the difference from any constant profile, including the endpoint comparison just used. Continuous representatives are available by (N4)/(N9), and that endpoint is a positive distance d outside the core. No value of a rough representative at the original core boundary was presumed. Equations (N10)-(N13) are dimension-free source relations.
+
+## 4. Concrete signed repair: do not scalarize the whole inverse
+
+### 4.1 The constant profile belongs to the operator domain
+
+For the universal L from L11, direct polarization against compact smooth tests gives
+\[
+L1=V(s)=-\tfrac12\log(s(1-s)),\qquad
+\int_0^1V(s)ds=1,\qquad \|V\|_2\le\sqrt2.
+\tag{N14}
+\]
+The constant function has finite form energy, and V is in L2. Core density and the operator representation therefore prove 1 in D(L), not just a formal identity. This pays the operator-domain use of iota below. The endpoint potential is not replaced by log2 or by its average on arbitrary profiles.
+
+Put W=L_2+E-T_H, so D=cI+W. Define the bounded two-column operator and its Hermitian two-by-two compression
+\[
+Z=W\iota,\qquad
+\mathcal A_\partial=\iota^*W\iota
+=I_2+\iota^*E\iota-\iota^*T_H\iota,
+\quad \|Z\|\le\sqrt2+\kappa.
+\tag{N15}
+\]
+The high-core sign here is negative. It remains the complete source inverse, including mixed recovery, not a prime-only or scalar inverse.
+
+### 4.2 Exact identity with a positive full variance remainder
+
+The identity D iota=c iota+Z gives
+\[
+D^{-1}\iota=c^{-1}\iota-c^{-1}D^{-1}Z,
+\]
+\[
+\iota^*D^{-1}\iota=c^{-1}I_2-c^{-2}\mathcal A_\partial+c^{-2}Z^*D^{-1}Z,
+\quad
+\iota^*D^{-1}H=-c^{-1}Z^*D^{-1}H.
+\]
+The last equality uses only iota*H=0 **before** the inverse; its right side is precisely the resolvent mixing that cannot be omitted. All formulas are valid for the unbounded W because its only un-inverted action is on iota, whose operator domain was proved in (N14).
+
+Expand F from (N10), retaining the two mixed products. Completing the remaining square proves
+\[
+\boxed{F^*D^{-1}F=d\beta^*\beta-\frac d c\beta^*\mathcal A_\partial\beta
++\mathcal Z^*D^{-1}\mathcal Z,
+\qquad \mathcal Z=H-\sqrt{d/c}\,Z\beta.}
+\tag{N16}
+\]
+This is the promised **signed boundary-response relation**, not an operator-norm upper bound. The last matrix is positive semidefinite and contains all mean/mean-zero mixing and all remaining feedback. Nothing in (N16) says cD^(-1) tends to identity in norm; the false scalarization of L14 stays rejected.
+
+Moreover every complex coefficient vector is covered by
+\[
+0\preceq\mathcal Z^*D^{-1}\mathcal Z\preceq d\sigma_a(d)I,
+\quad
+\sigma_a(d)=\frac{[h_a(d)+(\sqrt2+\kappa)B_0(d)/\sqrt c]^2}{r_d-\kappa}
+=o_a(1/c).
+\tag{N17}
+\]
+The denominator is the proved full D floor. The little-o follows from h_a(d)->0, B_0 bounded, kappa bounded, and c~log(1/d). This bounds the entire variance, not the first few feedback terms. It is a paper bound with nonnumerical constants and modulus, not an interval computation of its entries.
+
+### 4.3 The two-dimensional correction tends to identity
+
+We next show
+\[
+t_a(d):=\|\iota^*T_H\iota\|\longrightarrow0,
+\qquad \mathcal A_\partial\longrightarrow I_2.
+\tag{N18}
+\]
+Fix q in C2 and put f_d=J U_d^(-1)iota q, as a core function extended by zero to (-a,a). The source cross bound makes f_d bounded in L2. For a fixed compact smooth h supported strictly inside (-a,a), eventually h is in the smaller core. Its exterior source response J*h on the two collars is uniformly bounded: its archimedean kernel is separated from the support, every shifted h is smooth, and both pole moments are finite. Hence <h,f_d>=O_(a,h)(sqrt(d))||q||. Density and the uniform L2 bound prove f_d converges weakly to zero.
+
+Let x_d=A_H^(-1)(I-P_b)f_d. Its norm is bounded by ||f_d|| because A_H>=1. Its full energy equals <(I-P_b)f_d,x_d> and is bounded. The bounded source perturbation therefore bounds its positive Dirichlet energy uniformly. All x_d have support in [-a,a]. The fixed-support compact form embedding gives a strongly convergent subsequence of any such bounded sequence. Along it, <f_d,x_d> tends to zero by the weak convergence of f_d. Thus every sequence gives limit zero for this nonnegative quadratic pairing. It is exactly <q,iota*T_H iota q>. Finite-dimensional polarization gives (N18) in the two-by-two operator norm. Finally ||E||=O_a(d).
+
+This proof requires neither convergence of P_b nor a smooth eigenbasis, and it does not claim that T_H itself tends to zero in operator norm. In particular all its coupling to nonconstant profiles remains inside (N16). Eventually A_partial>=I_2/2, but the conclusion is fixed-a and not a global source lower sign.
+
+Combining (N16)-(N18) yields the genuinely signed subleading law
+\[
+\boxed{F^*D^{-1}F=d(1-c^{-1})\beta^*\beta+\mathcal E_{a,d},
+\qquad \|\mathcal E_{a,d}\|=o_a(d/c).}
+\tag{N19}
+\]
+An explicit bound is d rho_a(d), where
+rho_a(d)=sigma_a(d)+B_0(d)^2(epsilon_C+t_a(d))/c=o_a(1/c).
+There is **no** claim that beta or M/d has a limit. The negative coefficient in the recovery comes from the actual average of the universal endpoint potential, together with the proved vanishing of the constant-channel high response.
+
+### 4.4 Compatibility with the frozen one-feedback formula
+
+The canonical one-feedback remainder is exactly
+\[
+0\preceq F^*D^{-1}F-G_1
+=Y^*T^2(I+T)^{-1}Y\preceq e_1Y^*Y,
+\quad e_1=q^2/(1-q).
+\tag{N20}
+\]
+It follows by the scalar identity (1+t)^(-1)-(1-t)=t^2/(1+t) and self-adjoint functional calculus. With (N5), its norm is at most e_1 eta_a^sharp(d)/r_d=O_a(d/c^2). Therefore G_1 has the same signed expansion (N19), with an additional completely bounded error of that size. No feedback order was increased, and no high-source term was removed.
+
+**Q1 result:** the narrow imported input and the actual d-dependent signed response are proved at the stated paper scope. FIRST_FAILURE Q1: none identified in this derivation. Independent checking of the new lemmas remains pending; the three missing shelf rehashes remain an integrity limitation, not a silently completed check.
+
+## 5. Q2: actual comparison attempt and its first failure
+
+### 5.1 Why a leading positive gap has not been obtained
+
+The first attempted mechanism was to use the now-computable leading response to prove a source trace-energy inequality of the form
+\[
+\mathsf M-d\beta^*\beta\succeq\epsilon_a d I
+\tag{N21-attempt}
+\]
+for one sufficiently thin admissible collar at each hypothetical contact. Such an independently proved inequality would indeed dominate the o(d) error. It does **not** follow from (N2)-(N5), the source equation on the core, or the positive diagonal blocks.
+
+The exact obstruction in the derivation occurs when the core equation is paired with the boundary-average functional. Positivity of A_b gives only
+\[
+|q^*\beta z|^2\le (z^*\mathsf Mz)\,(q^*\beta\mathsf M^{-1}\beta^*q).
+\]
+The second factor is the actual two-boundary inverse energy. The source means (N12) do not make it diagonal or supply the needed upper bound. Replacing it by ||beta||^2/mu_min returns the forbidden worst-eigenvalue estimate. The equation has not produced a lower bound for M at scale d.
+
+**FIRST_FAILURE of this attempt:** the signed inequality (N21-attempt), not boundary boundedness or convergence of the paid feedback tail. It is left unproved, not labelled false for the theta source. No hypothetical contact has been exhibited.
+
+### 5.2 The source identity that makes leading cancellation precise
+
+At a hypothetical actual contact, canonical L20-L21 supply a nonzero z in ker(S), with its full reconstructed source null vector. Testing the local null equation against its core and collar components, then eliminating the high component, yields Mz=F*D^(-1)Fz. Substitution of the source identity (N16), not a chosen asymptotic trace, gives
+\[
+\boxed{z^*\mathsf Mz
+=d\|\beta z\|^2-\frac d c\langle\beta z,\mathcal A_\partial\beta z\rangle
++\|D^{-1/2}\mathcal Zz\|^2.}
+\tag{N22}
+\]
+Thus for unit null z the leading order cancels, and
+z*(M-d beta*beta)z=-(d/c)||beta z||^2+o_a(d/c), uniformly. If the boundary mean stays bounded away from zero along such a sequence, the next term has the displayed negative sign. If beta z tends to zero, this assertion does not provide a relative estimate or force z=0. That branch is retained.
+
+Equation (N22) is a consequence **under the proposed contact premises**. It is not an actual-source counterexample to a contradiction-proof target. Nor does it prohibit a future independent source theorem from proving a strict inequality and thereby excluding those premises. What it prohibits is treating the computed leading response or a vanishing error as such an independent theorem.
+
+### 5.3 Concrete repair and the complete surviving remainder
+
+The repair is to keep the signed two-by-two correction **and the positive variance**, instead of assuming an order-d gap or increasing feedback depth. Define
+\[
+\Xi_{a,d}=\mathsf M-d\beta^*\beta+(d/c)\beta^*\mathcal A_\partial\beta.
+\]
+Equations (N16)-(N17) give the exact identity and lower envelope
+\[
+\boxed{\mathsf S=\Xi_{a,d}-\mathcal Z^*D^{-1}\mathcal Z,
+\qquad \mathcal L_\partial:=\Xi_{a,d}-d\sigma_a(d)I\preceq\mathsf S.}
+\tag{N23}
+\]
+All entries in beta are the signed, integrated source expressions (N12). A_partial and Z retain the actual two-pole collar perturbation and the entire high-core inverse. The remaining square is positive, not an error whose sign is guessed.
+
+The first unpaid assertion after this concrete repair is
 \[
 \boxed{\begin{gathered}
-\|\mathsf E^{\rm av}_{a,d}\|\le\varepsilon^{\rm av}_{a,d},\\
-\varepsilon^{\rm av}_{a,d}
-=\eta_d\delta_d^{\rm inv}
-+2\sqrt{\eta_d d\omega_a}\,\delta_d^{\rm inv}
-+\frac{d\omega_a}{m_d}
-=O_a(d/\ell_d).
-\end{gathered}}                                                   \tag{BND14}
+\forall a>a_0\text{ with the first-contact premises},\quad
+\exists\ d\text{ satisfying L4/L16, }d<a-a_0,\ d<\tau_a^2:\\
+\lambda_{\min}(\Xi_{a,d})>d\sigma_a(d).
+\end{gathered}}
+\tag{N24-target}
 \]
-**Proof.** Expand the quadratic response using F=Pi F+F_circle. The mean-mean difference from c^(-1)(Pi F)*(Pi F) is bounded by eta_d delta_inv. For the two mixed terms subtract c^(-1)iota inside D^(-1)iota: the subtracted term pairs to zero with F_circle. Their combined norm is at most 2 sqrt(eta_d d omega_a) delta_inv. The centered-centered response is positive and at most d omega_a/m_d. These are all terms of the exact expansion, proving the bound in matrix order as well as norm. Since eta_d=O(d ell_d), c and m_d are asymptotic to ell_d, the stated rate follows. QED.
+This is a precise **relative source boundary-mean energy comparison**. Neither the existence of finite K_a, the sign A_partial>=I_2/2, nor sigma=o(1/c) establishes it. The positive correction of order d/c is useful only after controlling the signed deficit M-d beta*beta at that same scale for every coefficient vector.
 
-This identifies an actual rank-at-most-two leading response, with an explicit whole-space error. It does not merely assign another upper scale to the old norm. Its coefficients are (BND10), including source signs and all mixed products. No convergence assumption about Gamma_d/sqrt(ell_d) is needed.
+The work above pays the response side, including a new signed coefficient and all residual variance. It does not pay that core-energy side. No claim of a reduced logical difficulty of RH is made. Q2 therefore remains PARTIAL_WITH_PRECISE_REMAINDER, with FIRST_FAILURE exactly (N24-target). The wider source exclusion is not refuted.
 
-The **signed low-energy relations** now read
-\[
-\boxed{\begin{split}
-\mathsf S&=\mathsf M-\frac d c\Gamma_d^*\Gamma_d-\mathsf E^{\rm av}_{a,d},\\
-\mathsf M-\mathsf G_1
-&=\mathsf M-\frac d c\Gamma_d^*\Gamma_d-\mathsf E^{\rm av}_{a,d}+\mathsf R_1.
-\end{split}}                                                       \tag{BND15}
-\]
-Every term is an explicitly defined matrix, not an asserted limiting coefficient.
+## 6. Q3: original-form transfer and adversarial controls
 
-At a hypothetical contact choose any unit vector z_d in ker S, which exists by canonical L20-L21. Then
-\[
-\left|z_d^*\left(\mathsf M-\frac d c\Gamma_d^*\Gamma_d\right)z_d\right|
-\le\varepsilon^{\rm av}_{a,d}=o_a(d),
-\qquad
-z_d^*(\mathsf M-\mathsf G_1)z_d=z_d^*\mathsf R_1z_d.    \tag{BND16}
-\]
-This is a conditional **leading cancellation law for the actual source equality system**. Its leading rows have just been identified without a branch limit. It is not a contact witness and not a refutation of a contradiction-proof target. It shows precisely what an attempted strict order-d lower margin would have to contradict using an additional signed source fact.
+### 6.1 The full conditional chain
 
-**Q1 result:** the supplied fixed-a input survives the narrow recheck, and (BND9)-(BND16) provide the requested actual d-dependent leading relation. FIRST_FAILURE Q1: none for these claims. Existence of normalized endpoint limits, Hadamard differentiability and a limit of M/d are deliberately not claimed.
-
-## 4. Q2: the attempted comparison and its concrete repair
-
-### 4.1 First attempt: an order-d lower gap, and why it is unpaid
-
-An unpaid sufficient attempted source estimate [COFINAL_FAMILY][CONDITIONAL] is
-\[
-\mathsf M-\frac d c\Gamma_d^*\Gamma_d\succeq\gamma_a d I,
-\qquad \gamma_a>0,                                  \tag{BND17}
-\]
-for each hypothetical contact a, with one fixed gamma_a>0 and for every sufficiently small admissible d. This is a sufficient, not necessary, target. Equations (BND14), (BND15) and the complete e1Y*Y=o(d) error would then allow a d for which the total error is smaller than gamma_a d and L1 is positive. But **no such signed estimate has been derived**. Equation (BND16) records the cancellation it must overcome. A bound on Gamma alone supplies no lower bound on M along its active rows.
-
-This is the first exact failed proof step, not a claim that the theta target is false. The packet's scalar control already rules out the generic inference from the scales: A=d, C=ell_d, J=t sqrt(d ell_d) gives recovery=d t^2 and S=d(1-t^2). At t=1, exact equality persists. With q=1/ell_d and d=e^(-4), e1=1/12 and L1=-d/12 although S=0. Our formulas preserve that result; they do not declare a negative source energy from the sufficient envelope.
-
-A normalized endpoint/Hadamard approach would additionally need the existence and transport of trace coefficients before differentiating. Those facts are not supplied by (BND6). Rather than assuming them or increasing feedback order, the following repair eliminates the entire centered response exactly.
-
-### 4.2 Exact elimination of centered collar profiles
-
-Let \(\mathscr H_\circ=\ker\iota^*\). The projection Pi_circle is bounded in the collar form norm: constants have finite form energy, and their coefficients are bounded L2 functionals. Thus the restriction of D's closed form to H_circle is closed and densely defined there. Its Friedrichs operator D_circle satisfies D_circle>=m_d I.
-
-Constants are in D(D) by (BND12), so the cross map
-\[
-W_d=\Pi_\circ D\iota=\Pi_\circ(L_2+\mathscr B)\iota,
-\qquad \|W_d\|\le v_d:=\sqrt2+\kappa
-\]
-is a bounded map from C2 to H_circle. The exact operator on C2 direct-sum H_circle therefore has finite/centered blocks
-\[
-D=\begin{pmatrix}D_{00}&W_d^*\\ W_d&D_\circ\end{pmatrix},
-\qquad D_{00}=(c+1)I_2+\iota^*\mathscr B\iota.
-\]
-This follows by polarizing its form; bounded cross terms give the same block-operator domain. Define
-\[
-\begin{gathered}
-\mathsf K_e=D_{00}-W_d^*D_\circ^{-1}W_d,\qquad
-\mathsf J_e=\sqrt d\,\Gamma_d-W_d^*D_\circ^{-1}F_\circ,\\
-\mathsf N_\circ=F_\circ^*D_\circ^{-1}F_\circ,\qquad
-\mathsf B_\ell=\mathsf M-\mathsf N_\circ.
-\end{gathered}                                                    \tag{BND18}
-\]
-The symbol B_ell denotes a finite **centered low-energy margin**, not the original sesquilinear form B. Neither it nor its inverse is assumed positive here.
-
-The positive two-mean operator satisfies K_e>=m_d I_2: minimizing the D-energy over the centered component for fixed mean coefficient xi gives xi*K_e xi; D>=m_d and ||iota xi+h||^2=||xi||^2+||h||^2 give the inequality. Thus its inverse is legitimate without a source-sign hypothesis beyond the already proved positivity of D.
-
-Solving the centered block first, or completing its positive form square, proves the exact identities
-\[
-\boxed{F^*D^{-1}F=\mathsf N_\circ+\mathsf J_e^*\mathsf K_e^{-1}\mathsf J_e,
-\qquad
-\mathsf S=\mathsf B_\ell-\mathsf J_e^*\mathsf K_e^{-1}\mathsf J_e.} \tag{BND19}
-\]
-For example, for a right-hand side (f0,f_circle), the centered component of the solution is D_circle^(-1)(f_circle-W_d xi); the mean equation is K_e xi=f0-W_d*D_circle^(-1)f_circle. Pairing the solution with the same right-hand side gives exactly (BND19). This derivation also proves the domain validity of the elimination for arbitrary L2 data.
-
-There is no unretained operator tail in (BND19). D_circle still contains the **entire** T_H, E, and universal logarithmic response. No coefficient has been numerically evaluated or certified here. Exact retention is not the same as having proved its needed comparison with M.
-
-The already proved estimates give explicit bounds on the repaired objects:
-\[
-\begin{gathered}
-0\preceq\mathsf N_\circ\preceq\frac{d\omega_a}{m_d}I=O_a(d/\ell_d)I,\\
-\|\mathsf J_e-\sqrt d\Gamma_d\|\le\frac{v_d\sqrt{d\omega_a}}{m_d},\qquad
-\|\mathsf K_e-(c+1)I_2\|\le\kappa+\frac{v_d^2}{m_d}.
-\end{gathered}                                                     \tag{BND20}
-\]
-Thus the centered sector is subleading in absolute size, but its subtraction from M is kept **exactly**. It need not be subleading relative to every mu_j. Both signs of the high-core and pole feedback continue to enter every repaired object through D.
-
-### 4.3 The new first failure is a precise source-measurement problem
-
-At a hypothetical contact, S is nonnegative, so (BND19) implies B_ell>=0 and
-\[
-\ker\mathsf B_\ell=\ker\mathsf S\cap\ker\mathsf J_e.  \tag{BND21}
-\]
-This follows from the sum of the two nonnegative matrices S and J_e*K_e^(-1)J_e, not from a claim about a sign-definite eigenfunction.
-
-There is an exact physical interpretation. The L21 reconstruction maps z in ker S to
-\[
-w=-U_d^{-1}D^{-1}Fz,\quad x_H=-A_H^{-1}J_Hw,
-\quad v=u_z+x_H+w\in\ker A_a.
-\]
-Conversely every contact null vector has this decomposition, since both positive squares in L20 must vanish. A null vector with zero low projection would vanish entirely. The correspondence is therefore a linear bijection.
-
-The solved mean block gives
-\[
-\iota^*U_dw=-\mathsf K_e^{-1}\mathsf J_e z
-=\frac1{\sqrt d}
-\begin{pmatrix}\int_b^a v(x)dx\\ \int_{-a}^{-b}v(x)dx\end{pmatrix}. \tag{BND22}
-\]
-The factor 1/sqrt(d) follows from the unitary physical rescaling. It must not be replaced by 1/d or omitted.
-
-Combining (BND21)-(BND22) proves the source identity
-\[
-\boxed{\ker\mathsf B_\ell\ \simeq
-\left\{v\in\ker A_a:\ \int_b^av=0,\quad\int_{-a}^{-b}v=0\right\}.} \tag{BND23}
-\]
-In particular, at contact, B_ell is strictly positive if and only if the two strip-integral functionals are injective on the full contact kernel. These are **ordinary physical strip integrals**, not limiting logarithmic traces and not the averaged forcing Gamma. Their relation to Gamma includes the exact centered feedback in J_e.
-
-This identifies the repaired mechanism's first missing source statement [COFINAL_FAMILY][CONDITIONAL]:
-\[
-\begin{gathered}
-\text{for each hypothetical first-contact }a,\text{ choose one admissible }d:\\
-\forall v\in\ker A_a,\quad
-\int_{a-d}^a v=\int_{-a}^{-a+d}v=0\quad\Longrightarrow\quad v=0.
-\end{gathered}                                                     \tag{BND24}
-\]
-**(BND24) is not proved.** Continuous zero endpoint values do not imply it. Vanishing integrals do not imply vanishing functions on the strips, so CONTACT's exterior-collar injectivity cannot be substituted. Automatic radical-tail orthogonality supplies no additional equation for these integrals.
-
-The rank requirement is visible rather than hidden: injectivity into C2 would force dim ker A_a<=2. Reflection would further allow at most one dimension in each parity sector. These are consequences of the missing statement, **not assumptions made about the actual kernel**. Any proof using a single positive ground state would have to pay those hypotheses separately. Our calculation uses neither simplicity nor positivity preservation.
-
-### 4.4 Even the repaired centered gate is not the final signed comparison
-
-If B_ell is independently proved positive, one can then define the two-by-two Hermitian matrix
-\[
-\mathsf E_e=\mathsf K_e-\mathsf J_e\mathsf B_\ell^{-1}\mathsf J_e^*.
-\]
-Completing the two possible squares in the block matrix with diagonals B_ell and K_e proves
-\[
-\boxed{\mathsf S\succ0\quad\Longleftrightarrow\quad
-\mathsf B_\ell\succ0\ \text{ and }\ \mathsf E_e\succ0.} \tag{BND25}
-\]
-For the forward implication B_ell=S+J_e*K_e^(-1)J_e>0, and the second Schur complement is positive. The converse is the reverse congruence. If r=0, L20's positive squares already exclude contact; otherwise all r low directions remain present in B_ell.
-
-At contact, when B_ell happens to be positive, E_e is nonnegative and singular. For a nonzero z in ker S, xi=K_e^(-1)J_e z is nonzero and E_e xi=0. Thus the small matrix must retain an equality branch. A proof of (BND24) alone would only reach this final signed branch; it would not prove contact exclusion.
-
-**FIRST_FAILURE Q2 after the concrete repair:** no source estimate proves
-\(\mathsf N_\circ\prec\mathsf M\), equivalently (BND24) at contact. The subsequent strict comparison E_e>0 is also unpaid. The missing entries are the actual products of centered full-source columns through D_circle^(-1), compared with the actual mu_j. No inverse of B_ell is used before this gap is discharged.
-
-## 5. Adversarial controls and what they do not prove
-
-All exact controls in this section are [ABSTRACT][PAPER]. They test the stated inference; they are not arithmetic first-contact examples.
-
-### 5.1 Required scaled control
-
-For 0<d<exp(-3), ell_d=log(1/d), A=d, C=ell_d and J=t sqrt(d ell_d), direct completion gives recovery=d t^2 and S=d(1-t^2). The form is positive for |t|<1, singular at t=1 and indefinite for |t|>1. Set R=C, E=T_H=0, Y*Y=d t^2 and conservative q=1/ell_d. At d=exp(-4), t=1, e1=1/12 and L1=-d/12. The exact S stays zero. Our signed identities return that equality, not a negative-energy or positive-gap verdict.
-
-The source properties proved in section 3 are absent from this control: they are the literal alpha-averaged rows, the source boundedness that controls their centered oscillation, and the fixed-profile universal graph identity L1=V. They give the new representation. **They have not been shown to force the strict source inequality.** There is no proved source property in this submission that may honestly be said to eliminate the control's equality and then automatically eliminate actual contact.
-
-### 5.2 A control aimed specifically at the concrete repair
-
-Take a scalar low space, a three-dimensional collar, and
-\[
-\mathsf M=d/\ell_d,\qquad D=\ell_d I_3,\qquad
-\iota(z_+,z_-)=(z_+,z_-,0),\qquad F=\sqrt d\,e_3.
-\]
-Then Gamma=0, F_circle=F, W_d=0, K_e=ell_d I_2, J_e=0, and
-\[
-\mathsf N_\circ=d/\ell_d=\mathsf M,\qquad
-\mathsf B_\ell=0,\qquad\mathsf S=0.                  \tag{BND26}
-\]
-Here the centered recovery is o(d) and F_circle*F_circle=d, exactly compatible with the new absolute scales. Nevertheless it consumes the entire low energy. The proposed rate-only conclusion B_ell>=M/2 has exact success margin
-\[
-0-\frac{d}{2\ell_d}=-\frac{d}{2\ell_d}<0.
-\]
-This is a strict negative upper envelope for that **abstract theorem shape**. It kills the inference that an o(d) centered response is necessarily negligible relative to M. It does not kill the true source comparison. The example has no alpha kernel, von Mangoldt shifts, pole structure, universal unbounded collar operator or fixed-source window evolution. Those omissions are why it is an algebraic control, not a theta-source counterexample.
-
-### 5.3 Reflected prime and endpoint controls
-
-The full rows (BND10) and F_circle retain the reflected n=2 contribution of the odd lift. No semigroup-positivity assumption about A_b or D is used. The absolute Dirichlet-semigroup domination in section 2 concerns the independent positive translation form, followed by an absolute perturbation series. It does not contradict the already checked positive odd off-diagonal pairing or imply negative energy from that pairing.
-
-Dropping the +F*R^(-1)T_H R^(-1)F term in G1 would undercount recovery. Replacing L1=V by L1=0 would lose the exact c+1 diagonal in (BND18). Replacing the two strip integrals in (BND23) by point values would be especially destructive: all continuous zero-extended low modes have zero endpoint values, whereas the strip measurements can be nonzero. Each of these alterations changes a displayed identity and would let a false simplification pass.
-
-An exact rational three-by-three block with D=[[5,1,1],[1,6,2],[1,2,7]] and F=[[1,2],[2,-1],[3,1]] independently reproduced (BND19) by symbolic inversion. The packet e1=1/12 and the centered control were also checked symbolically. These tests supplement the all-domain proofs; they do not evaluate the source matrices or replace any quantifier.
-
-## 6. Q3: exact whole-source transfer, with both unpaid gates visible
-
-The source lemmas above are [ABSTRACT][PAPER]. This section's all-contact conclusion is [COFINAL_FAMILY][CONDITIONAL] because its two signed premises remain unproved.
-
-Suppose one independently establishes, for every a>a0 satisfying the first-contact premises, one d with all L4/L16 conditions, d<min(a-a0,a/2,1/10), and
-\[
-\mathsf B_\ell\succ0,\qquad
-\mathsf K_e-\mathsf J_e\mathsf B_\ell^{-1}\mathsf J_e^*\succ0. \tag{BND27}
-\]
-By (BND25), S>0. The original source energy for v=u_z+x_H+w is exactly
+For any physical v=u_z+x_H+w in V_a, canonical L20 gives
 \[
 Q[v]=Q_H[x_H+A_H^{-1}J_Hw]
-+\|D^{1/2}(U_dw+D^{-1}Fz)\|_2^2+z^*\mathsf S z.
++\|D^{1/2}(U_dw+D^{-1}Fz)\|^2+z^*\mathsf Sz.
+\tag{N25}
 \]
-The physical change from (z,x_H,w) to the three displayed coordinates is bounded and has a bounded triangular inverse. The two infinite-dimensional positive blocks have floors 1 and m_d; the finite positive matrix S has a strictly positive smallest eigenvalue. Thus there is a positive physical L2 lower bound on the full window. It contradicts lambda_a=0. No component is discarded, including when it is odd or belongs to a multiple low eigenvalue.
+The two first terms have positive floors 1 and r_d-kappa. The triangular change of variables and its inverse are bounded in physical L2 because J and the required positive inverses are bounded. All components remain in the appropriate form domains by bounded perturbation and the proved sharp restriction. Hence a positive lower matrix L_partial in (N23) yields a strictly positive full-window Rayleigh floor. If there are no low modes, the two positive squares already suffice.
 
-The existing positive anchor, continuity and attainment now give the terminal contradiction: a nonpositive later window would have a first zero window. That window is excluded by the preceding argument. Each complex compact smooth f belongs to some sufficiently large V_a, so Q[f]>=0. This is exactly the all-test sign required by the published Weil consumer; no norm rescaling or pole-null restriction occurs in the passage.
+Conversely at equality S has a nonzero null z and the actual vector is
+w=-U_d^(-1)D^(-1)Fz, x_H=-A_H^(-1)J_Hw, v=u_z+x_H+w. Its nonzero low component prevents v from vanishing. This checks the direction and normalization of the transfer; a normalized quotient has not replaced an unnormalized form identity.
 
-**This proves the implication from (BND27), not (BND27).** Source kernel exclusion and unconditional lower sign are therefore not claimed. The exact two-mean repair is an alternative to proving the particular sufficient one-feedback envelope L29. It does not silently declare that envelope positive or remove its complete remainder.
+If (N24-target) were proved independently, a hypothetical first contact would be positive by (N23)-(N25), contradicting its attained zero bottom. The CONTACT positive anchor, continuity and nested domains then rule out every later nonpositive window. Every complex compact smooth test lies in one such window, so Q[f]>=0 for all these tests, the exact input of the published Weil criterion. [COFINAL_FAMILY][CONDITIONAL]
 
-| Supplier | Domain, quantifiers and normalization | Input/output and exact proof locator | Status |
+The only unproved mathematical link in this **chosen** sign chain is (N24-target). The hash-verification limitations are separate and remain disclosed. No uniform positive gap, simple eigenvalue, parity restriction, normalized trace limit, or RH-conditional prime estimate was introduced. FIRST_FAILURE Q3 is its dependence on that unproved strict source comparison. LOWER_SIGN_PROVED remains false.
+
+### 6.2 Required scaled algebraic discriminator
+
+For the request's scalar data A=d, C=ell_d, J=t sqrt(d ell_d), exact elimination gives recovery=d t^2 and S=d(1-t^2). With R=C, E=T_H=0 and the conservative q=1/ell_d, the actual unretained response is zero but its sufficient envelope is positive. At d=exp(-4), t=1,
+\[
+e_1=\frac{(1/4)^2}{1-1/4}=\frac1{12},\qquad
+\mathcal L_1=-e^{-4}/12<0,\qquad \mathsf S=0.
+\tag{N26}
+\]
+The detector must return exact equality for S and failure of this sufficient lower certificate, not a negative source direction. For |t|<1, =1, >1 the exact signs remain positive, zero, negative. No numerical rerun was needed.
+
+The new signed correction also has a useful algebraic control. In a scalar constant-profile model take W=1, D=c+1, H=0, F=t sqrt(d(c+1)), M=d. Then beta=t sqrt((c+1)/c), A_partial=Z=1, and (N16) gives
+\[
+d\beta^2-\frac d c\beta^2+\frac d{c(c+1)}\beta^2=dt^2.
+\tag{N27}
+\]
+Equality at t=1 survives **even with** the negative subleading term and the exact positive residual. This model lacks the actual arithmetic core and universal infinite-dimensional collar; it checks algebra only. The new proved source properties are (N9), the exact shifted-strip rows, and the true V(s) endpoint potential. They have not been proved to enforce (N24-target), so no false claim that they already separate the source equality case is made.
+
+A separate exact complex matrix check of (N16) was executed with positive Hermitian D of size three, a two-column isometry iota, and complex F. Its symbolic residual was exactly zero. This is a conjugation control, not a proof of the operator/domain argument or the source sign.
+
+### 6.3 A boundary-bound falsifier that is not an eigenfunction
+
+Near zero the compactly tapered profile
+u(t)=sin(log log(1/t))/sqrt(log(1/t)) is continuous with zero endpoint value and satisfies the same absolute boundary envelope. Its derivative is bounded by a constant times 1/(t log(1/t)^(3/2)), so it has bounded variation. Bounded amplitude and variation imply squared translation differences O(t), hence finite logarithmic form energy. Nevertheless its quotient by 1/sqrt(log(1/t)) has no limit.
+
+This example is in the source form domain, not claimed to solve the source eigen-equation. It refutes only the inference from that domain and absolute boundary estimate to a normalized endpoint trace. Our averages (N12) and the common modulus proof avoid that inference entirely.
+
+## 7. Dependency ledger and what was actually preserved
+
+| Supplier | Domain and quantifiers | Input/output and proof locator | Status |
 |---|---|---|---|
-| Fixed-window analytic prerequisites | Every physical complex V_a; a0=e^(-20)/2 | C1-C11: closed form, compact resolvent, attained continuous bottom, positive start | Retained paper results; not rerun. [ABSTRACT][PAPER] |
-| Uniform low-space boundary input | Fixed a>0, a/2<=b<=a, every u in ran 1_(0,1](A_b); physical L2 | C/L17 plus [H], rechecked in (BND4)-(BND7), give C_a,K_a and eta_d | Verified import transfer and local derivation; no numerical K_a. [ABSTRACT][PAPER] |
-| Full source coupling and high-core elimination | Every admissible split, all low multiplicities and both collars | Canonical L4-L23 and (BND1)-(BND3): exact F,D,M,S,R1 | Exact at stated positivity hypotheses. [ABSTRACT][PAPER] |
-| Averaged leading response | Same parameters, every coefficient vector z | Literal (BND10), centered bound (BND11), restricted inverse (BND13) give (BND14)-(BND16) | New paper lemmas; no endpoint limit. [ABSTRACT][PAPER] |
-| Centered-profile elimination | H_circle=ker iota*, same zero-extension domain | (BND18)-(BND23): exact centered recovery and physical strip-mean kernel identity | New paper lemmas; no inverse of B_ell assumed. [ABSTRACT][PAPER] |
-| Centered strictness | Every hypothetical contact, at least one admissible d | N_circle strictly below M, or equivalently strip-mean injectivity on the contact kernel | FIRST unpaid source gate. [COFINAL_FAMILY][CONDITIONAL] |
-| Remaining two-mean strictness | Same d and only after B_ell>0 | E_e>0 in (BND25) | SECOND unpaid signed gate. [COFINAL_FAMILY][CONDITIONAL] |
-| All-test lower sign | Every complex compact smooth f | (BND27), L20 and first-contact contradiction | Implication proved; inputs unpaid. [COFINAL_FAMILY][CONDITIONAL] |
+| Literal source/window realization | Every fixed a; all complex V_a | C1-C8 and canonical L4-L19, rechecked as used | [ABSTRACT][PAPER] |
+| Bounded entire low space | All b<=a, all vectors in P_b | Absolute perturbation domination gives u and A_bu in Linfty, (N2) | [ABSTRACT][PAPER] |
+| Uniform boundary bound | All a/2<=b<=a, all low vectors | N3, [H] with matching domain, fixed graph estimate and scaling, (N4) | [ABSTRACT][PAPER; published theorem import] |
+| Common zero-extension modulus | Same low family, not chosen branches | Positive archimedean resolvent density and localized weak equation, (N6)-(N9) | [ABSTRACT][PAPER] |
+| Actual leading source means | Every admissible d, all coefficient vectors | Both signed rows (N12), full-profile variance (N13) | [ABSTRACT][PAPER] |
+| Full signed response and remainder | Positive core and admissible collar; whole low space | Exact identity (N16), bound (N17), constant-channel limit (N18) | [ABSTRACT][PAPER under stated local hypotheses] |
+| Comparison with low energy | Every hypothetical contact, one admissible d | Xi must dominate the positive variance; (N24-target) | [COFINAL_FAMILY][CONDITIONAL; unproved] |
+| All-test lower sign | All complex compact smooth tests | N23-N25 and CONTACT first-contact reduction, conditional on N24 | [COFINAL_FAMILY][CONDITIONAL] |
 
-FIRST_FAILURE Q3: no unconditional proof supplies the two signs in (BND27) at the required all-contact quantifiers. There are no witnesses d(a) or positive margin constants for that statement in this submission. There is no omission of a numerical tail masquerading as that gap: the remaining issue is the full signed source comparison itself.
+No raw theta normalization is changed: this batch does not construct a new theta trial at all. Physical L2 orthogonality is used only for the exact projections where it holds; it is never presumed to survive D^(-1) or the core inverse. Boundary points -a,-b,b,a are included through zero-extension forms; the cutoff proof covers both inner transition regions. No trace, endpoint atom, prime power, pole, parity or high-core response is discarded.
 
-## 7. Route map, strongest attack and dependency epistemics
+## 8. One next_decisive_test and closeout
 
-| Representation | What it preserves; what remains unpaid | Estimated kill-power / proof cost | Disposition |
+### 8.1 The single directive
+
+**next_decisive_test: SIGNED_STRIP_MEAN_TRACE_ENERGY_DEFICIT.** Use exactly the full-source rows (N12), the two-by-two matrix (N15), and the all-vector error (N17). The terminal observable is
+\[
+\Gamma(a,d)=\lambda_{\min}\left[\mathsf M-d\beta^*\beta+(d/c)\beta^*\mathcal A_\partial\beta\right]-d\sigma_a(d).
+\tag{N28}
+\]
+The requested paper lemma is: for each a satisfying the first-contact premises, at least one d satisfying L4/L16, d<a-a0 and d<tau_a^2 has Gamma(a,d)>0. The task is to derive the **core-energy comparison for these actual integrated source rows**, not to re-prove their O(d) response scale. All coefficients and both rows must be treated together.
+
+Success requires a strictly positive lower bound with its quantifiers proved; (N23)-(N25) then complete this route. A negative upper enclosure for one proposed finite-parameter sufficient margin rejects only that envelope at those parameters. An enclosure containing zero is UNRESOLVED. The exact-zero discriminator is a proved strict matrix inequality or the exact full equality system, not additional digits of Gamma.
+
+**Stop condition:** if the proposed argument uses only ||beta||, mu_min^(-1), q->0, or the already proved A_partial->I without a signed estimate of M-d beta*beta, stop that subattempt and return the precise failed inequality. Do not increase feedback order, dimension, precision, or the window. This is a symbolic/source-estimate directive, not authorization for a new numerical campaign.
+
+The gate for the receiving paper reviewer is to check N6-N18 at their actual domains, verify N16 with nonzero resolvent mixing, and reject any attempted transfer at N24 unless its full matrix inequality is proved. No Lean source was written, so there is no new Lean command or axiom profile to report; a later formalization is not admitted by this documentation commit.
+
+### 8.2 Two candidate re-representations, not two execution directives
+
+| Representation | What it preserves and exposes | Main risk | Kill-power / cost estimate |
 |---|---|---|---|
-| **Chosen: exact averaged/centered source response** | Full source, physical norms, four boundaries, both parities and all low modes. Produces explicit leading rows and retains centered feedback exactly. | 9/10 / 6/10 | New lemmas proved; relative centered gate and two-mean sign unpaid. |
-| **Alternative: normalized boundary trace and shape variation** | Could target a signed variation of low energies, but would need trace existence, basis-free cluster transport and a valid shape identity. | 8/10 / 8/10 | Candidate only; those premises are not supplied by the boundary bound. |
-| **Rejected inference: absolute smallness is relative smallness** | Loses the relationship to every mu_j, even with complete o(d) error. | 10/10 / 1/10 against the inference | Exact negative success margin in (BND26); no theta-source refutation. |
+| Selected: signed strip means plus exact positive variance | Actual prime/pole averages, all low modes, full high response; explicit leading and negative next coefficient | Missing relative trace-energy comparison with M | 9/10 / 5/10 |
+| Alternative: weak finite-displacement Green identity for the same source | Avoids unproved endpoint limits and smooth eigenbranches; can couple smaller-window energies directly to deleted strips | A new signed inequality is still needed; locality cannot be imposed on prime shifts | 8/10 / 7/10 |
 
-The scores rank proposed proof work, not probabilities, numerical evidence or authorization for a source computation. No precision, degree, feedback-order or window escalation is requested.
+These are planning estimates, not theorem probabilities or permission to launch additional work. A Hadamard trace formula is not a third supplier secretly imported into the proof.
 
-The strongest objection to the chosen reduction is substantive: **two mean measurements need not see a multiple or sign-changing contact kernel**. That objection is accepted and becomes the exact equivalence (BND23), rather than a hidden assumption. Small or zero strip integrals do not imply the two strips vanish. If B_ell is singular, the reduction preserves the corresponding local kernel rather than incorrectly invoking exterior continuation. Even after that branch is excluded, the actual two-mean recovery still needs its sign comparison.
+### 8.3 Frozen predictions
+
+| Prediction, unchanged probability | Fate | Evidence at the stated scope |
+|---|---|---|
+| P1, .90: new uniform input survives | CONFIRMED | N2-N5, matching primary theorem/domain and fixed-window closed-graph scaling; no new inverse-eigenvalue or rank factor |
+| P2, .95: rates and o(d) error do not exclude equality | CONFIRMED | Exact scaled control N26 and retained source balance N22; no sign inferred from a small error |
+| P3, .80: partial with new proved relation or exact mechanism refutation | CONFIRMED | New full-source signed N16/N19; strict comparison N24 remains unproved |
+| Continued own registration, .78: two-boundary leading representation with uniform o(d) remainder | CONFIRMED | N9-N19 prove it, in fact with an explicit negative d/c correction and o(d/c) remainder |
+
+The own event was registered before the source decomposition in the continued attempt. These scores report this paper derivation, not independent validation of the new mathematics. No old numerical forecast or closed scalar test was rescored.
+
+### 8.4 Meta closeout and consumer-first contract
+
+What became smaller: the response's first two terms are explicit signed two-boundary means, rather than just an absolute O(d) norm. Its remaining variance has a known sign and a complete bound. What did not close: the comparison of the actual small core energies with those means. There is no source counterexample, no first-contact exclusion, and no all-test lower-sign result.
 
 ```yaml
 K8A:
   DOWNSTREAM_CONSUMER: published_Weil_criterion_on_all_complex_compact_smooth_tests
-  ACTUAL_CONSUMER_REQUIREMENT: Q_nonnegative_on_all_complex_compact_smooth_tests
-  ORIGINAL_REQUESTED_OBJECT: all_contact_strict_one_feedback_boundary_margin
+  ACTUAL_CONSUMER_REQUIREMENT: Q_nonnegative_on_every_such_test
+  ORIGINAL_REQUESTED_OBJECT: signed_boundary_response_strictly_below_actual_low_core_energies
   ORIGINAL_OBJECT_IS: NOT_NECESSARY
   KNOWN_WEAKER_INTERFACES:
-    - exact_source_kernel_exclusion_at_first_contact
-    - exact_S_positive_without_the_chosen_one_feedback_majorant
-    - direct_all_test_lower_sign_or_a_cofinal_lower_envelope_tending_to_zero
-  CHOSEN_INTERFACE_IMPLICATION: BND27_to_positive_S_to_no_first_contact_to_all_test_sign
+    - direct_all_test_nonnegativity
+    - all_large_window_lower_envelope_with_error_tending_to_zero
+    - any_independently_proved_first_contact_kernel_exclusion
   FAILURE_TYPE: NO_DERIVATION
   EPISTEMIC_STATUS: RESEARCH_DEBT
-  NOVELTY_AXIS: signed_averaged_source_rows_and_exact_centered_kernel_measurement_identity
-  REOPEN_TRIGGER: source_relative_centered_recovery_gap_then_full_two_mean_signed_comparison
-SCOPED_REFUTATION:
-  CLAIM: an_o_d_centered_recovery_is_automatically_negligible_relative_to_every_low_energy
-  KILL_SCOPE: THEOREM_SHAPE
-  KILL_EVIDENCE_KIND: exact_negative_upper_envelope_for_the_claimed_half_energy_margin
-  EVIDENCE: BND26_in_this_verdict
-  SUCCESS_MARGIN: minus_d_over_two_log_one_over_d
-  FAILURE_TYPE: COUNTEREXAMPLE
-  EPISTEMIC_STATUS: MATHEMATICALLY_DEAD
-  ACTUAL_SOURCE_COUNTEREXAMPLE: false
+  NOVELTY_AXIS: signed_two_mean_response_and_positive_variance_with_actual_source_modulus
+  REOPEN_TRIGGER: a_signed_core_energy_inequality_for_N12_above_the_N17_budget
 CLOSES:
-  - narrow_uniform_boundary_import_and_source_transfer_recheck
-  - exact_d_dependent_leading_signed_source_response_representation
-  - abstract_absolute_to_relative_negligibility_inference
-OPENS: []
+  - boundary_input_narrow_audit
+  - all_low_zero_extension_common_modulus
+  - full_signed_mean_response_identity_and_its_fixed_a_subleading_coefficient
 CARRIES_OPEN:
-  - full_source_signed_boundary_low_energy_comparison
+  - canonical_COLLAR_L29_strict_source_comparison
   - first_contact_exclusion
   - all_test_lower_sign
-```
-
-The two unpaid gates are an exact factorization of the previous comparison, not two newly accepted premises or new route obligations. They are required only by this chosen representation. Their use is justified by (BND19)-(BND25), not by a claim that every possible proof must pass through two means. No route-family impossibility is asserted.
-
-## 8. One next_decisive_test, frozen predictions and handoff
-
-### 8.1 CENTERED_BOUNDARY_RECOVERY_RELATIVE_GAP
-
-**One analytical test only.** The target is [COFINAL_FAMILY][CONDITIONAL]. Work on the actual full source at every hypothetical first-contact a, with exactly the complete spectral projector (0,1]. Seek one admissible d and one delta(a,d)>0 such that
-\[
-\boxed{
-F_\circ^*D_\circ^{-1}F_\circ\preceq(1-\delta(a,d))\mathsf M
-\quad\text{for every complex low coefficient vector}.}             \tag{BND28}
-\]
-All constants can depend on this a,d; no uniform positive spectral gap is requested. The exact terminal observable is
-\[
-\vartheta_{a,d}
-=\lambda_{\min}\!\left(
-I-\mathsf M^{-1/2}F_\circ^*D_\circ^{-1}F_\circ\mathsf M^{-1/2}\right).
-\]
-M is invertible because b<a and the core is positive. Defining this finite relative normalization does not estimate an operator by 1/mu_min. The task is a signed, source-coupled inequality before any worst-eigenvalue bound.
-
-For explicit source data, F_circle z is exactly the pair of functions
-\[
-\sqrt d\left[
--\int_0^{2b}\bigl(\alpha(t+ds)-\bar\alpha_d(t)\bigr)u_z(\sigma(b-t))dt
--\sum_{n=2}^{N}w_n\bigl(u_z(\sigma(b+ds-\log n))-\bar u_{n,d}^\sigma\bigr)
-\right.
-\]
-\[
-\left.
-+\bigl(e^{\sigma(b+ds)/2}-p_+^\sigma\bigr)M_-(u_z)
-+\bigl(e^{-\sigma(b+ds)/2}-p_-^\sigma\bigr)M_+(u_z)
-\right],\qquad\sigma\in\{+1,-1\}.                                \tag{BND29}
-\]
-The centered profiles must be combined with their signs before applying the exact D_circle inverse. Formula (BND29) is the new source functional at the first failure, not a replacement prime-only form.
-
-**Success condition:** a proof of (BND28) with the all-contact quantifiers, or a clearly scoped finite-window theorem with the complete inverse retained and all inequalities certified. This closes only the centered gate. It does not certify E_e>0 or lower sign.
-
-**Equivalent source route for the same test:** prove injectivity of the two ordinary strip-integral functionals on ker A_a, at one admissible d, as in (BND24). This is the same terminal gate by (BND23), not a second test. It must cover both parity sectors and all kernel multiplicities.
-
-**Stop condition:** stop this subattempt if it produces only d omega_a/(m_d mu_min), an o(d) estimate without a relative comparison, a sign-definite-ground-state assumption, or the unproved assertion that zero strip integrals imply zero strips. Record `CENTERED_SOURCE_RELATIVE_GAP_UNRESOLVED`; do not increase feedback order or precision. A zero-consistent enclosure needs the exact kernel/strip-mean discriminator, not a smaller floating display. The algebraic controls in section 5 must continue to return equality.
-
-This directive is for source-paper proof construction and independent checking, not authorization for a new numerical campaign or for Lean, queue or state edits. It does not ask to refine any closed finite row.
-
-### 8.2 Frozen prediction scores
-
-| Prediction frozen in the request | Fate | Exact evidence and limit |
-|---|---|---|
-| P1, p=0.90: uniform boundary/full-response input survives at fixed a | CONFIRMED | (BND4)-(BND8) recheck domain, full-projector bounds, scaling and the complete feedback scale. [H] is a version-checked import, not a fresh proof of all its dependencies. The incomplete byte checks remain separately disclosed. |
-| P2, p=0.95: rates and o(d) error alone do not exclude equality | CONFIRMED | The required scaled control returns S=0, L1=-d/12. (BND26) additionally defeats the relative centered-smallness inference. |
-| P3, p=0.80: partial result with a new source relation or exact mechanism refutation | CONFIRMED | New (BND10)-(BND16) identify actual leading source rows; (BND18)-(BND23) give exact centered repair and its physical first failure. Neither gate in (BND27) is proved. |
-
-The scores concern this submitted paper derivation. Independent verification of the new lemmas is pending. No old numerical prediction is rescored and no probability is used as a premise or stopping rule.
-
-### 8.3 Closeout and verification handoff
-
-What became more explicit: the O(d) recovery now has a literal two-row leading source matrix and a proved o(d) error. A complete centered elimination identifies exactly which null modes would escape those two channels. What did not become smaller in logical strength: the all-test sign still needs an independent signed source comparison.
-
-What is refuted: only the abstract inference from an absolute o(d) centered response to relative smallness against M. What must not recur: scalarizing the whole universal inverse, turning zero endpoint values into zero strips, dropping the reflected prime or high-core feedback, or reading a nonpositive sufficient lower envelope as negative source energy.
-
-```yaml
+OPENS: []
 iteration:
   target: GOAL058_SIGNED_BOUNDARY_LOW_ENERGY_COMPARISON
   status: OPEN
   progress_class: REPRESENTATION_PROGRESS
   cognitive_operator_used: REPRESENTATION_SHIFT
-  failed_strategy: infer_a_strict_order_d_gap_from_absolute_boundary_and_feedback_scales
-  new_gap_name: centered_full_source_recovery_relative_to_actual_low_energies
-  invariant_learned: leading_rank_two_does_not_make_centered_feedback_relatively_negligible
-  forbidden_future_move: assume_strip_means_detect_the_full_contact_kernel
-  next_decisive_test: CENTERED_BOUNDARY_RECOVERY_RELATIVE_GAP
-  route_score: 3
+  failed_strategy: infer_a_strict_leading_gap_from_absolute_boundary_control
+  new_gap_name: signed_strip_mean_trace_energy_deficit
+  invariant_learned: source_mean_and_positive_variance_must_be_compared_to_the_same_full_low_energy_matrix
+  forbidden_future_move: discard_mean_zero_resolvent_mixing_or_assume_a_normalized_endpoint_trace
+  next_decisive_test: SIGNED_STRIP_MEAN_TRACE_ENERGY_DEFICIT
+  route_score: 4
 ```
 
-**Artifact handoff:** only the expected BOUNDARY verdict path is eligible for repository publication. This session made no repository write, commit or push. The accompanying external receipt records the final UTF-8 bytes, SHA-256, locally computed Git blob, LF count and final-LF flag. A later authorized publisher must preserve the actual branch parent and verify that only this new path changes; it must not overwrite either COLLAR version. Publication verifies bytes, not the new paper lemmas.
-
-The independent mathematical gate is to check (BND11)-(BND16) on the literal L18 source, check constant-profile operator-domain membership, and check (BND18)-(BND23) with the full centered domain and signs. Then audit the unpaid comparison separately. There is no Lean file, `lake` command or axiom-profile result from this batch. Standard Lean axioms are not claimed as evidence for a paper theorem.
+No KILL_ROUTE_FAMILY is issued. The scalar controls reject general inferences only; the oscillating profile rejects a boundary-limit inference only. They do not prove mathematical death of the unchanged source target. Publication certifies a durable paper record, not independent mathematical acceptance.
 
 ## 9. PROSHKA'S OWN LINE
 
-I chose averages because their definition does not require a boundary trace limit.  
-The new boundary estimate is strong enough to control them but does not determine their sign.  
-The singular kernel makes two constant output channels the leading part of the forcing.  
-That is a useful source fact, not a proof that only two physical modes matter.  
-The first nearby alternative was a shape derivative of the lowest eigenvalue.  
-It would require a domain-variation theorem and a treatment of multiple branches.  
-The second nearby alternative was direct use of normalized endpoint values.  
-Their existence is not a consequence of the bound we actually have.  
-I therefore kept the exact finite-width averages and avoided both assumptions.  
-The first move beyond this batch is to compare centered recovery with the actual low energies.  
-It would fail as a method if every estimate first replaced M by its smallest eigenvalue.  
-The second move is the signed two-mean comparison after the centered gate is proved.  
-It would fail as a proof if centered strictness were mistaken for strictness of the remaining two-by-two matrix.  
-The data I would ask for are exact identities for the centered profiles in (BND29), not more old eigenvalue digits.  
-They would have to preserve the prime and pole terms before any inverse is applied.  
-The surprising point is that bounded low modes alone control the oscillation of the rescaled response.  
-The stronger boundary estimate is needed to reduce the complete mean scale to the right order.  
-I distrust the inference from small physical boundary mass to a small inverse-weighted recovery.  
-I also distrust a rank-two leading term when the comparison energies have no relative floor.  
-The ordinary strip integrals expose that issue without pretending to be normal derivatives.  
-A mode can have zero strip integrals without vanishing on either strip.  
-The earlier collar injectivity theorem does not remove this distinction.  
-The useful result here is an explicit leading matrix and an exact account of the modes it might miss.  
-The unresolved result is whether the actual arithmetic source forbids those modes and the final equality.  
+I keep the signed source averages because they retain the arithmetic that the absolute bound discards.
+The two collar means are simple enough to write as actual integrals.
+They do not require an endpoint trace that nobody has proved.
+I did not choose a smooth-eigenbranch argument.
+The moving low projector can change rank at the cutoff, and our estimates do not need to prevent that.
+I also did not choose the worst core eigenvalue as the first bound.
+That substitution loses the coupling information before the source has a chance to contribute.
+The first move beyond this batch is a signed energy inequality for the two rows in N12.
+It must compare those rows with the same low modes and the same core energies.
+An argument that replaces the rows by their norms has not performed that move.
+The second possible move is a weak finite-displacement identity for the source equation.
+It must retain shifted arithmetic strips rather than pretend that the operator is local.
+An unproved boundary trace or differentiable eigenbasis would invalidate that move.
+The new negative response correction is real, but it is not free positivity.
+Its positive residual square has the opposite effect on the final lower margin.
+The exact identity makes those two effects impossible to confuse.
+The data I would ask for are paired source energy and signed strip-average records.
+Another table of small eigenvalues without the corresponding source profiles would not answer this question.
+The complete high-core response must stay attached to any such record.
+I was surprised that an integrable archimedean resolvent kernel gives the needed common modulus so directly.
+That argument uses positive jump geometry only where it is actually positive.
+It does not restore a positivity-preserving semigroup for the odd source operator.
+I distrust the phrase leading order when the proposed leading coefficient has not been identified.
+Here that coefficient is explicit, but it is still allowed to depend on the collar width.
+I also distrust treating a vanishing absolute error as a relative error near zero energy.
+The remaining obstacle is now a signed trace-energy comparison, not boundary regularity.
+The present file records exactly that distinction.
 
 ## 10. RESEARCH LOG
 
-### 10.1 Sources consulted and what was used
+### 10.1 Sources actually consulted
 
-| Source and exact locator | READ / RELAY | Use or limitation |
-|---|---|---|
-| BOUNDARY request, commit b574857250e2c0e136bb04cfddd906ea1b3aee8f, path and hashes in header | READ full; attached bytes rehashed | Task, canonical COLLAR correction, two new input appendices, exact source, scaled control and response schema. |
-| PROSHKA_SYSTEM_PROMPT_v2.md, rh_clean, blob eba04b799176c9e6a1d5f7fc4061280cfbf96ad4 | READ through GitHub, including continuation after initial truncation | Judge protocol, single verdict, source boundaries and no route promotion. |
-| [C] CONTACT at SOURCE_BASE; C1-C8, C19-C21 and stated first-contact prerequisites | READ relevant source sections; full bytes rehashed | Literal form, logarithmic domains and full cross operator. The already closed prerequisite campaign was not repeated. |
-| [L] canonical COLLAR at SOURCE_BASE, L4-L29, especially L18-L23 and L28-L29 | READ fresh pinned passages, overlapping retrieval after truncation | Actual arithmetic separation, universal collar operator, full source columns, exact high-core feedback and existing unpaid comparison. Fresh full-file SHA remains incomplete. |
-| [I] COLLAR_INDEPENDENT_CHECK at SOURCE_BASE, complete file, especially Additional source-boundary derivation and Uniform-boundary extension | READ full; exact staged bytes rehashed | Reconstructed the new L-infinity, common-domain, fixed-graph, scaling and response proofs. Acceptance receipts were not used as analytic axioms. |
-| [CI] CONTACT_INDEPENDENT_CHECK at SOURCE_BASE, fresh lines 1-32 | READ scope/provenance; mathematical acceptance is report evidence | Confirms the intended partial scope and preservation of C22 as unpaid. No fresh full-file SHA or repeat of its whole audit is claimed. |
-| [BP] docs/BATCH_PATTERNS.md at SOURCE_BASE | READ full; exact staged bytes rehashed | Proof-construction, concrete repair, own-line and research-log requirements. This is the explicitly requested file outside routeB_bus. |
-| [H] arXiv:2401.18033v2, exact HTML URL in section 0.2; Theorem 1.1, (1.2), (1.14)-(1.19), section 4 proof, Lemma A.3 and proof | READ primary rendered HTML | Version, hypotheses, boundary decay and weak scaling. Raw HTML bytes not matched to parent's hash. Hopf conclusion not imported; external dependency proofs not all repeated. |
-| Older uncommitted local COLLAR named in request | EXCLUDED, not substituted | Its different hash and L-label inventory are not the canonical source for this batch. |
-| GitHub create/write-tool discovery and Plugin_Management search | READ capability results | No usable write action returned; the installed integration listing was not treated as a successful commit. |
-| Read-only Git connectivity check and failed raw-file acquisition attempts | EXECUTED / UNAVAILABLE | DNS failure prevents CLI publication and raw-byte acquisition. These failures provide no mathematical evidence. |
-| Expected BOUNDARY verdict path on rh_clean | READ attempted; Not Found | No historical verdict was overwritten. This does not itself publish the local file. |
+The repository base and exact SHA/blob locators are in section 0.1. References to external literature are version-specific, not moving assertions about a latest version.
 
-### 10.2 Branches attempted or withheld
-
-| Branch | First failed assertion or exact reason not promoted |
+| Source | READ / RELAY and exact use |
 |---|---|
-| Absolute O(d) recovery plus o(d) feedback gives strictness | Packet control has exact S=0; no signed comparison with M is supplied. |
-| Order-d gap from the new rank-two leading matrix | (BND17) is not derived; (BND16) records cancellation along any hypothetical source null direction. |
-| Replace all collar profiles by a scalar inverse | Canonical L14 refutes relative operator-norm convergence. Only the restricted two-profile graph estimate (BND13) is used here. |
-| Discard centered profiles because their recovery is o(d) | (BND26) has centered recovery exactly equal to M and a negative half-energy success margin. |
-| Use two strip means as an automatically injective boundary measurement | The exact missing statement is (BND24); dimension and sign-changing branches are not discharged. |
-| Apply CONTACT collar injectivity to zero strip integrals | Zero integrals are not zero functions on the two strips; the premises do not match. |
-| Derive Hadamard coefficients from the boundary bound | No normalized trace limit or differentiable cluster transport was proved. The finite-width repair avoids these premises. |
-| Use positive full-source semigroup or drop the odd reflected prime | Neither is justified; the absolute perturbation domination is different, and (BND10)/(BND29) retain the atom. |
-| Declare exact mean/centered elimination a complete lower-sign proof | (BND25) leaves two genuine source signs. No generic Schur identity supplies them. |
+| Authoritative BOUNDARY request at b574857250e2c0e136bb04cfddd906ea1b3aee8f | READ full attached text and pinned connector content; both hashes and all counts recomputed; controls, scope and response schema |
+| PROSHKA_SYSTEM_PROMPT_v2.md at rh_clean, blob eba04b799176c9e6a1d5f7fc4061280cfbf96ad4 | READ in this continued task, refreshed response-format tail; no closed-file mutation or proof-by-publication |
+| C, CONTACT C1-C8/C19-C25 | READ applicable exact source/domain and coupling arguments; existing first-contact prerequisites retained, not rerun as a new batch |
+| L, canonical COLLAR L4-L29 | READ pinned arithmetic separation, universal L, full columns and high-core elimination; old alternate local labels rejected |
+| I, COLLAR independent audit | READ applicable scope and source limitations; acceptance receipts are provenance, not premises |
+| I, Additional source-boundary derivation and Parent verification supplement | READ full working derivation used here; absolute Dyson domination and exact log-Laplacian identification rechecked in section 1 |
+| I, Uniform-boundary extension and explicit full-response estimate | READ full; closed-graph constant, scaling, complete low space and o(d) feedback error rechecked in section 1 |
+| J, CONTACT independent audit and reflected-prime qualifications | READ applicable operator/source limitations and semigroup obstruction; no even-sector or sign theorem imported from it |
+| P, BATCH_PATTERNS.md | READ full outside routeB_bus because this exact request pins it; proof-attempt and research-log requirements; content independently rehashed |
+| H, arXiv:2401.18033v2, https://arxiv.org/html/2401.18033v2, Theorem 1.1, (1.2)/(1.15)-(1.19), section 4 proof, Lemma A.3 | READ exact primary HTML; matching bounded weak-solution boundary theorem and scaling only; no Hopf conclusion imported |
+| H's cited barrier and continuity dependencies | RELAY within the published proof; not all independently re-proved or separately fetched; explicitly retained import boundary |
+| Alternative local COLLAR, SHA41c760d4... | Bytes inspected only for identity/quarantine; NOT a mathematical source for canonical L4-L29 |
+| Exact raw-GitHub download attempts | FAILED acquisition, including DNS failure; not source evidence and not completion of the three missing shelf SHA checks |
+| Local SymPy algebra control | EXECUTED exact complex matrix identity and e1=1/12 arithmetic; no source numerical experiment |
+| GitHub publication/readback | Actual commit, parent, changed paths and hashes belong to the external delivery receipt; no fabricated write status is encoded here |
 
-### 10.3 Reusable intermediate identities and their limits
+No new paper theorem beyond the identified boundary import was used. The gamma-convolution, commutator, mean-response and compactness arguments are supplied in this verdict. No Lean proof, source eigensolve, interval certificate, old scalar rerun or PDF-byte verification was performed.
 
-(BND10) is a literal signed source expression for the averaged forcing, valid without trace limits.  
-(BND11) bounds its centered oscillation on the complete low space with no rank factor.  
-(BND12) distinguishes the constant-channel value 1 from the universal lower floor log2.  
-(BND13) gives restricted scalarization on two graph-controlled profiles while respecting the whole-operator obstruction.  
-(BND14)-(BND16) identify a rank-at-most-two leading source response and its conditional cancellation at contact.  
-(BND19) is an exact inverse decomposition, with every infinite centered and high-core contribution retained.  
-(BND23) identifies the first repaired kernel with vanishing ordinary integrals on both physical strips.  
-(BND25) separates centered strictness from the remaining two-mean sign.  
-(BND26) shows why even subleading centered recovery cannot be discarded relative to unknown low energies.  
-(BND29) is the exact new centered source functional for the single next test.  
+### 10.2 Branches attempted or rejected
 
-The exact symbolic checks verify finite algebra only. No numerical source energy, approximate eigenspace, source discretization, interval certificate, or Lean proof was run. The complete delivery receipt is external to these hashed verdict bytes. The present artifact remains NOT_COMMITTED / NOT_PUSHED.
+| Candidate | First failed or restrictive step |
+|---|---|
+| Absolute O(d) recovery plus o(d) feedback implies sign | It does not compare M with recovery; the scaled scalar equality control passes all those scales |
+| Boundary envelope supplies a normalized endpoint limit | The bounded-variation oscillating profile in section 6.3 satisfies the domain and envelope but has no such limit |
+| Leading order-d positive trace-energy gap | N21 has no source proof; positive-core Cauchy-Schwarz leaves the full inverse boundary energy unpaid |
+| Relative scalarization of the entire collar inverse | Canonical L14 gives exact relative norm error one; this false step is never used |
+| Physical mean-zero columns stay orthogonal after D inverse | The exact cross term is -c^(-1)Z*D^(-1)H; keeping it produces N16 |
+| Drop stable low modes and follow a convenient ground branch | No such projection is made; all low modes are retained so no projector-transport or simplicity hypothesis is needed |
+| Vanishing high response on every collar profile | Only its two constant-channel compression tends to zero by N18; the full high inverse remains |
+| A positive subleading boundary correction proves the comparison | The positive variance and the signed core deficit must both be controlled; N27 preserves equality |
+
+### 10.3 Reusable identities and exact limits
+
+N6-N9 prove an integrable positive archimedean resolvent and a common modulus for the actual full-source low eigenspaces.
+N12 gives two explicit signed source strip-average rows, including every prime power and both pole moments.
+N13 proves uniform o(sqrt(d)) response after subtracting those physical means.
+N16 is the exact mean/correction/positive-variance identity, with no false resolvent orthogonality.
+N17 bounds the entire variance for every coefficient vector.
+N18 shows constant-channel high-core recovery tends to zero without eigenbasis transport.
+N19 identifies the negative d/c correction but does not assert convergence of its d-dependent coefficient.
+N22 records the actual conditional contact balance rather than inventing a leading positive gap.
+N23 gives a complete sufficient lower envelope; its strict sign remains N24, not a proved supplier.
+
+The final outcome is a partial paper proof with a new signed source response calculation. The all-test lower sign remains unproved, and PX_RH_CLAIM remains NOT_MADE.
