@@ -1,0 +1,84 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-10-SATURATION
+BOUNDARY_ID: GOAL058_FULL_WINDOW_AFFINE_SATURATION_AFTER_DENSITY
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Recheck the fixed-window shell-density transfer and construct a source mechanism paying the cofinal affine T-squared energy budget.
+DATE: 2026-09-10
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SECOND_EXPRESSION
+SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_PROOF_CONSTRUCTION_AND_ADVERSARIAL_REVIEW
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SATURATION_2026-09-10.md
+BASE_TIP: 57df552a4a12c7e557d0be2938e05c09060aa2e2
+
+0. SCOPE AND PINNED SHELF
+SOURCE_BASE: 57df552a4a12c7e557d0be2938e05c09060aa2e2
+Continue the existing BRIDGE phase and chat; this is the next source-mechanism batch, not a new phase. Every shelf row is pinned to SOURCE_BASE. Verify its bytes before using it and report any check that cannot be completed. Previous paper arguments remain PAPER_DERIVATION_TO_RECHECK, not axioms. BRIDGE's stated Suzuki v1/HTML version limitations remain; no external paper version is silently upgraded. This batch imports no new external-paper theorem. The finite numbers below are accepted report enclosures from the independent check, not computations performed in this request.
+docs/routeB_bus/RADICAL_SHELL_DENSITY_2026-09-10.md | sha256 ddeefef881c753a217c70aa6633ed0512daa8a140896f243aa34b918a305c423 | blob 788e6a6e94861ee293a7e3591358d0957a0f1899
+docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_BRIDGE_2026-09-09.md | sha256 0d2117118585b58acc6f765f3692b5d536e3fb832039c29d9680e12ebbaf0550 | blob 24c934f63e3e28a448f3989014bbadca154a94bc
+docs/routeB_bus/BRIDGE_INDEPENDENT_CHECK_2026-09-10.md | sha256 222c166aa68d8fe3dc4fb7e2b074cd0b0a92a176f9e310c1276fd99b2e57ff82 | blob a912123c7d99fbc566e0a5aeba7053a457d68377
+docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SCHUR_2026-09-09.md | sha256 7717cb8106b543339909d734f0128f2e45d3d8df33bf384ff0c2476fa4e38cab | blob 84c1ae8791f5124cf676426cfc927898e052d61e
+docs/BATCH_PATTERNS.md | sha256 cded6dfd5950fd8dd230ad770ff0cf4a50a5bea9b2d5e91601b8eaa76120903b | blob cb63bab5fbff3d39bf63c0b0f081a2264e004f2b
+
+1. NEW INPUT AND EXACT OBJECTS
+Keep BRIDGE section 1 literally: the full signed form Q (all prime powers, both poles and every mixed contribution), E with squared norm W+D, exact theta source Phi, T(a)=||1_out Phi||_2^2/||Phi||_2^2, N_a^2=||1_in Phi||_2^2, p_a=1_in Phi/N_a, g_{2j}=(partial_x^2-1/4)partial_x^{2j}Phi and d_j=1_in(g_{2j}-alpha_j Phi), alpha_j=<1_in Phi,1_in g_{2j}>/N_a^2. Pairings are antilinear first. V_a is the E-closure of C_c^infinity(-a,a), and A_a={f in V_a^even:<p_a,f>=1}. Physical affine normalization is fixed.
+New checked paper supplier L1-L5: cut even derivatives are E-dense in V_a^even; their p-orthogonalized span is E-dense in V_a^even intersect p_a-perp. Consequently D_infinity(a)=N_a^2 inf_{f in A_a} Q[f], including -infinity. A full-space affine trial f_a with Q[f_a]<=b(a)>0 can be transferred to a finite EXACT original shell with energy<=2b(a): select E-error e such that 22e(2||f_a||_E+e)<=b(a). Since m(a) is unrestricted, no uniform approximation rate is required for this transfer. Recheck the proof; independent acceptance is not an axiom.
+
+2. Q1 — AUDIT THE NEW TRANSFER, THEN USE IT
+Check L1-L5 from the pinned note, including sharp-cut membership, endpoint jumps, the compact distribution annihilator, holomorphic convolution, Fourier uniqueness, complex projection convention and B2/B17 normalization. Either supply a precise first incorrect assertion and repair/counterexample, or confirm the exact fixed-window theorem and its existential transfer. Distinguish local window density from global radical density and from exterior density. Do not infer any energy rate from density alone.
+If it survives, this pays the source-family transfer that was missing in BRIDGE section 5.3. You may construct arbitrary full-space affine tests as an intermediate representation, provided the final witnesses return to the same original derivative shells by this proved transfer. The actual family, Q, normalization and target are unchanged; no degree-growth promise is requested. If Q1 fails, repair it or work directly in the original shells and label every conditional use.
+
+3. Q2 — CONSTRUCT THE MISSING SOURCE MECHANISM
+This is the main question; devote the main proof effort here, not to repackaging an infimum. Prove from independent source facts:
+exists K>0, mu>=0, a_0>=1, forall a>=a_0:
+[ inf_{f in A_a} Q[f] ]_+ <= K exp(mu a) T(a)^2, with [-infinity]_+=0.
+Try an actual construction of f_a in A_a, or a source-specific bound for the constrained full-window form/resolvent/reproducing kernel that entails it. State which mechanism you choose and why. A formal identity inf Q=1/<p,A^-1 p>, if you use it, needs the actual operator/domain and its positivity/invertibility hypotheses; those hypotheses are not granted and cannot be assumed cofinally. Treat indefinite and singular cases explicitly, including decoupled null directions. A uniform lower sign is a separate unpaid problem.
+Auxiliary exact variational reduction (paper derivation, recheck before use). Work in the complex Hilbert space H_a=V_a^even with the E inner product, antilinear first. B1 represents Q by a bounded self-adjoint operator B_a: Q(f,g)=<f,B_a g>_E, ||B_a||<=22. Let r_a be the Riesz representative of the normalization functional: <r_a,f>_E=<p_a,f>_2. Since <p_a,p_a>_2=1, r_a is nonzero.
+If Q[u]<0 for any u in H_a, then either <p_a,u>_2 !=0 and u/<p_a,u>_2 is an affine negative trial, or <p_a,u>_2=0 and Q[p_a+t u] tends to -infinity for real t. Thus [inf_{A_a}Q]_+=0 on every such window; this does not claim that the infimum is always -infinity.
+Otherwise B_a>=0. For epsilon>0 put Z_epsilon=<r_a,(B_a+epsilon Id)^(-1)r_a>_E>0. It increases as epsilon decreases, with limit Z_0 in (0,+infinity]. For any affine f, Cauchy-Schwarz for B_a+epsilon Id gives 1<=Z_epsilon(Q[f]+epsilon||f||_E^2). Conversely f_epsilon=(B_a+epsilon Id)^(-1)r_a/Z_epsilon is affine and Q[f_epsilon]=1/Z_epsilon-epsilon||(B_a+epsilon Id)^(-1)r_a||_E^2/Z_epsilon^2<=1/Z_epsilon. If Z_0 is finite, take epsilon down to0 in the first inequality for each fixed f; if Z_0 is infinite, Q>=0 gives the lower bound. Combining with the trials in the second proves inf_{A_a}Q=1/Z_0, with1/(+infinity)=0. No unbounded L2 form operator, invertibility of B_a, or attained minimizer is assumed.
+Consequently the source target reduces to a bound Z_0(a)>=1/[K exp(mu a)T(a)^2] on those sufficiently large windows where B_a>=0. This is only a convenient exact representation of the missing quantitative estimate; it does not prove that estimate. An exhaustive case split is legitimate only if every branch is proved and the hypotheses are discharged; no unresolved positive branch or RH hypothesis may be promoted to an unconditional result.
+A null direction u with <p_a,u>_2!=0 forces Z_0=+infinity and zero affine energy. A null direction orthogonal to p_a does not by itself force that divergence; nevertheless Z_0 can still be infinite through nonzero spectrum accumulating at0. Do not identify a decoupled nullspace with a finite inverse quadratic functional.
+
+An affirmative construction must retain the full source expression and prove its energy bound for every sufficiently large real a, with fixed constants K,mu,a_0; finite windows, qualitative density, small pivots or unrestricted degree do not pay the rate. An enlarged space is permitted only through Q1's exact transfer. Do not use an unknown ground eigenvector as an unproved supplier.
+If the first mechanism fails, name the first exact failed inequality and try one concrete repair before stopping. A partial answer must contain the actual proved lemmas plus the precise remaining source estimate; another name for BRIDGE's ATOM, or the assertion that it is hard/related to RH, is not the mathematical work requested. A source-compatible counterexample to a proposed mechanism is useful; a random finite matrix does not refute this theta target.
+
+4. Q3 — CLOSE THE CHOSEN CONSTRUCTION BACK INTO THE EXACT SHELLS
+For the actual candidate or operator construction from Q2, give its complete dependency chain through Q1 and BRIDGE B18 to finite coefficients in S_{m(a),a}, preserving <p,f>=1 and the unnormalized energy budget. State exactly which constants change (the transfer permits factor-two slack), and which estimates remain conditional. For every purported supplier list domain, quantifiers, normalization, input, output and proof locator. Do not claim a computable complexity or growth rate for m(a) unless proved.
+Provide a falsifier aimed at your new mechanism: identify an exact source term, sign, endpoint or operator branch whose removal would make a false proof pass. If Q2 remains partial, the next_decisive_test must target its new first failure, with a terminal observable/lemma and stopping condition. Do not send us back to improving the already resolved numerical rows or to proving the same atom with no new object.
+
+5. CLOSED TESTS AND DEAD ROUTES — DO NOT REPEAT
+BRIDGE's accepted finite TEST at a=7/10,m=6: Q[f_B]/T^2 is [2.268595464 +/-1.90e-10], and (107/100)T^2-Q[f_B] is [-7.89858308e-13 +/-4.40e-22]; the positive-reference minimizer fails this finite budget. The older frozen signed row has Q[f_y]/T^2 in [1.069376842,1.069376844] and meets this one-window budget. T^2=6.58986565570773977598e-13. These are accepted finite enclosures, not cofinal evidence, and require no rerun.
+BRIDGE proves Q[p_a]=(2a+O(1))T/(1-T); c=0 therefore fails every fixed cofinal T^2 budget. It does not refute optimized coefficients. The positive-reference ratio16420.4321288621, a small pivot without a residual coupling bound, finite invertibility and a generic positive Gram matrix are not proofs. Null direction=>strong affine budget and prime-only recovery were killed in SCHUR. Numerical q/lambda_1 above a=.70 and the old1.5 forecast remain unresolved; they are outside this batch.
+
+6. FROZEN PREDICTIONS
+P1 (p=0.95): L1-L5 survive source-specific audit, with no new cofinal degree-rate requirement for the unrestricted existential transfer.
+P2 (p=0.80): qualitative completeness alone does not provide the T^2 bound; a genuinely new energy estimate remains necessary. This is not permission to stop before attempting Q2.
+P3 (p=0.90): no lower-sign supplier follows from the new upper-trial construction alone.
+P4 (p=0.75): the main outcome remains PARTIAL_WITH_PRECISE_REMAINDER, with a new proved mechanism lemma or an exact refutation of its first attempted estimate. Prove this prediction wrong if possible; predictions are never premises or stopping rules.
+Score CONFIRMED/REFUTED/UNRESOLVED with exact evidence. No new numerical run or invented numerical forecast is required.
+
+7. PROOF, SOURCE AND WRITE BOUNDARIES
+Paper proof construction, not a bookkeeping-only request. Equivalence of a target with RH is not circularity; assuming the target or an equivalent is circularity. Prior verdicts and this new note are PAPER_DERIVATION_TO_RECHECK in your proof, despite prior independent checks. Preserve source conventions and all source/version limitations. No false source-reading claim and no numerical observation as a theorem. An abstract obstruction must state which theta identities it satisfies and which it lacks.
+No Lean, control, queue, registry, route status or RH-claim edit is authorized. Write only EXPECTED_VERDICT_PATH, commit and push it to the existing rh_clean branch if the available connector permits, preserving other changes. If write transport is unavailable, immediately provide the complete downloadable UTF-8 Markdown file with SHA256, bytes, lines and final-LF status, explicitly NOT_COMMITTED/NOT_PUSHED. Do not wait indefinitely for an unavailable Git transport. A chat summary alone is not the verdict.
+
+8. RESPONSE SCHEMA
+REQUEST_ID and BOUNDARY_ID; one TRY_*/KILL_*/RUN_* directive; RESULT for Q1,Q2,Q3 and OVERALL chosen from PROOF_CANDIDATE_COMPLETE / PARTIAL_WITH_PRECISE_REMAINDER / ATTEMPT_REFUTED_WITH_EXACT_COUNTEREXAMPLE; VERIFIER: PAPER; T_SQUARED_RATE_PROVED true/false; LOWER_SIGN_PROVED true/false; SOURCE_FAMILY_TRANSFER_VERIFIED true/false; PX_RH_CLAIM: NOT_MADE. Give full proofs, FIRST_INCORRECT_ASSERTION if any, FIRST_FAILURE per unfinished question, fixed witnesses/constants for any claimed cofinal theorem, actual source-reading/version/hash limitations, frozen-prediction scores, exactly one next_decisive_test, and the two mandatory sections below. Finish with exact verdict bytes/hash/blob and actual commit/push status. PROOF_CANDIDATE_COMPLETE requires the actual Q2 estimate and the complete Q3 transfer; it is not an RH claim.
+
+9. PROSHKA'S OWN LINE (free form, no codes, no scoring; 20–40 lines):
+   (a) why this route and not the two nearest alternatives you considered;
+   (b) the two moves you see beyond this batch, and what would kill each;
+   (c) what you would ask us for, if you could ask (data, a probe, a definition);
+   (d) what surprised you in the shelf, and what you distrust in it.
+
+10. RESEARCH LOG (append to the verdict; no scoring):
+   (a) every source consulted this batch: locator (arXiv/DOI/URL + theorem/equation), one line: what was taken or why rejected; mark READ vs RELAY;
+   (b) every branch you tried and abandoned, one line each: the candidate, the first inequality or fact that killed it;
+   (c) intermediate identities or computations that failed but might serve another question, with their exact statement.
