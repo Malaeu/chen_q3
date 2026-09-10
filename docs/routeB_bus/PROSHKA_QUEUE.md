@@ -14,6 +14,22 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-10-FLOW · FLOW: construct full-source location-dependent allocation with residual capacity · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_FLOW_2026-09-10.txt`
+- Boundary: `GOAL058_FULL_SOURCE_LOCATION_DEPENDENT_PATH_ALLOCATION`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: BOUNDARY D20-D26 at a05a3b6d: central2493region supplier rho<=.99994329975645; fixed tail overload1.02355455276. Four exact source pins, whole original source retained, negative/equality controls, sole checker CLEAN/CLEAN; same phase/chat.
+- Registered predictions: P1 .90 D20-D26 narrow scopes survive; P2 .80 coefficients cannot rescue the fixed product law; P3 .75 precise partial with a new source-allocation result
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `4695e21604af1fbe721cd6670707ff109c4352b9` / `15250` / `81` /
+  `86ef6fb572406321d0fd1c628501787b43bb76014b7d97f3c1f06ef3ebe9a25e` /
+  `6f03d3ad67ad598ed8b4b849dbf16d2556da93e2` / `yes`
+
+---
+
 ## REQ-2026-09-10-BOUNDARY · BOUNDARY: prove signed leading source response after uniform boundary control · ANSWERED
 
 - `STATUS: ANSWERED`
