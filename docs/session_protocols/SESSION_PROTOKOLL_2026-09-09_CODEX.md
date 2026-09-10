@@ -354,3 +354,47 @@ Wichtige Fakten: candidate uniform-average failure is central; tail repair alone
 Dateien: /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/BOUNDARY_INDEPENDENT_CHECK_2026-09-10.md; /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/Progress_Log.md; /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/Codex/GOAL.md; /tmp/q3_prime_detour_budget_obstruction.md; /tmp/q3_averaged_short_receiver_budget.md.
 
 2026-09-10 — Prime-path closeout COMPLETE: exact journal branch_2026-09-10_db5062b6ed4f/artifact047d69fccfca7a67fafde242d40a295cd8bdc12917ed61e4d1552441dcf3d27b verified in knowledge.db before ONE refresh. /tmp/q3_primepath_closeout.log EXIT0,total155.438s: refresh141.372s(builder36.480,dynamic61.856,fixed35.325),session_start13.580s. Update1.069s,0new/3updated/3292unchanged; embeddings32.475s. systemd q3-primepath-closeout-20260910 inactive/dead,ExecMainStatus0/MainPID0. ask.sh Prime detour uniform averaging receiving budgets returns the NEW journal,HITS/exit0; /tmp/q3_primepath_search.log. Report SHA0e121271b63686892b9b7d420c940c0481d10e47d29379e214bca1c4f7828f3d, old58967byte prefix and both BOUNDARY editions unchanged. Both agents DONE; agents-watch DELETED, no job/verdict watch. Plan has no fatal errors, production HOLD unchanged. Named publication follows; verify HEAD/origin equality on resume and do not repeat maintenance. Next bounded source test remains variable-density/unequal-coefficient necessary capacity on unchanged I/B, as stated in D16. RH remains open.
+
+## All central two-short allocations fail priced source capacity — 2026-09-10
+
+Kontext/Ausgangslage: previous goal turn PROGRESS,79aa0864 verified remote-equal/clean. Continued its explicit variable-density/unequal-coefficient capacity question; no repeated intake or old matrix campaign.
+
+Aufgabe: derive a necessary allocation-independent budget on unchanged I/R, then use it to decide the two-short class.
+
+Erledigt: final D17-D19 plus verbatim reproducible script in existing BOUNDARY report. Full positive continuous resource, not only prior B; arbitrary probability kernels mu_x,t and finite positive Ai. Hinge price(u-4/25)_+² yields demand>=5.08007e-5 versus capacity<=3.81799e-5; ratio[1.33056,1.73757]. Thus no such central two-short certificate at R>=1/8. Central prime steps, >=3steps and other signed proofs remain outside the result.
+
+Geprueft: sole reused terra/xhigh checker, CLEAN/CLEAN on final526518e1/code31d079e1/loga3fbf590. Parent independent graph/source/dual calculation; complete256-box160bit Arb run4.140s and checker independent4.095s reproduction. All Phi terms covered by positive analytic remainder, autocorrelation2outer/middle retained, b_+ crossing and tail<1.189e-142 paid. Earlier u² price was too weak at R=1/8; first128/256 boxes UNRESOLVED and512 refined it, but that accepted intermediate report is deliberately not duplicated. The final stronger proof alone is the published advance.
+
+Versendet: no new Proshka request/message, no phase/global increment. Named non-force publication follows one exact journal migration/hash check and ONE refresh/session_start. No live numerical job or agent; agents-watch deleted.
+
+Offen — naechste Schritte: THREE-edge necessary priced capacity before any density selection, same I/R and complete resources. A passing necessary bound is not a feasible receiving certificate. Do not optimize the now-dead two-short class, shrink I/R or report an isolated-interval estimate as RH.
+
+Wichtige Fakten: both original BOUNDARY hashes, earlier report prefix, phase5/global50 and production HOLD preserved. No negative Q, contact witness, source-sign/N24/RH proof or Lean admission. Goal remains active. Temporary script/log paths below are supplemented by the committed verbatim code.
+
+Dateien: /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/BOUNDARY_INDEPENDENT_CHECK_2026-09-10.md; /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/Progress_Log.md; /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/Codex/GOAL.md; /tmp/q3_two_short_class_obstruction.md; /tmp/q3_two_short_global_certificate.py; /tmp/q3_two_short_global_certificate.log.
+
+## Search input errors versus index freshness — 2026-09-10
+
+Kontext/Ausgangslage: user asks why search repeatedly becomes stale and costs time. Incremental repair72c59971 is already published; freshness hashes framed paths/bytes, not elapsed time. GOAL, ledger, CHAT_DIGESTS and session protocols are outside the curated corpus. The completed D17-D19 closeout must not be repeated.
+
+Erledigt: confirmed real query failure on the fresh index: raw journal_fts MATCH "Full positive short-step resource central two-edge allocation" raises "no such column: step"; old code swallowed it and whole-phrase LIKE missed the existing title because of intervening words. Shared _fts_rows preserves valid advanced syntax and retries malformed input once as safely quoted literal terms. All three search callers use it. Missing/corrupt index errors propagate. Parent then found the consumer-level defect missed by the first two helper reviews: Python exit1 is accepted by ask.sh as no-hits. main now returns2 for sqlite3.DatabaseError only in search/ask; true empty search remains1. ask.sh itself and database schema remain unchanged.
+
+Geprueft: nine scoped regression tests pass, including an end-to-end ask.sh run against a PRIVATE failed index yielding INCOMPLETE/code2. Production knowledge.db remains e010098b8d8bcd8ef8cd33460e980e0187d32723fbf65e9ee13efc553ddafcd5. Final candidate code211dcaa805421576d4b7f980596447df25e0147d2826d85d6a27be4c0e9d6758/tests4bde515dcf77bb539963d3d3ffc50cc1ac24807b28d254a6f08cadcfa7f8a988. Initial plan LOW embedded-quote test gap fixed; earlier CLEAN/CLEAN on helper-only candidate superseded. Final consumer-aware artifact passes1/2 both CLEAN on those unchanged hashes; Mode A complete. Reviewer independently reproduced the exact live hit and private-database error/empty distinction. No substantive finding remains.
+
+Full-file validation is NOT green: original40 tests gave33 passes,6 failures and1 error. All seven independently reproduced using exact unmodified HEAD79aa0864 test source; log /tmp/q3_search_baseline_tests.log. These are unrelated existing integration debt, not altered to pass the query repair:
+- test_all_tools_have_one_explicit_routing_classification: literal tool count59, current87.
+- test_codex_cartography_routes_only_to_repo_local_tools: historical path-prefix assumption.
+- test_cross_host_operator_card_inventory_matches_manifest: card inventory lacks later registered tools.
+- test_progress_log_parser_fails_on_incomplete_branch: outdated expected error wording.
+- test_routeb_declaration_catalog_reports_document_coverage_honestly: existing15 missing declaration rows (17 missing document rows).
+- test_session_entry_has_one_startup_front_door: old literal wording versus current manual-diagnostic entry.
+- test_routeb_conductor_names_control_v10_and_bare_front_door: removed .agents/skills/routeb-conductor/SKILL.md.
+The newer nine-test search class passes; those seven baseline issues remain explicit out-of-scope debt, not silently fixed via weakened tests. Eight pre-existing ruff findings remain on unchanged lines; no new lint. Existing log /tmp/q3_search_regression.log and baseline log retain exact failure evidence.
+
+Maintenance/search evidence: D17-D19 /tmp/q3_two_short_class_closeout.log EXIT0,total150.301s, refresh136.228s: collection update1.082s, embeddings29.832s, dynamic59.288s,fixed35.420s, builder33.843s; session_start13.563s. Live freshness PASS1.765s, corpusfa602ce35290f04ca2e11bc33f209106e5f2c00ff5dcdf20be7b212ac0aefd89. Original query now finds the exact new JOURNAL title (/tmp/q3_two_short_class_search_fixed.log). Fresh session_start after search repair also EXIT0 in13.434s (/tmp/q3_search_fixed_session_start.log). No second index refresh. Old72022byte report prefix, both original verdicts and full embedded certificate bytes verified, report884099489cd8de6df51cb37c754ddad4321ff301f614c2e06418cb59d0d53da8. Exact journal branch_2026-09-10_d345a686400b/hash208c3ff94f0183dd505117232cbd0c296353acde1a76a6efc95a4348c04adda4 already projected.
+
+Versendet: SEARCH commit53a4a87aad871b4f9495b1b72b661f6e2ed5d79e created from only the two reviewed code/test paths. The reviewed D17-D19 package and this checkpoint accompany the following named BOUNDARY publication. Completion requires HEAD/origin equality; inspect it on resume rather than repeating maintenance. No Proshka message or new numerical work.
+
+Offen — naechste Schritte: after verifying named publication, resume the existing THREE-edge priced capacity discriminator on unchanged I/R/resources, not a new goal. Do not retry two-short optimization, repeat D17-D19 certificates or index unchanged checkpoints. Lower sign/RH and production HOLD remain open.
+
+Dateien: /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/orchestrator/kb.py; /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/orchestrator/tests/test_tool_manifest_memory_wiring.py; /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/Codex/GOAL.md; /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/session_protocols/SESSION_PROTOKOLL_2026-09-09_CODEX.md.

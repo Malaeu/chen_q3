@@ -153,3 +153,13 @@ gaussian_space_review / source_transfer_bound · DONE · prior scratch component
 2026-09-10 · boundary_verdict_check · DONE; D14-D15 and new D16 each CLEAN/CLEAN, parent separate interval/rational/source checks. Both agents DONE; agents-watch deletion follows. No numerical job or verdict watch.
 
 2026-09-10 · reconciliation · both boundary agents DONE; agents-watch DELETED. Prime-path maintenance completed0, no live job or verdict watch.
+
+2026-09-10T21:14+02:00 · boundary_verdict_check · gpt-5.6-terra/xhigh · new D17-D18 variable two-short-path dual capacity and full-tail rectangle certificate, drafte3808f41/code79fa73a1 · RUNNING expected15min, read-only/no descendants. Two clean passes required; agents-watch20min required.
+
+2026-09-10T21:23+02:00 · boundary_verdict_check · weaker variable-band D17-D18 e3808f41/code79fa73a1 CLEAN/CLEAN. Same checker now RUNNING for stronger final D17-D19 two-short-class obstruction draft526518e1/code31d079e1/loga3fbf590, expected15min; read-only/no descendants. Only stronger final proof+code will be published; old weak-price candidate stays scratch. agents-watch remains active.
+
+2026-09-10 · boundary_verdict_check · DONE; strong final D17-D19/code526518e1/31d079e1 CLEAN/CLEAN, fresh numerical reproduction and parent separate dual/source check. Both agents DONE; agents-watch DELETED. All capacity units terminal; no live numerical job or verdict watch.
+
+2026-09-10T21:38+02:00 · boundary_bootstrap_check · gpt-5.6-terra/xhigh · bounded FTS malformed-query regression review; preserve valid syntax and report database failures; no indexing/math changes · RUNNING expected10min, read-only/no descendants. Two clean final passes; agents-watch20min required.
+
+2026-09-10 · boundary_bootstrap_check · DONE; final consumer-aware SEARCH211dcaa8/tests4bde515d CLEAN/CLEAN, nine regressions including ask.sh error-code contract. Parent caught and fixed the helper-only review blind spot; earlier passes explicitly superseded. Both agents DONE; agents-watch DELETED, all test/startup/maintenance units terminal. No Proshka or numerical watch.

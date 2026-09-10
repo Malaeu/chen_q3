@@ -612,3 +612,167 @@ The next bounded candidate must expose the actual receiving-budget constraints f
 One reused boundary_verdict_check (terra/xhigh, read-only/no descendants), two separate CLEAN final passes on each exact new draft: D14-D15 8c3e7328671621347b6a94d25e0ad70f0dde35a6cfb11842007a848034a757ea (7294bytes/67LF), D16 166f47ccc1ddc4462c769facf55f6ee4049936177a883c8b5e3968f7df8322c2 (4439bytes/50LF). FIRST_INCORRECT_ASSERTION: NONE_FOUND on all four passes. No unresolved findings or changes to mathematical body; only candidate statuses finalized on append.
 
 Parent separately derived the graph conductances and both receiving-coordinate Jacobians, repeated the160-bit full-positive-tail Arb bounds for D14-D15, and checked D16 by BOTH interval arithmetic and the exact rational lower bound67639/66500. For D15, compact smooth plateau values on four disjoint neighborhoods keep the prime energy zero on an open set; no coefficient regularity is being assumed. The canonical f0=Phi/A normalization cancels from ratios and scales the displayed Phi defect by A^(-2). Shelf logs /tmp/q3_prime_detour_shelf.log and /tmp/q3_averaged_jump_paths_shelf.log returned HITS, not absence. No source numerical campaign, negative Q, first-contact witness, N24/RH proof or Lean admission. Original BOUNDARY editions and prior report prefix preserved; phase5/global50 unchanged.
+
+
+# Every two-positive-continuous-step central allocation exceeds source capacity
+
+Status: ACCEPTED_AT_SCOPED_TWO_SHORT_CLASS_OBSTRUCTION. Baseline79aa0864b87c1ff999a4d8ba35758e9f6195c8cf. The negative interval remains I=[log(7/5),log(8/5)] and the central radius remains R=1/8, the minimum already used in D16. This result gives the paths ALL positive continuous lengths, not merely the previously chosen band B. It excludes the nonnegative path-certificate class defined below; it does not refute integrated GS domination or the original Q.
+
+## D17. Necessary priced capacity for arbitrary variable two-edge allocations
+
+Keep f=f0=Phi/A>0, c_t(x)=f(x)f(x+t), n(t)=-b(t)>0 on I, with the literal CAN/L3a-L3b conventions. The function v^3-v is strictly increasing for v>1. Its unique root v_star of v^3-v=1 gives tau=log(v_star) and P={u>0:b(u)>0}=(0,tau). Since (4/3)^3-4/3=28/27>1, tau<bar_beta=log(4/3)<min(I). Every two-step path with BOTH step lengths in P covering distance t in I must therefore move forwards at both steps: opposite orientations would give a displacement less than tau. It has nodes x,x+s,x+t with s in J_t=(t-tau,tau). J_t is nonempty because b(t/2)>0: exp(t/2)^3-exp(t/2)<=sqrt(8/5)*(3/5)<1.
+
+Let Omega_R={(x,t):t in I, |x+t/2|<=R}. At each (x,t), allow ANY measurable probability kernel mu_(x,t) on J_t, depending on x and t, without uniformity, symmetry or absolute continuity. A path certificate assigns finite positive A1,A2 to its two squared differences and requires, for every complex triple,
+
+K|r2-r0|^2 <= A1|r1-r0|^2+A2|r2-r1|^2, K=n(t)c_t(x).       (D17a)
+
+Ai already include the physical theta conductance: A1=a1*c_s(x), A2=a2*c_(t-s)(x+s). Exact complex series-resistance minimization gives 1/A1+1/A2<=1/K. Both Ai are positive because K>0 and the three nodes are distinct.
+
+Push the measures A1 dx dt mu and A2 dx dt mu to receiving edges (y,u) by T1=(x,s) and T2=(x+s,t-s), respectively. Let Gamma be their sum. The certificate requires the measure inequality
+
+Gamma <= Lambda, dLambda(y,u)=1_P(u)b(u)c_u(y)dy du.          (D17b)
+
+This grants the central paths the ENTIRE positive continuous resource on the whole line, with no deduction for other paths or physical tails. Central prime edges, paths with more than two steps, or proofs using other coupled signed cancellations are outside this class.
+
+For any nonnegative continuous price w with finite Lambda-integral, set w1=w(x,s), w2=w(x+s,t-s). Weighted Cauchy-Schwarz and D17a give
+
+w1*A1+w2*A2 >= K(sqrt(w1)+sqrt(w2))^2.                       (D17c)
+
+Indeed the square is at most (w1*A1+w2*A2)(1/A1+1/A2). Integrate with respect to dx dt mu and use D17b. This argument does not require a density or a change-of-variables Jacobian for mu: Gamma is defined by pushforward measures. All terms are nonnegative, so Tonelli applies; the chosen price below vanishes near u=0 and has finite priced capacity.
+
+## D18. A hinge price removes the freedom in both lengths and coefficients
+
+Choose h=4/25 and w(y,u)=(u-h)_+^2. For each path,
+
+sqrt(w1)+sqrt(w2)=(s-h)_++(t-s-h)_+>=t-2h>0.
+
+Here min(I)>1/3>8/25=2h follows from the positive logarithm series. The lower bound is attained by s=t/2 in J_t, though attainment is not needed for the obstruction. Thus every variable allocation in D17 must obey
+
+D_h(R)=int_I n(t)(t-2h)^2 int_(-R)^R f(t/2-z)f(t/2+z) dz dt
+ <= C_h=int_h^(bar_beta) b_+(u)(u-h)^2 int_R f(y)f(y+u)dy du.   (D18a)
+
+This right side is exactly the full priced positive continuous capacity: w=0 below h and b_+=0 for u>=tau<bar_beta. Normalization A^(-2) cancels from the ratio. Full-tail interval evaluation with unnormalized Phi weights gives
+
+| Quantity | Rigorous enclosure |
+|---|---|
+| C_h | [3.09277e-5,3.81799e-5] |
+| D_h(1/8) | [5.08007e-5,5.37390e-5] |
+| D_h(1/8)/C_h | [1.33056,1.73757] |
+
+In particular D_h(1/8)>C_h. Positivity of the demand integrand propagates the failure to every R>=1/8. No mu, unequal Ai, different choice of positive continuous lengths, or extra nonnegative tail charge can repair D17b for these two-edge central paths. The conclusion concerns their resource certificate, not the truth or falsity of an integrated Q-inequality.
+
+## D19. Reproducible complete interval and source-tail certificate
+
+The exact script /tmp/q3_two_short_global_certificate.py uses flint Arb at160 bits with256 subdivisions per coordinate. It integrates whole real interval rectangles, not sampled values; abs(x) encloses sign-crossing rectangles and no radius is discarded. The successful log /tmp/q3_two_short_global_certificate.log ends EXIT0, total4.140s. Its conservative enclosures above, rather than a diagnostic quadrature, establish the strict sign. The certificate code is preserved verbatim with the final review receipt.
+
+For U=exp(2|x|)>=1, evaluate the first three terms of the CAN series
+
+Phi(x)=U^(1/4) sum_(k>=1)(4pi^2 U^2 k^4-6pi U k^2)exp(-pi U k^2).
+
+All summands are positive. Add the symmetric ball of radius delta.upper(), where
+
+delta=4pi^2*4^4*exp(-16pi)/(1-16exp(-9pi)).                     (D19a)
+
+This bounds the entire omitted k>=4 tail uniformly, by D15b: U^(9/4)exp(-16pi U) decreases and 1-16exp(-9pi U) increases for U>=1. The interval enclosure remains valid although the true omitted tail is one-sided.
+
+Split the complete autocorrelation exactly as
+
+int_R Phi(y)Phi(y+u)dy=2 int_0^infty Phi(x)Phi(x+u)dx+int_0^u Phi(x)Phi(u-x)dx.       (D19b)
+
+Integrate the first part on[0,2] and substitute x=u*z in the middle part, retaining its Jacobian u. The remaining TWO outer tails are bounded using
+
+Phi(x)<=C exp(9x/2-pi exp(2x)), C=4pi^2/(1-16exp(-3pi)),
+U0=exp4,
+Tcorr=C^2 exp(9bar_beta/2) U0^(7/2)exp(-2pi U0)/(2pi-7/(2U0)).  (D19c)
+
+The source summand ratio is at most16exp(-3pi U); the integral bound follows from U=exp(2x) and log(U/U0)<=(U-U0)/U0. The factor2 in D19b cancels dx=dU/(2U). On[h,bar_beta], b_+<5: exp(h)>11/10, v^3-v>=231/1000 and sqrt(v)<=sqrt(4/3)<231/200 suffice. Hence the complete missing priced capacity is at most5(bar_beta-h)^3*Tcorr<1.189e-142, added as a symmetric radius. The code encloses b_+ as (b+abs(b))/2; the zero crossing at tau is not omitted or assumed smooth.
+
+## Decision and next mechanism
+
+This supersedes the prospective two-short length-weighted allocation suggested after the weaker price u^2: every such central two-short allocation now fails, even with variable density, unequal coefficients and all positive continuous lengths. Do not optimize that dead class or shrink I/R to evade this discriminator.
+
+A remaining path approach must use at least three positive continuous steps in the central region, include a prime step there, or leave this nonnegative per-path accounting framework. The next bounded discriminator is the corresponding three-edge priced capacity, derived before selecting a density; retain the same I and R=1/8 and the full source resources. A necessary bound passing is not a feasible allocation. No new Proshka request, source-sign result, first-contact witness, N24 proof or Lean admission follows from D17-D19.
+
+### D17-D19 independent review and reproducibility receipt
+
+One reused boundary_verdict_check (terra/xhigh, read-only/no descendants) returned two separate CLEAN passes on the final proof526518e154e79af269453ff9d997ae910598c0b4c4bc4315d17809196c21273f (7027bytes/78LF), code31d079e1393ce1b9d4a4f0a08697bb885f9a8535770d3570052fe5e491cf37a7 and parent loga3fbf59029d93640f020efcfb5ff36c557474e96e5db2e94f22b367a32f0d563. FIRST_INCORRECT_ASSERTION NONE_FOUND. Parent separately derived the dual measure inequality, checked the full positive-length support and source tails, and evaluated all key bounds; checker independently reran the256-rectangle certificate in4.095s and obtained the same enclosures. The proof status alone is finalized on append.
+
+The earlier u^2 price only rejected R>=1/4 and passed its necessary condition at R=1/8. That weaker scratch proof e3808f41/code79fa73a1 also had CLEAN/CLEAN, but its obsolete prospective two-short length-weight optimization and full intermediate report are deliberately not duplicated here: the final hinge-price proof excludes the entire relevant two-short central class at the ORIGINAL R=1/8, granting ALL positive continuous lengths. Its elementary graph reasoning is retained in the stronger D17. The original128/256 rectangle attempt was UNRESOLVED, and a512 refinement resolved the weaker inequality; none is misreported as the final certificate. Only the final full-positive hinge certificate below supplies D18's numerical sign.
+
+All previous report bytes and both original BOUNDARY verdicts are unchanged. Phase5/global50 and production HOLD unchanged; no source Q-sign/contact/N24/RH proof or Lean admission. Shelf /tmp/q3_variable_capacity_shelf.log returned HITS, not source absence. No new production tool or new Proshka request. Final certificate code follows verbatim so reproduction does not depend on retaining /tmp files.
+
+```python
+from flint import arb, ctx
+import time
+
+ctx.prec = 160
+started = time.monotonic()
+pi = arb.pi()
+alpha = arb(4) / 25
+beta = (arb(4) / 3).log()
+left = (arb(7) / 5).log()
+right = (arb(8) / 5).log()
+phi_tail = 4*pi*pi*256*(-16*pi).exp()/(1-16*(-9*pi).exp())
+
+
+def phi(x):
+    x = abs(x)
+    U = (2*x).exp()
+    s = sum(((4*pi*pi*U*U*n**4-6*pi*U*n*n)*(-pi*U*n*n).exp()
+             for n in (1, 2, 3)), arb(0))
+    return (x/2).exp()*s + arb(0, phi_tail.upper())
+
+
+def density(x):
+    u = x.exp()
+    return u.sqrt()*(1/(u*u*u-u)-1)
+
+
+def cells(a, b, n):
+    step = (b-a)/n
+    return [a+arb(2*i+1, 1)*step/2 for i in range(n)], step
+
+
+def capacity(n):
+    us, du = cells(alpha, beta, n)
+    xs, dx = cells(arb(0), arb(2), n)
+    zs, dz = cells(arb(0), arb(1), n)
+    phix = [phi(x) for x in xs]
+    result = arb(0)
+    for i, u in enumerate(us):
+        outer = sum((fx*phi(x+u) for x, fx in zip(xs, phix)), arb(0))*dx
+        middle = u*sum((phi(u*z)*phi(u*(1-z)) for z in zs), arb(0))*dz
+        positive_b = (density(u)+abs(density(u)))/2
+        result += positive_b*(u-alpha)**2*(2*outer+middle)*du
+        if i % max(1, n//4) == 0:
+            print('CAPACITY_RECTANGLES', n, i, flush=True)
+    # Full x>=2 remainder: Phi(x)<=C exp(9x/2-pi exp(2x)).
+    C = 4*pi*pi/(1-16*(-3*pi).exp())
+    U0 = arb(4).exp()
+    full_correlation_tail = C*C*(9*beta/2).exp()*U0**(arb(7)/2)*(-2*pi*U0).exp()/(2*pi-7/(2*U0))
+    tail = 5*(beta-alpha)**3*full_correlation_tail
+    print('FULL_CAPACITY_TAIL_BOUND', tail.upper(), flush=True)
+    return result + arb(0, tail.upper())
+
+
+def demand(n, radius):
+    ts, dt = cells(left, right, n)
+    zs, dz = cells(-radius, radius, n)
+    return sum((-density(t)*(t-2*alpha)**2*
+                sum((phi(t/2-z)*phi(t/2+z) for z in zs), arb(0))*dz*dt
+                for t in ts), arb(0))
+
+
+print('START all positive continuous short lengths, price(u-h)_+^2,h=4/25,R=1/8', flush=True)
+print('GLOBAL_PHI_TRUNCATION_TAIL', phi_tail.upper(), flush=True)
+n=256
+cap=capacity(n)
+dem=demand(n,arb(1)/8)
+ratio=dem/cap
+for name,val in [('ALL_POSITIVE_PRICED_CAPACITY',cap),('CENTRAL_PRICED_DEMAND',dem),('RATIO',ratio)]:
+    print(name,val,'LOWER',val.lower(),'UPPER',val.upper(),flush=True)
+assert cap>0 and ratio>1
+print('CERTIFIED every central two-positive-continuous-step allocation fails at R>=1/8',flush=True)
+print('TOTAL_SECONDS',time.monotonic()-started,flush=True)
+print('EXIT=0',flush=True)
+```
