@@ -36,6 +36,10 @@ CONFIG_NAMES = {"PROSHKA_ENTRYPOINT.md", "PROSHKA_MEMORY_PACK.md", "PROSHKA_POLI
                 "PROSHKA_SYSTEM_PROMPT_v2.md", "PROSHKA_CONTEXT_SINGLE_SCALE_2026_01_24.md"}
 IGNORED_PATH_PARTS = {".git", ".lake", ".qmd_cache", "_backups"}
 DATE_RE = re.compile(r"(20\d\d)-(\d\d)-(\d\d)")
+ITERATION_EVIDENCE_KINDS = (
+    "cognitive_operator_used", "new_gap_name", "invariant_learned",
+    "route_score", "next_decisive_test",
+)
 
 
 def norm(t, limit=1200):
@@ -269,6 +273,18 @@ def choose_component_id(
     raise RuntimeError(f"stable verdict component id collision: {name} -> {collision}")
 
 
+def check_component_identity(conn, name, known_ids, component_ids):
+    """Metadata refresh cannot silently reassign a source's attached records."""
+    previous = {kid for kid, source in known_ids.items()
+                if source and Path(source).name == name}
+    previous.update(kid for kid, ref in conn.execute(
+        "SELECT kill_id,ref FROM kill_evidence WHERE kind IN ('verdict','verdict_copy')"
+    ) if Path(ref).name == name)
+    if previous - set(component_ids):
+        conn.close()
+        raise ValueError(f"VERDICT_COMPONENT_CHANGE_REQUIRES_EXPLICIT_RECONCILIATION: {name}")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true")
@@ -276,20 +292,34 @@ def main() -> int:
                     help="печатать ВСЕ строки холостого прогона, без среза")
     ap.add_argument("--list-manual", action="store_true",
                     help="печатать все файлы с прозаическим убийством")
+    ap.add_argument("--source", action="append", default=[],
+                    help="refresh only this exact canonical repo-relative verdict path; repeatable")
     args = ap.parse_args()
 
     by_name = collect_files()
+    if args.source:
+        canonical = {str(paths[0].relative_to(REPO)): name for name, paths in by_name.items()}
+        unknown = set(args.source) - canonical.keys()
+        if unknown:
+            raise ValueError(f"VERDICT_SOURCE_NOT_CANONICAL: {sorted(unknown)}")
+        selected = {canonical[source] for source in args.source}
+        by_name = {name: paths for name, paths in by_name.items() if name in selected}
     conn = kb.connect()
     known_strategies = {r[0] for r in conn.execute(
         "SELECT ref FROM kill_evidence WHERE kind='yaml_name'")}
     known_ids = {r[0]: r[1] for r in conn.execute("SELECT id, source_file FROM kill")}
+    known_scopes = dict(conn.execute("SELECT id,scope_negation FROM kill WHERE scope_negation!=''"))
+    existing_ids = set(known_ids)
+    iteration_ids = set()
 
     rows, evidence, aliases = [], [], []
     live_names = set()
     manual = []   # prose-only KILL mentions: reported, never invented into rows
     ledger_rows = []   # W9 CLOSES/OPENS → capability (provides/requires)
-    known_ledger = {r[0] for r in conn.execute(
-        "SELECT theorem FROM capability WHERE lens='supplier_ledger'")}
+    owned_ledger = {tuple(row) for row in conn.execute(
+        "SELECT theorem,file FROM capability "
+        "WHERE lens='supplier_ledger' AND run_id='supplier_ledger_w9'"
+    )}
     n_iter = n_kill = n_reused = n_existing = 0
 
     for name, paths in sorted(by_name.items()):
@@ -303,10 +333,12 @@ def main() -> int:
         if co is not None:
             closes, opens_, lean_path, thm = co
             subject = thm or name
-            if subject not in known_ledger and (closes or opens_):
+            source = lean_path or rel_canon
+            owned = (subject, source) in owned_ledger
+            if closes or opens_ or owned:
                 ledger_rows.append({
                     "theorem": subject,
-                    "file": lean_path or rel_canon,
+                    "file": source,
                     "lens": "supplier_ledger",
                     "provides": "; ".join(closes) or "nothing_closed",
                     "requires": "; ".join(opens_),
@@ -317,6 +349,7 @@ def main() -> int:
         it = parse_iteration(text)
         verdict_kill, killed_subject = parse_verdict_kill(text)
         if not it and not verdict_kill:
+            check_component_identity(conn, name, known_ids, [])
             if re.search(r"\bKILL(ED)?\b|\bFATAL\b", text):
                 manual.append((name, rel_canon))
             continue
@@ -348,26 +381,26 @@ def main() -> int:
             else:
                 known_ids[kid] = rel_canon
                 n_iter += 1
-                reason = " | ".join(filter(None, [
-                    f"TARGET: {it.get('target')}" if it.get("target") else None,
-                    f"FAILED: {it.get('failed_strategy')}" if it.get("failed_strategy") else None,
-                    f"INVARIANT: {it.get('invariant_learned')}"
-                    if it.get("invariant_learned") else None,
-                ]))
-                rows.append({
-                    "id": kid, "unit_type": "strategy",
-                    "subject": it.get("failed_strategy") or it.get("target") or name,
-                    "status": "standing",
-                    "reason": norm(reason), "scope_negation": None, "rollback_target": None,
-                    "replacement": norm(it.get("next_decisive_test") or it.get("new_gap_name")),
-                    "forbidden_future_move": norm(it.get("forbidden_future_move")),
-                    "stop_code": it.get("progress_class") or it.get("status"),
-                    "track": "RouteB", "recorded_at": date, "source_file": rel_canon,
-                })
-                for key in ("cognitive_operator_used", "new_gap_name", "invariant_learned",
-                            "route_score", "next_decisive_test"):
-                    if it.get(key):
-                        evidence.append((kid, key, it[key][:500]))
+            iteration_ids.add(kid)
+            reason = " | ".join(filter(None, [
+                f"TARGET: {it.get('target')}" if it.get("target") else None,
+                f"FAILED: {it.get('failed_strategy')}" if it.get("failed_strategy") else None,
+                f"INVARIANT: {it.get('invariant_learned')}"
+                if it.get("invariant_learned") else None,
+            ]))
+            rows.append({
+                "id": kid, "unit_type": "strategy",
+                "subject": it.get("failed_strategy") or it.get("target") or name,
+                "status": "standing",
+                "reason": norm(reason), "scope_negation": None, "rollback_target": None,
+                "replacement": norm(it.get("next_decisive_test") or it.get("new_gap_name")),
+                "forbidden_future_move": norm(it.get("forbidden_future_move")),
+                "stop_code": it.get("progress_class") or it.get("status"),
+                "track": "RouteB", "recorded_at": date, "source_file": rel_canon,
+            })
+            for key in ITERATION_EVIDENCE_KINDS:
+                if it.get(key):
+                    evidence.append((kid, key, it[key][:500]))
             if it.get("new_gap_name"):
                 aliases.append((kid, it["new_gap_name"], f"gap named by verdict {name}"))
 
@@ -381,24 +414,25 @@ def main() -> int:
             else:
                 known_ids[kid] = rel_canon
                 n_kill += 1
-                headline = re.search(r"^#\s+(.+)$", text, re.M)
-                rows.append({
-                    "id": kid, "unit_type": "object" if killed_subject else "route",
-                    "subject": killed_subject or (norm(headline.group(1)) if headline else name),
-                    "status": "killed", "reason": f"verdict marker: {verdict_kill}",
-                    "scope_negation": (
-                        "Execution KILL of this exact verdict subject and source scope only; "
-                        "it does not imply MATHEMATICALLY_DEAD and does not close a weaker "
-                        "consumer-sufficient interface."
-                    ),
-                    "rollback_target": None, "replacement": None,
-                    "forbidden_future_move": None, "stop_code": verdict_kill,
-                    "track": "RouteB", "recorded_at": date, "source_file": rel_canon,
-                })
+            headline = re.search(r"^#\s+(.+)$", text, re.M)
+            rows.append({
+                "id": kid, "unit_type": "object" if killed_subject else "route",
+                "subject": killed_subject or (norm(headline.group(1)) if headline else name),
+                "status": "killed", "reason": f"verdict marker: {verdict_kill}",
+                "scope_negation": (
+                    "Execution KILL of this exact verdict subject and source scope only; "
+                    "it does not imply MATHEMATICALLY_DEAD and does not close a weaker "
+                    "consumer-sufficient interface."
+                ),
+                "rollback_target": None, "replacement": None,
+                "forbidden_future_move": None, "stop_code": verdict_kill,
+                "track": "RouteB", "recorded_at": date, "source_file": rel_canon,
+            })
 
         for kid in dict.fromkeys(component_ids):
             for p in paths:
                 evidence.append((kid, "verdict_copy", str(p.relative_to(REPO))))
+        check_component_identity(conn, name, known_ids, component_ids)
 
     print(f"distinct verdicts scanned : {len(by_name)}")
     print(f"  new strategy rows (M3)  : {n_iter}")
@@ -421,18 +455,54 @@ def main() -> int:
             print(f"   · [{r['unit_type']}] {r['id'][:52]:52s} {(r['subject'] or '')[:60]}")
         if limit < len(rows):
             print(f"   … и ещё {len(rows) - limit} строк не показано — повторить с --full")
+        conn.close()
         return 0
 
-    removed_evidence, removed_kills = reconcile_projection(conn, live_names)
+    removed_evidence, removed_kills = (
+        (0, 0) if args.source else reconcile_projection(conn, live_names)
+    )
     print(f"  removed derived/stale evidence: {removed_evidence}")
     print(f"  removed source-orphan rows    : {removed_kills}")
 
-    kb.insert_kills(conn, rows, evidence=evidence, aliases=aliases)
-    if ledger_rows:
-        conn.executemany(
-            "INSERT INTO capability (theorem, file, lens, provides, requires, strength, run_id) "
-            "VALUES (:theorem, :file, :lens, :provides, :requires, :strength, :run_id)",
-            ledger_rows)
+    # Rebuild only selected source-copy references, including vanished mirrors.
+    old_copies = [tuple(row) for row in conn.execute(
+        "SELECT kill_id,kind,ref FROM kill_evidence WHERE kind IN ('verdict','verdict_copy')"
+    ) if Path(row[2]).name in by_name]
+    conn.executemany(
+        "DELETE FROM kill_evidence WHERE kill_id=? AND kind=? AND ref=?", old_copies,
+    )
+
+    # UPDATE preserves rowid and fires the FTS update trigger. REPLACE would
+    # leave stale full-text terms and risks disturbing attached records.
+    for row in rows:
+        if row["id"] in known_scopes:
+            row["scope_negation"] = known_scopes[row["id"]]
+    columns = [column for column in kb.KILL_COLUMNS if column != "id"]
+    conn.executemany(
+        f"UPDATE kill SET {','.join(column + '=?' for column in columns)} WHERE id=?",
+        [tuple(row.get(column) for column in columns) + (row["id"],)
+         for row in rows if row["id"] in existing_ids],
+    )
+    conn.executemany(
+        "DELETE FROM kill_evidence WHERE kill_id=? AND kind=?",
+        [(kid, kind) for kid in iteration_ids for kind in ITERATION_EVIDENCE_KINDS],
+    )
+    conn.executemany(
+        "DELETE FROM kill_alias WHERE note=?",
+        [(f"gap named by verdict {name}",) for name in by_name],
+    )
+    kb.insert_kills(conn, [row for row in rows if row["id"] not in existing_ids],
+                    evidence=evidence, aliases=aliases)
+    for row in ledger_rows:
+        updated = conn.execute(
+            "UPDATE capability SET provides=:provides, requires=:requires, strength=:strength "
+            "WHERE theorem=:theorem AND file=:file AND lens=:lens AND run_id=:run_id", row,
+        )
+        if not updated.rowcount:
+            conn.execute(
+                "INSERT INTO capability (theorem,file,lens,provides,requires,strength,run_id) "
+                "VALUES (:theorem,:file,:lens,:provides,:requires,:strength,:run_id)", row,
+            )
     conn.executemany(
         "INSERT OR REPLACE INTO source_ledger (source_file, expected_rows, migrated_at, note) "
         "VALUES (?,?,?,?)",
@@ -442,9 +512,10 @@ def main() -> int:
         [(src, n, datetime.date.today().isoformat(), "wave 3 verdicts")
          for src, n in collections.Counter(r["source_file"] for r in rows).items()])
     conn.commit()
-    backfilled = kb.backfill_operational_scope_negations(conn)
+    backfilled = 0 if args.source else kb.backfill_operational_scope_negations(conn)
     print(f"backfilled legacy operational scope negations: {backfilled}")
     print("migrated into", kb.DB_PATH)
+    conn.close()
     return 0
 
 

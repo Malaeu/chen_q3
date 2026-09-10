@@ -1,3 +1,6 @@
+import contextlib
+import hashlib
+import io
 import sqlite3
 import sys
 import unittest
@@ -9,6 +12,230 @@ from orchestrator import kb, kb_migrate_verdicts
 
 
 class VerdictIdTests(unittest.TestCase):
+    def test_revised_verdict_refreshes_owned_rows_without_identity_churn(self) -> None:
+        production_db = kb_migrate_verdicts.kb.DB_PATH
+        production_hash = (
+            hashlib.sha256(production_db.read_bytes()).digest() if production_db.exists() else None
+        )
+        if production_hash is not None:
+            self.addCleanup(
+                lambda: self.assertEqual(
+                    hashlib.sha256(production_db.read_bytes()).digest(),
+                    production_hash,
+                )
+            )
+        with TemporaryDirectory() as td:
+            repo = Path(td)
+            folder = repo / "docs" / "routeB_bus" / "proshka"
+            folder.mkdir(parents=True)
+            verdict = folder / "PROSHKA_VERDICT_REVISION_2026-09-10.md"
+            old = (
+                "PRIMARY: KILL_OLD\nCLOSES: OLD_SUPPLIER\nOPENS: OLD_DEBT\n"
+                "iteration:\n  target: CONSUMER\n  failed_strategy: OWN_STRATEGY\n"
+                "  next_decisive_test: OLD_TARGET\n  invariant_learned: OLD_INVARIANT\n"
+                "  new_gap_name: OLD_GAP\n  cognitive_operator_used: MINIMAL_LEMMA\n"
+                "  route_score: 4\n"
+            )
+            verdict.write_text(old, encoding="utf-8")
+            mirror = repo / "historical" / "proshka" / verdict.name
+            mirror.parent.mkdir(parents=True)
+            mirror.write_text(old, encoding="utf-8")
+            neighbor = folder / "PROSHKA_VERDICT_NEIGHBOR_2026-09-10.md"
+            neighbor.write_text(
+                "iteration:\n  failed_strategy: NEIGHBOR_STRATEGY\n"
+                "  next_decisive_test: KEEP_NEIGHBOR\n",
+                encoding="utf-8",
+            )
+            (folder / "PROSHKA_VERDICT_SHARED_2026-09-10.md").write_text(
+                "iteration:\n  failed_strategy: SHARED_STRATEGY\n"
+                "  next_decisive_test: MUST_NOT_REPLACE_YAML\n",
+                encoding="utf-8",
+            )
+            db = repo / "knowledge.db"
+            conn = sqlite3.connect(db)
+            conn.executescript(kb.SCHEMA.read_text(encoding="utf-8"))
+            conn.executescript(
+                "CREATE TABLE IF NOT EXISTS capability(theorem TEXT,file TEXT,lens TEXT,"
+                "provides TEXT,"
+                "requires TEXT,strength TEXT,run_id TEXT);"
+                "CREATE TABLE IF NOT EXISTS source_ledger(source_file TEXT PRIMARY KEY,"
+                "expected_rows INTEGER,"
+                "migrated_at TEXT,note TEXT);"
+                "INSERT INTO kill(id,unit_type,subject,status,replacement,source_file) VALUES"
+                "('YAML_OWNER','strategy','SHARED_STRATEGY','standing','YAML_TARGET','strategies.yaml');"
+                "INSERT INTO kill_evidence VALUES('YAML_OWNER','yaml_name','SHARED_STRATEGY');"
+                "INSERT INTO kill_evidence VALUES('YAML_OWNER','route_score','KEEP_YAML');"
+            )
+            conn.execute(
+                "INSERT INTO capability VALUES(?,?,'supplier_ledger','KEEP_FOREIGN',"
+                "'','declared','other_writer')",
+                (verdict.name, str(verdict.relative_to(repo))),
+            )
+            conn.commit()
+            conn.close()
+            with (
+                patch.object(kb_migrate_verdicts.kb, "DB_PATH", db),
+                patch.object(kb_migrate_verdicts, "REPO", repo),
+                patch.object(sys, "argv", ["kb_migrate_verdicts.py"]),
+                contextlib.redirect_stdout(io.StringIO()),
+            ):
+                self.assertEqual(kb_migrate_verdicts.kb.DB_PATH, db)
+                self.assertNotEqual(db, production_db)
+                self.assertEqual(kb_migrate_verdicts.main(), 0)
+                self.assertEqual(kb_migrate_verdicts.main(), 0)
+                conn = sqlite3.connect(db)
+                kid = conn.execute("SELECT id FROM kill WHERE subject='OWN_STRATEGY'").fetchone()[0]
+                conn.execute("UPDATE kill SET scope_negation='CURATED_SCOPE' WHERE status='killed'")
+                conn.execute("INSERT INTO kill_alias VALUES(?,'MANUAL_ALIAS','manual')", (kid,))
+                conn.execute(
+                    "INSERT INTO kill(id,unit_type,subject,status,source_file) "
+                    "VALUES('ORPHAN','route','KEEP_ORPHAN','killed','missing/PROSHKA_ORPHAN.md')"
+                )
+                conn.execute(
+                    "INSERT INTO source_ledger VALUES('missing/PROSHKA_ORPHAN.md',1,'old',"
+                    "'wave 3 verdicts')"
+                )
+                before = conn.execute("SELECT id,rowid FROM kill ORDER BY id").fetchall()
+                conn.execute(
+                    "INSERT INTO kill_evidence VALUES(?,'manual_note','KEEP_NOTE')", (kid,)
+                )
+                conn.execute(
+                    "INSERT INTO link(from_type,from_id,to_type,to_id,relation) "
+                    "VALUES('kill',?,'dossier','KEEP_LINK','cites')",
+                    (kid,),
+                )
+                conn.commit()
+                conn.close()
+                revised = (
+                    old.replace("OLD_", "NEW_")
+                    .replace("KILL_OLD", "KILL_NEW")
+                    .replace("  route_score: 4\n", "")
+                )
+                verdict.write_text(revised, encoding="utf-8")
+                mirror.rename(mirror.with_name("retired.md"))
+                neighbor.write_text(neighbor.read_text().replace("KEEP_NEIGHBOR", "NOT_SELECTED"))
+                selected_args = [
+                    "kb_migrate_verdicts.py",
+                    "--source",
+                    str(verdict.relative_to(repo)),
+                ]
+                with patch.object(sys, "argv", selected_args):
+                    self.assertEqual(kb_migrate_verdicts.main(), 0)
+                    self.assertEqual(kb_migrate_verdicts.main(), 0)
+                    snapshot = db.read_bytes()
+                    verdict.write_text(revised.replace("OWN_STRATEGY", "SHARED_STRATEGY"))
+                    with self.assertRaisesRegex(ValueError, "COMPONENT_CHANGE"):
+                        kb_migrate_verdicts.main()
+                    self.assertEqual(db.read_bytes(), snapshot)
+                shared = folder / "PROSHKA_VERDICT_SHARED_2026-09-10.md"
+                shared.write_text(shared.read_text().replace("SHARED_STRATEGY", "NEW_OWN"))
+                with patch.object(
+                    sys, "argv", ["migrate", "--source", str(shared.relative_to(repo))]
+                ):
+                    with self.assertRaisesRegex(ValueError, "COMPONENT_CHANGE"):
+                        kb_migrate_verdicts.main()
+                    self.assertEqual(db.read_bytes(), snapshot)
+                with patch.object(sys, "argv", ["migrate", "--source", "not/canonical.md"]):
+                    with self.assertRaisesRegex(ValueError, "SOURCE_NOT_CANONICAL"):
+                        kb_migrate_verdicts.main()
+                    self.assertEqual(db.read_bytes(), snapshot)
+            conn = sqlite3.connect(db)
+            self.assertEqual(
+                conn.execute("SELECT id,rowid FROM kill ORDER BY id").fetchall(), before
+            )
+            self.assertEqual(
+                conn.execute(
+                    "SELECT ref FROM kill_evidence WHERE kill_id=? AND kind='verdict_copy'",
+                    (kid,),
+                ).fetchall(),
+                [(str(verdict.relative_to(repo)),)],
+            )
+            self.assertEqual(
+                conn.execute("SELECT replacement FROM kill WHERE id=?", (kid,)).fetchone(),
+                ("NEW_TARGET",),
+            )
+            self.assertEqual(
+                conn.execute("SELECT replacement FROM kill WHERE id='YAML_OWNER'").fetchone(),
+                ("YAML_TARGET",),
+            )
+            self.assertEqual(
+                conn.execute(
+                    "SELECT stop_code FROM kill WHERE scope_negation='CURATED_SCOPE'"
+                ).fetchone(),
+                ("KILL_NEW",),
+            )
+            self.assertEqual(
+                conn.execute("SELECT scope_negation FROM kill WHERE id='ORPHAN'").fetchone(),
+                (None,),
+            )
+            self.assertEqual(
+                conn.execute(
+                    "SELECT replacement FROM kill WHERE subject='NEIGHBOR_STRATEGY'"
+                ).fetchone(),
+                ("KEEP_NEIGHBOR",),
+            )
+            self.assertEqual(
+                conn.execute(
+                    "SELECT alias FROM kill_alias WHERE kill_id=? ORDER BY alias", (kid,)
+                ).fetchall(),
+                [("MANUAL_ALIAS",), ("NEW_GAP",)],
+            )
+            self.assertEqual(
+                conn.execute(
+                    "SELECT count(*) FROM kill_fts WHERE kill_fts MATCH 'OLD_TARGET'"
+                ).fetchone(),
+                (0,),
+            )
+            self.assertEqual(
+                conn.execute(
+                    "SELECT count(*) FROM kill_fts WHERE kill_fts MATCH 'NEW_TARGET'"
+                ).fetchone(),
+                (1,),
+            )
+            self.assertEqual(
+                conn.execute(
+                    "SELECT ref FROM kill_evidence WHERE kill_id=? AND kind='next_decisive_test'",
+                    (kid,),
+                ).fetchall(),
+                [("NEW_TARGET",)],
+            )
+            self.assertEqual(
+                conn.execute(
+                    "SELECT ref FROM kill_evidence WHERE kill_id=? AND kind='route_score'", (kid,)
+                ).fetchall(),
+                [],
+            )
+            self.assertEqual(
+                conn.execute(
+                    "SELECT ref FROM kill_evidence "
+                    "WHERE kill_id='YAML_OWNER' AND kind='route_score'"
+                ).fetchone(),
+                ("KEEP_YAML",),
+            )
+            self.assertEqual(
+                conn.execute(
+                    "SELECT ref FROM kill_evidence WHERE kill_id=? AND kind='manual_note'", (kid,)
+                ).fetchone(),
+                ("KEEP_NOTE",),
+            )
+            self.assertEqual(
+                conn.execute("SELECT to_id FROM link WHERE from_id=?", (kid,)).fetchone(),
+                ("KEEP_LINK",),
+            )
+            self.assertEqual(
+                conn.execute(
+                    "SELECT provides,requires FROM capability WHERE run_id='supplier_ledger_w9'"
+                ).fetchall(),
+                [("NEW_SUPPLIER", "NEW_DEBT")],
+            )
+            self.assertEqual(
+                conn.execute(
+                    "SELECT provides FROM capability WHERE run_id='other_writer'"
+                ).fetchall(),
+                [("KEEP_FOREIGN",)],
+            )
+            conn.close()
+
     def test_collect_files_excludes_machine_local_qmd_mirror(self) -> None:
         with TemporaryDirectory() as td:
             repo = Path(td)
