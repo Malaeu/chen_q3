@@ -14,19 +14,22 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-09-BRIDGE · BRIDGE: exact obstruction between positive tail construction and signed target · OPEN
+## REQ-2026-09-09-BRIDGE · BRIDGE: exact obstruction between positive tail construction and signed target · IN_REVIEW
 
-- `STATUS: OPEN`
+- `STATUS: IN_REVIEW`
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_BRIDGE_2026-09-09.txt`
 - Boundary: `GOAL058_RADICAL_TRIAL_SCHUR_T_SQUARED_SUPPLIER`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
-- Intake carried: SCHUR independently checked; finite S40 and reference comparison retained; owner standing authorization for delivery granted 2026-09-10 (docs/Codex/GOAL.md section 1.1); NOT YET SENT
+- Intake carried: SCHUR independently checked; finite S40 and reference comparison retained; owner standing authorization for delivery granted 2026-09-10 (docs/Codex/GOAL.md section 1.1); DELIVERED 2026-09-10
 - Registered predictions: P1-P4, frozen in section 6
 - Delivery mode: owner remote; GitHub locator
 - Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
   `b968f9443d5491778ab5e65c75c4ad7d64ba0b14` / `9774` / `83` /
   `cee5ce05956d744b2e3c3d4275c9c510990bb25d0745bb2ad349b5728219fce8` /
   `3fffbc70ca538cf86959b348890f4a4966b3515f` / `yes`
+
+- Delivery receipt (2026-09-10 08:33 +0200): exact .txt tile, unchanged binder delivery line and natural `Pro-Denkvorgang` observed; model 6 Pro. New project chat explicitly requested by owner, overriding the old same-chat transport handle for this dispatch: https://chatgpt.com/g/g-p-69ad65d9bcfc8191a6931ea6f2c78f13-rh-marz-2026/c/6aa24f25-0934-83eb-9151-3565fc4b3379
+- Watch: app heartbeat `bridge`, ACTIVE every 10 minutes; exact expected path `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_BRIDGE_2026-09-09.md`. Stop on receipt or completed no-push response; no calculations while waiting.
 
 ---
 
