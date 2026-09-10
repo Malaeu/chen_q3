@@ -1,0 +1,74 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-10-BOUNDARY
+BOUNDARY_ID: GOAL058_SIGNED_BOUNDARY_LOW_ENERGY_COMPARISON
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Prove the actual signed boundary-response comparison against low source energies using the new uniform boundary estimates and subleading full feedback error, or return a precise source failure after a concrete repair.
+DATE: 2026-09-10
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SECOND_EXPRESSION
+SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_PROOF_CONSTRUCTION_AND_ADVERSARIAL_REVIEW
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_BOUNDARY_2026-09-10.md
+BASE_TIP: a443424e10a119ded80aca6ddc664b23eaf854fb
+
+
+0. SCOPE AND PINNED SHELF
+SOURCE_BASE: a443424e10a119ded80aca6ddc664b23eaf854fb
+Continue the existing living BRIDGE/SATURATION/CONTACT/COLLAR chat, unchanged six-field phase. The authoritative COLLAR used here is commit d254ce1f1baae6329fc01f20cf2df52a482048ea, 58946bytes/786lines, SHA25603b9e2ed966dec1d776cf768970992731913f830a087faf0d8f51c35e9cfc51b, L0-L29. The browser currently displays a different uncommitted COLLAR summary naming SHA25641c760d4f4c3cae22b17415adf4734a55210d503f731f15d5497ae34dbc9062a,54755bytes/763lines; that is not the accepted pinned source below. Do not overwrite or silently substitute either version. Fetch the shelf before using labels. Previous derivations remain PAPER_DERIVATION_TO_RECHECK, not axioms.
+docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_CONTACT_2026-09-10.md | sha256 3475f7e1d9c11bf2ff259f1d10b967d0fdbbf7c1e68219fcd9c4ab3fcb5dd034 | blob dc30c38e5832859e3b84cebaddcf5779545bdd58
+docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_COLLAR_2026-09-10.md | sha256 03b9e2ed966dec1d776cf768970992731913f830a087faf0d8f51c35e9cfc51b | blob 77ba2a24022b5a8993316018db8919e0a15a24a7
+docs/routeB_bus/COLLAR_INDEPENDENT_CHECK_2026-09-10.md | sha256 08a0aedc5e2c32b26dcff0ba94e19432a9ce9770e9bf07cb5d051069359255e4 | blob fbac9618c618e23af4b43a1dea7ceddd092a5129
+docs/routeB_bus/CONTACT_INDEPENDENT_CHECK_2026-09-10.md | sha256 d3865192de724c857413385eb58b7baa8a0811b0457857c292260c046d451879 | blob af682a509363ddcf1f21bcb584b7a4e6f21c6c22
+docs/BATCH_PATTERNS.md | sha256 cded6dfd5950fd8dd230ad770ff0cf4a50a5bea9b2d5e91601b8eaa76120903b | blob cb63bab5fbff3d39bf63c0b0f081a2264e004f2b
+The two newest accepted appendices in COLLAR_INDEPENDENT_CHECK contain full local proofs, each independently checked twice, beyond the original verdict. Candidate wording in the preserved drafts is historical and superseded by their explicit acceptance receipts. The imported external theorem was read as arXiv2401.18033v2 HTML, https://arxiv.org/html/2401.18033v2, Theorem1.1, equations1.2/1.15-1.19, scaling Lemma A.3 and Theorem1.1 proof. Parent HTML fetch:1227643bytes, SHA2562f75d6d6cbb231facf481271b3f673bc2340e3cdde962730f86947e2b37209f3. This is not a pinned PDF and no PDF-byte identity is claimed; independently read exact v2 and disclose mismatches or unavailable dependencies. The published theorem's dependencies were not all re-proved locally. Verify all five repository shelf SHA/blob pairs and disclose incomplete checks.
+
+1. EXACT SOURCE AND CONSUMER
+Use CONTACT C1-C8 and canonical COLLAR L4-L29, antilinear-first and all complex tests. alpha(t)=exp(-t/2)/(1-exp(-2t)), w_n=Lambda(n)/sqrt(n), c_A=gamma+log(8pi)+pi/2. Keep every prime power, both pole terms and all mixed source products. The compact-window form domain is the logarithmic finite-energy zero-extension space, not H1_0. CONTACT proves the small positive anchor a0=exp(-20)/2, compactness, attained bottom, continuity and the first-contact reduction. Do not redo those prerequisites unless an actual error affects this batch.
+For hypothetical first contact a>a0, lambda_a=0 and lambda_b>0 for a0<=b<a. Let d=a-b satisfy COLLAR L4/L16 and d<a-a0. Keep P_b=1_(0,1](A_b), every low eigenvalue mu_j and its full multiplicity, M=diag(mu_j), the two-component source columns F from L18, R=c_d+L_2, E and full high-core T_H. D=R+E-T_H, Y=R^(-1/2)F, T=R^(-1/2)(E-T_H)R^(-1/2), ||T||<=q<=1/2. Exact S=M-F*D^(-1)F; G1=F*R^(-1)F-F*R^(-1)ER^(-1)F+F*R^(-1)T_HR^(-1)F. Complete lower envelope L1=M-G1-e1Y*Y, e1=q²/(1-q), satisfies L1<=S. L29 asks for L1>0 for some admissible d at every hypothetical first contact; that is a contradiction-proof target, not an assumed property of a supplied contact. Exact null reconstruction is L21. Our ultimate target is unconditional Q[f]>=0 for every complex compact smooth test, with no RH assumption.
+
+2. Q1 — NEW SOURCE INPUT, NARROW AUDIT AND GENUINE LEADING RESPONSE
+The accepted appendices prove A_b=.5L_Delta,b-log(2pi)I-K_b-prime_shifts+two_poles, k(t)=alpha(t)-1/(2t), K_b kernel k(|x-y|). Absolute convolution domination (not positivity of the full source semigroup) gives uniform Linfty bounds for every vector in P_b and its A_b image. Applying the external boundary theorem on a fixed interval through a closed-graph estimate and exact scaling gives one K_a with |u(x)|<=K_a||u||2/sqrt(|log(min(dist(x,partial I_b),.1))|), uniformly b in[a/2,a], including all complex low modes. K_a is finite but non-numerical. No inverse-eigenvalue factor or rank factor is used.
+The full signed L18 columns then obey F*F<=4d[K_a²(log(1/d)+1)+B_a²]I, with B_a explicitly defined from K_a and source constants in the appendix. Thus full recovery F*D^(-1)F=O_a(d), Y*Y=O_a(d), and the entire one-feedback uncertainty e1Y*Y=O_a(d/log²(1/d))=o_a(d). All constants are at fixed a; these facts do not establish a cofinal uniform constant or a positive leading gap.
+Recheck this new input only as used, then derive an ACTUAL source relation for the leading low-energy/response data. A possible entry is normalized endpoint response or a source shape-variation identity, but neither existence of normalized endpoint limits nor Hadamard differentiability is supplied by the bound. Prove any such regularity, branch transport and limits you use; retain multiple low branches and both parities. A d-dependent exact relation is acceptable when a limit is unavailable. Do not replace the actual signed relation by another absolute norm estimate. Name the first source coefficient or trace condition you cannot establish.
+
+3. Q2 — MAIN PROOF ATTEMPT: SIGNED COMPARISON, NOT ANOTHER SCALE BOUND
+Use Q1 and the new o(d) complete feedback uncertainty to construct a full-source proof excluding contact. Spend most effort on the actual signed difference M-G1 and its comparison with e1Y*Y for EVERY coefficient vector. A strictly positive gap of order d would suffice, but is not asserted necessary; an alternative proved comparison above the actual full error is allowed. Neither M/d nor recovery/d is known to converge. Do not assume a simple ground state, a smooth eigenbasis, positivity preservation, vanishing prime response, or orthogonality after applying the core resolvent. If you isolate the true near-zero cluster, prove the projector transport and complete eliminated remainder instead of dropping stable low modes.
+If the leading order cancels, identify the actual source identity causing cancellation and attempt one concrete representation repair without automatically increasing feedback order, degree, precision or window size. A re-labelled L29, Schur complement identity, unevaluated norm, or assertion that the target is equivalent to RH is not the requested work. Prove the target from independent source facts, or produce a new exact first failure and a proved lemma/refutation of the attempted source mechanism. A different full-source proof is allowed if it reaches the same consumer with every new premise paid.
+
+4. Q3 — WHOLE-SOURCE TRANSFER AND THE CHEAP DISCRIMINATOR
+Prove transfer of the actual Q2 construction through L20-L21 and CONTACT's first-contact reduction to all complex compact smooth tests. Finite-window conclusions cover only their stated range. Keep both poles, all prime powers, both parity sectors and the complete operator remainder. A nonpositive sufficient lower envelope only rejects that estimate; it does not exhibit a negative source energy or an exact source kernel.
+Before dispatch Codex checked this scaled algebraic discriminator: for 0<d<exp(-3), ell_d=log(1/d), take scalar core A=d, collar C=ell_d and J=t sqrt(d ell_d), with real |t|<=2. Then exact recovery=d t² and S=d(1-t²). It has precisely the new absolute scales while remaining positive for |t|<1, singular for t=1 and indefinite for |t|>1. Set R=C, E=T_H=0, Y²=d t², and conservative q=1/ell_d; the full error envelope is e1Y²=O(d/ell_d²), although the actual unretained response is zero. At d=exp(-4),t=1, e1=1/12 and L1=-exp(-4)/12 while exact S=0. These rates and a vanishing error must not make your argument reject equality. This is an algebraic control, not the arithmetic source or an exhibited contact. Identify the additional proved signed source property that distinguishes your proof.
+If incomplete, return exactly one next_decisive_test on the genuinely new first failure, with quantifiers, terminal observable and stop condition. No old scalar reruns or automatic error-order escalation.
+
+5. WHAT IS CLOSED OR FORBIDDEN TO RECYCLE
+CONTACT's collar injectivity and immediate negative enlargement do not exclude first contact. The odd reflected-prime pairing >88/225 only kills the positive-semigroup shortcut. Canonical COLLAR L14 kills relative scalarization; physical P*P=Omega I is not resolvent orthogonality. The now proved continuous zero boundary values do not mean the entire collar vanishes, and do not prove a limiting normalized trace. Our new O(d) recovery does not compare it to mu_min(b); at hypothetical contact the exact S identity yields only mu_min(b)<=O(d). Do not redo BRIDGE f_y/f_B, K36/K48, SATURATION upper-rate proofs or generic log-scale upper bounds. No numerical campaign is requested.
+
+6. FROZEN PREDICTIONS
+P1(p=.90): the new uniform boundary/full-response input survives narrow recheck without a substantive correction, at its stated fixed-a scope.
+P2(p=.95): the new rates and complete o(d) error alone do not exclude equality; Q2 must supply a genuinely signed source fact beyond the scaled control.
+P3(p=.80): the batch returns PARTIAL_WITH_PRECISE_REMAINDER with at least one new proved source relation or exact attempted-mechanism refutation. Try to refute this prediction by proving the full source mechanism. Predictions are not premises or stopping rules. Score each CONFIRMED/REFUTED/UNRESOLVED with locators; no unrequested numerical forecast.
+
+7. SOURCE AND WRITE BOUNDARIES
+Use exact pinned repository sources and exact external versions; mark READ versus RELAY, and disclose hash/derivation gaps. Write only EXPECTED_VERDICT_PATH as a complete UTF-8 Markdown verdict. No changes to old verdicts, Lean, queue, runtime, registry or RH claim. Commit and ordinary non-force push to existing rh_clean if supported, preserving concurrent changes. If unavailable, immediately return the full downloadable file and an external bytes/lines/final-LF/SHA256/blob receipt with explicit NOT_COMMITTED/NOT_PUSHED. A chat summary is not the verdict and the watcher must not await a push you cannot perform.
+
+8. RESPONSE SCHEMA
+REQUEST_ID and BOUNDARY_ID; one TRY_*/KILL_*/RUN_* directive; RESULT for Q1,Q2,Q3,OVERALL from PROOF_CANDIDATE_COMPLETE / PARTIAL_WITH_PRECISE_REMAINDER / ATTEMPT_REFUTED_WITH_EXACT_COUNTEREXAMPLE; VERIFIER:PAPER; UNIFORM_BOUNDARY_INPUT_VERIFIED true/false; SIGNED_SOURCE_COMPARISON_PROVED true/false; LOWER_SIGN_PROVED true/false; PX_RH_CLAIM:NOT_MADE. Full proofs, exact dependencies, FIRST_FAILURE for every incomplete question, provenance limitations, scores and one next_decisive_test. A complete candidate must establish the unconditional all-test conclusion, not merely an equivalent condition. External delivery receipt gives final hashes and real commit/push status; do not place a self-referential verdict hash inside the hashed verdict.
+
+9. PROSHKA'S OWN LINE (free form, no codes, no scoring; 20–40 lines):
+   (a) why this route and not the two nearest alternatives you considered;
+   (b) the two moves you see beyond this batch, and what would kill each;
+   (c) what you would ask us for, if you could ask (data, a probe, a definition);
+   (d) what surprised you in the shelf, and what you distrust in it.
+
+10. RESEARCH LOG (append to the verdict; no scoring):
+   (a) every source consulted this batch: locator (arXiv/DOI/URL + theorem/equation), one line: what was taken or why rejected; mark READ vs RELAY;
+   (b) every branch you tried and abandoned, one line each: the candidate, the first inequality or fact that killed it;
+   (c) intermediate identities or computations that failed but might serve another question, with their exact statement.
