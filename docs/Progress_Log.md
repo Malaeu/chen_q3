@@ -7136,3 +7136,14 @@ Request `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_CONTACT_2026-09-10.txt`
 **Следующий ход:** exact-path watch, then full verdict intake and one fresh terra/xhigh checker; independently verify decisive source argument, both parity sectors and whole operator remainder. No numerical campaign while waiting.
 **Адреса:** docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_COLLAR_2026-09-10.txt; request d01e056eef27d0eff657f082a8fb58457a6e5866; binding2395f63b68adfbbf541218fe8c371cce4e3318ac; conversation6aa24f25-0934-83eb-9151-3565fc4b3379; sent message d6e565d4-8a73-43da-91db-0ca9157fbe68 at14:40+02.
 **Чей вердикт и аргумент:** parent source discriminator and contact_verdict_check request audit; P1=.95 narrow obstruction survives, P2=.95 shrinking alone insufficient, P3=.80 precise partial with new proved lemma/refutation. C22/lower sign/RH remain open. Watch collar10min ACTIVE; no verdict received.
+
+## 2026-09-10 — COLLAR accepted: exact low response, strict source margin remains open
+
+**Развилка:** derive strict full-source contraction from the coupled collar response or replace it by a scalar inverse approximation.
+**Выбрали:** accept COLLAR at partial paper scope; retain L29 as the unpaid source comparison.
+**Почему:** L6 proves prime-channel isometry; L8 gives cross norm squared limit pi²/4+Omega. L10-L15 give a universal logarithmic collar model and controlled absolute inverse error, while relative scalarization has error exactly1. L18-L25 retain every low mode and high-core feedback.
+**Что отвергли и почему:** relative scalarization and physical-channel orthogonality through the core resolvent. A hypothetical contact null vector makes the L28 lower envelope nonpositive, but does not exhibit contact or refute L29. No automatic increase of feedback order or numerical precision.
+**Техника:** full fresh terra/xhigh audit, six shelf hash/blob checks, parent all-domain proof checks supplemented by exact Legendre degrees0-12 and scalar remainder identity. Exact report WORDING-only then CLEAN; L25/L28 verified, L26/L29 unproved. Remote PDF byte identity excluded as unverified; local hydrated source independently checked.
+**Следующий ход:** investigate actual L18 source boundary profiles and the full signed L23 comparison against M. A new request needs a new source inequality, not a renamed L29. No old numerical reruns.
+**Адреса:** docs/routeB_bus/COLLAR_INDEPENDENT_CHECK_2026-09-10.md; verdict d254ce1f1baae6329fc01f20cf2df52a482048ea; request d01e056eef27d0eff657f082a8fb58457a6e5866; intake6e1ef345; /tmp/q3_collar_parent_exact_checks.log.
+**Чей вердикт и аргумент:** Proshka COLLAR plus independent parent/checker audit: L0-L25/L27/L28 verified at stated hypotheses, L26/L29 UNPROVED. The paid operator remainder does not pay the source coefficients or strict comparison. Phase4/global49 recorded, exact replay0; both watches deleted. Lower sign/RH unproved, no Lean admission.

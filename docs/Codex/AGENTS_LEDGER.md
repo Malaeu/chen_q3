@@ -86,3 +86,8 @@ gaussian_space_review / source_transfer_bound · DONE · prior scratch component
 
 2026-09-10 14:40+02 · contact_verdict_check · DONE; COLLAR request two CLEAN passes plus two CLEAN PDF-provenance confirmations, exact697302c9. agents-watch DELETED.
 2026-09-10 14:40+02 · collar · heartbeat10min ACTIVE; expected verdict path PROSHKA_VERDICT_GOAL058_COLLAR_2026-09-10.md absent at baseline2395f63b; message d6e565d4 observed, same chat6aa24f25. No live agents/numerical jobs.
+
+2026-09-10 15:19+02 · collar · DELETED; exact verdict d254ce1f received, one expected path/ancestry/hash verified, FF merged.
+2026-09-10 15:19+02 · collar_verdict_check · gpt-5.6-terra/xhigh · fresh full L0-L29 independent COLLAR audit and decisive L29 budget · expected25min · result=display table/first incorrect assertion/reproducible check · RUNNING; no descendants.
+
+2026-09-10 · collar_verdict_check · DONE; full L0-L29 audit, exact-report WORDING-only then CLEAN. Partial PAPER accepted, L26/L29 unproved. No live agents; agents-watch deletion follows.

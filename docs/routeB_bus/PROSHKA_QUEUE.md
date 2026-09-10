@@ -14,9 +14,9 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-10-COLLAR · COLLAR: prove full source coupled contraction after reflected-prime obstruction · IN_REVIEW
+## REQ-2026-09-10-COLLAR · COLLAR: prove full source coupled contraction after reflected-prime obstruction · ANSWERED
 
-- `STATUS: IN_REVIEW`
+- `STATUS: ANSWERED`
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_COLLAR_2026-09-10.txt`
 - Boundary: `GOAL058_FULL_SOURCE_COUPLED_COLLAR_EQUALITY`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
@@ -30,6 +30,8 @@ safety confirmation остаётся внешней границей. Судья
 
 - Delivered 2026-09-10 14:40+02 in same living chat6aa24f25-0934-83eb-9151-3565fc4b3379; exact file tile, unchanged binder line, sent message d6e565d4-8a73-43da-91db-0ca9157fbe68 and natural Pro-Denkvorgang observed.
 - Watch collar ACTIVE /10min; expected docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_COLLAR_2026-09-10.md; baseline2395f63b68adfbbf541218fe8c371cce4e3318ac path absent. Delete on exact candidate or observed completed no-push response; then full hash/request/boundary/ancestry intake and one fresh terra/xhigh checker. No numerical job.
+
+- Accepted partial PAPER verdict d254ce1f1baae6329fc01f20cf2df52a482048ea; SHA25603b9e2ed966dec1d776cf768970992731913f830a087faf0d8f51c35e9cfc51b,58946bytes/786lines/finalLF. Full audit in COLLAR_INDEPENDENT_CHECK_2026-09-10.md. L0-L25/L27/L28 verified at stated hypotheses; L26/L29 unproved. P1-P3 confirmed as batch-outcome predictions. Historical watch above DELETED on receipt; agents-watch DELETED after audit. Phase4/global49 recorded with exact replay0. Next L29 source boundary-response comparison; no RH or Lean admission.
 
 ---
 

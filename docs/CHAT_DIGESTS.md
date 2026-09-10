@@ -1734,3 +1734,7 @@ CONTACT00bae614 and CONTACT_INDEPENDENT_CHECK_2026-09-10.md add a concrete compa
 
 ## 2026-09-10 14:40 — COLLAR delivered
 Same BRIDGE/SATURATION/CONTACT chat6aa24f25; sent message d6e565d4. Exact requestd01e056e/binding2395f63b, full-source C25 proof construction after checked reflected-prime obstruction. File and natural Pro-Denkvorgang observed. No verdict yet; collar watch active.
+
+## COLLAR partial paper intake — 2026-09-10
+
+Verdict d254ce1f and independent report6e1ef345 establish prime-channel isometry, the universal logarithmic collar model and a full low-source matrix remainder. Relative inverse scalarization fails in norm; the controlled absolute inverse approximation survives. L25/L28 are proved identities/bounds, L26/L29 strict source comparisons remain unpaid. No actual contact is exhibited by conditional null-vector algebra. Full fresh audit and parent checks accepted the partial scope; phase4/global49, watches deleted. Next investigate actual L18 boundary profiles in the signed L23 response, not another renamed strictness target. Lower sign/RH remain open.
