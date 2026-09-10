@@ -145,3 +145,11 @@ gaussian_space_review / source_transfer_bound · DONE · prior scratch component
 2026-09-10 · boundary_verdict_check · DONE; D10-D11 b5511c02 CLEAN/CLEAN and D12-D13 50a453a3 CLEAN/CLEAN. Preliminary false HIGH sign finding withdrawn after literal source verification; no formula change. agents-watch DELETED. No live agent, numerical job or verdict watch.
 
 2026-09-10T20:32+02:00 · reconciliation · both boundary agents DONE; agents-watch DELETED; extension/theta maintenance completed0, no job or verdict watch.
+
+2026-09-10T20:46+02:00 · boundary_verdict_check · gpt-5.6-terra/xhigh · bounded D14-D15 three-edge prime detour allocation audit, exact8c3e7328; read-only/no descendants · RUNNING expected15min; result=graph/Jacobian/Arb/scope audit, two clean final passes. agents-watch20min required.
+
+2026-09-10T20:53+02:00 · boundary_verdict_check · D14-D15 exact8c3e7328 ACCEPTED after CLEAN/CLEAN; same checker now RUNNING for new D16 exact166f47cc uniform averaged receiving density, expected10min/read-only/no descendants. agents-watch20min remains active; one live agent.
+
+2026-09-10 · boundary_verdict_check · DONE; D14-D15 and new D16 each CLEAN/CLEAN, parent separate interval/rational/source checks. Both agents DONE; agents-watch deletion follows. No numerical job or verdict watch.
+
+2026-09-10 · reconciliation · both boundary agents DONE; agents-watch DELETED. Prime-path maintenance completed0, no live job or verdict watch.

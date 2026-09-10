@@ -485,3 +485,130 @@ The next concrete candidate includes the actual prime jump p=log2. A two-edge de
 One reused boundary_verdict_check (terra/xhigh, read-only/no descendants), two separate CLEAN final passes on each exact draft: b5511c02 (6108bytes/50LF) and50a453a3 (4579bytes/46LF). D10-D11 primary hypotheses and distributional transfer checked directly; D12-D13 theta tail, complex minimizer and integrated shifted-bump lower bound independently verified. A preliminary HIGH sign finding was explicitly withdrawn by the checker after it recognized the rg context separator as a separator, not a mathematical minus; parent independently checked literal source line450. Correct source/draft signs were not changed. This is a corrected false finding, not a severity downgrade or owner override.
 
 Primary extension record https://arxiv.org/abs/2312.15689 checked separately:41443bytes/SHAad4b5acc34407cf971dc6ee360d02a79f9a37060b6614728f5cde55176c6083d, lists v1 and no withdrawal text. Parent independently integrated the exterior kernel and recomputed the exact2/9 exponent and source signs; scalar theta rows are diagnostic only. Only candidate statuses finalized on append. Prior report prefix, both immutable BOUNDARY verdicts and phase5/global50 preserved. No source-sign/N24/RH claim or Lean admission.
+
+
+# The fixed three-edge prime detour fails its central charge budget
+
+Status: ACCEPTED_AT_SCOPED_ALLOCATION_OBSTRUCTION. Baseline28cead4fdb91ed111f8f5dc8815f5d8482fa4028. Continue the exact D13 next discriminator, not a new source-sign request. Original canonical f0, GS and b come from PROSHKA_VERDICT_GOAL058_WEIL_POSITIVITY_AROUND_XI_PROOF_2026-09-05.md CAN/L3a-L3b. No matrix campaign, source eigenvalue, negative Q, first-contact witness, N24 or RH claim.
+
+## D14. Make the proposed integrated allocation explicit
+
+Write c_s(x)=f0(x)f0(x+s), E_r(s)=int c_s(x)|r(x+s)-r(x)|^2 dx. Let p=log2, I=[log(7/5),log(8/5)], length L=log(8/7), w2=log2/sqrt2. For t in I put q=(p-t)/2 and n(t)=-b(t)>0. On J={(p-t)/2:t in I}, b(q)>0: exp(q) lies in[sqrt(5/4),sqrt(10/7)], where u^3-u<1. The atoms at p have their exact positive weight w2.
+
+For x+t/2>=0 choose the ordered path
+
+x -> x-q -> x-2q -> x+t,
+
+with short edges q,q and final prime edge p. For x+t/2<0 use its reflection, with nodes x,x+p,x+p-q,x+t. The candidate pointwise proof would pay the negative edge n(t)c_t(x) by giving each short edge a_S(t) times its actual theta conductance and the prime edge a_P(t) times its actual conductance.
+
+After integration over the two x-regions, the two prime-edge terms are bounded by2E_r(p), and the four short-edge terms by4E_r(q). This bound uses translated subsets of the full nonnegative edge integrals, not disjointness of those subsets. Changing variables t=p-2q therefore gives the valid sufficient budget
+
+2 int_I a_P(t)dt <= w2,       8 a_S(p-2q) <= b(q) on J.       (D14a)
+
+The simplest allocation is a_P=w2/(2L), a_S(t)=b(q)/8. If its pointwise inequalities held, they would imply
+
+int_I n(t)E_r(t)dt <= w2 E_r(p)+int_J b(s)E_r(s)ds.           (D14b)
+
+This would pay only the negative interval I; other negative lengths remain in GS. We do not assert D14b. The first test below shows that this proposed proof of it fails.
+
+For positive conductances d1,d2,d3 on a three-edge chain, minimization over the two interior complex values gives effective conductance (1/d1+1/d2+1/d3)^(-1) between fixed endpoint values. This follows by weighted Cauchy-Schwarz, with equality when successive increments are proportional to1/dj. Hence the pointwise inequality is equivalent to rho<=1, where at the central point x=-t/2, using evenness and a=f0(t/2), b0=f0(p/2), c=f0(p-t/2),
+
+rho = n(t)[(a/b0+a^2/(b0*c))/a_S(t)+(a/c)/a_P(t)].          (D14c)
+
+At t=log(3/2), certified values are
+
+| Quantity | Rigorous enclosure |
+|---|---|
+| short contribution with a_S=b(q)/8 | [59.3703,59.3705] |
+| prime contribution with a_P=w2/(2L) | [2.7680,2.7682] |
+| total rho, required <=1 | [62.1384,62.1385] |
+
+Thus this fixed allocation fails at the symmetric midpoint. This is not a residual tail failure: for fixed t in I all three conductance ratios in D14c's general-x version tend to0 in the inward-detour physical tails, by D12a. For the right tail they are f0(x+t)/f0(x-q), f0(x)f0(x+t)/(f0(x-q)f0(x-2q)), and f0(x)/f0(x-2q); each has a strictly negative leading exponential coefficient. The left tail follows by reflection. A finite uniform path constant would not itself meet D14a.
+
+## D15. Even an arbitrarily strong prime edge cannot rescue these short charges
+
+Give BOTH short edges the larger coefficient b(q), eight times the allocation in D14a, and allow any nonnegative coefficient on the prime edge. At the same t and x, choose the four path values
+
+r0=0, r1=c/(a+c), r2=1, r3=1.
+
+The prime edge has exactly zero energy. The two short edges together have energy b(q)*a*b0*c/(a+c), whereas the negative long edge has energy n(t)*a^2. Their ratio is
+
+R_short=n(t)(a/b0+a^2/(b0*c))/b(q) in[7.4212,7.4214]>1.     (D15a)
+
+Therefore any pointwise allocation on THIS chain with each short coefficient <=b(q) fails for these values, independently of how much nonnegative weight is assigned to the prime edge. This even relaxes the actual shared short-edge budget. The same obstruction holds for the reflected chain by evenness. Arbitrary four values at these distinct points can be realized by a compact smooth function; continuity also prevents dismissing the finite-coefficient countercheck as an isolated measure-zero defect. This is a failed pointwise comparison, not a counterexample to the integrated D14b or to Q.
+
+The displayed defect below uses UNNORMALIZED Phi weights; normalized f0 weights multiply it by the positive constant A^(-2), preserving its sign. In these unnormalized weights the short energy is in[.0279100,.0279102], the negative-edge energy in[.2071290,.2071292], and the difference is certified directly in[-.179219,-.179218]. The interior value r1 lies in[.1011283,.1011284]. No sign of the full source form is inferred.
+
+## Interval certificate and source-tail budget
+
+For U>=1, write Phi(log(U)/2)=U^(1/4) sum_(n>=1) (4pi^2 U^2 n^4-6pi U n^2)exp(-pi U n^2). All summands are positive. At the three needed points U=3/2,2,8/3 evaluate n=1,2,3 with160-bit Arb arithmetic. The omitted positive tail is at most
+
+T(U)=4pi^2 U^(9/4)*4^4*exp(-16pi U)/(1-16exp(-9pi U)).       (D15b)
+
+Indeed for n>=4 the ratio of consecutive n^4 exp(-pi U n^2) terms is at most16exp(-9pi U)<1. This proves the full tail bound, independently of the finite precision. The respective bounds T(U) are below4.527e-29,1.052e-39,5.619e-54. Add a symmetric Arb ball of radius T(U).upper() to the partial sum; use only integer/rational inputs, pi/log/exp/sqrt ball operations, no float conversion or discarded radius. Compute D14c/D15a and the defect directly as balls before asserting the coarse rational enclosures above.
+
+The resulting Phi values are enclosed in[.60199701259277,.60199701259278], [.26696966294132,.26696966294134], [.06772819671800,.06772819671801]. These coarse printed intervals are descriptive; the narrower internal balls establish the stated cost and defect intervals. The normalization A cancels in rho and R_short. Parent diagnostic12-row table at three t values and four positions is not a certificate: /tmp/q3_prime_detour_allocation_diagnostic.log. Only the three full-tail ball values and exact graph algebra are used in this scoped proof.
+
+## Stop this allocation; do not turn a tiny-slice existence statement into the goal
+
+Changing only the prime/short budget split cannot repair D15 within its stated coefficient caps. Unequal step lengths, averaging over a band of positive lengths, or a different signed global comparison have not been excluded. A generic existence proof that some arbitrarily tiny negative slice can be absorbed would not pay the existing I or the complete negative kernel, so it is not a replacement for the current source budget.
+
+Next bounded source candidate: average the short-step lengths over fixed positive bands instead of forcing all charge through the deterministic q(t). Use direct two-short-step paths near the center and an inward prime detour in the tails, with the SAME actual theta weights. First derive the exact receiving density and multiplicity of each positive edge after both x- and t-integration, then test its coefficient budget on the unchanged interval I. Do not claim success by shrinking I after seeing a failure; do not send another Proshka request without a genuinely paid source inequality or a new precise mechanism obstruction.
+
+
+# Uniform averaging over a fixed positive band still exceeds its receiving budget
+
+Status: ACCEPTED_AT_SCOPED_RECEIVING_DENSITY_OBSTRUCTION. Baseline28cead4f. This is a separate next test after D14-D15, using the same original negative interval and canonical theta weights. It tests one explicit Cauchy-Schwarz allocation, not the integrated domination inequality itself. No source-sign, contact, N24 or RH claim.
+
+## D16. Derive the receiving density before testing it
+
+Keep I=[log(7/5),log(8/5)] and n(t)=-b(t)>0. Set alpha=log(11/10), beta=log(13/10), B=[alpha,beta]. All lengths in B have b(s)>0 since (13/10)^3-13/10=897/1000<1. For each t in I use
+
+J_t=B intersect [t-beta,t-alpha], ell_t=length(J_t)>0,
+mu_t(s)=1_(J_t)(s)/ell_t.
+
+Thus s and t-s are both positive lengths in B, mu_t is symmetric under s -> t-s, and its integral is1. Fix R>=1/8. On the central region |x+t/2|<=R use the path x -> x+s -> x+t. The physical tails may use other paths, but all charges in this tested certificate are nonnegative.
+
+With f=f0>0 and c_t(x)=f(x)f(x+t), the exact elementary comparison is
+
+c_t(x)|r(x+t)-r(x)|^2 <= C(x,t,s)[c_s(x)|r(x+s)-r(x)|^2+c_(t-s)(x+s)|r(x+t)-r(x+s)|^2],
+C(x,t,s)=[f(x)+f(x+t)]/f(x+s).                         (D16a)
+
+This is the optimal COMMON multiplier on the two original conductances (weighted Cauchy-Schwarz); an allocation with different multipliers is not being optimized here. Multiply by n(t)mu_t(s), restrict to the central region and integrate in x,s,t. Tonelli applies to nonnegative terms. The receiving density multiplying c_u(y)|r(y+u)-r(y)|^2 is exactly
+
+D_R(y,u)=int_I n(t)[mu_t(u)1_(|y+t/2|<=R)C(y,t,u)
+                  +mu_t(t-u)1_(|y+u-t/2|<=R)C(y-t+u,t,t-u)]dt.       (D16b)
+
+The first term uses y=x,u=s; the second uses y=x+s,u=t-s. Both changes have absolute Jacobian1. There is no extra factor2 from a t/2 substitution. This certificate would require D_R(y,u) plus all nonnegative tail-path charges to be at most b(u) almost everywhere on the receiving edges.
+
+Take u0=log(5/4) and y0=-u0/2. For every t in I, both u0 and t-u0 lie STRICTLY inside B: t-u0 ranges from log(28/25) to log(32/25). Moreover
+
+|y0+t/2|=|y0+u0-t/2|=(t-u0)/2 <= log(32/25)/2 <1/8.
+
+Hence both indicators are1. By symmetry of f and mu, D16b reduces exactly to
+
+D_R(-u0/2,u0)=2 int_I [n(t)/ell_t][1+f(t-u0/2)/f(u0/2)]dt.          (D16c)
+
+No theta quadrature is needed to disqualify this allocation. On I, n(t)>=n0=43sqrt(35)/840: both positive factors sqrt(v) and 1-1/(v^3-v) increase for v=exp(t)>=7/5. Also ell_t<=beta-alpha=log(13/11), and f>0. Therefore
+
+D_R(-u0/2,u0) >= B0=2n0 log(8/7)/log(13/11),
+b(u0)=19sqrt(5)/90,
+B0/b(u0) in[1.02561,1.02562]>1.                         (D16d)
+
+The strict sign can also be checked without interval software. The identity log((1+z)/(1-z))=2 sum_(k>=0) z^(2k+1)/(2k+1) gives log(8/7)>2/15 and log(13/11)<24/143. Since sqrt(7)>66/25,
+
+B0/b(u0)=[129sqrt(7)/266]log(8/7)/log(13/11)>67639/66500>1.         (D16e)
+
+Independent160-bit Arb evaluation with integer/rational inputs gives B0 in[.48414947,.48414948], b(u0) in[.47205879,.47205880] and B0-b(u0) in[.01209068,.01209069]. The exact logarithm/square-root expressions, bounded as balls without float conversion or discarded radii, establish these enclosures. Strict interior band membership and strict central-radius slack hold uniformly for t in the compact I. Thus D_R is continuous on a neighborhood of (y0,u0), and the violation persists on an open set of receiving edges, not merely at a single length/point.
+
+## Scope and next discriminator
+
+This rejects uniform mu_t on the specified band B, the common-conductance multiplier D16a and a central region of radius at least1/8. Adding nonnegative prime/tail charges cannot repair this receiving-budget violation. It does not refute a different averaging density, unequal multipliers, a different band/central partition, the integrated D14b, full signed GS domination or Q positivity.
+
+The next bounded candidate must expose the actual receiving-budget constraints for a variable allocation before attempting a large search: retain I, B and the exact theta conductances, allow unequal two-edge coefficients, and derive a necessary mass/capacity condition or a rigorous sufficient one. A failure of the common multiplier is not an obstruction to every flow. Do not shrink I after failure, report another unconstrained finite path constant, or send a renamed source-sign request.
+
+### D14-D16 independent review receipt
+
+One reused boundary_verdict_check (terra/xhigh, read-only/no descendants), two separate CLEAN final passes on each exact new draft: D14-D15 8c3e7328671621347b6a94d25e0ad70f0dde35a6cfb11842007a848034a757ea (7294bytes/67LF), D16 166f47ccc1ddc4462c769facf55f6ee4049936177a883c8b5e3968f7df8322c2 (4439bytes/50LF). FIRST_INCORRECT_ASSERTION: NONE_FOUND on all four passes. No unresolved findings or changes to mathematical body; only candidate statuses finalized on append.
+
+Parent separately derived the graph conductances and both receiving-coordinate Jacobians, repeated the160-bit full-positive-tail Arb bounds for D14-D15, and checked D16 by BOTH interval arithmetic and the exact rational lower bound67639/66500. For D15, compact smooth plateau values on four disjoint neighborhoods keep the prime energy zero on an open set; no coefficient regularity is being assumed. The canonical f0=Phi/A normalization cancels from ratios and scales the displayed Phi defect by A^(-2). Shelf logs /tmp/q3_prime_detour_shelf.log and /tmp/q3_averaged_jump_paths_shelf.log returned HITS, not absence. No source numerical campaign, negative Q, first-contact witness, N24/RH proof or Lean admission. Original BOUNDARY editions and prior report prefix preserved; phase5/global50 unchanged.
