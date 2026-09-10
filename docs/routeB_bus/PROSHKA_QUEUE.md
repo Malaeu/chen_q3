@@ -14,9 +14,9 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-09-BRIDGE · BRIDGE: exact obstruction between positive tail construction and signed target · IN_REVIEW
+## REQ-2026-09-09-BRIDGE · BRIDGE: exact obstruction between positive tail construction and signed target · ANSWERED
 
-- `STATUS: IN_REVIEW`
+- `STATUS: ANSWERED`
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_BRIDGE_2026-09-09.txt`
 - Boundary: `GOAL058_RADICAL_TRIAL_SCHUR_T_SQUARED_SUPPLIER`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
@@ -32,6 +32,10 @@ safety confirmation остаётся внешней границей. Судья
 - Watch: app heartbeat `bridge`, ACTIVE every 10 minutes; exact expected path `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_BRIDGE_2026-09-09.md`. Stop on receipt or completed no-push response; no calculations while waiting.
 
 ---
+
+- Verdict received: `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_BRIDGE_2026-09-09.md`, commit `4ae462655affe4e3511a765a54a04a6510338f72`; exact bytes/hash/ancestry checked. Watch `bridge` PAUSED.
+- Independent check: `docs/routeB_bus/BRIDGE_INDEPENDENT_CHECK_2026-09-10.md`, ACCEPTED at stated paper scope; ATOM unproved, no lower sign.
+- Next candidate from §9/§10: cumulative signed recovery B20–B21 requires a uniform estimate. Before another analytic dispatch, execute §8 reference-minimizer signed energy at a=.7,m=6,M=1.07 with total error. Finite TEST independently accepted ELSE_B: Q[f_B]/T²≈2.268595464, margin≈−7.89858308e−13, full data in out/bridge_reference_test_20260910.json. Do not repeat either resolved scalar.
 
 ## REQ-2026-09-09-SCHUR · Goal058 radical-cut degree law, tail determinant and arithmetic remainder · ANSWERED
 

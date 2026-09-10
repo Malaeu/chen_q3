@@ -7012,3 +7012,15 @@ classification `OPERATIONAL` (нет в словаре), `six-centre-assembly` �
 **Следующий ход:** S40 для этой строки остановлен; остаются кофинальные `S15`, `S26`, `S26b`, `S37`/`S38`, пригодный абсолютный тест `S39`, поставщик нижнего знака и иной отдельно замороженный кандидат с тем же полным бюджетом.
 **Адреса:** docs/routeB_bus/RADICAL_SHELL_STABILITY_2026-09-09.md; docs/routeB_bus/phase5_codex/six_centre/out/radical_shell_stability_20260909.json (`full_source_margin_followup`).
 **Чей вердикт и аргумент:** конечный интервальный отчёт даёт `ЕСЛИ_B` / `ELSE_B` для `M_diag = 1`, `nu_diag = 0`, не для семейства окон. `PX_RH_CLAIM: NOT_MADE`.
+
+## BRIDGE intake — 2026-09-10
+
+Paper verdict4ae46265 independently ACCEPTED; full audit: docs/routeB_bus/BRIDGE_INDEPENDENT_CHECK_2026-09-10.md. Exact decomposition beta=delta+A+L_B separates coefficient mismatch from positive-majorant slack. New fixed-source theorem Q[t_a]=(2a+O(1))||t_a||² excludes the uncorrected trial only. Arbitrary degree schedule reduces the signed target to unproved UNIFORM_FULL_SOURCE_RECOVERY_SATURATION (B17–B18); neither finite inversion nor abstract countermodels pays that atom. Lower sign and RH remain open.
+
+Chosen next branch: BRIDGE §8 finite reference-minimizer energy, preserving the exact derivative family and physical normalization. Background test completed exit0, provisional Q[f_B]/T²≈2.268595464, margin1.07T²−Q≈−7.89858308e−13. This suggests coefficient-choice loss matters at this window, but implementation review is pending; not yet an admitted numerical conclusion. No cofinal inference. Original artifacts remain unchanged; scratch /tmp/q3_bridge_reference_test/. No repeat of the resolved f_y scalar. Parent cross-check B23:16420.4321288621−1.069376844=16419.3627520181, not a rounding error.
+
+## BRIDGE finite TEST accepted — 2026-09-10
+
+The separate implementation review has converged: one MEDIUM provenance finding fixed by pre-run dependency hash assertions; two subsequent clean confirmations, no open findings. Post-patch background recheck exit0 reproduced the result. At a=7/10,m=6, the exact positive-reference minimizer has Q[f_B]/T²=[2.268595464 +/-1.90e-10], and (107/100)T²−Q[f_B]=[-7.89858308e-13 +/-4.40e-22]. The serialized margin itself passes tenfold error separation; parent independently recomputed subtraction and sign. Full E-transfer uncertainty is about1.16809846e-22. This is ACCEPTED_FINITE_ELSE_B only: the reference coefficient fails a finite budget met by the prior signed row, so coefficient choice matters. No positivity of C is inferred, and no cofinal target is settled.
+
+Reproduction and complete intervals: docs/routeB_bus/phase5_codex/six_centre/out/bridge_reference_test_20260910.json. Source container remains unchanged. Next justified analytic question: uniform accumulated full-source recovery B20–B21 in the exact derivative family; do not refine this already resolved scalar again. Lower sign remains a separate unpaid supplier.
