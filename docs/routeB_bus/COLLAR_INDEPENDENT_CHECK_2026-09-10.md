@@ -51,3 +51,60 @@ Next decisive task is L29 using the exact L18 columns and full signed L23 respon
 ## Review disposition
 
 One fresh collar_verdict_check terra/xhigh read the complete verdict and used source proofs. No substantive mathematical error found. Exact-report pass1: WORDING, separate verified L25/L28 from unproved L26/L29; fixed. Pass2: CLEAN. Remote-PDF byte identity remains unverified and excluded as source support; this provenance TOOL-FAILURE is not counted as a clean verification. Locally pinned source bytes were independently verified. No immutable verdict edits.
+
+
+---
+
+## Additional source-boundary derivation, independently accepted 2026-09-10
+
+Review receipt 1: boundary_bootstrap_check terra/xhigh, full read-only pass CLEAN, no findings. Review receipt 2: same checker, separate exact-draft confirmation CLEAN, no findings. Reviewed scratch SHA256 f96c0785fea67a5cf302f2c53d1327385578652575c2bde78bd4268a5c84911f; below only the status is mechanically changed. Candidate terminology in the working derivation is historical; acceptance covers its explicitly stated conclusions and leaves L29 open. Imported primary theorem: https://arxiv.org/html/2401.18033v2, equations1.2/1.15-1.19, Theorem1.1 and its proof; parent fetched HTML1227643bytes SHA2562f75d6d6cbb231facf481271b3f673bc2340e3cdde962730f86947e2b37209f3. External theorem dependencies were not all independently re-proved.
+
+# Candidate: bounded low eigenspaces and logarithmic boundary decay
+Status: ACCEPTED_AT_STATED_PAPER_SCOPE. Source CONTACT C1-C4, COLLAR L17-L18; arxiv2401.18033v2 Theorem1.1 and equation1.2 read directly. No lower-sign or RH claim.
+
+Fix a>0 and 0<b<=a. All functions are complex, zero extended from I_b=(-b,b); no parity restriction. Let D_b be the restriction of the positive translation Dirichlet form D in CONTACT C1. Let A_b=D_b+B_b be the full source operator. Only finitely many prime shifts with log n<2b matter.
+
+1. Bounded convolution majorant.
+For x,y in I_b the pole kernel is 2 cosh((x-y)/2), bounded by2cosh a. With s_a=sum_{2<=n<exp(2a)}w_n define the positive finite measure
+nu_a=c_A delta_0 + sum_{2<=n<exp(2a)}w_n(delta_log(n)+delta_-log(n)) + 2cosh(a) 1_{[-2a,2a]}(t)dt.
+Its mass is N_a=c_A+2s_a+8a cosh(a). For all f supported on I_b, |B_b f|<=nu_a*|f| on I_b. This bounds absolute values; it does not assert a positive full-source semigroup.
+
+2. Semigroup domination and smoothing.
+D on the whole line is the symmetric Levy Dirichlet form with symbol m of C4. Its positive contraction semigroup T(t) is convolution with a positive measure, Fourier multiplier exp(-t m). The supported Dirichlet form semigroup T_b(t) satisfies |T_b(t)f|<=T(t)|f| after zero extension (part-form domination). This step must be audited, including the ideal property of the supported form domain; it is not a claim of source-semigroup positivity.
+The bounded-perturbation Dyson series for exp(-t A_b) converges on L2. Dominate each B_b insertion by nu_a convolution, each T_b by T, and drop intermediate support restrictions. Convolution commutes with T. Thus term n is bounded by t^n/n! T(t)(nu_a^{*n}*|f|), yielding
+|exp(-t A_b)f| <= T(t)(sum_{n>=0}t^n nu_a^{*n}/n!)*|f|.
+For t>1, L17's bound m(xi)>=1/2 log(2|xi|) when |xi|>=1 and m>=0 imply
+||T(t)||_{2->infty} <= [(2+2^{1-t}/(t-1))/(2pi)]^{1/2}.
+Hence ||exp(-2 A_b)||_{2->infty} <= exp(2N_a) sqrt(5/(4pi)), uniformly0<b<=a.
+For the complete spectral projector P_b=1_(0,1](A_b), write u=exp(-2 A_b) exp(2 A_b)u. Then
+||u||infty <= C_a||u||2, C_a=exp(2(N_a+1))sqrt(5/(4pi)).
+Also A_bu belongs to the same spectral subspace and ||A_bu||infty<=C_a||u||2. All multiplicities and both parity sectors retained. Constants are huge; no relative energy estimate is claimed.
+
+3. Exact logarithmic-Laplacian identification.
+Set k(t)=alpha(t)-1/(2t) for t>0, bounded at0, and
+c0=2 integral_0^1 k(t)dt+2 integral_1^infty alpha(t)dt+gamma.
+The one-dimensional logarithmic Laplacian in source equation1.2 has c_1=1 and rho_1=-2gamma. On compact smooth tests in I_b,
+D_b=(1/2)L_Delta,b+c0 I-K_b,
+(K_bf)(x)=integral_{I_b}k(|x-y|)f(y)dy.
+Thus A_b=(1/2)L_Delta,b+V_b where
+V_b=(c0-c_A)I-K_b-prime_shifts+two_poles.
+K_b is bounded on both L2 and Linfty by2 integral_0^{2b}|k(t)|dt. All other terms are likewise bounded. Forms extend by the common logarithmic form domain; bounded form perturbations give identical operator domains for this fixed window. Check this domain matching explicitly.
+For u in ran(P_b), L_Delta,b u=2(A_bu-V_bu) has bounded RHS, and u is bounded by step2. Thus Theorem1.1 applies to real and imaginary parts on the interval: u has a continuous zero extension, and |u(x)|<=C_{u,b}/sqrt(|log(min(dist(x,partial I_b),.1))|).
+Theorem1.1's proof and transfer need independent audit. No uniform boundary constant in b is claimed here, only the uniform Linfty bound C_a above. Hopf Theorem1.4 is NOT used; its nonnegative-supersolution premise is unavailable for all low modes.
+
+4. Scope.
+If correct this pays previously unavailable boundedness and continuous zero boundary values for the actual full-source low eigenspaces, giving a concrete new input for L18. It does not prove L29: neither an absolute boundary estimate nor C_a compares the recovery to M as mu_j tends to0. No source eigenvalues, arithmetic cancellation, first-contact exclusion or RH proof follows. Do not dispatch another renamed L29 request; first assess the resulting exact signed L18 profiles and which constants depend on mu.
+
+## Parent verification supplement
+Part-form domination can be proved without importing a source positivity theorem. For lambda>0 and nonnegative supported f let v=(D+lambda)^(-1)f on the full line and u=(D_b+lambda)^(-1)f on I_b, zero extended. Both nonnegative by the positive jump Dirichlet form. w=(u-v)_+ belongs to the full form domain by its lattice property and vanishes outside I_b, hence is an allowed test for both equations. Subtracting gives E(u-v,w)+lambda<u-v,w>=0. The jump-form inequality E(h,h_+)>=E(h_+,h_+) gives w=0. Resolvent iteration and the exponential limit prove T_b(t)f<=T(t)f. This uses the supported finite-energy domain, whose lattice ideal property is explicit, and applies to complex input by |T_bf|<=T_b|f|.
+
+The common logarithmic form space follows directly from alpha(t) comparable to1/(2t) near0 and bounded L2 contributions away from0 for functions supported in I_b. The source H(Omega) norm is the truncated double integral at distance1 plus L2; finite energy is equivalent. The exact difference identity is first proved on smooth functions, then extends in the common form norm; bounded perturbation gives operator-domain equality.
+
+Primary proof of Theorem1.1 was read directly in the same HTML. It constructs the Kelvin-transformed barrier, uses the maximum principle on a suitably scaled small domain, and applies the comparison separately to u and -u. No positivity of u is required. Its barrier/continuity dependencies (Theorem2.1, Proposition1.3, Lemma3.5, Theorem4.1 and cited earlier continuity result) have not all been independently re-proved; this is an imported published theorem, with hypotheses checked here, not a new proof of that external theorem.
+
+Exact constant check: substitution z=exp(-2t) gives 2 integral_epsilon^infty alpha(t)dt=-log(2epsilon)-gamma-psi(1/4)+o(1). Thus c0=-log2-psi(1/4)=gamma+pi/2+2log2 and c0-c_A=-log(2pi). Independently checked with symbolic digamma special values; rho_1=-2gamma and heat constant squared5/(4pi) agree. The representation may therefore use V_b=-log(2pi)I-K_b-prime_shifts+two_poles.
+
+## Explicit full low-response bound (candidate consequence)
+For the actual COLLAR b=a-d,0<d<a, set k_a=sup_{0<=t<=2a}|alpha(t)-1/(2t)| (continuous at0). Define H_a(d)=.5log(2a/d)+2a k_a+s_a+4a cosh(a). For u=sum z_j phi_j in the complete low subspace, step2 gives ||u||infty<=C_a||z||2. In each L18 column combination, the arch integral is bounded by ||u||infty[.5log((2b+ds)/(ds))+2b k_a], which is <=||u||infty[.5log(2a/d)+.5log(1/s)+2a k_a]. Prime and full pole contributions are bounded by s_a||u||infty and4a cosh(a)||u||infty. Thus |(Fz)^plus/minus(s)|<=sqrt(d) C_a||z||2[H_a(d)+.5log(1/s)]. Integrating both sides and using integrals_0^1 log(1/s)=1, log(1/s)^2=2 gives
+F*F <= eta_a(d)I, eta_a(d)=2d C_a^2[H_a(d)^2+H_a(d)+.5]=O_a(d log^2(1/d)).
+This is a bound on the whole low projector, not r times a per-column estimate. Unlike ||J||, ||J*P_b|| tends to0 uniformly for this family. L19 then gives F*D^(-1)F<=eta_a(d)/(r_d-kappa_a,d) I=O_a(d log(1/d)). These absolute bounds do not compare with mu_min(b), so they do not prove L29 or justify a scalar-floor substitution as a final proof. The external boundary theorem is not needed for this weaker explicit bound. The potential improvement to O(d) recovery from log-boundary decay requires a uniform boundary constant and remains UNPROVED here.

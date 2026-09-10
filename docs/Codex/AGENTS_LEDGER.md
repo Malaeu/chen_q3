@@ -91,3 +91,11 @@ gaussian_space_review / source_transfer_bound · DONE · prior scratch component
 2026-09-10 15:19+02 · collar_verdict_check · gpt-5.6-terra/xhigh · fresh full L0-L29 independent COLLAR audit and decisive L29 budget · expected25min · result=display table/first incorrect assertion/reproducible check · RUNNING; no descendants.
 
 2026-09-10 · collar_verdict_check · DONE; full L0-L29 audit, exact-report WORDING-only then CLEAN. Partial PAPER accepted, L26/L29 unproved. No live agents; agents-watch deletion follows.
+
+2026-09-10 · collar_verdict_check · gpt-5.6-terra/xhigh · bounded new low-eigenspace Linfty/log-boundary bootstrap audit, not old verdict re-audit · expected15min · result=first incorrect assertion or two clean exact-draft passes · RUNNING; no descendants.
+
+2026-09-10 · collar_verdict_check · INTERRUPTED(runtime handle missing; list_agents returns only root; no bootstrap audit received). Candidate scratch retained; no clean pass counted.
+
+2026-09-10 · boundary_bootstrap_check · gpt-5.6-terra/xhigh · sole replacement audit of /tmp/q3_collar_boundary_bootstrap_draft.md after missing handle · expected15min · result=first incorrect assertion and exact-source audit · RUNNING; no descendants; agents-watch already ACTIVE.
+
+2026-09-10 · boundary_bootstrap_check · DONE; two CLEAN passes on f96c0785 scratch, accepted exact appendix with mechanical status change. No live agents; agents-watch deletion follows.

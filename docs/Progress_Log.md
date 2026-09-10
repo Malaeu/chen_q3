@@ -7147,3 +7147,14 @@ Request `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_CONTACT_2026-09-10.txt`
 **Следующий ход:** investigate actual L18 source boundary profiles and the full signed L23 comparison against M. A new request needs a new source inequality, not a renamed L29. No old numerical reruns.
 **Адреса:** docs/routeB_bus/COLLAR_INDEPENDENT_CHECK_2026-09-10.md; verdict d254ce1f1baae6329fc01f20cf2df52a482048ea; request d01e056eef27d0eff657f082a8fb58457a6e5866; intake6e1ef345; /tmp/q3_collar_parent_exact_checks.log.
 **Чей вердикт и аргумент:** Proshka COLLAR plus independent parent/checker audit: L0-L25/L27/L28 verified at stated hypotheses, L26/L29 UNPROVED. The paid operator remainder does not pay the source coefficients or strict comparison. Phase4/global49 recorded, exact replay0; both watches deleted. Lower sign/RH unproved, no Lean admission.
+
+## 2026-09-10 — Full low-source boundary bootstrap accepted, relative margin unpaid
+
+**Развилка:** obtain actual low-mode boundary information or reuse the nonvanishing whole-cross norm from COLLAR L8.
+**Выбрали:** exact logarithmic-Laplacian identification plus absolute semigroup domination for the complete low spectral projector.
+**Почему:** the positive jump form alone has a dominated heat kernel; every signed prime/pole perturbation has a finite convolution majorant. This proves uniform low-mode Linfty boundedness without positivity of the full source semigroup. The exact correction is -log(2pi), and primary Theorem1.1 then supplies continuous zero extension and logarithmic boundary decay.
+**Что отвергли и почему:** odd positive-semigroup assumption, an unproved boundary trace, a dimension factor from summing per-mode bounds, and inferring relative contraction from absolute decay. L29 remains unpaid.
+**Техника:** elementary positive-part resolvent proof, Dyson convolution series, m(xi)>=.5log(2|xi|), exact digamma constants, full L18 column combination before norms. Two CLEAN native terra/xhigh passes, parent independent constants/source-domain checks.
+**Следующий ход:** assess uniform boundary constants and actual signed recovery relative to the low energies; no repeated whole-cross estimate, automatic precision escalation or renamed L29 request.
+**Адреса:** docs/routeB_bus/COLLAR_INDEPENDENT_CHECK_2026-09-10.md additional source-boundary derivation; https://arxiv.org/html/2401.18033v2 Theorem1.1; reviewed scratch f96c0785fea67a5cf302f2c53d1327385578652575c2bde78bd4268a5c84911f.
+**Чей вердикт и аргумент:** parent derivation and boundary_bootstrap_check two CLEAN passes. F*F<=2d C_a²(H²+H+.5)I=O_a(d log²(1/d)), with no rank factor; inverse recovery O_a(d log(1/d)) is absolute only. All complex modes, multiplicities, primes and poles retained. No lower sign, first-contact exclusion, Lean admission or RH claim.

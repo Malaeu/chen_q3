@@ -1738,3 +1738,7 @@ Same BRIDGE/SATURATION/CONTACT chat6aa24f25; sent message d6e565d4. Exact reques
 ## COLLAR partial paper intake — 2026-09-10
 
 Verdict d254ce1f and independent report6e1ef345 establish prime-channel isometry, the universal logarithmic collar model and a full low-source matrix remainder. Relative inverse scalarization fails in norm; the controlled absolute inverse approximation survives. L25/L28 are proved identities/bounds, L26/L29 strict source comparisons remain unpaid. No actual contact is exhibited by conditional null-vector algebra. Full fresh audit and parent checks accepted the partial scope; phase4/global49, watches deleted. Next investigate actual L18 boundary profiles in the signed L23 response, not another renamed strictness target. Lower sign/RH remain open.
+
+## Full-source boundary bootstrap — 2026-09-10
+
+The accepted COLLAR appendix now supplies boundedness for the entire low spectral subspace via absolute convolution domination, not an odd positive-semigroup assumption. Exact A_b=.5L_Delta-log(2pi)I-K_b-prime_shifts+two_poles; the imported primary boundary theorem applies after bounded RHS/domain checks. Full low response has explicit rank-free O_a(d log²(1/d)) norm-square bound, despite nonvanishing whole-cross norm. Two clean independent passes. The relative comparison against mu_min(b), hence L29, is still unpaid; no new Proshka message or numerical campaign.
