@@ -1,0 +1,76 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-10-COLLAR
+BOUNDARY_ID: GOAL058_FULL_SOURCE_COUPLED_COLLAR_EQUALITY
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Construct a full-source proof of strict coupled collar contraction or exclusion of its norm-one equality system, retaining the reflected prime contribution and a precise remainder if incomplete.
+DATE: 2026-09-10
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SECOND_EXPRESSION
+SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_PROOF_CONSTRUCTION_AND_ADVERSARIAL_REVIEW
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_COLLAR_2026-09-10.md
+BASE_TIP: f7ce930f6baa3a6cb7a44f1a02657d8d6067f78a
+
+0. SCOPE AND PINNED SHELF
+SOURCE_BASE: f7ce930f6baa3a6cb7a44f1a02657d8d6067f78a
+Continue the existing BRIDGE/SATURATION/CONTACT chat and unchanged six-field phase. CONTACT was independently accepted at partial paper scope: C1-C21/C23-C25 hold at their stated hypotheses, while C22 and the all-test lower sign remain UNPROVED. The new independent-check appendix contains a separately checked source obstruction to an odd positivity-preserving semigroup. Its historical draft label is superseded by the acceptance receipt immediately above it. Prior proofs remain PAPER_DERIVATION_TO_RECHECK, not axioms. Verify the exact pinned bytes; disclose any incomplete hash or source verification.
+docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_CONTACT_2026-09-10.md | sha256 3475f7e1d9c11bf2ff259f1d10b967d0fdbbf7c1e68219fcd9c4ab3fcb5dd034 | blob dc30c38e5832859e3b84cebaddcf5779545bdd58
+docs/routeB_bus/CONTACT_INDEPENDENT_CHECK_2026-09-10.md | sha256 d3865192de724c857413385eb58b7baa8a0811b0457857c292260c046d451879 | blob af682a509363ddcf1f21bcb584b7a4e6f21c6c22
+docs/routeB_bus/FIRST_CONTACT_EXTERIOR_2026-09-10.md | sha256 b5869eb1573d7d25ce0c11ce08184643e71e6323cdbed6e4195e95c3b0de8560 | blob 34a54f8154efc3c072ac030485cb3320d231f507
+docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_WEIL_POSITIVITY_AROUND_XI_PROOF_2026-09-05.md | sha256 93db2de6357821918211a8033b2c8f34e7f684320a25e5623e1f24d33ed58fe9 | blob 136aceb3cbbabcdfa425459562b803b67c548b48
+docs/routeB_bus/litreview/pdfs/2606.09096.pdf | sha256 880d5e8f4e1a121569580bcc9f8a38ad8c7ecd8b907f067b73667a104a1d72ed | blob 6a52f0cbd9e5d43b0284fab64931037442079f9a
+docs/BATCH_PATTERNS.md | sha256 cded6dfd5950fd8dd230ad770ff0cf4a50a5bea9b2d5e91601b8eaa76120903b | blob cb63bab5fbff3d39bf63c0b0f081a2264e004f2b
+The PDF shelf row hashes the Git LFS pointer bytes, not the hydrated PDF. The actual PDF object is 501231 bytes, SHA256 06e2abeb778d9414f98589d8654ecf06a7f6d9d0b9914961e88365a6b48b91b2 (the pointer oid), independently verified locally. Verify both layers and disclose if only the pointer is available. The pinned PDF is arXiv2606.09096v1, June8 header/June9 internal date,30pages. Cite this exact version when used (Theorem1.1/Corollary1.2,p4; Theorem1.3,p5; domain/continuity proofs pp13-18). CONTACT's later live HTML was not independently rechecked in intake and is excluded from accepted source support. Do not identify it with this PDF.
+
+1. FIXED SOURCE AND ACTUAL MISSING STATEMENT
+Use literal CONTACT C1-C8/C19-C25, antilinear-first. Q(v)=integral_0^infinity alpha(t)||v(.+t)-v||_2^2 dt-cA||v||_2^2+2Re(Mplus(v)conjugate(Mminus(v)))-2sum_(n>=2)w_n Re integral conjugate(v(x))v(x+log n)dx; alpha(t)=exp(-t/2)/(1-exp(-2t)), w_n=Lambda(n)/sqrt(n), cA=gamma+log(8pi)+pi/2, Mplus/minus(v)=integral exp(+/-x/2)v(x)dx. Preserve all prime powers, both poles and all mixed terms. V_a is the source compact-window form domain with zero extension, not H1_0; A_a is its self-adjoint semibounded operator and lambda_a its attained bottom. CONTACT's proved positive anchor is a0=exp(-20)/2; continuity and monotonicity give the first-contact reduction. No new numerical anchor is required.
+For a hypothetical first contact a>a0, lambda_a=0 and lambda_c>0 for all c in[a0,a). For b in(a0,a) close enough to a, C_(a,b) is the positive collar operator with the full-source floor eta(a,b)>0 from C20, and A_b>0. J_(a,b) is EXACTLY C19, including archimedean, prime and two-pole cross terms. K=A_b^(-1/2)J C_(a,b)^(-1/2) is compact. The target is to derive, from the actual source, Delta(a,b)=1-||K||^2>0 for at least one admissible b at each hypothetical first contact, or directly exclude a nonzero solution A_b u=Jw, C_(a,b)w=J* u. Such a solution gives the actual null vector w-u. C21 already proves that at real contact every admissible split has norm1: the desired strictness must contradict existence of contact, not be assumed from its classification.
+
+2. Q1 — THE NEW SOURCE OBSTRUCTION, NARROW RECHECK ONLY
+Recheck the independent-check appendix directly from C1-C8. Under the unitary odd lift (Ou)(x)=sgn(x)u(|x|)/sqrt2, disjoint real nonnegative smooth u,v on(0,a) have
+Bodd(u,v)=-double_integral[alpha(|x-y|)-alpha(x+y)]u(x)v(y)dxdy-sum_n w_n integral u(x)[v(x-log n)+v(x+log n)-v(log n-x)]dx-4S_u S_v,
+where S_u=integral sinh(x/2)u(x)dx and v is zero-extended. The reflected coefficient is +w_n. At a=1/2, centers log2/3 and2log2/3, width epsilon=1/100 and any even nonnegative L2-normalized smooth bump, exactly reflected n=2 survives. Its contribution is log2/sqrt2, full arch/pole loss<=62epsilon/9, hence Bodd>88/225>0.39. Narrow bumps prove positive cross pairing for every a>log2/2. The form limit for disjoint u,v excludes positivity preservation of the odd-halfline semigroup. This is NOT a negative-energy vector, a negative eigenvalue, a proof that an odd ground state has nodes, or failure of a particular resolvent at one spectral value. Do not infer an even-sector theorem from it.
+Pay only any actual error or domain/sign gap found here; do not repeat the entire accepted CONTACT audit. This was our cheapest discriminator before this batch: the odd Perron/semigroup shortcut fails on the literal source itself. The new constraint is to retain the reflected arithmetic atom in any halfline inverse/ground-state argument, or avoid such an argument.
+
+3. Q2 — CONSTRUCT THE PROOF OF THE FULL COUPLED ESTIMATE
+This is the main work and should receive most of the proof effort. Start with the exact coupled inverse/equality system in section1 and attempt a sequence of source-specific lemmas which proves the target. A possible entry is to separate the singular low-core spectral response from the regular response while preserving the signed archimedean/prime/pole recovery; an alternative is a source rigidity identity for the equality system. These are possible mechanisms, not granted theorems. Choose one and work it through. If a spectral decomposition is used, retain the actual coupling to every low eigenspace and prove its remaining operator tail; do not impose simplicity, a sign-definite ground state or a uniform gap without proof. Avoid substituting worst-eigenvalue bounds before exploiting source structure.
+You may replace this mechanism with a genuinely different full-source proof when you identify why it reaches the same all-test consumer. Every added positivity, regularity, boundary trace, continuation or prime-error estimate must be established unconditionally. Compact support and logarithmic form regularity alone do not license analytic continuation through rough prime shifts. Two-sided exterior vanishing is not supplied by local nullity. CONTACT C17 is an implication under collar vanishing, C18 proves immediate negative enlargement, and neither excludes first contact.
+If the first mechanism fails, state its first exact failed inequality or hypothesis, attempt one concrete repair, and preserve the proved source lemmas. A remainder must specify objects, domains, quantifiers and full source terms. A renamed C22, a generic Schur identity, an unevaluated norm, a menu of ideas or a statement that the target is equivalent to RH is not the requested proof effort. Equivalence to RH is legitimate for a target; using it or an equivalent as a premise is circular.
+
+4. Q3 — COMPLETE REMAINDER, FALSIFIER AND ALL-TEST TRANSFER
+For the actual Q2 construction prove the transfer to the original compact-window operator and then, through the established first-contact reduction, to Q[f]>=0 for every complex compact smooth test f. Preserve both parity sectors or avoid parity. Distinguish source lemmas, first-contact exclusion and lower sign. A finite-window or finite-rank result proves only its stated range; any compression must carry the complete remainder. An interval containing zero remains UNRESOLVED, not an exact-zero discriminator.
+As a generic algebraic control, take A=C=1 and J=t real. The block form on C^2 is |u|^2+|w|^2+2t Re(conjugate(u)w): it is positive for|t|<1, has a nonzero kernel at t=1 and is indefinite for t>1. The equality system at t=1 has u=w and actual null vector(-u,w). A method based only on positive diagonal blocks, compactness and the Schur identity must not reject this equality. State precisely the additional proved source property that separates your argument from this control. It is not an arithmetic counterexample or a first-contact model. Also respect the literal reflected-prime control Q1; positive off-diagonal pairing is compatible with a positive definite form.
+If incomplete, give exactly one next_decisive_test aimed at the new first failure, with a terminal observable or precise lemma and a stopping condition. Do not request another old scalar run or precision/dimension escalation to hide an unresolved operator remainder.
+
+5. DO NOT REPEAT
+C23: ||K||^2<=M_a^2/(lambda_b eta) has right side>=1 at contact. The diverging collar floor does not pay the collapsing core inverse. C24 small collar mass is not zero collar mass. Automatic radical-tail orthogonality is not a new equation. XIDEV signed ground-state density is not a positive jump measure. The odd-semigroup obstruction above does not settle source sign. Do not redo BRIDGE f_y/f_B, K36/K48, SATURATION upper-rate proofs or CONTACT prerequisites unless a specific error affects this construction. RH and all-test lower sign remain open.
+
+6. FROZEN PREDICTIONS
+P1(p=.95): Q1 survives the narrow source audit without substantive correction; its semigroup consequence stays within its stated limited scope.
+P2(p=.95): shrinking the collar or splitting the core resolvent without a new source estimate does not by itself exclude the norm-one equality case.
+P3(p=.80): the batch yields PARTIAL_WITH_PRECISE_REMAINDER, with at least one new proved source lemma or an exact refutation of its attempted source estimate. Try to refute P3 by proving the full mechanism. These predictions are not premises or stopping rules. Score CONFIRMED/REFUTED/UNRESOLVED with locators; no fabricated numerical forecast is requested.
+
+7. SOURCE AND WRITE BOUNDARIES
+Use only actually read sources at their exact versions/theorem/equation locators; distinguish READ from RELAY. Prior paper derivations must be checked as used. Write only EXPECTED_VERDICT_PATH as a complete UTF-8 Markdown verdict; no Lean, queue, runtime, registry, old-verdict or RH-claim edits. Commit and ordinary non-force push to the existing rh_clean branch if transport works, preserving others' changes. If unavailable, immediately return the complete downloadable file with SHA256, bytes, lines, final-LF and explicit NOT_COMMITTED/NOT_PUSHED. A chat summary does not replace the full file, and no watcher should wait for an impossible push.
+
+8. RESPONSE SCHEMA
+REQUEST_ID and BOUNDARY_ID; one TRY_*/KILL_*/RUN_* directive; RESULT for Q1,Q2,Q3,OVERALL from PROOF_CANDIDATE_COMPLETE / PARTIAL_WITH_PRECISE_REMAINDER / ATTEMPT_REFUTED_WITH_EXACT_COUNTEREXAMPLE; VERIFIER:PAPER; ODD_OBSTRUCTION_VERIFIED true/false; COUPLED_SOURCE_EXCLUSION_PROVED true/false; LOWER_SIGN_PROVED true/false; PX_RH_CLAIM:NOT_MADE. Full proofs, FIRST_FAILURE for each unfinished question, exact dependencies, source/hash limitations, frozen-prediction scores and exactly one next_decisive_test. A complete candidate needs the unconditional all-test conclusion, not an equivalent condition. In the external receipt give exact final bytes/hash/blob and actual commit/push status; do not insert a self-referential file hash into the hashed verdict.
+
+9. PROSHKA'S OWN LINE (free form, no codes, no scoring; 20–40 lines):
+   (a) why this route and not the two nearest alternatives you considered;
+   (b) the two moves you see beyond this batch, and what would kill each;
+   (c) what you would ask us for, if you could ask (data, a probe, a definition);
+   (d) what surprised you in the shelf, and what you distrust in it.
+
+10. RESEARCH LOG (append to the verdict; no scoring):
+   (a) every source consulted this batch: locator (arXiv/DOI/URL + theorem/equation), one line: what was taken or why rejected; mark READ vs RELAY;
+   (b) every branch you tried and abandoned, one line each: the candidate, the first inequality or fact that killed it;
+   (c) intermediate identities or computations that failed but might serve another question, with their exact statement.
