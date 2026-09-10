@@ -54,3 +54,7 @@ gaussian_space_review / source_transfer_bound · DONE · prior scratch component
 2026-09-10 · saturation_verdict_check · full-verdict pass ACCEPTED with A1-A40 VERIFIED, no wrong assertion; bounded follow-up reviews parent whole-domain A22 derivation and final independent report · RUNNING; no descendants.
 
 2026-09-10T12:16+02:00 · saturation_verdict_check · DONE; full verdict accepted PAPER upper-rate, two final report passes clean. No live child agents. saturation deleted; agents-watch can be deleted.
+
+2026-09-10T12:32+02:00 · shell_density_audit · gpt-5.6-terra/xhigh · bounded audit of E1-E4 exterior defect and automatic radical-tail constraints after SATURATION · expected12min · result=first incorrect assertion or two clean passes on /tmp/q3_first_contact_exterior_draft.md · RUNNING; no descendants. agents-watch20min active. No new numerical job or Proshka dispatch.
+
+2026-09-10 · shell_density_audit · DONE; E1-E5 accepted PAPER, initial WORDING domain correction fixed, final F1/F2 clean on sha26f3ee6716e87249751f6519f36c470763153f7cfd454b34bb4a6d843bb54f17. Parent exact matrix and pole checks agree. No live child agents; agents-watch DELETED. No Proshka dispatch pending receipt.

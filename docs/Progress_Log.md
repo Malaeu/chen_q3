@@ -7062,3 +7062,14 @@ SATURATION request6d8f7fac, bindinge9899917, SHA256211cf7e894c59c289ee017e8e20b1
 **Prediction:** Codex P4, probability0.75 for a partial outcome, REFUTED after independent acceptance. P1-P3 CONFIRMED; old numerical predictions untouched.
 **Next:** all-test lower-sign supplier remains the true obstacle; check existing sign-route kills before choosing a new mechanism or dispatch. Do not repeat A22, f_y/f_B or K36/K48; do not promote a production Lean node without its exact edge.
 **Evidence/authority:** one fresh native terra/xhigh checker, all displays VERIFIED, no first incorrect assertion, two final clean report passes; request/boundary/ancestry and all five source hashes checked. saturation watch removed; review event phase2/global47. PAPER only; no Lean gate, production HOLD unchanged, PX_RH_CLAIM NOT_MADE.
+
+## 2026-09-10 — First-contact exterior equation after SATURATION
+
+**Branch:** choose a source-specific lower-sign mechanism after the accepted upper-rate proof.
+**Chosen:** expose the exact exterior defect E1-E3 of a compact-window zero mode, then ask for an actual local-to-global source argument. One pole cancels the j=0 archimedean term; the other pole, all remaining moments and every contributing prime-power shift remain.
+**Why:** the positive-Phi ground-state representation is already XIDEV GS/DOM with a proved negative-measure interval; it is not new. Bessel-radical exterior orthogonality E4 is automatic from local nullity and global radical membership, so SATURATION adds no independent sign condition through that route.
+**Rejected:** one-window inference from small radical tails plus interior completeness to global positivity. E5 has norm<=sqrt2, radical(1,epsilon,0), vanishing local compression and tail epsilon, yet exterior coupling epsilon and a vector of energy -2. It is not a theta counterexample or a fixed-form cofinal family.
+**Technique:** exact separated-support polarization and geometric-series pole cancellation; symbolic parent check and one native terra/xhigh checker, two clean final passes.
+**Next:** a proof-construction question on the literal first-contact window equation and exterior defect, with domain and both parity sectors preserved; no duplicate DOM or upper-energy batch. No new request has been sent.
+**Addresses:** docs/routeB_bus/FIRST_CONTACT_EXTERIOR_2026-09-10.md E1-E5; SCREW_HYPERBOLICITY_HODGE H16-H17; XIDEV GS/DOM; SATURATION A5/A28/A37.
+**Verdict and argument:** parent source derivation independently checked; E4 is exactly B(r_out,v)=B(r,v)-B(r_in,v)=0, not a new inequality. Lower sign and RH remain open; production HOLD unchanged.
