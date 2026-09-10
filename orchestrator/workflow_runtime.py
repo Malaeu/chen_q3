@@ -1426,6 +1426,21 @@ def compile_review_dispatch(
             holds.append("PROSHKA_CHAT_HANDLE_LOST")
         if phase.get("last_boundary_id") == boundary_id:
             holds.append(f"PROSHKA_REVIEW_BOUNDARY_ALREADY_RECORDED:{boundary_id}")
+        from orchestrator import spine
+
+        phase_key = phase.get("phase_key")
+        try:
+            phase_key = spine.validate_phase_key(phase_key)
+        except spine.ControlViolation:
+            phase_key = {}
+            holds.append("PROSHKA_ACTIVE_PHASE_KEY_INVALID")
+        for field in (*spine.PHASE_KEY_FIELDS, "phase_id"):
+            value, error = _single_request_header(request_text, field.upper())
+            expected = phase.get("phase_id") if field == "phase_id" else phase_key.get(field)
+            if error:
+                holds.append(error)
+            elif value != expected:
+                holds.append(f"PROSHKA_{field.upper()}_MISMATCH")
     if call_class == "EXPLORATION_REVIEW":
         try:
             eligibility_receipt = _exploration_review_receipt(runtime)

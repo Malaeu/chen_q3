@@ -358,6 +358,22 @@ tool_families:
         records_to: [knowledge.db, qmd://q3_docs/, q3.lean.aristotle/.qmd_cache/semantic_index_receipt.json]
         last_verified: 2026-08-13
 
+      - id: bridge-observed-phase-repair
+        classification: MANUAL
+        status: ENABLED
+        audience: [CODEX]
+        mode: WRITES_CANONICAL
+        path: orchestrator/spine.py
+        invoke: python3 orchestrator/spine.py --record-bridge-transition <event.json>
+        trigger: One-time late recording of the owner-requested BRIDGE delivery of 2026-09-10.
+        writes: true
+        approval: EXISTING_OWNER_AUTHORIZED_BRIDGE_TASK_ONLY
+        authority: FIXED_RECEIPT_AND_PREIMAGE_NOT_FUTURE_PHASE_AUTHORITY
+        validation: test_channel_runtime_writer + test_workflow_runtime phase-header checks
+        records_to: orchestrator/state/CHANNEL_RUNTIME.json
+        note: Fixed evidence/predecessor hashes, canonical writer lock, full predecessor archive and exact successor replay. No production closure.
+        last_verified: 2026-09-10
+
       - id: bind-request
         classification: MANUAL
         status: ENABLED

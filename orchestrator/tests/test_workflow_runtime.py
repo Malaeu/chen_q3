@@ -1784,6 +1784,9 @@ print(json.dumps({{'schema':'q3_search_evidence_write.v1','status':'RECORDED','o
             lines.append(f"PACKET_SUBTYPE: {packet_subtype}")
         if call_class is not None:
             lines.append(f"CALL_CLASS: {call_class}")
+        phase = (runtime or exploration_runtime())["active_proshka_phase"]
+        lines.extend(f"{key.upper()}: {value}" for key, value in phase["phase_key"].items())
+        lines.append(f"PHASE_ID: {phase['phase_id']}")
         lines.append("exact request")
         request = repo / "request.txt"
         request.write_text("\n".join(lines) + "\n", encoding="utf-8")
@@ -2979,9 +2982,11 @@ print(json.dumps({{'schema':'q3_search_evidence_write.v1','status':'RECORDED','o
             subprocess.run(["git", "config", "user.name", "Workflow Plant"], cwd=repo, check=True)
             request = repo / "docs/routeB_bus/proshka/request.txt"
             request.parent.mkdir(parents=True)
-            request.write_bytes(
-                b"REQUEST_ID: REQ-PLANT\nBOUNDARY_ID: new-boundary\n"
-                b"CALL_CLASS: DELEGATED_STRATEGIC_REVIEW\nexact request\n"
+            request.write_text(
+                "REQUEST_ID: REQ-PLANT\nBOUNDARY_ID: new-boundary\n"
+                "CALL_CLASS: DELEGATED_STRATEGIC_REVIEW\nPHASE_ID: PHASE-1\n"
+                + "".join(f"{key.upper()}: {value}\n" for key, value in PHASE_KEY.items())
+                + "exact request\n", encoding="utf-8",
             )
             queue = repo / "docs/routeB_bus/PROSHKA_QUEUE.md"
             queue.write_text(
@@ -2996,6 +3001,8 @@ print(json.dumps({{'schema':'q3_search_evidence_write.v1','status':'RECORDED','o
                         "status": "ACTIVE",
                         "conversation_id": "living-chat",
                         "last_boundary_id": "older-boundary",
+                        "phase_id": "PHASE-1",
+                        "phase_key": PHASE_KEY,
                     }
                 }) + "\n",
                 encoding="utf-8",
@@ -3030,6 +3037,49 @@ print(json.dumps({{'schema':'q3_search_evidence_write.v1','status':'RECORDED','o
                 result["attachment_manifest"]["git_blob"],
                 result["attachment_manifest"]["commit_blob"],
             )
+
+    def test_review_plan_rejects_each_phase_header_mismatch_missing_and_duplicate(self) -> None:
+        from orchestrator import spine
+
+        for field in (*spine.PHASE_KEY_FIELDS, "phase_id"):
+            for defect in ("mismatch", "missing", "duplicate"):
+                with self.subTest(field=field, defect=defect), tempfile.TemporaryDirectory() as tmp:
+                    repo = Path(tmp)
+                    request, _, _ = self._review_fixture(
+                        repo, call_class="DELEGATED_STRATEGIC_REVIEW"
+                    )
+                    lines = request.read_text().splitlines()
+                    prefix = field.upper() + ":"
+                    line = next(row for row in lines if row.startswith(prefix))
+                    if defect == "missing":
+                        lines.remove(line)
+                    elif defect == "duplicate":
+                        lines.append(line)
+                    else:
+                        lines[lines.index(line)] = prefix + " foreign"
+                    request.write_text("\n".join(lines) + "\n")
+                    subprocess.run(["git", "add", "request.txt"], cwd=repo, check=True)
+                    subprocess.run(["git", "commit", "-qm", "phase defect"], cwd=repo, check=True)
+                    commit = subprocess.check_output(
+                        ["git", "rev-parse", "HEAD"], cwd=repo, text=True
+                    ).strip()
+                    result = workflow_runtime.compile_review_dispatch(
+                        repo,
+                        attachment=request,
+                        request_commit=commit,
+                        request_id="REQ-PLANT",
+                        boundary_id="boundary",
+                        expected_sha256=workflow_runtime.hashlib.sha256(
+                            request.read_bytes()
+                        ).hexdigest(),
+                    )
+                    suffix = {
+                        "missing": "MISSING",
+                        "duplicate": "AMBIGUOUS",
+                        "mismatch": "MISMATCH",
+                    }[defect]
+                    self.assertEqual(result["status"], "HOLD")
+                    self.assertIn(f"PROSHKA_{field.upper()}_{suffix}", result["holds"])
 
     def test_review_plan_rejects_mutation_and_duplicate_boundary(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

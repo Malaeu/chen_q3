@@ -29,6 +29,42 @@ safety confirmation остаётся внешней границей. Судья
   `3fffbc70ca538cf86959b348890f4a4966b3515f` / `yes`
 
 - Delivery receipt (2026-09-10 08:33 +0200): exact .txt tile, unchanged binder delivery line and natural `Pro-Denkvorgang` observed; model 6 Pro. New project chat explicitly requested by owner, overriding the old same-chat transport handle for this dispatch: https://chatgpt.com/g/g-p-69ad65d9bcfc8191a6931ea6f2c78f13-rh-marz-2026/c/6aa24f25-0934-83eb-9151-3565fc4b3379
+- Historical delivery evidence rechecked through browser on 2026-09-10. This late record does not claim that a phase closure preceded delivery. The exact owner authorization is pinned below; this receipt is evidence for one bounded repair, not future transition authority.
+
+<!-- observed-phase-transition:REQ-2026-09-09-BRIDGE -->
+```json
+{
+  "schema": "q3_observed_phase_transition.v1",
+  "transition_id": "REQ-2026-09-09-BRIDGE",
+  "observed_at": "2026-09-10T08:33:00+02:00",
+  "conversation_id": "6aa24f25-0934-83eb-9151-3565fc4b3379",
+  "request_message_id": "42601c8e-ad3b-47de-b2aa-706c74cd9184",
+  "response_message_id": "b9b96355-7515-4611-ab05-4fe88c76d963",
+  "opening_request": {
+    "commit": "b968f9443d5491778ab5e65c75c4ad7d64ba0b14",
+    "path": "docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_BRIDGE_2026-09-09.txt",
+    "blob": "3fffbc70ca538cf86959b348890f4a4966b3515f",
+    "sha256": "cee5ce05956d744b2e3c3d4275c9c510990bb25d0745bb2ad349b5728219fce8"
+  },
+  "verdict": {
+    "commit": "4ae462655affe4e3511a765a54a04a6510338f72",
+    "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_BRIDGE_2026-09-09.md",
+    "blob": "24c934f63e3e28a448f3989014bbadca154a94bc",
+    "sha256": "0d2117118585b58acc6f765f3692b5d536e3fb832039c29d9680e12ebbaf0550"
+  },
+  "owner_authorization": {
+    "source": {
+      "commit": "57df552a4a12c7e557d0be2938e05c09060aa2e2",
+      "path": "docs/Codex/GOAL.md",
+      "blob": "5921f28e1e52334bd674a5bd492a725564029bf5",
+      "sha256": "ec28e93e6cfc42cdbc917cd1e2ba2a6ba6893766740d15af2b1162b0c431a3a0"
+    },
+    "locator": "section 5, opening paragraph; owner new-chat instruction in current Codex task 01a084f4-7498-7021-bac2-91d184d58dc7",
+    "quote": "SCHUR независимо проверен (`952bb521`), журналы обновлены (`410ccdca`), BRIDGE подготовлен и привязан (`b968f944`, `ee24da80`), опубликован. 10.09.2026 BRIDGE доставлен с неизменённой строкой и точным вложением в НОВЫЙ чат проекта по прямому указанию владельца: https://chatgpt.com/g/g-p-69ad65d9bcfc8191a6931ea6f2c78f13-rh-marz-2026/c/6aa24f25-0934-83eb-9151-3565fc4b3379. Наблюдались файл, отправленная строка и `Pro-Denkvorgang` модели 6 Pro. Старый same-chat handle из review-plan не является адресом этого нового явно разрешённого запуска; повторно не отправлять."
+  }
+}
+```
+
 - Watch: app heartbeat `bridge`, ACTIVE every 10 minutes; exact expected path `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_BRIDGE_2026-09-09.md`. Stop on receipt or completed no-push response; no calculations while waiting.
 
 ---

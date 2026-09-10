@@ -538,6 +538,10 @@ def record_delegated_review(
             if existing != event:
                 _fail("EXPLORATION_REVIEW_DUPLICATE", request_id)
             return updated, False
+        if (existing.get("conversation_id"), existing.get("boundary_id")) == (
+            event["conversation_id"], event["boundary_id"]
+        ):
+            _fail("EXPLORATION_REVIEW_DUPLICATE", str(event["boundary_id"]))
 
     phase = updated.get("active_proshka_phase")
     meter = updated.get("meter")
@@ -559,6 +563,183 @@ def record_delegated_review(
     meter["delegated_strategic_review_calls"] = event["meter_call_index"]
     ledger.append(dict(event))
     validate_runtime(updated)
+    return updated, True
+
+
+def _phase_record_pin(pin: object, *, repo: Path) -> str:
+    """Read immutable evidence, never a caller's unpinned worktree text."""
+    if not isinstance(pin, dict) or set(pin) != {"commit", "path", "blob", "sha256"}:
+        _fail("PHASE_RECORD_INVALID", "invalid evidence pin")
+    if any(not isinstance(value, str) for value in pin.values()):
+        _fail("PHASE_RECORD_INVALID", "evidence pin values must be strings")
+    for key, size in (("commit", 40), ("blob", 40), ("sha256", 64)):
+        if not re.fullmatch(r"[0-9a-f]{%d}" % size, pin[key]):
+            _fail("PHASE_RECORD_INVALID", f"invalid {key}")
+    relative = PurePosixPath(pin["path"])
+    if relative.is_absolute() or ".." in relative.parts or relative.parts[:1] != ("docs",):
+        _fail("PHASE_RECORD_INVALID", "evidence must be repository documentation")
+    try:
+        _git_stdout(["merge-base", "--is-ancestor", pin["commit"], "HEAD"], repo=repo)
+        blob = _git_stdout(["rev-parse", f"{pin['commit']}:{relative}"], repo=repo).strip()
+        raw = subprocess.check_output(["git", "cat-file", "blob", blob], cwd=repo)
+    except (ValueError, subprocess.CalledProcessError) as exc:
+        _fail("PHASE_RECORD_INVALID", str(exc))
+    if blob != pin["blob"] or hashlib.sha256(raw).hexdigest() != pin["sha256"]:
+        _fail("PHASE_RECORD_INVALID", "evidence pin mismatch")
+    try:
+        return raw.decode("utf-8")
+    except UnicodeDecodeError:
+        _fail("PHASE_RECORD_INVALID", "evidence is not UTF-8")
+
+
+def _phase_record_digest(value: dict[str, object]) -> str:
+    return hashlib.sha256(
+        json.dumps(
+            value,
+            ensure_ascii=False,
+            sort_keys=True,
+            separators=(",", ":"),
+        ).encode("utf-8")
+    ).hexdigest()
+
+
+def record_observed_bridge_transition(
+    raw_runtime: bytes,
+    event: dict[str, object],
+    *,
+    repo: Path = REPO,
+    recorded_at: str,
+) -> tuple[dict[str, object], bool]:
+    """Record only the independently observed BRIDGE transition of 2026-09-10.
+
+    Fixed receipt and predecessor hashes bound this historical repair. They do
+    not authorize future transitions or certify UI observation. The caller holds
+    the canonical writer epoch through the final raw-byte compare and replace.
+    """
+    from orchestrator.workflow_runtime import _single_request_header
+
+    if (
+        not isinstance(event, dict)
+        or set(event)
+        != {
+            "expected_runtime_sha256",
+            "receipt_pin",
+            "transition_id",
+        }
+        or event["transition_id"] != "REQ-2026-09-09-BRIDGE"
+    ):
+        _fail("PHASE_RECORD_INVALID", "only the observed BRIDGE repair is supported")
+    runtime = validate_runtime(json.loads(raw_runtime))
+    history = runtime.get("observed_phase_transitions", [])
+    if not isinstance(history, list):
+        _fail("PHASE_RECORD_INVALID", "invalid history")
+    for previous in history:
+        if previous.get("event", {}).get("transition_id") == event["transition_id"]:
+            expected = previous.pop("successor_sha256", None)
+            actual = _phase_record_digest(runtime)
+            previous["successor_sha256"] = expected
+            if previous["event"] != event or expected != actual:
+                _fail("PHASE_RECORD_REPLAY_CONFLICT", "event or full successor changed")
+            return runtime, False
+    # Exact historical state, including all counters and earlier review events.
+    predecessor_sha = "657269c6eab3ed2ebe923e97dd90b88221237d7f27f2c7bac2b2b48d30622dda"
+    if (
+        hashlib.sha256(raw_runtime).hexdigest() != predecessor_sha
+        or event["expected_runtime_sha256"] != predecessor_sha
+    ):
+        _fail("PHASE_RECORD_STALE_PREIMAGE")
+    if (
+        not isinstance(event["receipt_pin"], dict)
+        or event["receipt_pin"].get("path") != "docs/routeB_bus/PROSHKA_QUEUE.md"
+    ):
+        _fail("PHASE_RECORD_INVALID", "receipt must be pinned in the existing queue")
+    receipt_text = _phase_record_pin(event["receipt_pin"], repo=repo)
+    marker = "<!-- observed-phase-transition:REQ-2026-09-09-BRIDGE -->\n```json\n"
+    if receipt_text.count(marker) != 1:
+        _fail("PHASE_RECORD_INVALID", "receipt missing or duplicated")
+    receipt = json.loads(receipt_text.split(marker, 1)[1].split("\n```", 1)[0])
+    # Locks IDs, times, all request/verdict/owner pins, exact quote and locator.
+    if (
+        _phase_record_digest(receipt)
+        != "c18aa12cec56cf070a8934c1b8798f603b8c9b11ba6a140965eb2796220fa729"
+    ):
+        _fail("PHASE_RECORD_INVALID", "receipt differs from verified BRIDGE evidence")
+    observed = _dt.datetime.fromisoformat(receipt["observed_at"])
+    recorded = _dt.datetime.fromisoformat(recorded_at)
+    if recorded.tzinfo is None or observed > recorded:
+        _fail("PHASE_RECORD_INVALID", "recording precedes observation")
+    authority_text = _phase_record_pin(receipt["owner_authorization"]["source"], repo=repo)
+    if receipt["owner_authorization"]["quote"] not in authority_text:
+        _fail("PHASE_RECORD_INVALID", "owner quote absent from pinned source")
+    request = _phase_record_pin(receipt["opening_request"], repo=repo).split("\n\n", 1)[0]
+    verdict = (
+        _phase_record_pin(receipt["verdict"], repo=repo)
+        .split("```yaml\n", 1)[1]
+        .split("\n```", 1)[0]
+    )
+
+    def header(text: str, field: str) -> str:
+        value, error = _single_request_header(text, field)
+        if error:
+            _fail("PHASE_RECORD_INVALID", error)
+        return value
+
+    phase_key = validate_phase_key(
+        {field: header(request, field.upper()) for field in PHASE_KEY_FIELDS}
+    )
+    for field in ("REQUEST_ID", "BOUNDARY_ID", "PHASE_ID", *[f.upper() for f in PHASE_KEY_FIELDS]):
+        if header(verdict, field) != header(request, field):
+            _fail("PHASE_RECORD_INVALID", f"verdict/request mismatch: {field}")
+    for field, pin_field in (
+        ("REQUEST_COMMIT", "commit"),
+        ("REQUEST_BLOB", "blob"),
+        ("REQUEST_SHA256", "sha256"),
+    ):
+        if header(verdict, field) != receipt["opening_request"][pin_field]:
+            _fail("PHASE_RECORD_INVALID", f"verdict binding mismatch: {field}")
+    if header(request, "EXPECTED_VERDICT_PATH") != receipt["verdict"]["path"]:
+        _fail("PHASE_RECORD_INVALID", "verdict path mismatch")
+    updated = json.loads(json.dumps(runtime))
+    updated.setdefault("observed_phase_transitions", []).append(
+        {
+            "event": event,
+            "predecessor_phase": runtime["active_proshka_phase"],
+            "predecessor_meter": runtime["meter"],
+            "preimage_sha256": predecessor_sha,
+            "receipt": receipt,
+            "late_recording": True,
+            "observed_at": receipt["observed_at"],
+            "recorded_at": recorded_at,
+            "disposition": "CLOSED_FOR_CHANNEL_CONTINUATION_NOT_PROOF",
+        }
+    )
+    updated["active_proshka_phase"] = {
+        "status": "ACTIVE",
+        "phase_id": header(request, "PHASE_ID"),
+        "phase_key": phase_key,
+        "conversation_id": receipt["conversation_id"],
+        "opened_at": receipt["observed_at"],
+        "opening_pin": receipt["opening_request"]["commit"],
+        "proshka_calls": 0,
+        "full_context_uploads": 0,
+        "owner_boundary_count": 0,
+        "last_boundary_id": None,
+        "last_adjudicated_pin": None,
+    }
+    updated["meter"]["phases_opened"] += 1
+    updated["meter"]["fresh_chats_opened"] += 1
+    updated, _ = record_delegated_review(
+        updated,
+        {
+            "request_message_id": receipt["request_message_id"],
+            "conversation_id": receipt["conversation_id"],
+            "boundary_id": header(request, "BOUNDARY_ID"),
+            "adjudicated_pin": receipt["verdict"]["commit"],
+            "phase_call_index": 1,
+            "meter_call_index": 46,
+        },
+    )
+    updated["observed_phase_transitions"][-1]["successor_sha256"] = _phase_record_digest(updated)
     return updated, True
 
 
@@ -2080,8 +2261,37 @@ def main() -> int:
         "--record-review", action="append", default=[], metavar="JSON",
         help="atomically record one delegated-review event; repeat for ordered backfill",
     )
+    ap.add_argument(
+        "--record-bridge-transition", type=Path, metavar="EVENT_JSON",
+        help="late-record only the verified 2026-09-10 BRIDGE chat transition",
+    )
     args = ap.parse_args()
     try:
+        if args.record_bridge_transition is not None:
+            if (
+                args.record_review or args.stdout or args.strict or args.refresh
+                or args.attempt_payload is not None or args.insight_payload is not None
+            ):
+                _fail("PHASE_RECORD_INVALID", "repair cannot be combined with other actions")
+            from orchestrator.workflow_runtime import _execution_writer_epoch
+
+            try:
+                with _execution_writer_epoch(REPO) as epoch:
+                    _validate_active_control()
+                    raw = CHANNEL_RUNTIME.read_bytes()
+                    event = json.loads(args.record_bridge_transition.read_text(encoding="utf-8"))
+                    runtime, changed = record_observed_bridge_transition(
+                        raw, event, recorded_at=_dt.datetime.now(_dt.timezone.utc).isoformat(),
+                    )
+                    if changed:
+                        epoch.recheck()
+                        if CHANNEL_RUNTIME.read_bytes() != raw:
+                            _fail("PHASE_RECORD_STALE_PREIMAGE")
+                        write_runtime_atomic(runtime)
+            except (OSError, ValueError) as exc:
+                _fail("PHASE_RECORD_INVALID", str(exc))
+            print(f"CHANNEL_RUNTIME_BRIDGE_TRANSITIONS_RECORDED={int(changed)}")
+            return 0
         if args.record_review:
             if (
                 args.stdout
