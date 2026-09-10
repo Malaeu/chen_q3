@@ -1731,3 +1731,6 @@ Sent `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_CONTACT_2026-09-10.txt` (4
 ## CONTACT accepted at partial paper scope — 2026-09-10
 
 CONTACT00bae614 and CONTACT_INDEPENDENT_CHECK_2026-09-10.md add a concrete compact core/collar coupling: source window sign equals the sign of1-||K||², including attained norm-one equality. Half-Carleman control pays sharp cuts and endpoint removability; translated-kernel independence proves collar injectivity. A nonzero null vector produces negative larger windows, not a contradiction to first contact. Thus C22 strict source contraction remains open; diagonal divergence and vanishing boundary mass do not replace it. Full fresh audit, parent exact checks and WORDING-only/CLEAN report passes completed; all eight shelf pins verified, later HTML excluded from independent support. P1-P3 confirmed, phase3/global48; no Lean/lower sign/RH claim. Next: one genuinely new source input to the coupled equality system or inverse estimate, after shelf review; do not rename C22 or rerun previous scalars.
+
+## 2026-09-10 14:40 — COLLAR delivered
+Same BRIDGE/SATURATION/CONTACT chat6aa24f25; sent message d6e565d4. Exact requestd01e056e/binding2395f63b, full-source C25 proof construction after checked reflected-prime obstruction. File and natural Pro-Denkvorgang observed. No verdict yet; collar watch active.

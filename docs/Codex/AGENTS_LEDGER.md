@@ -81,3 +81,8 @@ gaussian_space_review / source_transfer_bound · DONE · prior scratch component
 2026-09-10 · contact_verdict_check · gpt-5.6-terra/xhigh · bounded new source-specific odd-halfline reflected-prime obstruction audit, not repeat CONTACT · expected10min · result=first incorrect assertion or two clean passes on /tmp/q3_odd_reflected_prime_draft.md · RUNNING; no descendants.
 
 2026-09-10 · contact_verdict_check · DONE; odd reflected-prime lemma two distinct CLEAN passes on1552f433e; exact draft preserved in CONTACT independent-check appendix. No running agents; agents-watch DELETED.
+
+2026-09-10 · contact_verdict_check · gpt-5.6-terra/xhigh · bounded read-only COLLAR proof-request review on pinned f7ce930f source · expected10min · result=two clean on-target passes on /tmp/q3_collar_request.txt · RUNNING; no descendants.
+
+2026-09-10 14:40+02 · contact_verdict_check · DONE; COLLAR request two CLEAN passes plus two CLEAN PDF-provenance confirmations, exact697302c9. agents-watch DELETED.
+2026-09-10 14:40+02 · collar · heartbeat10min ACTIVE; expected verdict path PROSHKA_VERDICT_GOAL058_COLLAR_2026-09-10.md absent at baseline2395f63b; message d6e565d4 observed, same chat6aa24f25. No live agents/numerical jobs.

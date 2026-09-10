@@ -7125,3 +7125,14 @@ Request `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_CONTACT_2026-09-10.txt`
 **Следующий ход:** construct a proof attempt for the full C25 coupled inverse or equality system, retaining the reflected atom and both parity sectors. A new label for C22 or the C23 absolute majorant is not an acceptable result; stop that subattempt if no source-specific cancellation or rigidity input is supplied.
 **Адреса:** docs/routeB_bus/CONTACT_INDEPENDENT_CHECK_2026-09-10.md appendix; source CONTACT00bae614 C1-C8/C19-C25; reviewed draft SHA2561552f433e99e910d0eb8ab8159525fa24ebe2ecf2b4d04b50684c9ffb9f10cb4; /tmp/q3_odd_reflected_prime_controls.log.
 **Чей вердикт и аргумент:** parent derivation and contact_verdict_check agree: reflected coefficient +w_n, full poles -4S_uS_v, analytic lower bound88/225. Two CLEAN passes; lower sign, C22 and RH remain unproved. No new request sent.
+
+## 2026-09-10 — COLLAR full coupled source proof request delivered
+
+**Развилка:** attack actual CONTACT C25 equality or repeat a decoupled inverse-norm bound.
+**Выбрали:** COLLAR proof-construction batch: narrow reflected-prime check, main full coupled inverse/equality proof attempt, all-complex source transfer with complete remainder.
+**Почему:** reviewed odd source cross>88/225 at a=.5 refutes the positive-semigroup shortcut. At contact every admissible C21 split has norm1; C23 and shrinking collar alone cannot yield strictness. Low-core/regular decomposition is a possible proof entry, not a supplied theorem.
+**Что отвергли и почему:** duplicate CONTACT prerequisite audit, odd Perron assumption, old upper-trial calculations and a renamed unproved C22. No such work requested.
+**Техника:** six exact shelf hashes at f7ce930f, explicit Git LFS pointer versus actual PDF verification, two clean request passes plus two clean provenance confirmations, binder REVIEW_DISPATCH_READY, exact browser attachment/line/message and natural reasoning start.
+**Следующий ход:** exact-path watch, then full verdict intake and one fresh terra/xhigh checker; independently verify decisive source argument, both parity sectors and whole operator remainder. No numerical campaign while waiting.
+**Адреса:** docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_COLLAR_2026-09-10.txt; request d01e056eef27d0eff657f082a8fb58457a6e5866; binding2395f63b68adfbbf541218fe8c371cce4e3318ac; conversation6aa24f25-0934-83eb-9151-3565fc4b3379; sent message d6e565d4-8a73-43da-91db-0ca9157fbe68 at14:40+02.
+**Чей вердикт и аргумент:** parent source discriminator and contact_verdict_check request audit; P1=.95 narrow obstruction survives, P2=.95 shrinking alone insufficient, P3=.80 precise partial with new proved lemma/refutation. C22/lower sign/RH remain open. Watch collar10min ACTIVE; no verdict received.

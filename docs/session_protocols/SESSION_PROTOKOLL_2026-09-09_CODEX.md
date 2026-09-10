@@ -222,3 +222,7 @@ Search acceptance: ./ask.sh CONTACT coupled collar => HITS/exit0, /tmp/q3_contac
 ## 10.09.2026 — Odd reflected-prime obstruction closeout
 
 Exact independently reviewed draft1552f433e preserved in CONTACT independent-check appendix; two CLEAN passes, full-source disjoint cross bound88/225 at a=.5 and failure of odd positivity-preserving semigroup for every a>log2/2. This does not prove negative energy, lower sign or RH. Canonical journal projected exactly (92 entries); final refresh and session_start0 in146.870s (/tmp/q3_odd_closeout.log). No active agents, watches or computations. Next: source-specific C25 coupled inverse/equality proof construction, not another C23 bound or old finite energy test.
+
+## 10.09.2026 14:40 — COLLAR delivery
+
+Requestd01e056e, binding2395f63b,13396bytes/76lines/SHA697302c9. Two clean main request reviews plus two clean PDF pointer/object clarification reviews. Delivered exact canonical attachment and unchanged line to living chat6aa24f25, messaged6e565d4; natural Pro-Denkvorgang observed. collar heartbeat10min ACTIVE on exact expected verdict path absent at baseline2395f63b; agents-watch deleted. No live agents/numerical job. Journal migration exact, final refresh/session_start0 in151.655s, /tmp/q3_collar_delivery_closeout.log. Next: exact-file/request/boundary/ancestry intake then one fresh terra/xhigh checker; phase4/global49 only on adjudication, runtime remains phase3/global48. Lower sign and RH remain open.
