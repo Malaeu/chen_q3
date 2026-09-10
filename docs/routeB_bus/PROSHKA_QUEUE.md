@@ -14,6 +14,22 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-10-BOUNDARY · BOUNDARY: prove signed leading source response after uniform boundary control · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_BOUNDARY_2026-09-10.txt`
+- Boundary: `GOAL058_SIGNED_BOUNDARY_LOW_ENERGY_COMPARISON`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: COLLAR d254 accepted; published a443424e uniform boundary appendices give recovery O(d) and complete one-feedback uncertainty O(d/log²). Five shelf pins verified, two CLEAN request passes; same phase/chat. Alternate UI COLLAR hash41c760 is not the canonical source.
+- Registered predictions: P1 .90 uniform input survives; P2 .95 rates alone retain equality; P3 .80 precise partial with new source relation/refutation
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `b574857250e2c0e136bb04cfddd906ea1b3aee8f` / `13190` / `74` /
+  `1988f386d36cc16925ddf14d1d67e83c94ab3af1b50a36cd70586a1a5c40a589` /
+  `a1c4f3c77013823562e13f86ad7a342e42f16669` / `yes`
+
+---
+
 ## REQ-2026-09-10-COLLAR · COLLAR: prove full source coupled contraction after reflected-prime obstruction · ANSWERED
 
 - `STATUS: ANSWERED`
