@@ -47,3 +47,10 @@ gaussian_space_review / source_transfer_bound · DONE · prior scratch component
 2026-09-10T11:32+02:00 · phase_record_review · gpt-5.6-terra/xhigh · bounded follow-up: session briefing aborts on paper-chat/production-roof mismatch after honest transition; preserve production HOLD, repair display classification · expected10min · result=reviewed minimal fix and tests · RUNNING; no descendants. Existing saturation watch remains ACTIVE; no second heartbeat can attach.
 
 2026-09-10T11:46+02:00 · phase_record_review · DONE; briefing plan P2/P3 and artifact A1/A2 converged;120 scoped tests and session_start exit0. No running child agents; agents-watch remains PAUSED, saturation remains ACTIVE.
+
+2026-09-10T12:01+02:00 · saturation · DELETED; exact verdict received at1436242e67934cfca1ded812b24be865dda782f8, request ancestry and bytes checked, mathematical acceptance pending.
+2026-09-10T12:01+02:00 · saturation_verdict_check · gpt-5.6-terra/xhigh · fresh read-only audit of complete777-line Bessel-Poisson cofinal T² proof candidate and exact-shell transfer · expected25min · result=all displays VERIFIED/PLAUSIBLE/WRONG, first incorrect assertion and reproducible decisive check · RUNNING; no descendants.
+
+2026-09-10 · saturation_verdict_check · full-verdict pass ACCEPTED with A1-A40 VERIFIED, no wrong assertion; bounded follow-up reviews parent whole-domain A22 derivation and final independent report · RUNNING; no descendants.
+
+2026-09-10T12:16+02:00 · saturation_verdict_check · DONE; full verdict accepted PAPER upper-rate, two final report passes clean. No live child agents. saturation deleted; agents-watch can be deleted.

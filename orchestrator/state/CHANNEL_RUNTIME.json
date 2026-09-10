@@ -3,8 +3,8 @@
   "active_proshka_phase": {
     "conversation_id": "6aa24f25-0934-83eb-9151-3565fc4b3379",
     "full_context_uploads": 0,
-    "last_adjudicated_pin": "4ae462655affe4e3511a765a54a04a6510338f72",
-    "last_boundary_id": "GOAL058_RADICAL_TRIAL_SCHUR_T_SQUARED_SUPPLIER",
+    "last_adjudicated_pin": "1436242e67934cfca1ded812b24be865dda782f8",
+    "last_boundary_id": "GOAL058_FULL_WINDOW_AFFINE_SATURATION_AFTER_DENSITY",
     "opened_at": "2026-09-10T08:33:00+02:00",
     "opening_pin": "b968f9443d5491778ab5e65c75c4ad7d64ba0b14",
     "owner_boundary_count": 0,
@@ -17,14 +17,14 @@
       "source_object_family_id": "CANONICAL_TEST_SIGNED_DIRICHLET_FORM",
       "terminal_consumer_id": "published_Weil_criterion_on_all_complex_compact_smooth_tests"
     },
-    "proshka_calls": 1,
+    "proshka_calls": 2,
     "status": "ACTIVE"
   },
   "control_status": "ACTIVE",
   "last_exploration_close": null,
   "mathematical_authority_mode": "CODEX_PROSHKA_FULL_EXCEPT_PX_RH_CLAIM",
   "meter": {
-    "delegated_strategic_review_calls": 46,
+    "delegated_strategic_review_calls": 47,
     "exploration_review_calls": 0,
     "fanout_violations": 0,
     "forced_rollovers": 1,
@@ -397,6 +397,14 @@
       "meter_call_index": 46,
       "phase_call_index": 1,
       "request_message_id": "42601c8e-ad3b-47de-b2aa-706c74cd9184"
+    },
+    {
+      "adjudicated_pin": "1436242e67934cfca1ded812b24be865dda782f8",
+      "boundary_id": "GOAL058_FULL_WINDOW_AFFINE_SATURATION_AFTER_DENSITY",
+      "conversation_id": "6aa24f25-0934-83eb-9151-3565fc4b3379",
+      "meter_call_index": 47,
+      "phase_call_index": 2,
+      "request_message_id": "58d935a7-3635-4236-ae56-4ed39e530147"
     }
   ],
   "schema": "q3_channel_runtime.v1"

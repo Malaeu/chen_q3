@@ -14,9 +14,9 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-10-SATURATION · SATURATION: source mechanism for the affine T-squared budget after exact shell density · IN_REVIEW
+## REQ-2026-09-10-SATURATION · SATURATION: source mechanism for the affine T-squared budget after exact shell density · ANSWERED
 
-- `STATUS: IN_REVIEW`
+- `STATUS: ANSWERED`
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SATURATION_2026-09-10.txt`
 - Boundary: `GOAL058_FULL_WINDOW_AFFINE_SATURATION_AFTER_DENSITY`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
@@ -33,6 +33,10 @@ safety confirmation остаётся внешней границей. Судья
 - Watch: app heartbeat `saturation`, ACTIVE / 10 minutes, expected path `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SATURATION_2026-09-10.md`; baseline `e989991769cdba31f52dfbfe9bb71b3c6918dee9` independently checked without that path. Stop/delete on the actual candidate verdict or observed completed no-push response, then intake; an unrelated commit is not an answer.
 - Intake prepared: verify request/boundary, pinned request bytes, ancestry and verdict hash; read the complete file; one fresh terra/xhigh checker for L1-L5, actual cofinal source estimate, singular/indefinite branches and original-shell transfer. Parent rechecks the decisive step. Do not rerun accepted f_y/f_B or K36/K48 rows. Record phase2/global47 with the actual adjudicated pin only after receiving the verdict; current runtime phase1/global46 records accepted BRIDGE.
 
+
+- Received and independently accepted 2026-09-10: verdict `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SATURATION_2026-09-10.md`, commit `1436242e67934cfca1ded812b24be865dda782f8`, blob `0893efc7cd4427e568fd6fe4b97eaaad92b81435`, SHA256 `268093822b4ab75c6b7f8efd725172db9b2de96ad5c61924da3eb3f9dd0a50a5`,54718bytes/777lines/finalLF. One-path commit and request/baseline ancestry verified; whole file read. All five shelf pins rehashed locally, including SCHUR.
+- Independent report: `docs/routeB_bus/SATURATION_INDEPENDENT_CHECK_2026-09-10.md`; one fresh terra/xhigh checker, A1-A40 VERIFIED, first incorrect assertion NONE_FOUND, two final clean passes. Parent independently proves A12-A22 throughout the turning band and exterior, checks calibration/domain rejection and all-real-a normalization. ACCEPTED PAPER upper-rate only: |Q[f_a]|<=K exp(57a)T²; exact-shell energy<=2K exp(57a)T² for some finite m(a). Lower sign and RH remain unproved; no Lean admission.
+- The historical watch/intake lines above are superseded: saturation watch DELETED upon receipt; audit completed; SATURATION recorded phase2/global47 with the actual verdict pin. P1-P3 CONFIRMED; Codex P4=0.75 partial-outcome prediction REFUTED. No repeated A22/finite numerical test is pending. Next research object is the all-test lower sign, after checking existing sign-route failures; a new name for that atom is not a new batch.
 
 ## REQ-2026-09-09-BRIDGE · BRIDGE: exact obstruction between positive tail construction and signed target · ANSWERED
 
