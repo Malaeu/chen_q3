@@ -111,3 +111,15 @@ gaussian_space_review / source_transfer_bound · DONE · prior scratch component
 2026-09-10 · boundary_verdict_check · gpt-5.6-terra/xhigh · full787line BOUNDARY audit BND1-BND29 · RUNNING, no descendants, read-only · agents-watch20min ACTIVE; verdict watch deleted.
 
 2026-09-10 · boundary_verdict_check · DONE; full BND1-BND29 audit accepted at partial PAPER scope; exact-report MEDIUM adjoint notation corrected, then CLEAN/CLEAN on a0a82d34. Parent independent complex4x4/source/domain checks. agents-watch DELETED; no live child agents or verdict watches.
+
+2026-09-10 · boundary_verdict_check · gpt-5.6-terra/xhigh · same-request remote edition afac5cbd (700 lines) N6-N19 audit and comparison to accepted browser deecc226; RUNNING, expected20min, read-only/no descendants. Reuse sole checker; no phase/global counter increment. agents-watch20min required.
+
+2026-09-10 · boundary_bootstrap_check · gpt-5.6-terra/xhigh · bounded review of reproduced stale verdict migration (same filename/new bytes retains OLD_TARGET and W9 metadata), not verdict math · RUNNING expected10min, read-only/no descendants. Existing agents-watch20min covers both; maximum2 respected.
+
+2026-09-10 · boundary_verdict_check · DONE; new N6-N19 partial PAPER accepted, report MEDIUM merge-status and WORDING projector fixed, then CLEAN/CLEAN on c20dd15d. Merge created with both unchanged editions. boundary_bootstrap_check remains needed for migrator code review; agents-watch stays active.
+
+2026-09-10 · boundary_bootstrap_check · DONE; scoped migrator root fix13 tests, all MEDIUM ownership/mirror findings corrected, CLEAN/CLEAN on a9dfeeae/3aea9f20. Both child agents DONE; agents-watch DELETED. No verdict watches or numerical jobs.
+
+2026-09-10 · boundary_bootstrap_check · gpt-5.6-terra/xhigh · bounded integration regression: manual same-source knowledge rows mistaken for migrator components; plan/code review only · RUNNING expected10min, no descendants. agents-watch20min ACTIVE. Semantic refresh already passed; no repeat refresh unless indexed bytes change.
+
+2026-09-10 · boundary_bootstrap_check · DONE; integration false ownership corrected, plan CLEAN/CLEAN, artifact LOW new E501 fixed then CLEAN/CLEAN on ac2bec0e/a4962e60. Parent live455dryrun0/session_start0/ask HITS0; DB unchanged. agents-watch DELETED. No live agents, verdict watches or numerical jobs.

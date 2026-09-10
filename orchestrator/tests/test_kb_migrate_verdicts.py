@@ -67,6 +67,16 @@ class VerdictIdTests(unittest.TestCase):
                 "INSERT INTO kill_evidence VALUES('YAML_OWNER','route_score','KEEP_YAML');"
             )
             conn.execute(
+                "INSERT INTO kill(id,unit_type,subject,status,source_file,scope_negation) "
+                "VALUES('MANUAL_ROW','object','KEEP_MANUAL','killed',?,'MANUAL_SCOPE')",
+                (str(verdict.relative_to(repo)),),
+            )
+            manual_refs = [
+                ("MANUAL_ROW", "verdict", str(verdict.relative_to(repo))),
+                ("MANUAL_ROW", "verdict_copy", str(mirror.relative_to(repo))),
+            ]
+            conn.executemany("INSERT INTO kill_evidence VALUES(?,?,?)", manual_refs)
+            conn.execute(
                 "INSERT INTO capability VALUES(?,?,'supplier_ledger','KEEP_FOREIGN',"
                 "'','declared','other_writer')",
                 (verdict.name, str(verdict.relative_to(repo))),
@@ -81,11 +91,18 @@ class VerdictIdTests(unittest.TestCase):
             ):
                 self.assertEqual(kb_migrate_verdicts.kb.DB_PATH, db)
                 self.assertNotEqual(db, production_db)
+                snapshot = db.read_bytes()
+                with patch.object(sys, "argv", ["migrate", "--dry-run"]):
+                    self.assertEqual(kb_migrate_verdicts.main(), 0)
+                self.assertEqual(db.read_bytes(), snapshot)
                 self.assertEqual(kb_migrate_verdicts.main(), 0)
                 self.assertEqual(kb_migrate_verdicts.main(), 0)
                 conn = sqlite3.connect(db)
                 kid = conn.execute("SELECT id FROM kill WHERE subject='OWN_STRATEGY'").fetchone()[0]
-                conn.execute("UPDATE kill SET scope_negation='CURATED_SCOPE' WHERE status='killed'")
+                conn.execute(
+                    "UPDATE kill SET scope_negation='CURATED_SCOPE' "
+                    "WHERE status='killed' AND id!='MANUAL_ROW'"
+                )
                 conn.execute("INSERT INTO kill_alias VALUES(?,'MANUAL_ALIAS','manual')", (kid,))
                 conn.execute(
                     "INSERT INTO kill(id,unit_type,subject,status,source_file) "
@@ -123,6 +140,13 @@ class VerdictIdTests(unittest.TestCase):
                     self.assertEqual(kb_migrate_verdicts.main(), 0)
                     self.assertEqual(kb_migrate_verdicts.main(), 0)
                     snapshot = db.read_bytes()
+                    for removed in (
+                        revised.replace("PRIMARY: KILL_NEW\n", ""), "# No components\n",
+                    ):
+                        verdict.write_text(removed)
+                        with self.assertRaisesRegex(ValueError, "COMPONENT_CHANGE"):
+                            kb_migrate_verdicts.main()
+                        self.assertEqual(db.read_bytes(), snapshot)
                     verdict.write_text(revised.replace("OWN_STRATEGY", "SHARED_STRATEGY"))
                     with self.assertRaisesRegex(ValueError, "COMPONENT_CHANGE"):
                         kb_migrate_verdicts.main()
@@ -140,6 +164,17 @@ class VerdictIdTests(unittest.TestCase):
                         kb_migrate_verdicts.main()
                     self.assertEqual(db.read_bytes(), snapshot)
             conn = sqlite3.connect(db)
+            self.assertEqual(
+                conn.execute(
+                    "SELECT kill_id,kind,ref FROM kill_evidence "
+                    "WHERE kill_id='MANUAL_ROW' ORDER BY kind"
+                ).fetchall(), manual_refs,
+            )
+            self.assertEqual(
+                conn.execute(
+                    "SELECT subject,scope_negation FROM kill WHERE id='MANUAL_ROW'"
+                ).fetchone(), ("KEEP_MANUAL", "MANUAL_SCOPE"),
+            )
             self.assertEqual(
                 conn.execute("SELECT id,rowid FROM kill ORDER BY id").fetchall(), before
             )

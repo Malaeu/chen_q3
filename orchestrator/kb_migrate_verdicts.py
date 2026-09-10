@@ -275,10 +275,15 @@ def choose_component_id(
 
 def check_component_identity(conn, name, known_ids, component_ids):
     """Metadata refresh cannot silently reassign a source's attached records."""
-    previous = {kid for kid, source in known_ids.items()
-                if source and Path(source).name == name}
+    candidates = {choose_component_id(name, name, known_ids, component, True)[0]
+                  for component in ("iteration", "kill")}
+    # A manual row may cite the same source; only generated IDs own its components.
+    previous = {kid for kid in candidates
+                if known_ids.get(kid) and Path(known_ids[kid]).name == name}
     previous.update(kid for kid, ref in conn.execute(
-        "SELECT kill_id,ref FROM kill_evidence WHERE kind IN ('verdict','verdict_copy')"
+        "SELECT e.kill_id,e.ref FROM kill_evidence e "
+        "WHERE e.kind IN ('verdict','verdict_copy') AND EXISTS "
+        "(SELECT 1 FROM kill_evidence y WHERE y.kill_id=e.kill_id AND y.kind='yaml_name')"
     ) if Path(ref).name == name)
     if previous - set(component_ids):
         conn.close()
@@ -311,6 +316,7 @@ def main() -> int:
     known_scopes = dict(conn.execute("SELECT id,scope_negation FROM kill WHERE scope_negation!=''"))
     existing_ids = set(known_ids)
     iteration_ids = set()
+    component_owners = {}
 
     rows, evidence, aliases = [], [], []
     live_names = set()
@@ -433,6 +439,7 @@ def main() -> int:
             for p in paths:
                 evidence.append((kid, "verdict_copy", str(p.relative_to(REPO))))
         check_component_identity(conn, name, known_ids, component_ids)
+        component_owners[name] = set(component_ids)
 
     print(f"distinct verdicts scanned : {len(by_name)}")
     print(f"  new strategy rows (M3)  : {n_iter}")
@@ -467,7 +474,7 @@ def main() -> int:
     # Rebuild only selected source-copy references, including vanished mirrors.
     old_copies = [tuple(row) for row in conn.execute(
         "SELECT kill_id,kind,ref FROM kill_evidence WHERE kind IN ('verdict','verdict_copy')"
-    ) if Path(row[2]).name in by_name]
+    ) if row[0] in component_owners.get(Path(row[2]).name, set())]
     conn.executemany(
         "DELETE FROM kill_evidence WHERE kill_id=? AND kind=? AND ref=?", old_copies,
     )
