@@ -1145,3 +1145,154 @@ One reused boundary_verdict_check, terra/xhigh, read-only/no descendants, audite
 The checker used a separate rational sweep to verify2493regions and exact positive gap19294093080288048462243720489684131/340282366920938463463374607431768211456. It independently reproduced D24's Jacobian2 and full-tail160bit ratio1.7029088736237471; parent separately wrote the scalar quadrature and reproduced the join interval. The final16-minute evaluator was run once by the parent; independent review did not masquerade as an independent full rerun. The historical LOW broadcasting claim was withdrawn by its author after executable disproof, not silently downgraded or fixed in code.
 
 The pre-existing83379-byte BOUNDARY report prefix (SHA256884099489cd8de6df51cb37c754ddad4321ff301f614c2e06418cb59d0d53da8) and both original verdict hashes are unchanged. This is a checked paper derivation with a reproducible finite interval certificate for the stated central source block and a distinct scoped obstruction. No source-sign/RH proof, first-contact witness, production Lean admission, new Proshka message or phase/global increment follows.
+
+
+# D25-D26. Product-weighted variable tail lengths still collide with the paid central source
+
+Status: ACCEPTED_AT_FIXED_DENSITY_ALLOCATION_OBSTRUCTION. Baseline4fd34906208e4bcdac272b090076fe340d65f0ba. The D20-D23 central supplier and its original I=[log(7/5),log(8/5)],R=1/8 are unchanged. Canonical f=Phi/A,c_t(x)=f(x)f(x+t),n(t)=-b(t),p=log2, j(u)=u^3 b_+(u), L(d)=int j(s)j(d-s)ds. This is a scoped allocation obstruction, not a source-sign or RH result.
+
+## D25. The unavoidable short charges do not involve any resistance tuning
+
+Set d=p-t for t in I. For each right-tail source edge with x+t/2>R, choose the path
+
+x -> x-s -> x-d -> x+t,
+
+with probability density mu_t(s)=j(s)j(d-s)/L(d). Reflect this rule for x+t/2<-R. Both shorts s,d-s lie in P=(0,tau) almost surely, and L(d)>0 since d/2 is strictly inside P. The prime edge has length p. This is exactly one fixed probability law for distributing EACH negative source edge among paths; reweighting the source responsibility by another s-dependent factor would be a different law.
+
+Suppose arbitrary nonnegative physical charges A1,A2,A3 pay the pointwise path certificate
+
+K|r(x+t)-r(x)|^2 <= A1|r(x-s)-r(x)|^2 + A2|r(x-d)-r(x-s)|^2 + A3|r(x+t)-r(x-d)|^2,
+K=n(t)c_t(x),
+
+for all complex path values before integrating against mu_t(s)dxdt. Taking path values(0,1,1,1) forces A1>=K, and(0,0,1,1) forces A2>=K, irrespective of A3. All four vertices are distinct almost surely; arbitrary values can be realized by compact smooth ratios. In particular, granting the prime edge unlimited capacity and choosing ANY source/path-dependent unequal charges cannot lower either short charge below K in this framework. No global resistance fraction theta, proportional-to-length prescription or common short multiplier is needed for this necessary bound.
+
+For receiving(y,u), the two right-tail coordinate changes are (x,s,t)=(y+u,u,t) and(y+d,d-u,t); both have absolute Jacobian1. Thus the MINIMAL forced short-load density relative to b(u)c_u(y) is
+
+M_R(y,u)=u^3/c_u(y) int_I n(t) j(p-t-u)/L(p-t) * {
+ c_t(y+u) 1_(y+u+t/2>R) + c_t(y+p-t) 1_(y+p-t/2>R)
+}dt,
+M(y,u)=M_R(y,u)+M_R(-y-u,u).                                  (D25a)
+
+The factor u^3 is j(u)/b(u); there is no deterministic dt/du factor2 because s is now averaged independently. The reflected denominator agrees by evenness of f. Every charge is nonnegative, so retaining the accepted D22 central allocation rho_c requires
+
+rho_c(y,u)+M(y,u)<=1 almost everywhere.                         (D25b)
+
+This is necessary for the stated nonnegative per-path/resource certificate. It is not asserted necessary for an integrated inequality without individual path certificates, another mu, or a different central allocation.
+
+## D26. A rigorous lower witness at the original receiving location
+
+Take u=3/20,m=y+u/2=9/40, hence y=3/20. Retain only the66 full t-cells of width1/500 between.338 and.470, strictly inside the ORIGINAL I. In rho_c keep a side contribution only when its source-center indicator holds throughout that complete t-cell; otherwise discard it. Retain the full z in[-1/8,1/8] middle integral. Apply the analogous certain-indicator rule to D25a. Discarded terms are nonnegative, so these partial integrals are LOWER witnesses, not upper bounds on the complete densities.
+
+| Retained partial integral | Rigorous enclosure |
+|---|---|
+| central partial C | [.82225,.99399] |
+| forced short partial M | [.20129,.22373] |
+| C+M | [1.02355,1.21771] |
+
+The exact computed lower endpoint of C+M is
+87074391471455588272897529228706152477/85070591730234615865843651857942052864>1.
+Therefore the actual rho_c+M exceeds1, despite granting unlimited prime resource and using only the minimal compulsory short charges. The fixed source-weighted law mu_t(s)=j(s)j(p-t-s)/L(p-t) cannot be joined to the D20-D23 central supplier on the ORIGINAL I/R by ANY such pathwise coefficients, including source/path-dependent unequal coefficients. Retuning a constant or variable resistance fraction cannot rescue it.
+
+This is not a measure-zero escape: all retained side-indicator tests are strict on finitely many compact cells. Their validity persists in a sufficiently small neighborhood of this receiving point. The corresponding partial integrals are continuous there: j,Phi and positive L,Z denominators are continuous on compact sets, and all moving variables stay in bounded sets. Hence the strict lower violation persists on an open set. No change of I/R or source terms is made.
+
+### Complete interval inputs and computation
+
+The script below is run from the repository root. It hash-checks the published D23 evidence bundle and the embedded evaluator, then executes only its already-reviewed interval-oracle/precomputation prefix: j/Phi range trees on full1/10000 cells, L/Z rectangle enclosures, 128-bit Arb and the COMPLETE analytic theta tail D19a. No sampled Phi values, floating bound conversions, discarded radii or source-zero approximations are used. The new lower-bound receiver is coded separately below. Original endpoint t-cells and uncertain side indicators are discarded, whereas normalization denominators still include their complete defining integrals. Strict positive denominator bounds are asserted. This reuse is stated explicitly; it is not described as an independent implementation of the shared oracles.
+
+The broader earlier trial used a fixed resistance fraction theta and physical short charges K*d/((1-theta)*s_i). Its diagnostic witness suggested central.9139 plus short.4032, with required short share about4.68 and prime share about.72. Those samples selected the point; they are not proof inputs. The resulting upper-resource tuning is unnecessary after the stronger elementary A_i>=K observation above. The frozen prediction that the trial's required shares exceed1 is CONFIRMED at that family scope. The result does not rule out arbitrary densities or the original integrated source sign.
+
+### Next decisive analytic task
+
+Do not spend another turn retuning theta or coefficients of this fixed law. The unresolved supplier is now location-dependent source allocation: D23 provides an actual central certificate; D24 and D25-D26 identify concrete receiving overloads for two natural tail laws. Prepare a substantive source-flow question using the explicit residual capacity b(u)c_u(y)(1-rho_c), the untouched prime capacities and the original negative source, asking for an actual admissible density/flow or a precise general dual obstruction. Require the full shared receiving budget, not a pointwise finite constant or a smaller interval. A global continuation must also account for the negative lengths outside I. No question is dispatched merely by drafting this note; normal source pins/review/binding remain required.
+
+### Exact executable evidence
+
+Run from the repository root with the existing Python environment containing python-flint. Dependency bundle: `docs/routeB_bus/phase5_codex/out/three_edge_central_20260910.json`, SHA256 `c193163d562dfc5eedcc5a462932c879533364f52af86c9e47182c8d2f193db2`; its oracle/precomputation code is hash-checked by the script. The following code and output are byte-for-byte copies, including their final LF.
+
+Code: 2412 bytes; SHA256 `bc0558f233cca061fd97a98d87ae896e32f863fe1747121a3eea55978782a163`.
+
+```python
+from pathlib import Path
+import json,hashlib,sys,time
+
+started=time.monotonic()
+bundle_path=Path('docs/routeB_bus/phase5_codex/out/three_edge_central_20260910.json').resolve()
+raw=bundle_path.read_bytes()
+assert hashlib.sha256(raw).hexdigest()=='c193163d562dfc5eedcc5a462932c879533364f52af86c9e47182c8d2f193db2'
+entry=json.loads(raw)['artifacts']['q3_three_edge_adaptive.py']
+code=entry['text'];assert hashlib.sha256(code.encode()).hexdigest()==entry['sha256']=='3a05dcdb27d3db911c89f9329a0ab1ca52a9c6bead24f6bcecbfd362f1148cad'
+assert code.count('if a.boxes:')==1
+# Reuse the published full-interval j/Phi/L/Z oracles and precomputation only.
+# The new lower-bound receiving formula below is evaluated separately.
+sys.argv=['bound','--mesh','1/1000','--time-step','1/500']
+exec(compile(code.split('if a.boxes:')[0],str(bundle_path)+':oracles','exec'),globals())
+uu=F(3,20);mm=F(9,40);u=A(uu);m=A(mm);p=arb(2).log()
+lo=(arb(7)/5).log();hi=(arb(8)/5).log()
+denom=phi(m-u/2)*phi(m+u/2)
+C=arb(0);H=arb(0);Hmin=arb(0);used=0
+for k,(tl,th,t) in enumerate(T):
+    # Discard complete endpoint cells not certainly within ORIGINAL I.
+    if not (t>lo and t<hi):continue
+    used+=1
+    sides=arb(0)
+    if abs(m+(t-u)/2)<A(R):
+        sides+=phi(m-u/2+t)/phi(m+u/2)
+    if abs(m-(t-u)/2)<A(R):
+        sides+=phi(m+u/2-t)/phi(m-u/2)
+    C+=u*u*factor[k]*lr(tl-uu,th-uu)*sides
+    C+=u*u*sum((TZ[k][i]*j(m+(t-u)/2-z)*j((t-u)/2+z-m) for i,z in enumerate(zs)),arb(0))/denom
+    d=p-t
+    ll=lr(F(str(p.lower().fmpq()))-th,F(str(p.upper().fmpq()))-tl)
+    assert ll>0
+    terms=arb(0)
+    for mid in [m,-m]:
+        y=mid-u/2
+        if y+u+t/2>A(R):terms+=phi(y+u)*phi(y+u+t)
+        if y+p-t/2>A(R):terms+=phi(y+d)*phi(y+p)
+    H+=u*u*A(th-tl)*(-dens(t))*d*j(d-u)/ll*terms/denom
+    Hmin+=u**3*A(th-tl)*(-dens(t))*j(d-u)/ll*terms/denom
+print('CERTAIN_INTERIOR_TIME_CELLS',used,flush=True)
+print('CENTRAL_PARTIAL',C,flush=True)
+print('TAIL_SHORT_PARTIAL',H,flush=True)
+print('TOTAL_PARTIAL',C+H,flush=True)
+assert C+H>1
+print('FREE_PRIME_MINIMAL_SHORT_CHARGES',Hmin,flush=True)
+for name,value in [('CENTRAL',C),('PROPORTIONAL_SHORT',H),('MINIMAL_SHORT',Hmin),('UNIVERSAL_FIXED_DENSITY_TOTAL',C+Hmin)]:
+    print(name,'LOWER',value.lower(),'UPPER',value.upper(),flush=True)
+assert C+Hmin>1
+print('RIGOROUS_LOWER_OVERLOAD',str((C+Hmin).lower().fmpq()),flush=True)
+print('SECONDS',time.monotonic()-started,'EXIT=0',flush=True)
+```
+
+Output: 916 bytes; SHA256 `af01d0881f24c0f0234759a61c88eac76f001afc9ee6b06630f2d594cf8da1d2`; unit `q3-variable-tail-portable-20260910` finished with MainPID=0, ExecMainStatus=0.
+
+```text
+PRECOMPUTE 0.8000389740045648 NT 68 NZ 250 L 472
+CERTAIN_INTERIOR_TIME_CELLS 66
+CENTRAL_PARTIAL [0.9 +/- 0.0940]
+TAIL_SHORT_PARTIAL [0.4 +/- 0.0227]
+TOTAL_PARTIAL [1e+0 +/- 0.416]
+FREE_PRIME_MINIMAL_SHORT_CHARGES [0.2 +/- 0.0238]
+CENTRAL LOWER [0.82225581369995044120027648947484924828 +/- 6.57e-40] UPPER [0.99398177857211695559694396994359924828 +/- 6.57e-40]
+PROPORTIONAL_SHORT LOWER 0.37734735462072421796619892120361328125 UPPER 0.42109903130403836257755756378173828125
+MINIMAL_SHORT LOWER [0.20129873929272434907034039497375488281 +/- 2.50e-39] UPPER [0.22372499108041665749624371528625488281 +/- 2.50e-39]
+UNIVERSAL_FIXED_DENSITY_TOTAL LOWER [1.0235545527598441466167472555423541311 +/- 1.11e-38] UPPER [1.2177067698853642567470573141361041311 +/- 1.11e-38]
+RIGOROUS_LOWER_OVERLOAD 87074391471455588272897529228706152477/85070591730234615865843651857942052864
+SECONDS 0.9973834720003651 EXIT=0
+PROCESS_EXIT=0
+```
+
+Frozen pre-run prediction from the initial scratch candidate: `Bsup+Ssup>1`, subjective probability 0.80; rough expected overload at least 2. The inequality is confirmed by the stronger fixed-density obstruction; the rough quantitative >=2 forecast is supported only by the initial diagnostic grid, not asserted as a rigorous global value.
+
+### D25-D26 independent acceptance receipt
+
+One reused boundary_verdict_check (terra/xhigh), two consecutive CLEAN passes on unchanged draft SHA256 `5b1941800e630449cfd5cbb6831bfd85e7401cc3055b7a2a04f333c78f7c83c0` (11150 bytes). FIRST_INCORRECT_ASSERTION: NONE_FOUND; no substantive finding remains. Adoption changes only `CANDIDATE_PENDING_INDEPENDENT_REVIEW` to `ACCEPTED_AT_FIXED_DENSITY_ALLOCATION_OBSTRUCTION`; all formulas, code and logged bytes remain identical. The pre-existing report prefix SHA256 `a3eddbeca94bba86d9db4cc8d6b7a87a6decf241b265ba7c63914ba1e3582d54` is unchanged.
+
+The reviewer independently checked path-value isolation, both inverse Jacobians, the reflected measure, scope of necessity and open-set continuation. Its literal replay reproduced the exact recorded lower endpoint. A separately regrouped receiving expression, using the same published full interval oracles, returned lower `1.0235520590919636...>1`; the weaker value reflects interval association. That second expression/output was present only in reviewer tool output and was not saved as a separate executable certificate. The reproducible certificate preserved above is the exact original script/output, independently replayed by the reviewer. No independent reimplementation of the shared j/Phi/L/Z oracles is claimed. Parent separately checked the source formulas, exact rational excess >471/20000, both Jacobian determinants and the two path-value vectors. Both original BOUNDARY verdicts and the published dependency bundle retain their hashes.
+
+| Pass | Severity | Finding — English term + Russian explanation | Fix applied |
+|---|---|---|---|
+| 1 | CLEAN | Scope and lower witness — область необходимости и нижняя оценка согласованы | None required |
+| 2 | CLEAN | Exact replay and unchanged artifact — точный пересчёт и неизменные байты подтверждены | None required |
+
+Accepted at fixed-density allocation-obstruction scope only. No global source sign, N24, RH or Lean admission.

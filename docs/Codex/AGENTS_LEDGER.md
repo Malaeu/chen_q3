@@ -177,3 +177,9 @@ gaussian_space_review / source_transfer_bound · DONE · prior scratch component
 2026-09-10T22:54:17+02:00 · boundary_verdict_check · DONE; final note5e1ba8de/bundlec193163d CLEAN/CLEAN, MEDIUM provenanceFIXED, D24 separately reproduced. agents-watch DELETED; no live agent or numerical job.
 
 2026-09-10T23:00:07+02:00 · reconciliation · both boundary agents DONE; agents-watch DELETED. Three-edge interval and maintenance units terminal; no job or verdict watch. Mechanical named publication requires no additional agent.
+
+2026-09-10T23:18:59+02:00 · boundary_verdict_check · gpt-5.6-terra/xhigh · new D25-D26 fixed-density variable-tail necessary overload; read-only/no descendants · RUNNING expected10min; two clean exact-artifact passes and independent lower-witness replay required. agents-watch20min required. No numerical job.
+
+2026-09-10T23:26:25+02:00 · boundary_verdict_check · DONE; D25-D26 exact5b194180 CLEAN/CLEAN, literal lower replay exact, regrouped independent formula same oracle>1.02355 (tool output only). No live numerical job or agent. agents-watch deletion follows.
+
+2026-09-10T23:30:39+02:00 · reconciliation · both boundary agents DONE; agents-watch DELETED; variable-tail numerical/maintenance units terminal0, no verdict watch. Named publication only; next flow request not started.
