@@ -1,0 +1,88 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-10-CONTACT
+BOUNDARY_ID: GOAL058_FIRST_CONTACT_SOURCE_KERNEL_EXTERIOR_RIGIDITY
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Recheck the literal first-contact source equation and construct a proof excluding its nonzero window kernel, with a precise proved remainder if incomplete.
+DATE: 2026-09-10
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SECOND_EXPRESSION
+SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_PROOF_CONSTRUCTION_AND_ADVERSARIAL_REVIEW
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_CONTACT_2026-09-10.md
+BASE_TIP: e915833ca99320dd03899fbfe296502ff0120db2
+
+0. SCOPE AND PINNED SHELF
+SOURCE_BASE: e915833ca99320dd03899fbfe296502ff0120db2
+Continue the existing BRIDGE/SATURATION chat and phase. SATURATION's cofinal T-squared upper-trial supplier was independently accepted on paper; it does not prove lower sign. This is a proof-construction batch for the remaining source sign, not another accounting of equivalent atoms. Every shelf row below is pinned to SOURCE_BASE; independently verify bytes and explicitly report any incomplete check. Prior paper proofs, including our independently checked E1-E5, are PAPER_DERIVATION_TO_RECHECK rather than axioms. The exact local operator already appears in DISTANCE D20-D21; the new note specializes its exterior defect and rejects one proposed shortcut, not the invention of that operator.
+docs/routeB_bus/FIRST_CONTACT_EXTERIOR_2026-09-10.md | sha256 b5869eb1573d7d25ce0c11ce08184643e71e6323cdbed6e4195e95c3b0de8560 | blob 34a54f8154efc3c072ac030485cb3320d231f507
+docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SCREW_HYPERBOLICITY_HODGE_2026-09-08.md | sha256 dc406f3b5e8a6074df50c542b707bfb941bc4c8daf50433a3a71641e4064cc89 | blob 654f73ab347539511e507861f8eba79ad4ffc0f4
+docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_DISTANCE_2026-09-09.md | sha256 2ad89fd43395242af8de2ed61383dd481057ae079cbd109aa32443e25edf1c5c | blob 11979ce43d5e974080afa6690bb81e07f67f745e
+docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SATURATION_2026-09-10.md | sha256 268093822b4ab75c6b7f8efd725172db9b2de96ad5c61924da3eb3f9dd0a50a5 | blob 0893efc7cd4427e568fd6fe4b97eaaad92b81435
+docs/routeB_bus/SATURATION_INDEPENDENT_CHECK_2026-09-10.md | sha256 d555fd6a2fd480369670f81fe3f1debd07255ced61807fa2c0aae4f7a8ea2796 | blob b687cf1939572f45c35dccb73e9fe5474e60d9f2
+docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_WEIL_POSITIVITY_AROUND_XI_PROOF_2026-09-05.md | sha256 93db2de6357821918211a8033b2c8f34e7f684320a25e5623e1f24d33ed58fe9 | blob 136aceb3cbbabcdfa425459562b803b67c548b48
+docs/routeB_bus/AGENT_REPORT_2026-09-05_GOAL058_XIDEV_INDEPENDENT_AUDIT.md | sha256 b2914990a93020bf3f2dbbcd3e3a8a9cb836c2ce294a85933290db048d21848f | blob 938d9b11e659adb905e70df1ae175e5a35aeb701
+docs/BATCH_PATTERNS.md | sha256 cded6dfd5950fd8dd230ad770ff0cf4a50a5bea9b2d5e91601b8eaa76120903b | blob cb63bab5fbff3d39bf63c0b0f081a2264e004f2b
+
+1. EXACT SOURCE, DOMAIN AND PRESENT FRONTIER
+Use the literal full Hermitian form B, antilinear in its first argument, Q(v)=B(v,v):
+Q(v)=integral_0^infinity alpha(t)||v(.+t)-v||_2^2 dt-cA||v||_2^2+2 Re(Mplus(v) conjugate(Mminus(v)))-2 sum_(n>=2) Lambda(n)/sqrt(n) Re integral conjugate(v(x))v(x+log n)dx.
+Here alpha(t)=exp(-t/2)/(1-exp(-2t)), cA=gamma+log(8*pi)+pi/2, Mplus/minus(v)=integral exp(+/-y/2)v(y)dy. Retain every prime power, both poles, all mixed terms and the source coordinate convention. V_a is the compact-window form domain obtained by closure of C_c^infinity(-a,a), with zero extensions; justify the closed semibounded L2 form and its Friedrichs operator A_a, rather than silently replacing V_a by H1_0. For local v, B(h,v)=0 for h in V_a is local nullity, not global radical membership. Define lambda_a=inf_{v in V_a,||v||_2=1}Q(v).
+For x>a the checked exterior expression is, in the a.e./distributional sense,
+R_a[v](x)=exp(x/2)Mminus(v)-sum_(j>=1)exp(-(2j+1/2)x)M_j(v)-sum_(n>=2)Lambda(n)/sqrt(n) v(x-log n),
+M_j(v)=integral_(-a)^a exp((2j+1/2)y)v(y)dy; B(h,v)=integral conjugate(h)R_a[v] for exterior compact smooth h. The j=0 geometric term cancels exactly with exp(-x/2)Mplus(v). The geometric part is analytic away from the boundary; the prime-shift part need not be. No trace, point evaluation of an L2 representative, exterior equation R=0 or moment-null condition is granted. General complex v needs both exterior half-lines and both parity sectors.
+SATURATION supplies |Q[f_a]|<=K exp(57a)T(a)^2 for normalized affine even trials and an exact original-shell return with factor-two slack for all sufficiently large real a. It supplies no lower sign. Its canonical raw source satisfies F_Phi(z)=xi(1/2+z)/2; the historical XIDEV raw Phi is twice this. The unit positive profile is unaffected; do not mix raw T/N conventions.
+
+2. Q1 — VERIFY THE ACTUAL FIRST-CONTACT CONSUMER
+Recheck DISTANCE D14,D20-D21,D36 and SCREW H16-H17 against the literal source. Establish the analytic prerequisites actually needed: fixed-window closed semibounded form, attainment of the spectral bottom, nested-window monotonicity and enough continuity to turn a negative window into a first zero. Supply proofs or exact verified primary-source theorems with matching domain/normalization; distinguish a verified import from a rederived lemma. Keep any unpaid prerequisite explicit in FIRST_FAILURE.
+Use the independent small-window anchor from D36 instead of assuming an imported a=0.8 certificate: for 2a<log2,
+Q[v]>=(2 integral_(2a)^infinity alpha(t)dt-cA-4sinh(a))||v||_2^2,
+whose bracket tends to +infinity as a decreases to0. Give an explicit valid a0 or a proved existential positive start. Historical SCREW's stated paper imports, and DISTANCE's source-version limitations, remain historical until independently checked; no unverified Suzuki v2 or finite certificate is silently promoted. This batch requires no new numerical anchor.
+With those prerequisites, make precise the sufficient source assertion:
+for every a>a0, [lambda_a=0 and lambda_b>0 for every b in [a0,a)] implies ker A_a={0}.
+At first contact the bottom is attained, so this exclusion is the missing contradiction. It is the target, not an assumption and not already proved by E1-E5. Explain the terminal passage from its proof to Q[f]>=0 for every complex compact smooth f; do not impose uniform positive gaps, simplicity or an even ground state unless actually needed and proved.
+
+3. Q2 — PROVE THE SOURCE EXCLUSION; THIS IS THE MAIN WORK
+Attempt a sequence of source-specific lemmas that excludes a nonzero first-contact v for the literal A_a. The concrete new object to attack is its interior equation (DISTANCE D20) coupled with the explicit exterior defect above and Q>=0 on the critical window. Exterior continuation/rigidity is one candidate mechanism, not an extra hypothesis. A different identity from the same source is allowed if it reaches this consumer with every extra hypothesis discharged.
+If using exterior continuation, prove why the exact local null equation at first contact forces enough information about R_a[v] on both half-lines; then prove any further global-radical/compact-support uniqueness step you need. Do not identify local and global kernels. An identity that tests v only against already known radical tails is not this theorem. Domain/topology and closure of exterior tests must be paid explicitly.
+Already checked obstacle E4: if r is a global radical and r_in belongs to V_a, then B(r_out,v)=B(r,v)-B(r_in,v)=0 automatically for every local null v. SATURATION's Bessel radicals satisfy these cut hypotheses. Their interior density and small selected tails do not themselves give exterior completeness, a quantitative lower bound or new sign information. A proposed new completeness/continuation theorem must use additional actual source structure and prove the step missing from this identity.
+If your first mechanism fails, exhibit its first exact failed equality/inequality/closure claim, attempt one concrete repair, and preserve the lemmas proved along the way. A partial answer must state the remaining assertion with its objects, domain, quantifiers and source terms. Relabeling H17, saying the question is equivalent to RH, repeating upper T-squared bounds or listing a menu is not the requested proof effort. Equivalence to RH is legitimate for a target; using an equivalent as a premise is circular. No RH-dependent prime-error estimate may enter an unconditional proof.
+
+4. Q3 — TRANSFER, ADVERSARIAL TEST AND TERMINAL OUTCOME
+For the actual Q2 mechanism give the full chain through Q1 to the published Weil criterion on all complex compact smooth tests. Preserve the full parity decomposition (or avoid it), both boundaries, exact source, physical normalization and operator domain. Report separately source lemmas proved, source exclusion proved, and all-test lower sign proved. A proof candidate complete requires every link, not merely a conditional implication or the spectral consumer. PX_RH_CLAIM remains NOT_MADE even for a complete candidate; independent audit and project admission follow later.
+Run the proposed mechanism against the exact algebraic falsifier E5: on C^3, Q_epsilon(x,y,z)=2 Re((epsilon*x-y)conjugate(z)), 0<epsilon<=1, radical span{(1,epsilon,0)}, window span{e1}, spectrum 0,+/-sqrt(1+epsilon^2). The window compression is nonnegative and null, radical projection onto it is onto, the normalized cut is e1 and its radical tail has norm epsilon, yet B(e3,e1)=epsilon and Q_epsilon(0,1,1)=-2. Explain exactly which new source-specific hypothesis excludes this example. The form varies with epsilon: E5 is only a one-window falsifier, not a fixed-source nested/cofinal example, not a first-contact counterexample and not a refutation of the theta source.
+If incomplete, give exactly one next_decisive_test against the newly exposed first failure, with a concrete terminal observable or lemma and a stopping condition. Prefer a proved symbolic source identity or bounded discriminator. Do not ask for repeated old finite rows, another general positivity basis, or the same atom with no new object.
+
+5. CLOSED WORK AND DEAD SHORTCUTS
+Do not redo the accepted BRIDGE f_y/f_B tests, K36/K48 up to a=.70, SATURATION A22 or the cofinal upper-rate construction. The all-test lower sign remains open. The positive-Phi signed ground-state transform is already XIDEV GS; its negative prime-free jump interval [log(7/5),log(8/5)] and unpaid DOM were checked independently. Presenting GS/DOM as a new positive representation, generic Riesz squares, qualitative interior density as an exterior theorem, or small tails as a lower bound would repeat a killed inference. E1-E5 are preparation, not the requested final mathematical advance.
+
+6. FROZEN PREDICTIONS
+P1 (p=0.90): E1-E5 and the D20 lineage survive audit with at most domain/wording corrections.
+P2 (p=0.95): E4's automatic Bessel-tail relations alone do not exclude a first-contact mode; an additional source theorem is necessary.
+P3 (p=0.80): the outcome is PARTIAL_WITH_PRECISE_REMAINDER with at least one new proved source lemma or an exact refutation of the first attempted source estimate.
+These are predictions of this batch, not premises or stopping rules. Try to refute P3 by proving the full source mechanism. Score CONFIRMED/REFUTED/UNRESOLVED with proof locators. No invented numerical forecast or new numerical run is requested.
+
+7. SOURCE AND WRITE BOUNDARIES
+Previous verdicts and the new note are PAPER_DERIVATION_TO_RECHECK even after independent acceptance. Any external source used must be identified by its actually read version and exact theorem/equation; mark relay-only or unverifiable material. Preserve historical source-version limitations. Do not claim to have read or hashed a file unless actually done. No numerical evidence as theorem and no source-compatible claim for a countermodel lacking its arithmetic hypotheses.
+Write only EXPECTED_VERDICT_PATH as the complete UTF-8 Markdown verdict. No Lean, control, queue, registry, route status or RH-claim edits. Commit and push the verdict to the existing rh_clean branch if available, preserving other changes. If write transport is unavailable, immediately return the complete downloadable file with SHA256, bytes, lines, final-LF and explicit NOT_COMMITTED/NOT_PUSHED; do not leave us waiting for a Git commit that cannot be made. A chat summary is not the full verdict.
+
+8. RESPONSE SCHEMA
+REQUEST_ID and BOUNDARY_ID; one TRY_*/KILL_*/RUN_* directive; RESULT for Q1,Q2,Q3 and OVERALL from PROOF_CANDIDATE_COMPLETE / PARTIAL_WITH_PRECISE_REMAINDER / ATTEMPT_REFUTED_WITH_EXACT_COUNTEREXAMPLE; VERIFIER: PAPER; FIRST_CONTACT_PREREQUISITES_PROVED true/false; SOURCE_KERNEL_EXCLUSION_PROVED true/false; LOWER_SIGN_PROVED true/false; PX_RH_CLAIM: NOT_MADE. Full proofs, FIRST_INCORRECT_ASSERTION if any, FIRST_FAILURE per unfinished question, exact proof dependencies, actual version/hash/read limitations, frozen-prediction scores and exactly one next_decisive_test are mandatory. Finish with exact verdict bytes/hash/blob and actual commit/push status. A refuted attempt is not automatically a refutation of the source target. A complete proof candidate requires the unconditional all-test conclusion through the actual source domains.
+
+9. PROSHKA'S OWN LINE (free form, no codes, no scoring; 20–40 lines):
+   (a) why this route and not the two nearest alternatives you considered;
+   (b) the two moves you see beyond this batch, and what would kill each;
+   (c) what you would ask us for, if you could ask (data, a probe, a definition);
+   (d) what surprised you in the shelf, and what you distrust in it.
+
+10. RESEARCH LOG (append to the verdict; no scoring):
+   (a) every source consulted this batch: locator (arXiv/DOI/URL + theorem/equation), one line: what was taken or why rejected; mark READ vs RELAY;
+   (b) every branch you tried and abandoned, one line each: the candidate, the first inequality or fact that killed it;
+   (c) intermediate identities or computations that failed but might serve another question, with their exact statement.
