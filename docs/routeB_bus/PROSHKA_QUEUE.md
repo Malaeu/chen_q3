@@ -39,6 +39,8 @@ safety confirmation остаётся внешней границей. Судья
 
 - Finite-displacement follow-up independently accepted: report D1-D4 appendix gives exact full-source compression, conditional contact identity and genuine logarithmic-domain control -log(r). arXiv2411.15985v2 is withdrawn and excluded as trace supplier; no source-sign theorem follows. Two clean checks on8050e508 (9199bytes/63LF). Next test only a new actual-source signed constraint beyond D2; stop at tautological null pairing, norm-only bounds or uncontrolled derivatives. No new request, phase count, numerical campaign or watch.
 
+- New finite-compression operator-order test ACCEPTED: D5-D6, draft9a1a6225, two CLEAN checks. At a=.7,r=.5 the complete source yields Delta in[-.08289,-.04847] and[1.45320,1.45940] at two explicit frequencies; whole arch and both poles paid. Both uniform orders fail even on smooth approximants; contact-specific sign/N24 not refuted. Direct null pairing stopped at D2. No new request: require additional actual-contact signed source information, preserving full variance/invisible-mean branch.
+
 ---
 
 ## REQ-2026-09-10-COLLAR · COLLAR: prove full source coupled contraction after reflected-prime obstruction · ANSWERED

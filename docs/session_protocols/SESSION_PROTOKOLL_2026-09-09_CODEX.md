@@ -278,3 +278,19 @@ Offen — naechste Schritte: source sign/N24 and invisible-mean branch remain op
 Wichtige Fakten: the accepted boundary envelope uses a different source from the withdrawn Pohozaev paper; no prior N4 acceptance is withdrawn here. The new identity is source bookkeeping, not a lower-sign proof. Canonical runtime phase5/global50 unchanged. Only one index refresh followed the complete indexed package; this protocol, GOAL and ledger do not require another refresh.
 
 Dateien: /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/BOUNDARY_INDEPENDENT_CHECK_2026-09-10.md:108; /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/Progress_Log.md:7207; /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/Codex/GOAL.md; /tmp/q3_finite_compression_closeout.log.
+
+## Full-source compression order and search closeout — 2026-09-10
+
+Kontext/Aufgabe: complete bounded D5-D6 source-order test and answer the owner's repeated-search-cost question; do not repeat old computations or refresh.
+
+Erledigt: direct null pairing stopped as the already-known D2. New full-source finite-frequency controls refute both uniform compression orders at a=.7,r=.5: m7 interval[-.08289,-.04847], m24[1.45320,1.45940], entire arch error and both poles retained. Exact reviewed draft9a1a6225 appended to existing BOUNDARY report; report SHA55fc7f7e3d75ad346b04fa39889a06461a0d42201acc68e431f98fe859dc93ed. Original report prefix and both immutable verdict editions preserved. No contact witness/exclusion, negative Q, N24, Lean or RH claim.
+
+Geprueft: one reused terra/xhigh checker, two separate CLEAN passes; interval assertions and kernel polynomial independently reproduced. Parent independent original-C1 quadrature cross-checks are diagnostic only. Exact journal branch_2026-09-10_51d75e809c61/artifact96bbf33cfce00637cf58d2ff61e93f7b2a4678b7759895910ebcc44929d1dd22 verified before maintenance. /tmp/q3_compression_order_closeout.log EXIT0,total146.240s: refresh132.229s (builder32.682,dynamic56.427,fixed35.379),session_start13.551s. Final /tmp/q3_compression_order_search.log HITS/exit0 contains the new journal entry. Fresh canonical plan has no fatal errors; production HOLD NODE_REGISTRY_EXACT_EDGE_REQUIRED remains.
+
+Search explanation: corpus identity hashes paths and bytes, not elapsed time or mtime. Included journal/report/queue changes invalidate the old receipt correctly. Incremental fix72c59971 is already published; normal updates preserve the collection and avoid global cleanup. Last update1.032s for3changed/3292unchanged documents; embeddings28.811s for565chunks, mandatory dynamic/fixed validation91.806s. The old37.260->1.258s comparison covers unchanged-collection maintenance only, never the complete cycle. A prior independent review found no further minimal safe code change; no new cache, service, schema or validation relaxation added. Batch indexed edits before ONE refresh; GOAL/ledger/CHAT_DIGESTS/protocol are unindexed and need no repeat refresh.
+
+Versendet: named commit and ordinary non-force publication follow this receipt; establish completion from HEAD/remote equality. No new Proshka message. Both agents DONE, agents-watch DELETED; no live jobs or verdict watch.
+
+Offen — naechste Schritte: actual-contact signed source information for N12/N24, full N17 variance and BND23 invisible-mean branch remain open. No concrete new supplier selected. Do not repeat uniform-order attempts, D2 pairing, old matrix campaigns or send a renamed request without a new substantive mechanism.
+
+Dateien: /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/BOUNDARY_INDEPENDENT_CHECK_2026-09-10.md:179; /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/Codex/GOAL.md; /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/q3.lean.aristotle/scripts/refresh_q3_docs.py:119; /tmp/q3_compression_order_closeout.log; /tmp/q3_compression_order_search.log.

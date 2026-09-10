@@ -174,3 +174,123 @@ Next bounded question: retain the finite differences of all actual prime autocor
 Exact reviewed candidate: SHA2568050e50835848dc79922c12d1cc44fad37dac537cb6d0205a27081e3ae8a451c,9199bytes/63LF/finalLF. One reused boundary_verdict_check terra/xhigh audited only the new D1-D4. Pass1 mathematical FIRST_INCORRECT_ASSERTION NONE_FOUND, two LOW (parent prompt line count; historical scratch mistaken for canonical target) and WORDING Corollary3.8 attribution. Count63 and actual canonical target resolved both LOW; attribution corrected. Separate pass2 CLEAN and pass3 CLEAN on the same hash. Only status mechanically finalized on append; the prior canonical report prefix and both original verdicts remain unchanged. No new mathematical call or phase event.
 
 Parent channel: primary arXiv record re-read and v1 bytes independently matched (493152; SHA2564014c39019b0f31d29a7daac06f17d5ad654ca390b8abe26c44e5c53131d5319). Actual v1 pages7,17-19 checked. Separate exact integration for f(x)=(1+i*x)1_[-4/5,4/5], r=3/4 gives norm728/375; C_(T_r f)(t)-C_f(t/r)=0 on0<=t<=2ra and both scaled pole moment differences0. Expansion alpha(t)=1/(2t)+1/4-t/48+O(t²). These are algebra/provenance controls; the all-domain proof is independently audited. No finite control proves the source sign.
+
+
+# Full-source compression has no uniform operator sign
+
+Status: ACCEPTED_AT_SCOPED_OPERATOR_ORDER_PAPER_SCOPE. Continuation of accepted BOUNDARY D1-D4 at base e224194511b7eee0e4bb0bd7d3aa3aad10941e4e. This is an actual-source counterexample to uniform compression order, not a contact witness or a counterexample to N24, all-test positivity, or RH. No Lean admission.
+
+## D5. The direct null pairing stops at D2
+
+For a hypothetical first-contact vector v in V_a, nonnegativity and Q[v]=0 give B(v,h)=0 for every h in V_a. Testing h=T_r v-v yields exactly Q[T_r v]-Q[v]=Q[T_r v-v], already D2. Expanding the same pairing into source terms does not by itself pay a sign for D1. This direct-pairing subattempt is stopped. This does not claim that every possible use of the literal null equation is exhausted.
+
+Before seeking a uniform source-operator inequality to replace that missing step, the following explicit control tests both possible orders. No contact premise is imposed on these controls.
+
+## D6. Two finite frequencies with opposite full-source increments
+
+Use exactly CONTACT C1 and accepted D1, physical norm, complex functions, both pole terms and the supported logarithmic domain. Set a=7/10, L=2a=7/5, r=1/2, and
+
+f_tau(x)=L^(-1/2) exp(i tau x) 1_[-a,a](x), tau>0.
+
+These unit vectors lie in V_a: their bounded jumps have squared translation difference O(t) near0, hence finite logarithmic energy. Put c(t)=1-t/L on [0,L], extended by0 above L. Then C_f(t)=c(t)exp(-i tau t), t>=0. Since log4<L<log5 and log2<L/2<log3, the exact original prime-power set is {2,3,4}, and after compression only n=2 overlaps. This cutoff is exact.
+
+Write ell_j=log j and w2=ell2/sqrt2, w3=ell3/sqrt3, w4=ell2/2. The complete arithmetic increment is
+
+P(tau)=-2{w2[c(2ell2)cos(2tau ell2)-c(ell2)cos(tau ell2)]
+             -w3 c(ell3)cos(tau ell3)-w4 c(2ell2)cos(2tau ell2)}.        (D6a)
+
+In particular n=4 is retained as a prime power with Lambda(4)=log2.
+
+### Entire archimedean increment and an elementary error bound
+
+Let k(t)=r alpha(rt)-alpha(t), alpha(t)=exp(-t/2)/(1-exp(-2t)).
+The singularities cancel. Direct integration with a lower cutoff gives
+
+2 int_0^infinity k(t)dt=log2,
+
+because int_epsilon^infinity k= int_(r epsilon)^epsilon alpha -> -.5log r.
+Thus the ENTIRE archimedean increment, including its tail, is
+
+A(tau)=log2-2 int_0^L h(t)cos(tau t)dt, h(t)=k(t)(1-t/L).              (D6b)
+
+No truncation tail has been dropped. On0<=t<=L, put x=exp(-t/4), S(x)=sum_(j=0)^7 x^j, N(x)=x^4+x^3+x^2-x. Since exp(-7/20)>7/10, x is in[7/10,1]. Cancellation gives the smooth formula k(t)=-N(x)/(2S(x)), including t=0. Here N(x)>0, and
+
+P0(x)=N'(x)S(x)-N(x)S'(x)
+ =-3x^10-6x^9-9x^8+2x^6+4x^5+6x^4+8x^3+5x^2+2x-1
+ >=2x^8+5x^2+2x-1 >=57/20>0.                                      (D6c)
+
+The first inequality uses0<x<=1, so the four positive terms from x^3 through x^6 contribute at least20x^8 and the three negative terms at worst -18x^8. N>0 follows from x^3+x^2+x-1>0 at x>=7/10. Therefore k<0 and k'=x P0/(8S^2)>0. Consequently h'>=0, h(0)=-1/8, h(L)=0 and int_0^L |h'|=1/8. One integration by parts gives the rigorous uniform bound
+
+|A(tau)-log2| <=1/(4tau).                                           (D6d)
+
+No endpoint derivative of f_tau or logarithmic trace theorem is used; h is a smooth explicit scalar kernel.
+
+### Both pole moments and their complete budget
+
+Direct integration gives
+
+M_+-(T_r f_tau)=2 sqrt(r) sinh((+-r/2+i tau)a)/[sqrt(L)(+-r/2+i tau)].
+
+Use |sinh(u+iv)|<=cosh(u). The complete difference of the two real pole products R(tau) therefore obeys
+
+|R(tau)| <= E_pole(tau)
+ =8[r cosh^2(ra/2)+cosh^2(a/2)]/(L tau^2).                           (D6e)
+
+The norm term -c_A cancels exactly. Combining D6a-D6e,
+
+log2+P(tau)-E(tau) <= Delta_r(f_tau) <= log2+P(tau)+E(tau),
+E(tau)=1/(4tau)+E_pole(tau).                                        (D6f)
+
+### Reproducible bounded arithmetic
+
+Only two finite scalar rows are evaluated; no eigenvalue, matrix-builder, old numerical row, or long computation is rerun. With tau_m=m*pi/log2, m=7 and24, 180-bit python-flint interval arithmetic gives the following OUTWARD relaxed enclosures:
+
+| m | tau (display only) | log2+P(tau) (display only) | full Delta interval |
+|---|---|---|---|
+| 7 |31.7265209927903567|-.0656778388883296474|[-.08289,-.04847] |
+|24|108.776643403852651|1.45629949145022198|[1.45320,1.45940] |
+
+Hence Delta_(1/2)(f_tau7)<-1/25 and Delta_(1/2)(f_tau24)>7/5. No tolerance-based sign is used. The analytic integration error and BOTH pole contributions are paid in each row, rather than hidden in numerical quadrature.
+
+Exact reproduction from the repository root, using its existing .venv:
+```python
+from flint import arb, ctx
+ctx.prec = 180
+l2, l3 = arb(2).log(), arb(3).log()
+a, r = arb(7)/10, arb(1)/2
+L = 2*a
+c = lambda t: 1-5*t/7
+w2, w3, w4 = l2/arb(2).sqrt(), l3/arb(3).sqrt(), l2/2
+assert arb(4).log() < L < arb(5).log()
+assert l2 < L/2 < l3
+assert (-L/4).exp() > arb(7)/10
+for m in (7, 24):
+    tau = m*arb.pi()/l2
+    d2 = c(2*l2)*(2*tau*l2).cos()-c(l2)*(tau*l2).cos()
+    d3 = -c(l3)*(tau*l3).cos()
+    d4 = -c(2*l2)*(2*tau*l2).cos()
+    center = l2-2*(w2*d2+w3*d3+w4*d4)
+    ep = 8*(r*(r*a/2).cosh()**2+(a/2).cosh()**2)/(L*tau**2)
+    err = 1/(4*tau)+ep
+    print(m, center-err, center+err)
+    if m == 7:
+        assert center+err < -arb(1)/25
+    else:
+        assert center-err > arb(7)/5
+```
+
+D1's difference is bounded and continuous in physical L2 on fixed support: the arch kernel difference is in L1, shifts are bounded, and moments are bounded functionals. Therefore approximating f_tau in L2 by compact smooth functions inside(-a,a), and normalizing, preserves each strict sign for sufficiently close approximants. Thus neither uniform compression order holds even on complex compact smooth tests. This extension concerns Delta, not an L2-continuity claim for Q itself.
+
+## Scope, prediction and next gate
+
+The complete source operator difference T_(1/2)^* A T_(1/2)-A is indefinite in the form sense on this fixed supported domain. This kills both candidate UNIFORM compression orders. It does not kill a condition restricted to hypothetical contact null vectors: neither displayed test is asserted to satisfy A_a f=0, and D2 still requires strictly positive Delta on such vectors. It also does not assert either displayed Q-value is negative.
+
+The parent's frozen heuristic phase-limit forecast was approximately-.078. The ideal two-prime phase coefficient evaluates to-.0776843469347508056; the proof above instead uses FINITE tau7 and its complete rigorous error budget. No limiting-phase construction is needed or claimed as the proof. General high-modulation prime-phase methods already appear on the RESERVOIR shelf; the narrow new item is the exact full-source compression counterexample at a=.7,r=.5 with both error budgets.
+
+Next required supplier is genuinely contact-specific and signed. Direct null pairing, general log-domain regularity and uniform operator compression order are all insufficient by the exact controls above. Do not resend a renamed BOUNDARY request or replace the actual low/contact subspace with these high-modulation controls. N24 and the invisible-strip-mean branch remain open.
+
+### Compression-order review and parent control receipt
+
+D5-D6 independently accepted after two CLEAN passes by the same boundary_verdict_check terra/xhigh, read-only/no descendants. Exact candidate SHA2569a1a62250548024b72bb16b6f5354f647dfdf14430af0597b2a1c141d9c8dfc6,7201bytes/112LF/finalLF. Both finite python-flint asserts, the exact polynomial identity, entire arch tail and pole factor8 reproduced; FIRST_INCORRECT_ASSERTION NONE_FOUND. Only candidate status mechanically finalized; original report prefix preserved.
+
+The separate parent original-C1 channel integrated the full form directly with mpmath50 digits, not via D6f, and regenerated Lambda by prime factorization. Diagnostic Q(original),Q(compressed),Delta: m7=(2.36843579686156579,2.30330531515178284,-.06513048170978296); m24=(2.07886184106803169,3.53507010146926888,1.45620826040123719). These non-interval quadrature values merely cross-check the independent rigorous D6f enclosures; they are not certified Q signs or null-vector assertions.

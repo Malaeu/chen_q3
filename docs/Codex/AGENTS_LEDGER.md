@@ -127,3 +127,9 @@ gaussian_space_review / source_transfer_bound · DONE · prior scratch component
 2026-09-10T18:56+02:00 · boundary_verdict_check · gpt-5.6-terra/xhigh · bounded new finite-compression D1-D4 audit, not repeated BOUNDARY intake; exact draft2acbc040 · RUNNING, expected15min, read-only/no descendants · result=first invalid assertion, domains/signs/source provenance, two clean passes. agents-watch20min required.
 
 2026-09-10 · boundary_verdict_check · DONE; new D1-D4 draft8050e508 accepted at narrow PAPER scope after LOW count/target clarification, WORDING attribution correction, then CLEAN/CLEAN. Original verdict audits not repeated. No live agents; agents-watch deletion follows.
+
+2026-09-10T19:23+02:00 · boundary_verdict_check · gpt-5.6-terra/xhigh · new D5-D6 full-source compression-order counterexample audit; draft9a1a6225 · RUNNING expected12min, read-only/no descendants; result=source factors, analytic error proof, two arb signs and exact scope. One checker only; agents-watch20min required.
+
+2026-09-10 · boundary_verdict_check · DONE; D5-D6 exact9a1a6225 full-source operator-order controls accepted after CLEAN/CLEAN, both interval signs independently reproduced. No live agents; agents-watch deletion follows.
+
+2026-09-10 · reconciliation · both boundary agents DONE; agents-watch DELETED, no verdict watch or numerical job. D5-D6 maintenance/search checks complete; no agent required for mechanical publication.
