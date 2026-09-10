@@ -1,39 +1,120 @@
 {
   "active_exploration": null,
   "active_proshka_phase": {
-    "conversation_id": "6a8c3e2a-df50-83eb-b53d-dd4cc46f646f",
+    "conversation_id": "6aa24f25-0934-83eb-9151-3565fc4b3379",
     "full_context_uploads": 0,
-    "last_adjudicated_pin": "e1539757ee6a70b4498e63a14fd2e41ec4a4a160",
-    "last_boundary_id": "GOAL058_G3_SATZ9_UNIFORM_ASYMPTOTIC_LIBRARY_WALL",
-    "opened_at": "2026-08-24T14:58:31+02:00",
-    "opening_pin": "42c23256dd5493c2ba85598ac611beb2ad7e0165",
+    "last_adjudicated_pin": "4ae462655affe4e3511a765a54a04a6510338f72",
+    "last_boundary_id": "GOAL058_RADICAL_TRIAL_SCHUR_T_SQUARED_SUPPLIER",
+    "opened_at": "2026-09-10T08:33:00+02:00",
+    "opening_pin": "b968f9443d5491778ab5e65c75c4ad7d64ba0b14",
     "owner_boundary_count": 0,
     "phase_id": "PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13",
     "phase_key": {
       "convention_lock_id": "GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED",
-      "front_id": "GOAL058_G1_G3_COFINAL_GROUND_TRACKING",
+      "front_id": "GOAL058_SECOND_EXPRESSION",
       "honesty_state": "CHALLENGER_NOT_RH",
       "route_id": "RouteB_TwoLevelSpectralLadder",
-      "source_object_family_id": "PROPOSITION59_CCM_FINITE_BOTTOM_GROUND_FAMILY",
-      "terminal_consumer_id": "Q3.RouteB.CanonicalRHRoute.rh_of_canonical_strip_slots"
+      "source_object_family_id": "CANONICAL_TEST_SIGNED_DIRICHLET_FORM",
+      "terminal_consumer_id": "published_Weil_criterion_on_all_complex_compact_smooth_tests"
     },
-    "proshka_calls": 8,
+    "proshka_calls": 1,
     "status": "ACTIVE"
   },
   "control_status": "ACTIVE",
   "last_exploration_close": null,
   "mathematical_authority_mode": "CODEX_PROSHKA_FULL_EXCEPT_PX_RH_CLAIM",
   "meter": {
-    "delegated_strategic_review_calls": 45,
+    "delegated_strategic_review_calls": 46,
     "exploration_review_calls": 0,
     "fanout_violations": 0,
     "forced_rollovers": 1,
-    "fresh_chats_opened": 2,
+    "fresh_chats_opened": 3,
     "mathematical_owner_deferral_violations": 0,
     "ordinary_goal_close_calls": 0,
-    "phases_opened": 2,
+    "phases_opened": 3,
     "px_rh_claim_requests": 0
   },
+  "observed_phase_transitions": [
+    {
+      "disposition": "CLOSED_FOR_CHANNEL_CONTINUATION_NOT_PROOF",
+      "event": {
+        "expected_runtime_sha256": "657269c6eab3ed2ebe923e97dd90b88221237d7f27f2c7bac2b2b48d30622dda",
+        "receipt_pin": {
+          "blob": "30d35715a36e622879a556fdf3153be61c91105a",
+          "commit": "a3220fadabe7504fdb7327999a80ae95ab73b9c9",
+          "path": "docs/routeB_bus/PROSHKA_QUEUE.md",
+          "sha256": "537526340d391b5d3586f6b416afffdc947c6130b8ac14c734f26d7f0de345d0"
+        },
+        "transition_id": "REQ-2026-09-09-BRIDGE"
+      },
+      "late_recording": true,
+      "observed_at": "2026-09-10T08:33:00+02:00",
+      "predecessor_meter": {
+        "delegated_strategic_review_calls": 45,
+        "exploration_review_calls": 0,
+        "fanout_violations": 0,
+        "forced_rollovers": 1,
+        "fresh_chats_opened": 2,
+        "mathematical_owner_deferral_violations": 0,
+        "ordinary_goal_close_calls": 0,
+        "phases_opened": 2,
+        "px_rh_claim_requests": 0
+      },
+      "predecessor_phase": {
+        "conversation_id": "6a8c3e2a-df50-83eb-b53d-dd4cc46f646f",
+        "full_context_uploads": 0,
+        "last_adjudicated_pin": "e1539757ee6a70b4498e63a14fd2e41ec4a4a160",
+        "last_boundary_id": "GOAL058_G3_SATZ9_UNIFORM_ASYMPTOTIC_LIBRARY_WALL",
+        "opened_at": "2026-08-24T14:58:31+02:00",
+        "opening_pin": "42c23256dd5493c2ba85598ac611beb2ad7e0165",
+        "owner_boundary_count": 0,
+        "phase_id": "PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13",
+        "phase_key": {
+          "convention_lock_id": "GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED",
+          "front_id": "GOAL058_G1_G3_COFINAL_GROUND_TRACKING",
+          "honesty_state": "CHALLENGER_NOT_RH",
+          "route_id": "RouteB_TwoLevelSpectralLadder",
+          "source_object_family_id": "PROPOSITION59_CCM_FINITE_BOTTOM_GROUND_FAMILY",
+          "terminal_consumer_id": "Q3.RouteB.CanonicalRHRoute.rh_of_canonical_strip_slots"
+        },
+        "proshka_calls": 8,
+        "status": "ACTIVE"
+      },
+      "preimage_sha256": "657269c6eab3ed2ebe923e97dd90b88221237d7f27f2c7bac2b2b48d30622dda",
+      "receipt": {
+        "conversation_id": "6aa24f25-0934-83eb-9151-3565fc4b3379",
+        "observed_at": "2026-09-10T08:33:00+02:00",
+        "opening_request": {
+          "blob": "3fffbc70ca538cf86959b348890f4a4966b3515f",
+          "commit": "b968f9443d5491778ab5e65c75c4ad7d64ba0b14",
+          "path": "docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_BRIDGE_2026-09-09.txt",
+          "sha256": "cee5ce05956d744b2e3c3d4275c9c510990bb25d0745bb2ad349b5728219fce8"
+        },
+        "owner_authorization": {
+          "locator": "section 5, opening paragraph; owner new-chat instruction in current Codex task 01a084f4-7498-7021-bac2-91d184d58dc7",
+          "quote": "SCHUR независимо проверен (`952bb521`), журналы обновлены (`410ccdca`), BRIDGE подготовлен и привязан (`b968f944`, `ee24da80`), опубликован. 10.09.2026 BRIDGE доставлен с неизменённой строкой и точным вложением в НОВЫЙ чат проекта по прямому указанию владельца: https://chatgpt.com/g/g-p-69ad65d9bcfc8191a6931ea6f2c78f13-rh-marz-2026/c/6aa24f25-0934-83eb-9151-3565fc4b3379. Наблюдались файл, отправленная строка и `Pro-Denkvorgang` модели 6 Pro. Старый same-chat handle из review-plan не является адресом этого нового явно разрешённого запуска; повторно не отправлять.",
+          "source": {
+            "blob": "5921f28e1e52334bd674a5bd492a725564029bf5",
+            "commit": "57df552a4a12c7e557d0be2938e05c09060aa2e2",
+            "path": "docs/Codex/GOAL.md",
+            "sha256": "ec28e93e6cfc42cdbc917cd1e2ba2a6ba6893766740d15af2b1162b0c431a3a0"
+          }
+        },
+        "request_message_id": "42601c8e-ad3b-47de-b2aa-706c74cd9184",
+        "response_message_id": "b9b96355-7515-4611-ab05-4fe88c76d963",
+        "schema": "q3_observed_phase_transition.v1",
+        "transition_id": "REQ-2026-09-09-BRIDGE",
+        "verdict": {
+          "blob": "24c934f63e3e28a448f3989014bbadca154a94bc",
+          "commit": "4ae462655affe4e3511a765a54a04a6510338f72",
+          "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_BRIDGE_2026-09-09.md",
+          "sha256": "0d2117118585b58acc6f765f3692b5d536e3fb832039c29d9680e12ebbaf0550"
+        }
+      },
+      "recorded_at": "2026-09-10T09:21:40.775741+00:00",
+      "successor_sha256": "c859dcf252489579c08f42877885543d362b0df7596c0876ba5d5d756d6c73f8"
+    }
+  ],
   "operational_action_pending": null,
   "px_rh_claim_state": "NOT_READY",
   "recorded_review_events": [
@@ -308,6 +389,14 @@
       "meter_call_index": 45,
       "phase_call_index": 8,
       "request_message_id": "0eba51da-55c5-4707-a2ce-eb3825a2e180"
+    },
+    {
+      "adjudicated_pin": "4ae462655affe4e3511a765a54a04a6510338f72",
+      "boundary_id": "GOAL058_RADICAL_TRIAL_SCHUR_T_SQUARED_SUPPLIER",
+      "conversation_id": "6aa24f25-0934-83eb-9151-3565fc4b3379",
+      "meter_call_index": 46,
+      "phase_call_index": 1,
+      "request_message_id": "42601c8e-ad3b-47de-b2aa-706c74cd9184"
     }
   ],
   "schema": "q3_channel_runtime.v1"
