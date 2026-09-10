@@ -7169,3 +7169,14 @@ Request `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_CONTACT_2026-09-10.txt`
 **Следующий ход:** formulate a genuine full-source signed leading-response proof question for Proshka using the now subleading one-feedback error; require actual profile/energy comparison, preserve multiplicity and both parities, no repeated norm improvement or renamed L29.
 **Адреса:** docs/routeB_bus/COLLAR_INDEPENDENT_CHECK_2026-09-10.md uniform-boundary extension; exact reviewed scratch4ceefdbff4eb24df2ab6601ef6a614e9060290a78642691837f0eba58ab0d891; https://arxiv.org/html/2401.18033v2 Theorem1.1 and Lemma A.3.
 **Чей вердикт и аргумент:** parent derivation and boundary_bootstrap_check CLEAN/CLEAN. r_d=log(1/d)-gamma-log(pi)+o(1), bounded kappa, complete feedback error is smaller than d, but signed main coefficient remains unknown. L29, lower sign and RH open; no Lean admission or numerical campaign.
+
+## 2026-09-10 — BOUNDARY delivered for signed leading comparison
+
+**Развилка:** continue absolute norm improvements or ask for the actual signed leading low-source comparison.
+**Выбрали:** deliver the reviewed BOUNDARY request using the accepted uniform boundary estimate and complete subleading feedback error.
+**Почему:** full recovery O(d) and error O(d/log²) are paid; the signed main coefficient remains unpaid.
+**Что отвергли и почему:** rates alone imply no strict sign: A=d,C=log(1/d),J=t sqrt(d log(1/d)) gives S=0 at t=1 and lower envelope -exp(-4)/12 at d=exp(-4). This is only an algebraic control, not source contact. External-search batching saves0.841437s of roughly140s full maintenance, insufficient reason for a receipt-schema change.
+**Техника:** five shelf SHA/blob pins, two CLEAN request reviews; binder REVIEW_DISPATCH_READY; browser exact attachment and unchanged line, natural Pro reasoning observed at16:22+02. Live five external searches1.612569s versus batch0.771132s, no search errors.
+**Следующий ход:** exact verdict intake per section3b, one fresh terra/xhigh checker and parent proof check; no resend or old numerical campaign. Batch delivery journals before one final refresh.
+**Адреса:** docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_BOUNDARY_2026-09-10.txt; request b574857250e2c0e136bb04cfddd906ea1b3aee8f; binding22bd6a1fbc28b9e4e1639567a2410c3b3d3eeb13; chat6aa24f25-0934-83eb-9151-3565fc4b3379.
+**Чей вердикт и аргумент:** request review CLEAN/CLEAN, not a returned mathematical verdict. boundary heartbeat ACTIVE10min on exact expected path absent at binding; agents-watch deleted. Phase4/global49 unchanged; lower sign and RH open.

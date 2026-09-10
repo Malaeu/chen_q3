@@ -103,3 +103,7 @@ gaussian_space_review / source_transfer_bound · DONE · prior scratch component
 2026-09-10 · boundary_bootstrap_check · gpt-5.6-terra/xhigh · new uniform graph/scaling boundary estimate and O(d) full recovery audit · expected15min · result=first incorrect assertion/two clean passes · RUNNING; no descendants.
 
 2026-09-10 · boundary_bootstrap_check · DONE; uniform-boundary draft4ceefdbf two CLEAN passes, exact appendix accepted. No live agents; delete agents-watch.
+
+2026-09-10 · boundary_bootstrap_check · gpt-5.6-terra/xhigh · BOUNDARY proof-request scope/source/transport review · expected10min · result=two clean exact passes · RUNNING; no descendants.
+
+2026-09-10 16:22+02 · boundary_bootstrap_check · DONE; two CLEAN request passes preserved in binder intake. Exact BOUNDARY delivered with natural Pro reasoning in chat6aa24f25. agents-watch DELETED; boundary verdict watch ACTIVE10min, baseline22bd6a1f, expected path in GOAL checkpoint.

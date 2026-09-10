@@ -14,9 +14,9 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-10-BOUNDARY · BOUNDARY: prove signed leading source response after uniform boundary control · OPEN
+## REQ-2026-09-10-BOUNDARY · BOUNDARY: prove signed leading source response after uniform boundary control · IN_REVIEW
 
-- `STATUS: OPEN`
+- `STATUS: IN_REVIEW`
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_BOUNDARY_2026-09-10.txt`
 - Boundary: `GOAL058_SIGNED_BOUNDARY_LOW_ENERGY_COMPARISON`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
@@ -27,6 +27,9 @@ safety confirmation остаётся внешней границей. Судья
   `b574857250e2c0e136bb04cfddd906ea1b3aee8f` / `13190` / `74` /
   `1988f386d36cc16925ddf14d1d67e83c94ab3af1b50a36cd70586a1a5c40a589` /
   `a1c4f3c77013823562e13f86ad7a342e42f16669` / `yes`
+
+- Delivered 2026-09-10 16:22+02: exact txt attachment and unchanged binder line in chat6aa24f25-0934-83eb-9151-3565fc4b3379; natural Pro-Denkvorgang observed.
+- Watch: boundary heartbeat10min ACTIVE; baseline22bd6a1fbc28b9e4e1639567a2410c3b3d3eeb13 lacks docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_BOUNDARY_2026-09-10.md. Intake per loader section3b; no mathematical acceptance yet.
 
 ---
 

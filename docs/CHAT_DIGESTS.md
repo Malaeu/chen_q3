@@ -1746,3 +1746,5 @@ The accepted COLLAR appendix now supplies boundedness for the entire low spectra
 ## Uniform boundary response — 2026-09-10
 
 Accepted uniform extension of the COLLAR appendix uses the closed graph theorem on a fixed interval, then scaling +2log b. The entire low projector has one boundary constant for b in[a/2,a]. Exact L18 integration improves F*F to O_a(d log(1/d)), full inverse recovery to O_a(d), and complete one-feedback error to O_a(d/log²(1/d)). Constants are qualitative, not numerical certificates. Two clean checks. The remaining task is signed leading response versus low energies; more absolute norm bounds alone are not a proof of L29. Prepare a substantive Proshka proof batch with this new source input, not a restated strictness target.
+
+2026-09-10 16:22+02 — BOUNDARY delivered in living chat6aa24f25: exact request b5748572, binding22bd6a1f, natural Pro reasoning, boundary watch10min. Signed leading comparison after uniform boundary extension is the open question; no further absolute-norm loop. See Progress_Log BOUNDARY delivery entry.
