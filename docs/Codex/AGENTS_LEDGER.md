@@ -183,3 +183,11 @@ gaussian_space_review / source_transfer_bound · DONE · prior scratch component
 2026-09-10T23:26:25+02:00 · boundary_verdict_check · DONE; D25-D26 exact5b194180 CLEAN/CLEAN, literal lower replay exact, regrouped independent formula same oracle>1.02355 (tool output only). No live numerical job or agent. agents-watch deletion follows.
 
 2026-09-10T23:30:39+02:00 · reconciliation · both boundary agents DONE; agents-watch DELETED; variable-tail numerical/maintenance units terminal0, no verdict watch. Named publication only; next flow request not started.
+
+2026-09-10T23:42:08+02:00 · boundary_verdict_check · gpt-5.6-terra/xhigh · FLOW proof-request audit on86ef6fb5, four pins at a05a3b6d, same original source/phase; read-only/no descendants · RUNNING expected10min; two clean final passes. agents-watch20min required.
+
+2026-09-10T23:50:29+02:00 · boundary_verdict_check · DONE: exact FLOW86ef6fb5 CLEAN/CLEAN; four pins verified, no unresolved findings. agents-watch DELETED; no live agent or numerical job. Earlier23:42 RUNNING entry was preparatory: actual followup was issued after resume, then both passes completed.
+
+2026-09-10T23:54:24+02:00 · flow · APP_HEARTBEAT ACTIVE every10min; exact expected verdict path absent at baseline2bf9ae5bcdb5fdb8f24927bb8bace66a33d140f9; delivered23:51+02 messagef12c0890-841f-4ee2-a142-44df3878ca9d. Both agents DONE, agents-watch DELETED; no numerical job. Watch stops on candidate/completed no-push then full intake, not on unrelated commit.
+
+2026-09-10T23:58:32+02:00 · reconciliation · both boundary agents DONE; agents-watch deleted; FLOW delivery maintenance terminal0, no numerical work. flow ACTIVE10min with exact expected-path/finished-no-push intake condition.

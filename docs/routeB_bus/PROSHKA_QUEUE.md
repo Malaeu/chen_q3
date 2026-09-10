@@ -14,9 +14,9 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-10-FLOW · FLOW: construct full-source location-dependent allocation with residual capacity · OPEN
+## REQ-2026-09-10-FLOW · FLOW: construct full-source location-dependent allocation with residual capacity · IN_REVIEW
 
-- `STATUS: OPEN`
+- `STATUS: IN_REVIEW`
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_FLOW_2026-09-10.txt`
 - Boundary: `GOAL058_FULL_SOURCE_LOCATION_DEPENDENT_PATH_ALLOCATION`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
@@ -27,6 +27,11 @@ safety confirmation остаётся внешней границей. Судья
   `4695e21604af1fbe721cd6670707ff109c4352b9` / `15250` / `81` /
   `86ef6fb572406321d0fd1c628501787b43bb76014b7d97f3c1f06ef3ebe9a25e` /
   `6f03d3ad67ad598ed8b4b849dbf16d2556da93e2` / `yes`
+
+
+- Delivered 2026-09-10 23:51+02 to same living chat6aa24f25-0934-83eb-9151-3565fc4b3379: exact attached txt, unchanged binder line, natural Pro-Denkvorgang of6 Pro observed. Actual messagef12c0890-841f-4ee2-a142-44df3878ca9d read from rendered DOM.
+- Watch flow ACTIVE/10min, baseline2bf9ae5bcdb5fdb8f24927bb8bace66a33d140f9; expected verdict path docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_FLOW_2026-09-10.md absent at baseline. agents-watch DELETED; sole request reviewer DONE after CLEAN/CLEAN.
+- Intake prepared under CODEX_AS_SECOND_BODY section3b: verify candidate ancestry/request-lock/full bytes, read whole verdict, fresh single terra/xhigh checker and parent independent decisive check. A completed no-push reply triggers immediate full-file receipt and deletion of GitHub-only wait. Inspect new paid domain and ALL unpaid lengths/tails/prime resources; D23/D26 are closed, do not rerun. Keep phase5/global50 until actual adjudication; this delivery is no mathematical acceptance.
 
 ---
 
