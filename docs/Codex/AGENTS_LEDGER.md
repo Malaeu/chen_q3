@@ -107,3 +107,7 @@ gaussian_space_review / source_transfer_bound · DONE · prior scratch component
 2026-09-10 · boundary_bootstrap_check · gpt-5.6-terra/xhigh · BOUNDARY proof-request scope/source/transport review · expected10min · result=two clean exact passes · RUNNING; no descendants.
 
 2026-09-10 16:22+02 · boundary_bootstrap_check · DONE; two CLEAN request passes preserved in binder intake. Exact BOUNDARY delivered with natural Pro reasoning in chat6aa24f25. agents-watch DELETED; boundary verdict watch ACTIVE10min, baseline22bd6a1f, expected path in GOAL checkpoint.
+
+2026-09-10 · boundary_verdict_check · gpt-5.6-terra/xhigh · full787line BOUNDARY audit BND1-BND29 · RUNNING, no descendants, read-only · agents-watch20min ACTIVE; verdict watch deleted.
+
+2026-09-10 · boundary_verdict_check · DONE; full BND1-BND29 audit accepted at partial PAPER scope; exact-report MEDIUM adjoint notation corrected, then CLEAN/CLEAN on a0a82d34. Parent independent complex4x4/source/domain checks. agents-watch DELETED; no live child agents or verdict watches.

@@ -14,9 +14,9 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-10-BOUNDARY · BOUNDARY: prove signed leading source response after uniform boundary control · IN_REVIEW
+## REQ-2026-09-10-BOUNDARY · BOUNDARY: prove signed leading source response after uniform boundary control · ANSWERED
 
-- `STATUS: IN_REVIEW`
+- `STATUS: ANSWERED`
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_BOUNDARY_2026-09-10.txt`
 - Boundary: `GOAL058_SIGNED_BOUNDARY_LOW_ENERGY_COMPARISON`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
@@ -29,7 +29,12 @@ safety confirmation остаётся внешней границей. Судья
   `a1c4f3c77013823562e13f86ad7a342e42f16669` / `yes`
 
 - Delivered 2026-09-10 16:22+02: exact txt attachment and unchanged binder line in chat6aa24f25-0934-83eb-9151-3565fc4b3379; natural Pro-Denkvorgang observed.
-- Watch: boundary heartbeat10min ACTIVE; baseline22bd6a1fbc28b9e4e1639567a2410c3b3d3eeb13 lacks docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_BOUNDARY_2026-09-10.md. Intake per loader section3b; no mathematical acceptance yet.
+- Watch: DELETED on completed no-push response. Baseline22bd6a1f had no verdict; browser download preserved exactly and received in deecc2266241d70143975813445d31de7de78d2f. Original producer NOT_COMMITTED/NOT_PUSHED fields unchanged.
+
+- Accepted partial PAPER result: verdict62606bytes/787LF/finalLF/SHA2561b25d48b418551710fe66283c514be918156ce0890cd599da71c74439bda96d4, blobf2b6f3c058e5f13e0d44c3084988fac8859ca24e. Report docs/routeB_bus/BOUNDARY_INDEPENDENT_CHECK_2026-09-10.md in61b95055; one fresh terra/xhigh full audit, parent exact source/domain and complex-block checks. Report MEDIUM adjoint notation corrected then CLEAN/CLEAN. Five shelf pairs MATCH.
+- P1(.90),P2(.95),P3(.80) CONFIRMED only as batch-content predictions. BND9-BND16 averaged leading response and BND18-BND23 exact centered/physical mean reduction accepted at stated hypotheses. BND17/BND24/BND28 and both signs in BND27 UNPROVED. Two means are not assumed to detect the complete contact kernel; no lower sign/RH/Lean admission.
+- Actual delivery message746a854f-4cfd-4ca7-895b-ec1e9768a499 re-read from browser DOM; actual accepted verdict recorded phase5/global50, exact replay0. agents-watch DELETED after audit; no live agent, Proshka watch or numerical campaign.
+- Next: BND28 CENTERED_BOUNDARY_RECOVERY_RELATIVE_GAP through exact BND29 or equivalent BND24 strip-measurement injectivity. Stop at mu_min denominators, absolute o(d), positive/simple-ground assumptions or zero-means-implies-zero-strips. Even success leaves the second signed two-mean gate open; no automatic renamed request.
 
 ---
 
