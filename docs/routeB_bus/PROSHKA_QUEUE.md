@@ -20,7 +20,7 @@ safety confirmation остаётся внешней границей. Судья
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_BRIDGE_2026-09-09.txt`
 - Boundary: `GOAL058_RADICAL_TRIAL_SCHUR_T_SQUARED_SUPPLIER`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
-- Intake carried: SCHUR independently checked; finite S40 and reference comparison retained; owner go required before delivery
+- Intake carried: SCHUR independently checked; finite S40 and reference comparison retained; owner standing authorization for delivery granted 2026-09-10 (docs/Codex/GOAL.md section 1.1); NOT YET SENT
 - Registered predictions: P1-P4, frozen in section 6
 - Delivery mode: owner remote; GitHub locator
 - Request commit / bytes / lines / SHA-256 / Git blob / Final LF:

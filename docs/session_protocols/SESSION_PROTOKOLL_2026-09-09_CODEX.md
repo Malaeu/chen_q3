@@ -55,3 +55,7 @@ Dateien:
 - /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/Progress_Log.md
 - /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/CHAT_DIGESTS.md
 - /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/PROSHKA_QUEUE.md
+
+## Authorization update — 2026-09-10
+
+Owner explicitly requested automatic task-scoped work in tandem with Proshka without repeated go/permission prompts. GOAL.md section 1.1 now records that grant, including BRIDGE delivery; section 5 records the next actual step. This supersedes earlier protocol paragraphs saying delivery needs another go. Existing pinned request bytes are unchanged. Queue intake authorization is updated; no delivery is asserted. Verified remote tip c7271cae includes BRIDGE and binding. Actual platform approvals, canonical phase/transport gates, proof verification and owner-only PX_RH_CLAIM remain in force. Next: verify current chat/request state, then deliver BRIDGE and arm its result watch only after observed delivery.
