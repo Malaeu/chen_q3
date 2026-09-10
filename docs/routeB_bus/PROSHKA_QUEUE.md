@@ -14,6 +14,22 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-10-COLLAR · COLLAR: prove full source coupled contraction after reflected-prime obstruction · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_COLLAR_2026-09-10.txt`
+- Boundary: `GOAL058_FULL_SOURCE_COUPLED_COLLAR_EQUALITY`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: CONTACT C1-C21/C23-C25 accepted at stated hypotheses; C22 and lower sign open. Odd reflected-prime obstruction independently checked at f7ce930f. Six shelf pins checked; two clean request passes and two clean PDF-provenance clarification passes. Same living phase/chat.
+- Registered predictions: P1 .95 odd obstruction survives; P2 .95 no strictness from shrinking alone; P3 .80 precise partial with new proved lemma or exact refutation
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `d01e056eef27d0eff657f082a8fb58457a6e5866` / `13396` / `76` /
+  `697302c9b40ac098ea5c59262f6df4f916cc3da3e445e49e5f240fd3ebec79c6` /
+  `d9171c32e23c11144ae29b01157d1744ec11bb55` / `yes`
+
+---
+
 ## REQ-2026-09-10-CONTACT · CONTACT: first-contact source kernel exclusion after exact exterior-defect triage · ANSWERED
 
 - `STATUS: ANSWERED`
