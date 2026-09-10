@@ -7024,3 +7024,14 @@ Chosen next branch: BRIDGE §8 finite reference-minimizer energy, preserving the
 The separate implementation review has converged: one MEDIUM provenance finding fixed by pre-run dependency hash assertions; two subsequent clean confirmations, no open findings. Post-patch background recheck exit0 reproduced the result. At a=7/10,m=6, the exact positive-reference minimizer has Q[f_B]/T²=[2.268595464 +/-1.90e-10], and (107/100)T²−Q[f_B]=[-7.89858308e-13 +/-4.40e-22]. The serialized margin itself passes tenfold error separation; parent independently recomputed subtraction and sign. Full E-transfer uncertainty is about1.16809846e-22. This is ACCEPTED_FINITE_ELSE_B only: the reference coefficient fails a finite budget met by the prior signed row, so coefficient choice matters. No positivity of C is inferred, and no cofinal target is settled.
 
 Reproduction and complete intervals: docs/routeB_bus/phase5_codex/six_centre/out/bridge_reference_test_20260910.json. Source container remains unchanged. Next justified analytic question: uniform accumulated full-source recovery B20–B21 in the exact derivative family; do not refine this already resolved scalar again. Lower sign remains a separate unpaid supplier.
+
+## 2026-09-10 — Incremental search-index maintenance
+
+**Развилка:** suppress corpus staleness or remove unnecessary rebuilding.
+**Выбрали:** preserve byte-exact freshness and every dynamic/fixed check; update only changed QMD records in the existing collection.
+**Почему:** the BRIDGE closeout changed only 3 of 3283 selected source documents, while the old path removed and re-added all 3284 indexed documents including the generated manifest.
+**Что отвергли и почему:** excluding journals/new verdicts would hide useful knowledge; stale receipts must still reject. Plain qmd update touches all configured collections, so use its existing per-process config override with only q3_docs and the pinned live database.
+**Техника:** deterministic manifest; shared lock across stage promotion and index update; no unconditional cleanup/VACUUM. A 3284-document database-copy benchmark measured old remove/add/cleanup=37.260s versus incremental=1.258s with identical IDs/path/hashes. Full retrieval preflight timing is separate. Empty/BOM-only sources reject before promotion; legacy invalid UTF-8 bytes remain unchanged.
+**Следующий ход:** complete the canonical live refresh and return to BRIDGE B20–B21; no resolved numerical test repeated.
+**Адреса:** q3.lean.aristotle/scripts/refresh_q3_docs.py; orchestrator/tests/test_autopilot002.py; docs/session_protocols/SESSION_PROTOKOLL_2026-09-09_CODEX.md.
+**Чей вердикт и аргумент:** owner asked to repair repeated expensive refresh; native terra/xhigh review converged after two clean plan and two clean implementation passes.

@@ -1133,7 +1133,8 @@ tool_families:
         approval: GOAL_CLOSE_OR_EXACT_WRITE_SCOPE
         authority: RETRIEVAL_INDEX_BUILDER
         records_to: [qmd://q3_docs/, q3.lean.aristotle/.qmd_cache/semantic_index_receipt.json]
-        last_verified: 2026-08-13
+        validation: Stable root/mask use a scoped incremental update; corpus identity and all preflight/plants remain mandatory.
+        last_verified: 2026-09-10
 
       - id: semantic-preflight
         classification: AUTOMATIC
@@ -1142,7 +1143,7 @@ tool_families:
         mode: WRITES_DERIVED
         paths: [scripts/deep_preflight.py, scripts/semantic_index_plants.py, scripts/search_external_lean.py]
         invoke: python3 scripts/deep_preflight.py --out <receipt-fragment>
-        trigger: Every q3_docs rebuild before its machine-local receipt becomes PASS.
+        trigger: Every q3_docs update before its machine-local receipt becomes PASS.
         writes: true
         approval: SEMANTIC_INDEX_REFRESH_SCOPE
         authority: LIVE_FIXED_PLANTS_DYNAMIC_GOAL_QUERIES_AND_EXTERNAL_LEAN_CANDIDATE_RECEIPTS

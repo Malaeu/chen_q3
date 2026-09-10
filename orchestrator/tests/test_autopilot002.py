@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 import os
 import subprocess
-from contextlib import contextmanager
+from contextlib import closing, contextmanager
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -881,3 +881,192 @@ def load_refresh_module():
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module
+
+
+@pytest.fixture
+def isolated_qmd(tmp_path: Path, monkeypatch: pytest.MonkeyPatch):
+    """Exercise the installed CLI against an isolated config and database."""
+    import shutil
+    import sqlite3
+
+    refresh = load_refresh_module()
+    qmd = shutil.which("qmd") or str(Path.home() / ".bun/bin/qmd")
+    if not Path(qmd).is_file():
+        pytest.skip("qmd is not installed")
+    repo = tmp_path / "sources"
+    repo.mkdir()
+    config = tmp_path / "config"
+    config.mkdir()
+    database = tmp_path / "index.sqlite"
+    stage = tmp_path / "cache/current"
+    monkeypatch.setenv("QMD_CONFIG_DIR", str(config))
+    monkeypatch.setenv("INDEX_PATH", str(database))
+    monkeypatch.setattr(refresh, "REPO_ROOT", repo)
+    monkeypatch.setattr(refresh, "CACHE_ROOT", stage.parent)
+    monkeypatch.setattr(refresh, "STABLE_STAGE_ROOT", stage)
+    selected: list[Path] = []
+    monkeypatch.setattr(refresh, "collect_sources", lambda: selected.copy())
+    monkeypatch.setattr(refresh, "resolve_qmd", lambda: qmd)
+    def probe(**_):
+        return q3_docs_corpus.qmd_index_probe(
+            config_path=config / "index.yml", index_path=database,
+        )
+    monkeypatch.setattr(refresh, "qmd_index_probe", probe)
+    monkeypatch.setattr(refresh.sys, "argv", ["refresh_q3_docs.py", "--no-embed"])
+    locked = False
+
+    @contextmanager
+    def lock(_label):
+        nonlocal locked
+        assert not locked
+        locked = True
+        try:
+            yield
+        finally:
+            locked = False
+
+    promote = refresh.promote_stage
+    run_qmd = refresh.run_qmd
+
+    def locked_promote(pending):
+        assert locked, "stage promotion must share the index update lock"
+        return promote(pending)
+
+    def locked_run(*args, **kwargs):
+        assert locked, "all QMD operations must share the stage promotion lock"
+        return run_qmd(*args, **kwargs)
+
+    monkeypatch.setattr(refresh, "qmd_lock", lock)
+    monkeypatch.setattr(refresh, "promote_stage", locked_promote)
+    monkeypatch.setattr(refresh, "run_qmd", locked_run)
+
+    def rows(collection="q3_docs"):
+        with closing(sqlite3.connect(database)) as conn:
+            return conn.execute(
+                "SELECT id,path,hash FROM documents WHERE collection=? AND active=1 ORDER BY path",
+                (collection,),
+            ).fetchall()
+
+    def cli(*args):
+        return subprocess.run([qmd, *args], check=True, capture_output=True, text=True, timeout=30)
+
+    return SimpleNamespace(
+        refresh=refresh, repo=repo, config=config, database=database,
+        stage=stage, selected=selected, rows=rows, cli=cli, probe=probe,
+    )
+
+
+def test_qmd_incremental_refresh_preserves_ids_and_scopes_changes(isolated_qmd):
+    import yaml
+
+    q = isolated_qmd
+    a, b, c = [q.repo / f"{name}.md" for name in "abc"]
+    a.write_text("unchanged original A\n")
+    b.write_text("original B\n")
+    q.selected[:] = [a, b]
+    assert q.refresh.main() == 0  # Missing collection / config / database.
+    before = q.rows()
+    manifest = (q.stage / "_manifest.md").read_bytes()
+    foreign = q.repo.parent / "foreign"
+    foreign.mkdir()
+    (foreign / "foreign.md").write_text("original foreign source\n")
+    q.cli("collection", "add", str(foreign), "--name", "foreign", "--mask", "**/*")
+    foreign_before = q.rows("foreign")
+    marker = q.repo.parent / "HOOK_MUST_NOT_RUN"
+    cfg = yaml.safe_load((q.config / "index.yml").read_text())
+    cfg["collections"]["foreign"]["update"] = f"touch '{marker}'"
+    (q.config / "index.yml").write_text(yaml.safe_dump(cfg))
+    config_before = (q.config / "index.yml").read_bytes()
+    (foreign / "foreign.md").write_text("new foreign content must not be indexed\n")
+    assert q.refresh.main() == 0
+    assert q.rows() == before  # No timestamp churn and no collection teardown.
+    assert (q.stage / "_manifest.md").read_bytes() == manifest
+    a.write_bytes(b"changed A, legacy invalid UTF-8: \xd1\n")
+    c.write_text("new C\n")
+    q.selected[:] = [a, c]  # B leaves the curated corpus; do not delete source.
+    assert q.refresh.main() == 0
+    after = {row[1]: row for row in q.rows()}
+    original_a = next(row for row in before if row[1] == "a.md")
+    assert after["a.md"][0] == original_a[0]
+    assert after["a.md"][2] != original_a[2]
+    assert set(after) == {"manifest.md", "a.md", "c.md"}
+    assert (q.stage / "a.md").read_bytes() == a.read_bytes()
+    assert q.rows("foreign") == foreign_before
+    assert (q.config / "index.yml").read_bytes() == config_before
+    assert not marker.exists()
+    assert q.probe()["collection_file_count"] == 3
+
+
+@pytest.mark.parametrize("body", [b"", b" \t\r\n", "\ufeff \u00a0\n".encode()])
+def test_qmd_empty_source_fails_before_promotion(isolated_qmd, body):
+    q = isolated_qmd
+    source = q.repo / "a.md"
+    source.write_text("old indexed content\n")
+    q.selected[:] = [source]
+    q.refresh.main()
+    old_stage = (q.stage / "a.md").read_bytes()
+    old_rows = q.rows()
+    source.write_bytes(body)
+    with pytest.raises(SystemExit, match="Q3_DOCS_EMPTY_SOURCE"):
+        q.refresh.main()
+    assert (q.stage / "a.md").read_bytes() == old_stage
+    assert q.rows() == old_rows
+
+
+@pytest.mark.parametrize("drift", ["root", "mask", "missing-index"])
+def test_qmd_refresh_repairs_collection_identity(isolated_qmd, drift):
+    import yaml
+
+    q = isolated_qmd
+    source = q.repo / "a.md"
+    source.write_text("canonical source\n")
+    q.selected[:] = [source]
+    q.refresh.main()
+    foreign = q.repo.parent / "foreign"
+    foreign.mkdir()
+    (foreign / "foreign.md").write_text("foreign source\n")
+    q.cli("collection", "add", str(foreign), "--name", "foreign", "--mask", "**/*")
+    foreign_before = q.rows("foreign")
+    cfg_path = q.config / "index.yml"
+    cfg = yaml.safe_load(cfg_path.read_text())
+    if drift == "root":
+        cfg["collections"]["q3_docs"]["path"] = str(q.repo)
+    elif drift == "mask":
+        cfg["collections"]["q3_docs"]["pattern"] = "*.lean"
+    else:
+        # Preserve the complete private DB bundle, including SQLite sidecars.
+        for suffix in ("", "-wal", "-shm"):
+            part = Path(str(q.database) + suffix)
+            if part.exists():
+                part.rename(Path(str(part) + ".saved"))
+    cfg_path.write_text(yaml.safe_dump(cfg))
+    q.refresh.main()
+    live = q.probe()
+    assert live["collection_root"] == str(q.stage.resolve())
+    assert live["collection_mask"] == "**/*"
+    assert live["collection_file_count"] == 2
+    live_foreign = yaml.safe_load(cfg_path.read_text())["collections"]["foreign"]
+    assert live_foreign == cfg["collections"]["foreign"]
+    assert q.rows("foreign") == ([] if drift == "missing-index" else foreign_before)
+
+
+def test_qmd_update_failure_stops_before_embedding(isolated_qmd, monkeypatch):
+    q = isolated_qmd
+    source = q.repo / "a.md"
+    source.write_text("source\n")
+    q.selected[:] = [source]
+    q.refresh.main()
+    calls = []
+    real_run = q.refresh.run_qmd
+
+    def failing_run(cmd, **kwargs):
+        calls.append(cmd)
+        if cmd[-1] == "update":
+            raise RuntimeError("planted update failure")
+        return real_run(cmd, **kwargs)
+
+    monkeypatch.setattr(q.refresh, "run_qmd", failing_run)
+    monkeypatch.setattr(q.refresh.sys, "argv", ["refresh_q3_docs.py"])
+    with pytest.raises(SystemExit, match="planted update failure"):
+        q.refresh.main()
+    assert not any("embed" in cmd for cmd in calls)

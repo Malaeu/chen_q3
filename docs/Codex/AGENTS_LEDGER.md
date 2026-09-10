@@ -23,3 +23,10 @@ gaussian_space_review / source_transfer_bound · DONE · prior scratch component
 2026-09-10 · bridge_verdict_check · gpt-5.6-terra/xhigh · bounded follow-up finite TEST implementation audit · expected10min · result=correctness disposition · RUNNING; no descendants. Paper audit saved.
 
 2026-09-10 · bridge_verdict_check · DONE; paper ACCEPTED, finite ELSE_B accepted, hash-guard MEDIUM fixed, two clean confirmations; no active agents required.
+
+2026-09-10T09:52 · bridge_verdict_check · gpt-5.6-terra/xhigh · investigate incremental q3_docs refresh and review minimal fix · expected20min · result=source-backed cause and two clean review passes · RUNNING; no descendants.
+
+2026-09-10T09:55 · bridge_verdict_check · INTERRUPTED(runtime handle missing; list_agents confirmed only root); source findings retained, review incomplete.
+2026-09-10T09:56 · index_refresh_review · gpt-5.6-terra/xhigh · review scoped incremental index fix against a25d6ea7 · expected15min · result=two clean plan/artifact passes · RUNNING; no descendants.
+
+2026-09-10 · index_refresh_review · DONE; P4/P5, A1/A2, F1/F2 clean. All scoped tests passed; live strict refresh completed0. No running child agents; agents-watch PAUSED; пусто.

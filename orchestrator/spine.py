@@ -32,6 +32,7 @@ import sqlite3
 import subprocess
 import sys
 import tempfile
+import time
 from pathlib import Path, PurePosixPath
 
 import yaml
@@ -1956,20 +1957,19 @@ def _run_checked(action: str, command: tuple[str, ...]) -> None:
 
 
 def _refresh_semantic_index() -> None:
-    _run_checked(
-        "semantic-index",
-        ("q3.lean.aristotle/scripts/refresh_q3_docs.py",),
-    )
     with tempfile.TemporaryDirectory(prefix="q3-deep-preflight-") as temp_dir:
         dynamic = Path(temp_dir) / "dynamic.json"
-        _run_checked(
-            "semantic-index",
+        for command in (
+            ("q3.lean.aristotle/scripts/refresh_q3_docs.py",),
             ("scripts/deep_preflight.py", "--out", str(dynamic)),
-        )
-        _run_checked(
-            "semantic-index",
             ("scripts/semantic_index_plants.py", "--dynamic-preflight", str(dynamic)),
-        )
+        ):
+            started = time.monotonic()
+            _run_checked("semantic-index", command)
+            print(
+                f"SEMANTIC_REFRESH_STAGE path={command[0]} "
+                f"seconds={time.monotonic() - started:.3f}", flush=True,
+            )
 
 
 def _validate_refresh_payloads(
