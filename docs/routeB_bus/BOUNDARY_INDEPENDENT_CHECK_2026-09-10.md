@@ -379,3 +379,109 @@ The narrow new result is finite-degree termination of the centered gate in an al
 One reused boundary_verdict_check (terra/xhigh, read-only/no descendants) completed two separate CLEAN passes on exact draft16b96f853d1794e93268f93f162a0b49dde316f3490fe5ade7c744c3d1961ad1,7243bytes/77LF/finalLF. FIRST_INCORRECT_ASSERTION NONE_FOUND. The checker re-read the source domains, harmonic bound and full matrix criterion, and independently checked a nontrivial complex block with K=131/37,J=(-2+29i)/37,B=845/4847>0,S=E=0. Only candidate status finalized above; previous report and immutable verdict bytes preserved.
 
 The parent separately used R=[[2,i,0,1],[1,2,1,0],[0,1,2,i],[i,0,1,2]], D=R^*R+3I4, F=[[1,i],[2,1-i],[i,3],[1+i,2]], and M=F^*D^-1F. Then S=0 exactly. Retaining the first k coordinates for k=1,2,3 gives ranks(B)=1,2,2; det(B_2)=76586/264479 with (B_2)11=166661/264479>0 and E_2=0. At k=3 det(B_3)=23488/32607 with (B_3)11=21788/32607>0; rank(E_3)=1 and nullity(E_3)=2. All B-J^*K^-1J residuals are exactly zero. This checks adjoints/nonzero mixing and equality preservation by an independent finite channel. It does not prove the all-domain harmonic cutoff or any source sign.
+
+
+# Logarithmic extension: exact contact boundary equation, no imported sign
+
+Status: ACCEPTED_AT_SCOPED_SOURCE_FIT_CHECK. Baseline7784588b0bb505d25042f6317f078cff121c0160. This bounded supplier investigation continues the actual-source contact question. It introduces no new numerical campaign, theorem of source positivity, endpoint trace, or Proshka request.
+
+## Discovery and scope
+
+The registered two-query search used `"logarithmic Laplacian" "Pohozaev"` and `"logarithmic Laplacian" "boundary trace"`; receipt /tmp/q3_corrected_pohozaev_discovery.json reports CANDIDATES with no provider error. This is a bounded metadata search, not proof of absence. The primary record https://arxiv.org/abs/2411.15985 still marks v2 withdrawn for a crucial error in the Pohozaev proof. The record https://arxiv.org/abs/2504.18907 lists v3 and describes existence results; no corrected Pohozaev identity was established by this inspection. The earlier D4 inspection of that paper's Pohozaev passages remains the scope of its full-text assessment.
+
+One different candidate was inspected directly: https://arxiv.org/html/2312.15689v1, Theorem1.2, Remark1.3, Corollary1.4, Theorems1.6/1.7 and section5 proof of Theorem5.1. Exact fetched HTML:960344bytes, SHA25613b92d74223004c3ae66529d6a5b3baf82b4ebf3abb7486fbf21e73bbde53a72. This supplies an extension of the PURE logarithmic Laplacian and its weak unique continuation theorem. It does not state a positivity theorem for the arithmetic source. No claim is made that every external dependency was independently proved. Shelf checked first: /tmp/q3_corrected_log_pohozaev_shelf.log and /tmp/q3_log_extension_shelf.log; the latter has zero semantic candidates at its exact corpus hash but other generic shelf hits.
+
+## D10. Transfer the exact operator, including the bounded source remainder
+
+Use the already accepted COLLAR_INDEPENDENT_CHECK additional source-boundary derivation, section3 and its parent supplement. On I_a=(-a,a), with zero extension,
+
+A_a=(1/2)L_Delta,a+mathcal V_a,
+mathcal V_a=-log(2pi)I-K_a-prime_shifts+two_poles,
+(K_a u)(x)=int_(I_a) [alpha(|x-y|)-1/(2|x-y|)]u(y)dy.
+
+Here mathcal V_a is the bounded OPERATOR remainder, distinct from CONTACT's form space V_a. It retains all shifts with log(n)<2a and both pole moments from CONTACT C8; no local-potential replacement is made. The common operator domain is already proved in the cited COLLAR check.
+
+For compactly supported u in the source operator domain, u belongs to the paper's L0^1 by Cauchy-Schwarz on I_a. Theorem1.2 in dimension1 gives
+
+w_u(x,t)=(1/2)int_R u(y)/sqrt((x-y)^2+t^2)dy,
+R_u=lim_(t->0+)(w_u(.,t)+u log(t)),
+(1/2)L_Delta u=(log2-gamma)u-R_u.                    (D10a)
+
+The limit here is distributional, as in equation1.14; the auxiliary coordinate t is not distance to the window endpoints. Thus a hypothetical source contact A_a v=0 gives exactly
+
+R_v=((log2-gamma)I+mathcal V_a)v on I_a.              (D10b)
+
+This is a nonlocal Robin relation, not R_v=0 and not a positive boundary energy. The bounded remainder carries the original arithmetic sign question. Corollary1.4 likewise retains subtraction of the singular u^2 log(t) term; positivity of the extension kernel does not make its finite part positive. No pointwise or normalized endpoint limit for v has been imported.
+
+## D11. Why weak unique continuation does not discharge contact
+
+Theorems1.7/5.1 require one NONEMPTY OPEN set O on which BOTH u=0 and L_Delta u=0 as distributions. First contact supplies A_a v=0 inside I_a, not v=0 there and not L_Delta v=0. On the exterior, zero extension supplies v=0 but no equation L_Delta v=0. Continuous zero endpoint values provide two points, not the required open set. Even a hypothetical internal zero patch would need mathcal V_a v=0 there to infer L_Delta v=0; shifted and integral terms cannot be deleted merely because v vanishes at the observation point. Hence this direct import is NOT_ADMITTED at precisely those hypotheses. This is not a refutation of the external theorem, of source positivity, or of every possible extension-based proof.
+
+A separate elementary control makes the exterior issue explicit. Set u=1_[-1/4,1/4], so u=0 on an open neighborhood of x=1 and u belongs to L0^1 and the supported logarithmic form domain. Theorem1.2's kernel gives
+
+R_u(1)=(1/2)int_(-1/4)^(1/4)1/(1-y)dy=(1/2)log(5/3)>0,
+L_Delta u(1)=-log(5/3)<0.                            (D11a)
+
+Numerically these are .25541281188299534160 and -.51082562376599068321. This test is not asserted to be a contact vector or a source eigenfunction; it only rejects the inference from exterior zero extension to vanishing logarithmic boundary data. The same strict signs persist for a nonzero nonnegative smooth bump in that interval by the positive kernel, without any spectral claim.
+
+## Decision and next source test
+
+Do not import this pure-logarithmic weak continuation theorem as contact exclusion. A future extension approach must supply the missing simultaneous zero data or prove a signed inequality for the full nonlocal relation D10b. A kernel representation or generic continuation slogan is not that supplier.
+
+The separate local-null multiplication proposal was also stopped at shelf comparison: the canonical positive radical already has the signed ground-state transform GS and unproved domination DOM in PROSHKA_VERDICT_GOAL058_WEIL_POSITIVITY_AROUND_XI_PROOF_2026-09-05.md, L3a-L3b. No new source domination inequality was proved by rewriting a null pairing. This records a stopped attempt, not a theorem that all multiplier methods fail.
+
+Next bounded candidate: first inspect the shelf for a weighted short-jump path comparison in the exact canonical GS representation. Its cheapest discriminator is the optimal coefficient comparing one negative continuous jump to two positive half-jumps, retaining all three theta weights and requiring a uniform bound over the physical translation. If that coefficient is unbounded, stop this particular two-edge mechanism rather than rename DOM or launch a numerical campaign. No source-sign/N24 or formal-admission change follows from D10-D11.
+
+
+# The exact theta weight prevents a uniform two-half-jump comparison
+
+Status: ACCEPTED_AT_SCOPED_SOURCE_OBSTRUCTION. Baseline7784588b. This is a test of ONE concrete mechanism for the existing GS/DOM inequality, not a negative Weil-form example. No matrix campaign or new external theorem is used.
+
+## D12. A negative jump and its positive halves
+
+Use the exact f0=Phi/A>0 and E_r(s)=int_R f0(x)f0(x+s)|r(x+s)-r(x)|^2 dx from PROSHKA_VERDICT_GOAL058_WEIL_POSITIVITY_AROUND_XI_PROOF_2026-09-05.md CAN, L3a-L3b. Let t=log(3/2), h=t/2. Its signed continuous density is b(s)=sqrt(u)[1/(u^3-u)-1], u=exp(s). Then b(t)<0 because u^3-u=15/8>1, whereas b(h)>0 because u^3-u=sqrt(3/2)/2<1. Neither point is a prime-power atom. The candidate shortcut is a uniform finite C with E_r(t)<=C E_r(h) for all complex compact smooth r; multiplying by fixed density/Jacobian factors would only change C.
+
+For fixed x write p=f0(x), q=f0(x+h), z=f0(x+t). The best constant in the three-value inequality
+
+p z |c-a|^2 <= C_x [p q |b-a|^2+q z |c-b|^2]
+
+is exactly C_x=(p+z)/q. To see sharpness, fix a,c and minimize the bracket in b: the minimum is [p q z/(p+z)]|c-a|^2, attained at b=(p a+z c)/(p+z). This algebra holds for complex values as well. Fixed source weights are positive; no source-sign premise appears.
+
+The source CAN theta series gives, as X->+infinity,
+
+f0(X)=(4pi^2/A) exp(9X/2-pi exp(2X)) [1+O(exp(-2X))].       (D12a)
+
+Indeed the n=1 term has relative correction -3/(2pi exp(2X)), and the positive n>=2 terms are O(exp(-3pi exp(2X))) relative to its leading factor: use n^2-1>=3(n-1) and sum n^4 q^(n-1) for q=exp(-3pi exp(2X)). This also proves uniformity when X lies in a fixed bounded translate of a parameter tending to infinity.
+
+Consequently log C_x=(pi/2)exp(2x)-9t/4+o(1), so sup_x C_x=infinity. This alone would only refute the pointwise proof; the following argument tests the integrated inequality itself.
+
+## D13. The integrated fixed-half-step inequality also fails
+
+Fix 0<epsilon<h and nonzero chi in C_c^infinity((0,epsilon)); let r_R(y)=chi(y-R), R->infinity. The support of r_R is disjoint from either of its shifts by h or t. Thus, by expanding the square and changing variables, for s=h,t,
+
+E_(r_R)(s)=int_R f0(y)[f0(y-s)+f0(y+s)]|r_R(y)|^2 dy.         (D13a)
+
+It follows that E_(r_R)(t)/E_(r_R)(h) is bounded below by the infimum, over y in [R,R+epsilon], of
+
+F(y)=[f0(y-t)+f0(y+t)]/[f0(y-h)+f0(y+h)].
+
+Using D12a, uniformly on that interval,
+
+log F(y)=pi exp(2y)(exp(-t)-exp(-2t))-9t/4+o(1)
+        =(2pi/9)exp(2y)-9t/4+o(1).                          (D13b)
+
+The infimum tends to infinity. Therefore NO finite C independent of r gives E_r(t)<=C E_r(t/2) on all C_c^infinity(R). These are actual canonical theta weights and admissible compact smooth ratios; f0 r_R is an original compact smooth Weil test. Each energy is strictly positive and finite. The proof is asymptotic with an explicit positive coefficient; a floating-point sample is not used to establish divergence.
+
+Parent scalar diagnostics (first eight positive theta terms,60 decimal digits; NOT interval enclosures): at x=1,2,3, log10 C_x is respectively4.6346341742,36.8487318279,274.8179763166. At y=1,2,3, log10 F(y) is1.8201625644,16.1547709119,121.9208986026. These are sampled weight ratios, not values or signs of Q and not the integrated E ratio for a chosen chi. The normalization A cancels.
+
+## Scope and next discriminator
+
+Stop this fixed two-half-jump supplier of DOM. No full GS positivity, all-positive-jump domination, prime compensation, or adaptive path scheme is refuted. On a fixed bounded physical region these coefficients remain finite; what fails is the required uniformity over all compact test locations. The increasingly remote test does not exhibit a hypothetical contact vector.
+
+The next concrete candidate includes the actual prime jump p=log2. A two-edge detour uses p and p-t=log(4/3); the latter is still negative because (4/3)^3-4/3=28/27>1. Instead test THREE edges of lengths q,q,p with q=(p-t)/2=log(4/3)/2: the two short edges have positive b(q), since exp(q)^3-exp(q)=2/(3sqrt3)<1. For x far to the right the candidate path is x -> x-q -> x-2q -> x+t; in the left tail use its reflection. Before claiming domination, bound its exact theta-weight costs over x and then compare the INTEGRATED charge with the actual available coefficient w_2=log2/sqrt2 and the continuous b(q)dq budget. Finite or small per-edge constants alone do not prove that budget. This is the next bounded source test, not an accepted estimate, a Proshka request, or a numerical campaign.
+
+### D10-D13 independent review receipt
+
+One reused boundary_verdict_check (terra/xhigh, read-only/no descendants), two separate CLEAN final passes on each exact draft: b5511c02 (6108bytes/50LF) and50a453a3 (4579bytes/46LF). D10-D11 primary hypotheses and distributional transfer checked directly; D12-D13 theta tail, complex minimizer and integrated shifted-bump lower bound independently verified. A preliminary HIGH sign finding was explicitly withdrawn by the checker after it recognized the rg context separator as a separator, not a mathematical minus; parent independently checked literal source line450. Correct source/draft signs were not changed. This is a corrected false finding, not a severity downgrade or owner override.
+
+Primary extension record https://arxiv.org/abs/2312.15689 checked separately:41443bytes/SHAad4b5acc34407cf971dc6ee360d02a79f9a37060b6614728f5cde55176c6083d, lists v1 and no withdrawal text. Parent independently integrated the exterior kernel and recomputed the exact2/9 exponent and source signs; scalar theta rows are diagnostic only. Only candidate statuses finalized on append. Prior report prefix, both immutable BOUNDARY verdicts and phase5/global50 preserved. No source-sign/N24/RH claim or Lean admission.

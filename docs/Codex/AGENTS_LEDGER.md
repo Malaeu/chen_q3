@@ -139,3 +139,9 @@ gaussian_space_review / source_transfer_bound · DONE · prior scratch component
 2026-09-10 · boundary_verdict_check · DONE; D7-D9 draft16b96f85 accepted at exact finite-degree PAPER reduction after two CLEAN passes. No live agents; agents-watch deletion follows.
 
 2026-09-10 · reconciliation · boundary_verdict_check and boundary_bootstrap_check DONE; agents-watch DELETED. Adaptive projection systemd closeout completed0; no live numerical/maintenance job or verdict watch.
+
+2026-09-10T20:15+02:00 · boundary_verdict_check · gpt-5.6-terra/xhigh · bounded D10-D11 primary logarithmic-extension source-fit audit on b5511c02; read-only/no descendants · RUNNING expected10min; result=exact hypotheses, operator transfer, exterior countercheck, two clean passes. No repeated BOUNDARY verdict audit.
+
+2026-09-10 · boundary_verdict_check · DONE; D10-D11 b5511c02 CLEAN/CLEAN and D12-D13 50a453a3 CLEAN/CLEAN. Preliminary false HIGH sign finding withdrawn after literal source verification; no formula change. agents-watch DELETED. No live agent, numerical job or verdict watch.
+
+2026-09-10T20:32+02:00 · reconciliation · both boundary agents DONE; agents-watch DELETED; extension/theta maintenance completed0, no job or verdict watch.

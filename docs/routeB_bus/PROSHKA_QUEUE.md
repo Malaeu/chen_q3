@@ -43,6 +43,8 @@ safety confirmation остаётся внешней границей. Судья
 
 - Adaptive Legendre projection D7-D9 ACCEPTED: for each fixed admissible positive-core split, a finite degree pays B_n>=M/2 using the complete moment-tail matrix and harmonic floor. Exact S>0 iff E_n>0; original two-mean BND24 is not proved, but not required for this alternate finite reduction. Equality remains; no N24/source-sign/RH claim, no practical/uniform cutoff, no new request. Two CLEAN checks on16b96f85.
 
+- D10-D13 independently ACCEPTED: pure-logarithmic continuation lacks simultaneous zero data for the full source; exact theta weights refute every uniform fixed-half-jump comparison E_r(log(3/2))<=C E_r(log(3/2)/2), even for smooth moving compact ratios. Two CLEAN passes per draft b5511c02/50a453a3; no Q-sign or N24 claim. Next local candidate only: p=log2 and two positive q=(p-t)/2 edges, with exact theta costs and integrated arithmetic/continuous charge required. Prior .30 for a fixed negative subinterval, not RH. No new request or delivery status change.
+
 ---
 
 ## REQ-2026-09-10-COLLAR · COLLAR: prove full source coupled contraction after reflected-prime obstruction · ANSWERED

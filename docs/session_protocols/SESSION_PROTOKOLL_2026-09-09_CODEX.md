@@ -314,3 +314,23 @@ Offen — naechste Schritte: the identical actual-source signed S/E_n inequality
 Wichtige Fakten: all low modes, both parities, full high-core inverse, primes/poles/variance preserved. No mu_min replacement, assumed simple/positive ground state or endpoint trace.
 
 Dateien: /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/BOUNDARY_INDEPENDENT_CHECK_2026-09-10.md; /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/Progress_Log.md; /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/Codex/GOAL.md; /tmp/q3_adaptive_projection_systemd.log.
+
+## Logarithmic extension and theta two-half-jump obstruction — 2026-09-10
+
+Kontext/Ausgangslage: search repair72c59971 already published; current live receipt PASS in1.732s, no rebuild for that read-only answer. Canonical startup no fatal errors, production HOLD unchanged. Previous publication7784588b verified against origin.
+
+Aufgabe: finish bounded corrected-Pohozaev/extension supplier fit and test a concrete source-weighted jump comparison, without an old matrix campaign or a renamed Proshka request.
+
+Erledigt: D10-D11 maps primary2312.15689v1 extension to exact A=half L_Delta+mathcal V and R=((log2-gamma)I+mathcal V)v. Pure unique continuation requires both zero data on one open set, unavailable at source contact. Exterior indicator control R(1)=log(5/3)/2. D12-D13 refutes uniform E_r(t)<=C E_r(t/2), t=log(3/2), on actual theta weights and smooth moving ratios; integrated ratio has lower asymptotic exponent(2pi/9)exp(2R). No negative Q, DOM/N24/lower-sign proof, Lean admission or RH claim. Report prefix and both original BOUNDARY editions unchanged.
+
+Geprueft: one reused terra/xhigh checker, two separate CLEAN final passes per exact draft b5511c02(6108bytes/50LF) and50a453a3(4579bytes/46LF). Preliminary false HIGH sign issue was explicitly withdrawn after recognizing an rg separator; parent literal source check agreed, original formula unchanged. Independent parent exact exterior integral, coefficient2/9 and theta signs; six finite scalar rows are diagnostics, not interval/proof evidence. Primary extension HTML13b92d74,960344bytes and current abs recordad4b5acc,41443bytes; external dependencies not all reproved. One eight-field journal423e11e0262a/hash ed0f48116e29dd04d3488356cacfc2339fd72c96bd9709feea854e8c3fdbaa75 ready for exact projection before ONE refresh.
+
+Versendet: publication pending until named commit/remote equality; no new Proshka message or phase event. Agent DONE, agents-watch DELETED, no numerical job/verdict watch.
+
+Offen — naechste Schritte: after closeout, test a THREE-edge prime path p=log2 and q=(p-t)/2, retaining theta weights, negative t interval and exact integrated charge against w2 and b(q)dq. First discriminate at symmetric midpoint and tails, then uniform/allocation proof only if those pass. Prior .30 for at least a fixed negative subinterval, not RH. A finite graph constant alone does not prove the budget. Do not retry failed pure continuation or fixed-half-step supplier.
+
+Wichtige Fakten: D10-D11 is a source-fit rejection, D12-D13 is a new narrowly quantified actual-theta mechanism obstruction. The entire goal remains active; no new source positivity or source counterexample.
+
+Dateien: /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/BOUNDARY_INDEPENDENT_CHECK_2026-09-10.md; /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/Progress_Log.md; /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/Codex/GOAL.md; /tmp/q3_log_extension_source_fit.md; /tmp/q3_theta_two_step_obstruction.md; /tmp/q3_corrected_pohozaev_discovery.json.
+
+Final closeout evidence: Extension/theta closeout COMPLETE: exact journal423e11e0262a/hash ed0f4811 projected before ONE refresh. /tmp/q3_extension_theta_closeout.log EXIT0,total143.145s: refresh129.184s(builder32.549,dynamic51.768,fixed37.128),session_start13.430s. systemd q3-extension-theta-closeout-20260910 inactive/dead,ExecMainStatus0/MainPID0. Final ask.sh theta half-jump comparison fails returns new journal,HITS/exit0; semantic-only query had zero candidate, not a source-absence claim. Log /tmp/q3_extension_theta_search.log. No active agents/watch/job; report SHA4a466c6bcbdf5d5b4297fcbfe7b528bb6bd1598209297cd616f3a59542c8eed0. Named publication follows; verify HEAD/remote equality, do not repeat maintenance. Next bounded three-edge prime/short-jump allocation above; source sign and RH remain open.
