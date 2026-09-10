@@ -163,3 +163,17 @@ gaussian_space_review / source_transfer_bound · DONE · prior scratch component
 2026-09-10T21:38+02:00 · boundary_bootstrap_check · gpt-5.6-terra/xhigh · bounded FTS malformed-query regression review; preserve valid syntax and report database failures; no indexing/math changes · RUNNING expected10min, read-only/no descendants. Two clean final passes; agents-watch20min required.
 
 2026-09-10 · boundary_bootstrap_check · DONE; final consumer-aware SEARCH211dcaa8/tests4bde515d CLEAN/CLEAN, nine regressions including ask.sh error-code contract. Parent caught and fixed the helper-only review blind spot; earlier passes explicitly superseded. Both agents DONE; agents-watch DELETED, all test/startup/maintenance units terminal. No Proshka or numerical watch.
+
+2026-09-10T22:09+02:00 · boundary_verdict_check · gpt-5.6-terra/xhigh · new C1-C3 three-forward-step source kernel / exact receiving density audit, NOT old BOUNDARY review · RUNNING expected15min, read-only/no descendants. Parent develops independent uniform certificate; candidate not accepted. agents-watch20min required.
+
+2026-09-10 · boundary_verdict_check · RUNNING bounded diagnostic reconciliation after C1-C3 pass2; LOW broadcasting claim disputed by literal current shapes, requires executable evidence. One checker, no descendants; agents-watch remains active. Parent refines interval certificate only in scratch; no accepted math change.
+
+2026-09-10 · boundary_verdict_check · C1-C3 conditional derivation CLEAN; LOW broadcasting claim explicitly WITHDRAWN by reviewer after shape evidence. Parent independently reproduced rho(.22,0)=.9494111955246903 and grid value. Same sole checker RUNNING new interval-code audit d1b28723, expected10min; no descendants. Adaptive full-domain job q3-three-edge-adaptive-20260910 active; no whole-block acceptance yet.
+
+2026-09-10 · boundary_verdict_check · DONE first interval-code pass: no bound defect found; MEDIUM provenance remains open until full JSON hashes/coverage/final code binding. agents-watch DELETED because no agent is currently running. Parent adaptive job remains active, not an agent; existing systemd handle/log in GOAL. Reuse same checker for final exact artifacts after completion, no descendants.
+
+2026-09-10T22:49+02 · boundary_verdict_check · gpt-5.6-terra/xhigh · RUNNING final artifact pass1 on D20-D24 notec70da1f2/bundlec193163d; original full-domain certificate terminal0, exact sweep2493regions passed; new D24 deterministic-tail splice ratio1.7029088736. Expected10min, read-only/no descendants. Explicit adjudication of open MEDIUM provenance plus two clean final passes required. agents-watch20min ACTIVE. No live numerical job.
+
+2026-09-10T22:54:17+02:00 · boundary_verdict_check · DONE; final note5e1ba8de/bundlec193163d CLEAN/CLEAN, MEDIUM provenanceFIXED, D24 separately reproduced. agents-watch DELETED; no live agent or numerical job.
+
+2026-09-10T23:00:07+02:00 · reconciliation · both boundary agents DONE; agents-watch DELETED. Three-edge interval and maintenance units terminal; no job or verdict watch. Mechanical named publication requires no additional agent.

@@ -776,3 +776,372 @@ print('CERTIFIED every central two-positive-continuous-step allocation fails at 
 print('TOTAL_SECONDS',time.monotonic()-started,flush=True)
 print('EXIT=0',flush=True)
 ```
+
+
+# D20-D23. Three-forward-step source-weighted allocation on the unchanged central interval
+
+Status: ACCEPTED_AT_CENTRAL_ALLOCATION_AND_SCOPED_TAIL_OBSTRUCTION. D20-D22 are paper identities; D23 supplies the finite interval bound. No Lean admission or full source-sign claim.
+Baseline5f7a128450e61cabc4f0c9bcaa5148225cf16048. Source CAN/L3a-L3b of docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_WEIL_POSITIVITY_AROUND_XI_PROOF_2026-09-05.md; prior D17-D19 in BOUNDARY_INDEPENDENT_CHECK_2026-09-10.md. Keep I=[log(7/5),log(8/5)], R=1/8, f=Phi/A>0, c_t(x)=f(x)f(x+t), b(t)=sqrt(exp(t))*(1/(exp(3t)-exp(t))-1), n=-b>0 on I. P=(0,tau), tau<log(4/3). No alteration of full prime/pole resources or final source sign.
+
+## D20 (C1). A normalized density on three forward steps
+
+Set j(u)=u^3 b_+(u) for u>0 and j(u)=0 for u<=0. It is continuous, compactly supported on[0,tau], with j(u)~u^2/2 at zero. Let
+
+L(s)=int_0^s j(v)j(s-v)dv,
+Z(t)=int_0^t j(u)L(t-u)du,
+mu_t(s1,s2)=j(s1)j(s2)j(t-s1-s2)/Z(t) on s1,s2>0,s1+s2<t.
+
+For every t in I, Z(t)>0: t/3 lies strictly inside P, so a neighborhood of equal thirds has positive density. mu_t is a probability density; all three physical step lengths lie in P almost surely. No symmetry or x-dependent freedom is claimed necessary; this is one explicit candidate.
+
+## D21 (C2). Exact physical charges
+
+For (x,t) with t in I and |x+t/2|<=R, let K=n(t)c_t(x), s3=t-s1-s2, and the path x,x+s1,x+s1+s2,x+t. Assign A_i=K*t/s_i to its three squared differences. These coefficients already multiply |Delta r_i|^2 and are NOT additional factors on c_(s_i). Weighted Cauchy-Schwarz gives
+
+K|r(x+t)-r(x)|^2 <= sum_(i=1)^3 A_i |Delta r_i|^2,
+
+because sum_i 1/A_i=sum_i s_i/(Kt)=1/K. Ai are finite and positive mu-almost everywhere. Integrate with dx dt mu_t; all terms are nonnegative.
+
+## D22 (C3). Exact receiving density
+
+For receiving edge(y,u), u in P, put s=t-u. The first and last paths give convolutions L(s); the middle path retains its displacement v. All coordinate changes have absolute Jacobian1. Summing the three pushed physical charge measures gives dGamma= rho(y,u)*b(u)c_u(y)dy du, where
+
+rho(y,u)=u^2/c_u(y) * int_I n(t)*t/Z(t) * {
+ L(t-u)[c_t(y) 1_(|y+t/2|<=R)+c_t(y-t+u) 1_(|y-t/2+u|<=R)]
+ +int_0^(t-u) j(v)j(t-u-v)c_t(y-v) 1_(|y-v+t/2|<=R)dv
+}dt.
+
+Here t-u>0 throughout I x P. The factor u^2 follows exactly from j(u)/(u*b(u))=u^2; there is no additional factor3 or factor2. The expression is even in the edge midpoint m=y+u/2. Every receiving edge lies inside an original negative edge, so rho=0 outside |m|<=R+(max(I)-u)/2; it is enough to check m>=0 on a compact rectangle, e.g. 0<=u<=.29 and 0<=m<=.361. Replacing f by Phi in every c leaves rho unchanged.
+
+If sup rho<=1 is proved, this explicit allocation pays the ENTIRE ORIGINAL central negative block int_I int_(|x+t/2|<=R) n(t)c_t(x)|r(x+t)-r(x)|^2 dx dt from the positive continuous source. Prime atoms are unused and retained; the rest of the negative kernel and physical tails are NOT paid. This would not prove DOM, N24, lower source sign or RH. A mesh with rho<1 is only a candidate until uniform integration/rounding errors are paid.
+
+## D23. Uniform receiving certificate and exact coverage
+
+The complete interval certificate has finished and its exact coverage has passed. After independent adjudication, its verified finite-arithmetic output is:
+
+| Stage | Output regions certified | Still unresolved after that stage |
+|---|---:|---:|
+| Coarse full cover,285 rectangles |195|90|
+| 4x4 refinement of each unresolved parent |889|551|
+| Fine adaptive refinement of all551 remaining parents |1409|0|
+| Combined exact cover |2493|0|
+
+The largest recorded rational upper bound is
+340263072827858175414912363711278527325/340282366920938463463374607431768211456
+=0.9999432997564497050273564985377751039059... <1.
+Thus rho<=that number throughout the original receiving support. The strictly positive margin is greater than0.0000567. This is a uniform interval certificate, not a sampled maximum. The adaptive run examined1695 nodes and completed with EXIT0/PROCESS_EXIT0 in955.106s; the separate exact sweep returned EXACT_COVER_PASS, with rectangle area10469/100000. Coarse/refined leaf-record replays retain exactly the original unresolved sets and record every individual rational upper bound; they are not newly selected domains.
+
+The larger `upper` printed in the adaptive log is only the successively rounded Arb display hull; the certified bound is `uniform_upper_exact`, the maximum of the recorded rational leaf endpoints checked by the coverage sweep.
+
+The evaluator uses Arb at 128 bits. It keeps the complete theta tail D19a, all positive continuous lengths, and the ORIGINAL interval I and R=1/8. No phi value is taken from a point-sampling table: each range-tree entry encloses a complete rational interval of width1/10000. Tree unions cover every intersected cell. Negative j arguments use the exact zero extension. Near zero, j(u)<=u²/2; at its positive-part kink both branches are enclosed. The true positive support ends at tau<log(4/3)<.29.
+
+L is enclosed by whole v-rectangles; Z is enclosed by whole u-rectangles of j(u)L(t-u). Division is allowed only when its interval lower bound is strictly positive. The t-integral is enlarged to[42/125,941/2000]=[.336,.4705], which contains I and still has n(t)>0. This only increases the nonnegative numerator; Z remains the exact pointwise normalizer being enclosed. Middle charges use z in[-R,R], v=m+(t-u)/2-z, w=(t-u)/2+z-m. Fine rectangle unions cover t,z and the ENTIRE output u,m box. First and last charges retain an entire t-cell whenever the corresponding indicator can be true anywhere in the output box; this too is an upper bound, not missed boundary mass.
+
+Parity reduces the full receiving support to[0,29/100]x[0,361/1000] in(u,m). Outside the actual support rho is zero. The extra region included in this rectangle is harmless for the desired upper bound. On every accepted output rectangle the evaluated upper interval is STRICTLY below1. Finite exact coverage of the whole rectangle, including shared boundaries, supplies the uniform inequality; no monotonicity in m or extrapolation from a mesh maximum is assumed.
+
+The first 285-box cover and its 16-way refinement were only partial. The final adaptive run refines every still-unresolved box into four exact rational children until accepted, or records it as unresolved at the depth limit. A separate rational sweep checks that the combined accepted leaves cover the full rectangle exactly once on every open slab, without a gap or overlap. Each closed rectangle was individually bounded, so the separating boundary lines are covered too. It also checks every recorded upper bound and hashes all evaluator/source/input/output bytes. The finite interval result is not a Lean kernel theorem and does not constitute proof of the full source sign.
+
+### Interpretation and next bounded discriminator
+
+The D20-D23 result is a sufficient allocation for the entire ORIGINAL central negative block on I, with prime atoms unused. This is distinct from the prior two-edge necessary bound: three steps would actually pay that block. Noncentral x, negative lengths outside I, global Q-sign, N24 and RH remain unpaid. Never advertise this as a global positive-kernel representation.
+
+The first independent diagnostic pass mistakenly alleged a LOW broadcasting defect in the old grid probe. The reviewer explicitly WITHDREW that finding after executable shape checks: the grid code was correct. Parent separate scalar quadrature reproduces rho(.22,0)=.9494111955246903 and the actual grid value.9372870260252246 at u=.22195260313882348. The grid missed a larger nearby value; neither was used to establish the uniform interval bound.
+
+The first interval-code audit found no underbound but raised MEDIUM PROVENANCE BINDING: the adaptive result alone would not prove full coverage. This is addressed by the exact sweep, every accepted rational upper bound, all original-stage inputs, and the immutable artifact bundle. Final passes2/3 adjudicated that evidence as FIXED and returned CLEAN/CLEAN; no finding was downgraded by the parent.
+
+## D24. The direct central/tail splice with the old deterministic prime detour still fails
+
+This is a separate scoped obstruction to the obvious splice, not a failure of D23. Outside |x+t/2|<=R, suppose every source edge uses the D14 inward path x,x-q,x-2q,x+t on the right, reflected on the left, with q=(p-t)/2,p=log2. Allow arbitrary nonnegative coefficients on its two short edges and ANY prime coefficient. Write those physical short coefficients as a1(x,t)c_q(x-q) and a2(x,t)c_q(x-2q).
+
+For either short occurrence the receiving coordinates are (y,u)=(x-i*q,q), i=1,2. The inverse has t=p-2u and x=y+i*u, so |d(x,t)/d(y,u)|=2. Source-capacity domination of the resulting nonnegative measures therefore forces 2*a_i(x,t)<=b(q) almost everywhere on that tail source region, separately for each occurrence. Other preimages and the central supplier add nonnegative charges and cannot relax this necessary cap. Hence a_i<=b(q)/2, even before charging D23 against those same receiving edges.
+
+At t=log(3/2),m=x+t/2=1/8, set K=n(t)Phi(x)Phi(x+t), c1=Phi(x)Phi(x-q), c2=Phi(x-q)Phi(x-2q). Take r0=0,r2=r3=1 and choose r1=c2/(c1+c2). The prime difference vanishes and the MAXIMALLY granted short budget has minimum energy (b(q)/2)*c1*c2/(c1+c2). The necessary short-only ratio is
+
+R_join=2*K/b(q)*(1/c1+1/c2) in[1.70290,1.70292]>1.
+
+At the boundary m=R the actual chosen central source can still be assigned to D23; the strict violation above persists by continuity for an OPEN set with m>R and t nearlog(3/2), which is the specified tail region. Thus the pointwise per-path certificate for THIS deterministic central/tail splice is impossible even with arbitrary prime weights and unequal allowed short coefficients. The factor2 cap is justified by the pushforward, not assumed from the earlier conservative b/8 sufficient allocation. This does not refute an integrated inequality, a mixture of different paths, a different join or the full source form.
+
+Reproducible full-tail160-bit check of the last number:
+
+```python
+from flint import arb,ctx
+ctx.prec=160
+pi=arb.pi();delta=4*pi*pi*256*(-16*pi).exp()/(1-16*(-9*pi).exp())
+def phi(z):
+    U=(2*abs(z)).exp()
+    return (abs(z)/2).exp()*sum(((4*pi*pi*U*U*k**4-6*pi*U*k*k)*(-pi*U*k*k).exp() for k in [1,2,3]),arb(0))+arb(0,delta.upper())
+def b(s):
+    return (-s/2).exp()/(2*s).expm1()-(s/2).exp()
+t=(arb(3)/2).log();p=arb(2).log();q=(p-t)/2;x=arb(1)/8-t/2
+K=(-b(t))*phi(x)*phi(x+t);c1=phi(x)*phi(x-q);c2=phi(x-q)*phi(x-2*q)
+ratio=2*K/b(q)*(1/c1+1/c2)
+assert ratio>arb(170290)/100000 and ratio<arb(170292)/100000
+print(ratio)
+```
+
+### Next bounded source task
+
+D23 supplies an actual central allocation; D24 rejects the immediate deterministic-tail splice at the ORIGINAL join. Before another construction, derive the exact shared receiving budget for a mixed/variable tail path on unchanged I, using the freed prime resource while retaining the central charges. The cheapest discriminator is the near-join short-edge load with its correct Jacobian, not a tail asymptotic or a smaller central domain. IF_A: a concrete mixed-path budget fits, establish its full-domain bounds; IF_B: a necessary source-capacity inequality fails, record its exact scope and stop that class. Subjective prior.20 that this bounded mixed-path test yields a useful extension, not a probability for RH. No Proshka request or phase/global increment is authorized merely by completing this note.
+
+### Immutable computational evidence
+
+Artifact destination: docs/routeB_bus/phase5_codex/out/three_edge_central_20260910.json. It preserves exact UTF-8 bytes and hashes of the conditional source, original evaluator, adaptive evaluator, coverage checker, all stage inputs/outputs and terminal logs. The JSON bundle is 708850bytes, SHA256 c193163d562dfc5eedcc5a462932c879533364f52af86c9e47182c8d2f193db2.
+
+For reproduction, extract each artifacts[basename].text to /tmp/basename and verify its SHA256 first. Run the preserved coverage checker to validate every recorded bound and the exact partition. To independently recompute the enclosures, use the preserved adaptive evaluator: default parameters for the coarse stage; default parameters with --boxes /tmp/q3_three_edge_refine_boxes.json for the next stage; --mesh 1/5000 --time-step 1/4000 --boxes /tmp/q3_three_edge_refine.json --depth 4 for the final stage. Timing/log hashes change on recomputation; compare exact box coordinates and rational bounds, and bind the fresh outputs in a fresh receipt. The interval formulas and proof are preserved verbatim below.
+
+### Verbatim interval evaluator
+
+```python
+from flint import arb,ctx
+from fractions import Fraction as F
+from functools import lru_cache
+import argparse,time,json,sys
+ctx.prec=128
+ap=argparse.ArgumentParser();ap.add_argument('--mesh',default='1/1000');ap.add_argument('--time-step',default='1/500');ap.add_argument('--box',default='1/50');ap.add_argument('--boxes');ap.add_argument('--depth',type=int,default=0);ap.add_argument('--out',default='/tmp/q3_three_edge_interval.json');a=ap.parse_args()
+start=time.monotonic();du=F(a.mesh);dt=F(a.time_step);dz=dt/2;R=F(1,8);T0=F(42,125);T1=F(941,2000);B=F(29,100);M=F(361,1000)
+def A(x):
+ x=F(x);return arb(x.numerator)/x.denominator
+def ball(lo,hi):return A(lo).union(A(hi))
+pi=arb.pi();delta=4*pi*pi*256*(-16*pi).exp()/(1-16*(-9*pi).exp())
+def phi_raw(x):
+ x=abs(x);U=(2*x).exp()
+ val=(x/2).exp()*sum(((4*pi*pi*U*U*k**4-6*pi*U*k*k)*(-pi*U*k*k).exp() for k in [1,2,3]),arb(0))
+ return val+arb(0,delta.upper())
+def dens(x):return (-x/2).exp()/(2*x).expm1()-(x/2).exp()
+def nonneg(x):
+ if x.upper()<=0:return arb(0)
+ if x.lower()>=0:return x
+ return arb(0).union(x.upper())
+def j_raw(x):
+ if x.upper()<=0 or x.lower()>=A(B):return arb(0)
+ if x.lower()<=0:
+  # For u>=0, j(u)<=u^2/2; j is zero on the negative halfline.
+  return arb(0).union((x.upper()**2/2).upper())
+ return nonneg(x**3*dens(x))
+# Fine scalar range tables avoid dependency inflation on wide output boxes.
+# Every table value is itself a full interval enclosure, never a sampled value.
+RG=10000
+def range_tree(values):
+ sz=1
+ while sz<len(values):sz*=2
+ tr=[None]*(2*sz)
+ for i,v in enumerate(values):tr[sz+i]=v
+ for i in range(sz-1,0,-1):
+  x,y=tr[2*i],tr[2*i+1];tr[i]=y if x is None else x if y is None else x.union(y)
+ return sz,tr,len(values)
+def lookup_range(data,x):
+ sz,tr,length=data
+ lo=max(0,int((x.lower().fmpq()*RG).floor()))
+ hi=min(length-1,int((x.upper().fmpq()*RG).floor()))
+ assert hi>=lo and x.upper()<=A(F(length,RG))
+ i,jj=sz+lo,sz+hi+1;value=None
+ while i<jj:
+  if i%2:value=tr[i] if value is None else value.union(tr[i]);i+=1
+  if jj%2:
+   jj-=1;value=tr[jj] if value is None else value.union(tr[jj])
+  i//=2;jj//=2
+ return value
+JT=range_tree([j_raw(ball(F(k,RG),F(k+1,RG))) for k in range(int(B*RG))]+[arb(0),arb(0)])
+PT=range_tree([phi_raw(ball(F(k,RG),F(k+1,RG))) for k in range(10000)])
+def j(x):
+ if x.upper()<=0 or x.lower()>=A(B):return arb(0)
+ lo=max(arb(0),x.lower());hi=min(A(B),x.upper())
+ # Include zero if x straddles the zero extension boundary.
+ value=lookup_range(JT,lo.union(hi))
+ return value.union(arb(0)) if x.lower()<0 or x.upper()>A(B) else value
+def phi(x):return lookup_range(PT,abs(x))
+
+nu=int(B/du);assert nu*du==B
+J=[j(ball(i*du,(i+1)*du)) for i in range(nu)]
+ns=(T1//du)+2
+JM={k:j(ball((k-1)*du,(k+1)*du)) for k in range(-nu,ns+1)}
+L=[nonneg(A(du)*sum((J[i]*JM[k-i] for i in range(nu)),arb(0))) for k in range(ns)]
+# A union bounds every value over all intersected table cells.
+size=1
+while size<len(L):size*=2
+tree=[None]*(2*size)
+for i,q in enumerate(L):tree[size+i]=q
+for i in range(size-1,0,-1):
+ x,y=tree[2*i],tree[2*i+1];tree[i]=y if x is None else x if y is None else x.union(y)
+def lr(lo,hi):
+ if hi<=0:return arb(0)
+ low=max(0,int(lo//du));high=min(len(L)-1,int(hi//du))
+ assert high>=low and hi<(len(L)-1)*du
+ i,jj=size+low,size+high+1;res=None
+ while i<jj:
+  if i%2:
+   res=tree[i] if res is None else res.union(tree[i]);i+=1
+  if jj%2:
+   jj-=1;res=tree[jj] if res is None else res.union(tree[jj])
+  i//=2;jj//=2
+ return res
+NT=(T1-T0)//dt+int((T1-T0)%dt!=0);NZ=int(2*R/dz);assert NZ*dz==2*R
+T=[];TZ=[];factor=[];zs=[ball(-R+i*dz,-R+(i+1)*dz) for i in range(NZ)]
+for k in range(NT):
+ tl=T0+k*dt;th=min(T1,tl+dt);t=ball(tl,th)
+ Z=A(du)*sum((J[i]*lr(tl-(i+1)*du,th-i*du) for i in range(nu)),arb(0))
+ assert Z>0,(k,Z)
+ ft=(-dens(t))*t*A(th-tl)/Z
+ T.append((tl,th,t));factor.append(ft)
+ TZ.append([ft*A(dz)*phi(t/2-z)*phi(t/2+z) for z in zs])
+print('PRECOMPUTE',time.monotonic()-start,'NT',NT,'NZ',NZ,'L',len(L),flush=True)
+def receiver(ul,uh,ml,mh):
+ if ml>R+(T1-ul)/2:return arb(0)
+ u=ball(ul,uh);m=ball(ml,mh);fm=phi(m-u/2);fp=phi(m+u/2)
+ if not(fm>0 and fp>0):return arb('nan')
+ # On the regular cells, v centers form a lattice; last short t-cell is separate.
+ tc0=T0+dt/2;zc0=-R+dz/2
+ vb=m+(A(tc0)-u)/2-A(zc0);wb=(A(tc0)-u)/2+A(zc0)-m
+ rad=A(dt/4+dz/2)
+ V={k:j(vb+A(k*dz)+arb(0,rad.upper())) for k in range(-(NZ-1),NT)}
+ W={k:j(wb+A(k*dz)+arb(0,rad.upper())) for k in range(NT+NZ-1)}
+ result=arb(0)
+ for k,(tl,th,t) in enumerate(T):
+  ll=lr(tl-uh,th-ul)
+  sides=arb(0)
+  if ml+(tl-uh)/2<=R:
+   sides+=phi(m-u/2+t)/fp
+  if not(mh-(tl-uh)/2 < -R or ml-(th-ul)/2 > R):
+   sides+=phi(m+u/2-t)/fm
+  mid=arb(0)
+  if th-tl==dt:
+   mid=sum((TZ[k][i]*V[k-i]*W[k+i] for i in range(NZ)),arb(0))
+  else:
+   mid=sum((TZ[k][i]*j(m+(t-u)/2-z)*j((t-u)/2+z-m) for i,z in enumerate(zs)),arb(0))
+  result+=factor[k]*ll*sides+mid/(fm*fp)
+ return u*u*result
+if a.boxes:
+ boxes=[[F(v) for v in row] for row in json.load(open(a.boxes))['unresolved']]
+else:
+ d=F(a.box);boxes=[];ul=F(0)
+ while ul<B:
+  ml=F(0)
+  while ml<M:
+   boxes.append([ul,min(B,ul+d),ml,min(M,ml+d)]);ml+=d
+  ul+=d
+bad=[];worst=arb(0);good=0;accepted=[];nodes=0
+pending=[(box,0) for box in reversed(boxes)]
+while pending:
+ box,depth=pending.pop();q=receiver(*box);nodes+=1
+ if q.is_finite() and q<1:
+  good+=1;accepted.append([*[str(v) for v in box],str(q.upper().fmpq())])
+  worst=worst.union(q.upper())
+ elif depth<a.depth:
+  ul,uh,ml,mh=box;uc=(ul+uh)/2;mc=(ml+mh)/2
+  pending.extend([([ul,uc,ml,mc],depth+1),([ul,uc,mc,mh],depth+1),([uc,uh,ml,mc],depth+1),([uc,uh,mc,mh],depth+1)])
+ else:bad.append([str(v) for v in box])
+ if nodes%100==0:print('NODES',nodes,'pending',len(pending),'certified',good,'bad',len(bad),'upper',worst.upper(),'SECONDS',time.monotonic()-start,flush=True)
+result={'mesh':str(du),'dt':str(dt),'depth':a.depth,'input_boxes':len(boxes),'nodes':nodes,'certified':good,'accepted':accepted,'unresolved':bad,'upper':str(worst.upper()),'seconds':time.monotonic()-start}
+json.dump(result,open(a.out,'w'),indent=2)
+print('DONE',nodes,'certified',good,'unresolved',len(bad),'upper',worst.upper(),'SECONDS',time.monotonic()-start,flush=True)
+print('EXIT='+('0' if not bad else '2'),flush=True)
+sys.exit(0 if not bad else 2)
+```
+
+### Verbatim independent coverage checker
+
+```python
+import json
+import hashlib
+from pathlib import Path
+from fractions import Fraction as F
+from collections import defaultdict
+
+def read(path):
+    with open(path) as handle:
+        return json.load(handle)
+
+def box(row):
+    return tuple(F(value) for value in row[:4])
+
+def rows(data, key='unresolved'):
+    values = [box(row) for row in data[key]]
+    assert len(set(values)) == len(values), 'duplicate rectangles'
+    return set(values)
+
+B, M, step = F(29, 100), F(361, 1000), F(1, 50)
+initial = set()
+u = F(0)
+while u < B:
+    m = F(0)
+    while m < M:
+        initial.add((u, min(B, u+step), m, min(M, m+step)))
+        m += step
+    u += step
+
+coarse = read('/tmp/q3_three_edge_interval_ranges2.json')
+coarse_bad = rows(coarse)
+assert coarse['checked'] == len(initial) == 285
+assert coarse_bad <= initial and coarse['certified'] == len(initial-coarse_bad)
+coarse_leaves = read('/tmp/q3_three_edge_coarse_leaves.json')
+assert rows(coarse_leaves) == coarse_bad
+assert rows(coarse_leaves, 'accepted') == initial-coarse_bad
+children = set()
+for ul, uh, ml, mh in coarse_bad:
+    for i in range(4):
+        for k in range(4):
+            children.add((ul+(uh-ul)*i/4, ul+(uh-ul)*(i+1)/4,
+                          ml+(mh-ml)*k/4, ml+(mh-ml)*(k+1)/4))
+assert rows(read('/tmp/q3_three_edge_refine_boxes.json')) == children
+refined = read('/tmp/q3_three_edge_refine.json')
+refined_bad = rows(refined)
+assert refined['checked'] == len(children)
+assert refined_bad <= children and refined['certified'] == len(children-refined_bad)
+refine_leaves = read('/tmp/q3_three_edge_refine_leaves.json')
+assert rows(refine_leaves) == refined_bad
+assert rows(refine_leaves, 'accepted') == children-refined_bad
+
+adaptive = read('/tmp/q3_three_edge_adaptive.json')
+assert adaptive['input_boxes'] == len(refined_bad)
+assert not adaptive['unresolved'], 'uniform budget unresolved'
+last = rows(adaptive, 'accepted')
+assert len(last) == adaptive['certified']
+assert all(F(row[4]) < 1 for row in adaptive['accepted'])
+upper = max(F(row[4]) for stage in [coarse_leaves,refine_leaves,adaptive]
+            for row in stage['accepted'])
+assert upper < 1
+groups = [initial-coarse_bad, children-refined_bad, last]
+all_boxes = set.union(*groups)
+assert len(all_boxes) == sum(map(len, groups)), 'duplicate across stages'
+assert all(0 <= ul < uh <= B and 0 <= ml < mh <= M for ul,uh,ml,mh in all_boxes)
+assert sum(((uh-ul)*(mh-ml) for ul,uh,ml,mh in all_boxes), F(0)) == B*M
+
+# Exact sweep: every open x slab covers each y cell once, without overlap.
+ys = sorted({v for ul,uh,ml,mh in all_boxes for v in (ml,mh)})
+yi = {value:i for i,value in enumerate(ys)}
+events = defaultdict(list)
+for ul,uh,ml,mh in all_boxes:
+    events[ul].append((yi[ml],yi[mh],1))
+    events[uh].append((yi[ml],yi[mh],-1))
+counts = [0]*(len(ys)-1)
+xs = sorted(events)
+assert xs[0] == 0 and xs[-1] == B and ys[0] == 0 and ys[-1] == M
+for x in xs:
+    for low,high,delta in events[x]:
+        for i in range(low,high):
+            counts[i] += delta
+    assert all(c == (0 if x == B else 1) for c in counts), ('coverage',x)
+files = [
+    '/tmp/q3_three_edge_source_kernel.md', '/tmp/q3_three_edge_interval.py',
+    '/tmp/q3_three_edge_adaptive.py', '/tmp/q3_three_edge_coverage.py',
+    '/tmp/q3_three_edge_interval_ranges2.json', '/tmp/q3_three_edge_refine_boxes.json',
+    '/tmp/q3_three_edge_refine.json', '/tmp/q3_three_edge_coarse_leaves.json',
+    '/tmp/q3_three_edge_refine_leaves.json', '/tmp/q3_three_edge_adaptive.json',
+    '/tmp/q3_three_edge_adaptive.log', '/tmp/q3_three_edge_leaf_records.log',
+]
+assert Path('/tmp/q3_three_edge_adaptive.log').read_text().rstrip().endswith('PROCESS_EXIT=0')
+manifest = {path:hashlib.sha256(Path(path).read_bytes()).hexdigest() for path in files}
+receipt = dict(status='EXACT_COVER_PASS',rectangles=len(all_boxes),
+               stage_counts=list(map(len,groups)),area=str(B*M),
+               uniform_upper_exact=str(upper),sha256=manifest)
+Path('/tmp/q3_three_edge_coverage_receipt.json').write_text(json.dumps(receipt,indent=2)+'\n')
+print('EXACT_COVER_PASS',len(all_boxes),'stage_counts',list(map(len,groups)),
+      'area',str(B*M),'uniform_upper_exact',str(upper))
+```
+
+### D20-D24 independent review and adoption receipt
+
+One reused boundary_verdict_check, terra/xhigh, read-only/no descendants, audited the new conditional derivation, full interval evaluator, exact coverage and separate deterministic-splice obstruction. The first code-pass MEDIUM PROVENANCE BINDING was explicitly FIXED after all16 embedded artifact hashes, all three coverage stages, every rational leaf upper bound and the complete exact sweep were independently verified. A WORDING clarification distinguishes the log's accumulated rounded display hull from the exact rational leaf maximum. Final passes2/3 returned CLEAN/CLEAN on the unchanged reviewed noteSHA 5e1ba8dec937bc8454881495c254d2fd4a40b126014322bf838b2d7a0d7b1695 and bundleSHA c193163d562dfc5eedcc5a462932c879533364f52af86c9e47182c8d2f193db2; FIRST_INCORRECT_ASSERTION NONE_FOUND. Only the three review-status phrases were finalized on adoption; the adopted note body above has SHA256 d18abb79bd05a74d3854f24cd7012f98fcd8f85ad9fe6c3d919f4c6c006e3b94. All formulas, bounds, source scope, code and reproduction bytes remain unchanged.
+
+The checker used a separate rational sweep to verify2493regions and exact positive gap19294093080288048462243720489684131/340282366920938463463374607431768211456. It independently reproduced D24's Jacobian2 and full-tail160bit ratio1.7029088736237471; parent separately wrote the scalar quadrature and reproduced the join interval. The final16-minute evaluator was run once by the parent; independent review did not masquerade as an independent full rerun. The historical LOW broadcasting claim was withdrawn by its author after executable disproof, not silently downgraded or fixed in code.
+
+The pre-existing83379-byte BOUNDARY report prefix (SHA256884099489cd8de6df51cb37c754ddad4321ff301f614c2e06418cb59d0d53da8) and both original verdict hashes are unchanged. This is a checked paper derivation with a reproducible finite interval certificate for the stated central source block and a distinct scoped obstruction. No source-sign/RH proof, first-contact witness, production Lean admission, new Proshka message or phase/global increment follows.
