@@ -14,9 +14,9 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-10-CONTACT · CONTACT: first-contact source kernel exclusion after exact exterior-defect triage · OPEN
+## REQ-2026-09-10-CONTACT · CONTACT: first-contact source kernel exclusion after exact exterior-defect triage · IN_REVIEW
 
-- `STATUS: OPEN`
+- `STATUS: IN_REVIEW`
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_CONTACT_2026-09-10.txt`
 - Boundary: `GOAL058_FIRST_CONTACT_SOURCE_KERNEL_EXTERIOR_RIGIDITY`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
@@ -29,6 +29,10 @@ safety confirmation остаётся внешней границей. Судья
   `3843a5479cc6b8c905bd6663d680f195133a2e46` / `yes`
 
 ---
+- Delivery observed 2026-09-10 12:59 +0200: exact .txt attachment, unchanged binder line, sent message `8f4339c9-b173-4795-a098-3e01dd8aa1e8` and natural `Pro-Denkvorgang` (6 Pro); same chat https://chatgpt.com/g/g-p-69ad65d9bcfc8191a6931ea6f2c78f13-rh-marz-2026/c/6aa24f25-0934-83eb-9151-3565fc4b3379.
+- Independent review: one native terra/xhigh checker, two consecutive clean plan/artifact passes on SHA256 `d2abcb9164c5a84ab6fe383dbb7a9aab38d8cf2958465182b9b6af120260f9db`; no unresolved findings. Parent independently rehashed all eight shelf pins, checked seven phase headers and verbatim sections9/10. Runtime review-plan REVIEW_DISPATCH_READY, no holds; published binding `2eb2399ae8a4ef2305716a14c4f22a666ac1431c` matched the remote.
+- Watch: app heartbeat `contact`, ACTIVE /10min, exact expected path `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_CONTACT_2026-09-10.md`; baseline `2eb2399ae8a4ef2305716a14c4f22a666ac1431c` lacks that path. Delete on candidate verdict or observed completed no-push response; an unrelated commit does not qualify. No live agents or numerical jobs.
+- Intake prepared: read the complete immutable file; verify REQUEST_ID, BOUNDARY_ID, ancestry from binding and request, request/verdict bytes and hashes. One fresh terra/xhigh checker, no descendants; parent independently checks the decisive proof. Audit Q1 form domain/closure, attained bottom and continuity; Q2 actual arithmetic restriction on exterior defect, local/global kernel distinction; Q3 all complex tests and both parity sectors. Do not accept H17 merely as a reformulation or accept a lower sign from upper T-squared bounds. Record the actual adjudicated verdict as phase3/global48 only after intake; current runtime phase2/global47 is accepted SATURATION. No rerun of E1-E5, SATURATION or finite numerical rows while waiting.
 
 ## REQ-2026-09-10-SATURATION · SATURATION: source mechanism for the affine T-squared budget after exact shell density · ANSWERED
 

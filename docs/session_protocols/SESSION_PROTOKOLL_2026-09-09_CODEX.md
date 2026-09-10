@@ -172,3 +172,17 @@ Offen/naechste Schritte: final semantic refresh once after all indexed note/jour
 Dateien: /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/FIRST_CONTACT_EXTERIOR_2026-09-10.md; /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/Codex/GOAL.md; /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/Codex/AGENTS_LEDGER.md.
 
 First-contact closeout verified: semantic refresh0, manual session_start0; log /tmp/q3_first_contact_closeout.log. Update1.013s, builder23.372s, dynamic59.710s, fixed39.479s, full closeout142.734s;1 new/2 updated/3285 unchanged. No additional refresh for this unindexed checkpoint. Pending named commit/push only, then the proof-construction request.
+
+## CONTACT dispatch — 2026-09-10 12:59 +0200
+
+Kontext/Aufgabe: continue GOAL section5 after checked exterior triage; latest owner search steering rechecked without another rebuild. Search fix72c59971 remains present, current semantic freshness PASS in1.715s over3287 sources; maintenance issue is resolved.
+
+Erledigt/Geprueft: new request `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_CONTACT_2026-09-10.txt`,14481bytes/88lines/finalLF,SHA256d2abcb9164c5a84ab6fe383dbb7a9aab38d8cf2958465182b9b6af120260f9db,blob3843a5479cc6b8c905bd6663d680f195133a2e46. Eight exact shelf pins rehashed independently by parent/checker; seven phase headers and required sections9/10 match. One native terra/xhigh checker, two clean on-target plan/artifact passes, no findings. Canonical review-plan REVIEW_DISPATCH_READY, no holds.
+
+Versendet: request4bf7ce2a65c380c6107ba204c75697029fdb8c2f and binding2eb2399ae8a4ef2305716a14c4f22a666ac1431c published; remote equality checked. Same chat https://chatgpt.com/g/g-p-69ad65d9bcfc8191a6931ea6f2c78f13-rh-marz-2026/c/6aa24f25-0934-83eb-9151-3565fc4b3379; exact attachment, unchanged binder line, message8f4339c9-b173-4795-a098-3e01dd8aa1e8 and natural Pro-Denkvorgang observed. contact heartbeat ACTIVE10min immediately; exact `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_CONTACT_2026-09-10.md`, baseline2eb2399a lacks it. agents-watch deleted, no live subagents.
+
+Offen/naechste Schritte: receive full exact verdict by path watch or complete no-push fallback; verify bindings and ancestry; one fresh terra/xhigh checker then parent decisive proof. Focus: Q1 closed forms/attainment/continuity, Q2 actual source continuation beyond automatic radical tails, Q3 both parity sectors/all complex tests. Runtime phase2/global47 remains until actual adjudication; then record phase3/global48. No new numerical work while waiting. All indexed queue/journal edits now precede one final refresh; no refresh required for subsequent unindexed closeout record.
+
+Dateien: /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_CONTACT_2026-09-10.txt; /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/PROSHKA_QUEUE.md; /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/Codex/GOAL.md; /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/Codex/AGENTS_LEDGER.md.
+
+Final verification: /tmp/q3_contact_closeout.log has refresh0, session_start0, closeout0; full154.415s. Collection update1.081s,0new/2updated/3286unchanged; builder31.664s, dynamic63.872s, fixed38.299s. This confirms incremental behavior while full retrieval checks still dominate. Unindexed checkpoint appended after successful refresh; no repeat rebuild. contact watch ACTIVE, no live agents.
