@@ -14,6 +14,22 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-10-CONTACT · CONTACT: first-contact source kernel exclusion after exact exterior-defect triage · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_CONTACT_2026-09-10.txt`
+- Boundary: `GOAL058_FIRST_CONTACT_SOURCE_KERNEL_EXTERIOR_RIGIDITY`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: SATURATION upper-rate paper result accepted; E1-E5 independently checked at e915833c; full source lower sign remains open. CONTACT exact payload two clean native review passes; same living BRIDGE/SATURATION phase and chat.
+- Registered predictions: P1-P3 frozen in section 6
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `4bf7ce2a65c380c6107ba204c75697029fdb8c2f` / `14481` / `88` /
+  `d2abcb9164c5a84ab6fe383dbb7a9aab38d8cf2958465182b9b6af120260f9db` /
+  `3843a5479cc6b8c905bd6663d680f195133a2e46` / `yes`
+
+---
+
 ## REQ-2026-09-10-SATURATION · SATURATION: source mechanism for the affine T-squared budget after exact shell density · ANSWERED
 
 - `STATUS: ANSWERED`
