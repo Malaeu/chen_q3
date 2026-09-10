@@ -294,3 +294,23 @@ Versendet: named commit and ordinary non-force publication follow this receipt; 
 Offen — naechste Schritte: actual-contact signed source information for N12/N24, full N17 variance and BND23 invisible-mean branch remain open. No concrete new supplier selected. Do not repeat uniform-order attempts, D2 pairing, old matrix campaigns or send a renamed request without a new substantive mechanism.
 
 Dateien: /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/BOUNDARY_INDEPENDENT_CHECK_2026-09-10.md:179; /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/Codex/GOAL.md; /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/q3.lean.aristotle/scripts/refresh_q3_docs.py:119; /tmp/q3_compression_order_closeout.log; /tmp/q3_compression_order_search.log.
+
+## Adaptive collar projection — 2026-09-10
+
+Kontext/Ausgangslage: previous turn PROGRESS, f6838e7a published and remote equal, no pending computation. Continued actual-contact frontier; startup no fatal errors, production HOLD remains.
+
+Aufgabe: determine whether fixed-two-mean injectivity is a necessary obstacle for the exact source reduction. Shelf queries returned CONTACT/BOUNDARY/COLLAR and their existing harmonic bound; translation-independence and generic pole-rank/Perron ideas were already present and not restarted.
+
+Erledigt: accepted D7-D9 appended to existing BOUNDARY report, using the existing Legendre polynomials. Full complement compression has beta_n=m+H_(n+1), N_n<=Theta_n/beta_n. At fixed positive-core a,d a finite n satisfies Theta_n<=beta_n M/2, so B_n>=M/2>0. Retained block and complete feedback stay exact, giving S>0 iff E_n>0. This pays the adaptive centered gate and removes the extra rank-two measurement restriction; original n0 BND24 is neither proved nor refuted. No lower sign/N24/RH or Lean admission. Cutoff may be enormous; no uniform/practical degree estimate or matrix campaign.
+
+Geprueft: one reused terra/xhigh checker, two separate CLEAN passes on draft16b96f853d1794e93268f93f162a0b49dde316f3490fe5ade7c744c3d1961ad1,7243bytes/77LF. Domain, full-M relative bound, exact Schur equivalence and physical d^-1/2 moments checked. Independent parent complex4x4 control gives B ranks1/2/2 under measurement dimensions1/2/3 and preserves a two-dimensional nullspace; checker used different complex3x3 data. Exact reviewed body preserved with mechanical status finalization; report SHAe963f8121a8b85c2f79d641da7c79d7239cd7e1de2d0d51eb097c484eaca6017, both immutable verdict hashes unchanged.
+
+Maintenance: exact canonical journal branch_2026-09-10_98a65c40561e/artifact0ac5659a3f3b15a7e61055abcdce1785f3e9072c46a47a60b7c6825605868c5f verified before ONE successful refresh. First nohup process vanished before migration (row absent, no live PID, log stopped at START); reason not established, no refresh began. Original incomplete log /tmp/q3_adaptive_projection_closeout.log preserved. Relaunch through user unit q3-adaptive-projection-closeout-20260910 completed successfully, ExecMainStatus0/MainPID0. /tmp/q3_adaptive_projection_systemd.log EXIT0,total149.078s: refresh135.132s(builder32.475,dynamic57.962,fixed36.924),session_start13.452s. ask.sh Adaptive collar moments pay the centered gate HITS/exit0 includes new journal, log /tmp/q3_adaptive_projection_search.log. No repeated index update for final unindexed checkpoints.
+
+Versendet: named local commit/ordinary non-force publication follows this receipt; verify HEAD/origin equality. No new message or request to Proshka. Both agents DONE; agents-watch DELETED, no active job/watch.
+
+Offen — naechste Schritte: the identical actual-source signed S/E_n inequality remains unpaid. The adaptive theorem is a technical simplification, not a new sign supplier. Further work must provide an additional signed constraint of the actual source; do not prove a two-dimensional kernel merely to keep the two-mean representation, repeat uniform compression or generic pole-rank arguments, build a huge matrix, or send a renamed sign question.
+
+Wichtige Fakten: all low modes, both parities, full high-core inverse, primes/poles/variance preserved. No mu_min replacement, assumed simple/positive ground state or endpoint trace.
+
+Dateien: /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/BOUNDARY_INDEPENDENT_CHECK_2026-09-10.md; /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/Progress_Log.md; /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/Codex/GOAL.md; /tmp/q3_adaptive_projection_systemd.log.

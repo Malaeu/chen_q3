@@ -133,3 +133,9 @@ gaussian_space_review / source_transfer_bound · DONE · prior scratch component
 2026-09-10 · boundary_verdict_check · DONE; D5-D6 exact9a1a6225 full-source operator-order controls accepted after CLEAN/CLEAN, both interval signs independently reproduced. No live agents; agents-watch deletion follows.
 
 2026-09-10 · reconciliation · both boundary agents DONE; agents-watch DELETED, no verdict watch or numerical job. D5-D6 maintenance/search checks complete; no agent required for mechanical publication.
+
+2026-09-10T19:50+02:00 · boundary_verdict_check · gpt-5.6-terra/xhigh · bounded new adaptive Legendre collar projection audit, draft16b96f85; not old source-sign audit · RUNNING, expected15min, read-only/no descendants · result=domain/relative matrix proof/scope, two clean passes or rejection.
+
+2026-09-10 · boundary_verdict_check · DONE; D7-D9 draft16b96f85 accepted at exact finite-degree PAPER reduction after two CLEAN passes. No live agents; agents-watch deletion follows.
+
+2026-09-10 · reconciliation · boundary_verdict_check and boundary_bootstrap_check DONE; agents-watch DELETED. Adaptive projection systemd closeout completed0; no live numerical/maintenance job or verdict watch.

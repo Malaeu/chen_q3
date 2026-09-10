@@ -294,3 +294,88 @@ Next required supplier is genuinely contact-specific and signed. Direct null pai
 D5-D6 independently accepted after two CLEAN passes by the same boundary_verdict_check terra/xhigh, read-only/no descendants. Exact candidate SHA2569a1a62250548024b72bb16b6f5354f647dfdf14430af0597b2a1c141d9c8dfc6,7201bytes/112LF/finalLF. Both finite python-flint asserts, the exact polynomial identity, entire arch tail and pole factor8 reproduced; FIRST_INCORRECT_ASSERTION NONE_FOUND. Only candidate status mechanically finalized; original report prefix preserved.
 
 The separate parent original-C1 channel integrated the full form directly with mpmath50 digits, not via D6f, and regenerated Lambda by prime factorization. Diagnostic Q(original),Q(compressed),Delta: m7=(2.36843579686156579,2.30330531515178284,-.06513048170978296); m24=(2.07886184106803169,3.53507010146926888,1.45620826040123719). These non-interval quadrature values merely cross-check the independent rigorous D6f enclosures; they are not certified Q signs or null-vector assertions.
+
+
+# Adaptive collar moments remove the fixed-rank centered obstruction
+
+Status: ACCEPTED_AT_SCOPED_FINITE_DEGREE_PAPER_REDUCTION. Baseline f6838e7a1049b33430a3914f83f07772c609c65d. This is an alternate exact reduction of the same source Schur matrix, not a proof of BND24 for two means, source positivity, N24, or RH. No Lean admission and no numerical campaign.
+
+## D7. Source inputs and the unnecessary rank restriction
+
+Use canonical COLLAR L11-L13,L17-L21,L24 and browser BOUNDARY BND18-BND25. Fix a and ONE admissible d with positive smaller core and L16; keep all low modes, both parities, complex coefficients, every prime power, both poles and the complete high-core resolvent. Write H=L2(0,1) direct-sum L2(0,1), M>0 on C^r, F:C^r->H, and D=cI+L_2+mathscr B>=mI, where ||mathscr B||<=kappa and m=c+log2-kappa>0. These are the existing exact source objects. S=M-F^*D^(-1)F is unchanged.
+
+If r=0, the two positive squares in L20 already exclude contact; below r>=1. For a hypothetical first contact, S>=0 and its kernel reconstructs exactly ker A_a. The two-constant measurement BND24 would force dim ker A_a<=2; that restriction has no existing proof. We do not assert it. Instead allow finitely many of the already available collar Legendre modes.
+
+Let p_j be the real normalized shifted Legendre polynomials on(0,1), H_j=sum_(k=1)^j 1/k and H_0=0. For n>=0, let i_n:C^(2(n+1))->H insert p_0,...,p_n in each of the two channels; P_n=i_n i_n^* and Q_n=I-P_n. Reflection only exchanges the channels, so the equal-degree cutoff preserves both parity sectors.
+
+## D8. Domains, exact block elimination, and a paid relative centered bound
+
+Every p_j belongs to the operator domain of L. Indeed COLLAR L11-L13 give L=T+V, T p_j=H_j p_j and V(s)=-.5log(s(1-s)). A bounded polynomial times V lies in L2, and polarization on the form domain represents Lp_j=H_jp_j+Vp_j. Thus i_n has range in D(D); bounded mathscr B does not change that domain. The finite L2 projection P_n is also bounded in the D form norm, because each of its finitely many basis vectors has finite form norm. The form restricted to Q_n H is closed and dense there. Denote its positive Friedrichs operator by D_n^perp; it is a form compression, not a claim that Q_n commutes with D.
+
+Set
+
+D_00,n=i_n^*D i_n, W_n=Q_n D i_n, F_n=Q_n F,
+K_n=D_00,n-W_n^*(D_n^perp)^(-1)W_n,
+J_n=i_n^*F-W_n^*(D_n^perp)^(-1)F_n,
+N_n=F_n^*(D_n^perp)^(-1)F_n, B_n=M-N_n.                 (D8a)
+
+W_n is bounded because its domain is finite dimensional and its columns are in H. Positive square completion gives K_n>=m I. The same bounded-cross-block argument as BND18-BND19 therefore applies on the full form domain and gives
+
+F^*D^(-1)F=N_n+J_n^*K_n^(-1)J_n,
+S=B_n-J_n^*K_n^(-1)J_n.                               (D8b)
+
+No centered or high-core tail is discarded. In particular mathscr B still contains the full negative T_H, and L retains its variable endpoint potential V.
+
+There is an explicit all-vector bound for N_n. On Q_n H the established harmonic form inequality L_2>=D_H+log2 implies
+
+D_n^perp >= beta_n I, beta_n=m+H_(n+1).
+
+With the exact complete-source moment rows g_(sigma,j)=i_(sigma,j)^*F and Theta=F^*F, Parseval gives
+
+Theta_n=F^*Q_n F=Theta-sum_(sigma,j<=n) g_(sigma,j)^*g_(sigma,j)>=0,
+0<=N_n<=Theta_n/beta_n.                               (D8c)
+
+All source contributions are summed before these products, exactly as in L18/L24. This uses L24's existing tail ingredients only on the eliminated complement; it does NOT replace the retained block or its feedback by the harmonic diagonal bound. Consequently its loss can be spent to make B_n positive without modifying the exact final matrix S.
+
+For every fixed admissible (a,d), a FINITE n satisfies the verifiable matrix condition
+
+Theta_n <= (beta_n/2) M.                              (D8d)
+
+Proof: C=||M^(-1/2)Theta M^(-1/2)|| is finite, Theta_n<=Theta and H_(n+1)->infinity, so beta_n>=2C suffices. The chosen condition compares the complete matrix with the actual M; no replacement by mu_min or rank-one/ground-state estimate is used. A convenient sufficient finite threshold is H_(n+1)>=max(0,2C-m). No numerical value, reasonable cost, or uniform bound in a or d is claimed. The contact premise is NOT needed for D8d, only M>0, the exact finite F, and the established collar lower form bound. At any n satisfying D8d,
+
+B_n>=M/2>0.                                          (D8e)
+
+Thus the *adaptive* centered gate terminates at every fixed positive-core split. This does not establish the original two-mean n=0 claim. It does not estimate how an admissible degree behaves as d->0, since M and F then change.
+
+## D9. What is still exactly unpaid
+
+At such a finite degree, define the Hermitian matrix on C^(2(n+1))
+
+E_n=K_n-J_n B_n^(-1)J_n^*.                           (D9a)
+
+Since K_n>0 and B_n>0, the two Schur complements of the block matrix [[B_n,J_n^*],[J_n,K_n]] give the EXACT equivalence
+
+S>0 iff E_n>0.                                       (D9b)
+
+All inverses in D9a are now justified by paid positive bounds. This removes the extra fixed-rank measurement hypothesis while preserving the original strict source question. It supplies no sign for E_n. At a hypothetical first contact, E_n>=0 and is singular, with ker S mapped bijectively to ker E_n by z->K_n^(-1)J_n z. The map is injective because J_n z=0 and S z=0 would imply B_n z=0.
+
+The physical meaning follows by solving the same block system. For the contact reconstruction w=-U_d^(-1)D^(-1)Fz,
+
+i_n^*U_d w=-K_n^(-1)J_n z,
+(i_n^*U_d w)_(sigma,j)=d^(-1/2) int_b^a p_j((x-b)/d) v(sigma x) dx. (D9c)
+
+All finitely many strip moments up to the selected degree therefore detect the full contact kernel. They are not endpoint traces. This is compatible with arbitrary finite multiplicity and imposes no two-dimensional cap; the dimension bound is only dim ker A_a<=2(n+1) for the selected n.
+
+Independent qualitative check: restriction of a contact null vector to the two strips is injective, since zero restriction would put it in the strictly positive smaller-window domain V_b. Polynomial moments are total in the strip L2 space. On the finite-dimensional contact kernel their common kernel is zero, so finitely many moments suffice. This agrees with D8e/D9c; it supplies neither a source sign nor a quantitative cutoff.
+
+## Scope control and the next actual question
+
+The BND26 invisible-mean example has M=d/ell, D=ell I_3 and F=sqrt(d)e_3. Its original first-two-coordinate measurement has B=0. Enlarging the measurement to all three coordinates gives N=0 and B=M>0, but E=ell diag(1,1,0): the equality branch survives exactly. This finite algebra example does not have a Legendre collar spectrum and tests only the exact block logic, not the harmonic cutoff proof.
+
+The narrow new result is finite-degree termination of the centered gate in an alternate representation, using already proved source harmonic bounds. The original BND24 and the source sign N24 remain unproved. No claim is made that the finite-degree scheme is computationally cheaper; its threshold may be enormous. The remaining analytic task is a genuinely signed full-source constraint on E_n or equivalently S. Do not launch a large matrix build or send another request merely renaming that missing sign.
+
+### Adaptive projection review and separate parent check
+
+One reused boundary_verdict_check (terra/xhigh, read-only/no descendants) completed two separate CLEAN passes on exact draft16b96f853d1794e93268f93f162a0b49dde316f3490fe5ade7c744c3d1961ad1,7243bytes/77LF/finalLF. FIRST_INCORRECT_ASSERTION NONE_FOUND. The checker re-read the source domains, harmonic bound and full matrix criterion, and independently checked a nontrivial complex block with K=131/37,J=(-2+29i)/37,B=845/4847>0,S=E=0. Only candidate status finalized above; previous report and immutable verdict bytes preserved.
+
+The parent separately used R=[[2,i,0,1],[1,2,1,0],[0,1,2,i],[i,0,1,2]], D=R^*R+3I4, F=[[1,i],[2,1-i],[i,3],[1+i,2]], and M=F^*D^-1F. Then S=0 exactly. Retaining the first k coordinates for k=1,2,3 gives ranks(B)=1,2,2; det(B_2)=76586/264479 with (B_2)11=166661/264479>0 and E_2=0. At k=3 det(B_3)=23488/32607 with (B_3)11=21788/32607>0; rank(E_3)=1 and nullity(E_3)=2. All B-J^*K^-1J residuals are exactly zero. This checks adjoints/nonzero mixing and equality preservation by an independent finite channel. It does not prove the all-domain harmonic cutoff or any source sign.
