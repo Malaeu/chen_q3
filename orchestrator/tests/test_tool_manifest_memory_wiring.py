@@ -2,16 +2,21 @@
 
 from __future__ import annotations
 
+import argparse
+import contextlib
 import importlib.util
+import io
+import os
 import re
 import sqlite3
 import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
 from unittest import mock
 
-from orchestrator import kb_migrate_progress_log, spine, tools_census
+from orchestrator import kb, kb_migrate_progress_log, spine, tools_census
 
 REPO = Path(__file__).resolve().parents[2]
 
@@ -571,6 +576,138 @@ class ToolManifestMemoryPlants(unittest.TestCase):
             proc.stdout,
         )
         self.assertNotIn("File: full/q3.lean.aristotle", proc.stdout)
+
+
+class KnowledgeSearchPlants(unittest.TestCase):
+    def setUp(self) -> None:
+        self.conn = sqlite3.connect(":memory:")
+        self.conn.row_factory = sqlite3.Row
+        self.addCleanup(self.conn.close)
+        self.conn.executescript(kb.SCHEMA.read_text(encoding="utf-8"))
+        self.title = (
+            "Full positive short-step resource cannot pay any central two-edge allocation"
+        )
+        self.conn.executemany(
+            "INSERT INTO journal_entry(id,title,body,source_file) VALUES (?,?,?,?)",
+            [("j1", self.title, "hinge", "fixture"),
+             ("j2", "unrelated marker", "marker", "fixture"),
+             ("j3", 'alpha"beta intervening needle', "", "fixture")],
+        )
+        self.conn.execute("INSERT INTO journal_fts(journal_fts) VALUES ('rebuild')")
+        self.conn.execute(
+            "INSERT INTO kill(id,unit_type,subject,status,source_file) VALUES (?,?,?,?,?)",
+            ("k1", "route", self.title, "killed", "fixture"),
+        )
+        self.conn.execute("INSERT INTO kill_alias(kill_id,alias) VALUES ('k1','alias_only')")
+
+    def search(self, query):
+        return kb._search_table(
+            self.conn, "journal_entry", "journal_fts",
+            ("title", "target", "boundary"), query, "JOURNAL",
+        )
+
+    def test_malformed_input_finds_terms_across_title_and_body(self) -> None:
+        for query in (
+            "Full positive short-step resource central two-edge allocation",
+            "hinge = allocation", 'hinge "allocation', "hinge (allocation",
+        ):
+            with self.subTest(query=query):
+                self.assertEqual([row["id"] for row in self.search(query)], ["j1"])
+
+    def test_valid_fts_operators_phrases_columns_and_prefixes_are_preserved(self) -> None:
+        for query, expected in (
+            ("hinge OR marker", {"j1", "j2"}),
+            ("hinge NOT marker", {"j1"}), ("title:marker", {"j2"}),
+            ('"positive short"', {"j1"}),
+            ("NEAR(positive allocation, 20)", {"j1"}), ("posit*", {"j1"}),
+            ("hinge AND absent", set()),
+        ):
+            with self.subTest(query=query):
+                self.assertEqual({row["id"] for row in self.search(query)}, expected)
+
+    def test_embedded_quote_is_escaped_in_literal_retry(self) -> None:
+        self.assertEqual(
+            [row["id"] for row in self.search('alpha"beta needle')], ["j3"],
+        )
+
+    def test_empty_input_skips_fts_and_retry_failure_propagates(self) -> None:
+        conn = mock.Mock()
+        self.assertEqual(kb._fts_rows(conn, "unused", " "), [])
+        conn.execute.assert_not_called()
+        conn.execute.side_effect = [
+            sqlite3.OperationalError("no such column: step"),
+            sqlite3.OperationalError("database is locked"),
+        ]
+        with self.assertRaisesRegex(sqlite3.OperationalError, "database is locked"):
+            kb._fts_rows(conn, "unused", "short-step")
+        self.assertEqual(conn.execute.call_count, 2)
+
+    def test_both_commands_find_hyphenated_kill_and_journal(self) -> None:
+        args = argparse.Namespace(terms=["short-step central two-edge allocation"])
+        for command in (kb.cmd_search, kb.cmd_search_all):
+            with self.subTest(command=command.__name__):
+                out = io.StringIO()
+                with mock.patch.object(kb, "connect", return_value=self.conn):
+                    with contextlib.redirect_stdout(out):
+                        self.assertEqual(command(args), 0)
+                self.assertIn("k1", out.getvalue())
+                if command is kb.cmd_search_all:
+                    self.assertIn("JOURNAL (1)", out.getvalue())
+                    self.assertIn(self.title, out.getvalue())
+
+    def test_like_substrings_and_aliases_still_work(self) -> None:
+        self.assertEqual([row["id"] for row in self.search("short-st")], ["j1"])
+        for command in (kb.cmd_search, kb.cmd_search_all):
+            with mock.patch.object(kb, "connect", return_value=self.conn):
+                with contextlib.redirect_stdout(io.StringIO()) as out:
+                    self.assertEqual(command(argparse.Namespace(terms=["alias_only"])), 0)
+            self.assertIn("k1", out.getvalue())
+
+    def test_missing_index_is_not_reported_as_no_hits(self) -> None:
+        with self.assertRaisesRegex(sqlite3.OperationalError, "no such table"):
+            kb._search_table(
+                self.conn, "journal_entry", "missing_fts", ("title",), "hinge", "JOURNAL",
+            )
+
+    def test_database_failure_is_not_swallowed(self) -> None:
+        broken = mock.Mock()
+        broken.execute.side_effect = sqlite3.OperationalError("database disk image is malformed")
+        with self.assertRaisesRegex(sqlite3.OperationalError, "disk image is malformed"):
+            kb._search_table(
+                broken, "journal_entry", "journal_fts", ("title",), "hinge", "JOURNAL",
+            )
+        self.assertEqual(broken.execute.call_count, 1)
+
+    def test_cli_and_ask_distinguish_index_failure_from_no_hits(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "knowledge.db"
+            self.conn.commit()
+            with sqlite3.connect(path) as copied:
+                self.conn.backup(copied)
+            env = dict(os.environ, Q3_KNOWLEDGE_DB_PATH=str(path))
+            for command in ("search", "ask"):
+                result = subprocess.run(
+                    [sys.executable, str(REPO / "orchestrator/kb.py"), command, "absent_term"],
+                    env=env, capture_output=True, text=True, timeout=10,
+                )
+                self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+                self.assertIn("no hits", result.stdout)
+            with sqlite3.connect(path) as copied:
+                copied.execute("DROP TABLE kill_fts")
+            for command in ("search", "ask"):
+                result = subprocess.run(
+                    [sys.executable, str(REPO / "orchestrator/kb.py"), command, "hinge"],
+                    env=env, capture_output=True, text=True, timeout=10,
+                )
+                self.assertEqual(result.returncode, 2, result.stdout + result.stderr)
+                self.assertIn("no such table: kill_fts", result.stderr)
+            result = subprocess.run(
+                ["./ask.sh", "hinge"], cwd=REPO, env=env,
+                capture_output=True, text=True, timeout=20,
+            )
+            self.assertEqual(result.returncode, 2, result.stdout + result.stderr)
+            self.assertIn("knowledge.db: kb.py ask failed (code 2)", result.stdout)
+            self.assertIn("ASK_STATUS: INCOMPLETE", result.stdout)
 
 
 if __name__ == "__main__":

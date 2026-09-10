@@ -547,20 +547,34 @@ def _render(conn, rows, verbose=False) -> None:
         print()
 
 
+def _fts_rows(conn, sql, query):
+    """Preserve valid FTS syntax; retry malformed input as literal terms once."""
+    if not query.strip():
+        return []
+    try:
+        return conn.execute(sql, (query,)).fetchall()
+    except sqlite3.OperationalError as exc:
+        # A bare hyphen is parsed as a column exclusion ("no such column").
+        # Schema, I/O and corruption errors must reach the caller, not look empty.
+        if not str(exc).startswith((
+            "fts5: syntax error", "unterminated string", "no such column:",
+        )):
+            raise
+        literal = " ".join('"' + term.replace('"', '""') + '"' for term in query.split())
+        return conn.execute(sql, (literal,)).fetchall()
+
+
 def cmd_search(args) -> int:
     conn = connect()
     q = " ".join(args.terms)
     # FTS first, then alias hits, then a LIKE fallback so partial identifiers still match.
     ids, seen = [], set()
-    try:
-        for r in conn.execute(
-                "SELECT k.id FROM kill_fts f JOIN kill k ON k.rowid=f.rowid "
-                "WHERE kill_fts MATCH ? ORDER BY rank", (q,)):
-            if r["id"] not in seen:
-                seen.add(r["id"])
-                ids.append(r["id"])
-    except sqlite3.OperationalError:
-        pass  # unquoted FTS syntax (e.g. a bare '=') — fall through to LIKE
+    for r in _fts_rows(
+            conn, "SELECT k.id FROM kill_fts f JOIN kill k ON k.rowid=f.rowid "
+            "WHERE kill_fts MATCH ? ORDER BY rank", q):
+        if r["id"] not in seen:
+            seen.add(r["id"])
+            ids.append(r["id"])
     like = f"%{q}%"
     for r in conn.execute(
             "SELECT DISTINCT k.id FROM kill k LEFT JOIN kill_alias a ON a.kill_id=k.id "
@@ -584,16 +598,13 @@ def cmd_search(args) -> int:
 def _search_table(conn, table, fts, cols, q, label):
     """Search one wave-2 table via its FTS index, with a LIKE fallback."""
     out, seen = [], set()
-    try:
-        for r in conn.execute(
-                f"SELECT t.* FROM {fts} f JOIN {table} t ON t.rowid=f.rowid "
-                f"WHERE {fts} MATCH ? ORDER BY rank LIMIT 12", (q,)):
-            key = r[0]
-            if key not in seen:
-                seen.add(key)
-                out.append(r)
-    except sqlite3.OperationalError:
-        pass
+    for r in _fts_rows(
+            conn, f"SELECT t.* FROM {fts} f JOIN {table} t ON t.rowid=f.rowid "
+            f"WHERE {fts} MATCH ? ORDER BY rank LIMIT 12", q):
+        key = r[0]
+        if key not in seen:
+            seen.add(key)
+            out.append(r)
     if not out:
         like = f"%{q}%"
         where = " OR ".join(f"{c} LIKE ?" for c in cols)
@@ -614,15 +625,12 @@ def cmd_search_all(args) -> int:
     # matched — the exact case this layer exists for.  Aliases and ids have no
     # FTS index, so they stay on LIKE and are merged in.
     kills, seen_kill = [], set()
-    try:
-        for r in conn.execute(
-                "SELECT k.* FROM kill_fts f JOIN kill k ON k.rowid=f.rowid "
-                "WHERE kill_fts MATCH ? ORDER BY rank LIMIT 12", (q,)):
-            if r["id"] not in seen_kill:
-                seen_kill.add(r["id"])
-                kills.append(r)
-    except sqlite3.OperationalError:
-        pass
+    for r in _fts_rows(
+            conn, "SELECT k.* FROM kill_fts f JOIN kill k ON k.rowid=f.rowid "
+            "WHERE kill_fts MATCH ? ORDER BY rank LIMIT 12", q):
+        if r["id"] not in seen_kill:
+            seen_kill.add(r["id"])
+            kills.append(r)
     for r in conn.execute(
             "SELECT k.* FROM kill k LEFT JOIN kill_alias a ON a.kill_id=k.id "
             "WHERE k.id LIKE ? OR a.alias LIKE ? GROUP BY k.id LIMIT 12",
@@ -1043,6 +1051,13 @@ def main() -> int:
     sub.add_parser("export", help="regenerate the legacy operational-closure view").set_defaults(fn=cmd_export)
 
     args = p.parse_args()
+    if args.fn in (cmd_search, cmd_search_all):
+        try:
+            return args.fn(args)
+        except sqlite3.DatabaseError as exc:
+            # ask.sh reserves 1 for a successful search without matches.
+            print(f"knowledge search failed: {exc}", file=sys.stderr)
+            return 2
     return args.fn(args)
 
 
