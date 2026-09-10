@@ -7114,3 +7114,14 @@ Request `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_CONTACT_2026-09-10.txt`
 **Чей вердикт и аргумент:** CONTACT_INDEPENDENT_CHECK_2026-09-10.md; full fresh terra/xhigh audit and parent proof, exact-report WORDING-only then CLEAN. All eight shelf hashes checked; late HTML excluded as RELAY, local June-v1 source verified. Queue ANSWERED; review event phase3/global48; watchers ended. Lower sign/RH unproved, production HOLD unchanged.
 **Техника:** complete independent paper audit plus parent symbolic constants, physical support denominator, sharp-cut and compact-norm attainment checks.
 **Адреса:** docs/routeB_bus/CONTACT_INDEPENDENT_CHECK_2026-09-10.md; verdict00bae614 C1-C25; /tmp/q3_contact_parent_exact_checks.log.
+
+## 2026-09-10 — Odd reflected-prime obstruction selects the full coupled equality problem
+
+**Развилка:** prove CONTACT C25 using an odd-halfline positive semigroup or retain the signed arithmetic coupling in the exact equality system.
+**Выбрали:** retain the full coupled source. The odd semigroup shortcut fails for every a>log(2)/2.
+**Почему:** disjoint nonnegative smooth bumps with reflected sum log(2) have full odd-form cross pairing >88/225 at a=1/2 and epsilon=1/100. The reflected n=2 contribution is exactly +log(2)/sqrt(2); the total archimedean and two-pole loss is at most62epsilon/9. A positivity-preserving semigroup would require nonpositive disjoint cross pairing.
+**Что отвергли и почему:** positivity-preserving/positivity-improving odd-semigroup argument, not source positivity itself. This is neither negative energy nor a negative eigenvalue, and does not exclude positivity of a particular resolvent. Shrinking the collar alone also cannot exclude contact: C21 forces norm exactly1 at every admissible split at actual contact.
+**Техника:** literal four-quadrant odd lift; exact analytic bounds; separate full-line diagnostic cross0.458622293434725; one terra/xhigh checker, two distinct CLEAN passes. The diagnostic is not an interval certificate and is not used as proof.
+**Следующий ход:** construct a proof attempt for the full C25 coupled inverse or equality system, retaining the reflected atom and both parity sectors. A new label for C22 or the C23 absolute majorant is not an acceptable result; stop that subattempt if no source-specific cancellation or rigidity input is supplied.
+**Адреса:** docs/routeB_bus/CONTACT_INDEPENDENT_CHECK_2026-09-10.md appendix; source CONTACT00bae614 C1-C8/C19-C25; reviewed draft SHA2561552f433e99e910d0eb8ab8159525fa24ebe2ecf2b4d04b50684c9ffb9f10cb4; /tmp/q3_odd_reflected_prime_controls.log.
+**Чей вердикт и аргумент:** parent derivation and contact_verdict_check agree: reflected coefficient +w_n, full poles -4S_uS_v, analytic lower bound88/225. Two CLEAN passes; lower sign, C22 and RH remain unproved. No new request sent.

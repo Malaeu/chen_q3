@@ -86,3 +86,52 @@ An actual strictly positive enclosure with complete operator remainder proves on
 ## Review record
 
 Initial full-verdict pass: no incorrect mathematical assertion found; TOOL-FAILURE for independent verification of the later HTML. Corrected intake scope excludes that unsupported source and retains the locally verified June-v1 source. Same-checker exact-report pass1 was WORDING-only (PDF quotation versus complex extension, corrected); pass2 was CLEAN on SHA256d847eb1868dda612d8b598c4cafefbbc8b71d3ade079e038190d7abf6c020855 before this mechanical status update. Mode A converged with no unresolved substantive findings; the initial TOOL-FAILURE pass does not count toward convergence.
+
+## Appendix: independently checked odd reflected-prime obstruction
+
+The following historical draft is preserved verbatim. Its pending-review label is superseded by this receipt: contact_verdict_check completed two distinct CLEAN passes on SHA256 1552f433e99e910d0eb8ab8159525fa24ebe2ecf2b4d04b50684c9ffb9f10cb4 (5437 bytes, 42 lines). Accepted only at the narrow paper scope stated below; C22 and lower sign remain unproved.
+
+```text
+# Odd-sector reflected-prime obstruction — draft, 2026-09-10
+
+Scope: SOURCE-SPECIFIC PAPER CANDIDATE, independent review pending. This is not a negative-energy test, lower-sign result or RH counterexample. It tests the proposed positivity-preserving-semigroup shortcut to CONTACT C25. Source: CONTACT verdict00bae61477f2ab4a386dd1f0048bcd03359d89ba C1-C8, with alpha(t)=exp(-t/2)/(1-exp(-2t)), w_n=Lambda(n)/sqrt(n), full prime powers and both poles. Source convention antilinear-first. Local form domain and self-adjoint semibounded realization are those independently accepted in CONTACT; no H1_0 replacement.
+
+Let O:L2(0,a)->L2_odd(-a,a) be the unitary odd lift (Ou)(x)=sgn(x)u(|x|)/sqrt2. For real nonnegative u,v with smooth disjoint supports inside (0,a), the diagonal c_A contribution vanishes. Direct expansion in four physical quadrants gives
+
+B_odd(u,v) = - integral_0^a integral_0^a [alpha(|x-y|)-alpha(x+y)] u(x)v(y) dxdy
+- sum_(n>=2) w_n integral_0^a u(x)[v(x-log n)+v(x+log n)-v(log n-x)]dx
+-4 (integral_0^a sinh(x/2)u(x)dx)(integral_0^a sinh(y/2)v(y)dy),
+
+where v is zero outside (0,a). No prime-only substitution: both continuous archimedean and pole terms remain. The coefficient of the REFLECTED prime shift is positive. On separated supports the continuous kernel is bounded.
+
+## Explicit certified cross-pairing at a=1/2
+
+Put l=log2, x0=l/3, y0=2l/3, epsilon=1/100. Choose any even nonnegative phi in C_c^infinity(-1,1) with integral phi²=1. Put u_e(x)=epsilon^(-1/2)phi((x-x0)/epsilon), v_e(x)=epsilon^(-1/2)phi((x-y0)/epsilon).
+
+The supports are positive, disjoint and contained in (0,1/2), using 0.69<log2<0.70. Their difference distance is >0.21 and <0.254, while their sum lies within0.02 of log2. Thus all direct prime shifts vanish; exactly the reflected n=2 term survives, with integral u_e(x)v_e(log2-x)dx=1. Every other reflected prime power has log n>=log3>1. The whole prime contribution is exactly log2/sqrt2, not twice or half that value.
+
+Alpha is positive decreasing. For t>=0.21, alpha(t)<=1/(1-exp(-0.42))<3, because exp(0.42)>1+0.42+0.42²/2=7541/5000>3/2. Hence the archimedean cross term is bounded below by -3||u_e||_1||v_e||_1>=-6epsilon. On0<x<1/2, sinh(x/2)<1/3 (for example sinh(1/4)<(1/4)/(1-1/16)=4/15). The full pole cross term is bounded below by -(4/9)||u_e||_1||v_e||_1>=-8epsilon/9. Therefore
+
+B_odd(u_e,v_e) >= log2/sqrt2 -(62/9)epsilon
+>23/50 -31/450 =88/225 >0.39.
+
+This is a uniform analytic bound for every stated phi, not a mesh computation. The elementary log bounds can be certified by rational Taylor bounds on exp(69/100) and exp(7/10). A separate exact-rational arithmetic table yields lower bounds2039/4500,502/1125,383/900,88/225 for epsilon=1/1000,1/500,1/200,1/100 respectively. The table is an arithmetic control; the support/kernel proof is what supplies the claim.
+
+## Every window beyond the first reflected-prime threshold
+
+For any a>log2/2 choose delta>0 with delta<min(log2/2,a-log2/2), x0=log2/2-delta and y0=log2/2+delta. Take epsilon small enough to preserve positive, disjoint interior supports, to keep all difference distances below log2 and all sum distances within a neighborhood of log2 containing no other log n. The same normalized even bump construction makes the reflected n=2 term exactly w_2. All continuous archimedean/pole terms are O(epsilon), because the support separation2delta is fixed and positive and the locations are in a fixed bounded interval. Thus B_odd(u_e,v_e)>0 for sufficiently small positive epsilon. This works with the full source form for each such a; it uses no asymptotic a limit, parity-purity conjecture or numerical spectral data.
+
+## Exact consequence and limit
+
+The odd-sector self-adjoint semibounded operator transported by O cannot have a positivity-preserving semigroup on L2(0,a) for any a>log2/2. Indeed if T_t=exp(-t A_odd) preserved nonnegative functions, then for these disjoint nonnegative real form-domain u,v one would have <u,T_t v>>=0 and <u,v>=0. The form limit
+
+B_odd(u,v)=lim_(t down to0) [<u,v>-<u,T_t v>]/t
+
+exists for form-domain pairs and would be <=0, contradicting the positive cross-pairing. For a semibounded operator the standard spectral-calculus form limit follows after a scalar shift; the added scalar pairing is zero for disjoint u,v.
+
+This does NOT imply a negative eigenvalue, an odd ground state with nodes, a failure of positivity for Q, or failure of a particular source resolvent at a specific spectral value. It only rules out importing the standard positivity-preserving/positivity-improving-semigroup argument to assert a sign-definite odd halfline ground state or positive odd resolvent for all sufficiently negative spectral parameters. General positive definite operators can have positive off-diagonal pairings. CONTACT C22 remains UNPROVED. Source-specific sign estimates that retain the reflected arithmetic contribution remain possible.
+
+## Shelf distinction
+
+The checked XIDEV L3b/DOM source shows a signed canonical-weighted jump density; the August rank-two W02 verdict refutes single-moment pole removal in a different finite carrier. Neither was used to infer this halfline semigroup result. Local shelf queries returned candidates, not a theorem-of-absence. No novelty claim beyond the explicitly checked local files is made. Do not send Proshka a generic pole-rank or Perron argument: it must address this reflected atom or use a genuinely different mechanism.
+```
