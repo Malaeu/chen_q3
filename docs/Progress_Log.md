@@ -7035,3 +7035,11 @@ Reproduction and complete intervals: docs/routeB_bus/phase5_codex/six_centre/out
 **Следующий ход:** complete the canonical live refresh and return to BRIDGE B20–B21; no resolved numerical test repeated.
 **Адреса:** q3.lean.aristotle/scripts/refresh_q3_docs.py; orchestrator/tests/test_autopilot002.py; docs/session_protocols/SESSION_PROTOKOLL_2026-09-09_CODEX.md.
 **Чей вердикт и аргумент:** owner asked to repair repeated expensive refresh; native terra/xhigh review converged after two clean plan and two clean implementation passes.
+
+## 2026-09-10 — Fixed-window derivative-shell completeness
+
+**Branch:** seek a new source-family transfer before another reformulation of BRIDGE's saturation atom.
+**Chosen:** prove fixed-window E-density of the exact cut even theta derivatives, then project onto p-orthogonal tests. A compactly supported annihilating distribution would have an analytic convolution vanishing to all orders, hence vanish by Fourier uniqueness. Endpoint jumps are controlled by an explicit C1-to-E cut bound and inward taper estimate.
+**Result:** independently checked paper L1–L5 in docs/routeB_bus/RADICAL_SHELL_DENSITY_2026-09-10.md. D_infinity=N_a² inf_{f in V_a_even,<p,f>=1}Q[f]. For unrestricted m(a), a full-space affine trial at budget b(a)>0 transfers to a finite exact shell at budget2b(a); no uniform degree rate is needed for this implication.
+**Rejected:** local density is not global radical density, exterior density, a cofinal T² bound, a coefficient bound or a lower sign. Analytic continuation alone did not prove the old quantitative atom; the complete annihilator argument proves the family transfer only.
+**Next:** SATURATION should attack an actual construction in the now-available full even affine space, or a source-specific operator/kernel estimate, with its first unpaid inequality. Do not repeat either finite f_y/f_B scalar. Two independent WORDING-only passes; B2/B17 locator fixed. RH remains unproved.

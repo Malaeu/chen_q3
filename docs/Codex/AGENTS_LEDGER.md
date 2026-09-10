@@ -32,3 +32,5 @@ gaussian_space_review / source_transfer_bound · DONE · prior scratch component
 2026-09-10 · index_refresh_review · DONE; P4/P5, A1/A2, F1/F2 clean. All scoped tests passed; live strict refresh completed0. No running child agents; agents-watch PAUSED; пусто.
 
 2026-09-10T10:28+02:00 · shell_density_audit · gpt-5.6-terra/xhigh · bounded read-only audit of fixed-window derivative-shell density and its exact BRIDGE recovery implication · expected20min · result=first incorrect assertion or two clean passes on /tmp/q3_radical_shell_density_draft.md; cofinal T² remains unproved · RUNNING; no descendants. Resumed after one parent compaction.
+
+2026-09-10 · shell_density_audit · DONE; L1–L5 independently VERIFIED with B2/B17 locator correction; L6 remains unproved. Two WORDING-only passes; FIRST_INCORRECT_ASSERTION NONE_FOUND.
