@@ -14,6 +14,22 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-10-SATURATION · SATURATION: source mechanism for the affine T-squared budget after exact shell density · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SATURATION_2026-09-10.txt`
+- Boundary: `GOAL058_FULL_WINDOW_AFFINE_SATURATION_AFTER_DENSITY`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: BRIDGE and finite f_y/f_B checks accepted; L1-L5 fixed-window transfer independently checked at57df552a; source T-squared estimate and lower sign remain open. Exact phase restored by observed BRIDGE receipt; autonomous delivery authorized in GOAL section1.1.
+- Registered predictions: P1-P4 frozen in section 6
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `6d8f7fac4b0973aef974025eda960b5af3babe75` / `13970` / `84` /
+  `211cf7e894c59c289ee017e8e20b16ee4766335bd9a7c79a9c2a0c0613c85c79` /
+  `8233ea0deab7eb8b7f5f0f4ef862e09636c698e8` / `yes`
+
+---
+
 ## REQ-2026-09-09-BRIDGE · BRIDGE: exact obstruction between positive tail construction and signed target · ANSWERED
 
 - `STATUS: ANSWERED`
