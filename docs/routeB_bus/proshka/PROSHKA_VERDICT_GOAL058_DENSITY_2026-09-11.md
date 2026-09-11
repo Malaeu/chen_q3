@@ -298,8 +298,8 @@ The unsymmetrized cross integral already displays the cutoffs that logarithmic t
 \[
 \frac{C^2e^{\beta(x+y)}}2
 \int_{\max(1,s/a,t/b)}^\infty
-u^{3/2}(a\nu-s)(b\nu-t)e^{-\pi(a+b)\nu}
-(x+y+\log\nu)\,d\nu.
+u^{3/2}(au-s)(bu-t)e^{-\pi(a+b)u}
+(x+y+\log u)\,du.
 \]
 
 For reflected components one retains the reflected positive-part factors in DN7; their cutoffs must not be replaced by this unreflected lower bound. Positivity of the factors still does not determine the sign of the logarithmic/node multiplier or of a coefficient sum.
