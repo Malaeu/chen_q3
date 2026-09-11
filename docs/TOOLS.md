@@ -2,27 +2,27 @@
 > **GENERATED FILE — do not edit by hand.** Regenerate with `./orchestrator/tools_census.py --markdown`.
 > Written because hand-maintained maps rot: MAP.md drifted two days, the frozen atlases two months, and `aristotle_proofs.db` covered 31% of RouteB.
 ## Summary
-- **Operational contours:** 7; registered tool contracts: 55 (AVAILABLE 6, DEGRADED 1, ENABLED 48)
-- **Contour front doors:** `codex-session-start`, `supplier-preflight`, `property-descent`, `observability-summary`, `lean-validation`, `workflow-runtime`, `task-specific-generators`
+- **Operational contours:** 9; registered tool contracts: 90 (AVAILABLE 12, DEGRADED 1, ENABLED 75, RETIRED 2)
+- **Contour front doors:** `workflow-runtime`, `supplier-preflight`, `property-descent`, `observability-summary`, `lean-validation`, `workflow-runtime`, `task-specific-generators`, `radical-window-derivative`, `edge-ledger-build`
 - **Automatic startup front doors:** 1 (`codex-session-start`); Spine strict is its internal check
-- **Executable implementation files:** 425 (touched since 2026-07-01: 95)
-- **One-shot probes** (goal-local experiment log, not tooling): 187
-- **Verification tests** (not tooling): 51
+- **Executable implementation files:** 555 (touched since 2026-07-01: 231)
+- **One-shot probes** (goal-local experiment log, not tooling): 198
+- **Verification tests** (not tooling): 58
 - **Completed migration scripts** (provenance, not tooling): 9
 - **Databases:** 2
 - **Zero-byte database decoys:** 0
-- **Ledgers** (accumulating journals, any format): 195
-- **State files** (json/yaml/csv > 2 KB, not journals): 517
-- Alive tools referenced by nothing (**orphans**): 4
+- **Ledgers** (accumulating journals, any format): 229
+- **State files** (json/yaml/csv > 2 KB, not journals): 580
+- Alive tools referenced by nothing (**orphans**): 46
 - `In rules` below means a direct policy/startup mention; implementation helpers may be covered by a registered family.
 ## Databases
 | Path | Last commit | Refs | In rules |
 |---|---|---|---|
-| `q3.lean.aristotle/aristotle_db/aristotle_proofs.db` | 2026-08-28 | 192 | yes |
-| `q3.lean.aristotle/aristotle_db/knowledge.db` | 2026-08-30 | 306 | yes |
+| `q3.lean.aristotle/aristotle_db/aristotle_proofs.db` | 2026-09-02 | 197 | yes |
+| `q3.lean.aristotle/aristotle_db/knowledge.db` | 2026-09-11 | 379 | yes |
 
 ## Ledgers — accumulating journals ("have we already tried this?")
-195 journals, **144 alive** / 51 frozen. A frozen ledger that is still cited as current is the project's recurring failure mode: it does not lie, it just stops answering.
+229 journals, **182 alive** / 47 frozen. A frozen ledger that is still cited as current is the project's recurring failure mode: it does not lie, it just stops answering.
 ### Alive
 | Ledger | Entries | Last commit | In rules |
 |---|---|---|---|
@@ -30,146 +30,184 @@
 | `q3.lean.aristotle/docs/INSIGHTS.md` | 1685 | 2026-08-21 | yes |
 | `q3.lean.aristotle/ACTIVE/insights.md` | 1685 | 2026-08-21 | **NO** |
 | `q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md` | 817 | 2026-08-10 | yes |
+| `docs/routeB_bus/phase5_scripts/out/edge_ledger_ratio.json` | 591 | 2026-09-03 | yes |
 | `docs/routeB_bus/MANIFEST.md` | 406 | 2026-08-10 | **NO** |
-| `docs/semantic_quarantine/STATUS_SURFACE_REGISTRY_v1.json` | 321 | 2026-08-27 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_GOAL057_B3_0M_FINITE_SOURCE_WEIL_FOURIER_LEDGER_PREFLIGHT_RELEASE_2026-08-09.md` | 245 | 2026-08-09 | **NO** |
+| `docs/semantic_quarantine/STATUS_SURFACE_REGISTRY_v1.json` | 340 | 2026-08-31 | **NO** |
+| `q3.lean.aristotle/blueprint/blueprint_manifest.json` | 280 | 2026-09-03 | yes |
+| `docs/Progress_Log.md` | 261 | 2026-09-11 | yes |
 | `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL057_B3_0M_FINITE_SOURCE_WEIL_FOURIER_LEDGER_PREFLIGHT_RELEASE_2026-08-09.md` | 245 | 2026-08-09 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER_RELEASE_2026-08-08.md` | 229 | 2026-08-08 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_GOAL057_B3_0M_FINITE_SOURCE_WEIL_FOURIER_LEDGER_PREFLIGHT_RELEASE_2026-08-09.md` | 245 | 2026-08-09 | **NO** |
+| `docs/routeB_bus/phase5_scripts/out/edge_ledger_relritz.json` | 244 | 2026-09-03 | yes |
 | `docs/routeB_bus/PROSHKA_VERDICT_GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER_RELEASE_2026-08-08.md` | 229 | 2026-08-08 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER_RELEASE_2026-08-08.md` | 229 | 2026-08-08 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/SOFT_L2_LAG_LEDGER_12_120.json` | 228 | 2026-07-27 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/SOFT_L2_LAG_LEDGER_14_120.json` | 228 | 2026-07-27 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/SOFT_L2_LAG_LEDGER_13_120.json` | 222 | 2026-07-27 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_GOAL057_B3_0L_SOURCE_LOG_WINDOW_FOURIER_L2_PREFLIGHT_RELEASE_2026-08-09.md` | 212 | 2026-08-09 | **NO** |
 | `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL057_B3_0L_SOURCE_LOG_WINDOW_FOURIER_L2_PREFLIGHT_RELEASE_2026-08-09.md` | 212 | 2026-08-09 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_GOAL057_B3_0L_SOURCE_LOG_WINDOW_FOURIER_L2_PREFLIGHT_RELEASE_2026-08-09.md` | 212 | 2026-08-09 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/ledger_audit_v2_preflight.json` | 204 | 2026-07-10 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_GOAL056_LOG_WINDOW_V_N_M_COMPLETENESS_2026-08-06.md` | 193 | 2026-08-06 | **NO** |
 | `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL056_LOG_WINDOW_V_N_M_COMPLETENESS_2026-08-06.md` | 193 | 2026-08-06 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_GOAL056_LOG_WINDOW_V_N_M_COMPLETENESS_2026-08-06.md` | 193 | 2026-08-06 | **NO** |
+| `docs/routeB_bus/proshka/PROSHKA_VERDICT_MYTHOS_THREE_STAGE_FASTEST_KILL_PLAN_2026-09-03.md` | 183 | 2026-09-03 | **NO** |
 | `SESSION_PROTOKOLL_2026-08-13.md` | 182 | 2026-08-14 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_GOAL057_B3_0B1_LOG_GROWTH_ENVELOPE_WEIGHTED_L2_2026-08-08.md` | 173 | 2026-08-08 | **NO** |
+| `orchestrator/state/NODE_REGISTRY_V10.json` | 182 | 2026-09-02 | yes |
 | `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL057_B3_0B1_LOG_GROWTH_ENVELOPE_WEIGHTED_L2_2026-08-08.md` | 173 | 2026-08-08 | **NO** |
-| `orchestrator/state/SPINE_STATE.json` | 168 | 2026-08-28 | yes |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_GOAL056_LOG_WINDOW_MEASURE_TRANSPORT_2026-08-06.md` | 164 | 2026-08-06 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_GOAL057_B3_0B1_LOG_GROWTH_ENVELOPE_WEIGHTED_L2_2026-08-08.md` | 173 | 2026-08-08 | **NO** |
+| `orchestrator/state/SPINE_STATE.json` | 168 | 2026-08-31 | yes |
 | `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL056_LOG_WINDOW_MEASURE_TRANSPORT_2026-08-06.md` | 164 | 2026-08-06 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_GOAL056_LOG_WINDOW_MEASURE_TRANSPORT_2026-08-06.md` | 164 | 2026-08-06 | **NO** |
 | `docs/routeB_bus/proshka/PROSHKA_VERDICT_REQ_2026_08_26_M_H2A_FINAL_CONSUMER_PREFLIGHT_KILL_AND_GROUND_FAMILY_REPAIR_2026-08-26.md` | 162 | 2026-08-26 | **NO** |
 | `docs/routeB_bus/proshka/PROSHKA_VERDICT_REQ_2026_08_26_H_TRIAL_NORMALIZER_PREFLIGHT_KILL_AND_LOCAL_CELL_REPAIR_2026-08-26.md` | 161 | 2026-08-26 | **NO** |
 | `docs/routeB_bus/proshka/PROSHKA_VERDICT_REQ_2026_08_26_N_CORRECTION_5_ANNIHILATOR_KILL_AND_COMPLETED_SPECTRUM_PREFLIGHT_2026-08-27.md` | 154 | 2026-08-27 | **NO** |
 | `docs/RH_TRICK_ATLAS.md` | 147 | 2026-08-06 | yes |
+| `docs/routeB_bus/phase5_scripts/out/edge_ledger_dualcert.json` | 141 | 2026-09-03 | yes |
 | `docs/routeB_bus/proshka/PROSHKA_VERDICT_REQ_2026_08_28_R1A_CORRECTION_16_GLOBAL_GAUGE_KILL_AND_LOG_DERIVATIVE_RERANK_2026-08-28.md` | 141 | 2026-08-28 | **NO** |
 | `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_W5_COFINAL_RATE_EDGE_LEDGER_2026-08-25.md` | 138 | 2026-08-25 | **NO** |
+| `docs/routeB_bus/phase5_scripts/out/edge_ledger_probe2_probe3.md` | 135 | 2026-09-03 | yes |
 | `docs/routeB_bus/proshka/PROSHKA_VERDICT_REQ_2026_08_26_A_STURM_CERTIFICATE_REGISTRY_SHADOW_2026-08-26.md` | 134 | 2026-08-26 | **NO** |
-| `docs/KILLS.md` | 131 | 2026-08-11 | yes |
+| `docs/KILLS.md` | 131 | 2026-08-11 | **NO** |
+| `docs/routeB_bus/phase5_scripts/out/edge_ledger_schur.json` | 129 | 2026-09-03 | yes |
+| `docs/routeB_bus/proshka/PROSHKA_VERDICT_EXACT_ROOF_PORT_TO_SUPPLIER_LEDGER_2026-09-01.md` | 126 | 2026-09-01 | **NO** |
 | `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_W5_L1_LOG_PACKET_MASS_RATE_2026-08-25.md` | 120 | 2026-08-25 | **NO** |
 | `SESSION_PROTOKOLL_2026-08-05.md` | 114 | 2026-08-06 | **NO** |
+| `docs/routeB_bus/proshka/PROSHKA_VERDICT_UNBOUND_THREE_STAGE_FASTEST_KILL_PLAN_2026-09-03.md` | 102 | 2026-09-03 | **NO** |
 | `docs/routeB_bus/proshka/PROSHKA_VERDICT_EULER_LOGARITHMIC_REPRESENTATION_AUDIT_2026-08-20.md` | 100 | 2026-08-20 | **NO** |
 | `docs/routeB_bus/proshka/PROSHKA_VERDICT_CODEX_REQ_2026_08_24_W4_ZERO_ENDPOINT_JUMP_LEDGER_REPAIR_2026-08-24.md` | 96 | 2026-08-24 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_REQUEST_GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER_RELEASE_2026-08-08.md` | 95 | 2026-08-08 | **NO** |
 | `docs/routeB_bus/PROSHKA_REQUEST_GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER_RELEASE_2026-08-08.md` | 95 | 2026-08-08 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_REQUEST_GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER_RELEASE_2026-08-08.md` | 95 | 2026-08-08 | **NO** |
 | `SESSION_PROTOKOLL_2026-08-14.md` | 94 | 2026-08-14 | **NO** |
 | `docs/cartographer/comparator/fixtures/adapter_registry.json` | 94 | 2026-08-23 | **NO** |
 | `docs/routeB_bus/proshka/PROSHKA_VERDICT_REQ_2026_08_22_V_H2A_4_1B_3C_1_6_DOMAIN_KILL_AND_POLARIZED_DEFECT_DISCRIMINATOR_2026-08-23.md` | 88 | 2026-08-23 | **NO** |
-| `q3.lean.aristotle/aristotle_input/req_r_ms_satz1_m0_even_spectrum_2026_08_22_harvest/lake-manifest.json` | 85 | 2026-08-22 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/muntz_r6/lake-manifest.json` | 85 | 2026-07-30 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/muntz_v3/lake-manifest.json` | 85 | 2026-07-30 | **NO** |
+| `docs/CHAT_DIGESTS.md` | 86 | 2026-09-11 | **NO** |
 | `docs/routeB_bus/muntz_r6/lake-manifest.json` | 85 | 2026-07-30 | **NO** |
 | `docs/routeB_bus/muntz_v3/lake-manifest.json` | 85 | 2026-07-30 | **NO** |
-| `q3.lean.aristotle/ACTIVE/FAILED_STRATEGIES.yaml` | 80 | 2026-08-05 | yes |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/muntz_r6/lake-manifest.json` | 85 | 2026-07-30 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/muntz_v3/lake-manifest.json` | 85 | 2026-07-30 | **NO** |
+| `q3.lean.aristotle/aristotle_input/req_r_ms_satz1_m0_even_spectrum_2026_08_22_harvest/lake-manifest.json` | 85 | 2026-08-22 | **NO** |
 | `docs/session_protocols/SESSION_PROTOKOLL_2026-08-28.md` | 80 | 2026-08-28 | **NO** |
+| `q3.lean.aristotle/ACTIVE/FAILED_STRATEGIES.yaml` | 80 | 2026-08-05 | yes |
+| `docs/routeB_bus/phase5_scripts/out/edge_ledger.json` | 78 | 2026-09-03 | yes |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/phase_trace_and_ledger_filter_v1.json` | 78 | 2026-07-10 | **NO** |
-| `docs/Progress_Log.md` | 78 | 2026-08-28 | yes |
 | `docs/routeB_bus/proshka/PROSHKA_KILL_N0_STANDALONE_PROLATE_CANONICAL_SOURCE_DATA_2026-08-19.md` | 76 | 2026-08-19 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_STATE.md` | 72 | 2026-08-30 | yes |
+| `docs/session_protocols/SESSION_PROTOKOLL_2026-09-09_CODEX.md` | 66 | 2026-09-10 | **NO** |
 | `q3.lean.aristotle/ACTIVE/pipeline/PROSHKA_REASONING_TIME_LOG.md` | 66 | 2026-08-30 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_GOAL057_BRANCH_B_CARTOGRAPHER_LEDGER_ADDENDUM_2026-08-08.md` | 65 | 2026-08-09 | **NO** |
 | `docs/routeB_bus/PROSHKA_VERDICT_GOAL057_BRANCH_B_CARTOGRAPHER_LEDGER_ADDENDUM_2026-08-08.md` | 65 | 2026-08-09 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_REQUEST_GOAL057_B3_0B_ARCH_SYMBOL_LOG_WEIGHTED_L2_RELEASE_2026-08-08.md` | 63 | 2026-08-08 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_GOAL057_BRANCH_B_CARTOGRAPHER_LEDGER_ADDENDUM_2026-08-08.md` | 65 | 2026-08-09 | **NO** |
 | `docs/routeB_bus/PROSHKA_REQUEST_GOAL057_B3_0B_ARCH_SYMBOL_LOG_WEIGHTED_L2_RELEASE_2026-08-08.md` | 63 | 2026-08-08 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL057_B3_0M_FINITE_SOURCE_WEIL_FOURIER_LEDGER_CROSSWALK_CLOSEOUT_2026-08-09.md` | 62 | 2026-08-09 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_REQUEST_GOAL057_B3_0B_ARCH_SYMBOL_LOG_WEIGHTED_L2_RELEASE_2026-08-08.md` | 63 | 2026-08-08 | **NO** |
 | `docs/routeB_bus/GOAL057_B3_0M_FINITE_SOURCE_WEIL_FOURIER_LEDGER_CROSSWALK_CLOSEOUT_2026-08-09.md` | 62 | 2026-08-09 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL057_B3_0L_SOURCE_LOG_WINDOW_FOURIER_L2_ISOMETRY_CLOSEOUT_2026-08-09.md` | 60 | 2026-08-09 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL057_B3_0M_FINITE_SOURCE_WEIL_FOURIER_LEDGER_CROSSWALK_CLOSEOUT_2026-08-09.md` | 62 | 2026-08-09 | **NO** |
 | `docs/routeB_bus/GOAL057_B3_0L_SOURCE_LOG_WINDOW_FOURIER_L2_ISOMETRY_CLOSEOUT_2026-08-09.md` | 60 | 2026-08-09 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL057_B3_0B1_LOG_GROWTH_ENVELOPE_WEIGHTED_L2_CLOSEOUT_2026-08-08.md` | 57 | 2026-08-08 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL057_B3_0L_SOURCE_LOG_WINDOW_FOURIER_L2_ISOMETRY_CLOSEOUT_2026-08-09.md` | 60 | 2026-08-09 | **NO** |
 | `docs/routeB_bus/GOAL057_B3_0B1_LOG_GROWTH_ENVELOPE_WEIGHTED_L2_CLOSEOUT_2026-08-08.md` | 57 | 2026-08-08 | **NO** |
-| `q3.lean.aristotle/ACTIVE/pipeline/FAILURE_ATLAS.json` | 56 | 2026-08-05 | yes |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL057_B3_0B1_LOG_GROWTH_ENVELOPE_WEIGHTED_L2_CLOSEOUT_2026-08-08.md` | 57 | 2026-08-08 | **NO** |
 | `docs/routeB_bus/proshka/PROSHKA_KILL_SOURCE_RAYLEIGH_PROXIMITY_FROM_MINIMUM_EIGENPAIR_2026-08-19.md` | 56 | 2026-08-19 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER_CLOSEOUT_2026-08-08.md` | 53 | 2026-08-08 | **NO** |
+| `q3.lean.aristotle/ACTIVE/pipeline/FAILURE_ATLAS.json` | 56 | 2026-08-05 | yes |
 | `docs/routeB_bus/GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER_CLOSEOUT_2026-08-08.md` | 53 | 2026-08-08 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER_CLOSEOUT_2026-08-08.md` | 53 | 2026-08-08 | **NO** |
+| `docs/routeB_bus/phase5_codex/six_centre/out/radical_shell_stability_20260909_manifest.json` | 46 | 2026-09-09 | **NO** |
 | `SESSION_PROTOKOLL_2026-08-24.md` | 45 | 2026-08-27 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/ROUTE_B_DATA_MANIFEST.md` | 45 | 2026-07-27 | **NO** |
 | `docs/routeB_bus/GOAL058_SELECTED_FERRERS_V_TERMINAL_LEDGER_2026-08-24.md` | 43 | 2026-08-24 | **NO** |
+| `SESSION_PROTOKOLL_2026-08-31.md` | 41 | 2026-08-31 | **NO** |
 | `SESSION_PROTOKOLL_2026-08-27.md` | 39 | 2026-08-28 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_028_KILL_ADJUDICATION_2026-07-27.md` | 39 | 2026-07-28 | **NO** |
 | `docs/routeB_bus/PROSHKA_028_KILL_ADJUDICATION_2026-07-27.md` | 39 | 2026-07-28 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_028_KILL_ADJUDICATION_2026-07-27.md` | 39 | 2026-07-28 | **NO** |
 | `SESSION_PROTOKOLL_2026-08-10.md` | 38 | 2026-08-10 | **NO** |
 | `SESSION_PROTOKOLL_2026-08-12.md` | 37 | 2026-08-15 | **NO** |
 | `docs/routeB_bus/H2A_4_1B_3C_1_0_SELECTED_FERRERS_LOG_WEIGHTED_COMMUTATOR_SOURCE_RATE_PREFLIGHT_2026-08-23.md` | 37 | 2026-08-23 | **NO** |
 | `SESSION_PROTOKOLL_2026-08-06.md` | 36 | 2026-08-06 | **NO** |
-| `q3.lean.aristotle/ACTIVE/graphs/ROUTE_KILL_REGISTRY.md` | 36 | 2026-08-05 | **NO** |
 | `docs/routeB_bus/LINUX_SOURCE_RECORD_REQ_V_H2A_4_1B_3C_1_10_SOURCE_LOG_WINDOW_FOURIER_INTEGRAL_CROSSWALK_2026-08-23.md` | 36 | 2026-08-23 | **NO** |
+| `q3.lean.aristotle/ACTIVE/graphs/ROUTE_KILL_REGISTRY.md` | 36 | 2026-08-05 | **NO** |
 | `SESSION_PROTOKOLL_2026-08-11.md` | 35 | 2026-08-12 | **NO** |
 | `docs/routeB_bus/H2A_4_1B_3C_1_2_SELECTED_FERRERS_ESTAR_LOG_DERIVATIVE_JUMP_RATE_PREFLIGHT_2026-08-23.md` | 35 | 2026-08-23 | **NO** |
+| `archive/skills_gpt5_era_2026-09-06/docs_aristotle_training/claude_code_skills.md` | 34 | 2026-09-06 | **NO** |
 | `docs/semantic_quarantine/PORTABILITY_MANIFEST_SCHEMA_v1.json` | 33 | 2026-08-28 | **NO** |
+| `docs/session_protocols/SESSION_PROTOKOLL_2026-09-09_LINUX_CLAUDE.md` | 33 | 2026-09-09 | **NO** |
+| `docs/session_protocols/SESSION_PROTOKOLL_2026-09-05_LINUX_CLAUDE.md` | 33 | 2026-09-06 | **NO** |
 | `docs/routeB_bus/MUNTZ_V3_CONSUMPTION_LEDGER.md` | 31 | 2026-07-30 | **NO** |
 | `docs/routeB_bus/proshka/PROSHKA_ADDENDUM_GOAL058_W5_L1_LOG_PACKET_MASS_RATE_SOURCE_LOCK_2026-08-25.md` | 31 | 2026-08-25 | **NO** |
-| `q3.lean.aristotle/ACTIVE/SPRINT_MONITOR.md` | 30 | 2026-08-14 | yes |
+| `archive/skills_gpt5_era_2026-09-06/agents_skills/q3-psdpd-step33-bootstrap/SKILL.md` | 30 | 2026-09-06 | yes |
+| `docs/routeB_bus/AGENT_REPORT_2026-09-04_GOAL058_IMAGINARY_AXIS_LOG_DERIVATIVE_TAIL_MATCH_PREFLIGHT.md` | 30 | 2026-09-04 | **NO** |
 | `q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md` | 30 | 2026-08-10 | yes |
+| `q3.lean.aristotle/ACTIVE/SPRINT_MONITOR.md` | 30 | 2026-08-14 | yes |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G1_G3_CURRENT_PROBLEM_IO_LEDGER_2026-08-14.md` | 30 | 2026-08-14 | **NO** |
-| `.agents/skills/q3-psdpd-step33-bootstrap/SKILL.md` | 30 | 2026-08-30 | yes |
+| `archive/skills_gpt5_era_2026-09-06/kb_skills_AGENTS.md` | 28 | 2026-09-06 | **NO** |
 | `SESSION_PROTOKOLL_2026-08-07.md` | 27 | 2026-08-07 | **NO** |
+| `docs/routeB_bus/phase5_scripts/PRECOMMIT_2026-09-03_edge_ledger_probes.md` | 26 | 2026-09-05 | yes |
+| `docs/session_protocols/SESSION_PROTOKOLL_2026-09-10_LINUX_CLAUDE.md` | 26 | 2026-09-10 | **NO** |
+| `paper_weil/style_pass/STYLE_CHANGELOG.md` | 26 | 2026-09-05 | **NO** |
 | `SESSION_PROTOKOLL_2026-08-22.md` | 25 | 2026-08-22 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/trough_relabel_and_bus_sync_v1_actions_log.md` | 25 | 2026-07-10 | **NO** |
 | `docs/Codex/TASK_2026-08-14_goal058_g3_prolate_rate_floor.md` | 25 | 2026-08-14 | **NO** |
 | `docs/routeB_bus/CODEX_REQ_2026_08_24_W4_ZERO_ENDPOINT_JUMP_LEDGER_MISMATCH.md` | 25 | 2026-08-24 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/trough_relabel_and_bus_sync_v1_actions_log.md` | 25 | 2026-07-10 | **NO** |
 | `SESSION_PROTOKOLL_2026-08-21.md` | 24 | 2026-08-21 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/phase_trace_and_ledger_filter_v1.md` | 24 | 2026-07-10 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/anchor_locked_k_channel_v1_actions_log.md` | 24 | 2026-07-10 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/phase_trace_and_ledger_filter_v1.md` | 24 | 2026-07-10 | **NO** |
 | `orchestrator/BEHAVIOR_CONTROL_REGISTRY.json` | 24 | 2026-08-09 | **NO** |
 | `docs/session_protocols/SESSION_PROTOKOLL_2026-08-28_LINUX_CLAUDE.md` | 23 | 2026-08-28 | **NO** |
 | `docs/routeB_bus/LINUX_SOURCE_RECORD_GOAL058_W5_L1_LOG_PACKET_MASS_RATE_2026-08-25.md` | 22 | 2026-08-25 | **NO** |
+| `archive/skills_gpt5_era_2026-09-06/docs_aristotle_training/SKILL.md` | 20 | 2026-09-06 | yes |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ledger_audit_v2.md` | 20 | 2026-07-10 | **NO** |
 | `orchestrator/KNOWLEDGE_SPINE.md` | 20 | 2026-08-13 | yes |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/GOAL057_B3_0AC_ARCH_PRIME_SHIFTED_LEDGER_CLOSEOUT_2026-08-10.md` | 19 | 2026-08-10 | **NO** |
 | `docs/routeB_bus/SESSION_PROTOKOLL_2026-07-31.md` | 19 | 2026-07-31 | **NO** |
 | `docs/routeB_bus/GOAL057_B3_0AC_ARCH_PRIME_SHIFTED_LEDGER_CLOSEOUT_2026-08-10.md` | 19 | 2026-08-10 | **NO** |
+| `docs/routeB_bus/phase5_scripts/out/edge_ledger_relritz.md` | 19 | 2026-09-03 | yes |
 | `docs/routeB_bus/proshka/PROSHKA_BRIEF_GOAL058_G1_G3_ACTUAL_SOURCE_CLOSURE_2026-08-14.md` | 19 | 2026-08-14 | **NO** |
-| `q3.lean.aristotle/blueprint/blueprint_manifest.json` | 18 | 2026-08-29 | yes |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/GOAL057_B3_0AC_ARCH_PRIME_SHIFTED_LEDGER_CLOSEOUT_2026-08-10.md` | 19 | 2026-08-10 | **NO** |
+| `docs/session_protocols/SESSION_PROTOKOLL_2026-09-08_LINUX_CLAUDE.md` | 17 | 2026-09-08 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/register_read_only_docs_v1_actions_log.md` | 17 | 2026-07-10 | **NO** |
 | `Q3_OBSTRUCTION_ATLAS.md` | 15 | 2026-08-06 | yes |
-| `.claude/skills/routeb-conductor/SKILL.md` | 15 | 2026-08-28 | yes |
+| `archive/skills_gpt5_era_2026-09-06/claude_skills/routeb-conductor/SKILL.md` | 15 | 2026-09-06 | yes |
 | `orchestrator/ARTIFACT_IDENTITY_REGISTRY.json` | 15 | 2026-08-06 | **NO** |
 | `SESSION_PROTOKOLL_2026-08-20.md` | 14 | 2026-08-20 | **NO** |
+| `archive/skills_gpt5_era_2026-09-06/agents_skills/routeb-conductor/SKILL.md` | 14 | 2026-09-06 | yes |
+| `docs/routeB_bus/LINUX_COMPACT_LOG_COMMUTATOR_RATE_SOURCE_PREFLIGHT_GOAL058_2026-08-27.md` | 14 | 2026-08-27 | **NO** |
 | `q3.lean.aristotle/docs/PEN_3_3_POISSON_RESIDUAL_LEDGER.md` | 14 | 2026-07-10 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_3_EXACT_OPERATOR_TYPE_REGISTRY.md` | 14 | 2026-07-11 | **NO** |
-| `docs/routeB_bus/LINUX_COMPACT_LOG_COMMUTATOR_RATE_SOURCE_PREFLIGHT_GOAL058_2026-08-27.md` | 14 | 2026-08-27 | **NO** |
-| `q3.lean.aristotle/docs/ERRORS_DESTROYER.md` | 13 | 2026-08-06 | yes |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7_EXACT_NORMALIZATION_REGISTRY.md` | 13 | 2026-07-12 | **NO** |
+| `docs/semantic_quarantine/MODULE_CLASS_REGISTRY_v1.json` | 13 | 2026-08-31 | **NO** |
+| `docs/routeB_bus/PROSHKA_QUEUE.md` | 13 | 2026-09-11 | yes |
 | `docs/routeB_bus/LINUX_WEIGHTED_CONSUMER_PREFLIGHT_GOAL058_COMPANION_LEDGER_2026-08-26.md` | 13 | 2026-08-26 | **NO** |
-| `docs/routeB_bus/PROSHKA_QUEUE.md` | 13 | 2026-08-30 | yes |
-| `docs/semantic_quarantine/MODULE_CLASS_REGISTRY_v1.json` | 13 | 2026-08-27 | **NO** |
+| `q3.lean.aristotle/docs/ERRORS_DESTROYER.md` | 13 | 2026-08-06 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7_EXACT_NORMALIZATION_REGISTRY.md` | 13 | 2026-07-12 | **NO** |
 | `orchestrator/WALL_REGISTRY.json` | 13 | 2026-08-06 | **NO** |
-| `q3.lean.aristotle/PROJECT_ORCHESTRATOR.md` | 12 | 2026-08-28 | yes |
-| `q3.lean.aristotle/ACTIVE/orchestrator.md` | 12 | 2026-08-28 | yes |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/P038_PLANT_LOG.md` | 12 | 2026-07-30 | **NO** |
+| `archive/skills_gpt5_era_2026-09-06/root_skills/x-insider/SKILL.md` | 12 | 2026-09-06 | yes |
 | `docs/Codex/CODEX_ANSWER_2026_08_24_W4_ZERO_ENDPOINT_JUMP_LEDGER_REPAIR.md` | 12 | 2026-08-24 | **NO** |
 | `docs/routeB_bus/P038_PLANT_LOG.md` | 12 | 2026-07-30 | **NO** |
 | `docs/routeB_bus/CODEX_REQ_STATE_2026_08_24_W4_ZERO_ENDPOINT_JUMP_LEDGER_MISMATCH.yaml` | 12 | 2026-08-24 | **NO** |
+| `docs/session_protocols/SESSION_PROTOKOLL_2026-09-04_LINUX_CLAUDE.md` | 12 | 2026-09-04 | **NO** |
+| `q3.lean.aristotle/PROJECT_ORCHESTRATOR.md` | 12 | 2026-08-31 | **NO** |
+| `q3.lean.aristotle/ACTIVE/orchestrator.md` | 12 | 2026-08-31 | yes |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/P038_PLANT_LOG.md` | 12 | 2026-07-30 | **NO** |
 | `SESSION_PROTOKOLL_2026-08-18.md` | 11 | 2026-08-18 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/anchor_locked_extraction_v1_actions_log.md` | 11 | 2026-07-10 | **NO** |
-| `docs/CHAT_DIGESTS.md` | 11 | 2026-08-27 | **NO** |
+| `docs/Codex/TASK_2026-09-03_bind_killplan_request_and_step1_agreement_source_check.md` | 11 | 2026-09-03 | **NO** |
+| `docs/routeB_bus/phase5_scripts/out/edge_ledger_dualcert.md` | 11 | 2026-09-03 | yes |
+| `docs/routeB_bus/phase5_scripts/out/edge_ledger_schur.md` | 11 | 2026-09-03 | yes |
 | `docs/routeB_bus/phase4_scripts/CODEX_RUNCARD_glower_ledger_2026-08-10.md` | 11 | 2026-08-10 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/anchor_locked_extraction_v1_actions_log.md` | 11 | 2026-07-10 | **NO** |
+| `docs/INSTRUCTION_ISSUES.md` | 10 | 2026-09-11 | **NO** |
+| `docs/routeB_bus/phase5_scripts/out/edge_ledger_probe1.md` | 10 | 2026-09-03 | yes |
 | `SESSION_PROTOKOLL_2026-08-19.md` | 9 | 2026-08-19 | **NO** |
 | `SESSION_PROTOKOLL_2026-08-26.md` | 9 | 2026-08-27 | **NO** |
-| `.agents/skills/routeb-conductor/SKILL.md` | 8 | 2026-08-30 | yes |
+| `docs/session_protocols/SESSION_PROTOKOLL_2026-09-07_LINUX_CLAUDE.md` | 9 | 2026-09-07 | **NO** |
 | `docs/routeB_bus/LINUX_CORRECTION_4_BETA_IS_NOT_ZETA_LOG_DERIVATIVE_GOAL058_2026-08-27.md` | 8 | 2026-08-27 | **NO** |
 | `docs/routeB_bus/LINUX_CORRECTION_14_LEDGER_COUNTING_IS_NOT_W9_GOAL058_2026-08-28.md` | 7 | 2026-08-28 | **NO** |
-| `orchestrator/state/SPINE_VIEW.md` | 7 | 2026-08-28 | yes |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_REPLY_KILL6_LEDGER_2026-07-27.md` | 6 | 2026-07-27 | **NO** |
+| `docs/session_protocols/SESSION_PROTOKOLL_2026-09-03_LINUX_CLAUDE.md` | 7 | 2026-09-04 | **NO** |
+| `orchestrator/state/SPINE_VIEW.md` | 7 | 2026-08-31 | yes |
 | `docs/routeB_bus/PROSHKA_REPLY_KILL6_LEDGER_2026-07-27.md` | 6 | 2026-07-27 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/MUNTZ_V3_CONSUMPTION_LEDGER.md` | 5 | 2026-08-03 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_REPLY_KILL6_LEDGER_2026-07-27.md` | 6 | 2026-07-27 | **NO** |
 | `docs/GLOWER_ODD_FLOOR_10_08_2026/docs/Mythos/PACKET_MYTHOS_LEDGER_STATUS_AND_VERDICT_2026-08-10.md` | 5 | 2026-08-10 | **NO** |
-| `q3.lean.aristotle/docs/incoming_notes/archive/20260308_120347_2026_03_08_conversations/extracted/2026_03_08_conversations/_manifest.md` | 4 | 2026-07-10 | **NO** |
+| `docs/session_protocols/SESSION_PROTOKOLL_2026-09-11_CODEX.md` | 5 | 2026-09-11 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/MUNTZ_V3_CONSUMPTION_LEDGER.md` | 5 | 2026-08-03 | **NO** |
+| `.agents/skills/alias-hunt/SKILL.md` | 5 | 2026-09-11 | yes |
 | `docs/trackB/S5_FAILURE_ATLAS.md` | 4 | 2026-08-06 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/SOFT_L2_LAG_LEDGER_12_14_120_REPORT_2026-07-13.md` | 3 | 2026-07-27 | **NO** |
+| `q3.lean.aristotle/docs/incoming_notes/archive/20260308_120347_2026_03_08_conversations/extracted/2026_03_08_conversations/_manifest.md` | 4 | 2026-07-10 | **NO** |
+| `archive/skills_gpt5_era_2026-09-06/agents_skills/q3-step32-lean/SKILL.md` | 3 | 2026-09-06 | yes |
 | `docs/routeB_bus/SOFT_L2_LAG_LEDGER_12_14_120_REPORT_2026-07-13.md` | 3 | 2026-07-27 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/SOFT_L2_LAG_LEDGER_12_14_120_REPORT_2026-07-13.md` | 3 | 2026-07-27 | **NO** |
+| `docs/Codex/AGENTS_LEDGER.md` | 2 | 2026-09-11 | **NO** |
+| `docs/routeB_bus/LOCAL_ZERO_INVARIANTS_CATALOG_2026-09-08.md` | 2 | 2026-09-08 | **NO** |
 
 ### Frozen (still on disk, often still cited)
 | Ledger | Entries | Last commit |
@@ -178,8 +216,8 @@
 | `q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.md` | 236 | 2026-06-25 |
 | `q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.json` | 178 | 2026-06-25 |
 | `q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/node.md` | 434 | 2026-06-24 |
-| `docs/trackB/b2b_finite_chebyshev_ledger_probe.md` | 23 | 2026-06-14 |
 | `docs/trackB/CHECKPOINTS.md` | 23 | 2026-06-14 |
+| `docs/trackB/b2b_finite_chebyshev_ledger_probe.md` | 23 | 2026-06-14 |
 | `docs/trackB/S5_NEGATIVE_MASS_LEDGER.md` | 43 | 2026-06-13 |
 | `q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_margin_ledger.json` | 70475 | 2026-06-12 |
 | `q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_omega_log_seed_inventory.md` | 191 | 2026-06-12 |
@@ -190,7 +228,6 @@
 | `docs/PRIME_COMB_MODULARITY_ATLAS_CARD_01.md` | 60 | 2026-06-12 |
 | `q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_margin_ledger.md` | 20 | 2026-06-12 |
 | `q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_omega_log_seed.md` | 17 | 2026-06-12 |
-| `.agents/skills/q3-step32-lean/SKILL.md` | 3 | 2026-05-27 |
 | `q3.lean.aristotle/ACTIVE/insights_index.md` | 166 | 2026-05-03 |
 | `q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/2026_04_19_po3_shell_2_tag_based_shell_interface_bundled_first_zeta_kill_layer_raw_packet_family_theorem_cases.md` | 19 | 2026-04-19 |
 | `q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/2026_04_19_po3_tail_2_decay_kill.md` | 19 | 2026-04-19 |
@@ -199,13 +236,10 @@
 | `q3.lean.aristotle/docs/incoming_notes/archive/20260307_191355_2026_03_07_conversations/extracted/2026_03_07_conversations/_manifest.md` | 4 | 2026-03-07 |
 | `q3.lean.aristotle/lake-manifest.json` | 121 | 2026-02-23 |
 | `session_exports/chat_latest.md` | 769 | 2026-02-12 |
-| `skills/x-insider/SKILL.md` | 12 | 2026-02-12 |
 | `q3.lean.aristotle/KB/axioms/AXIOM_REGISTRY.md` | 14 | 2026-02-09 |
 | `q3.lean.aristotle/KB/archive/orchestrator_legacy_snapshot_2026-02-08.md` | 27 | 2026-02-08 |
 | `q3.lean.aristotle/KB/ERRORS_DESTROYER.md` | 13 | 2026-02-08 |
 | `docs/Aristotle_models_training/Claude Code Skills- Документация.md` | 34 | 2026-01-30 |
-| `docs/Aristotle_models_training/claude_code_skills.md` | 34 | 2026-01-30 |
-| `docs/Aristotle_models_training/SKILL.md` | 20 | 2026-01-30 |
 | `q3.lean.aristotle/ACTIVE/refs/specs/spec_formalizing_rh_insights.md` | 8 | 2026-01-30 |
 | `docs/links/quillen_working_papers.json` | 491 | 2026-01-29 |
 | `docs/mac_24_01_2026_13_22.md` | 216 | 2026-01-29 |
@@ -217,8 +251,8 @@
 | `q3.lean.aristotle/ACTIVE/aristotle/proshka_context_single_scale.md` | 27 | 2026-01-29 |
 | `full/archive_latex_2026_01_29/paper3_rh_synthesis/figures/graphical_abstract_review_log.json` | 23 | 2026-01-29 |
 | `q3.lean.aristotle/docs/legacy/full_snapshot_2026_01_16/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md` | 23 | 2026-01-29 |
-| `full/archive_latex_2026_01_29/paper2_toeplitz_rkhs/figures/graphical_abstract_review_log.json` | 16 | 2026-01-29 |
 | `full/archive_latex_2026_01_29/paper1_fejer_heat/figures/graphical_abstract_review_log.json` | 16 | 2026-01-29 |
+| `full/archive_latex_2026_01_29/paper2_toeplitz_rkhs/figures/graphical_abstract_review_log.json` | 16 | 2026-01-29 |
 | `q3.lean.aristotle/docs/legacy/full_snapshot_2026_01_16/q3.lean.aristotle/docs/ERRORS_DESTROYER.md` | 13 | 2026-01-29 |
 | `docs/CHANGELOG_AUTO.md` | 10 | 2026-01-20 |
 | `sandbox_tasks/REGISTRY 2.md` | 6 | 2026-01-20 |
@@ -229,27 +263,177 @@
 ## Permanent tools, most recently touched first
 | Tool | Last | Refs | In rules | Purpose |
 |---|---|---|---|---|
-| `orchestrator/research_dependency_projection.py` | untracked | 1 | **NO** | Render the canonical registry as deterministic semantic Markdown. |
-| `orchestrator/rigid_dependency_scan.py` | untracked | 0 | **NO** | Lifecycle-aware scan for unjustified rigid research dependencies. |
-| `orchestrator/research_debt_challenge.py` | 2026-08-30 | 7 | yes | Read-only ranker and deterministic Proshka research-debt packet builder. |
-| `orchestrator/research_dependency_contract.py` | 2026-08-30 | 0 | **NO** | Closed consumer-first contract for candidate theorem dependencies. |
-| `orchestrator/research_dependency_gate.py` | 2026-08-30 | 5 | yes | Fail-closed checks and plants for consumer-first research dependencies. |
-| `orchestrator/session_briefing.py` | 2026-08-30 | 9 | yes | Read-only Route B session briefing and local close-session checkpoint. |
-| `orchestrator/workflow_runtime.py` | 2026-08-30 | 38 | yes | Stateless front door for the existing Q3 goal lifecycle. |
-| `scripts/q3_docs_corpus.py` | 2026-08-30 | 4 | **NO** | Canonical curated-source selection and deterministic q3_docs identity. |
+| `docs/routeB_bus/proshka/slack_jf_probe_2026-09-11.py` | 2026-09-11 | 2 | **NO** |  |
+| `orchestrator/spine.py` | 2026-09-11 | 275 | yes | Knowledge Spine aggregator and strict control-plane entrypoint. |
+| `orchestrator/workflow_runtime.py` | 2026-09-11 | 82 | yes | Stateless front door for the existing Q3 goal lifecycle. |
+| `paper.sh` | 2026-09-11 | 75 | yes | paper.sh — затянуть публикацию ОДНОЙ командой: PDF + метаданные + bib + Zotero + реестр. |
+| `orchestrator/kb.py` | 2026-09-10 | 183 | yes | kb — the entry point to legacy operational-closure knowledge in knowledge.db. |
+| `orchestrator/session_briefing.py` | 2026-09-10 | 13 | yes | Read-only Route B session briefing and local close-session checkpoint. |
+| `q3.lean.aristotle/scripts/refresh_q3_docs.py` | 2026-09-10 | 38 | yes | ECMAScript String.trim(): match Bun's empty-document check, including BOM. |
+| `ask.sh` | 2026-09-09 | 344 | yes | ask.sh — ОДИН вход в накопленное знание. Спрашивать ДО внешнего поиска и ДО создания чего-либо. |
+| `docs/routeB_bus/phase5_codex/six_centre/one_direction_margin.py` | 2026-09-09 | 25 | yes | Proshka's one-direction implementation (5) of the D24 target, tested numerically on source-defined directions. |
+| `docs/routeB_bus/phase5_codex/six_centre/sc_build.py` | 2026-09-09 | 18 | yes | Six-centre full-width assembly of the Weil form (C1) on Legendre profiles. |
+| `docs/routeB_bus/phase5_codex/six_centre/schur_response.py` | 2026-09-09 | 2 | **NO** | Schur response of the cut theta test on the window (Proshka DISTANCE D22-D24, request §9(c)): evaluate the sig |
+| `docs/routeB_bus/phase5_codex/six_centre/window_derivative.py` | 2026-09-09 | 19 | yes | Window floor vs theta tail: does lambda_a track the cut-off mass of the null test Phi? |
+| `docs/routeB_bus/phase5_codex/six_centre/window_identity_check.py` | 2026-09-09 | 4 | **NO** | Direct check of the reformulation lambda_a = min_w Q[v_out + w] / ||v_in - w||^2 (WINDOW_TAIL_DERIVATIVE_PROBE |
+| `orchestrator/bind_request.py` | 2026-09-09 | 23 | yes | bind_request.py — one command to bind a judge request (replaces the ad-hoc python heredocs of 2026-09-03/04). |
+| `docs/routeB_bus/phase5_codex/euler_gram/analyse.py` | 2026-09-07 | 1 | yes | Validation + margin tables from a prod2 output. |
+| `docs/routeB_bus/phase5_codex/euler_gram/arch.py` | 2026-09-07 | 7 | **NO** | Archimedean supplier for the Euler-Gram evaluator. |
+| `docs/routeB_bus/phase5_codex/euler_gram/checks.py` | 2026-09-07 | 13 | **NO** | Extra structural checks on a prod2 output. |
+| `docs/routeB_bus/phase5_codex/euler_gram/ekernel.py` | 2026-09-07 | 0 | **NO** | Off-diagonal archimedean Sonin projector kernel K(xi,eta) = <w_eta, w_xi>. |
+| `docs/routeB_bus/phase5_codex/euler_gram/fastk.py` | 2026-09-07 | 0 | **NO** | Fast archimedean Sonin projector kernel K(xi,eta) = <w_eta,w_xi>, spectral form. |
+| `docs/routeB_bus/phase5_codex/euler_gram/final.py` | 2026-09-07 | 5 | **NO** | Final tables: convergence of the k_2 lower bound + margin sandwich. |
+| `docs/routeB_bus/phase5_codex/euler_gram/k2.py` | 2026-09-07 | 6 | **NO** | Euler-Gram evaluator of the semilocal Sonin density k_2 (SCALARFLOOR Thm 3, (18)-(22)). |
+| `docs/routeB_bus/phase5_codex/euler_gram/margin.py` | 2026-09-07 | 3 | yes | Margin integrals on the two-lobe channels. |
+| `docs/routeB_bus/phase5_codex/euler_gram/pperp.py` | 2026-09-07 | 0 | **NO** | Exact |P_0 v|^2 through the orthogonal complement, and the physical Sonin |
+| `docs/routeB_bus/phase5_codex/euler_gram/prod.py` | 2026-09-07 | 0 | **NO** | Production: Euler-Gram lower bound for k_2 on xi = 0(0.25)700. |
+| `docs/routeB_bus/phase5_codex/euler_gram/prod2.py` | 2026-09-07 | 1 | yes | Production 2: Euler-Gram k_2 with the FULL two-sided residual sandwich. |
+| `docs/routeB_bus/phase5_codex/h4_cert/assemble.py` | 2026-09-07 | 7 | yes | Final ledger and interval [L_F, U_F], SCALARFLOOR (38). |
+| `docs/routeB_bus/phase5_codex/h4_cert/budget.py` | 2026-09-07 | 13 | yes | Rigorous budget terms of (38): Euler-tail eps_J, uniform |t_2| bound, frequency tail mu_X. |
+| `docs/routeB_bus/phase5_codex/h4_cert/cert.py` | 2026-09-07 | 57 | yes | Rigorous interval certificate for the scalar floor F(h4) [SCALARFLOOR (38)]. |
+| `docs/routeB_bus/phase5_codex/h4_cert/evalf.py` | 2026-09-07 | 5 | **NO** | Node evaluator: rigorous acb enclosure of the floor integrand. |
+| `docs/routeB_bus/phase5_codex/h4_cert/gauge/gauge_cert.py` | 2026-09-07 | 10 | yes | RIGOROUS (arb ball) certificate for p(xi) + FT(chi R_g)(xi) >= 0 for all real xi, |
+| `docs/routeB_bus/phase5_codex/h4_cert/gauge/gauge_cert_core.py` | 2026-09-07 | 5 | **NO** | Ball-arithmetic core for the pole-gauged positive-extension certificate (20). |
+| `docs/routeB_bus/phase5_codex/h4_cert/gauge/gauge_test.py` | 2026-09-07 | 2 | **NO** | DIAGNOSTIC: pole-gauge freedom. On H00 the difference kernels e^{±(x-y)/2} = e^{±x/2} e^{∓y/2} are rank-one in |
+| `docs/routeB_bus/phase5_codex/h4_cert/gauge/item8_ext.py` | 2026-09-07 | 1 | **NO** | BONUS/DIAGNOSTIC (never a proof): the object in (20),  p(xi) + FT(chi R)(xi) |
+| `docs/routeB_bus/phase5_codex/h4_cert/h4arb.py` | 2026-09-07 | 7 | **NO** | Rigorous (arb/acb ball) evaluator for the SCALARFLOOR h4 certificate. |
+| `docs/routeB_bus/phase5_codex/h4_cert/legendre/legarb.py` | 2026-09-07 | 2 | **NO** | Parity-complete Legendre packet for the CLASSFLOOR floor matrix (verdict 5.6). |
+| `docs/routeB_bus/phase5_codex/h4_cert/legendre/legassemble.py` | 2026-09-07 | 2 | **NO** | Assemble F_even / F_odd, certify positivity, certify the pencil floor, and -- when a |
+| `docs/routeB_bus/phase5_codex/h4_cert/legendre/legbudget.py` | 2026-09-07 | 1 | **NO** | Rigorous per-entry budget rows for the Legendre packet floor matrix. |
+| `docs/routeB_bus/phase5_codex/h4_cert/legendre/legcert.py` | 2026-09-07 | 4 | **NO** | Rigorous compact part of the Legendre packet floor matrices F_even, F_odd. |
+| `docs/routeB_bus/phase5_codex/h4_cert/legendre/legequad.py` | 2026-09-07 | 6 | **NO** | Post-hoc Bernstein-ellipse quadrature bound for the Legendre packet, optimized over rho. |
+| `docs/routeB_bus/phase5_codex/h4_cert/legendre/legser.py` | 2026-09-07 | 0 | **NO** | Directed serialization helpers (CLASSFLOOR 2.5 / NOTES.md items 2 and 3). |
+| `docs/routeB_bus/phase5_codex/h4_cert/legendre/legverify.py` | 2026-09-07 | 2 | **NO** | Verification for the Legendre packet certificate. |
+| `docs/routeB_bus/phase5_codex/h4_cert/legendre/run.sh` | 2026-09-07 | 6 | yes | Reproduction of the parity-complete Legendre packet floor certificate |
+| `docs/routeB_bus/phase5_codex/h4_cert/packet/packarb.py` | 2026-09-07 | 2 | **NO** | Packet profiles for the SCALARFLOOR floor matrix (v1 (8) / v2 Cor. 1 (6)). |
+| `docs/routeB_bus/phase5_codex/h4_cert/packet/packassemble.py` | 2026-09-07 | 19 | **NO** | Assemble the packet floor matrix F, certify F >= 0, and certify lambda_min of (F, H). |
+| `docs/routeB_bus/phase5_codex/h4_cert/packet/packbudget.py` | 2026-09-07 | 2 | **NO** | Rigorous per-entry budget rows for the packet floor matrix. |
+| `docs/routeB_bus/phase5_codex/h4_cert/packet/packcert.py` | 2026-09-07 | 7 | **NO** | Rigorous compact part of the packet floor matrix F_ij (v1 (8), v2 Cor. 1 (6)). |
+| `docs/routeB_bus/phase5_codex/h4_cert/packet/packequad.py` | 2026-09-07 | 15 | **NO** | Post-hoc Bernstein-ellipse quadrature bound, optimized over rho. |
+| `docs/routeB_bus/phase5_codex/h4_cert/packet/packverify.py` | 2026-09-07 | 7 | **NO** | Verification and diagnostics for the packet certificate. |
+| `docs/routeB_bus/phase5_codex/h4_cert/packet/run.sh` | 2026-09-07 | 6 | yes | Reproduction of the packet floor certificate (see H4_PACKET_FLOOR_CERTIFICATE_REPORT_2026-09-07.md). |
+| `docs/routeB_bus/phase5_codex/h4_cert/sanity.py` | 2026-09-07 | 1 | **NO** | STEP 0 (DIAGNOSTIC, float/mpmath): reproduce the scalar floor F(h4) ~ 0.0035. |
+| `docs/routeB_bus/phase5_codex/h4_cert/verify.py` | 2026-09-07 | 7 | yes | Independent checks (different channels), all in arb unless stated. |
+| `docs/routeB_bus/phase5_codex/mellin_d2/analyze2.py` | 2026-09-07 | 0 | **NO** |  |
+| `docs/routeB_bus/phase5_codex/mellin_d2/core.py` | 2026-09-07 | 16 | **NO** | Source-exact evaluator of the angle density d_S(xi), verdict eq (1)-(18). |
+| `docs/routeB_bus/phase5_codex/mellin_d2/dens.py` | 2026-09-07 | 10 | **NO** | Angle density d_S(xi) evaluator (verdict eq (2),(3),(5),(6),(10)). |
+| `docs/routeB_bus/phase5_codex/mellin_d2/evald.py` | 2026-09-07 | 4 | **NO** | Assemble d_S(xi) from operator data + Mellin scalars. |
+| `docs/routeB_bus/phase5_codex/mellin_d2/final.py` | 2026-09-07 | 5 | **NO** |  |
+| `docs/routeB_bus/phase5_codex/mellin_d2/galerkin.py` | 2026-09-07 | 1 | **NO** | Galerkin compression of A_S on L^2(0,1) in the orthonormal shifted-Legendre basis. |
+| `docs/routeB_bus/phase5_codex/mellin_d2/jscan.py` | 2026-09-07 | 0 | **NO** |  |
+| `docs/routeB_bus/phase5_codex/mellin_d2/model.py` | 2026-09-07 | 1 | **NO** | d_S(xi) from the Galerkin model + exact Mellin scalars. |
+| `docs/routeB_bus/phase5_codex/mellin_d2/prod_modes.py` | 2026-09-07 | 0 | **NO** | Mode-power sums for the monotone lower-bound sequence (judge's representation). |
+| `docs/routeB_bus/phase5_codex/mellin_d2/prod_op.py` | 2026-09-07 | 16 | **NO** | Operator part of (6) by Nystrom on GL nodes; NO rescaling, NO clipping. |
+| `docs/routeB_bus/phase5_codex/mellin_d2/prod_op2.py` | 2026-09-07 | 0 | **NO** | Operator part of (6) on the extension grid xi = 600.5(0.5)3000, J=8 Nystrom. |
+| `docs/routeB_bus/phase5_codex/mellin_d2/prod_op3.py` | 2026-09-07 | 0 | **NO** | Cheap operator extension: xi = 400(1.0)3000, coarser v-grid; overlap [400,600] |
+| `docs/routeB_bus/phase5_codex/mellin_d2/prod_t.py` | 2026-09-07 | 21 | **NO** | t_S(xi) on the production grid from the closed forms (verdict (10)); parallel. |
+| `docs/routeB_bus/phase5_codex/mellin_d2/prod_t2.py` | 2026-09-07 | 0 | **NO** | t_S(xi) on the extension grid xi = 600.5(0.5)3000. |
+| `docs/routeB_bus/phase5_codex/mellin_d2/s5.py` | 2026-09-07 | 0 | **NO** | S5: m(h) = - int W_h d_2 dxi, W_h = (1-cos a xi)|hhat|^2 / H (verdict (21)). |
+| `docs/routeB_bus/phase5_codex/mellin_d2/s5b.py` | 2026-09-07 | 2 | **NO** | S5 with component breakdown and error budget. |
+| `docs/routeB_bus/phase5_codex/mellin_d2/sec7.py` | 2026-09-07 | 0 | **NO** | Section 7: full-range m(h) with the analytic hhat, the exact floor, and the |
+| `docs/routeB_bus/phase5_codex/mellin_d2/sec7b.py` | 2026-09-07 | 0 | **NO** | Section 7 final: full-range m(h) with analytic hhat + operator extension to xi=3000. |
+| `docs/routeB_bus/phase5_codex/mellin_d2/sec8.py` | 2026-09-07 | 0 | **NO** | Section 8: monotone lower bounds M_N = B_0 + sum_{n<=N} C_n. |
+| `docs/routeB_bus/phase5_codex/mellin_d2/tests.py` | 2026-09-07 | 18 | **NO** | Analytic Fourier transforms of the frozen test h = (d^2 - 1/4) eta and of the |
+| `docs/routeB_bus/phase5_codex/mellin_d2/valid45.py` | 2026-09-07 | 0 | **NO** | Validations (iv) Theorem 4 exponent for d_2 and (v) first cosine coefficient of k_2-k_inf. |
+| `docs/routeB_bus/phase5_codex/three_lobe/tl_analyze.py` | 2026-09-07 | 0 | **NO** | Restrict (C1) to the exact 7-dim kernel, solve the generalized eigenproblem, |
+| `docs/routeB_bus/phase5_codex/three_lobe/tl_build.py` | 2026-09-07 | 0 | **NO** | Assemble the exact packet (C25): Gram G (9x9) and the complete polarized Weil form |
+| `docs/routeB_bus/phase5_codex/three_lobe/tl_cache.py` | 2026-09-07 | 0 | **NO** | Build once, cache to disk (mpmath matrices as decimal strings). |
+| `docs/routeB_bus/phase5_codex/three_lobe/tl_certify.py` | 2026-09-07 | 0 | **NO** | Certified sign statement. Entry enclosures (balls) -> exact kernel restriction in ball |
+| `docs/routeB_bus/phase5_codex/three_lobe/tl_check_direct.py` | 2026-09-07 | 0 | **NO** | Independent channel 1 (end-to-end, spatial): evaluate Q(f) for a concrete kernel |
+| `docs/routeB_bus/phase5_codex/three_lobe/tl_check_fourier.py` | 2026-09-07 | 0 | **NO** | Independent channel 2 (Fourier): archimedean part as (1/2pi) int q_inf conj(f_i^) f_j^, |
+| `docs/routeB_bus/phase5_codex/three_lobe/tl_core.py` | 2026-09-07 | 0 | **NO** | three_lobe preflight core: exact packet of PROSHKA CHAIN verdict section 8.4 (C25). |
+| `docs/routeB_bus/phase5_codex/three_lobe/tl_envelope.py` | 2026-09-07 | 0 | **NO** | Certified lower/upper Hermitian envelope for lam_min(Q7,G7), plus the 2x2 detector |
+| `docs/routeB_bus/phase5_codex/three_lobe/tl_kernel.py` | 2026-09-07 | 0 | **NO** | Exact algebraic 7-dimensional kernel of the two total-moment rows, and the |
+| `docs/routeB_bus/phase5_codex/three_lobe/tl_quad.py` | 2026-09-07 | 0 | **NO** | Quadrature adapted to the packet bump: both endpoints are infinitely flat, so the |
+| `docs/routeB_bus/phase5_codex/three_lobe/tl_report.py` | 2026-09-07 | 0 | yes | Final numbers for THREE_LOBE_PREFLIGHT_REPORT. |
+| `docs/routeB_bus/phase5_codex/density_fine.py` | 2026-09-06 | 5 | **NO** |  |
+| `docs/routeB_bus/phase5_codex/density_map.py` | 2026-09-06 | 0 | **NO** | h = (d^2 - 1/4) eta_{d0}, eta normalized to integral 1; hhat(xi) = (-(xi^2) - 1/4) etahat(xi) |
+| `docs/routeB_bus/phase5_codex/h_reconcile.py` | 2026-09-06 | 0 | **NO** | J_a(h) by (5): (1/H) sum_j e^{-(2j+1/2)a} |int h e^{(2j+1/2)x}|^2 |
+| `docs/routeB_bus/phase5_codex/mertens_energy.py` | 2026-09-06 | 1 | **NO** | remaining primes > sqrt(X) handled by mu[p::p]*=-1 loop above only for p<=sqrt: fix large primes |
+| `docs/routeB_bus/phase5_codex/semitab_A/carrier.py` | 2026-09-06 | 0 | **NO** | Finite carrier: self-dual DCT-I grid; P, F_inf, F_S=J F J^{-1}, Sonin projector, traces. |
+| `docs/routeB_bus/phase5_codex/semitab_A/core.py` | 2026-09-06 | 16 | **NO** | Core objects: tests v, the archimedean/semilocal quantities, prolate angle data. |
+| `docs/routeB_bus/phase5_codex/semitab_A/final_run.py` | 2026-09-06 | 0 | **NO** |  |
+| `docs/routeB_bus/phase5_codex/semitab_A/make_table.py` | 2026-09-06 | 0 | **NO** |  |
+| `docs/routeB_bus/phase5_codex/semitab_A/polar.py` | 2026-09-06 | 1 | **NO** |  |
+| `docs/routeB_bus/phase5_codex/semitab_A/run_lambda.py` | 2026-09-06 | 0 | **NO** | lambda = sqrt2 and 2 subset (on-grid carriers). |
+| `docs/routeB_bus/phase5_codex/semitab_A/run_table.py` | 2026-09-06 | 1 | **NO** | ---------------- carrier operators ---------------- |
+| `docs/routeB_bus/phase5_codex/semitab_A/run_theorem.py` | 2026-09-06 | 0 | **NO** |  |
+| `docs/routeB_bus/phase5_codex/semitab_A/run_vR.py` | 2026-09-06 | 0 | **NO** |  |
+| `docs/routeB_bus/phase5_codex/semitab_A/s1_check2.py` | 2026-09-06 | 0 | **NO** | --- independent identity for m(tau): from the self-dual Gaussian f(t)=e^{-pi t^2} --- |
+| `docs/routeB_bus/phase5_codex/semitab_A/s1_model.py` | 2026-09-06 | 1 | **NO** | S1: archimedean Fourier involution F_inf in the log model; DCT-I carrier; validation. |
+| `docs/routeB_bus/phase5_codex/semitab_A/s4_tracetest.py` | 2026-09-06 | 0 | **NO** | Decisive cheap test: does a finite carrier reproduce Tr(A(I-P-Q)) + l||v||^2 = L_S ? |
+| `docs/routeB_bus/phase5_codex/semitab_A/semilocal.py` | 2026-09-06 | 2 | **NO** | Semilocal objects on the DCT-I carrier, with band-limited (alias-free) dilation. |
+| `docs/routeB_bus/phase5_codex/semitab_A/tests_family.py` | 2026-09-06 | 0 | **NO** | (d^2/dx^2 - 1/4) eta_d, by exact second derivative of the bump. |
+| `docs/routeB_bus/phase5_codex/semitab_A/theorem_ctrl.py` | 2026-09-06 | 0 | **NO** | THEOREM_CONTROL_CC20: supp v in [-log2/2, log2/2] and vhat(0)=vhat(+-i/2)=0. |
+| `docs/routeB_bus/phase5_codex/semitab_B/assemble.sh` | 2026-09-06 | 1 | **NO** |  |
+| `docs/routeB_bus/phase5_codex/semitab_B/dump_alpha.py` | 2026-09-06 | 1 | **NO** |  |
+| `docs/routeB_bus/phase5_codex/semitab_B/halmos.py` | 2026-09-06 | 3 | **NO** | S3 sanity: the exact Halmos plant of the verdict, eq. (10). |
+| `docs/routeB_bus/phase5_codex/semitab_B/lib.py` | 2026-09-06 | 52 | **NO** | Implementation B of the semilocal sign-table probe (S = {infinity, 2}). |
+| `docs/routeB_bus/phase5_codex/semitab_B/mk_final.py` | 2026-09-06 | 6 | **NO** |  |
+| `docs/routeB_bus/phase5_codex/semitab_B/mk_sec10.py` | 2026-09-06 | 1 | **NO** |  |
+| `docs/routeB_bus/phase5_codex/semitab_B/mk_table.py` | 2026-09-06 | 0 | **NO** |  |
+| `docs/routeB_bus/phase5_codex/semitab_B/ops.py` | 2026-09-06 | 0 | **NO** | Operator side. F_inf = exact DCT-I involution on the grid u_i = i*delta, delta = 1/sqrt(2N). |
+| `docs/routeB_bus/phase5_codex/semitab_B/phys.py` | 2026-09-06 | 0 | **NO** | Physical-variable model: L^2(R_+, du) even sector. |
+| `docs/routeB_bus/phase5_codex/semitab_B/quad.py` | 2026-09-06 | 0 | **NO** | Independent quadrature path: ||v||^2, C_v(t), D(v), L_S, P_02, Q(v). |
+| `docs/routeB_bus/phase5_codex/semitab_B/run_bar.py` | 2026-09-06 | 2 | **NO** | Error bar for N_S: recompute N_S with the SYMMETRISED F_S and report the difference. |
+| `docs/routeB_bus/phase5_codex/semitab_B/run_ops.py` | 2026-09-06 | 4 | **NO** |  |
+| `docs/routeB_bus/phase5_codex/semitab_B/run_quad.py` | 2026-09-06 | 1 | **NO** |  |
+| `docs/routeB_bus/phase5_codex/semitab_B/run_thm.py` | 2026-09-06 | 1 | **NO** | THEOREM_CONTROL_CC20: S={inf}, lambda=1, supp v in [-log2/2, log2/2], |
+| `docs/routeB_bus/phase5_codex/semitab_B/s1_model.py` | 2026-09-06 | 1 | **NO** | S1: build the model, validate F_inf (involution, self-adjointness, prolate eigenvalues). |
+| `docs/routeB_bus/phase5_codex/semitab_B/s1_phys.py` | 2026-09-06 | 1 | **NO** | analytic fixed point f(u)=e^{-pi u^2} |
+| `docs/routeB_bus/phase5_codex/semitab_B/tests.py` | 2026-09-06 | 18 | **NO** | Test family (support-matched unless stated). |
+| `orchestrator/portability_manifest.py` | 2026-09-06 | 29 | **NO** | Build and verify the deterministic Q3 portability inventory. |
+| `scripts/q3_check.sh` | 2026-09-06 | 2351 | yes | shellcheck disable=SC1091 |
+| `docs/routeB_bus/phase5_codex/overlap_dictionary.py` | 2026-09-05 | 3 | **NO** | Probe 25 (Goal 058, 2026-09-05): Fejér×heat dictionary (Malamutmann 2025, Thm 6.2 atoms, log variable) compres |
+| `docs/routeB_bus/phase5_codex/rouche_tcert.py` | 2026-09-05 | 4 | yes | Probe 27 (2026-09-06): Rouche boundary ratio Q(D)=sup_{dD}|Xi/Xi(0)-F/F(0)|/|F/F(0)| for the CCM ground-vector |
+| `paper_weil/scripts/make_figures.py` | 2026-09-05 | 1 | **NO** | Figures for the Weil-positivity structure paper. All numbers computed here from definitions, |
+| `docs/routeB_bus/phase5_codex/r2_second_jet.py` | 2026-09-04 | 9 | yes | Probe 19 (Goal 058, 2026-09-04): judge's R2 — second jet of ground vs CCM prolate trial vs Xi. |
+| `docs/cartographer/blueprint_gen.py` | 2026-09-03 | 16 | yes | Generate the compact, evidence-bound Route-B internal blueprint. |
+| `docs/routeB_bus/phase5_codex/conventions.py` | 2026-09-03 | 8 | yes | Convention converter for the CCM finite Weil matrix (Goal 058) — with built-in isometry checks. |
+| `docs/routeB_bus/phase5_codex/lattice_equation.py` | 2026-09-03 | 16 | yes | Probe 10: normalized-xi lattice eigen-equation -- identities, term sizes, |
+| `docs/routeB_bus/phase5_codex/lattice_error.py` | 2026-09-03 | 2 | yes | Probe 9: lattice error of the ledger's finite even eigenvector against |
+| `docs/routeB_bus/phase5_codex/odd_floor.py` | 2026-09-03 | 3 | yes | Probe 11: odd-sector floor scale and the S7 cancellation. |
+| `docs/routeB_bus/phase5_codex/odd_gram.py` | 2026-09-03 | 2 | yes | Probe 8: reciprocal-mode odd-Gram defect and the odd-sector floor. |
+| `docs/routeB_bus/phase5_codex/s7_table.py` | 2026-09-03 | 6 | yes | S7 table generator (Goal 058, 2026-09-04): source-only D_n versus the W02 pole diagonal. |
+| `docs/routeB_bus/phase5_codex/slope_split.py` | 2026-09-03 | 4 | yes | Probe 7: split the bordered curvature pairing into pole and Arch-prime parts. |
+| `docs/routeB_bus/phase5_codex/xi_row_zeros.py` | 2026-09-03 | 4 | yes | Probe 12 (precommit ADDENDUM 13, 2026-09-04): zeros of the P59 numerator for the ground row and the Xi-sample  |
+| `orchestrator/benchmarks/control_v10_benchmark.py` | 2026-09-03 | 1 | **NO** | Read-only warm/cold benchmark for the production Control-v10 plan. |
+| `specs_docs/vahta.sh` | 2026-09-03 | 14 | yes | vahta.sh — origin watch that DIES when the event happens (its exit is the wake-up kick). |
+| `docs/cartographer/comparator/fit.py` | 2026-09-02 | 12 | yes | Generic fail-closed direct type-fit over the local Lean environment index. |
+| `docs/cartographer/lean_env/envdump.py` | 2026-09-02 | 20 | yes | Собрать индекс Lean environment: имя → ELABORATED тип, аксиомы, адрес. |
+| `orchestrator/node_registry_v10.py` | 2026-09-02 | 2 | yes | Scoped theorem-to-consumer registry and fail-closed v10 shadow gate. |
+| `orchestrator/proof_loop.py` | 2026-09-02 | 2 | yes | Pure consumer-first proof-loop contract shared by startup and runtime. |
+| `orchestrator/startup_runtime.py` | 2026-09-02 | 3 | yes | Pure Control-v10 startup selection and a non-authoritative v9 shadow view. |
+| `orchestrator/three_body_loop.py` | 2026-09-02 | 46 | yes | Immutable Control-v9 evidence and transport compatibility runtime. |
+| `q3.lean.aristotle/scripts/oracle_questions.py` | 2026-09-02 | 16 | yes | Address-aware journal for oracle question series. |
+| `scripts/literature_discovery.py` | 2026-09-02 | 6 | yes | Bounded read-only metadata discovery over free arXiv and Crossref APIs. |
+| `scripts/research_oracle.py` | 2026-09-02 | 157 | yes |  |
+| `scripts/search_external_lean.py` | 2026-09-02 | 7 | yes | Read-only term search over the enabled external Lean registry. |
+| `scripts/supplier_preflight.py` | 2026-09-02 | 25 | yes | One fail-closed shelf -> properties -> direct Lean type-fit preflight. |
+| `specs_docs/session_start.sh` | 2026-09-02 | 77 | yes | session_start.sh — manual legacy diagnostic wrapper. |
+| `orchestrator/goal_runtime.py` | 2026-09-01 | 47 | yes | Read-only GOAL_RUN contract validator and physical-goal selector. |
+| `orchestrator/lean_dependency_runtime.py` | 2026-09-01 | 2 | yes | Read-only Lean declaration dependency inspection for node-registry v10. |
+| `orchestrator/roof_port_ledger.py` | 2026-09-01 | 3 | yes | Current-HEAD reverse ledger for the conditional Route-B roof. |
+| `orchestrator/migration_census.py` | 2026-08-31 | 8 | yes | Exact live-source versus knowledge.db migration census. |
+| `orchestrator/packet.py` | 2026-08-31 | 22 | yes | Clipboard-native packet transport for the Route B orchestration bus. |
+| `orchestrator/project_state.py` | 2026-08-31 | 23 | **NO** | Build and verify the bounded Q3 project-state projection. |
+| `orchestrator/research_debt_challenge.py` | 2026-08-31 | 6 | yes | Read-only ranker and deterministic Proshka research-debt packet builder. |
+| `orchestrator/research_dependency_contract.py` | 2026-08-31 | 0 | **NO** | Closed consumer-first contract for candidate theorem dependencies. |
+| `orchestrator/research_dependency_gate.py` | 2026-08-31 | 8 | yes | Fail-closed checks and plants for consumer-first research dependencies. |
+| `orchestrator/research_dependency_projection.py` | 2026-08-31 | 2 | **NO** | Render the canonical registry as deterministic semantic Markdown. |
+| `orchestrator/rigid_dependency_scan.py` | 2026-08-31 | 0 | **NO** | Lifecycle-aware scan for unjustified rigid research dependencies. |
+| `q3.lean.aristotle/scripts/aristotle_dag_loop.py` | 2026-08-31 | 9 | yes | Generate a lightweight Aristotle queue from open axioms + sorries. |
+| `q3.lean.aristotle/scripts/check_links.py` | 2026-08-31 | 6 | **NO** |  |
+| `scripts/build_proshka_brief.py` | 2026-08-31 | 20 | yes | Build a non-authoritative Proshka evidence pack from the Q3 repo. |
+| `scripts/q3_docs_corpus.py` | 2026-08-31 | 7 | **NO** | Canonical curated-source selection and deterministic q3_docs identity. |
+| `scripts/refresh_proshka_pack.sh` | 2026-08-31 | 3 | **NO** |  |
 | `specs_docs/session_close.py` | 2026-08-30 | 3 | yes | Incremental Q3 session close: repair derived artifacts, verify, and report debt. |
-| `specs_docs/session_start.sh` | 2026-08-30 | 56 | yes | session_start.sh — один вход в сессию. |
-| `docs/cartographer/blueprint_gen.py` | 2026-08-29 | 15 | yes | Generate an honest leanblueprint skeleton from assembly and proof receipts. |
 | `orchestrator/dependency_registry.py` | 2026-08-29 | 1 | **NO** | Proof-grade staleness evaluator shared by start, close, and phase-close. |
-| `orchestrator/goal_runtime.py` | 2026-08-29 | 45 | yes | Read-only GOAL_RUN contract validator and physical-goal selector. |
-| `orchestrator/spine.py` | 2026-08-29 | 190 | yes | Knowledge Spine aggregator and strict control-plane entrypoint. |
-| `orchestrator/three_body_loop.py` | 2026-08-29 | 37 | yes | Control-v9 three-body runtime: quarantine, request CAS, and pinned launch. |
 | `scripts/check_arch_floor_quarantine.sh` | 2026-08-29 | 2 | **NO** |  |
-| `specs_docs/phase_close.py` | 2026-08-29 | 2 | yes | Unified phase close: derived repair, existing gates, blueprint, and debt. |
+| `specs_docs/phase_close.py` | 2026-08-29 | 4 | yes | Unified phase close: derived repair, existing gates, blueprint, and debt. |
 | `docs/cartographer/atoms.py` | 2026-08-28 | 21 | yes | Extract external Lean atoms from the complete Route B source tree. |
-| `docs/cartographer/brief.py` | 2026-08-28 | 27 | yes | brief.py — собрать source-locked пакет из базы для Прошки/Codex. |
+| `docs/cartographer/brief.py` | 2026-08-28 | 31 | yes | brief.py — собрать source-locked пакет из базы для Прошки/Codex. |
 | `docs/cartographer/inventory.py` | 2026-08-28 | 21 | yes | Картограф, фаза 1 — детерминированный инвентарь. |
-| `orchestrator/portability_manifest.py` | 2026-08-28 | 28 | **NO** | Build and verify the deterministic Q3 portability inventory. |
 | `orchestrator/repository_topology_decision.py` | 2026-08-28 | 12 | **NO** | Evidence-bound P10 repository topology decision and receipt checker. |
 | `orchestrator/root_artifact_classification.py` | 2026-08-28 | 35 | **NO** | Build and verify the P8 root-artifact classification contract. |
 | `orchestrator/semantic_quarantine_history_successor.py` | 2026-08-28 | 8 | **NO** | Evergreen historical verifier for the closed P9/P10 quarantine chain. |
@@ -263,57 +447,43 @@
 | `src/energy_functional.py` | 2026-08-28 | 2 | **NO** | Load zeros (one per line) as float array; optionally truncate to `limit`. |
 | `src/h1_filtered_bulk_match.py` | 2026-08-28 | 12 | **NO** | Numerical filtered-bulk diagnostics for the direct H1^f bridge. |
 | `orchestrator/import_firewall.py` | 2026-08-27 | 3 | **NO** | Build and verify the P6 Lean import and declaration-use firewall. |
-| `orchestrator/kb.py` | 2026-08-27 | 166 | yes | kb — the entry point to legacy operational-closure knowledge in knowledge.db. |
 | `orchestrator/module_class_registry.py` | 2026-08-27 | 0 | **NO** | Validate the P3 module-class registry and its declared tracked coverage. |
-| `orchestrator/project_state.py` | 2026-08-27 | 23 | **NO** | Build and verify the bounded Q3 project-state projection. |
-| `scripts/check_import_firewall.sh` | 2026-08-27 | 3 | **NO** |  |
+| `scripts/check_import_firewall.sh` | 2026-08-27 | 4 | **NO** |  |
 | `orchestrator/semantic_attestation_broker.py` | 2026-08-25 | 2 | yes | Control-v9 external semantic-attestation broker. |
-| `scripts/q3_check.sh` | 2026-08-24 | 2301 | **NO** | shellcheck disable=SC1091 |
 | `docs/cartographer/comparator/port_matcher.py` | 2026-08-23 | 25 | **NO** | Q3 typed I/O port matcher — T2.2 fail-closed release. |
 | `scripts/qmd_ops.py` | 2026-08-21 | 1 | **NO** | Accept a fully emitted JSON result when Bun crashes during finalization. |
 | `docs/cartographer/depgraph.py` | 2026-08-20 | 4 | yes | depgraph — настоящий граф зависимостей живого дерева, из исходников. |
-| `ask.sh` | 2026-08-19 | 246 | yes | ask.sh — ОДИН вход в накопленное знание. Спрашивать ДО внешнего поиска и ДО создания чего-либо. |
-| `docs/cartographer/cheap.py` | 2026-08-19 | 49 | yes | cheap-closure-finder — очередь незакрытых шагов по ЦЕНЕ, а не по номеру. |
-| `docs/cartographer/comparator/fit.py` | 2026-08-18 | 10 | yes | Generic fail-closed direct type-fit over the local Lean environment index. |
-| `scripts/check_axioms.sh` | 2026-08-15 | 336 | yes | check_axioms.sh — воспроизводимая запись о том, на чём стоит наш Lean. |
+| `docs/cartographer/cheap.py` | 2026-08-19 | 54 | yes | cheap-closure-finder — очередь незакрытых шагов по ЦЕНЕ, а не по номеру. |
+| `scripts/check_axioms.sh` | 2026-08-15 | 335 | yes | check_axioms.sh — воспроизводимая запись о том, на чём стоит наш Lean. |
 | `docs/cartographer/atom_describe.py` | 2026-08-14 | 37 | yes | Обогатить атомы описаниями: что каждый атом ЕСТЬ, а не только как он называется. |
-| `docs/cartographer/lean_env/envdump.py` | 2026-08-14 | 19 | yes | Собрать индекс Lean environment: имя → ELABORATED тип, аксиомы, адрес. |
 | `orchestrator/goal_events.py` | 2026-08-14 | 22 | yes | Durable AUTOPILOT goal-attempt and reusable-insight writers. |
-| `orchestrator/migration_census.py` | 2026-08-14 | 8 | yes | Exact live-source versus knowledge.db migration census. |
-| `scripts/search_external_lean.py` | 2026-08-14 | 5 | yes | Read-only term search over the enabled external Lean registry. |
-| `scripts/supplier_preflight.py` | 2026-08-14 | 16 | yes | One fail-closed shelf -> properties -> direct Lean type-fit preflight. |
-| `orchestrator/packet.py` | 2026-08-13 | 22 | yes | Clipboard-native packet transport for the Route B orchestration bus. |
-| `orchestrator/routeb_goal_state.py` | 2026-08-13 | 0 | **NO** | Shared lifecycle parsing for physical Route B goal files. |
-| `q3.lean.aristotle/scripts/refresh_q3_docs.py` | 2026-08-13 | 33 | yes |  |
-| `scripts/build_proshka_brief.py` | 2026-08-13 | 19 | yes | Build a non-authoritative Proshka evidence pack from the Q3 repo. |
-| `scripts/deep_preflight.py` | 2026-08-13 | 3 | yes | Dynamic semantic and external-Lean preflight for the selected physical goal. |
+| `orchestrator/routeb_goal_state.py` | 2026-08-13 | 1 | yes | Shared lifecycle parsing for physical Route B goal files. |
+| `scripts/deep_preflight.py` | 2026-08-13 | 5 | yes | Dynamic semantic and external-Lean preflight for the selected physical goal. |
 | `docs/cartographer/foreign_atoms.py` | 2026-08-11 | 9 | yes | Связать чужое Lean-дерево с нашей базой атомов: что у них уже доказано на наших опорах. |
 | `docs/cartographer/map_coverage.py` | 2026-08-11 | 7 | yes | Приложение к карте: КАЖДЫЙ Lean-файл RouteB одной строкой, включая невидимые карте. |
 | `orchestrator/backfill_db.py` | 2026-08-10 | 7 | yes | Synchronize the live Route B declaration inventory into aristotle_proofs.db. |
-| `orchestrator/tools_census.py` | 2026-08-10 | 16 | yes | Machine census of every tool, database and state file in the repo. |
+| `orchestrator/tools_census.py` | 2026-08-10 | 15 | yes | Machine census of every tool, database and state file in the repo. |
 | `q3.lean.aristotle/scripts/refresh_erdos_overlap_kb.py` | 2026-08-10 | 4 | yes |  |
 | `q3.lean.aristotle/aristotle_db/parse_lean.py` | 2026-08-08 | 70 | **NO** | Lean 4 Parser for Aristotle Proofs Database |
-| `paper.sh` | 2026-08-07 | 45 | yes | paper.sh — затянуть публикацию ОДНОЙ командой: PDF + метаданные + bib + Zotero + реестр. |
 | `specs_docs/hooks/unicode-guard.py` | 2026-08-07 | 3 | **NO** | unicode-guard.py — PostToolUse hook: detect & neutralize invisible-Unicode |
 | `orchestrator/kb_register_excluded.py` | 2026-08-06 | 1 | **NO** | Record what was deliberately NOT migrated into knowledge.db, and on what grounds. |
-| `orchestrator/observability.py` | 2026-08-06 | 26 | yes | Build and query the disposable Q3 observability database. |
-| `orchestrator/sensors.py` | 2026-08-06 | 28 | yes | Fail-closed refresh for the complete Q3 observability sensor bundle. |
+| `orchestrator/observability.py` | 2026-08-06 | 20 | yes | Build and query the disposable Q3 observability database. |
+| `orchestrator/sensors.py` | 2026-08-06 | 27 | yes | Fail-closed refresh for the complete Q3 observability sensor bundle. |
 | `scripts/build_autopsy_map.py` | 2026-08-06 | 6 | yes | Build the structured AUTOPSY -> wall-map -> namewatch sensor. |
 | `scripts/build_dependency_tree.py` | 2026-08-06 | 5 | **NO** | Build the Lean-checked axiom dependency inventory for the live Q3 roots. |
-| `scripts/build_proof_graph.py` | 2026-08-06 | 17 | yes | Build the compact root-to-axiom observability projection. |
-| `scripts/build_taint_graph.py` | 2026-08-06 | 11 | yes | Build source-hole/import-boundary propagation for the active Q3 tree. |
+| `scripts/build_proof_graph.py` | 2026-08-06 | 16 | **NO** | Build the compact root-to-axiom observability projection. |
+| `scripts/build_taint_graph.py` | 2026-08-06 | 10 | **NO** | Build source-hole/import-boundary propagation for the active Q3 tree. |
 | `scripts/numeric_sanity_check.py` | 2026-08-06 | 7 | **NO** | Run explicitly configured numeric diagnostics as non-authoritative evidence. |
-| `scripts/q3_sensor_scan.py` | 2026-08-06 | 3 | yes | Fast shared source scanner for the Q3 observability generators. |
-| `scripts/research_oracle.py` | 2026-08-06 | 154 | yes |  |
+| `scripts/q3_sensor_scan.py` | 2026-08-06 | 2 | yes | Fast shared source scanner for the Q3 observability generators. |
 | `specs_docs/entry_audit.sh` | 2026-08-06 | 5 | yes |  |
 | `q3.lean.aristotle/scripts/s2_l2b_mellin_zero_scan.py` | 2026-08-05 | 2 | **NO** | S2-L2b discriminator: do v3-class windows have Mellin zeros INSIDE the open strip? |
 | `q3.lean.aristotle/scripts/ccm_h2a_gap_scan.py` | 2026-08-04 | 1 | **NO** | CCM H2a Layer-3 gap-scan discriminator (FIT_NOT_LAW, binary64, NOT proof tree). |
 | `q3.lean.aristotle/scripts/ccm_h2a_sector_cell_13_2_arb.py` | 2026-08-04 | 5 | **NO** | Rigorous Arb certificate for the CCM H2a sector cell ``(13, 2)``. |
 | `docs/routeB_bus/litreview/litreview_check.py` | 2026-08-03 | 5 | **NO** | litreview validator — chain-of-evidence check for the citation ledger. |
 | `docs/routeB_bus/litreview/zotero_pull.py` | 2026-08-03 | 6 | **NO** | Zotero live-sync — pull the RH collections from the local Zotero HTTP API. |
-| `orchestrator/codex_app.sh` | 2026-07-30 | 5 | **NO** | Codex.app lane — drive the desktop Codex through its GUI. |
-| `orchestrator/desktop_app.sh` | 2026-07-30 | 5 | **NO** | Desktop lane — drive Codex.app and Claude Desktop through their GUI. |
-| `orchestrator/relay.py` | 2026-07-30 | 6 | yes | RELAY lane — the conductor's transport. |
+| `orchestrator/codex_app.sh` | 2026-07-30 | 10 | **NO** | Codex.app lane — drive the desktop Codex through its GUI. |
+| `orchestrator/desktop_app.sh` | 2026-07-30 | 9 | **NO** | Desktop lane — drive Codex.app and Claude Desktop through their GUI. |
+| `orchestrator/relay.py` | 2026-07-30 | 11 | yes | RELAY lane — the conductor's transport. |
 | `docs/routeB_bus/check_full_window_positive_part_certificate.py` | 2026-07-29 | 15 | **NO** | Independent stdlib-only checker for RouteB.033. |
 | `docs/routeB_bus/check_priority_band_positive_part_certificate.py` | 2026-07-29 | 13 | **NO** | Independent stdlib-only checker for RouteB.031. |
 | `docs/routeB_bus/full_window_positive_part_certificate.py` | 2026-07-29 | 17 | **NO** | Build the RouteB.033 full-window positive-part certificate. |
@@ -469,20 +639,17 @@
 | `q3.lean.aristotle/scripts/q3_psdpd_step26_finitecert_ledger.py` | 2026-05-03 | 5 | **NO** | Step 26 PSD-pd FiniteCert ledger consumer. |
 | `q3.lean.aristotle/scripts/q3_psdpd_step27_family_seed.py` | 2026-05-03 | 5 | **NO** | Step 27 PSD-pd directed-family seed generator. |
 | `q3.lean.aristotle/scripts/po3_gamma_gap_witness.py` | 2026-04-19 | 4 | **NO** | Numerical witness scan for the PO3 raw manuscript prefix gap shell. |
-| `q3.lean.aristotle/scripts/oracle_questions.py` | 2026-04-12 | 13 | **NO** | Address-aware journal for oracle question series. |
 | `q3.lean.aristotle/scripts/d2g16_real_packet_scan.py` | 2026-04-10 | 0 | **NO** | Radar scan for local real packets versus the Hermite line. |
 | `q3.lean.aristotle/scripts/ingest_incoming_notes.py` | 2026-03-08 | 19 | **NO** |  |
 | `src/h1_raw_bulk_match.py` | 2026-03-08 | 4 | **NO** | Numerical raw-bulk check for the H1 Suzuki--Q3 bridge. |
 | `src/h1_raw_operator_sanity.py` | 2026-03-08 | 1 | **NO** | Sanity check for the raw H1 operator package. |
-| `q3.lean.aristotle/scripts/research_oracle.py` | 2026-03-07 | 154 | yes |  |
-| `q3.lean.aristotle/scripts/check_axioms.sh` | 2026-03-06 | 336 | yes | Q3 Axiom Verification Script |
+| `q3.lean.aristotle/scripts/research_oracle.py` | 2026-03-07 | 157 | yes |  |
+| `q3.lean.aristotle/scripts/check_axioms.sh` | 2026-03-06 | 335 | yes | Q3 Axiom Verification Script |
 | `q3.lean.aristotle/scripts/audit_nosorry_active_q3.sh` | 2026-02-23 | 10 | **NO** | Re-include the PrimeCert files that are part of the active mainline contract/gate. |
 | `scripts/prime_brange_grid_pp_auto.py` | 2026-02-23 | 230 | **NO** | Generate prime-power interval proofs for grid i19 pointwise upper bounds. |
 | `scripts/build_primepow_gt10000_sequential.sh` | 2026-02-12 | 29 | **NO** | Sequentially build GT10000 shard modules for PrimePowAuto, |
 | `scripts/prime_brange_heat_pp_auto.py` | 2026-02-12 | 1110 | **NO** | Generate prime-power interval proofs for prime-heat bounds on a chosen range. |
 | `scripts/primepow_status.sh` | 2026-02-12 | 7 | **NO** | fallback if birth time is unavailable |
-| `skills/x-insider/scripts/append_chat_insights.py` | 2026-02-12 | 16 | **NO** | Append a compact chat-insight entry to a markdown knowledge base file. |
-| `skills/x-insider/scripts/x_export.py` | 2026-02-12 | 2 | **NO** | Export Codex chat messages from local session logs to a markdown file. |
 | `scripts/prime_brange_grid_pp_interval_checker.py` | 2026-02-11 | 2 | **NO** | Generate prime-power upper bounds for the B-grid prime-term buckets. |
 | `q3.lean.aristotle/scripts/kb_refresh.py` | 2026-02-09 | 9 | **NO** |  |
 | `scripts/prime_brange_heat_pp_interval_checker.py` | 2026-02-08 | 11 | **NO** | Generate prime-power upper bounds for prime-heat partial sums (t_critical, tau=0). |
@@ -507,7 +674,6 @@
 | `docs/Aristotle_models_training/verify_critical_constants.py` | 2026-01-30 | 1 | **NO** | Численная верификация критических констант из RH_Q3.pdf |
 | `docs/Aristotle_models_training/visualize_graph.py` | 2026-01-30 | 6 | **NO** | Визуализация графа зависимостей RH_Q3.pdf |
 | `q3.lean.aristotle/scripts/check_audit_invariants.sh` | 2026-01-30 | 10 | **NO** |  |
-| `q3.lean.aristotle/scripts/check_links.py` | 2026-01-30 | 6 | **NO** |  |
 | `q3.lean.aristotle/scripts/fill_requests_tree.py` | 2026-01-30 | 0 | **NO** | Fill TODO sections in ACTIVE/requests node.md files with safe placeholders. |
 | `q3.lean.aristotle/scripts/floor_cert_tcritical.py` | 2026-01-30 | 1 | **NO** | Certificate for P_A floor at t_critical on Icc(-1/2, 1/2) |
 | `q3.lean.aristotle/scripts/update_formalization_stats.sh` | 2026-01-30 | 7 | **NO** | update_formalization_stats.sh - refresh FORMALIZATION_STATS.md with latest snapshot |
@@ -518,7 +684,6 @@
 | `scripts/prime_brange_to_lean.py` | 2026-01-30 | 2 | **NO** | Convert prime_cert_brange output into a Lean grid table. |
 | `bellman_bmo.py` | 2026-01-29 | 9 | **NO** | BMO Optimization via Bellman Functions |
 | `q3.lean.aristotle/monitor_server.py` | 2026-01-29 | 7 | yes | Simple monitoring server for Aristotle projects. |
-| `q3.lean.aristotle/scripts/aristotle_dag_loop.py` | 2026-01-29 | 7 | yes | Generate a lightweight Aristotle queue from open axioms + sorries. |
 | `q3.lean.aristotle/scripts/build_docs.sh` | 2026-01-29 | 9 | **NO** | Build Q3 documentation with doc-gen4 |
 | `q3.lean.aristotle/scripts/contribution_stats.sh` | 2026-01-29 | 5 | **NO** | contribution_stats.sh - Accurate contribution statistics |
 | `q3.lean.aristotle/scripts/refresh_insights.py` | 2026-01-29 | 4 | **NO** | Refresh and validate docs/insights index and links. |
@@ -537,7 +702,6 @@
 | `scripts/prime_term_cert.py` | 2026-01-25 | 6 | **NO** | Prime-term certificate at t_critical (single-scale, tau = 0). |
 | `scripts/prime_term_cert_brange.py` | 2026-01-25 | 5 | **NO** | Prime-term certificate over a B-range at t_critical (single-scale, tau = 0). |
 | `scripts/ralph-loop.sh` | 2026-01-24 | 0 | **NO** | Ensure plan file exists in plan mode. |
-| `scripts/refresh_proshka_pack.sh` | 2026-01-24 | 3 | **NO** |  |
 | `verify_phase0.py` | 2026-01-22 | 25 | **NO** | Phase 0 Verification: Confirm Q definitions match Lean/LaTeX |
 | `verify_q_tail.py` | 2026-01-22 | 8 | **NO** | Stronger numerical verification of Q(Φ) with explicit tail control. |
 | `verify_variant_b.py` | 2026-01-22 | 19 | **NO** | TDD Step 3: Numerical Certificates for Variant B (Finite Matrix Cap) |
@@ -640,7 +804,7 @@
 | `src/rayleigh_minimum_scan.py` | 2025-12-19 | 2 | **NO** | Rayleigh Minimum Scan: поиск минимума c₁(X) по разным λ |
 | `src/row_sum_analytical.py` | 2025-12-19 | 0 | **NO** | ANALYTICAL BOUND ON row_0(A) |
 | `src/score_expansion_check.py` | 2025-12-19 | 0 | **NO** | Score expansion sanity-check for Lemma 7.2. |
-| `src/shift.py` | 2025-12-19 | 4 | **NO** | Shift operators S_delta for commutator resonance experiments. |
+| `src/shift.py` | 2025-12-19 | 6 | **NO** | Shift operators S_delta for commutator resonance experiments. |
 | `src/sieve_spectral_check.py` | 2025-12-19 | 0 | **NO** | Sieve-Spectral Synergy Hypothesis Check. |
 | `src/spectral_B_operator.py` | 2025-12-19 | 0 | **NO** | Спектральный анализ симметризованного оператора B. |
 | `src/spectral_capture.py` | 2025-12-19 | 1 | **NO** | Spectral capture: decompose psi in eigenbasis of H and measure phase dispersion under S. |
@@ -657,11 +821,53 @@
 
 ## Orphans — alive but nothing references them
 Either wire them into a contour or archive them; a tool nobody calls is a tool nobody will find when it is needed.
-- `orchestrator/rigid_dependency_scan.py` (last untracked) — Lifecycle-aware scan for unjustified rigid research dependencies.
-- `orchestrator/research_dependency_contract.py` (last 2026-08-30) — Closed consumer-first contract for candidate theorem dependencies.
+- `docs/routeB_bus/phase5_codex/euler_gram/ekernel.py` (last 2026-09-07) — Off-diagonal archimedean Sonin projector kernel K(xi,eta) = <w_eta, w_xi>.
+- `docs/routeB_bus/phase5_codex/euler_gram/fastk.py` (last 2026-09-07) — Fast archimedean Sonin projector kernel K(xi,eta) = <w_eta,w_xi>, spectral form.
+- `docs/routeB_bus/phase5_codex/euler_gram/pperp.py` (last 2026-09-07) — Exact |P_0 v|^2 through the orthogonal complement, and the physical Sonin
+- `docs/routeB_bus/phase5_codex/euler_gram/prod.py` (last 2026-09-07) — Production: Euler-Gram lower bound for k_2 on xi = 0(0.25)700.
+- `docs/routeB_bus/phase5_codex/h4_cert/legendre/legser.py` (last 2026-09-07) — Directed serialization helpers (CLASSFLOOR 2.5 / NOTES.md items 2 and 3).
+- `docs/routeB_bus/phase5_codex/mellin_d2/analyze2.py` (last 2026-09-07) —
+- `docs/routeB_bus/phase5_codex/mellin_d2/jscan.py` (last 2026-09-07) —
+- `docs/routeB_bus/phase5_codex/mellin_d2/prod_modes.py` (last 2026-09-07) — Mode-power sums for the monotone lower-bound sequence (judge's representation).
+- `docs/routeB_bus/phase5_codex/mellin_d2/prod_op2.py` (last 2026-09-07) — Operator part of (6) on the extension grid xi = 600.5(0.5)3000, J=8 Nystrom.
+- `docs/routeB_bus/phase5_codex/mellin_d2/prod_op3.py` (last 2026-09-07) — Cheap operator extension: xi = 400(1.0)3000, coarser v-grid; overlap [400,600]
+- `docs/routeB_bus/phase5_codex/mellin_d2/prod_t2.py` (last 2026-09-07) — t_S(xi) on the extension grid xi = 600.5(0.5)3000.
+- `docs/routeB_bus/phase5_codex/mellin_d2/s5.py` (last 2026-09-07) — S5: m(h) = - int W_h d_2 dxi, W_h = (1-cos a xi)|hhat|^2 / H (verdict (21)).
+- `docs/routeB_bus/phase5_codex/mellin_d2/sec7.py` (last 2026-09-07) — Section 7: full-range m(h) with the analytic hhat, the exact floor, and the
+- `docs/routeB_bus/phase5_codex/mellin_d2/sec7b.py` (last 2026-09-07) — Section 7 final: full-range m(h) with analytic hhat + operator extension to xi=3000.
+- `docs/routeB_bus/phase5_codex/mellin_d2/sec8.py` (last 2026-09-07) — Section 8: monotone lower bounds M_N = B_0 + sum_{n<=N} C_n.
+- `docs/routeB_bus/phase5_codex/mellin_d2/valid45.py` (last 2026-09-07) — Validations (iv) Theorem 4 exponent for d_2 and (v) first cosine coefficient of k_2-k_inf.
+- `docs/routeB_bus/phase5_codex/three_lobe/tl_analyze.py` (last 2026-09-07) — Restrict (C1) to the exact 7-dim kernel, solve the generalized eigenproblem,
+- `docs/routeB_bus/phase5_codex/three_lobe/tl_build.py` (last 2026-09-07) — Assemble the exact packet (C25): Gram G (9x9) and the complete polarized Weil form
+- `docs/routeB_bus/phase5_codex/three_lobe/tl_cache.py` (last 2026-09-07) — Build once, cache to disk (mpmath matrices as decimal strings).
+- `docs/routeB_bus/phase5_codex/three_lobe/tl_certify.py` (last 2026-09-07) — Certified sign statement. Entry enclosures (balls) -> exact kernel restriction in ball
+- `docs/routeB_bus/phase5_codex/three_lobe/tl_check_direct.py` (last 2026-09-07) — Independent channel 1 (end-to-end, spatial): evaluate Q(f) for a concrete kernel
+- `docs/routeB_bus/phase5_codex/three_lobe/tl_check_fourier.py` (last 2026-09-07) — Independent channel 2 (Fourier): archimedean part as (1/2pi) int q_inf conj(f_i^) f_j^,
+- `docs/routeB_bus/phase5_codex/three_lobe/tl_core.py` (last 2026-09-07) — three_lobe preflight core: exact packet of PROSHKA CHAIN verdict section 8.4 (C25).
+- `docs/routeB_bus/phase5_codex/three_lobe/tl_envelope.py` (last 2026-09-07) — Certified lower/upper Hermitian envelope for lam_min(Q7,G7), plus the 2x2 detector
+- `docs/routeB_bus/phase5_codex/three_lobe/tl_kernel.py` (last 2026-09-07) — Exact algebraic 7-dimensional kernel of the two total-moment rows, and the
+- `docs/routeB_bus/phase5_codex/three_lobe/tl_quad.py` (last 2026-09-07) — Quadrature adapted to the packet bump: both endpoints are infinitely flat, so the
+- `docs/routeB_bus/phase5_codex/three_lobe/tl_report.py` (last 2026-09-07) — Final numbers for THREE_LOBE_PREFLIGHT_REPORT.
+- `docs/routeB_bus/phase5_codex/density_map.py` (last 2026-09-06) — h = (d^2 - 1/4) eta_{d0}, eta normalized to integral 1; hhat(xi) = (-(xi^2) - 1/4) etahat(xi)
+- `docs/routeB_bus/phase5_codex/h_reconcile.py` (last 2026-09-06) — J_a(h) by (5): (1/H) sum_j e^{-(2j+1/2)a} |int h e^{(2j+1/2)x}|^2
+- `docs/routeB_bus/phase5_codex/semitab_A/carrier.py` (last 2026-09-06) — Finite carrier: self-dual DCT-I grid; P, F_inf, F_S=J F J^{-1}, Sonin projector, traces.
+- `docs/routeB_bus/phase5_codex/semitab_A/final_run.py` (last 2026-09-06) —
+- `docs/routeB_bus/phase5_codex/semitab_A/make_table.py` (last 2026-09-06) —
+- `docs/routeB_bus/phase5_codex/semitab_A/run_lambda.py` (last 2026-09-06) — lambda = sqrt2 and 2 subset (on-grid carriers).
+- `docs/routeB_bus/phase5_codex/semitab_A/run_theorem.py` (last 2026-09-06) —
+- `docs/routeB_bus/phase5_codex/semitab_A/run_vR.py` (last 2026-09-06) —
+- `docs/routeB_bus/phase5_codex/semitab_A/s1_check2.py` (last 2026-09-06) — --- independent identity for m(tau): from the self-dual Gaussian f(t)=e^{-pi t^2} ---
+- `docs/routeB_bus/phase5_codex/semitab_A/s4_tracetest.py` (last 2026-09-06) — Decisive cheap test: does a finite carrier reproduce Tr(A(I-P-Q)) + l||v||^2 = L_S ?
+- `docs/routeB_bus/phase5_codex/semitab_A/tests_family.py` (last 2026-09-06) — (d^2/dx^2 - 1/4) eta_d, by exact second derivative of the bump.
+- `docs/routeB_bus/phase5_codex/semitab_A/theorem_ctrl.py` (last 2026-09-06) — THEOREM_CONTROL_CC20: supp v in [-log2/2, log2/2] and vhat(0)=vhat(+-i/2)=0.
+- `docs/routeB_bus/phase5_codex/semitab_B/mk_table.py` (last 2026-09-06) —
+- `docs/routeB_bus/phase5_codex/semitab_B/ops.py` (last 2026-09-06) — Operator side. F_inf = exact DCT-I involution on the grid u_i = i*delta, delta = 1/sqrt(2N).
+- `docs/routeB_bus/phase5_codex/semitab_B/phys.py` (last 2026-09-06) — Physical-variable model: L^2(R_+, du) even sector.
+- `docs/routeB_bus/phase5_codex/semitab_B/quad.py` (last 2026-09-06) — Independent quadrature path: ||v||^2, C_v(t), D(v), L_S, P_02, Q(v).
+- `orchestrator/research_dependency_contract.py` (last 2026-08-31) — Closed consumer-first contract for candidate theorem dependencies.
+- `orchestrator/rigid_dependency_scan.py` (last 2026-08-31) — Lifecycle-aware scan for unjustified rigid research dependencies.
 - `orchestrator/module_class_registry.py` (last 2026-08-27) — Validate the P3 module-class registry and its declared tracked coverage.
-- `orchestrator/routeb_goal_state.py` (last 2026-08-13) — Shared lifecycle parsing for physical Route B goal files.
 
 ## Note on probes
-The 187 one-shot probes are deliberately **not** mapped here. They are goal-local evidence, not instruments; treating them as tooling is what makes the instrument set look unknowably large.
-The 51 tests and 9 completed migration scripts are likewise excluded from the operational instrument count.
+The 198 one-shot probes are deliberately **not** mapped here. They are goal-local evidence, not instruments; treating them as tooling is what makes the instrument set look unknowably large.
+The 58 tests and 9 completed migration scripts are likewise excluded from the operational instrument count.

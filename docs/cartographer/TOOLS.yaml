@@ -1079,6 +1079,27 @@ tool_families:
           semantic equivalence, source correctness, Lean fit, or absence.
         last_verified: 2026-09-02 bounded unit plants
 
+      - id: alias-hunt
+        classification: MANUAL
+        status: ENABLED
+        audience: [CODEX, CLAUDE_CODE, HUMAN]
+        mode: READ_ONLY
+        path: .agents/skills/alias-hunt/SKILL.md
+        invoke: Read the repository skill and execute its bounded discovery contract under the current owner.
+        trigger: Explicit alias-hunt request, or a source-pinned unresolved mechanism with a justified new object dictionary after shelf/preflight reconciliation.
+        writes: false
+        approval: OWNER_AUTHORIZED_BOUNDED_RESEARCH
+        authority: DISCOVERY_CANDIDATES_ONLY_NOT_PROOF_CONSUMPTION_OR_DISPATCH
+        records_to: assigned research output with source hashes; owner copies verified evidence to existing usage cards, REFERENCES and CHAT_DIGESTS through separately authorized writers
+        validation: Skill metadata validator, independent forward scenarios and exact artifact review; current capacity and provider availability are checked at invocation.
+        boundaries: >-
+          This read-only route grants no shared writes, downloads into the shelf,
+          registry updates, refresh, commits or sends. Those are separate owner
+          actions under the existing registered routes and writer epoch. Reuse
+          local primary sources; missing evidence or failed providers remain
+          INCOMPLETE. Numerical probes cannot admit a universal theorem.
+        last_verified: 2026-09-11
+
       - id: kb-query
         classification: MANUAL
         status: ENABLED
@@ -2571,7 +2592,7 @@ known_hazards:
     approval: NONE
     authority: NONE
     failure_mode: Route into the dormant June Step33 contour and its stale monitor.
-    note: Archived 2026-09-06 with the other GPT-5-era skills (see archive/skills_gpt5_era_2026-09-06/README.md); no project skill directory remains; SESSION_ENTRY.md is the one router.
+    note: Old Step32/Step33 skills were archived 2026-09-06 (see archive/skills_gpt5_era_2026-09-06/README.md). The separately registered .agents/skills/alias-hunt/SKILL.md is active; SESSION_ENTRY.md remains the startup router.
 
   - id: zero-byte-sqlite-decoys
     status: BROKEN

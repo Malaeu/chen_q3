@@ -122,3 +122,43 @@ The owner manually sent SLACK in new chat6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59, m
 Current disposition: actual request is ANSWERED with binding verified; independent mathematical review/report acceptance is separate. Runtime review event remains pending, not silently manufactured. Proposed repair is a minimal registered reconciliation of the owner-created replacement handle with exact predecessor/evidence pins, preserving the unchanged phase and archived old state. Refactor delegate01a08f80 has been given this concrete case for scope assessment, not blanket authority to bypass it. Independent immutable-source mathematical work continues.
 
 Resolution 2026-09-11T14:12:20.103893+00:00: reviewed registered slack-manual-chat-reconciliation implemented in f342494e (141tests, sole checker revised CLEAN/CLEAN after HIGH fixed). Applied once; exact successor committed5ea31624, runtime SHA2562170b46949ccd5b4ed5ad5dd0b128a7b7417b93e42f75ae8f477d36ea63db1f2; actual manual conversation and phase7/global52 recorded. All6phase keys, old events and unrelated state preserved; attachment_tile_observed=false. After registration, exact CLI replay returned0 and unchanged bytes; plan fatal_errors=[], production HOLD unchanged. Issue RESOLVED at this fixed observed transport scope; no general chat-fanout bypass or proof admission.
+
+## 2026-09-11 — alias discovery (candidate repair)
+
+- Scope authorized by the owner in task 01a08f80-f033-7a31-8f3a-3aef042a3fbc.
+  Original machine-local `~/.claude/skills/alias-hunt/SKILL.md` SHA256
+  5a55efd4f856ee6d457fac335e270293a8623da1a13903082da0a7668d124a69
+  requires three simultaneous workers while GOAL section3 currently caps two.
+  The candidate repository skill uses three dictionaries within actual capacity.
+- Its section3 permits a three-point test as identity verification and resolving
+  conflicting preprints by a number. These diagnostics cannot establish a
+  universal identity: exact hypotheses, source quotations, variable mappings and
+  the negative control's scope must be checked independently.
+- Its section4 prescribes direct shared paper writes and unconditional refresh.
+  Candidate discovery is read-only; the owner performs named, locked intake and
+  refresh only when the indexed source bytes actually changed.
+- Independent plan S1 issued two MEDIUM findings: missing supplier-preflight
+  receipt and ambiguous global-wrapper root. Both were fixed; S2/S3 CLEAN on the
+  identical amended plan. Exact artifact review/activation remain separate.
+- The repository skill is the single portable implementation. The local Claude
+  entry is only a validated current-Q3-root pointer; it cannot choose another
+  checkout or import its installation identity. This repairs home/work discovery
+  without expanding mathematical authority or replacing the canonical plan.
+- SESSION_ENTRY's statement that no project skills exist becomes false when
+  alias-hunt is added. Its footer now names only this registered skill and keeps
+  the older catalogues historical. Exploratory source-pinned discovery remains
+  possible with an explicit unbound-consumer status; it cannot close that edge.
+- The retired Step32/Step33 entry also claimed no project skills remain; scope
+  it to those archived skills. The cross-host card had 59 IDs against 89 existing
+  registrations. Synchronize that already-required exact inventory, including
+  alias-hunt as tool 90, and the generated tool census; do not weaken its plant.
+- Agent-context correction: an empty dependency_registry affected-by result is
+  not evidence that semantic refresh is unnecessary. scripts/q3_docs_corpus.py
+  selects TOOLS.yaml and SESSION_ENTRY directly. Their changed bytes require
+  one batched registered refresh after shared integration. The initial read-only
+  audit's contrary conclusion was rejected by this direct source check.
+- The existing routing plant hard-coded 59 tools and the old entry wording.
+  Preserve its actual checks (nonempty unique inventory, every classification,
+  one plan, diagnostic-only secondary script), removing the obsolete literals.
+  Other whole-module failures must be compared with the unchanged baseline;
+  they are not reported as passing alias checks or silently waived.

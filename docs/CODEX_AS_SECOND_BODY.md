@@ -148,6 +148,17 @@ SCHUR написан и привязан, вахта --ahead. 03:50 агент: 
 
 ---
 
+## 3c. Alias discovery
+
+For a source-pinned mechanism whose useful names are unknown, the registered
+`alias-hunt` route reads `.agents/skills/alias-hunt/SKILL.md`. Use it after the
+current plan, owner, existing search results and shelf/preflight are reconciled.
+Three object dictionaries do not require three simultaneous agents. The skill
+returns source-checked candidates; owner intake, refresh and any Proshka request
+remain separate steps. Unchanged searches are resumed, not automatically repeated.
+The repository copy travels with git; a machine-local wrapper supplies no policy.
+
+
 ## 4. Протокол с Прошкой (судейский канал, ~20+ минут на батч)
 
 **Когда.** Не поштучно. Копить 2–4 связанных блокирующих вопроса в PROSHKA_QUEUE.

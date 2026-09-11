@@ -66,4 +66,7 @@ live goal и verified frontier · exact `node + theorem + consumer` · один
 | аномалия control/tool/db | `docs/SYSTEM_SPEC_2026-08-05.md`, `specs_docs/README.md` |
 
 Спящие мониторы (`PSD_STEP33`, `PHASE`, `SPRINT`) ничего не выбирают.
-Проектных skill-каталогов нет (архив: `archive/skills_gpt5_era_2026-09-06/`).
+Зарегистрированный поиск того же объекта под другими именами: `alias-hunt`,
+`.agents/skills/alias-hunt/SKILL.md`. Это ограниченный поиск после сверки владельца,
+источников и полки; получение кандидата не означает принятие доказательства.
+Старые skill-каталоги остаются историей: `archive/skills_gpt5_era_2026-09-06/`.

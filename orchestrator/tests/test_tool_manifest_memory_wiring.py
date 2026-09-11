@@ -195,7 +195,8 @@ class ToolManifestMemoryPlants(unittest.TestCase):
             for family in data["tool_families"].values()
             for tool in family.get("tools", [])
         ]
-        self.assertEqual(len(tools), 59)
+        self.assertTrue(tools)
+        self.assertEqual(len(tools), len({tool["id"] for tool in tools}))
         self.assertEqual(data["tool_contract"]["required_fields"][1], "classification")
         self.assertTrue(all(tool.get("classification") in allowed for tool in tools))
         self.assertTrue(all(
@@ -445,7 +446,8 @@ class ToolManifestMemoryPlants(unittest.TestCase):
             startup.count("python3 orchestrator/workflow_runtime.py plan"), 1
         )
         self.assertNotIn("--shadow-v10", startup)
-        self.assertIn("ручной legacy-диагностический", startup)
+        self.assertIn("`specs_docs/session_start.sh` — ручная диагностика", startup)
+        self.assertIn("второй старт", startup)
 
     def test_bootstrap_does_not_require_large_preplan_manual_reads(self) -> None:
         control = (REPO / "docs/CODEX_CONTROL.md").read_text(encoding="utf-8")

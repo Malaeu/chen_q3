@@ -8,8 +8,8 @@ canonical_branch: rh_clean
 control: docs/CODEX_CONTROL.md
 tool_manifest: docs/cartographer/TOOLS.yaml
 workflow_front_door: orchestrator/workflow_runtime.py
-inventory_snapshot_date: 2026-09-02
-registered_tools: 59
+inventory_snapshot_date: 2026-09-11
+registered_tools: 90
 route_promotion_authorized: false
 PX_RH_CLAIM: NOT_MADE
 ```
@@ -82,6 +82,15 @@ class. Отправка возможна только через разрешё�
 `EXPLORATION_REVIEW` gate.
 
 ### 2.2 Выбор и narrowing
+
+`alias-hunt` is the registered bounded search for one exact mechanism under
+other mathematical names. Its single implementation is
+`.agents/skills/alias-hunt/SKILL.md`, carried by git on both computers. The
+current owner invokes it when shelf/preflight leaves a justified naming gap;
+exploratory discoveries without a consumable target remain explicitly incomplete.
+It preserves the current owner, source pins, agent cap and existing search run.
+It cannot deliver to Proshka, admit a proof or write shared state by itself.
+
 
 Один run привязывается ровно к одному OPEN physical goal или к source-locked
 Codex task. Порядок поиска дешёвый-к-дорогому:
@@ -232,7 +241,7 @@ env -u LD_LIBRARY_PATH lake env lean <file>.lean
 ## 7. Зарегистрированный инвентарь
 
 Единственный routable inventory — docs/cartographer/TOOLS.yaml. На снимке
-2026-09-02 зарегистрировано 59 инструментов: 44 ENABLED, 12 AVAILABLE,
+2026-09-11 зарегистрировано 90 инструментов: 75 ENABLED, 12 AVAILABLE,
 2 RETIRED и 1 DEGRADED.
 Сотни вспомогательных scripts, tests и one-shot probes на диске не становятся
 автоматически routable: для рождения инструмента нужен полный manifest contract.
@@ -300,6 +309,37 @@ env -u LD_LIBRARY_PATH lake env lean <file>.lean
 - packet-build
 - packet-ingest
 - task-specific-generators
+- bridge-observed-phase-repair
+- slack-manual-chat-reconciliation
+- bind-request
+- vahta
+- conventions
+- h4-scalar-floor-certificate
+- h4-packet-floor-certificate
+- legendre-parity-packet-certificate
+- gauge-positive-extension-certificate
+- euler-gram-d2-evaluator
+- six-centre-assembly
+- three-lobe-preflight
+- odd-floor
+- xi-row-zeros
+- s7-table
+- rouche-tcert
+- r2-second-jet
+- workflow-resume-checkpoint
+- alias-hunt
+- comparator-rh
+- radical-window-derivative
+- radical-one-direction-margin
+- edge-ledger-build
+- edge-ledger-ratio
+- edge-ledger-relritz
+- edge-ledger-dualcert
+- edge-ledger-schur
+- slope-split
+- odd-gram
+- lattice-error
+- lattice-equation
 ```
 
 Живой census:
