@@ -94,3 +94,29 @@ consecutive blocked turns, the executor used native update_goal(blocked) at11:43
 preserving the exact objective. GOAL §3 now explicitly points to this existing
 runtime rule and the actual external unblock condition. No status is changed just
 for a test; no new goal/selector or runtime-database manipulation is authorized.
+
+## 2026-09-11 — repeated search validation costs versus incremental indexing
+
+- Confirmed implementation: scripts/q3_docs_corpus.py hashes exact curated paths
+  and bytes. Any queue status/binding edit changes that corpus. It does not expire
+  by elapsed time or checkpoint edits. Existing repair72c59971 preserves the
+  collection and removes the generated manifest timestamp.
+- Cost evidence: session protocol2026-09-11 log269, total138.877s; actual collection
+  update0.935s, embedding23.209s, dynamic preflight60.084s, fixed plants30.801s.
+  orchestrator/spine.py::_refresh_semantic_index unconditionally calls all three
+  stages for semantic-index-refresh. This is still required by TOOLS.yaml
+  q3-docs-refresh and AUTOPILOT_SEMANTIC_PREFLIGHT_CONTRACT.
+- Immediate operational correction: combine binding/delivery/journal edits before
+  one refresh where possible; never relabel the interim index fresh or claim
+  complete absence from it. Known stale state remains explicit in RESUME.
+- Open design debt, NOT implemented: separate content synchronization from
+  reusable retrieval-validation evidence. Any reuse needs exact dependencies
+  covering corpus/goal/query/backend/model/config/index identities and failure
+  tests; current receipt alone does not justify skipping probes after a source
+  change. No timing-based trust, disabled plants, new daemon or new cache added.
+
+## 2026-09-11 — observed manual chat versus canonical review event
+
+The owner manually sent SLACK in new chat6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59, message57e6f47f-d70f-4281-97fb-3f2b7641563d. Exact committed verdict e8a95fac and its request lock are verified. Mathematical six-field phase is unchanged, while active_proshka_phase still names6aa24f25. `orchestrator/spine.py::record_delegated_review` requires conversation equality and rejects the actual new ID with EXPLORATION_CHAT_FANOUT; substituting the old ID would falsify the event. The fixed `bridge-observed-phase-repair` tool applies only to historical BRIDGE, not SLACK.
+
+Current disposition: actual request is ANSWERED with binding verified; independent mathematical review/report acceptance is separate. Runtime review event remains pending, not silently manufactured. Proposed repair is a minimal registered reconciliation of the owner-created replacement handle with exact predecessor/evidence pins, preserving the unchanged phase and archived old state. Refactor delegate01a08f80 has been given this concrete case for scope assessment, not blanket authority to bypass it. Independent immutable-source mathematical work continues.

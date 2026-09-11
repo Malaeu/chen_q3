@@ -292,3 +292,157 @@ Published manifest:
 ```
 
 Receipt-only publication INTENT: base9eea40f1, named paths docs/Codex/RESUME.md, docs/Codex/GOAL_HISTORY.md and this protocol. Exact checkpoint reserved by registered writer/archive, other final bytes bound by the staged tree. No indexed source changes; no refresh needed. Next substantive work is the signed-source proof-construction batch using S1-S7, existing same-phase chat; no request/binding/send yet.
+
+### SLACK request ready and binding intent
+
+SLACK exact15912bytes/81LF/finalLF,sha2567cbb8da692f7603b66995dfafbc2ec483e05927f9331903db9b540e6d49638da,blob1bb6a64ca93430b52142071150fa2e6e36ce4520; four source pairs at3fcf7759 and literal BATCH_PATTERNS9/10 verified independently twice plus parent. Sole flow_verdict_check request PASS1/PASS2 CLEAN, FIRST_INCORRECT_ASSERTION NONE. It preserves original compact complex source/consumer, both poles/all primes, F24 compact domain, narrow finite-central no-go, controls+1/-1 and frozen content predictions. No mathematical sign/Lean claim.
+
+Native heartbeat bridge12:44:14.180+02 resumed correctly from published receipt. Browser getState failed at init CUA_REPL_ENABLED_SURFACES is required; reset+retry same error. open_in_codex same chat queued. Tool metadata search found no alternative callable exact ChatGPT attachment transport. Native read_thread succeeds: chat idle,lastFLOW messagef12c0890 and completed response7c147cfb, no SLACK. This is a scoped runtime attachment limitation, not blanket impossibility or approval rejection; keep prepared request OPEN, no Proshka wait until actual dispatch.
+
+BIND_SLACK_20260911 INTENT, registered binder owns lock. Named request+queue only, currentbase3fcf7759, queuepreimage4414be0cf208f79daf56fe42ca1bd73602d3ccfeddbfbd0528e983d6a5c53ffe. Arguments:
+--title "SLACK: prove integrated signed-source cancellation with the full radical equality family"
+--predictions "P1 .95 S1-S7 narrow no-go survives; P2 .85 full derivative equality must be preserved; P3 .75 new precise partial source relation or scoped obstruction"
+--intake "S1-S7 at3fcf7759: full residual domination and every fixed finite Sc-orthogonality repair fail; genuine derivative radicals, strict central slack, compact cutoffs. Four full shelf pins, original source/negative controls, sole checker CLEAN/CLEAN. Browser unavailable; OPEN until observed exact-file delivery."
+--commit-prefix "[Codex][rh_clean][SLACK]"
+No permanent Git configuration change; process-local commit.gpgsign=false for unsigned commits. Capture stdout /tmp/q3-slack-bind.log and preserve it here. No automatic duplicate/rebase.
+
+## 2026-09-11T13:04:21+02:00 — search-cost audit and confirmed SLACK binding
+
+Owner asked why search repeatedly becomes stale. Live validation BEFORE binding
+passed in1.718s at corpus53ff30f7. No new index defect was demonstrated.
+Source locators: scripts/q3_docs_corpus.py::corpus_hash hashes paths+bytes, no
+clock/mtime; DIRECT_FILES includes Progress_Log and the routeB markdown glob
+includes PROSHKA_QUEUE. Checkpoints/history/ledger/protocol are outside this
+corpus. Commit72c59971 already removed collection churn and the generated
+manifest timestamp. Commit53a4a87a already repaired hyphenated exact queries.
+Last completed refresh (full evidence above at log269): collection0.935s,
+embed23.209s,builder26.998s,dynamic60.084s,fixed30.801s,total138.877s with
+session_start13.330s. The two preflight stages cost90.885s; this is repeated
+validation, not re-embedding3297documents. TOOLS q3-docs-refresh and
+AUTOPILOT_SEMANTIC_PREFLIGHT_CONTRACT still require those checks.
+
+BIND_SLACK_20260911 CONFIRMED: requestd92fd17e78b28fe93939e6b94becf1b90c68dddc,
+binding9005b347aa7d206149d9b898248982a0298362b1. Live ls-remote agrees with HEAD;
+exact request15912bytes/81LF/hash7cbb8da6/blob1bb6a64c unchanged, queue OPEN.
+Binder returned0 and REVIEW_DISPATCH_READY. Full binder output:
+
+```text
+review-plan: REVIEW_DISPATCH_READY []
+
+LINE: Adjudicate REQ-2026-09-11-SLACK. Authoritative byte-exact payload: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SLACK_2026-09-11.txt at commit d92fd17e78b28fe93939e6b94becf1b90c68dddc (blob 1bb6a64ca93430b52142071150fa2e6e36ce4520, SHA-256 7cbb8da692f7603b66995dfafbc2ec483e05927f9331903db9b540e6d49638da, 81 lines, 15912 bytes) on Malaeu/chen_q3 rh_clean; fetch it from GitHub and verify the hash. Follow its required response schema and return exactly the requested verdict, committed at EXPECTED_VERDICT_PATH.
+```
+
+Browser retried in this user turn: cua.getState again returned
+CUA_REPL_ENABLED_SURFACES is required. No message or attachment sent.
+No delivery receipt, no IN_REVIEW, no verdict waiting implied.
+Comparison of every current curated source against the last staged snapshot
+found ONLY docs/routeB_bus/PROSHKA_QUEUE.md changed after binding.
+Do not call the current index fresh: the old snapshot is known stale.
+Coalesce queue/journal integration and perform ONE registered refresh before
+the next operation needing a fully current shelf; do not insert a redundant
+refresh between binding and the unresolved delivery transition. Exact-path
+inspection and request transport reconciliation remain possible now. This is
+scheduling of existing maintenance, not a new freshness exemption.
+No numeric run, source-code edit or validation bypass. Search refactor not repeated.
+Pending: exact attachment transport, branch journal/migration and one final
+batched refresh; accepted S1-S7/request review remain complete.
+
+2026-09-11T13:33:54+02:00 — Owner correctly observes idle Proshka tabs. SLACK remains NOT_SENT: repeated cua.getState failed at initialization, and native open_in_codex remained queued. This is a blocked launch, never an awaited analytical result. Current canonical CONTROL section8 requires the exact .txt attachment/tile; text-only native sender cannot supply that evidence. Companion section3b item7 allows handing the exact file/unchanged locator to the owner when browser transport fails. Official https://learn.chatgpt.com/docs/browser fetched this turn: documents @Browser invocation and says built-in-browser file uploads cannot be automated. No exact official remedy for CUA_REPL_ENABLED_SURFACES was found; do not promise that another empty watch tick or restart will fix it. No request was sent through an alternative route, no acceptance claimed.
+
+2026-09-11T13:40:14+02:00 — Owner manually sent SLACK. Native read_thread verified unchanged LINE in NEW conversation6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59, message57e6f47f-d70f-4281-97fb-3f2b7641563d; reader attachments=[] and idle/no assistant message. Full file receipt/natural reasoning unverified, not proven absent. No resend/interrupt. Runtime remains old6aa24f25: reconcile owner-created chat before future canonical send. Browser reset succeeded; getState still CUA_REPL_ENABLED_SURFACES is required. Native chat reading works; underlying initialization cause unestablished. No new calculation/refresh/phase change. Oversized8334-byte candidate rejected before writing; shortened candidate follows registered writer.
+
+2026-09-11T13:49:46+02:00 — Owner app restart restored browser: cua.getState lists Chrome2/profile1 and IAB1; getTab1/browser1 reads new chat6aa3e75b. Active Pro-Denkvorgang/Antwort stoppen observed. Producer reports exact15912bytes/81lines/finalLF/SHA256/blob agreement and no GitHub write action so far. Earlier native reader idle snapshot did not establish actual idle. No resend/stop/upload; no .txt tile observed. Canonical new-chat reconciliation separate; full verdict and no-push original-file intake pending. Foreign TEAM_RUNTIME_REFACTOR_PLAN preserved. Browser initialization root cause unknown, operational recovery verified.
+
+## 2026-09-11T14:21:17+02:00 — SLACK exact intake and independent-review intent
+
+Browser restored after owner app restart; live IAB1/tab1 chat6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59 shows completed SLACK with original file and publication receipt. Producer commit e8a95fac36dec2aea50c71a6bdf5fc7deffd4152 has parent9005b347aa7d206149d9b898248982a0298362b1. Live ls-remote matched. Exactly one path added: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SLACK_2026-09-11.md. Parent independently checked49446bytes/657LF/finalLF, SHA2561d658eb3d6d828d3bc651967087dabf8e2f9774d179b02c7607f25c7ffe54588 and blobac3504f3e44b0442fc50c95fe1a095aea57cd7dc, then read all657lines. Safe fast-forward under canonical writer lock preserved hashes of all13 existing dirty regular files; no staging/push. Request complete81lines read. Full source-pair rehash and mathematical acceptance pending.
+
+Owner relayed observer work, identifying the new litreview/card/refs/bib/PDF/probe/CHAT_DIGESTS bytes. Csordas2015 localPDF sha333c28bbdea9a7a7a2d63feb73838151149848b7d8fd7f4da965e42fd0447bef, pages10-12 read: eq4.2, Theorem4.2(b), Remark4.3(a). Termwise exact Phi_ours(x)=2Phi_C(x/2), hence J_f(x)=2/A^2 J_PhiC(x/2)>0. This closes only SL23 and supplies SL24 reflection-diagonal after review. Original1988proof remains RELAY. No point sweep repeated. ask.sh log-concave returned HITS/COMPLETE_REGISTERED_SHELF on corpus0c781e99335db2d6e453164181994cecdd715d2b2571698084688ed4b8e6ddb8; observer's fresh index reused.
+
+Fresh sole slack_verdict_check terra/xhigh dispatch intent saved in RESUME revision18 and ledger; all SL1-SL24 plus literature transfer. Parent independently checks exact rational control and transforms. Target report docs/routeB_bus/SLACK_INDEPENDENT_CHECK_2026-09-11.md. No accepted mathematical result or Lean admission yet.
+
+Refactor delegate01a08f80 allowed isolated candidate/test clone only within its existing owner task. No shared-file maintenance boundary or math takeover granted. It will send exact diff/hash manifest before integration. Foreign observer files preserved; refactor plan not staged. Existing heartbeat bridge retained.
+
+Parent fresh exact rational reproduction: {"SL17_diag_factor": "23/12", "SL17_cross_factor": "73/36", "SL17_odd_factor": "-2/9", "OD1_rational_spread_controls": 539, "OD1_identity": "b^2-a^2=4rxy; 0<=a^2<=b^2<=c^2", "authority": "EXACT_ALGEBRA_CONTROL_NOT_FULL_THETA_KERNEL_SIGN"}
+SL17 obtained by independent Gaussian-moment integration j!/2^(j+1) of diagonal coefficients[16,16,12,4,1]/9 and reflected coefficients[16,32,12,-4,1]/9, common e^-2. OD1 is candidate only: concavity of log f(sqrt s) compares symmetric arguments c+/-a,c+/-b for all x,y>0 and proves entrywise odd-kernel positivity, not positive semidefiniteness. Full derivation to be reviewed by the same sole checker.
+
+Mechanical bibliography repair: paper.sh's registry formatter used `cut -d' ' -f1-4`, truncating "Michel Planat and Patrick Solé" to "Michel Planat and Patrick". Removed only that cut, repaired the new REFERENCES row. `bash -n paper.sh` and an isolated execution of the actual formatter (no metadata fetch, keys, Zotero or download) passed with the full author list and6cells. Existing bibliographic keys and unrelated old rows retained. Source card now records termwise Phi scaling and exact J_f=2/A² J_PhiC(x/2), not numerical agreement as its evidence. CHAT_DIGESTS attributes the alleged update cause to the observer; live Codex evidence proves recovery after restart only.
+
+NEW EXACT CONTROL BEFORE INTERPRETATION: f_c(x)=exp(-x²)(1+3x²/10+x⁴/25). Its ell(s)=-s+log(1+3s/10+s²/25) has ell''(s)=-(8s²+60s+25)/(2500(1+3s/10+s²/25)²)<0. Thus it satisfies the imported squared-coordinate log-concavity property. Exact Gaussian integration gives the Gaussian-congruent odd-kernel matrix at x,y=1,2: [[33/500,279/1250],[279/1250,93/125]], every entry positive but determinant-279/390625. Vector(3,-1) gives-3/2500. Full odd four-point vector(3e,-e^4,-3e,e^4) on nodes(1,2,-1,-2) gives-3/1250 for V_c; compact smooth approximate point masses retain negativity. This is NONCANONICAL f_c, not negative theta Q or RH. It kills promotion of squared-coordinate log-concavity plus OD1 entrywise positivity alone to full odd-kernel positivity. Candidate OC1 awaits the same checker; do not publish as accepted yet.
+
+## 2026-09-11T14:51:37+02:00 — SLACK report accepted; integration underway
+
+Revised21022byte/187LF report620e5176 passed separate sole-checker PASS1/PASS2 CLEAN; FIRST_INCORRECT_ASSERTION NONE. Parent extracted and executed both exact blocks PASS. Added acceptance receipt only, preserving reviewed prefix unchanged. SL23 imported exactly, OD1/OC1 partial scopes accepted; SL20/RH unproved. Branch journal and queue/CHAT_DIGESTS synchronized. Csordas card OpenProblem4.14 locator corrected from ~16 to printed/PDF13 after reading the full page; Planat-Sole§7 scope checked onPDF14, certificates not audited. Prejournal ask squared-coordinate INCOMPLETE: known stale semantic receipt and external zeta23 monotonic search budget exhaustion; no absence claim and no intermediate refresh. Scoped SLACK verdict-migrator dry-run scanned1, produced0strategy/0kill/0evidence/0aliases/0supplier rows; do not invent structured kills. Next project exact new journal row, execute scoped migrator, ONE final refresh/session_start with background log, then named publication. Runtime manual-chat reconciliation remains separate pending debt; foreign runtime-refactor plan excluded.
+
+### SLACK intake maintenance recipe and intent
+
+One refresh after all indexed changes. Background log: docs/routeB_bus/phase5_codex/out/slack_intake_20260911.log (intentionally versioned complete evidence despite general *.log ignore). Registered writers only; no runtime chat mutation.
+
+```python
+from pathlib import Path
+import subprocess,time,sys,traceback
+ROOT=Path('/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean')
+sys.path.insert(0,str(ROOT))
+from orchestrator.workflow_runtime import _execution_writer_epoch
+started=time.monotonic()
+print('RECIPE_BEGIN\n'+Path(__file__).read_text()+'RECIPE_END',flush=True)
+try:
+ with _execution_writer_epoch(ROOT) as epoch:
+  for cmd in (['python3','orchestrator/spine.py','--refresh','--reason','semantic-index-refresh'],['bash','specs_docs/session_start.sh']):
+   begin=time.monotonic();print('START',cmd,flush=True)
+   r=subprocess.run(cmd,cwd=ROOT)
+   print('STAGE_EXIT',r.returncode,'SECONDS',round(time.monotonic()-begin,3),flush=True)
+   if r.returncode:raise RuntimeError('stage failed: '+str(cmd))
+   epoch.recheck()
+ print('TOTAL_SECONDS',round(time.monotonic()-started,3),flush=True)
+ print('PROCESS_EXIT=0',flush=True)
+except BaseException:
+ traceback.print_exc();print('PROCESS_EXIT=1',flush=True);sys.exit(1)
+```
+
+Migration output:
+```text
+JOURNAL_VERIFIED {"id": "branch_2026-09-11_7dcfeeb8ff0f", "artifact_sha": "b9bd7b059a5c86da68a91348f1c311128a263f393ef3c98dd705c53172d48331", "unchanged_old_rows": 1919, "exact_body": true, "schema_unchanged": true}
+distinct verdicts scanned : 1
+  new strategy rows (M3)  : 0
+  new verdict-kill rows   : 0
+  reused existing strategy: 0 (evidence attached, no duplicate row)
+  reused existing verdict : 0 (stable id, no __V row)
+  evidence refs           : 0   aliases: 0
+  supplier-ledger rows (W9): 0 CLOSES/OPENS → capability
+  prose-only KILL mentions: 0 — NOT migrated, need a human read:
+  removed derived/stale evidence: 0
+  removed source-orphan rows    : 0
+backfilled legacy operational scope negations: 0
+migrated into /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/q3.lean.aristotle/aristotle_db/knowledge.db
+MIGRATION_EXIT=0
+```
+
+### 2026-09-11T14:59:12+02:00 — SLACK maintenance verified; publication intent
+
+Background PID763264 completed PROCESS_EXIT0 in171.712s. Refresh157.589s, session_start14.122s/0. Collection update1.166s,2new/5updated/3293unchanged; builder49.051s,dynamic62.646s,fixed37.782s. Full recipe/stdout plus final ask OC1 HITS are in docs/routeB_bus/phase5_codex/out/slack_intake_20260911.log. Semantic receipt PASS and all enabled shelf providers complete on final query. Exact report reviewed21022byte prefix remains unchanged; added only acceptance receipt. Archive44records verified, full diff checks pass (history canonical final separator excepted). Observer probe syntax checked without rerunning its14point grid; paper.sh formatter repair and source card normalized as recorded. Runtime98765b57 still old chat6aa24f25/6/51; do not fabricate review event. Refactor owner confirms current isolated candidate does not repair this handle; minimal spine/test repair is independent, not yet implemented.
+
+SLACK_INTAKE_PUBLISH_20260911 INTENT: base e8a95fac36dec2aea50c71a6bdf5fc7deffd4152, named verified intake/literature/formatter/journal/checkpoint/protocol/database/log files only; exclude foreign docs/Codex/TEAM_RUNTIME_REFACTOR_PLAN_2026-09-11.md. Final checkpoint/history/protocol hashes bound by the commit tree, other payload hashes in the manifest below. Ordinary exact-commit push to existing origin/rh_clean, no force.
+
+Exact non-self publication manifest:
+```json
+{
+  "docs/CHAT_DIGESTS.md": "3139dab21daec0663f8a43b477f26caf99bbcb77f0cb83e80b0af74758a7c9f7",
+  "docs/Codex/AGENTS_LEDGER.md": "e09d5fcfe5c8c46790bc61a7f618b63f1eefbece3eb8f2adbc60ca6f2d8c612e",
+  "docs/Codex/GOAL_HISTORY.md": "7f44873863a05ff26f79b3ddc961f0026a2089d9cda1dc4d8524b983add2c0c8",
+  "docs/Codex/RESUME.md": "7b4791d5fe686ab03d13a20e36ed2438b1b810c52abacdf48b81669e9e6546f2",
+  "docs/INSTRUCTION_ISSUES.md": "a1ca94301f232def83b7f7307502cfe18cb28bcac0b5937ab488804e43ae9bad",
+  "docs/Progress_Log.md": "7923962175bffd6ae3e219fb00d44e2d6871976ac879e153f80de76424da6b61",
+  "docs/routeB_bus/PROSHKA_QUEUE.md": "61e4156989e1a2c654552c91781093d603dfcaaecef8a82a8818b42ade683f2b",
+  "docs/routeB_bus/litreview/REFERENCES.md": "e2428936977e1f043d785da948fce2f562c19ce89a2c6d79304f231b0e993a80",
+  "docs/routeB_bus/litreview/references.bib": "881b6b43e0c464b854f7f6683e84ef556e9bfa65fbcb13551d17d2ef071db245",
+  "paper.sh": "edc659735b182448f18220db07c41320e31f14fecf48ac6748282c5f6f7e4661",
+  "q3.lean.aristotle/aristotle_db/knowledge.db": "924852739fba4fed8e5ede973df65739ee8511a555397169ba3280b605b8ca1c",
+  "docs/routeB_bus/SLACK_INDEPENDENT_CHECK_2026-09-11.md": "cc018a16189d53bc556471c773b3fca9f6fdbed620e61e3f59a078322f9a2f3d",
+  "docs/routeB_bus/litreview/CSORDAS_PLANAT_LOGCONCAVITY_USAGE_CARDS.md": "11b27965b44f0f943f3c95fc13ad93b69c9833f9d1eca77ca986edf42b5522f9",
+  "docs/routeB_bus/litreview/pdfs/1309.0055.pdf": "333c28bbdea9a7a7a2d63feb73838151149848b7d8fd7f4da965e42fd0447bef",
+  "docs/routeB_bus/litreview/pdfs/2608.19160.pdf": "fed8c364334ecc87fc48f4f25432ab68cc30c51538b2ef41a7874cc1a611c22c",
+  "docs/routeB_bus/proshka/slack_jf_probe_2026-09-11.py": "175dffcb06d617b1b712c44aa434f13f35b66e00b36006608f4bed7fdd63b482",
+  "docs/routeB_bus/phase5_codex/out/slack_intake_20260911.log": "99bb069d57eb5888ccfbd5ea92b5786b58146ffc92caad327db2bc258b7c6c99"
+}
+```

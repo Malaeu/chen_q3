@@ -14,9 +14,9 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-11-SLACK · SLACK: prove integrated signed-source cancellation with the full radical equality family · OPEN
+## REQ-2026-09-11-SLACK · SLACK: prove integrated signed-source cancellation with the full radical equality family · ANSWERED
 
-- `STATUS: OPEN`
+- `STATUS: ANSWERED`
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SLACK_2026-09-11.txt`
 - Boundary: `GOAL058_INTEGRATED_SIGNED_SOURCE_SLACK_CANCELLATION`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
@@ -27,6 +27,11 @@ safety confirmation остаётся внешней границей. Судья
   `d92fd17e78b28fe93939e6b94becf1b90c68dddc` / `15912` / `81` /
   `7cbb8da692f7603b66995dfafbc2ec483e05927f9331903db9b540e6d49638da` /
   `1bb6a64ca93430b52142071150fa2e6e36ce4520` / `yes`
+
+- Actual manual delivery: owner sent unchanged LINE in user-created chat6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59, message57e6f47f-d70f-4281-97fb-3f2b7641563d. Browser recovery exposed active analysis, then a completed response. Exact attachment tile was not observed; do not fabricate a same-chat/file-tile receipt. Historical OPEN/browser-unavailable note above records preparation only. No resend.
+- ANSWERED records verified request/verdict binding, not mathematical acceptance. Original verdict `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SLACK_2026-09-11.md`, commit e8a95fac36dec2aea50c71a6bdf5fc7deffd4152, parent9005b347aa7d206149d9b898248982a0298362b1,49446bytes/657LF/finalLF,sha2561d658eb3d6d828d3bc651967087dabf8e2f9774d179b02c7607f25c7ffe54588,blobac3504f3e44b0442fc50c95fe1a095aea57cd7dc. Live remote, request lock, all4full shelf pairs and only-one-path change verified. Safe FF preserved all13 existing dirty files.
+- Full657-line read and independent acceptance COMPLETE at partial PAPER scope. Sole slack_verdict_check terra/xhigh revised PASS1/PASS2 CLEAN on report620e5176 (21022bytes/187LF), parent exact blocks PASS; receipt in `docs/routeB_bus/SLACK_INDEPENDENT_CHECK_2026-09-11.md` §8. Csordas supplies SL23/SL24 exactly; OD1 proves all positive-halfline odd entries positive; OC1 proves these scalar/entrywise properties alone do not imply full odd form positivity. SL20 remains UNPROVED; no new numerical campaign.
+- Permanent bridge heartbeat retained for the continuing goal. Runtime chat/actual adjudication reconciliation pending; no new mathematical phase or production admission.
 
 ---
 

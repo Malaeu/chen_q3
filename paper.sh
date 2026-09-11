@@ -375,7 +375,7 @@ else
     STATUS="**NEEDS_CARDS**"; NOTE="затянуто paper.sh $(date +%F) — карточка не написана"
   fi
   printf '| %s | %s | %s | %s | %s | %s |\n' \
-    "$KEY" "$(printf '%s' "$AUTHOR" | cut -d' ' -f1-4), \"$TITLE\"" \
+    "$KEY" "$AUTHOR, \"$TITLE\"" \
     "${ARXIV:+arXiv:$ARXIV}${DOI:+ doi:$DOI}" \
     "${FNAME:+\`pdfs/$FNAME\`}" "$STATUS" "$NOTE" >> "$REG"
   echo "✓ реестр: строка со статусом ${STATUS//\*/}"
