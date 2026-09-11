@@ -33,6 +33,7 @@ PDF `pdfs/2608.19160.pdf`, page 1 (lines 45–46): "Theorem 4.2(b) of Csordas [2
 | Φ_ours(x) = e^{x/2} Σ (4π²n⁴e^{4x} − 6πn²e^{2x}) e^{−πn²e^{2x}} | Φ_C(r), (4.2) | Termwise substitution in (4.2) proves Φ_ours(x) = 2·Φ_C(x/2); the earlier three-point ratio is a diagnostic only |
 | f = Φ_ours/A | — | positive constant, drops out of every sign |
 | SL23: J_f(x) = x(f′² − f f″) + f f′ ≥ 0, x > 0 | Remark 4.3(a): g(t) > 0 | exactly J_f(x) = (2/A²) J_ΦC(x/2) > 0 by the chain rule |
+| same, in t = x² | Planat–Solé f(t) = s′(t)² − s(t)s″(t), s(t) = Φ(√t) | f(t) = J(√t)/(4t^{3/2}); not literally J, same sign for t > 0 (sympy 2026-09-11; Codex OC2 correction of my first wording) |
 | ℓ(s) = log f(√s) concave | Theorem 4.2(b): log Φ_C(√t) strictly concave | s = 4t, linear rescale preserves concavity |
 
 ## 3. What it gives US
