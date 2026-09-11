@@ -3841,3 +3841,4287 @@ Closeout INTENT: one registered progress projection + semanticrefresh + session_
 Published SIBLING4at55620f3a received/read fully; withdraws3(b), asks a new actual functionfieldSonin compression and central defect. Its claim3(a)/(c) unchanged must still respect T1/T2 and fixed-support corrections. New question PENDING, not a proved reconstruction. Observer commit55620f3a also carried our already-reviewed CHAT_DIGESTS paragraph unchanged along with its own retraction; preserve and do not restage/repeat it. No current foreign dirty path.
 Neighbour final replacement B9/B10 CLEAN/CLEAN,46ab04b5 at isolatedcache; manifest8642bytes27b3431561e11654da115a95af1fa52759c9b965525a31f887aae98147a781ff, diff681738bytes7d32646f46da5b0392db39ea12e8b6fd54d0f1ad47c5bf15a16047ebcba0a103. No shared installation yet. Preserve current issue/protocol/RESUME/history, rebaseline against new55620f3a and our publication, never copy stale checkpoints/history.
 Publication INTENT: base55620f3af5ed3d39e7bee28c3fdddbf4aebc37cc, exact19owned named paths; proof30325bytes0350b167, cardc41dd661, REPORTs8515828c/0148cd23/74d56d35, MITsources7d04b0f0/e279bfee unchanged. Ordinary non-force push existingorigin/rh_clean, no new request/PXclaim.
+
+
+2026-09-11T19:23:08.717945+00:00 — SIBLING_1_2_PROOFS_3_REFUTATION PUBLICATION_CONFIRMED: 1c1d23d477d3c400bf7b55c5ce5e6ac993e7f57b equals live origin/rh_clean; ordinary push0, exact19named paths, all worktree/staged/commit hashes match frozen manifest including separate two PDF LFS media oids. Original three trailing-space lines in raw sibling process log1421/3502/3716 preserved byte-exact; first staged formatting check stopped before commit, all other named paths then passed formatting. No platform rejection, repeated math/review/source/refresh or signature. Postpush tree clean before this confirmation. Existing production exact-edge HOLD and PX_RH_CLAIM NOT_MADE unchanged. SIBLING4 is the next mathematical question; neighbour final46ab04b5 remains isolated until its exact manifest and shared integration boundary are reconciled. This confirmation joins next substantive result, no recursive receipt-only commit.
+
+
+2026-09-11T19:25:06.322106+00:00 — FINAL_CORE_INTAKE_READBACK: all22candidate files match46ab04b5 manifestB9; §12 read fully. Only canonical preimage drift is INSTRUCTION_ISSUES8425d88d versus expected7390739a. Existing technical task01a08f80 received native follow-up to prepare isolated reconciled issues bytes preserving current text, bind its reviewed WATCH/CADENCE reports and report actual scheduled wake separately. No shared installation or owner transfer granted. This technical follow-up was sent before a separate DISPATCH intent checkpoint; record actual post-action receipt, never backdate an intent. Native owner agentlist confirms density_verdict_check DONE and oldslack children DONE, no live mathematical agent. Nextcheck20min. SIBLING4 remains new pending source construction.
+
+
+2026-09-11T19:33:50.412616+00:00 — SUPPLEMENT_INTAKE_CONFIRMED, NOT INSTALLED. Parent verified exact2698byte manifest4eec599f, all3after/preimage hashes and full current issues prefix21275bytes8425d88d. NativeC1/C2 CLEAN receipt copied below. No code test or review replay, canonical installation or ownership transfer. Private preparation preserves all21otherB9source paths; next action is actual-owner §12 bootstrap from current revision89 after live reconciliation. Technical scheduled wake remains UNCONFIRMED; no status/config manipulation.
+
+# Exact supplemental intake review receipt
+
+Native /root/team_core_review, gpt-5.6-terra/medium, read-only, no descendants.
+C1 CLEAN: reconciled issues starts with the entire21275-byte canonical preimage8425d88d; the two source insert-only blocks7161/5343bytes each occur exactly once; all previous canonical bytes remain unchanged; R1 HIGH reporting correction is appended without changing owner protocol.
+C2 CLEAN: all exact targets remain byte-identical; recomputed diff matches, original source/report review provenance retained. ModeA C1/C2 convergence for this supplemental intake only. No code/source test rerun or canonical mutation.
+
+Reconciled issues: q3-team-INSTRUCTION_ISSUES-reconciled-2026-09-11.md35167bytes SHA2567910ab4cb1bb69dc4df8b649486b677248e0a7c18ca5db8595f7865f8b8f4e94.
+Intake manifest: q3-team-supplemental-intake-2026-09-11.json2698bytes SHA2564eec599f02149c958a62ea26e2b4ceab68ebd8833cef7b3cc9576000b7718907.
+Diff: q3-team-issues-reconciliation-2026-09-11.diff15270bytes SHA2566edf1086ca256f71cd358b8391744cc57e6e8b61842ef2a6782591b92bea0033.
+Bound reports unchanged: WATCH9882bytes/hash84b97f461b745118941e4658b64eca7cccb745c7125911f1219f504b05c303f4; CADENCE1866bytes/hash0156dc2b7e8fd0febfcac5260fa06ab393b5f19d75eb50de6b2585a86ecb7bcd. Both PARTIAL. Original source package46ab04b5/B9 manifest27b34315 stays frozen; only its issues candidate is superseded, plus the two separately bound report destinations. Actual owner must recheck fresh preimages under lock; no HEAD update substitutes for that check.
+
+Separate native-watch outcome: configuration is confirmed; first15minute window expired with no scheduled run. At2026-09-11T19:29:28.254191Z q3 remainedACTIVE10, last_run_atNULL, automation_runs empty, next_run_at1789155217000. Exact read-only receipt q3-team-watch-observation-2026-09-11-192928.json441bytes SHA2566c54a01e6604c118dbd7df9091bf74c51a1b3d2f5804f6c773fffed5a75695ae. Source/document acceptance is not watch activation or global completion.
+
+Continuation: actual owner01a084f4 performs section12 installation with current checkpoint/history; technical task01a08f80 waits for that handback and an actual q3 scheduled event. Do not recreate q3, repeat original actions, copy stale checkpoint/merge history, spoof identity or write the shared tree. Next actual wake must preserve provider event/time, reconcile these prepared artifacts and the owner's actual installation before cold/concurrent/issue acceptance. Existing native watch is active; allow the foreground turn to become idle for the scheduler. No goal status manipulation or scheduler storage mutation.
+
+
+
+2026-09-11T19:49:03.501256+00:00 — BOOTSTRAP_BOUNDARY. Outcome: integrate reviewed24source/report paths plus exact owner receipts with preserved SIBLING/pins/history. Non-goals: no mathematical admission, goal/owner transfer, repeated prior computation or unreviewed source replacement. Proof: initial local subset commit, v1 confirmation/v2 preservation, final source commit, one refresh, actual entry, exact reserved non-force publication; cold/concurrent/issue/native validation remain separate. SourceB9/B10 and supplementalC1/C2 verified, actual owner root, no active math agent. New observerbed5d5c0 affects only CHAT_DIGESTS and is preserved. Native bridge heartbeat actually triggered19:44:16.946Z; earlier config is not the evidence. ScriptSHA256197e2e42f293ebe66ed9da76c8bf3c2896b5a4e8b22686da876b19e18508fb12.
+
+```python
+"""Actual-owner staged bootstrap. Run only a named unfinished stage; never replay effects."""
+from pathlib import Path
+from datetime import datetime,timezone
+import copy,hashlib,json,os,subprocess,sys
+R=Path('/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean')
+C=Path('/home/chirurgie/.cache/q3-team-2026-09-11-01a08f80')
+sys.path.insert(0,str(C))
+from orchestrator import workflow_runtime as w
+OWNER='01a084f4-7498-7021-bac2-91d184d58dc7'
+OP='TEAM_CANONICAL_20260911'
+assert os.environ.get('CODEX_THREAD_ID')==OWNER
+M=json.loads(Path('/home/chirurgie/.cache/q3-team-full-artifact-b9-2026-09-11.json').read_text())
+S=json.loads(Path('/home/chirurgie/.cache/q3-team-supplemental-intake-2026-09-11.json').read_text())
+F={f['path']:{**f,'candidate_path':str(C/f['path'])} for f in M['files']}
+F.update({f['path']:f for f in S['files']})
+INITIAL=[p for p in F if (p.startswith('orchestrator/') and p.endswith('.py')) or p=='docs/cartographer/TOOLS.yaml']
+FINAL=[p for p in F if p not in INITIAL]
+ENV={**os.environ,'Q3_OWNER_EPOCH':'1'}
+def sha(b):return hashlib.sha256(b).hexdigest()
+def git(*a):return subprocess.check_output(['git',*a],cwd=R,env=ENV)
+def current():return w._resume_document((R/w.RESUME_PATH).read_bytes())
+def call(*a,allowed=(0,)):
+ p=subprocess.run(['python3','orchestrator/workflow_runtime.py',*a],cwd=R,env=ENV,capture_output=True,text=True)
+ print('CLI',a,'EXIT',p.returncode,p.stdout,p.stderr,flush=True)
+ assert p.returncode in allowed,(a,p.returncode)
+ return json.loads(p.stdout)
+def save(d,b):
+ raw=(R/w.RESUME_PATH).read_bytes();old,_=w._resume_document(raw);d=copy.deepcopy(d)
+ d.update(revision=old['revision']+1,previous_sha256=sha(raw),observed_at=datetime.now(timezone.utc).isoformat())
+ payload=('---\n'+w.yaml.safe_dump(d,sort_keys=False,allow_unicode=True,width=100)+'---\n'+b).encode()
+ w._resume_document(payload)
+ p=Path('/tmp/q3-team-canonical-resume-'+str(d['revision'])+'.md');assert not p.exists();p.write_bytes(payload)
+ call('resume-checkpoint','--candidate',str(p),'--expected-sha256',sha(raw),'--dry-run')
+ call('resume-checkpoint','--candidate',str(p),'--expected-sha256',sha(raw))
+ assert (R/w.RESUME_PATH).read_bytes()==payload
+ return d
+def verify(paths,preimage=True):
+ for p in paths:
+  f=F[p];b=Path(f['candidate_path']).read_bytes();assert len(b)==f['bytes'];assert sha(b)==f['sha256'],p
+  if preimage:
+   old=w._resume_file(R,Path(p));assert w._resume_digest(old)==f['before_sha256'],('PREIMAGE',p)
+def install(paths):
+ with w._execution_writer_epoch(R) as e:
+  verify(paths)
+  for p in paths:
+   f=F[p];w._resume_cas_bytes(R,Path(p),w._resume_file(R,Path(p)),Path(f['candidate_path']).read_bytes(),e,mode=int(f['mode'],8)&0o777)
+  for p in paths:assert sha((R/p).read_bytes())==F[p]['sha256']
+def commit(paths,msg):
+ with w._execution_writer_epoch(R) as e:
+  assert not git('diff','--cached','--name-only')
+  subprocess.run(['git','add','-f','--',*paths],cwd=R,env=ENV,check=True)
+  assert set(git('diff','--cached','--name-only').decode().splitlines())==set(paths)
+  subprocess.run(['git','diff','--cached','--check'],cwd=R,check=True)
+  subprocess.run(['git','-c','commit.gpgsign=false','commit','-m',msg],cwd=R,env=ENV,check=True)
+  e.recheck();c=git('rev-parse','HEAD').decode().strip();print('LOCAL_COMMIT',c,paths,flush=True);return c
+stage=sys.argv[1];d,b=current()
+if stage=='initial':
+ assert d['revision']==89 and d['operation']['state']=='CONFIRMED'
+ assert git('rev-parse','HEAD').decode().strip()=='bed5d5c0c85c657923eae96c48253029ac891de3'
+ assert git('rev-parse','origin/rh_clean').decode().strip()=='bed5d5c0c85c657923eae96c48253029ac891de3'
+ verify(F)
+ initial_inputs={p:F[p]['sha256'] for p in INITIAL}
+ d['operation']={'kind':'PUBLISH','state':'INTENT','id':OP+':local-install','evidence':['Exact reviewed source46ab04b5/B9-B10; supplementalC1-C2. Local subset only: '+json.dumps(initial_inputs,sort_keys=True),'Remote basebed5d5c0; mathematical SIBLING package already published1c1d23d4. Keep all owner/pins and framed history.']}
+ b=b.replace('Next: owner §12 bootstrap preserving all latest checkpoint/history.','Next: actual-owner §12 initial runtime local installation INTENT; preserve all checkpoint/history. Do not replay original effects without reconciliation.')
+ d=save(d,b)
+ install(INITIAL)
+ c=commit(INITIAL+[str(w.RESUME_PATH),str(w.RESUME_HISTORY_PATH)],'[Codex][rh_clean][TEAM] Install reviewed runtime and registered tools locally')
+ d['operation'].update(state='CONFIRMED',evidence=['bootstrap_local_commit:'+c,'Exact11runtime/tool paths verified after local commit. Remote publication not performed.'])
+ d['pins']['head']=c
+ d=save(d,b)
+ print('INITIAL_COMPLETE',c,'REVISION',d['revision'],flush=True)
+else:raise SystemExit('unknown stage')
+```
+
+
+2026-09-11T19:55:24.943916+00:00 — BOOTSTRAP_STAGES: local11commit349fea480fdea935bb3e677bfbf2f014b055246e; v1confirmed91; local-init actualref9afdf2bf (private secret never emitted); oversized firstv2draft refused before save, compact full fields saved92a73b9928. Final13source/control commit7581673eee8233bbcaf592412f599a58725033e5. Actual plan q3_workflow_plan.v3 continuation.blockers=[]/fatal_errors=[] with preserved owner/stages/pins and whole-tree view. No canonical refresh/push yet. Found registered refresh-route gap: inherited_only q3-docs-refresh/semantic-preflight require close/search parent but close-session only4DERIVED rows, no semanticrefresh. Read-only close0/fresh4; strict spine confirms SEMANTIC_INDEX_CORPUS_STALE. Technical task01a08f80 receives exact bounded report and repairs isolated if no existing route. No direct refresh/guard bypass. Do not edit already committed source: bootstrap requires each intermediate source hash equal final. Current snapshot93 records blocker. Mathematical SIBLING4 pending; no newmath process. Actual bridge native event19:44:16.946Z and q3event19:43:17.448Z established, prior q3firstwindow MISSED retained.
+
+
+2026-09-11T20:02:35.689262+00:00 — BOOTSTRAP_EVIDENCE_2005_RECEIVED: parent independently rehashed six exact artifacts below. Actual native q3 wake confirmed; original first observation window MISSED preserved. Its captured canonical_activation=PENDING field describes 19:47, not current installed v2 revision93. Current raw capture is evidence only, not typed acceptance or new owner. Bootstrap script shown below includes already-completed initial/migrate/final-source stages; do not replay. Two source commits local/unpublished. Minimal close-session fix remains in technical task.
+
+## Preserved exact artifact /tmp/q3-team-canonical-bootstrap.py
+
+Bytes 9181; SHA256 ec44687ba7460fed0af59493f7f7cc50d177c9aedcfdd81a12b2d930c6800cb2. Fence delimiters are protocol framing; original content below is unchanged.
+
+```text
+"""Actual-owner staged bootstrap. Run only a named unfinished stage; never replay effects."""
+from pathlib import Path
+from datetime import datetime,timezone
+import copy,hashlib,json,os,subprocess,sys
+R=Path('/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean')
+C=Path('/home/chirurgie/.cache/q3-team-2026-09-11-01a08f80')
+sys.path.insert(0,str(C))
+from orchestrator import workflow_runtime as w
+OWNER='01a084f4-7498-7021-bac2-91d184d58dc7'
+OP='TEAM_CANONICAL_20260911'
+assert os.environ.get('CODEX_THREAD_ID')==OWNER
+M=json.loads(Path('/home/chirurgie/.cache/q3-team-full-artifact-b9-2026-09-11.json').read_text())
+S=json.loads(Path('/home/chirurgie/.cache/q3-team-supplemental-intake-2026-09-11.json').read_text())
+F={f['path']:{**f,'candidate_path':str(C/f['path'])} for f in M['files']}
+F.update({f['path']:f for f in S['files']})
+INITIAL=[p for p in F if (p.startswith('orchestrator/') and p.endswith('.py')) or p=='docs/cartographer/TOOLS.yaml']
+FINAL=[p for p in F if p not in INITIAL]
+ENV={**os.environ,'Q3_OWNER_EPOCH':'1'}
+def sha(b):return hashlib.sha256(b).hexdigest()
+def git(*a):return subprocess.check_output(['git',*a],cwd=R,env=ENV)
+def current():return w._resume_document((R/w.RESUME_PATH).read_bytes())
+def call(*a,allowed=(0,)):
+ p=subprocess.run(['python3','orchestrator/workflow_runtime.py',*a],cwd=R,env=ENV,capture_output=True,text=True)
+ print('CLI',a,'EXIT',p.returncode,p.stdout,p.stderr,flush=True)
+ assert p.returncode in allowed,(a,p.returncode)
+ return json.loads(p.stdout)
+def save(d,b):
+ raw=(R/w.RESUME_PATH).read_bytes();old,_=w._resume_document(raw);d=copy.deepcopy(d)
+ d.update(revision=old['revision']+1,previous_sha256=sha(raw),observed_at=datetime.now(timezone.utc).isoformat())
+ payload=('---\n'+w.yaml.safe_dump(d,sort_keys=False,allow_unicode=True,width=100)+'---\n'+b).encode()
+ w._resume_document(payload)
+ p=Path('/tmp/q3-team-canonical-resume-'+str(d['revision'])+'.md');assert not p.exists();p.write_bytes(payload)
+ call('resume-checkpoint','--candidate',str(p),'--expected-sha256',sha(raw),'--dry-run')
+ call('resume-checkpoint','--candidate',str(p),'--expected-sha256',sha(raw))
+ assert (R/w.RESUME_PATH).read_bytes()==payload
+ return d
+def verify(paths,preimage=True):
+ for p in paths:
+  f=F[p];b=Path(f['candidate_path']).read_bytes();assert len(b)==f['bytes'];assert sha(b)==f['sha256'],p
+  if preimage:
+   old=w._resume_file(R,Path(p));assert w._resume_digest(old)==f['before_sha256'],('PREIMAGE',p)
+def install(paths):
+ with w._execution_writer_epoch(R) as e:
+  verify(paths)
+  for p in paths:
+   f=F[p];w._resume_cas_bytes(R,Path(p),w._resume_file(R,Path(p)),Path(f['candidate_path']).read_bytes(),e,mode=int(f['mode'],8)&0o777)
+  for p in paths:assert sha((R/p).read_bytes())==F[p]['sha256']
+def commit(paths,msg):
+ with w._execution_writer_epoch(R) as e:
+  assert not git('diff','--cached','--name-only')
+  subprocess.run(['git','add','-f','--',*paths],cwd=R,env=ENV,check=True)
+  assert set(git('diff','--cached','--name-only').decode().splitlines())==set(paths)
+  subprocess.run(['git','diff','--cached','--check'],cwd=R,check=True)
+  subprocess.run(['git','-c','commit.gpgsign=false','commit','-m',msg],cwd=R,env=ENV,check=True)
+  e.recheck();c=git('rev-parse','HEAD').decode().strip();print('LOCAL_COMMIT',c,paths,flush=True);return c
+stage=sys.argv[1];d,b=current()
+if stage=='initial':
+ assert d['revision']==89 and d['operation']['state']=='CONFIRMED'
+ assert git('rev-parse','HEAD').decode().strip()=='bed5d5c0c85c657923eae96c48253029ac891de3'
+ assert git('rev-parse','origin/rh_clean').decode().strip()=='bed5d5c0c85c657923eae96c48253029ac891de3'
+ verify(F)
+ initial_inputs={p:F[p]['sha256'] for p in INITIAL}
+ d['operation']={'kind':'PUBLISH','state':'INTENT','id':OP+':local-install','evidence':['Exact reviewed source46ab04b5/B9-B10; supplementalC1-C2. Local subset only: '+json.dumps(initial_inputs,sort_keys=True),'Remote basebed5d5c0; mathematical SIBLING package already published1c1d23d4. Keep all owner/pins and framed history.']}
+ b=b.replace('Next: owner §12 bootstrap preserving all latest checkpoint/history.','Next: actual-owner §12 initial runtime local installation INTENT; preserve all checkpoint/history. Do not replay original effects without reconciliation.')
+ d=save(d,b)
+ install(INITIAL)
+ c=commit(INITIAL+[str(w.RESUME_PATH),str(w.RESUME_HISTORY_PATH)],'[Codex][rh_clean][TEAM] Install reviewed runtime and registered tools locally')
+ d['operation'].update(state='CONFIRMED',evidence=['bootstrap_local_commit:'+c,'Exact11runtime/tool paths verified after local commit. Remote publication not performed.'])
+ d['pins']['head']=c
+ d=save(d,b)
+ print('INITIAL_COMPLETE',c,'REVISION',d['revision'],flush=True)
+elif stage=='migrate':
+ assert d['revision']==91 and d['schema']=='q3_resume.v1' and d['operation']['state']=='CONFIRMED'
+ identity=w._team_installation(R)
+ assert identity['installation_ref']=='9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4'
+ phase=json.loads((R/'orchestrator/state/CHANNEL_RUNTIME.json').read_text())['active_proshka_phase']
+ request_path='docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt'
+ request_commit='122076a3430251d8f1f9b0cd0577938456eaaed2'
+ request={'path':request_path,'commit':request_commit,'blob':git('rev-parse',request_commit+':'+request_path).decode().strip(),'sha256':sha(git('show',request_commit+':'+request_path)),'boundary_id':'GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN','conversation_id':phase['conversation_id']}
+ source_paths=[d['pins']['physical_goal'],request_path,'docs/Codex/ADVICE_2026-09-11_SIBLING3.md','docs/Codex/REPORT_2026-09-11_SIBLING3.md']
+ sources={p:sha((R/p).read_bytes()) for p in source_paths}; sd=sha(w._team_json(sources))
+ rq={'kind':'REQUEST','id':d['pins']['request_id'],'sha256':request['sha256']}
+ vd={'kind':'VERDICT','id':'SIBLING3_PAPER_REFUTATION','sha256':sources['docs/Codex/REPORT_2026-09-11_SIBLING3.md']}
+ request_evidence={request_path:request['sha256'],'docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log':sha((R/'docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log').read_bytes())}
+ verdict_evidence={p:sha((R/p).read_bytes()) for p in ['docs/Codex/REPORT_2026-09-11_SIBLING3.md','docs/routeB_bus/sibling/sibling_20260911.log']}
+ d.update(schema='q3_resume.v2',source_manifest=sources,ownership={'installation_ref':identity['installation_ref'],'epoch':1,'state':'ACTIVE','transfer':None})
+ d['pins'].update(request=request,phase_key=phase['phase_key'])
+ d['stages']={name:{'subject':rq if i<3 else vd,'state':'DONE','evidence':request_evidence if i<3 else verdict_evidence,'source_sha256':sd,'checked_by':'/root/density_verdict_check' if name=='independent_review' else '/root/slack_verdict_check' if name=='request_review' else OWNER} for i,name in enumerate(w.TEAM_STAGES)}
+ initial_inputs={p:F[p]['sha256'] for p in INITIAL}
+ d['operation'].update(subject={'kind':'REPAIR','id':d['operation']['id'],'sha256':sha(w._team_json(initial_inputs))},command='workflow-team-bootstrap-publish',inputs=initial_inputs)
+ b="""
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+
+RH/SL20/DN20 unproved; production exact-edge HOLD, PX_RH_CLAIM NOT_MADE.
+No new mathematical goal, request, phase or owner.
+
+## Confirmed and candidate results
+
+SIBLING1–3 PAPER accepted/published1c1d23d4, extended two CLEAN reviews
+and parent checks done. Typed verdict stages refer to SIBLING3 only;
+request stages preserve DENSITY separately. SIBLING4 construction pending.
+
+## Next action
+
+Bootstrap §12: runtime11 localcommit349fea48 and v1confirmation91 done.
+After v2migration92 install remaining13 reviewed paths and COMMIT final
+source/control before refresh/checkpoint. Then one refresh, final exact
+inputs and bootstrap publication reservation. Remote bed5d5c0 still v1.
+Recipe /tmp/q3-team-canonical-bootstrap.py, original saved in protocol.
+
+## Existing work
+
+Same actual owner01a084f4/local epoch1, no transfer; math checker done.
+Source46ab04b5 B9/B10 and supplemental4eec599f C1/C2 verified.
+Native bridge actually woke19:44:16.946Z; technicalq3 woke19:43:17.448Z,
+initial technical window missed. Both ACTIVE10, agentcheck20. No math job.
+
+## Do not repeat
+
+SIBLING1.216181s algebra/154.732s closeout done. No source/review replay,
+force,deletion,stale checkpoint copying or spoofed actor. Actual private
+identity initialized; first oversized v2draft refused before any save.
+
+## Integration remaining
+
+Final source/control commit, one refresh, exact reserved push then live
+cold/concurrent/issue checks. Retain owner protocol/ledger and observer
+bed5d5c0. Append correction: S9–S23 review was already complete. SIBLING4
+next after technical boundary; Proshka0/1, no new request sent.
+"""
+ d=save(d,b)
+ print('MIGRATION_COMPLETE',d['revision'],flush=True)
+elif stage=='final-source':
+ assert d['revision']==92 and d['schema']=='q3_resume.v2' and d['operation']['state']=='CONFIRMED'
+ install(FINAL)
+ c=commit(FINAL+[str(w.RESUME_PATH),str(w.RESUME_HISTORY_PATH)],'[Codex][rh_clean][TEAM] Activate reviewed continuation and ownership contracts')
+ print('FINAL_SOURCE_COMPLETE',c,flush=True)
+else:raise SystemExit('unknown stage')
+```
+
+## Preserved exact artifact /tmp/q3-team-final-source.log
+
+Bytes 1055; SHA256 4a9f8203242b0a7b3b09acb3bfbb470816c85573d4a811771e63c59f1ef40532. Fence delimiters are protocol framing; original content below is unchanged.
+
+```text
+[rh_clean 7581673e] [Codex][rh_clean][TEAM] Activate reviewed continuation and ownership contracts
+ 15 files changed, 2189 insertions(+), 207 deletions(-)
+ create mode 100644 docs/Codex/REPORT_2026-09-11_CADENCE_STROJKA.md
+ create mode 100644 docs/Codex/REPORT_2026-09-11_WATCH_STROJKA.md
+ create mode 100644 docs/session_protocols/team-runtime-preparation-2026-09-11.log
+LOCAL_COMMIT 7581673eee8233bbcaf592412f599a58725033e5 ['docs/CODEX_AS_SECOND_BODY.md', 'docs/CODEX_CONTROL.md', 'docs/Codex/CARD_CROSS_HOST_Q3_WORKFLOW_AND_TOOL_INVENTORY.md', 'docs/Codex/GOAL.md', 'docs/Codex/TEAM_RUNTIME_REFACTOR_PLAN_2026-09-11.md', 'docs/INSTRUCTION_ISSUES.md', 'docs/TOOLS.md', 'docs/session_protocols/team-runtime-preparation-2026-09-11.log', 'orchestrator/CONDUCTOR.md', 'orchestrator/README.md', 'q3.lean.aristotle/ACTIVE/SESSION_ENTRY.md', 'docs/Codex/REPORT_2026-09-11_WATCH_STROJKA.md', 'docs/Codex/REPORT_2026-09-11_CADENCE_STROJKA.md', 'docs/Codex/RESUME.md', 'docs/Codex/GOAL_HISTORY.md']
+FINAL_SOURCE_COMPLETE 7581673eee8233bbcaf592412f599a58725033e5
+```
+
+## Preserved exact artifact /tmp/q3-team-close-readonly.txt
+
+Bytes 824; SHA256 958143a0249162bdb6ebd6d994b66a5c95dfbc51b2ca9ddfe38a28fee36ec422. Fence delimiters are protocol framing; original content below is unchanged.
+
+```text
+# SESSION PROTOCOL — GENERATED SKELETON
+
+Generated: 2026-09-11T19:54:01.970850+00:00
+HEAD: `7581673eee8233bbcaf592412f599a58725033e5`
+
+## Derived repairs
+
+- none
+
+## Derived status
+
+- `routeb-inventory`: `FRESH` — inputs unchanged since 993ae9cdbbae
+- `routeb-atoms`: `FRESH` — inputs unchanged since 993ae9cdbbae
+- `litreview-needs-cards`: `FRESH` — no unresolved NEEDS_CARDS rows
+- `routeb-map-coverage`: `FRESH` — inputs unchanged since 993ae9cdbbae
+
+## Kernel checked
+
+- none
+
+## Owned dirty paths
+
+- none
+
+## Foreign dirty paths — preserved, not blockers
+
+- `docs/Codex/AGENTS_LEDGER.md`
+- `docs/session_protocols/SESSION_PROTOKOLL_2026-09-11_CODEX.md`
+
+## Manual closeout
+
+- CLOSES: TODO
+- OPENS: TODO
+- assembly debt: TODO
+- insight: TODO
+- commit/push: not performed by this tool
+- PX_RH_CLAIM: NOT_MADE
+```
+
+## Preserved exact artifact /tmp/q3-team-strict-pre-refresh.log
+
+Bytes 157; SHA256 32291d791dc640d1b224c48a1d5f3c44a5f9470e4884845d583997a2639c238b. Fence delimiters are protocol framing; original content below is unchanged.
+
+```text
+SEMANTIC_INDEX_CORPUS_STALE: curated corpus differs from local receipt; rebuild with python3 orchestrator/spine.py --refresh --reason semantic-index-refresh
+```
+
+## Preserved exact artifact /home/chirurgie/.cache/q3-team-native-heartbeat-raw-2026-09-11-194317.json
+
+Bytes 4796; SHA256 91022d8f7eae361ab99c0ff471670deffd819ccaef3cd72d1c52c1f754bef1a3. Fence delimiters are protocol framing; original content below is unchanged.
+
+```text
+{"timestamp":"2026-09-11T19:43:19.073Z","ordinal":8517,"type":"response_item","payload":{"type":"function_call_output","id":"fco_01a091fe-e9d6-7301-8349-34b0e400974d","name":"automation_update","namespace":"codex_app","output":"<heartbeat>\n  <automation_id>q3</automation_id>\n  <current_time_iso>2026-09-11T19:43:17.448Z</current_time_iso>\n  <instructions>\nПродолжай ту же техническую задачу рефакторинга Q3 в задаче 01a08f80-f033-7a31-8f3a-3aef042a3fbc. Выполни канонический python3 orchestrator/workflow_runtime.py plan и прочитай сохранённую точку продолжения этой технической задачи в docs/Codex/TEAM_RUNTIME_REFACTOR_PLAN_2026-09-11.md и docs/session_protocols/team-runtime-preparation-2026-09-11.log отдельной копии /home/chirurgie/.cache/q3-team-2026-09-11-01a08f80. При недоступности копии восстанови её местоположение из последних результатов этой задачи, без новой математической цели или повторной установки.\n\nПроверяй опубликованные на origin/rh_clean docs/Codex/ADVICE_*.md, адресованные TO: STROJKA или TO: BOTH, и состояние передачи технического пакета. Читай адресованный совет целиком. Сравнивай его коммит и хеш содержимого с собственными сохранёнными результатами и REPORT_<date>_<NAME>_STROJKA.md: общий HEAD не является отметкой обработки. В отдельной технической копии origin указывает на локальную папку, поэтому для наблюдения опубликованных советов прочитай адрес origin канонического репозитория и выполни git fetch --no-tags с этим явным адресом и refs/heads/rh_clean. Зафиксируй полученный коммит из FETCH_HEAD и читай советы из него. Сейчас подтверждённый адрес — https://github.com/Malaeu/chen_q3.git. Не меняй git config и не обновляй общее рабочее дерево автоматически.\n\nМатематический владелец 01a084f4-7498-7021-bac2-91d184d58dc7 и SIBLING остаются за основной задачей. При закрытой общей границе записи выполняй только ранее авторизованную техническую работу изолированно и передавай точный проверенный пакет действующему владельцу. Не меняй его исходники, расчёты, фазу, владение и вахту. После подтверждённой установки доведи обязательные проверки входа, параллельной работы, обработки проблем и реального пробуждения до наблюдаемого результата. Не повторяй действие с неизвестным исходом: сначала проверь первоначальное намерение и подтверждения.\n\nОтветы по советам сохраняй по ADVICE_PROTOCOL с исходным коммитом и хешем и честным статусом VICTORY, DEFEAT или PARTIAL. Проверяй необходимость своих агентов каждые 20 минут; пустой список не завершает задачу. Вахта возвращается каждые 10 минут и не создаёт новую цель, задачу или математического владельца. При неизменном состоянии молчи; сообщай только о содержательном результате, сбое или необходимом действии пользователя. Настройка не подтверждает пробуждение: сохрани фактическое событие планового запуска и его время. Не выставляй complete или blocked ради проверки. После простоя сначала сверь факты и сохранённые результаты.\n  </instructions>\n</heartbeat>\n","internal_chat_message_metadata_passthrough":{"turn_id":"01a091fe-e9cb-7ca1-a0d4-adf24ca3e108","create_time":1789155799.0738006}}}
+```
+
+## Preserved exact artifact /home/chirurgie/.cache/q3-team-native-wake-confirmed-2026-09-11-194317.json
+
+Bytes 6825; SHA256 2ed0fe3ce5f8cf6eef83ba3bb8518541cdd19875a0c43a377a46daaa9c44670b. Fence delimiters are protocol framing; original content below is unchanged.
+
+```text
+{
+  "status": "ACTUAL_SCHEDULED_WAKE_OBSERVED",
+  "observed_at": "2026-09-11T19:47:57.869710+00:00",
+  "automation_id": "q3",
+  "target_thread_id": "01a08f80-f033-7a31-8f3a-3aef042a3fbc",
+  "provider_event_at": "2026-09-11T19:43:17.448Z",
+  "provider_event_raw": {
+    "timestamp": "2026-09-11T19:43:19.073Z",
+    "ordinal": 8517,
+    "type": "response_item",
+    "payload": {
+      "type": "function_call_output",
+      "id": "fco_01a091fe-e9d6-7301-8349-34b0e400974d",
+      "name": "automation_update",
+      "namespace": "codex_app",
+      "output": "<heartbeat>\n  <automation_id>q3</automation_id>\n  <current_time_iso>2026-09-11T19:43:17.448Z</current_time_iso>\n  <instructions>\nПродолжай ту же техническую задачу рефакторинга Q3 в задаче 01a08f80-f033-7a31-8f3a-3aef042a3fbc. Выполни канонический python3 orchestrator/workflow_runtime.py plan и прочитай сохранённую точку продолжения этой технической задачи в docs/Codex/TEAM_RUNTIME_REFACTOR_PLAN_2026-09-11.md и docs/session_protocols/team-runtime-preparation-2026-09-11.log отдельной копии /home/chirurgie/.cache/q3-team-2026-09-11-01a08f80. При недоступности копии восстанови её местоположение из последних результатов этой задачи, без новой математической цели или повторной установки.\n\nПроверяй опубликованные на origin/rh_clean docs/Codex/ADVICE_*.md, адресованные TO: STROJKA или TO: BOTH, и состояние передачи технического пакета. Читай адресованный совет целиком. Сравнивай его коммит и хеш содержимого с собственными сохранёнными результатами и REPORT_<date>_<NAME>_STROJKA.md: общий HEAD не является отметкой обработки. В отдельной технической копии origin указывает на локальную папку, поэтому для наблюдения опубликованных советов прочитай адрес origin канонического репозитория и выполни git fetch --no-tags с этим явным адресом и refs/heads/rh_clean. Зафиксируй полученный коммит из FETCH_HEAD и читай советы из него. Сейчас подтверждённый адрес — https://github.com/Malaeu/chen_q3.git. Не меняй git config и не обновляй общее рабочее дерево автоматически.\n\nМатематический владелец 01a084f4-7498-7021-bac2-91d184d58dc7 и SIBLING остаются за основной задачей. При закрытой общей границе записи выполняй только ранее авторизованную техническую работу изолированно и передавай точный проверенный пакет действующему владельцу. Не меняй его исходники, расчёты, фазу, владение и вахту. После подтверждённой установки доведи обязательные проверки входа, параллельной работы, обработки проблем и реального пробуждения до наблюдаемого результата. Не повторяй действие с неизвестным исходом: сначала проверь первоначальное намерение и подтверждения.\n\nОтветы по советам сохраняй по ADVICE_PROTOCOL с исходным коммитом и хешем и честным статусом VICTORY, DEFEAT или PARTIAL. Проверяй необходимость своих агентов каждые 20 минут; пустой список не завершает задачу. Вахта возвращается каждые 10 минут и не создаёт новую цель, задачу или математического владельца. При неизменном состоянии молчи; сообщай только о содержательном результате, сбое или необходимом действии пользователя. Настройка не подтверждает пробуждение: сохрани фактическое событие планового запуска и его время. Не выставляй complete или blocked ради проверки. После простоя сначала сверь факты и сохранённые результаты.\n  </instructions>\n</heartbeat>\n",
+      "internal_chat_message_metadata_passthrough": {
+        "turn_id": "01a091fe-e9cb-7ca1-a0d4-adf24ca3e108",
+        "create_time": 1789155799.0738006
+      }
+    }
+  },
+  "provider_event_raw_sha256": "91022d8f7eae361ab99c0ff471670deffd819ccaef3cd72d1c52c1f754bef1a3",
+  "received_prompt_sha256": "2588756170013c9958717db90776d8514beba4c61d3eb4955188cfa929fb7fac",
+  "native_task_read_projection": {
+    "thread_id": "01a08f80-f033-7a31-8f3a-3aef042a3fbc",
+    "title": "Рефактор-тред",
+    "turns": [
+      {
+        "id": "01a091fe-e9cb-7ca1-a0d4-adf24ca3e108",
+        "status": "inProgress",
+        "startedAt": 1789155797,
+        "completedAt": null,
+        "durationMs": null
+      },
+      {
+        "id": "01a091ed-b82d-7a62-9e5c-9b67a5ad5d41",
+        "status": "completed",
+        "startedAt": 1789154670,
+        "completedAt": 1789155179,
+        "durationMs": 508431
+      }
+    ]
+  },
+  "scheduler_read_only": {
+    "id": "q3",
+    "status": "ACTIVE",
+    "target_thread_id": "01a08f80-f033-7a31-8f3a-3aef042a3fbc",
+    "rrule": "FREQ=MINUTELY;INTERVAL=10",
+    "next_run_at": 1789156396924,
+    "last_run_at": 1789155796929
+  },
+  "automation_runs_observation": [],
+  "idle_to_wake_seconds": 618.448,
+  "later_idle_window_within_15_minutes": true,
+  "original_configuration_window": "MISSED_RETAINED; deadline2026-09-11T19:28:40Z, prior observation6c54a01e",
+  "advice_fetch_head": "bed5d5c0c85c657923eae96c48253029ac891de3",
+  "new_addressed_advice": [],
+  "canonical_runtime_activation": "PENDING; actual owner checkpoint89 next action bootstrap, canonical control still10, no technical write boundary",
+  "claim_boundary": "One real native wake and continuation only; not mathematical proof, canonical v2 activation, cross-host transfer, concurrent-assignment or issue-lifecycle acceptance."
+}
+```
+
+
+2026-09-11T20:14:13.866304+00:00 — SEMANTIC_CLOSE_REPAIR_ACCEPTED: exact2file candidate d89af2b8 independently read in full diff by parent. Parent checked root-before-any-writer, real wrapper lock forwarding, existing full pipeline, no-op stale branch and no checkpoint on failure. Required native P2/P3/S1/S2 CLEAN bind the exact hashes below. No old tests repeated. Bootstrap source installation only, no mathematical acceptance.
+
+| Pass | Severity | Finding — English term + Russian explanation | Fix applied |
+|---|---|---|---|
+| P1 | HIGH | Root ordering — чужой root проверялся после начала записи | Root check before repair |
+| P2/P3 | CLEAN | No finding — исправленный план | None |
+| S1/S2 | CLEAN | No finding — точные два файла | None |
+
+Exact manifest SHA256 62382fcce0e59ca2bee7e2049923274b39a0415d58a94536bedd8bc919a0815e
+```json
+{
+  "schema": "q3_team_preparation.v1",
+  "status": "REVIEWED_CANDIDATE_PENDING_ACTUAL_OWNER_INSTALLATION",
+  "base": "46ab04b5b5b7768a1a1b31108460193a88478663",
+  "candidate": "d89af2b85661b43eda0726c7b6b4c60752be6a55",
+  "source_root": "/home/chirurgie/.cache/q3-team-2026-09-11-01a08f80",
+  "canonical_observed_head": "7581673eee8233bbcaf592412f599a58725033e5",
+  "files": [
+    {
+      "path": "orchestrator/tests/test_session_close.py",
+      "before_sha256": "27a8bedbe4aff53a38f6e552e436b68cd1ca48a45b3a729a137b04df806038b6",
+      "sha256": "9e8c4270e65b6bf31ee2d6fc923e3a3077b1957820836286224e7608953a3762",
+      "bytes": 10813,
+      "mode": "100644"
+    },
+    {
+      "path": "specs_docs/session_close.py",
+      "before_sha256": "a0da9b9079260b61330b3bfe5e99e8d08a4d79c7411a64cd005eb8e052181d58",
+      "sha256": "cac22f8b20611bc161d9449108fff8de489e375b17b937a86cc013921b2f90f9",
+      "bytes": 8550,
+      "mode": "100644"
+    }
+  ],
+  "review": {
+    "reviewer": "/root/team_core_review",
+    "plan": [
+      "P2:CLEAN",
+      "P3:CLEAN"
+    ],
+    "artifact": [
+      "S1:CLEAN",
+      "S2:CLEAN"
+    ]
+  },
+  "receipt_path": "/home/chirurgie/.cache/q3-team-semantic-close-2026-09-11.receipt.txt",
+  "receipt_sha256": "a0e9dd33939f96b8c017ef9dd83287f0ab1dff9ca9da85cc8602a7cdb929857a"
+}
+```
+
+Exact review/test receipt SHA256 a0e9dd33939f96b8c017ef9dd83287f0ab1dff9ca9da85cc8602a7cdb929857a
+```text
+Q3 semantic close repair — exact handback, 2026-09-11
+Technical task: 01a08f80-f033-7a31-8f3a-3aef042a3fbc.
+Actual canonical owner: 01a084f4-7498-7021-bac2-91d184d58dc7, epoch1; no transfer.
+Source clone: /home/chirurgie/.cache/q3-team-2026-09-11-01a08f80.
+Base46ab04b5; candidate d89af2b85661b43eda0726c7b6b4c60752be6a55.
+Only specs_docs/session_close.py and orchestrator/tests/test_session_close.py.
+Evidence below transcribes observed native tool outputs; tests were not repeated for logging.
+
+Route audit /root/refresh_route_check:
+No current standalone registered semantic refresh entry. Initial claim that a new tool ID/runtime registration was necessary was withdrawn after checking _run_close_script forwarding and current close scope. Existing fenced workflow-session-close owns epoch/guard; q3-docs-refresh/semantic-preflight are inherited registered children. A second _execution_writer_epoch in child would collide and is not used. Direct raw child execution is still prohibited by cooperative control. No lock adapter/framework added.
+
+Independent plan and artifact reviewer: /root/team_core_review (native, read-only).
+P1 HIGH: root check must precede repair_derived with --repair; fixed explicitly before implementation.
+P2 CLEAN and P3 CLEAN: exact amended plan converged.
+S1 CLEAN and S2 CLEAN: identical exact two-file artifact converged.
+Preserve every original severity; these verdicts do not accept mathematics or prove canonical installation.
+
+Baseline command: python3 -m unittest orchestrator.tests.test_session_close
+Observed: Ran 2 tests in 0.191s; OK.
+Candidate command: python3 -m unittest orchestrator.tests.test_session_close
+Observed: Ran 8 tests in 0.220s; OK.
+Tests include full builder/dynamic-preflight/plants stage order, final validation before checkpoint; no rebuild on fresh replay; seven failure cases with no success checkpoint; both physical-root mismatch checks before repair; protocol-out refusal before writes; default behavior preserved; real subprocess sees forwarded flag and retained parent lock.
+Candidate command: python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRuntimeTests.test_close_child_keeps_writer_lock_after_parent_crash
+Observed: Ran 1 test in 0.138s; OK.
+git diff --check passed. CLI --help readback exposes --semantic-refresh and stdout-only protocol.
+All tests mock live search/index execution; no real refresh/network ran here.
+Existing 225-test/full-tree/recovery evidence unchanged and not rerun.
+Named isolated commit made under existing writer lock after exact hashes/index scope checks; committed bytes match reviewed hashes and source clone is clean.
+
+Canonical read-only section6 check: exact bytes from8477fd76 preserved, 473bytes, SHA256 e4f2af92460daa5e7aa1ab7a742c5ca33a69dc50eb6dd88cabc2c13682a47430. GOAL12283bytes; observed RESUME7720bytes. Current checkpoint may change only by owner.
+
+Owner installation sequence:
+1. Reobserve safe owner boundary/current canonical HEAD and both exact preimages under writer lock.
+2. Install only these two verified files in one named local source commit. Do not cherry-pick the clone's earlier history. No runtime/TOOLS/control/spine/checkpoint/history/protocol/CHAT_DIGESTS bytes are in this patch.
+3. After all indexed source inputs are final, run exactly once through registered parent:
+Q3_OWNER_EPOCH=1 python3 orchestrator/workflow_runtime.py close-session --semantic-refresh --no-session-checkpoint
+Do not pass --protocol-out; stdout can be preserved in existing non-corpus protocol/log after observing it.
+4. Check actual exit, all semantic stage receipts and final machine-local validation. Failures stay pending; no implicit success checkpoint. Include these two files in final bootstrap inputs, retaining all previous inputs. They were untouched by earlier installation commits, so the existing intermediate-source hash rule is preserved.
+5. Complete exact final publication through original bootstrap operation. Cold-entry/concurrent-worker/issue-lifecycle remain separately pending.
+```
+
+
+2026-09-11T20:15:24.274503+00:00 — SEMANTIC_REFRESH_BACKGROUND_BEGIN after source66a91b3f/checkpoint95; one registered close transaction; exact shell recipe follows, marker text is split below to keep until-grep unambiguous.
+Command: Q3_OWNER_EPOCH=1 python3 orchestrator/workflow_runtime.py close-session --semantic-refresh --no-session-checkpoint
+Output marker: TEAM_CANONICAL_SEMANTIC_REFRESH_EXIT followed by =<actual exit>.
+
+SEMANTIC_REFRESH_BACKGROUND_PID=1307576 PROC_START_TICKS=13762674
+Prepared 3304 files for q3_docs: 3303 sources (2138 md, 56 tex, 1108 lean) + 1 generated manifest; stage_seconds=0.730
+Q3_DOCS_COMMAND seconds=0.290 argv=['/home/chirurgie/.bun/bin/qmd', 'collection', 'list']
+Q3_DOCS_COMMAND seconds=0.919 argv=['env', 'QMD_CONFIG_DIR=/tmp/q3-qmd-update-hncsa7hk', 'INDEX_PATH=/home/chirurgie/.cache/qmd/index.sqlite', '/home/chirurgie/.bun/bin/qmd', 'update']
+Updating 1 collection(s)...
+
+[1/1] q3_docs (**/*)
+Collection: /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/q3.lean.aristotle/.qmd_cache/q3_docs_current (**/*)
+
+Indexed: 0 new, 4 updated, 3300 unchanged, 0 removed
+Cleaned up 3 orphaned content hash(es)
+
+✓ All collections updated.
+
+Run 'qmd embed' to update embeddings (3 unique hashes need vectors)
+Q3_DOCS_COMMAND seconds=7.793 argv=['/home/chirurgie/.bun/bin/qmd', 'embed']
+Embedding 3 documents (83 chunks, 203.0 KB)
+3 documents split into multiple chunks
+Model: embeddinggemma
+
+
+██████████████████████████████ 100%                                    
+
+✓ Done! Embedded 83 chunks from 3 documents in 4s (47.9 KB/s)
+Q3_DOCS_COMMAND seconds=0.324 argv=['/home/chirurgie/.bun/bin/qmd', 'status']
+QMD Status
+
+Index: /home/chirurgie/.cache/qmd/index.sqlite
+Size:  277.2 MB
+
+Documents
+  Total:    3347 files indexed
+  Vectors:  38171 embedded
+  Updated:  23m ago
+
+Collections
+  riemann_lib (qmd://riemann_lib/)
+    Pattern:  *.bib
+    Files:    1 (updated 227d ago)
+  zotero_lib (qmd://zotero_lib/)
+    Pattern:  **/*.md
+    Files:    42 (updated 227d ago)
+  q3_docs (qmd://q3_docs/)
+    Pattern:  **/*
+    Files:    3304 (updated 23m ago)
+
+Examples
+  # List files in a collection
+  qmd ls riemann_lib
+  # Get a document
+  qmd get qmd://riemann_lib/path/to/file.md
+  # Search within a collection
+  qmd search "query" -c riemann_lib
+SEMANTIC_REFRESH_STAGE path=q3.lean.aristotle/scripts/refresh_q3_docs.py seconds=11.513
+{
+  "boundary": "RETRIEVAL_CANDIDATES_NOT_PROOF",
+  "goal_path": "docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md",
+  "queries": [
+    {
+      "expected_path_match": true,
+      "expected_path_token": "058-realzero-ground-diagonal-to-xi-goal-md",
+      "external_lean": {
+        "base_results": [
+          {
+            "base_id": "zeta23",
+            "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+            "exact_candidate": null,
+            "identity_after": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "identity_before": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "searched_regular_source_count": 329
+          }
+        ],
+        "bases_queried": [
+          "zeta23"
+        ],
+        "boundary": "CANDIDATE_MATCH_NOT_LEAN_PROOF_OR_INTERFACE_EQUIVALENCE",
+        "budget_seconds": 15.0,
+        "candidate": null,
+        "candidate_provenance": null,
+        "candidate_sha256": null,
+        "elapsed_seconds": 0.322664,
+        "enabled_bases": [
+          "zeta23"
+        ],
+        "errors": [],
+        "matches": [
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 97,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/ExplicitFormula.lean",
+            "snippet": "a goal written with `*`; restating the lemmas at ℂ (proved by `exact`) makes `rw` usable.) -/"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 1032,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/MediumPNT.lean",
+            "snippet": "  all_goals"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 2548,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/MediumPNT.lean",
+            "snippet": "        obtain ⟨_, ripGoal⟩ := h"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 719,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/MellinCalculus.lean",
+            "snippet": "  on_goal 1 =>"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 721,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/MellinCalculus.lean",
+            "snippet": "  on_goal 2 =>"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 724,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/MellinCalculus.lean",
+            "snippet": "  all_goals"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 116,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/Rectangle.lean",
+            "snippet": "set_option linter.style.multiGoal false in"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 124,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/Rectangle.lean",
+            "snippet": "  all_goals simpa using by linarith"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 263,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/Rectangle.lean",
+            "snippet": "  all_goals exact (antitone_const_tsub.Icc (monotone_id.const_add _)).monotoneOn _"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 128,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "  all_goals refine integral_congr fun _ _ ↦ h ?_"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 282,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "set_option linter.style.multiGoal false in"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 310,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "  all_goals try {"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 320,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "  all_goals try {"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 323,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "    all_goals assumption"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 333,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "  all_goals try { apply rectangle_subset_punctured_rect <;> simp_all }"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 518,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "  all_goals simp [*]"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 523,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "  all_goals simp [field]"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 36,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/Tactic/AdditiveCombination.lean",
+            "snippet": "the target.  Afterwards, it sets the goal to be the equality between the"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 37,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/Tactic/AdditiveCombination.lean",
+            "snippet": "lefthand side of the new goal and the lefthand side of the new weighted sum."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 95,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/Tactic/AdditiveCombination.lean",
+            "snippet": "    -- We have the expected type from the goal, so we can fully synthesize this leaf node."
+          }
+        ],
+        "max_matches": 20,
+        "query": "GOAL 058 REALZERO_GROUND_DIAGONAL_TO_XI",
+        "query_sha256": "0863dfefb0e70877d680315899146e67bd98839d04f3c178b7ecc47a6956b8aa",
+        "registry_sha256": "7c13b5eba028296a05d3c926c6e9e3af36730e9dd24f4014e4889290fef76557",
+        "schema": "q3_external_lean_search.v2",
+        "terms": [
+          "GOAL",
+          "REALZERO_GROUND_DIAGONAL_TO_XI"
+        ]
+      },
+      "id": "goal",
+      "query": "GOAL 058 REALZERO_GROUND_DIAGONAL_TO_XI",
+      "result_count": 12,
+      "status": "PASS",
+      "top_paths": [
+        "qmd://q3_docs/docs/routeb-bus/058-realzero-ground-diagonal-to-xi-goal.md",
+        "qmd://q3_docs/docs/routeb-bus/codex-rerank-goal058-even-head-tail-feshbach-hold-2026-08-31.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-goal058-second-mode-overlap-of-the-xi-row-2026-09-04.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-goal058-curvature-schur-loewner-secular-adjudication-2026-09-03.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-goal058-signfree-ritz-inside-ccm-uniform-error-atom-2026-09-04.md",
+        "qmd://q3_docs/docs/routeb-bus/codex-closeout-goal058-r2-moving-krylov-feshbach-2026-08-30.md",
+        "qmd://q3_docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/goal058-complex-hermitian-p59-connector-closeout-2026-08-13.md",
+        "qmd://q3_docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/goal058-g1-literal-complement-floor-spectral-receiver-closeout-2026-08-14.md"
+      ]
+    },
+    {
+      "expected_path_match": true,
+      "expected_path_token": "proposition59groundlagrangezerosetbridge",
+      "external_lean": {
+        "base_results": [
+          {
+            "base_id": "zeta23",
+            "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+            "exact_candidate": null,
+            "identity_after": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "identity_before": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "searched_regular_source_count": 329
+          }
+        ],
+        "bases_queried": [
+          "zeta23"
+        ],
+        "boundary": "CANDIDATE_MATCH_NOT_LEAN_PROOF_OR_INTERFACE_EQUIVALENCE",
+        "budget_seconds": 15.0,
+        "candidate": null,
+        "candidate_provenance": null,
+        "candidate_sha256": null,
+        "elapsed_seconds": 0.364897,
+        "enabled_bases": [
+          "zeta23"
+        ],
+        "errors": [],
+        "matches": [],
+        "max_matches": 20,
+        "query": "Proposition59GroundLagrangeZeroSetBridge",
+        "query_sha256": "415aca9dc79f1c71acfa2978bf70139212f927ff14669823d09ee072c90a78fc",
+        "registry_sha256": "7c13b5eba028296a05d3c926c6e9e3af36730e9dd24f4014e4889290fef76557",
+        "schema": "q3_external_lean_search.v2",
+        "terms": [
+          "Proposition59GroundLagrangeZeroSetBridge"
+        ]
+      },
+      "id": "exact_target",
+      "query": "Proposition59GroundLagrangeZeroSetBridge",
+      "result_count": 12,
+      "status": "PASS",
+      "top_paths": [
+        "qmd://q3_docs/docs/routeb-bus/codex-directive-route058-p59-g2b-2026-08-12.md",
+        "qmd://q3_docs/docs/routeb-bus/058-realzero-ground-diagonal-to-xi-goal.md",
+        "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/g6n1selectedferrersgroundproposition59realzeros.lean",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-master-route-realzero-ground-diagonal-to-xi-2026-08-11.md",
+        "qmd://q3_docs/docs/routeb-bus/codex-answer-2026-09-03-step1-3-p59-agreement-set-source-check.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-req-2026-08-26-n-ground-parity-realification-kernel-admission-2026-08-27.md",
+        "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/proposition59groundlagrangezerosetbridge.lean",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-goal058-curvature-bridge-proof-and-hs-representation-2026-09-03.md"
+      ]
+    },
+    {
+      "expected_path_match": null,
+      "expected_path_token": null,
+      "external_lean": {
+        "base_results": [
+          {
+            "base_id": "zeta23",
+            "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+            "exact_candidate": null,
+            "identity_after": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "identity_before": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "searched_regular_source_count": 329
+          }
+        ],
+        "bases_queried": [
+          "zeta23"
+        ],
+        "boundary": "CANDIDATE_MATCH_NOT_LEAN_PROOF_OR_INTERFACE_EQUIVALENCE",
+        "budget_seconds": 15.0,
+        "candidate": null,
+        "candidate_provenance": null,
+        "candidate_sha256": null,
+        "elapsed_seconds": 0.360598,
+        "enabled_bases": [
+          "zeta23"
+        ],
+        "errors": [],
+        "matches": [],
+        "max_matches": 20,
+        "query": "Q3.RH",
+        "query_sha256": "162e3a888d6845831bce0058332aec51f4b312b435bea4c08b078af51277c607",
+        "registry_sha256": "7c13b5eba028296a05d3c926c6e9e3af36730e9dd24f4014e4889290fef76557",
+        "schema": "q3_external_lean_search.v2",
+        "terms": [
+          "Q3.RH"
+        ]
+      },
+      "id": "terminal_consumer",
+      "query": "Q3.RH",
+      "result_count": 12,
+      "status": "PASS",
+      "top_paths": [
+        "qmd://q3_docs/q3-lean-aristotle/q3/proofs/q-nonneg-on-atoms-fourier-axiom.lean",
+        "qmd://q3_docs/q3-lean-aristotle/q3/rkhs-contraction.lean",
+        "qmd://q3_docs/q3-lean-aristotle/active/refs/proof-map.md",
+        "qmd://q3_docs/docs/routeb-bus/local-zero-invariants-catalog-2026-09-08.md",
+        "qmd://q3_docs/full/rh-q3.tex",
+        "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/completedtrackerscope.lean",
+        "qmd://q3_docs/q3-lean-aristotle/q3/proofs/rkhs-rescaling.lean",
+        "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/proposition59reciprocalmodeweightedshell.lean"
+      ]
+    },
+    {
+      "expected_path_match": null,
+      "expected_path_token": null,
+      "external_lean": {
+        "base_results": [
+          {
+            "base_id": "zeta23",
+            "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+            "exact_candidate": null,
+            "identity_after": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "identity_before": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "searched_regular_source_count": 329
+          }
+        ],
+        "bases_queried": [
+          "zeta23"
+        ],
+        "boundary": "CANDIDATE_MATCH_NOT_LEAN_PROOF_OR_INTERFACE_EQUIVALENCE",
+        "budget_seconds": 15.0,
+        "candidate": null,
+        "candidate_provenance": null,
+        "candidate_sha256": null,
+        "elapsed_seconds": 0.320585,
+        "enabled_bases": [
+          "zeta23"
+        ],
+        "errors": [],
+        "matches": [
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 15,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23.lean",
+            "snippet": "import Zeta23.ZeroSide.TightMult"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 7,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "Residue calculus on rectangles beyond one simple pole."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 8,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "Used for the weighted contour integral ∮ H·Λ'/Λ and for the Riemann–von Mangoldt count"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 13,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "  (Induction on S: subtract one principal part, remove the singularity, recurse.)"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 17,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "* `finite_zeros_rectangle`, `rectangleIntegral'_mul_logDeriv'`: the zero set is finite; self-contained form."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 23,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "open Complex Set Topology Filter Asymptotics Real"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 47,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "    -- the principal part at p, the remainder f₁, and its extension f₂ across p"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 117,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "        exact (hc.tendsto.mono_left nhdsWithin_le_nhds).isBigO_one ℂ"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 141,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "/-- The zero set of a function analytic on a neighbourhood of every point of a rectangle and"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 142,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "nonvanishing at one of its points is finite. -/"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": "finite_zeros_rectangle",
+            "line": 143,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "theorem finite_zeros_rectangle {f : ℂ → ℂ} {z w : ℂ} (hf : AnalyticOnNhd ℂ f (Rectangle z w))"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 157,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "/-! ## Meromorphic version: finitely many zeros AND poles inside the rectangle"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 159,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "Intended for f = completedRiemannZeta (simple poles at 0 and 1, residues ∓1):"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 160,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "(1/2πi) ∮ g·(f'/f) = Σ_{zeros ρ} ord_ρ(f)·g(ρ) − Σ_{poles p} m_p·g(p)."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 162,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "which is the shape of Mathlib's `completedRiemannZeta_residue_one` (m = 1). -/"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 183,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "  -- zeros are interior points"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 198,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "  -- residues: +ord·g at zeros, −m·g at poles"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 279,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "        ((hslope.const_mul (analyticOrderNatAt f q : ℂ)).add hcont).isBigO_one ℂ"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 346,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "        (hcont.sub (hslope.const_mul (m q : ℂ))).isBigO_one ℂ"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 350,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "point of the closed rectangle, f nonvanishing on its border, and Z the zero set of f in the"
+          }
+        ],
+        "max_matches": 20,
+        "query": "ONE NORMALIZED GROUND FAMILY REAL ZEROS AND LOCALLY UNIFORM LIMIT",
+        "query_sha256": "e5a58f7a98ddeed949d49e66962fdffb6e7b735799a092b66ae6820bb2d50cee",
+        "registry_sha256": "7c13b5eba028296a05d3c926c6e9e3af36730e9dd24f4014e4889290fef76557",
+        "schema": "q3_external_lean_search.v2",
+        "terms": [
+          "ONE",
+          "NORMALIZED",
+          "GROUND",
+          "FAMILY",
+          "REAL",
+          "ZEROS",
+          "AND",
+          "LOCALLY",
+          "UNIFORM",
+          "LIMIT"
+        ]
+      },
+      "id": "property_combination",
+      "query": "ONE NORMALIZED GROUND FAMILY REAL ZEROS AND LOCALLY UNIFORM LIMIT",
+      "result_count": 12,
+      "status": "PASS",
+      "top_paths": [
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-goal058-ground-transform-zero-pinning-and-real-zero-identification-2026-09-04.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-exact-roof-port-to-supplier-ledger-2026-09-01.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-supplement-goal058-screw-signature-closure-2026-09-08.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-req-2026-08-28-r1a-correction-16-global-gauge-kill-and-log-derivative-rerank-2026-08-28.md",
+        "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/d0criticalmomentstripbound.lean",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-mythos-three-stage-fastest-kill-plan-2026-09-03.md",
+        "qmd://q3_docs/docs/routeb-bus/linux-r1-phase0-ground-family-object-lock-goal058-2026-08-28.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-g3-g5-g6-pillar-rope-batch-2026-08-19.md"
+      ]
+    },
+    {
+      "expected_path_match": null,
+      "expected_path_token": null,
+      "external_lean": {
+        "base_results": [
+          {
+            "base_id": "zeta23",
+            "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+            "exact_candidate": null,
+            "identity_after": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "identity_before": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "searched_regular_source_count": 329
+          }
+        ],
+        "bases_queried": [
+          "zeta23"
+        ],
+        "boundary": "CANDIDATE_MATCH_NOT_LEAN_PROOF_OR_INTERFACE_EQUIVALENCE",
+        "budget_seconds": 15.0,
+        "candidate": null,
+        "candidate_provenance": null,
+        "candidate_sha256": null,
+        "elapsed_seconds": 0.328043,
+        "enabled_bases": [
+          "zeta23"
+        ],
+        "errors": [],
+        "matches": [
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 3,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23.lean",
+            "snippet": "Released under Apache 2.0 license as described in the file LICENSE."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 6,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23.lean",
+            "snippet": "-- Zeta23.lean — root of library Zeta23: the headline modules (see README.md)."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 3,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "Released under Apache 2.0 license as described in the file LICENSE."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 8,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "Used for the weighted contour integral ∮ H·Λ'/Λ and for the Riemann–von Mangoldt count"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 11,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "* `residueTheorem_finset`: f holomorphic on Rectangle z w minus a finite set S of interior points, with"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 13,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "  (Induction on S: subtract one principal part, remove the singularity, recurse.)"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 14,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "* `rectangleIntegral'_mul_logDeriv` (the \"argument principle with weight\"): f, g analytic on a"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 15,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "  neighbourhood of each point of Rectangle z w, f ≠ 0 on the border, Z = the (finite) zero set of"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 16,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "  f in the rectangle  ⟹  RectangleIntegral' (g · f'/f) z w = Σ_{ρ∈Z} ord_ρ(f) · g(ρ)."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 17,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "* `finite_zeros_rectangle`, `rectangleIntegral'_mul_logDeriv'`: the zero set is finite; self-contained form."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 30,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "/-- **Residue theorem on a rectangle for finitely many simple poles.** -/"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": "residueTheorem_finset",
+            "line": 31,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "theorem residueTheorem_finset {f : ℂ → ℂ} {z w : ℂ} (hre : z.re ≤ w.re) (him : z.im ≤ w.im)"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 47,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "    -- the principal part at p, the remainder f₁, and its extension f₂ across p"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 80,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "    -- f₂ is holomorphic on the rectangle minus the remaining poles"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 104,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "    -- the principal parts at the other poles are unchanged"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 120,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "    -- on the border, f = f₂ + P"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 139,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "    rw [ih', ResidueTheoremInRectangle hre him hp, add_comm]"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 141,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "/-- The zero set of a function analytic on a neighbourhood of every point of a rectangle and"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": "finite_zeros_rectangle",
+            "line": 143,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "theorem finite_zeros_rectangle {f : ℂ → ℂ} {z w : ℂ} (hf : AnalyticOnNhd ℂ f (Rectangle z w))"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 157,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "/-! ## Meromorphic version: finitely many zeros AND poles inside the rectangle"
+          }
+        ],
+        "max_matches": 20,
+        "query": "the kill ledger has seven recurring defect classes and two of them are mechanically checkable",
+        "query_sha256": "084333ceff42216a38b46d79f2a0f716ef81fed07755dac84ace2b12181092a9",
+        "registry_sha256": "7c13b5eba028296a05d3c926c6e9e3af36730e9dd24f4014e4889290fef76557",
+        "schema": "q3_external_lean_search.v2",
+        "terms": [
+          "the",
+          "kill",
+          "ledger",
+          "has",
+          "seven",
+          "recurring",
+          "defect",
+          "classes",
+          "and",
+          "two",
+          "them",
+          "are",
+          "mechanically",
+          "checkable"
+        ]
+      },
+      "id": "fresh_insight",
+      "query": "the kill ledger has seven recurring defect classes and two of them are mechanically checkable",
+      "result_count": 12,
+      "status": "PASS",
+      "top_paths": [
+        "qmd://q3_docs/q3-lean-aristotle/active/insights.md",
+        "qmd://q3_docs/q3-lean-aristotle/docs/insights.md",
+        "qmd://q3_docs/docs/routeb-bus/agent-report-2026-09-04-goal058-normalized-xi-lattice-eigen-equation-preflight.md",
+        "qmd://q3_docs/docs/routeb-bus/linux-correction-7-two-c04-slips-in-the-pole-crosswalk-goal058-2026-08-27.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka-queue.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-goal058-r2-moving-krylov-feshbach-discriminator-2026-08-29.md",
+        "qmd://q3_docs/docs/progress-log.md",
+        "qmd://q3_docs/q3-lean-aristotle/active/graphs/route-kill-registry.md"
+      ]
+    }
+  ],
+  "schema": "q3_deep_preflight.v1",
+  "status": "PASS"
+}
+SEMANTIC_REFRESH_STAGE path=scripts/deep_preflight.py seconds=52.434
+{
+  "authority": "MACHINE_LOCAL_RETRIEVAL_VALIDATION_NOT_PROOF",
+  "boundary": "RETRIEVAL_VALIDATION_NOT_PROOF",
+  "collection": "q3_docs",
+  "collection_file_count": 3304,
+  "corpus": {
+    "breakdown": {
+      "lean": 1108,
+      "markdown": 2138,
+      "other": 0,
+      "tex": 56,
+      "yaml": 1
+    },
+    "expected_collection_file_count": 3304,
+    "file_count": 3303,
+    "schema": "q3_docs_corpus.v1",
+    "sha256": "442d97af1e14b65f899472cead47f6950d2bb0b0f946061ec49c153b8297bd82",
+    "total_bytes": 40722095
+  },
+  "dynamic_goal_path": "docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md",
+  "dynamic_queries": [
+    {
+      "expected_path_match": true,
+      "expected_path_token": "058-realzero-ground-diagonal-to-xi-goal-md",
+      "external_lean": {
+        "base_results": [
+          {
+            "base_id": "zeta23",
+            "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+            "exact_candidate": null,
+            "identity_after": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "identity_before": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "searched_regular_source_count": 329
+          }
+        ],
+        "bases_queried": [
+          "zeta23"
+        ],
+        "boundary": "CANDIDATE_MATCH_NOT_LEAN_PROOF_OR_INTERFACE_EQUIVALENCE",
+        "budget_seconds": 15.0,
+        "candidate": null,
+        "candidate_provenance": null,
+        "candidate_sha256": null,
+        "elapsed_seconds": 0.322664,
+        "enabled_bases": [
+          "zeta23"
+        ],
+        "errors": [],
+        "matches": [
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 97,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/ExplicitFormula.lean",
+            "snippet": "a goal written with `*`; restating the lemmas at ℂ (proved by `exact`) makes `rw` usable.) -/"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 1032,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/MediumPNT.lean",
+            "snippet": "  all_goals"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 2548,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/MediumPNT.lean",
+            "snippet": "        obtain ⟨_, ripGoal⟩ := h"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 719,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/MellinCalculus.lean",
+            "snippet": "  on_goal 1 =>"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 721,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/MellinCalculus.lean",
+            "snippet": "  on_goal 2 =>"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 724,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/MellinCalculus.lean",
+            "snippet": "  all_goals"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 116,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/Rectangle.lean",
+            "snippet": "set_option linter.style.multiGoal false in"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 124,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/Rectangle.lean",
+            "snippet": "  all_goals simpa using by linarith"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 263,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/Rectangle.lean",
+            "snippet": "  all_goals exact (antitone_const_tsub.Icc (monotone_id.const_add _)).monotoneOn _"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 128,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "  all_goals refine integral_congr fun _ _ ↦ h ?_"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 282,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "set_option linter.style.multiGoal false in"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 310,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "  all_goals try {"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 320,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "  all_goals try {"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 323,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "    all_goals assumption"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 333,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "  all_goals try { apply rectangle_subset_punctured_rect <;> simp_all }"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 518,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "  all_goals simp [*]"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 523,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "  all_goals simp [field]"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 36,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/Tactic/AdditiveCombination.lean",
+            "snippet": "the target.  Afterwards, it sets the goal to be the equality between the"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 37,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/Tactic/AdditiveCombination.lean",
+            "snippet": "lefthand side of the new goal and the lefthand side of the new weighted sum."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 95,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/Tactic/AdditiveCombination.lean",
+            "snippet": "    -- We have the expected type from the goal, so we can fully synthesize this leaf node."
+          }
+        ],
+        "max_matches": 20,
+        "query": "GOAL 058 REALZERO_GROUND_DIAGONAL_TO_XI",
+        "query_sha256": "0863dfefb0e70877d680315899146e67bd98839d04f3c178b7ecc47a6956b8aa",
+        "registry_sha256": "7c13b5eba028296a05d3c926c6e9e3af36730e9dd24f4014e4889290fef76557",
+        "schema": "q3_external_lean_search.v2",
+        "terms": [
+          "GOAL",
+          "REALZERO_GROUND_DIAGONAL_TO_XI"
+        ]
+      },
+      "id": "goal",
+      "query": "GOAL 058 REALZERO_GROUND_DIAGONAL_TO_XI",
+      "result_count": 12,
+      "status": "PASS",
+      "top_paths": [
+        "qmd://q3_docs/docs/routeb-bus/058-realzero-ground-diagonal-to-xi-goal.md",
+        "qmd://q3_docs/docs/routeb-bus/codex-rerank-goal058-even-head-tail-feshbach-hold-2026-08-31.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-goal058-second-mode-overlap-of-the-xi-row-2026-09-04.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-goal058-curvature-schur-loewner-secular-adjudication-2026-09-03.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-goal058-signfree-ritz-inside-ccm-uniform-error-atom-2026-09-04.md",
+        "qmd://q3_docs/docs/routeb-bus/codex-closeout-goal058-r2-moving-krylov-feshbach-2026-08-30.md",
+        "qmd://q3_docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/goal058-complex-hermitian-p59-connector-closeout-2026-08-13.md",
+        "qmd://q3_docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/goal058-g1-literal-complement-floor-spectral-receiver-closeout-2026-08-14.md"
+      ]
+    },
+    {
+      "expected_path_match": true,
+      "expected_path_token": "proposition59groundlagrangezerosetbridge",
+      "external_lean": {
+        "base_results": [
+          {
+            "base_id": "zeta23",
+            "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+            "exact_candidate": null,
+            "identity_after": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "identity_before": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "searched_regular_source_count": 329
+          }
+        ],
+        "bases_queried": [
+          "zeta23"
+        ],
+        "boundary": "CANDIDATE_MATCH_NOT_LEAN_PROOF_OR_INTERFACE_EQUIVALENCE",
+        "budget_seconds": 15.0,
+        "candidate": null,
+        "candidate_provenance": null,
+        "candidate_sha256": null,
+        "elapsed_seconds": 0.364897,
+        "enabled_bases": [
+          "zeta23"
+        ],
+        "errors": [],
+        "matches": [],
+        "max_matches": 20,
+        "query": "Proposition59GroundLagrangeZeroSetBridge",
+        "query_sha256": "415aca9dc79f1c71acfa2978bf70139212f927ff14669823d09ee072c90a78fc",
+        "registry_sha256": "7c13b5eba028296a05d3c926c6e9e3af36730e9dd24f4014e4889290fef76557",
+        "schema": "q3_external_lean_search.v2",
+        "terms": [
+          "Proposition59GroundLagrangeZeroSetBridge"
+        ]
+      },
+      "id": "exact_target",
+      "query": "Proposition59GroundLagrangeZeroSetBridge",
+      "result_count": 12,
+      "status": "PASS",
+      "top_paths": [
+        "qmd://q3_docs/docs/routeb-bus/codex-directive-route058-p59-g2b-2026-08-12.md",
+        "qmd://q3_docs/docs/routeb-bus/058-realzero-ground-diagonal-to-xi-goal.md",
+        "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/g6n1selectedferrersgroundproposition59realzeros.lean",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-master-route-realzero-ground-diagonal-to-xi-2026-08-11.md",
+        "qmd://q3_docs/docs/routeb-bus/codex-answer-2026-09-03-step1-3-p59-agreement-set-source-check.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-req-2026-08-26-n-ground-parity-realification-kernel-admission-2026-08-27.md",
+        "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/proposition59groundlagrangezerosetbridge.lean",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-goal058-curvature-bridge-proof-and-hs-representation-2026-09-03.md"
+      ]
+    },
+    {
+      "expected_path_match": null,
+      "expected_path_token": null,
+      "external_lean": {
+        "base_results": [
+          {
+            "base_id": "zeta23",
+            "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+            "exact_candidate": null,
+            "identity_after": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "identity_before": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "searched_regular_source_count": 329
+          }
+        ],
+        "bases_queried": [
+          "zeta23"
+        ],
+        "boundary": "CANDIDATE_MATCH_NOT_LEAN_PROOF_OR_INTERFACE_EQUIVALENCE",
+        "budget_seconds": 15.0,
+        "candidate": null,
+        "candidate_provenance": null,
+        "candidate_sha256": null,
+        "elapsed_seconds": 0.360598,
+        "enabled_bases": [
+          "zeta23"
+        ],
+        "errors": [],
+        "matches": [],
+        "max_matches": 20,
+        "query": "Q3.RH",
+        "query_sha256": "162e3a888d6845831bce0058332aec51f4b312b435bea4c08b078af51277c607",
+        "registry_sha256": "7c13b5eba028296a05d3c926c6e9e3af36730e9dd24f4014e4889290fef76557",
+        "schema": "q3_external_lean_search.v2",
+        "terms": [
+          "Q3.RH"
+        ]
+      },
+      "id": "terminal_consumer",
+      "query": "Q3.RH",
+      "result_count": 12,
+      "status": "PASS",
+      "top_paths": [
+        "qmd://q3_docs/q3-lean-aristotle/q3/proofs/q-nonneg-on-atoms-fourier-axiom.lean",
+        "qmd://q3_docs/q3-lean-aristotle/q3/rkhs-contraction.lean",
+        "qmd://q3_docs/q3-lean-aristotle/active/refs/proof-map.md",
+        "qmd://q3_docs/docs/routeb-bus/local-zero-invariants-catalog-2026-09-08.md",
+        "qmd://q3_docs/full/rh-q3.tex",
+        "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/completedtrackerscope.lean",
+        "qmd://q3_docs/q3-lean-aristotle/q3/proofs/rkhs-rescaling.lean",
+        "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/proposition59reciprocalmodeweightedshell.lean"
+      ]
+    },
+    {
+      "expected_path_match": null,
+      "expected_path_token": null,
+      "external_lean": {
+        "base_results": [
+          {
+            "base_id": "zeta23",
+            "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+            "exact_candidate": null,
+            "identity_after": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "identity_before": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "searched_regular_source_count": 329
+          }
+        ],
+        "bases_queried": [
+          "zeta23"
+        ],
+        "boundary": "CANDIDATE_MATCH_NOT_LEAN_PROOF_OR_INTERFACE_EQUIVALENCE",
+        "budget_seconds": 15.0,
+        "candidate": null,
+        "candidate_provenance": null,
+        "candidate_sha256": null,
+        "elapsed_seconds": 0.320585,
+        "enabled_bases": [
+          "zeta23"
+        ],
+        "errors": [],
+        "matches": [
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 15,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23.lean",
+            "snippet": "import Zeta23.ZeroSide.TightMult"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 7,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "Residue calculus on rectangles beyond one simple pole."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 8,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "Used for the weighted contour integral ∮ H·Λ'/Λ and for the Riemann–von Mangoldt count"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 13,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "  (Induction on S: subtract one principal part, remove the singularity, recurse.)"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 17,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "* `finite_zeros_rectangle`, `rectangleIntegral'_mul_logDeriv'`: the zero set is finite; self-contained form."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 23,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "open Complex Set Topology Filter Asymptotics Real"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 47,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "    -- the principal part at p, the remainder f₁, and its extension f₂ across p"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 117,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "        exact (hc.tendsto.mono_left nhdsWithin_le_nhds).isBigO_one ℂ"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 141,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "/-- The zero set of a function analytic on a neighbourhood of every point of a rectangle and"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 142,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "nonvanishing at one of its points is finite. -/"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": "finite_zeros_rectangle",
+            "line": 143,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "theorem finite_zeros_rectangle {f : ℂ → ℂ} {z w : ℂ} (hf : AnalyticOnNhd ℂ f (Rectangle z w))"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 157,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "/-! ## Meromorphic version: finitely many zeros AND poles inside the rectangle"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 159,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "Intended for f = completedRiemannZeta (simple poles at 0 and 1, residues ∓1):"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 160,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "(1/2πi) ∮ g·(f'/f) = Σ_{zeros ρ} ord_ρ(f)·g(ρ) − Σ_{poles p} m_p·g(p)."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 162,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "which is the shape of Mathlib's `completedRiemannZeta_residue_one` (m = 1). -/"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 183,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "  -- zeros are interior points"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 198,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "  -- residues: +ord·g at zeros, −m·g at poles"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 279,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "        ((hslope.const_mul (analyticOrderNatAt f q : ℂ)).add hcont).isBigO_one ℂ"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 346,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "        (hcont.sub (hslope.const_mul (m q : ℂ))).isBigO_one ℂ"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 350,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "point of the closed rectangle, f nonvanishing on its border, and Z the zero set of f in the"
+          }
+        ],
+        "max_matches": 20,
+        "query": "ONE NORMALIZED GROUND FAMILY REAL ZEROS AND LOCALLY UNIFORM LIMIT",
+        "query_sha256": "e5a58f7a98ddeed949d49e66962fdffb6e7b735799a092b66ae6820bb2d50cee",
+        "registry_sha256": "7c13b5eba028296a05d3c926c6e9e3af36730e9dd24f4014e4889290fef76557",
+        "schema": "q3_external_lean_search.v2",
+        "terms": [
+          "ONE",
+          "NORMALIZED",
+          "GROUND",
+          "FAMILY",
+          "REAL",
+          "ZEROS",
+          "AND",
+          "LOCALLY",
+          "UNIFORM",
+          "LIMIT"
+        ]
+      },
+      "id": "property_combination",
+      "query": "ONE NORMALIZED GROUND FAMILY REAL ZEROS AND LOCALLY UNIFORM LIMIT",
+      "result_count": 12,
+      "status": "PASS",
+      "top_paths": [
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-goal058-ground-transform-zero-pinning-and-real-zero-identification-2026-09-04.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-exact-roof-port-to-supplier-ledger-2026-09-01.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-supplement-goal058-screw-signature-closure-2026-09-08.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-req-2026-08-28-r1a-correction-16-global-gauge-kill-and-log-derivative-rerank-2026-08-28.md",
+        "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/d0criticalmomentstripbound.lean",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-mythos-three-stage-fastest-kill-plan-2026-09-03.md",
+        "qmd://q3_docs/docs/routeb-bus/linux-r1-phase0-ground-family-object-lock-goal058-2026-08-28.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-g3-g5-g6-pillar-rope-batch-2026-08-19.md"
+      ]
+    },
+    {
+      "expected_path_match": null,
+      "expected_path_token": null,
+      "external_lean": {
+        "base_results": [
+          {
+            "base_id": "zeta23",
+            "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+            "exact_candidate": null,
+            "identity_after": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "identity_before": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "searched_regular_source_count": 329
+          }
+        ],
+        "bases_queried": [
+          "zeta23"
+        ],
+        "boundary": "CANDIDATE_MATCH_NOT_LEAN_PROOF_OR_INTERFACE_EQUIVALENCE",
+        "budget_seconds": 15.0,
+        "candidate": null,
+        "candidate_provenance": null,
+        "candidate_sha256": null,
+        "elapsed_seconds": 0.328043,
+        "enabled_bases": [
+          "zeta23"
+        ],
+        "errors": [],
+        "matches": [
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 3,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23.lean",
+            "snippet": "Released under Apache 2.0 license as described in the file LICENSE."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 6,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23.lean",
+            "snippet": "-- Zeta23.lean — root of library Zeta23: the headline modules (see README.md)."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 3,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "Released under Apache 2.0 license as described in the file LICENSE."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 8,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "Used for the weighted contour integral ∮ H·Λ'/Λ and for the Riemann–von Mangoldt count"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 11,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "* `residueTheorem_finset`: f holomorphic on Rectangle z w minus a finite set S of interior points, with"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 13,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "  (Induction on S: subtract one principal part, remove the singularity, recurse.)"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 14,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "* `rectangleIntegral'_mul_logDeriv` (the \"argument principle with weight\"): f, g analytic on a"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 15,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "  neighbourhood of each point of Rectangle z w, f ≠ 0 on the border, Z = the (finite) zero set of"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 16,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "  f in the rectangle  ⟹  RectangleIntegral' (g · f'/f) z w = Σ_{ρ∈Z} ord_ρ(f) · g(ρ)."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 17,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "* `finite_zeros_rectangle`, `rectangleIntegral'_mul_logDeriv'`: the zero set is finite; self-contained form."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 30,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "/-- **Residue theorem on a rectangle for finitely many simple poles.** -/"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": "residueTheorem_finset",
+            "line": 31,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "theorem residueTheorem_finset {f : ℂ → ℂ} {z w : ℂ} (hre : z.re ≤ w.re) (him : z.im ≤ w.im)"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 47,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "    -- the principal part at p, the remainder f₁, and its extension f₂ across p"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 80,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "    -- f₂ is holomorphic on the rectangle minus the remaining poles"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 104,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "    -- the principal parts at the other poles are unchanged"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 120,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "    -- on the border, f = f₂ + P"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 139,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "    rw [ih', ResidueTheoremInRectangle hre him hp, add_comm]"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 141,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "/-- The zero set of a function analytic on a neighbourhood of every point of a rectangle and"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": "finite_zeros_rectangle",
+            "line": 143,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "theorem finite_zeros_rectangle {f : ℂ → ℂ} {z w : ℂ} (hf : AnalyticOnNhd ℂ f (Rectangle z w))"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 157,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "/-! ## Meromorphic version: finitely many zeros AND poles inside the rectangle"
+          }
+        ],
+        "max_matches": 20,
+        "query": "the kill ledger has seven recurring defect classes and two of them are mechanically checkable",
+        "query_sha256": "084333ceff42216a38b46d79f2a0f716ef81fed07755dac84ace2b12181092a9",
+        "registry_sha256": "7c13b5eba028296a05d3c926c6e9e3af36730e9dd24f4014e4889290fef76557",
+        "schema": "q3_external_lean_search.v2",
+        "terms": [
+          "the",
+          "kill",
+          "ledger",
+          "has",
+          "seven",
+          "recurring",
+          "defect",
+          "classes",
+          "and",
+          "two",
+          "them",
+          "are",
+          "mechanically",
+          "checkable"
+        ]
+      },
+      "id": "fresh_insight",
+      "query": "the kill ledger has seven recurring defect classes and two of them are mechanically checkable",
+      "result_count": 12,
+      "status": "PASS",
+      "top_paths": [
+        "qmd://q3_docs/q3-lean-aristotle/active/insights.md",
+        "qmd://q3_docs/q3-lean-aristotle/docs/insights.md",
+        "qmd://q3_docs/docs/routeb-bus/agent-report-2026-09-04-goal058-normalized-xi-lattice-eigen-equation-preflight.md",
+        "qmd://q3_docs/docs/routeb-bus/linux-correction-7-two-c04-slips-in-the-pole-crosswalk-goal058-2026-08-27.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka-queue.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-goal058-r2-moving-krylov-feshbach-discriminator-2026-08-29.md",
+        "qmd://q3_docs/docs/progress-log.md",
+        "qmd://q3_docs/q3-lean-aristotle/active/graphs/route-kill-registry.md"
+      ]
+    }
+  ],
+  "generated_at": "2026-09-11T20:17:16.681482+00:00",
+  "machine_id": "ccc9c191358572b7131ea8974a1ccfc1d643f78ddea72c9a41cb5a7f89bde914",
+  "mode": "search_plus_vsearch",
+  "plants": [
+    {
+      "id": "POST_JUNE_IDENTIFICATION",
+      "lexical_count": 0,
+      "matched_paths": [
+        "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/proshka/goal058-two-front-proof-architecture-memorandum-2026-08-14.md",
+        "qmd://q3-docs/docs/routeb-bus/proshka/proshka-verdict-mythos-three-stage-fastest-kill-plan-2026-09-03.md",
+        "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/goal057-actual-numerator-source-target-audit-2026-08-07.md",
+        "qmd://q3-docs/docs/routeb-bus/goal057-actual-numerator-source-target-audit-2026-08-07.md",
+        "qmd://q3-docs/docs/routeb-bus/proshka/proshka-verdict-req-2026-08-26-n-pole-neutrality-rank-two-repair-2026-08-27.md"
+      ],
+      "query": "IdentificationAt",
+      "result_count": 30,
+      "status": "PASS",
+      "vector_count": 30
+    },
+    {
+      "id": "POST_JUNE_EDGE_SLIVER",
+      "lexical_count": 18,
+      "matched_paths": [
+        "qmd://q3-docs/docs/routeb-bus/aristotle-task-edgeslivermomentreduction.md",
+        "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/aristotle-task-edgeslivermomentreduction.md",
+        "qmd://q3-docs/docs/routeb-bus/037-muntz-r6-harvest-answer.md",
+        "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/037-muntz-r6-harvest-answer.md",
+        "qmd://q3-docs/docs/routeb-bus/035-edge-sliver-materialization-goal.md"
+      ],
+      "query": "edge-sliver",
+      "result_count": 41,
+      "status": "PASS",
+      "vector_count": 30
+    },
+    {
+      "id": "PRE_SWITCH_STEP33",
+      "lexical_count": 5,
+      "matched_paths": [
+        "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffentryhboximport.lean",
+        "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornerfamilybridge.lean",
+        "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornersegmentcert.lean",
+        "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffanalyticp0import.lean",
+        "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16directintervalpayload.lean"
+      ],
+      "query": "ActiveCenteredCoeffEntryHboxCert",
+      "result_count": 30,
+      "status": "PASS",
+      "vector_count": 30
+    }
+  ],
+  "qmd_index": {
+    "collection_file_count": 3304,
+    "collection_mask": "**/*",
+    "collection_root": "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/q3.lean.aristotle/.qmd_cache/q3_docs_current",
+    "identity": "bbf0090a48386c22009eb04fb1c93dd7e8615ba1721e530ddb450a1a7fac5e0c",
+    "index_path": "/home/chirurgie/.cache/qmd/index.sqlite"
+  },
+  "schema": "q3_semantic_index_receipt.v2",
+  "source_commit": "66a91b3fced7bcbd5482691122c4a1fa7963e8d7",
+  "status": "PASS"
+}
+SEMANTIC_REFRESH_STAGE path=scripts/semantic_index_plants.py seconds=41.788
+# SESSION PROTOCOL — GENERATED SKELETON
+
+Generated: 2026-09-11T20:17:21.863316+00:00
+HEAD: `66a91b3fced7bcbd5482691122c4a1fa7963e8d7`
+
+## Derived repairs
+
+- `semantic-index-refresh`
+
+## Derived status
+
+- `routeb-inventory`: `FRESH` — inputs unchanged since 993ae9cdbbae
+- `routeb-atoms`: `FRESH` — inputs unchanged since 993ae9cdbbae
+- `litreview-needs-cards`: `FRESH` — no unresolved NEEDS_CARDS rows
+- `routeb-map-coverage`: `FRESH` — inputs unchanged since 993ae9cdbbae
+
+## Semantic index
+
+- `REFRESHED` (validated)
+
+## Kernel checked
+
+- none
+
+## Owned dirty paths
+
+- none
+
+## Foreign dirty paths — preserved, not blockers
+
+- `docs/CHAT_DIGESTS.md`
+- `docs/Codex/AGENTS_LEDGER.md`
+- `docs/Codex/GOAL_HISTORY.md`
+- `docs/Codex/RESUME.md`
+- `docs/session_protocols/SESSION_PROTOKOLL_2026-09-11_CODEX.md`
+
+## Manual closeout
+
+- CLOSES: TODO
+- OPENS: TODO
+- assembly debt: TODO
+- insight: TODO
+- commit/push: not performed by this tool
+- PX_RH_CLAIM: NOT_MADE
+
+TEAM_CANONICAL_SEMANTIC_REFRESH_EXIT=0
+
+
+2026-09-11T20:18:21.171757+00:00 — ACTUAL_REFRESH_ACCEPTED; ONE builder11.513s/preflight52.434s/plants41.788s, actual original exit0. Second close FRESH with zero builder/preflight/plants calls. Strict source gate PASS. This is technical validation, no Lean/RH claim.
+
+FRESH_CLOSE_NO_REBUILD EXIT=0
+COMMAND ['python3', 'orchestrator/workflow_runtime.py', 'close-session', '--semantic-refresh', '--no-session-checkpoint']
+# SESSION PROTOCOL — GENERATED SKELETON
+
+Generated: 2026-09-11T20:18:10.964182+00:00
+HEAD: `66a91b3fced7bcbd5482691122c4a1fa7963e8d7`
+
+## Derived repairs
+
+- none
+
+## Derived status
+
+- `routeb-inventory`: `FRESH` — inputs unchanged since 993ae9cdbbae
+- `routeb-atoms`: `FRESH` — inputs unchanged since 993ae9cdbbae
+- `litreview-needs-cards`: `FRESH` — no unresolved NEEDS_CARDS rows
+- `routeb-map-coverage`: `FRESH` — inputs unchanged since 993ae9cdbbae
+
+## Semantic index
+
+- `FRESH` (validated)
+
+## Kernel checked
+
+- none
+
+## Owned dirty paths
+
+- none
+
+## Foreign dirty paths — preserved, not blockers
+
+- `docs/CHAT_DIGESTS.md`
+- `docs/Codex/AGENTS_LEDGER.md`
+- `docs/Codex/GOAL_HISTORY.md`
+- `docs/Codex/RESUME.md`
+- `docs/session_protocols/SESSION_PROTOKOLL_2026-09-11_CODEX.md`
+
+## Manual closeout
+
+- CLOSES: TODO
+- OPENS: TODO
+- assembly debt: TODO
+- insight: TODO
+- commit/push: not performed by this tool
+- PX_RH_CLAIM: NOT_MADE
+
+STRICT_POST_REFRESH EXIT=0
+COMMAND ['python3', 'orchestrator/spine.py', '--strict', '--stdout', '--reason', 'session-start']
+# SPINE VIEW — unified negative-knowledge / memory ledger
+
+Generated deterministically by `orchestrator/spine.py`. DO NOT EDIT.
+Adapter over existing sources; sources stay canonical, this file is a read view.
+
+## Behavior controls (Control v10 active)
+| Body | Active control | Trigger owner | Entry gate | Spine wiring |
+|---|---|---|---|---|
+| `CODEX_EXECUTOR` | `docs/CODEX_CONTROL.md` | Codex | `SESSION_START` | `behavior_controls.executor` |
+| `FABLE_MYTHOS` | `q3.lean.aristotle/docs/PROJECT_INSTRUCTIONS_v3_arsenal.md` | Fable/Mythos | `NONTRIVIAL_REASONING_TASK` | `behavior_controls.fable_mythos` |
+| `PROSHKA` | `docs/routeB_bus/proshka/PROSHKA_SYSTEM_PROMPT_v2.md` | Codex | `DELEGATED_STRATEGIC_REVIEW` | `behavior_controls.proshka` |
+
+## Operational tool manifest
+- schema / authority: `q3_tool_manifest.v2` / `REPO_CANONICAL`
+- families / tools / writers: `9` / `99` / `64`
+- SHA-256: `5b328ac6f78badacb45d1468a09e92a05c5b2ef3a734003c727ba3118687f9cd`
+- Codex current task: `CLOSED` / `docs/Codex/TASK_2026-08-30_goal058_weighted_residual_source_rate_rerank.md`
+
+## Phase chat and bounded exploration
+- validation: `VALID`
+- control status: `ACTIVE`
+- mathematical authority: `CODEX_PROSHKA_FULL_EXCEPT_PX_RH_CLAIM`
+- PX/RH claim state: `NOT_READY`
+- active exploration: `NONE`
+- operational action pending: `NONE`
+
+| Meter | Count |
+|---|---:|
+| `delegated_strategic_review_calls` | 53 |
+| `exploration_review_calls` | 0 |
+| `fanout_violations` | 0 |
+| `forced_rollovers` | 2 |
+| `fresh_chats_opened` | 4 |
+| `mathematical_owner_deferral_violations` | 0 |
+| `ordinary_goal_close_calls` | 0 |
+| `phases_opened` | 3 |
+| `px_rh_claim_requests` | 0 |
+
+### Latest durable exploration closeouts
+
+| id | date | state | target | boundary | next |
+|---|---|---|---|---|---|
+| EXP-G057-B3-0AP-CORRECTION-20260811 | 2026-08-11 | selected | STALE_OLEAN_CANONICAL_N0_LARGE_OPERATOR_REDUCTION | EXPERIMENTAL_NOT_PROMOTED | EXACT_ALL_N_CORRECTED_CCM_ENERGY_NONNEGATIVITY_CERTIFICATE |
+| EXP-G057-B3-0AN-20260811 | 2026-08-11 | selected | UNSHIFTED_OR_C0_SHIFTED_ACTUAL_INFINITE_SCHUR_STRICT_LOWER_BOUND_MISSING | EXPERIMENTAL_NOT_PROMOTED | EXACT_TARGET_FLOOR_FINITE_SCHUR_POSITIVITY_CERTIFICATE_MISSING |
+| EXP-G057-B3-0AM-20260811 | 2026-08-11 | selected | ODD_TAIL_GRADED_RESOLVENT_BOUND13_MISSING | EXPERIMENTAL_NOT_PROMOTED | UNSHIFTED_OR_C0_SHIFTED_ACTUAL_INFINITE_SCHUR_STRICT_LOWER_BOUND_MISSING |
+| EXP-G057-B3-0AL-20260811 | 2026-08-11 | selected | BOUNDED_LITERAL_SOURCE_RESIDUAL_INTO_ODD_TAIL_MISSING | EXPERIMENTAL_NOT_PROMOTED | ODD_TAIL_GRADED_RESOLVENT_BOUND13_MISSING |
+| EXP-G057-B3-0AK-20260811 | 2026-08-11 | selected | SOURCE_WEIL_ODD_TAIL_AMBIENT_COERCIVITY_EXPLICIT_CUTOFF_SUPPLIER_MISSING | EXPERIMENTAL_NOT_PROMOTED | BOUNDED_LITERAL_SOURCE_RESIDUAL_INTO_ODD_TAIL_MISSING |
+
+## AUTOPSY wall map and namewatch
+- events / structured: `18` / `14`
+- walls / NEW_FLAG candidates: `7` / `0`
+- legacy free text remains visible but namewatch-ineligible; auto-promotion is forbidden.
+
+## Canonical artifact identities
+| Artifact | Selected path | SHA-256 | Status |
+|---|---|---|---|
+| `MUNTZ_V3_EXACT_CLASS_CLOSURE` | `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/muntz_v3/RequestProject/MuntzV3ExactClassClosure.lean` | `f4ea12e1497b37a8…` | `CANONICAL_SOURCE` |
+| `Q3_ROOF_SKELETON` | `q3.lean.aristotle/aristotle_output/output-final_aristotle/RequestProject/Main.lean` | `d7fe57b57ae0d08b…` | `SELECTED_FOR_ROOF_WORK_NOT_PROOF_NOT_PROMOTED` |
+
+## Semantic index plants
+- collection: `q3_docs`
+- mode / status: `search_plus_vsearch` / `PASS`
+- `POST_JUNE_IDENTIFICATION` query `IdentificationAt`: `PASS`, results `30`.
+- `POST_JUNE_EDGE_SLIVER` query `edge-sliver`: `PASS`, results `41`.
+- `PRE_SWITCH_STEP33` query `ActiveCenteredCoeffEntryHboxCert`: `PASS`, results `30`.
+
+## Meta-corpus registry
+- derived surfaces: `9`; authority: `DERIVED_REGISTRY_NOT_NEW_TRUTH_SOURCE`.
+
+## Observability snapshot (derived, non-authoritative)
+- authority: `DERIVED_NONCANONICAL_OBSERVABILITY`
+- snapshot: `OBS_b199bc2fe7e982454f1c` at `2026-09-01T06:02:17+00:00` from `b61cd268ee58`
+- sources: `8`; stale: `0`; degraded: `1`
+- sorry sites/files: `0` / `0`
+- proof roots/root memberships: `4` / `261`
+- file states/import edges: `3559` / `5964`
+- taint status: `{"CONTENT_SCAN_SKIPPED_GENERATED_NONROOT": 1303, "IMPORT_BOUNDARY": 1, "NO_OBSERVED_ISSUE": 2255}`; doomed: `0`
+- axiom dependencies / proof nodes: `19` / `19`
+- numeric checks: `0` `{}`
+- Proshka runs: `66`; observed seconds total/mean/median: `70037` / `1094.3` / `1051.5`; lower bounds: `1`
+- Answer-now clicks: `0`
+- AUTOPSY events/structured: `18` / `14`; walls/namewatch flags: `7` / `0`
+
+| Source | Records | Generated | Stale | Parse | Health |
+|---|---:|---|---|---|---|
+| `autopsy_map` | 18 | 2026-08-24T09:08:53+00:00 | no | PARSED | READY |
+| `dependency_tree` | 19 | 2026-08-31 08:50 UTC | no | PARSED | READY |
+| `numeric_checks` | 0 | 2026-08-28 17:53 UTC | no | PARSED | ZERO_COVERAGE |
+| `proof_graph` | 19 | 2026-08-31 08:50 UTC | no | PARSED | READY |
+| `proshka_timing` | 66 | NOT_CAPTURED | no | PARSED | READY |
+| `sorry_frontier` | 0 | 2026-08-28 17:53 UTC | no | PARSED | READY |
+| `taint_graph` | 3559 | 2026-08-28 17:53 UTC | no | PARSED | READY |
+| `taint_sources` | 3559 | 2026-08-28 17:53 UTC | no | PARSED | READY |
+
+### Slowest recorded Proshka runs
+
+| Transaction | Front | Seconds | Bound | Status |
+|---|---|---:|---|---|
+| `G2_CCM_054_1_POST_W02_NEXT_SPLIT_PROSHKA_ADJUDICATION` | G2/H2a | 3221 | observed | COMPLETE_ACCEPTED_FOR_IMPLEMENTATION_BY_STANDING_OWNER_RELEASE |
+| `G5_MODE4_R1A_DIRECT_ENDPOINT_DETERMINANT_SIGNS` | G5/S1 | 2326 | observed | FIRST_VERDICT_COMPLETE_SUPERSEDED_PENDING_FOLLOWUP |
+| `G6_S2_D0_PROLATE_SOURCE_N_COHERENCE_REPAIR` | G6/S2 | 1920 | observed | OPEN_ACCEPTED_FOR_IMPLEMENTATION |
+| `G5_MODE4_REGULAR_PSWF_COEFFICIENT_ROW_NEXT_NODE` | G5/S1 | 1708 | observed | COMPLETE_ACCEPTED_FOR_IMPLEMENTATION |
+| `GOAL057_B3_0G_SOURCE_W02_MODE_PAIRING_SOURCE_AUDIT` | GOAL057/P057_B3_0G | 1662 | observed | OPEN_PREFLIGHT_AUTHORIZED_PRODUCTION_FORBIDDEN |
+
+## Staleness warnings
+- CHANNEL_RUNTIME active phase record is 37 hours old (2026-09-10T08:33:00+02:00); revalidate the existing chat handle and six-field phase key. Age alone never authorizes a fresh chat.
+- observability source health degraded: numeric_checks:ZERO_COVERAGE — this is not a green sensor state.
+- COGNITIVE_GOVERNOR.md is 42 days old (2026-07-31) and references a possibly retired front — regenerate.
+- FAILED_STRATEGIES.yaml last updated 2026-07-31 (42 days) — bus iteration blocks after that date are NOT merged.
+
+## Source freshness
+| Source | Last commit |
+|---|---|
+| `q3.lean.aristotle/ACTIVE/pipeline/FAILURE_ATLAS.json` | 2026-08-05 |
+| `q3.lean.aristotle/ACTIVE/FAILED_STRATEGIES.yaml` | 2026-08-05 |
+| `q3.lean.aristotle/docs/ERRORS_DESTROYER.md` | 2026-08-06 |
+| `docs/trackB/S5_FAILURE_ATLAS.md` | 2026-08-06 |
+| `Q3_OBSTRUCTION_ATLAS.md` | 2026-08-06 |
+| `docs/RH_TRICK_ATLAS.md` | 2026-08-06 |
+| `q3.lean.aristotle/docs/INSIGHTS.md` | 2026-08-21 |
+| `docs/Progress_Log.md` | 2026-09-11 |
+| `docs/GENEALOGY.md` | 2026-08-10 |
+| `docs/RECORDING_RULES.md` | 2026-08-25 |
+| `docs/cartographer/TOOLS.yaml` | 2026-09-11 |
+| `q3.lean.aristotle/ACTIVE/COGNITIVE_GOVERNOR.md` | 2026-08-31 |
+| `docs/routeB_bus/RECHECKABLE_RESEARCH_DEBTS.json` | 2026-08-31 |
+
+## RESEARCH_DEBT (canonical research-dependency registry)
+| id | consumer / exact scope | missing object / death reason | surviving interface |
+|---|---|---|---|
+| G3_SATZ9_FUCHS_DIRECT_LEAN_FORMALIZATION | Any proof-carrying bound strong enough to give the receiver's explicit positive closed-window denominator floor. | A proof-carrying fixed-mode quantitative remainder or equivalent inverse estimate that yields the exact closed-window uniform bound with explicit constants. | Derive the receiver floor directly from a Green/Volterra or residual estimate and prove the exact implication to the existing receiver. |
+| SELECTED_FERRERS_ODD_SECTOR_FLOOR_CURRENT_SOURCE_SHELF | A certified positive lower margin for the selected odd contribution, uniform on the required cofinal schedule. | One explicit uniform lower bound for the literal selected odd compression, or a signed head-tail Feshbach estimate with a positive Schur margin. | Search for a consumer-subspace form or resolvent bound and prove its exact implication to the odd discriminator. |
+| SELECTED_FERRERS_EVEN_SECTOR_FLOOR_CURRENT_SOURCE_SHELF | A proof-carrying positive margin sufficient for the ground-to-trial consumer, not necessarily a global compression floor. | A uniform even-sector coercive lower bound at the literal selected shift, or an explicit head-tail Feshbach package with positive Schur margin. | Build the weakest residual-weighted or local Schur estimate and prove its exact implication to the ground-to-trial consumer. |
+| SELECTED_FERRERS_WEIGHTED_RESIDUAL_SOURCE_RATE_CURRENT_SHELF | Any proof-carrying source estimate sufficient for the exact weighted-residual limit consumed by the existing receiver. | A source theorem or alternative consumer-specific interface implying sqrt(selected odd mass) times sqrt(literal residual energy) tends to zero on the selected cofinal schedule. | Target the complement-floor consumer directly and prove the exact implication from a derivative-level, oscillatory, resolvent, or local form estimate. |
+| GOAL056_ARBITRARY_COFINAL_PROJECTION_TAIL_CURRENT_THEOREM_SHAPE | The production selected schedule already has projection-tail decay through selectedProjectionTailDecay_of_selectedFerrersW5RateLedger. The historical arbitrary-cofinal strengthening is not consumed by the live Goal 058 ground-tail theorem. | A coupled-schedule uniform Fourier or Sobolev tail estimate, or a constructive diagonal schedule, with an exact implication to the Goal 056 projection-tail consumer. | Construct one source-coherent schedule and prove that its explicit bandwidth and energy bounds imply the exact selected projection-tail limit. |
+
+## MATHEMATICALLY_DEAD (canonical scoped adjudications)
+| id | consumer / exact scope | missing object / death reason | surviving interface |
+|---|---|---|---|
+| PSTAR_EQUALS_SCALAR_TIMES_SOURCE_LAGRANGE_POLYNOMIAL | Scalar-only equality between the full nonzero Proposition-5.9 transform and one nonzero finite source Lagrange polynomial. | The full transform has infinitely many exterior sine-lattice zeros, while a nonzero finite polynomial has only finitely many zeros; multiplication by one scalar cannot make the functions equal. | Use the exact zero-set union with the real sine-lattice factor and the same-row Lagrange zero-set bridge. |
+| BROAD_CONE_SCALAR_PRIME_CERTIFICATE_TARGET | Broad-cone scalar Prime-certificate theorem shape with a uniform positive difference against recurrent finite positive cosine sums. | An L1 kernel transform decays while a finite positive cosine sum recurrently returns near full mass, forcing the required difference negative. | Compact S1/S2/S3/S4 calculations remain diagnostics only. |
+| A3_PD_DENSE_PACKET_DICTIONARY_UNIFORM_SYMBOL_FLOOR | Uniform positive A3-pd symbol floor on the full dense difference-packet dictionary. | Difference packets collapse as their translation tends to zero, so no uniform positive gap exists on the dense dictionary. | The exact packet Rayleigh identity and PSD-pd kernel representation remain useful alternatives. |
+| ESTARMUNTZ_V1_RAW_POLE_CONTRACT | Raw-product point-value contract at the zeta pole in EStarMuntz v1. | At the pole the raw product is not the value of its removable continuation, so the old point-value theorem shape is false. | ZetaMellinReg is the consumer-faithful regularized interface. |
+
+## Operational closures (legacy knowledge.db; not epistemic death)
+_Semantic boundary: `killed` is execution-scoped operational closure only; 
+it never implies `MATHEMATICALLY_DEAD` and does not close weaker interfaces._
+
+**criterion** (3)
+
+| id | subject | execution status | scope NOT closed | next / rollback |
+|---|---|---|---|---|
+| GLOWER_ARTEFAKTY_NE_POSTAVSHCHIKI_ODD_BLOKA_BEZ_MOSTA_KOMPRE | GLOWER-артефакты не поставщики odd-блока без моста компрессии | live | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | отдельная лемма-мост; предсказание I-P3 (p=0.75) утверждает, что она родится отдельной,... |
+| PERED_POSTROJKOJ_CHITAT_H2APENALTYCOERCIVITY | перед постройкой читать H2aPenaltyCoercivity | live | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... |  |
+| PO3_SQUARE_2D3_ABSOLUTE_ROW_MASS_CONTROL | `PO3-square.2d3.absolute-row-mass-control` as an unconditional consequ | live | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... |  |
+
+**object** (18)
+
+| id | subject | execution status | scope NOT closed | next / rollback |
+|---|---|---|---|---|
+| 031_DIRECTIVE | BAND_ZERO_CANDIDATE | killed | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... |  |
+| ARISTOTLER_DIRECT_BOOKREGULAREVENSPECTRUM_SUBMISSION | AristotleR_DIRECT_BookRegularEvenSpectrum_SUBMISSION | killed | Kills the direct submission only. A source-pure reformulation (fixed-G, order m=0, Math... | Repair the interface to an even-only structure (BookRegularEvenSpectrumEven: evenBranch... |
+| G057_B3_0AP_CANONICAL_N0_REDUCTION_STALE_OLEAN | B3.0AP canonical N=0 equality of source graph carrier, target-floor gr | killed | Does not kill B3.0AO's literal all-N target or the corrected B3.0AP finite odd-mode-sum... | B3.0AP explicit finite odd-mode-sum crosswalk and corrected CCM energy for every auxili... |
+| GOAL057_B2_PLAIN_PI_ISOMETRY_CARRIER_MISMATCH | GOAL057_B2_PLAIN_PI_ISOMETRY_CARRIER_MISMATCH | killed | Kills the plain-Pi typed child only. The repaired Euclidean finite-Riesz child was rele... | EuclideanSpace C (CCMModeFinite i.N) as the carrier, i.e. PiLp 2 |
+| GOAL057_B3_0_WRONG_NEGATIVE_TAIL_HYPOTHESIS | GOAL057_B3_0_WRONG_NEGATIVE_TAIL_HYPOTHESIS | killed | Kills the sign hypothesis only. A finite constant shift does exist and was selected exp... | sourceArchimedeanMultiplier_add_explicitShift_nonneg with the explicit finite shift |
+| HBOTTOM_MATHLIB_RAYLEIGH | hbottom как следствие Mathlib Rayleigh | killed | не убивает применимость Rayleigh к heig — она подтверждена компиляцией явного терма | heig ← Mathlib Rayleigh; hbottom ← penalty/coercivity сертификат проекта |
+| HERMFACT1 | hermfact1 как имя в дереве | killed | не убивает сам блок: ccmWeilMatFinite_transpose_eq :239, zerosRealOn_of_hermitian_charp... | три настоящих адреса вместо клички; карта v2 исправлена |
+| INSTRUMENT_GUARDS_2026_07_27 | GLOBAL_SELF_FOURIER_CLAIM | killed | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... |  |
+| MEIXNER_SCHAEFKE_FALSE_PARABOLIC_CYLINDER_ORDER_D_Q | MEIXNER_SCHAEFKE_FALSE_PARABOLIC_CYLINDER_ORDER_D_q | killed | Kills the order reading only. The Meixner-Schaefke parameter chain itself was ratified ... | nu = n - m = (q-1)/2, giving orders 0 and 4 |
+| PSTAR_C_N_UMNOZHIT_NA_LAGRANZHEV_MNOGOCHLEN | Pstar = c_N умножить на лагранжев многочлен | killed | не убивает сам мост ground-to-trial: правильная структура — разложение МНОЖЕСТВА нулей ... | Proposition59GroundLagrangeZeroSetBridge: если source Lagrange polynomial строки xi име... |
+| ROUTEB_C1_COMPLETED_ZETA0_SPECIAL_VALUE | completedRiemannZeta₀ as a direct zero carrier for centered Xi | repaired | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | Use xi(s) = (1/2)*s*(s-1)*completedRiemannZeta₀(s) + 1/2. |
+| ROUTEB_ESTAR_MUNTZ_V1_RAW_ZETA_POLE_VALUE | Raw pointwise riemannZeta(w) * Mellin(h)(w) at w = 1 in EStarMuntzCont | killed | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | Use ZetaMellinReg with pole value deriv (Mellin h) 1 and retain the raw-product corolla... |
+| ROUTEB_PROJECTED_DENSITY_EXACT_FEJER | -centeredTrialDensity = \|amplitude\|^2 / sqrt(L_m) at the generic Coeff | killed | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | Prove independent UnprojectedDensityAutocorrelationData, then budget projected-minus-un... |
+| ROUTEB_PSTAR_COMPLETED_FIXED_ZERO | Fhat_(m,N)(z) / bDet_(m,N) | killed | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | Use the SOFT-1 gauge-removed family Xi(0) B(z)/B(0), without gammaC. |
+| ROUTEB_PSTAR_DOUBLE_COMPLETION_MISMATCH | gammaC(1/2+i*z) * centeredXi(z) / gammaC(1/2) | killed | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | Keep completion out of Pstar and place any zero-free gauge only in SlotS2. |
+| TRACKB_S5_ZERO_SIDE_PSD_LIFT | L = Mplus * F_v as the zero-side PSD lift | killed | kills the current lift only; does not kill all B2b; does not reopen B2a; does not make ... | hat(L_proj)=max(hat(L),0) repairs Fourier-side PSD but may destroy physical edge-contro... |
+| VERDICT_S1_ANCHOR_2026_07_27 | PHASE_SUBSEQUENCE | killed | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... |  |
+| ZETA23_INERTIA_LEAN_HSIMPLE | чужой Zeta23 Inertia.lean как прямой поставщик hsimple | killed | не убивает перенос механизма — статус механизм-кандидат, требуется порт | H2aPenalty.H2a_SimpleEvenGround_FromPenaltyCoercivity (H2aPenaltyCoercivity.lean:395) —... |
+
+**route** (41)
+
+| id | subject | execution status | scope NOT closed | next / rollback |
+|---|---|---|---|---|
+| A3_PD_UNIFORM_PACKET_SYMBOL_FLOOR_ON_FULL_DENSE_DICTIONARY | A3-pd uniform packet-symbol floor on full dense dictionary | killed | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | `H-bridge` primary route |
+| D3C_COMPACTNESS_EXTRACTION_OF_A_NONZERO_ONE_SIDED_LIMIT_FROM | D3c compactness extraction of a nonzero one-sided limit from the norma | killed | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | next live branch: direct paired-support divisor-rigidity `D2`, unless a genuinely new n... |
+| D3E4_FINITE_ANCHOR_ELL_2_GIBBS_TIGHTNESS_FOR_THE_NORMALIZED_ | D3e4 finite-anchor \ell^2 Gibbs tightness for the normalized direct di | killed | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | next live branch: direct paired-support divisor-rigidity `D2`, unless a genuinely new n... |
+| FINITE_ANCHOR_ABSOLUTE_NO_ESCAPE_FOR_THE_ONE_SIDED_TRANSFORM | finite-anchor / absolute no-escape for the one-sided transform-side Ga | killed | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | next live branch: signed rightmost-dominance versus mirror suppression, formal shell `P... |
+| FINITE_SHIFTED_GAMMA_TRANSPORT_FAMILY_PROD_GAMMA_ALPHA_J_IZ_ | finite shifted-Gamma transport family \prod \Gamma(\alpha_j-iz)^{-u_j} | killed | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | remaining `PO2` wall: `Y_a`-specific sparse-lattice exclusion or a genuinely non-Gamma ... |
+| G6S2_FIXED_MUNTZ_WINDOW_INSTALLED_AS_CANONICAL_PSTAR | G6·S2 fixed Müntz window installed as canonical Pstar | killed | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | `G6_S2_D0_SELECTED_FAMILY_MUNTZ_SAME_FAMILY_CROSSWALK` — prove the existing D0 selected... |
+| GENERIC_BRIDGE_ELL_1_CAUCHY_TAIL_VANISHING_RIGHTARROW_TAIL_M | generic bridge \ell^1-Cauchy-tail vanishing \Rightarrow tail moments | killed | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | remaining first wall: prove a `Y_a`-specific no-counterexample lemma |
+| GENERIC_SHORT_INTERVAL_S_T_LITERATURE_AS_A_CLOSURE_TOOL_FOR_ | generic short-interval S(T) literature as a closure tool for D2g30d | killed | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | next live branch: `D2g31` structural reduction to compressed-gap cascade (`D2f3`) or bo... |
+| H_BRIDGE_FILTERED_ROUTE_THROUGH_PO2_PO3_H4 | H-bridge filtered route through PO2 -> PO3 -> ... -> H4 | live | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | active in `PHASE_MONITOR.md` |
+| JANUARY_PRIMECERT_CERTIFICATE_ROAD_AS_CURRENT_MAINLINE | Treat the January tau=0 PrimeCert certificate road as the current Q3/R | killed | This does not invalidate reusable checked PrimeCert lemmas, interval/log bounds, source... | Select work only from the current monitor/control plane; reuse a named PrimeCert lemma ... |
+| KILL_N0_STANDALONE_PROLATE_CANONICAL_SOURCE__VERDICT_KILL | STATUS: FATAL FOR STANDALONE N0 — `ProlateCanonicalSourceData` ALREADY | killed | Execution KILL of this exact verdict subject and source scope only; it does not imply M... |  |
+| KILL_SOURCE_RAYLEIGH_PROXIMITY_FROM_MINIMUM__VERDICT_KILL | STATUS: FATAL — THE CURRENT MINIMUM-EIGENPAIR THEOREM CANNOT SUPPLY CO | killed | Execution KILL of this exact verdict subject and source scope only; it does not imply M... |  |
+| NAIVE_DIRECT_DE_MICHELI_VIANO_APPLICATION_AFTER_TRANSLATING_ | naive direct De Micheli--Viano application after translating the tail  | killed | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | next live branch: either prove an infinite-pole extension for the `\ell^1` simple-Cauch... |
+| RAW_IDENTITY_W_RS_A_KAPPA_A_Q_RS | raw identity w_{rs}(a)=\kappa(a)q_{rs} | killed | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | `PO2` mixed-block attack |
+| RECEIPT_REQ_2026_08_26_N_STOP_RULE_ACCEPTAN__VERDICT_KILL | STATUS: FATAL — CENTRAL-WINDOW PROGRAM CLOSED; OWNER RERANK REQUIRED | killed | Execution KILL of this exact verdict subject and source scope only; it does not imply M... |  |
+| SF_PD_SAME_FAMILY_RAYLEIGH_BRIDGE | SF-pd same-family Rayleigh bridge | killed | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | `H-bridge` primary route |
+| SHARED_RANK_BASIS_HUNT_FOR_FILTERED_DEFECT | shared rank/basis hunt for filtered defect | killed | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | `PO2` mixed-block attack |
+| SINGLE_GAMMA_ROTATED_TRANSPORT_H_A_Z_GAMMA_1_IZ_K | single-Gamma rotated transport H_a(z)\Gamma(1-iz)^{-k} | killed | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | remaining `PO2` wall: `Y_a`-specific no-counterexample lemma or a genuinely two-sided t... |
+| S_PD_COMPACT_SCALAR_ROUTE | S-pd compact scalar route | killed | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | `H-bridge` primary route |
+| VERDICT_CONTROL_V9_OWNER_ROOT_VERDICT_BRIDG__VERDICT_KILL | STATUS: FATAL — KILL_CONTROL_V9_OWNER_ROOT_PROSHKA_VERDICT_BRIDGE | killed | Execution KILL of this exact verdict subject and source scope only; it does not imply M... |  |
+| VERDICT_G2_NUMERIC_ROPES_CRITICAL_PATH_2026_08_20 | STATUS: FATAL FOR G2 NUMERIC ROPES AS ROOF-CRITICAL — THE `(13,120)` C | killed | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... |  |
+| VERDICT_GOAL057_A5_SOURCE_LOCK_2026_08_07__VERDICT_KILL | STATUS: FATAL FOR THIS REVIEW INPUT — PHASE-3 SCRIPT/RESULT BYTE LOCKS | killed | Execution KILL of this exact verdict subject and source scope only; it does not imply M... |  |
+| VERDICT_GOAL057_B2_COMPRESSED_WEIL_ACTION_S__VERDICT_KILL | PROSHKA_VERDICT_GOAL057_B2_COMPRESSED_WEIL_ACTION_SOURCE_AUDIT_2026-08 | killed | Execution KILL of this exact verdict subject and source scope only; it does not imply M... |  |
+| VERDICT_GOAL058_ARISTOTLE_SOURCE_LOCK_STOP_2026_08_13 | STATUS: FATAL — AUTHORITATIVE SOURCE LOCK UNAVAILABLE | killed | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... |  |
+| VERDICT_GOAL058_G3_SATZ9_LIBRARY_WALL_NEXT___VERDICT_KILL | STATUS: FATAL — KILL_G3_SATZ9_DIRECT_LEAN_FORMALIZATION_COST_RERANK | killed | Execution KILL of this exact verdict subject and source scope only; it does not imply M... |  |
+| VERDICT_GOAL058_GROUND_TRANSFORM_ZERO_PINNI__VERDICT_KILL | STATUS: OPEN — PARTIAL REAL-ZERO PINNING DOES NOT IDENTIFY \(\Xi\); CO | killed | Execution KILL of this exact verdict subject and source scope only; it does not imply M... |  |
+| VERDICT_GOAL058_R2_MOVING_KRYLOV_FESHBACH_D__VERDICT_KILL | STATUS: FATAL — KILL_R2_MOVING_KRYLOV_FESHBACH | killed | Execution KILL of this exact verdict subject and source scope only; it does not imply M... |  |
+| VERDICT_GOAL058_SECOND_EXPRESSION_SUZUKI_KERNEL_IDENTITY_202 | STATUS: KILL_LITERAL_EVEN_TIME_SUZUKI_KERNEL_IDENTITY | killed | Execution KILL of this exact verdict subject and source scope only; it does not imply M... |  |
+| VERDICT_GOAL058_SELECTED_FERRERS_ODD_SECTOR_FLOOR_DISCRIMINA | STATUS: FATAL — KILL_SELECTED_FERRERS_ODD_SECTOR_FLOOR_ON_CURRENT_SOUR | killed | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... |  |
+| VERDICT_GOAL058_SOURCE_ARCHITECTURE_RATIFIC__VERDICT_KILL | STATUS: FATAL — KILL_ALL_THREE_REQUIRES_NEW_THEORY | killed | Execution KILL of this exact verdict subject and source scope only; it does not imply M... |  |
+| VERDICT_GOAL058_WINDING_LOCK_RECTANGLE_RESU__VERDICT_KILL | STATUS: OPEN — SINGLE-ENDPOINT ATOM IS FALSE; FULL-BOUNDARY RECTANGLE  | killed | Execution KILL of this exact verdict subject and source scope only; it does not imply M... |  |
+| VERDICT_MYTHOS_THREE_STAGE_FASTEST_KILL_PLAN_2026_09_03 | STATUS: FATAL — KILL_STEP1_ABSTRACT_IDENTIFICATION | killed | Execution KILL of this exact verdict subject and source scope only; it does not imply M... |  |
+| VERDICT_PHASE4_CODE_AUDIT_2026_08_10__VERDICT_KILL | STATUS: OPEN — FINITE PHASE 4 RESULTS MOSTLY VALID; CONSTANT-FLOOR RES | killed | Execution KILL of this exact verdict subject and source scope only; it does not imply M... |  |
+| VERDICT_REQ_2026_08_20_E_EXPLICIT_CCM_MELLI__VERDICT_KILL | STATUS: FATAL — REQ-2026-08-20-E IS OFF BY THE EXACT FACTOR 4; L73.5 I | killed | Execution KILL of this exact verdict subject and source scope only; it does not imply M... |  |
+| VERDICT_REQ_2026_08_26_M_H2A_FINAL_CONSUMER__VERDICT_KILL | STATUS: FATAL — CURRENT TRIAL-SHELL THEOREM510 ASSEMBLY HIDES EXACT GR | killed | Execution KILL of this exact verdict subject and source scope only; it does not imply M... |  |
+| VERDICT_REQ_2026_08_26_N_CENTRAL_WINDOW_STO__VERDICT_KILL | STATUS: FATAL — CENTRAL-WINDOW / CENTRAL-SCHUR CONTINUATION STOPPED; O | killed | Execution KILL of this exact verdict subject and source scope only; it does not imply M... |  |
+| VERDICT_REQ_2026_08_26_N_COMBINED_GAMMA_FAIL_AND_SELECTED_FE | STATUS: FATAL — SELECTED-FERRERS GROUND-TRACKING RATE CORRIDOR ONLY; R | killed | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... |  |
+| VERDICT_REQ_2026_08_26_N_POLE_NEUTRALITY_RA__VERDICT_KILL | STATUS: FATAL FOR SINGLE-HYPERPLANE POLE REMOVAL — LITERAL RANK-TWO W0 | killed | Execution KILL of this exact verdict subject and source scope only; it does not imply M... |  |
+| VERDICT_T2_1_DURABLE_PORT_MATCHER_FAIL_CLOS__VERDICT_KILL | STATUS: FATAL — T2.1 MATERIALIZATION EXISTS, BUT THE PRODUCTION MATCHE | killed | Execution KILL of this exact verdict subject and source scope only; it does not imply M... |  |
+| VERDICT_T2_2_PORT_MATCHER_PROOF_EDGE_AUDIT___VERDICT_KILL | STATUS: FATAL — T2.2 CLOSES THE PRIOR FOUR KILLS, BUT ITS POSITIVE LAB | killed | Execution KILL of this exact verdict subject and source scope only; it does not imply M... |  |
+| ZIP_AUDIT_FOLLOWUP_2026_07_27 | STATUS: FATAL для контракта v1 | killed | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... |  |
+
+**strategy** (247)
+
+| id | subject | execution status | scope NOT closed | next / rollback |
+|---|---|---|---|---|
+| 054_1B_V2_ADJUDICATION_2026_08_05 | one_broad_fill_sorry_after_surrogate_rejection | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | ccmWeilTauN1_neg_self_eq_neg_zero |
+| 054_1_FINITE_VON_MANGOLDT_ADJUDICATION_2026_08_05 | expose_pointwise_table_before_scalar_functional | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | compile_weighted_sum_theorem_and_fire_three_semantic_mutants |
+| 054_1_NEXT_SPLIT_ADJUDICATION_2026_08_05 | treat_scalar_orbit_implication_as_reusable_finite_consumer | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | compile_exact_5x5_seven_class_matrix_equality_with_three_layout_plants |
+| 054_1_POST_PRIME_KERNEL_NEXT_NODE_ADJUDICATION_2026_08_05 | publish_subcomponent_helpers_before_the_exact_final_functional | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | compile the exact seven-equation tau normal form and fire P-NIC-1..5 |
+| 054_1_POST_W02_NEXT_NODE_ADJUDICATION_2026_08_05 | publish_direct_prime_specialization_without_kernel_normalization | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | prove four private prime normalization plants from the sole import |
+| 054_1_POST_WEIGHTED_SUM_ADJUDICATION_2026_08_05 | public_source_specific_corollary_after_generic_functional | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | compile seven W02 forms and fire three semantic mutants |
+| ADDENDUM_AGENT_OS_TYPED_DISCOVERY_CONCURRENCY_RECEIPT_2026_0 | none | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | docs_only_schema_integration |
+| ADDENDUM_SPEC_011_T2_V0_CONCURRENCY_2026_08_23 | SESSION_ONLY_PAIRWISE_MATCHER_AS_DURABLE_ENGINE | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | committed_context_plant_and_ae_pointwise_replay |
+| CCM_ODD_MASS_CONTAMINATION_AWARE_COMPLEMENT_FLOOR_2026_08_17 | require_zero_contamination_before_sector_floor | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | generic_finite_contamination_floor_theorem_with_3d_plant |
+| COFINAL_CCM_EVEN_COMPLEMENT_FLOOR_AT_FIXED_SHIFT_2026_08_17 | blind_odd_to_even_copy_and_parity_eigenvector_form_conflation | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | instantiate_generic_low_band_at_first_nonzero_even_frequency |
+| COFINAL_SOURCE_RESIDUAL_GAP_TRANSFORM_TAIL_BUDGET_2026_08_18 | free errors plus assumed decomposition | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact Linux kernel gate |
+| CONSUMER_FIRST_CONSTRUCTOR_HERMFACT1_AUDIT_2026_08_11 | prose_translation_then_atom_search | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | CCM_CONSUMER_CONTRACT_BACKTEST |
+| DIRECT_CONCRETE_PAYLOAD_BEFORE_WHOLE_EXPRESSION_PILOT | create or hand-fill DirectConcretePayload.lean before a whole-expressi | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | ESCAPE: CertificateShift \| implement scripts/generate_step33_a1_sub0_combined_order16_s... |
+| EXACT_APPLY_COMPARATOR | exact?/apply? как comparator | killed | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | типизированный дамп окружения, затем отдельный comparator |
+| FACTORWISE_RAW_D17_TWO_SEGMENT_BUDGET_SPEND | keep sharpening the same factorwise raw-D17 two-segment class after th | killed | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | ESCAPE: RepresentationShift \| preserve cancellation and build direct whole-expression C... |
+| FULL_PACKET_SEARCH_WITH_MULTIPLE_INDEPENDENT_FRONTS | search the full Muntz packet across multiple independent fronts instea | superseded | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | ESCAPE: ReceiverMinimize \| retain the local T4a bridge closed by Goal 039 and treat eac... |
+| GLOWER_CONTRACT_MANDATE_2026_08_09 | N_stabilization_and_W02_positive_part | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | GLOWER_G1_ODD_HILBERT_COMMUTATOR_PREFLIGHT |
+| GLOWER_EXACT_CLOSURE_2026_08_09 | extrapolate_nested_finite_eigenvalues | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | corrected_head_Arb_lower_envelope_at_c0_1e58 |
+| GOAL058_ACTUAL_SOURCE_CLOSURE_VERDICT_2026_08_14 | formalize_receivers_after_source_identities_and_call_them_closure | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | source-level PSWF constructor availability audit |
+| GOAL058_DLMF3035_LITERAL_ROOT_CROSSWALK_VERDICT_2026_08_14 | treat_strict_endpoint_windows_as_self_proving_nonsingularity | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | DLMF3035_right_branch_crosswalk_audit |
+| GOAL058_G3_BACKWARD_TAIL_SCHUR_CONVERGENCE_VERDICT_2026_08_1 | import_accepted_stability_leaf_for_a_target_it_does_not_export | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact finite block Schur-complement identity |
+| GOAL058_G3_FINITE_SCHUR_CROSSWALK_VERDICT_2026_08_14 | none | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | finite_tail_PosDef_under_production_separation |
+| GOAL058_JOINT_SOURCE_REVIEW_VERDICT_2026_08_14 | treat_root_or_generic_spectral_receiver_as_source_closure | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | local endpoint-flux theorem |
+| GOAL058_STURM_NODAL_COMPARISON_ARISTOTLE_PROMPT_2026_08_14_U | ask_for_four_zeros_at_unspecified_matching_root | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | Aristotle_nodal_interval_comparison |
+| GOAL058_TRUE_SOURCE_CLOSURE_VERDICT_2026_08_13 | receiver_or_finite_identity_relabelled_as_source_supplier | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | derive_one_literal_complement_floor_from_the_exact_CCM_source_decomposition |
+| H2A_LEAN_NATIVE_PROBE_ADJUDICATION_2026_08_11 | treat_library_search_as_exact_claim_comparator | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | H2A_RAYLEIGH_TYPED_BRIDGE_PROBE |
+| INERTIA_COUNT_NOT_LOCATE | считать инерцией вместо локализации | live | не отменяет ZETA23_INERTIA_LEAN_HSIMPLE: поставщиком леммы слой не является; роль иная ... | finrank_le_posIndex_of_posDefOn (Sylvester.lean:82): доказывать hsimple предъявлением п... |
+| KILL_N0_STANDALONE_PROLATE_CANONICAL_SOURCE_DATA_2026_08_19 | pure_record_assembly | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | >- |
+| KILL_SOURCE_RAYLEIGH_PROXIMITY_FROM_MINIMUM_EIGENPAIR_2026_0 | derive_cofinal_fixed_shift_from_cellwise_minimum_eigenpairs | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | direct source evaluation and remainder audit for the literal trial Rayleigh value |
+| M1B_WEAK_COMMIT_AND_M1C_PARITY_REPAIR_2026_08_12 | one_scalar_isolation_gap_for_a_nearly_even_trial | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | parity_weighted_sector_bound_at_m13_N120 |
+| M1C_PARITY_SECTOR_PREFLIGHT_2026_08_12 | full_isolation_gap_for_nearly_even_trial | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | parity_sector_bound_at_m13_N120 |
+| M1C_STRONG_COMMIT_VERDICT_2026_08_12 | full_isolation_gap | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | precommitted_N_stabilization_then_scale_ladder |
+| MANUAL_ROW_BY_ROW_SCALAR_REPLAY | continue manual row-by-row or entry-by-entry scalar replay | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | ESCAPE: CertificateShift \| use compressed direct whole-expression row certificates with... |
+| MASTER_ROUTE_REALZERO_GROUND_DIAGONAL_TO_XI_2026_08_11 | mix_trial_realzero_and_ground_realzero_families | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | Proposition59GroundLagrangeZeroSetBridge |
+| MYTHOS_ADDENDUM_ADJUDICATION_2026_08_09 | identify_full_section_coercivity_with_the_minimal_filtered_consumer | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | RUN_DELTA_N480_AITKEN |
+| NEXT_AFTER_8C3AEC96_GOAL058_2026_08_12 | infer_tracking_from_observed_projective_overlap | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | persist Kq and certify residual plus even/odd complement gaps at m13_N120 |
+| RADIUS_DRIVEN_CERTIFICATE_CUTOFF_AND_TOOTH_ALIGNED_TRANSITIO | infer the cofinal transition from a radius-driven cutoff or tooth-alig | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | ESCAPE: RepresentationShift \| replay the exact 031 identity at generic m with the live ... |
+| RECEIPT_REQ_2026_08_26_N_STOP_RULE_ACCEPTANCE_AND_OWNER_HAND | CENTRAL_WINDOW_CAUCHY_OBSERVABILITY | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | owner_selects_R1_or_R2_then_precommits_route_discriminator |
+| REQUEST_GOAL057_A5_DEFERRED_REVIEW_2026_08_07 | <text> | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | <text> |
+| RESUBMIT_ALREADY_CLOSED_SUPPLIER_TO_CLOUD | resubmit the already-closed T4a supplier to Aristotle | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | ESCAPE: MemoryConsolidation \| keep the T4a contract quarantined; reuse the Goal 040 PL2... |
+| ROUTE_COMPARISON_EFFORT_ESTIMATE_2026_08_09 | compare_file_counts_without_interface_source_split | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | run the three bounded classifiers without route commitment |
+| ROUTE_COMPARISON_REVISED_2026_08_09 | compare_source_faithful_new_route_against_interface_only_active_route | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | run_the_four_precommitted_read_only_calibrators |
+| SAME_FAMILY_GROUND_TRIAL_COMPOSITION_CORE_2026_08_18 | none | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | Lean kernel validation at commit 9cc3e01b |
+| SOURCE_RECORD_COFINAL_FIXED_SHIFT_LITERAL_COMPLEMENT_FLOOR_2 | full_matrix_gram_existence_as_supplier | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | one precommitted canonical Schur cell |
+| SOURCE_RECORD_LITERAL_CCM_COFINAL_RESIDUAL_FLOOR_ENVELOPE_AN | abstract maps plus free gap and dead normalizer premise | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact Linux kernel gate on this commit |
+| SOURCE_RECORD_LITERAL_CCM_COFINAL_THREE_KERNEL_REPAIRS_2026_ | component_simp_hidden_coercion_rewrite_and_final_simpa_telescope | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact_Linux_kernel_gate_on_this_commit |
+| SOURCE_RECORD_LITERAL_CCM_COMPLEMENT_FLOOR_CONSTRUCTION_2026 | moving_shift_gram_certificates_or_silent_fixed_shift_substitution | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact_Linux_kernel_gate_on_this_commit |
+| TRACKB_SCALAR_POINTWISE_EDGE_MAJORANT | tune scalar Psi_K or spend tiny-B c_arch without same-unit operator br | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | ESCAPE: RepresentationShift \| replace the scalar route by a direct interval/rational pr... |
+| VERDICT_044_R6_LIBRARY_ONLY_CANONICAL_HRM_OPEN_2026_07_31 | count_stronger_class_supplier_as_canonical_consumption | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | prove hRp on the exact v3 class and plant it on PL1 |
+| VERDICT_046_RATIFIED_FIRST_CANONICAL_2026_07_31 | stronger_R6_class_wrapper_as_canonical_supplier | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | endpoint_complete_zero_mass_Riemann_sum_bound |
+| VERDICT_AGENT_OS_TYPED_DISCOVERY_INTEGRATION_2026_08_23 | full_v0_backtest_before_schema_calibration | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | docs_only_schema_integration_then_R6A |
+| VERDICT_ARSENAL_ACCEPTANCE_2026_08_17 | none | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | first signature-matched bridge audit |
+| VERDICT_AUTONOMOUS_GOAL_RUNNER_2026_08_13 | briefing_plus_owner_choice | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | four-plant read-only selector selftest |
+| VERDICT_BEHAVIOR_CONTROL_CONTOUR_2026_08_05 | fresh_chat_per_goal_with_full_context_reupload | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | phase_key_comparator_and_duplicate_control_plants |
+| VERDICT_CCM_IMPORT_C3_SPLIT_2026_07_31 | treat_trial_limit_and_real_zero_family_as_the_same_sequence | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact_projective_ground_to_trial_residual_on_one_control_cell |
+| VERDICT_CCM_LEMMA_7_3_PREANCHOR_PORT_FLOORS_2026_08_20 | treat_paper_convergence_field_as_project_inhabitant | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | Codex_pair_provenance_then_typecheck_L73_2_statement |
+| VERDICT_CCM_PENALTY_CROSSWALK_2026_08_07 | interpret_sectional_gap_or_prolate_proxy_as_the_operator_input_B_ratio | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | no_fit_control_cell_13_120_source_crosscheck |
+| VERDICT_CODEX_REQ_GOAL058_W5_QUANTITATIVE_SHIFTED_ENERGY_SEM | null | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | >- |
+| VERDICT_COGNITIVE_OPERATOR_VOCABULARY_2026_08_06 | collapse_legacy_control_actions_into_m2 | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | dual_field_knowledge_db_round_trip |
+| VERDICT_CONTROL_V9_OWNER_ROOT_VERDICT_BRIDGE_2026_08_29 | second authority path after primary signature return | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | Mac root trust install plus strict offline startup gate |
+| VERDICT_DRAFT041_HOLD_VERSIONED_REPAIR_2026_07_31 | retroactive_goal_amendment | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | compare original_goal_040_sha_across_sync |
+| VERDICT_EULER_LOGARITHMIC_REPRESENTATION_AUDIT_2026_08_20 | direct_infinity_or_raw_determinant_gap | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact_source_P59_anchored_log_derivative_preflight |
+| VERDICT_EXACT_ROOF_PORT_TO_SUPPLIER_LEDGER_2026_09_01 | OLD_SIX_SLOT_ROOF_AS_ACTIVE_PROGRESS_METER | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | GOAL058_DIRECT_GROUND_ZEROESCAPE_CONSUMER_PROBE |
+| VERDICT_G3_G5_G6_PILLAR_ROPE_BATCH_2026_08_19 | bridge_first_without_value_or_limit_suppliers | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact_ground_Pstar_value_typecheck_then_CCM_L73_normalization_lock |
+| VERDICT_G6N1_GREEN_ASSEMBLY_RECOUNT_2026_08_20 | count_kernel_green_constructor_as_unconditional_supplier | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact CCM paper-to-project port inhabitant |
+| VERDICT_G6_N2_SELECTED_MELLIN_COMPACT_DECAY_2026_08_20 | unweighted_Hilbert_tail_plus_bounded_normalizer | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | sourceScale_schedule_energy_exponent_ledger |
+| VERDICT_GLOWER_FULL_RESIDUAL_BETA_MOMENT_2026_08_10 | componentwise_absolute_decay | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | interval_B0_and_prefix_Gram |
+| VERDICT_GLOWER_TAIL_THEOREM_AND_HEAD_DRIFT_2026_08_10 | treat_suzuki_and_weil_as_unrelated_forms_on_odd_tail | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | GLOWER_FULL_GALERKIN_RESIDUAL_LEDGER_N480 |
+| VERDICT_GOAL040_RATIFIED_PENDING_PIN_2026_07_31 | implicit_derivative_identification_and_duplicate_T4a_cloud_run | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | pinned_goal_040_and_rule0_exact_text_audit |
+| VERDICT_GOAL056_FINITE_PROJECTION_RECONSTRUCTION_2026_08_06 | custom_projection_uniqueness_before_using_exact_orthonormal_basis_API | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | direct Lean compilation of the one-theorem basis proof with all five plants |
+| VERDICT_GOAL056_FULL_MELLIN_GWIN_CROSSWALK_2026_08_06 | bundle_coordinate_of_difference_with_two_scalar_coordinate_equalities | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | direct_Lean_compile_of_the_unnormalized_full_coordinate_theorem_with_all_seven_plants |
+| VERDICT_GOAL056_GENERIC_HILBERT_BASIS_WEIGHTED_TAIL_2026_08_ | use_orthonormality_as_if_it_were_complete_Parseval | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | production_compile_plus_incomplete_orthonormal_family_plant |
+| VERDICT_GOAL056_LOG_WINDOW_MEASURE_TRANSPORT_2026_08_06 | prove_orthonormality_while_hiding_the_source_measure_transport | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | coe_P_m_N_apply_eq_sum_inner_V_n_m_smul |
+| VERDICT_GOAL056_LOG_WINDOW_V_N_M_COMPLETENESS_2026_08_06 | direct_transport_of_normalized_Haar_fourierBasis_to_unnormalized_inter | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | inverse_Lp_equivalence_plus_Haar_volume_normalization_plant |
+| VERDICT_GOAL056_OBJECT_FIRST_RESIDUAL_CONTRACT_2026_08_06 | consume_raw_minus_Gwin_as_if_it_were_an_object_residual | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | V_n_m_orthonormal_on_modeSet |
+| VERDICT_GOAL056_PHYSICAL_FOURIER_ENERGY_RECEIVER_2026_08_06 | infer_physical_tail_from_completeness_or_independent_cofinality | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | fixed_index_physical_tail_compile_plus_N_zero_first_omitted_mode_plant |
+| VERDICT_GOAL056_PROJECTED_MELLIN_COORDINATE_2026_08_06 | direct_wrapper_bundling_representative_phase_and_reflection_seams | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | direct_Lean_compile_of_the_additive_ae_helper_with_all_seven_plants |
+| VERDICT_GOAL056_PROLATE_SOURCE_N_COHERENCE_2026_08_06 | fixed_space_Fourier_density_on_an_N_dependent_varying_carrier_source | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | same_m_different_N_source_coherence_negative_constructor |
+| VERDICT_GOAL056_SELECTED_RESIDUAL_L2_DECAY_2026_08_06 | infer_selected_joint_decay_from_fixed_space_projection_density | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | uniform_log_window_Fourier_tail_on_the_selected_source_family |
+| VERDICT_GOAL057_A5_DEFERRED_REVIEW_REPAIRED_2026_08_07 | infer_an_input_B_rate_from_unstabilized_sectional_gaps_or_the_prolate_ | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | bounded_actual_numerator_source_target_audit |
+| VERDICT_GOAL057_A5_SOURCE_LOCK_2026_08_07 | trust_hash_literals_inside_a_report_as_exact_artifact_snapshots | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | attach_and_rehash_the_exact_Phase3_script_and_JSON_result |
+| VERDICT_GOAL057_A8_MAX_FANOUT_NEXT_FRONT_2026_08_07 | use_a_nearby_real_even_probe_as_the_exact_source_trial | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | source_complex_row_vs_complexified_CCM_matrix_action_preflight |
+| VERDICT_GOAL057_B1_SOURCE_COMPLEX_RESIDUAL_PRODUCTION_CHILD_ | quotient_normalization_after_exact_source_unit_data_became_available | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact_compressed_Weil_action_source_crosswalk |
+| VERDICT_GOAL057_B2_COMPRESSED_WEIL_ACTION_SOURCE_AUDIT_2026_ | treat_source_form_compression_as_everywhere_defined_operator_compressi | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | selected_kTrial_membership_in_the_associated_Weil_operator_domain |
+| VERDICT_GOAL057_B3_0A_EXACT_MODE_FOURIER_FORMULA_RELEASE_202 | hide_zero_extension_Fourier_carrier_and_operator_graph_in_one_child | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact_log_weighted_L2_majorant_from_released_formula |
+| VERDICT_GOAL057_B3_0B1_LOG_GROWTH_ENVELOPE_WEIGHTED_L2_2026_ | one_file_exact_digamma_symbol_plus_mode_decay_plus_operator_domain | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | global_exact_digamma_domination_source_audit |
+| VERDICT_GOAL057_B3_0B2_EXACT_ARCH_SYMBOL_DOMINATION_REPAIRED | treat_source_angular_frequency_and_Mathlib_Fourier_frequency_as_one_co | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact_symbol_measurability_and_MemLp_transfer |
+| VERDICT_GOAL057_B3_0B3_EXACT_ARCH_SYMBOL_WEIGHTED_MODE_L2_TR | widen_closed_parent_APIs_or_rederive_special_function_continuity | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | conjugate_first_cross_mode_archimedean_pairing_integrability |
+| VERDICT_GOAL057_B3_0C_SOURCE_ARCH_MULTIPLIER_MODE_PAIRING_IN | use_integrability_compilation_to_detect_sesquilinear_orientation | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | define_pairing_integral_and_prove_conjugate_symmetry |
+| VERDICT_GOAL057_B3_0D_SOURCE_ARCHIMEDEAN_MODE_PAIRING_KERNEL | detect_source_slot_orientation_from_Hermitianity_compilation_alone | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact_central_and_offdiagonal_CCM_WR_crosswalk |
+| VERDICT_GOAL057_B3_0E1_SOURCE_ARCH_MULTIPLIER_REGULARIZED_HY | factorwise_near_zero_domination_and_one_shot_final_CCM_crosswalk | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | B3_0E2_JOINT_ARCH_KERNEL_MODE_PRODUCT_L1_FUBINI_NO_SORRY_PREFLIGHT |
+| VERDICT_GOAL057_B3_0E2_JOINT_ARCH_KERNEL_MODE_PRODUCT_L1_FUB | seek_a_sharper_logarithmic_kernel_bound_before_testing_the_actual_prod | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | B3_0E3_MODE_COSINE_CORRELATION_CCM_QKERNEL_NO_SORRY_PREFLIGHT |
+| VERDICT_GOAL057_B3_0E3_ZERO_EXTENDED_MODE_COSINE_CORRELATION | direct_factorwise_Fubini_with_cosine_times_one_mode_as_L1 | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | B3_0E4A_OFFDIAGONAL_NEG_CCM_WR_CROSSWALK_NO_SORRY_PREFLIGHT |
+| VERDICT_GOAL057_B3_0E4A_OFFDIAGONAL_SOURCE_ARCH_PAIRING_NEG_ | symmetric_ordered_instances_as_index_orientation_detector | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | B3_0E4B1_DIAGONAL_ENDPOINT_LEDGER_NO_SORRY_PREFLIGHT |
+| VERDICT_GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGE | treat_tail_mutations_as_covering_the_independent_finite_region_sign_an | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | B3_0E4B2_DIAGONAL_NEG_CCM_WR_CROSSWALK_NO_SORRY_PREFLIGHT |
+| VERDICT_GOAL057_B3_0E4B2_DIAGONAL_SOURCE_ARCH_PAIRING_NEG_CC | count_positive_controls_as_substitutes_for_dependency_and_coercion_pla | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | all_mode_two_case_no_sorry_preflight |
+| VERDICT_GOAL057_B3_0E4C_ALL_MODE_SOURCE_ARCH_PAIRING_NEG_CCM | use_symmetric_final_entry_as_an_order_orientation_detector | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | B3_0F_FINITE_ARCH_FORM_MATRIX_LIFT_NO_SORRY_PREFLIGHT |
+| VERDICT_GOAL057_B3_0E_SOURCE_ARCHIMEDEAN_PAIRING_CCM_WR_SIGN | direct_one_shot_crosswalk_without_scalar_distribution_bridge | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | B3_0E1_SCALAR_HYPERBOLIC_IDENTITY_NO_SORRY_PREFLIGHT |
+| VERDICT_GOAL057_B3_0F_FINITE_ARCHIMEDEAN_SESQUILINEAR_FORM_M | release_from_unattached_harness_metadata | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | B3_0G_W02_SOURCE_MODE_PAIRING_SOURCE_AUDIT |
+| VERDICT_GOAL057_B3_0F_FINITE_ARCHIMEDEAN_SESQUILINE__EF5581A6 | release_from_unattached_harness_metadata | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | B3_0F_REPAIRED_PREFLIGHT_SOURCE_LOCK_AND_PLANT_OBSERVABILITY |
+| VERDICT_GOAL057_B3_0G_SOURCE_W02_MODE_PAIRING_PRODUCTION_REL | direct_alias_or_formula_symmetry_as_source_provenance | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | B3_0H_FINITE_W02_SESQUILINEAR_FORM_MATRIX_LIFT_NO_SORRY_PREFLIGHT |
+| VERDICT_GOAL057_B3_0H_FINITE_W02_FORM_MATRIX_LIFT_RELEASE_20 | compilation_alone_as_convention_judge | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | source_locked_prime_pairing_sign_normalization_audit |
+| VERDICT_GOAL057_B3_0J_FINITE_PRIME_FORM_MATRIX_LIFT_RELEASE_ | compilation_alone_as_wrapper_convention_judge | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | production_byte_copy_plus_full_release_gate |
+| VERDICT_GOAL057_B3_0L_SOURCE_LOG_WINDOW_FOURIER_L2_PREFLIGHT | require_a_ready_made_general_Lp_Plancherel_operator_before_source_spec | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact_source_form_Fourier_multiplier_decomposition_on_a_source_locked_core |
+| VERDICT_GOAL057_B3_0M_FINITE_SOURCE_WEIL_FOURIER_LEDGER_PREF | jump_from_modewise_Fourier_data_directly_to_an_ambient_source_form | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | NOT_AUTHORIZED_IN_THIS_TRANSACTION |
+| VERDICT_GOAL057_B3_0N_PRODUCTION_RELEASE_2026_08_09 | use_two_sided_log_growth_domination_as_a_constant_lower_bound | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | NONE_AUTHORIZED_IN_THIS_TRANSACTION |
+| VERDICT_GOAL057_B3_0O_PRODUCTION_RELEASE_2026_08_09 | mint_the_weighted_domain_before_locking_the_exact_square_root_weight | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | SAME_CHAT_POST_O_NEXT_NODE_ADJUDICATION |
+| VERDICT_GOAL057_B3_0P_PRODUCTION_RELEASE_2026_08_09 | treat_weighted_Lp_membership_as_a_pointwise_representative_predicate | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | SAME_CHAT_POST_P_NEXT_NODE_ADJUDICATION |
+| VERDICT_GOAL057_B3_0Q_LITERAL_MODE_IN_SHIFTED_ARCH_FORM_DOMA | promote_fixed_mode_weighted_L2_directly_to_finite_span_density_or_oper | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | SAME_CHAT_POST_Q_NEXT_NODE_ADJUDICATION |
+| VERDICT_GOAL057_B3_0R_FINITE_MODE_SPAN_IN_SHIFTED_ARCH_FORM_ | introduce_a_second_or_enlarged_finite_carrier | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | SAME_CHAT_POST_B3_0R_NEXT_NODE_ADJUDICATION_AFTER_CLOSEOUT |
+| VERDICT_GOAL057_B3_0_POST_AE_REPRESENTATION_RERANK_2026_08_1 | require_associated_operator_before_any_GLOWER_form_restriction | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact_N1_normalized_odd_form_pullback_preflight |
+| VERDICT_GOAL057_B3_0_POST_J_NEXT_NODE_ADJUDICATION_2026_08_0 | mint_a_named_finite_form_wrapper_before_the_exact_assembly | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact_B3_0K_Lean_preflight_and_complete_ledger_sign_plant |
+| VERDICT_GOAL057_B3_0_POST_K_NEXT_NODE_ADJUDICATION_2026_08_0 | bundle_ambient_form_graph_operator_and_mode_domain_before_the_L2_Fouri | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | GOAL057_B3_0L_SOURCE_LOG_WINDOW_FOURIER_L2_API_DISCRIMINATOR |
+| VERDICT_GOAL057_B3_0_POST_L_NEXT_NODE_ADJUDICATION_2026_08_0 | define_the_ambient_form_and_operator_before_testing_the_finite_carrier | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact_B3_0M_untracked_Lean_preflight |
+| VERDICT_GOAL057_B3_0_POST_N_NEXT_NODE_ADJUDICATION_2026_08_0 | mint_the_weighted_domain_before_locking_the_totalized_sqrt_contract | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact_B3_0O_untracked_Lean_preflight |
+| VERDICT_GOAL057_B3_0_POST_O_NEXT_NODE_ADJUDICATION_2026_08_0 | publish_a_predicate_alias_before_proving_the_linear_carrier | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact_B3_0P_untracked_Lean_preflight |
+| VERDICT_GOAL057_B3_0_POST_P_NEXT_NODE_ADJUDICATION_2026_08_0 | bundle_literal_mode_membership_with_finite_span_or_density | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact_B3_0Q_untracked_Lean_preflight |
+| VERDICT_GOAL057_B3_0_SOURCE_WEIL_ASSOCIATED_OPERATOR_GRAPH_R | hide_source_form_and_L2_Fourier_in_one_six_declaration_file | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | resonance_and_off_resonance_exact_mode_Fourier_formula |
+| VERDICT_GOAL057_B3_ASSOCIATED_WEIL_OPERATOR_DOMAIN_SOURCE_AU | infer_operator_domain_from_form_core_or_replace_A_m_by_bounded_lift | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact_mode_Fourier_formula_plus_log_multiplier_L2 |
+| VERDICT_GOAL058_BOUNDARY_2026_09_10 | infer_a_strict_leading_gap_from_absolute_boundary_control | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | SIGNED_STRIP_MEAN_TRACE_ENERGY_DEFICIT |
+| VERDICT_GOAL058_BOUNDARY_BROWSER_2026_09_10 | infer_a_strict_order_d_gap_from_absolute_boundary_and_feedback_scales | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | CENTERED_BOUNDARY_RECOVERY_RELATIVE_GAP |
+| VERDICT_GOAL058_COLLAR_2026_09_10 | scalarize_the_collar_inverse_uniformly_over_all_profiles | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | LOW_SOURCE_ONE_FEEDBACK_MARGIN |
+| VERDICT_GOAL058_CONTACT_2026_09_10 | infer_exterior_vanishing_from_E4_or_from_a_large_collar_diagonal | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | CONTACT_COUPLED_COLLAR_CONTRACTION |
+| VERDICT_GOAL058_DENSITY_2026_09_11 | conditional_PSD_and_global_finite_gamma_PSD_induction | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | HALF_THINNED_CONDITIONAL_ODD_MINOR |
+| VERDICT_GOAL058_DISTANCE_2026_09_09 | unconstrained radical distance | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | cached correction spectral centroid |
+| VERDICT_GOAL058_FLOW_2026_09_10 | global_continuous_only_path_allocation_even_with_arbitrary_step_count | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | JOIN_LOCATION_MIXTURE_CAPACITY |
+| VERDICT_GOAL058_FULL_CLOSURE_CHAIN_2026_09_04 | representation-specific Feshbach subterm promoted as atom | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | direct compact P59 ground/trial error ledger on K0 |
+| VERDICT_GOAL058_G1_G3_SOURCE_ENVELOPE_DISCRIMINATOR_2026_08_ | promote_one_strong_cell_to_cofinal_sector_package | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | source_envelope_discriminator |
+| VERDICT_GOAL058_G3_RATE_FLOOR_SOURCE_RERANK_2026_08_30 | conditional_receiver_accumulation | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | typecheck exact theorem head and isolate first analytic lemma |
+| VERDICT_GOAL058_G3_SATZ9_LIBRARY_WALL_NEXT_ACTION_2026_08_30 | DIRECT_SATZ9_LEAN_REBUILD_IN_CURRENT_LIBRARY | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | SELECTED_FERRERS_EVEN_SECTOR_FLOOR_SOURCE_DISCRIMINATOR |
+| VERDICT_GOAL058_GROUND_TRANSFORM_ZERO_PINNING_AND_REAL_ZERO_ | partial real-zero set plus curvature/second jet | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | derive or kill evaluationVector = K * boundedPreimage |
+| VERDICT_GOAL058_ONE_SHAPE_DEVIATION_AND_XI_POLYNOMIAL_LADDER | RAW_XI_POLYNOMIAL_LADDER_AS_TRIAL | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | RUN_EXACT_ANCHORED_EIGENBASIS_DECOMPOSITION |
+| VERDICT_GOAL058_PHASE_CLASS_INEQUALITY_AND_MOLLIFIER_CROSSWA | exact_arithmetic_Jacobi_substitution_and_one_copy_HS_crosswalk | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | certified_two_generator_minus_packet_with_separate_carrier_error |
+| VERDICT_GOAL058_R2_MOVING_KRYLOV_FESHBACH_DISCRIMINATOR_2026 | finite moving Krylov carrier without source coupling law | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | owner rerank or independent literal-CCM coupling theorem |
+| VERDICT_GOAL058_SATURATION_2026_09_10 | uncalibrated_self_Fourier_kernel_before_theta_summation | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | independent_uniform_A22_and_downstream_normalization_audit |
+| VERDICT_GOAL058_SCHUR_2026_09_09 | infer_cofinal_rate_or_strong_affine_success_from_finite_normalized_rat | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | error_resolved_full_source_strong_margin_on_a_frozen_cached_candidate |
+| VERDICT_GOAL058_SECOND_MODE_OVERLAP_SUPPLIER_AFTER_TRIAL_CRO | Rayleigh_sublevel_width_as_gap_free_curvature_supplier | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | RUN_P59_LADDER_FESHBACH_D2_REMAINDER_PREFLIGHT |
+| VERDICT_GOAL058_SOURCE_ARCHITECTURE_RATIFICATION_2026_08_13 | choose_a_receiver_or_commutator_identity_as_a_cofinal_source_supplier | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | local_phase_realification_and_nontautological_trial_line_block_preflight |
+| VERDICT_GOAL058_W5_COFINAL_RATE_EDGE_LEDGER_2026_08_25 | GLOBAL_LIPSCHITZ_L2_EDGE_INTERPOLATION | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | F72_6 edge specialization plus exact inverse-sqrt telescope |
+| VERDICT_GOAL058_W5_CONTROL_V9_SEMANTIC_ATTESTATION_MATERIALI | treat injected test callback as an operative external path | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | frozen W5 receipt through a fixed external broker and atomic three-field state transition |
+| VERDICT_GOAL058_W5_L1_LOG_PACKET_MASS_RATE_2026_08_25 | TERMNORM_TARGET_MAJORANT | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | dStar integration of the public full-error bound |
+| VERDICT_GOAL058_WINDING_LOCK_RECTANGLE_RESULTS_AND_ENDPOINT_ | infer full boundary control from one real endpoint | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | formalize the endpoint counterexample |
+| VERDICT_LITERAL_CCM_COFINAL_RED_GATE_2026_08_18 | source_reading_and_hash_receipts_as_proxy_for_kernel_validation | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact_gate_on_follow_up_source |
+| VERDICT_LITERAL_CCM_COMPLEMENT_FLOOR_CONSTRUCTION_GREEN_2026 | none | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | canonical literal Schur head-tail certificate family |
+| VERDICT_N0_REPAIR_TOTAL_COST_2026_08_20 | invasive_selected_record_narrowing | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | >- |
+| VERDICT_PAPER1_WEIL_POSITIVITY_CANONICAL_TEST_FULL_ADVERSARI | declaring_v3_clean_from_two_referees_and_a_style_pass | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | independent_patch_proof_check_then_manuscript_build |
+| VERDICT_PHASE4_CODE_AUDIT_2026_08_10 | constant_floor_residual_Gram | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | nested_Schur_resolvent_loss_480_960 |
+| VERDICT_Q3_FORMAL_RH_PRIORITY_AND_SIGNIFICANCE_2026_08_19 | equating kernel-green conditional wrappers with an unconditional theor | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | inspect final theorem premises and full dependency closure after every roof update |
+| VERDICT_REQ_2026_08_20_E_EXPLICIT_CCM_MELLIN_NORMALIZATION_2 | UNITS_UNAUDITED_PAPER_PORT | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | formal Gaussian Mellin coefficient in Lean |
+| VERDICT_REQ_2026_08_20_F_L73_2_SELECTED_FERRERS_LEMMA72_RATE | SATZ9_AS_SINGLE_COMPLETE_SUPPLIER | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | verify Fuchs Theorem 1 scope for exact n=0,4 project convention |
+| VERDICT_REQ_2026_08_20_G_F72_0_SELECTED_FERRERS_PAPER_OBJECT | infer_external_ps_identity_from_same_ODE_and_names | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | compile_project_parameter_dictionary_then_test_non_tautological_source_bind |
+| VERDICT_REQ_2026_08_20_J_F72_0B_CENTER_ANCHORED_DIRECT_CYLIN | public_literal_representative_object_graph | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | center_anchor_scalar_lock_then_exact_source_ODE_eigenvalue_audit |
+| VERDICT_REQ_2026_08_21_N_BOOK_EXHAUSTIVENESS_AND_W13_7D_AUTH | DLMF_30_3_5_EXHAUSTIVE_READING | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | compile_W13_7D_generic_ordered_enumeration |
+| VERDICT_REQ_2026_08_21_O_CODEX_GRANT_THREE_BODY_LOOP_2026_08 | KERNEL_GATE_AS_SEMANTIC_GATE | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | UNINHABITED_ANTECEDENT_REPLAY |
+| VERDICT_REQ_2026_08_21_P_AT_MOST_ONCE_SEMANTIC_ADMISSION_AND | exactly_once_trigger_plus_total_mass_edge_inference | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | G5_SOURCE_PROJECTION_LEAKAGE_SPLIT |
+| VERDICT_REQ_2026_08_21_Q_SOURCE_WEIGHTED_ENVELOPE_AND_SIGMA_ | support_or_fixed_window_constant_as_uniform_source_control | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | weighted_Estar_error_from_selected_Lemma72_rate |
+| VERDICT_REQ_2026_08_22_S_ARISTOTLE_PARTIAL_HARVEST_AND_INFIN | derive_infinity_from_separation_and_local_finiteness | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | uniform moving-centre contraction estimate |
+| VERDICT_REQ_2026_08_22_T_HIGH_MODE_WITNESS_AND_INFINITY_2026 | separation_plus_local_finiteness_implies_infinity | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | compile cleaned Main and audit final theorem axioms |
+| VERDICT_REQ_2026_08_22_U_PORT_FORWARD_AND_MODULAR_INTERFACE_ | mixed source-DLMF-project structure | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | source-proof and continued-fraction object acquisition |
+| VERDICT_REQ_2026_08_22_V_F72_1C_SEMANTIC_ADMISSION_AND_F72_3 | none | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact_mu_crosswalk_plus_positive_branch_plant |
+| VERDICT_REQ_2026_08_22_V_F72_3B_SEMANTIC_ADMISSION_AND_F72_4 | none | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact center-anchor times stored-integral equals chi identity |
+| VERDICT_REQ_2026_08_22_V_F72_4_SEMANTIC_ADMISSION_AND_F72_5_ | integrating_lambda_minus_two_sup_error_over_expanding_window | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact_negative_scale_denominator_cancellation_and_packet_rate_compile |
+| VERDICT_REQ_2026_08_22_V_F72_5_SEMANTIC_ADMISSION_AND_F72_6_ | none | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | compile exact factor-four scale and rate transfer |
+| VERDICT_REQ_2026_08_22_V_F72_6_SEMANTIC_ADMISSION_AND_L73_3_ | none | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | compile_floor_count_and_C_div_lambda_sqrt_u_bound |
+| VERDICT_REQ_2026_08_22_V_H2A_0_SEMANTIC_ADMISSION_AND_H2A_1_ | reuse_old_all_index_row_or_write_shell_only_wrapper | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact finite betaEff theorem with coupling plant |
+| VERDICT_REQ_2026_08_22_V_H2A_1_SEMANTIC_ADMISSION_AND_H2A_2_ | residual_free_odd_mass_transport | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | selected odd mass equals one quarter of the physical reflection-defect norm square |
+| VERDICT_REQ_2026_08_22_V_H2A_2_SEMANTIC_ADMISSION_AND_H2A_3_ | old-interface substitution | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | final-shell rank crosswalk plus exact dStar integral |
+| VERDICT_REQ_2026_08_22_V_H2A_3_SEMANTIC_ADMISSION_AND_H2A_4_ | derive_finite_CCM_residual_rate_from_odd_mass_or_L73_name_similarity | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact_selected_variance_and_finite_Riesz_crosswalk |
+| VERDICT_REQ_2026_08_22_V_H2A_4_0_SEMANTIC_ADMISSION_AND_H2A_ | infer_finite_Riesz_residual_decay_from_L73_Hilbert_error | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact_error_plus_target_Riesz_action_split |
+| VERDICT_REQ_2026_08_22_V_H2A_4_1A_SEMANTIC_ADMISSION_AND_H2A | infer_finite_Riesz_action_decay_from_L73_Hilbert_error | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact_source_dual_graph_and_target_identity_audit |
+| VERDICT_REQ_2026_08_22_V_H2A_4_1B_0_ADMISSION_AND_COMBINED_A | generic_all_PairIndex_graph_envelope_plus_separate_triangle_terms | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | structured_CCM_action_on_exact_selected_row |
+| VERDICT_REQ_2026_08_22_V_H2A_4_1B_1_ADMISSION_AND_WEIGHTED_R | full residual decay and pre-normalizer log^(3/2) ledger | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | formalize weighted residual to fixed complement floor |
+| VERDICT_REQ_2026_08_22_V_H2A_4_1B_2_SEMANTIC_ADMISSION_AND_H | direct_full_weighted_residual_rate_without_beta_moment_source_lock | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | kernel-check exact center-action and odd-mass beta bound |
+| VERDICT_REQ_2026_08_22_V_H2A_4_1B_3A_SEMANTIC_ADMISSION_AND_ | direct_betaMoment_to_residual_rate | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | kernel_check_Gamma_equals_D_residual_and_center_weighted_energy_bound |
+| VERDICT_REQ_2026_08_22_V_H2A_4_1B_3C_0_SEMANTIC_ADMISSION_AN | pointwise center nonvanishing as a rate | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | combined Gamma source-envelope preflight |
+| VERDICT_REQ_2026_08_22_V_H2A_4_1B_3C_1_0_PREFLIGHT_ADMISSION | C0_HILBERT_TO_LOG_SOBOLEV_TRANSFER | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | fixed-mode C1/H1 source acquisition |
+| VERDICT_REQ_2026_08_22_V_H2A_4_1B_3C_1_1_ADMISSION_AND_H2A_4 | cite a derivative remainder from Satz 9 | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact ODE/flux and seam-rate preflight |
+| VERDICT_REQ_2026_08_22_V_H2A_4_1B_3C_1_2_PREFLIGHT_ADMISSION | promote physical derivative proximity directly to Gamma rate | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | symbolic optimal-budget crosswalk against literal Gamma |
+| VERDICT_REQ_2026_08_22_V_H2A_4_1B_3C_1_3_ADMISSION_AND_CENTE | raw component action ledger | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact centered component decomposition and prime rate ledger |
+| VERDICT_REQ_2026_08_22_V_H2A_4_1B_3C_1_4_ADMISSION_AND_FULL_ | component absolute majorants | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | full-source dual/radical/window-defect preflight |
+| VERDICT_REQ_2026_08_22_V_H2A_4_1B_3C_1_5_ADMISSION_AND_SELEC | disk_only_radical_search | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | selected_hTrial_domain_and_global_to_window_form_crosswalk |
+| VERDICT_REQ_2026_08_22_V_H2A_4_1B_3C_1_6_DOMAIN_KILL_AND_POL | scalar_near_radical_value_as_dual_action_supplier | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact_polarized_Poisson_defect_identity |
+| VERDICT_REQ_2026_08_22_V_H2A_4_1B_3C_1_7_ADMISSION_AND_ABEL_ | identify a symmetric conditional Fourier sum with production tsum E_st | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | Abel-reflected object preflight |
+| VERDICT_REQ_2026_08_22_V_L73_3_SEMANTIC_ADMISSION_AND_L73_4_ | none | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact_main_minus_tail_tsum_split |
+| VERDICT_REQ_2026_08_22_V_L73_4_SEMANTIC_ADMISSION_AND_L73_5_ | FULL_ERROR_EQUALS_DYNAMIC_MAIN_ERROR | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact_Gaussian_Mellin_coefficient_in_absolute_half_plane |
+| VERDICT_REQ_2026_08_22_V_L73_5_SEMANTIC_ADMISSION_AND_L73_6_ | false_unscaled_coefficient_one_identity_already_killed | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | derive_88_Z4_div_lambda_cubed_uniform_bound |
+| VERDICT_REQ_2026_08_22_V_L73_6_SEMANTIC_ADMISSION_AND_L73_7_ | whole_open_strip_source_convergence | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact_source_minus_target_Mellin_split |
+| VERDICT_REQ_2026_08_22_V_L73_7_SEMANTIC_ADMISSION_AND_L73_8_ | whole_open_strip_source_convergence | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | compact_closed_substrip_promotion_then_structure_assembly |
+| VERDICT_REQ_2026_08_22_V_L73_8_SEMANTIC_ADMISSION_AND_H2A_SO | shell_only_source_wrapper | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | selected shell row unit plus exact Proposition-59 transform crosswalk |
+| VERDICT_REQ_2026_08_22_V_SEMANTIC_ADMISSION_AND_CUTOFF_LOCAL | literal_DLMF_family_materialization_on_the_critical_path | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | compile_the_low_range_set_equality |
+| VERDICT_REQ_2026_08_22_V_SOURCE_PHYSICAL_LIFT_SEMANTIC_ADMIS | unshifted physical theta or project-mode source witness | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact two-mode source payload rewrite at project theta |
+| VERDICT_REQ_2026_08_22_V_V3_0_SEMANTIC_ADMISSION_AND_V3_1_AU | global_project_StrictMono_plus_separate_source_cut | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | compile_cutoff_local_strong_induction_lock |
+| VERDICT_REQ_2026_08_22_V_V3_1_SEMANTIC_ADMISSION_AND_V3_2_AU | global_project_StrictMono_plus_separate_numeric_hsrcCut | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | compile_universal_rank_two_bind_for_arbitrary_source_package |
+| VERDICT_REQ_2026_08_22_V_V3_2_SEMANTIC_ADMISSION_AND_SOURCE_ | global_project_order_plus_numeric_source_cutoff | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | compile_source_only_physical_rescaling_to_Satz9SourceData |
+| VERDICT_REQ_2026_08_26_A_STURM_CERTIFICATE_REGISTRY_SHADOW_2 | exclusive_scalar_receiver_and_unregistered_operator_vocab | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | kernel_gate_G6N1SturmWeightedConsumer |
+| VERDICT_REQ_2026_08_26_B_WEIGHTED_CONSUMER_EDGE_BAND_RATE_20 | ENERGY_ONLY_UNIFORM_WEIGHTED_CAUCHY_SCHWARZ | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | kernel_gate_non_top_sqrt_log_rate |
+| VERDICT_REQ_2026_08_26_C_EDGE_TOP_OUTER_DECAY_2026_08_26 | uniform_C0_plus_flux_as_sufficient_top_control | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | source_locked_higher_order_fixed_mode_remainder_audit |
+| VERDICT_REQ_2026_08_26_F_EDGE_TOP_ADMISSION_AND_W5_RATE_ASSE | uniform_edge_band_from_weighted_energy_alone | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | ask_catalog_then_build_one_selected_rate_assembly |
+| VERDICT_REQ_2026_08_26_G_W5_RATE_ASSEMBLY_SEMANTIC_ADMISSION | uniform_D_edge_band | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | full_object_norm_floor_versus_direct_weighted_product |
+| VERDICT_REQ_2026_08_26_I_TRIAL_NORMALIZER_CLOSURE_ADMISSION_ | CENTRAL_V0_OVERLAP_FLOOR | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact W5-rate versus moving Mellin-envelope exponent ledger |
+| VERDICT_REQ_2026_08_26_J_N2_COMPACT_RATE_PREFLIGHT_ADMISSION | separate_sourceScale_upper_times_unscaled_residual | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | kernel_check_scalar_projection_homogeneity |
+| VERDICT_REQ_2026_08_26_L_N2_N3_N4_COMPACT_CLOSURE_SEMANTIC_A | none | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | H2a_and_Theorem510_exact_consumer_preflight |
+| VERDICT_REQ_2026_08_26_M_H2A_FINAL_CONSUMER_PREFLIGHT_KILL_A | hide_exact_trial_ground_identity_inside_H2aAt | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | source_audit_complex_ground_to_real_eta_normalized_row |
+| VERDICT_REQ_2026_08_26_N_CENTRAL_WINDOW_STOP_RULE_AND_OWNER_ | FIXED_CENTRAL_COORDINATE_OBSERVABILITY_AND_SCHUR_WRAPPER | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | OWNER_RERANK_R1_OR_R2 |
+| VERDICT_REQ_2026_08_26_N_COMPACT_GAMMA_FAIL_AND_RAYLEIGH_EXC | second_order_W4_and_q_line_Feshbach | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | source_lock_a_consumer_strength_ground_eigenvalue_lower_envelope |
+| VERDICT_REQ_2026_08_26_N_COMPACT_OBSERVABILITY_HOLD_AND_CENT | GENERIC_OBSERVABILITY_AND_SOURCE_LOCALIZATION_SURROGATE | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | FIXED_COMPACT_P59_POLE_SAMPLING_AND_CENTRAL_MASS_LEDGER |
+| VERDICT_REQ_2026_08_26_N_COMPENSATED_REFLECTION_HOLD_LITERAL | ONE_FUNCTIONAL_AND_FULL_TO_FINITE_ENERGY_SHORTCUT | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | EXACT_TWO_CHANNEL_AND_FINITE_ROW_ADAPTER |
+| VERDICT_REQ_2026_08_26_N_COMPENSATED_REFLECTION_HOLD_NORMALI | exact full-energy equals normalized finite-row mode moment | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | literal P59 row norm divided by exact complement floor |
+| VERDICT_REQ_2026_08_26_N_CORRECTIONS_10_11_P59_NORM_AND_QPRO | one odd reflection functional for the full consumer | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact completed-source formula for the Q-projected diagonal shadow |
+| VERDICT_REQ_2026_08_26_N_CORRECTION_12_QPROJECTED_DIAGONAL_A | RAW_UNREFLECTED_UNIFORM_COSINE_TRANSFORM | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | ORIENTED_FULL_VOLTERRA_SOURCE_RATE_PREFLIGHT |
+| VERDICT_REQ_2026_08_26_N_CORRECTION_7_RATIFICATION_AND_RELAY | function symmetry and one Cauchy moment treated as full row/operator c | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | adjudicate the exact two-endpoint report separately |
+| VERDICT_REQ_2026_08_26_N_GROUND_COMPACT_TRACKING_PREFLIGHT_F | weighted_residual_or_raw_LG_as_compact_rate | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | audit_new_Sturm_W5_against_exact_combined_Gamma_rate |
+| VERDICT_REQ_2026_08_26_N_GROUND_GRAPH_RESOLVENT_FAIL_AND_P59 | READY_MADE_SOURCE_RATE_SEARCH | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | >- |
+| VERDICT_REQ_2026_08_26_N_GROUND_P59_REAL_ZEROS_ADMISSION_AND | none | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | compile_same_witness_real_zero_and_pointwise_tracking_theorem |
+| VERDICT_REQ_2026_08_26_N_GROUND_PARITY_REALIFICATION_KERNEL_ | eta_first_orientation_circle | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | compile_same_witness_selected_ground_P59_real_zero_consumer |
+| VERDICT_REQ_2026_08_26_N_GROUND_ROOF_SELF_CORRECTION_AND_PAR | classify_eta_nonvanishing_as_missing_after_searching_consumers_only | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | compile_source_specific_ground_parity_realification_theorem |
+| VERDICT_REQ_2026_08_26_N_ORDERED_BETA_HOLD_POLARIZED_EXACT_C | same-vector quadratic pairing treated as literal consumer | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | polarized Abel plus diagonal identity on C_inverse_kappa and q |
+| VERDICT_REQ_2026_08_26_N_ORIENTED_FULL_VOLTERRA_UNIFORM_SMOO | FOLDED_NONPERIODIC_FIRST_MOMENT_WITHOUT_SHADOW | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | endpoint-free Stieltjes partial summation |
+| VERDICT_REQ_2026_08_26_N_P59_KERNEL_COMMUTATOR_FAIL_AND_POLA | self-consistent action transfer through the trial-line graph inverse | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | post-W5 polarized near-radical graph-functional preflight |
+| VERDICT_REQ_2026_08_26_N_PENALTY_SLACK_FAIL_GROUND_GRAPH_RES | penalty_slack_self_energy_as_source_ready_representation | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | source_audit_the_graph_resolvent_P59_matrix_element |
+| VERDICT_REQ_2026_08_26_N_POLARIZED_NEAR_RADICAL_FAIL_AND_FIX | L2_DEFECT_MAGNITUDE_AS_ACTION_BOUND | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | fixed-test smooth-core mixed-functional source preflight |
+| VERDICT_REQ_2026_08_26_N_POLARIZED_VOLTERRA_PASS_AND_POLE_NE | generic_modulus_of_continuity_search | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact_pole_neutral_functional_on_literal_row |
+| VERDICT_REQ_2026_08_26_N_POLE_NEUTRALITY_RANK_TWO_REPAIR_202 | one Cauchy hyperplane plus inferred exact evenness | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | literal two-endpoint source preflight |
+| VERDICT_REQ_2026_08_26_N_PRIME_COUNT_SCALE_AND_ANNIHILATOR_P | count_only_prime_cancellation | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact_adjoint_range_decomposition |
+| VERDICT_REQ_2026_08_26_N_R1_OWNER_REENTRY_AND_GROUND_FAMILY_ | CENTRAL_WINDOW_CAUCHY_OBSERVABILITY | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | literal_ground_family_anchor_and_fixed_jet_lock |
+| VERDICT_REQ_2026_08_26_N_RAYLEIGH_EXCESS_FAIL_PENALTY_SLACK_ | Temple_equivalence_and_broad_fixed_block_Schur | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | source_lock_and_rate_a_near_minimal_penalty_slack_on_one_precommitted_schedule |
+| VERDICT_REQ_2026_08_26_N_REENTRY_GATE_A_DUAL_TRACK_CLOSEOUT_ | UNIVERSAL_SELECTED_KERNEL_POWER_SAVING_FROM_CURRENT_PNT_SHELF | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | owner-scoped new representation gate only |
+| VERDICT_REQ_2026_08_26_N_REFLECTION_DUHAMEL_VOLTERRA_RATIFIC | positive measure annihilation plus naive cumulative discrepancy | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | compensated circle Stieltjes/Duhamel rate audit |
+| VERDICT_REQ_2026_08_26_N_SELF_CORRECTION_4_AND_HILBERT_PAIRI | literal zeta'/zeta critical-line identification | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact Abel prefix-flux source preflight |
+| VERDICT_REQ_2026_08_26_N_STIELTJES_MAJORANT_FAIL_AND_ZERO_TR | ABSOLUTE_MAJORANT_OF_E | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | exact zero-transfer coefficient and P59 span/circularity audit |
+| VERDICT_REQ_2026_08_26_N_TRACKED_GROUND_SAME_WITNESS_ADMISSI | global_floor_indexed_family_as_direct_consumer_of_eventual_floor | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | compile_pointwise_tracked_ground_and_additive_tail_receipt |
+| VERDICT_REQ_2026_08_26_N_TRACKED_GROUND_TAIL_REINDEX_ADMISSI | broad_cofinal_wrapper_before_raw_rate_audit | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | source_read_compact_kernel_times_raw_residual_rate |
+| VERDICT_REQ_2026_08_26_N_ZERO_TRANSFER_IDENTITY_AND_COMPACT_ | EXACT_NONANNIHILATION_AS_QUANTITATIVE_LOWER_BOUND | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | fixed-compact literal observation-product envelope |
+| VERDICT_REQ_2026_08_28_R1A_CORRECTION_16_GLOBAL_GAUGE_KILL_A | L2_GAUGE_PLUS_REAL_ZERO_PROPAGATION | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | source_interlacing_or_Herglotz_gate |
+| VERDICT_REQ_2026_08_28_R1A_LOCAL_ZERO_COUNT_SIGN_PARITY_REPA | coefficient sign pattern as exact zero-count law | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | >- |
+| VERDICT_REQ_2026_08_28_R1_LOCAL_SPECTRAL_COUNT_SIGN_GATE_REP | SIGN_PATTERN_AND_RICCI_GATE_AS_COUNT_DECIDER | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | owner_acquisition_of_a_direct_local_spectral_measure_theorem |
+| VERDICT_REQ_2026_08_28_R1_ZERO_DENSITY_ALARM_AND_LOCAL_SPECT | sine_lattice_as_zero_set | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | local_finite_spectral_count_source_audit |
+| VERDICT_RULEB_POSTCLOSE_RATIFIED_RULEA_REJECTED_2026_07_31 | treat_preflight_protocol_as_equivalent_to_one_stop_condition | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | pin A1_as_canonical_and_A2_as_corollary |
+| VERDICT_SAME_FAMILY_PUBLICATION_SPEC_2026_08_11 | market_classical_Hurwitz_closure_as_new_RH_criterion | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | Proposition59GroundLagrangeZeroSetBridge |
+| VERDICT_SPEC_011_TYPED_DISCOVERY_COMPILER_AUDIT_2026_08_23 | RANKING_BEFORE_CONTEXT_COHERENT_PORT_MATCHING | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | positive_controls_plus_semantic_counterfeit_plants |
+| VERDICT_T2_1_DURABLE_PORT_MATCHER_FAIL_CLOSED_AUDIT_2026_08_ | FIXTURE_PASS_AS_PRODUCTION_RELEASE | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | P7_P10 |
+| VERDICT_T2_2_PORT_MATCHER_PROOF_EDGE_AUDIT_2026_08_23 | SHAPE_VALIDATED_METADATA_AS_PROOF_EDGE | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | P11_P15_SOURCE_SEMANTICS |
+| VERDICT_TYPED_IO_MEET_IN_THE_MIDDLE_GAP_ALGEBRA_2026_08_23 | ranking_before_typed_port_matching | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | five_port_matcher_plants |
+| VERDICT_UNBOUND_THREE_STAGE_FASTEST_KILL_PLAN_2026_09_03 | unbound_chat_adjudication | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | request_hash_and_binding_check |
+| VERDICT_W2_SELECTED_FERRERS_PACKET_VARIATION_SEMANTIC_ADMISS | INTERIOR_ANALYTICITY_AS_GLOBAL_VARIATION | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | pinned_source_and_api_search_for_W3 |
+| VERDICT_W5_SIGNED_ESTAR_RETRACTION_2026_08_25 | termwise_absolute_lattice_sum_probe | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | proof_grade_uniform_signed_envelope |
+| WHOLE_EXPRESSION_PILOT_WITHOUT_COMPLETE_SOURCE_STREAM | run numeric/probe whole-expression pilots or emit DirectConcretePayloa | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... | ESCAPE: CertificateShift \| produce proof-grade same-target collapsedExpression coeffici... |
+
+**wall** (11)
+
+| id | subject | execution status | scope NOT closed | next / rollback |
+|---|---|---|---|---|
+| BOUNDARY_LEAKAGE_WALL | Boundary leakage wall | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... |  |
+| COORDINATE_WALL | Coordinate wall | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... |  |
+| DE_BRANGES_POSITIVITY_CERTIFICATE_FOR_RH_FAILS | A natural de Branges-type positivity certificate as a route to RH | standing | Kills the naive de Branges certificate; does not kill Beurling–Selberg / Carneiro–Littm... | Carneiro–Littmann–Vaaler extremal functions — the most directly transferable unconditio... |
+| FINITE_CERTIFICATE_WALL | Finite-certificate wall | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... |  |
+| FINITE_TO_GLOBAL_WALL | Finite-to-global wall | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... |  |
+| MATRIX_IDENTIFICATION_WALL | Matrix-identification wall | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... |  |
+| NO_COHN_ELKIES_DUAL_CERTIFICATE_FOR_ZERO_LOCATION | A Cohn–Elkies-style single dual certificate for zero location / RH | standing | A statement about the state of the art, not an impossibility theorem: unlike the Kuraso... |  |
+| P0_ENCLOSURE_WALL | P0 enclosure wall | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... |  |
+| PRIME_COMB_NOT_A_FOURIER_QUASICRYSTAL | Transplanting Fourier-quasicrystal / Lee-Yang crystalline-measure mach | standing | Does not kill positivity/LP approaches as such; it kills the specific hope of importing... | Closest genuine structural analogue is the Connes–Consani–Moscovici prolate/Sonin/Toepl... |
+| PRIME_SIDE_WALL | Prime-side wall | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... |  |
+| STEP33_SCALAR_REPLAY_SWAMP_WALL | Step33 scalar replay swamp wall | standing | Operational KILL of the recorded scope only; this does not imply MATHEMATICALLY_DEAD an... |  |
+
+_320 records, 252 cross-file aliases. Query: `./orchestrator/kb.py search <term>`._
+
+## 3. Bus strategy memory (M3 iteration blocks in verdicts)
+| verdict file | target | forbidden_future_move | new_gap |
+|---|---|---|---|
+| 051_m1_posdef_selfadjoint_real_spectrum.answer.md | Goal_051_M1_weighted_selfadjoint_real_spectrum | apply_M1_directly_to_the_degenerate_CvS_form | M2_DEGENERATE_Q_SEPARATED_QUOTIENT_POSDEF |
+| D0_7E_5A_OWNER_INPUT_PACKET.md | D0.7e.5a_owner_input_packet | define_WPrime_from_5c_or_rename_bCal | SOURCE_DEFINED_WPRIME_CONSUMER_AND_B_HOMOGENEITY |
+| D0_7E_5A_PROSHKA_SOURCE_AUDIT_VERDICT.md | D0.7e.5a external source acquisition | treat_outlook_normalization_or_determinant_modulus_as_source_recovery | SourceWPrimeDefinitionAndSemanticCrosswalk |
+| PROSHKA_038_SUPPLIER_A_DIRECTIVE_2026-07-30.md | ScaledOuterSignBarrierFourThirds | promote m257 Jacobi or finite 027 to a cofinal theorem | ParametricScaledJacobiDiscriminatorNonneg |
+| PROSHKA_054_1B_V2_ADJUDICATION_2026-08-05.md | CCM_cell_13_2_real_receiver_v2 | invent independent W02_WR_Prime endpoint tables | G2_CCM_CELL13N2_ANTIPODAL_SOURCE_IDENTITY_GAP |
+| PROSHKA_054_1_FINITE_VON_MANGOLDT_ADJUDICATION_2026-08-05.md | finite_von_Mangoldt_normalization_for_CCM_cell_13_2 | inline_the_twelve_cases_into_ccmCell13N2_wr_enclosures | G2_CCM_054_1_FINITE_VON_MANGOLDT_WEIGHTED_SUM_NORMAL_FORM_MISSING |
+| PROSHKA_054_1_NEXT_SPLIT_ADJUDICATION_2026-08-05.md | CCM_cell_13_2_next_cancellation_preserving_split | inline_25_cases_into_the_broad_receiver_or_invent_component_balls | G2_CCM_054_1_SEVEN_CLASS_LAYOUT_CONSUMER_MISSING |
+| PROSHKA_054_1_POST_PRIME_KERNEL_NEXT_NODE_ADJUDICATION_2026-08-05.md | post_prime_smallest_cancellation_preserving_node | independently intervalize W02_WRconstant_Prime | G2_CCM_054_1_SEVEN_REPRESENTATIVE_NONINTEGRAL_CONSTANT_EXACT_NORMAL_FORM_MISSING |
+| PROSHKA_054_1_POST_W02_NEXT_NODE_ADJUDICATION_2026-08-05.md | post_W02_smallest_next_node | infer independent component balls from final-entry intervals | G2_CCM_054_1_SEVEN_REPRESENTATIVE_PRIME_KERNEL_EXACT_NORMAL_FORM_MISSING |
+| PROSHKA_054_1_POST_WEIGHTED_SUM_ADJUDICATION_2026-08-05.md | post_weighted_sum_next_node | publish trivial prime specializations or call symbolic normalization an enclosure | G2_CCM_054_1_W02_SEVEN_CLASS_EXACT_NORMAL_FORM_MISSING |
+| PROSHKA_H2A_LEAN_NATIVE_PROBE_ADJUDICATION_2026-08-11.md | lean_native_constructor_probe | run multiple extractor/search systems before one typed negative-controlled probe | CCMMatrixToRayleighBottomEigenpairTypedBridge |
+| PROSHKA_VERDICT_ARISTOTLE_MICROSCOPE_2026-07-30.md | unconditional pole-subtracted Muntz continuation | promote an Aristotle-proposed premise to an axiom | MellinDifferentiableOnRightHalfPlane_Icc0_IcoLipschitz |
+| PROSHKA_VERDICT_GOAL057_B3_0E4A_OFFDIAGONAL_SOURCE_ARCH_PAIRING_NEG_CCM_WR_RELEASE_2026-08-08.md | GOAL057_B3_0E4A_OFFDIAGONAL_SOURCE_ARCH_PAIRING_EQ_NEG_CCM_WR_ENTRY | promote_offdiagonal_crosswalk_to_full_CCM_WR_or_split_diagonal_regularization_into_divergent_parts | GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER |
+| PROSHKA_VERDICT_GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER_RELEASE_2026-08-08.md | GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER | hide_the_scalar_endpoint_ledger_inside_an_all_mode_crosswalk_or_split_the_paired_near_zero_regularizer | GOAL057_B3_0E4B2_DIAGONAL_SOURCE_ARCH_PAIRING_EQ_NEG_CCM_WR_ENTRY |
+| PROSHKA_VERDICT_GOAL057_B3_0E4C_ALL_MODE_SOURCE_ARCH_PAIRING_NEG_CCM_WR_RELEASE_2026-08-08.md | GOAL057_B3_0E4C_ALL_MODE_SOURCE_ARCH_PAIRING_EQ_NEG_CCM_WR_ENTRY | claim_order_validation_from_ccmWREntry_n_r_equals_ccmWREntry_r_n | GOAL057_B3_0F_FINITE_ARCHIMEDEAN_SESQUILINEAR_FORM_MATRIX_LIFT |
+| PROSHKA_VERDICT_GOAL057_B3_0F_FINITE_ARCHIMEDEAN_SESQUILINEAR_FORM_MATRIX_LIFT_RELEASE_2026-08-08.md | GOAL057_B3_0F_FINITE_ARCHIMEDEAN_SESQUILINEAR_FORM_MATRIX_LIFT | rebuild_the_finite_archimedean_form_privately_or_use_symmetric_index_swaps_as_orientation_evidence | GOAL057_B3_0G_SOURCE_W02_MODE_PAIRING_EQ_CCM_W02_ENTRY |
+| PROSHKA_VERDICT_GOAL057_B3_0F_FINITE_ARCHIMEDEAN_SESQUILINEAR_FORM_MATRIX_LIFT_REPAIRED_PREFLIGHT_2026-08-08.md | GOAL057_B3_0F_FINITE_ARCHIMEDEAN_SESQUILINEAR_FORM_MATRIX_LIFT | treat_symmetric_or_dummy_index_swaps_as_slot_orientation_evidence | GOAL057_B3_0F_BYTE_PINNED_HARNESS_UNAVAILABLE_OR_PLANT_BLIND |
+| PROSHKA_VERDICT_GOAL057_B3_0G_SOURCE_W02_MODE_PAIRING_PRODUCTION_RELEASE_2026-08-08.md | GOAL057_B3_0G_SOURCE_W02_MODE_PAIRING_EQ_CCM_W02_ENTRY | misstate_private_source_or_rank_two_witnesses_as_direct_public_crosswalk_dependencies | GOAL057_B3_0H_FINITE_W02_SESQUILINEAR_FORM_MATRIX_LIFT |
+| PROSHKA_VERDICT_GOAL057_B3_0H_FINITE_W02_FORM_MATRIX_LIFT_RELEASE_2026-08-08.md | GOAL057_B3_0H_FINITE_W02_SESQUILINEAR_FORM_MATRIX_LIFT | treat_a_coherently_mutated_bilinear_wrapper_as_semantically_certified_because_simp_still_closes_it | GOAL057_B3_0I_SOURCE_PRIME_MODE_PAIRING_SIGN_NORMALIZATION_AUDIT |
+| PROSHKA_VERDICT_GOAL057_B3_0J_FINITE_PRIME_FORM_MATRIX_LIFT_RELEASE_2026-08-09.md | GOAL057_B3_0J_FINITE_PRIME_SESQUILINEAR_FORM_MATRIX_LIFT | internalize_the_complete_ledger_minus_or_use_target_symmetry_as_order_evidence | COMPLETE_THREE_COMPONENT_SOURCE_WEIL_FORM_ASSEMBLY_UNMINTED |
+| PROSHKA_VERDICT_GOAL057_B3_0_POST_J_NEXT_NODE_ADJUDICATION_2026-08-09.md | GOAL057_B3_0_POST_J_NEXT_NODE_ADJUDICATION | relabel_a_finite_coefficient_wrapper_as_the_ambient_domain_carrying_source_form | GOAL057_B3_0K_EXACT_ASSEMBLY_PREFLIGHT_FAILED |
+| PROSHKA_VERDICT_T4A_SUPERSEDED_PL2_2026-07-30.md | T4a Mellin right-half-plane analyticity | count absent plants as mechanically instantiated | PL2_RawPoleMismatchExplicitWitness |
+
+## 4. Process errors (ERRORS_DESTROYER)
+- Ошибка #1: "Компилируется" ≠ "Закрывает аксиому"
+- Ошибка #N: [Краткое название]
+
+## 5. Trick arsenal index (RH_TRICK_ATLAS, K9)
+- [hot candidate] 1. Viazovska Magic Auxiliary Function
+- [parked] 2. Cohn-Kumar-Miller-Radchenko-Viazovska Interpolation
+- [candidate] 3. Guth-Maynard Dirichlet Polynomial Large Values
+- [applied] 4. Ratchet / Self-Improvement
+- [applied] 5. Margin Ledger
+- [applied] 6. Fourier-Side Rewrite / Explicit Formula
+- [applied] 7. Dual Certificate / Positivity Cone
+- [awaiting-research] 8. MSS Interlacing
+- [awaiting-research] 9. Selberg Extremal Functions
+- [awaiting-research] 10. Log-Gas Large Deviations
+- [applied] 11. Sign-Uncertainty Surcharge
+
+## 6. Recent branch decisions (Progress_Log.md)
+- 2026-09-01 — adaptive explicit-tail reuse убит, выбран exact Schur margin
+- 2026-09-01 — direct selected-N cancellation убит, выбран adaptive block crosswalk
+- 2026-09-01 — фиксированный cutoff убит, выбран direct selected-N
+- 2026-08-28 — консолидация вперёд R1: сперва закрепить, потом идти
+- 2026-08-23 — вся алгебраическая цепь F72 закрыта за ночь; paper-входы типизированы
+- 2026-08-22 — ordering front закрыт целиком; physical lift открыт следующим
+- 2026-08-09 — манифест соединён с обратным поиском
+
+## 7. Recent insights (INSIGHTS.md head)
+- Synthesis (2026-08-08, in progress) -- Goal 057 B3.0G source W02 mode pairing
+- Synthesis (2026-08-08, closed node) -- Goal 057 B3.0F finite archimedean sesquilinear matrix lift
+- Synthesis (2026-08-08, closed node) -- Goal 057 B3.0E4C all-mode CCM-WR case assembly
+- Synthesis (2026-08-08, closed node) -- Goal 057 B3.0E4B2 diagonal archimedean / CCM-WR crosswalk
+- Synthesis (2026-08-08, closed node) -- Goal 057 B3.0E4B1 diagonal endpoint ledger
+- Synthesis (2026-08-08, in progress) -- Goal 057 B3.0E4A off-diagonal archimedean / CCM-WR crosswalk
+- Synthesis (2026-08-08, in progress) -- Goal 057 B3.0E3 source cosine-correlation preflight
+- Synthesis (2026-08-08, in progress) -- Goal 057 B3.0E2 joint kernel-mode Fubini preflight
+
+CONTROL_V10_STRICT_PASS reason=session-start base_control=PASS semantic_index=PASS tool_manifest=PASS research_dependency=PASS authority=CODEX_PROSHKA_FULL_EXCEPT_PX_RH_CLAIM
+
+LOCAL_RECEIPT_SHA256 322a058a46dc21b69ee1f868b83abbbbade9b3091d7147a58a0b68cd5a231399
+```json
+{
+  "authority": "MACHINE_LOCAL_RETRIEVAL_VALIDATION_NOT_PROOF",
+  "boundary": "RETRIEVAL_VALIDATION_NOT_PROOF",
+  "collection": "q3_docs",
+  "collection_file_count": 3304,
+  "corpus": {
+    "breakdown": {
+      "lean": 1108,
+      "markdown": 2138,
+      "other": 0,
+      "tex": 56,
+      "yaml": 1
+    },
+    "expected_collection_file_count": 3304,
+    "file_count": 3303,
+    "schema": "q3_docs_corpus.v1",
+    "sha256": "442d97af1e14b65f899472cead47f6950d2bb0b0f946061ec49c153b8297bd82",
+    "total_bytes": 40722095
+  },
+  "dynamic_goal_path": "docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md",
+  "dynamic_queries": [
+    {
+      "expected_path_match": true,
+      "expected_path_token": "058-realzero-ground-diagonal-to-xi-goal-md",
+      "external_lean": {
+        "base_results": [
+          {
+            "base_id": "zeta23",
+            "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+            "exact_candidate": null,
+            "identity_after": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "identity_before": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "searched_regular_source_count": 329
+          }
+        ],
+        "bases_queried": [
+          "zeta23"
+        ],
+        "boundary": "CANDIDATE_MATCH_NOT_LEAN_PROOF_OR_INTERFACE_EQUIVALENCE",
+        "budget_seconds": 15.0,
+        "candidate": null,
+        "candidate_provenance": null,
+        "candidate_sha256": null,
+        "elapsed_seconds": 0.322664,
+        "enabled_bases": [
+          "zeta23"
+        ],
+        "errors": [],
+        "matches": [
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 97,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/ExplicitFormula.lean",
+            "snippet": "a goal written with `*`; restating the lemmas at ℂ (proved by `exact`) makes `rw` usable.) -/"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 1032,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/MediumPNT.lean",
+            "snippet": "  all_goals"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 2548,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/MediumPNT.lean",
+            "snippet": "        obtain ⟨_, ripGoal⟩ := h"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 719,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/MellinCalculus.lean",
+            "snippet": "  on_goal 1 =>"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 721,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/MellinCalculus.lean",
+            "snippet": "  on_goal 2 =>"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 724,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/MellinCalculus.lean",
+            "snippet": "  all_goals"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 116,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/Rectangle.lean",
+            "snippet": "set_option linter.style.multiGoal false in"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 124,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/Rectangle.lean",
+            "snippet": "  all_goals simpa using by linarith"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 263,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/Rectangle.lean",
+            "snippet": "  all_goals exact (antitone_const_tsub.Icc (monotone_id.const_add _)).monotoneOn _"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 128,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "  all_goals refine integral_congr fun _ _ ↦ h ?_"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 282,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "set_option linter.style.multiGoal false in"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 310,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "  all_goals try {"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 320,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "  all_goals try {"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 323,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "    all_goals assumption"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 333,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "  all_goals try { apply rectangle_subset_punctured_rect <;> simp_all }"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 518,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "  all_goals simp [*]"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 523,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "  all_goals simp [field]"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 36,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/Tactic/AdditiveCombination.lean",
+            "snippet": "the target.  Afterwards, it sets the goal to be the equality between the"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 37,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/Tactic/AdditiveCombination.lean",
+            "snippet": "lefthand side of the new goal and the lefthand side of the new weighted sum."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 95,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/Tactic/AdditiveCombination.lean",
+            "snippet": "    -- We have the expected type from the goal, so we can fully synthesize this leaf node."
+          }
+        ],
+        "max_matches": 20,
+        "query": "GOAL 058 REALZERO_GROUND_DIAGONAL_TO_XI",
+        "query_sha256": "0863dfefb0e70877d680315899146e67bd98839d04f3c178b7ecc47a6956b8aa",
+        "registry_sha256": "7c13b5eba028296a05d3c926c6e9e3af36730e9dd24f4014e4889290fef76557",
+        "schema": "q3_external_lean_search.v2",
+        "terms": [
+          "GOAL",
+          "REALZERO_GROUND_DIAGONAL_TO_XI"
+        ]
+      },
+      "id": "goal",
+      "query": "GOAL 058 REALZERO_GROUND_DIAGONAL_TO_XI",
+      "result_count": 12,
+      "status": "PASS",
+      "top_paths": [
+        "qmd://q3_docs/docs/routeb-bus/058-realzero-ground-diagonal-to-xi-goal.md",
+        "qmd://q3_docs/docs/routeb-bus/codex-rerank-goal058-even-head-tail-feshbach-hold-2026-08-31.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-goal058-second-mode-overlap-of-the-xi-row-2026-09-04.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-goal058-curvature-schur-loewner-secular-adjudication-2026-09-03.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-goal058-signfree-ritz-inside-ccm-uniform-error-atom-2026-09-04.md",
+        "qmd://q3_docs/docs/routeb-bus/codex-closeout-goal058-r2-moving-krylov-feshbach-2026-08-30.md",
+        "qmd://q3_docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/goal058-complex-hermitian-p59-connector-closeout-2026-08-13.md",
+        "qmd://q3_docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/goal058-g1-literal-complement-floor-spectral-receiver-closeout-2026-08-14.md"
+      ]
+    },
+    {
+      "expected_path_match": true,
+      "expected_path_token": "proposition59groundlagrangezerosetbridge",
+      "external_lean": {
+        "base_results": [
+          {
+            "base_id": "zeta23",
+            "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+            "exact_candidate": null,
+            "identity_after": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "identity_before": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "searched_regular_source_count": 329
+          }
+        ],
+        "bases_queried": [
+          "zeta23"
+        ],
+        "boundary": "CANDIDATE_MATCH_NOT_LEAN_PROOF_OR_INTERFACE_EQUIVALENCE",
+        "budget_seconds": 15.0,
+        "candidate": null,
+        "candidate_provenance": null,
+        "candidate_sha256": null,
+        "elapsed_seconds": 0.364897,
+        "enabled_bases": [
+          "zeta23"
+        ],
+        "errors": [],
+        "matches": [],
+        "max_matches": 20,
+        "query": "Proposition59GroundLagrangeZeroSetBridge",
+        "query_sha256": "415aca9dc79f1c71acfa2978bf70139212f927ff14669823d09ee072c90a78fc",
+        "registry_sha256": "7c13b5eba028296a05d3c926c6e9e3af36730e9dd24f4014e4889290fef76557",
+        "schema": "q3_external_lean_search.v2",
+        "terms": [
+          "Proposition59GroundLagrangeZeroSetBridge"
+        ]
+      },
+      "id": "exact_target",
+      "query": "Proposition59GroundLagrangeZeroSetBridge",
+      "result_count": 12,
+      "status": "PASS",
+      "top_paths": [
+        "qmd://q3_docs/docs/routeb-bus/codex-directive-route058-p59-g2b-2026-08-12.md",
+        "qmd://q3_docs/docs/routeb-bus/058-realzero-ground-diagonal-to-xi-goal.md",
+        "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/g6n1selectedferrersgroundproposition59realzeros.lean",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-master-route-realzero-ground-diagonal-to-xi-2026-08-11.md",
+        "qmd://q3_docs/docs/routeb-bus/codex-answer-2026-09-03-step1-3-p59-agreement-set-source-check.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-req-2026-08-26-n-ground-parity-realification-kernel-admission-2026-08-27.md",
+        "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/proposition59groundlagrangezerosetbridge.lean",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-goal058-curvature-bridge-proof-and-hs-representation-2026-09-03.md"
+      ]
+    },
+    {
+      "expected_path_match": null,
+      "expected_path_token": null,
+      "external_lean": {
+        "base_results": [
+          {
+            "base_id": "zeta23",
+            "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+            "exact_candidate": null,
+            "identity_after": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "identity_before": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "searched_regular_source_count": 329
+          }
+        ],
+        "bases_queried": [
+          "zeta23"
+        ],
+        "boundary": "CANDIDATE_MATCH_NOT_LEAN_PROOF_OR_INTERFACE_EQUIVALENCE",
+        "budget_seconds": 15.0,
+        "candidate": null,
+        "candidate_provenance": null,
+        "candidate_sha256": null,
+        "elapsed_seconds": 0.360598,
+        "enabled_bases": [
+          "zeta23"
+        ],
+        "errors": [],
+        "matches": [],
+        "max_matches": 20,
+        "query": "Q3.RH",
+        "query_sha256": "162e3a888d6845831bce0058332aec51f4b312b435bea4c08b078af51277c607",
+        "registry_sha256": "7c13b5eba028296a05d3c926c6e9e3af36730e9dd24f4014e4889290fef76557",
+        "schema": "q3_external_lean_search.v2",
+        "terms": [
+          "Q3.RH"
+        ]
+      },
+      "id": "terminal_consumer",
+      "query": "Q3.RH",
+      "result_count": 12,
+      "status": "PASS",
+      "top_paths": [
+        "qmd://q3_docs/q3-lean-aristotle/q3/proofs/q-nonneg-on-atoms-fourier-axiom.lean",
+        "qmd://q3_docs/q3-lean-aristotle/q3/rkhs-contraction.lean",
+        "qmd://q3_docs/q3-lean-aristotle/active/refs/proof-map.md",
+        "qmd://q3_docs/docs/routeb-bus/local-zero-invariants-catalog-2026-09-08.md",
+        "qmd://q3_docs/full/rh-q3.tex",
+        "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/completedtrackerscope.lean",
+        "qmd://q3_docs/q3-lean-aristotle/q3/proofs/rkhs-rescaling.lean",
+        "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/proposition59reciprocalmodeweightedshell.lean"
+      ]
+    },
+    {
+      "expected_path_match": null,
+      "expected_path_token": null,
+      "external_lean": {
+        "base_results": [
+          {
+            "base_id": "zeta23",
+            "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+            "exact_candidate": null,
+            "identity_after": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "identity_before": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "searched_regular_source_count": 329
+          }
+        ],
+        "bases_queried": [
+          "zeta23"
+        ],
+        "boundary": "CANDIDATE_MATCH_NOT_LEAN_PROOF_OR_INTERFACE_EQUIVALENCE",
+        "budget_seconds": 15.0,
+        "candidate": null,
+        "candidate_provenance": null,
+        "candidate_sha256": null,
+        "elapsed_seconds": 0.320585,
+        "enabled_bases": [
+          "zeta23"
+        ],
+        "errors": [],
+        "matches": [
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 15,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23.lean",
+            "snippet": "import Zeta23.ZeroSide.TightMult"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 7,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "Residue calculus on rectangles beyond one simple pole."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 8,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "Used for the weighted contour integral ∮ H·Λ'/Λ and for the Riemann–von Mangoldt count"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 13,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "  (Induction on S: subtract one principal part, remove the singularity, recurse.)"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 17,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "* `finite_zeros_rectangle`, `rectangleIntegral'_mul_logDeriv'`: the zero set is finite; self-contained form."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 23,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "open Complex Set Topology Filter Asymptotics Real"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 47,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "    -- the principal part at p, the remainder f₁, and its extension f₂ across p"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 117,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "        exact (hc.tendsto.mono_left nhdsWithin_le_nhds).isBigO_one ℂ"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 141,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "/-- The zero set of a function analytic on a neighbourhood of every point of a rectangle and"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 142,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "nonvanishing at one of its points is finite. -/"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": "finite_zeros_rectangle",
+            "line": 143,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "theorem finite_zeros_rectangle {f : ℂ → ℂ} {z w : ℂ} (hf : AnalyticOnNhd ℂ f (Rectangle z w))"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 157,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "/-! ## Meromorphic version: finitely many zeros AND poles inside the rectangle"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 159,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "Intended for f = completedRiemannZeta (simple poles at 0 and 1, residues ∓1):"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 160,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "(1/2πi) ∮ g·(f'/f) = Σ_{zeros ρ} ord_ρ(f)·g(ρ) − Σ_{poles p} m_p·g(p)."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 162,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "which is the shape of Mathlib's `completedRiemannZeta_residue_one` (m = 1). -/"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 183,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "  -- zeros are interior points"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 198,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "  -- residues: +ord·g at zeros, −m·g at poles"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 279,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "        ((hslope.const_mul (analyticOrderNatAt f q : ℂ)).add hcont).isBigO_one ℂ"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 346,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "        (hcont.sub (hslope.const_mul (m q : ℂ))).isBigO_one ℂ"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 350,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "point of the closed rectangle, f nonvanishing on its border, and Z the zero set of f in the"
+          }
+        ],
+        "max_matches": 20,
+        "query": "ONE NORMALIZED GROUND FAMILY REAL ZEROS AND LOCALLY UNIFORM LIMIT",
+        "query_sha256": "e5a58f7a98ddeed949d49e66962fdffb6e7b735799a092b66ae6820bb2d50cee",
+        "registry_sha256": "7c13b5eba028296a05d3c926c6e9e3af36730e9dd24f4014e4889290fef76557",
+        "schema": "q3_external_lean_search.v2",
+        "terms": [
+          "ONE",
+          "NORMALIZED",
+          "GROUND",
+          "FAMILY",
+          "REAL",
+          "ZEROS",
+          "AND",
+          "LOCALLY",
+          "UNIFORM",
+          "LIMIT"
+        ]
+      },
+      "id": "property_combination",
+      "query": "ONE NORMALIZED GROUND FAMILY REAL ZEROS AND LOCALLY UNIFORM LIMIT",
+      "result_count": 12,
+      "status": "PASS",
+      "top_paths": [
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-goal058-ground-transform-zero-pinning-and-real-zero-identification-2026-09-04.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-exact-roof-port-to-supplier-ledger-2026-09-01.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-supplement-goal058-screw-signature-closure-2026-09-08.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-req-2026-08-28-r1a-correction-16-global-gauge-kill-and-log-derivative-rerank-2026-08-28.md",
+        "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/d0criticalmomentstripbound.lean",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-mythos-three-stage-fastest-kill-plan-2026-09-03.md",
+        "qmd://q3_docs/docs/routeb-bus/linux-r1-phase0-ground-family-object-lock-goal058-2026-08-28.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-g3-g5-g6-pillar-rope-batch-2026-08-19.md"
+      ]
+    },
+    {
+      "expected_path_match": null,
+      "expected_path_token": null,
+      "external_lean": {
+        "base_results": [
+          {
+            "base_id": "zeta23",
+            "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+            "exact_candidate": null,
+            "identity_after": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "identity_before": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "searched_regular_source_count": 329
+          }
+        ],
+        "bases_queried": [
+          "zeta23"
+        ],
+        "boundary": "CANDIDATE_MATCH_NOT_LEAN_PROOF_OR_INTERFACE_EQUIVALENCE",
+        "budget_seconds": 15.0,
+        "candidate": null,
+        "candidate_provenance": null,
+        "candidate_sha256": null,
+        "elapsed_seconds": 0.328043,
+        "enabled_bases": [
+          "zeta23"
+        ],
+        "errors": [],
+        "matches": [
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 3,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23.lean",
+            "snippet": "Released under Apache 2.0 license as described in the file LICENSE."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 6,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23.lean",
+            "snippet": "-- Zeta23.lean — root of library Zeta23: the headline modules (see README.md)."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 3,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "Released under Apache 2.0 license as described in the file LICENSE."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 8,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "Used for the weighted contour integral ∮ H·Λ'/Λ and for the Riemann–von Mangoldt count"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 11,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "* `residueTheorem_finset`: f holomorphic on Rectangle z w minus a finite set S of interior points, with"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 13,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "  (Induction on S: subtract one principal part, remove the singularity, recurse.)"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 14,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "* `rectangleIntegral'_mul_logDeriv` (the \"argument principle with weight\"): f, g analytic on a"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 15,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "  neighbourhood of each point of Rectangle z w, f ≠ 0 on the border, Z = the (finite) zero set of"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 16,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "  f in the rectangle  ⟹  RectangleIntegral' (g · f'/f) z w = Σ_{ρ∈Z} ord_ρ(f) · g(ρ)."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 17,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "* `finite_zeros_rectangle`, `rectangleIntegral'_mul_logDeriv'`: the zero set is finite; self-contained form."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 30,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "/-- **Residue theorem on a rectangle for finitely many simple poles.** -/"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": "residueTheorem_finset",
+            "line": 31,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "theorem residueTheorem_finset {f : ℂ → ℂ} {z w : ℂ} (hre : z.re ≤ w.re) (him : z.im ≤ w.im)"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 47,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "    -- the principal part at p, the remainder f₁, and its extension f₂ across p"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 80,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "    -- f₂ is holomorphic on the rectangle minus the remaining poles"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 104,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "    -- the principal parts at the other poles are unchanged"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 120,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "    -- on the border, f = f₂ + P"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 139,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "    rw [ih', ResidueTheoremInRectangle hre him hp, add_comm]"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 141,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "/-- The zero set of a function analytic on a neighbourhood of every point of a rectangle and"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": "finite_zeros_rectangle",
+            "line": 143,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "theorem finite_zeros_rectangle {f : ℂ → ℂ} {z w : ℂ} (hf : AnalyticOnNhd ℂ f (Rectangle z w))"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 157,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "/-! ## Meromorphic version: finitely many zeros AND poles inside the rectangle"
+          }
+        ],
+        "max_matches": 20,
+        "query": "the kill ledger has seven recurring defect classes and two of them are mechanically checkable",
+        "query_sha256": "084333ceff42216a38b46d79f2a0f716ef81fed07755dac84ace2b12181092a9",
+        "registry_sha256": "7c13b5eba028296a05d3c926c6e9e3af36730e9dd24f4014e4889290fef76557",
+        "schema": "q3_external_lean_search.v2",
+        "terms": [
+          "the",
+          "kill",
+          "ledger",
+          "has",
+          "seven",
+          "recurring",
+          "defect",
+          "classes",
+          "and",
+          "two",
+          "them",
+          "are",
+          "mechanically",
+          "checkable"
+        ]
+      },
+      "id": "fresh_insight",
+      "query": "the kill ledger has seven recurring defect classes and two of them are mechanically checkable",
+      "result_count": 12,
+      "status": "PASS",
+      "top_paths": [
+        "qmd://q3_docs/q3-lean-aristotle/active/insights.md",
+        "qmd://q3_docs/q3-lean-aristotle/docs/insights.md",
+        "qmd://q3_docs/docs/routeb-bus/agent-report-2026-09-04-goal058-normalized-xi-lattice-eigen-equation-preflight.md",
+        "qmd://q3_docs/docs/routeb-bus/linux-correction-7-two-c04-slips-in-the-pole-crosswalk-goal058-2026-08-27.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka-queue.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-goal058-r2-moving-krylov-feshbach-discriminator-2026-08-29.md",
+        "qmd://q3_docs/docs/progress-log.md",
+        "qmd://q3_docs/q3-lean-aristotle/active/graphs/route-kill-registry.md"
+      ]
+    }
+  ],
+  "generated_at": "2026-09-11T20:17:16.681482+00:00",
+  "machine_id": "ccc9c191358572b7131ea8974a1ccfc1d643f78ddea72c9a41cb5a7f89bde914",
+  "mode": "search_plus_vsearch",
+  "plants": [
+    {
+      "id": "POST_JUNE_IDENTIFICATION",
+      "lexical_count": 0,
+      "matched_paths": [
+        "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/proshka/goal058-two-front-proof-architecture-memorandum-2026-08-14.md",
+        "qmd://q3-docs/docs/routeb-bus/proshka/proshka-verdict-mythos-three-stage-fastest-kill-plan-2026-09-03.md",
+        "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/goal057-actual-numerator-source-target-audit-2026-08-07.md",
+        "qmd://q3-docs/docs/routeb-bus/goal057-actual-numerator-source-target-audit-2026-08-07.md",
+        "qmd://q3-docs/docs/routeb-bus/proshka/proshka-verdict-req-2026-08-26-n-pole-neutrality-rank-two-repair-2026-08-27.md"
+      ],
+      "query": "IdentificationAt",
+      "result_count": 30,
+      "status": "PASS",
+      "vector_count": 30
+    },
+    {
+      "id": "POST_JUNE_EDGE_SLIVER",
+      "lexical_count": 18,
+      "matched_paths": [
+        "qmd://q3-docs/docs/routeb-bus/aristotle-task-edgeslivermomentreduction.md",
+        "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/aristotle-task-edgeslivermomentreduction.md",
+        "qmd://q3-docs/docs/routeb-bus/037-muntz-r6-harvest-answer.md",
+        "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/037-muntz-r6-harvest-answer.md",
+        "qmd://q3-docs/docs/routeb-bus/035-edge-sliver-materialization-goal.md"
+      ],
+      "query": "edge-sliver",
+      "result_count": 41,
+      "status": "PASS",
+      "vector_count": 30
+    },
+    {
+      "id": "PRE_SWITCH_STEP33",
+      "lexical_count": 5,
+      "matched_paths": [
+        "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffentryhboximport.lean",
+        "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornerfamilybridge.lean",
+        "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornersegmentcert.lean",
+        "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffanalyticp0import.lean",
+        "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16directintervalpayload.lean"
+      ],
+      "query": "ActiveCenteredCoeffEntryHboxCert",
+      "result_count": 30,
+      "status": "PASS",
+      "vector_count": 30
+    }
+  ],
+  "qmd_index": {
+    "collection_file_count": 3304,
+    "collection_mask": "**/*",
+    "collection_root": "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/q3.lean.aristotle/.qmd_cache/q3_docs_current",
+    "identity": "bbf0090a48386c22009eb04fb1c93dd7e8615ba1721e530ddb450a1a7fac5e0c",
+    "index_path": "/home/chirurgie/.cache/qmd/index.sqlite"
+  },
+  "schema": "q3_semantic_index_receipt.v2",
+  "source_commit": "66a91b3fced7bcbd5482691122c4a1fa7963e8d7",
+  "status": "PASS"
+}
+```
+
+
+2026-09-11T20:21:13.981555+00:00 — COLD_ENTRY_INTERIM_INTAKE: unadjudicated native report, not final post-publication acceptance. Parent source check independently confirms that discarded exec_command session metadata cannot be inferred from outer JS completion. No runtime bug follows. Exact file /home/chirurgie/.cache/q3-team-cold-entry-during-refresh-2026-09-11.txt 3132bytes SHA256 01d76eb6f9c90c223419b9b0f78b24afe04bc6eee16332bcdec558bdac9bc0e3
+```text
+Q3 cold-entry during live maintenance; NOT final post-publication acceptance.
+Native fresh-context agent: /root/team_cold_entry, task01a0921d-7e5d-71f1-ac1f-4f46a4373bad; requested gpt-5.6-terra/medium, fork none, read-only, no descendants. Tool response confirmed agent name; this receipt does not fabricate resolved-model metadata.
+Primary substantive plan observed HEAD66a91b3fced7bcbd5482691122c4a1fa7963e8d7, originbed5d5c0c85c657923eae96c48253029ac891de3, RESUME95 SHA2562359b58bcad4ad057252213011e3a60e662b6770f91c72482b4b69390ae0794b.
+Owner01a084f4-7498-7021-bac2-91d184d58dc7; installation9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4; ACTIVEepoch1.
+Physical frontier CHALLENGER_NOT_RH, PX_RH_CLAIM NOT_MADE, exact theorem/consumer UNBOUND; DENSITY request09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2. Operation local-install CONFIRMED is distinct from unconfirmed remote bootstrap publication. Next proposal checks original TEAM_CANONICAL_SEMANTIC_REFRESH_EXIT marker, final validation and exact reserved publication. Existing owning task and request/chat require live observation before any send.
+Plan correctly returned FATAL:WRITER_LOCK_COLLISION and NODE_REGISTRY_WRITER_EPOCH_UNAVAILABLE, with observer-only task mismatch. These reflect the actual owner's ongoing fenced refresh, not a missing owner or permission to duplicate it. Observations accompanying a FATAL plan do not authorize execution or establish a fully coherent accepted snapshot.
+
+Actual agent wrappers (transcribed from its native report, no rerun):
+const r = await tools.exec_command({cmd: "pwd && sed -n '1,240p' SESSION_ENTRY.md && python3 orchestrator/workflow_runtime.py plan", workdir: "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean", yield_time_ms: 30000, max_output_tokens: 20000}); text(r.output);
+Outer functions.exec finished1.7s and emitted substantive plan text. Inner exit/session/chunk metadata were discarded, not observed.
+const r = await tools.exec_command({cmd: "sleep 30\npython3 orchestrator/workflow_runtime.py plan", workdir: "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean", yield_time_ms: 30000, max_output_tokens: 16000}); text(r.output);
+Outer functions.exec finished30.3s and emitted no text. Inner exit/session/chunk metadata were again discarded. Agent stated no running session/poll requirement from outer Script completed; root rejected that inference because an exec_command at its yield boundary can return a live child session. An outer completed JS cell does not prove the shell command completed. Second observation remains UNKNOWN.
+
+Adjudication proposal: EXPECTED_GUARD for writer collision/observer boundary; AGENT_CONTEXT_ERROR for discarded tool status and the unsupported claim that no child session existed. No code repair or ownership/lock relaxation is justified by this report. Corrected follow-up must capture the complete exec_command result (exit_code, session_id, output), retrieve any actual session output, and recompute current plan after actual owner maintenance is finished. This note is evidence/intake only, not a registered issue disposition or overall acceptance.
+```
+
+
+2026-09-11T20:21:14.609453+00:00 — BOOTSTRAP_FINAL_PAYLOAD_FREEZE: source26 exact hashes verified; all indexed bytes final, one actual refresh0 and fresh no-rebuild/strict checks0. Original SIBLING and observer ancestry preserved. Source-only installation commits349fea48/7581673e/66a91b3f are linear. Freeze all29 non-checkpoint inputs after this record. Final checkpoint/history commit and reserved ordinary push are still INTENT, not confirmed. Cold/concurrent/issue acceptance remains pending. Updated full installation/publication-candidate recipe follows; old stages already DONE and must not be replayed. Recipe SHA256 bc9b947fc2a46e173ba49b1704a32ddcf903b0d51ed2ea559393bee1dba18968
+
+```python
+"""Actual-owner staged bootstrap. Run only a named unfinished stage; never replay effects."""
+from pathlib import Path
+from datetime import datetime,timezone
+import copy,hashlib,json,os,subprocess,sys
+R=Path('/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean')
+C=Path('/home/chirurgie/.cache/q3-team-2026-09-11-01a08f80')
+sys.path.insert(0,str(C))
+from orchestrator import workflow_runtime as w
+OWNER='01a084f4-7498-7021-bac2-91d184d58dc7'
+OP='TEAM_CANONICAL_20260911'
+assert os.environ.get('CODEX_THREAD_ID')==OWNER
+M=json.loads(Path('/home/chirurgie/.cache/q3-team-full-artifact-b9-2026-09-11.json').read_text())
+S=json.loads(Path('/home/chirurgie/.cache/q3-team-supplemental-intake-2026-09-11.json').read_text())
+F={f['path']:{**f,'candidate_path':str(C/f['path'])} for f in M['files']}
+F.update({f['path']:f for f in S['files']})
+INITIAL=[p for p in F if (p.startswith('orchestrator/') and p.endswith('.py')) or p=='docs/cartographer/TOOLS.yaml']
+FINAL=[p for p in F if p not in INITIAL]
+ENV={**os.environ,'Q3_OWNER_EPOCH':'1'}
+def sha(b):return hashlib.sha256(b).hexdigest()
+def git(*a):return subprocess.check_output(['git',*a],cwd=R,env=ENV)
+def current():return w._resume_document((R/w.RESUME_PATH).read_bytes())
+def call(*a,allowed=(0,)):
+ p=subprocess.run(['python3','orchestrator/workflow_runtime.py',*a],cwd=R,env=ENV,capture_output=True,text=True)
+ print('CLI',a,'EXIT',p.returncode,p.stdout,p.stderr,flush=True)
+ assert p.returncode in allowed,(a,p.returncode)
+ return json.loads(p.stdout)
+def save(d,b):
+ raw=(R/w.RESUME_PATH).read_bytes();old,_=w._resume_document(raw);d=copy.deepcopy(d)
+ d.update(revision=old['revision']+1,previous_sha256=sha(raw),observed_at=datetime.now(timezone.utc).isoformat())
+ payload=('---\n'+w.yaml.safe_dump(d,sort_keys=False,allow_unicode=True,width=100)+'---\n'+b).encode()
+ w._resume_document(payload)
+ p=Path('/tmp/q3-team-canonical-resume-'+str(d['revision'])+'.md');assert not p.exists();p.write_bytes(payload)
+ call('resume-checkpoint','--candidate',str(p),'--expected-sha256',sha(raw),'--dry-run')
+ call('resume-checkpoint','--candidate',str(p),'--expected-sha256',sha(raw))
+ assert (R/w.RESUME_PATH).read_bytes()==payload
+ return d
+def verify(paths,preimage=True):
+ for p in paths:
+  f=F[p];b=Path(f['candidate_path']).read_bytes();assert len(b)==f['bytes'];assert sha(b)==f['sha256'],p
+  if preimage:
+   old=w._resume_file(R,Path(p));assert w._resume_digest(old)==f['before_sha256'],('PREIMAGE',p)
+def install(paths):
+ with w._execution_writer_epoch(R) as e:
+  verify(paths)
+  for p in paths:
+   f=F[p];w._resume_cas_bytes(R,Path(p),w._resume_file(R,Path(p)),Path(f['candidate_path']).read_bytes(),e,mode=int(f['mode'],8)&0o777)
+  for p in paths:assert sha((R/p).read_bytes())==F[p]['sha256']
+def commit(paths,msg):
+ with w._execution_writer_epoch(R) as e:
+  assert not git('diff','--cached','--name-only')
+  subprocess.run(['git','add','-f','--',*paths],cwd=R,env=ENV,check=True)
+  assert set(git('diff','--cached','--name-only').decode().splitlines())==set(paths)
+  subprocess.run(['git','diff','--cached','--check'],cwd=R,check=True)
+  subprocess.run(['git','-c','commit.gpgsign=false','commit','-m',msg],cwd=R,env=ENV,check=True)
+  e.recheck();c=git('rev-parse','HEAD').decode().strip();print('LOCAL_COMMIT',c,paths,flush=True);return c
+stage=sys.argv[1];d,b=current()
+if stage=='initial':
+ assert d['revision']==89 and d['operation']['state']=='CONFIRMED'
+ assert git('rev-parse','HEAD').decode().strip()=='bed5d5c0c85c657923eae96c48253029ac891de3'
+ assert git('rev-parse','origin/rh_clean').decode().strip()=='bed5d5c0c85c657923eae96c48253029ac891de3'
+ verify(F)
+ initial_inputs={p:F[p]['sha256'] for p in INITIAL}
+ d['operation']={'kind':'PUBLISH','state':'INTENT','id':OP+':local-install','evidence':['Exact reviewed source46ab04b5/B9-B10; supplementalC1-C2. Local subset only: '+json.dumps(initial_inputs,sort_keys=True),'Remote basebed5d5c0; mathematical SIBLING package already published1c1d23d4. Keep all owner/pins and framed history.']}
+ b=b.replace('Next: owner §12 bootstrap preserving all latest checkpoint/history.','Next: actual-owner §12 initial runtime local installation INTENT; preserve all checkpoint/history. Do not replay original effects without reconciliation.')
+ d=save(d,b)
+ install(INITIAL)
+ c=commit(INITIAL+[str(w.RESUME_PATH),str(w.RESUME_HISTORY_PATH)],'[Codex][rh_clean][TEAM] Install reviewed runtime and registered tools locally')
+ d['operation'].update(state='CONFIRMED',evidence=['bootstrap_local_commit:'+c,'Exact11runtime/tool paths verified after local commit. Remote publication not performed.'])
+ d['pins']['head']=c
+ d=save(d,b)
+ print('INITIAL_COMPLETE',c,'REVISION',d['revision'],flush=True)
+elif stage=='migrate':
+ assert d['revision']==91 and d['schema']=='q3_resume.v1' and d['operation']['state']=='CONFIRMED'
+ identity=w._team_installation(R)
+ assert identity['installation_ref']=='9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4'
+ phase=json.loads((R/'orchestrator/state/CHANNEL_RUNTIME.json').read_text())['active_proshka_phase']
+ request_path='docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt'
+ request_commit='122076a3430251d8f1f9b0cd0577938456eaaed2'
+ request={'path':request_path,'commit':request_commit,'blob':git('rev-parse',request_commit+':'+request_path).decode().strip(),'sha256':sha(git('show',request_commit+':'+request_path)),'boundary_id':'GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN','conversation_id':phase['conversation_id']}
+ source_paths=[d['pins']['physical_goal'],request_path,'docs/Codex/ADVICE_2026-09-11_SIBLING3.md','docs/Codex/REPORT_2026-09-11_SIBLING3.md']
+ sources={p:sha((R/p).read_bytes()) for p in source_paths}; sd=sha(w._team_json(sources))
+ rq={'kind':'REQUEST','id':d['pins']['request_id'],'sha256':request['sha256']}
+ vd={'kind':'VERDICT','id':'SIBLING3_PAPER_REFUTATION','sha256':sources['docs/Codex/REPORT_2026-09-11_SIBLING3.md']}
+ request_evidence={request_path:request['sha256'],'docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log':sha((R/'docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log').read_bytes())}
+ verdict_evidence={p:sha((R/p).read_bytes()) for p in ['docs/Codex/REPORT_2026-09-11_SIBLING3.md','docs/routeB_bus/sibling/sibling_20260911.log']}
+ d.update(schema='q3_resume.v2',source_manifest=sources,ownership={'installation_ref':identity['installation_ref'],'epoch':1,'state':'ACTIVE','transfer':None})
+ d['pins'].update(request=request,phase_key=phase['phase_key'])
+ d['stages']={name:{'subject':rq if i<3 else vd,'state':'DONE','evidence':request_evidence if i<3 else verdict_evidence,'source_sha256':sd,'checked_by':'/root/density_verdict_check' if name=='independent_review' else '/root/slack_verdict_check' if name=='request_review' else OWNER} for i,name in enumerate(w.TEAM_STAGES)}
+ initial_inputs={p:F[p]['sha256'] for p in INITIAL}
+ d['operation'].update(subject={'kind':'REPAIR','id':d['operation']['id'],'sha256':sha(w._team_json(initial_inputs))},command='workflow-team-bootstrap-publish',inputs=initial_inputs)
+ b="""
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+
+RH/SL20/DN20 unproved; production exact-edge HOLD, PX_RH_CLAIM NOT_MADE.
+No new mathematical goal, request, phase or owner.
+
+## Confirmed and candidate results
+
+SIBLING1–3 PAPER accepted/published1c1d23d4, extended two CLEAN reviews
+and parent checks done. Typed verdict stages refer to SIBLING3 only;
+request stages preserve DENSITY separately. SIBLING4 construction pending.
+
+## Next action
+
+Bootstrap §12: runtime11 localcommit349fea48 and v1confirmation91 done.
+After v2migration92 install remaining13 reviewed paths and COMMIT final
+source/control before refresh/checkpoint. Then one refresh, final exact
+inputs and bootstrap publication reservation. Remote bed5d5c0 still v1.
+Recipe /tmp/q3-team-canonical-bootstrap.py, original saved in protocol.
+
+## Existing work
+
+Same actual owner01a084f4/local epoch1, no transfer; math checker done.
+Source46ab04b5 B9/B10 and supplemental4eec599f C1/C2 verified.
+Native bridge actually woke19:44:16.946Z; technicalq3 woke19:43:17.448Z,
+initial technical window missed. Both ACTIVE10, agentcheck20. No math job.
+
+## Do not repeat
+
+SIBLING1.216181s algebra/154.732s closeout done. No source/review replay,
+force,deletion,stale checkpoint copying or spoofed actor. Actual private
+identity initialized; first oversized v2draft refused before any save.
+
+## Integration remaining
+
+Final source/control commit, one refresh, exact reserved push then live
+cold/concurrent/issue checks. Retain owner protocol/ledger and observer
+bed5d5c0. Append correction: S9–S23 review was already complete. SIBLING4
+next after technical boundary; Proshka0/1, no new request sent.
+"""
+ d=save(d,b)
+ print('MIGRATION_COMPLETE',d['revision'],flush=True)
+elif stage=='final-source':
+ assert d['revision']==92 and d['schema']=='q3_resume.v2' and d['operation']['state']=='CONFIRMED'
+ install(FINAL)
+ c=commit(FINAL+[str(w.RESUME_PATH),str(w.RESUME_HISTORY_PATH)],'[Codex][rh_clean][TEAM] Activate reviewed continuation and ownership contracts')
+ print('FINAL_SOURCE_COMPLETE',c,flush=True)
+elif stage=='publish-candidate':
+ assert d['revision']==95 and d['operation']['state']=='CONFIRMED'
+ assert git('rev-parse','HEAD').decode().strip()=='66a91b3fced7bcbd5482691122c4a1fa7963e8d7'
+ assert git('ls-remote','--exit-code','origin','refs/heads/rh_clean').decode().split()[0]=='bed5d5c0c85c657923eae96c48253029ac891de3'
+ repair=json.loads(Path('/home/chirurgie/.cache/q3-team-semantic-close-2026-09-11.manifest.json').read_text())
+ for f in repair['files']:F[f['path']]={**f,'candidate_path':str(C/f['path'])}
+ verify(F,preimage=False)
+ for p in F:assert sha((R/p).read_bytes())==F[p]['sha256'],p
+ owned=['docs/Codex/AGENTS_LEDGER.md','docs/CHAT_DIGESTS.md','docs/session_protocols/SESSION_PROTOKOLL_2026-09-11_CODEX.md']
+ protocol=Path(owned[-1]);old=(R/protocol).read_bytes()
+ assert b'ACTUAL_REFRESH_ACCEPTED' in old and b'\nSTRICT_POST_REFRESH EXIT=0\n' in old
+ assert b'BOOTSTRAP_FINAL_PAYLOAD_FREEZE' not in old
+ script=Path(__file__).read_bytes()
+ note=('\n\n'+datetime.now(timezone.utc).isoformat()+' — BOOTSTRAP_FINAL_PAYLOAD_FREEZE: source26 exact hashes verified; all indexed bytes final, one actual refresh0 and fresh no-rebuild/strict checks0. Original SIBLING and observer ancestry preserved. Source-only installation commits349fea48/7581673e/66a91b3f are linear. Freeze all29 non-checkpoint inputs after this record. Final checkpoint/history commit and reserved ordinary push are still INTENT, not confirmed. Cold/concurrent/issue acceptance remains pending. Updated full installation/publication-candidate recipe follows; old stages already DONE and must not be replayed. Recipe SHA256 '+sha(script)+'\n\n```python\n').encode()+script+b'```\n'
+ with w._execution_writer_epoch(R) as epoch:
+  _,actual,_=w._team_current(R);w._team_actor(R,actual)
+  assert actual['revision']==95
+  w._resume_cas_bytes(R,protocol,old,old+note,epoch)
+ inputs={p:sha((R/p).read_bytes()) for p in sorted(set(F)|set(owned))}
+ d['operation']={'kind':'PUBLISH','state':'INTENT','id':OP,'evidence':['Source26 B9/B10,C1/C2,S1/S2; actual refresh0/fresh0/strict0 in frozen protocol.'],'subject':{'kind':'REPAIR','id':OP,'sha256':sha(w._team_json(inputs))},'command':'workflow-team-bootstrap-publish','inputs':inputs}
+ body='''
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH/SL20/DN20 unproved; production HOLD/PX_RH_CLAIM NOT_MADE.
+
+## Confirmed and candidate results
+SIBLING1–3 published1c1d23d4; reviews/parent checks done. SIBLING4 pending.
+
+## Next action
+Publish exact committed candidate with team-bootstrap-publish, operation
+TEAM_CANONICAL_20260911, remote bed5d5c0/v1. Unknown receipt: reconcile-only.
+
+## Existing work
+Owner/install/epoch unchanged. Source26 installed/reviewed. One refresh0;
+fresh no-rebuild0/strict0. Actual bridge/q3 wakes recorded. No math process.
+
+## Do not repeat
+Installation, old tests, SIBLING, source intake, refresh and dispatch.
+Full scripts/receipts: SESSION_PROTOKOLL_2026-09-11_CODEX.md.
+
+## Integration remaining
+Exact remote confirmation, then cold/concurrent/issue acceptance. SIBLING4
+after boundary; Proshka0/1. Local Sonin thought in archived94 is unreviewed.
+'''
+ raw=(R/w.RESUME_PATH).read_bytes();d.update(revision=96,previous_sha256=sha(raw),observed_at=datetime.now(timezone.utc).isoformat())
+ # Preserve existing container aliases and intern repeated long scalar values.
+ pool={};seen=set()
+ def intern(x):
+  if isinstance(x,str):return pool.setdefault(x,x)
+  if isinstance(x,(dict,list)):
+   if id(x) in seen:return x
+   seen.add(id(x))
+   if isinstance(x,dict):
+    for k,v in list(x.items()):x[k]=intern(v)
+   else:
+    for i,v in enumerate(x):x[i]=intern(v)
+  return x
+ class Compact(w.yaml.SafeDumper):
+  def ignore_aliases(self,x):
+   if isinstance(x,str) and len(x)>=32:return False
+   return super().ignore_aliases(x)
+ payload=('---\n'+w.yaml.dump(intern(d),Dumper=Compact,sort_keys=False,allow_unicode=True,width=110)+'---\n'+body).encode()
+ w._resume_document(payload)
+ candidate=Path('/tmp/q3-team-canonical-resume-96.md');assert not candidate.exists();candidate.write_bytes(payload)
+ call('resume-checkpoint','--candidate',str(candidate),'--expected-sha256',sha(raw),'--dry-run')
+ call('resume-checkpoint','--candidate',str(candidate),'--expected-sha256',sha(raw))
+ assert (R/w.RESUME_PATH).read_bytes()==payload
+ c=commit(owned+[str(w.RESUME_PATH),str(w.RESUME_HISTORY_PATH)],'[Codex][rh_clean][TEAM] Bind final migration payload and verified refresh receipts')
+ remote='bed5d5c0c85c657923eae96c48253029ac891de3'
+ remote_raw=git('show',remote+':'+str(w.RESUME_PATH));remote_data,_=w._resume_document(remote_raw)
+ manifest=w._team_bootstrap_manifest(R,payload,d,remote,remote_raw,remote_data,c)
+ print('BOOTSTRAP_CANDIDATE',c,'REVISION',d['revision'],'RESUME_BYTES',len(payload),'RESUME_SHA256',sha(payload),'REMOTE_RESUME_SHA256',sha(remote_raw),'INPUTS',len(inputs),'MANIFEST_SHA256',sha(w._team_json(manifest)),flush=True)
+else:raise SystemExit('unknown stage')
+```
