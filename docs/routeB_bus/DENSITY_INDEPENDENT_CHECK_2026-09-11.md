@@ -214,3 +214,183 @@ The frozen parent prediction D>0,p=.60 is REFUTED. The proved negative condition
 |---|---|---|---|
 | Whole report PASS1 | CLEAN | No finding — формулы, бюджет сертификата и ограниченный вывод согласованы | None |
 | Whole report PASS2 | CLEAN | No finding — неизменные байты и область отрицательного примера подтверждены | None |
+
+## CE — the natural stationary lift has an exact signed covariance correction
+
+CANDIDATE_PENDING_REVIEW. This appendix is later than the accepted21807byte DENSITY report at536d45f3f20d50ba5c2051a591b00f9d2a492d0a, SHA256077f7064ab0c1fb8bc044012b5e77e2e0c65a44dbc8583fb58f349e17b78cc34. That prefix and the source verdict68e40ebd are unchanged. The task is the remaining DN16-to-DN21 transfer, not a repeat of DN22. No numerical integration or new source search is used below. The shelf query DN21 completed HITS across the existing source/report/journal before this construction.
+
+### CE1. Realize the stated jump operator as the thinning semigroup
+
+Retain the exact shifted law mu, rates lambda_n=pi(n^2-1), mean m=3/(2pi), and
+
+    nu(dr)=2 sum_(n>=2) lambda_n exp(-lambda_n r) dr.
+
+Write T_t=P_(exp(-t)), t>=0, with T_0 the identity. DN11 implies P_rho P_sigma=P_(rho*sigma): multiplying the two innovation Laplace transforms gives L_Z(z)/L_Z(rho*sigma*z). The innovations in the composition are independent. Thus T is a Markov semigroup and mu is invariant. No reversibility is asserted.
+
+For completeness, one can construct its process without postulating a differential operator. For each n>=2 take an independent Poisson process of rate2 with independent positive exponential jumps of rate lambda_n. The increasing sum L_t of those compound Poisson processes is finite almost surely and in L1 at each finite t, because E L_t=t sum2/lambda_n=tm. Its jump measure is nu; in particular integral min(1,r)nu(dr)<=m<infinity. Define
+
+    X_t=exp(-t)s+integral_0^t exp(-(t-u))dL_u.
+
+The Laplace transform of the innovation is
+
+    exp[integral_0^t integral (exp(-z exp(-(t-u))r)-1)nu(dr)du]
+    = L_Z(z)/L_Z(exp(-t)z), z>=0.
+
+Finite independent Poisson sums give the equality first; monotone L1 convergence of the jumps and dominated convergence of Laplace transforms give the infinite equality. It identifies the transition with T_t. The finite-variation chain rule and absolute estimate |h(s+r)-h(s)|<=Lip(h)r give the generator
+
+    A h(s)=-s h'(s)+integral[h(s+r)-h(s)]nu(dr),             (CE1)
+
+on bounded C1 functions with bounded derivative, in the stationary integrated sense used below. The drift is integrable under mu because E Z=m. Finite jump sums followed by the same first-moment bound justify the chain rule/Dynkin identity; no bounded-operator realization of the original Weil form is introduced.
+
+For any h in this class, differentiation in the initial state gives
+
+    Lip(T_t h)<=exp(-t)Lip(h).
+
+Also mu has finite variance
+
+    sigma_Z^2=2 sum_(n>=2)lambda_n^(-2)=1/6-11/(8pi^2)>0,
+    integral r^2 nu(dr)=2 sigma_Z^2.                         (CE2)
+
+Indeed, summing
+
+    1/(n^2-1)^2=[1/(n-1)^2+1/(n+1)^2-1/(n-1)+1/(n+1)]/4
+
+gives sum_(n>=2)(n^2-1)^(-2)=pi^2/12-11/16. This computation uses the exact full law; it is not a moment-based replacement of it.
+
+### CE2. Exact covariance, with a quantitative semigroup-time remainder
+
+For complex h,k in the preceding class set
+
+    Cov_mu(h,k)=E_mu(conj(h)k)-conj(E_mu h)E_mu k,
+    Gamma(h,k)(s)=integral conj(h(s+r)-h(s))(k(s+r)-k(s))nu(dr).
+
+The drift cancels from the product rule:
+
+    A(conj(h)k)=conj(h)A k+conj(A h)k+Gamma(h,k).
+
+Stationarity, including the product, therefore gives the integrated derivative
+
+    d/dt E_mu[conj(T_t h)T_t k]=-E_mu Gamma(T_t h,T_t k).
+
+It is valid first over each finite time interval via the stationary process/chain rule above. The derivative terms are bounded in expectation by constants times m and the bounded function/derivative norms. Approximation by finite jump sums and dominated convergence give the asserted integrated identity for C1 functions; no differentiability of h beyond C1 is required. The gamma integral is absolutely bounded by
+
+    |E_mu Gamma(T_t h,T_t k)|
+      <=2 sigma_Z^2 exp(-2t)Lip(h)Lip(k).
+
+To identify the terminal value, couple two initial states with the same innovation. For independent Z,Z' of law mu,
+
+    |Cov_mu(T_t h,T_t k)|
+      =|E[conj(T_t h(Z)-T_t h(Z'))(T_t k(Z)-T_t k(Z'))]/2|
+      <=sigma_Z^2 exp(-2t)Lip(h)Lip(k).
+
+The means remain constant by invariance. Consequently
+
+    Cov_mu(h,k)=integral_0^infinity E_mu Gamma(T_t h,T_t k)dt, (CE3)
+
+and stopping the time integral at T leaves a remainder bounded by sigma_Z^2 exp(-2T)Lip(h)Lip(k). Formula CE3 is not predicated on positivity of any node kernel or on RH. For h=k it is the ordinary nonnegative variance identity; mixed covariance is kept complex.
+
+### CE3. Apply CE3 to the ACTUAL half-thinned components
+
+Fix any finite real node set |x_i|<=M and any complex coefficients c_i. For each physical coordinate v>=0 put
+
+    h_i^v(s)=phi_s^(1/2)(x_i+v),
+    U_v(s)=sum_i c_i h_i^v(s),
+    W_v(s)=sum_i c_i x_i h_i^v(s).
+
+These are bounded C1 functions in s with bounded derivative. In fact Y_(1/2) is atomless: with probability1 a first nonzero Bernoulli coordinate exists; condition on that index, then convolve its exponential density with the remaining independent nonnegative sum. Thus its distribution function is continuous, and differentiating E(u-s/2-Y)_+ in s is justified with derivative -(1/2)Pr(Y<u-s/2). Extend the distribution function by0 at negative arguments. DN6 gives
+
+    Lip(U_v)<=(C/2)||c||1 exp(-beta(v-M)_+),
+    Lip(W_v)<=M(C/2)||c||1 exp(-beta(v-M)_+), beta=5/2.
+
+Semigroup composition preserves the exact infinite law:
+
+    T_t h_i^v(s)=phi_s^((1/2)exp(-t))(x_i+v).
+
+This identity describes the semigroup; it is not a proposed rho sweep or a positivity assertion at another rho.
+
+Define the original averaged node form and its same-state counterpart by
+
+    Qav(x,c)=sum_ij conj(c_i)c_j V_f(x_i,x_j),
+    S(x,c)=E_mu integral_0^infinity[2v|U_v|^2
+                                      +2Re(conj(W_v)U_v)]dv.
+
+DN16/DN20 give Qav with both products of means. Applying CE3 to each covariance yields
+
+    Qav(x,c)=S(x,c)-J(x,c),                                (CE4)
+    J(x,c)=integral_(t>=0) E_mu integral_(r>0) integral_(v>=0)
+        [2v|Delta_r T_t U_v|^2
+          +2Re(conj(Delta_r T_t W_v)Delta_r T_t U_v)]
+          dv nu(dr)dt,
+    Delta_r H(s)=H(s+r)-H(s).
+
+The MINUS sign is essential: independent-copy products equal same-state products minus covariance. Neither S nor J is declared positive. In particular, DN21 cannot be substituted for the weighted mixed gamma term as though it were |Delta H|^2.
+
+Every integral in CE4 is absolutely justified. DN17 bounds S by C^2 J_M^(9)||c||1^2, J_M^(9)=3M^2+4M/9+2/81. For the correction, CE2 and the Lipschitz bounds give
+
+    integral |the complete CE4 integrand|
+      <=(C^2/4)sigma_Z^2 J_M^(5)||c||1^2,
+    J_M^(5)=integral_0^infinity 2(v+M)exp(-5(v-M)_+)dv
+           =3M^2+4M/5+2/25.                               (CE5)
+
+The tail t>T has the same bound multiplied by exp(-2T). These are full node-window/coefficient bounds, with no fixed matrix dimension or common-phase restriction. They authorize Fubini for all retained cross terms, not a lower sign. The original source normalization C=4pi^2/A, A=||Phi||2 is unchanged.
+
+### CE4. The weighted gamma density is actually indefinite on the source family
+
+Fix two distinct nodes. At any (t,s,r,v), write the two real source increments
+
+    d_i=Delta_r T_t h_i^v(s).
+
+The coefficient matrix of the CE4 integrand is
+
+    K=[[2(v+x1)d1^2, (2v+x1+x2)d1*d2],
+       [(2v+x1+x2)d1*d2, 2(v+x2)d2^2]],
+    det K=-(x1-x2)^2 d1^2 d2^2.                           (CE6)
+
+Thus when both increments are nonzero the density is indefinite, even if both nodes and v are nonnegative. The deterministic 2x2 coefficient multiplier, not the positivity of the jump measure, decides this pointwise fact.
+
+This occurs for the actual infinite source, not only for a substituted control. Choose x1=1,x2=2,t=s=v=0,r=1/10000. Both d_i are strictly negative. To see strictness, the unreflected positive-part expectation decreases strictly when its argument shifts by r/2: E(u-Y)_+-E(u-r/2-Y)_+ >=(r/2)Pr(Y<u-r/2)>0, with u=exp(2x_i)>r/2. The small-sum probability is positive for every positive threshold: set finitely many Bernoulli coordinates to0 (a positive-probability event), then bound the independent remaining mean tail by Markov. The other reflected expectation is nonincreasing and cannot cancel that strict decrease.
+
+Freeze the real coefficients c=(3/d1,-2/d2) at this one base point. They are finite source-defined constants, not functions of the integration variables. At that point the actual density equals
+
+    (3,-2)[[2,3],[3,4]](3,-2)^T=-2.                       (CE7)
+
+Continuity of the half-thinned components and strong continuity of T_t extend this to a one-sided neighborhood in t,s,v and an open neighborhood of r=1/10000, for the SAME frozen coefficient vector. Strong continuity here follows directly from the Lipschitz bound and E|X_t-s|<=(1-exp(-t))(s+m). The small-sum argument for mu gives mu(0<Z<epsilon)>0; nu has strictly positive density at every positive r. Hence the negative region has positive dt*mu(ds)*nu(dr)*dv measure. A rational coefficient vector sufficiently close to the frozen one also retains strict negativity, although no particular rational approximation is asserted.
+
+CE6-CE7 refute a pointwise representation of this specific weighted gamma density as a sum of nonnegative jump-squares. They DO NOT determine the sign of the fully integrated correction J, of S, or of Qav=S-J. They do not rule out an integrated coupling, a different coefficient-dependent map with compensators, or a full original sign proof. The original kernel V_f, its all-complex test transfer and RH remain unpaid.
+
+Parent exact symbolic audit (completed in0.195s before sending to the checker; no integration):
+
+```python
+import sympy as s
+v,x,y,d,e=s.symbols('v x y d e',real=True)
+K=s.Matrix([[2*(v+x)*d*d,(2*v+x+y)*d*e],
+            [(2*v+x+y)*d*e,2*(v+y)*e*e]])
+assert s.factor(K.det())==-(x-y)**2*d*d*e*e
+a=s.Matrix([3,-2])
+assert (a.T*s.Matrix([[2,3],[3,4]])*a)[0]==-2
+n=s.symbols('n',integer=True,positive=True)
+assert s.cancel(1/(n*n-1)**2-s.Rational(1,4)*(
+    1/(n-1)**2+1/(n+1)**2-1/(n-1)+1/(n+1)))==0
+```
+
+### CE5. Decision, prediction, and exact remaining obligation
+
+The natural same-state lift has now been fully compared with the independent-copy target. It needs the exact signed covariance J with a minus sign, and the weighted gamma density cannot be paid pointwise by DN21 alone. A proposed transfer that drops this term, changes its sign, or calls CE6 a nonnegative square fails on CE7 before formalization.
+
+This is a new explicit correction plus a limited obstruction, not a positive supplier or a smaller equivalent consumer. The prior.25 for a useful DN16-to-DN21 transfer/remainder did not yield a positive transfer. CE4 locates the defect; the inequality S>=J is still DN20 in these coordinates, not an independently justified new lemma. Merely asking for that inequality again is not a novel batch. The next substantive construction must exploit the actual source law across the integrals or supply a different exact map with independently controlled compensators. No new Proshka request or rho/node/precision sweep has been dispatched in this appendix.
+
+PAPER_CANDIDATE; FIRST_INCORRECT_ASSERTION and final acceptance await the sole independent checker. No Lean admission or RH claim.
+
+
+### CE acceptance receipt — 2026-09-11T16:54:24.918446+00:00
+
+ACCEPTED_PAPER for CE1-CE7 at their exact stated scopes. The preceding33067bytes/382LF are unchanged, SHA256b61ee398c30340a2c68364dd825d77b1cc47fd1d49a953b93545e5985d1623a8. New appendix11260bytes/166LF has SHA256137132213e0760ad5301d916e0cf106ba353bfcc375b859a99ae01afe8e62d7b and preserves the already accepted21807byte prefix077f7064. Sole density_verdict_check, gpt-5.6-terra/xhigh, read-only/no descendants, returned CE PASS1 CLEAN and CE PASS2 CLEAN on these identical bytes, FIRST_INCORRECT_ASSERTION NONE, zero CRITICAL/HIGH/MEDIUM/LOW/WORDING. These are new CE passes; old DC passes were not counted. Mode A reached.
+
+Parent independently checked the source DN6/DN11/DN16/DN17/DN21 correspondence, the product-of-means minus covariance expansion for complex coefficients, and the CE5 constants: physical integration is3M^2+4M/5+2/25; time integration of2sigma_Z^2 exp(-2t) gives sigma_Z^2. The earlier exact symbolic determinant/value/variance check is embedded above. No integral, old scalar test or DN22 run was repeated.
+
+The proof supplies an exact stationary covariance correction with full tails and an actual-source positive-measure obstruction to pointwise nonnegative jump-square identification of that correction density. It does not determine the integrated signs of J,S,Qav; S>=J is still DN20. The candidate prior.25 did not produce a positive transfer; the exact correction is retained and the direct pointwise-square shortcut is stopped. No general impossibility claim about another map or the full source is made. CHALLENGER_NOT_RH; PX_RH_CLAIM: NOT_MADE.
+
+| Pass | Severity | Finding — English term + Russian explanation | Fix applied |
+|---|---|---|---|
+| CE PASS1 | CLEAN | No finding — точное тождество, хвосты и ограниченный вывод подтверждены | None |
+| CE PASS2 | CLEAN | No finding — неизменные байты и все необходимые предпосылки подтверждены | None |

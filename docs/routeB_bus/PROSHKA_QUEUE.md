@@ -35,6 +35,7 @@ safety confirmation остаётся внешней границей. Судья
 - Final receipt: verdict68e40ebd297b2cc0234fbf662f1200a5de6b2105/blob0ae221d9a120252288508eeacde3c1945cd2f312/SHA2560314932e68169410298c528f61c646896e3e1456a1426f951eeeb43b87bdb9f8,45050bytes799LF/finalLF; request lock, six-field phase and baseline ancestry independently verified. Browser complete54m2s, same chat; no resend.
 - Owner intake ACCEPTED_PARTIAL_PAPER; independent DC1-DC7 certificate accepted after two exact19632byte/28d6a9d5 CLEAN passes and parent checks. D=-7.25024384179487982e-36 +/-3.20e-54; rational odd witness negative on positive-measure state box. Prediction D>0,p=.60 REFUTED. Kills half-thinned conditional-block positivity only; DN20/SL20 and RH remain unproved. Full report docs/routeB_bus/DENSITY_INDEPENDENT_CHECK_2026-09-11.md.
 - Candidate from sections9/10: exact coefficient-dependent DN16-to-DN21 jump-energy transfer, including every compensator and full complex test class; first derive the bilinear defect. No next request/binding/send yet; no conditional/gamma sweep.
+- Follow-up CE accepted: exact Qav=S-J with all covariance terms/tails; weighted source density indefinite (det=-(x1-x2)^2d1^2d2^2, frozen-vector value-2 on positive measure). Direct pointwise jump-square identification is refuted; integrated J,S,Qav signs remain unpaid. Full CE appendix/receipt in the existing DENSITY report, sole Terra/xhigh CLEAN/CLEAN. Next candidate requires a new source-specific integrated identity; S>=J alone renames DN20. No new request, binding or send.
 
 ---
 

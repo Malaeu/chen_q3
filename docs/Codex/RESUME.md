@@ -1,14 +1,14 @@
 ---
 schema: q3_resume.v1
-revision: 56
-observed_at: '2026-09-11T16:31:45.732634+00:00'
-previous_sha256: f14be505b0b4f8afd605d2de4f68a0f3a763cb65e8e28b587b7adb90ceb68339
+revision: 60
+observed_at: '2026-09-11T16:59:14.115552+00:00'
+previous_sha256: 3dbeb7d53fe708e20d84ea84b6358456541fabec51ff58b588fc68bce3b77888
 owner_thread_id: 01a084f4-7498-7021-bac2-91d184d58dc7
 owner_host_id: local
 reconciliation_pending: false
 recovery_from: null
 pins:
-  head: 525bbdbcb1bbcbff2ca18405d0fe5b6fa10857a7
+  head: 536d45f3f20d50ba5c2051a591b00f9d2a492d0a
   physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
   source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
   request_id: REQ-2026-09-11-DENSITY
@@ -22,18 +22,22 @@ stages:
 operation:
   kind: PUBLISH
   state: INTENT
-  id: DENSITY_ACCEPTED_CONDITIONAL_CERTIFICATE_PACKAGE
+  id: DENSITY_CE_ACCEPTED_COVARIANCE_DEFECT
   evidence:
-  - Base525bbdbcb1bbcbff2ca18405d0fe5b6fa10857a7 exact already origin/rh_clean; observer committed/pushed
-    its bytes and our digest, predecessor runtimeee974600 also published. Pre-stage drift stopped; no
-    data loss. Publish remaining9owned paths; RESUME/history reserved by registered writer.
-  - docs/routeB_bus/DENSITY_INDEPENDENT_CHECK_2026-09-11.md SHA256077f7064ab0c1fb8bc044012b5e77e2e0c65a44dbc8583fb58f349e17b78cc34
-  - docs/Progress_Log.md SHA256fb0c8160d0731eb6f6d19e3dde906af8040ae1be6cf659e78f90d9961a18988a
-  - docs/routeB_bus/PROSHKA_QUEUE.md SHA2560b1215d20c02d9b3ce4cc0faf4a3dd14f43ec690410cef4202a57b4a8701dd47
-  - q3.lean.aristotle/aristotle_db/knowledge.db SHA256c40a255e26a3a8869a1a55ff28c65d43212b8cf0022123eb5f8d54b2561de8d5
-  - docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log SHA256c7fbaa0bce86a1e8764e2ac46584f50d0812989b49269f6282c7f5157eb008f8
-  - docs/Codex/AGENTS_LEDGER.md SHA25667d7ef328a3139cb705aa6194e6c6e25ead943b02e47934d15169731cf9179ca
-  - docs/session_protocols/SESSION_PROTOKOLL_2026-09-11_CODEX.md SHA256c8213bbd069fdbf5a3fd81e226788e7c8ede7deca7507ca0c27623d1358984ab
+  - Base536d45f3f20d50ba5c2051a591b00f9d2a492d0a; exact8payload paths/hashes below plus this registered RESUME/history;
+    named index only, non-force origin/rh_clean. Never stage foreign15line digest suffix.
+  - Maintenance147.863s/marker0, one refresh133.613s/session_start0/quick_checkok; search covariance HITS includes
+    new report. No new indexed writes follow the refresh.
+  - 'Payload manifest: {"docs/CHAT_DIGESTS.md": "5386444c3573a042d985474ea120f2e25724e7eee8ae7c198c98b28e72c7df77",
+    "docs/Codex/AGENTS_LEDGER.md": "a614358f28a8b1fd4b93a22805039ce36aebe042a31ff2b28a598b506c9d588c", "docs/Progress_Log.md":
+    "de13f3a433c31784f114017c0db1d9c7ce450c9d8fb892a59a34e4f48c7c92c3", "docs/routeB_bus/DENSITY_INDEPENDENT_CHECK_2026-09-11.md":
+    "a39402b44d3dc2be87c3012470bd2b6c61368eb22debd6cdc47c06b21cda03e5", "docs/routeB_bus/PROSHKA_QUEUE.md":
+    "59ade54c2633025cc799e77b8e970339b40721ec7005adbeb5fc7d2cc0d3033c", "docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log":
+    "c83c5df24a51d94bc368062f969a2130f8f0f5eaba886f3c1e7c7120650d001b", "docs/session_protocols/SESSION_PROTOKOLL_2026-09-11_CODEX.md":
+    "216883179459a591b3a9aced1bfb2f985803e36b478061ca21cdd71b6d914cd1", "q3.lean.aristotle/aristotle_db/knowledge.db":
+    "4bd64a363e70fe415693a06e27d5b06cfb99c355a52152881a55e5483e40936c"}'
+  - RESUME/history included via exact registered CAS result of this publication-intent checkpoint; verify their
+    resulting hashes immediately before staging.
 ---
 
 # Current continuation — observations, not authority
@@ -79,26 +83,22 @@ other rho, original Q or RH. Source-media external identity remains unclaimed.
 
 ## Next action
 
-Finish the current exact named publication INTENT; inspect original operation
-before replay after lost receipt. Commit the remaining verified intake package under lock,
-ordinary push and fresh canonical plan. Local corrective runtime commit ee974600 restored fatal_errors=[]; original
-production exact-edge HOLD remains. Do not change control or claim proof admission.
-After publication select a bounded DN16-to-DN21 transfer construction, retaining
-every compensator. Cheapest next action: derive the bilinear defect of a
-coefficient-dependent map on a compact test before any new numeric campaign.
-IF_A exact identity/signed remainder: independently check supplier.
-IF_B renamed DN20/unpaid sign: record first failed term and reject that map.
-Prior.25 for useful explicit transfer/remainder, not RH. No next request sent.
+CE exact covariance appendix ACCEPTED_PAPER after sole Terra/xhigh CE PASS1
+and PASS2 CLEAN on unchanged11260byte137132213e; parent checks complete.
+Full report with receipt SHA256a39402b44d3dc2be87c3012470bd2b6c61368eb22debd6cdc47c06b21cda03e5.
+Original21807byte accepted prefix077f7064 retained. Integrated J,S,Qav remain
+unpaid. New report/progress/queue/own digest append saved. Technical maintenance COMPLETE147.863s, one refresh133.613s and session_start0;
+ask covariance HITS. Publish exact named manifest in this checkpoint now.
+No new mathematics calculation, scalar search or Proshka send.
 
 ## Existing work
 
-Owner01a084f4-7498-7021-bac2-91d184d58dc7/local. Sole density_verdict_check
-DONE, Terra/xhigh/read-only/no descendants; all prior children DONE. No live
-mathematical job. Browser1/tab2, same chat6aa3e75b: completed54m2s, final receipt
-matches68e40ebd, marked handoff. Permanent bridge ACTIVE/every10min confirmed.
-Runtime registered DENSITY event actual message94fc406d; phase8/global53,
-fresh4/forced2/phases3, last adjudicated68e40ebd. Queue ANSWERED.
-Neighbour alias-only handback complete; unrelated core runtime remains isolated.
+Actual owner01a084f4-7498-7021-bac2-91d184d58dc7/local. All native children
+DONE including density_verdict_check (CE CLEAN/CLEAN); no math process.
+Maintenance DONE147.863s/exit0, no live process. DENSITY response complete;
+browser unchanged/no new interaction. Permanent bridge ACTIVE/every10min confirmed this turn by card and TOML,
+actual owning thread matches. Neighbour runtime remains isolated, bootstrap HIGH under
+repair; no shared maintenance boundary granted. Foreign digest suffix preserved.
 
 ## Do not repeat
 
@@ -109,13 +109,13 @@ deletion/new phase/chat/watch or foreign staging. Lost receipt means inspect.
 
 ## Integration remaining
 
-Receipt/review/parent/acceptance DONE. Exact verdict strategy and branch journal
-projected; SQLite quick_check ok. Maintenance PID1104888/start12368470 completed0
-in144.820s: ONE refresh128.891s, session_start13.803s/exit0; ask half-thinned HITS0.
-Publication pending per exact INTENT above. Recheck fresh plan after commit;
-no recursive receipt-only commits. Final confirmation joins the next real result.
-Observer525bbdbc already published its7foreign media/docs, brief and full
-digest including our appendix; all bytes verified unchanged, no staging of
-those files. Remaining9owned paths only; runtimeee974600 already remote.
-Prior refresh preceded this observer commit; recheck search after our publication
-and refresh only if its new brief actually changed the indexed corpus.
+CE projection116branch entries and one refresh DONE; scoped publication pending. Original DENSITY
+already published536d45f3, never repeat its verdict migration or DN22.
+Publication needs own report,Progress_Log,QUEUE,partial digest,ledger,session,
+log,knowledge.db,RESUME/history. Preserve all foreign bytes. After publication
+collect neighbour exact reviewed runtime manifest and inspect migration before
+shared boundary. Next mathematical candidate: source-specific integrated
+comparison using reciprocity and full two-copy law; shelf lookup for exact
+signed-covariance identity first. IF_A independent paid compensation: audit;
+IF_B merely S>=J/renamed DN20: reject and prepare substantial construction
+question. Prior.20 for usable identity, not RH. No new request exists.

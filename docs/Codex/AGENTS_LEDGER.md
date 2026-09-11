@@ -293,3 +293,15 @@ DENSITY final-report REVIEW_INTENT: sole density_verdict_check Terra/xhigh, read
 
 
 2026-09-11T16:22:05.531552+00:00 — DENSITY accepted partial PAPER; final68e40ebd/0314932e source. Sole density_verdict_check Terra/xhigh DONE, full-reportPASS1/PASS2 CLEAN on exact19632bytes/28d6a9d5, FIRST_INCORRECT_ASSERTION NONE. Parent exact rational ball/box check PASS, I2=646/49; no integral rerun. Report acceptance appended to unchanged reviewed prefix. No active child/job; permanent bridge retained10min. Owner01a084f4-7498-7021-bac2-91d184d58dc7/local. Half-thinned conditional shortcut killed, DN20 open; prediction D>0,p=.60 REFUTED. Projection/refresh/publication pending; foreign bytes preserved.
+
+
+2026-09-11T16:41:55.894304+00:00 — Previous goal turn PROGRESS: DENSITY/DC1-DC7 accepted and published536d45f3. New bounded CE1-CE7 derivation: exact stationary covariance correction and pointwise determinant negative, original DN20 unpaid. Symbolic control det=-(x-y)^2d1^2d2^2, value-2,0.195s; no numerical job. Sole density_verdict_check Terra/xhigh read-only/no descendants REVIEW_INTENT, expected15min; new appendix11260bytes/SHA256137132213e0760ad5301d916e0cf106ba353bfcc375b859a99ae01afe8e62d7b, old21807byte prefix077f7064 untouched. Owner01a084f4-7498-7021-bac2-91d184d58dc7/local. Neighbour preparing separately approved core-runtime manifest outside shared; no maintenance write boundary yet. Foreign digest suffix Navier–Stokes remains untouched/unreviewed.
+
+
+2026-09-11T16:49:15.981415+00:00 — CE REVIEW_DISPATCH_CONFIRMED: actual followup_task accepted to sole /root/density_verdict_check Terra/xhigh, owner01a084f4-7498-7021-bac2-91d184d58dc7/local; PASS1 exact11260byte appendix137132213e, expected15min. Previous REVIEW_INTENT alone was not launch. No math job/new request. Next necessity check on result or20min.
+
+
+2026-09-11T16:54:24.918446+00:00 — CE ACCEPTED_PAPER: sole density_verdict_check Terra/xhigh DONE, CE PASS1/PASS2 CLEAN on unchanged11260bytes/137132213e, FIRST_INCORRECT_ASSERTION NONE. Parent source/complex covariance/budget checks agree. No live math job/agent/new Proshka request. Original accepted21807byte prefix077f7064 preserved. New exact signed correction and limited pointwise obstruction recorded in report/Progress_Log/QUEUE; foreign15line digest suffix preserved, publication will stage only own append. Knowledge projection/one final refresh/publication pending.
+
+
+2026-09-11T16:59:14.115552+00:00 — CE_MAINTENANCE_CONFIRMED: backgroundPID1142970/start12563212, recipe281180dac2b32869b74183ed48b0244eafb95f1258b5ff7cfc34c54c3bb5d640; CE_CLOSEOUT_PROCESS_EXIT=0 in147.863s,116branch decisions projected, ONE refresh133.613s, session_start13.704s/exit0, SQLite quick_check ok. Follow-up ask covariance HITS includes current accepted DENSITY report# a39402; full receipt appended to existing output log. Canonical plan exit2 is scoped exact-edge HOLD, fatal_errors=[]; do not mistake HOLD for startup corruption. Permanent bridge ACTIVE/every10min/actual owning thread verified by card+TOML. No live math/agent or new request. Publication pending, foreign digest suffix preserved.
