@@ -34,9 +34,8 @@ Does not give: SL20. Not read: proofs.
 
 ### PBIANEANDJPITMANANDMYOR-1999 — arXiv:math/9912170, Biane–Pitman–Yor, Bull. AMS 38 (2001) 435–465
 VERBATIM (abstract): "connect Riemann's integral representations of his zeta function, involving Jacobi's theta function and its derivatives, to some particular probability laws governing sums of independent exponential variables."
-Variables: their theta laws ↔ our Φ up to change of variable; no weight, no quadratic form.
-Gives: Φ as an explicit density of a sum of independent exponentials (infinitely divisible). Candidate input for a rule-18 representation of `V_f` (positive mixture weights → first moment under a measure). UNTESTED.
-Does not give: any PSD theorem. Not read: §2 explicit mixture representation (the thing to read next if this line is pursued).
+Update from accepted SLACK report BP1-BP5 at659f389c: the positive-variable density is r of T=sum Gamma(2,rate pi*n^2), and Phi(x)=exp(5x/2)r(exp(2x)). Phi/I is the density of the logarithmic variable only after the T^(1/4) tilt; f=Phi/A is normalized in L2. Infinite divisibility is asserted for T, not transported through the tilt/logarithm. The earlier literal Phi-is-a-sum-density/UNTESTED wording is superseded.
+Gives: exact fixed source product, positive Volterra identity t*r=k*r, and mean-matched negative control showing the whole law is needed. Does not give the full-form sign SL20. Read scope: printed pages3-7,10-14 of the local recompiled math/9912170v1, SHA25604a444275e5522cef9a1ba9f7d1b9f20a752764d3548f9c48be6dbc055bb12ea; original cited sources remain relay as specified in the accepted report.
 
 ### MASATOSHISUZUKI-2023 — arXiv:2301.00421, Suzuki, "On the Hilbert space derived from the Weil distribution", Canad. J. Math. 2025
 VERBATIM (abstract): "the Hilbert space obtained by completing the space of all smooth and compactly supported functions on the real line with respect to the hermitian form arising from the Weil distribution under the Riemann hypothesis."
@@ -49,7 +48,20 @@ Gives: de Branges description of the completed Weil space, conditional. Does not
 - "Haar Positivity: From Weil to Wightman" (philarchive): not peer-reviewed, dropped.
 
 ## Result of the hunt
-No published theorem gives SL20. Closest published objects: Csordas' `K_n` (even weights, n ≥ 1 open), Suzuki's screw-function kernel
+This bounded hunt found no verified source supplying SL20. Closest published objects: Csordas' `K_n` (even weights, n ≥ 1 open), Suzuki's screw-function kernel
 (second difference, RH ⟺ PSD ∀a), Connes–Consani Sonin compression (archimedean place, restricted tests). One branch killed with a
 certificate (PF_r, r ≥ 5). Note: SL20 ⟺ RH ⟺ (K_n PSD ∀n); a single `K_1 ⪰ 0` is only necessary, so "SL20 = Csordas' L_1 inequality"
 cannot hold unless K_1 ⪰ 0 already implied RH, which is not known.
+
+
+### SALAZAR-HCM-DEFINITION-2026 — arXiv:2606.22066v1, definition only
+
+Source: "A Bessel-zero obstruction to hyperbolic complete monotonicity of noncentral chi-square densities", https://arxiv.org/pdf/2606.22066v1, printed/PDF page2, section1 equations(4)-(6). Media438020bytes, SHA256b3c31f2e94530f74cc034518efaf7e9c455c62f57e6f366eff97aa6ace9e4b09; intended local pdfs/q3-hcm-definition.pdf. Page2 read and rendered; only pages1-3 read. Other paper claims/proofs and original references were not audited or imported.
+
+VERBATIM prose excerpt, page2: "is completely monotone as a function of the hyperbolic variable". The adjacent displays define r(uv)r(u/v) as a function G_u(w), w=v+v^(-1)>2, with (-1)^j G_u^(j)>=0 for all integer j>=0 and every u>0.
+
+Mapping: our candidate input is the positive-variable density r of T=sum Gamma(2,rate pi*n^2), not Phi/I or the shifted law mu. The gamma-convolution product alone does not assert HCM. Accepted BP3's reciprocal negative control means reciprocal symmetry alone is insufficient; it is not substituted for the actual r in this test.
+
+Root's NEW property-exclusion candidate is HC1-HC4 in DENSITY_INDEPENDENT_CHECK_2026-09-11.md: actual r at u1,v10,w101/10 has log-curvature[-0.0360085176300411560160774208455744692 +/-9.01e-38] with full derivative tails. A self-contained finite-difference argument proves the necessary log-convexity of any positive completely monotone function. Independent acceptance remains in that report's final receipt; this card alone is not acceptance.
+
+Fit: DEFINITION_ONLY / NOT_A_POSITIVE_SUPPLIER. This reference supplies terminology, not a theorem proving SL20. The actual-source exclusion, if accepted, stops the proposed HCM shortcut; it does not disprove gamma-convolution membership or sign V/Q. Production theorem/consumer remains UNBOUND; no CLOSES/OPENS or proof admission. No further HCM source hunt is justified unless it changes this exact property test.

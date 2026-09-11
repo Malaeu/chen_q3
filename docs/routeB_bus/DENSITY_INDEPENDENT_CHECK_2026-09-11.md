@@ -394,3 +394,165 @@ The proof supplies an exact stationary covariance correction with full tails and
 |---|---|---|---|
 | CE PASS1 | CLEAN | No finding — точное тождество, хвосты и ограниченный вывод подтверждены | None |
 | CE PASS2 | CLEAN | No finding — неизменные байты и все необходимые предпосылки подтверждены | None |
+
+
+## HC1-HC4 — the ACTUAL positive-variable density is not hyperbolically completely monotone
+
+PAPER_CANDIDATE, independent review pending. Source and consumer are unchanged:
+T=sum_(n>=1)Gamma(2,rate pi*n^2), r its probability density, and the original
+V_f/SL20/DN20 with f=Phi/A, Phi(x)=exp(5x/2)r(exp(2x)). This is a property
+exclusion for r, not a new sign assertion about V_f or Q.
+
+### HC1. Definition, provenance, and the stopped duplicate
+
+The generic reciprocal rewrite was stopped before repetition: accepted SLACK
+report BP3 already gives r_c(1/t)=t^(5/2)r_c(t) for the negative control. Under
+the exact logarithmic map this scalar reciprocity expresses evenness. A new
+argument must spend more than that symmetry alone.
+
+Hyperbolic complete monotonicity is a strictly different proposed property.
+For each u>0 let G_u(w)=r(uv)r(u/v), where w=v+1/v>2 and v>1 is the larger
+root. The HCM condition requires (-1)^j G_u^(j)(w)>=0 for every integer j>=0.
+The symmetry in v and 1/v makes G_u well defined. Here r is the density in
+the POSITIVE variable T, not the tilted logarithmic density Phi/I or the
+shifted law mu in CE. No preservation of HCM under gamma addition is assumed.
+
+Definition source only: arXiv:2606.22066v1, "A Bessel-zero obstruction to
+hyperbolic complete monotonicity of noncentral chi-square densities", section1,
+printed/PDF page2, equations(4)-(6). Verbatim: "A positive function f on
+(0, infinity) is hyperbolically completely monotone (HCM) if for every u > 0,
+the product [v -> f(uv)f(u/v)] is completely monotone as a function of the
+hyperbolic variable [w = v + v^(-1)]." Mathematical glyphs in brackets are
+transcribed from displays; the definition was read and page2 rendered.
+Fetched from https://arxiv.org/pdf/2606.22066v1, 438020bytes,
+SHA256 b3c31f2e94530f74cc034518efaf7e9c455c62f57e6f366eff97aa6ace9e4b09.
+Only pages1-3 were read; no proof about noncentral chi-square distributions,
+GGC closure, or the cited original Bondesson texts is imported. Planned durable
+source: docs/routeB_bus/litreview/pdfs/q3-hcm-definition.pdf through paper.sh.
+If that intake is missing, the source remains staging, not an admitted supplier.
+
+The new scalar check below uses the full canonical law. The fixed OC2 control
+does not have its Laplace product; it is not used as a surrogate for r.
+
+### HC2. A self-contained necessary log-convexity test
+
+Every positive completely monotone C-infinity function G on (2,infinity)
+obeys G G''-(G')^2>=0. Here is an elementary proof, so no unverified
+representation theorem is needed. Fix x>2,h>0 and a_j=G(x+jh). The integral
+formula for forward differences gives (-1)^k Delta^k a_j>=0 for all j,k.
+For N>=2 put
+
+    b_(N,k)=binom(N,k)(-1)^(N-k)Delta^(N-k)a_k>=0, 0<=k<=N.
+
+Expanding the finite differences and the binomial sums gives
+
+    sum_k b_(N,k)=a_0,
+    sum_k (k/N)b_(N,k)=a_1,
+    sum_k (k/N)^2 b_(N,k)=(1-1/N)a_2+a_1/N.
+
+Cauchy-Schwarz for these finite nonnegative weights gives
+a_1^2<=a_0[(1-1/N)a_2+a_1/N]. Let N tend to infinity to get
+G(x+h)^2<=G(x)G(x+2h). Taylor expansion as h decreases to zero yields
+G G''-(G')^2>=0. Thus one strictly negative logarithmic curvature rules out
+complete monotonicity; it does not claim that its converse holds.
+
+### HC3. Explicit full-tail certificate for the actual r, at u=1
+
+Reciprocity, already proved for the canonical density in BP1/DN3, gives
+
+    G_1(w)=v^(5/2)r(v)^2, w=v+1/v, v>1.
+
+Use the exact locally differentiable source series from BP1,
+
+    r(t)=sum_(n>=1)4 a_n^2(t-3/(2a_n))exp(-a_n*t),
+    a_n=pi*n^2.
+
+The first two derivative summands are respectively
+4a_n^2(5/2-a_n*t)exp(-a_n*t) and
+4a_n^3(a_n*t-7/2)exp(-a_n*t). Uniform convergence with these derivatives on
+every closed neighborhood of t=10 follows from the Gaussian-in-n decay.
+
+At t=10 all original and second-derivative summands are positive, while all
+first-derivative summands are negative. For n>=2,
+n^2>=4+5(n-2) and n<=2^(n-1). Consequently
+
+    B_p=sum_(n>=2)n^p exp(-10pi*n^2)
+       <=2^p exp(-40pi)/(1-2^p exp(-50pi)), p=4,6,8.
+
+Writing R_j for the n=1 derivative term of order j, the complete tails obey
+
+    R_0<=r(10)<=R_0+40pi^2 B_4,
+    R_1-40pi^3 B_6<=r'(10)<=R_1,
+    R_2<=r''(10)<=R_2+40pi^4 B_8.
+
+Set L(v)=(5/2)log(v)+2log(r(v)). Exactly,
+
+    L_v=5/(2v)+2r'/r,
+    L_vv=-5/(2v^2)+2(r''/r-(r'/r)^2),
+    (log G_1)''(w)=[L_vv(1-v^(-2))-2L_v/v^3]/(1-v^(-2))^3.
+
+One Arb256bit calculation using the outward balls in the preceding three
+inequalities, not an unbounded/truncated theta sum, gives at v=10,w=101/10:
+
+| Quantity | Certified enclosure / positive upper-bound ball |
+|---|---|
+| r(10) | [8.537855173791674022879561887937061334917e-12 +/-9.39e-52] |
+| r'(10) | [-2.59258683274275216873544144167458815721e-11 +/-6.03e-50] |
+| r''(10) | [7.8631781951647347988052254191550509912e-11 +/-2.45e-49] |
+| 40pi^2 B_4 upper bound | [1.680449886513188045032036340644898835203462686060548327e-51 +/-2.87e-106] |
+| 40pi^3 B_6 upper bound | [2.111715607278253332208349298043788788393640688129594096e-50 +/-1.23e-105] |
+| 40pi^4 B_8 upper bound | [2.653660095318507832746906829141946919924739595164066712e-49 +/-9.51e-105] |
+| (log G_1)''(101/10) | [-0.0360085176300411560160774208455744692 +/-9.01e-38] |
+
+The script asserts the stronger interval containment (-0.037,-0.035).
+Runtime0.000574s; full script and observed output are embedded under
+HCM_CURVATURE_INTENT/HCM_CURVATURE_OBSERVED in
+docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log. This was one new
+scalar-source check, not another DN22 integral or a sweep of windows.
+
+An analytic cross-check has the same sign eventually: for m=3/(2pi),
+r(v)=4pi^2(v-m)exp(-pi*v)(1+O(exp(-3pi*v))). The relative remainder and its
+first two derivatives have those bounds by the same uniformly convergent
+series. With v=w-w^(-1)+O(w^(-3)),
+
+    (log G_1)''(w)=-9/(2w^2)+O(w^(-3))<0 for sufficiently large w.
+
+This corroborates the mechanism; the explicit point certificate above gives
+the stated finite witness and full arithmetic margin.
+
+### HC4. Exact decision scope
+
+If the preceding proof/certificate is accepted, the canonical density r is
+NOT HCM. Thus gamma-convolution membership cannot supply this stronger
+density property in our problem. The positive gamma product, infinite
+divisibility and canonical convolution BP2 remain intact. No assertion about
+every gamma convolution is made, and no new theorem about the HCM class is
+borrowed from the definition source.
+
+This rules out only a proposed sufficient property that the actual source
+fails. It does not prove V_f<0, Q<0, RH false, or impossibility of a different
+source-specific compensation. The original integrated sign DN20 remains
+unproved; canonical exact theorem/consumer edge remains UNBOUND. No production
+CLOSES/OPENS or Lean admission follows. The scalar negative-curvature prediction
+with heuristic .90 is confirmed by the ball; it was frozen before arithmetic,
+not a forecast of RH truth or proof completion.
+
+Next candidate must use the fixed convolution or the full arithmetic coupling
+without assuming HCM, generic reciprocal symmetry, or pointwise jump-square
+positivity. A further request that merely renames DN20 is not justified.
+
+
+### HC acceptance receipt — 2026-09-11T17:47:06.855227+00:00
+
+ACCEPTED_PAPER_WITH_BALL_CERTIFICATE for HC1-HC4 only: the actual positive-variable density r is not HCM. Reviewed appendix7175bytes/SHA2563baec48a45b2c783b81ec87911809ece7b252958d366b9551d9754b0781cae38 is the unchanged suffix of the preceding42304bytes/full60ca909ad5e2a6faffe026dc5dafc100ff9b52197dfe64b7293d0efb52b8c327; original35129byte/a39402b4 report is preserved. Sole density_verdict_check Terra/xhigh, read-only/no descendants, returned HC and card PASS1/PASS2 CLEAN on identical bytes, FIRST_INCORRECT_ASSERTION NONE. Card0135731a both passes CLEAN. No older code/CE checks were counted toward this new acceptance.
+
+Parent independently derived the rational main curvature250*(6400p^3-74640p^2+12360p-909)/(970299*(20p-3)^2). Bounding3<p=pi<22/7 gives upper-37313546750/1192426639173<-3/100, agreeing with the full-tail Arb sign. The reviewer separately summed20terms as a diagnostic and checked the complete geometric tail proof and finite-difference necessity argument. Only the full-tail ball, not the diagnostic truncation, supplies the finite certificate. No old integral or grid repeated.
+
+Definition-only source intake is now DONE via registered paper.sh: docs/routeB_bus/litreview/pdfs/q3-hcm-definition.pdf438020bytes/b3c31f2e, readback byte-exact; bib/REFERENCES and Zotero itemUV225XV2 with attachmentKNQUQBKP confirmed. This supersedes the planned/staging observation in HC1 without changing reviewed source bytes or claiming a full-paper audit. Original1981/1992 references remain unverified and unused.
+
+The curvature prediction<0,p=.90 is CONFIRMED at the stated scalar property. Gamma convolution and the full actual source law remain; V_f/Q/DN20/RH signs are unchanged and unproved. Generic reciprocal rewriting is retired using the already accepted BP3 control, not counted as new mathematics. Next work must retain the fixed Volterra input without HCM or pointwise weighted jump-square assumptions. PX_RH_CLAIM: NOT_MADE.
+
+| Pass | Severity | Finding — English term + Russian explanation | Fix applied |
+|---|---|---|---|
+| HC/CARD PASS1 | CLEAN | No finding — источник, хвосты и область вывода проверены | None |
+| HC/CARD PASS2 | CLEAN | No finding — неизменные байты и отсутствие ложного переноса подтверждены | None |
