@@ -5,8 +5,9 @@ This module compiles the authoritative selector, tool manifest, derived-artifact
 registry, review transport contract, and close helpers into one deterministic
 plan.  Its run command then executes the registered, explicitly scoped
 transition and emits receipts. The resume-checkpoint command stores advisory
-observations and their byte history, never selector state. This module never
-commits, pushes, publishes externally, promotes, or makes an RH claim.  Browser
+observations and their byte history, never selector state. Only the registered
+initial-migration command may publish its reserved exact fast-forward candidate;
+the planner never commits, pushes, promotes, or makes an RH claim. Browser
 transport is performed by the current Codex body after ``review-plan`` has
 validated the exact attachment; compiling a plan never claims delivery.
 """
@@ -20,6 +21,7 @@ import json
 import os
 import platform
 import re
+import secrets
 import stat
 import subprocess
 import sys
@@ -121,6 +123,7 @@ SUPPLIER_PAYLOAD_FIELDS = frozenset(
     }
 )
 SHADOW_PLAN_SCHEMA = "q3_workflow_plan.v2"
+TEAM_PLAN_SCHEMA = "q3_workflow_plan.v3"
 PRODUCTION_PLAN_MODE = "PRODUCTION_V10"
 SHADOW_PLAN_MAX_BYTES = 8 * 1024
 SHADOW_PLAN_MAX_LINES = 150
@@ -195,7 +198,9 @@ class _ExecutionWriterEpoch:
 
 
 @contextmanager
-def _execution_writer_epoch(repo: Path) -> Iterator[_ExecutionWriterEpoch]:
+def _execution_writer_epoch(
+    repo: Path, *, integration_operation: str | None = None, bootstrap_operation: str | None = None,
+) -> Iterator[_ExecutionWriterEpoch]:
     """Hold one non-blocking exclusive flock across the entire write transaction."""
 
     try:
@@ -222,6 +227,7 @@ def _execution_writer_epoch(repo: Path) -> Iterator[_ExecutionWriterEpoch]:
             raise WorkflowRuntimeError("WORKFLOW_WRITER_LOCK_COLLISION") from exc
         epoch = _ExecutionWriterEpoch(path=lock_path, handle=handle, identity=identity)
         epoch.recheck()
+        _team_pending_guard(repo, operation_id=integration_operation, bootstrap_id=bootstrap_operation)
         yield epoch
         epoch.recheck()
     finally:
@@ -288,6 +294,8 @@ def _compact_startup_snapshot(
         "next_action": str(raw["next_action"])[:320],
         "run_authorized": bool(raw["run_authorized"]),
     }
+    if not shadow and snapshot.team_runtime_version:
+        compact["team_runtime_version"] = snapshot.team_runtime_version
     rendered = json.dumps(compact, ensure_ascii=False, indent=2, sort_keys=True)
     if len(rendered.encode("utf-8")) > SHADOW_STARTUP_MAX_BYTES or len(
         rendered.splitlines()
@@ -741,6 +749,43 @@ def live_plan_v10(
     read_epoch = (_startup_read_epoch(repo) if _writer_epoch is None
                   else nullcontext((_writer_epoch, None)))
     with read_epoch as (epoch_guard, lock_error):
+        bootstrap = _team_pending_bootstrap(repo)
+        if bootstrap is not None and lock_error is None:
+            operation_id, receipt = bootstrap
+            saved = receipt["bootstrap"]
+            if epoch_guard.recheck() is not None or _team_pending_bootstrap(repo) != bootstrap:
+                raise WorkflowRuntimeError("TEAM_READ_EPOCH_CHANGED")
+            return {"schema": TEAM_PLAN_SCHEMA, "mode": PRODUCTION_PLAN_MODE, "status": "HOLD",
+                    "holds": ["TEAM_BOOTSTRAP_PENDING"], "run_authorized": False,
+                    "writes_performed": False, "execution_ready": False, "PX_RH_CLAIM": "NOT_MADE",
+                    "selected_goal": None, "continuation": {"schema": "q3_continuation.v1", "status": "RECOVERY_ONLY",
+                        "owner": {"task": receipt["actor"], "installation_ref": receipt["installation_ref"], "epoch": receipt["epoch"]},
+                        "recovery": {"operation_id": operation_id, "manifest_sha256": receipt["manifest_sha256"],
+                                     "candidate_commit": saved["candidate_commit"],
+                                     "command": "team-bootstrap-publish", "reconcile_only": True},
+                        "blockers": [{"scope": "ALL_WRITERS", "code": "TEAM_BOOTSTRAP_PENDING"}]}}
+        pending = _team_pending_integration(repo)
+        if pending is not None and lock_error is None:
+            operation_id, integration = pending
+            saved = _team_integration_manifest(_team_json(integration["manifest"]))
+            if (_resume_digest(_team_json(saved)) != integration["manifest_sha256"]
+                    or saved["operation_id"] != operation_id):
+                raise WorkflowRuntimeError("TEAM_INTEGRATION_RECOVERY_MANIFEST_CHANGED")
+            _, observed_resume, _ = _team_current(repo)
+            if epoch_guard.recheck() is not None or _team_pending_integration(repo) != pending:
+                raise WorkflowRuntimeError("TEAM_READ_EPOCH_CHANGED")
+            # A mixed control/source tree cannot authorize ordinary planning.
+            # Display the saved recovery identity using the immutable engine.
+            return {"schema": TEAM_PLAN_SCHEMA, "mode": PRODUCTION_PLAN_MODE, "status": "HOLD",
+                    "holds": ["TEAM_INTEGRATION_PENDING"], "run_authorized": False,
+                    "writes_performed": False, "execution_ready": False, "PX_RH_CLAIM": "NOT_MADE",
+                    "selected_goal": None, "continuation": {"schema": "q3_continuation.v1", "status": "RECOVERY_ONLY",
+                        "saved_frontier": observed_resume["pins"]["physical_goal"],
+                        "owner": {"task": saved["owner_task"], "installation_ref": saved["installation_ref"], "epoch": saved["epoch"]},
+                        "recovery": {"operation_id": operation_id, "manifest_sha256": integration["manifest_sha256"],
+                                     "engine": integration["engine"], "command": "team-integrate-candidate",
+                                     "recover_operation": operation_id},
+                        "blockers": [{"scope": "ALL_WRITERS", "code": "TEAM_INTEGRATION_PENDING"}]}}
         snapshot = build_startup_snapshot(
             repo,
             owned_paths=owned_scope,
@@ -809,15 +854,25 @@ def live_plan_v10(
             registry_summary=registry_summary,
             holds=sorted(set(logical_holds)),
         )
+        continuation = None
+        if snapshot.team_runtime_version == 1:
+            continuation = _team_continuation(repo, snapshot, owned_paths)
+            if epoch_guard.recheck() is not None:
+                continuation = {"status": "HOLD", "blockers": [{"scope": "SHARED_STATE", "code": "TEAM_READ_EPOCH_CHANGED"}]}
     host = {"Darwin": "CODEX_MAC", "Linux": "CODEX_LINUX"}.get(
         platform.system(), "UNSUPPORTED_HOST"
     )
-    return compile_plan_v10(
+    result = compile_plan_v10(
         startup_snapshot=snapshot,
         node_registry_summary=registry_summary,
         host_executor=host,
         logical_plan=logical_plan,
     )
+    if continuation is not None:
+        result["schema"] = TEAM_PLAN_SCHEMA
+        result["continuation"] = continuation
+        result["execution_ready"] = False  # Native prerequisites always require a live observation.
+    return result
 
 
 def render_shadow_plan_v10(plan: dict[str, Any]) -> str:
@@ -842,7 +897,8 @@ def render_plan_v10(plan: dict[str, Any]) -> str:
     """Render one bounded production plan without invoking any other runtime."""
 
     rendered = json.dumps(plan, ensure_ascii=False, separators=(",", ":"), sort_keys=True)
-    if len(rendered.encode("utf-8")) > SHADOW_PLAN_MAX_BYTES or len(
+    limit = TEAM_PLAN_MAX_BYTES if plan.get("schema") == TEAM_PLAN_SCHEMA else SHADOW_PLAN_MAX_BYTES
+    if len(rendered.encode("utf-8")) > limit or len(
         rendered.splitlines()
     ) > SHADOW_PLAN_MAX_LINES:
         fallback = {
@@ -1016,16 +1072,29 @@ def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def _atomic_bytes(path: Path, payload: bytes) -> None:
+def _atomic_bytes(path: Path, payload: bytes, *, mode: int | None = None) -> None:
     """Durably replace one close marker/state file."""
 
     import tempfile
 
+    missing = []
+    parent = path.parent
+    while not parent.exists():
+        missing.append(parent)
+        parent = parent.parent
     path.parent.mkdir(parents=True, exist_ok=True)
+    for parent in reversed(missing):
+        directory = os.open(parent.parent, os.O_RDONLY | os.O_DIRECTORY)
+        try:
+            os.fsync(directory)
+        finally:
+            os.close(directory)
     descriptor, temporary = tempfile.mkstemp(prefix=f".{path.name}.", dir=path.parent)
     try:
         with os.fdopen(descriptor, "wb") as handle:
             handle.write(payload)
+            if mode is not None:
+                os.fchmod(handle.fileno(), mode)
             handle.flush()
             os.fsync(handle.fileno())
         os.replace(temporary, path)
@@ -1059,6 +1128,1936 @@ def _resume_digest(raw: bytes | None) -> str:
     return "ABSENT" if raw is None else hashlib.sha256(raw).hexdigest()
 
 
+TEAM_INSTALLATION = "q3_team_installation.v1"
+TEAM_LOCAL = "q3_team_local.v1"
+TEAM_ISSUES = Path("docs/INSTRUCTION_ISSUES.md")
+TEAM_ASSIGNMENTS = Path("docs/Codex/AGENTS_LEDGER.md")
+TEAM_RECORD_WRITE_PATHS = [str(TEAM_ISSUES), str(TEAM_ASSIGNMENTS),
+                          "docs/session_protocols/team-record-<event_id>.json",
+                          "docs/session_protocols/team-archive-*.json"]
+TEAM_INTEGRATION_WRITE_PATHS = ["MANIFEST_REVIEWED_SOURCE_PATHS",
+    "docs/session_protocols/team-evidence-<sha256>.bin", "GIT_COMMON_DIR/" + TEAM_LOCAL]
+TEAM_BOOTSTRAP_WRITE_PATHS = ["GIT_COMMON_DIR/" + TEAM_LOCAL, "GIT_COMMON_DIR/objects/**",
+    "GIT_COMMON_DIR/refs/remotes/origin/rh_clean", "REMOTE/origin/refs/heads/rh_clean"]
+TEAM_FENCED_CALLS = frozenset({
+    "workflow-close-node", "workflow-search-evidence", "workflow-session-close", "workflow-phase-close",
+    "workflow-resume-checkpoint", "bind-request", "workflow-team-record", "workflow-team-local-init",
+    "workflow-team-observe-remote", "workflow-team-reserve-effect", "workflow-team-confirm-effect",
+    "workflow-team-watch-intent", "workflow-team-observe-native", "workflow-team-integrate-candidate",
+    "workflow-team-bootstrap-publish",
+    "slack-manual-chat-reconciliation", "bridge-observed-phase-repair",
+})
+TEAM_NATIVE_EFFECTS = frozenset({
+    "dispatch-proshka", "agent-launch", "publication", "calculation",
+    "aristotle-submit", "paper-ingest",
+})
+TEAM_STAGES = (
+    "request_preparation", "request_review", "delivery", "receipt",
+    "independent_review", "parent_check", "acceptance", "publication",
+)
+TEAM_OWNER_STATES = {
+    "ACTIVE", "HANDOFF_INTENT", "HANDOFF_QUIESCED", "WATCH_RECONCILE_PENDING",
+    "RELEASED", "CLAIM_PENDING", "CLAIM_ABORTED",
+}
+TEAM_READ_MAX = 4 * 1024 * 1024
+TEAM_PLAN_MAX_BYTES = 16 * 1024
+
+
+def _team_hex(value: object, size: int = 64) -> bool:
+    return isinstance(value, str) and re.fullmatch("[0-9a-f]{" + str(size) + "}", value) is not None
+
+
+def _team_json(value: object) -> bytes:
+    # Runtime-generated closed records contain only JSON integers/strings/containers.
+    return (json.dumps(value, ensure_ascii=False, sort_keys=True,
+                       separators=(",", ":"), allow_nan=False) + "\n").encode("utf-8")
+
+
+def _team_enabled(repo: Path) -> bool:
+    _team_pending_guard(repo)
+    from orchestrator.startup_runtime import validate_battle_v10_control
+
+    return validate_battle_v10_control(repo).team_runtime_version == 1
+
+
+def _team_registered(repo: Path, command: str, paths: list[str], *, bootstrap_id: str | None = None) -> None:
+    _team_pending_guard(repo, bootstrap_id=bootstrap_id)
+    entry = load_tool_index(repo / TOOLS).get("workflow-" + command, {})
+    if (entry.get("status") != "ENABLED" or entry.get("writes") is not True
+            or entry.get("write_paths") != paths):
+        raise WorkflowRuntimeError("TEAM_TOOL_NOT_REGISTERED:" + command)
+
+
+def _team_writer_inventory(repo: Path) -> dict[str, Any]:
+    from orchestrator.routeb_goal_state import load_unique_yaml
+
+    document = load_unique_yaml((repo / TOOLS).read_text(encoding="utf-8"))
+    inventory = document.get("team_runtime_writer_inventory")
+    if not isinstance(inventory, dict) or set(inventory) != {"fenced", "inherited_only", "isolated_only"}:
+        raise WorkflowRuntimeError("TEAM_WRITER_INVENTORY_MISSING")
+    groups = list(inventory.values())
+    if any(not isinstance(group, list) or any(not isinstance(item, str) for item in group) for group in groups):
+        raise WorkflowRuntimeError("TEAM_WRITER_INVENTORY_INVALID")
+    names = [name for group in groups for name in group]
+    callable_writers = {
+        name for name, entry in load_tool_index(repo / TOOLS).items()
+        if entry.get("status") in {"ENABLED", "AVAILABLE", "DEGRADED"}
+        and entry.get("writes") is True
+    }
+    if (len(names) != len(set(names)) or set(names) != callable_writers
+            or set(inventory["fenced"]) != TEAM_FENCED_CALLS):
+        raise WorkflowRuntimeError("TEAM_WRITER_INVENTORY_INCOMPLETE_OR_DUPLICATE")
+    return inventory
+
+
+def _team_private_read(repo: Path, name: str) -> dict[str, Any] | None:
+    common = _git_common_dir(repo)
+    if Path(name).name != name:
+        raise WorkflowRuntimeError("TEAM_LOCAL_NAME_INVALID")
+    path = common / name
+    try:
+        before = path.lstat()
+    except FileNotFoundError:
+        return None
+    if not stat.S_ISREG(before.st_mode) or stat.S_IMODE(before.st_mode) != 0o600:
+        raise WorkflowRuntimeError("TEAM_LOCAL_PRIVATE_FILE_REQUIRED:" + name)
+    if before.st_size > TEAM_READ_MAX:
+        raise WorkflowRuntimeError("TEAM_LOCAL_READ_LIMIT:" + name)
+    result = _load_unique_json(path)
+    after = path.lstat()
+    # Reading can change atime; it is not a source mutation.
+    stable_fields = ("st_dev", "st_ino", "st_mode", "st_uid", "st_gid", "st_size", "st_mtime_ns", "st_ctime_ns")
+    if (any(getattr(before, key) != getattr(after, key) for key in stable_fields)
+            or path.read_bytes() != _team_json(result)):
+        raise WorkflowRuntimeError("TEAM_LOCAL_CORRUPT_OR_CHANGED:" + name)
+    return result
+
+
+def _team_pending_integration(repo: Path) -> tuple[str, dict[str, Any]] | None:
+    """Read the existing marker independently of mutable control and identity."""
+    try:
+        (repo / ".git").lstat()
+    except FileNotFoundError:
+        # A non-repository has no common-dir operation marker. Its ordinary
+        # writer/startup checks retain their own missing-repository behavior.
+        return
+    local = _team_private_read(repo, TEAM_LOCAL)
+    if local is None:
+        return
+    operations = local.get("operations")
+    if not isinstance(operations, dict):
+        raise WorkflowRuntimeError("TEAM_LOCAL_BINDING_INVALID")
+    pending = []
+    for key, receipt in operations.items():
+        integration = receipt.get("integration") if isinstance(receipt, dict) else None
+        if integration is not None:
+            if (not isinstance(integration, dict) or integration.get("state") not in {"PENDING", "COMPLETE"}
+                    or receipt.get("state") != ("RESERVED" if integration["state"] == "PENDING" else "CONFIRMED")):
+                raise WorkflowRuntimeError("TEAM_INTEGRATION_RECEIPT_INVALID")
+            if integration["state"] == "PENDING":
+                pending.append((key, integration))
+    if len(pending) > 1:
+        raise WorkflowRuntimeError("TEAM_INTEGRATION_PENDING_AMBIGUOUS")
+    return pending[0] if pending else None
+
+
+def _team_pending_bootstrap(repo: Path) -> tuple[str, dict[str, Any]] | None:
+    if not (repo / ".git").exists():
+        return None
+    local = _team_private_read(repo, TEAM_LOCAL)
+    if local is None:
+        return None
+    operations = local.get("operations")
+    if not isinstance(operations, dict):
+        raise WorkflowRuntimeError("TEAM_LOCAL_BINDING_INVALID")
+    pending = []
+    for key, receipt in operations.items():
+        saved = receipt.get("bootstrap") if isinstance(receipt, dict) else None
+        if saved is None:
+            continue
+        if (not isinstance(saved, dict) or saved.get("schema") != "q3_team_bootstrap_publish.v1"
+                or saved.get("operation_id") != key or receipt.get("state") not in {"RESERVED", "UNKNOWN", "CONFIRMED"}
+                or receipt.get("manifest_sha256") != _resume_digest(_team_json(saved))):
+            raise WorkflowRuntimeError("TEAM_BOOTSTRAP_RESERVATION_INVALID")
+        if receipt["state"] in {"RESERVED", "UNKNOWN"}:
+            pending.append((key, receipt))
+    if len(pending) > 1:
+        raise WorkflowRuntimeError("TEAM_BOOTSTRAP_PENDING_AMBIGUOUS")
+    return pending[0] if pending else None
+
+
+def _team_pending_guard(repo: Path, *, operation_id: str | None = None, bootstrap_id: str | None = None) -> None:
+    bootstrap = _team_pending_bootstrap(repo)
+    if bootstrap is not None and bootstrap[0] != bootstrap_id:
+        raise WorkflowRuntimeError("TEAM_BOOTSTRAP_PENDING:" + bootstrap[0])
+    pending = _team_pending_integration(repo)
+    if pending is not None and pending[0] != operation_id:
+        raise WorkflowRuntimeError("TEAM_INTEGRATION_PENDING:" + pending[0])
+
+
+def _team_installation(repo: Path) -> dict[str, str]:
+    data = _team_private_read(repo, TEAM_INSTALLATION)
+    if data is None:
+        raise WorkflowRuntimeError("INSTALLATION_RECOVERY_REQUIRED:run team-local-init for a new installation; restore private identity for an existing owner")
+    if (set(data) != {"schema", "installation_secret", "installation_ref"}
+            or data["schema"] != TEAM_INSTALLATION
+            or not _team_hex(data["installation_secret"])):
+        raise WorkflowRuntimeError("TEAM_INSTALLATION_INVALID")
+    ref = hashlib.sha256(b"q3-team-installation-v1\0" + bytes.fromhex(data["installation_secret"])).hexdigest()
+    if ref != data["installation_ref"]:
+        raise WorkflowRuntimeError("TEAM_INSTALLATION_REFERENCE_MISMATCH")
+    # Never return the private component to a caller or receipt.
+    return {"installation_ref": ref}
+
+
+def team_local_init(repo: Path) -> dict[str, Any]:
+    """Create a clone-local namespace, never acquire project execution ownership."""
+    _team_registered(repo, "team-local-init", ["GIT_COMMON_DIR/q3-three-body.writer.lock", "GIT_COMMON_DIR/" + TEAM_INSTALLATION])
+    common = _git_common_dir(repo)
+    lock = common / "q3-three-body.writer.lock"
+    try:
+        fd = os.open(lock, os.O_CREAT | os.O_EXCL | os.O_WRONLY | getattr(os, "O_NOFOLLOW", 0), 0o600)
+    except FileExistsError:
+        pass
+    else:
+        with os.fdopen(fd, "wb") as handle:
+            handle.flush()
+            os.fsync(handle.fileno())
+        _resume_sync(lock)
+    with _execution_writer_epoch(repo) as epoch:
+        current = _team_private_read(repo, TEAM_INSTALLATION)
+        if current is not None:
+            return {"status": "NOOP", **_team_installation(repo), "execution_acquired": False}
+        # An existing owner on this host must restore its identity, not regenerate it.
+        if _team_private_read(repo, TEAM_LOCAL) is not None:
+            raise WorkflowRuntimeError("INSTALLATION_RECOVERY_REQUIRED:local bindings already exist")
+        secret = secrets.token_bytes(32)
+        ref = hashlib.sha256(b"q3-team-installation-v1\0" + secret).hexdigest()
+        current_resume = _resume_file(repo, RESUME_PATH)
+        if current_resume is not None:
+            data, _ = _resume_document(current_resume)
+            if data.get("ownership", {}).get("installation_ref") == ref:
+                raise WorkflowRuntimeError("TEAM_INSTALLATION_REFERENCE_COLLISION")
+        data = {"schema": TEAM_INSTALLATION, "installation_secret": secret.hex(), "installation_ref": ref}
+        path = common / TEAM_INSTALLATION
+        # Exclusive creation, never overwrite even if an uncooperative writer races init.
+        fd = os.open(path, os.O_CREAT | os.O_EXCL | os.O_WRONLY | getattr(os, "O_NOFOLLOW", 0), 0o600)
+        with os.fdopen(fd, "wb") as handle:
+            handle.write(_team_json(data))
+            handle.flush()
+            os.fsync(handle.fileno())
+        _resume_sync(path)
+        epoch.recheck()
+        return {"status": "INITIALIZED", **_team_installation(repo), "execution_acquired": False}
+
+
+def _team_subject(subject: object) -> None:
+    if (not isinstance(subject, dict) or set(subject) != {"kind", "id", "sha256"}
+            or subject["kind"] not in {"REQUEST", "VERDICT", "REPAIR", "TRANSFER", "WATCH", "ASSIGNMENT"}
+            or not isinstance(subject["id"], str) or not subject["id"]
+            or not _team_hex(subject["sha256"])):
+        raise ValueError("typed subject")
+
+
+def _team_path_hashes(values: object) -> None:
+    if not isinstance(values, dict):
+        raise ValueError("path/hash mapping")
+    for path, digest in values.items():
+        if (not isinstance(path, str) or not path or Path(path).is_absolute()
+                or ".." in Path(path).parts or str(Path(path)) != path
+                or not _team_hex(digest)):
+            raise ValueError("relative path/hash")
+
+
+def _team_document(data: dict[str, Any]) -> None:
+    """Closed v2 additions; v1 archive interpretation remains unchanged."""
+    if set(data) != {"schema", "revision", "observed_at", "previous_sha256", "owner_thread_id",
+                     "owner_host_id", "reconciliation_pending", "recovery_from", "pins", "stages",
+                     "operation", "ownership", "source_manifest"}:
+        raise ValueError("v2 envelope fields")
+    owner = data["ownership"]
+    if (not isinstance(owner, dict) or set(owner) != {"installation_ref", "epoch", "state", "transfer"}
+            or not _team_hex(owner["installation_ref"])
+            or type(owner["epoch"]) is not int or owner["epoch"] < 1
+            or owner["state"] not in TEAM_OWNER_STATES):
+        raise ValueError("ownership")
+    transfer = owner["transfer"]
+    if transfer is not None:
+        if (not isinstance(transfer, dict)
+                or set(transfer) != {"id", "mode", "from_ref", "from_thread", "to_ref", "to_thread", "predecessor_commit", "evidence"}
+                or not isinstance(transfer["id"], str) or not transfer["id"]
+                or transfer["mode"] not in {"SAME_INSTALLATION", "CROSS_INSTALLATION"}
+                or any(not _team_hex(transfer[key]) for key in ("from_ref", "to_ref"))
+                or any(not re.fullmatch(r"[0-9a-f-]{36}", str(transfer[key])) for key in ("from_thread", "to_thread"))
+                or (transfer["predecessor_commit"] is not None and not _team_hex(transfer["predecessor_commit"], 40))):
+            raise ValueError("transfer")
+        _team_path_hashes(transfer["evidence"])
+    elif owner["state"] != "ACTIVE":
+        raise ValueError("pending owner requires transfer")
+    _team_path_hashes(data["source_manifest"])
+    if not data["source_manifest"]:
+        raise ValueError("source_manifest empty")
+    pins = data["pins"]
+    if set(pins) != {"head", "physical_goal", "source_commit", "request_id", "phase_id", "phase_key", "request"}:
+        raise ValueError("v2 pins")
+    from orchestrator import spine
+    try:
+        spine.validate_phase_key(pins["phase_key"])
+    except (ValueError, RuntimeError) as exc:
+        raise ValueError("phase_key") from exc
+    request = pins["request"]
+    if (not isinstance(request, dict) or set(request) != {"path", "commit", "blob", "sha256", "boundary_id", "conversation_id"}
+            or not _team_hex(request["commit"], 40) or not _team_hex(request["blob"], 40)
+            or not isinstance(request["boundary_id"], str) or not request["boundary_id"]
+            or not isinstance(request["conversation_id"], str) or not request["conversation_id"]):
+        raise ValueError("request pins")
+    _team_path_hashes({request["path"]: request["sha256"]})
+    if set(data["stages"]) != set(TEAM_STAGES):
+        raise ValueError("typed stages")
+    for name, stage in data["stages"].items():
+        if (not isinstance(stage, dict) or set(stage) != {"subject", "state", "evidence", "source_sha256", "checked_by"}
+                or stage["state"] not in {"NOT_STARTED", "PENDING", "UNKNOWN", "DONE", "REJECTED"}):
+            raise ValueError("stage " + name)
+        _team_subject(stage["subject"])
+        _team_path_hashes(stage["evidence"])
+        if stage["state"] in {"DONE", "REJECTED"} and not stage["evidence"]:
+            raise ValueError("stage evidence " + name)
+        if not _team_hex(stage["source_sha256"]) or (stage["checked_by"] is not None and not isinstance(stage["checked_by"], str)):
+            raise ValueError("stage verification identity " + name)
+        if stage["state"] == "DONE" and (stage["source_sha256"] != _resume_digest(_team_json(data["source_manifest"])) or not stage["checked_by"]):
+            raise ValueError("stage source verification stale " + name)
+        required_kind = "REQUEST" if name in TEAM_STAGES[:3] else "VERDICT"
+        if stage["subject"]["kind"] != required_kind:
+            raise ValueError("stage subject type " + name)
+        if required_kind == "REQUEST" and (stage["subject"]["id"] != pins["request_id"] or stage["subject"]["sha256"] != request["sha256"]):
+            raise ValueError("stage bound request " + name)
+    for stage_name, prerequisites in {
+        "request_review": ("request_preparation",),
+        "delivery": ("request_review",),
+        "independent_review": ("receipt",),
+        "parent_check": ("receipt",),
+        "acceptance": ("independent_review", "parent_check"),
+        "publication": ("acceptance",),
+    }.items():
+        stage = data["stages"][stage_name]
+        if stage["state"] == "DONE":
+            for name in prerequisites:
+                prior = data["stages"][name]
+                if prior["state"] != "DONE" or prior["subject"] != stage["subject"]:
+                    raise ValueError("stage prerequisite " + stage_name + ":" + name)
+    operation = data["operation"]
+    if set(operation) != {"kind", "state", "id", "evidence", "subject", "command", "inputs"}:
+        raise ValueError("operation fields")
+    _team_subject(operation["subject"])
+    _team_path_hashes(operation["inputs"])
+    if not isinstance(operation["command"], str) or not operation["command"]:
+        raise ValueError("operation command")
+
+
+def _team_verify_paths(repo: Path, paths: dict[str, str]) -> None:
+    for relative, expected in paths.items():
+        actual = _resume_file(repo, Path(relative))
+        if _resume_digest(actual) != expected:
+            raise WorkflowRuntimeError("TEAM_SOURCE_CHANGED:" + relative)
+
+
+def _team_current(repo: Path) -> tuple[bytes, dict[str, Any], str]:
+    raw = _resume_file(repo, RESUME_PATH)
+    if raw is None:
+        raise WorkflowRuntimeError("TEAM_RESUME_MISSING")
+    data, body = _resume_document(raw)
+    if data["schema"] != "q3_resume.v2":
+        raise WorkflowRuntimeError("TEAM_RESUME_MIGRATION_REQUIRED")
+    history = _resume_file(repo, RESUME_HISTORY_PATH)
+    if history is None or len(history) > TEAM_READ_MAX:
+        raise WorkflowRuntimeError("TEAM_HISTORY_UNAVAILABLE_OR_READ_LIMIT")
+    if ("intent", data["revision"], raw) not in _resume_history(history).values():
+        raise WorkflowRuntimeError("RESUME_CURRENT_CHECKSUM_MISMATCH")
+    return raw, data, body
+
+
+def _team_actor(repo: Path, owner: dict[str, Any]) -> None:
+    local_ref = _team_installation(repo)["installation_ref"]
+    if (owner["ownership"]["installation_ref"] != local_ref
+            or owner["owner_thread_id"] != os.environ.get("CODEX_THREAD_ID")):
+        raise WorkflowRuntimeError("TEAM_OBSERVER_ONLY:owner installation/task mismatch")
+
+
+def _team_local(repo: Path) -> dict[str, Any]:
+    ref = _team_installation(repo)["installation_ref"]
+    value = _team_private_read(repo, TEAM_LOCAL)
+    if value is None:
+        return {"schema": TEAM_LOCAL, "installation_ref": ref, "operations": {}, "watch": None, "epoch_floor": 0}
+    if (set(value) != {"schema", "installation_ref", "operations", "watch", "epoch_floor"}
+            or value["schema"] != TEAM_LOCAL or value["installation_ref"] != ref
+            or not isinstance(value["operations"], dict)
+            or type(value["epoch_floor"]) is not int):
+        raise WorkflowRuntimeError("TEAM_LOCAL_BINDING_INVALID")
+    return value
+
+
+def _team_local_save(repo: Path, before: dict[str, Any], after: dict[str, Any], epoch: _ExecutionWriterEpoch) -> None:
+    if _team_local(repo) != before:
+        raise WorkflowRuntimeError("TEAM_LOCAL_PREIMAGE_CHANGED")
+    payload = _team_json(after)
+    if len(payload) > TEAM_READ_MAX:
+        raise WorkflowRuntimeError("TEAM_LOCAL_READ_LIMIT:archive completed local receipts before adding operations")
+    epoch.recheck()
+    _atomic_bytes(_git_common_dir(repo) / TEAM_LOCAL, payload)
+    if _team_private_read(repo, TEAM_LOCAL) != after:
+        raise WorkflowRuntimeError("TEAM_LOCAL_READBACK_MISMATCH")
+
+
+def _team_local_operation(repo: Path, operation_id: str) -> dict[str, Any] | None:
+    return _team_local(repo)["operations"].get(operation_id)
+
+
+def _team_git(repo: Path, *args: str) -> bytes:
+    completed = subprocess.run(["git", *args], cwd=repo, capture_output=True, timeout=45, check=False)
+    if completed.returncode:
+        # Transport errors may contain credential-bearing URLs; do not echo stderr.
+        raise WorkflowRuntimeError("TEAM_GIT_OBSERVATION_FAILED:" + args[0])
+    return completed.stdout
+
+
+def _team_remote_checkpoint(repo: Path) -> tuple[str, bytes, dict[str, Any]]:
+    """Explicit network observation, never called by plan or while holding flock."""
+    def remote_tip() -> str:
+        lines = _team_git(repo, "ls-remote", "--exit-code", "origin", "refs/heads/rh_clean").decode().splitlines()
+        if len(lines) != 1:
+            raise WorkflowRuntimeError("TEAM_REMOTE_BRANCH_AMBIGUOUS")
+        commit, ref = lines[0].split("\t")
+        if ref != "refs/heads/rh_clean" or not _team_hex(commit, 40):
+            raise WorkflowRuntimeError("TEAM_REMOTE_REF_INVALID")
+        return commit
+
+    commit = remote_tip()
+    # Fetch only objects: no FETCH_HEAD, worktree, index, branch or tracking-ref mutation.
+    _team_git(repo, "fetch", "--no-tags", "--no-write-fetch-head", "origin", commit)
+    raw = _team_git(repo, "show", commit + ":" + str(RESUME_PATH))
+    data, _ = _resume_document(raw)
+    if remote_tip() != commit:
+        raise WorkflowRuntimeError("TEAM_REMOTE_CHANGED_DURING_OBSERVATION")
+    return commit, raw, data
+
+
+def _team_remote(repo: Path) -> tuple[str, bytes, dict[str, Any]]:
+    commit, raw, data = _team_remote_checkpoint(repo)
+    if data["schema"] != "q3_resume.v2":
+        raise WorkflowRuntimeError("TEAM_REMOTE_CHANGED_OR_UNMIGRATED")
+    return commit, raw, data
+
+
+def _team_bootstrap_endpoint(repo: Path) -> str:
+    fetch_urls = _team_git(repo, "remote", "get-url", "--all", "origin").splitlines()
+    push_urls = _team_git(repo, "remote", "get-url", "--push", "--all", "origin").splitlines()
+    mirror = _team_git(repo, "config", "--type=bool", "--default=false", "--get", "remote.origin.mirror").strip()
+    if len(fetch_urls) != 1 or push_urls != fetch_urls or mirror != b"false":
+        raise WorkflowRuntimeError("TEAM_BOOTSTRAP_SINGLE_ORIGIN_ENDPOINT_REQUIRED")
+    # Endpoint strings may contain credentials and never enter output or receipts.
+    return _resume_digest(fetch_urls[0])
+
+
+def _team_bootstrap_manifest(
+    repo: Path, raw: bytes, data: dict[str, Any], remote_commit: str,
+    remote_raw: bytes, remote_data: dict[str, Any], candidate: str,
+) -> dict[str, Any]:
+    """Validate the initial migration and bind every committed changed byte."""
+    operation = data["operation"]
+    if (remote_data["schema"] != "q3_resume.v1"
+            or any(remote_data[k] != data[k] for k in ("owner_thread_id", "owner_host_id"))
+            or any(remote_data["pins"][k] != data["pins"][k] for k in
+                   ("physical_goal", "source_commit", "request_id", "phase_id"))):
+        raise WorkflowRuntimeError("TEAM_BOOTSTRAP_REMOTE_OWNER_OR_PINS_CHANGED")
+    if (operation["kind"] != "PUBLISH" or operation["state"] != "INTENT"
+            or operation["command"] != "workflow-team-bootstrap-publish"
+            or not operation["inputs"]
+            or operation["subject"] != {"kind": "REPAIR", "id": operation["id"],
+                                      "sha256": _resume_digest(_team_json(operation["inputs"]))}):
+        raise WorkflowRuntimeError("TEAM_BOOTSTRAP_EXACT_INTENT_REQUIRED")
+    _team_git(repo, "merge-base", "--is-ancestor", remote_commit, candidate)
+    chain = _team_git(repo, "rev-list", "--reverse", "--parents", remote_commit + ".." + candidate).decode().splitlines()
+    parent = remote_commit
+    parents = []
+    for row in chain:
+        parts = row.split()
+        if len(parts) != 2 or parts[1] != parent:
+            raise WorkflowRuntimeError("TEAM_BOOTSTRAP_LINEAR_ANCESTRY_REQUIRED")
+        parents.append({"commit": parts[0], "parent": parts[1]})
+        parent = parts[0]
+    if not parents or parent != candidate:
+        raise WorkflowRuntimeError("TEAM_BOOTSTRAP_NEW_CANDIDATE_REQUIRED")
+    history = _resume_file(repo, RESUME_HISTORY_PATH)
+    remote_history = _team_git(repo, "show", remote_commit + ":" + str(RESUME_HISTORY_PATH))
+    _resume_history(remote_history)
+    if (history is None or not history.startswith(remote_history)
+            or _team_git(repo, "show", candidate + ":" + str(RESUME_PATH)) != raw
+            or _team_git(repo, "show", candidate + ":" + str(RESUME_HISTORY_PATH)) != history):
+        raise WorkflowRuntimeError("TEAM_BOOTSTRAP_COMMITTED_HISTORY_OR_CHECKPOINT_CHANGED")
+    versions = {v: b for kind, v, b in _resume_history(history).values() if kind in {"resume", "intent"}}
+    start = remote_data["revision"]
+    if versions.get(start) != remote_raw or versions.get(data["revision"]) != raw:
+        raise WorkflowRuntimeError("TEAM_BOOTSTRAP_REMOTE_HISTORY_MISSING")
+    previous = remote_raw
+    snapshots = {}
+    for revision in range(start, data["revision"] + 1):
+        payload = versions[revision]
+        value, _ = _resume_document(payload)
+        if revision != start and value["previous_sha256"] != _resume_digest(previous):
+            raise WorkflowRuntimeError("TEAM_BOOTSTRAP_HISTORY_CHAIN_CHANGED")
+        if (any(value[k] != data[k] for k in ("owner_thread_id", "owner_host_id"))
+                or any(value["pins"][k] != data["pins"][k] for k in
+                       ("physical_goal", "source_commit", "request_id", "phase_id"))):
+            raise WorkflowRuntimeError("TEAM_BOOTSTRAP_HISTORY_OWNER_OR_PINS_CHANGED")
+        snapshots[revision] = value
+        previous = payload
+    installs = [v for v, value in snapshots.items() if value["schema"] == "q3_resume.v1"
+                and value["operation"]["id"] == operation["id"] + ":local-install"
+                and value["operation"]["kind"] == "PUBLISH" and value["operation"]["state"] == "INTENT"]
+    if len(installs) != 1 or installs[0] - 1 not in snapshots:
+        raise WorkflowRuntimeError("TEAM_BOOTSTRAP_LOCAL_INSTALL_INTENT_REQUIRED")
+    install_revision = installs[0]
+    if snapshots[install_revision - 1]["operation"]["state"] not in {"NONE", "CONFIRMED"}:
+        raise WorkflowRuntimeError("TEAM_BOOTSTRAP_UNRESOLVED_PREDECESSOR")
+    confirmed = snapshots.get(install_revision + 1, {})
+    migrated = snapshots.get(install_revision + 2, {})
+    local_op = confirmed.get("operation", {})
+    if (confirmed.get("schema") != "q3_resume.v1" or local_op.get("kind") != "PUBLISH"
+            or local_op.get("id") != operation["id"] + ":local-install" or local_op.get("state") != "CONFIRMED"
+            or migrated.get("schema") != "q3_resume.v2"
+            or any(migrated["operation"].get(k) != local_op[k] for k in ("kind", "id", "state"))):
+        raise WorkflowRuntimeError("TEAM_BOOTSTRAP_LOCAL_INSTALL_CONFIRMATION_REQUIRED")
+    commits = [line.removeprefix("bootstrap_local_commit:") for line in local_op["evidence"]
+               if line.startswith("bootstrap_local_commit:")]
+    if len(commits) != 1 or not _team_hex(commits[0], 40) or commits[0] not in {row["commit"] for row in parents}:
+        raise WorkflowRuntimeError("TEAM_BOOTSTRAP_LOCAL_COMMIT_REQUIRED")
+    if _team_git(repo, "show", commits[0] + ":" + str(RESUME_PATH)) != versions[install_revision]:
+        raise WorkflowRuntimeError("TEAM_BOOTSTRAP_LOCAL_COMMIT_INTENT_MISMATCH")
+    metadata = {str(RESUME_PATH), str(RESUME_HISTORY_PATH)}
+    if metadata & set(operation["inputs"]):
+        raise WorkflowRuntimeError("TEAM_BOOTSTRAP_SELF_REFERENTIAL_INPUTS")
+    changed = _team_git(repo, "diff", "--name-only", "--no-renames", "-z", remote_commit, candidate, "--").decode().split("\0")[:-1]
+    if changed != sorted(set(operation["inputs"]) | metadata):
+        raise WorkflowRuntimeError("TEAM_BOOTSTRAP_SCOPE_MISMATCH")
+    files = []
+    for path in changed:
+        if ("\x00" in path or path.startswith("-") or Path(path).is_absolute()
+                or str(Path(path)) != path or ".." in Path(path).parts
+                or any(part.startswith(".git") for part in Path(path).parts)):
+            raise WorkflowRuntimeError("TEAM_BOOTSTRAP_PATH_INVALID")
+        before, before_mode = _team_integration_blob(repo, remote_commit, path)
+        after, mode = _team_integration_blob(repo, candidate, path)
+        if after is None:
+            raise WorkflowRuntimeError("TEAM_BOOTSTRAP_DELETION_FORBIDDEN:" + path)
+        if (path in operation["inputs"] and _resume_digest(after) != operation["inputs"][path]
+                or _resume_file(repo, Path(path)) != after
+                or (0o755 if (repo / path).stat().st_mode & 0o111 else 0o644) != mode):
+            raise WorkflowRuntimeError("TEAM_BOOTSTRAP_INPUT_CHANGED:" + path)
+        files.append({"path": path, "before_sha256": _resume_digest(before), "sha256": _resume_digest(after),
+                      "before_mode": before_mode, "mode": mode})
+    for row in parents:
+        changes = _team_git(repo, "diff", "--name-only", "--no-renames", "-z",
+                            row["parent"], row["commit"], "--").decode().split("\0")[:-1]
+        if not set(changes).issubset(changed):
+            raise WorkflowRuntimeError("TEAM_BOOTSTRAP_INTERMEDIATE_SCOPE_CHANGED")
+        checkpoint = _team_git(repo, "show", row["commit"] + ":" + str(RESUME_PATH))
+        value, _ = _resume_document(checkpoint)
+        if versions.get(value["revision"]) != checkpoint:
+            raise WorkflowRuntimeError("TEAM_BOOTSTRAP_INTERMEDIATE_CHECKPOINT_CHANGED")
+        for path in changes:
+            content, mode = _team_integration_blob(repo, row["commit"], path)
+            expected_mode = next(item["mode"] for item in files if item["path"] == path)
+            if content is None or mode != expected_mode or (path in operation["inputs"] and _resume_digest(content) != operation["inputs"][path]):
+                raise WorkflowRuntimeError("TEAM_BOOTSTRAP_INTERMEDIATE_SOURCE_UNREVIEWED:" + path)
+    return {"schema": "q3_team_bootstrap_publish.v1", "operation_id": operation["id"],
+            "branch": "refs/heads/rh_clean", "remote_commit": remote_commit,
+            "remote_resume_sha256": _resume_digest(remote_raw), "remote_history_sha256": _resume_digest(remote_history),
+            "candidate_commit": candidate, "candidate_resume_sha256": _resume_digest(raw),
+            "parents": parents, "inputs_sha256": operation["subject"]["sha256"], "files": files}
+
+
+def team_bootstrap_publish(
+    repo: Path, *, operation_id: str, expected_head: str | None = None,
+    expected_remote_commit: str | None = None, expected_remote_resume_sha256: str | None = None,
+    reconcile_only: bool = False,
+) -> dict[str, Any]:
+    """Reserve first publication before transport; every retry only observes it."""
+    _team_registered(repo, "team-bootstrap-publish", TEAM_BOOTSTRAP_WRITE_PATHS, bootstrap_id=operation_id)
+    if not operation_id or len(operation_id) > 140:
+        raise WorkflowRuntimeError("TEAM_OPERATION_ID_INVALID")
+    with _execution_writer_epoch(repo, bootstrap_operation=operation_id):
+        raw, data, _ = _team_current(repo)
+        _team_actor(repo, data)
+        local = _team_local(repo)
+        prior = local["operations"].get(operation_id)
+        if (data["ownership"]["state"] != "ACTIVE" or data["ownership"]["epoch"] != 1
+                or data["ownership"]["transfer"] is not None or data["reconciliation_pending"]
+                or os.environ.get("Q3_OWNER_EPOCH") != "1" or local["epoch_floor"] > 1):
+            raise WorkflowRuntimeError("TEAM_BOOTSTRAP_INITIAL_OWNER_REQUIRED")
+        if prior is not None:
+            manifest = prior.get("bootstrap")
+            if (not isinstance(manifest, dict) or manifest.get("schema") != "q3_team_bootstrap_publish.v1"
+                    or prior.get("manifest_sha256") != _resume_digest(_team_json(manifest))
+                    or prior.get("actor") != data["owner_thread_id"] or prior.get("epoch") != 1
+                    or prior.get("installation_ref") != data["ownership"]["installation_ref"]
+                    or manifest.get("operation_id") != operation_id or manifest.get("branch") != "refs/heads/rh_clean"):
+                raise WorkflowRuntimeError("TEAM_BOOTSTRAP_RESERVATION_INVALID")
+            for argument, key in ((expected_head, "candidate_commit"), (expected_remote_commit, "remote_commit"),
+                                  (expected_remote_resume_sha256, "remote_resume_sha256")):
+                if argument is not None and argument != manifest[key]:
+                    raise WorkflowRuntimeError("TEAM_BOOTSTRAP_ARGUMENT_DRIFT")
+            if prior["state"] == "CONFIRMED":
+                return {"status": "CONFIRMED", "operation_id": operation_id, "push_attempted": False,
+                        "candidate_commit": manifest["candidate_commit"], "writes_performed": False}
+            if prior["state"] not in {"RESERVED", "UNKNOWN"}:
+                raise WorkflowRuntimeError("TEAM_BOOTSTRAP_RESERVATION_INVALID")
+        elif reconcile_only:
+            raise WorkflowRuntimeError("TEAM_BOOTSTRAP_ORIGINAL_RESERVATION_REQUIRED")
+    push_attempted = False
+    if prior is None:
+        if not (_team_hex(expected_head, 40) and _team_hex(expected_remote_commit, 40)
+                and _team_hex(expected_remote_resume_sha256)):
+            raise WorkflowRuntimeError("TEAM_BOOTSTRAP_EXACT_ARGUMENTS_REQUIRED")
+        endpoint = _team_bootstrap_endpoint(repo)
+        remote_commit, remote_raw, remote_data = _team_remote_checkpoint(repo)
+        if remote_commit != expected_remote_commit or _resume_digest(remote_raw) != expected_remote_resume_sha256:
+            raise WorkflowRuntimeError("TEAM_BOOTSTRAP_REMOTE_PREIMAGE_CHANGED")
+        with _execution_writer_epoch(repo, bootstrap_operation=operation_id) as epoch:
+            if team_guard(repo, command="workflow-team-bootstrap-publish", paths=[]) is None:
+                raise WorkflowRuntimeError("TEAM_RUNTIME_NOT_ACTIVATED")
+            if (live_plan_v10(repo, owned_paths=[], _writer_epoch=epoch).get("status") == "FATAL"
+                    or _resume_file(repo, RESUME_PATH) != raw or _team_local(repo) != local
+                    or _team_git(repo, "rev-parse", "HEAD").decode().strip() != expected_head
+                    or data["operation"]["id"] != operation_id or _team_bootstrap_endpoint(repo) != endpoint):
+                raise WorkflowRuntimeError("TEAM_BOOTSTRAP_LOCAL_PREIMAGE_CHANGED")
+            if any(item.get("bootstrap") or item.get("state") in {"RESERVED", "UNKNOWN"}
+                   for item in local["operations"].values()):
+                raise WorkflowRuntimeError("TEAM_BOOTSTRAP_EXISTING_EFFECT_REQUIRES_RECONCILIATION")
+            manifest = _team_bootstrap_manifest(repo, raw, data, remote_commit, remote_raw, remote_data, expected_head)
+            _team_verify_paths(repo, data["source_manifest"])
+            _team_verify_paths(repo, data["operation"]["inputs"])
+            receipt = {"schema": "q3_team_bootstrap_reservation.v1", "state": "RESERVED", "actor": data["owner_thread_id"],
+                       "epoch": 1, "installation_ref": data["ownership"]["installation_ref"],
+                       "origin_sha256": endpoint,
+                       "checkpoint_sha256": _resume_digest(raw), "bootstrap": manifest,
+                       "manifest_sha256": _resume_digest(_team_json(manifest)), "evidence": {}}
+            # Recheck every input after the potentially lengthy history/tree validation.
+            if (_resume_file(repo, RESUME_PATH) != raw or _team_git(repo, "rev-parse", "HEAD").decode().strip() != expected_head
+                    or _team_bootstrap_manifest(repo, raw, data, remote_commit, remote_raw, remote_data, expected_head) != manifest):
+                raise WorkflowRuntimeError("TEAM_BOOTSTRAP_LOCAL_PREIMAGE_CHANGED")
+            _team_local_save(repo, local, {**local, "epoch_floor": 1,
+                "operations": {**local["operations"], operation_id: receipt}}, epoch)
+        # No caller can re-enter the push after this durable reservation, even
+        # if this process dies before calling Git or before observing its result.
+        try:
+            _team_git(repo, "merge-base", "--is-ancestor", expected_remote_commit, expected_head)
+            push_attempted = True
+            _team_git(repo, "push", "--no-follow-tags", "--recurse-submodules=no",
+                      "origin", expected_head + ":refs/heads/rh_clean")
+        except (WorkflowRuntimeError, OSError, subprocess.SubprocessError):
+            pass  # Only independently observed remote bytes may confirm the effect.
+    else:
+        if _team_bootstrap_endpoint(repo) != prior.get("origin_sha256"):
+            raise WorkflowRuntimeError("TEAM_BOOTSTRAP_ORIGIN_CHANGED")
+    try:
+        observed_commit, observed_raw, _ = _team_remote_checkpoint(repo)
+        observed = {"remote_commit": observed_commit, "remote_resume_sha256": _resume_digest(observed_raw)}
+    except (WorkflowRuntimeError, OSError, subprocess.SubprocessError):
+        observed = {"remote_commit": None, "remote_resume_sha256": None}
+    state = ("CONFIRMED" if observed["remote_commit"] == manifest["candidate_commit"]
+             and observed["remote_resume_sha256"] == manifest["candidate_resume_sha256"] else "UNKNOWN")
+    with _execution_writer_epoch(repo, bootstrap_operation=operation_id) as epoch:
+        _, current, _ = _team_current(repo)
+        _team_actor(repo, current)
+        local = _team_local(repo)
+        prior = local["operations"].get(operation_id)
+        if (prior is None or prior.get("manifest_sha256") != _resume_digest(_team_json(manifest))
+                or prior.get("bootstrap") != manifest or prior.get("epoch") != current["ownership"]["epoch"]):
+            raise WorkflowRuntimeError("TEAM_BOOTSTRAP_RESERVATION_CHANGED")
+        if prior["state"] == "CONFIRMED":
+            state = "CONFIRMED"  # Another reconciliation already observed the exact commit.
+        else:
+            updated = {**prior, "state": state, "evidence": observed}
+            if updated != prior:
+                _team_local_save(repo, local, {**local, "operations": {**local["operations"], operation_id: updated}}, epoch)
+    return {"status": state, "operation_id": operation_id, "push_attempted": push_attempted,
+            "candidate_commit": manifest["candidate_commit"], "observation": observed,
+            "next": "confirm the saved checkpoint" if state == "CONFIRMED" else "reconcile the original operation; never repeat push"}
+
+
+def team_observe_remote(repo: Path, *, operation_id: str) -> dict[str, Any]:
+    """Persist one operation-bound observation; retry never renews a spent grant."""
+    _team_registered(repo, "team-observe-remote", ["GIT_COMMON_DIR/" + TEAM_LOCAL, "GIT_COMMON_DIR/objects/**"])
+    raw, data, _ = _team_current(repo)
+    local = _team_local(repo)
+    if not operation_id or len(operation_id) > 160:
+        raise WorkflowRuntimeError("TEAM_OPERATION_ID_INVALID")
+    actor = os.environ.get("CODEX_THREAD_ID")
+    owner = data["ownership"]
+    transfer = owner["transfer"]
+    is_owner = local["installation_ref"] == owner["installation_ref"] and actor == data["owner_thread_id"]
+    is_claimant = (owner["state"] in {"RELEASED", "CLAIM_ABORTED"} and transfer is not None
+                   and actor == transfer["to_thread"] and local["installation_ref"] == transfer["to_ref"]
+                   and operation_id == transfer["id"] + ":release")
+    if not (is_owner or is_claimant):
+        raise WorkflowRuntimeError("TEAM_REMOTE_OBSERVER_NOT_OWNER_OR_NAMED_CLAIMANT")
+    prior = local["operations"].get(operation_id)
+    if prior is not None:
+        return {"status": "NOOP", "operation_id": operation_id, "state": prior["state"],
+                "next": "inspect original operation; an existing observation is not renewed"}
+    commit, remote_raw, remote_data = _team_remote(repo)
+    receipt = {"schema": "q3_team_remote_observation.v1", "operation_id": operation_id,
+               "state": "OBSERVED", "installation_ref": local["installation_ref"],
+               "actor": os.environ.get("CODEX_THREAD_ID"), "epoch": data["ownership"]["epoch"],
+               "checkpoint_sha256": _resume_digest(raw),
+               "local_head": _team_git(repo, "rev-parse", "HEAD").decode().strip(),
+               "remote_commit": commit, "remote_resume_sha256": _resume_digest(remote_raw),
+               "remote_ownership": remote_data["ownership"],
+               "remote_thread": remote_data["owner_thread_id"], "evidence": {}}
+    with _execution_writer_epoch(repo) as epoch:
+        if _resume_file(repo, RESUME_PATH) != raw:
+            raise WorkflowRuntimeError("TEAM_OBSERVATION_CHECKPOINT_CHANGED")
+        if os.environ.get("CODEX_THREAD_ID") != actor:
+            raise WorkflowRuntimeError("TEAM_OBSERVATION_ACTOR_CHANGED")
+        updated = {**local, "operations": {**local["operations"], operation_id: receipt}}
+        _team_local_save(repo, local, updated, epoch)
+    return {"status": "OBSERVED", "operation_id": operation_id, "remote_commit": commit,
+            "remote_resume_sha256": receipt["remote_resume_sha256"], "execution_acquired": False}
+
+
+def team_reserve_effect(repo: Path, *, operation_id: str) -> dict[str, Any]:
+    _team_registered(repo, "team-reserve-effect", ["GIT_COMMON_DIR/" + TEAM_LOCAL])
+    with _execution_writer_epoch(repo) as epoch:
+        raw, data, _ = _team_current(repo)
+        _team_actor(repo, data)
+        if data["ownership"]["state"] != "ACTIVE" or data["reconciliation_pending"]:
+            raise WorkflowRuntimeError("TEAM_OWNER_RECONCILIATION_REQUIRED")
+        operation = data["operation"]
+        if operation["id"] != operation_id or operation["state"] != "INTENT":
+            raise WorkflowRuntimeError("TEAM_EXACT_EFFECT_INTENT_REQUIRED")
+        _team_verify_paths(repo, data["source_manifest"])
+        _team_verify_paths(repo, operation["inputs"])
+        local = _team_local(repo)
+        receipt = local["operations"].get(operation_id)
+        if not receipt:
+            raise WorkflowRuntimeError("TEAM_REMOTE_OBSERVATION_REQUIRED")
+        if receipt["state"] != "OBSERVED":
+            return {"status": "RECONCILE_ORIGINAL", "operation_id": operation_id, "execute": False}
+        if (receipt["checkpoint_sha256"] != _resume_digest(raw)
+                or receipt["actor"] != data["owner_thread_id"]
+                or receipt["epoch"] != data["ownership"]["epoch"]
+                or receipt["remote_ownership"] != data["ownership"]
+                or receipt["remote_thread"] != data["owner_thread_id"]
+                or receipt["local_head"] != _team_git(repo, "rev-parse", "HEAD").decode().strip()):
+            raise WorkflowRuntimeError("TEAM_REMOTE_OWNERSHIP_OR_INPUT_DRIFT")
+        updated = {**local, "operations": {**local["operations"], operation_id: {**receipt, "state": "RESERVED"}},
+                   "epoch_floor": max(local["epoch_floor"], data["ownership"]["epoch"])}
+        _team_local_save(repo, local, updated, epoch)
+        return {"status": "RESERVED", "operation_id": operation_id, "execute_once": True,
+                "lost_receipt_action": "RECONCILE_ORIGINAL"}
+
+
+def _team_evidence(repo: Path, relative: str, expected: str) -> dict[str, Any]:
+    raw = _resume_file(repo, Path(relative))
+    if _resume_digest(raw) != expected:
+        raise WorkflowRuntimeError("TEAM_EVIDENCE_CHANGED:" + relative)
+    assert raw is not None
+    try:
+        value = _load_unique_json(repo / relative)
+    except StartupRuntimeError as exc:
+        raise WorkflowRuntimeError("TEAM_EVIDENCE_INVALID") from exc
+    if _team_json(value) != raw:
+        raise WorkflowRuntimeError("TEAM_EVIDENCE_NONCANONICAL")
+    return value
+
+
+def team_observe_native(repo: Path, *, candidate: Path, expected_sha256: str) -> dict[str, Any]:
+    """Store externally observed native evidence; never invent a provider observation."""
+    _team_registered(repo, "team-observe-native", ["GIT_COMMON_DIR/" + TEAM_LOCAL])
+    payload = candidate.read_bytes()
+    if _resume_digest(payload) != expected_sha256:
+        raise WorkflowRuntimeError("TEAM_NATIVE_PAYLOAD_CHANGED")
+    evidence = _load_unique_json(candidate)
+    if evidence.get("schema") == "q3_team_assignment_observation.v1":
+        return _team_observe_assignment(repo, evidence, payload)
+    required = {"schema", "installation_ref", "actor", "epoch", "transfer_id", "watch_id", "target_thread",
+                "state", "continuation_minutes", "agent_check_minutes", "observed_at", "scheduled_wake_at",
+                "provider_receipt", "provider_receipt_sha256", "retarget_supported"}
+    if (set(evidence) != required or evidence["schema"] != "q3_team_native_observation.v1"
+            or _team_json(evidence) != payload or evidence["state"] not in {"ACTIVE", "PAUSED", "ABSENT", "UNKNOWN"}
+            or type(evidence["retarget_supported"]) is not bool
+            or type(evidence["continuation_minutes"]) is not int or evidence["continuation_minutes"] != 10
+            or type(evidence["agent_check_minutes"]) is not int or evidence["agent_check_minutes"] != 20):
+        raise WorkflowRuntimeError("TEAM_NATIVE_SCHEMA_INVALID")
+    with _execution_writer_epoch(repo) as epoch:
+        _, data, _ = _team_current(repo)
+        _team_actor(repo, data)
+        local = _team_local(repo)
+        if (evidence["installation_ref"] != local["installation_ref"]
+                or evidence["actor"] != os.environ.get("CODEX_THREAD_ID")
+                or evidence["epoch"] != data["ownership"]["epoch"]):
+            raise WorkflowRuntimeError("TEAM_NATIVE_OWNER_MISMATCH")
+        _team_verify_paths(repo, {evidence["provider_receipt"]: evidence["provider_receipt_sha256"]})
+        for name in ("observed_at", "scheduled_wake_at"):
+            value = evidence[name]
+            if value is None and name == "scheduled_wake_at":
+                continue
+            if not isinstance(value, str) or datetime.fromisoformat(value).utcoffset() is None:
+                raise WorkflowRuntimeError("TEAM_NATIVE_OBSERVATION_TIME_INVALID")
+        if local["watch"] == evidence:
+            return {"status": "NOOP", "watch_id": evidence["watch_id"]}
+        operations = dict(local["operations"])
+        for action in ("CREATE", "UPDATE", "PAUSE"):
+            intent_id = evidence["transfer_id"] + ":watch:" + action
+            intent = operations.get(intent_id)
+            if intent is not None and intent["state"] == "RESERVED":
+                desired = "PAUSED" if action == "PAUSE" else "ACTIVE"
+                if (evidence["state"] == desired and evidence["target_thread"] == intent["target_thread"]
+                        and (intent["watch_id"] is None or intent["watch_id"] == evidence["watch_id"])):
+                    operations[intent_id] = {**intent, "state": "CONFIRMED", "evidence": evidence}
+        _team_local_save(repo, local, {**local, "watch": evidence, "operations": operations}, epoch)
+    return {"status": "OBSERVED", "watch_id": evidence["watch_id"], "provider_state": evidence["state"],
+            "scheduled_wake_observed": evidence["scheduled_wake_at"] is not None}
+
+
+def _team_assignments(repo: Path) -> dict[str, Any]:
+    from orchestrator import team_records
+
+    raw = _resume_file(repo, TEAM_ASSIGNMENTS)
+    if raw is None:
+        raise WorkflowRuntimeError("TEAM_ASSIGNMENTS_MISSING")
+    return team_records.read_registry(raw, "assignments", archive_loader=lambda path: _resume_file(repo, Path(path)))
+
+
+def _team_assignment_context(repo: Path, data: dict[str, Any], assignments: dict[str, Any],
+                             assignment_ids: list[str], result_hashes: set[str]) -> Any:
+    """Recheck local native observations and their durable evidence, not report assertions."""
+    from orchestrator import team_records
+
+    operations = _team_local(repo)["operations"]
+    observations = {}
+    output_artifacts: dict[str, bytes] = {}
+    for assignment_id in assignment_ids:
+        row = assignments["assignments"].get(assignment_id)
+        if row is None:
+            raise WorkflowRuntimeError("TEAM_ASSIGNMENT_UNKNOWN:" + assignment_id)
+        assignment = row["assignment"]
+        found = []
+        for item in operations.values():
+            observation = item.get("observation", {})
+            if (item.get("schema") == "q3_team_assignment_receipt.v1"
+                    and observation.get("assignment_id") == assignment_id):
+                if observation.get("phase") == "RESULT" and observation.get("output_sha256") not in result_hashes:
+                    continue
+                team_records._validate_native_observation(assignment, observation, phase=observation["phase"])
+                for prefix in ("output", "provider_receipt"):
+                    raw = _team_locator(repo, observation[prefix + "_locator"], observation[prefix + "_sha256"])
+                    if prefix == "output":
+                        output_artifacts[observation[prefix + "_locator"]] = raw
+                found.append(observation)
+        completed = [item for item in found if item["phase"] == "RESULT" and item["state"] == "COMPLETED"]
+        if len(completed) == 1:
+            found = [item for item in found if item["phase"] == "LAUNCH"] + completed
+        observations[assignment_id] = found
+    return team_records.TrustedTeamContext(
+        owner_task=data["owner_thread_id"], owner_host=data["owner_host_id"],
+        owner_installation_ref=data["ownership"]["installation_ref"], owner_epoch=data["ownership"]["epoch"],
+        actor_id=data["owner_thread_id"], observations=observations, output_artifacts=output_artifacts)
+
+
+def _team_observe_assignment(repo: Path, evidence: dict[str, Any], payload: bytes) -> dict[str, Any]:
+    from orchestrator import team_records
+
+    if _team_json(evidence) != payload:
+        raise WorkflowRuntimeError("TEAM_NATIVE_NONCANONICAL")
+    with _execution_writer_epoch(repo) as epoch:
+        _, data, _ = _team_current(repo)
+        _team_actor(repo, data)
+        if data["ownership"]["state"] not in {"ACTIVE", "HANDOFF_INTENT"}:
+            raise WorkflowRuntimeError("TEAM_OWNER_RECONCILIATION_REQUIRED")
+        assignments = _team_assignments(repo)
+        assignment_id = evidence.get("assignment_id")
+        row = assignments["assignments"].get(assignment_id)
+        if row is None:
+            raise WorkflowRuntimeError("TEAM_ASSIGNMENT_UNKNOWN")
+        assignment = row["assignment"]
+        context = team_records.TrustedTeamContext(data["owner_thread_id"], data["owner_host_id"],
+            data["ownership"]["installation_ref"], data["ownership"]["epoch"], data["owner_thread_id"], {})
+        team_records._validate_assignment_owner(assignment, context)
+        phase = evidence.get("phase")
+        if phase not in {"LAUNCH", "RESULT"}:
+            raise WorkflowRuntimeError("TEAM_NATIVE_PHASE_INVALID")
+        team_records._validate_native_observation(assignment, evidence, phase=phase)
+        for prefix in ("output", "provider_receipt"):
+            _team_locator(repo, evidence[prefix + "_locator"], evidence[prefix + "_sha256"])
+        local = _team_local(repo)
+        operation_id = evidence["operation_id"]
+        record = {"schema": "q3_team_assignment_receipt.v1", "state": "CONFIRMED", "observation": evidence}
+        prior = local["operations"].get(operation_id)
+        if prior is not None and prior.get("observation") == evidence:
+            return {"status": "NOOP", "assignment_id": assignment_id, "phase": phase}
+        for item in local["operations"].values():
+            observed = item.get("observation", {})
+            if (phase == "LAUNCH" and observed.get("assignment_id") == assignment_id
+                    and observed.get("phase") == phase):
+                raise WorkflowRuntimeError("TEAM_NATIVE_PHASE_CONFLICT:reuse the original observation")
+        if phase == "LAUNCH":
+            operation = data["operation"]
+            if (not prior or prior.get("state") != "RESERVED" or operation["id"] != operation_id
+                    or operation["command"] != "agent-launch" or operation["subject"]["id"] != assignment_id
+                    or operation["subject"]["sha256"] != team_records._assignment_binding_sha(assignment)
+                    or prior.get("actor") != data["owner_thread_id"] or prior.get("epoch") != data["ownership"]["epoch"]):
+                raise WorkflowRuntimeError("TEAM_AGENT_LAUNCH_RESERVATION_REQUIRED")
+        elif prior is not None:
+            raise WorkflowRuntimeError("TEAM_NATIVE_OPERATION_CONFLICT")
+        else:
+            context = _team_assignment_context(repo, data, assignments, [assignment_id], set())
+            launch = context.observations[assignment_id]
+            if (len(launch) != 1 or launch[0]["phase"] != "LAUNCH"
+                    or launch[0]["native_agent_id"] != evidence["native_agent_id"]):
+                raise WorkflowRuntimeError("TEAM_NATIVE_LAUNCH_BINDING_REQUIRED")
+        record.update(actor=data["owner_thread_id"], epoch=data["ownership"]["epoch"])
+        if prior is not None:
+            record = {**prior, **record}
+        _team_local_save(repo, local, {**local, "operations": {**local["operations"], operation_id: record}}, epoch)
+    return {"status": "OBSERVED", "assignment_id": assignment_id, "phase": phase,
+            "mathematical_acceptance": False}
+
+
+def team_watch_intent(repo: Path, *, action: str, transfer_id: str, target_thread: str) -> dict[str, Any]:
+    _team_registered(repo, "team-watch-intent", ["GIT_COMMON_DIR/" + TEAM_LOCAL])
+    if action not in {"CREATE", "UPDATE", "PAUSE"} or not re.fullmatch(r"[0-9a-f-]{36}", target_thread) or not transfer_id:
+        raise WorkflowRuntimeError("TEAM_WATCH_INTENT_INVALID")
+    with _execution_writer_epoch(repo) as epoch:
+        _, data, _ = _team_current(repo)
+        _team_actor(repo, data)
+        local = _team_local(repo)
+        operation_id = transfer_id + ":watch:" + action
+        if operation_id in local["operations"]:
+            return {"status": "RECONCILE_ORIGINAL", "operation_id": operation_id, "execute": False}
+        if any(key.startswith(transfer_id + ":watch:") and value["state"] in {"RESERVED", "UNKNOWN"}
+               for key, value in local["operations"].items()):
+            raise WorkflowRuntimeError("TEAM_WATCH_EFFECT_UNRESOLVED")
+        transfer = data["ownership"]["transfer"]
+        if data["ownership"]["state"] != "ACTIVE" and (transfer is None or transfer["id"] != transfer_id):
+            raise WorkflowRuntimeError("TEAM_WATCH_TRANSFER_MISMATCH")
+        watch = local["watch"]
+        if watch is None or watch["state"] == "UNKNOWN":
+            raise WorkflowRuntimeError("TEAM_WATCH_INVENTORY_REQUIRED")
+        if action == "CREATE" and watch["state"] != "ABSENT":
+            raise WorkflowRuntimeError("TEAM_WATCH_CONFIRMED_ABSENCE_REQUIRED")
+        if action != "CREATE" and (watch["state"] == "ABSENT" or not watch["watch_id"]):
+            raise WorkflowRuntimeError("TEAM_EXISTING_WATCH_REQUIRED")
+        if target_thread != data["owner_thread_id"]:
+            if (transfer is None or transfer["mode"] != "SAME_INSTALLATION"
+                    or target_thread != transfer["to_thread"] or watch["retarget_supported"] is not True):
+                raise WorkflowRuntimeError("TEAM_WATCH_RETARGET_UNSUPPORTED_OR_UNVERIFIED")
+        if data["ownership"]["state"] == "CLAIM_PENDING":
+            remote = local["operations"].get(transfer_id + ":claim")
+            if remote is None or remote["remote_ownership"] != data["ownership"]:
+                raise WorkflowRuntimeError("TEAM_VERIFIED_REMOTE_CLAIM_REQUIRED")
+        receipt = {"schema": "q3_team_watch_intent.v1", "operation_id": operation_id, "state": "RESERVED",
+                   "actor": data["owner_thread_id"], "installation_ref": local["installation_ref"],
+                   "epoch": data["ownership"]["epoch"], "action": action, "target_thread": target_thread,
+                   "watch_id": watch["watch_id"], "inventory": watch, "evidence": {}}
+        _team_local_save(repo, local, {**local, "operations": {**local["operations"], operation_id: receipt}}, epoch)
+        return {"status": "RESERVED", "operation_id": operation_id, "watch_id": watch["watch_id"], "execute_once": True}
+
+
+def team_confirm_effect(repo: Path, *, operation_id: str, candidate: Path, expected_sha256: str) -> dict[str, Any]:
+    _team_registered(repo, "team-confirm-effect", ["GIT_COMMON_DIR/" + TEAM_LOCAL])
+    payload = candidate.read_bytes()
+    if _resume_digest(payload) != expected_sha256:
+        raise WorkflowRuntimeError("TEAM_CONFIRMATION_PAYLOAD_CHANGED")
+    record = _load_unique_json(candidate)
+    if (set(record) != {"schema", "operation_id", "outcome", "evidence"}
+            or record["schema"] != "q3_team_effect_observation.v1" or record["operation_id"] != operation_id
+            or record["outcome"] not in {"CONFIRMED", "NOT_EXECUTED", "UNKNOWN"}
+            or _team_json(record) != payload or not record["evidence"]):
+        raise WorkflowRuntimeError("TEAM_CONFIRMATION_SCHEMA_INVALID")
+    _team_path_hashes(record["evidence"])
+    with _execution_writer_epoch(repo) as epoch:
+        _, data, _ = _team_current(repo)
+        _team_actor(repo, data)
+        _team_verify_paths(repo, record["evidence"])
+        local = _team_local(repo)
+        prior = local["operations"].get(operation_id)
+        if not prior or prior["state"] not in {"RESERVED", "CONFIRMED", "NOT_EXECUTED", "UNKNOWN"}:
+            raise WorkflowRuntimeError("TEAM_ORIGINAL_RESERVATION_REQUIRED")
+        if prior["state"] in {"CONFIRMED", "NOT_EXECUTED"}:
+            if prior["evidence"] != record or prior["state"] != record["outcome"]:
+                raise WorkflowRuntimeError("TEAM_CONFIRMATION_CONFLICT")
+            return {"status": "NOOP", "operation_id": operation_id}
+        updated = {**local, "operations": {**local["operations"], operation_id: {**prior, "state": record["outcome"], "evidence": record}}}
+        _team_local_save(repo, local, updated, epoch)
+    return {"status": "OBSERVED", "operation_id": operation_id, "outcome": record["outcome"]}
+
+
+def team_guard(repo: Path, *, command: str, paths: list[str], effect: bool = False,
+               expected_epoch: int | None = None) -> dict[str, Any] | None:
+    """Called by registered writers while holding their canonical writer epoch.
+
+    This cooperative check does not authenticate a same-user shell or perform a
+    network request. External effects additionally need an exact local reservation.
+    """
+    _team_pending_guard(repo)
+    if not _team_enabled(repo):
+        return None
+    if command not in TEAM_FENCED_CALLS | TEAM_NATIVE_EFFECTS:
+        raise WorkflowRuntimeError("TEAM_UNFENCED_WRITER_FORBIDDEN:" + command)
+    _team_writer_inventory(repo)
+    raw, data, _ = _team_current(repo)
+    _team_actor(repo, data)
+    if expected_epoch is None:
+        value = os.environ.get("Q3_OWNER_EPOCH", "")
+        if not re.fullmatch(r"[1-9][0-9]*", value):
+            raise WorkflowRuntimeError("TEAM_CALLER_EPOCH_REQUIRED:use the epoch observed by plan")
+        expected_epoch = int(value)
+    if type(expected_epoch) is not int or expected_epoch != data["ownership"]["epoch"]:
+        raise WorkflowRuntimeError("TEAM_CALLER_EPOCH_CHANGED")
+    if data["ownership"]["epoch"] < _team_local(repo)["epoch_floor"]:
+        raise WorkflowRuntimeError("TEAM_RETIRED_EPOCH")
+    if data["ownership"]["state"] != "ACTIVE" or data["reconciliation_pending"]:
+        raise WorkflowRuntimeError("TEAM_OWNER_RECONCILIATION_REQUIRED")
+    _team_verify_paths(repo, data["source_manifest"])
+    if command != "workflow-team-record":
+        from orchestrator import team_records
+        raw_issues = _resume_file(repo, TEAM_ISSUES)
+        if raw_issues is None:
+            raise WorkflowRuntimeError("TEAM_REGISTRY_MISSING")
+        issues = team_records.read_registry(raw_issues, "issues", archive_loader=lambda path: _resume_file(repo, Path(path)))
+        for issue in issues["issues"].values():
+            if (issue["state"] in {"CONFIRMED_BUG", "CONFIRMED_RULE_CONFLICT", "ASSIGNED", "FIX_CANDIDATE", "FIX_VERIFIED", "FIX_COMMITTED"}
+                    and command in issue["report"]["affected_operations"]):
+                raise WorkflowRuntimeError("TEAM_DEPENDENT_OPERATION_HELD:" + issue["issue_id"])
+    if effect:
+        operation = data["operation"]
+        if operation["state"] != "INTENT" or operation["command"] != command:
+            raise WorkflowRuntimeError("TEAM_EXACT_EFFECT_INTENT_REQUIRED")
+        _team_verify_paths(repo, operation["inputs"])
+        if not set(paths).issubset(operation["inputs"]):
+            raise WorkflowRuntimeError("TEAM_EFFECT_SCOPE_MISMATCH")
+        receipt = _team_local_operation(repo, operation["id"])
+        if (receipt is None or receipt.get("state") != "RESERVED"
+                or receipt.get("checkpoint_sha256") != _resume_digest(raw)
+                or receipt.get("actor") != data["owner_thread_id"]
+                or receipt.get("epoch") != data["ownership"]["epoch"]):
+            raise WorkflowRuntimeError("TEAM_EFFECT_REMOTE_RESERVATION_REQUIRED")
+    return {"installation_ref": data["ownership"]["installation_ref"],
+            "task": data["owner_thread_id"], "epoch": data["ownership"]["epoch"],
+            "checkpoint_sha256": _resume_digest(raw), "operation_id": data["operation"]["id"]}
+
+
+def _team_integration_manifest(payload: bytes) -> dict[str, Any]:
+    from orchestrator import team_records
+    import base64
+
+    manifest = team_records.load_payload(payload)
+    if (set(manifest) != {"schema", "mode", "operation_id", "owner_task", "installation_ref", "epoch",
+                         "expected_head", "implementer_assignment", "assignment_sha256", "checker_assignment",
+                         "candidate_commit", "files"}
+            or manifest["schema"] != "q3_team_integration.v1"
+            or manifest["mode"] not in {"EVIDENCE_INTAKE", "REVIEWED_SOURCE"}
+            or type(manifest["epoch"]) is not int or manifest["epoch"] < 1
+            or not _team_hex(manifest["expected_head"], 40)
+            or not _team_hex(manifest["installation_ref"]) or not _team_hex(manifest["assignment_sha256"])
+            or any(not isinstance(manifest[key], str) or not manifest[key] or len(manifest[key]) > 160
+                   for key in ("operation_id", "owner_task", "implementer_assignment"))
+            or not isinstance(manifest["files"], list) or not manifest["files"]):
+        raise WorkflowRuntimeError("TEAM_INTEGRATION_MANIFEST_INVALID")
+    intake = manifest["mode"] == "EVIDENCE_INTAKE"
+    if intake:
+        if manifest["candidate_commit"] is not None or manifest["checker_assignment"] is not None:
+            raise WorkflowRuntimeError("TEAM_INTAKE_REQUIRES_NO_ACCEPTANCE_FIELDS")
+    elif (not _team_hex(manifest["candidate_commit"], 40)
+          or not isinstance(manifest["checker_assignment"], str) or not manifest["checker_assignment"]):
+        raise WorkflowRuntimeError("TEAM_INTEGRATION_SOURCE_REVIEW_REQUIRED")
+    paths = []
+    for row in manifest["files"]:
+        required = {"path", "before_sha256", "sha256", "content_base64" if intake else "source_path"}
+        if (not isinstance(row, dict) or set(row) != required or not _team_hex(row["sha256"])
+                or not (_team_hex(row["before_sha256"]) or row["before_sha256"] == "ABSENT")):
+            raise WorkflowRuntimeError("TEAM_INTEGRATION_FILE_INVALID")
+        try:
+            _team_path_hashes({row["path"]: row["sha256"]})
+        except (TypeError, ValueError) as exc:
+            raise WorkflowRuntimeError("TEAM_INTEGRATION_PATH_INVALID") from exc
+        path = row["path"]
+        if "\x00" in path or path.startswith("-") or any(part.startswith(".git") for part in Path(path).parts):
+            raise WorkflowRuntimeError("TEAM_INTEGRATION_PATH_INVALID")
+        if intake:
+            try:
+                content = base64.b64decode(row["content_base64"], validate=True)
+                valid = base64.b64encode(content).decode("ascii") == row["content_base64"]
+            except (ValueError, TypeError) as exc:
+                raise WorkflowRuntimeError("TEAM_INTAKE_BASE64_INVALID") from exc
+            if (not valid or _resume_digest(content) != row["sha256"] or row["before_sha256"] != "ABSENT"
+                    or path != "docs/session_protocols/team-evidence-" + row["sha256"] + ".bin"):
+                raise WorkflowRuntimeError("TEAM_INTAKE_CONTENT_ADDRESS_INVALID")
+        elif row["source_path"] != path:
+            raise WorkflowRuntimeError("TEAM_INTEGRATION_SOURCE_PATH_MISMATCH")
+        elif (path in {str(RESUME_PATH), str(RESUME_HISTORY_PATH), str(TEAM_ISSUES), str(TEAM_ASSIGNMENTS),
+                       "docs/Codex/CURRENT.md", "docs/routeB_bus/SPINE_VIEW.md"}
+              or path.startswith(("orchestrator/state/", "docs/session_protocols/team-"))
+              or any(part.startswith(".") for part in Path(path).parts if part != ".agents")
+              or re.search(r"\.(db|sqlite|sqlite3)(-|$)", path)):
+            raise WorkflowRuntimeError("TEAM_INTEGRATION_RESERVED_DESTINATION:" + path)
+        paths.append(path)
+    if paths != sorted(set(paths)):
+        raise WorkflowRuntimeError("TEAM_INTEGRATION_PATHS_UNSORTED_OR_DUPLICATE")
+    return manifest
+
+
+def _team_integration_engine(repo: Path) -> dict[str, Any]:
+    """Pin the existing isolated verification checkout, including loaded local code."""
+    engine = REPO.resolve()
+    if engine == repo.resolve() or _git_common_dir(engine) == _git_common_dir(repo):
+        raise WorkflowRuntimeError("TEAM_INTEGRATION_ISOLATED_ENGINE_REQUIRED:use its --root option")
+    commit = _team_git(engine, "rev-parse", "HEAD").decode().strip()
+    _team_git(engine, "diff", "--no-ext-diff", "--quiet", "HEAD", "--")
+    sources = {}
+    for module in tuple(sys.modules.values()):
+        file = getattr(module, "__file__", None)
+        if not file:
+            continue
+        path = Path(file).resolve()
+        if not path.is_relative_to(engine) or path.suffix != ".py":
+            continue
+        relative = path.relative_to(engine).as_posix()
+        raw = _resume_file(engine, Path(relative))
+        if raw != _team_git(engine, "show", commit + ":" + relative):
+            raise WorkflowRuntimeError("TEAM_INTEGRATION_ENGINE_SOURCE_CHANGED:" + relative)
+        sources[relative] = _resume_digest(raw)
+    if "orchestrator/workflow_runtime.py" not in sources:
+        raise WorkflowRuntimeError("TEAM_INTEGRATION_ENGINE_IDENTITY_MISSING")
+    return {"root": str(engine), "commit": commit, "source_sha256": sources,
+            "python": platform.python_version(), "pyyaml": yaml.__version__}
+
+
+def _team_integration_blob(repo: Path, commit: str, path: str) -> tuple[bytes | None, int | None]:
+    entry = _team_git(repo, "ls-tree", "-z", commit, "--", path).split(b"\0")
+    if entry == [b""]:
+        return None, None
+    if len(entry) != 2 or entry[-1] != b"":
+        raise WorkflowRuntimeError("TEAM_INTEGRATION_GIT_PATH_AMBIGUOUS:" + path)
+    metadata, found = entry[0].split(b"\t", 1)
+    mode, kind, blob = metadata.decode().split()
+    if found.decode() != path or kind != "blob" or mode not in {"100644", "100755"}:
+        raise WorkflowRuntimeError("TEAM_INTEGRATION_GIT_MODE_INVALID:" + path)
+    size = int(_team_git(repo, "cat-file", "-s", blob))
+    if size > TEAM_READ_MAX:
+        raise WorkflowRuntimeError("TEAM_INTEGRATION_SOURCE_LIMIT:" + path)
+    return _team_git(repo, "cat-file", "blob", blob), int(mode[-3:], 8)
+
+
+def _team_integration_review(repo: Path, data: dict[str, Any], manifest: dict[str, Any],
+                             payload: bytes) -> dict[str, Any] | None:
+    from orchestrator import team_records
+
+    assignments = _team_assignments(repo)
+    ids = [manifest["implementer_assignment"]]
+    if manifest["checker_assignment"] is not None:
+        ids.append(manifest["checker_assignment"])
+    context = team_records.TrustedTeamContext(data["owner_thread_id"], data["owner_host_id"],
+        data["ownership"]["installation_ref"], data["ownership"]["epoch"], data["owner_thread_id"], {})
+    rows = []
+    for assignment_id in ids:
+        row = assignments["assignments"].get(assignment_id)
+        if row is None:
+            raise WorkflowRuntimeError("TEAM_ASSIGNMENT_UNKNOWN:" + assignment_id)
+        assignment = row["assignment"]
+        team_records._validate_assignment_owner(assignment, context)
+        rows.append(assignment)
+    producer = rows[0]
+    if _resume_digest(team_records.canonical_json(team_records._assignment_immutable_view(producer))) != manifest["assignment_sha256"]:
+        raise WorkflowRuntimeError("TEAM_INTEGRATION_ASSIGNMENT_CHANGED")
+    if manifest["mode"] == "EVIDENCE_INTAKE":
+        return None
+    checker = rows[1]
+    if (checker["assignment_id"] == producer["assignment_id"] or checker["role"] != "independent-checker"
+            or checker["assignee"] in {producer["assignee"], data["owner_thread_id"]}
+            or checker["base_commit"] != manifest["expected_head"]
+            or producer["base_commit"] != manifest["expected_head"]):
+        raise WorkflowRuntimeError("TEAM_INTEGRATION_INDEPENDENT_BASE_REVIEW_REQUIRED")
+    paths = {row["path"] for row in manifest["files"]}
+    if any(not paths.issubset(set(assignment["permitted_paths"])) for assignment in rows):
+        raise WorkflowRuntimeError("TEAM_INTEGRATION_ASSIGNMENT_SCOPE_MISMATCH")
+    if _team_git(repo, "cat-file", "-t", manifest["candidate_commit"]).strip() != b"commit":
+        raise WorkflowRuntimeError("TEAM_INTEGRATION_COMMIT_OBJECT_REQUIRED")
+    _team_git(repo, "merge-base", "--is-ancestor", producer["base_commit"], manifest["candidate_commit"])
+    hashes = {item.get("observation", {}).get("output_sha256") for item in _team_local(repo)["operations"].values()
+              if item.get("observation", {}).get("assignment_id") == checker["assignment_id"]}
+    context = _team_assignment_context(repo, data, assignments, [checker["assignment_id"]], hashes)
+    launch, result = team_records._validated_assignment_observation(checker, context)
+    if result["state"] != "COMPLETED":
+        raise WorkflowRuntimeError("TEAM_INTEGRATION_COMPLETED_REVIEW_REQUIRED")
+    raw = context.output_artifacts[result["output_locator"]]
+    expected = {"schema": "q3_team_integration_review.v1", "manifest_sha256": _resume_digest(payload),
+                "base_commit": manifest["expected_head"], "candidate_commit": manifest["candidate_commit"],
+                "files": [{"path": row["path"], "sha256": row["sha256"]} for row in manifest["files"]],
+                "implementer_assignment": producer["assignment_id"], "checker_assignment": checker["assignment_id"],
+                "verdict": "SOURCE_INTEGRATION_APPROVED"}
+    if team_records.load_payload(raw) != expected:
+        raise WorkflowRuntimeError("TEAM_INTEGRATION_REVIEW_NOT_EXACTLY_APPROVED")
+    destinations = {str((repo / path).resolve()) for path in paths}
+    for observation in (launch, result):
+        for prefix in ("output", "provider_receipt"):
+            locator = observation[prefix + "_locator"]
+            if not locator.startswith("git:") and str((repo / locator).resolve()) in destinations:
+                raise WorkflowRuntimeError("TEAM_INTEGRATION_REVIEW_OVERWRITE_FORBIDDEN")
+    return {"checker_assignment_sha256": team_records._assignment_binding_sha(checker),
+            "launch": launch, "result": result, "artifact": expected}
+
+
+def team_integrate_candidate(
+    repo: Path, *, candidate: Path | None = None, recover_operation: str | None = None,
+) -> dict[str, Any]:
+    """Recoverable local copy of one reserved exact candidate; never publication."""
+    import base64
+
+    if (candidate is None) == (recover_operation is None):
+        raise WorkflowRuntimeError("TEAM_INTEGRATION_CANDIDATE_OR_RECOVERY_REQUIRED")
+    if recover_operation is not None:
+        # An explicit operation ID recovers its durable manifest without touching
+        # a lost, moved or changed worker/output file. It selects no new action.
+        local = _team_private_read(repo, TEAM_LOCAL)
+        receipt = (local or {}).get("operations", {}).get(recover_operation, {})
+        saved = receipt.get("integration", {})
+        if saved.get("state") != "PENDING":
+            raise WorkflowRuntimeError("TEAM_INTEGRATION_RECOVERY_RECORD_REQUIRED")
+        payload = _team_json(saved.get("manifest"))
+        if (_resume_digest(payload) != saved.get("manifest_sha256")
+                or saved["manifest"].get("operation_id") != recover_operation):
+            raise WorkflowRuntimeError("TEAM_INTEGRATION_RECOVERY_MANIFEST_CHANGED")
+    else:
+        assert candidate is not None
+        payload = candidate.read_bytes()
+    manifest = _team_integration_manifest(payload)
+    operation_id = manifest["operation_id"]
+    with _execution_writer_epoch(repo, integration_operation=operation_id) as epoch:
+        raw, data, _ = _team_current(repo)
+        _team_actor(repo, data)
+        local = _team_local(repo)
+        prior = local["operations"].get(operation_id)
+        integration = prior.get("integration") if prior else None
+        if integration is None:
+            _team_registered(repo, "team-integrate-candidate", TEAM_INTEGRATION_WRITE_PATHS)
+            if team_guard(repo, command="workflow-team-integrate-candidate", paths=[], effect=True) is None:
+                raise WorkflowRuntimeError("TEAM_RUNTIME_NOT_ACTIVATED")
+        if (data["ownership"]["state"] != "ACTIVE" or data["reconciliation_pending"]
+                or manifest["owner_task"] != data["owner_thread_id"]
+                or manifest["installation_ref"] != data["ownership"]["installation_ref"]
+                or manifest["epoch"] != data["ownership"]["epoch"]
+                or os.environ.get("Q3_OWNER_EPOCH") != str(manifest["epoch"])
+                or local["epoch_floor"] > manifest["epoch"]):
+            raise WorkflowRuntimeError("TEAM_INTEGRATION_OWNER_CHANGED")
+        operation = data["operation"]
+        if (operation["id"] != operation_id or operation["state"] != "INTENT"
+                or operation["command"] != "workflow-team-integrate-candidate"
+                or operation["subject"] != {"kind": "REPAIR", "id": operation_id, "sha256": _resume_digest(payload)}):
+            raise WorkflowRuntimeError("TEAM_INTEGRATION_EXACT_INTENT_REQUIRED")
+        if (not prior or prior.get("state") not in {"RESERVED", "CONFIRMED"}
+                or prior.get("checkpoint_sha256") != _resume_digest(raw)
+                or prior.get("actor") != data["owner_thread_id"] or prior.get("epoch") != manifest["epoch"]
+                or prior.get("remote_ownership") != data["ownership"] or prior.get("remote_thread") != data["owner_thread_id"]
+                or prior.get("local_head") != manifest["expected_head"]
+                or _team_git(repo, "rev-parse", "HEAD").decode().strip() != manifest["expected_head"]):
+            raise WorkflowRuntimeError("TEAM_INTEGRATION_RESERVATION_OR_HEAD_CHANGED")
+        if integration is None and prior["state"] != "RESERVED":
+            raise WorkflowRuntimeError("TEAM_INTEGRATION_RESERVATION_REQUIRED")
+        review = _team_integration_review(repo, data, manifest, payload)
+        engine = _team_integration_engine(repo)
+        intake = manifest["mode"] == "EVIDENCE_INTAKE"
+        files = []
+        total = 0
+        for row in manifest["files"]:
+            path = row["path"]
+            if candidate is not None and (repo / path).resolve() == candidate.resolve():
+                raise WorkflowRuntimeError("TEAM_INTEGRATION_MANIFEST_OVERWRITE_FORBIDDEN")
+            before, before_mode = (None, None) if intake else _team_integration_blob(repo, manifest["expected_head"], path)
+            after, mode = ((base64.b64decode(row["content_base64"], validate=True), 0o644) if intake
+                           else _team_integration_blob(repo, manifest["candidate_commit"], path))
+            if before is None and not intake and _team_git(repo, "ls-files", "--", path).strip():
+                raise WorkflowRuntimeError("TEAM_INTEGRATION_INDEX_PREIMAGE_CHANGED:" + path)
+            if after is None or _resume_digest(after) != row["sha256"] or _resume_digest(before) != row["before_sha256"]:
+                raise WorkflowRuntimeError("TEAM_INTEGRATION_BLOB_MISMATCH:" + path)
+            total += len(after) + len(before or b"")
+            if total > TEAM_READ_MAX:
+                raise WorkflowRuntimeError("TEAM_INTEGRATION_SOURCE_LIMIT")
+            actual = _resume_file(repo, Path(path))
+            actual_mode = None if actual is None else (0o755 if (repo / path).stat().st_mode & 0o111 else 0o644)
+            original = actual == before and actual_mode == before_mode
+            copied = actual == after and actual_mode == mode
+            if integration is not None and integration["state"] == "COMPLETE" and not copied:
+                raise WorkflowRuntimeError("TEAM_INTEGRATION_COMPLETED_DESTINATION_CHANGED:" + path)
+            if not original and not ((integration is not None or intake) and copied):
+                raise WorkflowRuntimeError("TEAM_INTEGRATION_PREIMAGE_CHANGED:" + path)
+            if not intake and integration is None:
+                _team_git(repo, "diff", "--no-ext-diff", "--quiet", "--cached", manifest["expected_head"], "--", path)
+            files.append((row, before, after, mode, actual, actual_mode))
+        expected = {"schema": "q3_team_integration_reservation.v1", "state": "PENDING", "manifest": manifest,
+                    "manifest_sha256": _resume_digest(payload), "engine": engine, "review": review,
+                    "preimages": [{"path": row["path"], "sha256": row["before_sha256"]} for row in manifest["files"]]}
+        if integration is not None and {**integration, "state": "PENDING"} != expected:
+            raise WorkflowRuntimeError("TEAM_INTEGRATION_PERSISTED_IDENTITY_CHANGED")
+        # Dependencies outside this transaction still must match. Its destinations
+        # may already hold the candidate after a crash, so do not demand old bytes.
+        destinations = {row["path"]: row for row in manifest["files"]}
+        for paths in (data["source_manifest"], operation["inputs"]):
+            for path, digest in paths.items():
+                if integration is not None and path in destinations:
+                    if digest != destinations[path]["before_sha256"]:
+                        raise WorkflowRuntimeError("TEAM_INTEGRATION_DEPENDENCY_CHANGED:" + path)
+                else:
+                    _team_verify_paths(repo, {path: digest})
+        if integration is None:
+            updated = {**local, "operations": {**local["operations"], operation_id: {**prior, "integration": expected}}}
+            _team_local_save(repo, local, updated, epoch)
+            local, prior = updated, updated["operations"][operation_id]
+        for row, before, after, mode, actual, actual_mode in files:
+            path = Path(row["path"])
+            if actual != after or actual_mode != mode:
+                _resume_cas_bytes(repo, path, actual, after, epoch, mode=mode)
+            _resume_sync(repo / path)
+            if _resume_file(repo, path) != after or (0o755 if (repo / path).stat().st_mode & 0o111 else 0o644) != mode:
+                raise WorkflowRuntimeError("TEAM_INTEGRATION_READBACK_MISMATCH:" + str(path))
+        if _team_integration_engine(repo) != engine:
+            raise WorkflowRuntimeError("TEAM_INTEGRATION_ENGINE_CHANGED")
+        for row, _, after, mode, _, _ in files:
+            path = Path(row["path"])
+            if _resume_file(repo, path) != after or (0o755 if (repo / path).stat().st_mode & 0o111 else 0o644) != mode:
+                raise WorkflowRuntimeError("TEAM_INTEGRATION_FINAL_READBACK_MISMATCH:" + str(path))
+        receipt = {"operation_id": operation_id, "manifest_sha256": _resume_digest(payload), "mode": manifest["mode"],
+                   "files": [{"path": row["path"], "sha256": row["sha256"]} for row in manifest["files"]],
+                   "mathematical_acceptance": False, "publication": False,
+                   "evidence_status": "UNADJUDICATED" if intake else "SOURCE_INTEGRATION_APPROVED"}
+        updated = {**local, "operations": {**local["operations"], operation_id: {**prior, "state": "CONFIRMED",
+                   "integration": {**expected, "state": "COMPLETE"}, "evidence": receipt}}}
+        if updated != local:
+            _team_local_save(repo, local, updated, epoch)
+        else:
+            _resume_sync(_git_common_dir(repo) / TEAM_LOCAL)
+        return {"status": "NOOP" if integration is not None and integration["state"] == "COMPLETE" else "INTEGRATED", **receipt}
+
+
+def _team_transfer_evidence(repo: Path, data: dict[str, Any], schema: str) -> dict[str, Any]:
+    transfer = data["ownership"]["transfer"]
+    matches = []
+    for path, digest in transfer["evidence"].items():
+        evidence = _team_evidence(repo, path, digest)
+        if evidence.get("schema") == schema:
+            matches.append(evidence)
+    if len(matches) != 1 or matches[0].get("transfer_id") != transfer["id"]:
+        raise WorkflowRuntimeError("TEAM_TRANSFER_EVIDENCE_REQUIRED:" + schema)
+    return matches[0]
+
+
+def _team_quiescence(repo: Path, data: dict[str, Any]) -> None:
+    record = _team_transfer_evidence(repo, data, "q3_team_quiescence.v1")
+    if (set(record) != {"schema", "transfer_id", "epoch", "source_manifest", "head", "dirty_paths",
+                       "canonical_writers_idle", "unknown_operations", "assignments", "outputs", "provider_receipt"}
+            or record["epoch"] != data["ownership"]["epoch"]
+            or record["source_manifest"] != data["source_manifest"]
+            or record["canonical_writers_idle"] is not True
+            or record["unknown_operations"] != []
+            or not isinstance(record["assignments"], list)
+            or any(item.get("state") not in {"COLLECTED", "QUIESCED", "ISOLATED_CANDIDATE"} for item in record["assignments"])
+            or data["operation"]["state"] in {"INTENT", "UNKNOWN"}):
+        raise WorkflowRuntimeError("TEAM_QUIESCENCE_INCOMPLETE")
+    for field in ("source_manifest", "dirty_paths", "outputs", "provider_receipt"):
+        _team_path_hashes(record[field])
+        _team_verify_paths(repo, record[field])
+    if not record["provider_receipt"]:
+        raise WorkflowRuntimeError("TEAM_QUIESCENCE_PROVIDER_RECEIPT_MISSING")
+    # Control/checkpoint/transfer receipts are the explicitly recorded transfer writes.
+    if record["head"] != _team_git(repo, "rev-parse", "HEAD").decode().strip():
+        raise WorkflowRuntimeError("TEAM_QUIESCENCE_HEAD_CHANGED")
+
+
+def _team_owner_transition(repo: Path, before: dict[str, Any], after: dict[str, Any]) -> None:
+    """Validate every owner transition before the checkpoint transaction archives bytes."""
+    if before["schema"] == "q3_resume.v1":
+        if (after["schema"] != "q3_resume.v2" or after["owner_thread_id"] != before["owner_thread_id"]
+                or after["owner_host_id"] != before["owner_host_id"]
+                or after["ownership"]["epoch"] != 1 or after["ownership"]["state"] != "ACTIVE"
+                or after["ownership"]["transfer"] is not None):
+            raise WorkflowRuntimeError("TEAM_MIGRATION_OWNER_CHANGED")
+        if any(after["pins"].get(key) != value for key, value in before["pins"].items()):
+            raise WorkflowRuntimeError("TEAM_MIGRATION_CHANGED_PIN")
+        if any(after["operation"].get(key) != before["operation"][key] for key in ("kind", "id", "state")):
+            raise WorkflowRuntimeError("TEAM_MIGRATION_CHANGED_OPERATION")
+        _team_actor(repo, after)
+        _team_verify_paths(repo, after["source_manifest"])
+        return
+    if after["schema"] != "q3_resume.v2":
+        raise WorkflowRuntimeError("TEAM_CURRENT_SCHEMA_DOWNGRADE_FORBIDDEN")
+    old, new = before["ownership"], after["ownership"]
+    same_owner = (all(old[k] == new[k] for k in ("epoch", "state", "installation_ref"))
+                  and before["owner_thread_id"] == after["owner_thread_id"])
+    if same_owner:
+        if old["transfer"] != new["transfer"]:
+            prior, candidate = old["transfer"], new["transfer"]
+            if (prior is None or candidate is None
+                    or any(prior[k] != candidate[k] for k in prior if k != "evidence")
+                    or any(candidate["evidence"].get(k) != v for k, v in prior["evidence"].items())):
+                raise WorkflowRuntimeError("TEAM_TRANSFER_IDENTITY_CHANGED")
+        _team_actor(repo, before)
+        if new["epoch"] < _team_local(repo)["epoch_floor"]:
+            raise WorkflowRuntimeError("TEAM_RETIRED_EPOCH")
+        _team_verify_paths(repo, after["source_manifest"])
+        for name in TEAM_STAGES:
+            candidate = after["stages"][name]
+            if candidate != before["stages"][name] and candidate["state"] == "DONE":
+                if name == "independent_review" and candidate["checked_by"] == after["owner_thread_id"]:
+                    raise WorkflowRuntimeError("TEAM_INDEPENDENT_REVIEW_REQUIRED")
+                if name == "parent_check" and candidate["checked_by"] != after["owner_thread_id"]:
+                    raise WorkflowRuntimeError("TEAM_PARENT_CHECK_REQUIRED")
+                _team_verify_paths(repo, candidate["evidence"])
+                if name == "independent_review":
+                    _team_verify_stage_reviewer(repo, after, candidate)
+        if old["state"] != "ACTIVE" and any(before[k] != after[k] for k in ("operation", "pins", "stages", "source_manifest")):
+            raise WorkflowRuntimeError("TEAM_PENDING_OWNER_MATH_MUTATION")
+        prior_op, next_op = before["operation"], after["operation"]
+        if prior_op["state"] in {"INTENT", "UNKNOWN"}:
+            if any(prior_op[k] != next_op[k] for k in ("id", "kind", "subject", "command", "inputs")):
+                raise WorkflowRuntimeError("TEAM_UNRESOLVED_OPERATION_CANNOT_BE_REPLACED")
+            if next_op["state"] == "CONFIRMED":
+                observation = _team_local_operation(repo, prior_op["id"])
+                if (not next_op["evidence"] or observation is None
+                        or observation.get("state") not in {"CONFIRMED", "NOT_EXECUTED"}
+                        or observation.get("actor") != before["owner_thread_id"]
+                        or observation.get("epoch") != old["epoch"]):
+                    raise WorkflowRuntimeError("TEAM_OPERATION_CONFIRMATION_REQUIRED")
+        return
+    if any(before[k] != after[k] for k in ("operation", "pins", "stages", "source_manifest")):
+        raise WorkflowRuntimeError("TEAM_TRANSFER_CHANGED_MATHEMATICAL_STATE")
+    pair = old["state"], new["state"]
+    allowed = {
+        ("ACTIVE", "HANDOFF_INTENT"), ("HANDOFF_INTENT", "HANDOFF_QUIESCED"),
+        ("HANDOFF_INTENT", "ACTIVE"), ("HANDOFF_QUIESCED", "ACTIVE"),
+        ("HANDOFF_QUIESCED", "WATCH_RECONCILE_PENDING"), ("WATCH_RECONCILE_PENDING", "ACTIVE"),
+        ("HANDOFF_QUIESCED", "RELEASED"), ("RELEASED", "CLAIM_PENDING"),
+        ("CLAIM_ABORTED", "CLAIM_PENDING"), ("CLAIM_PENDING", "ACTIVE"),
+        ("CLAIM_PENDING", "CLAIM_ABORTED"),
+    }
+    if pair not in allowed:
+        raise WorkflowRuntimeError("TEAM_OWNER_TRANSITION_INVALID")
+    transferring = pair[1] in {"CLAIM_PENDING", "WATCH_RECONCILE_PENDING"}
+    if new["epoch"] != old["epoch"] + int(transferring):
+        raise WorkflowRuntimeError("TEAM_OWNER_EPOCH_INVALID")
+    _team_actor(repo, after if pair[1] == "CLAIM_PENDING" else before)
+    transfer = new["transfer"]
+    if transfer is None:
+        raise WorkflowRuntimeError("TEAM_TRANSFER_ID_MISSING")
+    if old["transfer"] is not None and pair[0] != "ACTIVE" and pair[1] != "CLAIM_ABORTED":
+        for key in ("id", "mode", "from_ref", "from_thread", "to_ref", "to_thread"):
+            if old["transfer"][key] != transfer[key]:
+                raise WorkflowRuntimeError("TEAM_TRANSFER_IDENTITY_CHANGED")
+    if pair[0] == "ACTIVE":
+        if (transfer["from_ref"] != old["installation_ref"] or transfer["from_thread"] != before["owner_thread_id"]
+                or transfer["to_ref"] == transfer["from_ref"] and transfer["to_thread"] == transfer["from_thread"]):
+            raise WorkflowRuntimeError("TEAM_TRANSFER_PARTICIPANTS_INVALID")
+    if pair[1] == "CLAIM_PENDING" and (transfer["from_ref"] != old["installation_ref"] or transfer["from_thread"] != before["owner_thread_id"]):
+        raise WorkflowRuntimeError("TEAM_CLAIM_RELEASE_OWNER_MISMATCH")
+    if pair[1] == "CLAIM_ABORTED":
+        if (transfer["from_ref"] != old["installation_ref"] or transfer["from_thread"] != before["owner_thread_id"]
+                or transfer["id"] == old["transfer"]["id"]):
+            raise WorkflowRuntimeError("TEAM_ABORT_NEW_RELEASE_IDENTITY_REQUIRED")
+    expected_ref = transfer["to_ref"] if transferring or pair[0] in {"WATCH_RECONCILE_PENDING", "CLAIM_PENDING"} else transfer["from_ref"]
+    expected_thread = transfer["to_thread"] if expected_ref == transfer["to_ref"] and (transferring or pair[0] in {"WATCH_RECONCILE_PENDING", "CLAIM_PENDING"}) else transfer["from_thread"]
+    if pair[1] == "CLAIM_ABORTED":
+        expected_ref, expected_thread = old["installation_ref"], before["owner_thread_id"]
+    if new["installation_ref"] != expected_ref or after["owner_thread_id"] != expected_thread:
+        raise WorkflowRuntimeError("TEAM_TRANSFER_TARGET_MISMATCH")
+    local = _team_local(repo)
+    watch = local["watch"]
+    if pair[1] in {"HANDOFF_QUIESCED", "RELEASED", "WATCH_RECONCILE_PENDING"}:
+        _team_quiescence(repo, before if pair[1] != "HANDOFF_QUIESCED" else after)
+        if any(item["state"] in {"RESERVED", "UNKNOWN"} for item in local["operations"].values()):
+            raise WorkflowRuntimeError("TEAM_OUTSTANDING_EFFECT_RESERVATION")
+    if pair[1] in {"RELEASED", "CLAIM_ABORTED"}:
+        watch_transfer_id = old["transfer"]["id"] if pair[1] == "CLAIM_ABORTED" else transfer["id"]
+        if watch is None or watch["state"] not in {"PAUSED", "ABSENT"} or watch["transfer_id"] != watch_transfer_id:
+            raise WorkflowRuntimeError("TEAM_OLD_WATCH_NOT_QUIESCED")
+        if any(item["state"] in {"RESERVED", "UNKNOWN"} for item in local["operations"].values()):
+            raise WorkflowRuntimeError("TEAM_OUTSTANDING_EFFECT_RESERVATION")
+    if pair[1] == "WATCH_RECONCILE_PENDING":
+        if (transfer["mode"] != "SAME_INSTALLATION" or transfer["from_ref"] != transfer["to_ref"]
+                or watch is None or watch["retarget_supported"] is not True
+                or watch["target_thread"] != before["owner_thread_id"]):
+            raise WorkflowRuntimeError("TEAM_WATCH_RETARGET_UNSUPPORTED_OR_UNVERIFIED")
+    if pair[1] == "CLAIM_PENDING":
+        receipt = local["operations"].get(transfer["id"] + ":release")
+        if (transfer["mode"] != "CROSS_INSTALLATION" or transfer["from_ref"] == transfer["to_ref"]
+                or receipt is None or receipt["remote_ownership"] != old
+                or receipt["remote_thread"] != before["owner_thread_id"]
+                or receipt["remote_commit"] != transfer["predecessor_commit"]
+                or receipt["local_head"] != receipt["remote_commit"]
+                or _team_git(repo, "rev-parse", "HEAD").decode().strip() != receipt["remote_commit"]):
+            raise WorkflowRuntimeError("TEAM_VERIFIED_RELEASE_REQUIRED")
+    if pair[0] == "CLAIM_PENDING" and pair[1] in {"ACTIVE", "CLAIM_ABORTED"}:
+        original_transfer = old["transfer"]
+        receipt = local["operations"].get(original_transfer["id"] + ":claim")
+        if (receipt is None or receipt["remote_ownership"] != old
+                or receipt["remote_thread"] != before["owner_thread_id"]):
+            raise WorkflowRuntimeError("TEAM_VERIFIED_REMOTE_CLAIM_REQUIRED")
+        parents = _team_git(repo, "show", "-s", "--format=%P", receipt["remote_commit"]).decode().split()
+        if parents != [original_transfer["predecessor_commit"]]:
+            raise WorkflowRuntimeError("TEAM_CLAIM_NOT_DIRECT_RELEASE_SUCCESSOR")
+        if pair[1] == "CLAIM_ABORTED" and transfer["predecessor_commit"] != receipt["remote_commit"]:
+            raise WorkflowRuntimeError("TEAM_ABORT_CLAIM_PREDECESSOR_REQUIRED")
+    if pair[1] == "ACTIVE":
+        if (watch is None or watch["state"] != "ACTIVE" or watch["target_thread"] != after["owner_thread_id"]
+                or watch["epoch"] != new["epoch"] or watch["transfer_id"] != transfer["id"]
+                or watch["scheduled_wake_at"] is None):
+            raise WorkflowRuntimeError("TEAM_WATCH_RECONCILIATION_REQUIRED")
+        if pair[0] in {"CLAIM_PENDING", "WATCH_RECONCILE_PENDING"}:
+            watch_intents = [local["operations"].get(transfer["id"] + ":watch:" + action)
+                             for action in ("CREATE", "UPDATE")]
+            if (not any(item is not None and item["state"] == "CONFIRMED" for item in watch_intents)
+                    or any(key.startswith(transfer["id"] + ":watch:") and value["state"] in {"RESERVED", "UNKNOWN"}
+                           for key, value in local["operations"].items())):
+                raise WorkflowRuntimeError("TEAM_WATCH_INTENT_CONFIRMATION_REQUIRED")
+
+
+def _team_verify_stage_reviewer(repo: Path, data: dict[str, Any], stage: dict[str, Any]) -> None:
+    from orchestrator import team_records
+
+    assignments = _team_assignments(repo)
+    ids = [key for key, row in assignments["assignments"].items()
+           if row["assignment"]["assignee"] == stage["checked_by"]
+           and row["assignment"]["subject"] == stage["subject"]["id"]
+           and row["assignment"]["role"] in team_records.INDEPENDENT_ACTOR_ROLES]
+    context = _team_assignment_context(repo, data, assignments, ids, set(stage["evidence"].values()))
+    matched = []
+    for key in ids:
+        assignment = assignments["assignments"][key]["assignment"]
+        sources = {row["path"]: row["sha256"] for row in assignment["input_hashes"]}
+        if sources != data["source_manifest"]:
+            continue
+        team_records._validate_assignment_owner(assignment, context)
+        _, result = team_records._validated_assignment_observation(assignment, context)
+        if (result["state"] == "COMPLETED"
+                and stage["evidence"].get(result["output_locator"]) == result["output_sha256"]):
+            matched.append(key)
+    if len(matched) != 1:
+        raise WorkflowRuntimeError("TEAM_INDEPENDENT_COMPLETED_ASSIGNMENT_REQUIRED")
+
+
+def _team_continuation(repo: Path, snapshot: StartupSnapshot, owned_paths: list[str]) -> dict[str, Any]:
+    """Bounded, local-only observation inside the caller's existing read epoch."""
+    blockers: list[dict[str, str]] = []
+    card: dict[str, Any] = {"schema": "q3_continuation.v1", "status": "OBSERVATION_ONLY", "blockers": blockers}
+    read_paths = (RESUME_PATH, RESUME_HISTORY_PATH, TEAM_ISSUES, TEAM_ASSIGNMENTS,
+                  Path("orchestrator/state/CHANNEL_RUNTIME.json"), Path("docs/routeB_bus/PROSHKA_QUEUE.md"))
+    observed: dict[Path, bytes | None] = {}
+    try:
+        for path in read_paths:
+            target = repo / path
+            if target.exists() and target.stat().st_size > TEAM_READ_MAX:
+                raise WorkflowRuntimeError("TEAM_READ_LIMIT:" + str(path))
+            observed[path] = _resume_file(repo, path)
+        raw = observed[RESUME_PATH]
+        if raw is None:
+            raise WorkflowRuntimeError("TEAM_RESUME_MISSING")
+        data, body = _resume_document(raw)
+        records = _resume_history(observed[RESUME_HISTORY_PATH] or b"")
+        if ("intent", data["revision"], raw) not in records.values():
+            raise WorkflowRuntimeError("RESUME_CURRENT_CHECKSUM_MISMATCH")
+        card["checkpoint"] = {"revision": data["revision"], "sha256": _resume_digest(raw), "path": str(RESUME_PATH)}
+        card["owner"] = {"task": data["owner_thread_id"], "host_alias": data["owner_host_id"], **data.get("ownership", {})}
+        card["owner"].pop("transfer", None)
+        card["proposal"] = {name: body.split("## " + name + "\n", 1)[1].split("\n## ", 1)[0].strip()[:600]
+                            for name in ("Mathematical frontier", "Next action")}
+        card["operation"] = {k: v for k, v in data["operation"].items() if k not in {"evidence", "inputs"}}
+        card["stages"] = {k: {"state": v["state"], "subject": v["subject"]} if isinstance(v, dict) else v
+                          for k, v in data["stages"].items()}
+        if data["schema"] != "q3_resume.v2":
+            blockers.append({"scope": "EXECUTION", "code": "TEAM_RESUME_MIGRATION_REQUIRED"})
+        else:
+            _team_verify_paths(repo, data["source_manifest"])
+            for stage in data["stages"].values():
+                if stage["state"] == "DONE":
+                    _team_verify_paths(repo, stage["evidence"])
+        if data["pins"]["physical_goal"] != snapshot.selected_goal or data["pins"]["source_commit"] != snapshot.exact_source_pin:
+            blockers.append({"scope": "MATHEMATICAL_INPUTS", "code": "TEAM_CANONICAL_SOURCE_MISMATCH"})
+        runtime = json.loads(observed[read_paths[4]] or b"{}")
+        phase = runtime.get("active_proshka_phase") or {}
+        if data["pins"]["phase_id"] != phase.get("phase_id"):
+            blockers.append({"scope": "DISPATCH", "code": "TEAM_PHASE_MISMATCH"})
+        if data["schema"] == "q3_resume.v2":
+            request = data["pins"]["request"]
+            if data["pins"]["phase_key"] != phase.get("phase_key"):
+                blockers.append({"scope": "DISPATCH", "code": "TEAM_SIX_FIELD_PHASE_MISMATCH"})
+            if request["conversation_id"] != phase.get("conversation_id"):
+                blockers.append({"scope": "DISPATCH", "code": "TEAM_OBSERVED_CHAT_RECONCILIATION_REQUIRED"})
+            request_raw = _team_git(repo, "show", request["commit"] + ":" + request["path"])
+            blob = _team_git(repo, "rev-parse", request["commit"] + ":" + request["path"]).decode().strip()
+            if _resume_digest(request_raw) != request["sha256"] or blob != request["blob"]:
+                raise WorkflowRuntimeError("TEAM_REQUEST_PIN_MISMATCH")
+            for field, value in (("REQUEST_ID", data["pins"]["request_id"]), ("BOUNDARY_ID", request["boundary_id"])):
+                found, error = _single_request_header(request_raw.decode(), field)
+                if error or found != value:
+                    raise WorkflowRuntimeError("TEAM_REQUEST_HEADER_MISMATCH:" + field)
+            _team_git(repo, "merge-base", "--is-ancestor", data["pins"]["head"], snapshot.git_head or "INVALID")
+        queue = (observed[read_paths[5]] or b"").decode()
+        request_matches = re.findall(r"(?m)^##\s+" + re.escape(data["pins"]["request_id"]) + r"(?:\s|$)", queue)
+        if len(request_matches) != 1:
+            blockers.append({"scope": "DISPATCH", "code": "TEAM_REQUEST_BINDING_MISSING_OR_AMBIGUOUS"})
+        if data["operation"]["state"] in {"INTENT", "UNKNOWN"}:
+            blockers.append({"scope": "REPLAY", "code": "RECONCILE_ORIGINAL_OPERATION_NO_AUTOMATIC_RETRY"})
+        if data["reconciliation_pending"]:
+            blockers.append({"scope": "EXECUTION", "code": "RECOVERED_CHECKPOINT_REQUIRES_RECONCILIATION"})
+        if data["schema"] == "q3_resume.v2":
+            try:
+                local = _team_local(repo)
+                card["local"] = {"installation_ref": local["installation_ref"], "task": os.environ.get("CODEX_THREAD_ID"),
+                                 "watch": "UNKNOWN" if local["watch"] is None else local["watch"]["state"]}
+                _team_actor(repo, data)
+                if data["ownership"]["state"] != "ACTIVE":
+                    blockers.append({"scope": "EXECUTION", "code": "TEAM_OWNER_" + data["ownership"]["state"]})
+            except (WorkflowRuntimeError, KeyError) as exc:
+                blockers.append({"scope": "LOCAL_EXECUTION", "code": str(exc)[:240]})
+        status = _team_git(repo, "status", "--porcelain=v1", "-z", "--untracked-files=all")
+        if len(status) > 128 * 1024:
+            raise WorkflowRuntimeError("TEAM_WHOLE_TREE_STATUS_LIMIT")
+        paths, parts, index = [], status.split(b"\0"), 0
+        while index < len(parts) and parts[index]:
+            row = parts[index].decode("utf-8")
+            paths.append({"path": row[3:], "status": row[:2], "ownership": "DECLARED" if row[3:] in owned_paths else "UNKNOWN"})
+            index += 1
+            if "R" in row[:2] or "C" in row[:2]:
+                if index >= len(parts) or not parts[index]:
+                    raise WorkflowRuntimeError("TEAM_RENAME_STATUS_TRUNCATED")
+                paths.append({"path": parts[index].decode(), "status": "SOURCE", "ownership": "UNKNOWN"})
+                index += 1
+        card["whole_tree"] = {"dirty": paths[:24], "omitted": max(0, len(paths) - 24), "status_sha256": _resume_digest(status),
+                              "all_paths_command": "git status --short --untracked-files=all"}
+        card["registries"] = _team_registry_card(repo, observed)
+        inventory = _team_writer_inventory(repo)
+        card["writer_routes"] = {name: len(items) for name, items in inventory.items()}
+        for path, before in observed.items():
+            if _resume_file(repo, path) != before:
+                raise WorkflowRuntimeError("TEAM_READ_PREIMAGE_CHANGED:" + str(path))
+        if _team_git(repo, "status", "--porcelain=v1", "-z", "--untracked-files=all") != status:
+            raise WorkflowRuntimeError("TEAM_WHOLE_TREE_CHANGED")
+        card["native_checks"] = [
+            {"status": "NEEDS_LIVE_OBSERVATION", "subject": data["owner_thread_id"], "read": "owning app task, its agents, durable outputs and native watch"},
+            {"status": "NEEDS_LIVE_OBSERVATION", "subject": data["pins"]["request_id"], "read": "existing request/chat and committed result before new dispatch"},
+        ]
+    except (WorkflowRuntimeError, StartupRuntimeError, ValueError, OSError, KeyError) as exc:
+        blockers.append({"scope": "CONTINUATION", "code": str(exc)[:240]})
+        card["status"] = "HOLD"
+    return card
+
+
+def _team_registry_card(repo: Path, observed: dict[Path, bytes | None]) -> dict[str, Any]:
+    from orchestrator import team_records
+
+    result: dict[str, Any] = {}
+    for name, path in (("issues", TEAM_ISSUES), ("assignments", TEAM_ASSIGNMENTS)):
+        raw = observed[path]
+        if raw is None:
+            raise WorkflowRuntimeError("TEAM_REGISTRY_MISSING:" + str(path))
+        registry = team_records.read_registry(raw, name, archive_loader=lambda relative: _resume_file(repo, Path(relative)))
+        if name == "issues":
+            items = [{"id": key, "state": value["state"], "severity": value["report"]["severity"],
+                      "affected_operations": value["report"]["affected_operations"][:5]}
+                     for key, value in registry[name].items()
+                     if value["state"] not in {"AGENT_CONTEXT_ERROR", "EXPECTED_GUARD", "DUPLICATE", "FIX_PUSH_VERIFIED"}]
+        else:
+            items = [{"id": key, "state": value["assignment"]["status"],
+                      "owner_task": value["assignment"]["owner_task"], "assignee": value["assignment"]["assignee"],
+                      "next_check": value["assignment"]["next_check"]}
+                     for key, value in registry[name].items()
+                     if value["assignment"]["status"] not in {"DONE", "COMPLETED", "CANCELLED", "FAILED"}]
+        result[name] = {"path": str(path), "sha256": _resume_digest(raw), "items": items[:6],
+                        "omitted": max(0, len(items) - 6), "legacy": "PRESERVED_UNMAPPED_NOT_AUTOMATICALLY_CLOSED"}
+    return result
+
+
+def _team_locator(repo: Path, locator: str, expected: str, *, durable_only: bool = True) -> bytes:
+    if locator.startswith("git:"):
+        try:
+            _, commit, path = locator.split(":", 2)
+        except ValueError as exc:
+            raise WorkflowRuntimeError("TEAM_GIT_LOCATOR_INVALID") from exc
+        if not _team_hex(commit, 40):
+            raise WorkflowRuntimeError("TEAM_GIT_LOCATOR_INVALID")
+        _team_path_hashes({path: expected})
+        raw = _team_git(repo, "show", commit + ":" + path)
+    else:
+        _team_path_hashes({locator: expected})
+        raw = _resume_file(repo, Path(locator))
+        if durable_only and not locator.startswith("docs/"):
+            raise WorkflowRuntimeError("TEAM_DURABLE_CANONICAL_EVIDENCE_REQUIRED:" + locator)
+    if _resume_digest(raw) != expected:
+        raise WorkflowRuntimeError("TEAM_EVIDENCE_HASH_MISMATCH:" + locator)
+    return raw
+
+
+def _team_repair_source_map(rows: object) -> dict[str, str]:
+    """Project transition source locators onto their exact repository paths."""
+    if not isinstance(rows, list):
+        raise WorkflowRuntimeError("TEAM_REPAIR_SOURCE_SET_INVALID")
+    result: dict[str, str] = {}
+    for row in rows:
+        if not isinstance(row, dict) or set(row) != {"locator", "sha256"}:
+            raise WorkflowRuntimeError("TEAM_REPAIR_SOURCE_SET_INVALID")
+        locator = row["locator"]
+        path = locator.split(":", 2)[-1] if isinstance(locator, str) and locator.startswith("git:") else locator
+        if not isinstance(path, str) or path in result:
+            raise WorkflowRuntimeError("TEAM_REPAIR_SOURCE_SET_INVALID")
+        result[path] = row["sha256"]
+    return result
+
+
+def _team_validate_repair_source_set(rows: object, expected: dict[str, str]) -> None:
+    if _team_repair_source_map(rows) != expected:
+        raise WorkflowRuntimeError("TEAM_ISSUE_RESULT_SOURCE_MISMATCH")
+
+
+def _team_candidate_manifest(payload: dict[str, Any]) -> dict[str, str]:
+    manifest = payload.get("candidate_manifest")
+    if not isinstance(manifest, list):
+        raise WorkflowRuntimeError("TEAM_REPAIR_CANDIDATE_MANIFEST_REQUIRED")
+    result: dict[str, str] = {}
+    for row in manifest:
+        if not isinstance(row, dict) or set(row) != {"path", "sha256"}:
+            raise WorkflowRuntimeError("TEAM_REPAIR_CANDIDATE_MANIFEST_INVALID")
+        path, digest = row["path"], row["sha256"]
+        if not isinstance(path, str) or path in result or not isinstance(digest, str):
+            raise WorkflowRuntimeError("TEAM_REPAIR_CANDIDATE_MANIFEST_INVALID")
+        result[path] = digest
+    if not result:
+        raise WorkflowRuntimeError("TEAM_REPAIR_CANDIDATE_MANIFEST_REQUIRED")
+    return result
+
+
+def _team_validate_repair_candidate(
+    repo: Path, payload: dict[str, Any], *, base_commit: str
+) -> dict[str, str]:
+    """Bind one named repair diff and its bytes to a descendant Git commit."""
+    candidate_commit = payload.get("candidate_commit")
+    if not (_team_hex(base_commit, 40) or _team_hex(base_commit, 64)):
+        raise WorkflowRuntimeError("TEAM_REPAIR_BASE_COMMIT_INVALID")
+    if not (_team_hex(candidate_commit, 40) or _team_hex(candidate_commit, 64)):
+        raise WorkflowRuntimeError("TEAM_REPAIR_CANDIDATE_COMMIT_INVALID")
+    if candidate_commit == base_commit:
+        raise WorkflowRuntimeError("TEAM_REPAIR_CANDIDATE_NOT_DESCENDANT")
+    manifest = _team_candidate_manifest(payload)
+    try:
+        object_type = _team_git(repo, "cat-file", "-t", str(candidate_commit)).decode().strip()
+    except WorkflowRuntimeError as exc:
+        raise WorkflowRuntimeError("TEAM_REPAIR_CANDIDATE_COMMIT_INVALID") from exc
+    if object_type != "commit":
+        raise WorkflowRuntimeError("TEAM_REPAIR_CANDIDATE_COMMIT_INVALID")
+    try:
+        _team_git(repo, "merge-base", "--is-ancestor", base_commit, str(candidate_commit))
+    except WorkflowRuntimeError as exc:
+        raise WorkflowRuntimeError("TEAM_REPAIR_BASE_ANCESTRY_INVALID") from exc
+    try:
+        parents = _team_git(repo, "show", "-s", "--format=%P", str(candidate_commit)).decode().split()
+    except (UnicodeDecodeError, WorkflowRuntimeError) as exc:
+        raise WorkflowRuntimeError("TEAM_REPAIR_CANDIDATE_PARENT_INVALID") from exc
+    if len(parents) != 1 or not (_team_hex(parents[0], 40) or _team_hex(parents[0], 64)):
+        raise WorkflowRuntimeError("TEAM_REPAIR_CANDIDATE_PARENT_INVALID")
+    try:
+        changed_raw = _team_git(
+            repo, "diff", "--name-only", "--no-renames", "-z", parents[0], str(candidate_commit), "--"
+        )
+        changed_paths = [item.decode("utf-8") for item in changed_raw.split(b"\0") if item]
+    except (UnicodeDecodeError, WorkflowRuntimeError) as exc:
+        raise WorkflowRuntimeError("TEAM_REPAIR_CANDIDATE_DIFF_INVALID") from exc
+    if len(changed_paths) != len(set(changed_paths)) or set(changed_paths) != set(manifest):
+        raise WorkflowRuntimeError("TEAM_REPAIR_CANDIDATE_DIFF_MISMATCH")
+    for path, expected in manifest.items():
+        try:
+            raw = _team_git(repo, "show", f"{candidate_commit}:{path}")
+        except WorkflowRuntimeError as exc:
+            raise WorkflowRuntimeError("TEAM_REPAIR_CANDIDATE_PATH_INVALID:" + path) from exc
+        if _resume_digest(raw) != expected:
+            raise WorkflowRuntimeError("TEAM_REPAIR_CANDIDATE_BYTES_MISMATCH:" + path)
+    return manifest
+
+
+def team_record(repo: Path, *, kind: str, candidate: Path, expected_sha256: str) -> dict[str, Any]:
+    from orchestrator import team_records
+
+    if kind == "archive":
+        return _team_archive(repo, candidate=candidate, expected_sha256=expected_sha256)
+    routes = {"report": (TEAM_ISSUES, team_records.prepare_report),
+              "issue-event": (TEAM_ISSUES, team_records.prepare_issue_event),
+              "assignment": (TEAM_ASSIGNMENTS, team_records.prepare_assignment)}
+    if kind not in routes:
+        raise WorkflowRuntimeError("TEAM_RECORD_KIND_INVALID")
+    relative, prepare = routes[kind]
+    _team_registered(repo, "team-record", TEAM_RECORD_WRITE_PATHS)
+    payload = team_records.load_payload(candidate.read_bytes())
+    with _execution_writer_epoch(repo) as epoch:
+        actor = team_guard(repo, command="workflow-team-record", paths=[str(relative)])
+        if actor is None:
+            raise WorkflowRuntimeError("TEAM_RUNTIME_NOT_ACTIVATED")
+        raw = _resume_file(repo, relative)
+        if raw is None:
+            raise WorkflowRuntimeError("TEAM_REGISTRY_MISSING")
+        updated, receipt = prepare(raw, payload, expected_sha256,
+                                   archive_loader=lambda path: _resume_file(repo, Path(path)))
+        # Exact replay restores the SAME receipt even when current inputs have moved.
+        if receipt["status"] != "NOOP":
+            for field in ("evidence", "source_binding"):
+                for row in payload.get(field, []):
+                    _team_locator(repo, row["locator"], row["sha256"], durable_only=field == "evidence")
+            for row in payload.get("input_paths", []):
+                _team_locator(repo, "git:" + payload["base_commit"] + ":" + row["path"], row["sha256"])
+            if kind == "report":
+                rule = payload["expected_rule_source"]
+                _team_locator(repo, rule["locator"], rule["sha256"])
+                _, data, _ = _team_current(repo)
+                assignments = _team_assignments(repo)
+                context = _team_assignment_context(repo, data, assignments, [payload["assignment_id"]],
+                    {team_records._payload_sha(payload)})
+                team_records.validate_report_provenance(payload, assignments, context)
+            elif kind == "assignment":
+                if (payload["owner_task"] != actor["task"] or payload["owner_epoch"] != actor["epoch"]
+                        or payload["owner_installation_ref"] != actor["installation_ref"]):
+                    raise WorkflowRuntimeError("TEAM_ASSIGNMENT_OWNER_MISMATCH")
+                for row in payload["input_hashes"]:
+                    _team_locator(repo, "git:" + payload["base_commit"] + ":" + row["path"], row["sha256"])
+                # CREATE is an intent, never a native agent launch receipt.
+                if payload["operation"] == "CREATE" and payload["status"] not in {"ASSIGNED", "PENDING"}:
+                    raise WorkflowRuntimeError("TEAM_ASSIGNMENT_LAUNCH_OBSERVATION_REQUIRED")
+            if kind == "issue-event":
+                _, data, _ = _team_current(repo)
+                assignments = _team_assignments(repo)
+                ids = [] if payload["transition"] in team_records.OWNER_TRANSITIONS else [
+                    key for key, row in assignments["assignments"].items()
+                    if row["assignment"]["assignee"] == payload["actor_id"]
+                    and row["assignment"]["subject"] in {payload["issue_id"], payload.get("repair_subject_id")}
+                ]
+                context = _team_assignment_context(repo, data, assignments, ids,
+                    {row["sha256"] for row in payload["evidence"]})
+                review_base_commit = None
+                if payload["transition"] == "FIX_VERIFIED":
+                    review_issues = team_records.read_registry(
+                        raw, "issues", archive_loader=lambda path: _resume_file(repo, Path(path))
+                    )
+                    review_issue = review_issues["issues"].get(payload["issue_id"])
+                    if review_issue is None:
+                        raise WorkflowRuntimeError("TEAM_ISSUE_UNKNOWN")
+                    review_base_commit = review_issue["report"]["base_commit"]
+                provenance = team_records.validate_issue_event_actor(
+                    payload, assignments, context, expected_base_commit=review_base_commit
+                )
+                if provenance["actor_class"] != "owner":
+                    assignment = assignments["assignments"][provenance["assignment_id"]]["assignment"]
+                    # Only the assigned issue/repair and the exact checked source set.
+                    if assignment["assignment_id"] not in ids:
+                        raise WorkflowRuntimeError("TEAM_ISSUE_ASSIGNMENT_SUBJECT_MISMATCH")
+                    expected = {row["path"]: row["sha256"] for row in assignment["input_hashes"]}
+                    _team_validate_repair_source_set(payload["source_binding"], expected)
+                    if payload["transition"] == "FIX_VERIFIED":
+                        manifest = _team_candidate_manifest(payload)
+                        if not set(manifest).issubset(set(assignment["permitted_paths"])):
+                            raise WorkflowRuntimeError("TEAM_REPAIR_CANDIDATE_SCOPE_MISMATCH")
+            if kind == "issue-event" and payload["transition"] in {"FIX_COMMITTED", "FIX_PUSH_VERIFIED"}:
+                issues = team_records.read_registry(raw, "issues",
+                    archive_loader=lambda path: _resume_file(repo, Path(path)))
+                issue = issues["issues"].get(payload["issue_id"])
+                if issue is None:
+                    raise WorkflowRuntimeError("TEAM_ISSUE_UNKNOWN")
+                _team_validate_repair_candidate(repo, payload, base_commit=issue["report"]["base_commit"])
+                if payload["transition"] == "FIX_PUSH_VERIFIED":
+                    remote = _team_local_operation(repo, payload["repair_subject_id"] + ":publication")
+                    if remote is None:
+                        raise WorkflowRuntimeError("TEAM_REPAIR_REMOTE_OBSERVATION_REQUIRED")
+                    if remote.get("remote_commit") != payload["candidate_commit"]:
+                        raise WorkflowRuntimeError("TEAM_REPAIR_REMOTE_COMMIT_MISMATCH")
+                    _team_git(repo, "merge-base", "--is-ancestor",
+                              payload["candidate_commit"], remote["remote_commit"])
+        stable_receipt = {**receipt, "status": "RECORDED"}
+        receipt_path = Path("docs/session_protocols/team-record-" + receipt["event_id"] + ".json")
+        prior_receipt = _resume_file(repo, receipt_path)
+        receipt_bytes = team_records.canonical_json(stable_receipt)
+        if prior_receipt is not None and prior_receipt != receipt_bytes:
+            raise WorkflowRuntimeError("TEAM_RECEIPT_CONFLICT")
+        if updated != raw:
+            _resume_cas_bytes(repo, relative, raw, updated, epoch)
+        else:
+            _resume_sync(repo / relative)
+        # Crash after the event but before this write is repaired by exact replay.
+        if prior_receipt is None:
+            _resume_cas_bytes(repo, receipt_path, None, receipt_bytes, epoch)
+        _resume_sync(repo / receipt_path)
+        return {**receipt, "receipt_path": str(receipt_path), "mathematical_acceptance": False}
+
+
+def _team_archive(repo: Path, *, candidate: Path, expected_sha256: str) -> dict[str, Any]:
+    """Move verified frames to immutable history; an intent alone is never completion."""
+    from orchestrator import team_records
+
+    _team_registered(repo, "team-record", TEAM_RECORD_WRITE_PATHS)
+    request = team_records.load_payload(candidate.read_bytes())
+    if (set(request) != {"schema", "registry_kind", "event_count", "expected_registry_sha256", "archive_ref"}
+            or request["schema"] != "q3_team_archive_request.v1"
+            or request["registry_kind"] not in {"issues", "assignments"}
+            or request["expected_registry_sha256"] != expected_sha256
+            or not re.fullmatch(r"docs/session_protocols/team-archive-[A-Za-z0-9_-]+\.json", request["archive_ref"])):
+        raise WorkflowRuntimeError("TEAM_ARCHIVE_REQUEST_INVALID")
+    relative = TEAM_ISSUES if request["registry_kind"] == "issues" else TEAM_ASSIGNMENTS
+    archive_path = Path(request["archive_ref"])
+    intent_path = archive_path.with_name(archive_path.stem + "-intent.json")
+    with _execution_writer_epoch(repo) as epoch:
+        if team_guard(repo, command="workflow-team-record", paths=[str(relative)]) is None:
+            raise WorkflowRuntimeError("TEAM_RUNTIME_NOT_ACTIVATED")
+        raw = _resume_file(repo, relative)
+        if raw is None:
+            raise WorkflowRuntimeError("TEAM_REGISTRY_MISSING")
+        loader = lambda path: _resume_file(repo, Path(path))
+        registry = team_records.read_registry(raw, request["registry_kind"], archive_loader=loader)
+        intent_raw = _resume_file(repo, intent_path)
+        markers = [item for item in registry["_archive_markers"]
+                   if item["event"]["payload"]["archive_ref"]["path"] == str(archive_path)]
+        if markers:
+            if len(markers) != 1 or intent_raw is None:
+                raise WorkflowRuntimeError("TEAM_ARCHIVE_REPLAY_INTENT_REQUIRED")
+            intent = team_records.load_payload(intent_raw)
+            if (set(intent) != {"schema", "request", "receipt"}
+                    or intent["schema"] != "q3_team_archive_intent.v1" or intent["request"] != request
+                    or intent["receipt"]["event_id"] != markers[0]["event"]["event_id"]
+                    or intent["receipt"]["pre_registry_sha256"] != expected_sha256
+                    or intent["receipt"]["archive_sha256"] != markers[0]["event"]["payload"]["archive_ref"]["sha256"]):
+                raise WorkflowRuntimeError("TEAM_ARCHIVE_REPLAY_CONFLICT")
+            receipt, updated = intent["receipt"], raw
+        else:
+            archive_bytes, updated, receipt = team_records.prepare_archive(raw, request["registry_kind"], expected_sha256,
+                str(archive_path), event_count=request["event_count"], archive_loader=loader)
+            archive_before = _resume_file(repo, archive_path)
+            if archive_before is not None and archive_before != archive_bytes:
+                raise WorkflowRuntimeError("TEAM_ARCHIVE_PATH_CONFLICT")
+            if archive_before is None:
+                _resume_cas_bytes(repo, archive_path, None, archive_bytes, epoch)
+            intent = {"schema": "q3_team_archive_intent.v1", "request": request, "receipt": receipt}
+            intent_bytes = team_records.canonical_json(intent)
+            if intent_raw is not None and intent_raw != intent_bytes:
+                raise WorkflowRuntimeError("TEAM_ARCHIVE_INTENT_CONFLICT")
+            if intent_raw is None:
+                _resume_cas_bytes(repo, intent_path, None, intent_bytes, epoch)
+            team_records.read_registry(updated, request["registry_kind"], archive_loader=loader)
+            _resume_cas_bytes(repo, relative, raw, updated, epoch)
+        receipt_path = Path("docs/session_protocols/team-record-" + receipt["event_id"] + ".json")
+        receipt_bytes = team_records.canonical_json(receipt)
+        receipt_before = _resume_file(repo, receipt_path)
+        if receipt_before is not None and receipt_before != receipt_bytes:
+            raise WorkflowRuntimeError("TEAM_RECEIPT_CONFLICT")
+        if receipt_before is None:
+            _resume_cas_bytes(repo, receipt_path, None, receipt_bytes, epoch)
+        for path in (archive_path, intent_path, relative, receipt_path):
+            _resume_sync(repo / path)
+        return {**receipt, "status": "NOOP" if markers else "RECORDED", "receipt_path": str(receipt_path),
+                "mathematical_acceptance": False}
+
+
 def _resume_document(raw: bytes) -> tuple[dict[str, Any], str]:
     """Validate the observation envelope, never its mathematical truth/authority."""
     from orchestrator.routeb_goal_state import load_unique_yaml
@@ -1071,7 +3070,7 @@ def _resume_document(raw: bytes) -> tuple[dict[str, Any], str]:
             raise ValueError("front matter")
         header, body = text[4:].split("\n---\n", 1)
         data = load_unique_yaml(header)
-        if not isinstance(data, dict) or data.get("schema") != "q3_resume.v1":
+        if not isinstance(data, dict) or data.get("schema") not in {"q3_resume.v1", "q3_resume.v2"}:
             raise ValueError("schema")
         revision = data.get("revision")
         if type(revision) is not int or revision < 1:
@@ -1098,12 +3097,14 @@ def _resume_document(raw: bytes) -> tuple[dict[str, Any], str]:
             if not isinstance(data["pins"].get(field), str) or not data["pins"][field]:
                 raise ValueError("pins." + field)
         for field in ("receipt", "independent_review", "parent_check", "acceptance", "publication"):
-            if data["stages"].get(field) not in {
+            stage = data["stages"].get(field)
+            state = stage.get("state") if isinstance(stage, dict) else stage
+            if state not in {
                 "NOT_STARTED", "PENDING", "UNKNOWN", "DONE", "REJECTED",
             }:
                 raise ValueError("stages." + field)
         operation = data["operation"]
-        if operation.get("kind") not in {"NONE", "DISPATCH", "COMPUTE", "PUBLISH"}:
+        if operation.get("kind") not in {"NONE", "DISPATCH", "COMPUTE", "PUBLISH", "WATCH", "ASSIGN"}:
             raise ValueError("operation.kind")
         if operation.get("state") not in {"NONE", "INTENT", "UNKNOWN", "CONFIRMED"}:
             raise ValueError("operation.state")
@@ -1117,6 +3118,8 @@ def _resume_document(raw: bytes) -> tuple[dict[str, Any], str]:
             raise ValueError("operation none mismatch")
         if operation["state"] == "CONFIRMED" and not operation["evidence"]:
             raise ValueError("operation receipt missing")
+        if data["schema"] == "q3_resume.v2":
+            _team_document(data)
         for section in RESUME_SECTIONS:
             marker = "## " + section + "\n"
             if body.count(marker) != 1 or not body.split(marker)[1].split("\n## ")[0].strip():
@@ -1204,13 +3207,16 @@ def _resume_file(repo: Path, relative: Path) -> bytes | None:
 
 def _resume_cas_bytes(
     repo: Path, relative: Path, before: bytes | None, after: bytes,
-    epoch: _ExecutionWriterEpoch,
+    epoch: _ExecutionWriterEpoch, *, mode: int | None = None,
 ) -> None:
     """Used by checkpoint saves and the owner-scoped one-time document migration."""
     epoch.recheck()
     if _resume_file(repo, relative) != before:
         raise WorkflowRuntimeError("RESUME_PREIMAGE_CHANGED:" + str(relative))
-    _atomic_bytes(repo / relative, after)
+    if mode is None:
+        _atomic_bytes(repo / relative, after)
+    else:
+        _atomic_bytes(repo / relative, after, mode=mode)
     epoch.recheck()
     if _resume_file(repo, relative) != after:
         raise WorkflowRuntimeError("RESUME_READBACK_MISMATCH:" + str(relative))
@@ -1261,6 +3267,8 @@ def resume_checkpoint(
             raise WorkflowRuntimeError("RESUME_REVISION_CONFLICT")
         # A lost receipt is safely retryable only with the identical candidate and predecessor.
         if current == payload:
+            if proposed["schema"] == "q3_resume.v2":
+                _team_actor(repo, proposed)
             if versions.get(proposed["revision"]) != payload:
                 raise WorkflowRuntimeError("RESUME_INTENT_ARCHIVE_MISSING")
             if expected_sha256 != "ABSENT" and not any(
@@ -1306,6 +3314,12 @@ def resume_checkpoint(
         elif proposed["recovery_from"] is not None or (current is None and any(
                 kind == "resume" for kind, _, _ in records.values())):
             raise WorkflowRuntimeError("RESUME_RECOVERY_REQUIRED")
+        if previous is not None and (control.team_runtime_version == 1 or proposed["schema"] == "q3_resume.v2"):
+            _team_owner_transition(repo, previous, proposed)
+        elif proposed["schema"] == "q3_resume.v2":
+            _team_actor(repo, proposed)
+            if proposed["ownership"]["epoch"] < _team_local(repo)["epoch_floor"]:
+                raise WorkflowRuntimeError("TEAM_RETIRED_EPOCH")
         last = (max([0, *(v for v in versions if v != proposed["revision"])])
                 if recover_from else previous["revision"] if previous else 0)
         if not recover_from and any(version > last + 1 for version in versions):
@@ -1842,9 +3856,15 @@ def input_fingerprints(
     return result
 
 
-def command_receipt(repo: Path, command: list[str], *, label: str) -> dict[str, Any]:
+def command_receipt(repo: Path, command: list[str], *, label: str,
+                    writer_epoch: _ExecutionWriterEpoch | None = None) -> dict[str, Any]:
     started = time.monotonic()
-    proc = subprocess.run(command, cwd=repo, capture_output=True, text=True)
+    if writer_epoch is not None:
+        writer_epoch.recheck()
+    proc = subprocess.run(command, cwd=repo, capture_output=True, text=True,
+                          pass_fds=() if writer_epoch is None else (writer_epoch.handle.fileno(),))
+    if writer_epoch is not None:
+        writer_epoch.recheck()
     output = proc.stdout + proc.stderr
     return {
         "label": label,
@@ -2367,7 +4387,7 @@ def _execute_goal_and_phase_close(
             "--reason",
             "goal-close",
         ]
-        goal_stage = command_receipt(repo, command, label="goal-close")
+        goal_stage = command_receipt(repo, command, label="goal-close", writer_epoch=epoch)
         receipts.append(goal_stage)
         if goal_stage.get("exit") != 0:
             raise WorkflowRuntimeError("GOAL_CLOSE_STAGE_FAILED")
@@ -2494,7 +4514,7 @@ def _execute_goal_and_phase_close(
         ]
         if chain:
             command.extend(("--assembly-chain", chain))
-        phase_stage = command_receipt(repo, command, label="phase-close")
+        phase_stage = command_receipt(repo, command, label="phase-close", writer_epoch=epoch)
         receipts.append(phase_stage)
         if phase_stage.get("exit") != 0:
             raise WorkflowRuntimeError("PHASE_CLOSE_STAGE_FAILED")
@@ -2707,6 +4727,7 @@ def _execute_close_node_transaction(
                         repo,
                         ["bash", "scripts/q3_check.sh", path],
                         label=f"kernel:{path}",
+                        writer_epoch=epoch,
                     )
                 )
                 if production_v10:
@@ -2731,7 +4752,7 @@ def _execute_close_node_transaction(
         ]
         if insight_payload:
             command.extend(("--insight-payload", str(insight_payload)))
-        receipts.append(command_receipt(repo, command, label="step-close"))
+        receipts.append(command_receipt(repo, command, label="step-close", writer_epoch=epoch))
         if production_v10:
             assert epoch is not None
             _execution_epoch_hold(repo, plan=plan, epoch=epoch, holds=holds)
@@ -2749,7 +4770,7 @@ def _execute_close_node_transaction(
             command.append("--run-kernel")
         if protocol_out:
             command.extend(("--protocol-out", str(protocol_out)))
-        receipts.append(command_receipt(repo, command, label="session-close"))
+        receipts.append(command_receipt(repo, command, label="session-close", writer_epoch=epoch))
         if production_v10:
             assert epoch is not None
             _execution_epoch_hold(repo, plan=plan, epoch=epoch, holds=holds)
@@ -2827,10 +4848,11 @@ def execute_close_node(
     next_goal_spec: Path | None = None,
     current_phase_key: Path | None = None,
 ) -> dict[str, Any]:
+    _team_pending_guard(repo)
     from orchestrator import goal_events
     plan_schema = plan.get("schema")
     production_v10 = (
-        plan_schema == SHADOW_PLAN_SCHEMA
+        plan_schema in {SHADOW_PLAN_SCHEMA, TEAM_PLAN_SCHEMA}
         and plan.get("mode") == PRODUCTION_PLAN_MODE
     )
     legacy_v9 = plan_schema == "q3_workflow_plan.v1"
@@ -2940,6 +4962,7 @@ def execute_close_node(
     if production_v10:
         try:
             with _execution_writer_epoch(repo) as epoch:
+                team_guard(repo, command="workflow-close-node", paths=owned_paths)
                 return _execute_close_node_transaction(
                     repo,
                     plan=plan,
@@ -2994,6 +5017,16 @@ def _add_plan_options(parser: argparse.ArgumentParser) -> None:
 
 
 def _run_close_script(repo: Path, script: str, forwarded: list[str]) -> int:
+    if _team_enabled(repo):
+        mapping = {"specs_docs/session_close.py": "workflow-session-close", "specs_docs/phase_close.py": "workflow-phase-close"}
+        if script not in mapping:
+            raise WorkflowRuntimeError("TEAM_UNFENCED_WRITER_FORBIDDEN:" + script)
+        with _execution_writer_epoch(repo) as epoch:
+            team_guard(repo, command=mapping[script], paths=[])
+            return subprocess.run(
+                [sys.executable, str(repo / script), "--root", str(repo), *forwarded], cwd=repo,
+                pass_fds=(epoch.handle.fileno(),),
+            ).returncode
     return subprocess.run(
         [sys.executable, str(repo / script), "--root", str(repo), *forwarded],
         cwd=repo,
@@ -3010,6 +5043,8 @@ def _supplier_search_dispatch(
 ) -> int:
     """Run one read-only SearchIntent and optionally persist its exact evidence."""
 
+    if record_evidence:
+        _team_pending_guard(repo)
     from scripts import supplier_preflight
 
     plan = live_plan_v10(repo, owned_paths=owned_paths)
@@ -3109,6 +5144,7 @@ def _supplier_search_dispatch(
             intent_temp.write_bytes(frozen_intent)
             evidence_temp.write_bytes(frozen_evidence)
             with _execution_writer_epoch(repo) as epoch:
+                team_guard(repo, command="workflow-search-evidence", paths=[card_rel])
                 identity_error = _recheck_production_identity(
                     repo, plan=current_plan, epoch=epoch
                 )
@@ -3468,6 +5504,35 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, default=REPO)
     subparsers = parser.add_subparsers(dest="command", required=True)
+    subparsers.add_parser("team-local-init")
+    bootstrap = subparsers.add_parser("team-bootstrap-publish")
+    bootstrap.add_argument("--operation-id", required=True)
+    bootstrap.add_argument("--expected-head")
+    bootstrap.add_argument("--expected-remote-commit")
+    bootstrap.add_argument("--expected-remote-resume-sha256")
+    bootstrap.add_argument("--reconcile-only", action="store_true")
+    team_integration = subparsers.add_parser("team-integrate-candidate")
+    team_integration_mode = team_integration.add_mutually_exclusive_group(required=True)
+    team_integration_mode.add_argument("--candidate", type=Path)
+    team_integration_mode.add_argument("--recover-operation")
+    team_watch = subparsers.add_parser("team-watch-intent")
+    team_watch.add_argument("--action", choices=["CREATE", "UPDATE", "PAUSE"], required=True)
+    team_watch.add_argument("--transfer-id", required=True)
+    team_watch.add_argument("--target-thread", required=True)
+    team_record_parser = subparsers.add_parser("team-record")
+    team_record_parser.add_argument("--kind", choices=["report", "issue-event", "assignment", "archive"], required=True)
+    team_record_parser.add_argument("--candidate", type=Path, required=True)
+    team_record_parser.add_argument("--expected-sha256", required=True)
+    for name in ("team-observe-remote", "team-reserve-effect"):
+        team_parser = subparsers.add_parser(name)
+        team_parser.add_argument("--operation-id", required=True)
+    team_native = subparsers.add_parser("team-observe-native")
+    team_native.add_argument("--candidate", type=Path, required=True)
+    team_native.add_argument("--expected-sha256", required=True)
+    team_confirm = subparsers.add_parser("team-confirm-effect")
+    team_confirm.add_argument("--operation-id", required=True)
+    team_confirm.add_argument("--candidate", type=Path, required=True)
+    team_confirm.add_argument("--expected-sha256", required=True)
     plan_parser = subparsers.add_parser("plan")
     _add_plan_options(plan_parser)
     plan_parser.add_argument("--shadow-v10", action="store_true")
@@ -3508,6 +5573,34 @@ def main() -> int:
     review_parser.add_argument("--expected-sha256", required=True)
     args, forwarded = parser.parse_known_args()
     repo = args.root.resolve()
+    if args.command.startswith("team-"):
+        if forwarded:
+            parser.error("unrecognized arguments: " + " ".join(forwarded))
+        try:
+            if args.command == "team-local-init":
+                result = team_local_init(repo)
+            elif args.command == "team-bootstrap-publish":
+                result = team_bootstrap_publish(repo, operation_id=args.operation_id, expected_head=args.expected_head,
+                    expected_remote_commit=args.expected_remote_commit,
+                    expected_remote_resume_sha256=args.expected_remote_resume_sha256, reconcile_only=args.reconcile_only)
+            elif args.command == "team-integrate-candidate":
+                result = team_integrate_candidate(repo, candidate=args.candidate, recover_operation=args.recover_operation)
+            elif args.command == "team-watch-intent":
+                result = team_watch_intent(repo, action=args.action, transfer_id=args.transfer_id, target_thread=args.target_thread)
+            elif args.command == "team-record":
+                result = team_record(repo, kind=args.kind, candidate=args.candidate, expected_sha256=args.expected_sha256)
+            elif args.command == "team-observe-remote":
+                result = team_observe_remote(repo, operation_id=args.operation_id)
+            elif args.command == "team-reserve-effect":
+                result = team_reserve_effect(repo, operation_id=args.operation_id)
+            elif args.command == "team-observe-native":
+                result = team_observe_native(repo, candidate=args.candidate, expected_sha256=args.expected_sha256)
+            else:
+                result = team_confirm_effect(repo, operation_id=args.operation_id, candidate=args.candidate, expected_sha256=args.expected_sha256)
+        except (WorkflowRuntimeError, StartupRuntimeError, OSError, ValueError, KeyError, subprocess.SubprocessError) as exc:
+            result = {"status": "HOLD", "reason": str(exc), "receipt_confirmed": False}
+        print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
+        return 2 if result["status"] in {"HOLD", "RECONCILE_ORIGINAL", "UNKNOWN"} else 0
     if args.command == "resume-checkpoint":
         if forwarded:
             parser.error("unrecognized arguments: " + " ".join(forwarded))

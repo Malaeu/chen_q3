@@ -80,6 +80,48 @@ class ToolManifestMemoryPlants(unittest.TestCase):
         self.assertTrue(close_node["writes"])
         self.assertIn("run --through close-node", close_node["invoke"])
 
+    def test_team_runtime_integration_and_callable_writer_routes_are_registered(self) -> None:
+        data = spine.yaml.safe_load(
+            (REPO / "docs/cartographer/TOOLS.yaml").read_text(encoding="utf-8")
+        )
+        tools = {
+            tool["id"]: tool
+            for family in data["tool_families"].values()
+            for tool in family.get("tools", [])
+        }
+        integrator = tools["workflow-team-integrate-candidate"]
+        self.assertEqual(
+            integrator["write_paths"],
+            [
+                "MANIFEST_REVIEWED_SOURCE_PATHS",
+                "docs/session_protocols/team-evidence-<sha256>.bin",
+                "GIT_COMMON_DIR/q3_team_local.v1",
+            ],
+        )
+        self.assertTrue(integrator["writes"])
+        self.assertIn("reviewed source candidate", integrator["trigger"])
+        inventory = data["team_runtime_writer_inventory"]
+        self.assertIn("workflow-team-integrate-candidate", inventory["fenced"])
+        self.assertIn("workflow-team-bootstrap-publish", inventory["fenced"])
+        bootstrap = tools["workflow-team-bootstrap-publish"]
+        self.assertTrue(bootstrap["writes"])
+        self.assertEqual(bootstrap["write_paths"], [
+            "GIT_COMMON_DIR/q3_team_local.v1", "GIT_COMMON_DIR/objects/**",
+            "GIT_COMMON_DIR/refs/remotes/origin/rh_clean", "REMOTE/origin/refs/heads/rh_clean",
+        ])
+        self.assertIn("--reconcile-only", bootstrap["alternatives"][0])
+        self.assertIn("slack-manual-chat-reconciliation", inventory["fenced"])
+        for tool_id in (
+            "aristotle",
+            "cartographer-loaders",
+            "packet-ingest",
+            "paper-ingest",
+            "task-specific-generators",
+            "tool-census",
+        ):
+            self.assertIn(tool_id, inventory["isolated_only"])
+            self.assertIn("canonical direct invocation is disabled", tools[tool_id]["team_runtime_note"])
+
     def test_production_plan_does_not_route_legacy_selectors_or_v9_gate(self) -> None:
         data = spine.yaml.safe_load(
             (REPO / "docs/cartographer/TOOLS.yaml").read_text(encoding="utf-8")

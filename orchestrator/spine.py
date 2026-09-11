@@ -2595,10 +2595,15 @@ def main() -> int:
                 or args.attempt_payload is not None or args.insight_payload is not None
             ):
                 _fail("PHASE_RECORD_INVALID", "repair cannot be combined with other actions")
-            from orchestrator.workflow_runtime import _execution_writer_epoch
+            from orchestrator.workflow_runtime import _execution_writer_epoch, team_guard
 
             try:
                 with _execution_writer_epoch(REPO) as epoch:
+                    team_guard(
+                        REPO,
+                        command="bridge-observed-phase-repair",
+                        paths=["orchestrator/state/CHANNEL_RUNTIME.json"],
+                    )
                     _validate_active_control()
                     raw = CHANNEL_RUNTIME.read_bytes()
                     event = json.loads(args.record_bridge_transition.read_text(encoding="utf-8"))
@@ -2623,10 +2628,16 @@ def main() -> int:
             from orchestrator.workflow_runtime import (
                 _execution_writer_epoch,
                 build_startup_snapshot,
+                team_guard,
             )
 
             try:
                 with _execution_writer_epoch(REPO) as epoch:
+                    team_guard(
+                        REPO,
+                        command="slack-manual-chat-reconciliation",
+                        paths=["orchestrator/state/CHANNEL_RUNTIME.json"],
+                    )
                     _validate_active_control()
                     startup = build_startup_snapshot(
                         REPO,

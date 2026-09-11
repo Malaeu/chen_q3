@@ -206,6 +206,7 @@ class ControlIdentity:
     status: str
     honesty_state: str | None
     owner_only_boundary: str | None
+    team_runtime_version: int = 0
 
 
 @dataclass(frozen=True)
@@ -244,6 +245,7 @@ class StartupSnapshot:
     warnings: tuple[str, ...]
     next_action: str
     run_authorized: bool
+    team_runtime_version: int = 0
 
     def to_dict(self) -> dict[str, object]:
         """Return an asdict-compatible payload for workflow rendering."""
@@ -500,10 +502,14 @@ def _control_identity(control_path: Path) -> ControlIdentity:
         raise StartupRuntimeError(
             "STARTUP_CONTROL_INVALID", "identity, version, or status is invalid"
         )
+    team_version = header.get("TEAM_RUNTIME_VERSION", 0)
+    if type(team_version) is not int or team_version not in {0, 1}:
+        raise StartupRuntimeError("STARTUP_CONTROL_INVALID", "unsupported team runtime version")
     return ControlIdentity(
         sha256=hashlib.sha256(raw).hexdigest(),
         version=version,
         status=status,
+        team_runtime_version=team_version,
         honesty_state=(
             header.get("HONESTY_STATE") if isinstance(header.get("HONESTY_STATE"), str) else None
         ),
@@ -2787,6 +2793,7 @@ def _build_startup_snapshot(
             warnings=_compact_messages(warnings),
             next_action=next_action,
             run_authorized=run_authorized,
+            team_runtime_version=control.team_runtime_version if control else 0,
         )
     finally:
         if owns_guard:

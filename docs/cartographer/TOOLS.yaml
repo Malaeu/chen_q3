@@ -4,6 +4,80 @@
 
 schema: q3_tool_manifest.v2
 
+# With TEAM_RUNTIME_VERSION=1 only fenced tools are direct canonical entrypoints.
+# Inherited writers run inside the registered close/search transaction and retain
+# its lock descriptor. Other writers remain usable for explicitly isolated
+# candidates; their output is integrated by the sole owner, never written through
+# an unguarded direct call into canonical state. This is cooperative routing, not
+# an operating-system sandbox. All callable writers with status ENABLED,
+# AVAILABLE, or DEGRADED and writes:true must occur exactly once here.
+team_runtime_writer_inventory:
+  fenced:
+    - bind-request
+    - bridge-observed-phase-repair
+    - workflow-close-node
+    - workflow-phase-close
+    - workflow-resume-checkpoint
+    - workflow-search-evidence
+    - workflow-session-close
+    - workflow-team-confirm-effect
+    - workflow-team-local-init
+    - workflow-team-observe-native
+    - workflow-team-observe-remote
+    - workflow-team-record
+    - workflow-team-reserve-effect
+    - workflow-team-watch-intent
+    - workflow-team-integrate-candidate
+    - workflow-team-bootstrap-publish
+    - slack-manual-chat-reconciliation
+  inherited_only:
+    - atom-describe
+    - atom-index
+    - blueprint-skeleton-generator
+    - goal-event-writer
+    - kb-canonical-write
+    - knowledge-spine-goal-close
+    - knowledge-spine-step-close
+    - lean-env-dump
+    - lean-validation
+    - map-coverage
+    - observability-refresh
+    - progress-log-migrator
+    - q3-docs-refresh
+    - route058-migrator
+    - routeb-inventory
+    - semantic-preflight
+  isolated_only:
+    - aristotle
+    - cartographer-loaders
+    - edge-ledger-build
+    - edge-ledger-dualcert
+    - edge-ledger-ratio
+    - edge-ledger-relritz
+    - edge-ledger-schur
+    - euler-gram-d2-evaluator
+    - gauge-positive-extension-certificate
+    - h4-packet-floor-certificate
+    - h4-scalar-floor-certificate
+    - lattice-equation
+    - lattice-error
+    - legendre-parity-packet-certificate
+    - odd-floor
+    - odd-gram
+    - packet-ingest
+    - paper-ingest
+    - radical-one-direction-margin
+    - radical-window-derivative
+    - rouche-tcert
+    - routeb-session-checkpoint
+    - s7-table
+    - six-centre-assembly
+    - slope-split
+    - three-lobe-preflight
+    - task-specific-generators
+    - tool-census
+    - xi-row-zeros
+
 meta:
   updated: 2026-09-07
   owner: OWNER
@@ -371,7 +445,7 @@ tool_families:
         authority: FIXED_RECEIPT_AND_PREIMAGE_NOT_FUTURE_PHASE_AUTHORITY
         validation: test_channel_runtime_writer + test_workflow_runtime phase-header checks
         records_to: orchestrator/state/CHANNEL_RUNTIME.json
-        note: Fixed evidence/predecessor hashes, canonical writer lock, full predecessor archive and exact successor replay. No production closure.
+        note: Fixed evidence/predecessor hashes, owner/epoch/pending guard inside canonical writer lock, full predecessor archive and exact successor replay. No production closure.
         last_verified: 2026-09-10
 
       - id: slack-manual-chat-reconciliation
@@ -768,6 +842,154 @@ tool_families:
           migration preimage drift; readback and failure holds. Production HOLD
           is not waived. Canonical plan and live identity reconciliation precede
           dependent mathematical actions; this writer performs none of them.
+        last_verified: 2026-09-11
+
+      - id: workflow-team-local-init
+        classification: AUTOMATIC
+        status: ENABLED
+        audience: [CODEX, HUMAN]
+        mode: WRITES_CANONICAL
+        path: orchestrator/workflow_runtime.py
+        invoke: python3 orchestrator/workflow_runtime.py team-local-init
+        trigger: Explicit initialization of this independent clone; never during plan.
+        writes: true
+        write_paths: [GIT_COMMON_DIR/q3-three-body.writer.lock, GIT_COMMON_DIR/q3_team_installation.v1]
+        approval: OWNER_AUTHORIZED_TEAM_WORKFLOW
+        authority: LOCAL_NAMESPACE_ONLY_NOT_EXECUTION_OWNERSHIP
+        records_to: private Git common directory; stdout contains only public installation_ref
+        validation: test_workflow_runtime.TeamRuntimeTests
+        last_verified: 2026-09-11
+
+      - id: workflow-team-observe-remote
+        classification: AUTOMATIC
+        status: ENABLED
+        audience: [CODEX, HUMAN]
+        mode: WRITES_CANONICAL
+        path: orchestrator/workflow_runtime.py
+        invoke: python3 orchestrator/workflow_runtime.py team-observe-remote --operation-id <id>
+        trigger: One exact operation needs current canonical origin/rh_clean ownership evidence.
+        writes: true
+        write_paths: [GIT_COMMON_DIR/q3_team_local.v1, GIT_COMMON_DIR/objects/**]
+        approval: OWNER_AUTHORIZED_TEAM_WORKFLOW
+        authority: OPERATION_BOUND_OBSERVATION_NOT_ACQUISITION_OR_PUBLICATION
+        records_to: private operation receipt; fetch objects only, no refs or FETCH_HEAD
+        validation: test_workflow_runtime.TeamRuntimeTests
+        last_verified: 2026-09-11
+
+      - id: workflow-team-bootstrap-publish
+        classification: AUTOMATIC
+        status: ENABLED
+        audience: [CODEX, HUMAN]
+        mode: WRITES_CANONICAL
+        path: orchestrator/workflow_runtime.py
+        invoke: python3 orchestrator/workflow_runtime.py team-bootstrap-publish --operation-id <id> --expected-head <commit> --expected-remote-commit <commit> --expected-remote-resume-sha256 <sha256>
+        alternatives:
+          - python3 orchestrator/workflow_runtime.py team-bootstrap-publish --operation-id <id> --reconcile-only
+        trigger: First owner-preserving v1-to-v2 publication after reviewed local installation and a saved exact publication intent.
+        writes: true
+        write_paths: [GIT_COMMON_DIR/q3_team_local.v1, "GIT_COMMON_DIR/objects/**", GIT_COMMON_DIR/refs/remotes/origin/rh_clean, REMOTE/origin/refs/heads/rh_clean]
+        approval: OWNER_AUTHORIZED_INITIAL_MIGRATION_EXACT_SCOPE_AND_SAFE_BOUNDARY
+        authority: ONCE_RESERVED_ORDINARY_NON_FORCE_PUBLICATION_NOT_OWNERSHIP_ACQUISITION_OR_PROOF_ACCEPTANCE
+        records_to: private full manifest and operation outcome; existing origin/rh_clean
+        validation: test_workflow_runtime.TeamRuntimeTests; real initial v1 remote, exact migration history/scope, reservation before one push, crash and reconciliation without replay
+        notes: Only epoch1 ACTIVE actual owner, same fetch/push origin, linear reviewed candidate; no force or lease options, no config/hook changes. A missing receipt means reconcile only. Remote preimage is an observation, not an atomic remote lock.
+        last_verified: 2026-09-11
+
+      - id: workflow-team-reserve-effect
+        classification: AUTOMATIC
+        status: ENABLED
+        audience: [CODEX, HUMAN]
+        mode: WRITES_CANONICAL
+        path: orchestrator/workflow_runtime.py
+        invoke: python3 orchestrator/workflow_runtime.py team-reserve-effect --operation-id <id>
+        trigger: Consume one exact remote observation for the saved intent before its native effect.
+        writes: true
+        write_paths: [GIT_COMMON_DIR/q3_team_local.v1]
+        approval: OWNER_AUTHORIZED_EXACT_OPERATION_AND_INPUTS
+        authority: COOPERATIVE_ONCE_ONLY_PREFLIGHT_NOT_DELIVERY
+        records_to: private reservation; retry requires original-operation reconciliation
+        validation: test_workflow_runtime.TeamRuntimeTests
+        last_verified: 2026-09-11
+
+      - id: workflow-team-confirm-effect
+        classification: AUTOMATIC
+        status: ENABLED
+        audience: [CODEX, HUMAN]
+        mode: WRITES_CANONICAL
+        path: orchestrator/workflow_runtime.py
+        invoke: python3 orchestrator/workflow_runtime.py team-confirm-effect --operation-id <id> --candidate <file> --expected-sha256 <hash>
+        trigger: Bind independently observed evidence to the original local effect reservation.
+        writes: true
+        write_paths: [GIT_COMMON_DIR/q3_team_local.v1]
+        approval: OWNER_AUTHORIZED_EXACT_OPERATION_AND_EVIDENCE
+        authority: OBSERVATION_ONLY_NOT_MATHEMATICAL_ACCEPTANCE
+        records_to: private reservation outcome with canonical evidence hashes
+        validation: test_workflow_runtime.TeamRuntimeTests
+        last_verified: 2026-09-11
+
+      - id: workflow-team-watch-intent
+        classification: AUTOMATIC
+        status: ENABLED
+        audience: [CODEX, HUMAN]
+        mode: WRITES_CANONICAL
+        path: orchestrator/workflow_runtime.py
+        invoke: python3 orchestrator/workflow_runtime.py team-watch-intent --action <CREATE|UPDATE|PAUSE> --transfer-id <id> --target-thread <id>
+        trigger: Reserve one native watch change after observing the existing local inventory.
+        writes: true
+        write_paths: [GIT_COMMON_DIR/q3_team_local.v1]
+        approval: OWNER_AUTHORIZED_WATCH_AND_VERIFIED_OWNER_TRANSITION
+        authority: INTENT_ONLY_NOT_NATIVE_AUTOMATION_EXECUTION
+        records_to: private once-only watch intent; native automation tool performs the effect
+        validation: test_workflow_runtime.TeamRuntimeTests
+        last_verified: 2026-09-11
+
+      - id: workflow-team-observe-native
+        classification: AUTOMATIC
+        status: ENABLED
+        audience: [CODEX, HUMAN]
+        mode: WRITES_CANONICAL
+        path: orchestrator/workflow_runtime.py
+        invoke: python3 orchestrator/workflow_runtime.py team-observe-native --candidate <file> --expected-sha256 <hash>
+        trigger: Record the owning installation's actual native watch readback and scheduled-wake evidence.
+        writes: true
+        write_paths: [GIT_COMMON_DIR/q3_team_local.v1]
+        approval: OWNER_AUTHORIZED_TEAM_WORKFLOW
+        authority: OBSERVATION_ONLY_NOT_NATIVE_AUTOMATION_CONTROL_OR_PROOF
+        records_to: private watch binding and exact canonical provider-evidence locator
+        validation: test_workflow_runtime.TeamRuntimeTests
+        last_verified: 2026-09-11
+
+      - id: workflow-team-record
+        classification: AUTOMATIC
+        status: ENABLED
+        audience: [CODEX, HUMAN]
+        mode: WRITES_CANONICAL
+        path: orchestrator/workflow_runtime.py
+        invoke: python3 orchestrator/workflow_runtime.py team-record --kind <report|issue-event|assignment|archive> --candidate <file> --expected-sha256 <registry-hash>
+        trigger: Sole owner ingests durable evidence, an independent disposition or a bounded assignment.
+        writes: true
+        write_paths: [docs/INSTRUCTION_ISSUES.md, docs/Codex/AGENTS_LEDGER.md, "docs/session_protocols/team-record-<event_id>.json", "docs/session_protocols/team-archive-*.json"]
+        approval: OWNER_AUTHORIZED_SCOPED_ASSIGNMENT_OR_REPAIR
+        authority: TECHNICAL_REGISTRAR_NOT_MATHEMATICAL_SELECTOR_DISPATCH_OR_ACCEPTANCE
+        records_to: one canonical registry and verified immutable receipt in existing protocol area
+        validation: test_workflow_runtime.TeamRecordsTests and TeamRuntimeTests; legacy prefix, CAS, replay, interleaving, source hashes
+        last_verified: 2026-09-11
+
+      - id: workflow-team-integrate-candidate
+        classification: AUTOMATIC
+        status: ENABLED
+        audience: [CODEX, HUMAN]
+        mode: WRITES_CANONICAL
+        path: orchestrator/workflow_runtime.py
+        invoke: python3 <committed-engine>/orchestrator/workflow_runtime.py --root <canonical> team-integrate-candidate --candidate <manifest.json>
+        trigger: Sole owner integrates one exact evidence-intake or independently reviewed source candidate under the existing writer lock.
+        writes: true
+        write_paths: [MANIFEST_REVIEWED_SOURCE_PATHS, docs/session_protocols/team-evidence-<sha256>.bin, GIT_COMMON_DIR/q3_team_local.v1]
+        approval: OWNER_AUTHORIZED_EXACT_INTEGRATION_MANIFEST_AND_REVIEW
+        authority: BYTE_EXACT_LOCAL_INTEGRATION_NOT_COMMIT_PUSH_PROOF_ADMISSION_OR_PUBLICATION
+        records_to: [named candidate destinations, evidence-intake bytes, private integration operation receipt]
+        validation: test_workflow_runtime integration plants; exact assignment/review/base/preimage checks, durable readback and same-intent replay
+        notes: Recovery uses --recover-operation <id> from the same pinned engine and the durable private manifest. Only pending copies may recover; completed replay verifies bytes and never reapplies them. No network, commit or push in this transaction.
         last_verified: 2026-09-11
 
       - id: workflow-close-node
@@ -1716,6 +1938,10 @@ tool_families:
         authority: EXTERNAL_IMPORTER_REQUIRES_PORT_OR_REVIEW
         records_to: q3.lean.aristotle/aristotle_db/knowledge.db
         failure_mode: Scripts and lens inputs live outside the canonical repo and contain a Mac-specific database path.
+        team_runtime_note: >-
+          Under Team Runtime, canonical direct invocation is disabled. This remains a HUMAN-only
+          external route; Codex does not execute the machine-local writers. A reviewed import packet
+          may enter evidence intake, while any knowledge.db write retains its existing exact database route.
         last_verified: 2026-08-10
 
   observability_and_graphs:
@@ -1765,6 +1991,10 @@ tool_families:
         approval: EXACT_OUTPUT_SCOPE
         authority: GENERATED_FILE_CENSUS
         records_to: docs/TOOLS.md
+        team_runtime_note: >-
+          Under Team Runtime, canonical direct invocation is disabled. Run this generator only in a
+          pinned isolated checkout and return docs/TOOLS.md as a reviewed source candidate for
+          workflow-team-integrate-candidate.
         last_verified: 2026-08-10
 
   proof_and_source:
@@ -1800,6 +2030,11 @@ tool_families:
         approval: EXACT_SUBMISSION_PAYLOAD
         authority: DRAFT_GENERATOR_NOT_PROOF_AUTHORITY
         records_to: aristotle input, project id, downloaded result, validation closeout
+        team_runtime_note: >-
+          Under Team Runtime, canonical direct invocation is disabled for file outputs. The existing
+          network submission remains the named native effect aristotle-submit: exact intent,
+          observation and reservation precede one registered skill submission from isolated input;
+          provider outputs remain separate evidence before intake or reviewed source integration.
         last_verified: 2026-08-09
 
       - id: paper-ingest
@@ -1814,6 +2049,11 @@ tool_families:
         approval: EXACT_SOURCE_AND_DESTINATION
         authority: SOURCE_ACQUISITION_NOT_PROOF
         records_to: docs/routeB_bus/litreview
+        team_runtime_note: >-
+          Under Team Runtime, canonical direct invocation is disabled for file outputs. The existing
+          full source-acquisition command remains the named native effect paper-ingest, with its
+          source, script, PDF, bibliography, registry and Zotero identities pinned before the exact
+          isolated run; unresolved outcomes are reconciled rather than blindly rerun.
         last_verified: 2026-08-09
 
   external_review_and_transport:
@@ -1863,6 +2103,10 @@ tool_families:
         approval: EXACT_INPUT_AND_DESTINATION
         authority: TRANSPORT_INGEST_NOT_MATHEMATICAL_AUTHORITY
         records_to: task-local repository artifacts
+        team_runtime_note: >-
+          Under Team Runtime, canonical direct invocation is disabled. Run packet ingestion only in
+          an isolated checkout and preserve the exact reply, bus, mirror, queue and metadata candidate
+          bytes for reviewed integration; recompute SPINE_VIEW through its registered owner route.
         last_verified: 2026-08-09
 
   generator_and_skill_discovery:
@@ -1885,6 +2129,10 @@ tool_families:
         approval: EXACT_OUTPUT_SCOPE
         authority: SCRIPT_SPECIFIC_NEVER_INFERRED_FROM_FAMILY
         records_to: selected task-local output
+        team_runtime_note: >-
+          Under Team Runtime, canonical direct invocation is disabled. Inspect the exact selected
+          script and destinations, run the local producer in isolation, and integrate only named
+          reviewed outputs; family membership never authorizes an unclassified network or database writer.
         last_verified: 2026-08-09
 
   radical_window_probe:

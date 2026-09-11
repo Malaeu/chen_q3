@@ -3,15 +3,21 @@ from __future__ import annotations
 import fcntl
 import hashlib
 import json
+import os
+import shutil
+import signal
+import stat
 import subprocess
 import sys
 import tempfile
+import time
 import unittest
 from contextlib import contextmanager
 from pathlib import Path
 from unittest import mock
 
 from orchestrator import workflow_runtime
+from orchestrator import team_records
 from orchestrator.benchmarks import control_v10_benchmark as benchmark
 from orchestrator.startup_runtime import StartupSnapshot
 
@@ -412,6 +418,7 @@ print(json.dumps({{'schema':'q3_search_evidence_write.v1','status':'RECORDED','o
             ]
             with (
                 mock.patch.object(workflow_runtime.sys, "argv", argv),
+                mock.patch.object(workflow_runtime, "_team_enabled", return_value=False),
                 mock.patch.object(
                     workflow_runtime, "live_plan_v10", return_value=compiled
                 ) as startup,
@@ -1221,7 +1228,7 @@ print(json.dumps({{'schema':'q3_search_evidence_write.v1','status':'RECORDED','o
             epoch.open = True
 
             def mutate_goal(
-                _repo: Path, _command: list[str], *, label: str
+                _repo: Path, _command: list[str], *, label: str, writer_epoch=None
             ) -> dict[str, object]:
                 paths["goal"].write_bytes(paths["goal"].read_bytes() + b"\n")
                 return command_stage(label)
@@ -1374,7 +1381,8 @@ print(json.dumps({{'schema':'q3_search_evidence_write.v1','status':'RECORDED','o
             next_phase = dict(PHASE_KEY, front_id="NEXT")
             labels: list[str] = []
 
-            def stage(_repo: Path, _command: list[str], *, label: str) -> dict[str, object]:
+            def stage(_repo: Path, _command: list[str], *, label: str, writer_epoch=None) -> dict[str, object]:
+                self.assertIs(writer_epoch, epoch)
                 labels.append(label)
                 if label == "phase-close":
                     output = Path(_command[_command.index("--json-out") + 1])
@@ -1496,7 +1504,7 @@ print(json.dumps({{'schema':'q3_search_evidence_write.v1','status':'RECORDED','o
             labels: list[str] = []
 
             def first_stage(
-                _repo: Path, _command: list[str], *, label: str
+                _repo: Path, _command: list[str], *, label: str, writer_epoch=None
             ) -> dict[str, object]:
                 labels.append(label)
                 return command_stage(
@@ -1534,7 +1542,7 @@ print(json.dumps({{'schema':'q3_search_evidence_write.v1','status':'RECORDED','o
                 return "a" * 40 if args == ("rev-parse", "HEAD") else "b" * 40
 
             def retry_stage(
-                _repo: Path, command: list[str], *, label: str
+                _repo: Path, command: list[str], *, label: str, writer_epoch=None
             ) -> dict[str, object]:
                 labels.append(label)
                 output = Path(command[command.index("--json-out") + 1])
@@ -1714,7 +1722,7 @@ print(json.dumps({{'schema':'q3_search_evidence_write.v1','status':'RECORDED','o
             next_phase = dict(PHASE_KEY, front_id="NEXT")
 
             def stage(
-                _repo: Path, command: list[str], *, label: str
+                _repo: Path, command: list[str], *, label: str, writer_epoch=None
             ) -> dict[str, object]:
                 if label == "phase-close":
                     output_path = Path(command[command.index("--json-out") + 1])
@@ -2315,7 +2323,7 @@ print(json.dumps({{'schema':'q3_search_evidence_write.v1','status':'RECORDED','o
         self.assertIn(proc.returncode, {0, 2}, proc.stderr)
         self.assertNotIn("ModuleNotFoundError", proc.stderr)
         payload = json.loads(proc.stdout)
-        self.assertEqual(payload["schema"], "q3_workflow_plan.v2")
+        self.assertEqual(payload["schema"], workflow_runtime.TEAM_PLAN_SCHEMA)
         self.assertEqual(payload["mode"], "PRODUCTION_V10")
         self.assertEqual(
             payload["logical_plan"]["proof_loop"]["schema"],
@@ -2370,7 +2378,7 @@ print(json.dumps({{'schema':'q3_search_evidence_write.v1','status':'RECORDED','o
         )
         self.assertIn(proc.returncode, {0, 2}, proc.stderr)
         payload = json.loads(proc.stdout)
-        self.assertEqual(payload["schema"], "q3_workflow_plan.v2")
+        self.assertEqual(payload["schema"], workflow_runtime.TEAM_PLAN_SCHEMA)
         self.assertEqual(payload["mode"], "PRODUCTION_V10")
         timing = benchmark._parse_production_startup_timing(proc.stderr)
         self.assertEqual(timing["snapshot_constructor_calls"], 1)
@@ -2646,6 +2654,7 @@ print(json.dumps({{'schema':'q3_search_evidence_write.v1','status':'RECORDED','o
         }
         epoch = _FakeWriterEpoch()
         with (
+            mock.patch.object(workflow_runtime, "_team_enabled", return_value=False),
             mock.patch.object(
                 workflow_runtime,
                 "_execution_writer_epoch",
@@ -2715,12 +2724,14 @@ print(json.dumps({{'schema':'q3_search_evidence_write.v1','status':'RECORDED','o
             events.append("identity")
             return None
 
-        def writer(_repo, _command, *, label):
+        def writer(_repo, _command, *, label, writer_epoch=None):
+            self.assertIs(writer_epoch, epoch)
             self.assertTrue(epoch.open)
             events.append(label)
             return {"label": label, "exit": 0, "output_tail": "ok"}
 
         with (
+            mock.patch.object(workflow_runtime, "_team_enabled", return_value=False),
             mock.patch.object(
                 workflow_runtime,
                 "_execution_writer_epoch",
@@ -2779,6 +2790,7 @@ print(json.dumps({{'schema':'q3_search_evidence_write.v1','status':'RECORDED','o
         )
         epoch = _FakeWriterEpoch()
         with (
+            mock.patch.object(workflow_runtime, "_team_enabled", return_value=False),
             mock.patch.object(
                 workflow_runtime,
                 "_execution_writer_epoch",
@@ -2948,7 +2960,7 @@ print(json.dumps({{'schema':'q3_search_evidence_write.v1','status':'RECORDED','o
             mock.patch.object(
                 workflow_runtime,
                 "command_receipt",
-                side_effect=lambda _repo, _command, label: ok(label),
+                side_effect=lambda _repo, _command, label, writer_epoch=None: ok(label),
             ) as command,
         ):
             result = workflow_runtime.execute_close_node(
@@ -3295,7 +3307,7 @@ print(json.dumps({{'schema':'q3_search_evidence_write.v1','status':'RECORDED','o
                 mock.patch.object(
                     workflow_runtime,
                     "command_receipt",
-                    side_effect=lambda _repo, _command, label: ok(label),
+                    side_effect=lambda _repo, _command, label, writer_epoch=None: ok(label),
                 ),
                 mock.patch.object(
                     workflow_runtime,
@@ -3353,7 +3365,7 @@ print(json.dumps({{'schema':'q3_search_evidence_write.v1','status':'RECORDED','o
                     mock.patch.object(
                         workflow_runtime,
                         "command_receipt",
-                        side_effect=lambda _repo, _command, label: {
+                        side_effect=lambda _repo, _command, label, writer_epoch=None: {
                             "label": label, "exit": 0, "output_tail": "ok"
                         },
                     ) as writer,
@@ -5225,6 +5237,3565 @@ class ResumeCheckpointTests(unittest.TestCase):
                     self.save(self.document(2 if initial else 1, previous), previous)
                 self.assertEqual(self.history.read_bytes(), history)
                 self.assertEqual(self.current.read_bytes() if initial else None, current)
+
+
+class TeamRuntimeTests(unittest.TestCase):
+    """Recovery, cross-installation fencing and first-step acceptance fixtures."""
+
+    def setUp(self):
+        self.fixture = ResumeCheckpointTests()
+        self.fixture.setUp()
+        self.addCleanup(self.fixture.doCleanups)
+        self.repo = self.fixture.repo
+        (self.repo / workflow_runtime.TOOLS).write_bytes(
+            (Path(__file__).resolve().parents[2] / workflow_runtime.TOOLS).read_bytes())
+        self.registered = mock.patch.object(workflow_runtime, "_team_registered")
+        self.registered.start()
+        self.addCleanup(self.registered.stop)
+        import os
+        self.actor = mock.patch.dict(os.environ, {"CODEX_THREAD_ID": "01a084f4-7498-7021-bac2-91d184d58dc7", "Q3_OWNER_EPOCH": "1"})
+        self.actor.start()
+        self.addCleanup(self.actor.stop)
+        self.identity = workflow_runtime.team_local_init(self.repo)["installation_ref"]
+        self.source = self.repo / "docs/source.md"
+        self.source.write_bytes(b"exact source\n")
+        (self.repo / workflow_runtime.TEAM_ISSUES).write_bytes(b"# Fixture issues\n")
+        (self.repo / workflow_runtime.TEAM_ASSIGNMENTS).write_bytes(b"# Fixture assignments\n")
+
+    def data(self):
+        data, _ = workflow_runtime._resume_document(self.fixture.document())
+        request = {"kind": "REQUEST", "id": "REQ-EXISTING", "sha256": "a" * 64}
+        verdict = {"kind": "VERDICT", "id": "VERDICT-EXISTING", "sha256": "b" * 64}
+        data.update(schema="q3_resume.v2", source_manifest={"docs/source.md": workflow_runtime._resume_digest(self.source.read_bytes())},
+                    ownership={"installation_ref": self.identity, "epoch": 1, "state": "ACTIVE", "transfer": None})
+        data["pins"].update(phase_key=PHASE_KEY, request={"path": "docs/request.txt", "commit": "a" * 40, "blob": "b" * 40,
+                                                       "sha256": "a" * 64, "boundary_id": "BOUNDARY", "conversation_id": "chat"})
+        data["stages"] = {name: {"subject": dict(request if index < 3 else verdict), "state": "NOT_STARTED", "evidence": {},
+                                 "source_sha256": workflow_runtime._resume_digest(workflow_runtime._team_json(data["source_manifest"])), "checked_by": None}
+                          for index, name in enumerate(workflow_runtime.TEAM_STAGES)}
+        data["operation"].update(subject=request, command="dispatch-proshka", inputs=data["source_manifest"])
+        return data
+
+    def document(self, data):
+        _, body = workflow_runtime._resume_document(self.fixture.document())
+        return ("---\n" + workflow_runtime.yaml.safe_dump(data, sort_keys=False) + "---\n" + body).encode()
+
+    def install(self, data):
+        raw = self.document(data)
+        self.fixture.current.write_bytes(raw)
+        _, intent = workflow_runtime._resume_history_record("intent", data["revision"], raw)
+        self.fixture.history.write_bytes(self.fixture.history.read_bytes() + intent)
+        return raw
+
+    def local(self, **fields):
+        with workflow_runtime._execution_writer_epoch(self.repo) as epoch:
+            before = workflow_runtime._team_local(self.repo)
+            workflow_runtime._team_local_save(self.repo, before, {**before, **fields}, epoch)
+
+    def native_report_fixture(self, *, role="independent-checker", subject=None, state="COMPLETED"):
+        """Real registry/files with explicitly simulated native provider observations."""
+        env = {**workflow_runtime.os.environ, "GIT_AUTHOR_NAME": "Fixture", "GIT_COMMITTER_NAME": "Fixture",
+               "GIT_AUTHOR_EMAIL": "fixture@example.invalid", "GIT_COMMITTER_EMAIL": "fixture@example.invalid"}
+        subprocess.run(["git", "add", "docs/source.md"], cwd=self.repo, env=env, check=True)
+        subprocess.run(["git", "commit", "-qm", "Fixture source"], cwd=self.repo, env=env, check=True)
+        head = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=self.repo).decode().strip()
+        data = self.data()
+        source = {"locator": "docs/source.md", "sha256": data["source_manifest"]["docs/source.md"]}
+        report = TeamRecordsTests.report()
+        report.update(reporter_task="native-worker", reporter_host="local", base_commit=head,
+                      input_paths=[{"path": source["locator"], "sha256": source["sha256"]}],
+                      evidence=[source], expected_rule_source=source)
+        assignment = TeamRecordsTests.assignment(assignment_id=report["assignment_id"])
+        assignment.update(owner_task=data["owner_thread_id"], owner_host="local", owner_epoch=1,
+                          owner_installation_ref=self.identity, assignee=report["reporter_task"],
+                          role=role, subject=subject or report["subject_id"], base_commit=head,
+                          input_hashes=report["input_paths"])
+        data["operation"].update(id="launch-fixture", command="agent-launch",
+            subject={"kind": "ASSIGNMENT", "id": assignment["assignment_id"],
+                     "sha256": team_records._assignment_binding_sha(assignment)})
+        self.install(data)
+        self.fixture.candidate.write_bytes(team_records.canonical_json(assignment))
+        assignment_raw = (self.repo / workflow_runtime.TEAM_ASSIGNMENTS).read_bytes()
+        workflow_runtime.team_record(self.repo, kind="assignment", candidate=self.fixture.candidate,
+            expected_sha256=workflow_runtime._resume_digest(assignment_raw))
+        self.local(operations={"launch-fixture": {"state": "RESERVED", "actor": data["owner_thread_id"], "epoch": 1}})
+        context = TeamRecordsTests.provenance_context(assignment, report=report, result_state=state)
+        observations = context.observations[assignment["assignment_id"]]
+        for observation in observations:
+            phase = observation["phase"]
+            observation["operation_id"] = "launch-fixture" if phase == "LAUNCH" else "result-fixture"
+            for prefix, content in (("output", b"fixture launch\n" if phase == "LAUNCH" else team_records.canonical_json(report)),
+                                    ("provider_receipt", b'{"simulated_provider":true}\n')):
+                locator = "docs/" + prefix + "-" + phase + ".json"
+                (self.repo / locator).write_bytes(content)
+                observation[prefix + "_locator"] = locator
+                observation[prefix + "_sha256"] = workflow_runtime._resume_digest(content)
+            observation["evidence_sha256"] = workflow_runtime._resume_digest(team_records.canonical_json([
+                {"locator": observation[prefix + "_locator"], "sha256": observation[prefix + "_sha256"]}
+                for prefix in ("output", "provider_receipt")]))
+            self.fixture.candidate.write_bytes(team_records.canonical_json(observation))
+            workflow_runtime.team_observe_native(self.repo, candidate=self.fixture.candidate,
+                expected_sha256=workflow_runtime._resume_digest(self.fixture.candidate.read_bytes()))
+            self.assertEqual(workflow_runtime.team_observe_native(self.repo, candidate=self.fixture.candidate,
+                expected_sha256=workflow_runtime._resume_digest(self.fixture.candidate.read_bytes()))["status"], "NOOP")
+        return data, report, assignment, observations
+
+    def test_report_intake_requires_native_output_and_recovers_lost_receipt(self):
+        with mock.patch.object(workflow_runtime, "_team_enabled", return_value=True):
+            _, report, _, _ = self.native_report_fixture(state="RUNNING")
+            raw = (self.repo / workflow_runtime.TEAM_ISSUES).read_bytes()
+            expected = workflow_runtime._resume_digest(raw)
+            forged = {**report, "actual_behavior": "unobserved different result"}
+            self.fixture.candidate.write_bytes(team_records.canonical_json(forged))
+            with self.assertRaisesRegex(team_records.TeamRecordError, "NATIVE_OBSERVATION_MISSING"):
+                workflow_runtime.team_record(self.repo, kind="report", candidate=self.fixture.candidate, expected_sha256=expected)
+            self.assertEqual((self.repo / workflow_runtime.TEAM_ISSUES).read_bytes(), raw)
+            self.fixture.candidate.write_bytes(team_records.canonical_json(report))
+            real = workflow_runtime._resume_cas_bytes
+            def crash_after_event(repo, relative, before, after, epoch):
+                real(repo, relative, before, after, epoch)
+                if relative == workflow_runtime.TEAM_ISSUES:
+                    raise RuntimeError("fixture receipt loss")
+            with mock.patch.object(workflow_runtime, "_resume_cas_bytes", side_effect=crash_after_event):
+                with self.assertRaisesRegex(RuntimeError, "fixture receipt loss"):
+                    workflow_runtime.team_record(self.repo, kind="report", candidate=self.fixture.candidate, expected_sha256=expected)
+            receipt = workflow_runtime.team_record(self.repo, kind="report", candidate=self.fixture.candidate, expected_sha256=expected)
+            self.assertEqual(receipt["status"], "NOOP")
+            self.assertTrue((self.repo / receipt["receipt_path"]).is_file())
+            self.assertFalse(receipt["mathematical_acceptance"])
+
+    def test_independent_stage_needs_exact_completed_assignment(self):
+        with mock.patch.object(workflow_runtime, "_team_enabled", return_value=True):
+            data, _, _, observations = self.native_report_fixture(subject="VERDICT-EXISTING", state="RUNNING")
+            after = json.loads(json.dumps(data))
+            result = observations[1]
+            evidence = {result["output_locator"]: result["output_sha256"]}
+            for name in ("receipt", "independent_review"):
+                after["stages"][name].update(state="DONE", evidence=evidence, checked_by="native-worker")
+            with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "INDEPENDENT_COMPLETED_ASSIGNMENT"):
+                workflow_runtime._team_owner_transition(self.repo, data, after)
+            completed = {**result, "state": "COMPLETED", "operation_id": "result-completed"}
+            self.fixture.candidate.write_bytes(team_records.canonical_json(completed))
+            workflow_runtime.team_observe_native(self.repo, candidate=self.fixture.candidate,
+                expected_sha256=workflow_runtime._resume_digest(self.fixture.candidate.read_bytes()))
+            # A repeated output's completed observation supersedes its interim state.
+            workflow_runtime._team_owner_transition(self.repo, data, after)
+            (self.repo / result["output_locator"]).write_text("changed result")
+            with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "TEAM_SOURCE_CHANGED"):
+                workflow_runtime._team_owner_transition(self.repo, data, after)
+
+    def integration_fixture(self, *, intake=False, verdict="SOURCE_INTEGRATION_APPROVED",
+                             include_untracked_destination=False, include_executable=False):
+        """Real Git/files/reservation, explicitly simulated native provider and engine."""
+        import base64
+        env = {**workflow_runtime.os.environ, "GIT_AUTHOR_NAME": "Fixture", "GIT_COMMITTER_NAME": "Fixture",
+               "GIT_AUTHOR_EMAIL": "fixture@example.invalid", "GIT_COMMITTER_EMAIL": "fixture@example.invalid"}
+        (self.repo / "docs/target.md").write_bytes(b"old target\n")
+        baseline_paths = ["docs/source.md", "docs/target.md"]
+        candidate_paths = list(baseline_paths)
+        if include_executable:
+            executable = self.repo / "docs/executable.sh"
+            executable.write_bytes(b"#!/bin/sh\necho old\n")
+            executable.chmod(0o755)
+            baseline_paths.append("docs/executable.sh")
+            candidate_paths.append("docs/executable.sh")
+        if include_untracked_destination:
+            untracked = self.repo / "docs/new-target.md"
+            untracked.write_bytes(b"untracked destination collision\n")
+            candidate_paths.append("docs/new-target.md")
+
+        def git(*args, input=None, index=None):
+            result = subprocess.run(["git", *args], cwd=self.repo, env={**env, **({"GIT_INDEX_FILE": index} if index else {})},
+                                    input=input, capture_output=True, check=True)
+            return result.stdout.decode().strip()
+        git("add", *baseline_paths)
+        git("commit", "-qm", "Integration fixture baseline")
+        base = git("rev-parse", "HEAD")
+        data = self.data()
+        assignments = []
+        for role, assignee in (("implementation", "producer"), ("independent-checker", "checker")):
+            assignment = TeamRecordsTests.assignment(assignment_id="integration-" + assignee)
+            assignment.update(owner_task=data["owner_thread_id"], owner_host="local", owner_epoch=1,
+                owner_installation_ref=self.identity, assignee=assignee, role=role, base_commit=base,
+                subject="bounded integration", input_hashes=[{"path": "docs/source.md", "sha256": data["source_manifest"]["docs/source.md"]}],
+                permitted_paths=sorted(candidate_paths))
+            registry = self.repo / workflow_runtime.TEAM_ASSIGNMENTS
+            updated, _ = team_records.prepare_assignment(registry.read_bytes(), assignment,
+                workflow_runtime._resume_digest(registry.read_bytes()))
+            registry.write_bytes(updated)
+            assignments.append(assignment)
+        producer, checker = assignments
+        if intake:
+            content = b'Raw first provider response, not yet accepted.\n'
+            digest = workflow_runtime._resume_digest(content)
+            files = [{"path": "docs/session_protocols/team-evidence-" + digest + ".bin", "before_sha256": "ABSENT",
+                      "sha256": digest, "content_base64": base64.b64encode(content).decode()}]
+            commit = None
+        else:
+            index = str(self.repo / "candidate.index")
+            git("read-tree", base, index=index)
+            files = []
+            for path in producer["permitted_paths"]:
+                before = None if (include_untracked_destination and path == "docs/new-target.md") else (self.repo / path).read_bytes()
+                after = b"checked replacement for " + path.encode() + b"\n"
+                blob = git("hash-object", "-w", "--stdin", input=after)
+                mode = "100755" if (include_executable and path == "docs/executable.sh") else "100644"
+                update_index = ["update-index"]
+                if before is None:
+                    update_index.append("--add")
+                git(*update_index, "--cacheinfo", mode + "," + blob + "," + path, index=index)
+                files.append({"path": path, "source_path": path, "before_sha256": workflow_runtime._resume_digest(before),
+                              "sha256": workflow_runtime._resume_digest(after)})
+            commit = git("commit-tree", git("write-tree", index=index), "-p", base, input=b"Isolated fixture candidate\n")
+        manifest = {"schema": "q3_team_integration.v1", "mode": "EVIDENCE_INTAKE" if intake else "REVIEWED_SOURCE",
+                    "operation_id": "integration-fixture", "owner_task": data["owner_thread_id"],
+                    "installation_ref": self.identity, "epoch": 1, "expected_head": base,
+                    "implementer_assignment": producer["assignment_id"],
+                    "assignment_sha256": workflow_runtime._resume_digest(team_records.canonical_json(team_records._assignment_immutable_view(producer))),
+                    "checker_assignment": None if intake else checker["assignment_id"], "candidate_commit": commit, "files": files}
+        data["operation"].update(id=manifest["operation_id"], command="workflow-team-integrate-candidate",
+            subject={"kind": "REPAIR", "id": manifest["operation_id"], "sha256": workflow_runtime._resume_digest(team_records.canonical_json(manifest))})
+        raw = self.install(data)
+        operations = {}
+        if not intake:
+            artifact = {"schema": "q3_team_integration_review.v1", "manifest_sha256": data["operation"]["subject"]["sha256"],
+                        "base_commit": base, "candidate_commit": commit,
+                        "files": [{"path": row["path"], "sha256": row["sha256"]} for row in files],
+                        "implementer_assignment": producer["assignment_id"], "checker_assignment": checker["assignment_id"], "verdict": verdict}
+            observations = TeamRecordsTests.provenance_context(checker).observations[checker["assignment_id"]]
+            for observation in observations:
+                phase = observation["phase"]
+                for prefix, content in (("output", b"simulated launch\n" if phase == "LAUNCH" else team_records.canonical_json(artifact)),
+                                        ("provider_receipt", b'{"simulated_provider":true}\n')):
+                    path = "docs/integration-" + prefix + "-" + phase + ".json"
+                    (self.repo / path).write_bytes(content)
+                    observation[prefix + "_locator"] = path
+                    observation[prefix + "_sha256"] = workflow_runtime._resume_digest(content)
+                observation["evidence_sha256"] = workflow_runtime._resume_digest(team_records.canonical_json([
+                    {"locator": observation[prefix + "_locator"], "sha256": observation[prefix + "_sha256"]}
+                    for prefix in ("output", "provider_receipt")]))
+                operations[observation["operation_id"]] = {"schema": "q3_team_assignment_receipt.v1", "state": "CONFIRMED", "observation": observation}
+        operations[manifest["operation_id"]] = {"state": "OBSERVED", "actor": data["owner_thread_id"], "epoch": 1,
+            "checkpoint_sha256": workflow_runtime._resume_digest(raw), "remote_ownership": data["ownership"],
+            "remote_thread": data["owner_thread_id"], "local_head": base}
+        self.local(operations=operations)
+        workflow_runtime.team_reserve_effect(self.repo, operation_id=manifest["operation_id"])
+        self.fixture.candidate.write_bytes(team_records.canonical_json(manifest))
+        for name, value in (("_team_enabled", True), ("_team_writer_inventory", {}),
+                            ("_team_integration_engine", {"fixture_engine": True, "commit": base})):
+            patcher = mock.patch.object(workflow_runtime, name, return_value=value)
+            patcher.start()
+            self.addCleanup(patcher.stop)
+        return manifest
+
+    def integrate(self):
+        return workflow_runtime.team_integrate_candidate(self.repo, candidate=self.fixture.candidate)
+
+    def test_integration_copies_exact_bytes_preserves_foreign_and_replays(self):
+        manifest = self.integration_fixture()
+        foreign = self.repo / "docs/foreign.md"
+        foreign.write_bytes(b"another owner's work\n")
+        result = self.integrate()
+        self.assertEqual(result["status"], "INTEGRATED")
+        self.assertFalse(result["mathematical_acceptance"])
+        for row in manifest["files"]:
+            self.assertEqual(workflow_runtime._resume_digest((self.repo / row["path"]).read_bytes()), row["sha256"])
+        local = (self.repo / ".git" / workflow_runtime.TEAM_LOCAL).read_bytes()
+        self.assertEqual(self.integrate()["status"], "NOOP")
+        self.assertEqual((self.repo / ".git" / workflow_runtime.TEAM_LOCAL).read_bytes(), local)
+        self.assertEqual(foreign.read_bytes(), b"another owner's work\n")
+        self.assertEqual(workflow_runtime._team_git(self.repo, "rev-parse", "HEAD").decode().strip(), manifest["expected_head"])
+        self.source.write_bytes(b"exact source\n")
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "COMPLETED_DESTINATION_CHANGED"):
+            self.integrate()
+        self.assertEqual(self.source.read_bytes(), b"exact source\n")
+
+    def test_integration_first_raw_evidence_needs_no_git_candidate_or_native_result(self):
+        manifest = self.integration_fixture(intake=True)
+        self.assertIsNone(manifest["candidate_commit"])
+        self.assertFalse(any(item.get("schema") == "q3_team_assignment_receipt.v1"
+                             for item in workflow_runtime._team_local(self.repo)["operations"].values()))
+        result = self.integrate()
+        self.assertEqual(result["evidence_status"], "UNADJUDICATED")
+        self.assertFalse(result["mathematical_acceptance"])
+        self.assertEqual(result["status"], "INTEGRATED")
+        self.assertEqual(self.integrate()["status"], "NOOP")
+
+    def test_integration_completed_negative_review_does_not_approve(self):
+        manifest = self.integration_fixture(verdict="SOURCE_INTEGRATION_REJECTED")
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "NOT_EXACTLY_APPROVED"):
+            self.integrate()
+        self.assertEqual(workflow_runtime._resume_digest(self.source.read_bytes()), manifest["files"][0]["before_sha256"])
+        self.assertNotIn("integration", workflow_runtime._team_local_operation(self.repo, manifest["operation_id"]))
+
+    def test_integration_changed_preimage_review_owner_and_epoch_refused_before_write(self):
+        manifest = self.integration_fixture()
+        target = self.repo / manifest["files"][1]["path"]
+        original = target.read_bytes()
+        for label, patcher in (("owner", mock.patch.dict(workflow_runtime.os.environ, {"CODEX_THREAD_ID": "foreign"})),
+                               ("epoch", mock.patch.dict(workflow_runtime.os.environ, {"Q3_OWNER_EPOCH": "2"}))):
+            with self.subTest(label=label), patcher, self.assertRaises(workflow_runtime.WorkflowRuntimeError):
+                self.integrate()
+            self.assertEqual(target.read_bytes(), original)
+        review = self.repo / "docs/integration-output-RESULT.json"
+        saved = review.read_bytes()
+        review.write_bytes(saved + b" ")
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "EVIDENCE_HASH_MISMATCH"):
+            self.integrate()
+        review.write_bytes(saved)
+        target.write_bytes(b"foreign edit\n")
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "PREIMAGE_CHANGED"):
+            self.integrate()
+        self.assertEqual(target.read_bytes(), b"foreign edit\n")
+        self.assertEqual(workflow_runtime._resume_digest(self.source.read_bytes()), manifest["files"][0]["before_sha256"])
+
+    def test_integration_crash_keeps_all_writers_held_before_mutable_control(self):
+        manifest = self.integration_fixture()
+        real = workflow_runtime._resume_cas_bytes
+        def crash(repo, relative, before, after, epoch, **kwargs):
+            real(repo, relative, before, after, epoch, **kwargs)
+            raise RuntimeError("simulated inter-file crash")
+        with mock.patch.object(workflow_runtime, "_resume_cas_bytes", side_effect=crash):
+            with self.assertRaisesRegex(RuntimeError, "inter-file crash"):
+                self.integrate()
+        local = workflow_runtime._team_local_operation(self.repo, manifest["operation_id"])
+        self.assertEqual(local["integration"]["manifest"], manifest)
+        self.assertEqual(local["state"], "RESERVED")
+        (self.repo / "docs/CODEX_CONTROL.md").write_bytes(b"mixed invalid control\n")
+        self.registered.stop()
+        with mock.patch.object(workflow_runtime, "_team_enabled", side_effect=AssertionError("control read before pending guard")):
+            for command in workflow_runtime.TEAM_FENCED_CALLS | workflow_runtime.TEAM_NATIVE_EFFECTS:
+                with self.subTest(command=command), self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "INTEGRATION_PENDING"):
+                    workflow_runtime.team_guard(self.repo, command=command, paths=[])
+            with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "INTEGRATION_PENDING"):
+                workflow_runtime.team_observe_remote(self.repo, operation_id="another-action")
+            with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "INTEGRATION_PENDING"):
+                workflow_runtime.team_confirm_effect(self.repo, operation_id=manifest["operation_id"],
+                    candidate=self.fixture.candidate, expected_sha256="a" * 64)
+            with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "INTEGRATION_PENDING"):
+                self.fixture.save(self.document(self.data()))
+        self.fixture.candidate.write_bytes(team_records.canonical_json(manifest))
+        self.assertEqual(self.integrate()["status"], "INTEGRATED")
+        workflow_runtime._team_pending_guard(self.repo)
+
+    def test_integration_crash_before_write_and_third_state_drift(self):
+        manifest = self.integration_fixture()
+        with mock.patch.object(workflow_runtime, "_resume_cas_bytes", side_effect=RuntimeError("before copy")):
+            with self.assertRaisesRegex(RuntimeError, "before copy"):
+                self.integrate()
+        self.source.write_bytes(b"unexpected third state\n")
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "PREIMAGE_CHANGED"):
+            self.integrate()
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "INTEGRATION_PENDING"):
+            workflow_runtime._team_pending_guard(self.repo)
+        self.assertEqual(workflow_runtime._resume_digest((self.repo / manifest["files"][1]["path"]).read_bytes()), manifest["files"][1]["before_sha256"])
+
+    def test_reviewed_source_rejects_new_untracked_destination_collision(self):
+        manifest = self.integration_fixture(include_untracked_destination=True)
+        collision = self.repo / "docs/new-target.md"
+        before = collision.read_bytes()
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "PREIMAGE_CHANGED"):
+            self.integrate()
+        self.assertEqual(collision.read_bytes(), before)
+        self.assertNotIn("integration", workflow_runtime._team_local_operation(self.repo, manifest["operation_id"]))
+
+    def test_reviewed_source_preserves_executable_git_source_mode(self):
+        manifest = self.integration_fixture(include_executable=True)
+        result = self.integrate()
+        self.assertEqual(result["status"], "INTEGRATED")
+        executable = self.repo / "docs/executable.sh"
+        self.assertEqual(stat.S_IMODE(executable.stat().st_mode), 0o755)
+        row = next(item for item in manifest["files"] if item["path"] == "docs/executable.sh")
+        _, mode = workflow_runtime._team_integration_blob(self.repo, manifest["candidate_commit"], row["path"])
+        self.assertEqual(mode, 0o755)
+
+    def test_integration_rejects_changed_assignment_immutable_input_and_scope(self):
+        self.setUp()
+        manifest = self.integration_fixture()
+        registry = self.repo / workflow_runtime.TEAM_ASSIGNMENTS
+        raw = registry.read_bytes()
+        parsed = team_records.read_registry(raw, "assignments")
+        current = parsed["assignments"][manifest["implementer_assignment"]]
+        for changes in (
+            {"input_hashes": [{"path": "docs/changed-input.md", "sha256": "c" * 64}]},
+            {"permitted_paths": ["docs/source.md"]},
+        ):
+            with self.subTest(changes=changes):
+                updated = dict(current["assignment"])
+                updated.update(changes)
+                updated.update(
+                    operation="UPDATE",
+                    previous_assignment_event_sha256=current["last_event_sha256"],
+                    previous_assignment_sha256=team_records._assignment_state_sha(current["assignment"]),
+                )
+                with self.assertRaisesRegex(team_records.TeamRecordError, "ASSIGNMENT_IMMUTABLE_FIELD"):
+                    team_records.prepare_assignment(
+                        raw, updated, workflow_runtime._resume_digest(raw)
+                    )
+
+        self.assertEqual(manifest["mode"], "REVIEWED_SOURCE")
+
+    def test_pending_integration_blocks_real_public_writer_entrypoints(self):
+        manifest = self.integration_fixture()
+        with mock.patch.object(workflow_runtime, "_resume_cas_bytes", side_effect=RuntimeError("before copy")):
+            with self.assertRaisesRegex(RuntimeError, "before copy"):
+                self.integrate()
+
+        self.registered.stop()
+        for command in workflow_runtime.TEAM_FENCED_CALLS | workflow_runtime.TEAM_NATIVE_EFFECTS:
+            with self.subTest(command=command), self.assertRaisesRegex(
+                workflow_runtime.WorkflowRuntimeError, "INTEGRATION_PENDING"
+            ):
+                workflow_runtime.team_guard(self.repo, command=command, paths=[])
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "INTEGRATION_PENDING"):
+            workflow_runtime.team_local_init(self.repo)
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "INTEGRATION_PENDING"):
+            workflow_runtime.team_observe_remote(self.repo, operation_id="other-action")
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "INTEGRATION_PENDING"):
+            workflow_runtime.team_reserve_effect(self.repo, operation_id="other-action")
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "INTEGRATION_PENDING"):
+            workflow_runtime.team_confirm_effect(
+                self.repo, operation_id=manifest["operation_id"],
+                candidate=self.fixture.candidate, expected_sha256="a" * 64,
+            )
+
+    def _fresh_process_integration_fixture(self):
+        """Build a real committed engine and an independent --root destination."""
+        root_holder = tempfile.TemporaryDirectory(prefix="q3-team-fresh-integration-")
+        self.addCleanup(root_holder.cleanup)
+        root = Path(root_holder.name)
+        source_root = Path(__file__).resolve().parents[2]
+        git_env = {
+            **os.environ,
+            "GIT_AUTHOR_NAME": "Fixture",
+            "GIT_COMMITTER_NAME": "Fixture",
+            "GIT_AUTHOR_EMAIL": "fixture@example.invalid",
+            "GIT_COMMITTER_EMAIL": "fixture@example.invalid",
+        }
+
+        def git(repo, *args, input=None, index=None):
+            env = {**git_env, **({"GIT_INDEX_FILE": str(index)} if index else {})}
+            result = subprocess.run(
+                ["git", *args], cwd=repo, env=env, input=input,
+                capture_output=True, check=True,
+            )
+            return result.stdout.decode().strip()
+
+        engine = root / "engine"
+        engine_sources = tuple(
+            path.relative_to(source_root).as_posix()
+            for path in sorted((source_root / "orchestrator").glob("*.py"))
+        ) + ("scripts/q3_docs_corpus.py",)
+        for relative in engine_sources:
+            target = engine / relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(source_root / relative, target)
+        git(engine, "init", "-q")
+        git(engine, "add", ".")
+        git(engine, "commit", "-qm", "Immutable committed integration engine")
+        engine_head = git(engine, "rev-parse", "HEAD")
+
+        destination = root / "destination"
+        destination.mkdir()
+        git(destination, "init", "-q")
+        for relative in (
+            "docs/CODEX_CONTROL.md",
+            "docs/cartographer/TOOLS.yaml",
+            "docs/INSTRUCTION_ISSUES.md",
+            "docs/Codex/AGENTS_LEDGER.md",
+            "docs/Codex/GOAL.md",
+            "orchestrator/workflow_runtime.py",
+        ):
+            target = destination / relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(source_root / relative, target)
+        (destination / "docs/INSTRUCTION_ISSUES.md").write_bytes(b"# Fixture issues\n")
+        (destination / workflow_runtime.TEAM_ASSIGNMENTS).write_bytes(b"# Fixture assignments\n")
+        (destination / workflow_runtime.RESUME_PATH).write_bytes(b"placeholder resume\n")
+        (destination / workflow_runtime.RESUME_HISTORY_PATH).write_bytes(
+            workflow_runtime.RESUME_HISTORY_HEADER
+        )
+        (destination / "docs/source.md").write_bytes(b"exact source\n")
+        (destination / "zz-integration-target.txt").write_bytes(b"old target\n")
+        git(destination, "add", ".")
+        git(destination, "commit", "-qm", "Integration destination baseline")
+        expected_head = git(destination, "rev-parse", "HEAD")
+
+        lock = destination / ".git/q3-three-body.writer.lock"
+        lock.touch(mode=0o600)
+        secret = b"1" * 32
+        installation_ref = hashlib.sha256(
+            b"q3-team-installation-v1\0" + secret
+        ).hexdigest()
+        installation = {
+            "schema": workflow_runtime.TEAM_INSTALLATION,
+            "installation_secret": secret.hex(),
+            "installation_ref": installation_ref,
+        }
+        private_installation = destination / ".git" / workflow_runtime.TEAM_INSTALLATION
+        private_installation.write_bytes(workflow_runtime._team_json(installation))
+        private_installation.chmod(0o600)
+        local = {
+            "schema": workflow_runtime.TEAM_LOCAL,
+            "installation_ref": installation_ref,
+            "operations": {},
+            "watch": None,
+            "epoch_floor": 0,
+        }
+        private_local = destination / ".git" / workflow_runtime.TEAM_LOCAL
+        private_local.write_bytes(workflow_runtime._team_json(local))
+        private_local.chmod(0o600)
+
+        candidate_index = root / "candidate.index"
+        git(destination, "read-tree", expected_head, index=candidate_index)
+        before_runtime = (destination / "orchestrator/workflow_runtime.py").read_bytes()
+        after_runtime = before_runtime + b"\n# candidate runtime replacement\n" + b"# padding\n" * 150000
+        before_target = (destination / "zz-integration-target.txt").read_bytes()
+        after_target = b"candidate target\n" + b"x" * 1450000
+        candidate_files = []
+        for path, before, after in (
+            ("orchestrator/workflow_runtime.py", before_runtime, after_runtime),
+            ("zz-integration-target.txt", before_target, after_target),
+        ):
+            blob = git(destination, "hash-object", "-w", "--stdin", input=after)
+            git(destination, "update-index", "--cacheinfo", "100644," + blob + "," + path,
+                index=candidate_index)
+            candidate_files.append({
+                "path": path,
+                "source_path": path,
+                "before_sha256": workflow_runtime._resume_digest(before),
+                "sha256": workflow_runtime._resume_digest(after),
+            })
+        candidate_tree = git(destination, "write-tree", index=candidate_index)
+        candidate_commit = git(
+            destination, "commit-tree", candidate_tree, "-p", expected_head,
+            input=b"Fresh process candidate\n",
+        )
+
+        source_digest = workflow_runtime._resume_digest(
+            (destination / "docs/source.md").read_bytes()
+        )
+        assignments = []
+        permitted = [item["path"] for item in candidate_files]
+        for role, assignee in (("implementation", "producer"), ("independent-checker", "checker")):
+            assignment = TeamRecordsTests.assignment(assignment_id="fresh-" + assignee)
+            assignment.update(
+                owner_task=self.data()["owner_thread_id"], owner_host="local", owner_epoch=1,
+                owner_installation_ref=installation_ref, assignee=assignee, role=role,
+                base_commit=expected_head, subject="fresh process integration",
+                input_hashes=[{"path": "docs/source.md", "sha256": source_digest}],
+                permitted_paths=permitted,
+            )
+            assignments.append(assignment)
+        assignments_path = destination / workflow_runtime.TEAM_ASSIGNMENTS
+        assignments_path.write_bytes(b"# Fixture assignments\n")
+        for assignment in assignments:
+            previous = assignments_path.read_bytes()
+            updated, _ = team_records.prepare_assignment(
+                previous, assignment, workflow_runtime._resume_digest(previous)
+            )
+            assignments_path.write_bytes(updated)
+        producer, checker = assignments
+        manifest = {
+            "schema": "q3_team_integration.v1",
+            "mode": "REVIEWED_SOURCE",
+            "operation_id": "fresh-process-integration",
+            "owner_task": self.data()["owner_thread_id"],
+            "installation_ref": installation_ref,
+            "epoch": 1,
+            "expected_head": expected_head,
+            "implementer_assignment": producer["assignment_id"],
+            "assignment_sha256": workflow_runtime._resume_digest(
+                team_records.canonical_json(team_records._assignment_immutable_view(producer))
+            ),
+            "checker_assignment": checker["assignment_id"],
+            "candidate_commit": candidate_commit,
+            "files": candidate_files,
+        }
+        manifest_bytes = team_records.canonical_json(manifest)
+        manifest_path = root / "detached-manifest.json"
+        manifest_path.write_bytes(manifest_bytes)
+
+        review_artifact = {
+            "schema": "q3_team_integration_review.v1",
+            "manifest_sha256": workflow_runtime._resume_digest(manifest_bytes),
+            "base_commit": expected_head,
+            "candidate_commit": candidate_commit,
+            "files": [{"path": row["path"], "sha256": row["sha256"]} for row in candidate_files],
+            "implementer_assignment": producer["assignment_id"],
+            "checker_assignment": checker["assignment_id"],
+            "verdict": "SOURCE_INTEGRATION_APPROVED",
+        }
+        observations = TeamRecordsTests.provenance_context(checker).observations[checker["assignment_id"]]
+        for observation in observations:
+            phase = observation["phase"]
+            output = b"fresh launch\n" if phase == "LAUNCH" else team_records.canonical_json(review_artifact)
+            output_path = destination / ("docs/fresh-integration-output-" + phase + ".json")
+            receipt_path = destination / ("docs/fresh-integration-provider-" + phase + ".json")
+            output_path.write_bytes(output)
+            receipt_path.write_bytes(b'{"simulated_provider":true}\n')
+            observation["output_locator"] = str(output_path.relative_to(destination))
+            observation["output_sha256"] = workflow_runtime._resume_digest(output)
+            observation["provider_receipt_locator"] = str(receipt_path.relative_to(destination))
+            observation["provider_receipt_sha256"] = workflow_runtime._resume_digest(receipt_path.read_bytes())
+            observation["evidence_sha256"] = workflow_runtime._resume_digest(team_records.canonical_json([
+                {"locator": observation[prefix + "_locator"], "sha256": observation[prefix + "_sha256"]}
+                for prefix in ("output", "provider_receipt")
+            ]))
+            local["operations"][observation["operation_id"]] = {
+                "schema": "q3_team_assignment_receipt.v1",
+                "state": "CONFIRMED",
+                "observation": observation,
+            }
+
+        data = self.data()
+        data["ownership"]["installation_ref"] = installation_ref
+        data["source_manifest"] = {"docs/source.md": source_digest}
+        data["operation"]["inputs"] = dict(data["source_manifest"])
+        source_manifest_sha = workflow_runtime._resume_digest(
+            workflow_runtime._team_json(data["source_manifest"])
+        )
+        for stage in data["stages"].values():
+            stage["source_sha256"] = source_manifest_sha
+        data["operation"].update(
+            id=manifest["operation_id"],
+            command="workflow-team-integrate-candidate",
+            subject={
+                "kind": "REPAIR", "id": manifest["operation_id"],
+                "sha256": workflow_runtime._resume_digest(manifest_bytes),
+            },
+        )
+        raw = self.document(data)
+        (destination / workflow_runtime.RESUME_PATH).write_bytes(raw)
+        _, goal_record = workflow_runtime._resume_history_record(
+            "goal", 0, (destination / "docs/Codex/GOAL.md").read_bytes()
+        )
+        _, intent = workflow_runtime._resume_history_record("intent", data["revision"], raw)
+        (destination / workflow_runtime.RESUME_HISTORY_PATH).write_bytes(
+            workflow_runtime.RESUME_HISTORY_HEADER + goal_record + intent
+        )
+        local["operations"][manifest["operation_id"]] = {
+            "state": "OBSERVED",
+            "actor": data["owner_thread_id"],
+            "epoch": 1,
+            "checkpoint_sha256": workflow_runtime._resume_digest(raw),
+            "remote_ownership": data["ownership"],
+            "remote_thread": data["owner_thread_id"],
+            "local_head": expected_head,
+        }
+        private_local.write_bytes(workflow_runtime._team_json(local))
+        workflow_runtime.team_reserve_effect(
+            destination, operation_id=manifest["operation_id"]
+        )
+
+        return {
+            "root": root,
+            "engine": engine,
+            "destination": destination,
+            "engine_head": engine_head,
+            "expected_head": expected_head,
+            "manifest": manifest,
+            "manifest_path": manifest_path,
+            "before_runtime": before_runtime,
+            "after_runtime": after_runtime,
+            "before_target": before_target,
+            "after_target": after_target,
+            "private_local": private_local,
+        }
+
+    def test_fresh_process_recovers_persisted_manifest_after_runtime_write_crash(self):
+        fixture = self._fresh_process_integration_fixture()
+        engine = fixture["engine"]
+        destination = fixture["destination"]
+        manifest = fixture["manifest"]
+        manifest_path = fixture["manifest_path"]
+        environment = {
+            **os.environ,
+            "CODEX_THREAD_ID": manifest["owner_task"],
+            "Q3_OWNER_EPOCH": "1",
+            "PYTHONPATH": "",
+        }
+        command = [
+            sys.executable, str(engine / "orchestrator/workflow_runtime.py"),
+            "--root", str(destination), "team-integrate-candidate",
+            "--candidate", str(manifest_path),
+        ]
+        process = subprocess.Popen(
+            command, cwd=engine, env=environment,
+            stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+        )
+        killed_after_first_write = False
+        deadline = time.monotonic() + 45
+        runtime_path = destination / "orchestrator/workflow_runtime.py"
+        while process.poll() is None and time.monotonic() < deadline:
+            try:
+                if runtime_path.stat().st_size == len(fixture["after_runtime"]):
+                    process.send_signal(signal.SIGKILL)
+                    killed_after_first_write = True
+                    break
+            except FileNotFoundError:
+                pass
+            time.sleep(0.001)
+        if not killed_after_first_write:
+            process.kill()
+        stdout, stderr = process.communicate(timeout=15)
+        self.assertTrue(
+            killed_after_first_write,
+            (stdout + stderr).decode(errors="replace"),
+        )
+        self.assertEqual(process.returncode, -signal.SIGKILL)
+        self.assertEqual(runtime_path.read_bytes(), fixture["after_runtime"])
+        self.assertEqual(
+            (destination / "zz-integration-target.txt").read_bytes(),
+            fixture["before_target"],
+        )
+
+        pending = json.loads(fixture["private_local"].read_bytes())
+        pending_record = pending["operations"][manifest["operation_id"]]
+        self.assertEqual(pending_record["state"], "RESERVED")
+        self.assertEqual(pending_record["integration"]["state"], "PENDING")
+        self.assertEqual(pending_record["integration"]["manifest"], manifest)
+
+        pending_plan = subprocess.run(
+            [sys.executable, str(engine / "orchestrator/workflow_runtime.py"),
+             "--root", str(destination), "plan"],
+            cwd=engine, env=environment, capture_output=True, text=True, check=False,
+        )
+        self.assertEqual(pending_plan.returncode, 2, pending_plan.stdout + pending_plan.stderr)
+        pending_card = json.loads(pending_plan.stdout)
+        self.assertEqual(pending_card["status"], "HOLD")
+        self.assertEqual(pending_card["continuation"]["status"], "RECOVERY_ONLY")
+        recovery = pending_card["continuation"]["recovery"]
+        self.assertEqual(recovery["recover_operation"], manifest["operation_id"])
+        self.assertEqual(recovery["engine"]["root"], str(engine))
+        self.assertEqual(recovery["engine"]["commit"], fixture["engine_head"])
+        self.assertFalse(pending_card["writes_performed"])
+        self.assertFalse(pending_card["execution_ready"])
+        self.assertIsNone(pending_card["selected_goal"])
+
+        detached = manifest_path.with_suffix(".detached")
+        manifest_path.rename(detached)
+        detached.write_bytes(b'{"detached_manifest_was_changed":true}\n')
+        self.assertFalse(manifest_path.exists())
+
+        recovered = subprocess.run(
+            [
+                sys.executable, str(engine / "orchestrator/workflow_runtime.py"),
+                "--root", str(destination), "team-integrate-candidate",
+                "--recover-operation", manifest["operation_id"],
+            ],
+            cwd=engine, env=environment, capture_output=True, text=True, check=False,
+        )
+        self.assertEqual(recovered.returncode, 0, recovered.stdout + recovered.stderr)
+        recovery_receipt = json.loads(recovered.stdout)
+        self.assertEqual(recovery_receipt["status"], "INTEGRATED")
+        self.assertEqual(runtime_path.read_bytes(), fixture["after_runtime"])
+        target = destination / "zz-integration-target.txt"
+        self.assertEqual(target.read_bytes(), fixture["after_target"])
+        self.assertEqual(stat.S_IMODE(runtime_path.stat().st_mode), 0o644)
+        self.assertEqual(stat.S_IMODE(target.stat().st_mode), 0o644)
+        self.assertEqual(
+            subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=engine, text=True).strip(),
+            fixture["engine_head"],
+        )
+        self.assertEqual(
+            subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=destination, text=True).strip(),
+            fixture["expected_head"],
+        )
+        self.assertEqual(subprocess.check_output(["git", "remote"], cwd=engine, text=True), "")
+        self.assertEqual(subprocess.check_output(["git", "remote"], cwd=destination, text=True), "")
+        completed = json.loads(fixture["private_local"].read_bytes())
+        completed_record = completed["operations"][manifest["operation_id"]]
+        self.assertEqual(completed_record["state"], "CONFIRMED")
+        self.assertEqual(completed_record["integration"]["state"], "COMPLETE")
+        workflow_runtime._team_pending_guard(destination)
+
+        replay = subprocess.run(
+            [
+                sys.executable, str(engine / "orchestrator/workflow_runtime.py"),
+                "--root", str(destination), "team-integrate-candidate",
+                "--recover-operation", manifest["operation_id"],
+            ],
+            cwd=engine, env=environment, capture_output=True, text=True, check=False,
+        )
+        self.assertEqual(replay.returncode, 2)
+        replay_receipt = json.loads(replay.stdout)
+        self.assertEqual(replay_receipt["status"], "HOLD")
+        self.assertIn("RECOVERY_RECORD_REQUIRED", replay_receipt["reason"])
+
+    def test_integration_schema_rejects_raw_alias_symlink_and_untracked_collision(self):
+        manifest = self.integration_fixture(intake=True)
+        altered = json.loads(json.dumps(manifest))
+        altered["files"][0]["path"] = "docs/arbitrary.bin"
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "CONTENT_ADDRESS"):
+            workflow_runtime._team_integration_manifest(team_records.canonical_json(altered))
+        altered = json.loads(json.dumps(manifest))
+        altered["files"][0]["content_base64"] += "\n"
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "BASE64"):
+            workflow_runtime._team_integration_manifest(team_records.canonical_json(altered))
+        evidence = self.repo / manifest["files"][0]["path"]
+        evidence.parent.mkdir(parents=True, exist_ok=True)
+        evidence.symlink_to(self.source)
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "UNSAFE_PATH"):
+            self.integrate()
+        evidence.rename(evidence.with_suffix(".saved-symlink"))
+        evidence.write_bytes(b"different existing untracked bytes")
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "PREIMAGE_CHANGED"):
+            self.integrate()
+
+    def test_integration_requires_commit_object_and_producing_base_ancestry(self):
+        manifest = self.integration_fixture()
+        _, data, _ = workflow_runtime._team_current(self.repo)
+        blob = workflow_runtime._team_git(self.repo, "rev-parse", manifest["expected_head"] + ":docs/source.md").decode().strip()
+        unrelated_env = {**workflow_runtime.os.environ, "GIT_AUTHOR_NAME": "Fixture", "GIT_COMMITTER_NAME": "Fixture",
+                         "GIT_AUTHOR_EMAIL": "fixture@example.invalid", "GIT_COMMITTER_EMAIL": "fixture@example.invalid"}
+        tree = workflow_runtime._team_git(self.repo, "rev-parse", manifest["candidate_commit"] + "^{tree}").decode().strip()
+        unrelated = subprocess.run(["git", "commit-tree", tree], cwd=self.repo, env=unrelated_env,
+                                   input=b"unrelated root\n", capture_output=True, check=True).stdout.decode().strip()
+        for value, error in ((blob, "COMMIT_OBJECT_REQUIRED"), (unrelated, "GIT_OBSERVATION_FAILED:merge-base")):
+            changed = {**manifest, "candidate_commit": value}
+            with self.subTest(candidate=value), self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, error):
+                workflow_runtime._team_integration_review(self.repo, data, changed, team_records.canonical_json(changed))
+        changed = {**manifest, "expected_head": manifest["candidate_commit"]}
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "INDEPENDENT_BASE_REVIEW_REQUIRED"):
+            workflow_runtime._team_integration_review(self.repo, data, changed, team_records.canonical_json(changed))
+
+    def test_integration_recovers_persisted_manifest_but_rejects_changed_engine(self):
+        manifest = self.integration_fixture()
+        with mock.patch.object(workflow_runtime, "_resume_cas_bytes", side_effect=RuntimeError("before copy")):
+            with self.assertRaisesRegex(RuntimeError, "before copy"):
+                self.integrate()
+        with mock.patch.object(workflow_runtime, "_team_integration_engine", return_value={"different_engine": True}):
+            with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "PERSISTED_IDENTITY_CHANGED"):
+                self.integrate()
+        manifest = json.loads(self.fixture.candidate.read_bytes())
+        manifest["files"][0]["sha256"] = "a" * 64
+        self.fixture.candidate.write_bytes(team_records.canonical_json(manifest))
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "EXACT_INTENT_REQUIRED"):
+            self.integrate()
+        self.fixture.candidate.rename(self.fixture.candidate.with_suffix(".lost"))
+        result = workflow_runtime.team_integrate_candidate(self.repo, recover_operation="integration-fixture")
+        self.assertEqual(result["status"], "INTEGRATED")
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "RECOVERY_RECORD_REQUIRED"):
+            workflow_runtime.team_integrate_candidate(self.repo, recover_operation="integration-fixture")
+
+    def test_initialization_private_replay_and_no_secret_receipt(self):
+        result = workflow_runtime.team_local_init(self.repo)
+        self.assertEqual(result["status"], "NOOP")
+        private = self.repo / ".git" / workflow_runtime.TEAM_INSTALLATION
+        self.assertEqual(private.stat().st_mode & 0o777, 0o600)
+        secret = json.loads(private.read_bytes())["installation_secret"]
+        self.assertNotIn(secret, json.dumps(result))
+        raw = private.read_bytes()
+        with workflow_runtime._execution_writer_epoch(self.repo):
+            with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "LOCK_COLLISION"):
+                workflow_runtime.team_local_init(self.repo)
+        self.assertEqual(private.read_bytes(), raw)
+
+    def test_identity_mismatch_and_missing_identity_with_existing_bindings(self):
+        private = self.repo / ".git" / workflow_runtime.TEAM_INSTALLATION
+        original = private.read_bytes()
+        data = json.loads(original)
+        data["installation_ref"] = "f" * 64
+        private.write_bytes(workflow_runtime._team_json(data))
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "REFERENCE_MISMATCH"):
+            workflow_runtime._team_installation(self.repo)
+        private.write_bytes(original)
+        self.local(epoch_floor=2)
+        # Rename the fixture identity rather than deleting it.
+        private.rename(private.with_suffix(".saved"))
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "INSTALLATION_RECOVERY_REQUIRED"):
+            workflow_runtime.team_local_init(self.repo)
+
+    def test_local_identity_read_does_not_treat_access_time_as_a_write(self):
+        import itertools
+        from types import SimpleNamespace
+        private = self.repo / ".git" / workflow_runtime.TEAM_INSTALLATION
+        before = private.lstat()
+        after = SimpleNamespace(**{name: getattr(before, name) for name in dir(before) if name.startswith("st_")})
+        after.st_atime_ns += 1000000000
+        with mock.patch.object(Path, "lstat", side_effect=itertools.chain([before], itertools.repeat(after))):
+            self.assertEqual(workflow_runtime._team_installation(self.repo)["installation_ref"], self.identity)
+
+    def test_v1_archive_stays_readable_after_v2_migration(self):
+        first = self.fixture.document()
+        self.fixture.save(first)
+        data = self.data()
+        data.update(revision=2, previous_sha256=workflow_runtime._resume_digest(first))
+        self.fixture.save(self.document(data), expected=data["previous_sha256"])
+        records = workflow_runtime._resume_history(self.fixture.history.read_bytes())
+        self.assertIn(("resume", 1, first), records.values())
+        self.assertEqual(self.fixture.save(self.document(data), expected=data["previous_sha256"])["status"], "NOOP")
+
+    def _bootstrap_publication_fixture(self):
+        """Build one real bare-v1 remote and a closed v1-to-v2 owner candidate."""
+        holder = tempfile.TemporaryDirectory(prefix="q3-team-bootstrap-main-")
+        self.addCleanup(holder.cleanup)
+        root = Path(holder.name)
+        seed, remote, owner = root / "seed", root / "remote.git", root / "owner"
+        owner_id = "01a084f4-7498-7021-bac2-91d184d58dc7"
+        full_control = (Path(__file__).resolve().parents[2] / "docs/CODEX_CONTROL.md").read_text()
+        old_control = full_control.replace("TEAM_RUNTIME_VERSION: 1\n", "")
+        full_tools = (Path(__file__).resolve().parents[2] / str(workflow_runtime.TOOLS)).read_bytes()
+        old_tools = (
+            b"tool_families:\n  workflow:\n    tools:\n"
+            b"      - id: workflow-resume-checkpoint\n        status: ENABLED\n"
+            b"        writes: true\n        write_paths:\n"
+            b"          - docs/Codex/RESUME.md\n          - docs/Codex/GOAL_HISTORY.md\n"
+        )
+
+        def git(repo, *args, env=None):
+            return subprocess.check_output(
+                ["git", *args], cwd=repo, env=env, text=True
+            ).strip()
+
+        def git_run(repo, *args, env=None):
+            return subprocess.run(["git", *args], cwd=repo, env=env, check=True)
+
+        def body_document(data):
+            body = "\n".join(
+                "## " + name + "\nObserved evidence; reconcile before acting.\n"
+                for name in workflow_runtime.RESUME_SECTIONS
+            )
+            return (
+                "---\n" + workflow_runtime.yaml.safe_dump(data, sort_keys=False)
+                + "---\n" + body
+            ).encode()
+
+        def v1_document(revision, previous, *, kind="NONE", state="NONE", operation_id="", evidence=None):
+            return body_document({
+                "schema": "q3_resume.v1", "revision": revision,
+                "observed_at": "2026-09-11T10:00:00+02:00", "previous_sha256": previous,
+                "owner_thread_id": owner_id, "owner_host_id": "local",
+                "reconciliation_pending": False, "recovery_from": None,
+                "pins": {"head": "a" * 40, "physical_goal": "docs/goal.md",
+                         "source_commit": "b" * 40, "request_id": "REQ-EXISTING",
+                         "phase_id": "PHASE-EXISTING"},
+                "stages": {name: "PENDING" for name in
+                           ("receipt", "independent_review", "parent_check", "acceptance", "publication")},
+                "operation": {"kind": kind, "state": state, "id": operation_id,
+                               "evidence": evidence or []},
+            })
+
+        def v2_data(*, revision, previous, installation_ref, operation, source_manifest):
+            request = {"path": "docs/request.txt", "commit": "a" * 40, "blob": "b" * 40,
+                       "sha256": "c" * 64, "boundary_id": "BOUNDARY",
+                       "conversation_id": "fixture-chat"}
+            source_sha = workflow_runtime._resume_digest(workflow_runtime._team_json(source_manifest))
+            request_subject = {"kind": "REQUEST", "id": "REQ-EXISTING", "sha256": request["sha256"]}
+            verdict_subject = {"kind": "VERDICT", "id": "VERDICT-EXISTING", "sha256": "d" * 64}
+            stages = {
+                name: {"subject": request_subject if index < 3 else verdict_subject,
+                       "state": "NOT_STARTED", "evidence": {}, "source_sha256": source_sha,
+                       "checked_by": None}
+                for index, name in enumerate(workflow_runtime.TEAM_STAGES)
+            }
+            return {
+                "schema": "q3_resume.v2", "revision": revision,
+                "observed_at": "2026-09-11T10:00:00+02:00", "previous_sha256": previous,
+                "owner_thread_id": owner_id, "owner_host_id": "local",
+                "reconciliation_pending": False, "recovery_from": None,
+                "pins": {"head": "a" * 40, "physical_goal": "docs/goal.md",
+                         "source_commit": "b" * 40, "request_id": "REQ-EXISTING",
+                         "phase_id": "PHASE-EXISTING", "phase_key": dict(PHASE_KEY),
+                         "request": request},
+                "stages": stages, "operation": operation,
+                "ownership": {"installation_ref": installation_ref, "epoch": 1,
+                              "state": "ACTIVE", "transfer": None},
+                "source_manifest": source_manifest,
+            }
+
+        def save(repo, raw, expected):
+            candidate = repo / "bootstrap-candidate.md"
+            candidate.write_bytes(raw)
+            return workflow_runtime.resume_checkpoint(repo, candidate=candidate, expected_sha256=expected)
+
+        for path in (workflow_runtime.RESUME_PATH, workflow_runtime.TOOLS,
+                     workflow_runtime.RESUME_HISTORY_PATH, workflow_runtime.TEAM_ISSUES,
+                     workflow_runtime.TEAM_ASSIGNMENTS, Path("docs/CODEX_CONTROL.md"),
+                     Path("docs/Codex/GOAL.md"), Path("orchestrator/workflow_runtime.py")):
+            (seed / path).parent.mkdir(parents=True, exist_ok=True)
+        git_run(root, "init", "--bare", "-q", str(remote))
+        git_run(root, "init", "-q", str(seed))
+        (seed / "docs/CODEX_CONTROL.md").write_text(old_control)
+        (seed / workflow_runtime.TOOLS).write_bytes(old_tools)
+        (seed / workflow_runtime.TEAM_ISSUES).write_bytes(b"# Fixture issues\n")
+        (seed / workflow_runtime.TEAM_ASSIGNMENTS).write_bytes(b"# Fixture assignments\n")
+        (seed / "docs/Codex/GOAL.md").write_bytes(b"goal\n")
+        (seed / "docs/bootstrap-source.txt").write_bytes(b"stable reviewed source\n")
+        (seed / "orchestrator/workflow_runtime.py").write_bytes(b"old runtime subset\n")
+        initial = v1_document(1, "ABSENT")
+        (seed / workflow_runtime.RESUME_PATH).write_bytes(initial)
+        _, goal_entry = workflow_runtime._resume_history_record("goal", 0, b"goal\n")
+        _, intent_entry = workflow_runtime._resume_history_record("intent", 1, initial)
+        (seed / workflow_runtime.RESUME_HISTORY_PATH).write_bytes(
+            workflow_runtime.RESUME_HISTORY_HEADER + goal_entry + intent_entry
+        )
+        env = {**workflow_runtime.os.environ, "GIT_AUTHOR_NAME": "Fixture",
+               "GIT_COMMITTER_NAME": "Fixture", "GIT_AUTHOR_EMAIL": "fixture@example.invalid",
+               "GIT_COMMITTER_EMAIL": "fixture@example.invalid"}
+        git_run(seed, "add", ".", env=env)
+        git_run(seed, "commit", "-qm", "Initial v1 checkpoint", env=env)
+        git_run(seed, "branch", "-M", "rh_clean")
+        git_run(seed, "remote", "add", "origin", str(remote))
+        git_run(seed, "push", "-q", "origin", "HEAD:refs/heads/rh_clean", env=env)
+        git_run(root, "clone", "-q", "--branch", "rh_clean", str(remote), str(owner))
+        (owner / ".git/q3-three-body.writer.lock").touch()
+
+        initial_sha = workflow_runtime._resume_digest(initial)
+        local_install_id = "BOOTSTRAP-PUBLICATION:local-install"
+        local_intent = v1_document(2, initial_sha, kind="PUBLISH", state="INTENT",
+                                   operation_id=local_install_id)
+        save(owner, local_intent, initial_sha)
+        runtime = owner / "orchestrator/workflow_runtime.py"
+        runtime.write_bytes(b"reviewed runtime subset\n")
+        (owner / workflow_runtime.TOOLS).write_bytes(full_tools)
+        git_run(owner, "add", "orchestrator/workflow_runtime.py", str(workflow_runtime.TOOLS),
+                str(workflow_runtime.RESUME_PATH), str(workflow_runtime.RESUME_HISTORY_PATH), env=env)
+        git_run(owner, "commit", "-qm", "Install reviewed runtime subset", env=env)
+        local_commit = git(owner, "rev-parse", "HEAD")
+
+        local_confirmed = v1_document(
+            3, workflow_runtime._resume_digest(local_intent), kind="PUBLISH", state="CONFIRMED",
+            operation_id=local_install_id, evidence=["bootstrap_local_commit:" + local_commit]
+        )
+        save(owner, local_confirmed, workflow_runtime._resume_digest(local_intent))
+        confirmed_sha = workflow_runtime._resume_digest(local_confirmed)
+        identity = workflow_runtime.team_local_init(owner)
+
+        migration_source_manifest = {
+            "docs/bootstrap-source.txt": workflow_runtime._resume_digest(
+                (owner / "docs/bootstrap-source.txt").read_bytes()
+            ),
+        }
+        local_inputs = {
+            "docs/cartographer/TOOLS.yaml": workflow_runtime._resume_digest(
+                (owner / workflow_runtime.TOOLS).read_bytes()
+            ),
+            "orchestrator/workflow_runtime.py": workflow_runtime._resume_digest(runtime.read_bytes()),
+        }
+        local_operation_id = local_install_id
+        local_operation = {
+            "kind": "PUBLISH", "state": "CONFIRMED", "id": local_operation_id,
+            "evidence": ["bootstrap_local_commit:" + local_commit],
+            "subject": {"kind": "REPAIR", "id": local_operation_id,
+                        "sha256": workflow_runtime._resume_digest(workflow_runtime._team_json(local_inputs))},
+            "command": "workflow-team-bootstrap-publish", "inputs": local_inputs,
+        }
+        migrated = v2_data(revision=4, previous=confirmed_sha,
+                           installation_ref=identity["installation_ref"],
+                           operation=local_operation, source_manifest=migration_source_manifest)
+        save(owner, body_document(migrated), confirmed_sha)
+        git_run(owner, "add", str(workflow_runtime.RESUME_PATH),
+                str(workflow_runtime.RESUME_HISTORY_PATH), env=env)
+        git_run(owner, "commit", "-qm", "Migrate owner checkpoint", env=env)
+        migrated_sha = workflow_runtime._resume_digest(body_document(migrated))
+
+        final_control = owner / "docs/CODEX_CONTROL.md"
+        final_control.write_text(full_control)
+        final_input = owner / "docs/bootstrap-input.txt"
+        final_input.write_bytes(b"final reviewed input\n")
+        source_manifest = {
+            "docs/bootstrap-source.txt": migration_source_manifest["docs/bootstrap-source.txt"],
+            "docs/bootstrap-input.txt": workflow_runtime._resume_digest(final_input.read_bytes()),
+        }
+        publication_inputs = {
+            "docs/CODEX_CONTROL.md": workflow_runtime._resume_digest(final_control.read_bytes()),
+            "docs/bootstrap-input.txt": source_manifest["docs/bootstrap-input.txt"],
+            **local_inputs,
+        }
+        git_run(owner, "add", "docs/CODEX_CONTROL.md", "docs/bootstrap-input.txt", env=env)
+        git_run(owner, "commit", "-qm", "Install final control and source", env=env)
+
+        publication_id = "BOOTSTRAP-PUBLICATION"
+        publication_operation = {
+            "kind": "PUBLISH", "state": "INTENT", "id": publication_id, "evidence": [],
+            "subject": {"kind": "REPAIR", "id": publication_id,
+                        "sha256": workflow_runtime._resume_digest(workflow_runtime._team_json(publication_inputs))},
+            "command": "workflow-team-bootstrap-publish", "inputs": publication_inputs,
+        }
+        publication = v2_data(revision=5, previous=migrated_sha,
+                              installation_ref=identity["installation_ref"],
+                              operation=publication_operation, source_manifest=source_manifest)
+        publication_raw = body_document(publication)
+        save(owner, publication_raw, migrated_sha)
+        git_run(owner, "add", str(workflow_runtime.RESUME_PATH), str(workflow_runtime.RESUME_HISTORY_PATH), env=env)
+        git_run(owner, "commit", "-qm", "Start initial publication", env=env)
+        expected_head = git(owner, "rev-parse", "HEAD")
+        remote_raw = initial
+        remote_commit = git(seed, "rev-parse", "HEAD")
+        return {
+            "root": root, "remote": remote, "owner": owner, "owner_id": owner_id,
+            "operation_id": publication_id, "expected_head": expected_head,
+            "remote_commit": remote_commit, "remote_raw": remote_raw,
+            "remote_resume_sha256": workflow_runtime._resume_digest(remote_raw),
+            "publication_raw": publication_raw, "source_manifest": source_manifest,
+            "publication_inputs": publication_inputs,
+            "local_install_commit": local_commit,
+        }
+
+    def _bootstrap_commit_tree(self, fixture, *, writes=(), deletes=(), modes=None, message):
+        owner = fixture["owner"]
+        paths = set()
+        for relative, payload in writes:
+            path = owner / relative
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(payload)
+            paths.add(str(relative))
+        for relative in deletes:
+            path = owner / relative
+            path.unlink()
+            paths.add(str(relative))
+        for relative, mode in (modes or {}).items():
+            path = owner / relative
+            path.chmod(mode)
+            paths.add(str(relative))
+        env = {
+            **workflow_runtime.os.environ,
+            "GIT_AUTHOR_NAME": "Fixture",
+            "GIT_COMMITTER_NAME": "Fixture",
+            "GIT_AUTHOR_EMAIL": "fixture@example.invalid",
+            "GIT_COMMITTER_EMAIL": "fixture@example.invalid",
+        }
+        subprocess.run(
+            ["git", "add", "-A", "--", *sorted(paths)],
+            cwd=owner, env=env, check=True,
+        )
+        subprocess.run(["git", "commit", "-qm", message], cwd=owner, env=env, check=True)
+        fixture["expected_head"] = subprocess.check_output(
+            ["git", "rev-parse", "HEAD"], cwd=owner, text=True
+        ).strip()
+
+    @staticmethod
+    def _bootstrap_render_snapshot(raw, mutate):
+        data, body = workflow_runtime._resume_document(raw)
+        updated = json.loads(json.dumps(data))
+        mutate(updated)
+        return (
+            "---\n" + workflow_runtime.yaml.safe_dump(updated, sort_keys=False)
+            + "---\n" + body
+        ).encode()
+
+    def _bootstrap_rewrite_snapshots(self, fixture, mutations, *, propagate=False, message):
+        owner = fixture["owner"]
+        history_path = owner / workflow_runtime.RESUME_HISTORY_PATH
+        current_path = owner / workflow_runtime.RESUME_PATH
+        original_history = history_path.read_bytes()
+        records = workflow_runtime._resume_history(original_history)
+        snapshots = {
+            revision: raw
+            for kind, revision, raw in records.values()
+            if kind == "intent"
+        }
+        updated = dict(snapshots)
+        for revision, mutate in mutations.items():
+            updated[revision] = self._bootstrap_render_snapshot(updated[revision], mutate)
+        if propagate:
+            first_changed = min(mutations)
+            for revision in range(first_changed + 1, max(updated) + 1):
+                data, _ = workflow_runtime._resume_document(updated[revision])
+                previous = workflow_runtime._resume_digest(updated[revision - 1])
+                if data["previous_sha256"] != previous:
+                    updated[revision] = self._bootstrap_render_snapshot(
+                        updated[revision], lambda value, previous=previous: value.update(
+                            previous_sha256=previous
+                        )
+                    )
+        history = original_history
+        for revision, old_raw in snapshots.items():
+            new_raw = updated[revision]
+            if new_raw == old_raw:
+                continue
+            kinds = {
+                kind
+                for kind, value_revision, payload in records.values()
+                if value_revision == revision and payload == old_raw
+            }
+            for kind in sorted(kinds):
+                _, old_entry = workflow_runtime._resume_history_record(kind, revision, old_raw)
+                _, new_entry = workflow_runtime._resume_history_record(kind, revision, new_raw)
+                self.assertEqual(history.count(old_entry), 1)
+                history = history.replace(old_entry, new_entry)
+        current_data, _ = workflow_runtime._resume_document(current_path.read_bytes())
+        current_revision = current_data["revision"]
+        writes = [(workflow_runtime.RESUME_HISTORY_PATH, history)]
+        if updated[current_revision] != current_path.read_bytes():
+            fixture["publication_raw"] = updated[current_revision]
+            writes.append((workflow_runtime.RESUME_PATH, updated[current_revision]))
+        self._bootstrap_commit_tree(
+            fixture,
+            writes=tuple(writes),
+            message=message,
+        )
+
+    def _bootstrap_publish(self, fixture):
+        return workflow_runtime.team_bootstrap_publish(
+            fixture["owner"], operation_id=fixture["operation_id"],
+            expected_head=fixture["expected_head"],
+            expected_remote_commit=fixture["remote_commit"],
+            expected_remote_resume_sha256=fixture["remote_resume_sha256"],
+        )
+
+    def test_bootstrap_closed_manifest_negative_matrix(self):
+        def extra_committed_path(fixture):
+            self._bootstrap_commit_tree(
+                fixture, writes=(("docs/unlisted.txt", b"unlisted\n"),),
+                message="Add unlisted bootstrap path",
+            )
+
+        def omitted_input(fixture):
+            def mutate(data):
+                data["operation"]["inputs"].pop("orchestrator/workflow_runtime.py")
+                data["operation"]["subject"]["sha256"] = workflow_runtime._resume_digest(
+                    workflow_runtime._team_json(data["operation"]["inputs"])
+                )
+            self._bootstrap_rewrite_snapshots(
+                fixture, {5: mutate}, message="Omit bootstrap input from manifest"
+            )
+
+        def self_reference(fixture):
+            def mutate(data):
+                data["operation"]["inputs"][str(workflow_runtime.RESUME_PATH)] = "0" * 64
+                data["operation"]["subject"]["sha256"] = workflow_runtime._resume_digest(
+                    workflow_runtime._team_json(data["operation"]["inputs"])
+                )
+            self._bootstrap_rewrite_snapshots(
+                fixture, {5: mutate}, message="Add self-referential bootstrap input"
+            )
+
+        def deleted_input(fixture):
+            self._bootstrap_commit_tree(
+                fixture, deletes=("orchestrator/workflow_runtime.py",),
+                message="Delete bootstrap input",
+            )
+
+        def mode_drift(fixture):
+            self._bootstrap_commit_tree(
+                fixture, modes={"orchestrator/workflow_runtime.py": 0o755},
+                message="Change bootstrap input mode",
+            )
+
+        def missing_history_prefix(fixture):
+            def mutate(data):
+                data["pins"]["head"] = "c" * 40
+            self._bootstrap_rewrite_snapshots(
+                fixture, {1: mutate}, message="Break committed remote history prefix"
+            )
+
+        def changed_intermediate_history(fixture):
+            def mutate(data):
+                data["previous_sha256"] = "0" * 64
+            self._bootstrap_rewrite_snapshots(
+                fixture, {3: mutate}, message="Break intermediate history chain"
+            )
+
+        def local_install_mismatch(fixture):
+            def mutate(data):
+                data["operation"]["state"] = "UNKNOWN"
+                data["operation"]["evidence"] = []
+            self._bootstrap_rewrite_snapshots(
+                fixture, {3: mutate}, propagate=True,
+                message="Remove local install confirmation",
+            )
+
+        def initial_epoch(fixture):
+            def mutate(data):
+                data["ownership"]["epoch"] = 2
+            self._bootstrap_rewrite_snapshots(
+                fixture, {5: mutate}, message="Retire initial bootstrap epoch"
+            )
+
+        cases = (
+            ("extra committed input", extra_committed_path,
+             r"TEAM_BOOTSTRAP_SCOPE_MISMATCH", {}),
+            ("omitted declared input", omitted_input,
+             r"TEAM_BOOTSTRAP_SCOPE_MISMATCH", {}),
+            ("self-referential metadata", self_reference,
+             r"TEAM_BOOTSTRAP_SELF_REFERENTIAL_INPUTS", {}),
+            ("deleted declared input", deleted_input,
+             r"TEAM_BOOTSTRAP_DELETION_FORBIDDEN:orchestrator/workflow_runtime\.py", {}),
+            ("intermediate mode drift", mode_drift,
+             r"TEAM_BOOTSTRAP_INTERMEDIATE_SOURCE_UNREVIEWED:orchestrator/workflow_runtime\.py", {}),
+            ("missing remote history prefix", missing_history_prefix,
+             r"TEAM_BOOTSTRAP_COMMITTED_HISTORY_OR_CHECKPOINT_CHANGED", {}),
+            ("changed intermediate history", changed_intermediate_history,
+             r"TEAM_BOOTSTRAP_HISTORY_CHAIN_CHANGED", {}),
+            ("local install confirmation mismatch", local_install_mismatch,
+             r"TEAM_BOOTSTRAP_LOCAL_INSTALL_CONFIRMATION_REQUIRED", {}),
+            ("initial epoch mismatch", initial_epoch,
+             r"TEAM_BOOTSTRAP_INITIAL_OWNER_REQUIRED", {}),
+            ("foreign initial owner", lambda fixture: None,
+             r"TEAM_OBSERVER_ONLY", {"CODEX_THREAD_ID": "foreign-bootstrap-owner"}),
+        )
+        for label, prepare, error, environment in cases:
+            with self.subTest(case=label):
+                fixture = self._bootstrap_publication_fixture()
+                prepare(fixture)
+                before_local = workflow_runtime._team_local(fixture["owner"])
+                before_remote = workflow_runtime._team_git(
+                    fixture["owner"], "ls-remote", "origin", "refs/heads/rh_clean"
+                )
+                with mock.patch.dict(workflow_runtime.os.environ, environment):
+                    with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, error):
+                        self._bootstrap_publish(fixture)
+                self.assertEqual(workflow_runtime._team_local(fixture["owner"]), before_local)
+                self.assertEqual(
+                    workflow_runtime._team_git(
+                        fixture["owner"], "ls-remote", "origin", "refs/heads/rh_clean"
+                    ),
+                    before_remote,
+                )
+
+    def test_bootstrap_publish_subprocess_sigkill_after_remote_push_reconciles(self):
+        fixture = self._bootstrap_publication_fixture()
+        root, owner, remote = fixture["root"], fixture["owner"], fixture["remote"]
+        started = root / "post-receive.started"
+        release = root / "post-receive.release"
+        hook = remote / "hooks/post-receive"
+        hook.write_text(
+            "#!/bin/sh\n"
+            f"printf started > {started}\n"
+            f"while [ ! -e {release} ]; do sleep 0.01; done\n"
+        )
+        hook.chmod(0o755)
+        driver = (
+            "import json,sys\n"
+            "from pathlib import Path\n"
+            "from orchestrator import workflow_runtime as w\n"
+            "w.live_plan_v10=lambda repo, **kwargs: {'status': 'HOLD', 'holds': ['TEST_DRIVER']}\n"
+            "repo=Path(sys.argv[1])\n"
+            "kwargs={'operation_id': sys.argv[2]}\n"
+            "if sys.argv[3] == 'publish':\n"
+            "    kwargs.update(expected_head=sys.argv[4], expected_remote_commit=sys.argv[5], "
+            "expected_remote_resume_sha256=sys.argv[6])\n"
+            "else:\n"
+            "    kwargs['reconcile_only']=True\n"
+            "print(json.dumps(w.team_bootstrap_publish(repo, **kwargs), sort_keys=True))\n"
+        )
+        environment = {
+            **workflow_runtime.os.environ,
+            "CODEX_THREAD_ID": fixture["owner_id"],
+            "Q3_OWNER_EPOCH": "1",
+        }
+        script = Path(__file__).resolve().parents[2] / "orchestrator/workflow_runtime.py"
+        command = [
+            sys.executable, "-c", driver, str(owner), fixture["operation_id"], "publish",
+            fixture["expected_head"], fixture["remote_commit"], fixture["remote_resume_sha256"],
+        ]
+        process = subprocess.Popen(
+            command, cwd=script.parents[1], env=environment,
+            stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
+            start_new_session=True,
+        )
+        try:
+            deadline = time.monotonic() + 45
+            while not started.exists() and process.poll() is None and time.monotonic() < deadline:
+                time.sleep(0.005)
+            if not started.exists():
+                stdout, stderr = process.communicate(timeout=5)
+                self.fail("bootstrap post-receive hook was not reached: " + stdout + stderr)
+            self.assertEqual(
+                workflow_runtime._team_local(owner)["operations"][fixture["operation_id"]]["state"],
+                "RESERVED",
+            )
+            os.killpg(process.pid, signal.SIGKILL)
+            stdout, stderr = process.communicate(timeout=15)
+            self.assertEqual(process.returncode, -signal.SIGKILL, stdout + stderr)
+            self.assertEqual(
+                workflow_runtime._team_git(owner, "ls-remote", "origin", "refs/heads/rh_clean")
+                .decode().split()[0],
+                fixture["expected_head"],
+            )
+        finally:
+            if process.poll() is None:
+                release.touch()
+                try:
+                    os.killpg(process.pid, signal.SIGTERM)
+                except ProcessLookupError:
+                    pass
+                try:
+                    process.wait(timeout=5)
+                except subprocess.TimeoutExpired:
+                    try:
+                        os.killpg(process.pid, signal.SIGKILL)
+                    except ProcessLookupError:
+                        pass
+                    process.wait(timeout=5)
+        reconcile = subprocess.run(
+            [
+                sys.executable, "-c", driver, str(owner), fixture["operation_id"], "reconcile",
+            ],
+            cwd=script.parents[1], env=environment,
+            capture_output=True, text=True, check=False,
+        )
+        self.assertEqual(reconcile.returncode, 0, reconcile.stdout + reconcile.stderr)
+        receipt = json.loads(reconcile.stdout)
+        self.assertEqual(receipt["status"], "CONFIRMED")
+        self.assertFalse(receipt["push_attempted"])
+
+    def test_bootstrap_publish_first_v1_remote_succeeds_without_force_or_lease(self):
+        fixture = self._bootstrap_publication_fixture()
+        commands = []
+        real_git = workflow_runtime._team_git
+
+        def observed_git(repo, *args):
+            commands.append(args)
+            return real_git(repo, *args)
+
+        with mock.patch.object(workflow_runtime, "_team_git", side_effect=observed_git):
+            result = workflow_runtime.team_bootstrap_publish(
+                fixture["owner"], operation_id=fixture["operation_id"],
+                expected_head=fixture["expected_head"],
+                expected_remote_commit=fixture["remote_commit"],
+                expected_remote_resume_sha256=fixture["remote_resume_sha256"],
+            )
+        self.assertEqual(result["status"], "CONFIRMED")
+        self.assertTrue(result["push_attempted"])
+        pushes = [args for args in commands if args and args[0] == "push"]
+        self.assertEqual(
+            pushes,
+            [("push", "--no-follow-tags", "--recurse-submodules=no", "origin",
+              fixture["expected_head"] + ":refs/heads/rh_clean")],
+        )
+        push_text = " ".join(" ".join(args) for args in pushes)
+        self.assertNotIn("--force", push_text)
+        self.assertNotIn("lease", push_text)
+        self.assertNotIn("+refs/", push_text)
+        self.assertEqual(
+            workflow_runtime._team_git(fixture["owner"], "ls-remote", "origin",
+                                        "refs/heads/rh_clean").decode().split()[0],
+            fixture["expected_head"],
+        )
+        local = workflow_runtime._team_local(fixture["owner"])
+        receipt = local["operations"][fixture["operation_id"]]
+        self.assertEqual(receipt["state"], "CONFIRMED")
+        manifest = receipt["bootstrap"]
+        self.assertEqual(manifest["schema"], "q3_team_bootstrap_publish.v1")
+        self.assertEqual(manifest["candidate_commit"], fixture["expected_head"])
+        self.assertEqual(manifest["remote_commit"], fixture["remote_commit"])
+        self.assertEqual(manifest["candidate_resume_sha256"], workflow_runtime._resume_digest(fixture["publication_raw"]))
+        self.assertEqual(manifest["files"], sorted(manifest["files"], key=lambda row: row["path"]))
+        self.assertEqual(
+            [row["path"] for row in manifest["files"]],
+            sorted(set(fixture["publication_inputs"]) | {str(workflow_runtime.RESUME_PATH), str(workflow_runtime.RESUME_HISTORY_PATH)}),
+        )
+        for row in manifest["files"]:
+            self.assertIn(row["mode"], {0o644, 0o755})
+            if row["path"] in fixture["publication_inputs"]:
+                self.assertEqual(row["sha256"], fixture["publication_inputs"][row["path"]])
+                if row["path"] == "docs/bootstrap-input.txt":
+                    self.assertIsNone(row["before_mode"])
+                else:
+                    self.assertIn(row["before_mode"], {0o644, 0o755})
+            else:
+                self.assertIn(row["before_mode"], {0o644, 0o755})
+        self.assertIn(
+            {"commit": fixture["local_install_commit"], "parent": fixture["remote_commit"]},
+            manifest["parents"],
+        )
+        self.assertTrue((fixture["owner"] / workflow_runtime.RESUME_HISTORY_PATH).read_bytes().startswith(
+            (fixture["root"] / "seed" / workflow_runtime.RESUME_HISTORY_PATH).read_bytes()
+        ))
+        self.assertFalse(any(args and args[0] == "hook" for args in commands))
+        self.assertFalse(any(args and args[0] == "config" and any(
+            value in args for value in ("--add", "--unset", "--unset-all", "--replace-all")
+        ) for args in commands))
+        replay = workflow_runtime.team_bootstrap_publish(
+            fixture["owner"], operation_id=fixture["operation_id"],
+            expected_head=fixture["expected_head"],
+            expected_remote_commit=fixture["remote_commit"],
+            expected_remote_resume_sha256=fixture["remote_resume_sha256"],
+            reconcile_only=True,
+        )
+        self.assertEqual(replay["status"], "CONFIRMED")
+        self.assertFalse(replay["push_attempted"])
+
+    def test_bootstrap_publish_interruption_before_reservation_retries_once(self):
+        fixture = self._bootstrap_publication_fixture()
+        real_save = workflow_runtime._team_local_save
+        with mock.patch.object(workflow_runtime, "_team_local_save", side_effect=RuntimeError("before reservation")):
+            with self.assertRaisesRegex(RuntimeError, "before reservation"):
+                workflow_runtime.team_bootstrap_publish(
+                    fixture["owner"], operation_id=fixture["operation_id"],
+                    expected_head=fixture["expected_head"],
+                    expected_remote_commit=fixture["remote_commit"],
+                    expected_remote_resume_sha256=fixture["remote_resume_sha256"],
+                )
+        self.assertFalse((fixture["owner"] / ".git" / workflow_runtime.TEAM_LOCAL).exists())
+        result = workflow_runtime.team_bootstrap_publish(
+            fixture["owner"], operation_id=fixture["operation_id"],
+            expected_head=fixture["expected_head"],
+            expected_remote_commit=fixture["remote_commit"],
+            expected_remote_resume_sha256=fixture["remote_resume_sha256"],
+        )
+        self.assertEqual(result["status"], "CONFIRMED")
+        self.assertIsNotNone(real_save)
+
+    def test_bootstrap_publish_before_push_unknown_reconciles_without_second_push(self):
+        fixture = self._bootstrap_publication_fixture()
+        pushes = []
+        real_git = workflow_runtime._team_git
+
+        def fail_push(repo, *args):
+            if args and args[0] == "push":
+                pushes.append(args)
+                raise workflow_runtime.WorkflowRuntimeError("simulated push interruption")
+            return real_git(repo, *args)
+
+        with mock.patch.object(workflow_runtime, "_team_git", side_effect=fail_push):
+            first = workflow_runtime.team_bootstrap_publish(
+                fixture["owner"], operation_id=fixture["operation_id"],
+                expected_head=fixture["expected_head"],
+                expected_remote_commit=fixture["remote_commit"],
+                expected_remote_resume_sha256=fixture["remote_resume_sha256"],
+            )
+            with self.assertRaisesRegex(
+                workflow_runtime.WorkflowRuntimeError, "TEAM_BOOTSTRAP_ARGUMENT_DRIFT"
+            ):
+                workflow_runtime.team_bootstrap_publish(
+                    fixture["owner"], operation_id=fixture["operation_id"],
+                    expected_head="0" * 40, reconcile_only=True,
+                )
+            second = workflow_runtime.team_bootstrap_publish(
+                fixture["owner"], operation_id=fixture["operation_id"],
+                expected_head=fixture["expected_head"],
+                expected_remote_commit=fixture["remote_commit"],
+                expected_remote_resume_sha256=fixture["remote_resume_sha256"],
+                reconcile_only=True,
+            )
+        self.assertEqual(first["status"], "UNKNOWN")
+        self.assertEqual(second["status"], "UNKNOWN")
+        self.assertEqual(len(pushes), 1)
+        self.assertEqual(
+            workflow_runtime._team_local(fixture["owner"])["operations"][fixture["operation_id"]]["state"],
+            "UNKNOWN",
+        )
+
+    def test_bootstrap_publish_after_server_push_before_confirmation_reconciles(self):
+        fixture = self._bootstrap_publication_fixture()
+        save_calls = 0
+        pushes = []
+        real_save = workflow_runtime._team_local_save
+        real_git = workflow_runtime._team_git
+
+        def crash_confirmation(repo, before, after, epoch):
+            nonlocal save_calls
+            save_calls += 1
+            if save_calls == 2:
+                raise RuntimeError("after server push")
+            return real_save(repo, before, after, epoch)
+
+        def observed_git(repo, *args):
+            if args and args[0] == "push":
+                pushes.append(args)
+            return real_git(repo, *args)
+
+        with mock.patch.object(workflow_runtime, "_team_local_save", side_effect=crash_confirmation), \
+             mock.patch.object(workflow_runtime, "_team_git", side_effect=observed_git):
+            with self.assertRaisesRegex(RuntimeError, "after server push"):
+                workflow_runtime.team_bootstrap_publish(
+                    fixture["owner"], operation_id=fixture["operation_id"],
+                    expected_head=fixture["expected_head"],
+                    expected_remote_commit=fixture["remote_commit"],
+                    expected_remote_resume_sha256=fixture["remote_resume_sha256"],
+                )
+            self.assertEqual(
+                workflow_runtime._team_local(fixture["owner"])["operations"][fixture["operation_id"]]["state"],
+                "RESERVED",
+            )
+            self.assertEqual(len(pushes), 1)
+            recovered = workflow_runtime.team_bootstrap_publish(
+                fixture["owner"], operation_id=fixture["operation_id"],
+                expected_head=fixture["expected_head"],
+                expected_remote_commit=fixture["remote_commit"],
+                expected_remote_resume_sha256=fixture["remote_resume_sha256"],
+                reconcile_only=True,
+            )
+        self.assertEqual(recovered["status"], "CONFIRMED")
+        self.assertEqual(len(pushes), 1)
+
+    def test_bootstrap_pending_fences_checkpoint_and_unrelated_writer_before_push(self):
+        fixture = self._bootstrap_publication_fixture()
+        injected = False
+        real_git = workflow_runtime._team_git
+        current_path = fixture["owner"] / workflow_runtime.RESUME_PATH
+        history_path = fixture["owner"] / workflow_runtime.RESUME_HISTORY_PATH
+        local_path = fixture["owner"] / ".git" / workflow_runtime.TEAM_LOCAL
+
+        def inject_before_push(repo, *args):
+            nonlocal injected
+            if args and args[0] == "merge-base" and not injected:
+                local = workflow_runtime._team_local(repo)
+                if local["operations"].get(fixture["operation_id"], {}).get("state") == "RESERVED":
+                    injected = True
+                    before = {path: path.read_bytes() for path in (current_path, history_path, local_path)}
+                    candidate = repo / "pending-replay.md"
+                    current_raw = current_path.read_bytes()
+                    current_data, current_body = workflow_runtime._resume_document(current_raw)
+                    next_data = json.loads(json.dumps(current_data))
+                    next_data["revision"] += 1
+                    next_data["previous_sha256"] = workflow_runtime._resume_digest(current_raw)
+                    candidate.write_bytes(
+                        ("---\n" + workflow_runtime.yaml.safe_dump(next_data, sort_keys=False)
+                         + "---\n" + current_body).encode()
+                    )
+                    with self.assertRaisesRegex(
+                        workflow_runtime.WorkflowRuntimeError, "TEAM_BOOTSTRAP_PENDING"
+                    ):
+                        workflow_runtime.resume_checkpoint(
+                            repo, candidate=candidate,
+                            expected_sha256=workflow_runtime._resume_digest(current_raw),
+                        )
+                    self.assertEqual(
+                        workflow_runtime._team_local(repo)["operations"][fixture["operation_id"]]["state"],
+                        "RESERVED",
+                    )
+                    with self.assertRaisesRegex(
+                        workflow_runtime.WorkflowRuntimeError, "TEAM_BOOTSTRAP_PENDING"
+                    ):
+                        self.registered.stop()
+                        try:
+                            workflow_runtime.team_observe_remote(repo, operation_id="unrelated-observation")
+                        finally:
+                            self.registered.start()
+                    self.assertEqual(
+                        {path: path.read_bytes() for path in (current_path, history_path, local_path)},
+                        before,
+                    )
+            return real_git(repo, *args)
+
+        with mock.patch.object(workflow_runtime, "_team_git", side_effect=inject_before_push):
+            result = workflow_runtime.team_bootstrap_publish(
+                fixture["owner"], operation_id=fixture["operation_id"],
+                expected_head=fixture["expected_head"],
+                expected_remote_commit=fixture["remote_commit"],
+                expected_remote_resume_sha256=fixture["remote_resume_sha256"],
+            )
+        self.assertTrue(injected)
+        self.assertEqual(result["status"], "CONFIRMED")
+        replay = current_path.read_bytes()
+        replay_data, replay_body = workflow_runtime._resume_document(replay)
+        replay_candidate_data = json.loads(json.dumps(replay_data))
+        replay_candidate_data["revision"] += 1
+        replay_candidate_data["previous_sha256"] = workflow_runtime._resume_digest(replay)
+        candidate = fixture["owner"] / "post-confirm-replay.md"
+        candidate.write_bytes(
+            ("---\n" + workflow_runtime.yaml.safe_dump(replay_candidate_data, sort_keys=False)
+             + "---\n" + replay_body).encode()
+        )
+        self.assertEqual(
+            workflow_runtime.resume_checkpoint(
+                fixture["owner"], candidate=candidate,
+                expected_sha256=workflow_runtime._resume_digest(replay), dry_run=True,
+            )["status"],
+            "DRY_RUN",
+        )
+
+    def test_bootstrap_intermediate_ancestor_fast_forward_is_confirmed(self):
+        fixture = self._bootstrap_publication_fixture()
+        pushes = []
+        moved = False
+        real_git = workflow_runtime._team_git
+
+        def move_then_push(repo, *args):
+            nonlocal moved
+            if args and args[0] == "push":
+                pushes.append(args)
+                if not moved:
+                    moved = True
+                    subprocess.run(
+                        ["git", "push", "-q", "origin",
+                         fixture["local_install_commit"] + ":refs/heads/rh_clean"],
+                        cwd=fixture["owner"], check=True,
+                    )
+            return real_git(repo, *args)
+
+        with mock.patch.object(workflow_runtime, "_team_git", side_effect=move_then_push):
+            result = workflow_runtime.team_bootstrap_publish(
+                fixture["owner"], operation_id=fixture["operation_id"],
+                expected_head=fixture["expected_head"],
+                expected_remote_commit=fixture["remote_commit"],
+                expected_remote_resume_sha256=fixture["remote_resume_sha256"],
+            )
+        self.assertTrue(moved)
+        self.assertEqual(result["status"], "CONFIRMED")
+        self.assertEqual(len(pushes), 1)
+        self.assertEqual(
+            workflow_runtime._team_git(fixture["owner"], "ls-remote", "origin",
+                                        "refs/heads/rh_clean").decode().split()[0],
+            fixture["expected_head"],
+        )
+
+    def _bootstrap_remote_change(self, fixture, *, foreign_owner=False, foreign_path=False):
+        intruder = fixture["root"] / (
+            "intruder-owner" if foreign_owner else "intruder-foreign"
+        )
+        subprocess.run(
+            ["git", "clone", "-q", "--branch", "rh_clean",
+             str(fixture["remote"]), str(intruder)], check=True
+        )
+        changed_resume = intruder / workflow_runtime.RESUME_PATH
+        if foreign_owner:
+            raw = changed_resume.read_bytes()
+            changed_resume.write_bytes(
+                raw.replace(fixture["owner_id"].encode(), b"11111111-1111-4111-8111-111111111111", 1)
+            )
+        if foreign_path:
+            (intruder / "docs/unreviewed-foreign.txt").write_bytes(b"unreviewed remote change\n")
+        env = {
+            **workflow_runtime.os.environ,
+            "GIT_AUTHOR_NAME": "Intruder",
+            "GIT_COMMITTER_NAME": "Intruder",
+            "GIT_AUTHOR_EMAIL": "intruder@example.invalid",
+            "GIT_COMMITTER_EMAIL": "intruder@example.invalid",
+        }
+        subprocess.run(["git", "add", "."], cwd=intruder, env=env, check=True)
+        subprocess.run(["git", "commit", "-qm", "Uncooperative remote change"], cwd=intruder, env=env, check=True)
+        subprocess.run(
+            ["git", "push", "-q", "origin", "HEAD:refs/heads/rh_clean"],
+            cwd=intruder, env=env, check=True,
+        )
+        changed_commit = subprocess.check_output(
+            ["git", "rev-parse", "HEAD"], cwd=intruder, text=True
+        ).strip()
+        return changed_commit, changed_resume.read_bytes()
+
+    def test_bootstrap_reconcile_only_without_saved_reservation_does_not_write(self):
+        fixture = self._bootstrap_publication_fixture()
+        before = (fixture["owner"] / ".git" / workflow_runtime.TEAM_LOCAL).exists()
+        with self.assertRaisesRegex(
+            workflow_runtime.WorkflowRuntimeError, "TEAM_BOOTSTRAP_ORIGINAL_RESERVATION_REQUIRED"
+        ):
+            workflow_runtime.team_bootstrap_publish(
+                fixture["owner"], operation_id=fixture["operation_id"], reconcile_only=True
+            )
+        self.assertEqual(
+            (fixture["owner"] / ".git" / workflow_runtime.TEAM_LOCAL).exists(), before
+        )
+
+    def test_bootstrap_rejects_foreign_owner_and_changed_remote_pins_before_reservation(self):
+        fixture = self._bootstrap_publication_fixture()
+        with mock.patch.dict(workflow_runtime.os.environ, {"CODEX_THREAD_ID": "foreign-task"}):
+            with self.assertRaisesRegex(
+                workflow_runtime.WorkflowRuntimeError, "TEAM_OBSERVER_ONLY"
+            ):
+                workflow_runtime.team_bootstrap_publish(
+                    fixture["owner"], operation_id=fixture["operation_id"],
+                    expected_head=fixture["expected_head"],
+                    expected_remote_commit=fixture["remote_commit"],
+                    expected_remote_resume_sha256=fixture["remote_resume_sha256"],
+                )
+        changed_commit, changed_raw = self._bootstrap_remote_change(fixture, foreign_owner=True)
+        with self.assertRaisesRegex(
+            workflow_runtime.WorkflowRuntimeError, "TEAM_BOOTSTRAP_REMOTE_OWNER_OR_PINS_CHANGED"
+        ):
+            workflow_runtime.team_bootstrap_publish(
+                fixture["owner"], operation_id=fixture["operation_id"],
+                expected_head=fixture["expected_head"],
+                expected_remote_commit=changed_commit,
+                expected_remote_resume_sha256=workflow_runtime._resume_digest(changed_raw),
+            )
+        self.assertNotIn(
+            fixture["operation_id"], workflow_runtime._team_local(fixture["owner"])["operations"]
+        )
+
+    def test_bootstrap_rejects_v2_remote_and_local_candidate_drift(self):
+        fixture = self._bootstrap_publication_fixture()
+        subprocess.run(
+            ["git", "push", "-q", "origin", fixture["expected_head"] + ":refs/heads/rh_clean"],
+            cwd=fixture["owner"], check=True,
+        )
+        candidate_raw = (fixture["owner"] / workflow_runtime.RESUME_PATH).read_bytes()
+        with self.assertRaisesRegex(
+            workflow_runtime.WorkflowRuntimeError, "TEAM_BOOTSTRAP_REMOTE_OWNER_OR_PINS_CHANGED"
+        ):
+            workflow_runtime.team_bootstrap_publish(
+                fixture["owner"], operation_id=fixture["operation_id"],
+                expected_head=fixture["expected_head"],
+                expected_remote_commit=fixture["expected_head"],
+                expected_remote_resume_sha256=workflow_runtime._resume_digest(candidate_raw),
+            )
+
+        fixture = self._bootstrap_publication_fixture()
+        changed_input = fixture["owner"] / "docs/bootstrap-input.txt"
+        changed_input.write_bytes(b"candidate drift\n")
+        with self.assertRaisesRegex(
+            workflow_runtime.WorkflowRuntimeError, "TEAM_SOURCE_CHANGED:docs/bootstrap-input.txt"
+        ):
+            workflow_runtime.team_bootstrap_publish(
+                fixture["owner"], operation_id=fixture["operation_id"],
+                expected_head=fixture["expected_head"],
+                expected_remote_commit=fixture["remote_commit"],
+                expected_remote_resume_sha256=fixture["remote_resume_sha256"],
+            )
+        self.assertNotIn(
+            fixture["operation_id"], workflow_runtime._team_local(fixture["owner"])["operations"]
+        )
+
+    def test_bootstrap_push_remote_nonancestor_returns_unknown_without_retry(self):
+        fixture = self._bootstrap_publication_fixture()
+        intruder = fixture["root"] / "intruder-nonancestor"
+        subprocess.run(
+            ["git", "clone", "-q", "--branch", "rh_clean",
+             str(fixture["remote"]), str(intruder)], check=True
+        )
+        (intruder / "docs/unreviewed-foreign.txt").write_bytes(b"divergent tip\n")
+        env = {
+            **workflow_runtime.os.environ,
+            "GIT_AUTHOR_NAME": "Intruder",
+            "GIT_COMMITTER_NAME": "Intruder",
+            "GIT_AUTHOR_EMAIL": "intruder@example.invalid",
+            "GIT_COMMITTER_EMAIL": "intruder@example.invalid",
+        }
+        subprocess.run(["git", "add", "."], cwd=intruder, env=env, check=True)
+        subprocess.run(["git", "commit", "-qm", "Divergent remote tip"], cwd=intruder, env=env, check=True)
+        divergent = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=intruder, text=True).strip()
+        subprocess.run(
+            ["git", "push", "-q", "origin", "HEAD:refs/heads/test-divergent"],
+            cwd=intruder, env=env, check=True,
+        )
+        pushes = []
+        real_git = workflow_runtime._team_git
+        moved = False
+
+        def move_remote_then_push(repo, *args):
+            nonlocal moved
+            if args and args[0] == "push" and not moved:
+                moved = True
+                subprocess.run(
+                    ["git", "--git-dir", str(fixture["remote"]), "update-ref",
+                     "refs/heads/rh_clean", divergent, fixture["remote_commit"]], check=True,
+                )
+                pushes.append(args)
+            return real_git(repo, *args)
+
+        with mock.patch.object(workflow_runtime, "_team_git", side_effect=move_remote_then_push):
+            result = workflow_runtime.team_bootstrap_publish(
+                fixture["owner"], operation_id=fixture["operation_id"],
+                expected_head=fixture["expected_head"],
+                expected_remote_commit=fixture["remote_commit"],
+                expected_remote_resume_sha256=fixture["remote_resume_sha256"],
+            )
+            retry = workflow_runtime.team_bootstrap_publish(
+                fixture["owner"], operation_id=fixture["operation_id"], reconcile_only=True
+            )
+        self.assertEqual(result["status"], "UNKNOWN")
+        self.assertEqual(retry["status"], "UNKNOWN")
+        self.assertEqual(len(pushes), 1)
+        self.assertEqual(
+            workflow_runtime._team_git(fixture["owner"], "ls-remote", "origin",
+                                        "refs/heads/rh_clean").decode().split()[0],
+            divergent,
+        )
+
+    def test_bootstrap_rejects_non_descendant_candidate_before_push(self):
+        fixture = self._bootstrap_publication_fixture()
+        tree = subprocess.check_output(
+            ["git", "rev-parse", fixture["expected_head"] + "^{tree}"],
+            cwd=fixture["owner"], text=True,
+        ).strip()
+        env = {
+            **workflow_runtime.os.environ,
+            "GIT_AUTHOR_NAME": "Fixture",
+            "GIT_COMMITTER_NAME": "Fixture",
+            "GIT_AUTHOR_EMAIL": "fixture@example.invalid",
+            "GIT_COMMITTER_EMAIL": "fixture@example.invalid",
+        }
+        non_descendant = subprocess.check_output(
+            ["git", "commit-tree", tree], cwd=fixture["owner"], env=env,
+            input=b"non-descendant candidate\n", stderr=subprocess.PIPE,
+        ).decode().strip()
+        subprocess.run(["git", "reset", "--hard", non_descendant], cwd=fixture["owner"], check=True,
+                       stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        with self.assertRaisesRegex(
+            workflow_runtime.WorkflowRuntimeError, "TEAM_GIT_OBSERVATION_FAILED:merge-base"
+        ):
+            workflow_runtime.team_bootstrap_publish(
+                fixture["owner"], operation_id=fixture["operation_id"],
+                expected_head=non_descendant,
+                expected_remote_commit=fixture["remote_commit"],
+                expected_remote_resume_sha256=fixture["remote_resume_sha256"],
+            )
+        self.assertNotIn(
+            fixture["operation_id"], workflow_runtime._team_local(fixture["owner"])["operations"]
+        )
+
+    def test_v1_continuation_reports_migration_without_v2_ownership_error(self):
+        """A legacy checkpoint needs migration, not an inapplicable owner lookup."""
+        raw = self.fixture.document(operation={"kind": "NONE", "state": "NONE", "id": "", "evidence": []})
+        data, _ = workflow_runtime._resume_document(raw)
+        self.install(data)
+        runtime = self.repo / "orchestrator/state/CHANNEL_RUNTIME.json"
+        runtime.parent.mkdir(parents=True, exist_ok=True)
+        runtime.write_text(json.dumps({"active_proshka_phase": {"phase_id": data["pins"]["phase_id"]}}))
+        queue = self.repo / "docs/routeB_bus/PROSHKA_QUEUE.md"
+        queue.parent.mkdir(parents=True, exist_ok=True)
+        queue.write_text("## " + data["pins"]["request_id"] + "\n")
+        snapshot = mock.Mock(selected_goal=data["pins"]["physical_goal"],
+                             exact_source_pin=data["pins"]["source_commit"])
+        before = {path: path.read_bytes() for path in self.repo.rglob("*") if path.is_file()}
+        card = workflow_runtime._team_continuation(self.repo, snapshot, [])
+        self.assertEqual(card["blockers"], [
+            {"scope": "EXECUTION", "code": "TEAM_RESUME_MIGRATION_REQUIRED"},
+        ])
+        self.assertNotIn("local", card)
+        self.assertIn("whole_tree", card)
+        self.assertEqual(card["owner"]["task"], data["owner_thread_id"])
+        self.assertEqual(before, {path: path.read_bytes() for path in self.repo.rglob("*") if path.is_file()})
+
+    def test_legacy_v1_local_install_confirmation_precedes_fresh_v2_publish_intent(self):
+        """Old-control local confirmation survives migration before publication intent."""
+        fixture = ResumeCheckpointTests()
+        fixture.setUp()
+        self.addCleanup(fixture.doCleanups)
+        repo = fixture.repo
+        owner = "01a084f4-7498-7021-bac2-91d184d58dc7"
+
+        def v1_document(revision, previous, *, kind="NONE", state="NONE", operation_id="", evidence=None):
+            return fixture.document(
+                revision,
+                previous,
+                operation={"kind": kind, "state": state, "id": operation_id, "evidence": evidence or []},
+            )
+
+        with mock.patch.object(workflow_runtime, "_team_registered"), mock.patch.dict(
+            workflow_runtime.os.environ, {"CODEX_THREAD_ID": owner, "Q3_OWNER_EPOCH": "1"}
+        ):
+            first = v1_document(1, "ABSENT")
+            self.assertEqual(fixture.save(first)["status"], "SAVED")
+            first_sha = workflow_runtime._resume_digest(first)
+            self.assertEqual(
+                workflow_runtime._resume_document(first)[0]["operation"]["state"], "NONE"
+            )
+
+            local_install_id = "LEGACY-INITIAL-PUBLICATION:local-install"
+            local_intent = v1_document(
+                2, first_sha, kind="PUBLISH", state="INTENT", operation_id=local_install_id
+            )
+            self.assertEqual(fixture.save(local_intent, expected=first_sha)["status"], "SAVED")
+            intent_sha = workflow_runtime._resume_digest(local_intent)
+
+            runtime = repo / "orchestrator/workflow_runtime.py"
+            runtime.parent.mkdir(parents=True, exist_ok=True)
+            runtime.write_bytes(b"reviewed runtime subset\n")
+            source = repo / "docs/source.md"
+            source.write_bytes(b"exact source\n")
+            env = {
+                **workflow_runtime.os.environ,
+                "GIT_AUTHOR_NAME": "Fixture",
+                "GIT_COMMITTER_NAME": "Fixture",
+                "GIT_AUTHOR_EMAIL": "fixture@example.invalid",
+                "GIT_COMMITTER_EMAIL": "fixture@example.invalid",
+            }
+            subprocess.run(
+                ["git", "add", "orchestrator/workflow_runtime.py", str(workflow_runtime.TOOLS), "docs/source.md"],
+                cwd=repo,
+                env=env,
+                check=True,
+            )
+            subprocess.run(
+                ["git", "commit", "-qm", "Install reviewed runtime subset"],
+                cwd=repo,
+                env=env,
+                check=True,
+            )
+            local_commit = subprocess.check_output(
+                ["git", "rev-parse", "HEAD"], cwd=repo, text=True
+            ).strip()
+            local_confirmed = v1_document(
+                3,
+                intent_sha,
+                kind="PUBLISH",
+                state="CONFIRMED",
+                operation_id=local_install_id,
+                evidence=["bootstrap_local_commit:" + local_commit],
+            )
+            self.assertEqual(fixture.save(local_confirmed, expected=intent_sha)["status"], "SAVED")
+            confirmed_sha = workflow_runtime._resume_digest(local_confirmed)
+
+            # This is deliberately after v1 confirmation while the control still has no
+            # TEAM_RUNTIME_VERSION field; the next checkpoint enables the v2 migration.
+            identity = workflow_runtime.team_local_init(repo)
+            source_manifest = {
+                "docs/source.md": workflow_runtime._resume_digest(source.read_bytes()),
+                "orchestrator/workflow_runtime.py": workflow_runtime._resume_digest(runtime.read_bytes()),
+                str(workflow_runtime.TOOLS): workflow_runtime._resume_digest(
+                    (repo / workflow_runtime.TOOLS).read_bytes()
+                ),
+            }
+            request = {
+                "path": "docs/request.txt",
+                "commit": "a" * 40,
+                "blob": "b" * 40,
+                "sha256": "c" * 64,
+                "boundary_id": "BOUNDARY",
+                "conversation_id": "fixture-chat",
+            }
+            phase_key = dict(PHASE_KEY)
+            request_subject = {"kind": "REQUEST", "id": "REQ-EXISTING", "sha256": request["sha256"]}
+            verdict_subject = {"kind": "VERDICT", "id": "VERDICT-EXISTING", "sha256": "d" * 64}
+            source_sha = workflow_runtime._resume_digest(workflow_runtime._team_json(source_manifest))
+            stages = {
+                name: {
+                    "subject": request_subject if index < 3 else verdict_subject,
+                    "state": "NOT_STARTED",
+                    "evidence": {},
+                    "source_sha256": source_sha,
+                    "checked_by": None,
+                }
+                for index, name in enumerate(workflow_runtime.TEAM_STAGES)
+            }
+            local_inputs = {
+                "orchestrator/workflow_runtime.py": source_manifest["orchestrator/workflow_runtime.py"],
+                str(workflow_runtime.TOOLS): source_manifest[str(workflow_runtime.TOOLS)],
+            }
+            local_subject = {
+                "kind": "REPAIR",
+                "id": local_install_id,
+                "sha256": workflow_runtime._resume_digest(workflow_runtime._team_json(local_inputs)),
+            }
+            migrated = {
+                "schema": "q3_resume.v2",
+                "revision": 4,
+                "observed_at": "2026-09-11T10:00:00+02:00",
+                "previous_sha256": confirmed_sha,
+                "owner_thread_id": owner,
+                "owner_host_id": "local",
+                "reconciliation_pending": False,
+                "recovery_from": None,
+                "pins": {
+                    "head": "a" * 40,
+                    "physical_goal": "docs/goal.md",
+                    "source_commit": "b" * 40,
+                    "request_id": "REQ-EXISTING",
+                    "phase_id": "PHASE-EXISTING",
+                    "phase_key": phase_key,
+                    "request": request,
+                },
+                "stages": stages,
+                "operation": {
+                    "kind": "PUBLISH",
+                    "state": "CONFIRMED",
+                    "id": local_install_id,
+                    "evidence": ["bootstrap_local_commit:" + local_commit],
+                    "subject": local_subject,
+                    "command": "workflow-team-bootstrap-publish",
+                    "inputs": local_inputs,
+                },
+                "ownership": {
+                    "installation_ref": identity["installation_ref"],
+                    "epoch": 1,
+                    "state": "ACTIVE",
+                    "transfer": None,
+                },
+                "source_manifest": source_manifest,
+            }
+            control = repo / "docs/CODEX_CONTROL.md"
+            control.write_text(
+                "```yaml\nCONTROL_ID: Q3_EXECUTOR_CONTROL\nCONTROL_VERSION: 10\nSTATUS: ACTIVE\n"
+                "HONESTY_STATE: CHALLENGER_NOT_RH\nOWNER_ONLY_BOUNDARY: PX_RH_CLAIM\n"
+                "TEAM_RUNTIME_VERSION: 1\n```\n"
+            )
+            migrated_raw = self.document(migrated)
+            self.assertEqual(fixture.save(migrated_raw, expected=confirmed_sha)["status"], "SAVED")
+            migrated_data, _ = workflow_runtime._resume_document(fixture.current.read_bytes())
+            self.assertEqual(migrated_data["operation"]["id"], local_install_id)
+            self.assertEqual(migrated_data["operation"]["state"], "CONFIRMED")
+            self.assertEqual(
+                migrated_data["operation"]["evidence"], ["bootstrap_local_commit:" + local_commit]
+            )
+
+            publication_id = "LEGACY-INITIAL-PUBLICATION"
+            publication_inputs = {**local_inputs, "docs/source.md": source_manifest["docs/source.md"]}
+            publication = json.loads(json.dumps(migrated_data))
+            publication["revision"] = 5
+            publication["previous_sha256"] = workflow_runtime._resume_digest(fixture.current.read_bytes())
+            publication["operation"] = {
+                "kind": "PUBLISH",
+                "state": "INTENT",
+                "id": publication_id,
+                "evidence": [],
+                "subject": {
+                    "kind": "REPAIR",
+                    "id": publication_id,
+                    "sha256": workflow_runtime._resume_digest(workflow_runtime._team_json(publication_inputs)),
+                },
+                "command": "workflow-team-bootstrap-publish",
+                "inputs": publication_inputs,
+            }
+            publication_raw = self.document(publication)
+            self.assertEqual(
+                fixture.save(
+                    publication_raw,
+                    expected=publication["previous_sha256"],
+                )["status"],
+                "SAVED",
+            )
+            final_data, _ = workflow_runtime._resume_document(fixture.current.read_bytes())
+            self.assertEqual(final_data["operation"]["id"], publication_id)
+            self.assertEqual(final_data["operation"]["state"], "INTENT")
+            self.assertEqual(final_data["operation"]["inputs"], publication_inputs)
+            records = workflow_runtime._resume_history(fixture.history.read_bytes())
+            self.assertIn(("intent", 3, local_confirmed), records.values())
+            self.assertIn(("intent", 4, migrated_raw), records.values())
+
+    def test_stage_subject_and_prerequisites_prevent_false_acceptance(self):
+        data = self.data()
+        evidence = data["source_manifest"]
+        for name in ("receipt", "independent_review", "parent_check", "acceptance"):
+            data["stages"][name].update(state="DONE", evidence=evidence, checked_by="checker")
+        workflow_runtime._resume_document(self.document(data))
+        data["stages"]["independent_review"]["subject"]["id"] = "PRIOR-FLOW"
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "stage prerequisite"):
+            workflow_runtime._resume_document(self.document(data))
+        data = self.data()
+        data["stages"]["delivery"].update(state="DONE", evidence=evidence, checked_by="checker")
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "stage prerequisite delivery"):
+            workflow_runtime._resume_document(self.document(data))
+
+    def test_unknown_send_cannot_be_erased_or_changed_to_new_operation(self):
+        before = self.data()
+        before["operation"]["state"] = "UNKNOWN"
+        after = json.loads(json.dumps(before))
+        after["operation"]["id"] = "another-request"
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "UNRESOLVED_OPERATION"):
+            workflow_runtime._team_owner_transition(self.repo, before, after)
+        after = json.loads(json.dumps(before))
+        after["operation"].update(state="CONFIRMED", evidence=["docs/source.md"])
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "OPERATION_CONFIRMATION_REQUIRED"):
+            workflow_runtime._team_owner_transition(self.repo, before, after)
+        self.local(operations={before["operation"]["id"]: {"state": "CONFIRMED", "actor": before["owner_thread_id"], "epoch": 1}})
+        workflow_runtime._team_owner_transition(self.repo, before, after)
+
+    def test_foreign_owner_and_retired_epoch_are_rejected(self):
+        data = self.data()
+        self.install(data)
+        with mock.patch.object(workflow_runtime, "_team_enabled", return_value=True):
+            with mock.patch.dict(workflow_runtime.os.environ, {"CODEX_THREAD_ID": "foreign-task"}):
+                with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "OBSERVER_ONLY"):
+                    workflow_runtime.team_guard(self.repo, command="workflow-team-record", paths=[])
+            self.local(epoch_floor=2)
+            with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "RETIRED_EPOCH"):
+                workflow_runtime.team_guard(self.repo, command="workflow-team-record", paths=[])
+
+    def test_source_drift_holds_affected_execution(self):
+        data = self.data()
+        self.install(data)
+        self.source.write_bytes(b"changed source\n")
+        with mock.patch.object(workflow_runtime, "_team_enabled", return_value=True):
+            with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "TEAM_SOURCE_CHANGED"):
+                workflow_runtime.team_guard(self.repo, command="workflow-close-node", paths=[])
+
+    def test_writer_inventory_is_complete_and_legacy_direct_entry_is_refused(self):
+        inventory = workflow_runtime._team_writer_inventory(self.repo)
+        self.assertEqual(set(inventory["fenced"]), workflow_runtime.TEAM_FENCED_CALLS)
+        all_writers = set(inventory["fenced"]) | set(inventory["inherited_only"]) | set(inventory["isolated_only"])
+        self.assertTrue(
+            {
+                "aristotle",
+                "cartographer-loaders",
+                "packet-ingest",
+                "paper-ingest",
+                "slack-manual-chat-reconciliation",
+                "task-specific-generators",
+                "tool-census",
+            }
+            <= all_writers
+        )
+        self.install(self.data())
+        with mock.patch.object(workflow_runtime, "_team_enabled", return_value=True):
+            with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "UNFENCED_WRITER_FORBIDDEN"):
+                workflow_runtime.team_guard(self.repo, command="knowledge-spine-goal-close", paths=[])
+        path = self.repo / workflow_runtime.TOOLS
+        text = path.read_text()
+        path.write_text(text.replace("    - bind-request\n", "", 1))
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "INVENTORY_INCOMPLETE"):
+            workflow_runtime._team_writer_inventory(self.repo)
+
+    def test_confirmed_issue_holds_exact_operation_while_unrelated_work_proceeds(self):
+        self.install(self.data())
+        report = TeamRecordsTests.report()
+        report["affected_operations"] = ["workflow-phase-close"]
+        path = self.repo / workflow_runtime.TEAM_ISSUES
+        raw, _ = team_records.prepare_report(path.read_bytes(), report, workflow_runtime._resume_digest(path.read_bytes()))
+        for state in ("REPRODUCING", "CONFIRMED_BUG"):
+            event = TeamRecordsTests.transition(team_records.read_registry(raw, "issues"), state)
+            raw, _ = team_records.prepare_issue_event(raw, event, workflow_runtime._resume_digest(raw))
+        path.write_bytes(raw)
+        with mock.patch.object(workflow_runtime, "_team_enabled", return_value=True):
+            with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "DEPENDENT_OPERATION_HELD"):
+                workflow_runtime.team_guard(self.repo, command="workflow-phase-close", paths=[])
+            self.assertEqual(workflow_runtime.team_guard(self.repo, command="workflow-session-close", paths=[])["epoch"], 1)
+
+    def test_close_child_keeps_writer_lock_after_parent_crash(self):
+        import sys
+        directory = self.repo / "specs_docs"
+        directory.mkdir()
+        child = directory / "session_close.py"
+        child.write_text("import os, signal, sys\nos.kill(os.getppid(), signal.SIGKILL)\n"
+                         "print('child owns inherited lock', flush=True)\nsys.stdin.read(1)\n")
+        code = ("from pathlib import Path\nfrom orchestrator import workflow_runtime as w\n"
+                "w._team_enabled=lambda repo: True\nw.team_guard=lambda *args, **kwargs: {}\n"
+                f"w._run_close_script(Path({str(self.repo)!r}), 'specs_docs/session_close.py', [])\n")
+        parent = subprocess.Popen([sys.executable, "-c", code], cwd=Path(__file__).resolve().parents[2],
+                                  stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        try:
+            self.assertEqual(parent.stdout.readline().strip(), "child owns inherited lock")
+            self.assertEqual(parent.wait(timeout=5), -9)
+            with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "LOCK_COLLISION"):
+                with workflow_runtime._execution_writer_epoch(self.repo):
+                    pass
+        finally:
+            parent.stdin.write("x")
+            parent.stdin.flush()
+            parent.stdin.close()
+            parent.stdout.read()
+            parent.stdout.close()
+            parent.stderr.close()
+        with workflow_runtime._execution_writer_epoch(self.repo):
+            pass
+
+    def transfer(self, data, *, target_ref=None, target_thread=None, mode="SAME_INSTALLATION"):
+        return {"id": "transfer-1", "mode": mode, "from_ref": data["ownership"]["installation_ref"],
+                "from_thread": data["owner_thread_id"], "to_ref": target_ref or self.identity,
+                "to_thread": target_thread or "01a08f80-f033-7a31-8f3a-3aef042a3fbc",
+                "predecessor_commit": None, "evidence": {}}
+
+    def watch(self, data, *, state="ACTIVE", target=None, wake=None, supported=False):
+        return {"schema": "q3_team_native_observation.v1", "installation_ref": self.identity,
+                "actor": data["owner_thread_id"], "epoch": data["ownership"]["epoch"],
+                "transfer_id": (data["ownership"]["transfer"] or {}).get("id", "transfer-1"),
+                "watch_id": "watch-existing", "target_thread": target or data["owner_thread_id"], "state": state,
+                "continuation_minutes": 10, "agent_check_minutes": 20, "observed_at": "2026-09-11T12:00:00+02:00",
+                "scheduled_wake_at": wake, "provider_receipt": "docs/source.md",
+                "provider_receipt_sha256": workflow_runtime._resume_digest(self.source.read_bytes()),
+                "retarget_supported": supported}
+
+    def test_same_installation_transfer_rejects_unsupported_retarget_before_epoch_advance(self):
+        old = self.data()
+        old["operation"].update(state="CONFIRMED", evidence=["docs/source.md"])
+        old["ownership"].update(state="HANDOFF_QUIESCED", transfer=self.transfer(old))
+        new = json.loads(json.dumps(old))
+        new["ownership"].update(state="WATCH_RECONCILE_PENDING", epoch=2)
+        new["owner_thread_id"] = new["ownership"]["transfer"]["to_thread"]
+        self.local(watch=self.watch(old))
+        with mock.patch.object(workflow_runtime, "_team_quiescence"):
+            with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "RETARGET_UNSUPPORTED"):
+                workflow_runtime._team_owner_transition(self.repo, old, new)
+            self.local(watch=self.watch(old, supported=True))
+            workflow_runtime._team_owner_transition(self.repo, old, new)
+        self.assertEqual(old["ownership"]["epoch"], 1)
+
+    def test_native_watch_requires_integer_ten_twenty_cadence(self):
+        data = self.data()
+        self.install(data)
+        evidence = self.watch(data)
+        self.fixture.candidate.write_bytes(workflow_runtime._team_json(evidence))
+        result = workflow_runtime.team_observe_native(
+            self.repo, candidate=self.fixture.candidate,
+            expected_sha256=workflow_runtime._resume_digest(self.fixture.candidate.read_bytes()))
+        self.assertEqual(result["status"], "OBSERVED")
+        self.assertEqual(workflow_runtime._team_local(self.repo)["watch"]["continuation_minutes"], 10)
+        self.assertFalse(result["scheduled_wake_observed"])
+        before = workflow_runtime._team_private_read(self.repo, workflow_runtime.TEAM_LOCAL)
+        for field, values in (
+            ("continuation_minutes", (0, 5, True, False, 5.0, 10.0, "10", [], None)),
+            ("agent_check_minutes", (0, 5, True, False, 20.0, "20", [], None)),
+        ):
+            for value in values:
+                with self.subTest(field=field, value=value):
+                    evidence = self.watch(data)
+                    evidence[field] = value
+                    self.fixture.candidate.write_bytes(workflow_runtime._team_json(evidence))
+                    with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "TEAM_NATIVE_SCHEMA_INVALID"):
+                        workflow_runtime.team_observe_native(
+                            self.repo, candidate=self.fixture.candidate,
+                            expected_sha256=workflow_runtime._resume_digest(self.fixture.candidate.read_bytes()))
+                    self.assertEqual(workflow_runtime._team_private_read(self.repo, workflow_runtime.TEAM_LOCAL), before)
+
+    def test_watch_intent_is_not_replayed_and_activation_requires_actual_wake(self):
+        old = self.data()
+        old["ownership"].update(state="WATCH_RECONCILE_PENDING", epoch=2, transfer=self.transfer(old))
+        old["owner_thread_id"] = old["ownership"]["transfer"]["to_thread"]
+        self.install(old)
+        with mock.patch.dict(workflow_runtime.os.environ, {"CODEX_THREAD_ID": old["owner_thread_id"]}):
+            self.local(watch=self.watch(old, supported=True))
+            first = workflow_runtime.team_watch_intent(self.repo, action="UPDATE", transfer_id="transfer-1", target_thread=old["owner_thread_id"])
+            self.assertEqual(first["status"], "RESERVED")
+            second = workflow_runtime.team_watch_intent(self.repo, action="UPDATE", transfer_id="transfer-1", target_thread=old["owner_thread_id"])
+            self.assertEqual(second["status"], "RECONCILE_ORIGINAL")
+            new = json.loads(json.dumps(old))
+            new["ownership"]["state"] = "ACTIVE"
+            with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "WATCH_RECONCILIATION_REQUIRED"):
+                workflow_runtime._team_owner_transition(self.repo, old, new)
+            evidence = self.watch(old, wake="2026-09-11T12:10:00+02:00", supported=True)
+            self.fixture.candidate.write_bytes(workflow_runtime._team_json(evidence))
+            workflow_runtime.team_observe_native(self.repo, candidate=self.fixture.candidate,
+                                                expected_sha256=workflow_runtime._resume_digest(self.fixture.candidate.read_bytes()))
+            workflow_runtime._team_owner_transition(self.repo, old, new)
+
+    def test_incomplete_source_recheck_cannot_reuse_done_stages(self):
+        data = self.data()
+        stage = data["stages"]["receipt"]
+        stage.update(state="DONE", evidence=data["source_manifest"], checked_by="owner")
+        data["source_manifest"] = {"docs/source.md": "e" * 64}
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "stage source verification stale"):
+            workflow_runtime._resume_document(self.document(data))
+
+    def test_reservation_is_once_and_lost_confirmation_requires_inspection(self):
+        data = self.data()
+        raw = self.install(data)
+        receipt = {"state": "OBSERVED", "checkpoint_sha256": workflow_runtime._resume_digest(raw),
+                   "actor": data["owner_thread_id"], "epoch": 1, "remote_ownership": data["ownership"],
+                   "remote_thread": data["owner_thread_id"], "local_head": "a" * 40}
+        self.local(operations={data["operation"]["id"]: receipt})
+        with mock.patch.object(workflow_runtime, "_team_git", return_value=("a" * 40).encode()):
+            result = workflow_runtime.team_reserve_effect(self.repo, operation_id=data["operation"]["id"])
+            self.assertEqual(result["status"], "RESERVED")
+            retry = workflow_runtime.team_reserve_effect(self.repo, operation_id=data["operation"]["id"])
+            self.assertEqual(retry, {"status": "RECONCILE_ORIGINAL", "operation_id": data["operation"]["id"], "execute": False})
+
+    def test_foreign_observer_cannot_poison_remote_or_native_records(self):
+        data = self.data()
+        self.install(data)
+        with mock.patch.dict(workflow_runtime.os.environ, {"CODEX_THREAD_ID": "foreign-task"}):
+            with mock.patch.object(workflow_runtime, "_team_remote") as remote:
+                with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "NOT_OWNER_OR_NAMED_CLAIMANT"):
+                    workflow_runtime.team_observe_remote(self.repo, operation_id="existing-request")
+                remote.assert_not_called()
+            evidence = self.watch(data)
+            evidence["actor"] = "foreign-task"
+            self.fixture.candidate.write_bytes(workflow_runtime._team_json(evidence))
+            with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "OBSERVER_ONLY"):
+                workflow_runtime.team_observe_native(self.repo, candidate=self.fixture.candidate,
+                    expected_sha256=workflow_runtime._resume_digest(self.fixture.candidate.read_bytes()))
+        self.assertIsNone(workflow_runtime._team_private_read(self.repo, workflow_runtime.TEAM_LOCAL))
+
+    def test_archive_writer_crash_boundaries_and_original_report_replay(self):
+        self.install(self.data())
+        (self.repo / "docs/session_protocols").mkdir()
+        raw, original = team_records.prepare_report(b"# preserved legacy\n", TeamRecordsTests.report(),
+            workflow_runtime._resume_digest(b"# preserved legacy\n"))
+        issue_path = self.repo / workflow_runtime.TEAM_ISSUES
+        expected = workflow_runtime._resume_digest(raw)
+        for failure in range(1, 5):
+            with self.subTest(after_durable_step=failure):
+                issue_path.write_bytes(raw)
+                request = {"schema": "q3_team_archive_request.v1", "registry_kind": "issues", "event_count": 1,
+                           "expected_registry_sha256": expected,
+                           "archive_ref": f"docs/session_protocols/team-archive-fixture-{failure}.json"}
+                self.fixture.candidate.write_bytes(team_records.canonical_json(request))
+                real, count = workflow_runtime._resume_cas_bytes, 0
+                def interrupted(*args):
+                    nonlocal count
+                    real(*args)
+                    count += 1
+                    if count == failure:
+                        raise RuntimeError("fixture interruption")
+                with mock.patch.object(workflow_runtime, "_team_enabled", return_value=True):
+                    with mock.patch.object(workflow_runtime, "_resume_cas_bytes", side_effect=interrupted):
+                        with self.assertRaisesRegex(RuntimeError, "fixture interruption"):
+                            workflow_runtime.team_record(self.repo, kind="archive", candidate=self.fixture.candidate,
+                                expected_sha256=expected)
+                    result = workflow_runtime.team_record(self.repo, kind="archive", candidate=self.fixture.candidate,
+                        expected_sha256=expected)
+                    final_receipt = (self.repo / result["receipt_path"]).read_bytes()
+                    retry = workflow_runtime.team_record(self.repo, kind="archive", candidate=self.fixture.candidate,
+                        expected_sha256=expected)
+                self.assertEqual(retry["status"], "NOOP")
+                self.assertEqual((self.repo / result["receipt_path"]).read_bytes(), final_receipt)
+                loader = lambda path: (self.repo / path).read_bytes()
+                unchanged, replay = team_records.prepare_report(issue_path.read_bytes(), TeamRecordsTests.report(),
+                    "0" * 64, archive_loader=loader)
+                self.assertEqual(unchanged, issue_path.read_bytes())
+                self.assertEqual(replay["receipt_sha256"], original["receipt_sha256"])
+                self.assertTrue(unchanged.startswith(b"# preserved legacy\n"))
+
+    def test_typed_cross_clone_release_claim_wake_and_old_owner_rejection(self):
+        self._cross_clone_transfer_scenario(abort_claim=False)
+
+    def test_cross_clone_claim_abort_after_watch_creation_and_fresh_reclaim(self):
+        self._cross_clone_transfer_scenario(abort_claim=True)
+
+    def _cross_clone_transfer_scenario(self, *, abort_claim):
+        """Real Git transport plus every typed checkpoint phase; no remote/wake success stub."""
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            remote, home = root / "remote.git", root / "home"
+            env = {**workflow_runtime.os.environ, "GIT_AUTHOR_NAME": "Fixture", "GIT_COMMITTER_NAME": "Fixture",
+                   "GIT_AUTHOR_EMAIL": "fixture@example.invalid", "GIT_COMMITTER_EMAIL": "fixture@example.invalid"}
+            def git(repo, *args):
+                return subprocess.run(["git", *args], cwd=repo, env=env, capture_output=True, check=True).stdout.decode().strip()
+            def save(repo, data):
+                previous = (repo / workflow_runtime.RESUME_PATH).read_bytes()
+                before, _ = workflow_runtime._resume_document(previous)
+                data.update(revision=before["revision"] + 1, previous_sha256=workflow_runtime._resume_digest(previous))
+                path = repo / "candidate.md"
+                path.write_bytes(self.document(data))
+                return workflow_runtime.resume_checkpoint(repo, candidate=path, expected_sha256=data["previous_sha256"])
+            def publish(repo, message):
+                git(repo, "add", "docs")
+                git(repo, "commit", "-qm", message)
+                git(repo, "push", "origin", "HEAD:refs/heads/rh_clean")
+                return git(repo, "rev-parse", "HEAD")
+            def observe_watch(repo, data, state, wake=None):
+                observed = self.watch(data, state=state, wake=wake)
+                observed["installation_ref"] = data["ownership"]["installation_ref"]
+                observed["watch_id"] = None if state == "ABSENT" else "watch-home" if repo == home else "watch-existing"
+                path = repo / "native.json"
+                path.write_bytes(workflow_runtime._team_json(observed))
+                workflow_runtime.team_observe_native(repo, candidate=path,
+                    expected_sha256=workflow_runtime._resume_digest(path.read_bytes()))
+
+            git(root, "init", "--bare", "-q", str(remote))
+            git(self.repo, "remote", "add", "origin", str(remote))
+            data = self.data()
+            data["operation"].update(state="CONFIRMED", evidence=["docs/source.md"])
+            self.install(data)
+            publish(self.repo, "Fixture initial checkpoint")
+            git(root, "clone", "-q", "--branch", "rh_clean", str(remote), str(home))
+            home_ref = workflow_runtime.team_local_init(home)["installation_ref"]
+            home_thread = "01a08f80-f033-7a31-8f3a-3aef042a3fbc"
+            transfer = self.transfer(data, target_ref=home_ref, target_thread=home_thread, mode="CROSS_INSTALLATION")
+            data["ownership"].update(state="HANDOFF_INTENT", transfer=transfer)
+            save(self.repo, data)
+            observe_watch(self.repo, data, "ACTIVE")
+            workflow_runtime.team_watch_intent(self.repo, action="PAUSE", transfer_id="transfer-1", target_thread=data["owner_thread_id"])
+            observe_watch(self.repo, data, "PAUSED")
+            evidence = {"schema": "q3_team_quiescence.v1", "transfer_id": "transfer-1", "epoch": 1,
+                        "source_manifest": data["source_manifest"], "head": git(self.repo, "rev-parse", "HEAD"),
+                        "dirty_paths": {}, "canonical_writers_idle": True, "unknown_operations": [],
+                        "assignments": [], "outputs": {}, "provider_receipt": data["source_manifest"]}
+            path = self.repo / "docs/quiescence.json"
+            path.write_bytes(workflow_runtime._team_json(evidence))
+            data["ownership"]["transfer"]["evidence"] = {"docs/quiescence.json": workflow_runtime._resume_digest(path.read_bytes())}
+            data["ownership"]["state"] = "HANDOFF_QUIESCED"
+            save(self.repo, data)
+            data["ownership"]["state"] = "RELEASED"
+            save(self.repo, data)
+            release = publish(self.repo, "Fixture released to home")
+            git(home, "pull", "--ff-only", "origin", "rh_clean")
+            self.assertFalse((home / ".git" / workflow_runtime.TEAM_LOCAL).exists())
+            with mock.patch.dict(workflow_runtime.os.environ, {"CODEX_THREAD_ID": home_thread, "Q3_OWNER_EPOCH": "2"}):
+                with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "NOT_OWNER_OR_NAMED_CLAIMANT"):
+                    workflow_runtime.team_observe_remote(home, operation_id="wrong-transfer:release")
+                workflow_runtime.team_observe_remote(home, operation_id="transfer-1:release")
+                claim = json.loads(json.dumps(data))
+                claim.update(owner_thread_id=home_thread)
+                claim["ownership"].update(state="CLAIM_PENDING", epoch=2, installation_ref=home_ref)
+                claim["ownership"]["transfer"]["predecessor_commit"] = release
+                save(home, claim)
+                with mock.patch.object(workflow_runtime, "_team_enabled", return_value=True):
+                    with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "RECONCILIATION_REQUIRED"):
+                        workflow_runtime.team_guard(home, command="workflow-team-record", paths=[])
+                claim_commit = publish(home, "Fixture pending home claim")
+                # Losing a push receipt is reconciled against the same published claim.
+                workflow_runtime.team_observe_remote(home, operation_id="transfer-1:claim")
+                retry = workflow_runtime.team_observe_remote(home, operation_id="transfer-1:claim")
+                self.assertEqual(retry["status"], "NOOP")
+                observe_watch(home, claim, "ABSENT")
+                workflow_runtime.team_watch_intent(home, action="CREATE", transfer_id="transfer-1", target_thread=home_thread)
+                self.assertEqual(workflow_runtime.team_watch_intent(home, action="CREATE", transfer_id="transfer-1",
+                    target_thread=home_thread)["status"], "RECONCILE_ORIGINAL")
+                active = json.loads(json.dumps(claim))
+                active["ownership"]["state"] = "ACTIVE"
+                observe_watch(home, claim, "ACTIVE")
+                with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "WATCH_RECONCILIATION_REQUIRED"):
+                    save(home, active)
+                if abort_claim:
+                    # A created watch may need pausing before its first wake. This is
+                    # a distinct effect; retrying CREATE must still never execute twice.
+                    pause = workflow_runtime.team_watch_intent(home, action="PAUSE",
+                        transfer_id="transfer-1", target_thread=home_thread)
+                    self.assertEqual(pause["status"], "RESERVED")
+                    self.assertEqual(workflow_runtime.team_watch_intent(home, action="CREATE",
+                        transfer_id="transfer-1", target_thread=home_thread)["status"], "RECONCILE_ORIGINAL")
+                    observe_watch(home, claim, "PAUSED")
+                    aborted = json.loads(json.dumps(claim))
+                    aborted["ownership"].update(state="CLAIM_ABORTED", transfer={
+                        **self.transfer(claim, target_ref=self.identity,
+                            target_thread=data["owner_thread_id"], mode="CROSS_INSTALLATION"),
+                        "id": "transfer-2", "predecessor_commit": claim_commit})
+                    save(home, aborted)
+                    aborted_commit = publish(home, "Fixture verified home claim abort")
+                    workflow_runtime.team_observe_remote(home, operation_id="transfer-2:aborted")
+                    self.assertEqual(workflow_runtime.team_observe_remote(home,
+                        operation_id="transfer-2:aborted")["status"], "NOOP")
+                    self.assertEqual(aborted["ownership"]["epoch"], 2)
+                    with mock.patch.object(workflow_runtime, "_team_enabled", return_value=True):
+                        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "RECONCILIATION_REQUIRED"):
+                            workflow_runtime.team_guard(home, command="workflow-team-record", paths=[])
+                else:
+                    # This is a simulated provider observation, not live-app acceptance.
+                    observe_watch(home, claim, "ACTIVE", wake="2026-09-11T12:10:00+02:00")
+                    save(home, active)
+                    active_commit = publish(home, "Fixture home active after provider wake")
+                    with mock.patch.object(workflow_runtime, "_team_enabled", return_value=True):
+                        self.assertEqual(workflow_runtime.team_guard(home, command="workflow-team-record", paths=[])["epoch"], 2)
+                        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "CALLER_EPOCH_CHANGED"):
+                            workflow_runtime.team_guard(home, command="workflow-team-record", paths=[], expected_epoch=1)
+            git(self.repo, "fetch", "origin", "rh_clean")
+            git(self.repo, "merge", "--ff-only", "FETCH_HEAD")
+            if abort_claim:
+                with mock.patch.dict(workflow_runtime.os.environ, {"Q3_OWNER_EPOCH": "3"}):
+                    workflow_runtime.team_observe_remote(self.repo, operation_id="transfer-2:release")
+                    reclaimed = json.loads(json.dumps(aborted))
+                    reclaimed["owner_thread_id"] = data["owner_thread_id"]
+                    reclaimed["ownership"].update(state="CLAIM_PENDING", epoch=3, installation_ref=self.identity)
+                    reclaimed["ownership"]["transfer"]["predecessor_commit"] = aborted_commit
+                    save(self.repo, reclaimed)
+                    publish(self.repo, "Fixture new epoch claim after verified abort")
+                    workflow_runtime.team_observe_remote(self.repo, operation_id="transfer-2:claim")
+                    observe_watch(self.repo, reclaimed, "PAUSED")
+                    workflow_runtime.team_watch_intent(self.repo, action="UPDATE",
+                        transfer_id="transfer-2", target_thread=reclaimed["owner_thread_id"])
+                    observe_watch(self.repo, reclaimed, "ACTIVE", wake="2026-09-11T12:20:00+02:00")
+                    reclaimed["ownership"]["state"] = "ACTIVE"
+                    save(self.repo, reclaimed)
+                    publish(self.repo, "Fixture reclaimed after scheduled wake")
+                    with mock.patch.object(workflow_runtime, "_team_enabled", return_value=True):
+                        self.assertEqual(workflow_runtime.team_guard(self.repo,
+                            command="workflow-team-record", paths=[])["epoch"], 3)
+                return
+            with mock.patch.object(workflow_runtime, "_team_enabled", return_value=True):
+                with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "OBSERVER_ONLY"):
+                    workflow_runtime.team_guard(self.repo, command="workflow-team-record", paths=[])
+            self.assertEqual(git(self.repo, "rev-parse", "HEAD"), active_commit)
+
+    def test_two_independent_clones_never_share_identity_and_only_one_claim_pushes(self):
+        # Actual git remote/clone/fast-forward behavior, not a mocked push result.
+        import os
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            remote, home, rival = root / "remote.git", root / "home", root / "rival"
+            env = {**os.environ, "GIT_AUTHOR_NAME": "Fixture", "GIT_COMMITTER_NAME": "Fixture",
+                   "GIT_AUTHOR_EMAIL": "fixture@example.invalid", "GIT_COMMITTER_EMAIL": "fixture@example.invalid"}
+            def git(repo, *args, check=True):
+                return subprocess.run(["git", *args], cwd=repo, env=env, capture_output=True, check=check)
+            git(root, "init", "--bare", "-q", str(remote))
+            self.install(self.data())
+            git(self.repo, "add", "docs")
+            git(self.repo, "commit", "-qm", "Fixture release")
+            git(self.repo, "push", str(remote), "HEAD:refs/heads/rh_clean")
+            for clone in (home, rival):
+                git(root, "clone", "-q", "--branch", "rh_clean", str(remote), str(clone))
+            home_id = workflow_runtime.team_local_init(home)["installation_ref"]
+            rival_id = workflow_runtime.team_local_init(rival)["installation_ref"]
+            self.assertEqual(len({self.identity, home_id, rival_id}), 3)
+            self.assertFalse((home / ".git" / workflow_runtime.TEAM_LOCAL).exists())
+            for clone in (home, rival):
+                (clone / "docs/claim.txt").write_text(clone.name)
+                git(clone, "add", "docs/claim.txt")
+                git(clone, "commit", "-qm", "Fixture claim")
+            self.assertEqual(git(home, "push", "origin", "HEAD:refs/heads/rh_clean").returncode, 0)
+            self.assertNotEqual(git(rival, "push", "origin", "HEAD:refs/heads/rh_clean", check=False).returncode, 0)
+            remote_head = git(home, "ls-remote", "origin", "refs/heads/rh_clean").stdout.split()[0]
+            self.assertEqual(remote_head, git(home, "rev-parse", "HEAD").stdout.strip())
+            self.assertNotEqual(remote_head, git(rival, "rev-parse", "HEAD").stdout.strip())
+
+    def test_repair_source_set_rejects_extra_locator(self):
+        expected = {"docs/input.md": "a" * 64}
+        rows = [
+            {"locator": "docs/input.md", "sha256": "a" * 64},
+            {"locator": "git:" + "b" * 40 + ":docs/old.md", "sha256": "b" * 64},
+        ]
+        with self.assertRaisesRegex(
+            workflow_runtime.WorkflowRuntimeError, "TEAM_ISSUE_RESULT_SOURCE_MISMATCH"
+        ):
+            workflow_runtime._team_validate_repair_source_set(rows, expected)
+
+    def test_named_repair_commit_verifies_descendant_bytes_and_rejects_old_reachable_commit(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            repo = Path(temporary)
+            env = {
+                **workflow_runtime.os.environ,
+                "GIT_AUTHOR_NAME": "Fixture",
+                "GIT_COMMITTER_NAME": "Fixture",
+                "GIT_AUTHOR_EMAIL": "fixture@example.invalid",
+                "GIT_COMMITTER_EMAIL": "fixture@example.invalid",
+            }
+
+            def git(*args: str) -> str:
+                return subprocess.run(
+                    ["git", *args], cwd=repo, env=env, capture_output=True, check=True
+                ).stdout.decode().strip()
+
+            git("init", "-q")
+            (repo / "repair.txt").write_text("base\n")
+            git("add", "repair.txt")
+            git("commit", "-qm", "base")
+            base = git("rev-parse", "HEAD")
+            (repo / "repair.txt").write_text("old reachable\n")
+            git("commit", "-qam", "old reachable")
+            old = git("rev-parse", "HEAD")
+            (repo / "repair.txt").write_text("verified candidate\n")
+            git("commit", "-qam", "verified candidate")
+            candidate = git("rev-parse", "HEAD")
+            expected = hashlib.sha256(b"verified candidate\n").hexdigest()
+            payload = {
+                "candidate_commit": candidate,
+                "candidate_manifest": [{"path": "repair.txt", "sha256": expected}],
+            }
+            self.assertEqual(
+                workflow_runtime._team_validate_repair_candidate(
+                    repo, payload, base_commit=base
+                ),
+                {"repair.txt": expected},
+            )
+            payload["candidate_commit"] = old
+            with self.assertRaisesRegex(
+                workflow_runtime.WorkflowRuntimeError,
+                "TEAM_REPAIR_CANDIDATE_BYTES_MISMATCH",
+            ):
+                workflow_runtime._team_validate_repair_candidate(
+                    repo, payload, base_commit=base
+                )
+
+    def test_reviewed_local_bytes_commit_excludes_foreign_paths(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            repo = Path(temporary)
+            env = {
+                **workflow_runtime.os.environ,
+                "GIT_AUTHOR_NAME": "Fixture",
+                "GIT_COMMITTER_NAME": "Fixture",
+                "GIT_AUTHOR_EMAIL": "fixture@example.invalid",
+                "GIT_COMMITTER_EMAIL": "fixture@example.invalid",
+            }
+
+            def git(*args: str) -> str:
+                return subprocess.run(
+                    ["git", *args], cwd=repo, env=env, capture_output=True, check=True
+                ).stdout.decode().strip()
+
+            git("init", "-q")
+            (repo / "repair.txt").write_text("base\n")
+            (repo / "foreign.txt").write_text("foreign base\n")
+            git("add", ".")
+            git("commit", "-qm", "base")
+            base = git("rev-parse", "HEAD")
+
+            reviewed_bytes = b"reviewed local bytes\n"
+            (repo / "repair.txt").write_bytes(reviewed_bytes)
+            digest = hashlib.sha256(reviewed_bytes).hexdigest()
+            manifest = [{"path": "repair.txt", "sha256": digest}]
+
+            assignment = TeamRecordsTests.provenance_assignment(role="independent-checker")
+            assignment.update(base_commit=base, permitted_paths=["repair.txt"])
+            assignment_legacy = b"legacy assignments\n"
+            assignment_raw, _ = team_records.prepare_assignment(
+                assignment_legacy, assignment, hashlib.sha256(assignment_legacy).hexdigest()
+            )
+            assignments = team_records.read_registry(assignment_raw, "assignments")
+            report = TeamRecordsTests.report()
+            report["base_commit"] = base
+            issue_legacy = b"legacy issues\n"
+            issue_raw, _ = team_records.prepare_report(
+                issue_legacy, report, hashlib.sha256(issue_legacy).hexdigest()
+            )
+            issues = team_records.read_registry(issue_raw, "issues")
+            issue = next(iter(issues["issues"].values()))
+            review = TeamRecordsTests.repair_review_artifact(issue, manifest)
+            context = TeamRecordsTests.provenance_context(
+                assignment, report=report, review_artifact=review
+            )
+            result_observation = context.observations[assignment["assignment_id"]][1]
+            event = TeamRecordsTests.transition(
+                issues,
+                "FIX_VERIFIED",
+                actor="reporter-task",
+                actor_role="independent-checker",
+                verifier_id="reporter-task",
+                evidence=[
+                    {
+                        "locator": result_observation["output_locator"],
+                        "sha256": result_observation["output_sha256"],
+                    }
+                ],
+                candidate_manifest=manifest,
+            )
+            team_records.validate_issue_event_actor(
+                event, assignments, context, expected_base_commit=base
+            )
+
+            # The reviewed bytes are committed after review.  An unrelated
+            # foreign edit remains dirty and is excluded from this commit.
+            git("add", "repair.txt")
+            git("commit", "-qm", "named repair")
+            candidate = git("rev-parse", "HEAD")
+            (repo / "foreign.txt").write_text("foreign dirty edit\n")
+            self.assertEqual(
+                workflow_runtime._team_validate_repair_candidate(
+                    repo,
+                    {"candidate_commit": candidate, "candidate_manifest": manifest},
+                    base_commit=base,
+                ),
+                {"repair.txt": digest},
+            )
+            self.assertEqual((repo / "foreign.txt").read_text(), "foreign dirty edit\n")
+            self.assertIn("M foreign.txt", git("status", "--porcelain"))
+
+            # A named candidate commit that also includes the foreign path is
+            # rejected before commit acceptance; no branch merge/push occurs.
+            second_bytes = b"second repair bytes\n"
+            (repo / "repair.txt").write_bytes(second_bytes)
+            (repo / "foreign.txt").write_text("foreign committed edit\n")
+            git("add", ".")
+            git("commit", "-qm", "repair plus foreign")
+            second = git("rev-parse", "HEAD")
+            second_manifest = [{
+                "path": "repair.txt",
+                "sha256": hashlib.sha256(second_bytes).hexdigest(),
+            }]
+            with self.assertRaisesRegex(
+                workflow_runtime.WorkflowRuntimeError, "TEAM_REPAIR_CANDIDATE_DIFF_MISMATCH"
+            ):
+                workflow_runtime._team_validate_repair_candidate(
+                    repo,
+                    {"candidate_commit": second, "candidate_manifest": second_manifest},
+                    base_commit=base,
+                )
+
+
+class TeamRecordsTests(unittest.TestCase):
+    """Focused tests for pure issue/assignment framing and lifecycle helpers."""
+
+    SHA = "a" * 64
+
+    @classmethod
+    def report(cls, number: int = 1, *, attempt: str | None = None, actual: str = "observed") -> dict[str, object]:
+        return {
+            "schema": team_records.ISSUE_REPORT_SCHEMA,
+            "reporter_task": "reporter-task",
+            "reporter_host": "linux-installation",
+            "assignment_id": f"assignment-{number}",
+            "attempt_id": attempt or f"attempt-{number}",
+            "observed_at": "2026-09-11T12:00:00+02:00",
+            "subject_id": f"subject-{number}",
+            "subject_type": "code-defect",
+            "base_commit": cls.SHA,
+            "input_paths": [{"path": "orchestrator/workflow_runtime.py", "sha256": cls.SHA}],
+            "severity": "MEDIUM",
+            "suspected_class": "CODE_DEFECT",
+            "expected_behavior": "The registered route preserves the exact predecessor.",
+            "expected_rule_source": {"locator": "docs/Codex/TEAM_RUNTIME_REFACTOR_PLAN_2026-09-11.md", "sha256": cls.SHA},
+            "actual_behavior": actual,
+            "reproduction": "Call the pure preparation helper twice with the same preimage.",
+            "affected_operations": ["issue-intake", "repair-acceptance"],
+            "evidence": [{"locator": "evidence/reproduction.txt", "sha256": cls.SHA}],
+            "uncertainty": "The source fixture is synthetic.",
+        }
+
+    @classmethod
+    def transition(
+        cls,
+        registry: dict[str, object],
+        transition: str,
+        *,
+        actor: str = "independent-checker",
+        source: str = "docs/Codex/TEAM_RUNTIME_REFACTOR_PLAN_2026-09-11.md",
+        **extra: object,
+    ) -> dict[str, object]:
+        issue = next(iter(registry["issues"].values()))
+        payload: dict[str, object] = {
+            "schema": team_records.ISSUE_TRANSITION_SCHEMA,
+            "issue_id": issue["issue_id"],
+            "report_id": issue["report_id"],
+            "transition": transition,
+            "actor_id": actor,
+            "actor_role": "independent-checker",
+            "evidence": [{"locator": "evidence/check.txt", "sha256": cls.SHA}],
+            "source_binding": [{"locator": source, "sha256": cls.SHA}],
+            "reason": f"Evidence supports {transition}.",
+            "previous_event_sha256": issue["last_event_sha256"],
+            "previous_state_sha256": team_records._state_sha(issue),
+        }
+        if transition in team_records.REPAIR_STATES:
+            payload.update({"repair_subject_type": "repository-repair", "repair_subject_id": "repair-1"})
+        if transition in {"FIX_VERIFIED", "FIX_COMMITTED", "FIX_PUSH_VERIFIED"}:
+            payload["candidate_manifest"] = [{"path": "orchestrator/team_records.py", "sha256": cls.SHA}]
+        if transition in {"FIX_COMMITTED", "FIX_PUSH_VERIFIED"}:
+            payload["candidate_commit"] = cls.SHA
+        payload.update(extra)
+        return payload
+
+    @classmethod
+    def assignment(
+        cls,
+        *,
+        assignment_id: str = "assignment-team-records",
+        operation: str = "CREATE",
+        previous: str = "ABSENT",
+    ) -> dict[str, object]:
+        return {
+            "schema": team_records.ASSIGNMENT_SCHEMA,
+            "assignment_id": assignment_id,
+            "operation": operation,
+            "owner_task": "owner-task",
+            "owner_host": "linux-installation",
+            "owner_installation_ref": cls.SHA,
+            "owner_epoch": 4,
+            "assignee": "worker-task",
+            "requested_model": "gpt-5.6-luna",
+            "requested_effort": "high",
+            "resolved_model": "gpt-5.6-luna",
+            "resolved_effort": "high",
+            "role": "implementation",
+            "subject": "team records candidate",
+            "base_commit": cls.SHA,
+            "input_hashes": [{"path": "docs/Codex/TEAM_RUNTIME_REFACTOR_PLAN_2026-09-11.md", "sha256": cls.SHA}],
+            "permitted_paths": ["orchestrator/team_records.py"],
+            "output_locator": "candidate/orchestrator/team_records.py",
+            "prerequisites": ["source-review"],
+            "stopping_condition": "Focused tests pass.",
+            "expected_duration_seconds": 900,
+            "next_check": "2026-09-11T12:15:00+02:00",
+            "status": "ASSIGNED",
+            "previous_assignment_event_sha256": "ABSENT",
+            "previous_assignment_sha256": previous,
+        }
+
+    @classmethod
+    def provenance_assignment(cls, *, role: str = "independent-checker") -> dict[str, object]:
+        assignment = cls.assignment(assignment_id="assignment-1")
+        assignment["assignee"] = "reporter-task"
+        assignment["role"] = role
+        return assignment
+
+    @classmethod
+    def provenance_context(
+        cls,
+        assignment: dict[str, object],
+        *,
+        report: dict[str, object] | None = None,
+        result_state: str = "COMPLETED",
+        actor_id: str = "owner-actor",
+        review_artifact: bytes | None = None,
+    ) -> team_records.TrustedTeamContext:
+        source_sha = hashlib.sha256(team_records.canonical_json(assignment["input_hashes"])).hexdigest()
+        payload_sha = team_records._assignment_binding_sha(assignment)
+        report_output = team_records.canonical_json(report or cls.report())
+        report_output_sha = hashlib.sha256(report_output).hexdigest()
+        observations: list[dict[str, object]] = []
+        output_artifacts: dict[str, bytes] = {}
+        for phase, state in (("LAUNCH", "RUNNING"), ("RESULT", result_state)):
+            output = None if phase == "LAUNCH" else review_artifact if review_artifact is not None else report_output
+            output_sha = cls.SHA if output is None else hashlib.sha256(output).hexdigest()
+            evidence = [
+                {"locator": f"evidence/{phase.lower()}.out", "sha256": output_sha},
+                {"locator": f"provider/{phase.lower()}.json", "sha256": cls.SHA},
+            ]
+            observations.append(
+                {
+                    "schema": team_records.NATIVE_OBSERVATION_SCHEMA,
+                    "assignment_id": assignment["assignment_id"],
+                    "phase": phase,
+                    "operation_id": f"native-{phase.lower()}",
+                    "owner_task": assignment["owner_task"],
+                    "owner_installation_ref": assignment["owner_installation_ref"],
+                    "owner_epoch": assignment["owner_epoch"],
+                    "assignee": assignment["assignee"],
+                    "native_agent_id": "agent-native",
+                    "native_owner_task": assignment["owner_task"],
+                    "requested_model": assignment["requested_model"],
+                    "requested_effort": assignment["requested_effort"],
+                    "resolved_model": assignment["resolved_model"],
+                    "resolved_effort": assignment["resolved_effort"],
+                    "subject": assignment["subject"],
+                    "state": state,
+                    "output_locator": evidence[0]["locator"],
+                    "output_sha256": evidence[0]["sha256"],
+                    "provider_receipt_locator": evidence[1]["locator"],
+                    "provider_receipt_sha256": evidence[1]["sha256"],
+                    "payload_sha256": payload_sha,
+                    "evidence_sha256": hashlib.sha256(team_records.canonical_json(evidence)).hexdigest(),
+                    "source_sha256": source_sha,
+                }
+            )
+            if output is not None:
+                output_artifacts[f"evidence/{phase.lower()}.out"] = output
+
+        return team_records.TrustedTeamContext(
+            owner_task=assignment["owner_task"],
+            owner_host=assignment["owner_host"],
+            owner_installation_ref=assignment["owner_installation_ref"],
+            owner_epoch=assignment["owner_epoch"],
+            actor_id=actor_id,
+            observations={assignment["assignment_id"]: observations},
+            output_artifacts=output_artifacts,
+        )
+
+    @classmethod
+    def repair_review_artifact(
+        cls,
+        issue: dict[str, object],
+        manifest: list[dict[str, str]],
+        *,
+        issue_id: str | None = None,
+        base_commit: str | None = None,
+        repair_subject_type: str = "repository-repair",
+        repair_subject_id: str = "repair-1",
+        verdict: str = "REPAIR_APPROVED",
+    ) -> bytes:
+        report = issue["report"]
+        return team_records.canonical_json(
+            {
+                "schema": team_records.REPAIR_REVIEW_SCHEMA,
+                "issue_id": issue_id or issue["issue_id"],
+                "repair_subject_type": repair_subject_type,
+                "repair_subject_id": repair_subject_id,
+                "base_commit": base_commit or report["base_commit"],
+                "candidate_manifest": manifest,
+                "verdict": verdict,
+            }
+        )
+
+    def test_canonical_json_and_duplicate_key_rejection(self):
+        self.assertEqual(team_records.canonical_json({"b": 2, "a": 1}), b'{"a":1,"b":2}\n')
+        with self.assertRaisesRegex(team_records.TeamRecordError, "DUPLICATE_JSON_KEY"):
+            team_records.load_payload(b'{"a":1,"a":2}\n')
+        with self.assertRaisesRegex(team_records.TeamRecordError, "UNSUPPORTED_JSON_VALUE"):
+            team_records.canonical_json({"value": 1.5})
+        with self.assertRaisesRegex(team_records.TeamRecordError, "NONCANONICAL_PAYLOAD"):
+            team_records.load_payload(b'{"a": 1}\n')
+
+    def test_report_provenance_rejects_unknown_assignment_and_reporter_mismatch(self):
+        assignment = self.provenance_assignment()
+        legacy = b"legacy assignments\n"
+        raw, _ = team_records.prepare_assignment(
+            legacy, assignment, hashlib.sha256(legacy).hexdigest()
+        )
+        registry = team_records.read_registry(raw, "assignments")
+        context = self.provenance_context(assignment)
+        with self.assertRaisesRegex(team_records.TeamRecordError, "ASSIGNMENT_UNKNOWN"):
+            team_records.validate_report_provenance(self.report(number=2), registry, context)
+
+        mismatched = self.report()
+        mismatched["reporter_task"] = "spoofed-reporter"
+        with self.assertRaisesRegex(team_records.TeamRecordError, "REPORTER_ASSIGNMENT_MISMATCH"):
+            team_records.validate_report_provenance(mismatched, registry, context)
+
+    def test_report_provenance_accepts_running_native_receipts(self):
+        assignment = self.provenance_assignment()
+        legacy = b"legacy assignments\n"
+        raw, _ = team_records.prepare_assignment(
+            legacy, assignment, hashlib.sha256(legacy).hexdigest()
+        )
+        registry = team_records.read_registry(raw, "assignments")
+        context = self.provenance_context(assignment, result_state="RUNNING")
+        result = team_records.validate_report_provenance(self.report(), registry, context)
+        self.assertEqual(result["assignment_id"], assignment["assignment_id"])
+        self.assertEqual(result["operation_ids"], ("native-launch", "native-result"))
+        self.assertEqual(len(result["source_hashes"]), 1)
+        self.assertEqual(len(result["evidence_hashes"]), 4)
+
+    def test_report_provenance_rejects_unrelated_report_payload(self):
+        assignment = self.provenance_assignment()
+        legacy = b"legacy assignments\n"
+        raw, _ = team_records.prepare_assignment(
+            legacy, assignment, hashlib.sha256(legacy).hexdigest()
+        )
+        registry = team_records.read_registry(raw, "assignments")
+        context = self.provenance_context(assignment, report=self.report())
+        with self.assertRaisesRegex(team_records.TeamRecordError, "REPORT_OUTPUT_BINDING_INVALID"):
+            team_records.validate_report_provenance(
+                self.report(actual="unrelated report"), registry, context
+            )
+
+    def test_report_provenance_survives_status_and_next_check_update(self):
+        assignment = self.provenance_assignment()
+        legacy = b"legacy assignments\n"
+        created, _ = team_records.prepare_assignment(
+            legacy, assignment, hashlib.sha256(legacy).hexdigest()
+        )
+        created_registry = team_records.read_registry(created, "assignments")
+        current = created_registry["assignments"][assignment["assignment_id"]]
+        updated = dict(assignment)
+        updated.update(
+            {
+                "operation": "UPDATE",
+                "status": "RUNNING",
+                "next_check": "2026-09-11T12:30:00+02:00",
+                "previous_assignment_sha256": team_records._assignment_state_sha(
+                    current["assignment"]
+                ),
+                "previous_assignment_event_sha256": current["last_event_sha256"],
+            }
+        )
+        updated_raw, _ = team_records.prepare_assignment(
+            created, updated, hashlib.sha256(created).hexdigest()
+        )
+        updated_registry = team_records.read_registry(updated_raw, "assignments")
+        result = team_records.validate_report_provenance(
+            self.report(), updated_registry, self.provenance_context(assignment)
+        )
+        self.assertEqual(result["assignment_id"], assignment["assignment_id"])
+
+    def test_native_launch_and_result_share_agent_and_subject(self):
+        assignment = self.provenance_assignment()
+        legacy = b"legacy assignments\n"
+        raw, _ = team_records.prepare_assignment(
+            legacy, assignment, hashlib.sha256(legacy).hexdigest()
+        )
+        registry = team_records.read_registry(raw, "assignments")
+        context = self.provenance_context(assignment)
+        observations = [dict(item) for item in context.observations[assignment["assignment_id"]]]
+        observations[1]["native_agent_id"] = "different-agent"
+        broken = team_records.TrustedTeamContext(
+            owner_task=context.owner_task,
+            owner_host=context.owner_host,
+            owner_installation_ref=context.owner_installation_ref,
+            owner_epoch=context.owner_epoch,
+            actor_id=context.actor_id,
+            observations={assignment["assignment_id"]: observations},
+        )
+        with self.assertRaisesRegex(team_records.TeamRecordError, "NATIVE_AGENT_BINDING_INVALID"):
+            team_records.validate_report_provenance(self.report(), registry, broken)
+
+    def test_issue_actor_provenance_rejects_spoofed_owner_and_accepts_independent(self):
+        assignment = self.provenance_assignment()
+        legacy_assignments = b"legacy assignments\n"
+        assignment_raw, _ = team_records.prepare_assignment(
+            legacy_assignments, assignment, hashlib.sha256(legacy_assignments).hexdigest()
+        )
+        assignments = team_records.read_registry(assignment_raw, "assignments")
+        legacy_issues = b"legacy issues\n"
+        issue_raw, _ = team_records.prepare_report(
+            legacy_issues, self.report(), hashlib.sha256(legacy_issues).hexdigest()
+        )
+        issues = team_records.read_registry(issue_raw, "issues")
+        context = self.provenance_context(assignment)
+
+        spoofed = self.transition(issues, "ASSIGNED", actor="spoofed-owner")
+        spoofed["actor_role"] = "owner"
+        with self.assertRaisesRegex(team_records.TeamRecordError, "OWNER_ACTOR_MISMATCH"):
+            team_records.validate_issue_event_actor(spoofed, assignments, context)
+
+        result_observation = context.observations[assignment["assignment_id"]][1]
+        independent = self.transition(
+            issues,
+            "CONFIRMED_BUG",
+            actor="reporter-task",
+            evidence=[
+                {
+                    "locator": result_observation["output_locator"],
+                    "sha256": result_observation["output_sha256"],
+                }
+            ],
+        )
+        result = team_records.validate_issue_event_actor(independent, assignments, context)
+        self.assertEqual(result["actor_class"], "independent")
+        self.assertEqual(result["assignment_id"], assignment["assignment_id"])
+
+        implementer_assignment = self.provenance_assignment(role="implementation")
+        implementer_context = self.provenance_context(implementer_assignment)
+        implementer_assignments_raw, _ = team_records.prepare_assignment(
+            legacy_assignments,
+            implementer_assignment,
+            hashlib.sha256(legacy_assignments).hexdigest(),
+        )
+        implementer_assignments = team_records.read_registry(
+            implementer_assignments_raw, "assignments"
+        )
+        implementer_evidence = implementer_context.observations[
+            implementer_assignment["assignment_id"]
+        ][1]
+        candidate = self.transition(
+            issues,
+            "FIX_CANDIDATE",
+            actor="reporter-task",
+            actor_role="implementer",
+            evidence=[
+                {
+                    "locator": implementer_evidence["output_locator"],
+                    "sha256": implementer_evidence["output_sha256"],
+                }
+            ],
+        )
+        result = team_records.validate_issue_event_actor(
+            candidate, implementer_assignments, implementer_context
+        )
+        self.assertEqual(result["actor_class"], "implementer")
+
+        candidate["implementer_id"] = "another-implementer"
+        with self.assertRaisesRegex(team_records.TeamRecordError, "IMPLEMENTER_IDENTITY_INVALID"):
+            team_records.validate_issue_event_actor(
+                candidate, implementer_assignments, implementer_context
+            )
+
+    def test_fix_verified_binds_manifest_to_completed_review_artifact(self):
+        assignment = self.provenance_assignment(role="independent-checker")
+        legacy_assignments = b"legacy assignments\n"
+        assignment_raw, _ = team_records.prepare_assignment(
+            legacy_assignments, assignment, hashlib.sha256(legacy_assignments).hexdigest()
+        )
+        assignments = team_records.read_registry(assignment_raw, "assignments")
+        legacy_issues = b"legacy issues\n"
+        issue_raw, _ = team_records.prepare_report(
+            legacy_issues, self.report(), hashlib.sha256(legacy_issues).hexdigest()
+        )
+        issues = team_records.read_registry(issue_raw, "issues")
+        issue = next(iter(issues["issues"].values()))
+        manifest = [{"path": "orchestrator/team_records.py", "sha256": self.SHA}]
+
+        def event(context: team_records.TrustedTeamContext, **extra: object) -> dict[str, object]:
+            result_observation = context.observations[assignment["assignment_id"]][1]
+            return self.transition(
+                issues,
+                "FIX_VERIFIED",
+                actor="reporter-task",
+                actor_role="independent-checker",
+                verifier_id="reporter-task",
+                evidence=[
+                    {
+                        "locator": result_observation["output_locator"],
+                        "sha256": result_observation["output_sha256"],
+                    }
+                ],
+                candidate_manifest=manifest,
+                **extra,
+            )
+
+        reviewed = self.repair_review_artifact(issue, manifest)
+        context = self.provenance_context(assignment, review_artifact=reviewed)
+        result = team_records.validate_issue_event_actor(
+            event(context), assignments, context, expected_base_commit=self.SHA
+        )
+        self.assertEqual(result["actor_class"], "independent")
+
+        genuine_other_output = self.provenance_context(assignment)
+        with self.assertRaisesRegex(team_records.TeamRecordError, "NATIVE_REVIEW_ARTIFACT_INVALID"):
+            team_records.validate_issue_event_actor(
+                event(genuine_other_output), assignments, genuine_other_output,
+                expected_base_commit=self.SHA,
+            )
+
+        wrong_manifest = [{"path": "orchestrator/team_records.py", "sha256": "b" * 64}]
+        wrong_manifest_artifact = self.repair_review_artifact(issue, wrong_manifest)
+        wrong_manifest_context = self.provenance_context(
+            assignment, review_artifact=wrong_manifest_artifact
+        )
+        with self.assertRaisesRegex(team_records.TeamRecordError, "NATIVE_REVIEW_MANIFEST_MISMATCH"):
+            team_records.validate_issue_event_actor(
+                event(wrong_manifest_context), assignments, wrong_manifest_context,
+                expected_base_commit=self.SHA,
+            )
+
+        wrong_issue_artifact = self.repair_review_artifact(
+            issue, manifest, issue_id="issue-" + "b" * 64
+        )
+        wrong_issue_context = self.provenance_context(assignment, review_artifact=wrong_issue_artifact)
+        with self.assertRaisesRegex(team_records.TeamRecordError, "NATIVE_REVIEW_ISSUE_MISMATCH"):
+            team_records.validate_issue_event_actor(
+                event(wrong_issue_context), assignments, wrong_issue_context,
+                expected_base_commit=self.SHA,
+            )
+
+        wrong_base_artifact = self.repair_review_artifact(
+            issue, manifest, base_commit="c" * 64
+        )
+        wrong_base_context = self.provenance_context(assignment, review_artifact=wrong_base_artifact)
+        with self.assertRaisesRegex(team_records.TeamRecordError, "NATIVE_REVIEW_BASE_MISMATCH"):
+            team_records.validate_issue_event_actor(
+                event(wrong_base_context), assignments, wrong_base_context,
+                expected_base_commit=self.SHA,
+            )
+
+        rejected = self.repair_review_artifact(issue, manifest, verdict="REPAIR_REJECTED")
+        rejected_context = self.provenance_context(assignment, review_artifact=rejected)
+        with self.assertRaisesRegex(
+            team_records.TeamRecordError,
+            "NATIVE_REVIEW_ARTIFACT_INVALID.*REPAIR_REVIEW_NOT_APPROVED",
+        ):
+            team_records.validate_issue_event_actor(
+                event(rejected_context), assignments, rejected_context,
+                expected_base_commit=self.SHA,
+            )
+
+    def test_running_observation_without_concrete_receipt_is_rejected(self):
+        assignment = self.provenance_assignment()
+        legacy = b"legacy assignments\n"
+        raw, _ = team_records.prepare_assignment(
+            legacy, assignment, hashlib.sha256(legacy).hexdigest()
+        )
+        registry = team_records.read_registry(raw, "assignments")
+        context = self.provenance_context(assignment)
+        broken = dict(context.observations[assignment["assignment_id"]][0])
+        del broken["provider_receipt_sha256"]
+        broken_context = team_records.TrustedTeamContext(
+            owner_task=context.owner_task,
+            owner_host=context.owner_host,
+            owner_installation_ref=context.owner_installation_ref,
+            owner_epoch=context.owner_epoch,
+            actor_id=context.actor_id,
+            observations={assignment["assignment_id"]: [broken, context.observations[assignment["assignment_id"]][1]]},
+        )
+        with self.assertRaisesRegex(team_records.TeamRecordError, "NATIVE_OBSERVATION_SCHEMA_INVALID"):
+            team_records.validate_report_provenance(self.report(), registry, broken_context)
+
+    def test_report_replay_after_subsequent_event_and_receipt_recovery(self):
+        legacy = b"# historical issues\n\n"
+        first, receipt = team_records.prepare_report(
+            legacy, self.report(), hashlib.sha256(legacy).hexdigest()
+        )
+        registry = team_records.read_registry(first, "issues")
+        reproducing = self.transition(registry, "REPRODUCING")
+        second, _ = team_records.prepare_issue_event(
+            first, reproducing, hashlib.sha256(first).hexdigest()
+        )
+        registry = team_records.read_registry(second, "issues")
+        confirmed = self.transition(registry, "CONFIRMED_BUG")
+        third, _ = team_records.prepare_issue_event(
+            second, confirmed, hashlib.sha256(second).hexdigest()
+        )
+        replayed, replay_receipt = team_records.prepare_report(
+            third, self.report(), "0" * 64
+        )
+        self.assertEqual(replayed, third)
+        self.assertEqual(replay_receipt["status"], "NOOP")
+        self.assertEqual(replay_receipt["event_id"], receipt["event_id"])
+        self.assertEqual(replay_receipt["receipt_sha256"], receipt["receipt_sha256"])
+        self.assertEqual(replay_receipt["post_registry_sha256"], receipt["post_registry_sha256"])
+
+    def test_changed_attempt_collision_and_stale_new_report(self):
+        raw = b"legacy\n"
+        # Keep the first call explicit so the expected preimage is visible.
+        first, _ = team_records.prepare_report(raw, self.report(actual="one"), hashlib.sha256(raw).hexdigest())
+        changed = self.report(actual="two")
+        with self.assertRaisesRegex(team_records.TeamRecordError, "ATTEMPT_COLLISION"):
+            team_records.prepare_report(first, changed, hashlib.sha256(first).hexdigest())
+        second = self.report(number=2)
+        with self.assertRaisesRegex(team_records.TeamRecordError, "STALE_REGISTRY"):
+            team_records.prepare_report(first, second, hashlib.sha256(raw).hexdigest())
+
+    def test_correction_requires_new_attempt_and_supersedes_link(self):
+        raw = b"legacy\n"
+        first, first_receipt = team_records.prepare_report(
+            raw, self.report(actual="initial"), hashlib.sha256(raw).hexdigest()
+        )
+        correction = self.report(attempt="attempt-correction", actual="corrected")
+        correction["supersedes_report_id"] = first_receipt["report_id"]
+        corrected, _ = team_records.prepare_report(
+            first, correction, hashlib.sha256(first).hexdigest()
+        )
+        self.assertEqual(len(team_records.read_registry(corrected, "issues")["issues"]), 2)
+
+    def test_corrupted_framing_and_legacy_prefix_are_fail_closed(self):
+        legacy = b"legacy text with *literal* markers\n"
+        prepared, _ = team_records.prepare_report(
+            legacy, self.report(), hashlib.sha256(legacy).hexdigest()
+        )
+        self.assertTrue(prepared.startswith(legacy))
+        parsed = team_records.read_registry(prepared, "issues")
+        self.assertEqual(parsed["legacy_prefix"], legacy)
+        self.assertEqual(parsed["legacy_sha256"], hashlib.sha256(legacy).hexdigest())
+        with self.assertRaisesRegex(team_records.TeamRecordError, "REGISTRY_FRAMING_INVALID|PAYLOAD_INVALID|NONCANONICAL"):
+            team_records.read_registry(prepared[:-1], "issues")
+        oversized = prepared + team_records.FRAME_PREFIX + b"999999\n"
+        with self.assertRaisesRegex(team_records.TeamRecordError, "LIMIT_FRAME_BYTES"):
+            team_records.read_registry(oversized, "issues")
+
+    def test_archive_replay_uses_verified_immutable_bytes(self):
+        raw = b"legacy\n"
+        first, first_receipt = team_records.prepare_report(raw, self.report(), hashlib.sha256(raw).hexdigest())
+        second_payload = self.report(number=2)
+        second, _ = team_records.prepare_report(first, second_payload, hashlib.sha256(first).hexdigest())
+        archive, compact, archive_receipt = team_records.prepare_archive(
+            second, "issues", hashlib.sha256(second).hexdigest(), "archive/issues-1.json"
+        )
+        receipt_core = {
+            key: value
+            for key, value in archive_receipt.items()
+            if key not in {"status", "receipt_sha256"}
+        }
+        self.assertEqual(
+            archive_receipt["receipt_sha256"],
+            hashlib.sha256(team_records.canonical_json(receipt_core)).hexdigest(),
+        )
+        self.assertEqual(archive_receipt["archive_sha256"], hashlib.sha256(archive).hexdigest())
+        loader = {"archive/issues-1.json": archive}
+        parsed = team_records.read_registry(compact, "issues", loader)
+        self.assertEqual(len(parsed["events"]), 2)
+        replayed, receipt = team_records.prepare_report(compact, self.report(), "0" * 64, loader)
+        self.assertEqual(replayed, compact)
+        self.assertEqual(receipt["status"], "NOOP")
+        self.assertEqual(receipt["receipt_sha256"], first_receipt["receipt_sha256"])
+        with self.assertRaisesRegex(team_records.TeamRecordError, "ARCHIVE_HASH_INVALID"):
+            team_records.read_registry(compact, "issues", {"archive/issues-1.json": b"tampered"})
+
+    def test_independent_identity_and_source_binding_rejections(self):
+        raw = b"legacy\n"
+        current, _ = team_records.prepare_report(raw, self.report(), hashlib.sha256(raw).hexdigest())
+        registry = team_records.read_registry(current, "issues")
+        with self.assertRaisesRegex(team_records.TeamRecordError, "SOURCE_BINDING_REQUIRED"):
+            bad = self.transition(registry, "REPRODUCING")
+            bad["source_binding"] = []
+            team_records.prepare_issue_event(current, bad, hashlib.sha256(current).hexdigest())
+        reproducing = self.transition(registry, "REPRODUCING")
+        current, _ = team_records.prepare_issue_event(current, reproducing, hashlib.sha256(current).hexdigest())
+        registry = team_records.read_registry(current, "issues")
+        current, _ = team_records.prepare_issue_event(
+            current,
+            self.transition(registry, "CONFIRMED_BUG"),
+            hashlib.sha256(current).hexdigest(),
+        )
+        registry = team_records.read_registry(current, "issues")
+        current, _ = team_records.prepare_issue_event(
+            current,
+            self.transition(registry, "ASSIGNED"),
+            hashlib.sha256(current).hexdigest(),
+        )
+        registry = team_records.read_registry(current, "issues")
+        current, _ = team_records.prepare_issue_event(
+            current,
+            self.transition(registry, "FIX_CANDIDATE", actor="implementer"),
+            hashlib.sha256(current).hexdigest(),
+        )
+        registry = team_records.read_registry(current, "issues")
+        with self.assertRaisesRegex(team_records.TeamRecordError, "INDEPENDENT_IDENTITY_REQUIRED"):
+            team_records.prepare_issue_event(
+                current,
+                self.transition(registry, "FIX_VERIFIED", actor="implementer"),
+                hashlib.sha256(current).hexdigest(),
+            )
+
+    def test_repair_candidate_identity_is_required_and_stable(self):
+        raw = b"legacy\n"
+        current, _ = team_records.prepare_report(raw, self.report(), hashlib.sha256(raw).hexdigest())
+        registry = team_records.read_registry(current, "issues")
+        for transition, actor, role in (
+            ("REPRODUCING", "independent-checker", "independent-checker"),
+            ("CONFIRMED_BUG", "independent-checker", "independent-checker"),
+            ("ASSIGNED", "owner-actor", "owner"),
+            ("FIX_CANDIDATE", "implementer", "implementer"),
+        ):
+            current, _ = team_records.prepare_issue_event(
+                current,
+                self.transition(registry, transition, actor=actor, actor_role=role),
+                hashlib.sha256(current).hexdigest(),
+            )
+            registry = team_records.read_registry(current, "issues")
+
+        manifest = [{"path": "orchestrator/team_records.py", "sha256": self.SHA}]
+        verified = self.transition(
+            registry,
+            "FIX_VERIFIED",
+            actor="verifier",
+            actor_role="independent-checker",
+            verifier_id="verifier",
+            candidate_manifest=manifest,
+        )
+        current, _ = team_records.prepare_issue_event(
+            current, verified, hashlib.sha256(current).hexdigest()
+        )
+        registry = team_records.read_registry(current, "issues")
+        committed = self.transition(
+            registry,
+            "FIX_COMMITTED",
+            actor="owner-actor",
+            actor_role="owner",
+            candidate_manifest=manifest,
+            candidate_commit=self.SHA,
+        )
+        current, _ = team_records.prepare_issue_event(
+            current, committed, hashlib.sha256(current).hexdigest()
+        )
+        registry = team_records.read_registry(current, "issues")
+        published = self.transition(
+            registry,
+            "FIX_PUSH_VERIFIED",
+            actor="owner-actor",
+            actor_role="owner",
+            candidate_manifest=manifest,
+            candidate_commit=self.SHA,
+        )
+        current, _ = team_records.prepare_issue_event(
+            current, published, hashlib.sha256(current).hexdigest()
+        )
+        issue = next(iter(team_records.read_registry(current, "issues")["issues"].values()))
+        self.assertEqual(issue["state"], "FIX_PUSH_VERIFIED")
+        self.assertEqual(issue["repair_candidate_manifest"], manifest)
+        self.assertEqual(issue["repair_candidate_commit"], self.SHA)
+
+    def test_repair_commit_cannot_change_verified_candidate(self):
+        raw = b"legacy\n"
+        current, _ = team_records.prepare_report(raw, self.report(), hashlib.sha256(raw).hexdigest())
+        registry = team_records.read_registry(current, "issues")
+        for transition, actor, role in (
+            ("REPRODUCING", "independent-checker", "independent-checker"),
+            ("CONFIRMED_BUG", "independent-checker", "independent-checker"),
+            ("ASSIGNED", "owner-actor", "owner"),
+            ("FIX_CANDIDATE", "implementer", "implementer"),
+        ):
+            current, _ = team_records.prepare_issue_event(
+                current,
+                self.transition(registry, transition, actor=actor, actor_role=role),
+                hashlib.sha256(current).hexdigest(),
+            )
+            registry = team_records.read_registry(current, "issues")
+        manifest = [{"path": "orchestrator/team_records.py", "sha256": self.SHA}]
+        current, _ = team_records.prepare_issue_event(
+            current,
+            self.transition(
+                registry, "FIX_VERIFIED", actor="verifier", actor_role="independent-checker",
+                verifier_id="verifier", candidate_manifest=manifest,
+            ),
+            hashlib.sha256(current).hexdigest(),
+        )
+        registry = team_records.read_registry(current, "issues")
+        changed = self.transition(
+            registry,
+            "FIX_COMMITTED",
+            actor="owner-actor",
+            actor_role="owner",
+            candidate_manifest=[{"path": "orchestrator/workflow_runtime.py", "sha256": self.SHA}],
+            candidate_commit=self.SHA,
+        )
+        with self.assertRaisesRegex(team_records.TeamRecordError, "REPAIR_CANDIDATE_CHANGED"):
+            team_records.prepare_issue_event(current, changed, hashlib.sha256(current).hexdigest())
+
+    def test_legal_and_illegal_lifecycle_transitions(self):
+        raw = b"legacy\n"
+        current, _ = team_records.prepare_report(raw, self.report(), hashlib.sha256(raw).hexdigest())
+        registry = team_records.read_registry(current, "issues")
+        with self.assertRaisesRegex(team_records.TeamRecordError, "ILLEGAL_TRANSITION"):
+            team_records.prepare_issue_event(
+                current,
+                self.transition(registry, "CONFIRMED_BUG"),
+                hashlib.sha256(current).hexdigest(),
+            )
+        current, _ = team_records.prepare_issue_event(
+            current,
+            self.transition(registry, "REPRODUCING"),
+            hashlib.sha256(current).hexdigest(),
+        )
+        registry = team_records.read_registry(current, "issues")
+        current, _ = team_records.prepare_issue_event(
+            current,
+            self.transition(registry, "CONFIRMED_BUG"),
+            hashlib.sha256(current).hexdigest(),
+        )
+        self.assertEqual(next(iter(team_records.read_registry(current, "issues")["issues"].values()))["state"], "CONFIRMED_BUG")
+
+    def test_assignment_create_update_retry_and_stale_preimage(self):
+        raw = b"# historical assignments\n"
+        created, create_receipt = team_records.prepare_assignment(
+            raw, self.assignment(), hashlib.sha256(raw).hexdigest()
+        )
+        registry = team_records.read_registry(created, "assignments")
+        current = next(iter(registry["assignments"].values()))
+        current_payload = current["assignment"]
+        previous = team_records._assignment_state_sha(current_payload)
+        updated_payload = self.assignment(operation="UPDATE", previous=previous)
+        updated_payload["previous_assignment_event_sha256"] = current["last_event_sha256"]
+        updated, _ = team_records.prepare_assignment(
+            created, updated_payload, hashlib.sha256(created).hexdigest()
+        )
+        replayed, replay_receipt = team_records.prepare_assignment(
+            updated, updated_payload, "0" * 64
+        )
+        self.assertEqual(replayed, updated)
+        self.assertEqual(replay_receipt["status"], "NOOP")
+        self.assertEqual(replay_receipt["event_id"], team_records.read_registry(updated, "assignments")["events"][1]["event_id"])
+        self.assertNotEqual(create_receipt["event_id"], replay_receipt["event_id"])
+        with self.assertRaisesRegex(team_records.TeamRecordError, "ASSIGNMENT_PRECONDITION"):
+            team_records.prepare_assignment(
+                updated,
+                self.assignment(operation="RETRY", previous="b" * 64),
+                hashlib.sha256(updated).hexdigest(),
+            )
+
+    def test_global_chain_and_entity_predecessors_interleave(self):
+        legacy = b"legacy\n"
+        report_a = self.report(number=1)
+        report_b = self.report(number=2)
+        issues_a, receipt_a = team_records.prepare_report(
+            legacy, report_a, hashlib.sha256(legacy).hexdigest()
+        )
+        issues_b, _ = team_records.prepare_report(
+            issues_a, report_b, hashlib.sha256(issues_a).hexdigest()
+        )
+        registry = team_records.read_registry(issues_b, "issues")
+        transition_a = self.transition(registry, "REPRODUCING")
+        interleaved, _ = team_records.prepare_issue_event(
+            issues_b, transition_a, hashlib.sha256(issues_b).hexdigest()
+        )
+        parsed = team_records.read_registry(interleaved, "issues")
+        events = parsed["events"]
+        self.assertEqual(len(events), 3)
+        self.assertEqual(
+            events[2]["previous_event_sha256"], team_records._event_sha(events[1])
+        )
+        self.assertEqual(
+            events[2]["payload"]["previous_event_sha256"], team_records._event_sha(events[0])
+        )
+        replayed, replay_receipt = team_records.prepare_report(
+            interleaved, report_a, "0" * 64
+        )
+        self.assertEqual(replayed, interleaved)
+        self.assertEqual(replay_receipt["receipt_sha256"], receipt_a["receipt_sha256"])
+
+        assignments = b"legacy assignments\n"
+        assignments_a, _ = team_records.prepare_assignment(
+            assignments,
+            self.assignment(assignment_id="assignment-a"),
+            hashlib.sha256(assignments).hexdigest(),
+        )
+        assignments_b, _ = team_records.prepare_assignment(
+            assignments_a,
+            self.assignment(assignment_id="assignment-b"),
+            hashlib.sha256(assignments_a).hexdigest(),
+        )
+        assignments_registry = team_records.read_registry(assignments_b, "assignments")
+        current_a = assignments_registry["assignments"]["assignment-a"]
+        updated_a = self.assignment(
+            assignment_id="assignment-a",
+            operation="UPDATE",
+            previous=team_records._assignment_state_sha(current_a["assignment"]),
+        )
+        updated_a["previous_assignment_event_sha256"] = current_a["last_event_sha256"]
+        assignments_interleaved, _ = team_records.prepare_assignment(
+            assignments_b, updated_a, hashlib.sha256(assignments_b).hexdigest()
+        )
+        assignments_parsed = team_records.read_registry(assignments_interleaved, "assignments")
+        assignment_events = assignments_parsed["events"]
+        self.assertEqual(len(assignment_events), 3)
+        self.assertEqual(
+            assignment_events[2]["previous_event_sha256"], team_records._event_sha(assignment_events[1])
+        )
+        self.assertEqual(
+            assignment_events[2]["payload"]["previous_assignment_event_sha256"],
+            team_records._event_sha(assignment_events[0]),
+        )
+
+    def test_archive_replay_after_interleaved_issue_updates(self):
+        legacy = b"legacy\n"
+        report_a = self.report(number=1)
+        report_b = self.report(number=2)
+        first, receipt_a = team_records.prepare_report(
+            legacy, report_a, hashlib.sha256(legacy).hexdigest()
+        )
+        second, _ = team_records.prepare_report(
+            first, report_b, hashlib.sha256(first).hexdigest()
+        )
+        registry = team_records.read_registry(second, "issues")
+        third, _ = team_records.prepare_issue_event(
+            second,
+            self.transition(registry, "REPRODUCING"),
+            hashlib.sha256(second).hexdigest(),
+        )
+        archive, compact, _ = team_records.prepare_archive(
+            third, "issues", hashlib.sha256(third).hexdigest(), "archive/interleaved.json", event_count=2
+        )
+        loader = {"archive/interleaved.json": archive}
+        parsed = team_records.read_registry(compact, "issues", loader)
+        self.assertEqual(len(parsed["events"]), 3)
+        replayed, replay_receipt = team_records.prepare_report(
+            compact, report_a, "0" * 64, loader
+        )
+        self.assertEqual(replayed, compact)
+        self.assertEqual(replay_receipt["status"], "NOOP")
+        self.assertEqual(replay_receipt["receipt_sha256"], receipt_a["receipt_sha256"])
+
 
 
 if __name__ == "__main__":

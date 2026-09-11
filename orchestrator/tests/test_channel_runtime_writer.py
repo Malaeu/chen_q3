@@ -267,14 +267,74 @@ class ObservedBridgeTransitionTests(unittest.TestCase):
                 mock.patch("orchestrator.workflow_runtime._execution_writer_epoch", writer_epoch),
                 mock.patch.object(spine, "CHANNEL_RUNTIME", runtime_path),
                 mock.patch.object(spine, "_validate_active_control"),
+                mock.patch(
+                    "orchestrator.workflow_runtime.team_guard", return_value=None
+                ) as guard,
                 mock.patch.object(spine, "record_observed_bridge_transition", interrupted_record),
                 mock.patch.object(spine, "write_runtime_atomic") as write,
                 mock.patch("sys.argv", ["spine", "--record-bridge-transition", str(event_path)]),
             ):
                 self.assertEqual(spine.main(), 2)
                 write.assert_not_called()
+            guard.assert_called_once_with(
+                spine.REPO,
+                command="bridge-observed-phase-repair",
+                paths=["orchestrator/state/CHANNEL_RUNTIME.json"],
+            )
             self.assertIn("recheck", events)
             self.assertEqual(runtime_path.read_bytes(), self.raw + b" ")
+
+    def test_cli_owner_epoch_and_pending_holds_precede_any_bridge_write(self):
+        from contextlib import contextmanager
+        from types import SimpleNamespace
+        from unittest import mock
+        from orchestrator.workflow_runtime import WorkflowRuntimeError
+
+        with tempfile.TemporaryDirectory() as tmp:
+            runtime_path = Path(tmp) / "runtime.json"
+            event_path = Path(tmp) / "event.json"
+            runtime_path.write_bytes(self.raw)
+            event_path.write_text(json.dumps(self.event), encoding="utf-8")
+            events = []
+
+            @contextmanager
+            def writer_epoch(repo):
+                events.append("lock")
+                yield SimpleNamespace(recheck=lambda: None)
+
+            for code in (
+                "TEAM_INTEGRATION_PENDING:existing-operation",
+                "TEAM_OBSERVER_ONLY:owner installation/task mismatch",
+                "TEAM_CALLER_EPOCH_CHANGED",
+                "TEAM_OWNER_RECONCILIATION_REQUIRED",
+            ):
+                events.clear()
+
+                def refused_guard(*args, **kwargs):
+                    self.assertEqual(events, ["lock"])
+                    raise WorkflowRuntimeError(code)
+
+                with (
+                    self.subTest(code=code),
+                    mock.patch("orchestrator.workflow_runtime._execution_writer_epoch", writer_epoch),
+                    mock.patch("orchestrator.workflow_runtime.team_guard", side_effect=refused_guard) as guard,
+                    mock.patch.object(spine, "CHANNEL_RUNTIME", runtime_path),
+                    mock.patch.object(spine, "_validate_active_control") as control,
+                    mock.patch.object(spine, "record_observed_bridge_transition") as record,
+                    mock.patch.object(spine, "write_runtime_atomic") as write,
+                    mock.patch("sys.argv", ["spine", "--record-bridge-transition", str(event_path)]),
+                ):
+                    with self.assertRaisesRegex(WorkflowRuntimeError, code):
+                        spine.main()
+                    guard.assert_called_once_with(
+                        spine.REPO,
+                        command="bridge-observed-phase-repair",
+                        paths=["orchestrator/state/CHANNEL_RUNTIME.json"],
+                    )
+                    control.assert_not_called()
+                    record.assert_not_called()
+                    write.assert_not_called()
+                    self.assertEqual(runtime_path.read_bytes(), self.raw)
 
     def test_pin_verifier_checks_exact_bytes(self):
         pin = self.receipt["opening_request"]
@@ -539,6 +599,9 @@ class ObservedSlackManualReviewTests(unittest.TestCase):
                     "orchestrator.workflow_runtime.build_startup_snapshot",
                     return_value=SimpleNamespace(fatal_errors=()),
                 ),
+                mock.patch(
+                    "orchestrator.workflow_runtime.team_guard", return_value=None
+                ) as guard,
                 mock.patch.object(
                     spine, "record_observed_slack_manual_review", interrupted_record
                 ),
@@ -547,6 +610,11 @@ class ObservedSlackManualReviewTests(unittest.TestCase):
             ):
                 self.assertEqual(spine.main(), 2)
                 write.assert_not_called()
+            guard.assert_called_once_with(
+                spine.REPO,
+                command="slack-manual-chat-reconciliation",
+                paths=["orchestrator/state/CHANNEL_RUNTIME.json"],
+            )
             self.assertIn("recheck", events)
             self.assertEqual(runtime_path.read_bytes(), self.raw + b" ")
 
@@ -573,6 +641,9 @@ class ObservedSlackManualReviewTests(unittest.TestCase):
                     "orchestrator.workflow_runtime.build_startup_snapshot",
                     return_value=SimpleNamespace(fatal_errors=("STARTUP_FATAL",)),
                 ),
+                mock.patch(
+                    "orchestrator.workflow_runtime.team_guard", return_value=None
+                ),
                 mock.patch.object(spine, "record_observed_slack_manual_review") as record,
                 mock.patch.object(spine, "write_runtime_atomic") as write,
                 mock.patch("sys.argv", ["spine", "--record-slack-manual-review", str(event_path)]),
@@ -588,6 +659,9 @@ class ObservedSlackManualReviewTests(unittest.TestCase):
                 mock.patch(
                     "orchestrator.workflow_runtime.build_startup_snapshot",
                     return_value=SimpleNamespace(fatal_errors=(), run_authorized=False),
+                ),
+                mock.patch(
+                    "orchestrator.workflow_runtime.team_guard", return_value=None
                 ),
                 mock.patch.object(
                     spine,

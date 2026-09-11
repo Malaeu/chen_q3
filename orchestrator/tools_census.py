@@ -251,7 +251,8 @@ def manifest_summary():
     tools = [tool for family in families.values() for tool in family.get("tools", [])]
     status = Counter(tool.get("status", "UNKNOWN") for tool in tools)
     front_doors = [family.get("front_door", "UNDECLARED") for family in families.values()]
-    return len(families), len(tools), status, front_doors
+    startup_front_door = families.get("startup_and_control", {}).get("front_door", "UNDECLARED")
+    return len(families), len(tools), status, front_doors, startup_front_door
 
 
 def markdown(rows, probes, tests, migrations, empty_dbs, states):
@@ -259,7 +260,7 @@ def markdown(rows, probes, tests, migrations, empty_dbs, states):
     dbs = [r for r in rows if r["kind"] == "DB"]
     alive = [r for r in tools if r["last"] >= ALIVE_SINCE]
     orphans = [r for r in alive if r["refs"] == 0]
-    family_count, entry_count, manifest_status, front_doors = manifest_summary()
+    family_count, entry_count, manifest_status, front_doors, startup_front_door = manifest_summary()
 
     out = []
     out.append("# TOOLS.md — generated map of the repo's instruments\n")
@@ -271,7 +272,7 @@ def markdown(rows, probes, tests, migrations, empty_dbs, states):
     out.append(f"- **Operational contours:** {family_count}; registered tool contracts: {entry_count} "
                f"({', '.join(f'{k} {v}' for k, v in sorted(manifest_status.items()))})")
     out.append(f"- **Contour front doors:** {', '.join(f'`{door}`' for door in front_doors)}")
-    out.append("- **Automatic startup front doors:** 1 (`codex-session-start`); Spine strict is its internal check")
+    out.append(f"- **Canonical startup front door:** `{startup_front_door}` (from `TOOLS.yaml`)")
     out.append(f"- **Executable implementation files:** {len(tools)} (touched since {ALIVE_SINCE}: {len(alive)})")
     out.append(f"- **One-shot probes** (goal-local experiment log, not tooling): {len(probes)}")
     out.append(f"- **Verification tests** (not tooling): {len(tests)}")
