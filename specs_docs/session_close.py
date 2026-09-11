@@ -89,7 +89,23 @@ def verify_owned_lean(repo: Path, owned: list[str], *, run_kernel: bool) -> list
     return checked
 
 
-def render_protocol(*, head: str, executed: list[str], statuses: list[dependency_registry.ArtifactStatus], owned: list[str], foreign: list[str], checked: list[str]) -> str:
+def refresh_semantic_index(repo: Path) -> str:
+    """Reuse the registered pipeline inside the close wrapper's writer epoch."""
+    from orchestrator import spine
+
+    try:
+        spine.validate_p9a()
+        stale = spine.semantic_index_stale(repo_root=repo)
+        if stale:
+            spine.execute_refresh("semantic-index-refresh")
+            spine.validate_p9a()
+        spine.validate_semantic_index(repo_root=repo)
+    except spine.ControlViolation as exc:
+        raise RuntimeError(str(exc)) from exc
+    return "REFRESHED" if stale else "FRESH"
+
+
+def render_protocol(*, head: str, executed: list[str], statuses: list[dependency_registry.ArtifactStatus], owned: list[str], foreign: list[str], checked: list[str], semantic_index: str | None = None) -> str:
     stamp = dt.datetime.now(dt.timezone.utc).isoformat()
     lines = [
         "# SESSION PROTOCOL — GENERATED SKELETON",
@@ -106,6 +122,7 @@ def render_protocol(*, head: str, executed: list[str], statuses: list[dependency
         "",
         *(f"- `{item.artifact_id}`: `{item.status}` — {item.detail}" for item in statuses),
         "",
+        *(["## Semantic index", "", f"- `{semantic_index}` (validated)", ""] if semantic_index else []),
         "## Kernel checked",
         "",
         *(f"- `{item}`" for item in checked),
@@ -156,14 +173,30 @@ def main() -> int:
     parser.add_argument("--run-kernel", action="store_true")
     parser.add_argument("--protocol-out", type=Path)
     parser.add_argument("--no-session-checkpoint", action="store_true")
+    parser.add_argument(
+        "--semantic-refresh", action="store_true",
+        help="refresh stale q3_docs and validate its local receipt inside the canonical close wrapper; stdout protocol only",
+    )
     args = parser.parse_args()
     repo = args.root.resolve()
     try:
+        if args.semantic_refresh:
+            from orchestrator import spine
+
+            if repo != REPO.resolve() or repo != spine.REPO.resolve():
+                raise RuntimeError("SESSION_CLOSE_SEMANTIC_ROOT_MISMATCH")
+            # An arbitrary protocol file could change the indexed corpus after
+            # validation. The default checkpoint is non-corpus JSON.
+            if args.protocol_out is not None:
+                raise RuntimeError("SESSION_CLOSE_SEMANTIC_PROTOCOL_OUT_FORBIDDEN")
         executed, statuses = repair_derived(repo, args.registry.resolve(), repair=args.repair)
         owned, foreign = dirty_split(repo, args.owned_path)
         checked = verify_owned_lean(repo, owned, run_kernel=args.run_kernel)
+        semantic_index = refresh_semantic_index(repo) if args.semantic_refresh else None
+        if semantic_index == "REFRESHED":
+            executed.append("semantic-index-refresh")
         head = subprocess.run(["git", "rev-parse", "HEAD"], cwd=repo, check=True, capture_output=True, text=True).stdout.strip()
-        protocol = render_protocol(head=head, executed=executed, statuses=statuses, owned=owned, foreign=foreign, checked=checked)
+        protocol = render_protocol(head=head, executed=executed, statuses=statuses, owned=owned, foreign=foreign, checked=checked, semantic_index=semantic_index)
         residual = [item for item in statuses if item.status not in {"FRESH", "CURRENT_WORKTREE"}]
         checkpoint = None
         if not residual and not args.no_session_checkpoint:
@@ -174,7 +207,7 @@ def main() -> int:
             print(protocol, end="")
         if checkpoint is not None:
             print(f"SESSION_CHECKPOINT_WRITTEN {checkpoint}")
-    except (RuntimeError, dependency_registry.DependencyRegistryError, subprocess.CalledProcessError) as exc:
+    except (RuntimeError, OSError, dependency_registry.DependencyRegistryError, subprocess.CalledProcessError) as exc:
         print(exc)
         return 2
     return 1 if residual else 0
