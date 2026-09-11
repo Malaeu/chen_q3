@@ -7629,3 +7629,209 @@ ASK_STATUS: HITS
 HC_FINAL_SEARCH_EXIT=0
 
 HC_SEARCH_READBACK_CONFIRMED 2026-09-11T18:12:12.988298+00:00 ask_exit0/HITS; current density report qmd://q3_docs/docs/routeb-bus/density-independent-check-2026-09-11.md #9e98a0 and card#013573 found. Parent postcheck initially expected uppercase repository path in normalized qmd URI and raised AssertionError after successful ask; corrected against observed provider URI/hash without repeating query or refresh.
+
+BILINEAR_VOLTERRA_SHELF 2026-09-11T18:17:12.509997+00:00
+
+── ЗНАНИЕ (kb.py ask) ──────────────────────────────────────────
+
+── JOURNAL (1) ──────────────────────────────────────
+  2026-09-11 branch_decision  Actual theta density fails hyperbolic complete monotonicity
+      boundary: a gamma-convolution-to-HCM-to-sign shortcut fails at its first new property. This does not refute th
+
+1 hit(s) across layers for 'bilinear Volterra'
+
+── СТЫКОВКИ — входы и выходы ───────────────────────────────────
+ПОСТАВЛЯЮТ (provides):
+  PROSHKA_RECEIPT_REQ_2026_08_26_N_STOP_RULE_ACCEPTANCE_AND_OWNER_HANDOFF_2026-08-28.md  docs/routeB_bus/proshka/PROSHKA_RECEIPT_REQ_2026_08_26_N_STOP_RULE_ACCEPTANCE_AND_OWNER_HANDOFF_2026-08-28.md:None
+    -> CENTRAL_WINDOW_CAUCHY_OBSERVABILITY_PROGRAM_AS_EXECUTABLE_ROUTE; CENTRAL_COORDINATE_SCHUR_EXCEPTION_WITHOUT_NE
+  PROSHKA_VERDICT_REQ_2026_08_26_N_CORRECTIONS_10_11_P59_NORM_AND_QPROJECTED_TWO_CHANNEL_ADJUDICATION_2026-08-28.md  docs/routeB_bus/proshka/PROSHKA_VERDICT_REQ_2026_08_26_N_CORRECTIONS_10_11_P59_NORM_AND_QPROJECTED_TWO_CHANNEL_ADJUDICATION_2026-08-28.md:None
+    -> CORRECTION_10_ENERGY_OBJECT_RETRACTION; CORRECTION_11_FOUR_CLAIM_RETRACTION; P59_RAW_FULL_LATTICE_KERNEL_NORM_
+  PROSHKA_VERDICT_REQ_2026_08_26_N_CORRECTION_12_QPROJECTED_DIAGONAL_AND_ORIENTED_VOLTERRA_REPAIR_2026-08-28.md  docs/routeB_bus/proshka/PROSHKA_VERDICT_REQ_2026_08_26_N_CORRECTION_12_QPROJECTED_DIAGONAL_AND_ORIENTED_VOLTERRA_REPAIR_2026-08-28.md:None
+    -> CORRECTION_12_QPROJECTION_RETRACTIONS; QPROJECTED_CONSTANT_DIAGONAL_ERASURE; RAW_UNREFLECTED_UNIFORM_COSINE_TR
+  PROSHKA_VERDICT_REQ_2026_08_26_N_ORIENTED_FULL_VOLTERRA_UNIFORM_SMOOTH_VARIATION_AND_STIELTJES_DISCRIMINATOR_2026-08-28.md  docs/routeB_bus/proshka/PROSHKA_VERDICT_REQ_2026_08_26_N_ORIENTED_FULL_VOLTERRA_UNIFORM_SMOOTH_VARIATION_AND_STIELTJES_DISCRIMINATOR_2026-08-28.md:None
+    -> ORIENTED_FULL_VOLTERRA_ONE_FUNCTIONAL_IDENTITY; SQRT_M_MASS_AS_AN_OBSTRUCTION_TO_THE_SMOOTH_W02_PRIME_MAIN_SOU
+  PROSHKA_VERDICT_REQ_2026_08_26_N_POLARIZED_VOLTERRA_PASS_AND_POLE_NEUTRAL_PREFLIGHT_2026-08-27.md  docs/routeB_bus/proshka/PROSHKA_VERDICT_REQ_2026_08_26_N_POLARIZED_VOLTERRA_PASS_AND_POLE_NEUTRAL_PREFLIGHT_2026-08-27.md:None
+    -> POLARIZATION_OF_THE_VOLTERRA_KERNEL_TO_A_MIXED_PAIR; FINITE_VECTOR_TO_TRIGONOMETRIC_POLYNOMIAL_TYPE_GAP; COMPL
+
+── LEAN — объявления в metadata index ──────────────────────────
+goal058PolarizedVolterraClosed   Q3/Proofs/RouteB/Goal058PolarizedVolterra.lean
+goal058PolarizedVolterraIntegral   Q3/Proofs/RouteB/Goal058PolarizedVolterra.lean
+goal058PolarizedVolterraIntegral_eq_closed   Q3/Proofs/RouteB/Goal058PolarizedVolterra.lean
+goal058PolarizedVolterraIntegral_eq_pair_sum   Q3/Proofs/RouteB/Goal058PolarizedVolterra.lean
+goal058VolterraAlpha   Q3/Proofs/RouteB/Goal058PolarizedVolterra.lean
+goal058VolterraAlphaRaw   Q3/Proofs/RouteB/Goal058PolarizedVolterra.lean
+goal058VolterraAlphaRaw_eq   Q3/Proofs/RouteB/Goal058PolarizedVolterra.lean
+goal058VolterraBeta   Q3/Proofs/RouteB/Goal058PolarizedVolterra.lean
+
+── LEAN — на диске сейчас ──────────────────────────────────────
+q3.lean.aristotle/Q3/Proofs/RouteB/MatrixBilinRadicalQuotientEquiv.lean:10:/-- The equality between the full bilinear radical and the calibration line
+q3.lean.aristotle/Q3/Proofs/RouteB/RankOneCorrectionQuotientCharpolyTransport.lean:29:ambient correction on the full bilinear-radical quotient. -/
+q3.lean.aristotle/Q3/Proofs/RouteB/RankOneCorrectionWeightedSymmetry.lean:25:correction for the bilinear form represented by `T`.  This is weighted
+q3.lean.aristotle/Q3/Proofs/RouteB/RankOneCorrectionLagrangeRealZeros.lean:13:/-- A symmetric matrix represents a symmetric bilinear form in the standard
+q3.lean.aristotle/Q3/Proofs/RouteB/RankOneCorrectionLagrangeRadicalCharpoly.lean:11:the rank-one correction induced on the full bilinear-radical quotient. -/
+q3.lean.aristotle/Q3/Proofs/RouteB/D0ModeZeroFourFerrersProductionOrthogonality.lean:32:/-- Bilinear orthogonality for two endpoint-domain prolate eigenfunction
+
+── СЕМАНТИЧЕСКИЙ ИНДЕКС q3_docs — search-кандидаты ─────────────
+[
+  {
+    "docid": "#b60006",
+    "file": "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-req-2026-08-26-n-polarized-volterra-pass-and-pole-neutral-preflight-2026-08-27.md",
+    "score": 1,
+    "title": "STATUS: PROVED \u2014 POLARIZED VOLTERRA/HILBERT IDENTITY; CONSUMER RATE REMAINS OPEN",
+    "context": null,
+    "snippet": "@@ -1,3 @@ (0 before, 485 after)\n# STATUS: PROVED \u2014 POLARIZED VOLTERRA/HILBERT IDENTITY; CONSUMER RATE REMAINS OPEN\n\n```yaml"
+  },
+  {
+    "docid": "#097439",
+    "file": "qmd://q3_docs/q3-lean-aristotle/active/insights.md",
+    "score": 1,
+    "title": "Project Insights",
+    "context": null,
+    "snippet": "@@ -4582,4 @@ (4581 before, 47265 after)\n\n## In-progress synthesis (2026-03-08) \u2014 filtered Volterra bridge preferred for H1\n\nTarget node and wiring:"
+  },
+  {
+    "docid": "#097439",
+    "file": "qmd://q3_docs/q3-lean-aristotle/docs/insights.md",
+    "score": 1,
+    "title": "Project Insights",
+    "context": null,
+    "snippet": "@@ -4582,4 @@ (4581 before, 47265 after)\n\n## In-progress synthesis (2026-03-08) \u2014 filtered Volterra bridge preferred for H1\n\nTarget node and wiring:"
+  },
+  {
+    "docid": "#507793",
+    "file": "qmd://q3_docs/docs/routeb-bus/proshka-queue.md",
+    "score": 1,
+    "title": "\u041e\u0447\u0435\u0440\u0435\u0434\u044c \u043a \u041f\u0440\u043e\u0448\u043a\u0435 \u2014 \u043d\u0430\u043a\u043e\u043f\u0438\u0442\u0435\u043b\u044c\u043d\u0430\u044f",
+    "context": null,
+    "snippet": "@@ -38,4 @@ (37 before, 4418 after)\n- Follow-up CE accepted: exact Qav=S-J with all covariance terms/tails; weighted source density indefinite (det=-(x1-x2)^2d1^2d2^2, frozen-vector value-2 on positive measure). Direct pointwise jump-square identification is refuted; integrated J,S,Qav signs remain unpaid. Full CE appendix/receipt ..."
+  },
+  {
+    "docid": "#d376a7",
+    "file": "qmd://q3_docs/docs/progress-log.md",
+    "score": 1,
+    "title": "\u0421\u0443\u0434\u043e\u0432\u043e\u0439 \u0436\u0443\u0440\u043d\u0430\u043b Q3 \u2014 \u0440\u0430\u0437\u0432\u0438\u043b\u043a\u0438, \u0430 \u043d\u0435 \u0441\u043e\u0431\u044b\u0442\u0438\u044f",
+    "context": null,
+    "snippet": "@@ -7408,4 @@ (7407 before, 1 after)\n**\u0422\u0435\u0445\u043d\u0438\u043a\u0430:** one0.000574s Arb256bit computation with all derivative tails, exact chain rule and source series; parent independent rational main bound<-3/100; sole Terra/xhigh two sequential CLEAN passes on7175bytes3baec48a plus source card0135731a. Definition primaryarxiv2606.22066v1 page2eq4-6 r..."
+  }
+]
+
+── ВНЕШНИЕ LEAN-БАЗЫ — точные/текстовые кандидаты ──────────────
+{
+  "base_results": [
+    {
+      "base_id": "zeta23",
+      "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+      "exact_candidate": null,
+      "identity_after": {
+        "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+        "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+        "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+        "git_root_relative_path": ".",
+        "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+        "kind": "GIT_TREE_AND_CLEAN_LEAN",
+        "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+        "lean_status_clean": true,
+        "root_device": 2048,
+        "root_inode": 121645529,
+        "searched_regular_source_count": 329
+      },
+      "identity_before": {
+        "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+        "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+        "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+        "git_root_relative_path": ".",
+        "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+        "kind": "GIT_TREE_AND_CLEAN_LEAN",
+        "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+        "lean_status_clean": true,
+        "root_device": 2048,
+        "root_inode": 121645529,
+        "searched_regular_source_count": 329
+      },
+      "searched_regular_source_count": 329
+    }
+  ],
+  "bases_queried": [
+    "zeta23"
+  ],
+  "boundary": "CANDIDATE_MATCH_NOT_LEAN_PROOF_OR_INTERFACE_EQUIVALENCE",
+  "budget_seconds": 3.0,
+  "candidate": null,
+  "candidate_provenance": null,
+  "candidate_sha256": null,
+  "elapsed_seconds": 0.326969,
+  "enabled_bases": [
+    "zeta23"
+  ],
+  "errors": [],
+  "matches": [
+    {
+      "base_id": "zeta23",
+      "declaration_name": null,
+      "line": 51,
+      "match_kind": "TEXT_CANDIDATE",
+      "path": "Zeta23/ExplicitFormula.lean",
+      "snippet": "(Mathlib convolution w.r.t. Lebesgue measure and the ℝ-bilinear map `ContinuousLinearMap.mul ℝ ℂ`). -/"
+    },
+    {
+      "base_id": "zeta23",
+      "declaration_name": null,
+      "line": 17,
+      "match_kind": "TEXT_CANDIDATE",
+      "path": "Zeta23/Final.lean",
+      "snippet": "                                           (y = x) form [MV74, Thm 2]; the paper's bilinear [lem:MV] is"
+    },
+    {
+      "base_id": "zeta23",
+      "declaration_name": null,
+      "line": 101,
+      "match_kind": "TEXT_CANDIDATE",
+      "path": "Zeta23/Hypotheses.lean",
+      "snippet": "Source: [MV74, Theorem 2] for z = x (the paper citation); the bilinear form is derived in the paper by a"
+    },
+    {
+      "base_id": "zeta23",
+      "declaration_name": null,
+      "line": 106,
+      "match_kind": "TEXT_CANDIDATE",
+      "path": "Zeta23/Hypotheses.lean",
+      "snippet": "The bilinear (x,z) form is assumed directly (it is what prop:PP/prop:cross consume). -/"
+    },
+    {
+      "base_id": "zeta23",
+      "declaration_name": null,
+      "line": 56,
+      "match_kind": "TEXT_CANDIDATE",
+      "path": "Zeta23/LinAlg/VonNeumann.lean",
+      "snippet": "section Bilinear"
+    },
+    {
+      "base_id": "zeta23",
+      "declaration_name": "re_trace_mul_eq_eigenvalue_bilinear",
+      "line": 78,
+      "match_kind": "TEXT_CANDIDATE",
+      "path": "Zeta23/LinAlg/VonNeumann.lean",
+      "snippet": "lemma re_trace_mul_eq_eigenvalue_bilinear {A B : Matrix n n 𝕜}"
+    },
+    {
+      "base_id": "zeta23",
+      "declaration_name": null,
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ASK_RECEIPT_JSON: {"boundary":"COMPLETE_REGISTERED_SHELF","candidate_rows":[{"excerpt":"── JOURNAL (1) ──────────────────────────────────────","metadata_sha256":"e569de14f9a3663e6c443605e6e8e42b97e6b86cb5d87e3ffa30e90b295c3913","provider":"knowledge-db","provider_id":"d5a655c4043a3b8f0c60056af275ce939b8460b59a5c19b79535f181cc46d02d","query":"bilinear Volterra","query_sha256":"33da7abe921c33be5ecb1843d3cd20a6ec0e0f580cf797bcb51436e792220738","title":"── JOURNAL (1) ──────────────────────────────────────","url":"kb.py ask"},{"excerpt":"2026-09-11 branch_decision Actual theta density fails hyperbolic complete monotonicity","metadata_sha256":"7cec34528ccb70d24383f5adf64c5922b2df08ae4907b585a914b38579124856","provider":"knowledge-db","provider_id":"7beb813e4d89106e13c1406e5713f3ceef3d547df8c6590d672f6c6233f53005","query":"bilinear Volterra","query_sha256":"33da7abe921c33be5ecb1843d3cd20a6ec0e0f580cf797bcb51436e792220738","title":"2026-09-11 branch_decision Actual theta density fails hyperbolic complete monotonicity","url":"kb.py ask"},{"excerpt":"ПОСТАВЛЯЮТ (provides):","metadata_sha256":"080e3bbd086808a42ead80af86457e8a39f015e3eec8769b7fdf684cbe68089c","provider":"knowledge-db","provider_id":"862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c","query":"bilinear Volterra","query_sha256":"33da7abe921c33be5ecb1843d3cd20a6ec0e0f580cf797bcb51436e792220738","title":"ПОСТАВЛЯЮТ (provides):","url":"capability/assembly/counterexample"},{"excerpt":"PROSHKA_RECEIPT_REQ_2026_08_26_N_STOP_RULE_ACCEPTANCE_AND_OWNER_HANDOFF_2026-08-28.md docs/routeB_bus/proshka/PROSHKA_RECEIPT_REQ_2026_08_26_N_STOP_RULE_ACCEPTANCE_AND_OWNER_HANDOFF_2026-08-28.md:None","metadata_sha256":"b705dced19507ae26df0fe2e571d8fe1a1904ef46c154f782c9a919212c4c068","provider":"knowledge-db","provider_id":"f60878354f6f6140d88b4f88e085c25cc1ba03ddce4fab3f4b34135b66c54fa3","query":"bilinear Volterra","query_sha256":"33da7abe921c33be5ecb1843d3cd20a6ec0e0f580cf797bcb51436e792220738","title":"PROSHKA_RECEIPT_REQ_2026_08_26_N_STOP_RULE_ACCEPTANCE_AND_OWNER_HANDOFF_2026-08-28.md docs/routeB_bus/proshka/PROSHKA_RECEIPT_REQ_2026_08_26_N_STOP_RULE_ACCEPTANCE_AND_OWNER_HANDOFF_2026-08-28.md:None","url":"capability/assembly/counterexample"},{"excerpt":"goal058PolarizedVolterraClosed Q3/Proofs/RouteB/Goal058PolarizedVolterra.lean","metadata_sha256":"a8be071df8f69f4a79d04a72c0e9e60eacd54ebfa37db836bb7548c473b16982","provider":"lean-index","provider_id":"976c060b36e914ca8ea4a35223b372984c46d015dab9827a61e72d076b0c4aca","query":"bilinear Volterra","query_sha256":"33da7abe921c33be5ecb1843d3cd20a6ec0e0f580cf797bcb51436e792220738","title":"goal058PolarizedVolterraClosed Q3/Proofs/RouteB/Goal058PolarizedVolterra.lean","url":"aristotle_proofs.db"},{"excerpt":"goal058PolarizedVolterraIntegral Q3/Proofs/RouteB/Goal058PolarizedVolterra.lean","metadata_sha256":"0a7b4dc1cf08d4415f4c1d1f9fb216caf7e284b94a3ff76f97b9b8ae8ee77cd9","provider":"lean-index","provider_id":"e2e1d65f21319655acdd54821ed0ca0e3b36d82636a9917c0ab9c6c7cbb68452","query":"bilinear Volterra","query_sha256":"33da7abe921c33be5ecb1843d3cd20a6ec0e0f580cf797bcb51436e792220738","title":"goal058PolarizedVolterraIntegral Q3/Proofs/RouteB/Goal058PolarizedVolterra.lean","url":"aristotle_proofs.db"},{"excerpt":"q3.lean.aristotle/Q3/Proofs/RouteB/MatrixBilinRadicalQuotientEquiv.lean:10:/-- The equality between the full bilinear radical and the calibration line","metadata_sha256":"722d37239221ff43b85374a0be81997ae8690a6ef53def5a19ab34b3f1a64adc","provider":"lean-tree","provider_id":"67cd27ba8ff3aad4c7b1aad8ca1a2366636b2931bb18a8b3856e810dd3f6fd7c","query":"bilinear Volterra","query_sha256":"33da7abe921c33be5ecb1843d3cd20a6ec0e0f580cf797bcb51436e792220738","title":"q3.lean.aristotle/Q3/Proofs/RouteB/MatrixBilinRadicalQuotientEquiv.lean:10:/-- The equality between the full bilinear radical and the calibration line","url":"Q3/Proofs/RouteB"},{"excerpt":"q3.lean.aristotle/Q3/Proofs/RouteB/RankOneCorrectionQuotientCharpolyTransport.lean:29:ambient correction on the full bilinear-radical quotient. -/","metadata_sha256":"b33dc7f92c33e0239bbe8b5783fad30bf998ba82b6b905cbf2cf3739c5afe4f3","provider":"lean-tree","provider_id":"ebde8aae1a71d0b548410a6c78f5ab08bb6489511fcefe007b56bf256ce068c1","query":"bilinear Volterra","query_sha256":"33da7abe921c33be5ecb1843d3cd20a6ec0e0f580cf797bcb51436e792220738","title":"q3.lean.aristotle/Q3/Proofs/RouteB/RankOneCorrectionQuotientCharpolyTransport.lean:29:ambient correction on the full bilinear-radical quotient. -/","url":"Q3/Proofs/RouteB"}],"external_lean":"EXECUTED","provider_rows":[{"failure_count":0,"hit_store_count":6,"provider":"local-shelves","query":"bilinear Volterra","query_sha256":"33da7abe921c33be5ecb1843d3cd20a6ec0e0f580cf797bcb51436e792220738","status":"HITS"},{"candidate_count":0,"candidate_hashes":[],"collection_identity":"bbf0090a48386c22009eb04fb1c93dd7e8615ba1721e530ddb450a1a7fac5e0c","corpus_sha256":"cd4bd834cc83cab6de5de4ac4eaaf437da8b319df9e2634a20673adc59643f96","provider":"q3_docs","query":"bilinear Volterra","query_sha256":"33da7abe921c33be5ecb1843d3cd20a6ec0e0f580cf797bcb51436e792220738","status":"CANDIDATES"}],"query":"bilinear Volterra","query_sha256":"33da7abe921c33be5ecb1843d3cd20a6ec0e0f580cf797bcb51436e792220738","schema":"q3_ask_local_receipt.v1"}
+Найдено в 6 хранилищах из 9.
+
+Просмотрены хранилища:
+  · knowledge.db (kill/move/journal/dossier)
+  · search_session/search_term (kb.py flags)
+  · capability (provides/requires — каталог стыковок)
+  · litreview (REFERENCES.md · *_CARDS.md · references.bib · pdfs/)
+  · aristotle_proofs.db (Lean-декларации)
+  · Q3/Proofs/RouteB/*.lean (живое дерево)
+  · specs/maps + GENEALOGY/Progress_Log/RECORDING_RULES/GLOSSARY/TOOLS
+  · q3_docs (bounded qmd search через research_oracle.py)
+  · all enabled external Lean bases (zeta23; registered read-only search)
+
+Совпадения — кандидаты. Для вопроса «подходит ли теорема точной цели» запусти:
+  python3 scripts/supplier_preflight.py --query 'bilinear Volterra' --candidate <имя> --target <имя>
+ASK_STATUS: HITS

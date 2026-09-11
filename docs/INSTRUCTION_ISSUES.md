@@ -183,3 +183,10 @@ review and a safe shared boundary remain required. No user approval is requested
 for continuing the already authorized isolated investigation.
 
 Resolution observed 2026-09-11T17:25:02.850055+00:00: isolated owner accepted ordinary non-force push, removed the unnecessary atomic expected-tip requirement and force-with-lease; native revised-plan Bp6/Bp7 reported CLEAN/CLEAN. This resolves the proposed grant conflict at plan level only. New artifact review/crash tests remain pending in isolation; no shared core write boundary or owner transfer.
+
+
+## 2026-09-11T18:52:04.157493+00:00 — owner WATCH five-minute cadence supersedes older ten-minute text
+
+Concrete conflict: docs/Codex/GOAL.md section3 says10min, published ADVICE_2026-09-11_WATCH.md at09f11c6a and ADVICE_PROTOCOL7 require<=5min per addressed thread. The newer specific owner instruction is applied: existing MAT bridge updated through native automation API to ACTIVE/FREQ=MINUTELY;INTERVAL=5, agentcheck20 unchanged. Actual five-minute scheduled wake not yet observed. No second MATwatch. Isolated STROJKA owner01a08f80 notified and agreed to review minimal5|10 transition schema plus final5readback; no shared core installation/owner transfer. Leave GOAL/control rewrite to that reviewed package; do not report saved10 as observed5.
+
+Resolution 2026-09-11T19:04:13.476829+00:00: published CADENCE430b9317 explicitly withdraws observer5min; actual bridge was already5, so its claim unchanged10 was stale. Root read CADENCE fully and used native automation_update to RESTORE actual10/ACTIVE, then TOML readback INTERVAL=10. No dual5/10schema or GOAL/control rewrite needed. Isolated technical owner notified. Original5 transition remains historical fact, not a current rule.

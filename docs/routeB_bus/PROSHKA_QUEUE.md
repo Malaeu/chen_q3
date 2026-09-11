@@ -14,6 +14,11 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+
+## OWNER ADVICE SIBLING1/2/3 — PAPER results, no Proshka request
+
+Finite Q1/Q2 and continuous restatement accepted in SIBLING reportS1-S23; named owner REPORT_SIBLING/2 carry the answers. SIBLING3's proposed pole/fiber dictionary is refuted by admissible smooth T6/T7 witnesses in REPORT_SIBLING3; original source sign remains open. Do not dispatch 'Castelnuovo for K primes' from this false identification. A future candidate needs a concrete exact map retaining separate±i/2 pole moments, the independent0 correction and the full-prime form. Check its action on both witnesses first; a generic restatement of W>=0 is not a new supplier. All current DENSITY requests are ANSWERED, no pending Proshka response or new request/binding. Existing10min bridge observes the continuing task and new addressed ADVICE; CADENCE430b9317 withdrew the temporary5min setting.
+
 ## REQ-2026-09-11-DENSITY · DENSITY: construct the full sign from the exact theta probability law · ANSWERED
 
 - `STATUS: ANSWERED`
