@@ -239,3 +239,229 @@ ACCEPTED_PAPER at the exact limited control scope above. Sole slack_verdict_chec
 | OC2 PASS2 | CLEAN | No finding — точные байты, тождества и ограниченная область подтверждены | None |
 
 No theta-source sign, SL20, Lean or RH admission. The next source-specific question must exclude this SAME control despite both scalar properties.
+
+## BP1-BP3 candidate — the exact probability-law input behind the theta source
+
+Status: CANDIDATE_PENDING_INDEPENDENT_REVIEW. These source transfers and the
+explicit control exclusion are not SL20 or a proof of the Riemann hypothesis.
+Keep the canonical f=Phi/A with A=||Phi||_2; do not replace A by the integral of Phi.
+
+### Source and scope
+
+The observer acquired Biane, Pitman and Yor, *Probability laws related to the
+Jacobi theta and Riemann zeta functions, and Brownian excursions*,
+arXiv:math/9912170v1. Local PDF:
+docs/routeB_bus/litreview/pdfs/math_9912170.pdf, 351648 bytes,
+SHA256 04a444275e5522cef9a1ba9f7d1b9f20a752764d3548f9c48be6dbc055bb12ea.
+Printed/PDF pages 3-7 and 10-14 were read; Proposition 1 on page 7 was rendered
+and visually checked. This local file is a recompiled copy (title-page date
+November 26, 2024); its exact bytes, not a presumed publisher edition, are the
+source. No claim that the whole 40-page paper was audited.
+
+Source locators: equations (6)-(8), page 4; (14)-(19), pages 5-6;
+Proposition 1 (21),(24),(25), page 7; Euler product and Levy representation
+(27)-(31), page 10. These are unconditional probability identities. The paper
+imports their earlier sources; those originals were not separately audited here.
+Our source Phi and A are fixed in the SLACK verdict section 1.1, lines 72-78;
+its accepted kernel V is the dependency in the original report above.
+
+### BP1 — the sum is in the positive variable T, not the logarithmic variable x
+
+Write G(y)=sum_{n in Z} exp(-pi n^2 y^2) and
+
+H(y)=4y^2 sum_{n>=1}(2pi^2 n^4 y^2-3pi n^2)exp(-pi n^2 y^2).
+
+The source gives a random variable Y>0 with density H(y)/y,
+E[Y^s]=2 xi(s), and
+
+T=Y^2 = (1/pi) sum_{n>=1} Gamma_{2,n}/n^2
+
+in distribution, with independent Gamma(2,1) variables. Each such variable is
+the sum of two independent unit-rate exponentials. The nonnegative series
+converges almost surely since its expectation is pi/3. Its Laplace transform is
+
+L(z)=E[exp(-zT)]=prod_{n>=1}(1+z/(pi n^2))^(-2)
+    =(sqrt(pi z)/sinh(sqrt(pi z)))^2, z>=0,
+
+with L(0)=1 by continuity. Let r(t) be the probability density of T (r is not a
+Levy density). The change of variable t=y^2 and a termwise comparison with Phi give
+
+r(t)=H(sqrt(t))/(2t)
+    =2 sum_{n>=1}(2pi^2 n^4 t-3pi n^2) exp(-pi n^2 t),
+Phi(x)=(1/2)exp(x/2)H(exp(x))=exp(5x/2)r(exp(2x)).
+
+These are exact identities; the displayed series converge locally uniformly
+with their fixed derivatives on positive t. For small t use the source
+reciprocity H(1/y)=yH(y), equivalently r(1/t)=t^(5/2)r(t), not a subtraction
+of nearly equal truncated terms.
+
+Put I=int_R Phi(x)dx=xi(1/2)>0 and Z=E[T^(1/4)]=2I. Under the probability
+measure tilted by T^(1/4)/Z, X=(1/2)log T has density
+
+p_X(x)=Phi(x)/I,          f(x)=(I/A)p_X(x).
+
+Thus the canonical f has L2 norm one; it need not be a probability density.
+Infinite divisibility of T is not asserted for the tilted logarithm X. The
+observer's shorthand "Phi is the density of a sum of independent exponentials"
+omits the logarithmic variable change, tilt and normalization, and cannot be
+used literally in V.
+
+### BP2 — a positive convolution identity of the exact source
+
+Define k(v)=2 sum_{n>=1} exp(-pi n^2 v)=theta(v)-1, v>0.
+Then k>=0 and int_0^infty k(v)dv=pi/3. The exact density obeys
+
+t r(t)=int_0^t k(v)r(t-v)dv, t>0.                         (BP2)
+
+Proof: differentiating the convergent Laplace product gives
+
+-L'(z)=L(z) 2 sum_{n>=1} 1/(z+pi n^2), z>=0.
+
+The sum on the right is the Laplace transform of k. Tonelli applies to its
+nonnegative terms; both t r(t) and k*r are nonnegative integrable functions
+with total integral pi/3. Uniqueness of Laplace transforms of finite measures
+proves equality almost everywhere. The density r is continuous, tends to zero
+at zero by reciprocity, and is locally bounded on the closed positive halfline.
+Since k is locally integrable, convolution continuity upgrades the identity
+to every t>0. Uniform convergence of the differentiated product on bounded
+nonnegative z follows from sum n^(-2)<infinity. No form positivity was used.
+
+This is a new exact source input to try in the full-form problem, not a claim
+that positive convolution kernels automatically give positive V.
+
+### BP3 — this additional input excludes the SAME OC1/OC2 control
+
+For fc(x)=exp(-x^2)(1+3x^2/10+x^4/25), define
+Mc(h)=int_R exp(hx)fc(x)dx. Gaussian differentiation gives exactly
+
+Mc(h)=sqrt(pi)exp(h^2/4)(h^4+42h^2+472)/400.
+
+Applying the inverse of BP1 to this control, at the SAME coordinate t=exp(2x),
+the normalized positive-variable density is
+
+rc(t)=t^(-5/4)fc((log t)/2)/(2Mc(-1/2)).
+
+Consequently E_c[T^q]=Mc(2q-1/2)/Mc(-1/2), and in particular
+
+E_c[T]=(9145/7721)exp(1/2)=1.9527983448455733588...
+E[T]=pi/3=1.0471975511965977462... for the canonical source.
+
+The inequality is exact: the control mean exceeds 3/2, whereas pi/3<4/3.
+Evenness of fc still gives rc(1/t)=t^(5/2)rc(t), so the reciprocal symmetry
+alone does not exclude this control either.
+Any normalized nonnegative density satisfying BP2 with this FIXED k has mean
+int k=pi/3, by Tonelli. Therefore rc satisfies neither the canonical Laplace
+product nor BP2, while its original two scalar concavity properties and
+negative V witness -3/1250 are unchanged. This excludes only this fixed-source
+product/convolution law for rc. It does not prove that rc fails every class of
+infinitely divisible distributions or generalized gamma convolutions. This
+exclusion compares the original unscaled control with the fixed canonical rates.
+
+### BP3b — the canonical mean alone still cannot supply the sign
+
+This is a separate control, not a rescaling of the actual source or its gamma
+rates. Let f_sigma(x)=fc(x/sigma), 0<sigma<=1. Its inverse-density probability
+law in the unchanged coordinate t=exp(2x) has mean
+
+m(sigma)=Mc(3sigma/2)/Mc(-sigma/2).
+
+This function is continuous, extends to m(0)=1, and m(1)>3/2.
+Since 1<pi/3<4/3, the intermediate value theorem supplies at least one
+sigma_* in (0,1) with m(sigma_*)=pi/3. No numerical root or uniqueness
+assertion is needed for this existence statement.
+
+Both scalar concavity properties survive this control scaling: if
+s_sigma(t)=s_c(t/sigma^2), then q_sigma(t)=sigma^(-4)q_c(t/sigma^2);
+the signs of the two second logarithmic derivatives remain strictly negative.
+The inverse-density reciprocal symmetry is also retained by evenness.
+On the other hand, substitution v=sigma w in the V integral gives exactly
+
+V_{f_sigma}(sigma x,sigma y)=sigma^2 V_fc(x,y).
+
+At nodes (sigma_*,2sigma_*,-sigma_*,-2sigma_*) with the original coefficients
+(3e,-exp(4),-3e,exp(4)), the full odd form is -3sigma_*^2/1250<0.
+The previous compact smoothing argument applies to each such fixed sigma_*.
+Thus even the two scalar properties PLUS reciprocal symmetry PLUS the
+canonical positive-variable mean do not suffice for the full form sign.
+The proposed new input must use the entire fixed BP2/Laplace law, not replace
+it by its first moment. No claim of exclusion from all infinite-divisibility
+classes follows.
+
+A diagnostic root is sigma_*=0.2609331907379936465689273867297892...;
+its diagnostic odd value is -0.00016340671206890441602214442761193129...
+These decimals locate one candidate root; the proof uses continuity and
+the strict endpoint inequalities, so no interval certification is needed.
+
+### Exact remaining sign, after the correct transport
+
+Substitute BP1 in the accepted V integral and put u=exp(2t):
+
+V_f(x,y)=exp(5(x+y)/2)/(2A^2)
+  int_1^infty u^(3/2)(x+y+log u)r(exp(2x)u)r(exp(2y)u)du.  (BP4)
+
+For any finite real nodes x_i and complex coefficients c_i, define
+
+R(u)=sum_i c_i exp(5x_i/2)r(exp(2x_i)u),
+S(u)=sum_i c_i x_i exp(5x_i/2)r(exp(2x_i)u).
+
+The full quadratic form is exactly
+
+sum_{i,j} conjugate(c_i)c_j V_f(x_i,x_j)
+ =1/(2A^2) int_1^infty u^(3/2)
+    ((log u)|R(u)|^2 + 2 Re(conjugate(R(u))S(u)))du.         (BP5)
+
+All fixed-node integrals converge absolutely by the source theta decay.
+The first summand is nonnegative. The mixed summand has no established sign.
+The first unpaid assertion is that its integral is at least the negative of
+the first integral for EVERY finite real node set and ALL complex coefficients.
+BP5 is only an exact restatement of the target, not a sign theorem. BP2 is the
+additional source-specific input to test against this remaining inequality.
+Both full parity forms V_+ and V_- are still required; neither scalar
+concavity nor positive entries nor independent summands of T supply that step.
+
+Next decisive construction: use the fixed positive convolution BP2/Laplace
+product to control this mixed term or produce a positive-square representation
+with every remainder retained. Require a concrete construction and its first
+unpaid operator inequality if it fails. Do not launch a window campaign merely
+to remeasure BP5, and do not assert that failure of one construction rules out
+all representations.
+
+### Parent checks already performed (not a replacement for independent review)
+
+Symbolic termwise checks of both Phi/H/r identities: exact PASS. The Gaussian
+moment ratio above was simplified exactly to 9145 exp(1/2)/7721. A three-point
+40-digit quadrature control of BP2 used the stable reciprocal r formula and
+v=w^2 at the integrable theta singularity:
+
+| t | t r(t) | relative quadrature residual |
+|---|---:|---:|
+| 0.5 | 0.3174822226597063221654711 | 4.9942e-31 |
+| 1 | 0.8933938009342468881739693 | 1.2849e-41 |
+| 2 | 0.2244938325488557185502211 | 2.5567e-41 |
+
+Runtime 1.708 seconds. This finite-series, non-interval computation is
+DIAGNOSTIC_ONLY; the proof of BP2 is the Laplace-transform argument above.
+No original SLACK/OC2 numerical campaign or already accepted review was repeated.
+
+### BPY acceptance receipt — accepted at the stated PAPER scope
+
+The preceding 9686-byte candidate is preserved verbatim (including its frozen
+pending-status line); this later receipt records its acceptance after review.
+Candidate SHA256: 46aab89e59e9ab777b537bd160285ff029db6d610cdee0fc66f6c9b9274ebc39.
+Prior accepted report prefix: 26607 bytes, SHA256
+b98b2c1d8ae5b66cc6577a5c1ea19ea95044adf415198a4c92745e3b30c886bb.
+Sole native slack_verdict_check, gpt-5.6-terra/xhigh, read-only, no descendants:
+PASS1 CLEAN and subsequent PASS2 CLEAN on the same candidate bytes,
+FIRST_INCORRECT_ASSERTION NONE. Mode A reached. Both passes verified the
+protocol byte identity and exact PDF hash. Parent termwise source identities,
+Gaussian moment ratio and independent BP2 controls are recorded above.
+
+| Pass | Severity | Finding — English term + Russian explanation | Fix applied |
+|---|---|---|---|
+| BPY PASS1 | CLEAN | No finding — источник, нормировка и контрпример проверены | None |
+| BPY PASS2 | CLEAN | No finding — повторная проверка масштаба, непрерывности и комплексных коэффициентов | None |
+
+ACCEPTED: BP1 exact source/tilt transfer, BP2 fixed positive convolution,
+BP3 original-control exclusion, BP3b mean-matched negative control, BP4/BP5
+exact full-form rewrite with explicitly unpaid mixed term. No full-source
+sign, complete parity positivity, Lean admission or RH proof follows.
