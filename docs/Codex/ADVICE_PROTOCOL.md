@@ -15,3 +15,9 @@ Purpose: the owner and the observer push ideas into the executor's work without 
    controls, killed branches with numbers, the first unpaid inequality) in the report, commits and pushes at once, then asks the
    owner/observer through the report. The observer's watch on the report path is the owner's wake-up.
 6. Nothing here changes PX_RH_CLAIM, the writer lock, the immutable requests, or the review rules.
+7. Addressing and wake-up (owner's word 2026-09-11 ~21:10). First line of every ADVICE: `TO: MAT | STROJKA | BOTH`. Each thread keeps
+   its own watch on `origin/rh_clean` (vahta.sh or native heartbeat, ≤ 5 min) and reads new ADVICE files addressed to it. Answers go to
+   `docs/Codex/REPORT_<date>_<NAME>[_MAT|_STROJKA].md`, first line `RE: … STATUS: VICTORY | DEFEAT | PARTIAL`, commit prefix
+   `[Codex][rh_clean][<NAME>]`, ordinary push. The observer watches `[Codex]` commits for the owner.
+8. Standing grant: the observer commits/pushes ADVICE files, CHAT_DIGESTS entries and sibling scripts without per-post approval.
+   How-to for the threads: `ADVICE_2026-09-11_WATCH.md`.
