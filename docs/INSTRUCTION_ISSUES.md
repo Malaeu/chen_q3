@@ -162,3 +162,24 @@ Resolution 2026-09-11T14:12:20.103893+00:00: reviewed registered slack-manual-ch
   one plan, diagnostic-only secondary script), removing the obsolete literals.
   Other whole-module failures must be compared with the unchanged baseline;
   they are not reported as passing alias checks or silently waived.
+
+
+## 2026-09-11 — proposed bootstrap lease versus the existing non-force grant
+
+OPEN_REVIEW in isolated task01a08f80-f033-7a31-8f3a-3aef042a3fbc; no shared activation.
+Source: current docs/Codex/GOAL.md section1 grants ordinary non-force pushes and
+excludes force pushes. The isolated TEAM_RUNTIME_REFACTOR_PLAN_2026-09-11.md
+section12 now prescribes git push --force-with-lease with an exact expected ref
+plus a proven ancestor relation. That combination is intended to guarantee only
+fast-forward effects, but the command uses a force option outside the explicit
+current grant. The executor must not silently widen the grant or mislabel this
+as a platform rejection. Root sent the exact conflict to the implementing owner.
+Proposed resolution: first reassess whether rejection of an intervening reviewed
+intermediate ancestor is necessary; prefer the existing ordinary non-force push
+with honest exact-source/owner/history reconciliation. If the strict race
+criterion really needs another mechanism, keep that criterion open and show its
+bounded alternative without hidden hook/config changes. Final plan/artifact
+review and a safe shared boundary remain required. No user approval is requested
+for continuing the already authorized isolated investigation.
+
+Resolution observed 2026-09-11T17:25:02.850055+00:00: isolated owner accepted ordinary non-force push, removed the unnecessary atomic expected-tip requirement and force-with-lease; native revised-plan Bp6/Bp7 reported CLEAN/CLEAN. This resolves the proposed grant conflict at plan level only. New artifact review/crash tests remain pending in isolation; no shared core write boundary or owner transfer.

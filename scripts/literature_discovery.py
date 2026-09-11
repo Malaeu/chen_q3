@@ -362,8 +362,11 @@ def validate_receipt(
     elif (
         not isinstance(limits.get("timeout_seconds"), (int, float))
         or not 0 < limits["timeout_seconds"] <= 30
-        or limits.get("max_queries") != MAX_QUERIES
-        or limits.get("max_results_per_pair") != MAX_RESULTS_PER_PAIR
+        or type(limits.get("max_queries")) is not int
+        or not 1 <= limits["max_queries"] <= MAX_QUERIES
+        or len(queries) > limits["max_queries"]
+        or type(limits.get("max_results_per_pair")) is not int
+        or not 1 <= limits["max_results_per_pair"] <= MAX_RESULTS_PER_PAIR
         or limits.get("max_response_bytes") != MAX_RESPONSE_BYTES
         or limits.get("max_global_candidates") != MAX_GLOBAL_CANDIDATES
         or limits.get("max_title_chars") != MAX_TITLE_CHARS
@@ -406,6 +409,7 @@ def validate_receipt(
         )
 
     rows = payload.get("provider_rows")
+    result_limit = limits.get("max_results_per_pair") if isinstance(limits, dict) else None
     expected_pairs = [(provider, query) for provider in providers for query in queries]
     if not isinstance(rows, list) or len(rows) != len(expected_pairs):
         errors.append("LITERATURE_PROVIDER_DENOMINATOR_INVALID")
@@ -428,7 +432,7 @@ def validate_receipt(
                 else "CANDIDATES"
                 if pair_hashes
                 else "HITS_DEDUPED"
-                if isinstance(row.get("duplicate_count"), int)
+                if type(row.get("duplicate_count")) is int
                 and row.get("duplicate_count", 0) > 0
                 else "ZERO_HITS_AT_TIME"
             )
@@ -442,8 +446,12 @@ def validate_receipt(
             or row.get("candidate_hashes") != pair_hashes
             or not isinstance(row_errors, list)
             or any(not isinstance(item, str) for item in row_errors)
-            or not isinstance(row.get("duplicate_count"), int)
+            or type(row.get("duplicate_count")) is not int
             or row.get("duplicate_count", -1) < 0
+            or (
+                type(result_limit) is int
+                and len(pair_hashes) + row["duplicate_count"] > result_limit
+            )
         ):
             errors.append("LITERATURE_PROVIDER_ROW_BINDING_INVALID")
     flattened_errors = [

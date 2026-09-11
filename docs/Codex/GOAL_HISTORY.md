@@ -16303,3 +16303,1259 @@ question. Prior.20 for usable identity, not RH. No new request exists.
 ````
 <!-- /q3-history -->
 
+<!-- q3-history {"fence":"````","key":"resume-60-109a422b166af7b3cb35920bdd14f446a2d7580dfba69503b1bcda6af2fa0e26","kind":"resume","revision":60,"sha256":"109a422b166af7b3cb35920bdd14f446a2d7580dfba69503b1bcda6af2fa0e26","size":6873} -->
+````text
+---
+schema: q3_resume.v1
+revision: 60
+observed_at: '2026-09-11T16:59:14.115552+00:00'
+previous_sha256: 3dbeb7d53fe708e20d84ea84b6358456541fabec51ff58b588fc68bce3b77888
+owner_thread_id: 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 536d45f3f20d50ba5c2051a591b00f9d2a492d0a
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+stages:
+  receipt: DONE
+  independent_review: DONE
+  parent_check: DONE
+  acceptance: DONE
+  publication: PENDING
+operation:
+  kind: PUBLISH
+  state: INTENT
+  id: DENSITY_CE_ACCEPTED_COVARIANCE_DEFECT
+  evidence:
+  - Base536d45f3f20d50ba5c2051a591b00f9d2a492d0a; exact8payload paths/hashes below plus this registered RESUME/history;
+    named index only, non-force origin/rh_clean. Never stage foreign15line digest suffix.
+  - Maintenance147.863s/marker0, one refresh133.613s/session_start0/quick_checkok; search covariance HITS includes
+    new report. No new indexed writes follow the refresh.
+  - 'Payload manifest: {"docs/CHAT_DIGESTS.md": "5386444c3573a042d985474ea120f2e25724e7eee8ae7c198c98b28e72c7df77",
+    "docs/Codex/AGENTS_LEDGER.md": "a614358f28a8b1fd4b93a22805039ce36aebe042a31ff2b28a598b506c9d588c", "docs/Progress_Log.md":
+    "de13f3a433c31784f114017c0db1d9c7ce450c9d8fb892a59a34e4f48c7c92c3", "docs/routeB_bus/DENSITY_INDEPENDENT_CHECK_2026-09-11.md":
+    "a39402b44d3dc2be87c3012470bd2b6c61368eb22debd6cdc47c06b21cda03e5", "docs/routeB_bus/PROSHKA_QUEUE.md":
+    "59ade54c2633025cc799e77b8e970339b40721ec7005adbeb5fc7d2cc0d3033c", "docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log":
+    "c83c5df24a51d94bc368062f969a2130f8f0f5eaba886f3c1e7c7120650d001b", "docs/session_protocols/SESSION_PROTOKOLL_2026-09-11_CODEX.md":
+    "216883179459a591b3a9aced1bfb2f985803e36b478061ca21cdd71b6d914cd1", "q3.lean.aristotle/aristotle_db/knowledge.db":
+    "4bd64a363e70fe415693a06e27d5b06cfb99c355a52152881a55e5483e40936c"}'
+  - RESUME/history included via exact registered CAS result of this publication-intent checkpoint; verify their
+    resulting hashes immediately before staging.
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+
+Original full all-complex compact-test sign SL20/DN20 remains UNPROVED.
+CHALLENGER_NOT_RH; PX_RH_CLAIM NOT_MADE. Production exact-edge HOLD remains.
+Physical goal/source/six-field phase unchanged; no new chat or proof admission.
+
+## Confirmed and candidate results
+
+SLACK/SL23/SL24/OD1/OC1/OC2/BPY already accepted and published at659f389c.
+The pasted observer log-concavity cue was already carried in DENSITYrequest
+line24. Exact Phi_ours(x)=2Phi_C(x/2), f=Phi/A,A=||Phi||2;
+q(t)=J_f(sqrt(t))/(4t^(3/2)), not literal q=J. Csordas2015p11 supplies
+the scalar property; original1988 is RELAY. OC2 shows both scalar conditions
+allow the SAME noncanonical odd form-3/1250. Mean-matched BP3b still negative;
+the ENTIRE actual gamma law is the new source, not one moment.
+
+DENSITY final68e40ebd297b2cc0234fbf662f1200a5de6b2105,
+blob0ae221d9a120252288508eeacde3c1945cd2f312,
+SHA2560314932e68169410298c528f61c646896e3e1456a1426f951eeeb43b87bdb9f8,
+45050bytes799LF/finalLF, whole source/delta read. Exact request122076a3,
+09b95fe3/14952bytes83LF, baseline750b201d/ancestry/absence and6phasefields checked.
+Accepted PARTIAL_PAPER: shifted-rate positive-part source; conditional and
+finite-gamma global obstructions; infinite thinning with paid envelopes;
+DN21 positive jump energy WITHOUT transfer to original DN20.
+
+DC1-DC7 accepted PAPER_WITH_BALL_CERTIFICATE in
+docs/routeB_bus/DENSITY_INDEPENDENT_CHECK_2026-09-11.md:
+final21807bytes/SHA256077f7064ab0c1fb8bc044012b5e77e2e0c65a44dbc8583fb58f349e17b78cc34.
+Frozen prefix19632bytes/28d6a9d5 passed sole Terra/xhigh CLEAN/CLEAN;
+analytic contour/residue/budget audit separate. Not a blinded sign prediction.
+One3.027s background DN22 integral, script0ea30a4b embedded in durable
+phase5_codex/out/density_dn22_20260911.log, completed0; no rerun.
+D=[-7.25024384179487982e-36 +/-3.20e-54]. Rational full odd vector
+(-1,10^8,1,-10^8) gives[-5.3957842159281634e-11 +/-2.10e-28] at C=1.
+Box[0,1e-30]^2 adds<5.273470e-13; value<-5e-11*C^2 on positive product measure.
+Parent exact fraction/ball check PASS,I2=646/49. Frozen D>0,p=.60 REFUTED.
+This kills ONLY half-thinned conditional-block positivity, not the mean,
+other rho, original Q or RH. Source-media external identity remains unclaimed.
+
+## Next action
+
+CE exact covariance appendix ACCEPTED_PAPER after sole Terra/xhigh CE PASS1
+and PASS2 CLEAN on unchanged11260byte137132213e; parent checks complete.
+Full report with receipt SHA256a39402b44d3dc2be87c3012470bd2b6c61368eb22debd6cdc47c06b21cda03e5.
+Original21807byte accepted prefix077f7064 retained. Integrated J,S,Qav remain
+unpaid. New report/progress/queue/own digest append saved. Technical maintenance COMPLETE147.863s, one refresh133.613s and session_start0;
+ask covariance HITS. Publish exact named manifest in this checkpoint now.
+No new mathematics calculation, scalar search or Proshka send.
+
+## Existing work
+
+Actual owner01a084f4-7498-7021-bac2-91d184d58dc7/local. All native children
+DONE including density_verdict_check (CE CLEAN/CLEAN); no math process.
+Maintenance DONE147.863s/exit0, no live process. DENSITY response complete;
+browser unchanged/no new interaction. Permanent bridge ACTIVE/every10min confirmed this turn by card and TOML,
+actual owning thread matches. Neighbour runtime remains isolated, bootstrap HIGH under
+repair; no shared maintenance boundary granted. Foreign digest suffix preserved.
+
+## Do not repeat
+
+No FLOW/S1-S7/K36/K48/central2493/F25-160/SLACK/OC1/OC2/BPY or DN22 reruns.
+No new scalar/finite-gamma/conditional positivity campaign. No arbitrary
+scalar-to-form or log-tilt independence inference. No reset/stash/add-all/force,
+deletion/new phase/chat/watch or foreign staging. Lost receipt means inspect.
+
+## Integration remaining
+
+CE projection116branch entries and one refresh DONE; scoped publication pending. Original DENSITY
+already published536d45f3, never repeat its verdict migration or DN22.
+Publication needs own report,Progress_Log,QUEUE,partial digest,ledger,session,
+log,knowledge.db,RESUME/history. Preserve all foreign bytes. After publication
+collect neighbour exact reviewed runtime manifest and inspect migration before
+shared boundary. Next mathematical candidate: source-specific integrated
+comparison using reciprocity and full two-copy law; shelf lookup for exact
+signed-covariance identity first. IF_A independent paid compensation: audit;
+IF_B merely S>=J/renamed DN20: reject and prepare substantial construction
+question. Prior.20 for usable identity, not RH. No new request exists.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-61-e6fc54d82e6f31b9778890b989da52a7eccbc474883a15a97069caf345744fab","kind":"intent","revision":61,"sha256":"e6fc54d82e6f31b9778890b989da52a7eccbc474883a15a97069caf345744fab","size":6537} -->
+````text
+---
+schema: q3_resume.v1
+revision: 61
+observed_at: '2026-09-11T17:01:16.503695+00:00'
+previous_sha256: 109a422b166af7b3cb35920bdd14f446a2d7580dfba69503b1bcda6af2fa0e26
+owner_thread_id: 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: a64d3e1da2939428650ce14a9bb881439144aed4
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+stages:
+  receipt: DONE
+  independent_review: DONE
+  parent_check: DONE
+  acceptance: DONE
+  publication: DONE
+operation:
+  kind: PUBLISH
+  state: CONFIRMED
+  id: DENSITY_CE_ACCEPTED_COVARIANCE_DEFECT
+  evidence:
+  - Commit and actual remote equala64d3e1da2939428650ce14a9bb881439144aed4; exactly10owned paths, every staged/committed
+    blob hash checked; push0. No signatures/coauthors; foreign15line digest suffix preserved and excluded.
+  - Accepted CE reporta39402b44d3dc2be87c3012470bd2b6c61368eb22debd6cdc47c06b21cda03e5; original21807byte077f7064
+    prefix unchanged. Sole Terra/xhigh CE CLEAN/CLEAN, parent source/complex sign/constants checked.
+  - One maintenance147.863s/CE_CLOSEOUT_PROCESS_EXIT=0, projection116branch rows, refresh133.613s, session_start13.704s/exit0,
+    quick_checkok; actual ask covariance HITS/current report included. Full recipe/search output committed
+    in density_dn22_20260911.log.
+  - All children DONE, no math process or pending Proshka response. Existing bridge ACTIVE/every10min confirmed.
+    Neighbour core migration remains isolated under supplemental bootstrap review; no shared write boundary
+    yet. Original exact-edge HOLD/no startup fatal.
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+
+Original full all-complex compact-test sign SL20/DN20 remains UNPROVED.
+CHALLENGER_NOT_RH; PX_RH_CLAIM NOT_MADE. Production exact-edge HOLD remains.
+Physical goal/source/six-field phase unchanged; no new chat or proof admission.
+
+## Confirmed and candidate results
+
+SLACK/SL23/SL24/OD1/OC1/OC2/BPY already accepted and published at659f389c.
+The pasted observer log-concavity cue was already carried in DENSITYrequest
+line24. Exact Phi_ours(x)=2Phi_C(x/2), f=Phi/A,A=||Phi||2;
+q(t)=J_f(sqrt(t))/(4t^(3/2)), not literal q=J. Csordas2015p11 supplies
+the scalar property; original1988 is RELAY. OC2 shows both scalar conditions
+allow the SAME noncanonical odd form-3/1250. Mean-matched BP3b still negative;
+the ENTIRE actual gamma law is the new source, not one moment.
+
+DENSITY final68e40ebd297b2cc0234fbf662f1200a5de6b2105,
+blob0ae221d9a120252288508eeacde3c1945cd2f312,
+SHA2560314932e68169410298c528f61c646896e3e1456a1426f951eeeb43b87bdb9f8,
+45050bytes799LF/finalLF, whole source/delta read. Exact request122076a3,
+09b95fe3/14952bytes83LF, baseline750b201d/ancestry/absence and6phasefields checked.
+Accepted PARTIAL_PAPER: shifted-rate positive-part source; conditional and
+finite-gamma global obstructions; infinite thinning with paid envelopes;
+DN21 positive jump energy WITHOUT transfer to original DN20.
+
+DC1-DC7 accepted PAPER_WITH_BALL_CERTIFICATE in
+docs/routeB_bus/DENSITY_INDEPENDENT_CHECK_2026-09-11.md:
+final21807bytes/SHA256077f7064ab0c1fb8bc044012b5e77e2e0c65a44dbc8583fb58f349e17b78cc34.
+Frozen prefix19632bytes/28d6a9d5 passed sole Terra/xhigh CLEAN/CLEAN;
+analytic contour/residue/budget audit separate. Not a blinded sign prediction.
+One3.027s background DN22 integral, script0ea30a4b embedded in durable
+phase5_codex/out/density_dn22_20260911.log, completed0; no rerun.
+D=[-7.25024384179487982e-36 +/-3.20e-54]. Rational full odd vector
+(-1,10^8,1,-10^8) gives[-5.3957842159281634e-11 +/-2.10e-28] at C=1.
+Box[0,1e-30]^2 adds<5.273470e-13; value<-5e-11*C^2 on positive product measure.
+Parent exact fraction/ball check PASS,I2=646/49. Frozen D>0,p=.60 REFUTED.
+This kills ONLY half-thinned conditional-block positivity, not the mean,
+other rho, original Q or RH. Source-media external identity remains unclaimed.
+
+## Next action
+
+CE intake/verification/acceptance/publication DONE ata64d3e1d; do not replay.
+First collect neighbour01a08f80-f033-7a31-8f3a-3aef042a3fbc exact final reviewed
+core-runtime manifest/migration sequence and crash/reconcile evidence. Inspect
+new bootstrap fixes before granting shared maintenance boundary; preparation
+alone is not permission to integrate. Preserve actual owner/checkpoint/source.
+Next math candidate after the handoff: source-specific integrated comparison
+using reciprocity and the full two-copy law, with an explicit identity paying
+signed covariance. Completed shelf covariance query HITS included new CE report
+and generic translation identities; hits alone do not establish a supplier fit.
+IF_A exact source-matched compensation: audit hypotheses and cheapest control.
+IF_B only S>=J/renamed DN20: reject and prepare one substantive same-chat
+construction question with CE defect. Prior.20 for usable identity, not RH.
+No new Proshka request/binding/send exists.
+
+## Existing work
+
+Actual owner01a084f4-7498-7021-bac2-91d184d58dc7/local. All native children
+DONE, no mathematical or maintenance process. DENSITY response complete;
+browser unchanged/no new interaction. Permanent bridge ACTIVE/every10min
+confirmed by card+TOML. Neighbour core-runtime isolated; bootstrap HIGH and
+exact-first-push ordering received supplementary review, final bytes pending.
+No shared maintenance boundary or ownership transfer granted.
+
+## Do not repeat
+
+No FLOW/S1-S7/K36/K48/central2493/F25-160/SLACK/OC1/OC2/BPY or DN22 reruns.
+No new scalar/finite-gamma/conditional positivity campaign. No arbitrary
+scalar-to-form or log-tilt independence inference. No reset/stash/add-all/force,
+deletion/new phase/chat/watch or foreign staging. Lost receipt means inspect.
+
+## Integration remaining
+
+Mathematical package NONE: CE10path publicationa64d3e1d actual origin confirmed;
+original DENSITY536d45f3 ancestor. Reporta39402b4 accepted; full new covariance
+identity and pointwise obstruction retain integrated J,S,Qav/DN20 unpaid.
+One refresh completed; no indexed edits afterward. Only this local publication
+confirmation/session/checkpoint joins next real result, no recursive receipt
+commit. Foreign15line Navier-Stokes digest suffix remains unreviewed/unstaged
+and must be preserved. Core-runtime integration requires final exact independent
+review and a safe boundary, never spoof CODEX_THREAD_ID or discard histories.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-61-e6fc54d82e6f31b9778890b989da52a7eccbc474883a15a97069caf345744fab","kind":"resume","revision":61,"sha256":"e6fc54d82e6f31b9778890b989da52a7eccbc474883a15a97069caf345744fab","size":6537} -->
+````text
+---
+schema: q3_resume.v1
+revision: 61
+observed_at: '2026-09-11T17:01:16.503695+00:00'
+previous_sha256: 109a422b166af7b3cb35920bdd14f446a2d7580dfba69503b1bcda6af2fa0e26
+owner_thread_id: 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: a64d3e1da2939428650ce14a9bb881439144aed4
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+stages:
+  receipt: DONE
+  independent_review: DONE
+  parent_check: DONE
+  acceptance: DONE
+  publication: DONE
+operation:
+  kind: PUBLISH
+  state: CONFIRMED
+  id: DENSITY_CE_ACCEPTED_COVARIANCE_DEFECT
+  evidence:
+  - Commit and actual remote equala64d3e1da2939428650ce14a9bb881439144aed4; exactly10owned paths, every staged/committed
+    blob hash checked; push0. No signatures/coauthors; foreign15line digest suffix preserved and excluded.
+  - Accepted CE reporta39402b44d3dc2be87c3012470bd2b6c61368eb22debd6cdc47c06b21cda03e5; original21807byte077f7064
+    prefix unchanged. Sole Terra/xhigh CE CLEAN/CLEAN, parent source/complex sign/constants checked.
+  - One maintenance147.863s/CE_CLOSEOUT_PROCESS_EXIT=0, projection116branch rows, refresh133.613s, session_start13.704s/exit0,
+    quick_checkok; actual ask covariance HITS/current report included. Full recipe/search output committed
+    in density_dn22_20260911.log.
+  - All children DONE, no math process or pending Proshka response. Existing bridge ACTIVE/every10min confirmed.
+    Neighbour core migration remains isolated under supplemental bootstrap review; no shared write boundary
+    yet. Original exact-edge HOLD/no startup fatal.
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+
+Original full all-complex compact-test sign SL20/DN20 remains UNPROVED.
+CHALLENGER_NOT_RH; PX_RH_CLAIM NOT_MADE. Production exact-edge HOLD remains.
+Physical goal/source/six-field phase unchanged; no new chat or proof admission.
+
+## Confirmed and candidate results
+
+SLACK/SL23/SL24/OD1/OC1/OC2/BPY already accepted and published at659f389c.
+The pasted observer log-concavity cue was already carried in DENSITYrequest
+line24. Exact Phi_ours(x)=2Phi_C(x/2), f=Phi/A,A=||Phi||2;
+q(t)=J_f(sqrt(t))/(4t^(3/2)), not literal q=J. Csordas2015p11 supplies
+the scalar property; original1988 is RELAY. OC2 shows both scalar conditions
+allow the SAME noncanonical odd form-3/1250. Mean-matched BP3b still negative;
+the ENTIRE actual gamma law is the new source, not one moment.
+
+DENSITY final68e40ebd297b2cc0234fbf662f1200a5de6b2105,
+blob0ae221d9a120252288508eeacde3c1945cd2f312,
+SHA2560314932e68169410298c528f61c646896e3e1456a1426f951eeeb43b87bdb9f8,
+45050bytes799LF/finalLF, whole source/delta read. Exact request122076a3,
+09b95fe3/14952bytes83LF, baseline750b201d/ancestry/absence and6phasefields checked.
+Accepted PARTIAL_PAPER: shifted-rate positive-part source; conditional and
+finite-gamma global obstructions; infinite thinning with paid envelopes;
+DN21 positive jump energy WITHOUT transfer to original DN20.
+
+DC1-DC7 accepted PAPER_WITH_BALL_CERTIFICATE in
+docs/routeB_bus/DENSITY_INDEPENDENT_CHECK_2026-09-11.md:
+final21807bytes/SHA256077f7064ab0c1fb8bc044012b5e77e2e0c65a44dbc8583fb58f349e17b78cc34.
+Frozen prefix19632bytes/28d6a9d5 passed sole Terra/xhigh CLEAN/CLEAN;
+analytic contour/residue/budget audit separate. Not a blinded sign prediction.
+One3.027s background DN22 integral, script0ea30a4b embedded in durable
+phase5_codex/out/density_dn22_20260911.log, completed0; no rerun.
+D=[-7.25024384179487982e-36 +/-3.20e-54]. Rational full odd vector
+(-1,10^8,1,-10^8) gives[-5.3957842159281634e-11 +/-2.10e-28] at C=1.
+Box[0,1e-30]^2 adds<5.273470e-13; value<-5e-11*C^2 on positive product measure.
+Parent exact fraction/ball check PASS,I2=646/49. Frozen D>0,p=.60 REFUTED.
+This kills ONLY half-thinned conditional-block positivity, not the mean,
+other rho, original Q or RH. Source-media external identity remains unclaimed.
+
+## Next action
+
+CE intake/verification/acceptance/publication DONE ata64d3e1d; do not replay.
+First collect neighbour01a08f80-f033-7a31-8f3a-3aef042a3fbc exact final reviewed
+core-runtime manifest/migration sequence and crash/reconcile evidence. Inspect
+new bootstrap fixes before granting shared maintenance boundary; preparation
+alone is not permission to integrate. Preserve actual owner/checkpoint/source.
+Next math candidate after the handoff: source-specific integrated comparison
+using reciprocity and the full two-copy law, with an explicit identity paying
+signed covariance. Completed shelf covariance query HITS included new CE report
+and generic translation identities; hits alone do not establish a supplier fit.
+IF_A exact source-matched compensation: audit hypotheses and cheapest control.
+IF_B only S>=J/renamed DN20: reject and prepare one substantive same-chat
+construction question with CE defect. Prior.20 for usable identity, not RH.
+No new Proshka request/binding/send exists.
+
+## Existing work
+
+Actual owner01a084f4-7498-7021-bac2-91d184d58dc7/local. All native children
+DONE, no mathematical or maintenance process. DENSITY response complete;
+browser unchanged/no new interaction. Permanent bridge ACTIVE/every10min
+confirmed by card+TOML. Neighbour core-runtime isolated; bootstrap HIGH and
+exact-first-push ordering received supplementary review, final bytes pending.
+No shared maintenance boundary or ownership transfer granted.
+
+## Do not repeat
+
+No FLOW/S1-S7/K36/K48/central2493/F25-160/SLACK/OC1/OC2/BPY or DN22 reruns.
+No new scalar/finite-gamma/conditional positivity campaign. No arbitrary
+scalar-to-form or log-tilt independence inference. No reset/stash/add-all/force,
+deletion/new phase/chat/watch or foreign staging. Lost receipt means inspect.
+
+## Integration remaining
+
+Mathematical package NONE: CE10path publicationa64d3e1d actual origin confirmed;
+original DENSITY536d45f3 ancestor. Reporta39402b4 accepted; full new covariance
+identity and pointwise obstruction retain integrated J,S,Qav/DN20 unpaid.
+One refresh completed; no indexed edits afterward. Only this local publication
+confirmation/session/checkpoint joins next real result, no recursive receipt
+commit. Foreign15line Navier-Stokes digest suffix remains unreviewed/unstaged
+and must be preserved. Core-runtime integration requires final exact independent
+review and a safe boundary, never spoof CODEX_THREAD_ID or discard histories.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-62-faefc9b0762d067d9cb377a86c8771e3187218dc0e53fe9d5c6e5bb1049ef702","kind":"intent","revision":62,"sha256":"faefc9b0762d067d9cb377a86c8771e3187218dc0e53fe9d5c6e5bb1049ef702","size":6809} -->
+````text
+---
+schema: q3_resume.v1
+revision: 62
+observed_at: '2026-09-11T17:15:00.874451+00:00'
+previous_sha256: e6fc54d82e6f31b9778890b989da52a7eccbc474883a15a97069caf345744fab
+owner_thread_id: 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: a64d3e1da2939428650ce14a9bb881439144aed4
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+stages:
+  receipt: DONE
+  independent_review: PENDING
+  parent_check: DONE
+  acceptance: PENDING
+  publication: PENDING
+operation:
+  kind: DISPATCH
+  state: INTENT
+  id: LITERATURE_LIMITS_REPAIR_PASS1
+  evidence:
+  - Existing literature-discovery CLI accepts max_queries1/max_results3 but its validator rejected its own
+    emitted receipt with LITERATURE_RECEIPT_LIMITS_DRIFT. Parent reproduced using mocked provider/no network.
+    Minimal2path fix accepts bounded integer lower caps and enforces actual query/results+duplicate counts.
+  - scripts/literature_discovery.py SHA2560c1a161ca850ff6ea666f998c1865fba3e3f4d59140c9b691cac11bfb50e41b0;
+    orchestrator/tests/test_supplier_preflight.py SHA256aef90014e86c97ba44a545836bdb55df3809796fbfbffb83b4966faa8d099957.
+    Basea64d3e1d. Targeted21pytest PASS/.33s; fullmodule in progress. Sole existing density_verdict_check to
+    audit read-only Terra/xhigh, no descendants; no dispatch receipt yet.
+  - 'Parallel root source reading: fetched ALEA22(2025)389-413 DOI10.30757/alea.v22-14 into /tmp/q3-ce-alias,733847bytes/SHA25673affcb39a5a1aa72967fb452e2b65c83641d26f04b90832defe0df5743734bc.
+    Equations3.6/3.8/Theorem4.2 read with rendered395/400; source law Levy measure differs from OU generator
+    measure. Candidate mapping not yet saved/accepted.'
+  - Three shelf queries completeHITS; no matching paid-sign theorem. External3query Crossref batch INCOMPLETE
+    due one429; retain partial source evidence without absence claim. Same candidate brief in session protocol.
+    Neighbour accepted removal of force-with-lease and unnecessary atomic expected-tip criterion; revised isolated
+    artifact still under review, no shared boundary.
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+
+Original full all-complex compact-test sign SL20/DN20 remains UNPROVED.
+CHALLENGER_NOT_RH; PX_RH_CLAIM NOT_MADE. Production exact-edge HOLD remains.
+Physical goal/source/six-field phase unchanged; no new chat or proof admission.
+
+## Confirmed and candidate results
+
+SLACK/SL23/SL24/OD1/OC1/OC2/BPY already accepted and published at659f389c.
+The pasted observer log-concavity cue was already carried in DENSITYrequest
+line24. Exact Phi_ours(x)=2Phi_C(x/2), f=Phi/A,A=||Phi||2;
+q(t)=J_f(sqrt(t))/(4t^(3/2)), not literal q=J. Csordas2015p11 supplies
+the scalar property; original1988 is RELAY. OC2 shows both scalar conditions
+allow the SAME noncanonical odd form-3/1250. Mean-matched BP3b still negative;
+the ENTIRE actual gamma law is the new source, not one moment.
+
+DENSITY final68e40ebd297b2cc0234fbf662f1200a5de6b2105,
+blob0ae221d9a120252288508eeacde3c1945cd2f312,
+SHA2560314932e68169410298c528f61c646896e3e1456a1426f951eeeb43b87bdb9f8,
+45050bytes799LF/finalLF, whole source/delta read. Exact request122076a3,
+09b95fe3/14952bytes83LF, baseline750b201d/ancestry/absence and6phasefields checked.
+Accepted PARTIAL_PAPER: shifted-rate positive-part source; conditional and
+finite-gamma global obstructions; infinite thinning with paid envelopes;
+DN21 positive jump energy WITHOUT transfer to original DN20.
+
+DC1-DC7 accepted PAPER_WITH_BALL_CERTIFICATE in
+docs/routeB_bus/DENSITY_INDEPENDENT_CHECK_2026-09-11.md:
+final21807bytes/SHA256077f7064ab0c1fb8bc044012b5e77e2e0c65a44dbc8583fb58f349e17b78cc34.
+Frozen prefix19632bytes/28d6a9d5 passed sole Terra/xhigh CLEAN/CLEAN;
+analytic contour/residue/budget audit separate. Not a blinded sign prediction.
+One3.027s background DN22 integral, script0ea30a4b embedded in durable
+phase5_codex/out/density_dn22_20260911.log, completed0; no rerun.
+D=[-7.25024384179487982e-36 +/-3.20e-54]. Rational full odd vector
+(-1,10^8,1,-10^8) gives[-5.3957842159281634e-11 +/-2.10e-28] at C=1.
+Box[0,1e-30]^2 adds<5.273470e-13; value<-5e-11*C^2 on positive product measure.
+Parent exact fraction/ball check PASS,I2=646/49. Frozen D>0,p=.60 REFUTED.
+This kills ONLY half-thinned conditional-block positivity, not the mean,
+other rho, original Q or RH. Source-media external identity remains unclaimed.
+
+## Next action
+
+CE math package ata64d3e1d remains completely DONE. New local retrieval bug
+repair pending: sole density_verdict_check PASS1 intent on exactly scripts/
+literature_discovery.py and orchestrator/tests/test_supplier_preflight.py;
+parent reproduced invalid lower-cap receipt, fixed bounded caps,21tests pass.
+Collect fullmodule and two exact native review passes before publishing.
+Root independently continues the source-specific covariance discovery brief
+in current session protocol; primary ALEA2025 source is fetched/read locally,
+no signed supplier accepted. Preserve partial metadata429 status. Finish this
+bounded discovery/source mapping, not a broad survey or another scalar test.
+Neighbour core runtime still isolated and revised bootstrap review pending;
+collect final exact manifest after these owned files are fixed/published.
+
+## Existing work
+
+Actual owner01a084f4-7498-7021-bac2-91d184d58dc7/local. No math process or
+pending Proshka response. Reviewer PASS1 INTENT, not yet delivered; no other
+live child. Root source read-only discovery proceeds on exact CE brief.
+Permanent bridge ACTIVE/every10min last confirmed previous turn. Neighbour
+removed proposed force-with-lease, accepts ordinary nonforce push/no atomic
+expected-tip promise; no shared maintenance boundary or ownership transfer.
+
+## Do not repeat
+
+No FLOW/S1-S7/K36/K48/central2493/F25-160/SLACK/OC1/OC2/BPY or DN22 reruns.
+No new scalar/finite-gamma/conditional positivity campaign. No arbitrary
+scalar-to-form or log-tilt independence inference. No reset/stash/add-all/force,
+deletion/new phase/chat/watch or foreign staging. Lost receipt means inspect.
+
+## Integration remaining
+
+Original CE result fully published; current code repair2paths plus source
+mapping and issue/session/checkpoint notes await independent acceptance and
+publication. Any downloaded source intake is separate root action, never raw
+metadata proof. Foreign15line Navier-Stokes digest suffix remains unchanged
+and unstaged. Current owner appended bootstrap grant conflict in existing
+INSTRUCTION_ISSUES; no policy altered. Shared final core-runtime integration
+still requires exact artifact review and safe boundary, never spoof thread.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-62-faefc9b0762d067d9cb377a86c8771e3187218dc0e53fe9d5c6e5bb1049ef702","kind":"resume","revision":62,"sha256":"faefc9b0762d067d9cb377a86c8771e3187218dc0e53fe9d5c6e5bb1049ef702","size":6809} -->
+````text
+---
+schema: q3_resume.v1
+revision: 62
+observed_at: '2026-09-11T17:15:00.874451+00:00'
+previous_sha256: e6fc54d82e6f31b9778890b989da52a7eccbc474883a15a97069caf345744fab
+owner_thread_id: 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: a64d3e1da2939428650ce14a9bb881439144aed4
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+stages:
+  receipt: DONE
+  independent_review: PENDING
+  parent_check: DONE
+  acceptance: PENDING
+  publication: PENDING
+operation:
+  kind: DISPATCH
+  state: INTENT
+  id: LITERATURE_LIMITS_REPAIR_PASS1
+  evidence:
+  - Existing literature-discovery CLI accepts max_queries1/max_results3 but its validator rejected its own
+    emitted receipt with LITERATURE_RECEIPT_LIMITS_DRIFT. Parent reproduced using mocked provider/no network.
+    Minimal2path fix accepts bounded integer lower caps and enforces actual query/results+duplicate counts.
+  - scripts/literature_discovery.py SHA2560c1a161ca850ff6ea666f998c1865fba3e3f4d59140c9b691cac11bfb50e41b0;
+    orchestrator/tests/test_supplier_preflight.py SHA256aef90014e86c97ba44a545836bdb55df3809796fbfbffb83b4966faa8d099957.
+    Basea64d3e1d. Targeted21pytest PASS/.33s; fullmodule in progress. Sole existing density_verdict_check to
+    audit read-only Terra/xhigh, no descendants; no dispatch receipt yet.
+  - 'Parallel root source reading: fetched ALEA22(2025)389-413 DOI10.30757/alea.v22-14 into /tmp/q3-ce-alias,733847bytes/SHA25673affcb39a5a1aa72967fb452e2b65c83641d26f04b90832defe0df5743734bc.
+    Equations3.6/3.8/Theorem4.2 read with rendered395/400; source law Levy measure differs from OU generator
+    measure. Candidate mapping not yet saved/accepted.'
+  - Three shelf queries completeHITS; no matching paid-sign theorem. External3query Crossref batch INCOMPLETE
+    due one429; retain partial source evidence without absence claim. Same candidate brief in session protocol.
+    Neighbour accepted removal of force-with-lease and unnecessary atomic expected-tip criterion; revised isolated
+    artifact still under review, no shared boundary.
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+
+Original full all-complex compact-test sign SL20/DN20 remains UNPROVED.
+CHALLENGER_NOT_RH; PX_RH_CLAIM NOT_MADE. Production exact-edge HOLD remains.
+Physical goal/source/six-field phase unchanged; no new chat or proof admission.
+
+## Confirmed and candidate results
+
+SLACK/SL23/SL24/OD1/OC1/OC2/BPY already accepted and published at659f389c.
+The pasted observer log-concavity cue was already carried in DENSITYrequest
+line24. Exact Phi_ours(x)=2Phi_C(x/2), f=Phi/A,A=||Phi||2;
+q(t)=J_f(sqrt(t))/(4t^(3/2)), not literal q=J. Csordas2015p11 supplies
+the scalar property; original1988 is RELAY. OC2 shows both scalar conditions
+allow the SAME noncanonical odd form-3/1250. Mean-matched BP3b still negative;
+the ENTIRE actual gamma law is the new source, not one moment.
+
+DENSITY final68e40ebd297b2cc0234fbf662f1200a5de6b2105,
+blob0ae221d9a120252288508eeacde3c1945cd2f312,
+SHA2560314932e68169410298c528f61c646896e3e1456a1426f951eeeb43b87bdb9f8,
+45050bytes799LF/finalLF, whole source/delta read. Exact request122076a3,
+09b95fe3/14952bytes83LF, baseline750b201d/ancestry/absence and6phasefields checked.
+Accepted PARTIAL_PAPER: shifted-rate positive-part source; conditional and
+finite-gamma global obstructions; infinite thinning with paid envelopes;
+DN21 positive jump energy WITHOUT transfer to original DN20.
+
+DC1-DC7 accepted PAPER_WITH_BALL_CERTIFICATE in
+docs/routeB_bus/DENSITY_INDEPENDENT_CHECK_2026-09-11.md:
+final21807bytes/SHA256077f7064ab0c1fb8bc044012b5e77e2e0c65a44dbc8583fb58f349e17b78cc34.
+Frozen prefix19632bytes/28d6a9d5 passed sole Terra/xhigh CLEAN/CLEAN;
+analytic contour/residue/budget audit separate. Not a blinded sign prediction.
+One3.027s background DN22 integral, script0ea30a4b embedded in durable
+phase5_codex/out/density_dn22_20260911.log, completed0; no rerun.
+D=[-7.25024384179487982e-36 +/-3.20e-54]. Rational full odd vector
+(-1,10^8,1,-10^8) gives[-5.3957842159281634e-11 +/-2.10e-28] at C=1.
+Box[0,1e-30]^2 adds<5.273470e-13; value<-5e-11*C^2 on positive product measure.
+Parent exact fraction/ball check PASS,I2=646/49. Frozen D>0,p=.60 REFUTED.
+This kills ONLY half-thinned conditional-block positivity, not the mean,
+other rho, original Q or RH. Source-media external identity remains unclaimed.
+
+## Next action
+
+CE math package ata64d3e1d remains completely DONE. New local retrieval bug
+repair pending: sole density_verdict_check PASS1 intent on exactly scripts/
+literature_discovery.py and orchestrator/tests/test_supplier_preflight.py;
+parent reproduced invalid lower-cap receipt, fixed bounded caps,21tests pass.
+Collect fullmodule and two exact native review passes before publishing.
+Root independently continues the source-specific covariance discovery brief
+in current session protocol; primary ALEA2025 source is fetched/read locally,
+no signed supplier accepted. Preserve partial metadata429 status. Finish this
+bounded discovery/source mapping, not a broad survey or another scalar test.
+Neighbour core runtime still isolated and revised bootstrap review pending;
+collect final exact manifest after these owned files are fixed/published.
+
+## Existing work
+
+Actual owner01a084f4-7498-7021-bac2-91d184d58dc7/local. No math process or
+pending Proshka response. Reviewer PASS1 INTENT, not yet delivered; no other
+live child. Root source read-only discovery proceeds on exact CE brief.
+Permanent bridge ACTIVE/every10min last confirmed previous turn. Neighbour
+removed proposed force-with-lease, accepts ordinary nonforce push/no atomic
+expected-tip promise; no shared maintenance boundary or ownership transfer.
+
+## Do not repeat
+
+No FLOW/S1-S7/K36/K48/central2493/F25-160/SLACK/OC1/OC2/BPY or DN22 reruns.
+No new scalar/finite-gamma/conditional positivity campaign. No arbitrary
+scalar-to-form or log-tilt independence inference. No reset/stash/add-all/force,
+deletion/new phase/chat/watch or foreign staging. Lost receipt means inspect.
+
+## Integration remaining
+
+Original CE result fully published; current code repair2paths plus source
+mapping and issue/session/checkpoint notes await independent acceptance and
+publication. Any downloaded source intake is separate root action, never raw
+metadata proof. Foreign15line Navier-Stokes digest suffix remains unchanged
+and unstaged. Current owner appended bootstrap grant conflict in existing
+INSTRUCTION_ISSUES; no policy altered. Shared final core-runtime integration
+still requires exact artifact review and safe boundary, never spoof thread.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-63-0c97062a5f9a4b3367fa6143b43276983959517817ccc3222a2e2adf03f93698","kind":"intent","revision":63,"sha256":"0c97062a5f9a4b3367fa6143b43276983959517817ccc3222a2e2adf03f93698","size":5990} -->
+````text
+---
+schema: q3_resume.v1
+revision: 63
+observed_at: '2026-09-11T17:21:23.076137+00:00'
+previous_sha256: faefc9b0762d067d9cb377a86c8771e3187218dc0e53fe9d5c6e5bb1049ef702
+owner_thread_id: 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: a64d3e1da2939428650ce14a9bb881439144aed4
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+stages:
+  receipt: DONE
+  independent_review: PENDING
+  parent_check: DONE
+  acceptance: PENDING
+  publication: PENDING
+operation:
+  kind: DISPATCH
+  state: INTENT
+  id: LITERATURE_LIMITS_REPAIR_PASS2
+  evidence:
+  - 'PASS1 LOW: validator accepted duplicate_count=True as int. Parent reproduced
+    valid=True; changed both guards to type(...) is int and added regression. 61 full-module
+    tests pass in3.15s.'
+  - Exact candidate scripts/literature_discovery.py SHA256ce8909b4ecbb85c915628fb2aca27e19896ffe737dc70fabf3e4d3651fcd39fa;
+    orchestrator/tests/test_supplier_preflight.py SHA2568335bcd2aeba1bbf822571668dc898a4a370acc354aa07272b873af94a885dd8.
+    Basea64d3e1d. Same sole Terra/xhigh checker; expected10min, read-only/no descendants.
+  - Source mapping remains read-only; existing CE published. No new math job or Proshka
+    request.
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+
+Original full all-complex compact-test sign SL20/DN20 remains UNPROVED.
+CHALLENGER_NOT_RH; PX_RH_CLAIM NOT_MADE. Production exact-edge HOLD remains.
+Physical goal/source/six-field phase unchanged; no new chat or proof admission.
+
+## Confirmed and candidate results
+
+SLACK/SL23/SL24/OD1/OC1/OC2/BPY already accepted and published at659f389c.
+The pasted observer log-concavity cue was already carried in DENSITYrequest
+line24. Exact Phi_ours(x)=2Phi_C(x/2), f=Phi/A,A=||Phi||2;
+q(t)=J_f(sqrt(t))/(4t^(3/2)), not literal q=J. Csordas2015p11 supplies
+the scalar property; original1988 is RELAY. OC2 shows both scalar conditions
+allow the SAME noncanonical odd form-3/1250. Mean-matched BP3b still negative;
+the ENTIRE actual gamma law is the new source, not one moment.
+
+DENSITY final68e40ebd297b2cc0234fbf662f1200a5de6b2105,
+blob0ae221d9a120252288508eeacde3c1945cd2f312,
+SHA2560314932e68169410298c528f61c646896e3e1456a1426f951eeeb43b87bdb9f8,
+45050bytes799LF/finalLF, whole source/delta read. Exact request122076a3,
+09b95fe3/14952bytes83LF, baseline750b201d/ancestry/absence and6phasefields checked.
+Accepted PARTIAL_PAPER: shifted-rate positive-part source; conditional and
+finite-gamma global obstructions; infinite thinning with paid envelopes;
+DN21 positive jump energy WITHOUT transfer to original DN20.
+
+DC1-DC7 accepted PAPER_WITH_BALL_CERTIFICATE in
+docs/routeB_bus/DENSITY_INDEPENDENT_CHECK_2026-09-11.md:
+final21807bytes/SHA256077f7064ab0c1fb8bc044012b5e77e2e0c65a44dbc8583fb58f349e17b78cc34.
+Frozen prefix19632bytes/28d6a9d5 passed sole Terra/xhigh CLEAN/CLEAN;
+analytic contour/residue/budget audit separate. Not a blinded sign prediction.
+One3.027s background DN22 integral, script0ea30a4b embedded in durable
+phase5_codex/out/density_dn22_20260911.log, completed0; no rerun.
+D=[-7.25024384179487982e-36 +/-3.20e-54]. Rational full odd vector
+(-1,10^8,1,-10^8) gives[-5.3957842159281634e-11 +/-2.10e-28] at C=1.
+Box[0,1e-30]^2 adds<5.273470e-13; value<-5e-11*C^2 on positive product measure.
+Parent exact fraction/ball check PASS,I2=646/49. Frozen D>0,p=.60 REFUTED.
+This kills ONLY half-thinned conditional-block positivity, not the mean,
+other rho, original Q or RH. Source-media external identity remains unclaimed.
+
+## Next action
+
+CE math package ata64d3e1d remains completely DONE. New local retrieval bug
+repair pending: sole density_verdict_check PASS2 intent on exactly scripts/
+literature_discovery.py and orchestrator/tests/test_supplier_preflight.py;
+parent reproduced invalid lower-cap receipt, fixed bounded caps and strict duplicate count,61tests pass.
+Collect two consecutive exact native clean review passes before publishing.
+Root independently continues the source-specific covariance discovery brief
+in current session protocol; primary ALEA2025 source is fetched/read locally,
+no signed supplier accepted. Preserve partial metadata429 status. Finish this
+bounded discovery/source mapping, not a broad survey or another scalar test.
+Neighbour core runtime still isolated and revised bootstrap review pending;
+collect final exact manifest after these owned files are fixed/published.
+
+## Existing work
+
+Actual owner01a084f4-7498-7021-bac2-91d184d58dc7/local. No math process or
+pending Proshka response. Reviewer PASS2 INTENT, not yet delivered; no other
+live child. Root source read-only discovery proceeds on exact CE brief.
+Permanent bridge ACTIVE/every10min last confirmed previous turn. Neighbour
+removed proposed force-with-lease, accepts ordinary nonforce push/no atomic
+expected-tip promise; no shared maintenance boundary or ownership transfer.
+
+## Do not repeat
+
+No FLOW/S1-S7/K36/K48/central2493/F25-160/SLACK/OC1/OC2/BPY or DN22 reruns.
+No new scalar/finite-gamma/conditional positivity campaign. No arbitrary
+scalar-to-form or log-tilt independence inference. No reset/stash/add-all/force,
+deletion/new phase/chat/watch or foreign staging. Lost receipt means inspect.
+
+## Integration remaining
+
+Original CE result fully published; current code repair2paths plus source
+mapping and issue/session/checkpoint notes await independent acceptance and
+publication. Any downloaded source intake is separate root action, never raw
+metadata proof. Foreign15line Navier-Stokes digest suffix remains unchanged
+and unstaged. Current owner appended bootstrap grant conflict in existing
+INSTRUCTION_ISSUES; no policy altered. Shared final core-runtime integration
+still requires exact artifact review and safe boundary, never spoof thread.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-63-0c97062a5f9a4b3367fa6143b43276983959517817ccc3222a2e2adf03f93698","kind":"resume","revision":63,"sha256":"0c97062a5f9a4b3367fa6143b43276983959517817ccc3222a2e2adf03f93698","size":5990} -->
+````text
+---
+schema: q3_resume.v1
+revision: 63
+observed_at: '2026-09-11T17:21:23.076137+00:00'
+previous_sha256: faefc9b0762d067d9cb377a86c8771e3187218dc0e53fe9d5c6e5bb1049ef702
+owner_thread_id: 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: a64d3e1da2939428650ce14a9bb881439144aed4
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+stages:
+  receipt: DONE
+  independent_review: PENDING
+  parent_check: DONE
+  acceptance: PENDING
+  publication: PENDING
+operation:
+  kind: DISPATCH
+  state: INTENT
+  id: LITERATURE_LIMITS_REPAIR_PASS2
+  evidence:
+  - 'PASS1 LOW: validator accepted duplicate_count=True as int. Parent reproduced
+    valid=True; changed both guards to type(...) is int and added regression. 61 full-module
+    tests pass in3.15s.'
+  - Exact candidate scripts/literature_discovery.py SHA256ce8909b4ecbb85c915628fb2aca27e19896ffe737dc70fabf3e4d3651fcd39fa;
+    orchestrator/tests/test_supplier_preflight.py SHA2568335bcd2aeba1bbf822571668dc898a4a370acc354aa07272b873af94a885dd8.
+    Basea64d3e1d. Same sole Terra/xhigh checker; expected10min, read-only/no descendants.
+  - Source mapping remains read-only; existing CE published. No new math job or Proshka
+    request.
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+
+Original full all-complex compact-test sign SL20/DN20 remains UNPROVED.
+CHALLENGER_NOT_RH; PX_RH_CLAIM NOT_MADE. Production exact-edge HOLD remains.
+Physical goal/source/six-field phase unchanged; no new chat or proof admission.
+
+## Confirmed and candidate results
+
+SLACK/SL23/SL24/OD1/OC1/OC2/BPY already accepted and published at659f389c.
+The pasted observer log-concavity cue was already carried in DENSITYrequest
+line24. Exact Phi_ours(x)=2Phi_C(x/2), f=Phi/A,A=||Phi||2;
+q(t)=J_f(sqrt(t))/(4t^(3/2)), not literal q=J. Csordas2015p11 supplies
+the scalar property; original1988 is RELAY. OC2 shows both scalar conditions
+allow the SAME noncanonical odd form-3/1250. Mean-matched BP3b still negative;
+the ENTIRE actual gamma law is the new source, not one moment.
+
+DENSITY final68e40ebd297b2cc0234fbf662f1200a5de6b2105,
+blob0ae221d9a120252288508eeacde3c1945cd2f312,
+SHA2560314932e68169410298c528f61c646896e3e1456a1426f951eeeb43b87bdb9f8,
+45050bytes799LF/finalLF, whole source/delta read. Exact request122076a3,
+09b95fe3/14952bytes83LF, baseline750b201d/ancestry/absence and6phasefields checked.
+Accepted PARTIAL_PAPER: shifted-rate positive-part source; conditional and
+finite-gamma global obstructions; infinite thinning with paid envelopes;
+DN21 positive jump energy WITHOUT transfer to original DN20.
+
+DC1-DC7 accepted PAPER_WITH_BALL_CERTIFICATE in
+docs/routeB_bus/DENSITY_INDEPENDENT_CHECK_2026-09-11.md:
+final21807bytes/SHA256077f7064ab0c1fb8bc044012b5e77e2e0c65a44dbc8583fb58f349e17b78cc34.
+Frozen prefix19632bytes/28d6a9d5 passed sole Terra/xhigh CLEAN/CLEAN;
+analytic contour/residue/budget audit separate. Not a blinded sign prediction.
+One3.027s background DN22 integral, script0ea30a4b embedded in durable
+phase5_codex/out/density_dn22_20260911.log, completed0; no rerun.
+D=[-7.25024384179487982e-36 +/-3.20e-54]. Rational full odd vector
+(-1,10^8,1,-10^8) gives[-5.3957842159281634e-11 +/-2.10e-28] at C=1.
+Box[0,1e-30]^2 adds<5.273470e-13; value<-5e-11*C^2 on positive product measure.
+Parent exact fraction/ball check PASS,I2=646/49. Frozen D>0,p=.60 REFUTED.
+This kills ONLY half-thinned conditional-block positivity, not the mean,
+other rho, original Q or RH. Source-media external identity remains unclaimed.
+
+## Next action
+
+CE math package ata64d3e1d remains completely DONE. New local retrieval bug
+repair pending: sole density_verdict_check PASS2 intent on exactly scripts/
+literature_discovery.py and orchestrator/tests/test_supplier_preflight.py;
+parent reproduced invalid lower-cap receipt, fixed bounded caps and strict duplicate count,61tests pass.
+Collect two consecutive exact native clean review passes before publishing.
+Root independently continues the source-specific covariance discovery brief
+in current session protocol; primary ALEA2025 source is fetched/read locally,
+no signed supplier accepted. Preserve partial metadata429 status. Finish this
+bounded discovery/source mapping, not a broad survey or another scalar test.
+Neighbour core runtime still isolated and revised bootstrap review pending;
+collect final exact manifest after these owned files are fixed/published.
+
+## Existing work
+
+Actual owner01a084f4-7498-7021-bac2-91d184d58dc7/local. No math process or
+pending Proshka response. Reviewer PASS2 INTENT, not yet delivered; no other
+live child. Root source read-only discovery proceeds on exact CE brief.
+Permanent bridge ACTIVE/every10min last confirmed previous turn. Neighbour
+removed proposed force-with-lease, accepts ordinary nonforce push/no atomic
+expected-tip promise; no shared maintenance boundary or ownership transfer.
+
+## Do not repeat
+
+No FLOW/S1-S7/K36/K48/central2493/F25-160/SLACK/OC1/OC2/BPY or DN22 reruns.
+No new scalar/finite-gamma/conditional positivity campaign. No arbitrary
+scalar-to-form or log-tilt independence inference. No reset/stash/add-all/force,
+deletion/new phase/chat/watch or foreign staging. Lost receipt means inspect.
+
+## Integration remaining
+
+Original CE result fully published; current code repair2paths plus source
+mapping and issue/session/checkpoint notes await independent acceptance and
+publication. Any downloaded source intake is separate root action, never raw
+metadata proof. Foreign15line Navier-Stokes digest suffix remains unchanged
+and unstaged. Current owner appended bootstrap grant conflict in existing
+INSTRUCTION_ISSUES; no policy altered. Shared final core-runtime integration
+still requires exact artifact review and safe boundary, never spoof thread.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-64-7aebf72d94a31ccb1f690d78334b12ae1b7c3cae181e92b14a5d18a9590ffa9f","kind":"intent","revision":64,"sha256":"7aebf72d94a31ccb1f690d78334b12ae1b7c3cae181e92b14a5d18a9590ffa9f","size":6167} -->
+````text
+---
+schema: q3_resume.v1
+revision: 64
+observed_at: '2026-09-11T17:22:51.790577+00:00'
+previous_sha256: 0c97062a5f9a4b3367fa6143b43276983959517817ccc3222a2e2adf03f93698
+owner_thread_id: 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: a64d3e1da2939428650ce14a9bb881439144aed4
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+stages:
+  receipt: DONE
+  independent_review: PENDING
+  parent_check: DONE
+  acceptance: PENDING
+  publication: PENDING
+operation:
+  kind: DISPATCH
+  state: INTENT
+  id: LITERATURE_LIMITS_REPAIR_PASS3
+  evidence:
+  - Native PASS2 CLEAN on exactce8909b4/8335bcd2; LOW resolved. PASS3 confirmation
+    INTENT same sole Terra/xhigh checker; no byte changes. Need second consecutive
+    clean.
+  - 'PASS1 LOW: validator accepted duplicate_count=True as int. Parent reproduced
+    valid=True; changed both guards to type(...) is int and added regression. 61 full-module
+    tests pass in3.15s.'
+  - Exact candidate scripts/literature_discovery.py SHA256ce8909b4ecbb85c915628fb2aca27e19896ffe737dc70fabf3e4d3651fcd39fa;
+    orchestrator/tests/test_supplier_preflight.py SHA2568335bcd2aeba1bbf822571668dc898a4a370acc354aa07272b873af94a885dd8.
+    Basea64d3e1d. Same sole Terra/xhigh checker; expected10min, read-only/no descendants.
+  - Source mapping remains read-only; existing CE published. No new math job or Proshka
+    request.
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+
+Original full all-complex compact-test sign SL20/DN20 remains UNPROVED.
+CHALLENGER_NOT_RH; PX_RH_CLAIM NOT_MADE. Production exact-edge HOLD remains.
+Physical goal/source/six-field phase unchanged; no new chat or proof admission.
+
+## Confirmed and candidate results
+
+SLACK/SL23/SL24/OD1/OC1/OC2/BPY already accepted and published at659f389c.
+The pasted observer log-concavity cue was already carried in DENSITYrequest
+line24. Exact Phi_ours(x)=2Phi_C(x/2), f=Phi/A,A=||Phi||2;
+q(t)=J_f(sqrt(t))/(4t^(3/2)), not literal q=J. Csordas2015p11 supplies
+the scalar property; original1988 is RELAY. OC2 shows both scalar conditions
+allow the SAME noncanonical odd form-3/1250. Mean-matched BP3b still negative;
+the ENTIRE actual gamma law is the new source, not one moment.
+
+DENSITY final68e40ebd297b2cc0234fbf662f1200a5de6b2105,
+blob0ae221d9a120252288508eeacde3c1945cd2f312,
+SHA2560314932e68169410298c528f61c646896e3e1456a1426f951eeeb43b87bdb9f8,
+45050bytes799LF/finalLF, whole source/delta read. Exact request122076a3,
+09b95fe3/14952bytes83LF, baseline750b201d/ancestry/absence and6phasefields checked.
+Accepted PARTIAL_PAPER: shifted-rate positive-part source; conditional and
+finite-gamma global obstructions; infinite thinning with paid envelopes;
+DN21 positive jump energy WITHOUT transfer to original DN20.
+
+DC1-DC7 accepted PAPER_WITH_BALL_CERTIFICATE in
+docs/routeB_bus/DENSITY_INDEPENDENT_CHECK_2026-09-11.md:
+final21807bytes/SHA256077f7064ab0c1fb8bc044012b5e77e2e0c65a44dbc8583fb58f349e17b78cc34.
+Frozen prefix19632bytes/28d6a9d5 passed sole Terra/xhigh CLEAN/CLEAN;
+analytic contour/residue/budget audit separate. Not a blinded sign prediction.
+One3.027s background DN22 integral, script0ea30a4b embedded in durable
+phase5_codex/out/density_dn22_20260911.log, completed0; no rerun.
+D=[-7.25024384179487982e-36 +/-3.20e-54]. Rational full odd vector
+(-1,10^8,1,-10^8) gives[-5.3957842159281634e-11 +/-2.10e-28] at C=1.
+Box[0,1e-30]^2 adds<5.273470e-13; value<-5e-11*C^2 on positive product measure.
+Parent exact fraction/ball check PASS,I2=646/49. Frozen D>0,p=.60 REFUTED.
+This kills ONLY half-thinned conditional-block positivity, not the mean,
+other rho, original Q or RH. Source-media external identity remains unclaimed.
+
+## Next action
+
+CE math package ata64d3e1d remains completely DONE. New local retrieval bug
+repair pending: sole density_verdict_check PASS3 intent on exactly scripts/
+literature_discovery.py and orchestrator/tests/test_supplier_preflight.py;
+parent reproduced invalid lower-cap receipt, fixed bounded caps and strict duplicate count,61tests pass.
+Collect two consecutive exact native clean review passes before publishing.
+Root independently continues the source-specific covariance discovery brief
+in current session protocol; primary ALEA2025 source is fetched/read locally,
+no signed supplier accepted. Preserve partial metadata429 status. Finish this
+bounded discovery/source mapping, not a broad survey or another scalar test.
+Neighbour core runtime still isolated and revised bootstrap review pending;
+collect final exact manifest after these owned files are fixed/published.
+
+## Existing work
+
+Actual owner01a084f4-7498-7021-bac2-91d184d58dc7/local. No math process or
+pending Proshka response. Reviewer PASS3 INTENT, not yet delivered; no other
+live child. Root source read-only discovery proceeds on exact CE brief.
+Permanent bridge ACTIVE/every10min last confirmed previous turn. Neighbour
+removed proposed force-with-lease, accepts ordinary nonforce push/no atomic
+expected-tip promise; no shared maintenance boundary or ownership transfer.
+
+## Do not repeat
+
+No FLOW/S1-S7/K36/K48/central2493/F25-160/SLACK/OC1/OC2/BPY or DN22 reruns.
+No new scalar/finite-gamma/conditional positivity campaign. No arbitrary
+scalar-to-form or log-tilt independence inference. No reset/stash/add-all/force,
+deletion/new phase/chat/watch or foreign staging. Lost receipt means inspect.
+
+## Integration remaining
+
+Original CE result fully published; current code repair2paths plus source
+mapping and issue/session/checkpoint notes await independent acceptance and
+publication. Any downloaded source intake is separate root action, never raw
+metadata proof. Foreign15line Navier-Stokes digest suffix remains unchanged
+and unstaged. Current owner appended bootstrap grant conflict in existing
+INSTRUCTION_ISSUES; no policy altered. Shared final core-runtime integration
+still requires exact artifact review and safe boundary, never spoof thread.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-64-7aebf72d94a31ccb1f690d78334b12ae1b7c3cae181e92b14a5d18a9590ffa9f","kind":"resume","revision":64,"sha256":"7aebf72d94a31ccb1f690d78334b12ae1b7c3cae181e92b14a5d18a9590ffa9f","size":6167} -->
+````text
+---
+schema: q3_resume.v1
+revision: 64
+observed_at: '2026-09-11T17:22:51.790577+00:00'
+previous_sha256: 0c97062a5f9a4b3367fa6143b43276983959517817ccc3222a2e2adf03f93698
+owner_thread_id: 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: a64d3e1da2939428650ce14a9bb881439144aed4
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+stages:
+  receipt: DONE
+  independent_review: PENDING
+  parent_check: DONE
+  acceptance: PENDING
+  publication: PENDING
+operation:
+  kind: DISPATCH
+  state: INTENT
+  id: LITERATURE_LIMITS_REPAIR_PASS3
+  evidence:
+  - Native PASS2 CLEAN on exactce8909b4/8335bcd2; LOW resolved. PASS3 confirmation
+    INTENT same sole Terra/xhigh checker; no byte changes. Need second consecutive
+    clean.
+  - 'PASS1 LOW: validator accepted duplicate_count=True as int. Parent reproduced
+    valid=True; changed both guards to type(...) is int and added regression. 61 full-module
+    tests pass in3.15s.'
+  - Exact candidate scripts/literature_discovery.py SHA256ce8909b4ecbb85c915628fb2aca27e19896ffe737dc70fabf3e4d3651fcd39fa;
+    orchestrator/tests/test_supplier_preflight.py SHA2568335bcd2aeba1bbf822571668dc898a4a370acc354aa07272b873af94a885dd8.
+    Basea64d3e1d. Same sole Terra/xhigh checker; expected10min, read-only/no descendants.
+  - Source mapping remains read-only; existing CE published. No new math job or Proshka
+    request.
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+
+Original full all-complex compact-test sign SL20/DN20 remains UNPROVED.
+CHALLENGER_NOT_RH; PX_RH_CLAIM NOT_MADE. Production exact-edge HOLD remains.
+Physical goal/source/six-field phase unchanged; no new chat or proof admission.
+
+## Confirmed and candidate results
+
+SLACK/SL23/SL24/OD1/OC1/OC2/BPY already accepted and published at659f389c.
+The pasted observer log-concavity cue was already carried in DENSITYrequest
+line24. Exact Phi_ours(x)=2Phi_C(x/2), f=Phi/A,A=||Phi||2;
+q(t)=J_f(sqrt(t))/(4t^(3/2)), not literal q=J. Csordas2015p11 supplies
+the scalar property; original1988 is RELAY. OC2 shows both scalar conditions
+allow the SAME noncanonical odd form-3/1250. Mean-matched BP3b still negative;
+the ENTIRE actual gamma law is the new source, not one moment.
+
+DENSITY final68e40ebd297b2cc0234fbf662f1200a5de6b2105,
+blob0ae221d9a120252288508eeacde3c1945cd2f312,
+SHA2560314932e68169410298c528f61c646896e3e1456a1426f951eeeb43b87bdb9f8,
+45050bytes799LF/finalLF, whole source/delta read. Exact request122076a3,
+09b95fe3/14952bytes83LF, baseline750b201d/ancestry/absence and6phasefields checked.
+Accepted PARTIAL_PAPER: shifted-rate positive-part source; conditional and
+finite-gamma global obstructions; infinite thinning with paid envelopes;
+DN21 positive jump energy WITHOUT transfer to original DN20.
+
+DC1-DC7 accepted PAPER_WITH_BALL_CERTIFICATE in
+docs/routeB_bus/DENSITY_INDEPENDENT_CHECK_2026-09-11.md:
+final21807bytes/SHA256077f7064ab0c1fb8bc044012b5e77e2e0c65a44dbc8583fb58f349e17b78cc34.
+Frozen prefix19632bytes/28d6a9d5 passed sole Terra/xhigh CLEAN/CLEAN;
+analytic contour/residue/budget audit separate. Not a blinded sign prediction.
+One3.027s background DN22 integral, script0ea30a4b embedded in durable
+phase5_codex/out/density_dn22_20260911.log, completed0; no rerun.
+D=[-7.25024384179487982e-36 +/-3.20e-54]. Rational full odd vector
+(-1,10^8,1,-10^8) gives[-5.3957842159281634e-11 +/-2.10e-28] at C=1.
+Box[0,1e-30]^2 adds<5.273470e-13; value<-5e-11*C^2 on positive product measure.
+Parent exact fraction/ball check PASS,I2=646/49. Frozen D>0,p=.60 REFUTED.
+This kills ONLY half-thinned conditional-block positivity, not the mean,
+other rho, original Q or RH. Source-media external identity remains unclaimed.
+
+## Next action
+
+CE math package ata64d3e1d remains completely DONE. New local retrieval bug
+repair pending: sole density_verdict_check PASS3 intent on exactly scripts/
+literature_discovery.py and orchestrator/tests/test_supplier_preflight.py;
+parent reproduced invalid lower-cap receipt, fixed bounded caps and strict duplicate count,61tests pass.
+Collect two consecutive exact native clean review passes before publishing.
+Root independently continues the source-specific covariance discovery brief
+in current session protocol; primary ALEA2025 source is fetched/read locally,
+no signed supplier accepted. Preserve partial metadata429 status. Finish this
+bounded discovery/source mapping, not a broad survey or another scalar test.
+Neighbour core runtime still isolated and revised bootstrap review pending;
+collect final exact manifest after these owned files are fixed/published.
+
+## Existing work
+
+Actual owner01a084f4-7498-7021-bac2-91d184d58dc7/local. No math process or
+pending Proshka response. Reviewer PASS3 INTENT, not yet delivered; no other
+live child. Root source read-only discovery proceeds on exact CE brief.
+Permanent bridge ACTIVE/every10min last confirmed previous turn. Neighbour
+removed proposed force-with-lease, accepts ordinary nonforce push/no atomic
+expected-tip promise; no shared maintenance boundary or ownership transfer.
+
+## Do not repeat
+
+No FLOW/S1-S7/K36/K48/central2493/F25-160/SLACK/OC1/OC2/BPY or DN22 reruns.
+No new scalar/finite-gamma/conditional positivity campaign. No arbitrary
+scalar-to-form or log-tilt independence inference. No reset/stash/add-all/force,
+deletion/new phase/chat/watch or foreign staging. Lost receipt means inspect.
+
+## Integration remaining
+
+Original CE result fully published; current code repair2paths plus source
+mapping and issue/session/checkpoint notes await independent acceptance and
+publication. Any downloaded source intake is separate root action, never raw
+metadata proof. Foreign15line Navier-Stokes digest suffix remains unchanged
+and unstaged. Current owner appended bootstrap grant conflict in existing
+INSTRUCTION_ISSUES; no policy altered. Shared final core-runtime integration
+still requires exact artifact review and safe boundary, never spoof thread.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-65-1299d87281819fa2d89ae26ce541fab6bcf679756e0fc9653c61865a08e9c044","kind":"intent","revision":65,"sha256":"1299d87281819fa2d89ae26ce541fab6bcf679756e0fc9653c61865a08e9c044","size":6405} -->
+````text
+---
+schema: q3_resume.v1
+revision: 65
+observed_at: '2026-09-11T17:26:08.419308+00:00'
+previous_sha256: 7aebf72d94a31ccb1f690d78334b12ae1b7c3cae181e92b14a5d18a9590ffa9f
+owner_thread_id: 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: a64d3e1da2939428650ce14a9bb881439144aed4
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+stages:
+  receipt: DONE
+  independent_review: DONE
+  parent_check: DONE
+  acceptance: DONE
+  publication: PENDING
+operation:
+  kind: PUBLISH
+  state: INTENT
+  id: LITERATURE_LIMITS_FIX_20260911
+  evidence:
+  - Basea64d3e1da2939428650ce14a9bb881439144aed4. Exact seven named owned paths in
+    session protocol latest publication intent; final checkpoint/history hashes captured
+    privately before staging and by commit tree. Ordinary origin/rh_clean push, no
+    force; foreign CHAT_DIGESTS excluded.
+  - Codece8909b4/8335bcd2 PASS1LOW fixed,parent reproduced;61fulltests3.15s;nativePASS2/PASS3CLEAN
+    on unchanged bytes. No math claim or production gate change. Canonical corpus77f11251
+    unchanged; no refresh needed.
+  - scripts/literature_discovery.py SHA256=ce8909b4ecbb85c915628fb2aca27e19896ffe737dc70fabf3e4d3651fcd39fa
+  - orchestrator/tests/test_supplier_preflight.py SHA256=8335bcd2aeba1bbf822571668dc898a4a370acc354aa07272b873af94a885dd8
+  - docs/INSTRUCTION_ISSUES.md SHA256=7390739a41154584e1308454eab6dc7cbd0c7dfb584564b0fcff689aa6bc7b3a
+  - docs/Codex/AGENTS_LEDGER.md SHA256=6a493a5669846f07fd3a4ae96a4abda398dbef779d167f08c7fc56477cc39feb
+  - docs/session_protocols/SESSION_PROTOKOLL_2026-09-11_CODEX.md SHA256=4a9f31659772e33037ca5e505564ccaa9c646c754c3591d79218c416a67d630d
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+
+Original full all-complex compact-test sign SL20/DN20 remains UNPROVED.
+CHALLENGER_NOT_RH; PX_RH_CLAIM NOT_MADE. Production exact-edge HOLD remains.
+Physical goal/source/six-field phase unchanged; no new chat or proof admission.
+
+## Confirmed and candidate results
+
+SLACK/SL23/SL24/OD1/OC1/OC2/BPY already accepted and published at659f389c.
+The pasted observer log-concavity cue was already carried in DENSITYrequest
+line24. Exact Phi_ours(x)=2Phi_C(x/2), f=Phi/A,A=||Phi||2;
+q(t)=J_f(sqrt(t))/(4t^(3/2)), not literal q=J. Csordas2015p11 supplies
+the scalar property; original1988 is RELAY. OC2 shows both scalar conditions
+allow the SAME noncanonical odd form-3/1250. Mean-matched BP3b still negative;
+the ENTIRE actual gamma law is the new source, not one moment.
+
+DENSITY final68e40ebd297b2cc0234fbf662f1200a5de6b2105,
+blob0ae221d9a120252288508eeacde3c1945cd2f312,
+SHA2560314932e68169410298c528f61c646896e3e1456a1426f951eeeb43b87bdb9f8,
+45050bytes799LF/finalLF, whole source/delta read. Exact request122076a3,
+09b95fe3/14952bytes83LF, baseline750b201d/ancestry/absence and6phasefields checked.
+Accepted PARTIAL_PAPER: shifted-rate positive-part source; conditional and
+finite-gamma global obstructions; infinite thinning with paid envelopes;
+DN21 positive jump energy WITHOUT transfer to original DN20.
+
+DC1-DC7 accepted PAPER_WITH_BALL_CERTIFICATE in
+docs/routeB_bus/DENSITY_INDEPENDENT_CHECK_2026-09-11.md:
+final21807bytes/SHA256077f7064ab0c1fb8bc044012b5e77e2e0c65a44dbc8583fb58f349e17b78cc34.
+Frozen prefix19632bytes/28d6a9d5 passed sole Terra/xhigh CLEAN/CLEAN;
+analytic contour/residue/budget audit separate. Not a blinded sign prediction.
+One3.027s background DN22 integral, script0ea30a4b embedded in durable
+phase5_codex/out/density_dn22_20260911.log, completed0; no rerun.
+D=[-7.25024384179487982e-36 +/-3.20e-54]. Rational full odd vector
+(-1,10^8,1,-10^8) gives[-5.3957842159281634e-11 +/-2.10e-28] at C=1.
+Box[0,1e-30]^2 adds<5.273470e-13; value<-5e-11*C^2 on positive product measure.
+Parent exact fraction/ball check PASS,I2=646/49. Frozen D>0,p=.60 REFUTED.
+This kills ONLY half-thinned conditional-block positivity, not the mean,
+other rho, original Q or RH. Source-media external identity remains unclaimed.
+
+## Next action
+
+Publish accepted literature-discovery receipt repair and owned observations
+through the exact7path intent. Code/test hashes ce8909b4/8335bcd2,61tests
+passed; sole Terra/xhigh PASS2/PASS3 CLEAN and parent controls passed.
+No index refresh: selected corpus unchanged77f11251. Confirm local/remote
+full commit and preserve foreign15line CHAT_DIGESTS suffix.
+Then reconcile neighbour final isolated core-runtime manifest/review before
+any shared boundary. Bounded source-specific compensation discovery found
+only a scalar covariance analogue so far; operator provider429 remains
+INCOMPLETE and exact consumer unbound. Pending ALEA source mapping in the
+session protocol is not independently accepted or a positive sign supplier;
+source is staging only until registered intake, no proof use from /tmp.
+No repeated search/numerical campaign or Proshka request justified by this.
+
+## Existing work
+
+Actual owner01a084f4-7498-7021-bac2-91d184d58dc7/local. Native sole checker
+DONE; code review accepted. No mathematical process or pending Proshka reply.
+Permanent bridge remains ACTIVE/every10min. Neighbour active inProgress,
+revised ordinary-nonforce plan reported CLEAN/CLEAN; bootstrap artifact and
+crash tests still pending in isolation, no shared boundary or owner transfer.
+
+## Do not repeat
+
+No FLOW/S1-S7/K36/K48/central2493/F25-160/SLACK/OC1/OC2/BPY or DN22 reruns.
+No new scalar/finite-gamma/conditional positivity campaign. No arbitrary
+scalar-to-form or log-tilt independence inference. No reset/stash/add-all/force,
+deletion/new phase/chat/watch or foreign staging. Lost receipt means inspect.
+
+## Integration remaining
+
+Original CE result fully published; current accepted code repair2paths and issue/session/checkpoint notes await
+publication. Source mapping remains explicitly unaccepted, separate from code. Any downloaded source intake is separate root action, never raw
+metadata proof. Foreign15line Navier-Stokes digest suffix remains unchanged
+and unstaged. Current owner appended bootstrap grant conflict in existing
+INSTRUCTION_ISSUES; no policy altered. Shared final core-runtime integration
+still requires exact artifact review and safe boundary, never spoof thread.
+
+````
+<!-- /q3-history -->
+

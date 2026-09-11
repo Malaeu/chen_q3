@@ -691,6 +691,83 @@ def test_literature_validator_rejects_row_top_error_status_incoherence(
     assert "LITERATURE_RECEIPT_ERROR_LEDGER_INVALID" in errors
 
 
+@pytest.mark.parametrize("max_queries,max_results", [(1, 8), (8, 3), (1, 1)])
+def test_literature_validator_accepts_requested_lower_caps(
+    monkeypatch: pytest.MonkeyPatch, max_queries: int, max_results: int,
+) -> None:
+    monkeypatch.setattr(literature_discovery, "_arxiv", lambda *_args, **_kwargs: [])
+    payload = literature_discovery.discover(
+        ["covariance"], providers=("arxiv",), max_queries=max_queries,
+        max_results_per_pair=max_results,
+    )
+    valid, errors = literature_discovery.validate_receipt(
+        payload, expected_queries=["covariance"], expected_providers=("arxiv",)
+    )
+    assert valid, errors
+
+
+@pytest.mark.parametrize("field", ["max_queries", "max_results_per_pair"])
+@pytest.mark.parametrize("bad", [0, 9, True, 1.5, "1"])
+def test_literature_validator_keeps_declared_caps_bounded(
+    monkeypatch: pytest.MonkeyPatch, field: str, bad: object,
+) -> None:
+    monkeypatch.setattr(literature_discovery, "_arxiv", lambda *_args, **_kwargs: [])
+    payload = literature_discovery.discover(["covariance"], providers=("arxiv",))
+    payload["limits"][field] = bad
+    valid, errors = literature_discovery.validate_receipt(
+        payload, expected_queries=["covariance"], expected_providers=("arxiv",)
+    )
+    assert not valid
+    assert "LITERATURE_RECEIPT_LIMITS_DRIFT" in errors
+
+
+def test_literature_validator_rejects_more_queries_than_declared(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(literature_discovery, "_arxiv", lambda *_args, **_kwargs: [])
+    payload = literature_discovery.discover(["first", "second"], providers=("arxiv",))
+    payload["limits"]["max_queries"] = 1
+    valid, errors = literature_discovery.validate_receipt(
+        payload, expected_queries=["first", "second"], expected_providers=("arxiv",)
+    )
+    assert not valid
+    assert "LITERATURE_RECEIPT_LIMITS_DRIFT" in errors
+
+
+@pytest.mark.parametrize("second_id", ["one", "two"])
+def test_literature_validator_counts_unique_and_duplicate_results_against_cap(
+    monkeypatch: pytest.MonkeyPatch, second_id: str,
+) -> None:
+    feed = f"""<feed xmlns="http://www.w3.org/2005/Atom">
+    <entry><id>https://arxiv.org/abs/one</id><title>First</title></entry>
+    <entry><id>https://arxiv.org/abs/{second_id}</id><title>Second</title></entry>
+    </feed>""".encode()
+    monkeypatch.setattr(literature_discovery, "_fetch", lambda *_args, **_kwargs: feed)
+    payload = literature_discovery.discover(
+        ["covariance"], providers=("arxiv",), max_results_per_pair=2,
+    )
+    kwargs = {"expected_queries": ["covariance"], "expected_providers": ("arxiv",)}
+    valid, errors = literature_discovery.validate_receipt(payload, **kwargs)
+    assert valid, errors
+    payload["limits"]["max_results_per_pair"] = 1
+    valid, errors = literature_discovery.validate_receipt(payload, **kwargs)
+    assert not valid
+    assert "LITERATURE_PROVIDER_ROW_BINDING_INVALID" in errors
+
+
+def test_literature_validator_rejects_boolean_duplicate_count(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(literature_discovery, "_arxiv", lambda *_args, **_kwargs: [])
+    payload = literature_discovery.discover(["covariance"], providers=("arxiv",))
+    payload["provider_rows"][0].update(duplicate_count=True, status="HITS_DEDUPED")
+    valid, errors = literature_discovery.validate_receipt(
+        payload, expected_queries=["covariance"], expected_providers=("arxiv",)
+    )
+    assert not valid
+    assert "LITERATURE_PROVIDER_ROW_BINDING_INVALID" in errors
+
+
 def test_stdout_budget_compaction_is_explicitly_incomplete() -> None:
     payload = {
         "schema": "q3_search_evidence.v1",

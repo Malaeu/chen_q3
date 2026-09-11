@@ -305,3 +305,22 @@ DENSITY final-report REVIEW_INTENT: sole density_verdict_check Terra/xhigh, read
 
 
 2026-09-11T16:59:14.115552+00:00 — CE_MAINTENANCE_CONFIRMED: backgroundPID1142970/start12563212, recipe281180dac2b32869b74183ed48b0244eafb95f1258b5ff7cfc34c54c3bb5d640; CE_CLOSEOUT_PROCESS_EXIT=0 in147.863s,116branch decisions projected, ONE refresh133.613s, session_start13.704s/exit0, SQLite quick_check ok. Follow-up ask covariance HITS includes current accepted DENSITY report# a39402; full receipt appended to existing output log. Canonical plan exit2 is scoped exact-edge HOLD, fatal_errors=[]; do not mistake HOLD for startup corruption. Permanent bridge ACTIVE/every10min/actual owning thread verified by card+TOML. No live math/agent or new request. Publication pending, foreign digest suffix preserved.
+
+
+2026-09-11T17:15:00.874451+00:00 — LITERATURE_LIMITS_REPAIR_PASS1 INTENT: sole existing density_verdict_check Terra/xhigh read-only/no descendants, owner01a084f4-7498-7021-bac2-91d184d58dc7/local, expected10min; exact2path0c1a161c/aef90014 diff froma64d3e1d. No math job. Root ALEA source mapping independent; neighbour core isolated. Not yet delivered.
+
+
+2026-09-11T17:15:47.148293+00:00 — LITERATURE_LIMITS_REPAIR_PASS1 DISPATCH_CONFIRMED: native followup_task accepted by sole /root/density_verdict_check Terra/xhigh; exact2path0c1a161c/aef90014, expected10min, no descendants; root source reading independent. No math process.
+
+
+2026-09-11T17:21:23.076137+00:00 — LITERATURE_LIMITS_REPAIR PASS1 LOW, Boolean accepted as count — true вместо числа дубликатов. Parent independently reproduced; fixed both guards and added regression. Full61tests PASS3.15s. Same sole density_verdict_check Terra/xhigh PASS2 INTENT exactce8909b4/8335bcd2, read-only/no descendants, expected10min, owner01a084f4/local. No math job.
+
+2026-09-11T17:22:51.790577+00:00 — PASS2 DISPATCH_CONFIRMED and RESULT CLEAN ce8909b4/8335bcd2; FIRST_INCORRECT_ASSERTION NONE, previous LOW fixed. PASS3 INTENT same sole Terra/xhigh/read-only/no descendants, expected5min. No math job.
+
+2026-09-11T17:25:02.850055+00:00 — LITERATURE_LIMITS_REPAIR PASS3 DISPATCH_CONFIRMED/RESULT CLEAN on unchangedce8909b4/8335bcd2; PASS2/PASS3 two consecutive CLEAN, ModeA. Parent independently confirms lower caps valid, boolean duplicate rejected; full61tests3.15s. Sole density_verdict_check DONE, no live child/math/new request. Accepted code-only repair; publication pending.
+
+| Pass | Severity | Finding — English term + Russian explanation | Fix applied |
+|---|---|---|---|
+| Literature PASS1 | LOW | Boolean accepted as count — true вместо числа дубликатов | Strict integer guards and regression |
+| Literature PASS2 | CLEAN | No finding — точные исправленные байты проверены | None |
+| Literature PASS3 | CLEAN | No finding — повторная проверка неизменных байтов | None |
