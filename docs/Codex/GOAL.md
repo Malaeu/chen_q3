@@ -160,3 +160,11 @@ unfinished step. Do not restart the goal. Do not repeat completed work.
 
 Historical details: [GOAL_HISTORY.md](GOAL_HISTORY.md), referenced reports and
 session protocols, opened only when needed. Historical commands are inactive.
+
+## 6. Owner advice channel (owner instruction 2026-09-11)
+
+New files `docs/Codex/ADVICE_*.md` on `origin/rh_clean` are owner-verified ideas
+relayed by the observer. Keep a path watch on them like the Proshka verdict watch.
+On each: three own attempts, at most one Proshka request per three; answer only
+with a victory at PAPER scope; otherwise write the failure with everything gained,
+commit and push at once, and ask. Full rule: [ADVICE_PROTOCOL.md](ADVICE_PROTOCOL.md).
