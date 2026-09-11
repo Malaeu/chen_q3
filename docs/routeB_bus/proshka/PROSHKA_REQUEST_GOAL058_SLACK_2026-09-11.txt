@@ -1,0 +1,81 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-11-SLACK
+BOUNDARY_ID: GOAL058_INTEGRATED_SIGNED_SOURCE_SLACK_CANCELLATION
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Construct and prove an integrated signed-source cancellation for the original Weil form, retaining the central and far slacks and respecting the entire derivative-radical equality family; return a full all-test proof or a new precise source remainder after a concrete repair.
+DATE: 2026-09-11
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SECOND_EXPRESSION
+SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_PROOF_CONSTRUCTION_AND_ADVERSARIAL_REVIEW
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SLACK_2026-09-11.md
+BASE_TIP: 3fcf7759342ea41ef9a46de2597f0a6187f1931d
+
+0. WHAT CHANGED; PINNED SHELF
+SOURCE_BASE: 3fcf7759342ea41ef9a46de2597f0a6187f1931d
+Continue the SAME living chat6aa24f25-0934-83eb-9151-3565fc4b3379 and unchanged six-field phase. FLOW supplied a valid far-tail mechanism but left its signed remainder open. New accepted S1-S7 prove that completing that remainder by nonnegative domination is impossible with the retained central charge, even after every FIXED FINITE list of central-slack orthogonality constraints. This is a new class-wide equality obstruction, not a smaller numerical deficit. Your FLOW section9 proposed a signed use of retained slacks; now construct that mechanism or another actual source representation of the unchanged all-test sign. Codex completed the bounded finite-radical subtraction check; no new eigenvalue/grid computation is needed to establish the new input.
+The following full SHA256/blob pairs and bytes were independently rehashed at SOURCE_BASE:
+S | docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_WEIL_POSITIVITY_AROUND_XI_PROOF_2026-09-05.md | sha256 93db2de6357821918211a8033b2c8f34e7f684320a25e5623e1f24d33ed58fe9 | blob 136aceb3cbbabcdfa425459562b803b67c548b48 | 46207 bytes
+F | docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_FLOW_2026-09-10.md | sha256 629431c76e40a1af5fcb5f2b6721ae7be8dba3bfe71a2e8f238e6fd32e07e28d | blob 15493a4cbdb41845c92b176d96f542aff97b07a7 | 49936 bytes
+R | docs/routeB_bus/FLOW_INDEPENDENT_CHECK_2026-09-11.md | sha256 17bd247cc4c995a239e22136cb3ba899c0c20d337e8ec1cff49cd65b440c533f | blob e12910d0fa356f53788786bc40d52e3d4e41d2a3 | 46685 bytes
+B | docs/BATCH_PATTERNS.md | sha256 cded6dfd5950fd8dd230ad770ff0cf4a50a5bea9b2d5e91601b8eaa76120903b | blob cb63bab5fbff3d39bf63c0b0f081a2264e004f2b | 11341 bytes
+Read S at X/CONT/CAN/FT/ENV/EF/RAD/GS, F at F3/F23/F24 and own-line signed-slack suggestion, R completely (including corrected F15/F25, S1-S7 and durable evidence). R's old36983-byte prefix is sha3ac5e6e610a4948ffadbb6dbed19fc3ff0c4e68bbdfb12180ce99e9aa18644df. New S5-S7 appendix7324bytes/70LF was checked CLEAN/CLEAN at bf4d6fd918379eea1b327aed6ae51733645866de7345943cef055cb86b30d554; appended acceptance records its scope. Previous derivations remain PAPER_DERIVATION_TO_RECHECK, not axioms. S's published explicit-formula dependency remains explicit; do not invent a freshly verified citation/version. Local shelf search found the radical/source identities and prior absolute-majorant failures, not an admitted full-sign supplier.
+
+1. ORIGINAL SOURCE, DOMAIN AND TARGET
+Use physical dx and complex tests. Canonical f=f0=Phi/A, A=||Phi||2>0. For real x, Phi(x)=exp(x/2) sum_(n>=1)(4pi^2 n^4 exp(4x)-6pi n^2 exp(2x)) exp(-pi n^2 exp(2x)); it is positive and even by the source theta identity. Fg(z)=int g(x)exp(-izx)dx, Ff(z)=Xi(z)/A. B is antilinear in its first argument.
+Original Q(g)=int_0^infty alpha(t)||g(.+t)-g||2^2 dt-c_A||g||2^2+2Re(M_+(g)conj(M_-(g)))-2sum_(n>=2)w_n Re int conj(g(x))g(x+log n)dx, where alpha(t)=exp(-t/2)/(1-exp(-2t)), c_A=gamma+log(8pi)+pi/2, M_+/-=int g(x)exp(+/-x/2)dx and w_n=Lambda(n)/sqrt(n). Keep both poles, every prime power and all mixed contributions.
+The source control space is X={g:||exp(|x|)g||2^2+D(g)<infty}, D(g)=int_0^infty alpha(t)||g(.+t)-g||2^2dt. B is continuous on X with C_X=|c_A|+14; C_c^infty is dense. For each fixed derivative order, ENV gives super-exponential decay and membership in X. Do not replace X by a global lower-bounded L2 operator domain.
+For r in C+C_c^infty(R;C), c_t(x)=f(x)f(x+t), E_r(t)=int c_t(x)|r(x+t)-r(x)|^2dx. Exact GS: Q(fr)=int_0^infty b(t)E_r(t)dt+sum_(n>=2)w_n E_r(log n), b(t)=alpha(t)-exp(-t/2)-exp(t/2). All displayed source energies converge separately on that class. For every original g in C_c^infty, r=g/f is compact smooth.
+TARGET: Q(g)>=0 for EVERY complex g in C_c^infty(R), equivalently dominance of the full negative b_- energy by the full positive b_+ and prime energy. The target's equivalence to RH is not a circular premise. No positivity, real-zero property, simple ground state, parity reduction or uniformly bounded inverse is available as input.
+
+2. EXACT NEW EQUALITY INPUT AND FAILED REPAIR
+Keep F3: I=[log(7/5),log(8/5)],R0=1/8, tau satisfying exp(3tau)-exp(tau)=1, j(s)=s^3 b_+(s), L=j*j, Z=j*j*j. On |x+t/2|<=R0, use ordered three-edge density j(s1)j(s2)j(s3)/Z(t), s1+s2+s3=t, and coefficients t/s_i, with all central receiving vertices in [-H,H], H=R0+max(I)/2<3/8. The exact point slack is sum_(i<j) s_i*s_j |d_i/s_i-d_j/s_j|^2. Its integrated nonnegative form is Sc; Se is the nonnegative far-tail path slack from F23. Keep the precise Gamma_c,Gamma_e and unpaid set Lambda of F22-F24, not a renamed uniform reserve.
+For compact r only, F24 reads Q(fr)=Sc[r]+Se[r]+T[r], T[r]=int |Delta r|^2 d(C_+-Gamma_c-Gamma_e)-int_Lambda |Delta r|^2dD_-. The signed difference is well defined even before using any numerical central resource ceiling. The slacks themselves are nonnegative by valid path inequalities. F23 proves Gamma_e<=1/16 of the actual far receiving capacity on U; this does not pay the full remaining source.
+S1-S4: v=f' is a genuine global B-radical, not merely a null vector. The ratio v/f has Sc=sigma>0. At t=2/5,x=-1/5,s_i=2/15 the full-theta point slack is[.05509296789188,.05509296789192]. This is NOT a numerical value/lower bound for integrated sigma; positivity of sigma follows from an open positive-density neighborhood. Compact g_N=chi_N v tend to v in X and preserve Sc exactly, so T[g_N/f]<-sigma/2 eventually while Q(g_N)->0. This kills EVERY full extra nonnegative individual-path allocation Gamma_Lambda<=Cnew for those retained central charges, not Q>=0 or the proved allocations.
+S5-S7: for ANY fixed finite m and complex u_j smooth near[-H,H], choose m+1 even derivatives f^(2k). They are genuine B-radicals. Their ratios are analytic and even; a nonzero finite combination cannot be affine on an open interval, otherwise a nonzero polynomial times Ff would vanish near zero. Equality in the three-edge slack would force that affine behavior, hence Sc>0. A complex m-by-(m+1) nullspace vector gives a radical w with Sc(u_j,w/f)=0 and Sc[w/f]=sigma>0. Compact cutoffs preserve all constraints and yield T<-sigma/2 eventually. Thus imposing ANY FIXED FINITE LIST of Sc-orthogonality conditions cannot repair T>=0. The proposition does not exclude all finite-rank or signed methods.
+The simple scalar subtraction alpha=Sc(f'/f,g/f)/Sc[f'/f] minimizes Sc, and Q(g-alpha*f')=Q(g) on X; it produces no sign bound and is generally noncompact. F24 must NOT be applied there without a new extension theorem. Do not enlarge that finite projection or discard its compensating signed terms.
+
+3. Q1 — BUILD A CANCELLATION MECHANISM WITH THE RIGHT EQUALITY FAMILY
+The new constraint is structural: any proposed nonnegative representation must be compatible with B(f^(k),h)=0 for all fixed k and h in X. Recheck the source-domain reason, then use it to design an actual integrated construction, rather than spend the batch only re-verifying S1-S7. One possible direction is to organize the source on a quotient by explicitly controlled translates/convolutions of f; another is a nonlocal signed identity that keeps exact Sc/Se compensators. These are candidates, not imposed extra hypotheses. If you use translation/derivative closure, prove the chosen topology, continuity and domain; an L2 density theorem does not imply X density or Q continuity on L2.
+Produce a source-defined kernel, transform, pairing or cancellation identity, with all parameters and measures explicit, whose equality mechanism covers the derivative family and whose remaining sign can be tested. An unevaluated quotient form called Q, a formal inverse assumed positive, a positive Gram without an exact transfer, or T=Q-Sc-Se is no gain. Explain which new independently proved source fact couples the theta weights and arithmetic correlations. If your first construction fails, identify its exact first failure and attempt one concrete repair preserving the original target.
+
+4. Q2 — MAIN PROOF: PAY THE SIGNED CANCELLATION, NOT EACH PATH SEPARATELY
+Spend most effort on complete proofs that the ACTUAL Q1 object yields Sc[r]+Se[r]+T[r]>=0 for every original compact smooth complex r, or an equivalent exact second expression Q(g)=P(g) with P>=0 proved from independent source facts. The original fixed slacks must remain accounted for; a new representation may reorganize them but may not silently remove the central block, either pole, primes or the unbounded remainder.
+Integrated cancellation, nonlocal kernels, infinitely many source directions and controlled limits are allowed; individual-path domination is not required and the full slack-dropped interface is already killed. If truncating, supply a bound for EVERY coefficient vector and a proved error tending to zero on each fixed original compact smooth test. A finite matrix, mesh, small eigenvalue or selected radial shell alone is insufficient. Any growing derivative order needs its own uniform budget, not fixed-k ENV constants reused uniformly. Do not assume RH-equivalent Hermite-Biehler/real-zero/positivity assertions as lemmas.
+If incomplete, isolate the FIRST unpaid signed integral/operator inequality with exact functions, domain, all tails and normalization; provide a new proved identity, paid source region or precisely quantified class obstruction, and explain the attempted repair. A scalar renamed from T or a generic statement that this is hard/RH is not the requested mathematical work. Explicitly distinguish proved consequences from conditional propositions.
+
+5. Q3 — ALL-TEST TRANSFER, FALSE-POSITIVE CONTROLS, AND DECISIVE TEST
+Transfer the actual Q2 result to every complex g in C_c^infty via its proved domain/limit map. Pay all Fubini, dominated-convergence, approximation and boundary terms; do not infer all-test sign from even tests, a finite window or algebraic equality alone. If incomplete, give the entire remaining signed form and one genuinely new next_decisive_test with exact objects, observable and stopping condition. Existing S1-S7/F25/central certificate work must not be rerun just to fill that slot.
+Keep these exact algebraic controls. For m>=0 on C^(m+2), Q_+(z)=|z_(m+2)|^2 and S(z)=sum_(k=1)^(m+1)|z_k|^2 have a genuine(m+1)-dimensional radical; T=Q_+-S remains negative on a nonzero radical vector after any m linear constraints. This models why residual negativity does not refute Q>=0. Conversely on C^(m+3), Q_-(z)=|z_(m+2)|^2-|z_(m+3)|^2 has the same first(m+1)-coordinate radical and the same S; a rule using only radical identities and S>=0 must not certify Q_-. For m=0 and the last coordinate unit vector, Q_+=1 in its space while Q_-=-1 in its space; keep the differing ambient dimensions explicit. Identify the extra actual-source fact that your construction uses to distinguish signs. Controls are exact algebra, not the theta source.
+
+6. CLOSED ATTEMPTS AND FROZEN PREDICTIONS
+Do not repeat K36/K48 shells, T-squared upper-rate/first-contact campaigns, the central2493 evaluator, fixed inward-prime tail tuning, or F25's stopped160-price diagnostic. Its .8896342980940862 versus independent .8896115578053853 had no full error budget and proves neither feasibility nor a strict witness. S1-S7 are analytic/interval-backed obstructions at their stated scopes, not conclusions from that diagnostic. F3/F23 remain valid; F24's original full sign remains unproved. No new software framework or eigenvalue table is requested.
+Frozen before this dispatch, content predictions only, not proof probabilities or premises:
+P1(p=.95): the S1-S7 no-go survives source/domain recheck at its precise full-residual and finite-central-constraint scopes; no negative original Q follows.
+P2(p=.85): a valid new source representation must explicitly accommodate the whole derivative-radical equality family; neither a fixed finite Sc projection nor termwise positive estimates after dropping all Sc+Se suffice for the full T comparison. This does not predict failure of every finite-rank method.
+P3(p=.75): PARTIAL_WITH_PRECISE_REMAINDER with at least one new exact integrated source relation or a scoped obstruction plus attempted repair beyond S1-S7. Try to refute this by proving the unconditional all-test consumer. Score CONFIRMED/REFUTED/UNRESOLVED with exact locators. No numerical simulation is requested; the exact Q_- control value is -1.
+
+7. SOURCE AND WRITE BOUNDARIES
+Use pinned bytes and original normalizations; mark READ versus RELAY and disclose incomplete hash/proof checks. Write only EXPECTED_VERDICT_PATH as complete UTF-8 Markdown. No old-verdict, Lean, queue, runtime, registry or RH-claim edits. Ordinary commit/non-force push to existing rh_clean is authorized if supported, preserving concurrent changes. Otherwise immediately return the COMPLETE downloadable file with external byte/line/final-LF/SHA256/Git-blob receipt and explicit NOT_COMMITTED/NOT_PUSHED; do not leave a watch awaiting a push you cannot perform. A chat summary is not the verdict. No self-referential hash inside the hashed file.
+
+8. RESPONSE SCHEMA
+REQUEST_ID and BOUNDARY_ID; one TRY_*/KILL_*/RUN_* directive; RESULT for Q1,Q2,Q3,OVERALL from PROOF_CANDIDATE_COMPLETE / PARTIAL_WITH_PRECISE_REMAINDER / ATTEMPT_REFUTED_WITH_EXACT_COUNTEREXAMPLE; VERIFIER:PAPER; DERIVATIVE_EQUALITY_PRESERVED true/false; NEW_INTEGRATED_SOURCE_IDENTITY_PROVED true/false with its precise statement; FULL_SIGNED_REMAINDER_PAID true/false; LOWER_SIGN_PROVED true/false; PX_RH_CLAIM:NOT_MADE. Full proofs/dependencies, FIRST_FAILURE for each incomplete question, scope of every refutation, source/provenance limits, prediction scores and one next_decisive_test. Q1 may be complete at a narrow identity scope; Q3/OVERALL complete requires the original unconditional all-test conclusion, not a new equivalent condition. External receipt gives exact final bytes/hashes and real commit/push status.
+
+9. PROSHKA'S OWN LINE (free form, no codes, no scoring; 20–40 lines):
+   (a) why this route and not the two nearest alternatives you considered;
+   (b) the two moves you see beyond this batch, and what would kill each;
+   (c) what you would ask us for, if you could ask (data, a probe, a definition);
+   (d) what surprised you in the shelf, and what you distrust in it.
+
+10. RESEARCH LOG (append to the verdict; no scoring):
+   (a) every source consulted this batch: locator (arXiv/DOI/URL + theorem/equation), one line: what was taken or why rejected; mark READ vs RELAY;
+   (b) every branch you tried and abandoned, one line each: the candidate, the first inequality or fact that killed it;
+   (c) intermediate identities or computations that failed but might serve another question, with their exact statement.
