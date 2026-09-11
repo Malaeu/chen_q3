@@ -197,3 +197,11 @@ gaussian_space_review / source_transfer_bound · DONE · prior scratch component
 2026-09-11T10:23:12+02:00 · flow_verdict_check · same sole checker RUNNING exact intake report confirmation; whole F1-F24 audit partial PAPER verified, F15 WORDING/F25 MEDIUM and parent i=0,1 offset MEDIUM corrected, clean counter0; draft9bcc0bae. No descendants/numerical job; agents-watch remains ACTIVE.
 
 2026-09-11T10:26:25+02:00 · flow_verdict_check · DONE; whole F1-F24 partial PAPER, F15/F25 and parent offset corrected; exact9bcc0bae CLEAN/CLEAN passes3/4. agents-watch DELETED; no live agents/watches/numerical jobs.
+
+2026-09-11T10:48:48+02:00 · flow_verdict_check · gpt-5.6-terra/xhigh · NEW derivative-radical strict-central-slack obstruction audit e53c5db7, not repeated FLOW verdict · RUNNING expected15min, read-only/no descendants; first incorrect assertion/two exact clean passes required. agents-watch20min ACTIVE. No numerical job.
+
+2026-09-11T10:57:38+02:00 · flow_verdict_check · same sole terra/xhigh checker RUNNING second confirmation on final f8919d1a (19433bytes), previous e53c5db7 CLEAN; no descendants/old audit/numerical sweep. agents-watch remains ACTIVE20min.
+
+2026-09-11T11:01:40+02:00 · flow_verdict_check · DONE; S1-S4 e53c5db7/final f8919d1a CLEAN/CLEAN, source point and portable scripts verified; preliminary LF/hash concern WITHDRAWN, not an unresolved finding. agents-watch DELETED; no live agents/watches/numerical jobs.
+
+2026-09-11T11:07:11+02:00 · reconciliation · sole flow_verdict_check DONE, agents-watch DELETED, all jobs terminal0; empty live-agent/watch set. Control-file handoff pending only named publication; no new math/agent/automation before refactor handback.

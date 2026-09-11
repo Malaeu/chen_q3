@@ -110,3 +110,330 @@ The checker also independently reproduced F14's exact rational and the finite ne
 |---|---|---|---|
 | 3 | CLEAN | Corrected source-coordinate map - координаты исправлены | No new findings. |
 | 4 | CLEAN | Confirmed reflection and source weights - отражение и веса подтверждены | Mode A converged. |
+
+---
+
+# A strict central slack prevents completion by nonnegative residual domination
+
+Status: ACCEPTED_AT_RESIDUAL_INTERFACE_OBSTRUCTION_SCOPE; two consecutive independent CLEAN passes. This concerns the sufficient interface in FLOW F24 after its nonnegative slacks have been dropped, not the sign of the original Weil form. Baseline e85485e518184980e6f5fdc4723547fb28d4e03f. No Lean admission or RH claim.
+
+## S1. Source, target and derivative radical
+
+Use the exact Q, X, CONT, CAN, FT, ENV and EF of docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_WEIL_POSITIVITY_AROUND_XI_PROOF_2026-09-05.md, lines110-276 and387-443. The transform is Fg(z)=integral g(x)exp(-izx)dx; B is antilinear in its first argument. Both poles and every von Mangoldt prime-power weight remain in Q. X and continuity of Q do not assume positivity. The explicit formula remains the already named PAPER dependency of this source; no new external theorem is imported.
+
+Put f=f0=Phi/||Phi||2, v=f', and r*=f'/f. ENV for all derivatives gives v in X. Integration by parts, with vanishing boundary terms for every complex z, gives Fv(z)=iz Xi(z)/||Phi||2. The EF argument of L1b applies also to v: its derivative envelopes give the same required rapidly decaying correlation class. At every zero z of Xi, both Xi(z) and its reflected conjugate factor vanish. Every EF summand is zero. Thus Q(v)=0 unconditionally; the same argument against a compact test and continuity even gives B(v,h)=0 for all h in X. No zero location or positivity assumption enters.
+
+The smooth real function r* is odd because f is strictly positive and even. It is not compactly supported; it will only be used directly on the fixed compact support of the central path construction. We do NOT extend FLOW F24 to this noncompact ratio.
+
+## S2. The accepted central path law spends a strictly positive slack on r*
+
+Keep FLOW F3 exactly: t in I=[log(7/5),log(8/5)], |x+t/2|<=R=1/8, positive lengths s1+s2+s3=t, probability density j(s1)j(s2)j(s3)/Z(t), j(u)=u^3 b_+(u), and charges t/s_i. All receiving vertices lie in [-H,H], H=R+max(I)/2<3/8.
+
+For any complex increments d1,d2,d3, its pointwise slack is
+
+  t sum_i |d_i|^2/s_i - |sum_i d_i|^2
+    = sum_(i<j) s_i*s_j |d_i/s_i-d_j/s_j|^2 >= 0.       (S1)
+
+This equality follows by expanding the right side and using sum s_i=t; it does not use the sign of Q. Integrate it against the original positive demand density n(t)f(x)f(x+t) and the probability density above to obtain S_c[r]. The compact integral is finite: j(s)/s is integrable, Z has a positive minimum on I, and r* is smooth on [-H,H].
+
+Choose t=2/5, x=-1/5, s1=s2=s3=2/15. This point is strictly interior to the original domain. Indeed exp(2/5)>7/5, while exp(2/5)<=7/5+6/65=97/65<8/5; and exp(3s)-exp(s)<8/5-1<1 proves b(s)>0. Thus n(t), both endpoint f values and the path probability density are strictly positive.
+
+The four vertices are -1/5,-1/15,1/15,1/5. Set A=r*(1/5), B=r*(1/15). Oddness gives increments A-B,2B,A-B. Their exact slack is
+
+  3[2(A-B)^2+4B^2]-(2A)^2 = 2(A-3B)^2.              (S2)
+
+A full-theta interval calculation gives:
+
+| Observable | Rigorous enclosure (conservatively rounded) |
+|---|---|
+| A-3B | [-0.16597133471162,-0.16597133471158] |
+| 2(A-3B)^2 | [0.05509296789188,0.05509296789192] |
+
+Continuity in (x,t,s1,s2), with s3=t-s1-s2, gives a nonempty open neighborhood of positive slack, positive demand density and positive probability density. It has positive four-dimensional Lebesgue measure. Nonnegativity elsewhere therefore proves
+
+  sigma := S_c[r*] > 0.                             (S3)
+
+The number in the table is a POINTWISE slack, not the value or a numeric lower bound for the integrated sigma. Positivity of sigma uses the open neighborhood argument.
+
+## S3. Compact original-source tests refute the proposed residual comparison
+
+Take the source domain lemma's real smooth cutoffs chi_N, 0<=chi_N<=1, equal to1 on [-N,N], supported in [-N-1,N+1], with uniform derivative bounds. Define
+
+  g_N=chi_N*v in C_c^infinity(R),  r_N=g_N/f=chi_N*r* in C_c^infinity(R).
+
+The source density lemma gives g_N -> v in X. CONT and Q(v)=0 give Q(g_N)->0. For every integer N>=1, all central path vertices lie where chi_N=1. Consequently S_c[r_N]=sigma EXACTLY, not asymptotically.
+
+Apply the already verified FLOW F24 only to compact r_N. Write
+
+  T[r] = integral |Delta r|^2 dC_new - integral_Lambda |Delta r|^2 dD_-.
+
+It has the exact identity T[r_N]=Q(g_N)-sigma-S_e[r_N]. Since S_e[r_N]>=0, choose N so large that |Q(g_N)|<sigma/2. Then
+
+  T[r_N] < -sigma/2 < 0.                            (S4)
+
+All terms are finite by the compact-test F24 theorem. No noncompact Se or noncompact weighted-difference limit is used. A precise sufficient cutoff condition is
+
+  C_X ||g_N-v||_X (||g_N||_X+||v||_X) < sigma/2,
+
+which eventually holds. No explicit smallest N or numerical sigma is claimed.
+
+It follows that the all-test comparison T[r]>=0 is FALSE for these unchanged Gamma_c and Gamma_e. In particular there is NO additional nonnegative path allocation Gamma_Lambda<=C_new that pays every remaining negative demand by valid individual path inequalities for all original compact tests. Such an allocation would imply T[r]>=0, contradicting S4. This excludes arbitrary extra path counts, source probabilities, coefficients and prime powers for that completion, not merely continuous-only paths or the two-kernel join mixture.
+
+The conclusion does NOT refute the accepted central or far-tail allocations. It does NOT refute feasibility of F25 on its bounded same-I join alone. It does NOT show Q(g_N)<0: the positive sigma+S_e[r_N] is precisely what was dropped. The full Q/Weil/RH sign is still open. A signed proof that retains these slacks, or an altogether different decomposition, is outside the obstruction.
+
+## S4. Interval-point certificate and independent channels
+
+For x>=0, put U=exp(2x), z_k=pi*k^2*U. The first three exact source summands are
+
+  Phi(x)=exp(x/2) sum (4z_k^2-6z_k) exp(-z_k) + tail0,
+  Phi'(x)=exp(x/2) sum (-8z_k^3+30z_k^2-15z_k) exp(-z_k) + tail1.
+
+For k>=4, all z_k>=1 and |p1(z_k)|<=53 z_k^3. Successive k^6 exponential terms have ratio <=4 exp(-9pi U), since (5/4)^6<4; successive k^4 terms can use the larger bound16 exp(-9pi U). The functions U^(13/4)exp(-16pi U) and U^(9/4)exp(-16pi U) decrease for U>=1. Uniform absolute tails are therefore
+
+  delta0=4pi^2*4^4 exp(-16pi)/(1-16exp(-9pi)),
+  delta1=53pi^3*4^6 exp(-16pi)/(1-4exp(-9pi)).
+
+They are at most1.495e-18 and9.956e-16 respectively. The script adds symmetric balls with these radii before dividing by the strictly positive Phi interval. It uses python-flint at160bits without converting the calculation to float. The exact printed lower endpoint for S2 is
+
+  2457228478375879319691898376009789433383833 /
+  44601490397061246283071436545296723011960832 > 0.
+
+Original script /tmp/q3_radical_slack_point.py and log /tmp/q3_radical_slack_point.log are preserved below with their hashes. The parent's source/domain argument and exact slack algebra are distinct from this source-series interval channel. Independent audit and a separate key-number reproduction are complete; receipts appear below. No new production tool is created.
+
+## Earlier bounded join-price diagnostic, stopped without a conclusion about feasibility
+
+Before S1-S4, the planned single160-price diagnostic was completed in5.507s. Prices were h_c(u,m)=(u-alpha)_+^2 H_M(m), h_2(m)=gamma H_M(m), H_M=(1-(m/M)^2)_+^2; alpha in{0,.08,.12,.16,.20}, M in{.15,.2,.25,.3,.4,.6,1,4}, gamma in{0,.02,.1,.5}. The source minimum from corrected F25 was integrated on the ORIGINAL join, and the exact central charged form was included. Dropping Gamma_e favors feasibility. No assumption that the unknown theta is even was made; only the chosen price and resulting two source costs are symmetric.
+
+Best diagnostic (central charge+join minimum)/(full priced capacity)=.8896342980940862 at alpha=.08,M=.6,gamma=0. A separately written first/last/middle marginal integration gives.8896115578053853, difference2.27403e-5. No interval error budget was supplied for this quadrature; no feasible theta or strict dual witness follows. The frozen prediction best>1 with probability.65 did not materialize in this run. The parameter search is stopped; no degree/precision/path/radius increase or larger sweep followed. S1-S4 is an analytic falsifier of the GLOBAL slack-dropped interface, not a false promotion of this failed bounded price test.
+
+## Accepted decision
+
+Stop seeking a full completion of F24 by residual nonnegative domination while retaining the fixed positive central slack. Its failure is exhibited by cutoff derivative radicals, independently of RH. Preserve F3/F23 as valid decompositions, but never treat their slack-dropped leftover as the sole still-possible sufficient lemma. The only surviving comparison within this decomposition must retain the signed cancellation with S_c and S_e. A further proposal must pay that cancellation using source input and respect the derivative-radical equality family; merely restating Q>=0 or T>=-S_c-S_e is not progress. The next global analytical request, if justified after review, should use this new no-go/equality input, not another join-weight tuning campaign.
+
+## Preserved point certificate and diagnostic provenance
+
+Run the following point certificate with the existing .venv/bin/python (python-flint). The first launch through system Python failed before computation because flint was unavailable there; using the registered project environment succeeded. No package was installed.
+
+```python
+"""Full theta-tail interval proof of one strict central path slack."""
+from flint import arb, ctx
+ctx.prec = 160
+p = arb.pi()
+e0 = 4*p*p*4**4*(-16*p).exp()/(1-16*(-9*p).exp())
+e1 = 53*p**3*4**6*(-16*p).exp()/(1-4*(-9*p).exp())
+
+def r(x):
+    U = (2*x).exp()
+    zs = [p*U*k*k for k in (1, 2, 3)]
+    f = (x/2).exp()*sum(((4*z*z-6*z)*(-z).exp() for z in zs),arb(0))+arb(0,e0.upper())
+    df = (x/2).exp()*sum(((-8*z**3+30*z*z-15*z)*(-z).exp() for z in zs),arb(0))+arb(0,e1.upper())
+    assert f > 0
+    return df/f
+
+A, B = r(arb(1)/5), r(arb(1)/15)
+gap = A-3*B
+slack = 2*gap*gap
+print('R_1_5', A)
+print('R_1_15', B)
+print('GAP', gap)
+print('CENTRAL_EQUAL_THIRDS_SLACK', slack)
+print('TAIL0', e0, 'TAIL1', e1)
+assert slack > 0
+print('EXACT_LOWER', slack.lower().fmpq())
+print('EXIT=0')
+```
+
+Exact original output:
+
+```text
+R_1_5 [-3.93248957028216 +/- 6.33e-15]
+R_1_15 [-1.25550607852352 +/- 1.26e-15]
+GAP [-0.1659713347116 +/- 1.01e-14]
+CENTRAL_EQUAL_THIRDS_SLACK [0.05509296789190 +/- 6.78e-15]
+TAIL0 [1.4947826232507080717675033493898815318481590711e-18 +/- 7.75e-65] TAIL1 [9.955515988723595495653481767630718390513072069e-16 +/- 3.86e-62]
+EXACT_LOWER 2457228478375879319691898376009789433383833/44601490397061246283071436545296723011960832
+EXIT=0
+```
+
+Point source SHA25653ee63318fa65341f6af7971b3ce3a5503d42bf6288602d135043a2d58e1e0b8; output6003ea749d7ca49a47977f25b0a8f0c556a66a795707938b825a14508253042b.
+
+The stopped diagnostic is reproducible from the following two scripts; they do not establish an interval bound. Main script SHA11bdc25b90639132d8ccf3ce5273dc1d52a619c417d5e26c21fb85367cc382b8, output JSONfbf32ef826b1c0fa44271ce9bcaa220f8abe31f73992ffb7790157c368fb158b, log4bf7a584d86ba536ca02d3627d941f47370cfff0dc9e55c435ea2c8c846f1342. Marginal check sourceec303495300ef5928b0f3e97dbe523ff1f9c396dd1e402efe2e0b0121dda063c and log807548d9c765eaf20301fa8146c1b6ea937a8bf053387d6892be39104232b5e2. Save the scripts under their original /tmp filenames to replay deliberately, not during ordinary resumption.
+
+```python
+"""Bounded F25/F26 price search; diagnostic quadrature, never a certificate."""
+import json
+import time
+from pathlib import Path
+
+import numpy as np
+from numpy.polynomial.legendre import leggauss
+from scipy.optimize import brentq
+
+started = time.monotonic()
+p = np.log(2.)
+lo, hi, R = np.log(1.4), np.log(1.6), .125
+MSTAR = 2.75
+
+
+def grid(a, b, n):
+    z, w = leggauss(n)
+    a, b = np.asarray(a), np.asarray(b)
+    return (a+b)[..., None]/2+(b-a)[..., None]/2*z, (b-a)[..., None]/2*w
+
+
+def phi(x):
+    x = np.abs(np.asarray(x))
+    U = np.exp(2*x)
+    return np.exp(x/2)*sum((4*np.pi**2*U**2*k**4-6*np.pi*U*k*k)*
+                         np.exp(-np.pi*U*k*k) for k in (1, 2, 3))
+
+
+def b(t):
+    return np.exp(-t/2)/np.expm1(2*t)-np.exp(t/2)
+
+
+tau = brentq(b, .2, .4)
+
+
+def j(u):
+    valid = (u > 0) & (u < tau)
+    s = np.where(valid, u, 1.)
+    return np.where(valid, s**3*np.maximum(b(s), 0), 0)
+
+
+def H(m, radius):
+    return np.maximum(1-(m/radius)**2, 0)**2
+
+
+alphas = [0., .08, .12, .16, .20]
+radii = [.15, .2, .25, .3, .4, .6, 1., 4.]
+gammas = [0., .02, .1, .5]
+ts, wt = grid(lo, hi, 28)
+mc, wc = grid(0, R, 32)
+mj1, wj1 = grid(R, .75, 32)
+mj2, wj2 = grid(.75, MSTAR, 24)
+mj = np.r_[mj1, mj2]
+wj = np.r_[wj1, wj2]
+m = np.r_[mc, mj]
+uc, wu = grid(0, tau, 96)
+records = []
+print('DIAGNOSTIC_NEVER_A_PROOF: fixed 28x(32+56) source rule; 32x32 ordered paths', flush=True)
+print('PREDICTION best price ratio >1, subjective probability .65', flush=True)
+for radius in radii:
+    xm, wm = grid(0, radius, 128)
+    corr = 2*np.sum(wm*H(xm, radius)*phi(xm-uc[:, None]/2)*phi(xm+uc[:, None]/2), axis=1)
+    prime_cap = p/np.sqrt(2)*2*np.sum(wm*H(xm, radius)*phi(xm-p/2)*phi(xm+p/2))
+    for alpha in alphas:
+        central = 0.
+        join = np.zeros(len(gammas))
+        cap = np.sum(wu*b(uc)*np.maximum(uc-alpha, 0)**2*corr)
+        for t, w in zip(ts, wt):
+            s1, w1 = grid(0, tau, 32)
+            a = np.maximum(0, t-s1-tau)
+            z = np.maximum(a, np.minimum(tau, t-s1))
+            s2, w2 = grid(a, z, 32)
+            s1 = np.broadcast_to(s1[:, None], s2.shape)
+            s3 = t-s1-s2
+            prob = w1[:, None]*w2*j(s1)*j(s2)*j(s3)
+            Z = prob.sum()
+            assert Z > 0
+            prob /= Z
+            mids = (m[:, None, None]-(t-s1)/2,
+                    m[:, None, None]+(s1-s3)/2,
+                    m[:, None, None]+(t-s3)/2)
+            cf = np.zeros(len(m))
+            for s, edge_mid in zip((s1, s2, s3), mids):
+                charge = t/np.where(s > 0, s, 1)*np.maximum(s-alpha, 0)**2
+                cf += np.sum(prob*charge*H(edge_mid, radius), axis=(1, 2))
+            source = (-b(t))*phi(m-t/2)*phi(m+t/2)
+            central += 2*w*np.sum(wc*source[:len(mc)]*cf[:len(mc)])
+            q = (p-t)/2
+            det_short = 3*np.maximum(q-alpha, 0)**2*(H(mj-(t+q)/2, radius)+H(mj-(t+3*q)/2, radius))
+            det_prime = 3*H(mj-q, radius)
+            for k, gamma in enumerate(gammas):
+                lower = np.minimum(cf[len(mc):], det_short+gamma*det_prime)
+                join[k] += 2*w*np.sum(wj*source[len(mc):]*lower)
+        for gamma, dem in zip(gammas, join):
+            total_cap = cap+gamma*prime_cap
+            # Dropping Gamma_e grants a larger capacity and weakens obstruction.
+            ratio = (central+dem)/total_cap
+            records.append(dict(alpha=alpha,radius=radius,gamma=gamma,
+                                capacity=total_cap,central=central,join_min=dem,ratio=ratio))
+    best = max((r for r in records if r['radius']==radius), key=lambda r:r['ratio'])
+    print('RADIUS', radius, 'BEST', best, flush=True)
+records.sort(key=lambda r:r['ratio'], reverse=True)
+payload = dict(status='DIAGNOSTIC_NEVER_A_PROOF', prediction='best ratio>1, probability .65',
+               quadrature='fixed; no convergence or interval error certificate',
+               omitted='k>=4 theta tails; Gamma_e charges dropped favorably',
+               source_domain='same original I, central R=1/8 and join up to11/4',
+               records=records, seconds=time.monotonic()-started)
+Path('/tmp/q3_join_price_probe.json').write_text(json.dumps(payload, indent=2)+'\n')
+print('TOP', json.dumps(records[:8]), flush=True)
+print('SECONDS',payload['seconds'],'EXIT=0',flush=True)
+```
+
+```python
+"""Independent first/last/middle marginal rewrite of one recorded price."""
+import hashlib
+import json
+from pathlib import Path
+import time
+
+raw = Path('/tmp/q3_join_price_probe.py').read_bytes()
+# Reuse only elementary source functions/grid definitions, not path or score loops.
+prefix = raw.decode().split("print('DIAGNOSTIC_NEVER_A_PROOF:")[0]
+exec(compile(prefix, '/tmp/q3_join_price_probe.py:definitions', 'exec'), globals())
+radius, alpha, gamma = .6, .08, 0.
+central = 0.
+join = 0.
+max_unit_error = 0.
+for t, w in zip(ts, wt):
+    s, ws = grid(0, tau, 32)
+    a = np.maximum(0, t-s-tau)
+    z = np.maximum(a, np.minimum(tau, t-s))
+    v, wv = grid(a, z, 32)
+    vv = j(v)*j(t-s[:, None]-v)*wv
+    L = np.sum(vv, axis=1)
+    Z = np.sum(ws*j(s)*L)
+    weighted = ws*t*j(s)/s*np.maximum(s-alpha, 0)**2/Z
+    offsets = (t-s)/2
+    ends = L[None, :]*(H(m[:, None]-offsets, radius)+H(m[:, None]+offsets, radius))
+    middle = np.sum(vv[None, :, :]*H(m[:, None, None]+v[None, :, :]-offsets[None, :, None], radius), axis=2)
+    cf = np.sum(weighted[None, :]*(ends+middle), axis=1)
+    # Independent length-price identity: H=1 and alpha=0 gives C_F=t^2.
+    identity = np.sum(ws*t*j(s)/s*s*s/Z*3*L)
+    max_unit_error = max(max_unit_error, abs(identity-t*t))
+    source = (-b(t))*phi(m-t/2)*phi(m+t/2)
+    central += 2*w*np.sum(wc*source[:len(mc)]*cf[:len(mc)])
+    q = (p-t)/2
+    cd = 3*max(q-alpha, 0)**2*(H(mj-(t+q)/2,radius)+H(mj-(t+3*q)/2,radius))
+    join += 2*w*np.sum(wj*source[len(mc):]*np.minimum(cf[len(mc):],cd))
+xm, wm = grid(0, radius, 128)
+corr = 2*np.sum(wm*H(xm,radius)*phi(xm-uc[:,None]/2)*phi(xm+uc[:,None]/2),axis=1)
+cap = np.sum(wu*b(uc)*np.maximum(uc-alpha,0)**2*corr)
+value = dict(capacity=cap,central=central,join_min=join,ratio=(central+join)/cap,
+             unit_price_identity_error=max_unit_error,status='DIAGNOSTIC_NEVER_A_PROOF')
+original=json.loads(Path('/tmp/q3_join_price_probe.json').read_text())['records'][0]
+print('MARGINAL_REWRITE',json.dumps(value),flush=True)
+print('ORIGINAL',json.dumps(original),flush=True)
+print('RATIO_DIFFERENCE',value['ratio']-original['ratio'],flush=True)
+print('SECONDS',time.monotonic()-started,'EXIT=0',flush=True)
+```
+
+```text
+MARGINAL_REWRITE {"capacity": 0.0002985800822262837, "central": 0.00020480158823010658, "join_min": 6.081870384887768e-05, "ratio": 0.8896115578053853, "unit_price_identity_error": 1.839203928044597e-09, "status": "DIAGNOSTIC_NEVER_A_PROOF"}
+ORIGINAL {"alpha": 0.08, "radius": 0.6, "gamma": 0.0, "capacity": 0.0002985800822262837, "central": 0.00020480718178852243, "join_min": 6.0819900087731976e-05, "ratio": 0.8896342980940862}
+RATIO_DIFFERENCE -2.274028870097311e-05
+SECONDS 0.14475336100440472 EXIT=0
+```
+
+## Independent review and controls
+
+First on-target pass CLEAN on e53c5db78628cadbbb2194fb04c0abbac37ba881a860dd5efa5c59c81da201d6. The same sole flow_verdict_check checked derivative EF admission, compact cutoff convergence, the strict-slack open neighborhood and exact scope; its separate17-term256-bit point evaluation gave .05509296789189663710 inside the parent full-tail interval. No FIRST_INCORRECT_ASSERTION was found. Final exact-artifact confirmation including the preserved scripts returned CLEAN on f8919d1aeb32fab6f98d64859fd3d0ba5282548da7d22b73dcee726edb2efce3 (19433 bytes, 319 LF, final LF). FIRST_INCORRECT_ASSERTION NONE; Mode A converged with two consecutive CLEAN passes. Only this observed status/receipt wording is finalized in the canonical adoption. No original FLOW verdict or already accepted F1-F24 proof is changed.
+
+Parent algebra controls: affine r(x)=x has exactly zero equal-third slack. Cubic r(x)=x^3 has exact slack128/1265625 at the four stated vertices. For Q_0(a,b)=b^2 and S_0(a,b)=a^2/2, the residual Q_0-S_0 is -1/2 at the radical vector(1,0), although Q_0 is nonnegative: residual negativity does not establish negativity of Q.
+
+| Pass | Severity | Finding - English term + Russian explanation | Adjudication |
+|---|---|---|---|
+| 1 | CLEAN | Derivative-radical obstruction - проверены радикал, компактные срезки и строгий центральный остаток | Exact e53c5db7 proof accepted at narrow scope. |
+| 2 | CLEAN | Provenance verified - текст, скрипты и результаты согласованы по байтам | Exact f8919d1a confirmed; preliminary final-LF concern withdrawn, no defect. Mode A converged. |

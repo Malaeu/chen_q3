@@ -35,7 +35,9 @@ safety confirmation остаётся внешней границей. Судья
 
 - Received11.09.2026 on resumed fetch10:06+02; producer time00:20+02. Verdictcf34b947/SHA629431c76e40a1af5fcb5f2b6721ae7be8dba3bfe71a2e8f238e6fd32e07e28d,blob15493a4cbdb41845c92b176d96f542aff97b07a7,49936bytes/745LF/finalLF. Full request-lock/ancestry checked. flow watch DELETED.
 - ACCEPTED_WITH_CORRECTIONS at partial PAPER scope: FLOW_INDEPENDENT_CHECK_2026-09-11.md. F11 continuous-only obstruction; F23 precise additional regions/capacity1/16; F24 full remainder open. F15 WORDING/F25 MEDIUM and parent coordinate MEDIUM locally fixed, producer unchanged; exact report9bcc0bae passes3/4 CLEAN. Central16hash/2493coverage authenticated without evaluator rerun; P1/P2 producer UNRESOLVED, P3 partial-scope CONFIRMED. agents-watch DELETED, sole checker DONE.
-- Next candidate: corrected F25/F26 JOIN_LOCATION_MIXTURE_CAPACITY, source weights at short preimagesi=1,2 and reflected theta(-x-t,t). Full feasible measure or strict dual reverse, not necessary-bound/mesh fit. Outside-I unpaid region remains; no next request yet.
+- Local F25 discriminator STOPPED: fixed160-price diagnostic .8896342980940862 versus independent marginal .8896115578053853, no error budget/feasibility/witness. Prediction>1 (.65) not observed; no sweep expansion.
+- New S1-S4 ACCEPTED at residual-interface obstruction scope after sole checker CLEAN/CLEAN (e53c5db7/final f8919d1a), exact proof/code/log in FLOW report. Derivative radical Q(f0prime)=0 plus strict central sigma>0 and compact cutoffs forces T[rN]<-sigma/2 eventually. No full nonnegative residual path completion can pay all Lambda with these central charges. This does not refute Q/RH, accepted F3/F23 or bounded F25 feasibility.
+- Prospective next candidate: integrated signed source cancellation retaining Sc/Se and derivative-radical equality, FLOW section9(b). Reject mere T>=-Sc-Se restatement. No new request/binding/dispatch/watch; first publish this result and hand control-file ownership to the separately authorized GOAL/RESUME/history refactor.
 
 ---
 
