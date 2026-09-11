@@ -727,6 +727,33 @@ tool_families:
           source-locked q3_roof_port_supplier_ledger.v1 reverse ledger.
         last_verified: 2026-09-01
 
+      - id: workflow-resume-checkpoint
+        classification: AUTOMATIC
+        status: ENABLED
+        audience: [CODEX, HUMAN]
+        mode: WRITES_CANONICAL
+        path: orchestrator/workflow_runtime.py
+        invoke: >-
+          python3 orchestrator/workflow_runtime.py resume-checkpoint
+          --candidate <file> --expected-sha256 <hash|ABSENT>
+        alternatives:
+          - resume-checkpoint --candidate <file> --expected-sha256 <hash|ABSENT> --dry-run
+          - resume-checkpoint --candidate <file> --expected-sha256 <hash|ABSENT> --recover-from <archive-key>
+        trigger: Preserve one observation checkpoint or recover exact archived bytes after corruption.
+        writes: true
+        write_paths: [docs/Codex/RESUME.md, docs/Codex/GOAL_HISTORY.md]
+        approval: OWNER_AUTHORIZED_CONTINUING_TASK_AND_EXACT_CHECKPOINT_PREIMAGE
+        authority: OBSERVATIONS_ONLY_NOT_TASK_SELECTION_DISPATCH_PROOF_ADMISSION_OR_PUBLICATION
+        records_to: RESUME.md, append-only GOAL_HISTORY.md, stdout durable receipt
+        validation: >-
+          test_workflow_runtime.ResumeCheckpointTests; existing writer flock;
+          format/size/revision/hash checks; durable archive and intent reservation
+          before durable current replacement; exact replay; corruption recovery;
+          migration preimage drift; readback and failure holds. Production HOLD
+          is not waived. Canonical plan and live identity reconciliation precede
+          dependent mathematical actions; this writer performs none of them.
+        last_verified: 2026-09-11
+
       - id: workflow-close-node
         classification: AUTOMATIC
         status: ENABLED

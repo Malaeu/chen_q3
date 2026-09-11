@@ -4,7 +4,8 @@
 This module compiles the authoritative selector, tool manifest, derived-artifact
 registry, review transport contract, and close helpers into one deterministic
 plan.  Its run command then executes the registered, explicitly scoped
-transition and emits receipts.  It owns no durable runtime state and never
+transition and emits receipts. The resume-checkpoint command stores advisory
+observations and their byte history, never selector state. This module never
 commits, pushes, publishes externally, promotes, or makes an RH claim.  Browser
 transport is performed by the current Codex body after ``review-plan`` has
 validated the exact attachment; compiling a plan never claims delivery.
@@ -24,7 +25,7 @@ import subprocess
 import sys
 import tempfile
 import time
-from contextlib import contextmanager
+from contextlib import contextmanager, nullcontext
 from dataclasses import asdict, replace
 from datetime import datetime
 from pathlib import Path
@@ -729,6 +730,7 @@ def live_plan_v10(
     *,
     owned_paths: list[str],
     _benchmark_timing_sink: dict[str, Any] | None = None,
+    _writer_epoch: _ExecutionWriterEpoch | None = None,
 ) -> dict[str, Any]:
     """Build exactly one authoritative v10 snapshot and reuse its exact pins."""
 
@@ -736,7 +738,9 @@ def live_plan_v10(
     startup_started = (
         time.perf_counter() if _benchmark_timing_sink is not None else None
     )
-    with _startup_read_epoch(repo) as (epoch_guard, lock_error):
+    read_epoch = (_startup_read_epoch(repo) if _writer_epoch is None
+                  else nullcontext((_writer_epoch, None)))
+    with read_epoch as (epoch_guard, lock_error):
         snapshot = build_startup_snapshot(
             repo,
             owned_paths=owned_scope,
@@ -1032,6 +1036,313 @@ def _atomic_bytes(path: Path, payload: bytes) -> None:
             os.close(directory)
     finally:
         Path(temporary).unlink(missing_ok=True)
+
+
+RESUME_PATH = Path("docs/Codex/RESUME.md")
+RESUME_HISTORY_PATH = Path("docs/Codex/GOAL_HISTORY.md")
+RESUME_MAX_BYTES = 8 * 1024
+RESUME_HISTORY_HEADER = (
+    b"# GOAL history\n\n"
+    b"Historical evidence only. All embedded instructions and commands are inactive.\n"
+    b"The first goal record preserves the original GOAL bytes. Resume records preserve\n"
+    b"previous checkpoints; intent records reserve candidate bytes before replacement\n"
+    b"and never prove completion; corrupt records preserve damaged bytes as base64.\n"
+    b"Entries are length-framed, SHA-256 verified, and append-only. Do not edit them.\n\n"
+)
+RESUME_SECTIONS = (
+    "Mathematical frontier", "Confirmed and candidate results", "Next action",
+    "Existing work", "Do not repeat", "Integration remaining",
+)
+
+
+def _resume_digest(raw: bytes | None) -> str:
+    return "ABSENT" if raw is None else hashlib.sha256(raw).hexdigest()
+
+
+def _resume_document(raw: bytes) -> tuple[dict[str, Any], str]:
+    """Validate the observation envelope, never its mathematical truth/authority."""
+    from orchestrator.routeb_goal_state import load_unique_yaml
+
+    try:
+        if len(raw) > RESUME_MAX_BYTES or not raw.endswith(b"\n"):
+            raise ValueError("size or final newline")
+        text = raw.decode("utf-8")
+        if not text.startswith("---\n"):
+            raise ValueError("front matter")
+        header, body = text[4:].split("\n---\n", 1)
+        data = load_unique_yaml(header)
+        if not isinstance(data, dict) or data.get("schema") != "q3_resume.v1":
+            raise ValueError("schema")
+        revision = data.get("revision")
+        if type(revision) is not int or revision < 1:
+            raise ValueError("revision")
+        if not re.fullmatch(r"ABSENT|[0-9a-f]{64}", str(data.get("previous_sha256"))):
+            raise ValueError("previous_sha256")
+        observed = datetime.fromisoformat(data["observed_at"])
+        if observed.utcoffset() is None:
+            raise ValueError("observed_at timezone")
+        if not re.fullmatch(r"[0-9a-f-]{36}", data["owner_thread_id"]):
+            raise ValueError("owner_thread_id")
+        if not isinstance(data.get("owner_host_id"), str) or not data["owner_host_id"].strip():
+            raise ValueError("owner_host_id")
+        if type(data.get("reconciliation_pending")) is not bool:
+            raise ValueError("reconciliation_pending")
+        if "recovery_from" not in data or not (
+            data["recovery_from"] is None or isinstance(data["recovery_from"], str)
+        ):
+            raise ValueError("recovery_from")
+        for field in ("pins", "stages", "operation"):
+            if not isinstance(data.get(field), dict):
+                raise ValueError(field)
+        for field in ("head", "physical_goal", "source_commit", "request_id", "phase_id"):
+            if not isinstance(data["pins"].get(field), str) or not data["pins"][field]:
+                raise ValueError("pins." + field)
+        for field in ("receipt", "independent_review", "parent_check", "acceptance", "publication"):
+            if data["stages"].get(field) not in {
+                "NOT_STARTED", "PENDING", "UNKNOWN", "DONE", "REJECTED",
+            }:
+                raise ValueError("stages." + field)
+        operation = data["operation"]
+        if operation.get("kind") not in {"NONE", "DISPATCH", "COMPUTE", "PUBLISH"}:
+            raise ValueError("operation.kind")
+        if operation.get("state") not in {"NONE", "INTENT", "UNKNOWN", "CONFIRMED"}:
+            raise ValueError("operation.state")
+        if not isinstance(operation.get("id"), str) or not isinstance(operation.get("evidence"), list):
+            raise ValueError("operation identity/evidence")
+        if not all(isinstance(item, str) for item in operation["evidence"]):
+            raise ValueError("operation evidence paths")
+        if operation["kind"] != "NONE" and not operation["id"]:
+            raise ValueError("operation id missing")
+        if (operation["kind"] == "NONE") != (operation["state"] == "NONE"):
+            raise ValueError("operation none mismatch")
+        if operation["state"] == "CONFIRMED" and not operation["evidence"]:
+            raise ValueError("operation receipt missing")
+        for section in RESUME_SECTIONS:
+            marker = "## " + section + "\n"
+            if body.count(marker) != 1 or not body.split(marker)[1].split("\n## ")[0].strip():
+                raise ValueError("section " + section)
+        return data, body
+    except (ValueError, TypeError, KeyError, UnicodeError, yaml.YAMLError) as exc:
+        raise WorkflowRuntimeError(f"RESUME_INVALID:{exc}") from exc
+
+
+def _resume_history_record(kind: str, revision: int, raw: bytes) -> tuple[str, bytes]:
+    import base64
+
+    if kind not in {"goal", "resume", "intent", "corrupt"}:
+        raise WorkflowRuntimeError("RESUME_HISTORY_KIND_INVALID")
+    encoded = base64.b64encode(raw) if kind == "corrupt" else raw
+    fence = b"`" * max(4, 1 + max((len(m[0]) for m in re.finditer(rb"`+", encoded)), default=0))
+    digest = _resume_digest(raw)
+    key = f"{kind}-{revision}-{digest}"
+    metadata = json.dumps({
+        "key": key, "kind": kind, "revision": revision, "sha256": digest,
+        "size": len(encoded), "fence": fence.decode(),
+    }, sort_keys=True, separators=(",", ":")).encode()
+    return key, (b"<!-- q3-history " + metadata + b" -->\n" + fence + b"text\n"
+                 + encoded + b"\n" + fence + b"\n<!-- /q3-history -->\n\n")
+
+
+def _resume_history(raw: bytes) -> dict[str, tuple[str, int, bytes]]:
+    import base64
+
+    records: dict[str, tuple[str, int, bytes]] = {}
+    revisions: dict[int, bytes] = {}
+    try:
+        if not raw.startswith(RESUME_HISTORY_HEADER):
+            raise ValueError("header")
+        offset = len(RESUME_HISTORY_HEADER)
+        while offset < len(raw):
+            start = offset
+            end = raw.index(b"\n", offset)
+            line = raw[offset:end]
+            if not line.startswith(b"<!-- q3-history ") or not line.endswith(b" -->"):
+                raise ValueError("entry header")
+            meta = json.loads(line[len(b"<!-- q3-history "):-4])
+            fence = meta["fence"].encode()
+            offset = end + 1 + len(fence) + len(b"text\n")
+            size = meta["size"]
+            if type(size) is not int or size < 0:
+                raise ValueError("size")
+            encoded = raw[offset:offset + size]
+            payload = base64.b64decode(encoded, validate=True) if meta["kind"] == "corrupt" else encoded
+            kind, revision = meta["kind"], meta["revision"]
+            if type(revision) is not int or revision < 0:
+                raise ValueError("revision")
+            key, canonical = _resume_history_record(kind, revision, payload)
+            if raw[start:start + len(canonical)] != canonical or key in records:
+                raise ValueError("bytes/hash/duplicate")
+            if kind == "goal" and (records or revision != 0):
+                raise ValueError("original goal must be first")
+            if kind in {"resume", "intent"}:
+                parsed, _ = _resume_document(payload)
+                if parsed["revision"] != revision or (revision in revisions and revisions[revision] != payload):
+                    raise ValueError("conflicting revision")
+                revisions[revision] = payload
+            records[key] = kind, revision, payload
+            offset = start + len(canonical)
+        if not records or next(iter(records.values()))[0] != "goal":
+            raise ValueError("original goal missing")
+        if revisions and sorted(revisions) != list(range(1, len(revisions) + 1)):
+            raise ValueError("gapped/orphan revision")
+        return records
+    except (ValueError, TypeError, KeyError, UnicodeError) as exc:
+        raise WorkflowRuntimeError(f"RESUME_HISTORY_INVALID:{exc}") from exc
+
+
+def _resume_file(repo: Path, relative: Path) -> bytes | None:
+    if relative.is_absolute() or ".." in relative.parts or _has_symlink_component(repo, relative):
+        raise WorkflowRuntimeError("RESUME_UNSAFE_PATH:" + str(relative))
+    path = repo / relative
+    try:
+        if not stat.S_ISREG(path.lstat().st_mode):
+            raise WorkflowRuntimeError("RESUME_NOT_REGULAR:" + str(relative))
+        return path.read_bytes()
+    except FileNotFoundError:
+        return None
+
+
+def _resume_cas_bytes(
+    repo: Path, relative: Path, before: bytes | None, after: bytes,
+    epoch: _ExecutionWriterEpoch,
+) -> None:
+    """Used by checkpoint saves and the owner-scoped one-time document migration."""
+    epoch.recheck()
+    if _resume_file(repo, relative) != before:
+        raise WorkflowRuntimeError("RESUME_PREIMAGE_CHANGED:" + str(relative))
+    _atomic_bytes(repo / relative, after)
+    epoch.recheck()
+    if _resume_file(repo, relative) != after:
+        raise WorkflowRuntimeError("RESUME_READBACK_MISMATCH:" + str(relative))
+
+
+def _resume_sync(path: Path) -> None:
+    # A retry after replace but before directory fsync must finish durability too.
+    with path.open("rb") as handle:
+        os.fsync(handle.fileno())
+    directory = os.open(path.parent, os.O_RDONLY | os.O_DIRECTORY)
+    try:
+        os.fsync(directory)
+    finally:
+        os.close(directory)
+
+
+def resume_checkpoint(
+    repo: Path, *, candidate: Path, expected_sha256: str,
+    dry_run: bool = False, recover_from: str | None = None,
+) -> dict[str, Any]:
+    """Persist observations only. No dispatch, selector, Git delivery or admission."""
+    from orchestrator.startup_runtime import validate_battle_v10_control
+
+    payload = candidate.read_bytes()
+    proposed, proposed_body = _resume_document(payload)
+    if proposed["previous_sha256"] != expected_sha256:
+        raise WorkflowRuntimeError("RESUME_EXPECTED_PREDECESSOR_MISMATCH")
+    with _execution_writer_epoch(repo) as epoch:
+        plan = live_plan_v10(
+            repo, owned_paths=[str(RESUME_PATH), str(RESUME_HISTORY_PATH)],
+            _writer_epoch=epoch,
+        )
+        if plan.get("status") == "FATAL" or plan.get("startup", {}).get("fatal_errors"):
+            raise WorkflowRuntimeError("RESUME_STARTUP_FATAL:" + str(plan.get("holds")))
+        control = validate_battle_v10_control(repo)
+        manifest = _resume_file(repo, TOOLS)
+        tool = load_tool_index(repo / TOOLS).get("workflow-resume-checkpoint", {})
+        if (tool.get("status") != "ENABLED" or tool.get("writes") is not True
+                or tool.get("write_paths") != [str(RESUME_PATH), str(RESUME_HISTORY_PATH)]):
+            raise WorkflowRuntimeError("RESUME_TOOL_NOT_REGISTERED")
+        current = _resume_file(repo, RESUME_PATH)
+        history = _resume_file(repo, RESUME_HISTORY_PATH)
+        if history is None:
+            raise WorkflowRuntimeError("RESUME_HISTORY_MISSING")
+        records = _resume_history(history)
+        versions = {version: raw for kind, version, raw in records.values() if kind in {"resume", "intent"}}
+        if proposed["revision"] in versions and versions[proposed["revision"]] != payload:
+            raise WorkflowRuntimeError("RESUME_REVISION_CONFLICT")
+        # A lost receipt is safely retryable only with the identical candidate and predecessor.
+        if current == payload:
+            if versions.get(proposed["revision"]) != payload:
+                raise WorkflowRuntimeError("RESUME_INTENT_ARCHIVE_MISSING")
+            if expected_sha256 != "ABSENT" and not any(
+                _resume_digest(raw) == expected_sha256 and kind in {"resume", "corrupt"}
+                for kind, _, raw in records.values()
+            ):
+                raise WorkflowRuntimeError("RESUME_PREDECESSOR_ARCHIVE_MISSING")
+            if proposed["recovery_from"] != recover_from:
+                raise WorkflowRuntimeError("RESUME_RECOVERY_REPLAY_MISMATCH")
+            if not dry_run:
+                _resume_sync(repo / RESUME_HISTORY_PATH)
+                _resume_sync(repo / RESUME_PATH)
+                epoch.recheck()
+                if (_resume_file(repo, RESUME_PATH) != payload
+                        or _resume_file(repo, RESUME_HISTORY_PATH) != history):
+                    raise WorkflowRuntimeError("RESUME_READBACK_MISMATCH")
+            return {"status": "NOOP", "revision": proposed["revision"],
+                    "sha256": _resume_digest(payload), "writes_performed": False}
+        if _resume_digest(current) != expected_sha256:
+            raise WorkflowRuntimeError("RESUME_PREIMAGE_CHANGED:" + str(RESUME_PATH))
+        previous = None
+        if current is not None:
+            try:
+                previous, _ = _resume_document(current)
+                if versions.get(previous["revision"]) != current:
+                    raise WorkflowRuntimeError("RESUME_CURRENT_CHECKSUM_MISMATCH")
+            except WorkflowRuntimeError:
+                previous = None
+                if not recover_from:
+                    raise WorkflowRuntimeError("RESUME_CORRUPT_REQUIRES_RECOVERY")
+        if recover_from:
+            source = records.get(recover_from)
+            if not source or source[0] not in {"resume", "intent"} or previous is not None:
+                raise WorkflowRuntimeError("RESUME_RECOVERY_SOURCE_INVALID")
+            restored, restored_body = _resume_document(source[2])
+            mutable = {"revision", "observed_at", "previous_sha256", "reconciliation_pending", "recovery_from"}
+            if (proposed_body != restored_body
+                    or {k: v for k, v in proposed.items() if k not in mutable}
+                    != {k: v for k, v in restored.items() if k not in mutable}
+                    or proposed["recovery_from"] != recover_from
+                    or proposed["reconciliation_pending"] is not True):
+                raise WorkflowRuntimeError("RESUME_RECOVERY_CONTENT_MISMATCH")
+        elif proposed["recovery_from"] is not None or (current is None and any(
+                kind == "resume" for kind, _, _ in records.values())):
+            raise WorkflowRuntimeError("RESUME_RECOVERY_REQUIRED")
+        last = (max([0, *(v for v in versions if v != proposed["revision"])])
+                if recover_from else previous["revision"] if previous else 0)
+        if not recover_from and any(version > last + 1 for version in versions):
+            raise WorkflowRuntimeError("RESUME_ORPHAN_INTENT")
+        if proposed["revision"] != last + 1:
+            raise WorkflowRuntimeError("RESUME_REVISION_CONFLICT")
+        updated_history = history
+        archived_key = None
+        if current is not None:
+            kind, version = ("resume", previous["revision"]) if previous else ("corrupt", 0)
+            archived_key, entry = _resume_history_record(kind, version, current)
+            if kind == "resume" and version in versions and versions[version] != current:
+                raise WorkflowRuntimeError("RESUME_REVISION_CONFLICT")
+            if archived_key not in records:
+                updated_history += entry
+        intent_key, intent_entry = _resume_history_record("intent", proposed["revision"], payload)
+        if intent_key not in records:
+            updated_history += intent_entry
+        _resume_history(updated_history)
+        if not dry_run:
+            epoch.recheck()
+            if (validate_battle_v10_control(repo) != control
+                    or _resume_file(repo, TOOLS) != manifest):
+                raise WorkflowRuntimeError("RESUME_AUTHORITY_CHANGED")
+            if _resume_file(repo, RESUME_PATH) != current:
+                raise WorkflowRuntimeError("RESUME_PREIMAGE_CHANGED:" + str(RESUME_PATH))
+            if updated_history != history:
+                _resume_cas_bytes(repo, RESUME_HISTORY_PATH, history, updated_history, epoch)
+            _resume_sync(repo / RESUME_HISTORY_PATH)
+            # A crash here leaves an idempotently reusable archive, never a lost preimage.
+            if _resume_file(repo, RESUME_HISTORY_PATH) != updated_history:
+                raise WorkflowRuntimeError("RESUME_HISTORY_CHANGED")
+            _resume_cas_bytes(repo, RESUME_PATH, current, payload, epoch)
+        return {"status": "DRY_RUN" if dry_run else "SAVED",
+                "revision": proposed["revision"], "sha256": _resume_digest(payload),
+                "archived_key": archived_key, "reconciliation_pending": proposed["reconciliation_pending"],
+                "writes_performed": not dry_run, "authority": "OBSERVATIONS_ONLY"}
 
 
 def _terminal_goal_bytes(goal_path: Path) -> bytes:
@@ -3183,6 +3494,12 @@ def main() -> int:
     run_parser.add_argument("--oracle-card")
     subparsers.add_parser("close-session")
     subparsers.add_parser("close-phase")
+    resume_parser = subparsers.add_parser("resume-checkpoint")
+    resume_parser.add_argument("--candidate", type=Path, required=True)
+    resume_parser.add_argument("--expected-sha256", required=True)
+    resume_mode = resume_parser.add_mutually_exclusive_group()
+    resume_mode.add_argument("--dry-run", action="store_true")
+    resume_mode.add_argument("--recover-from")
     review_parser = subparsers.add_parser("review-plan")
     review_parser.add_argument("--attachment", type=Path, required=True)
     review_parser.add_argument("--request-commit", required=True)
@@ -3191,6 +3508,19 @@ def main() -> int:
     review_parser.add_argument("--expected-sha256", required=True)
     args, forwarded = parser.parse_known_args()
     repo = args.root.resolve()
+    if args.command == "resume-checkpoint":
+        if forwarded:
+            parser.error("unrecognized arguments: " + " ".join(forwarded))
+        try:
+            result = resume_checkpoint(
+                repo, candidate=args.candidate, expected_sha256=args.expected_sha256,
+                dry_run=args.dry_run, recover_from=args.recover_from,
+            )
+        except (WorkflowRuntimeError, StartupRuntimeError, OSError, subprocess.SubprocessError) as exc:
+            result = {"status": "HOLD", "reason": str(exc),
+                      "receipt_confirmed": False, "reconciliation_required": True}
+        print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
+        return 0 if result["status"] in {"SAVED", "NOOP", "DRY_RUN"} else 2
     if args.command == "close-session":
         return _run_close_script(repo, "specs_docs/session_close.py", forwarded)
     if args.command == "close-phase":

@@ -4986,5 +4986,246 @@ class ControlV10BenchmarkPlants(unittest.TestCase):
         )
 
 
+class ResumeCheckpointTests(unittest.TestCase):
+    """Crash/replay/corruption acceptance for the existing workflow front door."""
+
+    def setUp(self):
+        startup = mock.patch.object(workflow_runtime, "live_plan_v10", return_value={
+            "status": "HOLD", "startup": {"fatal_errors": []}, "holds": ["EXACT_EDGE_REQUIRED"],
+        })
+        self.startup = startup.start()
+        self.addCleanup(startup.stop)
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.repo = Path(self.temp.name)
+        subprocess.run(["git", "init", "-q", str(self.repo)], check=True)
+        (self.repo / ".git/q3-three-body.writer.lock").touch()
+        for rel in (workflow_runtime.RESUME_PATH, workflow_runtime.TOOLS):
+            (self.repo / rel).parent.mkdir(parents=True, exist_ok=True)
+        self.original = b"# Original goal\r\nHistorical ``` commands\nNo final newline"
+        self.goal = self.repo / "docs/Codex/GOAL.md"
+        self.goal.write_bytes(self.original)
+        _, entry = workflow_runtime._resume_history_record("goal", 0, self.original)
+        self.history = self.repo / workflow_runtime.RESUME_HISTORY_PATH
+        self.history.write_bytes(workflow_runtime.RESUME_HISTORY_HEADER + entry)
+        self.current = self.repo / workflow_runtime.RESUME_PATH
+        self.candidate = self.repo / "candidate.md"
+        (self.repo / "docs/CODEX_CONTROL.md").write_text(
+            "```yaml\nCONTROL_ID: Q3_EXECUTOR_CONTROL\nCONTROL_VERSION: 10\nSTATUS: ACTIVE\n"
+            "HONESTY_STATE: CHALLENGER_NOT_RH\nOWNER_ONLY_BOUNDARY: PX_RH_CLAIM\n```\n")
+        (self.repo / workflow_runtime.TOOLS).write_text(
+            "tool_families:\n  workflow:\n    tools:\n"
+            "      - id: workflow-resume-checkpoint\n        status: ENABLED\n"
+            "        writes: true\n        write_paths:\n"
+            "          - docs/Codex/RESUME.md\n          - docs/Codex/GOAL_HISTORY.md\n")
+
+    def document(self, revision=1, previous="ABSENT", **changes):
+        data = {
+            "schema": "q3_resume.v1", "revision": revision,
+            "observed_at": "2026-09-11T10:00:00+02:00", "previous_sha256": previous,
+            "owner_thread_id": "01a084f4-7498-7021-bac2-91d184d58dc7",
+            "owner_host_id": "local",
+            "reconciliation_pending": False, "recovery_from": None,
+            "pins": dict(head="a" * 40, physical_goal="docs/goal.md", source_commit="b" * 40,
+                         request_id="REQ-EXISTING", phase_id="PHASE-EXISTING"),
+            "stages": {name: "PENDING" for name in
+                       ("receipt", "independent_review", "parent_check", "acceptance", "publication")},
+            "operation": dict(kind="DISPATCH", state="INTENT", id="existing-request", evidence=[]),
+        }
+        data.update(changes)
+        body = "\n".join("## " + name + "\nObserved evidence; reconcile before acting.\n"
+                         for name in workflow_runtime.RESUME_SECTIONS)
+        return ("---\n" + workflow_runtime.yaml.safe_dump(data, sort_keys=False)
+                + "---\n" + body).encode()
+
+    def save(self, raw=None, expected="ABSENT", **options):
+        self.candidate.write_bytes(raw or self.document())
+        return workflow_runtime.resume_checkpoint(
+            self.repo, candidate=self.candidate, expected_sha256=expected, **options)
+
+    def test_original_bytes_dry_run_save_and_lost_receipt_noop(self):
+        history = self.history.read_bytes()
+        self.assertEqual(self.save(dry_run=True)["status"], "DRY_RUN")
+        self.assertFalse(self.current.exists())
+        self.assertEqual(self.history.read_bytes(), history)
+        self.assertEqual(self.save()["status"], "SAVED")
+        saved = self.history.read_bytes()
+        with mock.patch.object(workflow_runtime, "_resume_sync", wraps=workflow_runtime._resume_sync) as sync:
+            self.assertEqual(self.save()["status"], "NOOP")
+            self.assertEqual(sync.call_count, 2)
+        self.assertEqual(self.history.read_bytes(), saved)
+        self.assertEqual(self.goal.read_bytes(), self.original)
+        self.assertEqual(next(iter(workflow_runtime._resume_history(saved).values()))[2], self.original)
+
+    def test_archive_predecessor_and_version_collision(self):
+        self.save()
+        first = self.current.read_bytes()
+        expected = workflow_runtime._resume_digest(first)
+        second = self.document(2, expected)
+        self.save(second, expected)
+        records = workflow_runtime._resume_history(self.history.read_bytes())
+        self.assertIn(("resume", 1, first), records.values())
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "REVISION_CONFLICT"):
+            self.save(second.replace(b"Observed evidence", b"Changed evidence"), expected)
+        self.assertEqual(self.current.read_bytes(), second)
+
+    def test_stale_preimage_rejected_without_archive_change(self):
+        self.save()
+        before = self.history.read_bytes()
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "PREIMAGE_CHANGED"):
+            self.save(self.document(2, "a" * 64), "a" * 64)
+        self.assertEqual(self.history.read_bytes(), before)
+
+    def test_format_size_duplicate_key_and_revision_rejected(self):
+        for raw in (self.document().replace(b"revision: 1", b"revision: 1\nrevision: 2"),
+                    self.document() + b"x" * 8192, self.document(0),
+                    self.document().replace(b"2026-09-11T10:00:00+02:00", b"yesterday")):
+            with self.subTest(raw=raw[:30]), self.assertRaises(workflow_runtime.WorkflowRuntimeError):
+                self.save(raw)
+            self.assertFalse(self.current.exists())
+
+    def test_corrupt_recovery_exact_archive_preserves_bad_bytes_and_requires_reconcile(self):
+        self.save()
+        first = self.current.read_bytes()
+        self.save(self.document(2, workflow_runtime._resume_digest(first)), workflow_runtime._resume_digest(first))
+        key, _ = workflow_runtime._resume_history_record("resume", 1, first)
+        for corrupted in (b"\xfftruncated", first.replace(b"Observed evidence", b"bit-flipped text")):
+            with self.subTest(corrupted=corrupted[:20]):
+                history = self.history.read_bytes()
+                self.current.write_bytes(corrupted)
+                expected = workflow_runtime._resume_digest(corrupted)
+                next_revision = max(v for k, v, _ in workflow_runtime._resume_history(history).values()
+                                    if k in {"resume", "intent"}) + 1
+                with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "CORRUPT_REQUIRES_RECOVERY"):
+                    self.save(self.document(next_revision, expected), expected)
+                recovered = self.document(next_revision, expected, reconciliation_pending=True, recovery_from=key)
+                with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "CONTENT_MISMATCH"):
+                    self.save(recovered.replace(b"Observed evidence", b"Invented evidence"), expected, recover_from=key)
+                self.assertEqual(self.history.read_bytes(), history)
+                self.assertEqual(self.save(recovered, expected, recover_from=key)["status"], "SAVED")
+                self.assertEqual(self.save(recovered, expected, recover_from=key)["status"], "NOOP")
+                self.assertIn(("corrupt", 0, corrupted), workflow_runtime._resume_history(self.history.read_bytes()).values())
+
+    def test_writer_lock_collision_and_symlink_hold(self):
+        with (self.repo / ".git/q3-three-body.writer.lock").open("rb") as lock:
+            fcntl.flock(lock.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+            with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "LOCK_COLLISION"):
+                self.save()
+        self.current.symlink_to(self.goal)
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "UNSAFE_PATH"):
+            self.save()
+        self.assertEqual(self.goal.read_bytes(), self.original)
+
+    def test_interruption_at_each_durable_stage_replays_exactly(self):
+        for stage, after_write in (("history", False), ("history", True), ("resume", False), ("resume", True)):
+            with self.subTest(stage=stage, after_write=after_write):
+                self.setUp()
+                self.save()
+                first = self.current.read_bytes()
+                expected = workflow_runtime._resume_digest(first)
+                second = self.document(2, expected)
+                atomic = workflow_runtime._atomic_bytes
+                target = self.history if stage == "history" else self.current
+                def crash(path, payload):
+                    if path == target and not after_write:
+                        raise OSError("simulated power loss")
+                    atomic(path, payload)
+                    if path == target:
+                        raise OSError("simulated power loss")
+                with mock.patch.object(workflow_runtime, "_atomic_bytes", side_effect=crash):
+                    with self.assertRaisesRegex(OSError, "power loss"):
+                        self.save(second, expected)
+                result = self.save(second, expected)
+                self.assertIn(result["status"], {"SAVED", "NOOP"})
+                self.assertEqual(self.current.read_bytes(), second)
+                records = workflow_runtime._resume_history(self.history.read_bytes())
+                self.assertEqual(sum(k == "resume" for k, _, _ in records.values()), 1)
+
+    def test_goal_migration_cas_keeps_foreign_change(self):
+        with workflow_runtime._execution_writer_epoch(self.repo) as epoch:
+            changed = self.original + b"\nAnother executor's update\n"
+            self.goal.write_bytes(changed)
+            with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "PREIMAGE_CHANGED"):
+                workflow_runtime._resume_cas_bytes(
+                    self.repo, Path("docs/Codex/GOAL.md"), self.original, b"short goal\n", epoch)
+        self.assertEqual(self.goal.read_bytes(), changed)
+
+    def test_drift_between_archive_and_replace_preserves_foreign_resume(self):
+        self.save()
+        first = self.current.read_bytes()
+        expected = workflow_runtime._resume_digest(first)
+        atomic = workflow_runtime._atomic_bytes
+        def drift(path, payload):
+            atomic(path, payload)
+            if path == self.history:
+                self.current.write_bytes(b"foreign modification\n")
+        with mock.patch.object(workflow_runtime, "_atomic_bytes", side_effect=drift):
+            with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "PREIMAGE_CHANGED"):
+                self.save(self.document(2, expected), expected)
+        self.assertEqual(self.current.read_bytes(), b"foreign modification\n")
+
+    def test_bad_history_disabled_tool_and_inactive_control_fail_closed(self):
+        for path, payload in ((self.history, self.history.read_bytes().replace(b"Historical ```", b"Modified ```")),
+                              (self.repo / workflow_runtime.TOOLS, b"tool_families: {}\n"),
+                              (self.repo / "docs/CODEX_CONTROL.md", b"inactive control\n")):
+            before = path.read_bytes()
+            path.write_bytes(payload)
+            with self.assertRaises((workflow_runtime.WorkflowRuntimeError, workflow_runtime.StartupRuntimeError)):
+                self.save()
+            self.assertFalse(self.current.exists())
+            path.write_bytes(before)
+
+    def test_checkpoint_never_dispatches_selects_or_accepts_unknown_operation(self):
+        with mock.patch.object(workflow_runtime, "execute_close_node", side_effect=AssertionError("execution")), \
+             mock.patch.object(workflow_runtime, "compile_review_dispatch", side_effect=AssertionError("dispatch")):
+            self.save(self.document(operation=dict(kind="DISPATCH", state="UNKNOWN", id="same-request", evidence=[])))
+        data, _ = workflow_runtime._resume_document(self.current.read_bytes())
+        self.assertEqual(data["operation"]["state"], "UNKNOWN")
+        self.assertEqual(data["stages"]["acceptance"], "PENDING")
+
+    def test_startup_fatal_never_writes_but_scoped_hold_does(self):
+        before = self.history.read_bytes()
+        self.startup.return_value = {"status": "FATAL", "startup": {"fatal_errors": ["BAD_RUNTIME"]}}
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "STARTUP_FATAL"):
+            self.save()
+        self.assertEqual(self.history.read_bytes(), before)
+        self.assertFalse(self.current.exists())
+        self.startup.return_value = {"status": "HOLD", "startup": {"fatal_errors": []}}
+        self.assertEqual(self.save()["status"], "SAVED")
+
+    def test_first_checkpoint_recovers_from_reserved_bytes_not_completion(self):
+        self.save()
+        first = self.current.read_bytes()
+        key, _ = workflow_runtime._resume_history_record("intent", 1, first)
+        corrupt = b"first checkpoint corrupted\xff"
+        self.current.write_bytes(corrupt)
+        digest = workflow_runtime._resume_digest(corrupt)
+        recovered = self.document(2, digest, recovery_from=key, reconciliation_pending=True)
+        self.assertEqual(self.save(recovered, digest, recover_from=key)["status"], "SAVED")
+        self.assertEqual(self.save(recovered, digest, recover_from=key)["status"], "NOOP")
+        data, _ = workflow_runtime._resume_document(self.current.read_bytes())
+        self.assertTrue(data["reconciliation_pending"])
+        self.assertEqual(data["operation"]["state"], "INTENT")
+
+    def test_future_orphan_intent_holds_without_replacement(self):
+        for initial, future in ((False, 3), (True, 10), (True, 3)):
+            with self.subTest(initial=initial, future=future):
+                self.setUp()
+                if initial:
+                    self.save()
+                current = self.current.read_bytes() if initial else None
+                previous = workflow_runtime._resume_digest(current)
+                if initial and future == 3:
+                    _, pending = workflow_runtime._resume_history_record("intent", 2, self.document(2, previous))
+                    self.history.write_bytes(self.history.read_bytes() + pending)
+                _, foreign = workflow_runtime._resume_history_record("intent", future, self.document(future, previous))
+                history = self.history.read_bytes() + foreign
+                self.history.write_bytes(history)
+                with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "HISTORY_INVALID|ORPHAN_INTENT"):
+                    self.save(self.document(2 if initial else 1, previous), previous)
+                self.assertEqual(self.history.read_bytes(), history)
+                self.assertEqual(self.current.read_bytes() if initial else None, current)
+
+
 if __name__ == "__main__":
     unittest.main()
