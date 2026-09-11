@@ -1,0 +1,2408 @@
+DN22_SCRIPT_BEGIN
+from pathlib import Path
+import json
+import signal
+import time
+import traceback
+from flint import arb, acb, ctx
+
+# One bounded DN22 calculation. The residue identity is a separate proof obligation.
+# All numbers below remain balls; no float conversion of mathematical quantities.
+ctx.dps = 70
+started = time.monotonic()
+print('DN22_SCRIPT_BEGIN\n' + Path(__file__).read_text() + '\nDN22_SCRIPT_END', flush=True)
+
+def timeout(signum, frame):
+    raise TimeoutError('Fixed 300-second computation budget exhausted')
+
+signal.signal(signal.SIGALRM, timeout)
+signal.alarm(300)
+
+try:
+    pi = arb.pi()
+    beta, ell = arb(5)/2, arb(9)/2
+    cutoff, nmax = 3, 129  # Exactly 128 residues, n=2,...,129.
+    mean = arb(3)/(4*pi)
+    coefficients = []
+    for n in range(2, nmax+1):
+        t = (arb(n*n+1)/2).sqrt()
+        s, c = (pi*t).sin(), (pi*t).cos()
+        p = 16*arb(n**4)/(pi*pi*(n*n-1)**2*t*t)
+        a = p*s*s
+        b = p*(-s*c/(2*t)+s*s*(1/(2*pi*t*t)+2/(pi*(n*n-1))-arb(3)/(2*pi*n*n)))
+        coefficients.append((a,b))
+
+    def H(u):
+        out = u-mean
+        term = (-3*pi*u).exp()
+        factor = (-5*pi*u).exp()
+        step = (-2*pi*u).exp()
+        for a,b in coefficients:
+            out += (a*u+b)*term
+            term *= factor
+            factor *= step
+        return out
+
+    def phi(x):
+        up, down = (2*x).exp(), (-2*x).exp()
+        return ((beta*x-pi*up).exp()*H(up)+(-beta*x-pi*down).exp()*H(down))/2
+
+    def F(w):
+        z = pi*w.sqrt()
+        return z.sinh()/z
+
+    def LZ(z):
+        return z*z/(4*pi*pi*F(z/pi-1)**2)
+
+    # Uniform source-component error, conditional on the residue identity.
+    u0 = arb(-2*cutoff).exp()
+    z0 = arb(50000)
+    p0 = (z0*u0).exp()*LZ(z0)/LZ(z0/2)
+    d_out = ((2*ell*cutoff-pi*arb(2*cutoff).exp()).exp()+p0)/2
+    tau = (7*u0/(nmax+1)**2+arb(10)/(nmax+1)**3)
+    tau *= (-pi*((nmax+1)**2-1)*u0).exp()
+    tau /= 1-(-pi*(2*nmax+3)*u0).exp()
+    d_in = ((beta+ell)*cutoff).exp()*tau
+    delta = d_in+d_out
+    j2 = 12+arb(8)/9+arb(2)/81
+    entry_error = (2*delta+delta*delta)*j2
+    print('SOURCE_ERROR_BUDGET', json.dumps({
+        'C': '1 (positive scaling; original determinant multiplied by C^4)',
+        'residue_identity': 'PENDING_INDEPENDENT_ANALYTIC_PROOF',
+        'residue_indices': '2..129', 'cutoff': '3', 'Chernoff_z': '50000',
+        'p0': str(p0), 'H_series_tail': str(tau),
+        'component_inside_weighted_error': str(d_in),
+        'component_outside_weighted_error': str(d_out),
+        'whole_V_entry_error': str(entry_error),
+    }), flush=True)
+    print('H_SAMPLE', {str(u): str(H(arb(u))) for u in ['0.01','0.1','1']}, flush=True)
+
+    values = {}
+    for i,j in [(1,1),(1,-1),(1,2),(1,-2),(2,2),(2,-2)]:
+        value = acb(0)
+        calls = [0]
+        for half in range(10):
+            left, right = arb(half)/2, arb(half+1)/2
+            midpoint = (half+0.5)/2  # Segment selection only; no mathematical ball conversion.
+            if abs(i+midpoint) >= cutoff or abs(j+midpoint) >= cutoff:
+                continue
+            def integrand(v, analytic):
+                calls[0] += 1
+                # This finite exponential formula is entire; each segment has fixed cutoff branches.
+                return (i+j+2*v)*phi(v+i)*phi(v+j)
+            part = acb.integral(integrand, left, right, rel_tol=arb('1e-22'),
+                                abs_tol=arb('1e-46'), deg_limit=120,
+                                eval_limit=2000, depth_limit=16)
+            value += part
+            print('QUADRATURE_SEGMENT', i,j,half,str(part), 'calls',calls[0],flush=True)
+        assert value.imag.contains(0), (i,j,value)
+        values[(i,j)] = value.real+arb(0,entry_error.upper())
+        print('V_ENTRY',i,j,str(values[(i,j)]),flush=True)
+    m11=values[(1,1)]-values[(1,-1)]
+    m12=values[(1,2)]-values[(1,-2)]
+    m22=values[(2,2)]-values[(2,-2)]
+    determinant=m11*m22-m12*m12
+    decision='UNRESOLVED_ENCLOSURE'
+    if bool(determinant<0) or bool(m11<0) or bool(m22<0):
+        decision='NEGATIVE_CELL_CONDITIONAL_ON_RESIDUE_IDENTITY'
+    elif bool(determinant>0) and bool(m11>0) and bool(m22>0):
+        decision='POSITIVE_CELL_CONDITIONAL_ON_RESIDUE_IDENTITY'
+    print('DN22_RESULT',json.dumps({'M11':str(m11),'M12':str(m12),'M22':str(m22),
+          'determinant':str(determinant),'decision':decision,
+          'seconds':round(time.monotonic()-started,3)}),flush=True)
+    signal.alarm(0)
+    print('DN22_PROCESS_EXIT=0',flush=True)
+except BaseException:
+    traceback.print_exc()
+    print('DN22_PROCESS_EXIT=1',flush=True)
+    raise
+
+DN22_SCRIPT_END
+SOURCE_ERROR_BUDGET {"C": "1 (positive scaling; original determinant multiplied by C^4)", "residue_identity": "PENDING_INDEPENDENT_ANALYTIC_PROOF", "residue_indices": "2..129", "cutoff": "3", "Chernoff_z": "50000", "p0": "[7.861355980749893116447707307143700132229485100810196766543185092718e-47 +/- 4.38e-114]", "H_series_tail": "[4.5279899959353971389403255914121298016072396424797819051395950217785e-63 +/- 7.45e-131]", "component_inside_weighted_error": "[5.9715844522221891092289124818612198867211980762480368985172331586593e-54 +/- 4.17e-122]", "component_outside_weighted_error": "[3.930677990374946558223853653571850066114742550405098383271592546359e-47 +/- 2.19e-114]", "whole_V_entry_error": "[1.015182667298747605516822653575407597985091570084408989900164541410e-45 +/- 4.05e-112]"}
+H_SAMPLE {'0.01': '[5.51692426459053592634296734227700744477127861269204242e-16 +/- 5.81e-70]', '0.1': '[0.002637888854506452578949633944369098966036667367668683330258924794156 +/- 2.12e-70]', '1': '[0.76137551381104113613074844450063837744414445098154136622742163832743 +/- 1.49e-69]'}
+QUADRATURE_SEGMENT 1 1 0 [6.5278578901836319803241174526893e-9 +/- 7.49e-41] calls 191
+QUADRATURE_SEGMENT 1 1 1 [1.742133724103733392059556392e-14 +/- 3.41e-42] calls 396
+QUADRATURE_SEGMENT 1 1 2 [1.182452318066827092553189e-25 +/- 4.24e-50] calls 613
+QUADRATURE_SEGMENT 1 1 3 [+/- 5.51e-47] calls 762
+V_ENTRY 1 1 [6.5278753115208731359032698549359e-9 +/- 4.42e-41]
+QUADRATURE_SEGMENT 1 -1 0 [5.0092868453530917899319500705550e-9 +/- 7.16e-41] calls 191
+QUADRATURE_SEGMENT 1 -1 1 [2.75702424148427334452147920597e-10 +/- 1.24e-40] calls 382
+QUADRATURE_SEGMENT 1 -1 2 [2.6052184401265660825401521000314e-15 +/- 6.90e-47] calls 557
+QUADRATURE_SEGMENT 1 -1 3 [1.06539675678860383496e-28 +/- 9.07e-49] calls 688
+V_ENTRY 1 -1 [5.284991874719959251056720206983e-9 +/- 1.63e-40]
+QUADRATURE_SEGMENT 1 2 0 [2.3460752186939749740130496e-17 +/- 8.63e-43] calls 219
+QUADRATURE_SEGMENT 1 2 1 [7.46732303899517826704948892e-33 +/- 2.79e-60] calls 452
+V_ENTRY 1 2 [2.3460752186939757207453535e-17 +/- 8.69e-43]
+QUADRATURE_SEGMENT 1 -2 0 [-8.43619163990530376715731198e-15 +/- 3.82e-42] calls 191
+QUADRATURE_SEGMENT 1 -2 1 [8.43619163990530376715731198e-15 +/- 3.82e-42] calls 382
+QUADRATURE_SEGMENT 1 -2 2 [1.30060197479642676282424000322e-17 +/- 2.53e-47] calls 557
+QUADRATURE_SEGMENT 1 -2 3 [8.004766919300964733e-29 +/- 6.12e-48] calls 688
+V_ENTRY 1 -2 [1.300601974804431529743541e-17 +/- 2.19e-42]
+QUADRATURE_SEGMENT 2 2 0 [1.182452318066827092553189e-25 +/- 4.24e-50] calls 217
+QUADRATURE_SEGMENT 2 2 1 [+/- 5.51e-47] calls 366
+V_ENTRY 2 2 [1.1824523180668270926e-25 +/- 5.76e-45]
+QUADRATURE_SEGMENT 2 -2 0 [3.613681603010691572473267305672398e-26 +/- 4.28e-60] calls 233
+QUADRATURE_SEGMENT 2 -2 1 [2.78672242552324133612639093e-33 +/- 5.12e-60] calls 466
+V_ENTRY 2 -2 [3.613681881682934125e-26 +/- 3.05e-45]
+DN22_RESULT {"M11": "[1.242883436800913884846549647953e-9 +/- 1.89e-40]", "M12": "[1.045473243889544191001813e-17 +/- 7.42e-42]", "M22": "[8.210841298985336801e-26 +/- 4.75e-45]", "determinant": "[-7.25024384179487982e-36 +/- 3.20e-54]", "decision": "NEGATIVE_CELL_CONDITIONAL_ON_RESIDUE_IDENTITY", "seconds": 3.027}
+DN22_PROCESS_EXIT=0
+DENSITY_INTAKE_BEGIN 2026-09-11T16:23:02.326992+00:00
+DENSITY_INTAKE_RECIPE_BEGIN
+from pathlib import Path
+import datetime
+import hashlib
+import json
+import subprocess
+import sys
+import time
+import traceback
+
+ROOT=Path('/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean')
+sys.path.insert(0,str(ROOT))
+from orchestrator.workflow_runtime import _execution_writer_epoch
+
+event={
+ 'request_message_id':'94fc406d-e741-417a-b489-1bf3e1b5f1b1',
+ 'conversation_id':'6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59',
+ 'boundary_id':'GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN',
+ 'adjudicated_pin':'68e40ebd297b2cc0234fbf662f1200a5de6b2105',
+ 'phase_call_index':8,'meter_call_index':53,
+}
+started=time.monotonic()
+try:
+ with _execution_writer_epoch(ROOT) as epoch:
+  print('DENSITY_INTAKE_BEGIN',datetime.datetime.now(datetime.timezone.utc).isoformat(),flush=True)
+  print('DENSITY_INTAKE_RECIPE_BEGIN\n'+Path(__file__).read_text()+'\nDENSITY_INTAKE_RECIPE_END',flush=True)
+  runtime=ROOT/'orchestrator/state/CHANNEL_RUNTIME.json'
+  assert hashlib.sha256(runtime.read_bytes()).hexdigest()=='2170b46949ccd5b4ed5ad5dd0b128a7b7417b93e42f75ae8f477d36ea63db1f2'
+  commands=[
+   ['python3','orchestrator/spine.py','--record-review',json.dumps(event)],
+   ['python3','orchestrator/kb_migrate_verdicts.py','--source','docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_DENSITY_2026-09-11.md'],
+   ['python3','orchestrator/kb_migrate_progress_log.py'],
+   ['python3','orchestrator/spine.py','--refresh','--reason','semantic-index-refresh'],
+   ['bash','specs_docs/session_start.sh'],
+  ]
+  for command in commands:
+   begin=time.monotonic();print('DENSITY_INTAKE_COMMAND',command,flush=True)
+   result=subprocess.run(command,cwd=ROOT)
+   print('DENSITY_INTAKE_STAGE_EXIT',result.returncode,'seconds',round(time.monotonic()-begin,3),flush=True)
+   if result.returncode:raise RuntimeError('stage failed: '+str(command))
+   epoch.recheck()
+  actual=json.loads(runtime.read_text())
+  assert actual['recorded_review_events'][-1]==event
+  assert actual['active_proshka_phase']['proshka_calls']==8
+  assert actual['meter']['delegated_strategic_review_calls']==53
+  print('DENSITY_INTAKE_SECONDS',round(time.monotonic()-started,3),flush=True)
+  print('DENSITY_INTAKE_PROCESS_EXIT=0',flush=True)
+except BaseException:
+ traceback.print_exc();print('DENSITY_INTAKE_PROCESS_EXIT=1',flush=True);sys.exit(1)
+
+DENSITY_INTAKE_RECIPE_END
+DENSITY_INTAKE_COMMAND ['python3', 'orchestrator/spine.py', '--record-review', '{"request_message_id": "94fc406d-e741-417a-b489-1bf3e1b5f1b1", "conversation_id": "6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59", "boundary_id": "GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN", "adjudicated_pin": "68e40ebd297b2cc0234fbf662f1200a5de6b2105", "phase_call_index": 8, "meter_call_index": 53}']
+CHANNEL_RUNTIME_REVIEW_EVENTS_RECORDED=1
+DENSITY_INTAKE_STAGE_EXIT 0 seconds 0.17
+DENSITY_INTAKE_COMMAND ['python3', 'orchestrator/kb_migrate_verdicts.py', '--source', 'docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_DENSITY_2026-09-11.md']
+distinct verdicts scanned : 1
+  new strategy rows (M3)  : 1
+  new verdict-kill rows   : 0
+  reused existing strategy: 0 (evidence attached, no duplicate row)
+  reused existing verdict : 0 (stable id, no __V row)
+  evidence refs           : 6   aliases: 1
+  supplier-ledger rows (W9): 0 CLOSES/OPENS → capability
+  prose-only KILL mentions: 0 — NOT migrated, need a human read:
+  removed derived/stale evidence: 0
+  removed source-orphan rows    : 0
+backfilled legacy operational scope negations: 0
+migrated into /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/q3.lean.aristotle/aristotle_db/knowledge.db
+DENSITY_INTAKE_STAGE_EXIT 0 seconds 1.509
+DENSITY_INTAKE_COMMAND ['python3', 'orchestrator/kb_migrate_progress_log.py']
+parsed 115 branch decisions · external verdict rows 78 · source docs/Progress_Log.md
+migrated 115 branch decisions into /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/q3.lean.aristotle/aristotle_db/knowledge.db
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-03 'развилка: абсолютный пол отвергнут, прямая кривизна выбрана главной ветвью': missing fork, selected, why, rejected, technique
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-04 'проверка пола нечётного блока вторым каналом (наблюдатель, свой код): зонд 11 верен; ошибка была у судьи, пересказавшего S8 агента': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-04 'зонд 12 (наблюдатель, руками): вещественные нули различают ground-вектор и строку Ξ; нули ground сходятся к γ_j как √λ₁': missing fork, selected, why, rejected, technique, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-04 'ERRATUM к зонду 12 (наблюдатель против себя): смещения нулей `2e-8 / 8e-18 / 2e-36` были артефактом поиска корней; истина сильнее': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-04 'S9, различающий тест на пяти ячейках: для первого нуля закон `C_1(m)·L → ≈ 205` (прочтение A), для j ≥ 2 закона пока нет': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-04 'канаты пути через нули, ручная проверка (b) и (c)': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-04 'развилка: вердикт QUASIEIGEN `9b822624` — линейные оболочки собственного уравнения исчерпаны; атом = селектор вещественно-нулевых квазисобственных векторов': missing fork, selected, why, rejected, technique, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-04 'SEL (модуль селектора судьи) убит фальсификатором: вещественно-нулевой конус не селективен': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-04 'развилка: вердикт ZEROPIN `1529837d` — частичное множество нулей не идентифицирует Ξ; атом = полный нулевой дивизор; R2-тождество судьи ПРОШЛО ручной тест': missing fork, selected, why, rejected, technique, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-04 'зонд 13 (аддендум 15, руками): тождество образа `e(γ) = K b(γ)` держится по `m`, по `j`, и видит прямую': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-04 'бумажный preflight по R2 (НЕ ПРОВЕРЕНО): `K = Σ_z E(z)E(z)ᵀ` по всем нулям дзеты (Groskin Thm 2.5 + CCM 5.9); тест суммой запущен': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-04 'тождество `K = Σ_z E(z)E(z)ᵀ` ПРОВЕРЕНО суммой; сомнение наблюдателя опровергнуто; `λ₁` = утечка за окно': missing fork, selected, why, rejected, technique, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-04 'проверено по тексту CCM: теорема 5.10 НЕ зависит от знака `λ₁`; «дверь 2» в форме «5.10 выключается при `λ₁ < 0`» ложна': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-04 'развилка: вердикт LEAKAGE — тождество подтверждено; позитивность выбранной ячейки ≠ RH без исчерпания; литкарточка позитивности Вейля': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-04 'winding lock: круг проваливается (мнимая ось), тонкий прямоугольник держится; связывающий член — относительная ошибка в ОДНОЙ точке на вещественной оси': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-04 'зонд 14, продолжение (предсказания аддендума 16, счёт до и после убийства фоновой задачи)': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-04 'вердикт WINDLOCK: «атом одной точки» ЛОЖЕН (плант с четырьмя нулями); полный забор остаётся минимальным замком счёта': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-04 'вердикт ONESHAPE + зонд 17: точное якорное разложение подтверждено четырьмя оценками; поправка судье — якорь плоский, убывает сам `d₂`': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-04 'ловушка закрыта на m=83: все 166 нулей числителя дна вещественны; привязка к γ_j до ≈1.57·x_N': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-04 'Probe 22 (формат директивы владельца «materialize REQ-2026-09-04-FULLCHAIN»): широкие ячейки N ≥ 4m': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-06 'аудит skill-файлов и цепи Codex по статье Provencher «Rethinking skills and prompts for GPT-6 Astra» (X, 04.09); применён по слову владельца': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-06 'аудит v2 по пакету Codex (срез 6140d6ad, до моих правок): взято 6 пунктов + KB-стаб; отвергнуто 3; всё удаляемое — в архив': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-06 'вердикт SECONDEXPR-B (`b1efb9e1`, 634 строки): буквальное тождество ядер Suzuki УБИТО дефектом определения; ремонт предложен; (OPEN) названо точно': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-06 '«ты уверен, что мы нашли ошибку у Suzuki?» — моя проверка по PDF, дословно': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-06 'независимая проверка SECONDEXPR-B (свежий Opus, только PDF Suzuki + вердикт; [R1] не открывал): всё CORRECT': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-06 'Versendet: письмо M. Suzuki о чётном продолжении S_t (по слову владельца «Да, ну так возьми его»)': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-06 'вердикт OPENSGN (`9a7a3a9c`, 741 строка): PARTIAL — обе временные интеграции вычислены; всё тождество ⟺ одно скалярное тождество Пуассона (P)': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-06 'независимая проверка OPENSGN (свежий Opus, только два вердикта): все пять пунктов CORRECT': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-06 'вердикт SEMILOCAL (`3242ada9`, 692 строки): SECOND_EXPRESSION_CANDIDATE — расщепление есть, голый след Сонина как глобальный минорант убит': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-06 'вердикт SEMISIGN (`59aabc18`, 690 строк): Q1 PARTIAL, Q2 OBSTRUCTION_NAMED, Q3 COMPUTATION_SPECIFIED; знак на замороженном классе не доказан, дан конечный сертификат': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-06 'таблица знака E_S, две независимые реализации (A: N = 3200, самодвойственный DCT-I; B: N = 8192, физическая сетка): (24) ЛОЖНО, знак сидит в фазе через log 2, тройка v₊/v₋/v_i НЕ РЕШЕНА': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-06 'вердикт SEMITABLE (`10c9c987`, 705 строк): Q1 PARTIAL, Q2 PROVED_ON_CLASS, Q3 PARTIAL — класс фазы назван точно, угловой оператор компактен и не Гильберт–Шмидт, но после гладкой пробы всё ядерно; R1 переформулирован как (R1−)': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-06 'вердикт PHASEPROOF (`4a29f389`, 888 строк): (8) не доказано и не опровергнуто; дан точный остаток (12), три подмены убиты, кроссволк исправлен': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-06 'вердикт RESONANCE (`5549cceb`, 810 строк; возможен второй экземпляр от второй сессии): закон амплитуды доказан — резервуар и атом одного масштаба log p; знак весь в убывающей угловой плотности': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-07 'вычислитель d₂ по формулам судьи (агент; отчёт `docs/routeB_bus/D2_SOURCE_EXACT_EVALUATOR_REPORT_2026-09-06.md`, скрипты `phase5_codex/mellin_d2/`): d_∞ точно, d₂ с обусловленностью, 𝔪(h) = +0.0134 ± 3e−4 на |ξ| ≤ 600 и строгий пол +0.0019': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-07 'вычислитель d₂, §7–§8 (отчёт 336 строк, `docs/routeB_bus/D2_SOURCE_EXACT_EVALUATOR_REPORT_2026-09-06.md`): хвост закрыт, монотонные полы M_N без обратного оператора, h₄ пересекает порог планта при N = 5': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-07 'вердикт SCALARFLOOR (`7333a9ab`, 794 строки; первый из двух судей): пол — точный квадрат; знак класса = положительность одного компактного оператора; обусловленность снята Грамом Эйлера': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-07 'вторая версия SCALARFLOOR (`57a35797`, файл `..._INDEPENDENT_66cc75a1.md`, 729 строк): второй судья независимо пришёл к тем же решениям; расхождение только в выборе теста и в форме хвостовой оценки': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-07 'аддендум к первой версии SCALARFLOOR (`ef1e7b7b`, §11, +152 строки, только дописано): та же сессия судьи, второй проход с полным чтением; иерархия положительных поправок теперь есть у обоих судей': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-07 'первый интервальный сертификат: 𝓕(h₄) ∈ [0.0034394, 0.0035782] ⊂ (0, ∞), код SCALARFLOOR_H4_SOURCE_LOWER_CERTIFIED (отчёт `docs/routeB_bus/H4_SCALAR_FLOOR_CERTIFICATE_REPORT_2026-09-07.md`, скрипты `phase5_codex/h4_cert/`)': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-07 'пакетный сертификат: F ≻ 0 на span{h₄,h₅,h₆}, пол пучка λ_min ∈ [0.0011576, 0.0013784] ≥ 1/1000 (отчёт `docs/routeB_bus/H4_PACKET_FLOOR_CERTIFICATE_REPORT_2026-09-07.md`, скрипты `phase5_codex/h4_cert/packet/`)': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-07 'вердикт CLASSFLOOR (`016ae32b`, 786 строк): оба сертификата ратифицированы; константа 120; тождество источника (6) ДОКАЗАНО на бумаге; класс — окрестность семени, не весь класс': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-07 'вторая версия CLASSFLOOR (второй судья, не смог запушить; владелец положил в `docs/_inbox/`, ретранслировано как `..._UPLOADED_VERSION.md`, 874 строки): те же решения, другое доказательство §3, строже к квитанции пакета': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-07 'пакет Лежандра, обе чётности: F ≻ 0 на обоих блоках, полы λ_min ∈ [1.0053e−3, 1.0518e−3] (чётный) и [8.7029e−4, 9.6435e−4] (нечётный); отрицательного направления нет (отчёт `docs/routeB_bus/LEGENDRE_PACKET_FLOOR_CERTIFICATE_REPORT_2026-09-07.md`, скрипты `phase5_codex/h4_cert/legendre/`)': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-07 'зонд (DIAGNOSTIC_NEVER_A_PROOF) пока судья думает над SCHUR: знак скалярного пола на семействе высокой модуляции h_T = (∂² − ¼)(e^{iTx}η₄)': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-07 'вердикт SCHUR (`f50af5ed`, 676 строк): новый объект источника — положительное диадическое логарифмическое ядро; знак высокой модуляции доказан; класс = «единица плюс компактный остаток» с конечной отрицательной инерцией': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-07 'независимая проверка SCHUR (агент, `docs/routeB_bus/SCHUR_INDEPENDENT_CHECK_2026-09-07.md`, 56 вызовов, 42 мин) и находка наблюдателя: калибровка по полюсам оживляет достаточный объект (20)': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-07 'КЛАСС: скалярный пол неотрицателен на всём H₀₀ — сертификат GAUGE_SOURCE_POSITIVE_EXTENSION_CERTIFIED (отчёт `docs/routeB_bus/GAUGE_POSITIVE_EXTENSION_CERTIFICATE_REPORT_2026-09-07.md`, скрипты `phase5_codex/h4_cert/gauge/`)': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-07 'вердикт GAUGE (`b92cd58f`, 708 строк): класс закрыт сильнее, чем просили — 𝒯 ≥ 𝒫/2; калибровок четыре, а не одна; следующий скалярный ярлык опровергнут точным контрпримером': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-07 'ПРОВЕРКА ИНСТРУМЕНТА (интуиция владельца): знак полного запаса на плюс-канале наш вычислитель d₂ НЕ определяет; предыдущее прочтение «−0.02» снято': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-07 'вердикт PROFILES (`4cf74164`, 718 строк): прямая теорема P1 — форма Вейля Q ≥ ‖v‖²/100 на ВСЕХ независимых двухлепестковых профилях с двумя суммарными нулевыми моментами; знак запаса плюс-канала остаётся открытым; порядок: Q и резервуар логарифмические, скалярный пол — 1/T': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-07 'прогулка по цепи своими силами (слово владельца: «нам нужно пройти нашу цепь самим; может, за стеной дорога построена»)': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-07 'вычислитель Грама Эйлера построен (агент; отчёт `docs/routeB_bus/EULER_GRAM_D2_EVALUATOR_REPORT_2026-09-07.md`, скрипты `phase5_codex/euler_gram/`): полный запас на плюс-канале ОТРИЦАТЕЛЕН; старый инструмент ошибался в 2–4 раза, знак угадал': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-07 'вердикт CHAIN (`f47ed55c`, 684 строки): Прошка честно — цепи у него нет; атом назван; первая ступень P1 ломается на трёх лепестках; явный положительный хвост для каждого носителя; стоп-лист': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-07 'директива CHAIN исполнена: семимерная трёхлепестковая ячейка сертифицирована, пол 1.744; направление среднего — самое мягкое и положительное (отчёт `docs/routeB_bus/THREE_LOBE_PREFLIGHT_REPORT_2026-09-07.md`, скрипты `phase5_codex/three_lobe/`)': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-07 'решение владельца: статьи сейчас нет': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-07 'Прошка по прямой просьбе владельца попытался доказать атом (`11f06035`, `PROSHKA_VERDICT_GOAL058_UNIVERSAL_SIGN_ATTEMPT_REGIONAL_ENERGY_2026-09-07.md`, 592 строки): атом не доказан и не опровергнут; ПОБОЧНО — трёхлепестковая теорема на классе с константой 1/5 и точный дефект локализации': missing fork, selected, why, rejected, technique, next, addresses
+RECORDING DEBT (skipped, add the 8 fields): 2026-09-07 'вердикт INVARIANT (`49d773bf`, 828 строк): всеобщего механизма нет (Прошка честно); выбран механизм компенсации; две новые точные вещи — ранг-два тождество для средних и первая смена знака на четырёх лепестках': missing fork, selected, why, rejected, technique, next, addresses
+DENSITY_INTAKE_STAGE_EXIT 0 seconds 0.446
+DENSITY_INTAKE_COMMAND ['python3', 'orchestrator/spine.py', '--refresh', '--reason', 'semantic-index-refresh']
+Prepared 3303 files for q3_docs: 3302 sources (2137 md, 56 tex, 1108 lean) + 1 generated manifest; stage_seconds=0.794
+Q3_DOCS_COMMAND seconds=0.318 argv=['/home/chirurgie/.bun/bin/qmd', 'collection', 'list']
+Q3_DOCS_COMMAND seconds=1.072 argv=['env', 'QMD_CONFIG_DIR=/tmp/q3-qmd-update-nc2bgdju', 'INDEX_PATH=/home/chirurgie/.cache/qmd/index.sqlite', '/home/chirurgie/.bun/bin/qmd', 'update']
+Updating 1 collection(s)...
+
+[1/1] q3_docs (**/*)
+Collection: /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/q3.lean.aristotle/.qmd_cache/q3_docs_current (**/*)
+
+Indexed: 2 new, 3 updated, 3298 unchanged, 0 removed
+Cleaned up 3 orphaned content hash(es)
+
+✓ All collections updated.
+
+Run 'qmd embed' to update embeddings (5 unique hashes need vectors)
+Q3_DOCS_COMMAND seconds=30.391 argv=['/home/chirurgie/.bun/bin/qmd', 'embed']
+Embedding 5 documents (609 chunks, 1.5 MB)
+4 documents split into multiple chunks
+Model: embeddinggemma
+
+
+██████████████████████████████ 100%                                    
+
+✓ Done! Embedded 609 chunks from 5 documents in 26s (58.6 KB/s)
+Q3_DOCS_COMMAND seconds=0.334 argv=['/home/chirurgie/.bun/bin/qmd', 'status']
+QMD Status
+
+Index: /home/chirurgie/.cache/qmd/index.sqlite
+Size:  273.2 MB
+
+Documents
+  Total:    3346 files indexed
+  Vectors:  36240 embedded
+  Updated:  32s ago
+
+Collections
+  riemann_lib (qmd://riemann_lib/)
+    Pattern:  *.bib
+    Files:    1 (updated 227d ago)
+  zotero_lib (qmd://zotero_lib/)
+    Pattern:  **/*.md
+    Files:    42 (updated 227d ago)
+  q3_docs (qmd://q3_docs/)
+    Pattern:  **/*
+    Files:    3303 (updated 32s ago)
+
+Examples
+  # List files in a collection
+  qmd ls riemann_lib
+  # Get a document
+  qmd get qmd://riemann_lib/path/to/file.md
+  # Search within a collection
+  qmd search "query" -c riemann_lib
+SEMANTIC_REFRESH_STAGE path=q3.lean.aristotle/scripts/refresh_q3_docs.py seconds=34.386
+{
+  "boundary": "RETRIEVAL_CANDIDATES_NOT_PROOF",
+  "goal_path": "docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md",
+  "queries": [
+    {
+      "expected_path_match": true,
+      "expected_path_token": "058-realzero-ground-diagonal-to-xi-goal-md",
+      "external_lean": {
+        "base_results": [
+          {
+            "base_id": "zeta23",
+            "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+            "exact_candidate": null,
+            "identity_after": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "identity_before": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "searched_regular_source_count": 329
+          }
+        ],
+        "bases_queried": [
+          "zeta23"
+        ],
+        "boundary": "CANDIDATE_MATCH_NOT_LEAN_PROOF_OR_INTERFACE_EQUIVALENCE",
+        "budget_seconds": 15.0,
+        "candidate": null,
+        "candidate_provenance": null,
+        "candidate_sha256": null,
+        "elapsed_seconds": 0.322775,
+        "enabled_bases": [
+          "zeta23"
+        ],
+        "errors": [],
+        "matches": [
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 97,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/ExplicitFormula.lean",
+            "snippet": "a goal written with `*`; restating the lemmas at ℂ (proved by `exact`) makes `rw` usable.) -/"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 1032,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/MediumPNT.lean",
+            "snippet": "  all_goals"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 2548,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/MediumPNT.lean",
+            "snippet": "        obtain ⟨_, ripGoal⟩ := h"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 719,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/MellinCalculus.lean",
+            "snippet": "  on_goal 1 =>"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 721,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/MellinCalculus.lean",
+            "snippet": "  on_goal 2 =>"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 724,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/MellinCalculus.lean",
+            "snippet": "  all_goals"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 116,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/Rectangle.lean",
+            "snippet": "set_option linter.style.multiGoal false in"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 124,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/Rectangle.lean",
+            "snippet": "  all_goals simpa using by linarith"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 263,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/Rectangle.lean",
+            "snippet": "  all_goals exact (antitone_const_tsub.Icc (monotone_id.const_add _)).monotoneOn _"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 128,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "  all_goals refine integral_congr fun _ _ ↦ h ?_"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 282,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "set_option linter.style.multiGoal false in"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 310,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "  all_goals try {"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 320,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "  all_goals try {"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 323,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "    all_goals assumption"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 333,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "  all_goals try { apply rectangle_subset_punctured_rect <;> simp_all }"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 518,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "  all_goals simp [*]"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 523,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "  all_goals simp [field]"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 36,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/Tactic/AdditiveCombination.lean",
+            "snippet": "the target.  Afterwards, it sets the goal to be the equality between the"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 37,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/Tactic/AdditiveCombination.lean",
+            "snippet": "lefthand side of the new goal and the lefthand side of the new weighted sum."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 95,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/Tactic/AdditiveCombination.lean",
+            "snippet": "    -- We have the expected type from the goal, so we can fully synthesize this leaf node."
+          }
+        ],
+        "max_matches": 20,
+        "query": "GOAL 058 REALZERO_GROUND_DIAGONAL_TO_XI",
+        "query_sha256": "0863dfefb0e70877d680315899146e67bd98839d04f3c178b7ecc47a6956b8aa",
+        "registry_sha256": "7c13b5eba028296a05d3c926c6e9e3af36730e9dd24f4014e4889290fef76557",
+        "schema": "q3_external_lean_search.v2",
+        "terms": [
+          "GOAL",
+          "REALZERO_GROUND_DIAGONAL_TO_XI"
+        ]
+      },
+      "id": "goal",
+      "query": "GOAL 058 REALZERO_GROUND_DIAGONAL_TO_XI",
+      "result_count": 12,
+      "status": "PASS",
+      "top_paths": [
+        "qmd://q3_docs/docs/routeb-bus/058-realzero-ground-diagonal-to-xi-goal.md",
+        "qmd://q3_docs/docs/routeb-bus/codex-rerank-goal058-even-head-tail-feshbach-hold-2026-08-31.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-goal058-second-mode-overlap-of-the-xi-row-2026-09-04.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-goal058-curvature-schur-loewner-secular-adjudication-2026-09-03.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-goal058-signfree-ritz-inside-ccm-uniform-error-atom-2026-09-04.md",
+        "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/ccmproposition59complexhermitianconnector.lean",
+        "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/ccmproposition59complextrialcomplementspectral.lean",
+        "qmd://q3_docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/goal058-g1-literal-complement-floor-spectral-receiver-closeout-2026-08-14.md"
+      ]
+    },
+    {
+      "expected_path_match": true,
+      "expected_path_token": "proposition59groundlagrangezerosetbridge",
+      "external_lean": {
+        "base_results": [
+          {
+            "base_id": "zeta23",
+            "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+            "exact_candidate": null,
+            "identity_after": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "identity_before": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "searched_regular_source_count": 329
+          }
+        ],
+        "bases_queried": [
+          "zeta23"
+        ],
+        "boundary": "CANDIDATE_MATCH_NOT_LEAN_PROOF_OR_INTERFACE_EQUIVALENCE",
+        "budget_seconds": 15.0,
+        "candidate": null,
+        "candidate_provenance": null,
+        "candidate_sha256": null,
+        "elapsed_seconds": 0.369501,
+        "enabled_bases": [
+          "zeta23"
+        ],
+        "errors": [],
+        "matches": [],
+        "max_matches": 20,
+        "query": "Proposition59GroundLagrangeZeroSetBridge",
+        "query_sha256": "415aca9dc79f1c71acfa2978bf70139212f927ff14669823d09ee072c90a78fc",
+        "registry_sha256": "7c13b5eba028296a05d3c926c6e9e3af36730e9dd24f4014e4889290fef76557",
+        "schema": "q3_external_lean_search.v2",
+        "terms": [
+          "Proposition59GroundLagrangeZeroSetBridge"
+        ]
+      },
+      "id": "exact_target",
+      "query": "Proposition59GroundLagrangeZeroSetBridge",
+      "result_count": 12,
+      "status": "PASS",
+      "top_paths": [
+        "qmd://q3_docs/docs/routeb-bus/codex-directive-route058-p59-g2b-2026-08-12.md",
+        "qmd://q3_docs/docs/routeb-bus/058-realzero-ground-diagonal-to-xi-goal.md",
+        "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/g6n1selectedferrersgroundproposition59realzeros.lean",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-master-route-realzero-ground-diagonal-to-xi-2026-08-11.md",
+        "qmd://q3_docs/docs/routeb-bus/codex-answer-2026-09-03-step1-3-p59-agreement-set-source-check.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-req-2026-08-26-n-ground-parity-realification-kernel-admission-2026-08-27.md",
+        "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/proposition59groundlagrangezerosetbridge.lean",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-goal058-curvature-bridge-proof-and-hs-representation-2026-09-03.md"
+      ]
+    },
+    {
+      "expected_path_match": null,
+      "expected_path_token": null,
+      "external_lean": {
+        "base_results": [
+          {
+            "base_id": "zeta23",
+            "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+            "exact_candidate": null,
+            "identity_after": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "identity_before": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "searched_regular_source_count": 329
+          }
+        ],
+        "bases_queried": [
+          "zeta23"
+        ],
+        "boundary": "CANDIDATE_MATCH_NOT_LEAN_PROOF_OR_INTERFACE_EQUIVALENCE",
+        "budget_seconds": 15.0,
+        "candidate": null,
+        "candidate_provenance": null,
+        "candidate_sha256": null,
+        "elapsed_seconds": 0.335456,
+        "enabled_bases": [
+          "zeta23"
+        ],
+        "errors": [],
+        "matches": [],
+        "max_matches": 20,
+        "query": "Q3.RH",
+        "query_sha256": "162e3a888d6845831bce0058332aec51f4b312b435bea4c08b078af51277c607",
+        "registry_sha256": "7c13b5eba028296a05d3c926c6e9e3af36730e9dd24f4014e4889290fef76557",
+        "schema": "q3_external_lean_search.v2",
+        "terms": [
+          "Q3.RH"
+        ]
+      },
+      "id": "terminal_consumer",
+      "query": "Q3.RH",
+      "result_count": 12,
+      "status": "PASS",
+      "top_paths": [
+        "qmd://q3_docs/q3-lean-aristotle/q3/proofs/q-nonneg-on-atoms-fourier-axiom.lean",
+        "qmd://q3_docs/q3-lean-aristotle/active/refs/proof-map.md",
+        "qmd://q3_docs/docs/routeb-bus/local-zero-invariants-catalog-2026-09-08.md",
+        "qmd://q3_docs/q3-lean-aristotle/q3/rkhs-contraction.lean",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-req-2026-08-22-v-l73-5-semantic-admission-and-l73-6-authorization-2026-08-23.md",
+        "qmd://q3_docs/full/rh-q3.tex",
+        "qmd://q3_docs/docs/routeb-bus/six-centre-fixed-width-assembly-report-2026-09-07.md",
+        "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/completedtrackerscope.lean"
+      ]
+    },
+    {
+      "expected_path_match": null,
+      "expected_path_token": null,
+      "external_lean": {
+        "base_results": [
+          {
+            "base_id": "zeta23",
+            "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+            "exact_candidate": null,
+            "identity_after": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "identity_before": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "searched_regular_source_count": 329
+          }
+        ],
+        "bases_queried": [
+          "zeta23"
+        ],
+        "boundary": "CANDIDATE_MATCH_NOT_LEAN_PROOF_OR_INTERFACE_EQUIVALENCE",
+        "budget_seconds": 15.0,
+        "candidate": null,
+        "candidate_provenance": null,
+        "candidate_sha256": null,
+        "elapsed_seconds": 0.318585,
+        "enabled_bases": [
+          "zeta23"
+        ],
+        "errors": [],
+        "matches": [
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 15,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23.lean",
+            "snippet": "import Zeta23.ZeroSide.TightMult"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 7,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "Residue calculus on rectangles beyond one simple pole."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 8,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "Used for the weighted contour integral ∮ H·Λ'/Λ and for the Riemann–von Mangoldt count"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 13,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "  (Induction on S: subtract one principal part, remove the singularity, recurse.)"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 17,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "* `finite_zeros_rectangle`, `rectangleIntegral'_mul_logDeriv'`: the zero set is finite; self-contained form."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 23,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "open Complex Set Topology Filter Asymptotics Real"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 47,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "    -- the principal part at p, the remainder f₁, and its extension f₂ across p"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 117,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "        exact (hc.tendsto.mono_left nhdsWithin_le_nhds).isBigO_one ℂ"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 141,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "/-- The zero set of a function analytic on a neighbourhood of every point of a rectangle and"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 142,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "nonvanishing at one of its points is finite. -/"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": "finite_zeros_rectangle",
+            "line": 143,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "theorem finite_zeros_rectangle {f : ℂ → ℂ} {z w : ℂ} (hf : AnalyticOnNhd ℂ f (Rectangle z w))"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 157,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "/-! ## Meromorphic version: finitely many zeros AND poles inside the rectangle"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 159,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "Intended for f = completedRiemannZeta (simple poles at 0 and 1, residues ∓1):"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 160,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "(1/2πi) ∮ g·(f'/f) = Σ_{zeros ρ} ord_ρ(f)·g(ρ) − Σ_{poles p} m_p·g(p)."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 162,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "which is the shape of Mathlib's `completedRiemannZeta_residue_one` (m = 1). -/"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 183,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "  -- zeros are interior points"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 198,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "  -- residues: +ord·g at zeros, −m·g at poles"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 279,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "        ((hslope.const_mul (analyticOrderNatAt f q : ℂ)).add hcont).isBigO_one ℂ"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 346,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "        (hcont.sub (hslope.const_mul (m q : ℂ))).isBigO_one ℂ"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 350,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "point of the closed rectangle, f nonvanishing on its border, and Z the zero set of f in the"
+          }
+        ],
+        "max_matches": 20,
+        "query": "ONE NORMALIZED GROUND FAMILY REAL ZEROS AND LOCALLY UNIFORM LIMIT",
+        "query_sha256": "e5a58f7a98ddeed949d49e66962fdffb6e7b735799a092b66ae6820bb2d50cee",
+        "registry_sha256": "7c13b5eba028296a05d3c926c6e9e3af36730e9dd24f4014e4889290fef76557",
+        "schema": "q3_external_lean_search.v2",
+        "terms": [
+          "ONE",
+          "NORMALIZED",
+          "GROUND",
+          "FAMILY",
+          "REAL",
+          "ZEROS",
+          "AND",
+          "LOCALLY",
+          "UNIFORM",
+          "LIMIT"
+        ]
+      },
+      "id": "property_combination",
+      "query": "ONE NORMALIZED GROUND FAMILY REAL ZEROS AND LOCALLY UNIFORM LIMIT",
+      "result_count": 12,
+      "status": "PASS",
+      "top_paths": [
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-exact-roof-port-to-supplier-ledger-2026-09-01.md",
+        "qmd://q3_docs/q3-lean-aristotle/active/refs/proof-map.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-req-2026-08-28-r1a-correction-16-global-gauge-kill-and-log-derivative-rerank-2026-08-28.md",
+        "qmd://q3_docs/docs/routeb-bus/local-zero-invariants-catalog-2026-09-08.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-mythos-three-stage-fastest-kill-plan-2026-09-03.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-req-2026-08-22-v-l73-5-semantic-admission-and-l73-6-authorization-2026-08-23.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-g3-g5-g6-pillar-rope-batch-2026-08-19.md",
+        "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/samefamilygroundtrialcompositioncore.lean"
+      ]
+    },
+    {
+      "expected_path_match": null,
+      "expected_path_token": null,
+      "external_lean": {
+        "base_results": [
+          {
+            "base_id": "zeta23",
+            "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+            "exact_candidate": null,
+            "identity_after": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "identity_before": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "searched_regular_source_count": 329
+          }
+        ],
+        "bases_queried": [
+          "zeta23"
+        ],
+        "boundary": "CANDIDATE_MATCH_NOT_LEAN_PROOF_OR_INTERFACE_EQUIVALENCE",
+        "budget_seconds": 15.0,
+        "candidate": null,
+        "candidate_provenance": null,
+        "candidate_sha256": null,
+        "elapsed_seconds": 0.315768,
+        "enabled_bases": [
+          "zeta23"
+        ],
+        "errors": [],
+        "matches": [
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 3,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23.lean",
+            "snippet": "Released under Apache 2.0 license as described in the file LICENSE."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 6,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23.lean",
+            "snippet": "-- Zeta23.lean — root of library Zeta23: the headline modules (see README.md)."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 3,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "Released under Apache 2.0 license as described in the file LICENSE."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 8,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "Used for the weighted contour integral ∮ H·Λ'/Λ and for the Riemann–von Mangoldt count"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 11,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "* `residueTheorem_finset`: f holomorphic on Rectangle z w minus a finite set S of interior points, with"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 13,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "  (Induction on S: subtract one principal part, remove the singularity, recurse.)"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 14,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "* `rectangleIntegral'_mul_logDeriv` (the \"argument principle with weight\"): f, g analytic on a"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 15,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "  neighbourhood of each point of Rectangle z w, f ≠ 0 on the border, Z = the (finite) zero set of"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 16,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "  f in the rectangle  ⟹  RectangleIntegral' (g · f'/f) z w = Σ_{ρ∈Z} ord_ρ(f) · g(ρ)."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 17,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "* `finite_zeros_rectangle`, `rectangleIntegral'_mul_logDeriv'`: the zero set is finite; self-contained form."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 30,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "/-- **Residue theorem on a rectangle for finitely many simple poles.** -/"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": "residueTheorem_finset",
+            "line": 31,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "theorem residueTheorem_finset {f : ℂ → ℂ} {z w : ℂ} (hre : z.re ≤ w.re) (him : z.im ≤ w.im)"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 47,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "    -- the principal part at p, the remainder f₁, and its extension f₂ across p"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 80,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "    -- f₂ is holomorphic on the rectangle minus the remaining poles"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 104,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "    -- the principal parts at the other poles are unchanged"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 120,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "    -- on the border, f = f₂ + P"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 139,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "    rw [ih', ResidueTheoremInRectangle hre him hp, add_comm]"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 141,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "/-- The zero set of a function analytic on a neighbourhood of every point of a rectangle and"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": "finite_zeros_rectangle",
+            "line": 143,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "theorem finite_zeros_rectangle {f : ℂ → ℂ} {z w : ℂ} (hf : AnalyticOnNhd ℂ f (Rectangle z w))"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 157,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "/-! ## Meromorphic version: finitely many zeros AND poles inside the rectangle"
+          }
+        ],
+        "max_matches": 20,
+        "query": "the kill ledger has seven recurring defect classes and two of them are mechanically checkable",
+        "query_sha256": "084333ceff42216a38b46d79f2a0f716ef81fed07755dac84ace2b12181092a9",
+        "registry_sha256": "7c13b5eba028296a05d3c926c6e9e3af36730e9dd24f4014e4889290fef76557",
+        "schema": "q3_external_lean_search.v2",
+        "terms": [
+          "the",
+          "kill",
+          "ledger",
+          "has",
+          "seven",
+          "recurring",
+          "defect",
+          "classes",
+          "and",
+          "two",
+          "them",
+          "are",
+          "mechanically",
+          "checkable"
+        ]
+      },
+      "id": "fresh_insight",
+      "query": "the kill ledger has seven recurring defect classes and two of them are mechanically checkable",
+      "result_count": 12,
+      "status": "PASS",
+      "top_paths": [
+        "qmd://q3_docs/q3-lean-aristotle/active/insights.md",
+        "qmd://q3_docs/q3-lean-aristotle/docs/insights.md",
+        "qmd://q3_docs/docs/routeb-bus/agent-report-2026-09-04-goal058-normalized-xi-lattice-eigen-equation-preflight.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-goal058-r2-moving-krylov-feshbach-discriminator-2026-08-29.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka-queue.md",
+        "qmd://q3_docs/q3-lean-aristotle/active/graphs/route-kill-registry.md",
+        "qmd://q3_docs/docs/progress-log.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-goal058-class-floor-representation-2026-09-07.md"
+      ]
+    }
+  ],
+  "schema": "q3_deep_preflight.v1",
+  "status": "PASS"
+}
+SEMANTIC_REFRESH_STAGE path=scripts/deep_preflight.py seconds=51.350
+{
+  "authority": "MACHINE_LOCAL_RETRIEVAL_VALIDATION_NOT_PROOF",
+  "boundary": "RETRIEVAL_VALIDATION_NOT_PROOF",
+  "collection": "q3_docs",
+  "collection_file_count": 3303,
+  "corpus": {
+    "breakdown": {
+      "lean": 1108,
+      "markdown": 2137,
+      "other": 0,
+      "tex": 56,
+      "yaml": 1
+    },
+    "expected_collection_file_count": 3303,
+    "file_count": 3302,
+    "schema": "q3_docs_corpus.v1",
+    "sha256": "646e9110d18fa3ba83ac561e97bf947d5e9c7ea7b32435bd54dec009e4c10694",
+    "total_bytes": 40626258
+  },
+  "dynamic_goal_path": "docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md",
+  "dynamic_queries": [
+    {
+      "expected_path_match": true,
+      "expected_path_token": "058-realzero-ground-diagonal-to-xi-goal-md",
+      "external_lean": {
+        "base_results": [
+          {
+            "base_id": "zeta23",
+            "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+            "exact_candidate": null,
+            "identity_after": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "identity_before": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "searched_regular_source_count": 329
+          }
+        ],
+        "bases_queried": [
+          "zeta23"
+        ],
+        "boundary": "CANDIDATE_MATCH_NOT_LEAN_PROOF_OR_INTERFACE_EQUIVALENCE",
+        "budget_seconds": 15.0,
+        "candidate": null,
+        "candidate_provenance": null,
+        "candidate_sha256": null,
+        "elapsed_seconds": 0.322775,
+        "enabled_bases": [
+          "zeta23"
+        ],
+        "errors": [],
+        "matches": [
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 97,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/ExplicitFormula.lean",
+            "snippet": "a goal written with `*`; restating the lemmas at ℂ (proved by `exact`) makes `rw` usable.) -/"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 1032,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/MediumPNT.lean",
+            "snippet": "  all_goals"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 2548,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/MediumPNT.lean",
+            "snippet": "        obtain ⟨_, ripGoal⟩ := h"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 719,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/MellinCalculus.lean",
+            "snippet": "  on_goal 1 =>"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 721,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/MellinCalculus.lean",
+            "snippet": "  on_goal 2 =>"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 724,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/MellinCalculus.lean",
+            "snippet": "  all_goals"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 116,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/Rectangle.lean",
+            "snippet": "set_option linter.style.multiGoal false in"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 124,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/Rectangle.lean",
+            "snippet": "  all_goals simpa using by linarith"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 263,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/Rectangle.lean",
+            "snippet": "  all_goals exact (antitone_const_tsub.Icc (monotone_id.const_add _)).monotoneOn _"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 128,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "  all_goals refine integral_congr fun _ _ ↦ h ?_"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 282,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "set_option linter.style.multiGoal false in"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 310,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "  all_goals try {"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 320,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "  all_goals try {"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 323,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "    all_goals assumption"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 333,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "  all_goals try { apply rectangle_subset_punctured_rect <;> simp_all }"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 518,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "  all_goals simp [*]"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 523,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+            "snippet": "  all_goals simp [field]"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 36,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/Tactic/AdditiveCombination.lean",
+            "snippet": "the target.  Afterwards, it sets the goal to be the equality between the"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 37,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/Tactic/AdditiveCombination.lean",
+            "snippet": "lefthand side of the new goal and the lefthand side of the new weighted sum."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 95,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/FromPNTPlus/Tactic/AdditiveCombination.lean",
+            "snippet": "    -- We have the expected type from the goal, so we can fully synthesize this leaf node."
+          }
+        ],
+        "max_matches": 20,
+        "query": "GOAL 058 REALZERO_GROUND_DIAGONAL_TO_XI",
+        "query_sha256": "0863dfefb0e70877d680315899146e67bd98839d04f3c178b7ecc47a6956b8aa",
+        "registry_sha256": "7c13b5eba028296a05d3c926c6e9e3af36730e9dd24f4014e4889290fef76557",
+        "schema": "q3_external_lean_search.v2",
+        "terms": [
+          "GOAL",
+          "REALZERO_GROUND_DIAGONAL_TO_XI"
+        ]
+      },
+      "id": "goal",
+      "query": "GOAL 058 REALZERO_GROUND_DIAGONAL_TO_XI",
+      "result_count": 12,
+      "status": "PASS",
+      "top_paths": [
+        "qmd://q3_docs/docs/routeb-bus/058-realzero-ground-diagonal-to-xi-goal.md",
+        "qmd://q3_docs/docs/routeb-bus/codex-rerank-goal058-even-head-tail-feshbach-hold-2026-08-31.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-goal058-second-mode-overlap-of-the-xi-row-2026-09-04.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-goal058-curvature-schur-loewner-secular-adjudication-2026-09-03.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-goal058-signfree-ritz-inside-ccm-uniform-error-atom-2026-09-04.md",
+        "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/ccmproposition59complexhermitianconnector.lean",
+        "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/ccmproposition59complextrialcomplementspectral.lean",
+        "qmd://q3_docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/goal058-g1-literal-complement-floor-spectral-receiver-closeout-2026-08-14.md"
+      ]
+    },
+    {
+      "expected_path_match": true,
+      "expected_path_token": "proposition59groundlagrangezerosetbridge",
+      "external_lean": {
+        "base_results": [
+          {
+            "base_id": "zeta23",
+            "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+            "exact_candidate": null,
+            "identity_after": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "identity_before": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "searched_regular_source_count": 329
+          }
+        ],
+        "bases_queried": [
+          "zeta23"
+        ],
+        "boundary": "CANDIDATE_MATCH_NOT_LEAN_PROOF_OR_INTERFACE_EQUIVALENCE",
+        "budget_seconds": 15.0,
+        "candidate": null,
+        "candidate_provenance": null,
+        "candidate_sha256": null,
+        "elapsed_seconds": 0.369501,
+        "enabled_bases": [
+          "zeta23"
+        ],
+        "errors": [],
+        "matches": [],
+        "max_matches": 20,
+        "query": "Proposition59GroundLagrangeZeroSetBridge",
+        "query_sha256": "415aca9dc79f1c71acfa2978bf70139212f927ff14669823d09ee072c90a78fc",
+        "registry_sha256": "7c13b5eba028296a05d3c926c6e9e3af36730e9dd24f4014e4889290fef76557",
+        "schema": "q3_external_lean_search.v2",
+        "terms": [
+          "Proposition59GroundLagrangeZeroSetBridge"
+        ]
+      },
+      "id": "exact_target",
+      "query": "Proposition59GroundLagrangeZeroSetBridge",
+      "result_count": 12,
+      "status": "PASS",
+      "top_paths": [
+        "qmd://q3_docs/docs/routeb-bus/codex-directive-route058-p59-g2b-2026-08-12.md",
+        "qmd://q3_docs/docs/routeb-bus/058-realzero-ground-diagonal-to-xi-goal.md",
+        "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/g6n1selectedferrersgroundproposition59realzeros.lean",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-master-route-realzero-ground-diagonal-to-xi-2026-08-11.md",
+        "qmd://q3_docs/docs/routeb-bus/codex-answer-2026-09-03-step1-3-p59-agreement-set-source-check.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-req-2026-08-26-n-ground-parity-realification-kernel-admission-2026-08-27.md",
+        "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/proposition59groundlagrangezerosetbridge.lean",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-goal058-curvature-bridge-proof-and-hs-representation-2026-09-03.md"
+      ]
+    },
+    {
+      "expected_path_match": null,
+      "expected_path_token": null,
+      "external_lean": {
+        "base_results": [
+          {
+            "base_id": "zeta23",
+            "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+            "exact_candidate": null,
+            "identity_after": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "identity_before": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "searched_regular_source_count": 329
+          }
+        ],
+        "bases_queried": [
+          "zeta23"
+        ],
+        "boundary": "CANDIDATE_MATCH_NOT_LEAN_PROOF_OR_INTERFACE_EQUIVALENCE",
+        "budget_seconds": 15.0,
+        "candidate": null,
+        "candidate_provenance": null,
+        "candidate_sha256": null,
+        "elapsed_seconds": 0.335456,
+        "enabled_bases": [
+          "zeta23"
+        ],
+        "errors": [],
+        "matches": [],
+        "max_matches": 20,
+        "query": "Q3.RH",
+        "query_sha256": "162e3a888d6845831bce0058332aec51f4b312b435bea4c08b078af51277c607",
+        "registry_sha256": "7c13b5eba028296a05d3c926c6e9e3af36730e9dd24f4014e4889290fef76557",
+        "schema": "q3_external_lean_search.v2",
+        "terms": [
+          "Q3.RH"
+        ]
+      },
+      "id": "terminal_consumer",
+      "query": "Q3.RH",
+      "result_count": 12,
+      "status": "PASS",
+      "top_paths": [
+        "qmd://q3_docs/q3-lean-aristotle/q3/proofs/q-nonneg-on-atoms-fourier-axiom.lean",
+        "qmd://q3_docs/q3-lean-aristotle/active/refs/proof-map.md",
+        "qmd://q3_docs/docs/routeb-bus/local-zero-invariants-catalog-2026-09-08.md",
+        "qmd://q3_docs/q3-lean-aristotle/q3/rkhs-contraction.lean",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-req-2026-08-22-v-l73-5-semantic-admission-and-l73-6-authorization-2026-08-23.md",
+        "qmd://q3_docs/full/rh-q3.tex",
+        "qmd://q3_docs/docs/routeb-bus/six-centre-fixed-width-assembly-report-2026-09-07.md",
+        "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/completedtrackerscope.lean"
+      ]
+    },
+    {
+      "expected_path_match": null,
+      "expected_path_token": null,
+      "external_lean": {
+        "base_results": [
+          {
+            "base_id": "zeta23",
+            "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+            "exact_candidate": null,
+            "identity_after": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "identity_before": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "searched_regular_source_count": 329
+          }
+        ],
+        "bases_queried": [
+          "zeta23"
+        ],
+        "boundary": "CANDIDATE_MATCH_NOT_LEAN_PROOF_OR_INTERFACE_EQUIVALENCE",
+        "budget_seconds": 15.0,
+        "candidate": null,
+        "candidate_provenance": null,
+        "candidate_sha256": null,
+        "elapsed_seconds": 0.318585,
+        "enabled_bases": [
+          "zeta23"
+        ],
+        "errors": [],
+        "matches": [
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 15,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23.lean",
+            "snippet": "import Zeta23.ZeroSide.TightMult"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 7,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "Residue calculus on rectangles beyond one simple pole."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 8,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "Used for the weighted contour integral ∮ H·Λ'/Λ and for the Riemann–von Mangoldt count"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 13,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "  (Induction on S: subtract one principal part, remove the singularity, recurse.)"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 17,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "* `finite_zeros_rectangle`, `rectangleIntegral'_mul_logDeriv'`: the zero set is finite; self-contained form."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 23,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "open Complex Set Topology Filter Asymptotics Real"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 47,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "    -- the principal part at p, the remainder f₁, and its extension f₂ across p"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 117,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "        exact (hc.tendsto.mono_left nhdsWithin_le_nhds).isBigO_one ℂ"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 141,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "/-- The zero set of a function analytic on a neighbourhood of every point of a rectangle and"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 142,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "nonvanishing at one of its points is finite. -/"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": "finite_zeros_rectangle",
+            "line": 143,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "theorem finite_zeros_rectangle {f : ℂ → ℂ} {z w : ℂ} (hf : AnalyticOnNhd ℂ f (Rectangle z w))"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 157,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "/-! ## Meromorphic version: finitely many zeros AND poles inside the rectangle"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 159,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "Intended for f = completedRiemannZeta (simple poles at 0 and 1, residues ∓1):"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 160,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "(1/2πi) ∮ g·(f'/f) = Σ_{zeros ρ} ord_ρ(f)·g(ρ) − Σ_{poles p} m_p·g(p)."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 162,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "which is the shape of Mathlib's `completedRiemannZeta_residue_one` (m = 1). -/"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 183,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "  -- zeros are interior points"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 198,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "  -- residues: +ord·g at zeros, −m·g at poles"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 279,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "        ((hslope.const_mul (analyticOrderNatAt f q : ℂ)).add hcont).isBigO_one ℂ"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 346,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "        (hcont.sub (hslope.const_mul (m q : ℂ))).isBigO_one ℂ"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 350,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "point of the closed rectangle, f nonvanishing on its border, and Z the zero set of f in the"
+          }
+        ],
+        "max_matches": 20,
+        "query": "ONE NORMALIZED GROUND FAMILY REAL ZEROS AND LOCALLY UNIFORM LIMIT",
+        "query_sha256": "e5a58f7a98ddeed949d49e66962fdffb6e7b735799a092b66ae6820bb2d50cee",
+        "registry_sha256": "7c13b5eba028296a05d3c926c6e9e3af36730e9dd24f4014e4889290fef76557",
+        "schema": "q3_external_lean_search.v2",
+        "terms": [
+          "ONE",
+          "NORMALIZED",
+          "GROUND",
+          "FAMILY",
+          "REAL",
+          "ZEROS",
+          "AND",
+          "LOCALLY",
+          "UNIFORM",
+          "LIMIT"
+        ]
+      },
+      "id": "property_combination",
+      "query": "ONE NORMALIZED GROUND FAMILY REAL ZEROS AND LOCALLY UNIFORM LIMIT",
+      "result_count": 12,
+      "status": "PASS",
+      "top_paths": [
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-exact-roof-port-to-supplier-ledger-2026-09-01.md",
+        "qmd://q3_docs/q3-lean-aristotle/active/refs/proof-map.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-req-2026-08-28-r1a-correction-16-global-gauge-kill-and-log-derivative-rerank-2026-08-28.md",
+        "qmd://q3_docs/docs/routeb-bus/local-zero-invariants-catalog-2026-09-08.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-mythos-three-stage-fastest-kill-plan-2026-09-03.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-req-2026-08-22-v-l73-5-semantic-admission-and-l73-6-authorization-2026-08-23.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-g3-g5-g6-pillar-rope-batch-2026-08-19.md",
+        "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/samefamilygroundtrialcompositioncore.lean"
+      ]
+    },
+    {
+      "expected_path_match": null,
+      "expected_path_token": null,
+      "external_lean": {
+        "base_results": [
+          {
+            "base_id": "zeta23",
+            "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+            "exact_candidate": null,
+            "identity_after": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "identity_before": {
+              "canonical_root": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+              "git_root_relative_path": ".",
+              "git_top_level": "/mnt/hdd01/Soft/GitHub/zeta-23-lean",
+              "kind": "GIT_TREE_AND_CLEAN_LEAN",
+              "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+              "lean_status_clean": true,
+              "root_device": 2048,
+              "root_inode": 121645529,
+              "searched_regular_source_count": 329
+            },
+            "searched_regular_source_count": 329
+          }
+        ],
+        "bases_queried": [
+          "zeta23"
+        ],
+        "boundary": "CANDIDATE_MATCH_NOT_LEAN_PROOF_OR_INTERFACE_EQUIVALENCE",
+        "budget_seconds": 15.0,
+        "candidate": null,
+        "candidate_provenance": null,
+        "candidate_sha256": null,
+        "elapsed_seconds": 0.315768,
+        "enabled_bases": [
+          "zeta23"
+        ],
+        "errors": [],
+        "matches": [
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 3,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23.lean",
+            "snippet": "Released under Apache 2.0 license as described in the file LICENSE."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 6,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23.lean",
+            "snippet": "-- Zeta23.lean — root of library Zeta23: the headline modules (see README.md)."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 3,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "Released under Apache 2.0 license as described in the file LICENSE."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 8,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "Used for the weighted contour integral ∮ H·Λ'/Λ and for the Riemann–von Mangoldt count"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 11,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "* `residueTheorem_finset`: f holomorphic on Rectangle z w minus a finite set S of interior points, with"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 13,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "  (Induction on S: subtract one principal part, remove the singularity, recurse.)"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 14,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "* `rectangleIntegral'_mul_logDeriv` (the \"argument principle with weight\"): f, g analytic on a"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 15,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "  neighbourhood of each point of Rectangle z w, f ≠ 0 on the border, Z = the (finite) zero set of"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 16,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "  f in the rectangle  ⟹  RectangleIntegral' (g · f'/f) z w = Σ_{ρ∈Z} ord_ρ(f) · g(ρ)."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 17,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "* `finite_zeros_rectangle`, `rectangleIntegral'_mul_logDeriv'`: the zero set is finite; self-contained form."
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 30,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "/-- **Residue theorem on a rectangle for finitely many simple poles.** -/"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": "residueTheorem_finset",
+            "line": 31,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "theorem residueTheorem_finset {f : ℂ → ℂ} {z w : ℂ} (hre : z.re ≤ w.re) (him : z.im ≤ w.im)"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 47,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "    -- the principal part at p, the remainder f₁, and its extension f₂ across p"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 80,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "    -- f₂ is holomorphic on the rectangle minus the remaining poles"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 104,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "    -- the principal parts at the other poles are unchanged"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 120,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "    -- on the border, f = f₂ + P"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 139,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "    rw [ih', ResidueTheoremInRectangle hre him hp, add_comm]"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 141,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "/-- The zero set of a function analytic on a neighbourhood of every point of a rectangle and"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": "finite_zeros_rectangle",
+            "line": 143,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "theorem finite_zeros_rectangle {f : ℂ → ℂ} {z w : ℂ} (hf : AnalyticOnNhd ℂ f (Rectangle z w))"
+          },
+          {
+            "base_id": "zeta23",
+            "declaration_name": null,
+            "line": 157,
+            "match_kind": "TEXT_CANDIDATE",
+            "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+            "snippet": "/-! ## Meromorphic version: finitely many zeros AND poles inside the rectangle"
+          }
+        ],
+        "max_matches": 20,
+        "query": "the kill ledger has seven recurring defect classes and two of them are mechanically checkable",
+        "query_sha256": "084333ceff42216a38b46d79f2a0f716ef81fed07755dac84ace2b12181092a9",
+        "registry_sha256": "7c13b5eba028296a05d3c926c6e9e3af36730e9dd24f4014e4889290fef76557",
+        "schema": "q3_external_lean_search.v2",
+        "terms": [
+          "the",
+          "kill",
+          "ledger",
+          "has",
+          "seven",
+          "recurring",
+          "defect",
+          "classes",
+          "and",
+          "two",
+          "them",
+          "are",
+          "mechanically",
+          "checkable"
+        ]
+      },
+      "id": "fresh_insight",
+      "query": "the kill ledger has seven recurring defect classes and two of them are mechanically checkable",
+      "result_count": 12,
+      "status": "PASS",
+      "top_paths": [
+        "qmd://q3_docs/q3-lean-aristotle/active/insights.md",
+        "qmd://q3_docs/q3-lean-aristotle/docs/insights.md",
+        "qmd://q3_docs/docs/routeb-bus/agent-report-2026-09-04-goal058-normalized-xi-lattice-eigen-equation-preflight.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-goal058-r2-moving-krylov-feshbach-discriminator-2026-08-29.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka-queue.md",
+        "qmd://q3_docs/q3-lean-aristotle/active/graphs/route-kill-registry.md",
+        "qmd://q3_docs/docs/progress-log.md",
+        "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-goal058-class-floor-representation-2026-09-07.md"
+      ]
+    }
+  ],
+  "generated_at": "2026-09-11T16:25:05.610365+00:00",
+  "machine_id": "ccc9c191358572b7131ea8974a1ccfc1d643f78ddea72c9a41cb5a7f89bde914",
+  "mode": "search_plus_vsearch",
+  "plants": [
+    {
+      "id": "POST_JUNE_IDENTIFICATION",
+      "lexical_count": 0,
+      "matched_paths": [
+        "qmd://q3-docs/docs/routeb-bus/proshka/proshka-verdict-paper1-weil-positivity-canonical-test-full-adversarial-cleanup-2026-09-05.md",
+        "qmd://q3-docs/docs/routeb-bus/proshka/proshka-verdict-mythos-three-stage-fastest-kill-plan-2026-09-03.md",
+        "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
+        "qmd://q3-docs/docs/routeb-bus/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
+        "qmd://q3-docs/docs/routeb-bus/proshka/proshka-verdict-goal058-semilocal-sign-mechanism-2026-09-06.md"
+      ],
+      "query": "IdentificationAt",
+      "result_count": 30,
+      "status": "PASS",
+      "vector_count": 30
+    },
+    {
+      "id": "POST_JUNE_EDGE_SLIVER",
+      "lexical_count": 18,
+      "matched_paths": [
+        "qmd://q3-docs/docs/routeb-bus/aristotle-task-edgeslivermomentreduction.md",
+        "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/aristotle-task-edgeslivermomentreduction.md",
+        "qmd://q3-docs/docs/routeb-bus/037-muntz-r6-harvest-answer.md",
+        "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/037-muntz-r6-harvest-answer.md",
+        "qmd://q3-docs/docs/routeb-bus/035-edge-sliver-materialization-goal.md"
+      ],
+      "query": "edge-sliver",
+      "result_count": 41,
+      "status": "PASS",
+      "vector_count": 30
+    },
+    {
+      "id": "PRE_SWITCH_STEP33",
+      "lexical_count": 5,
+      "matched_paths": [
+        "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffentryhboximport.lean",
+        "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornerfamilybridge.lean",
+        "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornersegmentcert.lean",
+        "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16biasedresidualhornercert.lean",
+        "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16sourceintervalcert.lean"
+      ],
+      "query": "ActiveCenteredCoeffEntryHboxCert",
+      "result_count": 30,
+      "status": "PASS",
+      "vector_count": 30
+    }
+  ],
+  "qmd_index": {
+    "collection_file_count": 3303,
+    "collection_mask": "**/*",
+    "collection_root": "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/q3.lean.aristotle/.qmd_cache/q3_docs_current",
+    "identity": "bbf0090a48386c22009eb04fb1c93dd7e8615ba1721e530ddb450a1a7fac5e0c",
+    "index_path": "/home/chirurgie/.cache/qmd/index.sqlite"
+  },
+  "schema": "q3_semantic_index_receipt.v2",
+  "source_commit": "68e40ebd297b2cc0234fbf662f1200a5de6b2105",
+  "status": "PASS"
+}
+SEMANTIC_REFRESH_STAGE path=scripts/semantic_index_plants.py seconds=35.376
+SPINE_REFRESH_COMPLETE reason=semantic-index-refresh
+DENSITY_INTAKE_STAGE_EXIT 0 seconds 128.891
+DENSITY_INTAKE_COMMAND ['bash', 'specs_docs/session_start.sh']
+DEPRECATED_LEGACY_V9_MAINTENANCE
+────────────────────────────────────────────────────────────────
+ПЛОЩАДКА
+  repo    : /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean
+  branch  : rh_clean
+  worktree: 17 изменённых файлов
+  HEAD    : 68e40ebd 2026-09-11 [Proshka][DENSITY] Use one dummy variable in the cutoff display; concl
+  vs origin: ahead 0 / behind 0
+────────────────────────────────────────────────────────────────
+РАНТАЙМ КАНАЛА
+  control : ACTIVE
+  authority: CODEX_PROSHKA_FULL_EXCEPT_PX_RH_CLAIM
+  PX_RH   : NOT_READY
+  фаза    : PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  чат     : 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59  вызовов к Прошке: 8
+  открыта : 2026-09-10T08:33:00+02:00  (33.9 ч назад)  ← старше суток, проверь, та ли это фаза
+────────────────────────────────────────────────────────────────
+ТЕКУЩЕЕ ЗАДАНИЕ CODEX
+  status  : CLOSED
+  task    : docs/Codex/TASK_2026-08-30_goal058_weighted_residual_source_rate_rerank.md
+  source  : 93f66d31c6e942a248f6a9e9cc4bd2f23534fa11
+────────────────────────────────────────────────────────────────
+МОНИТОРЫ  (заявляет / последняя правка / возраст)
+  PSD_STEP33       DORMANT_2026-06-25       2026-08-10  (31 дн назад)
+  PHASE (H1/PO3)   PARKED_CLOSED            2026-08-10  (31 дн назад)
+  SPRINT           DONE_CLOSED              2026-08-14  (28 дн назад)
+────────────────────────────────────────────────────────────────
+ROUTE B
+  живая шина  : docs/routeB_bus — целей 70, ответов 76
+  последняя   : 058_realzero_ground_diagonal_to_xi.goal.md
+  БЕЗ ОТВЕТА  : 058_realzero_ground_diagonal_to_xi.goal.md
+  НА ПАУЗЕ    : 057_unified_chain_program_delegated_review.goal.md
+  адрес в state: {"schema_version": "route_b_execution_state.v3_live_bus", "updated_at": "2026-09-01T20:40:09+02:00",
+  state правился: 2026-09-01
+  арбитр      : CHECK: OK
+────────────────────────────────────────────────────────────────
+Q3 PROOF LOOP — BATTLE BRIEF
+  assembly bookkeeping (not proof %): fixed rows 51/69 · READY rows 48 · validation 3 · open rows 18
+  roof ports: 0/7 jointly bound · 4 candidate suppliers · 3 without exact supplier
+  roof contract: 6 semantic slots · 7 direct proof inputs · INVALID
+  roof quarantine: 1 legacy fixed edge(s) excluded from roof closure
+  candidate roof ports: hH1, hanchor, hMontel, hS2
+  no exact supplier: hH2a, hS1, h510
+  live goal: 058
+  verified frontier: REALZERO_GROUND_DIAGONAL_TO_XI · 3/8 fixed rows
+  active dependency root: FINITE_EVEN_HEAD_CORRECTED_SCHUR_MARGIN_AT_EXACT_RAYLEIGH_SHIFT
+  exact consumer contract: UNBOUND
+  next joint: BLOCKED
+  route blocker: ACTIVE_PHASE_TERMINAL_CONSUMER_MISMATCH
+  control gate: strict startup result is authoritative
+  loop: contract → suppliers → preflight → bridge → Lean → close → recompute
+
+ROUTE B — SESSION BRIEF
+
+WHERE WE ARE
+  Goal: 058 · Route B: CHALLENGER / NOT_RH
+  state dependency root: FINITE_EVEN_HEAD_CORRECTED_SCHUR_MARGIN_AT_EXACT_RAYLEIGH_SHIFT
+  state stage/status: RB-GOAL-058-FINITE-EVEN-HEAD-CORRECTED-SCHUR-MARGIN / ACTIVE_SUPPLIER_PREFLIGHT
+  active paper phase binding: NOT_BOUND_TO_THIS_ROOF
+    terminal consumer: published_Weil_criterion_on_all_complex_compact_smooth_tests
+
+WHAT CHANGED since previous session checkpoint
+  checkpoint HEAD: 8182dfb13bd2
+  completed bus goals: +0 · total 68
+  KILL outcome artifacts: +4 · total 12
+  ANSWERED requests: +51 · total 55
+  PROVED verdict artifacts: +0 · total 51
+
+WHAT IS BLOCKING
+  ACTIVE_SUPPLIER_PREFLIGHT
+
+WHAT CAN REOPEN
+  REOPENABLE RESEARCH DEBTS: 5
+  [NORMAL] G3_SATZ9_FUCHS_DIRECT_LEAN_FORMALIZATION · RESEARCH_DEBT · unlock HIGH · difficulty HIGH · last check 12d ago
+    execution / epistemic: KILLED / RESEARCH_DEBT
+    consumer: The Goal 058 G3 central-overlap denominator-floor receiver on the literal regular endpoint branch.
+    actually needs: Any proof-carrying bound strong enough to give the receiver's explicit positive closed-window denominator floor.
+    named object: A direct Satz9/Fuchs fixed-mode quantitative remainder with singular closed-window uniform stability. [SUFFICIENT_ONLY]
+    failure type: NO_DERIVATION
+    weaker probe: Derive the receiver floor directly from a Green/Volterra or residual estimate and prove the exact implication to the existing receiver.
+    reopen only if: An audited source theorem supplies quantitative fixed-mode residual-to-uniform-error control on the exact regular endpoint branch with explicit constants.
+  [NORMAL] SELECTED_FERRERS_EVEN_SECTOR_FLOOR_CURRENT_SOURCE_SHELF · RESEARCH_DEBT · unlock HIGH · difficulty HIGH · last check 12d ago
+    execution / epistemic: KILLED / RESEARCH_DEBT
+    consumer: The Goal 058 selected ground-to-trial chain requiring a positive even-complement margin on the cofinal schedule.
+    actually needs: A proof-carrying positive margin sufficient for the ground-to-trial consumer, not necessarily a global compression floor.
+    named object: A literal selected even-complement uniform coercivity theorem or a complete even head-tail Feshbach package. [SUFFICIENT_ONLY]
+    failure type: NO_SOURCE
+    weaker probe: Build the weakest residual-weighted or local Schur estimate and prove its exact implication to the ground-to-trial consumer.
+    reopen only if: A primary theorem supplies direct even-form coercivity with the literal selected shift and one constant uniform on the selected schedule.
+  [NORMAL] SELECTED_FERRERS_WEIGHTED_RESIDUAL_SOURCE_RATE_CURRENT_SHELF · RESEARCH_DEBT · unlock HIGH · difficulty HIGH · last check 12d ago
+    execution / epistemic: KILLED / RESEARCH_DEBT
+    consumer: The Goal 058 eventual complement-floor receiver for the literal selected Ferrers family.
+    actually needs: Any proof-carrying source estimate sufficient for the exact weighted-residual limit consumed by the existing receiver.
+    named object: A selected-family source rate for the weighted literal Rayleigh residual. [SUFFICIENT_ONLY]
+    failure type: NO_SOURCE
+    weaker probe: Target the complement-floor consumer directly and prove the exact implication from a derivative-level, oscillatory, resolvent, or local form estimate.
+    reopen only if: A derivative or log-Sobolev source theorem supplies a subcritical bound for the literal selected residual.
+  [NORMAL] SELECTED_FERRERS_ODD_SECTOR_FLOOR_CURRENT_SOURCE_SHELF · RESEARCH_DEBT · unlock MEDIUM · difficulty UNKNOWN · last check 12d ago
+    execution / epistemic: KILLED / RESEARCH_DEBT
+    consumer: The Goal 058 odd-sector floor discriminator for the selected Ferrers cofinal schedule.
+    actually needs: A certified positive lower margin for the selected odd contribution, uniform on the required cofinal schedule.
+    named object: One literal selected odd-compression uniform coercivity theorem or a complete signed Feshbach package. [SUFFICIENT_ONLY]
+    failure type: NO_SOURCE
+    weaker probe: Search for a consumer-subspace form or resolvent bound and prove its exact implication to the odd discriminator.
+    reopen only if: A source theorem gives one explicit uniform odd-form lower bound at the exact selected Rayleigh shift on the selected cofinal schedule.
+  [NORMAL] GOAL056_ARBITRARY_COFINAL_PROJECTION_TAIL_CURRENT_THEOREM_SHAPE · RESEARCH_DEBT · unlock LOW · difficulty HIGH · last check 12d ago
+    execution / epistemic: KILLED / RESEARCH_DEBT
+    consumer: The Goal 056 selected projection-tail bridge.
+    actually needs: The production selected schedule already has projection-tail decay through selectedProjectionTailDecay_of_selectedFerrersW5RateLedger. The historical arbitrary-cofinal strengthening is not consumed by the live Goal 058 ground-tail theorem.
+    named object: A projection-tail theorem for every already-supplied arbitrary cofinal schedule from fixed-vector density alone. [NOT_NECESSARY]
+    failure type: NO_SOURCE
+    weaker probe: Construct one source-coherent schedule and prove that its explicit bandwidth and energy bounds imply the exact selected projection-tail limit.
+    reopen only if: A source theorem supplies a uniform transported Fourier or Sobolev tail estimate on a named coupled schedule.
+
+TOP RESEARCH-VALUE DEBT
+  G3_SATZ9_FUCHS_DIRECT_LEAN_FORMALIZATION
+  Why interesting: It would reopen the shortest direct G3 source route and reuse the preserved paper theorem and existing conditional Lean receivers.
+  Next novel probe: Try a source-specific Green/Volterra inverse or a weaker terminal-consumer estimate instead of another direct Satz9 restatement.
+  Suggested action: ASK PROSHKA FOR NEW MATHEMATICS
+
+WHAT NEXT
+  Follow the physical bus and current execution-state action only.
+
+Search our debts today? YES / NO / SELECT  [default: SELECT]
+Prepare one gated research-debt challenge? YES / NO / SELECT  [default: NO]
+  Preparation is not a call class; dispatch still requires an eligible Control v9 EXPLORATION_REVIEW.
+  External web/literature search was NOT run.
+  A search hit may create REOPEN_CANDIDATE only; READY_FOR_RERANK remains non-executable.
+────────────────────────────────────────────────────────────────
+БАЗА ЗНАНИЙ
+  kill 320 · move 27 · journal_entry 1923 · dossier 175 · search_session 69 · search_term 391
+  спросить: ./orchestrator/kb.py ask "<термин>"   ·   флаги поиска: ./orchestrator/kb.py flags <адрес>
+────────────────────────────────────────────────────────────────
+МАНИФЕСТ ИНСТРУМЕНТОВ
+  schema q3_tool_manifest.v2 · families 9 · tools 90 · writers 55
+  authority: REPO_CANONICAL · sha256 b14af9d775c2ea7287936a0ca228b8b409fb3e78696758790ca9278930e25256
+────────────────────────────────────────────────────────────────
+ВАЛИДАЦИЯ КОНТРОЛЯ
+  прошла
+────────────────────────────────────────────────────────────────
+ГРАНИЦЫ
+  (из 014a_proshka_channel_write_scope.answer.md)
+────────────────────────────────────────────────────────────────
+РАЗДЕЛЕНИЕ ЦЕПЕЙ
+  чисто: AGENTS.md ↛ CLAUDE.md, CLAUDE.md ↛ вход Codex
+────────────────────────────────────────────────────────────────
+КАРТОГРАФ
+  routeb-inventory	FRESH	inputs unchanged since 993ae9cdbbae
+routeb-atoms	FRESH	inputs unchanged since 993ae9cdbbae
+litreview-needs-cards	FRESH	no unresolved NEEDS_CARDS rows
+────────────────────────────────────────────────────────────────
+ЗАПРОСЫ СУДЬЕ (PROSHKA_QUEUE)
+  НЕ ОТПРАВЛЕНЫ: REQ-2026-09-09-DISTANCE REQ-2026-09-08-HODGE REQ-2026-09-05-PROVE — текущий Codex-body должен выполнить review-plan и same-chat send сам
+────────────────────────────────────────────────────────────────
+МИГРАТОР ПРОТИВ ШИНЫ
+    new strategy rows (M3)  : 0
+    new verdict-kill rows   : 0
+────────────────────────────────────────────────────────────────
+ЖУРНАЛ РАЗВИЛОК (обязательные графы)
+  все записи несут обязательные графы
+────────────────────────────────────────────────────────────────
+ВХОДЯЩИЕ
+  пусто
+────────────────────────────────────────────────────────────────
+РАСХОЖДЕНИЙ НЕТ — источники согласованы.
+DENSITY_INTAKE_STAGE_EXIT 0 seconds 13.803
+DENSITY_INTAKE_SECONDS 144.82
+DENSITY_INTAKE_PROCESS_EXIT=0
+
+DENSITY_FINAL_SEARCH_BEGIN
+
+── ЗНАНИЕ (kb.py ask) ──────────────────────────────────────────
+── KILLS (1) ────────────────────────────────────────
+  [strategy/standing] VERDICT_GOAL058_DENSITY_2026_09_11
+      conditional_PSD_and_global_finite_gamma_PSD_induction
+
+── JOURNAL (1) ──────────────────────────────────────
+  2026-09-11 branch_decision  DENSITY full-law input and negative half-thinning conditional certificate
+      boundary: Codex frozen D>0,p=.60 was REFUTED, not silently reset. Reject further half-thinning conditional-pos
+
+2 hit(s) across layers for 'half-thinned'
+
+── СПЕКИ, КАРТЫ И ПАМЯТЬ РАЗВИЛОК ──────────────────────────────
+  docs/CHAT_DIGESTS.md
+  docs/Progress_Log.md
+  docs/Codex/AGENTS_LEDGER.md
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ASK_RECEIPT_JSON: {"boundary":"COMPLETE_REGISTERED_SHELF","candidate_rows":[{"excerpt":"── KILLS (1) ────────────────────────────────────────","metadata_sha256":"9055d003ecedc6d93a0327d55c0e7d47fb7accc2a26a208148edc121a12c72ae","provider":"knowledge-db","provider_id":"6dc395867a4a07b145233cd935a3ecccc1ac46d79baaebfa30b2f90607c00248","query":"half-thinned","query_sha256":"7d3d8bb5b9d57ca736ddb230f937672c514dda5fcf0f6aa41ae1e1157af2131b","title":"── KILLS (1) ────────────────────────────────────────","url":"kb.py ask"},{"excerpt":"[strategy/standing] VERDICT_GOAL058_DENSITY_2026_09_11","metadata_sha256":"1d81fbc0fe6210db62f487b0f3e18350bd92d1d65cb72742da09fdb5963be5b0","provider":"knowledge-db","provider_id":"8a94692fa23a59807c3d294c2fb01b01934a318baeff96aa15a35c4544f50425","query":"half-thinned","query_sha256":"7d3d8bb5b9d57ca736ddb230f937672c514dda5fcf0f6aa41ae1e1157af2131b","title":"[strategy/standing] VERDICT_GOAL058_DENSITY_2026_09_11","url":"kb.py ask"},{"excerpt":"docs/CHAT_DIGESTS.md","metadata_sha256":"355ddee85c951fd6ba430fc68f110be00975582b346fa221c46b001741a20b15","provider":"specs-docs","provider_id":"55437942bf5dd58cc0073445243b6eeb1da7ecd11c87b35c6d74ca32878c6650","query":"half-thinned","query_sha256":"7d3d8bb5b9d57ca736ddb230f937672c514dda5fcf0f6aa41ae1e1157af2131b","title":"docs/CHAT_DIGESTS.md","url":"specs/maps"},{"excerpt":"docs/Progress_Log.md","metadata_sha256":"16ff00e9fa9ea8b746ad76b2c04de2f5e9aba7cc9a47aa2baa0dad36c1c119f4","provider":"specs-docs","provider_id":"6aa93d137191fceb3301885234558349572f7d2e1647b8cfe91769c8dfbab39f","query":"half-thinned","query_sha256":"7d3d8bb5b9d57ca736ddb230f937672c514dda5fcf0f6aa41ae1e1157af2131b","title":"docs/Progress_Log.md","url":"specs/maps"}],"external_lean":"EXECUTED","provider_rows":[{"failure_count":0,"hit_store_count":2,"provider":"local-shelves","query":"half-thinned","query_sha256":"7d3d8bb5b9d57ca736ddb230f937672c514dda5fcf0f6aa41ae1e1157af2131b","status":"HITS"},{"candidate_count":0,"candidate_hashes":[],"collection_identity":"bbf0090a48386c22009eb04fb1c93dd7e8615ba1721e530ddb450a1a7fac5e0c","corpus_sha256":"646e9110d18fa3ba83ac561e97bf947d5e9c7ea7b32435bd54dec009e4c10694","provider":"q3_docs","query":"half-thinned","query_sha256":"7d3d8bb5b9d57ca736ddb230f937672c514dda5fcf0f6aa41ae1e1157af2131b","status":"LOCAL_ZERO_AT_CORPUS_HASH"}],"query":"half-thinned","query_sha256":"7d3d8bb5b9d57ca736ddb230f937672c514dda5fcf0f6aa41ae1e1157af2131b","schema":"q3_ask_local_receipt.v1"}
+Найдено в 2 хранилищах из 9.
+
+Просмотрены хранилища:
+  · knowledge.db (kill/move/journal/dossier)
+  · search_session/search_term (kb.py flags)
+  · capability (provides/requires — каталог стыковок)
+  · litreview (REFERENCES.md · *_CARDS.md · references.bib · pdfs/)
+  · aristotle_proofs.db (Lean-декларации)
+  · Q3/Proofs/RouteB/*.lean (живое дерево)
+  · specs/maps + GENEALOGY/Progress_Log/RECORDING_RULES/GLOSSARY/TOOLS
+  · q3_docs (bounded qmd search через research_oracle.py)
+  · all enabled external Lean bases (zeta23; registered read-only search)
+
+Совпадения — кандидаты. Для вопроса «подходит ли теорема точной цели» запусти:
+  python3 scripts/supplier_preflight.py --query 'half-thinned' --candidate <имя> --target <имя>
+ASK_STATUS: HITS
+
+DENSITY_FINAL_SEARCH_EXIT=0

@@ -14,9 +14,9 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-11-DENSITY · DENSITY: construct the full sign from the exact theta probability law · IN_REVIEW
+## REQ-2026-09-11-DENSITY · DENSITY: construct the full sign from the exact theta probability law · ANSWERED
 
-- `STATUS: IN_REVIEW`
+- `STATUS: ANSWERED`
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt`
 - Boundary: `GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
@@ -31,6 +31,10 @@ safety confirmation остаётся внешней границей. Судья
 - Delivered 2026-09-11T15:02:14.782722+00:00 (visible UI17:00) in same living chat6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59: exact TXT tile, unchanged binder line plus canonical short instruction, sent user message94fc406d-e741-417a-b489-1bf3e1b5f1b1 and natural Pro-Denkvorgang observed. No Answer now or duplicate request.
 - Publication confirmed before send: source659f389c, request122076a3430251d8f1f9b0cd0577938456eaaed2, binding/baseline750b201d6f831f9d34fe6a13c3d05d84d0348aa6; live remote exact, one352KB LFS source media uploaded. Expected verdict docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_DENSITY_2026-09-11.md absent at baseline. Permanent bridge10min heartbeat retained for this work cycle.
 - Intake prepared: read whole returned file, exact request/boundary/phase lock, baseline ancestry, commit/blob/full SHA256; one fresh Terra/xhigh checker and parent decisive proof check. If complete no-push reply appears, receive exact full download immediately instead of waiting for unavailable push. Check new density-to-form transfer and all mixed terms/tails, both parity sectors/all complex coefficients; BP1-BP5 and original scalar/shell work are closed, no rerun. Request review CLEAN/CLEAN; verdict not yet received or accepted. Runtime phase7/global52 unchanged until actual adjudication; PX_RH_CLAIM NOT_MADE.
+
+- Final receipt: verdict68e40ebd297b2cc0234fbf662f1200a5de6b2105/blob0ae221d9a120252288508eeacde3c1945cd2f312/SHA2560314932e68169410298c528f61c646896e3e1456a1426f951eeeb43b87bdb9f8,45050bytes799LF/finalLF; request lock, six-field phase and baseline ancestry independently verified. Browser complete54m2s, same chat; no resend.
+- Owner intake ACCEPTED_PARTIAL_PAPER; independent DC1-DC7 certificate accepted after two exact19632byte/28d6a9d5 CLEAN passes and parent checks. D=-7.25024384179487982e-36 +/-3.20e-54; rational odd witness negative on positive-measure state box. Prediction D>0,p=.60 REFUTED. Kills half-thinned conditional-block positivity only; DN20/SL20 and RH remain unproved. Full report docs/routeB_bus/DENSITY_INDEPENDENT_CHECK_2026-09-11.md.
+- Candidate from sections9/10: exact coefficient-dependent DN16-to-DN21 jump-energy transfer, including every compensator and full complex test class; first derive the bilinear defect. No next request/binding/send yet; no conditional/gamma sweep.
 
 ---
 
