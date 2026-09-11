@@ -14,9 +14,9 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-11-DENSITY · DENSITY: construct the full sign from the exact theta probability law · OPEN
+## REQ-2026-09-11-DENSITY · DENSITY: construct the full sign from the exact theta probability law · IN_REVIEW
 
-- `STATUS: OPEN`
+- `STATUS: IN_REVIEW`
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt`
 - Boundary: `GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
@@ -27,6 +27,10 @@ safety confirmation остаётся внешней границей. Судья
   `122076a3430251d8f1f9b0cd0577938456eaaed2` / `14952` / `83` /
   `09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2` /
   `ffeb152da44d1b1b89917f2921b287f80e3fb4a0` / `yes`
+
+- Delivered 2026-09-11T15:02:14.782722+00:00 (visible UI17:00) in same living chat6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59: exact TXT tile, unchanged binder line plus canonical short instruction, sent user message94fc406d-e741-417a-b489-1bf3e1b5f1b1 and natural Pro-Denkvorgang observed. No Answer now or duplicate request.
+- Publication confirmed before send: source659f389c, request122076a3430251d8f1f9b0cd0577938456eaaed2, binding/baseline750b201d6f831f9d34fe6a13c3d05d84d0348aa6; live remote exact, one352KB LFS source media uploaded. Expected verdict docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_DENSITY_2026-09-11.md absent at baseline. Permanent bridge10min heartbeat retained for this work cycle.
+- Intake prepared: read whole returned file, exact request/boundary/phase lock, baseline ancestry, commit/blob/full SHA256; one fresh Terra/xhigh checker and parent decisive proof check. If complete no-push reply appears, receive exact full download immediately instead of waiting for unavailable push. Check new density-to-form transfer and all mixed terms/tails, both parity sectors/all complex coefficients; BP1-BP5 and original scalar/shell work are closed, no rerun. Request review CLEAN/CLEAN; verdict not yet received or accepted. Runtime phase7/global52 unchanged until actual adjudication; PX_RH_CLAIM NOT_MADE.
 
 ---
 

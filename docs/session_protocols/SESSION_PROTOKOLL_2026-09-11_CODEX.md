@@ -3572,3 +3572,104 @@ BPY branch projection receipt (registered targeted migrator; old OC2 not replaye
   "schema": "UNCHANGED"
 }
 ```
+
+## DENSITY exact candidate — independent review INTENT
+
+Source commit 659f389caf5e6ce7a354e7e8e804fc0e26259949; new request docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt; 14952bytes/83LF/finalLF; SHA25609b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2. Not bound/pushed/sent. Sections9/10 exact. Same sole Terra/xhigh checker, expected10min, read-only/no descendants. Source shelf pins:
+
+S: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SLACK_2026-09-11.md | commit=659f389caf5e6ce7a354e7e8e804fc0e26259949 | blob=ac3504f3e44b0442fc50c95fe1a095aea57cd7dc | SHA256=1d658eb3d6d828d3bc651967087dabf8e2f9774d179b02c7607f25c7ffe54588 | bytes=49446
+R: docs/routeB_bus/SLACK_INDEPENDENT_CHECK_2026-09-11.md | commit=659f389caf5e6ce7a354e7e8e804fc0e26259949 | blob=de9578084446baecfbb2a316d7bda3da817c8c01 | SHA256=14e98d5544783927c54b41769714675ff2027a15e0a822bb5dabf4b069d379dc | bytes=37796
+P: docs/routeB_bus/litreview/pdfs/math_9912170.pdf | commit=659f389caf5e6ce7a354e7e8e804fc0e26259949 | LFS-pointer-blob=188e40b0e1153f629d5fe64b71b8644e4db43c21 | PDF-media-SHA256=04a444275e5522cef9a1ba9f7d1b9f20a752764d3548f9c48be6dbc055bb12ea | PDF-media-bytes=351648 | version=arXiv:math/9912170v1, local recompile dated November26,2024; original paper1999/2001 | read-scope=pp3-7,10-14; p7 rendered
+B: docs/BATCH_PATTERNS.md | commit=659f389caf5e6ce7a354e7e8e804fc0e26259949 | blob=cb63bab5fbff3d39bf63c0b0f081a2264e004f2b | SHA256=cded6dfd5950fd8dd230ad770ff0cf4a50a5bea9b2d5e91601b8eaa76120903b | bytes=11341
+
+2026-09-11T14:56:15.604109+00:00 — DENSITY request PASS1/PASS2 CLEAN on exact14952bytes/09b95fe3, FIRST_INCORRECT_ASSERTION NONE; source659f389c all4pins and sections9/10 exact. Sole checkerDONE, Terra/xhigh/read-only/no descendants, owner01a084f4-7498-7021-bac2-91d184d58dc7/local; no numeric job. Binding/publication INTENT, no send yet.
+
+| Pass | Severity | Finding — English term + Russian explanation | Fix applied |
+|---|---|---|---|
+| DENSITY PASS1 | CLEAN | No finding — источник и потребитель согласованы | None |
+| DENSITY PASS2 | CLEAN | No finding — повторная проверка области и переноса | None |
+
+## 2026-09-11T14:57:49.851759+00:00 — DENSITY binding confirmed; publication INTENT
+
+Request122076a3/binding750b201d; review-plan REVIEW_DISPATCH_READY, no holds. Exact plan and unchanged generated binder-format line below. Publish verified immutable pins, deliver and record real IN_REVIEW, then ONE refresh; refreshing before queue delivery transition would immediately stale the index again. No production gate is weakened; canonical plan has no fatal errors and still holds exact-edge consumption. Foreign changes preserved.
+```json
+{
+  "schema": "q3_review_dispatch_plan.v1",
+  "status": "REVIEW_DISPATCH_READY",
+  "holds": [],
+  "boundary_id": "GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN",
+  "request_id": "REQ-2026-09-11-DENSITY",
+  "call_class": "DELEGATED_STRATEGIC_REVIEW",
+  "packet_subtype": null,
+  "queue_status": "OPEN",
+  "conversation_id": "6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59",
+  "eligibility_receipt": null,
+  "attachment_manifest": {
+    "path": "docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt",
+    "bytes": 14952,
+    "lines": 83,
+    "final_newline": "LF",
+    "sha256": "09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2",
+    "git_blob": "ffeb152da44d1b1b89917f2921b287f80e3fb4a0",
+    "request_commit": "122076a3430251d8f1f9b0cd0577938456eaaed2",
+    "commit_blob": "ffeb152da44d1b1b89917f2921b287f80e3fb4a0"
+  },
+  "short_instruction": "Read the attached controlling request in full. Treat the .txt attachment as the authoritative byte-exact payload. Follow its required response schema and return exactly the requested verdict. Same living phase chat. Do not use Answer now.",
+  "transport": {
+    "owner": "CURRENT_CODEX_BODY",
+    "same_living_chat_required": true,
+    "single_attachment_required": true,
+    "repository_owner_confirmation_required": false,
+    "host_safety_confirmation": "ENFORCED_BY_ACTIVE_UI_RUNTIME",
+    "answer_now_forbidden": true,
+    "delivery_receipt_required": true,
+    "delivery_performed": false
+  },
+  "PX_RH_CLAIM": "NOT_MADE"
+}
+```
+
+Adjudicate REQ-2026-09-11-DENSITY. Authoritative byte-exact payload: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt at commit 122076a3430251d8f1f9b0cd0577938456eaaed2 (blob ffeb152da44d1b1b89917f2921b287f80e3fb4a0, SHA-256 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2, 83 lines, 14952 bytes) on Malaeu/chen_q3 rh_clean; fetch it from GitHub and verify the hash. Follow its required response schema and return exactly the requested verdict, committed at EXPECTED_VERDICT_PATH.
+
+Publication precheck stopped before fetch/push on independently updated foreign untracked TEAM_RUNTIME_REFACTOR_PLAN: old31e7ff4a -> observed9d8db144bb8f9bd64371636e3f4125e0617819c5ba51fed639d7ec2c66d8235c. Read new isolated A4/A5/core-review status; no intersection with named commits. Rebaseline observation only, preserve/exclude entire plan; all other foreign hashes unchanged. No platform rejection or overwritten bytes.
+
+## 2026-09-11T15:02:14.782722+00:00 — DENSITY delivered; final maintenance INTENT
+
+
+- Delivered 2026-09-11T15:02:14.782722+00:00 (visible UI17:00) in same living chat6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59: exact TXT tile, unchanged binder line plus canonical short instruction, sent user message94fc406d-e741-417a-b489-1bf3e1b5f1b1 and natural Pro-Denkvorgang observed. No Answer now or duplicate request.
+- Publication confirmed before send: source659f389c, request122076a3430251d8f1f9b0cd0577938456eaaed2, binding/baseline750b201d6f831f9d34fe6a13c3d05d84d0348aa6; live remote exact, one352KB LFS source media uploaded. Expected verdict docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_DENSITY_2026-09-11.md absent at baseline. Permanent bridge10min heartbeat retained for this work cycle.
+- Intake prepared: read whole returned file, exact request/boundary/phase lock, baseline ancestry, commit/blob/full SHA256; one fresh Terra/xhigh checker and parent decisive proof check. If complete no-push reply appears, receive exact full download immediately instead of waiting for unavailable push. Check new density-to-form transfer and all mixed terms/tails, both parity sectors/all complex coefficients; BP1-BP5 and original scalar/shell work are closed, no rerun. Request review CLEAN/CLEAN; verdict not yet received or accepted. Runtime phase7/global52 unchanged until actual adjudication; PX_RH_CLAIM NOT_MADE.
+
+Browser1/tab2 exact DOM message id94fc406d-e741-417a-b489-1bf3e1b5f1b1, role=user; filename plus full binder line and canonical short instruction observed. Composer cleared, natural Pro-Denkvorgang and Antwort stoppen observed. Existing permanent bridge automation read ACTIVE/every10min; no new watch. No verdict received.
+
+One background maintenance after final indexed queue transition, log docs/routeB_bus/phase5_codex/out/slack_intake_20260911.log, exact terminal marker DENSITY_PROCESS_EXIT. Full launch recipe (no mathematical computation):
+```python
+from pathlib import Path
+import subprocess,time,sys,traceback
+ROOT=Path('/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean')
+sys.path.insert(0,str(ROOT))
+from orchestrator.workflow_runtime import _execution_writer_epoch
+started=time.monotonic()
+try:
+ with _execution_writer_epoch(ROOT) as epoch:
+  print('DENSITY_MAINTENANCE_20260911_BEGIN',flush=True)
+  print('RECIPE_BEGIN\n'+Path(__file__).read_text()+'RECIPE_END',flush=True)
+  for cmd in (['python3','orchestrator/spine.py','--refresh','--reason','semantic-index-refresh'],['bash','specs_docs/session_start.sh']):
+   begin=time.monotonic();print('DENSITY_START',cmd,flush=True)
+   result=subprocess.run(cmd,cwd=ROOT)
+   print('DENSITY_STAGE_EXIT',result.returncode,'SECONDS',round(time.monotonic()-begin,3),flush=True)
+   if result.returncode:raise RuntimeError('stage failed: '+str(cmd))
+   epoch.recheck()
+  print('DENSITY_TOTAL_SECONDS',round(time.monotonic()-started,3),flush=True)
+  print('DENSITY_PROCESS_EXIT=0',flush=True)
+except BaseException:
+ traceback.print_exc();print('DENSITY_PROCESS_EXIT=1',flush=True);sys.exit(1)
+```
+
+## 2026-09-11T15:08:14.457873+00:00 — DENSITY maintenance verified; receipt publication INTENT
+
+One background PID1024353/starttime11887241, DENSITY_PROCESS_EXIT=0,141.970s total: refresh128.245s (builder33.190,dynamic53.372,fixed33.841), session_start13.725s/exit0. Actual follow-up ask DENSITY exit0/ASK_STATUS HITS; all enabled shelves completed, corpus11efd6d95556edf479da1bb1c1a96f6cbefde0290526434d3f1c05d8f47f7dbb. Full recipe/launch/log/search saved in existing slack_intake_20260911.log. No math job or repeated old migration/probe. BPY source659f389c and DENSITYrequest122076a3/binding750b201d already remote-confirmed; delivery17:00+02/message94fc406d exact tile+LINE+natural reasoning observed.
+
+Final scoped receipt commit/push from750b201d: own PROSHKA_QUEUE (IN_REVIEW), session protocol, AGENTS_LEDGER, maintenance log, registered RESUME/GOAL_HISTORY. Foreign digest suffix/card/REFERENCES/bib/other3PDFs/alias-card and refactor plan remain excluded; no indexed source changes after this successful final refresh. No Proshka verdict/acceptance or RH claim.
+
+After this receipt publication, a temporary alias-only nine-path integration window may be handed to task01a08f80-f033-7a31-8f3a-3aef042a3fbc using exact reviewed manifest78e43c3247442d2635c1cd72066298df2750b8b263c756c3e2bebe63b5180fa4. All9physical preimages matched current main; native A4/A5 CLEAN/CLEAN reported. Core runtime and mathematical/shared checkpoint files excluded. Root remains mathematical owner; no competing shared write during that short maintenance window, wait for explicit handback.
