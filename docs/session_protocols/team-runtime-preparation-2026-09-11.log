@@ -1,0 +1,269 @@
+Team Runtime isolated preparation evidence, 2026-09-11.
+Historical commands and fixture source only; never execute this file as a script.
+Canonical migration and native scheduled wake are NOT certified here.
+
+BEGIN q3-team-full-bootstrap-rehearsal-2026-09-11.py bytes=11004 sha256=c0865b589f9745c616f6a8ff86546603b5ff8f29f84a910e478f204d159f1ab1
+"""One bounded full-tree bootstrap rehearsal; all writes stay in a cache fixture.
+
+Real CLI, actor, locking, registration and local bare Git transport. The fixture
+establishes its own v1 owner during setup; it never transfers the live owner.
+No mathematical stages, actual native wake or semantic refresh are certified.
+"""
+import copy
+import hashlib
+import json
+import os
+from pathlib import Path
+import subprocess
+import sys
+from datetime import datetime, timezone
+
+SOURCE = Path('/home/chirurgie/.cache/q3-team-2026-09-11-01a08f80')
+CANONICAL = Path('/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean')
+ROOT = Path('/home/chirurgie/.cache/q3-team-full-bootstrap-fixture-2026-09-11-01a08f80')
+BASE = 'ec9f9057f103f3e75c1b8b3fa452c8a234f25cd9'
+TARGET = subprocess.check_output(['git', 'rev-parse', 'fde52e40'], cwd=SOURCE).decode().strip()
+ACTOR = os.environ['CODEX_THREAD_ID']
+assert ACTOR == '01a08f80-f033-7a31-8f3a-3aef042a3fbc'
+RESUME_SETUP = sys.argv[1:] == ['--resume-before-initial-checkpoint']
+RESUME_SEED = sys.argv[1:] == ['--resume-seed-before-commit']
+assert RESUME_SETUP or RESUME_SEED or not ROOT.exists(), 'Never restart an existing fixture or repeat its publication'
+ROOT.mkdir(exist_ok=RESUME_SETUP or RESUME_SEED)
+REPO, REMOTE = ROOT / 'owner', ROOT / 'remote.git'
+ENV = {**os.environ, 'Q3_OWNER_EPOCH': '1'}
+sys.path.insert(0, str(SOURCE))
+from orchestrator import workflow_runtime as runtime
+
+def digest(raw):
+    return hashlib.sha256(raw).hexdigest()
+
+def git(repo, *args):
+    return subprocess.check_output(['git', *args], cwd=repo, env=ENV, stderr=subprocess.PIPE)
+
+def emit(name, result):
+    print(name, json.dumps(result, sort_keys=True), flush=True)
+
+def cli(*args, permitted=(0,)):
+    result = subprocess.run(['python3', 'orchestrator/workflow_runtime.py', *args],
+                            cwd=REPO, env=ENV, capture_output=True, text=True)
+    value = json.loads(result.stdout)
+    (ROOT / ('command-%02d.json' % len(list(ROOT.glob('command-*.json'))))).write_text(
+        json.dumps({'args': args, 'exit': result.returncode, 'result': value}, indent=2) + '\n')
+    assert result.returncode in permitted, (args, result.returncode, value, result.stderr[-1000:])
+    return value
+
+def serialize(data, body):
+    return ('---\n' + runtime.yaml.safe_dump(data, sort_keys=False) + '---\n' + body).encode()
+
+def save(data, body):
+    before = (REPO / runtime.RESUME_PATH).read_bytes()
+    old, _ = runtime._resume_document(before)
+    data = copy.deepcopy(data)
+    data.update(revision=old['revision'] + 1, previous_sha256=digest(before),
+                observed_at=datetime.now(timezone.utc).isoformat())
+    raw = serialize(data, body)
+    runtime._resume_document(raw)
+    candidate = ROOT / ('resume-%d.md' % data['revision'])
+    assert not candidate.exists()
+    candidate.write_bytes(raw)
+    result = cli('resume-checkpoint', '--candidate', str(candidate), '--expected-sha256', digest(before))
+    assert (REPO / runtime.RESUME_PATH).read_bytes() == raw
+    emit('checkpoint', {'revision': data['revision'], 'bytes': len(raw), 'status': result['status']})
+    return data
+
+def install(paths):
+    with runtime._execution_writer_epoch(REPO) as epoch:
+        for path in paths:
+            previous = runtime._resume_file(REPO, Path(path))
+            payload = git(SOURCE, 'show', TARGET + ':' + path)
+            mode = int(git(SOURCE, 'ls-tree', TARGET, '--', path).split()[0], 8) & 0o777
+            runtime._resume_cas_bytes(REPO, Path(path), previous, payload, epoch, mode=mode)
+
+def commit(paths, message):
+    git(REPO, 'add', '--', *paths)
+    git(REPO, 'diff', '--cached', '--check')
+    git(REPO, 'commit', '-m', message)
+    return git(REPO, 'rev-parse', 'HEAD').decode().strip()
+
+if not RESUME_SETUP and not RESUME_SEED:
+    git(ROOT, 'clone', '--bare', '--shared', '--quiet', str(CANONICAL), str(REMOTE))
+    assert git(REMOTE, 'rev-parse', 'rh_clean').decode().strip() == BASE
+    git(ROOT, 'clone', '--shared', '--quiet', '--branch', 'rh_clean', str(REMOTE), str(REPO))
+elif RESUME_SETUP:
+    # The local bare fixture has no LFS media server. Its clone stopped before
+    # writing the index. Reconcile that setup only, preserving existing bytes.
+    assert not list(ROOT.glob('command-*.json'))
+    assert git(REPO, 'rev-parse', 'HEAD').decode().strip() == BASE
+    assert git(REMOTE, 'rev-parse', 'rh_clean').decode().strip() == BASE
+    assert not (REPO / '.git/index').exists()
+    for relative in git(REPO, 'ls-tree', '-rz', '--name-only', 'HEAD').decode().split('\0')[:-1]:
+        path = REPO / relative
+        if not path.exists() and not path.is_symlink():
+            raw = git(REPO, 'show', 'HEAD:' + relative)
+            assert raw.startswith(b'version https://git-lfs.github.com/spec/v1\n'), relative
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(raw)
+    git(REPO, 'read-tree', 'HEAD')
+    git(REPO, 'diff', '--quiet', 'HEAD', '--')
+else:
+    assert git(REPO, 'rev-parse', 'HEAD').decode().strip() == BASE
+    assert git(REMOTE, 'rev-parse', 'rh_clean').decode().strip() == BASE
+    assert len(list(ROOT.glob('command-*.json'))) == 1
+    assert (REPO / runtime.RESUME_PATH).read_bytes() == (ROOT / 'resume-66.md').read_bytes()
+assert Path(git(REPO, 'remote', 'get-url', 'origin').decode().strip()) == REMOTE
+# A fixture needs the legacy local lock before the new local-init exists.
+(REPO / '.git/q3-three-body.writer.lock').touch(mode=0o600)
+old, _ = runtime._resume_document((REPO / runtime.RESUME_PATH).read_bytes())
+body = '# Isolated startup and publication acceptance fixture\n\n' + ''.join(
+    '## ' + name + '\nIsolated fixture only; no mathematical or native-provider acceptance.\n\n'
+    for name in runtime.RESUME_SECTIONS)
+body = body.rstrip() + '\n'
+old.update(owner_thread_id=ACTOR, operation={'kind': 'NONE', 'state': 'NONE', 'id': '', 'evidence': []},
+           stages={key: 'PENDING' for key in old['stages']})
+old = save(old, body)
+remote_commit = commit([str(runtime.RESUME_PATH), str(runtime.RESUME_HISTORY_PATH)], 'Fixture-only owner seed')
+git(REPO, 'push', '--no-follow-tags', '--recurse-submodules=no', 'origin', remote_commit + ':refs/heads/rh_clean')
+remote_resume = (REPO / runtime.RESUME_PATH).read_bytes()
+remote_history = (REPO / runtime.RESUME_HISTORY_PATH).read_bytes()
+paths = git(SOURCE, 'diff', '--name-only', BASE, TARGET, '--').decode().splitlines()
+assert len(paths) == 21, paths
+initial = [p for p in paths if (p.startswith('orchestrator/') and p.endswith('.py')) or p == 'docs/cartographer/TOOLS.yaml']
+final = [p for p in paths if p not in initial]
+inputs = {p: digest(git(SOURCE, 'show', TARGET + ':' + p)) for p in paths}
+initial_inputs = {p: inputs[p] for p in initial}
+operation_id = 'FULL-TREE-BOOTSTRAP-FIXTURE'
+old['operation'] = {'kind': 'PUBLISH', 'state': 'INTENT', 'id': operation_id + ':local-install',
+                    'evidence': ['Fixture exact local subset: ' + json.dumps(initial_inputs, sort_keys=True)]}
+old = save(old, body)
+install(initial)
+local_commit = commit(initial + [str(runtime.RESUME_PATH), str(runtime.RESUME_HISTORY_PATH)],
+                      'Install exact runtime subset in isolated full-tree fixture')
+old['operation'].update(state='CONFIRMED', evidence=['bootstrap_local_commit:' + local_commit])
+old['pins']['head'] = local_commit
+old = save(old, body)
+identity = cli('team-local-init')
+phase = json.loads((REPO / 'orchestrator/state/CHANNEL_RUNTIME.json').read_bytes())['active_proshka_phase']
+request_path = 'docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt'
+request_commit = git(REPO, 'rev-parse', '122076a3430251d8f1f9b0cd0577938456eaaed2').decode().strip()
+request_raw = git(REPO, 'show', request_commit + ':' + request_path)
+request = {'path': request_path, 'commit': request_commit,
+           'blob': git(REPO, 'rev-parse', request_commit + ':' + request_path).decode().strip(),
+           'sha256': digest(request_raw), 'boundary_id': 'GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN',
+           'conversation_id': phase['conversation_id']}
+sources = {p: digest((REPO / p).read_bytes()) for p in [old['pins']['physical_goal'], request_path]}
+source_digest = digest(runtime._team_json(sources))
+request_subject = {'kind': 'REQUEST', 'id': old['pins']['request_id'], 'sha256': request['sha256']}
+verdict_subject = {'kind': 'VERDICT', 'id': 'FIXTURE_UNVERIFIED', 'sha256': digest(b'fixture unverified')}
+v2 = copy.deepcopy(old)
+v2.update(schema='q3_resume.v2', source_manifest=sources,
+          ownership={'installation_ref': identity['installation_ref'], 'epoch': 1, 'state': 'ACTIVE', 'transfer': None})
+v2['pins'].update(request=request, phase_key=phase['phase_key'])
+v2['stages'] = {name: {'subject': request_subject if i < 3 else verdict_subject, 'state': 'NOT_STARTED',
+                       'evidence': {}, 'source_sha256': source_digest, 'checked_by': None}
+                 for i, name in enumerate(runtime.TEAM_STAGES)}
+v2['operation'].update(subject={'kind': 'REPAIR', 'id': old['operation']['id'],
+                                 'sha256': digest(runtime._team_json(initial_inputs))},
+                       command='workflow-team-bootstrap-publish', inputs=initial_inputs)
+v2 = save(v2, body)
+install(final)
+commit(final + [str(runtime.RESUME_PATH), str(runtime.RESUME_HISTORY_PATH)], 'Install final source and control before startup')
+entry = cli('plan', permitted=(2,))
+assert not entry['startup']['fatal_errors'], entry
+emit('actual_entry', {'status': entry['status'], 'fatal_errors': entry['startup']['fatal_errors']})
+# Machine-global semantic indexes are outside this isolated CLI/transport fixture.
+v2['operation'] = {'kind': 'PUBLISH', 'state': 'INTENT', 'id': operation_id, 'evidence': [],
+                   'subject': {'kind': 'REPAIR', 'id': operation_id, 'sha256': digest(runtime._team_json(inputs))},
+                   'command': 'workflow-team-bootstrap-publish', 'inputs': inputs}
+v2 = save(v2, body)
+candidate_commit = commit([str(runtime.RESUME_PATH), str(runtime.RESUME_HISTORY_PATH)], 'Publish exact fixture checkpoint')
+result = cli('team-bootstrap-publish', '--operation-id', operation_id, '--expected-head', candidate_commit,
+             '--expected-remote-commit', remote_commit, '--expected-remote-resume-sha256', digest(remote_resume))
+assert result['status'] == 'CONFIRMED', result
+repeat = cli('team-bootstrap-publish', '--operation-id', operation_id, '--reconcile-only')
+assert repeat['status'] == 'CONFIRMED' and repeat['push_attempted'] is False, repeat
+v2['operation'].update(state='CONFIRMED', evidence=['Actual isolated remote publication: ' + candidate_commit])
+v2 = save(v2, body)
+assert (REPO / runtime.RESUME_HISTORY_PATH).read_bytes().startswith(remote_history)
+emit('PASS', {'base': BASE, 'source': TARGET, 'candidate': candidate_commit,
+              'first_publication': result, 'reconciliation': repeat,
+              'scope_count': len(paths), 'native_wake': 'NOT_TESTED', 'semantic_refresh': 'NOT_RUN_ISOLATED_FIXTURE'})
+
+END q3-team-full-bootstrap-rehearsal-2026-09-11.py
+
+BEGIN q3-team-full-bootstrap-rehearsal-2026-09-11-seed-confirmed.log bytes=1286 sha256=eb2f93a145c6b7a8ce50c11540484582d69a56d94a716b61f850d4d90fba82ef
+checkpoint {"bytes": 1392, "revision": 67, "status": "SAVED"}
+checkpoint {"bytes": 2681, "revision": 68, "status": "SAVED"}
+checkpoint {"bytes": 1504, "revision": 69, "status": "SAVED"}
+checkpoint {"bytes": 5645, "revision": 70, "status": "SAVED"}
+actual_entry {"fatal_errors": [], "status": "HOLD"}
+checkpoint {"bytes": 6564, "revision": 71, "status": "SAVED"}
+checkpoint {"bytes": 6647, "revision": 72, "status": "SAVED"}
+PASS {"base": "ec9f9057f103f3e75c1b8b3fa452c8a234f25cd9", "candidate": "16f6bc8c4c08702ad07cdf30aac876baf77d4ae4", "first_publication": {"candidate_commit": "16f6bc8c4c08702ad07cdf30aac876baf77d4ae4", "next": "confirm the saved checkpoint", "observation": {"remote_commit": "16f6bc8c4c08702ad07cdf30aac876baf77d4ae4", "remote_resume_sha256": "1c569e72a08ffb05685becc57a2d24132ef9fa469b2a7460d85fafc48dc0938b"}, "operation_id": "FULL-TREE-BOOTSTRAP-FIXTURE", "push_attempted": true, "status": "CONFIRMED"}, "native_wake": "NOT_TESTED", "reconciliation": {"candidate_commit": "16f6bc8c4c08702ad07cdf30aac876baf77d4ae4", "operation_id": "FULL-TREE-BOOTSTRAP-FIXTURE", "push_attempted": false, "status": "CONFIRMED", "writes_performed": false}, "scope_count": 21, "semantic_refresh": "NOT_RUN_ISOLATED_FIXTURE", "source": "fde52e40371295be1bbf1442a2c13990cda72e03"}
+
+END q3-team-full-bootstrap-rehearsal-2026-09-11-seed-confirmed.log
+
+BEGIN q3-team-final-complete-suite-2026-09-11.log bytes=3312 sha256=a73b8dbe0cfb2c5f4702567e2620c9583cd02bc0032c76707d02fba6d6ea504d
+..................................................................................................................................................usage: workflow_runtime.py [-h] [--root ROOT]
+                           {team-local-init,team-bootstrap-publish,team-integrate-candidate,team-watch-intent,team-record,team-observe-remote,team-reserve-effect,team-observe-native,team-confirm-effect,plan,run,close-session,close-phase,resume-checkpoint,review-plan}
+                           ...
+workflow_runtime.py: error: unrecognized arguments: --legacy-v9-maintenance
+....................................................PHASE_RECORD_INVALID: PHASE_RECORD_STALE_PREIMAGE
+.........PHASE_RECORD_STALE_PREIMAGE
+.PHASE_RECORD_STARTUP_FATAL: STARTUP_FATAL
+.................
+----------------------------------------------------------------------
+Ran 225 tests in 89.680s
+
+OK
+{"schema": "q3_search_evidence.v1", "status": "PASS", "observed_at": "2026-09-02T12:00:00+00:00"}
+CHANNEL_RUNTIME_SLACK_MANUAL_REVIEWS_RECORDED=0
+LINE: Adjudicate REQ-new. Authoritative byte-exact payload: request.txt at commit 017e15e2a41793785570bc088e85e517133b906e (blob eff597d34027253971dc043427ff479dcb65bcf4, SHA-256 e137988efd57f43b991bc3d52fb522f6cb51b518d30bea55f244a095baa80b7a, 3 lines, 49 bytes) on Malaeu/chen_q3 rh_clean; fetch it from GitHub and verify the hash. Follow its required response schema and return exactly the requested verdict, committed at EXPECTED_VERDICT_PATH.
+LINE: Adjudicate REQ-new. Authoritative byte-exact payload: request.txt at commit 017e15e2a41793785570bc088e85e517133b906e (blob eff597d34027253971dc043427ff479dcb65bcf4, SHA-256 e137988efd57f43b991bc3d52fb522f6cb51b518d30bea55f244a095baa80b7a, 3 lines, 49 bytes) on Malaeu/chen_q3 rh_clean; fetch it from GitHub and verify the hash. Follow its required response schema and return exactly the requested verdict, committed at EXPECTED_VERDICT_PATH.
+LINE: Adjudicate REQ-new. Authoritative byte-exact payload: request.txt at commit 017e15e2a41793785570bc088e85e517133b906e (blob eff597d34027253971dc043427ff479dcb65bcf4, SHA-256 e137988efd57f43b991bc3d52fb522f6cb51b518d30bea55f244a095baa80b7a, 3 lines, 49 bytes) on Malaeu/chen_q3 rh_clean; fetch it from GitHub and verify the hash. Follow its required response schema and return exactly the requested verdict, committed at EXPECTED_VERDICT_PATH.
+LINE: Adjudicate REQ-new. Authoritative byte-exact payload: request.txt at commit 017e15e2a41793785570bc088e85e517133b906e (blob eff597d34027253971dc043427ff479dcb65bcf4, SHA-256 e137988efd57f43b991bc3d52fb522f6cb51b518d30bea55f244a095baa80b7a, 3 lines, 49 bytes) on Malaeu/chen_q3 rh_clean; fetch it from GitHub and verify the hash. Follow its required response schema and return exactly the requested verdict, committed at EXPECTED_VERDICT_PATH.
+HOLD — queue restored; reconcile before another attempt.
+LINE: Adjudicate REQ-new. Authoritative byte-exact payload: request.txt at commit 58f351d4bf1bfba26510952f7ba249ef2b64793b (blob eff597d34027253971dc043427ff479dcb65bcf4, SHA-256 e137988efd57f43b991bc3d52fb522f6cb51b518d30bea55f244a095baa80b7a, 3 lines, 49 bytes) on Malaeu/chen_q3 rh_clean; fetch it from GitHub and verify the hash. Follow its required response schema and return exactly the requested verdict, committed at EXPECTED_VERDICT_PATH.
+
+END q3-team-final-complete-suite-2026-09-11.log
+
+Final merged documentation checks: 4 scoped manifest/registration/card tests PASS (0.715s), GOAL section6 identical to owner commit8477fd76, GOAL12283bytes<=12288. Direct user message in owner task and preparation task confirms equal standing of section6. SIBLING mathematics is untouched.
+
+Supplemental actual legacy-entry diagnostic repair (native severity LOW)
+Before: actual plan HOLD/fatal_errors=[] with migration/replay blockers and
+{scope:LOCAL_EXECUTION,code:"'ownership'"}. Independent /root/team_core_review
+confirmed the raw KeyError defect without any authority/order change.
+Regression before fix: test_v1_continuation_reports_migration_without_v2_ownership_error
+FAILED(failures=1),1test0.389s: unexpected LOCAL_EXECUTION ownership blocker.
+Fix: execute the existing local/actor/ownership observation only for q3_resume.v2.
+Command: python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRuntimeTests.test_v1_continuation_reports_migration_without_v2_ownership_error orchestrator.tests.test_workflow_runtime.TeamRuntimeTests.test_legacy_v1_local_install_confirmation_precedes_fresh_v2_publish_intent orchestrator.tests.test_workflow_runtime.TeamRuntimeTests.test_foreign_observer_cannot_poison_remote_or_native_records orchestrator.tests.test_workflow_runtime.TeamRuntimeTests.test_typed_cross_clone_release_claim_wake_and_old_owner_rejection orchestrator.tests.test_workflow_runtime.TeamRuntimeTests.test_source_drift_holds_affected_execution
+.....
+----------------------------------------------------------------------
+Ran 5 tests in 6.175s
+
+OK
+Actual CLI after fix: {"blockers":[{"code":"TEAM_RESUME_MIGRATION_REQUIRED","scope":"EXECUTION"},{"code":"RECONCILE_ORIGINAL_OPERATION_NO_AUTOMATIC_RETRY","scope":"REPLAY"}],"exit":2,"fatal_errors":[],"local_present":false,"status":"HOLD","writes_performed":false}
+The isolated checkpoint is stale v1 by design; it must never replace the live mathematical owner's state.
+
+Owner09f11c6a WATCH transition (isolated source, not native execution)
+Wp1 MEDIUM exact-int ambiguity fixed; Wp2/Wp3 CLEAN/CLEAN on plan037f5e6c.
+New native5 cadence regression before fix: TEAM_NATIVE_SCHEMA_INVALID,1test0.063s,FAILED(errors=1).
+After strict int5|10 / int20 guard: five targeted native cadence, watch replay/actual-wake gate, foreign owner, cross-clone handoff, legacy diagnostic tests.
+.....
+----------------------------------------------------------------------
+Ran 5 tests in 5.703s
+
+OK
+Native inventory read: bridge ACTIVE interval5, target01a084f4; historical schur PAUSED interval10. No existing heartbeat target01a08f80. Technical heartbeat CREATE intent is the exact prompt/settings in plan section14; no native creation or actual scheduled wake is certified by these tests.
+
+CADENCE430b9317 correction: all5/10 preparation above is SUPERSEDED and was never canonical. Wp4/Wp5 CLEAN/CLEAN on v3 plan f5a59eb7bc14b41d12ab096023795a26eba6ae617e0b773120709b10944e02fc. GOAL/PhaseD restored to reviewed10minutes; strict type checking retained for integer10/20. Owner confirmed actual bridge restoration to10; independent inventory matches. Old5minute technical CREATE intent never executed. Current10minute CREATE intent is exact plan section14, promptSHA256 0e8d31751d44b48da5e60f870865f804e550cfbeb4667f751d59f126f296cf71; native creation, readback and real wake pending.
+
+Final CADENCE correction validation (not the withdrawn5/10 run):
+Command: python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRuntimeTests.test_native_watch_requires_integer_ten_twenty_cadence orchestrator.tests.test_workflow_runtime.TeamRuntimeTests.test_watch_intent_is_not_replayed_and_activation_requires_actual_wake orchestrator.tests.test_workflow_runtime.TeamRuntimeTests.test_foreign_observer_cannot_poison_remote_or_native_records orchestrator.tests.test_workflow_runtime.TeamRuntimeTests.test_typed_cross_clone_release_claim_wake_and_old_owner_rejection orchestrator.tests.test_workflow_runtime.TeamRuntimeTests.test_v1_continuation_reports_migration_without_v2_ownership_error
+.....
+----------------------------------------------------------------------
+Ran 5 tests in 5.634s
+
+OK
+GOAL exactly matches independently reviewed67d4bc9f,12283bytes; section6 equals8477fd76 bytes. Original PhaseD/plan prefix from67d4bc9f preserved exactly. git diff --check PASS. No canonical math/checkpoint/owner changes.
+
+Final technical prompt route correction: local preparation origin resolves to /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean; canonical publishing origin resolves to https://github.com/Malaeu/chen_q3.git. Actual isolated git fetch --no-tags explicitURL refs/heads/rh_clean returned e6b5128d68357f1f8a48b63d24c0e2d46b43a554. No shared writes/config changes. Final10minute CREATE intent uses plan section14 prompt4261bytes SHA2562588756170013c9958717db90776d8514beba4c61d3eb4955188cfa929fb7fac, replacing unexecuted intermediate prompts. Final tools_census --markdown completed under isolated writer lock after merging the published CADENCE/SIBLING3 ancestry. Native execution/wake remain pending.

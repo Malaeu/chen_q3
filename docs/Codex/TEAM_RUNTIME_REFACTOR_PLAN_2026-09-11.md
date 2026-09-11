@@ -941,3 +941,511 @@ Fourteen wrapper fixtures on the exact deployed bytes:
 
 ```
 Receipt publication INTENT: commit only this plan and the full activation log, then ordinary push to the same branch; missing confirmation means inspect local/remote commits. Native HANDBACK will carry exact final commit and remote observation.
+
+
+## 11. Reviewed integration contract and implementation continuation
+
+The following exact supplemental I5 proposal is preserved as review history,
+not executable authority. I4 WORDING / I5 CLEAN completed Mode A.
+
+```text
+# Narrow completion of the reviewed Team Runtime writer contract
+
+Status: isolated implementation proposal; no live policy is changed by this file.
+Parent scope: owner-authorized TEAM_RUNTIME_REFACTOR_PLAN_2026-09-11, especially
+sections 3.1, 5 and 7. Native coverage audit confirmed two HIGH findings:
+reviewed worker files have no legal canonical integration route, and callable
+AVAILABLE/DEGRADED writers are absent from the exhaustive writer inventory.
+
+## Outcome and limits
+
+Complete the existing sole-owner integration step and writer inventory. Add no
+service, database, task selector, shell dispatcher, scheduler or proof admission.
+Retain current release/claim/epoch, independent review and named publication.
+Arbitrary same-user shell writes remain outside cooperative enforcement.
+
+## One registered source integration command
+
+Add `team-integrate-candidate --candidate <manifest.json>` to workflow_runtime.py.
+It copies exact declared bytes under the mode-specific gates below; it never commits, pushes, dispatches,
+changes ownership or accepts a theorem. REVIEWED_SOURCE candidate Git objects
+must already have been obtained through an existing authorized read/fetch operation; this command
+does not fetch or wait for a network operation while holding the writer lock.
+
+The closed q3_team_integration.v1 manifest has exactly: schema, mode,
+operation_id, owner_task, installation_ref, epoch, expected_head,
+implementer_assignment, assignment_sha256, checker_assignment, candidate_commit,
+and files. assignment_sha256 hashes the existing canonical immutable assignment
+view; mutable status observations do not silently change the producer identity.
+Mode is EVIDENCE_INTAKE or REVIEWED_SOURCE. Hashes are full SHA256; before_sha256
+may instead be ABSENT. Source-copy Git objects must be present locally before
+that mode runs. No deletions, renames of existing files, symlink components or
+executable evidence files are accepted.
+
+The manifest uses the existing canonical JSON encoder and limits. Its exact
+bytes are pinned by RESUME operation.subject={kind: REPAIR, id: operation_id,
+sha256: manifest_sha256}; operation.command names this registered command.
+The detached candidate may live in the owner's durable local output area.
+It need not first be copied into a shared report. Operation.inputs binds only
+existing source dependencies. The manifest has NO RESUME digest: the private
+reservation, saved after RESUME, binds its exact checkpoint hash. This removes
+the manifest/RESUME hash cycle. Before destination changes the private operation
+record durably stores the complete exact manifest, so recovery does not depend
+on an unsaved command argument or worker directory.
+
+EVIDENCE_INTAKE is the missing intake prerequisite, not an acceptance shortcut.
+It accepts only new immutable content-addressed files at
+docs/session_protocols/team-evidence-<full-sha256>.bin, containing the exact
+observed bytes. candidate_commit and checker_assignment must be null. Each sorted
+unique file record has exactly path, before_sha256, sha256 and content_base64;
+strict canonical base64 decodes to the exact hash-named bytes within the existing
+payload limits. There is no arbitrary source-path read. The producing assignment
+and immutable view hash must be present; an orchestrator assignment can preserve
+the raw output of its already observed native tool call. The detached manifest is
+the bounded input container; preparing it in the owner's assigned local output
+area needs no prior canonical write or Git commit. An exact already-present file is a
+verified NOOP; another hash/path or a shared registry, runtime, policy, shelf,
+index or mathematical source destination is rejected. Evidence is labelled
+unadjudicated observation. The route cannot mark FIX_VERIFIED or any mathematical
+stage DONE. A later native-result record may reference the saved bytes; it cannot
+pretend the bytes themselves authenticated a native execution. In particular,
+intake does not require a pre-existing native RESULT record: the current native
+record writer itself needs durable output/provider bytes. Authenticating that
+later observation and binding its actual provider/source/assignment identity is a
+separate prerequisite before the data can support classification or acceptance.
+Untrusted bytes can be retained as evidence without becoming trusted instructions.
+
+For BOTH modes, resolve the exact immutable producing assignment and verify its
+immutable-view hash, base_commit and owner/epoch against the registry and
+reservation. Only REVIEWED_SOURCE requires a Git source: each sorted unique file
+record has exactly path, source_path, before_sha256 and sha256;
+candidate_commit must resolve to a Git commit object, and
+git merge-base --is-ancestor assignment.base_commit candidate_commit must pass.
+Read each source as git show candidate_commit:source_path and verify the complete
+blob bytes, path mode and expected hash. A local object/hash is not ancestry.
+
+REVIEWED_SOURCE requires source_path == path, expected_head equal to the exact
+implementer assignment.base_commit, and a non-null independent checker. The
+checker's immutable base must equal that same commit. A changed canonical base
+requires a new assignment and corresponding review, not a silent transplant.
+It uses a closed completed-output artifact q3_team_integration_review.v1 with
+exactly schema, manifest_sha256, base_commit, candidate_commit, files (sorted
+path/sha256 pairs), implementer_assignment, checker_assignment, verdict. The
+base_commit must equal the immutable assignment bases and expected_head.
+verdict must be
+SOURCE_INTEGRATION_APPROVED, explicitly scoped to these bytes, not mathematical
+admission. Read this artifact from the genuine completed checker RESULT output,
+verify its output hash and native owner/model/source/assignment provenance, and
+compare every field with the manifest and assignments. A negative/missing verdict,
+an unrelated output or a textual occurrence of a hash cannot satisfy this gate.
+Reuse team_records' strict canonical parsing and native-observation validation;
+this is a typed review artifact, not another registry or issue lifecycle.
+
+The owner first records an exact integration INTENT, observes the current remote
+owner and reserves that operation using the existing registered commands. Each
+REVIEWED_SOURCE source file must be covered by the implementer's permitted paths. Intake and
+reviewed integration are separate operation IDs and reservations. The checker
+must be distinct from the implementer and owner; required review convergence
+remains a prerequisite. A reported completion or arbitrary output file is not enough.
+For REVIEWED_SOURCE, independently checked Git source bytes, rather than a
+mutable worker directory, are the copy source. This uses an isolated candidate Git commit before canonical
+integration; that local object is neither an accepted result nor publication.
+
+Under the existing writer lock, validate actor/epoch, the exact saved intent and
+local reservation, unchanged canonical HEAD, complete named candidate sources,
+review and assignment pins, and ALL destination preimages before the first write.
+Existing destination bytes must be clean against the recorded HEAD; an existing
+untracked destination is not ABSENT. Foreign dirty paths outside this manifest
+are preserved and excluded. Only source files authorized by these assignments
+may be copied; checkpoints, ownership registries and local runtime records keep
+their own writers and cannot be destinations. The integration manifest/output
+evidence cannot overwrite itself. Refuse duplicate/escaping paths and symlinks.
+
+Before any destination changes, durably retain the exact intent, all preimages
+and candidate hashes through the existing private operation record. Preimages
+are recoverable from recorded HEAD, or ABSENT; no foreign uncommitted bytes are
+overwritten. Reuse existing atomic per-file CAS, fsync and readback helpers.
+This is a recoverable sequence, not a claim of an atomic multi-file filesystem
+transaction. A partial write remains RESERVED/INCOMPLETE; there is no completed
+receipt until every named file has the candidate bytes and durable readback.
+Before any write, set an integration-pending marker in that existing private
+operation record. All canonical and external-effect writers check this marker
+BEFORE mutable control/source validation and refuse other operations. Checkpoint,
+record, watch, publication and other writers cannot run on the mixed tree.
+Read-only inspection and exact recovery of that SAME operation remain allowed.
+Only its full durable confirmation clears the hold. Generic effect confirmation
+cannot clear an integration marker, nor can another intake or owner transfer.
+
+Use the already available immutable verification checkout as the executing code
+root and the existing --root option for the canonical destination. Pin that
+engine's committed runtime/dependency identity in the private reservation and
+retain it through completion/recovery. The copy therefore does not overwrite its
+own executing recovery code. Recovery validates the persisted authority and
+original/candidate destination states; it does not require a half-updated canonical
+runtime or control to import successfully. No new daemon or generic shell launcher.
+
+Exact replay is local reconciliation of this SAME intent. Require unchanged
+actor/epoch, RESUME intent, HEAD and persisted candidate/review manifest. Each
+destination must have its original bytes or the recorded candidate bytes; any
+third state stops. Verify candidate bytes already present; replace only remaining
+original bytes. A changed mathematical source manifest may block ordinary work
+after a partial integration, but the original integration recovery must compare
+the persisted preimages/candidate bytes rather than demand the old destination
+bytes globally. No new remote grant is inferred, renewed or used for another
+action. The global pending hold is checked independently of the possibly updated
+control flag and is enforced at every registered writer entry, including commands
+that currently call _team_actor directly instead of team_guard. Final durable
+receipt records exact file hashes and completes only this
+local integration operation; the owner separately updates current source pins
+and repeats invalidated checks before acceptance/publication.
+
+## Complete advertised writer coverage
+
+Inventory all writes:true tools with callable status ENABLED, AVAILABLE or
+DEGRADED. Require exactly one fenced/inherited_only/isolated_only placement for
+each. Check native effects separately against their closed allow-list. Every
+non-fenced tool entry explicitly states that canonical direct invocation is
+disabled under Team Runtime; inherited tools require the existing transaction,
+and local isolated file producers return candidates for the integration command.
+Network/external entries retain an explicit named effect protocol; they are not
+silently relabelled file producers. These rules
+specialize existing manifest invokes rather than implying that AVAILABLE bypasses
+ownership. Restore the independently added canonical Slack reconciliation entry
+when merging the latest owner's manifest; do not lose it or broaden its scope.
+
+Concrete missing routes, based on the current registered implementations:
+
+| Tool | Inventory group and preserved execution |
+|---|---|
+| slack-manual-chat-reconciliation | fenced: retain the existing fixed-receipt spine writer, add the owner/epoch/pending-integration check inside its existing writer transaction; no generic CHANNEL_RUNTIME copy or new chat authority |
+| tool-census | isolated_only: run tools_census.py --markdown in a pinned isolated checkout; return docs/TOOLS.md as a reviewed source candidate with its actual manifest/source identity |
+| task-specific-generators | isolated_only: select the exact existing script and output paths from the current task; inspect real destinations first, run ordinary local file producers in isolation, integrate only named reviewed outputs; this family never authorizes an unclassified network/database writer |
+| packet-ingest | isolated_only: run the existing packet.py ingest in an isolated checkout; preserve exact reply and bus/mirror/queue/metadata candidate bytes; integrate reviewed transport artifacts only, and recompute SPINE_VIEW through its existing registered owner route rather than copy a generated control view |
+| aristotle | isolated_only for files, named native effect aristotle-submit for submission: exact authorized input/model/project boundary -> saved INTENT -> remote observation/reservation -> one existing registered skill submission from isolated input -> observed provider project ID plus input hash; on unknown outcome query existing projects/input before any submission; collect the existing project's result into isolated output, then evidence intake and independent Lean validation/source integration. No fee or new submission authority is granted |
+| paper-ingest | isolated_only for files, named native effect paper-ingest for the existing full source-acquisition command: pin source identifier, explicit bibliography key, script hash, isolated output paths and Zotero destination; saved INTENT -> remote observation/reservation -> one paper.sh invocation in the isolated checkout -> observed PDF/metadata/registry hashes and Zotero item/attachment IDs. Lost receipt requires checking that exact isolated run and remote DOI/archiveID/items/attachments; lookup error is UNKNOWN, not absence. Do not rerun the whole command after a partial/unknown result; reconcile the unfinished stage under a new exact scoped intent only after the original outcome is resolved. The existing Zotero behavior is disclosed, not silently discarded or attributed to local isolation |
+| cartographer-loaders | isolated_only classification retains HUMAN-only external execution. Codex does not run machine-local loader scripts. A human-supplied reviewed import packet can enter evidence intake; any canonical knowledge.db import still requires its existing exact database-write route and checks, never generic source-file integration |
+
+The two named native effects extend the existing closed effect allow-list; they
+are not a shell executor or new service. Their effect guards use the existing
+operation reservation and confirmation. Actual provider outputs stay separate
+from intent/reservation, including for the local-file portion of network tools.
+Add the minimal owner/pending guard to the existing spine Slack writer and its
+existing channel-writer tests; this preserves a currently callable canonical route.
+Do not treat AVAILABLE or DEGRADED as permission to bypass these conditions.
+
+Correction of an agent report: comparing inventory only with ENABLED faithfully
+describes the current implementation bug; it does not justify excluding the six
+other callable writers that this repair explicitly covers. The invariant is all
+three callable statuses. Alias-hunt is correctly excluded because writes=false.
+
+The issue-specific q3_repair_review.v1 artifact also needs an explicit positive
+verdict for its exact issue/repair/source manifest. A completed negative review
+cannot be recorded as FIX_VERIFIED. Extend its closed validator and existing
+negative-review regression case before final artifact convergence; do not infer
+approval from the mere existence of a completed output.
+
+## Files and acceptance
+
+Use existing workflow_runtime.py, team_records.py, existing test_workflow_runtime.py, TOOLS.yaml,
+spine.py and its existing test_channel_runtime_writer.py,
+and narrow control/GOAL/routing references. Reuse team_records.py validation where
+it already owns the exact checked candidate identity. No second journal/schema
+for issues or reports. Keep GOAL <=12KiB and RESUME <=8KiB.
+
+Required checks: independent candidate copied exactly; evidence intake without a
+pre-existing canonical output (followed by real independent review); no manifest/
+checkpoint hash cycle; a negative completed review cannot approve integration;
+first raw native output intake without prior Git/canonical/native RESULT record;
+candidate object type and producing-base ancestry enforced for REVIEWED_SOURCE;
+unrelated/older-branch candidate and changed assignment/base review rejected;
+preserved foreign dirty
+file; changed preimage/review/source/owner/epoch rejected before writes; existing
+untracked destination and symlink rejected; crash before and between file writes,
+exact partial/completed replay and third-state drift; every other registered
+writer is held during partial integration; fresh-process recovery from the pinned
+immutable engine after partial runtime-source update; no commit/push or network
+call; all callable writers represented; isolated/inherited direct canonical
+routes refused by cooperative routing. Complete the already required concurrent
+isolated-worker pilot with this real integration command. Independent plan and
+exact artifact review precede activation; actual native wake remains separate.
+```
+
+Implementation refinement after I6 HIGH: the same command now supports
+--recover-operation <id>, mutually exclusive with --candidate. It restores
+the exact persisted manifest only for the named PENDING copy. I7 HIGH
+also closed the completed-replay rewrite: COMPLETE accepts only candidate
+bytes and never reapplies an original preimage. No new operation authority.
+
+Current isolated candidate: a0af6fab plus these reviewed-response fixes and
+route documentation. Writers snapshot1ae63411 was integrated as d534b8f5.
+Workflow/channel suite196 PASS before the final replay/card additions;
+nine integration regressions PASS after completed-replay correction.
+Actual fresh-process recovery test is assigned to team_records_worker.
+Next: final exact artifact convergence, current mathematical v2 migration
+at a new owner boundary, cold entry/concurrent pilot/real issue lifecycle,
+actual native scheduled wake, scoped publication. No canonical Team Runtime
+activation or new maintenance window has occurred. Alias delivery is DONE.
+
+I8 HIGH bridge writer guard fixed in4753f668 and independently confirmed closed
+in I9. I9 MEDIUM required the actual fresh-process recovery test; worker
+a1ebdc6c is integrated asdf053bc2, with the parent correction that the pending
+plan is top-level HOLD/exit2 and continuation RECOVERY_ONLY. The subprocess
+kill/recovery case PASS in2.028s; four additional integration boundary cases
+PASS. It preserves a committed immutable engine, loses/tampers the detached
+manifest, checks the fresh pending plan, recovers by saved operation, and refuses
+completed recovery. Provider observations in fixtures are simulated, not native
+wake evidence. Parent routing checks7PASS; request-binding checks9PASS.
+Exact artifact convergence and live activation criteria above remain pending.
+
+## 12. Initial-publication repair (review candidate)
+
+Deployment preparation after I10/I11 CLEAN found a separate HIGH: _team_remote
+requires a v2 remote before the first v2 push, while INTENT confirmation requires
+a prior private reservation. Existing v2-only two-clone fixtures did not cover
+initial publication. No canonical activation has occurred. The owner has granted
+preparation only until a fresh maintenance boundary after its current result.
+
+Keep the existing writers and add one narrowly registered command in
+workflow_runtime.py, with its tests in test_workflow_runtime.py:
+
+```text
+team-bootstrap-publish --operation-id <id> --expected-head <commit> --expected-remote-commit <commit> --expected-remote-resume-sha256 <sha256>
+team-bootstrap-publish --operation-id <id> --reconcile-only
+```
+
+This is only initial owner-preserving v1-to-v2 publication on the existing
+origin/rh_clean, never a second ownership acquisition or a mathematical selector.
+Initial use requires local v2/ACTIVE/epoch1/no transfer, the actual task and
+private installation identity, an exact publication INTENT with the same ID,
+unchanged source/input hashes, and local HEAD equal to the explicit candidate.
+The committed candidate RESUME must equal the current checkpoint. The verified
+history must contain the owner-preserving v1 local-install INTENT and its real
+local-commit confirmation, as well as the exact pinned remote v1 checkpoint.
+The local-install operation ID is `<publication-id>:local-install`; its confirmed
+evidence names `bootstrap_local_commit:<commit>`, an ancestor of the candidate.
+This confirms local installation only, never the later remote publication.
+Before any reservation, the live remote
+must match both expected commit and RESUME hash, retain the same owner/host,
+physical goal, source/request/phase pins, and be an ancestor of the candidate.
+An already-v2 remote cannot start this route. The scoped legacy migration grant
+and safe boundary remain required; flags or model output do not supply authority.
+Before the local-install intent, the current v1 operation must be NONE or
+CONFIRMED. Resolve any existing INTENT/UNKNOWN from its own evidence first;
+never replace it with the maintenance operation. The bootstrap validator checks
+that immediate archived predecessor and the actual owner boundary, rather than
+treating the isolated clone's stale mathematical checkpoint as current.
+
+The publication scope is closed before the candidate commit: `operation.inputs`
+contains every changed non-checkpoint path and its exact reviewed after-SHA256;
+`operation.subject` is REPAIR / operation ID / SHA256(canonical JSON inputs).
+Create this new v2 PUBLISH/INTENT only after final non-checkpoint bytes and the
+required refresh are known. The migrated operation was already CONFIRMED from
+an actual local commit, so this creates no unresolved-operation replacement and
+needs no prediction of later derived hashes. It is the saved reviewed migration
+scope; runtime flags never authorize additional paths.
+The only two metadata exceptions are RESUME.md and GOAL_HISTORY.md: their
+committed bytes must equal the verified current checkpoint/history. The history
+must extend the exact remote history by complete verified entries, retaining its
+bytes as a prefix and the pinned v1 checkpoint. No reset or rebuilt history.
+
+Under the existing writer lock, verify that `remote..candidate` is a linear
+non-merge descendant chain, and the full tree diff is exactly the sorted union
+of operation.inputs and those two metadata paths. Each input hash must match
+the candidate blob and unchanged working bytes. Require regular Git blobs with
+mode100644 or100755; reject deletions, symlinks, duplicate/noncanonical paths,
+extra or omitted changes and foreign unmentioned paths. Unchanged foreign dirty
+files outside the committed diff are preserved and never staged by this command.
+Build a closed `q3_team_bootstrap_publish.v1` manifest with operation ID, branch,
+remote predecessor commit/checkpoint/history hashes, candidate commit and parent
+chain, input-scope digest, and sorted file rows containing path, before/after
+SHA256 and before/after mode (ABSENT/null only for newly added preimages).
+Store this whole manifest and its canonical JSON hash in the private RESERVED
+operation, alongside exact actor/installation/epoch and candidate checkpoint.
+The full manifest is private to avoid a self-referential committed-checkpoint
+hash. Reconciliation validates this same saved manifest; arguments cannot select
+a different candidate or scope after reservation.
+
+Recheck checkpoint, history, HEAD, inputs and private preimage under the existing
+writer lock, then durably save the reservation before the first push. Release
+the lock for exactly one ordinary non-force fast-forward update. Recheck the mandatory
+`git merge-base --is-ancestor <expected-remote> <candidate>` invariant; only then
+invoke `git push --no-follow-tags --recurse-submodules=no origin
+<candidate>:refs/heads/rh_clean`. The server rejects an update that would remove
+commits from its current tip. There is no force option (including any lease),
+plus-prefixed refspec or moving HEAD. Check the fetch/push endpoint is the same
+single origin; mirror mode is forbidden. Existing hooks and config stay intact.
+Do not retry the push automatically. No config, hook or other branch changes.
+The expected remote commit is an observation checked before reservation, not an
+atomic lock on a remote branch. If another actor moves the branch to an already
+reviewed ancestor of the exact candidate, ordinary fast-forward publication may
+succeed and preserves its entire history. If the new tip is not an ancestor,
+the server refuses and reconciliation reports UNKNOWN. We do not promise exact
+expected-tip compare-and-swap or protection against arbitrary remote resets by
+uncooperative actors. Those were supplemental overclaims, not owner-authorized
+requirements. Validate each intermediate candidate commit as well as the final
+tree: changed paths stay within the closed migration scope; every RESUME retains
+the same owner/host and mathematical pins. No foreign changes can be published
+temporarily and hidden by a later revert.
+
+After the push, re-observe the remote branch and candidate checkpoint, then
+durably confirm only the identical expected candidate commit and v2 bytes.
+On old/different/unavailable remote evidence return UNKNOWN without replaying
+the push. A repeated invocation, including one after a lost receipt, performs
+reconciliation only from the persisted operation; argument drift is rejected.
+Reconcile-only without an existing operation does not reserve or push anything.
+Do not manufacture a pre-action reservation after observing an already executed
+push. A crash after reservation but before push can therefore remain UNKNOWN:
+the command reports the exact unresolved operation and never guesses absence.
+The ordinary checkpoint writer then consumes the real confirmed private receipt
+for INTENT-to-CONFIRMED. A technical publication never advances proof acceptance.
+
+Register exact effects in TOOLS: private q3_team_local.v1, fetched Git objects,
+origin/rh_clean tracking reference and the existing remote rh_clean reference.
+Add it to fenced inventory and the cross-host card; regenerate docs/TOOLS once
+after the final registration changes. Reuse the existing remote-read, actor,
+source, operation and durable-write helpers; no new service, database or module.
+The old remote read may be factored into a version-neutral private read helper;
+normal team-observe-remote remains v2-only.
+
+Bootstrap order at the actual boundary:
+1. Reconcile and finish any existing v1 INTENT/UNKNOWN independently. Only from
+   NONE/CONFIRMED save exact preimages and a v1 PUBLISH/INTENT for the reviewed named local
+   runtime/registry installation only, ID `<publication-id>:local-install`,
+   retaining the actual mathematical state and the exact known subset hashes.
+2. Install the reviewed runtime/registry/TOOLS subset; make its named local
+   commit (TOOL_MANIFEST must match HEAD before resume-checkpoint).
+3. While the control is still the old version without TEAM_RUNTIME_VERSION,
+   use the registered checkpoint writer to confirm that v1 local-install
+   operation from the actual subset commit and readback, recording
+   `bootstrap_local_commit:<commit>`. The new runtime accepts v1-to-v1 under this
+   old control. Then run registered local-init and save the first actual-owner
+   v2 checkpoint, preserving that CONFIRMED operation kind/ID/state and pins,
+   original history and readback. Add its typed fields without claiming a push.
+4. Install final reviewed GOAL/control/entry and generated docs/TOOLS.md. Make
+   a named local source/control commit BEFORE the single batched refresh or
+   any further checkpoint: actual startup rejects an uncommitted control or
+   declared startup surface. docs/TOOLS.md belongs only to this final source
+   batch, not the earlier runtime/TOOLS.yaml installation. Run the required
+   refresh and independently verify all final non-checkpoint bytes. If refresh
+   changes a startup-relevant tracked derived path, commit its final bytes before
+   step5; an intermediate commit must never carry a different version of a path
+   already bound to the final input manifest. If it would, stop and revise the
+   installation sequence before publication. Do not bypass the startup gate.
+5. Save a second v2 checkpoint starting the distinct final PUBLISH/INTENT
+   operation `<publication-id>`, command workflow-team-bootstrap-publish, with
+   the exact final inputs and bound REPAIR subject. Verify its history/readback.
+   This explicit final checkpoint precedes publication and never confirms it
+   by prediction; the earlier local-install confirmation cannot substitute.
+6. Make the named exact checkpoint/history candidate commit. Run team-bootstrap-publish, which
+   constructs, verifies and reserves its full closed manifest before any push.
+7. Only after its actual confirmed receipt may a normal checkpoint record
+   INTENT-to-CONFIRMED; it does not recursively require another publication.
+No skip-fatal and no caller-identity substitution. Indexed inputs finish before
+one required batched refresh. Native assignment pilot, issue lifecycle and
+scheduled wake are separate acceptance steps after remote ownership exists.
+
+Parent full-tree subprocess acceptance found the missing step4 commit barrier
+after Bp8's static CLEAN. With the actual registered local-init, clean plan was
+HOLD with zero fatal errors; dirty control was FATAL with
+STARTUP_CONTROL_BLOB_DRIFT and STARTUP_RELEVANT_DIRTY_PATHS. Supplemental Bp8
+classified this HIGH. The explicit local commit ordering above fixes the plan;
+the bootstrap fixture's mocked plan had not tested this startup condition.
+
+Required tests use a local bare remote initially at a real v1 checkpoint: exact
+first publication; forbidden v2 start, foreign owner/epoch/changed pins or local
+candidate drift; refusal without saved intent or matching original history;
+interruption before reservation, after reservation/before push, after server-side
+push/before local confirmation; same-operation reconciliation with zero repeat
+pushes; changed/unknown remote, argument conflicts and unrelated foreign bytes;
+extra/omitted/deleted/symlinked candidate paths, incorrect hashes/modes, unbound
+scope digest, history replacement and non-linear candidate ancestry.
+Change the remote between its final observation and push: a nonancestor tip is
+refused without loss; a reviewed intermediate ancestor may fast-forward without
+losing any commit and is confirmed only by exact candidate readback. Test a
+rollback without claiming atomic expected-tip equality. Reject a non-descendant
+candidate before any push. Assert no force/lease or hook/config override occurs.
+Independent plan and exact artifact review must converge before this repair is
+used. I10/I11 do not cover this newly discovered HIGH or its implementation.
+
+
+## 13. Final preparation after the published observer advice
+
+Preparation base8477fd769721eacab272356acaf48cf4fcc6c61d includes the accepted
+density resultb7bf286e and parallel observer advice. Preserve all their ancestry
+and bytes; GOAL section6 is retained verbatim. The mathematical owner confirmed
+the direct user instruction and same-owner/same-watch interpretation recorded
+in INSTRUCTION_ISSUES. Do not install this clone's stale RESUME or history.
+
+Current evidence:225 workflow/channel/bind tests PASS89.680s, including real
+subprocess termination after server ref update and fresh-process reconciliation
+without a second push. A full-tree, actual CLI/actor/lock/registration rehearsal
+passed all21 source paths and the correct intermediate commit order with a
+local bare remote. This is fixture evidence only: canonical migration, semantic
+refresh, actual concurrent assignments, issue lifecycle and native scheduled
+wake are still separate acceptance criteria.
+
+The exact rehearsal script, complete suite output and successful rehearsal log
+are preserved in docs/session_protocols/team-runtime-preparation-2026-09-11.log.
+This additional receipt path must be bound in final operation.inputs, alongside
+all21 source paths and any ACTUAL owner-authored protocol/ledger/derived changes.
+Only RESUME and GOAL_HISTORY are bootstrap metadata exceptions. The prepared
+merge history is NEVER the canonical publication history: the actual owner
+installs the reviewed bytes as named linear commits on its fresh canonical base.
+
+Final native read-only review dispatch intent: existing /root/team_core_review,
+gpt-5.6-terra/medium, no descendants, owning task01a08f80, two sequential passes
+on one immutable manifest/diff. Exact base/candidate/file hashes and raw native
+review receipts remain external to those frozen inputs. Expected bound15minutes
+per pass. No source edits by the reviewer, no acceptance of its own work.
+The prepared source remains NON_EXECUTABLE until those checks converge and the
+mathematical owner grants the safe boundary and executes section12.
+
+
+Final source B5/B6 CLEAN/CLEAN was followed by one actual-entry LOW finding:
+legacy v1 continuation leaked a raw ownership KeyError alongside its valid
+migration blocker. One v2-only local-observation guard and a failing-before,
+passing-after regression repair this diagnostic. Five targeted tests PASS6.175s;
+actual CLI now reports only applicable migration/replay holds, no fatal errors
+or writes. The earlier225-test suite remains evidence for unchanged behavior;
+it does not claim to have run the new test. Exact replacement manifest and two
+new on-target source passes are required before activation. SIBLING and the
+canonical owner/watch/checkpoint remain untouched. No further tool census is
+needed: registration, tool inventory and startup front door did not change.
+
+
+## 14. Addressed technical watch after CADENCE correction
+
+Earlier Wp2/Wp3 plan037f5e6c and unexecuted5minute CREATE intent are WITHDRAWN by published CADENCE430b9317. They were isolated preparation only, never canonical. Historical5/10 test evidence remains in the preparation log; it does not describe current behavior. Wp4/Wp5 are CLEAN/CLEAN on the following exact v3 plan (3650bytes, SHA256f5a59eb7bc14b41d12ab096023795a26eba6ae617e0b773120709b10944e02fc).
+
+# Scoped CADENCE reconciliation, successor of Wp2/Wp3
+
+Authority: the direct user confirms GOAL section6 and ADVICE_* as owner instructions and requires section6 verbatim; SIBLING remains exclusively with the mathematical owner. Published CADENCE430b9317f0ab154b02ff93a188a92723bd4179dc corrects the observer's WATCH09f11c6a: continuation stays10, agent checks20. No dual5/10 acceptance or new schema. No mathematical/shared-write ownership is transferred. The technical watch remains task-local to01a08f80-f033-7a31-8f3a-3aef042a3fbc.
+
+Exact predecessor: isolated c7f806fe merges09f11c6a over67d4bc9f. Source67d4bc9f had B7/B8 CLEAN. The5/10 code, tests and GOAL section3 transition were only uncommitted preparation and were NEVER canonical. Wp1 MEDIUM required exact integer checks (membership accepts floats); Wp2/Wp3 CLEAN applied to the now-superseded5/10 plan, not to this correction.
+
+Minimum outcome: preserve the existing10/20 schema values and original reviewed GOAL section3 byte-for-byte; preserve all eight section6 lines from8477fd76. Restore PhaseD's10minute instruction. Keep exact type(x) is int for BOTH cadence fields to enforce the existing integer contract; continuation_minutes ==10, agent_check_minutes ==20. Reject5, floats, bools, strings, arrays, null and other values before any private receipt write. This is schema validation repair, not a new accepted schema/cadence. One existing-test-file regression checks valid10, no inferred scheduled wake, every rejected input and unchanged receipt. Existing owner/watch/legacy checks remain.
+
+Update only the isolated workflow_runtime.py and existing test, GOAL, the existing plan/issues/preparation log and generated TOOLS documentation. Preserve prior evidence as historical; explicitly mark the5minute preparation and unexecuted CREATE intent superseded. No services, database, second selector, fake identity, canonical write, old RESUME/history install or external Codex process. The current mathematical owner must independently reconcile its actual bridge (last provider observation5; CADENCE's unchanged10 assertion is stale). This task does not touch it.
+
+Native technical watch: inspect saved inventory again, reuse a matching existing task watch; create only on confirmed absence, native heartbeat named Q3 — стройка и советы, existing technical target01a08f80, ACTIVE,10minutes. Prompt reads canonical plan and technical handback, observes published TO:STROJKA/BOTH advice by commit/content hash versus own reports (shared HEAD is not a cursor), and resumes only already authorized technical work in isolation until actual owner boundary. It preserves math owner/SIBLING and does not mutate the shared checkout or auto-fast-forward it. Record intent before native mutation, provider readback after, reconcile unknown effect without replay. Unchanged quiet, meaningful result/failure/user-action reports; agent necessity20minutes. Existing10minute mathematical bridge is separate and remains under its owner. Scheduled wake evidence must be an actual provider event, distinct from settings.
+
+Validation and completion: narrow regression including no-write failures, unchanged section6/full original section3 and GOAL<=12KiB; preserve complete225-test/rehearsal evidence without rerunning the nonrepeatable fixture. Two exact artifact passes after this plan converges; native create/readback and real wake are still pending. Deliver exact source manifest to actual owner for section12 linear installation on its current base and real migration/refresh/publication. Shared boundary is closed; do not mark canonical refactor accepted from isolated tests.
+
+Current observation: mathematical owner independently restored bridge ACTIVE10 via the native tool; technical task read the saved inventory and confirmed it. No further change to bridge or GOAL section3 is needed. The current technical CREATE intent replaces the withdrawn5minute intent and is not executed until exact artifact review and a fresh inventory establish that this task still lacks a watch.
+
+Name: Q3 — стройка и советы
+Target: 01a08f80-f033-7a31-8f3a-3aef042a3fbc
+Kind: native heartbeat; interval10minutes; ACTIVE; notification preference unchanged/default.
+Prompt SHA256: 2588756170013c9958717db90776d8514beba4c61d3eb4955188cfa929fb7fac
+
+```text
+Продолжай ту же техническую задачу рефакторинга Q3 в задаче 01a08f80-f033-7a31-8f3a-3aef042a3fbc. Выполни канонический python3 orchestrator/workflow_runtime.py plan и прочитай сохранённую точку продолжения этой технической задачи в docs/Codex/TEAM_RUNTIME_REFACTOR_PLAN_2026-09-11.md и docs/session_protocols/team-runtime-preparation-2026-09-11.log отдельной копии /home/chirurgie/.cache/q3-team-2026-09-11-01a08f80. При недоступности копии восстанови её местоположение из последних результатов этой задачи, без новой математической цели или повторной установки.
+
+Проверяй опубликованные на origin/rh_clean docs/Codex/ADVICE_*.md, адресованные TO: STROJKA или TO: BOTH, и состояние передачи технического пакета. Читай адресованный совет целиком. Сравнивай его коммит и хеш содержимого с собственными сохранёнными результатами и REPORT_<date>_<NAME>_STROJKA.md: общий HEAD не является отметкой обработки. В отдельной технической копии origin указывает на локальную папку, поэтому для наблюдения опубликованных советов прочитай адрес origin канонического репозитория и выполни git fetch --no-tags с этим явным адресом и refs/heads/rh_clean. Зафиксируй полученный коммит из FETCH_HEAD и читай советы из него. Сейчас подтверждённый адрес — https://github.com/Malaeu/chen_q3.git. Не меняй git config и не обновляй общее рабочее дерево автоматически.
+
+Математический владелец 01a084f4-7498-7021-bac2-91d184d58dc7 и SIBLING остаются за основной задачей. При закрытой общей границе записи выполняй только ранее авторизованную техническую работу изолированно и передавай точный проверенный пакет действующему владельцу. Не меняй его исходники, расчёты, фазу, владение и вахту. После подтверждённой установки доведи обязательные проверки входа, параллельной работы, обработки проблем и реального пробуждения до наблюдаемого результата. Не повторяй действие с неизвестным исходом: сначала проверь первоначальное намерение и подтверждения.
+
+Ответы по советам сохраняй по ADVICE_PROTOCOL с исходным коммитом и хешем и честным статусом VICTORY, DEFEAT или PARTIAL. Проверяй необходимость своих агентов каждые 20 минут; пустой список не завершает задачу. Вахта возвращается каждые 10 минут и не создаёт новую цель, задачу или математического владельца. При неизменном состоянии молчи; сообщай только о содержательном результате, сбое или необходимом действии пользователя. Настройка не подтверждает пробуждение: сохрани фактическое событие планового запуска и его время. Не выставляй complete или blocked ради проверки. После простоя сначала сверь факты и сохранённые результаты.
+```
+
+Concrete origin-route reconciliation: the preparation clone's origin is the canonical local filesystem clone, not GitHub. Its native prompt therefore reads the canonical origin URL and fetches that explicit URL into its own FETCH_HEAD, without changing git config or the shared tree. Actual command git fetch --no-tags https://github.com/Malaeu/chen_q3.git refs/heads/rh_clean returned published e6b5128d68357f1f8a48b63d24c0e2d46b43a554. Addressed CADENCE hash663b5e70554d64defb14da9e3396fa5b792a7da646e693e8b0346e803a7316d0 and corrected WATCH hasha509ba1d87a6905c3e57d78781649eb29874ee4fb7842c8fffd2620fb5381b8f both bind to430b9317. This enforces the reviewed origin-observation requirement; no new task or storage protocol is introduced.

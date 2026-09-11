@@ -3,6 +3,7 @@
 ```yaml
 CONTROL_ID: Q3_EXECUTOR_CONTROL
 CONTROL_VERSION: 10
+TEAM_RUNTIME_VERSION: 1
 STATUS: ACTIVE
 ROLE: CODEX_EXECUTOR
 BODIES:
@@ -115,6 +116,23 @@ The startup plan reports, without hiding one class inside another:
 `GOAL_RUN` is the operational interval from one selected physical goal to its
 matching answer. It is not a mathematical phase. Goal selection itself remains
 read-only and creates no authority.
+
+With `TEAM_RUNTIME_VERSION: 1`, the same plan also exposes a bounded
+continuation card: current owner and installation, assignment/issue observations,
+whole-worktree dirty ownership, pending external observations and blockers. The
+card is an observation, not a selector or an execution receipt. `GOAL.md` stays
+bounded at 12 KiB; runtime objective/delegation records retain their own
+contract and are never truncated to omit evidence. GOAL/RESUME and historical archives are read
+directly only when the card or the next decision requires their content; they do
+not form a second bootstrap chain.
+
+The requested orchestration profile is `gpt-6-astra/max`; this records a request
+only and never claims that the running parent model changed. Bounded workers use
+isolated worktrees and `gpt-5.6-luna/max`. One native `gpt-5.6-terra/medium`
+reviewer slot is reserved for independent review and cannot accept a change it
+authored. After activation there are at most three active children of the sole
+orchestrator and no descendants. Until the reviewed activation receipt exists,
+the prior capacity ceiling remains in force.
 
 ## 3. Consumer-first proof loop
 
@@ -317,7 +335,8 @@ multiple agents is not proof and cannot admit a surrogate object.
 
 ## 10. Close, memory, and delivery
 
-The workflow runtime is stateless and invokes existing registered writers. It
+The workflow runtime invokes registered writers and saves versioned continuation
+and technical observations in the existing records. It
 does not become a second selector, database, policy kernel, mathematical author,
 or Git delivery engine. `run --through close-node` requires exact owned paths,
 attempt payload, and applicable kernel/source gates. A node is not closed until
@@ -353,6 +372,62 @@ q3.lean.aristotle/aristotle_db/observability.db     derived observability
 They obey `PROJECT_DATABASES_MUST_NOT_BE_MERGED`. None substitutes for Lean
 truth, current physical state, another database, or owner authority.
 
+Team Runtime v1 keeps the following registered transitions separate from the
+mathematical loop and from native provider actions:
+
+```text
+plan
+resume-checkpoint --candidate <file> --expected-sha256 <hash|ABSENT>
+team-local-init
+team-observe-remote --operation-id <id>
+team-reserve-effect --operation-id <id>
+team-watch-intent --action CREATE|UPDATE|PAUSE --transfer-id <id> --target-thread <id>
+team-observe-native --candidate <file> --expected-sha256 <hash>
+team-confirm-effect --operation-id <id> --candidate <file> --expected-sha256 <hash>
+team-record --kind report|issue-event|assignment|archive --candidate <file> --expected-sha256 <hash>
+team-integrate-candidate --candidate <manifest.json>
+team-integrate-candidate --recover-operation <id>
+team-bootstrap-publish --operation-id <id> --expected-head <commit> --expected-remote-commit <commit> --expected-remote-resume-sha256 <hash>
+team-bootstrap-publish --operation-id <id> --reconcile-only
+```
+
+Report intake is followed by independent classification; only a confirmed
+current-path repair may enter the single active repair slot. The reporter or
+implementer cannot accept its own result. `team-record` saves typed evidence and
+receipts; it cannot select a mathematical goal, change a phase, admit a proof,
+or authorize `PX_RH_CLAIM`. Exact payload schemas remain owned by the runtime
+and its tests, not by this control text.
+
+`team-integrate-candidate` consumes one exact reserved owner intent. Raw
+content-addressed evidence intake is unadjudicated; reviewed source integration
+requires a completed independent positive review bound to the exact assignment,
+base, candidate and files. It neither publishes nor accepts mathematics. Execute
+it from the committed isolated verification checkout using `--root <canonical>`;
+pin that engine until completion. Before copying, it durably retains the full
+manifest and blocks every other writer, including checkpoint/native effects,
+before mutable control validation. Recovery names the same pending operation
+and uses that saved manifest without requiring the detached input file. Only
+original/candidate destination states are recoverable. A completed replay checks
+candidate bytes and never reapplies them; any later drift needs a new reviewed
+operation. No network, commit or push occurs inside this copy transaction.
+
+Initial v1-to-v2 publication uses `team-bootstrap-publish` only after a safe
+owner boundary. Finish an existing INTENT/UNKNOWN before the local-install
+intent; confirm the named local installation commit under the old control, then
+migrate that CONFIRMED operation unchanged. After final source/derived bytes
+are verified, save a distinct exact v2 publication INTENT. The command validates
+the complete linear candidate/history and saves its closed private manifest
+before one ordinary non-force push of that exact commit to origin/rh_clean.
+An already-v2 remote cannot create a new bootstrap reservation. Retries only
+reconcile; absent evidence is UNKNOWN, never automatic replay. The remote
+preimage is an observation, not an atomic lock; no force/lease options or
+config/hook changes are authorized. Only exact remote readback confirms the
+technical publication, never mathematical acceptance or a new owner.
+While its private reservation is RESERVED/UNKNOWN, all other registered writers
+are held before control validation. `plan` displays only the original bootstrap
+reconciliation command. Only that command may observe/confirm the publication;
+the checkpoint can record confirmation after the exact remote receipt exists.
+
 After a genuinely closed node under a goal-scoped grant, Codex validates the
 exact changed paths, commits only owned paths, pulls with rebase, and pushes.
 Publication and `PX_RH_CLAIM` remain separate actions. No force push or silent
@@ -361,16 +436,53 @@ foreign staging is permitted.
 ## 11. Writer lock and host separation
 
 Exactly one writer may mutate a shared worktree. A stable `flock` is acquired
-before a writing transaction and held through its child runtime. Lock identity
-binds worktree, branch, writer body, PID plus process start time, boot ID,
-session, task path/blob, phase hash, base HEAD, run, and nonce. PID alone never
-proves ownership or stale recovery. A conflicting, malformed, or changed lock
-fails closed.
+before a writing transaction and held through its child runtime. It protects
+only the lock inode/descriptor and transactions that share one Git common
+directory. It is not a PID, boot, session, task, phase, ownership, or
+cross-host fencing mechanism; it does not establish stale-owner recovery. A
+conflicting, malformed, or changed lock fails closed, and ownership is checked
+separately by the Team Runtime records.
+
+Before a canonical mutation, the caller supplies the ownership epoch observed by
+`plan` as `Q3_OWNER_EPOCH` (or the guard's explicit `expected_epoch`). Missing or
+changed caller epoch is a hold. Issue `affected_operations` use exact manifest
+tool IDs; a confirmed issue holds only those operations. An exact worker-path
+assignment authorizes isolated candidate edits, never a canonical writer.
+
+`TOOLS.yaml` contains one exhaustive `team_runtime_writer_inventory` for
+`ENABLED`, `AVAILABLE` and `DEGRADED` entries with `writes: true`. Its fenced
+entries are the direct canonical writer routes. `inherited_only` entries may run
+only inside those registered close/search transactions with the parent lock;
+they are not independent canonical entrypoints. `isolated_only` entries remain
+available for explicitly assigned candidates and diagnostics outside canonical
+state; the owner integrates reviewed outputs through the registered command.
+Network tools also retain their named effect reservation/reconciliation;
+isolation does not suppress Zotero/Aristotle side effects. Human-only loaders
+remain human-only and generic integration cannot write runtime databases.
+Legacy direct invocation into
+canonical state is not permitted during a Team Runtime run. This preserves the
+tools without adding a shell dispatcher or allowing an unguarded writer exception.
+All writer-capable descendants must be drained or recorded UNKNOWN before handoff.
+The guard rejects a non-fenced direct tool ID and validates the inventory before
+execution. This is cooperative control; it cannot prohibit arbitrary shell writes
+by another process running as the same operating-system user.
+
+Same-installation ownership uses the checked owner epoch, task/host binding,
+handoff state and the existing native watch. Cross-host ownership uses distinct
+private installation identities, a remotely verified `RELEASED` record followed
+by one ordinary `CLAIM_PENDING`/`ACTIVE` successor, and explicit watch recovery.
+The old installation remains non-dispatching. A clone that only pulled the
+canonical branch remains observer-only until the release/claim, local watch
+intent/readback, real provider evidence and durable `ACTIVE` handoff are
+verified. There is no timeout takeover, automatic duplicate watch, or generic
+`git pull` ownership grant.
 
 `CODEX_MAC` and `CODEX_LINUX` share repository facts, not machine-local trust.
-A receipt, semantic index, socket, key, or capability from another machine is
-historical evidence until locally verified by its registered transport. Host
-differences may select an executor implementation but may not change the
+A receipt, semantic index, socket, key, capability, remote observation, or
+timestamp from another machine is historical/network evidence until locally
+verified by its registered transport. Network observation and native evidence
+are separate subjects: a timestamp alone never proves a native wake or effect.
+Host differences may select an executor implementation but may not change the
 logical plan or authority.
 
 ## 12. Threat model and fail-closed behavior

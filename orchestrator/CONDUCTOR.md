@@ -1,10 +1,38 @@
-# The conductor — design, state machine, lanes
+# The conductor — historical browser transport record
 
-The conductor is Claude Code (Fable/Mythos) running as the **transport**. It never
-decides math (red line). It senses state, dispatches to lanes, harvests, detects
-completion, advances, and self-schedules until a goal closes.
+The routine executor is Team Runtime v1, entered only through
+`python3 orchestrator/workflow_runtime.py plan`. This file preserves the
+2026-07-30 browser conductor design as historical/manual compatibility. It is
+not a second bootstrap, selector or current orchestrator, and its old
+Claude/Mythos distribution wording does not override the active runtime.
 
-## Blackboard (files = single source of truth)
+Current runtime contract: requested `gpt-6-astra/max` is only an orchestrator
+profile request; isolated `gpt-5.6-luna/max` workers and one reserved native
+`gpt-5.6-terra/medium` reviewer use at most three active children after
+activation, with no descendants. Reports are collected, independently
+classified, and routed to one active repair. Exact schemas belong to the
+runtime/tests.
+
+Same-installation transfer uses the checked owner epoch and existing watch.
+Across clones the old host publishes verified `RELEASED`, the receiving host
+publishes one `CLAIM_PENDING` successor and reaches `ACTIVE` only after local
+watch readback/provider evidence. A host that merely pulled remains
+observer-only. Network observation or a timestamp alone is not native evidence.
+`relay.py` remains available; this documentation update does not disable it.
+
+Registered transition names:
+
+```text
+team-local-init
+team-observe-remote --operation-id <id>
+team-reserve-effect --operation-id <id>
+team-watch-intent --action CREATE|UPDATE|PAUSE --transfer-id <id> --target-thread <id>
+team-observe-native --candidate <file> --expected-sha256 <hash>
+team-confirm-effect --operation-id <id> --candidate <file> --expected-sha256 <hash>
+team-record --kind <report|issue-event|assignment|archive> --candidate <file> --expected-sha256 <hash>
+```
+
+## Historical blackboard (files = single source of truth)
 
 Everything is files, so a crash/restart resumes from disk. On the Mac, next to the live
 bus (or a sibling `orchestrator/state/`):
@@ -16,7 +44,7 @@ queue/         # prepared prompts per lane (codex/aristotle/proska/mythos)
 inbox/         # harvested answers (proska/, mythos/, aristotle/) → parsed → advance
 ```
 
-## Lanes (who does what, how driven)
+## Historical lanes (who did what, how driven)
 
 | Lane | Where | Drive | Completion | Notes |
 |---|---|---|---|---|
@@ -28,7 +56,7 @@ inbox/         # harvested answers (proska/, mythos/, aristotle/) → parsed →
 
 Harvest browser lanes with `harvest_conversation.js` (conversation-JSON, not DOM).
 
-## State machine (per goal)
+## Historical state machine (per goal)
 
 Derived from the live bus + `list_pages` + harvested inbox. Phases:
 
@@ -39,7 +67,7 @@ Derived from the live bus + `list_pages` + harvested inbox. Phases:
 - `AWAITING_ACCEPT` — executor output bundled → relay to Proška for acceptance audit.
 - `CLOSED` — Proška `ACCEPT_*` → mark goal closed, advance to next / stop.
 
-## The cycle (one wake)
+## Historical cycle (one wake)
 
 1. **SENSE**: `list_pages` (find agent tabs); read the live bus + `state.json`; for each
    in-flight browser node run `detect_complete.js`; check Codex notifications / Aristotle
@@ -54,7 +82,7 @@ Derived from the live bus + `list_pages` + harvested inbox. Phases:
    mirror** per CHANNEL_RULE; anything else needs Ylsha's go.
 5. **CHECKPOINT + SLEEP**: log; schedule the next wake.
 
-## Cadence (event-driven, not real-time)
+## Historical cadence (event-driven, not real-time)
 
 - Proška: hours → poll `~15 min`.
 - Mythos: minutes → poll `~2–3 min`.
@@ -63,7 +91,7 @@ Derived from the live bus + `list_pages` + harvested inbox. Phases:
 - Self-schedule via `ScheduleWakeup` / `CronCreate`. One overnight run = a handful of
   deep cycles, not hundreds of ticks.
 
-## Guardrails (unattended safety)
+## Historical guardrails (unattended safety)
 
 - **Red line**: conductor never decides/drafts math. Judge = Proška; brain = Mythos;
   Codex/Aristotle implement. No weaker-than-Pro model invents proof architecture.
@@ -80,7 +108,7 @@ Derived from the live bus + `list_pages` + harvested inbox. Phases:
 - **Spend caps**: max Codex cycles / Aristotle jobs / tokens per run; log any cap hit.
 - **Termination**: goal closed (Proška `ACCEPT`) → stop + alert. Never run past the goal.
 
-## Current concrete work-item (goal 034)
+## Historical concrete work-item (goal 034)
 
 Proška ruled `REPAIR_034_BEFORE_CODEX`; Mythos issued a 4-такт CODEX dispatch (035 source
 lock n=0..61, 036 FiniteCell257ToothAtomicDetector, cheap pair r=196/257 first). Aristotle

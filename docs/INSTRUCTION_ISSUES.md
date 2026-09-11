@@ -190,3 +190,187 @@ Resolution observed 2026-09-11T17:25:02.850055+00:00: isolated owner accepted or
 Concrete conflict: docs/Codex/GOAL.md section3 says10min, published ADVICE_2026-09-11_WATCH.md at09f11c6a and ADVICE_PROTOCOL7 require<=5min per addressed thread. The newer specific owner instruction is applied: existing MAT bridge updated through native automation API to ACTIVE/FREQ=MINUTELY;INTERVAL=5, agentcheck20 unchanged. Actual five-minute scheduled wake not yet observed. No second MATwatch. Isolated STROJKA owner01a08f80 notified and agreed to review minimal5|10 transition schema plus final5readback; no shared core installation/owner transfer. Leave GOAL/control rewrite to that reviewed package; do not report saved10 as observed5.
 
 Resolution 2026-09-11T19:04:13.476829+00:00: published CADENCE430b9317 explicitly withdraws observer5min; actual bridge was already5, so its claim unchanged10 was stale. Root read CADENCE fully and used native automation_update to RESTORE actual10/ACTIVE, then TOML readback INTERVAL=10. No dual5/10schema or GOAL/control rewrite needed. Isolated technical owner notified. Original5 transition remains historical fact, not a current rule.
+
+
+## 2026-09-11 — imported reviewed technical preparation records
+
+Canonical prefix is preserved byte-for-byte at SHA2568425d88d39677eabee3940de755eb2480e9b449139e2a56b47d2ecb1c3f8ace4. The following exact additive records come from reviewed source46ab04b5. They are dated preparation history, not new authority or canonical activation. Provisional force/5minute statements are superseded by their recorded corrections below and CADENCE430b9317.
+
+## 2026-09-11 - Team Runtime binding review (isolated candidate)
+
+Runtime review B1 HIGH found an unconfirmed publication reservation; fixed in
+the isolated candidate and independently confirmed closed B2. B2 HIGH found
+publication of pre-existing unrelated local ancestors; candidate now requires
+HEAD at the freshly observed remote base before binding. B3/B4 were CLEAN on
+identical binding bytes. This does not claim whole-runtime deployment or final
+artifact convergence. Canonical alias and Slack repairs above are preserved.
+
+## 2026-09-11 - Team Runtime integration review (isolated candidate)
+
+Sources: workflow_runtime.py, team_records.py, spine.py, TOOLS.yaml; exact
+supplemental plan I5 eeeb1ee8ada05361912d3e8ed03fd579c099380e49a9f8ada12b0020cc75ea7c.
+Missing reviewed-source intake and incomplete callable writer coverage were HIGH
+contract defects. The isolated implementation adds the single guarded source/
+evidence route and covers ENABLED/AVAILABLE/DEGRADED writers, preserving Slack,
+Zotero, Aristotle and human-only loader semantics. A completed negative repair
+review no longer implies FIX_VERIFIED: its exact verdict must be REPAIR_APPROVED.
+
+I6 HIGH: recovery incorrectly required the detached manifest despite retaining
+its exact bytes. Fixed by explicit --recover-operation using the persisted
+manifest; unchanged owner/checkpoint/base/review/engine still required.
+I7 HIGH: completed replay could reapply original preimages. Fixed by limiting
+recovery to PENDING and making completed replay reject every changed destination.
+Both fixes have regression cases. Required final independent convergence, real
+fresh-process recovery and canonical activation remain separate acceptance steps.
+
+I8 HIGH: bridge-observed-phase-repair was incorrectly classified isolated_only
+despite its direct canonical CHANNEL_RUNTIME writer. It is now fenced and calls
+team_guard inside the writer epoch before control validation or reading the event.
+The existing channel-writer tests check guarded preimage drift and rejection of
+pending integration, foreign owner, changed epoch and unreconciled ownership
+before any bridge mutation. This preserves the fixed historical receipt scope.
+
+Parent routing check found a wording-only mismatch with the existing diagnostic
+entry assertion. SESSION_ENTRY retains the established "manual diagnostic" wording
+and identifies the previous contour explicitly; its one-command startup and the
+test's semantic requirements remain unchanged.
+
+I9 MEDIUM: missing real fresh-process recovery acceptance is covered by the
+test-only worker candidate a1ebdc6c, integrated as df053bc2. Parent execution
+found an agent-context error in the new assertion: the recovery-only card is
+inside a top-level HOLD (exit2), not a READY/exit0 plan. Corrected the assertion;
+the production gate was retained. The actual subprocess was killed after the
+first runtime write; a new process recovered the persisted manifest despite
+detached candidate loss/tampering. It also checked the immutable engine identity,
+unchanged Git heads, candidate modes, pending-only plan and completed-replay
+refusal. Native provider receipts in this fixture are explicitly simulated;
+the test does not establish actual app wake or live assignment acceptance.
+
+Bootstrap-publish audit HIGH (open): _team_remote rejects an initial v1 remote,
+so the first v2 publication cannot obtain the required pre-action reservation;
+_team_owner_transition then cannot confirm that operation without a real private
+receipt. I10/I11 code convergence did not test this initial deployment sequence.
+The scoped one-time repair and crash/replay criteria are proposed in the existing
+Team Runtime plan section12. No canonical source/identity/watch change occurred.
+
+Bootstrap plan pass Bp1: HIGH Unbound publication candidate; MEDIUM Intent
+ordering ambiguity. Section12 now fixes a precommitted reviewed input-scope
+digest and validates an exact closed candidate tree manifest, durably reserved
+outside the committed checkpoint to avoid self-reference. It explicitly orders
+the first owner-preserving migration and the second final PUBLISH/INTENT
+checkpoint. Independent supplemental convergence remains pending.
+
+Bp2 TOOL-FAILURE: the reviewer hashed section12 WITH its header, while the prompt
+specified the body AFTER the header; actual source bytes did not drift. Its
+preliminary HIGH correctly exposed unavailable final refresh hashes at the early
+v1 intent. The revised order confirms local installation in v1 from a real local
+commit under old control, migrates that CONFIRMED operation unchanged, and starts
+a distinct exact v2 publication INTENT only after final bytes/refresh. Future
+review inputs use an entire extracted immutable section file to avoid boundary
+ambiguity. This finding is not a clean review or an artifact acceptance.
+
+Bp3 HIGH Unresolved v1 operation replacement: explicit NONE/CONFIRMED entry
+prerequisite added; validator must inspect the archived immediate predecessor.
+Bp3 HIGH Remote predecessor race: a fixed expected-ref lease is paired with a
+mandatory ancestor check, allowing only a conditional fast-forward update.
+It cannot remove remote history; generic force/config/hook changes stay forbidden.
+Tests must cover remote rollback/intermediate-ancestor races after observation.
+
+Owner preflight corrected Bp4/Bp5 authority on2026-09-11: GOAL grants ordinary
+non-force pushes and does not authorize even ancestry-restricted force-with-lease.
+The isolated provisional option was removed before any execution; shared files
+and remote were untouched. Section12 now states the actual non-force guarantee:
+no remote commit loss, exact closed reviewed candidate and final readback;
+the pre-reservation expected-tip observation is not an atomic remote CAS.
+The earlier strict-CAS requirement was an unrequested strengthening. Intermediate
+commits are scope/owner checked so reverted foreign changes cannot hide in the
+published history. Bp4/Bp5 do not establish acceptance of these changed bytes.
+
+Bp6/Bp7 CLEAN on the identical owner-corrected section12,10877bytes,
+SHA256d61d48c2dc41aac4c29bb76681b9100248827f2175dd056bd7605fd17e16c0d7.
+This closes supplemental plan review, not implementation or migration acceptance.
+
+B1 HIGH Pending publication not fenced: a later registered checkpoint writer
+could mutate the current RESUME/history between reservation and network push.
+The existing pending-writer guard now recognizes RESERVED/UNKNOWN bootstrap
+receipts before mutable control validation, and only the original bootstrap
+reconciliation may enter. Plan displays its recovery-only command. No new lock
+file or service; exact race/crash tests and artifact reconvergence are pending.
+
+Parent found one direct entry contradiction during the required tool census:
+tools_census.py:274 hardcoded codex-session-start as automatic startup while
+TOOLS.yaml classifies it MANUAL and names workflow-runtime as the front door.
+The catalogue now reads startup_and_control.front_door from that existing
+manifest. This adds one existing source file to the exact migration scope;
+it changes generated documentation only, not runtime selection or authority.
+
+
+
+Parent full-tree startup rehearsal found the omitted final local commit barrier.
+Bp8 static CLEAN covered schema transitions but missed actual dirty-control
+startup; supplemental Bp8 HIGH confirmed that installing final control and
+then saving a checkpoint before committing causes STARTUP_CONTROL_BLOB_DRIFT.
+Section12 now requires a named final source/control commit before refresh and
+checkpoint, and a clean declared startup surface after refresh. The real
+registered local-init followed by plan returned HOLD with zero fatal errors;
+the same full fixture with a dirty control returned FATAL as required.
+The startup gate remains unchanged; no canonical files or identity were touched.
+
+
+## 2026-09-11 — advice intake versus one owner and one native watch
+
+Parallel Claude commit8477fd769721eacab272356acaf48cf4fcc6c61d added GOAL
+section6 and ADVICE_PROTOCOL while the Team Runtime package was isolated.
+The mathematical owner task01a084f4-7498-7021-bac2-91d184d58dc7 confirmed a
+direct user instruction to read section6 and ADVICE_2026-09-11_SIBLING.md.
+Its native handback to01a08f80-f033-7a31-8f3a-3aef042a3fbc confirms the scope:
+keep section6 verbatim; intake committed advice using the SAME bridge and
+owner, without changing the physical selector, phase or production admission.
+The request for a victory-only mathematical answer does not suppress mandatory
+runtime progress/failure reporting. The observer's separate review channel is
+not permission for the executor to create another same-phase Proshka chat.
+Advice is a bounded candidate to examine, not an accepted theorem.
+
+Resolution: preserve the complete foreign commit/ancestry and section6 bytes;
+rebaseline the exact GOAL preimage; record this interpretation here and in the
+existing native watch prompt at activation. No new watcher, mathematical task,
+owner change or unreviewed proof acceptance is introduced by the integration.
+
+
+Post-review actual-entry finding, original native severity LOW:
+`_team_continuation` at orchestrator/workflow_runtime.py attempted v2 ownership
+observation on a valid legacy v1 checkpoint. Its correct migration HOLD was
+accompanied by raw code "'ownership'". The parent reproduced this with an actual
+CLI call; the independent reviewer confirmed a diagnostic defect, without any
+change to authority or migration order. Local/actor observation is now limited
+to v2. A regression failed on the original extra blocker and passed after the
+single schema guard. Five targeted legacy/v2/foreign-owner/source-drift tests
+PASS6.175s; actual CLI retains migration and replay holds, no fatal errors or
+writes, and no raw KeyError. No schema/selector/guard authority was weakened.
+
+
+Owner09f11c6a ADVICE_WATCH supersedes the earlier single-global-watch/10minute
+wording with one watch per addressed task at5minutes; mathematical ownership
+and single shared writer remain unchanged. The actual mathematical owner
+confirmed this interpretation and updated the existing bridge natively.
+Initial native inventory still needs to accept the previous10minute setting,
+while final acceptance records actual5. The existing observation schema now
+requires exact int cadence in{5,10} and exact int agent check20; floats/bools
+are refused. Wp1 MEDIUM exposed the type ambiguity; Wp2/Wp3 CLEAN/CLEAN.
+One new regression failed before the repair and the five targeted
+watch/owner/legacy cases passed in5.703s after it. GOAL section6 remains verbatim.
+Technical advice uses its own task/report evidence and cannot execute mathematics.
+A shared HEAD is not an advice-processing cursor: another executor may advance
+it first. Match addressed ADVICE content/commit against this task's own REPORT
+or continuation evidence. No new cursor database or duplicate mathematical
+watch is added; actual native creation/wake acceptance remains pending.
+
+
+CADENCE430b9317f0ab154b02ff93a188a92723bd4179dc withdraws the observer's5minute figure; the preceding WATCH transition is historical and superseded, not canonical policy. The isolated uncommitted dual5/10 guard and GOAL section3 rewrite were never installed. The final candidate retains exact integer10/20 and the previous GOAL section3. Wp1's type finding still warrants rejecting floats/bools before private observation writes. Wp4/Wp5 CLEAN/CLEAN cover this narrowed correction. The mathematical owner already reconciled its actual temporary5minute bridge back to10 through the native tool, independently matched by read-only inventory. The technical task retains its separate10minute addressed-advice continuation under WATCH/CADENCE, no mathematical selector or shared write ownership. GOAL section6 is unchanged. Earlier unexecuted5minute CREATE intent is withdrawn; current intent and exact prompt are in plan section14.
+
+Technical advice-watch origin mismatch: the isolated preparation clone's origin is the local canonical path. Polling that alias alone would wait for somebody else to update the shared clone, although advice was already published on GitHub. The technical prompt now resolves canonical origin and fetches its explicit URL into the isolated FETCH_HEAD, records the resulting commit, and compares advice hashes with its own report evidence. Actual direct read matched e6b5128d on https://github.com/Malaeu/chen_q3.git. No git config/shared HEAD change or mathematical-owner action is needed.
+
+
+## 2026-09-11 — technical advice-report verdict scope
+
+Source conflict: docs/Codex/ADVICE_PROTOCOL.md section4 and docs/Codex/ADVICE_2026-09-11_WATCH.md step2 reserve VICTORY for an asked statement proved or refuted with a witness at PAPER scope. The technical task initially labelled REPORT_2026-09-11_CADENCE_STROJKA.md VICTORY for a verified configuration/source correction. This was an agent reporting error, not mathematical proof or grounds to rewrite owner rules. Native reviewer R1 assigned HIGH. The header is now PARTIAL, the opening describes technical checks only, and the report explicitly retains pending canonical migration and scheduled-wake acceptance. REPORT_2026-09-11_WATCH_STROJKA.md was already PARTIAL and never claimed an actual wake. R2/R3 CLEAN/CLEAN verified the exact repaired reports; R1's original severity remains unchanged. No global rule, GOAL section6 or protocol was modified to silence the finding.

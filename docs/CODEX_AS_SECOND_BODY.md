@@ -15,11 +15,15 @@
 
 ## 0. Восстановить текущую работу
 
-Обязательный короткий вход: GOAL и RESUME целиком, затем
-`python3 orchestrator/workflow_runtime.py plan` из SESSION_ENTRY. Сверить факты,
-владельца исполнения и готовые результаты; продолжить первый незавершённый шаг.
-Историю проекта целиком повторно не читать. Таблица ниже — адресная справка
-для нужной зависимости, а не обязательный список загрузки или источник полномочий.
+Единственный programmatic entry: `python3 orchestrator/workflow_runtime.py plan`
+из SESSION_ENTRY. Он возвращает bounded continuation card: факты, владельца,
+installation, готовые результаты и первый незавершённый шаг. GOAL и текущий
+`q3_resume.v2` читаются напрямую, когда card указывает на нужный контент;
+архивные `q3_resume.v1` bytes нужны только для verified recovery. Не
+восстанавливай старую цепочку GOAL → RESUME → bootstrap/history и не создавай
+новую цель. Историю проекта целиком повторно не читать. Таблица ниже — адресная
+справка для нужной зависимости, а не обязательный список загрузки или источник
+полномочий.
 
 | # | Файл | Зачем |
 |---|---|---|
@@ -36,7 +40,8 @@
 | 11 | `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/GLOSSARY.md` | обозначения |
 | 12 | последний вердикт Прошки и его независимая проверка: `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_*_<дата>.md` + `docs/routeB_bus/*_INDEPENDENT_CHECK_<дата>.md` (сейчас DISTANCE, 2026-09-09) | фронт математики в его словах и в наших числах |
 
-`./specs_docs/session_start.sh` — ручная диагностика по необходимости, не второй старт.
+`./specs_docs/session_start.sh` — историческая ручная диагностика по
+необходимости, не второй старт.
 Один вход по всем хранилищам: `./ask.sh <термин>` — прежде чем сказать «у нас этого нет» или создать новое.
 Литература: `./paper.sh <arxiv|doi>`; карточки в `docs/routeB_bus/litreview/`.
 
@@ -44,12 +49,20 @@
 
 ## 1. Роль и границы
 
-- Ты второе тело наблюдателя, когда владелец на этой машине и говорит работать так. Ты сам пишешь в шину, кладёшь
-  вердикты, дёргаешь мигратор, доставляешь батчи Прошке через свой браузер, ставишь вахту.
+- Ты второе тело наблюдателя, когда владелец на этой машине и говорит работать так. Ты сам ведёшь
+  разрешённый runtime, пишешь в шину, кладёшь вердикты, доставляешь батчи Прошке через approved transport,
+  ставишь вахту и сохраняешь evidence. Старые browser/conductor процедуры ниже — historical compatibility,
+  не второй executor.
+- Team Runtime v1: два изолированных bounded worker slots на `gpt-5.6-luna/max`, один зарезервированный
+  independent reviewer на `gpt-5.6-terra/medium`, максимум три активных children единственного orchestrator после
+  activation, без descendants. `gpt-6-astra/max` — только requested orchestrator profile; он не доказывает смену
+  parent model. Objective/delegation остаются bounded по runtime contract.
 - Единственный owner-гейт: `PX_RH_CLAIM`. Разрешение спрашивается только на гейтах: удаление, платный вызов,
   публикация наружу, правка политики (`CODEX_CONTROL.md`, `AGENTS.md`, глобальные правила), `PX_RH_CLAIM`.
   Обратимое действие внутри задачи делается без вопроса. Голое «A или B?» владельцу — нарушение.
 - Никогда не удалять файлы. Удаляемое уходит в архив.
+- `flock` защищает только inode/common-dir transaction. Ownership, same-installation handoff и cross-host
+  release/claim проверяются отдельными runtime records; PID/boot/session metadata не являются fencing.
 - `HONESTY_STATE: CHALLENGER_NOT_RH`. Все численные результаты — `DIAGNOSTIC_NEVER_A_PROOF`. Число не заменяет
   доказательство; оно выбирает механизм.
 - Прошку в чате звать только «Прошка» (вторая сессия — «Прошка А»). Не «судья».
@@ -158,6 +171,45 @@ returns source-checked candidates; owner intake, refresh and any Proshka request
 remain separate steps. Unchanged searches are resumed, not automatically repeated.
 The repository copy travels with git; a machine-local wrapper supplies no policy.
 
+## 3d. Team Runtime v1: report, ownership and native evidence
+
+Все report, issue-event и assignment проходят через зарегистрированный
+`team-record`; exact candidate schema задаётся runtime и его тестами, не этим
+наблюдательским файлом. Порядок ремонта фиксирован: collection evidence →
+independent classification → один active repair. Reporter/implementer не
+принимает собственный результат; `INSTRUCTION_ISSUES` остаётся единственным
+issue registry, а report не выбирает mathematical goal, phase или proof
+admission.
+
+Команды переходов:
+
+```text
+python3 orchestrator/workflow_runtime.py team-local-init
+python3 orchestrator/workflow_runtime.py team-observe-remote --operation-id <id>
+python3 orchestrator/workflow_runtime.py team-reserve-effect --operation-id <id>
+python3 orchestrator/workflow_runtime.py team-watch-intent --action CREATE|UPDATE|PAUSE --transfer-id <id> --target-thread <id>
+python3 orchestrator/workflow_runtime.py team-observe-native --candidate <file> --expected-sha256 <hash>
+python3 orchestrator/workflow_runtime.py team-confirm-effect --operation-id <id> --candidate <file> --expected-sha256 <hash>
+python3 orchestrator/workflow_runtime.py team-record --kind <report|issue-event|assignment|archive> --candidate <file> --expected-sha256 <hash>
+python3 <committed-engine>/orchestrator/workflow_runtime.py --root <canonical> team-integrate-candidate --candidate <manifest.json>
+python3 <same-engine>/orchestrator/workflow_runtime.py --root <canonical> team-integrate-candidate --recover-operation <id>
+```
+
+Raw evidence intake precedes native-result authentication and is unadjudicated.
+Reviewed source integration requires exact positive independent review and an
+unchanged assignment base. An incomplete copy holds other writers; recover its
+saved manifest by operation ID. A completed replay cannot write changed files.
+
+`team-local-init` только создаёт/проверяет private installation identity. Same-
+installation handoff использует owner epoch и existing watch. Между клонами
+старый host quiesces и публикует `RELEASED`, новый проверяет remote predecessor,
+публикует `CLAIM_PENDING` и становится `ACTIVE` только после local watch
+readback/provider evidence. После pull новый host observer-only; timeout,
+cached ref и timestamp ownership не передают. Network observation и native
+evidence — разные subjects; timestamp без provider receipt не доказывает wake
+или effect. Lost receipt требует inspect original operation, не replay.
+
+---
 
 ## 4. Протокол с Прошкой (судейский канал, ~20+ минут на батч)
 
@@ -223,13 +275,15 @@ The repository copy travels with git; a machine-local wrapper supplies no policy
 ## 7b. Цель и луп сторожа агентов
 
 Цель в приложении остаётся рабочей ссылкой на `docs/Codex/GOAL.md`.
-GOAL §2 задаёт короткое восстановление, §3 — одну вахту «Q3 — продолжение работы»:
+`python3 orchestrator/workflow_runtime.py plan` — единственный programmatic entry.
+GOAL §2 задаёт bounded recovery card, §3 — одну вахту «Q3 — продолжение работы»:
 продолжение каждые10мин, проверка агентов каждые20мин, без удаления при пустом списке.
-§5 указывает на RESUME. Ведомость хранит владельца каждого агента; чужой список
+§5 указывает на первый незавершённый шаг card/RESUME v2. Ведомость хранит владельца каждого агента; чужой список
 агентов не служит доказательством его исчезновения. История вынесена в GOAL_HISTORY.
+`q3_resume.v1` остаётся historical archive, а не текущая authority.
 
 ## 8. Строка для владельца, чтобы запустить тебя в этом режиме
 
-«Продолжай существующую задачу: прочитай короткие GOAL и RESUME, выполни канонический
-plan из SESSION_ENTRY, сверь факты и владельца, продолжай первый незавершённый шаг
-по GOAL §5. Дай сводку: фронт, один blocker, следующий ход с ЕСЛИ_A/ЕСЛИ_B.»
+«Продолжай существующую задачу: выполни единственный канонический plan из SESSION_ENTRY,
+сверь operating card, факты и владельца, продолжай первый незавершённый шаг по GOAL §5.
+Дай сводку: фронт, один blocker, следующий ход с ЕСЛИ_A/ЕСЛИ_B.»

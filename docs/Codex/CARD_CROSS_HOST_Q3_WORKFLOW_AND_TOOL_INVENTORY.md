@@ -1,15 +1,18 @@
 # Q3 cross-host operator card: workflow and tool inventory
 
 ```yaml
-schema: q3_cross_host_operator_card.v1
+schema: q3_cross_host_operator_card.v2
 status: CANONICAL_OPERATOR_CARD
 audience: [OWNER, CODEX_MAC, CODEX_LINUX]
 canonical_branch: rh_clean
 control: docs/CODEX_CONTROL.md
 tool_manifest: docs/cartographer/TOOLS.yaml
 workflow_front_door: orchestrator/workflow_runtime.py
+team_runtime_version: 1
+current_resume_schema: q3_resume.v2
+historical_resume_schema: q3_resume.v1
 inventory_snapshot_date: 2026-09-11
-registered_tools: 90
+registered_tools: 98
 route_promotion_authorized: false
 PX_RH_CLAIM: NOT_MADE
 ```
@@ -36,7 +39,8 @@ state и математический frontier общие. Хост меняет
 
 ```text
 OWNER INTENT
-  -> ONE CONTROL-V10 STARTUP SNAPSHOT
+  -> ONE PROGRAMMATIC PLAN + BOUNDED CONTINUATION CARD
+  -> OWNER / INSTALLATION OBSERVATION
   -> EXACT PHYSICAL GOAL
   -> LOCAL SHELVES AND KNOWLEDGE
   -> SUPPLIER PREFLIGHT
@@ -46,6 +50,7 @@ OWNER INTENT
   -> STEP OR GOAL CLOSE
   -> INVENTORY, ATOMS, MAP AND PUBLICATION BLUEPRINT
   -> SCOPED COMMIT, REBASE AND PUSH
+  -> VERIFIED SAME-INSTALLATION HANDOFF OR REMOTE RELEASE/CLAIM
   -> SELECT THE NEXT PHYSICAL GOAL
 ```
 
@@ -57,17 +62,26 @@ OWNER INTENT
 python3 orchestrator/workflow_runtime.py plan
 ```
 
-Команда один раз строит `StartupSnapshot`, выбирает physical goal и проверяет
-точные source/node/theorem/consumer pins, execution state, scoped node registry,
-writer epoch и dirty split. Она ничего не пишет, не запускает Lean, не вызывает
-внешних агентов и не обращается к сети. `specs_docs/session_start.sh`, прямой
-`routeb_status.py --check`, Spine startup и `three_body_loop.py` являются только
-ручными legacy-диагностическими средствами и не добавляются к обычному входу.
+Команда один раз строит `StartupSnapshot`, bounded continuation card, выбирает
+physical goal и проверяет точные source/node/theorem/consumer pins, execution
+state, scoped node registry, writer epoch и dirty split. Она ничего не пишет,
+не запускает Lean, не вызывает внешних агентов и не обращается к сети.
+`GOAL.md` остаётся bounded (12 KiB); plan не тащит полную историю issue,
+assignment или GOAL. `specs_docs/session_start.sh`, прямой
+`routeb_status.py --check`, Spine startup и `three_body_loop.py` являются
+историческими ручными диагностическими средствами и не добавляются к обычному
+входу.
 
 `FATAL` запрещает математику и разрешает только узкий ремонт названного
 control/tool defect. `HOLD` блокирует только указанную возможность, например
 потребление ещё не связанного exact theorem-to-consumer edge; он не превращает
 весь проект в глобальный карантин.
+
+Plan остаётся локальным и read-only. Сетевое наблюдение remote branch и native
+evidence провайдера выполняются отдельными зарегистрированными операциями:
+timestamp, cached ref или network receipt сами по себе не доказывают native
+wake/effect. Для эффекта требуется исходный operation intent, reservation,
+provider receipt, target/settings readback и подтверждение результата.
 
 Перед любым математическим narrowing startup также строит read-only
 `q3_roof_port_supplier_ledger.v1`: шесть semantic slots, семь прямых proof
@@ -90,7 +104,6 @@ current owner invokes it when shelf/preflight leaves a justified naming gap;
 exploratory discoveries without a consumable target remain explicitly incomplete.
 It preserves the current owner, source pins, agent cap and existing search run.
 It cannot deliver to Proshka, admit a proof or write shared state by itself.
-
 
 Один run привязывается ровно к одному OPEN physical goal или к source-locked
 Codex task. Порядок поиска дешёвый-к-дорогому:
@@ -119,7 +132,10 @@ EnvDump обновляется publication blueprint. Blueprint не являе�
 не даёт proof authority.
 
 После зелёного owned delta Codex сам делает scoped commit, pull --rebase и push.
-Чужие dirty paths не входят в staged scope.
+Чужие dirty paths не входят в staged scope. После pull новый host остаётся
+observer-only: синхронизация переносит проектные bytes, но не live ownership,
+local watch или native handles. Dispatch начинается только после verified
+release/claim и ACTIVE handoff.
 
 ### 2.4 Постоянная операционная авторизация владельца
 
@@ -131,8 +147,9 @@ scope:
 - делать scoped commit, pull --rebase --autostash и push в `rh_clean`;
 - отправлять разрешённый byte-exact запрос Прошке в тот же living phase chat;
 - забирать, проверять и мигрировать verdict commit;
-- передавать другому хосту точный scoped baton или запрос, когда этот хост
-  действительно является нужным executor;
+- передавать другому хосту точный scoped baton или запрос только через
+  проверенный release/claim handoff, когда этот host действительно является
+  нужным executor;
 - запускать зарегистрированные read-only поиски, gates, plants, Lean validation,
   semantic refresh и разрешённые close transactions.
 
@@ -142,6 +159,43 @@ authority: `PX_RH_CLAIM`, новый phase key/chat, удаление или н�
 действительно обязательная safety-confirmation активного host runtime. Такая
 внешняя safety-confirmation не должна превращаться в репозиторный owner-click и
 не меняет математический pipeline.
+
+### 2.5 Team Runtime v1: ownership and effects
+
+`team-local-init` creates or verifies the private installation namespace; it
+does not acquire execution ownership. A same-installation transfer uses the
+checked owner epoch, handoff state and the existing watch-target capability.
+Across independent clones, the old installation quiesces and publishes one
+`RELEASED` record to `rh_clean`; the receiving installation verifies that exact
+remote predecessor, publishes one `CLAIM_PENDING` successor by ordinary
+non-force push, then reconciles one local watch before `ACTIVE`. The old
+installation stays paused/observer-only. A clone that merely pulled the branch
+cannot dispatch or claim by timeout, cached ref or local timestamp.
+
+The registered command names are:
+
+```text
+team-local-init
+team-observe-remote --operation-id <id>
+team-reserve-effect --operation-id <id>
+team-watch-intent --action CREATE|UPDATE|PAUSE --transfer-id <id> --target-thread <id>
+team-observe-native --candidate <file> --expected-sha256 <hash>
+team-confirm-effect --operation-id <id> --candidate <file> --expected-sha256 <hash>
+team-record --kind <report|issue-event|assignment|archive> --candidate <file> --expected-sha256 <hash>
+team-bootstrap-publish --operation-id <id> --expected-head <commit> --expected-remote-commit <commit> --expected-remote-resume-sha256 <hash>
+team-bootstrap-publish --operation-id <id> --reconcile-only
+```
+
+Remote observation, native watch evidence and effect confirmation are distinct
+subjects. A lost receipt inspects the original operation and does not replay it.
+Report collection is followed by independent classification and one active
+repair; reporting cannot select a goal or alter mathematical admission.
+
+The initial v1-to-v2 publication is a separate owner-preserving bootstrap:
+verified local installation first, final exact v2 publication intent second,
+durable private full manifest before one ordinary non-force push. No force or
+lease option is permitted. Retries only inspect the original operation;
+missing evidence is UNKNOWN. Remote preimage observation is not an atomic lock.
 
 ## 3. Когда вызывается Proshka
 
@@ -208,6 +262,10 @@ moves, branch decisions, attempts и проверенные связи. Это �
 |---|---|---|
 | Канонический repo/branch | тот же rh_clean | тот же rh_clean |
 | Startup, selector, runtime | один `workflow_runtime.py plan` | один `workflow_runtime.py plan` |
+| Installation identity | private local `q3_team_installation.v1`; OS label не identity | private local `q3_team_installation.v1`; OS label не identity |
+| После pull | observer-only до verified release/claim + ACTIVE handoff | observer-only до verified release/claim + ACTIVE handoff |
+| Ownership transfer | checked same-installation epoch/watch handoff | checked same-installation epoch/watch handoff |
+| Cross-host claim | remote RELEASED → CLAIM_PENDING → ACTIVE; local watch recovery | remote RELEASED → CLAIM_PENDING → ACTIVE; local watch recovery |
 | Lean | обычный lake/lean | перед lake/lean удалить LD_LIBRARY_PATH |
 | Native-v10 semantic gate | тот же scoped registry/review contract | тот же scoped registry/review contract |
 | Historical-v9 receipts | только ручная offline compatibility-проверка | только ручная offline compatibility-проверка |
@@ -236,18 +294,33 @@ env -u LD_LIBRARY_PATH lake env lean <file>.lean
 | Node registry consumption gate PASS | использовать только точный зарегистрированный theorem-to-consumer edge |
 | theorem/goal действительно закрыт | close transaction, карта/blueprint, scoped delivery |
 | foreign dirty paths | сохранить; не stage и не commit |
+| remote branch observed | bind observation to one operation ID; it is not native evidence or ownership |
+| pull completed on a receiving host | remain observer-only until verified release/claim, watch readback and ACTIVE handoff |
+| native timestamp/settings card only | HOLD; obtain provider receipt and observed wake/effect |
+| report collected | classify independently; keep one confirmed repair active |
 | PX_RH_CLAIM | остановиться на owner authority boundary |
 
 ## 7. Зарегистрированный инвентарь
 
 Единственный routable inventory — docs/cartographer/TOOLS.yaml. На снимке
-2026-09-11 зарегистрировано 90 инструментов: 75 ENABLED, 12 AVAILABLE,
+2026-09-11 зарегистрировано 97 инструментов: 82 ENABLED, 12 AVAILABLE,
 2 RETIRED и 1 DEGRADED.
 Сотни вспомогательных scripts, tests и one-shot probes на диске не становятся
 автоматически routable: для рождения инструмента нужен полный manifest contract.
 
 Следующий machine-readable список проверяется plant против manifest и не может
 молча разойтись с ним.
+
+Team Runtime v1 adds the registered transition names `team-local-init`,
+`team-observe-remote`, `team-reserve-effect`, `team-observe-native`,
+`team-watch-intent`, `team-confirm-effect` and `team-record` (with `report`, `issue-event` and
+`assignment` kinds), plus `team-integrate-candidate` and initial-only
+`team-bootstrap-publish`. Exact candidate schemas are owned by the runtime and its
+tests. `codex-session-start`, `routeb-session-briefing`,
+`routeb-session-checkpoint` and `three-body-loop` in the dated list are
+historical/manual compatibility entries; the routine entry is `plan`. This
+card does not disable `relay.py`; its older description is historical until a
+separately reviewed live conflict is recorded.
 
 ```yaml registered_tool_ids
 - codex-session-start
@@ -263,6 +336,15 @@ env -u LD_LIBRARY_PATH lake env lean <file>.lean
 - routeb-status
 - goal-run-selector
 - workflow-runtime
+- workflow-team-local-init
+- workflow-team-observe-remote
+- workflow-team-reserve-effect
+- workflow-team-watch-intent
+- workflow-team-observe-native
+- workflow-team-confirm-effect
+- workflow-team-record
+- workflow-team-integrate-candidate
+- workflow-team-bootstrap-publish
 - workflow-search-evidence
 - workflow-close-node
 - workflow-session-close
@@ -360,5 +442,9 @@ python3 orchestrator/tools_census.py
 - Scoped semantic edge gate не является математическим goal close.
 - Map coverage не доказывает актуальность математики.
 - Publication blueprint не является внешней публикацией.
+- `flock` защищает только inode/common-dir transaction; он не передаёт ownership и не
+  заменяет release/claim или native watch evidence.
+- Network observation, provider timestamp и native wake/effect — разные subjects.
+- Pull на новом host не даёт execution ownership; до verified handoff host observer-only.
 - Ни один green gate не означает Route promotion или RH.
 - PX_RH_CLAIM остаётся единственной owner-only границей.

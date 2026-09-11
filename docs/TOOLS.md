@@ -2,10 +2,10 @@
 > **GENERATED FILE — do not edit by hand.** Regenerate with `./orchestrator/tools_census.py --markdown`.
 > Written because hand-maintained maps rot: MAP.md drifted two days, the frozen atlases two months, and `aristotle_proofs.db` covered 31% of RouteB.
 ## Summary
-- **Operational contours:** 9; registered tool contracts: 90 (AVAILABLE 12, DEGRADED 1, ENABLED 75, RETIRED 2)
+- **Operational contours:** 9; registered tool contracts: 99 (AVAILABLE 12, DEGRADED 1, ENABLED 84, RETIRED 2)
 - **Contour front doors:** `workflow-runtime`, `supplier-preflight`, `property-descent`, `observability-summary`, `lean-validation`, `workflow-runtime`, `task-specific-generators`, `radical-window-derivative`, `edge-ledger-build`
-- **Automatic startup front doors:** 1 (`codex-session-start`); Spine strict is its internal check
-- **Executable implementation files:** 555 (touched since 2026-07-01: 231)
+- **Canonical startup front door:** `workflow-runtime` (from `TOOLS.yaml`)
+- **Executable implementation files:** 558 (touched since 2026-07-01: 234)
 - **One-shot probes** (goal-local experiment log, not tooling): 198
 - **Verification tests** (not tooling): 58
 - **Completed migration scripts** (provenance, not tooling): 9
@@ -19,7 +19,7 @@
 | Path | Last commit | Refs | In rules |
 |---|---|---|---|
 | `q3.lean.aristotle/aristotle_db/aristotle_proofs.db` | 2026-09-02 | 197 | yes |
-| `q3.lean.aristotle/aristotle_db/knowledge.db` | 2026-09-11 | 379 | yes |
+| `q3.lean.aristotle/aristotle_db/knowledge.db` | 2026-09-11 | 397 | yes |
 
 ## Ledgers — accumulating journals ("have we already tried this?")
 229 journals, **182 alive** / 47 frozen. A frozen ledger that is still cited as current is the project's recurring failure mode: it does not lie, it just stops answering.
@@ -34,7 +34,7 @@
 | `docs/routeB_bus/MANIFEST.md` | 406 | 2026-08-10 | **NO** |
 | `docs/semantic_quarantine/STATUS_SURFACE_REGISTRY_v1.json` | 340 | 2026-08-31 | **NO** |
 | `q3.lean.aristotle/blueprint/blueprint_manifest.json` | 280 | 2026-09-03 | yes |
-| `docs/Progress_Log.md` | 261 | 2026-09-11 | yes |
+| `docs/Progress_Log.md` | 265 | 2026-09-11 | yes |
 | `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL057_B3_0M_FINITE_SOURCE_WEIL_FOURIER_LEDGER_PREFLIGHT_RELEASE_2026-08-09.md` | 245 | 2026-08-09 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_GOAL057_B3_0M_FINITE_SOURCE_WEIL_FOURIER_LEDGER_PREFLIGHT_RELEASE_2026-08-09.md` | 245 | 2026-08-09 | **NO** |
 | `docs/routeB_bus/phase5_scripts/out/edge_ledger_relritz.json` | 244 | 2026-09-03 | yes |
@@ -76,9 +76,9 @@
 | `docs/routeB_bus/PROSHKA_REQUEST_GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER_RELEASE_2026-08-08.md` | 95 | 2026-08-08 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_REQUEST_GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER_RELEASE_2026-08-08.md` | 95 | 2026-08-08 | **NO** |
 | `SESSION_PROTOKOLL_2026-08-14.md` | 94 | 2026-08-14 | **NO** |
+| `docs/CHAT_DIGESTS.md` | 94 | 2026-09-11 | **NO** |
 | `docs/cartographer/comparator/fixtures/adapter_registry.json` | 94 | 2026-08-23 | **NO** |
 | `docs/routeB_bus/proshka/PROSHKA_VERDICT_REQ_2026_08_22_V_H2A_4_1B_3C_1_6_DOMAIN_KILL_AND_POLARIZED_DEFECT_DISCRIMINATOR_2026-08-23.md` | 88 | 2026-08-23 | **NO** |
-| `docs/CHAT_DIGESTS.md` | 86 | 2026-09-11 | **NO** |
 | `docs/routeB_bus/muntz_r6/lake-manifest.json` | 85 | 2026-07-30 | **NO** |
 | `docs/routeB_bus/muntz_v3/lake-manifest.json` | 85 | 2026-07-30 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/muntz_r6/lake-manifest.json` | 85 | 2026-07-30 | **NO** |
@@ -158,11 +158,13 @@
 | `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/GOAL057_B3_0AC_ARCH_PRIME_SHIFTED_LEDGER_CLOSEOUT_2026-08-10.md` | 19 | 2026-08-10 | **NO** |
 | `docs/session_protocols/SESSION_PROTOKOLL_2026-09-08_LINUX_CLAUDE.md` | 17 | 2026-09-08 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/register_read_only_docs_v1_actions_log.md` | 17 | 2026-07-10 | **NO** |
+| `docs/session_protocols/SESSION_PROTOKOLL_2026-09-11_CODEX.md` | 16 | 2026-09-11 | **NO** |
 | `Q3_OBSTRUCTION_ATLAS.md` | 15 | 2026-08-06 | yes |
 | `archive/skills_gpt5_era_2026-09-06/claude_skills/routeb-conductor/SKILL.md` | 15 | 2026-09-06 | yes |
 | `orchestrator/ARTIFACT_IDENTITY_REGISTRY.json` | 15 | 2026-08-06 | **NO** |
 | `SESSION_PROTOKOLL_2026-08-20.md` | 14 | 2026-08-20 | **NO** |
 | `archive/skills_gpt5_era_2026-09-06/agents_skills/routeb-conductor/SKILL.md` | 14 | 2026-09-06 | yes |
+| `docs/INSTRUCTION_ISSUES.md` | 14 | 2026-09-11 | yes |
 | `docs/routeB_bus/LINUX_COMPACT_LOG_COMMUTATOR_RATE_SOURCE_PREFLIGHT_GOAL058_2026-08-27.md` | 14 | 2026-08-27 | **NO** |
 | `q3.lean.aristotle/docs/PEN_3_3_POISSON_RESIDUAL_LEDGER.md` | 14 | 2026-07-10 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_3_EXACT_OPERATOR_TYPE_REGISTRY.md` | 14 | 2026-07-11 | **NO** |
@@ -182,11 +184,11 @@
 | `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/P038_PLANT_LOG.md` | 12 | 2026-07-30 | **NO** |
 | `SESSION_PROTOKOLL_2026-08-18.md` | 11 | 2026-08-18 | **NO** |
 | `docs/Codex/TASK_2026-09-03_bind_killplan_request_and_step1_agreement_source_check.md` | 11 | 2026-09-03 | **NO** |
+| `docs/Codex/AGENTS_LEDGER.md` | 11 | 2026-09-11 | yes |
 | `docs/routeB_bus/phase5_scripts/out/edge_ledger_dualcert.md` | 11 | 2026-09-03 | yes |
 | `docs/routeB_bus/phase5_scripts/out/edge_ledger_schur.md` | 11 | 2026-09-03 | yes |
 | `docs/routeB_bus/phase4_scripts/CODEX_RUNCARD_glower_ledger_2026-08-10.md` | 11 | 2026-08-10 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/anchor_locked_extraction_v1_actions_log.md` | 11 | 2026-07-10 | **NO** |
-| `docs/INSTRUCTION_ISSUES.md` | 10 | 2026-09-11 | **NO** |
 | `docs/routeB_bus/phase5_scripts/out/edge_ledger_probe1.md` | 10 | 2026-09-03 | yes |
 | `SESSION_PROTOKOLL_2026-08-19.md` | 9 | 2026-08-19 | **NO** |
 | `SESSION_PROTOKOLL_2026-08-26.md` | 9 | 2026-08-27 | **NO** |
@@ -198,7 +200,6 @@
 | `docs/routeB_bus/PROSHKA_REPLY_KILL6_LEDGER_2026-07-27.md` | 6 | 2026-07-27 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_REPLY_KILL6_LEDGER_2026-07-27.md` | 6 | 2026-07-27 | **NO** |
 | `docs/GLOWER_ODD_FLOOR_10_08_2026/docs/Mythos/PACKET_MYTHOS_LEDGER_STATUS_AND_VERDICT_2026-08-10.md` | 5 | 2026-08-10 | **NO** |
-| `docs/session_protocols/SESSION_PROTOKOLL_2026-09-11_CODEX.md` | 5 | 2026-09-11 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/MUNTZ_V3_CONSUMPTION_LEDGER.md` | 5 | 2026-08-03 | **NO** |
 | `.agents/skills/alias-hunt/SKILL.md` | 5 | 2026-09-11 | yes |
 | `docs/trackB/S5_FAILURE_ATLAS.md` | 4 | 2026-08-06 | **NO** |
@@ -206,7 +207,6 @@
 | `archive/skills_gpt5_era_2026-09-06/agents_skills/q3-step32-lean/SKILL.md` | 3 | 2026-09-06 | yes |
 | `docs/routeB_bus/SOFT_L2_LAG_LEDGER_12_14_120_REPORT_2026-07-13.md` | 3 | 2026-07-27 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/SOFT_L2_LAG_LEDGER_12_14_120_REPORT_2026-07-13.md` | 3 | 2026-07-27 | **NO** |
-| `docs/Codex/AGENTS_LEDGER.md` | 2 | 2026-09-11 | **NO** |
 | `docs/routeB_bus/LOCAL_ZERO_INVARIANTS_CATALOG_2026-09-08.md` | 2 | 2026-09-08 | **NO** |
 
 ### Frozen (still on disk, often still cited)
@@ -264,19 +264,25 @@
 | Tool | Last | Refs | In rules | Purpose |
 |---|---|---|---|---|
 | `docs/routeB_bus/proshka/slack_jf_probe_2026-09-11.py` | 2026-09-11 | 2 | **NO** |  |
-| `orchestrator/spine.py` | 2026-09-11 | 275 | yes | Knowledge Spine aggregator and strict control-plane entrypoint. |
-| `orchestrator/workflow_runtime.py` | 2026-09-11 | 82 | yes | Stateless front door for the existing Q3 goal lifecycle. |
-| `paper.sh` | 2026-09-11 | 75 | yes | paper.sh — затянуть публикацию ОДНОЙ командой: PDF + метаданные + bib + Zotero + реестр. |
+| `docs/routeB_bus/sibling/ff_sibling_h2.py` | 2026-09-11 | 1 | **NO** | Function-field sibling of SL12a/SL14 (observer, 2026-09-11). |
+| `docs/routeB_bus/sibling/ff_sibling_identity.py` | 2026-09-11 | 1 | **NO** | Exact identity for the function-field sibling of SL12a/SL14 (observer, 2026-09-11, verified genus 1-3 to 1e-16 |
+| `orchestrator/bind_request.py` | 2026-09-11 | 23 | yes | Bind one exact Proshka request; publish a pinned commit outside the writer lock. |
+| `orchestrator/spine.py` | 2026-09-11 | 279 | yes | Knowledge Spine aggregator and strict control-plane entrypoint. |
+| `orchestrator/startup_runtime.py` | 2026-09-11 | 5 | yes | Pure Control-v10 startup selection and a non-authoritative v9 shadow view. |
+| `orchestrator/team_records.py` | 2026-09-11 | 3 | **NO** | Pure, strict preparation helpers for the Q3 team registries. |
+| `orchestrator/tools_census.py` | 2026-09-11 | 17 | yes | Machine census of every tool, database and state file in the repo. |
+| `orchestrator/workflow_runtime.py` | 2026-09-11 | 129 | yes | Stateless front door for the existing Q3 goal lifecycle. |
+| `paper.sh` | 2026-09-11 | 88 | yes | paper.sh — затянуть публикацию ОДНОЙ командой: PDF + метаданные + bib + Zotero + реестр. |
+| `scripts/literature_discovery.py` | 2026-09-11 | 22 | yes | Bounded read-only metadata discovery over free arXiv and Crossref APIs. |
 | `orchestrator/kb.py` | 2026-09-10 | 183 | yes | kb — the entry point to legacy operational-closure knowledge in knowledge.db. |
 | `orchestrator/session_briefing.py` | 2026-09-10 | 13 | yes | Read-only Route B session briefing and local close-session checkpoint. |
 | `q3.lean.aristotle/scripts/refresh_q3_docs.py` | 2026-09-10 | 38 | yes | ECMAScript String.trim(): match Bun's empty-document check, including BOM. |
-| `ask.sh` | 2026-09-09 | 344 | yes | ask.sh — ОДИН вход в накопленное знание. Спрашивать ДО внешнего поиска и ДО создания чего-либо. |
+| `ask.sh` | 2026-09-09 | 346 | yes | ask.sh — ОДИН вход в накопленное знание. Спрашивать ДО внешнего поиска и ДО создания чего-либо. |
 | `docs/routeB_bus/phase5_codex/six_centre/one_direction_margin.py` | 2026-09-09 | 25 | yes | Proshka's one-direction implementation (5) of the D24 target, tested numerically on source-defined directions. |
 | `docs/routeB_bus/phase5_codex/six_centre/sc_build.py` | 2026-09-09 | 18 | yes | Six-centre full-width assembly of the Weil form (C1) on Legendre profiles. |
 | `docs/routeB_bus/phase5_codex/six_centre/schur_response.py` | 2026-09-09 | 2 | **NO** | Schur response of the cut theta test on the window (Proshka DISTANCE D22-D24, request §9(c)): evaluate the sig |
 | `docs/routeB_bus/phase5_codex/six_centre/window_derivative.py` | 2026-09-09 | 19 | yes | Window floor vs theta tail: does lambda_a track the cut-off mass of the null test Phi? |
 | `docs/routeB_bus/phase5_codex/six_centre/window_identity_check.py` | 2026-09-09 | 4 | **NO** | Direct check of the reformulation lambda_a = min_w Q[v_out + w] / ||v_in - w||^2 (WINDOW_TAIL_DERIVATIVE_PROBE |
-| `orchestrator/bind_request.py` | 2026-09-09 | 23 | yes | bind_request.py — one command to bind a judge request (replaces the ad-hoc python heredocs of 2026-09-03/04). |
 | `docs/routeB_bus/phase5_codex/euler_gram/analyse.py` | 2026-09-07 | 1 | yes | Validation + margin tables from a prod2 output. |
 | `docs/routeB_bus/phase5_codex/euler_gram/arch.py` | 2026-09-07 | 7 | **NO** | Archimedean supplier for the Euler-Gram evaluator. |
 | `docs/routeB_bus/phase5_codex/euler_gram/checks.py` | 2026-09-07 | 13 | **NO** | Extra structural checks on a prod2 output. |
@@ -398,24 +404,22 @@
 | `docs/routeB_bus/phase5_codex/slope_split.py` | 2026-09-03 | 4 | yes | Probe 7: split the bordered curvature pairing into pole and Arch-prime parts. |
 | `docs/routeB_bus/phase5_codex/xi_row_zeros.py` | 2026-09-03 | 4 | yes | Probe 12 (precommit ADDENDUM 13, 2026-09-04): zeros of the P59 numerator for the ground row and the Xi-sample  |
 | `orchestrator/benchmarks/control_v10_benchmark.py` | 2026-09-03 | 1 | **NO** | Read-only warm/cold benchmark for the production Control-v10 plan. |
-| `specs_docs/vahta.sh` | 2026-09-03 | 14 | yes | vahta.sh — origin watch that DIES when the event happens (its exit is the wake-up kick). |
+| `specs_docs/vahta.sh` | 2026-09-03 | 18 | yes | vahta.sh — origin watch that DIES when the event happens (its exit is the wake-up kick). |
 | `docs/cartographer/comparator/fit.py` | 2026-09-02 | 12 | yes | Generic fail-closed direct type-fit over the local Lean environment index. |
 | `docs/cartographer/lean_env/envdump.py` | 2026-09-02 | 20 | yes | Собрать индекс Lean environment: имя → ELABORATED тип, аксиомы, адрес. |
 | `orchestrator/node_registry_v10.py` | 2026-09-02 | 2 | yes | Scoped theorem-to-consumer registry and fail-closed v10 shadow gate. |
 | `orchestrator/proof_loop.py` | 2026-09-02 | 2 | yes | Pure consumer-first proof-loop contract shared by startup and runtime. |
-| `orchestrator/startup_runtime.py` | 2026-09-02 | 3 | yes | Pure Control-v10 startup selection and a non-authoritative v9 shadow view. |
 | `orchestrator/three_body_loop.py` | 2026-09-02 | 46 | yes | Immutable Control-v9 evidence and transport compatibility runtime. |
 | `q3.lean.aristotle/scripts/oracle_questions.py` | 2026-09-02 | 16 | yes | Address-aware journal for oracle question series. |
-| `scripts/literature_discovery.py` | 2026-09-02 | 6 | yes | Bounded read-only metadata discovery over free arXiv and Crossref APIs. |
 | `scripts/research_oracle.py` | 2026-09-02 | 157 | yes |  |
 | `scripts/search_external_lean.py` | 2026-09-02 | 7 | yes | Read-only term search over the enabled external Lean registry. |
-| `scripts/supplier_preflight.py` | 2026-09-02 | 25 | yes | One fail-closed shelf -> properties -> direct Lean type-fit preflight. |
-| `specs_docs/session_start.sh` | 2026-09-02 | 77 | yes | session_start.sh — manual legacy diagnostic wrapper. |
+| `scripts/supplier_preflight.py` | 2026-09-02 | 41 | yes | One fail-closed shelf -> properties -> direct Lean type-fit preflight. |
+| `specs_docs/session_start.sh` | 2026-09-02 | 78 | yes | session_start.sh — manual legacy diagnostic wrapper. |
 | `orchestrator/goal_runtime.py` | 2026-09-01 | 47 | yes | Read-only GOAL_RUN contract validator and physical-goal selector. |
 | `orchestrator/lean_dependency_runtime.py` | 2026-09-01 | 2 | yes | Read-only Lean declaration dependency inspection for node-registry v10. |
 | `orchestrator/roof_port_ledger.py` | 2026-09-01 | 3 | yes | Current-HEAD reverse ledger for the conditional Route-B roof. |
 | `orchestrator/migration_census.py` | 2026-08-31 | 8 | yes | Exact live-source versus knowledge.db migration census. |
-| `orchestrator/packet.py` | 2026-08-31 | 22 | yes | Clipboard-native packet transport for the Route B orchestration bus. |
+| `orchestrator/packet.py` | 2026-08-31 | 23 | yes | Clipboard-native packet transport for the Route B orchestration bus. |
 | `orchestrator/project_state.py` | 2026-08-31 | 23 | **NO** | Build and verify the bounded Q3 project-state projection. |
 | `orchestrator/research_debt_challenge.py` | 2026-08-31 | 6 | yes | Read-only ranker and deterministic Proshka research-debt packet builder. |
 | `orchestrator/research_dependency_contract.py` | 2026-08-31 | 0 | **NO** | Closed consumer-first contract for candidate theorem dependencies. |
@@ -427,10 +431,10 @@
 | `scripts/build_proshka_brief.py` | 2026-08-31 | 20 | yes | Build a non-authoritative Proshka evidence pack from the Q3 repo. |
 | `scripts/q3_docs_corpus.py` | 2026-08-31 | 7 | **NO** | Canonical curated-source selection and deterministic q3_docs identity. |
 | `scripts/refresh_proshka_pack.sh` | 2026-08-31 | 3 | **NO** |  |
-| `specs_docs/session_close.py` | 2026-08-30 | 3 | yes | Incremental Q3 session close: repair derived artifacts, verify, and report debt. |
+| `specs_docs/session_close.py` | 2026-08-30 | 4 | yes | Incremental Q3 session close: repair derived artifacts, verify, and report debt. |
 | `orchestrator/dependency_registry.py` | 2026-08-29 | 1 | **NO** | Proof-grade staleness evaluator shared by start, close, and phase-close. |
 | `scripts/check_arch_floor_quarantine.sh` | 2026-08-29 | 2 | **NO** |  |
-| `specs_docs/phase_close.py` | 2026-08-29 | 4 | yes | Unified phase close: derived repair, existing gates, blueprint, and debt. |
+| `specs_docs/phase_close.py` | 2026-08-29 | 5 | yes | Unified phase close: derived repair, existing gates, blueprint, and debt. |
 | `docs/cartographer/atoms.py` | 2026-08-28 | 21 | yes | Extract external Lean atoms from the complete Route B source tree. |
 | `docs/cartographer/brief.py` | 2026-08-28 | 31 | yes | brief.py — собрать source-locked пакет из базы для Прошки/Codex. |
 | `docs/cartographer/inventory.py` | 2026-08-28 | 21 | yes | Картограф, фаза 1 — детерминированный инвентарь. |
@@ -456,13 +460,12 @@
 | `docs/cartographer/cheap.py` | 2026-08-19 | 54 | yes | cheap-closure-finder — очередь незакрытых шагов по ЦЕНЕ, а не по номеру. |
 | `scripts/check_axioms.sh` | 2026-08-15 | 335 | yes | check_axioms.sh — воспроизводимая запись о том, на чём стоит наш Lean. |
 | `docs/cartographer/atom_describe.py` | 2026-08-14 | 37 | yes | Обогатить атомы описаниями: что каждый атом ЕСТЬ, а не только как он называется. |
-| `orchestrator/goal_events.py` | 2026-08-14 | 22 | yes | Durable AUTOPILOT goal-attempt and reusable-insight writers. |
+| `orchestrator/goal_events.py` | 2026-08-14 | 23 | yes | Durable AUTOPILOT goal-attempt and reusable-insight writers. |
 | `orchestrator/routeb_goal_state.py` | 2026-08-13 | 1 | yes | Shared lifecycle parsing for physical Route B goal files. |
 | `scripts/deep_preflight.py` | 2026-08-13 | 5 | yes | Dynamic semantic and external-Lean preflight for the selected physical goal. |
 | `docs/cartographer/foreign_atoms.py` | 2026-08-11 | 9 | yes | Связать чужое Lean-дерево с нашей базой атомов: что у них уже доказано на наших опорах. |
 | `docs/cartographer/map_coverage.py` | 2026-08-11 | 7 | yes | Приложение к карте: КАЖДЫЙ Lean-файл RouteB одной строкой, включая невидимые карте. |
 | `orchestrator/backfill_db.py` | 2026-08-10 | 7 | yes | Synchronize the live Route B declaration inventory into aristotle_proofs.db. |
-| `orchestrator/tools_census.py` | 2026-08-10 | 15 | yes | Machine census of every tool, database and state file in the repo. |
 | `q3.lean.aristotle/scripts/refresh_erdos_overlap_kb.py` | 2026-08-10 | 4 | yes |  |
 | `q3.lean.aristotle/aristotle_db/parse_lean.py` | 2026-08-08 | 70 | **NO** | Lean 4 Parser for Aristotle Proofs Database |
 | `specs_docs/hooks/unicode-guard.py` | 2026-08-07 | 3 | **NO** | unicode-guard.py — PostToolUse hook: detect & neutralize invisible-Unicode |
@@ -483,7 +486,7 @@
 | `docs/routeB_bus/litreview/zotero_pull.py` | 2026-08-03 | 6 | **NO** | Zotero live-sync — pull the RH collections from the local Zotero HTTP API. |
 | `orchestrator/codex_app.sh` | 2026-07-30 | 10 | **NO** | Codex.app lane — drive the desktop Codex through its GUI. |
 | `orchestrator/desktop_app.sh` | 2026-07-30 | 9 | **NO** | Desktop lane — drive Codex.app and Claude Desktop through their GUI. |
-| `orchestrator/relay.py` | 2026-07-30 | 11 | yes | RELAY lane — the conductor's transport. |
+| `orchestrator/relay.py` | 2026-07-30 | 15 | yes | RELAY lane — the conductor's transport. |
 | `docs/routeB_bus/check_full_window_positive_part_certificate.py` | 2026-07-29 | 15 | **NO** | Independent stdlib-only checker for RouteB.033. |
 | `docs/routeB_bus/check_priority_band_positive_part_certificate.py` | 2026-07-29 | 13 | **NO** | Independent stdlib-only checker for RouteB.031. |
 | `docs/routeB_bus/full_window_positive_part_certificate.py` | 2026-07-29 | 17 | **NO** | Build the RouteB.033 full-window positive-part certificate. |
