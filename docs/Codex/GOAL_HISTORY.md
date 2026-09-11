@@ -13302,3 +13302,568 @@ receipts and full candidate/template preserved in session protocol2026-09-11_COD
 ````
 <!-- /q3-history -->
 
+<!-- q3-history {"fence":"````","key":"resume-48-92ef3de49d34042949e785d75a00bf3de76e44fb30e1e2de791212f778a2658e","kind":"resume","revision":48,"sha256":"92ef3de49d34042949e785d75a00bf3de76e44fb30e1e2de791212f778a2658e","size":7577} -->
+````text
+---
+schema: q3_resume.v1
+revision: 48
+observed_at: '2026-09-11T15:10:01.933134+00:00'
+previous_sha256: beb665943ce6d41afb92e0f43ef2257857255fa93dcaadefa80ce754e127baf8
+owner_thread_id: 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: e65edbb6967733b16cd6283a4f72672465150945
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+stages:
+  receipt: DONE
+  independent_review: DONE
+  parent_check: DONE
+  acceptance: DONE
+  publication: DONE
+operation:
+  kind: PUBLISH
+  state: CONFIRMED
+  id: DENSITY_DELIVERY_RECEIPTS_20260911
+  evidence:
+  - e65edbb6967733b16cd6283a4f72672465150945 committed6named receipt paths, exact
+    manifests verified; push0 and live ls-remote exacte65edbb6. Foreign8files plus
+    digest suffix preserved/excluded. This checkpoint confirmation may be mirrored
+    by a later unindexed receipt-only commit.
+  - Source659f389c/request122076a3/binding750b201d published; DENSITY actually IN_REVIEW
+    since17:00+02, exact file/LINE+short instruction/user message94fc406d-e741-417a-b489-1bf3e1b5f1b1/natural
+    reasoning observed. No verdict yet.
+  - One background maintenance141.970s, session_start0, askDENSITY HITS; source BPY
+    journal once projected1921oldrows preserved. No outstanding source/request/receipt
+    integration or repeated refresh. Permanent bridge retained.
+  - 'Next: receive DENSITY result; same six-field phase/chat, fresh checker on complete
+    verdict. Temporary nine-path alias-only integration window activates only by explicit
+    START_ALIAS message to neighbour; mathematical owner remains this task, core runtime
+    excluded.'
+---
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+
+SL20 full original all-complex compact-test Q sign remains UNPROVED.
+CHALLENGER_NOT_RH; PX_RH_CLAIM NOT_MADE. Scoped production HOLD
+NODE_REGISTRY_EXACT_EDGE_REQUIRED; last canonical plan fatal_errors=[].
+Physical goal/source/six-field mathematical phase unchanged.
+
+## Confirmed and candidate results
+
+SLACK partial PAPER verdict e8a95fac36dec2aea50c71a6bdf5fc7deffd4152 accepted;
+report docs/routeB_bus/SLACK_INDEPENDENT_CHECK_2026-09-11.md now37796bytes,
+sha25614e98d5544783927c54b41769714675ff2027a15e0a822bb5dabf4b069d379dc,
+source commit659f389caf5e6ce7a354e7e8e804fc0e26259949 published.
+Old26607byte/b98b2c1d prefix unchanged. Csordas2015p11 pays SL23/24 via exact
+Phi_ours(x)=2Phi_C(x/2), q(t)=J_f(sqrt(t))/(4t^(3/2)), not literal q=J.
+OD1 positive odd entries; OC1/OC2 same noncanonical control has both scalar
+concavities but full odd form=-3/1250. No claim against canonical theta or RH.
+BPY9686byte/46aab89e candidate accepted by sole Terra/xhigh CLEAN/CLEAN,
+parent source/termwise/Gaussian checks and1.708s BP2 controls DONE.
+PDFmath_9912170.pdf351648bytes/04a444275e5522cef9a1ba9f7d1b9f20a752764d3548f9c48be6dbc055bb12ea,
+pp3-7,10-14 read,p7 rendered; local recompiled arXivv1 dated2024-11-26.
+T=sum Gamma2/(pi n²); Phi(x)=exp(5x/2)r(exp2x), f=Phi/A,A=||Phi||2,
+not I=xi(1/2). BP2: t r(t)=int_0^t(theta(v)-1)r(t-v)dv, exact Laplace proof.
+BP3b scaled OC2 control matches mean pi/3 by exact intermediate value theorem,
+preserves symmetry/two scalar conditions, yet odd form=-3sigma_*²/1250<0.
+Diagnostic sigma_*=.26093319073799,form=-.0001634067120689044. Entire fixed
+law, not its first moment, is the new input; BP5 mixed integral is unpaid.
+
+## Next action
+
+Receipt publication e65edbb6 CONFIRMED, source and delivery work complete.
+DENSITY is ACTUALLY IN_REVIEW, no resend; next is result intake. Request
+ docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+at122076a3430251d8f1f9b0cd0577938456eaaed2,14952bytes/83LF/finalLF,
+sha25609b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2,
+blobffeb152da44d1b1b89917f2921b287f80e3fb4a0; binding/baseline750b201d
+path absent. Four shelf pairs at659f389c (PDF media distinct from LFS pointer),
+sections9/10 literal, sole request checker CLEAN/CLEAN. P1=.95/P2=.90/P3=.70
+are frozen content predictions. Question: ENTIRE fixed law/BP2 -> full mixed
+sign in both parity sectors/all complex coefficients, or new remainder after repair.
+Expected docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_DENSITY_2026-09-11.md;
+boundaryGOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN.
+On result: exact request/phase lock, baseline ancestry, full hashes/whole-file
+read; one fresh Terra/xhigh checker and parent decisive proof check. Completed
+no-push reply triggers immediate full download intake, not empty GitHub wait.
+IF_A new signed identity -> cheapest exact/control falsification then domain/tail
+verification; IF_B mere BP5/SL20 restatement -> first unpaid operator inequality,
+no automatic numerical campaign. Full law route remains candidate, not RH proof.
+
+## Existing work
+
+Owner01a084f4-7498-7021-bac2-91d184d58dc7/local. DENSITY sent11.09.2026 17:00+02
+through browser1/tab2 in same chat6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59,
+message94fc406d-e741-417a-b489-1bf3e1b5f1b1. Exact file tile+unchanged LINE+
+canonical short instruction and natural Pro-Denkvorgang observed. No verdict yet.
+Permanent bridge ACTIVE/every10min, native childrenDONE/no descendants/math job.
+Agent necessity checked at this observation; next20min or on result.
+Runtime2170b469 phase7/global52/fresh4/forced2/phases3,last adjudicatede8a95fac;
+all6phase keys unchanged. Do not increment counters for a mere dispatch.
+Alias-only neighbour01a08f80-f033-7a31-8f3a-3aef042a3fbc waiting for safe9path
+window after our final receipt publication; exact manifest78e43c32 and all
+preimages checked, A4/A5 CLEAN/CLEAN reported. Planned short maintenance pause:
+root retains mathematics but does not write shared files while its alias
+integration runs; wait explicit handback. Core runtime remains excluded.
+Do not duplicate its work or interpret another task agent list as this owner's.
+
+## Do not repeat
+
+FLOW/S1-S7/K36/K48/central2493/F25-160/SLACK/OD1/OC1/OC2/BPY checks DONE.
+No repeated scalar/BP2 samples; no scalar-to-form or log-tilt independence
+inference, bounded G/F_h inverse, fixed Gaussian reserve or finite-prime sign claim.
+No reset/stash/add-all/force/deletion/new phase/chat/watch/foreign staging.
+Lost receipt means inspect original action, never automatic replay.
+
+## Integration remaining
+
+Old startup/search/chat repair and OC2 migration published through08bb6739.
+New BPY journal branch_2026-09-11_12e6a72bda46/artifactab9438e8acee1da638d4714a53f73445fe4625e722f2617dd5b40570d362f040
+projected once;1921oldrows/schema preserved, integrityok, census114.
+ONE DENSITY maintenance after actual IN_REVIEW transition complete141.970s:
+refresh128.245s (builder33.190,dynamic53.372,fixed33.841),session_start13.725s/0,
+askDENSITY0/HITS, corpus11efd6d95556edf479da1bb1c1a96f6cbefde0290526434d3f1c05d8f47f7dbb.
+Log/recipe/launch/search in phase5_codex/out/slack_intake_20260911.log,
+PID1024353/start11887241 terminalDENSITY_PROCESS_EXIT=0; do not repeat refresh
+for unindexed receipt/checkpoint edits. Final own receipt publication e65edbb6 is CONFIRMED; no repeat.
+Foreign8files plus digest suffix preserved/excluded. Refactor plan changed
+independently31e7ff4a->9d8db144; read/reconciled without overwrite, all other
+foreign hashes unchanged. Exact preimage/payload hashes, review/transport
+receipts and full candidate/template preserved in session protocol2026-09-11_CODEX.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-49-0b6694d644a3a0ac86a2b0c3da4f5f321bd0ec8fa602e51008d539caacf2ded5","kind":"intent","revision":49,"sha256":"0b6694d644a3a0ac86a2b0c3da4f5f321bd0ec8fa602e51008d539caacf2ded5","size":7836} -->
+````text
+---
+schema: q3_resume.v1
+revision: 49
+observed_at: '2026-09-11T15:25:27.816815+00:00'
+previous_sha256: 92ef3de49d34042949e785d75a00bf3de76e44fb30e1e2de791212f778a2658e
+owner_thread_id: 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: a2d4822361593762da80cb797cb9867a2ef0db07
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+stages:
+  receipt: DONE
+  independent_review: DONE
+  parent_check: DONE
+  acceptance: DONE
+  publication: DONE
+operation:
+  kind: NONE
+  state: NONE
+  id: ''
+  evidence:
+  - 'Previous goal turn PROGRESS: accepted BPY source/control, published and actually
+    delivered DENSITY, completed one maintenance. Current continuation: live Proshka
+    response and active neighbour independently observed, then explicit alias HANDBACK
+    received.'
+  - 'Alias-only handback verified: main521935c05f7a16341c22dc7a0ce51d3de7a079d7/receipt
+    a2d4822361593762da80cb797cb9867a2ef0db07; live remote exact; all9 committed/worktree
+    hashes match reviewed manifest78e43c32. Math report14e98d55, request09b95fe3,
+    oldRESUME92ef3de4 unchanged before this checkpoint. Canonical plan fatal_errors=[],
+    existing exact-edge HOLD.'
+  - Shared maintenance pause ENDED; root is active mathematical writer. Neighbour
+    core remains isolated and has no shared integration grant. DENSITY still has no
+    completed verdict; interim chat statements are not accepted mathematics. Permanent
+    bridge retained.
+---
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+
+SL20 full original all-complex compact-test Q sign remains UNPROVED.
+CHALLENGER_NOT_RH; PX_RH_CLAIM NOT_MADE. Scoped production HOLD
+NODE_REGISTRY_EXACT_EDGE_REQUIRED; last canonical plan fatal_errors=[].
+Physical goal/source/six-field mathematical phase unchanged.
+
+## Confirmed and candidate results
+
+SLACK partial PAPER verdict e8a95fac36dec2aea50c71a6bdf5fc7deffd4152 accepted;
+report docs/routeB_bus/SLACK_INDEPENDENT_CHECK_2026-09-11.md now37796bytes,
+sha25614e98d5544783927c54b41769714675ff2027a15e0a822bb5dabf4b069d379dc,
+source commit659f389caf5e6ce7a354e7e8e804fc0e26259949 published.
+Old26607byte/b98b2c1d prefix unchanged. Csordas2015p11 pays SL23/24 via exact
+Phi_ours(x)=2Phi_C(x/2), q(t)=J_f(sqrt(t))/(4t^(3/2)), not literal q=J.
+OD1 positive odd entries; OC1/OC2 same noncanonical control has both scalar
+concavities but full odd form=-3/1250. No claim against canonical theta or RH.
+BPY9686byte/46aab89e candidate accepted by sole Terra/xhigh CLEAN/CLEAN,
+parent source/termwise/Gaussian checks and1.708s BP2 controls DONE.
+PDFmath_9912170.pdf351648bytes/04a444275e5522cef9a1ba9f7d1b9f20a752764d3548f9c48be6dbc055bb12ea,
+pp3-7,10-14 read,p7 rendered; local recompiled arXivv1 dated2024-11-26.
+T=sum Gamma2/(pi n²); Phi(x)=exp(5x/2)r(exp2x), f=Phi/A,A=||Phi||2,
+not I=xi(1/2). BP2: t r(t)=int_0^t(theta(v)-1)r(t-v)dv, exact Laplace proof.
+BP3b scaled OC2 control matches mean pi/3 by exact intermediate value theorem,
+preserves symmetry/two scalar conditions, yet odd form=-3sigma_*²/1250<0.
+Diagnostic sigma_*=.26093319073799,form=-.0001634067120689044. Entire fixed
+law, not its first moment, is the new input; BP5 mixed integral is unpaid.
+
+## Next action
+
+Receipt publication e65edbb6 CONFIRMED, source and delivery work complete.
+DENSITY is ACTUALLY IN_REVIEW, no resend; next is result intake. Request
+ docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+at122076a3430251d8f1f9b0cd0577938456eaaed2,14952bytes/83LF/finalLF,
+sha25609b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2,
+blobffeb152da44d1b1b89917f2921b287f80e3fb4a0; binding/baseline750b201d
+path absent. Four shelf pairs at659f389c (PDF media distinct from LFS pointer),
+sections9/10 literal, sole request checker CLEAN/CLEAN. P1=.95/P2=.90/P3=.70
+are frozen content predictions. Question: ENTIRE fixed law/BP2 -> full mixed
+sign in both parity sectors/all complex coefficients, or new remainder after repair.
+Expected docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_DENSITY_2026-09-11.md;
+boundaryGOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN.
+On result: exact request/phase lock, baseline ancestry, full hashes/whole-file
+read; one fresh Terra/xhigh checker and parent decisive proof check. Completed
+no-push reply triggers immediate full download intake, not empty GitHub wait.
+IF_A new signed identity -> cheapest exact/control falsification then domain/tail
+verification; IF_B mere BP5/SL20 restatement -> first unpaid operator inequality,
+no automatic numerical campaign. Full law route remains candidate, not RH proof.
+
+## Existing work
+
+Owner01a084f4-7498-7021-bac2-91d184d58dc7/local. DENSITY sent11.09.2026 17:00+02
+through browser1/tab2 in same chat6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59,
+message94fc406d-e741-417a-b489-1bf3e1b5f1b1. Exact file tile+unchanged LINE+
+canonical short instruction and natural Pro-Denkvorgang observed. No verdict yet.
+Permanent bridge ACTIVE/every10min, native childrenDONE/no descendants/math job.
+Agent necessity checked at this observation; next20min or on result.
+Runtime2170b469 phase7/global52/fresh4/forced2/phases3,last adjudicatede8a95fac;
+all6phase keys unchanged. Do not increment counters for a mere dispatch.
+Alias-only neighbour01a08f80-f033-7a31-8f3a-3aef042a3fbc returned explicit
+HANDBACK. Shared maintenance pause ENDED; root may resume mathematical writes.
+Exact9path manifest78e43c32 verified against worktree and committed521935c0;
+receipt a2d48223 remote-confirmed. Registered alternative-name search is now
+available at .agents/skills/alias-hunt/SKILL.md (read on actual use).
+Its original skill archive and local wrapper are neighbour-owned; no core runtime
+integration occurred or is authorized. Its core development remains isolated.
+Do not duplicate its work or interpret another task agent list as this owner's.
+
+## Do not repeat
+
+FLOW/S1-S7/K36/K48/central2493/F25-160/SLACK/OD1/OC1/OC2/BPY checks DONE.
+No repeated scalar/BP2 samples; no scalar-to-form or log-tilt independence
+inference, bounded G/F_h inverse, fixed Gaussian reserve or finite-prime sign claim.
+No reset/stash/add-all/force/deletion/new phase/chat/watch/foreign staging.
+Lost receipt means inspect original action, never automatic replay.
+
+## Integration remaining
+
+Old startup/search/chat repair and OC2 migration published through08bb6739.
+New BPY journal branch_2026-09-11_12e6a72bda46/artifactab9438e8acee1da638d4714a53f73445fe4625e722f2617dd5b40570d362f040
+projected once;1921oldrows/schema preserved, integrityok, census114.
+ONE DENSITY maintenance after actual IN_REVIEW transition complete141.970s:
+refresh128.245s (builder33.190,dynamic53.372,fixed33.841),session_start13.725s/0,
+askDENSITY0/HITS, corpus11efd6d95556edf479da1bb1c1a96f6cbefde0290526434d3f1c05d8f47f7dbb.
+Log/recipe/launch/search in phase5_codex/out/slack_intake_20260911.log,
+PID1024353/start11887241 terminalDENSITY_PROCESS_EXIT=0; do not repeat refresh
+for unindexed receipt/checkpoint edits. Final own receipt publication e65edbb6 is CONFIRMED; no repeat.
+Foreign literature7files plus digest suffix preserved/excluded. Refactor plan
+was adopted by its own author in a2d48223, sha9493955c; mathematical files
+and own prior checkpoint were unchanged. Alias source registration legitimately
+required its ONE refresh111.837s, session_start13.686s/0, ask3.167s/HITS;
+root read the published log and did not repeat these checks. New corpus
+b9ef9a891368f1d082cf20a9ba5eed9d00dec67b2704ed3c1e9d6e17b0112d34. Exact preimage/payload hashes, review/transport
+receipts and full candidate/template preserved in session protocol2026-09-11_CODEX.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-49-0b6694d644a3a0ac86a2b0c3da4f5f321bd0ec8fa602e51008d539caacf2ded5","kind":"resume","revision":49,"sha256":"0b6694d644a3a0ac86a2b0c3da4f5f321bd0ec8fa602e51008d539caacf2ded5","size":7836} -->
+````text
+---
+schema: q3_resume.v1
+revision: 49
+observed_at: '2026-09-11T15:25:27.816815+00:00'
+previous_sha256: 92ef3de49d34042949e785d75a00bf3de76e44fb30e1e2de791212f778a2658e
+owner_thread_id: 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: a2d4822361593762da80cb797cb9867a2ef0db07
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+stages:
+  receipt: DONE
+  independent_review: DONE
+  parent_check: DONE
+  acceptance: DONE
+  publication: DONE
+operation:
+  kind: NONE
+  state: NONE
+  id: ''
+  evidence:
+  - 'Previous goal turn PROGRESS: accepted BPY source/control, published and actually
+    delivered DENSITY, completed one maintenance. Current continuation: live Proshka
+    response and active neighbour independently observed, then explicit alias HANDBACK
+    received.'
+  - 'Alias-only handback verified: main521935c05f7a16341c22dc7a0ce51d3de7a079d7/receipt
+    a2d4822361593762da80cb797cb9867a2ef0db07; live remote exact; all9 committed/worktree
+    hashes match reviewed manifest78e43c32. Math report14e98d55, request09b95fe3,
+    oldRESUME92ef3de4 unchanged before this checkpoint. Canonical plan fatal_errors=[],
+    existing exact-edge HOLD.'
+  - Shared maintenance pause ENDED; root is active mathematical writer. Neighbour
+    core remains isolated and has no shared integration grant. DENSITY still has no
+    completed verdict; interim chat statements are not accepted mathematics. Permanent
+    bridge retained.
+---
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+
+SL20 full original all-complex compact-test Q sign remains UNPROVED.
+CHALLENGER_NOT_RH; PX_RH_CLAIM NOT_MADE. Scoped production HOLD
+NODE_REGISTRY_EXACT_EDGE_REQUIRED; last canonical plan fatal_errors=[].
+Physical goal/source/six-field mathematical phase unchanged.
+
+## Confirmed and candidate results
+
+SLACK partial PAPER verdict e8a95fac36dec2aea50c71a6bdf5fc7deffd4152 accepted;
+report docs/routeB_bus/SLACK_INDEPENDENT_CHECK_2026-09-11.md now37796bytes,
+sha25614e98d5544783927c54b41769714675ff2027a15e0a822bb5dabf4b069d379dc,
+source commit659f389caf5e6ce7a354e7e8e804fc0e26259949 published.
+Old26607byte/b98b2c1d prefix unchanged. Csordas2015p11 pays SL23/24 via exact
+Phi_ours(x)=2Phi_C(x/2), q(t)=J_f(sqrt(t))/(4t^(3/2)), not literal q=J.
+OD1 positive odd entries; OC1/OC2 same noncanonical control has both scalar
+concavities but full odd form=-3/1250. No claim against canonical theta or RH.
+BPY9686byte/46aab89e candidate accepted by sole Terra/xhigh CLEAN/CLEAN,
+parent source/termwise/Gaussian checks and1.708s BP2 controls DONE.
+PDFmath_9912170.pdf351648bytes/04a444275e5522cef9a1ba9f7d1b9f20a752764d3548f9c48be6dbc055bb12ea,
+pp3-7,10-14 read,p7 rendered; local recompiled arXivv1 dated2024-11-26.
+T=sum Gamma2/(pi n²); Phi(x)=exp(5x/2)r(exp2x), f=Phi/A,A=||Phi||2,
+not I=xi(1/2). BP2: t r(t)=int_0^t(theta(v)-1)r(t-v)dv, exact Laplace proof.
+BP3b scaled OC2 control matches mean pi/3 by exact intermediate value theorem,
+preserves symmetry/two scalar conditions, yet odd form=-3sigma_*²/1250<0.
+Diagnostic sigma_*=.26093319073799,form=-.0001634067120689044. Entire fixed
+law, not its first moment, is the new input; BP5 mixed integral is unpaid.
+
+## Next action
+
+Receipt publication e65edbb6 CONFIRMED, source and delivery work complete.
+DENSITY is ACTUALLY IN_REVIEW, no resend; next is result intake. Request
+ docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+at122076a3430251d8f1f9b0cd0577938456eaaed2,14952bytes/83LF/finalLF,
+sha25609b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2,
+blobffeb152da44d1b1b89917f2921b287f80e3fb4a0; binding/baseline750b201d
+path absent. Four shelf pairs at659f389c (PDF media distinct from LFS pointer),
+sections9/10 literal, sole request checker CLEAN/CLEAN. P1=.95/P2=.90/P3=.70
+are frozen content predictions. Question: ENTIRE fixed law/BP2 -> full mixed
+sign in both parity sectors/all complex coefficients, or new remainder after repair.
+Expected docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_DENSITY_2026-09-11.md;
+boundaryGOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN.
+On result: exact request/phase lock, baseline ancestry, full hashes/whole-file
+read; one fresh Terra/xhigh checker and parent decisive proof check. Completed
+no-push reply triggers immediate full download intake, not empty GitHub wait.
+IF_A new signed identity -> cheapest exact/control falsification then domain/tail
+verification; IF_B mere BP5/SL20 restatement -> first unpaid operator inequality,
+no automatic numerical campaign. Full law route remains candidate, not RH proof.
+
+## Existing work
+
+Owner01a084f4-7498-7021-bac2-91d184d58dc7/local. DENSITY sent11.09.2026 17:00+02
+through browser1/tab2 in same chat6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59,
+message94fc406d-e741-417a-b489-1bf3e1b5f1b1. Exact file tile+unchanged LINE+
+canonical short instruction and natural Pro-Denkvorgang observed. No verdict yet.
+Permanent bridge ACTIVE/every10min, native childrenDONE/no descendants/math job.
+Agent necessity checked at this observation; next20min or on result.
+Runtime2170b469 phase7/global52/fresh4/forced2/phases3,last adjudicatede8a95fac;
+all6phase keys unchanged. Do not increment counters for a mere dispatch.
+Alias-only neighbour01a08f80-f033-7a31-8f3a-3aef042a3fbc returned explicit
+HANDBACK. Shared maintenance pause ENDED; root may resume mathematical writes.
+Exact9path manifest78e43c32 verified against worktree and committed521935c0;
+receipt a2d48223 remote-confirmed. Registered alternative-name search is now
+available at .agents/skills/alias-hunt/SKILL.md (read on actual use).
+Its original skill archive and local wrapper are neighbour-owned; no core runtime
+integration occurred or is authorized. Its core development remains isolated.
+Do not duplicate its work or interpret another task agent list as this owner's.
+
+## Do not repeat
+
+FLOW/S1-S7/K36/K48/central2493/F25-160/SLACK/OD1/OC1/OC2/BPY checks DONE.
+No repeated scalar/BP2 samples; no scalar-to-form or log-tilt independence
+inference, bounded G/F_h inverse, fixed Gaussian reserve or finite-prime sign claim.
+No reset/stash/add-all/force/deletion/new phase/chat/watch/foreign staging.
+Lost receipt means inspect original action, never automatic replay.
+
+## Integration remaining
+
+Old startup/search/chat repair and OC2 migration published through08bb6739.
+New BPY journal branch_2026-09-11_12e6a72bda46/artifactab9438e8acee1da638d4714a53f73445fe4625e722f2617dd5b40570d362f040
+projected once;1921oldrows/schema preserved, integrityok, census114.
+ONE DENSITY maintenance after actual IN_REVIEW transition complete141.970s:
+refresh128.245s (builder33.190,dynamic53.372,fixed33.841),session_start13.725s/0,
+askDENSITY0/HITS, corpus11efd6d95556edf479da1bb1c1a96f6cbefde0290526434d3f1c05d8f47f7dbb.
+Log/recipe/launch/search in phase5_codex/out/slack_intake_20260911.log,
+PID1024353/start11887241 terminalDENSITY_PROCESS_EXIT=0; do not repeat refresh
+for unindexed receipt/checkpoint edits. Final own receipt publication e65edbb6 is CONFIRMED; no repeat.
+Foreign literature7files plus digest suffix preserved/excluded. Refactor plan
+was adopted by its own author in a2d48223, sha9493955c; mathematical files
+and own prior checkpoint were unchanged. Alias source registration legitimately
+required its ONE refresh111.837s, session_start13.686s/0, ask3.167s/HITS;
+root read the published log and did not repeat these checks. New corpus
+b9ef9a891368f1d082cf20a9ba5eed9d00dec67b2704ed3c1e9d6e17b0112d34. Exact preimage/payload hashes, review/transport
+receipts and full candidate/template preserved in session protocol2026-09-11_CODEX.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-50-e7a49b63238fcfcbd54a246c42c7249ec9b74d4c56f5082e6e9e967798f8c76b","kind":"intent","revision":50,"sha256":"e7a49b63238fcfcbd54a246c42c7249ec9b74d4c56f5082e6e9e967798f8c76b","size":8162} -->
+````text
+---
+schema: q3_resume.v1
+revision: 50
+observed_at: '2026-09-11T15:33:56.724391+00:00'
+previous_sha256: 0b6694d644a3a0ac86a2b0c3da4f5f321bd0ec8fa602e51008d539caacf2ded5
+owner_thread_id: 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: a2d4822361593762da80cb797cb9867a2ef0db07
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+stages:
+  receipt: NOT_STARTED
+  independent_review: NOT_STARTED
+  parent_check: NOT_STARTED
+  acceptance: NOT_STARTED
+  publication: NOT_STARTED
+operation:
+  kind: PUBLISH
+  state: INTENT
+  id: ALIAS_HANDBACK_OBSERVATION_20260911
+  evidence:
+  - Base a2d4822361593762da80cb797cb9867a2ef0db07; ordinary named-path commit and
+    non-force push to existing origin/rh_clean. No mathematical source, request, queue
+    or foreign literature changes.
+  - 'Exact payload docs/session_protocols/SESSION_PROTOKOLL_2026-09-11_CODEX.md sha256
+    fa60926a0e5537e0f30c854e9d605b19da89a57c47233cf341efb23627b19756. Only handback
+    receipt plus mechanical clarification: BPY accepted, DENSITY verdict pending.'
+  - 'Other payloads: docs/Codex/RESUME.md is this exact writer-reserved revision50;
+    docs/Codex/GOAL_HISTORY.md is its validated append-only archive. Final complete
+    payload hashes will be checked under the writer lock against staged and committed
+    blobs.'
+  - 'Previous goal turn VERIFIED_WAIT: same live DENSITY response, no terminal verdict;
+    registered RESUME49 saved. Current response is live with stop control, remote
+    still a2d48223. These stages refer to DENSITY VERDICT INTAKE, not the already
+    completed BPY and request-delivery work.'
+---
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+
+SL20 full original all-complex compact-test Q sign remains UNPROVED.
+CHALLENGER_NOT_RH; PX_RH_CLAIM NOT_MADE. Scoped production HOLD
+NODE_REGISTRY_EXACT_EDGE_REQUIRED; last canonical plan fatal_errors=[].
+Physical goal/source/six-field mathematical phase unchanged.
+
+## Confirmed and candidate results
+
+SLACK partial PAPER verdict e8a95fac36dec2aea50c71a6bdf5fc7deffd4152 accepted;
+report docs/routeB_bus/SLACK_INDEPENDENT_CHECK_2026-09-11.md now37796bytes,
+sha25614e98d5544783927c54b41769714675ff2027a15e0a822bb5dabf4b069d379dc,
+source commit659f389caf5e6ce7a354e7e8e804fc0e26259949 published.
+Old26607byte/b98b2c1d prefix unchanged. Csordas2015p11 pays SL23/24 via exact
+Phi_ours(x)=2Phi_C(x/2), q(t)=J_f(sqrt(t))/(4t^(3/2)), not literal q=J.
+OD1 positive odd entries; OC1/OC2 same noncanonical control has both scalar
+concavities but full odd form=-3/1250. No claim against canonical theta or RH.
+BPY9686byte/46aab89e candidate accepted by sole Terra/xhigh CLEAN/CLEAN,
+parent source/termwise/Gaussian checks and1.708s BP2 controls DONE.
+PDFmath_9912170.pdf351648bytes/04a444275e5522cef9a1ba9f7d1b9f20a752764d3548f9c48be6dbc055bb12ea,
+pp3-7,10-14 read,p7 rendered; local recompiled arXivv1 dated2024-11-26.
+T=sum Gamma2/(pi n²); Phi(x)=exp(5x/2)r(exp2x), f=Phi/A,A=||Phi||2,
+not I=xi(1/2). BP2: t r(t)=int_0^t(theta(v)-1)r(t-v)dv, exact Laplace proof.
+BP3b scaled OC2 control matches mean pi/3 by exact intermediate value theorem,
+preserves symmetry/two scalar conditions, yet odd form=-3sigma_*²/1250<0.
+Diagnostic sigma_*=.26093319073799,form=-.0001634067120689044. Entire fixed
+law, not its first moment, is the new input; BP5 mixed integral is unpaid.
+
+## Next action
+
+BPY/source and request-delivery publication e65edbb6 CONFIRMED. DENSITY verdict intake has NOT_STARTED; its stages above remain pending. Publish the three owned handback observation paths, then receive the existing DENSITY result.
+DENSITY is ACTUALLY IN_REVIEW, no resend; next is result intake. Request
+ docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+at122076a3430251d8f1f9b0cd0577938456eaaed2,14952bytes/83LF/finalLF,
+sha25609b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2,
+blobffeb152da44d1b1b89917f2921b287f80e3fb4a0; binding/baseline750b201d
+path absent. Four shelf pairs at659f389c (PDF media distinct from LFS pointer),
+sections9/10 literal, sole request checker CLEAN/CLEAN. P1=.95/P2=.90/P3=.70
+are frozen content predictions. Question: ENTIRE fixed law/BP2 -> full mixed
+sign in both parity sectors/all complex coefficients, or new remainder after repair.
+Expected docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_DENSITY_2026-09-11.md;
+boundaryGOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN.
+On result: exact request/phase lock, baseline ancestry, full hashes/whole-file
+read; one fresh Terra/xhigh checker and parent decisive proof check. Completed
+no-push reply triggers immediate full download intake, not empty GitHub wait.
+IF_A new signed identity -> cheapest exact/control falsification then domain/tail
+verification; IF_B mere BP5/SL20 restatement -> first unpaid operator inequality,
+no automatic numerical campaign. Full law route remains candidate, not RH proof.
+
+## Existing work
+
+Owner01a084f4-7498-7021-bac2-91d184d58dc7/local. DENSITY sent11.09.2026 17:00+02
+through browser1/tab2 in same chat6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59,
+message94fc406d-e741-417a-b489-1bf3e1b5f1b1. Exact file tile+unchanged LINE+
+canonical short instruction and natural Pro-Denkvorgang observed. No verdict yet.
+Permanent bridge ACTIVE/every10min, native childrenDONE/no descendants/math job.
+Agent necessity checked at this observation; next20min or on result.
+Runtime2170b469 phase7/global52/fresh4/forced2/phases3,last adjudicatede8a95fac;
+all6phase keys unchanged. Do not increment counters for a mere dispatch.
+Alias-only neighbour01a08f80-f033-7a31-8f3a-3aef042a3fbc returned explicit
+HANDBACK. Shared maintenance pause ENDED; root may resume mathematical writes.
+Exact9path manifest78e43c32 verified against worktree and committed521935c0;
+receipt a2d48223 remote-confirmed. Registered alternative-name search is now
+available at .agents/skills/alias-hunt/SKILL.md (read on actual use).
+Its original skill archive and local wrapper are neighbour-owned; no core runtime
+integration occurred or is authorized. Its core development remains isolated.
+Do not duplicate its work or interpret another task agent list as this owner's.
+
+## Do not repeat
+
+FLOW/S1-S7/K36/K48/central2493/F25-160/SLACK/OD1/OC1/OC2/BPY checks DONE.
+No repeated scalar/BP2 samples; no scalar-to-form or log-tilt independence
+inference, bounded G/F_h inverse, fixed Gaussian reserve or finite-prime sign claim.
+No reset/stash/add-all/force/deletion/new phase/chat/watch/foreign staging.
+Lost receipt means inspect original action, never automatic replay.
+
+## Integration remaining
+
+Old startup/search/chat repair and OC2 migration published through08bb6739.
+New BPY journal branch_2026-09-11_12e6a72bda46/artifactab9438e8acee1da638d4714a53f73445fe4625e722f2617dd5b40570d362f040
+projected once;1921oldrows/schema preserved, integrityok, census114.
+ONE DENSITY maintenance after actual IN_REVIEW transition complete141.970s:
+refresh128.245s (builder33.190,dynamic53.372,fixed33.841),session_start13.725s/0,
+askDENSITY0/HITS, corpus11efd6d95556edf479da1bb1c1a96f6cbefde0290526434d3f1c05d8f47f7dbb.
+Log/recipe/launch/search in phase5_codex/out/slack_intake_20260911.log,
+PID1024353/start11887241 terminalDENSITY_PROCESS_EXIT=0; do not repeat refresh
+for unindexed receipt/checkpoint edits. Final own receipt publication e65edbb6 is CONFIRMED; no repeat.
+Foreign literature7files plus digest suffix preserved/excluded. Refactor plan
+was adopted by its own author in a2d48223, sha9493955c; mathematical files
+and own prior checkpoint were unchanged. Alias source registration legitimately
+required its ONE refresh111.837s, session_start13.686s/0, ask3.167s/HITS;
+root read the published log and did not repeat these checks. New corpus
+b9ef9a891368f1d082cf20a9ba5eed9d00dec67b2704ed3c1e9d6e17b0112d34. Exact preimage/payload hashes, review/transport
+receipts and full candidate/template preserved in session protocol2026-09-11_CODEX.
+
+````
+<!-- /q3-history -->
+
