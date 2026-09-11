@@ -198,3 +198,44 @@ The same sole native slack_verdict_check (gpt-5.6-terra/xhigh, read-only, no des
 | Revised exact-report PASS2 | CLEAN | No finding — независимое подтверждение тех же байтов | None |
 
 Canonical runtime review-event reconciliation remains separately pending because the observed manual chat differs from the stored chat; this acceptance is not a fabricated runtime event. Publication and branch projection are separate recorded operations. CHALLENGER_NOT_RH; PX_RH_CLAIM: NOT_MADE.
+
+## OC2 — the second scalar concavity condition also does not supply the full form sign
+
+This extension is later than the published OC1 report at8a463c090d0c1d28568c05fe67f4891287e1405f. That report accurately left the second-level condition untested at its acceptance time. Its unchanged OC1 negative odd-kernel witness and smoothing proof are the dependency here; no canonical theta sign or new result about the Planat-Sole theorem is claimed.
+
+Use the same noncanonical fc(x)=exp(-x²)P(x²), P(t)=1+3t/10+t²/25. Set s_c(t)=fc(sqrt(t))=exp(-t)P(t) and q_c(t)=s_c'(t)²-s_c(t)s_c''(t). Differentiating the product exactly cancels all terms from the linear exponential logarithm and gives
+
+q_c(t)=exp(-2t)[P'(t)²-P(t)P''(t)]
+      =exp(-2t)(8t²+60t+25)/2500>0, t>=0.
+
+For W(t)=8t²+60t+25, log q_c=-2t+log W-log2500. Therefore
+
+(log q_c)''(t)=[W''W-W'²]/W²
+             =-(128t²+960t+3200)/(8t²+60t+25)²<0, t>=0.
+
+All numerator coefficients in these displayed sign tests are strictly positive, and denominators are positive. The two scalar conditions (strict concavity of log s_c and strict concavity of log q_c with q_c>0) thus hold on the whole required positive halfline. The already exact OC1 odd four-point value remains-3/1250; q_c is only a newly examined expression of the SAME fc and does not change its V kernel. Compact smoothing retains its negativity as proved in OC1. Consequently those two scalar conditions, even with the positive/even/smooth/faster-than-every-exponential assumptions explicitly satisfied by OC1, do not imply positive semidefiniteness of the full odd form or SL20.
+
+Scope: no assumption that every other definition of an "admissible kernel" permits this Gaussian control. In particular fc lacks the actual double-exponential theta ENV and the arithmetic coupling SL10. This does not refute the source-specific second-level theorem, its interval certificates, or any argument using additional Jacobi/theta structure; it only blocks deriving the form sign from the two scalar conditions alone. No universal exclusion of the paper's complete hypothesis class is made, and RH remains unproved.
+
+Parent independent exact derivative check (SymPy, under1s; no theta grid):
+```python
+import sympy as s
+t=s.symbols('t',nonnegative=True)
+P=1+s.Rational(3,10)*t+t*t/25
+u=s.exp(-t)*P
+q=s.factor(s.diff(u,t)**2-u*s.diff(u,t,2))
+r=s.factor((s.diff(q,t,2)*q-s.diff(q,t)**2)/q**2)
+assert s.simplify(q-s.exp(-2*t)*(8*t*t+60*t+25)/2500)==0
+assert s.simplify(r+(128*t*t+960*t+3200)/(8*t*t+60*t+25)**2)==0
+```
+
+### OC2 acceptance receipt — 2026-09-11T15:33:13+02:00
+
+ACCEPTED_PAPER at the exact limited control scope above. Sole slack_verdict_check, gpt-5.6-terra/xhigh, read-only/no descendants: separate OC2 PASS1 CLEAN and PASS2 CLEAN on unchanged2534bytes, SHA256b8e5555091285ced14dc17542174499b40e01fae3ae40341dc289c360d0a74b0. FIRST_INCORRECT_ASSERTION NONE on both; zero substantive/wording findings, Mode A reached. Parent independently reran the exact derivative block successfully; the original22727byte/cc018a16189d53bc556471c773b3fca9f6fdbed620e61e3f59a078322f9a2f3d report remains the unchanged prefix. This extension supersedes its historically correct second-level-untested statements only for the two stated scalar conditions, never the paper's full hypothesis class.
+
+| Pass | Severity | Finding — English term + Russian explanation | Fix applied |
+|---|---|---|---|
+| OC2 PASS1 | CLEAN | No finding — обе скалярные вогнутости и отрицательный контроль совместимы | None |
+| OC2 PASS2 | CLEAN | No finding — точные байты, тождества и ограниченная область подтверждены | None |
+
+No theta-source sign, SL20, Lean or RH admission. The next source-specific question must exclude this SAME control despite both scalar properties.

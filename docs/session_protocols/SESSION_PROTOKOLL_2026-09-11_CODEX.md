@@ -446,3 +446,2601 @@ Exact non-self publication manifest:
   "docs/routeB_bus/phase5_codex/out/slack_intake_20260911.log": "99bb069d57eb5888ccfbd5ea92b5786b58146ffc92caad327db2bc258b7c6c99"
 }
 ```
+
+### 2026-09-11T15:04:25+02:00 — SLACK publication confirmed
+
+Commit8a463c090d0c1d28568c05fe67f4891287e1405f published to origin/rh_clean; push0 and independent ls-remote exact match. Both large-file objects uploaded2/2,2.0MB; all18published payloads checked (PDF pointers bind raw content SHA/size, stored objects independently hashed). Foreign refactor plan preserved byte-for-byte, only foreign untracked file remains. Initial precommit verifier assumed raw PDF equals Git blob and correctly stopped before commit; fixed that local verifier to check actual repository large-file pointers plus content objects. No source change or verification weakening.
+
+CHAT_REPAIR_PLAN_PASS1 INTENT, same sole native terra/xhigh checker read-only/no descendants, expected10min; this is a new operational plan, not another math-verdict review. Exact plan SHA256cf4e81248e7594515dee5c9927d4becbbdd6de76563bcfa879d041254d7f8525, 4878bytes.
+
+<!-- SLACK_CHAT_REPAIR_PLAN_BEGIN -->
+```text
+SLACK manual chat reconciliation — bounded implementation plan
+
+Outcome: record the already observed owner-delivered SLACK review with its actual chat/message IDs, replacing the stale living-chat handle without inventing another mathematical phase or resending anything. This is recording existing evidence, not authority to create chats. Owner continuing grant and manual delivery are recorded in current task; original report/queue published8a463c090d0c1d28568c05fe67f4891287e1405f. Production HOLD and PX_RH_CLAIM remain unchanged.
+
+Target paths: orchestrator/spine.py, existing orchestrator/tests/test_channel_runtime_writer.py; one registered writer entry in docs/cartographer/TOOLS.yaml. The runtime JSON is changed only by the reviewed registered writer after tests. No changes to AGENTS/CODEX_CONTROL/GOAL, selector, node registry, numeric sources, existing BRIDGE historical implementation or other refactor scopes. Coordinate TOOLS integration with refactor owner01a08f80 before shared mutation. No new abstraction layer, service or dependencies.
+
+Evidence: exact current runtime raw SHA25698765b57e597a9efcc8bf68cdc47970e0b8b5ad5178cc2d2e96b200780ad2740, active phase6/global51, old chat6aa24f25-0934-83eb-9151-3565fc4b3379. Actual owner-created chat6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59, message57e6f47f-d70f-4281-97fb-3f2b7641563d. Request commitd92fd17e78b28fe93939e6b94becf1b90c68dddc, SHA7cbb8da692f7603b66995dfafbc2ec483e05927f9331903db9b540e6d49638da, blob1bb6a64ca93430b52142071150fa2e6e36ce4520. Verdicte8a95fac36dec2aea50c71a6bdf5fc7deffd4152, SHA1d658eb3d6d828d3bc651967087dabf8e2f9774d179b02c7607f25c7ffe54588, blobac3504f3e44b0442fc50c95fe1a095aea57cd7dc. Request and verdict paths and all six phase keys in existing queue/report at8a463c09. Exact intake report final SHA256cc018a16189d53bc556471c773b3fca9f6fdbed620e61e3f59a078322f9a2f3d; receipt §8 records acceptance. Published protocol and queue record observation; no attachment tile is claimed.
+
+Implementation: use existing _phase_record_pin/validate_phase_key/record_delegated_review/write_runtime_atomic. Add a minimal observed-manual-review operation accepting a closed event schema and a pinned receipt in the existing queue. Validate exact expected raw-runtime preimage, all full commit/blob/SHA/ancestry pins, unique request headers and duplicate-safe verdict YAML with exact REQUEST_LOCK, request/BOUNDARY_ID/EXPECTED_VERDICT_PATH, unchanged phase ID and six-field key, actual old/new chat IDs, message and observation time, and pinned observation/acceptance locators. The receipt attests manual transport only; do not falsely require/record a file tile or claim the checker is the producer. Caller grant remains independent of document contents.
+
+In one canonical writer epoch: verify active control/startup (fatal rejects, existing scoped production HOLD does not get cleared), load+validate, archive exact old phase/meter and immutable evidence with preimage digest, change only the living conversation handle, increment fresh_chats_opened and forced_rollovers once for the already observed replacement (never phases_opened), and invoke existing record_delegated_review for phase7/global52, actual message/conversation, SLACK boundary and verdict commit. Preserve old review events and all unrelated fields. Compare raw preimage again immediately before atomic replacement/readback. This combined transaction avoids a half-repaired chat without its accepted review. It creates no fresh browser chat and opens no production admission.
+
+Replay: identical event and authenticated stored receipt is NOOP; same identity with different evidence, malformed archive, stale unrecorded preimage, mismatched request locks, changed phase keys, conflicting chat/message or next-index mismatch rejects before writes. A later legitimate recorded review must not cause an old completed repair to replay side effects or roll back newer state. Define and test precise replay validation rather than copying BRIDGE's full-successor-equality restriction blindly.
+
+Checks: existing runtime writer tests plus focused tests for successful expected delta/preserved unrelated fields, exact replay including after a later valid review, all malformed/conflicting pins and headers, phase change, stale preimage, false tile/unsupported mode, lock collision, interleaved mutation before replace, and atomic failure keeping original bytes. No live data changes in tests; temporary fixtures. Native adversarial plan and exact implementation review must converge (zero substantive plus two sequential clean/wording-only passes); user authorization covers scoped implementation and ordinary nonforce publication. Apply once to actual runtime only after code/registry is reviewed and registered, then independently check7/52/new handle/unchanged key and original event ledger. No Proshka dispatch as part of this repair.
+```
+<!-- SLACK_CHAT_REPAIR_PLAN_END -->
+
+### New parent-only OC2 control — second-level scalar property
+
+Before running the bounded exact check, parent predicted OC1 also satisfies the second-level condition. Exact SymPy derivative calculation (<1s) confirms for s_c(t)=exp(-t)P(t), P=1+3t/10+t²/25:
+q_c=s_c'^2-s_c s_c''=exp(-2t)(8t²+60t+25)/2500>0,
+(log q_c)''=-(128t²+960t+3200)/(8t²+60t+25)²<0 for t>=0.
+Thus the same negative odd-kernel OC1 control appears to satisfy BOTH scalar hypotheses; candidate OC2 excludes inference from those two scalar properties alone, not theta-specific extra assumptions or the Planat-Sole theorem itself. Parent exact assertions PASS. This is new after the published reviewed report (which accurately said second-level class untested at that time); it is NOT yet independently reviewed or accepted. Do not silently amend the published report or relay OC2 as accepted. Sole checker currently on independent operational chat-repair plan, then bounded OC2 check if useful before dispatch; no new agent.
+
+```python
+import sympy as s
+t=s.symbols('t',nonnegative=True)
+P=1+s.Rational(3,10)*t+t*t/25
+u=s.exp(-t)*P
+q=s.factor(s.diff(u,t)**2-u*s.diff(u,t,2))
+r=s.factor((s.diff(q,t,2)*q-s.diff(q,t)**2)/q**2)
+assert s.simplify(q-s.exp(-2*t)*(8*t*t+60*t+25)/2500)==0
+assert s.simplify(r+(128*t*t+960*t+3200)/(8*t*t+60*t+25)**2)==0
+```
+
+2026-09-11T15:20:23+02:00 · SLACK_CHAT_REPAIR_PLAN: initial native TOOL-FAILURE expired refresh token; retried once after30s, valid PASS1 CLEAN/no findings on exact4878byte/cf4e8124 plan. Failure not counted as review. Same checker PASS2 INTENT, unchanged plan/read-only/no descendants, expected5min. Intake8a463c09 unaffected; implementation not started.
+
+2026-09-11T15:22:44+02:00 · Chat-repair plan cf4e8124 PASS2 CLEAN/Mode A reached; full startup has no fatal errors, live runtime98765b57 unchanged. DISPATCH_INTENT: new isolated worker terra/xhigh/no descendants expected20min, owns candidate spine.py/existing tests/one TOOLS entry at /tmp/q3-slack-chat-repair-20260911, based8a463c09, no shared mutation/publication. Same sole math checker OC2 read-only audit expected5min; max2agents. Shelf EXPLORATION_CHAT_FANOUT fast query returned INCOMPLETE_FAST_REQUIRES_DEEP (not absence); direct actual source inspection establishes current rejection and sole historical BRIDGE writer. No semantic refresh needed for these unindexed observations.
+
+### OC2 exact appendix review target (pending)
+
+2534bytes/SHA256b8e5555091285ced14dc17542174499b40e01fae3ae40341dc289c360d0a74b0. Same sole checker, first pass next; no publication/acceptance yet.
+<!-- SLACK_OC2_REVIEW_BEGIN -->
+## OC2 — the second scalar concavity condition also does not supply the full form sign
+
+This extension is later than the published OC1 report at8a463c090d0c1d28568c05fe67f4891287e1405f. That report accurately left the second-level condition untested at its acceptance time. Its unchanged OC1 negative odd-kernel witness and smoothing proof are the dependency here; no canonical theta sign or new result about the Planat-Sole theorem is claimed.
+
+Use the same noncanonical fc(x)=exp(-x²)P(x²), P(t)=1+3t/10+t²/25. Set s_c(t)=fc(sqrt(t))=exp(-t)P(t) and q_c(t)=s_c'(t)²-s_c(t)s_c''(t). Differentiating the product exactly cancels all terms from the linear exponential logarithm and gives
+
+q_c(t)=exp(-2t)[P'(t)²-P(t)P''(t)]
+      =exp(-2t)(8t²+60t+25)/2500>0, t>=0.
+
+For W(t)=8t²+60t+25, log q_c=-2t+log W-log2500. Therefore
+
+(log q_c)''(t)=[W''W-W'²]/W²
+             =-(128t²+960t+3200)/(8t²+60t+25)²<0, t>=0.
+
+All numerator coefficients in these displayed sign tests are strictly positive, and denominators are positive. The two scalar conditions (strict concavity of log s_c and strict concavity of log q_c with q_c>0) thus hold on the whole required positive halfline. The already exact OC1 odd four-point value remains-3/1250; q_c is only a newly examined expression of the SAME fc and does not change its V kernel. Compact smoothing retains its negativity as proved in OC1. Consequently those two scalar conditions, even with the positive/even/smooth/faster-than-every-exponential assumptions explicitly satisfied by OC1, do not imply positive semidefiniteness of the full odd form or SL20.
+
+Scope: no assumption that every other definition of an "admissible kernel" permits this Gaussian control. In particular fc lacks the actual double-exponential theta ENV and the arithmetic coupling SL10. This does not refute the source-specific second-level theorem, its interval certificates, or any argument using additional Jacobi/theta structure; it only blocks deriving the form sign from the two scalar conditions alone. No universal exclusion of the paper's complete hypothesis class is made, and RH remains unproved.
+
+Parent independent exact derivative check (SymPy, under1s; no theta grid):
+```python
+import sympy as s
+t=s.symbols('t',nonnegative=True)
+P=1+s.Rational(3,10)*t+t*t/25
+u=s.exp(-t)*P
+q=s.factor(s.diff(u,t)**2-u*s.diff(u,t,2))
+r=s.factor((s.diff(q,t,2)*q-s.diff(q,t)**2)/q**2)
+assert s.simplify(q-s.exp(-2*t)*(8*t*t+60*t+25)/2500)==0
+assert s.simplify(r+(128*t*t+960*t+3200)/(8*t*t+60*t+25)**2)==0
+```
+<!-- SLACK_OC2_REVIEW_END -->
+
+### OC2 accepted — 2026-09-11T15:33:13+02:00
+
+The SAME noncanonical control fc(x)=exp(-x²)(1+3x²/10+x⁴/25) satisfies both scalar conditions: q_c=exp(-2t)(8t²+60t+25)/2500>0 and (log q_c)''=-(128t²+960t+3200)/(8t²+60t+25)²<0 for t>=0, while its accepted full odd value remains-3/1250. Hence these two scalar conditions alone do not imply the full form sign. No exclusion of actual theta/Jacobi structure, ENV, arithmetic coupling SL10, the full Planat-Sole hypothesis class or RH follows.
+
+
+### OC2 acceptance receipt — 2026-09-11T15:33:13+02:00
+
+ACCEPTED_PAPER at the exact limited control scope above. Sole slack_verdict_check, gpt-5.6-terra/xhigh, read-only/no descendants: separate OC2 PASS1 CLEAN and PASS2 CLEAN on unchanged2534bytes, SHA256b8e5555091285ced14dc17542174499b40e01fae3ae40341dc289c360d0a74b0. FIRST_INCORRECT_ASSERTION NONE on both; zero substantive/wording findings, Mode A reached. Parent independently reran the exact derivative block successfully; the original22727byte/cc018a16189d53bc556471c773b3fca9f6fdbed620e61e3f59a078322f9a2f3d report remains the unchanged prefix. This extension supersedes its historically correct second-level-untested statements only for the two stated scalar conditions, never the paper's full hypothesis class.
+
+| Pass | Severity | Finding — English term + Russian explanation | Fix applied |
+|---|---|---|---|
+| OC2 PASS1 | CLEAN | No finding — обе скалярные вогнутости и отрицательный контроль совместимы | None |
+| OC2 PASS2 | CLEAN | No finding — точные байты, тождества и ограниченная область подтверждены | None |
+
+No theta-source sign, SL20, Lean or RH admission. The next source-specific question must exclude this SAME control despite both scalar properties.
+
+User supplied the earlier observer shelf transcript; read fully. It is already incorporated in published8a463c09, not new uncommitted work. Parent also checked q_s(t)=J_f(sqrt(t))/(4t^(3/2)) for t>0: first symbolic assertion lacked evaluation of Subs objects and failed; adding .doit() reduced the exact difference to0. This was a verification-script issue, not a counterexample or changed mathematical assertion. No repeated article fetch, SL23 grid, index refresh or Proshka resend.
+
+2026-09-11T15:39:03+02:00 — OC2 registered progress-log projection completed under canonical writer epoch: branch_2026-09-11_397a356ff29c, artifact_sha52295c6feab9b1d2f9e1695f2e223108456af31c0c605c7677e845fa25bd5d2e. Exact body matched; all1920 prior rows and database schema preserved; integrity_check ok. migration-census before: exactly1unmigrated OC2; after: PASS, progress113/113, no stale rows. No semantic refresh yet. Browser live inventory and page read succeeded: in-app browser1/tab2, actual SLACK conversation6aa3e75b, completed verdict/no new message sent. Isolated worker parent review found insufficient archived-predecessor/event validation on replay; worker reports fixed with new negatives, candidate still awaiting final hashes. Existing .venv/bin/ruff works (uv Python front door differs); baseline13 findings, new observation-line E501 sent for correction only.
+
+2026-09-11T15:44:19+02:00 — Parent code read found two additional pre-review issues: new unit-test setUp read live runtime, so applying the repair would invalidate tests; CLI checked control text but not canonical startup fatal_errors required by approved plan. Worker reopened only these corrections, uses historical8a463c09 fixture and existing startup snapshot with writer epoch; final revised candidate still pending. Previous frozen1077347f/c5a7a78c hashes are obsolete and must not be reviewed/applied.
+A concurrent foreign source edit appeared: CSORDAS_PLANAT_LOGCONCAVITY_USAGE_CARDS.md adds exactly the q_s(t)=J(sqrt(t))/(4t^(3/2)) row discussed with owner, currentSHA2568fa808cffa9e6e1a71e85c12808e103acf9cace85eec4c499475af377e6ffa09. Parent read diff; no code/report conflict and bytes preserved, but no authorship or publication ownership assumed. Exclude from own staged manifest unless explicitly reconciled. Foreign TEAM_RUNTIME_REFACTOR_PLAN remains separate unchanged work.
+
+### SLACK chat-repair final candidate and artifact-review INTENT — 2026-09-11T15:47:50+02:00
+
+Base8a463c09; isolated candidate only, frozen until findings. Three candidate hashes:
+```json
+{
+  "orchestrator/spine.py": "d4b4bb146fc3cc5fc24fda06ff65192957e90c3a302bf1c6900f184ce4d78521",
+  "orchestrator/tests/test_channel_runtime_writer.py": "946e5e34742bdbf97e07d68fcc06f7636c22bbe598317379b8a33670566a998f",
+  "docs/cartographer/TOOLS.yaml": "ad552a0e89e1e502262fb1067a6f11777d7f9b5037f8586f463a05185b9de062"
+}
+```
+Same sole checker slack_verdict_check terra/xhigh read-only/no descendants, expected10min. Parent previous findings: replay archive/event validation, live-fixture dependence, missing canonical startup fatal check; worker reports all fixed. No code acceptance or live mutation yet.
+<!-- SLACK_CHAT_REPAIR_PATCH_BEGIN -->
+```diff
+diff --git a/docs/cartographer/TOOLS.yaml b/docs/cartographer/TOOLS.yaml
+index 9853799c..d7c9548d 100644
+--- a/docs/cartographer/TOOLS.yaml
++++ b/docs/cartographer/TOOLS.yaml
+@@ -297,160 +297,176 @@ tool_families:
+         status: ENABLED
+         audience: [CODEX, HUMAN]
+         mode: READ_ONLY
+         path: orchestrator/research_dependency_gate.py
+         invoke: python3 orchestrator/research_dependency_gate.py check
+         alternatives:
+           - python3 orchestrator/research_dependency_gate.py plants
+         trigger: Through the Control-v10 workflow plan or directly after changes to any active dependency surface, generator, registry, prompt, skill, or semantic-source selection.
+         writes: false
+         approval: NONE
+         authority: CONSUMER_FIRST_DEPENDENCY_AND_EPISTEMIC_CLASSIFICATION_GATE
+         records_to: stdout
+         validation: test_research_dependency_contract + test_rigid_dependency_scan + test_research_dependency_p9_wiring; lifecycle-aware contextual scan covers active controls and source generators.
+         last_verified: 2026-08-30
+ 
+       - id: knowledge-spine-strict
+         classification: DISPLAY_ONLY
+         status: AVAILABLE
+         audience: [CODEX, HUMAN]
+         mode: READ_ONLY
+         path: orchestrator/spine.py
+         invoke: python3 orchestrator/spine.py --strict --stdout --reason session-start
+         trigger: Manual compatibility diagnostic; canonical v10 startup uses workflow-runtime.
+         writes: false
+         approval: NONE
+         authority: DERIVED_CONTROL_AND_MEMORY_VIEW
+         records_to: stdout
+         last_verified: 2026-08-10
+ 
+       - id: knowledge-spine-goal-close
+         classification: AUTOMATIC
+         status: ENABLED
+         audience: [CODEX]
+         mode: WRITES_CANONICAL
+         path: orchestrator/spine.py
+         invoke: python3 orchestrator/spine.py --refresh --reason goal-close
+         trigger: Closed goal after exact artifact validation.
+         writes: true
+         approval: TASK_SCOPE_MUST_ALREADY_AUTHORIZE_GOAL_CLOSE_WRITES
+         authority: REGISTERED_GOAL_CLOSE_TRANSACTION_AND_DERIVED_VIEWS
+         records_to: [knowledge.db, aristotle_proofs.db, inventory_RouteB.json, atoms_RouteB.json, observability.db, q3_docs, SPINE_STATE.json, SPINE_VIEW.md, META_CORPUS.json]
+         last_verified: 2026-08-09
+ 
+       - id: knowledge-spine-step-close
+         classification: AUTOMATIC
+         status: ENABLED
+         audience: [CODEX]
+         mode: WRITES_CANONICAL
+         path: orchestrator/spine.py
+         invoke: >-
+           python3 orchestrator/spine.py --refresh --reason step-close
+           --attempt-payload <q3_goal_attempt.v1.json>
+         alternatives:
+           - >-
+             python3 orchestrator/spine.py --refresh --reason step-close
+             --attempt-payload <q3_goal_attempt.v1.json>
+             --insight-payload <q3_goal_insight.v1.json>
+         trigger: Completed registered cycle or reusable insight before the goal itself closes.
+         writes: true
+         approval: ACTIVE_GOAL_RUN_WRITE_SCOPE
+         authority: EVENT_SCOPED_MIGRATION_AND_CONDITIONAL_SEMANTIC_REFRESH
+         records_to: [knowledge.db, qmd://q3_docs/, q3.lean.aristotle/.qmd_cache/semantic_index_receipt.json]
+         last_verified: 2026-08-13
+ 
+       - id: bridge-observed-phase-repair
+         classification: MANUAL
+         status: ENABLED
+         audience: [CODEX]
+         mode: WRITES_CANONICAL
+         path: orchestrator/spine.py
+         invoke: python3 orchestrator/spine.py --record-bridge-transition <event.json>
+         trigger: One-time late recording of the owner-requested BRIDGE delivery of 2026-09-10.
+         writes: true
+         approval: EXISTING_OWNER_AUTHORIZED_BRIDGE_TASK_ONLY
+         authority: FIXED_RECEIPT_AND_PREIMAGE_NOT_FUTURE_PHASE_AUTHORITY
+         validation: test_channel_runtime_writer + test_workflow_runtime phase-header checks
+         records_to: orchestrator/state/CHANNEL_RUNTIME.json
+         note: Fixed evidence/predecessor hashes, canonical writer lock, full predecessor archive and exact successor replay. No production closure.
+         last_verified: 2026-09-10
+ 
++      - id: slack-manual-chat-reconciliation
++        classification: MANUAL
++        status: ENABLED
++        audience: [CODEX]
++        mode: WRITES_CANONICAL
++        path: orchestrator/spine.py
++        invoke: python3 orchestrator/spine.py --record-slack-manual-review <event.json>
++        trigger: One-time reconciliation of the observed owner-manual SLACK delivery of 2026-09-11.
++        writes: true
++        approval: EXISTING_OWNER_AUTHORIZED_SLACK_TASK_ONLY
++        authority: FIXED_RECEIPTS_AND_PREIMAGE_MANUAL_TRANSPORT_NOT_PROOF_ADMISSION
++        validation: test_channel_runtime_writer + test_workflow_runtime phase-header checks
++        records_to: orchestrator/state/CHANNEL_RUNTIME.json
++        note: Fixed queue/request/verdict/acceptance/observation pins, canonical writer lock, predecessor archive and replay that preserves later reviews. No attachment-tile claim, phase change or production closure.
++        last_verified: 2026-09-11
++
+       - id: bind-request
+         classification: MANUAL
+         status: ENABLED
+         audience: [CLAUDE_CODE, HUMAN]
+         mode: WRITES_DERIVED
+         path: orchestrator/bind_request.py
+         invoke: python3 orchestrator/bind_request.py <request.txt> --title "<queue title>" --predictions "<list>" --intake "<text>"
+         trigger: Every judge request, right after the .txt is written; replaces the ad-hoc heredocs.
+         writes: true
+         approval: EXACT_WRITE_SCOPE
+         authority: QUEUE_ENTRY_PLUS_REVIEW_PLAN_BINDING_PLUS_DELIVERY_LINE
+         records_to: [docs/routeB_bus/PROSHKA_QUEUE.md, stdout]
+         note: >-
+           Uses str.format with named fields (no bare-substring replace); refuses to commit the queue
+           unless review-plan says REVIEW_DISPATCH_READY. Born 2026-09-04 after two mangling bugs.
+         last_verified: 2026-09-04
+ 
+       - id: vahta
+         classification: MANUAL
+         status: ENABLED
+         audience: [CLAUDE_CODE, HUMAN]
+         mode: READ_ONLY
+         path: specs_docs/vahta.sh
+         invoke: specs_docs/vahta.sh --path <EXPECTED_VERDICT_PATH> --delay 900   # or --ahead
+         trigger: Immediately after a request is delivered to the judge, or whenever the body waits on origin.
+         writes: false
+         approval: NONE
+         authority: ORIGIN_WATCH_THAT_EXITS_ON_EVENT_PROCESS_EXIT_IS_THE_WAKEUP
+         records_to: stdout (NEW_ON_ORIGIN / ORIGIN_AHEAD / TIMEOUT)
+         notes: Run as a harness background task. Never pgrep its own pattern (field lesson 2026-09-03).
+         last_verified: 2026-09-03
+ 
+       - id: conventions
+         classification: MANUAL
+         status: ENABLED
+         audience: [CLAUDE_CODE, CODEX, HUMAN]
+         mode: READ_ONLY
+         path: docs/routeB_bus/phase5_codex/conventions.py
+         invoke: .venv/bin/python docs/routeB_bus/phase5_codex/conventions.py --m 13 --dps 60
+         trigger: Whenever two reports disagree on a basis, a sqrt2, a sign of R, or a pairing factor; before writing any new identity.
+         writes: false
+         approval: NONE
+         authority: ELEMENTARY_CHANGE_OF_BASIS_CHECKS_FULL_EVEN_ODD_R_PARITY_NOT_A_CERTIFICATE
+         records_to: stdout
+         note: >-
+           Card with the exact maps -- docs/routeB_bus/CONVENTION_CARD_GOAL058.md.
+           Written by the orchestrator 2026-09-04 after the blind re-derivation and the
+           energy preflight used different blocks for the same norm.
+         last_verified: 2026-09-04
+ 
+       - id: h4-scalar-floor-certificate
+         classification: MANUAL
+         status: ENABLED
+         audience: [CLAUDE_CODE, HUMAN]
+         mode: WRITES_DERIVED
+         path: docs/routeB_bus/phase5_codex/h4_cert/
+         invoke: >-
+           .venv/bin/python docs/routeB_bus/phase5_codex/h4_cert/budget.py;
+           .venv/bin/python docs/routeB_bus/phase5_codex/h4_cert/cert.py 2000 0.5 32 3.0 22 out.txt;
+           .venv/bin/python docs/routeB_bus/phase5_codex/h4_cert/assemble.py out.txt 2000 90;
+           .venv/bin/python docs/routeB_bus/phase5_codex/h4_cert/verify.py all
+         trigger: Re-certification of the inverse-free scalar floor F(h) for a fixed pole-null polynomial test; SCALARFLOOR verdict §9 directive.
+         writes: true
+         approval: TASK_SCOPED_OUTPUT_UNDER_docs_routeB_bus_phase5_codex_h4_cert_out
+         authority: ARB_BALL_INTERVAL_FOR_ONE_TEST_CONDITIONAL_ON_PAPER_THEOREMS_RESONANCE_6_SCALARFLOOR_THM1_THM4_NOT_CLASS_NOT_RH
+         records_to: [docs/routeB_bus/H4_SCALAR_FLOOR_CERTIFICATE_REPORT_2026-09-07.md, docs/routeB_bus/phase5_codex/h4_cert/out/]
+         note: >-
+           python-flint 0.8 ball arithmetic end to end (arb until print). Ledger (38): compact CC quadrature
+           with Bernstein-ellipse error, Euler tail (32) with C=256, uniform |t_2| <= 13.937, transform tail
+           |h^| <= B3/xi^3 + B4/xi^4. Result 2026-09-07: F(h_4) in [0.00343936, 0.00357820], code
+           SCALARFLOOR_H4_SOURCE_LOWER_CERTIFIED (target 1/500). Main run 1082 s on 22 cores. Reproduced by
+           the observer from the raw node output; hand checks of T, B3, H, ledger arithmetic; agent's B4 and
+           E_quad are more conservative than the observer's own bounds.
+         last_verified: 2026-09-07
+ 
+       - id: h4-packet-floor-certificate
+         classification: MANUAL
+         status: ENABLED
+         audience: [CLAUDE_CODE, HUMAN]
+         mode: WRITES_DERIVED
+diff --git a/orchestrator/spine.py b/orchestrator/spine.py
+index 4a3eab02..39bb068f 100755
+--- a/orchestrator/spine.py
++++ b/orchestrator/spine.py
+@@ -666,160 +666,463 @@ def record_observed_bridge_transition(
+         _fail("PHASE_RECORD_INVALID", "receipt differs from verified BRIDGE evidence")
+     observed = _dt.datetime.fromisoformat(receipt["observed_at"])
+     recorded = _dt.datetime.fromisoformat(recorded_at)
+     if recorded.tzinfo is None or observed > recorded:
+         _fail("PHASE_RECORD_INVALID", "recording precedes observation")
+     authority_text = _phase_record_pin(receipt["owner_authorization"]["source"], repo=repo)
+     if receipt["owner_authorization"]["quote"] not in authority_text:
+         _fail("PHASE_RECORD_INVALID", "owner quote absent from pinned source")
+     request = _phase_record_pin(receipt["opening_request"], repo=repo).split("\n\n", 1)[0]
+     verdict = (
+         _phase_record_pin(receipt["verdict"], repo=repo)
+         .split("```yaml\n", 1)[1]
+         .split("\n```", 1)[0]
+     )
+ 
+     def header(text: str, field: str) -> str:
+         value, error = _single_request_header(text, field)
+         if error:
+             _fail("PHASE_RECORD_INVALID", error)
+         return value
+ 
+     phase_key = validate_phase_key(
+         {field: header(request, field.upper()) for field in PHASE_KEY_FIELDS}
+     )
+     for field in ("REQUEST_ID", "BOUNDARY_ID", "PHASE_ID", *[f.upper() for f in PHASE_KEY_FIELDS]):
+         if header(verdict, field) != header(request, field):
+             _fail("PHASE_RECORD_INVALID", f"verdict/request mismatch: {field}")
+     for field, pin_field in (
+         ("REQUEST_COMMIT", "commit"),
+         ("REQUEST_BLOB", "blob"),
+         ("REQUEST_SHA256", "sha256"),
+     ):
+         if header(verdict, field) != receipt["opening_request"][pin_field]:
+             _fail("PHASE_RECORD_INVALID", f"verdict binding mismatch: {field}")
+     if header(request, "EXPECTED_VERDICT_PATH") != receipt["verdict"]["path"]:
+         _fail("PHASE_RECORD_INVALID", "verdict path mismatch")
+     updated = json.loads(json.dumps(runtime))
+     updated.setdefault("observed_phase_transitions", []).append(
+         {
+             "event": event,
+             "predecessor_phase": runtime["active_proshka_phase"],
+             "predecessor_meter": runtime["meter"],
+             "preimage_sha256": predecessor_sha,
+             "receipt": receipt,
+             "late_recording": True,
+             "observed_at": receipt["observed_at"],
+             "recorded_at": recorded_at,
+             "disposition": "CLOSED_FOR_CHANNEL_CONTINUATION_NOT_PROOF",
+         }
+     )
+     updated["active_proshka_phase"] = {
+         "status": "ACTIVE",
+         "phase_id": header(request, "PHASE_ID"),
+         "phase_key": phase_key,
+         "conversation_id": receipt["conversation_id"],
+         "opened_at": receipt["observed_at"],
+         "opening_pin": receipt["opening_request"]["commit"],
+         "proshka_calls": 0,
+         "full_context_uploads": 0,
+         "owner_boundary_count": 0,
+         "last_boundary_id": None,
+         "last_adjudicated_pin": None,
+     }
+     updated["meter"]["phases_opened"] += 1
+     updated["meter"]["fresh_chats_opened"] += 1
+     updated, _ = record_delegated_review(
+         updated,
+         {
+             "request_message_id": receipt["request_message_id"],
+             "conversation_id": receipt["conversation_id"],
+             "boundary_id": header(request, "BOUNDARY_ID"),
+             "adjudicated_pin": receipt["verdict"]["commit"],
+             "phase_call_index": 1,
+             "meter_call_index": 46,
+         },
+     )
+     updated["observed_phase_transitions"][-1]["successor_sha256"] = _phase_record_digest(updated)
+     return updated, True
+ 
+ 
++SLACK_MANUAL_REVIEW_ID = "REQ-2026-09-11-SLACK"
++SLACK_MANUAL_REVIEW_PREIMAGE = (
++    "98765b57e597a9efcc8bf68cdc47970e0b8b5ad5178cc2d2e96b200780ad2740"
++)
++SLACK_MANUAL_REVIEW_PINS = {
++    "receipt_pin": {
++        "commit": "8a463c090d0c1d28568c05fe67f4891287e1405f",
++        "path": "docs/routeB_bus/PROSHKA_QUEUE.md",
++        "blob": "e0d469e7467029af51f449153eb4aa0de83affd3",
++        "sha256": "61e4156989e1a2c654552c91781093d603dfcaaecef8a82a8818b42ade683f2b",
++    },
++    "request_pin": {
++        "commit": "d92fd17e78b28fe93939e6b94becf1b90c68dddc",
++        "path": "docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SLACK_2026-09-11.txt",
++        "blob": "1bb6a64ca93430b52142071150fa2e6e36ce4520",
++        "sha256": "7cbb8da692f7603b66995dfafbc2ec483e05927f9331903db9b540e6d49638da",
++    },
++    "verdict_pin": {
++        "commit": "e8a95fac36dec2aea50c71a6bdf5fc7deffd4152",
++        "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SLACK_2026-09-11.md",
++        "blob": "ac3504f3e44b0442fc50c95fe1a095aea57cd7dc",
++        "sha256": "1d658eb3d6d828d3bc651967087dabf8e2f9774d179b02c7607f25c7ffe54588",
++    },
++    "acceptance_pin": {
++        "commit": "8a463c090d0c1d28568c05fe67f4891287e1405f",
++        "path": "docs/routeB_bus/SLACK_INDEPENDENT_CHECK_2026-09-11.md",
++        "blob": "ce8845cd30512411fe313fa4817bc0c2968a0d43",
++        "sha256": "cc018a16189d53bc556471c773b3fca9f6fdbed620e61e3f59a078322f9a2f3d",
++    },
++    "observation_pin": {
++        "commit": "8a463c090d0c1d28568c05fe67f4891287e1405f",
++        "path": "docs/session_protocols/SESSION_PROTOKOLL_2026-09-11_CODEX.md",
++        "blob": "099b30409f8f52f0f87b889902509bb104cb617f",
++        "sha256": "1989c97525c3dd55ab9334ed0ec231008186b52080f19c65f68aabf1ecc46011",
++    },
++}
++
++
++def record_observed_slack_manual_review(
++    raw_runtime: bytes,
++    event: dict[str, object],
++    *,
++    repo: Path = REPO,
++    recorded_at: str,
++) -> tuple[dict[str, object], bool]:
++    """Record the observed owner-manual SLACK transport without a phase change."""
++    from orchestrator.workflow_runtime import _single_request_header
++
++    required = {
++        "expected_runtime_sha256",
++        "receipt_pin",
++        "request_pin",
++        "verdict_pin",
++        "acceptance_pin",
++        "observation_pin",
++        "repair_id",
++    }
++    if (
++        not isinstance(event, dict)
++        or set(event) != required
++        or event["repair_id"] != SLACK_MANUAL_REVIEW_ID
++        or event["expected_runtime_sha256"] != SLACK_MANUAL_REVIEW_PREIMAGE
++    ):
++        _fail("PHASE_RECORD_INVALID", "only the observed SLACK manual repair is supported")
++    if any(event[name] != pin for name, pin in SLACK_MANUAL_REVIEW_PINS.items()):
++        _fail("PHASE_RECORD_INVALID", "SLACK repair pins differ from the authenticated record")
++
++    runtime = validate_runtime(json.loads(raw_runtime))
++    receipt_text = _phase_record_pin(event["receipt_pin"], repo=repo)
++    request = _phase_record_pin(event["request_pin"], repo=repo)
++    verdict_text = _phase_record_pin(event["verdict_pin"], repo=repo)
++    acceptance_text = _phase_record_pin(event["acceptance_pin"], repo=repo)
++    observation_text = _phase_record_pin(event["observation_pin"], repo=repo)
++
++    def header(text: str, field: str) -> str:
++        value, error = _single_request_header(text, field)
++        if error or value is None:
++            _fail("PHASE_RECORD_INVALID", error or field)
++        return value
++
++    request_id = header(request, "REQUEST_ID")
++    boundary_id = header(request, "BOUNDARY_ID")
++    phase_id = header(request, "PHASE_ID")
++    phase_key = validate_phase_key(
++        {field: header(request, field.upper()) for field in PHASE_KEY_FIELDS}
++    )
++    if request_id != SLACK_MANUAL_REVIEW_ID or boundary_id != (
++        "GOAL058_INTEGRATED_SIGNED_SOURCE_SLACK_CANCELLATION"
++    ):
++        _fail("PHASE_RECORD_INVALID", "SLACK request identity drift")
++    expected_verdict_path = header(request, "EXPECTED_VERDICT_PATH")
++    if expected_verdict_path != event["verdict_pin"]["path"]:
++        _fail("PHASE_RECORD_INVALID", "SLACK verdict path drift")
++
++    yaml_blocks = re.findall(r"```yaml\n(.*?)\n```", verdict_text, flags=re.DOTALL)
++    if len(yaml_blocks) != 1 or verdict_text.count("```yaml\n") != 1:
++        _fail("PHASE_RECORD_INVALID", "SLACK verdict YAML is missing or ambiguous")
++    verdict = yaml_blocks[0]
++    for field in (
++        "REQUEST_ID", "BOUNDARY_ID", "PHASE_ID", "EXPECTED_VERDICT_PATH",
++        *[field.upper() for field in PHASE_KEY_FIELDS],
++    ):
++        if header(verdict, field) != header(request, field):
++            _fail("PHASE_RECORD_INVALID", f"SLACK verdict/request mismatch: {field}")
++    if verdict.count("REQUEST_LOCK:\n") != 1:
++        _fail("PHASE_RECORD_INVALID", "SLACK REQUEST_LOCK is missing or ambiguous")
++    request_raw = request.encode("utf-8")
++    lock_expected = {
++        "COMMIT": event["request_pin"]["commit"],
++        "BLOB": event["request_pin"]["blob"],
++        "SHA256": event["request_pin"]["sha256"],
++        "BYTES": str(len(request_raw)),
++        "LINES": str(request_raw.count(b"\n")),
++        "FINAL_LF": "true",
++        "LOCAL_BYTES_AND_BOTH_HASHES_RECOMPUTED": "true",
++    }
++    for field, expected in lock_expected.items():
++        values = re.findall(rf"(?m)^  {re.escape(field)}:\s*(\S+)\s*$", verdict)
++        if len(values) != 1 or values[0] != expected:
++            _fail("PHASE_RECORD_INVALID", f"SLACK REQUEST_LOCK mismatch: {field}")
++    if not request_raw.endswith(b"\n"):
++        _fail("PHASE_RECORD_INVALID", "SLACK request has no final newline")
++
++    heading = "## REQ-2026-09-11-SLACK ·"
++    if receipt_text.count(heading) != 1:
++        _fail("PHASE_RECORD_INVALID", "SLACK queue receipt is missing or duplicated")
++    receipt = receipt_text.split(heading, 1)[1].split("\n---", 1)[0]
++    old_conversation = "6aa24f25-0934-83eb-9151-3565fc4b3379"
++    conversation_id = "6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59"
++    request_message_id = "57e6f47f-d70f-4281-97fb-3f2b7641563d"
++    delivery_line = (
++        "Actual manual delivery: owner sent unchanged LINE in user-created chat"
++        f"{conversation_id}, message{request_message_id}."
++    )
++    for required_text in (
++        delivery_line,
++        "Exact attachment tile was not observed; do not fabricate a same-chat/file-tile receipt.",
++        "No resend.",
++        "ANSWERED records verified request/verdict binding, not mathematical acceptance.",
++        event["request_pin"]["commit"],
++        event["request_pin"]["sha256"],
++        event["verdict_pin"]["commit"],
++        event["verdict_pin"]["sha256"],
++    ):
++        if receipt.count(required_text) != 1:
++            _fail("PHASE_RECORD_INVALID", "SLACK queue receipt does not attest the repair")
++    acceptance_marker = "## 8. Final acceptance receipt — 2026-09-11T14:51:37+02:00"
++    if acceptance_text.count(acceptance_marker) != 1:
++        _fail("PHASE_RECORD_INVALID", "SLACK acceptance receipt is incomplete")
++    acceptance = acceptance_text.split(acceptance_marker, 1)[1]
++    for required_text in (
++        "Both CLEAN; FIRST_INCORRECT_ASSERTION NONE",
++        "CHALLENGER_NOT_RH; PX_RH_CLAIM: NOT_MADE.",
++    ):
++        if acceptance.count(required_text) != 1:
++            _fail("PHASE_RECORD_INVALID", "SLACK acceptance receipt is incomplete")
++    observed_at = "2026-09-11T13:40:14+02:00"
++    observation_line = (
++        f"{observed_at} — Owner manually sent SLACK. Native read_thread verified unchanged "
++        f"LINE in NEW conversation{conversation_id}, message{request_message_id};"
++    )
++    completion_line = (
++        f"live IAB1/tab1 chat{conversation_id} shows completed SLACK with original file "
++        "and publication receipt."
++    )
++    if (
++        observation_text.count(observation_line) != 1
++        or observation_text.count(completion_line) != 1
++    ):
++        _fail("PHASE_RECORD_INVALID", "SLACK manual observation is incomplete")
++
++    authenticated_receipt = {
++        "receipt_pin": event["receipt_pin"],
++        "request_pin": event["request_pin"],
++        "verdict_pin": event["verdict_pin"],
++        "acceptance_pin": event["acceptance_pin"],
++        "observation_pin": event["observation_pin"],
++        "conversation_id": conversation_id,
++        "request_message_id": request_message_id,
++        "observed_at": observed_at,
++        "accepted_at": "2026-09-11T14:51:37+02:00",
++        "transport": "OWNER_MANUAL_NO_ATTACHMENT_TILE",
++        "attachment_tile_observed": False,
++    }
++    observed = _dt.datetime.fromisoformat(authenticated_receipt["observed_at"])
++    accepted = _dt.datetime.fromisoformat(authenticated_receipt["accepted_at"])
++    recorded = _dt.datetime.fromisoformat(recorded_at)
++    if (
++        observed.tzinfo is None
++        or accepted.tzinfo is None
++        or recorded.tzinfo is None
++        or not observed <= accepted <= recorded
++    ):
++        _fail("PHASE_RECORD_INVALID", "SLACK repair recording time is invalid")
++
++    try:
++        predecessor_raw = subprocess.check_output(
++            [
++                "git",
++                "show",
++                "8a463c090d0c1d28568c05fe67f4891287e1405f:"
++                "orchestrator/state/CHANNEL_RUNTIME.json",
++            ],
++            cwd=repo,
++        )
++    except subprocess.CalledProcessError as exc:
++        _fail("PHASE_RECORD_INVALID", str(exc))
++    if hashlib.sha256(predecessor_raw).hexdigest() != SLACK_MANUAL_REVIEW_PREIMAGE:
++        _fail("PHASE_RECORD_INVALID", "SLACK pinned predecessor hash drift")
++    predecessor = validate_runtime(json.loads(predecessor_raw))
++    expected_review_event = {
++        "request_message_id": request_message_id,
++        "conversation_id": conversation_id,
++        "boundary_id": boundary_id,
++        "adjudicated_pin": event["verdict_pin"]["commit"],
++        "phase_call_index": 7,
++        "meter_call_index": 52,
++    }
++    history = runtime.get("observed_manual_review_repairs", [])
++    if not isinstance(history, list):
++        _fail("PHASE_RECORD_INVALID", "SLACK repair history is invalid")
++    for previous in history:
++        if not isinstance(previous, dict):
++            _fail("PHASE_RECORD_INVALID", "SLACK repair history entry is invalid")
++        previous_event = previous.get("event")
++        if not isinstance(previous_event, dict):
++            _fail("PHASE_RECORD_INVALID", "SLACK repair event archive is invalid")
++        if previous_event.get("repair_id") == SLACK_MANUAL_REVIEW_ID:
++            prior_recorded_at = previous.get("recorded_at")
++            try:
++                prior_recorded = _dt.datetime.fromisoformat(prior_recorded_at)
++            except (TypeError, ValueError):
++                _fail("PHASE_RECORD_REPLAY_CONFLICT", "SLACK repair record time is invalid")
++            ledger = runtime.get("recorded_review_events")
++            if not isinstance(ledger, list) or any(
++                not isinstance(item, dict) for item in ledger
++            ):
++                _fail("PHASE_RECORD_REPLAY_CONFLICT", "SLACK review ledger is invalid")
++            stored_events = [
++                item for item in ledger
++                if item.get("request_message_id") == request_message_id
++            ]
++            if (
++                previous_event != event
++                or previous.get("receipt") != authenticated_receipt
++                or previous.get("preimage_sha256") != SLACK_MANUAL_REVIEW_PREIMAGE
++                or previous.get("disposition") != "MANUAL_TRANSPORT_RECONCILED_NO_PROOF_ADMISSION"
++                or previous.get("predecessor_phase") != predecessor["active_proshka_phase"]
++                or previous.get("predecessor_meter") != predecessor["meter"]
++                or previous.get("observed_at") != authenticated_receipt["observed_at"]
++                or previous.get("accepted_at") != authenticated_receipt["accepted_at"]
++                or prior_recorded.tzinfo is None
++                or prior_recorded < accepted
++                or stored_events != [expected_review_event]
++            ):
++                _fail("PHASE_RECORD_REPLAY_CONFLICT", "SLACK repair record differs")
++            return runtime, False
++
++    if hashlib.sha256(raw_runtime).hexdigest() != SLACK_MANUAL_REVIEW_PREIMAGE:
++        _fail("PHASE_RECORD_STALE_PREIMAGE")
++    phase = runtime.get("active_proshka_phase")
++    meter = runtime.get("meter")
++    if (
++        not isinstance(phase, dict)
++        or phase.get("status") != "ACTIVE"
++        or phase.get("conversation_id") != old_conversation
++        or phase.get("phase_id") != phase_id
++        or validate_phase_key(phase.get("phase_key")) != phase_key
++        or phase.get("proshka_calls") != 6
++        or not isinstance(meter, dict)
++        or meter.get("delegated_strategic_review_calls") != 51
++        or meter.get("phases_opened") != 3
++        or meter.get("fresh_chats_opened") != 3
++        or meter.get("forced_rollovers") != 1
++    ):
++        _fail("PHASE_RECORD_INVALID", "SLACK predecessor phase or meter differs")
++
++    updated = json.loads(json.dumps(runtime))
++    updated.setdefault("observed_manual_review_repairs", []).append(
++        {
++            "event": event,
++            "predecessor_phase": runtime["active_proshka_phase"],
++            "predecessor_meter": runtime["meter"],
++            "preimage_sha256": SLACK_MANUAL_REVIEW_PREIMAGE,
++            "receipt": authenticated_receipt,
++            "observed_at": authenticated_receipt["observed_at"],
++            "accepted_at": authenticated_receipt["accepted_at"],
++            "recorded_at": recorded_at,
++            "disposition": "MANUAL_TRANSPORT_RECONCILED_NO_PROOF_ADMISSION",
++        }
++    )
++    updated["active_proshka_phase"]["conversation_id"] = conversation_id
++    updated["meter"]["fresh_chats_opened"] += 1
++    updated["meter"]["forced_rollovers"] += 1
++    updated, changed = record_delegated_review(
++        updated,
++        expected_review_event,
++    )
++    if not changed:
++        _fail("PHASE_RECORD_REPLAY_CONFLICT", "SLACK review was already recorded")
++    return updated, True
++
++
+ def write_runtime_atomic(runtime: dict[str, object], path: Path = CHANNEL_RUNTIME) -> None:
+     """Validate and atomically replace one canonical runtime JSON file."""
+     validate_runtime(runtime)
+     path.parent.mkdir(parents=True, exist_ok=True)
+     payload = json.dumps(runtime, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
+     with tempfile.NamedTemporaryFile(
+         "w", encoding="utf-8", dir=path.parent, prefix=f".{path.name}.", delete=False,
+     ) as handle:
+         pending = Path(handle.name)
+         handle.write(payload)
+         handle.flush()
+         os.fsync(handle.fileno())
+     try:
+         os.replace(pending, path)
+     finally:
+         pending.unlink(missing_ok=True)
+ 
+ 
+ def _sha256_file(path: Path) -> str:
+     digest = hashlib.sha256()
+     with path.open("rb") as handle:
+         for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+             digest.update(chunk)
+     return digest.hexdigest()
+ 
+ 
+ def validate_behavior_registry(
+     data: dict[str, object] | None = None, *, repo: Path = REPO,
+ ) -> list[dict[str, str]]:
+     if data is None:
+         if not BEHAVIOR_REGISTRY.is_file():
+             _fail("BEHAVIOR_CONTROL_MISSING", str(BEHAVIOR_REGISTRY))
+         try:
+             data = json.loads(BEHAVIOR_REGISTRY.read_text(encoding="utf-8"))
+         except json.JSONDecodeError as exc:
+             _fail("BEHAVIOR_CONTROL_MISSING", f"invalid registry JSON: {exc}")
+     if data.get("schema") != "q3_behavior_control_registry.v1":
+         _fail("BEHAVIOR_CONTROL_MISSING", "unsupported registry schema")
+     rows = data.get("controls")
+     if not isinstance(rows, list):
+         _fail("BEHAVIOR_CONTROL_MISSING", "controls is not a list")
+     active = [row for row in rows if isinstance(row, dict) and row.get("status") == "ACTIVE"]
+     expected = {"FABLE_MYTHOS", "PROSHKA", "CODEX_EXECUTOR"}
+     for body in expected:
+         matches = [row for row in active if row.get("body") == body]
+         if not matches:
+             _fail("BEHAVIOR_CONTROL_MISSING", body)
+         if len(matches) != 1:
+             _fail("BEHAVIOR_CONTROL_MULTIPLE_ACTIVE", body)
+     if any(row.get("body") not in expected for row in active):
+         _fail("BEHAVIOR_BODY_MULTIROLE", "unknown active body")
+     paths = [str(row.get("path") or "") for row in active]
+     if len(set(paths)) != len(paths):
+         _fail("BEHAVIOR_BODY_MULTIROLE", "one file controls multiple bodies")
+     validated: list[dict[str, str]] = []
+     for row in sorted(active, key=lambda item: str(item["body"])):
+         for field, code in (
+             ("trigger_owner", "BEHAVIOR_TRIGGER_OWNER_MISSING"),
+             ("existing_entry_gate", "BEHAVIOR_TRIGGER_OWNER_MISSING"),
+             ("spine_wiring", "BEHAVIOR_SPINE_WIRING_MISSING"),
+         ):
+             if not isinstance(row.get(field), str) or not str(row[field]).strip():
+                 _fail(code, f"{row.get('body')}:{field}")
+         rel = Path(str(row.get("path") or ""))
+         if rel.is_absolute() or not (repo / rel).is_file():
+             _fail("BEHAVIOR_CONTROL_MISSING", str(rel))
+         mirror = row.get("mirror_path")
+         if mirror:
+             mirror_path = repo / str(mirror)
+             if not mirror_path.is_file() or _sha256_file(repo / rel) != _sha256_file(mirror_path):
+                 _fail("BEHAVIOR_CONTROL_MISSING", f"mirror drift: {mirror}")
+         validated.append({
+             "body": str(row["body"]), "control_id": str(row["control_id"]),
+             "path": rel.as_posix(), "sha256": _sha256_file(repo / rel),
+             "trigger_owner": str(row["trigger_owner"]),
+             "existing_entry_gate": str(row["existing_entry_gate"]),
+             "spine_wiring": str(row["spine_wiring"]), "status": "ACTIVE",
+         })
+     validate_codex_bootstrap(repo=repo)
+     addendum = repo / "docs/EXECUTOR_ARSENAL_ADDENDUM_2026-08-04.md"
+@@ -2188,171 +2491,219 @@ def execute_refresh(
+                 "--payload",
+                 str(attempt_payload),
+             ),
+         )
+     if insight_payload is not None:
+         _run_checked(
+             "record-insight",
+             (
+                 "orchestrator/goal_events.py",
+                 "record-insight",
+                 "--payload",
+                 str(insight_payload),
+             ),
+         )
+     for action in actions:
+         if action == "semantic-index-if-stale":
+             if semantic_index_stale():
+                 _refresh_semantic_index()
+             continue
+         if action == "semantic-index":
+             _refresh_semantic_index()
+             continue
+         if action == "sensors":
+             try:
+                 from orchestrator import sensors as _sensors
+             except ModuleNotFoundError:
+                 import sensors as _sensors
+             _sensors.refresh(dry_run=False)
+             continue
+         if action == "validate":
+             continue
+         command = ACTION_COMMANDS.get(action)
+         if command is None:
+             _fail("SPINE_REFRESH_ACTION_FAILED", f"unimplemented action: {action}")
+         _run_checked(action, command)
+     return actions
+ 
+ 
+ def refresh_writes_spine_outputs(reason: str) -> bool:
+     """Only the full goal-close transaction materializes tracked Spine views."""
+     refresh_actions(reason)
+     return reason == "goal-close"
+ 
+ 
+ def main() -> int:
+     ap = argparse.ArgumentParser()
+     ap.add_argument(
+         "--stdout", action="store_true",
+         help="print instead of writing Spine outputs; read-only unless combined with --refresh",
+     )
+     ap.add_argument(
+         "--strict",
+         action="store_true",
+         help=(
+             "add semantic-index validation and a receipt; base Control-v10 "
+             "validation is unconditional"
+         ),
+     )
+     ap.add_argument("--refresh", action="store_true",
+                     help="write the complete sensor/index refresh before validation and Spine rendering")
+     ap.add_argument("--reason", default="manual",
+                     help="audit label only; not written into the deterministic view")
+     ap.add_argument(
+         "--attempt-payload",
+         type=Path,
+         help="closed q3_goal_attempt.v1 JSON; required for step-close",
+     )
+     ap.add_argument(
+         "--insight-payload",
+         type=Path,
+         help="optional closed q3_goal_insight.v1 JSON for step-close",
+     )
+     ap.add_argument(
+         "--record-review", action="append", default=[], metavar="JSON",
+         help="atomically record one delegated-review event; repeat for ordered backfill",
+     )
+     ap.add_argument(
+         "--record-bridge-transition", type=Path, metavar="EVENT_JSON",
+         help="late-record only the verified 2026-09-10 BRIDGE chat transition",
+     )
++    ap.add_argument(
++        "--record-slack-manual-review", type=Path, metavar="EVENT_JSON",
++        help="late-record only the verified 2026-09-11 owner-manual SLACK review",
++    )
+     args = ap.parse_args()
+     try:
+         if args.record_bridge_transition is not None:
+             if (
+-                args.record_review or args.stdout or args.strict or args.refresh
++                args.record_review or args.record_slack_manual_review is not None
++                or args.stdout or args.strict or args.refresh
+                 or args.attempt_payload is not None or args.insight_payload is not None
+             ):
+                 _fail("PHASE_RECORD_INVALID", "repair cannot be combined with other actions")
+             from orchestrator.workflow_runtime import _execution_writer_epoch
+ 
+             try:
+                 with _execution_writer_epoch(REPO) as epoch:
+                     _validate_active_control()
+                     raw = CHANNEL_RUNTIME.read_bytes()
+                     event = json.loads(args.record_bridge_transition.read_text(encoding="utf-8"))
+                     runtime, changed = record_observed_bridge_transition(
+                         raw, event, recorded_at=_dt.datetime.now(_dt.timezone.utc).isoformat(),
+                     )
+                     if changed:
+                         epoch.recheck()
+                         if CHANNEL_RUNTIME.read_bytes() != raw:
+                             _fail("PHASE_RECORD_STALE_PREIMAGE")
+                         write_runtime_atomic(runtime)
+             except (OSError, ValueError) as exc:
+                 _fail("PHASE_RECORD_INVALID", str(exc))
+             print(f"CHANNEL_RUNTIME_BRIDGE_TRANSITIONS_RECORDED={int(changed)}")
+             return 0
++        if args.record_slack_manual_review is not None:
++            if (
++                args.record_review or args.stdout or args.strict or args.refresh
++                or args.attempt_payload is not None or args.insight_payload is not None
++            ):
++                _fail("PHASE_RECORD_INVALID", "repair cannot be combined with other actions")
++            from orchestrator.workflow_runtime import (
++                _execution_writer_epoch,
++                build_startup_snapshot,
++            )
++
++            try:
++                with _execution_writer_epoch(REPO) as epoch:
++                    _validate_active_control()
++                    startup = build_startup_snapshot(
++                        REPO,
++                        owned_paths=["orchestrator/state/CHANNEL_RUNTIME.json"],
++                        _epoch_guard=epoch,
++                    )
++                    if startup.fatal_errors:
++                        _fail("PHASE_RECORD_STARTUP_FATAL", ",".join(startup.fatal_errors))
++                    raw = CHANNEL_RUNTIME.read_bytes()
++                    event = json.loads(args.record_slack_manual_review.read_text(encoding="utf-8"))
++                    runtime, changed = record_observed_slack_manual_review(
++                        raw, event, recorded_at=_dt.datetime.now(_dt.timezone.utc).isoformat(),
++                    )
++                    if changed:
++                        epoch.recheck()
++                        if CHANNEL_RUNTIME.read_bytes() != raw:
++                            _fail("PHASE_RECORD_STALE_PREIMAGE")
++                        payload_text = json.dumps(
++                            runtime, ensure_ascii=False, indent=2, sort_keys=True,
++                        ) + "\n"
++                        payload = payload_text.encode("utf-8")
++                        write_runtime_atomic(runtime)
++                        if CHANNEL_RUNTIME.read_bytes() != payload:
++                            _fail("PHASE_RECORD_INVALID", "SLACK repair atomic readback mismatch")
++            except ControlViolation:
++                raise
++            except (OSError, ValueError) as exc:
++                _fail("PHASE_RECORD_INVALID", str(exc))
++            print(f"CHANNEL_RUNTIME_SLACK_MANUAL_REVIEWS_RECORDED={int(changed)}")
++            return 0
+         if args.record_review:
+             if (
+                 args.stdout
+                 or args.strict
+                 or args.refresh
+                 or args.attempt_payload is not None
+                 or args.insight_payload is not None
+             ):
+                 _fail(
+                     "EXPLORATION_RUNTIME_MISSING",
+                     "record-review cannot be combined with render flags",
+                 )
+             runtime = _read_runtime()
+             changed = 0
+             for raw_event in args.record_review:
+                 try:
+                     event = json.loads(raw_event)
+                 except json.JSONDecodeError as exc:
+                     _fail("EXPLORATION_RUNTIME_MISSING", f"invalid review JSON: {exc}")
+                 if not isinstance(event, dict):
+                     _fail("EXPLORATION_RUNTIME_MISSING", "review event is not an object")
+                 runtime, did_change = record_delegated_review(runtime, event)
+                 changed += int(did_change)
+             if changed:
+                 write_runtime_atomic(runtime)
+             print(f"CHANNEL_RUNTIME_REVIEW_EVENTS_RECORDED={changed}")
+             return 0
+         if args.refresh:
+             execute_refresh(
+                 args.reason,
+                 attempt_payload=args.attempt_payload,
+                 insight_payload=args.insight_payload,
+             )
+         elif args.attempt_payload is not None or args.insight_payload is not None:
+             _fail(
+                 "SPINE_REFRESH_PAYLOAD_FORBIDDEN",
+                 "event payloads require --refresh --reason step-close",
+             )
+         validation = validate_p9a()
+         if args.strict and args.reason != "sensor-refresh":
+             validate_semantic_index()
+         state = build_state(validation)
+         view = build(state)
+     except ControlViolation as exc:
+         print(exc, file=sys.stderr)
+         return 2
+     if args.stdout:
+         sys.stdout.write(view)
+     elif not args.refresh or refresh_writes_spine_outputs(args.reason):
+         write_outputs(state, view)
+         print(f"wrote {STATE_OUT}, {OUT}, {META_CORPUS_OUT}")
+     else:
+         print(f"SPINE_REFRESH_COMPLETE reason={args.reason}")
+     if args.strict:
+         print(
+             f"CONTROL_V10_STRICT_PASS reason={args.reason} base_control=PASS "
+             f"semantic_index=PASS tool_manifest=PASS research_dependency=PASS "
+             f"authority={validation['authority']}"
+         )
+     return 0
+ 
+ 
+ if __name__ == "__main__":
+     raise SystemExit(main())
+diff --git a/orchestrator/tests/test_channel_runtime_writer.py b/orchestrator/tests/test_channel_runtime_writer.py
+index bd129709..0b589b43 100644
+--- a/orchestrator/tests/test_channel_runtime_writer.py
++++ b/orchestrator/tests/test_channel_runtime_writer.py
+@@ -206,82 +206,369 @@ class ObservedBridgeTransitionTests(unittest.TestCase):
+             for side in ("opening_request", "verdict"):
+                 candidate = json.loads(json.dumps(self.receipt))
+                 candidate[side][field] = "wrong"
+                 with (
+                     self.subTest(side=side, field=field),
+                     self.assertRaises(spine.ControlViolation),
+                 ):
+                     self.run_record(receipt=candidate)
+         candidate = json.loads(json.dumps(self.receipt))
+         candidate["owner_authorization"]["quote"] = "invented authorization"
+         with self.assertRaises(spine.ControlViolation):
+             self.run_record(receipt=candidate)
+ 
+     def test_preexisting_new_chat_is_a_foreign_preimage(self):
+         original = json.loads(self.raw)
+         original["recorded_review_events"].append(
+             {"request_message_id": "already", "conversation_id": self.receipt["conversation_id"]}
+         )
+         raw = json.dumps(original).encode()
+         with self.assertRaisesRegex(spine.ControlViolation, "PHASE_RECORD_STALE_PREIMAGE"):
+             self.run_record(
+                 raw=raw,
+                 event={**self.event, "expected_runtime_sha256": hashlib.sha256(raw).hexdigest()},
+             )
+ 
+     def test_same_boundary_with_different_message_is_rejected(self):
+         updated, _ = self.run_record()
+         last = dict(updated["recorded_review_events"][-1])
+         last.update(request_message_id="another", phase_call_index=2, meter_call_index=47)
+         with self.assertRaisesRegex(spine.ControlViolation, "EXPLORATION_REVIEW_DUPLICATE"):
+             spine.record_delegated_review(updated, last)
+ 
+     def test_cli_holds_writer_lock_and_rejects_changed_raw_preimage(self):
+         from contextlib import contextmanager
+         from unittest import mock
+ 
+         with tempfile.TemporaryDirectory() as tmp:
+             runtime_path = Path(tmp) / "runtime.json"
+             event_path = Path(tmp) / "event.json"
+             runtime_path.write_bytes(self.raw)
+             event_path.write_text(json.dumps(self.event))
+             events = []
+ 
+             class Epoch:
+                 def recheck(self):
+                     events.append("recheck")
+ 
+             @contextmanager
+             def writer_epoch(repo):
+                 events.append("lock")
+                 yield Epoch()
+                 events.append("unlock")
+ 
+             def interrupted_record(raw, event, *, recorded_at):
+                 self.assertEqual(events, ["lock"])
+                 runtime_path.write_bytes(raw + b" ")
+                 return json.loads(raw), True
+ 
+             with (
+                 mock.patch("orchestrator.workflow_runtime._execution_writer_epoch", writer_epoch),
+                 mock.patch.object(spine, "CHANNEL_RUNTIME", runtime_path),
+                 mock.patch.object(spine, "_validate_active_control"),
+                 mock.patch.object(spine, "record_observed_bridge_transition", interrupted_record),
+                 mock.patch.object(spine, "write_runtime_atomic") as write,
+                 mock.patch("sys.argv", ["spine", "--record-bridge-transition", str(event_path)]),
+             ):
+                 self.assertEqual(spine.main(), 2)
+                 write.assert_not_called()
+             self.assertIn("recheck", events)
+             self.assertEqual(runtime_path.read_bytes(), self.raw + b" ")
+ 
+     def test_pin_verifier_checks_exact_bytes(self):
+         pin = self.receipt["opening_request"]
+         self.assertIn(
+             "REQUEST_ID: REQ-2026-09-09-BRIDGE", spine._phase_record_pin(pin, repo=spine.REPO)
+         )
+         with self.assertRaisesRegex(spine.ControlViolation, "PHASE_RECORD_INVALID"):
+             spine._phase_record_pin({**pin, "sha256": "0" * 64}, repo=spine.REPO)
+ 
+ 
++class ObservedSlackManualReviewTests(unittest.TestCase):
++    """Regression checks for the one observed owner-manual SLACK transport."""
++
++    def setUp(self) -> None:
++        import subprocess
++
++        self.raw = subprocess.check_output(
++            [
++                "git",
++                "show",
++                "8a463c090d0c1d28568c05fe67f4891287e1405f:"
++                "orchestrator/state/CHANNEL_RUNTIME.json",
++            ],
++            cwd=spine.REPO,
++        )
++        self.event = {
++            "expected_runtime_sha256": spine.SLACK_MANUAL_REVIEW_PREIMAGE,
++            "repair_id": spine.SLACK_MANUAL_REVIEW_ID,
++            **{name: dict(pin) for name, pin in spine.SLACK_MANUAL_REVIEW_PINS.items()},
++        }
++
++    def run_record(self, raw=None, event=None, recorded_at="2026-09-11T16:00:00+02:00"):
++        return spine.record_observed_slack_manual_review(
++            self.raw if raw is None else raw,
++            self.event if event is None else event,
++            recorded_at=recorded_at,
++        )
++
++    def test_reconciles_only_the_observed_handle_and_review(self):
++        original = json.loads(self.raw)
++        updated, changed = self.run_record()
++        self.assertTrue(changed)
++        archive = updated["observed_manual_review_repairs"][0]
++        self.assertEqual(archive["predecessor_phase"], original["active_proshka_phase"])
++        self.assertEqual(archive["predecessor_meter"], original["meter"])
++        self.assertEqual(archive["preimage_sha256"], hashlib.sha256(self.raw).hexdigest())
++        self.assertFalse(archive["receipt"]["attachment_tile_observed"])
++        self.assertEqual(
++            updated["active_proshka_phase"]["phase_key"],
++            original["active_proshka_phase"]["phase_key"],
++        )
++        self.assertEqual(
++            updated["active_proshka_phase"]["phase_id"],
++            original["active_proshka_phase"]["phase_id"],
++        )
++        self.assertEqual(
++            updated["active_proshka_phase"]["conversation_id"],
++            "6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59",
++        )
++        self.assertEqual(updated["active_proshka_phase"]["proshka_calls"], 7)
++        self.assertEqual(updated["meter"]["delegated_strategic_review_calls"], 52)
++        self.assertEqual(updated["meter"]["phases_opened"], 3)
++        self.assertEqual(updated["meter"]["fresh_chats_opened"], 4)
++        self.assertEqual(updated["meter"]["forced_rollovers"], 2)
++        self.assertEqual(updated["recorded_review_events"][:-1], original["recorded_review_events"])
++        for key in original.keys() - {
++            "active_proshka_phase", "meter", "recorded_review_events",
++        }:
++            self.assertEqual(updated[key], original[key])
++
++    def test_pinned_fixture_ignores_an_isolated_successor_runtime(self):
++        from unittest import mock
++
++        successor, _ = self.run_record()
++        with tempfile.TemporaryDirectory() as tmp:
++            successor_path = Path(tmp) / "CHANNEL_RUNTIME.json"
++            successor_path.write_text(json.dumps(successor), encoding="utf-8")
++            with mock.patch.object(spine, "CHANNEL_RUNTIME", successor_path):
++                self.setUp()
++                rebuilt, changed = self.run_record()
++        self.assertTrue(changed)
++        self.assertEqual(rebuilt, successor)
++
++    def test_identical_replay_is_noop_after_a_later_legitimate_review(self):
++        updated, _ = self.run_record()
++        later, changed = spine.record_delegated_review(
++            updated,
++            {
++                "request_message_id": "later-legitimate-review",
++                "conversation_id": "6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59",
++                "boundary_id": "GOAL058_LATER_LEGITIMATE_REVIEW",
++                "adjudicated_pin": "1" * 40,
++                "phase_call_index": 8,
++                "meter_call_index": 53,
++            },
++        )
++        self.assertTrue(changed)
++        replayed, changed = self.run_record(raw=json.dumps(later).encode("utf-8"))
++        self.assertFalse(changed)
++        self.assertEqual(replayed, later)
++
++    def test_stale_preimage_and_malformed_history_fail_closed(self):
++        with self.assertRaisesRegex(spine.ControlViolation, "PHASE_RECORD_STALE_PREIMAGE"):
++            self.run_record(raw=self.raw + b" ")
++        malformed = json.loads(self.raw)
++        malformed["observed_manual_review_repairs"] = ["not-an-object"]
++        with self.assertRaisesRegex(spine.ControlViolation, "PHASE_RECORD_INVALID"):
++            self.run_record(raw=json.dumps(malformed).encode("utf-8"))
++
++    def test_conflicting_replay_and_closed_event_schema_are_rejected(self):
++        updated, _ = self.run_record()
++        updated["observed_manual_review_repairs"][0]["receipt"]["conversation_id"] = "foreign"
++        with self.assertRaisesRegex(spine.ControlViolation, "PHASE_RECORD_REPLAY_CONFLICT"):
++            self.run_record(raw=json.dumps(updated).encode("utf-8"))
++        updated, _ = self.run_record()
++        updated["observed_manual_review_repairs"][0].pop("predecessor_meter")
++        with self.assertRaisesRegex(spine.ControlViolation, "PHASE_RECORD_REPLAY_CONFLICT"):
++            self.run_record(raw=json.dumps(updated).encode("utf-8"))
++        updated, _ = self.run_record()
++        updated["recorded_review_events"] = [
++            item for item in updated["recorded_review_events"]
++            if item["request_message_id"] != "57e6f47f-d70f-4281-97fb-3f2b7641563d"
++        ]
++        with self.assertRaisesRegex(spine.ControlViolation, "PHASE_RECORD_REPLAY_CONFLICT"):
++            self.run_record(raw=json.dumps(updated).encode("utf-8"))
++        updated, _ = self.run_record()
++        updated["observed_manual_review_repairs"][0]["event"] = "not-an-object"
++        with self.assertRaisesRegex(spine.ControlViolation, "PHASE_RECORD_INVALID"):
++            self.run_record(raw=json.dumps(updated).encode("utf-8"))
++        with self.assertRaisesRegex(spine.ControlViolation, "PHASE_RECORD_INVALID"):
++            self.run_record(event={**self.event, "transport_mode": "CANONICAL_ATTACHMENT"})
++        for name in spine.SLACK_MANUAL_REVIEW_PINS:
++            candidate = json.loads(json.dumps(self.event))
++            candidate[name]["sha256"] = "0" * 64
++            with self.subTest(pin=name), self.assertRaisesRegex(
++                spine.ControlViolation, "PHASE_RECORD_INVALID"
++            ):
++                self.run_record(event=candidate)
++
++    def test_duplicate_headers_wrong_lock_and_false_tile_are_rejected(self):
++        from unittest import mock
++
++        original_reader = spine._phase_record_pin
++
++        def run_with(source_name, replacement):
++            def reader(pin, *, repo):
++                if pin == self.event[source_name]:
++                    return replacement
++                return original_reader(pin, repo=repo)
++
++            with mock.patch.object(spine, "_phase_record_pin", side_effect=reader):
++                with self.assertRaisesRegex(spine.ControlViolation, "PHASE_RECORD_INVALID"):
++                    self.run_record()
++
++        request = original_reader(self.event["request_pin"], repo=spine.REPO)
++        run_with(
++            "request_pin",
++            request.replace(
++                "REQUEST_ID: REQ-2026-09-11-SLACK",
++                "REQUEST_ID: REQ-2026-09-11-SLACK\nREQUEST_ID: REQ-2026-09-11-SLACK",
++                1,
++            ),
++        )
++        verdict = original_reader(self.event["verdict_pin"], repo=spine.REPO)
++        run_with(
++            "verdict_pin",
++            verdict.replace(
++                "  COMMIT: d92fd17e78b28fe93939e6b94becf1b90c68dddc",
++                "  COMMIT: " + "0" * 40,
++                1,
++            ),
++        )
++        receipt = original_reader(self.event["receipt_pin"], repo=spine.REPO)
++        run_with(
++            "receipt_pin",
++            receipt.replace(
++                "Exact attachment tile was not observed",
++                "Exact attachment tile was observed",
++                1,
++            ),
++        )
++
++    def test_recording_before_acceptance_and_atomic_failure_leave_no_write(self):
++        with self.assertRaisesRegex(spine.ControlViolation, "PHASE_RECORD_INVALID"):
++            self.run_record(recorded_at="2026-09-11T14:50:00+02:00")
++        updated, _ = self.run_record()
++        with tempfile.TemporaryDirectory() as tmp:
++            path = Path(tmp) / "CHANNEL_RUNTIME.json"
++            original = b"original bytes\n"
++            path.write_bytes(original)
++            from unittest import mock
++
++            with mock.patch(
++                "orchestrator.spine.os.replace", side_effect=OSError("replace failed")
++            ):
++                with self.assertRaises(OSError):
++                    spine.write_runtime_atomic(updated, path)
++            self.assertEqual(path.read_bytes(), original)
++
++    def test_cli_rechecks_raw_before_replacement(self):
++        from contextlib import contextmanager
++        from types import SimpleNamespace
++        from unittest import mock
++
++        with tempfile.TemporaryDirectory() as tmp:
++            runtime_path = Path(tmp) / "runtime.json"
++            event_path = Path(tmp) / "event.json"
++            runtime_path.write_bytes(self.raw)
++            event_path.write_text(json.dumps(self.event), encoding="utf-8")
++            events = []
++
++            class Epoch:
++                def recheck(self):
++                    events.append("recheck")
++
++            @contextmanager
++            def writer_epoch(repo):
++                events.append("lock")
++                yield Epoch()
++                events.append("unlock")
++
++            def interrupted_record(raw, event, *, recorded_at):
++                self.assertEqual(events, ["lock"])
++                runtime_path.write_bytes(raw + b" ")
++                return json.loads(raw), True
++
++            with (
++                mock.patch("orchestrator.workflow_runtime._execution_writer_epoch", writer_epoch),
++                mock.patch.object(spine, "CHANNEL_RUNTIME", runtime_path),
++                mock.patch.object(spine, "_validate_active_control"),
++                mock.patch(
++                    "orchestrator.workflow_runtime.build_startup_snapshot",
++                    return_value=SimpleNamespace(fatal_errors=()),
++                ),
++                mock.patch.object(
++                    spine, "record_observed_slack_manual_review", interrupted_record
++                ),
++                mock.patch.object(spine, "write_runtime_atomic") as write,
++                mock.patch("sys.argv", ["spine", "--record-slack-manual-review", str(event_path)]),
++            ):
++                self.assertEqual(spine.main(), 2)
++                write.assert_not_called()
++            self.assertIn("recheck", events)
++            self.assertEqual(runtime_path.read_bytes(), self.raw + b" ")
++
++    def test_cli_rejects_startup_fatal_but_keeps_scoped_hold_eligible(self):
++        from contextlib import contextmanager
++        from types import SimpleNamespace
++        from unittest import mock
++
++        with tempfile.TemporaryDirectory() as tmp:
++            runtime_path = Path(tmp) / "runtime.json"
++            event_path = Path(tmp) / "event.json"
++            runtime_path.write_bytes(self.raw)
++            event_path.write_text(json.dumps(self.event), encoding="utf-8")
++
++            @contextmanager
++            def writer_epoch(repo):
++                yield SimpleNamespace(recheck=lambda: None)
++
++            with (
++                mock.patch("orchestrator.workflow_runtime._execution_writer_epoch", writer_epoch),
++                mock.patch.object(spine, "CHANNEL_RUNTIME", runtime_path),
++                mock.patch.object(spine, "_validate_active_control"),
++                mock.patch(
++                    "orchestrator.workflow_runtime.build_startup_snapshot",
++                    return_value=SimpleNamespace(fatal_errors=("STARTUP_FATAL",)),
++                ),
++                mock.patch.object(spine, "record_observed_slack_manual_review") as record,
++                mock.patch.object(spine, "write_runtime_atomic") as write,
++                mock.patch("sys.argv", ["spine", "--record-slack-manual-review", str(event_path)]),
++            ):
++                self.assertEqual(spine.main(), 2)
++                record.assert_not_called()
++                write.assert_not_called()
++
++            with (
++                mock.patch("orchestrator.workflow_runtime._execution_writer_epoch", writer_epoch),
++                mock.patch.object(spine, "CHANNEL_RUNTIME", runtime_path),
++                mock.patch.object(spine, "_validate_active_control"),
++                mock.patch(
++                    "orchestrator.workflow_runtime.build_startup_snapshot",
++                    return_value=SimpleNamespace(fatal_errors=(), run_authorized=False),
++                ),
++                mock.patch.object(
++                    spine,
++                    "record_observed_slack_manual_review",
++                    return_value=(json.loads(self.raw), False),
++                ) as record,
++                mock.patch.object(spine, "write_runtime_atomic") as write,
++                mock.patch("sys.argv", ["spine", "--record-slack-manual-review", str(event_path)]),
++            ):
++                self.assertEqual(spine.main(), 0)
++                record.assert_called_once()
++                write.assert_not_called()
++
++
+ if __name__ == "__main__":
+     unittest.main()
+```
+<!-- SLACK_CHAT_REPAIR_PATCH_END -->
+
+Complete worker test log:
+```text
+.....PHASE_RECORD_INVALID: PHASE_RECORD_STALE_PREIMAGE
+........PHASE_RECORD_STALE_PREIMAGE
+.PHASE_RECORD_STARTUP_FATAL: STARTUP_FATAL
+................................................................................usage: workflow_runtime.py [-h] [--root ROOT]
+                           {plan,run,close-session,close-phase,resume-checkpoint,review-plan}
+                           ...
+workflow_runtime.py: error: unrecognized arguments: --legacy-v9-maintenance
+...............................................
+----------------------------------------------------------------------
+Ran 141 tests in 8.981s
+
+OK
+CHANNEL_RUNTIME_SLACK_MANUAL_REVIEWS_RECORDED=0
+{"schema": "q3_search_evidence.v1", "status": "PASS", "observed_at": "2026-09-02T12:00:00+00:00"}
+```
+
+Complete scoped ruff log (13 pre-existing baseline findings; no new):
+```text
+E501 Line too long (102 > 100)
+   --> orchestrator/spine.py:281:101
+    |
+279 |             _fail("EXPLORATION_ENTRY_REJECTED_NOT_A_FORK",
+280 |                   "candidate theorem shapes normalize to the same route")
+281 |         if request.get("same_phase_key") is not True or request.get("same_honesty_state") is not True:
+    |                                                                                                     ^^
+282 |             _fail("EXPLORATION_PHASE_KEY_SMUGGLE", "bounded exploration must remain in one phase")
+283 |         if request.get("source_locked_winner_found") is not False:
+    |
+
+E501 Line too long (102 > 100)
+   --> orchestrator/spine.py:286:101
+    |
+284 |             _fail("EXPLORATION_ENTRY_REJECTED_NOT_A_FORK", "a source-locked winner already exists")
+285 |         if request.get("already_named_single_theorem_target") is not False:
+286 |             _fail("EXPLORATION_ENTRY_REJECTED_NOT_A_FORK", "one exact hard lemma is normal execution")
+    |                                                                                                     ^^
+287 |         return "ENTER_BOUNDED_EXPLORATION"
+288 |     if gate == "EXPLORATION_STALL":
+    |
+
+E501 Line too long (102 > 100)
+   --> orchestrator/spine.py:293:101
+    |
+291 |         _fail("EXPLORATION_ENTRY_REJECTED_NOT_A_FORK", "soft-stall predicate is false")
+292 |     if gate == "LOOP_TRAP":
+293 |         if request.get("normalized_route_unchanged") is True and request.get("cosmetic_only") is True:
+    |                                                                                                     ^^
+294 |             return "ENTER_BOUNDED_EXPLORATION"
+295 |         _fail("EXPLORATION_ENTRY_REJECTED_NOT_A_FORK", "loop identity is not established")
+    |
+
+E501 Line too long (106 > 100)
+   --> orchestrator/spine.py:366:101
+    |
+364 |     if call.get("state") not in {"REVIEW_READY", "HARD_STALL"}:
+365 |         _fail("EXPLORATION_REVIEW_OUTSIDE_GATE", "runtime state is not review-ready")
+366 |     if call.get("review_count_for_episode", 0) != 0 or call.get("review_count_for_phase_blocker", 0) != 0:
+    |                                                                                                     ^^^^^^
+367 |         _fail("EXPLORATION_REVIEW_DUPLICATE", "one review per episode and phase/blocker")
+368 |     if call.get("ordinary_goal_close_as_sole_trigger") is True:
+    |
+
+E501 Line too long (102 > 100)
+   --> orchestrator/spine.py:391:101
+    |
+389 |     if not independent_source_check:
+390 |         _fail("EXPLORATION_TWO_KEY_NOT_INDEPENDENT", "Proshka only echoed Codex")
+391 |     if not all(codex_key.get(field) is True for field in ("locally_executable", "source_compatible")):
+    |                                                                                                     ^^
+392 |         return "RUN_CHEAPEST_BELIEF_CHANGING_TEST"
+393 |     if not all(proshka_key.get(field) is True for field in ("mathematically_honest", "non_surrogate")):
+    |
+
+E501 Line too long (103 > 100)
+   --> orchestrator/spine.py:393:101
+    |
+391 |     if not all(codex_key.get(field) is True for field in ("locally_executable", "source_compatible")):
+392 |         return "RUN_CHEAPEST_BELIEF_CHANGING_TEST"
+393 |     if not all(proshka_key.get(field) is True for field in ("mathematically_honest", "non_surrogate")):
+    |                                                                                                     ^^^
+394 |         return "RUN_CHEAPEST_BELIEF_CHANGING_TEST"
+395 |     return "DELEGATED_MATHEMATICAL_DECISION_COMPLETE"
+    |
+
+E501 Line too long (102 > 100)
+   --> orchestrator/spine.py:457:101
+    |
+455 |     if runtime["mathematical_authority_mode"] != "CODEX_PROSHKA_FULL_EXCEPT_PX_RH_CLAIM":
+456 |         _fail("MATHEMATICAL_OWNER_DEFERRAL_OUTSIDE_PX_RH", "runtime authority mode drift")
+457 |     if runtime["px_rh_claim_state"] not in {"NOT_READY", "READY_FOR_OWNER", "AUTHORIZED", "DECLINED"}:
+    |                                                                                                     ^^
+458 |         _fail("EXPLORATION_RUNTIME_MISSING", "invalid PX/RH claim state")
+459 |     meter = runtime.get("meter")
+    |
+
+E501 Line too long (113 > 100)
+    --> orchestrator/spine.py:1130:101
+     |
+1128 |     addendum = repo / "docs/EXECUTOR_ARSENAL_ADDENDUM_2026-08-04.md"
+1129 |     addendum_text = addendum.read_text(encoding="utf-8") if addendum.is_file() else ""
+1130 |     if "STATUS: SUPERSEDED_BY_CODEX_CONTROL" not in addendum_text or "ACTIVE_POLICY: false" not in addendum_text:
+     |                                                                                                     ^^^^^^^^^^^^^
+1131 |         _fail("SUPERSEDED_CONTROL_STILL_ACTIVE", str(addendum.relative_to(repo)))
+1132 |     return validated
+     |
+
+F541 [*] f-string without any placeholders
+    --> orchestrator/spine.py:1740:19
+     |
+1738 |             "scope_negation "
+1739 |             "FROM kill WHERE unit_type=? ORDER BY id", (unit,)).fetchall()
+1740 |         lines += [f"", f"**{unit}** ({len(rows)})", "",
+     |                   ^^^
+1741 |                   "| id | subject | execution status | scope NOT closed | next / rollback |",
+1742 |                   "|---|---|---|---|---|"]
+     |
+help: Remove extraneous `f` prefix
+
+E501 Line too long (116 > 100)
+    --> orchestrator/spine.py:1836:101
+     |
+1834 |         title = m.group(1).strip()
+1835 |         tail = text[m.end():m.end() + 400]
+1836 |         sm = re.search(r"`?Status`?\s*[:*]*\s*`?(applied|hot candidate|candidate|parked|awaiting-research)`?", tail)
+     |                                                                                                     ^^^^^^^^^^^^^^^^
+1837 |         if sm:
+1838 |             lines.append(f"- [{sm.group(1)}] {title}")
+     |
+
+E501 Line too long (152 > 100)
+    --> orchestrator/spine.py:1915:101
+     |
+1913 | …'NONE'}`",
+1914 | …
+1915 | …('delta_id', 'NONE') if isinstance(active.get('last_progress_delta'), dict) else 'NONE'}`",
+     |                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1916 | …
+1917 | …
+     |
+
+E501 Line too long (110 > 100)
+    --> orchestrator/spine.py:2254:101
+     |
+2252 |     lines = [
+2253 |         f"- collection: `{semantic.get('collection', 'q3_docs')}`",
+2254 |         f"- mode / status: `{semantic.get('mode', 'unknown')}` / `{semantic.get('status', 'NOT_VALIDATED')}`",
+     |                                                                                                     ^^^^^^^^^^
+2255 |     ]
+2256 |     for plant in semantic.get("plants", []):
+     |
+
+E501 Line too long (105 > 100)
+    --> orchestrator/spine.py:2550:101
+     |
+2548 |     )
+2549 |     ap.add_argument("--refresh", action="store_true",
+2550 |                     help="write the complete sensor/index refresh before validation and Spine rendering")
+     |                                                                                                     ^^^^^
+2551 |     ap.add_argument("--reason", default="manual",
+2552 |                     help="audit label only; not written into the deterministic view")
+     |
+
+Found 13 errors.
+[*] 1 fixable with the `--fix` option.
+```
+
+2026-09-11T15:52:35+02:00 — CHAT_REPAIR_ARTIFACT_PASS1 HIGH, immutable label: replay-state integrity. On candidate d4b4bb14/946e5e34 (patchde8367ba), archive+stored event validate but changing current chat/phase/key or rolling counters below7/52/4/2 incorrectly yields NOOP. Sole checker reproduced all; parent independently reproduced phase_calls7to6 with changed=False in isolated copy, confirming the finding. No shared runtime mutation. Mode A not reached; candidate blocked until fix. Same worker REOPENED only current-effect guards and focused negative tests; require unchanged active phase ID/key/chat and lower-bound effect counters while permitting later same-phase8/53 NOOP. New digest requires fresh PASS1/PASS2 with same sole checker. No other artifact findings.
+
+| Pass | Severity | Finding — English term + Russian explanation | Fix applied |
+|---|---|---|---|
+| Chat-repair artifact PASS1 | HIGH | Replay-state integrity — повтор скрывает откат текущего состояния | PENDING, worker dispatched |
+
+### Revised SLACK chat-repair artifact after HIGH — 2026-09-11T15:56:47+02:00
+
+Previous goal turn classified PROGRESS: OC2 accepted/projected, code HIGH independently reproduced, correction dispatched. Current planHOLD/2 has fatal_errors=[]; HEAD8a463c09, live runtime unchanged98765b57. Revised isolated worker DONE,141testsPASS. Parent rehashed all candidate bytes and confirmed full patch exactly equals git diff. Previous de8367ba target superseded, HIGH remains open pending independent verification.
+```json
+{
+  "orchestrator/spine.py": "920c303635a998f1ad31a2c2002ccab6fc71ed73297857573b34f1cb87edb85e",
+  "orchestrator/tests/test_channel_runtime_writer.py": "b486d9223923cd8af1fdaffaae45c4938092b44b14ac451ead551f321a312a8e",
+  "docs/cartographer/TOOLS.yaml": "ad552a0e89e1e502262fb1067a6f11777d7f9b5037f8586f463a05185b9de062"
+}
+```
+New patch36754bytes/6c4753e6d823d5e7061a66935c2b43c0898bc0be192b0f66f40bc961f7df7bb0. Same sole checker revisedPASS1 INTENT, read-only/no descendants, expected10min; requires freshPASS2 after cleanPASS1.
+<!-- SLACK_CHAT_REPAIR_REVISED_PATCH_BEGIN -->
+```diff
+diff --git a/docs/cartographer/TOOLS.yaml b/docs/cartographer/TOOLS.yaml
+index 9853799c..d7c9548d 100644
+--- a/docs/cartographer/TOOLS.yaml
++++ b/docs/cartographer/TOOLS.yaml
+@@ -374,6 +374,22 @@ tool_families:
+         note: Fixed evidence/predecessor hashes, canonical writer lock, full predecessor archive and exact successor replay. No production closure.
+         last_verified: 2026-09-10
+ 
++      - id: slack-manual-chat-reconciliation
++        classification: MANUAL
++        status: ENABLED
++        audience: [CODEX]
++        mode: WRITES_CANONICAL
++        path: orchestrator/spine.py
++        invoke: python3 orchestrator/spine.py --record-slack-manual-review <event.json>
++        trigger: One-time reconciliation of the observed owner-manual SLACK delivery of 2026-09-11.
++        writes: true
++        approval: EXISTING_OWNER_AUTHORIZED_SLACK_TASK_ONLY
++        authority: FIXED_RECEIPTS_AND_PREIMAGE_MANUAL_TRANSPORT_NOT_PROOF_ADMISSION
++        validation: test_channel_runtime_writer + test_workflow_runtime phase-header checks
++        records_to: orchestrator/state/CHANNEL_RUNTIME.json
++        note: Fixed queue/request/verdict/acceptance/observation pins, canonical writer lock, predecessor archive and replay that preserves later reviews. No attachment-tile claim, phase change or production closure.
++        last_verified: 2026-09-11
++
+       - id: bind-request
+         classification: MANUAL
+         status: ENABLED
+diff --git a/orchestrator/spine.py b/orchestrator/spine.py
+index 4a3eab02..554c4635 100755
+--- a/orchestrator/spine.py
++++ b/orchestrator/spine.py
+@@ -743,6 +743,323 @@ def record_observed_bridge_transition(
+     return updated, True
+ 
+ 
++SLACK_MANUAL_REVIEW_ID = "REQ-2026-09-11-SLACK"
++SLACK_MANUAL_REVIEW_PREIMAGE = (
++    "98765b57e597a9efcc8bf68cdc47970e0b8b5ad5178cc2d2e96b200780ad2740"
++)
++SLACK_MANUAL_REVIEW_PINS = {
++    "receipt_pin": {
++        "commit": "8a463c090d0c1d28568c05fe67f4891287e1405f",
++        "path": "docs/routeB_bus/PROSHKA_QUEUE.md",
++        "blob": "e0d469e7467029af51f449153eb4aa0de83affd3",
++        "sha256": "61e4156989e1a2c654552c91781093d603dfcaaecef8a82a8818b42ade683f2b",
++    },
++    "request_pin": {
++        "commit": "d92fd17e78b28fe93939e6b94becf1b90c68dddc",
++        "path": "docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SLACK_2026-09-11.txt",
++        "blob": "1bb6a64ca93430b52142071150fa2e6e36ce4520",
++        "sha256": "7cbb8da692f7603b66995dfafbc2ec483e05927f9331903db9b540e6d49638da",
++    },
++    "verdict_pin": {
++        "commit": "e8a95fac36dec2aea50c71a6bdf5fc7deffd4152",
++        "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SLACK_2026-09-11.md",
++        "blob": "ac3504f3e44b0442fc50c95fe1a095aea57cd7dc",
++        "sha256": "1d658eb3d6d828d3bc651967087dabf8e2f9774d179b02c7607f25c7ffe54588",
++    },
++    "acceptance_pin": {
++        "commit": "8a463c090d0c1d28568c05fe67f4891287e1405f",
++        "path": "docs/routeB_bus/SLACK_INDEPENDENT_CHECK_2026-09-11.md",
++        "blob": "ce8845cd30512411fe313fa4817bc0c2968a0d43",
++        "sha256": "cc018a16189d53bc556471c773b3fca9f6fdbed620e61e3f59a078322f9a2f3d",
++    },
++    "observation_pin": {
++        "commit": "8a463c090d0c1d28568c05fe67f4891287e1405f",
++        "path": "docs/session_protocols/SESSION_PROTOKOLL_2026-09-11_CODEX.md",
++        "blob": "099b30409f8f52f0f87b889902509bb104cb617f",
++        "sha256": "1989c97525c3dd55ab9334ed0ec231008186b52080f19c65f68aabf1ecc46011",
++    },
++}
++
++
++def record_observed_slack_manual_review(
++    raw_runtime: bytes,
++    event: dict[str, object],
++    *,
++    repo: Path = REPO,
++    recorded_at: str,
++) -> tuple[dict[str, object], bool]:
++    """Record the observed owner-manual SLACK transport without a phase change."""
++    from orchestrator.workflow_runtime import _single_request_header
++
++    required = {
++        "expected_runtime_sha256",
++        "receipt_pin",
++        "request_pin",
++        "verdict_pin",
++        "acceptance_pin",
++        "observation_pin",
++        "repair_id",
++    }
++    if (
++        not isinstance(event, dict)
++        or set(event) != required
++        or event["repair_id"] != SLACK_MANUAL_REVIEW_ID
++        or event["expected_runtime_sha256"] != SLACK_MANUAL_REVIEW_PREIMAGE
++    ):
++        _fail("PHASE_RECORD_INVALID", "only the observed SLACK manual repair is supported")
++    if any(event[name] != pin for name, pin in SLACK_MANUAL_REVIEW_PINS.items()):
++        _fail("PHASE_RECORD_INVALID", "SLACK repair pins differ from the authenticated record")
++
++    runtime = validate_runtime(json.loads(raw_runtime))
++    receipt_text = _phase_record_pin(event["receipt_pin"], repo=repo)
++    request = _phase_record_pin(event["request_pin"], repo=repo)
++    verdict_text = _phase_record_pin(event["verdict_pin"], repo=repo)
++    acceptance_text = _phase_record_pin(event["acceptance_pin"], repo=repo)
++    observation_text = _phase_record_pin(event["observation_pin"], repo=repo)
++
++    def header(text: str, field: str) -> str:
++        value, error = _single_request_header(text, field)
++        if error or value is None:
++            _fail("PHASE_RECORD_INVALID", error or field)
++        return value
++
++    request_id = header(request, "REQUEST_ID")
++    boundary_id = header(request, "BOUNDARY_ID")
++    phase_id = header(request, "PHASE_ID")
++    phase_key = validate_phase_key(
++        {field: header(request, field.upper()) for field in PHASE_KEY_FIELDS}
++    )
++    if request_id != SLACK_MANUAL_REVIEW_ID or boundary_id != (
++        "GOAL058_INTEGRATED_SIGNED_SOURCE_SLACK_CANCELLATION"
++    ):
++        _fail("PHASE_RECORD_INVALID", "SLACK request identity drift")
++    expected_verdict_path = header(request, "EXPECTED_VERDICT_PATH")
++    if expected_verdict_path != event["verdict_pin"]["path"]:
++        _fail("PHASE_RECORD_INVALID", "SLACK verdict path drift")
++
++    yaml_blocks = re.findall(r"```yaml\n(.*?)\n```", verdict_text, flags=re.DOTALL)
++    if len(yaml_blocks) != 1 or verdict_text.count("```yaml\n") != 1:
++        _fail("PHASE_RECORD_INVALID", "SLACK verdict YAML is missing or ambiguous")
++    verdict = yaml_blocks[0]
++    for field in (
++        "REQUEST_ID", "BOUNDARY_ID", "PHASE_ID", "EXPECTED_VERDICT_PATH",
++        *[field.upper() for field in PHASE_KEY_FIELDS],
++    ):
++        if header(verdict, field) != header(request, field):
++            _fail("PHASE_RECORD_INVALID", f"SLACK verdict/request mismatch: {field}")
++    if verdict.count("REQUEST_LOCK:\n") != 1:
++        _fail("PHASE_RECORD_INVALID", "SLACK REQUEST_LOCK is missing or ambiguous")
++    request_raw = request.encode("utf-8")
++    lock_expected = {
++        "COMMIT": event["request_pin"]["commit"],
++        "BLOB": event["request_pin"]["blob"],
++        "SHA256": event["request_pin"]["sha256"],
++        "BYTES": str(len(request_raw)),
++        "LINES": str(request_raw.count(b"\n")),
++        "FINAL_LF": "true",
++        "LOCAL_BYTES_AND_BOTH_HASHES_RECOMPUTED": "true",
++    }
++    for field, expected in lock_expected.items():
++        values = re.findall(rf"(?m)^  {re.escape(field)}:\s*(\S+)\s*$", verdict)
++        if len(values) != 1 or values[0] != expected:
++            _fail("PHASE_RECORD_INVALID", f"SLACK REQUEST_LOCK mismatch: {field}")
++    if not request_raw.endswith(b"\n"):
++        _fail("PHASE_RECORD_INVALID", "SLACK request has no final newline")
++
++    heading = "## REQ-2026-09-11-SLACK ·"
++    if receipt_text.count(heading) != 1:
++        _fail("PHASE_RECORD_INVALID", "SLACK queue receipt is missing or duplicated")
++    receipt = receipt_text.split(heading, 1)[1].split("\n---", 1)[0]
++    old_conversation = "6aa24f25-0934-83eb-9151-3565fc4b3379"
++    conversation_id = "6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59"
++    request_message_id = "57e6f47f-d70f-4281-97fb-3f2b7641563d"
++    delivery_line = (
++        "Actual manual delivery: owner sent unchanged LINE in user-created chat"
++        f"{conversation_id}, message{request_message_id}."
++    )
++    for required_text in (
++        delivery_line,
++        "Exact attachment tile was not observed; do not fabricate a same-chat/file-tile receipt.",
++        "No resend.",
++        "ANSWERED records verified request/verdict binding, not mathematical acceptance.",
++        event["request_pin"]["commit"],
++        event["request_pin"]["sha256"],
++        event["verdict_pin"]["commit"],
++        event["verdict_pin"]["sha256"],
++    ):
++        if receipt.count(required_text) != 1:
++            _fail("PHASE_RECORD_INVALID", "SLACK queue receipt does not attest the repair")
++    acceptance_marker = "## 8. Final acceptance receipt — 2026-09-11T14:51:37+02:00"
++    if acceptance_text.count(acceptance_marker) != 1:
++        _fail("PHASE_RECORD_INVALID", "SLACK acceptance receipt is incomplete")
++    acceptance = acceptance_text.split(acceptance_marker, 1)[1]
++    for required_text in (
++        "Both CLEAN; FIRST_INCORRECT_ASSERTION NONE",
++        "CHALLENGER_NOT_RH; PX_RH_CLAIM: NOT_MADE.",
++    ):
++        if acceptance.count(required_text) != 1:
++            _fail("PHASE_RECORD_INVALID", "SLACK acceptance receipt is incomplete")
++    observed_at = "2026-09-11T13:40:14+02:00"
++    observation_line = (
++        f"{observed_at} — Owner manually sent SLACK. Native read_thread verified unchanged "
++        f"LINE in NEW conversation{conversation_id}, message{request_message_id};"
++    )
++    completion_line = (
++        f"live IAB1/tab1 chat{conversation_id} shows completed SLACK with original file "
++        "and publication receipt."
++    )
++    if (
++        observation_text.count(observation_line) != 1
++        or observation_text.count(completion_line) != 1
++    ):
++        _fail("PHASE_RECORD_INVALID", "SLACK manual observation is incomplete")
++
++    authenticated_receipt = {
++        "receipt_pin": event["receipt_pin"],
++        "request_pin": event["request_pin"],
++        "verdict_pin": event["verdict_pin"],
++        "acceptance_pin": event["acceptance_pin"],
++        "observation_pin": event["observation_pin"],
++        "conversation_id": conversation_id,
++        "request_message_id": request_message_id,
++        "observed_at": observed_at,
++        "accepted_at": "2026-09-11T14:51:37+02:00",
++        "transport": "OWNER_MANUAL_NO_ATTACHMENT_TILE",
++        "attachment_tile_observed": False,
++    }
++    observed = _dt.datetime.fromisoformat(authenticated_receipt["observed_at"])
++    accepted = _dt.datetime.fromisoformat(authenticated_receipt["accepted_at"])
++    recorded = _dt.datetime.fromisoformat(recorded_at)
++    if (
++        observed.tzinfo is None
++        or accepted.tzinfo is None
++        or recorded.tzinfo is None
++        or not observed <= accepted <= recorded
++    ):
++        _fail("PHASE_RECORD_INVALID", "SLACK repair recording time is invalid")
++
++    try:
++        predecessor_raw = subprocess.check_output(
++            [
++                "git",
++                "show",
++                "8a463c090d0c1d28568c05fe67f4891287e1405f:"
++                "orchestrator/state/CHANNEL_RUNTIME.json",
++            ],
++            cwd=repo,
++        )
++    except subprocess.CalledProcessError as exc:
++        _fail("PHASE_RECORD_INVALID", str(exc))
++    if hashlib.sha256(predecessor_raw).hexdigest() != SLACK_MANUAL_REVIEW_PREIMAGE:
++        _fail("PHASE_RECORD_INVALID", "SLACK pinned predecessor hash drift")
++    predecessor = validate_runtime(json.loads(predecessor_raw))
++    expected_review_event = {
++        "request_message_id": request_message_id,
++        "conversation_id": conversation_id,
++        "boundary_id": boundary_id,
++        "adjudicated_pin": event["verdict_pin"]["commit"],
++        "phase_call_index": 7,
++        "meter_call_index": 52,
++    }
++    history = runtime.get("observed_manual_review_repairs", [])
++    if not isinstance(history, list):
++        _fail("PHASE_RECORD_INVALID", "SLACK repair history is invalid")
++    for previous in history:
++        if not isinstance(previous, dict):
++            _fail("PHASE_RECORD_INVALID", "SLACK repair history entry is invalid")
++        previous_event = previous.get("event")
++        if not isinstance(previous_event, dict):
++            _fail("PHASE_RECORD_INVALID", "SLACK repair event archive is invalid")
++        if previous_event.get("repair_id") == SLACK_MANUAL_REVIEW_ID:
++            prior_recorded_at = previous.get("recorded_at")
++            try:
++                prior_recorded = _dt.datetime.fromisoformat(prior_recorded_at)
++            except (TypeError, ValueError):
++                _fail("PHASE_RECORD_REPLAY_CONFLICT", "SLACK repair record time is invalid")
++            ledger = runtime.get("recorded_review_events")
++            if not isinstance(ledger, list) or any(
++                not isinstance(item, dict) for item in ledger
++            ):
++                _fail("PHASE_RECORD_REPLAY_CONFLICT", "SLACK review ledger is invalid")
++            stored_events = [
++                item for item in ledger
++                if item.get("request_message_id") == request_message_id
++            ]
++            current_phase = runtime.get("active_proshka_phase")
++            current_meter = runtime.get("meter")
++            if (
++                previous_event != event
++                or previous.get("receipt") != authenticated_receipt
++                or previous.get("preimage_sha256") != SLACK_MANUAL_REVIEW_PREIMAGE
++                or previous.get("disposition") != "MANUAL_TRANSPORT_RECONCILED_NO_PROOF_ADMISSION"
++                or previous.get("predecessor_phase") != predecessor["active_proshka_phase"]
++                or previous.get("predecessor_meter") != predecessor["meter"]
++                or previous.get("observed_at") != authenticated_receipt["observed_at"]
++                or previous.get("accepted_at") != authenticated_receipt["accepted_at"]
++                or prior_recorded.tzinfo is None
++                or prior_recorded < accepted
++                or stored_events != [expected_review_event]
++                or not isinstance(current_phase, dict)
++                or current_phase.get("status") != "ACTIVE"
++                or current_phase.get("conversation_id") != conversation_id
++                or current_phase.get("phase_id") != phase_id
++                or validate_phase_key(current_phase.get("phase_key")) != phase_key
++                or not isinstance(current_phase.get("proshka_calls"), int)
++                or current_phase["proshka_calls"] < 7
++                or not isinstance(current_meter, dict)
++                or current_meter.get("delegated_strategic_review_calls", 0) < 52
++                or current_meter.get("phases_opened", 0) < 3
++                or current_meter.get("fresh_chats_opened", 0) < 4
++                or current_meter.get("forced_rollovers", 0) < 2
++            ):
++                _fail("PHASE_RECORD_REPLAY_CONFLICT", "SLACK repair record differs")
++            return runtime, False
++
++    if hashlib.sha256(raw_runtime).hexdigest() != SLACK_MANUAL_REVIEW_PREIMAGE:
++        _fail("PHASE_RECORD_STALE_PREIMAGE")
++    phase = runtime.get("active_proshka_phase")
++    meter = runtime.get("meter")
++    if (
++        not isinstance(phase, dict)
++        or phase.get("status") != "ACTIVE"
++        or phase.get("conversation_id") != old_conversation
++        or phase.get("phase_id") != phase_id
++        or validate_phase_key(phase.get("phase_key")) != phase_key
++        or phase.get("proshka_calls") != 6
++        or not isinstance(meter, dict)
++        or meter.get("delegated_strategic_review_calls") != 51
++        or meter.get("phases_opened") != 3
++        or meter.get("fresh_chats_opened") != 3
++        or meter.get("forced_rollovers") != 1
++    ):
++        _fail("PHASE_RECORD_INVALID", "SLACK predecessor phase or meter differs")
++
++    updated = json.loads(json.dumps(runtime))
++    updated.setdefault("observed_manual_review_repairs", []).append(
++        {
++            "event": event,
++            "predecessor_phase": runtime["active_proshka_phase"],
++            "predecessor_meter": runtime["meter"],
++            "preimage_sha256": SLACK_MANUAL_REVIEW_PREIMAGE,
++            "receipt": authenticated_receipt,
++            "observed_at": authenticated_receipt["observed_at"],
++            "accepted_at": authenticated_receipt["accepted_at"],
++            "recorded_at": recorded_at,
++            "disposition": "MANUAL_TRANSPORT_RECONCILED_NO_PROOF_ADMISSION",
++        }
++    )
++    updated["active_proshka_phase"]["conversation_id"] = conversation_id
++    updated["meter"]["fresh_chats_opened"] += 1
++    updated["meter"]["forced_rollovers"] += 1
++    updated, changed = record_delegated_review(
++        updated,
++        expected_review_event,
++    )
++    if not changed:
++        _fail("PHASE_RECORD_REPLAY_CONFLICT", "SLACK review was already recorded")
++    return updated, True
++
++
+ def write_runtime_atomic(runtime: dict[str, object], path: Path = CHANNEL_RUNTIME) -> None:
+     """Validate and atomically replace one canonical runtime JSON file."""
+     validate_runtime(runtime)
+@@ -2265,11 +2582,16 @@ def main() -> int:
+         "--record-bridge-transition", type=Path, metavar="EVENT_JSON",
+         help="late-record only the verified 2026-09-10 BRIDGE chat transition",
+     )
++    ap.add_argument(
++        "--record-slack-manual-review", type=Path, metavar="EVENT_JSON",
++        help="late-record only the verified 2026-09-11 owner-manual SLACK review",
++    )
+     args = ap.parse_args()
+     try:
+         if args.record_bridge_transition is not None:
+             if (
+-                args.record_review or args.stdout or args.strict or args.refresh
++                args.record_review or args.record_slack_manual_review is not None
++                or args.stdout or args.strict or args.refresh
+                 or args.attempt_payload is not None or args.insight_payload is not None
+             ):
+                 _fail("PHASE_RECORD_INVALID", "repair cannot be combined with other actions")
+@@ -2292,6 +2614,49 @@ def main() -> int:
+                 _fail("PHASE_RECORD_INVALID", str(exc))
+             print(f"CHANNEL_RUNTIME_BRIDGE_TRANSITIONS_RECORDED={int(changed)}")
+             return 0
++        if args.record_slack_manual_review is not None:
++            if (
++                args.record_review or args.stdout or args.strict or args.refresh
++                or args.attempt_payload is not None or args.insight_payload is not None
++            ):
++                _fail("PHASE_RECORD_INVALID", "repair cannot be combined with other actions")
++            from orchestrator.workflow_runtime import (
++                _execution_writer_epoch,
++                build_startup_snapshot,
++            )
++
++            try:
++                with _execution_writer_epoch(REPO) as epoch:
++                    _validate_active_control()
++                    startup = build_startup_snapshot(
++                        REPO,
++                        owned_paths=["orchestrator/state/CHANNEL_RUNTIME.json"],
++                        _epoch_guard=epoch,
++                    )
++                    if startup.fatal_errors:
++                        _fail("PHASE_RECORD_STARTUP_FATAL", ",".join(startup.fatal_errors))
++                    raw = CHANNEL_RUNTIME.read_bytes()
++                    event = json.loads(args.record_slack_manual_review.read_text(encoding="utf-8"))
++                    runtime, changed = record_observed_slack_manual_review(
++                        raw, event, recorded_at=_dt.datetime.now(_dt.timezone.utc).isoformat(),
++                    )
++                    if changed:
++                        epoch.recheck()
++                        if CHANNEL_RUNTIME.read_bytes() != raw:
++                            _fail("PHASE_RECORD_STALE_PREIMAGE")
++                        payload_text = json.dumps(
++                            runtime, ensure_ascii=False, indent=2, sort_keys=True,
++                        ) + "\n"
++                        payload = payload_text.encode("utf-8")
++                        write_runtime_atomic(runtime)
++                        if CHANNEL_RUNTIME.read_bytes() != payload:
++                            _fail("PHASE_RECORD_INVALID", "SLACK repair atomic readback mismatch")
++            except ControlViolation:
++                raise
++            except (OSError, ValueError) as exc:
++                _fail("PHASE_RECORD_INVALID", str(exc))
++            print(f"CHANNEL_RUNTIME_SLACK_MANUAL_REVIEWS_RECORDED={int(changed)}")
++            return 0
+         if args.record_review:
+             if (
+                 args.stdout
+diff --git a/orchestrator/tests/test_channel_runtime_writer.py b/orchestrator/tests/test_channel_runtime_writer.py
+index bd129709..4e3113a7 100644
+--- a/orchestrator/tests/test_channel_runtime_writer.py
++++ b/orchestrator/tests/test_channel_runtime_writer.py
+@@ -163,7 +163,9 @@ class ObservedBridgeTransitionTests(unittest.TestCase):
+         self.assertEqual(archived["preimage_sha256"], hashlib.sha256(self.raw).hexdigest())
+         self.assertTrue(archived["late_recording"])
+         self.assertNotEqual(archived["observed_at"], archived["recorded_at"])
+-        self.assertEqual(updated["recorded_review_events"][:-1], original["recorded_review_events"])
++        self.assertEqual(
++            updated["recorded_review_events"][:-1], original["recorded_review_events"]
++        )
+         for key in original.keys() - {"active_proshka_phase", "meter", "recorded_review_events"}:
+             self.assertEqual(updated[key], original[key])
+         self.assertEqual(
+@@ -283,5 +285,322 @@ class ObservedBridgeTransitionTests(unittest.TestCase):
+             spine._phase_record_pin({**pin, "sha256": "0" * 64}, repo=spine.REPO)
+ 
+ 
++class ObservedSlackManualReviewTests(unittest.TestCase):
++    """Regression checks for the one observed owner-manual SLACK transport."""
++
++    def setUp(self) -> None:
++        import subprocess
++
++        self.raw = subprocess.check_output(
++            [
++                "git",
++                "show",
++                "8a463c090d0c1d28568c05fe67f4891287e1405f:"
++                "orchestrator/state/CHANNEL_RUNTIME.json",
++            ],
++            cwd=spine.REPO,
++        )
++        self.event = {
++            "expected_runtime_sha256": spine.SLACK_MANUAL_REVIEW_PREIMAGE,
++            "repair_id": spine.SLACK_MANUAL_REVIEW_ID,
++            **{name: dict(pin) for name, pin in spine.SLACK_MANUAL_REVIEW_PINS.items()},
++        }
++
++    def run_record(self, raw=None, event=None, recorded_at="2026-09-11T16:00:00+02:00"):
++        return spine.record_observed_slack_manual_review(
++            self.raw if raw is None else raw,
++            self.event if event is None else event,
++            recorded_at=recorded_at,
++        )
++
++    def test_reconciles_only_the_observed_handle_and_review(self):
++        original = json.loads(self.raw)
++        updated, changed = self.run_record()
++        self.assertTrue(changed)
++        archive = updated["observed_manual_review_repairs"][0]
++        self.assertEqual(archive["predecessor_phase"], original["active_proshka_phase"])
++        self.assertEqual(archive["predecessor_meter"], original["meter"])
++        self.assertEqual(archive["preimage_sha256"], hashlib.sha256(self.raw).hexdigest())
++        self.assertFalse(archive["receipt"]["attachment_tile_observed"])
++        self.assertEqual(
++            updated["active_proshka_phase"]["phase_key"],
++            original["active_proshka_phase"]["phase_key"],
++        )
++        self.assertEqual(
++            updated["active_proshka_phase"]["phase_id"],
++            original["active_proshka_phase"]["phase_id"],
++        )
++        self.assertEqual(
++            updated["active_proshka_phase"]["conversation_id"],
++            "6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59",
++        )
++        self.assertEqual(updated["active_proshka_phase"]["proshka_calls"], 7)
++        self.assertEqual(updated["meter"]["delegated_strategic_review_calls"], 52)
++        self.assertEqual(updated["meter"]["phases_opened"], 3)
++        self.assertEqual(updated["meter"]["fresh_chats_opened"], 4)
++        self.assertEqual(updated["meter"]["forced_rollovers"], 2)
++        self.assertEqual(updated["recorded_review_events"][:-1], original["recorded_review_events"])
++        for key in original.keys() - {
++            "active_proshka_phase", "meter", "recorded_review_events",
++        }:
++            self.assertEqual(updated[key], original[key])
++
++    def test_pinned_fixture_ignores_an_isolated_successor_runtime(self):
++        from unittest import mock
++
++        successor, _ = self.run_record()
++        with tempfile.TemporaryDirectory() as tmp:
++            successor_path = Path(tmp) / "CHANNEL_RUNTIME.json"
++            successor_path.write_text(json.dumps(successor), encoding="utf-8")
++            with mock.patch.object(spine, "CHANNEL_RUNTIME", successor_path):
++                self.setUp()
++                rebuilt, changed = self.run_record()
++        self.assertTrue(changed)
++        self.assertEqual(rebuilt, successor)
++
++    def test_identical_replay_is_noop_after_a_later_legitimate_review(self):
++        updated, _ = self.run_record()
++        later, changed = spine.record_delegated_review(
++            updated,
++            {
++                "request_message_id": "later-legitimate-review",
++                "conversation_id": "6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59",
++                "boundary_id": "GOAL058_LATER_LEGITIMATE_REVIEW",
++                "adjudicated_pin": "1" * 40,
++                "phase_call_index": 8,
++                "meter_call_index": 53,
++            },
++        )
++        self.assertTrue(changed)
++        replayed, changed = self.run_record(raw=json.dumps(later).encode("utf-8"))
++        self.assertFalse(changed)
++        self.assertEqual(replayed, later)
++        self.assertEqual(replayed["active_proshka_phase"]["proshka_calls"], 8)
++        self.assertEqual(replayed["meter"]["delegated_strategic_review_calls"], 53)
++
++    def test_stale_preimage_and_malformed_history_fail_closed(self):
++        with self.assertRaisesRegex(spine.ControlViolation, "PHASE_RECORD_STALE_PREIMAGE"):
++            self.run_record(raw=self.raw + b" ")
++        malformed = json.loads(self.raw)
++        malformed["observed_manual_review_repairs"] = ["not-an-object"]
++        with self.assertRaisesRegex(spine.ControlViolation, "PHASE_RECORD_INVALID"):
++            self.run_record(raw=json.dumps(malformed).encode("utf-8"))
++
++    def test_conflicting_replay_and_closed_event_schema_are_rejected(self):
++        updated, _ = self.run_record()
++        updated["observed_manual_review_repairs"][0]["receipt"]["conversation_id"] = "foreign"
++        with self.assertRaisesRegex(spine.ControlViolation, "PHASE_RECORD_REPLAY_CONFLICT"):
++            self.run_record(raw=json.dumps(updated).encode("utf-8"))
++        updated, _ = self.run_record()
++        updated["observed_manual_review_repairs"][0].pop("predecessor_meter")
++        with self.assertRaisesRegex(spine.ControlViolation, "PHASE_RECORD_REPLAY_CONFLICT"):
++            self.run_record(raw=json.dumps(updated).encode("utf-8"))
++        updated, _ = self.run_record()
++        updated["recorded_review_events"] = [
++            item for item in updated["recorded_review_events"]
++            if item["request_message_id"] != "57e6f47f-d70f-4281-97fb-3f2b7641563d"
++        ]
++        with self.assertRaisesRegex(spine.ControlViolation, "PHASE_RECORD_REPLAY_CONFLICT"):
++            self.run_record(raw=json.dumps(updated).encode("utf-8"))
++        updated, _ = self.run_record()
++        updated["observed_manual_review_repairs"][0]["event"] = "not-an-object"
++        with self.assertRaisesRegex(spine.ControlViolation, "PHASE_RECORD_INVALID"):
++            self.run_record(raw=json.dumps(updated).encode("utf-8"))
++        cases = [
++            ("status", ("active_proshka_phase", "status"), "CLOSED"),
++            ("conversation", ("active_proshka_phase", "conversation_id"), "foreign-chat"),
++            ("phase_id", ("active_proshka_phase", "phase_id"), "foreign-phase"),
++            ("phase_calls", ("active_proshka_phase", "proshka_calls"), 6),
++            ("meter_calls", ("meter", "delegated_strategic_review_calls"), 51),
++            ("phases", ("meter", "phases_opened"), 2),
++            ("fresh_chats", ("meter", "fresh_chats_opened"), 3),
++            ("forced_rollovers", ("meter", "forced_rollovers"), 1),
++        ]
++        cases.extend(
++            (
++                f"phase_key_{field}",
++                ("active_proshka_phase", "phase_key", field),
++                f"foreign-{field}",
++            )
++            for field in spine.PHASE_KEY_FIELDS
++        )
++        for label, path, value in cases:
++            candidate = json.loads(json.dumps(self.run_record()[0]))
++            target = candidate
++            for key in path[:-1]:
++                target = target[key]
++            target[path[-1]] = value
++            with self.subTest(replay_state=label), self.assertRaisesRegex(
++                spine.ControlViolation, "PHASE_RECORD_REPLAY_CONFLICT"
++            ):
++                self.run_record(raw=json.dumps(candidate).encode("utf-8"))
++        with self.assertRaisesRegex(spine.ControlViolation, "PHASE_RECORD_INVALID"):
++            self.run_record(event={**self.event, "transport_mode": "CANONICAL_ATTACHMENT"})
++        for name in spine.SLACK_MANUAL_REVIEW_PINS:
++            candidate = json.loads(json.dumps(self.event))
++            candidate[name]["sha256"] = "0" * 64
++            with self.subTest(pin=name), self.assertRaisesRegex(
++                spine.ControlViolation, "PHASE_RECORD_INVALID"
++            ):
++                self.run_record(event=candidate)
++
++    def test_duplicate_headers_wrong_lock_and_false_tile_are_rejected(self):
++        from unittest import mock
++
++        original_reader = spine._phase_record_pin
++
++        def run_with(source_name, replacement):
++            def reader(pin, *, repo):
++                if pin == self.event[source_name]:
++                    return replacement
++                return original_reader(pin, repo=repo)
++
++            with mock.patch.object(spine, "_phase_record_pin", side_effect=reader):
++                with self.assertRaisesRegex(spine.ControlViolation, "PHASE_RECORD_INVALID"):
++                    self.run_record()
++
++        request = original_reader(self.event["request_pin"], repo=spine.REPO)
++        run_with(
++            "request_pin",
++            request.replace(
++                "REQUEST_ID: REQ-2026-09-11-SLACK",
++                "REQUEST_ID: REQ-2026-09-11-SLACK\nREQUEST_ID: REQ-2026-09-11-SLACK",
++                1,
++            ),
++        )
++        verdict = original_reader(self.event["verdict_pin"], repo=spine.REPO)
++        run_with(
++            "verdict_pin",
++            verdict.replace(
++                "  COMMIT: d92fd17e78b28fe93939e6b94becf1b90c68dddc",
++                "  COMMIT: " + "0" * 40,
++                1,
++            ),
++        )
++        receipt = original_reader(self.event["receipt_pin"], repo=spine.REPO)
++        run_with(
++            "receipt_pin",
++            receipt.replace(
++                "Exact attachment tile was not observed",
++                "Exact attachment tile was observed",
++                1,
++            ),
++        )
++
++    def test_recording_before_acceptance_and_atomic_failure_leave_no_write(self):
++        with self.assertRaisesRegex(spine.ControlViolation, "PHASE_RECORD_INVALID"):
++            self.run_record(recorded_at="2026-09-11T14:50:00+02:00")
++        updated, _ = self.run_record()
++        with tempfile.TemporaryDirectory() as tmp:
++            path = Path(tmp) / "CHANNEL_RUNTIME.json"
++            original = b"original bytes\n"
++            path.write_bytes(original)
++            from unittest import mock
++
++            with mock.patch(
++                "orchestrator.spine.os.replace", side_effect=OSError("replace failed")
++            ):
++                with self.assertRaises(OSError):
++                    spine.write_runtime_atomic(updated, path)
++            self.assertEqual(path.read_bytes(), original)
++
++    def test_cli_rechecks_raw_before_replacement(self):
++        from contextlib import contextmanager
++        from types import SimpleNamespace
++        from unittest import mock
++
++        with tempfile.TemporaryDirectory() as tmp:
++            runtime_path = Path(tmp) / "runtime.json"
++            event_path = Path(tmp) / "event.json"
++            runtime_path.write_bytes(self.raw)
++            event_path.write_text(json.dumps(self.event), encoding="utf-8")
++            events = []
++
++            class Epoch:
++                def recheck(self):
++                    events.append("recheck")
++
++            @contextmanager
++            def writer_epoch(repo):
++                events.append("lock")
++                yield Epoch()
++                events.append("unlock")
++
++            def interrupted_record(raw, event, *, recorded_at):
++                self.assertEqual(events, ["lock"])
++                runtime_path.write_bytes(raw + b" ")
++                return json.loads(raw), True
++
++            with (
++                mock.patch("orchestrator.workflow_runtime._execution_writer_epoch", writer_epoch),
++                mock.patch.object(spine, "CHANNEL_RUNTIME", runtime_path),
++                mock.patch.object(spine, "_validate_active_control"),
++                mock.patch(
++                    "orchestrator.workflow_runtime.build_startup_snapshot",
++                    return_value=SimpleNamespace(fatal_errors=()),
++                ),
++                mock.patch.object(
++                    spine, "record_observed_slack_manual_review", interrupted_record
++                ),
++                mock.patch.object(spine, "write_runtime_atomic") as write,
++                mock.patch("sys.argv", ["spine", "--record-slack-manual-review", str(event_path)]),
++            ):
++                self.assertEqual(spine.main(), 2)
++                write.assert_not_called()
++            self.assertIn("recheck", events)
++            self.assertEqual(runtime_path.read_bytes(), self.raw + b" ")
++
++    def test_cli_rejects_startup_fatal_but_keeps_scoped_hold_eligible(self):
++        from contextlib import contextmanager
++        from types import SimpleNamespace
++        from unittest import mock
++
++        with tempfile.TemporaryDirectory() as tmp:
++            runtime_path = Path(tmp) / "runtime.json"
++            event_path = Path(tmp) / "event.json"
++            runtime_path.write_bytes(self.raw)
++            event_path.write_text(json.dumps(self.event), encoding="utf-8")
++
++            @contextmanager
++            def writer_epoch(repo):
++                yield SimpleNamespace(recheck=lambda: None)
++
++            with (
++                mock.patch("orchestrator.workflow_runtime._execution_writer_epoch", writer_epoch),
++                mock.patch.object(spine, "CHANNEL_RUNTIME", runtime_path),
++                mock.patch.object(spine, "_validate_active_control"),
++                mock.patch(
++                    "orchestrator.workflow_runtime.build_startup_snapshot",
++                    return_value=SimpleNamespace(fatal_errors=("STARTUP_FATAL",)),
++                ),
++                mock.patch.object(spine, "record_observed_slack_manual_review") as record,
++                mock.patch.object(spine, "write_runtime_atomic") as write,
++                mock.patch("sys.argv", ["spine", "--record-slack-manual-review", str(event_path)]),
++            ):
++                self.assertEqual(spine.main(), 2)
++                record.assert_not_called()
++                write.assert_not_called()
++
++            with (
++                mock.patch("orchestrator.workflow_runtime._execution_writer_epoch", writer_epoch),
++                mock.patch.object(spine, "CHANNEL_RUNTIME", runtime_path),
++                mock.patch.object(spine, "_validate_active_control"),
++                mock.patch(
++                    "orchestrator.workflow_runtime.build_startup_snapshot",
++                    return_value=SimpleNamespace(fatal_errors=(), run_authorized=False),
++                ),
++                mock.patch.object(
++                    spine,
++                    "record_observed_slack_manual_review",
++                    return_value=(json.loads(self.raw), False),
++                ) as record,
++                mock.patch.object(spine, "write_runtime_atomic") as write,
++                mock.patch("sys.argv", ["spine", "--record-slack-manual-review", str(event_path)]),
++            ):
++                self.assertEqual(spine.main(), 0)
++                record.assert_called_once()
++                write.assert_not_called()
++
++
+ if __name__ == "__main__":
+     unittest.main()
+```
+<!-- SLACK_CHAT_REPAIR_REVISED_PATCH_END -->
+
+Revised complete worker tests:
+```text
+.....PHASE_RECORD_INVALID: PHASE_RECORD_STALE_PREIMAGE
+........PHASE_RECORD_STALE_PREIMAGE
+.PHASE_RECORD_STARTUP_FATAL: STARTUP_FATAL
+................................................................................usage: workflow_runtime.py [-h] [--root ROOT]
+                           {plan,run,close-session,close-phase,resume-checkpoint,review-plan}
+                           ...
+workflow_runtime.py: error: unrecognized arguments: --legacy-v9-maintenance
+...............................................
+----------------------------------------------------------------------
+Ran 141 tests in 11.258s
+
+OK
+CHANNEL_RUNTIME_SLACK_MANUAL_REVIEWS_RECORDED=0
+{"schema": "q3_search_evidence.v1", "status": "PASS", "observed_at": "2026-09-02T12:00:00+00:00"}
+```
+
+Revised ruff baseline-only output:
+```text
+E501 Line too long (102 > 100)
+   --> orchestrator/spine.py:281:101
+    |
+279 |             _fail("EXPLORATION_ENTRY_REJECTED_NOT_A_FORK",
+280 |                   "candidate theorem shapes normalize to the same route")
+281 |         if request.get("same_phase_key") is not True or request.get("same_honesty_state") is not True:
+    |                                                                                                     ^^
+282 |             _fail("EXPLORATION_PHASE_KEY_SMUGGLE", "bounded exploration must remain in one phase")
+283 |         if request.get("source_locked_winner_found") is not False:
+    |
+
+E501 Line too long (102 > 100)
+   --> orchestrator/spine.py:286:101
+    |
+284 |             _fail("EXPLORATION_ENTRY_REJECTED_NOT_A_FORK", "a source-locked winner already exists")
+285 |         if request.get("already_named_single_theorem_target") is not False:
+286 |             _fail("EXPLORATION_ENTRY_REJECTED_NOT_A_FORK", "one exact hard lemma is normal execution")
+    |                                                                                                     ^^
+287 |         return "ENTER_BOUNDED_EXPLORATION"
+288 |     if gate == "EXPLORATION_STALL":
+    |
+
+E501 Line too long (102 > 100)
+   --> orchestrator/spine.py:293:101
+    |
+291 |         _fail("EXPLORATION_ENTRY_REJECTED_NOT_A_FORK", "soft-stall predicate is false")
+292 |     if gate == "LOOP_TRAP":
+293 |         if request.get("normalized_route_unchanged") is True and request.get("cosmetic_only") is True:
+    |                                                                                                     ^^
+294 |             return "ENTER_BOUNDED_EXPLORATION"
+295 |         _fail("EXPLORATION_ENTRY_REJECTED_NOT_A_FORK", "loop identity is not established")
+    |
+
+E501 Line too long (106 > 100)
+   --> orchestrator/spine.py:366:101
+    |
+364 |     if call.get("state") not in {"REVIEW_READY", "HARD_STALL"}:
+365 |         _fail("EXPLORATION_REVIEW_OUTSIDE_GATE", "runtime state is not review-ready")
+366 |     if call.get("review_count_for_episode", 0) != 0 or call.get("review_count_for_phase_blocker", 0) != 0:
+    |                                                                                                     ^^^^^^
+367 |         _fail("EXPLORATION_REVIEW_DUPLICATE", "one review per episode and phase/blocker")
+368 |     if call.get("ordinary_goal_close_as_sole_trigger") is True:
+    |
+
+E501 Line too long (102 > 100)
+   --> orchestrator/spine.py:391:101
+    |
+389 |     if not independent_source_check:
+390 |         _fail("EXPLORATION_TWO_KEY_NOT_INDEPENDENT", "Proshka only echoed Codex")
+391 |     if not all(codex_key.get(field) is True for field in ("locally_executable", "source_compatible")):
+    |                                                                                                     ^^
+392 |         return "RUN_CHEAPEST_BELIEF_CHANGING_TEST"
+393 |     if not all(proshka_key.get(field) is True for field in ("mathematically_honest", "non_surrogate")):
+    |
+
+E501 Line too long (103 > 100)
+   --> orchestrator/spine.py:393:101
+    |
+391 |     if not all(codex_key.get(field) is True for field in ("locally_executable", "source_compatible")):
+392 |         return "RUN_CHEAPEST_BELIEF_CHANGING_TEST"
+393 |     if not all(proshka_key.get(field) is True for field in ("mathematically_honest", "non_surrogate")):
+    |                                                                                                     ^^^
+394 |         return "RUN_CHEAPEST_BELIEF_CHANGING_TEST"
+395 |     return "DELEGATED_MATHEMATICAL_DECISION_COMPLETE"
+    |
+
+E501 Line too long (102 > 100)
+   --> orchestrator/spine.py:457:101
+    |
+455 |     if runtime["mathematical_authority_mode"] != "CODEX_PROSHKA_FULL_EXCEPT_PX_RH_CLAIM":
+456 |         _fail("MATHEMATICAL_OWNER_DEFERRAL_OUTSIDE_PX_RH", "runtime authority mode drift")
+457 |     if runtime["px_rh_claim_state"] not in {"NOT_READY", "READY_FOR_OWNER", "AUTHORIZED", "DECLINED"}:
+    |                                                                                                     ^^
+458 |         _fail("EXPLORATION_RUNTIME_MISSING", "invalid PX/RH claim state")
+459 |     meter = runtime.get("meter")
+    |
+
+E501 Line too long (113 > 100)
+    --> orchestrator/spine.py:1144:101
+     |
+1142 |     addendum = repo / "docs/EXECUTOR_ARSENAL_ADDENDUM_2026-08-04.md"
+1143 |     addendum_text = addendum.read_text(encoding="utf-8") if addendum.is_file() else ""
+1144 |     if "STATUS: SUPERSEDED_BY_CODEX_CONTROL" not in addendum_text or "ACTIVE_POLICY: false" not in addendum_text:
+     |                                                                                                     ^^^^^^^^^^^^^
+1145 |         _fail("SUPERSEDED_CONTROL_STILL_ACTIVE", str(addendum.relative_to(repo)))
+1146 |     return validated
+     |
+
+F541 [*] f-string without any placeholders
+    --> orchestrator/spine.py:1754:19
+     |
+1752 |             "scope_negation "
+1753 |             "FROM kill WHERE unit_type=? ORDER BY id", (unit,)).fetchall()
+1754 |         lines += [f"", f"**{unit}** ({len(rows)})", "",
+     |                   ^^^
+1755 |                   "| id | subject | execution status | scope NOT closed | next / rollback |",
+1756 |                   "|---|---|---|---|---|"]
+     |
+help: Remove extraneous `f` prefix
+
+E501 Line too long (116 > 100)
+    --> orchestrator/spine.py:1850:101
+     |
+1848 |         title = m.group(1).strip()
+1849 |         tail = text[m.end():m.end() + 400]
+1850 |         sm = re.search(r"`?Status`?\s*[:*]*\s*`?(applied|hot candidate|candidate|parked|awaiting-research)`?", tail)
+     |                                                                                                     ^^^^^^^^^^^^^^^^
+1851 |         if sm:
+1852 |             lines.append(f"- [{sm.group(1)}] {title}")
+     |
+
+E501 Line too long (152 > 100)
+    --> orchestrator/spine.py:1929:101
+     |
+1927 | …'NONE'}`",
+1928 | …
+1929 | …('delta_id', 'NONE') if isinstance(active.get('last_progress_delta'), dict) else 'NONE'}`",
+     |                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1930 | …
+1931 | …
+     |
+
+E501 Line too long (110 > 100)
+    --> orchestrator/spine.py:2268:101
+     |
+2266 |     lines = [
+2267 |         f"- collection: `{semantic.get('collection', 'q3_docs')}`",
+2268 |         f"- mode / status: `{semantic.get('mode', 'unknown')}` / `{semantic.get('status', 'NOT_VALIDATED')}`",
+     |                                                                                                     ^^^^^^^^^^
+2269 |     ]
+2270 |     for plant in semantic.get("plants", []):
+     |
+
+E501 Line too long (105 > 100)
+    --> orchestrator/spine.py:2564:101
+     |
+2562 |     )
+2563 |     ap.add_argument("--refresh", action="store_true",
+2564 |                     help="write the complete sensor/index refresh before validation and Spine rendering")
+     |                                                                                                     ^^^^^
+2565 |     ap.add_argument("--reason", default="manual",
+2566 |                     help="audit label only; not written into the deterministic view")
+     |
+
+Found 13 errors.
+[*] 1 fixable with the `--fix` option.
+```
+
+### Chat-repair Mode A acceptance and integration/application INTENT — 2026-09-11T16:01:27+02:00
+
+Same sole checker revisedPASS1 CLEAN and revisedPASS2 CLEAN on unchanged patch36754bytes/6c4753e6d823d5e7061a66935c2b43c0898bc0be192b0f66f40bc961f7df7bb0. Prior HIGH fixed/retested; zero unresolved substantive, FIRST_INCORRECT_ASSERTION NONE. Parent original-conflict/later-review controls agree; source141tests and scoped22tests pass. Full source baseline hashes: spine84f68bae42b006ca064083219527b243f5b52fa1b963864b5d75312909ccace1, tests4dabfc19e8411cbcf6b63649f38332cc5eb3418ec2690b2f2a51d14e16f0d3d4, TOOLS80d9dcb4c9e4a2fd002fdad7f20046e6c696e63850a62e9007d16ab1756bca8e. Candidate spine920c3036/testb486d922/TOOLSad552a0e full hashes in revised manifest above. Refactor owner agreed disjoint TOOLS hunk; existing shared preimages verified unchanged.
+
+INTENT SLACK_CHAT_REPAIR_APPLY_20260911: integrate exactly3reviewed paths under writer lock/preimage checks. Then canonical plan and registered spine --record-slack-manual-review once to runtime98765b57e597a9efcc8bf68cdc47970e0b8b5ad5178cc2d2e96b200780ad2740; verify actual handle/7-52,4-2-3,all6keys/old events and exact replay no-op. No phase opening, resend or proof admission. Event 1601bytes/SHA25639cb0bd047a94010b2c4c86b106012179da721964afe706af3fe26c0d68bf711:
+```json
+{
+  "acceptance_pin": {
+    "blob": "ce8845cd30512411fe313fa4817bc0c2968a0d43",
+    "commit": "8a463c090d0c1d28568c05fe67f4891287e1405f",
+    "path": "docs/routeB_bus/SLACK_INDEPENDENT_CHECK_2026-09-11.md",
+    "sha256": "cc018a16189d53bc556471c773b3fca9f6fdbed620e61e3f59a078322f9a2f3d"
+  },
+  "expected_runtime_sha256": "98765b57e597a9efcc8bf68cdc47970e0b8b5ad5178cc2d2e96b200780ad2740",
+  "observation_pin": {
+    "blob": "099b30409f8f52f0f87b889902509bb104cb617f",
+    "commit": "8a463c090d0c1d28568c05fe67f4891287e1405f",
+    "path": "docs/session_protocols/SESSION_PROTOKOLL_2026-09-11_CODEX.md",
+    "sha256": "1989c97525c3dd55ab9334ed0ec231008186b52080f19c65f68aabf1ecc46011"
+  },
+  "receipt_pin": {
+    "blob": "e0d469e7467029af51f449153eb4aa0de83affd3",
+    "commit": "8a463c090d0c1d28568c05fe67f4891287e1405f",
+    "path": "docs/routeB_bus/PROSHKA_QUEUE.md",
+    "sha256": "61e4156989e1a2c654552c91781093d603dfcaaecef8a82a8818b42ade683f2b"
+  },
+  "repair_id": "REQ-2026-09-11-SLACK",
+  "request_pin": {
+    "blob": "1bb6a64ca93430b52142071150fa2e6e36ce4520",
+    "commit": "d92fd17e78b28fe93939e6b94becf1b90c68dddc",
+    "path": "docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SLACK_2026-09-11.txt",
+    "sha256": "7cbb8da692f7603b66995dfafbc2ec483e05927f9331903db9b540e6d49638da"
+  },
+  "verdict_pin": {
+    "blob": "ac3504f3e44b0442fc50c95fe1a095aea57cd7dc",
+    "commit": "e8a95fac36dec2aea50c71a6bdf5fc7deffd4152",
+    "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SLACK_2026-09-11.md",
+    "sha256": "1d658eb3d6d828d3bc651967087dabf8e2f9774d179b02c7607f25c7ffe54588"
+  }
+}
+```
+
+### Registration ordering correction and named code commit INTENT — 2026-09-11T16:03:25+02:00
+
+Exact reviewed3files integrated successfully. Parent then wrongly attempted runtime application before committing the changed declared TOOLS surface. Canonical plan returned FATAL STARTUP_DECLARED_SURFACE_BLOB_DRIFT:docs/cartographer/TOOLS.yaml and STARTUP_RELEVANT_DIRTY_PATHS:docs/cartographer/TOOLS.yaml; registered CLI independently rejected with PHASE_RECORD_STARTUP_FATAL, no runtime write. Its guard worked. Execution ordering, not code, corrected: commit reviewed3file registration first, rerun canonical plan, then retry the authenticated event (the failed call was observed terminal/no-write). No weakening of startup or blanket owned-surface exemption.
+
+PUBLISH_INTENT SLACK_CHAT_REPAIR_CODE_REGISTRATION_20260911: local named3file commit from HEAD8a463c090d0c1d28568c05fe67f4891287e1405f, message [Codex][rh_clean][SLACK] Reconcile observed manual chat with replay integrity. No other paths staged. Same isolated reviewed exact bytes,141testsPASS/two clean reviews; full metadata:
+```json
+{
+  "orchestrator/spine.py": "920c303635a998f1ad31a2c2002ccab6fc71ed73297857573b34f1cb87edb85e",
+  "orchestrator/tests/test_channel_runtime_writer.py": "b486d9223923cd8af1fdaffaae45c4938092b44b14ac451ead551f321a312a8e",
+  "docs/cartographer/TOOLS.yaml": "ad552a0e89e1e502262fb1067a6f11777d7f9b5037f8586f463a05185b9de062"
+}
+```
+Runtime preimage remains98765b57. Ordinary remote publication follows complete verified intake/maintenance, separately; this local registration is not a proof claim or runtime acceptance.
+
+### SLACK runtime successor observed; registration commit INTENT — 2026-09-11T14:09:26.809353+00:00
+
+Code registration f342494ed17a4478ae7ef667d1a3ad48fb136ef2 verified at recovery; canonical plan fatal_errors=[] with production HOLD unchanged. Registered writer returned exit0 CHANNEL_RUNTIME_SLACK_MANUAL_REVIEWS_RECORDED=1. New runtime SHA2562170b46949ccd5b4ed5ad5dd0b128a7b7417b93e42f75ae8f477d36ea63db1f2. Parent exact successor assertions PASS: actual manual chat6aa3e75b, phase7/global52, fresh4/forced2/phases3; all6phase keys/phase ID and old review events unchanged; unrelated top-level fields unchanged. Original operation succeeded; do not repeat as though missing.
+
+The subsequent exact CLI replay failed before entering the reconciliation function: PHASE_RECORD_STARTUP_FATAL with STARTUP_DECLARED_SURFACE_BLOB_DRIFT and STARTUP_RELEVANT_DIRTY_PATHS for orchestrator/state/CHANNEL_RUNTIME.json. Runtime bytes remain the exact successful successor. This is the same declared-surface registration ordering boundary, not proof that the successor failed or reason to weaken startup. RESUME writer is likewise blocked until declaration bytes are committed; its previous revision33 INTENT remains historical.
+
+INTENT SLACK_RUNTIME_RECORD_COMMIT_20260911: commit exactly orchestrator/state/CHANNEL_RUNTIME.json at the above SHA256 from HEADf342494e, message [Codex][rh_clean][SLACK] Record verified manual review and actual chat. Writer was already reviewed twice on unchanged code; actual generated successor matches reviewed event, pins, predecessor/archive and counters. No proof admission, new phase/chat/send or foreign staging. After local registration rerun canonical plan, exact CLI NOOP and checkpoint confirmation; then batched publication.
+
+### Runtime reconciliation confirmed — 2026-09-11T14:12:20.103893+00:00
+
+Local runtime commit5ea316241f7d6e75d504b575f341d3923fce7df1 contains exactly the generated CHANNEL_RUNTIME.json successor2170b469. Post-commit canonical plan exit2/HOLD but fatal_errors=[]; registered exact CLI replay exit0 CHANNEL_RUNTIME_SLACK_MANUAL_REVIEWS_RECORDED=0 and byte-identical runtime. Sole owner native agents both DONE; independent review is not repeated. RESUME revision34 saved0839bd04 with confirmed application. Next ONE batched semantic refresh after queue issue-resolution updates; no migration repeat. Observer has appended a foreign alias-hunt section to CHAT_DIGESTS; only own prior OC2 section will be staged. Its other literature/skill/refactor bytes remain excluded and unreviewed by this owner.
+
+### OC2-only maintenance intent and durable recipe
+
+One background run after final indexed writes; no old migration/refresh repeated. Unique terminal marker OC2_PROCESS_EXIT; full output appended to existing phase5_codex/out/slack_intake_20260911.log. No mathematical computation.
+```python
+from pathlib import Path
+import subprocess,time,sys,traceback
+ROOT=Path('/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean')
+sys.path.insert(0,str(ROOT))
+from orchestrator.workflow_runtime import _execution_writer_epoch
+started=time.monotonic()
+try:
+ with _execution_writer_epoch(ROOT) as epoch:
+  print('OC2_MAINTENANCE_20260911_BEGIN',flush=True)
+  print('RECIPE_BEGIN\n'+Path(__file__).read_text()+'RECIPE_END',flush=True)
+  for cmd in (['python3','orchestrator/spine.py','--refresh','--reason','semantic-index-refresh'],['bash','specs_docs/session_start.sh']):
+   begin=time.monotonic();print('OC2_START',cmd,flush=True)
+   r=subprocess.run(cmd,cwd=ROOT)
+   print('OC2_STAGE_EXIT',r.returncode,'SECONDS',round(time.monotonic()-begin,3),flush=True)
+   if r.returncode:raise RuntimeError('stage failed: '+str(cmd))
+   epoch.recheck()
+  print('OC2_TOTAL_SECONDS',round(time.monotonic()-started,3),flush=True)
+  print('OC2_PROCESS_EXIT=0',flush=True)
+except BaseException:
+ traceback.print_exc();print('OC2_PROCESS_EXIT=1',flush=True);sys.exit(1)
+```
+
+### OC2 maintenance verified and scoped publication INTENT — 2026-09-11T14:17:02.688414+00:00
+
+BackgroundPID973428/starttime11591287 completed OC2_PROCESS_EXIT=0 in125.278s; refresh111.516s, session_start13.761s/exit0. Component timings: builder19.355s,dynamic51.574s,fixed32.816s; source receiptPASS, final ask OC2 exit0/HITS with all enabled providers complete. Only ONE new refresh after OC2/queue edits. Exact report26607bytes/b98b2c1d and unchanged22727byte published prefix verified; database integrity ok; prior113/113 migration not rerun. Runtime2170b469 same-byte CLI NOOP and production HOLD preserved. Full log including recipe and search receipt: docs/routeB_bus/phase5_codex/out/slack_intake_20260911.log.
+
+PUBLISH_INTENT SLACK_OC2_RECEIPTS_20260911: named own report, Progress_Log, OC2-prefix-only CHAT_DIGESTS, PROSHKA_QUEUE, knowledge.db, INSTRUCTION_ISSUES closure, existing maintenance log, AGENTS_LEDGER, RESUME/GOAL_HISTORY and session protocol. Code/runtime5ea31624 includes parentf342494e to publish normally to existing origin/rh_clean. Foreign alias-hunt CHAT_DIGESTS suffix/card/PDFs/REFERENCES/bib and TEAM_RUNTIME_REFACTOR_PLAN remain byte-preserved and unstaged. Do not claim their verification or send a new Proshka request. Exact selected source manifest follows; checkpoint/archive and this audit log record their own transition rather than a self-referential hash.
+
+```json
+{
+  "docs/CHAT_DIGESTS.md (owned prefix only)": "4b31e3b6145d0b01b7324f484f4dd1662349785f7922fd0771d35e0647087662",
+  "docs/Codex/AGENTS_LEDGER.md": "4825a0a612fb9c32d1eab83b4669ff5b708b00c473737412e1fcf0ca63409d3e",
+  "docs/INSTRUCTION_ISSUES.md": "a2eea0f4c2120f24c193b8ac780242454b2d80f428c5d4743577ff65600e87d2",
+  "docs/Progress_Log.md": "ec55902ed939f6eb95d1c5a0835b16bb31c0fe26090df13ca56de6f37924ca4a",
+  "docs/routeB_bus/PROSHKA_QUEUE.md": "4b846c5d58d556e3e7457957dc8bda841b6d925fd63bf22dec4097f027158ae2",
+  "docs/routeB_bus/SLACK_INDEPENDENT_CHECK_2026-09-11.md": "b98b2c1d8ae5b66cc6577a5c1ea19ea95044adf415198a4c92745e3b30c886bb",
+  "docs/routeB_bus/phase5_codex/out/slack_intake_20260911.log": "a1130d7df71789c9a49ad021dca2bb2c1559db08729b14d20506f0d2695d905f",
+  "q3.lean.aristotle/aristotle_db/knowledge.db": "aeb472e3ca8d4ce6b44a9a6b15d15398b2e91ecff8677525fddc5887ea4e1edb"
+}
+```

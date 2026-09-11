@@ -1,14 +1,14 @@
 ---
 schema: q3_resume.v1
-revision: 23
-observed_at: '2026-09-11T14:59:12+02:00'
-previous_sha256: 9343754a7158c06be526e4375389a71c209387bc967b39274c006f1bfd478798
+revision: 36
+observed_at: '2026-09-11T14:17:02.688414+00:00'
+previous_sha256: 8ef368202b96faea1851cd89b5e5c76c76b24a9ee16455a7b559ac59d8b50a76
 owner_thread_id: 01a084f4-7498-7021-bac2-91d184d58dc7
 owner_host_id: local
 reconciliation_pending: false
 recovery_from: null
 pins:
-  head: e8a95fac36dec2aea50c71a6bdf5fc7deffd4152
+  head: 5ea316241f7d6e75d504b575f341d3923fce7df1
   physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
   source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
   request_id: REQ-2026-09-11-SLACK
@@ -22,112 +22,98 @@ stages:
 operation:
   kind: PUBLISH
   state: INTENT
-  id: SLACK_INTAKE_PUBLISH_20260911
+  id: SLACK_OC2_RECEIPTS_20260911
   evidence:
-  - Basee8a95fac36dec2aea50c71a6bdf5fc7deffd4152. Exact named-path manifest in session
-    protocol; original SLACK verdict unchanged. Foreign TEAM_RUNTIME_REFACTOR_PLAN
-    excluded.
-  - Reviewed report prefix620e5176 unchanged, receipt-only final reportcc018a16; partial
-    PAPER acceptance complete. All1919old journal rows/schema preserved, exact new
-    row verified.
-  - Background PID763264 terminal0,total171.712s, refresh157.589s/startup14.122s/0.
-    Complete log docs/routeB_bus/phase5_codex/out/slack_intake_20260911.log includes
-    recipe and final ask OC1 HITS/COMPLETE_REGISTERED_SHELF.
-  - 'One bridge heartbeat remains ACTIVE/10min; no live math checker/numerical job.
-    Scope: named local commit and exact commit nonforce push origin/rh_clean; preserve
-    foreign bytes.'
+  - Base5ea316241f7d6e75d504b575f341d3923fce7df1 includes reviewed codef342494e/runtime2170b469.
+    Named exact source manifest in SESSION_PROTOKOLL_2026-09-11_CODEX.md final publication
+    intent; checkpoint/archive audit records added by registered writer.
+  - Publish own report/progress/OC2-digest-prefix/queue/knowledge.db/issue closure/log/ledger/checkpoint/history/protocol
+    to origin/rh_clean; exclude all foreign literature/refactor bytes.
+  - Maintenance PID973428 completed125.278s (refresh111.516/session13.761 exit0);
+    final ask OC2 HITS/all providers complete. Full durable log includes script, result
+    and search receipt. No repeated migration/old tests.
 ---
 # Current continuation — observations, not authority
 
 ## Mathematical frontier
 
-Original all-complex-compact Q sign SL20 remains unproved. Production HOLD
-NODE_REGISTRY_EXACT_EDGE_REQUIRED, fatal_errors=[]; CHALLENGER_NOT_RH;
-PX_RH_CLAIM NOT_MADE. Sole checker accepted SLACK partial PAPER transfer,
-Csordas exact supplier and OD1 in full verdict review. OC1 now gives an exact
-noncanonical obstruction to promoting strict squared-coordinate concavity
-and positive odd entries to the full odd form. Report with OC1 accepted after revised PASS1/PASS2 CLEAN; receipt §8.
+Original all-complex-compact Q sign SL20 remains UNPROVED. Production HOLD
+NODE_REGISTRY_EXACT_EDGE_REQUIRED; canonical plan fatal_errors=[].
+CHALLENGER_NOT_RH; PX_RH_CLAIM NOT_MADE. SLACK partial PAPER transfer accepted;
+Csordas2015 supplies SL23/SL24 by exact termwise normalization, not point samples.
+Both scalar concavities and positive kernel entries leave the full form sign unpaid.
 
 ## Confirmed and candidate results
 
-FLOW S1-S7 published9eea40f1/3fcf7759; report
- docs/routeB_bus/FLOW_INDEPENDENT_CHECK_2026-09-11.md,
-46685bytes/sha17bd247cc4c995a239e22136cb3ba899c0c20d337e8ec1cff49cd65b440c533f.
-SLACK request15912bytes/81LF atd92fd17e78b28fe93939e6b94becf1b90c68dddc,
-blob1bb6a64ca93430b52142071150fa2e6e36ce4520,
-sha7cbb8da692f7603b66995dfafbc2ec483e05927f9331903db9b540e6d49638da;
-binding9005b347. Verdict e8a95fac published, exact receipt in operation.
-Original path docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SLACK_2026-09-11.md.
-Sourcebase3fcf7759342ea41ef9a46de2597f0a6187f1931d; all four complete shelf
-pairs and request lock freshly rehashed PASS. Protocol holds intake/controls.
-
-Owner relayed observer literature work; new dirty litreview/probe/CHAT_DIGESTS
-bytes identified as that work, not refactor delegate. Csordas local PDF
- docs/routeB_bus/litreview/pdfs/1309.0055.pdf,
-sha333c28bbdea9a7a7a2d63feb73838151149848b7d8fd7f4da965e42fd0447bef:
-parent read pages10-12, eq4.2/Thm4.2(b)/Remark4.3(a). Exact termwise
-Phi_ours(x)=2Phi_C(x/2); J_f(x)=2/A^2 J_PhiC(x/2)>0.
-This supplies SL23 and reflection-diagonal SL24, not full SL20.
-Original1988proof RELAY; new2026second-level paper not a needed premise.
-Observer14point probe not rerun or used as proof. One checker to verify transfer.
-Fresh ask.sh log-concave HITS/COMPLETE_REGISTERED_SHELF, corpus
-0c781e99335db2d6e453164181994cecdd715d2b2571698084688ed4b8e6ddb8;
-observer refreshed; do not repeat unchanged refresh.
+Request REQ-2026-09-11-SLACK at d92fd17e78b28fe93939e6b94becf1b90c68dddc,
+15912bytes/81LF/finalLF, blob1bb6a64ca93430b52142071150fa2e6e36ce4520,
+sha2567cbb8da692f7603b66995dfafbc2ec483e05927f9331903db9b540e6d49638da.
+Binding9005b347; verdict e8a95fac36dec2aea50c71a6bdf5fc7deffd4152,
+49446bytes/657LF, sha2561d658eb3d6d828d3bc651967087dabf8e2f9774d179b02c7607f25c7ffe54588,
+blobac3504f3e44b0442fc50c95fe1a095aea57cd7dc. Original bytes unchanged,
+request lock/all4source pairs at3fcf7759342ea41ef9a46de2597f0a6187f1931d PASS.
+Report docs/routeB_bus/SLACK_INDEPENDENT_CHECK_2026-09-11.md now26607bytes,
+sha256b98b2c1d8ae5b66cc6577a5c1ea19ea95044adf415198a4c92745e3b30c886bb.
+Published prefix22727bytes/cc018a16 at8a463c09 unchanged. OC2 appendix2534bytes/
+b8e5555091285ced14dc17542174499b40e01fae3ae40341dc289c360d0a74b0 accepted
+by same sole Terra/xhigh checker PASS1/PASS2 CLEAN and parent exact derivative rerun.
+Csordas2015 p11 Thm4.2(b)/Remark4.3(a): Phi_ours(x)=2Phi_C(x/2),
+J_f(x)=2/A² J_PhiC(x/2)>0. Original1988 RELAY, Planat-Sole certificates unaudited.
+For s(t)=f(sqrt(t)), q=s'^2-ss''=J_f(sqrt(t))/(4t^(3/2)), not literally J.
+OD1: V(x,y)>V(x,-y) for x,y>0; not full form positivity.
+OC1 same noncanonical fc(x)=exp(-x²)(1+3x²/10+x⁴/25) has negative odd form:
+det=-279/390625, vector(3,-1)=-3/2500, full four-point=-3/1250,
+retained under compact smoothing. OC2: q_c=exp(-2t)(8t²+60t+25)/2500>0;
+(log q_c)''=-(128t²+960t+3200)/(8t²+60t+25)²<0 for all t>=0.
+Only insufficiency of these TWO scalar conditions is proved; no exclusion of
+actual theta ENV/SL10, article's complete class, or RH follows.
 
 ## Next action
 
-Complete/check existing SLACK_INTAKE_PUBLISH_20260911 commit and exact-ref push;
-inspect history/remote before retry. All intake reviews/migration/maintenance DONE.
-Then minimal runtime actual-chat reconciliation at exact preimage98765b57,
-using existing spine.py/test_channel_runtime_writer.py and registered entry;
-refactor owner confirms this is outside its isolated worker scopes. Review the
-repair before shared application; do not fake old chat or change mathematical
-phase. Once reconciled, next theta-specific question must exclude OC1 and pay
-full arbitrary-coefficient parity forms. IF_A: explicit additional source
-relation -> cheapest exact test; IF_B: merely renamed SL20 -> record unpaid
-operator inequality. No automatic grid, fresh goal or repeated SL23 test.
+Maintenance DONE125.278s/session_start0/askOC2 HITS. Continue named
+OC2/operational receipts commit and ordinary push including f342494e/5ea31624.
+Do not repeat earlier migration or171.712s refresh. Preserve foreign literature
+and stage only our OC2 prefix of shared CHAT_DIGESTS (observer added a later section).
+Then prepare a single source-specific question about BOTH full parity forms/all
+complex coefficients, requiring a property that excludes OC1/OC2, not scalar
+concavity again. No next request created/sent yet. IF_A concrete signed identity ->
+cheapest exact/control test; IF_B renamed SL20/difference -> exact unpaid inequality,
+no automatic window campaign. Prior0.30 for useful additional relation, not RH.
 
 ## Existing work
 
-Math owner01a084f4-7498-7021-bac2-91d184d58dc7/local. Last native list only/root;
-old flow_verdict_check completed request audit. Checker DONE: full audit plus revised OC1 report two CLEAN exact passes.
-No observed calculation job. One bridge heartbeat/Q3 — продолжение работы
-retained10min, target math owner; real prior scheduled wakes verified.
-Browser recovered after user app restart; live IAB1/tab1 chat6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
-now completed SLACK with original downloadable verdict and publication receipt.
-No resend. Native idle previously missed analysis.
-
-Refactor owner01a08f80-f033-7a31-8f3a-3aef042a3fbc authorized by owner for implementation.
-Only its TEAM_RUNTIME_REFACTOR_PLAN file in shared tree; plan audits reported
-complete. Its candidate does NOT repair the observed manual chat mismatch. Isolated candidate clone/test preparation coordinated, no shared
-runtime/control/checkpoint/ledger/issues integration until exact diff/hash
-manifest and specific safe writer boundary. No math takeover. Its current
-broad manifest is proposal only. Preserve observer literature/probe bytes.
-
-Runtime last observed phase6/global51, pending_action null,
-last adjudicated cf34b947ba1570ab5c19ee2803ff71017f6c22b7.
-Canonical chat still6aa24f25-0934-83eb-9151-3565fc4b3379; owner created/used6aa3e75b.
-Exact attachment tile not observed; manual byte-exact LINE and processed
-request/committed verdict observed. Reconcile transport separately, no invented
-phase. Six keys unchanged: RouteB_TwoLevelSpectralLadder /
-GOAL058_SECOND_EXPRESSION / CANONICAL_TEST_SIGNED_DIRICHLET_FORM /
-published_Weil_criterion_on_all_complex_compact_smooth_tests /
-CHALLENGER_NOT_RH / GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED.
+Owner01a084f4-7498-7021-bac2-91d184d58dc7/local; bridge heartbeat ACTIVE10min,
+agent necessity20min, retained. SLACK worker and sole checker DONE; no math job.
+Code patch6c4753e6 reviewed twice CLEAN after HIGH fixed;141tests PASS,
+ruff13baseline-only. Code published locally f342494e before writer application.
+Actual event application returned1; runtime registered locally5ea31624; exact
+CLI replay returned0/no-op. Source registration precedes startup/replay; never
+weaken gates for dirty declared surfaces. Current runtime2170b469 at actual
+chat6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59, message57e6f47f-d70f-4281-97fb-3f2b7641563d,
+phase7/global52/fresh4/forced2/phases3;last adjudicatede8a95fac. All6phase keys,
+phase ID and old review events preserved. attachment_tile_observed=false.
+Browser tools live after app restart; completed SLACK, no new send/transport failure.
+Refactor owner01a08f80-f033-7a31-8f3a-3aef042a3fbc knows f342494e, works isolated,
+no shared integration boundary granted. Its alias-hunt skill work is separate;
+observer's Biane-Pitman-Yor candidate branch not duplicated or assumed verified.
 
 ## Do not repeat
 
-FLOW/S1-S7, K36/K48, central2493, F25-160 and old verdict reviews are done.
-No scalar renamed T, entrywise-to-form positivity, bounded inverse G/F_h,
-finite-prime global positivity, fixed Gaussian reserve or assumption SL20.
-Do not rerun SL23 numerics: exact literature supplier read.
-No bulk reset/stash/add-all/force push, no foreign-plan publication, no new
-phase/chat/goal/watch. Missing receipt never automatic redispatch.
+FLOW/S1-S7,K36/K48,central2493,F25-160,SLACK/OD1/OC1/OC2 reviews and exact tests
+DONE. Do not rerun SL23 numerics; no scalar/entrywise-to-form inference, bounded
+G/F_h inverse, finite-prime global positivity or fixed Gaussian reserve.
+No reset/stash/add-all/force-push/deletion/foreign staging/new phase/chat/watch.
+Missing receipt means inspect original action, never automatic replay.
 
 ## Integration remaining
 
-SLACK original published; independent review/parent check/PAPER acceptance DONE;
-local report publication pending after one maintenance run. Observer card+refs/bib/PDF/probe/CHAT_DIGESTS
-uncommitted; check exact scope before including any supplied artifacts.
-Own checkpoint/ledger/issues/protocol dirty preserved. Queue/journal migration DONE; final maintenance INTENT above.
-Search cost issue remains mandatory preflights; incremental fixes72c59971/
-53a4a87a stand. Refactor candidate integration awaits exact coordinated boundary.
+Maintenance DONE125.278s/session_start0/askOC2 HITS; log exact in protocol.
+OC2 branch migration DONE: branch_2026-09-11_397a356ff29c,
+artifact52295c6feab9b1d2f9e1695f2e223108456af31c0c605c7677e845fa25bd5d2e;
+1920oldjournal rows/schema preserved; censusPASS113/113. OC2/own journal/runtime
+receipts still need remote publication. Existing maintenance output area/log:
+docs/routeB_bus/phase5_codex/out/slack_intake_20260911.log.
+Foreign unreviewed: TEAM_RUNTIME_REFACTOR_PLAN, source-card correction row,
+REFERENCES/bib,4PDFs2602.20313/2007.12889/math_9912170/2301.00421,
+SL20_ALIAS_HUNT_USAGE_CARDS and observer's final CHAT_DIGESTS section. Preserve,
+exclude from our commit; do not claim their article bodies verified.
