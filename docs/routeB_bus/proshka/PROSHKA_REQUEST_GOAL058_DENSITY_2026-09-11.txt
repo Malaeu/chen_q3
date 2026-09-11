@@ -1,0 +1,83 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-09-11-DENSITY
+BOUNDARY_ID: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+CANONICAL_SHORT_INSTRUCTION: Use the exact theta probability law and its positive convolution identity to construct and prove positivity of the full V kernel on all complex coefficient vectors; retain the logarithmic tilt, both parity forms and every remainder, or return a new precise obstruction after a concrete repair.
+DATE: 2026-09-11
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SECOND_EXPRESSION
+SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+REVIEW_BOUNDARY: PAPER_PROOF_CONSTRUCTION_AND_ADVERSARIAL_REVIEW
+AUTHORIZED_WRITE_SCOPE: VERDICT_DOC_ONLY
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_DENSITY_2026-09-11.md
+BASE_TIP: 659f389caf5e6ce7a354e7e8e804fc0e26259949
+
+0. WHAT CHANGED; PINNED SHELF
+SOURCE_BASE: 659f389caf5e6ce7a354e7e8e804fc0e26259949
+Continue the SAME living chat6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59 and unchanged six-field phase. Your SLACK gives an exact full-kernel transfer but leaves SL20 open. Its proposed scalar test is supplied by published Csordas. Codex proved the stronger off-diagonal entry comparison OD1, then found an exact negative full odd control satisfying BOTH scalar concavity levels. The new source reading identifies a fixed probability law and a positive Volterra identity which exclude that original control; a scaled control shows that even matching the canonical mean does not suffice. The new input is the ENTIRE actual law, not another scalar test or renamed SL20. Spend the batch constructing the full sign from this input, not repeating the already completed intake.
+S: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SLACK_2026-09-11.md | commit=659f389caf5e6ce7a354e7e8e804fc0e26259949 | blob=ac3504f3e44b0442fc50c95fe1a095aea57cd7dc | SHA256=1d658eb3d6d828d3bc651967087dabf8e2f9774d179b02c7607f25c7ffe54588 | bytes=49446
+R: docs/routeB_bus/SLACK_INDEPENDENT_CHECK_2026-09-11.md | commit=659f389caf5e6ce7a354e7e8e804fc0e26259949 | blob=de9578084446baecfbb2a316d7bda3da817c8c01 | SHA256=14e98d5544783927c54b41769714675ff2027a15e0a822bb5dabf4b069d379dc | bytes=37796
+P: docs/routeB_bus/litreview/pdfs/math_9912170.pdf | commit=659f389caf5e6ce7a354e7e8e804fc0e26259949 | LFS-pointer-blob=188e40b0e1153f629d5fe64b71b8644e4db43c21 | PDF-media-SHA256=04a444275e5522cef9a1ba9f7d1b9f20a752764d3548f9c48be6dbc055bb12ea | PDF-media-bytes=351648 | version=arXiv:math/9912170v1, local recompile dated November26,2024; original paper1999/2001 | read-scope=pp3-7,10-14; p7 rendered
+B: docs/BATCH_PATTERNS.md | commit=659f389caf5e6ce7a354e7e8e804fc0e26259949 | blob=cb63bab5fbff3d39bf63c0b0f081a2264e004f2b | SHA256=cded6dfd5950fd8dd230ad770ff0cf4a50a5bea9b2d5e91601b8eaa76120903b | bytes=11341
+S is your unchanged SLACK paper derivation (including its exact original-source conventions, domain/transfer, SL3 obstruction and SL20). R is the independent acceptance, OD1/OC1/OC2 and BP1-BP5 source-transfer/control report. P is the exact local recompiled arXiv:math/9912170v1 PDF: use its printed pages and equations, not an assumed publisher edition. R states which pages were read and which original citations remain RELAY; no whole-paper audit is claimed. B fixes mandatory sections9/10 below. All earlier paper derivations remain PAPER_DERIVATION_TO_RECHECK, not axioms. The LFS pointer blob for P and the full PDF bytes are different objects; verify the media bytes against the displayed PDF SHA256. Do not report a pointer's hash as the PDF's hash.
+
+1. FIXED SOURCE, DOMAIN AND ALL-TEST CONSUMER
+Use physical dx, complex tests and antilinear-first forms. f=Phi/A, A=||Phi||_2>0; Phi(x)=exp(x/2)sum_(n>=1)(4pi^2n^4exp(4x)-6pi n^2exp(2x))exp(-pi n^2exp(2x)). Phi is positive/even; Fg(z)=int_R g(x)exp(-izx)dx; Ff(z)=xi(1/2-iz)/A. A is NOT xi(1/2); f is not silently normalized as a probability density.
+Original Q(g)=int_0^infty alpha(t)||g(.+t)-g||_2^2dt-c_A||g||_2^2+2Re(M_+(g)conj(M_-(g)))-2sum_(n>=2)w_n Re int conj(g(x))g(x+log n)dx, where alpha(t)=exp(-t/2)/(1-exp(-2t)), c_A=gamma+log(8pi)+pi/2, M_+/-=int g(x)exp(+/-x/2)dx and w_n=Lambda(n)/sqrt(n). Preserve both poles and every prime power through the accepted source transfer.
+The kernel is V_f(x,y)=int_0^infty(x+y+2t)f(x+t)f(y+t)dt, H_2(x,y)=exp(2(x+y))V_f(x,y). S SL1-SL14 pays the exact transfer: full positivity on every finite real node set and all complex coefficients is equivalent to SL20 on all complex compact smooth tests, hence the original all-test Q sign. Recheck the limits you actually use; do not assume a globally bounded inverse G/F_h or an L2 realization of Q. For V_+(x,y)=V(x,y)+V(x,-y) and V_-(x,y)=V(x,y)-V(x,-y), x,y>0, BOTH full parity forms are needed. Positive entries or one parity/common-phase cone do not suffice. The target's equivalence to RH is not a circular premise; using an equivalent positivity/zero theorem as an assumption is.
+
+2. THE ADDITIONAL EXACT SOURCE LAW
+P equations6/8/14-19 and Proposition1 equations21/24/25 give T=Y^2=(1/pi)sum_(n>=1)Gamma_(2,n)/n^2 with independent Gamma(2,1) variables, each the sum of two independent unit-rate exponentials. The series is finite almost surely because E T=pi/3. If r is the probability density of T, then
+L(z)=E exp(-zT)=prod_(n>=1)(1+z/(pi n^2))^(-2)=(sqrt(pi z)/sinh(sqrt(pi z)))^2, z>=0,
+r(t)=2sum_(n>=1)(2pi^2n^4t-3pi n^2)exp(-pi n^2t), r(1/t)=t^(5/2)r(t),
+Phi(x)=exp(5x/2)r(exp(2x)).
+The probability law of X=(1/2)log T after the tilt T^(1/4)/E[T^(1/4)] has density Phi/I with I=xi(1/2), and f=(I/A) times that density. Infinite divisibility of T is not asserted for its tilted logarithm. Do not transport independent additive components through a nonlinear logarithm as though they remained independent additive components.
+Differentiation of the fixed Laplace product gives the positive Volterra identity
+t r(t)=int_0^t k(v)r(t-v)dv, k(v)=theta(v)-1=2sum_(n>=1)exp(-pi n^2v)>=0, int_0^infty k(v)dv=pi/3.
+R BP2 proves it by Tonelli, finite-measure Laplace uniqueness and continuity. Use the FULL fixed k/r relationship and reciprocal identity. E T=pi/3 or a generic nonnegative convolution kernel is not an equivalent usable substitute. P section3.1 offers the Levy representation; later probabilistic characterizations can be explored only with their precise hypotheses/proof status.
+
+3. EXACT FALSE-POSITIVE CONTROLS
+R proves OD1: V(x,y)>V(x,-y) for x,y>0 from strict concavity of log f(sqrt(t)). The SAME noncanonical fc(x)=exp(-x^2)(1+3x^2/10+x^4/25) satisfies this concavity and q_c(t)=s_c'(t)^2-s_c(t)s_c''(t)=exp(-2t)(8t^2+60t+25)/2500>0 with (log q_c)''=-(128t^2+960t+3200)/(8t^2+60t+25)^2<0. Nevertheless its positive-entry odd2x2 matrix after Gaussian congruence has determinant-279/390625, value(3,-1)=-3/2500, and the full odd value on nodes(1,2,-1,-2), coefficients(3e,-exp(4),-3e,exp(4)), is-3/1250. Compact smoothing retains negativity. This control is not actual theta and violates its double-exponential envelope/arithmetic coupling; no negative canonical Q is claimed.
+The correct inverse-density law rc(t)=t^(-5/4)fc((log t)/2)/(2Mc(-1/2)), with Mc(h)=sqrt(pi)exp(h^2/4)(h^4+42h^2+472)/400, obeys the same reciprocal symmetry, but E_c T=9145exp(1/2)/7721 differs from pi/3. The fixed Volterra law excludes this unscaled control.
+Do not weaken the new input to just its first moment: f_sigma(x)=fc(x/sigma) preserves both scalar concavity levels and reciprocity. Its inverse-density mean m(sigma)=Mc(3sigma/2)/Mc(-sigma/2) is continuous with m(0)=1 and m(1)>3/2, so some sigma_* in(0,1) gives m=pi/3. Yet V_f_sigma(sigma x,sigma y)=sigma^2 V_fc(x,y), and the same coefficients at the scaled nodes give-3sigma_*^2/1250<0. Root0.2609331907379936465689273867297892 and form-0.00016340671206890441602214442761193129 are diagnostics; existence/negative sign follow exactly from continuity/scaling. Neither this control nor its moment match disproves your possible full-law construction. Any proposed general theorem must identify and verify the additional hypothesis excluding the applicable controls.
+
+4. Q1 — CONSTRUCT AND PROVE THE FULL SIGN FROM THE ACTUAL LAW
+Build an exact source-defined factorization, coupling, operator inequality or positive-square expression for the full V form using the fixed product/Volterra law, and prove the sign for every finite real node set/all complex coefficients. One concrete route worth attempting is additive convolution or total positivity of the positive-variable density r, followed by a fully paid transport through the logarithm, tilt and halfline cutoff. If used, prove its precise version and its transfer; total positivity of r under additive translations is not total positivity of Phi under logarithmic translations. A generic positive-mixture statement cannot certify an arbitrary-coefficient form. This route is a candidate, not a supplied theorem or an imposed condition. A genuinely different source-specific construction is allowed after you name why it uses more than the failed scalar/moment data.
+The exact currently exposed mixed term is explicit. For finite real x_i and complex c_i let R(u)=sum_i c_i exp(5x_i/2)r(exp(2x_i)u) and S(u)=sum_i c_i x_i exp(5x_i/2)r(exp(2x_i)u). Then
+sum_(i,j)conj(c_i)c_j V_f(x_i,x_j)=1/(2A^2)int_1^infty u^(3/2)[(log u)|R(u)|^2+2Re(conj(R(u))S(u))]du.
+The first summand is nonnegative; the mixed summand's total sign is unpaid. This identity alone is not progress beyond R BP5. Derive a NEW paid source fact or a precise class obstruction while attempting to close its sign. Retain all mixed terms and tails, and the node-dependent cutoff if you change variables again. If your first construction fails, show its first false/unproved inequality, attempt one concrete repair preserving the target, and prove everything that survives. Do not spend the batch only re-proving BP1-BP5 or replying that the target is RH.
+
+5. REQUIRED LIMITS AND ACCEPTANCE BOUNDARY
+Spend most effort on complete lemmas and proofs. Finite gamma/prime/window truncations require a bound for EVERY coefficient vector and a proof of convergence on every fixed original complex compact smooth test. Fixed-parameter errors must not be reused uniformly for growing orders or node sets. Preserve both V_+ and V_- and the correct inverse/Fourier transfer. If a claimed positive-square map acts directly on original Q, respect S SL3: source-continuous and L2-continuous representations are different, and derivative/translate radical identities may forbid the latter. A kernel factorization with unpaid equality/limit is conditional, not complete.
+Q1/OVERALL is complete ONLY with the unconditional all-test sign, not the already known density identity, a narrow cone or an equivalent restatement. A partial response must give a new explicit source relation, paid region or proved obstruction for a stated construction class; isolate the FIRST remaining operator/integral inequality with exact domain, quantifiers, normalization and full remainder. Failure of one construction is not impossibility of all constructions.
+
+6. CLOSED WORK AND FROZEN PREDICTIONS
+Do not rerun SL23 point tests, OD1/OC1/OC2, the BP2 three-point identity check, K36/K48 shells, central2493, F25-160 or fixed finite radical-projection repairs to retained slack. All are accounted for. No new numerical campaign is requested. A next_decisive_test must discriminate a concrete new proposed identity/mechanism and state its cheapest observable and stop condition.
+Frozen content predictions before delivery, not proof probabilities or premises:
+P1(p=.95): the BP1 normalization/logarithmic tilt, BP2 positive convolution law and BP3b mean-matched negative control survive recheck at their exact stated scopes.
+P2(p=.90): two scalar concavities, reciprocal symmetry and E T=pi/3 alone do not pay the full sign; a successful method needs a stronger verified actual-source relation. This does not predict failure of the full-law approach.
+P3(p=.70): the response is PARTIAL_WITH_PRECISE_REMAINDER with a new proved source relation or precisely delimited construction obstruction after an attempted repair, beyond BP1-BP5. Try to refute this by proving the full target. Score each CONFIRMED/REFUTED/UNRESOLVED with exact locators. Diagnostic mean-matched control value above is not an interval claim.
+
+7. SOURCE AND WRITE BOUNDARIES
+Read pinned bytes and original normalizations; mark READ versus RELAY and disclose missing hash/proof checks. Write only EXPECTED_VERDICT_PATH as complete UTF-8 Markdown. No old-verdict, Lean, queue, runtime, registry or RH-claim edits. Ordinary commit/non-force push to existing rh_clean is authorized if supported, preserving concurrent changes. Otherwise immediately return the COMPLETE downloadable file with external byte/line/final-LF/SHA256/Git-blob receipt and explicit NOT_COMMITTED/NOT_PUSHED; do not leave a watch awaiting an unavailable push. A chat summary is not the verdict. No self-referential hash inside the hashed file.
+
+8. RESPONSE SCHEMA
+REQUEST_ID and BOUNDARY_ID; exact request lock and unchanged six-field phase; one TRY_*/KILL_*/RUN_* directive; RESULT Q1,OVERALL from PROOF_CANDIDATE_COMPLETE / PARTIAL_WITH_PRECISE_REMAINDER / ATTEMPT_REFUTED_WITH_EXACT_COUNTEREXAMPLE; VERIFIER:PAPER; ACTUAL_FULL_PROBABILITY_LAW_USED true/false; NEW_SOURCE_IDENTITY_PROVED true/false with its exact statement; BOTH_FULL_PARITY_FORMS_PROVED true/false; LOWER_SIGN_PROVED true/false; PX_RH_CLAIM:NOT_MADE. Full proofs/dependencies, FIRST_FAILURE for every incomplete claim, scope of every refutation, complete source/provenance limits, prediction scores and one next_decisive_test. External receipt states final bytes/hashes and actual commit/push status. No FULL result for just a probability identity or a restatement of SL20.
+
+9. PROSHKA'S OWN LINE (free form, no codes, no scoring; 20–40 lines):
+   (a) why this route and not the two nearest alternatives you considered;
+   (b) the two moves you see beyond this batch, and what would kill each;
+   (c) what you would ask us for, if you could ask (data, a probe, a definition);
+   (d) what surprised you in the shelf, and what you distrust in it.
+
+10. RESEARCH LOG (append to the verdict; no scoring):
+   (a) every source consulted this batch: locator (arXiv/DOI/URL + theorem/equation), one line: what was taken or why rejected; mark READ vs RELAY;
+   (b) every branch you tried and abandoned, one line each: the candidate, the first inequality or fact that killed it;
+   (c) intermediate identities or computations that failed but might serve another question, with their exact statement.
