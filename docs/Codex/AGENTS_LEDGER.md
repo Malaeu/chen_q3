@@ -205,3 +205,14 @@ gaussian_space_review / source_transfer_bound · DONE · prior scratch component
 2026-09-11T11:01:40+02:00 · flow_verdict_check · DONE; S1-S4 e53c5db7/final f8919d1a CLEAN/CLEAN, source point and portable scripts verified; preliminary LF/hash concern WITHDRAWN, not an unresolved finding. agents-watch DELETED; no live agents/watches/numerical jobs.
 
 2026-09-11T11:07:11+02:00 · reconciliation · sole flow_verdict_check DONE, agents-watch DELETED, all jobs terminal0; empty live-agent/watch set. Control-file handoff pending only named publication; no new math/agent/automation before refactor handback.
+
+2026-09-11T11:12+02:00 · resume_plan_review · gpt-5.6-terra/medium · bounded read-only checkpoint writer artifact audit, then final integrated review; owner task01a08f80-f033-7a31-8f3a-3aef042a3fbc · expected15min · result=severity findings/executable crash cases; no descendants · RUNNING. Plan passed CLEAN/CLEAN; math owner paused at9772e457.
+
+2026-09-11T11:26:43+02:00 · resume_plan_review · infrastructure DONE(CLEAN/CLEAN passes4/5,124tests/87subtests); same reviewer RUNNING final document/migration/watch artifact review, expected10min, read-only/no descendants, owner01a08f80-f033-7a31-8f3a-3aef042a3fbc.
+2026-09-11T11:26:43+02:00 · resume_cold_check · gpt-5.6-terra/medium · cold recovery test without conversation, four crash/idle scenarios, read-only/no descendants, expected10min · RUNNING; owner01a08f80-f033-7a31-8f3a-3aef042a3fbc. bridge ACTIVE10min on mathematical task, preserve pause.
+
+2026-09-11T11:37:34+02:00 · resume_plan_review DONE(infrastructure4/5 CLEAN/CLEAN; integratedI1/I2 CLEAN/CLEAN); resume_cold_check DONE(cold recovery PASS including4restart scenarios, scopedgit clarification checked). No running review agents required. bridge ACTIVE10min remains despite empty child list; actualscheduledwake pending after first15min window failed. Mathowner paused, refactorowner unchanged; no numerical jobs. Last owner agent-necessity check 2026-09-11T11:37:34+02:00.
+
+2026-09-11T11:48+02:00 · resume_plan_review · gpt-5.6-terra/medium · bounded review of GOAL§3 clarification on native genuine blocked threshold after observed ownership deadlock; read-only/no descendants, expected5min · RUNNING; owner01a08f80-f033-7a31-8f3a-3aef042a3fbc. Earlier full-code/integration acceptance remains valid for unchanged targets.
+
+2026-09-11T11:49:08+02:00 · resume_plan_review DONE(narrow native real-block rule two CLEAN passes). No live review agents; math goal genuinely blocked on external ownership handback after >=3 verified turns, objective unchanged. bridge remains ACTIVE; scheduled wake after statechange pending11:54:22. Agent-necessity check 2026-09-11T11:49:08+02:00.
