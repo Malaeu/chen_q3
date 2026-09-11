@@ -216,3 +216,5 @@ gaussian_space_review / source_transfer_bound · DONE · prior scratch component
 2026-09-11T11:48+02:00 · resume_plan_review · gpt-5.6-terra/medium · bounded review of GOAL§3 clarification on native genuine blocked threshold after observed ownership deadlock; read-only/no descendants, expected5min · RUNNING; owner01a08f80-f033-7a31-8f3a-3aef042a3fbc. Earlier full-code/integration acceptance remains valid for unchanged targets.
 
 2026-09-11T11:49:08+02:00 · resume_plan_review DONE(narrow native real-block rule two CLEAN passes). No live review agents; math goal genuinely blocked on external ownership handback after >=3 verified turns, objective unchanged. bridge remains ACTIVE; scheduled wake after statechange pending11:54:22. Agent-necessity check 2026-09-11T11:49:08+02:00.
+
+2026-09-11T12:08:07+02:00 · recovery closeout · root task01a08f80-f033-7a31-8f3a-3aef042a3fbc · both native reviewers DONE; no live child agents. bridge remains ACTIVE10min on mathematical task, scheduled wake verified11:54:44.130+02. Recovery changes published77ceb2ce; root retains receipt publication only, then explicit handback. No new mathematics/request/job.

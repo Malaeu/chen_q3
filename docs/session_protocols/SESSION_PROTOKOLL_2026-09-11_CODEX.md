@@ -197,3 +197,38 @@ Base a2c355fe8434f5b269d8075716e27a933b26ba3f. Named paths only; ordinary origin
 }
 ```
 Protocol path: docs/session_protocols/SESSION_PROTOKOLL_2026-09-11_CODEX.md
+
+### Publication receipt and handback intent — 2026-09-11T12:08:07+02:00
+
+Q3_RESUME_REFACTOR_20260911 CONFIRMED: infrastructure a2c355fe8434f5b269d8075716e27a933b26ba3f,
+recovery document commit77ceb2ce09ce9f43bd1149bf2422ad353199d1d2,
+treece3d774054f6685d0c355447befbd5e9e6f636cd. Ordinary origin/rh_clean push returned0;
+independent ls-remote equals the full commit. All eight named path hashes matched
+published blobs, base ancestry verified; whole worktree clean before this receipt.
+Original goal-0 archive again compared byte-for-byte with git show9772e457.
+RequestFLOW/source/report/phase6/global51 unchanged. All required reviews/tests,
+one derived refresh and actual scheduled wake are complete as recorded above.
+No mathematical admission or new Proshka send.
+
+Plain staged diff --check flagged only GOAL_HISTORY's final blank line. That is
+the required canonical length-framed archive separator, not altered original data.
+Standard whitespace check passed on every other path; history passed with only
+blank-at-eof suppressed for that command, plus complete canonical archive/hash
+validation. No Git configuration file was changed. No code change/retest needed.
+
+Receipt-only publication INTENT: existing branch, base77ceb2ce, named paths below;
+all payload hashes except this self-referential protocol are fixed here. The commit
+tree fixes the protocol bytes. Main operation CONFIRMED in RESUME revision5;
+this receipt publication and then explicit handback are the only remaining steps.
+The header owner remains root until explicit handback; receiving math task must
+reconcile and checkpoint takeover before writing mathematics. This avoids a watch
+racing the final receipt commit. No new app goal or scheduler mutation required.
+
+```json
+{
+  "docs/Codex/RESUME.md": "ee96a1fa7241102ce1e10661ab0b220937993f730dc53a49ea8da9ac314d16d5",
+  "docs/Codex/GOAL_HISTORY.md": "24b7dce4528874a350734a2b725559c29db3572916b6c1fc8d238365cb08a5be",
+  "docs/Codex/AGENTS_LEDGER.md": "d1f02ead8fe8f6e7924be388f0e3faad71c1c4f77cad13c5f2b2ced4b0b8f7a2"
+}
+```
+Protocol path: docs/session_protocols/SESSION_PROTOKOLL_2026-09-11_CODEX.md

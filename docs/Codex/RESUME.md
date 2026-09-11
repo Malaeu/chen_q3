@@ -1,14 +1,14 @@
 ---
 schema: q3_resume.v1
-revision: 4
-observed_at: '2026-09-11T11:59:20+02:00'
-previous_sha256: 209467fbf86309b61ba3e2d8557476ee3227fdcb84810f7c8e38b5c6fbebdfb7
+revision: 5
+observed_at: '2026-09-11T12:08:07+02:00'
+previous_sha256: a08e6590d5971b1c635903f25d54ac2a69be597745327c57914e66a318307784
 owner_thread_id: 01a08f80-f033-7a31-8f3a-3aef042a3fbc
 owner_host_id: local
 reconciliation_pending: false
 recovery_from: null
 pins:
-  head: a2c355fe8434f5b269d8075716e27a933b26ba3f
+  head: 77ceb2ce09ce9f43bd1149bf2422ad353199d1d2
   physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
   source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
   request_id: REQ-2026-09-10-FLOW
@@ -21,11 +21,13 @@ stages:
   publication: DONE
 operation:
   kind: PUBLISH
-  state: INTENT
+  state: CONFIRMED
   id: Q3_RESUME_REFACTOR_20260911
   evidence:
-  - 'docs/session_protocols/SESSION_PROTOKOLL_2026-09-11_CODEX.md: publication manifest;
-    base a2c355fe8434f5b269d8075716e27a933b26ba3f'
+  - git:77ceb2ce09ce9f43bd1149bf2422ad353199d1d2; origin/rh_clean verified by ls-remote,
+    exact payload hashes matched
+  - 'docs/session_protocols/SESSION_PROTOKOLL_2026-09-11_CODEX.md: Publication receipt
+    and handback intent'
 ---
 # Current continuation — observations, not authority
 
@@ -65,11 +67,12 @@ would change the mechanism; merely renaming T>=-Sc-Se would not.
 
 ## Next action
 
-Current owner is the refactor task in the header. Publish the reviewed named
-recovery changes, verify remote ancestry/hashes, then checkpoint and explicitly
-hand ownership back to mathematical task01a084f4-7498-7021-bac2-91d184d58dc7/local.
-The mathematical task remains paused on that external handback; app goal is
-blocked with its exact original objective preserved. Do not create a new goal.
+Recovery changes are published and verified at77ceb2ce09ce9f43bd1149bf2422ad353199d1d2.
+The header owner retains only final receipt publication and explicit handback to
+mathematical task01a084f4-7498-7021-bac2-91d184d58dc7/local. Until that message,
+math remains paused on ownership; its blocked app goal preserves the original
+objective. Do not create a new goal. On receipt, the math task reconciles live
+facts, records its ownership with resume-checkpoint and continues below.
 
 After handback: canonical plan plus whole-tree git status and source/request/phase
 reconciliation; then one bounded concrete signed-source cancellation check.
@@ -85,7 +88,7 @@ No live math agents/calculations/outstanding Proshka request. flow_verdict_check
 q3-slack-closeout-20260911 terminal0; evidence/scripts/logs are in the FLOW report
 and docs/session_protocols/SESSION_PROTOKOLL_2026-09-11_CODEX.md, not only /tmp.
 Refactor reviewers resume_plan_review and resume_cold_check DONE; no live children.
-Last agent-necessity check2026-09-11T11:49+02, see AGENTS_LEDGER (owning task matters).
+Last agent-necessity check2026-09-11T12:08:07+02:00: both refactor children DONE; see AGENTS_LEDGER.
 
 One native watch bridge, ACTIVE, name Q3 — продолжение работы, every10min,
 agent checks every20min, target math task above. Same watch was reused, not replaced.
@@ -116,17 +119,22 @@ until the recorded owner and durable evidence are reconciled.
 
 ## Integration remaining
 
-Infrastructure a2c355fe8434f5b269d8075716e27a933b26ba3f is locally committed.
-Original GOAL92155bytes preserved exactly as goal-0 archive, SHA256
+Recovery infrastructure a2c355fe8434f5b269d8075716e27a933b26ba3f and documents
+77ceb2ce09ce9f43bd1149bf2422ad353199d1d2 are published; remote HEAD/tree/payload
+hashes verified, worktree clean before this receipt. Original GOAL92155bytes
+preserved exactly as goal-0 archive, SHA256
 9e91ce33fc19b34a9de0f88628f5fddad0260a1f1d8c5c335ac5abdfb4869e5f.
 GOAL<12KiB/RESUME<8KiB; §§2/3/5 and entry symlinks preserved.
-124tests/87subtests passed, infrastructure/integration/native-block reviews each
-converged, fresh cold-resume and four restart scenarios PASS. Canonical startup
-noFATAL with expected productionHOLD. Whole-tree status is separate from plan.git_dirty.
-ONE refactor closeout146.126s, refresh/startup EXIT0; corpus
-5e9c4db8a92ae538a7163d3da7e4c65da52b49eb1710ec42373882c7d9665010 PASS;
-ask.sh resume-checkpoint HITS. Essential evidence/full closeout log/wake receipt
-are in docs/session_protocols/SESSION_PROTOKOLL_2026-09-11_CODEX.md.
-Only final publication receipt and explicit ownership handback remain.
-Save exact INTENT before delivery, observed confirmation after; unknown outcome
-requires existing history/remote inspection, not a repeated action.
+124tests/87subtests passed; required independent/cold/restart/wake checks passed.
+First failed wake window remains recorded; ACTIVE-goal scheduling is unproved.
+ONE refresh/startup completed146.126s, EXIT0; no repeat needed for these receipts.
+Corpus5e9c4db8a92ae538a7163d3da7e4c65da52b49eb1710ec42373882c7d9665010,
+ask.sh resume-checkpoint HITS. Full logs/provenance are in the existing protocol.
+
+Receipt-only publication INTENT: base77ceb2ce09ce9f43bd1149bf2422ad353199d1d2;
+named paths docs/Codex/{RESUME.md,GOAL_HISTORY.md,AGENTS_LEDGER.md} and
+ docs/session_protocols/SESSION_PROTOKOLL_2026-09-11_CODEX.md; exact hashes in
+that protocol's receipt manifest. Then explicit ownership handback only.
+A lost publication/handback receipt requires inspection of local/remote history
+and the existing owner, never automatic repetition. No mathematical work pending
+within this refactor; signed cancellation belongs to the continuing math task.
