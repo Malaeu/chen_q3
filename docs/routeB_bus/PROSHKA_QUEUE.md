@@ -14,9 +14,9 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
-## REQ-2026-09-10-FLOW · FLOW: construct full-source location-dependent allocation with residual capacity · IN_REVIEW
+## REQ-2026-09-10-FLOW · FLOW: construct full-source location-dependent allocation with residual capacity · ANSWERED
 
-- `STATUS: IN_REVIEW`
+- `STATUS: ANSWERED`
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_FLOW_2026-09-10.txt`
 - Boundary: `GOAL058_FULL_SOURCE_LOCATION_DEPENDENT_PATH_ALLOCATION`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
@@ -32,6 +32,10 @@ safety confirmation остаётся внешней границей. Судья
 - Delivered 2026-09-10 23:51+02 to same living chat6aa24f25-0934-83eb-9151-3565fc4b3379: exact attached txt, unchanged binder line, natural Pro-Denkvorgang of6 Pro observed. Actual messagef12c0890-841f-4ee2-a142-44df3878ca9d read from rendered DOM.
 - Watch flow ACTIVE/10min, baseline2bf9ae5bcdb5fdb8f24927bb8bace66a33d140f9; expected verdict path docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_FLOW_2026-09-10.md absent at baseline. agents-watch DELETED; sole request reviewer DONE after CLEAN/CLEAN.
 - Intake prepared under CODEX_AS_SECOND_BODY section3b: verify candidate ancestry/request-lock/full bytes, read whole verdict, fresh single terra/xhigh checker and parent independent decisive check. A completed no-push reply triggers immediate full-file receipt and deletion of GitHub-only wait. Inspect new paid domain and ALL unpaid lengths/tails/prime resources; D23/D26 are closed, do not rerun. Keep phase5/global50 until actual adjudication; this delivery is no mathematical acceptance.
+
+- Received11.09.2026 on resumed fetch10:06+02; producer time00:20+02. Verdictcf34b947/SHA629431c76e40a1af5fcb5f2b6721ae7be8dba3bfe71a2e8f238e6fd32e07e28d,blob15493a4cbdb41845c92b176d96f542aff97b07a7,49936bytes/745LF/finalLF. Full request-lock/ancestry checked. flow watch DELETED.
+- ACCEPTED_WITH_CORRECTIONS at partial PAPER scope: FLOW_INDEPENDENT_CHECK_2026-09-11.md. F11 continuous-only obstruction; F23 precise additional regions/capacity1/16; F24 full remainder open. F15 WORDING/F25 MEDIUM and parent coordinate MEDIUM locally fixed, producer unchanged; exact report9bcc0bae passes3/4 CLEAN. Central16hash/2493coverage authenticated without evaluator rerun; P1/P2 producer UNRESOLVED, P3 partial-scope CONFIRMED. agents-watch DELETED, sole checker DONE.
+- Next candidate: corrected F25/F26 JOIN_LOCATION_MIXTURE_CAPACITY, source weights at short preimagesi=1,2 and reflected theta(-x-t,t). Full feasible measure or strict dual reverse, not necessary-bound/mesh fit. Outside-I unpaid region remains; no next request yet.
 
 ---
 

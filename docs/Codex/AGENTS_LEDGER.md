@@ -191,3 +191,9 @@ gaussian_space_review / source_transfer_bound · DONE · prior scratch component
 2026-09-10T23:54:24+02:00 · flow · APP_HEARTBEAT ACTIVE every10min; exact expected verdict path absent at baseline2bf9ae5bcdb5fdb8f24927bb8bace66a33d140f9; delivered23:51+02 messagef12c0890-841f-4ee2-a142-44df3878ca9d. Both agents DONE, agents-watch DELETED; no numerical job. Watch stops on candidate/completed no-push then full intake, not on unrelated commit.
 
 2026-09-10T23:58:32+02:00 · reconciliation · both boundary agents DONE; agents-watch deleted; FLOW delivery maintenance terminal0, no numerical work. flow ACTIVE10min with exact expected-path/finished-no-push intake condition.
+
+2026-09-11T10:10:04+02:00 · flow_verdict_check · gpt-5.6-terra/xhigh · FRESH whole FLOW cf34b947 F1-F26 proof audit; read-only/no descendants · RUNNING expected15min; required exactscope verdict/FIRST_INCORRECT_ASSERTION/independent newdecisive check. agents-watch ACTIVE20min. boundary_bootstrap_check and boundary_verdict_check remain DONE; flow verdict watch DELETED, no numerical job.
+
+2026-09-11T10:23:12+02:00 · flow_verdict_check · same sole checker RUNNING exact intake report confirmation; whole F1-F24 audit partial PAPER verified, F15 WORDING/F25 MEDIUM and parent i=0,1 offset MEDIUM corrected, clean counter0; draft9bcc0bae. No descendants/numerical job; agents-watch remains ACTIVE.
+
+2026-09-11T10:26:25+02:00 · flow_verdict_check · DONE; whole F1-F24 partial PAPER, F15/F25 and parent offset corrected; exact9bcc0bae CLEAN/CLEAN passes3/4. agents-watch DELETED; no live agents/watches/numerical jobs.
