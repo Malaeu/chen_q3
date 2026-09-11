@@ -437,3 +437,88 @@ Parent algebra controls: affine r(x)=x has exactly zero equal-third slack. Cubic
 |---|---|---|---|
 | 1 | CLEAN | Derivative-radical obstruction - проверены радикал, компактные срезки и строгий центральный остаток | Exact e53c5db7 proof accepted at narrow scope. |
 | 2 | CLEAN | Provenance verified - текст, скрипты и результаты согласованы по байтам | Exact f8919d1a confirmed; preliminary final-LF concern withdrawn, no defect. Mode A converged. |
+
+# Finite central-slack orthogonality does not repair residual domination
+
+Status: CANDIDATE_FOR_INDEPENDENT_REVIEW. This is a bounded continuation of S1-S4, not a repeat of FLOW intake. Base: 2fd272a558943a7e071c9788ca7c043992591ff1. The original report prefix is 36983 bytes, SHA256 3ac5e6e610a4948ffadbb6dbed19fc3ff0c4e68bbdfb12180ce99e9aa18644df. No numerical calculation, new external theorem, Lean admission, source modification or RH claim.
+
+## S5. Exact target and what a radical subtraction actually gives
+
+Keep the original Q, X, B, f=f0=Phi/||Phi||2, both pole terms and every von Mangoldt weight; B is antilinear in its first argument. Keep FLOW F3/F23/F24 with the original central and far charges, and denote its compact-test signed remainder by T. Let S_c(u,r) be the Hermitian polarization of central slack, with S_c[r]=S_c(r,r). This pairing depends only on the restrictions to [-H,H], H<3/8, and is well defined for any functions smooth on a neighborhood of that interval. No noncompact extension of S_e or T is posited.
+
+A natural candidate is to remove one derivative radical v=f' by a scalar projection. On X the radical identity gives Q(g-alpha*v)=Q(g). For u=v/f, S_c[u]>0, and alpha=S_c(u,g/f)/S_c[u] minimizes the central slack:
+
+  S_c[g/f-alpha*u] = S_c[g/f] - |S_c(u,g/f)|^2/S_c[u].       (S5)
+
+Both identities are algebraic and exact, but g-alpha*v is generally noncompact. They do not license applying compact-test F24 to that ratio. Nor does reducing S_c pay its corresponding change in the signed remainder. The strongest simple repair worth testing is the original compact comparison T[r]>=0 after imposing finitely many central-slack orthogonality conditions. The following proposition rules out that specific repair, even if the constraints are chosen adaptively but fixed before testing all r.
+
+## S6. Finite-constraint proposition
+
+For every finite m>=0 and every fixed complex u_1,...,u_m smooth on a neighborhood of [-H,H], there exist w in X, a number sigma>0, and original compact smooth tests g_N=chi_N*w, r_N=g_N/f, N>=1, such that
+
+  Q(w)=0,
+  S_c(u_j,r_N)=0 for every j and N>=1,
+  S_c[r_N]=sigma for every N>=1,
+  Q(g_N)->0,
+  T[r_N]<-sigma/2 for all sufficiently large N.              (S6)
+
+Thus T>=0 fails even on that constrained class. This does not say Q(g_N)<0. It excludes finite central-slack projections as a repair of the slack-dropped residual comparison; it does not exclude signed arguments retaining S_c+S_e, other identities or infinite-dimensional constructions.
+
+### S6a. All fixed derivative orders are genuine radicals
+
+The CAN/FT/ENV and EF/CONT argument used in S1 applies to each fixed integer k>=1. Set w_k=f^(2k), h_k=w_k/f. ENV at orders 2k and 2k+1 gives w_k in X and allows integration by parts with zero boundary terms at every complex z:
+
+  F w_k(z)=(iz)^(2k) Xi(z)/||Phi||2.
+
+The rapid-decay Weil class condition in EF holds against compact smooth tests. Each zero summand vanishes. Density and CONT therefore give B(w_k,h)=0 for every h in X, not merely Q(w_k)=0. Any finite complex combination of the w_k is consequently a radical. Only finitely many orders are used for each m; no estimate uniform in k or growing-order theta truncation is needed. EF remains the previously accepted PAPER dependency at the original source locators, not a newly proved explicit formula.
+
+### S6b. Central slack is strictly positive on their finite nonzero combinations
+
+The theta series defining Phi is analytic in |Im z|<pi/4: on each compact subset, Re(e^(2z)) has a positive minimum and its n-th term and every fixed derivative have a polynomial-in-n bound times exp(-c*n^2). Normal convergence proves analyticity there. Since f>0 on the real axis, every h_k is real analytic on R, and even.
+
+For any nonzero coefficients c_1,...,c_d, put w=sum_(k=1)^d c_k*w_k and h=w/f. This analytic even function cannot be affine on any real open interval. Otherwise analytic continuation along R makes it affine everywhere; evenness makes it a constant a. Fourier transformation of w=a*f then gives
+
+  [sum_(k=1)^d c_k*(iz)^(2k)-a] Ff(z)=0 for real z.
+
+The continuous Ff is nonzero near zero, since Ff(0)=integral f>0. The polynomial must vanish identically, forcing every c_k and a to vanish, a contradiction. This also proves independence of the w_k.
+
+Now suppose S_c[h]=0. Its S1 integrand is continuous, nonnegative, and multiplied by a strictly positive density on the interior where the three lengths have b(s_i)>0. Therefore the pointwise slack is zero at every such interior point. Fix t=2/5 and x=-1/5. For s_1,s_2 near 2/15, s_3=t-s_1-s_2 is also near 2/15; all these points lie in that interior, as already verified in S2. Equality in S1 forces the three secant slopes to be equal. Their common value is [h(x+t)-h(x)]/t. Varying s_1 on an open interval gives
+
+  h(x+s_1)=h(x)+(s_1/t)[h(x+t)-h(x)].
+
+Thus h is affine on a real open interval, the contradiction just proved. Hence S_c[h]>0 for every nonzero finite combination of h_1,h_2,... . Its finiteness follows from the same compact central integral bounds as S2; complex values cause no change to the argument.
+
+### S6c. Solve the finite constraints and return to compact tests
+
+Take d=m+1 and form the m-by-(m+1) complex matrix M_jk=S_c(u_j,h_k). It has a nonzero null vector c. Put w=sum c_k*w_k and h=w/f. By S6a-b, w is a nonzero radical and sigma=S_c[h]>0, while S_c(u_j,h)=0. The m=0 case simply chooses w=f''.
+
+Use the same smooth cutoffs as the source X-density lemma, equal to one on [-N,N] and compactly supported in [-N-1,N+1]. Then g_N=chi_N*w belongs to the original C_c^infinity(R;C), r_N=g_N/f is compact smooth, and g_N->w in X. Every central vertex is in [-H,H] contained in [-1,1], so the central quadratic value and all m pairings are exactly unchanged for every N>=1. CONT gives Q(g_N)->Q(w)=0.
+
+Apply F24 ONLY to r_N. It yields
+
+  T[r_N]=Q(g_N)-sigma-S_e[r_N] <= Q(g_N)-sigma.
+
+Since S_e[r_N]>=0, the inequality is <-sigma/2 once |Q(g_N)|<sigma/2. A sufficient condition is C_X*||g_N-w||_X*(||g_N||_X+||w||_X)<sigma/2. No numerical sigma, explicit least cutoff or noncompact S_e limit is claimed. This completes S6.
+
+## S7. Decision and scope
+
+The bounded radical-subtraction candidate supplies identities but no new lower sign. Requiring its residual to become nonnegative after any fixed finite list of S_c-orthogonality conditions is impossible by S6. Stop enlarging a finite central-slack projection for that purpose. Preserve the actual signed S_c+S_e cancellation and the whole derivative-radical equality family in the next source-level question. No conclusion about all possible finite-rank methods is asserted.
+
+The next substantive analytical question is an integrated source certificate that explains that equality family while retaining the slacks. It must supply information beyond the identity T=Q-S_c-S_e or a positive auxiliary Gram. No new request, binding or delivery is claimed in this note.
+
+Source locators: FLOW verdict F3 at lines154-181 and F24 at lines522-549; original source X/CONT/CAN/FT/ENV/EF at lines110-276 and RAD at387-406 of PROSHKA_VERDICT_GOAL058_WEIL_POSITIVITY_AROUND_XI_PROOF_2026-09-05.md; S1-S4 above from line116. All referenced files are under docs/routeB_bus or docs/routeB_bus/proshka in this repository. Source normalization is unchanged.
+
+## S5-S7 acceptance receipt
+
+The draft status above is superseded by this receipt: ACCEPTED_AT_FINITE_CENTRAL_CONSTRAINT_OBSTRUCTION_SCOPE. Exact reviewed appendix: 7324bytes/70LF/finalLF, SHA256 bf4d6fd918379eea1b327aed6ae51733645866de7345943cef055cb86b30d554. Full reviewed target before this receipt: 44307bytes, SHA256 1d912d097b7bd9b3c184b8a0b526f35f02fb53c23065684d0cf2cb5c2b76ff54. Its original36983-byte prefix remained unchanged.
+
+| Pass | Severity | Finding — English term + русский смысл | Fix applied |
+|---|---|---|---|
+| 1 | CLEAN | Finite-constraint radical obstruction — конечные центральные условия не устраняют отрицательный остаток на компактных срезках | None |
+| 2 | CLEAN | Finite-constraint scope confirmed — подтверждена именно заявленная область запрета | None |
+
+Both native passes used the same sole flow_verdict_check, gpt-5.6-terra/xhigh, read-only/no descendants, on identical bytes. FIRST_INCORRECT_ASSERTION: NONE in both. Pass2 independently checked arbitrary complex local u_j, m=0, the matrix orientation, positive density on the four-dimensional interior, compact-only use of F24 and the limited conclusion. Mode A converged; no unresolved findings.
+
+Parent separately verified that Q and B are translation invariant: translation leaves every difference/correlation unchanged, and the two exponential pole factors cancel. Thus translates of f0 remain radicals by RAD. Translations are bounded by exp(|a|) on X and strongly continuous by compact-smooth density. ENV gives each derivative in X, so strong X difference quotients yield all derivative radicals independently of reapplying EF to each order. The compact-cutoff/S_c equality argument was checked directly. As an algebraic scope control, Q(z)=|z_(m+2)|^2>=0 and S(z)=sum_(k=1)^(m+1)|z_k|^2 admit negative T=Q-S after any m linear constraints on the first m+1 coordinates; negative residual is not negative original form.
+
+No numerical calculation was launched. All source normalization, primes, poles and compact-test requirements remain unchanged. This acceptance is PAPER only; RH, all-test sign and Lean admission remain open. The next question must supply a signed source mechanism rather than another finite central-slack projection of T>=0.
