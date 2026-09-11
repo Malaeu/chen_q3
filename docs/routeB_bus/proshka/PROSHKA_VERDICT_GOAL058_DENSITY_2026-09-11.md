@@ -349,7 +349,7 @@ The box has positive \(\mu\otimes\mu\) measure. To prove \(\mu(0<Z<\delta)>0\), 
 
 ### 3.3 Finite-gamma positivity induction fails at every finite order
 
-Let \(Z_N\) be DN1 truncated through \(n=N\), with \(\Z_1=0\), and set
+Let \(Z_N\) be DN1 truncated through \(n=N\), with \(Z_1=0\), and set
 \(h_N(u)=E(u-Z_N)_+\), \(f_N=E\phi_{Z_N}\). The constant \(A\) in these definitions remains the canonical one. Write
 
 \[
