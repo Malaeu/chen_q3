@@ -1,14 +1,14 @@
 ---
 schema: q3_resume.v1
-revision: 47
-observed_at: '2026-09-11T15:08:14.457873+00:00'
-previous_sha256: 4380193ad79bc165fbdbe1a4062d55e719d99f34e8a5874080f13cacad98f713
+revision: 48
+observed_at: '2026-09-11T15:10:01.933134+00:00'
+previous_sha256: beb665943ce6d41afb92e0f43ef2257857255fa93dcaadefa80ce754e127baf8
 owner_thread_id: 01a084f4-7498-7021-bac2-91d184d58dc7
 owner_host_id: local
 reconciliation_pending: false
 recovery_from: null
 pins:
-  head: 750b201d6f831f9d34fe6a13c3d05d84d0348aa6
+  head: e65edbb6967733b16cd6283a4f72672465150945
   physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
   source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
   request_id: REQ-2026-09-11-DENSITY
@@ -18,24 +18,26 @@ stages:
   independent_review: DONE
   parent_check: DONE
   acceptance: DONE
-  publication: PENDING
+  publication: DONE
 operation:
   kind: PUBLISH
-  state: INTENT
+  state: CONFIRMED
   id: DENSITY_DELIVERY_RECEIPTS_20260911
   evidence:
-  - Base750b201d6f831f9d34fe6a13c3d05d84d0348aa6; ordinary scoped commit/push of own
-    delivery/maintenance receipts and this registered checkpoint/history.
-  - 'Exact payload hashes: {"docs/Codex/AGENTS_LEDGER.md": "57f2da52350f7332864205b1af08f4235cfc7da3dc2df11c7815ba20694c7fc2",
-    "docs/routeB_bus/PROSHKA_QUEUE.md": "c46cca16ae21c4a5d525c86cfe835e368fe51f2b3698b620312ae80230737bee",
-    "docs/routeB_bus/phase5_codex/out/slack_intake_20260911.log": "584bcdc875ebfa3f3c08d94b24afb816e40468dbd32ef7aee97359201fad81e5",
-    "docs/session_protocols/SESSION_PROTOKOLL_2026-09-11_CODEX.md": "cb65335cf4360f04fb73676ab47296b40a38043c3dc5bfd05b5f442c3182faad"}'
-  - Request source659f389c/request122076a3/binding750b201d already published. DeliveryCONFIRMED17:00+02
-    same chat6aa3e75b/message94fc406d-e741-417a-b489-1bf3e1b5f1b1; exact file/LINE/short
-    instruction/natural reasoning observed. Queue IN_REVIEW. No verdict.
-  - MaintenanceCONFIRMED PID1024353/start11887241,141.970s, session_start0, askDENSITY
-    HITS. One refresh after actual delivery queue change. Stages refer to verified
-    source/request/delivery package, never nonexistent verdict acceptance.
+  - e65edbb6967733b16cd6283a4f72672465150945 committed6named receipt paths, exact
+    manifests verified; push0 and live ls-remote exacte65edbb6. Foreign8files plus
+    digest suffix preserved/excluded. This checkpoint confirmation may be mirrored
+    by a later unindexed receipt-only commit.
+  - Source659f389c/request122076a3/binding750b201d published; DENSITY actually IN_REVIEW
+    since17:00+02, exact file/LINE+short instruction/user message94fc406d-e741-417a-b489-1bf3e1b5f1b1/natural
+    reasoning observed. No verdict yet.
+  - One background maintenance141.970s, session_start0, askDENSITY HITS; source BPY
+    journal once projected1921oldrows preserved. No outstanding source/request/receipt
+    integration or repeated refresh. Permanent bridge retained.
+  - 'Next: receive DENSITY result; same six-field phase/chat, fresh checker on complete
+    verdict. Temporary nine-path alias-only integration window activates only by explicit
+    START_ALIAS message to neighbour; mathematical owner remains this task, core runtime
+    excluded.'
 ---
 # Current continuation — observations, not authority
 
@@ -69,8 +71,8 @@ law, not its first moment, is the new input; BP5 mixed integral is unpaid.
 
 ## Next action
 
-Finish receipt publication INTENT above, verify live remote and preserve foreign
-bytes. DENSITY is ACTUALLY IN_REVIEW, no resend. Request
+Receipt publication e65edbb6 CONFIRMED, source and delivery work complete.
+DENSITY is ACTUALLY IN_REVIEW, no resend; next is result intake. Request
  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
 at122076a3430251d8f1f9b0cd0577938456eaaed2,14952bytes/83LF/finalLF,
 sha25609b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2,
@@ -123,7 +125,7 @@ refresh128.245s (builder33.190,dynamic53.372,fixed33.841),session_start13.725s/0
 askDENSITY0/HITS, corpus11efd6d95556edf479da1bb1c1a96f6cbefde0290526434d3f1c05d8f47f7dbb.
 Log/recipe/launch/search in phase5_codex/out/slack_intake_20260911.log,
 PID1024353/start11887241 terminalDENSITY_PROCESS_EXIT=0; do not repeat refresh
-for unindexed receipt/checkpoint edits. Final own receipt publication only remains.
+for unindexed receipt/checkpoint edits. Final own receipt publication e65edbb6 is CONFIRMED; no repeat.
 Foreign8files plus digest suffix preserved/excluded. Refactor plan changed
 independently31e7ff4a->9d8db144; read/reconciled without overwrite, all other
 foreign hashes unchanged. Exact preimage/payload hashes, review/transport
