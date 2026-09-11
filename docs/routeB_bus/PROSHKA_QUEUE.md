@@ -14,6 +14,22 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-11-SLACK · SLACK: prove integrated signed-source cancellation with the full radical equality family · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SLACK_2026-09-11.txt`
+- Boundary: `GOAL058_INTEGRATED_SIGNED_SOURCE_SLACK_CANCELLATION`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: S1-S7 at3fcf7759: full residual domination and every fixed finite Sc-orthogonality repair fail; genuine derivative radicals, strict central slack, compact cutoffs. Four full shelf pins, original source/negative controls, sole checker CLEAN/CLEAN. Browser unavailable; OPEN until observed exact-file delivery.
+- Registered predictions: P1 .95 S1-S7 narrow no-go survives; P2 .85 full derivative equality must be preserved; P3 .75 new precise partial source relation or scoped obstruction
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `d92fd17e78b28fe93939e6b94becf1b90c68dddc` / `15912` / `81` /
+  `7cbb8da692f7603b66995dfafbc2ec483e05927f9331903db9b540e6d49638da` /
+  `1bb6a64ca93430b52142071150fa2e6e36ce4520` / `yes`
+
+---
+
 ## REQ-2026-09-10-FLOW · FLOW: construct full-source location-dependent allocation with residual capacity · ANSWERED
 
 - `STATUS: ANSWERED`
