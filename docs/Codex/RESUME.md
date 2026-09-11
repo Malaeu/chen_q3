@@ -1,14 +1,14 @@
 ---
 schema: q3_resume.v1
-revision: 10
-observed_at: '2026-09-11T12:31:10+02:00'
-previous_sha256: 925097426205acb647005e0d31f3d0893646cfb102e6fc193cfd9f1760b200a1
+revision: 11
+observed_at: '2026-09-11T12:32:43+02:00'
+previous_sha256: 404a8b661396a8e6b025ae86dd6f404f70073300ac41300f6502820ec8789536
 owner_thread_id: 01a084f4-7498-7021-bac2-91d184d58dc7
 owner_host_id: local
 reconciliation_pending: false
 recovery_from: null
 pins:
-  head: 2fd272a558943a7e071c9788ca7c043992591ff1
+  head: 9eea40f1d265fcb58474cbbf73879d2f5986c1a5
   physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
   source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
   request_id: REQ-2026-09-10-FLOW
@@ -18,19 +18,19 @@ stages:
   independent_review: DONE
   parent_check: DONE
   acceptance: DONE
-  publication: PENDING
+  publication: DONE
 operation:
   kind: PUBLISH
-  state: INTENT
+  state: CONFIRMED
   id: FLOW_FINITE_CENTRAL_CONSTRAINTS_20260911
   evidence:
-  - Base2fd272a558943a7e071c9788ca7c043992591ff1; named paths docs/routeB_bus/FLOW_INDEPENDENT_CHECK_2026-09-11.md,
-    docs/Progress_Log.md, docs/Codex/AGENTS_LEDGER.md, q3.lean.aristotle/aristotle_db/knowledge.db,
-    docs/session_protocols/SESSION_PROTOKOLL_2026-09-11_CODEX.md, docs/Codex/RESUME.md,
-    docs/Codex/GOAL_HISTORY.md
-  - Report/Progress_Log/ledger/knowledge.db/protocol payloads {"docs/routeB_bus/FLOW_INDEPENDENT_CHECK_2026-09-11.md":"17bd247cc4c995a239e22136cb3ba899c0c20d337e8ec1cff49cd65b440c533f","docs/Progress_Log.md":"3cc98fa2a2d67d01b99ef7acc57c57825d8fae363f7bf73c56b4b3fc472d4354","docs/Codex/AGENTS_LEDGER.md":"f9f17b1c2939e8e6b0355d83a65b5e5005e57849ad5986cea47ceeca8b3e8a73","q3.lean.aristotle/aristotle_db/knowledge.db":"64c2d1911622b05ae66ed7c73079ad2d9ed73d810629e5ede71f0a74347bd648","docs/session_protocols/SESSION_PROTOKOLL_2026-09-11_CODEX.md":"e1f72a8a296ced0ad5fa6e799862d6bc30ac5442e0ca9421a6517b4acbee208d"}
-  - RESUME/history exact bytes reserved by resume-checkpoint and archive hashes; inspect
-    staged tree and manifest before ordinary origin/rh_clean push
+  - git:9eea40f1d265fcb58474cbbf73879d2f5986c1a5; tree32572c08fef95fcb4beff0439ca7715a361c2842;
+    ordinary push0; fresh ls-remote equal; whole tree clean after push
+  - All seven published blobs matched exact manifest in docs/session_protocols/SESSION_PROTOKOLL_2026-09-11_CODEX.md;
+    main report17bd247c and journal8842cd27 accepted
+  - Receipt-only publication of RESUME/history/protocol follows this observation;
+    inspect local/remote history after any lost receipt, do not rerun the completed
+    mathematical operation
 ---
 # Current continuation — observations, not authority
 
@@ -72,11 +72,12 @@ all finite-rank methods or all signed proofs. Retaining Sc+Se is essential.
 
 ## Next action
 
-Maintenance COMPLETE138.877s, startup0, corpus53ff30f7d6a8fd26e3acfb1492f9a14e1a6ed1092b3cdde51e74c20235dd3d11
-PASS. Search HITS; new journal exact, DB integrity ok; full logs/script archived
-in the existing2026-09-11 protocol. Publish exact owned seven paths in operation;
-then save verified publication receipt. Do not repeat maintenance.
-After publication prepare a substantive integrated signed-source proof-construction
+S5-S7 main publication VERIFIED at9eea40f1d265fcb58474cbbf73879d2f5986c1a5,
+remote equal and exact seven payload hashes matched. Maintenance COMPLETE138.877s,
+startup0/searchHITS; no repeat. Only receipt-only save/publication of this
+checkpoint, its history and protocol remains before the next analytical request.
+After a lost receipt inspect current git history and resume, never redo proof/review.
+Next mathematical action: prepare a substantive integrated signed-source proof-construction
 batch using accepted S1-S7 and FLOW F24 through existing same-phase gates.
 IF_A: a new controlled source identity pays the signed cancellation and respects
 all derivative radicals, verify it. IF_B: mere T=Q-Sc-Se/positive auxiliary Gram,
@@ -124,7 +125,8 @@ no inferred result from missing handles and no foreign-byte overwrite.
 
 ## Integration remaining
 
-S5-S7 report/journal projection and batched refresh complete; publication pending.
+S5-S7 report/journal projection, batched refresh and main publication complete.
+No mathematical integration debt for this result; receipt-only paths as above.
 Search72c59971/53a4a87a already fixed stable incremental collection, hyphenated
 queries and errors versus no-hits. Freshness uses corpus paths/bytes, not time.
 GOAL/RESUME/history/ledger/protocol/CHAT_DIGESTS have no indexed aliases;
