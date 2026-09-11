@@ -374,6 +374,22 @@ tool_families:
         note: Fixed evidence/predecessor hashes, canonical writer lock, full predecessor archive and exact successor replay. No production closure.
         last_verified: 2026-09-10
 
+      - id: slack-manual-chat-reconciliation
+        classification: MANUAL
+        status: ENABLED
+        audience: [CODEX]
+        mode: WRITES_CANONICAL
+        path: orchestrator/spine.py
+        invoke: python3 orchestrator/spine.py --record-slack-manual-review <event.json>
+        trigger: One-time reconciliation of the observed owner-manual SLACK delivery of 2026-09-11.
+        writes: true
+        approval: EXISTING_OWNER_AUTHORIZED_SLACK_TASK_ONLY
+        authority: FIXED_RECEIPTS_AND_PREIMAGE_MANUAL_TRANSPORT_NOT_PROOF_ADMISSION
+        validation: test_channel_runtime_writer + test_workflow_runtime phase-header checks
+        records_to: orchestrator/state/CHANNEL_RUNTIME.json
+        note: Fixed queue/request/verdict/acceptance/observation pins, canonical writer lock, predecessor archive and replay that preserves later reviews. No attachment-tile claim, phase change or production closure.
+        last_verified: 2026-09-11
+
       - id: bind-request
         classification: MANUAL
         status: ENABLED

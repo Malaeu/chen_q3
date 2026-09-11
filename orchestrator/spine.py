@@ -743,6 +743,323 @@ def record_observed_bridge_transition(
     return updated, True
 
 
+SLACK_MANUAL_REVIEW_ID = "REQ-2026-09-11-SLACK"
+SLACK_MANUAL_REVIEW_PREIMAGE = (
+    "98765b57e597a9efcc8bf68cdc47970e0b8b5ad5178cc2d2e96b200780ad2740"
+)
+SLACK_MANUAL_REVIEW_PINS = {
+    "receipt_pin": {
+        "commit": "8a463c090d0c1d28568c05fe67f4891287e1405f",
+        "path": "docs/routeB_bus/PROSHKA_QUEUE.md",
+        "blob": "e0d469e7467029af51f449153eb4aa0de83affd3",
+        "sha256": "61e4156989e1a2c654552c91781093d603dfcaaecef8a82a8818b42ade683f2b",
+    },
+    "request_pin": {
+        "commit": "d92fd17e78b28fe93939e6b94becf1b90c68dddc",
+        "path": "docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SLACK_2026-09-11.txt",
+        "blob": "1bb6a64ca93430b52142071150fa2e6e36ce4520",
+        "sha256": "7cbb8da692f7603b66995dfafbc2ec483e05927f9331903db9b540e6d49638da",
+    },
+    "verdict_pin": {
+        "commit": "e8a95fac36dec2aea50c71a6bdf5fc7deffd4152",
+        "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SLACK_2026-09-11.md",
+        "blob": "ac3504f3e44b0442fc50c95fe1a095aea57cd7dc",
+        "sha256": "1d658eb3d6d828d3bc651967087dabf8e2f9774d179b02c7607f25c7ffe54588",
+    },
+    "acceptance_pin": {
+        "commit": "8a463c090d0c1d28568c05fe67f4891287e1405f",
+        "path": "docs/routeB_bus/SLACK_INDEPENDENT_CHECK_2026-09-11.md",
+        "blob": "ce8845cd30512411fe313fa4817bc0c2968a0d43",
+        "sha256": "cc018a16189d53bc556471c773b3fca9f6fdbed620e61e3f59a078322f9a2f3d",
+    },
+    "observation_pin": {
+        "commit": "8a463c090d0c1d28568c05fe67f4891287e1405f",
+        "path": "docs/session_protocols/SESSION_PROTOKOLL_2026-09-11_CODEX.md",
+        "blob": "099b30409f8f52f0f87b889902509bb104cb617f",
+        "sha256": "1989c97525c3dd55ab9334ed0ec231008186b52080f19c65f68aabf1ecc46011",
+    },
+}
+
+
+def record_observed_slack_manual_review(
+    raw_runtime: bytes,
+    event: dict[str, object],
+    *,
+    repo: Path = REPO,
+    recorded_at: str,
+) -> tuple[dict[str, object], bool]:
+    """Record the observed owner-manual SLACK transport without a phase change."""
+    from orchestrator.workflow_runtime import _single_request_header
+
+    required = {
+        "expected_runtime_sha256",
+        "receipt_pin",
+        "request_pin",
+        "verdict_pin",
+        "acceptance_pin",
+        "observation_pin",
+        "repair_id",
+    }
+    if (
+        not isinstance(event, dict)
+        or set(event) != required
+        or event["repair_id"] != SLACK_MANUAL_REVIEW_ID
+        or event["expected_runtime_sha256"] != SLACK_MANUAL_REVIEW_PREIMAGE
+    ):
+        _fail("PHASE_RECORD_INVALID", "only the observed SLACK manual repair is supported")
+    if any(event[name] != pin for name, pin in SLACK_MANUAL_REVIEW_PINS.items()):
+        _fail("PHASE_RECORD_INVALID", "SLACK repair pins differ from the authenticated record")
+
+    runtime = validate_runtime(json.loads(raw_runtime))
+    receipt_text = _phase_record_pin(event["receipt_pin"], repo=repo)
+    request = _phase_record_pin(event["request_pin"], repo=repo)
+    verdict_text = _phase_record_pin(event["verdict_pin"], repo=repo)
+    acceptance_text = _phase_record_pin(event["acceptance_pin"], repo=repo)
+    observation_text = _phase_record_pin(event["observation_pin"], repo=repo)
+
+    def header(text: str, field: str) -> str:
+        value, error = _single_request_header(text, field)
+        if error or value is None:
+            _fail("PHASE_RECORD_INVALID", error or field)
+        return value
+
+    request_id = header(request, "REQUEST_ID")
+    boundary_id = header(request, "BOUNDARY_ID")
+    phase_id = header(request, "PHASE_ID")
+    phase_key = validate_phase_key(
+        {field: header(request, field.upper()) for field in PHASE_KEY_FIELDS}
+    )
+    if request_id != SLACK_MANUAL_REVIEW_ID or boundary_id != (
+        "GOAL058_INTEGRATED_SIGNED_SOURCE_SLACK_CANCELLATION"
+    ):
+        _fail("PHASE_RECORD_INVALID", "SLACK request identity drift")
+    expected_verdict_path = header(request, "EXPECTED_VERDICT_PATH")
+    if expected_verdict_path != event["verdict_pin"]["path"]:
+        _fail("PHASE_RECORD_INVALID", "SLACK verdict path drift")
+
+    yaml_blocks = re.findall(r"```yaml\n(.*?)\n```", verdict_text, flags=re.DOTALL)
+    if len(yaml_blocks) != 1 or verdict_text.count("```yaml\n") != 1:
+        _fail("PHASE_RECORD_INVALID", "SLACK verdict YAML is missing or ambiguous")
+    verdict = yaml_blocks[0]
+    for field in (
+        "REQUEST_ID", "BOUNDARY_ID", "PHASE_ID", "EXPECTED_VERDICT_PATH",
+        *[field.upper() for field in PHASE_KEY_FIELDS],
+    ):
+        if header(verdict, field) != header(request, field):
+            _fail("PHASE_RECORD_INVALID", f"SLACK verdict/request mismatch: {field}")
+    if verdict.count("REQUEST_LOCK:\n") != 1:
+        _fail("PHASE_RECORD_INVALID", "SLACK REQUEST_LOCK is missing or ambiguous")
+    request_raw = request.encode("utf-8")
+    lock_expected = {
+        "COMMIT": event["request_pin"]["commit"],
+        "BLOB": event["request_pin"]["blob"],
+        "SHA256": event["request_pin"]["sha256"],
+        "BYTES": str(len(request_raw)),
+        "LINES": str(request_raw.count(b"\n")),
+        "FINAL_LF": "true",
+        "LOCAL_BYTES_AND_BOTH_HASHES_RECOMPUTED": "true",
+    }
+    for field, expected in lock_expected.items():
+        values = re.findall(rf"(?m)^  {re.escape(field)}:\s*(\S+)\s*$", verdict)
+        if len(values) != 1 or values[0] != expected:
+            _fail("PHASE_RECORD_INVALID", f"SLACK REQUEST_LOCK mismatch: {field}")
+    if not request_raw.endswith(b"\n"):
+        _fail("PHASE_RECORD_INVALID", "SLACK request has no final newline")
+
+    heading = "## REQ-2026-09-11-SLACK ·"
+    if receipt_text.count(heading) != 1:
+        _fail("PHASE_RECORD_INVALID", "SLACK queue receipt is missing or duplicated")
+    receipt = receipt_text.split(heading, 1)[1].split("\n---", 1)[0]
+    old_conversation = "6aa24f25-0934-83eb-9151-3565fc4b3379"
+    conversation_id = "6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59"
+    request_message_id = "57e6f47f-d70f-4281-97fb-3f2b7641563d"
+    delivery_line = (
+        "Actual manual delivery: owner sent unchanged LINE in user-created chat"
+        f"{conversation_id}, message{request_message_id}."
+    )
+    for required_text in (
+        delivery_line,
+        "Exact attachment tile was not observed; do not fabricate a same-chat/file-tile receipt.",
+        "No resend.",
+        "ANSWERED records verified request/verdict binding, not mathematical acceptance.",
+        event["request_pin"]["commit"],
+        event["request_pin"]["sha256"],
+        event["verdict_pin"]["commit"],
+        event["verdict_pin"]["sha256"],
+    ):
+        if receipt.count(required_text) != 1:
+            _fail("PHASE_RECORD_INVALID", "SLACK queue receipt does not attest the repair")
+    acceptance_marker = "## 8. Final acceptance receipt — 2026-09-11T14:51:37+02:00"
+    if acceptance_text.count(acceptance_marker) != 1:
+        _fail("PHASE_RECORD_INVALID", "SLACK acceptance receipt is incomplete")
+    acceptance = acceptance_text.split(acceptance_marker, 1)[1]
+    for required_text in (
+        "Both CLEAN; FIRST_INCORRECT_ASSERTION NONE",
+        "CHALLENGER_NOT_RH; PX_RH_CLAIM: NOT_MADE.",
+    ):
+        if acceptance.count(required_text) != 1:
+            _fail("PHASE_RECORD_INVALID", "SLACK acceptance receipt is incomplete")
+    observed_at = "2026-09-11T13:40:14+02:00"
+    observation_line = (
+        f"{observed_at} — Owner manually sent SLACK. Native read_thread verified unchanged "
+        f"LINE in NEW conversation{conversation_id}, message{request_message_id};"
+    )
+    completion_line = (
+        f"live IAB1/tab1 chat{conversation_id} shows completed SLACK with original file "
+        "and publication receipt."
+    )
+    if (
+        observation_text.count(observation_line) != 1
+        or observation_text.count(completion_line) != 1
+    ):
+        _fail("PHASE_RECORD_INVALID", "SLACK manual observation is incomplete")
+
+    authenticated_receipt = {
+        "receipt_pin": event["receipt_pin"],
+        "request_pin": event["request_pin"],
+        "verdict_pin": event["verdict_pin"],
+        "acceptance_pin": event["acceptance_pin"],
+        "observation_pin": event["observation_pin"],
+        "conversation_id": conversation_id,
+        "request_message_id": request_message_id,
+        "observed_at": observed_at,
+        "accepted_at": "2026-09-11T14:51:37+02:00",
+        "transport": "OWNER_MANUAL_NO_ATTACHMENT_TILE",
+        "attachment_tile_observed": False,
+    }
+    observed = _dt.datetime.fromisoformat(authenticated_receipt["observed_at"])
+    accepted = _dt.datetime.fromisoformat(authenticated_receipt["accepted_at"])
+    recorded = _dt.datetime.fromisoformat(recorded_at)
+    if (
+        observed.tzinfo is None
+        or accepted.tzinfo is None
+        or recorded.tzinfo is None
+        or not observed <= accepted <= recorded
+    ):
+        _fail("PHASE_RECORD_INVALID", "SLACK repair recording time is invalid")
+
+    try:
+        predecessor_raw = subprocess.check_output(
+            [
+                "git",
+                "show",
+                "8a463c090d0c1d28568c05fe67f4891287e1405f:"
+                "orchestrator/state/CHANNEL_RUNTIME.json",
+            ],
+            cwd=repo,
+        )
+    except subprocess.CalledProcessError as exc:
+        _fail("PHASE_RECORD_INVALID", str(exc))
+    if hashlib.sha256(predecessor_raw).hexdigest() != SLACK_MANUAL_REVIEW_PREIMAGE:
+        _fail("PHASE_RECORD_INVALID", "SLACK pinned predecessor hash drift")
+    predecessor = validate_runtime(json.loads(predecessor_raw))
+    expected_review_event = {
+        "request_message_id": request_message_id,
+        "conversation_id": conversation_id,
+        "boundary_id": boundary_id,
+        "adjudicated_pin": event["verdict_pin"]["commit"],
+        "phase_call_index": 7,
+        "meter_call_index": 52,
+    }
+    history = runtime.get("observed_manual_review_repairs", [])
+    if not isinstance(history, list):
+        _fail("PHASE_RECORD_INVALID", "SLACK repair history is invalid")
+    for previous in history:
+        if not isinstance(previous, dict):
+            _fail("PHASE_RECORD_INVALID", "SLACK repair history entry is invalid")
+        previous_event = previous.get("event")
+        if not isinstance(previous_event, dict):
+            _fail("PHASE_RECORD_INVALID", "SLACK repair event archive is invalid")
+        if previous_event.get("repair_id") == SLACK_MANUAL_REVIEW_ID:
+            prior_recorded_at = previous.get("recorded_at")
+            try:
+                prior_recorded = _dt.datetime.fromisoformat(prior_recorded_at)
+            except (TypeError, ValueError):
+                _fail("PHASE_RECORD_REPLAY_CONFLICT", "SLACK repair record time is invalid")
+            ledger = runtime.get("recorded_review_events")
+            if not isinstance(ledger, list) or any(
+                not isinstance(item, dict) for item in ledger
+            ):
+                _fail("PHASE_RECORD_REPLAY_CONFLICT", "SLACK review ledger is invalid")
+            stored_events = [
+                item for item in ledger
+                if item.get("request_message_id") == request_message_id
+            ]
+            current_phase = runtime.get("active_proshka_phase")
+            current_meter = runtime.get("meter")
+            if (
+                previous_event != event
+                or previous.get("receipt") != authenticated_receipt
+                or previous.get("preimage_sha256") != SLACK_MANUAL_REVIEW_PREIMAGE
+                or previous.get("disposition") != "MANUAL_TRANSPORT_RECONCILED_NO_PROOF_ADMISSION"
+                or previous.get("predecessor_phase") != predecessor["active_proshka_phase"]
+                or previous.get("predecessor_meter") != predecessor["meter"]
+                or previous.get("observed_at") != authenticated_receipt["observed_at"]
+                or previous.get("accepted_at") != authenticated_receipt["accepted_at"]
+                or prior_recorded.tzinfo is None
+                or prior_recorded < accepted
+                or stored_events != [expected_review_event]
+                or not isinstance(current_phase, dict)
+                or current_phase.get("status") != "ACTIVE"
+                or current_phase.get("conversation_id") != conversation_id
+                or current_phase.get("phase_id") != phase_id
+                or validate_phase_key(current_phase.get("phase_key")) != phase_key
+                or not isinstance(current_phase.get("proshka_calls"), int)
+                or current_phase["proshka_calls"] < 7
+                or not isinstance(current_meter, dict)
+                or current_meter.get("delegated_strategic_review_calls", 0) < 52
+                or current_meter.get("phases_opened", 0) < 3
+                or current_meter.get("fresh_chats_opened", 0) < 4
+                or current_meter.get("forced_rollovers", 0) < 2
+            ):
+                _fail("PHASE_RECORD_REPLAY_CONFLICT", "SLACK repair record differs")
+            return runtime, False
+
+    if hashlib.sha256(raw_runtime).hexdigest() != SLACK_MANUAL_REVIEW_PREIMAGE:
+        _fail("PHASE_RECORD_STALE_PREIMAGE")
+    phase = runtime.get("active_proshka_phase")
+    meter = runtime.get("meter")
+    if (
+        not isinstance(phase, dict)
+        or phase.get("status") != "ACTIVE"
+        or phase.get("conversation_id") != old_conversation
+        or phase.get("phase_id") != phase_id
+        or validate_phase_key(phase.get("phase_key")) != phase_key
+        or phase.get("proshka_calls") != 6
+        or not isinstance(meter, dict)
+        or meter.get("delegated_strategic_review_calls") != 51
+        or meter.get("phases_opened") != 3
+        or meter.get("fresh_chats_opened") != 3
+        or meter.get("forced_rollovers") != 1
+    ):
+        _fail("PHASE_RECORD_INVALID", "SLACK predecessor phase or meter differs")
+
+    updated = json.loads(json.dumps(runtime))
+    updated.setdefault("observed_manual_review_repairs", []).append(
+        {
+            "event": event,
+            "predecessor_phase": runtime["active_proshka_phase"],
+            "predecessor_meter": runtime["meter"],
+            "preimage_sha256": SLACK_MANUAL_REVIEW_PREIMAGE,
+            "receipt": authenticated_receipt,
+            "observed_at": authenticated_receipt["observed_at"],
+            "accepted_at": authenticated_receipt["accepted_at"],
+            "recorded_at": recorded_at,
+            "disposition": "MANUAL_TRANSPORT_RECONCILED_NO_PROOF_ADMISSION",
+        }
+    )
+    updated["active_proshka_phase"]["conversation_id"] = conversation_id
+    updated["meter"]["fresh_chats_opened"] += 1
+    updated["meter"]["forced_rollovers"] += 1
+    updated, changed = record_delegated_review(
+        updated,
+        expected_review_event,
+    )
+    if not changed:
+        _fail("PHASE_RECORD_REPLAY_CONFLICT", "SLACK review was already recorded")
+    return updated, True
+
+
 def write_runtime_atomic(runtime: dict[str, object], path: Path = CHANNEL_RUNTIME) -> None:
     """Validate and atomically replace one canonical runtime JSON file."""
     validate_runtime(runtime)
@@ -2265,11 +2582,16 @@ def main() -> int:
         "--record-bridge-transition", type=Path, metavar="EVENT_JSON",
         help="late-record only the verified 2026-09-10 BRIDGE chat transition",
     )
+    ap.add_argument(
+        "--record-slack-manual-review", type=Path, metavar="EVENT_JSON",
+        help="late-record only the verified 2026-09-11 owner-manual SLACK review",
+    )
     args = ap.parse_args()
     try:
         if args.record_bridge_transition is not None:
             if (
-                args.record_review or args.stdout or args.strict or args.refresh
+                args.record_review or args.record_slack_manual_review is not None
+                or args.stdout or args.strict or args.refresh
                 or args.attempt_payload is not None or args.insight_payload is not None
             ):
                 _fail("PHASE_RECORD_INVALID", "repair cannot be combined with other actions")
@@ -2291,6 +2613,49 @@ def main() -> int:
             except (OSError, ValueError) as exc:
                 _fail("PHASE_RECORD_INVALID", str(exc))
             print(f"CHANNEL_RUNTIME_BRIDGE_TRANSITIONS_RECORDED={int(changed)}")
+            return 0
+        if args.record_slack_manual_review is not None:
+            if (
+                args.record_review or args.stdout or args.strict or args.refresh
+                or args.attempt_payload is not None or args.insight_payload is not None
+            ):
+                _fail("PHASE_RECORD_INVALID", "repair cannot be combined with other actions")
+            from orchestrator.workflow_runtime import (
+                _execution_writer_epoch,
+                build_startup_snapshot,
+            )
+
+            try:
+                with _execution_writer_epoch(REPO) as epoch:
+                    _validate_active_control()
+                    startup = build_startup_snapshot(
+                        REPO,
+                        owned_paths=["orchestrator/state/CHANNEL_RUNTIME.json"],
+                        _epoch_guard=epoch,
+                    )
+                    if startup.fatal_errors:
+                        _fail("PHASE_RECORD_STARTUP_FATAL", ",".join(startup.fatal_errors))
+                    raw = CHANNEL_RUNTIME.read_bytes()
+                    event = json.loads(args.record_slack_manual_review.read_text(encoding="utf-8"))
+                    runtime, changed = record_observed_slack_manual_review(
+                        raw, event, recorded_at=_dt.datetime.now(_dt.timezone.utc).isoformat(),
+                    )
+                    if changed:
+                        epoch.recheck()
+                        if CHANNEL_RUNTIME.read_bytes() != raw:
+                            _fail("PHASE_RECORD_STALE_PREIMAGE")
+                        payload_text = json.dumps(
+                            runtime, ensure_ascii=False, indent=2, sort_keys=True,
+                        ) + "\n"
+                        payload = payload_text.encode("utf-8")
+                        write_runtime_atomic(runtime)
+                        if CHANNEL_RUNTIME.read_bytes() != payload:
+                            _fail("PHASE_RECORD_INVALID", "SLACK repair atomic readback mismatch")
+            except ControlViolation:
+                raise
+            except (OSError, ValueError) as exc:
+                _fail("PHASE_RECORD_INVALID", str(exc))
+            print(f"CHANNEL_RUNTIME_SLACK_MANUAL_REVIEWS_RECORDED={int(changed)}")
             return 0
         if args.record_review:
             if (
