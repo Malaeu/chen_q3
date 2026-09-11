@@ -14,6 +14,22 @@ safety confirmation остаётся внешней границей. Судья
 которая фактически мешает отправке. Проверять ответ разрешено только после
 наблюдаемого перехода в `IN_REVIEW`.
 
+## REQ-2026-09-11-DENSITY · DENSITY: construct the full sign from the exact theta probability law · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt`
+- Boundary: `GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: SLACK/OD1/OC1/OC2 and BP1-BP5 accepted at659f389c; exact fixed density law, positive Volterra convolution, mean-matched negative control. Sole Terra/xhigh request CLEAN/CLEAN; same living phase/chat, no numerical campaign.
+- Registered predictions: P1 .95 exact BP1/BP2/BP3b survive; P2 .90 scalar symmetry and mean alone insufficient; P3 .70 new precise partial remainder after repair
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `122076a3430251d8f1f9b0cd0577938456eaaed2` / `14952` / `83` /
+  `09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2` /
+  `ffeb152da44d1b1b89917f2921b287f80e3fb4a0` / `yes`
+
+---
+
 ## REQ-2026-09-11-SLACK · SLACK: prove integrated signed-source cancellation with the full radical equality family · ANSWERED
 
 - `STATUS: ANSWERED`
