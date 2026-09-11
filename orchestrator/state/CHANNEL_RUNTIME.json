@@ -1,10 +1,10 @@
 {
   "active_exploration": null,
   "active_proshka_phase": {
-    "conversation_id": "6aa24f25-0934-83eb-9151-3565fc4b3379",
+    "conversation_id": "6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59",
     "full_context_uploads": 0,
-    "last_adjudicated_pin": "cf34b947ba1570ab5c19ee2803ff71017f6c22b7",
-    "last_boundary_id": "GOAL058_FULL_SOURCE_LOCATION_DEPENDENT_PATH_ALLOCATION",
+    "last_adjudicated_pin": "e8a95fac36dec2aea50c71a6bdf5fc7deffd4152",
+    "last_boundary_id": "GOAL058_INTEGRATED_SIGNED_SOURCE_SLACK_CANCELLATION",
     "opened_at": "2026-09-10T08:33:00+02:00",
     "opening_pin": "b968f9443d5491778ab5e65c75c4ad7d64ba0b14",
     "owner_boundary_count": 0,
@@ -17,23 +17,135 @@
       "source_object_family_id": "CANONICAL_TEST_SIGNED_DIRICHLET_FORM",
       "terminal_consumer_id": "published_Weil_criterion_on_all_complex_compact_smooth_tests"
     },
-    "proshka_calls": 6,
+    "proshka_calls": 7,
     "status": "ACTIVE"
   },
   "control_status": "ACTIVE",
   "last_exploration_close": null,
   "mathematical_authority_mode": "CODEX_PROSHKA_FULL_EXCEPT_PX_RH_CLAIM",
   "meter": {
-    "delegated_strategic_review_calls": 51,
+    "delegated_strategic_review_calls": 52,
     "exploration_review_calls": 0,
     "fanout_violations": 0,
-    "forced_rollovers": 1,
-    "fresh_chats_opened": 3,
+    "forced_rollovers": 2,
+    "fresh_chats_opened": 4,
     "mathematical_owner_deferral_violations": 0,
     "ordinary_goal_close_calls": 0,
     "phases_opened": 3,
     "px_rh_claim_requests": 0
   },
+  "observed_manual_review_repairs": [
+    {
+      "accepted_at": "2026-09-11T14:51:37+02:00",
+      "disposition": "MANUAL_TRANSPORT_RECONCILED_NO_PROOF_ADMISSION",
+      "event": {
+        "acceptance_pin": {
+          "blob": "ce8845cd30512411fe313fa4817bc0c2968a0d43",
+          "commit": "8a463c090d0c1d28568c05fe67f4891287e1405f",
+          "path": "docs/routeB_bus/SLACK_INDEPENDENT_CHECK_2026-09-11.md",
+          "sha256": "cc018a16189d53bc556471c773b3fca9f6fdbed620e61e3f59a078322f9a2f3d"
+        },
+        "expected_runtime_sha256": "98765b57e597a9efcc8bf68cdc47970e0b8b5ad5178cc2d2e96b200780ad2740",
+        "observation_pin": {
+          "blob": "099b30409f8f52f0f87b889902509bb104cb617f",
+          "commit": "8a463c090d0c1d28568c05fe67f4891287e1405f",
+          "path": "docs/session_protocols/SESSION_PROTOKOLL_2026-09-11_CODEX.md",
+          "sha256": "1989c97525c3dd55ab9334ed0ec231008186b52080f19c65f68aabf1ecc46011"
+        },
+        "receipt_pin": {
+          "blob": "e0d469e7467029af51f449153eb4aa0de83affd3",
+          "commit": "8a463c090d0c1d28568c05fe67f4891287e1405f",
+          "path": "docs/routeB_bus/PROSHKA_QUEUE.md",
+          "sha256": "61e4156989e1a2c654552c91781093d603dfcaaecef8a82a8818b42ade683f2b"
+        },
+        "repair_id": "REQ-2026-09-11-SLACK",
+        "request_pin": {
+          "blob": "1bb6a64ca93430b52142071150fa2e6e36ce4520",
+          "commit": "d92fd17e78b28fe93939e6b94becf1b90c68dddc",
+          "path": "docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SLACK_2026-09-11.txt",
+          "sha256": "7cbb8da692f7603b66995dfafbc2ec483e05927f9331903db9b540e6d49638da"
+        },
+        "verdict_pin": {
+          "blob": "ac3504f3e44b0442fc50c95fe1a095aea57cd7dc",
+          "commit": "e8a95fac36dec2aea50c71a6bdf5fc7deffd4152",
+          "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SLACK_2026-09-11.md",
+          "sha256": "1d658eb3d6d828d3bc651967087dabf8e2f9774d179b02c7607f25c7ffe54588"
+        }
+      },
+      "observed_at": "2026-09-11T13:40:14+02:00",
+      "predecessor_meter": {
+        "delegated_strategic_review_calls": 51,
+        "exploration_review_calls": 0,
+        "fanout_violations": 0,
+        "forced_rollovers": 1,
+        "fresh_chats_opened": 3,
+        "mathematical_owner_deferral_violations": 0,
+        "ordinary_goal_close_calls": 0,
+        "phases_opened": 3,
+        "px_rh_claim_requests": 0
+      },
+      "predecessor_phase": {
+        "conversation_id": "6aa24f25-0934-83eb-9151-3565fc4b3379",
+        "full_context_uploads": 0,
+        "last_adjudicated_pin": "cf34b947ba1570ab5c19ee2803ff71017f6c22b7",
+        "last_boundary_id": "GOAL058_FULL_SOURCE_LOCATION_DEPENDENT_PATH_ALLOCATION",
+        "opened_at": "2026-09-10T08:33:00+02:00",
+        "opening_pin": "b968f9443d5491778ab5e65c75c4ad7d64ba0b14",
+        "owner_boundary_count": 0,
+        "phase_id": "PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13",
+        "phase_key": {
+          "convention_lock_id": "GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED",
+          "front_id": "GOAL058_SECOND_EXPRESSION",
+          "honesty_state": "CHALLENGER_NOT_RH",
+          "route_id": "RouteB_TwoLevelSpectralLadder",
+          "source_object_family_id": "CANONICAL_TEST_SIGNED_DIRICHLET_FORM",
+          "terminal_consumer_id": "published_Weil_criterion_on_all_complex_compact_smooth_tests"
+        },
+        "proshka_calls": 6,
+        "status": "ACTIVE"
+      },
+      "preimage_sha256": "98765b57e597a9efcc8bf68cdc47970e0b8b5ad5178cc2d2e96b200780ad2740",
+      "receipt": {
+        "acceptance_pin": {
+          "blob": "ce8845cd30512411fe313fa4817bc0c2968a0d43",
+          "commit": "8a463c090d0c1d28568c05fe67f4891287e1405f",
+          "path": "docs/routeB_bus/SLACK_INDEPENDENT_CHECK_2026-09-11.md",
+          "sha256": "cc018a16189d53bc556471c773b3fca9f6fdbed620e61e3f59a078322f9a2f3d"
+        },
+        "accepted_at": "2026-09-11T14:51:37+02:00",
+        "attachment_tile_observed": false,
+        "conversation_id": "6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59",
+        "observation_pin": {
+          "blob": "099b30409f8f52f0f87b889902509bb104cb617f",
+          "commit": "8a463c090d0c1d28568c05fe67f4891287e1405f",
+          "path": "docs/session_protocols/SESSION_PROTOKOLL_2026-09-11_CODEX.md",
+          "sha256": "1989c97525c3dd55ab9334ed0ec231008186b52080f19c65f68aabf1ecc46011"
+        },
+        "observed_at": "2026-09-11T13:40:14+02:00",
+        "receipt_pin": {
+          "blob": "e0d469e7467029af51f449153eb4aa0de83affd3",
+          "commit": "8a463c090d0c1d28568c05fe67f4891287e1405f",
+          "path": "docs/routeB_bus/PROSHKA_QUEUE.md",
+          "sha256": "61e4156989e1a2c654552c91781093d603dfcaaecef8a82a8818b42ade683f2b"
+        },
+        "request_message_id": "57e6f47f-d70f-4281-97fb-3f2b7641563d",
+        "request_pin": {
+          "blob": "1bb6a64ca93430b52142071150fa2e6e36ce4520",
+          "commit": "d92fd17e78b28fe93939e6b94becf1b90c68dddc",
+          "path": "docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SLACK_2026-09-11.txt",
+          "sha256": "7cbb8da692f7603b66995dfafbc2ec483e05927f9331903db9b540e6d49638da"
+        },
+        "transport": "OWNER_MANUAL_NO_ATTACHMENT_TILE",
+        "verdict_pin": {
+          "blob": "ac3504f3e44b0442fc50c95fe1a095aea57cd7dc",
+          "commit": "e8a95fac36dec2aea50c71a6bdf5fc7deffd4152",
+          "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SLACK_2026-09-11.md",
+          "sha256": "1d658eb3d6d828d3bc651967087dabf8e2f9774d179b02c7607f25c7ffe54588"
+        }
+      },
+      "recorded_at": "2026-09-11T14:08:26.564368+00:00"
+    }
+  ],
   "observed_phase_transitions": [
     {
       "disposition": "CLOSED_FOR_CHANNEL_CONTINUATION_NOT_PROOF",
@@ -437,6 +549,14 @@
       "meter_call_index": 51,
       "phase_call_index": 6,
       "request_message_id": "f12c0890-841f-4ee2-a142-44df3878ca9d"
+    },
+    {
+      "adjudicated_pin": "e8a95fac36dec2aea50c71a6bdf5fc7deffd4152",
+      "boundary_id": "GOAL058_INTEGRATED_SIGNED_SOURCE_SLACK_CANCELLATION",
+      "conversation_id": "6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59",
+      "meter_call_index": 52,
+      "phase_call_index": 7,
+      "request_message_id": "57e6f47f-d70f-4281-97fb-3f2b7641563d"
     }
   ],
   "schema": "q3_channel_runtime.v1"
