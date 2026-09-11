@@ -16,7 +16,7 @@ It never asserts anything about content. The observer runs one on every Proshka 
 
 `--path` exits 0 with NEW_ON_ORIGIN when the file exists on origin; `--ahead` exits 0 with ORIGIN_AHEAD when origin has commits
 not in local HEAD (own pushes do not wake it). It uses `git fetch` only, never pgrep on its own pattern (field lesson 2026-09-03).
-Your native equivalent (the bridge heartbeat you already keep) is acceptable if it checks origin at least every 5 minutes.
+Your native equivalent (the bridge heartbeat you already keep) is acceptable at its existing cadence: continuation_minutes=10 per GOAL §3 and the frozen observation schema. The «≤ 5 min» of the first version of this file was the observer's choice, not the owner's; it is withdrawn (CADENCE, 21:50). No schema change, no false readback.
 
 ## What to watch, per thread
 
