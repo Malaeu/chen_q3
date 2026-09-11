@@ -3044,3 +3044,11 @@ PUBLISH_INTENT SLACK_OC2_RECEIPTS_20260911: named own report, Progress_Log, OC2-
   "q3.lean.aristotle/aristotle_db/knowledge.db": "aeb472e3ca8d4ce6b44a9a6b15d15398b2e91ecff8677525fddc5887ea4e1edb"
 }
 ```
+
+### Publication confirmed — 2026-09-11T14:20:27.004108+00:00
+
+Main235d6c714942d7b25f063cb628a24f96a54f1400 (11named paths) includes codef342494e and runtime5ea31624. Fetch verified unchanged remote8a463c09 and ancestry; ordinary push exit0, live ls-remote exact235d6c71. All selected payload blobs match precommit hashes; all9foreign paths and whole mixed digest worktree bytes unchanged. Working dirty paths are exclusively observer/refactor work. Raw logs/fenced patch receipts retain their original trailing spaces (40protocol lines all inside fenced evidence), generated history validates72records; normal authored files pass diff-check. No new code or mathematical review was repeated.
+
+Latest user attachment was read in full: first-level supplier accepted; numeric normalization samples are historical controls, exact series substitution is already in report§4. Claimed literal q=J corrected by q_s(t)=J_f(sqrt(t))/(4t^(3/2)), t>0. Proposed off-diagonal test already paid by OD1, whereas OC2 proves both scalar conditions insufficient for full form sign. No contrary assertion about canonical theta, Planat-Sole full hypothesis class or RH. Next source-specific question remains uncreated/unsent; observer is examining alternative names/probability-law candidates.
+
+CONFIRMATION_RECEIPT_INTENT: publish only this protocol plus registered RESUME revision37 and GOAL_HISTORY archival transition after verifying exact bytes from base235d6c71; no indexed source change or repeated refresh. Final receipt commit is an observation of the already verified main publication, not a new proof action.
