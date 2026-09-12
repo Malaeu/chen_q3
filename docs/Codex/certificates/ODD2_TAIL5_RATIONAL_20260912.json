@@ -1,0 +1,147 @@
+{
+  "status": "PASS",
+  "count": 23,
+  "checks": [
+    {
+      "name": "sqrt_e_lower",
+      "left": "1681/625",
+      "right": "19/7",
+      "strict": true
+    },
+    {
+      "name": "q_quarter_lower",
+      "left": "5",
+      "right": "41/8",
+      "strict": true
+    },
+    {
+      "name": "derivative_polynomial",
+      "left": "18063/4000",
+      "right": "5",
+      "strict": true
+    },
+    {
+      "name": "n_ge3_ratio",
+      "left": "24826261816322607132358582333800448/3744088201594702893724829226299810375403269828139",
+      "right": "1/2",
+      "strict": true
+    },
+    {
+      "name": "E_remainder",
+      "left": "36492745552662268004112709881942377803769146784538/7065030522695048194215177505267287129039522190356005",
+      "right": "1/128",
+      "strict": true
+    },
+    {
+      "name": "quotient_first",
+      "left": "65/3136",
+      "right": "1/48",
+      "strict": true
+    },
+    {
+      "name": "quotient_second",
+      "left": "1445/21952",
+      "right": "1/15",
+      "strict": true
+    },
+    {
+      "name": "log_second",
+      "left": "773/11520",
+      "right": "1/14",
+      "strict": true
+    },
+    {
+      "name": "exp_3quarter",
+      "left": "151747/71680",
+      "right": "17/8",
+      "strict": true
+    },
+    {
+      "name": "J_first",
+      "left": "-49201/294350",
+      "right": "-27/512",
+      "strict": true
+    },
+    {
+      "name": "J_second",
+      "left": "-53/48",
+      "right": "-1/8",
+      "strict": true
+    },
+    {
+      "name": "J_third",
+      "left": "-1481/336",
+      "right": "-1",
+      "strict": true
+    },
+    {
+      "name": "q_17over16",
+      "left": "1331/49",
+      "right": "28",
+      "strict": true
+    },
+    {
+      "name": "slope_lower",
+      "left": "-32",
+      "right": "-1244/51",
+      "strict": true
+    },
+    {
+      "name": "diagonal_domain",
+      "left": "33/32",
+      "right": "289/256",
+      "strict": true
+    },
+    {
+      "name": "small_diag_budget",
+      "left": "1/14000",
+      "right": "107/1478656",
+      "strict": true
+    },
+    {
+      "name": "alpha4",
+      "left": "4096",
+      "right": "16777216/2187",
+      "strict": true
+    },
+    {
+      "name": "gamma_bound",
+      "left": "137/2",
+      "right": "2048/5",
+      "strict": true
+    },
+    {
+      "name": "local_mixed",
+      "left": "213822315/182614016",
+      "right": "6/5",
+      "strict": true
+    },
+    {
+      "name": "remote_prefactor",
+      "left": "132497807238",
+      "right": "282429536481",
+      "strict": true
+    },
+    {
+      "name": "remote_exponential",
+      "left": "127173474825648610542883299603",
+      "right": "316912650057057350374175801344",
+      "strict": true
+    },
+    {
+      "name": "mixed_budget",
+      "left": "6442450949/5368709120",
+      "right": "5/4",
+      "strict": true
+    },
+    {
+      "name": "determinant_half_budget",
+      "left": "262500",
+      "right": "91965993867015/282475249",
+      "strict": true
+    }
+  ],
+  "source_evaluations": 0,
+  "global_ODD2": false,
+  "RH_claim": false
+}
