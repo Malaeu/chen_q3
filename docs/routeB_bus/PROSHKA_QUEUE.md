@@ -3,12 +3,16 @@
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
 ## REQ-2026-09-12-ODD2EFFECTIVE
-- STATUS: IN_REVIEW; exact committed TXT delivered and natural Pro reasoning observed.
+- STATUS: ANSWERED; explicit S=20 cofinal supplier accepted as PAPER, primary min>=1 request remains incomplete.
 - Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_ODD2EFFECTIVE_2026-09-12.txt, 402602 bytes / 6572 LF / final LF / no CR / SHA256 428a6037cf8af475064d9984b51fdc9aafaa6b83f58fdfddbb160772d4b780cd.
 - Parent and sole sibling5_check independently decoded all 17 framed sources and matched current disk bytes. Exact packet review CLEAN. Accepted source delta is commit 4b8171f49b7750d17c6f98a5ba6d352a576d9cb4; counter 0 after accepted AX, DG and analytic min1/gap3.
 - Boundary: GOAL058_ACTUAL_THETA_ODD2_EFFECTIVE_COFINAL_COVERAGE. Target all x,y>=1; gap>=3 is paid, so preserve cancellation on the entire remaining near-diagonal strip. Bounded fallback is an explicit proved S>=1 for every x,y>=S, with residual min<S,gap<3 recorded exactly. Numeric S is not the global max-node L. Further isolated tiny boxes are not the target.
 - Same authorized living mathematical chat 6aa52001-4094-83eb-9520-01a09f54eff2, same phase keys, DELEGATED_STRATEGIC_REVIEW, PAPER only. No canonical writer takeover, global IC/ODD2 or RH promotion.
 - Delivered 2026-09-12T14:58:57.310724+00:00: exact TXT tile and binder in sent user message; natural 6 Pro Pro-Denkvorgang and Antwort stoppen observed. Request commit 2645e5bf6da902b8f79d77412d3a6dca229c7967 / blob 489fa4c0567d029f09adc11129d9b09b027d1b57; exact remote verified. review-plan REVIEW_DISPATCH_READY, holds[]. Inherited canonical chat locator is superseded by the owner-authorized mathematical chat already in use. No Answer now or duplicate.
+
+
+- Complete response: natural34m41s;73274bytes/1060LF/finalLF/noCR/SHA25606a009eae972027f01f8e0e2d096b7a1e6a453e7b03e55f4a5b7cbd217a29f94. File docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_ODD2EFFECTIVE_2026-09-12.md. Parent and sole sibling5_check read all1060 lines, verified all17 source frames and accepted C>=1/160 for m>=20,gap<=3 and full ODD2 for x,y>=20. All25 exact rational checks reproduced with output SHA256f16ddd8d81b59883b88e87f9aaa1c2f44c5e19e4169eac206f4f19326563d8d9.
+- Intake docs/Codex/REPORT_2026-09-12_ODD2EFFECTIVE_INTAKE.md independently CLEAN, including explicit max-nodeL2000 corollary from accepted small-node x>=2000,y<=1 plus S20 and min1/gap3. Accepted quarter-square at ef472574 and small-node tail at a5ef8cc6 are retained. Any negative pair must lie in the conservative bounded residual stated in the intake. Global ODD2/IC, larger odd/even matrices and RH remain open; counter0. No next request is delivered by this receipt.
 
 ## REQ-2026-09-12-ODD2COMPACT
 - STATUS: ANSWERED; two explicit boundary families accepted as PAPER, full ODD2 request incomplete.
