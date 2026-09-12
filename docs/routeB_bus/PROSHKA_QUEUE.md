@@ -3,11 +3,13 @@
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
 ## REQ-2026-09-12-LYGSPHI
-- STATUS: OPEN; independently checked construction request, not yet sent.
+- STATUS: IN_REVIEW; exact request sent and natural reasoning observed.
 - Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_LYGSPHI_2026-09-12.txt,89217bytes/1384LF/finalLF/noCR/SHA25632d75bc0235c8aaa48c326e240b5e1123d914d0caf8ea568a86402adb0ae2e71.
 - Parent and sole sibling5_check decoded and matched all4 complete source reports to committed f40db276e8f3c4c4d47adec755e5fb72691a4999 and read the operative source scope; CLEAN_DISPATCH_CANDIDATE. Independent receipt SHA38694b1131430434fa612b491327de3be29481b16dffdcfab0188671f9c62211. Accepted dependencies retain their exact stated scope; recursive archives are not claimed re-read.
 - Boundary: GOAL058_ACTUAL_THETA_FERROMAGNETIC_REALIZATION. One actual-source finite zero-field pair-Ising construction, nonnegative couplings and positive spin weights, weak law limit to Phi/Z with all-radius uniform exponential moments (or proved local uniform transforms). The existing conditional Lee–Yang/Hurwitz transfer does not supply this construction.
-- Same living mathematical chat6aa52001-4094-83eb-9520-01a09f54eff2, same six phase fields, DELEGATED_STRATEGIC_REVIEW, PAPER only. Counter2; no reset for new dictionary, no RH/admission claim. RENEWALH remains unsent/parked. Next: exact committed review-plan and one fresh-idle same-chat attachment delivery.
+- Same living mathematical chat6aa52001-4094-83eb-9520-01a09f54eff2, same six phase fields, DELEGATED_STRATEGIC_REVIEW, PAPER only. Counter2; no reset for new dictionary, no RH/admission claim. RENEWALH remains unsent/parked. Next: natural complete response, full source audit and independent intake.
+
+- Delivered2026-09-12T19:56:02.330Z: same living mathematical chat6aa52001-4094-83eb-9520-01a09f54eff2; exact LYGSPHI TXT tile and binder in sent user message, natural Pro-Denkvorgang and Antwort stoppen893, composer cleared. Commitd6cbfa02d9604f2aeba2e70b6daaebff80c0859a/blob1d8d84e660e4cb503ce44dfe86ba0f661160e33b; exact remote verified; review-plan REVIEW_DISPATCH_READY/holds[]. Inherited canonical chat locator remains superseded by the existing owner-authorized mathematical chat, without canonical rebind. No Answer now or duplicate. Pending output is not a completed no-delta attempt.
 
 ## Owner-directed physics brother discovery — 2026-09-12
 - STATUS: SOURCE_VERIFIED_DISCOVERY; no new Pro request sent. RENEWALH remains parked and unsent.
