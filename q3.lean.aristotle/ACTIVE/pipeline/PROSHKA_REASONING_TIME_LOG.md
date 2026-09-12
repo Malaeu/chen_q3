@@ -2567,3 +2567,29 @@ notes: >-
   Independently accepted source sign-family progress elsewhere keeps
   the owner's consecutive no-progress count0; producer counter3 retained.
 ```
+
+### 2026-09-12 — source TN infinity and exact convolution-transfer tests
+
+```yaml
+proof_address: GOAL058_ACTUAL_THETA_SOURCE_STRUCTURE_AND_CONTRACTION_TRANSFER
+front: GOAL058_SECOND_EXPRESSION
+transaction: OBSERVED-SOURCE-CONTRACTION-CONTINUATION-20260912
+conversation_id: 6aa52001-4094-83eb-9520-01a09f54eff2
+request_message_id: NOT_CAPTURED
+sent_at: NOT_CAPTURED_OWNER_SEND
+completed_at: NOT_CAPTURED
+wall_seconds: NOT_CONTINUOUSLY_MEASURED
+wall_human: "UI29m42s; complete response recovered after13:19UTC check and before13:23:28UTC"
+ui_reasoning_seconds: 1782
+answer_now_shown: NOT_OBSERVED
+answer_now_clicked: false
+primary: TRY_THETA_TN_INFINITY_SOURCE_GEOMETRY
+status: ACCEPT_SOURCE_TN_INFINITY_AND_SCOPED_TRANSFER_FAILURES
+result_pointer: docs/routeB_bus/proshka/PROSHKA_THETA_TOTAL_POSITIVITY_SOURCE_TEST_2026-09-12.md
+notes: >-
+  Full50632bytes/842LF download matches producer hash. Parent and sole
+  checker accepted actual r TN infinity and two exact transfer failures.
+  No new actual K witness, IC, ODD2 or full Q sign. Consumer no-delta0->1
+  after recent sign-family progress; historical producer3->4 retained.
+  One reload recovered the same final; no generation restart or new send.
+```
