@@ -2,8 +2,16 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
+## Manual continuation of ODDCURV — full-sign follow-up
+- STATUS: IN_REVIEW (observed owner send; no new Codex TXT dispatch)
+- Local tracking label: MANUAL-ODDCURV-FULL-SIGN-20260912; no invented producer request binding.
+- Same chat6aa52001-4094-83eb-9520-01a09f54eff2. Exact visible message archived in docs/routeB_bus/proshka/PROSHKA_MANUAL_FOLLOWUP_GOAL058_ODDCURV_2026-09-12.txt.
+- Owner subsequently confirmed the send in this Codex task. Natural Pro reasoning and Stop control observed after the message; no duplicate sent.
+- Scope: continue full integrated IC/O2 question using the existing source-locked context. Positive proof and a negative witness for the identical claim are alternatives, not simultaneous deliverables.
+- Initial no-delta counter2; classify the actual complete response and audit before updating. Pending generation is not cycle3.
+
 ## REQ-2026-09-12-ODDCURV
-- STATUS: IN_REVIEW
+- STATUS: ANSWERED -> docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_ODDCURV_2026-09-12.md
 - CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
 - Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_ODDCURV_2026-09-12.txt
 - Boundary: GOAL058_ACTUAL_THETA_INTEGRATED_ODD_KERNEL_LOG_CURVATURE
@@ -13,6 +21,8 @@ This worktree record is a candidate dispatch ledger, not canonical admission or 
 - Owner count starts1; no new actual sign-family proof, including another sufficient-mechanism no-go, means2. Isolated PAPER only; no canonical writer/phase admission.
 
 - Delivered 2026-09-12T11:06:34.249427+00:00: exact ODDCURV TXT tile and binder sent, natural6Pro Pro-Denkvorgang/Stop observed. Request commit f15aecd0ea38fbfc90bf2c2a79087a0f0d867242/blob438ad85fac3cc3686920bf7b343ce259cf6299c3; exact remote verified before send. REVIEW_DISPATCH_READY had no holds; its inherited canonical chat locator is superseded by the explicit owner-directed mathematical chat already in use, without a canonical rebind. No Answer now or duplicate.
+
+- Receipt: natural20m1s;52645bytes/831LF/finalLF/SHA2563309c6fb3f5c3a0e20979c14b9a36471e753feed18a42017b4f211fafe6ea840. Parent and sole sibling5_check accepted only fixed-compact tail curvature theorem. Global IC/O2 unproved/unrefuted; counter1->2. Intake docs/Codex/REPORT_2026-09-12_ODDCURV_INTAKE.md.
 
 ## REQ-2026-09-12-ODD2
 - STATUS: ANSWERED -> docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_ODD2_2026-09-12.md

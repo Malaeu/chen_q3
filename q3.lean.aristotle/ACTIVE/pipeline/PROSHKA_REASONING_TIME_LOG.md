@@ -2492,3 +2492,27 @@ notes: >-
   and sole independent checker accepted only the exact integrand no-go.
   Owner mathematical no-delta count0->1. No production admission or RH claim.
 ```
+
+### 2026-09-12 — isolated ODDCURV and observed manual continuation
+
+```yaml
+proof_address: GOAL058_ACTUAL_THETA_INTEGRATED_ODD_KERNEL_LOG_CURVATURE
+front: GOAL058_SECOND_EXPRESSION
+transaction: REQ-2026-09-12-ODDCURV
+conversation_id: 6aa52001-4094-83eb-9520-01a09f54eff2
+request_message_id: NOT_CAPTURED
+sent_at: 2026-09-12T11:06:00+00:00
+completed_at: NOT_CAPTURED
+wall_seconds: NOT_CONTINUOUSLY_MEASURED
+wall_human: "UI reported20m1s; completion observed at scheduled check near11:27UTC"
+ui_reasoning_seconds: 1201
+answer_now_shown: NOT_OBSERVED
+answer_now_clicked: false
+primary: INTEGRATED_CURVATURE_POSITIVE_WITH_ONE_NODE_ESCAPING_A_FIXED_COMPACT
+status: ACCEPT_SCOPED_INTEGRATED_CURVATURE_TAIL_ONLY
+result_pointer: docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_ODDCURV_2026-09-12.md
+notes: >-
+  Exact52645bytes/831LF download and parent/sole-checker acceptance. Global
+  IC and ODD2 open; no-delta1->2. A subsequent manually sent full-sign
+  continuation was observed already reasoning; Codex did not duplicate it.
+```
