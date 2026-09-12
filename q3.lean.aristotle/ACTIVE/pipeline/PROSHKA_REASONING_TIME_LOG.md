@@ -2593,3 +2593,27 @@ notes: >-
   after recent sign-family progress; historical producer3->4 retained.
   One reload recovered the same final; no generation restart or new send.
 ```
+
+### 2026-09-12 — complete min1 ODD2 strip
+
+```yaml
+proof_address: GOAL058_ACTUAL_THETA_ODD2_WHOLE_REMAINING_MIN1_STRIP
+front: GOAL058_SECOND_EXPRESSION
+transaction: REQ-2026-09-12-ODD2STRIP
+conversation_id: 6aa52001-4094-83eb-9520-01a09f54eff2
+sent_at: 2026-09-12T15:53:33.922816+00:00
+completed_at: NOT_CAPTURED_EXACTLY
+wall_seconds: NOT_CONTINUOUSLY_MEASURED
+wall_human: "UI60m19s; completed answer first observed about17:05UTC"
+ui_reasoning_seconds: 3619
+answer_now_shown: NOT_OBSERVED
+answer_now_clicked: false
+primary: FULL_MIN1_ODD2_WHOLE_STRIP
+status: ACCEPT_ACTUAL_THETA_ODD2_MIN1_WHOLE_STRIP_ONLY
+result_pointer: docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_ODD2STRIP_2026-09-12.md
+notes: >-
+  Exact108317bytes/1808LF response; parent and sole checker full analytic
+  acceptance. Exact parent verify90 matches all648 output bytes, including
+  4158leaves,8259nodes,area57,unpaid0. All min>=1 ODD2 is now covered.
+  Global ODD2,IC,higher odd/even signs and RH remain open.
+```
