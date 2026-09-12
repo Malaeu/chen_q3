@@ -2,6 +2,16 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
+## REQ-2026-09-12-ODDCURV
+- STATUS: OPEN
+- CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+- Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_ODDCURV_2026-09-12.txt
+- Boundary: GOAL058_ACTUAL_THETA_INTEGRATED_ODD_KERNEL_LOG_CURVATURE
+- Same living owner-directed mathematical chat6aa52001-4094-83eb-9520-01a09f54eff2, idle after ODD2 acceptance.
+- One sufficient mechanism: mixed logarithmic curvature of fully integrated K_- nonnegative on the whole positive quadrant, then ODD2. No pointwise J PSD; all compensation retained.
+- Exact121328bytes/1778LF/finalLF/SHA256295077d6e0f87d8fbaae0fcec427035f0f1642dbc572579cc256574b06cf00f2. Parent and sole sibling5_check decoded all4payloads and reviewed request CLEAN.
+- Owner count starts1; no new actual sign-family proof, including another sufficient-mechanism no-go, means2. Isolated PAPER only; no canonical writer/phase admission.
+
 ## REQ-2026-09-12-ODD2
 - STATUS: ANSWERED -> docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_ODD2_2026-09-12.md
 - CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
