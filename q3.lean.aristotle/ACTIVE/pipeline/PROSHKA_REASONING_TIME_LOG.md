@@ -2467,3 +2467,28 @@ notes: >-
   during generation and was never clicked. No Bus 010, Goal-055 release, route
   promotion, PX claim, or RH claim occurred.
 ```
+
+### 2026-09-12 — isolated mathematical ODD2 request
+
+```yaml
+proof_address: GOAL058_ACTUAL_THETA_UNIFORM_ODD_TWO_NODE_MINOR
+front: GOAL058_SECOND_EXPRESSION
+transaction: REQ-2026-09-12-ODD2
+conversation_id: 6aa52001-4094-83eb-9520-01a09f54eff2
+request_message_id: NOT_CAPTURED
+sent_at: 2026-09-12T10:28:30.541973+00:00
+completed_at: NOT_CAPTURED
+wall_seconds: NOT_CONTINUOUSLY_MEASURED
+wall_human: "UI reported 23m34s natural reasoning; completion observed at scheduled check near 11:00 UTC"
+ui_reasoning_seconds: 1414
+answer_now_shown: NOT_OBSERVED
+answer_now_clicked: false
+primary: POINTWISE_OD1_INTEGRAND_PSD2_REFUTED
+status: ACCEPTED_SCOPED_PAPER_UNIFORM_ODD2_OPEN
+result_pointer: docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_ODD2_2026-09-12.md
+notes: >-
+  Same living owner-directed mathematical chat, exact attached TXT and natural
+  final Markdown. Full46046bytes/772LF response hash matches producer; parent
+  and sole independent checker accepted only the exact integrand no-go.
+  Owner mathematical no-delta count0->1. No production admission or RH claim.
+```

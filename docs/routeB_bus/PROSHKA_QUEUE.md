@@ -3,13 +3,15 @@
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
 ## REQ-2026-09-12-ODD2
-- STATUS: IN_REVIEW
+- STATUS: ANSWERED -> docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_ODD2_2026-09-12.md
 - CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
 - Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_ODD2_2026-09-12.txt
 - Same living mathematical chat 6aa52001-4094-83eb-9520-01a09f54eff2, idle after MATGOAL receipt.
 - Target: uniform actual-theta odd2x2 determinant, one necessary four-node subspace of SL20; all larger sizes, even sector and RH remain open.
 - Initial same-obstacle no-delta count0; mathematical failure to add an actual supplier increments it, transport waiting does not.
 - Isolated PAPER request; canonical runtime/phase ownership unchanged. Sole sibling5_check request review CLEAN on SHA25628af680de867ee852e7e73fac6a2d9a17bcdb9b6f1acc92c3d57eb72491447d7; all4payload hashes decoded, factor2/limited O2 scope checked. Observed same-chat delivery 2026-09-12T10:28:30.541973+00:00: exact ODD2 TXT sent message, natural6Pro reasoning and Stop control. Request commit 1efe034f675526b0e2b33ee54eca81683044a083;83500bytes/1207LF/finalLF. No Answer now, no duplicate.
+
+- Receipt: natural23m34s; full46046bytes/772LF/finalLF/SHA2561ef47a209f86e1a99c1e83ca207637aacc5b33c73170e2ef5d244231fbacaaba. Parent and sole sibling5_check ACCEPT exact PT2 integrand counterexample only. Uniform ODD2 unproved/unrefuted; owner no-delta0->1. See docs/Codex/REPORT_2026-09-12_ODD2_INTAKE.md.
 
 ## REQ-2026-09-12-MATGOAL
 - STATUS: ANSWERED -> docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_MATGOAL_2026-09-12.md
