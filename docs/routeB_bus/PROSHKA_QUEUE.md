@@ -2,6 +2,13 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
+## REQ-2026-09-12-ODD2LOW
+- STATUS: OPEN; exact request independently reviewed, not yet sent.
+- Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_ODD2LOW_2026-09-12.txt,749060bytes/12434LF/finalLF/noCR/SHA256fdf8d07ab354190a028440611dcb2fe99bcd5e797d7633a9de0316f833d2b062/blob02db439ac1fc2ebac3a7feb354ebf8e63bb88726.
+- Parent and sole sibling5_check read controlling body and independently decoded/matched all35 exact source frames. Request review CLEAN. Source/accepted delta877d4eaaa7ebf587906561a930833e76d9acb134, already exact-remote verified.
+- Boundary: GOAL058_ACTUAL_THETA_ODD2_WHOLE_LOW_NODE_REMAINDER. Whole residual LOW1–3, axis/diagonal limits, all complex coefficients. With accepted min>=1/tail5/quarter/strips this would finish global ODD2; larger odd/even signs and RH remain open. No tiny-box or partial-axis substitute.
+- Same living mathematical chat6aa52001-4094-83eb-9520-01a09f54eff2, unchanged six phase fields, DELEGATED_STRATEGIC_REVIEW, PAPER only. Current same-obstacle count0 after independently accepted whole-strip family. Next action exact committed review-plan, fresh idle UI and one source-locked attachment delivery.
+
 ## REQ-2026-09-12-ODD2STRIP
 - STATUS: ANSWERED; full min1 ODD2 accepted at isolated PAPER scope after complete independent analytic review and exact parent reproduction.
 - Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_ODD2STRIP_2026-09-12.txt,555793bytes/9007LF/finalLF/noCR/SHA25619067af9236aefbd116478b6f09e13ca14ef41554978724a10d5f59642197a0e.
