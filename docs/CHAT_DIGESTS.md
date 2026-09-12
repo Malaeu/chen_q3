@@ -1893,3 +1893,16 @@ No function-field Sonin/prolate compression exists in print (greps over Connes 1
 2. The defect is archimedean. Over F_q the Toeplitz form is exact (HP); Connes 1999 §VIII (12): the F_q compression has codimension 2g−2+f, equal to the zero conditions of L, not an artefact; CCM 2023 concede a «finite dimensional possible discrepancy»; CC 2020 carry c∈(13,17) at ∞. So c is the archimedean shadow of 2g−2+f (hypothesis, observer, untested).
 3. The open door with a name: Deitmar 2002 posed Connes' compression Q_{S,Λ,0} over a curve over F_q, showed the semi-local identity ⟺ RH(F_q), and could not prove it directly («It would be nice to find a direct prove»). Nobody connected it to Hodge index in 24 years. SIBLING4 (b′) now has a published object to attach to.
 CLOSES: «Sonin over F_q already done» (no). OPENS: SIBLING5 to MAT: prove Deitmar's identity over F_q from Hodge index via V = AᵀT_μA, and compute the defect there (expect 2g−2+f). p=0.4 that the F_q proof goes through in one attempt; if it does, the archimedean c gets a candidate formula.
+
+## 2026-09-12 — ADVICE DENSITYSD: the DENSITY law is self-decomposable, T = (π/2)·S₂ (observer, 01:40, owner's word «запусти скилл на поиск литературы по вчерашнему протоколу»)
+
+Alias hunt by hand on DN2/DN11/DN12/DN20 (DENSITY verdict 11.09). Verified by numbers (script docs/routeB_bus/density/theta_law_sd_check.py):
+(I1) L_T(z)=Π_{n≥1}(1+z/(πn²))^{-2}=(√(πz)/sinh√(πz))² ⇒ T=(π/2)S₂ of Pitman–Yor 2003 (DOI 10.4153/CJM-2003-014-x), the S₂ that BPY tie to ξ;
+(I2) T and Z are self-decomposable; the background driving Lévy process of T has Lévy density exactly −θ′(x) (κ_L = zκ_T′, series = Lévy integral to 1e−10);
+(I3) DN11's half-thinning at ρ=1/2 is the OU-type flow dX=−Xdt+dL over time log 2. Sources: Wolfe 82, Jurek–Vervaat 83 (10.1007/BF00538800), Sato–Yamazato 84,
+Vervaat 79, BNS 2001, Bondesson 92 — metadata and OA restatements only, PDFs blocked in the container; cards in
+docs/routeB_bus/litreview/DENSITY_SELFDECOMPOSABLE_HUNT_USAGE_CARDS.md. Does NOT pay DN20. Names the wall: a Lévy-driven OU-type process is not μ-reversible
+unless Gaussian, so the free positivity of a Markov semigroup (self-adjoint P_t ⪰ 0) is absent; prediction (0.5) that the DN10 negative odd direction sits in the
+antisymmetric part of P_{log 2}. Probe P1/P2 and IF_A/IF_B in docs/Codex/ADVICE_2026-09-12_DENSITYSD.md. Observer's numbers: identities 0.95, pays DN20 0.15.
+Shelf note: `./ask.sh` in the cloud container stays INCOMPLETE (q3_docs freshness, zeta23); the Sonin/Deitmar hunt card cited by SIBLING5 is not on origin — it is in
+the uncommitted Fable worktree on the workstation (Remote Control session closed 11.09 22:53 awaiting «коммить»).
