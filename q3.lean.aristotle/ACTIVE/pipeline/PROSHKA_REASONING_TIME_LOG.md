@@ -2636,7 +2636,7 @@ wall_human: "UI26m25s; natural final first observed20:23UTC"
 answer_now_shown: false
 answer_now_clicked: false
 primary: KILL_NAMED_PHI_SPIN_CONSTRUCTION
-status: FINAL_OBSERVED_RAW_RETRIEVAL_PENDING_INDEPENDENT_INTAKE
+status: ACCEPT_KILL_EXACT_THETA_ENTROPY_BINOMIAL_JOINT_LIFT
 result_pointer: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_LYGSPHI_2026-09-12.txt
 request_sha256: 32d75bc0235c8aaa48c326e240b5e1123d914d0caf8ea568a86402adb0ae2e71
 request_commit: d6cbfa02d9604f2aeba2e70b6daaebff80c0859a
@@ -2645,7 +2645,10 @@ notes: >-
   committed source frames. review-plan READY with no holds. Single TXT,
   sent binder, natural Pro-Denkvorgang and Antwort stoppen observed in the
   same owner-authorized mathematical phase chat. Source-sign counter stays2
-  until complete independent intake. No RH or canonical admission claim.
+  until complete independent intake. Subsequent GitHub retrieval and full
+  parent/sole-checker acceptance moved2to3; exact joint-law scope only.
+  Raw response commit cdb3f2698e5e8bf494ecbddac54a319c6edd69ec.
+  No RH or canonical admission claim.
 ```
 
 ### 2026-09-12 — LYGSPHI byte retransmission only
@@ -2677,4 +2680,30 @@ notes: >-
   versus declared 27064; original raw SHA not recovered. Owner superseded
   attachment/base64 transport with GitHub exchange; no retry.
   No new mathematics, attempt or counter change.
+```
+
+### 2026-09-12 — Owner-directed GitHub publication
+
+```yaml
+proof_address: RouteB.Goal058.ActualThetaFerromagneticRealization
+front: GOAL058_SECOND_EXPRESSION
+transaction: LYGSPHI_GITHUB_PUBLICATION
+conversation_id: 6aa52001-4094-83eb-9520-01a09f54eff2
+sent_at: 2026-09-12T20:55:18.980Z
+completed_at: NOT_CAPTURED_EXACTLY
+ui_reasoning_seconds: 344
+wall_seconds: null
+wall_human: "UI 5m44s; natural completion"
+answer_now_clicked: false
+primary: TECHNICAL_GITHUB_PUBLICATION_ONLY
+status: COMMITTED_FETCHED_RAW_SHA_VERIFIED
+task_commit: 2a931ada80f418f85ea2cfe00922a43cc6ac78c9
+result_commit: cdb3f2698e5e8bf494ecbddac54a319c6edd69ec
+result_pointer: docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_LYGSPHI_2026-09-12.md
+notes: >-
+  Owner changed task transport to GitHub files and one short chat link.
+  Sent link, cleared composer and natural reasoning were observed.
+  Final reply contained only commit and path. Fetch/fast-forward succeeded;
+  raw56813bytes/907LF/SHA630da77ed6a85d013e60078090be3135e737db0846194675b05af775cd238fb4
+  matched exactly. No repeated proof, attachment or additional math attempt.
 ```

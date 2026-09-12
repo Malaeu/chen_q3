@@ -3,28 +3,30 @@
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
 ## Owner-directed GitHub exchange — 2026-09-12
-- STATUS: TASK_PUBLISHED_PENDING_SHORT_CHAT_NOTICE.
+- STATUS: COMPLETED_GITHUB_ROUNDTRIP; short notice sent2026-09-12T20:55:18.980Z, natural5m44s, reply commit cdb3f2698e5e8bf494ecbddac54a319c6edd69ec and path. Root fetched and byte-verified the unchanged response.
 - Direct owner instruction supersedes attachment/base64 transport for this mathematical task: assignments and full responses go through GitHub; this same chat receives one short link and instruction.
 - Current task: docs/routeB_bus/proshka/GITHUB_TASK_GOAL058_LYGSPHI_PUBLICATION.md. Publish the existing immutable LYGSPHI response only; no repeated proof or new mathematical attempt.
 - All nine remote branch heads fetched and inspected. The LYGSPHI response was absent; latest origin/rh_clean was e16f1b51 and isolated math branch was 268e5ad9. No result inferred from the absence.
-- Original response remains pending independent intake; counter stays 2 and RH remains open.
+- Full response independently accepted at exact joint-lift exclusion scope; see docs/Codex/REPORT_2026-09-12_LYGSPHI_INTAKE.md. Counter2->3 after intake; awaiting owner brainstorming before a new mathematical attempt. RH remains open.
 
 ## REQ-2026-09-12-LYGSPHI-TRANSPORT
 - STATUS: ANSWERED_TRANSPORT_LENGTH_MISMATCH; natural 5m38s completed. Rendered base64 has 19996 characters against declared 27064. Raw SHA not recovered; transport superseded by direct owner GitHub instruction, no retry or new mathematical attempt.
-- Scope: byte-exact retransmission of the completed LYGSPHI response only; no new mathematical attempt, no counter change. Original response remains pending independent intake.
+- Scope: byte-exact retransmission of the completed LYGSPHI response only; no new mathematical attempt, no counter change. Independent intake was pending at dispatch and is completed in the LYGSPHI receipt below.
 - Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_LYGSPHI_TRANSPORT_2026-09-12.txt; 3160bytes/53LF/finalLF/noCR/SHA256db5fa6552a25c1d2efb446488b8cf9c748bae5adf7abbad8a6e714a513bca902.
 - Same living math chat6aa52001-4094-83eb-9520-01a09f54eff2; boundaryGOAL058_ACTUAL_THETA_FERROMAGNETIC_REALIZATION; unchanged phase; inherited canonical locator is not rebound.
 - Parent and sole sibling5_check fully read the53LF request and checked the immutable response pin plus gzip/base64 code. CLEAN_TRANSPORT_REQUEST; independent receiptSHA56116d8ab514e521117f2c605d2a545f2458b01c0cb5c473be455ee631f58662.
-- Target existing response: 56813bytes/907LF/SHA256630da77ed6a85d013e60078090be3135e737db0846194675b05af775cd238fb4. No rewriting on mismatch. Browser preview is complete; supported download events expose no local path; export and other-asset bundling are unavailable. Native app access is prohibited by the UI tool; no bypass. Request literal compressed byte transport through the authorized chat.
+- Target existing response: 56813bytes/907LF/SHA256630da77ed6a85d013e60078090be3135e737db0846194675b05af775cd238fb4. No rewriting on mismatch. Browser preview is complete; supported download events expose no local path; export and other-asset bundling are unavailable. Native app access is prohibited by the UI tool; no bypass. Historical request used compressed bytes through the chat; direct owner GitHub transport now supersedes it.
 
 ## REQ-2026-09-12-LYGSPHI
-- STATUS: ANSWERED_PENDING_INDEPENDENT_INTAKE; natural26m25s final observed, GitHub publication pending.
+- STATUS: ANSWERED_ACCEPTED_LIMITED_PAPER; raw GitHub commit cdb3f2698e5e8bf494ecbddac54a319c6edd69ec,56813bytes/907LF/SHA256630da77ed6a85d013e60078090be3135e737db0846194675b05af775cd238fb4. Natural26m25s mathematical response; GitHub publication was a separate technical action.
 - Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_LYGSPHI_2026-09-12.txt,89217bytes/1384LF/finalLF/noCR/SHA25632d75bc0235c8aaa48c326e240b5e1123d914d0caf8ea568a86402adb0ae2e71.
 - Parent and sole sibling5_check decoded and matched all4 complete source reports to committed f40db276e8f3c4c4d47adec755e5fb72691a4999 and read the operative source scope; CLEAN_DISPATCH_CANDIDATE. Independent receipt SHA38694b1131430434fa612b491327de3be29481b16dffdcfab0188671f9c62211. Accepted dependencies retain their exact stated scope; recursive archives are not claimed re-read.
 - Boundary: GOAL058_ACTUAL_THETA_FERROMAGNETIC_REALIZATION. One actual-source finite zero-field pair-Ising construction, nonnegative couplings and positive spin weights, weak law limit to Phi/Z with all-radius uniform exponential moments (or proved local uniform transforms). The existing conditional Lee–Yang/Hurwitz transfer does not supply this construction.
 - Same living mathematical chat6aa52001-4094-83eb-9520-01a09f54eff2, same six phase fields, DELEGATED_STRATEGIC_REVIEW, PAPER only. Counter2; no reset for new dictionary, no RH/admission claim. RENEWALH remains unsent/parked. Next: natural complete response, full source audit and independent intake.
 
 - Delivered2026-09-12T19:56:02.330Z: same living mathematical chat6aa52001-4094-83eb-9520-01a09f54eff2; exact LYGSPHI TXT tile and binder in sent user message, natural Pro-Denkvorgang and Antwort stoppen893, composer cleared. Commitd6cbfa02d9604f2aeba2e70b6daaebff80c0859a/blob1d8d84e660e4cb503ce44dfe86ba0f661160e33b; exact remote verified; review-plan REVIEW_DISPATCH_READY/holds[]. Inherited canonical chat locator remains superseded by the existing owner-authorized mathematical chat, without canonical rebind. No Answer now or duplicate. Pending output is not a completed no-delta attempt.
+
+- Independent intake: parent full907LF and sole sibling5_check ACCEPT_KILL_EXACT_THETA_ENTROPY_BINOMIAL_JOINT_LIFT. Full corrected-law convergence and all-k negative conditional pair coupling accepted; exact visible-law hidden-spin repair excluded. General GS, all-order source sign, global IC/ODD2/RH remain open. Four source pins and unchanged verifier/stdout match; reviewSHAda7cb41bb53be24b6d4313834e39774f1d5f87b92f5b2135be74ba9b2f8e6df5. Intake docs/Codex/REPORT_2026-09-12_LYGSPHI_INTAKE.md; counter2->3. No next proof attempt is opened.
 
 ## Owner-directed physics brother discovery — 2026-09-12
 - STATUS: SOURCE_VERIFIED_DISCOVERY; no new Pro request sent. RENEWALH remains parked and unsent.
