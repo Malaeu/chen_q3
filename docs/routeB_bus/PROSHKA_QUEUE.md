@@ -2,6 +2,13 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
+## Manual Hodge / Weil continuation — accepted strategic review
+- STATUS: ANSWERED; owner send, no new Codex REQ.
+- Same chat6aa52001-4094-83eb-9520-01a09f54eff2; exact manual question archived in docs/routeB_bus/proshka/PROSHKA_MANUAL_FOLLOWUP_GOAL058_HODGE_2026-09-12.txt.
+- UI22m12s; completion first observed near12:40:33UTC. Full response38721bytes/507LF/finalLF/SHA2568f51bfb60f4221c53d094bd901fb5bdcff26568331dca69d6a5ee276b3476f04.
+- Parent and sole sibling5_check ACCEPT_SCOPED_HODGE_WEIL_STRATEGIC_REVIEW: abstract Gram-positive kernel with negative IC, exact source signed-Gram representation, complex Schur witness and source-checked Hodge/Weil comparison. No new actual theta witness/sign theorem.
+- Intake: docs/Codex/REPORT_2026-09-12_HODGE_WEIL_INTAKE.md. Pursue ODD2 directly; IC optional. Producer counter3 is historical; accepted regional/joint-tail/compact/origin sign-family proofs make current owner consecutive no-progress count0.
+
 ## Manual continuation of ODDCURV — full-sign follow-up
 - STATUS: ANSWERED (observed owner send; no new Codex TXT dispatch)
 - Local tracking label: MANUAL-ODDCURV-FULL-SIGN-20260912; no invented producer request binding.

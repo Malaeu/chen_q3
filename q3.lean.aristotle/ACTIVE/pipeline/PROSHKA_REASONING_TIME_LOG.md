@@ -2541,3 +2541,29 @@ notes: >-
   Producer global-incomplete count3 is separate from owner stagnation;
   parent counts the new verified region as mathematical progress.
 ```
+
+### 2026-09-12 — owner-direct Hodge / Weil strategic review
+
+```yaml
+proof_address: GOAL058_SOURCE_SIGN_GEOMETRY_AND_NEGATIVE_WITNESS_EXCLUSION
+front: GOAL058_SECOND_EXPRESSION
+transaction: OBSERVED-HODGE-WEIL-CONTINUATION-20260912
+conversation_id: 6aa52001-4094-83eb-9520-01a09f54eff2
+request_message_id: NOT_CAPTURED
+sent_at: NOT_CAPTURED_OWNER_SEND
+completed_at: NOT_CAPTURED
+wall_seconds: NOT_CONTINUOUSLY_MEASURED
+wall_human: "UI22m12s; completion first observed near12:40:33UTC"
+ui_reasoning_seconds: 1332
+answer_now_shown: NOT_OBSERVED
+answer_now_clicked: false
+primary: TRY_SOURCE_PAIRWISE_NEGATIVE_WITNESS_EXCLUSION
+status: ACCEPT_SCOPED_HODGE_WEIL_STRATEGIC_REVIEW
+result_pointer: docs/routeB_bus/proshka/PROSHKA_HODGE_WEIL_NEGATIVE_WITNESS_REVIEW_2026-09-12.md
+notes: >-
+  Full38721bytes/507LF download, parent and sole checker acceptance.
+  Strategic/abstract content and exact signed-Gram identity only;
+  actual global IC/ODD2/Q signs remain open. No new Codex send.
+  Independently accepted source sign-family progress elsewhere keeps
+  the owner's consecutive no-progress count0; producer counter3 retained.
+```
