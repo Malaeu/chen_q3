@@ -2,6 +2,13 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
+## REQ-2026-09-12-ODD2STRIP
+- STATUS: OPEN; exact request reviewed, not sent yet.
+- Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_ODD2STRIP_2026-09-12.txt,555793bytes/9007LF/finalLF/noCR/SHA25619067af9236aefbd116478b6f09e13ca14ef41554978724a10d5f59642197a0e.
+- Parent and sole sibling5_check independently decoded all23 complete source frames and matched disk bytes/hashes/counts. Exact packet review CLEAN. Accepted delta commit f2cec378967611aa9891c397d170176c04264225 includes reviewed S20, explicit max-nodeL2000, whole origin quarter square and small-node tail.
+- Boundary: GOAL058_ACTUAL_THETA_ODD2_WHOLE_REMAINING_MIN1_STRIP. Exact target all1<=y<20,0<x-y<3 plus transpose. Together with accepted tails/gap3 this would finish min>=1 ODD2; Omega_low, higher odd/even signs and full RH remain open. Whole two-variable coverage and exact diagonal normalization are required; no tiny-block substitute.
+- Same authorized living mathematical chat6aa52001-4094-83eb-9520-01a09f54eff2, same six phase fields, DELEGATED_STRATEGIC_REVIEW, PAPER only. Counter0; no canonical writer takeover or full sign promotion. Next action exact committed review-plan and one same-chat delivery.
+
 ## REQ-2026-09-12-ODD2EFFECTIVE
 - STATUS: ANSWERED; explicit S=20 cofinal supplier accepted as PAPER, primary min>=1 request remains incomplete.
 - Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_ODD2EFFECTIVE_2026-09-12.txt, 402602 bytes / 6572 LF / final LF / no CR / SHA256 428a6037cf8af475064d9984b51fdc9aafaa6b83f58fdfddbb160772d4b780cd.
