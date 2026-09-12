@@ -3,14 +3,17 @@
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
 ## REQ-2026-09-12-ODD2COMPACT
-- STATUS: IN_REVIEW; exact final TXT delivered and natural Pro reasoning observed.
+- STATUS: ANSWERED; two explicit boundary families accepted as PAPER, full ODD2 request incomplete.
 - Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_ODD2COMPACT_2026-09-12.txt,314544bytes/5112LF/finalLF/SHA2564defaec31ac4dac8d477ae8e75cab1f3dde6181d20dda981bede140c68d1d31a.
 - Current14-source version retains accepted joint-tail/compact/origin results, supplies the explicit origin radius, and adds accepted actual r TN infinity plus the two exact convolution-transfer exclusions. Parent and sole sibling5_check independently decoded and byte-matched all14 payloads; exact final request review CLEAN.
-- Previous11- and12-source versions passed independent review and were never sent. Owner's intervening manual response is now complete and accepted. Now registered OPEN after final review. Next: publish/review-plan, verify same chat idle, deliver once.
-- Target remains all actual positive-node ODD2, with global IC optional. Current consumer no-delta1 after the latest failed convolution transfer; older producer3->4 is historical. No RH promotion.
+- Previous11- and12-source versions passed independent review and were never sent. The final14-source version below was delivered once after exact review.
+- Target remains all actual positive-node ODD2, with global IC optional. Entry consumer no-delta was1; after accepted new boundary families it is0. Older producer3->4 is historical. No RH promotion.
 
 - Delivered2026-09-12T13:44:55.345361+00:00: same chat6aa52001-4094-83eb-9520-01a09f54eff2, exact ODD2COMPACT TXT tile and binder in sent user message, natural6Pro Pro-Denkvorgang and Antwort stoppen. Request commitf56c82b2dff21ac37e8d3bebc183d476cdcc7067/blob38ff8d635c4287e1c059588066a28db458e997c1; exact314544bytes/5112LF/SHA2564defaec31ac4dac8d477ae8e75cab1f3dde6181d20dda981bede140c68d1d31a. No Answer now or duplicate.
 - Fresh review-plan returned REVIEW_DISPATCH_READY/holds[]. Control8 requires exact committed attachment, not completed remote push; all14 sources are embedded. GitHub connection failure is tracked separately and binder explicitly states local commit/push pending. Inherited canonical chat locator is superseded by the previously authorized owner-created mathematical chat; no canonical rebind.
+
+- Complete response: natural47m23s,71971bytes/1159LF/finalLF/noCR/SHA256819511db9d46801e87b54e728faf7c55e7ce21e4e20e48d9d95d49a71b175e07. Full file docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_ODD2COMPACT_2026-09-12.md. Parent and sole sibling5_check read the whole file, accepted AX and DG only, and matched all14 sources. Exact code reproduction matches all JSON fields except two Python-version strings. Intake docs/Codex/REPORT_2026-09-12_ODD2COMPACT_INTAKE.md. AX covers I=[1/2,1/2+2^-12],0<y<=2^-8 and its transpose; DG covers J^2,J=[1/2,1/2+2^-20]. Interim browser [1/2,1] assertions are not admitted.
+- Independently accepted parent analytic result docs/Codex/REPORT_2026-09-12_ODD2_REGIONAL_MIN1_GAP3.md: actual ODD2 for min>=1,gap>=3, with full-source positive budget and all complex coefficients. This enlarges the previous min4/gap4 domain. Both updates are isolated PAPER acceptance only; the remaining ODD2 region, global IC, higher odd/even signs and RH stay open. No next request is delivered by this receipt.
 
 ## Observed owner continuation — source contraction / total positivity
 - STATUS: ANSWERED; observed user-role send in the same existing chat, not a new Codex REQ.
