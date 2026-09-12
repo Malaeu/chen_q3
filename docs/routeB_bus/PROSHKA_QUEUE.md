@@ -1,3 +1,14 @@
+# Isolated mathematical task request — owner-directed new chat, 2026-09-12
+
+This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
+
+## REQ-2026-09-12-MATGOAL
+- STATUS: OPEN
+- CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+- Owner explicitly requested a new project chat on 2026-09-12; this supersedes same-chat transport for this one creation. Mathematical phase identity is not automatically changed.
+- Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_MATGOAL_2026-09-12.txt
+- Response: full downloadable PAPER verdict; no external writes assigned to Proshka.
+
 # Очередь к Прошке — накопительная
 
 **Дисциплина очереди (обновлено 2026-08-30):** каждый запрос несёт
