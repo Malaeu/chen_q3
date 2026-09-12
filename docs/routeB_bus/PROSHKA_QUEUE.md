@@ -2,6 +2,18 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
+## Prepared REQ-2026-09-12-ODD2COMPACT — not dispatched
+- STATUS: REVIEWED_PREPARED; not an OPEN delivery obligation while the owner's newer manual continuation is running.
+- Exact request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_ODD2COMPACT_2026-09-12.txt,244695bytes/3910LF/finalLF/SHA25616e2541fdb79f123a0e9c928d2cd30e27651cff7759f4d814753f5b133c8f2b4.
+- Parent and sole sibling5_check CLEAN; all11 source payloads independently decoded and matched byte-for-byte to disk. Scope is full actual ODD2 after accepted joint-tail, compact-localization and origin-corner theorems; global IC optional.
+- MUST receive/audit the currently running source-contraction continuation and reconsider this prepared request before delivery. No upload, binder or Codex send has occurred. Review-plan and remote publication are still required.
+
+## Observed owner continuation — source contraction / total positivity
+- STATUS: IN_REVIEW; observed user-role send in the same existing chat, not a new Codex REQ.
+- Expanded visible text accepts the Hodge/Weil proposal: independent source structure supplying the sign, followed by "Да, чувак, именно так. Делаем это."
+- Observed near12:53UTC with natural reasoning about source contraction, additive total positivity and the exact BP2-to-ODD2 transfer, plus Antwort stoppen. No final verdict yet.
+- AX-normalized visible transcription: docs/routeB_bus/proshka/PROSHKA_MANUAL_FOLLOWUP_GOAL058_SOURCE_CONTRACTION_2026-09-12.txt; not claimed byte-identical original composer text. Current prepared ODD2COMPACT has not been sent into this generation.
+
 ## Manual Hodge / Weil continuation — accepted strategic review
 - STATUS: ANSWERED; owner send, no new Codex REQ.
 - Same chat6aa52001-4094-83eb-9520-01a09f54eff2; exact manual question archived in docs/routeB_bus/proshka/PROSHKA_MANUAL_FOLLOWUP_GOAL058_HODGE_2026-09-12.txt.
