@@ -1906,3 +1906,15 @@ unless Gaussian, so the free positivity of a Markov semigroup (self-adjoint P_t 
 antisymmetric part of P_{log 2}. Probe P1/P2 and IF_A/IF_B in docs/Codex/ADVICE_2026-09-12_DENSITYSD.md. Observer's numbers: identities 0.95, pays DN20 0.15.
 Shelf note: `./ask.sh` in the cloud container stays INCOMPLETE (q3_docs freshness, zeta23); the Sonin/Deitmar hunt card cited by SIBLING5 is not on origin — it is in
 the uncommitted Fable worktree on the workstation (Remote Control session closed 11.09 22:53 awaiting «коммить»).
+
+## 2026-09-12 — «ℚ×ℚ не существует» → положительная инволюция вместо квадрата (владелец 13:00, наблюдатель; правило 15)
+
+Слово владельца: заменить умножение действием, разрешённым в другом подпространстве, и смотреть, меняется ли знак. Проверено числом
+(`docs/routeB_bus/sibling/ff_rosati_check.py`, 8.9e−16): T_μ(i−j) = q^{−(i+j)/2}·Tr(πⁱ(πʲ)†), π† = qπ⁻¹, т.е. форма Кастельнуово из SIBLING2 есть форма
+Розати на степенях Фробениуса; квадрат X×X у Вейля лишь строит след, знак платит положительная инволюция, а её даёт поляризация (тэта-дивизор).
+Перевод: «другое действие» = композиция + †; у чисел такая алгебра есть (свёртка масштабирования Конна, W(f∗f*) ≥ 0 ⟺ RH), а поляризации нет; дефект c
+у CC 2020 есть мера того, насколько сжатие Сонина не единица положительной инволюции. Полка: CC card §3(d)/§6 («leaves open … principal divisors»),
+Deninger через вердикт 07.09; Rosati/Kurokawa/Borger пусто. Источники для охоты (Scite): Borger 0906.3146 (OA), Kurokawa 1992 DOI 10.2969/aspm/02110219;
+Manin Astérisque 228 не найден по названию. Контроль: произведение Шура T_{μ∗ν} = T_μ∘T_ν — положительность квадрата следует из кривой, не наоборот;
+конструкции, где знак приходит из ζ⊗ζ, циркулярны. Переформулировка как утверждение не нова (Weil 1952 / Connes 1999), ново: сиблинг делает дефект счётным.
+Бриф агентам и зонд P1/P2, IF_A/IF_B: docs/Codex/ADVICE_2026-09-12_SQUARE.md. Сходится на SIBLING5. Числа: тождество 1.0, новизна утверждения 0.1, считаемый c 0.4.
