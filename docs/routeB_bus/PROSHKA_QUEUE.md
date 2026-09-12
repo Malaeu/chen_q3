@@ -2,8 +2,15 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
+## Owner-directed GitHub exchange — 2026-09-12
+- STATUS: TASK_PUBLISHED_PENDING_SHORT_CHAT_NOTICE.
+- Direct owner instruction supersedes attachment/base64 transport for this mathematical task: assignments and full responses go through GitHub; this same chat receives one short link and instruction.
+- Current task: docs/routeB_bus/proshka/GITHUB_TASK_GOAL058_LYGSPHI_PUBLICATION.md. Publish the existing immutable LYGSPHI response only; no repeated proof or new mathematical attempt.
+- All nine remote branch heads fetched and inspected. The LYGSPHI response was absent; latest origin/rh_clean was e16f1b51 and isolated math branch was 268e5ad9. No result inferred from the absence.
+- Original response remains pending independent intake; counter stays 2 and RH remains open.
+
 ## REQ-2026-09-12-LYGSPHI-TRANSPORT
-- STATUS: OPEN
+- STATUS: ANSWERED_TRANSPORT_LENGTH_MISMATCH; natural 5m38s completed. Rendered base64 has 19996 characters against declared 27064. Raw SHA not recovered; transport superseded by direct owner GitHub instruction, no retry or new mathematical attempt.
 - Scope: byte-exact retransmission of the completed LYGSPHI response only; no new mathematical attempt, no counter change. Original response remains pending independent intake.
 - Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_LYGSPHI_TRANSPORT_2026-09-12.txt; 3160bytes/53LF/finalLF/noCR/SHA256db5fa6552a25c1d2efb446488b8cf9c748bae5adf7abbad8a6e714a513bca902.
 - Same living math chat6aa52001-4094-83eb-9520-01a09f54eff2; boundaryGOAL058_ACTUAL_THETA_FERROMAGNETIC_REALIZATION; unchanged phase; inherited canonical locator is not rebound.
@@ -11,7 +18,7 @@ This worktree record is a candidate dispatch ledger, not canonical admission or 
 - Target existing response: 56813bytes/907LF/SHA256630da77ed6a85d013e60078090be3135e737db0846194675b05af775cd238fb4. No rewriting on mismatch. Browser preview is complete; supported download events expose no local path; export and other-asset bundling are unavailable. Native app access is prohibited by the UI tool; no bypass. Request literal compressed byte transport through the authorized chat.
 
 ## REQ-2026-09-12-LYGSPHI
-- STATUS: ANSWERED_PENDING_INDEPENDENT_INTAKE; natural26m25s final observed, byte retrieval in progress.
+- STATUS: ANSWERED_PENDING_INDEPENDENT_INTAKE; natural26m25s final observed, GitHub publication pending.
 - Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_LYGSPHI_2026-09-12.txt,89217bytes/1384LF/finalLF/noCR/SHA25632d75bc0235c8aaa48c326e240b5e1123d914d0caf8ea568a86402adb0ae2e71.
 - Parent and sole sibling5_check decoded and matched all4 complete source reports to committed f40db276e8f3c4c4d47adec755e5fb72691a4999 and read the operative source scope; CLEAN_DISPATCH_CANDIDATE. Independent receipt SHA38694b1131430434fa612b491327de3be29481b16dffdcfab0188671f9c62211. Accepted dependencies retain their exact stated scope; recursive archives are not claimed re-read.
 - Boundary: GOAL058_ACTUAL_THETA_FERROMAGNETIC_REALIZATION. One actual-source finite zero-field pair-Ising construction, nonnegative couplings and positive spin weights, weak law limit to Phi/Z with all-radius uniform exponential moments (or proved local uniform transforms). The existing conditional Lee–Yang/Hurwitz transfer does not supply this construction.

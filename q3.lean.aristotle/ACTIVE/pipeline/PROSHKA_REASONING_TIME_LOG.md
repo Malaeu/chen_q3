@@ -2627,13 +2627,16 @@ transaction: REQ-2026-09-12-LYGSPHI
 conversation_id: 6aa52001-4094-83eb-9520-01a09f54eff2
 request_message_id: NOT_CAPTURED
 sent_at: 2026-09-12T19:56:02.330Z
-completed_at: null
+completed_at: NOT_CAPTURED_EXACTLY
+first_final_observed_at_utc: 2026-09-12T20:23:00Z
+first_final_observed_precision: minute
+ui_reasoning_seconds: 1585
 wall_seconds: null
-wall_human: "Pending natural completion"
+wall_human: "UI26m25s; natural final first observed20:23UTC"
 answer_now_shown: false
 answer_now_clicked: false
-primary: null
-status: IN_PROGRESS_OBSERVED
+primary: KILL_NAMED_PHI_SPIN_CONSTRUCTION
+status: FINAL_OBSERVED_RAW_RETRIEVAL_PENDING_INDEPENDENT_INTAKE
 result_pointer: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_LYGSPHI_2026-09-12.txt
 request_sha256: 32d75bc0235c8aaa48c326e240b5e1123d914d0caf8ea568a86402adb0ae2e71
 request_commit: d6cbfa02d9604f2aeba2e70b6daaebff80c0859a
@@ -2643,4 +2646,35 @@ notes: >-
   sent binder, natural Pro-Denkvorgang and Antwort stoppen observed in the
   same owner-authorized mathematical phase chat. Source-sign counter stays2
   until complete independent intake. No RH or canonical admission claim.
+```
+
+### 2026-09-12 — LYGSPHI byte retransmission only
+
+```yaml
+proof_address: RouteB.Goal058.ActualThetaFerromagneticRealization
+front: GOAL058_SECOND_EXPRESSION
+transaction: REQ-2026-09-12-LYGSPHI-TRANSPORT
+conversation_id: 6aa52001-4094-83eb-9520-01a09f54eff2
+request_message_id: NOT_CAPTURED
+sent_at: 2026-09-12T20:35:02.839Z
+completed_at: NOT_CAPTURED_EXACTLY
+first_final_observed_at_utc: 2026-09-12T20:42:00Z
+first_final_observed_precision: minute
+ui_reasoning_seconds: 338
+wall_seconds: null
+wall_human: "UI 5m38s; natural completion"
+answer_now_clicked: false
+primary: TECHNICAL_RETRANSMISSION_ONLY
+status: FINAL_OBSERVED_TRANSPORT_LENGTH_MISMATCH
+request_sha256: db5fa6552a25c1d2efb446488b8cf9c748bae5adf7abbad8a6e714a513bca902
+request_commit: 268e5ad9d0cde113268ef3950574b8293574966f
+result_pointer: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_LYGSPHI_TRANSPORT_2026-09-12.txt
+notes: >-
+  One immutable completed raw response requested as literal gzip/base64 stdout.
+  Parent and sole sibling5_check accepted exact53LF technical request;
+  review-planREADY/holds[], singleTXT tile and binder observed in same chat,
+  natural Pro-Denkvorgang/Stop583. Final rendered base64 has 19996 characters
+  versus declared 27064; original raw SHA not recovered. Owner superseded
+  attachment/base64 transport with GitHub exchange; no retry.
+  No new mathematics, attempt or counter change.
 ```
