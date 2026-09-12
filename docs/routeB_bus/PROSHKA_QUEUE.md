@@ -3,12 +3,14 @@
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
 ## Manual continuation of ODDCURV — full-sign follow-up
-- STATUS: IN_REVIEW (observed owner send; no new Codex TXT dispatch)
+- STATUS: ANSWERED (observed owner send; no new Codex TXT dispatch)
 - Local tracking label: MANUAL-ODDCURV-FULL-SIGN-20260912; no invented producer request binding.
 - Same chat6aa52001-4094-83eb-9520-01a09f54eff2. Exact visible message archived in docs/routeB_bus/proshka/PROSHKA_MANUAL_FOLLOWUP_GOAL058_ODDCURV_2026-09-12.txt.
 - Owner subsequently confirmed the send in this Codex task. Natural Pro reasoning and Stop control observed after the message; no duplicate sent.
 - Scope: continue full integrated IC/O2 question using the existing source-locked context. Positive proof and a negative witness for the identical claim are alternatives, not simultaneous deliverables.
 - Initial no-delta counter2; classify the actual complete response and audit before updating. Pending generation is not cycle3.
+
+- Natural31m16s; full39236bytes/651LF/finalLF/SHA2562281280161631905987633e895c34e980470bbeda517e3bc4c1df2ce2d0e9833 accepted by parent and sole sibling5_check: actual ODD2 min>=4,gap>=4, all complex coefficients. See docs/Codex/REPORT_2026-09-12_ODD2_REGIONAL_INTAKE.md. Producer global-incomplete count3 retained; parent distinguishes owner no-new-result condition and resets consecutive stagnation2->0 on this actual consumer-family progress. GlobalIC/O2/RH still open.
 
 ## REQ-2026-09-12-ODDCURV
 - STATUS: ANSWERED -> docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_ODDCURV_2026-09-12.md

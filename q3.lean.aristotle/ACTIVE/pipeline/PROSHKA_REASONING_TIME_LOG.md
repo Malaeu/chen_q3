@@ -2516,3 +2516,28 @@ notes: >-
   IC and ODD2 open; no-delta1->2. A subsequent manually sent full-sign
   continuation was observed already reasoning; Codex did not duplicate it.
 ```
+
+### 2026-09-12 — owner-direct regional ODD2 continuation
+
+```yaml
+proof_address: GOAL058_ACTUAL_THETA_ODD2_REMAINING_DOMAIN
+front: GOAL058_SECOND_EXPRESSION
+transaction: MANUAL-ODDCURV-FULL-SIGN-20260912
+request_message_id: NOT_CAPTURED
+conversation_id: 6aa52001-4094-83eb-9520-01a09f54eff2
+sent_at: NOT_CAPTURED_OWNER_SEND
+completed_at: NOT_CAPTURED
+wall_seconds: NOT_CONTINUOUSLY_MEASURED
+wall_human: "UI31m16s; complete observed near12:03UTC"
+ui_reasoning_seconds: 1876
+answer_now_shown: NOT_OBSERVED
+answer_now_clicked: false
+primary: EXPLICIT_REGIONAL_ODD2_MIN4_GAP4
+status: ACCEPT_REGIONAL_ODD2_MIN4_GAP4_ONLY
+result_pointer: docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_ODDCURV_OWNER_CONTINUATION_2026-09-12.md
+notes: >-
+  Owner confirmed manual send. Exact full download and parent/sole-checker
+  audit accepted a new actual consumer family, not global IC/O2 or RH.
+  Producer global-incomplete count3 is separate from owner stagnation;
+  parent counts the new verified region as mathematical progress.
+```
