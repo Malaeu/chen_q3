@@ -2,14 +2,24 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
+## REQ-2026-09-12-ODD2
+- STATUS: OPEN
+- CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+- Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_ODD2_2026-09-12.txt
+- Same living mathematical chat 6aa52001-4094-83eb-9520-01a09f54eff2, idle after MATGOAL receipt.
+- Target: uniform actual-theta odd2x2 determinant, one necessary four-node subspace of SL20; all larger sizes, even sector and RH remain open.
+- Initial same-obstacle no-delta count0; mathematical failure to add an actual supplier increments it, transport waiting does not.
+- Isolated PAPER request; canonical runtime/phase ownership unchanged. Sole sibling5_check request review CLEAN on SHA25628af680de867ee852e7e73fac6a2d9a17bcdb9b6f1acc92c3d57eb72491447d7; all4payload hashes decoded, factor2/limited O2 scope checked. No new delivery yet.
+
 ## REQ-2026-09-12-MATGOAL
-- STATUS: IN_REVIEW
+- STATUS: ANSWERED -> docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_MATGOAL_2026-09-12.md
 - CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
 - Owner explicitly requested a new project chat on 2026-09-12; this supersedes same-chat transport for this one creation. Mathematical phase identity is not automatically changed.
 - Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_MATGOAL_2026-09-12.txt
 - Response: full downloadable PAPER verdict; no external writes assigned to Proshka.
 - Observed delivery: exact TXT tile, sent message and natural 6 Pro reasoning in new owner-directed chat 6aa52001-4094-83eb-9520-01a09f54eff2. Request commit ff1ce0db5575e0801cdf6236ea20be6a3af9be96; SHA256 83c7e28412c26510a9f373c4fccda110db9be4730aaf7422d40739bcf042ed42; bytes149702, LF2141.
 - Independent request review: sibling5_check CLEAN on exact SHA. Canonical runtime was not rebound; this isolated ledger is not production admission.
+- Receipt: natural response 25m40s; exact downloadable45178bytes/764LF/finalLF/SHA256710c587ea317df581ba235aa17d3f248c096bdfd54a9af1fd122defd206a0706. Request/boundary/provenance binding verified; ANSWERED is receipt, not acceptance. Parent proof check and sole independent MV response check complete: ACCEPTED_PARTIAL_PAPER, exact auxiliary-form scope only. See docs/Codex/REPORT_2026-09-12_MATGOAL_INTAKE.md.
 
 # Очередь к Прошке — накопительная
 
