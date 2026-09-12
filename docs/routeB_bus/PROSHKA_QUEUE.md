@@ -3,11 +3,14 @@
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
 ## REQ-2026-09-12-ODD2COMPACT
-- STATUS: OPEN; final exact-file review complete, not sent yet.
+- STATUS: IN_REVIEW; exact final TXT delivered and natural Pro reasoning observed.
 - Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_ODD2COMPACT_2026-09-12.txt,314544bytes/5112LF/finalLF/SHA2564defaec31ac4dac8d477ae8e75cab1f3dde6181d20dda981bede140c68d1d31a.
 - Current14-source version retains accepted joint-tail/compact/origin results, supplies the explicit origin radius, and adds accepted actual r TN infinity plus the two exact convolution-transfer exclusions. Parent and sole sibling5_check independently decoded and byte-matched all14 payloads; exact final request review CLEAN.
 - Previous11- and12-source versions passed independent review and were never sent. Owner's intervening manual response is now complete and accepted. Now registered OPEN after final review. Next: publish/review-plan, verify same chat idle, deliver once.
 - Target remains all actual positive-node ODD2, with global IC optional. Current consumer no-delta1 after the latest failed convolution transfer; older producer3->4 is historical. No RH promotion.
+
+- Delivered2026-09-12T13:44:55.345361+00:00: same chat6aa52001-4094-83eb-9520-01a09f54eff2, exact ODD2COMPACT TXT tile and binder in sent user message, natural6Pro Pro-Denkvorgang and Antwort stoppen. Request commitf56c82b2dff21ac37e8d3bebc183d476cdcc7067/blob38ff8d635c4287e1c059588066a28db458e997c1; exact314544bytes/5112LF/SHA2564defaec31ac4dac8d477ae8e75cab1f3dde6181d20dda981bede140c68d1d31a. No Answer now or duplicate.
+- Fresh review-plan returned REVIEW_DISPATCH_READY/holds[]. Control8 requires exact committed attachment, not completed remote push; all14 sources are embedded. GitHub connection failure is tracked separately and binder explicitly states local commit/push pending. Inherited canonical chat locator is superseded by the previously authorized owner-created mathematical chat; no canonical rebind.
 
 ## Observed owner continuation — source contraction / total positivity
 - STATUS: ANSWERED; observed user-role send in the same existing chat, not a new Codex REQ.
