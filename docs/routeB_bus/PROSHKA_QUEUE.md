@@ -3,11 +3,13 @@
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
 ## REQ-2026-09-12-MATGOAL
-- STATUS: OPEN
+- STATUS: IN_REVIEW
 - CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
 - Owner explicitly requested a new project chat on 2026-09-12; this supersedes same-chat transport for this one creation. Mathematical phase identity is not automatically changed.
 - Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_MATGOAL_2026-09-12.txt
 - Response: full downloadable PAPER verdict; no external writes assigned to Proshka.
+- Observed delivery: exact TXT tile, sent message and natural 6 Pro reasoning in new owner-directed chat 6aa52001-4094-83eb-9520-01a09f54eff2. Request commit ff1ce0db5575e0801cdf6236ea20be6a3af9be96; SHA256 83c7e28412c26510a9f373c4fccda110db9be4730aaf7422d40739bcf042ed42; bytes149702, LF2141.
+- Independent request review: sibling5_check CLEAN on exact SHA. Canonical runtime was not rebound; this isolated ledger is not production admission.
 
 # Очередь к Прошке — накопительная
 
