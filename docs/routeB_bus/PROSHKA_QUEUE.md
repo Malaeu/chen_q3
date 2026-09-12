@@ -2,17 +2,21 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
-## Prepared REQ-2026-09-12-ODD2COMPACT — not dispatched
-- STATUS: REVIEWED_PREPARED; not an OPEN delivery obligation while the owner's newer manual continuation is running.
-- Exact request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_ODD2COMPACT_2026-09-12.txt,244695bytes/3910LF/finalLF/SHA25616e2541fdb79f123a0e9c928d2cd30e27651cff7759f4d814753f5b133c8f2b4.
-- Parent and sole sibling5_check CLEAN; all11 source payloads independently decoded and matched byte-for-byte to disk. Scope is full actual ODD2 after accepted joint-tail, compact-localization and origin-corner theorems; global IC optional.
-- MUST receive/audit the currently running source-contraction continuation and reconsider this prepared request before delivery. No upload, binder or Codex send has occurred. Review-plan and remote publication are still required.
+## REQ-2026-09-12-ODD2COMPACT
+- STATUS: OPEN; final exact-file review complete, not sent yet.
+- Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_ODD2COMPACT_2026-09-12.txt,314544bytes/5112LF/finalLF/SHA2564defaec31ac4dac8d477ae8e75cab1f3dde6181d20dda981bede140c68d1d31a.
+- Current14-source version retains accepted joint-tail/compact/origin results, supplies the explicit origin radius, and adds accepted actual r TN infinity plus the two exact convolution-transfer exclusions. Parent and sole sibling5_check independently decoded and byte-matched all14 payloads; exact final request review CLEAN.
+- Previous11- and12-source versions passed independent review and were never sent. Owner's intervening manual response is now complete and accepted. Now registered OPEN after final review. Next: publish/review-plan, verify same chat idle, deliver once.
+- Target remains all actual positive-node ODD2, with global IC optional. Current consumer no-delta1 after the latest failed convolution transfer; older producer3->4 is historical. No RH promotion.
 
 ## Observed owner continuation — source contraction / total positivity
-- STATUS: IN_REVIEW; observed user-role send in the same existing chat, not a new Codex REQ.
+- STATUS: ANSWERED; observed user-role send in the same existing chat, not a new Codex REQ.
 - Expanded visible text accepts the Hodge/Weil proposal: independent source structure supplying the sign, followed by "Да, чувак, именно так. Делаем это."
 - Observed near12:53UTC with natural reasoning about source contraction, additive total positivity and the exact BP2-to-ODD2 transfer, plus Antwort stoppen. No final verdict yet.
 - AX-normalized visible transcription: docs/routeB_bus/proshka/PROSHKA_MANUAL_FOLLOWUP_GOAL058_SOURCE_CONTRACTION_2026-09-12.txt; not claimed byte-identical original composer text. Current prepared ODD2COMPACT has not been sent into this generation.
+
+- Complete response: UI29m42s,50632bytes/842LF/finalLF/SHA256654c1a3bfe0a4eb570adce71c6d62d7b97deca110765de79a7776dd6878b5bd7. One same-chat reload recovered the final after inconclusive display; no restart or send.
+- Parent and sole checker ACCEPT_SOURCE_TN_INFINITY_AND_SCOPED_TRANSFER_FAILURES: actual additive r TN infinity and quantitative full-source limit; raw physical convolution norm counterexample; corrected contraction fails exact profile map. No actual ODD2 witness/sign region. Intake docs/Codex/REPORT_2026-09-12_THETA_TN_INFINITY_INTAKE.md. Consumer no-delta0->1 after recent sign-family advances; producer3->4 retained as history.
 
 ## Manual Hodge / Weil continuation — accepted strategic review
 - STATUS: ANSWERED; owner send, no new Codex REQ.

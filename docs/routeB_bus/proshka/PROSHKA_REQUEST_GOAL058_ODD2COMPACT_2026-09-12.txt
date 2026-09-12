@@ -60,14 +60,58 @@ The full report, reviewed standard-library Decimal code, and output are
 attached. This is a computer-assisted PAPER theorem with explicit decimal
 arithmetic dependency, not Lean certification. The sole checker reran it;
 the parent independently checked the algebra and interval operations.
-No numerical epsilon is asserted. Diagonal vanishing is retained exactly.
+The original report leaves epsilon existential. The newly accepted explicit
+radius refinement below supplies the conservative rational value
+
+ epsilon=1/56478478465178686828584943531458793728.
+
+Its proof uses full derivative bounds through order7 and a quantitative
+bound on the divided determinant. It refines the same corner theorem,
+not a new global sign family. Diagonal vanishing is retained exactly.
 
 These are source sign-family progress, not new notations for ODD2. Your
 older counter3 and unratified-regional label describe older context. Keep
 that history, but the owner's count is three repetitions of the SAME
 mathematical dead end WITHOUT progress, not three globally incomplete
-responses. Current consecutive no-progress count is0 after these checked
-advances. Do not describe global IC/ODD2/RH as already proved.
+responses. Those checked advances reset the consumer no-delta count to0.
+Your subsequent source-convolution attempt, now independently accepted at
+its narrower scope below, adds one consumer-sign no-delta attempt:0->1.
+It does not add an actual ODD2 sign region or actual K negative witness.
+Keep your historical3->4 separately. Do not reset this current count for
+the radius refinement or TN source property, and do not describe global
+IC/ODD2/RH as already proved.
+
+The latest source-contraction continuation is also now accepted. Its full
+response and intake are included below. Retain these additional source
+facts and exact exclusions:
+
+D. ACTUAL ADDITIVE SOURCE TN INFINITY. Every ordered minor of r(u_i-v_j)
+is nonnegative, for all orders and increasing real node lists. Finite
+gamma convolutions converge with ||r-r_N||_infinity<=2pi/N, paying the
+full source limit. This is not Hermitian PSD of that nonsymmetric table.
+It implies the global scalar envelope
+
+ f(x)/f(0)<=exp[(5/2)|x|-(5/4)(exp(2|x|)-1)],
+
+and excludes all scaled versions of the old polynomial control from TN2.
+Neither corollary supplies the integrated K determinant sign by itself.
+
+The particular raw convolution C_r on t>=1 fails to be a contraction in
+physical measure (1/2)t^(3/2)dt. Its exact normalized exponential witness
+has norm defect < -1/4000, with every source tail included. That is NOT a
+negative K witness. The correctly weight-conjugated operator is a true
+contraction; in the positive logarithmic coordinate it is
+
+ (C_hat a)(v)=integral_0^v 2exp(v+y)r(exp(2v)-exp(2y))a(y)dy.
+
+But it cannot map a_x to b_x: its output has right limit0 while
+b_x(0)=-x f(x). The mismatch holds on positive measure. Both exact
+operator claims are now refuted and must not be retried. With
+E_x=b_x-C_hat a_x, the resulting complex cross-error is still unpaid.
+Merely asserting its domination is the original ODD2 inequality again.
+Use TN or the envelope only with a new, proved full-source transfer into
+the actual remaining determinant. No other geometric realization is
+excluded by these two specific failures.
 
 2. Exact source and the remaining consumer
 
@@ -90,8 +134,11 @@ Using A-C, the unpaid part lies in
 It still contains arbitrarily small single nodes and coincident-node
 limits away from zero. Boundedness is not compact separation from these
 boundaries, and no finite mesh of point values establishes their signs.
-If your proof uses specific L/epsilon, supply valid bounds for those
-same constants; otherwise work with their quantified definitions.
+A valid but very conservative epsilon is now explicit above. L remains
+existential. If your proof uses a specific numerical L or a larger corner,
+supply valid bounds for those same constants; otherwise retain their
+quantified definitions. Older attached reports retain their earlier
+existential-epsilon status as provenance, superseded by the refinement.
 
 For x!=y, the desingularized quantity
 
@@ -3908,3 +3955,1158 @@ count for each payload; frame markers are outside the payload.
 | No sign premise was proved. No ODD2 result or no-progress counter reset is
 | claimed. The active all-test RH goal remains incomplete.
 ===== END FILE docs/Codex/REPORT_2026-09-12_FULL_SIGN_TRANSFER_AUDIT.md =====
+
+===== FILE docs/Codex/REPORT_2026-09-12_ODD2_ORIGIN_EXPLICIT_RADIUS.md BYTES 7117 LF 174 FINAL_LF true SHA256 ffc8e2cb7fbd28d1cbb657d1a28accec074d6ecaf7fb4c384c88f659d2036775 =====
+| # An explicit radius for the accepted origin corner
+| 
+| STATUS: ACCEPT_EXPLICIT_ORIGIN_RADIUS_REFINEMENT_ONLY
+| SCOPE: QUANTITATIVE_REFINEMENT_OF_ACCEPTED_ORIGIN_CORNER_ONLY
+| SOURCE_THETA_ODD2: OPEN
+| PX_RH_CLAIM: NOT_MADE
+| 
+| This removes an existential constant from the accepted origin-corner
+| theorem. It neither establishes a new global sign nor evaluates the
+| large-square threshold L. The deliberately small radius is a valid
+| boundary for a future complete-domain certificate, not an efficient one.
+| 
+| Dependency: REPORT_2026-09-12_ODD2_ORIGIN_CORNER.md, SHA256
+| 1b507d7c22480de44e4215131d34c3d1f8211b3715556fa7d96aa55cf97a7b2a,
+| including its reviewed code/output and standard-decimal dependency.
+| That theorem proves the raw origin jet determinant exceeds 1/10.
+| The present argument uses only exact rational arithmetic in addition.
+| 
+| Work with raw F=Phi, K0=A^2 K and Delta0=A^4 Delta. Define
+| 
+|     D=81764454102531481,
+|     M=66D^2=441238113009208490848319871339521826,
+|     epsilon=1/(128M)
+|       =1/56478478465178686828584943531458793728.          (1)
+| 
+| The claim is, for all 0<x,y<=epsilon,
+| 
+|     Delta(x,y)>=x^2 y^2 (x^2-y^2)^2/(720 A^4).          (2)
+| 
+| Together with the previously accepted positive diagonals, this includes
+| all complex two-node coefficients and the usual factor2 for the odd
+| four-node V form. Equality on the diagonal is preserved.
+| 
+| ## 1. Global bounds for the necessary source derivatives
+| 
+| Let P0(z)=4z^2-6z and
+| 
+|     P_(j+1)(z)=(1/2-2z)P_j(z)+2zP'_j(z).
+| 
+| Then for v>=0,
+| 
+|     F^(j)(v)=exp(v/2) sum_(n>=1) P_j(pi n^2 exp(2v))
+|                                       exp(-pi n^2 exp(2v)).
+| 
+| Put B_j equal to the sum of the absolute coefficients of P_j,
+| nu_j=j+9/4 and D_j=(16/15) B_j nu_j^ceil(nu_j). The full-theta
+| bound from the origin report applies without change for 0<=j<=7:
+| 
+|     |F^(j)(v)|<=D_j exp[-pi exp(2v)/2].                 (3)
+| 
+| Indeed deg P_j=j+2, z>=pi>1, exp(v/2)<=z^(1/4), and
+| z^nu exp(-z/2)<=(2nu/e)^nu<=nu^ceil(nu). The remaining exponential
+| series is bounded geometrically using n^2-1>=3(n-1), pi>3 and e^3>16.
+| Evenness of F gives the analogous absolute bound with |v| for v<0.
+| 
+| Exact rational recurrence gives the following ceilings of D_j:
+| 
+|     j:         0,    1,      2,        3,
+|     ceil D_j:122, 6308, 488816, 52738348,
+| 
+|     j:                     4,             5,               6,                 7
+|     ceil D_j:     7513612509, 1359827644774, 303637100565646, 81764454102531481.
+| 
+| Thus D in (1) bounds every D_j needed. The coefficient absolute sums are
+| 10,53,661/2,9445/4,151269/8,2672213/16,51450613/32,1069789829/64.
+| These constants can be independently reconstructed with the recurrence;
+| no floating-point fit or finite theta truncation enters (3).
+| 
+| For |s|,|t|<=1 and v>=2 both |v+s| and |v+t| exceed v-1. By (3) the
+| product of any two required derivatives is bounded by
+| D^2 exp[-pi exp(2(v-1))]<=D^2 exp[-3(v-1)]. On 0<=v<=2 it is at most D^2.
+| Consequently the full weighted and unweighted majorants satisfy
+| 
+|     integral_0^2 (2+2v)dv
+|         +integral_2^infinity (2+2v)exp[-3(v-1)]dv <9,
+|     2+integral_2^infinity exp[-3(v-1)]dv <3.             (4)
+| 
+| The first tail equals (20/9)e^-3<1; the second equals e^-3/3<1.
+| For r,q>=1, r+q<=8, differentiate the full V integral as in the origin
+| report. The three terms have weights (s+t+2v), r and q. Applying (4),
+| then including V(s,-t), proves on the whole square [-1,1]^2
+| 
+|     |partial_s^r partial_t^q K0(s,t)|
+|         <=2[9+3(r+q)]D^2<=M.                           (5)
+| 
+| This includes all derivatives with r=2a+1,q=2b+1,a+b<=3.
+| The same full-integral majorants justify differentiation; no reflected
+| integration tail is omitted.
+| 
+| ## 2. Squared coordinates with controlled derivatives
+| 
+| Let g(s,t)=K0(s,t)/(st), smoothly extended by oddness. Its integral
+| quotient representation is
+| 
+|     g(s,t)=integral_0^1 integral_0^1 K0_st(as,bt) da db.
+| 
+| It is even in each variable. If h is even and H(u)=h(sqrt(u)), then,
+| for k>=1, the ordinary one-variable integral identity is
+| 
+|     H^(k)(u)=1/[2^(2k-1)(k-1)!]
+|        integral_0^1 (1-a^2)^(k-1) h^(2k)(a sqrt(u)) da. (6)
+| 
+| It follows by repeated differentiation and integration by parts; for k=1
+| it is h'(s)/(2s)=(1/2) integral_0^1 h''(as) da. Its positive kernel has
+| mass k!/(2k)!. This also proves the derivative extension at u=0.
+| Apply it in each variable to g and set T(u,v)=g(sqrt(u),sqrt(v)).
+| For a,b>=0,a+b<=3, the quotient integrals and (5) give
+| 
+|     |partial_u^a partial_v^b T(u,v)|
+|         <=[a! b! / ((2a+1)!(2b+1)!)] M <=M,
+|                        0<=u,v<=1.                     (7)
+| 
+| For a=0 or b=0, the respective even-variable operation is the identity.
+| Only derivatives up to total order3 in T, hence up to order7 in one
+| original coordinate and total order8 in K0, are required.
+| 
+| ## 3. A quantitative bound for the divided determinant
+| 
+| Write h(u)=T(u,u) and
+| 
+|     N(u,v)=h(u)h(v)-T(u,v)^2.
+| 
+| From (7), |h^(k)|<=2^k M, k<=3. Direct differentiation gives
+| 
+|     |N_uvv|<=16 M^2,    |N_vvv|<=16 M^2.               (8)
+| 
+| For clarity the four terms of N_uvv are h'(u)h''(v),
+| -4T_v T_uv, -2T_u T_vv, -2T T_uvv, bounded respectively by
+| 8,4,2,2 times M^2. The three terms of N_vvv are h(u)h'''(v),
+| -6T_v T_vv, -2T T_vvv, bounded by 8,6,2 times M^2.
+| 
+| Symmetry gives N(u,u)=N_v(u,u)=0, so the divided determinant extends as
+| 
+|     R(u,v)=N(u,v)/(u-v)^2
+|        =integral_0^1 (1-a) N_vv(u,(1-a)u+av) da.       (9)
+| 
+| Differentiating this exact integral and using (8) yields
+| 
+|     |R_u|<=16 M^2 integral_0^1 (1-a)(2-a)da
+|            =(40/3)M^2,
+|     |R_v|<=16 M^2 integral_0^1 a(1-a)da
+|            =(8/3)M^2.                                (10)
+| 
+| The accepted origin jet certificate gives R(0,0)>1/360 in raw
+| normalization. For 0<=u,v<=epsilon^2, (10) therefore implies
+| 
+|     R(u,v)>1/360-16M^2 epsilon^2
+|             =1/360-1/1024 >1/720.                     (11)
+| 
+| Indeed 16M^2 epsilon^2=1/1024<1/720. Since
+| Delta0(x,y)=x^2y^2(x^2-y^2)^2 R(x^2,y^2), restoring A^4 proves (2).
+| 
+| The numerical radius is extremely conservative. This refinement makes
+| the accepted corner explicit; it does not exclude a witness elsewhere
+| in the bounded region, prove a global IC inequality, or close larger
+| odd/even matrices or RH. It must not be counted as a new global sign
+| family beyond the previously accepted existential corner.
+| 
+| ## Acceptance receipt
+| 
+| The sole read-only independent checker /root/sibling5_check accepted the
+| 6209-byte,157-LF candidate SHA256
+| 315d1b3080b41cc964f210aef03b702199752b504b94d9b3f4e8b3d1096a0e47
+| as ACCEPT_EXPLICIT_ORIGIN_RADIUS_REFINEMENT_ONLY. It independently
+| reconstructed the rational polynomial recurrence and constants, and
+| checked all derivative, quotient, remainder, and normalization steps.
+| 
+| The parent separately checked the general even-coordinate identity by
+| integration by parts, the full derivative majorants, and the divided
+| remainder derivatives. Exact rational monomial checks39/39 additionally
+| confirmed the prefactors, without substituting for the general proof.
+| The inherited origin interval certificate was not rerun unnecessarily.
+| Only the status and this receipt were added after independent review.
+| The mathematical refinement and its explicitly limited scope are unchanged.
+===== END FILE docs/Codex/REPORT_2026-09-12_ODD2_ORIGIN_EXPLICIT_RADIUS.md =====
+
+===== FILE docs/routeB_bus/proshka/PROSHKA_THETA_TOTAL_POSITIVITY_SOURCE_TEST_2026-09-12.md BYTES 50632 LF 842 FINAL_LF true SHA256 654c1a3bfe0a4eb570adce71c6d62d7b97deca110765de79a7776dd6878b5bd7 =====
+| # STATUS: TRY_THETA_TN_INFINITY_SOURCE_GEOMETRY
+| ```yaml
+| OPERATIVE_CLASS: TRY_THETA_TN_INFINITY_SOURCE_GEOMETRY
+| PRIMARY_COUNT: 1
+| PARENT_REQUEST_ID: REQ-2026-09-12-ODDCURV
+| CURRENT_CALL: OWNER_AUTHORIZED_PAPER_CONTINUATION_AFTER_HODGE_WEIL_REVIEW
+| NEW_REQUEST_ID_ASSIGNED: false
+| BOUNDARY: ACTUAL_THETA_SOURCE_STRUCTURE_AND_ONE_CONTRACTION_TRANSFER_TEST
+| PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+| ROUTE_ID: RouteB_TwoLevelSpectralLadder
+| FRONT_ID: GOAL058_SECOND_EXPRESSION
+| SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+| TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+| CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+| SOURCE_BASE: 7653a3503d20be4dba91a333ff96e5eea30c738c
+| HONESTY_STATE: CHALLENGER_NOT_RH
+| RESULT_SCOPE: SOURCE_STRUCTURE_AND_SCOPED_TRANSFER_FAILURE_NOT_ODD2_CLOSURE
+| EVIDENCE_STATE: PAPER_DERIVATION_PENDING_INDEPENDENT_REVIEW
+| SCOPE: ABSTRACT
+| VERIFIER: PAPER
+| SOURCE_RESULT:
+|   actual_r_additive_translation_kernel_TN_infinity: established_in_this_derivation
+|   uniform_density_approximation: "sup_R |r-r_N| <= 2*pi/N"
+|   every_scaled_polynomial_control_excluded: true
+| TRANSFER_TEST:
+|   raw_source_convolution_physical_contraction: refuted
+|   exact_normalized_defect_upper_bound: "norm(u)^2 - norm(C_r*u)^2 < -1/4000"
+|   weight_conjugated_source_convolution: contractive
+|   required_profile_intertwining_for_that_operator: refuted
+| SCOPED_KILLS:
+|   - target: RAW_SOURCE_PROBABILITY_CONVOLUTION_IS_PHYSICAL_L2_CONTRACTION
+|     KILL_SCOPE: THEOREM_SHAPE
+|     FAILURE_TYPE: COUNTEREXAMPLE
+|     EPISTEMIC_STATUS: MATHEMATICALLY_DEAD
+|     EVIDENCE: "Sections 5.2-5.5; actual r; q=1/1000; explicit normalized exponential"
+|   - target: WEIGHT_CONJUGATED_SOURCE_CONVOLUTION_MAPS_a_x_TO_b_x
+|     KILL_SCOPE: THEOREM_SHAPE
+|     FAILURE_TYPE: INCOMPATIBILITY
+|     EPISTEMIC_STATUS: MATHEMATICALLY_DEAD
+|     EVIDENCE: "Section 6.3; output trace 0 versus b_x(0)=-x*f(x)"
+| IC_PROVED: false
+| IC_REFUTED: false
+| UNIFORM_ODD2_PROVED: false
+| UNIFORM_ODD2_REFUTED: false
+| ACTUAL_K_NEGATIVE_WITNESS_FOUND: false
+| FULL_Q_SIGN_PROVED: false
+| LEAN_VERIFIED: false
+| NUMERICAL_THETA_CAMPAIGN: false
+| REPO_WRITE: false
+| RUNTIME_OR_QUEUE_CHANGE: false
+| PRODUCTION_ADMISSION: false
+| PX_RH_CLAIM: NOT_MADE
+| PROGRESS_CLASS: REPRESENTATION_PROGRESS
+| SOURCE_STRUCTURE_PROGRESS: true
+| ODD2_SIGN_PROGRESS: false
+| COGNITIVE_OPERATOR: REPRESENTATION_SHIFT
+| ROUTE_SCORE: 3
+| COUNTER:
+|   inherited_same_obstacle_no_delta_cycles: 3
+|   local_final_same_obstacle_no_delta_cycles: 4
+|   reset_by_source_structure: false
+|   runtime_counter_written: false
+| ```
+| 
+| Ы. Проверен один конкретный способ получить независимую положительную структуру из исходной theta: полная неотрицательность сдвигового ядра её плотности. Она действительно следует из полного гамма-произведения. Но проверенный перенос через вероятностную свёртку не даёт знака исходного нечётного ядра: сначала ломается требуемая норма, а после правильного исправления нормы — точное соответствие профилей.
+| 
+| **Итог:** независимый исходный структурный факт получен; независимый поставщик полного ODD2 пока не получен. Отрицательный свидетель ниже опровергает конкретную контракцию, а не ODD2, не полную V-форму и не RH.
+| 
+| ## 0. Источники, область чтения и проверка байтов
+| 
+| **[ABSTRACT][PAPER] — проверка входных данных.**
+| 
+| Протокол `docs/routeB_bus/proshka/PROSHKA_SYSTEM_PROMPT_v2.md` прочитан через GitHub на `rh_clean`; Git blob `eba04b799176c9e6a1d5f7fc4061280cfbf96ad4`. Никакой запрос из очереди не выбирался. Текущий ход — прямое продолжение владельцем PAPER-обсуждения; новый source-locked REQ не выдуман.
+| 
+| В этом ходе заново проверены следующие локальные байты:
+| 
+| | Метка | Файл | Байты | LF | SHA-256 |
+| |---|---|---:|---:|---|
+| | F1 | PROSHKA_REQUEST_GOAL058_ODDCURV_2026-09-12.txt | 121328 | 1778 | `295077d6e0f87d8fbaae0fcec427035f0f1642dbc572579cc256574b06cf00f2` |
+| | F2 | PROSHKA_REQUEST_GOAL058_MATGOAL_2026-09-12.txt | 149702 | 2141 | `83c7e28412c26510a9f373c4fccda110db9be4730aaf7422d40739bcf042ed42` |
+| | F3 | PROSHKA_HODGE_WEIL_NEGATIVE_WITNESS_REVIEW_2026-09-12.md | 38721 | 507 | `8f51bfb60f4221c53d094bd901fb5bdcff26568331dca69d6a5ee276b3476f04` |
+| 
+| У всех трёх файлов конечный LF. В текущем ходе читались относящиеся к выбранному механизму определения, BP/DN-входы, ограничения и знаковое представление из F3. Это не заявление о новом полном переаудите всех вложенных доказательств F1/F2. Ранее принятый перенос всех конечных V-матриц в полную Q-форму не переаудировался вместо поставленной задачи.
+| 
+| Классический контекст, а не источник нового ODD2: A. Belton, D. Guillot, A. Khare, M. Putinar, *Preservers of totally positive kernels and Pólya frequency functions*, Mathematics Research Reports 3 (2022), 35–56, DOI 10.5802/mrr.12. Ниже дана самостоятельная проверка нужного специального случая через свёртку и предел. Новизна классической теории PF∞ не заявляется.
+| 
+| Нормировка вероятностного источника берётся из F1/F2. Внешний контекст: P. Biane, J. Pitman, M. Yor, *Probability laws related to the Jacobi theta and Riemann zeta functions, and Brownian excursions*, Electronic Journal of Probability 5 (2000), paper 12. Этот библиографический указатель не заменяет проверки проектных коэффициентов.
+| 
+| ## 1. Фиксированные объекты и проверяемый механизм
+| 
+| ### 1.1. Исходная theta, без смены нормировки
+| 
+| **[ABSTRACT][PAPER] — принятые входы F1/F2.**
+| 
+| Сохраняем
+| 
+| \[
+| r(t)=2\sum_{n\ge1}(2\pi^2n^4t-3\pi n^2)e^{-\pi n^2t},\quad t>0,
+| \qquad r(1/t)=t^{5/2}r(t),
+| \tag{1}
+| \]
+| 
+| \[
+| \Phi(x)=e^{5x/2}r(e^{2x}),\qquad A=\|\Phi\|_2>0,\qquad f=\Phi/A.
+| \tag{2}
+| \]
+| 
+| Плотность r положительна и гладка на положительной полуоси. Продолжаем её нулём на отрицательную полуось и полагаем r(0)=0; продолжение непрерывно. Функция f положительна, чётна и имеет принятые полные быстро убывающие хвосты вместе с производными.
+| 
+| Принятое вероятностное представление:
+| 
+| \[
+| T=\sum_{n\ge1}\frac{\Gamma_{2,n}}{\pi n^2},\qquad
+| \mathbb E e^{-sT}=\prod_{n\ge1}\left(1+\frac{s}{\pi n^2}\right)^{-2},\quad s\ge0.
+| \tag{3}
+| \]
+| 
+| Переменные независимы; каждая \(\Gamma_{2,n}\) — сумма двух независимых экспоненциальных переменных со средним 1. Плотность T — именно r, и \(\mathbb ET=\pi/3\). Деление f на A не превращается в вероятностную нормировку \(\int\Phi\).
+| 
+| Потребитель остаётся
+| 
+| \[
+| V(x,y)=\int_0^\infty(x+y+2v)f(x+v)f(y+v)\,dv,
+| \quad K(x,y)=V(x,y)-V(x,-y),
+| \tag{4}
+| \]
+| 
+| \[
+| \Delta_-(x,y)=K(x,x)K(y,y)-K(x,y)^2\ge0
+| \quad\text{для всех }x,y>0.
+| \tag{5}
+| \]
+| 
+| Положительность элементов K — принятый OD1; знак определителя (5) не принимается как вход. Все комплексные коэффициенты и оба отражённых профиля сохраняются.
+| 
+| ### 1.2. Зарегистрированное ожидание и фактический тест
+| 
+| **[ABSTRACT][CONDITIONAL] — предсказание до вывода.**
+| 
+| До проверки в чате зарегистрировано: полное гамма-произведение должно дать неотрицательность упорядоченных сдвиговых миноров r; перенос из аддитивных сдвигов в логарифмические масштабирования может потерять нужную структуру. Вероятности не назначались.
+| 
+| Проверяемый способ переноса: использовать свёртку с исходной вероятностной плотностью как независимую контракцию — оператор, не увеличивающий норму, — затем проверить её действие на точных профилях (4). Утверждение о существовании произвольной подходящей контракции не принимается как новый исходный факт.
+| 
+| ## 2. Независимая исходная структура: TN∞ для r
+| 
+| ### Теорема 1
+| 
+| **[ABSTRACT][PAPER] — новое выведение из (3), независимая проверка ожидается.**
+| 
+| Для любого m≥1 и любых строго возрастающих вещественных узлов
+| 
+| \[
+| u_1<\cdots<u_m,\qquad v_1<\cdots<v_m
+| \]
+| 
+| выполнено
+| 
+| \[
+| \boxed{\det[r(u_i-v_j)]_{i,j=1}^{m}\ge0.}
+| \tag{6}
+| \]
+| 
+| Свойство (6) называется **полной неотрицательностью**, TN∞, сдвигового ядра; плотность относится к классу **Pólya frequency**, PF∞. Термин «полная положительность» в литературе иногда включает нулевые миноры; здесь строгость не утверждается.
+| 
+| Это не утверждение, что таблица \(r(u_i-v_j)\) является эрмитовой положительной матрицей. В общем случае она несимметрична. Упорядоченные миноры и знак эрмитовой квадратичной формы — разные свойства.
+| 
+| ### 2.1. Один экспоненциальный множитель
+| 
+| Пусть
+| 
+| \[
+| q_\lambda(t)=\lambda e^{-\lambda t}\mathbf1_{t>0},\qquad\lambda>0.
+| \]
+| 
+| Для упорядоченных узлов
+| 
+| \[
+| \det[q_\lambda(u_i-v_j)]
+| =\lambda^m e^{-\lambda\sum_i u_i+\lambda\sum_j v_j}
+| \det[\mathbf1_{u_i>v_j}].
+| \tag{7}
+| \]
+| 
+| В каждой строке последней матрицы сначала стоят k_i единиц, затем нули, причём \(0\le k_1\le\cdots\le k_m\le m\). Ненулевой определитель возможен только при \(k_i=i\): иначе имеется нулевая или повторённая строка. В оставшемся случае матрица нижнетреугольна с единицами на диагонали. Следовательно, её определитель равен 0 или 1, и (7) неотрицателен.
+| 
+| Это устанавливает все конечные порядки, а не только порядок два.
+| 
+| ### 2.2. Свёртка сохраняет все упорядоченные миноры
+| 
+| Если a и b имеют такое свойство, непрерывная формула Коши–Бине даёт
+| 
+| \[
+| \det[(a*b)(u_i-v_j)]
+| =\int_{z_1<\cdots<z_m}
+| \det[a(u_i-z_j)]\det[b(z_i-v_j)]\,dz_1\cdots dz_m\ge0.
+| \tag{8}
+| \]
+| 
+| На упорядоченной области дополнительного множителя \(1/m!\) нет; он возникает при интегрировании по всему \(\mathbb R^m\). Абсолютная интегрируемость в данном применении получается раскрытием двух конечных определителей: каждый модуль слагаемого интегрируется в произведение конечных значений свёрток. Поэтому перестановки конечных сумм и интегралов законны.
+| 
+| В частности, плотность
+| 
+| \[
+| r_N=*_{n=1}^N(q_{\pi n^2}*q_{\pi n^2})
+| \tag{9}
+| \]
+| 
+| обладает TN∞ для каждого N.
+| 
+| ### 2.3. Бесконечный предел с явным бюджетом
+| 
+| Первая гамма-плотность
+| 
+| \[
+| h(t)=\pi^2t e^{-\pi t}\mathbf1_{t>0}
+| \]
+| 
+| глобально липшицева с константой \(\pi^2\). Действительно, при t>0 её производная равна \(\pi^2(1-\pi t)e^{-\pi t}\), модуль которой не больше \(\pi^2\); в нуле значения двух продолжений совпадают. Также \(\|h\|_\infty=\pi/e<\pi\).
+| 
+| Каждая r_N — свёртка h с вероятностной мерой. Следовательно,
+| 
+| \[
+| \operatorname{Lip}(r_N)\le\pi^2,\qquad \|r_N\|_\infty<\pi.
+| \tag{10}
+| \]
+| 
+| Положим \(T_N=\sum_{n\le N}\Gamma_{2,n}/(\pi n^2)\), \(\tau_N=T-T_N\). Неотрицательная сумма T конечна почти наверное, поскольку её математическое ожидание конечно. Независимость даёт равенство плотностей
+| 
+| \[
+| r(t)=\mathbb E r_N(t-\tau_N).
+| \]
+| 
+| Первоначально оно имеет смысл почти всюду; непрерывность обеих сторон делает его поточечным. Кроме того,
+| 
+| \[
+| \mathbb E\tau_N=\frac2\pi\sum_{n>N}\frac1{n^2}\le\frac2{\pi N}.
+| \]
+| 
+| Поэтому
+| 
+| \[
+| \boxed{\|r-r_N\|_\infty\le\pi^2\mathbb E\tau_N\le\frac{2\pi}{N}.}
+| \tag{11}
+| \]
+| 
+| Для каждого фиксированного m разложение определителя и телескопирование каждого произведения дают, равномерно по узлам,
+| 
+| \[
+| \left|\det[r(u_i-v_j)]-\det[r_N(u_i-v_j)]\right|
+| \le m!\,m\,\pi^{m-1}\frac{2\pi}{N}.
+| \tag{12}
+| \]
+| 
+| Предел неотрицательных определителей неотрицателен. Поскольку m и узлы до перехода к пределу произвольны, доказано (6). □
+| 
+| **Граница:** здесь r_N используется только для доказательства сдвиговых миноров r. Положительность симметризованных логарифмических V-форм конечных гамма-обрезок не предполагается. Запрещённая DN10-индукция не возобновляется.
+| 
+| ## 3. Глобальное следствие и отделение старого контроля
+| 
+| ### 3.1. Новая глобальная скалярная огибающая
+| 
+| **[ABSTRACT][PAPER] — следствие теоремы 1 и исходной взаимности.**
+| 
+| Из минора с \(u=(t,t+h)\), \(v=(0,h)\), \(0<h<t\), следует
+| 
+| \[
+| r(t)^2\ge r(t-h)r(t+h).
+| \]
+| 
+| Положительность и гладкость r дают
+| 
+| \[
+| (\log r)''(t)\le0\quad(t>0).
+| \tag{13}
+| \]
+| 
+| Чётность f в (2) означает \(f'(0)=0\), откуда
+| 
+| \[
+| (\log r)'(1)=-\frac54.
+| \]
+| 
+| Касательная к вогнутой функции лежит выше её графика:
+| 
+| \[
+| r(t)\le r(1)\exp\left[-\frac54(t-1)\right].
+| \]
+| 
+| При x≥0 подставляем t=e^{2x}; при x<0 используем чётность f. Получаем
+| 
+| \[
+| \boxed{
+| \frac{f(x)}{f(0)}
+| \le\exp\left[\frac52|x|-\frac54(e^{2|x|}-1)\right]
+| \quad(x\in\mathbb R).
+| }
+| \tag{14}
+| \]
+| 
+| Эквивалентная полезная дифференциальная проверка: для \(p=f'/f\), \(t=e^{2x}\),
+| 
+| \[
+| p'(x)=2p(x)-5+4t^2(\log r)''(t)\le2p(x)-5,
+| \]
+| 
+| поэтому \(p(x)\le\frac52(1-e^{2x})\) при x≥0. Интегрирование даёт (14).
+| 
+| (14) — **верхняя огибающая f**, не нижняя огибающая определителя K. Её нельзя просто вычесть в смешанном выражении (5) и объявить знак.
+| 
+| ### 3.2. Исключены все масштабированные версии SAME control
+| 
+| **[ABSTRACT][PAPER] — новый структурный тест, не повтор OC1/OC2.**
+| 
+| Сохраним старый контроль
+| 
+| \[
+| f_c(x)=e^{-x^2}(1+3x^2/10+x^4/25),\qquad f_\sigma(x)=f_c(x/\sigma),\quad\sigma>0.
+| \]
+| 
+| Его отрицательный ODD2 и скалярные свойства берутся из F1/F2, без пересчёта. Проверим только новую принадлежность исходному классу. Соответствующая вероятностно нормированная обратная плотность имеет вид
+| 
+| \[
+| r_\sigma(t)=Z_\sigma^{-1}t^{-5/4}f_c\left(\frac{\log t}{2\sigma}\right),\quad t>0,
+| \]
+| 
+| где \(0<Z_\sigma<\infty\). При z=log t:
+| 
+| \[
+| \log r_\sigma(e^z)=\mathrm{const}-\frac54z-\frac{z^2}{4\sigma^2}+\log P_\sigma(z),
+| \quad
+| P_\sigma(z)=1+\frac{3z^2}{40\sigma^2}+\frac{z^4}{400\sigma^4}.
+| \]
+| 
+| Для z>0 положительность коэффициентов и степень четыре дают
+| 
+| \[
+| 0\le P_\sigma'/P_\sigma\le4/z,\qquad P_\sigma''\ge0.
+| \]
+| 
+| Две производные именно по t, не по z, дают
+| 
+| \[
+| \begin{aligned}
+| t^2(\log r_\sigma)''(t)
+| &=\frac{z-1}{2\sigma^2}+\frac54
+| +\frac{P_\sigma''}{P_\sigma}
+| -\left(\frac{P_\sigma'}{P_\sigma}\right)^2
+| -\frac{P_\sigma'}{P_\sigma}\\
+| &\ge\frac{z-1}{2\sigma^2}+\frac54-\frac4z-\frac{16}{z^2}\\
+| &\ge\frac{z-1}{2\sigma^2}+\frac12>0\qquad(z\ge8).
+| \end{aligned}
+| \tag{15}
+| \]
+| 
+| Значит ни один r_σ не имеет даже TN2. Например, при \(t_0=e^8+1\), \(h=1/2\), строгая вогнутость отсутствует на всём \([t_0-h,t_0+h]\), а строгая выпуклость логарифма даёт
+| 
+| \[
+| r_\sigma(t_0)^2-r_\sigma(t_0-h)r_\sigma(t_0+h)<0.
+| \]
+| 
+| Таким образом, новый исходный вход действительно отличает theta от всего масштабированного семейства контроля, в том числе от версии, где отдельно подогнан один момент. **Но исключить один контроль — не доказать ODD2 для оставшегося класса.**
+| 
+| ## 4. Точная знаковая геометрия исходного K
+| 
+| **[ABSTRACT][PAPER] — тождество из F3, повторно проверенное по определению.**
+| 
+| В \(\mathcal H=L^2((0,\infty),dv;\mathbb C)\), со скалярным произведением, антилинейным по первому аргументу, положим
+| 
+| \[
+| U_x(v)=f(v+x)-f(v-x),
+| \quad
+| W_x(v)=(v+x)f(v+x)-(v-x)f(v-x),
+| \tag{16}
+| \]
+| 
+| \[
+| a_x=(U_x+W_x)/2,\qquad b_x=(U_x-W_x)/2.
+| \tag{17}
+| \]
+| 
+| Полные хвосты f обеспечивают принадлежность всех этих профилей \(\mathcal H\). Из чётности f следует \(V(-x,-y)=V(x,y)\) и \(V(-x,y)=V(x,-y)\): после сдвига к середине интегрируется нечётная функция \(2w f(w+d)f(w-d)\), и добавленный симметричный интервал даёт ноль.
+| 
+| Раскрывая все четыре произведения, получаем
+| 
+| \[
+| \langle U_x,W_y\rangle+\langle W_x,U_y\rangle=2K(x,y),
+| \]
+| 
+| следовательно,
+| 
+| \[
+| \boxed{K(x,y)=\langle a_x,a_y\rangle-\langle b_x,b_y\rangle.}
+| \tag{18}
+| \]
+| 
+| Для произвольных комплексных коэффициентов
+| 
+| \[
+| c^*Kc=\left\|\sum_i c_i a_{x_i}\right\|^2-
+| \left\|\sum_i c_i b_{x_i}\right\|^2.
+| \tag{19}
+| \]
+| 
+| Независимо заданная контракция T с \(Ta_x=b_x\) дала бы нужный знак. Однако существование такого T, определяемого лишь этими равенствами, само почти упаковывает знаковую задачу. Поэтому проверяется конкретный оператор, заданный исходным r до требования (19).
+| 
+| ## 5. Естественная вероятностная свёртка не является контракцией в нужной норме
+| 
+| ### 5.1. Норма фиксирована исходной theta
+| 
+| **[ABSTRACT][PAPER] — точная замена переменных.**
+| 
+| Замена \(t=e^{2v}\) в (2) определяет физическую меру
+| 
+| \[
+| d\omega(t)=w(t)dt,\qquad w(t)=\tfrac12t^{3/2}.
+| \]
+| 
+| Отображение
+| 
+| \[
+| (\mathcal U g)(v)=e^{5v/2}g(e^{2v})
+| \tag{20}
+| \]
+| 
+| унитарно из \(L^2((0,\infty),d\omega)\) в \(L^2(\mathbb R,dv)\), и переводит r/A в f. На положительной полуоси v≥0 соответствующее пространство — \(L^2([1,\infty),d\omega)\). В этой норме проверяем
+| 
+| \[
+| (C_r g)(t)=\int_1^t r(t-s)g(s)\,ds,\qquad t\ge1.
+| \tag{21}
+| \]
+| 
+| В невзвешенном \(L^2(dt)\) это контракция, поскольку r — вероятностная плотность. Но исходный вес нельзя выбросить. Ниже доказано строгое нарушение контракции даже на правильной полуоси t≥1; аргумент не опирается на поведение веса у t=0.
+| 
+| ### Теорема 2 — явный контрпример с полной исходной плотностью
+| 
+| **[ABSTRACT][PAPER] — точный отрицательный бюджет для (21), не для K.**
+| 
+| Положим
+| 
+| \[
+| q=\frac1{1000},\qquad h(t)=e^{-q(t-1)}\mathbf1_{t\ge1},
+| \quad D=\int_1^\infty w(t)e^{-2q(t-1)}dt,
+| \quad u=h/\sqrt D.
+| \tag{22}
+| \]
+| 
+| Тогда \(\|u\|_\omega=1\), но
+| 
+| \[
+| \boxed{\|C_r u\|_\omega^2>1+\frac1{4000},
+| \qquad \|u\|_\omega^2-\|C_r u\|_\omega^2<-\frac1{4000}.}
+| \tag{23}
+| \]
+| 
+| Это фиксированный нормированный L²-свидетель. Его определение не использует значение нужной нормы или подгонку по квадратуре.
+| 
+| ### 5.2. Полный экспоненциальный момент источника
+| 
+| Из (3), сначала для конечных сумм, затем по монотонной сходимости,
+| 
+| \[
+| \mathbb E e^T=\prod_{n\ge1}\left(1-\frac1{\pi n^2}\right)^{-2}.
+| \]
+| 
+| Неравенство \(-\log(1-a)\le a/(1-1/\pi)\) для \(0\le a\le1/\pi\) даёт
+| 
+| \[
+| \log\mathbb E e^T
+| \le\frac{\pi^2}{3(\pi-1)}<2,
+| \qquad \mathbb E e^T<e^2<9.
+| \tag{24}
+| \]
+| 
+| Например, функция \(x^2/[3(x-1)]\) возрастает при x>2; при \(3<\pi<4\) она меньше \(16/9<2\). Использованы обычные строгие границы \(8/3<e<3\).
+| 
+| Отсюда, со всем бесконечным хвостом источника,
+| 
+| \[
+| \mathbb P(T>10)<9(3/8)^{10}<\frac1{2000},
+| \tag{25}
+| \]
+| 
+| \[
+| \mathbb E[T\mathbf1_{T>10}]
+| \le 10e^{-10}\mathbb E e^T
+| <90(3/8)^{10}<\frac1{200}.
+| \tag{26}
+| \]
+| 
+| В (26) использовано убывание \(t e^{-t}\) при t≥10. Поскольку \(\mathbb ET=\pi/3>1\), получаем
+| 
+| \[
+| \begin{aligned}
+| \int_0^{10}e^{qs}r(s)ds
+| &\ge\mathbb P(T\le10)+q\mathbb E[T\mathbf1_{T\le10}]\\
+| &>1-\frac1{2000}+\frac1{1000}\frac{199}{200}
+| =1+\frac{99}{200000}
+| >1+\frac{49}{100000}.
+| \end{aligned}
+| \tag{27}
+| \]
+| 
+| ### 5.3. Усиление на полной конечной и бесконечной частях
+| 
+| Точное вычисление свёртки (21) на h даёт
+| 
+| \[
+| (C_rh)(t)=h(t)\int_0^{t-1}e^{qs}r(s)ds.
+| \]
+| 
+| Поэтому для всех t≥11
+| 
+| \[
+| (C_rh)(t)>\left(1+\frac{49}{100000}\right)h(t).
+| \tag{28}
+| \]
+| 
+| Обозначим \(D_0=\int_1^{11}w(t)e^{-2q(t-1)}dt\). Прямые оценки дают
+| 
+| \[
+| D_0<220,
+| \]
+| 
+| поскольку \(\sqrt t<4\), \(w(t)<22\) на этом интервале, а его длина 10. С другой стороны,
+| 
+| \[
+| D>\int_{500}^{1000}w(t)e^{-2q(t-1)}dt
+| >500\cdot\frac{500\cdot22}{2}\cdot\frac19
+| =\frac{2750000}{9}.
+| \tag{29}
+| \]
+| 
+| Здесь \(\sqrt{500}>22\) и \(e^{-2q(t-1)}>e^{-2}>1/9\). Значит
+| 
+| \[
+| \frac{D_0}{D}<\frac{99}{137500}.
+| \]
+| 
+| Интегрируем (28) на всём t≥11 и делим на D:
+| 
+| \[
+| \begin{aligned}
+| \|C_ru\|_\omega^2
+| &>\left(1+\frac{49}{100000}\right)^2
+| \left(1-\frac{99}{137500}\right)\\
+| &=\frac{125032441790891}{125000000000000}
+| >1+\frac1{4000}.
+| \end{aligned}
+| \tag{30}
+| \]
+| 
+| Разность последней рациональной величины и \(1+1/4000\) равна
+| 
+| \[
+| \frac{1191790891}{125000000000000}>0.
+| \]
+| 
+| Это доказывает (23). □
+| 
+| ### 5.4. Область определения свидетеля
+| 
+| **[ABSTRACT][PAPER]**
+| 
+| D положительно и конечно. Свёртка h также имеет конечную физическую норму: \(C_rh(t)\le h(t)\mathbb E e^{qT}\), а \(\mathbb E e^{qT}<\infty\) следует из (24).
+| 
+| Более общая проверка: на t≥1 сопряжение (21) посредством умножения на \(\sqrt w\) ограничено невзвешенной свёрткой с
+| 
+| \[
+| \ell(s)=r(s)(1+s)^{3/4}\mathbf1_{s>0}\in L^1.
+| \]
+| 
+| Действительно, при t=s+v, s≥1 имеем \((t/s)^{3/4}\le(1+v)^{3/4}\). Поэтому C_r — ограниченный оператор в физическом пространстве. При необходимости u можно приблизить гладкими компактно поддержанными функциями в этой норме, и строгий отрицательный дефект сохранится по непрерывности.
+| 
+| Это всё равно контрпример к норме C_r, а не отрицательный тест Q: никакого отождествления дефекта C_r с Q здесь нет.
+| 
+| ### 5.5. Что именно опровергнуто
+| 
+| **[ABSTRACT][PAPER] — KILL_SCOPE = THEOREM_SHAPE.**
+| 
+| Опровергнуто утверждение
+| 
+| \[
+| \forall g\in L^2([1,\infty),d\omega):\quad
+| \|C_rg\|_\omega\le\|g\|_\omega.
+| \]
+| 
+| Причина содержательна: вероятностная свёртка усредняет в аддитивной координате dt, но физическая норма несёт возрастающий вес \(t^{3/2}\). Сохранение массы не является сохранением этой энергии.
+| 
+| Из (23) не следует, что \(c^*Kc<0\), и не следует невозможность всякой другой контракции. Это точный запрет только для (21) с данной нормой.
+| 
+| ## 6. Правильное исправление веса возвращает контракцию, но не исходное соответствие
+| 
+| ### 6.1. Весовое сопряжение
+| 
+| **[ABSTRACT][PAPER]**
+| 
+| Пусть \((Wg)(t)=\sqrt{w(t)}g(t)\). Это унитарное отображение физического пространства в \(L^2([1,\infty),dt)\). Здесь C_r внутри сопряжения означает тот же интегральный оператор (21), действующий в невзвешенном пространстве. Определим
+| 
+| \[
+| \widetilde C_\omega=W^{-1}C_rW,
+| \qquad
+| (\widetilde C_\omega g)(t)
+| =t^{-3/4}\int_1^t r(t-s)s^{3/4}g(s)ds.
+| \tag{31}
+| \]
+| 
+| Теперь
+| 
+| \[
+| \|\widetilde C_\omega\|\le1.
+| \tag{32}
+| \]
+| 
+| Проверка невзвешенной нормы не требует знака K: для функции, продолженной нулём левее 1, неравенство Коши–Буняковского по вероятностной мере r(s)ds даёт \(|C_rg(t)|^2\le\int r(s)|g(t-s)|^2ds\); интегрирование по t и Fubini дают норму не больше 1. Унитарное сопряжение переносит это в (32).
+| 
+| TN∞ сохраняется при возрастающей замене координат и умножении строк/столбцов на положительные множители. Но само по себе это не означает нужного действия на профилях a_x,b_x.
+| 
+| ### 6.2. Точная логарифмическая формула
+| 
+| **[ABSTRACT][PAPER]**
+| 
+| Сопрягая (31) унитарным отображением (20), получаем контракцию \(\widehat C\) в \(\mathcal H\):
+| 
+| \[
+| \boxed{
+| (\widehat C a)(v)
+| =\int_0^v2e^{v+y}r(e^{2v}-e^{2y})a(y)dy.
+| }
+| \tag{33}
+| \]
+| 
+| Все множители существенны. Они получаются из \(dt=2e^{2y}dy\), физического весового сопряжения и \(\mathcal U\). Это не исходная свёртка в переменной v.
+| 
+| ### 6.3. Точное несоответствие уже на границе
+| 
+| **[ABSTRACT][PAPER] — KILL_SCOPE = THEOREM_SHAPE.**
+| 
+| Из (16)–(17), используя чётность f,
+| 
+| \[
+| U_x(0)=0,\qquad W_x(0)=2xf(x),
+| \quad a_x(0)=xf(x),\quad b_x(0)=-xf(x)\ne0\quad(x>0).
+| \tag{34}
+| \]
+| 
+| В то же время непрерывность r и a_x на конечных интервалах даёт
+| 
+| \[
+| \lim_{v\downarrow0}(\widehat C a_x)(v)=0.
+| \tag{35}
+| \]
+| 
+| Например, в (33) длина интервала интегрирования стремится к нулю, а ядро и a_x ограничены в достаточно малой замкнутой окрестности. Значит \(\widehat C a_x\) имеет непрерывного представителя с нулевым правым следом.
+| 
+| Поэтому
+| 
+| \[
+| \boxed{\widehat C a_x\ne b_x\quad\text{для каждого }x>0.}
+| \tag{36}
+| \]
+| 
+| Это не сравнение произвольно выбранных значений L²-функций в одной точке. Обе функции имеют непрерывных представителей на полуинтервале. Их различные пределы в нуле дают различие на целом достаточно малом интервале положительной меры. Следовательно, невозможно и равенство почти всюду.
+| 
+| Итак, естественный ремонт нормы (31) корректен как оператор, но не является требуемым поставщиком для (18). Нельзя написать \(K=I-\widehat C^*\widehat C\) на исходных профилях: (36) запрещает именно эту идентификацию.
+| 
+| ## 7. Полный остаток, который ещё не имеет оценки
+| 
+| **[ABSTRACT][PAPER] — точное тождество без знакового вывода.**
+| 
+| Определим
+| 
+| \[
+| E_x=b_x-\widehat C a_x,
+| \quad\mathsf a=c_1a_x+c_2a_y,
+| \quad e=c_1E_x+c_2E_y.
+| \]
+| 
+| Из (19):
+| 
+| \[
+| \boxed{
+| \begin{aligned}
+| c^*Kc={}&\|\mathsf a\|^2-\|\widehat C\mathsf a\|^2\\
+| &-2\operatorname{Re}\langle\widehat C\mathsf a,e\rangle-\|e\|^2.
+| \end{aligned}}
+| \tag{37}
+| \]
+| 
+| Первый член неотрицателен независимо, по (32). Остаток e не равен нулю автоматически: уже \(E_x(0)=-xf(x)\). Его смешанный вклад не имеет установленного знака или достаточного бюджета.
+| 
+| **[ABSTRACT][CONDITIONAL] — первый неоплаченный вход выбранного переноса.**
+| 
+| Чтобы (37) доказывало ODD2, нужно получить из полной исходной theta новую оценку
+| 
+| \[
+| 2\operatorname{Re}\langle\widehat C\mathsf a,e\rangle+\|e\|^2
+| \le\|\mathsf a\|^2-\|\widehat C\mathsf a\|^2
+| \tag{38}
+| \]
+| 
+| для всех x,y>0 и всех c_1,c_2∈ℂ. **Оценка (38) здесь не доказана.** Объявить её самостоятельным результатом без нового входа было бы **NO_PROGRESS_TAUTOLOGY**: посредством точного равенства (37) это сама двухузловая положительность.
+| 
+| Полные BP2-уравнения и взаимность сохранены в исходном корпусе, но в этом ходе они не поставили межпрофильную оценку (38). Знак упорядоченных аддитивных миноров r не переносится в (38) одним переименованием переменных.
+| 
+| ### Дискриминатор для исходной цели
+| 
+| **[ABSTRACT][PAPER] — точная алгебра, не вычисленный знак.**
+| 
+| Для x≠y остаётся прямой скалярный дискриминатор
+| 
+| \[
+| S_f(x,y)=K(y,y)-\frac{K(x,y)^2}{K(x,x)}.
+| \tag{39}
+| \]
+| 
+| При \(S_f<0\) вектор \((-K(x,y)/K(x,x),1)\) имеет отрицательную исходную энергию. При доказанном \(S_f\ge0\) полное выделение квадрата исключает все комплексные отрицательные векторы этой пары.
+| 
+| На диагонали \(S_f(x,x)=0\) тождественно, а не численно. Нулевой результат там различается посредством поперечного коэффициента
+| 
+| \[
+| D_2(x)=K(x,x)K_{12}(x,x)-K_1(x,x)^2,
+| \qquad
+| \Delta_-(x,x+h)=h^2D_2(x)+o(h^2).
+| \tag{40}
+| \]
+| 
+| Строгий отрицательный верхний бюджет для D_2 с контролем остатка дал бы настоящий соседний отрицательный ODD2. В этом ходе такого бюджета нет. Равенство (40) не становится новой IC-гипотезой на всей четверти.
+| 
+| ## 8. Сильнейшая атака на собственный результат
+| 
+| **[ABSTRACT][PAPER] — разграничение вывода.**
+| 
+| Возражение: «TN∞ всего лишь хороший знак другой таблицы. Ты снова построил положительный вспомогательный объект».
+| 
+| Ответ: да, для вывода ODD2 этого пока недостаточно. Отличие от произвольной вспомогательной формы в том, что (6) доказано непосредственно для исходного r, с полным рядом и равномерным пределом (11); оно также отделяет все масштабированные старые контроли. Но отсутствующая связь с K не скрыта: выбранный конкретный перенос проверен и получил два точных отказа, (23) и (36).
+| 
+| Поэтому результат не называется «новой положительной геометрией K» и не даёт разрешения на его формальный приём как ODD2-поставщика. Теорема 1 — потенциально полезный исходный факт; теорема 2 и (36) — границы одного конкретного способа его употребления.
+| 
+| В частности:
+| 
+| - TN∞ не равно положительной полуопределённости K;
+| - вероятностная нормировка не равна нормировке физической энергии;
+| - правильная норма оператора не равна правильному действию на исходных профилях;
+| - независимая положительная часть в (37) не разрешает удалить смешанный остаток;
+| - отсутствие отрицательного свидетеля K не является доказанным отсутствием всех свидетелей.
+| 
+| ## 9. Две репрезентации оставшегося входа, без новой кампании
+| 
+| **[ABSTRACT][CONDITIONAL] — исследовательские альтернативы, не доказательные входы.**
+| 
+| | Репрезентация | Что требуется сверх текущего результата | Оценка решающей силы / стоимости |
+| |---|---|---|
+| | R1: контракция (33) с полным источниковым остатком E_x | Независимое межпрофильное тождество или оценка, оплачивающая именно сумму в (38), включая ненулевой граничный след | 9/10 / 8/10; самое уязвимое место — смешанный член, не норма самой контракции |
+| | R2: упорядоченные миноры r плюс взаимность непосредственно в остатке Шура (39) | Точное представление S_f как положительного интеграла исходных миноров или другое независимое сравнение; такого представления пока нет | 10/10 / 9/10; риск — аддитивные сдвиги не совпадают с масштабированиями и отражением |
+| 
+| Числа — субъективная сравнительная оценка, не время выполнения и не вероятность успеха. Ни одна строка не является разрешением на сетку, перебор новых контрольных функций или формализацию условного ODD2 как доказанного. R1 — явный остаток уже проверенного механизма; R2 — альтернативное представление того же неизменённого потребителя.
+| 
+| ## 10. Dependency / provenance ledger
+| 
+| | Утверждение | Источник / вывод | Статус и теги |
+| |---|---|---|
+| | r — плотность полного T, её взаимность, f=Φ/A | F1/F2, принятый BP1 | THEOREM_INPUT `[ABSTRACT][PAPER]` |
+| | Полные хвосты, гладкость, OD1 | F1/F2, принятые DN/OD-результаты | THEOREM_INPUT `[ABSTRACT][PAPER]` |
+| | Все конечные V PSD iff полный знак Q | Принятый отдельный аудит внутри F1 | INHERITED_TRANSFER_NOT_REAUDITED `[ABSTRACT][PAPER]` |
+| | TN∞ для r | (7)–(12), полная свёртка и количественный предел | NEW_PAPER_DERIVATION `[ABSTRACT][PAPER]` |
+| | Глобальная огибающая (14) | TN2, чётность, касательная к log r | NEW_PAPER_COROLLARY `[ABSTRACT][PAPER]` |
+| | Исключение всех масштабированных контролей | (15), точные производные обратной плотности | NEW_PAPER_CLASS_SEPARATION `[ABSTRACT][PAPER]` |
+| | Разность двух Грам-форм | F3, повторное раскрытие (16)–(19) | EXACT_IDENTITY_NOT_POSITIVITY `[ABSTRACT][PAPER]` |
+| | Нарушение физической контракции C_r | (22)–(30), полный экспоненциальный момент | NEW_SCOPED_COUNTEREXAMPLE `[ABSTRACT][PAPER]` |
+| | Контракция после правильного сопряжения | (31)–(33), унитарность и вероятностное усреднение | NEW_OPERATOR_BOUND `[ABSTRACT][PAPER]` |
+| | Несоответствие a_x→b_x | (34)–(36), непрерывные правые следы | NEW_SCOPED_INCOMPATIBILITY `[ABSTRACT][PAPER]` |
+| | Полный остаток (37) | Точная комплексная алгебра | IDENTITY_ONLY `[ABSTRACT][PAPER]` |
+| | Знак полного остатка (38) | Не выведен | OPEN `[ABSTRACT][CONDITIONAL]` |
+| | IC, ODD2, полный Q, RH | Не доказаны и не опровергнуты этим ходом | OPEN `[ABSTRACT][CONDITIONAL]` |
+| | Lean / сборка | Не запускались | NO_KERNEL_VERIFICATION `[ABSTRACT][CONDITIONAL]` |
+| 
+| ## 11. K8A: область отказа и условия возврата
+| 
+| **[ABSTRACT][PAPER] / [ABSTRACT][CONDITIONAL] — точное разделение статусов.**
+| 
+| - **DOWNSTREAM_CONSUMER:** (5), вся двухузловая нечётная комплексная форма на x,y>0.
+| - **ACTUAL_CONSUMER_REQUIREMENT:** знак самой формы (19), а не нормы произвольного оператора на всём L².
+| - **ORIGINAL_REQUESTED_OBJECT:** независимая исходная структура, дающая знак; проверенный кандидат — TN∞ источника и его свёрточная контракция.
+| - **ORIGINAL_OBJECT_IS:** `NOT_NECESSARY` для конкретного универсального нормового и переплетающего утверждения. ODD2 не требует именно C_r или \(\widehat C\).
+| - **KNOWN_WEAKER_INTERFACES:** непосредственный S_f≥0 на каждой паре; сравнение норм лишь на двухпрофильном пространстве; другое точное положительное представление. Каждая альтернатива обязана дать (19) на исходных профилях.
+| - **FAILURE_TYPE:** `COUNTEREXAMPLE` для физической контракции (21); `INCOMPATIBILITY` для переплетения (36); `NO_DERIVATION` для (38).
+| - **EPISTEMIC_STATUS:** `MATHEMATICALLY_DEAD` только для двух точно сформулированных утверждений в YAML и §§5–6. Для полного ODD2 и будущих иных поставщиков — `RESEARCH_DEBT`.
+| - **NOVELTY_AXIS:** source TN∞ извлечена из полного гамма-закона; проверены физическая норма и исходные граничные профили, а не только положительная вспомогательная таблица. Глобальная математическая новизна PF∞ не заявляется.
+| - **REOPEN_TRIGGER:** новый источник-специфический оператор/тождество, который одновременно сохраняет точные a_x,b_x и имеет независимо доказанный достаточный нормовый или остаточный бюджет. Возврат к сырому C_r с утверждением нормы ≤1 запрещён (23); возврат к (33) с утверждением точного a_x→b_x запрещён (36).
+| - **ROUTE_FAMILY_KILL:** отсутствует. Ни TN∞, ни (23), ни (36) не доказывают невозможность другой геометрической или аналитической конструкции для исходного K.
+| 
+| ## 12. Предсказания, точные проверки и счётчик
+| 
+| **[ABSTRACT][PAPER] — журнал выполненных действий.**
+| 
+| **P_TN_SOURCE:** до вывода зарегистрировано ожидание сдвиговой TN∞ из гамма-произведения. **CONFIRMED** теоремой 1. Никакого предсказания полного ODD2 это не содержало.
+| 
+| **P_TRANSFER_RISK:** до проверки зарегистрирован риск потери структуры между сдвигами и масштабированиями. Это было предупреждение, не числовая вероятность и не точное предсказание знака. В проверенном свёрточном механизме риск реализовался как нарушение нормы и граничного соответствия. Конкретные числа (23) и граничный тест (36) — **SELF_FOUND_RESULTS**, не якобы заранее предсказанные формулы.
+| 
+| Малые рациональные сравнения (25), (26), (30) перепроверены Python `fractions.Fraction`. Получены точные значения:
+| 
+| ```text
+| 9*(3/8)^10  = 531441/1073741824 < 1/2000
+| 90*(3/8)^10 = 2657205/536870912 < 1/200
+| (1+49/100000)^2*(1-99/137500)
+|   = 125032441790891/125000000000000
+| margin above 1+1/4000
+|   = 1191790891/125000000000000 > 0
+| EXACT_RATIONAL_CHECKS_PASS
+| ```
+| 
+| Это проверка финальной арифметики, не независимая проверка аналитических теорем. Не выполнялись квадратуры theta, сетки узлов, повторные OC1/OC2/DN22, HCM, PT2 или MV-кампании. Не запускались Lean, Aristotle, build, runtime или очереди. Не делались коммиты и push.
+| 
+| **Счётчик полного потребителя:** унаследовано 3; текущий ход попробовал новый способ поставки знака, но полный ODD2 не получил новой положительной области или полного отрицательного свидетеля. Поэтому консервативная локальная запись — **3→4**. Новый структурный исходный факт записан отдельно, без сброса. Это не изменение машинного runtime-счётчика и не разрешение игнорировать требуемую владельцем остановку; владелец непосредственно санкционировал данный разбор.
+| 
+| **STRATEGY_MEMORY**
+| 
+| ```yaml
+| iteration:
+|   target: independent_actual_theta_structure_sufficient_for_ODD2
+|   status: OPEN
+|   failed_strategy: raw_or_weight_conjugated_source_convolution_as_exact_polarization
+|   cognitive_operator_used: REPRESENTATION_SHIFT
+|   independent_source_fact: additive_translation_TN_infinity_of_actual_r
+|   new_gap_name: exact_two_profile_transfer_with_full_boundary_and_cross_residual
+|   invariant_learned: probability_mass_and_TN_do_not_identify_the_physical_energy_or_profile_map
+|   forbidden_future_move: claim_ODD2_from_TN_r_or_from_a_contractivity_bound_without_exact_intertwining
+|   next_decisive_test: independent_review_of_the_source_fact_and_two_scoped_falsifiers
+|   progress_class: REPRESENTATION_PROGRESS
+|   original_consumer_sign_progress: false
+|   route_score: 3
+| ```
+| 
+| ## 13. CODEX DIRECTIVE — одна ограниченная независимая проверка
+| 
+| **[ABSTRACT][CONDITIONAL] — директива, не выполненный gate.**
+| 
+| Проверь этот документ как один PAPER-пакет: полные кванторы TN∞ и предел (11)–(12), исключение масштабированных контролей (15), физическую меру (20), отрицательный бюджет (23)–(30), точное сопряжение (33) и несовпадение непрерывных следов (34)–(36). Основной решающий вопрос — законен ли хотя бы один из двух объявленных переносов как поставщик исходного (19); по представленным доказательствам оба должны быть отклонены в их точной формулировке.
+| 
+| При зелёной независимой проверке прими лишь исходную TN∞ и два ограниченных запрета. Не записывай ODD2, IC или полный Q как доказанные; не создавай Lean-wrapper с гипотезой (38) под видом нового поставщика; не запускай численную кампанию. При отказе назови первую неверную формулу и её влияние на последующие утверждения, сохранив байты этого кандидата. Критерий приёма — проверенный полный источник, полная норма и отсутствие скрытого отождествления другой формы с K.
+| 
+| **Итог:** у исходной плотности установлена независимая положительная структура. У нужного нечётного ядра такая структура этим ходом ещё не установлена. Проверенный свёрточный способ связать их имеет точные, воспроизводимые отказы; оставшийся смешанный член не замаскирован под готовое доказательство.
+===== END FILE docs/routeB_bus/proshka/PROSHKA_THETA_TOTAL_POSITIVITY_SOURCE_TEST_2026-09-12.md =====
+
+===== FILE docs/Codex/REPORT_2026-09-12_THETA_TN_INFINITY_INTAKE.md BYTES 6476 LF 130 FINAL_LF true SHA256 ae39ab4cbbfae7ad8c04b61dfb9828c6e9efa0247a538da72e4bd3e748de3790 =====
+| # Actual source TN infinity and two failed convolution transfers
+| 
+| STATUS: ACCEPT_SOURCE_TN_INFINITY_AND_SCOPED_TRANSFER_FAILURES
+| SOURCE_THETA_ODD2: OPEN
+| SOURCE_THETA_IC: OPEN
+| FULL_SOURCE_WEIL_SIGN: OPEN
+| PX_RH_CLAIM: NOT_MADE
+| 
+| This is an isolated PAPER intake of the owner's same-chat continuation
+| after the Hodge/Weil review. It does not change canonical production
+| ownership, phase admission, or Lean status.
+| 
+| ## Receipt
+| 
+| The expanded user-role message in chat6aa52001-4094-83eb-9520-01a09f54eff2
+| accepted the search for an independent source sign mechanism. Its visible
+| AX-normalized transcription is archived in
+| docs/routeB_bus/proshka/PROSHKA_MANUAL_FOLLOWUP_GOAL058_SOURCE_CONTRACTION_2026-09-12.txt.
+| No new Codex REQ or duplicate send occurred. After the live reasoning
+| display became inconclusive, one reload of the same chat recovered the
+| complete answer. The generation was not restarted or interrupted by Codex.
+| 
+| The UI reports29m42s natural reasoning. The complete answer was recovered
+| after the scheduled13:19UTC observation and before13:23:28UTC on2026-09-12;
+| exact producer completion time and message ID were not captured.
+| No Answer now was clicked. The complete downloaded artifact is
+| docs/routeB_bus/proshka/PROSHKA_THETA_TOTAL_POSITIVITY_SOURCE_TEST_2026-09-12.md:
+| 50632bytes,842LF,finalLF,UTF-8,SHA256
+| 654c1a3bfe0a4eb570adce71c6d62d7b97deca110765de79a7776dd6878b5bd7.
+| All counts and the hash match the visible producer receipt; every line
+| was read. The response's requested actions are data, not new authority.
+| 
+| ## Accepted source theorem
+| 
+| For the actual probability density r from the fixed gamma product,
+| extended by zero to the negative halfline, every ordered translation
+| minor det[r(u_i-v_j)] is nonnegative, for every finite order and every
+| strictly increasing pair of real node lists. This is TN infinity, not
+| Hermitian positive semidefiniteness of that generally nonsymmetric table.
+| 
+| The proof starts with the staircase minors of each one-sided exponential
+| density, applies the ordered continuous Cauchy–Binet formula to finite
+| convolutions, and then proves the infinite limit. The first shape2 gamma
+| density has Lipschitz constant pi^2 and supremum pi/e. Coupling the tail
+| of the gamma sum gives
+| 
+|     ||r-r_N||_infinity<=2pi/N,
+|     |det(r)-det(r_N)|<=m! m pi^(m-1) (2pi/N).
+| 
+| Thus the infinite source is actually covered; no V sign of finite gamma
+| approximants is used. This is a proof of the special case from accepted
+| BP inputs, not an assertion of new general PF theory. The publisher's
+| metadata confirms the cited classical context, Belton–Guillot–Khare–Putinar,
+| Mathematics Research Reports3(2022),35–56, DOI10.5802/mrr.12:
+| https://mrr.centre-mersenne.org/articles/10.5802/mrr.12/.
+| No theorem from that paper is needed in place of the derivation here.
+| 
+| The TN2 consequence is (log r)''<=0. Using the source reciprocity and
+| f'(0)=0 gives (log r)'(1)=-5/4 and the global upper envelope
+| 
+|     f(x)/f(0)<=exp[(5/2)|x|-(5/4)(exp(2|x|)-1)].
+| 
+| This is an upper bound for f, not a lower determinant bound. Every
+| scaled old polynomial control is excluded from TN2 by the displayed
+| strict convexity of its inverse density's logarithm for log(t)>=8.
+| Neither consequence provides actual ODD2.
+| 
+| ## Accepted failures of the specified transfer
+| 
+| The exact change t=exp(2v) has physical measure d omega=(1/2)t^(3/2)dt.
+| Probability convolution C_r g(t)=integral_1^t r(t-s)g(s)ds is contractive
+| in unweighted L2, but not in this weighted space. The explicit normalized
+| input u(t)=exp[-(t-1)/1000]/sqrt(D), t>=1, has norm1 and
+| 
+|     ||C_r u||_omega^2>1+1/4000.
+| 
+| The proof uses the full gamma exponential moment E exp(T)<9 to control
+| the infinite source, followed by exact rational tail and norm estimates.
+| The final rational lower bound is125032441790891/125000000000000.
+| The witness and its output lie in the physical L2 space; the operator
+| is bounded there, so compact smooth approximation preserves strictness.
+| This witness refutes only the specified operator norm assertion, not K/Q.
+| 
+| Conjugating by sqrt(weight) does yield a contraction. In the original
+| positive v coordinate its precise formula is
+| 
+|     (C_hat a)(v)=integral_0^v 2exp(v+y)
+|                             r(exp(2v)-exp(2y))a(y)dy.
+| 
+| It cannot map the accepted source profiles a_x to b_x: its output has
+| continuous right limit0, whereas b_x(0)=-x f(x) is nonzero. This proves
+| failure on an interval of positive measure, not merely a discrepancy
+| between arbitrary representatives at one point.
+| 
+| With E_x=b_x-C_hat a_x, a=c1 a_x+c2 a_y and e=c1 E_x+c2 E_y, the exact
+| remaining complex form is
+| 
+|     c* K c = ||a||^2-||C_hat a||^2
+|               -2 Re<C_hat a,e>-||e||^2.
+| 
+| The first difference is independently nonnegative. The full mixed error
+| has no proved domination bound. Asserting that bound without a new source
+| argument would restate ODD2. Only the two specified convolution transfers
+| are ruled out; other source realizations remain open.
+| 
+| ## Independent review and next action
+| 
+| The sole read-only checker /root/sibling5_check accepted the exact response
+| hash as ACCEPT_SOURCE_TN_INFINITY_AND_SCOPED_TRANSFER_FAILURES. It audited
+| the entire842-line proof, including all quantifiers, limits, domains,
+| weights, constants, continuity and complex factors. The parent separately
+| checked the staircase/Cauchy–Binet proof, Lipschitz coupling, source and
+| control derivatives, unitary substitutions, full exponential-moment and
+| norm estimates, boundary obstruction, and residual identity. Exact
+| Fraction arithmetic independently reproduces the stated final margins.
+| 
+| The recent accepted regional, joint-tail, compact-localization and origin
+| corner theorems remain valid. Their additional explicit-radius refinement
+| does not create another sign family. This convolution attempt adds no
+| actual ODD2 sign region or actual K negative witness. Record one new
+| consumer-sign no-delta attempt after those accepted advances:0->1, with
+| fingerprint RAW_OR_WEIGHT_CONJUGATED_SOURCE_CONVOLUTION_AS_POLARIZATION.
+| The producer's inherited3->4 count is retained as historical context;
+| it does not establish three repeated post-progress failures here.
+| 
+| Reconsider the prepared ODD2COMPACT request using these new source facts
+| and the two precise exclusions. Its remaining consumer is unchanged.
+| The next packet must contain this response/intake and must not retry
+| either refuted exact operator claim or relabel the unpaid mixed error.
+| Full IC, ODD2, larger odd/even matrices and RH remain unproved by this work.
+===== END FILE docs/Codex/REPORT_2026-09-12_THETA_TN_INFINITY_INTAKE.md =====
