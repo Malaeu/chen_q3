@@ -2,6 +2,14 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
+## Owner-directed physics brother discovery — 2026-09-12
+- STATUS: SOURCE_VERIFIED_DISCOVERY; no new Pro request sent. RENEWALH remains parked and unsent.
+- Found constructive Lee–Yang / Griffiths–Simon sibling. The exact normalized partition function maps to xi; the actual source is BFS, while a GS realization and its uniform limiting bounds remain unpaid. Standard quartic construction does not equal Phi; general GS is not ruled out.
+- Report: docs/Codex/REPORT_2026-09-12_PHYSICS_BROTHER_LEE_YANG.md, SHA256 cbfa295fa3778dbf2375a5892b3caad0d4b381e3784727bcc187dd909764d5ed. Three fetched primary-source records, exact domains/normalization, existing negative-control mapping and completed quartic source-fit test.
+- Parent plus sole sibling5_check checked the full candidate60f14f158c1f2ff8844034bb0f9118ca612227945d4a1c21b87b287b45f7fc82. Only discovery/conditional-transfer evidence is accepted. Canonical exact consumer remains unbound: INCOMPLETE_NO_CONSUMABLE_TARGET; no admission.
+- Next bounded work: construct actual-theta finite ferromagnetic pair blocks with positive spin weights and all-radius uniform exponential moments, or locate the precise sign-losing construction step. A presumed Lee–Yang/GS property is not a supplier. Same living chat/phase retained; no send implied.
+- Source-sign no-delta counter stays2; no reset or new completed full-sign attempt. Global IC/ODD2/all-order signs/RH OPEN.
+
 ## REQ-2026-09-12-ODDINFINITY
 - STATUS: ANSWERED; limited Stein-pair PAPER results independently accepted; full all-order source sign remains open.
 - Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_ODDINFINITY_2026-09-12.txt,85386bytes/1772LF/finalLF/noCR/SHA256e3ad1057d9c2bb3a8a8541942d8c224cc9ee9cefcfe1f0c001f01cc31c50a3d7.
