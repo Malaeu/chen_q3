@@ -2,7 +2,16 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
+## REQ-2026-09-13-THETARF-FINISH
+- STATUS: PREPARED_EXACT_REVIEWED. Continue the SAME THETARF after refreshed UI shows only the last operator-analysis step and codex_app.read_thread reports idle with no final response. Expected GitHub report remains absent. Cause of the idle state is unknown; no mathematical verdict or failure count is inferred.
+- Request: docs/routeB_bus/proshka/PROSHKA_FINISH_GOAL058_THETARF_2026-09-13.txt; 6557 bytes /69 LF /final LF /CR0 /SHA25659dcaae4799a4b0c187e4bcd814401faf10c28b7dc4610a60ef5ae647ec123aa.
+- Exact independent read-only review CLEAN_FINISH_DISPATCH_CANDIDATE by sibling5_check; review receipt SHA256891a96187a1129c4d2e255e5c03ea8ec8992863e59aa4a2bcc8de3a877be998e. Parent verified all three added H/Z/C byte sets at102b57e93a1920a0e4f55e87b7ee06ccdc55defa; original request and seven inputs unchanged.
+- Boundary and six-field phase unchanged. The reviewed curvature obstruction adds a concrete necessary discriminator for source property P; it is no RF kill or original a=0 negative witness. Same exact J, full Phi and all-finite-complex RF quantifiers.
+- Complete and retain the full mathematical report before separate publication via a genuinely available GitHub write tool. Same single expected response path and branch; no overwrite, force, access/settings change, full-catalog/DNS loop or report bytes in chat. Only one short link notice after fresh idle/file-absence checks and registered review-plan.
+- No new source-sign construction or counter reset: history6/completed-since-owner-resume0. Same living chat6aa52001-4094-83eb-9520-01a09f54eff2. No canonical writer/admission or PX_RH_CLAIM.
+
 ## REQ-2026-09-13-THETARF-RESUME
+- Later readback on2026-09-13 near14:58Z: same-tab reload replaces the stale pre-response-check/Stop display with only “Analysierte die Operatorstruktur”, composer and voice, without final answer or Stop. Exact codex_app.read_thread reports idle; fresh GitHub expected path absent. STATUS: IDLE_WITHOUT_FINAL_OR_ARTIFACT, reason unknown. This observation supersedes the awaiting label below but preserves the actual initial delivery history. No mathematical attempt is counted.
 - Delivered2026-09-13T14:31:29.240Z to same living chat in browser1/tab2: sent link146 binds commit78f0c8c5e8f404cb265699ad641fa3daba1c023b; composer133 cleared, natural Pro-Denkvorgang153 and Stop140. Request blobebdf05fb12b5f08536d4016b8427061e5b1b93b1, registered plan READY/holds[]. Owner GitHub-only/living-chat override retained.
 - Exact independent read-only review CLEAN_RESUME_CANDIDATE by sibling5_check; receipt SHA2562a3b1b85a56f212c5062b42882db06bed17c78ff9453b0aef293d0ff37155ecf. Original request bytes/semantic scope unchanged.
 - STATUS: SENT_AWAITING_MATHEMATICS_AND_PUBLICATION. Explicit owner asks to contact Proshka again after the terminal technical failure. Continue the SAME THETARF: compute and retain the complete mathematical report before the independent publication step. No mathematical source, quantifier, carrier, boundary or success standard changes.
