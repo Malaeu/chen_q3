@@ -2716,17 +2716,23 @@ boundary_id: GOAL058_FULL_THETA_VARIANCE_NULL_CORRECTION
 conversation_id: 6aa52001-4094-83eb-9520-01a09f54eff2
 sent_at: NOT_CAPTURED_EXACTLY
 reasoning_start_observed_at: 2026-09-13T21:01:15Z
-completed_at: null
+completed_at: 2026-09-13T21:15:58.254139+00:00
 ui_reasoning_seconds: null
-wall_seconds: null
+wall_seconds: 897.655139
+wall_time_source: app_read_thread_startedAt_completedAt
 answer_now_clicked: false
-status: DELIVERED_PENDING_MATHEMATICAL_RESULT
+status: ACCEPT_FULL_N1_N2_AND_CORRECTION_ACCOUNTING_ONLY
 request_commit: 46c1b471e4ddf7d5b2f27270a986cd8401e79711
 request_sha256: d2c8ebfdc0f3d779cb37520217443411188a003f585885cb355ae1f42a3c7671
 result_pointer: docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_NULLVAR_2026-09-13.md
 notes: >-
   Same living chat, owner-authorized GitHub-only exchange. Exact single link,
   empty composer and natural Pro reasoning observed in Browser1/tab2.
+  Result c6694aba0a2f50b8f004e9e967ae0c63b14900be was fetched unchanged,
+  SHA256 4fa7909725d2fa10ccc52d3413580289692d3a1489ecae7bed88956f80980730.
+  Parent and sole independent reader accepted the full N1/N2 domain and
+  exact accounting. App read_thread confirms natural completion; UI reasoning
+  duration was not separately observed.
   One bounded N1/N2 identity/domain task, not a repeated TARGET sign request.
   Observation timestamp is not an exact send timestamp. No completed attempt
   or RH/IC/ODD2 claim follows from delivery.
