@@ -292,14 +292,15 @@
     },
     {
       "name": "tong_vortices",
-      "url": "https://www.damtp.cam.ac.uk/user/tong/tasi/vortex.pdf",
+      "url": "https://davidtong.org/pdfs/teaching/solitons/tasi3.pdf",
       "path": "/Users/emalam/.codex/visualizations/2026/09/12/01a092ef-bf89-7693-aca8-42c3b691138a/compensation-coupling-hunt/physics/tong_tasi3.pdf",
       "bytes": 606139,
       "sha256": "4912d156fed211f4a88bfe1549e4a7238f12e16705896130882c59b9d7a3d85c",
       "text_path": "/Users/emalam/.codex/visualizations/2026/09/12/01a092ef-bf89-7693-aca8-42c3b691138a/compensation-coupling-hunt/physics/tong_tasi3.txt",
       "text_sha256": "8d4044b8130e1d92562075d3cbd2d2425551dbceacae8fe2a8f4b295cf6cb093",
       "rendered_formula_read": "/Users/emalam/.codex/visualizations/2026/09/12/01a092ef-bf89-7693-aca8-42c3b691138a/compensation-coupling-hunt/physics/tong_tasi3_page-04.png",
-      "scope": "Chapter 3 sections 3.1-3.2; physical BPS analogue only"
+      "scope": "Chapter 3 sections 3.1-3.2; physical BPS analogue only",
+      "author_index_url": "https://www.damtp.cam.ac.uk/user/dt281/tasi.html"
     }
   ],
   "issues": [
@@ -333,7 +334,9 @@
   "independent_review": {
     "reviewer": "/root/sibling5_check",
     "status": "CLEAN_DISCOVERY_AND_CONDITIONAL_PREFLIGHT_ONLY",
-    "reviewed_report_sha256": "21d03f81520183be637ab44c4aaa0b1edeb6ddf6f139a3f308cee14b7e3bb0ba"
+    "reviewed_report_sha256": "21d03f81520183be637ab44c4aaa0b1edeb6ddf6f139a3f308cee14b7e3bb0ba",
+    "provenance_addendum_reviewed_sha256": "cd40a0a3520fff63984f1a8a056e37cdecc923462160210dba9a158b92b5cd6f"
   },
-  "report_sha256": "d9cc1510dcfbeee0007a1411ed5501ea406c31bdc81296765ce1d8cf35f6c810"
+  "report_sha256": "250e638fc458e9f685c8c48944acb2e36c49c4365df146c734e0e7944e89a803",
+  "source_locator_correction": "Author actual fetch URL; same PDF bytes and SHA256; Cambridge direct mirror 403, web view readable."
 }

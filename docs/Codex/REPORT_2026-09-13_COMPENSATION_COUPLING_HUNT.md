@@ -102,7 +102,7 @@ signs below; we do not copy that line or treat it as an additional theorem.
 ### F: Physics completion
 
 David Tong, *TASI Lectures on Solitons*, chapter 3, Vortices,
-https://www.damtp.cam.ac.uk/user/tong/tasi/vortex.pdf .
+https://davidtong.org/pdfs/teaching/solitons/tasi3.pdf .
 PDF SHA256 4912d156fed211f4a88bfe1549e4a7238f12e16705896130882c59b9d7a3d85c.
 Locators: pp.70--71, critical couplings; pp.72--73, (3.7)--(3.10).
 Quote: "the couplings in front of the potential are not arbitrary".
@@ -284,3 +284,13 @@ limitations. The parent independently read the quoted local sources and
 checked all original calculations before this review. Only this status and
 receipt were added afterward; the mathematical body is unchanged.
 No Lean or numerical verification is claimed or needed for the discovery status.
+
+Source locator correction: Tong bytes were fetched from the author's current
+davidtong.org URL above. The Cambridge chapter URL was also read through
+web__run, but a direct mirror request returned HTTP 403; no byte equality for
+that mirror is asserted. The source PDF SHA256 and mathematical content are
+unchanged. This correction records the producer's exact retrieval URL.
+
+The same independent checker confirmed CLEAN on the source-locator-corrected
+report SHA256 cd40a0a3520fff63984f1a8a056e37cdecc923462160210dba9a158b92b5cd6f.
+The mathematics and earlier scoped verdict are unchanged.
