@@ -3,6 +3,7 @@
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
 ## REQ-2026-09-13-BROWNIANJOINT
+- Delivery verified: request commita17d4f7c1d95c6f274461405ea1a8ffdd29a61dc equals the published remote branch. Registered review-plan READY/holds[], request blob09abce5ffe252091ccd28c9a8bc22f5f8ebcd85b. Its inherited canonical chat/attachment locator is not rebound; the explicit owner override selects GitHub-only and living6aa52001. Fresh app read showed that exact chat idle; send_message_to_thread accepted one notice. Browser1/tab2 reload then showed exact notice AX67, natural Pro-Denkvorgang AX73, cleared composer AX79 and Stop AX83. No duplicate send or Answer now. Mathematical result pending; no attempt count added by delivery.
 - STATUS: OPEN. The owner participated in the requested brainstorm, required mathematics first, then explicitly continued toward RH. The historical BESSEL owner-wait boundary below is superseded by that participation, not erased.
 - Boundary: GOAL058_FULL_THETA_DILATION_CONDITIONAL_COVARIANCE. One exact weighted conditional-covariance comparison on I=(-(log2)/2,0), for every finite complex family. Source fit, domain and conditional accounting are proved; the all-rank sign is open.
 - Source base9864a5052eaa23790d8719d3beb548e084eee24d. That commit excludes both ordinary and beta-normalized fixed-step Brownian difference maps, with all scope restrictions; history9->10 once. No general Brownian exclusion or negative V witness.
