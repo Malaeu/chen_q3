@@ -154,3 +154,76 @@ Review receipt SHA256
 03d4e27b9cedc28c9ccf4b1a6d3620472cd3e47ec947fecf1df2e714c4f09eee.
 The status and this receipt are the only post-review additions. Acceptance
 is restricted to the stated PAPER lemmas and conditional transfer.
+
+## Subsequent independently reviewed construction constraints
+
+The original dispatched report remains pinned at b1c9fdc6. The following
+59-line proof is reproduced byte-for-byte from the reviewed local candidate;
+it is an intake constraint, not an additional message to the busy Pro chat.
+
+# Parent candidate: observable support must grow
+
+Scope: finite free-boundary Villain laws from the published VILLAINPHI request;
+J_e>0, observable weights lambda_v>=0. Hidden vertices have lambda_v=0.
+This is an intake discriminator, not a new full-source construction attempt.
+
+For each fixed graph orient the edges. The normalized edge heat kernel has
+Fourier coefficients (2pi)^-1 exp(-k^2/(2J_e))>0. All edge series converge
+absolutely and the graph is finite, so termwise integration is justified.
+The partition function is a positive sum over integer currents of divergence
+zero. Inserting exp(i(theta_u-theta_v)) changes only the current-divergence
+constraint. Its unnormalized integral is a sum of nonnegative real weights
+(or zero if the constraint is impossible). Hence
+
+  c_uv = E cos(theta_u-theta_v) >= 0; c_uu=1.
+
+Global angular invariance gives E X=0 and
+
+  Var X = (1/2) sum_(u,v) lambda_u lambda_v c_uv
+        >= (1/2) sum_v lambda_v^2.
+
+Suppose a sequence of these X_N converges weakly to any probability law.
+Each finite X_N belongs to the Newman--Wu class L. The proof of Theorem 7
+on printed p.159 establishes sup_N Var X_N = C < infinity from weak
+convergence and class L alone. Thus sum_v lambda_v,N^2 <= 2C.
+Let m_N count strictly positive observable weights, ignoring hidden vertices.
+Cauchy--Schwarz gives
+
+  |X_N| <= sum_v lambda_v,N <= sqrt(2 C m_N).
+
+If m_N were bounded along an infinite subsequence by m_*, that subsequence
+would be supported on the fixed compact interval [-sqrt(2Cm_*),sqrt(2Cm_*)].
+Its weak limit would be supported there. The actual p=Phi/Z is strictly
+positive on all of R, contradiction. Therefore a valid VILLAINPHI sequence
+necessarily has m_N -> infinity. This excludes a uniformly bounded number
+of observed spins even with arbitrarily many hidden vertices, arbitrary
+positive couplings, and arbitrary varying nonnegative observed weights.
+It does not exclude constructions with growing observed support.
+
+For C=0 every X_N is zero, already incompatible with the actual p.
+The variance conclusion is imported from the cited proof; no unproved
+uniform moment assumption is added. Positivity of the current coefficients
+and the support implication above are the parent's displayed derivation.
+
+Additional exact fit fact: the radial-law condition in the request is also
+necessary. For rotational Y_N, its characteristic function at t in R^2 is
+hat(p_N)(|t|), where p_N is law(Re Y_N). If p_N=>p, this converges pointwise
+to hat(p)(|t|), the characteristic function of the already constructed Abel
+planar lift g(|y|)d^2y, continuous at zero. The multivariate Levy continuity
+theorem gives Y_N=>Y, and continuity of norm gives |Y_N|=>rho. The reverse
+follows by adjoining a common independent uniform angle and taking the
+coordinate. Thus there is no extra source restriction in the radial target.
+
+Source: Newman--Wu CMP369(2019), Definition6, Theorem3, Theorem7 proof p.159;
+PDF SHA256 1dd55b77b6ff1437cbf46c91926bfa1f57ada1d21357c28e96b2e5942b717002.
+Exact p and Abel lift: published report at b1c9fdc62d564fc6fd0249bead46f58a0e13b1ad,
+docs/Codex/REPORT_2026-09-13_VILLAIN_RADIAL_BRIDGE.md,
+SHA256 fcddee94441c3db18aaf4d47bee12d3a16d8300dc838cdea69512bb3bce292b6.
+No numeric experiment, source-sign counter reset, canonical admission or RH claim.
+
+Independent verdict: ACCEPTED_PAPER_DISCRIMINATOR on the 3304-byte proof,
+SHA256 dde8e8c010beb931f996d3a54724725f76fe47a803998b40e0a6b18bcbe7cb3b.
+Review receipt SHA256
+34909ab7ad99804e77185a071d28032df37129bc2f6a33eca88cc0a4e26083e7.
+Parent checked the current expansion, variance bound and both convergence
+directions; the inserted proof bytes exactly match the reviewed candidate.
