@@ -3,7 +3,7 @@
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
 ## REQ-2026-09-13-THETARF-FINISH
-- STATUS: PREPARED_EXACT_REVIEWED. Continue the SAME THETARF after refreshed UI shows only the last operator-analysis step and codex_app.read_thread reports idle with no final response. Expected GitHub report remains absent. Cause of the idle state is unknown; no mathematical verdict or failure count is inferred.
+- STATUS: OPEN. Exact request prepared and independently reviewed. Continue the SAME THETARF after refreshed UI shows only the last operator-analysis step and codex_app.read_thread reports idle with no final response. Expected GitHub report remains absent. Cause of the idle state is unknown; no mathematical verdict or failure count is inferred.
 - Request: docs/routeB_bus/proshka/PROSHKA_FINISH_GOAL058_THETARF_2026-09-13.txt; 6557 bytes /69 LF /final LF /CR0 /SHA25659dcaae4799a4b0c187e4bcd814401faf10c28b7dc4610a60ef5ae647ec123aa.
 - Exact independent read-only review CLEAN_FINISH_DISPATCH_CANDIDATE by sibling5_check; review receipt SHA256891a96187a1129c4d2e255e5c03ea8ec8992863e59aa4a2bcc8de3a877be998e. Parent verified all three added H/Z/C byte sets at102b57e93a1920a0e4f55e87b7ee06ccdc55defa; original request and seven inputs unchanged.
 - Boundary and six-field phase unchanged. The reviewed curvature obstruction adds a concrete necessary discriminator for source property P; it is no RF kill or original a=0 negative witness. Same exact J, full Phi and all-finite-complex RF quantifiers.
