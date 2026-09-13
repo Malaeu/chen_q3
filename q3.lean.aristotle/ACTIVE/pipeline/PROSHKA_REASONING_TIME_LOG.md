@@ -2707,3 +2707,27 @@ notes: >-
   raw56813bytes/907LF/SHA630da77ed6a85d013e60078090be3135e737db0846194675b05af775cd238fb4
   matched exactly. No repeated proof, attachment or additional math attempt.
 ```
+
+### 2026-09-13 — NULLVAR exact integrated correction
+
+```yaml
+request_id: REQ-2026-09-13-NULLVAR
+boundary_id: GOAL058_FULL_THETA_VARIANCE_NULL_CORRECTION
+conversation_id: 6aa52001-4094-83eb-9520-01a09f54eff2
+sent_at: NOT_CAPTURED_EXACTLY
+reasoning_start_observed_at: 2026-09-13T21:01:15Z
+completed_at: null
+ui_reasoning_seconds: null
+wall_seconds: null
+answer_now_clicked: false
+status: DELIVERED_PENDING_MATHEMATICAL_RESULT
+request_commit: 46c1b471e4ddf7d5b2f27270a986cd8401e79711
+request_sha256: d2c8ebfdc0f3d779cb37520217443411188a003f585885cb355ae1f42a3c7671
+result_pointer: docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_NULLVAR_2026-09-13.md
+notes: >-
+  Same living chat, owner-authorized GitHub-only exchange. Exact single link,
+  empty composer and natural Pro reasoning observed in Browser1/tab2.
+  One bounded N1/N2 identity/domain task, not a repeated TARGET sign request.
+  Observation timestamp is not an exact send timestamp. No completed attempt
+  or RH/IC/ODD2 claim follows from delivery.
+```
