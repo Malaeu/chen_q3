@@ -101,3 +101,44 @@ Stop this discovery after at most3 source-verified candidates and one
 selected source-transfer test. Full proofs, quotes, locators, hashes and
 the negative-control mapping are required before calling a candidate verified.
 Missing data or a failed provider stays INCOMPLETE; no index repair is assigned.
+
+
+## 2026-09-13 continuation: two-copy Brownian energy and primitive sign
+
+Separate owner-authorized preparation for read-only discovery. Current own
+source commit59c7f0eceaf250d5b6d866965bc56c18b0a661bd; the preceding Villain
+construction is accepted only as an object mismatch and bounded-density
+harmonic-profile obstruction. Historical source-sign no-delta count4, first
+completed construction after owner resumption. This paragraph selects no
+canonical theorem edge and creates no admission.
+
+Use the existing BP1-BP3 law in SLACK_INDEPENDENT_CHECK_2026-09-11.md:
+T=U+V for independent U,V each sum Exp(rate pi*n^2), with
+L(s)=E exp(-sU)=sqrt(pi*s)/sinh(sqrt(pi*s)). Under T^(1/4)/(2Z),
+X=(log T)/2 has density p=Phi/Z. The pinned BPY PDF already on shelf has
+SHA25604a444275e5522cef9a1ba9f7d1b9f20a752764d3548f9c48be6dbc055bb12ea.
+Re-read its section4.4, printed22, for the Brownian-bridge energy dictionary;
+this section was outside the earlier BP1 read scope. Existing HCM and
+stationary jump-energy reports are prior exclusions/conditional interfaces,
+not new suppliers.
+
+UNVERIFIED rewrite1: a source-specific form on half-energy observables has
+kernel (u+v)^(1/4) against law(U) tensor law(U). Swapping two independent
+copies plays the role of reflection; this is not reflection in Brownian time.
+UNVERIFIED rewrite2: its restriction to mean-zero observables may have the
+Hodge primitive sign by the fractional-power Laplace integral. An explicit
+map from original all-complex compact tests to those observables is absent.
+
+Three object dictionaries: probability (Brownian bridge quadratic energy,
+gamma convolution); kernel geometry (conditionally negative definite sum
+kernel, positive index one, primitive form); analysis (fractional Bernstein
+power, Laplace covariance Gram). Negative control remains the fixed fc above:
+BP3 proves it lacks this exact U+V law, while evenness, reciprocal symmetry
+and ordinary positive probability alone still cannot provide the full sign.
+Do not use the mean alone; the mean-matched BP3b control remains active.
+
+Bound: inspect the existing BPY source, run three new registered object
+queries, then test one exact primitive-sign mechanism and its weakest missing
+transfer to V_f. No new HCM search, stationary jump-energy rerun, polynomial
+scan, or all-order finite-cell campaign. Discovery remains
+INCOMPLETE_NO_CONSUMABLE_TARGET under the unchanged canonical hold.
