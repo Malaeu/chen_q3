@@ -2,6 +2,15 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
+## REQ-2026-09-13-VILLAINPHI
+- STATUS: OPEN. Owner resumed after brainstorming: Villain models and the exact planar lift of the actual source. Same living chat and unchanged six phase fields; GitHub assignment/result, one short chat notice.
+- Boundary: GOAL058_ACTUAL_THETA_VILLAIN_RADIAL_REALIZATION. Construct one source-derived finite Villain family with its own X_N converging weakly to Phi/Z, or give a precisely scoped failure of the named construction. Radial convergence to the new Abel law is a sufficient geometric target.
+- Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_VILLAINPHI_2026-09-13.txt; 9043 bytes / 105 LF, final LF, CR 0, SHA256 00d6079d3ef8cec737915e1d03125d94e30d44402223eee736ce9b04258435e7.
+- Input in the same commit: docs/Codex/REPORT_2026-09-13_VILLAIN_RADIAL_BRIDGE.md. Parent and sole sibling5_check accepted exact Abel projection, theta dictionary and conditional weak-limit transfer. No finite Villain realization or actual source sign supplied.
+- Exact request and full report independently reviewed CLEAN_DISPATCH_CANDIDATE; receipt SHA256 03d4e27b9cedc28c9ccf4b1a6d3620472cd3e47ec947fecf1df2e714c4f09eee. Historical source-sign count 3 preserved; owner-wait blocking audit reset by the owner's explicit continuation. No canonical admission or RH claim.
+- Final exact payloads independently CLEAN after mechanical receipt/tag corrections: report SHA256 fcddee94441c3db18aaf4d47bee12d3a16d8300dc838cdea69512bb3bce292b6; final review receipt SHA256 b80f9b70e3c699731e6b4d9729486fc7ee47df7c7384d1fe1bff308930555bdb.
+- Assigned response: docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_VILLAINPHI_2026-09-13.md on codex_mac/math-proshka-20260912. Proshka may publish only that file. Pending generation is not a completed mathematical attempt.
+
 ## Owner-directed GitHub exchange — 2026-09-12
 - STATUS: COMPLETED_GITHUB_ROUNDTRIP; short notice sent2026-09-12T20:55:18.980Z, natural5m44s, reply commit cdb3f2698e5e8bf494ecbddac54a319c6edd69ec and path. Root fetched and byte-verified the unchanged response.
 - Direct owner instruction supersedes attachment/base64 transport for this mathematical task: assignments and full responses go through GitHub; this same chat receives one short link and instruction.
