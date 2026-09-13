@@ -134,3 +134,90 @@ Complete-summary review: sole sibling5_check returned CLEAN on 7034 bytes /
 The summary-review receipt SHA256 is
 b2700e678f8ade0a3e0c44aa0f555936da58f8fe766764fed2f7e2f8cdebf8a8.
 Only the status and this receipt were added after that review.
+
+## Subsequent parent theorem: a whole class of harmonic repairs is excluded
+
+This extension is separate from the raw Proshka response. The following
+proof is reproduced verbatim from the independently reviewed candidate.
+
+# Parent extension: harmonic observables need unbounded interaction distortion
+
+PAPER CANDIDATE. No new actual-source-sign attempt or RH claim.
+Inputs: accepted VILLAINPHI response (f997dc7a), actual p=Phi/Z with
+E_p X^2<1/8 and log M(h)/(h log h)->1/2; positive Villain current correlations
+from the independently accepted observed-support lemma (193f33ff).
+
+Theorem. On arbitrary finite free-boundary Villain graphs G_N, mark N
+observed vertices v_1,...,v_N, give them weights c_N/n (c_N>0), and give
+any additional hidden vertices weight zero. All J_e,N are positive and finite.
+Let U_N be product uniform Haar measure on every angle. Suppose the normalized
+Gibbs density W_N=dP_N/dU_N satisfies constants 0<a<=W_N<=b<infinity,
+uniformly in N and all angles. Then the corresponding X_N cannot converge
+weakly to the actual p. The graph, heat times, hidden-vertex count and all
+couplings may change with N, subject only to these conditions.
+
+Proof. Let Z_N=sum_(n<=N) cos theta_n/n under independent uniform angles.
+Its centered independent series converges in L2 to Z with variance pi^2/12>0.
+For a nonnegative function F,
+
+  a E F(c_N Z_N) <= E_P F(X_N) <= b E F(c_N Z_N).
+
+Assume for contradiction X_N=>p. If c_N has a subsequence tending to infinity,
+choose r>0 with P(|Z|>r)>0, and use the lower bound above to see a fixed positive
+probability escape beyond every compact interval. This contradicts tightness.
+Therefore c_N is bounded. Along a subsequence c_N->c>=0. If c=0, the upper
+second-moment bound E_P X_N^2 <= b c_N^2 pi^2/12 gives the point mass at zero,
+contradicting p. Thus this subsequence must have c>0.
+
+For this bounded subsequence and every R>0, the upper density bound and
+I0(t)<=exp(t^2/4) give
+
+  E_P exp(R |X_N|) <= 2b exp((sup_N c_N)^2 pi^2 R^2/24).
+
+Consequently weak convergence preserves the second moment and real-field
+transforms (use exponential tail truncation). With
+B_c(h)=product_(n>=1) I0(ch/n), dominated convergence of the logarithmic
+product and the density comparison imply, for every real h,
+
+  a B_c(h) <= M(h) <= b B_c(h).
+
+The complete Bessel-product bounds in the accepted response prove
+log B_c(h)/(h log h)->c. The source growth therefore forces c=1/2.
+On each actual Villain graph, positive edge Fourier coefficients imply
+E cos(theta_u-theta_v)>=0 by the integer-current expansion. Global rotation
+and nonnegative observed weights hence give
+
+  E_P X_N^2 >= (c_N^2/2) sum_(n<=N) 1/n^2.
+
+Take the moment limit along the subsequence: E_p X^2 >= c^2 pi^2/12
+=pi^2/48>3/16>1/8, contradiction. This proves the theorem.
+
+The result is not a general Villain exclusion: it leaves non-harmonic weight
+profiles and normalized Gibbs densities without a uniform positive lower
+and finite upper bound open. It strengthens the named-star exclusion enough
+to prevent re-running arbitrary graph or heat-time tweaks whose interaction
+density remains within fixed factors of free rotors. It does not identify
+which of the remaining constructions realizes the actual source.
+
+An optional sufficient check for this rejected class: if the unnormalized
+product of relative edge densities is uniformly between A and B with 0<A<=B,
+its normalization lies in the same interval; therefore W_N lies between
+A/B and B/A. This is exactly the type of complete product bound paid by
+(11)-(12) in the accepted harmonic-star response. No density bound is assumed
+for arbitrary Villain graphs outside the stated class.
+
+Independent verdict: ACCEPT at the stated harmonic-profile and two-sided
+normalized-density scope, candidate SHA256
+1cea6c243b3ee04e256768d166a77967e77e092d76192bfe9a7d8b6ea96f3711.
+Review receipt SHA256
+5c263e3a4cba4fca6c07d507ad88b0962ddbe4d47cd10ea5b80aaa4e8e0da411.
+The checker suggests choosing r as a continuity point of |Z| in the escape
+argument; such a positive r exists since Z is nondegenerate. Alternatively
+the open-set Portmanteau lower bound already suffices for the stated proof.
+The inserted proof bytes match the reviewed candidate exactly.
+
+Decision: retain the exact Abel target and the same-law weak-limit consumer.
+A viable harmonic-weight construction must leave this bounded-density class;
+a different weight profile also remains open. Do not spend another Pro call
+on changing heat times or graph edges while all the theorem assumptions remain
+in force. This extension adds no second source-sign attempt or counter reset.
