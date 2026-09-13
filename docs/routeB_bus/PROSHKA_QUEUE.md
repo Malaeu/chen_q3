@@ -2,6 +2,16 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
+## REQ-2026-09-13-BROWNIANJOINT
+- STATUS: OPEN. The owner participated in the requested brainstorm, required mathematics first, then explicitly continued toward RH. The historical BESSEL owner-wait boundary below is superseded by that participation, not erased.
+- Boundary: GOAL058_FULL_THETA_DILATION_CONDITIONAL_COVARIANCE. One exact weighted conditional-covariance comparison on I=(-(log2)/2,0), for every finite complex family. Source fit, domain and conditional accounting are proved; the all-rank sign is open.
+- Source base9864a5052eaa23790d8719d3beb548e084eee24d. That commit excludes both ordinary and beta-normalized fixed-step Brownian difference maps, with all scope restrictions; history9->10 once. No general Brownian exclusion or negative V witness.
+- Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_BROWNIANJOINT_2026-09-13.txt;9841B/121LF/CR0/finalLF/SHA2561669dbcfdf54abd59ad5f23a0dabf9dfa98489a99835cb358d16b810a9dfdd70. Sole read-only checker sibling5_check returned CLEAN_DISPATCH on these exact bytes.
+- Same-commit input: docs/Codex/REPORT_2026-09-13_BROWNIAN_DILATION_CONDITIONAL.md;9296B/210LF/SHA2568ea7ed0b70f57d271b09cb44f53156cd50b71aa6511bd1fd4077111ba5bef5ef. Full mathematical derivation completed before independent read. CLEAN on proof draftb5d949a29d09d52cea59acbf8a9c68ead2516e7340244fe92f0bacf4f524274f; only status/receipt added afterward. No target sign claimed.
+- The exact full two-energy dilation likelihood reproduces every source translate after conditioning; its weighted L2 domain is proved. Both covariance terms are retained. The known Gaussian control loses product separability on its natural lift, but this distinction alone does not prove the desired inequality.
+- Assigned new result only: docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_BROWNIANJOINT_2026-09-13.md on codex_mac/math-proshka-20260912. No canonical writer/queue changes by Proshka. Same six-field phase and living chat6aa52001-4094-83eb-9520-01a09f54eff2; explicit owner GitHub-only exchange overrides attachment transport.
+- Historical source-sign count10; one completed local construction since the mathematics-first direction. This is the next single attempt, counted only on its mathematical result. No source-fit/review/publication counter increment and no counter reset. Full RH/IC/ODD2 remain open. Delivery is not yet claimed by this entry.
+
 ## BESSEL_MULTIPLIER — accepted named-class closure obstruction, 2026-09-13
 - STATUS: ACCEPTED_PAPER_EXCLUDE_SPECIFIED_BESSEL_MULTIPLIER_POINTWISE_CLOSURE; OWNER_BRAINSTORM_BOUNDARY_REACHED. One source-matching attempt after SOURCEENERGY; no new Pro proof request has been sent.
 - Exact source base b5328d02fbf988a54ad5996f4fb826a65b50a5a3. Brief docs/Codex/BRIEF_2026-09-13_BESSEL_SOURCE_MATCHING.md; SHA256c2dce3c5b170931cd9663b70eef63fc82cdc926efdfb368bf9c0808b72ae6974. Three registered shelf passes were INCOMPLETE; two primary sources were fetched/hashed, relevant formula pages read and visually checked.
