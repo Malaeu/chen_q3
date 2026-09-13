@@ -3,7 +3,7 @@
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
 ## REQ-2026-09-13-BROWNIANHODGE
-- STATUS: OPEN. Exact parent primitive-form report and full request independently CLEAN; not sent yet. Same owner-authorized living chat, unchanged six phase fields, GitHub-only assignment/result and one short chat notice.
+- STATUS: IN_REVIEW. Delivered2026-09-13T08:51:20.511Z: exact committed GitHub URL in sent message169, cleared composer156, natural Pro-Denkvorgang176 and Stop164. Request commit3f057975d59adcd9b61a3585c8f293624ba742ae, exact remote verified; review-plan READY/holds[] with request blob311885a13b27dcd7573d1855fb91e2f6809f0e70. Explicit owner GitHub-only transport and living-chat override retained; no attachment or Answer now. Full report and request independently CLEAN.
 - Boundary: GOAL058_ACTUAL_THETA_BROWNIAN_PRIMITIVE_TRANSFER. One explicit conditional half-energy profile embedding into the newly proved primitive form, with all real nodes and complex coefficients; exact transfer or full residual/named failure. No bare-exponential rerun or polynomial sweep.
 - Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_BROWNIANHODGE_2026-09-13.txt; 9895bytes/123LF/finalLF/CR0/SHA256 f40965ea88f8ae000af0e31b3e26d7310c2abf8a09bea89a07d8ae4990a1b93d.
 - Same-commit input: docs/Codex/REPORT_2026-09-13_BROWNIAN_PRIMITIVE_FORM.md; 10647bytes/206LF/SHA256 accbbc050d41c54cf09927571b24106f2a6a6e84a960cf076b8f4dbf900cd809. Parent and sole sibling5_check accepted the two-copy Brownian dictionary, negative primitive sign, one positive direction, complete Gram projection, and exact bare-exponential mismatch.
