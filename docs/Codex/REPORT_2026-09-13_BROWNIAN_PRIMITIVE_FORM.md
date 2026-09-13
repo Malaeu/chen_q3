@@ -204,3 +204,91 @@ Receipt SHA2566ab76484d545e3ed636072397480c05bdecfa0da4b86637b937acc646d432814.
 Only the status and this receipt are changed after that audit. This completes
 one new primitive-carrier theorem and rejects the named bare embeddings;
 the original source-sign interface remains open, with no counter reset.
+
+
+## Subsequent parent preflight while BROWNIANHODGE runs
+
+The following proof is reproduced verbatim from the independently reviewed
+parent candidate. It was not part of the original206LF Pro input.
+
+# Parent intake preflight: unmodified conditional profiles collapse at zero
+
+PAPER CANDIDATE for independent review. This supports the already running
+REQ-2026-09-13-BROWNIANHODGE; it is not a new request or separate source-sign
+attempt. Source/request commit3f057975d59adcd9b61a3585c8f293624ba742ae.
+The original206LF carrier input remains immutable at that commit.
+
+Keep alpha=1/4, law nu of U=sum Exp(rate pi*n^2), C=E(U+V)^alpha=2Z,
+and m_alpha=E U^alpha>0. The source has U>0 almost surely and all positive
+moments, so strict subadditivity gives
+
+    0<C<2m_alpha,       K0=m_alpha^2/C>0,       K1=2m_alpha-C>0.
+
+For t>0 let mu_t be the conditional law U | U+V=t. Its nu-density is
+k_t(u)=h_nu(t-u)/r(t) for0<u<t and zero otherwise. This is k_x of the request
+with t=exp(2x). It is a probability density and each fixed k_t belongs to
+the domain D_alpha; no uniform bound on its D_alpha norm is assumed.
+
+Define a_t=Q_alpha(1,k_t), B_ts=Q_alpha(k_t,k_s). By the probability-law
+identification (which retains the FULL kernel and both integrations),
+
+    a_t=E[(U+W_t)^alpha],            W_t~mu_t independent of U,
+    B_ts=E[(W_t+W'_s)^alpha],       independent W_t~mu_t,W'_s~mu_s.
+
+These identities are absolutely integrable. Since 0<W_t<t almost surely
+and z->z^alpha is increasing and subadditive,
+
+    m_alpha<=a_t<=m_alpha+t^alpha,
+    0<=B_ts<=(t+s)^alpha.                                  (P1)
+
+Therefore the Hodge-projected kernel from B3 satisfies the quantitative
+full-integral estimate
+
+    H_alpha(k_t,k_s)=a_t*a_s/C-B_ts,
+    |H_alpha(k_t,k_s)-K0|
+      <=[m_alpha*(t^alpha+s^alpha)+t^alpha*s^alpha]/C
+         +(t+s)^alpha.                                    (P2)
+
+No pointwise kernel negativity is substituted for an averaged statement.
+For the alternate mean-zero primitive metric, B2 gives
+
+    E_alpha(k_t,k_s):=-Q_alpha(k_t-1,k_s-1)
+       =a_t+a_s-B_ts-C,
+    |E_alpha(k_t,k_s)-K1|
+       <=t^alpha+s^alpha+(t+s)^alpha.                        (P3)
+
+Both metrics are strictly positive on their diagonal for each fixed t:
+k_t is not constant nu-almost everywhere, since nu((t,infinity))>0 but
+k_t vanishes there and has mean one. The Hodge radical/strict primitive
+statements in the accepted carrier report apply.
+
+As t,s->0, P2-P3 prove that the normalized off-diagonal correlation tends
+to1 in either metric, with NO bound on t/s required. In contrast the
+accepted full-source B8, together with reflection symmetry, proves that
+for every fixed d!=0,
+
+    V_f(x,x+d)/sqrt(V_f(x,x)V_f(x+d,x+d))->sech(d)<1,
+    as x->-infinity.                                      (P4)
+
+Since t=exp(2x), s=exp(2(x+d)) both tend to zero, P2-P4 exclude the exact
+identification V_f(x,y)=w(x)w(y)H_alpha(k_x,k_y), for ANY positive node
+factors w. The same exclusion holds for E_alpha(k_x,k_y). Even arbitrary
+nonzero complex scalar node factors cannot repair it, because they leave
+the absolute value of the normalized correlation unchanged. These are
+full-source asymptotic obstructions, not finite-cell evidence.
+
+This excludes unmodified conditional profiles (including subtraction of
+constants and the two stated projections, which do not alter their
+respective Gram kernels). It does not exclude differentiated profiles,
+different signed observables, coupling between x and the energy, multiple
+independently positive pieces, or any other explicit construction Proshka
+may name under the running request. It gives no negative original V/Weil
+witness and no global IC, ODD2, all-order source sign, or RH proof.
+
+AUTOPSY: dropped=OBJECT_IDENTITY; note=Unmodified conditional half-energy profiles collapse to a constant normalized correlation at zero energy; the full source retains sech(d).
+
+Independent acceptance: sole sibling5_check ACCEPTED_PARTIAL_PAPER at exact
+candidate SHA256dcc47f9b895a518b953dfd451e607e3faf69b9cf184aed4ccc58bc918ed1d59c.
+Receipt SHA25622624338a37a9fc2d5ce939c07f235acd0356d35268a36cf83fe6aa48454087a.
+The complete conditional expectations and normalized limits were checked;
+no stronger embedding exclusion or original source sign is inferred.
