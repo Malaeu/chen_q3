@@ -2,6 +2,16 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
+## REQ-2026-09-13-SOURCEENERGY
+- STATUS: OPEN; prepared, not sent. One full-source boundary-energy construction from the circle heat operator and Poisson symmetry, after the fixed RF was excluded. Same six-field phase and living chat6aa52001-4094-83eb-9520-01a09f54eff2; owner GitHub-only full request/result and one short notice override retained.
+- Boundary: GOAL058_ACTUAL_THETA_POSITIVE_BOUNDARY_ENERGY. Exact target remains original V[c]>=0 for all finite real nodes and complex coefficients. Seek an independently positive energy whose terminal release is V, with every boundary/domain/normalization condition paid. Conditional Gram reformulation itself is not progress.
+- Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SOURCEENERGY_2026-09-13.txt;9785B/109LF/finalLF/CR0/SHA2562fefd63056363c52c55d5ed7101e8c45484adc4a6da33c1080df85bdbbc73154.
+- Preflight: docs/Codex/REPORT_2026-09-13_SOURCE_ENERGY_PREFLIGHT.md;8450B/160LF/SHA256e2b168250777bc13e6ba740af7e977ebf7807b8b7170f089c711d32a1dd83307. Forward zero-state passivity fails already at rank1 on a finite horizon. The full theta hazard excludes every bounded convolution reservoir kernel, including skew-adjoint dynamics with a bounded coupling vector. Neither is an actual negative V witness; general source-derived energy remains open.
+- Brief: docs/Codex/BRIEF_2026-09-13_SOURCE_PASSIVITY.md;4497B/83LF/SHA2562c67b05ca651bc143bb74c9047f726f04df355a1b0e259e4ca00d24c3bf22d3f. Three shelf passes INCOMPLETE, not absence. One primary-source KYP analogue verified with exact page, hash and hypothesis mapping; canonical edge remains unbound and no supplier admission is claimed.
+- Source basefcfd09bdf18806664cd1b69f61e516cc35a70775. All four inherited R/T/Z/C source byte sets match their Git objects. New B/E inputs travel in the same commit as this request. Independent exact read-only review CLEAN_SOURCE_ENERGY_PREFLIGHT_AND_DISPATCH by sibling5_check; retained receipt SHA256c27641558ce6a368287cc5d541a11e57efcff78da83a410f7ab94c09ab095223. Root separately checked the entire proof and exact heat-trace normalization. No Lean or canonical admission; no delivery until request publication is verified.
+- Assigned new result only: docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_SOURCEENERGY_2026-09-13.md on codex_mac/math-proshka-20260912. No canonical writes, new J, repeat RF, finite-rank sweep, settings change or full mathematical chat payload.
+- Historical count7 / completed since latest explicit owner resumption1. This preflight and dispatch are part of the next single SOURCEENERGY attempt; they neither add separate completed attempts nor reset any counter.
+
 ## THETARF — accepted fixed RF obstruction, 2026-09-13
 - STATUS: ANSWERED_ACCEPTED_FIXED_TWOCHANNEL_RF_DIVISOR_OBSTRUCTION_PAPER. This intake supersedes the earlier awaiting and technical-failure observations for the same attempt.
 - Full response commit1a380a221f0b967f8ea0d11225c444d6b9ff7365; docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_THETARF_2026-09-13.md;89215B/1343LF/SHA256933707739367e05a34d07c273fc94d1455a8ddfef9d5e16b33189afd209aa93e. Exact app final and independent Git fetch observed15:23UTC; only this response file added, clean fast-forward intake.
