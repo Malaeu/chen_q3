@@ -142,3 +142,51 @@ queries, then test one exact primitive-sign mechanism and its weakest missing
 transfer to V_f. No new HCM search, stationary jump-energy rerun, polynomial
 scan, or all-order finite-cell campaign. Discovery remains
 INCOMPLETE_NO_CONSUMABLE_TARGET under the unchanged canonical hold.
+
+## 2026-09-13 continuation: Laplace dilation and coupled source ends
+
+Separate authorized root preparation, after accepted BROWNIANHODGE intake
+at 4f1d9f75e31955960d56111942b3f1c5efbb78d0. The full response there has
+SHA2567649d7600e9ddac8407aa24a93ebf624466d1a3410e44270de70c3476595dfa9;
+its equations (2)--(7), (25)--(27) retain the exact full theta/Bcal factor.
+The original V definition and normalization remain the pinned B6--B8 in
+REPORT_2026-09-13_BROWNIAN_PRIMITIVE_FORM.md at 6556d34e, SHA256
+00b5e80a573bd3a31c28f21ffa4fcf11695746c7df56274d12c0a94370e225fa.
+The unmodified conditional Brownian profile is excluded; the carrier sign
+is still valid. Historical count5, two completed constructions since resume.
+
+Search exact normalized Laplace vectors j_x(s)=sqrt(2 exp(2x)) exp(-exp(2x)s)
+in L2(ds), s>0, whose Gram kernel is sech(x-y). The question is whether a
+source-defined TWO-CHANNEL extension preserves both ends and their coupling.
+The same-end source correlation tends to sech(d) by B8, while cross-end
+behavior has not yet been independently accepted at this preparation step.
+
+UNVERIFIED rewrite1: for fixed offsets u,v, R rho_V(-R-u,R+v) tends to
+(v-u)/(2 sinh(v-u)), with the removable value 1/2 at equal offsets.
+UNVERIFIED rewrite2: a two-channel convolution block with diagonal kernel
+C(d)=sech(d) and cross kernel (C*C)(d)/(4R) is positive for R>=pi/4,
+and may provide a source-transfer carrier. End asymptotics alone do not
+give a uniform operator remainder or any full-source sign.
+
+Three dictionaries: Hardy/Paley--Wiener Laplace reproducing kernels;
+unitary dilation coherent states and their matrix coefficients; positive
+two-channel convolution blocks and Schur contraction. The fixed fc remains
+the negative control: ordinary positive Hilbert geometry is available for
+fc as well, so only an exact source map or a proved remainder can supply
+the missing hypothesis. No source sign is assumed in the candidate.
+
+Bound: three new registered shelf queries, inspect the strongest local
+source, and at most one primary-source verification for the Laplace/Hardy
+dictionary. Prove or reject the two-end asymptotic and the explicit coupled
+carrier before considering a new Pro dispatch. Do not repeat excluded bare
+Brownian exponentials or one-channel rank-one profiles. Production target
+and consumer remain unbound: INCOMPLETE_NO_CONSUMABLE_TARGET.
+
+Continuation result: the two proposed rewrites were independently proved
+at their stated carrier/asymptotic scope. REPORT_2026-09-13_TWOCHANNEL_LAPLACE_BRIDGE.md
+also gives a single global real-analytic mixing map J_x in T12--T14;
+it passes both end tests and the opposite-end leading coefficient. This
+does not prove the full relative source bound. Three new queries above
+remain INCOMPLETE; one primary Hardy source was fetched and pinned in the
+report, not a source-sign theorem. No new query or index repair is needed
+for this unchanged dictionary.
