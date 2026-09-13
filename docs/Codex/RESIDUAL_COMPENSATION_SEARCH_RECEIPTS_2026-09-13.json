@@ -1,0 +1,356 @@
+{
+  "status": "SOURCE_VERIFIED_DISCOVERY_ONLY",
+  "consumption": "INCOMPLETE_NO_CONSUMABLE_TARGET",
+  "source_base": "e6065e50b0e8201cb9b5afd042e67123d643b3d9",
+  "brief": "docs/Codex/BRIEF_2026-09-13_RESIDUAL_COMPENSATION.md",
+  "shelf_queries": [
+    {
+      "query": "conditional covariance Stein kernel weighted projection defect",
+      "exit_code": 2,
+      "status": "INCOMPLETE_SEMANTIC_INDEX_FRESHNESS_VALIDATION_FAILED",
+      "stdout_sha256": "a1d0c7667182df8fb6a24ea84976ada544147a4d39b5acc983e379b8404ed71b",
+      "stdout_bytes": 13339,
+      "raw_stdout_path": "/Users/emalam/.codex/visualizations/2026/09/12/01a092ef-bf89-7693-aca8-42c3b691138a/residual-compensation-hunt/covariance.stdout.txt",
+      "ask_receipt": {
+        "boundary": "COMPLETE_REGISTERED_SHELF",
+        "candidate_rows": [
+          {
+            "excerpt": "ПОСТАВЛЯЮТ (provides):",
+            "metadata_sha256": "b7ac349e3ff383b634ca2811c065adbc5abf8db2189392de2b91d43eef9f495e",
+            "provider": "knowledge-db",
+            "provider_id": "862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c",
+            "query": "conditional covariance Stein kernel weighted projection defect",
+            "query_sha256": "16ecc0b96d4967dbc04b51311bf398a0ce957021e3513f8f8da20f5ebe519d8d",
+            "title": "ПОСТАВЛЯЮТ (provides):",
+            "url": "capability/assembly/counterexample"
+          },
+          {
+            "excerpt": "weighted_projective_defect_mul_gap_le_rayleigh_excess q3.lean.aristotle/Q3/Proofs/RouteB/WeightedRayleighProjectiveDefect.lean:10",
+            "metadata_sha256": "d63ab29471fcfa5b2f0d9267de740a695fdbdee43e72fd62ed47099d2ae6842d",
+            "provider": "knowledge-db",
+            "provider_id": "378029e56d0400ef9e630086b428bd0e4bd3e2964e105719fac92e7e6bc873fd",
+            "query": "conditional covariance Stein kernel weighted projection defect",
+            "query_sha256": "16ecc0b96d4967dbc04b51311bf398a0ce957021e3513f8f8da20f5ebe519d8d",
+            "title": "weighted_projective_defect_mul_gap_le_rayleigh_excess q3.lean.aristotle/Q3/Proofs/RouteB/WeightedRayleighProjectiveDefect.lean:10",
+            "url": "capability/assembly/counterexample"
+          },
+          {
+            "excerpt": "continued_window_identity_pole_value_unconditional_mellin Q3/Proofs/RouteB/MuntzV3/Unconditional.lean",
+            "metadata_sha256": "9a3a2adc818455a7087eb943ad0fd4032f3c53fd87145dbb55b660326ac5d92a",
+            "provider": "lean-index",
+            "provider_id": "077759283756c543a66034c85a8b0a08ae8b6a70cc91384d794487f79adc009d",
+            "query": "conditional covariance Stein kernel weighted projection defect",
+            "query_sha256": "16ecc0b96d4967dbc04b51311bf398a0ce957021e3513f8f8da20f5ebe519d8d",
+            "title": "continued_window_identity_pole_value_unconditional_mellin Q3/Proofs/RouteB/MuntzV3/Unconditional.lean",
+            "url": "aristotle_proofs.db"
+          },
+          {
+            "excerpt": "continued_window_identity_raw_off_pole_unconditional_mellin Q3/Proofs/RouteB/MuntzV3/Unconditional.lean",
+            "metadata_sha256": "6a28721da07aaa6c5c3c32c540ba6912039f2bea82b29a2e626ec75a42d0be53",
+            "provider": "lean-index",
+            "provider_id": "38e982227984850303f743901805aaac95033d10690390711812a5771e16b034",
+            "query": "conditional covariance Stein kernel weighted projection defect",
+            "query_sha256": "16ecc0b96d4967dbc04b51311bf398a0ce957021e3513f8f8da20f5ebe519d8d",
+            "title": "continued_window_identity_raw_off_pole_unconditional_mellin Q3/Proofs/RouteB/MuntzV3/Unconditional.lean",
+            "url": "aristotle_proofs.db"
+          },
+          {
+            "excerpt": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarMuntzGalerkinResidualCrosswalk.lean:21:discharges the Phase-4B named crosswalk contract unconditionally.",
+            "metadata_sha256": "6de34b540e1f8c13edcaa54251863c381ab4b68af69c14d22faca9ceeb3d3d0c",
+            "provider": "lean-tree",
+            "provider_id": "430b6c9d76a46c32507f05bdf26915b50bbd47a43857ca592ed337676af42d7e",
+            "query": "conditional covariance Stein kernel weighted projection defect",
+            "query_sha256": "16ecc0b96d4967dbc04b51311bf398a0ce957021e3513f8f8da20f5ebe519d8d",
+            "title": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarMuntzGalerkinResidualCrosswalk.lean:21:discharges the Phase-4B named crosswalk contract unconditionally.",
+            "url": "Q3/Proofs/RouteB"
+          },
+          {
+            "excerpt": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarMuntzGalerkinResidualCrosswalk.lean:203:unconditionally for every selected source datum.",
+            "metadata_sha256": "fd23ac7fd4a87db790dc70130ccdc79acaf9ee93e89711232e892b93d4e7cef3",
+            "provider": "lean-tree",
+            "provider_id": "e6828e4ed2136842e6b971bc5cf7012dd75b890098368ca2362b777271109517",
+            "query": "conditional covariance Stein kernel weighted projection defect",
+            "query_sha256": "16ecc0b96d4967dbc04b51311bf398a0ce957021e3513f8f8da20f5ebe519d8d",
+            "title": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarMuntzGalerkinResidualCrosswalk.lean:203:unconditionally for every selected source datum.",
+            "url": "Q3/Proofs/RouteB"
+          },
+          {
+            "excerpt": "docs/Codex/BRIEF_2026-09-13_RESIDUAL_COMPENSATION.md",
+            "metadata_sha256": "48213dba7e89e05fc911db96bd95f385af26f66dc5b9347e337577ab7877f641",
+            "provider": "specs-docs",
+            "provider_id": "fc9071a28d1c418898fa7bbfe98dc07d85c9301dba190942959969d7ecde8a2c",
+            "query": "conditional covariance Stein kernel weighted projection defect",
+            "query_sha256": "16ecc0b96d4967dbc04b51311bf398a0ce957021e3513f8f8da20f5ebe519d8d",
+            "title": "docs/Codex/BRIEF_2026-09-13_RESIDUAL_COMPENSATION.md",
+            "url": "specs/maps"
+          }
+        ],
+        "external_lean": "EXECUTED",
+        "provider_rows": [
+          {
+            "failure_count": 1,
+            "hit_store_count": 5,
+            "provider": "local-shelves",
+            "query": "conditional covariance Stein kernel weighted projection defect",
+            "query_sha256": "16ecc0b96d4967dbc04b51311bf398a0ce957021e3513f8f8da20f5ebe519d8d",
+            "status": "INCOMPLETE"
+          },
+          {
+            "candidate_count": 0,
+            "candidate_hashes": [],
+            "collection_identity": null,
+            "corpus_sha256": null,
+            "provider": "q3_docs",
+            "query": "conditional covariance Stein kernel weighted projection defect",
+            "query_sha256": "16ecc0b96d4967dbc04b51311bf398a0ce957021e3513f8f8da20f5ebe519d8d",
+            "status": "INCOMPLETE"
+          }
+        ],
+        "query": "conditional covariance Stein kernel weighted projection defect",
+        "query_sha256": "16ecc0b96d4967dbc04b51311bf398a0ce957021e3513f8f8da20f5ebe519d8d",
+        "schema": "q3_ask_local_receipt.v1"
+      }
+    },
+    {
+      "query": "ground state representation Picone identity quadratic remainder",
+      "exit_code": 2,
+      "status": "INCOMPLETE_SEMANTIC_INDEX_FRESHNESS_VALIDATION_FAILED",
+      "stdout_sha256": "6fa28bdee87e7f2e9c507e42497965150dd2f285fe96d60cfb36cde6374e03dd",
+      "stdout_bytes": 14789,
+      "raw_stdout_path": "/Users/emalam/.codex/visualizations/2026/09/12/01a092ef-bf89-7693-aca8-42c3b691138a/residual-compensation-hunt/ground_state.stdout.txt",
+      "ask_receipt": {
+        "boundary": "COMPLETE_REGISTERED_SHELF",
+        "candidate_rows": [
+          {
+            "excerpt": "ПОСТАВЛЯЮТ (provides):",
+            "metadata_sha256": "6e67322867e8a991cabe5739b072a2a6e6bf6a9bfa16546012e5c224e4437a1d",
+            "provider": "knowledge-db",
+            "provider_id": "862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c",
+            "query": "ground state representation Picone identity quadratic remainder",
+            "query_sha256": "0c42dda00e68a8bccb7db0f1bb20112cb24cb53ba188afa8e2f86797f89ddd7d",
+            "title": "ПОСТАВЛЯЮТ (provides):",
+            "url": "capability/assembly/counterexample"
+          },
+          {
+            "excerpt": "H2a_SimpleEvenGround_FromPenaltyCoercivity q3.lean.aristotle/Q3/Proofs/RouteB/H2aPenaltyCoercivity.lean:395",
+            "metadata_sha256": "6d413c178816dd8ce54fbb1e2f16adbfd21597723e15ac47d354b03db8a42fd1",
+            "provider": "knowledge-db",
+            "provider_id": "2eb3496726b5c00c739fd0ad26943c2653270768a73e80017f93bbeb0f3b3e1c",
+            "query": "ground state representation Picone identity quadratic remainder",
+            "query_sha256": "0c42dda00e68a8bccb7db0f1bb20112cb24cb53ba188afa8e2f86797f89ddd7d",
+            "title": "H2a_SimpleEvenGround_FromPenaltyCoercivity q3.lean.aristotle/Q3/Proofs/RouteB/H2aPenaltyCoercivity.lean:395",
+            "url": "capability/assembly/counterexample"
+          },
+          {
+            "excerpt": "bombieri_weil_quadratic_functional_2000.pdf",
+            "metadata_sha256": "637eafe55c2bec60d2d8b01cf593745f3c61d7a9e0a9be87d6374dcc333e841b",
+            "provider": "local-literature",
+            "provider_id": "9816f1b5ef3cd16a5fd4b16705beeec275067f6c7c28d8856f7a298fdc464803",
+            "query": "ground state representation Picone identity quadratic remainder",
+            "query_sha256": "0c42dda00e68a8bccb7db0f1bb20112cb24cb53ba188afa8e2f86797f89ddd7d",
+            "title": "bombieri_weil_quadratic_functional_2000.pdf",
+            "url": "docs/routeB_bus/litreview"
+          },
+          {
+            "excerpt": "H2a_SimpleEvenGround_FromPenaltyCoercivity Q3/Proofs/RouteB/H2aPenaltyCoercivity.lean",
+            "metadata_sha256": "7674d7e3a02bb180eda2c473702559384bfcf7051e07a329ff14710dc892abf7",
+            "provider": "lean-index",
+            "provider_id": "bf4399aa946d2d0a27edccfe67824c037b3cb8b3c1b441d56913ca8e2b24b740",
+            "query": "ground state representation Picone identity quadratic remainder",
+            "query_sha256": "0c42dda00e68a8bccb7db0f1bb20112cb24cb53ba188afa8e2f86797f89ddd7d",
+            "title": "H2a_SimpleEvenGround_FromPenaltyCoercivity Q3/Proofs/RouteB/H2aPenaltyCoercivity.lean",
+            "url": "aristotle_proofs.db"
+          },
+          {
+            "excerpt": "IsSimpleEvenGround Q3/Proofs/RouteB/SimpleEvenGroundSectorCriterion.lean",
+            "metadata_sha256": "26ac1a2fb7a9cc2804349e2c1ee64f10557fce91b033ac60b1c1ff1e06f9065a",
+            "provider": "lean-index",
+            "provider_id": "e54861a170c28d65e95ba9621ff4c1abe4c857db5bcb1bdb05e655e236b90069",
+            "query": "ground state representation Picone identity quadratic remainder",
+            "query_sha256": "0c42dda00e68a8bccb7db0f1bb20112cb24cb53ba188afa8e2f86797f89ddd7d",
+            "title": "IsSimpleEvenGround Q3/Proofs/RouteB/SimpleEvenGroundSectorCriterion.lean",
+            "url": "aristotle_proofs.db"
+          },
+          {
+            "excerpt": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementSpectral.lean:27:def complexHermitianGroundGapAtLeast",
+            "metadata_sha256": "fb584d25b9ca9ef886802359a9373cf84c122f8993659b5bc3949f55dd09f47c",
+            "provider": "lean-tree",
+            "provider_id": "9c7483e764ddc31839c2cf4ab0df7fa526402662097bc0d802079d5b09f43fe5",
+            "query": "ground state representation Picone identity quadratic remainder",
+            "query_sha256": "0c42dda00e68a8bccb7db0f1bb20112cb24cb53ba188afa8e2f86797f89ddd7d",
+            "title": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementSpectral.lean:27:def complexHermitianGroundGapAtLeast",
+            "url": "Q3/Proofs/RouteB"
+          },
+          {
+            "excerpt": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementSpectral.lean:226:theorem hermitian_unit_trialLine_complementFloor_gives_ground_gap_tra",
+            "metadata_sha256": "cf18ab5f4dd3327b3917604c97a3382711cbf9568f8dd61a03606cb72e9e57f8",
+            "provider": "lean-tree",
+            "provider_id": "13b45dd1b745f2ee2b4b084599d17b3a37ed8aefa08cea288801dc9776962673",
+            "query": "ground state representation Picone identity quadratic remainder",
+            "query_sha256": "0c42dda00e68a8bccb7db0f1bb20112cb24cb53ba188afa8e2f86797f89ddd7d",
+            "title": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementSpectral.lean:226:theorem hermitian_unit_trialLine_complementFloor_gives_ground_gap_tra",
+            "url": "Q3/Proofs/RouteB"
+          },
+          {
+            "excerpt": "docs/Codex/BRIEF_2026-09-13_RESIDUAL_COMPENSATION.md",
+            "metadata_sha256": "c21167650ea8fc88e140b7a8db4f382b9f6002a1257faa1993aaf3437d92e2b7",
+            "provider": "specs-docs",
+            "provider_id": "fc9071a28d1c418898fa7bbfe98dc07d85c9301dba190942959969d7ecde8a2c",
+            "query": "ground state representation Picone identity quadratic remainder",
+            "query_sha256": "0c42dda00e68a8bccb7db0f1bb20112cb24cb53ba188afa8e2f86797f89ddd7d",
+            "title": "docs/Codex/BRIEF_2026-09-13_RESIDUAL_COMPENSATION.md",
+            "url": "specs/maps"
+          }
+        ],
+        "external_lean": "EXECUTED",
+        "provider_rows": [
+          {
+            "failure_count": 1,
+            "hit_store_count": 6,
+            "provider": "local-shelves",
+            "query": "ground state representation Picone identity quadratic remainder",
+            "query_sha256": "0c42dda00e68a8bccb7db0f1bb20112cb24cb53ba188afa8e2f86797f89ddd7d",
+            "status": "INCOMPLETE"
+          },
+          {
+            "candidate_count": 0,
+            "candidate_hashes": [],
+            "collection_identity": null,
+            "corpus_sha256": null,
+            "provider": "q3_docs",
+            "query": "ground state representation Picone identity quadratic remainder",
+            "query_sha256": "0c42dda00e68a8bccb7db0f1bb20112cb24cb53ba188afa8e2f86797f89ddd7d",
+            "status": "INCOMPLETE"
+          }
+        ],
+        "query": "ground state representation Picone identity quadratic remainder",
+        "query_sha256": "0c42dda00e68a8bccb7db0f1bb20112cb24cb53ba188afa8e2f86797f89ddd7d",
+        "schema": "q3_ask_local_receipt.v1"
+      }
+    },
+    {
+      "query": "hypocoercivity corrected energy mixed term compensation",
+      "exit_code": 2,
+      "status": "INCOMPLETE_SEMANTIC_INDEX_FRESHNESS_VALIDATION_FAILED",
+      "stdout_sha256": "35c357ea33ba06fd18b5c0b1c7319fe816a480be0780eb55fe410a9a64d04328",
+      "stdout_bytes": 11397,
+      "raw_stdout_path": "/Users/emalam/.codex/visualizations/2026/09/12/01a092ef-bf89-7693-aca8-42c3b691138a/residual-compensation-hunt/hypocoercivity.stdout.txt",
+      "ask_receipt": {
+        "boundary": "COMPLETE_REGISTERED_SHELF",
+        "candidate_rows": [
+          {
+            "excerpt": "ПОСТАВЛЯЮТ (provides):",
+            "metadata_sha256": "47d77ac97aecf257c132c7316725c56c0d87829e1721294c96ccfbb37fe8be3e",
+            "provider": "knowledge-db",
+            "provider_id": "862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c",
+            "query": "hypocoercivity corrected energy mixed term compensation",
+            "query_sha256": "b06b16506ffbc7c94b8102a4acbe0653c1fe62402ca01460b972a0ccef763e5e",
+            "title": "ПОСТАВЛЯЮТ (provides):",
+            "url": "capability/assembly/counterexample"
+          },
+          {
+            "excerpt": "selectedProjectionTailDecay_of_physicalFourierEnergyControl q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarPhysicalFourierEnergyControl.lean:179",
+            "metadata_sha256": "bb649837e66716b2285b22b300574b37979125b85e8e21072f8e6a0a25653c7c",
+            "provider": "knowledge-db",
+            "provider_id": "8883c1e901e5342d8117967e5728b76548d81c4636e8c49b43327f9deff6e359",
+            "query": "hypocoercivity corrected energy mixed term compensation",
+            "query_sha256": "b06b16506ffbc7c94b8102a4acbe0653c1fe62402ca01460b972a0ccef763e5e",
+            "title": "selectedProjectionTailDecay_of_physicalFourierEnergyControl q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarPhysicalFourierEnergyControl.lean:179",
+            "url": "capability/assembly/counterexample"
+          },
+          {
+            "excerpt": "GammaSeq_log_term_summable_uniform aristotle_output/d1524982_aristotle.lean",
+            "metadata_sha256": "63987106bca3604b3651b36740acf5663095751202d2bc16ff52ca5695d97a5a",
+            "provider": "lean-index",
+            "provider_id": "fe4feba265296e82f9fc6252ab29f093f827c4e96bf212be8680efa5f960de3e",
+            "query": "hypocoercivity corrected energy mixed term compensation",
+            "query_sha256": "b06b16506ffbc7c94b8102a4acbe0653c1fe62402ca01460b972a0ccef763e5e",
+            "title": "GammaSeq_log_term_summable_uniform aristotle_output/d1524982_aristotle.lean",
+            "url": "aristotle_proofs.db"
+          },
+          {
+            "excerpt": "SelectedPhysicalFourierEnergyControl Q3/Proofs/RouteB/D0PstarPhysicalFourierEnergyControl.lean",
+            "metadata_sha256": "aa04fbcbc6b19d7ad0c59a16a29d922de25f3cb856d4b3945b9aa8d5ccd3db91",
+            "provider": "lean-index",
+            "provider_id": "121738f4712dd7467e4f88cc820de7061dd5cd1c3661717179e41e3d8bd56fa6",
+            "query": "hypocoercivity corrected energy mixed term compensation",
+            "query_sha256": "b06b16506ffbc7c94b8102a4acbe0653c1fe62402ca01460b972a0ccef763e5e",
+            "title": "SelectedPhysicalFourierEnergyControl Q3/Proofs/RouteB/D0PstarPhysicalFourierEnergyControl.lean",
+            "url": "aristotle_proofs.db"
+          },
+          {
+            "excerpt": "docs/Codex/BRIEF_2026-09-13_RESIDUAL_COMPENSATION.md",
+            "metadata_sha256": "fb963174e0ba326cf16ee4f6b78be597e95d6041c9bad54ff773d2b0881ed719",
+            "provider": "specs-docs",
+            "provider_id": "fc9071a28d1c418898fa7bbfe98dc07d85c9301dba190942959969d7ecde8a2c",
+            "query": "hypocoercivity corrected energy mixed term compensation",
+            "query_sha256": "b06b16506ffbc7c94b8102a4acbe0653c1fe62402ca01460b972a0ccef763e5e",
+            "title": "docs/Codex/BRIEF_2026-09-13_RESIDUAL_COMPENSATION.md",
+            "url": "specs/maps"
+          }
+        ],
+        "external_lean": "EXECUTED",
+        "provider_rows": [
+          {
+            "failure_count": 1,
+            "hit_store_count": 4,
+            "provider": "local-shelves",
+            "query": "hypocoercivity corrected energy mixed term compensation",
+            "query_sha256": "b06b16506ffbc7c94b8102a4acbe0653c1fe62402ca01460b972a0ccef763e5e",
+            "status": "INCOMPLETE"
+          },
+          {
+            "candidate_count": 0,
+            "candidate_hashes": [],
+            "collection_identity": null,
+            "corpus_sha256": null,
+            "provider": "q3_docs",
+            "query": "hypocoercivity corrected energy mixed term compensation",
+            "query_sha256": "b06b16506ffbc7c94b8102a4acbe0653c1fe62402ca01460b972a0ccef763e5e",
+            "status": "INCOMPLETE"
+          }
+        ],
+        "query": "hypocoercivity corrected energy mixed term compensation",
+        "query_sha256": "b06b16506ffbc7c94b8102a4acbe0653c1fe62402ca01460b972a0ccef763e5e",
+        "schema": "q3_ask_local_receipt.v1"
+      }
+    }
+  ],
+  "primary_sources": [
+    {
+      "name": "covariance",
+      "url": "https://arxiv.org/html/1711.00668v3",
+      "final_url": "https://arxiv.org/html/1711.00668v3",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 560942,
+      "sha256": "a625a095f2202fc2f8011f29d2a22d5f35bcaebd314d582728d79b0147dff58d",
+      "path": "/Users/emalam/.codex/visualizations/2026/09/12/01a092ef-bf89-7693-aca8-42c3b691138a/residual-compensation-hunt/covariance.html",
+      "extracted_text_path": "/Users/emalam/.codex/visualizations/2026/09/12/01a092ef-bf89-7693-aca8-42c3b691138a/residual-compensation-hunt/covariance.source.txt",
+      "extracted_text_sha256": "c6aa5e5260dbff2709abaa17a2d370161d9ca8cfbe132db8bbb2794a4b714ffe"
+    },
+    {
+      "name": "ground_state",
+      "url": "https://arxiv.org/html/0803.0503v2",
+      "final_url": "https://arxiv.org/html/0803.0503v2",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 607722,
+      "sha256": "7bb71219df750fc62cccc14fa784ae0e5ea736799de1b85807a8f25c9af8d9d1",
+      "path": "/Users/emalam/.codex/visualizations/2026/09/12/01a092ef-bf89-7693-aca8-42c3b691138a/residual-compensation-hunt/ground_state.html",
+      "extracted_text_path": "/Users/emalam/.codex/visualizations/2026/09/12/01a092ef-bf89-7693-aca8-42c3b691138a/residual-compensation-hunt/ground_state.source.txt",
+      "extracted_text_sha256": "5f2c9615e6497f61d64f4ed460e48daf9fec9e5de2d3ddccdb3429aeff67ba12"
+    },
+    {
+      "name": "hypocoercivity",
+      "url": "https://arxiv.org/html/1005.1495",
+      "final_url": "https://arxiv.org/html/1005.1495",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 573643,
+      "sha256": "f0490bf5ccb49431fa4d13041f2c9038b07cdf1d39d915abc0a7b96514d73747",
+      "path": "/Users/emalam/.codex/visualizations/2026/09/12/01a092ef-bf89-7693-aca8-42c3b691138a/residual-compensation-hunt/hypocoercivity.html",
+      "extracted_text_path": "/Users/emalam/.codex/visualizations/2026/09/12/01a092ef-bf89-7693-aca8-42c3b691138a/residual-compensation-hunt/hypocoercivity.source.txt",
+      "extracted_text_sha256": "c1b54e38155374490c47a474b60030155bcf47332365d7ce478339cdb559cbb2"
+    }
+  ],
+  "index_repair_performed": false,
+  "new_proshka_dispatch": false
+}
