@@ -2,7 +2,16 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
+## REQ-2026-09-14-GAMMABRANCH
+- STATUS: OPEN. NOT_SENT. One independent analytic audit of the new B1-B8 branch obstruction, not another request to prove the excluded preserver.
+- Boundary: GOAL058_GAMMA_COFINAL_BRANCH_OBSTRUCTION_AUDIT. Same six-field phase; owner GitHub-only transport to living chat 6aa52001-4094-83eb-9520-01a09f54eff2, now observed idle after GAMMARECIP.
+- Request commit 15fe3eb8ee19c85c51f3ad2984583dc95a0af2a1; docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_GAMMABRANCH_2026-09-14.txt; SHA256 00c7fb30a16dec80cf0111e8a4adbf343374a720e1ff59d1ca9143c5e22762bb; 7713 bytes, 93 LF, no CR, final LF.
+- Exact report SHA256 862011bd19d73961d2270c8b7da61f63d30e68e2d195c4846497d9f1c2c39f63 at the same commit, docs/Codex/REPORT_2026-09-14_GAMMA_COFINAL_BRANCH_OBSTRUCTION.md. Independent reviewer sibling5_check CLEAN B1-B7, CLEAN appended B8 Gaussian corollary, CLEAN_DISPATCH exact request/report. Final report changes only STATUS after review.
+- Claimed scoped result: infinitely many nonreal zeros for every auxiliary M_N, N>=13, also after any fixed real Gaussian multiplier. No actual theta witness or RH disproof. This supersedes the older cofinal-OPEN status only for this auxiliary family; the xi limit remains correct.
+- Expected response: docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_GAMMABRANCH_2026-09-14.md on codex_mac/gamma-reciprocity-20260914. Audit global contour/Watson uniformity, Jensen and Hadamard; no numerical campaign, duplicate send or new chat.
+
 ## REQ-2026-09-14-GAMMARECIP
+- STATUS: ANSWERED. Raw response fetched from commit 3ac8c4eb7e3cf4ca86ec4fed2b0d73495b0fbe7d, SHA256 20c2616be5c95708e004d9966e7d7a2055c0514bcc9d788cd623563d74997d4a, 53868 bytes/593 LF. Full parent reading and sibling5_check ACCEPT_CANONICAL_SCALAR_STURM_LIFT_OBSTRUCTION_ONLY. Its scalar result overlaps the concurrent parent test, not a second attempt. Historical cofinal OPEN is superseded by the new B1-B8 report; raw response preserved. Earlier delivery lines below are historical.
 - STATUS: IN_REVIEW. DELIVERED_PENDING_MATHEMATICAL_RESULT. Registered review-plan READY/holds[] after the missing isolated OPEN entry was recorded. Published queue commit 716df7ba3578390b494d2d2e4225bce6fac187f3 verified. One notice sent; browser1/tab2 shows exact notice AX65, empty composer AX71 and Stop AX75; app status active. Owner GitHub-only transport applied; canonical writer/phase unchanged.
 - Boundary: GOAL058_GAMMA_RECIPROCAL_FOURIER_REAL_ZERO_PRESERVATION. Test preservation for the reciprocal geometric symmetrization of the actual finite gamma densities, beginning with the exact N=2 density. The proved full-source limit and classical N=1 Bessel energy are inputs, not the requested new result.
 - Request commit: 65c4a563ce4319a595a17e7c264dbbd77f1672e1. Path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_GAMMARECIP_2026-09-14.txt. SHA256: 61036686fa6c759726c1c5336ca7321df7860b979af4a9e8323e088811ed3ef9. UTF-8, 9266 bytes, 122 LF, no CR, final LF.
