@@ -253,12 +253,20 @@
   },
   "exact_reciprocal_pairing": {
     "path": "docs/Codex/REPORT_2026-09-14_EXACT_RECIPROCAL_PAIRING.md",
-    "sha256": "fe4e155eb599057a0d112b8dfc1654302e484e12dc560b7ae5addee007bdef10",
+    "sha256": "3eaccc08a8ee5ced8d828340ba866a16f39d33c7e088c9b324b0bb62c4d7357a",
     "draft_reviewed_sha256": "4f16c4358da7604b7595177582cb011f66a096ce1bdd9ae013cfd1b56f56065a",
     "independent_review": "CLEAN /root/sibling5_check R1-R4; R5 semantic return only; final changes STATUS only",
     "result": "r_N converges normally on Re t>0; actual reciprocity extends there; full reciprocal product equals Phi^2 in |Im x|<pi/4. Finite simple branches may coalesce into even limit zeros.",
     "source_sign_progress": false,
     "RH_proved": false,
-    "final_changes": "STATUS and completed-audit locator only; reviewed R1-R5 unchanged"
+    "final_changes": "R1-R5 unchanged from previous reviewed source report; appended R6-R7 separately reviewed on exact current SHA",
+    "previous_sha256": "fe4e155eb599057a0d112b8dfc1654302e484e12dc560b7ae5addee007bdef10",
+    "refinement_review": {
+      "sections": "R6-R7",
+      "verdict": "CLEAN",
+      "reviewer": "/root/sibling5_check",
+      "reviewed_sha256": "3eaccc08a8ee5ced8d828340ba866a16f39d33c7e088c9b324b0bb62c4d7357a",
+      "result": "Reciprocity alone is equivalent to evenness and is shared by the old negative g0 control; it cannot imply V PSD. Joint actual-source TN-infinity plus reciprocity remains open. Abstract Gram existence is equivalent to target; explicit independent construction is missing."
+    }
   }
 }

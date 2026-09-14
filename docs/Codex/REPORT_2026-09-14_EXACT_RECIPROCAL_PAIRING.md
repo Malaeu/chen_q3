@@ -157,3 +157,94 @@ The next search must supply that missing output with checked hypotheses or
 identify a precise restricted bridge. Another scalar Bessel lift or a renamed
 geometric gamma preserver would repeat an established obstruction. Analytic
 branch cancellation itself is not a positive energy and does not close RH.
+
+## R6. Reciprocity alone does not supply the sign: an exact control
+
+Owner follow-up: identify the decisive mechanism for all finite V rows.
+This section checks the proposed premise before selecting another mechanism.
+It reuses the already reviewed non-theta control; no new sign search is run.
+
+For any positive even function g on R put, for t>0,
+
+    r_g(t)=t^(-5/4) g((log t)/2).
+
+Then exactly
+
+    r_g(1/t)=t^(5/4)g(-(log t)/2)=t^(5/2)r_g(t),
+    exp(5x/2)r_g(exp(2x))=g(x).                          (R6)
+
+Conversely that reciprocal identity implies evenness of the recovered g.
+If g is even and holomorphic on the strip |Im x|<pi/4, the same definition
+with the principal Log makes r_g holomorphic on Re t>0, and (R6) holds
+there. Thus the complex reciprocal-product identity in R3 by itself is
+also available for every such source. It is a constraint on an approximation,
+not an independent all-rank positivity theorem for the recovered g.
+
+Use the fixed reviewed control
+
+    g_0(x)=exp(-x^2)-(1/4)exp(-2x^2).
+
+It is positive, even and entire. Its inverse r_(g_0) is positive,
+holomorphic on Re t>0 and integrable on t>0, since
+
+    integral_0^infinity r_(g_0)(t)dt
+      =2 integral_R exp(-x/2)g_0(x)dx < infinity.
+
+Normalizing this density by a positive constant preserves reciprocity and
+only rescales V by a positive square. Its reciprocal product is exactly
+exp(5x)r_(g_0)(exp(2x))^2=g_0(x)^2 in the strip, with no unpaired branches.
+Nevertheless its full V has negative finite four-node rows inside
+I=(-log(2)/2,0). The already reviewed rank-two intake, R10-R12, gives
+
+    (partial_x^m partial_y^n V_0(0,0))_(m,n in {1,3})
+       = [[1/18,-25/54],[-25/54,100/27]],
+    (25/3,1) J (25/3,1)^T=-25/162<0,
+
+and transfers that jet to the finite nodes -h,-2h,-3h,-4h for sufficiently
+small h>0. This is an analytic counterexample to reciprocity/holomorphic
+square alone implying V>=0, not a negative row of the actual theta V.
+The source is unchanged from the prior control:
+docs/Codex/REPORT_2026-09-14_FULL_V_RANK_TWO_INTAKE.md,
+SHA256 51168fb802d7facfb74291d0a3fc0009b121f540711df2fe10ae01cd84c1d14f.
+
+The control does NOT have the actual additive TN-infinity property. With
+L=log t, write
+
+    log r_(g_0)(t)=-(5/4)L-L^2/4+log(1-exp(-L^2/4)/4).
+
+As t->infinity, twice differentiating gives
+
+    (log r_(g_0))''(t)=[3/4+(log t)/2+o(1)]/t^2>0.
+
+An additive TN2 translation kernel would require local log-concavity
+r(t)^2>=r(t-epsilon)r(t+epsilon), contradicting that strict convexity.
+Therefore this control disproves the isolated reciprocal premise; it does
+not disprove the still open joint TN-infinity-plus-reciprocity premise R5.
+
+## R7. The desired Gram entrance, and why it must be independently built
+
+The sufficient all-rank mechanism is a single family Psi_x in a Hilbert
+space H, built from the actual source independently of the unknown sign,
+with exactly
+
+    V(x,y)=<Psi_x,Psi_y>_H,   for all x,y in I.            (R7)
+
+Then for every finite family and every complex coefficient row,
+
+    sum_(i,j) conjugate(c_i)V(x_i,x_j)c_j
+        = ||sum_i c_i Psi_(x_i)||_H^2 >=0.               (R8)
+
+The equality must match all mixed terms, the physical normalization, and
+the full integral including its boundary. Individual positive diagonals
+or pair-dependent feature spaces do not supply R7. Once R7 is proved,
+orthogonal projection pays every subsequent Schur square extraction,
+including zero pivots, as in REPORT_2026-09-14_SCHUR_REPEATABILITY.md S9-S10.
+
+For an arbitrary kernel, existence of some Gram representation is itself
+equivalent to positive semidefiniteness. Consequently R7-R8 are NOT new sign
+progress unless Psi is constructed independently from source identities or
+a proved applicable theorem. Taking the unknown positive square root of V
+would assume the desired result. No such Psi for actual theta is constructed
+in this section. The precise missing mechanism is transfer of the full
+source structure to a common positive inner product after the logarithmic
+change, weight and half-line integration, not branch cancellation alone.
