@@ -1,0 +1,65 @@
+# PR14 independent review — PASS1
+
+Assignment: `PR14_SKILL_REVIEW_20260914`. Read-only review in
+`/home/chirurgie/.cache/q3-pr14-20260914`, exact base
+`85f6c5707441055ffc72747a54e68a7e24ef9660`, exact PR head
+`fe1044cb45356fff684fc99c042a2354bfad17fd`. No canonical path, ref, index,
+math source, runtime control, Lean/numerical work, publication, or PR comment
+was changed.
+
+## Provenance
+
+The base is an ancestor; the PR head's parent is
+`1c735091b9768db6915b539666421c177dbf9f30`. Its base-to-head delta is exactly:
+
+1. modified `.agents/skills/alias-hunt/SKILL.md` (`+69/-3`);
+2. added `docs/Codex/LINUX_HANDOFF_2026-09-14_SEMANTIC_COMPENSATION.md` (`+168`);
+3. added `docs/Codex/LINUX_HANDOFF_2026-09-14_SEMANTIC_COMPENSATION.sha256` (`+15`).
+
+`git diff --check` is clean; linked plan/report/evidence Git objects are present.
+
+| Object | Direct PR-head SHA-256 | Result |
+|---|---|---|
+| `.agents/skills/alias-hunt/SKILL.md` | `d31e1ca5cbf6d8529f222335a6c90fdf6471b9b85daa22fae7e8a0b6c2fcd398` | expected hash / manifest line 1 |
+| handoff | `88d83d2b38177b52925da3ee593060b398f7de24e4b01484adfdf4648dd4fd89` | expected hash / manifest line 2 |
+| manifest | `805a3e7367e9ac596fc563bcd447ada46c8124841dc284f7b108ecfee9a03453` | 15 entries |
+
+At review time canonical still held the old skill hash
+`127cfec8e331b6c200774c19d9c738dab6eef32eb8efdd0d8400c5178b35e21b`;
+post-merge reread/activation is therefore unconfirmed. The owner independently
+reported all 15 manifest checks as passed; this PASS1 rehashed the two delivered
+payloads and read all 15 entries, without repeating the broader validation.
+
+## Review and finding
+
+The skill implements the plan's semantic-return, partial-bridge and full-
+compensation instructions while preserving read-only discovery, exact
+formula/domain/normalization/quantifiers, source evidence, shelf-query reuse,
+and the existing `INCOMPLETE_NO_CONSUMABLE_TARGET` boundary. It explicitly does
+not install the plan's runtime gate or dispatch/commit/push. The handoff
+preserves the full theta form and finite complex-row quantifiers, defines the
+previously missing `A_c`, `B_c`, and `S_a[c]` (lines 101–108), records
+`S_a[c]/D_a = Var_mu(A_c) - E_mu|B_c|^2`, and leaves all-row domination OPEN.
+It makes no full-sign, RH, Lean, installed-reload, or runtime-gate claim.
+
+| Pass | Severity | Finding — English term + русское объяснение | Required handling |
+|---|---|---|---|
+| PASS1 | WORDING | **Route-selection wording** — формулировка выбора маршрута. Handoff lines 120–122 call theta heat/Poisson “the next source-specific question” and say “Preserve that choice.” Current owner instruction controls: Poisson is a candidate, not a selection. | No PR-byte change: record the exact post-integration correction below. Until then, the handoff neither selects a route nor proves activation. |
+
+No CRITICAL, HIGH, MEDIUM, or LOW finding. **PASS1 is positive but not Mode A
+convergence.** PASS2 must bind this same base/head/path/hash set and receipt
+condition. Then the owner may use the guarded native merge/publish route under
+the current epoch, stage the three reviewed source paths plus only the mechanically
+generated, verified owner metadata required by CODEX_CONTROL.md §10 revision 11;
+preserve the seven reported foreign paths, verify actual merge/push/readback,
+re-read all 208 installed skill lines,
+reconfirm the skill hash and all-15 manifest result, and only then post this
+one PR14 receiving receipt with the actual verified merge commit substituted:
+
+```text
+Linux intake completed: PR head `fe1044cb45356fff684fc99c042a2354bfad17fd` merged into `rh_clean` as `MERGE_COMMIT`. Re-read the installed `.agents/skills/alias-hunt/SKILL.md` completely (208 lines). SHA-256: `d31e1ca5cbf6d8529f222335a6c90fdf6471b9b85daa22fae7e8a0b6c2fcd398`; all15 handoff checksums passed. Current application: `S_a[c]/D_a = Var_mu(A_c) - E_mu|B_c|^2`; all-row domination remains OPEN. Semantic Hunt starts from this exact obstruction and joint weight/centering/shift action, reuses completed shelf queries, and keeps three dictionaries UNVERIFIED: Gram-form domination, restricted-family reverse Poincare, source-derived positive energy. After a bounded attempt gives no new basis, return to the objects before choosing again. Compensation preserves the full form, including mixed terms, weights, tails, boundaries and conjugations. Positive Gram entrance and zero pivots need independent justification. Poisson remains a candidate, not a selected route. Analysis precedes numerical tests/Lean. No full-sign proof or runtime dispatch gate is claimed.
+```
+
+The receipt is a future planned external comment, not sent by this reviewer.
+It preserves the production HOLD on the missing exact theorem/consumer binding
+and neither accepts mathematics nor makes an RH claim.

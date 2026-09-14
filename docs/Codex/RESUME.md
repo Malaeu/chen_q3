@@ -1,14 +1,14 @@
 ---
 schema: q3_resume.v2
-revision: 195
-observed_at: '2026-09-14T14:05:58.639040+00:00'
-previous_sha256: 18bca805d381f0d109f915983aba56fb0372bc3e675453111df017c0219514fc
+revision: 212
+observed_at: '2026-09-14T17:24:48.867797+00:00'
+previous_sha256: 2ac3d51587677d857f082924a7ed404f36eebea86d307d9bea933fa1ef5fe249
 owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
 owner_host_id: local
 reconciliation_pending: false
 recovery_from: null
 pins:
-  head: f6231d59eec72ba78a397dd2c73d205df34dc2c8
+  head: 85f6c5707441055ffc72747a54e68a7e24ef9660
   physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
   source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
   request_id: REQ-2026-09-11-DENSITY
@@ -69,15 +69,16 @@ stages:
 operation:
   kind: PUBLISH
   state: INTENT
-  id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
-  evidence: []
+  id: PR14_SKILL_PUBLICATION_20260914
+  evidence:
+  - publication_incoming_commit:fe1044cb45356fff684fc99c042a2354bfad17fd
   subject:
     kind: REPAIR
-    id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
-    sha256: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+    id: PR14_SKILL_PUBLICATION_20260914
+    sha256: bebc81c87841418056d0ca3852cb35a7b87079f50956c52ce4e3a65c0d4d6050
   command: publication
   inputs:
-    docs/session_protocols/team-evidence-6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad.bin: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+    docs/session_protocols/team-evidence-bebc81c87841418056d0ca3852cb35a7b87079f50956c52ce4e3a65c0d4d6050.bin: bebc81c87841418056d0ca3852cb35a7b87079f50956c52ce4e3a65c0d4d6050
 source_manifest:
   docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
   docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
@@ -93,58 +94,47 @@ ownership:
 # Current continuation — observations, not authority
 
 ## Mathematical frontier
-RH remains unproved; PX_RH_CLAIM NOT_MADE. Actual Mac history5987b887 is merged.
-Latest frontier: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
-PAPER all raw two-node positivity is not all-rank positivity or an RH proof.
-Exact theorem/consumer edge remains unbound; no mathematical supplier dispatch/admission.
-Owner-directed isolated analytical review completed: exact anchored covariance
-identity S_a/D_a = Cov(A)-Gram(B), with strictly positive comparison covariance
-for every finite distinct non-anchor theta node family. Full residual sign OPEN.
-Note evidence: docs/session_protocols/team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin
-Independent review: docs/session_protocols/team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin
+RH unproved; PX_RH_CLAIM NOT_MADE. Exact theorem/consumer edge remains unbound.
+Source: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
+Checked S_a[c]/D_a = Var_mu(A_c)-E_mu|B_c|^2; comparison covariance is positive
+for distinct non-anchor theta nodes. Full residual sign and all-row A4 remain OPEN.
+Published analytic note: team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin;
+independent review: team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin,
+both under docs/session_protocols, published in85f6c570.
 
 ## Confirmed and candidate results
-Source repair f37c5de40b4d5b7e76b89eabc28693bba1fae45a and true merge
-8417622b36fa90debc3e58fb1e5fd980f62f35d0 pushed with independent remote readback.
-The second parent is Mac5987b887850eb8aa29cac9588668d66d16e6f1c1;
-all102 commits and127incoming files preserved exactly, without conflicts.
-Recovery regression1/5.692s passed; original220tests passed before finalguard.
-Registered semantic refresh PASS,3326sources+manifest; repeat close exit0,
-FRESH and zero repairs. ask.sh VILLAINPHI exit0/ASK_STATUS:HITS.
+Linux repair, previous Mac merge, semantic refresh and analytical review completed.
+PR14 exact source fe1044cb45356fff684fc99c042a2354bfad17fd: three files,
+all15 checksums, skill validation and portability checks passed.
+Independent PR14 review completed on unchanged bytes; no open substantive findings.
+Skill SHA256 d31e1ca5cbf6d8529f222335a6c90fdf6471b9b85daa22fae7e8a0b6c2fcd398.
+Instructions only; runtime dispatch gate is NOT implemented.
 
 ## Next action
-Technical Linux sync and closeout publication are complete at f6231d59eec72ba78a397dd2c73d205df34dc2c8.
-Continue the existing physical task from canonical plan; use the incoming Mac
-SCHUR repeatability brief as the mathematical source, never restart old research.
-Production HOLD is mathematical admission debt, not a publication failure.
-Owner instruction 2026-09-14: first pure mathematical derivation and analytical
-agreement, only then numerical tests and formalization. The proposed C_V
-determinant scan is deferred. Full-V raw-two-shift intake and the conditional
-Schur repeatability report already exist in the merged Mac history; no repeat
-intake or research restart. C_V positivity is a stronger sufficient route,
-not a proved property of theta. First unpaid sign: the full Schur residual. Exact current obligation is the
-all-row inequality E|B_c|^2 <= Var(A_c) for the full theta source.
-A4 is equivalent to the original sign; no source-sign delta is claimed.
-Use heat/Poisson structure for a source-specific analytical budget before tests;
-do not dispatch a generic restatement of A4.
+Owner requested integration plus an explicit receipt comment in GitHub PR14.
+Complete this operation's ancestry-preserving merge/non-force push; reread installed
+skill, verify exact bytes, post reviewed receipt with receiving commit/hash.
+After delivery, stop this bounded integration; no new mathematical hunt assigned.
+Poisson is a candidate, not a selected route: handoff recommendation is superseded
+by owner's correction to compare mechanisms first. Analysis precedes tests/Lean.
 
 ## Existing work
-Heartbeat owner-agent check 2026-09-14T13:49:18.643411+00:00: owning task 01a084f4-7498-7021-bac2-91d184d58dc7; all six native children completed, no new result awaiting intake. Remote rh_clean f6231d59 and Mac5987b887 unchanged; no new committed ADVICE. App goal usageLimited remains; no goal status change, mathematical dispatch or numerical run.
-Publication issue d9 FIX_PUSH_VERIFIED. Original technical owner assignment DONE; unused native launch allocation CANCELLED;
-independent source checkers DONE; both source integrations and publication receipts complete. No technical worker is awaited. The scoped analytical evidence package is ready for publication.
-Owner01a084f4-7498-7021-bac2-91d184d58dc7 and installation9afdf2bf epoch1 unchanged.
-Existing maintenance pause/watch ownership is unchanged by this technical closeout.
+PR14_SKILL_REVIEW_20260914: one native terra/xhigh checker, two on-target passes.
+Owner01a084f4/install9afdf2bf/epoch1 ACTIVE unchanged; existing watch retained.
+Foreign .codex/config.toml and six litreview files remain excluded.
+Current explicit owner request authorizes this scoped work; old app goal unchanged.
 
 ## Do not repeat
-Do not replay confirmed pushes, source copy, Mac merge, or fresh semantic refresh.
-Earlier source attempt RECOVERY_SOURCE_INSTALL_20260914 was NOT_EXECUTED:
-review JSON was unsorted; original bytes preserved, canonical review separately
-validated before RECOVERY_SOURCE_CANONICAL_INSTALL_20260914 completed.
-One checkpoint retry followed a transient reader/writer collision; no effect replay.
+No repair replay, previous Mac merge, confirmed analytical review, old search or
+index rebuild. Preserve source pins, full theta and all finite complex rows.
+No mathematical admission or proof claim follows from a delivery.
 
 ## Integration remaining
-No Mac/source/derived integration remains. Six foreign literature files and
-.codex/config.toml remain local and excluded. Final CONFIRMED checkpoint may
-remain uncommitted by control11; do not recursively publish confirmation-only metadata.
-Seven old isolated wiring-test failures remain documented baseline debt;
-this repair does not claim that whole suite green or any RH admission.
+Installed skill must be reread after merge, then receipt posted to PR14.
+Current rule application: pin the exact weighted/centered translate obstruction;
+reuse completed shelf queries; Gram domination, restricted reverse Poincare and
+source-derived positive energy are UNVERIFIED dictionaries. After a completed
+bounded attempt without new basis return to objects before selecting again.
+Compensation preserves full mixed terms, tails, boundaries, weights, conjugations.
+Positive Gram entrance must be established independently; include zero pivots.
+Confirmation-only checkpoints need no recursive publication.

@@ -53322,3 +53322,5333 @@ this repair does not claim that whole suite green or any RH admission.
 ````
 <!-- /q3-history -->
 
+<!-- q3-history {"fence":"````","key":"resume-195-364f852e12dd1f82d225f8eab0d91e2a16965b8e27cf4e3543ddff6d845007b4","kind":"resume","revision":195,"sha256":"364f852e12dd1f82d225f8eab0d91e2a16965b8e27cf4e3543ddff6d845007b4","size":7884} -->
+````text
+---
+schema: q3_resume.v2
+revision: 195
+observed_at: '2026-09-14T14:05:58.639040+00:00'
+previous_sha256: 18bca805d381f0d109f915983aba56fb0372bc3e675453111df017c0219514fc
+owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: f6231d59eec72ba78a397dd2c73d205df34dc2c8
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: &id001 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id006
+    subject: &id003
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: *id001
+    state: DONE
+    evidence: &id004
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: &id005 e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: *id002
+  request_review:
+    subject: *id003
+    state: DONE
+    evidence: *id004
+    source_sha256: *id005
+    checked_by: /root/slack_verdict_check
+  delivery: *id006
+  receipt: &id010
+    subject: &id008
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: &id007 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id009
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: *id005
+    checked_by: *id002
+  independent_review:
+    subject: *id008
+    state: DONE
+    evidence: *id009
+    source_sha256: *id005
+    checked_by: /root/density_verdict_check
+  parent_check: *id010
+  acceptance: *id010
+  publication: *id010
+operation:
+  kind: PUBLISH
+  state: INTENT
+  id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+  evidence: []
+  subject:
+    kind: REPAIR
+    id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+    sha256: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+  command: publication
+  inputs:
+    docs/session_protocols/team-evidence-6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad.bin: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+ownership:
+  installation_ref: 9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4
+  epoch: 1
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH remains unproved; PX_RH_CLAIM NOT_MADE. Actual Mac history5987b887 is merged.
+Latest frontier: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
+PAPER all raw two-node positivity is not all-rank positivity or an RH proof.
+Exact theorem/consumer edge remains unbound; no mathematical supplier dispatch/admission.
+Owner-directed isolated analytical review completed: exact anchored covariance
+identity S_a/D_a = Cov(A)-Gram(B), with strictly positive comparison covariance
+for every finite distinct non-anchor theta node family. Full residual sign OPEN.
+Note evidence: docs/session_protocols/team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin
+Independent review: docs/session_protocols/team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin
+
+## Confirmed and candidate results
+Source repair f37c5de40b4d5b7e76b89eabc28693bba1fae45a and true merge
+8417622b36fa90debc3e58fb1e5fd980f62f35d0 pushed with independent remote readback.
+The second parent is Mac5987b887850eb8aa29cac9588668d66d16e6f1c1;
+all102 commits and127incoming files preserved exactly, without conflicts.
+Recovery regression1/5.692s passed; original220tests passed before finalguard.
+Registered semantic refresh PASS,3326sources+manifest; repeat close exit0,
+FRESH and zero repairs. ask.sh VILLAINPHI exit0/ASK_STATUS:HITS.
+
+## Next action
+Technical Linux sync and closeout publication are complete at f6231d59eec72ba78a397dd2c73d205df34dc2c8.
+Continue the existing physical task from canonical plan; use the incoming Mac
+SCHUR repeatability brief as the mathematical source, never restart old research.
+Production HOLD is mathematical admission debt, not a publication failure.
+Owner instruction 2026-09-14: first pure mathematical derivation and analytical
+agreement, only then numerical tests and formalization. The proposed C_V
+determinant scan is deferred. Full-V raw-two-shift intake and the conditional
+Schur repeatability report already exist in the merged Mac history; no repeat
+intake or research restart. C_V positivity is a stronger sufficient route,
+not a proved property of theta. First unpaid sign: the full Schur residual. Exact current obligation is the
+all-row inequality E|B_c|^2 <= Var(A_c) for the full theta source.
+A4 is equivalent to the original sign; no source-sign delta is claimed.
+Use heat/Poisson structure for a source-specific analytical budget before tests;
+do not dispatch a generic restatement of A4.
+
+## Existing work
+Heartbeat owner-agent check 2026-09-14T13:49:18.643411+00:00: owning task 01a084f4-7498-7021-bac2-91d184d58dc7; all six native children completed, no new result awaiting intake. Remote rh_clean f6231d59 and Mac5987b887 unchanged; no new committed ADVICE. App goal usageLimited remains; no goal status change, mathematical dispatch or numerical run.
+Publication issue d9 FIX_PUSH_VERIFIED. Original technical owner assignment DONE; unused native launch allocation CANCELLED;
+independent source checkers DONE; both source integrations and publication receipts complete. No technical worker is awaited. The scoped analytical evidence package is ready for publication.
+Owner01a084f4-7498-7021-bac2-91d184d58dc7 and installation9afdf2bf epoch1 unchanged.
+Existing maintenance pause/watch ownership is unchanged by this technical closeout.
+
+## Do not repeat
+Do not replay confirmed pushes, source copy, Mac merge, or fresh semantic refresh.
+Earlier source attempt RECOVERY_SOURCE_INSTALL_20260914 was NOT_EXECUTED:
+review JSON was unsorted; original bytes preserved, canonical review separately
+validated before RECOVERY_SOURCE_CANONICAL_INSTALL_20260914 completed.
+One checkpoint retry followed a transient reader/writer collision; no effect replay.
+
+## Integration remaining
+No Mac/source/derived integration remains. Six foreign literature files and
+.codex/config.toml remain local and excluded. Final CONFIRMED checkpoint may
+remain uncommitted by control11; do not recursively publish confirmation-only metadata.
+Seven old isolated wiring-test failures remain documented baseline debt;
+this repair does not claim that whole suite green or any RH admission.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-196-c5d54a9f2fcc1c095636592f91107aa5a6262512fb1bc6dad7cfc46e8bd1dec7","kind":"intent","revision":196,"sha256":"c5d54a9f2fcc1c095636592f91107aa5a6262512fb1bc6dad7cfc46e8bd1dec7","size":7986} -->
+````text
+---
+schema: q3_resume.v2
+revision: 196
+observed_at: '2026-09-14T14:07:38.877200+00:00'
+previous_sha256: 364f852e12dd1f82d225f8eab0d91e2a16965b8e27cf4e3543ddff6d845007b4
+owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: f6231d59eec72ba78a397dd2c73d205df34dc2c8
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: &id001 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id006
+    subject: &id003
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: *id001
+    state: DONE
+    evidence: &id004
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: &id005 e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: *id002
+  request_review:
+    subject: *id003
+    state: DONE
+    evidence: *id004
+    source_sha256: *id005
+    checked_by: /root/slack_verdict_check
+  delivery: *id006
+  receipt: &id010
+    subject: &id008
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: &id007 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id009
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: *id005
+    checked_by: *id002
+  independent_review:
+    subject: *id008
+    state: DONE
+    evidence: *id009
+    source_sha256: *id005
+    checked_by: /root/density_verdict_check
+  parent_check: *id010
+  acceptance: *id010
+  publication: *id010
+operation:
+  kind: PUBLISH
+  state: CONFIRMED
+  id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+  evidence:
+  - git:85f6c5707441055ffc72747a54e68a7e24ef9660:docs/Codex/RESUME.md
+  subject:
+    kind: REPAIR
+    id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+    sha256: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+  command: publication
+  inputs:
+    docs/session_protocols/team-evidence-6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad.bin: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+ownership:
+  installation_ref: 9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4
+  epoch: 1
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH remains unproved; PX_RH_CLAIM NOT_MADE. Actual Mac history5987b887 is merged.
+Latest frontier: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
+PAPER all raw two-node positivity is not all-rank positivity or an RH proof.
+Exact theorem/consumer edge remains unbound; no mathematical supplier dispatch/admission.
+Owner-directed isolated analytical review completed: exact anchored covariance
+identity S_a/D_a = Cov(A)-Gram(B), with strictly positive comparison covariance
+for every finite distinct non-anchor theta node family. Full residual sign OPEN.
+Note evidence: docs/session_protocols/team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin
+Independent review: docs/session_protocols/team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin
+
+## Confirmed and candidate results
+Source repair f37c5de40b4d5b7e76b89eabc28693bba1fae45a and true merge
+8417622b36fa90debc3e58fb1e5fd980f62f35d0 pushed with independent remote readback.
+The second parent is Mac5987b887850eb8aa29cac9588668d66d16e6f1c1;
+all102 commits and127incoming files preserved exactly, without conflicts.
+Recovery regression1/5.692s passed; original220tests passed before finalguard.
+Registered semantic refresh PASS,3326sources+manifest; repeat close exit0,
+FRESH and zero repairs. ask.sh VILLAINPHI exit0/ASK_STATUS:HITS.
+
+## Next action
+Technical Linux sync and closeout publication are complete at f6231d59eec72ba78a397dd2c73d205df34dc2c8.
+Continue the existing physical task from canonical plan; use the incoming Mac
+SCHUR repeatability brief as the mathematical source, never restart old research.
+Production HOLD is mathematical admission debt, not a publication failure.
+Owner instruction 2026-09-14: first pure mathematical derivation and analytical
+agreement, only then numerical tests and formalization. The proposed C_V
+determinant scan is deferred. Full-V raw-two-shift intake and the conditional
+Schur repeatability report already exist in the merged Mac history; no repeat
+intake or research restart. C_V positivity is a stronger sufficient route,
+not a proved property of theta. First unpaid sign: the full Schur residual. Exact current obligation is the
+all-row inequality E|B_c|^2 <= Var(A_c) for the full theta source.
+A4 is equivalent to the original sign; no source-sign delta is claimed.
+Use heat/Poisson structure for a source-specific analytical budget before tests;
+do not dispatch a generic restatement of A4.
+
+## Existing work
+Heartbeat owner-agent check 2026-09-14T13:49:18.643411+00:00: owning task 01a084f4-7498-7021-bac2-91d184d58dc7; all six native children completed, no new result awaiting intake. Remote rh_clean f6231d59 and Mac5987b887 unchanged; no new committed ADVICE. App goal usageLimited remains; no goal status change, mathematical dispatch or numerical run.
+Publication issue d9 FIX_PUSH_VERIFIED. Original technical owner assignment DONE; unused native launch allocation CANCELLED;
+independent source checkers DONE; both source integrations and publication receipts complete. No technical worker is awaited. The scoped analytical evidence package is published at 85f6c5707441055ffc72747a54e68a7e24ef9660.
+Owner01a084f4-7498-7021-bac2-91d184d58dc7 and installation9afdf2bf epoch1 unchanged.
+Existing maintenance pause/watch ownership is unchanged by this technical closeout.
+
+## Do not repeat
+Do not replay confirmed pushes, source copy, Mac merge, or fresh semantic refresh.
+Earlier source attempt RECOVERY_SOURCE_INSTALL_20260914 was NOT_EXECUTED:
+review JSON was unsorted; original bytes preserved, canonical review separately
+validated before RECOVERY_SOURCE_CANONICAL_INSTALL_20260914 completed.
+One checkpoint retry followed a transient reader/writer collision; no effect replay.
+
+## Integration remaining
+No Mac/source/derived integration remains. Six foreign literature files and
+.codex/config.toml remain local and excluded. Final CONFIRMED checkpoint may
+remain uncommitted by control11; do not recursively publish confirmation-only metadata.
+Seven old isolated wiring-test failures remain documented baseline debt;
+this repair does not claim that whole suite green or any RH admission.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-196-c5d54a9f2fcc1c095636592f91107aa5a6262512fb1bc6dad7cfc46e8bd1dec7","kind":"resume","revision":196,"sha256":"c5d54a9f2fcc1c095636592f91107aa5a6262512fb1bc6dad7cfc46e8bd1dec7","size":7986} -->
+````text
+---
+schema: q3_resume.v2
+revision: 196
+observed_at: '2026-09-14T14:07:38.877200+00:00'
+previous_sha256: 364f852e12dd1f82d225f8eab0d91e2a16965b8e27cf4e3543ddff6d845007b4
+owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: f6231d59eec72ba78a397dd2c73d205df34dc2c8
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: &id001 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id006
+    subject: &id003
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: *id001
+    state: DONE
+    evidence: &id004
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: &id005 e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: *id002
+  request_review:
+    subject: *id003
+    state: DONE
+    evidence: *id004
+    source_sha256: *id005
+    checked_by: /root/slack_verdict_check
+  delivery: *id006
+  receipt: &id010
+    subject: &id008
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: &id007 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id009
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: *id005
+    checked_by: *id002
+  independent_review:
+    subject: *id008
+    state: DONE
+    evidence: *id009
+    source_sha256: *id005
+    checked_by: /root/density_verdict_check
+  parent_check: *id010
+  acceptance: *id010
+  publication: *id010
+operation:
+  kind: PUBLISH
+  state: CONFIRMED
+  id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+  evidence:
+  - git:85f6c5707441055ffc72747a54e68a7e24ef9660:docs/Codex/RESUME.md
+  subject:
+    kind: REPAIR
+    id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+    sha256: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+  command: publication
+  inputs:
+    docs/session_protocols/team-evidence-6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad.bin: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+ownership:
+  installation_ref: 9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4
+  epoch: 1
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH remains unproved; PX_RH_CLAIM NOT_MADE. Actual Mac history5987b887 is merged.
+Latest frontier: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
+PAPER all raw two-node positivity is not all-rank positivity or an RH proof.
+Exact theorem/consumer edge remains unbound; no mathematical supplier dispatch/admission.
+Owner-directed isolated analytical review completed: exact anchored covariance
+identity S_a/D_a = Cov(A)-Gram(B), with strictly positive comparison covariance
+for every finite distinct non-anchor theta node family. Full residual sign OPEN.
+Note evidence: docs/session_protocols/team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin
+Independent review: docs/session_protocols/team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin
+
+## Confirmed and candidate results
+Source repair f37c5de40b4d5b7e76b89eabc28693bba1fae45a and true merge
+8417622b36fa90debc3e58fb1e5fd980f62f35d0 pushed with independent remote readback.
+The second parent is Mac5987b887850eb8aa29cac9588668d66d16e6f1c1;
+all102 commits and127incoming files preserved exactly, without conflicts.
+Recovery regression1/5.692s passed; original220tests passed before finalguard.
+Registered semantic refresh PASS,3326sources+manifest; repeat close exit0,
+FRESH and zero repairs. ask.sh VILLAINPHI exit0/ASK_STATUS:HITS.
+
+## Next action
+Technical Linux sync and closeout publication are complete at f6231d59eec72ba78a397dd2c73d205df34dc2c8.
+Continue the existing physical task from canonical plan; use the incoming Mac
+SCHUR repeatability brief as the mathematical source, never restart old research.
+Production HOLD is mathematical admission debt, not a publication failure.
+Owner instruction 2026-09-14: first pure mathematical derivation and analytical
+agreement, only then numerical tests and formalization. The proposed C_V
+determinant scan is deferred. Full-V raw-two-shift intake and the conditional
+Schur repeatability report already exist in the merged Mac history; no repeat
+intake or research restart. C_V positivity is a stronger sufficient route,
+not a proved property of theta. First unpaid sign: the full Schur residual. Exact current obligation is the
+all-row inequality E|B_c|^2 <= Var(A_c) for the full theta source.
+A4 is equivalent to the original sign; no source-sign delta is claimed.
+Use heat/Poisson structure for a source-specific analytical budget before tests;
+do not dispatch a generic restatement of A4.
+
+## Existing work
+Heartbeat owner-agent check 2026-09-14T13:49:18.643411+00:00: owning task 01a084f4-7498-7021-bac2-91d184d58dc7; all six native children completed, no new result awaiting intake. Remote rh_clean f6231d59 and Mac5987b887 unchanged; no new committed ADVICE. App goal usageLimited remains; no goal status change, mathematical dispatch or numerical run.
+Publication issue d9 FIX_PUSH_VERIFIED. Original technical owner assignment DONE; unused native launch allocation CANCELLED;
+independent source checkers DONE; both source integrations and publication receipts complete. No technical worker is awaited. The scoped analytical evidence package is published at 85f6c5707441055ffc72747a54e68a7e24ef9660.
+Owner01a084f4-7498-7021-bac2-91d184d58dc7 and installation9afdf2bf epoch1 unchanged.
+Existing maintenance pause/watch ownership is unchanged by this technical closeout.
+
+## Do not repeat
+Do not replay confirmed pushes, source copy, Mac merge, or fresh semantic refresh.
+Earlier source attempt RECOVERY_SOURCE_INSTALL_20260914 was NOT_EXECUTED:
+review JSON was unsorted; original bytes preserved, canonical review separately
+validated before RECOVERY_SOURCE_CANONICAL_INSTALL_20260914 completed.
+One checkpoint retry followed a transient reader/writer collision; no effect replay.
+
+## Integration remaining
+No Mac/source/derived integration remains. Six foreign literature files and
+.codex/config.toml remain local and excluded. Final CONFIRMED checkpoint may
+remain uncommitted by control11; do not recursively publish confirmation-only metadata.
+Seven old isolated wiring-test failures remain documented baseline debt;
+this repair does not claim that whole suite green or any RH admission.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-197-5c4d2d57a39e68ce8c0bd4656165cb2eeffc4e6846c4921c7dc857e3c2294d5c","kind":"intent","revision":197,"sha256":"5c4d2d57a39e68ce8c0bd4656165cb2eeffc4e6846c4921c7dc857e3c2294d5c","size":8187} -->
+````text
+---
+schema: q3_resume.v2
+revision: 197
+observed_at: '2026-09-14T14:35:58.013143+00:00'
+previous_sha256: c5d54a9f2fcc1c095636592f91107aa5a6262512fb1bc6dad7cfc46e8bd1dec7
+owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 85f6c5707441055ffc72747a54e68a7e24ef9660
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: &id001 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id006
+    subject: &id003
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: *id001
+    state: DONE
+    evidence: &id004
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: &id005 e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: *id002
+  request_review:
+    subject: *id003
+    state: DONE
+    evidence: *id004
+    source_sha256: *id005
+    checked_by: /root/slack_verdict_check
+  delivery: *id006
+  receipt: &id010
+    subject: &id008
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: &id007 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id009
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: *id005
+    checked_by: *id002
+  independent_review:
+    subject: *id008
+    state: DONE
+    evidence: *id009
+    source_sha256: *id005
+    checked_by: /root/density_verdict_check
+  parent_check: *id010
+  acceptance: *id010
+  publication: *id010
+operation:
+  kind: PUBLISH
+  state: CONFIRMED
+  id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+  evidence:
+  - git:85f6c5707441055ffc72747a54e68a7e24ef9660:docs/Codex/RESUME.md
+  subject:
+    kind: REPAIR
+    id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+    sha256: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+  command: publication
+  inputs:
+    docs/session_protocols/team-evidence-6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad.bin: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+ownership:
+  installation_ref: 9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4
+  epoch: 1
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH remains unproved; PX_RH_CLAIM NOT_MADE. Actual Mac history5987b887 is merged.
+Latest frontier: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
+PAPER all raw two-node positivity is not all-rank positivity or an RH proof.
+Exact theorem/consumer edge remains unbound; no mathematical supplier dispatch/admission.
+Owner-directed isolated analytical review completed: exact anchored covariance
+identity S_a/D_a = Cov(A)-Gram(B), with strictly positive comparison covariance
+for every finite distinct non-anchor theta node family. Full residual sign OPEN.
+Note evidence: docs/session_protocols/team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin
+Independent review: docs/session_protocols/team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin
+
+## Confirmed and candidate results
+Source repair f37c5de40b4d5b7e76b89eabc28693bba1fae45a and true merge
+8417622b36fa90debc3e58fb1e5fd980f62f35d0 pushed with independent remote readback.
+The second parent is Mac5987b887850eb8aa29cac9588668d66d16e6f1c1;
+all102 commits and127incoming files preserved exactly, without conflicts.
+Recovery regression1/5.692s passed; original220tests passed before finalguard.
+Registered semantic refresh PASS,3326sources+manifest; repeat close exit0,
+FRESH and zero repairs. ask.sh VILLAINPHI exit0/ASK_STATUS:HITS.
+
+## Next action
+Technical Linux sync and closeout publication are complete at f6231d59eec72ba78a397dd2c73d205df34dc2c8.
+Continue the existing physical task from canonical plan; use the incoming Mac
+SCHUR repeatability brief as the mathematical source, never restart old research.
+Production HOLD is mathematical admission debt, not a publication failure.
+Owner instruction 2026-09-14: first pure mathematical derivation and analytical
+agreement, only then numerical tests and formalization. The proposed C_V
+determinant scan is deferred. Full-V raw-two-shift intake and the conditional
+Schur repeatability report already exist in the merged Mac history; no repeat
+intake or research restart. C_V positivity is a stronger sufficient route,
+not a proved property of theta. First unpaid sign: the full Schur residual. Exact current obligation is the
+all-row inequality E|B_c|^2 <= Var(A_c) for the full theta source.
+A4 is equivalent to the original sign; no source-sign delta is claimed.
+Owner correction: Poisson is only a candidate; compare mechanisms through
+alias-hunt before selection. No new search/proof completed. Skill142lines,
+SHA256 127cfec8e331b6c200774c19d9c738dab6eef32eb8efdd0d8400c5178b35e21b,
+is identical at HEAD85f6c570 and Mac5987b887. The 13 September
+REQUIRED_MECHANISM_NODE plan explicitly remains NOT_RUNTIME_ENFORCED.
+
+## Existing work
+Heartbeat owner-agent check 2026-09-14T14:35:58.007079+00:00: owning task
+01a084f4-7498-7021-bac2-91d184d58dc7; all six children completed, no pending intake.
+Live remote rh_clean85f6c570 and Mac5987b887 unchanged; no new committed ADVICE.
+App goal usageLimited unchanged; no new dispatch, computation or implementation.
+Publication issue d9 FIX_PUSH_VERIFIED. Original technical owner assignment DONE; unused native launch allocation CANCELLED;
+independent source checkers DONE; both source integrations and publication receipts complete. No technical worker is awaited. The scoped analytical evidence package is published at 85f6c5707441055ffc72747a54e68a7e24ef9660.
+Owner01a084f4-7498-7021-bac2-91d184d58dc7 and installation9afdf2bf epoch1 unchanged.
+Existing maintenance pause/watch ownership is unchanged by this technical closeout.
+
+## Do not repeat
+Do not replay confirmed pushes, source copy, Mac merge, or fresh semantic refresh.
+Earlier source attempt RECOVERY_SOURCE_INSTALL_20260914 was NOT_EXECUTED:
+review JSON was unsorted; original bytes preserved, canonical review separately
+validated before RECOVERY_SOURCE_CANONICAL_INSTALL_20260914 completed.
+One checkpoint retry followed a transient reader/writer collision; no effect replay.
+
+## Integration remaining
+No Mac/source/derived integration remains. Six foreign literature files and
+.codex/config.toml remain local and excluded. Final CONFIRMED checkpoint may
+remain uncommitted by control11; do not recursively publish confirmation-only metadata.
+Seven old isolated wiring-test failures remain documented baseline debt;
+this repair does not claim that whole suite green or any RH admission.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-197-5c4d2d57a39e68ce8c0bd4656165cb2eeffc4e6846c4921c7dc857e3c2294d5c","kind":"resume","revision":197,"sha256":"5c4d2d57a39e68ce8c0bd4656165cb2eeffc4e6846c4921c7dc857e3c2294d5c","size":8187} -->
+````text
+---
+schema: q3_resume.v2
+revision: 197
+observed_at: '2026-09-14T14:35:58.013143+00:00'
+previous_sha256: c5d54a9f2fcc1c095636592f91107aa5a6262512fb1bc6dad7cfc46e8bd1dec7
+owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 85f6c5707441055ffc72747a54e68a7e24ef9660
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: &id001 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id006
+    subject: &id003
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: *id001
+    state: DONE
+    evidence: &id004
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: &id005 e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: *id002
+  request_review:
+    subject: *id003
+    state: DONE
+    evidence: *id004
+    source_sha256: *id005
+    checked_by: /root/slack_verdict_check
+  delivery: *id006
+  receipt: &id010
+    subject: &id008
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: &id007 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id009
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: *id005
+    checked_by: *id002
+  independent_review:
+    subject: *id008
+    state: DONE
+    evidence: *id009
+    source_sha256: *id005
+    checked_by: /root/density_verdict_check
+  parent_check: *id010
+  acceptance: *id010
+  publication: *id010
+operation:
+  kind: PUBLISH
+  state: CONFIRMED
+  id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+  evidence:
+  - git:85f6c5707441055ffc72747a54e68a7e24ef9660:docs/Codex/RESUME.md
+  subject:
+    kind: REPAIR
+    id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+    sha256: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+  command: publication
+  inputs:
+    docs/session_protocols/team-evidence-6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad.bin: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+ownership:
+  installation_ref: 9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4
+  epoch: 1
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH remains unproved; PX_RH_CLAIM NOT_MADE. Actual Mac history5987b887 is merged.
+Latest frontier: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
+PAPER all raw two-node positivity is not all-rank positivity or an RH proof.
+Exact theorem/consumer edge remains unbound; no mathematical supplier dispatch/admission.
+Owner-directed isolated analytical review completed: exact anchored covariance
+identity S_a/D_a = Cov(A)-Gram(B), with strictly positive comparison covariance
+for every finite distinct non-anchor theta node family. Full residual sign OPEN.
+Note evidence: docs/session_protocols/team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin
+Independent review: docs/session_protocols/team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin
+
+## Confirmed and candidate results
+Source repair f37c5de40b4d5b7e76b89eabc28693bba1fae45a and true merge
+8417622b36fa90debc3e58fb1e5fd980f62f35d0 pushed with independent remote readback.
+The second parent is Mac5987b887850eb8aa29cac9588668d66d16e6f1c1;
+all102 commits and127incoming files preserved exactly, without conflicts.
+Recovery regression1/5.692s passed; original220tests passed before finalguard.
+Registered semantic refresh PASS,3326sources+manifest; repeat close exit0,
+FRESH and zero repairs. ask.sh VILLAINPHI exit0/ASK_STATUS:HITS.
+
+## Next action
+Technical Linux sync and closeout publication are complete at f6231d59eec72ba78a397dd2c73d205df34dc2c8.
+Continue the existing physical task from canonical plan; use the incoming Mac
+SCHUR repeatability brief as the mathematical source, never restart old research.
+Production HOLD is mathematical admission debt, not a publication failure.
+Owner instruction 2026-09-14: first pure mathematical derivation and analytical
+agreement, only then numerical tests and formalization. The proposed C_V
+determinant scan is deferred. Full-V raw-two-shift intake and the conditional
+Schur repeatability report already exist in the merged Mac history; no repeat
+intake or research restart. C_V positivity is a stronger sufficient route,
+not a proved property of theta. First unpaid sign: the full Schur residual. Exact current obligation is the
+all-row inequality E|B_c|^2 <= Var(A_c) for the full theta source.
+A4 is equivalent to the original sign; no source-sign delta is claimed.
+Owner correction: Poisson is only a candidate; compare mechanisms through
+alias-hunt before selection. No new search/proof completed. Skill142lines,
+SHA256 127cfec8e331b6c200774c19d9c738dab6eef32eb8efdd0d8400c5178b35e21b,
+is identical at HEAD85f6c570 and Mac5987b887. The 13 September
+REQUIRED_MECHANISM_NODE plan explicitly remains NOT_RUNTIME_ENFORCED.
+
+## Existing work
+Heartbeat owner-agent check 2026-09-14T14:35:58.007079+00:00: owning task
+01a084f4-7498-7021-bac2-91d184d58dc7; all six children completed, no pending intake.
+Live remote rh_clean85f6c570 and Mac5987b887 unchanged; no new committed ADVICE.
+App goal usageLimited unchanged; no new dispatch, computation or implementation.
+Publication issue d9 FIX_PUSH_VERIFIED. Original technical owner assignment DONE; unused native launch allocation CANCELLED;
+independent source checkers DONE; both source integrations and publication receipts complete. No technical worker is awaited. The scoped analytical evidence package is published at 85f6c5707441055ffc72747a54e68a7e24ef9660.
+Owner01a084f4-7498-7021-bac2-91d184d58dc7 and installation9afdf2bf epoch1 unchanged.
+Existing maintenance pause/watch ownership is unchanged by this technical closeout.
+
+## Do not repeat
+Do not replay confirmed pushes, source copy, Mac merge, or fresh semantic refresh.
+Earlier source attempt RECOVERY_SOURCE_INSTALL_20260914 was NOT_EXECUTED:
+review JSON was unsorted; original bytes preserved, canonical review separately
+validated before RECOVERY_SOURCE_CANONICAL_INSTALL_20260914 completed.
+One checkpoint retry followed a transient reader/writer collision; no effect replay.
+
+## Integration remaining
+No Mac/source/derived integration remains. Six foreign literature files and
+.codex/config.toml remain local and excluded. Final CONFIRMED checkpoint may
+remain uncommitted by control11; do not recursively publish confirmation-only metadata.
+Seven old isolated wiring-test failures remain documented baseline debt;
+this repair does not claim that whole suite green or any RH admission.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-198-ffc718f5c6f7d1696c710e5119c3bd3095df7cce48d85505afab269b1e5df92e","kind":"intent","revision":198,"sha256":"ffc718f5c6f7d1696c710e5119c3bd3095df7cce48d85505afab269b1e5df92e","size":8187} -->
+````text
+---
+schema: q3_resume.v2
+revision: 198
+observed_at: '2026-09-14T14:57:36.079714+00:00'
+previous_sha256: 5c4d2d57a39e68ce8c0bd4656165cb2eeffc4e6846c4921c7dc857e3c2294d5c
+owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 85f6c5707441055ffc72747a54e68a7e24ef9660
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: &id001 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id006
+    subject: &id003
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: *id001
+    state: DONE
+    evidence: &id004
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: &id005 e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: *id002
+  request_review:
+    subject: *id003
+    state: DONE
+    evidence: *id004
+    source_sha256: *id005
+    checked_by: /root/slack_verdict_check
+  delivery: *id006
+  receipt: &id010
+    subject: &id008
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: &id007 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id009
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: *id005
+    checked_by: *id002
+  independent_review:
+    subject: *id008
+    state: DONE
+    evidence: *id009
+    source_sha256: *id005
+    checked_by: /root/density_verdict_check
+  parent_check: *id010
+  acceptance: *id010
+  publication: *id010
+operation:
+  kind: PUBLISH
+  state: CONFIRMED
+  id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+  evidence:
+  - git:85f6c5707441055ffc72747a54e68a7e24ef9660:docs/Codex/RESUME.md
+  subject:
+    kind: REPAIR
+    id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+    sha256: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+  command: publication
+  inputs:
+    docs/session_protocols/team-evidence-6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad.bin: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+ownership:
+  installation_ref: 9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4
+  epoch: 1
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH remains unproved; PX_RH_CLAIM NOT_MADE. Actual Mac history5987b887 is merged.
+Latest frontier: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
+PAPER all raw two-node positivity is not all-rank positivity or an RH proof.
+Exact theorem/consumer edge remains unbound; no mathematical supplier dispatch/admission.
+Owner-directed isolated analytical review completed: exact anchored covariance
+identity S_a/D_a = Cov(A)-Gram(B), with strictly positive comparison covariance
+for every finite distinct non-anchor theta node family. Full residual sign OPEN.
+Note evidence: docs/session_protocols/team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin
+Independent review: docs/session_protocols/team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin
+
+## Confirmed and candidate results
+Source repair f37c5de40b4d5b7e76b89eabc28693bba1fae45a and true merge
+8417622b36fa90debc3e58fb1e5fd980f62f35d0 pushed with independent remote readback.
+The second parent is Mac5987b887850eb8aa29cac9588668d66d16e6f1c1;
+all102 commits and127incoming files preserved exactly, without conflicts.
+Recovery regression1/5.692s passed; original220tests passed before finalguard.
+Registered semantic refresh PASS,3326sources+manifest; repeat close exit0,
+FRESH and zero repairs. ask.sh VILLAINPHI exit0/ASK_STATUS:HITS.
+
+## Next action
+Technical Linux sync and closeout publication are complete at f6231d59eec72ba78a397dd2c73d205df34dc2c8.
+Continue the existing physical task from canonical plan; use the incoming Mac
+SCHUR repeatability brief as the mathematical source, never restart old research.
+Production HOLD is mathematical admission debt, not a publication failure.
+Owner instruction 2026-09-14: first pure mathematical derivation and analytical
+agreement, only then numerical tests and formalization. The proposed C_V
+determinant scan is deferred. Full-V raw-two-shift intake and the conditional
+Schur repeatability report already exist in the merged Mac history; no repeat
+intake or research restart. C_V positivity is a stronger sufficient route,
+not a proved property of theta. First unpaid sign: the full Schur residual. Exact current obligation is the
+all-row inequality E|B_c|^2 <= Var(A_c) for the full theta source.
+A4 is equivalent to the original sign; no source-sign delta is claimed.
+Owner correction: Poisson is only a candidate; compare mechanisms through
+alias-hunt before selection. No new search/proof completed. Skill142lines,
+SHA256 127cfec8e331b6c200774c19d9c738dab6eef32eb8efdd0d8400c5178b35e21b,
+is identical at HEAD85f6c570 and Mac5987b887. The 13 September
+REQUIRED_MECHANISM_NODE plan explicitly remains NOT_RUNTIME_ENFORCED.
+
+## Existing work
+Heartbeat owner-agent check 2026-09-14T14:57:36.074114+00:00: owning task
+01a084f4-7498-7021-bac2-91d184d58dc7; all six children completed, no pending intake.
+Live remote rh_clean85f6c570 and Mac5987b887 unchanged; no new committed ADVICE.
+App goal usageLimited unchanged; no new dispatch, computation or implementation.
+Publication issue d9 FIX_PUSH_VERIFIED. Original technical owner assignment DONE; unused native launch allocation CANCELLED;
+independent source checkers DONE; both source integrations and publication receipts complete. No technical worker is awaited. The scoped analytical evidence package is published at 85f6c5707441055ffc72747a54e68a7e24ef9660.
+Owner01a084f4-7498-7021-bac2-91d184d58dc7 and installation9afdf2bf epoch1 unchanged.
+Existing maintenance pause/watch ownership is unchanged by this technical closeout.
+
+## Do not repeat
+Do not replay confirmed pushes, source copy, Mac merge, or fresh semantic refresh.
+Earlier source attempt RECOVERY_SOURCE_INSTALL_20260914 was NOT_EXECUTED:
+review JSON was unsorted; original bytes preserved, canonical review separately
+validated before RECOVERY_SOURCE_CANONICAL_INSTALL_20260914 completed.
+One checkpoint retry followed a transient reader/writer collision; no effect replay.
+
+## Integration remaining
+No Mac/source/derived integration remains. Six foreign literature files and
+.codex/config.toml remain local and excluded. Final CONFIRMED checkpoint may
+remain uncommitted by control11; do not recursively publish confirmation-only metadata.
+Seven old isolated wiring-test failures remain documented baseline debt;
+this repair does not claim that whole suite green or any RH admission.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-198-ffc718f5c6f7d1696c710e5119c3bd3095df7cce48d85505afab269b1e5df92e","kind":"resume","revision":198,"sha256":"ffc718f5c6f7d1696c710e5119c3bd3095df7cce48d85505afab269b1e5df92e","size":8187} -->
+````text
+---
+schema: q3_resume.v2
+revision: 198
+observed_at: '2026-09-14T14:57:36.079714+00:00'
+previous_sha256: 5c4d2d57a39e68ce8c0bd4656165cb2eeffc4e6846c4921c7dc857e3c2294d5c
+owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 85f6c5707441055ffc72747a54e68a7e24ef9660
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: &id001 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id006
+    subject: &id003
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: *id001
+    state: DONE
+    evidence: &id004
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: &id005 e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: *id002
+  request_review:
+    subject: *id003
+    state: DONE
+    evidence: *id004
+    source_sha256: *id005
+    checked_by: /root/slack_verdict_check
+  delivery: *id006
+  receipt: &id010
+    subject: &id008
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: &id007 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id009
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: *id005
+    checked_by: *id002
+  independent_review:
+    subject: *id008
+    state: DONE
+    evidence: *id009
+    source_sha256: *id005
+    checked_by: /root/density_verdict_check
+  parent_check: *id010
+  acceptance: *id010
+  publication: *id010
+operation:
+  kind: PUBLISH
+  state: CONFIRMED
+  id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+  evidence:
+  - git:85f6c5707441055ffc72747a54e68a7e24ef9660:docs/Codex/RESUME.md
+  subject:
+    kind: REPAIR
+    id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+    sha256: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+  command: publication
+  inputs:
+    docs/session_protocols/team-evidence-6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad.bin: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+ownership:
+  installation_ref: 9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4
+  epoch: 1
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH remains unproved; PX_RH_CLAIM NOT_MADE. Actual Mac history5987b887 is merged.
+Latest frontier: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
+PAPER all raw two-node positivity is not all-rank positivity or an RH proof.
+Exact theorem/consumer edge remains unbound; no mathematical supplier dispatch/admission.
+Owner-directed isolated analytical review completed: exact anchored covariance
+identity S_a/D_a = Cov(A)-Gram(B), with strictly positive comparison covariance
+for every finite distinct non-anchor theta node family. Full residual sign OPEN.
+Note evidence: docs/session_protocols/team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin
+Independent review: docs/session_protocols/team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin
+
+## Confirmed and candidate results
+Source repair f37c5de40b4d5b7e76b89eabc28693bba1fae45a and true merge
+8417622b36fa90debc3e58fb1e5fd980f62f35d0 pushed with independent remote readback.
+The second parent is Mac5987b887850eb8aa29cac9588668d66d16e6f1c1;
+all102 commits and127incoming files preserved exactly, without conflicts.
+Recovery regression1/5.692s passed; original220tests passed before finalguard.
+Registered semantic refresh PASS,3326sources+manifest; repeat close exit0,
+FRESH and zero repairs. ask.sh VILLAINPHI exit0/ASK_STATUS:HITS.
+
+## Next action
+Technical Linux sync and closeout publication are complete at f6231d59eec72ba78a397dd2c73d205df34dc2c8.
+Continue the existing physical task from canonical plan; use the incoming Mac
+SCHUR repeatability brief as the mathematical source, never restart old research.
+Production HOLD is mathematical admission debt, not a publication failure.
+Owner instruction 2026-09-14: first pure mathematical derivation and analytical
+agreement, only then numerical tests and formalization. The proposed C_V
+determinant scan is deferred. Full-V raw-two-shift intake and the conditional
+Schur repeatability report already exist in the merged Mac history; no repeat
+intake or research restart. C_V positivity is a stronger sufficient route,
+not a proved property of theta. First unpaid sign: the full Schur residual. Exact current obligation is the
+all-row inequality E|B_c|^2 <= Var(A_c) for the full theta source.
+A4 is equivalent to the original sign; no source-sign delta is claimed.
+Owner correction: Poisson is only a candidate; compare mechanisms through
+alias-hunt before selection. No new search/proof completed. Skill142lines,
+SHA256 127cfec8e331b6c200774c19d9c738dab6eef32eb8efdd0d8400c5178b35e21b,
+is identical at HEAD85f6c570 and Mac5987b887. The 13 September
+REQUIRED_MECHANISM_NODE plan explicitly remains NOT_RUNTIME_ENFORCED.
+
+## Existing work
+Heartbeat owner-agent check 2026-09-14T14:57:36.074114+00:00: owning task
+01a084f4-7498-7021-bac2-91d184d58dc7; all six children completed, no pending intake.
+Live remote rh_clean85f6c570 and Mac5987b887 unchanged; no new committed ADVICE.
+App goal usageLimited unchanged; no new dispatch, computation or implementation.
+Publication issue d9 FIX_PUSH_VERIFIED. Original technical owner assignment DONE; unused native launch allocation CANCELLED;
+independent source checkers DONE; both source integrations and publication receipts complete. No technical worker is awaited. The scoped analytical evidence package is published at 85f6c5707441055ffc72747a54e68a7e24ef9660.
+Owner01a084f4-7498-7021-bac2-91d184d58dc7 and installation9afdf2bf epoch1 unchanged.
+Existing maintenance pause/watch ownership is unchanged by this technical closeout.
+
+## Do not repeat
+Do not replay confirmed pushes, source copy, Mac merge, or fresh semantic refresh.
+Earlier source attempt RECOVERY_SOURCE_INSTALL_20260914 was NOT_EXECUTED:
+review JSON was unsorted; original bytes preserved, canonical review separately
+validated before RECOVERY_SOURCE_CANONICAL_INSTALL_20260914 completed.
+One checkpoint retry followed a transient reader/writer collision; no effect replay.
+
+## Integration remaining
+No Mac/source/derived integration remains. Six foreign literature files and
+.codex/config.toml remain local and excluded. Final CONFIRMED checkpoint may
+remain uncommitted by control11; do not recursively publish confirmation-only metadata.
+Seven old isolated wiring-test failures remain documented baseline debt;
+this repair does not claim that whole suite green or any RH admission.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-199-8214558751ee6bdf506eedb2b7e86be225d4658abe515bae44f8de2b66951832","kind":"intent","revision":199,"sha256":"8214558751ee6bdf506eedb2b7e86be225d4658abe515bae44f8de2b66951832","size":8187} -->
+````text
+---
+schema: q3_resume.v2
+revision: 199
+observed_at: '2026-09-14T15:19:11.500107+00:00'
+previous_sha256: ffc718f5c6f7d1696c710e5119c3bd3095df7cce48d85505afab269b1e5df92e
+owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 85f6c5707441055ffc72747a54e68a7e24ef9660
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: &id001 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id006
+    subject: &id003
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: *id001
+    state: DONE
+    evidence: &id004
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: &id005 e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: *id002
+  request_review:
+    subject: *id003
+    state: DONE
+    evidence: *id004
+    source_sha256: *id005
+    checked_by: /root/slack_verdict_check
+  delivery: *id006
+  receipt: &id010
+    subject: &id008
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: &id007 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id009
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: *id005
+    checked_by: *id002
+  independent_review:
+    subject: *id008
+    state: DONE
+    evidence: *id009
+    source_sha256: *id005
+    checked_by: /root/density_verdict_check
+  parent_check: *id010
+  acceptance: *id010
+  publication: *id010
+operation:
+  kind: PUBLISH
+  state: CONFIRMED
+  id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+  evidence:
+  - git:85f6c5707441055ffc72747a54e68a7e24ef9660:docs/Codex/RESUME.md
+  subject:
+    kind: REPAIR
+    id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+    sha256: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+  command: publication
+  inputs:
+    docs/session_protocols/team-evidence-6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad.bin: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+ownership:
+  installation_ref: 9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4
+  epoch: 1
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH remains unproved; PX_RH_CLAIM NOT_MADE. Actual Mac history5987b887 is merged.
+Latest frontier: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
+PAPER all raw two-node positivity is not all-rank positivity or an RH proof.
+Exact theorem/consumer edge remains unbound; no mathematical supplier dispatch/admission.
+Owner-directed isolated analytical review completed: exact anchored covariance
+identity S_a/D_a = Cov(A)-Gram(B), with strictly positive comparison covariance
+for every finite distinct non-anchor theta node family. Full residual sign OPEN.
+Note evidence: docs/session_protocols/team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin
+Independent review: docs/session_protocols/team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin
+
+## Confirmed and candidate results
+Source repair f37c5de40b4d5b7e76b89eabc28693bba1fae45a and true merge
+8417622b36fa90debc3e58fb1e5fd980f62f35d0 pushed with independent remote readback.
+The second parent is Mac5987b887850eb8aa29cac9588668d66d16e6f1c1;
+all102 commits and127incoming files preserved exactly, without conflicts.
+Recovery regression1/5.692s passed; original220tests passed before finalguard.
+Registered semantic refresh PASS,3326sources+manifest; repeat close exit0,
+FRESH and zero repairs. ask.sh VILLAINPHI exit0/ASK_STATUS:HITS.
+
+## Next action
+Technical Linux sync and closeout publication are complete at f6231d59eec72ba78a397dd2c73d205df34dc2c8.
+Continue the existing physical task from canonical plan; use the incoming Mac
+SCHUR repeatability brief as the mathematical source, never restart old research.
+Production HOLD is mathematical admission debt, not a publication failure.
+Owner instruction 2026-09-14: first pure mathematical derivation and analytical
+agreement, only then numerical tests and formalization. The proposed C_V
+determinant scan is deferred. Full-V raw-two-shift intake and the conditional
+Schur repeatability report already exist in the merged Mac history; no repeat
+intake or research restart. C_V positivity is a stronger sufficient route,
+not a proved property of theta. First unpaid sign: the full Schur residual. Exact current obligation is the
+all-row inequality E|B_c|^2 <= Var(A_c) for the full theta source.
+A4 is equivalent to the original sign; no source-sign delta is claimed.
+Owner correction: Poisson is only a candidate; compare mechanisms through
+alias-hunt before selection. No new search/proof completed. Skill142lines,
+SHA256 127cfec8e331b6c200774c19d9c738dab6eef32eb8efdd0d8400c5178b35e21b,
+is identical at HEAD85f6c570 and Mac5987b887. The 13 September
+REQUIRED_MECHANISM_NODE plan explicitly remains NOT_RUNTIME_ENFORCED.
+
+## Existing work
+Heartbeat owner-agent check 2026-09-14T15:19:11.494500+00:00: owning task
+01a084f4-7498-7021-bac2-91d184d58dc7; all six children completed, no pending intake.
+Live remote rh_clean85f6c570 and Mac5987b887 unchanged; no new committed ADVICE.
+App goal usageLimited unchanged; no new dispatch, computation or implementation.
+Publication issue d9 FIX_PUSH_VERIFIED. Original technical owner assignment DONE; unused native launch allocation CANCELLED;
+independent source checkers DONE; both source integrations and publication receipts complete. No technical worker is awaited. The scoped analytical evidence package is published at 85f6c5707441055ffc72747a54e68a7e24ef9660.
+Owner01a084f4-7498-7021-bac2-91d184d58dc7 and installation9afdf2bf epoch1 unchanged.
+Existing maintenance pause/watch ownership is unchanged by this technical closeout.
+
+## Do not repeat
+Do not replay confirmed pushes, source copy, Mac merge, or fresh semantic refresh.
+Earlier source attempt RECOVERY_SOURCE_INSTALL_20260914 was NOT_EXECUTED:
+review JSON was unsorted; original bytes preserved, canonical review separately
+validated before RECOVERY_SOURCE_CANONICAL_INSTALL_20260914 completed.
+One checkpoint retry followed a transient reader/writer collision; no effect replay.
+
+## Integration remaining
+No Mac/source/derived integration remains. Six foreign literature files and
+.codex/config.toml remain local and excluded. Final CONFIRMED checkpoint may
+remain uncommitted by control11; do not recursively publish confirmation-only metadata.
+Seven old isolated wiring-test failures remain documented baseline debt;
+this repair does not claim that whole suite green or any RH admission.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-199-8214558751ee6bdf506eedb2b7e86be225d4658abe515bae44f8de2b66951832","kind":"resume","revision":199,"sha256":"8214558751ee6bdf506eedb2b7e86be225d4658abe515bae44f8de2b66951832","size":8187} -->
+````text
+---
+schema: q3_resume.v2
+revision: 199
+observed_at: '2026-09-14T15:19:11.500107+00:00'
+previous_sha256: ffc718f5c6f7d1696c710e5119c3bd3095df7cce48d85505afab269b1e5df92e
+owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 85f6c5707441055ffc72747a54e68a7e24ef9660
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: &id001 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id006
+    subject: &id003
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: *id001
+    state: DONE
+    evidence: &id004
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: &id005 e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: *id002
+  request_review:
+    subject: *id003
+    state: DONE
+    evidence: *id004
+    source_sha256: *id005
+    checked_by: /root/slack_verdict_check
+  delivery: *id006
+  receipt: &id010
+    subject: &id008
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: &id007 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id009
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: *id005
+    checked_by: *id002
+  independent_review:
+    subject: *id008
+    state: DONE
+    evidence: *id009
+    source_sha256: *id005
+    checked_by: /root/density_verdict_check
+  parent_check: *id010
+  acceptance: *id010
+  publication: *id010
+operation:
+  kind: PUBLISH
+  state: CONFIRMED
+  id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+  evidence:
+  - git:85f6c5707441055ffc72747a54e68a7e24ef9660:docs/Codex/RESUME.md
+  subject:
+    kind: REPAIR
+    id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+    sha256: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+  command: publication
+  inputs:
+    docs/session_protocols/team-evidence-6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad.bin: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+ownership:
+  installation_ref: 9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4
+  epoch: 1
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH remains unproved; PX_RH_CLAIM NOT_MADE. Actual Mac history5987b887 is merged.
+Latest frontier: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
+PAPER all raw two-node positivity is not all-rank positivity or an RH proof.
+Exact theorem/consumer edge remains unbound; no mathematical supplier dispatch/admission.
+Owner-directed isolated analytical review completed: exact anchored covariance
+identity S_a/D_a = Cov(A)-Gram(B), with strictly positive comparison covariance
+for every finite distinct non-anchor theta node family. Full residual sign OPEN.
+Note evidence: docs/session_protocols/team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin
+Independent review: docs/session_protocols/team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin
+
+## Confirmed and candidate results
+Source repair f37c5de40b4d5b7e76b89eabc28693bba1fae45a and true merge
+8417622b36fa90debc3e58fb1e5fd980f62f35d0 pushed with independent remote readback.
+The second parent is Mac5987b887850eb8aa29cac9588668d66d16e6f1c1;
+all102 commits and127incoming files preserved exactly, without conflicts.
+Recovery regression1/5.692s passed; original220tests passed before finalguard.
+Registered semantic refresh PASS,3326sources+manifest; repeat close exit0,
+FRESH and zero repairs. ask.sh VILLAINPHI exit0/ASK_STATUS:HITS.
+
+## Next action
+Technical Linux sync and closeout publication are complete at f6231d59eec72ba78a397dd2c73d205df34dc2c8.
+Continue the existing physical task from canonical plan; use the incoming Mac
+SCHUR repeatability brief as the mathematical source, never restart old research.
+Production HOLD is mathematical admission debt, not a publication failure.
+Owner instruction 2026-09-14: first pure mathematical derivation and analytical
+agreement, only then numerical tests and formalization. The proposed C_V
+determinant scan is deferred. Full-V raw-two-shift intake and the conditional
+Schur repeatability report already exist in the merged Mac history; no repeat
+intake or research restart. C_V positivity is a stronger sufficient route,
+not a proved property of theta. First unpaid sign: the full Schur residual. Exact current obligation is the
+all-row inequality E|B_c|^2 <= Var(A_c) for the full theta source.
+A4 is equivalent to the original sign; no source-sign delta is claimed.
+Owner correction: Poisson is only a candidate; compare mechanisms through
+alias-hunt before selection. No new search/proof completed. Skill142lines,
+SHA256 127cfec8e331b6c200774c19d9c738dab6eef32eb8efdd0d8400c5178b35e21b,
+is identical at HEAD85f6c570 and Mac5987b887. The 13 September
+REQUIRED_MECHANISM_NODE plan explicitly remains NOT_RUNTIME_ENFORCED.
+
+## Existing work
+Heartbeat owner-agent check 2026-09-14T15:19:11.494500+00:00: owning task
+01a084f4-7498-7021-bac2-91d184d58dc7; all six children completed, no pending intake.
+Live remote rh_clean85f6c570 and Mac5987b887 unchanged; no new committed ADVICE.
+App goal usageLimited unchanged; no new dispatch, computation or implementation.
+Publication issue d9 FIX_PUSH_VERIFIED. Original technical owner assignment DONE; unused native launch allocation CANCELLED;
+independent source checkers DONE; both source integrations and publication receipts complete. No technical worker is awaited. The scoped analytical evidence package is published at 85f6c5707441055ffc72747a54e68a7e24ef9660.
+Owner01a084f4-7498-7021-bac2-91d184d58dc7 and installation9afdf2bf epoch1 unchanged.
+Existing maintenance pause/watch ownership is unchanged by this technical closeout.
+
+## Do not repeat
+Do not replay confirmed pushes, source copy, Mac merge, or fresh semantic refresh.
+Earlier source attempt RECOVERY_SOURCE_INSTALL_20260914 was NOT_EXECUTED:
+review JSON was unsorted; original bytes preserved, canonical review separately
+validated before RECOVERY_SOURCE_CANONICAL_INSTALL_20260914 completed.
+One checkpoint retry followed a transient reader/writer collision; no effect replay.
+
+## Integration remaining
+No Mac/source/derived integration remains. Six foreign literature files and
+.codex/config.toml remain local and excluded. Final CONFIRMED checkpoint may
+remain uncommitted by control11; do not recursively publish confirmation-only metadata.
+Seven old isolated wiring-test failures remain documented baseline debt;
+this repair does not claim that whole suite green or any RH admission.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-200-29fdb97bad415e8236ea2380412945f6c4b7eaf8d4dd895218ba771a9259a9c6","kind":"intent","revision":200,"sha256":"29fdb97bad415e8236ea2380412945f6c4b7eaf8d4dd895218ba771a9259a9c6","size":8187} -->
+````text
+---
+schema: q3_resume.v2
+revision: 200
+observed_at: '2026-09-14T15:40:42.962727+00:00'
+previous_sha256: 8214558751ee6bdf506eedb2b7e86be225d4658abe515bae44f8de2b66951832
+owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 85f6c5707441055ffc72747a54e68a7e24ef9660
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: &id001 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id006
+    subject: &id003
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: *id001
+    state: DONE
+    evidence: &id004
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: &id005 e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: *id002
+  request_review:
+    subject: *id003
+    state: DONE
+    evidence: *id004
+    source_sha256: *id005
+    checked_by: /root/slack_verdict_check
+  delivery: *id006
+  receipt: &id010
+    subject: &id008
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: &id007 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id009
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: *id005
+    checked_by: *id002
+  independent_review:
+    subject: *id008
+    state: DONE
+    evidence: *id009
+    source_sha256: *id005
+    checked_by: /root/density_verdict_check
+  parent_check: *id010
+  acceptance: *id010
+  publication: *id010
+operation:
+  kind: PUBLISH
+  state: CONFIRMED
+  id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+  evidence:
+  - git:85f6c5707441055ffc72747a54e68a7e24ef9660:docs/Codex/RESUME.md
+  subject:
+    kind: REPAIR
+    id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+    sha256: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+  command: publication
+  inputs:
+    docs/session_protocols/team-evidence-6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad.bin: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+ownership:
+  installation_ref: 9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4
+  epoch: 1
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH remains unproved; PX_RH_CLAIM NOT_MADE. Actual Mac history5987b887 is merged.
+Latest frontier: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
+PAPER all raw two-node positivity is not all-rank positivity or an RH proof.
+Exact theorem/consumer edge remains unbound; no mathematical supplier dispatch/admission.
+Owner-directed isolated analytical review completed: exact anchored covariance
+identity S_a/D_a = Cov(A)-Gram(B), with strictly positive comparison covariance
+for every finite distinct non-anchor theta node family. Full residual sign OPEN.
+Note evidence: docs/session_protocols/team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin
+Independent review: docs/session_protocols/team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin
+
+## Confirmed and candidate results
+Source repair f37c5de40b4d5b7e76b89eabc28693bba1fae45a and true merge
+8417622b36fa90debc3e58fb1e5fd980f62f35d0 pushed with independent remote readback.
+The second parent is Mac5987b887850eb8aa29cac9588668d66d16e6f1c1;
+all102 commits and127incoming files preserved exactly, without conflicts.
+Recovery regression1/5.692s passed; original220tests passed before finalguard.
+Registered semantic refresh PASS,3326sources+manifest; repeat close exit0,
+FRESH and zero repairs. ask.sh VILLAINPHI exit0/ASK_STATUS:HITS.
+
+## Next action
+Technical Linux sync and closeout publication are complete at f6231d59eec72ba78a397dd2c73d205df34dc2c8.
+Continue the existing physical task from canonical plan; use the incoming Mac
+SCHUR repeatability brief as the mathematical source, never restart old research.
+Production HOLD is mathematical admission debt, not a publication failure.
+Owner instruction 2026-09-14: first pure mathematical derivation and analytical
+agreement, only then numerical tests and formalization. The proposed C_V
+determinant scan is deferred. Full-V raw-two-shift intake and the conditional
+Schur repeatability report already exist in the merged Mac history; no repeat
+intake or research restart. C_V positivity is a stronger sufficient route,
+not a proved property of theta. First unpaid sign: the full Schur residual. Exact current obligation is the
+all-row inequality E|B_c|^2 <= Var(A_c) for the full theta source.
+A4 is equivalent to the original sign; no source-sign delta is claimed.
+Owner correction: Poisson is only a candidate; compare mechanisms through
+alias-hunt before selection. No new search/proof completed. Skill142lines,
+SHA256 127cfec8e331b6c200774c19d9c738dab6eef32eb8efdd0d8400c5178b35e21b,
+is identical at HEAD85f6c570 and Mac5987b887. The 13 September
+REQUIRED_MECHANISM_NODE plan explicitly remains NOT_RUNTIME_ENFORCED.
+
+## Existing work
+Heartbeat owner-agent check 2026-09-14T15:40:42.957124+00:00: owning task
+01a084f4-7498-7021-bac2-91d184d58dc7; all six children completed, no pending intake.
+Live remote rh_clean85f6c570 and Mac5987b887 unchanged; no new committed ADVICE.
+App goal usageLimited unchanged; no new dispatch, computation or implementation.
+Publication issue d9 FIX_PUSH_VERIFIED. Original technical owner assignment DONE; unused native launch allocation CANCELLED;
+independent source checkers DONE; both source integrations and publication receipts complete. No technical worker is awaited. The scoped analytical evidence package is published at 85f6c5707441055ffc72747a54e68a7e24ef9660.
+Owner01a084f4-7498-7021-bac2-91d184d58dc7 and installation9afdf2bf epoch1 unchanged.
+Existing maintenance pause/watch ownership is unchanged by this technical closeout.
+
+## Do not repeat
+Do not replay confirmed pushes, source copy, Mac merge, or fresh semantic refresh.
+Earlier source attempt RECOVERY_SOURCE_INSTALL_20260914 was NOT_EXECUTED:
+review JSON was unsorted; original bytes preserved, canonical review separately
+validated before RECOVERY_SOURCE_CANONICAL_INSTALL_20260914 completed.
+One checkpoint retry followed a transient reader/writer collision; no effect replay.
+
+## Integration remaining
+No Mac/source/derived integration remains. Six foreign literature files and
+.codex/config.toml remain local and excluded. Final CONFIRMED checkpoint may
+remain uncommitted by control11; do not recursively publish confirmation-only metadata.
+Seven old isolated wiring-test failures remain documented baseline debt;
+this repair does not claim that whole suite green or any RH admission.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-200-29fdb97bad415e8236ea2380412945f6c4b7eaf8d4dd895218ba771a9259a9c6","kind":"resume","revision":200,"sha256":"29fdb97bad415e8236ea2380412945f6c4b7eaf8d4dd895218ba771a9259a9c6","size":8187} -->
+````text
+---
+schema: q3_resume.v2
+revision: 200
+observed_at: '2026-09-14T15:40:42.962727+00:00'
+previous_sha256: 8214558751ee6bdf506eedb2b7e86be225d4658abe515bae44f8de2b66951832
+owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 85f6c5707441055ffc72747a54e68a7e24ef9660
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: &id001 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id006
+    subject: &id003
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: *id001
+    state: DONE
+    evidence: &id004
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: &id005 e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: *id002
+  request_review:
+    subject: *id003
+    state: DONE
+    evidence: *id004
+    source_sha256: *id005
+    checked_by: /root/slack_verdict_check
+  delivery: *id006
+  receipt: &id010
+    subject: &id008
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: &id007 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id009
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: *id005
+    checked_by: *id002
+  independent_review:
+    subject: *id008
+    state: DONE
+    evidence: *id009
+    source_sha256: *id005
+    checked_by: /root/density_verdict_check
+  parent_check: *id010
+  acceptance: *id010
+  publication: *id010
+operation:
+  kind: PUBLISH
+  state: CONFIRMED
+  id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+  evidence:
+  - git:85f6c5707441055ffc72747a54e68a7e24ef9660:docs/Codex/RESUME.md
+  subject:
+    kind: REPAIR
+    id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+    sha256: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+  command: publication
+  inputs:
+    docs/session_protocols/team-evidence-6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad.bin: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+ownership:
+  installation_ref: 9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4
+  epoch: 1
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH remains unproved; PX_RH_CLAIM NOT_MADE. Actual Mac history5987b887 is merged.
+Latest frontier: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
+PAPER all raw two-node positivity is not all-rank positivity or an RH proof.
+Exact theorem/consumer edge remains unbound; no mathematical supplier dispatch/admission.
+Owner-directed isolated analytical review completed: exact anchored covariance
+identity S_a/D_a = Cov(A)-Gram(B), with strictly positive comparison covariance
+for every finite distinct non-anchor theta node family. Full residual sign OPEN.
+Note evidence: docs/session_protocols/team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin
+Independent review: docs/session_protocols/team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin
+
+## Confirmed and candidate results
+Source repair f37c5de40b4d5b7e76b89eabc28693bba1fae45a and true merge
+8417622b36fa90debc3e58fb1e5fd980f62f35d0 pushed with independent remote readback.
+The second parent is Mac5987b887850eb8aa29cac9588668d66d16e6f1c1;
+all102 commits and127incoming files preserved exactly, without conflicts.
+Recovery regression1/5.692s passed; original220tests passed before finalguard.
+Registered semantic refresh PASS,3326sources+manifest; repeat close exit0,
+FRESH and zero repairs. ask.sh VILLAINPHI exit0/ASK_STATUS:HITS.
+
+## Next action
+Technical Linux sync and closeout publication are complete at f6231d59eec72ba78a397dd2c73d205df34dc2c8.
+Continue the existing physical task from canonical plan; use the incoming Mac
+SCHUR repeatability brief as the mathematical source, never restart old research.
+Production HOLD is mathematical admission debt, not a publication failure.
+Owner instruction 2026-09-14: first pure mathematical derivation and analytical
+agreement, only then numerical tests and formalization. The proposed C_V
+determinant scan is deferred. Full-V raw-two-shift intake and the conditional
+Schur repeatability report already exist in the merged Mac history; no repeat
+intake or research restart. C_V positivity is a stronger sufficient route,
+not a proved property of theta. First unpaid sign: the full Schur residual. Exact current obligation is the
+all-row inequality E|B_c|^2 <= Var(A_c) for the full theta source.
+A4 is equivalent to the original sign; no source-sign delta is claimed.
+Owner correction: Poisson is only a candidate; compare mechanisms through
+alias-hunt before selection. No new search/proof completed. Skill142lines,
+SHA256 127cfec8e331b6c200774c19d9c738dab6eef32eb8efdd0d8400c5178b35e21b,
+is identical at HEAD85f6c570 and Mac5987b887. The 13 September
+REQUIRED_MECHANISM_NODE plan explicitly remains NOT_RUNTIME_ENFORCED.
+
+## Existing work
+Heartbeat owner-agent check 2026-09-14T15:40:42.957124+00:00: owning task
+01a084f4-7498-7021-bac2-91d184d58dc7; all six children completed, no pending intake.
+Live remote rh_clean85f6c570 and Mac5987b887 unchanged; no new committed ADVICE.
+App goal usageLimited unchanged; no new dispatch, computation or implementation.
+Publication issue d9 FIX_PUSH_VERIFIED. Original technical owner assignment DONE; unused native launch allocation CANCELLED;
+independent source checkers DONE; both source integrations and publication receipts complete. No technical worker is awaited. The scoped analytical evidence package is published at 85f6c5707441055ffc72747a54e68a7e24ef9660.
+Owner01a084f4-7498-7021-bac2-91d184d58dc7 and installation9afdf2bf epoch1 unchanged.
+Existing maintenance pause/watch ownership is unchanged by this technical closeout.
+
+## Do not repeat
+Do not replay confirmed pushes, source copy, Mac merge, or fresh semantic refresh.
+Earlier source attempt RECOVERY_SOURCE_INSTALL_20260914 was NOT_EXECUTED:
+review JSON was unsorted; original bytes preserved, canonical review separately
+validated before RECOVERY_SOURCE_CANONICAL_INSTALL_20260914 completed.
+One checkpoint retry followed a transient reader/writer collision; no effect replay.
+
+## Integration remaining
+No Mac/source/derived integration remains. Six foreign literature files and
+.codex/config.toml remain local and excluded. Final CONFIRMED checkpoint may
+remain uncommitted by control11; do not recursively publish confirmation-only metadata.
+Seven old isolated wiring-test failures remain documented baseline debt;
+this repair does not claim that whole suite green or any RH admission.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-201-14e32c720168a295e59b92c1119e44e5f39d17affe583183e7ee463ae1d162f1","kind":"intent","revision":201,"sha256":"14e32c720168a295e59b92c1119e44e5f39d17affe583183e7ee463ae1d162f1","size":8187} -->
+````text
+---
+schema: q3_resume.v2
+revision: 201
+observed_at: '2026-09-14T16:02:12.798087+00:00'
+previous_sha256: 29fdb97bad415e8236ea2380412945f6c4b7eaf8d4dd895218ba771a9259a9c6
+owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 85f6c5707441055ffc72747a54e68a7e24ef9660
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: &id001 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id006
+    subject: &id003
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: *id001
+    state: DONE
+    evidence: &id004
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: &id005 e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: *id002
+  request_review:
+    subject: *id003
+    state: DONE
+    evidence: *id004
+    source_sha256: *id005
+    checked_by: /root/slack_verdict_check
+  delivery: *id006
+  receipt: &id010
+    subject: &id008
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: &id007 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id009
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: *id005
+    checked_by: *id002
+  independent_review:
+    subject: *id008
+    state: DONE
+    evidence: *id009
+    source_sha256: *id005
+    checked_by: /root/density_verdict_check
+  parent_check: *id010
+  acceptance: *id010
+  publication: *id010
+operation:
+  kind: PUBLISH
+  state: CONFIRMED
+  id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+  evidence:
+  - git:85f6c5707441055ffc72747a54e68a7e24ef9660:docs/Codex/RESUME.md
+  subject:
+    kind: REPAIR
+    id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+    sha256: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+  command: publication
+  inputs:
+    docs/session_protocols/team-evidence-6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad.bin: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+ownership:
+  installation_ref: 9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4
+  epoch: 1
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH remains unproved; PX_RH_CLAIM NOT_MADE. Actual Mac history5987b887 is merged.
+Latest frontier: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
+PAPER all raw two-node positivity is not all-rank positivity or an RH proof.
+Exact theorem/consumer edge remains unbound; no mathematical supplier dispatch/admission.
+Owner-directed isolated analytical review completed: exact anchored covariance
+identity S_a/D_a = Cov(A)-Gram(B), with strictly positive comparison covariance
+for every finite distinct non-anchor theta node family. Full residual sign OPEN.
+Note evidence: docs/session_protocols/team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin
+Independent review: docs/session_protocols/team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin
+
+## Confirmed and candidate results
+Source repair f37c5de40b4d5b7e76b89eabc28693bba1fae45a and true merge
+8417622b36fa90debc3e58fb1e5fd980f62f35d0 pushed with independent remote readback.
+The second parent is Mac5987b887850eb8aa29cac9588668d66d16e6f1c1;
+all102 commits and127incoming files preserved exactly, without conflicts.
+Recovery regression1/5.692s passed; original220tests passed before finalguard.
+Registered semantic refresh PASS,3326sources+manifest; repeat close exit0,
+FRESH and zero repairs. ask.sh VILLAINPHI exit0/ASK_STATUS:HITS.
+
+## Next action
+Technical Linux sync and closeout publication are complete at f6231d59eec72ba78a397dd2c73d205df34dc2c8.
+Continue the existing physical task from canonical plan; use the incoming Mac
+SCHUR repeatability brief as the mathematical source, never restart old research.
+Production HOLD is mathematical admission debt, not a publication failure.
+Owner instruction 2026-09-14: first pure mathematical derivation and analytical
+agreement, only then numerical tests and formalization. The proposed C_V
+determinant scan is deferred. Full-V raw-two-shift intake and the conditional
+Schur repeatability report already exist in the merged Mac history; no repeat
+intake or research restart. C_V positivity is a stronger sufficient route,
+not a proved property of theta. First unpaid sign: the full Schur residual. Exact current obligation is the
+all-row inequality E|B_c|^2 <= Var(A_c) for the full theta source.
+A4 is equivalent to the original sign; no source-sign delta is claimed.
+Owner correction: Poisson is only a candidate; compare mechanisms through
+alias-hunt before selection. No new search/proof completed. Skill142lines,
+SHA256 127cfec8e331b6c200774c19d9c738dab6eef32eb8efdd0d8400c5178b35e21b,
+is identical at HEAD85f6c570 and Mac5987b887. The 13 September
+REQUIRED_MECHANISM_NODE plan explicitly remains NOT_RUNTIME_ENFORCED.
+
+## Existing work
+Heartbeat owner-agent check 2026-09-14T16:02:12.791623+00:00: owning task
+01a084f4-7498-7021-bac2-91d184d58dc7; all six children completed, no pending intake.
+Live remote rh_clean85f6c570 and Mac5987b887 unchanged; no new committed ADVICE.
+App goal usageLimited unchanged; no new dispatch, computation or implementation.
+Publication issue d9 FIX_PUSH_VERIFIED. Original technical owner assignment DONE; unused native launch allocation CANCELLED;
+independent source checkers DONE; both source integrations and publication receipts complete. No technical worker is awaited. The scoped analytical evidence package is published at 85f6c5707441055ffc72747a54e68a7e24ef9660.
+Owner01a084f4-7498-7021-bac2-91d184d58dc7 and installation9afdf2bf epoch1 unchanged.
+Existing maintenance pause/watch ownership is unchanged by this technical closeout.
+
+## Do not repeat
+Do not replay confirmed pushes, source copy, Mac merge, or fresh semantic refresh.
+Earlier source attempt RECOVERY_SOURCE_INSTALL_20260914 was NOT_EXECUTED:
+review JSON was unsorted; original bytes preserved, canonical review separately
+validated before RECOVERY_SOURCE_CANONICAL_INSTALL_20260914 completed.
+One checkpoint retry followed a transient reader/writer collision; no effect replay.
+
+## Integration remaining
+No Mac/source/derived integration remains. Six foreign literature files and
+.codex/config.toml remain local and excluded. Final CONFIRMED checkpoint may
+remain uncommitted by control11; do not recursively publish confirmation-only metadata.
+Seven old isolated wiring-test failures remain documented baseline debt;
+this repair does not claim that whole suite green or any RH admission.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-201-14e32c720168a295e59b92c1119e44e5f39d17affe583183e7ee463ae1d162f1","kind":"resume","revision":201,"sha256":"14e32c720168a295e59b92c1119e44e5f39d17affe583183e7ee463ae1d162f1","size":8187} -->
+````text
+---
+schema: q3_resume.v2
+revision: 201
+observed_at: '2026-09-14T16:02:12.798087+00:00'
+previous_sha256: 29fdb97bad415e8236ea2380412945f6c4b7eaf8d4dd895218ba771a9259a9c6
+owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 85f6c5707441055ffc72747a54e68a7e24ef9660
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: &id001 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id006
+    subject: &id003
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: *id001
+    state: DONE
+    evidence: &id004
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: &id005 e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: *id002
+  request_review:
+    subject: *id003
+    state: DONE
+    evidence: *id004
+    source_sha256: *id005
+    checked_by: /root/slack_verdict_check
+  delivery: *id006
+  receipt: &id010
+    subject: &id008
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: &id007 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id009
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: *id005
+    checked_by: *id002
+  independent_review:
+    subject: *id008
+    state: DONE
+    evidence: *id009
+    source_sha256: *id005
+    checked_by: /root/density_verdict_check
+  parent_check: *id010
+  acceptance: *id010
+  publication: *id010
+operation:
+  kind: PUBLISH
+  state: CONFIRMED
+  id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+  evidence:
+  - git:85f6c5707441055ffc72747a54e68a7e24ef9660:docs/Codex/RESUME.md
+  subject:
+    kind: REPAIR
+    id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+    sha256: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+  command: publication
+  inputs:
+    docs/session_protocols/team-evidence-6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad.bin: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+ownership:
+  installation_ref: 9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4
+  epoch: 1
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH remains unproved; PX_RH_CLAIM NOT_MADE. Actual Mac history5987b887 is merged.
+Latest frontier: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
+PAPER all raw two-node positivity is not all-rank positivity or an RH proof.
+Exact theorem/consumer edge remains unbound; no mathematical supplier dispatch/admission.
+Owner-directed isolated analytical review completed: exact anchored covariance
+identity S_a/D_a = Cov(A)-Gram(B), with strictly positive comparison covariance
+for every finite distinct non-anchor theta node family. Full residual sign OPEN.
+Note evidence: docs/session_protocols/team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin
+Independent review: docs/session_protocols/team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin
+
+## Confirmed and candidate results
+Source repair f37c5de40b4d5b7e76b89eabc28693bba1fae45a and true merge
+8417622b36fa90debc3e58fb1e5fd980f62f35d0 pushed with independent remote readback.
+The second parent is Mac5987b887850eb8aa29cac9588668d66d16e6f1c1;
+all102 commits and127incoming files preserved exactly, without conflicts.
+Recovery regression1/5.692s passed; original220tests passed before finalguard.
+Registered semantic refresh PASS,3326sources+manifest; repeat close exit0,
+FRESH and zero repairs. ask.sh VILLAINPHI exit0/ASK_STATUS:HITS.
+
+## Next action
+Technical Linux sync and closeout publication are complete at f6231d59eec72ba78a397dd2c73d205df34dc2c8.
+Continue the existing physical task from canonical plan; use the incoming Mac
+SCHUR repeatability brief as the mathematical source, never restart old research.
+Production HOLD is mathematical admission debt, not a publication failure.
+Owner instruction 2026-09-14: first pure mathematical derivation and analytical
+agreement, only then numerical tests and formalization. The proposed C_V
+determinant scan is deferred. Full-V raw-two-shift intake and the conditional
+Schur repeatability report already exist in the merged Mac history; no repeat
+intake or research restart. C_V positivity is a stronger sufficient route,
+not a proved property of theta. First unpaid sign: the full Schur residual. Exact current obligation is the
+all-row inequality E|B_c|^2 <= Var(A_c) for the full theta source.
+A4 is equivalent to the original sign; no source-sign delta is claimed.
+Owner correction: Poisson is only a candidate; compare mechanisms through
+alias-hunt before selection. No new search/proof completed. Skill142lines,
+SHA256 127cfec8e331b6c200774c19d9c738dab6eef32eb8efdd0d8400c5178b35e21b,
+is identical at HEAD85f6c570 and Mac5987b887. The 13 September
+REQUIRED_MECHANISM_NODE plan explicitly remains NOT_RUNTIME_ENFORCED.
+
+## Existing work
+Heartbeat owner-agent check 2026-09-14T16:02:12.791623+00:00: owning task
+01a084f4-7498-7021-bac2-91d184d58dc7; all six children completed, no pending intake.
+Live remote rh_clean85f6c570 and Mac5987b887 unchanged; no new committed ADVICE.
+App goal usageLimited unchanged; no new dispatch, computation or implementation.
+Publication issue d9 FIX_PUSH_VERIFIED. Original technical owner assignment DONE; unused native launch allocation CANCELLED;
+independent source checkers DONE; both source integrations and publication receipts complete. No technical worker is awaited. The scoped analytical evidence package is published at 85f6c5707441055ffc72747a54e68a7e24ef9660.
+Owner01a084f4-7498-7021-bac2-91d184d58dc7 and installation9afdf2bf epoch1 unchanged.
+Existing maintenance pause/watch ownership is unchanged by this technical closeout.
+
+## Do not repeat
+Do not replay confirmed pushes, source copy, Mac merge, or fresh semantic refresh.
+Earlier source attempt RECOVERY_SOURCE_INSTALL_20260914 was NOT_EXECUTED:
+review JSON was unsorted; original bytes preserved, canonical review separately
+validated before RECOVERY_SOURCE_CANONICAL_INSTALL_20260914 completed.
+One checkpoint retry followed a transient reader/writer collision; no effect replay.
+
+## Integration remaining
+No Mac/source/derived integration remains. Six foreign literature files and
+.codex/config.toml remain local and excluded. Final CONFIRMED checkpoint may
+remain uncommitted by control11; do not recursively publish confirmation-only metadata.
+Seven old isolated wiring-test failures remain documented baseline debt;
+this repair does not claim that whole suite green or any RH admission.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-202-5d1eede8698f0b27093e4466cb6d90c8ae73a89b7cbe45774dea7d5e5f1ba834","kind":"intent","revision":202,"sha256":"5d1eede8698f0b27093e4466cb6d90c8ae73a89b7cbe45774dea7d5e5f1ba834","size":8124} -->
+````text
+---
+schema: q3_resume.v2
+revision: 202
+observed_at: '2026-09-14T16:25:46.680883+00:00'
+previous_sha256: 14e32c720168a295e59b92c1119e44e5f39d17affe583183e7ee463ae1d162f1
+owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 85f6c5707441055ffc72747a54e68a7e24ef9660
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: &id001 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id006
+    subject: &id003
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: *id001
+    state: DONE
+    evidence: &id004
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: &id005 e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: *id002
+  request_review:
+    subject: *id003
+    state: DONE
+    evidence: *id004
+    source_sha256: *id005
+    checked_by: /root/slack_verdict_check
+  delivery: *id006
+  receipt: &id010
+    subject: &id008
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: &id007 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id009
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: *id005
+    checked_by: *id002
+  independent_review:
+    subject: *id008
+    state: DONE
+    evidence: *id009
+    source_sha256: *id005
+    checked_by: /root/density_verdict_check
+  parent_check: *id010
+  acceptance: *id010
+  publication: *id010
+operation:
+  kind: PUBLISH
+  state: CONFIRMED
+  id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+  evidence:
+  - git:85f6c5707441055ffc72747a54e68a7e24ef9660:docs/Codex/RESUME.md
+  subject:
+    kind: REPAIR
+    id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+    sha256: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+  command: publication
+  inputs:
+    docs/session_protocols/team-evidence-6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad.bin: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+ownership:
+  installation_ref: 9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4
+  epoch: 1
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH remains unproved; PX_RH_CLAIM NOT_MADE. Actual Mac history5987b887 is merged.
+Latest frontier: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
+PAPER all raw two-node positivity is not all-rank positivity or an RH proof.
+Exact theorem/consumer edge remains unbound; no mathematical supplier dispatch/admission.
+Owner-directed isolated analytical review completed: exact anchored covariance
+identity S_a/D_a = Cov(A)-Gram(B), with strictly positive comparison covariance
+for every finite distinct non-anchor theta node family. Full residual sign OPEN.
+Note evidence: docs/session_protocols/team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin
+Independent review: docs/session_protocols/team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin
+
+## Confirmed and candidate results
+Source repair f37c5de40b4d5b7e76b89eabc28693bba1fae45a and true merge
+8417622b36fa90debc3e58fb1e5fd980f62f35d0 pushed with independent remote readback.
+The second parent is Mac5987b887850eb8aa29cac9588668d66d16e6f1c1;
+all102 commits and127incoming files preserved exactly, without conflicts.
+Recovery regression1/5.692s passed; original220tests passed before finalguard.
+Registered semantic refresh PASS,3326sources+manifest; repeat close exit0,
+FRESH and zero repairs. ask.sh VILLAINPHI exit0/ASK_STATUS:HITS.
+
+## Next action
+Receive the new skill package below before further mechanism selection.
+Owner instruction 2026-09-14: first pure mathematical derivation and analytical
+agreement, only then numerical tests and formalization. The proposed C_V
+determinant scan is deferred. Full-V raw-two-shift intake and the conditional
+Schur repeatability report already exist in the merged Mac history; no repeat
+intake or research restart. C_V positivity is a stronger sufficient route,
+not a proved property of theta. First unpaid sign: the full Schur residual. Exact current obligation is the
+all-row inequality E|B_c|^2 <= Var(A_c) for the full theta source.
+A4 is equivalent to the original sign; no source-sign delta is claimed.
+Owner correction: Poisson is only a candidate; compare mechanisms through
+alias-hunt before selection. No new search/proof completed. Skill142lines,
+SHA256 127cfec8e331b6c200774c19d9c738dab6eef32eb8efdd0d8400c5178b35e21b,
+is identical at HEAD85f6c570 and Mac5987b887. The 13 September
+REQUIRED_MECHANISM_NODE plan explicitly remains NOT_RUNTIME_ENFORCED.
+
+## Existing work
+Heartbeat owner-agent check 2026-09-14T16:25:46.675163+00:00: owning task
+01a084f4-7498-7021-bac2-91d184d58dc7; all six children completed.
+App goal usageLimited unchanged; no new agent, computation or implementation.
+Linux repairs and analytical evidence publication85f6c570 are complete.
+Owner/install/epoch1 unchanged. New Mac package observed; intake remains below.
+
+## Do not repeat
+Do not replay confirmed pushes, source copy, Mac merge, or fresh semantic refresh.
+Earlier source attempt RECOVERY_SOURCE_INSTALL_20260914 was NOT_EXECUTED:
+review JSON was unsorted; original bytes preserved, canonical review separately
+validated before RECOVERY_SOURCE_CANONICAL_INSTALL_20260914 completed.
+One checkpoint retry followed a transient reader/writer collision; no effect replay.
+
+## Integration remaining
+NEW remote Mac1c735091b9768db6915b539666421c177dbf9f30 is one commit ahead
+of rh_clean85f6c570. Delta: alias-hunt plus LINUX_HANDOFF_2026-09-14_SEMANTIC_COMPENSATION.md
+and its .sha256, both under docs/Codex. All three fetched through GitHub connector;
+skill/handoff fully read and all three Git blob hashes recomputed.
+Manifest15/15 PASS using two fetched files and13 unchanged local source files.
+New skill208lines SHA256 d31e1ca5cbf6d8529f222335a6c90fdf6471b9b85daa22fae7e8a0b6c2fcd398.
+Manifest SHA256 f9403f86d62f25aafee1badf27e4c01f63850f9bd14316900154c812bea0cb65.
+This is semantic-return/partial-bridge skill guidance; runtime gate NOT implemented.
+Canonical skill remains old127c; review, integration and GitHub receipt PENDING.
+Handoff's Poisson-specific next-step sentence predates owner's correction;
+retain mechanism comparison before selection. No proof/source-sign admission.
+Existing foreign literature/config bytes preserved. Confirmation-only checkpoints
+are not recursively published. Seven old wiring-test failures remain baseline debt.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-202-5d1eede8698f0b27093e4466cb6d90c8ae73a89b7cbe45774dea7d5e5f1ba834","kind":"resume","revision":202,"sha256":"5d1eede8698f0b27093e4466cb6d90c8ae73a89b7cbe45774dea7d5e5f1ba834","size":8124} -->
+````text
+---
+schema: q3_resume.v2
+revision: 202
+observed_at: '2026-09-14T16:25:46.680883+00:00'
+previous_sha256: 14e32c720168a295e59b92c1119e44e5f39d17affe583183e7ee463ae1d162f1
+owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 85f6c5707441055ffc72747a54e68a7e24ef9660
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: &id001 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id006
+    subject: &id003
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: *id001
+    state: DONE
+    evidence: &id004
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: &id005 e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: *id002
+  request_review:
+    subject: *id003
+    state: DONE
+    evidence: *id004
+    source_sha256: *id005
+    checked_by: /root/slack_verdict_check
+  delivery: *id006
+  receipt: &id010
+    subject: &id008
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: &id007 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id009
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: *id005
+    checked_by: *id002
+  independent_review:
+    subject: *id008
+    state: DONE
+    evidence: *id009
+    source_sha256: *id005
+    checked_by: /root/density_verdict_check
+  parent_check: *id010
+  acceptance: *id010
+  publication: *id010
+operation:
+  kind: PUBLISH
+  state: CONFIRMED
+  id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+  evidence:
+  - git:85f6c5707441055ffc72747a54e68a7e24ef9660:docs/Codex/RESUME.md
+  subject:
+    kind: REPAIR
+    id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+    sha256: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+  command: publication
+  inputs:
+    docs/session_protocols/team-evidence-6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad.bin: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+ownership:
+  installation_ref: 9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4
+  epoch: 1
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH remains unproved; PX_RH_CLAIM NOT_MADE. Actual Mac history5987b887 is merged.
+Latest frontier: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
+PAPER all raw two-node positivity is not all-rank positivity or an RH proof.
+Exact theorem/consumer edge remains unbound; no mathematical supplier dispatch/admission.
+Owner-directed isolated analytical review completed: exact anchored covariance
+identity S_a/D_a = Cov(A)-Gram(B), with strictly positive comparison covariance
+for every finite distinct non-anchor theta node family. Full residual sign OPEN.
+Note evidence: docs/session_protocols/team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin
+Independent review: docs/session_protocols/team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin
+
+## Confirmed and candidate results
+Source repair f37c5de40b4d5b7e76b89eabc28693bba1fae45a and true merge
+8417622b36fa90debc3e58fb1e5fd980f62f35d0 pushed with independent remote readback.
+The second parent is Mac5987b887850eb8aa29cac9588668d66d16e6f1c1;
+all102 commits and127incoming files preserved exactly, without conflicts.
+Recovery regression1/5.692s passed; original220tests passed before finalguard.
+Registered semantic refresh PASS,3326sources+manifest; repeat close exit0,
+FRESH and zero repairs. ask.sh VILLAINPHI exit0/ASK_STATUS:HITS.
+
+## Next action
+Receive the new skill package below before further mechanism selection.
+Owner instruction 2026-09-14: first pure mathematical derivation and analytical
+agreement, only then numerical tests and formalization. The proposed C_V
+determinant scan is deferred. Full-V raw-two-shift intake and the conditional
+Schur repeatability report already exist in the merged Mac history; no repeat
+intake or research restart. C_V positivity is a stronger sufficient route,
+not a proved property of theta. First unpaid sign: the full Schur residual. Exact current obligation is the
+all-row inequality E|B_c|^2 <= Var(A_c) for the full theta source.
+A4 is equivalent to the original sign; no source-sign delta is claimed.
+Owner correction: Poisson is only a candidate; compare mechanisms through
+alias-hunt before selection. No new search/proof completed. Skill142lines,
+SHA256 127cfec8e331b6c200774c19d9c738dab6eef32eb8efdd0d8400c5178b35e21b,
+is identical at HEAD85f6c570 and Mac5987b887. The 13 September
+REQUIRED_MECHANISM_NODE plan explicitly remains NOT_RUNTIME_ENFORCED.
+
+## Existing work
+Heartbeat owner-agent check 2026-09-14T16:25:46.675163+00:00: owning task
+01a084f4-7498-7021-bac2-91d184d58dc7; all six children completed.
+App goal usageLimited unchanged; no new agent, computation or implementation.
+Linux repairs and analytical evidence publication85f6c570 are complete.
+Owner/install/epoch1 unchanged. New Mac package observed; intake remains below.
+
+## Do not repeat
+Do not replay confirmed pushes, source copy, Mac merge, or fresh semantic refresh.
+Earlier source attempt RECOVERY_SOURCE_INSTALL_20260914 was NOT_EXECUTED:
+review JSON was unsorted; original bytes preserved, canonical review separately
+validated before RECOVERY_SOURCE_CANONICAL_INSTALL_20260914 completed.
+One checkpoint retry followed a transient reader/writer collision; no effect replay.
+
+## Integration remaining
+NEW remote Mac1c735091b9768db6915b539666421c177dbf9f30 is one commit ahead
+of rh_clean85f6c570. Delta: alias-hunt plus LINUX_HANDOFF_2026-09-14_SEMANTIC_COMPENSATION.md
+and its .sha256, both under docs/Codex. All three fetched through GitHub connector;
+skill/handoff fully read and all three Git blob hashes recomputed.
+Manifest15/15 PASS using two fetched files and13 unchanged local source files.
+New skill208lines SHA256 d31e1ca5cbf6d8529f222335a6c90fdf6471b9b85daa22fae7e8a0b6c2fcd398.
+Manifest SHA256 f9403f86d62f25aafee1badf27e4c01f63850f9bd14316900154c812bea0cb65.
+This is semantic-return/partial-bridge skill guidance; runtime gate NOT implemented.
+Canonical skill remains old127c; review, integration and GitHub receipt PENDING.
+Handoff's Poisson-specific next-step sentence predates owner's correction;
+retain mechanism comparison before selection. No proof/source-sign admission.
+Existing foreign literature/config bytes preserved. Confirmation-only checkpoints
+are not recursively published. Seven old wiring-test failures remain baseline debt.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-203-65abed645d6c539d98c682e3b869950f29d666bcd8837787c6099a4a788fec8e","kind":"intent","revision":203,"sha256":"65abed645d6c539d98c682e3b869950f29d666bcd8837787c6099a4a788fec8e","size":8124} -->
+````text
+---
+schema: q3_resume.v2
+revision: 203
+observed_at: '2026-09-14T16:47:34.292001+00:00'
+previous_sha256: 5d1eede8698f0b27093e4466cb6d90c8ae73a89b7cbe45774dea7d5e5f1ba834
+owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 85f6c5707441055ffc72747a54e68a7e24ef9660
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: &id001 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id006
+    subject: &id003
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: *id001
+    state: DONE
+    evidence: &id004
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: &id005 e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: *id002
+  request_review:
+    subject: *id003
+    state: DONE
+    evidence: *id004
+    source_sha256: *id005
+    checked_by: /root/slack_verdict_check
+  delivery: *id006
+  receipt: &id010
+    subject: &id008
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: &id007 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id009
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: *id005
+    checked_by: *id002
+  independent_review:
+    subject: *id008
+    state: DONE
+    evidence: *id009
+    source_sha256: *id005
+    checked_by: /root/density_verdict_check
+  parent_check: *id010
+  acceptance: *id010
+  publication: *id010
+operation:
+  kind: PUBLISH
+  state: CONFIRMED
+  id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+  evidence:
+  - git:85f6c5707441055ffc72747a54e68a7e24ef9660:docs/Codex/RESUME.md
+  subject:
+    kind: REPAIR
+    id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+    sha256: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+  command: publication
+  inputs:
+    docs/session_protocols/team-evidence-6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad.bin: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+ownership:
+  installation_ref: 9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4
+  epoch: 1
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH remains unproved; PX_RH_CLAIM NOT_MADE. Actual Mac history5987b887 is merged.
+Latest frontier: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
+PAPER all raw two-node positivity is not all-rank positivity or an RH proof.
+Exact theorem/consumer edge remains unbound; no mathematical supplier dispatch/admission.
+Owner-directed isolated analytical review completed: exact anchored covariance
+identity S_a/D_a = Cov(A)-Gram(B), with strictly positive comparison covariance
+for every finite distinct non-anchor theta node family. Full residual sign OPEN.
+Note evidence: docs/session_protocols/team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin
+Independent review: docs/session_protocols/team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin
+
+## Confirmed and candidate results
+Source repair f37c5de40b4d5b7e76b89eabc28693bba1fae45a and true merge
+8417622b36fa90debc3e58fb1e5fd980f62f35d0 pushed with independent remote readback.
+The second parent is Mac5987b887850eb8aa29cac9588668d66d16e6f1c1;
+all102 commits and127incoming files preserved exactly, without conflicts.
+Recovery regression1/5.692s passed; original220tests passed before finalguard.
+Registered semantic refresh PASS,3326sources+manifest; repeat close exit0,
+FRESH and zero repairs. ask.sh VILLAINPHI exit0/ASK_STATUS:HITS.
+
+## Next action
+Receive the new skill package below before further mechanism selection.
+Owner instruction 2026-09-14: first pure mathematical derivation and analytical
+agreement, only then numerical tests and formalization. The proposed C_V
+determinant scan is deferred. Full-V raw-two-shift intake and the conditional
+Schur repeatability report already exist in the merged Mac history; no repeat
+intake or research restart. C_V positivity is a stronger sufficient route,
+not a proved property of theta. First unpaid sign: the full Schur residual. Exact current obligation is the
+all-row inequality E|B_c|^2 <= Var(A_c) for the full theta source.
+A4 is equivalent to the original sign; no source-sign delta is claimed.
+Owner correction: Poisson is only a candidate; compare mechanisms through
+alias-hunt before selection. No new search/proof completed. Skill142lines,
+SHA256 127cfec8e331b6c200774c19d9c738dab6eef32eb8efdd0d8400c5178b35e21b,
+is identical at HEAD85f6c570 and Mac5987b887. The 13 September
+REQUIRED_MECHANISM_NODE plan explicitly remains NOT_RUNTIME_ENFORCED.
+
+## Existing work
+Heartbeat owner-agent check 2026-09-14T16:47:34.286279+00:00: owning task
+01a084f4-7498-7021-bac2-91d184d58dc7; all six children completed.
+App goal usageLimited unchanged; no new agent, computation or implementation.
+Linux repairs and analytical evidence publication85f6c570 are complete.
+Owner/install/epoch1 unchanged. New Mac package observed; intake remains below.
+
+## Do not repeat
+Do not replay confirmed pushes, source copy, Mac merge, or fresh semantic refresh.
+Earlier source attempt RECOVERY_SOURCE_INSTALL_20260914 was NOT_EXECUTED:
+review JSON was unsorted; original bytes preserved, canonical review separately
+validated before RECOVERY_SOURCE_CANONICAL_INSTALL_20260914 completed.
+One checkpoint retry followed a transient reader/writer collision; no effect replay.
+
+## Integration remaining
+NEW remote Mac1c735091b9768db6915b539666421c177dbf9f30 is one commit ahead
+of rh_clean85f6c570. Delta: alias-hunt plus LINUX_HANDOFF_2026-09-14_SEMANTIC_COMPENSATION.md
+and its .sha256, both under docs/Codex. All three fetched through GitHub connector;
+skill/handoff fully read and all three Git blob hashes recomputed.
+Manifest15/15 PASS using two fetched files and13 unchanged local source files.
+New skill208lines SHA256 d31e1ca5cbf6d8529f222335a6c90fdf6471b9b85daa22fae7e8a0b6c2fcd398.
+Manifest SHA256 f9403f86d62f25aafee1badf27e4c01f63850f9bd14316900154c812bea0cb65.
+This is semantic-return/partial-bridge skill guidance; runtime gate NOT implemented.
+Canonical skill remains old127c; review, integration and GitHub receipt PENDING.
+Handoff's Poisson-specific next-step sentence predates owner's correction;
+retain mechanism comparison before selection. No proof/source-sign admission.
+Existing foreign literature/config bytes preserved. Confirmation-only checkpoints
+are not recursively published. Seven old wiring-test failures remain baseline debt.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-203-65abed645d6c539d98c682e3b869950f29d666bcd8837787c6099a4a788fec8e","kind":"resume","revision":203,"sha256":"65abed645d6c539d98c682e3b869950f29d666bcd8837787c6099a4a788fec8e","size":8124} -->
+````text
+---
+schema: q3_resume.v2
+revision: 203
+observed_at: '2026-09-14T16:47:34.292001+00:00'
+previous_sha256: 5d1eede8698f0b27093e4466cb6d90c8ae73a89b7cbe45774dea7d5e5f1ba834
+owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 85f6c5707441055ffc72747a54e68a7e24ef9660
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: &id001 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id006
+    subject: &id003
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: *id001
+    state: DONE
+    evidence: &id004
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: &id005 e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: *id002
+  request_review:
+    subject: *id003
+    state: DONE
+    evidence: *id004
+    source_sha256: *id005
+    checked_by: /root/slack_verdict_check
+  delivery: *id006
+  receipt: &id010
+    subject: &id008
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: &id007 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id009
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: *id005
+    checked_by: *id002
+  independent_review:
+    subject: *id008
+    state: DONE
+    evidence: *id009
+    source_sha256: *id005
+    checked_by: /root/density_verdict_check
+  parent_check: *id010
+  acceptance: *id010
+  publication: *id010
+operation:
+  kind: PUBLISH
+  state: CONFIRMED
+  id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+  evidence:
+  - git:85f6c5707441055ffc72747a54e68a7e24ef9660:docs/Codex/RESUME.md
+  subject:
+    kind: REPAIR
+    id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+    sha256: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+  command: publication
+  inputs:
+    docs/session_protocols/team-evidence-6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad.bin: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+ownership:
+  installation_ref: 9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4
+  epoch: 1
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH remains unproved; PX_RH_CLAIM NOT_MADE. Actual Mac history5987b887 is merged.
+Latest frontier: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
+PAPER all raw two-node positivity is not all-rank positivity or an RH proof.
+Exact theorem/consumer edge remains unbound; no mathematical supplier dispatch/admission.
+Owner-directed isolated analytical review completed: exact anchored covariance
+identity S_a/D_a = Cov(A)-Gram(B), with strictly positive comparison covariance
+for every finite distinct non-anchor theta node family. Full residual sign OPEN.
+Note evidence: docs/session_protocols/team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin
+Independent review: docs/session_protocols/team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin
+
+## Confirmed and candidate results
+Source repair f37c5de40b4d5b7e76b89eabc28693bba1fae45a and true merge
+8417622b36fa90debc3e58fb1e5fd980f62f35d0 pushed with independent remote readback.
+The second parent is Mac5987b887850eb8aa29cac9588668d66d16e6f1c1;
+all102 commits and127incoming files preserved exactly, without conflicts.
+Recovery regression1/5.692s passed; original220tests passed before finalguard.
+Registered semantic refresh PASS,3326sources+manifest; repeat close exit0,
+FRESH and zero repairs. ask.sh VILLAINPHI exit0/ASK_STATUS:HITS.
+
+## Next action
+Receive the new skill package below before further mechanism selection.
+Owner instruction 2026-09-14: first pure mathematical derivation and analytical
+agreement, only then numerical tests and formalization. The proposed C_V
+determinant scan is deferred. Full-V raw-two-shift intake and the conditional
+Schur repeatability report already exist in the merged Mac history; no repeat
+intake or research restart. C_V positivity is a stronger sufficient route,
+not a proved property of theta. First unpaid sign: the full Schur residual. Exact current obligation is the
+all-row inequality E|B_c|^2 <= Var(A_c) for the full theta source.
+A4 is equivalent to the original sign; no source-sign delta is claimed.
+Owner correction: Poisson is only a candidate; compare mechanisms through
+alias-hunt before selection. No new search/proof completed. Skill142lines,
+SHA256 127cfec8e331b6c200774c19d9c738dab6eef32eb8efdd0d8400c5178b35e21b,
+is identical at HEAD85f6c570 and Mac5987b887. The 13 September
+REQUIRED_MECHANISM_NODE plan explicitly remains NOT_RUNTIME_ENFORCED.
+
+## Existing work
+Heartbeat owner-agent check 2026-09-14T16:47:34.286279+00:00: owning task
+01a084f4-7498-7021-bac2-91d184d58dc7; all six children completed.
+App goal usageLimited unchanged; no new agent, computation or implementation.
+Linux repairs and analytical evidence publication85f6c570 are complete.
+Owner/install/epoch1 unchanged. New Mac package observed; intake remains below.
+
+## Do not repeat
+Do not replay confirmed pushes, source copy, Mac merge, or fresh semantic refresh.
+Earlier source attempt RECOVERY_SOURCE_INSTALL_20260914 was NOT_EXECUTED:
+review JSON was unsorted; original bytes preserved, canonical review separately
+validated before RECOVERY_SOURCE_CANONICAL_INSTALL_20260914 completed.
+One checkpoint retry followed a transient reader/writer collision; no effect replay.
+
+## Integration remaining
+NEW remote Mac1c735091b9768db6915b539666421c177dbf9f30 is one commit ahead
+of rh_clean85f6c570. Delta: alias-hunt plus LINUX_HANDOFF_2026-09-14_SEMANTIC_COMPENSATION.md
+and its .sha256, both under docs/Codex. All three fetched through GitHub connector;
+skill/handoff fully read and all three Git blob hashes recomputed.
+Manifest15/15 PASS using two fetched files and13 unchanged local source files.
+New skill208lines SHA256 d31e1ca5cbf6d8529f222335a6c90fdf6471b9b85daa22fae7e8a0b6c2fcd398.
+Manifest SHA256 f9403f86d62f25aafee1badf27e4c01f63850f9bd14316900154c812bea0cb65.
+This is semantic-return/partial-bridge skill guidance; runtime gate NOT implemented.
+Canonical skill remains old127c; review, integration and GitHub receipt PENDING.
+Handoff's Poisson-specific next-step sentence predates owner's correction;
+retain mechanism comparison before selection. No proof/source-sign admission.
+Existing foreign literature/config bytes preserved. Confirmation-only checkpoints
+are not recursively published. Seven old wiring-test failures remain baseline debt.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-204-ecc845108bf0ab29335be2fc421af74a0ba807deadfac31d2c993f4c5718c91c","kind":"intent","revision":204,"sha256":"ecc845108bf0ab29335be2fc421af74a0ba807deadfac31d2c993f4c5718c91c","size":8121} -->
+````text
+---
+schema: q3_resume.v2
+revision: 204
+observed_at: '2026-09-14T16:59:06.027346+00:00'
+previous_sha256: 65abed645d6c539d98c682e3b869950f29d666bcd8837787c6099a4a788fec8e
+owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 85f6c5707441055ffc72747a54e68a7e24ef9660
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: &id001 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id006
+    subject: &id003
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: *id001
+    state: DONE
+    evidence: &id004
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: &id005 e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: *id002
+  request_review:
+    subject: *id003
+    state: DONE
+    evidence: *id004
+    source_sha256: *id005
+    checked_by: /root/slack_verdict_check
+  delivery: *id006
+  receipt: &id010
+    subject: &id008
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: &id007 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id009
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: *id005
+    checked_by: *id002
+  independent_review:
+    subject: *id008
+    state: DONE
+    evidence: *id009
+    source_sha256: *id005
+    checked_by: /root/density_verdict_check
+  parent_check: *id010
+  acceptance: *id010
+  publication: *id010
+operation:
+  kind: PUBLISH
+  state: CONFIRMED
+  id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+  evidence:
+  - git:85f6c5707441055ffc72747a54e68a7e24ef9660:docs/Codex/RESUME.md
+  subject:
+    kind: REPAIR
+    id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+    sha256: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+  command: publication
+  inputs:
+    docs/session_protocols/team-evidence-6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad.bin: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+ownership:
+  installation_ref: 9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4
+  epoch: 1
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH remains unproved; PX_RH_CLAIM NOT_MADE. Actual Mac history5987b887 is merged.
+Latest frontier: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
+PAPER all raw two-node positivity is not all-rank positivity or an RH proof.
+Exact theorem/consumer edge remains unbound; no mathematical supplier dispatch/admission.
+Owner-directed isolated analytical review completed: exact anchored covariance
+identity S_a/D_a = Cov(A)-Gram(B), with strictly positive comparison covariance
+for every finite distinct non-anchor theta node family. Full residual sign OPEN.
+Note evidence: docs/session_protocols/team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin
+Independent review: docs/session_protocols/team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin
+
+## Confirmed and candidate results
+Source repair f37c5de40b4d5b7e76b89eabc28693bba1fae45a and true merge
+8417622b36fa90debc3e58fb1e5fd980f62f35d0 pushed with independent remote readback.
+The second parent is Mac5987b887850eb8aa29cac9588668d66d16e6f1c1;
+all102 commits and127incoming files preserved exactly, without conflicts.
+Recovery regression1/5.692s passed; original220tests passed before finalguard.
+Registered semantic refresh PASS,3326sources+manifest; repeat close exit0,
+FRESH and zero repairs. ask.sh VILLAINPHI exit0/ASK_STATUS:HITS.
+
+## Next action
+Receive the new skill package below before further mechanism selection.
+Owner instruction 2026-09-14: first pure mathematical derivation and analytical
+agreement, only then numerical tests and formalization. The proposed C_V
+determinant scan is deferred. Full-V raw-two-shift intake and the conditional
+Schur repeatability report already exist in the merged Mac history; no repeat
+intake or research restart. C_V positivity is a stronger sufficient route,
+not a proved property of theta. First unpaid sign: the full Schur residual. Exact current obligation is the
+all-row inequality E|B_c|^2 <= Var(A_c) for the full theta source.
+A4 is equivalent to the original sign; no source-sign delta is claimed.
+Owner correction: Poisson is only a candidate; compare mechanisms through
+alias-hunt before selection. No new search/proof completed. Skill142lines,
+SHA256 127cfec8e331b6c200774c19d9c738dab6eef32eb8efdd0d8400c5178b35e21b,
+is identical at HEAD85f6c570 and Mac5987b887. The 13 September
+REQUIRED_MECHANISM_NODE plan explicitly remains NOT_RUNTIME_ENFORCED.
+
+## Existing work
+Heartbeat owner-agent check 2026-09-14T16:47:34.286279+00:00: owning task
+01a084f4-7498-7021-bac2-91d184d58dc7; all six children completed.
+App goal usageLimited unchanged; no new agent, computation or implementation.
+Linux repairs and analytical evidence publication85f6c570 are complete.
+Owner/install/epoch1 unchanged. New Mac package observed; intake remains below.
+
+## Do not repeat
+Do not replay confirmed pushes, source copy, Mac merge, or fresh semantic refresh.
+Earlier source attempt RECOVERY_SOURCE_INSTALL_20260914 was NOT_EXECUTED:
+review JSON was unsorted; original bytes preserved, canonical review separately
+validated before RECOVERY_SOURCE_CANONICAL_INSTALL_20260914 completed.
+One checkpoint retry followed a transient reader/writer collision; no effect replay.
+
+## Integration remaining
+NEW remote Macfe1044cb45356fff684fc99c042a2354bfad17fd is two commits ahead
+of rh_clean85f6c570. Delta: alias-hunt plus LINUX_HANDOFF_2026-09-14_SEMANTIC_COMPENSATION.md
+and its .sha256, both under docs/Codex. All three fetched through GitHub connector;
+skill/handoff fully read and all three Git blob hashes recomputed.
+Manifest15/15 PASS using two fetched files and13 unchanged local source files.
+New skill208lines SHA256 d31e1ca5cbf6d8529f222335a6c90fdf6471b9b85daa22fae7e8a0b6c2fcd398.
+Manifest SHA256 805a3e7367e9ac596fc563bcd447ada46c8124841dc284f7b108ecfee9a03453.
+fe1044 adds row definitions only; skill unchanged; runtime gate NOT implemented.
+Canonical skill remains old127c; review, integration and GitHub receipt PENDING.
+Handoff's Poisson-specific next-step sentence predates owner's correction;
+retain mechanism comparison before selection. No proof/source-sign admission.
+Existing foreign literature/config bytes preserved. Confirmation-only checkpoints
+are not recursively published. Seven old wiring-test failures remain baseline debt.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-204-ecc845108bf0ab29335be2fc421af74a0ba807deadfac31d2c993f4c5718c91c","kind":"resume","revision":204,"sha256":"ecc845108bf0ab29335be2fc421af74a0ba807deadfac31d2c993f4c5718c91c","size":8121} -->
+````text
+---
+schema: q3_resume.v2
+revision: 204
+observed_at: '2026-09-14T16:59:06.027346+00:00'
+previous_sha256: 65abed645d6c539d98c682e3b869950f29d666bcd8837787c6099a4a788fec8e
+owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 85f6c5707441055ffc72747a54e68a7e24ef9660
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: &id001 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id006
+    subject: &id003
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: *id001
+    state: DONE
+    evidence: &id004
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: &id005 e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: *id002
+  request_review:
+    subject: *id003
+    state: DONE
+    evidence: *id004
+    source_sha256: *id005
+    checked_by: /root/slack_verdict_check
+  delivery: *id006
+  receipt: &id010
+    subject: &id008
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: &id007 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id009
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: *id005
+    checked_by: *id002
+  independent_review:
+    subject: *id008
+    state: DONE
+    evidence: *id009
+    source_sha256: *id005
+    checked_by: /root/density_verdict_check
+  parent_check: *id010
+  acceptance: *id010
+  publication: *id010
+operation:
+  kind: PUBLISH
+  state: CONFIRMED
+  id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+  evidence:
+  - git:85f6c5707441055ffc72747a54e68a7e24ef9660:docs/Codex/RESUME.md
+  subject:
+    kind: REPAIR
+    id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+    sha256: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+  command: publication
+  inputs:
+    docs/session_protocols/team-evidence-6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad.bin: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+ownership:
+  installation_ref: 9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4
+  epoch: 1
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH remains unproved; PX_RH_CLAIM NOT_MADE. Actual Mac history5987b887 is merged.
+Latest frontier: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
+PAPER all raw two-node positivity is not all-rank positivity or an RH proof.
+Exact theorem/consumer edge remains unbound; no mathematical supplier dispatch/admission.
+Owner-directed isolated analytical review completed: exact anchored covariance
+identity S_a/D_a = Cov(A)-Gram(B), with strictly positive comparison covariance
+for every finite distinct non-anchor theta node family. Full residual sign OPEN.
+Note evidence: docs/session_protocols/team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin
+Independent review: docs/session_protocols/team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin
+
+## Confirmed and candidate results
+Source repair f37c5de40b4d5b7e76b89eabc28693bba1fae45a and true merge
+8417622b36fa90debc3e58fb1e5fd980f62f35d0 pushed with independent remote readback.
+The second parent is Mac5987b887850eb8aa29cac9588668d66d16e6f1c1;
+all102 commits and127incoming files preserved exactly, without conflicts.
+Recovery regression1/5.692s passed; original220tests passed before finalguard.
+Registered semantic refresh PASS,3326sources+manifest; repeat close exit0,
+FRESH and zero repairs. ask.sh VILLAINPHI exit0/ASK_STATUS:HITS.
+
+## Next action
+Receive the new skill package below before further mechanism selection.
+Owner instruction 2026-09-14: first pure mathematical derivation and analytical
+agreement, only then numerical tests and formalization. The proposed C_V
+determinant scan is deferred. Full-V raw-two-shift intake and the conditional
+Schur repeatability report already exist in the merged Mac history; no repeat
+intake or research restart. C_V positivity is a stronger sufficient route,
+not a proved property of theta. First unpaid sign: the full Schur residual. Exact current obligation is the
+all-row inequality E|B_c|^2 <= Var(A_c) for the full theta source.
+A4 is equivalent to the original sign; no source-sign delta is claimed.
+Owner correction: Poisson is only a candidate; compare mechanisms through
+alias-hunt before selection. No new search/proof completed. Skill142lines,
+SHA256 127cfec8e331b6c200774c19d9c738dab6eef32eb8efdd0d8400c5178b35e21b,
+is identical at HEAD85f6c570 and Mac5987b887. The 13 September
+REQUIRED_MECHANISM_NODE plan explicitly remains NOT_RUNTIME_ENFORCED.
+
+## Existing work
+Heartbeat owner-agent check 2026-09-14T16:47:34.286279+00:00: owning task
+01a084f4-7498-7021-bac2-91d184d58dc7; all six children completed.
+App goal usageLimited unchanged; no new agent, computation or implementation.
+Linux repairs and analytical evidence publication85f6c570 are complete.
+Owner/install/epoch1 unchanged. New Mac package observed; intake remains below.
+
+## Do not repeat
+Do not replay confirmed pushes, source copy, Mac merge, or fresh semantic refresh.
+Earlier source attempt RECOVERY_SOURCE_INSTALL_20260914 was NOT_EXECUTED:
+review JSON was unsorted; original bytes preserved, canonical review separately
+validated before RECOVERY_SOURCE_CANONICAL_INSTALL_20260914 completed.
+One checkpoint retry followed a transient reader/writer collision; no effect replay.
+
+## Integration remaining
+NEW remote Macfe1044cb45356fff684fc99c042a2354bfad17fd is two commits ahead
+of rh_clean85f6c570. Delta: alias-hunt plus LINUX_HANDOFF_2026-09-14_SEMANTIC_COMPENSATION.md
+and its .sha256, both under docs/Codex. All three fetched through GitHub connector;
+skill/handoff fully read and all three Git blob hashes recomputed.
+Manifest15/15 PASS using two fetched files and13 unchanged local source files.
+New skill208lines SHA256 d31e1ca5cbf6d8529f222335a6c90fdf6471b9b85daa22fae7e8a0b6c2fcd398.
+Manifest SHA256 805a3e7367e9ac596fc563bcd447ada46c8124841dc284f7b108ecfee9a03453.
+fe1044 adds row definitions only; skill unchanged; runtime gate NOT implemented.
+Canonical skill remains old127c; review, integration and GitHub receipt PENDING.
+Handoff's Poisson-specific next-step sentence predates owner's correction;
+retain mechanism comparison before selection. No proof/source-sign admission.
+Existing foreign literature/config bytes preserved. Confirmation-only checkpoints
+are not recursively published. Seven old wiring-test failures remain baseline debt.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-205-43f6081cbf92fa23d364a78af40dcd73624961e096253d276ffc05b615729908","kind":"intent","revision":205,"sha256":"43f6081cbf92fa23d364a78af40dcd73624961e096253d276ffc05b615729908","size":6907} -->
+````text
+---
+schema: q3_resume.v2
+revision: 205
+observed_at: '2026-09-14T17:09:31.763257+00:00'
+previous_sha256: ecc845108bf0ab29335be2fc421af74a0ba807deadfac31d2c993f4c5718c91c
+owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 85f6c5707441055ffc72747a54e68a7e24ef9660
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: &id001 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id006
+    subject: &id003
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: *id001
+    state: DONE
+    evidence: &id004
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: &id005 e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: *id002
+  request_review:
+    subject: *id003
+    state: DONE
+    evidence: *id004
+    source_sha256: *id005
+    checked_by: /root/slack_verdict_check
+  delivery: *id006
+  receipt: &id010
+    subject: &id008
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: &id007 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id009
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: *id005
+    checked_by: *id002
+  independent_review:
+    subject: *id008
+    state: DONE
+    evidence: *id009
+    source_sha256: *id005
+    checked_by: /root/density_verdict_check
+  parent_check: *id010
+  acceptance: *id010
+  publication: *id010
+operation:
+  kind: PUBLISH
+  state: CONFIRMED
+  id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+  evidence:
+  - git:85f6c5707441055ffc72747a54e68a7e24ef9660:docs/Codex/RESUME.md
+  subject:
+    kind: REPAIR
+    id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+    sha256: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+  command: publication
+  inputs:
+    docs/session_protocols/team-evidence-6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad.bin: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+ownership:
+  installation_ref: 9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4
+  epoch: 1
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Exact theorem/consumer edge remains unbound.
+Latest source: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
+Raw two-node positivity is not all-rank positivity. Checked identity:
+S_a[c]/D_a = Var_mu(A_c)-E_mu|B_c|^2; comparison covariance is strictly positive
+for distinct non-anchor theta nodes. Full residual sign and all-row A4 remain OPEN.
+Analytic note: docs/session_protocols/team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin
+Review: docs/session_protocols/team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin
+
+## Confirmed and candidate results
+Linux repair/Mac history5987b887 integration and semantic refresh completed.
+Checked analytical evidence published at85f6c5707441055ffc72747a54e68a7e24ef9660.
+New PR14 source fe1044cb45356fff684fc99c042a2354bfad17fd is two commits ahead.
+All15 manifest hashes and exact3 changed file blobs verified. This is skill guidance,
+not new mathematics or implementation of the proposed runtime dispatch gate.
+
+## Next action
+Owner explicitly requested PR14 integration, reread installed SKILL.md, report its
+hash and current-task rule application. Complete exact independent review, checks,
+real merge preserving incoming ancestry, scoped publication and receiving receipt.
+Use existing canonical writer/owner epoch; preserve foreign bytes.
+Mathematics first, numerical tests/formalization later. Poisson is only a candidate:
+compare mechanisms for Cov(A)>=Gram(B) before selection. No new mathematical hunt
+or numerical campaign is commissioned by this skill delivery.
+
+## Existing work
+PR14_SKILL_REVIEW_20260914 is assigned to /root/pr14_skill_review; launch pending.
+Isolated exact candidate: /home/chirurgie/.cache/q3-pr14-20260914.
+Report: /home/chirurgie/.cache/q3-pr14-review-20260914.md.
+Previous six native children completed. Owner01a084f4/install9afdf2bf/epoch1 unchanged.
+App goal usageLimited unchanged; current explicit user turn authorizes this scoped work.
+
+## Do not repeat
+Do not repeat Linux repair, prior Mac merge, analytical review, confirmed pushes,
+completed searches or fresh index rebuilds. No goal restart or proof admission.
+Preserve full theta, complex rows, weights, tails, boundaries and negative controls.
+A4 is equivalent to the unpaid sign; renaming it is not source-sign progress.
+
+## Integration remaining
+PR14 exact three files: .agents/skills/alias-hunt/SKILL.md and
+docs/Codex/LINUX_HANDOFF_2026-09-14_SEMANTIC_COMPENSATION.md plus .sha256.
+Skill208lines SHA256 d31e1ca5cbf6d8529f222335a6c90fdf6471b9b85daa22fae7e8a0b6c2fcd398.
+Manifest SHA256 805a3e7367e9ac596fc563bcd447ada46c8124841dc284f7b108ecfee9a03453.
+Canonical skill still old127c; review/integration/publication/reread pending.
+The handoff's Poisson recommendation is superseded by owner's comparison correction.
+Six foreign literature files and .codex/config.toml remain excluded.
+Confirmation-only checkpoints need no recursive publication. Seven old isolated
+wiring-test failures remain baseline debt, not acceptance criteria for this skill.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-205-43f6081cbf92fa23d364a78af40dcd73624961e096253d276ffc05b615729908","kind":"resume","revision":205,"sha256":"43f6081cbf92fa23d364a78af40dcd73624961e096253d276ffc05b615729908","size":6907} -->
+````text
+---
+schema: q3_resume.v2
+revision: 205
+observed_at: '2026-09-14T17:09:31.763257+00:00'
+previous_sha256: ecc845108bf0ab29335be2fc421af74a0ba807deadfac31d2c993f4c5718c91c
+owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 85f6c5707441055ffc72747a54e68a7e24ef9660
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: &id001 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id006
+    subject: &id003
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: *id001
+    state: DONE
+    evidence: &id004
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: &id005 e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: *id002
+  request_review:
+    subject: *id003
+    state: DONE
+    evidence: *id004
+    source_sha256: *id005
+    checked_by: /root/slack_verdict_check
+  delivery: *id006
+  receipt: &id010
+    subject: &id008
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: &id007 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id009
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: *id005
+    checked_by: *id002
+  independent_review:
+    subject: *id008
+    state: DONE
+    evidence: *id009
+    source_sha256: *id005
+    checked_by: /root/density_verdict_check
+  parent_check: *id010
+  acceptance: *id010
+  publication: *id010
+operation:
+  kind: PUBLISH
+  state: CONFIRMED
+  id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+  evidence:
+  - git:85f6c5707441055ffc72747a54e68a7e24ef9660:docs/Codex/RESUME.md
+  subject:
+    kind: REPAIR
+    id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+    sha256: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+  command: publication
+  inputs:
+    docs/session_protocols/team-evidence-6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad.bin: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+ownership:
+  installation_ref: 9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4
+  epoch: 1
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Exact theorem/consumer edge remains unbound.
+Latest source: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
+Raw two-node positivity is not all-rank positivity. Checked identity:
+S_a[c]/D_a = Var_mu(A_c)-E_mu|B_c|^2; comparison covariance is strictly positive
+for distinct non-anchor theta nodes. Full residual sign and all-row A4 remain OPEN.
+Analytic note: docs/session_protocols/team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin
+Review: docs/session_protocols/team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin
+
+## Confirmed and candidate results
+Linux repair/Mac history5987b887 integration and semantic refresh completed.
+Checked analytical evidence published at85f6c5707441055ffc72747a54e68a7e24ef9660.
+New PR14 source fe1044cb45356fff684fc99c042a2354bfad17fd is two commits ahead.
+All15 manifest hashes and exact3 changed file blobs verified. This is skill guidance,
+not new mathematics or implementation of the proposed runtime dispatch gate.
+
+## Next action
+Owner explicitly requested PR14 integration, reread installed SKILL.md, report its
+hash and current-task rule application. Complete exact independent review, checks,
+real merge preserving incoming ancestry, scoped publication and receiving receipt.
+Use existing canonical writer/owner epoch; preserve foreign bytes.
+Mathematics first, numerical tests/formalization later. Poisson is only a candidate:
+compare mechanisms for Cov(A)>=Gram(B) before selection. No new mathematical hunt
+or numerical campaign is commissioned by this skill delivery.
+
+## Existing work
+PR14_SKILL_REVIEW_20260914 is assigned to /root/pr14_skill_review; launch pending.
+Isolated exact candidate: /home/chirurgie/.cache/q3-pr14-20260914.
+Report: /home/chirurgie/.cache/q3-pr14-review-20260914.md.
+Previous six native children completed. Owner01a084f4/install9afdf2bf/epoch1 unchanged.
+App goal usageLimited unchanged; current explicit user turn authorizes this scoped work.
+
+## Do not repeat
+Do not repeat Linux repair, prior Mac merge, analytical review, confirmed pushes,
+completed searches or fresh index rebuilds. No goal restart or proof admission.
+Preserve full theta, complex rows, weights, tails, boundaries and negative controls.
+A4 is equivalent to the unpaid sign; renaming it is not source-sign progress.
+
+## Integration remaining
+PR14 exact three files: .agents/skills/alias-hunt/SKILL.md and
+docs/Codex/LINUX_HANDOFF_2026-09-14_SEMANTIC_COMPENSATION.md plus .sha256.
+Skill208lines SHA256 d31e1ca5cbf6d8529f222335a6c90fdf6471b9b85daa22fae7e8a0b6c2fcd398.
+Manifest SHA256 805a3e7367e9ac596fc563bcd447ada46c8124841dc284f7b108ecfee9a03453.
+Canonical skill still old127c; review/integration/publication/reread pending.
+The handoff's Poisson recommendation is superseded by owner's comparison correction.
+Six foreign literature files and .codex/config.toml remain excluded.
+Confirmation-only checkpoints need no recursive publication. Seven old isolated
+wiring-test failures remain baseline debt, not acceptance criteria for this skill.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-206-bd71ba512d25b8061f3335486e4a5c2fa49d79826182ff052e4f305822b6fb4e","kind":"intent","revision":206,"sha256":"bd71ba512d25b8061f3335486e4a5c2fa49d79826182ff052e4f305822b6fb4e","size":7178} -->
+````text
+---
+schema: q3_resume.v2
+revision: 206
+observed_at: '2026-09-14T17:09:39.139409+00:00'
+previous_sha256: 43f6081cbf92fa23d364a78af40dcd73624961e096253d276ffc05b615729908
+owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 85f6c5707441055ffc72747a54e68a7e24ef9660
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: &id001 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id006
+    subject: &id003
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: *id001
+    state: DONE
+    evidence: &id004
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: &id005 e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: *id002
+  request_review:
+    subject: *id003
+    state: DONE
+    evidence: *id004
+    source_sha256: *id005
+    checked_by: /root/slack_verdict_check
+  delivery: *id006
+  receipt: &id010
+    subject: &id008
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: &id007 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id009
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: *id005
+    checked_by: *id002
+  independent_review:
+    subject: *id008
+    state: DONE
+    evidence: *id009
+    source_sha256: *id005
+    checked_by: /root/density_verdict_check
+  parent_check: *id010
+  acceptance: *id010
+  publication: *id010
+operation:
+  kind: ASSIGN
+  state: INTENT
+  id: PR14_SKILL_REVIEW_LAUNCH_20260914
+  evidence: []
+  subject:
+    kind: ASSIGNMENT
+    id: PR14_SKILL_REVIEW_20260914
+    sha256: 45ca55d7ad6399b063d057574c7762dd6846a840be980bd39b496f1dab97d881
+  command: agent-launch
+  inputs:
+    .agents/skills/alias-hunt/SKILL.md: 127cfec8e331b6c200774c19d9c738dab6eef32eb8efdd0d8400c5178b35e21b
+    docs/CODEX_CONTROL.md: d4392bf72010c2f48407cc7c5b1dd8d9549e9c734e50818682466b586f29f4e5
+    docs/Codex/GOAL.md: 043c082c3e4a42daee01fe4673ed8f755ac64e13b780a406b606d5e49b6577d0
+    docs/Codex/PLAN_2026-09-13_REQUIRED_MECHANISM_NODE.md: 25debce24e6797588415dec9b7ff4cca122b74c19fb51156ba721032791365fe
+    docs/Codex/REPORT_2026-09-14_SCHUR_REPEATABILITY.md: fe737941236b24c67bee7803a38014660698e852b2e61bc54f58672efb494190
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+ownership:
+  installation_ref: 9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4
+  epoch: 1
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Exact theorem/consumer edge remains unbound.
+Latest source: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
+Raw two-node positivity is not all-rank positivity. Checked identity:
+S_a[c]/D_a = Var_mu(A_c)-E_mu|B_c|^2; comparison covariance is strictly positive
+for distinct non-anchor theta nodes. Full residual sign and all-row A4 remain OPEN.
+Analytic note: docs/session_protocols/team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin
+Review: docs/session_protocols/team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin
+
+## Confirmed and candidate results
+Linux repair/Mac history5987b887 integration and semantic refresh completed.
+Checked analytical evidence published at85f6c5707441055ffc72747a54e68a7e24ef9660.
+New PR14 source fe1044cb45356fff684fc99c042a2354bfad17fd is two commits ahead.
+All15 manifest hashes and exact3 changed file blobs verified. This is skill guidance,
+not new mathematics or implementation of the proposed runtime dispatch gate.
+
+## Next action
+Owner explicitly requested PR14 integration, reread installed SKILL.md, report its
+hash and current-task rule application. Complete exact independent review, checks,
+real merge preserving incoming ancestry, scoped publication and receiving receipt.
+Use existing canonical writer/owner epoch; preserve foreign bytes.
+Mathematics first, numerical tests/formalization later. Poisson is only a candidate:
+compare mechanisms for Cov(A)>=Gram(B) before selection. No new mathematical hunt
+or numerical campaign is commissioned by this skill delivery.
+
+## Existing work
+PR14_SKILL_REVIEW_20260914 is assigned to /root/pr14_skill_review; launch pending.
+Isolated exact candidate: /home/chirurgie/.cache/q3-pr14-20260914.
+Report: /home/chirurgie/.cache/q3-pr14-review-20260914.md.
+Previous six native children completed. Owner01a084f4/install9afdf2bf/epoch1 unchanged.
+App goal usageLimited unchanged; current explicit user turn authorizes this scoped work.
+
+## Do not repeat
+Do not repeat Linux repair, prior Mac merge, analytical review, confirmed pushes,
+completed searches or fresh index rebuilds. No goal restart or proof admission.
+Preserve full theta, complex rows, weights, tails, boundaries and negative controls.
+A4 is equivalent to the unpaid sign; renaming it is not source-sign progress.
+
+## Integration remaining
+PR14 exact three files: .agents/skills/alias-hunt/SKILL.md and
+docs/Codex/LINUX_HANDOFF_2026-09-14_SEMANTIC_COMPENSATION.md plus .sha256.
+Skill208lines SHA256 d31e1ca5cbf6d8529f222335a6c90fdf6471b9b85daa22fae7e8a0b6c2fcd398.
+Manifest SHA256 805a3e7367e9ac596fc563bcd447ada46c8124841dc284f7b108ecfee9a03453.
+Canonical skill still old127c; review/integration/publication/reread pending.
+The handoff's Poisson recommendation is superseded by owner's comparison correction.
+Six foreign literature files and .codex/config.toml remain excluded.
+Confirmation-only checkpoints need no recursive publication. Seven old isolated
+wiring-test failures remain baseline debt, not acceptance criteria for this skill.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-206-bd71ba512d25b8061f3335486e4a5c2fa49d79826182ff052e4f305822b6fb4e","kind":"resume","revision":206,"sha256":"bd71ba512d25b8061f3335486e4a5c2fa49d79826182ff052e4f305822b6fb4e","size":7178} -->
+````text
+---
+schema: q3_resume.v2
+revision: 206
+observed_at: '2026-09-14T17:09:39.139409+00:00'
+previous_sha256: 43f6081cbf92fa23d364a78af40dcd73624961e096253d276ffc05b615729908
+owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 85f6c5707441055ffc72747a54e68a7e24ef9660
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: &id001 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id006
+    subject: &id003
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: *id001
+    state: DONE
+    evidence: &id004
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: &id005 e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: *id002
+  request_review:
+    subject: *id003
+    state: DONE
+    evidence: *id004
+    source_sha256: *id005
+    checked_by: /root/slack_verdict_check
+  delivery: *id006
+  receipt: &id010
+    subject: &id008
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: &id007 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id009
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: *id005
+    checked_by: *id002
+  independent_review:
+    subject: *id008
+    state: DONE
+    evidence: *id009
+    source_sha256: *id005
+    checked_by: /root/density_verdict_check
+  parent_check: *id010
+  acceptance: *id010
+  publication: *id010
+operation:
+  kind: ASSIGN
+  state: INTENT
+  id: PR14_SKILL_REVIEW_LAUNCH_20260914
+  evidence: []
+  subject:
+    kind: ASSIGNMENT
+    id: PR14_SKILL_REVIEW_20260914
+    sha256: 45ca55d7ad6399b063d057574c7762dd6846a840be980bd39b496f1dab97d881
+  command: agent-launch
+  inputs:
+    .agents/skills/alias-hunt/SKILL.md: 127cfec8e331b6c200774c19d9c738dab6eef32eb8efdd0d8400c5178b35e21b
+    docs/CODEX_CONTROL.md: d4392bf72010c2f48407cc7c5b1dd8d9549e9c734e50818682466b586f29f4e5
+    docs/Codex/GOAL.md: 043c082c3e4a42daee01fe4673ed8f755ac64e13b780a406b606d5e49b6577d0
+    docs/Codex/PLAN_2026-09-13_REQUIRED_MECHANISM_NODE.md: 25debce24e6797588415dec9b7ff4cca122b74c19fb51156ba721032791365fe
+    docs/Codex/REPORT_2026-09-14_SCHUR_REPEATABILITY.md: fe737941236b24c67bee7803a38014660698e852b2e61bc54f58672efb494190
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+ownership:
+  installation_ref: 9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4
+  epoch: 1
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Exact theorem/consumer edge remains unbound.
+Latest source: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
+Raw two-node positivity is not all-rank positivity. Checked identity:
+S_a[c]/D_a = Var_mu(A_c)-E_mu|B_c|^2; comparison covariance is strictly positive
+for distinct non-anchor theta nodes. Full residual sign and all-row A4 remain OPEN.
+Analytic note: docs/session_protocols/team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin
+Review: docs/session_protocols/team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin
+
+## Confirmed and candidate results
+Linux repair/Mac history5987b887 integration and semantic refresh completed.
+Checked analytical evidence published at85f6c5707441055ffc72747a54e68a7e24ef9660.
+New PR14 source fe1044cb45356fff684fc99c042a2354bfad17fd is two commits ahead.
+All15 manifest hashes and exact3 changed file blobs verified. This is skill guidance,
+not new mathematics or implementation of the proposed runtime dispatch gate.
+
+## Next action
+Owner explicitly requested PR14 integration, reread installed SKILL.md, report its
+hash and current-task rule application. Complete exact independent review, checks,
+real merge preserving incoming ancestry, scoped publication and receiving receipt.
+Use existing canonical writer/owner epoch; preserve foreign bytes.
+Mathematics first, numerical tests/formalization later. Poisson is only a candidate:
+compare mechanisms for Cov(A)>=Gram(B) before selection. No new mathematical hunt
+or numerical campaign is commissioned by this skill delivery.
+
+## Existing work
+PR14_SKILL_REVIEW_20260914 is assigned to /root/pr14_skill_review; launch pending.
+Isolated exact candidate: /home/chirurgie/.cache/q3-pr14-20260914.
+Report: /home/chirurgie/.cache/q3-pr14-review-20260914.md.
+Previous six native children completed. Owner01a084f4/install9afdf2bf/epoch1 unchanged.
+App goal usageLimited unchanged; current explicit user turn authorizes this scoped work.
+
+## Do not repeat
+Do not repeat Linux repair, prior Mac merge, analytical review, confirmed pushes,
+completed searches or fresh index rebuilds. No goal restart or proof admission.
+Preserve full theta, complex rows, weights, tails, boundaries and negative controls.
+A4 is equivalent to the unpaid sign; renaming it is not source-sign progress.
+
+## Integration remaining
+PR14 exact three files: .agents/skills/alias-hunt/SKILL.md and
+docs/Codex/LINUX_HANDOFF_2026-09-14_SEMANTIC_COMPENSATION.md plus .sha256.
+Skill208lines SHA256 d31e1ca5cbf6d8529f222335a6c90fdf6471b9b85daa22fae7e8a0b6c2fcd398.
+Manifest SHA256 805a3e7367e9ac596fc563bcd447ada46c8124841dc284f7b108ecfee9a03453.
+Canonical skill still old127c; review/integration/publication/reread pending.
+The handoff's Poisson recommendation is superseded by owner's comparison correction.
+Six foreign literature files and .codex/config.toml remain excluded.
+Confirmation-only checkpoints need no recursive publication. Seven old isolated
+wiring-test failures remain baseline debt, not acceptance criteria for this skill.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-207-d519523636ffd3dd0c5192a2129b2953ec3d54f4b3b44c5b167e0571b7dfb77f","kind":"intent","revision":207,"sha256":"d519523636ffd3dd0c5192a2129b2953ec3d54f4b3b44c5b167e0571b7dfb77f","size":7398} -->
+````text
+---
+schema: q3_resume.v2
+revision: 207
+observed_at: '2026-09-14T17:14:05.006348+00:00'
+previous_sha256: bd71ba512d25b8061f3335486e4a5c2fa49d79826182ff052e4f305822b6fb4e
+owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 85f6c5707441055ffc72747a54e68a7e24ef9660
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: &id001 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id006
+    subject: &id003
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: *id001
+    state: DONE
+    evidence: &id004
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: &id005 e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: *id002
+  request_review:
+    subject: *id003
+    state: DONE
+    evidence: *id004
+    source_sha256: *id005
+    checked_by: /root/slack_verdict_check
+  delivery: *id006
+  receipt: &id010
+    subject: &id008
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: &id007 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id009
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: *id005
+    checked_by: *id002
+  independent_review:
+    subject: *id008
+    state: DONE
+    evidence: *id009
+    source_sha256: *id005
+    checked_by: /root/density_verdict_check
+  parent_check: *id010
+  acceptance: *id010
+  publication: *id010
+operation:
+  kind: ASSIGN
+  state: CONFIRMED
+  id: PR14_SKILL_REVIEW_LAUNCH_20260914
+  evidence:
+  - docs/session_protocols/team-evidence-a117e9ac183f5e6fe5ba0d522a802f8716be2c1f0fa32c624214786fa18fd4ed.bin
+  - docs/session_protocols/team-evidence-2112f24dd5b4e5014153ebe1436611489907e0ee3135ba7aa0a5ffafba2d1d5b.bin
+  subject:
+    kind: ASSIGNMENT
+    id: PR14_SKILL_REVIEW_20260914
+    sha256: 45ca55d7ad6399b063d057574c7762dd6846a840be980bd39b496f1dab97d881
+  command: agent-launch
+  inputs:
+    .agents/skills/alias-hunt/SKILL.md: 127cfec8e331b6c200774c19d9c738dab6eef32eb8efdd0d8400c5178b35e21b
+    docs/CODEX_CONTROL.md: d4392bf72010c2f48407cc7c5b1dd8d9549e9c734e50818682466b586f29f4e5
+    docs/Codex/GOAL.md: 043c082c3e4a42daee01fe4673ed8f755ac64e13b780a406b606d5e49b6577d0
+    docs/Codex/PLAN_2026-09-13_REQUIRED_MECHANISM_NODE.md: 25debce24e6797588415dec9b7ff4cca122b74c19fb51156ba721032791365fe
+    docs/Codex/REPORT_2026-09-14_SCHUR_REPEATABILITY.md: fe737941236b24c67bee7803a38014660698e852b2e61bc54f58672efb494190
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+ownership:
+  installation_ref: 9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4
+  epoch: 1
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Exact theorem/consumer edge remains unbound.
+Latest source: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
+Raw two-node positivity is not all-rank positivity. Checked identity:
+S_a[c]/D_a = Var_mu(A_c)-E_mu|B_c|^2; comparison covariance is strictly positive
+for distinct non-anchor theta nodes. Full residual sign and all-row A4 remain OPEN.
+Analytic note: docs/session_protocols/team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin
+Review: docs/session_protocols/team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin
+
+## Confirmed and candidate results
+Linux repair/Mac history5987b887 integration and semantic refresh completed.
+Checked analytical evidence published at85f6c5707441055ffc72747a54e68a7e24ef9660.
+New PR14 source fe1044cb45356fff684fc99c042a2354bfad17fd is two commits ahead.
+All15 manifest hashes and exact3 changed file blobs verified. This is skill guidance,
+not new mathematics or implementation of the proposed runtime dispatch gate.
+
+## Next action
+Owner explicitly requested PR14 integration, reread installed SKILL.md, report its
+hash and current-task rule application. Complete exact independent review, checks,
+real merge preserving incoming ancestry, scoped publication and receiving receipt.
+Use existing canonical writer/owner epoch; preserve foreign bytes.
+Mathematics first, numerical tests/formalization later. Poisson is only a candidate:
+compare mechanisms for Cov(A)>=Gram(B) before selection. No new mathematical hunt
+or numerical campaign is commissioned by this skill delivery.
+
+## Existing work
+PR14_SKILL_REVIEW_20260914 is assigned to /root/pr14_skill_review; launch pending.
+Isolated exact candidate: /home/chirurgie/.cache/q3-pr14-20260914.
+Report: /home/chirurgie/.cache/q3-pr14-review-20260914.md.
+Previous six native children completed. Owner01a084f4/install9afdf2bf/epoch1 unchanged.
+App goal usageLimited unchanged; current explicit user turn authorizes this scoped work.
+
+## Do not repeat
+Do not repeat Linux repair, prior Mac merge, analytical review, confirmed pushes,
+completed searches or fresh index rebuilds. No goal restart or proof admission.
+Preserve full theta, complex rows, weights, tails, boundaries and negative controls.
+A4 is equivalent to the unpaid sign; renaming it is not source-sign progress.
+
+## Integration remaining
+PR14 exact three files: .agents/skills/alias-hunt/SKILL.md and
+docs/Codex/LINUX_HANDOFF_2026-09-14_SEMANTIC_COMPENSATION.md plus .sha256.
+Skill208lines SHA256 d31e1ca5cbf6d8529f222335a6c90fdf6471b9b85daa22fae7e8a0b6c2fcd398.
+Manifest SHA256 805a3e7367e9ac596fc563bcd447ada46c8124841dc284f7b108ecfee9a03453.
+Canonical skill still old127c; review/integration/publication/reread pending.
+The handoff's Poisson recommendation is superseded by owner's comparison correction.
+Six foreign literature files and .codex/config.toml remain excluded.
+Confirmation-only checkpoints need no recursive publication. Seven old isolated
+wiring-test failures remain baseline debt, not acceptance criteria for this skill.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-207-d519523636ffd3dd0c5192a2129b2953ec3d54f4b3b44c5b167e0571b7dfb77f","kind":"resume","revision":207,"sha256":"d519523636ffd3dd0c5192a2129b2953ec3d54f4b3b44c5b167e0571b7dfb77f","size":7398} -->
+````text
+---
+schema: q3_resume.v2
+revision: 207
+observed_at: '2026-09-14T17:14:05.006348+00:00'
+previous_sha256: bd71ba512d25b8061f3335486e4a5c2fa49d79826182ff052e4f305822b6fb4e
+owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 85f6c5707441055ffc72747a54e68a7e24ef9660
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: &id001 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id006
+    subject: &id003
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: *id001
+    state: DONE
+    evidence: &id004
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: &id005 e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: *id002
+  request_review:
+    subject: *id003
+    state: DONE
+    evidence: *id004
+    source_sha256: *id005
+    checked_by: /root/slack_verdict_check
+  delivery: *id006
+  receipt: &id010
+    subject: &id008
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: &id007 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id009
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: *id005
+    checked_by: *id002
+  independent_review:
+    subject: *id008
+    state: DONE
+    evidence: *id009
+    source_sha256: *id005
+    checked_by: /root/density_verdict_check
+  parent_check: *id010
+  acceptance: *id010
+  publication: *id010
+operation:
+  kind: ASSIGN
+  state: CONFIRMED
+  id: PR14_SKILL_REVIEW_LAUNCH_20260914
+  evidence:
+  - docs/session_protocols/team-evidence-a117e9ac183f5e6fe5ba0d522a802f8716be2c1f0fa32c624214786fa18fd4ed.bin
+  - docs/session_protocols/team-evidence-2112f24dd5b4e5014153ebe1436611489907e0ee3135ba7aa0a5ffafba2d1d5b.bin
+  subject:
+    kind: ASSIGNMENT
+    id: PR14_SKILL_REVIEW_20260914
+    sha256: 45ca55d7ad6399b063d057574c7762dd6846a840be980bd39b496f1dab97d881
+  command: agent-launch
+  inputs:
+    .agents/skills/alias-hunt/SKILL.md: 127cfec8e331b6c200774c19d9c738dab6eef32eb8efdd0d8400c5178b35e21b
+    docs/CODEX_CONTROL.md: d4392bf72010c2f48407cc7c5b1dd8d9549e9c734e50818682466b586f29f4e5
+    docs/Codex/GOAL.md: 043c082c3e4a42daee01fe4673ed8f755ac64e13b780a406b606d5e49b6577d0
+    docs/Codex/PLAN_2026-09-13_REQUIRED_MECHANISM_NODE.md: 25debce24e6797588415dec9b7ff4cca122b74c19fb51156ba721032791365fe
+    docs/Codex/REPORT_2026-09-14_SCHUR_REPEATABILITY.md: fe737941236b24c67bee7803a38014660698e852b2e61bc54f58672efb494190
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+ownership:
+  installation_ref: 9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4
+  epoch: 1
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Exact theorem/consumer edge remains unbound.
+Latest source: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
+Raw two-node positivity is not all-rank positivity. Checked identity:
+S_a[c]/D_a = Var_mu(A_c)-E_mu|B_c|^2; comparison covariance is strictly positive
+for distinct non-anchor theta nodes. Full residual sign and all-row A4 remain OPEN.
+Analytic note: docs/session_protocols/team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin
+Review: docs/session_protocols/team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin
+
+## Confirmed and candidate results
+Linux repair/Mac history5987b887 integration and semantic refresh completed.
+Checked analytical evidence published at85f6c5707441055ffc72747a54e68a7e24ef9660.
+New PR14 source fe1044cb45356fff684fc99c042a2354bfad17fd is two commits ahead.
+All15 manifest hashes and exact3 changed file blobs verified. This is skill guidance,
+not new mathematics or implementation of the proposed runtime dispatch gate.
+
+## Next action
+Owner explicitly requested PR14 integration, reread installed SKILL.md, report its
+hash and current-task rule application. Complete exact independent review, checks,
+real merge preserving incoming ancestry, scoped publication and receiving receipt.
+Use existing canonical writer/owner epoch; preserve foreign bytes.
+Mathematics first, numerical tests/formalization later. Poisson is only a candidate:
+compare mechanisms for Cov(A)>=Gram(B) before selection. No new mathematical hunt
+or numerical campaign is commissioned by this skill delivery.
+
+## Existing work
+PR14_SKILL_REVIEW_20260914 is assigned to /root/pr14_skill_review; launch pending.
+Isolated exact candidate: /home/chirurgie/.cache/q3-pr14-20260914.
+Report: /home/chirurgie/.cache/q3-pr14-review-20260914.md.
+Previous six native children completed. Owner01a084f4/install9afdf2bf/epoch1 unchanged.
+App goal usageLimited unchanged; current explicit user turn authorizes this scoped work.
+
+## Do not repeat
+Do not repeat Linux repair, prior Mac merge, analytical review, confirmed pushes,
+completed searches or fresh index rebuilds. No goal restart or proof admission.
+Preserve full theta, complex rows, weights, tails, boundaries and negative controls.
+A4 is equivalent to the unpaid sign; renaming it is not source-sign progress.
+
+## Integration remaining
+PR14 exact three files: .agents/skills/alias-hunt/SKILL.md and
+docs/Codex/LINUX_HANDOFF_2026-09-14_SEMANTIC_COMPENSATION.md plus .sha256.
+Skill208lines SHA256 d31e1ca5cbf6d8529f222335a6c90fdf6471b9b85daa22fae7e8a0b6c2fcd398.
+Manifest SHA256 805a3e7367e9ac596fc563bcd447ada46c8124841dc284f7b108ecfee9a03453.
+Canonical skill still old127c; review/integration/publication/reread pending.
+The handoff's Poisson recommendation is superseded by owner's comparison correction.
+Six foreign literature files and .codex/config.toml remain excluded.
+Confirmation-only checkpoints need no recursive publication. Seven old isolated
+wiring-test failures remain baseline debt, not acceptance criteria for this skill.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-208-df9b2655f8ca10bf3ebff723d4bbe1903b20eef5b6bd09dd139e8dad29391aa2","kind":"intent","revision":208,"sha256":"df9b2655f8ca10bf3ebff723d4bbe1903b20eef5b6bd09dd139e8dad29391aa2","size":6688} -->
+````text
+---
+schema: q3_resume.v2
+revision: 208
+observed_at: '2026-09-14T17:23:38.046087+00:00'
+previous_sha256: d519523636ffd3dd0c5192a2129b2953ec3d54f4b3b44c5b167e0571b7dfb77f
+owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 85f6c5707441055ffc72747a54e68a7e24ef9660
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: &id001 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id006
+    subject: &id003
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: *id001
+    state: DONE
+    evidence: &id004
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: &id005 e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: *id002
+  request_review:
+    subject: *id003
+    state: DONE
+    evidence: *id004
+    source_sha256: *id005
+    checked_by: /root/slack_verdict_check
+  delivery: *id006
+  receipt: &id010
+    subject: &id008
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: &id007 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id009
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: *id005
+    checked_by: *id002
+  independent_review:
+    subject: *id008
+    state: DONE
+    evidence: *id009
+    source_sha256: *id005
+    checked_by: /root/density_verdict_check
+  parent_check: *id010
+  acceptance: *id010
+  publication: *id010
+operation:
+  kind: COMPUTE
+  state: INTENT
+  id: PR14_SKILL_REVIEW_RESULT_20260914_INTAKE
+  evidence: []
+  subject:
+    kind: REPAIR
+    id: PR14_SKILL_REVIEW_RESULT_20260914_INTAKE
+    sha256: 20d1905433492b55dcdb9fc52ad5a406e8d7f2324f5a0a6d5964750c89a18759
+  command: workflow-team-integrate-candidate
+  inputs: {}
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+ownership:
+  installation_ref: 9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4
+  epoch: 1
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Exact theorem/consumer edge remains unbound.
+Latest source: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
+Raw two-node positivity is not all-rank positivity. Checked identity:
+S_a[c]/D_a = Var_mu(A_c)-E_mu|B_c|^2; comparison covariance is strictly positive
+for distinct non-anchor theta nodes. Full residual sign and all-row A4 remain OPEN.
+Analytic note: docs/session_protocols/team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin
+Review: docs/session_protocols/team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin
+
+## Confirmed and candidate results
+Linux repair/Mac history5987b887 integration and semantic refresh completed.
+Checked analytical evidence published at85f6c5707441055ffc72747a54e68a7e24ef9660.
+New PR14 source fe1044cb45356fff684fc99c042a2354bfad17fd is two commits ahead.
+All15 manifest hashes and exact3 changed file blobs verified. This is skill guidance,
+not new mathematics or implementation of the proposed runtime dispatch gate.
+
+## Next action
+Owner explicitly requested PR14 integration, reread installed SKILL.md, report its
+hash and current-task rule application. Complete exact independent review, checks,
+real merge preserving incoming ancestry, scoped publication and receiving receipt.
+Use existing canonical writer/owner epoch; preserve foreign bytes.
+Mathematics first, numerical tests/formalization later. Poisson is only a candidate:
+compare mechanisms for Cov(A)>=Gram(B) before selection. No new mathematical hunt
+or numerical campaign is commissioned by this skill delivery.
+
+## Existing work
+PR14_SKILL_REVIEW_20260914 is assigned to /root/pr14_skill_review; launch pending.
+Isolated exact candidate: /home/chirurgie/.cache/q3-pr14-20260914.
+Report: /home/chirurgie/.cache/q3-pr14-review-20260914.md.
+Previous six native children completed. Owner01a084f4/install9afdf2bf/epoch1 unchanged.
+App goal usageLimited unchanged; current explicit user turn authorizes this scoped work.
+
+## Do not repeat
+Do not repeat Linux repair, prior Mac merge, analytical review, confirmed pushes,
+completed searches or fresh index rebuilds. No goal restart or proof admission.
+Preserve full theta, complex rows, weights, tails, boundaries and negative controls.
+A4 is equivalent to the unpaid sign; renaming it is not source-sign progress.
+
+## Integration remaining
+PR14 exact three files: .agents/skills/alias-hunt/SKILL.md and
+docs/Codex/LINUX_HANDOFF_2026-09-14_SEMANTIC_COMPENSATION.md plus .sha256.
+Skill208lines SHA256 d31e1ca5cbf6d8529f222335a6c90fdf6471b9b85daa22fae7e8a0b6c2fcd398.
+Manifest SHA256 805a3e7367e9ac596fc563bcd447ada46c8124841dc284f7b108ecfee9a03453.
+Canonical skill still old127c; review/integration/publication/reread pending.
+The handoff's Poisson recommendation is superseded by owner's comparison correction.
+Six foreign literature files and .codex/config.toml remain excluded.
+Confirmation-only checkpoints need no recursive publication. Seven old isolated
+wiring-test failures remain baseline debt, not acceptance criteria for this skill.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-208-df9b2655f8ca10bf3ebff723d4bbe1903b20eef5b6bd09dd139e8dad29391aa2","kind":"resume","revision":208,"sha256":"df9b2655f8ca10bf3ebff723d4bbe1903b20eef5b6bd09dd139e8dad29391aa2","size":6688} -->
+````text
+---
+schema: q3_resume.v2
+revision: 208
+observed_at: '2026-09-14T17:23:38.046087+00:00'
+previous_sha256: d519523636ffd3dd0c5192a2129b2953ec3d54f4b3b44c5b167e0571b7dfb77f
+owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 85f6c5707441055ffc72747a54e68a7e24ef9660
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: &id001 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id006
+    subject: &id003
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: *id001
+    state: DONE
+    evidence: &id004
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: &id005 e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: *id002
+  request_review:
+    subject: *id003
+    state: DONE
+    evidence: *id004
+    source_sha256: *id005
+    checked_by: /root/slack_verdict_check
+  delivery: *id006
+  receipt: &id010
+    subject: &id008
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: &id007 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id009
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: *id005
+    checked_by: *id002
+  independent_review:
+    subject: *id008
+    state: DONE
+    evidence: *id009
+    source_sha256: *id005
+    checked_by: /root/density_verdict_check
+  parent_check: *id010
+  acceptance: *id010
+  publication: *id010
+operation:
+  kind: COMPUTE
+  state: INTENT
+  id: PR14_SKILL_REVIEW_RESULT_20260914_INTAKE
+  evidence: []
+  subject:
+    kind: REPAIR
+    id: PR14_SKILL_REVIEW_RESULT_20260914_INTAKE
+    sha256: 20d1905433492b55dcdb9fc52ad5a406e8d7f2324f5a0a6d5964750c89a18759
+  command: workflow-team-integrate-candidate
+  inputs: {}
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+ownership:
+  installation_ref: 9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4
+  epoch: 1
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Exact theorem/consumer edge remains unbound.
+Latest source: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
+Raw two-node positivity is not all-rank positivity. Checked identity:
+S_a[c]/D_a = Var_mu(A_c)-E_mu|B_c|^2; comparison covariance is strictly positive
+for distinct non-anchor theta nodes. Full residual sign and all-row A4 remain OPEN.
+Analytic note: docs/session_protocols/team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin
+Review: docs/session_protocols/team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin
+
+## Confirmed and candidate results
+Linux repair/Mac history5987b887 integration and semantic refresh completed.
+Checked analytical evidence published at85f6c5707441055ffc72747a54e68a7e24ef9660.
+New PR14 source fe1044cb45356fff684fc99c042a2354bfad17fd is two commits ahead.
+All15 manifest hashes and exact3 changed file blobs verified. This is skill guidance,
+not new mathematics or implementation of the proposed runtime dispatch gate.
+
+## Next action
+Owner explicitly requested PR14 integration, reread installed SKILL.md, report its
+hash and current-task rule application. Complete exact independent review, checks,
+real merge preserving incoming ancestry, scoped publication and receiving receipt.
+Use existing canonical writer/owner epoch; preserve foreign bytes.
+Mathematics first, numerical tests/formalization later. Poisson is only a candidate:
+compare mechanisms for Cov(A)>=Gram(B) before selection. No new mathematical hunt
+or numerical campaign is commissioned by this skill delivery.
+
+## Existing work
+PR14_SKILL_REVIEW_20260914 is assigned to /root/pr14_skill_review; launch pending.
+Isolated exact candidate: /home/chirurgie/.cache/q3-pr14-20260914.
+Report: /home/chirurgie/.cache/q3-pr14-review-20260914.md.
+Previous six native children completed. Owner01a084f4/install9afdf2bf/epoch1 unchanged.
+App goal usageLimited unchanged; current explicit user turn authorizes this scoped work.
+
+## Do not repeat
+Do not repeat Linux repair, prior Mac merge, analytical review, confirmed pushes,
+completed searches or fresh index rebuilds. No goal restart or proof admission.
+Preserve full theta, complex rows, weights, tails, boundaries and negative controls.
+A4 is equivalent to the unpaid sign; renaming it is not source-sign progress.
+
+## Integration remaining
+PR14 exact three files: .agents/skills/alias-hunt/SKILL.md and
+docs/Codex/LINUX_HANDOFF_2026-09-14_SEMANTIC_COMPENSATION.md plus .sha256.
+Skill208lines SHA256 d31e1ca5cbf6d8529f222335a6c90fdf6471b9b85daa22fae7e8a0b6c2fcd398.
+Manifest SHA256 805a3e7367e9ac596fc563bcd447ada46c8124841dc284f7b108ecfee9a03453.
+Canonical skill still old127c; review/integration/publication/reread pending.
+The handoff's Poisson recommendation is superseded by owner's comparison correction.
+Six foreign literature files and .codex/config.toml remain excluded.
+Confirmation-only checkpoints need no recursive publication. Seven old isolated
+wiring-test failures remain baseline debt, not acceptance criteria for this skill.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-209-33dc9c7733f7fdbe2e898d2a7ea831cc4e98ab54fe2734055d16ef59479176e7","kind":"intent","revision":209,"sha256":"33dc9c7733f7fdbe2e898d2a7ea831cc4e98ab54fe2734055d16ef59479176e7","size":7018} -->
+````text
+---
+schema: q3_resume.v2
+revision: 209
+observed_at: '2026-09-14T17:23:59.087991+00:00'
+previous_sha256: df9b2655f8ca10bf3ebff723d4bbe1903b20eef5b6bd09dd139e8dad29391aa2
+owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 85f6c5707441055ffc72747a54e68a7e24ef9660
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: &id001 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id006
+    subject: &id003
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: *id001
+    state: DONE
+    evidence: &id004
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: &id005 e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: *id002
+  request_review:
+    subject: *id003
+    state: DONE
+    evidence: *id004
+    source_sha256: *id005
+    checked_by: /root/slack_verdict_check
+  delivery: *id006
+  receipt: &id010
+    subject: &id008
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: &id007 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id009
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: *id005
+    checked_by: *id002
+  independent_review:
+    subject: *id008
+    state: DONE
+    evidence: *id009
+    source_sha256: *id005
+    checked_by: /root/density_verdict_check
+  parent_check: *id010
+  acceptance: *id010
+  publication: *id010
+operation:
+  kind: COMPUTE
+  state: CONFIRMED
+  id: PR14_SKILL_REVIEW_RESULT_20260914_INTAKE
+  evidence:
+  - docs/session_protocols/team-evidence-0210f49e0477cb42ddffef2aa7c7f628f0a581a99336092050b2351dafff3002.bin
+  - docs/session_protocols/team-evidence-1bff3a285cd4eeb1667170f74151fa4fef643282915e98e4fd59b03732a474ac.bin
+  - docs/session_protocols/team-evidence-6e1f3e7023a6f41cd2b2af0be5b7559f7b5e6a78b93596dba221a0e7fd9d5853.bin
+  subject:
+    kind: REPAIR
+    id: PR14_SKILL_REVIEW_RESULT_20260914_INTAKE
+    sha256: 20d1905433492b55dcdb9fc52ad5a406e8d7f2324f5a0a6d5964750c89a18759
+  command: workflow-team-integrate-candidate
+  inputs: {}
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+ownership:
+  installation_ref: 9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4
+  epoch: 1
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Exact theorem/consumer edge remains unbound.
+Latest source: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
+Raw two-node positivity is not all-rank positivity. Checked identity:
+S_a[c]/D_a = Var_mu(A_c)-E_mu|B_c|^2; comparison covariance is strictly positive
+for distinct non-anchor theta nodes. Full residual sign and all-row A4 remain OPEN.
+Analytic note: docs/session_protocols/team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin
+Review: docs/session_protocols/team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin
+
+## Confirmed and candidate results
+Linux repair/Mac history5987b887 integration and semantic refresh completed.
+Checked analytical evidence published at85f6c5707441055ffc72747a54e68a7e24ef9660.
+New PR14 source fe1044cb45356fff684fc99c042a2354bfad17fd is two commits ahead.
+All15 manifest hashes and exact3 changed file blobs verified. This is skill guidance,
+not new mathematics or implementation of the proposed runtime dispatch gate.
+
+## Next action
+Owner explicitly requested PR14 integration, reread installed SKILL.md, report its
+hash and current-task rule application. Complete exact independent review, checks,
+real merge preserving incoming ancestry, scoped publication and receiving receipt.
+Use existing canonical writer/owner epoch; preserve foreign bytes.
+Mathematics first, numerical tests/formalization later. Poisson is only a candidate:
+compare mechanisms for Cov(A)>=Gram(B) before selection. No new mathematical hunt
+or numerical campaign is commissioned by this skill delivery.
+
+## Existing work
+PR14_SKILL_REVIEW_20260914 is assigned to /root/pr14_skill_review; launch pending.
+Isolated exact candidate: /home/chirurgie/.cache/q3-pr14-20260914.
+Report: /home/chirurgie/.cache/q3-pr14-review-20260914.md.
+Previous six native children completed. Owner01a084f4/install9afdf2bf/epoch1 unchanged.
+App goal usageLimited unchanged; current explicit user turn authorizes this scoped work.
+
+## Do not repeat
+Do not repeat Linux repair, prior Mac merge, analytical review, confirmed pushes,
+completed searches or fresh index rebuilds. No goal restart or proof admission.
+Preserve full theta, complex rows, weights, tails, boundaries and negative controls.
+A4 is equivalent to the unpaid sign; renaming it is not source-sign progress.
+
+## Integration remaining
+PR14 exact three files: .agents/skills/alias-hunt/SKILL.md and
+docs/Codex/LINUX_HANDOFF_2026-09-14_SEMANTIC_COMPENSATION.md plus .sha256.
+Skill208lines SHA256 d31e1ca5cbf6d8529f222335a6c90fdf6471b9b85daa22fae7e8a0b6c2fcd398.
+Manifest SHA256 805a3e7367e9ac596fc563bcd447ada46c8124841dc284f7b108ecfee9a03453.
+Canonical skill still old127c; review/integration/publication/reread pending.
+The handoff's Poisson recommendation is superseded by owner's comparison correction.
+Six foreign literature files and .codex/config.toml remain excluded.
+Confirmation-only checkpoints need no recursive publication. Seven old isolated
+wiring-test failures remain baseline debt, not acceptance criteria for this skill.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-209-33dc9c7733f7fdbe2e898d2a7ea831cc4e98ab54fe2734055d16ef59479176e7","kind":"resume","revision":209,"sha256":"33dc9c7733f7fdbe2e898d2a7ea831cc4e98ab54fe2734055d16ef59479176e7","size":7018} -->
+````text
+---
+schema: q3_resume.v2
+revision: 209
+observed_at: '2026-09-14T17:23:59.087991+00:00'
+previous_sha256: df9b2655f8ca10bf3ebff723d4bbe1903b20eef5b6bd09dd139e8dad29391aa2
+owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 85f6c5707441055ffc72747a54e68a7e24ef9660
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: &id001 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id006
+    subject: &id003
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: *id001
+    state: DONE
+    evidence: &id004
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: &id005 e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: *id002
+  request_review:
+    subject: *id003
+    state: DONE
+    evidence: *id004
+    source_sha256: *id005
+    checked_by: /root/slack_verdict_check
+  delivery: *id006
+  receipt: &id010
+    subject: &id008
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: &id007 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id009
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: *id005
+    checked_by: *id002
+  independent_review:
+    subject: *id008
+    state: DONE
+    evidence: *id009
+    source_sha256: *id005
+    checked_by: /root/density_verdict_check
+  parent_check: *id010
+  acceptance: *id010
+  publication: *id010
+operation:
+  kind: COMPUTE
+  state: CONFIRMED
+  id: PR14_SKILL_REVIEW_RESULT_20260914_INTAKE
+  evidence:
+  - docs/session_protocols/team-evidence-0210f49e0477cb42ddffef2aa7c7f628f0a581a99336092050b2351dafff3002.bin
+  - docs/session_protocols/team-evidence-1bff3a285cd4eeb1667170f74151fa4fef643282915e98e4fd59b03732a474ac.bin
+  - docs/session_protocols/team-evidence-6e1f3e7023a6f41cd2b2af0be5b7559f7b5e6a78b93596dba221a0e7fd9d5853.bin
+  subject:
+    kind: REPAIR
+    id: PR14_SKILL_REVIEW_RESULT_20260914_INTAKE
+    sha256: 20d1905433492b55dcdb9fc52ad5a406e8d7f2324f5a0a6d5964750c89a18759
+  command: workflow-team-integrate-candidate
+  inputs: {}
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+ownership:
+  installation_ref: 9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4
+  epoch: 1
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Exact theorem/consumer edge remains unbound.
+Latest source: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
+Raw two-node positivity is not all-rank positivity. Checked identity:
+S_a[c]/D_a = Var_mu(A_c)-E_mu|B_c|^2; comparison covariance is strictly positive
+for distinct non-anchor theta nodes. Full residual sign and all-row A4 remain OPEN.
+Analytic note: docs/session_protocols/team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin
+Review: docs/session_protocols/team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin
+
+## Confirmed and candidate results
+Linux repair/Mac history5987b887 integration and semantic refresh completed.
+Checked analytical evidence published at85f6c5707441055ffc72747a54e68a7e24ef9660.
+New PR14 source fe1044cb45356fff684fc99c042a2354bfad17fd is two commits ahead.
+All15 manifest hashes and exact3 changed file blobs verified. This is skill guidance,
+not new mathematics or implementation of the proposed runtime dispatch gate.
+
+## Next action
+Owner explicitly requested PR14 integration, reread installed SKILL.md, report its
+hash and current-task rule application. Complete exact independent review, checks,
+real merge preserving incoming ancestry, scoped publication and receiving receipt.
+Use existing canonical writer/owner epoch; preserve foreign bytes.
+Mathematics first, numerical tests/formalization later. Poisson is only a candidate:
+compare mechanisms for Cov(A)>=Gram(B) before selection. No new mathematical hunt
+or numerical campaign is commissioned by this skill delivery.
+
+## Existing work
+PR14_SKILL_REVIEW_20260914 is assigned to /root/pr14_skill_review; launch pending.
+Isolated exact candidate: /home/chirurgie/.cache/q3-pr14-20260914.
+Report: /home/chirurgie/.cache/q3-pr14-review-20260914.md.
+Previous six native children completed. Owner01a084f4/install9afdf2bf/epoch1 unchanged.
+App goal usageLimited unchanged; current explicit user turn authorizes this scoped work.
+
+## Do not repeat
+Do not repeat Linux repair, prior Mac merge, analytical review, confirmed pushes,
+completed searches or fresh index rebuilds. No goal restart or proof admission.
+Preserve full theta, complex rows, weights, tails, boundaries and negative controls.
+A4 is equivalent to the unpaid sign; renaming it is not source-sign progress.
+
+## Integration remaining
+PR14 exact three files: .agents/skills/alias-hunt/SKILL.md and
+docs/Codex/LINUX_HANDOFF_2026-09-14_SEMANTIC_COMPENSATION.md plus .sha256.
+Skill208lines SHA256 d31e1ca5cbf6d8529f222335a6c90fdf6471b9b85daa22fae7e8a0b6c2fcd398.
+Manifest SHA256 805a3e7367e9ac596fc563bcd447ada46c8124841dc284f7b108ecfee9a03453.
+Canonical skill still old127c; review/integration/publication/reread pending.
+The handoff's Poisson recommendation is superseded by owner's comparison correction.
+Six foreign literature files and .codex/config.toml remain excluded.
+Confirmation-only checkpoints need no recursive publication. Seven old isolated
+wiring-test failures remain baseline debt, not acceptance criteria for this skill.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-210-d8159a06569d29223558d709dc30ddb5367d51cef3c496c6d14290e2f913a377","kind":"intent","revision":210,"sha256":"d8159a06569d29223558d709dc30ddb5367d51cef3c496c6d14290e2f913a377","size":6678} -->
+````text
+---
+schema: q3_resume.v2
+revision: 210
+observed_at: '2026-09-14T17:24:19.965351+00:00'
+previous_sha256: 33dc9c7733f7fdbe2e898d2a7ea831cc4e98ab54fe2734055d16ef59479176e7
+owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 85f6c5707441055ffc72747a54e68a7e24ef9660
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: &id001 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id006
+    subject: &id003
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: *id001
+    state: DONE
+    evidence: &id004
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: &id005 e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: *id002
+  request_review:
+    subject: *id003
+    state: DONE
+    evidence: *id004
+    source_sha256: *id005
+    checked_by: /root/slack_verdict_check
+  delivery: *id006
+  receipt: &id010
+    subject: &id008
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: &id007 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id009
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: *id005
+    checked_by: *id002
+  independent_review:
+    subject: *id008
+    state: DONE
+    evidence: *id009
+    source_sha256: *id005
+    checked_by: /root/density_verdict_check
+  parent_check: *id010
+  acceptance: *id010
+  publication: *id010
+operation:
+  kind: COMPUTE
+  state: INTENT
+  id: PR14_SKILL_PUBLICATION_20260914_MAP
+  evidence: []
+  subject:
+    kind: REPAIR
+    id: PR14_SKILL_PUBLICATION_20260914_MAP
+    sha256: 18cde7a4e7f3e0e37c99a1b4d2f96a5ea50ef986ee6e20ef77480edc89b9efbb
+  command: workflow-team-integrate-candidate
+  inputs: {}
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+ownership:
+  installation_ref: 9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4
+  epoch: 1
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Exact theorem/consumer edge remains unbound.
+Latest source: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
+Raw two-node positivity is not all-rank positivity. Checked identity:
+S_a[c]/D_a = Var_mu(A_c)-E_mu|B_c|^2; comparison covariance is strictly positive
+for distinct non-anchor theta nodes. Full residual sign and all-row A4 remain OPEN.
+Analytic note: docs/session_protocols/team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin
+Review: docs/session_protocols/team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin
+
+## Confirmed and candidate results
+Linux repair/Mac history5987b887 integration and semantic refresh completed.
+Checked analytical evidence published at85f6c5707441055ffc72747a54e68a7e24ef9660.
+New PR14 source fe1044cb45356fff684fc99c042a2354bfad17fd is two commits ahead.
+All15 manifest hashes and exact3 changed file blobs verified. This is skill guidance,
+not new mathematics or implementation of the proposed runtime dispatch gate.
+
+## Next action
+Owner explicitly requested PR14 integration, reread installed SKILL.md, report its
+hash and current-task rule application. Complete exact independent review, checks,
+real merge preserving incoming ancestry, scoped publication and receiving receipt.
+Use existing canonical writer/owner epoch; preserve foreign bytes.
+Mathematics first, numerical tests/formalization later. Poisson is only a candidate:
+compare mechanisms for Cov(A)>=Gram(B) before selection. No new mathematical hunt
+or numerical campaign is commissioned by this skill delivery.
+
+## Existing work
+PR14_SKILL_REVIEW_20260914 is assigned to /root/pr14_skill_review; launch pending.
+Isolated exact candidate: /home/chirurgie/.cache/q3-pr14-20260914.
+Report: /home/chirurgie/.cache/q3-pr14-review-20260914.md.
+Previous six native children completed. Owner01a084f4/install9afdf2bf/epoch1 unchanged.
+App goal usageLimited unchanged; current explicit user turn authorizes this scoped work.
+
+## Do not repeat
+Do not repeat Linux repair, prior Mac merge, analytical review, confirmed pushes,
+completed searches or fresh index rebuilds. No goal restart or proof admission.
+Preserve full theta, complex rows, weights, tails, boundaries and negative controls.
+A4 is equivalent to the unpaid sign; renaming it is not source-sign progress.
+
+## Integration remaining
+PR14 exact three files: .agents/skills/alias-hunt/SKILL.md and
+docs/Codex/LINUX_HANDOFF_2026-09-14_SEMANTIC_COMPENSATION.md plus .sha256.
+Skill208lines SHA256 d31e1ca5cbf6d8529f222335a6c90fdf6471b9b85daa22fae7e8a0b6c2fcd398.
+Manifest SHA256 805a3e7367e9ac596fc563bcd447ada46c8124841dc284f7b108ecfee9a03453.
+Canonical skill still old127c; review/integration/publication/reread pending.
+The handoff's Poisson recommendation is superseded by owner's comparison correction.
+Six foreign literature files and .codex/config.toml remain excluded.
+Confirmation-only checkpoints need no recursive publication. Seven old isolated
+wiring-test failures remain baseline debt, not acceptance criteria for this skill.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-210-d8159a06569d29223558d709dc30ddb5367d51cef3c496c6d14290e2f913a377","kind":"resume","revision":210,"sha256":"d8159a06569d29223558d709dc30ddb5367d51cef3c496c6d14290e2f913a377","size":6678} -->
+````text
+---
+schema: q3_resume.v2
+revision: 210
+observed_at: '2026-09-14T17:24:19.965351+00:00'
+previous_sha256: 33dc9c7733f7fdbe2e898d2a7ea831cc4e98ab54fe2734055d16ef59479176e7
+owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 85f6c5707441055ffc72747a54e68a7e24ef9660
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: &id001 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id006
+    subject: &id003
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: *id001
+    state: DONE
+    evidence: &id004
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: &id005 e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: *id002
+  request_review:
+    subject: *id003
+    state: DONE
+    evidence: *id004
+    source_sha256: *id005
+    checked_by: /root/slack_verdict_check
+  delivery: *id006
+  receipt: &id010
+    subject: &id008
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: &id007 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id009
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: *id005
+    checked_by: *id002
+  independent_review:
+    subject: *id008
+    state: DONE
+    evidence: *id009
+    source_sha256: *id005
+    checked_by: /root/density_verdict_check
+  parent_check: *id010
+  acceptance: *id010
+  publication: *id010
+operation:
+  kind: COMPUTE
+  state: INTENT
+  id: PR14_SKILL_PUBLICATION_20260914_MAP
+  evidence: []
+  subject:
+    kind: REPAIR
+    id: PR14_SKILL_PUBLICATION_20260914_MAP
+    sha256: 18cde7a4e7f3e0e37c99a1b4d2f96a5ea50ef986ee6e20ef77480edc89b9efbb
+  command: workflow-team-integrate-candidate
+  inputs: {}
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+ownership:
+  installation_ref: 9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4
+  epoch: 1
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Exact theorem/consumer edge remains unbound.
+Latest source: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
+Raw two-node positivity is not all-rank positivity. Checked identity:
+S_a[c]/D_a = Var_mu(A_c)-E_mu|B_c|^2; comparison covariance is strictly positive
+for distinct non-anchor theta nodes. Full residual sign and all-row A4 remain OPEN.
+Analytic note: docs/session_protocols/team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin
+Review: docs/session_protocols/team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin
+
+## Confirmed and candidate results
+Linux repair/Mac history5987b887 integration and semantic refresh completed.
+Checked analytical evidence published at85f6c5707441055ffc72747a54e68a7e24ef9660.
+New PR14 source fe1044cb45356fff684fc99c042a2354bfad17fd is two commits ahead.
+All15 manifest hashes and exact3 changed file blobs verified. This is skill guidance,
+not new mathematics or implementation of the proposed runtime dispatch gate.
+
+## Next action
+Owner explicitly requested PR14 integration, reread installed SKILL.md, report its
+hash and current-task rule application. Complete exact independent review, checks,
+real merge preserving incoming ancestry, scoped publication and receiving receipt.
+Use existing canonical writer/owner epoch; preserve foreign bytes.
+Mathematics first, numerical tests/formalization later. Poisson is only a candidate:
+compare mechanisms for Cov(A)>=Gram(B) before selection. No new mathematical hunt
+or numerical campaign is commissioned by this skill delivery.
+
+## Existing work
+PR14_SKILL_REVIEW_20260914 is assigned to /root/pr14_skill_review; launch pending.
+Isolated exact candidate: /home/chirurgie/.cache/q3-pr14-20260914.
+Report: /home/chirurgie/.cache/q3-pr14-review-20260914.md.
+Previous six native children completed. Owner01a084f4/install9afdf2bf/epoch1 unchanged.
+App goal usageLimited unchanged; current explicit user turn authorizes this scoped work.
+
+## Do not repeat
+Do not repeat Linux repair, prior Mac merge, analytical review, confirmed pushes,
+completed searches or fresh index rebuilds. No goal restart or proof admission.
+Preserve full theta, complex rows, weights, tails, boundaries and negative controls.
+A4 is equivalent to the unpaid sign; renaming it is not source-sign progress.
+
+## Integration remaining
+PR14 exact three files: .agents/skills/alias-hunt/SKILL.md and
+docs/Codex/LINUX_HANDOFF_2026-09-14_SEMANTIC_COMPENSATION.md plus .sha256.
+Skill208lines SHA256 d31e1ca5cbf6d8529f222335a6c90fdf6471b9b85daa22fae7e8a0b6c2fcd398.
+Manifest SHA256 805a3e7367e9ac596fc563bcd447ada46c8124841dc284f7b108ecfee9a03453.
+Canonical skill still old127c; review/integration/publication/reread pending.
+The handoff's Poisson recommendation is superseded by owner's comparison correction.
+Six foreign literature files and .codex/config.toml remain excluded.
+Confirmation-only checkpoints need no recursive publication. Seven old isolated
+wiring-test failures remain baseline debt, not acceptance criteria for this skill.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-211-2ac3d51587677d857f082924a7ed404f36eebea86d307d9bea933fa1ef5fe249","kind":"intent","revision":211,"sha256":"2ac3d51587677d857f082924a7ed404f36eebea86d307d9bea933fa1ef5fe249","size":6788} -->
+````text
+---
+schema: q3_resume.v2
+revision: 211
+observed_at: '2026-09-14T17:24:41.178720+00:00'
+previous_sha256: d8159a06569d29223558d709dc30ddb5367d51cef3c496c6d14290e2f913a377
+owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 85f6c5707441055ffc72747a54e68a7e24ef9660
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: &id001 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id006
+    subject: &id003
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: *id001
+    state: DONE
+    evidence: &id004
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: &id005 e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: *id002
+  request_review:
+    subject: *id003
+    state: DONE
+    evidence: *id004
+    source_sha256: *id005
+    checked_by: /root/slack_verdict_check
+  delivery: *id006
+  receipt: &id010
+    subject: &id008
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: &id007 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id009
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: *id005
+    checked_by: *id002
+  independent_review:
+    subject: *id008
+    state: DONE
+    evidence: *id009
+    source_sha256: *id005
+    checked_by: /root/density_verdict_check
+  parent_check: *id010
+  acceptance: *id010
+  publication: *id010
+operation:
+  kind: COMPUTE
+  state: CONFIRMED
+  id: PR14_SKILL_PUBLICATION_20260914_MAP
+  evidence:
+  - docs/session_protocols/team-evidence-bebc81c87841418056d0ca3852cb35a7b87079f50956c52ce4e3a65c0d4d6050.bin
+  subject:
+    kind: REPAIR
+    id: PR14_SKILL_PUBLICATION_20260914_MAP
+    sha256: 18cde7a4e7f3e0e37c99a1b4d2f96a5ea50ef986ee6e20ef77480edc89b9efbb
+  command: workflow-team-integrate-candidate
+  inputs: {}
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+ownership:
+  installation_ref: 9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4
+  epoch: 1
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Exact theorem/consumer edge remains unbound.
+Latest source: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
+Raw two-node positivity is not all-rank positivity. Checked identity:
+S_a[c]/D_a = Var_mu(A_c)-E_mu|B_c|^2; comparison covariance is strictly positive
+for distinct non-anchor theta nodes. Full residual sign and all-row A4 remain OPEN.
+Analytic note: docs/session_protocols/team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin
+Review: docs/session_protocols/team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin
+
+## Confirmed and candidate results
+Linux repair/Mac history5987b887 integration and semantic refresh completed.
+Checked analytical evidence published at85f6c5707441055ffc72747a54e68a7e24ef9660.
+New PR14 source fe1044cb45356fff684fc99c042a2354bfad17fd is two commits ahead.
+All15 manifest hashes and exact3 changed file blobs verified. This is skill guidance,
+not new mathematics or implementation of the proposed runtime dispatch gate.
+
+## Next action
+Owner explicitly requested PR14 integration, reread installed SKILL.md, report its
+hash and current-task rule application. Complete exact independent review, checks,
+real merge preserving incoming ancestry, scoped publication and receiving receipt.
+Use existing canonical writer/owner epoch; preserve foreign bytes.
+Mathematics first, numerical tests/formalization later. Poisson is only a candidate:
+compare mechanisms for Cov(A)>=Gram(B) before selection. No new mathematical hunt
+or numerical campaign is commissioned by this skill delivery.
+
+## Existing work
+PR14_SKILL_REVIEW_20260914 is assigned to /root/pr14_skill_review; launch pending.
+Isolated exact candidate: /home/chirurgie/.cache/q3-pr14-20260914.
+Report: /home/chirurgie/.cache/q3-pr14-review-20260914.md.
+Previous six native children completed. Owner01a084f4/install9afdf2bf/epoch1 unchanged.
+App goal usageLimited unchanged; current explicit user turn authorizes this scoped work.
+
+## Do not repeat
+Do not repeat Linux repair, prior Mac merge, analytical review, confirmed pushes,
+completed searches or fresh index rebuilds. No goal restart or proof admission.
+Preserve full theta, complex rows, weights, tails, boundaries and negative controls.
+A4 is equivalent to the unpaid sign; renaming it is not source-sign progress.
+
+## Integration remaining
+PR14 exact three files: .agents/skills/alias-hunt/SKILL.md and
+docs/Codex/LINUX_HANDOFF_2026-09-14_SEMANTIC_COMPENSATION.md plus .sha256.
+Skill208lines SHA256 d31e1ca5cbf6d8529f222335a6c90fdf6471b9b85daa22fae7e8a0b6c2fcd398.
+Manifest SHA256 805a3e7367e9ac596fc563bcd447ada46c8124841dc284f7b108ecfee9a03453.
+Canonical skill still old127c; review/integration/publication/reread pending.
+The handoff's Poisson recommendation is superseded by owner's comparison correction.
+Six foreign literature files and .codex/config.toml remain excluded.
+Confirmation-only checkpoints need no recursive publication. Seven old isolated
+wiring-test failures remain baseline debt, not acceptance criteria for this skill.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-211-2ac3d51587677d857f082924a7ed404f36eebea86d307d9bea933fa1ef5fe249","kind":"resume","revision":211,"sha256":"2ac3d51587677d857f082924a7ed404f36eebea86d307d9bea933fa1ef5fe249","size":6788} -->
+````text
+---
+schema: q3_resume.v2
+revision: 211
+observed_at: '2026-09-14T17:24:41.178720+00:00'
+previous_sha256: d8159a06569d29223558d709dc30ddb5367d51cef3c496c6d14290e2f913a377
+owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 85f6c5707441055ffc72747a54e68a7e24ef9660
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: &id001 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id006
+    subject: &id003
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: *id001
+    state: DONE
+    evidence: &id004
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: &id005 e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: *id002
+  request_review:
+    subject: *id003
+    state: DONE
+    evidence: *id004
+    source_sha256: *id005
+    checked_by: /root/slack_verdict_check
+  delivery: *id006
+  receipt: &id010
+    subject: &id008
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: &id007 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id009
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: *id005
+    checked_by: *id002
+  independent_review:
+    subject: *id008
+    state: DONE
+    evidence: *id009
+    source_sha256: *id005
+    checked_by: /root/density_verdict_check
+  parent_check: *id010
+  acceptance: *id010
+  publication: *id010
+operation:
+  kind: COMPUTE
+  state: CONFIRMED
+  id: PR14_SKILL_PUBLICATION_20260914_MAP
+  evidence:
+  - docs/session_protocols/team-evidence-bebc81c87841418056d0ca3852cb35a7b87079f50956c52ce4e3a65c0d4d6050.bin
+  subject:
+    kind: REPAIR
+    id: PR14_SKILL_PUBLICATION_20260914_MAP
+    sha256: 18cde7a4e7f3e0e37c99a1b4d2f96a5ea50ef986ee6e20ef77480edc89b9efbb
+  command: workflow-team-integrate-candidate
+  inputs: {}
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+ownership:
+  installation_ref: 9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4
+  epoch: 1
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Exact theorem/consumer edge remains unbound.
+Latest source: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
+Raw two-node positivity is not all-rank positivity. Checked identity:
+S_a[c]/D_a = Var_mu(A_c)-E_mu|B_c|^2; comparison covariance is strictly positive
+for distinct non-anchor theta nodes. Full residual sign and all-row A4 remain OPEN.
+Analytic note: docs/session_protocols/team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin
+Review: docs/session_protocols/team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin
+
+## Confirmed and candidate results
+Linux repair/Mac history5987b887 integration and semantic refresh completed.
+Checked analytical evidence published at85f6c5707441055ffc72747a54e68a7e24ef9660.
+New PR14 source fe1044cb45356fff684fc99c042a2354bfad17fd is two commits ahead.
+All15 manifest hashes and exact3 changed file blobs verified. This is skill guidance,
+not new mathematics or implementation of the proposed runtime dispatch gate.
+
+## Next action
+Owner explicitly requested PR14 integration, reread installed SKILL.md, report its
+hash and current-task rule application. Complete exact independent review, checks,
+real merge preserving incoming ancestry, scoped publication and receiving receipt.
+Use existing canonical writer/owner epoch; preserve foreign bytes.
+Mathematics first, numerical tests/formalization later. Poisson is only a candidate:
+compare mechanisms for Cov(A)>=Gram(B) before selection. No new mathematical hunt
+or numerical campaign is commissioned by this skill delivery.
+
+## Existing work
+PR14_SKILL_REVIEW_20260914 is assigned to /root/pr14_skill_review; launch pending.
+Isolated exact candidate: /home/chirurgie/.cache/q3-pr14-20260914.
+Report: /home/chirurgie/.cache/q3-pr14-review-20260914.md.
+Previous six native children completed. Owner01a084f4/install9afdf2bf/epoch1 unchanged.
+App goal usageLimited unchanged; current explicit user turn authorizes this scoped work.
+
+## Do not repeat
+Do not repeat Linux repair, prior Mac merge, analytical review, confirmed pushes,
+completed searches or fresh index rebuilds. No goal restart or proof admission.
+Preserve full theta, complex rows, weights, tails, boundaries and negative controls.
+A4 is equivalent to the unpaid sign; renaming it is not source-sign progress.
+
+## Integration remaining
+PR14 exact three files: .agents/skills/alias-hunt/SKILL.md and
+docs/Codex/LINUX_HANDOFF_2026-09-14_SEMANTIC_COMPENSATION.md plus .sha256.
+Skill208lines SHA256 d31e1ca5cbf6d8529f222335a6c90fdf6471b9b85daa22fae7e8a0b6c2fcd398.
+Manifest SHA256 805a3e7367e9ac596fc563bcd447ada46c8124841dc284f7b108ecfee9a03453.
+Canonical skill still old127c; review/integration/publication/reread pending.
+The handoff's Poisson recommendation is superseded by owner's comparison correction.
+Six foreign literature files and .codex/config.toml remain excluded.
+Confirmation-only checkpoints need no recursive publication. Seven old isolated
+wiring-test failures remain baseline debt, not acceptance criteria for this skill.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-212-b63615112a88bfb67950897ff92cfec55c42d02cf00d4c3b731a55d3c427feb2","kind":"intent","revision":212,"sha256":"b63615112a88bfb67950897ff92cfec55c42d02cf00d4c3b731a55d3c427feb2","size":6569} -->
+````text
+---
+schema: q3_resume.v2
+revision: 212
+observed_at: '2026-09-14T17:24:48.867797+00:00'
+previous_sha256: 2ac3d51587677d857f082924a7ed404f36eebea86d307d9bea933fa1ef5fe249
+owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 85f6c5707441055ffc72747a54e68a7e24ef9660
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: &id001 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id006
+    subject: &id003
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: *id001
+    state: DONE
+    evidence: &id004
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: &id005 e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: *id002
+  request_review:
+    subject: *id003
+    state: DONE
+    evidence: *id004
+    source_sha256: *id005
+    checked_by: /root/slack_verdict_check
+  delivery: *id006
+  receipt: &id010
+    subject: &id008
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: &id007 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id009
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: *id005
+    checked_by: *id002
+  independent_review:
+    subject: *id008
+    state: DONE
+    evidence: *id009
+    source_sha256: *id005
+    checked_by: /root/density_verdict_check
+  parent_check: *id010
+  acceptance: *id010
+  publication: *id010
+operation:
+  kind: PUBLISH
+  state: INTENT
+  id: PR14_SKILL_PUBLICATION_20260914
+  evidence:
+  - publication_incoming_commit:fe1044cb45356fff684fc99c042a2354bfad17fd
+  subject:
+    kind: REPAIR
+    id: PR14_SKILL_PUBLICATION_20260914
+    sha256: bebc81c87841418056d0ca3852cb35a7b87079f50956c52ce4e3a65c0d4d6050
+  command: publication
+  inputs:
+    docs/session_protocols/team-evidence-bebc81c87841418056d0ca3852cb35a7b87079f50956c52ce4e3a65c0d4d6050.bin: bebc81c87841418056d0ca3852cb35a7b87079f50956c52ce4e3a65c0d4d6050
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: *id007
+ownership:
+  installation_ref: 9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4
+  epoch: 1
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Exact theorem/consumer edge remains unbound.
+Source: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
+Checked S_a[c]/D_a = Var_mu(A_c)-E_mu|B_c|^2; comparison covariance is positive
+for distinct non-anchor theta nodes. Full residual sign and all-row A4 remain OPEN.
+Published analytic note: team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin;
+independent review: team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin,
+both under docs/session_protocols, published in85f6c570.
+
+## Confirmed and candidate results
+Linux repair, previous Mac merge, semantic refresh and analytical review completed.
+PR14 exact source fe1044cb45356fff684fc99c042a2354bfad17fd: three files,
+all15 checksums, skill validation and portability checks passed.
+Independent PR14 review completed on unchanged bytes; no open substantive findings.
+Skill SHA256 d31e1ca5cbf6d8529f222335a6c90fdf6471b9b85daa22fae7e8a0b6c2fcd398.
+Instructions only; runtime dispatch gate is NOT implemented.
+
+## Next action
+Owner requested integration plus an explicit receipt comment in GitHub PR14.
+Complete this operation's ancestry-preserving merge/non-force push; reread installed
+skill, verify exact bytes, post reviewed receipt with receiving commit/hash.
+After delivery, stop this bounded integration; no new mathematical hunt assigned.
+Poisson is a candidate, not a selected route: handoff recommendation is superseded
+by owner's correction to compare mechanisms first. Analysis precedes tests/Lean.
+
+## Existing work
+PR14_SKILL_REVIEW_20260914: one native terra/xhigh checker, two on-target passes.
+Owner01a084f4/install9afdf2bf/epoch1 ACTIVE unchanged; existing watch retained.
+Foreign .codex/config.toml and six litreview files remain excluded.
+Current explicit owner request authorizes this scoped work; old app goal unchanged.
+
+## Do not repeat
+No repair replay, previous Mac merge, confirmed analytical review, old search or
+index rebuild. Preserve source pins, full theta and all finite complex rows.
+No mathematical admission or proof claim follows from a delivery.
+
+## Integration remaining
+Installed skill must be reread after merge, then receipt posted to PR14.
+Current rule application: pin the exact weighted/centered translate obstruction;
+reuse completed shelf queries; Gram domination, restricted reverse Poincare and
+source-derived positive energy are UNVERIFIED dictionaries. After a completed
+bounded attempt without new basis return to objects before selecting again.
+Compensation preserves full mixed terms, tails, boundaries, weights, conjugations.
+Positive Gram entrance must be established independently; include zero pivots.
+Confirmation-only checkpoints need no recursive publication.
+
+````
+<!-- /q3-history -->
+
