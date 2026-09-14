@@ -70,9 +70,29 @@ implementation manifest retain required review.
 ## 3. Roles, capacity and ownership
 
 Proposed execution profile: gpt-6-astra/max orchestrator; gpt-5.6-luna/max bounded
-workers. Record the actual resolved model/effort for each assignment; do not claim
+workers. Before provider observation, resolved_model/resolved_effort are both
+null; requested fields remain concrete. RUNNING, IN_PROGRESS, DONE and COMPLETED
+require the observed pair. A null-to-concrete UPDATE requires the exact stored
+native LAUNCH and durable output/provider readback, with unchanged owner/source
+bindings. A concrete pair cannot later be erased or substituted. Native LAUNCH
+and RESULT require the same actual child/profile, even before that UPDATE.
+The resolved pair belongs to the full event/state hash, not the stable requested
+launch binding. Record the actual resolved model/effort for each assignment; do not claim
 that a requested profile changes a running parent automatically. A model change
 or a capability failure is visible. Do not silently substitute another model.
+This initial-activation binding repair has one empty-registry admission gate:
+immediately before the first canonical team-record assignment write executed by
+this repaired engine, typed assignments and native assignment observations must
+both be empty. Otherwise stop and rebaseline; do not migrate old binding hashes.
+After that admission, later source integration rechecks the same engine-produced
+assignment/owner/source/HEAD bindings and does not require those registries to
+be empty or rewrite their history.
+The v2 checkpoint reader validates its exact six-field, nonblank phase key using
+the existing startup PHASE_KEY_FIELDS constant, without importing legacy spine
+on the v10 read-only path. The existing poisoned-import regression remains
+required. Do not substitute startup_runtime._valid_phase_key: its later duplicate
+definition permits extra fields and whitespace-only values. That adjacent
+validator inconsistency is separate debt, not repaired by this change.
 Luna is the default for clear implementation, reproduction and source-inspection
 tasks, not an automatic final authority for difficult mathematics. Hard analytical
 questions remain with the orchestrator/Proshka and the applicable proof reviews.
@@ -969,7 +989,7 @@ Arbitrary same-user shell writes remain outside cooperative enforcement.
 Add `team-integrate-candidate --candidate <manifest.json>` to workflow_runtime.py.
 It copies exact declared bytes under the mode-specific gates below; it never commits, pushes, dispatches,
 changes ownership or accepts a theorem. REVIEWED_SOURCE candidate Git objects
-must already have been obtained through an existing authorized read/fetch operation; this command
+must exist in the same pinned immutable engine used to execute the command. This command
 does not fetch or wait for a network operation while holding the writer lock.
 
 The closed q3_team_integration.v1 manifest has exactly: schema, mode,
@@ -978,12 +998,12 @@ implementer_assignment, assignment_sha256, checker_assignment, candidate_commit,
 and files. assignment_sha256 hashes the existing canonical immutable assignment
 view; mutable status observations do not silently change the producer identity.
 Mode is EVIDENCE_INTAKE or REVIEWED_SOURCE. Hashes are full SHA256; before_sha256
-may instead be ABSENT. Source-copy Git objects must be present locally before
+may instead be ABSENT. Source-copy Git objects must be present in that engine before
 that mode runs. No deletions, renames of existing files, symlink components or
 executable evidence files are accepted.
 
 The manifest uses the existing canonical JSON encoder and limits. Its exact
-bytes are pinned by RESUME operation.subject={kind: REPAIR, id: operation_id,
+bytes for ordinary integration are pinned by RESUME operation.subject={kind: REPAIR, id: operation_id,
 sha256: manifest_sha256}; operation.command names this registered command.
 The detached candidate may live in the owner's durable local output area.
 It need not first be copied into a shared report. Operation.inputs binds only
@@ -1015,14 +1035,31 @@ later observation and binding its actual provider/source/assignment identity is 
 separate prerequisite before the data can support classification or acceptance.
 Untrusted bytes can be retained as evidence without becoming trusted instructions.
 
+First native LAUNCH evidence uses EVIDENCE_INTAKE inside its existing reserved
+agent-launch operation. Do not replace the unresolved launch with an intake
+intent. team-reserve-effect freezes the original operation identity, assignment,
+owner, source pins and HEAD before the native action. The private integration
+record binds that exact parent and the complete manifest before any copy.
+INTENT-to-UNKNOWN recovery compares those frozen fields and source bytes; a
+changed full checkpoint hash is not permission to reserve or launch again.
+Only the same assignment/base and hash-named raw files may use this context.
+Source integration and other native effects cannot use it. Completing this copy
+leaves the parent RESERVED/UNKNOWN. Only team-observe-native LAUNCH confirms the
+launch; generic team-confirm-effect cannot promote an intake receipt to launch
+success. UNKNOWN/NOT_EXECUTED reconciliation remains available. Once LAUNCH is
+confirmed, RESULT bytes use a separate ordinary EVIDENCE_INTAKE and native RESULT.
+
 For BOTH modes, resolve the exact immutable producing assignment and verify its
 immutable-view hash, base_commit and owner/epoch against the registry and
 reservation. Only REVIEWED_SOURCE requires a Git source: each sorted unique file
 record has exactly path, source_path, before_sha256 and sha256;
-candidate_commit must resolve to a Git commit object, and
+candidate_commit must resolve to a Git commit object in the pinned engine, and
 git merge-base --is-ancestor assignment.base_commit candidate_commit must pass.
-Read each source as git show candidate_commit:source_path and verify the complete
+Read candidate type, ancestry, tree modes and blobs from that same engine's Git
+database. Read each source as git show candidate_commit:source_path and verify the complete
 blob bytes, path mode and expected hash. A local object/hash is not ancestry.
+Canonical HEAD/index/preimages and destination checks stay in the target. No
+candidate object, ref, HEAD or configuration is imported or changed there.
 
 REVIEWED_SOURCE requires source_path == path, expected_head equal to the exact
 implementer assignment.base_commit, and a non-null independent checker. The
@@ -1041,10 +1078,11 @@ an unrelated output or a textual occurrence of a hash cannot satisfy this gate.
 Reuse team_records' strict canonical parsing and native-observation validation;
 this is a typed review artifact, not another registry or issue lifecycle.
 
-The owner first records an exact integration INTENT, observes the current remote
+For ordinary integration the owner first records an exact integration INTENT, observes the current remote
 owner and reserves that operation using the existing registered commands. Each
-REVIEWED_SOURCE source file must be covered by the implementer's permitted paths. Intake and
-reviewed integration are separate operation IDs and reservations. The checker
+REVIEWED_SOURCE source file must be covered by the implementer's permitted paths.
+Reviewed integration always has its own reservation. First launch intake retains
+the exact parent launch reservation described above. The checker
 must be distinct from the implementer and owner; required review convergence
 remains a prerequisite. A reported completion or arbitrary output file is not enough.
 For REVIEWED_SOURCE, independently checked Git source bytes, rather than a
@@ -1073,7 +1111,8 @@ operation record. All canonical and external-effect writers check this marker
 BEFORE mutable control/source validation and refuse other operations. Checkpoint,
 record, watch, publication and other writers cannot run on the mixed tree.
 Read-only inspection and exact recovery of that SAME operation remain allowed.
-Only its full durable confirmation clears the hold. Generic effect confirmation
+Only full durable copy completion clears the hold; for parent-bound intake the
+native launch itself remains unresolved. Generic effect confirmation
 cannot clear an integration marker, nor can another intake or owner transfer.
 
 Use the already available immutable verification checkout as the executing code
@@ -1085,7 +1124,11 @@ original/candidate destination states; it does not require a half-updated canoni
 runtime or control to import successfully. No new daemon or generic shell launcher.
 
 Exact replay is local reconciliation of this SAME intent. Require unchanged
-actor/epoch, RESUME intent, HEAD and persisted candidate/review manifest. Each
+actor/epoch, operation identity, HEAD and persisted candidate/review manifest.
+Ordinary integration retains the exact checkpoint hash; parent-bound intake uses
+its frozen launch binding and accepts the same operation's INTENT/UNKNOWN or a
+completed replay after confirmation. Completed replay verifies bytes without
+rewriting files or changing a confirmed/NOT_EXECUTED parent back to RESERVED. Each
 destination must have its original bytes or the recorded candidate bytes; any
 third state stops. Verify candidate bytes already present; replace only remaining
 original bytes. A changed mathematical source manifest may block ordinary work

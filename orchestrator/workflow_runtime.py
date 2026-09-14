@@ -43,6 +43,7 @@ from orchestrator import node_registry_v10  # noqa: E402
 from orchestrator.startup_runtime import (  # noqa: E402
     AUTHORITATIVE_MODE,
     AUTHORITATIVE_SCHEMA,
+    PHASE_KEY_FIELDS,
     StartupRuntimeError,
     StartupSnapshot,
     _git_common_dir,
@@ -1251,8 +1252,20 @@ def _team_pending_integration(repo: Path) -> tuple[str, dict[str, Any]] | None:
     for key, receipt in operations.items():
         integration = receipt.get("integration") if isinstance(receipt, dict) else None
         if integration is not None:
-            if (not isinstance(integration, dict) or integration.get("state") not in {"PENDING", "COMPLETE"}
-                    or receipt.get("state") != ("RESERVED" if integration["state"] == "PENDING" else "CONFIRMED")):
+            if not isinstance(integration, dict) or integration.get("state") not in {"PENDING", "COMPLETE"}:
+                raise WorkflowRuntimeError("TEAM_INTEGRATION_RECEIPT_INVALID")
+            parent = integration.get("parent_effect")
+            if parent is None:
+                states = {"RESERVED" if integration["state"] == "PENDING" else "CONFIRMED"}
+            else:
+                if (not isinstance(parent, dict) or parent != receipt.get("launch_binding")
+                        or parent.get("operation", {}).get("id") != key
+                        or parent.get("operation", {}).get("command") != "agent-launch"
+                        or integration.get("manifest", {}).get("mode") != "EVIDENCE_INTAKE"):
+                    raise WorkflowRuntimeError("TEAM_INTEGRATION_PARENT_BINDING_INVALID")
+                states = ({"RESERVED", "UNKNOWN"} if integration["state"] == "PENDING"
+                          else {"RESERVED", "UNKNOWN", "CONFIRMED", "NOT_EXECUTED"})
+            if receipt.get("state") not in states:
                 raise WorkflowRuntimeError("TEAM_INTEGRATION_RECEIPT_INVALID")
             if integration["state"] == "PENDING":
                 pending.append((key, integration))
@@ -1400,11 +1413,10 @@ def _team_document(data: dict[str, Any]) -> None:
     pins = data["pins"]
     if set(pins) != {"head", "physical_goal", "source_commit", "request_id", "phase_id", "phase_key", "request"}:
         raise ValueError("v2 pins")
-    from orchestrator import spine
-    try:
-        spine.validate_phase_key(pins["phase_key"])
-    except (ValueError, RuntimeError) as exc:
-        raise ValueError("phase_key") from exc
+    phase_key = pins["phase_key"]
+    if (not isinstance(phase_key, dict) or set(phase_key) != PHASE_KEY_FIELDS
+            or any(not isinstance(value, str) or not value.strip() for value in phase_key.values())):
+        raise ValueError("phase_key")
     request = pins["request"]
     if (not isinstance(request, dict) or set(request) != {"path", "commit", "blob", "sha256", "boundary_id", "conversation_id"}
             or not _team_hex(request["commit"], 40) or not _team_hex(request["blob"], 40)
@@ -1825,6 +1837,33 @@ def team_observe_remote(repo: Path, *, operation_id: str) -> dict[str, Any]:
             "remote_resume_sha256": receipt["remote_resume_sha256"], "execution_acquired": False}
 
 
+def _team_launch_binding(repo: Path, data: dict[str, Any]) -> dict[str, Any]:
+    """Freeze the requested launch and its sources independently of checkpoint status."""
+    from orchestrator import team_records
+
+    operation = data["operation"]
+    row = _team_assignments(repo)["assignments"].get(operation["subject"]["id"])
+    if row is None:
+        raise WorkflowRuntimeError("TEAM_ASSIGNMENT_UNKNOWN")
+    assignment = row["assignment"]
+    context = team_records.TrustedTeamContext(data["owner_thread_id"], data["owner_host_id"],
+        data["ownership"]["installation_ref"], data["ownership"]["epoch"], data["owner_thread_id"], {})
+    team_records._validate_assignment_owner(assignment, context)
+    binding_sha = team_records._assignment_binding_sha(assignment)
+    head = _team_git(repo, "rev-parse", "HEAD").decode().strip()
+    if (operation["command"] != "agent-launch" or operation["subject"] != {
+            "kind": "ASSIGNMENT", "id": assignment["assignment_id"], "sha256": binding_sha}
+            or assignment["base_commit"] != head):
+        raise WorkflowRuntimeError("TEAM_AGENT_LAUNCH_BINDING_CHANGED")
+    _team_verify_paths(repo, data["source_manifest"])
+    _team_verify_paths(repo, operation["inputs"])
+    _team_verify_paths(repo, {row["path"]: row["sha256"] for row in assignment["input_hashes"]})
+    return {"operation": {key: operation[key] for key in ("id", "kind", "subject", "command", "inputs")},
+            "owner_task": data["owner_thread_id"], "owner_host": data["owner_host_id"],
+            "ownership": data["ownership"], "pins": data["pins"], "source_manifest": data["source_manifest"],
+            "head": head, "assignment_sha256": binding_sha}
+
+
 def team_reserve_effect(repo: Path, *, operation_id: str) -> dict[str, Any]:
     _team_registered(repo, "team-reserve-effect", ["GIT_COMMON_DIR/" + TEAM_LOCAL])
     with _execution_writer_epoch(repo) as epoch:
@@ -1850,7 +1889,10 @@ def team_reserve_effect(repo: Path, *, operation_id: str) -> dict[str, Any]:
                 or receipt["remote_thread"] != data["owner_thread_id"]
                 or receipt["local_head"] != _team_git(repo, "rev-parse", "HEAD").decode().strip()):
             raise WorkflowRuntimeError("TEAM_REMOTE_OWNERSHIP_OR_INPUT_DRIFT")
-        updated = {**local, "operations": {**local["operations"], operation_id: {**receipt, "state": "RESERVED"}},
+        reserved = {**receipt, "state": "RESERVED"}
+        if operation["command"] == "agent-launch":
+            reserved["launch_binding"] = _team_launch_binding(repo, data)
+        updated = {**local, "operations": {**local["operations"], operation_id: reserved},
                    "epoch_floor": max(local["epoch_floor"], data["ownership"]["epoch"])}
         _team_local_save(repo, local, updated, epoch)
         return {"status": "RESERVED", "operation_id": operation_id, "execute_once": True,
@@ -2003,10 +2045,12 @@ def _team_observe_assignment(repo: Path, evidence: dict[str, Any], payload: byte
                 raise WorkflowRuntimeError("TEAM_NATIVE_PHASE_CONFLICT:reuse the original observation")
         if phase == "LAUNCH":
             operation = data["operation"]
-            if (not prior or prior.get("state") != "RESERVED" or operation["id"] != operation_id
+            if (not prior or prior.get("state") not in {"RESERVED", "UNKNOWN"}
+                    or operation["state"] not in {"INTENT", "UNKNOWN"} or operation["id"] != operation_id
                     or operation["command"] != "agent-launch" or operation["subject"]["id"] != assignment_id
                     or operation["subject"]["sha256"] != team_records._assignment_binding_sha(assignment)
-                    or prior.get("actor") != data["owner_thread_id"] or prior.get("epoch") != data["ownership"]["epoch"]):
+                    or prior.get("actor") != data["owner_thread_id"] or prior.get("epoch") != data["ownership"]["epoch"]
+                    or prior.get("launch_binding") != _team_launch_binding(repo, data)):
                 raise WorkflowRuntimeError("TEAM_AGENT_LAUNCH_RESERVATION_REQUIRED")
         elif prior is not None:
             raise WorkflowRuntimeError("TEAM_NATIVE_OPERATION_CONFLICT")
@@ -2014,7 +2058,8 @@ def _team_observe_assignment(repo: Path, evidence: dict[str, Any], payload: byte
             context = _team_assignment_context(repo, data, assignments, [assignment_id], set())
             launch = context.observations[assignment_id]
             if (len(launch) != 1 or launch[0]["phase"] != "LAUNCH"
-                    or launch[0]["native_agent_id"] != evidence["native_agent_id"]):
+                    or any(launch[0][key] != evidence[key]
+                           for key in ("native_agent_id", "resolved_model", "resolved_effort"))):
                 raise WorkflowRuntimeError("TEAM_NATIVE_LAUNCH_BINDING_REQUIRED")
         record.update(actor=data["owner_thread_id"], epoch=data["ownership"]["epoch"])
         if prior is not None:
@@ -2084,6 +2129,9 @@ def team_confirm_effect(repo: Path, *, operation_id: str, candidate: Path, expec
         prior = local["operations"].get(operation_id)
         if not prior or prior["state"] not in {"RESERVED", "CONFIRMED", "NOT_EXECUTED", "UNKNOWN"}:
             raise WorkflowRuntimeError("TEAM_ORIGINAL_RESERVATION_REQUIRED")
+        if record["outcome"] == "CONFIRMED" and (prior.get("launch_binding") is not None
+                or data["operation"]["id"] == operation_id and data["operation"]["command"] == "agent-launch"):
+            raise WorkflowRuntimeError("TEAM_AGENT_LAUNCH_OBSERVATION_REQUIRED")
         if prior["state"] in {"CONFIRMED", "NOT_EXECUTED"}:
             if prior["evidence"] != record or prior["state"] != record["outcome"]:
                 raise WorkflowRuntimeError("TEAM_CONFIRMATION_CONFLICT")
@@ -2251,7 +2299,7 @@ def _team_integration_blob(repo: Path, commit: str, path: str) -> tuple[bytes | 
 
 
 def _team_integration_review(repo: Path, data: dict[str, Any], manifest: dict[str, Any],
-                             payload: bytes) -> dict[str, Any] | None:
+                             payload: bytes, *, engine: Path) -> dict[str, Any] | None:
     from orchestrator import team_records
 
     assignments = _team_assignments(repo)
@@ -2282,9 +2330,9 @@ def _team_integration_review(repo: Path, data: dict[str, Any], manifest: dict[st
     paths = {row["path"] for row in manifest["files"]}
     if any(not paths.issubset(set(assignment["permitted_paths"])) for assignment in rows):
         raise WorkflowRuntimeError("TEAM_INTEGRATION_ASSIGNMENT_SCOPE_MISMATCH")
-    if _team_git(repo, "cat-file", "-t", manifest["candidate_commit"]).strip() != b"commit":
+    if _team_git(engine, "cat-file", "-t", manifest["candidate_commit"]).strip() != b"commit":
         raise WorkflowRuntimeError("TEAM_INTEGRATION_COMMIT_OBJECT_REQUIRED")
-    _team_git(repo, "merge-base", "--is-ancestor", producer["base_commit"], manifest["candidate_commit"])
+    _team_git(engine, "merge-base", "--is-ancestor", producer["base_commit"], manifest["candidate_commit"])
     hashes = {item.get("observation", {}).get("output_sha256") for item in _team_local(repo)["operations"].values()
               if item.get("observation", {}).get("assignment_id") == checker["assignment_id"]}
     context = _team_assignment_context(repo, data, assignments, [checker["assignment_id"]], hashes)
@@ -2340,9 +2388,11 @@ def team_integrate_candidate(
         local = _team_local(repo)
         prior = local["operations"].get(operation_id)
         integration = prior.get("integration") if prior else None
+        operation = data["operation"]
+        parent_intake = operation["command"] == "agent-launch"
         if integration is None:
             _team_registered(repo, "team-integrate-candidate", TEAM_INTEGRATION_WRITE_PATHS)
-            if team_guard(repo, command="workflow-team-integrate-candidate", paths=[], effect=True) is None:
+            if team_guard(repo, command="workflow-team-integrate-candidate", paths=[], effect=not parent_intake) is None:
                 raise WorkflowRuntimeError("TEAM_RUNTIME_NOT_ACTIVATED")
         if (data["ownership"]["state"] != "ACTIVE" or data["reconciliation_pending"]
                 or manifest["owner_task"] != data["owner_thread_id"]
@@ -2351,22 +2401,38 @@ def team_integrate_candidate(
                 or os.environ.get("Q3_OWNER_EPOCH") != str(manifest["epoch"])
                 or local["epoch_floor"] > manifest["epoch"]):
             raise WorkflowRuntimeError("TEAM_INTEGRATION_OWNER_CHANGED")
-        operation = data["operation"]
-        if (operation["id"] != operation_id or operation["state"] != "INTENT"
-                or operation["command"] != "workflow-team-integrate-candidate"
-                or operation["subject"] != {"kind": "REPAIR", "id": operation_id, "sha256": _resume_digest(payload)}):
-            raise WorkflowRuntimeError("TEAM_INTEGRATION_EXACT_INTENT_REQUIRED")
-        if (not prior or prior.get("state") not in {"RESERVED", "CONFIRMED"}
-                or prior.get("checkpoint_sha256") != _resume_digest(raw)
-                or prior.get("actor") != data["owner_thread_id"] or prior.get("epoch") != manifest["epoch"]
+        parent_effect = None
+        if parent_intake:
+            replay = integration is not None and integration["state"] == "COMPLETE"
+            if (manifest["mode"] != "EVIDENCE_INTAKE" or operation["id"] != operation_id
+                    or operation["subject"]["id"] != manifest["implementer_assignment"]
+                    or operation["state"] not in ({"INTENT", "UNKNOWN", "CONFIRMED"} if replay else {"INTENT", "UNKNOWN"})
+                    or not prior or prior.get("state") not in (
+                        {"RESERVED", "UNKNOWN", "CONFIRMED", "NOT_EXECUTED"} if replay else {"RESERVED", "UNKNOWN"})):
+                raise WorkflowRuntimeError("TEAM_INTAKE_ORIGINAL_LAUNCH_REQUIRED")
+            parent_effect = _team_launch_binding(repo, data)
+            if prior.get("launch_binding") != parent_effect:
+                raise WorkflowRuntimeError("TEAM_INTAKE_LAUNCH_BINDING_CHANGED")
+        else:
+            if (operation["id"] != operation_id or operation["state"] != "INTENT"
+                    or operation["command"] != "workflow-team-integrate-candidate"
+                    or operation["subject"] != {"kind": "REPAIR", "id": operation_id, "sha256": _resume_digest(payload)}):
+                raise WorkflowRuntimeError("TEAM_INTEGRATION_EXACT_INTENT_REQUIRED")
+            if (not prior or prior.get("state") not in {"RESERVED", "CONFIRMED"}
+                    or prior.get("checkpoint_sha256") != _resume_digest(raw)):
+                raise WorkflowRuntimeError("TEAM_INTEGRATION_RESERVATION_OR_HEAD_CHANGED")
+        if (prior.get("actor") != data["owner_thread_id"] or prior.get("epoch") != manifest["epoch"]
                 or prior.get("remote_ownership") != data["ownership"] or prior.get("remote_thread") != data["owner_thread_id"]
                 or prior.get("local_head") != manifest["expected_head"]
                 or _team_git(repo, "rev-parse", "HEAD").decode().strip() != manifest["expected_head"]):
             raise WorkflowRuntimeError("TEAM_INTEGRATION_RESERVATION_OR_HEAD_CHANGED")
-        if integration is None and prior["state"] != "RESERVED":
+        if integration is None and prior["state"] != "RESERVED" and not parent_intake:
             raise WorkflowRuntimeError("TEAM_INTEGRATION_RESERVATION_REQUIRED")
-        review = _team_integration_review(repo, data, manifest, payload)
         engine = _team_integration_engine(repo)
+        if integration is not None and integration.get("engine") != engine:
+            raise WorkflowRuntimeError("TEAM_INTEGRATION_PERSISTED_IDENTITY_CHANGED")
+        source_repo = Path(engine["root"])
+        review = _team_integration_review(repo, data, manifest, payload, engine=source_repo)
         intake = manifest["mode"] == "EVIDENCE_INTAKE"
         files = []
         total = 0
@@ -2376,7 +2442,7 @@ def team_integrate_candidate(
                 raise WorkflowRuntimeError("TEAM_INTEGRATION_MANIFEST_OVERWRITE_FORBIDDEN")
             before, before_mode = (None, None) if intake else _team_integration_blob(repo, manifest["expected_head"], path)
             after, mode = ((base64.b64decode(row["content_base64"], validate=True), 0o644) if intake
-                           else _team_integration_blob(repo, manifest["candidate_commit"], path))
+                           else _team_integration_blob(source_repo, manifest["candidate_commit"], path))
             if before is None and not intake and _team_git(repo, "ls-files", "--", path).strip():
                 raise WorkflowRuntimeError("TEAM_INTEGRATION_INDEX_PREIMAGE_CHANGED:" + path)
             if after is None or _resume_digest(after) != row["sha256"] or _resume_digest(before) != row["before_sha256"]:
@@ -2398,6 +2464,8 @@ def team_integrate_candidate(
         expected = {"schema": "q3_team_integration_reservation.v1", "state": "PENDING", "manifest": manifest,
                     "manifest_sha256": _resume_digest(payload), "engine": engine, "review": review,
                     "preimages": [{"path": row["path"], "sha256": row["before_sha256"]} for row in manifest["files"]]}
+        if parent_intake:
+            expected["parent_effect"] = parent_effect
         if integration is not None and {**integration, "state": "PENDING"} != expected:
             raise WorkflowRuntimeError("TEAM_INTEGRATION_PERSISTED_IDENTITY_CHANGED")
         # Dependencies outside this transaction still must match. Its destinations
@@ -2431,8 +2499,10 @@ def team_integrate_candidate(
                    "files": [{"path": row["path"], "sha256": row["sha256"]} for row in manifest["files"]],
                    "mathematical_acceptance": False, "publication": False,
                    "evidence_status": "UNADJUDICATED" if intake else "SOURCE_INTEGRATION_APPROVED"}
-        updated = {**local, "operations": {**local["operations"], operation_id: {**prior, "state": "CONFIRMED",
-                   "integration": {**expected, "state": "COMPLETE"}, "evidence": receipt}}}
+        completed = {**prior, "integration": {**expected, "state": "COMPLETE"}}
+        if not parent_intake:
+            completed.update(state="CONFIRMED", evidence=receipt)
+        updated = {**local, "operations": {**local["operations"], operation_id: completed}}
         if updated != local:
             _team_local_save(repo, local, updated, epoch)
         else:
@@ -2927,6 +2997,19 @@ def team_record(repo: Path, *, kind: str, candidate: Path, expected_sha256: str)
                 # CREATE is an intent, never a native agent launch receipt.
                 if payload["operation"] == "CREATE" and payload["status"] not in {"ASSIGNED", "PENDING"}:
                     raise WorkflowRuntimeError("TEAM_ASSIGNMENT_LAUNCH_OBSERVATION_REQUIRED")
+                if payload["operation"] == "UPDATE" and payload["resolved_model"] is not None:
+                    assignments = team_records.read_registry(raw, "assignments",
+                        archive_loader=lambda path: _resume_file(repo, Path(path)))
+                    previous = assignments["assignments"][payload["assignment_id"]]["assignment"]
+                    if previous["resolved_model"] is None:
+                        _, data, _ = _team_current(repo)
+                        context = _team_assignment_context(repo, data, assignments, [payload["assignment_id"]], set())
+                        team_records._validate_assignment_owner(previous, context)
+                        _team_verify_paths(repo, {row["path"]: row["sha256"] for row in previous["input_hashes"]})
+                        launch = context.observations[payload["assignment_id"]]
+                        if (len(launch) != 1 or launch[0]["phase"] != "LAUNCH"
+                                or any(launch[0][key] != payload[key] for key in ("resolved_model", "resolved_effort"))):
+                            raise WorkflowRuntimeError("TEAM_ASSIGNMENT_RESOLUTION_OBSERVATION_REQUIRED")
             if kind == "issue-event":
                 _, data, _ = _team_current(repo)
                 assignments = _team_assignments(repo)

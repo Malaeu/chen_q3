@@ -5280,6 +5280,19 @@ class TeamRuntimeTests(unittest.TestCase):
         _, body = workflow_runtime._resume_document(self.fixture.document())
         return ("---\n" + workflow_runtime.yaml.safe_dump(data, sort_keys=False) + "---\n" + body).encode()
 
+    def test_v2_phase_key_keeps_closed_nonblank_schema_without_legacy_import(self):
+        valid = self.data()
+        workflow_runtime._team_document(valid)
+        key = valid["pins"]["phase_key"]
+        field = next(iter(key))
+        invalid = [None, [], {k: v for k, v in key.items() if k != field}, {**key, "extra": "value"}]
+        invalid += [{**key, field: value} for value in (None, False, 1, [], {}, "", " \t\n")]
+        with mock.patch.dict(sys.modules, {"orchestrator.spine": None}):
+            workflow_runtime._team_document(valid)
+            for phase_key in invalid:
+                with self.subTest(phase_key=phase_key), self.assertRaisesRegex(ValueError, "phase_key"):
+                    workflow_runtime._team_document({**valid, "pins": {**valid["pins"], "phase_key": phase_key}})
+
     def install(self, data):
         raw = self.document(data)
         self.fixture.current.write_bytes(raw)
@@ -5318,7 +5331,10 @@ class TeamRuntimeTests(unittest.TestCase):
         assignment_raw = (self.repo / workflow_runtime.TEAM_ASSIGNMENTS).read_bytes()
         workflow_runtime.team_record(self.repo, kind="assignment", candidate=self.fixture.candidate,
             expected_sha256=workflow_runtime._resume_digest(assignment_raw))
-        self.local(operations={"launch-fixture": {"state": "RESERVED", "actor": data["owner_thread_id"], "epoch": 1}})
+        self.local(operations={"launch-fixture": {"state": "OBSERVED", "actor": data["owner_thread_id"], "epoch": 1,
+            "checkpoint_sha256": workflow_runtime._resume_digest(self.fixture.current.read_bytes()),
+            "remote_ownership": data["ownership"], "remote_thread": data["owner_thread_id"], "local_head": head}})
+        workflow_runtime.team_reserve_effect(self.repo, operation_id="launch-fixture")
         context = TeamRecordsTests.provenance_context(assignment, report=report, result_state=state)
         observations = context.observations[assignment["assignment_id"]]
         for observation in observations:
@@ -5385,7 +5401,8 @@ class TeamRuntimeTests(unittest.TestCase):
                 workflow_runtime._team_owner_transition(self.repo, data, after)
 
     def integration_fixture(self, *, intake=False, verdict="SOURCE_INTEGRATION_APPROVED",
-                             include_untracked_destination=False, include_executable=False):
+                             include_untracked_destination=False, include_executable=False,
+                             parent_launch=False):
         """Real Git/files/reservation, explicitly simulated native provider and engine."""
         import base64
         env = {**workflow_runtime.os.environ, "GIT_AUTHOR_NAME": "Fixture", "GIT_COMMITTER_NAME": "Fixture",
@@ -5419,6 +5436,8 @@ class TeamRuntimeTests(unittest.TestCase):
                 owner_installation_ref=self.identity, assignee=assignee, role=role, base_commit=base,
                 subject="bounded integration", input_hashes=[{"path": "docs/source.md", "sha256": data["source_manifest"]["docs/source.md"]}],
                 permitted_paths=sorted(candidate_paths))
+            if parent_launch and role == "implementation":
+                assignment.update(resolved_model=None, resolved_effort=None)
             registry = self.repo / workflow_runtime.TEAM_ASSIGNMENTS
             updated, _ = team_records.prepare_assignment(registry.read_bytes(), assignment,
                 workflow_runtime._resume_digest(registry.read_bytes()))
@@ -5431,6 +5450,26 @@ class TeamRuntimeTests(unittest.TestCase):
             files = [{"path": "docs/session_protocols/team-evidence-" + digest + ".bin", "before_sha256": "ABSENT",
                       "sha256": digest, "content_base64": base64.b64encode(content).decode()}]
             commit = None
+            if parent_launch:
+                self.pending_assignment = producer
+                actual = {**producer, "resolved_model": producer["requested_model"],
+                          "resolved_effort": producer["requested_effort"]}
+                self.launch_observation = TeamRecordsTests.provenance_context(actual).observations[
+                    producer["assignment_id"]][0]
+                self.launch_observation["operation_id"] = "integration-fixture"
+                files = []
+                for prefix, content in (("output", b"simulated first native launch response\n"),
+                                        ("provider_receipt", b'{"simulated_provider":true,"native_launch":true}\n')):
+                    digest = workflow_runtime._resume_digest(content)
+                    path = "docs/session_protocols/team-evidence-" + digest + ".bin"
+                    files.append({"path": path, "before_sha256": "ABSENT", "sha256": digest,
+                                  "content_base64": base64.b64encode(content).decode()})
+                    self.launch_observation[prefix + "_locator"] = path
+                    self.launch_observation[prefix + "_sha256"] = digest
+                files.sort(key=lambda row: row["path"])
+                self.launch_observation["evidence_sha256"] = workflow_runtime._resume_digest(team_records.canonical_json([
+                    {"locator": self.launch_observation[prefix + "_locator"],
+                     "sha256": self.launch_observation[prefix + "_sha256"]} for prefix in ("output", "provider_receipt")]))
         else:
             index = str(self.repo / "candidate.index")
             git("read-tree", base, index=index)
@@ -5455,6 +5494,10 @@ class TeamRuntimeTests(unittest.TestCase):
                     "checker_assignment": None if intake else checker["assignment_id"], "candidate_commit": commit, "files": files}
         data["operation"].update(id=manifest["operation_id"], command="workflow-team-integrate-candidate",
             subject={"kind": "REPAIR", "id": manifest["operation_id"], "sha256": workflow_runtime._resume_digest(team_records.canonical_json(manifest))})
+        if parent_launch:
+            self.assertTrue(intake)
+            data["operation"].update(command="agent-launch", subject={"kind": "ASSIGNMENT",
+                "id": producer["assignment_id"], "sha256": team_records._assignment_binding_sha(producer)})
         raw = self.install(data)
         operations = {}
         if not intake:
@@ -5477,12 +5520,12 @@ class TeamRuntimeTests(unittest.TestCase):
                 operations[observation["operation_id"]] = {"schema": "q3_team_assignment_receipt.v1", "state": "CONFIRMED", "observation": observation}
         operations[manifest["operation_id"]] = {"state": "OBSERVED", "actor": data["owner_thread_id"], "epoch": 1,
             "checkpoint_sha256": workflow_runtime._resume_digest(raw), "remote_ownership": data["ownership"],
-            "remote_thread": data["owner_thread_id"], "local_head": base}
+            "remote_thread": data["owner_thread_id"], "local_head": base, "evidence": {}}
         self.local(operations=operations)
         workflow_runtime.team_reserve_effect(self.repo, operation_id=manifest["operation_id"])
         self.fixture.candidate.write_bytes(team_records.canonical_json(manifest))
         for name, value in (("_team_enabled", True), ("_team_writer_inventory", {}),
-                            ("_team_integration_engine", {"fixture_engine": True, "commit": base})):
+                            ("_team_integration_engine", {"fixture_engine": True, "root": str(self.repo), "commit": base})):
             patcher = mock.patch.object(workflow_runtime, name, return_value=value)
             patcher.start()
             self.addCleanup(patcher.stop)
@@ -5490,6 +5533,186 @@ class TeamRuntimeTests(unittest.TestCase):
 
     def integrate(self):
         return workflow_runtime.team_integrate_candidate(self.repo, candidate=self.fixture.candidate)
+
+    def observe_fixture_launch(self):
+        self.fixture.candidate.write_bytes(team_records.canonical_json(self.launch_observation))
+        return workflow_runtime.team_observe_native(self.repo, candidate=self.fixture.candidate,
+            expected_sha256=workflow_runtime._resume_digest(self.fixture.candidate.read_bytes()))
+
+    def resolve_fixture_assignment(self, **changes):
+        raw = (self.repo / workflow_runtime.TEAM_ASSIGNMENTS).read_bytes()
+        row = team_records.read_registry(raw, "assignments")["assignments"][self.pending_assignment["assignment_id"]]
+        update = {**row["assignment"], "operation": "UPDATE", "status": "RUNNING",
+                  "resolved_model": self.launch_observation["resolved_model"],
+                  "resolved_effort": self.launch_observation["resolved_effort"],
+                  "previous_assignment_event_sha256": row["last_event_sha256"],
+                  "previous_assignment_sha256": team_records._assignment_state_sha(row["assignment"]), **changes}
+        self.fixture.candidate.write_bytes(team_records.canonical_json(update))
+        return workflow_runtime.team_record(self.repo, kind="assignment", candidate=self.fixture.candidate,
+            expected_sha256=workflow_runtime._resume_digest(raw))
+
+    def test_first_launch_intake_then_native_resolution_and_checkpoint_confirmation(self):
+        manifest = self.integration_fixture(intake=True, parent_launch=True)
+        current = self.fixture.current.read_bytes()
+        reservation = workflow_runtime._team_local_operation(self.repo, manifest["operation_id"])
+        binding = team_records._assignment_binding_sha(self.pending_assignment)
+        for row in manifest["files"]:
+            self.assertFalse((self.repo / row["path"]).exists())
+            self.assertNotEqual(subprocess.run(["git", "cat-file", "-e", "HEAD:" + row["path"]],
+                cwd=self.repo, capture_output=True).returncode, 0)
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "RESOLUTION_OBSERVATION_REQUIRED"):
+            self.resolve_fixture_assignment()
+        self.fixture.candidate.write_bytes(team_records.canonical_json(manifest))
+        self.assertEqual(self.integrate()["status"], "INTEGRATED")
+        self.assertEqual(self.fixture.current.read_bytes(), current)
+        stored = workflow_runtime._team_local_operation(self.repo, manifest["operation_id"])
+        self.assertEqual(stored["state"], "RESERVED")
+        self.assertEqual(stored["launch_binding"], reservation["launch_binding"])
+        self.assertEqual(stored["integration"]["state"], "COMPLETE")
+        confirmation = {"schema": "q3_team_effect_observation.v1", "operation_id": manifest["operation_id"],
+                        "outcome": "CONFIRMED", "evidence": {r["path"]: r["sha256"] for r in manifest["files"]}}
+        self.fixture.candidate.write_bytes(team_records.canonical_json(confirmation))
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "LAUNCH_OBSERVATION_REQUIRED"):
+            workflow_runtime.team_confirm_effect(self.repo, operation_id=manifest["operation_id"],
+                candidate=self.fixture.candidate, expected_sha256=workflow_runtime._resume_digest(self.fixture.candidate.read_bytes()))
+        self.assertEqual(self.observe_fixture_launch()["status"], "OBSERVED")
+        self.resolve_fixture_assignment()
+        row = workflow_runtime._team_assignments(self.repo)["assignments"][self.pending_assignment["assignment_id"]]
+        self.assertEqual(team_records._assignment_binding_sha(row["assignment"]), binding)
+        _, data, _ = workflow_runtime._team_current(self.repo)
+        data.update(revision=data["revision"] + 1, previous_sha256=workflow_runtime._resume_digest(current))
+        data["operation"].update(state="CONFIRMED", evidence=[self.launch_observation["provider_receipt_locator"]])
+        self.assertEqual(self.fixture.save(self.document(data), expected=data["previous_sha256"])["status"], "SAVED")
+        self.fixture.candidate.write_bytes(team_records.canonical_json(manifest))
+        local_bytes = (self.repo / ".git" / workflow_runtime.TEAM_LOCAL).read_bytes()
+        self.assertEqual(self.integrate()["status"], "NOOP")
+        self.assertEqual((self.repo / ".git" / workflow_runtime.TEAM_LOCAL).read_bytes(), local_bytes)
+        self.assertEqual(workflow_runtime._team_local_operation(self.repo, manifest["operation_id"])["state"], "CONFIRMED")
+
+    def test_first_launch_unknown_checkpoint_and_interrupted_intake_recover_same_action(self):
+        for after_copy in (False, True):
+            with self.subTest(after_copy=after_copy):
+                self.setUp()
+                manifest = self.integration_fixture(intake=True, parent_launch=True)
+                original, data, _ = workflow_runtime._team_current(self.repo)
+                confirmation = {"schema": "q3_team_effect_observation.v1", "operation_id": manifest["operation_id"],
+                                "outcome": "UNKNOWN", "evidence": data["source_manifest"]}
+                self.fixture.candidate.write_bytes(team_records.canonical_json(confirmation))
+                workflow_runtime.team_confirm_effect(self.repo, operation_id=manifest["operation_id"],
+                    candidate=self.fixture.candidate, expected_sha256=workflow_runtime._resume_digest(self.fixture.candidate.read_bytes()))
+                data.update(revision=data["revision"] + 1, previous_sha256=workflow_runtime._resume_digest(original))
+                data["operation"].update(state="UNKNOWN", evidence=["simulated lost provider confirmation"])
+                self.fixture.save(self.document(data), expected=data["previous_sha256"])
+                unknown = self.fixture.current.read_bytes()
+                self.assertNotEqual(unknown, original)
+                self.fixture.candidate.write_bytes(team_records.canonical_json(manifest))
+                real = workflow_runtime._resume_cas_bytes
+                def crash(repo, relative, before, after, epoch, **kwargs):
+                    if after_copy:
+                        real(repo, relative, before, after, epoch, **kwargs)
+                    raise RuntimeError("simulated first launch intake crash")
+                with mock.patch.object(workflow_runtime, "_resume_cas_bytes", side_effect=crash):
+                    with self.assertRaisesRegex(RuntimeError, "intake crash"):
+                        self.integrate()
+                with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "INTEGRATION_PENDING"):
+                    workflow_runtime.team_guard(self.repo, command="workflow-team-record", paths=[])
+                self.fixture.candidate.rename(self.fixture.candidate.with_suffix(".lost"))
+                with mock.patch.object(workflow_runtime, "team_reserve_effect", side_effect=AssertionError("no re-reservation")):
+                    recovered = workflow_runtime.team_integrate_candidate(self.repo, recover_operation=manifest["operation_id"])
+                self.assertEqual(recovered["status"], "INTEGRATED")
+                stored = workflow_runtime._team_local_operation(self.repo, manifest["operation_id"])
+                self.assertEqual(stored["state"], "UNKNOWN")
+                self.assertEqual(stored["integration"]["state"], "COMPLETE")
+                self.assertEqual(self.fixture.current.read_bytes(), unknown)
+                workflow_runtime._team_pending_guard(self.repo)
+                self.assertEqual(self.observe_fixture_launch()["status"], "OBSERVED")
+
+    def test_first_launch_intake_rejects_wrong_scope_and_conflicting_replay(self):
+        manifest = self.integration_fixture(intake=True, parent_launch=True)
+        for changes in ({"operation_id": "another-launch"}, {"epoch": 2}, {"expected_head": "f" * 40},
+                        {"implementer_assignment": "integration-checker"}, {"assignment_sha256": "f" * 64},
+                        {"mode": "REVIEWED_SOURCE", "checker_assignment": "integration-checker", "candidate_commit": "f" * 40}):
+            with self.subTest(changes=changes):
+                self.fixture.candidate.write_bytes(team_records.canonical_json({**manifest, **changes}))
+                with self.assertRaises(workflow_runtime.WorkflowRuntimeError):
+                    self.integrate()
+                self.assertTrue(all(not (self.repo / row["path"]).exists() for row in manifest["files"]))
+        self.fixture.candidate.write_bytes(team_records.canonical_json(manifest))
+        with workflow_runtime._execution_writer_epoch(self.repo):
+            with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "LOCK_COLLISION"):
+                self.integrate()
+        original, data, body = workflow_runtime._team_current(self.repo)
+        for mutate in (lambda d: d["operation"].update(command="dispatch-proshka"),
+                       lambda d: d["operation"]["subject"].update(sha256="f" * 64),
+                       lambda d: d["pins"].update(source_commit="f" * 40)):
+            altered = json.loads(json.dumps(data))
+            mutate(altered)
+            with mock.patch.object(workflow_runtime, "_team_current", return_value=(original, altered, body)):
+                with self.assertRaises(workflow_runtime.WorkflowRuntimeError):
+                    self.integrate()
+        self.integrate()
+        before = (self.repo / ".git" / workflow_runtime.TEAM_LOCAL).read_bytes()
+        changed = {**manifest, "files": manifest["files"][:1]}
+        self.fixture.candidate.write_bytes(team_records.canonical_json(changed))
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "PERSISTED_IDENTITY_CHANGED"):
+            self.integrate()
+        self.assertEqual((self.repo / ".git" / workflow_runtime.TEAM_LOCAL).read_bytes(), before)
+
+    def test_assignment_resolution_refuses_profile_owner_source_and_provider_drift(self):
+        self.integration_fixture(intake=True, parent_launch=True)
+        self.integrate()
+        self.observe_fixture_launch()
+        registry = self.repo / workflow_runtime.TEAM_ASSIGNMENTS
+        raw = registry.read_bytes()
+        for changes in ({"resolved_model": "different-model"}, {"resolved_effort": "max"}, {"owner_epoch": 2}):
+            with self.subTest(changes=changes), self.assertRaises((workflow_runtime.WorkflowRuntimeError, team_records.TeamRecordError)):
+                self.resolve_fixture_assignment(**changes)
+            self.assertEqual(registry.read_bytes(), raw)
+        for path in (self.source, self.repo / self.launch_observation["output_locator"],
+                     self.repo / self.launch_observation["provider_receipt_locator"]):
+            original = path.read_bytes()
+            path.write_bytes(original + b"changed\n")
+            with self.subTest(path=path), self.assertRaises(workflow_runtime.WorkflowRuntimeError):
+                self.resolve_fixture_assignment()
+            self.assertEqual(registry.read_bytes(), raw)
+            path.write_bytes(original)
+        with mock.patch.dict(os.environ, {"CODEX_THREAD_ID": "foreign-owner"}):
+            with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "OBSERVER_ONLY"):
+                self.resolve_fixture_assignment()
+        self.assertEqual(registry.read_bytes(), raw)
+
+    def test_first_launch_not_executed_keeps_completed_intake_without_confirming_launch(self):
+        manifest = self.integration_fixture(intake=True, parent_launch=True)
+        self.integrate()
+        confirmation = {"schema": "q3_team_effect_observation.v1", "operation_id": manifest["operation_id"],
+                        "outcome": "NOT_EXECUTED", "evidence": {r["path"]: r["sha256"] for r in manifest["files"]}}
+        self.fixture.candidate.write_bytes(team_records.canonical_json(confirmation))
+        workflow_runtime.team_confirm_effect(self.repo, operation_id=manifest["operation_id"],
+            candidate=self.fixture.candidate, expected_sha256=workflow_runtime._resume_digest(self.fixture.candidate.read_bytes()))
+        workflow_runtime._team_pending_guard(self.repo)
+        self.fixture.candidate.write_bytes(team_records.canonical_json(manifest))
+        before = (self.repo / ".git" / workflow_runtime.TEAM_LOCAL).read_bytes()
+        self.assertEqual(self.integrate()["status"], "NOOP")
+        self.assertEqual((self.repo / ".git" / workflow_runtime.TEAM_LOCAL).read_bytes(), before)
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "LAUNCH_RESERVATION_REQUIRED"):
+            self.observe_fixture_launch()
+
+    def test_unresolved_assignment_result_requires_same_actual_child_and_profile(self):
+        self.integration_fixture(intake=True, parent_launch=True)
+        self.integrate()
+        self.observe_fixture_launch()
+        result = {**self.launch_observation, "operation_id": "later-result", "phase": "RESULT", "state": "COMPLETED"}
+        for changes in ({"native_agent_id": "other-child"}, {"resolved_model": "other-model"},
+                        {"resolved_effort": "max"}, {"resolved_model": None, "resolved_effort": None}):
+            with self.subTest(changes=changes):
+                self.fixture.candidate.write_bytes(team_records.canonical_json({**result, **changes}))
+                with self.assertRaises((workflow_runtime.WorkflowRuntimeError, team_records.TeamRecordError)):
+                    workflow_runtime.team_observe_native(self.repo, candidate=self.fixture.candidate,
+                        expected_sha256=workflow_runtime._resume_digest(self.fixture.candidate.read_bytes()))
+                self.assertIsNone(workflow_runtime._team_local_operation(self.repo, "later-result"))
+        self.fixture.candidate.write_bytes(team_records.canonical_json(result))
+        self.assertEqual(workflow_runtime.team_observe_native(self.repo, candidate=self.fixture.candidate,
+            expected_sha256=workflow_runtime._resume_digest(self.fixture.candidate.read_bytes()))["status"], "OBSERVED")
 
     def test_integration_copies_exact_bytes_preserves_foreign_and_replays(self):
         manifest = self.integration_fixture()
@@ -5746,8 +5969,10 @@ class TeamRuntimeTests(unittest.TestCase):
         private_local.write_bytes(workflow_runtime._team_json(local))
         private_local.chmod(0o600)
 
+        # Candidate objects exist only in the isolated engine, never in the target.
+        git(engine, "fetch", "--no-tags", "--no-write-fetch-head", str(destination), expected_head)
         candidate_index = root / "candidate.index"
-        git(destination, "read-tree", expected_head, index=candidate_index)
+        git(engine, "read-tree", expected_head, index=candidate_index)
         before_runtime = (destination / "orchestrator/workflow_runtime.py").read_bytes()
         after_runtime = before_runtime + b"\n# candidate runtime replacement\n" + b"# padding\n" * 150000
         before_target = (destination / "zz-integration-target.txt").read_bytes()
@@ -5757,8 +5982,8 @@ class TeamRuntimeTests(unittest.TestCase):
             ("orchestrator/workflow_runtime.py", before_runtime, after_runtime),
             ("zz-integration-target.txt", before_target, after_target),
         ):
-            blob = git(destination, "hash-object", "-w", "--stdin", input=after)
-            git(destination, "update-index", "--cacheinfo", "100644," + blob + "," + path,
+            blob = git(engine, "hash-object", "-w", "--stdin", input=after)
+            git(engine, "update-index", "--cacheinfo", "100644," + blob + "," + path,
                 index=candidate_index)
             candidate_files.append({
                 "path": path,
@@ -5766,9 +5991,9 @@ class TeamRuntimeTests(unittest.TestCase):
                 "before_sha256": workflow_runtime._resume_digest(before),
                 "sha256": workflow_runtime._resume_digest(after),
             })
-        candidate_tree = git(destination, "write-tree", index=candidate_index)
+        candidate_tree = git(engine, "write-tree", index=candidate_index)
         candidate_commit = git(
-            destination, "commit-tree", candidate_tree, "-p", expected_head,
+            engine, "commit-tree", candidate_tree, "-p", expected_head,
             input=b"Fresh process candidate\n",
         )
 
@@ -5903,6 +6128,22 @@ class TeamRuntimeTests(unittest.TestCase):
             "private_local": private_local,
         }
 
+    def test_separate_source_engine_dirty_bytes_fail_before_canonical_copy(self):
+        fixture = self._fresh_process_integration_fixture()
+        engine, destination = fixture["engine"], fixture["destination"]
+        source = engine / "orchestrator/workflow_runtime.py"
+        source.write_bytes(source.read_bytes() + b"\n# simulated uncommitted engine drift\n")
+        before = fixture["private_local"].read_bytes()
+        result = subprocess.run([sys.executable, str(source), "--root", str(destination),
+            "team-integrate-candidate", "--candidate", str(fixture["manifest_path"])],
+            cwd=engine, env={**os.environ, "CODEX_THREAD_ID": fixture["manifest"]["owner_task"],
+                             "Q3_OWNER_EPOCH": "1", "PYTHONPATH": ""}, capture_output=True, text=True)
+        self.assertEqual(result.returncode, 2, result.stdout + result.stderr)
+        self.assertIn("GIT_OBSERVATION_FAILED:diff", result.stdout)
+        self.assertEqual(fixture["private_local"].read_bytes(), before)
+        self.assertEqual((destination / "orchestrator/workflow_runtime.py").read_bytes(), fixture["before_runtime"])
+        self.assertEqual((destination / "zz-integration-target.txt").read_bytes(), fixture["before_target"])
+
     def test_fresh_process_recovers_persisted_manifest_after_runtime_write_crash(self):
         fixture = self._fresh_process_integration_fixture()
         engine = fixture["engine"]
@@ -5920,6 +6161,9 @@ class TeamRuntimeTests(unittest.TestCase):
             "--root", str(destination), "team-integrate-candidate",
             "--candidate", str(manifest_path),
         ]
+        target_refs = subprocess.check_output(["git", "show-ref"], cwd=destination)
+        self.assertNotEqual(subprocess.run(["git", "cat-file", "-e", manifest["candidate_commit"]],
+            cwd=destination, capture_output=True).returncode, 0)
         process = subprocess.Popen(
             command, cwd=engine, env=environment,
             stdout=subprocess.PIPE, stderr=subprocess.PIPE,
@@ -6004,6 +6248,9 @@ class TeamRuntimeTests(unittest.TestCase):
         )
         self.assertEqual(subprocess.check_output(["git", "remote"], cwd=engine, text=True), "")
         self.assertEqual(subprocess.check_output(["git", "remote"], cwd=destination, text=True), "")
+        self.assertEqual(subprocess.check_output(["git", "show-ref"], cwd=destination), target_refs)
+        self.assertNotEqual(subprocess.run(["git", "cat-file", "-e", manifest["candidate_commit"]],
+            cwd=destination, capture_output=True).returncode, 0)
         completed = json.loads(fixture["private_local"].read_bytes())
         completed_record = completed["operations"][manifest["operation_id"]]
         self.assertEqual(completed_record["state"], "CONFIRMED")
@@ -6055,10 +6302,10 @@ class TeamRuntimeTests(unittest.TestCase):
         for value, error in ((blob, "COMMIT_OBJECT_REQUIRED"), (unrelated, "GIT_OBSERVATION_FAILED:merge-base")):
             changed = {**manifest, "candidate_commit": value}
             with self.subTest(candidate=value), self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, error):
-                workflow_runtime._team_integration_review(self.repo, data, changed, team_records.canonical_json(changed))
+                workflow_runtime._team_integration_review(self.repo, data, changed, team_records.canonical_json(changed), engine=self.repo)
         changed = {**manifest, "expected_head": manifest["candidate_commit"]}
         with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "INDEPENDENT_BASE_REVIEW_REQUIRED"):
-            workflow_runtime._team_integration_review(self.repo, data, changed, team_records.canonical_json(changed))
+            workflow_runtime._team_integration_review(self.repo, data, changed, team_records.canonical_json(changed), engine=self.repo)
 
     def test_integration_recovers_persisted_manifest_but_rejects_changed_engine(self):
         manifest = self.integration_fixture()
@@ -8025,6 +8272,8 @@ class TeamRecordsTests(unittest.TestCase):
         assignment_id: str = "assignment-team-records",
         operation: str = "CREATE",
         previous: str = "ABSENT",
+        resolved_model: str | None = "gpt-5.6-luna",
+        resolved_effort: str | None = "high",
     ) -> dict[str, object]:
         return {
             "schema": team_records.ASSIGNMENT_SCHEMA,
@@ -8037,8 +8286,8 @@ class TeamRecordsTests(unittest.TestCase):
             "assignee": "worker-task",
             "requested_model": "gpt-5.6-luna",
             "requested_effort": "high",
-            "resolved_model": "gpt-5.6-luna",
-            "resolved_effort": "high",
+            "resolved_model": resolved_model,
+            "resolved_effort": resolved_effort,
             "role": "implementation",
             "subject": "team records candidate",
             "base_commit": cls.SHA,
@@ -8055,8 +8304,18 @@ class TeamRecordsTests(unittest.TestCase):
         }
 
     @classmethod
-    def provenance_assignment(cls, *, role: str = "independent-checker") -> dict[str, object]:
-        assignment = cls.assignment(assignment_id="assignment-1")
+    def provenance_assignment(
+        cls,
+        *,
+        role: str = "independent-checker",
+        resolved_model: str | None = "gpt-5.6-luna",
+        resolved_effort: str | None = "high",
+    ) -> dict[str, object]:
+        assignment = cls.assignment(
+            assignment_id="assignment-1",
+            resolved_model=resolved_model,
+            resolved_effort=resolved_effort,
+        )
         assignment["assignee"] = "reporter-task"
         assignment["role"] = role
         return assignment
@@ -8703,6 +8962,197 @@ class TeamRecordsTests(unittest.TestCase):
                 self.assignment(operation="RETRY", previous="b" * 64),
                 hashlib.sha256(updated).hexdigest(),
             )
+
+    def test_assignment_resolution_pair_and_status_requirements(self):
+        raw = b"# pending assignments\n"
+        for status in sorted(team_records.ASSIGNMENT_STATUSES):
+            assignment = self.assignment(
+                assignment_id="pending-" + status.lower(),
+                resolved_model=None,
+                resolved_effort=None,
+            )
+            assignment["status"] = status
+            with self.subTest(status=status):
+                if status in {"RUNNING", "IN_PROGRESS", "DONE", "COMPLETED"}:
+                    with self.assertRaisesRegex(
+                        team_records.TeamRecordError,
+                        "ASSIGNMENT_RESOLUTION_REQUIRED",
+                    ):
+                        team_records.prepare_assignment(
+                            raw, assignment, hashlib.sha256(raw).hexdigest()
+                        )
+                else:
+                    prepared, _ = team_records.prepare_assignment(
+                        raw, assignment, hashlib.sha256(raw).hexdigest()
+                    )
+                    stored = next(
+                        iter(team_records.read_registry(prepared, "assignments")["assignments"].values())
+                    )["assignment"]
+                    self.assertIsNone(stored["resolved_model"])
+                    self.assertIsNone(stored["resolved_effort"])
+
+        for field in ("resolved_model", "resolved_effort"):
+            assignment = self.assignment(
+                assignment_id="mixed-" + field,
+                resolved_model=None,
+                resolved_effort=None,
+            )
+            assignment[field] = "gpt-5.6-terra" if field == "resolved_model" else "high"
+            with self.subTest(field=field), self.assertRaisesRegex(
+                team_records.TeamRecordError,
+                "ASSIGNMENT_RESOLUTION_INVALID",
+            ):
+                team_records.prepare_assignment(
+                    raw, assignment, hashlib.sha256(raw).hexdigest()
+                )
+
+    def test_assignment_resolution_update_is_one_way_and_full_hashes(self):
+        raw = b"# pending assignments\n"
+        pending = self.assignment(
+            assignment_id="resolution-update",
+            resolved_model=None,
+            resolved_effort=None,
+        )
+        created, _ = team_records.prepare_assignment(
+            raw, pending, hashlib.sha256(raw).hexdigest()
+        )
+        created_registry = team_records.read_registry(created, "assignments")
+        current = created_registry["assignments"][pending["assignment_id"]]
+
+        resolved = self.assignment(
+            assignment_id=pending["assignment_id"],
+            operation="UPDATE",
+            previous=team_records._assignment_state_sha(current["assignment"]),
+            resolved_model="gpt-5.6-terra",
+            resolved_effort="xhigh",
+        )
+        resolved["status"] = "RUNNING"
+        resolved["previous_assignment_event_sha256"] = current["last_event_sha256"]
+        updated, _ = team_records.prepare_assignment(
+            created, resolved, hashlib.sha256(created).hexdigest()
+        )
+        updated_registry = team_records.read_registry(updated, "assignments")
+        stored = updated_registry["assignments"][pending["assignment_id"]]
+        event = updated_registry["events"][-1]
+        self.assertEqual(
+            (stored["assignment"]["resolved_model"], stored["assignment"]["resolved_effort"]),
+            ("gpt-5.6-terra", "xhigh"),
+        )
+        self.assertEqual(event["payload_sha256"], team_records._payload_sha(event["payload"]))
+        self.assertEqual(
+            event["previous_state_sha256"],
+            team_records._assignment_state_sha(current["assignment"]),
+        )
+        self.assertEqual(team_records._assignment_binding_view(pending),
+                         team_records._assignment_binding_view(resolved))
+        self.assertEqual(team_records._assignment_binding_sha(pending),
+                         team_records._assignment_binding_sha(resolved))
+        self.assertIn("requested_model", team_records._assignment_binding_view(pending))
+        self.assertIn("requested_effort", team_records._assignment_binding_view(pending))
+        self.assertNotIn("resolved_model", team_records._assignment_binding_view(pending))
+        self.assertNotIn("resolved_effort", team_records._assignment_binding_view(pending))
+
+        for label, model, effort in (
+            ("reverse", None, None),
+            ("changed", "gpt-5.6-luna", "high"),
+        ):
+            candidate = self.assignment(
+                assignment_id=pending["assignment_id"],
+                operation="UPDATE",
+                previous=team_records._assignment_state_sha(stored["assignment"]),
+                resolved_model=model,
+                resolved_effort=effort,
+            )
+            candidate["status"] = "CANCELLED" if label == "reverse" else "RUNNING"
+            candidate["previous_assignment_event_sha256"] = stored["last_event_sha256"]
+            with self.subTest(label=label), self.assertRaisesRegex(
+                team_records.TeamRecordError,
+                "ASSIGNMENT_RESOLUTION_IMMUTABLE",
+            ):
+                team_records.prepare_assignment(
+                    updated, candidate, hashlib.sha256(updated).hexdigest()
+                )
+
+    def test_native_observations_bind_actual_profile_before_assignment_resolution(self):
+        pending = self.provenance_assignment(
+            resolved_model=None,
+            resolved_effort=None,
+        )
+        legacy = b"legacy assignments\n"
+        raw, _ = team_records.prepare_assignment(
+            legacy, pending, hashlib.sha256(legacy).hexdigest()
+        )
+        registry = team_records.read_registry(raw, "assignments")
+
+        actual = dict(pending)
+        actual.update(resolved_model="gpt-5.6-terra", resolved_effort="xhigh")
+        context = self.provenance_context(actual)
+        result = team_records.validate_report_provenance(self.report(), registry, context)
+        self.assertEqual(result["assignment_id"], pending["assignment_id"])
+
+        mismatched_observations = [
+            dict(item) for item in context.observations[pending["assignment_id"]]
+        ]
+        mismatched_observations[1]["resolved_effort"] = "high"
+        mismatched_context = team_records.TrustedTeamContext(
+            owner_task=context.owner_task,
+            owner_host=context.owner_host,
+            owner_installation_ref=context.owner_installation_ref,
+            owner_epoch=context.owner_epoch,
+            actor_id=context.actor_id,
+            observations={pending["assignment_id"]: mismatched_observations},
+        )
+        with self.assertRaisesRegex(
+            team_records.TeamRecordError,
+            "NATIVE_PROFILE_BINDING_INVALID",
+        ):
+            team_records.validate_report_provenance(self.report(), registry, mismatched_context)
+
+        missing_observations = [
+            dict(item) for item in context.observations[pending["assignment_id"]]
+        ]
+        missing_observations[0].update(resolved_model=None, resolved_effort=None)
+        missing_context = team_records.TrustedTeamContext(
+            owner_task=context.owner_task,
+            owner_host=context.owner_host,
+            owner_installation_ref=context.owner_installation_ref,
+            owner_epoch=context.owner_epoch,
+            actor_id=context.actor_id,
+            observations={pending["assignment_id"]: missing_observations},
+        )
+        with self.assertRaisesRegex(
+            team_records.TeamRecordError,
+            "NATIVE_RESOLUTION_REQUIRED",
+        ):
+            team_records.validate_report_provenance(self.report(), registry, missing_context)
+
+        current = registry["assignments"][pending["assignment_id"]]
+        resolved = dict(pending)
+        resolved.update(
+            operation="UPDATE",
+            status="RUNNING",
+            resolved_model=actual["resolved_model"],
+            resolved_effort=actual["resolved_effort"],
+            previous_assignment_event_sha256=current["last_event_sha256"],
+            previous_assignment_sha256=team_records._assignment_state_sha(current["assignment"]),
+        )
+        resolved_raw, _ = team_records.prepare_assignment(
+            raw, resolved, hashlib.sha256(raw).hexdigest()
+        )
+        resolved_registry = team_records.read_registry(resolved_raw, "assignments")
+        self.assertEqual(
+            team_records.validate_report_provenance(self.report(), resolved_registry, context)["assignment_id"],
+            pending["assignment_id"],
+        )
+
+        wrong_actual = dict(actual)
+        wrong_actual.update(resolved_model="gpt-5.6-luna", resolved_effort="high")
+        wrong_context = self.provenance_context(wrong_actual)
+        with self.assertRaisesRegex(
+            team_records.TeamRecordError,
+            "NATIVE_ASSIGNMENT_BINDING_INVALID",
+        ):
+            team_records.validate_report_provenance(self.report(), resolved_registry, wrong_context)
 
     def test_global_chain_and_entity_predecessors_interleave(self):
         legacy = b"legacy\n"

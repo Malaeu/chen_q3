@@ -113,6 +113,9 @@ ASSIGNMENT_STATUSES = frozenset(
         "RETRY_PENDING",
     }
 )
+ASSIGNMENT_RESOLUTION_REQUIRED_STATUSES = frozenset(
+    {"RUNNING", "IN_PROGRESS", "DONE", "COMPLETED"}
+)
 NATIVE_OBSERVATION_SCHEMA = "q3_team_assignment_observation.v1"
 REPAIR_REVIEW_SCHEMA = "q3_repair_review.v1"
 NATIVE_OBSERVATION_REQUIRED_FIELDS = frozenset(
@@ -667,6 +670,31 @@ def _validate_repair_review(payload: Mapping[str, Any]) -> dict[str, Any]:
     return result
 
 
+def _resolution_pair(
+    model: object,
+    effort: object,
+    *,
+    model_field: str,
+    effort_field: str,
+    allow_unresolved: bool,
+    pair_error: str,
+    required_error: str,
+    value_error: str,
+) -> tuple[str | None, str | None]:
+    """Validate a model/effort pair without accepting a half-observation."""
+    if (model is None) != (effort is None):
+        _fail(pair_error, f"{model_field}/{effort_field}")
+    if model is None:
+        if allow_unresolved:
+            return None, None
+        _fail(required_error, f"{model_field}/{effort_field}")
+    model_value = _text(model, model_field)
+    effort_value = _text(effort, effort_field)
+    if effort_value not in MODEL_EFFORTS:
+        _fail(value_error, effort_field)
+    return model_value, effort_value
+
+
 def _validate_assignment(payload: Mapping[str, Any]) -> dict[str, Any]:
     _require_closed(payload, ASSIGNMENT_REQUIRED_FIELDS)
     if payload["schema"] != ASSIGNMENT_SCHEMA:
@@ -686,12 +714,22 @@ def _validate_assignment(payload: Mapping[str, Any]) -> dict[str, Any]:
     result["owner_installation_ref"] = _sha_field(result["owner_installation_ref"], "owner_installation_ref")
     if not isinstance(result["owner_epoch"], int) or isinstance(result["owner_epoch"], bool) or result["owner_epoch"] < 0:
         _fail("FIELD_INVALID", "owner_epoch")
-    for field in ("requested_model", "resolved_model"):
-        result[field] = _text(result[field], field)
-    for field in ("requested_effort", "resolved_effort"):
-        result[field] = _text(result[field], field)
-        if result[field] not in MODEL_EFFORTS:
-            _fail("FIELD_INVALID", field)
+    result["requested_model"] = _text(result["requested_model"], "requested_model")
+    result["requested_effort"] = _text(result["requested_effort"], "requested_effort")
+    if result["requested_effort"] not in MODEL_EFFORTS:
+        _fail("FIELD_INVALID", "requested_effort")
+    resolved_model, resolved_effort = _resolution_pair(
+        result["resolved_model"],
+        result["resolved_effort"],
+        model_field="resolved_model",
+        effort_field="resolved_effort",
+        allow_unresolved=True,
+        pair_error="ASSIGNMENT_RESOLUTION_INVALID",
+        required_error="ASSIGNMENT_RESOLUTION_REQUIRED",
+        value_error="FIELD_INVALID",
+    )
+    result["resolved_model"] = resolved_model
+    result["resolved_effort"] = resolved_effort
     if result["operation"] not in ASSIGNMENT_OPERATIONS:
         _fail("FIELD_INVALID", "operation")
     result["base_commit"] = _commit_field(result["base_commit"], "base_commit")
@@ -705,6 +743,11 @@ def _validate_assignment(payload: Mapping[str, Any]) -> dict[str, Any]:
     result["next_check"] = _timestamp(result["next_check"], "next_check")
     if result["status"] not in ASSIGNMENT_STATUSES:
         _fail("FIELD_INVALID", "status")
+    if (
+        result["status"] in ASSIGNMENT_RESOLUTION_REQUIRED_STATUSES
+        and resolved_model is None
+    ):
+        _fail("ASSIGNMENT_RESOLUTION_REQUIRED", result["status"])
     result["previous_assignment_sha256"] = _sha_field(
         result["previous_assignment_sha256"], "previous_assignment_sha256", allow_absent=True
     )
@@ -801,6 +844,17 @@ def _validate_assignment_owner(assignment: Mapping[str, Any], context: TrustedTe
         _fail("OWNER_CONTEXT_MISMATCH", "owner_epoch")
 
 
+def _validate_assignment_resolution_update(
+    current: Mapping[str, Any], proposed: Mapping[str, Any]
+) -> None:
+    """Permit one null-to-concrete resolution and then keep it immutable."""
+    # Registry parsing and candidate validation have already checked both pairs.
+    current_pair = (current["resolved_model"], current["resolved_effort"])
+    proposed_pair = (proposed["resolved_model"], proposed["resolved_effort"])
+    if current_pair != (None, None) and proposed_pair != current_pair:
+        _fail("ASSIGNMENT_RESOLUTION_IMMUTABLE", "resolved model/effort")
+
+
 def _validate_native_observation(
     assignment: Mapping[str, Any], observation: Mapping[str, Any], *, phase: str
 ) -> dict[str, Any]:
@@ -835,17 +889,38 @@ def _validate_native_observation(
         _fail("NATIVE_ASSIGNMENT_BINDING_INVALID", f"{phase}.requested_model")
     if observation["requested_effort"] != assignment["requested_effort"]:
         _fail("NATIVE_ASSIGNMENT_BINDING_INVALID", f"{phase}.requested_effort")
-    if observation["resolved_model"] != assignment["resolved_model"]:
-        _fail("NATIVE_ASSIGNMENT_BINDING_INVALID", f"{phase}.resolved_model")
-    if observation["resolved_effort"] != assignment["resolved_effort"]:
-        _fail("NATIVE_ASSIGNMENT_BINDING_INVALID", f"{phase}.resolved_effort")
     _text(observation["native_agent_id"], f"{phase}.native_agent_id")
     _sha_field(observation["owner_installation_ref"], f"{phase}.owner_installation_ref")
     if not isinstance(observation["owner_epoch"], int) or isinstance(observation["owner_epoch"], bool):
         _fail("NATIVE_ASSIGNMENT_BINDING_INVALID", f"{phase}.owner_epoch")
-    for field in ("requested_effort", "resolved_effort"):
-        if observation[field] not in MODEL_EFFORTS:
-            _fail("NATIVE_ASSIGNMENT_BINDING_INVALID", f"{phase}.{field}")
+    _text(observation["requested_model"], f"{phase}.requested_model")
+    if observation["requested_effort"] not in MODEL_EFFORTS:
+        _fail("NATIVE_ASSIGNMENT_BINDING_INVALID", f"{phase}.requested_effort")
+    observed_model, observed_effort = _resolution_pair(
+        observation["resolved_model"],
+        observation["resolved_effort"],
+        model_field=f"{phase}.resolved_model",
+        effort_field=f"{phase}.resolved_effort",
+        allow_unresolved=False,
+        pair_error="NATIVE_ASSIGNMENT_BINDING_INVALID",
+        required_error="NATIVE_RESOLUTION_REQUIRED",
+        value_error="NATIVE_ASSIGNMENT_BINDING_INVALID",
+    )
+    assignment_model, assignment_effort = _resolution_pair(
+        assignment["resolved_model"],
+        assignment["resolved_effort"],
+        model_field="resolved_model",
+        effort_field="resolved_effort",
+        allow_unresolved=True,
+        pair_error="ASSIGNMENT_RESOLUTION_INVALID",
+        required_error="ASSIGNMENT_RESOLUTION_REQUIRED",
+        value_error="FIELD_INVALID",
+    )
+    if assignment_model is not None:
+        if observed_model != assignment_model:
+            _fail("NATIVE_ASSIGNMENT_BINDING_INVALID", f"{phase}.resolved_model")
+        if observed_effort != assignment_effort:
+            _fail("NATIVE_ASSIGNMENT_BINDING_INVALID", f"{phase}.resolved_effort")
     _locator(observation["output_locator"], f"{phase}.output_locator")
     _sha_field(observation["output_sha256"], f"{phase}.output_sha256")
     _locator(observation["provider_receipt_locator"], f"{phase}.provider_receipt_locator")
@@ -900,9 +975,19 @@ def _validated_assignment_observation(
         _fail("NATIVE_AGENT_BINDING_INVALID", assignment["assignment_id"])
     if launch["subject"] != result["subject"]:
         _fail("NATIVE_SUBJECT_BINDING_INVALID", assignment["assignment_id"])
+    launch_checked = _validate_native_observation(assignment, launch, phase="LAUNCH")
+    result_checked = _validate_native_observation(assignment, result, phase="RESULT")
+    if (
+        launch_checked["resolved_model"],
+        launch_checked["resolved_effort"],
+    ) != (
+        result_checked["resolved_model"],
+        result_checked["resolved_effort"],
+    ):
+        _fail("NATIVE_PROFILE_BINDING_INVALID", assignment["assignment_id"])
     return (
-        _validate_native_observation(assignment, launch, phase="LAUNCH"),
-        _validate_native_observation(assignment, result, phase="RESULT"),
+        launch_checked,
+        result_checked,
     )
 
 
@@ -1361,6 +1446,8 @@ ASSIGNMENT_BINDING_EXCLUDED_FIELDS = frozenset(
         "next_check",
         "previous_assignment_event_sha256",
         "previous_assignment_sha256",
+        "resolved_model",
+        "resolved_effort",
     }
 )
 ASSIGNMENT_UPDATE_MUTABLE_FIELDS = frozenset(
@@ -1519,6 +1606,7 @@ def _apply_assignment_event(
     else:
         if current is None or payload["previous_assignment_sha256"] != _assignment_state_sha(current["assignment"]):
             _fail("ASSIGNMENT_PRECONDITION", assignment_id)
+        _validate_assignment_resolution_update(current["assignment"], payload)
         if _assignment_immutable_view(payload) != _assignment_immutable_view(current["assignment"]):
             _fail("ASSIGNMENT_IMMUTABLE_FIELD", assignment_id)
     if payload["previous_assignment_event_sha256"] != (
@@ -1886,6 +1974,7 @@ def prepare_assignment(
             _fail("ASSIGNMENT_UNKNOWN", assignment["assignment_id"])
         if assignment["previous_assignment_sha256"] != _assignment_state_sha(current["assignment"]):
             _fail("ASSIGNMENT_PRECONDITION", assignment["assignment_id"])
+        _validate_assignment_resolution_update(current["assignment"], assignment)
         if _assignment_immutable_view(assignment) != _assignment_immutable_view(current["assignment"]):
             _fail("ASSIGNMENT_IMMUTABLE_FIELD", assignment["assignment_id"])
     previous_assignment_event = current["last_event_sha256"] if current is not None else "ABSENT"
