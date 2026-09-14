@@ -153,11 +153,33 @@
     "numerical_campaign": false
   },
   "delivery": {
-    "status": "NOT_SENT; exact request independently reviewed, committing for registered review-plan and dispatch",
+    "status": "DELIVERED_PENDING_MATHEMATICAL_RESULT",
     "living_chat": "6aa52001-4094-83eb-9520-01a09f54eff2",
     "chat_idle_observed": true,
     "chat_title": "Математическая цель и шаг",
     "last_completed_request": "NULLVAR; no repeated dispatch",
-    "expected_response": "docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_GAMMARECIP_2026-09-14.md"
+    "expected_response": "docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_GAMMARECIP_2026-09-14.md",
+    "verified_at": "2026-09-14T18:23:17.331574+00:00",
+    "request_commit": "65c4a563ce4319a595a17e7c264dbbd77f1672e1",
+    "published_queue_commit": "716df7ba3578390b494d2d2e4225bce6fac187f3",
+    "review_plan": "REVIEW_DISPATCH_READY; holds[]; missing OPEN queue repaired in isolated worktree",
+    "owner_transport_override": "Explicit owner GitHub-only instruction and living6aa52001; canonical attachment/chat fields not rebound",
+    "evidence": "read_thread idle before, active after; browser1/tab2 reloaded: exact GAMMARECIP notice AX65, empty composer AX71, Stop AX75; no duplicate send or Answer now"
+  },
+  "scalar_lift_test": {
+    "path": "docs/Codex/REPORT_2026-09-14_GAMMA_SCALAR_LIFT_TEST.md",
+    "sha256": "b61e713d5a0d0d0a2e083c9f0ee48b625b41f7b4182803897c6a5b4aa3d42774",
+    "reviewed_draft_sha256": "5fcd71536a5d2765539d57e63195d9a02a26cd18deb3039974ae99b2e0bbe474",
+    "reviewer": "/root/sibling5_check",
+    "verdict": "CLEAN",
+    "post_review_change": "STATUS only; mathematical text unchanged",
+    "scope": "No scalar potential for this specific radial Fourier family with any fixed power normalization, N>=2. M_N real-zero preservation still OPEN.",
+    "wigner_source": {
+      "url": "https://doi.org/10.1007/s13163-019-00335-w",
+      "read_scope": "Equation1, Examples3/5, outlook before section4; not a complete article audit",
+      "extracted_snapshot_sha256": "ec3a396131173d78c4a1112e962f184a547a72c9f8cd8a941667f53f1e21e3c0",
+      "hash_type": "WEB_EXTRACTION_SNAPSHOT_NOT_RAW_HTML",
+      "status": "EXCLUDED_AS_PRESERVER_DIFFERENT_ZERO_DOMAIN_AND_INPUT"
+    }
   }
 }
