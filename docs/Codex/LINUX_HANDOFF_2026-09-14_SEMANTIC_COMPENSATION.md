@@ -96,7 +96,19 @@ For the reflected interval J=(0,log(2)/2), anchor a in J, D_a=V(a,a),
     dmu_a = 2(t+a) f(t+a)^2 dt / D_a,
     r_x = f(t+x)/f(t+a),     h_a = 1/[2(t+a)],
     A_x = [1+(x-a)h_a]r_x,   B_x = (x-a)h_a r_x,
-    S_a(x,y) = V(x,y)-V(x,a)V(a,y)/D_a,
+    S_a(x,y) = V(x,y)-V(x,a)V(a,y)/D_a.
+
+For any finite nodes x_1,...,x_N in J and coefficients c_1,...,c_N in C,
+all sums below use those same nodes and coefficients:
+
+    A_c(t) = sum_i c_i A_(x_i)(t),
+    B_c(t) = sum_i c_i B_(x_i)(t),
+    S_a[c] = sum_(i,j) conjugate(c_i) S_a(x_i,x_j) c_j,
+    E_mu Z = integral Z dmu_a,
+    Var_mu(A_c) = E_mu|A_c-E_mu A_c|^2.
+
+The exact all-row identity is
+
     S_a[c]/D_a = Var_mu(A_c) - E_mu|B_c|^2.
 
 The comparison covariance Var_mu(A_c) is strictly positive for any nonzero
