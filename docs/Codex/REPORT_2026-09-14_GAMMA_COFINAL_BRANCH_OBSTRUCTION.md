@@ -1,13 +1,16 @@
 # Branch obstruction for the reciprocal finite-gamma family
 
-STATUS: INDEPENDENTLY_REVIEWED_PAPER_RESULT; COAUTHOR_AUDIT_PENDING.
+STATUS: INDEPENDENTLY_REVIEWED_PAPER_RESULT; COAUTHOR_AUDIT_ACCEPTED.
+Audit: 5189493584c0f56074eb42fd7b064f4b4346830a,
+docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_GAMMABRANCH_2026-09-14.md.
+Original B1-B8 audit input remains pinned at 15fe3eb8ee19c85c51f3ad2984583dc95a0af2a1.
 SOURCE: gamma reciprocity bridge at 65c4a563ce4319a595a17e7c264dbbd77f1672e1,
 SHA256 7c641d8a055bffc80fa2ed8d1ff437c1a47d6d0dfe3b82f9fa2533db02bda621.
 CONSUMPTION: INCOMPLETE_NO_CONSUMABLE_TARGET; no RH or canonical admission.
 
-Proposed result: for every integer N>=13 the exact auxiliary transform M_N
-has infinitely many nonreal zeros. If the proof below survives review, the
-cofinal real-zero criterion for this particular family is unavailable, even
+Reviewed result: for every integer N>=13 the exact auxiliary transform M_N
+has infinitely many nonreal zeros. The cofinal real-zero criterion for this
+particular family is therefore unavailable, even
 though its analytic convergence to the actual xi function remains correct.
 This is not a negative witness for the actual theta form and does not refute
 RH. No numerical zero search, quadrature, or finite-grid sign test is used.
