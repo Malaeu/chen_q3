@@ -1,14 +1,14 @@
 ---
 schema: q3_resume.v2
-revision: 183
-observed_at: '2026-09-14T12:32:00.530635+00:00'
-previous_sha256: db3a8737218437cf8cfcd1aaef5257f1aa1d8c206daadbe7c8aad82aed089fb0
+revision: 195
+observed_at: '2026-09-14T14:05:58.639040+00:00'
+previous_sha256: 18bca805d381f0d109f915983aba56fb0372bc3e675453111df017c0219514fc
 owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
 owner_host_id: local
 reconciliation_pending: false
 recovery_from: null
 pins:
-  head: 8417622b36fa90debc3e58fb1e5fd980f62f35d0
+  head: f6231d59eec72ba78a397dd2c73d205df34dc2c8
   physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
   source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
   request_id: REQ-2026-09-11-DENSITY
@@ -69,15 +69,15 @@ stages:
 operation:
   kind: PUBLISH
   state: INTENT
-  id: LINUX_SYNC_CLOSEOUT_PUBLICATION_20260914
+  id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
   evidence: []
   subject:
     kind: REPAIR
-    id: LINUX_SYNC_CLOSEOUT_PUBLICATION_20260914
-    sha256: 8398dda64c1b44acf9d44136f9def56438f3c3a153fd82ac5d43319f6b8eec82
+    id: SCHUR_ANCHOR_ANALYTIC_EVIDENCE_20260914
+    sha256: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
   command: publication
   inputs:
-    docs/session_protocols/team-evidence-8398dda64c1b44acf9d44136f9def56438f3c3a153fd82ac5d43319f6b8eec82.bin: 8398dda64c1b44acf9d44136f9def56438f3c3a153fd82ac5d43319f6b8eec82
+    docs/session_protocols/team-evidence-6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad.bin: 6ab5929be0a00b02243170d35b2ff181765f2a34f083b2dee9ea622a8f4b16ad
 source_manifest:
   docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
   docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
@@ -96,7 +96,12 @@ ownership:
 RH remains unproved; PX_RH_CLAIM NOT_MADE. Actual Mac history5987b887 is merged.
 Latest frontier: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
 PAPER all raw two-node positivity is not all-rank positivity or an RH proof.
-Exact theorem/consumer edge remains unbound; no mathematical dispatch/admission.
+Exact theorem/consumer edge remains unbound; no mathematical supplier dispatch/admission.
+Owner-directed isolated analytical review completed: exact anchored covariance
+identity S_a/D_a = Cov(A)-Gram(B), with strictly positive comparison covariance
+for every finite distinct non-anchor theta node family. Full residual sign OPEN.
+Note evidence: docs/session_protocols/team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin
+Independent review: docs/session_protocols/team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin
 
 ## Confirmed and candidate results
 Source repair f37c5de40b4d5b7e76b89eabc28693bba1fae45a and true merge
@@ -108,14 +113,25 @@ Registered semantic refresh PASS,3326sources+manifest; repeat close exit0,
 FRESH and zero repairs. ask.sh VILLAINPHI exit0/ASK_STATUS:HITS.
 
 ## Next action
-Finish exact closeout evidence publication. Technical Linux sync is complete.
+Technical Linux sync and closeout publication are complete at f6231d59eec72ba78a397dd2c73d205df34dc2c8.
 Continue the existing physical task from canonical plan; use the incoming Mac
 SCHUR repeatability brief as the mathematical source, never restart old research.
 Production HOLD is mathematical admission debt, not a publication failure.
+Owner instruction 2026-09-14: first pure mathematical derivation and analytical
+agreement, only then numerical tests and formalization. The proposed C_V
+determinant scan is deferred. Full-V raw-two-shift intake and the conditional
+Schur repeatability report already exist in the merged Mac history; no repeat
+intake or research restart. C_V positivity is a stronger sufficient route,
+not a proved property of theta. First unpaid sign: the full Schur residual. Exact current obligation is the
+all-row inequality E|B_c|^2 <= Var(A_c) for the full theta source.
+A4 is equivalent to the original sign; no source-sign delta is claimed.
+Use heat/Poisson structure for a source-specific analytical budget before tests;
+do not dispatch a generic restatement of A4.
 
 ## Existing work
+Heartbeat owner-agent check 2026-09-14T13:49:18.643411+00:00: owning task 01a084f4-7498-7021-bac2-91d184d58dc7; all six native children completed, no new result awaiting intake. Remote rh_clean f6231d59 and Mac5987b887 unchanged; no new committed ADVICE. App goal usageLimited remains; no goal status change, mathematical dispatch or numerical run.
 Publication issue d9 FIX_PUSH_VERIFIED. Original technical owner assignment DONE; unused native launch allocation CANCELLED;
-independent source checkers DONE; both source integrations and publication receipts complete. No technical worker or commit is awaited.
+independent source checkers DONE; both source integrations and publication receipts complete. No technical worker is awaited. The scoped analytical evidence package is ready for publication.
 Owner01a084f4-7498-7021-bac2-91d184d58dc7 and installation9afdf2bf epoch1 unchanged.
 Existing maintenance pause/watch ownership is unchanged by this technical closeout.
 

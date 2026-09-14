@@ -1,0 +1,225 @@
+# Independent analytic review: anchored Schur accounting
+
+ASSIGNMENT: TEAM_SCHUR_ANCHOR_ANALYTIC_CHECK_20260914.
+METHOD: paper audit only. No numerical test, quadrature, symbolic computation, or
+claim admission was used.
+
+## Candidate and checked provenance
+
+Candidate reviewed in full:
+
+    /home/chirurgie/.cache/q3-native-order-live-20260914.schur-anchor-analytic-draft.md
+    SHA256 09585b2612e85fbeb67a676d5a91eb63543f2b5562aa577478641ec3adc9e0e5
+
+The review used the candidate's stated source objects and intervals (candidate
+lines 13--19), the actual-source RAW2 theorem and its normalization
+(REPORT_2026-09-14_FULL_V_RANK_TWO_INTAKE.md lines 51--60, 70--127), its
+non-theta finite-row control (lines 148--201), and the Schur obligation and
+unpaid all-row distinction
+(REPORT_2026-09-14_SCHUR_REPEATABILITY.md lines 18--30, 174--210).
+
+## Findings
+
+No CRITICAL, HIGH, MEDIUM, LOW, or WORDING finding.
+
+### A1: common measure, interval, and L2 domain -- verified
+
+For a in J=(0,log(2)/2), the RAW2 source formula gives
+
+    D_a = V(a,a) = integral_0^infinity 2(t+a) f(t+a)^2 dt > 0.
+
+Thus candidate line 24 is a positive probability measure with total mass one;
+it does not use a multi-node sign conclusion or a square root of V. The
+simultaneous reflection in candidate lines 16--18 is legitimate because the
+even-source calculation gives V(-x,-y)=V(x,y), so a row in I is congruent to
+its reflected row in J.
+
+For each fixed x in J,
+
+    integral r_x^2 dmu_a
+      = D_a^(-1) integral_0^infinity 2(t+a) f(t+x)^2 dt < infinity.
+
+Indeed, t+a <= max(1,a/x)(t+x) on t>=0, and the source's diagonal integral
+D(x) is finite. Since h_a<=1/(2a), both A_x and B_x are in L2(mu_a).
+Cauchy--Schwarz then supplies every mixed product and every finite linear row.
+This validates candidate lines 23--35 without a hidden integrability step.
+
+### A2: factor expansion and anchor centering -- verified
+
+Put delta_x=x-a and delta_y=y-a. Direct multiplication gives
+
+    A_x A_y - B_x B_y
+      = r_x r_y [ (1+delta_x h_a)(1+delta_y h_a)
+                  - delta_x delta_y h_a^2 ]
+      = r_x r_y [1+(delta_x+delta_y)h_a].
+
+Consequently the entire mixed coefficient, including both linear mixed
+contributions and the cancelled quadratic product, is
+
+    D_a dmu_a (A_x A_y-B_x B_y)
+      = 2(t+a) f(t+x)f(t+y)
+          [1+(x+y-2a)/(2(t+a))] dt
+      = (2t+x+y) f(t+x)f(t+y) dt.
+
+This proves A1 exactly and leaves no boundary contribution: no integration by
+parts was invoked. At y=a, A_a=1 and B_a=0, hence
+
+    E_mu A_x=V(x,a)/D_a.
+
+Subtracting this product gives candidate A2. Both residual features vanish at
+the anchor: A_a-E_mu A_a=0 and B_a=0. Candidate lines 39--50 are correct.
+
+### A3: all complex rows and conjugations -- verified
+
+The features are real-valued for real nodes. For
+A_c=sum_i c_i A_(x_i) and B_c=sum_i c_i B_(x_i), expansion of the two squared
+moduli gives
+
+    E_mu |A_c-E_mu A_c|^2 - E_mu |B_c|^2
+      = sum_(i,j) conjugate(c_i)
+          [S_a(x_i,x_j)/D_a] c_j.
+
+The placement of conjugation is therefore correct for every finite complex
+row, and L2 established above makes the expansion legitimate. No restriction
+to real coefficients, diagonal terms, or truncated half-lines has entered.
+Candidate lines 52--59 preserve the required all-row quantifier.
+
+### A4: Schur equivalence, normalization, and non-theta logic -- verified
+
+Candidate A4 is precisely S_a[c]>=0 after multiplication by D_a>0. The
+identity
+
+    V[c] = S_a[c] + D_a^(-1) |sum_i V(a,x_i)c_i|^2
+
+proves S_a PSD implies V PSD. Conversely, adjoining a with coefficient
+
+    -D_a^(-1) sum_i V(a,x_i)c_i
+
+to an arbitrary row c makes its V form exactly S_a[c]. Thus V PSD implies
+S_a PSD. This proves the claimed all-row equivalence in candidate lines
+68--71; the source normalization f=Phi/||Phi||_2 remains unchanged, while
+dmu_a is only an auxiliary probability measure.
+
+RAW2 supplies the strict one-coordinate inequality because it supplies
+S_a(x,x)>0 for x!=a, but it supplies no inequality for a nontrivial c. The
+candidate correctly leaves A4 unpaid. The f0 control has a negative finite
+V0 row in I by the analytic finite-difference argument in the intake;
+reflection places it in J. If A4 held for all f0 rows, the displayed
+equivalence would make V0 PSD, a contradiction. This is a valid
+hypothesis-discrimination argument, not a negative theta row.
+
+## Circularity and scope
+
+There is no assumed positivity of V, S_a, C_V, or an implicitly introduced
+Hilbert feature map. The only positivity used before A4 is the one-node fact
+D_a>0, obtained directly from the positive source integral. The candidate's
+statements at lines 63--92 correctly describe A4 as the original all-row
+obligation, weaker than the conditional C_V/infinite-divisibility entrance,
+and do not count the accounting identity as sign progress.
+
+This audit establishes only the exact A1--A3 representation and the exact
+reformulation A4. It does not establish A4, full-V positivity, an
+actual-theta negative witness, any all-rank theorem, or RH.
+
+## Verdict
+
+CLEAN. On-target first analytic pass, with no substantive or wording finding.
+This is one pass only; it is not Mode A convergence and does not alter the
+production HOLD or any claim boundary.
++
+
+# V2 analytic review: strict comparison covariance extension
+
+Candidate reviewed in full:
+
+    /home/chirurgie/.cache/q3-schur-anchor-analytic-v2-20260914.md
+    SHA256 020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be
+
+The v1 findings above are preserved. This section reviews only the new
+candidate section 5 (candidate lines 86--118). It is a substantive extension
+and is recorded separately.
+
+## V2 pass 1: analytic audit
+
+### Leading full-series reduction -- verified
+
+The pinned source has
+
+    Phi_ours(u)=2 Phi_C(u/2)
+      = 4 pi^2 exp(9u/2) sum_(n>=1)
+          [n^4-d n^2 exp(-2u)] exp[-pi n^2 exp(2u)],
+    d=3/(2pi).
+
+Separating n=1 and putting z=exp(2u) gives exactly the candidate's expression
+
+    f(u)=(4pi^2/A) exp(9u/2) exp(-pi z)
+          [1-d/z+E(z)],
+    E(z)=sum_(n>=2) (n^4-d n^2/z) exp[-pi(n^2-1)z].
+
+For z>=1, n^2-1>=3 for n>=2; after taking out exp(-3pi z),
+the remaining polynomial-weighted Gaussian series is dominated by its z=1
+series. Hence E(z)=O(exp(-3pi z)). This is a genuine control of the whole
+tail, not a one-term heuristic and not a numerical premise.
+
+### Asymptotic independence -- verified
+
+For x<y in J, the two leading expressions give
+
+    f(t+y)/f(t+x)
+      = exp[9(y-x)/2-pi(exp(2y)-exp(2x))exp(2t)] (1+o(1))
+      -> 0.
+
+The additional A prefactor is positive because
+
+    1+(x-a)/(2(t+a))=(2t+a+x)/(2(t+a))>0
+
+for t>=0 and x,a in J, and its y/x ratio tends to one. Thus
+A_y/A_x -> 0 for x<y, while A_a=1.
+
+If a centered finite combination has zero L2(mu_a) norm, strict positivity of
+the density and continuity make its uncentered combination equal to a constant
+everywhere. Adding that constant as the A_a coefficient gives an identically
+zero finite combination of distinct A_x. Dividing first by the smallest-node
+feature and taking t to infinity eliminates its coefficient; finite iteration
+eliminates all coefficients. The same argument is valid over the complex
+scalars. Therefore
+
+    E_mu |sum_i c_i(A_(x_i)-E_mu A_(x_i))|^2 > 0
+
+for every nonzero complex row at finite distinct non-anchor nodes.
+
+No positivity of S_a, V beyond the already available one-node diagonal, C_V,
+or an unconstructed feature space is used in this proof.
+
+## V2 pass 2: unchanged-candidate confirmation
+
+After pass 1 found no substantive issue, the exact candidate was read again
+unchanged. The second read recorded size 6135 bytes, inode 1061444, mtime
+2026-09-14 15:58:25.466632934 +0200, and the same SHA256
+020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.
+
+This independent confirmation rechecked the coefficient 3/(2pi), the
+n>=2 remainder after extracting the n=1 term, the ordering direction in the
+ratio limit, the positivity of the A prefactor, and the addition of the
+constant A_a feature. Each is correct. No numerical or symbolic computation
+was used.
+
+| Pass | Severity | Finding -- English term + русское объяснение | Fix applied |
+| --- | --- | --- | --- |
+| V2-1 | none | No finding -- доказательство полного хвоста и линейной независимости корректно | None required |
+| V2-2 | none | No finding -- неизменённый кандидат повторно подтверждён | None required |
+
+## V2 scope and verdict
+
+The extension proves strict positive definiteness of the first, centered
+covariance term in A3. It does not compare that term to E_mu|B_c|^2 and
+therefore neither proves A4 nor the sign of S_a. It proves no full-V
+positivity, actual-theta negative witness, all-rank theorem, or RH statement.
+
+V2 PASS 1: CLEAN.
+V2 PASS 2: CLEAN.
+V2 MODE A: CONVERGED for this isolated candidate review only: two consecutive
+on-target passes with no CRITICAL, HIGH, MEDIUM, LOW, or WORDING finding.
+This review result is not a canonical admission, sign claim, node closure, or
+change to the production HOLD.
+

@@ -1,0 +1,129 @@
+# Anchored covariance identity for the full Schur residual
+
+STATUS: DRAFT_ANALYTIC_IDENTITY; independent review pending.
+SCOPE: isolated paper derivation only; no sign advance or canonical admission.
+SOURCE_BASE: f6231d59eec72ba78a397dd2c73d205df34dc2c8.
+INPUTS: docs/Codex/REPORT_2026-09-14_FULL_V_RANK_TWO_INTAKE.md R2,R7,R15;
+docs/Codex/REPORT_2026-09-14_SCHUR_REPEATABILITY.md S1,S2,S14--S16.
+OWNER_STEERING: 2026-09-14: pure mathematics and analytical agreement first,
+only afterwards numerical tests and formalization. No numerical tests used.
+
+## 1. Same source and domain
+
+Keep the full even positive theta source f=Phi/||Phi||_2 and
+V(x,y)=integral_0^infinity (2t+x+y) f(t+x)f(t+y)dt.
+All finite node families and all complex coefficients remain required.
+The original interval is I=(-log(2)/2,0). R2 proves
+V(-x,-y)=V(x,y): simultaneously reflecting every node is a congruent
+identical matrix. We may therefore use J=(0,log(2)/2). Choose an anchor a in J.
+Write D_a=V(a,a)>0 and S_a(x,y)=V(x,y)-V(x,a)V(a,y)/D_a.
+
+## 2. One positive probability measure, defined before any sign assumption
+
+For t>=0 set
+  dmu_a(t) = 2(t+a) f(t+a)^2 dt / D_a,
+  r_x(t) = f(t+x)/f(t+a),
+  h_a(t) = 1/[2(t+a)],
+  A_x(t) = [1+(x-a)h_a(t)]r_x(t),
+  B_x(t) = (x-a)h_a(t)r_x(t).
+
+This measure is positive and has total mass one. The definitions use only
+the source and one positive diagonal. They require no positivity of a
+multi-node matrix, no square root of V, and no new normalization of f.
+All A_x,B_x belong to L2(mu_a): h_a<=1/(2a), and the ratios cancel in
+integral r_x^2 dmu_a = D_a^(-1) integral 2(t+a)f(t+x)^2 dt < infinity.
+Finite linear combinations and cross-products are therefore integrable.
+
+## 3. Exact pairwise identity
+
+Expanding the factors, with delta_x=x-a, gives
+  A_x A_y - B_x B_y = r_x r_y [1+(delta_x+delta_y)h_a].
+Multiplying by D_a dmu_a recovers precisely
+  (2t+x+y)f(t+x)f(t+y)dt.
+Thus
+  V(x,y)/D_a = E_mu[A_x A_y] - E_mu[B_x B_y].               (A1)
+
+Since A_a=1 and B_a=0,
+  E_mu[A_x] = V(x,a)/D_a.
+Subtracting the anchor product yields
+  S_a(x,y)/D_a =
+      E_mu[(A_x-E_mu A_x)(A_y-E_mu A_y)]-E_mu[B_x B_y].     (A2)
+
+For any finite complex coefficient row c let A_c=sum c_i A_(x_i),
+B_c=sum c_i B_(x_i). The full exact identity is
+  sum conjugate(c_i)S_a(x_i,x_j)c_j / D_a
+      = E_mu|A_c-E_mu A_c|^2 - E_mu|B_c|^2.                (A3)
+
+Complex coefficients, all mixed terms, and the whole half-line integral
+are retained. No differentiation or integration by parts is used, so no
+boundary term is discarded. At the anchor both features in A2 vanish.
+
+## 4. Paid statement versus missing source inequality
+
+R7 already gives, for each individual x!=a,
+  E_mu|A_x-E_mu A_x|^2 > E_mu|B_x|^2.
+For arbitrary combinations the first unpaid inequality is exactly
+  E_mu|B_c|^2 <= E_mu|A_c-E_mu A_c|^2 for every finite c.   (A4)
+
+A4 is equivalent to positivity of the full S_a. Since D_a>0, completing
+the anchor square makes A4 for all finite families equivalent to full V
+positivity on J (and hence on I). A4 is not proved here. In particular the
+individual inequalities do not imply A4 for combinations.
+
+This entrance does not assume positivity of C_V=d_x d_y log V or infinite
+divisibility. It is an exact weaker target than that sufficient entrance,
+not a new proof or a simplification of the unknown sign by notation alone.
+
+The same identity holds for the non-theta control
+f0(u)=exp(-u^2)-exp(-2u^2)/4. Its known negative finite V row prevents A4
+from holding for all rows (append anchor and complete the square).
+Thus evenness, positivity, tails and squared-coordinate strict log-concavity
+alone cannot supply A4. Any successful proof must use additional structure
+of the actual theta source. Claiming a contraction that maps centered A_x
+to B_x would merely restate A4 unless constructed independently.
+
+
+## 5. A positive definite comparison form at every finite size
+
+For the ACTUAL full theta source the centered covariance form in A3 is
+strictly positive on every nonzero row at distinct nodes x_i in J excluding a.
+
+Proof. The full source series gives, as u tends to positive infinity,
+  f(u)=(4pi^2/A) exp(9u/2) exp(-pi exp(2u)) [1-d exp(-2u)+E(exp(2u))],
+  d=3/(2pi),
+  E(z)=sum_(n>=2) (n^4-d n^2/z) exp[-pi(n^2-1)z].
+For z>=1, factoring exp(-3pi z) bounds the remaining series by a
+convergent polynomial-weighted Gaussian sum, uniformly in z.
+Thus E(z)=O(exp(-3pi z)); this is a bound on the FULL series remainder.
+
+For any fixed x<y in J,
+  f(t+y)/f(t+x)
+    = exp[9(y-x)/2 - pi(exp(2y)-exp(2x))exp(2t)] (1+o(1))
+    -> 0.
+The prefactor [1+(y-a)/(2(t+a))]/[1+(x-a)/(2(t+a))] tends to one.
+Therefore A_y(t)/A_x(t)->0 whenever x<y. All A_x(t)>0 and A_a=1.
+
+If a finite sum of centered features has zero L2(mu_a) norm, then
+sum c_i A_(x_i) is constant mu_a-almost everywhere. The density is strictly
+positive on t>=0 and the features are continuous, so the equality holds
+everywhere. Adjoin A_a=1 with the negative of that constant as coefficient.
+Order the resulting distinct nodes increasingly. Divide the identity by
+the feature of the smallest node and let t->infinity: its coefficient is
+zero. Repeating finitely many times kills every coefficient. Hence
+  E_mu|sum c_i(A_(x_i)-E_mu A_(x_i))|^2 > 0
+for every nonzero c, at every finite number of distinct non-anchor nodes.
+
+This pays positive definiteness of the COMPARISON covariance matrix only.
+The full difference in A3 still has unknown sign. No quantitative lower
+bound uniform in node count, spacing, or coefficients is obtained.
+
+## 6. Decision
+
+RETAIN the exact common-measure accounting A1--A3 and the original target A4.
+DO NOT count it as source-sign progress, close a proof node, infer a numerical
+witness, replace the source, or dispatch a generic 'prove A4' request.
+The source-specific analytical task remains deriving the mixed-term budget
+from theta heat/Poisson structure. This note supplies explicit features for
+that task; it does not pay that budget or justify a numerical campaign.
+
+AUTOPSY: dropped=COUPLING; note=Exact anchored covariance accounting retains the unpaid all-row budget; no actual-theta source sign is proved.
