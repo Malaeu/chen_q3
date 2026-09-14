@@ -1,0 +1,40 @@
+{
+  "scope": "ISOLATED_CONDITIONAL_PAPER_ONLY",
+  "brief_sha256": "d0716c67a6afe646ca7abe8ff2f007ed55cff2e5e962629fba3aa8266f9c7253",
+  "sources": [
+    {
+      "name": "horn1971",
+      "url": "https://msp.org/pjm/1971/38-2/pjm-v38-n2-p13-p.pdf",
+      "bytes": 1013218,
+      "sha256": "079788ab432c50d662d61b670d6d5072421d70007667690e4d238ee81bb4702d"
+    },
+    {
+      "name": "biswas_keshari_misra",
+      "url": "https://math.iisc.ac.in/~gm/gmhomefiles/papers/cuin.pdf",
+      "bytes": 259715,
+      "sha256": "3ba44a27ee5a55042dd6c76898699a1b604cd0663b02927571c6c670d08e463f"
+    },
+    {
+      "name": "gpml2",
+      "url": "https://gaussianprocess.org/gpml/chapters/RW2.pdf",
+      "bytes": 466925,
+      "sha256": "33eb573e1a15abbc04191cc57f74076e1df83024d14b934eebfac3b30a3f57ce"
+    }
+  ],
+  "shelf": {
+    "query": "Schur complement innovations Christoffel divided kernel Schoenberg infinite divisibility",
+    "query_sha256": "1dbbd9b138bfe7910a6fdd4b822bd093847d2fe85321e372b6bc5365d1a37e77",
+    "status": "INCOMPLETE",
+    "exit_code": 2,
+    "failure": "q3_docs semantic-index freshness validation failed",
+    "raw_full_output_retained": false,
+    "display_was_truncated": true
+  },
+  "actual_theta_new_sign_result": false,
+  "actual_theta_negative_witness": false,
+  "draft_review_sha256": "5f64bbbe4030d134eeabb9ca79f1212f348cbddc8c5c9d7900d2fd986ae4f78e",
+  "report_sha256": "fe737941236b24c67bee7803a38014660698e852b2e61bc54f58672efb494190",
+  "reviewer": "/root/sibling5_check",
+  "review_verdict": "CLEAN",
+  "review_scope": "S1-S16; isolated conditional paper only"
+}
