@@ -1,0 +1,51 @@
+
+── СПЕКИ, КАРТЫ И ПАМЯТЬ РАЗВИЛОК ──────────────────────────────
+  docs/Codex/REPORT_2026-09-13_VILLAIN_RADIAL_BRIDGE.md
+  docs/Codex/REPORT_2026-09-13_VILLAINPHI_INTAKE.md
+
+── СЕМАНТИЧЕСКИЙ ИНДЕКС q3_docs — search-кандидаты ─────────────
+[
+  {
+    "docid": "#53f94d",
+    "file": "qmd://q3_docs/docs/routeb-bus/proshka/proshka-response-goal058-villainphi-2026-09-13.md",
+    "score": 1,
+    "title": "STATUS: KILL_NAMED_VILLAIN_CONSTRUCTION",
+    "context": null,
+    "snippet": "@@ -3,4 @@ (2 before, 663 after)\nOPERATIVE_CLASS: KILL_NAMED_VILLAIN_CONSTRUCTION\nREQUEST_ID: REQ-2026-09-13-VILLAINPHI\nBOUNDARY_ID: GOAL058_ACTUAL_THETA_VILLAIN_RADIAL_REALIZATION\nREQUEST_COMMIT: b1c9fdc62d564fc6fd0249bead46f58a0e13b1ad"
+  },
+  {
+    "docid": "#7649d7",
+    "file": "qmd://q3_docs/docs/routeb-bus/proshka/proshka-response-goal058-brownianhodge-2026-09-13.md",
+    "score": 1,
+    "title": "STATUS: KILL_NAMED_BROWNIAN_EMBEDDING",
+    "context": null,
+    "snippet": "@@ -82,4 @@ (81 before, 580 after)\n\n**S4.** `docs/Codex/REPORT_2026-09-13_VILLAINPHI_INTAKE.md` \u0432 SOURCE_BASE: 11945 bytes / 223 LF; SHA-256 `3f0b9c6e9e433b643404ceb742c4519a55795fa65a4ac899fc6d94a741d89019`; blob `0b7061f8321ebe70e8b42f79010922e602d25276`. \u041f\u0440\u043e\u0447\u0438\u0442\u0430\u043d \u0446\u0435\u043b\u0438\u043a\u043e\u043c. \u0418\u0441\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u0435 \u0433\u0430\u0440\u043c\u043e\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0445 \u0432\u0435\u0441\u043e\u0432 \u0441 \u0440\u0430\u0432\u043d\u043e\u043c\u0435\u0440\u043d\u043e \u0434\u0432\u0443\u0445\u0441\u0442\u043e\u0440\u043e\u043d\u043d\u0435..."
+  },
+  {
+    "docid": "#77bbd8",
+    "file": "qmd://q3_docs/docs/routeb-bus/proshka-queue.md",
+    "score": 1,
+    "title": "Isolated mathematical task request \u2014 owner-directed new chat, 2026-09-12",
+    "context": null,
+    "snippet": "@@ -125,4 @@ (124 before, 4623 after)\n\n## REQ-2026-09-13-VILLAINPHI\n- STATUS: ANSWERED_ACCEPTED_LIMITED_PAPER. Full 44985-byte/668-LF response fetched from GitHub commit f997dc7a47c414fed1e1ff996dedc2994419e015; SHA256 53f94d7ce8a5f0f03c14b9e58996a3a3c40d86b177ebddffb051db2cd6f1f94b. Natural18m50s. Parent and sole checker accepted th..."
+  }
+]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ASK_RECEIPT_JSON: {"boundary":"COMPLETE_REGISTERED_SHELF","candidate_rows":[{"excerpt":"docs/Codex/REPORT_2026-09-13_VILLAIN_RADIAL_BRIDGE.md","metadata_sha256":"eed32f70e94f174c6199b72153db514b43357b878945201579c7642d14cf1643","provider":"specs-docs","provider_id":"56c5ba7c21e93afc69c291416acf7eb3f2f2a19d0dbd3835d1648a2422329655","query":"VILLAINPHI","query_sha256":"a663242020249df77986034d809880f8562ff0fc3e272dd1d17a5c4cf176d2a0","title":"docs/Codex/REPORT_2026-09-13_VILLAIN_RADIAL_BRIDGE.md","url":"specs/maps"},{"excerpt":"docs/Codex/REPORT_2026-09-13_VILLAINPHI_INTAKE.md","metadata_sha256":"a24cb790c91e9538c41b0dc411a801039adbce2a18251c8870ade45d3e69cdfe","provider":"specs-docs","provider_id":"cee2c1d66b5fa2978bc4127369c1a2fafe847b15fefab8bdfc7d74073b431238","query":"VILLAINPHI","query_sha256":"a663242020249df77986034d809880f8562ff0fc3e272dd1d17a5c4cf176d2a0","title":"docs/Codex/REPORT_2026-09-13_VILLAINPHI_INTAKE.md","url":"specs/maps"},{"collection_identity":"bbf0090a48386c22009eb04fb1c93dd7e8615ba1721e530ddb450a1a7fac5e0c","corpus_sha256":"399b2521cbee198888122f15d1977d51bf5e74e1aa5b24b5a832d62da95f57d0","excerpt":"@@ -3,4 @@ (2 before, 663 after)\nOPERATIVE_CLASS: KILL_NAMED_VILLAIN_CONSTRUCTION\nREQUEST_ID: REQ-2026-09-13-VILLAINPHI\nBOUNDARY_ID: GOAL058_ACTUAL_THETA_VILLAIN_RADIAL_REALIZATION\nREQUEST_COMMIT: b1c9fdc62d564fc6fd0249bead46f58a0e13b1ad","metadata_sha256":"21b64f9f4ba40cba56639e010bef6f63d795c555918dcc76671fc4733ad3cc50","provider":"q3_docs","provider_id":"#53f94d","query":"VILLAINPHI","query_sha256":"a663242020249df77986034d809880f8562ff0fc3e272dd1d17a5c4cf176d2a0","title":"STATUS: KILL_NAMED_VILLAIN_CONSTRUCTION","url":"qmd://q3_docs/docs/routeb-bus/proshka/proshka-response-goal058-villainphi-2026-09-13.md"},{"collection_identity":"bbf0090a48386c22009eb04fb1c93dd7e8615ba1721e530ddb450a1a7fac5e0c","corpus_sha256":"399b2521cbee198888122f15d1977d51bf5e74e1aa5b24b5a832d62da95f57d0","excerpt":"@@ -82,4 @@ (81 before, 580 after)\n\n**S4.** `docs/Codex/REPORT_2026-09-13_VILLAINPHI_INTAKE.md` в SOURCE_BASE: 11945 bytes / 223 LF; SHA-256 `3f0b9c6e9e433b643404ceb742c4519a55795fa65a4ac899fc6d94a741d89019`; blob `0b7061f8321ebe70e8b42f79010922e602d25276`. Прочитан целиком. Исключение гармонических весов с равномерно двухсторонне...","metadata_sha256":"ab70246abe0777ff4ebd711b629322339f99b00e981187342b2c832353e72723","provider":"q3_docs","provider_id":"#7649d7","query":"VILLAINPHI","query_sha256":"a663242020249df77986034d809880f8562ff0fc3e272dd1d17a5c4cf176d2a0","title":"STATUS: KILL_NAMED_BROWNIAN_EMBEDDING","url":"qmd://q3_docs/docs/routeb-bus/proshka/proshka-response-goal058-brownianhodge-2026-09-13.md"},{"collection_identity":"bbf0090a48386c22009eb04fb1c93dd7e8615ba1721e530ddb450a1a7fac5e0c","corpus_sha256":"399b2521cbee198888122f15d1977d51bf5e74e1aa5b24b5a832d62da95f57d0","excerpt":"@@ -125,4 @@ (124 before, 4623 after)\n\n## REQ-2026-09-13-VILLAINPHI\n- STATUS: ANSWERED_ACCEPTED_LIMITED_PAPER. Full 44985-byte/668-LF response fetched from GitHub commit f997dc7a47c414fed1e1ff996dedc2994419e015; SHA256 53f94d7ce8a5f0f03c14b9e58996a3a3c40d86b177ebddffb051db2cd6f1f94b. Natural18m50s. Parent and sole checker accepted th...","metadata_sha256":"b0607fe7b3ab3ecedcaee1004c4462f314cfa1b0d140ba6e3db7052893207f3c","provider":"q3_docs","provider_id":"#77bbd8","query":"VILLAINPHI","query_sha256":"a663242020249df77986034d809880f8562ff0fc3e272dd1d17a5c4cf176d2a0","title":"Isolated mathematical task request — owner-directed new chat, 2026-09-12","url":"qmd://q3_docs/docs/routeb-bus/proshka-queue.md"}],"external_lean":"EXECUTED","provider_rows":[{"failure_count":0,"hit_store_count":2,"provider":"local-shelves","query":"VILLAINPHI","query_sha256":"a663242020249df77986034d809880f8562ff0fc3e272dd1d17a5c4cf176d2a0","status":"HITS"},{"candidate_count":3,"candidate_hashes":["21b64f9f4ba40cba56639e010bef6f63d795c555918dcc76671fc4733ad3cc50","ab70246abe0777ff4ebd711b629322339f99b00e981187342b2c832353e72723","b0607fe7b3ab3ecedcaee1004c4462f314cfa1b0d140ba6e3db7052893207f3c"],"collection_identity":"bbf0090a48386c22009eb04fb1c93dd7e8615ba1721e530ddb450a1a7fac5e0c","corpus_sha256":"399b2521cbee198888122f15d1977d51bf5e74e1aa5b24b5a832d62da95f57d0","provider":"q3_docs","query":"VILLAINPHI","query_sha256":"a663242020249df77986034d809880f8562ff0fc3e272dd1d17a5c4cf176d2a0","status":"CANDIDATES"}],"query":"VILLAINPHI","query_sha256":"a663242020249df77986034d809880f8562ff0fc3e272dd1d17a5c4cf176d2a0","schema":"q3_ask_local_receipt.v1"}
+Найдено в 2 хранилищах из 9.
+
+Просмотрены хранилища:
+  · knowledge.db (kill/move/journal/dossier)
+  · search_session/search_term (kb.py flags)
+  · capability (provides/requires — каталог стыковок)
+  · litreview (REFERENCES.md · *_CARDS.md · references.bib · pdfs/)
+  · aristotle_proofs.db (Lean-декларации)
+  · Q3/Proofs/RouteB/*.lean (живое дерево)
+  · specs/maps + GENEALOGY/Progress_Log/RECORDING_RULES/GLOSSARY/TOOLS
+  · q3_docs (bounded qmd search через research_oracle.py)
+  · all enabled external Lean bases (zeta23; registered read-only search)
+
+Совпадения — кандидаты. Для вопроса «подходит ли теорема точной цели» запусти:
+  python3 scripts/supplier_preflight.py --query 'VILLAINPHI' --candidate <имя> --target <имя>
+ASK_STATUS: HITS

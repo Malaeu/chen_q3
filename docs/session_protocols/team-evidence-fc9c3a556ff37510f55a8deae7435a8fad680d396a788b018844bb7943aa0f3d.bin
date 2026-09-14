@@ -1,0 +1,48 @@
+# SESSION PROTOCOL — GENERATED SKELETON
+
+Generated: 2026-09-14T12:27:33.344640+00:00
+HEAD: `8417622b36fa90debc3e58fb1e5fd980f62f35d0`
+
+## Derived repairs
+
+- none
+
+## Derived status
+
+- `routeb-inventory`: `FRESH` — inputs unchanged since 993ae9cdbbae
+- `routeb-atoms`: `FRESH` — inputs unchanged since 993ae9cdbbae
+- `litreview-needs-cards`: `FRESH` — no unresolved NEEDS_CARDS rows
+- `routeb-map-coverage`: `FRESH` — inputs unchanged since 993ae9cdbbae
+
+## Semantic index
+
+- `FRESH` (validated)
+
+## Kernel checked
+
+- none
+
+## Owned dirty paths
+
+- none
+
+## Foreign dirty paths — preserved, not blockers
+
+- `.codex/config.toml`
+- `docs/Codex/GOAL_HISTORY.md`
+- `docs/Codex/RESUME.md`
+- `docs/routeB_bus/litreview/REFERENCES.md`
+- `docs/routeB_bus/litreview/SONIN_FUNCTION_FIELD_HUNT_USAGE_CARDS.md`
+- `docs/routeB_bus/litreview/pdfs/1409.2357.pdf`
+- `docs/routeB_bus/litreview/pdfs/1805.10501.pdf`
+- `docs/routeB_bus/litreview/pdfs/math_0111108.pdf`
+- `docs/routeB_bus/litreview/references.bib`
+
+## Manual closeout
+
+- CLOSES: TODO
+- OPENS: TODO
+- assembly debt: TODO
+- insight: TODO
+- commit/push: not performed by this tool
+- PX_RH_CLAIM: NOT_MADE

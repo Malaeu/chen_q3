@@ -1,0 +1,5 @@
+{"command": "resume-checkpoint", "exit_code": 0, "revision": 160, "sha256": "ed703e04665423fd32717ca37236143153ae94d67787ca0fbbc2de48a686b6aa", "status": "DRY_RUN"}
+{"command": "resume-checkpoint", "exit_code": 0, "revision": 160, "sha256": "ed703e04665423fd32717ca37236143153ae94d67787ca0fbbc2de48a686b6aa", "status": "SAVED"}
+{"command": "team-record", "exit_code": 0, "assignment_id": "NONE", "event_id": "event-9264c5747e4fc15ac5393d908839e3ad68d5eaf5421e69b0ba0ba3258a38fddb", "issue_id": "issue-d9bd3c3531a44e164195740936da850cd50a8a627e696e875af2ea15c782d94e", "report_id": "report-d9bd3c3531a44e164195740936da850cd50a8a627e696e875af2ea15c782d94e", "status": "RECORDED"}
+{"command": "team-record", "exit_code": 0, "assignment_id": "NONE", "event_id": "event-1e5333f7afd9c0f0e771bdc1a4d33d6a18c48619183213aaec363767aeb136e7", "issue_id": "issue-d9bd3c3531a44e164195740936da850cd50a8a627e696e875af2ea15c782d94e", "report_id": "report-d9bd3c3531a44e164195740936da850cd50a8a627e696e875af2ea15c782d94e", "status": "RECORDED"}
+CANONICAL_SOURCE_PUBLICATION_COMPLETE f37c5de40b4d5b7e76b89eabc28693bba1fae45a

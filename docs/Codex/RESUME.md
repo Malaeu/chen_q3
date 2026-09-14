@@ -1,14 +1,14 @@
 ---
 schema: q3_resume.v2
-revision: 176
-observed_at: '2026-09-14T12:22:16.005502+00:00'
-previous_sha256: ef9de12d2a9358ea59dddc1e45de16e9652bb7681c5322a703ffcf105bb45869
+revision: 183
+observed_at: '2026-09-14T12:32:00.530635+00:00'
+previous_sha256: db3a8737218437cf8cfcd1aaef5257f1aa1d8c206daadbe7c8aad82aed089fb0
 owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
 owner_host_id: local
 reconciliation_pending: false
 recovery_from: null
 pins:
-  head: f37c5de40b4d5b7e76b89eabc28693bba1fae45a
+  head: 8417622b36fa90debc3e58fb1e5fd980f62f35d0
   physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
   source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
   request_id: REQ-2026-09-11-DENSITY
@@ -69,16 +69,15 @@ stages:
 operation:
   kind: PUBLISH
   state: INTENT
-  id: MAC_WEEKEND_RECOVERY_PUBLICATION_20260914
-  evidence:
-  - publication_incoming_commit:5987b887850eb8aa29cac9588668d66d16e6f1c1
+  id: LINUX_SYNC_CLOSEOUT_PUBLICATION_20260914
+  evidence: []
   subject:
     kind: REPAIR
-    id: MAC_WEEKEND_RECOVERY_PUBLICATION_20260914
-    sha256: fffd05e0ff131911faa48d16d3ff8bb4701229fae40066b3f110959cec765f88
+    id: LINUX_SYNC_CLOSEOUT_PUBLICATION_20260914
+    sha256: 8398dda64c1b44acf9d44136f9def56438f3c3a153fd82ac5d43319f6b8eec82
   command: publication
   inputs:
-    docs/session_protocols/team-evidence-fffd05e0ff131911faa48d16d3ff8bb4701229fae40066b3f110959cec765f88.bin: fffd05e0ff131911faa48d16d3ff8bb4701229fae40066b3f110959cec765f88
+    docs/session_protocols/team-evidence-8398dda64c1b44acf9d44136f9def56438f3c3a153fd82ac5d43319f6b8eec82.bin: 8398dda64c1b44acf9d44136f9def56438f3c3a153fd82ac5d43319f6b8eec82
 source_manifest:
   docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
   docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
@@ -94,32 +93,42 @@ ownership:
 # Current continuation — observations, not authority
 
 ## Mathematical frontier
-RH remains unproved; PX_RH_CLAIM NOT_MADE. Mac source5987b887 has102commits/127paths.
-PAPER raw two-shift positivity does not prove all-rank positivity or RH.
-The actual two-body residual mechanism is in the incoming SCHUR repeatability brief.
+RH remains unproved; PX_RH_CLAIM NOT_MADE. Actual Mac history5987b887 is merged.
+Latest frontier: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
+PAPER all raw two-node positivity is not all-rank positivity or an RH proof.
+Exact theorem/consumer edge remains unbound; no mathematical dispatch/admission.
 
 ## Confirmed and candidate results
-Original publication repair f37c5de40b4d5b7e76b89eabc28693bba1fae45a pushed/read back;
-issue d9 FIX_PUSH_VERIFIED. Exact two-file checkpoint recovery5d546636 independently
-reviewed and now source-integrated. Prior220tests passed before final guard;
-new exact real-startup regression passed1/5.692s. TOOLS unchanged.
+Source repair f37c5de40b4d5b7e76b89eabc28693bba1fae45a and true merge
+8417622b36fa90debc3e58fb1e5fd980f62f35d0 pushed with independent remote readback.
+The second parent is Mac5987b887850eb8aa29cac9588668d66d16e6f1c1;
+all102 commits and127incoming files preserved exactly, without conflicts.
+Recovery regression1/5.692s passed; original220tests passed before finalguard.
+Registered semantic refresh PASS,3326sources+manifest; repeat close exit0,
+FRESH and zero repairs. ask.sh VILLAINPHI exit0/ASK_STATUS:HITS.
 
 ## Next action
-Publish reviewed recovery source and own runtime evidence together with true Mac merge.
-Merge preview: all127 incoming files equal exact Mac tip bytes, no conflicts.
-Then one registered derived and semantic refresh, verify fresh no-rebuild behavior.
+Finish exact closeout evidence publication. Technical Linux sync is complete.
+Continue the existing physical task from canonical plan; use the incoming Mac
+SCHUR repeatability brief as the mathematical source, never restart old research.
+Production HOLD is mathematical admission debt, not a publication failure.
 
 ## Existing work
-Current owner task01a084f4-7498-7021-bac2-91d184d58dc7, installation9afdf2bf, epoch1.
-Review TEAM_RECOVERY_INSTALL_CHECK_20260914 DONE; source receipt RECOVERY_SOURCE_CANONICAL_INSTALL_20260914 COMPLETE.
-Isolated candidate /home/chirurgie/.cache/q3-recovery-install-20260914 remains frozen.
+Publication issue d9 FIX_PUSH_VERIFIED. Original technical owner assignment DONE; unused native launch allocation CANCELLED;
+independent source checkers DONE; both source integrations and publication receipts complete. No technical worker or commit is awaited.
+Owner01a084f4-7498-7021-bac2-91d184d58dc7 and installation9afdf2bf epoch1 unchanged.
+Existing maintenance pause/watch ownership is unchanged by this technical closeout.
 
 ## Do not repeat
-Do not replay original source publication, Proshka requests, full mathematical history,
-or converged review. No force, blanket add, unreviewed proof admission or policy change.
+Do not replay confirmed pushes, source copy, Mac merge, or fresh semantic refresh.
+Earlier source attempt RECOVERY_SOURCE_INSTALL_20260914 was NOT_EXECUTED:
+review JSON was unsorted; original bytes preserved, canonical review separately
+validated before RECOVERY_SOURCE_CANONICAL_INSTALL_20260914 completed.
+One checkpoint retry followed a transient reader/writer collision; no effect replay.
 
 ## Integration remaining
-Mac tip5987b887850eb8aa29cac9588668d66d16e6f1c1 still incoming until publication receipt.
-Six foreign literature paths and .codex/config.toml remain untouched and unstaged.
-Search is stale pending the final source merge. Existing wiring-test debt is recorded
-in q3-publication-baseline-wiring-20260914.log; do not claim that suite green.
+No Mac/source/derived integration remains. Six foreign literature files and
+.codex/config.toml remain local and excluded. Final CONFIRMED checkpoint may
+remain uncommitted by control11; do not recursively publish confirmation-only metadata.
+Seven old isolated wiring-test failures remain documented baseline debt;
+this repair does not claim that whole suite green or any RH admission.

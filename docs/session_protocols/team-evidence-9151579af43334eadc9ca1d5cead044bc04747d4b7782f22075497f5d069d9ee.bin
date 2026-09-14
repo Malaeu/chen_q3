@@ -1,0 +1,8 @@
+MAC_PUBLICATION_PREPARED
+Automatic merge went well; stopped before committing as requested
+[rh_clean 8417622b] [Codex][rh_clean][sync] Merge Mac weekend research and verified Linux recovery
+{"status": "PUSH_RESERVED", "operation_id": "MAC_WEEKEND_RECOVERY_PUBLICATION_20260914", "execute_once": true, "candidate_commit": "8417622b36fa90debc3e58fb1e5fd980f62f35d0"}
+MAC_PUSH_EXIT0
+{"command": "team-confirm-effect", "exit_code": 0, "operation_id": "MAC_WEEKEND_RECOVERY_PUBLICATION_20260914", "status": "OBSERVED"}
+{"command": "resume-checkpoint", "exit_code": 0, "revision": 177, "sha256": "1f440edb447d5a545edeb612e0f410de24eca3d448e8ff2d1f3441ce394f94e8", "status": "SAVED"}
+MAC_RECOVERY_PUBLICATION_COMPLETE 8417622b36fa90debc3e58fb1e5fd980f62f35d0
