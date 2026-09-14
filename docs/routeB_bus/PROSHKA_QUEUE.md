@@ -2,6 +2,16 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
+## REQ-2026-09-14-GAMMARECIP
+- STATUS: OPEN. NOT_SENT. Owner resumed pure analytical RH research. This is an isolated candidate request; canonical writer and phase binding are unchanged.
+- Boundary: GOAL058_GAMMA_RECIPROCAL_FOURIER_REAL_ZERO_PRESERVATION. Test preservation for the reciprocal geometric symmetrization of the actual finite gamma densities, beginning with the exact N=2 density. The proved full-source limit and classical N=1 Bessel energy are inputs, not the requested new result.
+- Request commit: 65c4a563ce4319a595a17e7c264dbbd77f1672e1. Path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_GAMMARECIP_2026-09-14.txt. SHA256: 61036686fa6c759726c1c5336ca7321df7860b979af4a9e8323e088811ed3ef9. UTF-8, 9266 bytes, 122 LF, no CR, final LF.
+- Independent review: sibling5_check CLEAN_DISPATCH on exact request and report SHA256 7c641d8a055bffc80fa2ed8d1ff437c1a47d6d0dfe3b82f9fa2533db02bda621. Receipts: docs/Codex/GAMMA_RECIPROCITY_RECEIPTS_2026-09-14.json.
+- Owner transport: one immutable GitHub link in the verified idle living chat 6aa52001-4094-83eb-9520-01a09f54eff2. Explicit GitHub-only instruction supersedes inherited attachment transport; no new chat, duplicate send, Answer now, or canonical rebind.
+- Expected response: docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_GAMMARECIP_2026-09-14.md, on codex_mac/gamma-reciprocity-20260914, with analytic proof or scoped analytic obstruction. No numerical sign campaign.
+- Initial registered review-plan held only because this new isolated queue entry was missing. Resolve by recording the actual OPEN request here and rerun; do not treat the HOLD as a ready receipt.
+- All-N and cofinal-N preservation, full V/IC/ODD2/RH remain open. No sign progress, counter reset, canonical admission, or RH claim from this preparation.
+
 ## REQ-2026-09-13-NULLVAR
 - STATUS: ANSWERED. Full raw response fetched at c6694aba0a2f50b8f004e9e967ae0c63b14900be; 48806 B/699 LF/SHA256 4fa7909725d2fa10ccc52d3413580289692d3a1489ecae7bed88956f80980730. Parent full reading and sole independent reader accepted N1/N2 domains, boundary and exact correction accounting only. Original OPEN/pending lines below are historical delivery entries, superseded here. Intake and the owner-requested ground-state test: docs/Codex/REPORT_2026-09-13_NULL_AND_GROUND_STATE_TEST.md, SHA256 19ce3481523bfb3f3f9ba8be24f2c86dc2f1916d80f9535a451d010bceef0d95. No negative V or source-sign result. NULLVAR itself does not add a full sign attempt; the subsequent one fixed-k sufficient comparison is disproved for every k>0 and advances historical count 11 -> 12 once. No new Proshka dispatch.
 - Delivery verified 2026-09-13T21:01:15Z: request commit 46c1b471e4ddf7d5b2f27270a986cd8401e79711 equals observed remote. Registered review-plan READY/holds[], exact blob 2a12a68e0ea6ad4d74a3889cd3d6e80d10ad31ed. Its inherited canonical chat/attachment locator is not rebound; the explicit owner instruction selects GitHub-only and living chat 6aa52001. Fresh app read showed idle; one send_message_to_thread notice accepted. Browser1/tab2 shows the exact immutable notice AX68, natural Pro-Denkvorgang AX74, empty composer AX81 and Stop AX85. No duplicate send or Answer now. Mathematical result pending.
