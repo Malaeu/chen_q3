@@ -1,13 +1,79 @@
 ---
 name: alias-hunt
-description: 'Find published proofs of one exact mathematical mechanism under other names or in other fields. Return source-verified candidates with quotes, locators, mappings, and an honest CLOSES/OPENS decision. Triggers: /alias-hunt, «пробей под другими именами», «кто-то это уже доказывал», "search the literature for this mechanism", "same object under another name".'
+description: 'Find proofs or usable partial mechanisms for one mathematical obstruction under other names or in other fields. Use for semantic hunt, cross-domain siblings, missing properties, and return to blocking objects after a bounded failed attempt. Return source-verified mappings, hypotheses and the exact remaining gap.'
 ---
 
 # alias-hunt
 
 Use this skill for one exact object, not for a broad topic or a novelty claim. The
-object may be an identity, inequality, operator, kernel, construction, or theorem
-mechanism.
+object may be an identity, inequality, operator, kernel, construction, missing
+property, sufficient hypothesis, geometric structure, or theorem mechanism.
+Answer an already understood explanatory question directly; do not start a
+search merely to restate known mathematics.
+
+## Mechanism and semantic return
+
+Apply the owner's [mechanism-node plan](../../../docs/Codex/PLAN_2026-09-13_REQUIRED_MECHANISM_NODE.md),
+especially sections 2.1--2.2, when preparing a new mathematical approach.
+These are working instructions for this skill. The plan's proposed runtime
+dispatch gate is not implemented by editing this file.
+
+Before selecting a mechanism, state the obstruction in two to four plain
+sentences, then pin the exact formula, domain, normalization and quantifiers.
+Locate a worked proof or an explicitly proved part of one: what step rules
+out the bad outcome, and which hypothesis makes that step valid? A method name
+or a list of papers is not an application argument.
+
+After the first completed bounded mathematical attempt yields no new basis
+or exposes an obstruction, return BEFORE selecting the next approach:
+
+1. Preserve the return point: exact blocking objects, their joint action,
+   the required invariant and the established failure.
+2. Describe what the objects do independently of their current names.
+   Search alternative representations of the interaction as well as its parts.
+   Weight, truncation and conditional expectation, for example, may obstruct
+   transfer jointly even when each operation is familiar separately.
+3. Mark alternative spaces, dimensions, physical models and hypotheses
+   `UNVERIFIED`; name the map back, retained properties and unknown corrections.
+4. Use these structural descriptions as new search dictionaries. Reuse prior
+   receipts; a new name for the same unproved inequality is not new evidence.
+5. Select one bounded bridge or research question only after checking the
+   source correspondence and identifying what new evidence would change it.
+
+Do not interrupt a running request to do this return. Waiting, a tool error,
+an unfinished proof, delivery and a build are not failed mathematical attempts.
+This return does not reset the canonical no-delta counter or replace its rules.
+
+Keep one compact mechanism section in the existing brief/report: plain
+problem; worked example; decisive mechanism; hypothesis mapping with
+PROVED/OPEN/FALSE/INAPPLICABLE status; negative-control discrimination; and one
+next step with a stopping condition. The owning task saves it; this read-only
+skill returns proposed content and never writes the shared brief.
+
+## Partial bridges and exact compensation
+
+Retain a source-verified partial theorem when a concrete completion could help.
+Record the proved part, the missing hypothesis or lemma, the exact map to our
+source, and one bounded test of that map. A published conjecture remains a
+conjecture. Missing evidence excludes a lead from VERIFIED candidates; an
+honestly open application hypothesis does not erase a verified source theorem.
+When combining methods, prove that each output satisfies the next input.
+
+For a proposed "vortex" or compensation, specify the operation that preserves
+the target. In Q=A+B, inserting +C and -C preserves Q but supplies no sign by
+itself. A total derivative requires the actual boundary terms and full-domain
+integrability. A correction with zero integral need not vanish pointwise.
+Never assume an arbitrary constant or an unconstructed positive square root
+can pay an unrestricted signed remainder.
+
+For repeated square extraction, separate the entrance from the invariant:
+construct the initial positive representation independently, prove preservation
+under each elimination, and account for zero pivots. A common Hilbert Gram
+representation is preserved by orthogonal projection once established.
+Pairwise positivity or entrywise Gram domination does not supply that entrance.
+A stronger sufficient property may fail without refuting the original target.
+The [Schur report](../../../docs/Codex/REPORT_2026-09-14_SCHUR_REPEATABILITY.md)
+is a worked conditional example, not a proof of the theta source's full sign.
 
 ## Startup and reconciliation
 
