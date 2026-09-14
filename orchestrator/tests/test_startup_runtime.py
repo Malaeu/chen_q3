@@ -18,18 +18,31 @@ from orchestrator import startup_runtime
 
 class StartupRuntimeTests(unittest.TestCase):
     @staticmethod
-    def _control(root: Path, version: int = 10, status: str = "ACTIVE") -> None:
+    def _control(
+        root: Path,
+        version: int = 10,
+        status: str = "ACTIVE",
+        team_runtime_version: int | None = None,
+    ) -> None:
         path = root / "docs" / "CODEX_CONTROL.md"
         path.parent.mkdir(parents=True, exist_ok=True)
+        if version == 11 and team_runtime_version is None:
+            team_runtime_version = 1
+        team_runtime = (
+            f"TEAM_RUNTIME_VERSION: {team_runtime_version}\n"
+            if team_runtime_version is not None
+            else ""
+        )
         v10_locks = (
             "HONESTY_STATE: CHALLENGER_NOT_RH\nOWNER_ONLY_BOUNDARY: PX_RH_CLAIM\n"
-            if version == 10
+            if version in {10, 11}
             else ""
         )
         path.write_text(
             "# control\n\n```yaml\n"
             "CONTROL_ID: Q3_EXECUTOR_CONTROL\n"
             f"CONTROL_VERSION: {version}\n"
+            f"{team_runtime}"
             f"STATUS: {status}\n"
             f"{v10_locks}"
             "```\n",
@@ -843,7 +856,7 @@ class StartupRuntimeTests(unittest.TestCase):
 
             self.assertEqual(result.fatal_errors, ("STARTUP_BUS_MISSING",))
 
-    def test_production_v10_rejects_v9_and_requires_honesty_locks(self) -> None:
+    def test_production_control_accepts_v10_v11_and_rejects_other_revisions(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             self._control(root, version=9)
@@ -857,8 +870,30 @@ class StartupRuntimeTests(unittest.TestCase):
             ):
                 startup_runtime.validate_battle_v10_control(root)
 
+            for version in (12, 100):
+                self._control(root, version=version)
+                with self.subTest(version=version):
+                    with self.assertRaisesRegex(
+                        startup_runtime.StartupRuntimeError,
+                        "BATTLE_V10_CONTROL_INVALID",
+                    ):
+                        startup_runtime.validate_battle_v10_control(root)
+
             self._control(root, version=10)
             control_path = root / "docs/CODEX_CONTROL.md"
+            control_path.write_text(
+                control_path.read_text(encoding="utf-8").replace(
+                    "CONTROL_VERSION: 10\n", "CONTROL_VERSION: true\n", 1
+                ),
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(
+                startup_runtime.StartupRuntimeError,
+                "STARTUP_CONTROL_INVALID",
+            ):
+                startup_runtime.validate_battle_v10_control(root)
+
+            self._control(root, version=10)
             control_path.write_text(
                 "```yaml\nexample: unrelated\n```\n\n" + control_path.read_text(encoding="utf-8"),
                 encoding="utf-8",
@@ -873,6 +908,39 @@ class StartupRuntimeTests(unittest.TestCase):
                 ),
                 encoding="utf-8",
             )
+            with self.assertRaisesRegex(
+                startup_runtime.StartupRuntimeError,
+                "BATTLE_V10_CONTROL_INVALID",
+            ):
+                startup_runtime.validate_battle_v10_control(root)
+
+            self._control(root, version=11)
+            identity = startup_runtime.validate_battle_v10_control(root)
+            self.assertEqual(identity.version, 11)
+            self.assertEqual(identity.team_runtime_version, 1)
+
+            self._control(root, version=11, team_runtime_version=0)
+            with self.assertRaisesRegex(
+                startup_runtime.StartupRuntimeError,
+                "BATTLE_V10_CONTROL_INVALID",
+            ):
+                startup_runtime.validate_battle_v10_control(root)
+
+            self._control(root, version=11)
+            control_path = root / "docs/CODEX_CONTROL.md"
+            control_path.write_text(
+                control_path.read_text(encoding="utf-8").replace(
+                    "TEAM_RUNTIME_VERSION: 1\n", "TEAM_RUNTIME_VERSION: true\n"
+                ),
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(
+                startup_runtime.StartupRuntimeError,
+                "STARTUP_CONTROL_INVALID",
+            ):
+                startup_runtime.validate_battle_v10_control(root)
+
+            self._control(root, version=10, status="PAUSED")
             with self.assertRaisesRegex(
                 startup_runtime.StartupRuntimeError,
                 "BATTLE_V10_CONTROL_INVALID",
@@ -2314,6 +2382,26 @@ class StartupRuntimeTests(unittest.TestCase):
             rendered = json.dumps(snapshot.to_dict(), indent=2)
             self.assertLessEqual(len(rendered.encode("utf-8")), 4096)
             self.assertLessEqual(len(rendered.splitlines()), 60)
+
+    def test_v11_snapshot_reports_active_team_runtime(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._control(root, version=11)
+            self._current(root, "CLOSED")
+            (root / "docs/routeB_bus").mkdir(parents=True)
+            self._execution_state(root, "", "")
+            self._git_commit(root)
+
+            snapshot = startup_runtime.build_startup_snapshot(root)
+
+            self.assertEqual(snapshot.control_version, 11)
+            self.assertEqual(snapshot.team_runtime_version, 1)
+            self.assertFalse(snapshot.fatal_errors)
+
+            shadow = startup_runtime.build_shadow_snapshot(root)
+            self.assertEqual(shadow.control_version, 11)
+            self.assertEqual(shadow.team_runtime_version, 1)
+            self.assertFalse(shadow.fatal_errors)
 
     def test_production_git_observation_does_not_refresh_index(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

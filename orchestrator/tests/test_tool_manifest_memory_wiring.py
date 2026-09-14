@@ -447,7 +447,7 @@ class ToolManifestMemoryPlants(unittest.TestCase):
 
     def test_control_routes_commands_to_live_manifest(self) -> None:
         control = (REPO / "docs" / "CODEX_CONTROL.md").read_text(encoding="utf-8")
-        self.assertIn("CONTROL_VERSION: 10", control)
+        self.assertIn("CONTROL_VERSION: 11", control)
         self.assertIn("HONESTY_STATE: CHALLENGER_NOT_RH", control)
         self.assertIn("OWNER_ONLY_BOUNDARY: PX_RH_CLAIM", control)
         self.assertIn("scripts/supplier_preflight.py", control)

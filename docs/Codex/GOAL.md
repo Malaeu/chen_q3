@@ -142,14 +142,17 @@ copy holds other writers. Resume it with `--recover-operation <id>` from the sam
 pinned engine, using its durable private manifest even if the input file is lost.
 Completed copies never acquire a second write from replay.
 
-The writer locks the canonical writer file, checks format/size/revision and
-exact preimage, durably archives previous bytes and reserves candidate bytes,
-then durably replaces RESUME and verifies readback before reporting SAVED.
-Both files and directories are synced. Exact retry is NOOP and finishes
-durability; same revision with different bytes or changed preimage is HOLD.
-An archive intent is only a byte reservation, never completed work or delivery.
-Archive keys contain kind, revision and full SHA-256; existing entries are never
-rewritten. The original GOAL entry preserves exact bytes, including line endings.
+Revision 11 publication follows control §§10–11: intake a path/hash map with
+BASE Git blob hashes for RESUME/HISTORY; reserve final INTENT bytes. Native
+guard checks prepare/publish before one ordinary push. Pending means reconcile,
+never replay. Publish the verified source-only repair before broader metadata.
+
+The locked writer validates format/size/revision/preimage, durably archives old
+bytes, reserves and replaces RESUME, and verifies readback before SAVED. Files
+and directories are synced. Exact retry is NOOP and finishes durability; changed
+bytes/preimage at the same revision is HOLD. Archive intent reserves bytes only.
+Keys bind kind, revision and full SHA-256. Entries, including original GOAL line
+endings, are immutable.
 
 Normal save refuses corrupt current/history. Recovery requires a verified
 `resume-<revision>-<sha256>` or `intent-<revision>-<sha256>` archive entry;
@@ -163,14 +166,12 @@ intents. The writer preserves damaged bytes and does not establish live truth.
 Damaged history requires restoration/verification from a known intact copy;
 do not invent or drop entries. Reconcile §2 before clearing the recovery flag.
 
-Before dispatch, calculation launch or publication, save the exact action ID,
-pins and INTENT; after observing the action, save its evidence and confirmation.
-A missing confirmation means CHECK THE ORIGINAL ACTION, never automatic replay.
-Save essential scripts, results, full logs/receipts and source locators in the
-repository's existing report/output area before relying on them; `/tmp` alone
-does not survive recovery. Publication intent records a known base, exact named
-paths and expected payload hashes. After a lost receipt inspect local/remote
-history before repeating commit/push. Checkpoint receipts are not publication.
+Before dispatch, calculation or publication save exact ID, pins and INTENT;
+after observation save evidence and confirmation. Missing confirmation means
+inspect the original action/history, never replay. Preserve essential scripts,
+results, full logs/receipts and locators in the repository's existing output
+area; `/tmp` alone is insufficient. Publication binds base, paths and hashes.
+Checkpoint receipts are not publication.
 
 ## 5. Current task — continue here
 

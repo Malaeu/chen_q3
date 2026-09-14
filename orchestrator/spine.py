@@ -41,6 +41,7 @@ try:
     from orchestrator import kb as _kb
     from orchestrator import observability as _observability
     from orchestrator import research_dependency_gate as _research_dependency_gate
+    from orchestrator import startup_runtime as _startup_runtime
     from orchestrator import three_body_loop as _three_body_loop
     from scripts.q3_docs_corpus import (
         corpus_snapshot as _q3_docs_corpus_snapshot,
@@ -55,6 +56,7 @@ except ModuleNotFoundError:  # direct `python3 orchestrator/spine.py`
     import kb as _kb
     import observability as _observability
     import research_dependency_gate as _research_dependency_gate
+    import startup_runtime as _startup_runtime
     import three_body_loop as _three_body_loop
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
@@ -92,8 +94,6 @@ COGNITIVE_OPERATOR_REGISTRY = REPO / "q3.lean.aristotle" / "COGNITIVE_OPERATORS.
 TOOL_MANIFEST = REPO / "docs" / "cartographer" / "TOOLS.yaml"
 CURRENT_CODEX_TASK = REPO / "docs" / "Codex" / "CURRENT.md"
 SEMANTIC_QUARANTINE = REPO / "orchestrator" / "state" / "SEMANTIC_QUARANTINE.json"
-ACTIVE_EXECUTOR_CONTROL_VERSION = 10
-
 PHASE_KEY_FIELDS = (
     "route_id",
     "front_id",
@@ -1176,9 +1176,14 @@ def _validate_active_control() -> None:
     if not CONTROL.is_file():
         _fail("EXPLORATION_CONTOUR_ORPHANED", "docs/CODEX_CONTROL.md is missing")
     text = CONTROL.read_text(encoding="utf-8")
+    try:
+        _startup_runtime._validate_battle_v10_identity(  # noqa: SLF001
+            _startup_runtime._control_identity(CONTROL)  # noqa: SLF001
+        )
+    except _startup_runtime.StartupRuntimeError as exc:
+        _fail("EXPLORATION_CONTOUR_ORPHANED", str(exc))
     required = (
         "CONTROL_ID: Q3_EXECUTOR_CONTROL",
-        f"CONTROL_VERSION: {ACTIVE_EXECUTOR_CONTROL_VERSION}",
         "STATUS: ACTIVE",
         "ROLE: CODEX_EXECUTOR",
         "BODIES:\n  - CODEX_MAC\n  - CODEX_LINUX",

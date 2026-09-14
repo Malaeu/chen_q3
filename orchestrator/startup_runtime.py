@@ -521,16 +521,24 @@ def _control_identity(control_path: Path) -> ControlIdentity:
     )
 
 
+SUPPORTED_CONTROL_REVISIONS = frozenset({10, 11})
+
+
 def _validate_battle_v10_identity(identity: ControlIdentity) -> ControlIdentity:
     if (
-        identity.version != 10
+        identity.version not in SUPPORTED_CONTROL_REVISIONS
         or identity.status != "ACTIVE"
         or identity.honesty_state != HONESTY_STATE
         or identity.owner_only_boundary != "PX_RH_CLAIM"
     ):
         raise StartupRuntimeError(
             "BATTLE_V10_CONTROL_INVALID",
-            "expected ACTIVE v10 with CHALLENGER_NOT_RH and owner-only PX_RH_CLAIM",
+            "expected ACTIVE v10/v11 with CHALLENGER_NOT_RH and owner-only PX_RH_CLAIM",
+        )
+    if identity.version == 11 and identity.team_runtime_version != 1:
+        raise StartupRuntimeError(
+            "BATTLE_V10_CONTROL_INVALID",
+            "control v11 requires TEAM_RUNTIME_VERSION 1",
         )
     return identity
 
@@ -2575,7 +2583,7 @@ def _build_startup_snapshot(
                     fatal.append(str(exc))
             elif control.version == 9:
                 warnings.append("CONTROL_V9_SHADOW_BASELINE")
-            elif control.version == 10:
+            elif control.version in SUPPORTED_CONTROL_REVISIONS:
                 try:
                     _validate_battle_v10_identity(control)
                 except StartupRuntimeError as exc:

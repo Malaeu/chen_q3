@@ -908,6 +908,7 @@ tool_families:
         approval: OWNER_AUTHORIZED_EXACT_OPERATION_AND_INPUTS
         authority: COOPERATIVE_ONCE_ONLY_PREFLIGHT_NOT_DELIVERY
         records_to: private reservation; retry requires original-operation reconciliation
+        notes: Revision 11 compact publication takes an intaken path/hash map with BASE Git blob hashes for RESUME/HISTORY and explicit incoming tips; reserves final metadata/preimages and history chain. Native team_guard prepare/publish runs under the live writer epoch, preserves incoming history with ordinary merge, and consumes one exact push attempt; ordinary owner Git pushes outside the lock. Exact independently verified source-only repair may pass only its own publication issue. No sender or new tool ID.
         validation: test_workflow_runtime.TeamRuntimeTests
         last_verified: 2026-09-11
 
@@ -920,10 +921,11 @@ tool_families:
         invoke: python3 orchestrator/workflow_runtime.py team-confirm-effect --operation-id <id> --candidate <file> --expected-sha256 <hash>
         trigger: Bind independently observed evidence to the original local effect reservation.
         writes: true
-        write_paths: [GIT_COMMON_DIR/q3_team_local.v1]
+        write_paths: [GIT_COMMON_DIR/q3_team_local.v1, "GIT_COMMON_DIR/objects/**"]
         approval: OWNER_AUTHORIZED_EXACT_OPERATION_AND_EVIDENCE
         authority: OBSERVATION_ONLY_NOT_MATHEMATICAL_ACCEPTANCE
         records_to: private reservation outcome with canonical evidence hashes
+        notes: Revision 11 compact and exact verified-repair publication independently read back the pinned commit/tree/blobs outside flock with object-only fetch, then recheck owner/epoch before confirmation. Preserve pre-push base provenance and record actual remote_commit. Lost receipt reconciles the original reservation, never repeats native push. Legacy revision 10 uses its original private-state-only registration and generic confirmation.
         validation: test_workflow_runtime.TeamRuntimeTests
         last_verified: 2026-09-11
 

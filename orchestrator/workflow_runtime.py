@@ -201,6 +201,7 @@ class _ExecutionWriterEpoch:
 @contextmanager
 def _execution_writer_epoch(
     repo: Path, *, integration_operation: str | None = None, bootstrap_operation: str | None = None,
+    publication_operation: str | None = None,
 ) -> Iterator[_ExecutionWriterEpoch]:
     """Hold one non-blocking exclusive flock across the entire write transaction."""
 
@@ -228,7 +229,8 @@ def _execution_writer_epoch(
             raise WorkflowRuntimeError("WORKFLOW_WRITER_LOCK_COLLISION") from exc
         epoch = _ExecutionWriterEpoch(path=lock_path, handle=handle, identity=identity)
         epoch.recheck()
-        _team_pending_guard(repo, operation_id=integration_operation, bootstrap_id=bootstrap_operation)
+        _team_pending_guard(repo, operation_id=integration_operation, bootstrap_id=bootstrap_operation,
+                            publication_id=publication_operation)
         yield epoch
         epoch.recheck()
     finally:
@@ -787,6 +789,24 @@ def live_plan_v10(
                                      "engine": integration["engine"], "command": "team-integrate-candidate",
                                      "recover_operation": operation_id},
                         "blockers": [{"scope": "ALL_WRITERS", "code": "TEAM_INTEGRATION_PENDING"}]}}
+        publication = _team_pending_publication(repo)
+        if publication is not None and lock_error is None:
+            operation_id, receipt = publication
+            saved = receipt["publication"]
+            binding = saved["snapshot"]
+            if epoch_guard.recheck() is not None or _team_pending_publication(repo) != publication:
+                raise WorkflowRuntimeError("TEAM_READ_EPOCH_CHANGED")
+            return {"schema": TEAM_PLAN_SCHEMA, "mode": PRODUCTION_PLAN_MODE, "status": "HOLD",
+                    "holds": ["TEAM_PUBLICATION_PENDING"], "run_authorized": False,
+                    "writes_performed": False, "execution_ready": False, "PX_RH_CLAIM": "NOT_MADE",
+                    "selected_goal": None, "continuation": {"schema": "q3_continuation.v1", "status": "RECOVERY_ONLY",
+                        "owner": {"task": binding["owner_task"], "installation_ref": binding["ownership"]["installation_ref"],
+                                  "epoch": binding["ownership"]["epoch"]},
+                        "recovery": {"operation_id": operation_id, "snapshot_sha256": receipt["publication_sha256"],
+                                     "state": saved["state"], "candidate_commit": saved["candidate_commit"],
+                                     "command": "team-confirm-effect", "reconcile_only": True,
+                                     "next": "inspect original local and remote history; never repeat native Git effects"},
+                        "blockers": [{"scope": "ALL_WRITERS", "code": "TEAM_PUBLICATION_PENDING"}]}}
         snapshot = build_startup_snapshot(
             repo,
             owned_paths=owned_scope,
@@ -1174,15 +1194,16 @@ def _team_json(value: object) -> bytes:
                        separators=(",", ":"), allow_nan=False) + "\n").encode("utf-8")
 
 
-def _team_enabled(repo: Path) -> bool:
-    _team_pending_guard(repo)
+def _team_enabled(repo: Path, *, publication_id: str | None = None) -> bool:
+    _team_pending_guard(repo, publication_id=publication_id)
     from orchestrator.startup_runtime import validate_battle_v10_control
 
     return validate_battle_v10_control(repo).team_runtime_version == 1
 
 
-def _team_registered(repo: Path, command: str, paths: list[str], *, bootstrap_id: str | None = None) -> None:
-    _team_pending_guard(repo, bootstrap_id=bootstrap_id)
+def _team_registered(repo: Path, command: str, paths: list[str], *, bootstrap_id: str | None = None,
+                     publication_id: str | None = None) -> None:
+    _team_pending_guard(repo, bootstrap_id=bootstrap_id, publication_id=publication_id)
     entry = load_tool_index(repo / TOOLS).get("workflow-" + command, {})
     if (entry.get("status") != "ENABLED" or entry.get("writes") is not True
             or entry.get("write_paths") != paths):
@@ -1299,13 +1320,87 @@ def _team_pending_bootstrap(repo: Path) -> tuple[str, dict[str, Any]] | None:
     return pending[0] if pending else None
 
 
-def _team_pending_guard(repo: Path, *, operation_id: str | None = None, bootstrap_id: str | None = None) -> None:
+def _team_pending_publication(repo: Path) -> tuple[str, dict[str, Any]] | None:
+    if not (repo / ".git").exists():
+        return None
+    local = _team_private_read(repo, TEAM_LOCAL)
+    if local is None:
+        raw = _resume_file(repo, RESUME_PATH)
+        if raw is not None:
+            try:
+                current, _ = _resume_document(raw)
+            except WorkflowRuntimeError:
+                return None  # Ordinary startup retains its malformed-checkpoint error.
+            operation = current["operation"]
+            if (current["schema"] == "q3_resume.v2" and operation["command"] == "publication"
+                    and operation["state"] in {"INTENT", "UNKNOWN"}):
+                inputs = operation["inputs"]
+                compact = (len(inputs) == 1 and next(iter(inputs)) ==
+                    "docs/session_protocols/team-evidence-" + next(iter(inputs.values())) + ".bin")
+                repair = (operation["subject"]["kind"] == "REPAIR"
+                          and operation["id"] == operation["subject"]["id"] + ":publication")
+                # Both routes already required local intake/review receipts.
+                # Missing private state cannot mint a replacement observation.
+                if compact or repair:
+                    raise WorkflowRuntimeError("TEAM_PUBLICATION_PRIVATE_STATE_UNAVAILABLE")
+        return None
+    pending = []
+    operations = local.get("operations")
+    if not isinstance(operations, dict):
+        raise WorkflowRuntimeError("TEAM_LOCAL_BINDING_INVALID")
+    raw = _resume_file(repo, RESUME_PATH)
+    if raw is not None:
+        try:
+            current, _ = _resume_document(raw)
+        except WorkflowRuntimeError:
+            current = None
+        if current is not None and current["schema"] == "q3_resume.v2":
+            operation = current["operation"]
+            receipt = operations.get(operation["id"], {})
+            if operation["state"] in {"INTENT", "UNKNOWN"} and not receipt.get("publication"):
+                map_input = _team_publication_map(operation)
+                repair = (operation["command"] == "publication" and operation["subject"]["kind"] == "REPAIR"
+                          and operation["id"] == operation["subject"]["id"] + ":publication")
+                if map_input:
+                    _team_publication_intake(repo, current, *map_input, local=local)
+                elif repair:
+                    repair = _team_publication_repair(repo, current, operation["inputs"]) is not None
+                if (map_input or repair) and current["pins"]["head"] != _team_git(repo, "rev-parse", "HEAD").decode().strip():
+                    raise WorkflowRuntimeError("TEAM_PUBLICATION_BASE_CHANGED")
+    for key, receipt in operations.items():
+        saved = receipt.get("publication") if isinstance(receipt, dict) else None
+        if saved is None:
+            continue
+        if (not isinstance(saved, dict)
+                or set(saved) != {"snapshot", "state", "candidate_commit", "candidate_tree", "push_attempted"}
+                or not isinstance(saved["snapshot"], dict)
+                or saved["snapshot"].get("operation_id") != key
+                or receipt.get("publication_sha256") != _resume_digest(_team_json(saved["snapshot"]))
+                or saved["state"] not in {"RESERVED", "PREPARED", "PUSH_RESERVED", "CONFIRMED"}
+                or type(saved["push_attempted"]) is not bool
+                or receipt.get("state") not in {"RESERVED", "UNKNOWN", "CONFIRMED"}
+                or (saved["push_attempted"] and not all(_team_hex(saved[k], 40)
+                    for k in ("candidate_commit", "candidate_tree")))
+                or (saved["state"] in {"PUSH_RESERVED", "CONFIRMED"} and not saved["push_attempted"])):
+            raise WorkflowRuntimeError("TEAM_PUBLICATION_RESERVATION_INVALID")
+        if receipt["state"] != "CONFIRMED":
+            pending.append((key, receipt))
+    if len(pending) > 1:
+        raise WorkflowRuntimeError("TEAM_PUBLICATION_PENDING_AMBIGUOUS")
+    return pending[0] if pending else None
+
+
+def _team_pending_guard(repo: Path, *, operation_id: str | None = None, bootstrap_id: str | None = None,
+                        publication_id: str | None = None) -> None:
     bootstrap = _team_pending_bootstrap(repo)
     if bootstrap is not None and bootstrap[0] != bootstrap_id:
         raise WorkflowRuntimeError("TEAM_BOOTSTRAP_PENDING:" + bootstrap[0])
     pending = _team_pending_integration(repo)
     if pending is not None and pending[0] != operation_id:
         raise WorkflowRuntimeError("TEAM_INTEGRATION_PENDING:" + pending[0])
+    publication = _team_pending_publication(repo)
+    if publication is not None and publication[0] != publication_id:
+        raise WorkflowRuntimeError("TEAM_PUBLICATION_PENDING:" + publication[0])
 
 
 def _team_installation(repo: Path) -> dict[str, str]:
@@ -1797,6 +1892,335 @@ def team_bootstrap_publish(
             "next": "confirm the saved checkpoint" if state == "CONFIRMED" else "reconcile the original operation; never repeat push"}
 
 
+def _team_publication_map(operation: dict[str, Any]) -> tuple[str, str] | None:
+    inputs = operation["inputs"]
+    if (operation["command"] == "publication" and len(inputs) == 1
+            and operation["subject"] == {"kind": "REPAIR", "id": operation["id"],
+                                         "sha256": next(iter(inputs.values()))}):
+        path, digest = next(iter(inputs.items()))
+        if path == "docs/session_protocols/team-evidence-" + digest + ".bin":
+            return path, digest
+    return None
+
+
+def _team_publication_intake(repo: Path, data: dict[str, Any], path: str, digest: str,
+                             *, local: dict[str, Any]) -> None:
+    """Bind the map to its existing completed intake, before any new observation."""
+    matches = []
+    for operation_id, receipt in local["operations"].items():
+        integration = receipt.get("integration", {}) if isinstance(receipt, dict) else {}
+        manifest = integration.get("manifest", {})
+        if (manifest.get("mode") != "EVIDENCE_INTAKE"
+                or not any(row.get("path") == path for row in manifest.get("files", []))):
+            continue
+        payload = _team_json(manifest)
+        _team_integration_manifest(payload)
+        if (receipt.get("state") != "CONFIRMED" or integration.get("state") != "COMPLETE"
+                or integration.get("manifest_sha256") != _resume_digest(payload)
+                or manifest["operation_id"] != operation_id
+                or manifest["expected_head"] != data["pins"]["head"]
+                or manifest["owner_task"] != data["owner_thread_id"]
+                or manifest["installation_ref"] != data["ownership"]["installation_ref"]
+                or manifest["epoch"] != data["ownership"]["epoch"]
+                or not any(row["path"] == path and row["sha256"] == digest for row in manifest["files"])):
+            raise WorkflowRuntimeError("TEAM_PUBLICATION_INTAKE_BINDING_CHANGED")
+        _team_integration_review(repo, data, manifest, payload, engine=repo)
+        matches.append((operation_id, _resume_digest(payload)))
+    if len(matches) != 1:
+        raise WorkflowRuntimeError("TEAM_PUBLICATION_INTAKE_RECEIPT_REQUIRED")
+    operation_id, manifest_sha = matches[0]
+    history = _resume_file(repo, RESUME_HISTORY_PATH)
+    observed = {}
+    for kind, revision, raw in _resume_history(history or b"").values():
+        if kind not in {"resume", "intent"} or revision >= data["revision"]:
+            continue
+        value, _ = _resume_document(raw)
+        operation = value["operation"]
+        if operation["id"] == operation_id:
+            if (operation["command"] != "workflow-team-integrate-candidate"
+                    or operation["subject"]["sha256"] != manifest_sha
+                    or value["ownership"] != data["ownership"]):
+                raise WorkflowRuntimeError("TEAM_PUBLICATION_INTAKE_HISTORY_CHANGED")
+            observed[operation["state"]] = revision
+    if not 0 < observed.get("INTENT", 0) < observed.get("CONFIRMED", 0):
+        raise WorkflowRuntimeError("TEAM_PUBLICATION_INTAKE_HISTORY_REQUIRED")
+
+
+def _team_publication_file(repo: Path, path: str) -> dict[str, Any]:
+    raw = _resume_file(repo, Path(path))
+    return {"sha256": _resume_digest(raw),
+            "mode": None if raw is None else (0o755 if (repo / path).stat().st_mode & 0o111 else 0o644)}
+
+
+def _team_publication_outside(repo: Path, paths: set[str]) -> dict[str, Any]:
+    """Preserve pre-existing foreign work without including it in a commit."""
+    status = _team_git(repo, "status", "--porcelain=v1", "-z", "--untracked-files=all")
+    rows = status.split(b"\0")[:-1]
+    outside = {}
+    for row in rows:
+        # Renames/copies have a second pathname and require separate reconciliation.
+        if len(row) < 4 or b"R" in row[:2] or b"C" in row[:2]:
+            raise WorkflowRuntimeError("TEAM_PUBLICATION_RENAME_RECONCILIATION_REQUIRED")
+        path = row[3:].decode("utf-8")
+        if path not in paths:
+            outside[path] = {"status": row[:2].decode(), **_team_publication_file(repo, path)}
+    index = []
+    for row in _team_git(repo, "ls-files", "--stage", "-z").split(b"\0")[:-1]:
+        metadata, path = row.split(b"\t", 1)
+        if path.decode("utf-8") not in paths:
+            index.append(row)
+    return {"files": outside, "index_sha256": _resume_digest(b"\0".join(index))}
+
+
+def _team_publication_repair(repo: Path, data: dict[str, Any], inputs: dict[str, str]) -> str | None:
+    """Revalidate the existing independent repair artifact; do not clear the issue."""
+    from orchestrator import team_records
+
+    registry = team_records.read_registry(_resume_file(repo, TEAM_ISSUES), "issues",
+        archive_loader=lambda path: _resume_file(repo, Path(path)))
+    operation = data["operation"]
+    for issue in registry["issues"].values():
+        subject = issue.get("repair_subject_id")
+        if (not subject or operation["id"] != subject + ":publication"
+                or operation["subject"]["id"] != subject):
+            continue
+        if (issue["state"] not in {"FIX_VERIFIED", "FIX_COMMITTED"}
+                or operation["subject"]["kind"] != "REPAIR"
+                or operation["subject"]["sha256"] != _resume_digest(_team_json(inputs))
+                or _team_candidate_manifest({"candidate_manifest": issue.get("repair_candidate_manifest")}) != inputs):
+            raise WorkflowRuntimeError("TEAM_PUBLICATION_REPAIR_BINDING_CHANGED")
+        verified = [event["payload"] for event in registry["events"]
+                    if event["issue_id"] == issue["issue_id"]
+                    and event["payload"].get("transition") == "FIX_VERIFIED"]
+        if len(verified) != 1:
+            raise WorkflowRuntimeError("TEAM_PUBLICATION_REPAIR_REVIEW_REQUIRED")
+        payload = verified[0]
+        assignments = _team_assignments(repo)
+        ids = [key for key, row in assignments["assignments"].items()
+               if row["assignment"]["assignee"] == payload["actor_id"]
+               and row["assignment"]["subject"] in {subject, issue["issue_id"]}]
+        context = _team_assignment_context(repo, data, assignments, ids,
+            {row["sha256"] for row in payload["evidence"]})
+        result = team_records.validate_issue_event_actor(payload, assignments, context,
+            expected_base_commit=issue["report"]["base_commit"])
+        assignment = assignments["assignments"][result["assignment_id"]]["assignment"]
+        if (not set(inputs).issubset(assignment["permitted_paths"])
+                or {row["path"]: row["sha256"] for row in assignment["input_hashes"]} != issue["repair_sources"]):
+            raise WorkflowRuntimeError("TEAM_PUBLICATION_REPAIR_SOURCE_BINDING_CHANGED")
+        return issue["issue_id"]
+    return None
+
+
+def _team_publication_history(repo: Path, data: dict[str, Any], raw: bytes,
+                              base: str, inputs: dict[str, str]) -> None:
+    base_raw, _ = _team_integration_blob(repo, base, str(RESUME_PATH))
+    base_history, _ = _team_integration_blob(repo, base, str(RESUME_HISTORY_PATH))
+    history = _resume_file(repo, RESUME_HISTORY_PATH)
+    if (base_raw is None or base_history is None or history is None
+            or inputs[str(RESUME_PATH)] != _resume_digest(base_raw)
+            or inputs[str(RESUME_HISTORY_PATH)] != _resume_digest(base_history)
+            or not history.startswith(base_history)):
+        raise WorkflowRuntimeError("TEAM_PUBLICATION_BASE_HISTORY_CHANGED")
+    _resume_history(base_history)
+    start, _ = _resume_document(base_raw)
+    versions = {revision: body for kind, revision, body in _resume_history(history).values()
+                if kind in {"resume", "intent"}}
+    if versions.get(start["revision"]) != base_raw or versions.get(data["revision"]) != raw:
+        raise WorkflowRuntimeError("TEAM_PUBLICATION_CHECKPOINT_NOT_IN_HISTORY")
+    previous = base_raw
+    for revision in range(start["revision"], data["revision"] + 1):
+        body = versions.get(revision)
+        if body is None:
+            raise WorkflowRuntimeError("TEAM_PUBLICATION_HISTORY_GAP")
+        value, _ = _resume_document(body)
+        if (revision != start["revision"] and value["previous_sha256"] != _resume_digest(previous)
+                or any(value[k] != data[k] for k in ("owner_thread_id", "owner_host_id", "ownership"))
+                or any(value["pins"][k] != data["pins"][k]
+                       for k in ("physical_goal", "source_commit", "request_id", "phase_id"))):
+            raise WorkflowRuntimeError("TEAM_PUBLICATION_HISTORY_CHAIN_CHANGED")
+        previous = body
+
+
+def _team_publication_snapshot(repo: Path, raw: bytes, data: dict[str, Any],
+                               receipt: dict[str, Any]) -> dict[str, Any] | None:
+    from orchestrator import team_records
+    from orchestrator.startup_runtime import validate_battle_v10_control
+
+    operation = data["operation"]
+    if operation["command"] != "publication":
+        return None
+    inputs = operation["inputs"]
+    metadata = {str(RESUME_PATH), str(RESUME_HISTORY_PATH)}
+    map_path = None
+    compact = _team_publication_map(operation)
+    if compact:
+        map_path, map_sha = compact
+        _team_publication_intake(repo, data, map_path, map_sha, local=_team_local(repo))
+        blob = _resume_file(repo, Path(map_path))
+        if _resume_digest(blob) != map_sha:
+            raise WorkflowRuntimeError("TEAM_PUBLICATION_MAP_CHANGED")
+        inputs = team_records.load_payload(blob)
+        _team_path_hashes(inputs)
+        if not metadata.issubset(inputs) or map_path in inputs:
+            raise WorkflowRuntimeError("TEAM_PUBLICATION_MAP_METADATA_REQUIRED")
+    repair_subject = (operation["subject"]["kind"] == "REPAIR"
+                      and operation["id"] == operation["subject"]["id"] + ":publication")
+    if not compact and not repair_subject:
+        return None
+    control = validate_battle_v10_control(repo)
+    repair = _team_publication_repair(repo, data, inputs) if control.version == 11 and not compact else None
+    if not compact and repair is None:
+        return None
+    if os.environ.get("Q3_OWNER_EPOCH") != str(data["ownership"]["epoch"]):
+        raise WorkflowRuntimeError("TEAM_CALLER_EPOCH_CHANGED")
+    if (control.version != 11 or control.team_runtime_version != 1
+            or operation["kind"] != "PUBLISH" or operation["state"] != "INTENT"):
+        raise WorkflowRuntimeError("TEAM_PUBLICATION_CONTROL_REVISION_REQUIRED")
+    issues = team_records.read_registry(_resume_file(repo, TEAM_ISSUES), "issues",
+        archive_loader=lambda path: _resume_file(repo, Path(path)))
+    for issue in issues["issues"].values():
+        if (issue["state"] in {"CONFIRMED_BUG", "CONFIRMED_RULE_CONFLICT", "ASSIGNED", "FIX_CANDIDATE", "FIX_VERIFIED", "FIX_COMMITTED"}
+                and "publication" in issue["report"]["affected_operations"] and issue["issue_id"] != repair):
+            raise WorkflowRuntimeError("TEAM_DEPENDENT_OPERATION_HELD:" + issue["issue_id"])
+    base = _team_git(repo, "rev-parse", "HEAD").decode().strip()
+    if data["pins"]["head"] != base:
+        raise WorkflowRuntimeError("TEAM_PUBLICATION_BASE_CHANGED")
+    _team_git(repo, "merge-base", "--is-ancestor", receipt["remote_commit"], base)
+    if compact:
+        _team_publication_history(repo, data, raw, base, inputs)
+    incoming = []
+    for value in operation["evidence"]:
+        if not value.startswith("publication_incoming_commit:"):
+            continue
+        tip = value.removeprefix("publication_incoming_commit:")
+        if not _team_hex(tip, 40) or tip in incoming:
+            raise WorkflowRuntimeError("TEAM_PUBLICATION_INCOMING_PIN_INVALID")
+        _team_git(repo, "cat-file", "-e", tip + "^{commit}")
+        incoming.append(tip)
+    if incoming and not compact:
+        raise WorkflowRuntimeError("TEAM_PUBLICATION_REPAIR_EXTRA_HISTORY_FORBIDDEN")
+    incoming_paths = {}
+    for tip in incoming:
+        ancestor = _team_git(repo, "merge-base", base, tip).decode().strip()
+        for entry in _team_git(repo, "diff", "--name-only", "--no-renames", "-z", ancestor, tip, "--").split(b"\0")[:-1]:
+            path = entry.decode("utf-8")
+            body, mode = _team_integration_blob(repo, tip, path)
+            if path not in inputs or body is None or inputs[path] != _resume_digest(body):
+                raise WorkflowRuntimeError("TEAM_PUBLICATION_INCOMING_SCOPE_CHANGED:" + path)
+            if path in incoming_paths and incoming_paths[path] != mode:
+                raise WorkflowRuntimeError("TEAM_PUBLICATION_INCOMING_MODE_CHANGED:" + path)
+            incoming_paths[path] = mode
+    files, preimages = {}, {}
+    declared = dict(inputs)
+    if map_path is not None:
+        declared[map_path] = operation["inputs"][map_path]
+    staged = set(_team_git(repo, "diff", "--cached", "--name-only", "-z", "--").decode().split("\0")[:-1])
+    if staged.intersection(declared) or incoming and staged:
+        raise WorkflowRuntimeError("TEAM_PUBLICATION_STAGED_PREIMAGE_REQUIRES_RECONCILIATION")
+    for path, digest in sorted(declared.items()):
+        if "\x00" in path or path.startswith("-") or ".git" in Path(path).parts:
+            raise WorkflowRuntimeError("TEAM_PUBLICATION_PATH_INVALID")
+        before, before_mode = _team_integration_blob(repo, base, path)
+        actual = _team_publication_file(repo, path)
+        preimages[path] = actual
+        if path in incoming_paths:
+            if actual != {"sha256": _resume_digest(before), "mode": before_mode}:
+                raise WorkflowRuntimeError("TEAM_PUBLICATION_INCOMING_DIRTY_OVERLAP:" + path)
+            mode = incoming_paths[path]
+        else:
+            if compact and path in metadata:
+                digest = actual["sha256"]
+            if actual["sha256"] != digest or actual["mode"] is None:
+                raise WorkflowRuntimeError("TEAM_PUBLICATION_INPUT_CHANGED:" + path)
+            mode = actual["mode"]
+        if path not in incoming_paths and (before_mode is not None and mode != before_mode
+                                          or before_mode is None and mode != 0o644):
+            raise WorkflowRuntimeError("TEAM_PUBLICATION_MODE_CHANGED:" + path)
+        if path in data["source_manifest"] and data["source_manifest"][path] != digest:
+            raise WorkflowRuntimeError("TEAM_PUBLICATION_MATHEMATICAL_REBASE_REQUIRED:" + path)
+        files[path] = {"sha256": digest, "mode": mode}
+    return {"operation_id": operation["id"], "mode": "COMPACT" if compact else "REPAIR",
+            "operation": operation, "base": base, "remote_base": receipt["remote_commit"],
+            "remote_base_resume_sha256": receipt["remote_resume_sha256"],
+            "control_sha256": control.sha256, "ownership": data["ownership"],
+            "owner_task": data["owner_thread_id"], "checkpoint_sha256": _resume_digest(raw),
+            "pins": data["pins"], "source_manifest": data["source_manifest"],
+            "origin_sha256": _team_bootstrap_endpoint(repo), "map_path": map_path,
+            "inputs": inputs, "files": files, "preimages": preimages,
+            "incoming": incoming, "repair_issue": repair,
+            "outside": _team_publication_outside(repo, set(files))}
+
+
+def _team_publication_check(repo: Path, data: dict[str, Any], saved: dict[str, Any], *, committed: bool) -> str:
+    from orchestrator.startup_runtime import validate_battle_v10_control
+
+    snapshot = saved["snapshot"]
+    control = validate_battle_v10_control(repo)
+    if (control.version != 11 or control.sha256 != snapshot["control_sha256"]
+            or data["ownership"] != snapshot["ownership"] or data["owner_thread_id"] != snapshot["owner_task"]
+            or data["operation"] != snapshot["operation"] or data["pins"] != snapshot["pins"]
+            or data["source_manifest"] != snapshot["source_manifest"]
+            or _resume_digest(_resume_file(repo, RESUME_PATH)) != snapshot["checkpoint_sha256"]
+            or _team_bootstrap_endpoint(repo) != snapshot["origin_sha256"]):
+        raise WorkflowRuntimeError("TEAM_PUBLICATION_BINDING_CHANGED")
+    _team_verify_paths(repo, data["source_manifest"])
+    if snapshot["repair_issue"] and _team_publication_repair(repo, data, snapshot["inputs"]) != snapshot["repair_issue"]:
+        raise WorkflowRuntimeError("TEAM_PUBLICATION_REPAIR_BINDING_CHANGED")
+    head = _team_git(repo, "rev-parse", "HEAD").decode().strip()
+    if not committed and head != snapshot["base"]:
+        raise WorkflowRuntimeError("TEAM_PUBLICATION_BASE_CHANGED")
+    for path, expected in (snapshot["files"] if committed else snapshot["preimages"]).items():
+        if _team_publication_file(repo, path) != expected:
+            raise WorkflowRuntimeError("TEAM_PUBLICATION_WORKTREE_CHANGED:" + path)
+        if committed:
+            body, mode = _team_integration_blob(repo, head, path)
+            if {"sha256": _resume_digest(body), "mode": mode} != expected:
+                raise WorkflowRuntimeError("TEAM_PUBLICATION_COMMITTED_BYTES_CHANGED:" + path)
+    if _team_publication_outside(repo, set(snapshot["files"])) != snapshot["outside"]:
+        raise WorkflowRuntimeError("TEAM_PUBLICATION_FOREIGN_PREIMAGE_CHANGED")
+    if committed:
+        if _team_git(repo, "diff", "--cached", "--name-only", head, "--", *sorted(snapshot["files"])):
+            raise WorkflowRuntimeError("TEAM_PUBLICATION_INDEX_CHANGED")
+        for tip in [snapshot["base"], snapshot["remote_base"], *snapshot["incoming"]]:
+            _team_git(repo, "merge-base", "--is-ancestor", tip, head)
+        changed = set(_team_git(repo, "diff", "--name-only", "--no-renames", "-z",
+                               snapshot["remote_base"], head, "--").decode().split("\0")[:-1])
+        if not changed or not changed.issubset(snapshot["files"]):
+            raise WorkflowRuntimeError("TEAM_PUBLICATION_COMMITTED_SCOPE_CHANGED")
+        if snapshot["repair_issue"]:
+            _team_validate_repair_candidate(repo, {"candidate_commit": head,
+                "candidate_manifest": [{"path": path, "sha256": item["sha256"]}
+                    for path, item in snapshot["files"].items()]}, base_commit=snapshot["base"])
+    return head
+
+
+def _team_publication_guard(repo: Path, data: dict[str, Any], *, paths: list[str],
+                            stage: str, writer_epoch: _ExecutionWriterEpoch | None) -> dict[str, Any]:
+    if not isinstance(writer_epoch, _ExecutionWriterEpoch):
+        raise WorkflowRuntimeError("TEAM_PUBLICATION_LIVE_WRITER_EPOCH_REQUIRED")
+    writer_epoch.recheck()
+    local = _team_local(repo)
+    operation_id = data["operation"]["id"]
+    prior = local["operations"].get(operation_id, {})
+    saved = prior.get("publication")
+    if saved is None or set(paths) != set(saved["snapshot"]["files"]):
+        raise WorkflowRuntimeError("TEAM_PUBLICATION_EXACT_SCOPE_REQUIRED")
+    if stage not in {"prepare", "publish"}:
+        raise WorkflowRuntimeError("TEAM_PUBLICATION_STAGE_REQUIRED")
+    expected = "RESERVED" if stage == "prepare" else "PREPARED"
+    if saved["state"] != expected or prior["state"] != "RESERVED":
+        return {"status": "RECONCILE_ORIGINAL", "operation_id": operation_id, "execute_once": False}
+    head = _team_publication_check(repo, data, saved, committed=stage == "publish")
+    updated = {**saved, "state": "PREPARED" if stage == "prepare" else "PUSH_RESERVED"}
+    if stage == "publish":
+        updated.update(candidate_commit=head, candidate_tree=_team_git(repo, "rev-parse", head + "^{tree}").decode().strip(),
+                       push_attempted=True)
+    _team_local_save(repo, local, {**local, "operations": {**local["operations"], operation_id:
+        {**prior, "publication": updated}}}, writer_epoch)
+    return {"status": updated["state"], "operation_id": operation_id, "execute_once": True,
+            "candidate_commit": updated["candidate_commit"]}
+
+
 def team_observe_remote(repo: Path, *, operation_id: str) -> dict[str, Any]:
     """Persist one operation-bound observation; retry never renews a spent grant."""
     _team_registered(repo, "team-observe-remote", ["GIT_COMMON_DIR/" + TEAM_LOCAL, "GIT_COMMON_DIR/objects/**"])
@@ -1865,8 +2289,8 @@ def _team_launch_binding(repo: Path, data: dict[str, Any]) -> dict[str, Any]:
 
 
 def team_reserve_effect(repo: Path, *, operation_id: str) -> dict[str, Any]:
-    _team_registered(repo, "team-reserve-effect", ["GIT_COMMON_DIR/" + TEAM_LOCAL])
-    with _execution_writer_epoch(repo) as epoch:
+    _team_registered(repo, "team-reserve-effect", ["GIT_COMMON_DIR/" + TEAM_LOCAL], publication_id=operation_id)
+    with _execution_writer_epoch(repo, publication_operation=operation_id) as epoch:
         raw, data, _ = _team_current(repo)
         _team_actor(repo, data)
         if data["ownership"]["state"] != "ACTIVE" or data["reconciliation_pending"]:
@@ -1874,6 +2298,9 @@ def team_reserve_effect(repo: Path, *, operation_id: str) -> dict[str, Any]:
         operation = data["operation"]
         if operation["id"] != operation_id or operation["state"] != "INTENT":
             raise WorkflowRuntimeError("TEAM_EXACT_EFFECT_INTENT_REQUIRED")
+        prior = _team_local_operation(repo, operation_id)
+        if prior and prior.get("publication"):
+            return {"status": "RECONCILE_ORIGINAL", "operation_id": operation_id, "execute_once": False}
         _team_verify_paths(repo, data["source_manifest"])
         _team_verify_paths(repo, operation["inputs"])
         local = _team_local(repo)
@@ -1892,6 +2319,12 @@ def team_reserve_effect(repo: Path, *, operation_id: str) -> dict[str, Any]:
         reserved = {**receipt, "state": "RESERVED"}
         if operation["command"] == "agent-launch":
             reserved["launch_binding"] = _team_launch_binding(repo, data)
+        publication = _team_publication_snapshot(repo, raw, data, receipt)
+        if publication is not None:
+            saved = {"snapshot": publication, "state": "RESERVED", "candidate_commit": None,
+                     "candidate_tree": None, "push_attempted": False}
+            _team_publication_check(repo, data, saved, committed=False)
+            reserved.update(publication=saved, publication_sha256=_resume_digest(_team_json(publication)))
         updated = {**local, "operations": {**local["operations"], operation_id: reserved},
                    "epoch_floor": max(local["epoch_floor"], data["ownership"]["epoch"])}
         _team_local_save(repo, local, updated, epoch)
@@ -2109,8 +2542,82 @@ def team_watch_intent(repo: Path, *, action: str, transfer_id: str, target_threa
         return {"status": "RESERVED", "operation_id": operation_id, "watch_id": watch["watch_id"], "execute_once": True}
 
 
+def _team_confirm_publication(repo: Path, operation_id: str, record: dict[str, Any]) -> dict[str, Any]:
+    from orchestrator.startup_runtime import validate_battle_v10_control
+
+    with _execution_writer_epoch(repo, publication_operation=operation_id):
+        _, data, _ = _team_current(repo)
+        _team_actor(repo, data)
+        prior = _team_local_operation(repo, operation_id)
+        saved = prior["publication"]
+        snapshot = saved["snapshot"]
+        if prior["state"] == "CONFIRMED":
+            if prior.get("confirmation_request") != record:
+                raise WorkflowRuntimeError("TEAM_CONFIRMATION_CONFLICT")
+            return {"status": "NOOP", "operation_id": operation_id, "outcome": "CONFIRMED"}
+        if os.environ.get("Q3_OWNER_EPOCH") != str(data["ownership"]["epoch"]):
+            raise WorkflowRuntimeError("TEAM_CALLER_EPOCH_CHANGED")
+        if not saved["push_attempted"] or saved["state"] != "PUSH_RESERVED":
+            raise WorkflowRuntimeError("TEAM_PUBLICATION_PUSH_RESERVATION_REQUIRED")
+        if record["outcome"] == "NOT_EXECUTED":
+            raise WorkflowRuntimeError("TEAM_PUBLICATION_UNKNOWN_IS_NOT_NOT_EXECUTED")
+        _team_verify_paths(repo, record["evidence"])
+        control = validate_battle_v10_control(repo)
+        if (control.version != 11 or control.sha256 != snapshot["control_sha256"]
+                or data["ownership"] != snapshot["ownership"]
+                or data["operation"] != snapshot["operation"]
+                or data["pins"] != snapshot["pins"]
+                or _team_bootstrap_endpoint(repo) != snapshot["origin_sha256"]):
+            raise WorkflowRuntimeError("TEAM_PUBLICATION_BINDING_CHANGED")
+    # Network reads deliberately occur outside the canonical writer lock.
+    observed = {"remote_commit": None, "remote_tree": None, "remote_resume_sha256": None}
+    try:
+        commit, remote_raw, _ = _team_remote_checkpoint(repo)
+        observed = {"remote_commit": commit, "remote_tree": _team_git(repo, "rev-parse", commit + "^{tree}").decode().strip(),
+                    "remote_resume_sha256": _resume_digest(remote_raw)}
+    except (WorkflowRuntimeError, OSError, subprocess.SubprocessError):
+        pass
+    outcome = "UNKNOWN"
+    if observed["remote_commit"] == saved["candidate_commit"] and observed["remote_tree"] == saved["candidate_tree"]:
+        for path, expected in snapshot["files"].items():
+            body, mode = _team_integration_blob(repo, observed["remote_commit"], path)
+            if {"sha256": _resume_digest(body), "mode": mode} != expected:
+                raise WorkflowRuntimeError("TEAM_PUBLICATION_REMOTE_BYTES_CHANGED:" + path)
+        outcome = "CONFIRMED"
+    with _execution_writer_epoch(repo, publication_operation=operation_id) as epoch:
+        _, current, _ = _team_current(repo)
+        _team_actor(repo, current)
+        local = _team_local(repo)
+        now = local["operations"].get(operation_id)
+        if (now != prior or current != data or validate_battle_v10_control(repo).sha256 != snapshot["control_sha256"]
+                or _team_bootstrap_endpoint(repo) != snapshot["origin_sha256"]
+                or _team_git(repo, "rev-parse", "HEAD").decode().strip() != saved["candidate_commit"]
+                or _team_git(repo, "rev-parse", "HEAD^{tree}").decode().strip() != saved["candidate_tree"]):
+            raise WorkflowRuntimeError("TEAM_PUBLICATION_CONFIRMATION_DRIFT")
+        _team_verify_paths(repo, current["source_manifest"])
+        # Missing map bytes can be recovered from the committed tree and saved map;
+        # a completed publication never fabricates a clean working-tree receipt.
+        updated = {**prior, "state": outcome, "confirmation_request": record,
+                   "publication_observation": observed, "evidence": record,
+                   "publication": {**saved, "state": "CONFIRMED" if outcome == "CONFIRMED" else saved["state"]}}
+        if outcome == "CONFIRMED":
+            updated.update(remote_commit=observed["remote_commit"], remote_resume_sha256=observed["remote_resume_sha256"])
+        _team_local_save(repo, local, {**local, "operations": {**local["operations"], operation_id: updated}}, epoch)
+    return {"status": "OBSERVED", "operation_id": operation_id, "outcome": outcome,
+            "candidate_commit": saved["candidate_commit"], "observation": observed, "push_attempted": False}
+
+
 def team_confirm_effect(repo: Path, *, operation_id: str, candidate: Path, expected_sha256: str) -> dict[str, Any]:
-    _team_registered(repo, "team-confirm-effect", ["GIT_COMMON_DIR/" + TEAM_LOCAL])
+    from orchestrator.startup_runtime import validate_battle_v10_control
+
+    _team_pending_guard(repo, publication_id=operation_id)
+    paths = ["GIT_COMMON_DIR/" + TEAM_LOCAL]
+    registered_paths = load_tool_index(repo / TOOLS).get("workflow-team-confirm-effect", {}).get("write_paths")
+    if registered_paths == paths + ["GIT_COMMON_DIR/objects/**"]:
+        if validate_battle_v10_control(repo).version != 11:
+            raise WorkflowRuntimeError("TEAM_PUBLICATION_CONTROL_REVISION_REQUIRED")
+        paths = registered_paths
+    _team_registered(repo, "team-confirm-effect", paths, publication_id=operation_id)
     payload = candidate.read_bytes()
     if _resume_digest(payload) != expected_sha256:
         raise WorkflowRuntimeError("TEAM_CONFIRMATION_PAYLOAD_CHANGED")
@@ -2121,6 +2628,11 @@ def team_confirm_effect(repo: Path, *, operation_id: str, candidate: Path, expec
             or _team_json(record) != payload or not record["evidence"]):
         raise WorkflowRuntimeError("TEAM_CONFIRMATION_SCHEMA_INVALID")
     _team_path_hashes(record["evidence"])
+    prior = _team_local_operation(repo, operation_id)
+    if prior and prior.get("publication"):
+        if "GIT_COMMON_DIR/objects/**" not in paths:
+            raise WorkflowRuntimeError("TEAM_TOOL_NOT_REGISTERED:team-confirm-effect")
+        return _team_confirm_publication(repo, operation_id, record)
     with _execution_writer_epoch(repo) as epoch:
         _, data, _ = _team_current(repo)
         _team_actor(repo, data)
@@ -2142,14 +2654,18 @@ def team_confirm_effect(repo: Path, *, operation_id: str, candidate: Path, expec
 
 
 def team_guard(repo: Path, *, command: str, paths: list[str], effect: bool = False,
-               expected_epoch: int | None = None) -> dict[str, Any] | None:
+               expected_epoch: int | None = None, publication_stage: str | None = None,
+               writer_epoch: _ExecutionWriterEpoch | None = None) -> dict[str, Any] | None:
     """Called by registered writers while holding their canonical writer epoch.
 
     This cooperative check does not authenticate a same-user shell or perform a
     network request. External effects additionally need an exact local reservation.
     """
-    _team_pending_guard(repo)
-    if not _team_enabled(repo):
+    publication_id = (_team_current(repo)[1]["operation"]["id"]
+                      if command == "publication" and publication_stage is not None else None)
+    _team_pending_guard(repo, publication_id=publication_id)
+    enabled = _team_enabled(repo, publication_id=publication_id) if publication_id else _team_enabled(repo)
+    if not enabled:
         return None
     if command not in TEAM_FENCED_CALLS | TEAM_NATIVE_EFFECTS:
         raise WorkflowRuntimeError("TEAM_UNFENCED_WRITER_FORBIDDEN:" + command)
@@ -2177,7 +2693,11 @@ def team_guard(repo: Path, *, command: str, paths: list[str], effect: bool = Fal
         for issue in issues["issues"].values():
             if (issue["state"] in {"CONFIRMED_BUG", "CONFIRMED_RULE_CONFLICT", "ASSIGNED", "FIX_CANDIDATE", "FIX_VERIFIED", "FIX_COMMITTED"}
                     and command in issue["report"]["affected_operations"]):
-                raise WorkflowRuntimeError("TEAM_DEPENDENT_OPERATION_HELD:" + issue["issue_id"])
+                saved = _team_local_operation(repo, publication_id) if publication_id else None
+                if not saved or saved.get("publication", {}).get("snapshot", {}).get("repair_issue") != issue["issue_id"]:
+                    raise WorkflowRuntimeError("TEAM_DEPENDENT_OPERATION_HELD:" + issue["issue_id"])
+    if publication_id is not None:
+        return _team_publication_guard(repo, data, paths=paths, stage=publication_stage, writer_epoch=writer_epoch)
     if effect:
         operation = data["operation"]
         if operation["state"] != "INTENT" or operation["command"] != command:

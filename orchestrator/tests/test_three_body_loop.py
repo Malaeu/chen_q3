@@ -989,13 +989,23 @@ class ThreeBodyPlants(unittest.TestCase):
             bad_control = root / "CODEX_CONTROL.md"
             bad_control.write_text(
                 spine.CONTROL.read_text(encoding="utf-8").replace(
-                    "CONTROL_VERSION: 10", "CONTROL_VERSION: 9"
+                    "CONTROL_VERSION: 11", "CONTROL_VERSION: 9"
                 ),
                 encoding="utf-8",
             )
             with mock.patch.object(spine, "CONTROL", bad_control):
                 with self.assertRaisesRegex(spine.ControlViolation, "EXPLORATION_CONTOUR_ORPHANED"):
                     spine._validate_active_control()
+
+            v10_control = root / "CODEX_CONTROL_v10.md"
+            v10_control.write_text(
+                spine.CONTROL.read_text(encoding="utf-8").replace(
+                    "CONTROL_VERSION: 11", "CONTROL_VERSION: 10", 1
+                ),
+                encoding="utf-8",
+            )
+            with mock.patch.object(spine, "CONTROL", v10_control):
+                spine._validate_active_control()
 
             bad_state = _empty_state()
             del bad_state["active_lease"]

@@ -2,7 +2,7 @@
 
 ```yaml
 CONTROL_ID: Q3_EXECUTOR_CONTROL
-CONTROL_VERSION: 10
+CONTROL_VERSION: 11
 TEAM_RUNTIME_VERSION: 1
 STATUS: ACTIVE
 ROLE: CODEX_EXECUTOR
@@ -428,6 +428,45 @@ are held before control validation. `plan` displays only the original bootstrap
 reconciliation command. Only that command may observe/confirm the publication;
 the checkpoint can record confirmation after the exact remote receipt exists.
 
+Revision 11 adds repeatable compact publication through the existing
+`team-reserve-effect`, native owner Git, and `team-confirm-effect`. Revision 10
+retains its prior admission; new Python against revision 10 grants neither the
+compact path nor the verified-repair exception below. Production proof modes,
+schemas, mathematical gates, and Team Runtime version remain unchanged.
+
+For compact publication, pin the actual Git HEAD as BASE before ordinary
+content-addressed evidence intake of the exact path-to-hash map. Its two named
+RESUME/HISTORY hashes are their immutable Git blob bytes at BASE. Intake may
+advance checkpoints. Publication INTENT names the map/hash and explicit incoming
+commit tips; reserve validates the complete BASE-to-INTENT checkpoint/history
+chain and freezes final metadata bytes separately from those base hashes.
+Before initial remote observation, require the map's completed intake receipt
+and matching INTENT/CONFIRMED history, or the repair's independent FIX_VERIFIED
+evidence. Missing prerequisites or a changed BASE block replacement observation.
+All intended paths, modes, reviewed source bytes, preimages, foreign work/index,
+endpoint, owner/epoch and incoming history are bound in the private reservation.
+Incoming paths must have clean base preimages. No deletion, symlink, undeclared
+change or invalidation of a mathematical source pin is admitted.
+
+Native owner Git uses the existing guard under the writer epoch: `prepare`
+consumes exact preimages before ordinary merge/commit, `publish` checks final
+bytes/tree/ancestry and durably consumes one push attempt for that exact commit.
+Preserve incoming parents with a real merge and stage only exact owned paths.
+Release the lock for the ordinary non-force push; pending state fences other
+writers. Confirmation reads the actual remote commit/tree and exact blobs
+independently outside the lock, then rechecks the owner and reservation before
+saving. The original remote base stays in the snapshot; the actual post-push
+commit is the confirmation's `remote_commit`. Neither confirmation nor a
+publication receipt accepts mathematics. Publishing the later CONFIRMED
+checkpoint recursively is unnecessary.
+
+While publication is pending, `plan` shows the original operation, owner,
+snapshot hash and candidate commit when known, before mutable control validation.
+Inspect the original local/remote history and confirm; never replay an unknown
+merge, commit or push. A lost input map can be checked against the saved map and
+committed tree. Missing/corrupt private state is a recovery blocker; changed
+control cannot disable a surviving fence. A different remote commit is UNKNOWN.
+
 After a genuinely closed node under a goal-scoped grant, Codex validates the
 exact changed paths, commits only owned paths, pulls with rebase, and pushes.
 Publication and `PX_RH_CLAIM` remain separate actions. No force push or silent
@@ -448,6 +487,17 @@ Before a canonical mutation, the caller supplies the ownership epoch observed by
 changed caller epoch is a hold. Issue `affected_operations` use exact manifest
 tool IDs; a confirmed issue holds only those operations. An exact worker-path
 assignment authorizes isolated candidate edits, never a canonical writer.
+
+Revision 11 has one exact issue-admission exception: a publication-blocking issue
+at FIX_VERIFIED/FIX_COMMITTED may publish only its independently verified repair
+subject, operation `<repair_subject_id>:publication`, and exact reviewed source
+manifest. Validate the existing candidate and independent reviewer artifacts;
+no self-review, extra payload, unrelated publication or global unhold. Publish
+this source-only repair before a broader compact metadata/incoming-history
+publication. FIX_COMMITTED and FIX_PUSH_VERIFIED follow the actual local commit
+and fresh remote proof, never precede them to unlock publication. Source
+integration review and repair verification retain their separate artifacts and
+assignments. Reserve rejects other affected open issues before creating a fence.
 
 `TOOLS.yaml` contains one exhaustive `team_runtime_writer_inventory` for
 `ENABLED`, `AVAILABLE` and `DEGRADED` entries with `writes: true`. Its fenced
