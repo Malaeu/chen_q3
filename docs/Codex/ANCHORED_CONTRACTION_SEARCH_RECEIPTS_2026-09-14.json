@@ -114,7 +114,7 @@
   ],
   "mathematics": {
     "report": "docs/Codex/REPORT_2026-09-14_ANCHORED_CONTRACTION_HUNT.md",
-    "report_sha256": "f2cb8467e04da0d66da8168471a1a455e890c136a88474ddc9b59f550a997f8c",
+    "report_sha256": "7aaac940da486d5f16195e30536f4ba26389d82f194ab1a7781312a3731585b4",
     "all_finite_complex_families_retained": true,
     "gaussian_fit": "EXACT",
     "theta_direct_fit": "FALSE_FOR_EACH_NON_ANCHOR_NODE",
@@ -133,7 +133,7 @@
     "shelf_mutated": false,
     "canonical_writes": false,
     "new_proshka_request": false,
-    "review": "CLEAN_ADVERSARIAL_READ_ONLY_FINAL_REPORT",
+    "review": "CLEAN_ADVERSARIAL_READ_ONLY; original mathematical review plus exact cross-reference clarification readback",
     "issue": "Existing semantic-index freshness validation failure preserved; not repaired by this isolated mathematical task."
   },
   "independent_review": {
@@ -164,5 +164,17 @@
     "Verbatim source words match after PDF line-wrap normalization",
     "UTF-8, final newlines and exact report path checked",
     "No numerical sign test or Lean claim"
-  ]
+  ],
+  "review_clarification": {
+    "source": "https://github.com/Malaeu/chen_q3/pull/15#discussion_r4007934403",
+    "prior_report_sha256": "f2cb8467e04da0d66da8168471a1a455e890c136a88474ddc9b59f550a997f8c",
+    "current_report_sha256": "7aaac940da486d5f16195e30536f4ba26389d82f194ab1a7781312a3731585b4",
+    "change": "Disambiguate the hypothesis-table reference: equation (H8) in section H6 proves the nonzero defect; section H5 proves the Gaussian fit. No formula or mathematical claim changes.",
+    "independent_readback": "CLEAN /root/sibling5_check on exact current report and receipt preimage",
+    "reviewer": "/root/sibling5_check",
+    "review_class": "ADVERSARIAL_READ_ONLY",
+    "reviewed_report_sha256": "7aaac940da486d5f16195e30536f4ba26389d82f194ab1a7781312a3731585b4",
+    "reviewed_receipt_preimage_sha256": "2bc9033d2b0387f433ade2551ddcaae084caf686acbd4eb3fda87f1dd311687a",
+    "post_review_metadata": "Records the received CLEAN in this receipt; mathematical and report bytes unchanged."
+  }
 }

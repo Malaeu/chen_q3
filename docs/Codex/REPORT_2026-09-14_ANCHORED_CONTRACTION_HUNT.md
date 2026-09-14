@@ -108,7 +108,7 @@ Hypothesis map:
 | Positive continuous probability density on u>=a>0 | PROVED | PROVED | PROVED |
 | Each A and B lies in the same L2(mu) | PROVED | PROVED | PROVED |
 | Centered input U and all finite complex mixtures | PROVED | PROVED | PROVED |
-| WU_x equals prescribed B_x | FALSE for x!=a by H6 | PROVED by H5 | Cannot supply the all-row target |
+| WU_x equals prescribed B_x | FALSE for x!=a by equation (H8) in section H6 | PROVED in section H5 | Cannot supply the all-row target |
 | Some independently constructed contraction sends every U_x to B_x | OPEN | W suffices | FALSE for the whole required class |
 
 Strength: a source-verified general mechanism with an exact Gaussian fit and
